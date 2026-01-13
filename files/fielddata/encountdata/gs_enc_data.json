@@ -321,43 +321,7 @@
                 },
                 "super_rod": {
                     "rate": 0,
-                    "mons": [
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        }
-                    ]
+                    "mons": []
                 }
             },
             "hoenn": [
@@ -1559,43 +1523,7 @@
                 },
                 "super_rod": {
                     "rate": 0,
-                    "mons": [
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        }
-                    ]
+                    "mons": []
                 }
             },
             "hoenn": [
@@ -1735,43 +1663,7 @@
                 },
                 "super_rod": {
                     "rate": 0,
-                    "mons": [
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        }
-                    ]
+                    "mons": []
                 }
             },
             "hoenn": [
@@ -2512,43 +2404,7 @@
                 },
                 "super_rod": {
                     "rate": 0,
-                    "mons": [
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        }
-                    ]
+                    "mons": []
                 }
             },
             "hoenn": [
@@ -2688,43 +2544,7 @@
                 },
                 "super_rod": {
                     "rate": 0,
-                    "mons": [
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        }
-                    ]
+                    "mons": []
                 }
             },
             "hoenn": [
@@ -2864,43 +2684,7 @@
                 },
                 "super_rod": {
                     "rate": 0,
-                    "mons": [
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        }
-                    ]
+                    "mons": []
                 }
             },
             "hoenn": [
@@ -3040,43 +2824,7 @@
                 },
                 "super_rod": {
                     "rate": 0,
-                    "mons": [
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        }
-                    ]
+                    "mons": []
                 }
             },
             "hoenn": [
@@ -4122,43 +3870,7 @@
                 },
                 "super_rod": {
                     "rate": 0,
-                    "mons": [
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        }
-                    ]
+                    "mons": []
                 }
             },
             "hoenn": [
@@ -5829,43 +5541,7 @@
                 },
                 "super_rod": {
                     "rate": 0,
-                    "mons": [
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        }
-                    ]
+                    "mons": []
                 }
             },
             "hoenn": [
@@ -6116,43 +5792,7 @@
                 },
                 "super_rod": {
                     "rate": 0,
-                    "mons": [
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        }
-                    ]
+                    "mons": []
                 }
             },
             "hoenn": [
@@ -6373,43 +6013,7 @@
                 },
                 "super_rod": {
                     "rate": 0,
-                    "mons": [
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        }
-                    ]
+                    "mons": []
                 }
             },
             "hoenn": [
@@ -6612,43 +6216,7 @@
                 },
                 "super_rod": {
                     "rate": 0,
-                    "mons": [
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        }
-                    ]
+                    "mons": []
                 }
             },
             "hoenn": [
@@ -6972,43 +6540,7 @@
                 },
                 "super_rod": {
                     "rate": 0,
-                    "mons": [
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        }
-                    ]
+                    "mons": []
                 }
             },
             "hoenn": [
@@ -7148,43 +6680,7 @@
                 },
                 "super_rod": {
                     "rate": 0,
-                    "mons": [
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        }
-                    ]
+                    "mons": []
                 }
             },
             "hoenn": [
@@ -7324,43 +6820,7 @@
                 },
                 "super_rod": {
                     "rate": 0,
-                    "mons": [
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        }
-                    ]
+                    "mons": []
                 }
             },
             "hoenn": [
@@ -7500,43 +6960,7 @@
                 },
                 "super_rod": {
                     "rate": 0,
-                    "mons": [
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        }
-                    ]
+                    "mons": []
                 }
             },
             "hoenn": [
@@ -7676,43 +7100,7 @@
                 },
                 "super_rod": {
                     "rate": 0,
-                    "mons": [
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        }
-                    ]
+                    "mons": []
                 }
             },
             "hoenn": [
@@ -7852,43 +7240,7 @@
                 },
                 "super_rod": {
                     "rate": 0,
-                    "mons": [
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        }
-                    ]
+                    "mons": []
                 }
             },
             "hoenn": [
@@ -8028,43 +7380,7 @@
                 },
                 "super_rod": {
                     "rate": 0,
-                    "mons": [
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        }
-                    ]
+                    "mons": []
                 }
             },
             "hoenn": [
@@ -8204,43 +7520,7 @@
                 },
                 "super_rod": {
                     "rate": 0,
-                    "mons": [
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        }
-                    ]
+                    "mons": []
                 }
             },
             "hoenn": [
@@ -8380,43 +7660,7 @@
                 },
                 "super_rod": {
                     "rate": 0,
-                    "mons": [
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        }
-                    ]
+                    "mons": []
                 }
             },
             "hoenn": [
@@ -8556,43 +7800,7 @@
                 },
                 "super_rod": {
                     "rate": 0,
-                    "mons": [
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        }
-                    ]
+                    "mons": []
                 }
             },
             "hoenn": [
@@ -8762,43 +7970,7 @@
                 },
                 "super_rod": {
                     "rate": 0,
-                    "mons": [
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        }
-                    ]
+                    "mons": []
                 }
             },
             "hoenn": [
@@ -8968,43 +8140,7 @@
                 },
                 "super_rod": {
                     "rate": 0,
-                    "mons": [
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        }
-                    ]
+                    "mons": []
                 }
             },
             "hoenn": [
@@ -9992,43 +9128,7 @@
                 },
                 "super_rod": {
                     "rate": 0,
-                    "mons": [
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        }
-                    ]
+                    "mons": []
                 }
             },
             "hoenn": [
@@ -10071,43 +9171,7 @@
                 },
                 "super_rod": {
                     "rate": 0,
-                    "mons": [
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        }
-                    ]
+                    "mons": []
                 }
             },
             "hoenn": [],
@@ -10428,43 +9492,7 @@
                 },
                 "super_rod": {
                     "rate": 0,
-                    "mons": [
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        }
-                    ]
+                    "mons": []
                 }
             },
             "hoenn": [],
@@ -10598,43 +9626,7 @@
                 },
                 "super_rod": {
                     "rate": 0,
-                    "mons": [
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        }
-                    ]
+                    "mons": []
                 }
             },
             "hoenn": [
@@ -10677,43 +9669,7 @@
                 },
                 "super_rod": {
                     "rate": 0,
-                    "mons": [
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        }
-                    ]
+                    "mons": []
                 }
             },
             "hoenn": [],
@@ -10750,43 +9706,7 @@
                 },
                 "super_rod": {
                     "rate": 0,
-                    "mons": [
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        }
-                    ]
+                    "mons": []
                 }
             },
             "hoenn": [],
@@ -11759,43 +10679,7 @@
                 },
                 "super_rod": {
                     "rate": 0,
-                    "mons": [
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        }
-                    ]
+                    "mons": []
                 }
             },
             "hoenn": [
@@ -13270,43 +12154,7 @@
                 },
                 "super_rod": {
                     "rate": 0,
-                    "mons": [
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        }
-                    ]
+                    "mons": []
                 }
             },
             "hoenn": [
@@ -13464,43 +12312,7 @@
                 },
                 "super_rod": {
                     "rate": 0,
-                    "mons": [
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        }
-                    ]
+                    "mons": []
                 }
             },
             "hoenn": [
@@ -13658,43 +12470,7 @@
                 },
                 "super_rod": {
                     "rate": 0,
-                    "mons": [
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        }
-                    ]
+                    "mons": []
                 }
             },
             "hoenn": [
@@ -13852,43 +12628,7 @@
                 },
                 "super_rod": {
                     "rate": 0,
-                    "mons": [
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        }
-                    ]
+                    "mons": []
                 }
             },
             "hoenn": [
@@ -13931,43 +12671,7 @@
                 },
                 "super_rod": {
                     "rate": 0,
-                    "mons": [
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        }
-                    ]
+                    "mons": []
                 }
             },
             "hoenn": [],
@@ -14801,43 +13505,7 @@
                 },
                 "super_rod": {
                     "rate": 0,
-                    "mons": [
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        }
-                    ]
+                    "mons": []
                 }
             },
             "hoenn": [
@@ -16206,43 +14874,7 @@
                 },
                 "super_rod": {
                     "rate": 0,
-                    "mons": [
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        }
-                    ]
+                    "mons": []
                 }
             },
             "hoenn": [
@@ -16382,43 +15014,7 @@
                 },
                 "super_rod": {
                     "rate": 0,
-                    "mons": [
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        }
-                    ]
+                    "mons": []
                 }
             },
             "hoenn": [
@@ -16558,43 +15154,7 @@
                 },
                 "super_rod": {
                     "rate": 0,
-                    "mons": [
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        }
-                    ]
+                    "mons": []
                 }
             },
             "hoenn": [
@@ -16734,43 +15294,7 @@
                 },
                 "super_rod": {
                     "rate": 0,
-                    "mons": [
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        }
-                    ]
+                    "mons": []
                 }
             },
             "hoenn": [
@@ -18305,43 +16829,7 @@
                 },
                 "super_rod": {
                     "rate": 0,
-                    "mons": [
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        }
-                    ]
+                    "mons": []
                 }
             },
             "hoenn": [
@@ -18481,43 +16969,7 @@
                 },
                 "super_rod": {
                     "rate": 0,
-                    "mons": [
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        }
-                    ]
+                    "mons": []
                 }
             },
             "hoenn": [
@@ -19297,43 +17749,7 @@
                 },
                 "super_rod": {
                     "rate": 0,
-                    "mons": [
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        }
-                    ]
+                    "mons": []
                 }
             },
             "hoenn": [
@@ -19503,43 +17919,7 @@
                 },
                 "super_rod": {
                     "rate": 0,
-                    "mons": [
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        }
-                    ]
+                    "mons": []
                 }
             },
             "hoenn": [
@@ -19884,43 +18264,7 @@
                 },
                 "super_rod": {
                     "rate": 0,
-                    "mons": [
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        }
-                    ]
+                    "mons": []
                 }
             },
             "hoenn": [],
@@ -21574,43 +19918,7 @@
                 },
                 "super_rod": {
                     "rate": 0,
-                    "mons": [
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        }
-                    ]
+                    "mons": []
                 }
             },
             "hoenn": [],
@@ -22130,43 +20438,7 @@
                 },
                 "super_rod": {
                     "rate": 0,
-                    "mons": [
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        }
-                    ]
+                    "mons": []
                 }
             },
             "hoenn": [
@@ -23314,43 +21586,7 @@
                 },
                 "super_rod": {
                     "rate": 0,
-                    "mons": [
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        }
-                    ]
+                    "mons": []
                 }
             },
             "hoenn": [
@@ -23526,43 +21762,7 @@
                 },
                 "super_rod": {
                     "rate": 0,
-                    "mons": [
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        }
-                    ]
+                    "mons": []
                 }
             },
             "hoenn": [
@@ -23702,43 +21902,7 @@
                 },
                 "super_rod": {
                     "rate": 0,
-                    "mons": [
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        }
-                    ]
+                    "mons": []
                 }
             },
             "hoenn": [
@@ -23893,43 +22057,7 @@
                 },
                 "super_rod": {
                     "rate": 0,
-                    "mons": [
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        }
-                    ]
+                    "mons": []
                 }
             },
             "hoenn": [
@@ -24087,43 +22215,7 @@
                 },
                 "super_rod": {
                     "rate": 0,
-                    "mons": [
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        }
-                    ]
+                    "mons": []
                 }
             },
             "hoenn": [
@@ -24263,43 +22355,7 @@
                 },
                 "super_rod": {
                     "rate": 0,
-                    "mons": [
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        }
-                    ]
+                    "mons": []
                 }
             },
             "hoenn": [
@@ -24517,43 +22573,7 @@
                 },
                 "super_rod": {
                     "rate": 0,
-                    "mons": [
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        }
-                    ]
+                    "mons": []
                 }
             },
             "hoenn": [
@@ -24732,43 +22752,7 @@
                 },
                 "super_rod": {
                     "rate": 0,
-                    "mons": [
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        }
-                    ]
+                    "mons": []
                 }
             },
             "hoenn": [
@@ -25255,43 +23239,7 @@
                 },
                 "super_rod": {
                     "rate": 0,
-                    "mons": [
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        }
-                    ]
+                    "mons": []
                 }
             },
             "hoenn": [
@@ -25793,43 +23741,7 @@
                 },
                 "super_rod": {
                     "rate": 0,
-                    "mons": [
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        }
-                    ]
+                    "mons": []
                 }
             },
             "hoenn": [
@@ -26008,43 +23920,7 @@
                 },
                 "super_rod": {
                     "rate": 0,
-                    "mons": [
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        }
-                    ]
+                    "mons": []
                 }
             },
             "hoenn": [
@@ -26806,43 +24682,7 @@
                 },
                 "super_rod": {
                     "rate": 0,
-                    "mons": [
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        }
-                    ]
+                    "mons": []
                 }
             },
             "hoenn": [
@@ -27338,43 +25178,7 @@
                 },
                 "super_rod": {
                     "rate": 0,
-                    "mons": [
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        }
-                    ]
+                    "mons": []
                 }
             },
             "hoenn": [
@@ -27553,43 +25357,7 @@
                 },
                 "super_rod": {
                     "rate": 0,
-                    "mons": [
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        }
-                    ]
+                    "mons": []
                 }
             },
             "hoenn": [
@@ -27732,43 +25500,7 @@
                 },
                 "super_rod": {
                     "rate": 0,
-                    "mons": [
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        }
-                    ]
+                    "mons": []
                 }
             },
             "hoenn": [
@@ -27908,43 +25640,7 @@
                 },
                 "super_rod": {
                     "rate": 0,
-                    "mons": [
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        }
-                    ]
+                    "mons": []
                 }
             },
             "hoenn": [
@@ -28084,43 +25780,7 @@
                 },
                 "super_rod": {
                     "rate": 0,
-                    "mons": [
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        }
-                    ]
+                    "mons": []
                 }
             },
             "hoenn": [
@@ -29680,43 +27340,7 @@
                 },
                 "super_rod": {
                     "rate": 0,
-                    "mons": [
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        }
-                    ]
+                    "mons": []
                 }
             },
             "hoenn": [
@@ -29874,43 +27498,7 @@
                 },
                 "super_rod": {
                     "rate": 0,
-                    "mons": [
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        }
-                    ]
+                    "mons": []
                 }
             },
             "hoenn": [
@@ -30083,43 +27671,7 @@
                 },
                 "super_rod": {
                     "rate": 0,
-                    "mons": [
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        }
-                    ]
+                    "mons": []
                 }
             },
             "hoenn": [
@@ -30343,43 +27895,7 @@
                 },
                 "super_rod": {
                     "rate": 0,
-                    "mons": [
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        }
-                    ]
+                    "mons": []
                 }
             },
             "hoenn": [
@@ -30558,43 +28074,7 @@
                 },
                 "super_rod": {
                     "rate": 0,
-                    "mons": [
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        }
-                    ]
+                    "mons": []
                 }
             },
             "hoenn": [
@@ -30637,43 +28117,7 @@
                 },
                 "super_rod": {
                     "rate": 0,
-                    "mons": [
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        },
-                        {
-                            "level": {
-                                "min": 0,
-                                "max": 0
-                            },
-                            "species": "SPECIES_NONE"
-                        }
-                    ]
+                    "mons": []
                 }
             },
             "hoenn": [],
