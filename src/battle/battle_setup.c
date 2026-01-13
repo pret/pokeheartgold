@@ -409,7 +409,7 @@ static void sub_0205230C(FieldSystem *fieldSystem, PlayerProfile *profile1, Play
         } else {
             balanceResult = savingsBalance;
         }
-        if (MomGift_TryQueueOnBalanceChange(savings, balanceResult, savingsBalance)) {
+        if (MomGift_TryEnqueueGiftOnBalanceChange(savings, balanceResult, savingsBalance)) {
             sub_02092E14(FieldSystem_GetGearPhoneRingManager(fieldSystem), 12, TRUE);
         }
     }

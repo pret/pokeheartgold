@@ -57,10 +57,9 @@ static const MomGiftNormalEntry sGiftNormalTable[NUM_NORMAL_GIFTS] = {
 static BOOL MomSavings_ProcessNormalGifts(PhoneCallPersistentState *savings, u32 balance) {
     int count = 0;
     const MomGiftNormalEntry *entry = sGiftNormalTable;
-    int i = 0;
 
-    for (; i < NUM_NORMAL_GIFTS; i++, entry++) {
-        if (sub_0202F1B4(savings, (u8)i) != FALSE) {
+    for (int i = 0; i < NUM_NORMAL_GIFTS; i++, entry++) {
+        if (sub_0202F1B4(savings, (u8)i)) {
             continue;
         }
         if (balance < entry->threshold) {
@@ -70,7 +69,7 @@ static BOOL MomSavings_ProcessNormalGifts(PhoneCallPersistentState *savings, u32
         PhoneCallPersistentState_MomGiftQueue_Put(savings, entry->itemId, 1);
         balance = PhoneCallPersistentState_MomSavings_BalanceAction(savings, MOMS_BALANCE_SUB, entry->cost);
         count++;
-        if (PhoneCallPersistentState_MomGiftQueue_IsFull(savings) != FALSE) {
+        if (PhoneCallPersistentState_MomGiftQueue_IsFull(savings)) {
             break;
         }
     }
@@ -81,12 +80,12 @@ static BOOL MomSavings_ProcessNormalGifts(PhoneCallPersistentState *savings, u32
     return FALSE;
 }
 
-BOOL MomGift_TryQueueOnBalanceChange(PhoneCallPersistentState *savings, u32 newBalance, u32 oldBalance) {
-    if (PhoneCallPersistentState_MomGiftQueue_IsFull(savings) != FALSE) {
+BOOL MomGift_TryEnqueueGiftOnBalanceChange(PhoneCallPersistentState *savings, u32 newBalance, u32 oldBalance) {
+    if (PhoneCallPersistentState_MomGiftQueue_IsFull(savings)) {
         return FALSE;
     }
 
-    if (MomSavings_ProcessNormalGifts(savings, newBalance) != FALSE) {
+    if (MomSavings_ProcessNormalGifts(savings, newBalance)) {
         return TRUE;
     }
 
@@ -99,7 +98,7 @@ BOOL MomGift_TryQueueOnBalanceChange(PhoneCallPersistentState *savings, u32 newB
 
     int idx = LCRandom() % NUM_BERRY_GIFTS;
     const MomGiftBerryEntry *berry = &sGiftBerryTable[idx];
-    PhoneCallPersistentState_MomGiftQueue_Put(savings, (u16)(berry->berryOffset + ITEM_CHERI_BERRY), berry->quantity);
+    PhoneCallPersistentState_MomGiftQueue_Put(savings, berry->berryOffset + ITEM_CHERI_BERRY, berry->quantity);
     PhoneCallPersistentState_MomSavings_BalanceAction(savings, MOMS_BALANCE_SUB, berry->cost);
 
     return TRUE;
