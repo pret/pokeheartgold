@@ -999,7 +999,7 @@ Overlay OVY_80
     After OVY_42
     Object asm/overlay_80_02229EE0.o
     Object asm/frontier_system.o
-    Object asm/overlay_80_0222AB40.o
+    Object src/frontier/frontier_script_context.o
     Object asm/overlay_80_0222ACA0.o
     Object asm/overlay_80_0222AEF8.o
     Object asm/overlay_80_0222BDF4.o
