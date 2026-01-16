@@ -2184,3 +2184,96 @@ int PokedexApp_MainSeq_63(PokedexAppData *pokedexApp) {
 
     return POKEDEXAPP_MAINSEQ_63;
 }
+
+int PokedexApp_MainSeq_64(PokedexAppData *pokedexApp) {
+    switch (pokedexApp->unk_0868.state_10.unk_0) {
+    case 0: {
+        u16 r1 = ov18_021F8838(pokedexApp);
+        if (r1 != SPECIES_NONE) {
+            sub_02092BD8(pokedexApp->args->unk_08, r1, pokedexApp->unk_1858);
+        }
+        sub_0201980C(pokedexApp->unk_0008, 4);
+        ov18_021F2A2C(pokedexApp, 22, 0);
+        ov18_021F2A84(pokedexApp, 24, 0);
+        ClearWindowTilemapAndScheduleTransfer(&pokedexApp->windows[94]);
+        ov18_021F11C0(pokedexApp, 0, 0);
+        ov18_021E66C4(pokedexApp);
+        PaletteData_BeginPaletteFade(pokedexApp->paletteData, PLTTBUF_MAIN_BG_F, PLTTFADE_OPAQUE_ALL_F & ~(1 << 0), 0, 0, 16, RGB_BLACK);
+        PaletteData_BeginPaletteFade(pokedexApp->paletteData, PLTTBUF_EXCEPT_MAIN_BG_F, PLTTFADE_OPAQUE_ALL_F, 0, 0, 16, RGB_BLACK);
+        pokedexApp->unk_085C = 0x40;
+        ++pokedexApp->unk_0868.state_10.unk_0;
+        return POKEDEXAPP_MAINSEQ_03;
+    }
+    case 1:
+        if (sub_020199E4(pokedexApp->unk_0008, 8)) {
+            break;
+        }
+        pokedexApp->unk_0868.state_10.unk_0 = 0;
+        ov18_021EE388(pokedexApp);
+        ov18_021F3294(pokedexApp);
+        ov18_021F3438(pokedexApp);
+        pokedexApp->unk_18A0 = 5;
+        return POKEDEXAPP_MAINSEQ_66;
+    }
+
+    return POKEDEXAPP_MAINSEQ_64;
+}
+
+int PokedexApp_MainSeq_65(PokedexAppData *pokedexApp) {
+    switch (pokedexApp->unk_0868.state_10.unk_0) {
+    case 0:
+        ov18_021E67C8(pokedexApp, 5);
+        ov18_021EA350(pokedexApp, GF_BG_LYR_MAIN_0, 9);
+        ov18_021EA350(pokedexApp, GF_BG_LYR_MAIN_2, 10);
+        ov18_021EA350(pokedexApp, GF_BG_LYR_MAIN_0, 11);
+        ov18_021EA350(pokedexApp, GF_BG_LYR_MAIN_2, 12);
+        ov18_021EFEC4(pokedexApp);
+        ov18_021F1620(pokedexApp, 59);
+        ov18_021E6CC0(pokedexApp);
+        ov18_021F11C0(pokedexApp, 18, 1);
+        ov18_021F11C0(pokedexApp, 19, 1);
+        ov18_021F11C0(pokedexApp, 20, 1);
+        ov18_021F11C0(pokedexApp, 21, 1);
+        ov18_021F11C0(pokedexApp, 25, 1);
+        ov18_021F2C5C(pokedexApp, 18, 0);
+        ov18_021F2E80(pokedexApp, 18, 0);
+        ov18_021F2C10(pokedexApp, 19, 0);
+        ov18_021EEED0(pokedexApp, 1);
+        ov18_021F3BA4(pokedexApp);
+        ov18_021F3BD4(pokedexApp, -192);
+        sub_020196E8(pokedexApp->unk_0008, 9, 0, 0);
+        sub_020196E8(pokedexApp->unk_0008, 10, 0, 0);
+        sub_020196E8(pokedexApp->unk_0008, 11, 0, 0);
+        sub_020196E8(pokedexApp->unk_0008, 12, 0, 0);
+        sub_0201980C(pokedexApp->unk_0008, 9);
+        sub_0201980C(pokedexApp->unk_0008, 10);
+        GfGfxLoader_LoadCharDataFromOpenNarc(pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000004_NCGR_lz, pokedexApp->bgConfig, GF_BG_LYR_MAIN_2, 0, 0, TRUE, HEAP_ID_37);
+        GfGfxLoader_LoadCharDataFromOpenNarc(pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000019_NCGR_lz, pokedexApp->bgConfig, GF_BG_LYR_SUB_3, 0, 0, TRUE, HEAP_ID_37);
+        GfGfxLoader_LoadScrnDataFromOpenNarc(pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000020_NSCR_lz, pokedexApp->bgConfig, GF_BG_LYR_SUB_3, 0, 0, TRUE, HEAP_ID_37);
+        ov18_021E669C(pokedexApp);
+        ov18_021F3448(pokedexApp);
+        ov18_021F11C0(pokedexApp, 0, 1);
+        ov18_021F2BB0(pokedexApp, 0);
+        ov18_021F118C(pokedexApp, 0, 1);
+        ov18_021F3190(pokedexApp);
+        ov18_021E78AC(pokedexApp);
+        ov18_021EDEB0(pokedexApp);
+        ov18_021E659C(pokedexApp);
+        if (pokedexApp->unk_1859) {
+            ov18_021F3C54(pokedexApp, -40);
+        }
+        PaletteData_BeginPaletteFade(pokedexApp->paletteData, PLTTBUF_MAIN_BG_F, PLTTFADE_OPAQUE_ALL_F & ~(1 << 4), 0, 16, 0, RGB_BLACK);
+        PaletteData_BeginPaletteFade(pokedexApp->paletteData, PLTTBUF_EXCEPT_MAIN_BG_F, PLTTFADE_OPAQUE_ALL_F, 0, 16, 0, RGB_BLACK);
+        ++pokedexApp->unk_0868.state_10.unk_0;
+        pokedexApp->unk_085C = POKEDEXAPP_MAINSEQ_65;
+        return POKEDEXAPP_MAINSEQ_03;
+    case 1:
+        if (!sub_020199E4(pokedexApp->unk_0008, 8)) {
+            pokedexApp->unk_0868.state_10.unk_0 = 0;
+            return POKEDEXAPP_MAINSEQ_57;
+        }
+        break;
+    }
+
+    return POKEDEXAPP_MAINSEQ_65;
+}
