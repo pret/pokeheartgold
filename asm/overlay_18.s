@@ -12,9 +12,6 @@
 	.extern ov18_021E613C
 	.extern ov18_021E6174
 	.extern ov18_021E618C
-	.extern ov18_021E659C
-	.extern ov18_021E669C
-	.extern ov18_021E66C4
 	.extern ov18_021E66EC
 	.extern ov18_021E6714
 	.extern ov18_021E673C
@@ -22,19 +19,11 @@
 	.extern ov18_021E67B0
 	.extern ov18_021E67C8
 	.extern ov18_021E6A70
-	.extern ov18_021E6BB8
-	.extern ov18_021E6C90
 	.extern ov18_021E6C98
 	.extern ov18_021E6CC0
-	.extern ov18_021E6CE8
 	.extern ov18_021E6D10
 	.extern ov18_021E6F6C
-	.extern ov18_021E7534
-	.extern ov18_021E766C
 	.extern ov18_021E7698
-	.extern ov18_021E7724
-	.extern ov18_021E78AC
-	.extern ov18_021E7A80
 	.extern ov18_021E800C
 	.extern ov18_021E81A8
 	.extern ov18_021E8254
@@ -49,257 +38,9 @@
 	.extern ov18_021E8B5C
 	.extern ov18_021E8B94
 	.extern ov18_021E8BD4
-	.extern ov18_021EA350
+	.extern ov18_021EC1DC
 
 	.text
-
-	thumb_func_start ov18_021EC1DC
-ov18_021EC1DC: ; 0x021EC1DC
-	push {r4, r5, r6, lr}
-	add r4, r2, #0
-	ldr r2, _021EC278 ; =0x00000868
-	add r5, r0, #0
-	add r2, r5, r2
-	mov r6, #0
-	strh r6, [r2]
-	strb r1, [r2, #2]
-	cmp r4, #0xff
-	bne _021EC202
-	mov r1, #3
-	bl ov18_021F3D80
-	add r0, r5, #0
-	mov r1, #0x18
-	mov r2, #0x43
-	bl ov18_021EDC28
-	pop {r4, r5, r6, pc}
-_021EC202:
-	cmp r4, #1
-	bne _021EC20E
-	add r1, r6, #0
-	bl ov18_021F3D80
-	b _021EC232
-_021EC20E:
-	cmp r4, #2
-	bne _021EC21C
-	mov r1, #1
-	mov r6, #8
-	bl ov18_021F3D80
-	b _021EC232
-_021EC21C:
-	cmp r4, #3
-	bne _021EC22A
-	mov r1, #2
-	mov r6, #0x10
-	bl ov18_021F3D80
-	b _021EC232
-_021EC22A:
-	mov r1, #3
-	mov r6, #0x18
-	bl ov18_021F3D80
-_021EC232:
-	ldr r0, _021EC27C ; =0x0000185B
-	ldrb r1, [r5, r0]
-	cmp r1, #1
-	bne _021EC248
-	strb r4, [r5, r0]
-	add r0, r5, #0
-	add r1, r6, #0
-	mov r2, #0x46
-	bl ov18_021EDC28
-	pop {r4, r5, r6, pc}
-_021EC248:
-	cmp r1, #2
-	bne _021EC25A
-	strb r4, [r5, r0]
-	add r0, r5, #0
-	add r1, r6, #0
-	mov r2, #0x4e
-	bl ov18_021EDC28
-	pop {r4, r5, r6, pc}
-_021EC25A:
-	cmp r1, #3
-	strb r4, [r5, r0]
-	bne _021EC26C
-	add r0, r5, #0
-	add r1, r6, #0
-	mov r2, #0x51
-	bl ov18_021EDC28
-	pop {r4, r5, r6, pc}
-_021EC26C:
-	add r0, r5, #0
-	add r1, r6, #0
-	mov r2, #0x5b
-	bl ov18_021EDC28
-	pop {r4, r5, r6, pc}
-	.balign 4, 0
-_021EC278: .word 0x00000868
-_021EC27C: .word 0x0000185B
-	thumb_func_end ov18_021EC1DC
-
-	thumb_func_start PokedexApp_MainSeq_66
-PokedexApp_MainSeq_66: ; 0x021EC280
-	push {r4, lr}
-	add r4, r0, #0
-	bl ov18_021F8838
-	ldr r1, _021EC2C0 ; =0x000018A2
-	mov r2, #0
-	strh r0, [r4, r1]
-	add r0, r1, #0
-	add r0, #0x27
-	strb r2, [r4, r0]
-	add r0, r1, #0
-	add r0, #0x28
-	strb r2, [r4, r0]
-	add r1, #0x26
-	add r0, r4, #0
-	strb r2, [r4, r1]
-	bl ov18_021E8254
-	add r0, r4, #0
-	bl ov18_021E673C
-	add r0, r4, #0
-	bl ov18_021E66EC
-	add r0, r4, #0
-	bl ov18_021F3D34
-	add r0, r4, #0
-	bl PokedexApp_MainSeq_68
-	pop {r4, pc}
-	nop
-_021EC2C0: .word 0x000018A2
-	thumb_func_end PokedexApp_MainSeq_66
-
-	thumb_func_start PokedexApp_MainSeq_67
-PokedexApp_MainSeq_67: ; 0x021EC2C4
-	push {r4, r5, lr}
-	sub sp, #0xc
-	ldr r1, _021EC3D0 ; =0x00000868
-	add r5, r0, #0
-	add r4, r5, r1
-	ldrh r1, [r4]
-	cmp r1, #0
-	beq _021EC2DA
-	cmp r1, #1
-	beq _021EC32E
-	b _021EC3CA
-_021EC2DA:
-	mov r1, #0
-	add r2, r1, #0
-	bl ov18_021F11C0
-	add r0, r5, #0
-	bl ov18_021E6714
-	ldrb r0, [r4, #2]
-	mov r3, #0
-	ldr r2, _021EC3D4 ; =0x0000F7BE
-	str r0, [sp]
-	mov r0, #0x10
-	str r0, [sp, #4]
-	mov r0, #0x85
-	str r3, [sp, #8]
-	lsl r0, r0, #4
-	ldr r0, [r5, r0]
-	mov r1, #1
-	bl PaletteData_BeginPaletteFade
-	ldrb r0, [r4, #2]
-	mov r3, #0
-	ldr r2, _021EC3D8 ; =0x0000FFFF
-	str r0, [sp]
-	mov r0, #0x10
-	str r0, [sp, #4]
-	mov r0, #0x85
-	str r3, [sp, #8]
-	lsl r0, r0, #4
-	ldr r0, [r5, r0]
-	mov r1, #0xe
-	bl PaletteData_BeginPaletteFade
-	ldrh r0, [r4]
-	mov r1, #0x43
-	add sp, #0xc
-	add r0, r0, #1
-	strh r0, [r4]
-	ldr r0, _021EC3DC ; =0x0000085C
-	str r1, [r5, r0]
-	mov r0, #3
-	pop {r4, r5, pc}
-_021EC32E:
-	ldr r0, [r5, #8]
-	mov r1, #0x10
-	bl sub_020199E4
-	cmp r0, #0
-	bne _021EC3CA
-	mov r0, #0xf
-	mov r1, #0x25
-	bl ZeroPalettesByBitmask
-	ldr r0, _021EC3E0 ; =0x0000185B
-	ldrb r0, [r5, r0]
-	cmp r0, #3
-	bne _021EC358
-	add r0, r5, #0
-	bl ov18_021F0918
-	add r0, r5, #0
-	bl ov18_021F5DE0
-	b _021EC39C
-_021EC358:
-	cmp r0, #2
-	bne _021EC372
-	add r0, r5, #0
-	bl ov18_021F0838
-	add r0, r5, #0
-	bl ov18_021F4A50
-	add r0, r5, #0
-	mov r1, #0
-	bl ov18_021E5E70
-	b _021EC39C
-_021EC372:
-	cmp r0, #1
-	bne _021EC396
-	add r0, r5, #0
-	bl ov18_021F03C0
-	add r0, r5, #0
-	bl ov18_021F3E08
-	add r0, r5, #0
-	bl ov18_021E8648
-	add r0, r5, #0
-	bl ov18_021E8BD4
-	add r0, r5, #0
-	bl ov18_021EE20C
-	b _021EC39C
-_021EC396:
-	add r0, r5, #0
-	bl ov18_021F08E0
-_021EC39C:
-	add r0, r5, #0
-	bl ov18_021F3D6C
-	ldr r0, _021EC3D0 ; =0x00000868
-	mov r1, #0
-	add r0, r5, r0
-	mov r2, #0x10
-	bl MI_CpuFill8
-	ldr r1, _021EC3E4 ; =0x000018A0
-	add r0, r1, #0
-	ldrb r2, [r5, r1]
-	sub r0, #0x45
-	strb r2, [r5, r0]
-	ldrb r0, [r5, r1]
-	cmp r0, #0
-	bne _021EC3C4
-	add sp, #0xc
-	mov r0, #0x13
-	pop {r4, r5, pc}
-_021EC3C4:
-	add sp, #0xc
-	mov r0, #0x41
-	pop {r4, r5, pc}
-_021EC3CA:
-	mov r0, #0x43
-	add sp, #0xc
-	pop {r4, r5, pc}
-	.balign 4, 0
-_021EC3D0: .word 0x00000868
-_021EC3D4: .word 0x0000F7BE
-_021EC3D8: .word 0x0000FFFF
-_021EC3DC: .word 0x0000085C
-_021EC3E0: .word 0x0000185B
-_021EC3E4: .word 0x000018A0
-	thumb_func_end PokedexApp_MainSeq_67
 
 	thumb_func_start PokedexApp_MainSeq_68
 PokedexApp_MainSeq_68: ; 0x021EC3E8
@@ -3216,9 +2957,6 @@ ov18_021EDB3C: ; 0x021EDB3C
 	pop {r4, r5, pc}
 	thumb_func_end ov18_021EDB3C
 
-	; file boundary
-	.balign 4, 0
-
 	thumb_func_start ov18_021EDB68
 ov18_021EDB68: ; 0x021EDB68
 	push {r3, r4, r5, r6}
@@ -4287,6 +4025,9 @@ ov18_021EE314: ; 0x021EE314
 _021EE354: .word 0x000018CB
 _021EE358: .word 0x04001050
 	thumb_func_end ov18_021EE314
+
+	// file boundary
+	.balign 4, 0
 
 	thumb_func_start ov18_021EE35C
 ov18_021EE35C: ; 0x021EE35C
