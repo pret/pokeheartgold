@@ -294,7 +294,7 @@ struct PokedexAppData {
     u8 filler_18C5[3];                              // 0x18C5
     s8 unk_18C8;                                    // 0x18C8
     s8 unk_18C9;                                    // 0x18C9
-    u8 unk_18CA;                                    // 0x18CA
+    s8 unk_18CA;                                    // 0x18CA
     PokedexAppData_UnkSub18CC unk_18CC;             // 0x18CC
     PokedexAppData_UnkSub18DC unk_18DC;             // 0x18DC
     PokedexAppData_UnkSub1908 *unk_1908;            // 0x1908
@@ -435,6 +435,7 @@ void ov18_021F0168(PokedexAppData *pokedexApp);
 void ov18_021F018C(PokedexAppData *pokedexApp);
 void ov18_021F021C(PokedexAppData *pokedexApp);
 void ov18_021F03C0(PokedexAppData *pokedexApp);
+void ov18_021F0504(PokedexAppData *pokedexApp, int a1);
 void ov18_021F05E8(PokedexAppData *pokedexApp);
 void ov18_021F0838(PokedexAppData *pokedexApp);
 void ov18_021F0858(PokedexAppData *pokedexApp);
@@ -501,13 +502,21 @@ void ov18_021F3D6C(PokedexAppData *pokedexApp);
 void ov18_021F3D80(PokedexAppData *pokedexApp, int a1);
 void ov18_021F3D98(PokedexAppData *pokedexApp);
 void ov18_021F3E08(PokedexAppData *pokedexApp);
+void ov18_021F0428(PokedexAppData *pokedexApp);
 void ov18_021F4080(PokedexAppData *pokedexApp);
 void ov18_021F4384(PokedexAppData *pokedexApp);
+void ov18_021F463C(PokedexAppData *pokedexApp);
 void ov18_021F49F8(PokedexAppData *pokedexApp);
 void ov18_021F4A50(PokedexAppData *pokedexApp);
 void ov18_021F5DC0(PokedexAppData *pokedexApp);
 void ov18_021F5DE0(PokedexAppData *pokedexApp);
+void ov18_021F619C(PokedexAppData *pokedexApp, s8 a1, s8 a2, int a3);
 int ov18_021F62B4(PokedexAppData *pokedexApp, u32 x, u32 y);
+BOOL ov18_021F63DC(PokedexAppData *pokedexApp, u32 x, u32 y);
+int ov18_021F64F4(PokedexAppData *pokedexApp, int a1);
+int ov18_021F6540(PokedexAppData *pokedexApp, int a1, int a2, int a3);
+void ov18_021F6578(PokedexAppData *pokedexApp, int a1, int a2);
+void ov18_021F65EC(PokedexAppData *pokedexApp);
 int ov18_021F6B00(PokedexAppData *pokedexApp);
 int ov18_021F6BBC(PokedexAppData *pokedexApp, int a1);
 void ov18_021F6DE0(PokedexAppData *pokedexApp, int a1);
