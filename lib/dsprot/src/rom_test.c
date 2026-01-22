@@ -43,9 +43,8 @@ static inline u32 testROM(u32 passRet, u32 failRet) {
 
 EXIT:
     // Erasing read buffer
-    u8 *bufPtr = &romBuf[0];
     for (i = 0; i < ROM_BLOCK_SIZE; i++) {
-        *bufPtr++ = 0;
+        romBuf[i] = 0;
     }
 
     return ret;
