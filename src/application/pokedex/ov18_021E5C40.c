@@ -774,7 +774,7 @@ void ov18_021E6174(void) {
     G2_SetBlendAlpha(0, GX_PLANEMASK_BG0 | GX_PLANEMASK_BG1 | GX_PLANEMASK_BG2 | GX_PLANEMASK_BG3, 6, 10);
 }
 
-void ov18_021E618C(int ev1, int ev2) {
+void ov18_021E618C(u8 ev1, u8 ev2) {
     G2_SetBlendAlpha(GX_PLANEMASK_BG2, GX_PLANEMASK_BG3, ev1, ev2);
 }
 
