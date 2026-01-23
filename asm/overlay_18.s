@@ -10,12 +10,8 @@
 	.extern ov18_021E59A8
 	.extern ov18_021E5E70
 	.extern ov18_021E613C
-	.extern ov18_021E6174
-	.extern ov18_021E618C
 	.extern ov18_021E66EC
 	.extern ov18_021E6714
-	.extern ov18_021E6794
-	.extern ov18_021E67B0
 	.extern ov18_021E67C8
 	.extern ov18_021E6A70
 	.extern ov18_021E6C98
@@ -24,8 +20,6 @@
 	.extern ov18_021E7698
 	.extern ov18_021E800C
 	.extern ov18_021E81A8
-	.extern ov18_021E8528
-	.extern ov18_021E8648
 	.extern ov18_021E8AB0
 	.extern ov18_021E8ACC
 	.extern ov18_021E8AE0
@@ -33,203 +27,9 @@
 	.extern ov18_021E8B18
 	.extern ov18_021E8B24
 	.extern ov18_021E8B5C
-	.extern ov18_021E8BD4
 	.extern ov18_021EC1DC
 
 	.text
-
-	thumb_func_start PokedexApp_MainSeq_78
-PokedexApp_MainSeq_78: ; 0x021ECDC8
-	push {r4, r5, lr}
-	sub sp, #0xc
-	ldr r1, _021ECE88 ; =0x00000868
-	add r5, r0, #0
-	add r4, r5, r1
-	ldrh r2, [r4]
-	cmp r2, #0
-	beq _021ECDDE
-	cmp r2, #1
-	beq _021ECE44
-	b _021ECE80
-_021ECDDE:
-	ldrb r0, [r4, #2]
-	sub r1, #0x18
-	ldr r2, _021ECE8C ; =0x0000F7BE
-	str r0, [sp]
-	mov r0, #0x10
-	str r0, [sp, #4]
-	mov r0, #0
-	str r0, [sp, #8]
-	ldr r0, [r5, r1]
-	mov r1, #1
-	sub r3, r1, #3
-	bl PaletteData_BeginPaletteFade
-	ldrb r0, [r4, #2]
-	mov r1, #4
-	ldr r2, _021ECE90 ; =0x0000FFEF
-	str r0, [sp]
-	mov r0, #0x10
-	str r0, [sp, #4]
-	mov r0, #0
-	str r0, [sp, #8]
-	mov r0, #0x85
-	lsl r0, r0, #4
-	ldr r0, [r5, r0]
-	sub r3, r1, #6
-	bl PaletteData_BeginPaletteFade
-	ldrb r0, [r4, #2]
-	mov r1, #0xa
-	add r3, r1, #0
-	str r0, [sp]
-	mov r0, #0x10
-	str r0, [sp, #4]
-	mov r0, #0
-	str r0, [sp, #8]
-	mov r0, #0x85
-	lsl r0, r0, #4
-	ldr r0, [r5, r0]
-	ldr r2, _021ECE94 ; =0x0000FFFF
-	sub r3, #0xc
-	bl PaletteData_BeginPaletteFade
-	ldrh r0, [r4]
-	mov r1, #0x4e
-	add sp, #0xc
-	add r0, r0, #1
-	strh r0, [r4]
-	ldr r0, _021ECE98 ; =0x0000085C
-	str r1, [r5, r0]
-	mov r0, #3
-	pop {r4, r5, pc}
-_021ECE44:
-	bl ov18_021F0838
-	add r0, r5, #0
-	bl ov18_021F4A50
-	add r0, r5, #0
-	mov r1, #0
-	bl ov18_021E5E70
-	ldr r0, _021ECE88 ; =0x00000868
-	mov r1, #0
-	add r0, r5, r0
-	mov r2, #0x10
-	bl MI_CpuFill8
-	ldr r0, _021ECE9C ; =0x0000185B
-	ldrb r0, [r5, r0]
-	cmp r0, #1
-	bne _021ECE70
-	add sp, #0xc
-	mov r0, #0x44
-	pop {r4, r5, pc}
-_021ECE70:
-	cmp r0, #2
-	bne _021ECE7A
-	add sp, #0xc
-	mov r0, #0x4c
-	pop {r4, r5, pc}
-_021ECE7A:
-	add sp, #0xc
-	mov r0, #0x4f
-	pop {r4, r5, pc}
-_021ECE80:
-	mov r0, #0x4e
-	add sp, #0xc
-	pop {r4, r5, pc}
-	nop
-_021ECE88: .word 0x00000868
-_021ECE8C: .word 0x0000F7BE
-_021ECE90: .word 0x0000FFEF
-_021ECE94: .word 0x0000FFFF
-_021ECE98: .word 0x0000085C
-_021ECE9C: .word 0x0000185B
-	thumb_func_end PokedexApp_MainSeq_78
-
-	thumb_func_start PokedexApp_MainSeq_79
-PokedexApp_MainSeq_79: ; 0x021ECEA0
-	push {r3, r4, lr}
-	sub sp, #0xc
-	ldr r1, _021ECF40 ; =0x00000868
-	add r4, r0, #0
-	ldrb r2, [r4, r1]
-	cmp r2, #0
-	beq _021ECEB4
-	cmp r2, #1
-	beq _021ECF2A
-	b _021ECF3A
-_021ECEB4:
-	ldr r1, _021ECF44 ; =0x000018C5
-	mov r2, #0
-	strb r2, [r4, r1]
-	bl ov18_021F01D4
-	add r0, r4, #0
-	mov r1, #3
-	bl ov18_021E67C8
-	mov r0, #0x10
-	str r0, [sp]
-	mov r0, #0
-	str r0, [sp, #4]
-	str r0, [sp, #8]
-	mov r0, #0x85
-	lsl r0, r0, #4
-	mov r1, #1
-	ldr r0, [r4, r0]
-	ldr r2, _021ECF48 ; =0x0000F7BE
-	sub r3, r1, #3
-	bl PaletteData_BeginPaletteFade
-	mov r0, #0x10
-	str r0, [sp]
-	mov r0, #0
-	str r0, [sp, #4]
-	str r0, [sp, #8]
-	mov r0, #0x85
-	lsl r0, r0, #4
-	mov r1, #4
-	ldr r0, [r4, r0]
-	ldr r2, _021ECF4C ; =0x0000FFEF
-	sub r3, r1, #6
-	bl PaletteData_BeginPaletteFade
-	mov r0, #0x10
-	str r0, [sp]
-	mov r0, #0
-	str r0, [sp, #4]
-	str r0, [sp, #8]
-	mov r0, #0x85
-	lsl r0, r0, #4
-	mov r1, #0xa
-	add r3, r1, #0
-	ldr r0, [r4, r0]
-	ldr r2, _021ECF50 ; =0x0000FFFF
-	sub r3, #0xc
-	bl PaletteData_BeginPaletteFade
-	ldr r0, _021ECF40 ; =0x00000868
-	add sp, #0xc
-	ldrb r1, [r4, r0]
-	add r1, r1, #1
-	strb r1, [r4, r0]
-	mov r1, #0x4f
-	sub r0, #0xc
-	str r1, [r4, r0]
-	mov r0, #3
-	pop {r3, r4, pc}
-_021ECF2A:
-	ldr r0, _021ECF54 ; =0x0000185B
-	mov r2, #3
-	strb r2, [r4, r0]
-	mov r0, #0
-	strb r0, [r4, r1]
-	add sp, #0xc
-	mov r0, #0x50
-	pop {r3, r4, pc}
-_021ECF3A:
-	mov r0, #0x4f
-	add sp, #0xc
-	pop {r3, r4, pc}
-	.balign 4, 0
-_021ECF40: .word 0x00000868
-_021ECF44: .word 0x000018C5
-_021ECF48: .word 0x0000F7BE
-_021ECF4C: .word 0x0000FFEF
-_021ECF50: .word 0x0000FFFF
-_021ECF54: .word 0x0000185B
-	thumb_func_end PokedexApp_MainSeq_79
 
 	thumb_func_start PokedexApp_MainSeq_80
 PokedexApp_MainSeq_80: ; 0x021ECF58

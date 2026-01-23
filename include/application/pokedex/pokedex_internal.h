@@ -291,7 +291,8 @@ struct PokedexAppData {
     u16 curSpecies;                                 // 0x18A2
     u8 seenForms[0x20];                             // 0x18A4
     s8 numSeenForms;                                // 0x18C4
-    u8 filler_18C5[3];                              // 0x18C5
+    u8 unk_18C5;                                    // 0x18C5
+    u8 unk_18C6[2];                                 // 0x18C6
     s8 unk_18C8;                                    // 0x18C8
     s8 unk_18C9;                                    // 0x18C9
     s8 unk_18CA;                                    // 0x18CA
@@ -436,6 +437,7 @@ void ov18_021F0118(PokedexAppData *pokedexApp, int a1);
 void ov18_021F014C(PokedexAppData *pokedexApp);
 void ov18_021F0168(PokedexAppData *pokedexApp);
 void ov18_021F018C(PokedexAppData *pokedexApp);
+void ov18_021F01D4(PokedexAppData *pokedexApp);
 void ov18_021F021C(PokedexAppData *pokedexApp);
 void ov18_021F03C0(PokedexAppData *pokedexApp);
 void ov18_021F03E0(PokedexAppData *pokedexApp);

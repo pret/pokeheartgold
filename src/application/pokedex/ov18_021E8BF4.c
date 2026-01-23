@@ -2822,3 +2822,52 @@ int PokedexApp_MainSeq_77(PokedexAppData *pokedexApp) {
 
     return POKEDEXAPP_MAINSEQ_77;
 }
+
+int PokedexApp_MainSeq_78(PokedexAppData *pokedexApp) {
+    PokedexAppData_UnkSub0868_State09 *r4 = &pokedexApp->unk_0868.state_09;
+
+    switch (r4->unk_0) {
+    case 0:
+        PaletteData_BeginPaletteFade(pokedexApp->paletteData, PLTTBUF_MAIN_BG_F, 0xF7BE, -2, r4->unk_2, 16, RGB_BLACK);
+        PaletteData_BeginPaletteFade(pokedexApp->paletteData, PLTTBUF_MAIN_OBJ_F, 0xFFEF, -2, r4->unk_2, 16, RGB_BLACK);
+        PaletteData_BeginPaletteFade(pokedexApp->paletteData, PLTTBUF_SUB_BG_F | PLTTBUF_SUB_OBJ_F, 0xFFFF, -2, r4->unk_2, 16, RGB_BLACK);
+        ++r4->unk_0;
+        pokedexApp->unk_085C = POKEDEXAPP_MAINSEQ_78;
+        return POKEDEXAPP_MAINSEQ_03;
+    case 1:
+        ov18_021F0838(pokedexApp);
+        ov18_021F4A50(pokedexApp);
+        ov18_021E5E70(pokedexApp, 0);
+        MI_CpuClear8(&pokedexApp->unk_0868, sizeof(pokedexApp->unk_0868));
+        if (pokedexApp->unk_185B == 1) {
+            return POKEDEXAPP_MAINSEQ_68;
+        } else if (pokedexApp->unk_185B == 2) {
+            return POKEDEXAPP_MAINSEQ_76;
+        } else {
+            return POKEDEXAPP_MAINSEQ_79;
+        }
+    }
+
+    return POKEDEXAPP_MAINSEQ_78;
+}
+
+int PokedexApp_MainSeq_79(PokedexAppData *pokedexApp) {
+    switch (pokedexApp->unk_0868.state_10.unk_0) {
+    case 0:
+        pokedexApp->unk_18C5 = 0;
+        ov18_021F01D4(pokedexApp);
+        ov18_021E67C8(pokedexApp, 3);
+        PaletteData_BeginPaletteFade(pokedexApp->paletteData, PLTTBUF_MAIN_BG_F, 0xF7BE, -2, 16, 0, RGB_BLACK);
+        PaletteData_BeginPaletteFade(pokedexApp->paletteData, PLTTBUF_MAIN_OBJ_F, 0xFFEF, -2, 16, 0, RGB_BLACK);
+        PaletteData_BeginPaletteFade(pokedexApp->paletteData, PLTTBUF_SUB_BG_F | PLTTBUF_SUB_OBJ_F, 0xFFFF, -2, 16, 0, RGB_BLACK);
+        ++pokedexApp->unk_0868.state_10.unk_0;
+        pokedexApp->unk_085C = POKEDEXAPP_MAINSEQ_79;
+        return POKEDEXAPP_MAINSEQ_03;
+    case 1:
+        pokedexApp->unk_185B = 3;
+        pokedexApp->unk_0868.state_10.unk_0 = 0;
+        return POKEDEXAPP_MAINSEQ_80;
+    }
+
+    return POKEDEXAPP_MAINSEQ_79;
+}
