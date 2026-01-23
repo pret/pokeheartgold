@@ -1,50 +1,69 @@
 #ifndef POKEHEARTGOLD_VOLTORB_FLIP_INTERNAL_H
 #define POKEHEARTGOLD_VOLTORB_FLIP_INTERNAL_H
 
-#include "voltorb_flip/voltorb_flip_work.h"
-#include "voltorb_flip/voltorb_flip_workflow.h"
+typedef enum VoltorbFlipSpriteID {
+    VF_SPRITE_00,
+    VF_SPRITE_FLIPPING_CARD,
+    VF_SPRITE_02,
+    VF_SPRITE_03,
+    VF_SPRITE_MEMO,
+    VF_SPRITE_TOGGLE_MEMO_VOLTORB,
+    VF_SPRITE_TOGGLE_MEMO_ONE,
+    VF_SPRITE_TOGGLE_MEMO_TWO,
+    VF_SPRITE_TOGGLE_MEMO_THREE,
+    VF_SPRITE_MEMO_CURSOR,
+    VF_SPRITE_10,
+    VF_SPRITE_11,
+    VF_SPRITE_12,
+    VF_SPRITE_NUM,
+} VoltorbFlipSpriteID;
 
-BOOL ov122_021E5BA8(WorkflowEngine *a0, VoltorbFlipAppWork *a1);
-BOOL ov122_021E5BE4(WorkflowEngine *a0, VoltorbFlipAppWork *a1);
-BOOL GenerateBoardAndPrintNewLevel(WorkflowEngine *a0, VoltorbFlipAppWork *a1);
-BOOL PrintYouCanEarnEvenMoreCoins(WorkflowEngine *a0, VoltorbFlipAppWork *a1);
-BOOL ov122_021E5D24(WorkflowEngine *a0, VoltorbFlipAppWork *a1);
-BOOL PrintPlayNewRound(WorkflowEngine *a0, VoltorbFlipAppWork *a1);
-BOOL ov122_021E5DB4(WorkflowEngine *a0, VoltorbFlipAppWork *a1);
-BOOL AwaitMainMenuSelection(WorkflowEngine *a0, VoltorbFlipAppWork *a1);
-BOOL PrintWhichSetOfInfo(WorkflowEngine *a0, VoltorbFlipAppWork *a1);
-BOOL ov122_021E5E34(WorkflowEngine *a0, VoltorbFlipAppWork *a1);
-BOOL AwaitGameInfoSelection(WorkflowEngine *a0, VoltorbFlipAppWork *a1);
-BOOL OpenHowToPlayScreen(WorkflowEngine *a0, VoltorbFlipAppWork *a1);
-BOOL PrintHowToPlayMsg(WorkflowEngine *a0, VoltorbFlipAppWork *a1);
-BOOL CloseTutorialScreen(WorkflowEngine *a0, VoltorbFlipAppWork *a1);
-BOOL OpenHintScreen(WorkflowEngine *a0, VoltorbFlipAppWork *a1);
-BOOL PrintHintMsg(WorkflowEngine *a0, VoltorbFlipAppWork *a1);
-BOOL CloseTutorialScreen(WorkflowEngine *a0, VoltorbFlipAppWork *a1);
-BOOL OpenAboutMemoScreen(WorkflowEngine *a0, VoltorbFlipAppWork *a1);
-BOOL PrintAboutMemoMsg(WorkflowEngine *a0, VoltorbFlipAppWork *a1);
-BOOL CloseTutorialScreen(WorkflowEngine *a0, VoltorbFlipAppWork *a1);
-BOOL RenderBoard(WorkflowEngine *a0, VoltorbFlipAppWork *a1);
-BOOL AwaitBoardInteraction(WorkflowEngine *a0, VoltorbFlipAppWork *a1);
-BOOL ov122_021E6008(WorkflowEngine *a0, VoltorbFlipAppWork *a1);
-BOOL PlaySuspensefulFanfare(WorkflowEngine *a0, VoltorbFlipAppWork *a1);
-BOOL StartCardFlipEffect(WorkflowEngine *a0, VoltorbFlipAppWork *a1);
-BOOL AwaitCardFlipAndResult(WorkflowEngine *a0, VoltorbFlipAppWork *a1);
-BOOL ov122_021E6358(WorkflowEngine *a0, VoltorbFlipAppWork *a1);
-BOOL PlayWinRoundFanfare(WorkflowEngine *a0, VoltorbFlipAppWork *a1);
-BOOL AwardCoins(WorkflowEngine *a0, VoltorbFlipAppWork *a1);
-BOOL ov122_021E64E8(WorkflowEngine *a0, VoltorbFlipAppWork *a1);
-BOOL ov122_021E6594(WorkflowEngine *a0, VoltorbFlipAppWork *a1);
-BOOL ov122_021E65F4(WorkflowEngine *a0, VoltorbFlipAppWork *a1);
-BOOL ov122_021E65FC(WorkflowEngine *a0, VoltorbFlipAppWork *a1);
-BOOL ov122_021E67E0(WorkflowEngine *a0, VoltorbFlipAppWork *a1);
-BOOL ov122_021E66CC(WorkflowEngine *a0, VoltorbFlipAppWork *a1);
-BOOL ov122_021E66FC(WorkflowEngine *a0, VoltorbFlipAppWork *a1);
-BOOL ov122_021E6700(WorkflowEngine *a0, VoltorbFlipAppWork *a1);
-BOOL ov122_021E67DC(WorkflowEngine *a0, VoltorbFlipAppWork *a1);
-BOOL PrintAreYouSureYouWantToQuit(WorkflowEngine *a0, VoltorbFlipAppWork *a1);
-BOOL ov122_021E6900(WorkflowEngine *a0, VoltorbFlipAppWork *a1);
-BOOL AwaitQuitYesNoSelection(WorkflowEngine *a0, VoltorbFlipAppWork *a1);
-BOOL ov122_021E69DC(WorkflowEngine *a0, VoltorbFlipAppWork *a1);
+#include "voltorb_flip/voltorb_flip_app_data.h"
+#include "voltorb_flip/voltorb_flip_tasks.h"
+
+BOOL VoltorbFlipTaskEngine_InitChecks_Begin(VoltorbFlipTaskEngine *taskEngine, VoltorbFlipAppData *voltorbFlip);
+BOOL VoltorbFlipTaskEngine_InitChecks_Main(VoltorbFlipTaskEngine *taskEngine, VoltorbFlipAppData *voltorbFlip);
+BOOL VoltorbFlipTaskEngine_NewRound_Begin(VoltorbFlipTaskEngine *taskEngine, VoltorbFlipAppData *voltorbFlip);
+BOOL VoltorbFlipTaskEngine_NewRound_Main(VoltorbFlipTaskEngine *taskEngine, VoltorbFlipAppData *voltorbFlip);
+BOOL VoltorbFlipTaskEngine_NewRound_TidyUp(VoltorbFlipTaskEngine *taskEngine, VoltorbFlipAppData *voltorbFlip);
+BOOL VoltorbFlipTaskEngine_SelectMainMenu_SetUp(VoltorbFlipTaskEngine *taskEngine, VoltorbFlipAppData *voltorbFlip);
+BOOL VoltorbFlipTaskEngine_SelectMainMenu_Begin(VoltorbFlipTaskEngine *taskEngine, VoltorbFlipAppData *voltorbFlip);
+BOOL VoltorbFlipTaskEngine_SelectMainMenu_Main(VoltorbFlipTaskEngine *taskEngine, VoltorbFlipAppData *voltorbFlip);
+BOOL VoltorbFlipTaskEngine_SelectGameInfo_SetUp(VoltorbFlipTaskEngine *taskEngine, VoltorbFlipAppData *voltorbFlip);
+BOOL VoltorbFlipTaskEngine_SelectGameInfo_Begin(VoltorbFlipTaskEngine *taskEngine, VoltorbFlipAppData *voltorbFlip);
+BOOL VoltorbFlipTaskEngine_SelectGameInfo_Main(VoltorbFlipTaskEngine *taskEngine, VoltorbFlipAppData *voltorbFlip);
+BOOL VoltorbFlipTaskEngine_HowToPlayScreen_SetUp(VoltorbFlipTaskEngine *taskEngine, VoltorbFlipAppData *voltorbFlip);
+BOOL VoltorbFlipTaskEngine_HowToPlayScreen_Main(VoltorbFlipTaskEngine *taskEngine, VoltorbFlipAppData *voltorbFlip);
+BOOL VoltorbFlipTaskEngine_TutorialScreens_TidyUp(VoltorbFlipTaskEngine *taskEngine, VoltorbFlipAppData *voltorbFlip);
+BOOL VoltorbFlipTaskEngine_HintScreen_SetUp(VoltorbFlipTaskEngine *taskEngine, VoltorbFlipAppData *voltorbFlip);
+BOOL VoltorbFlipTaskEngine_HintScreen_Main(VoltorbFlipTaskEngine *taskEngine, VoltorbFlipAppData *voltorbFlip);
+BOOL VoltorbFlipTaskEngine_TutorialScreens_TidyUp(VoltorbFlipTaskEngine *taskEngine, VoltorbFlipAppData *voltorbFlip);
+BOOL VoltorbFlipTaskEngine_AboutMemoScreen_SetUp(VoltorbFlipTaskEngine *taskEngine, VoltorbFlipAppData *voltorbFlip);
+BOOL VoltorbFlipTaskEngine_AboutMemoScreen_Main(VoltorbFlipTaskEngine *taskEngine, VoltorbFlipAppData *voltorbFlip);
+BOOL VoltorbFlipTaskEngine_TutorialScreens_TidyUp(VoltorbFlipTaskEngine *taskEngine, VoltorbFlipAppData *voltorbFlip);
+BOOL VoltorbFlipTaskEngine_RenderBoard_Main(VoltorbFlipTaskEngine *taskEngine, VoltorbFlipAppData *voltorbFlip);
+BOOL VoltorbFlipTaskEngine_BoardInteraction_Main(VoltorbFlipTaskEngine *taskEngine, VoltorbFlipAppData *voltorbFlip);
+BOOL VoltorbFlipTaskEngine_BoardInteraction_TidyUp(VoltorbFlipTaskEngine *taskEngine, VoltorbFlipAppData *voltorbFlip);
+BOOL VoltrbFlipWorkflow_CardFlipEffect_SetUp(VoltorbFlipTaskEngine *taskEngine, VoltorbFlipAppData *voltorbFlip);
+BOOL VoltorbFlipTaskEngine_CardFlipEffect_Begin(VoltorbFlipTaskEngine *taskEngine, VoltorbFlipAppData *voltorbFlip);
+BOOL VoltorbFlipTaskEngine_CardFlipEffect_Main(VoltorbFlipTaskEngine *taskEngine, VoltorbFlipAppData *voltorbFlip);
+BOOL VoltorbFlipTaskEngine_CardFlipEffect_End(VoltorbFlipTaskEngine *taskEngine, VoltorbFlipAppData *voltorbFlip);
+BOOL VoltorbFlipTaskEngine_WinRound_Main(VoltorbFlipTaskEngine *taskEngine, VoltorbFlipAppData *voltorbFlip);
+BOOL VoltorbFlipTaskEngine_AwardCoins_Main(VoltorbFlipTaskEngine *taskEngine, VoltorbFlipAppData *voltorbFlip);
+BOOL VoltorbFlipTaskEngine_RevealBoard_Main(VoltorbFlipTaskEngine *taskEngine, VoltorbFlipAppData *voltorbFlip);
+BOOL VoltorbFlipTaskEngine_RevealBoard_End(VoltorbFlipTaskEngine *taskEngine, VoltorbFlipAppData *voltorbFlip);
+BOOL VoltorbFlipTaskEngine_MemoTouch_SetUp(VoltorbFlipTaskEngine *taskEngine, VoltorbFlipAppData *voltorbFlip);
+BOOL VoltorbFlipTaskEngine_MemoTouch_Run(VoltorbFlipTaskEngine *taskEngine, VoltorbFlipAppData *voltorbFlip);
+BOOL VoltorbFlipTaskEngine_Memo_TidyUp(VoltorbFlipTaskEngine *taskEngine, VoltorbFlipAppData *voltorbFlip);
+BOOL VoltorbFlipTaskEngine_MemoButtons_SetUp(VoltorbFlipTaskEngine *taskEngine, VoltorbFlipAppData *voltorbFlip);
+BOOL VoltorbFlipTaskEngine_MemoButtons_Begin(VoltorbFlipTaskEngine *taskEngine, VoltorbFlipAppData *voltorbFlip);
+BOOL VoltorbFlipTaskEngine_MemoTouch_Main(VoltorbFlipTaskEngine *taskEngine, VoltorbFlipAppData *voltorbFlip);
+BOOL VoltorbFlipTaskEngine_MemoTouch_End(VoltorbFlipTaskEngine *taskEngine, VoltorbFlipAppData *voltorbFlip);
+BOOL VoltorbFlipTaskEngine_QuitRound_SetUp(VoltorbFlipTaskEngine *taskEngine, VoltorbFlipAppData *voltorbFlip);
+BOOL VoltorbFlipTaskEngine_QuitRound_Begin(VoltorbFlipTaskEngine *taskEngine, VoltorbFlipAppData *voltorbFlip);
+BOOL VoltorbFlipTaskEngine_QuitRound_Run(VoltorbFlipTaskEngine *taskEngine, VoltorbFlipAppData *voltorbFlip);
+BOOL VoltorbFlipTaskEngine_QuitRound_End(VoltorbFlipTaskEngine *taskEngine, VoltorbFlipAppData *voltorbFlip);
+
+extern const VoltorbFlipTasks sVoltorbFlipWorkflows;
 
 #endif // POKEHEARTGOLD_VOLTORB_FLIP_INTERNAL_H

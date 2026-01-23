@@ -9,6 +9,7 @@
 #include "text.h"
 #include "unk_02005D10.h"
 #include "unk_0200FA24.h"
+#include "unk_02013534.h"
 #include "unk_0208805C.h"
 
 static void PokegearMap_InitBGs(PokegearMapAppData *mapApp);
@@ -721,7 +722,7 @@ static void PokegearMap_CreateObjectsManager(PokegearMapAppData *mapApp) {
     PokegearApp_CreateSpriteManager(mapApp->pokegear, GEAR_APP_MAP);
     mapApp->objManager = PokegearObjectsManager_Create(PGMAP_SPRITE_MAX, mapApp->heapID);
     G2dRenderer_SetSubSurfaceCoords(SpriteSystem_GetRenderer(mapApp->pokegear->spriteSystem), 0, FX32_CONST(240));
-    mapApp->unk_03C = sub_02013534(4, mapApp->heapID);
+    mapApp->unk_03C = FontSystem_NewInit(4, mapApp->heapID);
 }
 
 static void PokegearMap_DestroyObjectsManager(PokegearMapAppData *mapApp) {
@@ -879,15 +880,15 @@ static void PokegearMap_CreateMarkingsECWordTextOBJs(PokegearMapAppData *mapApp)
     size = sub_02013948(mapApp->unk_040, NNS_G2D_VRAM_TYPE_2DMAIN);
     AddTextPrinterParameterizedWithColor(&mapApp->windows[8], 0, mapApp->regionNameStrings[1], 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
 
-    template.unk_00 = mapApp->unk_03C;
+    template.fontSystem = mapApp->unk_03C;
     template.window = &mapApp->windows[8];
     template.spriteList = SpriteManager_GetSpriteList(mapApp->pokegear->spriteManager);
     template.plttResourceProxy = SpriteManager_FindPlttResourceProxy(mapApp->pokegear->spriteManager, 0);
     template.unk_20 = 0;
     template.unk_24 = 3;
-    template.unk_18 = 4;
-    template.unk_1C = -6;
-    template.unk_28 = 1;
+    template.x = 4;
+    template.y = -6;
+    template.vram = 1;
     template.heapID = mapApp->heapID;
 
     for (i = 0; i < 4; ++i) {

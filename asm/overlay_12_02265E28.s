@@ -14,10 +14,10 @@ ov12_02265E28: ; 0x02265E28
 	bl NARC_New
 	add r4, r0, #0
 	ldr r0, [r5, #4]
-	bl BattleSystem_GetSpriteRenderer
+	bl BattleSystem_GetSpriteSystem
 	str r0, [sp, #0x24]
 	ldr r0, [r5, #4]
-	bl BattleSystem_GetGfxHandler
+	bl BattleSystem_GetSpriteManager
 	str r0, [sp, #0x20]
 	ldr r0, [r5, #4]
 	bl ov12_0223B52C
@@ -132,10 +132,10 @@ ov12_02265F34: ; 0x02265F34
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #4]
-	bl BattleSystem_GetSpriteRenderer
+	bl BattleSystem_GetSpriteSystem
 	add r5, r0, #0
 	ldr r0, [r4, #4]
-	bl BattleSystem_GetGfxHandler
+	bl BattleSystem_GetSpriteManager
 	add r1, r0, #0
 	add r0, r5, #0
 	ldrb r3, [r4, #8]
@@ -171,7 +171,7 @@ ov12_02265F7C: ; 0x02265F7C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #4]
-	bl BattleSystem_GetGfxHandler
+	bl BattleSystem_GetSpriteManager
 	add r4, r0, #0
 	ldrb r0, [r5, #8]
 	cmp r0, #0

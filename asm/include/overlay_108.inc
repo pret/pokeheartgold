@@ -78,7 +78,7 @@
 .public IsPaletteFadeFinished
 .public sub_0200FBDC
 .public sub_0200FBF4
-.public sub_02013534
+.public FontSystem_NewInit
 .public sub_020135AC
 .public TextOBJ_SetSpritesDrawFlag
 .public TextOBJ_SetPaletteNum

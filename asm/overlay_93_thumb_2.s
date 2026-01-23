@@ -4617,7 +4617,7 @@ ov93_02261FB0: ; 0x02261FB0
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4]
-	bl sub_02013660
+	bl FontOAM_Delete
 	add r0, r4, #4
 	bl sub_02021B5C
 	mov r0, #0

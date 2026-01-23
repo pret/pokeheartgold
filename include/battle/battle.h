@@ -444,7 +444,7 @@ typedef struct BattleHpBar {
     };
     ManagedSprite *boxObj;
     ManagedSprite *arrowObj;
-    BattleSystem *bsys;
+    BattleSystem *battleSystem;
     SysTask *unk10;
     Window unk14;
     u8 battlerId;
@@ -497,7 +497,7 @@ typedef struct OpponentData {
 
 typedef struct UnkBattleSystemSub17C {
     ManagedSprite *unk0;
-    BattleSystem *bsys;
+    BattleSystem *battleSystem;
     u8 unk8;
     u8 unk9;
     s16 unkA;
@@ -517,6 +517,8 @@ typedef struct UnkBattleSystemSub220 {
     int unk4;
     int unk8;
 } UnkBattleSystemSub220;
+
+typedef struct BattleInput BattleInput;
 
 struct BattleSystem {
     u32 *unk0;
@@ -551,7 +553,7 @@ struct BattleSystem {
     u8 trainerGender[4];
     Trainer trainers[4];
     UnkBattleSystemSub17C unk17C[2]; // Battle Background..?
-    u32 *unk19C;
+    BattleInput *battleInput;
     u32 *unk1A0[2];
     BattleNumberPrinter *hpNumPrinter;
     BattleNumberPrinter *levelNumPrinter;
@@ -559,7 +561,7 @@ struct BattleSystem {
     Options *options;
     u32 *unk1B8;
     void *unk1BC;
-    u32 *unk1C0;
+    u8 *unk1C0;
     u32 *unk1C4;
     void *unk1C8; // related to animations
     u32 *unk1CC;
@@ -589,7 +591,7 @@ struct BattleSystem {
     u8 criticalHpMusic : 2;
     u8 criticalHpMusicDelay : 3;
     Terrain terrain;
-    int unk2404;
+    int backgroundId;
     int location;
     u32 battleSpecial;
     int timezone; // might be timeOfDay? unclear
@@ -624,12 +626,12 @@ struct BattleSystem {
     u32 unk2478;
     SysTask *unk247C;
     u8 chatotVoiceParam[4];
-    u32 unk2488;
+    Pokemon *bugContestCaughtMon;
     u8 unk248C[4];
 };
 
 struct GetterWork {
-    BattleSystem *bsys;
+    BattleSystem *battleSystem;
     BattleContext *ctx;
     u32 unk8;
     u32 unkC[2];
@@ -672,5 +674,7 @@ typedef struct BattleItem {
     u8 page;
     u8 monIndex;
 } BattleItem;
+
+typedef struct BattleCursorPosition BattleCursorPosition;
 
 #endif

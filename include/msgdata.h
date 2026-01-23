@@ -21,6 +21,7 @@ typedef struct _MAT {
     MAT_ENTRY alloc[1];
 } MAT;
 
+// TODO: Rename MsgData -> MessageLoader to be in sync with pokeplat repository
 typedef struct MsgData {
     u16 type;
     u16 heapID;

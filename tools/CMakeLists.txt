@@ -2,6 +2,7 @@ cmake_minimum_required (VERSION 3.15)
 project(PokeHeartGold_tools)
 set(CMAKE_C_COMPILER gcc)
 set(CMAKE_CXX_COMPILER g++)
+find_package(PNG REQUIRED)
 
 file(GLOB TOOLDIRS *)
 list(REMOVE_ITEM TOOLDIRS ${CMAKE_CURRENT_SOURCE_DIR}/CMakeLists.txt ${CMAKE_CURRENT_SOURCE_DIR}/mwccarm ${CMAKE_CURRENT_SOURCE_DIR}/asm_processor ${CMAKE_CURRENT_SOURCE_DIR}/bin ${CMAKE_CURRENT_SOURCE_DIR}/py_scripts ${CMAKE_CURRENT_SOURCE_DIR}/ntr_merge_elf ${CMAKE_CURRENT_SOURCE_DIR}/m2ctx)
@@ -17,3 +18,4 @@ foreach(TOOLDIR IN LISTS TOOLDIRS)
 endforeach()
 
 target_include_directories(jsonproc PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/jsonproc)
+target_link_libraries(nitrogfx PRIVATE PNG::PNG)

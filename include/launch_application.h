@@ -64,6 +64,13 @@ typedef enum PocketType {
     POCKET_TYPE_BERRIES,
 } PocketType;
 
+typedef struct UnkStruct_0203FC14 {
+    FieldSystem *fieldSystem;
+    SaveData *saveData;
+    int unk8;
+    u8 unkC;
+} UnkStruct_0203FC14;
+
 struct UnkStruct_ScrCmd230 {
     u8 filler_00[0x30];
     u8 unk_30[6];

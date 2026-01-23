@@ -3464,7 +3464,7 @@ ov05_0221D5DC: ; 0x0221D5DC
 	ldr r1, [r4]
 	mov r0, #8
 	ldr r1, [r1, #0x24]
-	bl sub_02013534
+	bl FontSystem_NewInit
 	ldr r1, _0221D658 ; =0x00000B44
 	str r0, [r4, r1]
 	ldr r2, [r4]
@@ -3557,7 +3557,7 @@ ov05_0221D690: ; 0x0221D690
 	add r5, r7, #0
 _0221D6A4:
 	ldr r0, [r5, r6]
-	bl sub_02013660
+	bl FontOAM_Delete
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #4

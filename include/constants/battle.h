@@ -558,13 +558,6 @@ typedef enum Terrain {
 #define AI_DOUBLES (1 << 7)
 #define AI_29      (1 << 29)
 
-// Action Input Consts
-#define BATTLE_INPUT_FIGHT   1
-#define BATTLE_INPUT_ITEM    2
-#define BATTLE_INPUT_POKEMON 3
-#define BATTLE_INPUT_RUN     4
-#define BATTLE_INPUT_CANCEL  0xFF
-
 // Multi hit flags
 #define MULTIHIT_SKIP_OBEDIENCE_CHECK    (1 << 0)
 #define MULTIHIT_SKIP_TYPE_CHART_CHECK   (1 << 1)

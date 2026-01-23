@@ -234,8 +234,8 @@
 .public ov07_02234B5C
 .public ov07_022377DC
 .public ov07_022377F4
-.public BattleSystem_GetSpriteRenderer
-.public BattleSystem_GetGfxHandler
+.public BattleSystem_GetSpriteSystem
+.public BattleSystem_GetSpriteManager
 .public BattleSystem_GetPaletteData
 .public ov12_0223BB88
 .public ov12_0223C1C4

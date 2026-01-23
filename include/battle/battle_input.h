@@ -6,43 +6,46 @@
 #include "battle/battle_system.h"
 
 #include "bg_window.h"
+#include "obj_char_transfer.h"
 #include "sys_task_api.h"
+#include "touchscreen.h"
+#include "unk_02013534.h"
 
-typedef struct BattleInputMainScreen {
+typedef struct BattleInputMainMenu {
     u8 battlerType;
     u8 battlerId;
     u8 selectedMon;
-    u8 unk3;
+    u8 monIconStatus;
     s16 hp;
     u16 maxHp;
-    u8 cancelRun;
+    u8 cancelRunDisplay;
     u8 unused[3];
-} BattleInputMainScreen;
+} BattleInputMainMenu;
 
-typedef struct BattleInputFightScreen {
+typedef struct BattleInputFightMenu {
     u16 moveNo[4];
     u8 pp[4];
     u8 ppMax[4];
     u8 battlerType;
-} BattleInputFightScreen;
+} BattleInputFightMenu;
 
-typedef struct BattleInputTargetScreen {
+typedef struct BattleInputTargetMenu {
     TargetPokemon targetMons[4];
     u8 battlerType;
     u8 selectionType;
-} BattleInputTargetScreen;
+} BattleInputTargetMenu;
 
-typedef struct BattleInputYesNoScreen {
+typedef struct BattleInputTwoOptionMenu {
     u16 moveNo;
     u16 unused;
-} BattleInputYesNoScreen;
+} BattleInputTwoOptionMenu;
 
-typedef union BattleInputScreen {
-    BattleInputMainScreen main;
-    BattleInputFightScreen fight;
-    BattleInputTargetScreen target;
-    BattleInputYesNoScreen yesNo;
-} BattleInputScreen;
+typedef union BattleInputMenu {
+    BattleInputMainMenu main;
+    BattleInputFightMenu fight;
+    BattleInputTargetMenu target;
+    BattleInputTwoOptionMenu twoOption;
+} BattleInputMenu;
 
 typedef struct BattleInput_UnkSub14 {
     void *unk0;
@@ -56,45 +59,55 @@ typedef struct BattleInputMove {
     u16 ppMax[4];
 } BattleInputMove;
 
-typedef struct BattleInput_UnkSub54_Unk28 {
+typedef struct BattleInputMoveMemory_DisplayObj {
     Window window;
-    u16 unkC;
-    u16 unkE;
-} BattleInput_UnkSub54_Unk28;
+    u16 charLength;
+    u16 fontLength;
+} BattleInputMoveMemory_DisplayObj;
 
-typedef struct BattleInput_UnkSub54 {
+typedef struct BattleInputMoveMemory {
     BattleInputMove move;
     u16 *typeIcon[4];
-    BattleInput_UnkSub54_Unk28 unkMove[4];
-    BattleInput_UnkSub54_Unk28 unkPp[4];
-    BattleInput_UnkSub54_Unk28 unkPpMax[4];
-} BattleInput_UnkSub54;
+    BattleInputMoveMemory_DisplayObj moveDisplay[4];
+    BattleInputMoveMemory_DisplayObj ppDisplay[4];
+    BattleInputMoveMemory_DisplayObj ppMaxDisplay[4];
+} BattleInputMoveMemory;
 
-typedef struct BattleInput_UnkSub578_Unk4 {
-    u32 unk0;
-    u32 unk4;
-    u16 type;
-    u16 unkA;
-} BattleInput_UnkSub578_Unk4;
+typedef struct BattleInputTextObject {
+    TextOBJ *textObj;
+    UnkStruct_02021AC8 unk4;
+    u16 fontLength;
+} BattleInputTextObject;
 
-typedef struct BattleInput_UnkSub578 {
-    void *unk0;
-    BattleInput_UnkSub578_Unk4 unk4;
-    u16 unk20;
-} BattleInput_UnkSub578;
+typedef struct BattleMenuSlideIn {
+    BattleInput *battleInput;
+    SysTask *vblankTask;
+    s16 x;
+    s16 y;
+    s16 xSet; // 255 - (x / 100), used in callback to set the x position explicitly
+    s16 ySet; // 40 - (y / 100)
+    s16 unk_10;
+    u8 battlerId;
+    u8 state;
+} BattleMenuSlideIn;
 
-typedef struct BattleInput_UnkSub6E0 {
+typedef struct BallGaugeAnimation {
     s16 xOffset;
-    u8 unk3;
+    u8 percentExpToNextLevel;
     u8 state;
     u8 animationType;
     u8 delay;
     u8 count;
     u8 countMax;
     u8 loop;
-} BattleInput_UnkSub6E0;
+} BallGaugeAnimation;
 
-typedef struct BattleInputEffect {
+typedef struct S16Pos {
+    s16 x;
+    s16 y;
+} S16Pos;
+
+typedef struct BattleInputFeedback {
     s16 state;
     s16 delay;
     union {
@@ -105,17 +118,16 @@ typedef struct BattleInputEffect {
             int unk4;
         } move;
         struct {
-            s16 *unk4;
+            const s16 *screenOffsets;
             void *unk8;
             int ret;
             u8 unk10;
-            u8 unk11;
-            u8 unk12;
-            u8 unk13;
-            u8 unk14;
-            s16 x;
-            s16 y;
-        } unk;
+            u8 textObjId;
+            u8 pokemonIconIndex;
+            u8 frameType;
+            u8 shouldDeleteAfter;
+            S16Pos pos;
+        } button;
         struct {
             void *unk4[4];
             void *unk14;
@@ -123,9 +135,13 @@ typedef struct BattleInputEffect {
             void *unk1C;
             int ret;
         } monSelect;
+        struct {
+            s16 *unk4;
+            TouchscreenHitbox *unk8;
+        } unkBugContest;
         s16 unk4[2];
     };
-} BattleInputEffect;
+} BattleInputFeedback;
 
 typedef struct BattleInputColor {
     int ret;
@@ -135,12 +151,12 @@ typedef struct BattleInputColor {
     u8 pal;
 } BattleInputColor;
 
-typedef struct BattleInputCurosrData {
+typedef struct BattleMenuCursor {
     u8 enabled;
-    u8 menuX;
-    u8 menuY;
+    s8 menuY;
+    s8 menuX;
     u8 unused;
-} BattleInputCurosrData;
+} BattleMenuCursor;
 
 typedef struct BattleInputTutorial {
     BattleFinger *finger;
@@ -150,63 +166,81 @@ typedef struct BattleInputTutorial {
 } BattleInputTutorial;
 
 // At somepoint here my counting was off so some of the listed offsets may be wrong. Due to it being a big and poorly put together struct, it's difficult to find out where that is
-typedef struct BattleInput {
-    BattleSystem *bsys;
-    u8 *unk4;
+struct BattleInput {
+    BattleSystem *battleSystem;
+    u8 *unk4; // when non-null, allows for keyPressed to be set to unk4[0]; heldKeys?
     SysTask *ballTask;
-    SysTask *unkC;
+    SysTask *feedbackTask;
     SysTask *unk10;
     BattleInput_UnkSub14 unk14;
-    BattleInputScreen screen;
+    BattleInputMenu menu;
     u16 *screenBuffer[7];
     u16 *paletteBuffer;
     u16 *bgPalNormal;
     u16 *bgPalTouch;
-    SysTask *bgTask;
-    BattleInput_UnkSub54 unk54[4];
-    void *unk574;
-    BattleInput_UnkSub578 unk578[13];
-    void *unk67C;
-    void *unk680[6];
-    void *unk698[6];
-    void *unk6A0[4];
-    void *unk6B0[4];
-    void *unk6C0[4];
-    SysTask *unk6D0[4];
-    BattleInput_UnkSub6E0 unk6E0;
-    SysTask *unk6E8;
-    u8 unkFillerA[0x30];
-    u8 unk6EC;
-    u8 unk6ED;
-    u8 unk6EE;
-    s8 unk6EF;
-    u8 unk6F0;
+    SysTask *bgTask;                     // Handles the subscreen background palette update; only ever set to Task_BattleMenuMessageWaitForTouchResponse
+    BattleInputMoveMemory moveMemory[4]; // Holds the move display info for ALL the currently active pokemon
+    void *fontSystem;
+    BattleInputTextObject textObj[13];
+    void *unk5B8;
+    ManagedSprite *spriteBallGauge[6];
+    ManagedSprite *spriteBallGaugeOpponent[6];
+    ManagedSprite *spriteTypeIcons[4];
+    ManagedSprite *spriteCategoryIcons[4]; // Never gets set
+    ManagedSprite *spritePokemonIcons[4];
+    SysTask *taskAnimatePokemonIcon[4];
+    BallGaugeAnimation ballGaugeAnimation[6];
+    SysTask *unused_664;
+    u8 unused_668;
+    u8 unused_669;
+    u8 battlerType;
+    s8 curMenuId;
+    u8 monTargetType;
     u8 gender;
-    u8 invalidTouch;
-    u8 unk6F3;
-    u8 unk6F4;
-    s16 unk6F5;
-    u8 unk6F7;
-    s16 unk6F8;
-    SysTask *unk6FC;
-    BattleInputEffect unk700;
+    u8 isTouchDisabled;
+    u8 unk66F; // true when cancel is displayed, false when run is displayed
+    u8 unk670;
+    s16 unk671;
+    u8 fadeDir;
+    s16 fadeCur;
+    SysTask *fadeTask;
+    BattleInputFeedback feedback;
     BattleInputColor color;
-    s32 unk710;
-    s32 unk714;
-    s32 unk718;
+    s32 scrollXEdge;
+    s32 scrollXSpeed;
+    s32 scrollXEnd;
     BattleCursor *cursor;
-    BattleInputCurosrData cursorData;
-    u8 downKey;
-    u8 cancelRun;
+    BattleMenuCursor menuCursor;
+    u8 keyPressed;
+    u8 cancelRunDisplay;
     BattleInputTutorial tutorial;
-    u8 unkFiller[0xc];
-} BattleInput;
-void ov12_0226604C(BgConfig *config);
-void ov12_022660A8(BgConfig *config);
+    ManagedSprite *spriteCaughtBugIcon;
+    ManagedSprite *spriteBugNet;
+    ManagedSprite *spriteSportBall;
+};
 
-// static functions
-BattleInput *BattleInput_New();
-void ov12_022698C4(SysTask *task, void *data);
-void ov12_02269954(SysTask *task, void *data);
+BattleInput *BattleInput_New(void);
+void BgConfig_InitBattleMenuBackgrounds(BgConfig *config);
+void BgConfig_CleanupBattleMenuBackgrounds(BgConfig *config);
+void *BattleInput_NewInit(NARC *a0, NARC *a1, BattleSystem *battleSystem, u32 gender, u8 *a4);
+void BattleInput_Free(BattleInput *battleInput);
+void BattleInput_LoadDefaultResources(BattleInput *battleInput);
+void BattleInput_ChangeMenu(NARC *narc0, NARC *narc1, BattleInput *battleInput, int menuId, int a4, int *a5);
+void BattleInput_LoadBallGaugeResources(NARC *narc, BattleInput *battleInput);
+void BattleInput_SetPartyExpPercents(BattleInput *battleInput, u8 *a1);
+void BattleInput_UpdateBallGaugeAnimation(BattleInput *battleInput, u8 *a1, u8 *a2);
+void BattleInput_EnableBallGauge(BattleInput *battleInput);
+void BattleInput_DisableBallGauge(BattleInput *battleInput);
+int BattleInput_CheckTouch(BattleInput *battleInput);
+BOOL BattleInput_CheckFeedbackDone(BattleInput *battleInput);
+int ov12_02266C84(int moveRange, int battlerId);
+void BattleInput_StartMenuScrollHorizontalTask(BattleInput *battleInput, int xSpeed, int xEnd);
+void BattleInput_LoadFightMenuText(BattleInput *battleInput, int battlerId, const BattleInputMove *moveDisplay);
+void BattleInput_Deadstriped_022698AC(BattleInput *battleInput, int unused);
+int ov12_022698B0(BattleInput *battleInput);
+int BattleInput_GetKeyPressed(BattleInput *battleInput);
+void BattleInput_SetKeyPressed(BattleInput *battleInput, int key);
+void BattleInput_PrintSystemMessage(BattleInput *battleInput, int index);
+u8 BattleInput_GetCancelRunFlag(BattleInput *battleInput);
 
 #endif

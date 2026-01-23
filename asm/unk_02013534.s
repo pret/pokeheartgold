@@ -13,8 +13,8 @@ _020F5F2D:
 
 	.text
 
-	thumb_func_start sub_02013534
-sub_02013534: ; 0x02013534
+	thumb_func_start FontSystem_NewInit
+FontSystem_NewInit: ; 0x02013534
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r7, r1, #0
@@ -72,7 +72,7 @@ _02013594:
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end sub_02013534
+	thumb_func_end FontSystem_NewInit
 
 	thumb_func_start sub_020135AC
 sub_020135AC: ; 0x020135AC
@@ -162,8 +162,8 @@ _020135F2:
 	.balign 4, 0
 	thumb_func_end sub_020135D8
 
-	thumb_func_start sub_02013660
-sub_02013660: ; 0x02013660
+	thumb_func_start FontOAM_Delete
+FontOAM_Delete: ; 0x02013660
 	push {r4, lr}
 	add r4, r0, #0
 	bne _0201366A
@@ -181,7 +181,7 @@ _02013674:
 	add r0, r4, #0
 	bl sub_02013AC0
 	pop {r4, pc}
-	thumb_func_end sub_02013660
+	thumb_func_end FontOAM_Delete
 
 	thumb_func_start sub_02013688
 sub_02013688: ; 0x02013688
@@ -656,10 +656,10 @@ _0201396E:
 
 	thumb_func_start TextOBJ_Destroy
 TextOBJ_Destroy: ; 0x020139C8
-	ldr r3, _020139CC ; =sub_02013660
+	ldr r3, _020139CC ; =FontOAM_Delete
 	bx r3
 	.balign 4, 0
-_020139CC: .word sub_02013660
+_020139CC: .word FontOAM_Delete
 	thumb_func_end TextOBJ_Destroy
 
 	thumb_func_start TextOBJ_CopyFromBGWindow

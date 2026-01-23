@@ -3523,7 +3523,7 @@ ov18_021E7564: ; 0x021E7564
 	add r0, r0, #4
 	ldr r0, [r6, r0]
 	mov r1, #1
-	bl sub_02019FD0
+	bl GridInputHandler_ClearEnabledFlag
 	ldr r5, _021E7624 ; =_021F9774
 	ldr r0, [r6, #4]
 	mov r1, #2
@@ -34344,7 +34344,7 @@ ov18_021F6DE0: ; 0x021F6DE0
 	ldr r1, _021F6E20 ; =_021FB9F0
 	ldr r2, _021F6E24 ; =_021FB688
 	add r3, r5, #0
-	bl sub_02019BA4
+	bl GridInputHandler_Create
 	ldr r1, _021F6E28 ; =0x00001864
 	mov r2, #1
 	str r0, [r5, r1]
@@ -34378,7 +34378,7 @@ ov18_021F6E2C: ; 0x021F6E2C
 	bne _021F6E4C
 	ldr r0, _021F6E54 ; =0x00001864
 	ldr r0, [r4, r0]
-	bl sub_02019D18
+	bl GridInputHandler_HandleInput_AllowHold
 _021F6E4C:
 	pop {r4, pc}
 	nop
@@ -34393,11 +34393,11 @@ ov18_021F6E58: ; 0x021F6E58
 	ldr r0, _021F6E90 ; =0x00001864
 	add r4, r1, #0
 	ldr r0, [r5, r0]
-	bl sub_0201A018
+	bl GridInputHandler_GetDpadBox
 	add r1, sp, #0
 	add r1, #1
 	add r2, sp, #0
-	bl sub_02020A0C
+	bl DpadMenuBox_GetPosition
 	mov r0, #0x67
 	add r2, sp, #0
 	lsl r0, r0, #4
@@ -34454,7 +34454,7 @@ ov18_021F6EC0: ; 0x021F6EC0
 	ldr r1, _021F6EFC ; =_021FB968
 	ldr r2, _021F6F00 ; =_021FB668
 	add r3, r4, #0
-	bl sub_02019BA4
+	bl GridInputHandler_Create
 	ldr r1, _021F6F04 ; =0x00001864
 	mov r2, #1
 	str r0, [r4, r1]
@@ -34491,7 +34491,7 @@ ov18_021F6F08: ; 0x021F6F08
 _021F6F24:
 	ldr r0, _021F6F34 ; =0x00001864
 	ldr r0, [r4, r0]
-	bl sub_02019D18
+	bl GridInputHandler_HandleInput_AllowHold
 	pop {r4, pc}
 	nop
 _021F6F30: .word gSystem
@@ -34505,11 +34505,11 @@ ov18_021F6F38: ; 0x021F6F38
 	ldr r0, _021F6F70 ; =0x00001864
 	add r4, r1, #0
 	ldr r0, [r5, r0]
-	bl sub_0201A018
+	bl GridInputHandler_GetDpadBox
 	add r1, sp, #0
 	add r1, #1
 	add r2, sp, #0
-	bl sub_02020A0C
+	bl DpadMenuBox_GetPosition
 	mov r0, #0x67
 	add r2, sp, #0
 	lsl r0, r0, #4
@@ -34566,7 +34566,7 @@ ov18_021F6FA0: ; 0x021F6FA0
 	ldr r1, _021F6FDC ; =_021FBC34
 	ldr r2, _021F6FE0 ; =_021FB6A8
 	add r3, r4, #0
-	bl sub_02019BA4
+	bl GridInputHandler_Create
 	ldr r1, _021F6FE4 ; =0x00001864
 	mov r2, #1
 	str r0, [r4, r1]
@@ -34603,7 +34603,7 @@ ov18_021F6FE8: ; 0x021F6FE8
 _021F7004:
 	ldr r0, _021F7014 ; =0x00001864
 	ldr r0, [r4, r0]
-	bl sub_02019D18
+	bl GridInputHandler_HandleInput_AllowHold
 	pop {r4, pc}
 	nop
 _021F7010: .word gSystem
@@ -34617,11 +34617,11 @@ ov18_021F7018: ; 0x021F7018
 	ldr r0, _021F705C ; =0x00001864
 	add r4, r1, #0
 	ldr r0, [r5, r0]
-	bl sub_0201A018
+	bl GridInputHandler_GetDpadBox
 	add r1, sp, #0
 	add r1, #1
 	add r2, sp, #0
-	bl sub_02020A0C
+	bl DpadMenuBox_GetPosition
 	mov r0, #0x67
 	add r2, sp, #0
 	lsl r0, r0, #4
@@ -34680,7 +34680,7 @@ _021F7086:
 	ldr r0, [r5, r0]
 	lsr r1, r1, #0x18
 	add r3, r2, #0
-	bl sub_02019F88
+	bl GridInputHandler_SetNextLastUnk0FInputs
 	b _021F70DA
 _021F70A2:
 	add r1, r1, #1
@@ -34708,7 +34708,7 @@ _021F70B8:
 	ldr r0, [r5, r0]
 	lsr r1, r1, #0x18
 	add r3, r2, #0
-	bl sub_02019F88
+	bl GridInputHandler_SetNextLastUnk0FInputs
 	b _021F70DA
 _021F70D4:
 	sub r3, #8
@@ -34763,7 +34763,7 @@ ov18_021F7124: ; 0x021F7124
 	ldr r1, _021F7160 ; =_021FBB94
 	ldr r2, _021F7164 ; =_021FB638
 	add r3, r4, #0
-	bl sub_02019BA4
+	bl GridInputHandler_Create
 	ldr r1, _021F7168 ; =0x00001864
 	mov r2, #1
 	str r0, [r4, r1]
@@ -34800,7 +34800,7 @@ ov18_021F716C: ; 0x021F716C
 _021F7188:
 	ldr r0, _021F7198 ; =0x00001864
 	ldr r0, [r4, r0]
-	bl sub_02019D18
+	bl GridInputHandler_HandleInput_AllowHold
 	pop {r4, pc}
 	nop
 _021F7194: .word gSystem
@@ -34814,11 +34814,11 @@ ov18_021F719C: ; 0x021F719C
 	ldr r0, _021F71D4 ; =0x00001864
 	add r4, r1, #0
 	ldr r0, [r5, r0]
-	bl sub_0201A018
+	bl GridInputHandler_GetDpadBox
 	add r1, sp, #0
 	add r1, #1
 	add r2, sp, #0
-	bl sub_02020A0C
+	bl DpadMenuBox_GetPosition
 	mov r0, #0x67
 	add r2, sp, #0
 	lsl r0, r0, #4
@@ -34866,7 +34866,7 @@ ov18_021F71DC: ; 0x021F71DC
 	lsr r1, r1, #0x18
 	lsr r2, r2, #0x18
 	mov r3, #0x12
-	bl sub_02019F88
+	bl GridInputHandler_SetNextLastUnk0FInputs
 	b _021F7312
 _021F7218:
 	cmp r1, #0
@@ -34881,7 +34881,7 @@ _021F7218:
 	lsr r1, r1, #0x18
 	lsr r2, r2, #0x18
 	mov r3, #0x12
-	bl sub_02019F88
+	bl GridInputHandler_SetNextLastUnk0FInputs
 	b _021F7312
 _021F7236:
 	cmp r4, #0x10
@@ -34901,7 +34901,7 @@ _021F7236:
 	lsr r1, r1, #0x18
 	lsr r2, r2, #0x18
 	mov r3, #0x12
-	bl sub_02019F88
+	bl GridInputHandler_SetNextLastUnk0FInputs
 	b _021F7312
 _021F725E:
 	cmp r1, #0x10
@@ -34916,7 +34916,7 @@ _021F725E:
 	lsr r1, r1, #0x18
 	lsr r2, r2, #0x18
 	mov r3, #0x12
-	bl sub_02019F88
+	bl GridInputHandler_SetNextLastUnk0FInputs
 	b _021F7312
 _021F727C:
 	cmp r6, #0x13
@@ -34942,7 +34942,7 @@ _021F727C:
 	lsr r1, r1, #0x18
 	lsr r2, r2, #0x18
 	mov r3, #0x13
-	bl sub_02019F88
+	bl GridInputHandler_SetNextLastUnk0FInputs
 	b _021F7312
 _021F72B0:
 	cmp r1, #2
@@ -34957,7 +34957,7 @@ _021F72B0:
 	lsr r1, r1, #0x18
 	lsr r2, r2, #0x18
 	mov r3, #0x13
-	bl sub_02019F88
+	bl GridInputHandler_SetNextLastUnk0FInputs
 	b _021F7312
 _021F72CE:
 	cmp r4, #0xf
@@ -34977,7 +34977,7 @@ _021F72CE:
 	lsr r1, r1, #0x18
 	lsr r2, r2, #0x18
 	mov r3, #0x13
-	bl sub_02019F88
+	bl GridInputHandler_SetNextLastUnk0FInputs
 	b _021F7312
 _021F72F6:
 	cmp r1, #0xe
@@ -34992,7 +34992,7 @@ _021F72F6:
 	lsr r1, r1, #0x18
 	lsr r2, r2, #0x18
 	mov r3, #0x13
-	bl sub_02019F88
+	bl GridInputHandler_SetNextLastUnk0FInputs
 _021F7312:
 	add r0, r5, #0
 	add r1, r4, #0
@@ -35040,7 +35040,7 @@ ov18_021F7354: ; 0x021F7354
 	ldr r1, _021F7390 ; =_021FB780
 	ldr r2, _021F7394 ; =_021FB648
 	add r3, r4, #0
-	bl sub_02019BA4
+	bl GridInputHandler_Create
 	ldr r1, _021F7398 ; =0x00001864
 	mov r2, #1
 	str r0, [r4, r1]
@@ -35065,7 +35065,7 @@ ov18_021F739C: ; 0x021F739C
 	add r5, r0, #0
 	ldr r0, _021F7438 ; =0x00001864
 	ldr r0, [r5, r0]
-	bl sub_02019F74
+	bl GridInputHandler_GetNextInput
 	add r4, r0, #0
 	ldr r0, [r5]
 	mov r1, #0
@@ -35126,7 +35126,7 @@ _021F73F8:
 	lsl r1, r4, #0x18
 	ldr r0, [r5, r0]
 	lsr r1, r1, #0x18
-	bl sub_02019F7C
+	bl GridInputHandler_SetNextInput
 	add r0, r5, #0
 	add r1, r4, #0
 	bl ov18_021F7444
@@ -35135,7 +35135,7 @@ _021F73F8:
 _021F742C:
 	ldr r0, _021F7438 ; =0x00001864
 	ldr r0, [r5, r0]
-	bl sub_02019D18
+	bl GridInputHandler_HandleInput_AllowHold
 	pop {r4, r5, r6, pc}
 	nop
 _021F7438: .word 0x00001864
@@ -35150,11 +35150,11 @@ ov18_021F7444: ; 0x021F7444
 	ldr r0, _021F74A0 ; =0x00001864
 	add r4, r1, #0
 	ldr r0, [r5, r0]
-	bl sub_0201A018
+	bl GridInputHandler_GetDpadBox
 	add r1, sp, #0
 	add r1, #1
 	add r2, sp, #0
-	bl sub_02020A0C
+	bl DpadMenuBox_GetPosition
 	cmp r4, #0
 	bne _021F7470
 	ldr r1, _021F74A4 ; =0x0000187C
@@ -35232,7 +35232,7 @@ ov18_021F74D8: ; 0x021F74D8
 	ldr r1, _021F7514 ; =_021FB7A0
 	ldr r2, _021F7518 ; =_021FB678
 	add r3, r4, #0
-	bl sub_02019BA4
+	bl GridInputHandler_Create
 	ldr r1, _021F751C ; =0x00001864
 	mov r2, #1
 	str r0, [r4, r1]
@@ -35257,7 +35257,7 @@ ov18_021F7520: ; 0x021F7520
 	add r5, r0, #0
 	ldr r0, _021F75BC ; =0x00001864
 	ldr r0, [r5, r0]
-	bl sub_02019F74
+	bl GridInputHandler_GetNextInput
 	add r4, r0, #0
 	ldr r0, [r5]
 	mov r1, #0
@@ -35318,7 +35318,7 @@ _021F757C:
 	lsl r1, r4, #0x18
 	ldr r0, [r5, r0]
 	lsr r1, r1, #0x18
-	bl sub_02019F7C
+	bl GridInputHandler_SetNextInput
 	add r0, r5, #0
 	add r1, r4, #0
 	bl ov18_021F75C8
@@ -35327,7 +35327,7 @@ _021F757C:
 _021F75B0:
 	ldr r0, _021F75BC ; =0x00001864
 	ldr r0, [r5, r0]
-	bl sub_02019D18
+	bl GridInputHandler_HandleInput_AllowHold
 	pop {r4, r5, r6, pc}
 	nop
 _021F75BC: .word 0x00001864
@@ -35342,11 +35342,11 @@ ov18_021F75C8: ; 0x021F75C8
 	ldr r0, _021F7628 ; =0x00001864
 	add r4, r1, #0
 	ldr r0, [r5, r0]
-	bl sub_0201A018
+	bl GridInputHandler_GetDpadBox
 	add r1, sp, #0
 	add r1, #1
 	add r2, sp, #0
-	bl sub_02020A0C
+	bl DpadMenuBox_GetPosition
 	cmp r4, #0
 	bne _021F75F4
 	ldr r1, _021F762C ; =0x00001884
@@ -35433,7 +35433,7 @@ ov18_021F7668: ; 0x021F7668
 	ldr r1, _021F76A4 ; =_021FB8D4
 	ldr r2, _021F76A8 ; =_021FB6B8
 	add r3, r4, #0
-	bl sub_02019BA4
+	bl GridInputHandler_Create
 	ldr r1, _021F76AC ; =0x00001864
 	mov r2, #1
 	str r0, [r4, r1]
@@ -35470,7 +35470,7 @@ ov18_021F76B0: ; 0x021F76B0
 _021F76CC:
 	ldr r0, _021F76DC ; =0x00001864
 	ldr r0, [r4, r0]
-	bl sub_02019D18
+	bl GridInputHandler_HandleInput_AllowHold
 	pop {r4, pc}
 	nop
 _021F76D8: .word gSystem
@@ -35484,11 +35484,11 @@ ov18_021F76E0: ; 0x021F76E0
 	ldr r0, _021F7718 ; =0x00001864
 	add r4, r1, #0
 	ldr r0, [r5, r0]
-	bl sub_0201A018
+	bl GridInputHandler_GetDpadBox
 	add r1, sp, #0
 	add r1, #1
 	add r2, sp, #0
-	bl sub_02020A0C
+	bl DpadMenuBox_GetPosition
 	mov r0, #0x67
 	add r2, sp, #0
 	lsl r0, r0, #4
@@ -35545,7 +35545,7 @@ ov18_021F7748: ; 0x021F7748
 	ldr r1, _021F7784 ; =_021FBB0C
 	ldr r2, _021F7788 ; =_021FB658
 	add r3, r4, #0
-	bl sub_02019BA4
+	bl GridInputHandler_Create
 	ldr r1, _021F778C ; =0x00001864
 	mov r2, #1
 	str r0, [r4, r1]
@@ -35582,7 +35582,7 @@ ov18_021F7790: ; 0x021F7790
 _021F77AC:
 	ldr r0, _021F77BC ; =0x00001864
 	ldr r0, [r4, r0]
-	bl sub_02019D18
+	bl GridInputHandler_HandleInput_AllowHold
 	pop {r4, pc}
 	nop
 _021F77B8: .word gSystem
@@ -35596,11 +35596,11 @@ ov18_021F77C0: ; 0x021F77C0
 	ldr r0, _021F77F8 ; =0x00001864
 	add r4, r1, #0
 	ldr r0, [r5, r0]
-	bl sub_0201A018
+	bl GridInputHandler_GetDpadBox
 	add r1, sp, #0
 	add r1, #1
 	add r2, sp, #0
-	bl sub_02020A0C
+	bl DpadMenuBox_GetPosition
 	mov r0, #0x67
 	add r2, sp, #0
 	lsl r0, r0, #4
@@ -35643,7 +35643,7 @@ ov18_021F7800: ; 0x021F7800
 	lsr r1, r1, #0x18
 	lsr r2, r2, #0x18
 	mov r3, #0xf
-	bl sub_02019F88
+	bl GridInputHandler_SetNextLastUnk0FInputs
 	b _021F7932
 _021F7832:
 	cmp r1, #0xa
@@ -35661,7 +35661,7 @@ _021F7832:
 	lsr r1, r1, #0x18
 	lsr r2, r2, #0x18
 	mov r3, #0xf
-	bl sub_02019F88
+	bl GridInputHandler_SetNextLastUnk0FInputs
 	b _021F7932
 _021F7858:
 	cmp r6, #0xa
@@ -35681,7 +35681,7 @@ _021F7858:
 	lsr r1, r1, #0x18
 	lsr r2, r2, #0x18
 	mov r3, #0xf
-	bl sub_02019F88
+	bl GridInputHandler_SetNextLastUnk0FInputs
 	b _021F7932
 _021F7880:
 	cmp r1, #0xa
@@ -35696,7 +35696,7 @@ _021F7880:
 	lsr r1, r1, #0x18
 	lsr r2, r2, #0x18
 	mov r3, #0xf
-	bl sub_02019F88
+	bl GridInputHandler_SetNextLastUnk0FInputs
 	b _021F7932
 _021F789E:
 	cmp r4, #0x10
@@ -35717,7 +35717,7 @@ _021F789E:
 	lsr r1, r1, #0x18
 	lsr r2, r2, #0x18
 	mov r3, #0x10
-	bl sub_02019F88
+	bl GridInputHandler_SetNextLastUnk0FInputs
 	b _021F7932
 _021F78C8:
 	cmp r1, #0xd
@@ -35735,7 +35735,7 @@ _021F78C8:
 	lsr r1, r1, #0x18
 	lsr r2, r2, #0x18
 	mov r3, #0x10
-	bl sub_02019F88
+	bl GridInputHandler_SetNextLastUnk0FInputs
 	b _021F7932
 _021F78EE:
 	cmp r6, #0xe
@@ -35755,7 +35755,7 @@ _021F78EE:
 	lsr r1, r1, #0x18
 	lsr r2, r2, #0x18
 	mov r3, #0x10
-	bl sub_02019F88
+	bl GridInputHandler_SetNextLastUnk0FInputs
 	b _021F7932
 _021F7916:
 	cmp r1, #0xd
@@ -35770,7 +35770,7 @@ _021F7916:
 	lsr r1, r1, #0x18
 	lsr r2, r2, #0x18
 	mov r3, #0x10
-	bl sub_02019F88
+	bl GridInputHandler_SetNextLastUnk0FInputs
 _021F7932:
 	add r0, r5, #0
 	add r1, r6, #0
@@ -36074,7 +36074,7 @@ ov18_021F7B74: ; 0x021F7B74
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _021F7B8A
-	bl sub_02019BDC
+	bl GridInputHandler_Free
 	ldr r0, _021F7B8C ; =0x00001864
 	mov r1, #0
 	str r1, [r4, r0]

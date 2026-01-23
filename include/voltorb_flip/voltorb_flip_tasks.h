@@ -1,10 +1,10 @@
 #ifndef POKEHEARTGOLD_VOLTORB_FLIP_WORKFLOW_H
 #define POKEHEARTGOLD_VOLTORB_FLIP_WORKFLOW_H
 
-#include "voltorb_flip/voltorb_flip_work.h"
+#include "voltorb_flip/voltorb_flip_app_data.h"
 
-typedef enum Workflow {
-    WORKFLOW_UNK_0,
+typedef enum VoltorbFlipTaskId {
+    WORKFLOW_COIN_CASE_FULL,
     WORKFLOW_NEW_ROUND,
     WORKFLOW_SELECT_MAIN_MENU,
     WORKFLOW_SELECT_GAME_INFO,
@@ -14,38 +14,37 @@ typedef enum Workflow {
     WORKFLOW_RENDER_BOARD,
     WORKFLOW_AWAIT_BOARD_INTERACT,
     WORKFLOW_FLIP_CARD,
-    WORKFLOW_UNK_10,
+    WORKFLOW_WIN_ROUND,
     WORKFLOW_AWARD_COINS,
     WORKFLOW_REVEAL_BOARD,
-    WORKFLOW_UNK_13,
-    WORKFLOW_UNK_14,
+    WORKFLOW_MEMO_TOUCH,
+    WORKFLOW_MEMO_BUTTONS,
     WORKFLOW_QUIT_ROUND,
-    WORKFLOW_UNK_16,
 
     WORKFLOW_TERMINATE = 65534,
     WORKFLOW_NONE = 65535,
-} Workflow;
+} VoltorbFlipTaskId;
 
-typedef BOOL (*VoltorbFlipTask)(struct WorkflowEngine *a0, VoltorbFlipAppWork *a1);
+typedef BOOL (*VoltorbFlipTaskFunc)(struct VoltorbFlipTaskEngine *workflow, VoltorbFlipAppData *voltorbFlip);
 
 // A list of Tasks which will be executed synchronously and in order by the
 // WorkflowEngine.
 //
 // The WorkflowEngine starts with the first non-NULL task provided.
-typedef struct VoltorbFlipWorkflow {
+typedef struct VoltorbFlipTask {
     // Optional. Runs over multiple frames.
-    VoltorbFlipTask task1;
+    VoltorbFlipTaskFunc setup;
     // Optional. Runs over 1 frame.
-    VoltorbFlipTask task2;
+    VoltorbFlipTaskFunc begin;
     // Required. Runs over multiple frames.
-    VoltorbFlipTask task3;
+    VoltorbFlipTaskFunc main;
     // Optional. Runs over 1 frame.
-    VoltorbFlipTask task4;
+    VoltorbFlipTaskFunc end;
     // Optional. Runs over multiple frames.
-    VoltorbFlipTask task5;
-} VoltorbFlipWorkflow;
+    VoltorbFlipTaskFunc tidy;
+} VoltorbFlipTask;
 
-typedef VoltorbFlipWorkflow VoltorbFlipWorkflows[16];
+typedef VoltorbFlipTask VoltorbFlipTasks[16];
 
 // A Workflow is a series of Tasks that run sequentially. The WorkflowEngine
 // handles the transitions between a Workflow's Tasks automatically.
@@ -56,22 +55,22 @@ typedef VoltorbFlipWorkflow VoltorbFlipWorkflows[16];
 //
 // At a given time, only one Workflow and one Task within that Workflow will
 // be active. An enqueued Workflow starts once the current Workflow finishes.
-typedef struct WorkflowEngine {
-    VoltorbFlipWorkflows *workflows;
-    struct VoltorbFlipAppWork *work;
+typedef struct VoltorbFlipTaskEngine {
+    VoltorbFlipTasks *tasks;
+    struct VoltorbFlipAppData *work;
     u16 curWorkflow;
     u16 nextWorkflow;
     u8 size;          // The number of workflows registered
     u8 workflowState; // The internal state of the WorkflowEngine (as it manages Task transitions)
     u8 taskState;     // The state of the Task that is currently being executed
-} WorkflowEngine;
+} VoltorbFlipTaskEngine;
 
-WorkflowEngine *CreateWorkflowEngine(enum HeapID, VoltorbFlipWorkflows *, int, struct VoltorbFlipAppWork *);
-void FreeWorkflowEngine(WorkflowEngine *);
-BOOL RunWorkflowEngine(struct WorkflowEngine *);
-void EnqueueWorkflow(WorkflowEngine *, Workflow);
-int CurrentWorkflow(WorkflowEngine *);
-int CurrentTaskState(WorkflowEngine *);
-int IncrementTaskState(WorkflowEngine *);
+VoltorbFlipTaskEngine *VoltorbFlipTaskEngine_Create(enum HeapID heapId, VoltorbFlipTasks *tasks, int, VoltorbFlipAppData *voltorbFlip);
+void VoltorbFlipTaskEngine_Free(VoltorbFlipTaskEngine *engine);
+BOOL VoltorbFlipTaskEngine_Run(VoltorbFlipTaskEngine *engine);
+void VoltorbFlipTaskEngine_Enqueue(VoltorbFlipTaskEngine *engine, VoltorbFlipTaskId taskId);
+int VoltorbFlipTaskEngine_CurrentWorkflow(VoltorbFlipTaskEngine *engine);
+int VoltorbFlipTaskEngine_CurrentTaskState(VoltorbFlipTaskEngine *engine);
+int VoltorbFlipTaskEngine_IncrementTaskState(VoltorbFlipTaskEngine *engine);
 
 #endif // POKEHEARTGOLD_VOLTORB_FLIP_WORKFLOW_H

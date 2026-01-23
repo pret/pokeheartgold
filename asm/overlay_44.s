@@ -2328,7 +2328,7 @@ _0222B07C:
 	blt _0222B07C
 	mov r0, #1
 	mov r1, #0x35
-	bl sub_02013534
+	bl FontSystem_NewInit
 	mov r1, #0xb3
 	lsl r1, r1, #2
 	str r0, [r6, r1]

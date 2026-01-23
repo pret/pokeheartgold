@@ -38737,7 +38737,7 @@ ov96_021F86E8: ; 0x021F86E8
 	mov r0, #0xa
 	add r1, r7, #0
 	str r7, [r4]
-	bl sub_02013534
+	bl FontSystem_NewInit
 	str r0, [r4, #0x10]
 	str r5, [r4, #8]
 	str r6, [r4, #4]
@@ -39736,7 +39736,7 @@ ov96_021F8EB0: ; 0x021F8EB0
 	str r6, [r4]
 	mov r0, #4
 	add r1, r6, #0
-	bl sub_02013534
+	bl FontSystem_NewInit
 	str r0, [r4, #8]
 	str r5, [r4, #4]
 	add r5, r4, #0

@@ -94,9 +94,9 @@
 .public TextPrinterCheckActive
 .public AddTextPrinterParameterized
 .public AddTextPrinterParameterizedWithColor
-.public sub_02020A0C
-.public sub_02020A18
-.public sub_02020A24
+.public DpadMenuBox_GetPosition
+.public DpadMenuBox_GetDimensions
+.public DpadMenuBox_GetNeighborInDirection
 .public GfGfx_EngineBTogglePlanes
 .public TouchscreenHitbox_FindRectAtTouchNew
 .public System_GetTouchNew
@@ -169,7 +169,7 @@
 .public BattleSystem_GetBattleContext
 .public BattleSystem_GetParty
 .public BattleSystem_GetPartyMon
-.public BattleSystem_GetSpriteRenderer
+.public BattleSystem_GetSpriteSystem
 .public BattleSystem_GetPaletteData
 .public BattleSystem_GetTrainer
 .public BattleSystem_GetBag

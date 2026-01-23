@@ -419,7 +419,7 @@ ov67_021E5C44: ; 0x021E5C44
 	add r4, r0, #0
 	ldr r0, _021E5D88 ; =0x000004A4
 	ldr r0, [r4, r0]
-	bl sub_02019BE4
+	bl GridInputHandler_HandleInput_NoHold
 	cmp r0, #0xc
 	bhi _021E5C58
 	beq _021E5C72
@@ -508,7 +508,7 @@ _021E5CEC:
 	bl ov67_021E6490
 	ldr r0, _021E5D88 ; =0x000004A4
 	ldr r0, [r4, r0]
-	bl sub_02019F74
+	bl GridInputHandler_GetNextInput
 	mov r1, #0x4a
 	lsl r1, r1, #4
 	ldrh r2, [r4, r1]
@@ -547,7 +547,7 @@ _021E5D40:
 	bl ov67_021E6490
 	ldr r0, _021E5D88 ; =0x000004A4
 	ldr r0, [r4, r0]
-	bl sub_02019F74
+	bl GridInputHandler_GetNextInput
 	mov r1, #0x4a
 	lsl r1, r1, #4
 	ldrh r2, [r4, r1]
@@ -2376,7 +2376,7 @@ ov67_021E6BC4: ; 0x021E6BC4
 	ldr r0, _021E6BF8 ; =ov67_021E6E60
 	ldr r2, _021E6BFC ; =ov67_021E6D6C
 	add r3, r4, #0
-	bl sub_02019BA4
+	bl GridInputHandler_Create
 	ldr r1, _021E6C00 ; =0x000004A4
 	str r0, [r4, r1]
 	add r0, r4, #0
@@ -2394,12 +2394,12 @@ _021E6C00: .word 0x000004A4
 	thumb_func_start ov67_021E6C04
 ov67_021E6C04: ; 0x021E6C04
 	ldr r1, _021E6C0C ; =0x000004A4
-	ldr r3, _021E6C10 ; =sub_02019BDC
+	ldr r3, _021E6C10 ; =GridInputHandler_Free
 	ldr r0, [r0, r1]
 	bx r3
 	.balign 4, 0
 _021E6C0C: .word 0x000004A4
-_021E6C10: .word sub_02019BDC
+_021E6C10: .word GridInputHandler_Free
 	thumb_func_end ov67_021E6C04
 
 	thumb_func_start ov67_021E6C14
@@ -2409,11 +2409,11 @@ ov67_021E6C14: ; 0x021E6C14
 	ldr r0, _021E6C58 ; =0x000004A4
 	add r4, r1, #0
 	ldr r0, [r5, r0]
-	bl sub_0201A018
+	bl GridInputHandler_GetDpadBox
 	add r1, sp, #0
 	add r1, #1
 	add r2, sp, #0
-	bl sub_02020A0C
+	bl DpadMenuBox_GetPosition
 	add r3, sp, #0
 	ldrb r2, [r3, #1]
 	ldrb r3, [r3]
