@@ -9,16 +9,11 @@
 	.extern ov18_021E595C
 	.extern ov18_021E59A8
 	.extern ov18_021E613C
-	.extern ov18_021E66EC
-	.extern ov18_021E6714
-	.extern ov18_021E67C8
 	.extern ov18_021E6A70
 	.extern ov18_021E6C98
 	.extern ov18_021E6D10
 	.extern ov18_021E6F6C
 	.extern ov18_021E7698
-	.extern ov18_021E800C
-	.extern ov18_021E81A8
 	.extern ov18_021E8AB0
 	.extern ov18_021E8ACC
 	.extern ov18_021E8AE0
@@ -26,186 +21,8 @@
 	.extern ov18_021E8B18
 	.extern ov18_021E8B24
 	.extern ov18_021E8B5C
-	.extern ov18_021EC1DC
 
 	.text
-
-	thumb_func_start ov18_021EDB3C
-ov18_021EDB3C: ; 0x021EDB3C
-	push {r4, r5, lr}
-	sub sp, #0xc
-	add r5, r0, #0
-	mov r0, #6
-	str r0, [sp]
-	mov r0, #1
-	str r0, [sp, #4]
-	mov r0, #0x25
-	str r0, [sp, #8]
-	mov r0, #0
-	add r4, r1, #0
-	add r1, r0, #0
-	add r2, r0, #0
-	add r3, r0, #0
-	bl BeginNormalPaletteFade
-	mov r0, #0x86
-	lsl r0, r0, #4
-	str r4, [r5, r0]
-	mov r0, #2
-	add sp, #0xc
-	pop {r4, r5, pc}
-	thumb_func_end ov18_021EDB3C
-
-	thumb_func_start ov18_021EDB68
-ov18_021EDB68: ; 0x021EDB68
-	push {r3, r4, r5, r6}
-	ldr r5, _021EDBB4 ; =0x00000868
-	add r4, r0, #0
-	add r0, r4, r5
-	strb r2, [r0]
-	add r2, sp, #0
-	strb r3, [r0, #1]
-	ldrb r3, [r2, #0x10]
-	sub r5, #0xc
-	strb r3, [r0, #2]
-	ldrb r3, [r2, #0x14]
-	strb r3, [r0, #3]
-	strb r1, [r0, #4]
-	mov r1, #0
-	strb r1, [r0, #5]
-	strb r1, [r0, #6]
-	ldrb r1, [r0, #7]
-	mov r3, #0xf
-	ldrb r6, [r2, #0x18]
-	bic r1, r3
-	mov r3, #0xf
-	and r3, r6
-	orr r1, r3
-	strb r1, [r0, #7]
-	ldrb r2, [r2, #0x1c]
-	ldrb r1, [r0, #7]
-	mov r3, #0xf0
-	lsl r2, r2, #0x1c
-	bic r1, r3
-	lsr r2, r2, #0x18
-	orr r1, r2
-	strb r1, [r0, #7]
-	ldr r0, [sp, #0x20]
-	str r0, [r4, r5]
-	mov r0, #4
-	pop {r3, r4, r5, r6}
-	bx lr
-	nop
-_021EDBB4: .word 0x00000868
-	thumb_func_end ov18_021EDB68
-
-	thumb_func_start ov18_021EDBB8
-ov18_021EDBB8: ; 0x021EDBB8
-	push {r3, r4, lr}
-	sub sp, #0x14
-	add r4, r1, #0
-	str r2, [sp]
-	mov r1, #5
-	str r1, [sp, #4]
-	mov r1, #0
-	str r1, [sp, #8]
-	mov r1, #6
-	str r1, [sp, #0xc]
-	str r3, [sp, #0x10]
-	mov r1, #2
-	add r2, r4, #0
-	mov r3, #0x13
-	bl ov18_021EDB68
-	add sp, #0x14
-	pop {r3, r4, pc}
-	thumb_func_end ov18_021EDBB8
-
-	thumb_func_start ov18_021EDBDC
-ov18_021EDBDC: ; 0x021EDBDC
-	push {r3, r4, lr}
-	sub sp, #0x14
-	add r4, r1, #0
-	str r2, [sp]
-	mov r1, #4
-	str r1, [sp, #4]
-	str r1, [sp, #8]
-	mov r1, #5
-	str r1, [sp, #0xc]
-	str r3, [sp, #0x10]
-	mov r1, #1
-	add r2, r4, #0
-	mov r3, #0x14
-	bl ov18_021EDB68
-	add sp, #0x14
-	pop {r3, r4, pc}
-	.balign 4, 0
-	thumb_func_end ov18_021EDBDC
-
-	thumb_func_start ov18_021EDC00
-ov18_021EDC00: ; 0x021EDC00
-	push {r4, r5, lr}
-	sub sp, #0x14
-	add r5, r1, #0
-	str r3, [sp]
-	add r1, sp, #0x10
-	ldrb r1, [r1, #0x10]
-	add r4, r2, #0
-	mov r2, #3
-	str r1, [sp, #4]
-	mov r1, #2
-	str r1, [sp, #8]
-	str r2, [sp, #0xc]
-	ldr r2, [sp, #0x24]
-	add r3, r4, #0
-	str r2, [sp, #0x10]
-	add r2, r5, #0
-	bl ov18_021EDB68
-	add sp, #0x14
-	pop {r4, r5, pc}
-	thumb_func_end ov18_021EDC00
-
-	thumb_func_start ov18_021EDC28
-ov18_021EDC28: ; 0x021EDC28
-	push {lr}
-	sub sp, #0x14
-	add r3, r1, #0
-	mov r1, #8
-	str r1, [sp]
-	mov r1, #4
-	str r1, [sp, #4]
-	mov r1, #0
-	str r1, [sp, #8]
-	mov r1, #6
-	str r1, [sp, #0xc]
-	str r2, [sp, #0x10]
-	add r2, r3, #0
-	mov r1, #1
-	mov r3, #0x14
-	bl ov18_021EDB68
-	add sp, #0x14
-	pop {pc}
-	.balign 4, 0
-	thumb_func_end ov18_021EDC28
-
-	thumb_func_start ov18_021EDC50
-ov18_021EDC50: ; 0x021EDC50
-	push {r4, r5, lr}
-	sub sp, #0x14
-	add r4, sp, #0x10
-	ldrb r5, [r4, #0x10]
-	str r5, [sp]
-	ldrb r4, [r4, #0x14]
-	str r4, [sp, #4]
-	mov r4, #0xa
-	str r4, [sp, #8]
-	mov r4, #0xb
-	str r4, [sp, #0xc]
-	ldr r4, [sp, #0x28]
-	str r4, [sp, #0x10]
-	bl ov18_021EDB68
-	add sp, #0x14
-	pop {r4, r5, pc}
-	.balign 4, 0
-	thumb_func_end ov18_021EDC50
 
 	thumb_func_start ov18_021EDC74
 ov18_021EDC74: ; 0x021EDC74

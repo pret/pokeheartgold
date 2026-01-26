@@ -112,11 +112,12 @@ int PokedexApp_MainSeq_90(PokedexAppData *pokedexApp);
 int PokedexApp_MainSeq_91(PokedexAppData *pokedexApp);
 int PokedexApp_MainSeq_92(PokedexAppData *pokedexApp);
 int ov18_021EDB3C(PokedexAppData *pokedexApp, int a1);
-int ov18_021EDBB8(PokedexAppData *pokedexApp, int a1, int a2, int a3);
-int ov18_021EDBDC(PokedexAppData *pokedexApp, int a1, int a2, int a3);
-int ov18_021EDC00(PokedexAppData *pokedexApp, int a1, int a2, int a3, int a4, int a5);
-int ov18_021EDC28(PokedexAppData *pokedexApp, int a1, int a2);
-int ov18_021EDC50(PokedexAppData *pokedexApp, int a1, int a2, int a3, int a4, int a5, int a6);
+int ov18_021EDB68(PokedexAppData *pokedexApp, u8 a1, u8 a2, u8 a3, u8 a4, u8 a5, u8 a6, u8 a7, int a8);
+int ov18_021EDBB8(PokedexAppData *pokedexApp, u8 a1, u8 a2, u8 a3);
+int ov18_021EDBDC(PokedexAppData *pokedexApp, u8 a1, u8 a2, u8 a3);
+int ov18_021EDC00(PokedexAppData *pokedexApp, u8 a1, u8 a2, u8 a3, u8 a4, int a5);
+int ov18_021EDC28(PokedexAppData *pokedexApp, u8 a1, int a2);
+int ov18_021EDC50(PokedexAppData *pokedexApp, u8 a1, u8 a2, u8 a3, u8 a4, u8 a5, int a6);
 void ov18_021EDC74(PokedexAppData *pokedexApp, int a1);
 void ov18_021EDCD4(PokedexAppData *pokedexApp);
 void ov18_021EDDA4(PokedexAppData *pokedexApp, int a1);
@@ -354,10 +355,10 @@ int PokedexApp_MainSeq_06(PokedexAppData *pokedexApp) {
     switch (ov18_021F6B00(pokedexApp)) {
     case 0:
         PlaySE(SEQ_SE_GS_BUTTON01);
-        return ov18_021EDBB8(pokedexApp, 8, 16, 9);
+        return ov18_021EDBB8(pokedexApp, 8, 16, POKEDEXAPP_MAINSEQ_09);
     case 1:
         PlaySE(SEQ_SE_GS_ZKN04);
-        return ov18_021EDBB8(pokedexApp, 0, 8, 10);
+        return ov18_021EDBB8(pokedexApp, 0, 8, POKEDEXAPP_MAINSEQ_10);
     case 2:
         if (pokedexApp->unk_0864 == 0) {
             MenuInputStateMgr_SetState(pokedexApp->args->menuInputStatePtr, MENU_INPUT_STATE_TOUCH);
@@ -365,7 +366,7 @@ int PokedexApp_MainSeq_06(PokedexAppData *pokedexApp) {
             MenuInputStateMgr_SetState(pokedexApp->args->menuInputStatePtr, MENU_INPUT_STATE_BUTTONS);
         }
         PlaySE(SEQ_SE_GS_GEARCANCEL);
-        return ov18_021EDBB8(pokedexApp, 24, 8, 92);
+        return ov18_021EDBB8(pokedexApp, 24, 8, POKEDEXAPP_MAINSEQ_92);
     case 3:
         PlaySE(SEQ_SE_GS_ZKN_BUTTON8);
         ov18_021EDDA4(pokedexApp, 1);
@@ -568,25 +569,25 @@ int PokedexApp_MainSeq_11(PokedexAppData *pokedexApp) {
         return POKEDEXAPP_MAINSEQ_12;
     case 2:
         pokedexApp->unk_185B = 5;
-        return ov18_021EDBB8(pokedexApp, 0, 8, 18);
+        return ov18_021EDBB8(pokedexApp, 0, 8, POKEDEXAPP_MAINSEQ_18);
     case 3:
         if (ov18_021EDE04(pokedexApp) == 1) {
-            return ov18_021EDBB8(pokedexApp, 8, 8, 11);
+            return ov18_021EDBB8(pokedexApp, 8, 8, POKEDEXAPP_MAINSEQ_11);
         }
         break;
     case 4:
         if (ov18_021F8838(pokedexApp) != SPECIES_NONE) {
             PlaySE(SEQ_SE_GS_ZKN04);
             pokedexApp->unk_185B = 1;
-            return ov18_021EDBB8(pokedexApp, 16, 8, 18);
+            return ov18_021EDBB8(pokedexApp, 16, 8, POKEDEXAPP_MAINSEQ_18);
         }
         break;
     case 5:
         MenuInputStateMgr_SetState(pokedexApp->args->menuInputStatePtr, MENU_INPUT_STATE_TOUCH);
-        return ov18_021EDBB8(pokedexApp, 24, 8, 20);
+        return ov18_021EDBB8(pokedexApp, 24, 8, POKEDEXAPP_MAINSEQ_20);
     case 6:
         MenuInputStateMgr_SetState(pokedexApp->args->menuInputStatePtr, MENU_INPUT_STATE_BUTTONS);
-        return ov18_021EDBB8(pokedexApp, 24, 8, 20);
+        return ov18_021EDBB8(pokedexApp, 24, 8, POKEDEXAPP_MAINSEQ_20);
     case 7:
         ov18_021E6D68(pokedexApp, ov18_021F8838(pokedexApp), -1);
         break;
@@ -2310,7 +2311,7 @@ int PokedexApp_MainSeq_65(PokedexAppData *pokedexApp) {
 
 int ov18_021EC1DC(PokedexAppData *pokedexApp, u8 a1, u8 a2) {
     PokedexAppData_UnkSub0868_State69 *r2 = &pokedexApp->unk_0868.state_69;
-    int r6 = 0;
+    u8 r6 = 0;
 
     r2->unk_0 = 0;
     r2->unk_2 = a1;
@@ -3379,4 +3380,46 @@ int PokedexApp_MainSeq_91(PokedexAppData *pokedexApp) {
 int PokedexApp_MainSeq_92(PokedexAppData *pokedexApp) {
     pokedexApp->unk_085C = POKEDEXAPP_MAINSEQ_MAX;
     return ov18_021EDB3C(pokedexApp, 1);
+}
+
+int ov18_021EDB3C(PokedexAppData *pokedexApp, int a1) {
+    BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, HEAP_ID_37);
+    pokedexApp->unk_0860 = a1;
+    return POKEDEXAPP_MAINSEQ_02;
+}
+
+int ov18_021EDB68(PokedexAppData *pokedexApp, u8 a1, u8 a2, u8 a3, u8 a4, u8 a5, u8 a6, u8 a7, int a8) {
+    PokedexAppData_UnkSub0868_State04 *r0 = &pokedexApp->unk_0868.state_04;
+
+    r0->unk_0 = a2;
+    r0->unk_1 = a3;
+    r0->unk_2 = a4;
+    r0->unk_3 = a5;
+    r0->unk_4 = a1;
+    r0->unk_5 = 0;
+    r0->unk_6 = 0;
+    r0->unk_7_0 = a6;
+    r0->unk_7_4 = a7;
+    pokedexApp->unk_085C = a8;
+    return POKEDEXAPP_MAINSEQ_04;
+}
+
+int ov18_021EDBB8(PokedexAppData *pokedexApp, u8 a1, u8 a2, u8 a3) {
+    return ov18_021EDB68(pokedexApp, 2, a1, 19, a2, 5, 0, 6, a3);
+}
+
+int ov18_021EDBDC(PokedexAppData *pokedexApp, u8 a1, u8 a2, u8 a3) {
+    return ov18_021EDB68(pokedexApp, 1, a1, 20, a2, 4, 4, 5, a3);
+}
+
+int ov18_021EDC00(PokedexAppData *pokedexApp, u8 a1, u8 a2, u8 a3, u8 a4, int a5) {
+    return ov18_021EDB68(pokedexApp, 2, a1, a2, a3, a4, 2, 3, a5);
+}
+
+int ov18_021EDC28(PokedexAppData *pokedexApp, u8 a1, int a2) {
+    return ov18_021EDB68(pokedexApp, 1, a1, 20, 8, 4, 0, 6, a2);
+}
+
+int ov18_021EDC50(PokedexAppData *pokedexApp, u8 a1, u8 a2, u8 a3, u8 a4, u8 a5, int a6) {
+    return ov18_021EDB68(pokedexApp, a1, a2, a3, a4, a5, 10, 11, a6);
 }
