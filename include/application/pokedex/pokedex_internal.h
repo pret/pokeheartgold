@@ -273,7 +273,7 @@ struct PokedexAppData {
     void *weights;                                  // 0x184C
     PokedexAppData_UnkSub1850 *unk_1850;            // 0x1850
     u8 *unk_1854;                                   // 0x1854
-    u8 unk_1858;                                    // 0x1858
+    u8 sortOrder;                                   // 0x1858
     u8 unk_1859;                                    // 0x1859
     u8 unk_185A;                                    // 0x185A
     u8 unk_185B;                                    // 0x185B
@@ -388,6 +388,7 @@ BOOL PokedexApp_RunMainSeq(PokedexAppData *pokedexApp, int *pState);
 
 void ov18_021EE388(PokedexAppData *pokedexApp);
 void ov18_021EE3FC(PokedexAppData *pokedexApp);
+void ov18_021EE5FC(PokedexAppData *pokedexApp);
 void ov18_021EE638(PokedexAppData *pokedexApp, u32 species, int a2);
 void ov18_021EE6BC(PokedexAppData *pokedexApp, int species, int a2);
 void ov18_021EE6EC(PokedexAppData *pokedexApp, int species, int a2);
@@ -451,6 +452,7 @@ void ov18_021F2530(PokedexAppData *pokedexApp, u32 species, int a2);
 void ov18_021F2880(PokedexAppData *pokedexApp);
 void ov18_021F2A2C(PokedexAppData *pokedexApp, int a1, int a2);
 void ov18_021F2A84(PokedexAppData *pokedexApp, int a1, int a2);
+void ov18_021F2AC0(PokedexAppData *pokedexApp, int a1);
 BOOL ov18_021F2AF8(PokedexAppData *pokedexApp, u32 x, u32 y);
 void ov18_021F2B3C(PokedexAppData *pokedexApp, int a1, s16 a2);
 void ov18_021F2B70(PokedexAppData *pokedexApp, int a1, s16 a2);
