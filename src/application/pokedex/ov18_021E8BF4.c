@@ -5,7 +5,9 @@
 #include "font.h"
 #include "gf_gfx_loader.h"
 #include "list_menu_items.h"
+#include "pokedex_util.h"
 #include "sound_02004A44.h"
+#include "sound_chatot.h"
 #include "unk_02005D10.h"
 #include "unk_0200FA24.h"
 #include "unk_020210A0.h"
@@ -122,11 +124,11 @@ void ov18_021EDC74(PokedexAppData *pokedexApp, int a1);
 void ov18_021EDCD4(PokedexAppData *pokedexApp);
 void ov18_021EDDA4(PokedexAppData *pokedexApp, int a1);
 void ov18_021EDDB4(PokedexAppData *pokedexApp);
-int ov18_021EDE04(PokedexAppData *pokedexApp);
+BOOL ov18_021EDE04(PokedexAppData *pokedexApp);
 void ov18_021EDE4C(PokedexAppData *pokedexApp, int a1, int a2, int a3);
 void ov18_021EDE64(PokedexAppData *pokedexApp);
 void ov18_021EDEB0(PokedexAppData *pokedexApp);
-int ov18_021EDF14(PokedexAppData *pokedexApp, int a1, int a2);
+BOOL ov18_021EDF14(PokedexAppData *pokedexApp, int a1, int a2);
 void ov18_021EDF48(s8 *a0, s8 a1, int a2, u8 a3);
 BOOL ov18_021EDF84(PokedexAppData *pokedexApp, int a1);
 BOOL ov18_021EDFF4(PokedexAppData *pokedexApp, int a1);
@@ -267,7 +269,7 @@ int PokedexApp_MainSeq_00(PokedexAppData *pokedexApp) {
     FontID_Alloc(4, HEAP_ID_37);
     pokedexApp->gfxNarc = NARC_New(NARC_graphic_zukan_gra, HEAP_ID_37);
     ov18_021E6FFC(pokedexApp);
-    ov18_021F7ED4(pokedexApp, pokedexApp->sortOrder, 0, dex_search_letters_all, dex_search_type_all, dex_search_type_all, 0, 152, 0, 152, 1 << dex_search_area_all, dex_search_bodytype_all);
+    ov18_021F7ED4(pokedexApp, pokedexApp->unk_1858, 0, dex_search_letters_all, dex_search_type_all, dex_search_type_all, 0, 152, 0, 152, 1 << dex_search_area_all, dex_search_bodytype_all);
     ov18_021F8884(pokedexApp, 1);
     ov18_021EDDB4(pokedexApp);
     ov18_021E5C74();
@@ -417,7 +419,7 @@ int PokedexApp_MainSeq_07(PokedexAppData *pokedexApp) {
             sp0 = 135;
         }
         if (!ov18_021F2AF8(pokedexApp, sp4, sp0)) {
-            if (pokedexApp->sortOrder == 1) {
+            if (pokedexApp->unk_1858 == 1) {
                 PlaySE(SEQ_SE_GS_ZKN_BUTTON8);
                 ov18_021EDC74(pokedexApp, 0);
             } else {
@@ -571,7 +573,7 @@ int PokedexApp_MainSeq_11(PokedexAppData *pokedexApp) {
         pokedexApp->unk_185B = 5;
         return ov18_021EDBB8(pokedexApp, 0, 8, POKEDEXAPP_MAINSEQ_18);
     case 3:
-        if (ov18_021EDE04(pokedexApp) == 1) {
+        if (ov18_021EDE04(pokedexApp) == TRUE) {
             return ov18_021EDBB8(pokedexApp, 8, 8, POKEDEXAPP_MAINSEQ_11);
         }
         break;
@@ -989,8 +991,8 @@ int PokedexApp_MainSeq_23(PokedexAppData *pokedexApp) {
         r5->unk_0 = 1;
         break;
     case 1:
-        ov18_021F7ED4(pokedexApp, pokedexApp->sortOrder, pokedexApp->dexSearchCriteria[dex_search_criteria_sort_order], pokedexApp->dexSearchCriteria[dex_search_criteria_letter], pokedexApp->dexSearchCriteria[dex_search_criteria_type1], pokedexApp->dexSearchCriteria[dex_search_criteria_type2], pokedexApp->dexSearchCriteria[dex_search_criteria_height_min], pokedexApp->dexSearchCriteria[dex_search_criteria_height_max], pokedexApp->dexSearchCriteria[dex_search_criteria_weight_min], pokedexApp->dexSearchCriteria[dex_search_criteria_weight_max], 1 << pokedexApp->dexSearchCriteria[dex_search_criteria_area], pokedexApp->dexSearchCriteria[dex_search_criteria_body_type]);
-        if (pokedexApp->unk_102E == 0 && pokedexApp->unk_102C == 0) {
+        ov18_021F7ED4(pokedexApp, pokedexApp->unk_1858, pokedexApp->dexSearchCriteria[dex_search_criteria_sort_order], pokedexApp->dexSearchCriteria[dex_search_criteria_letter], pokedexApp->dexSearchCriteria[dex_search_criteria_type1], pokedexApp->dexSearchCriteria[dex_search_criteria_type2], pokedexApp->dexSearchCriteria[dex_search_criteria_height_min], pokedexApp->dexSearchCriteria[dex_search_criteria_height_max], pokedexApp->dexSearchCriteria[dex_search_criteria_weight_min], pokedexApp->dexSearchCriteria[dex_search_criteria_weight_max], 1 << pokedexApp->dexSearchCriteria[dex_search_criteria_area], pokedexApp->dexSearchCriteria[dex_search_criteria_body_type]);
+        if (pokedexApp->unk_0878.unk_7B6 == 0 && pokedexApp->unk_0878.unk_7B4 == 0) {
             r5->unk_0 = 15;
         } else {
             ov18_021F8884(pokedexApp, 0);
@@ -1166,7 +1168,7 @@ int PokedexApp_MainSeq_25(PokedexAppData *pokedexApp) {
 int PokedexApp_MainSeq_19(PokedexAppData *pokedexApp) {
     switch (pokedexApp->unk_0868.state_10.unk_0) {
     case 0:
-        ov18_021F7ED4(pokedexApp, pokedexApp->sortOrder, 0, dex_search_letters_all, dex_search_type_all, dex_search_type_all, 0, 152, 0, 152, 1 << dex_search_area_all, dex_search_bodytype_all);
+        ov18_021F7ED4(pokedexApp, pokedexApp->unk_1858, 0, dex_search_letters_all, dex_search_type_all, dex_search_type_all, 0, 152, 0, 152, 1 << dex_search_area_all, dex_search_bodytype_all);
         ov18_021F8884(pokedexApp, 1);
         ++pokedexApp->unk_0868.state_10.unk_0;
         break;
@@ -2135,9 +2137,9 @@ PokedexApp_MainSeq_62(PokedexAppData *pokedexApp) {
     case 0: {
         u16 r1 = ov18_021F8838(pokedexApp);
         if (r1 != 0) {
-            sub_02092BD8(pokedexApp->args->unk_08, r1, pokedexApp->sortOrder);
+            sub_02092BD8(pokedexApp->args->unk_08, r1, pokedexApp->unk_1858);
         }
-        ov18_021F7ED4(pokedexApp, pokedexApp->sortOrder, dex_order_national, dex_search_letters_all, dex_search_type_all, dex_search_type_all, 0, 152, 0, 152, 1 << dex_search_area_all, dex_search_bodytype_all);
+        ov18_021F7ED4(pokedexApp, pokedexApp->unk_1858, dex_order_national, dex_search_letters_all, dex_search_type_all, dex_search_type_all, 0, 152, 0, 152, 1 << dex_search_area_all, dex_search_bodytype_all);
         ov18_021F8884(pokedexApp, 1);
         ov18_021EDDB4(pokedexApp);
         ov18_021EDE64(pokedexApp);
@@ -2172,9 +2174,9 @@ int PokedexApp_MainSeq_63(PokedexAppData *pokedexApp) {
     case 0: {
         u16 species = ov18_021F8838(pokedexApp);
         if (species != SPECIES_NONE) {
-            sub_02092BD8(pokedexApp->args->unk_08, species, pokedexApp->sortOrder);
+            sub_02092BD8(pokedexApp->args->unk_08, species, pokedexApp->unk_1858);
         }
-        ov18_021F7ED4(pokedexApp, pokedexApp->sortOrder, dex_order_national, dex_search_letters_all, dex_search_type_all, dex_search_type_all, 0, 152, 0, 152, 1 << dex_search_area_all, dex_search_bodytype_all);
+        ov18_021F7ED4(pokedexApp, pokedexApp->unk_1858, dex_order_national, dex_search_letters_all, dex_search_type_all, dex_search_type_all, 0, 152, 0, 152, 1 << dex_search_area_all, dex_search_bodytype_all);
         ov18_021F8884(pokedexApp, 1);
         ov18_021EDDB4(pokedexApp);
         GfGfxLoader_LoadCharDataFromOpenNarc(pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000001_NCGR_lz, pokedexApp->bgConfig, GF_BG_LYR_MAIN_0, 0, 0, TRUE, HEAP_ID_37);
@@ -2221,7 +2223,7 @@ int PokedexApp_MainSeq_64(PokedexAppData *pokedexApp) {
     case 0: {
         u16 r1 = ov18_021F8838(pokedexApp);
         if (r1 != SPECIES_NONE) {
-            sub_02092BD8(pokedexApp->args->unk_08, r1, pokedexApp->sortOrder);
+            sub_02092BD8(pokedexApp->args->unk_08, r1, pokedexApp->unk_1858);
         }
         sub_0201980C(pokedexApp->unk_0008, 4);
         ov18_021F2A2C(pokedexApp, 22, 0);
@@ -2931,7 +2933,7 @@ int PokedexApp_MainSeq_80(PokedexAppData *pokedexApp) {
         PlaySE(SEQ_SE_GS_GEARCANCEL);
         return ov18_021EC1DC(pokedexApp, 0, 255);
     case 4:
-        if (ov18_021EDF14(pokedexApp, -2, 2) == 1) {
+        if (ov18_021EDF14(pokedexApp, -2, 2) == TRUE) {
             if (sp14 == 1) {
                 PlaySE(SEQ_SE_GS_ZKN04);
             } else {
@@ -2943,7 +2945,7 @@ int PokedexApp_MainSeq_80(PokedexAppData *pokedexApp) {
         }
     case 5:
     case 8:
-        if (ov18_021EDF14(pokedexApp, -1, 1) == 1) {
+        if (ov18_021EDF14(pokedexApp, -1, 1) == TRUE) {
             if (sp14 == 1) {
                 PlaySE(SEQ_SE_GS_ZKN04);
             } else {
@@ -2954,7 +2956,7 @@ int PokedexApp_MainSeq_80(PokedexAppData *pokedexApp) {
             return POKEDEXAPP_MAINSEQ_80;
         }
     case 6:
-        if (ov18_021EDF14(pokedexApp, 2, 2) == 1) {
+        if (ov18_021EDF14(pokedexApp, 2, 2) == TRUE) {
             if (sp14 == 1) {
                 PlaySE(SEQ_SE_GS_ZKN04);
             } else {
@@ -2966,7 +2968,7 @@ int PokedexApp_MainSeq_80(PokedexAppData *pokedexApp) {
         }
     case 7:
     case 9:
-        if (ov18_021EDF14(pokedexApp, 1, 1) == 1) {
+        if (ov18_021EDF14(pokedexApp, 1, 1) == TRUE) {
             if (sp14 == 1) {
                 PlaySE(SEQ_SE_GS_ZKN04);
             } else {
@@ -3425,11 +3427,11 @@ int ov18_021EDC50(PokedexAppData *pokedexApp, u8 a1, u8 a2, u8 a3, u8 a4, u8 a5,
 }
 
 void ov18_021EDC74(PokedexAppData *pokedexApp, int a1) {
-    sub_02092BD8(pokedexApp->args->unk_08, ov18_021F8838(pokedexApp), pokedexApp->sortOrder);
-    pokedexApp->sortOrder = a1;
+    sub_02092BD8(pokedexApp->args->unk_08, ov18_021F8838(pokedexApp), pokedexApp->unk_1858);
+    pokedexApp->unk_1858 = a1;
     ov18_021E6A70(pokedexApp);
     ov18_021F2AC0(pokedexApp, 0);
-    ov18_021F7ED4(pokedexApp, pokedexApp->sortOrder, 0, dex_search_letters_all, dex_search_type_all, dex_search_type_all, 0, 152, 0, 152, 1 << dex_search_area_all, dex_search_bodytype_all);
+    ov18_021F7ED4(pokedexApp, pokedexApp->unk_1858, 0, dex_search_letters_all, dex_search_type_all, dex_search_type_all, 0, 152, 0, 152, 1 << dex_search_area_all, dex_search_bodytype_all);
     ov18_021EE5FC(pokedexApp);
 }
 
@@ -3459,4 +3461,92 @@ void ov18_021EDCD4(PokedexAppData *pokedexApp) {
 void ov18_021EDDA4(PokedexAppData *pokedexApp, int a1) {
     ov18_021EDC74(pokedexApp, a1);
     ov18_021EDCD4(pokedexApp);
+}
+
+void ov18_021EDDB4(PokedexAppData *pokedexApp) {
+    u32 r4 = Pokedex_ConvertToCurrentDexNo(pokedexApp->unk_1858, ov18_021F8850(&pokedexApp->unk_0878, sub_02092BE4(pokedexApp->args->unk_08))) - 1;
+    pokedexApp->unk_185A = r4 % 15;
+    pokedexApp->unk_1859 = r4 / 15;
+}
+
+BOOL ov18_021EDE04(PokedexAppData *pokedexApp) {
+    u16 species = ov18_021F8838(pokedexApp);
+    if (species == SPECIES_NONE) {
+        return FALSE;
+    }
+    u32 form = Pokedex_GetSeenFormByIdx(pokedexApp->args->pokedex, species, 0);
+    if (species == SPECIES_PICHU) {
+        if (form == PICHU_FORM_MAX) {
+            form = PICHU_SPIKY_EAR;
+        } else {
+            form = PICHU_NORMAL;
+        }
+    }
+    sub_02006E3C(1);
+    PlayCry(species, form);
+    sub_02006E3C(0);
+    return TRUE;
+}
+
+void ov18_021EDE4C(PokedexAppData *pokedexApp, int a1, int a2, int a3) {
+    PokedexAppData_UnkSub0868_State26 *r4 = &pokedexApp->unk_0868.state_26;
+
+    r4->unk_0 = a1;
+    r4->unk_1 = a3;
+    r4->unk_3 = a2;
+    r4->unk_2 = 0;
+}
+
+void ov18_021EDE64(PokedexAppData *pokedexApp) {
+    u8 r4;
+
+    if (ov18_021F8838(pokedexApp) == SPECIES_NONE) {
+        r4 = 11;
+    } else {
+        r4 = 0;
+    }
+    sub_020199F4(pokedexApp->unk_0008, 1, 8, 0, 16, 5, r4);
+    BgTilemapRectChangePalette(pokedexApp->bgConfig, GF_BG_LYR_MAIN_2, 8, 19, 16, 5, r4);
+    ScheduleBgTilemapBufferTransfer(pokedexApp->bgConfig, GF_BG_LYR_MAIN_2);
+}
+
+void ov18_021EDEB0(PokedexAppData *pokedexApp) {
+    u8 r4;
+
+    if ((pokedexApp->unk_185A == 0 && pokedexApp->unk_1859 == 0) || ov18_021F8838(pokedexApp) == SPECIES_NONE) {
+        r4 = 11;
+    } else {
+        r4 = 0;
+    }
+    sub_020199F4(pokedexApp->unk_0008, 8, 8, 0, 16, 5, r4);
+    BgTilemapRectChangePalette(pokedexApp->bgConfig, GF_BG_LYR_MAIN_2, 8, 19, 16, 5, r4);
+    ScheduleBgTilemapBufferTransfer(pokedexApp->bgConfig, GF_BG_LYR_MAIN_2);
+}
+
+BOOL ov18_021EDF14(PokedexAppData *pokedexApp, int a1, int a2) {
+    int r4 = pokedexApp->unk_18C5 + a1;
+    if (r4 < 0 || r4 >= pokedexApp->numSeenForms) {
+        return FALSE;
+    }
+
+    PokedexAppData_UnkSub0868_State26 *r1 = &pokedexApp->unk_0868.state_26;
+
+    r1->unk_0 = 0;
+    r1->unk_1 = 0;
+    r1->unk_2 = a2;
+    return TRUE;
+}
+
+void ov18_021EDF48(s8 *a0, s8 a1, int a2, u8 a3) {
+    for (u32 i = 0; i < a3; ++i) {
+        *a0 += a2;
+        if (*a0 < 0) {
+            *a0 = a3 - 1;
+        } else if (*a0 >= a3) {
+            *a0 = 0;
+        }
+        if (*a0 != a1) {
+            break;
+        }
+    }
 }

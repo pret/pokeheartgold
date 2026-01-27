@@ -1034,7 +1034,7 @@ static void ov18_021E6868(PokedexAppData *pokedexApp) {
 }
 
 void ov18_021E6A70(PokedexAppData *pokedexApp) {
-    if (pokedexApp->sortOrder == 0) {
+    if (pokedexApp->unk_1858 == 0) {
         sub_020196E8(pokedexApp->unk_0008, 2, 5, 3);
     } else {
         sub_020196E8(pokedexApp->unk_0008, 3, 5, 3);
@@ -1087,7 +1087,7 @@ u16 *ov18_021E6BB8(PokedexAppData *pokedexApp, u32 a1) {
             if (pokedexApp->unk_1030[sp4].unk_0 == SPECIES_NONE) {
                 continue;
             }
-            u32 r1 = Pokedex_ConvertToCurrentDexNo(pokedexApp->sortOrder, pokedexApp->unk_1030[sp4].unk_0);
+            u32 r1 = Pokedex_ConvertToCurrentDexNo(pokedexApp->unk_1858, pokedexApp->unk_1030[sp4].unk_0);
             if (pokedexApp->unk_1030[sp4].unk_2 == 2) {
                 ret[160 * i + 36 + 5 * j] = 0x1002;
                 PokedexApp_3DigitNumToTiles(&ret[160 * i + 37 + 5 * j], r1, 3);
@@ -1468,7 +1468,7 @@ void ov18_021E7724(PokedexAppData *pokedexApp) {
         }
     }
 
-    if (pokedexApp->sortOrder == 0) {
+    if (pokedexApp->unk_1858 == 0) {
         r5 = sub_02019B08(pokedexApp->unk_0008, 2);
         sub_02019B44(pokedexApp->unk_0008, 2, &sp1A, &sp18);
         for (i = 0; i < sp18; ++i) {
