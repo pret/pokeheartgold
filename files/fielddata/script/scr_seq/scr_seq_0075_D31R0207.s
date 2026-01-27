@@ -480,133 +480,133 @@ _0688:
 
 	.balign 4, 0
 _069C:
-	step 13, 2
-	step_end
+	WalkNormalSouth 2
+	EndMovement
 
 	.balign 4, 0
 _06A4:
-	step 0, 1
-	step_end
+	FaceNorth
+	EndMovement
 
 	.balign 4, 0
 _06AC:
-	step 13, 2
-	step 14, 1
-	step 3, 1
-	step_end
+	WalkNormalSouth 2
+	WalkNormalWest
+	FaceEast
+	EndMovement
 
 	.balign 4, 0
 _06BC:
-	step 15, 1
-	step 1, 1
-	step_end
+	WalkNormalEast
+	FaceSouth
+	EndMovement
 
 	.balign 4, 0
 _06C8:
-	step 1, 1
-	step 18, 1
-	step 3, 1
-	step_end
+	FaceSouth
+	WalkFastWest
+	FaceEast
+	EndMovement
 
 	.balign 4, 0
 _06D8:
-	step 19, 1
-	step 1, 1
-	step_end
+	WalkFastEast
+	FaceSouth
+	EndMovement
 
 	.balign 4, 0
 _06E4:
-	step 12, 2
-	step 69, 1
-	step_end
+	WalkNormalNorth 2
+	SetInvisible
+	EndMovement
 
 	.balign 4, 0
 _06F0:
-	step 12, 1
-	step 69, 1
-	step_end
+	WalkNormalNorth
+	SetInvisible
+	EndMovement
 
 	.balign 4, 0
 _06FC:
-	step 0, 1
-	step_end
+	FaceNorth
+	EndMovement
 
 	.balign 4, 0
 _0704:
-	step 16, 2
-	step 69, 1
-	step_end
+	WalkFastNorth 2
+	SetInvisible
+	EndMovement
 
 	.balign 4, 0
 _0710:
-	step 17, 1
-	step 18, 3
-	step 16, 7
-	step 18, 2
-	step_end
+	WalkFastSouth
+	WalkFastWest 3
+	WalkFastNorth 7
+	WalkFastWest 2
+	EndMovement
 
 	.balign 4, 0
 _0724:
-	step 18, 1
-	step 16, 1
-	step 18, 2
-	step 16, 5
-	step 18, 2
-	step_end
+	WalkFastWest
+	WalkFastNorth
+	WalkFastWest 2
+	WalkFastNorth 5
+	WalkFastWest 2
+	EndMovement
 
 	.balign 4, 0
 _073C:
-	step 19, 1
-	step 16, 2
-	step 19, 3
-	step_end
+	WalkFastEast
+	WalkFastNorth 2
+	WalkFastEast 3
+	EndMovement
 
 	.balign 4, 0
 _074C:
-	step 16, 2
-	step 19, 4
-	step_end
+	WalkFastNorth 2
+	WalkFastEast 4
+	EndMovement
 
 	.balign 4, 0
 _0758:
-	step 18, 1
-	step 16, 4
-	step 18, 2
-	step_end
+	WalkFastWest
+	WalkFastNorth 4
+	WalkFastWest 2
+	EndMovement
 
 	.balign 4, 0
 _0768:
-	step 16, 4
-	step 18, 3
-	step_end
+	WalkFastNorth 4
+	WalkFastWest 3
+	EndMovement
 
 	.balign 4, 0
 _0774:
-	step 17, 1
-	step 19, 4
-	step 16, 7
-	step 19, 2
-	step_end
+	WalkFastSouth
+	WalkFastEast 4
+	WalkFastNorth 7
+	WalkFastEast 2
+	EndMovement
 
 	.balign 4, 0
 _0788:
-	step 16, 1
-	step 19, 4
-	step 16, 5
-	step 19, 2
-	step_end
+	WalkFastNorth
+	WalkFastEast 4
+	WalkFastNorth 5
+	WalkFastEast 2
+	EndMovement
 
 	.balign 4, 0
 _079C:
-	step 18, 1
-	step 16, 5
-	step 19, 2
-	step_end
+	WalkFastWest
+	WalkFastNorth 5
+	WalkFastEast 2
+	EndMovement
 
 	.balign 4, 0
 _07AC:
-	step 19, 3
-	step 16, 5
-	step 18, 2
-	step_end
+	WalkFastEast 3
+	WalkFastNorth 5
+	WalkFastWest 2
+	EndMovement
 	.balign 4, 0

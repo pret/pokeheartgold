@@ -702,133 +702,133 @@ _0A71:
 
 	.balign 4, 0
 _0AC4:
-	step 75, 1
-	step_end
+	EmoteExclamationMark
+	EndMovement
 
 	.balign 4, 0
 _0ACC:
-	step 61, 1
-	step_end
+	Delay2
+	EndMovement
 
 	.balign 4, 0
 _0AD4:
-	step 13, 1
-	step_end
+	WalkNormalSouth
+	EndMovement
 
 	.balign 4, 0
 _0ADC:
-	step 13, 2
-	step_end
+	WalkNormalSouth 2
+	EndMovement
 
 	.balign 4, 0
 _0AE4:
-	step 13, 3
-	step_end
+	WalkNormalSouth 3
+	EndMovement
 
 	.balign 4, 0
 _0AEC:
-	step 13, 4
-	step_end
+	WalkNormalSouth 4
+	EndMovement
 
 	.balign 4, 0
 _0AF4:
-	step 13, 5
-	step_end
+	WalkNormalSouth 5
+	EndMovement
 
 	.balign 4, 0
 _0AFC:
-	step 13, 6
-	step_end
+	WalkNormalSouth 6
+	EndMovement
 
 	.balign 4, 0
 _0B04:
-	step 15, 1
-	step 34, 1
-	step_end
+	WalkNormalEast
+	WalkOnSpotNormalWest
+	EndMovement
 
 	.balign 4, 0
 _0B10:
-	step 12, 1
-	step 15, 1
-	step 34, 1
-	step_end
+	WalkNormalNorth
+	WalkNormalEast
+	WalkOnSpotNormalWest
+	EndMovement
 
 	.balign 4, 0
 _0B20:
-	step 12, 2
-	step 15, 1
-	step 34, 1
-	step_end
+	WalkNormalNorth 2
+	WalkNormalEast
+	WalkOnSpotNormalWest
+	EndMovement
 
 	.balign 4, 0
 _0B30:
-	step 12, 3
-	step 15, 1
-	step 34, 1
-	step_end
+	WalkNormalNorth 3
+	WalkNormalEast
+	WalkOnSpotNormalWest
+	EndMovement
 
 	.balign 4, 0
 _0B40:
-	step 12, 4
-	step 15, 1
-	step 34, 1
-	step_end
+	WalkNormalNorth 4
+	WalkNormalEast
+	WalkOnSpotNormalWest
+	EndMovement
 
 	.balign 4, 0
 _0B50:
-	step 12, 5
-	step 15, 1
-	step 34, 1
-	step_end
+	WalkNormalNorth 5
+	WalkNormalEast
+	WalkOnSpotNormalWest
+	EndMovement
 
 	.balign 4, 0
 _0B60:
-	step 12, 6
-	step 15, 1
-	step 34, 1
-	step_end
+	WalkNormalNorth 6
+	WalkNormalEast
+	WalkOnSpotNormalWest
+	EndMovement
 
 	.balign 4, 0
 _0B70:
-	step 12, 1
-	step 35, 1
-	step_end
+	WalkNormalNorth
+	WalkOnSpotNormalEast
+	EndMovement
 
 	.balign 4, 0
 _0B7C:
-	step 12, 2
-	step 35, 1
-	step_end
+	WalkNormalNorth 2
+	WalkOnSpotNormalEast
+	EndMovement
 
 	.balign 4, 0
 _0B88:
-	step 12, 3
-	step 35, 1
-	step_end
+	WalkNormalNorth 3
+	WalkOnSpotNormalEast
+	EndMovement
 
 	.balign 4, 0
 _0B94:
-	step 12, 4
-	step 35, 1
-	step_end
+	WalkNormalNorth 4
+	WalkOnSpotNormalEast
+	EndMovement
 
 	.balign 4, 0
 _0BA0:
-	step 12, 5
-	step 35, 1
-	step_end
+	WalkNormalNorth 5
+	WalkOnSpotNormalEast
+	EndMovement
 
 	.balign 4, 0
 _0BAC:
-	step 12, 6
-	step 35, 1
-	step_end
+	WalkNormalNorth 6
+	WalkOnSpotNormalEast
+	EndMovement
 
 	.balign 4, 0
 _0BB8:
-	step 12, 7
-	step 35, 1
-	step_end
+	WalkNormalNorth 7
+	WalkOnSpotNormalEast
+	EndMovement
 
 scr_seq_D37R0102_009:
 	simple_npc_msg msg_0117_D37R0102_00037
@@ -1020,77 +1020,77 @@ _0E40:
 
 	.balign 4, 0
 _0E4C:
-	step 8, 2
-	step_end
+	WalkSlowNorth 2
+	EndMovement
 
 	.balign 4, 0
 _0E54:
-	step 10, 1
-	step 8, 1
-	step_end
+	WalkSlowWest
+	WalkSlowNorth
+	EndMovement
 
 	.balign 4, 0
 _0E60:
-	step 11, 1
-	step 8, 1
-	step_end
+	WalkSlowEast
+	WalkSlowNorth
+	EndMovement
 
 	.balign 4, 0
 _0E6C:
-	step 1, 1
-	step_end
+	FaceSouth
+	EndMovement
 
 	.balign 4, 0
 _0E74:
-	step 9, 2
-	step 0, 1
-	step_end
+	WalkSlowSouth 2
+	FaceNorth
+	EndMovement
 
 	.balign 4, 0
 _0E80:
-	step 14, 1
-	step 3, 1
-	step_end
+	WalkNormalWest
+	FaceEast
+	EndMovement
 
 	.balign 4, 0
 _0E8C:
-	step 14, 1
-	step 3, 1
-	step_end
+	WalkNormalWest
+	FaceEast
+	EndMovement
 
 	.balign 4, 0
 _0E98:
-	step 15, 1
-	step 2, 1
-	step_end
+	WalkNormalEast
+	FaceWest
+	EndMovement
 
 	.balign 4, 0
 _0EA4:
-	step 15, 1
-	step 1, 1
-	step_end
+	WalkNormalEast
+	FaceSouth
+	EndMovement
 
 	.balign 4, 0
 _0EB0:
-	step 15, 1
-	step 1, 1
-	step_end
+	WalkNormalEast
+	FaceSouth
+	EndMovement
 
 	.balign 4, 0
 _0EBC:
-	step 14, 1
-	step 1, 1
-	step_end
+	WalkNormalWest
+	FaceSouth
+	EndMovement
 
 	.balign 4, 0
 _0EC8:
-	step 3, 1
-	step_end
+	FaceEast
+	EndMovement
 
 	.balign 4, 0
 _0ED0:
-	step 1, 1
-	step_end
+	FaceSouth
+	EndMovement
 
 _0ED8:
 	end
@@ -1175,35 +1175,35 @@ _0FDA:
 
 	.balign 4, 0
 _0FE8:
-	step 20, 3
-	step 22, 2
-	step 1, 1
-	step_end
+	WalkFasterNorth 3
+	WalkFasterWest 2
+	FaceSouth
+	EndMovement
 
 	.balign 4, 0
 _0FF8:
-	step 1, 1
-	step_end
+	FaceSouth
+	EndMovement
 
 	.balign 4, 0
 _1000:
-	step 21, 2
-	step 22, 4
-	step 0, 1
-	step_end
+	WalkFasterSouth 2
+	WalkFasterWest 4
+	FaceNorth
+	EndMovement
 
 	.balign 4, 0
 _1010:
-	step 21, 3
-	step 23, 2
-	step_end
+	WalkFasterSouth 3
+	WalkFasterEast 2
+	EndMovement
 
 	.balign 4, 0
 _101C:
-	step 20, 2
-	step 23, 4
-	step 2, 1
-	step_end
+	WalkFasterNorth 2
+	WalkFasterEast 4
+	FaceWest
+	EndMovement
 
 scr_seq_D37R0102_011:
 	scrcmd_609
@@ -1244,57 +1244,57 @@ _109C:
 
 	.balign 4, 0
 _10B4:
-	step 75, 1
-	step 34, 1
-	step 63, 1
-	step 14, 2
-	step_end
+	EmoteExclamationMark
+	WalkOnSpotNormalWest
+	Delay8
+	WalkNormalWest 2
+	EndMovement
 
 	.balign 4, 0
 _10C8:
-	step 75, 1
-	step 34, 1
-	step 63, 1
-	step 14, 1
-	step 13, 1
-	step 14, 1
-	step_end
+	EmoteExclamationMark
+	WalkOnSpotNormalWest
+	Delay8
+	WalkNormalWest
+	WalkNormalSouth
+	WalkNormalWest
+	EndMovement
 
 	.balign 4, 0
 _10E4:
-	step 75, 1
-	step 65, 1
-	step_end
+	EmoteExclamationMark
+	Delay16
+	EndMovement
 
 	.balign 4, 0
 _10F0:
-	step 13, 1
-	step 14, 3
-	step 0, 1
-	step 61, 1
-	step 3, 1
-	step 61, 1
-	step 1, 1
-	step 61, 1
-	step 2, 1
-	step 61, 1
-	step 14, 7
-	step_end
+	WalkNormalSouth
+	WalkNormalWest 3
+	FaceNorth
+	Delay2
+	FaceEast
+	Delay2
+	FaceSouth
+	Delay2
+	FaceWest
+	Delay2
+	WalkNormalWest 7
+	EndMovement
 
 	.balign 4, 0
 _1120:
-	step 12, 1
-	step 14, 3
-	step 0, 1
-	step 61, 1
-	step 3, 1
-	step 61, 1
-	step 1, 1
-	step 61, 1
-	step 2, 1
-	step 61, 1
-	step 14, 7
-	step_end
+	WalkNormalNorth
+	WalkNormalWest 3
+	FaceNorth
+	Delay2
+	FaceEast
+	Delay2
+	FaceSouth
+	Delay2
+	FaceWest
+	Delay2
+	WalkNormalWest 7
+	EndMovement
 
 scr_seq_D37R0102_007:
 	simple_npc_msg msg_0117_D37R0102_00027
@@ -1325,8 +1325,8 @@ _1189:
 
 	.balign 4, 0
 _11A4:
-	step 15, 2
-	step_end
+	WalkNormalEast 2
+	EndMovement
 
 scr_seq_D37R0102_012:
 	play_se SEQ_SE_DP_SELECT

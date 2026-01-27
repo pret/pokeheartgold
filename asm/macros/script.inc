@@ -2,6 +2,8 @@
 	.set ASM_SCRIPT_INC, 1
 #pragma once
 #include "constants/scrcmd.h"
+#include "macros/movement.inc"
+
     .option alignment off
 
 	.macro scrdef offset
@@ -4939,18 +4941,7 @@
 	releaseall
 	.endm
 
-	; Movement commands
-
-	.macro step type, length
-	.short \type
-	.short \length
-	.endm
-
-	.macro step_end
-	.short 254, 0
-	.endm
-
-	    /*
+	 /*
      * This flag is used by ScriptEntry and ScriptEntryEnd to control where
      * a user can add ScriptEntry commands (i.e., only at the start of the
      * input file). It is NOT meant for direct usage.

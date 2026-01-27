@@ -355,53 +355,53 @@ _05CA:
 
 	.balign 4, 0
 _05CC:
-	step 15, 2
-	step_end
+	WalkNormalEast 2
+	EndMovement
 
 	.balign 4, 0
 _05D4:
-	step 14, 2
-	step_end
+	WalkNormalWest 2
+	EndMovement
 
 	.balign 4, 0
 _05DC:
-	step 14, 2
-	step_end
+	WalkNormalWest 2
+	EndMovement
 
 	.balign 4, 0
 _05E4:
-	step 15, 2
-	step_end
+	WalkNormalEast 2
+	EndMovement
 
 	.balign 4, 0
 _05EC:
-	step 13, 2
-	step_end
+	WalkNormalSouth 2
+	EndMovement
 
 	.balign 4, 0
 _05F4:
-	step 12, 2
-	step_end
+	WalkNormalNorth 2
+	EndMovement
 
 	.balign 4, 0
 _05FC:
-	step 12, 2
-	step_end
+	WalkNormalNorth 2
+	EndMovement
 
 	.balign 4, 0
 _0604:
-	step 13, 2
-	step_end
+	WalkNormalSouth 2
+	EndMovement
 
 	.balign 4, 0
 _060C:
-	step 15, 2
-	step_end
+	WalkNormalEast 2
+	EndMovement
 
 	.balign 4, 0
 _0614:
-	step 14, 2
-	step_end
+	WalkNormalWest 2
+	EndMovement
 
 scr_seq_D37R0104_004:
 	scrcmd_609
@@ -457,22 +457,22 @@ _06D9:
 
 	.balign 4, 0
 _06E0:
-	step 62, 6
-	step 14, 3
-	step 13, 1
-	step 14, 4
-	step_end
+	Delay4 6
+	WalkNormalWest 3
+	WalkNormalSouth
+	WalkNormalWest 4
+	EndMovement
 
 	.balign 4, 0
 _06F4:
-	step 75, 1
-	step 15, 1
-	step_end
+	EmoteExclamationMark
+	WalkNormalEast
+	EndMovement
 
 	.balign 4, 0
 _0700:
-	step 15, 4
-	step 12, 1
-	step 15, 4
-	step_end
+	WalkNormalEast 4
+	WalkNormalNorth
+	WalkNormalEast 4
+	EndMovement
 	.balign 4, 0
