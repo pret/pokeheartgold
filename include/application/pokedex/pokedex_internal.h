@@ -314,6 +314,9 @@ struct PokedexAppData {
     s8 unk_18C8;                                    // 0x18C8
     s8 unk_18C9;                                    // 0x18C9
     s8 unk_18CA;                                    // 0x18CA
+    u8 unk_18CB_0 : 6;                              // 0x18CB
+    u8 unk_18CB_6 : 1;                              // 0x18CB
+    u8 unk_18CB_7 : 1;                              // 0x18CB
     PokedexAppData_UnkSub18CC unk_18CC;             // 0x18CC
     PokedexAppData_UnkSub18DC unk_18DC;             // 0x18DC
     PokedexAppData_UnkSub1908 *unk_1908;            // 0x1908
