@@ -25,10 +25,10 @@ typedef struct BerryPot {
     u8 growthStage;
     u16 unk_2;
     u16 unk_4;
-    u16 unk_6;
+    u16 yield;
     u8 unk_8;
     u8 moisture;
-    u8 unk_A;
+    u8 baseYield;
     u8 mulch;
 } BerryPot;
 

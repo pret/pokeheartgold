@@ -76,7 +76,7 @@
 .public sub_02006300
 .public IsCryFinished
 .public PlayCryEx
-.public sub_02006920
+.public PlayCryVariant
 .public PlayFanfare
 .public sub_02006B84
 .public IsFanfarePlaying

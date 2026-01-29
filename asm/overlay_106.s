@@ -1855,24 +1855,24 @@ _021E6720:
 	mov r1, #5
 	mov r2, #0
 	add r6, r0, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	ldr r1, _021E6810 ; =0x000001ED
 	cmp r0, r1
 	bne _021E675E
 	add r0, r6, #0
 	mov r1, #0x6f
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	lsl r0, r0, #0x10
 	lsr r4, r0, #0x10
 	add r0, r6, #0
 	mov r1, #0x70
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	lsl r0, r0, #0x10
 	lsr r5, r0, #0x10
 	add r0, r6, #0
-	bl MonIsShiny
+	bl Pokemon_IsShiny
 	str r0, [sp, #0x14]
 	b _021E6764
 _021E675E:

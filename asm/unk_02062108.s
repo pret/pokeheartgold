@@ -546,7 +546,7 @@ sub_0206247C: ; 0x0206247C
 	bl MapObject_SetFacingDirection
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0205F328
+	bl MapObject_SetUnkA0
 	add r0, r4, #0
 	bl sub_02060F78
 	add r0, r4, #0
@@ -615,7 +615,7 @@ sub_020624CC: ; 0x020624CC
 	add r1, sp, #8
 	ldrh r1, [r1, #0x10]
 	add r0, r5, #0
-	bl sub_0205F328
+	bl MapObject_SetUnkA0
 	add r0, r5, #0
 	mov r1, #4
 	bl MapObject_SetFlagsBits
@@ -656,7 +656,7 @@ _02062540:
 	bl sub_0205F484
 	add r0, r5, #0
 	mov r1, #0
-	bl sub_0205F328
+	bl MapObject_SetUnkA0
 	add r0, r5, #0
 	bl MapObject_IncrementMovementStep
 	mov r0, #1
@@ -1057,7 +1057,7 @@ sub_020627B0: ; 0x020627B0
 	bl MapObject_SetFacingDirection
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_0205F328
+	bl MapObject_SetUnkA0
 	add r0, r5, #0
 	bl sub_02060F78
 	add r0, r5, #0
@@ -1085,7 +1085,7 @@ _020627FE:
 	bl MapObject_SetFlagsBits
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0205F328
+	bl MapObject_SetUnkA0
 	add r0, r4, #0
 	bl MapObject_IncrementMovementStep
 	mov r0, #1
@@ -1351,7 +1351,7 @@ _02062992:
 	add r1, sp, #8
 	ldrh r1, [r1, #0x10]
 	add r0, r5, #0
-	bl sub_0205F328
+	bl MapObject_SetUnkA0
 	add r0, r5, #0
 	bl MapObject_IncrementMovementStep
 	add r0, r5, #0
@@ -1462,7 +1462,7 @@ _02062A68:
 	bl sub_0205F484
 	add r0, r5, #0
 	mov r1, #0
-	bl sub_0205F328
+	bl MapObject_SetUnkA0
 	add r0, r5, #0
 	bl MapObject_IncrementMovementStep
 	add r0, r5, #0
@@ -1980,7 +1980,7 @@ MapObjectMovementCmd067_Step0: ; 0x02062DE0
 	str r1, [r0, #4]
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0205F328
+	bl MapObject_SetUnkA0
 	add r0, r4, #0
 	bl MapObject_IncrementMovementStep
 	mov r0, #1
@@ -2039,7 +2039,7 @@ MapObjectMovementCmd068_Step0: ; 0x02062E4C
 	str r1, [r0, #4]
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0205F328
+	bl MapObject_SetUnkA0
 	add r0, r4, #0
 	bl MapObject_IncrementMovementStep
 	mov r0, #1
@@ -2245,7 +2245,7 @@ sub_02062FAC: ; 0x02062FAC
 	bl MapObject_SetOrQueueFacing
 	add r0, r5, #0
 	add r1, r6, #0
-	bl sub_0205F328
+	bl MapObject_SetUnkA0
 	add r0, r5, #0
 	mov r1, #4
 	bl MapObject_SetFlagsBits
@@ -2293,7 +2293,7 @@ _02063026:
 	bl sub_0205F484
 	add r0, r5, #0
 	mov r1, #0
-	bl sub_0205F328
+	bl MapObject_SetUnkA0
 	add r0, r5, #0
 	bl MapObject_IncrementMovementStep
 	mov r0, #1
@@ -2488,7 +2488,7 @@ MapObjectMovementCmd100_Step0: ; 0x02063154
 	bl sub_0205F3C0
 	add r0, r4, #0
 	mov r1, #9
-	bl sub_0205F328
+	bl MapObject_SetUnkA0
 	add r0, r4, #0
 	bl MapObject_IncrementMovementStep
 	mov r0, #0
@@ -2510,7 +2510,7 @@ MapObjectMovementCmd100_Step1: ; 0x02063170
 	bl MapObject_SetFacingDirection
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0205F328
+	bl MapObject_SetUnkA0
 	add r0, r4, #0
 	bl MapObject_IncrementMovementStep
 _02063198:
@@ -2613,7 +2613,7 @@ MapObjectMovementCmd102_Step0: ; 0x02063258
 	bl sub_0205F3C0
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0205F328
+	bl MapObject_SetUnkA0
 	add r0, r4, #0
 	bl MapObject_IncrementMovementStep
 	mov r0, #0
@@ -2628,7 +2628,7 @@ MapObjectMovementCmd104_Step0: ; 0x02063274
 	bl sub_0205F3C0
 	add r0, r4, #0
 	mov r1, #1
-	bl sub_0205F328
+	bl MapObject_SetUnkA0
 	add r0, r4, #0
 	bl MapObject_IncrementMovementStep
 	mov r0, #0

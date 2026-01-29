@@ -59,7 +59,7 @@ _02092B52:
 	cmp r0, #0
 	beq _02092B6A
 	ldr r0, [r4, #4]
-	bl sub_0207791C
+	bl BagView_GetUnk75
 	mov r1, #0x2a
 	lsl r1, r1, #4
 	ldr r1, [r4, r1]

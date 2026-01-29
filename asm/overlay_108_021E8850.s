@@ -2758,7 +2758,7 @@ ov108_021E9E10: ; 0x021E9E10
 	add r1, r1, #4
 	ldr r1, [r4, r1]
 	ldr r2, _021E9E7C ; =ov108_021EAAB0
-	bl sub_0200D2A4
+	bl SpriteSystem_LoadResourceDataFromFilepathsCustomMode
 	ldr r0, [r4]
 	bl thunk_ClearMainOAM
 	ldr r0, [r4]

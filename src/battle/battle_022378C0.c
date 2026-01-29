@@ -172,7 +172,7 @@ void ov12_02237B0C(BattleSystem *battleSystem) {
     BgConfig_CleanupBattleMenuBackgrounds(battleSystem->bgConfig);
     battleSystem->unk240E_F = 1;
     FontID_Release(4);
-    ov12_0223BBF0(battleSystem, 3);
+    BattleSystem_SetUnk23FD(battleSystem, 3);
 
     if (battleSystem->unk2445 == 0) {
         UnloadOverlayByID(FS_OVERLAY_ID(OVY_7));
@@ -203,7 +203,7 @@ void ov12_02237BB8(BattleSystem *battleSystem) {
         HandleLoadOverlay(FS_OVERLAY_ID(OVY_10), OVY_LOAD_ASYNC);
     }
 
-    ov12_0223BBF0(battleSystem, 0);
+    BattleSystem_SetUnk23FD(battleSystem, 0);
 
     int size = sub_02026E9C();
     void *data = GetSubBgPlttAddr();
@@ -212,7 +212,7 @@ void ov12_02237BB8(BattleSystem *battleSystem) {
     NARC *unkNarcA = NARC_New(NARC_a_0_0_7, HEAP_ID_BATTLE);
     NARC *unkNarcB = NARC_New(NARC_a_0_0_8, HEAP_ID_BATTLE);
 
-    battleSystem->battleInput = BattleInput_NewInit(unkNarcA, unkNarcB, battleSystem, BattleSystem_GetTrainerGender(battleSystem, ov12_0223BFC0(battleSystem)), battleSystem->unk1C0);
+    battleSystem->battleInput = BattleInput_NewInit(unkNarcA, unkNarcB, battleSystem, BattleSystem_GetTrainerGender(battleSystem, BattleSystem_GetUnk2446(battleSystem)), battleSystem->unk1C0);
 
     FontID_Alloc(4, HEAP_ID_BATTLE);
 

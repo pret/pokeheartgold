@@ -782,7 +782,7 @@ sub_020062E0: ; 0x020062E0
 	str r2, [sp, #8]
 	add r2, r0, #0
 	mov r3, #0x7f
-	bl sub_02006920
+	bl PlayCryVariant
 	mov r0, #1
 	add sp, #0xc
 	pop {pc}
@@ -1503,8 +1503,8 @@ _0200691A:
 	pop {r3, r4, r5, pc}
 	thumb_func_end sub_020068F8
 
-	thumb_func_start sub_02006920
-sub_02006920: ; 0x02006920
+	thumb_func_start PlayCryVariant
+PlayCryVariant: ; 0x02006920
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x28
 	add r6, r0, #0
@@ -1613,7 +1613,7 @@ _02006A04:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _02006A08: .word 0x000001EE
-	thumb_func_end sub_02006920
+	thumb_func_end PlayCryVariant
 
 	thumb_func_start sub_02006A0C
 sub_02006A0C: ; 0x02006A0C

@@ -194,11 +194,11 @@ void Bag_LaunchApp(FieldSystem *fieldSystem, BagView *args) {
 BagView *sub_0203E3FC(FieldSystem *fieldSystem, ItemCheckUseData *taskman) {
     BagView *bagView = Bag_CreateView(Save_Bag_Get(fieldSystem->saveData), sAllPockets, HEAP_ID_FIELD2);
     sub_0207789C(bagView, fieldSystem->saveData, 0, fieldSystem->bagCursor, &fieldSystem->menuInputState);
-    sub_020778E8(bagView, fieldSystem->unk70);
+    BagView_SetUnk76_1(bagView, fieldSystem->unk70);
     if (PlayerAvatar_GetState(fieldSystem->playerAvatar) == PLAYER_STATE_CYCLING) {
-        sub_020778C8(bagView);
+        BagView_SetUnk76_0True(bagView);
     }
-    sub_020778DC(bagView, taskman);
+    BagView_SetCheckUseData(bagView, taskman);
     Bag_LaunchApp(fieldSystem, bagView);
     return bagView;
 }
@@ -228,7 +228,7 @@ BagView *Bag_LaunchApp_WithPocket(FieldSystem *fieldSystem, u8 pocketType) {
 
 int BagView_SelectResult(BagView *bagView) {
     int result = BagView_GetItemId(bagView);
-    GF_ASSERT(result == 0 || sub_0207790C(bagView) != 5);
+    GF_ASSERT(result == 0 || BagView_GetUnk68(bagView) != 5);
     return result;
 }
 
@@ -282,11 +282,11 @@ PartyMenuArgs *PartyMenu_LaunchApp_Unk4(enum HeapID heapID, FieldSystem *fieldSy
     return args;
 }
 
-int sub_0203E5F8(PartyMenuArgs *partyWork) {
+int PartyMenu_GetSelectedAction(PartyMenuArgs *partyWork) {
     return partyWork->selectedAction;
 }
 
-u16 sub_0203E600(UnkStruct_0203E600 *a0) {
+u16 PartyMenu_GetUnk14(UnkStruct_0203E600 *a0) {
     return a0->unk14;
 }
 
@@ -878,8 +878,8 @@ static void InitWirelessTradeSelectMonArgs(WirelessTradeSelectMonArgs *args, Fie
     args->saveData = fieldSystem->saveData;
     args->gameStats = Save_GameStats_Get(fieldSystem->saveData);
     args->partnerProfile = Heap_Alloc(HEAP_ID_FIELD3, PlayerProfile_sizeof());
-    args->unk38 = Heap_Alloc(HEAP_ID_FIELD3, sub_02070D90());
-    args->unk3C = Heap_Alloc(HEAP_ID_FIELD3, sub_02070D90());
+    args->unk38 = Heap_Alloc(HEAP_ID_FIELD3, GetSizeOfBoxAndPartyStorages());
+    args->unk3C = Heap_Alloc(HEAP_ID_FIELD3, GetSizeOfBoxAndPartyStorages());
     args->fieldSystem = fieldSystem;
     args->unk30 = 0;
 }
@@ -928,8 +928,8 @@ static BOOL Task_WirelessTrade(TaskManager *taskman) {
         break;
     case WIRELESS_TRADE_STATE_4:
         data->tradeSequence.partnerProfile = data->wirelessTradeSelectMon.partnerProfile;
-        data->tradeSequence.unk0 = Mon_GetBoxMon(data->wirelessTradeSelectMon.unk38);
-        data->tradeSequence.unk4 = Mon_GetBoxMon(data->wirelessTradeSelectMon.unk3C);
+        data->tradeSequence.unk0 = Pokemon_GetBox(data->wirelessTradeSelectMon.unk38);
+        data->tradeSequence.unk4 = Pokemon_GetBox(data->wirelessTradeSelectMon.unk3C);
         data->tradeSequence.options = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);
         data->tradeSequence.unk10 = 1;
 
@@ -954,8 +954,8 @@ static BOOL Task_WirelessTrade(TaskManager *taskman) {
         data->state = WIRELESS_TRADE_STATE_5;
         break;
     case WIRELESS_TRADE_STATE_5:
-        int heldItem = GetMonData(data->wirelessTradeSelectMon.unk3C, MON_DATA_HELD_ITEM, NULL);
-        int species = GetMonEvolution(NULL, data->wirelessTradeSelectMon.unk3C, EVOCTX_TRADE, heldItem, (int *)&evolutionCondition);
+        int heldItem = Pokemon_GetMonData(data->wirelessTradeSelectMon.unk3C, MON_DATA_HELD_ITEM, NULL);
+        int species = Pokemon_GetEvolution(NULL, data->wirelessTradeSelectMon.unk3C, EVOCTX_TRADE, heldItem, (int *)&evolutionCondition);
         if (species != SPECIES_NONE) {
             Heap_Create(HEAP_ID_3, HEAP_ID_26, 0x30000);
             data->tradeSequence.evolutionTaskData = sub_02075A7C(NULL, data->wirelessTradeSelectMon.unk3C, species, Save_PlayerData_GetOptionsAddr(fieldSystem->saveData), sub_02088288(fieldSystem->saveData), Save_Pokedex_Get(fieldSystem->saveData), Save_Bag_Get(fieldSystem->saveData), Save_GameStats_Get(fieldSystem->saveData), evolutionCondition, 4, HEAP_ID_26);
@@ -1093,7 +1093,7 @@ static void SetName(TaskManager *taskman) {
         } else {
             mon = Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->saveData), data->partyIdx);
         }
-        SetMonData(mon, MON_DATA_NICKNAME_FLAT_COMPARE, data->args->nameInputFlat);
+        Pokemon_SetData(mon, MON_DATA_NICKNAME_FLAT_COMPARE, data->args->nameInputFlat);
         break;
     case NAME_SCREEN_GROUP:
         SAV_FRIEND_GRP *friendGroup = Save_FriendGroup_Get(fieldSystem->saveData);
@@ -1124,8 +1124,8 @@ void CallTask_NamingScreen(TaskManager *taskman, NameScreenType type, int specie
         } else {
             mon = Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->saveData), data->partyIdx);
         }
-        data->args->monGender = GetMonData(mon, MON_DATA_GENDER, NULL);
-        data->args->monForm = GetMonData(mon, MON_DATA_FORM, NULL);
+        data->args->monGender = Pokemon_GetMonData(mon, MON_DATA_GENDER, NULL);
+        data->args->monForm = Pokemon_GetMonData(mon, MON_DATA_FORM, NULL);
         if (defaultStr != NULL) {
             CopyU16ArrayToString(data->unk10, defaultStr);
         }
@@ -1255,7 +1255,7 @@ void MoveRelearner_LaunchApp(FieldSystem *menuInputStatePtr, MoveRelearnerArgs *
 void HatchEggInParty(FieldSystem *fieldSystem) {
     UnkStruct_02091240 data;
 
-    Pokemon *mon = sub_0206CE44(SaveArray_Party_Get(fieldSystem->saveData));
+    Pokemon *mon = GetEggInParty(SaveArray_Party_Get(fieldSystem->saveData));
     GF_ASSERT(mon != NULL);
 
     data.mon = mon;

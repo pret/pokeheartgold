@@ -23,8 +23,8 @@ u16 PhoneCall_GetScriptId_DayCareMan(PokegearPhoneCallContext *ctx, PokegearPhon
     state->miscPtr.daycare = daycare;
     state->sharedU8var = 0;
     for (i = 0; i < 2; ++i) {
-        mon = Save_Daycare_GetMonX(daycare, i);
-        if (GetBoxMonData(DaycareMon_GetBoxMon(mon), MON_DATA_SPECIES, NULL) != SPECIES_NONE) {
+        mon = Daycare_GetMonX(daycare, i);
+        if (BoxPokemon_GetData(DaycareMon_GetBoxMon(mon), MON_DATA_SPECIES, NULL) != SPECIES_NONE) {
             BufferBoxMonNickname(ctx->msgFormat, 10 + i, DaycareMon_GetBoxMon(mon));
             ++state->sharedU8var;
         }
@@ -48,7 +48,7 @@ BOOL GearPhoneCall_DayCareMan(PokegearPhoneCallContext *ctx) {
         if (!PhoneCall_IsMessageDonePrinting(ctx)) {
             return FALSE;
         }
-        if (Save_Daycare_HasEgg(state->miscPtr.daycare)) {
+        if (Daycare_HasEgg(state->miscPtr.daycare)) {
             PhoneCallMessagePrint_Ungendered(ctx, ctx->msgData_PhoneContact, msg_0661_00003);
             state->scriptState = 255;
         } else if (state->sharedU8var == 0) {

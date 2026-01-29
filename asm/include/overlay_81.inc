@@ -54,7 +54,7 @@
 .public AddPlttResObjFromNarc
 .public AddCellOrAnimResObjFromNarc
 .public sub_0200ACF0
-.public sub_0200AEB0
+.public SpriteResource_ResetTransferTasks
 .public sub_0200AF94
 .public sub_0200B0A8
 .public OamManager_Create
@@ -178,11 +178,11 @@
 .public sub_02037BEC
 .public sub_0203A880
 .public sub_0203A914
-.public GetMonData
+.public Pokemon_GetMonData
 .public GetMonBaseStat_HandleAlternateForm
-.public GetMonGender
-.public GetPokemonSpriteCharAndPlttNarcIds
-.public Mon_GetBoxMon
+.public Pokemon_GetGender
+.public PokepicTemplate_GetPokemonSpriteCharAndPlttNarcIds
+.public Pokemon_GetBox
 .public GetMonIconNaixEx
 .public GetMonIconPaletteEx
 .public sub_02074490

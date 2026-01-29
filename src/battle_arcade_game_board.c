@@ -1172,7 +1172,7 @@ static void ov84_0223F1BC(GAME_BOARD_WORK *work) {
 
     for (i = 0; i < partyCount; i++) {
         mon = Party_GetMonByIndex(work->playerParty, i);
-        if (GetMonData(mon, 6, NULL) == 0) {
+        if (Pokemon_GetMonData(mon, 6, NULL) == 0) {
             BattleArcadeObj_SetVisible(work->itemA[i], 0);
         } else {
             BattleArcadeObj_SetVisible(work->itemA[i], 1);
@@ -1181,7 +1181,7 @@ static void ov84_0223F1BC(GAME_BOARD_WORK *work) {
 
     for (i = 0; i < opponentPartyCount; i++) {
         mon = Party_GetMonByIndex(work->opponentParty, i);
-        if (GetMonData(mon, 6, NULL) == 0) {
+        if (Pokemon_GetMonData(mon, 6, NULL) == 0) {
             BattleArcadeObj_SetVisible(work->itemB[i], 0);
         } else {
             BattleArcadeObj_SetVisible(work->itemB[i], 1);
@@ -1282,7 +1282,7 @@ static void ov84_0223F418(GAME_BOARD_SUB_3E8 *work) {
     u8 i;
 
     for (i = 0; i < 11; i++) {
-        sub_0200AEB0(work->resourceObj[i][GF_GFX_RES_TYPE_CHAR]);
+        SpriteResource_ResetTransferTasks(work->resourceObj[i][GF_GFX_RES_TYPE_CHAR]);
     }
 
     for (i = 0; i < 4; i++) {

@@ -447,13 +447,13 @@ _0222A184:
 	mov r1, #0xa3
 	mov r2, #0
 	add r6, r0, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	cmp r0, #0
 	beq _0222A1AA
 	add r0, r6, #0
 	mov r1, #0x4c
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	cmp r0, #0
 	bne _0222A1AA
 	add r5, r5, #1
@@ -3201,13 +3201,13 @@ _0222B7C0:
 	mov r1, #5
 	mov r2, #0
 	add r7, r0, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	ldr r1, [r5, #4]
 	mov r2, #0
 	strh r0, [r1, r4]
 	add r0, r7, #0
 	mov r1, #6
-	bl GetMonData
+	bl Pokemon_GetMonData
 	ldr r1, [r5, #4]
 	add r6, r6, #1
 	add r1, r1, r4
@@ -15003,7 +15003,7 @@ _022316D6:
 	blt _022316D6
 	ldr r0, _02231718 ; =0x00000D28
 	ldr r0, [r5, r0]
-	bl sub_0200AEB0
+	bl SpriteResource_ResetTransferTasks
 	ldr r0, _0223171C ; =0x00000D2C
 	ldr r0, [r5, r0]
 	bl sub_0200B0A8
@@ -16830,7 +16830,7 @@ ov44_0223247C: ; 0x0223247C
 	mov r0, #0x4f
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_0200AEB0
+	bl SpriteResource_ResetTransferTasks
 	mov r0, #5
 	lsl r0, r0, #6
 	ldr r0, [r5, r0]

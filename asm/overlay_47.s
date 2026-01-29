@@ -1166,7 +1166,7 @@ ov47_0225912C: ; 0x0225912C
 	ldr r0, [r5, #0x14]
 	bl Sprite_Delete
 	ldr r0, [r5, #0x18]
-	bl sub_0200AEB0
+	bl SpriteResource_ResetTransferTasks
 	ldr r0, [r5, #0x1c]
 	bl sub_0200B0A8
 	mov r7, #0x13

@@ -21,10 +21,10 @@
 .public sub_0205C218
 .public sub_0205C268
 .public AllocMonZeroed
-.public GetMonData
-.public SetMonData
+.public Pokemon_GetMonData
+.public Pokemon_SetData
 .public CopyPokemonToPokemon
-.public sub_0207217C
+.public Pokemon_UpdateAfterCatch
 .public SaveArray_Party_Init
 .public Party_InitWithMaxSize
 .public Party_AddMon

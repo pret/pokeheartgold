@@ -355,7 +355,7 @@ BOOL ScrCmd_BufferPartyMonMoveName(ScriptContext *ctx) {
 
     Party *party = SaveArray_Party_Get(fieldSystem->saveData);
     Pokemon *mon = Party_GetMonByIndex(party, party_slot);
-    u16 move_id = GetMonData(mon, MON_DATA_MOVE1 + move_slot, NULL);
+    u16 move_id = Pokemon_GetMonData(mon, MON_DATA_MOVE1 + move_slot, NULL);
     BufferMoveName(*msg_fmt, idx, move_id);
 
     return FALSE;

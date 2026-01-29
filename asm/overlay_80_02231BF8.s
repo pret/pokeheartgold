@@ -528,7 +528,7 @@ _02232002:
 	bl Party_GetMonByIndex
 	mov r1, #6
 	add r2, r6, #0
-	bl SetMonData
+	bl Pokemon_SetData
 	add r5, r5, #1
 	add r6, r6, #2
 	cmp r5, #3

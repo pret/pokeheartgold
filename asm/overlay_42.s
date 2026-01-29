@@ -1264,7 +1264,7 @@ ov42_0222797C: ; 0x0222797C
 	mul r4, r0
 	add r6, #0x14
 	ldr r0, [r6, r4]
-	bl sub_0200AEB0
+	bl SpriteResource_ResetTransferTasks
 	add r7, r5, #0
 	add r7, #0x18
 	ldr r0, [r7, r4]
@@ -1296,7 +1296,7 @@ ov42_022279C0: ; 0x022279C0
 	add r5, #0x14
 	mul r4, r0
 	ldr r0, [r5, r4]
-	bl sub_0200AEB0
+	bl SpriteResource_ResetTransferTasks
 	ldr r0, _022279E4 ; =0x000022F0
 	ldr r1, [r5, r4]
 	ldr r0, [r6, r0]
@@ -1464,7 +1464,7 @@ ov42_02227B04: ; 0x02227B04
 	bne _02227B4C
 	ldr r0, _02227B50 ; =0x000022B8
 	ldr r0, [r5, r0]
-	bl sub_0200AEB0
+	bl SpriteResource_ResetTransferTasks
 	ldr r1, _02227B54 ; =0x000022F0
 	ldr r0, [r5, r1]
 	sub r1, #0x38

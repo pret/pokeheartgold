@@ -139,8 +139,8 @@ void FieldSystem_RestoreMapObjectsFromSave(FieldSystem *fieldSystem) {
 
     if (follower != NULL && follower->objId == obj_partner_poke) {
         mon = GetFirstAliveMonInParty_CrashIfNone(SaveArray_Party_Get(fieldSystem->saveData));
-        species = GetMonData(mon, MON_DATA_SPECIES, NULL);
-        form = GetMonData(mon, MON_DATA_FORM, NULL);
+        species = Pokemon_GetMonData(mon, MON_DATA_SPECIES, NULL);
+        form = Pokemon_GetMonData(mon, MON_DATA_FORM, NULL);
         if (species != SPECIES_SHAYMIN) {
             GF_ASSERT(FALSE);
         } else if (form == SHAYMIN_LAND) {

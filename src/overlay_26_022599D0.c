@@ -3,7 +3,7 @@
 #include "map_object.h"
 #include "overlay_26.h"
 
-static LocalMapObject *ov26_02259A24(FieldSystem *fieldSystem, LocalMapObject *a1, BOOL a2);
+static LocalMapObject *ov26_02259A24(FieldSystem *fieldSystem, LocalMapObject *mapObject, BOOL alwaysTrue);
 
 static void ov26_022599D0(LocalMapObject *last_talked, u16 movement) {
     sub_0205FC94(last_talked, movement);
@@ -34,9 +34,9 @@ void ov26_022599D8(FieldSystem *fieldSystem, LocalMapObject *last_talked) {
     ov26_022599D0(last_talked, movement);
 }
 
-static LocalMapObject *ov26_02259A24(FieldSystem *fieldSystem, LocalMapObject *a1, BOOL a2) {
+static LocalMapObject *ov26_02259A24(FieldSystem *fieldSystem, LocalMapObject *mapObject, BOOL alwaysTrue) {
     u32 num_events = Field_GetNumObjectEvents(fieldSystem);
-    u16 script = MapObject_GetScriptID(a1);
+    u16 script = MapObject_GetScriptID(mapObject);
     u32 trainer = ScriptNumToTrainerNum(script);
 
     if (!TrainerNumIsDouble(trainer)) {
@@ -49,7 +49,7 @@ static LocalMapObject *ov26_02259A24(FieldSystem *fieldSystem, LocalMapObject *a
             continue;
         }
 
-        if (!a2 && MapObject_GetMovement(object) == 49) {
+        if (!alwaysTrue && MapObject_GetMovement(object) == 49) {
             continue;
         }
 

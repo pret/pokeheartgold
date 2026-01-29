@@ -36,7 +36,7 @@
 .public AddCharResObjFromOpenNarc
 .public AddCellOrAnimResObjFromOpenNarc
 .public sub_0200ACF0
-.public sub_0200AEB0
+.public SpriteResource_ResetTransferTasks
 .public sub_0200AF94
 .public sub_0200B0A8
 .public OamManager_Create
@@ -137,7 +137,7 @@
 .public sub_02037BEC
 .public sub_0203A880
 .public sub_0203A914
-.public GetMonData
+.public Pokemon_GetMonData
 .public Pokemon_GetIconNaix
 .public Pokemon_GetIconPalette
 .public sub_02074490

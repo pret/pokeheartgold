@@ -7511,11 +7511,11 @@ ov41_02249604: ; 0x02249604
 	add r0, r6, #0
 	mov r1, #5
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	add r0, r4, #0
 	add r1, r6, #0
 	mov r2, #2
-	bl sub_02070130
+	bl PokepicTemplate_GetPokemonSpriteCharAndPlttNarcIds_DP
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -7561,7 +7561,7 @@ ov41_02249604: ; 0x02249604
 	bl ov41_02249978
 	add r0, r6, #0
 	mov r1, #2
-	bl sub_02070848
+	bl BoxPokemon_GetPicHeight_DP
 	mov r2, #0
 	str r2, [sp]
 	add r7, r0, #0
@@ -11114,7 +11114,7 @@ ov41_0224B084: ; 0x0224B084
 	add r5, r0, #0
 	ldr r0, [r5]
 	add r4, r1, #0
-	bl sub_0200AEB0
+	bl SpriteResource_ResetTransferTasks
 	ldr r0, [r5, #4]
 	bl sub_0200B0A8
 	ldr r0, [r4]

@@ -19,7 +19,7 @@
 .public MapObject_GetSpriteID
 .public MapObject_SetFacingDirectionDirect
 .public MapObject_GetFacingDirection
-.public sub_0205F330
+.public MapObject_GetUnkA0
 .public MapObject_GetManager
 .public sub_0205F3E8
 .public sub_0205F40C
@@ -42,9 +42,9 @@
 .public FollowMon_SetObjectParams
 .public FieldSystem_SetFollowerPokeParam
 .public FieldSystem_UnkSub108_Set
-.public GetMonData
-.public GetMonGender
-.public MonIsShiny
+.public Pokemon_GetMonData
+.public Pokemon_GetGender
+.public Pokemon_IsShiny
 .public SaveArray_Party_Get
 .public _s32_div_f
 .public ov01_021F1640

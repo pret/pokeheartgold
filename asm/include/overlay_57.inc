@@ -35,7 +35,7 @@
 .public Pokepic_SetAttr
 .public Pokepic_GetAttr
 .public Pokepic_AddAttr
-.public sub_0200914C
+.public Pokepic_AdjustYOffset
 .public PokepicManager_HandleLoadImgAndOrPltt
 .public NewMsgDataFromNarc
 .public DestroyMsgData
@@ -190,11 +190,11 @@
 .public Save_GameStats_Get
 .public GameStats_AddScore
 .public AllocMonZeroed
-.public GetMonData
-.public SetMonData
-.public GetMonNature
-.public GetPokemonSpriteCharAndPlttNarcIds
-.public sub_0207083C
+.public Pokemon_GetMonData
+.public Pokemon_SetData
+.public Pokemon_GetNature
+.public PokepicTemplate_GetPokemonSpriteCharAndPlttNarcIds
+.public BoxPokemon_GetPicHeight
 .public CopyPokemonToPokemon
 .public NARC_ReadPokepicAnimScript
 .public sub_0207294C

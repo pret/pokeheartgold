@@ -163,7 +163,7 @@ void ov17_022037C8(BerryPotsAppData *data, BOOL a1) {
 
     u32 minutesDelta = (timestamp1 - timestamp2) / 60;
     if (minutesDelta > 0) {
-        ov16_02201760(data->berryPots, data->berryGrowthProperties, minutesDelta);
+        BerryPots_DoTimedTasks(data->berryPots, data->berryGrowthProperties, minutesDelta);
         ov17_0220387C(data);
         BerryPots_SetBerryDatetime(data->berryDatetime, date1, time1);
         if (a1) {
@@ -180,12 +180,12 @@ void ov17_0220387C(BerryPotsAppData *data) {
 
         data->unk20[i].berryId = BerryPots_GetPotBerryId(data->berryPots, i);
         data->unk20[i].growthStage = BerryPots_GetPotGrowthStage(data->berryPots, i);
-        data->unk20[i].unk2 = ov16_022015EC(data->berryPots, i);
+        data->unk20[i].unk2 = BerryPots_GetUnk_AIndex(data->berryPots, i);
         data->unk20[i].moisture = BerryPots_GetPotMoisture(data->berryPots, i);
         data->unk20[i].mulch = BerryPots_GetPotMulch(data->berryPots, i);
-        data->unk20[i].quantityOrYieldMaybe = ov16_02201668(data->berryPots, i);
-        data->unk20[i].unk6 = ov16_022015F8(data->berryPots, i);
-        data->unk20[i].unk8 = ov16_02201604(data->berryPots, i);
+        data->unk20[i].quantityOrYieldMaybe = BerryPots_GetYieldIndex(data->berryPots, i);
+        data->unk20[i].unk6 = BerryPots_GetUnk_2Index(data->berryPots, i);
+        data->unk20[i].unk8 = BerryPots_GetUnk_4Index(data->berryPots, i);
         data->unk20[i].soilState = BerryPots_GetSoilState(data->berryPots, i);
     }
 }

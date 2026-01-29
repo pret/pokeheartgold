@@ -6350,7 +6350,7 @@ _021E8ABC:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	ldr r0, [r0, r6]
-	bl sub_0200AEB0
+	bl SpriteResource_ResetTransferTasks
 	ldr r0, [r5, r7]
 	add r0, r0, r6
 	ldr r0, [r0, #4]
@@ -8741,56 +8741,56 @@ ov96_021E9C0C: ; 0x021E9C0C
 	tst r0, r1
 	beq _021E9C1E
 	ldr r0, [r5, #0x1c]
-	bl sub_0200AEB0
+	bl SpriteResource_ResetTransferTasks
 _021E9C1E:
 	ldr r1, [r5, #4]
 	mov r0, #4
 	tst r0, r1
 	beq _021E9C2C
 	ldr r0, [r5, #0x20]
-	bl sub_0200AEB0
+	bl SpriteResource_ResetTransferTasks
 _021E9C2C:
 	ldr r1, [r5, #4]
 	mov r0, #2
 	tst r0, r1
 	beq _021E9C3A
 	ldr r0, [r5, #0x24]
-	bl sub_0200AEB0
+	bl SpriteResource_ResetTransferTasks
 _021E9C3A:
 	ldr r1, [r5, #4]
 	mov r0, #8
 	tst r0, r1
 	beq _021E9C48
 	ldr r0, [r5, #0x28]
-	bl sub_0200AEB0
+	bl SpriteResource_ResetTransferTasks
 _021E9C48:
 	ldr r1, [r5, #4]
 	mov r0, #0x10
 	tst r0, r1
 	beq _021E9C56
 	ldr r0, [r5, #0x2c]
-	bl sub_0200AEB0
+	bl SpriteResource_ResetTransferTasks
 _021E9C56:
 	ldr r1, [r5, #4]
 	mov r0, #0x20
 	tst r0, r1
 	beq _021E9C64
 	ldr r0, [r5, #0x30]
-	bl sub_0200AEB0
+	bl SpriteResource_ResetTransferTasks
 _021E9C64:
 	ldr r1, [r5, #4]
 	mov r0, #0x40
 	tst r0, r1
 	beq _021E9C72
 	ldr r0, [r5, #0x34]
-	bl sub_0200AEB0
+	bl SpriteResource_ResetTransferTasks
 _021E9C72:
 	ldr r1, [r5, #4]
 	mov r0, #0x80
 	tst r0, r1
 	beq _021E9C80
 	ldr r0, [r5, #0x38]
-	bl sub_0200AEB0
+	bl SpriteResource_ResetTransferTasks
 _021E9C80:
 	mov r0, #1
 	ldr r1, [r5, #4]
@@ -8798,7 +8798,7 @@ _021E9C80:
 	tst r0, r1
 	beq _021E9C90
 	ldr r0, [r5, #0x3c]
-	bl sub_0200AEB0
+	bl SpriteResource_ResetTransferTasks
 _021E9C90:
 	mov r0, #2
 	ldr r1, [r5, #4]
@@ -8806,7 +8806,7 @@ _021E9C90:
 	tst r0, r1
 	beq _021E9CA0
 	ldr r0, [r5, #0x40]
-	bl sub_0200AEB0
+	bl SpriteResource_ResetTransferTasks
 _021E9CA0:
 	mov r0, #1
 	ldr r1, [r5, #4]
@@ -8814,7 +8814,7 @@ _021E9CA0:
 	tst r0, r1
 	beq _021E9CB0
 	ldr r0, [r5, #0x44]
-	bl sub_0200AEB0
+	bl SpriteResource_ResetTransferTasks
 _021E9CB0:
 	mov r0, #2
 	ldr r1, [r5, #4]
@@ -8822,7 +8822,7 @@ _021E9CB0:
 	tst r0, r1
 	beq _021E9CC0
 	ldr r0, [r5, #0x48]
-	bl sub_0200AEB0
+	bl SpriteResource_ResetTransferTasks
 _021E9CC0:
 	add r0, r5, #0
 	add r0, #0xac
@@ -11650,7 +11650,7 @@ _021EB22C:
 	ldr r0, [r0, #4]
 	cmp r0, #0
 	beq _021EB240
-	bl sub_0200AEB0
+	bl SpriteResource_ResetTransferTasks
 _021EB240:
 	mov r0, #0x15
 	lsl r0, r0, #4
@@ -14494,7 +14494,7 @@ _021EC7B8:
 	ldrh r1, [r7, #0x14]
 	ldrb r2, [r7, #0x1b]
 	add r0, sp, #0x20
-	bl GetMonSpriteCharAndPlttNarcIdsEx
+	bl PokepicTemplate_GetMonSpriteCharAndPlttNarcIdsEx
 	ldrh r0, [r7, #4]
 	ldrh r1, [r7, #8]
 	ldr r3, [r4]
@@ -19253,7 +19253,7 @@ _021EEC28:
 	str r0, [sp, #8]
 	ldrb r2, [r4, #7]
 	add r0, sp, #0x28
-	bl GetMonSpriteCharAndPlttNarcIdsEx
+	bl PokepicTemplate_GetMonSpriteCharAndPlttNarcIdsEx
 	ldr r3, _021EECB4 ; =ov96_0221B1AC
 	add r2, sp, #0x18
 	ldmia r3!, {r0, r1}
@@ -30414,7 +30414,7 @@ _021F4490:
 	ldrh r1, [r7]
 	ldrb r2, [r7, #7]
 	add r0, sp, #0x20
-	bl GetMonSpriteCharAndPlttNarcIdsEx
+	bl PokepicTemplate_GetMonSpriteCharAndPlttNarcIdsEx
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #2
@@ -38804,7 +38804,7 @@ _021F8772:
 	ldr r0, [sp]
 	lsl r1, r1, #6
 	ldr r0, [r0, r1]
-	bl sub_0200AEB0
+	bl SpriteResource_ResetTransferTasks
 	mov r1, #0xb1
 	ldr r0, [sp]
 	lsl r1, r1, #2
@@ -46091,7 +46091,7 @@ _021FC1B6:
 	ldr r0, [sp]
 	lsl r1, r1, #2
 	ldr r0, [r0, r1]
-	bl sub_0200AEB0
+	bl SpriteResource_ResetTransferTasks
 	mov r1, #0x53
 	ldr r0, [sp]
 	lsl r1, r1, #2
@@ -54381,7 +54381,7 @@ _022003F8:
 	ldrh r1, [r5]
 	ldrb r2, [r5, #7]
 	add r0, sp, #0x10
-	bl GetMonSpriteCharAndPlttNarcIdsEx
+	bl PokepicTemplate_GetMonSpriteCharAndPlttNarcIdsEx
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #2
@@ -61582,7 +61582,7 @@ _02203DDC:
 	ldrh r1, [r5]
 	ldrb r2, [r5, #7]
 	add r0, sp, #0x10
-	bl GetMonSpriteCharAndPlttNarcIdsEx
+	bl PokepicTemplate_GetMonSpriteCharAndPlttNarcIdsEx
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -70121,7 +70121,7 @@ _02208260:
 	ldrh r1, [r5]
 	ldrb r2, [r5, #7]
 	add r0, sp, #0x10
-	bl GetMonSpriteCharAndPlttNarcIdsEx
+	bl PokepicTemplate_GetMonSpriteCharAndPlttNarcIdsEx
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #2

@@ -1113,7 +1113,7 @@ _02258FC8:
 	mov r0, #0
 	str r0, [r4]
 	ldr r0, [r4, #4]
-	bl sub_0200AEB0
+	bl SpriteResource_ResetTransferTasks
 	ldr r0, [r4, #8]
 	bl sub_0200B0A8
 	mov r6, #0

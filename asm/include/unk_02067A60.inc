@@ -54,7 +54,7 @@
 .public sub_02067C30
 .public FollowMon_IsVisible
 .public FieldSystem_UnkSub108_AddMonMood
-.public GetMonData
+.public Pokemon_GetMonData
 .public SaveArray_Party_Get
 .public MIi_CpuClearFast
 .public ov01_02205A60

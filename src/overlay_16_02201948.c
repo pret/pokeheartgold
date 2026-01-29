@@ -16,11 +16,11 @@ extern BOOL BerryPotsApp_Initialize(OverlayManager *, int *);
 extern BOOL BerryPotsApp_Run(OverlayManager *, int *);
 extern BOOL BerryPotsApp_Exit(OverlayManager *, int *);
 
-static const u8 ov16_02201B64[] = {
+static const u8 PocketBerriesView[] = {
     POCKET_BERRIES, 0xFF
 };
 
-static const u8 ov16_02201B60[] = {
+static const u8 PocketItemsView[] = {
     POCKET_ITEMS, 0xFF
 };
 
@@ -153,15 +153,15 @@ static u32 ov16_02201AA0(UnkStruct_ov16_0220196C *unk) {
 
     switch (unk->unk14) {
     case 1:
-        unused_02201BA0 = (u8 *)ov16_02201B60;
+        unused_02201BA0 = (u8 *)PocketItemsView;
 
-        unk->bagView = Bag_CreateView(bag, ov16_02201B60, unk->heapID);
+        unk->bagView = Bag_CreateView(bag, PocketItemsView, unk->heapID);
         sub_0207789C(unk->bagView, unk->args->saveData, 6, unk->cursor2, unk->args->menuInputStatePtr);
         break;
     case 2:
-        unused_02201BA0 = (u8 *)ov16_02201B64;
+        unused_02201BA0 = (u8 *)PocketBerriesView;
 
-        unk->bagView = Bag_CreateView(bag, ov16_02201B64, unk->heapID);
+        unk->bagView = Bag_CreateView(bag, PocketBerriesView, unk->heapID);
         sub_0207789C(unk->bagView, unk->args->saveData, 6, unk->cursor1, unk->args->menuInputStatePtr);
         break;
     default:
@@ -178,7 +178,7 @@ static u32 ov16_02201B24(UnkStruct_ov16_0220196C *unk) {
         return 3;
     }
 
-    unk->unk16 = ((u8)sub_0207790C(unk->bagView) == 4) ? BagView_GetItemId(unk->bagView) : 0xFFFF;
+    unk->unk16 = ((u8)BagView_GetUnk68(unk->bagView) == 4) ? BagView_GetItemId(unk->bagView) : 0xFFFF;
     Heap_Free(unk->bagView);
     unk->bagView = NULL;
 

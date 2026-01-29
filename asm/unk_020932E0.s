@@ -92,7 +92,7 @@ sub_02093354: ; 0x02093354
 	mov r0, #0x57
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_0200AEB0
+	bl SpriteResource_ResetTransferTasks
 	mov r0, #0x16
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
@@ -3513,22 +3513,22 @@ sub_02094F14: ; 0x02094F14
 	add r5, r0, #0
 	mov r1, #MON_DATA_SPECIES
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	str r0, [r4]
 	add r0, r5, #0
 	mov r1, #MON_DATA_IS_EGG
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	strh r0, [r4, #8]
 	add r0, r5, #0
 	mov r1, #MON_DATA_FORM
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	strh r0, [r4, #0xa]
 	add r0, r5, #0
 	mov r1, #MON_DATA_HELD_ITEM
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	strh r0, [r4, #0xc]
 	mov r0, #0
 	strh r0, [r4, #0xe]

@@ -52,7 +52,7 @@
 .public SpriteResourceCollection_Find
 .public GF2DGfxResObj_GetResID
 .public sub_0200ADA4
-.public sub_0200AEB0
+.public SpriteResource_ResetTransferTasks
 .public sub_0200B00C
 .public sub_0200B0A8
 .public SpriteTransfer_GetPaletteProxy
@@ -219,9 +219,9 @@
 .public sub_0202BF08
 .public GameStats_AddScore
 .public AllocMonZeroed
-.public GetMonData
-.public sub_02070130
-.public sub_02070848
+.public Pokemon_GetMonData
+.public PokepicTemplate_GetPokemonSpriteCharAndPlttNarcIds_DP
+.public BoxPokemon_GetPicHeight_DP
 .public NNS_GfdResetFrmTexVramState
 .public NNS_GfdResetFrmPlttVramState
 .public NNS_G2dGetUnpackedCharacterData

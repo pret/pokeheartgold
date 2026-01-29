@@ -102,10 +102,10 @@
 .public System_GetTouchNew
 .public String_New
 .public String_Delete
-.public GetMonData
+.public Pokemon_GetMonData
 .public GetMonExpBySpeciesAndLevel
-.public GetMonGender
-.public Mon_GetBoxMon
+.public Pokemon_GetGender
+.public Pokemon_GetBox
 .public GetMoveAttr
 .public GetMoveMaxPP
 .public PCStorage_FindFirstBoxWithEmptySlot
@@ -180,7 +180,7 @@
 .public BattleSystem_RecoverStatus
 .public BattleSystem_GetFrame
 .public BattleSystem_GetTextFrameDelay
-.public ov12_022581D4
+.public BattleSystem_GetBattleContextData
 .public BattleCursor_LoadResources
 .public BattleCursor_FreeResources
 .public BattleCursor_New

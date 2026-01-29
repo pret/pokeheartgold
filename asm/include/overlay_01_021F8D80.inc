@@ -27,7 +27,7 @@
 .public MapObject_GetSpriteID
 .public MapObject_SetFacingDirection
 .public MapObject_GetFacingDirection
-.public sub_0205F330
+.public MapObject_GetUnkA0
 .public MapObject_GetManager
 .public sub_0205F3E8
 .public sub_0205F40C

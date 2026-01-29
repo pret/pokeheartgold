@@ -51,9 +51,9 @@
 .public ov12_0223A984
 .public ov12_0223A990
 .public BattleSystem_GetBattleSpecial
-.public ov12_0223BBFC
-.public ov12_0223BC08
-.public ov12_0223BC14
-.public ov12_0223BC20
-.public ov12_0223BC2C
+.public BattleSystem_SetUnk23F4
+.public BattleSystem_SetUnk23F8
+.public BattleSystem_SetUnk23F4_2
+.public BattleSystem_SetUnk23F8_2
+.public BattleSystem_SetUnk23FE
 .public ov12_02264334

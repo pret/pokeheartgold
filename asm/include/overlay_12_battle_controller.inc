@@ -4,8 +4,8 @@
 .public sub_0202FC48
 .public sub_02037454
 .public sub_0203769C
-.public GetMonData
-.public GetPercentProgressTowardsNextLevel
+.public Pokemon_GetMonData
+.public Pokemon_GetPercentProgressTowardsNextLevel
 .public GetMonExpBySpeciesAndLevel
 .public GetMonPicHeightBySpeciesGenderForm
 .public MaskOfFlagNo
@@ -35,8 +35,8 @@
 .public BattleSystem_GetFieldSide
 .public BattleSystem_GetTerrainId
 .public BattleSystem_GetBattlerIdPartner
-.public ov12_0223ABB8
-.public ov12_0223B688
+.public BattleSystem_GetBattlerIdOpponent
+.public BattleSystem_GetUnk23FC
 .public BattleSystem_GetSafariBallCount
 .public ov12_0223B854
 .public BattleSystem_GetBattleOutcomeFlags

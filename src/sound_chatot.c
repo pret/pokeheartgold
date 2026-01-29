@@ -7,7 +7,7 @@
 #include "sound_02004A44.h"
 #include "unk_02005D10.h"
 
-BOOL ChatotSoundMain(void) {
+BOOL Chatot_SoundMain(void) {
     u8 *r4 = GF_SdatGetAttrPtr(16);
     u8 *r0 = GF_SdatGetAttrPtr(30);
 
@@ -26,11 +26,11 @@ BOOL ChatotSoundMain(void) {
     return FALSE;
 }
 
-BOOL Chatot_CheckCry(SOUND_CHATOT *a0) {
+BOOL Chatot_CheckCry(SOUND_CHATOT *soundChatot) {
     u8 *r5 = GF_SdatGetAttrPtr(31);
     u8 *r4 = GF_SdatGetAttrPtr(54);
 
-    if (!Chatot_Exists(a0)) {
+    if (!Chatot_Exists(soundChatot)) {
         return FALSE;
     }
 
@@ -45,11 +45,11 @@ BOOL Chatot_CheckCry(SOUND_CHATOT *a0) {
     return FALSE;
 }
 
-BOOL sub_02006D04(SOUND_CHATOT *a0, u32 a1, s32 a2, s32 a3) {
+BOOL sub_02006D04(SOUND_CHATOT *soundChatot, u32 unused, s32 a2, s32 a3) {
     s8 *sp0 = sub_020059D8();
     s8 *sp4 = GF_SdatGetAttrPtr(30);
 
-    if (!Chatot_CheckCry(a0)) {
+    if (!Chatot_CheckCry(soundChatot)) {
         return FALSE;
     }
 
@@ -58,7 +58,7 @@ BOOL sub_02006D04(SOUND_CHATOT *a0, u32 a1, s32 a2, s32 a3) {
     sub_02005600(14);
     u16 r4 = (LCRandom() % 8192);
 
-    Chatot_Decode(sp0, Chatot_GetData(a0));
+    Chatot_Decode(sp0, Chatot_GetData(soundChatot));
 
     UnkStruct_02004A44_0 sp8;
 
@@ -114,8 +114,8 @@ void Chatot_StopRecording() {
     GF_MIC_StopAutoSampling();
 }
 
-void Chatot_SaveRecording(SOUND_CHATOT *a0) {
-    Chatot_Encode(a0, sub_020059D8());
+void Chatot_SaveRecording(SOUND_CHATOT *soundChatot) {
+    Chatot_Encode(soundChatot, sub_020059D8());
 }
 
 void sub_02006E3C(u8 a0) {
@@ -123,13 +123,13 @@ void sub_02006E3C(u8 a0) {
     *r0 = a0;
 }
 
-void sub_02006E4C(SOUND_CHATOT *a0, u32 a1, u32 a2, s32 a3) {
+void Chatot_PlayChatterRecordingEx(SOUND_CHATOT *soundChatot, u32 a1, u32 a2, s32 a3) {
     SOUND_CHATOT **r0 = GF_SdatGetAttrPtr(36);
     BOOL ret;
-    if (a0 == 0) {
+    if (soundChatot == 0) {
         ret = sub_02006D04(*r0, a1, a2, a3);
     } else {
-        ret = sub_02006D04(a0, a1, a2, a3);
+        ret = sub_02006D04(soundChatot, a1, a2, a3);
     }
 
     if (ret == 0) {
@@ -138,33 +138,33 @@ void sub_02006E4C(SOUND_CHATOT *a0, u32 a1, u32 a2, s32 a3) {
     }
 }
 
-BOOL sub_02006EA0(SOUND_CHATOT *a0, u32 a1, u32 a2, s32 a3, u8 a4) {
+BOOL Chatot_PlayerChatterRecordingVariant(SOUND_CHATOT *soundChatot, u32 a1, u32 a2, s32 a3, u8 a4) {
     SOUND_CHATOT **r0 = GF_SdatGetAttrPtr(36);
     BOOL ret;
-    if (a0 == 0) {
+    if (soundChatot == 0) {
         ret = sub_02006D04(*r0, a1, a2, a3);
     } else {
-        ret = sub_02006D04(a0, a1, a2, a3);
+        ret = sub_02006D04(soundChatot, a1, a2, a3);
     }
 
     if (ret == 0) {
         sub_02006E3C(1);
-        sub_02006920(0, SPECIES_CHATOT, a3, a2, 11, a4, 0);
+        PlayCryVariant(0, SPECIES_CHATOT, a3, a2, 11, a4, 0);
         ret = 1;
     }
 
     return ret;
 }
 
-u32 sub_02006EFC(SOUND_CHATOT *chatot) {
-    if (!Chatot_Exists(chatot)) {
+u32 Chatot_GetVolume(SOUND_CHATOT *soundChatot) {
+    if (!Chatot_Exists(soundChatot)) {
         return 0;
     }
 
-    s8 r0 = Chatot_GetData(chatot)[15];
-    if (r0 < -30) {
+    s8 volume = Chatot_GetData(soundChatot)[15];
+    if (volume < -30) {
         return 1;
-    } else if (r0 >= 30 && r0 < 128) {
+    } else if (volume >= 30 && volume < 128) {
         return 2;
     }
 

@@ -21,7 +21,7 @@
 .public AddPlttResObjFromNarc
 .public AddCellOrAnimResObjFromNarc
 .public sub_0200ADA4
-.public sub_0200AEB0
+.public SpriteResource_ResetTransferTasks
 .public sub_0200AF94
 .public sub_0200B0A8
 .public OamManager_ApplyAndResetBuffers
@@ -78,7 +78,7 @@
 .public GF_AssertFail
 .public String_New
 .public String_Delete
-.public GetMonData
+.public Pokemon_GetMonData
 .public GetMonIconNaixEx
 .public GetMonIconPaletteEx
 .public sub_02074490

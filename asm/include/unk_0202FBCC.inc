@@ -1,6 +1,6 @@
 #include <nitro/fs/overlay.h>
 #pragma once
-.public sub_02006EFC
+.public Chatot_GetVolume
 .public sub_0201A728
 .public sub_0201A738
 .public sub_0201A748
@@ -58,9 +58,9 @@
 .public sub_02030A24
 .public Save_Frontier_GetStatic
 .public AllocMonZeroed
-.public SetMonData
-.public sub_02072A98
-.public sub_02072D64
+.public Pokemon_SetData
+.public Pokemon_GetData
+.public Pokemon_SaveData
 .public Party_InitWithMaxSize
 .public Party_AddMon
 .public Party_GetMaxCount

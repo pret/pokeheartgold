@@ -54,7 +54,7 @@
 .public DestroySingle2DGfxResObj
 .public sub_0200ADA4
 .public sub_0200AE18
-.public sub_0200AEB0
+.public SpriteResource_ResetTransferTasks
 .public sub_0200B00C
 .public sub_0200B0A8
 .public SpriteTransfer_GetPaletteProxy
@@ -278,7 +278,7 @@
 .public sub_0203A880
 .public Save_VarsFlags_Get
 .public Save_VarsFlags_FlypointFlagAction
-.public GetMonData
+.public Pokemon_GetMonData
 .public Party_GetCount
 .public Party_GetMonByIndex
 .public SaveArray_Party_Get

@@ -62,8 +62,8 @@
 .public Sprite_SetAnimCtrlSeq
 .public Sprite_UpdateAnim
 .public Sprite_GetAnimationFrame
-.public GetPokemonSpriteCharAndPlttNarcIds
-.public GetMonSpriteCharAndPlttNarcIdsEx
+.public PokepicTemplate_GetPokemonSpriteCharAndPlttNarcIds
+.public PokepicTemplate_GetMonSpriteCharAndPlttNarcIdsEx
 .public NNS_G2dGetUnpackedPaletteData
 .public NNS_G2dGetImageLocation
 .public NNS_G2dGetImagePaletteLocation

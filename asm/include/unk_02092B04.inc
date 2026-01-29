@@ -7,7 +7,7 @@
 .public sub_020505C8
 .public TaskManager_GetFieldSystem
 .public TaskManager_GetEnvironment
-.public sub_0207791C
+.public BagView_GetUnk75
 .public sub_02092B04
 .public ov01_021E636C
 .public ov03_02256E2C

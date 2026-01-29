@@ -23,7 +23,7 @@ void BattleSystem_ClearExperienceEarnFlags(BattleContext *ctx, int battlerId);
 void BattleSystem_SetExperienceEarnFlags(BattleSystem *battleSystem, BattleContext *ctx, int battlerId);
 BOOL ov12_022503EC(BattleSystem *battleSystem, BattleContext *ctx, int *out);
 BOOL ov12_02250490(BattleSystem *battleSystem, BattleContext *ctx, int *out);
-int ov12_022506D4(BattleSystem *battleSystem, BattleContext *ctx, int battlerId, u16 move, int a4, int a5);
+int GetBattlerIdTarget(BattleSystem *battleSystem, BattleContext *ctx, int battlerId, u16 move, int a4, int a5);
 void ov12_02250A18(BattleSystem *battleSystem, BattleContext *ctx, int battlerId, u16 a3);
 BOOL ov12_02250BBC(BattleSystem *battleSystem, BattleContext *ctx);
 void CopyBattleMonToPartyMon(BattleSystem *battleSystem, BattleContext *ctx, int battlerId);
@@ -119,7 +119,7 @@ BOOL CheckStatusEffectsSubstitute(BattleContext *battleSystem, int battlerId, in
 BOOL CheckItemEffectOnUTurn(BattleSystem *battleSystem, BattleContext *ctx, int *script);
 void CheckIgnorePressure(BattleContext *ctx, int battlerIdAttacker, int battlerIdTarget);
 BOOL BattleController_TryEmitExitRecording(BattleSystem *battleSystem, BattleContext *ctx);
-int ov12_022581D4(BattleSystem *battleSystem, BattleContext *ctx, int var, int battlerId);
+int BattleSystem_GetBattleContextData(BattleSystem *battleSystem, BattleContext *ctx, int var, int battlerId);
 void ov12_022582B8(BattleSystem *battleSystem, BattleContext *ctx, int var, int battlerId, int data);
 
 // The following functions are static, but the rest of the file is still being worked on

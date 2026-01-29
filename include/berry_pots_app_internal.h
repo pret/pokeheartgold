@@ -67,7 +67,7 @@ typedef struct BerryPotsAppData {
     GameStats *stats;
     BerryPot *berryPots;
     struct GF_RTC_DateTime *berryDatetime;
-    UnkStruct_ov16_022014A0 *berryGrowthProperties;
+    BerryGrowthProperties *berryGrowthProperties;
     BerryPotsAppData_UnkSub20 unk20[MAX_BERRY_POT];
     u16 state70;
     u16 state72;

@@ -1195,7 +1195,7 @@ _0203043E:
 	mov r0, #0x46
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02006EFC
+	bl Chatot_GetVolume
 	mov r1, #0x53
 	add r2, r7, r5
 	lsl r1, r1, #2
@@ -1548,7 +1548,7 @@ _02030708:
 	add r1, r4, #0
 	bl Party_GetMonByIndex
 	add r1, r5, #0
-	bl sub_02072A98
+	bl Pokemon_GetData
 	ldrh r0, [r6, #2]
 	add r4, r4, #1
 	add r5, #0x70
@@ -1582,11 +1582,11 @@ sub_02030724: ; 0x02030724
 _0203074C:
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_02072D64
+	bl Pokemon_SaveData
 	add r0, r4, #0
 	mov r1, #0xa2
 	add r2, sp, #4
-	bl SetMonData
+	bl Pokemon_SetData
 	ldr r0, [sp]
 	add r1, r4, #0
 	bl Party_AddMon

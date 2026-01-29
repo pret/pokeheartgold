@@ -47,7 +47,7 @@
 .public SpriteSystem_TransferOam
 .public SpriteSystem_DestroySpriteManager
 .public SpriteSystem_Free
-.public sub_0200D2A4
+.public SpriteSystem_LoadResourceDataFromFilepathsCustomMode
 .public SpriteSystem_CreateSpriteFromResourceHeader
 .public Sprite_SetPositionXY
 .public Sprite_GetPositionXY
@@ -177,10 +177,10 @@
 .public sub_02031FE8
 .public sub_02032004
 .public sub_02032024
-.public GetMonData
+.public Pokemon_GetMonData
 .public GetMonBaseStat_HandleAlternateForm
-.public GetPokemonSpriteCharAndPlttNarcIds
-.public CalcMonPokeathlonPerformance
+.public PokepicTemplate_GetPokemonSpriteCharAndPlttNarcIds
+.public Pokemon_CalcPokeathlonPerformance
 .public CalcMonPokeathlonStars
 .public Party_GetCount
 .public Party_GetMonByIndex

@@ -6353,13 +6353,13 @@ _021E8800:
 	mov r1, #0x4c
 	mov r2, #0
 	add r4, r0, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	cmp r0, #0
 	beq _021E8828
 	add r0, r4, #0
 	mov r1, #3
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	cmp r0, #0
 	beq _021E8828
 	mov r0, #1
@@ -6731,7 +6731,7 @@ ov85_021E8B08: ; 0x021E8B08
 	mov r0, #0x6f
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
-	bl sub_0200AEB0
+	bl SpriteResource_ResetTransferTasks
 	mov r0, #7
 	lsl r0, r0, #6
 	ldr r0, [r6, r0]

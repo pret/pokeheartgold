@@ -1208,7 +1208,7 @@ static void AlphPuzzle_InitSpriteGraphics(AlphPuzzleData *data) {
     thunk_ClearSubOAM(data->heapID);
     data->spriteGfxHandler = SpriteManager_New(data->spriteRenderer);
     SpriteSystem_InitSprites(data->spriteRenderer, data->spriteGfxHandler, ALPH_SPRITE_INDEX_MAX);
-    sub_0200D2A4(data->spriteRenderer, data->spriteGfxHandler, sResdatInfo, 2, 1);
+    SpriteSystem_LoadResourceDataFromFilepathsCustomMode(data->spriteRenderer, data->spriteGfxHandler, sResdatInfo, 2, 1);
 }
 
 static void AlphPuzzle_DestroySpriteGraphicsEngine(AlphPuzzleData *data) {

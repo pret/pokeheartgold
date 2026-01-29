@@ -1,0 +1,1754 @@
+#include "battle/battler_info_box.h"
+
+#include "global.h"
+
+#include "battle/battle_system.h"
+#include "msgdata/msg/msg_0197.h"
+
+#include "math_util.h"
+#include "unk_0208805C.h"
+
+typedef enum BattlerInfoBoxType {
+    INFO_BOX_TYPE_SINGLE_PLAYER,
+    INFO_BOX_TYPE_SINGLE_ENEMY,
+    INFO_BOX_TYPE_DOUBLE_PLAYER_LHS,
+    INFO_BOX_TYPE_DOUBLE_ENEMY_LHS,
+    INFO_BOX_TYPE_DOUBLE_PLAYER_RHS,
+    INFO_BOX_TYPE_DOUBLE_ENEMY_RHS,
+    INFO_BOX_TYPE_SAFARI,
+    INFO_BOX_TYPE_PALPARK,
+} BattlerInfoBoxType;
+
+#ifdef FAST_HP_BARS
+#define USE_SUBPIXELS_TEST (TRUE)
+#else
+#define USE_SUBPIXELS_TEST (maxBarVal < pixelsWide)
+#endif // FAST_HP_BARS
+
+ALIGN(4)
+static const s8 sHpBarArrowXOffsets[] = {
+    72,
+    0,
+    72,
+    0,
+    72,
+    0,
+};
+
+typedef struct BattlerInfoBox_ComponentCoordinates {
+    u16 offset;
+    u16 size;
+} BattlerInfoBox_ComponentCoordinates;
+
+static const BattlerInfoBox_ComponentCoordinates infoBox_NameComponentCoordinates[][4] = {
+    {
+     { 0x260, 0xA0 },
+     { 0x360, 0xA0 },
+     { 0xA00, 0x60 },
+     { 0xB00, 0x60 },
+     },
+    {
+     { 0x220, 0xE0 },
+     { 0x320, 0xE0 },
+     { 0xA00, 0x20 },
+     { 0xB00, 0x20 },
+     },
+    {
+     { 0x240, 0xC0 },
+     { 0x340, 0xC0 },
+     { 0xA00, 0x40 },
+     { 0xB00, 0x40 },
+     },
+    {
+     { 0x220, 0xE0 },
+     { 0x320, 0xE0 },
+     { 0xA00, 0x20 },
+     { 0xB00, 0x20 },
+     },
+    {
+     { 0x240, 0xC0 },
+     { 0x340, 0xC0 },
+     { 0xA00, 0x40 },
+     { 0xB00, 0x40 },
+     },
+    {
+     { 0x220, 0xE0 },
+     { 0x320, 0xE0 },
+     { 0xA00, 0x20 },
+     { 0xB00, 0x20 },
+     },
+};
+
+static const BattlerInfoBox_ComponentCoordinates infoBox_LevelLabelComponentCoordinates[][2] = {
+    {
+     { 0xA60, 0x40 },
+     { 0xB60, 0x40 },
+     },
+    {
+     { 0xA20, 0x40 },
+     { 0xB20, 0x40 },
+     },
+    {
+     { 0xA40, 0x40 },
+     { 0xB40, 0x40 },
+     },
+    {
+     { 0xA20, 0x40 },
+     { 0xB20, 0x40 },
+     },
+    {
+     { 0xA40, 0x40 },
+     { 0xB40, 0x40 },
+     },
+    {
+     { 0xA20, 0x40 },
+     { 0xB20, 0x40 },
+     },
+};
+
+static const BattlerInfoBox_ComponentCoordinates infoBox_LevelValueComponentCoordinates[][2] = {
+    {
+     { 0xAA0, 0x60 },
+     { 0xBA0, 0x60 },
+     },
+    {
+     { 0xA60, 0x60 },
+     { 0xB60, 0x60 },
+     },
+    {
+     { 0xA80, 0x60 },
+     { 0xB80, 0x60 },
+     },
+    {
+     { 0xA60, 0x60 },
+     { 0xB60, 0x60 },
+     },
+    {
+     { 0xA80, 0x60 },
+     { 0xB80, 0x60 },
+     },
+    {
+     { 0xA60, 0x60 },
+     { 0xB60, 0x60 },
+     },
+};
+
+static const BattlerInfoBox_ComponentCoordinates infoBox_CurrentHpComponentCoordinates[][2] = {
+    {
+     { 0, 0 },
+     { 0xD00, 0x60 },
+     },
+    {
+     { 0x620, 0x60 },
+     { 0, 0 },
+     },
+    {
+     { 0, 0 },
+     { 0xC00, 0x60 },
+     },
+    {
+     { 0x620, 0x60 },
+     { 0, 0 },
+     },
+    {
+     { 0, 0 },
+     { 0xC00, 0x60 },
+     },
+    {
+     { 0x620, 0x60 },
+     { 0, 0 },
+     },
+};
+
+static const BattlerInfoBox_ComponentCoordinates infoBox_MaxHpComponentCoordinates[] = {
+    { 0xD80, 0x60 },
+    { 0x6A0, 0x60 },
+    { 0xC80, 0x60 },
+    { 0x6A0, 0x60 },
+    { 0xC80, 0x60 },
+    { 0x6A0, 0x60 },
+};
+
+static const BattlerInfoBox_ComponentCoordinates infoBox_CurrentHpBarComponentCoordinates[][2] = {
+    {
+     { 0x4E0, 0 },
+     { 0xC20, 0xC0 },
+     },
+    {
+     { 0x4E0, 0x20 },
+     { 0xC00, 0xA0 },
+     },
+    {
+     { 0x4E0, 0 },
+     { 0xC00, 0xC0 },
+     },
+    {
+     { 0x4E0, 0x20 },
+     { 0xC00, 0xA0 },
+     },
+    {
+     { 0x4E0, 0 },
+     { 0xC00, 0xC0 },
+     },
+    {
+     { 0x4E0, 0x20 },
+     { 0xC00, 0xA0 },
+     },
+};
+
+static const BattlerInfoBox_ComponentCoordinates ov12_0226D3C0[] = { // status or caught or pokerus component coordinates?
+    { 0x460, 0x20 },
+    { 0x420, 0x20 },
+    { 0x440, 0x20 },
+    { 0x420, 0x20 },
+    { 0x440, 0x20 },
+    { 0x420, 0x20 },
+};
+
+static const BattlerInfoBox_ComponentCoordinates ov12_0226D390[] = { // status or caught or pokerus component coordinates?
+    { 0x480, 0x60 },
+    { 0x440, 0x60 },
+    { 0x460, 0x60 },
+    { 0x440, 0x60 },
+    { 0x460, 0x60 },
+    { 0x440, 0x60 },
+};
+
+static const BattlerInfoBox_ComponentCoordinates infoBox_BallStringComponentCoordinates[] = {
+    { 0x240, 0xC0 },
+    { 0x340, 0xC0 },
+    { 0xA00, 0xE0 },
+    { 0xB00, 0xE0 },
+};
+
+static const BattlerInfoBox_ComponentCoordinates infoBox_BallNumComponentCoordinates[] = {
+    { 0x440, 0xC0 },
+    { 0x540, 0xC0 },
+    { 0xC00, 0xE0 },
+    { 0xD00, 0xE0 },
+};
+
+static const BattlerInfoBox_ComponentCoordinates ov12_0226D3A8[] = {
+    { 0,     0    },
+    { 0,     0    },
+    { 0x4C0, 0x40 },
+    { 0,     0    },
+    { 0x4C0, 0x40 },
+    { 0,     0    },
+};
+
+static const BattlerInfoBox_ComponentCoordinates ov12_0226D3D8[] = {
+    { 0,     0    },
+    { 0,     0    },
+    { 0xCC0, 0x20 },
+    { 0,     0    },
+    { 0xCC0, 0x20 },
+    { 0,     0    },
+};
+
+static const BattlerInfoBox_ComponentCoordinates ov12_0226D408[] = {
+    { 0,     0    },
+    { 0,     0    },
+    { 0xC60, 0x20 },
+    { 0,     0    },
+    { 0xC60, 0x20 },
+    { 0,     0    },
+};
+
+static void ov12_02264824(SpriteSystem *spriteSystem, SpriteManager *spriteManager, NARC *narc, PaletteData *plttData, int barType);
+static void ov12_022648EC(SpriteSystem *spriteSystem, SpriteManager *spriteManager, NARC *narc, PaletteData *plttData, int barType);
+static ManagedSprite *ov12_02264968(SpriteSystem *spriteSystem, SpriteManager *spriteManager, int barType);
+static void BattlerInfoBox_FreeSysTaskAndBoxObject(BattlerInfoBox *battlerInfoBox);
+static void ov12_02264B4C(BattlerInfoBox *battlerInfoBox);
+static void ov12_02264B60(BattlerInfoBox *battlerInfoBox);
+static void ov12_02264B94(BattlerInfoBox *battlerInfoBox);
+static void BattlerInfoBox_SetArrowObjectEnabled(BattlerInfoBox *battlerInfoBox, int enabled);
+static void BattlerInfoBox_SetBoxSpritePosition(BattlerInfoBox *battlerInfoBox, int x, int y);
+static void BattlerInfoBox_ShiftXPosition(SysTask *task, void *data);
+static void ov12_0226516C(BattlerInfoBox *battlerInfoBox);
+static void BattlerInfoBox_SetUpGenderLevelLabelComponent(BattlerInfoBox *battlerInfoBox);
+static void ov12_02265354(BattlerInfoBox *battlerInfoBox);
+static void ov12_02265474(BattlerInfoBox *battlerInfoBox, u32 hp);
+static void ov12_02265500(BattlerInfoBox *battlerInfoBox);
+static void ov12_02265560(BattlerInfoBox *battlerInfoBox);
+static void ov12_022655B0(BattlerInfoBox *battlerInfoBox, int componentId);
+static void BattlerInfoBox_PrintSafariOrParkBallsString(BattlerInfoBox *battlerInfoBox, u32 flag);
+static void BattlerInfoBox_PrintNumRemainingSafariOrParkBalls(BattlerInfoBox *battlerInfoBox, u32 flag);
+static int BattlerInfoBox_UpdateBar(BattlerInfoBox *battlerInfoBox, BOOL isExp);
+static void BattlerInfoBox_UpdateBarDisplay(BattlerInfoBox *battlerInfoBox, u8 isExp);
+static int BattlerInfoBox_CalculatePixelsChangeFrame(s32 maxHp, s32 curHp, s32 deltaHp, s32 *pHpCalc, u8 tilesWide, u16 hpChange);
+static u8 BattlerInfoBox_Util_MakeBarPixelBuffer(s32 maxHp, s32 hp, s32 deltaHp, s32 *pHpCalc, u8 *pixelBuf, u8 tilesWide);
+static u32 BattlerInfoBox_Util_GetPixelsToGain(s32 exp, s32 gainedExp, s32 maxExp, u8 tilesWide);
+static const u8 *BattlerInfoBox_Util_GetComponentRawGraphic(int componentId);
+static const ManagedSpriteTemplate *BattlerInfoBox_Util_GetInfoBoxSpriteTemplate(u8 barType);
+static const ManagedSpriteTemplate *BattlerInfoBox_Util_GetArrowSpriteTemplate(u8 barType);
+static void Task_ExpBarFullFlash(SysTask *task, void *data);
+static void BattlerInfoBox_DoShakeAnimation(BattlerInfoBox *battlerInfoBox);
+static void BattlerInfoBox_ClearMoreInfoBox(BattlerInfoBox *battlerInfoBox);
+static void BattlerInfoBox_ShakeAnimation(SysTask *task, void *data);
+
+static const ManagedSpriteTemplate sSpriteTemplate_BattlerInfoBoxSinglePlayer = {
+    .x = 0xC0,
+    .y = 0x74,
+    .z = 0,
+    .animation = 0,
+    .drawPriority = 0x17,
+    .pal = 0,
+    .vram = NNS_G2D_VRAM_TYPE_2DMAIN,
+    .resIdList = {
+                  0xBF,
+                  20006,
+                  0xBE,
+                  0xBD,
+                  -1,
+                  -1,
+                  },
+    .bgPriority = 0,
+    .vramTransfer = 0
+};
+
+static const ManagedSpriteTemplate sSpriteTemplate_HpBarSingleEnemy = {
+    .x = 0x3A,
+    .y = 0x24,
+    .z = 0,
+    .animation = 0,
+    .drawPriority = 0x18,
+    .pal = 0,
+    .vram = NNS_G2D_VRAM_TYPE_2DMAIN,
+    .resIdList = {
+                  0xBC,
+                  20006,
+                  0xBB,
+                  0xBA,
+                  -1,
+                  -1,
+                  },
+    .bgPriority = 0,
+    .vramTransfer = 0
+};
+
+static const ManagedSpriteTemplate sSpriteTemplate_HpBarDoublePlayerLHS = {
+    .x = 0xC0,
+    .y = 0x67,
+    .z = 0,
+    .animation = 0,
+    .drawPriority = 0x1C,
+    .pal = 0,
+    .vram = NNS_G2D_VRAM_TYPE_2DMAIN,
+    .resIdList = {
+                  0xC8,
+                  20006,
+                  0xC7,
+                  0xC6,
+                  -1,
+                  -1,
+                  },
+    .bgPriority = 0,
+    .vramTransfer = 0
+};
+
+static const ManagedSpriteTemplate sSpriteTemplate_HpBarDoubleEnemyLHS = {
+    .x = 0x40,
+    .y = 0x10,
+    .z = 0,
+    .animation = 0,
+    .drawPriority = 0x19,
+    .pal = 0,
+    .vram = NNS_G2D_VRAM_TYPE_2DMAIN,
+    .resIdList = {
+                  0xC2,
+                  20006,
+                  0xC1,
+                  0xC0,
+                  -1,
+                  -1,
+                  },
+    .bgPriority = 0,
+    .vramTransfer = 0
+};
+
+static const ManagedSpriteTemplate sSpriteTemplate_HpBarDoublePlayerRHS = {
+    .x = 0xC6,
+    .y = 0x84,
+    .z = 0,
+    .animation = 0,
+    .drawPriority = 0x1A,
+    .pal = 0,
+    .vram = NNS_G2D_VRAM_TYPE_2DMAIN,
+    .resIdList = {
+                  0xCB,
+                  20006,
+                  0xCA,
+                  0xC9,
+                  -1,
+                  -1,
+                  },
+    .bgPriority = 0,
+    .vramTransfer = 0
+};
+
+static const ManagedSpriteTemplate sSpriteTemplate_HpBarDoubleEnemyRHS = {
+    .x = 0x3A,
+    .y = 0x2D,
+    .z = 0,
+    .animation = 0,
+    .drawPriority = 0x1B,
+    .pal = 0,
+    .vram = NNS_G2D_VRAM_TYPE_2DMAIN,
+    .resIdList = {
+                  0xC5,
+                  20006,
+                  0xC4,
+                  0xC3,
+                  -1,
+                  -1,
+                  },
+    .bgPriority = 0,
+    .vramTransfer = 0
+};
+
+static const ManagedSpriteTemplate sSpriteTemplate_Arrow = {
+    .x = 0,
+    .y = 0,
+    .z = 0,
+    .animation = 0,
+    .drawPriority = 0x11,
+    .pal = 0,
+    .vram = NNS_G2D_VRAM_TYPE_2DMAIN,
+    .resIdList = {
+                  0xB9,
+                  20006,
+                  0xB8,
+                  0xB7,
+                  -1,
+                  -1,
+                  },
+    .bgPriority = 0,
+    .vramTransfer = 0
+};
+
+static const ManagedSpriteTemplate sSpriteTemplate_HpBarSafariOrPark = {
+    .x = 0xC0,
+    .y = 0x74,
+    .z = 0,
+    .animation = 0,
+    .drawPriority = 0x17,
+    .pal = 0,
+    .vram = NNS_G2D_VRAM_TYPE_2DMAIN,
+    .resIdList = {
+                  0xFD,
+                  20008,
+                  0xFE,
+                  0xFF,
+                  -1,
+                  -1,
+                  },
+    .bgPriority = 0,
+    .vramTransfer = 0
+};
+
+#include "battle/battler_info_box_data.h"
+
+static void ov12_02264824(SpriteSystem *spriteSystem, SpriteManager *spriteManager, NARC *narc, PaletteData *plttData, int barType) {
+    const ManagedSpriteTemplate *pRes = BattlerInfoBox_Util_GetInfoBoxSpriteTemplate(barType);
+
+    SpriteSystem_LoadCharResObjFromOpenNarc(spriteSystem, spriteManager, narc, pRes->resIdList[GF_GFX_RES_TYPE_CHAR], TRUE, NNS_G2D_VRAM_TYPE_2DMAIN, pRes->resIdList[GF_GFX_RES_TYPE_CHAR]);
+    SpriteSystem_LoadPaletteBufferFromOpenNarc(plttData, PLTTBUF_MAIN_OBJ, spriteSystem, spriteManager, narc, 71, FALSE, 1, NNS_G2D_VRAM_TYPE_2DMAIN, 20006);
+    SpriteSystem_LoadCellResObjFromOpenNarc(spriteSystem, spriteManager, narc, pRes->resIdList[GF_GFX_RES_TYPE_CELL], TRUE, pRes->resIdList[GF_GFX_RES_TYPE_CELL]);
+    SpriteSystem_LoadAnimResObjFromOpenNarc(spriteSystem, spriteManager, narc, pRes->resIdList[GF_GFX_RES_TYPE_ANIM], TRUE, pRes->resIdList[GF_GFX_RES_TYPE_ANIM]);
+    SpriteSystem_LoadPaletteBufferFromOpenNarc(plttData, PLTTBUF_MAIN_OBJ, spriteSystem, spriteManager, narc, 71, FALSE, 1, NNS_G2D_VRAM_TYPE_2DMAIN, 20007);
+    if (barType == 6 || barType == 7) {
+        SpriteSystem_LoadPaletteBufferFromOpenNarc(plttData, PLTTBUF_MAIN_OBJ, spriteSystem, spriteManager, narc, 81, FALSE, 1, NNS_G2D_VRAM_TYPE_2DMAIN, 20008);
+    }
+}
+
+static void ov12_022648EC(SpriteSystem *spriteSystem, SpriteManager *spriteManager, NARC *narc, PaletteData *plttData, int barType) {
+    const ManagedSpriteTemplate *pRes = BattlerInfoBox_Util_GetArrowSpriteTemplate(barType);
+
+    if (pRes != NULL) {
+        SpriteSystem_LoadCharResObjFromOpenNarc(spriteSystem, spriteManager, narc, pRes->resIdList[GF_GFX_RES_TYPE_CHAR], TRUE, NNS_G2D_VRAM_TYPE_2DMAIN, pRes->resIdList[GF_GFX_RES_TYPE_CHAR]);
+        SpriteSystem_LoadPaletteBufferFromOpenNarc(plttData, PLTTBUF_MAIN_OBJ, spriteSystem, spriteManager, narc, 71, FALSE, 1, NNS_G2D_VRAM_TYPE_2DMAIN, 20006);
+        SpriteSystem_LoadCellResObjFromOpenNarc(spriteSystem, spriteManager, narc, pRes->resIdList[GF_GFX_RES_TYPE_CELL], TRUE, pRes->resIdList[GF_GFX_RES_TYPE_CELL]);
+        SpriteSystem_LoadAnimResObjFromOpenNarc(spriteSystem, spriteManager, narc, pRes->resIdList[GF_GFX_RES_TYPE_ANIM], TRUE, pRes->resIdList[GF_GFX_RES_TYPE_ANIM]);
+    }
+}
+
+static ManagedSprite *ov12_02264968(SpriteSystem *spriteSystem, SpriteManager *spriteManager, int barType) {
+    const ManagedSpriteTemplate *pRes = BattlerInfoBox_Util_GetInfoBoxSpriteTemplate(barType);
+
+    ManagedSprite *ret = SpriteSystem_NewSprite(spriteSystem, spriteManager, pRes);
+    Sprite_TickFrame(ret->sprite);
+    return ret;
+}
+
+void BattlerInfoBox_ConfigureInfoBoxComponents(BattlerInfoBox *battlerInfoBox, u32 hp, u32 flag) {
+    GF_ASSERT(battlerInfoBox->boxObj != NULL);
+    if (battlerInfoBox->type == INFO_BOX_TYPE_SAFARI) {
+        flag &= 0xC00;
+    } else if (battlerInfoBox->type == INFO_BOX_TYPE_PALPARK) {
+        flag &= 0x3000;
+    } else {
+        flag &= ~0x3C00;
+    }
+    switch (battlerInfoBox->type) {
+    case INFO_BOX_TYPE_SINGLE_ENEMY:
+    case INFO_BOX_TYPE_DOUBLE_ENEMY_LHS:
+    case INFO_BOX_TYPE_DOUBLE_ENEMY_RHS:
+        flag &= ~0x26;
+        break;
+    case INFO_BOX_TYPE_DOUBLE_PLAYER_LHS:
+    case INFO_BOX_TYPE_DOUBLE_PLAYER_RHS:
+        flag &= ~0x220;
+        if (battlerInfoBox->unk_4F_3 == 0) {
+            flag &= ~6;
+        } else {
+            flag &= ~1;
+        }
+        break;
+    case INFO_BOX_TYPE_SINGLE_PLAYER:
+        flag &= ~0x200;
+        break;
+    case INFO_BOX_TYPE_SAFARI:
+    case INFO_BOX_TYPE_PALPARK:
+        break;
+    }
+    if (BattleSystem_GetBattleType(battlerInfoBox->battleSystem) & BATTLE_TYPE_TRAINER) {
+        flag &= ~0x200;
+    }
+
+    if (flag & 1) {
+        ov12_02264DCC(battlerInfoBox, 0);
+        BattlerInfoBox_UpdateBar(battlerInfoBox, FALSE);
+    }
+
+    if (flag & 2) {
+        ov12_02265474(battlerInfoBox, hp);
+    }
+
+    if (flag & 4) {
+        ov12_02265500(battlerInfoBox);
+    }
+
+    if (flag & 0x80 || flag & 0x40) {
+        BattlerInfoBox_SetUpGenderLevelLabelComponent(battlerInfoBox);
+    }
+
+    if (flag & 8) {
+        ov12_02265354(battlerInfoBox);
+    }
+
+    if (flag & 0x10) {
+        ov12_0226516C(battlerInfoBox);
+    }
+
+    if (flag & 0x20) {
+        ov12_02264E34(battlerInfoBox, 0);
+        BattlerInfoBox_UpdateBar(battlerInfoBox, TRUE);
+    }
+
+    if (flag & 0x200) {
+        ov12_02265560(battlerInfoBox);
+    }
+
+    if (flag & 0x100) {
+        switch (battlerInfoBox->unk_4A) {
+        case 0:
+        default:
+            ov12_022655B0(battlerInfoBox, 38);
+            break;
+        case 1:
+            ov12_022655B0(battlerInfoBox, 47);
+            break;
+        case 2:
+            ov12_022655B0(battlerInfoBox, 50);
+            break;
+        case 3:
+            ov12_022655B0(battlerInfoBox, 53);
+            break;
+        case 4:
+            ov12_022655B0(battlerInfoBox, 44);
+            break;
+        case 5:
+            ov12_022655B0(battlerInfoBox, 41);
+            break;
+        }
+    }
+
+    if (flag & 0x1400) {
+        BattlerInfoBox_PrintSafariOrParkBallsString(battlerInfoBox, flag);
+    }
+
+    if (flag & 0x2800) {
+        BattlerInfoBox_PrintNumRemainingSafariOrParkBalls(battlerInfoBox, flag);
+    }
+}
+
+static void BattlerInfoBox_FreeSysTaskAndBoxObject(BattlerInfoBox *battlerInfoBox) {
+    if (battlerInfoBox->sysTask != NULL) {
+        SysTask_Destroy(battlerInfoBox->sysTask);
+        battlerInfoBox->sysTask = NULL;
+    }
+    if (battlerInfoBox->boxObj != NULL) {
+        Sprite_DeleteAndFreeResources(battlerInfoBox->boxObj);
+        battlerInfoBox->boxObj = NULL;
+    }
+}
+
+static void ov12_02264B4C(BattlerInfoBox *battlerInfoBox) {
+    if (battlerInfoBox->arrowObj != NULL) {
+        Sprite_DeleteAndFreeResources(battlerInfoBox->arrowObj);
+        battlerInfoBox->arrowObj = NULL;
+    }
+}
+
+static void ov12_02264B60(BattlerInfoBox *battlerInfoBox) {
+    const ManagedSpriteTemplate *tmplate = BattlerInfoBox_Util_GetInfoBoxSpriteTemplate(battlerInfoBox->type);
+    SpriteSystem *spriteSystem = BattleSystem_GetSpriteSystem(battlerInfoBox->battleSystem);
+    SpriteManager *spriteManager = BattleSystem_GetSpriteManager(battlerInfoBox->battleSystem);
+    SpriteManager_UnloadCharObjById(spriteManager, tmplate->resIdList[GF_GFX_RES_TYPE_CHAR]);
+    SpriteManager_UnloadCellObjById(spriteManager, tmplate->resIdList[GF_GFX_RES_TYPE_CELL]);
+    SpriteManager_UnloadAnimObjById(spriteManager, tmplate->resIdList[GF_GFX_RES_TYPE_ANIM]);
+}
+
+static void ov12_02264B94(BattlerInfoBox *battlerInfoBox) {
+    const ManagedSpriteTemplate *tmplate = BattlerInfoBox_Util_GetArrowSpriteTemplate(battlerInfoBox->type);
+    if (tmplate != NULL) {
+        SpriteSystem *spriteSystem = BattleSystem_GetSpriteSystem(battlerInfoBox->battleSystem);
+        SpriteManager *spriteManager = BattleSystem_GetSpriteManager(battlerInfoBox->battleSystem);
+        SpriteManager_UnloadCharObjById(spriteManager, tmplate->resIdList[GF_GFX_RES_TYPE_CHAR]);
+        SpriteManager_UnloadCellObjById(spriteManager, tmplate->resIdList[GF_GFX_RES_TYPE_CELL]);
+        SpriteManager_UnloadAnimObjById(spriteManager, tmplate->resIdList[GF_GFX_RES_TYPE_ANIM]);
+    }
+}
+
+#ifdef NONMATCHING
+void BattlerInfoBox_LoadResources(BattlerInfoBox *battlerInfoBox) {
+    const ManagedSpriteTemplate *tmplate;
+    SpriteSystem *spriteSystem;
+    SpriteManager *spriteManager;
+    PaletteData *plttData;
+    NARC *narc;
+
+    narc = NARC_New(NARC_a_0_0_8, HEAP_ID_BATTLE);
+
+    spriteSystem = BattleSystem_GetSpriteSystem(battlerInfoBox->battleSystem);
+    spriteManager = BattleSystem_GetSpriteManager(battlerInfoBox->battleSystem);
+    plttData = BattleSystem_GetPaletteData(battlerInfoBox->battleSystem);
+
+    tmplate = BattlerInfoBox_Util_GetInfoBoxSpriteTemplate(battlerInfoBox->type);
+
+    ov12_02264824(spriteSystem, spriteManager, narc, plttData, battlerInfoBox->type);
+    battlerInfoBox->boxObj = ov12_02264968(spriteSystem, spriteManager, battlerInfoBox->type);
+
+    ov12_022648EC(spriteSystem, spriteManager, narc, plttData, battlerInfoBox->type);
+    if (battlerInfoBox->arrowObj != NULL) {
+        Sprite_SetPositionXY(battlerInfoBox->arrowObj->sprite, tmplate->x - sHpBarArrowXOffsets[battlerInfoBox->type], tmplate->y + 0);
+    }
+    NARC_Delete(narc);
+}
+#else
+// clang-format off
+asm void BattlerInfoBox_LoadResources(BattlerInfoBox *battlerInfoBox) {
+    push {r4, r5, r6, r7, lr}
+	sub sp, #0xc
+	add r5, r0, #0
+	mov r0, #8
+	mov r1, #5
+	bl NARC_New
+	add r6, r0, #0
+	ldr r0, [r5, #0xc]
+	bl BattleSystem_GetSpriteSystem
+	add r7, r0, #0
+	ldr r0, [r5, #0xc]
+	bl BattleSystem_GetSpriteManager
+	str r0, [sp, #4]
+	ldr r0, [r5, #0xc]
+	bl BattleSystem_GetPaletteData
+	str r0, [sp, #8]
+	add r0, r5, #0
+	add r0, #0x25
+	ldrb r0, [r0, #0]
+	bl BattlerInfoBox_Util_GetInfoBoxSpriteTemplate
+	add r4, r0, #0
+	add r0, r5, #0
+	add r0, #0x25
+	ldrb r0, [r0, #0]
+	ldr r1, [sp, #4]
+	ldr r3, [sp, #8]
+	str r0, [sp, #0]
+	add r0, r7, #0
+	add r2, r6, #0
+	bl ov12_02264824
+	add r2, r5, #0
+	add r2, #0x25
+	ldrb r2, [r2, #0]
+	ldr r1, [sp, #4]
+	add r0, r7, #0
+	bl ov12_02264968
+	str r0, [r5, #4]
+	add r0, r5, #0
+	add r0, #0x25
+	ldrb r0, [r0, #0]
+	ldr r1, [sp, #4]
+	ldr r3, [sp, #8]
+	str r0, [sp, #0]
+	add r0, r7, #0
+	add r2, r6, #0
+	bl ov12_022648EC
+	ldr r0, [r5, #8]
+	cmp r0, #0
+	beq _02264C5A
+	add r5, #0x25
+	ldrb r3, [r5, #0]
+	ldr r2, =sHpBarArrowXOffsets
+	mov r1, #0
+	ldrsh r1, [r4, r1]
+	ldrsb r2, [r2, r3]
+	ldr r0, [r0, #0]
+	sub r1, r1, r2
+	mov r2, #2
+	lsl r1, r1, #0x10
+	ldrsh r2, [r4, r2]
+	asr r1, r1, #0x10
+	bl Sprite_SetPositionXY
+_02264C5A:
+	add r0, r6, #0
+	bl NARC_Delete
+	add sp, #0xc
+	pop {r4, r5, r6, r7, pc}
+}
+// clang-format on
+#endif // NONMATCHING
+
+void BattlerInfoBox_FreeResources(BattlerInfoBox *battlerInfoBox) {
+    BattlerInfoBox_FreeSysTaskAndBoxObject(battlerInfoBox);
+    ov12_02264B60(battlerInfoBox);
+    ov12_02264B4C(battlerInfoBox);
+    ov12_02264B94(battlerInfoBox);
+}
+
+void BattlerInfoBox_ConfigureInfoBoxForDoubles(BattlerInfoBox *battlerInfoBox) {
+    const u8 *src;
+    void *vramBaseAddr;
+    NNSG2dImageProxy *imgProxy;
+
+    switch (battlerInfoBox->type) {
+    case INFO_BOX_TYPE_DOUBLE_PLAYER_LHS:
+    case INFO_BOX_TYPE_DOUBLE_PLAYER_RHS:
+        battlerInfoBox->unk_4F_3 ^= 1;
+        vramBaseAddr = G2_GetOBJCharPtr();
+        imgProxy = Sprite_GetImageProxy(battlerInfoBox->boxObj->sprite);
+        if (battlerInfoBox->unk_4F_3 == 1) {
+            src = BattlerInfoBox_Util_GetComponentRawGraphic(70);
+            MI_CpuCopy16(src, (void *)((u32)vramBaseAddr + ov12_0226D3A8[battlerInfoBox->type].offset + 0x20 + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), 0x20);
+            src = BattlerInfoBox_Util_GetComponentRawGraphic(71);
+            MI_CpuCopy16(src, (void *)((u32)vramBaseAddr + ov12_0226D3D8[battlerInfoBox->type].offset + 0x20 + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), 0x20);
+            src = BattlerInfoBox_Util_GetComponentRawGraphic(69);
+            MI_CpuCopy16(src, (void *)((u32)vramBaseAddr + ov12_0226D408[battlerInfoBox->type].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), ov12_0226D408[battlerInfoBox->type].size);
+            BattlerInfoBox_ConfigureInfoBoxComponents(battlerInfoBox, battlerInfoBox->hp, 6);
+        } else {
+            src = BattlerInfoBox_Util_GetComponentRawGraphic(66);
+            MI_CpuCopy16(src, (void *)((u32)vramBaseAddr + ov12_0226D3A8[battlerInfoBox->type].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), ov12_0226D3A8[battlerInfoBox->type].size);
+            src = BattlerInfoBox_Util_GetComponentRawGraphic(68);
+            MI_CpuCopy16(src, (void *)((u32)vramBaseAddr + ov12_0226D3D8[battlerInfoBox->type].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), ov12_0226D3D8[battlerInfoBox->type].size);
+            src = BattlerInfoBox_Util_GetComponentRawGraphic(38);
+            MI_CpuCopy16(src, (void *)((u32)vramBaseAddr + ov12_0226D3D8[battlerInfoBox->type].offset + 0x20 + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), 0x20);
+            BattlerInfoBox_ConfigureInfoBoxComponents(battlerInfoBox, battlerInfoBox->hp, 1);
+        }
+    }
+}
+
+void ov12_02264DCC(BattlerInfoBox *battlerInfoBox, int hpChange) {
+    battlerInfoBox->hpCalc = 0x80000000;
+    if (battlerInfoBox->hp + hpChange < 0) {
+        hpChange -= (battlerInfoBox->hp + hpChange);
+    }
+    if (battlerInfoBox->hp + hpChange > battlerInfoBox->maxHp) {
+        hpChange -= ((battlerInfoBox->hp + hpChange) - battlerInfoBox->maxHp);
+    }
+    battlerInfoBox->gainedHp = -hpChange;
+    if (battlerInfoBox->hp < 0) {
+        battlerInfoBox->hp = 0;
+    }
+    if (battlerInfoBox->hp > battlerInfoBox->maxHp) {
+        battlerInfoBox->hp = battlerInfoBox->maxHp;
+    }
+}
+
+int BattlerInfoBox_UpdateHpBar(BattlerInfoBox *battlerInfoBox) {
+    int hp = BattlerInfoBox_UpdateBar(battlerInfoBox, FALSE);
+    if (hp == -1) {
+        battlerInfoBox->hp -= battlerInfoBox->gainedHp;
+        BattlerInfoBox_ConfigureInfoBoxComponents(battlerInfoBox, battlerInfoBox->hp, 2);
+    } else {
+        BattlerInfoBox_ConfigureInfoBoxComponents(battlerInfoBox, hp, 2);
+    }
+    return hp;
+}
+
+void ov12_02264E34(BattlerInfoBox *battlerInfoBox, int expChange) {
+    battlerInfoBox->expCalc = 0x80000000;
+    if (battlerInfoBox->exp + expChange < 0) {
+        expChange -= (battlerInfoBox->exp + expChange);
+    }
+    if (battlerInfoBox->exp + expChange > battlerInfoBox->maxExp) {
+        expChange -= ((battlerInfoBox->exp + expChange) - battlerInfoBox->maxExp);
+    }
+    battlerInfoBox->gainedExp = -expChange;
+    if (battlerInfoBox->exp < 0) {
+        battlerInfoBox->exp = 0;
+    }
+    if (battlerInfoBox->exp > battlerInfoBox->maxExp) {
+        battlerInfoBox->exp = battlerInfoBox->maxExp;
+    }
+}
+
+int BattlerInfoBox_UpdateExpBar(BattlerInfoBox *battlerInfoBox) {
+    int exp = BattlerInfoBox_UpdateBar(battlerInfoBox, TRUE);
+    if (exp == -1) {
+        battlerInfoBox->exp -= battlerInfoBox->gainedExp;
+    }
+    return exp;
+}
+
+void BattlerInfoBox_DoAnimation(BattlerInfoBox *battlerInfoBox) {
+    if (battlerInfoBox->arrowObj != NULL) {
+        Sprite_SetAnimActiveFlag(battlerInfoBox->arrowObj->sprite, TRUE);
+        BattlerInfoBox_SetArrowObjectEnabled(battlerInfoBox, 1);
+    }
+    if (!(BattleSystem_GetBattleType(battlerInfoBox->battleSystem) & (BATTLE_TYPE_PAL_PARK | BATTLE_TYPE_SAFARI))) {
+        BattlerInfoBox_DoShakeAnimation(battlerInfoBox);
+    }
+}
+
+void BattlerInfoBox_ClearInfoBox(BattlerInfoBox *battlerInfoBox) {
+    if (battlerInfoBox->arrowObj != NULL) {
+        Sprite_SetAnimActiveFlag(battlerInfoBox->arrowObj->sprite, FALSE);
+        Sprite_SetAnimationFrame(battlerInfoBox->arrowObj->sprite, 0);
+        BattlerInfoBox_SetArrowObjectEnabled(battlerInfoBox, 0);
+    }
+    BattlerInfoBox_ClearMoreInfoBox(battlerInfoBox);
+}
+
+void BattlerInfoBox_SetBoxArrowObjPriorities(BattlerInfoBox *battlerInfoBox, int prio) {
+    if (battlerInfoBox->boxObj != NULL) {
+        ManagedSprite_SetPriority(battlerInfoBox->boxObj, prio);
+        if (battlerInfoBox->arrowObj != NULL) {
+            ManagedSprite_SetPriority(battlerInfoBox->arrowObj, prio);
+        }
+    }
+}
+
+static void BattlerInfoBox_SetArrowObjectEnabled(BattlerInfoBox *battlerInfoBox, int enabled) {
+    if (battlerInfoBox->arrowObj != NULL) {
+        if (!(BattleSystem_GetBattleType(battlerInfoBox->battleSystem) & (BATTLE_TYPE_PAL_PARK | BATTLE_TYPE_SAFARI)) || enabled != TRUE) {
+            ManagedSprite_SetDrawFlag(battlerInfoBox->arrowObj, enabled);
+        }
+    }
+}
+
+void BattlerInfoBox_SetBoxObjectEnabled(BattlerInfoBox *battlerInfoBox, BOOL enabled) {
+    if (battlerInfoBox->boxObj != NULL) {
+        ManagedSprite_SetDrawFlag(battlerInfoBox->boxObj, enabled);
+        BattlerInfoBox_SetArrowObjectEnabled(battlerInfoBox, enabled);
+    }
+}
+
+#ifdef NONMATCHING
+static void BattlerInfoBox_SetBoxSpritePosition(BattlerInfoBox *battlerInfoBox, int x, int y) {
+    const ManagedSpriteTemplate *tmplate;
+    GF_ASSERT(battlerInfoBox->boxObj != NULL);
+    tmplate = BattlerInfoBox_Util_GetInfoBoxSpriteTemplate(battlerInfoBox->type);
+
+    Sprite_SetPositionXY(battlerInfoBox->boxObj->sprite, tmplate->x + x, tmplate->y + y);
+    if (battlerInfoBox->arrowObj != NULL) {
+        Sprite_SetPositionXY(battlerInfoBox->arrowObj->sprite,
+            tmplate->x + x - sHpBarArrowXOffsets[battlerInfoBox->type],
+            tmplate->y + y + 0);
+    }
+}
+#else
+// clang-format off
+asm static void BattlerInfoBox_SetBoxSpritePosition(BattlerInfoBox *battlerInfoBox, int x, int y) {
+    push {r3, r4, r5, r6, r7, lr}
+	add r5, r0, #0
+	ldr r0, [r5, #4]
+	add r6, r1, #0
+	add r7, r2, #0
+	cmp r0, #0
+	bne _02264F56
+	bl GF_AssertFail
+_02264F56:
+	add r0, r5, #0
+	add r0, #0x25
+	ldrb r0, [r0, #0]
+	bl BattlerInfoBox_Util_GetInfoBoxSpriteTemplate
+	add r4, r0, #0
+	mov r1, #0
+	mov r2, #2
+	ldrsh r1, [r4, r1]
+	ldrsh r2, [r4, r2]
+	ldr r0, [r5, #4]
+	add r1, r1, r6
+	add r2, r2, r7
+	lsl r1, r1, #0x10
+	lsl r2, r2, #0x10
+	ldr r0, [r0, #0]
+	asr r1, r1, #0x10
+	asr r2, r2, #0x10
+	bl Sprite_SetPositionXY
+	ldr r0, [r5, #8]
+	cmp r0, #0
+	beq _02264FA8
+	add r5, #0x25
+	ldrb r3, [r5, #0]
+	mov r1, #0
+	ldr r2, =sHpBarArrowXOffsets
+	ldrsh r1, [r4, r1]
+	ldrsb r2, [r2, r3]
+	ldr r0, [r0, #0]
+	add r1, r1, r6
+	sub r1, r1, r2
+	mov r2, #2
+	ldrsh r2, [r4, r2]
+	lsl r1, r1, #0x10
+	asr r1, r1, #0x10
+	add r2, r2, r7
+	lsl r2, r2, #0x10
+	asr r2, r2, #0x10
+	bl Sprite_SetPositionXY
+_02264FA8:
+	pop {r3, r4, r5, r6, r7, pc}
+}
+// clang-format on
+#endif // NONMATCHING
+
+void BattlerInfoBox_SetBoxPosition(BattlerInfoBox *battlerInfoBox, BOOL a1) {
+    GF_ASSERT(battlerInfoBox != NULL);
+    GF_ASSERT(battlerInfoBox->boxObj != NULL);
+    battlerInfoBox->unk_4F_1 = FALSE;
+    battlerInfoBox->unk_4F_0 = a1;
+    if (!a1) {
+        switch (battlerInfoBox->type) {
+        case INFO_BOX_TYPE_SINGLE_PLAYER:
+        case INFO_BOX_TYPE_DOUBLE_PLAYER_LHS:
+        case INFO_BOX_TYPE_DOUBLE_PLAYER_RHS:
+        case INFO_BOX_TYPE_SAFARI:
+        case INFO_BOX_TYPE_PALPARK:
+            BattlerInfoBox_SetBoxSpritePosition(battlerInfoBox, 160, 0);
+            break;
+        default:
+            BattlerInfoBox_SetBoxSpritePosition(battlerInfoBox, -160, 0);
+            break;
+        }
+    } else {
+        BattlerInfoBox_SetBoxSpritePosition(battlerInfoBox, 0, 0);
+    }
+    SysTask_CreateOnMainQueue(BattlerInfoBox_ShiftXPosition, battlerInfoBox, 990);
+}
+
+#ifdef NONMATCHING
+static void BattlerInfoBox_ShiftXPosition(SysTask *task, void *data) {
+    BattlerInfoBox *battlerInfoBox = data;
+    s16 x, y;
+    const ManagedSpriteTemplate *spriteTemplate;
+    int count;
+
+    count = 0;
+    spriteTemplate = BattlerInfoBox_Util_GetInfoBoxSpriteTemplate(battlerInfoBox->type);
+    ManagedSprite_GetPositionXY(battlerInfoBox->boxObj, &x, &y);
+
+    switch (battlerInfoBox->type) {
+    case INFO_BOX_TYPE_SINGLE_PLAYER:
+    case INFO_BOX_TYPE_DOUBLE_PLAYER_LHS:
+    case INFO_BOX_TYPE_DOUBLE_PLAYER_RHS:
+    case INFO_BOX_TYPE_SAFARI:
+    case INFO_BOX_TYPE_PALPARK:
+        if (battlerInfoBox->unk_4F_0 == 0) {
+            x -= 24;
+            if (x < spriteTemplate->x) {
+                x = spriteTemplate->x;
+                count++;
+            }
+        } else {
+            x += 24;
+            if (x > spriteTemplate->x + 160) {
+                x = spriteTemplate->x + 160;
+                count++;
+            }
+        }
+        break;
+    default:
+        if (battlerInfoBox->unk_4F_0 == 0) {
+            x += 24;
+            if (x > spriteTemplate->x) {
+                x = spriteTemplate->x;
+                count++;
+            }
+        } else {
+            x -= 24;
+            if (x < spriteTemplate->x - 24) {
+                x = spriteTemplate->x - 24;
+                count++;
+            }
+        }
+        break;
+    }
+    ManagedSprite_SetPositionXY(battlerInfoBox->boxObj, x, y);
+    if (battlerInfoBox->arrowObj != NULL) {
+        ManagedSprite_SetPositionXY(battlerInfoBox->arrowObj, x - sHpBarArrowXOffsets[battlerInfoBox->type], y);
+    }
+
+    if (count > 0) {
+        battlerInfoBox->unk_4F_1 = TRUE;
+        SysTask_Destroy(task);
+        return;
+    }
+}
+#else
+// clang-format off
+asm static void BattlerInfoBox_ShiftXPosition(SysTask *task, void *data) {
+    push {r3, r4, r5, r6, r7, lr}
+	add r5, r1, #0
+	add r7, r0, #0
+	add r0, r5, #0
+	add r0, #0x25
+	ldrb r0, [r0, #0]
+	mov r4, #0
+	bl BattlerInfoBox_Util_GetInfoBoxSpriteTemplate
+	add r6, r0, #0
+	add r1, sp, #0
+	ldr r0, [r5, #4]
+	add r1, #2
+	add r2, sp, #0
+	bl ManagedSprite_GetPositionXY
+	add r0, r5, #0
+	add r0, #0x25
+	ldrb r0, [r0, #0]
+	cmp r0, #7
+	bhi _022650DA
+	add r0, r0, r0
+	add r0, pc
+	ldrh r0, [r0, #6]
+	lsl r0, r0, #0x10
+	asr r0, r0, #0x10
+	add pc, r0
+_0226508A:
+	lsl r6, r1, #0  // .short _0226509A - _0226508A - 2 ; case 0
+	lsl r6, r1, #1  // .short _022650DA - _0226508A - 2 ; case 1
+	lsl r6, r1, #0  // .short _0226509A - _0226508A - 2 ; case 2
+	lsl r6, r1, #1  // .short _022650DA - _0226508A - 2 ; case 3
+	lsl r6, r1, #0  // .short _0226509A - _0226508A - 2 ; case 4
+	lsl r6, r1, #1  // .short _022650DA - _0226508A - 2 ; case 5
+	lsl r6, r1, #0  // .short _0226509A - _0226508A - 2 ; case 6
+	lsl r6, r1, #0  // .short _0226509A - _0226508A - 2 ; case 7
+_0226509A:
+	add r0, r5, #0
+	add r0, #0x4f
+	ldrb r0, [r0, #0]
+	lsl r0, r0, #0x1f
+	lsr r0, r0, #0x1f
+	add r0, sp, #0
+	bne _022650C0
+	mov r1, #2
+	ldrsh r2, [r0, r1]
+	sub r2, #0x18
+	strh r2, [r0, #2]
+	add r2, r4, #0
+	ldrsh r1, [r0, r1]
+	ldrsh r2, [r6, r2]
+	cmp r1, r2
+	bge _02265118
+	strh r2, [r0, #2]
+	add r4, r4, #1
+	b _02265118
+_022650C0:
+	mov r1, #2
+	ldrsh r2, [r0, r1]
+	add r2, #0x18
+	strh r2, [r0, #2]
+	add r2, r4, #0
+	ldrsh r2, [r6, r2]
+	ldrsh r1, [r0, r1]
+	add r2, #0xa0
+	cmp r1, r2
+	ble _02265118
+	strh r2, [r0, #2]
+	add r4, r4, #1
+	b _02265118
+_022650DA:
+	add r0, r5, #0
+	add r0, #0x4f
+	ldrb r0, [r0, #0]
+	lsl r0, r0, #0x1f
+	lsr r0, r0, #0x1f
+	add r0, sp, #0
+	bne _02265100
+	mov r1, #2
+	ldrsh r2, [r0, r1]
+	add r2, #0x18
+	strh r2, [r0, #2]
+	mov r2, #0
+	ldrsh r1, [r0, r1]
+	ldrsh r2, [r6, r2]
+	cmp r1, r2
+	ble _02265118
+	strh r2, [r0, #2]
+	add r4, r4, #1
+	b _02265118
+_02265100:
+	mov r1, #2
+	ldrsh r2, [r0, r1]
+	sub r2, #0x18
+	strh r2, [r0, #2]
+	mov r2, #0
+	ldrsh r2, [r6, r2]
+	ldrsh r1, [r0, r1]
+	sub r2, #0x18
+	cmp r1, r2
+	bge _02265118
+	strh r2, [r0, #2]
+	add r4, r4, #1
+_02265118:
+	add r2, sp, #0
+	mov r1, #2
+	mov r3, #0
+	ldrsh r1, [r2, r1]
+	ldrsh r2, [r2, r3]
+	ldr r0, [r5, #4]
+	bl ManagedSprite_SetPositionXY
+	ldr r0, [r5, #8]
+	cmp r0, #0
+	beq _0226514C
+	add r6, sp, #0
+	mov r1, #2
+	ldrsh r3, [r6, r1]
+	add r1, r5, #0
+	add r1, #0x25
+	ldrb r2, [r1, #0]
+	ldr r1, =sHpBarArrowXOffsets
+	ldrsb r1, [r1, r2]
+	mov r2, #0
+	ldrsh r2, [r6, r2]
+	sub r1, r3, r1
+	lsl r1, r1, #0x10
+	asr r1, r1, #0x10
+	bl ManagedSprite_SetPositionXY
+_0226514C:
+	cmp r4, #0
+	ble _02265164
+	add r0, r5, #0
+	add r0, #0x4f
+	ldrb r1, [r0, #0]
+	mov r0, #2
+	add r5, #0x4f
+	orr r0, r1
+	strb r0, [r5, #0]
+	add r0, r7, #0
+	bl SysTask_Destroy
+_02265164:
+	pop {r3, r4, r5, r6, r7, pc}
+}
+// clang-format on
+#endif // NONMATCHING
+
+static void ov12_0226516C(BattlerInfoBox *battlerInfoBox) {
+    BgConfig *bgConfig;
+    u8 *srcBuf;
+    NNSG2dImageProxy *imgProxy;
+    Window window;
+    MsgData *msgData;
+    String *string;
+    String *string2;
+    Pokemon *mon;
+    BoxPokemon *boxMon;
+    MessageFormat *msgFormat;
+
+    bgConfig = BattleSystem_GetBgConfig(battlerInfoBox->battleSystem);
+    msgData = BattleSystem_GetMessageLoader(battlerInfoBox->battleSystem);
+    msgFormat = BattleSystem_GetMessageFormat(battlerInfoBox->battleSystem);
+    string = String_New(22, HEAP_ID_BATTLE);
+    string2 = NewString_ReadMsgData(msgData, msg_0197_00964);
+
+    mon = BattleSystem_GetPartyMon(battlerInfoBox->battleSystem, battlerInfoBox->battlerId, battlerInfoBox->monId);
+    boxMon = Pokemon_GetBox(mon);
+    BufferBoxMonNickname(msgFormat, 0, boxMon);
+    StringExpandPlaceholders(msgFormat, string, string2);
+
+    AddTextWindowTopLeftCorner(bgConfig, &window, 8, 2, 0, 15);
+    AddTextPrinterParameterizedWithColorAndSpacing(&window, 0, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(14, 2, 15), 0, 0, NULL);
+    srcBuf = window.pixelBuffer;
+
+    {
+        void *vramAddr;
+        u8 *pixelBuffer;
+        u8 *pixelBuffer2;
+
+        vramAddr = G2_GetOBJCharPtr();
+        imgProxy = Sprite_GetImageProxy(battlerInfoBox->boxObj->sprite);
+        pixelBuffer = srcBuf;
+        pixelBuffer2 = srcBuf + 0x100;
+
+        MI_CpuCopy16(pixelBuffer, (void *)((u32)vramAddr + infoBox_NameComponentCoordinates[battlerInfoBox->type][0].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), infoBox_NameComponentCoordinates[battlerInfoBox->type][0].size);
+        MI_CpuCopy16(pixelBuffer2, (void *)((u32)vramAddr + infoBox_NameComponentCoordinates[battlerInfoBox->type][1].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), infoBox_NameComponentCoordinates[battlerInfoBox->type][1].size);
+        MI_CpuCopy16(pixelBuffer + infoBox_NameComponentCoordinates[battlerInfoBox->type][0].size, (void *)((u32)vramAddr + infoBox_NameComponentCoordinates[battlerInfoBox->type][2].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), infoBox_NameComponentCoordinates[battlerInfoBox->type][2].size);
+        MI_CpuCopy16(pixelBuffer2 + infoBox_NameComponentCoordinates[battlerInfoBox->type][1].size, (void *)((u32)vramAddr + infoBox_NameComponentCoordinates[battlerInfoBox->type][3].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), infoBox_NameComponentCoordinates[battlerInfoBox->type][3].size);
+    }
+    RemoveWindow(&window);
+    String_Delete(string);
+    String_Delete(string2);
+}
+
+static void BattlerInfoBox_SetUpGenderLevelLabelComponent(BattlerInfoBox *battlerInfoBox) {
+    int componentIdBot, componentIdTop;
+
+    if (battlerInfoBox->gender == 0) { // male
+        componentIdBot = 74;
+        componentIdTop = 62;
+    } else if (battlerInfoBox->gender == 1) { // female
+        componentIdBot = 72;
+        componentIdTop = 60;
+    } else { // ungendered
+        componentIdBot = 76;
+        componentIdTop = 64;
+    }
+    const u8 *graphicBot = BattlerInfoBox_Util_GetComponentRawGraphic(componentIdBot);
+    const u8 *graphicTop = BattlerInfoBox_Util_GetComponentRawGraphic(componentIdTop);
+    NNSG2dImageProxy *imgProxy = Sprite_GetImageProxy(battlerInfoBox->boxObj->sprite);
+    void *vramAddr = G2_GetOBJCharPtr();
+    MI_CpuCopy16(graphicTop, (void *)((u32)vramAddr + infoBox_LevelLabelComponentCoordinates[battlerInfoBox->type][0].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), infoBox_LevelLabelComponentCoordinates[battlerInfoBox->type][0].size);
+    MI_CpuCopy16(graphicBot, (void *)((u32)vramAddr + infoBox_LevelLabelComponentCoordinates[battlerInfoBox->type][1].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), infoBox_LevelLabelComponentCoordinates[battlerInfoBox->type][1].size);
+}
+
+static void ov12_02265354(BattlerInfoBox *battlerInfoBox) {
+    int j, i, k;
+    u8 *r4 = Heap_Alloc(HEAP_ID_BATTLE, 0x60);
+    u8 *r7 = Heap_Alloc(HEAP_ID_BATTLE, 0xC0);
+    MI_CpuFill8(r4, 0xFF, 0x60);
+    sub_0200CEB0(BattleSystem_GetLevelNumPrinter(battlerInfoBox->battleSystem), battlerInfoBox->level, 3, PRINTING_MODE_LEFT_ALIGN, (void *)r4);
+    NNSG2dImageProxy *imgProxy = Sprite_GetImageProxy(battlerInfoBox->boxObj->sprite);
+    void *vramAddr = G2_GetOBJCharPtr();
+    MI_CpuCopy16((void *)((u32)vramAddr + infoBox_LevelValueComponentCoordinates[battlerInfoBox->type][0].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), r7, infoBox_LevelValueComponentCoordinates[battlerInfoBox->type][0].size);
+    MI_CpuCopy16((void *)((u32)vramAddr + infoBox_LevelValueComponentCoordinates[battlerInfoBox->type][1].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), r7 + 0x60, infoBox_LevelValueComponentCoordinates[battlerInfoBox->type][1].size);
+    k = 0;
+    for (i = 0; i < 0x60; i += 0x20) {
+        for (j = 0; j < 0x10; ++j) {
+            r7[i + 0x10 + j] = r4[k];
+            r7[i + j + 0x60] = r4[k + 0x10];
+            ++k;
+        }
+        k += 0x10;
+    }
+    u8 *buf1 = r7;
+    u8 *buf2 = r7 + 0x60;
+    MI_CpuCopy16(buf1, (void *)((u32)vramAddr + infoBox_LevelValueComponentCoordinates[battlerInfoBox->type][0].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), infoBox_LevelValueComponentCoordinates[battlerInfoBox->type][0].size);
+    MI_CpuCopy16(buf2, (void *)((u32)vramAddr + infoBox_LevelValueComponentCoordinates[battlerInfoBox->type][1].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), infoBox_LevelValueComponentCoordinates[battlerInfoBox->type][1].size);
+    Heap_Free(r4);
+    Heap_Free(r7);
+}
+
+static void ov12_02265474(BattlerInfoBox *battlerInfoBox, u32 hp) {
+    u8 *r4 = Heap_Alloc(HEAP_ID_BATTLE, 0x60);
+    MI_CpuFill8(r4, 0xFF, 0x60);
+    sub_0200CEB0(BattleSystem_GetHpNumPrinter(battlerInfoBox->battleSystem), hp, 3, PRINTING_MODE_RIGHT_ALIGN, (void *)r4);
+    NNSG2dImageProxy *imgProxy = Sprite_GetImageProxy(battlerInfoBox->boxObj->sprite);
+    void *vramAddr = G2_GetOBJCharPtr();
+
+    MI_CpuCopy16(r4, (void *)((u32)vramAddr + infoBox_CurrentHpComponentCoordinates[battlerInfoBox->type][0].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), infoBox_CurrentHpComponentCoordinates[battlerInfoBox->type][0].size);
+    MI_CpuCopy16(r4 + infoBox_CurrentHpComponentCoordinates[battlerInfoBox->type][0].size, (void *)((u32)vramAddr + infoBox_CurrentHpComponentCoordinates[battlerInfoBox->type][1].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), infoBox_CurrentHpComponentCoordinates[battlerInfoBox->type][1].size);
+    Heap_Free(r4);
+}
+
+static void ov12_02265500(BattlerInfoBox *battlerInfoBox) {
+    u8 *r4 = Heap_Alloc(HEAP_ID_BATTLE, 0x60);
+    MI_CpuFill8(r4, 0xFF, 0x60);
+    sub_0200CEB0(BattleSystem_GetHpNumPrinter(battlerInfoBox->battleSystem), battlerInfoBox->maxHp, 3, PRINTING_MODE_LEFT_ALIGN, (void *)r4);
+    NNSG2dImageProxy *imgProxy = Sprite_GetImageProxy(battlerInfoBox->boxObj->sprite);
+    void *vramAddr = G2_GetOBJCharPtr();
+
+    MI_CpuCopy16(r4, (void *)((u32)vramAddr + infoBox_MaxHpComponentCoordinates[battlerInfoBox->type].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), infoBox_MaxHpComponentCoordinates[battlerInfoBox->type].size);
+    Heap_Free(r4);
+}
+
+static void ov12_02265560(BattlerInfoBox *battlerInfoBox) {
+    const u8 *r4;
+    if (battlerInfoBox->unk4B == 1) {
+        r4 = BattlerInfoBox_Util_GetComponentRawGraphic(59);
+    } else {
+        r4 = BattlerInfoBox_Util_GetComponentRawGraphic(38);
+    }
+    NNSG2dImageProxy *imgProxy = Sprite_GetImageProxy(battlerInfoBox->boxObj->sprite);
+    void *vramAddr = G2_GetOBJCharPtr();
+
+    MI_CpuCopy16(r4, (void *)((u32)vramAddr + ov12_0226D3C0[battlerInfoBox->type].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), ov12_0226D3C0[battlerInfoBox->type].size);
+}
+
+static void ov12_022655B0(BattlerInfoBox *battlerInfoBox, int componentId) {
+    const u8 *graphicComponent = BattlerInfoBox_Util_GetComponentRawGraphic(componentId);
+    NNSG2dImageProxy *imgProxy = Sprite_GetImageProxy(battlerInfoBox->boxObj->sprite);
+    void *vramAddr = G2_GetOBJCharPtr();
+
+    MI_CpuCopy16(graphicComponent, (void *)((u32)vramAddr + ov12_0226D390[battlerInfoBox->type].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), ov12_0226D390[battlerInfoBox->type].size);
+}
+
+static void BattlerInfoBox_PrintSafariOrParkBallsString(BattlerInfoBox *battlerInfoBox, u32 flag) {
+    BgConfig *bgConfig;
+    u8 *windowBuf;
+    NNSG2dImageProxy *imgProxy;
+    Window window;
+    MsgData *msgData;
+    String *string;
+
+    bgConfig = BattleSystem_GetBgConfig(battlerInfoBox->battleSystem);
+    msgData = BattleSystem_GetMessageLoader(battlerInfoBox->battleSystem);
+
+    if (flag & 0x400) {
+        string = NewString_ReadMsgData(msgData, msg_0197_00950); // SAFARI BALLS
+    } else {
+        string = NewString_ReadMsgData(msgData, msg_0197_01220); // PARK BALLS
+    }
+    AddTextWindowTopLeftCorner(bgConfig, &window, 13, 2, 0, 15);
+    AddTextPrinterParameterizedWithColorAndSpacing(&window, 0, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(14, 2, 15), 0, 0, NULL);
+    windowBuf = window.pixelBuffer;
+
+    {
+        void *vramAddr;
+        u8 *ptr1;
+        u8 *ptr2;
+
+        vramAddr = G2_GetOBJCharPtr();
+        imgProxy = Sprite_GetImageProxy(battlerInfoBox->boxObj->sprite);
+        ptr1 = windowBuf;
+        ptr2 = windowBuf + 0x1A0;
+        MI_CpuCopy16(ptr1, (void *)((u32)vramAddr + infoBox_BallStringComponentCoordinates[0].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), infoBox_BallStringComponentCoordinates[0].size);
+        MI_CpuCopy16(ptr2, (void *)((u32)vramAddr + infoBox_BallStringComponentCoordinates[1].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), infoBox_BallStringComponentCoordinates[1].size);
+        MI_CpuCopy16(ptr1 + infoBox_BallStringComponentCoordinates[0].size, (void *)((u32)vramAddr + infoBox_BallStringComponentCoordinates[2].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), infoBox_BallStringComponentCoordinates[2].size);
+        MI_CpuCopy16(ptr2 + infoBox_BallStringComponentCoordinates[1].size, (void *)((u32)vramAddr + infoBox_BallStringComponentCoordinates[3].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), infoBox_BallStringComponentCoordinates[3].size);
+    }
+
+    RemoveWindow(&window);
+    String_Delete(string);
+}
+
+static void BattlerInfoBox_PrintNumRemainingSafariOrParkBalls(BattlerInfoBox *battlerInfoBox, u32 flag) {
+    BgConfig *bgConfig;
+    u8 *windowBuf;
+    NNSG2dImageProxy *imgProxy;
+    Window window;
+    MsgData *msgData;
+    MessageFormat *msgFormat;
+    String *string;
+    String *string2;
+
+    bgConfig = BattleSystem_GetBgConfig(battlerInfoBox->battleSystem);
+    msgData = BattleSystem_GetMessageLoader(battlerInfoBox->battleSystem);
+    msgFormat = BattleSystem_GetMessageFormat(battlerInfoBox->battleSystem);
+
+    string = String_New(30, HEAP_ID_BATTLE);
+    if (flag & 0x400) {
+        string2 = NewString_ReadMsgData(msgData, msg_0197_00951); // Left: $1
+    } else {
+        string2 = NewString_ReadMsgData(msgData, msg_0197_01221); // Left: $1
+    }
+    BufferIntegerAsString(msgFormat, 0, battlerInfoBox->unk27, 2, PRINTING_MODE_RIGHT_ALIGN, TRUE);
+    StringExpandPlaceholders(msgFormat, string, string2);
+    AddTextWindowTopLeftCorner(bgConfig, &window, 13, 2, 0, 15);
+    AddTextPrinterParameterizedWithColorAndSpacing(&window, 0, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(14, 2, 15), 0, 0, NULL);
+    windowBuf = window.pixelBuffer;
+
+    {
+        void *vramAddr;
+        u8 *ptr1;
+        u8 *ptr2;
+
+        vramAddr = G2_GetOBJCharPtr();
+        imgProxy = Sprite_GetImageProxy(battlerInfoBox->boxObj->sprite);
+        ptr1 = windowBuf;
+        ptr2 = windowBuf + 0x1A0;
+        MI_CpuCopy16(ptr1, (void *)((u32)vramAddr + infoBox_BallNumComponentCoordinates[0].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), infoBox_BallNumComponentCoordinates[0].size);
+        MI_CpuCopy16(ptr2, (void *)((u32)vramAddr + infoBox_BallNumComponentCoordinates[1].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), infoBox_BallNumComponentCoordinates[1].size);
+        MI_CpuCopy16(ptr1 + infoBox_BallNumComponentCoordinates[0].size, (void *)((u32)vramAddr + infoBox_BallNumComponentCoordinates[2].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), infoBox_BallNumComponentCoordinates[2].size);
+        MI_CpuCopy16(ptr2 + infoBox_BallNumComponentCoordinates[1].size, (void *)((u32)vramAddr + infoBox_BallNumComponentCoordinates[3].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), infoBox_BallNumComponentCoordinates[3].size);
+    }
+
+    RemoveWindow(&window);
+    String_Delete(string);
+    String_Delete(string2);
+}
+
+static int BattlerInfoBox_UpdateBar(BattlerInfoBox *battlerInfoBox, BOOL isExp) {
+    int ret;
+    if (isExp == FALSE) {
+        ret = BattlerInfoBox_CalculatePixelsChangeFrame(battlerInfoBox->maxHp, battlerInfoBox->hp, battlerInfoBox->gainedHp, &battlerInfoBox->hpCalc, 6, 1);
+    } else {
+        // Supposedly this will make the exp bar move at a consistent speed regardless of the gauge size.
+        int denom = BattlerInfoBox_Util_GetPixelsToGain(battlerInfoBox->exp, battlerInfoBox->gainedExp, battlerInfoBox->maxExp, 12);
+        if (denom == 0) {
+            denom = 1;
+        }
+        ret = BattlerInfoBox_CalculatePixelsChangeFrame(battlerInfoBox->maxExp, battlerInfoBox->exp, battlerInfoBox->gainedExp, &battlerInfoBox->expCalc, 12, abs(battlerInfoBox->gainedExp / denom));
+    }
+    if (isExp != FALSE || battlerInfoBox->unk_4F_3 != TRUE) {
+        BattlerInfoBox_UpdateBarDisplay(battlerInfoBox, isExp);
+    }
+    if (ret == -1) {
+        // we done
+        if (isExp == FALSE) {
+            battlerInfoBox->hpCalc = 0;
+        } else {
+            battlerInfoBox->expCalc = 0;
+        }
+    }
+    return ret;
+}
+
+static void BattlerInfoBox_UpdateBarDisplay(BattlerInfoBox *battlerInfoBox, u8 isExp) {
+    u8 i;
+    u8 pixelBuffer[12];
+    u8 tmp;
+    const u8 *src;
+    void *vramAddr;
+    NNSG2dImageProxy *imgProxy;
+    int sizeTop;
+
+    vramAddr = G2_GetOBJCharPtr();
+    imgProxy = Sprite_GetImageProxy(battlerInfoBox->boxObj->sprite);
+    switch (isExp) {
+    case FALSE:
+        // hp
+        switch (HpBar_GetColorIdx(BattlerInfoBox_Util_MakeBarPixelBuffer(battlerInfoBox->maxHp, battlerInfoBox->hp, battlerInfoBox->gainedHp, &battlerInfoBox->hpCalc, pixelBuffer, 6), 0x30)) {
+        case 3: // Green
+            tmp = 2;
+            break;
+        case 2: // Yellow
+            tmp = 11;
+            break;
+        case 1: // Red
+        default:
+            tmp = 20;
+            break;
+        }
+        src = BattlerInfoBox_Util_GetComponentRawGraphic(tmp);
+        sizeTop = infoBox_CurrentHpBarComponentCoordinates[battlerInfoBox->type][0].size / 32;
+        for (i = 0; i < 6; ++i) {
+            if (i < sizeTop) {
+                MI_CpuCopy16(src + pixelBuffer[i] * 32, (void *)((u32)vramAddr + infoBox_CurrentHpBarComponentCoordinates[battlerInfoBox->type][0].offset + i * 32 + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), 0x20);
+            } else {
+                MI_CpuCopy16(src + pixelBuffer[i] * 32, (void *)((u32)vramAddr + infoBox_CurrentHpBarComponentCoordinates[battlerInfoBox->type][1].offset + (i - sizeTop) * 32 + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), 0x20);
+            }
+        }
+        break;
+    case TRUE:
+        // exp
+        BattlerInfoBox_Util_MakeBarPixelBuffer(battlerInfoBox->maxExp, battlerInfoBox->exp, battlerInfoBox->gainedExp, &battlerInfoBox->expCalc, pixelBuffer, 12);
+        if (battlerInfoBox->level == 100) {
+            // Don't fill an exp bar for a level 100 mon
+            for (i = 0; i < 12; ++i) {
+                pixelBuffer[i] = 0;
+            }
+        }
+        src = BattlerInfoBox_Util_GetComponentRawGraphic(29);
+        for (i = 0; i < 12; ++i) {
+            if (i < 5) {
+                MI_CpuCopy16(src + pixelBuffer[i] * 32, (void *)((u32)vramAddr + 0x660 + i * 32 + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), 0x20);
+            } else {
+                MI_CpuCopy16(src + pixelBuffer[i] * 32, (void *)((u32)vramAddr + 0xE00 + (i - 5) * 32 + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), 0x20);
+            }
+        }
+        break;
+    }
+}
+
+static int BattlerInfoBox_CalculatePixelsChangeFrame(s32 maxBarVal, s32 curBarVal, s32 gainedBarVal, s32 *barValCalc, u8 tilesWide, u16 hpChange) {
+    s32 nowHp;
+    s32 ret;
+    u8 pixelsWide;
+    s32 hpPerPixel;
+
+    pixelsWide = tilesWide * 8;
+    if (*barValCalc == 0x80000000) {
+        // Initialize
+        if (USE_SUBPIXELS_TEST) {
+            *barValCalc = curBarVal << 8;
+        } else {
+            *barValCalc = curBarVal;
+        }
+    }
+    nowHp = curBarVal - gainedBarVal;
+    if (nowHp < 0) {
+        nowHp = 0;
+    } else if (nowHp > maxBarVal) {
+        nowHp = maxBarVal;
+    }
+    if (USE_SUBPIXELS_TEST) {
+        // Use subpixel mode
+        if (nowHp == (*barValCalc >> 8) && (*barValCalc & 0xFF) == 0) {
+            return -1;
+        }
+    } else {
+        // Use integer pixel mode
+        if (nowHp == *barValCalc) {
+            return -1;
+        }
+    }
+    if (USE_SUBPIXELS_TEST) {
+        hpPerPixel = (maxBarVal << 8) / pixelsWide;
+        if (gainedBarVal < 0) {
+            *barValCalc += hpPerPixel;
+            ret = *barValCalc >> 8;
+            if (ret >= nowHp) {
+                *barValCalc = nowHp << 8;
+                ret = nowHp;
+            }
+        } else {
+            *barValCalc -= hpPerPixel;
+            ret = *barValCalc >> 8;
+            if ((*barValCalc & 0xFF) > 0) {
+                ++ret;
+            }
+            if (ret <= nowHp) {
+                *barValCalc = nowHp << 8;
+                ret = nowHp;
+            }
+        }
+    } else {
+        if (gainedBarVal < 0) {
+            *barValCalc += hpChange;
+            if (*barValCalc > nowHp) {
+                *barValCalc = nowHp;
+            }
+        } else {
+            *barValCalc -= hpChange;
+            if (*barValCalc < nowHp) {
+                *barValCalc = nowHp;
+            }
+        }
+        ret = *barValCalc;
+    }
+    return ret;
+}
+
+static u8 BattlerInfoBox_Util_MakeBarPixelBuffer(s32 maxBarVal, s32 barVal, s32 gainedBarVal, s32 *barValCalc, u8 *pixelBuf, u8 tilesWide) {
+    int i;
+    int targetBarVal;
+    u32 pixelsWide;
+    u32 curPixels;
+    u32 ret;
+
+    targetBarVal = barVal - gainedBarVal;
+    if (targetBarVal < 0) {
+        targetBarVal = 0;
+    } else if (targetBarVal > maxBarVal) {
+        targetBarVal = maxBarVal;
+    }
+    pixelsWide = tilesWide * 8;
+    for (i = 0; i < tilesWide; ++i) {
+        pixelBuf[i] = 0;
+    }
+    if (USE_SUBPIXELS_TEST) {
+        curPixels = (*barValCalc * pixelsWide / maxBarVal) >> 8;
+    } else {
+        curPixels = *barValCalc * pixelsWide / maxBarVal;
+    }
+    ret = curPixels;
+    if (curPixels == 0 && targetBarVal > 0) {
+        pixelBuf[0] = 1;
+        ret = 1;
+    } else {
+        for (i = 0; i < tilesWide; ++i) {
+            if (curPixels >= 8) {
+                pixelBuf[i] = 8;
+                curPixels -= 8;
+            } else {
+                pixelBuf[i] = curPixels;
+                break;
+            }
+        }
+    }
+    return ret;
+}
+
+static u32 BattlerInfoBox_Util_GetPixelsToGain(s32 exp, s32 gainedExp, s32 maxExp, u8 tilesWide) {
+    s8 curPixels, targetPixels;
+    u8 pixelsWide;
+    s32 targetExp;
+
+    pixelsWide = tilesWide * 8;
+
+    targetExp = exp - gainedExp;
+    if (targetExp < 0) {
+        targetExp = 0;
+    } else if (targetExp > maxExp) {
+        targetExp = maxExp;
+    }
+    curPixels = exp * pixelsWide / maxExp;
+    targetPixels = targetExp * pixelsWide / maxExp;
+    return abs(curPixels - targetPixels);
+}
+
+static const u8 *BattlerInfoBox_Util_GetComponentRawGraphic(int componentId) {
+    return gBattlerInfoBox_RawGraphicComponents + componentId * 32;
+}
+
+u8 BattlerInfoBox_Util_GetBarTypeFromBattlerSide(u8 bside, u32 battleType) {
+    switch (bside) {
+    case 0:
+        if (battleType & BATTLE_TYPE_PAL_PARK) {
+            return INFO_BOX_TYPE_PALPARK;
+        }
+        if (battleType & BATTLE_TYPE_SAFARI) {
+            return INFO_BOX_TYPE_SAFARI;
+        }
+        return INFO_BOX_TYPE_SINGLE_PLAYER;
+    case 1:
+        return INFO_BOX_TYPE_SINGLE_ENEMY;
+    case 2:
+        return INFO_BOX_TYPE_DOUBLE_PLAYER_LHS;
+    case 3:
+        return INFO_BOX_TYPE_DOUBLE_ENEMY_LHS;
+    case 4:
+        return INFO_BOX_TYPE_DOUBLE_PLAYER_RHS;
+    case 5:
+        return INFO_BOX_TYPE_DOUBLE_ENEMY_RHS;
+    default:
+        GF_ASSERT(FALSE);
+        return INFO_BOX_TYPE_SINGLE_PLAYER;
+    }
+}
+
+static const ManagedSpriteTemplate *BattlerInfoBox_Util_GetInfoBoxSpriteTemplate(u8 barType) {
+    const ManagedSpriteTemplate *ret;
+    switch (barType) {
+    case INFO_BOX_TYPE_SINGLE_PLAYER:
+        ret = &sSpriteTemplate_BattlerInfoBoxSinglePlayer;
+        break;
+    case INFO_BOX_TYPE_SINGLE_ENEMY:
+        ret = &sSpriteTemplate_HpBarSingleEnemy;
+        break;
+    case INFO_BOX_TYPE_DOUBLE_PLAYER_LHS:
+        ret = &sSpriteTemplate_HpBarDoublePlayerLHS;
+        break;
+    case INFO_BOX_TYPE_DOUBLE_ENEMY_LHS:
+        ret = &sSpriteTemplate_HpBarDoubleEnemyLHS;
+        break;
+    case INFO_BOX_TYPE_DOUBLE_PLAYER_RHS:
+        ret = &sSpriteTemplate_HpBarDoublePlayerRHS;
+        break;
+    case INFO_BOX_TYPE_DOUBLE_ENEMY_RHS:
+        ret = &sSpriteTemplate_HpBarDoubleEnemyRHS;
+        break;
+    case INFO_BOX_TYPE_SAFARI:
+    case INFO_BOX_TYPE_PALPARK:
+        ret = &sSpriteTemplate_HpBarSafariOrPark;
+        break;
+    default:
+        GF_ASSERT(FALSE);
+        return NULL;
+    }
+    return ret;
+}
+
+static const ManagedSpriteTemplate *BattlerInfoBox_Util_GetArrowSpriteTemplate(u8 barType) {
+    switch (barType) {
+    case INFO_BOX_TYPE_SINGLE_PLAYER:
+    case INFO_BOX_TYPE_DOUBLE_PLAYER_LHS:
+    case INFO_BOX_TYPE_DOUBLE_PLAYER_RHS:
+    case INFO_BOX_TYPE_SAFARI:
+    case INFO_BOX_TYPE_PALPARK:
+        return &sSpriteTemplate_Arrow;
+    case INFO_BOX_TYPE_SINGLE_ENEMY:
+    case INFO_BOX_TYPE_DOUBLE_ENEMY_LHS:
+    case INFO_BOX_TYPE_DOUBLE_ENEMY_RHS:
+        return NULL;
+    default:
+        GF_ASSERT(FALSE);
+        return NULL;
+    }
+}
+
+typedef struct BattleHpBarExpBarFullFlashEffectTaskData {
+    BattlerInfoBox *battlerInfoBox;
+    u8 *pDoneFlag;
+    u8 state;
+    u8 plttNum;
+    s8 ev;
+} BattleHpBarExpBarFullFlashEffectTaskData;
+
+SysTask *BattlerInfoBox_BeginExpBarFullFlashEffect(BattlerInfoBox *battlerInfoBox, u8 *a1) {
+    *a1 = 0;
+    BattleHpBarExpBarFullFlashEffectTaskData *taskData = Heap_Alloc(HEAP_ID_BATTLE, sizeof(BattleHpBarExpBarFullFlashEffectTaskData));
+    MI_CpuFill8(taskData, 0, sizeof(BattleHpBarExpBarFullFlashEffectTaskData));
+    taskData->battlerInfoBox = battlerInfoBox;
+    taskData->pDoneFlag = a1;
+    return SysTask_CreateOnMainQueue(Task_ExpBarFullFlash, taskData, 1000);
+}
+
+static void Task_ExpBarFullFlash(SysTask *task, void *data) {
+    BattleHpBarExpBarFullFlashEffectTaskData *taskData = data;
+    SpriteManager *spriteManager = BattleSystem_GetSpriteManager(taskData->battlerInfoBox->battleSystem);
+    int plttNum;
+    PaletteData *plttData = BattleSystem_GetPaletteData(taskData->battlerInfoBox->battleSystem);
+
+    switch (taskData->state) {
+    case 0:
+        plttNum = SpriteManager_FindPlttResourceOffset(spriteManager, 20007, NNS_G2D_VRAM_TYPE_2DMAIN);
+        ManagedSprite_SetPaletteOverride(taskData->battlerInfoBox->boxObj, plttNum);
+        taskData->plttNum = plttNum;
+        ++taskData->state;
+        // break;
+    case 1:
+        taskData->ev += 2;
+        if (taskData->ev >= 10) {
+            taskData->ev = 10;
+            ++taskData->state;
+        }
+        PaletteData_BlendPalette(plttData, PLTTBUF_MAIN_OBJ, 16 * taskData->plttNum, 0x10, taskData->ev, RGB(5, 29, 28));
+        break;
+    case 2:
+        taskData->ev -= 2;
+        if (taskData->ev <= 0) {
+            taskData->ev = 0;
+            ++taskData->state;
+        }
+        PaletteData_BlendPalette(plttData, PLTTBUF_MAIN_OBJ, 16 * taskData->plttNum, 0x10, taskData->ev, RGB(5, 29, 28));
+        break;
+    default:
+        plttNum = SpriteManager_FindPlttResourceOffset(spriteManager, 20006, NNS_G2D_VRAM_TYPE_2DMAIN);
+        ManagedSprite_SetPaletteOverride(taskData->battlerInfoBox->boxObj, plttNum);
+        *taskData->pDoneFlag = 1;
+        Heap_Free(taskData);
+        SysTask_Destroy(task);
+        break;
+    }
+}
+
+void ov12_02265D70(BattlerInfoBox *battlerInfoBox) {
+}
+
+void ov12_02265D74(BattlerInfoBox *battlerInfoBox) {
+}
+
+static void BattlerInfoBox_DoShakeAnimation(BattlerInfoBox *battlerInfoBox) {
+    if (battlerInfoBox->sysTask == NULL) {
+        battlerInfoBox->yOffset = 0;
+        battlerInfoBox->sysTask = SysTask_CreateOnMainQueue(BattlerInfoBox_ShakeAnimation, battlerInfoBox, 1010);
+    }
+}
+
+static void BattlerInfoBox_ClearMoreInfoBox(BattlerInfoBox *battlerInfoBox) {
+    if (battlerInfoBox->sysTask != NULL) {
+        SysTask_Destroy(battlerInfoBox->sysTask);
+        battlerInfoBox->sysTask = NULL;
+    }
+    battlerInfoBox->yOffset = 0;
+    BattlerInfoBox_SetBoxSpritePosition(battlerInfoBox, 0, 0);
+}
+
+static void BattlerInfoBox_ShakeAnimation(SysTask *task, void *data) {
+    BattlerInfoBox *battlerInfoBox = data;
+    battlerInfoBox->yOffset += 20;
+    if (battlerInfoBox->yOffset >= 360) {
+        battlerInfoBox->yOffset -= 360;
+    }
+    BattlerInfoBox_SetBoxSpritePosition(battlerInfoBox, 0, FX_Mul(GF_SinDegNoWrap(battlerInfoBox->yOffset), FX32_CONST(1.5)) / FX32_ONE);
+}

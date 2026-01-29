@@ -3609,7 +3609,7 @@
       ]
     },
     {
-      "name": "scrcmd_569",
+      "name": "take_coins_pointer",
       "args": [
         2
       ]
@@ -5191,7 +5191,7 @@
       ]
     },
     {
-      "name": "scrcmd_831",
+      "name": "draw_random_accessory",
       "args": [
         "var"
       ]

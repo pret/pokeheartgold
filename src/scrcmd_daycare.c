@@ -144,7 +144,7 @@ BOOL ScrCmd_CheckDaycareEgg(ScriptContext *ctx) {
     u16 *ret_ptr = ScriptGetVarPointer(ctx);
     Daycare *daycare = SaveArray_Get(saveData, SAVE_DAYCARE);
 
-    *ret_ptr = Save_Daycare_HasEgg(daycare);
+    *ret_ptr = Daycare_HasEgg(daycare);
 
     return FALSE;
 }
@@ -163,15 +163,15 @@ BOOL ScrCmd_UpdateDaycareMonObjects(ScriptContext *ctx) {
             MapObject_Delete(mon_map_object);
         }
 
-        BoxPokemon *boxMon = DaycareMon_GetBoxMon(Save_Daycare_GetMonX(daycare, dc_mon_idx));
-        if (GetBoxMonData(boxMon, MON_DATA_SPECIES, NULL) == SPECIES_NONE) {
+        BoxPokemon *boxMon = DaycareMon_GetBoxMon(Daycare_GetMonX(daycare, dc_mon_idx));
+        if (BoxPokemon_GetData(boxMon, MON_DATA_SPECIES, NULL) == SPECIES_NONE) {
             continue;
         }
 
-        form = GetBoxMonData(boxMon, MON_DATA_FORM, NULL);
-        species = GetBoxMonData(boxMon, MON_DATA_SPECIES, NULL);
-        u32 gender = GetBoxMonData(boxMon, MON_DATA_GENDER, NULL);
-        BOOL shiny = BoxMonIsShiny(boxMon);
+        form = BoxPokemon_GetData(boxMon, MON_DATA_FORM, NULL);
+        species = BoxPokemon_GetData(boxMon, MON_DATA_SPECIES, NULL);
+        u32 gender = BoxPokemon_GetData(boxMon, MON_DATA_GENDER, NULL);
+        BOOL shiny = BoxPokemon_IsShiny(boxMon);
 
         CreateDaycareMonSpriteInternal(fieldSystem->mapObjectManager, (u8)dc_mon_idx, species, form, gender, 1, x, y, fieldSystem->location->mapId, shiny);
     }
@@ -215,7 +215,7 @@ BOOL ScrCmd_DaycareSanitizeMon(ScriptContext *ctx) {
         return FALSE;
     }
 
-    u32 held_item = GetMonData(mon, MON_DATA_HELD_ITEM, NULL);
+    u32 held_item = Pokemon_GetMonData(mon, MON_DATA_HELD_ITEM, NULL);
     if (held_item == ITEM_GRISEOUS_ORB) {
         Bag *bag = Save_Bag_Get(fieldSystem->saveData);
         if (!Bag_AddItem(bag, ITEM_GRISEOUS_ORB, 1, HEAP_ID_FIELD2)) {
@@ -224,21 +224,21 @@ BOOL ScrCmd_DaycareSanitizeMon(ScriptContext *ctx) {
         }
 
         u32 no_item = ITEM_NONE;
-        SetMonData(mon, MON_DATA_HELD_ITEM, &no_item);
+        Pokemon_SetData(mon, MON_DATA_HELD_ITEM, &no_item);
     }
 
-    s32 form = GetMonData(mon, MON_DATA_FORM, NULL);
+    s32 form = Pokemon_GetMonData(mon, MON_DATA_FORM, NULL);
     if (form > 0) {
-        u32 species = GetMonData(mon, MON_DATA_SPECIES, NULL);
+        u32 species = Pokemon_GetMonData(mon, MON_DATA_SPECIES, NULL);
         switch (species) {
         case SPECIES_GIRATINA:
-            Mon_UpdateGiratinaForm(mon);
+            Pokemon_UpdateGiratinaForm(mon);
             break;
         case SPECIES_ROTOM:
-            Mon_UpdateRotomForm(mon, 0, 0);
+            Pokemon_UpdateRotomForm(mon, 0, 0);
             break;
         case SPECIES_SHAYMIN:
-            Mon_UpdateShayminForm(mon, 0);
+            Pokemon_UpdateShayminForm(mon, 0);
             break;
         }
     }

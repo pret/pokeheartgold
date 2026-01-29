@@ -464,7 +464,7 @@ ov80_02238384: ; 0x02238384
 	str r0, [sp, #4]
 	add r0, r4, #0
 	mov r2, #4
-	bl sub_0207217C
+	bl Pokemon_UpdateAfterCatch
 	add sp, #8
 	pop {r4, pc}
 	.balign 4, 0
@@ -523,7 +523,7 @@ _022383EC:
 	str r1, [sp, #4]
 	mov r1, #6
 	add r2, sp, #4
-	bl SetMonData
+	bl Pokemon_SetData
 	ldr r0, [sp]
 	add r6, r6, #1
 	add r4, #0x38

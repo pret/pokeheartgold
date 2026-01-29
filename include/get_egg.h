@@ -11,15 +11,15 @@ int DaycareMon_CalcLevelGrowth(DaycareMon *daycareMon);
 u16 Save_Daycare_BufferMonNickAndRetrievalPrice(Daycare *dayCare, u8 slot, MessageFormat *msgFmt);
 u8 Save_Daycare_BufferGrowthAndNick(Daycare *dayCare, u32 slot, MessageFormat *msgFmt);
 void Save_Daycare_ResetEggStats(Daycare *dayCare);
-void SetEggStats(Pokemon *mon, int species, u8 metLocation, PlayerProfile *profile, int trainerMemoStrat, int eggLocation);
+void SetEggStats(Pokemon *mon, int species, u8 eggLocation, PlayerProfile *profile, int trainerMemoStrat, int metLocation);
 void GiveEggToPlayer(Daycare *dayCare, Party *party, PlayerProfile *profile);
 BOOL HandleDaycareStep(Daycare *dayCare, Party *party, FieldSystem *fieldSystem);
-Pokemon *sub_0206CE44(Party *party);
+Pokemon *GetEggInParty(Party *party);
 void Save_Daycare_BufferStoredMonNicks(Daycare *dayCare, MessageFormat *msgFmt);
 void Save_Daycare_BufferMonStats(Daycare *dayCare, u32 nickname_idx, u32 level_idx, u32 gender_idx, u8 slot, MessageFormat *msgFmt);
 u16 Save_Daycare_BufferTailMonNick(Daycare *dayCare, MessageFormat *msgFmt);
 u8 Save_Daycare_GetState(Daycare *dayCare);
 u8 Save_Daycare_CalcCompatibility(Daycare *dayCare);
-void sub_0206D328(Pokemon *mon, enum HeapID heapID);
+void Daycare_BuildHatchedMon(Pokemon *mon, enum HeapID heapID);
 
 #endif

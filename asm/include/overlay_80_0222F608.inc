@@ -13,8 +13,8 @@
 .public BattleSetup_Delete
 .public IsBattleResultWin
 .public AllocMonZeroed
-.public GetMonData
-.public Mon_GetBoxMon
+.public Pokemon_GetMonData
+.public Pokemon_GetBox
 .public Party_GetMonByIndex
 .public Frontier_GetLaunchParam
 .public Frontier_GetData
