@@ -136,42 +136,42 @@ _019D:
 
 	.balign 4, 0
 _01A4:
-	step 12, 8
-	step 32, 1
-	step_end
+	WalkNormalNorth 8
+	WalkOnSpotNormalNorth
+	EndMovement
 
 	.balign 4, 0
 _01B0:
-	step 33, 1
-	step 13, 1
-	step_end
+	WalkOnSpotNormalSouth
+	WalkNormalSouth
+	EndMovement
 
 	.balign 4, 0
 _01BC:
-	step 12, 10
-	step 32, 1
-	step_end
+	WalkNormalNorth 10
+	WalkOnSpotNormalNorth
+	EndMovement
 
 	.balign 4, 0
 _01C8:
-	step 33, 1
-	step_end
+	WalkOnSpotNormalSouth
+	EndMovement
 
 	.balign 4, 0
 _01D0:
-	step 33, 1
-	step 9, 2
-	step 32, 1
-	step_end
+	WalkOnSpotNormalSouth
+	WalkSlowSouth 2
+	WalkOnSpotNormalNorth
+	EndMovement
 
 	.balign 4, 0
 _01E0:
-	step 12, 2
-	step 32, 1
-	step_end
+	WalkNormalNorth 2
+	WalkOnSpotNormalNorth
+	EndMovement
 
 	.balign 4, 0
 _01EC:
-	step 13, 8
-	step_end
+	WalkNormalSouth 8
+	EndMovement
 	.balign 4, 0

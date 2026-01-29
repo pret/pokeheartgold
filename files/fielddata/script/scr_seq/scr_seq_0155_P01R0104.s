@@ -50,14 +50,14 @@ scr_seq_P01R0104_001:
 
 	.balign 4, 0
 _0090:
-	step 13, 3
-	step_end
+	WalkNormalSouth 3
+	EndMovement
 
 	.balign 4, 0
 _0098:
-	step 14, 1
-	step 33, 1
-	step_end
+	WalkNormalWest
+	WalkOnSpotNormalSouth
+	EndMovement
 
 scr_seq_P01R0104_000:
 	play_se SEQ_SE_DP_SELECT
@@ -108,41 +108,41 @@ _0144:
 
 	.balign 4, 0
 _0150:
-	step 2, 1
-	step 14, 1
-	step 35, 1
-	step_end
+	FaceWest
+	WalkNormalWest
+	WalkOnSpotNormalEast
+	EndMovement
 
 	.balign 4, 0
 _0160:
-	step 3, 1
-	step 15, 1
-	step 34, 1
-	step_end
+	FaceEast
+	WalkNormalEast
+	WalkOnSpotNormalWest
+	EndMovement
 
 	.balign 4, 0
 _0170:
-	step 3, 1
-	step 15, 1
-	step 34, 1
-	step_end
+	FaceEast
+	WalkNormalEast
+	WalkOnSpotNormalWest
+	EndMovement
 
 	.balign 4, 0
 _0180:
-	step 14, 1
-	step 0, 1
-	step 12, 2
-	step_end
+	WalkNormalWest
+	FaceNorth
+	WalkNormalNorth 2
+	EndMovement
 
 	.balign 4, 0
 _0190:
-	step 15, 1
-	step 0, 1
-	step 12, 2
-	step_end
+	WalkNormalEast
+	FaceNorth
+	WalkNormalNorth 2
+	EndMovement
 
 	.balign 4, 0
 _01A0:
-	step 12, 2
-	step_end
+	WalkNormalNorth 2
+	EndMovement
 	.balign 4, 0

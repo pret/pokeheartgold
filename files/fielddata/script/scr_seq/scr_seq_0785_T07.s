@@ -336,13 +336,13 @@ _0447:
 
 	.balign 4, 0
 _045C:
-	step 35, 1
-	step_end
+	WalkOnSpotNormalEast
+	EndMovement
 
 	.balign 4, 0
 _0464:
-	step 34, 1
-	step_end
+	WalkOnSpotNormalWest
+	EndMovement
 
 _046C:
 	play_se SEQ_SE_DP_SELECT
@@ -485,45 +485,45 @@ _064F:
 
 	.balign 4, 0
 _0664:
-	step 15, 1
-	step 12, 2
-	step 14, 1
-	step 12, 3
-	step 33, 1
-	step_end
+	WalkNormalEast
+	WalkNormalNorth 2
+	WalkNormalWest
+	WalkNormalNorth 3
+	WalkOnSpotNormalSouth
+	EndMovement
 
 	.balign 4, 0
 _067C:
-	step 12, 3
-	step 33, 1
-	step_end
+	WalkNormalNorth 3
+	WalkOnSpotNormalSouth
+	EndMovement
 
 	.balign 4, 0
 _0688:
-	step 12, 1
-	step 14, 1
-	step 12, 3
-	step 33, 1
-	step_end
+	WalkNormalNorth
+	WalkNormalWest
+	WalkNormalNorth 3
+	WalkOnSpotNormalSouth
+	EndMovement
 
 	.balign 4, 0
 _069C:
-	step 12, 1
-	step 15, 1
-	step 12, 3
-	step 33, 1
-	step_end
+	WalkNormalNorth
+	WalkNormalEast
+	WalkNormalNorth 3
+	WalkOnSpotNormalSouth
+	EndMovement
 
 	.balign 4, 0
 _06B0:
-	step 63, 1
-	step 32, 1
-	step_end
+	Delay8
+	WalkOnSpotNormalNorth
+	EndMovement
 
 	.balign 4, 0
 _06BC:
-	step 15, 1
-	step 12, 1
-	step 1, 1
-	step_end
+	WalkNormalEast
+	WalkNormalNorth
+	FaceSouth
+	EndMovement
 	.balign 4, 0

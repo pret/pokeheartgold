@@ -311,47 +311,47 @@ _0483:
 
 	.balign 4, 0
 _04C0:
-	step 15, 1
-	step 12, 2
-	step 14, 1
-	step 12, 3
-	step 33, 1
-	step_end
+	WalkNormalEast
+	WalkNormalNorth 2
+	WalkNormalWest
+	WalkNormalNorth 3
+	WalkOnSpotNormalSouth
+	EndMovement
 
 	.balign 4, 0
 _04D8:
-	step 12, 3
-	step 33, 1
-	step_end
+	WalkNormalNorth 3
+	WalkOnSpotNormalSouth
+	EndMovement
 
 	.balign 4, 0
 _04E4:
-	step 12, 1
-	step 14, 1
-	step 12, 3
-	step 33, 1
-	step_end
+	WalkNormalNorth
+	WalkNormalWest
+	WalkNormalNorth 3
+	WalkOnSpotNormalSouth
+	EndMovement
 
 	.balign 4, 0
 _04F8:
-	step 12, 1
-	step 15, 1
-	step 12, 3
-	step 33, 1
-	step_end
+	WalkNormalNorth
+	WalkNormalEast
+	WalkNormalNorth 3
+	WalkOnSpotNormalSouth
+	EndMovement
 
 	.balign 4, 0
 _050C:
-	step 63, 1
-	step 32, 1
-	step_end
+	Delay8
+	WalkOnSpotNormalNorth
+	EndMovement
 
 	.balign 4, 0
 _0518:
-	step 15, 1
-	step 12, 1
-	step 1, 1
-	step_end
+	WalkNormalEast
+	WalkNormalNorth
+	FaceSouth
+	EndMovement
 
 scr_seq_D22R0101_024:
 	play_se SEQ_SE_DP_SELECT
@@ -440,13 +440,13 @@ _0664:
 
 	.balign 4, 0
 _0678:
-	step 13, 1
-	step 15, 2
-	step 12, 2
-	step 14, 1
-	step 12, 2
-	step 33, 1
-	step_end
+	WalkNormalSouth
+	WalkNormalEast 2
+	WalkNormalNorth 2
+	WalkNormalWest
+	WalkNormalNorth 2
+	WalkOnSpotNormalSouth
+	EndMovement
 
 scr_seq_D22R0101_001:
 	scrcmd_055 2, 0

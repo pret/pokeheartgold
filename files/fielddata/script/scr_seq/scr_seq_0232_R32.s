@@ -312,77 +312,77 @@ _0468:
 
 	.balign 4, 0
 _046C:
-	step 2, 1
-	step 75, 1
-	step_end
+	FaceWest
+	EmoteExclamationMark
+	EndMovement
 
 	.balign 4, 0
 _0478:
-	step 14, 2
-	step 12, 1
-	step_end
+	WalkNormalWest 2
+	WalkNormalNorth
+	EndMovement
 
 	.balign 4, 0
 _0484:
-	step 62, 1
-	step 14, 1
-	step 12, 1
-	step_end
+	Delay4
+	WalkNormalWest
+	WalkNormalNorth
+	EndMovement
 
 	.balign 4, 0
 _0494:
-	step 63, 1
-	step 12, 2
-	step 1, 1
-	step_end
+	Delay8
+	WalkNormalNorth 2
+	FaceSouth
+	EndMovement
 
 	.balign 4, 0
 _04A4:
-	step 62, 1
-	step 12, 2
-	step 1, 1
-	step_end
+	Delay4
+	WalkNormalNorth 2
+	FaceSouth
+	EndMovement
 
 	.balign 4, 0
 _04B4:
-	step 13, 1
-	step 15, 2
-	step 2, 1
-	step_end
+	WalkNormalSouth
+	WalkNormalEast 2
+	FaceWest
+	EndMovement
 
 	.balign 4, 0
 _04C4:
-	step 13, 1
-	step 15, 1
-	step 2, 1
-	step_end
+	WalkNormalSouth
+	WalkNormalEast
+	FaceWest
+	EndMovement
 
 	.balign 4, 0
 _04D4:
-	step 14, 1
-	step_end
+	WalkNormalWest
+	EndMovement
 
 	.balign 4, 0
 _04DC:
-	step 62, 1
-	step_end
+	Delay4
+	EndMovement
 
 	.balign 4, 0
 _04E4:
-	step 63, 1
-	step 3, 1
-	step_end
+	Delay8
+	FaceEast
+	EndMovement
 
 	.balign 4, 0
 _04F0:
-	step 3, 1
-	step_end
+	FaceEast
+	EndMovement
 
 	.balign 4, 0
 _04F8:
-	step 15, 1
-	step 2, 1
-	step_end
+	WalkNormalEast
+	FaceWest
+	EndMovement
 
 scr_seq_R32_003:
 	play_se SEQ_SE_DP_SELECT
@@ -492,47 +492,47 @@ _0674:
 
 	.balign 4, 0
 _0688:
-	step 15, 1
-	step 12, 2
-	step 14, 1
-	step 12, 3
-	step 33, 1
-	step_end
+	WalkNormalEast
+	WalkNormalNorth 2
+	WalkNormalWest
+	WalkNormalNorth 3
+	WalkOnSpotNormalSouth
+	EndMovement
 
 	.balign 4, 0
 _06A0:
-	step 12, 3
-	step 33, 1
-	step_end
+	WalkNormalNorth 3
+	WalkOnSpotNormalSouth
+	EndMovement
 
 	.balign 4, 0
 _06AC:
-	step 12, 1
-	step 14, 1
-	step 12, 3
-	step 33, 1
-	step_end
+	WalkNormalNorth
+	WalkNormalWest
+	WalkNormalNorth 3
+	WalkOnSpotNormalSouth
+	EndMovement
 
 	.balign 4, 0
 _06C0:
-	step 12, 1
-	step 15, 1
-	step 12, 3
-	step 33, 1
-	step_end
+	WalkNormalNorth
+	WalkNormalEast
+	WalkNormalNorth 3
+	WalkOnSpotNormalSouth
+	EndMovement
 
 	.balign 4, 0
 _06D4:
-	step 63, 1
-	step 32, 1
-	step_end
+	Delay8
+	WalkOnSpotNormalNorth
+	EndMovement
 
 	.balign 4, 0
 _06E0:
-	step 15, 1
-	step 12, 1
-	step 1, 1
-	step_end
+	WalkNormalEast
+	WalkNormalNorth
+	FaceSouth
+	EndMovement
 
 scr_seq_R32_006:
 	direction_signpost msg_0380_R32_00018, 1, 2, VAR_SPECIAL_RESULT

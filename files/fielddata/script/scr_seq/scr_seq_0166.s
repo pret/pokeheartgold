@@ -302,109 +302,109 @@ _0443:
 	end
 
 _0447: ; unreferenced
-    play_se SEQ_SE_DP_CON_F007
-    compare VAR_SPECIAL_RESULT, 1
-    call_if_eq _048E
-    compare VAR_SPECIAL_RESULT, 2
-    call_if_eq _0498
-    compare VAR_SPECIAL_RESULT, 3
-    call_if_eq _04AC
-    compare VAR_SPECIAL_RESULT, 4
-    call_if_eq _04C8
-    compare VAR_SPECIAL_RESULT, 5
-    call_if_ge _04EE
-    return
+	   play_se SEQ_SE_DP_CON_F007
+	   compare VAR_SPECIAL_RESULT, 1
+	   call_if_eq _048E
+	   compare VAR_SPECIAL_RESULT, 2
+	   call_if_eq _0498
+	   compare VAR_SPECIAL_RESULT, 3
+	   call_if_eq _04AC
+	   compare VAR_SPECIAL_RESULT, 4
+	   call_if_eq _04C8
+	   compare VAR_SPECIAL_RESULT, 5
+	   call_if_ge _04EE
+	   return
 
 _048E:
-    play_se SEQ_SE_DP_CON_015
-    wait_se SEQ_SE_DP_CON_015
-    return
+	   play_se SEQ_SE_DP_CON_015
+	   wait_se SEQ_SE_DP_CON_015
+	   return
 
 _0498:
-    play_se SEQ_SE_DP_CON_015
-    wait 5, VAR_SPECIAL_RESULT
-    play_se SEQ_SE_DP_CON_015
-    wait_se SEQ_SE_DP_CON_015
-    return
+	   play_se SEQ_SE_DP_CON_015
+	   wait 5, VAR_SPECIAL_RESULT
+	   play_se SEQ_SE_DP_CON_015
+	   wait_se SEQ_SE_DP_CON_015
+	   return
 
 _04AC:
-    play_se SEQ_SE_DP_CON_015
-    wait_se SEQ_SE_DP_CON_015
-    play_se SEQ_SE_DP_CON_015
-    wait 5, VAR_SPECIAL_RESULT
-    play_se SEQ_SE_DP_CON_015
-    wait_se SEQ_SE_DP_CON_015
-    return
+	   play_se SEQ_SE_DP_CON_015
+	   wait_se SEQ_SE_DP_CON_015
+	   play_se SEQ_SE_DP_CON_015
+	   wait 5, VAR_SPECIAL_RESULT
+	   play_se SEQ_SE_DP_CON_015
+	   wait_se SEQ_SE_DP_CON_015
+	   return
 
 _04C8:
-    play_se SEQ_SE_DP_CON_015
-    wait 5, VAR_SPECIAL_RESULT
-    play_se SEQ_SE_DP_CON_015
-    wait_se SEQ_SE_DP_CON_015
-    play_se SEQ_SE_DP_CON_015
-    wait 5, VAR_SPECIAL_RESULT
-    play_se SEQ_SE_DP_CON_015
-    wait_se SEQ_SE_DP_CON_015
-    return
+	   play_se SEQ_SE_DP_CON_015
+	   wait 5, VAR_SPECIAL_RESULT
+	   play_se SEQ_SE_DP_CON_015
+	   wait_se SEQ_SE_DP_CON_015
+	   play_se SEQ_SE_DP_CON_015
+	   wait 5, VAR_SPECIAL_RESULT
+	   play_se SEQ_SE_DP_CON_015
+	   wait_se SEQ_SE_DP_CON_015
+	   return
 
 _04EE:
-    play_se SEQ_SE_DP_CON_015
-    wait 5, VAR_SPECIAL_RESULT
-    play_se SEQ_SE_DP_CON_015
-    wait 5, VAR_SPECIAL_RESULT
-    play_se SEQ_SE_DP_CON_015
-    wait 10, VAR_SPECIAL_RESULT
-    play_se SEQ_SE_DP_CON_015
-    wait 5, VAR_SPECIAL_RESULT
-    play_se SEQ_SE_DP_CON_015
-    wait_se SEQ_SE_DP_CON_015
-    return
+	   play_se SEQ_SE_DP_CON_015
+	   wait 5, VAR_SPECIAL_RESULT
+	   play_se SEQ_SE_DP_CON_015
+	   wait 5, VAR_SPECIAL_RESULT
+	   play_se SEQ_SE_DP_CON_015
+	   wait 10, VAR_SPECIAL_RESULT
+	   play_se SEQ_SE_DP_CON_015
+	   wait 5, VAR_SPECIAL_RESULT
+	   play_se SEQ_SE_DP_CON_015
+	   wait_se SEQ_SE_DP_CON_015
+	   return
 
 	.balign 4, 0
 _0520: ; unreferenced
-	step 62, 1
-	step 3, 1
-	step 62, 1
-	step 1, 1
-	step 61, 1
-	step 2, 1
-	step 60, 1
-	step 0, 1
-	step 60, 1
-	step 3, 1
-	step 60, 1
-	step 1, 1
-	step_end
+	Delay4
+	FaceEast
+	Delay4
+	FaceSouth
+	Delay2
+	FaceWest
+	Delay1
+	FaceNorth
+	Delay1
+	FaceEast
+	Delay1
+	FaceSouth
+	EndMovement
 
 	.balign 4, 0
 _0554: ; unreferenced
-	step 63, 2
-	step 34, 1
-	step 63, 1
-	step 35, 1
-	step 63, 1
-	step 37, 1
-	step_end
+	Delay8 2
+	WalkOnSpotNormalWest
+	Delay8
+	WalkOnSpotNormalEast
+	Delay8
+	WalkOnSpotFastSouth
+	EndMovement
 
 	.balign 4, 0
 _0570: ; unreferenced
-	step 34, 1
-	step_end
+	WalkOnSpotNormalWest
+	EndMovement
 
 	.balign 4, 0
 _0578: ; unreferenced
-	step 32, 1
-	step_end
+	WalkOnSpotNormalNorth
+	EndMovement
 
 	.balign 4, 0
 _0580: ; unreferenced
-	step 35, 1
-	step_end
+	WalkOnSpotNormalEast
+	EndMovement
 
 	.balign 4, 0
 _0588: ; unreferenced
-	step 33, 1
-	step_end
+	WalkOnSpotNormalSouth
+	EndMovement
 
 scr_seq_0166_008:
 scr_seq_0166_009:

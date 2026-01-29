@@ -101,72 +101,72 @@ _015A:
 
 	.balign 4, 0
 _0168:
-	step 75, 1
-	step 63, 2
-	step 1, 2
-	step_end
+	EmoteExclamationMark
+	Delay8 2
+	FaceSouth 2
+	EndMovement
 
 	.balign 4, 0
 _0178:
-	step 9, 1
-	step_end
+	WalkSlowSouth
+	EndMovement
 
 	.balign 4, 0
 _0180:
-	step 16, 3
-	step 3, 2
-	step 19, 4
-	step 0, 2
-	step 16, 3
-	step_end
+	WalkFastNorth 3
+	FaceEast 2
+	WalkFastEast 4
+	FaceNorth 2
+	WalkFastNorth 3
+	EndMovement
 
 	.balign 4, 0
 _0198:
-	step 16, 3
-	step 3, 2
-	step 19, 5
-	step 0, 2
-	step 16, 3
-	step_end
+	WalkFastNorth 3
+	FaceEast 2
+	WalkFastEast 5
+	FaceNorth 2
+	WalkFastNorth 3
+	EndMovement
 
 	.balign 4, 0
 _01B0:
-	step 16, 3
-	step 3, 2
-	step 19, 6
-	step 0, 2
-	step 16, 3
-	step_end
+	WalkFastNorth 3
+	FaceEast 2
+	WalkFastEast 6
+	FaceNorth 2
+	WalkFastNorth 3
+	EndMovement
 
 	.balign 4, 0
 _01C8:
-	step 1, 2
-	step 13, 2
-	step 2, 2
-	step 14, 5
-	step 1, 2
-	step 13, 7
-	step_end
+	FaceSouth 2
+	WalkNormalSouth 2
+	FaceWest 2
+	WalkNormalWest 5
+	FaceSouth 2
+	WalkNormalSouth 7
+	EndMovement
 
 	.balign 4, 0
 _01E4:
-	step 1, 2
-	step 13, 2
-	step 2, 2
-	step 14, 6
-	step 1, 2
-	step 13, 7
-	step_end
+	FaceSouth 2
+	WalkNormalSouth 2
+	FaceWest 2
+	WalkNormalWest 6
+	FaceSouth 2
+	WalkNormalSouth 7
+	EndMovement
 
 	.balign 4, 0
 _0200:
-	step 1, 2
-	step 13, 2
-	step 2, 2
-	step 14, 7
-	step 1, 2
-	step 13, 7
-	step_end
+	FaceSouth 2
+	WalkNormalSouth 2
+	FaceWest 2
+	WalkNormalWest 7
+	FaceSouth 2
+	WalkNormalSouth 7
+	EndMovement
 
 scr_seq_D43R0103_001:
 	end
@@ -237,53 +237,53 @@ _02FF:
 
 	.balign 4, 0
 _0330:
-	step 40, 4
-	step 69, 1
-	step_end
+	WalkOnSpotFasterNorth 4
+	SetInvisible
+	EndMovement
 
 	.balign 4, 0
 _033C:
-	step 62, 3
-	step 20, 1
-	step 69, 1
-	step_end
+	Delay4 3
+	WalkFasterNorth
+	SetInvisible
+	EndMovement
 
 	.balign 4, 0
 _034C:
-	step 41, 4
-	step 69, 1
-	step_end
+	WalkOnSpotFasterSouth 4
+	SetInvisible
+	EndMovement
 
 	.balign 4, 0
 _0358:
-	step 62, 3
-	step 21, 1
-	step 69, 1
-	step_end
+	Delay4 3
+	WalkFasterSouth
+	SetInvisible
+	EndMovement
 
 	.balign 4, 0
 _0368:
-	step 42, 4
-	step 69, 1
-	step_end
+	WalkOnSpotFasterWest 4
+	SetInvisible
+	EndMovement
 
 	.balign 4, 0
 _0374:
-	step 62, 3
-	step 22, 1
-	step 69, 1
-	step_end
+	Delay4 3
+	WalkFasterWest
+	SetInvisible
+	EndMovement
 
 	.balign 4, 0
 _0384:
-	step 43, 4
-	step 69, 1
-	step_end
+	WalkOnSpotFasterEast 4
+	SetInvisible
+	EndMovement
 
 	.balign 4, 0
 _0390:
-	step 62, 3
-	step 23, 1
-	step 69, 1
-	step_end
+	Delay4 3
+	WalkFasterEast
+	SetInvisible
+	EndMovement
 	.balign 4, 0
