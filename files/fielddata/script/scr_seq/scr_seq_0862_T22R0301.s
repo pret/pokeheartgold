@@ -111,51 +111,51 @@ _0157:
 
 	.balign 4, 0
 _0164:
-	step 1, 1
-	step 2, 1
-	step 0, 1
-	step 3, 1
-	step 1, 1
-	step 2, 1
-	step 0, 1
-	step 3, 1
-	step_end
+	FaceSouth
+	FaceWest
+	FaceNorth
+	FaceEast
+	FaceSouth
+	FaceWest
+	FaceNorth
+	FaceEast
+	EndMovement
 
 	.balign 4, 0
 _0188:
-	step 0, 1
-	step 3, 1
-	step 1, 1
-	step 2, 1
-	step 0, 1
-	step 3, 1
-	step 1, 1
-	step 2, 1
-	step_end
+	FaceNorth
+	FaceEast
+	FaceSouth
+	FaceWest
+	FaceNorth
+	FaceEast
+	FaceSouth
+	FaceWest
+	EndMovement
 
 	.balign 4, 0
 _01AC:
-	step 2, 1
-	step 0, 1
-	step 3, 1
-	step 1, 1
-	step 2, 1
-	step 0, 1
-	step 3, 1
-	step 1, 1
-	step_end
+	FaceWest
+	FaceNorth
+	FaceEast
+	FaceSouth
+	FaceWest
+	FaceNorth
+	FaceEast
+	FaceSouth
+	EndMovement
 
 	.balign 4, 0
 _01D0:
-	step 3, 1
-	step 1, 1
-	step 2, 1
-	step 0, 1
-	step 3, 1
-	step 1, 1
-	step 2, 1
-	step 0, 1
-	step_end
+	FaceEast
+	FaceSouth
+	FaceWest
+	FaceNorth
+	FaceEast
+	FaceSouth
+	FaceWest
+	FaceNorth
+	EndMovement
 
 scr_seq_T22R0301_001:
 	play_se SEQ_SE_DP_SELECT
@@ -270,8 +270,8 @@ _0353:
 
 	.balign 4, 0
 _035C:
-	step 32, 1
-	step_end
+	WalkOnSpotNormalNorth
+	EndMovement
 
 scr_seq_T22R0301_004:
 	simple_npc_msg msg_0560_T22R0301_00007

@@ -306,33 +306,33 @@ _0408:
 
 	.balign 4, 0
 _040C:
-	step 75, 1
-	step_end
+	EmoteExclamationMark
+	EndMovement
 
 	.balign 4, 0
 _0414:
-	step 15, 1
-	step_end
+	WalkNormalEast
+	EndMovement
 
 	.balign 4, 0
 _041C:
-	step 15, 2
-	step_end
+	WalkNormalEast 2
+	EndMovement
 
 	.balign 4, 0
 _0424:
-	step 15, 3
-	step_end
+	WalkNormalEast 3
+	EndMovement
 
 	.balign 4, 0
 _042C:
-	step 34, 1
-	step_end
+	WalkOnSpotNormalWest
+	EndMovement
 
 	.balign 4, 0
 _0434:
-	step 35, 1
-	step_end
+	WalkOnSpotNormalEast
+	EndMovement
 
 scr_seq_T26GYM0101_002:
 	scrcmd_609
@@ -368,18 +368,18 @@ _04B4:
 
 	.balign 4, 0
 _04B8:
-	step 14, 3
-	step_end
+	WalkNormalWest 3
+	EndMovement
 
 	.balign 4, 0
 _04C0:
-	step 14, 2
-	step_end
+	WalkNormalWest 2
+	EndMovement
 
 	.balign 4, 0
 _04C8:
-	step 14, 1
-	step_end
+	WalkNormalWest
+	EndMovement
 
 scr_seq_T26GYM0101_003:
 	play_se SEQ_SE_DP_SELECT

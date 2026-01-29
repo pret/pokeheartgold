@@ -23,9 +23,9 @@ scr_seq_T11R0603_000:
 
 	.balign 4, 0
 _0038:
-	step 14, 7
-	step 12, 2
-	step_end
+	WalkNormalWest 7
+	WalkNormalNorth 2
+	EndMovement
 
 _0044:
 	end
