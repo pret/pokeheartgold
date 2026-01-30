@@ -22,8 +22,8 @@ scr_seq_D27R0103_000:
 
 	.balign 4, 0
 _0038:
-	step 68, 1
-	step_end
+	WarpIn
+	EndMovement
 
 scr_seq_D27R0103_001:
 	compare VAR_UNK_40A7, 1

@@ -347,401 +347,401 @@ _0559:
 
 	.balign 4, 0
 _05BC:
-	step 75, 1
-	step_end
+	EmoteExclamationMark
+	EndMovement
 
 	.balign 4, 0
 _05C4:
-	step 17, 1
-	step 19, 2
-	step 16, 1
-	step 50, 2
-	step_end
+	WalkFastSouth
+	WalkFastEast 2
+	WalkFastNorth
+	JumpOnSpotFastWest 2
+	EndMovement
 
 	.balign 4, 0
 _05D8:
-	step 35, 1
-	step 75, 1
-	step_end
+	WalkOnSpotNormalEast
+	EmoteExclamationMark
+	EndMovement
 
 	.balign 4, 0
 _05E4:
-	step 50, 3
-	step 65, 1
-	step 50, 3
-	step 63, 3
-	step 50, 3
-	step 63, 3
-	step_end
+	JumpOnSpotFastWest 3
+	Delay16
+	JumpOnSpotFastWest 3
+	Delay8 3
+	JumpOnSpotFastWest 3
+	Delay8 3
+	EndMovement
 
 	.balign 4, 0
 _0600:
-	step 63, 3
-	step 58, 1
-	step 63, 3
-	step 50, 3
-	step 63, 3
-	step 50, 3
-	step_end
+	Delay8 3
+	JumpFarWest
+	Delay8 3
+	JumpOnSpotFastWest 3
+	Delay8 3
+	JumpOnSpotFastWest 3
+	EndMovement
 
 	.balign 4, 0
 _061C:
-	step 15, 3
-	step_end
+	WalkNormalEast 3
+	EndMovement
 
 	.balign 4, 0
 _0624:
-	step 15, 3
-	step_end
+	WalkNormalEast 3
+	EndMovement
 
 	.balign 4, 0
 _062C:
-	step 14, 3
-	step_end
+	WalkNormalWest 3
+	EndMovement
 
 	.balign 4, 0
 _0634:
-	step 15, 1
-	step 14, 2
-	step_end
+	WalkNormalEast
+	WalkNormalWest 2
+	EndMovement
 
 	.balign 4, 0
 _0640:
-	step 63, 1
-	step 14, 2
-	step_end
+	Delay8
+	WalkNormalWest 2
+	EndMovement
 
 	.balign 4, 0
 _064C:
-	step 15, 1
-	step_end
+	WalkNormalEast
+	EndMovement
 
 	.balign 4, 0
 _0654:
-	step 14, 1
-	step 35, 1
-	step_end
+	WalkNormalWest
+	WalkOnSpotNormalEast
+	EndMovement
 
 	.balign 4, 0
 _0660:
-	step 16, 4
-	step 19, 2
-	step 17, 2
-	step 18, 2
-	step 16, 2
-	step 19, 4
-	step_end
+	WalkFastNorth 4
+	WalkFastEast 2
+	WalkFastSouth 2
+	WalkFastWest 2
+	WalkFastNorth 2
+	WalkFastEast 4
+	EndMovement
 
 	.balign 4, 0
 _067C:
-	step 15, 2
-	step 12, 3
-	step 15, 2
-	step_end
+	WalkNormalEast 2
+	WalkNormalNorth 3
+	WalkNormalEast 2
+	EndMovement
 
 	.balign 4, 0
 _068C:
-	step 15, 2
-	step 12, 2
-	step 15, 2
-	step_end
+	WalkNormalEast 2
+	WalkNormalNorth 2
+	WalkNormalEast 2
+	EndMovement
 
 	.balign 4, 0
 _069C:
-	step 15, 2
-	step 12, 1
-	step 15, 2
-	step_end
+	WalkNormalEast 2
+	WalkNormalNorth
+	WalkNormalEast 2
+	EndMovement
 
 	.balign 4, 0
 _06AC:
-	step 15, 4
-	step_end
+	WalkNormalEast 4
+	EndMovement
 
 	.balign 4, 0
 _06B4:
-	step 15, 2
-	step 13, 1
-	step 15, 2
-	step_end
+	WalkNormalEast 2
+	WalkNormalSouth
+	WalkNormalEast 2
+	EndMovement
 
 	.balign 4, 0
 _06C4:
-	step 15, 2
-	step 13, 2
-	step 15, 2
-	step_end
+	WalkNormalEast 2
+	WalkNormalSouth 2
+	WalkNormalEast 2
+	EndMovement
 
 	.balign 4, 0
 _06D4:
-	step 18, 1
-	step 16, 4
-	step 19, 2
-	step 17, 2
-	step 18, 2
-	step 16, 2
-	step 19, 3
-	step_end
+	WalkFastWest
+	WalkFastNorth 4
+	WalkFastEast 2
+	WalkFastSouth 2
+	WalkFastWest 2
+	WalkFastNorth 2
+	WalkFastEast 3
+	EndMovement
 
 	.balign 4, 0
 _06F4:
-	step 14, 1
-	step 15, 2
-	step 12, 3
-	step 15, 1
-	step_end
+	WalkNormalWest
+	WalkNormalEast 2
+	WalkNormalNorth 3
+	WalkNormalEast
+	EndMovement
 
 	.balign 4, 0
 _0708:
-	step 14, 1
-	step 15, 2
-	step 12, 2
-	step 15, 1
-	step_end
+	WalkNormalWest
+	WalkNormalEast 2
+	WalkNormalNorth 2
+	WalkNormalEast
+	EndMovement
 
 	.balign 4, 0
 _071C:
-	step 14, 1
-	step 15, 2
-	step 12, 1
-	step 15, 1
-	step_end
+	WalkNormalWest
+	WalkNormalEast 2
+	WalkNormalNorth
+	WalkNormalEast
+	EndMovement
 
 	.balign 4, 0
 _0730:
-	step 14, 1
-	step 15, 3
-	step_end
+	WalkNormalWest
+	WalkNormalEast 3
+	EndMovement
 
 	.balign 4, 0
 _073C:
-	step 14, 1
-	step 15, 2
-	step 13, 1
-	step 15, 1
-	step_end
+	WalkNormalWest
+	WalkNormalEast 2
+	WalkNormalSouth
+	WalkNormalEast
+	EndMovement
 
 	.balign 4, 0
 _0750:
-	step 14, 1
-	step 15, 2
-	step 13, 2
-	step 15, 1
-	step_end
+	WalkNormalWest
+	WalkNormalEast 2
+	WalkNormalSouth 2
+	WalkNormalEast
+	EndMovement
 
 	.balign 4, 0
 _0764:
-	step 13, 6
-	step 14, 9
-	step_end
+	WalkNormalSouth 6
+	WalkNormalWest 9
+	EndMovement
 
 	.balign 4, 0
 _0770:
-	step 13, 5
-	step 14, 9
-	step_end
+	WalkNormalSouth 5
+	WalkNormalWest 9
+	EndMovement
 
 	.balign 4, 0
 _077C:
-	step 13, 4
-	step 14, 9
-	step_end
+	WalkNormalSouth 4
+	WalkNormalWest 9
+	EndMovement
 
 	.balign 4, 0
 _0788:
-	step 13, 3
-	step 14, 9
-	step_end
+	WalkNormalSouth 3
+	WalkNormalWest 9
+	EndMovement
 
 	.balign 4, 0
 _0794:
-	step 13, 2
-	step 14, 9
-	step_end
+	WalkNormalSouth 2
+	WalkNormalWest 9
+	EndMovement
 
 	.balign 4, 0
 _07A0:
-	step 13, 1
-	step 14, 9
-	step_end
+	WalkNormalSouth
+	WalkNormalWest 9
+	EndMovement
 
 	.balign 4, 0
 _07AC:
-	step 14, 9
-	step_end
+	WalkNormalWest 9
+	EndMovement
 
 	.balign 4, 0
 _07B4:
-	step 15, 1
-	step 13, 6
-	step 14, 8
-	step_end
+	WalkNormalEast
+	WalkNormalSouth 6
+	WalkNormalWest 8
+	EndMovement
 
 	.balign 4, 0
 _07C4:
-	step 15, 1
-	step 13, 5
-	step 14, 8
-	step_end
+	WalkNormalEast
+	WalkNormalSouth 5
+	WalkNormalWest 8
+	EndMovement
 
 	.balign 4, 0
 _07D4:
-	step 15, 1
-	step 13, 4
-	step 14, 8
-	step_end
+	WalkNormalEast
+	WalkNormalSouth 4
+	WalkNormalWest 8
+	EndMovement
 
 	.balign 4, 0
 _07E4:
-	step 15, 1
-	step 13, 3
-	step 14, 8
-	step_end
+	WalkNormalEast
+	WalkNormalSouth 3
+	WalkNormalWest 8
+	EndMovement
 
 	.balign 4, 0
 _07F4:
-	step 15, 1
-	step 13, 2
-	step 14, 8
-	step_end
+	WalkNormalEast
+	WalkNormalSouth 2
+	WalkNormalWest 8
+	EndMovement
 
 	.balign 4, 0
 _0804:
-	step 15, 1
-	step 13, 1
-	step 14, 8
-	step_end
+	WalkNormalEast
+	WalkNormalSouth
+	WalkNormalWest 8
+	EndMovement
 
 	.balign 4, 0
 _0814:
-	step 15, 1
-	step 14, 8
-	step_end
+	WalkNormalEast
+	WalkNormalWest 8
+	EndMovement
 
 	.balign 4, 0
 _0820:
-	step 63, 1
-	step 14, 1
-	step 13, 6
-	step 14, 5
-	step_end
+	Delay8
+	WalkNormalWest
+	WalkNormalSouth 6
+	WalkNormalWest 5
+	EndMovement
 
 	.balign 4, 0
 _0834:
-	step 63, 1
-	step 14, 1
-	step 13, 5
-	step 14, 5
-	step_end
+	Delay8
+	WalkNormalWest
+	WalkNormalSouth 5
+	WalkNormalWest 5
+	EndMovement
 
 	.balign 4, 0
 _0848:
-	step 63, 1
-	step 14, 1
-	step 13, 4
-	step 14, 5
-	step_end
+	Delay8
+	WalkNormalWest
+	WalkNormalSouth 4
+	WalkNormalWest 5
+	EndMovement
 
 	.balign 4, 0
 _085C:
-	step 63, 1
-	step 14, 1
-	step 13, 3
-	step 14, 5
-	step_end
+	Delay8
+	WalkNormalWest
+	WalkNormalSouth 3
+	WalkNormalWest 5
+	EndMovement
 
 	.balign 4, 0
 _0870:
-	step 63, 1
-	step 14, 1
-	step 13, 2
-	step 14, 5
-	step_end
+	Delay8
+	WalkNormalWest
+	WalkNormalSouth 2
+	WalkNormalWest 5
+	EndMovement
 
 	.balign 4, 0
 _0884:
-	step 63, 1
-	step 14, 1
-	step 13, 1
-	step 14, 5
-	step_end
+	Delay8
+	WalkNormalWest
+	WalkNormalSouth
+	WalkNormalWest 5
+	EndMovement
 
 	.balign 4, 0
 _0898:
-	step 63, 1
-	step 14, 6
-	step_end
+	Delay8
+	WalkNormalWest 6
+	EndMovement
 
 	.balign 4, 0
 _08A4:
-	step 63, 1
-	step 14, 1
-	step 13, 6
-	step 14, 7
-	step_end
+	Delay8
+	WalkNormalWest
+	WalkNormalSouth 6
+	WalkNormalWest 7
+	EndMovement
 
 	.balign 4, 0
 _08B8:
-	step 63, 1
-	step 14, 1
-	step 13, 5
-	step 14, 7
-	step_end
+	Delay8
+	WalkNormalWest
+	WalkNormalSouth 5
+	WalkNormalWest 7
+	EndMovement
 
 	.balign 4, 0
 _08CC:
-	step 63, 1
-	step 14, 1
-	step 13, 4
-	step 14, 7
-	step_end
+	Delay8
+	WalkNormalWest
+	WalkNormalSouth 4
+	WalkNormalWest 7
+	EndMovement
 
 	.balign 4, 0
 _08E0:
-	step 63, 1
-	step 14, 1
-	step 13, 3
-	step 14, 7
-	step_end
+	Delay8
+	WalkNormalWest
+	WalkNormalSouth 3
+	WalkNormalWest 7
+	EndMovement
 
 	.balign 4, 0
 _08F4:
-	step 63, 1
-	step 14, 1
-	step 13, 2
-	step 14, 7
-	step_end
+	Delay8
+	WalkNormalWest
+	WalkNormalSouth 2
+	WalkNormalWest 7
+	EndMovement
 
 	.balign 4, 0
 _0908:
-	step 63, 1
-	step 14, 1
-	step 13, 1
-	step 14, 7
-	step_end
+	Delay8
+	WalkNormalWest
+	WalkNormalSouth
+	WalkNormalWest 7
+	EndMovement
 
 	.balign 4, 0
 _091C:
-	step 63, 1
-	step 14, 8
-	step_end
+	Delay8
+	WalkNormalWest 8
+	EndMovement
 
 	.balign 4, 0
 _0928:
-	step 13, 2
-	step 14, 4
-	step 13, 4
-	step 14, 3
-	step_end
+	WalkNormalSouth 2
+	WalkNormalWest 4
+	WalkNormalSouth 4
+	WalkNormalWest 3
+	EndMovement
 
 	.balign 4, 0
 _093C:
-	step 15, 1
-	step 13, 2
-	step 14, 4
-	step 13, 4
-	step 14, 2
-	step_end
+	WalkNormalEast
+	WalkNormalSouth 2
+	WalkNormalWest 4
+	WalkNormalSouth 4
+	WalkNormalWest 2
+	EndMovement
 
 scr_seq_R29_002:
 	play_se SEQ_SE_DP_SELECT

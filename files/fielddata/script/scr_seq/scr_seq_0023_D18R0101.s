@@ -65,30 +65,30 @@ _00C7:
 
 	.balign 4, 0
 _00D0:
-	step 1, 1
-	step 75, 1
-	step 13, 4
-	step 14, 1
-	step 1, 1
-	step_end
+	FaceSouth
+	EmoteExclamationMark
+	WalkNormalSouth 4
+	WalkNormalWest
+	FaceSouth
+	EndMovement
 
 	.balign 4, 0
 _00E8:
-	step 13, 2
-	step 15, 1
-	step 2, 1
-	step_end
+	WalkNormalSouth 2
+	WalkNormalEast
+	FaceWest
+	EndMovement
 
 	.balign 4, 0
 _00F8:
-	step 13, 3
-	step 14, 1
-	step 13, 1
-	step 14, 3
-	step 13, 1
-	step 14, 4
-	step 13, 3
-	step_end
+	WalkNormalSouth 3
+	WalkNormalWest
+	WalkNormalSouth
+	WalkNormalWest 3
+	WalkNormalSouth
+	WalkNormalWest 4
+	WalkNormalSouth 3
+	EndMovement
 
 scr_seq_D18R0101_000:
 	scrcmd_609
@@ -111,10 +111,10 @@ scr_seq_D18R0101_001:
 
 	.balign 4, 0
 _0158:
-	step 2, 1
-	step 75, 1
-	step 14, 3
-	step_end
+	FaceWest
+	EmoteExclamationMark
+	WalkNormalWest 3
+	EndMovement
 
 scr_seq_D18R0101_002:
 	simple_npc_msg msg_0060_D18R0101_00004

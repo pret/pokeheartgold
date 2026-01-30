@@ -219,52 +219,52 @@ _02A2:
 
 	.balign 4, 0
 _02B0:
-	step 65, 1
-	step 37, 1
-	step_end
+	Delay16
+	WalkOnSpotFastSouth
+	EndMovement
 
 	.balign 4, 0
 _02BC:
-	step 75, 1
-	step 63, 1
-	step_end
+	EmoteExclamationMark
+	Delay8
+	EndMovement
 
 	.balign 4, 0
 _02C8:
-	step 18, 1
-	step 65, 1
-	step_end
+	WalkFastWest
+	Delay16
+	EndMovement
 
 	.balign 4, 0
 _02D4:
-	step 39, 1
-	step 3, 1
-	step_end
+	WalkOnSpotFastEast
+	FaceEast
+	EndMovement
 
 	.balign 4, 0
 _02E0:
-	step 17, 5
-	step_end
+	WalkFastSouth 5
+	EndMovement
 
 	.balign 4, 0
 _02E8:
-	step 18, 1
-	step 17, 2
-	step 19, 1
-	step 17, 3
-	step_end
+	WalkFastWest
+	WalkFastSouth 2
+	WalkFastEast
+	WalkFastSouth 3
+	EndMovement
 
 	.balign 4, 0
 _02FC:
-	step 14, 1
-	step_end
+	WalkNormalWest
+	EndMovement
 
 	.balign 4, 0
 _0304:
-	step 39, 1
-	step 15, 1
-	step 38, 1
-	step_end
+	WalkOnSpotFastEast
+	WalkNormalEast
+	WalkOnSpotFastWest
+	EndMovement
 
 scr_seq_T23R0501_002:
 	play_se SEQ_SE_DP_SELECT

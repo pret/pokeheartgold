@@ -87,25 +87,25 @@ _00E5:
 
 	.balign 4, 0
 _0108:
-	step 0, 1
-	step 75, 1
-	step_end
+	FaceNorth
+	EmoteExclamationMark
+	EndMovement
 
 	.balign 4, 0
 _0114:
-	step 1, 1
-	step_end
+	FaceSouth
+	EndMovement
 
 	.balign 4, 0
 _011C:
-	step 63, 2
-	step 1, 1
-	step_end
+	Delay8 2
+	FaceSouth
+	EndMovement
 
 	.balign 4, 0
 _0128:
-	step 14, 1
-	step_end
+	WalkNormalWest
+	EndMovement
 
 scr_seq_D39R0101_002:
 	play_se SEQ_SE_DP_SELECT
@@ -178,34 +178,34 @@ _01F3:
 
 	.balign 4, 0
 _021C:
-	step 73, 0
-	step 17, 5
-	step 74, 0
-	step 13, 2
-	step 33, 1
-	step 63, 1
-	step 32, 2
-	step_end
+	PauseAnimation 0
+	WalkFastSouth 5
+	ResumeAnimation 0
+	WalkNormalSouth 2
+	WalkOnSpotNormalSouth
+	Delay8
+	WalkOnSpotNormalNorth 2
+	EndMovement
 
 	.balign 4, 0
 _023C:
-	step 13, 4
-	step_end
+	WalkNormalSouth 4
+	EndMovement
 
 	.balign 4, 0
 _0244:
-	step 17, 4
-	step_end
+	WalkFastSouth 4
+	EndMovement
 
 	.balign 4, 0
 _024C:
-	step 16, 4
-	step_end
+	WalkFastNorth 4
+	EndMovement
 
 	.balign 4, 0
 _0254:
-	step 1, 1
-	step_end
+	FaceSouth
+	EndMovement
 
 scr_seq_D39R0101_003:
 	play_se SEQ_SE_DP_SELECT
@@ -294,45 +294,45 @@ _0398:
 
 	.balign 4, 0
 _03AC:
-	step 15, 1
-	step 12, 2
-	step 14, 1
-	step 12, 3
-	step 33, 1
-	step_end
+	WalkNormalEast
+	WalkNormalNorth 2
+	WalkNormalWest
+	WalkNormalNorth 3
+	WalkOnSpotNormalSouth
+	EndMovement
 
 	.balign 4, 0
 _03C4:
-	step 12, 3
-	step 33, 1
-	step_end
+	WalkNormalNorth 3
+	WalkOnSpotNormalSouth
+	EndMovement
 
 	.balign 4, 0
 _03D0:
-	step 12, 1
-	step 14, 1
-	step 12, 3
-	step 33, 1
-	step_end
+	WalkNormalNorth
+	WalkNormalWest
+	WalkNormalNorth 3
+	WalkOnSpotNormalSouth
+	EndMovement
 
 	.balign 4, 0
 _03E4:
-	step 12, 1
-	step 15, 1
-	step 12, 3
-	step 33, 1
-	step_end
+	WalkNormalNorth
+	WalkNormalEast
+	WalkNormalNorth 3
+	WalkOnSpotNormalSouth
+	EndMovement
 
 	.balign 4, 0
 _03F8:
-	step 63, 1
-	step 32, 1
-	step_end
+	Delay8
+	WalkOnSpotNormalNorth
+	EndMovement
 
 	.balign 4, 0
 _0404:
-	step 15, 1
-	step 12, 1
-	step 1, 1
-	step_end
+	WalkNormalEast
+	WalkNormalNorth
+	FaceSouth
+	EndMovement
 	.balign 4, 0
