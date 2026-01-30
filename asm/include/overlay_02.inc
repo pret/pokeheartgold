@@ -539,3 +539,5 @@
 .public ov02_02253188
 .public ov02_022531B4
 .public BugContest_GetEncounterSlot
+.public ov02_022494C4
+.public ov02_0224E340
