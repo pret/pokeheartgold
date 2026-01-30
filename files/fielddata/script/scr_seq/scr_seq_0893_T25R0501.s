@@ -63,8 +63,8 @@ _00A5:
 
 	.balign 4, 0
 _00AC:
-	step 3, 1
-	step_end
+	FaceEast
+	EndMovement
 
 scr_seq_T25R0501_001:
 	scrcmd_609
@@ -109,13 +109,13 @@ _0123:
 
 	.balign 4, 0
 _013C:
-	step 34, 1
-	step_end
+	WalkOnSpotNormalWest
+	EndMovement
 
 	.balign 4, 0
 _0144:
-	step 13, 2
-	step_end
+	WalkNormalSouth 2
+	EndMovement
 
 scr_seq_T25R0501_007:
 	play_se SEQ_SE_DP_SELECT

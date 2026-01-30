@@ -56,8 +56,8 @@ _0087:
 
 	.balign 4, 0
 _0090:
-	step 49, 2
-	step_end
+	JumpOnSpotFastSouth 2
+	EndMovement
 
 scr_seq_P01R0306_003:
 	scrcmd_609
@@ -91,13 +91,13 @@ _0103:
 
 	.balign 4, 0
 _0110:
-	step 51, 3
-	step_end
+	JumpOnSpotFastEast 3
+	EndMovement
 
 	.balign 4, 0
 _0118:
-	step 9, 1
-	step_end
+	WalkSlowSouth
+	EndMovement
 
 scr_seq_P01R0306_002:
 	simple_npc_msg msg_0262_P01R0306_00008

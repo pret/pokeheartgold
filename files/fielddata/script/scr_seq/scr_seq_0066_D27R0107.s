@@ -127,70 +127,70 @@ _017F:
 
 	.balign 4, 0
 _01A0:
-	step 30, 1
-	step_end
+	WalkOnSpotSlowWest
+	EndMovement
 
 	.balign 4, 0
 _01A8:
-	step 50, 3
-	step_end
+	JumpOnSpotFastWest 3
+	EndMovement
 
 	.balign 4, 0
 _01B0:
-	step 31, 1
-	step_end
+	WalkOnSpotSlowEast
+	EndMovement
 
 	.balign 4, 0
 _01B8:
-	step 63, 1
-	step 13, 3
-	step 15, 1
-	step 33, 1
-	step 65, 1
-	step_end
+	Delay8
+	WalkNormalSouth 3
+	WalkNormalEast
+	WalkOnSpotNormalSouth
+	Delay16
+	EndMovement
 
 	.balign 4, 0
 _01D0:
-	step 2, 1
-	step 71, 1
-	step 15, 1
-	step 72, 1
-	step 63, 3
-	step 62, 1
-	step 33, 1
-	step_end
+	FaceWest
+	LockDir
+	WalkNormalEast
+	UnlockDir
+	Delay8 3
+	Delay4
+	WalkOnSpotNormalSouth
+	EndMovement
 
 	.balign 4, 0
 _01F0:
-	step 14, 1
-	step 12, 3
-	step 35, 1
-	step_end
+	WalkNormalWest
+	WalkNormalNorth 3
+	WalkOnSpotNormalEast
+	EndMovement
 
 	.balign 4, 0
 _0200:
-	step 63, 1
-	step 13, 1
-	step 15, 2
-	step 33, 1
-	step 13, 1
-	step_end
+	Delay8
+	WalkNormalSouth
+	WalkNormalEast 2
+	WalkOnSpotNormalSouth
+	WalkNormalSouth
+	EndMovement
 
 	.balign 4, 0
 _0218:
-	step 0, 1
-	step 71, 1
-	step 13, 1
-	step 72, 1
-	step 63, 2
-	step 62, 1
-	step 35, 1
-	step_end
+	FaceNorth
+	LockDir
+	WalkNormalSouth
+	UnlockDir
+	Delay8 2
+	Delay4
+	WalkOnSpotNormalEast
+	EndMovement
 
 	.balign 4, 0
 _0238:
-	step 10, 2
-	step_end
+	WalkSlowWest 2
+	EndMovement
 
 scr_seq_D27R0107_001:
 	play_se SEQ_SE_DP_SELECT

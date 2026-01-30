@@ -153,47 +153,47 @@ _021D:
 
 	.balign 4, 0
 _0234:
-	step 15, 1
-	step 12, 2
-	step 14, 1
-	step 12, 3
-	step 33, 1
-	step_end
+	WalkNormalEast
+	WalkNormalNorth 2
+	WalkNormalWest
+	WalkNormalNorth 3
+	WalkOnSpotNormalSouth
+	EndMovement
 
 	.balign 4, 0
 _024C:
-	step 12, 3
-	step 33, 1
-	step_end
+	WalkNormalNorth 3
+	WalkOnSpotNormalSouth
+	EndMovement
 
 	.balign 4, 0
 _0258:
-	step 12, 1
-	step 14, 1
-	step 12, 3
-	step 33, 1
-	step_end
+	WalkNormalNorth
+	WalkNormalWest
+	WalkNormalNorth 3
+	WalkOnSpotNormalSouth
+	EndMovement
 
 	.balign 4, 0
 _026C:
-	step 12, 1
-	step 15, 1
-	step 12, 3
-	step 33, 1
-	step_end
+	WalkNormalNorth
+	WalkNormalEast
+	WalkNormalNorth 3
+	WalkOnSpotNormalSouth
+	EndMovement
 
 	.balign 4, 0
 _0280:
-	step 63, 1
-	step 32, 1
-	step_end
+	Delay8
+	WalkOnSpotNormalNorth
+	EndMovement
 
 	.balign 4, 0
 _028C:
-	step 15, 1
-	step 12, 1
-	step 1, 1
-	step_end
+	WalkNormalEast
+	WalkNormalNorth
+	FaceSouth
+	EndMovement
 
 scr_seq_D32_001:
 	simple_npc_msg msg_0100_D32_00000
@@ -949,8 +949,8 @@ scr_seq_D32_033:
 
 	.balign 4, 0
 _10B0:
-	step 18, 5
-	step_end
+	WalkFastWest 5
+	EndMovement
 
 scr_seq_D32_034:
 	scrcmd_609
@@ -969,8 +969,8 @@ scr_seq_D32_034:
 
 	.balign 4, 0
 _10F4:
-	step 18, 6
-	step_end
+	WalkFastWest 6
+	EndMovement
 
 scr_seq_D32_035:
 	scrcmd_609
@@ -989,8 +989,8 @@ scr_seq_D32_035:
 
 	.balign 4, 0
 _1138:
-	step 19, 5
-	step_end
+	WalkFastEast 5
+	EndMovement
 
 scr_seq_D32_036:
 	scrcmd_609
@@ -1009,8 +1009,8 @@ scr_seq_D32_036:
 
 	.balign 4, 0
 _117C:
-	step 19, 6
-	step_end
+	WalkFastEast 6
+	EndMovement
 
 scr_seq_D32_000:
 	end

@@ -59,55 +59,55 @@ scr_seq_D15R0103_001:
 
 	.balign 4, 0
 _00B4:
-	step 75, 1
-	step 63, 1
-	step_end
+	EmoteExclamationMark
+	Delay8
+	EndMovement
 
 	.balign 4, 0
 _00C0:
-	step 12, 5
-	step_end
+	WalkNormalNorth 5
+	EndMovement
 
 	.balign 4, 0
 _00C8:
-	step 13, 5
-	step_end
+	WalkNormalSouth 5
+	EndMovement
 
 	.balign 4, 0
 _00D0:
-	step 33, 2
-	step_end
+	WalkOnSpotNormalSouth 2
+	EndMovement
 
 	.balign 4, 0
 _00D8:
-	step 13, 1
-	step_end
+	WalkNormalSouth
+	EndMovement
 
 	.balign 4, 0
 _00E0:
-	step 2, 4
-	step 0, 4
-	step 3, 4
-	step 1, 4
-	step 2, 2
-	step 0, 2
-	step 3, 2
-	step 1, 2
-	step 2, 2
-	step 0, 2
-	step 3, 2
-	step 1, 2
-	step 2, 1
-	step 0, 1
-	step 3, 1
-	step 1, 1
-	step 2, 1
-	step 0, 1
-	step 3, 1
-	step 1, 1
-	step 2, 1
-	step 0, 1
-	step_end
+	FaceWest 4
+	FaceNorth 4
+	FaceEast 4
+	FaceSouth 4
+	FaceWest 2
+	FaceNorth 2
+	FaceEast 2
+	FaceSouth 2
+	FaceWest 2
+	FaceNorth 2
+	FaceEast 2
+	FaceSouth 2
+	FaceWest
+	FaceNorth
+	FaceEast
+	FaceSouth
+	FaceWest
+	FaceNorth
+	FaceEast
+	FaceSouth
+	FaceWest
+	FaceNorth
+	EndMovement
 
 scr_seq_D15R0103_002:
 	play_se SEQ_SE_DP_SELECT
