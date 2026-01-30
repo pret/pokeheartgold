@@ -56,25 +56,25 @@ _0092:
 
 	.balign 4, 0
 _00A8:
-	step 75, 1
-	step_end
+	EmoteExclamationMark
+	EndMovement
 
 	.balign 4, 0
 _00B0:
-	step 14, 4
-	step_end
+	WalkNormalWest 4
+	EndMovement
 
 	.balign 4, 0
 _00B8:
-	step 13, 1
-	step 14, 4
-	step_end
+	WalkNormalSouth
+	WalkNormalWest 4
+	EndMovement
 
 	.balign 4, 0
 _00C4:
-	step 12, 1
-	step 14, 4
-	step_end
+	WalkNormalNorth
+	WalkNormalWest 4
+	EndMovement
 
 scr_seq_R27_002:
 	scrcmd_055 2, 0

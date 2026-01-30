@@ -109,16 +109,16 @@ _0115:
 
 	.balign 4, 0
 _0140:
-	step 14, 2
-	step 13, 3
-	step_end
+	WalkNormalWest 2
+	WalkNormalSouth 3
+	EndMovement
 
 	.balign 4, 0
 _014C:
-	step 13, 2
-	step 14, 2
-	step 13, 1
-	step_end
+	WalkNormalSouth 2
+	WalkNormalWest 2
+	WalkNormalSouth
+	EndMovement
 
 scr_seq_T22FS0101_003:
 	simple_npc_msg msg_0557_T22FS0101_00000

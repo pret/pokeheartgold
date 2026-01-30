@@ -95,7 +95,7 @@ Static main
     Object src/touch_hitbox_controller.o
     Object asm/unk_02026DE0.o
     Object src/unk_02026E30.o
-    Object asm/unk_02026E84.o
+    Object src/unk_02026E84.o
     Object src/gf_3d_vramman.o
     Object asm/unk_02027010.o
     Object src/save_arrays.o
@@ -155,7 +155,7 @@ Static main
     Object asm/unk_02037C94.o
     Object asm/unk_0203A3B0.o
     Object src/communication_error.o
-    Object asm/unk_0203AC88.o
+    Object src/unk_0203AC88.o
     Object src/wfc_user_info_warning.o
     Object src/map_matrix.o
     Object src/map_header.o

@@ -135,16 +135,16 @@ _0207:
 
 	.balign 4, 0
 _0234:
-	step 40, 4
-	step 69, 1
-	step_end
+	WalkOnSpotFasterNorth 4
+	SetInvisible
+	EndMovement
 
 	.balign 4, 0
 _0240:
-	step 62, 3
-	step 20, 1
-	step 69, 1
-	step_end
+	Delay4 3
+	WalkFasterNorth
+	SetInvisible
+	EndMovement
 
 scr_seq_D24R0202_001:
 	scrcmd_609
@@ -178,8 +178,8 @@ _029A:
 
 	.balign 4, 0
 _02AC:
-	step 75, 1
-	step_end
+	EmoteExclamationMark
+	EndMovement
 
 scr_seq_D24R0202_003:
 	play_se SEQ_SE_DP_SELECT

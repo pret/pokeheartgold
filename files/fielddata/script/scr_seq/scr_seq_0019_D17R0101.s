@@ -211,131 +211,131 @@ _02CA:
 
 	.balign 4, 0
 _02D8:
-	step 75, 1
-	step_end
+	EmoteExclamationMark
+	EndMovement
 
 	.balign 4, 0
 _02E0:
-	step 3, 1
-	step 75, 1
-	step_end
+	FaceEast
+	EmoteExclamationMark
+	EndMovement
 
 	.balign 4, 0
 _02EC:
-	step 13, 2
-	step 14, 1
-	step 13, 1
-	step_end
+	WalkNormalSouth 2
+	WalkNormalWest
+	WalkNormalSouth
+	EndMovement
 
 	.balign 4, 0
 _02FC:
-	step 13, 3
-	step_end
+	WalkNormalSouth 3
+	EndMovement
 
 	.balign 4, 0
 _0304:
-	step 13, 2
-	step 15, 1
-	step 13, 1
-	step_end
+	WalkNormalSouth 2
+	WalkNormalEast
+	WalkNormalSouth
+	EndMovement
 
 	.balign 4, 0
 _0314:
-	step 12, 1
-	step 15, 2
-	step 15, 1
-	step_end
+	WalkNormalNorth
+	WalkNormalEast 2
+	WalkNormalEast
+	EndMovement
 
 	.balign 4, 0
 _0324:
-	step 15, 3
-	step_end
+	WalkNormalEast 3
+	EndMovement
 
 	.balign 4, 0
 _032C:
-	step 13, 1
-	step 15, 3
-	step_end
+	WalkNormalSouth
+	WalkNormalEast 3
+	EndMovement
 
 	.balign 4, 0
 _0338:
-	step 13, 2
-	step 15, 3
-	step_end
+	WalkNormalSouth 2
+	WalkNormalEast 3
+	EndMovement
 
 	.balign 4, 0
 _0344:
-	step 71, 1
-	step 13, 1
-	step 72, 1
-	step_end
+	LockDir
+	WalkNormalSouth
+	UnlockDir
+	EndMovement
 
 	.balign 4, 0
 _0354:
-	step 71, 1
-	step 15, 1
-	step 72, 1
-	step_end
+	LockDir
+	WalkNormalEast
+	UnlockDir
+	EndMovement
 
 	.balign 4, 0
 _0364:
-	step 12, 1
-	step 15, 1
-	step 12, 2
-	step 33, 1
-	step_end
+	WalkNormalNorth
+	WalkNormalEast
+	WalkNormalNorth 2
+	WalkOnSpotNormalSouth
+	EndMovement
 
 	.balign 4, 0
 _0378:
-	step 12, 3
-	step 33, 1
-	step_end
+	WalkNormalNorth 3
+	WalkOnSpotNormalSouth
+	EndMovement
 
 	.balign 4, 0
 _0384:
-	step 12, 1
-	step 14, 1
-	step 12, 2
-	step 33, 1
-	step_end
+	WalkNormalNorth
+	WalkNormalWest
+	WalkNormalNorth 2
+	WalkOnSpotNormalSouth
+	EndMovement
 
 	.balign 4, 0
 _0398:
-	step 14, 4
-	step 13, 1
-	step_end
+	WalkNormalWest 4
+	WalkNormalSouth
+	EndMovement
 
 	.balign 4, 0
 _03A4:
-	step 14, 4
-	step 33, 1
-	step_end
+	WalkNormalWest 4
+	WalkOnSpotNormalSouth
+	EndMovement
 
 	.balign 4, 0
 _03B0:
-	step 14, 4
-	step 12, 1
-	step 33, 1
-	step_end
+	WalkNormalWest 4
+	WalkNormalNorth
+	WalkOnSpotNormalSouth
+	EndMovement
 
 	.balign 4, 0
 _03C0:
-	step 14, 4
-	step 12, 2
-	step 33, 1
-	step_end
+	WalkNormalWest 4
+	WalkNormalNorth 2
+	WalkOnSpotNormalSouth
+	EndMovement
 
 	.balign 4, 0
 _03D0:
-	step 71, 1
-	step 4, 1
-	step 72, 1
-	step_end
+	LockDir
+	WalkSlowerNorth
+	UnlockDir
+	EndMovement
 
 	.balign 4, 0
 _03E0:
-	step 71, 1
-	step 6, 1
-	step 72, 1
-	step_end
+	LockDir
+	WalkSlowerWest
+	UnlockDir
+	EndMovement
 	.balign 4, 0
