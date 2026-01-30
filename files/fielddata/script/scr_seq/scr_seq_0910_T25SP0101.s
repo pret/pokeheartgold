@@ -42,18 +42,18 @@ _006A:
 
 	.balign 4, 0
 _0080:
-	step 1, 1
-	step_end
+	FaceSouth
+	EndMovement
 
 	.balign 4, 0
 _0088:
-	step 2, 1
-	step_end
+	FaceWest
+	EndMovement
 
 	.balign 4, 0
 _0090:
-	step 3, 1
-	step_end
+	FaceEast
+	EndMovement
 
 scr_seq_T25SP0101_001:
 	play_se SEQ_SE_DP_SELECT

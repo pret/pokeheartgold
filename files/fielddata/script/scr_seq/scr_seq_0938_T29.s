@@ -386,14 +386,14 @@ _0509:
 
 	.balign 4, 0
 _0538:
-	step 34, 1
-	step 50, 2
-	step_end
+	WalkOnSpotNormalWest
+	JumpOnSpotFastWest 2
+	EndMovement
 
 	.balign 4, 0
 _0544:
-	step 33, 1
-	step_end
+	WalkOnSpotNormalSouth
+	EndMovement
 
 scr_seq_T29_004:
 	play_se SEQ_SE_DP_SELECT

@@ -123,35 +123,35 @@ _019A:
 
 	.balign 4, 0
 _01B0:
-	step 12, 2
-	step 3, 1
-	step 15, 1
-	step 1, 1
-	step_end
+	WalkNormalNorth 2
+	FaceEast
+	WalkNormalEast
+	FaceSouth
+	EndMovement
 
 	.balign 4, 0
 _01C4:
-	step 12, 2
-	step 1, 1
-	step_end
+	WalkNormalNorth 2
+	FaceSouth
+	EndMovement
 
 	.balign 4, 0
 _01D0:
-	step 13, 1
-	step 2, 1
-	step 14, 1
-	step 1, 1
-	step 13, 1
-	step 69, 1
-	step_end
+	WalkNormalSouth
+	FaceWest
+	WalkNormalWest
+	FaceSouth
+	WalkNormalSouth
+	SetInvisible
+	EndMovement
 
 	.balign 4, 0
 _01EC:
-	step 63, 2
-	step 61, 1
-	step 13, 2
-	step 69, 1
-	step_end
+	Delay8 2
+	Delay2
+	WalkNormalSouth 2
+	SetInvisible
+	EndMovement
 
 _0200:
 	scrcmd_436
