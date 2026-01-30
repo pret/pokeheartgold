@@ -135,34 +135,34 @@ _01CE:
 
 	.balign 4, 0
 _01DC:
-	step 75, 1
-	step 63, 1
-	step_end
+	EmoteExclamationMark
+	Delay8
+	EndMovement
 
 	.balign 4, 0
 _01E8:
-	step 63, 2
-	step 13, 1
-	step_end
+	Delay8 2
+	WalkNormalSouth
+	EndMovement
 
 	.balign 4, 0
 _01F4:
-	step 63, 2
-	step 15, 1
-	step 12, 1
-	step 33, 1
-	step_end
+	Delay8 2
+	WalkNormalEast
+	WalkNormalNorth
+	WalkOnSpotNormalSouth
+	EndMovement
 
 	.balign 4, 0
 _0208:
-	step 12, 7
-	step_end
+	WalkNormalNorth 7
+	EndMovement
 
 	.balign 4, 0
 _0210:
-	step 33, 1
-	step 13, 7
-	step_end
+	WalkOnSpotNormalSouth
+	WalkNormalSouth 7
+	EndMovement
 
 scr_seq_T10R0101_000:
 	setvar VAR_SPECIAL_x8007, 0
@@ -212,17 +212,17 @@ _0293:
 
 	.balign 4, 0
 _02A0:
-	step 71, 1
-	step 14, 1
-	step 72, 1
-	step_end
+	LockDir
+	WalkNormalWest
+	UnlockDir
+	EndMovement
 
 	.balign 4, 0
 _02B0:
-	step 71, 1
-	step 15, 1
-	step 72, 1
-	step_end
+	LockDir
+	WalkNormalEast
+	UnlockDir
+	EndMovement
 
 scr_seq_T10R0101_007:
 	play_se SEQ_SE_DP_SELECT

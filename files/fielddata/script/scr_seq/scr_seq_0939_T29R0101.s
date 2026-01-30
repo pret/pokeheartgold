@@ -42,6 +42,6 @@ _006B:
 
 	.balign 4, 0
 _0078:
-	step 3, 1
-	step_end
+	FaceEast
+	EndMovement
 	.balign 4, 0

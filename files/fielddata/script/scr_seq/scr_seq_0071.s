@@ -92,87 +92,87 @@ _0126:
 
 	.balign 4, 0
 _0140:
-	step 13, 3
-	step 0, 1
-	step_end
+	WalkNormalSouth 3
+	FaceNorth
+	EndMovement
 
 	.balign 4, 0
 _014C:
-	step 13, 2
-	step_end
+	WalkNormalSouth 2
+	EndMovement
 
 	.balign 4, 0
 _0154:
-	step 0, 1
-	step 12, 2
-	step 69, 1
-	step_end
+	FaceNorth
+	WalkNormalNorth 2
+	SetInvisible
+	EndMovement
 
 	.balign 4, 0
 _0164:
-	step 15, 1
-	step 0, 1
-	step 20, 1
-	step 69, 1
-	step_end
+	WalkNormalEast
+	FaceNorth
+	WalkFasterNorth
+	SetInvisible
+	EndMovement
 
 	.balign 4, 0
 _0178:
-	step 15, 4
-	step 12, 2
-	step 69, 1
-	step_end
+	WalkNormalEast 4
+	WalkNormalNorth 2
+	SetInvisible
+	EndMovement
 
 	.balign 4, 0
 _0188:
-	step 13, 1
-	step 15, 4
-	step 12, 2
-	step 69, 1
-	step_end
+	WalkNormalSouth
+	WalkNormalEast 4
+	WalkNormalNorth 2
+	SetInvisible
+	EndMovement
 
 	.balign 4, 0
 _019C:
-	step 15, 8
-	step 12, 2
-	step 69, 1
-	step_end
+	WalkNormalEast 8
+	WalkNormalNorth 2
+	SetInvisible
+	EndMovement
 
 	.balign 4, 0
 _01AC:
-	step 13, 1
-	step 15, 8
-	step 12, 2
-	step 69, 1
-	step_end
+	WalkNormalSouth
+	WalkNormalEast 8
+	WalkNormalNorth 2
+	SetInvisible
+	EndMovement
 
 	.balign 4, 0
 _01C0:
-	step 15, 12
-	step 12, 2
-	step 69, 1
-	step_end
+	WalkNormalEast 12
+	WalkNormalNorth 2
+	SetInvisible
+	EndMovement
 
 	.balign 4, 0
 _01D0:
-	step 13, 1
-	step 15, 12
-	step 12, 2
-	step 69, 1
-	step_end
+	WalkNormalSouth
+	WalkNormalEast 12
+	WalkNormalNorth 2
+	SetInvisible
+	EndMovement
 
 	.balign 4, 0
 _01E4:
-	step 15, 16
-	step 12, 2
-	step 69, 1
-	step_end
+	WalkNormalEast 16
+	WalkNormalNorth 2
+	SetInvisible
+	EndMovement
 
 	.balign 4, 0
 _01F4:
-	step 13, 1
-	step 15, 16
-	step 12, 2
-	step 69, 1
-	step_end
+	WalkNormalSouth
+	WalkNormalEast 16
+	WalkNormalNorth 2
+	SetInvisible
+	EndMovement
 	.balign 4, 0

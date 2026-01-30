@@ -68,23 +68,23 @@ _00BE:
 
 	.balign 4, 0
 _00CC:
-	step 32, 1
-	step_end
+	WalkOnSpotNormalNorth
+	EndMovement
 
 	.balign 4, 0
 _00D4:
-	step 33, 1
-	step_end
+	WalkOnSpotNormalSouth
+	EndMovement
 
 	.balign 4, 0
 _00DC:
-	step 35, 1
-	step_end
+	WalkOnSpotNormalEast
+	EndMovement
 
 	.balign 4, 0
 _00E4:
-	step 34, 1
-	step_end
+	WalkOnSpotNormalWest
+	EndMovement
 
 scr_seq_W40R0101_002:
 	play_se SEQ_SE_DP_SELECT
