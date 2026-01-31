@@ -4,6 +4,7 @@
 
 #include "constants/abilities.h"
 #include "constants/maps.h"
+#include "constants/weather.h"
 
 #include "battle/battle_setup.h"
 #include "overlay_2/overlay_02_gear_phone.h"
@@ -81,8 +82,9 @@ int FieldSystem_GetSurfingEncounterRate(FieldSystem *fieldSystem);
 u8 FieldSystem_GetFishingEncounterRate(FieldSystem *fieldSystem, u8 rodType);
 u8 getFriendshipBoostToFishingBiteRate(u8 friendship);
 int FieldSystem_GetRockSmashEncounterRate(FieldSystem *fieldSystem);
+BOOL ov02_022480C0(ENC_SLOT *encSlots, u8 numEncSlots, u8 type, u8 *slot);
 BOOL EncounterSlot_AbilityInfluenceOnSlotChoiceCheck(Pokemon *leadMon, UnkStruct_ov02_02248618 *a1, ENC_SLOT *encSlots, u8 numSlots, u8 type, u8 ability, u8 *slotNum);
-u8 ov02_02248190(int a0, u8 a1, UnkStruct_ov02_02248618 *a2, u16 a3, Pokemon *leadMon);
+u8 ov02_02248190(BOOL isFishing, u8 encounterRate, UnkStruct_ov02_02248618 *a2, u16 weatherType, Pokemon *leadMon);
 BOOL ov02_022481EC(UnkStruct_ov02_02248618 *a0, Pokemon *leadMon, u8 level);
 BOOL ov02_02248290(u8 roamerLevel, UnkStruct_ov02_02248618 *a1);
 BOOL ov02_022482A4(UnkStruct_ov02_02248618 *a0);
@@ -227,7 +229,7 @@ BOOL FieldSystem_PerformLandOrSurfEncounterCheck(FieldSystem *fieldSystem) {
         sp24.unk_04 = TRUE;
         sp24.unk_0C = GetMonData(mon, MON_DATA_LEVEL, NULL);
     }
-    encounterRate = ov02_02248190(0, encounterRate, &sp24, LocalFieldData_GetWeatherType(Save_LocalFieldData_Get(fieldSystem->saveData)), leadMon);
+    encounterRate = ov02_02248190(FALSE, encounterRate, &sp24, LocalFieldData_GetWeatherType(Save_LocalFieldData_Get(fieldSystem->saveData)), leadMon);
     ApplyFluteEffectToEncounterRate(fieldSystem, &encounterRate);
     ApplyLeadMonHeldItemEffectToEncounterRate(leadMon, &encounterRate);
     BOOL ret = FieldSystem_EncounterRateRoll(fieldSystem, encounterRate, metatileBehavior) ? TRUE : FALSE;
@@ -319,7 +321,7 @@ BOOL FieldSystem_PerformFishEncounterCheck(FieldSystem *fieldSystem, u8 rodType,
 
     Pokemon *leadMon = Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->saveData), 0);
     ov02_02248618(fieldSystem, leadMon, NULL, &sp24);
-    encounterRate = ov02_02248190(1, encounterRate, &sp24, LocalFieldData_GetWeatherType(Save_LocalFieldData_Get(fieldSystem->saveData)), leadMon);
+    encounterRate = ov02_02248190(TRUE, encounterRate, &sp24, LocalFieldData_GetWeatherType(Save_LocalFieldData_Get(fieldSystem->saveData)), leadMon);
     if (LCRandRange(100) >= encounterRate) {
         return FALSE;
     }
@@ -366,7 +368,7 @@ BOOL FieldSystem_PerformRockSmashEncounterCheck(FieldSystem *fieldSystem, Battle
 
     Pokemon *leadMon = Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->saveData), 0);
     ov02_02248618(fieldSystem, leadMon, NULL, &sp10);
-    encounterRate = ov02_02248190(0, encounterRate, &sp10, LocalFieldData_GetWeatherType(Save_LocalFieldData_Get(fieldSystem->saveData)), leadMon);
+    encounterRate = ov02_02248190(FALSE, encounterRate, &sp10, LocalFieldData_GetWeatherType(Save_LocalFieldData_Get(fieldSystem->saveData)), leadMon);
     if ((LCRandom() % 100) >= encounterRate) {
         return FALSE;
     }
@@ -1065,4 +1067,60 @@ u8 getFriendshipBoostToFishingBiteRate(u8 friendship) {
 int FieldSystem_GetRockSmashEncounterRate(FieldSystem *fieldSystem) {
     const ENC_DATA *encData = MapEvents_GetLoadedEncTable(fieldSystem);
     return encData->encounterRate_rockSmash;
+}
+
+BOOL ov02_022480C0(ENC_SLOT *encSlots, u8 numEncSlots, u8 type, u8 *slot) {
+    u8 foundSlots[NUM_ENCOUNTERS_LAND];
+    u8 i;
+    u8 numFoundSlots;
+
+    for (i = 0; i < NUM_ENCOUNTERS_LAND; ++i) {
+        foundSlots[i] = 0;
+    }
+    numFoundSlots = 0;
+    for (i = 0; i < numEncSlots; ++i) {
+        u8 type1 = GetMonBaseStat(encSlots[i].species, BASE_TYPE1);
+        u8 type2 = GetMonBaseStat(encSlots[i].species, BASE_TYPE2);
+        if (type1 == type || type2 == type) {
+            foundSlots[numFoundSlots++] = i;
+        }
+    }
+    if (numFoundSlots == 0 || numFoundSlots == numEncSlots) {
+        return FALSE;
+    }
+    *slot = foundSlots[LCRandom() % numFoundSlots];
+    return TRUE;
+}
+
+BOOL EncounterSlot_AbilityInfluenceOnSlotChoiceCheck(Pokemon *leadMon, UnkStruct_ov02_02248618 *a1, ENC_SLOT *encSlots, u8 numSlots, u8 type, u8 ability, u8 *slotNum) {
+    if (a1->unk_0D == 0 && a1->unk_0E == ability && LCRandRange(2) == 0) {
+        return ov02_022480C0(encSlots, numSlots, type, slotNum);
+    }
+
+    return FALSE;
+}
+
+u8 ov02_02248190(BOOL isFishing, u8 encounterRate, UnkStruct_ov02_02248618 *a2, u16 weatherType, Pokemon *leadMon) {
+    int ret = encounterRate;
+
+    if (a2->unk_0D == 0) {
+        if (isFishing) {
+            if (a2->unk_0E == ABILITY_STICKY_HOLD || a2->unk_0E == ABILITY_SUCTION_CUPS) {
+                ret *= 2;
+            }
+        } else if (a2->unk_0E == ABILITY_ARENA_TRAP || a2->unk_0E == ABILITY_NO_GUARD || a2->unk_0E == ABILITY_ILLUMINATE) {
+            ret *= 2;
+        } else if (a2->unk_0E == ABILITY_SNOW_CLOAK) {
+            if (weatherType == WEATHER_SNOW) {
+                ret /= 2;
+            }
+        } else if (a2->unk_0E == ABILITY_WHITE_SMOKE || a2->unk_0E == ABILITY_QUICK_FEET || a2->unk_0E == ABILITY_STENCH) {
+            ret /= 2;
+        }
+        if (ret > 100) {
+            ret = 100;
+        }
+    }
+
+    return ret;
 }
