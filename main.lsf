@@ -568,6 +568,7 @@ Overlay OVY_2
 {
     After field
     Object asm/overlay_02_02245B80.o
+    Object src/field/encounter_check.o
     Object asm/overlay_02_02246A84.o
     Object asm/overlay_02_02248728.o
     Object src/field/legend_cutscene_camera.o

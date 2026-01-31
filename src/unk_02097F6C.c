@@ -12,6 +12,7 @@
 
 #define SWARM_MAP_COUNT 20
 
+// 0 = land, 1 = surf, 2 = fish
 static const u16 sSwarmMapLUT[SWARM_MAP_COUNT][2] = {
     { MAP_ROUTE_1,                  0 },
     { MAP_ROUTE_3,                  0 },

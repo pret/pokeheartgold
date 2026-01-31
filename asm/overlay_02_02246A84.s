@@ -10,286 +10,12 @@
 
 	.text
 
-	thumb_func_start ov02_02246A84
-ov02_02246A84: ; 0x02246A84
-	push {r3, r4, r5, lr}
-	add r5, r0, #0
-	add r4, r1, #0
-	bl GF_RTC_GetTimeOfDay
-	cmp r0, #0
-	bne _02246A98
-	add r3, r5, #0
-	add r3, #0x14
-	b _02246AB8
-_02246A98:
-	sub r1, r0, #1
-	cmp r1, #1
-	bhi _02246AA4
-	add r3, r5, #0
-	add r3, #0x2c
-	b _02246AB8
-_02246AA4:
-	sub r0, r0, #3
-	cmp r0, #1
-	bhi _02246AB0
-	add r3, r5, #0
-	add r3, #0x44
-	b _02246AB8
-_02246AB0:
-	bl GF_AssertFail
-	add r3, r5, #0
-	add r3, #0x14
-_02246AB8:
-	mov r2, #0
-_02246ABA:
-	ldrh r0, [r3]
-	add r1, r5, r2
-	add r2, r2, #1
-	str r0, [r4]
-	ldrb r0, [r1, #8]
-	add r3, r3, #2
-	strh r0, [r4, #4]
-	ldrb r0, [r1, #8]
-	strh r0, [r4, #6]
-	add r4, #8
-	cmp r2, #0xc
-	blt _02246ABA
-	pop {r3, r4, r5, pc}
-	thumb_func_end ov02_02246A84
-
-	thumb_func_start ov02_02246AD4
-ov02_02246AD4: ; 0x02246AD4
-	push {r4, r5, r6, lr}
-	add r5, r0, #0
-	add r4, r1, #0
-	add r6, r2, #0
-	bl GF_RTC_GetTimeOfDay
-	sub r0, r0, #3
-	cmp r0, #1
-	bhi _02246AFC
-	cmp r4, #1
-	bne _02246AF2
-	add r5, #0xc0
-	ldrh r0, [r5]
-	str r0, [r6, #0x18]
-	pop {r4, r5, r6, pc}
-_02246AF2:
-	cmp r4, #2
-	bne _02246AFC
-	add r5, #0xc0
-	ldrh r0, [r5]
-	str r0, [r6, #8]
-_02246AFC:
-	pop {r4, r5, r6, pc}
-	.balign 4, 0
-	thumb_func_end ov02_02246AD4
-
-	thumb_func_start ov02_02246B00
-ov02_02246B00: ; 0x02246B00
-	push {r3, r4, r5, lr}
-	add r5, r1, #0
-	add r4, r2, #0
-	bl GetRadioMusicPlayingSeq
-	cmp r0, #3
-	bne _02246B2E
-	add r0, r5, #0
-	add r0, #0x5c
-	ldrh r0, [r0]
-	str r0, [r4, #0x10]
-	add r0, r5, #0
-	add r0, #0x5c
-	ldrh r0, [r0]
-	str r0, [r4, #0x18]
-	add r0, r5, #0
-	add r0, #0x5e
-	ldrh r0, [r0]
-	add r5, #0x5e
-	str r0, [r4, #0x20]
-	ldrh r0, [r5]
-	str r0, [r4, #0x28]
-	pop {r3, r4, r5, pc}
-_02246B2E:
-	bl GetRadioMusicPlayingSeq
-	cmp r0, #4
-	bne _02246B54
-	add r0, r5, #0
-	add r0, #0x60
-	ldrh r0, [r0]
-	str r0, [r4, #0x10]
-	add r0, r5, #0
-	add r0, #0x60
-	ldrh r0, [r0]
-	str r0, [r4, #0x18]
-	add r0, r5, #0
-	add r0, #0x62
-	ldrh r0, [r0]
-	add r5, #0x62
-	str r0, [r4, #0x20]
-	ldrh r0, [r5]
-	str r0, [r4, #0x28]
-_02246B54:
-	pop {r3, r4, r5, pc}
-	.balign 4, 0
-	thumb_func_end ov02_02246B00
-
-	thumb_func_start ov02_02246B58
-ov02_02246B58: ; 0x02246B58
-	push {r3, r4, r5, r6, r7, lr}
-	add r5, r0, #0
-	ldr r0, [r5, #0xc]
-	add r4, r1, #0
-	add r6, r2, #0
-	add r7, r3, #0
-	bl Save_Roamers_Get
-	str r0, [sp]
-	bl RoamerSave_OutbreakActive
-	cmp r0, #0
-	beq _02246B9A
-	ldr r0, [sp]
-	mov r1, #2
-	bl Roamers_GetRand
-	ldr r1, [r5, #0x20]
-	mov r2, #0
-	ldr r1, [r1]
-	lsl r1, r1, #0x10
-	lsr r1, r1, #0x10
-	bl sub_02097F6C
-	cmp r0, #0
-	beq _02246B9A
-	add r0, r4, #0
-	add r0, #0xbc
-	ldrh r0, [r0]
-	add r4, #0xbc
-	str r0, [r6]
-	ldrh r0, [r4]
-	str r0, [r7]
-_02246B9A:
-	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ov02_02246B58
-
-	thumb_func_start ov02_02246B9C
-ov02_02246B9C: ; 0x02246B9C
-	push {r3, r4, r5, r6, r7, lr}
-	add r5, r0, #0
-	ldr r0, [r5, #0xc]
-	add r4, r1, #0
-	add r6, r2, #0
-	bl Save_Roamers_Get
-	add r7, r0, #0
-	bl RoamerSave_OutbreakActive
-	cmp r0, #0
-	beq _02246BD4
-	add r0, r7, #0
-	mov r1, #2
-	bl Roamers_GetRand
-	ldr r1, [r5, #0x20]
-	mov r2, #1
-	ldr r1, [r1]
-	lsl r1, r1, #0x10
-	lsr r1, r1, #0x10
-	bl sub_02097F6C
-	cmp r0, #0
-	beq _02246BD4
-	add r4, #0xbe
-	ldrh r0, [r4]
-	str r0, [r6]
-_02246BD4:
-	pop {r3, r4, r5, r6, r7, pc}
-	.balign 4, 0
-	thumb_func_end ov02_02246B9C
-
-	thumb_func_start ov02_02246BD8
-ov02_02246BD8: ; 0x02246BD8
-	push {r4, r5, r6, r7, lr}
-	sub sp, #0x2c
-	add r6, r0, #0
-	ldr r0, [r6, #0xc]
-	add r7, r1, #0
-	add r5, r2, #0
-	add r4, r3, #0
-	bl Save_Roamers_Get
-	str r0, [sp]
-	bl RoamerSave_OutbreakActive
-	cmp r0, #0
-	beq _02246C7A
-	ldr r0, [sp]
-	mov r1, #2
-	bl Roamers_GetRand
-	ldr r1, [r6, #0x20]
-	mov r2, #2
-	ldr r1, [r1]
-	lsl r1, r1, #0x10
-	lsr r1, r1, #0x10
-	bl sub_02097F6C
-	cmp r0, #0
-	beq _02246C7A
-	ldr r0, _02246C80 ; =ov02_02253290
-	add r2, sp, #0x20
-	ldr r0, [r0]
-	ldr r6, _02246C84 ; =ov02_02253294
-	str r0, [sp, #8]
-	ldmia r6!, {r0, r1}
-	str r2, [sp, #4]
-	stmia r2!, {r0, r1}
-	ldr r0, [r6]
-	add r6, sp, #0xc
-	str r0, [r2]
-	ldr r2, _02246C88 ; =ov02_022532A0
-	mov ip, r6
-	ldmia r2!, {r0, r1}
-	stmia r6!, {r0, r1}
-	ldmia r2!, {r0, r1}
-	stmia r6!, {r0, r1}
-	ldr r0, [r2]
-	add r3, sp, #8
-	str r0, [r6]
-	cmp r7, #0
-	beq _02246C44
-	cmp r7, #1
-	beq _02246C48
-	cmp r7, #2
-	beq _02246C4E
-	b _02246C54
-_02246C44:
-	mov r1, #1
-	b _02246C5C
-_02246C48:
-	mov r1, #3
-	ldr r3, [sp, #4]
-	b _02246C5C
-_02246C4E:
-	mov r1, #5
-	mov r3, ip
-	b _02246C5C
-_02246C54:
-	bl GF_AssertFail
-	add sp, #0x2c
-	pop {r4, r5, r6, r7, pc}
-_02246C5C:
-	mov r2, #0
-	cmp r1, #0
-	bls _02246C7A
-_02246C62:
-	add r0, r5, #0
-	add r0, #0xc2
-	lsl r6, r2, #2
-	ldr r6, [r3, r6]
-	ldrh r0, [r0]
-	lsl r6, r6, #3
-	str r0, [r4, r6]
-	add r0, r2, #1
-	lsl r0, r0, #0x18
-	lsr r2, r0, #0x18
-	cmp r2, r1
-	blo _02246C62
-_02246C7A:
-	add sp, #0x2c
-	pop {r4, r5, r6, r7, pc}
-	nop
-_02246C80: .word ov02_02253290
-_02246C84: .word ov02_02253294
-_02246C88: .word ov02_022532A0
-	thumb_func_end ov02_02246BD8
+    .extern ov02_02246A84
+    .extern ov02_02246AD4
+    .extern ov02_02246B00
+    .extern ov02_02246B58
+    .extern ov02_02246B9C
+    .extern ov02_02246BD8
 
 	thumb_func_start ov02_02246C8C
 ov02_02246C8C: ; 0x02246C8C
@@ -3418,7 +3144,7 @@ ov02_02248444: ; 0x02248444
 	cmp r0, #0
 	beq _02248470
 	bl LCRandom
-	ldr r1, _02248554 ; =ov02_02253290
+	ldr r1, _02248554 ; =ov02_022532B4 + 0x24 - 0x48
 	lsr r2, r0, #0x1f
 	ldr r3, [r1, #0x48]
 	lsl r1, r0, #0x1f
@@ -3537,7 +3263,7 @@ _02248542:
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_02248554: .word ov02_02253290
+_02248554: .word ov02_022532B4 + 0x24 - 0x48
 _02248558: .word ov02_022532B4
 	thumb_func_end ov02_02248444
 
@@ -3801,12 +3527,15 @@ ov02_02253288:
 ov02_0225328C:
 	.byte 0x16, 0x17, 0x18, 0x19
 
+    .global ov02_02253290
 ov02_02253290: ; 0x02253290
     .word 2
 
+    .global ov02_02253294
 ov02_02253294: ; 0x02253294
     .word 0, 2, 3
 
+    .global ov02_022532A0
 ov02_022532A0: ; 0x022532A0
     .word 0, 1, 2, 3, 4
 
