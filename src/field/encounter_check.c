@@ -2,6 +2,8 @@
 
 #include "global.h"
 
+#include "constants/abilities.h"
+
 #include "battle/battle_setup.h"
 #include "overlay_2/overlay_02_gear_phone.h"
 
@@ -58,6 +60,10 @@ u8 EncounterSlot_WildMonSlotRoll_Surfing(void);
 u8 EncounterSlot_WildMonSlotRoll_Fishing(void);
 u8 EncounterSlot_WildMonSlotRoll_RockSmash(void);
 u8 EncounterSlot_WildMonSlotRoll_Headbutt(void);
+void ApplyLeadMonHeldItemEffectToEncounterRate(Pokemon *leadMon, u8 *pEncounterRate);
+void ApplyFluteEffectToEncounterRate(FieldSystem *fieldSystem, u8 *pEncounterRate);
+u8 ov02_02247854(Pokemon *pokemon, UnkStruct_ov02_02248618 *a1);
+u8 EncounterSlot_WildMonLevelRoll(ENC_SLOT *encSlot, UnkStruct_ov02_02248618 *a1);
 BOOL ov02_02247B64(Pokemon *leadMon, int rodType, UnkStruct_ov02_02248618 *a2, ENC_SLOT *encSlots, u8 a4, u8 a5, BattleSetup *battleSetup);
 BOOL ov02_02247DA0(FieldSystem *fieldSystem, Pokemon *leadMon, int rodType, UnkStruct_ov02_02248618 *a3, u8 a4, u8 a5, BattleSetup *battleSetup);
 BOOL ov02_02247ED8(FieldSystem *fieldSystem, Pokemon *leadMon, u8 a2, UnkStruct_ov02_02248618 *a3, u8 a4, u8 a5, BattleSetup *battleSetup);
@@ -66,9 +72,7 @@ int ov02_02248020(FieldSystem *fieldSystem);
 u8 ov02_02248190(int a0, u8 a1, UnkStruct_ov02_02248618 *a2, u16 a3, Pokemon *leadMon);
 void ov02_02248618(FieldSystem *fieldSystem, Pokemon *pokemon, const ENC_DATA *encData, UnkStruct_ov02_02248618 *a3);
 void ov02_02248698(FieldSystem *fieldSystem);
-void ApplyFluteEffectToEncounterRate(FieldSystem *fieldSystem, u8 *a1);
-void ApplyLeadMonHeldItemEffectToEncounterRate(Pokemon *leadMon, u8 *a1);
-BOOL ov02_GetRandomActiveRoamerInCurrMap(FieldSystem *fieldSystem, Roamer **out);
+BOOL ov02_GetRandomActiveRoamerInCurrMap(FieldSystem *fieldSystem, Roamer **pRoamer);
 u8 ov02_0224802C(FieldSystem *fieldSystem, u8 a1);
 int ov02_022480B4(FieldSystem *fieldSystem);
 BOOL ov02_02248290(u8 roamerLevel, UnkStruct_ov02_02248618 *a1);
@@ -673,4 +677,52 @@ u8 EncounterSlot_WildMonSlotRoll_Headbutt(void) {
     } else {
         return 5;
     }
+}
+
+void ApplyLeadMonHeldItemEffectToEncounterRate(Pokemon *leadMon, u8 *pEncounterRate) {
+    u16 heldItem = GetMonData(leadMon, MON_DATA_HELD_ITEM, NULL);
+    if (heldItem == ITEM_CLEANSE_TAG || heldItem == ITEM_PURE_INCENSE) {
+        *pEncounterRate = *pEncounterRate * 2 / 3;
+    }
+}
+
+void ApplyFluteEffectToEncounterRate(FieldSystem *fieldSystem, u8 *pEncounterRate) {
+    u8 flute = RoamerSave_GetFlute(Save_Roamers_Get(fieldSystem->saveData));
+    if (flute == 1) { // black flute
+        *pEncounterRate /= 2;
+    } else if (flute == 2) { // white flute
+        *pEncounterRate += *pEncounterRate / 2;
+    }
+}
+
+u8 ov02_02247854(Pokemon *pokemon, UnkStruct_ov02_02248618 *a1) {
+    if (a1->unk_0D == 0 && a1->unk_0E == ABILITY_SYNCHRONIZE && LCRandRange(2) == 0) {
+        return GetMonData(pokemon, MON_DATA_PERSONALITY, NULL) % 25;
+    } else {
+        return LCRandRange(25);
+    }
+}
+
+u8 EncounterSlot_WildMonLevelRoll(ENC_SLOT *encSlot, UnkStruct_ov02_02248618 *a1) {
+    u8 hi;
+    u8 lo;
+
+    if (encSlot->level_max >= encSlot->level_min) {
+        lo = encSlot->level_min;
+        hi = encSlot->level_max;
+    } else {
+        lo = encSlot->level_max;
+        hi = encSlot->level_min;
+    }
+
+    u8 range = hi - lo + 1;
+    u8 lvl = LCRandom() % range;
+    if (a1->unk_0D == 0 && (a1->unk_0E == ABILITY_HUSTLE || a1->unk_0E == ABILITY_VITAL_SPIRIT || a1->unk_0E == ABILITY_PRESSURE)) {
+        if (LCRandRange(2) == 0) {
+            return lo + lvl;
+        }
+        return hi;
+    }
+
+    return lo + lvl;
 }
