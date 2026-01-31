@@ -53,6 +53,11 @@ BOOL ov02_02247568(FieldSystem *fieldSystem, u8 encounterRate, u8 metatileBehavi
 u8 ov02_02247610(u16 a0);
 u8 ov02_0224762C(FieldSystem *fieldSystem, u8 metatileBehavior, u8 *a2);
 BOOL ov02_0224766C(FieldSystem *fieldSystem, u16 encounterRate);
+u8 EncounterSlot_WildMonSlotRoll_Land(void);
+u8 EncounterSlot_WildMonSlotRoll_Surfing(void);
+u8 EncounterSlot_WildMonSlotRoll_Fishing(void);
+u8 EncounterSlot_WildMonSlotRoll_RockSmash(void);
+u8 EncounterSlot_WildMonSlotRoll_Headbutt(void);
 BOOL ov02_02247B64(Pokemon *leadMon, int rodType, UnkStruct_ov02_02248618 *a2, ENC_SLOT *encSlots, u8 a4, u8 a5, BattleSetup *battleSetup);
 BOOL ov02_02247DA0(FieldSystem *fieldSystem, Pokemon *leadMon, int rodType, UnkStruct_ov02_02248618 *a3, u8 a4, u8 a5, BattleSetup *battleSetup);
 BOOL ov02_02247ED8(FieldSystem *fieldSystem, Pokemon *leadMon, u8 a2, UnkStruct_ov02_02248618 *a3, u8 a4, u8 a5, BattleSetup *battleSetup);
@@ -296,8 +301,7 @@ BOOL FieldSystem_PerformFishEncounterCheck(FieldSystem *fieldSystem, u8 rodType,
     Pokemon *leadMon = Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->saveData), 0);
     ov02_02248618(fieldSystem, leadMon, NULL, &sp24);
     encounterRate = ov02_02248190(1, encounterRate, &sp24, LocalFieldData_GetWeatherType(Save_LocalFieldData_Get(fieldSystem->saveData)), leadMon);
-    u16 rnd = LCRandom() % 100;
-    if (rnd >= encounterRate) {
+    if (LCRandRange(100) >= encounterRate) {
         return FALSE;
     }
     BOOL sp18 = Save_VarsFlags_CheckSafariSysFlag(Save_VarsFlags_Get(fieldSystem->saveData));
@@ -543,8 +547,7 @@ BOOL ov02_02247568(FieldSystem *fieldSystem, u8 encounterRate, u8 metatileBehavi
     if (r4 > 100) {
         r4 = 100;
     }
-    u16 rnd = LCRandom() % 100;
-    if (rnd < r4 && ov02_0224766C(fieldSystem, encounterRate)) {
+    if (LCRandRange(100) < r4 && ov02_0224766C(fieldSystem, encounterRate)) {
         return TRUE;
     }
 
@@ -580,9 +583,94 @@ u8 ov02_0224762C(FieldSystem *fieldSystem, u8 metatileBehavior, u8 *a2) {
 }
 
 BOOL ov02_0224766C(FieldSystem *fieldSystem, u16 encounterRate) {
-    u16 rnd = LCRandom() % 100;
-    if (rnd < encounterRate) {
+    if (LCRandRange(100) < encounterRate) {
         return TRUE;
     }
     return FALSE;
+}
+
+u8 EncounterSlot_WildMonSlotRoll_Land(void) {
+    u8 rnd = LCRandRange(100);
+
+    if (rnd < 20) {
+        return 0;
+    } else if (rnd >= 20 && rnd < 40) {
+        return 1;
+    } else if (rnd >= 40 && rnd < 50) {
+        return 2;
+    } else if (rnd >= 50 && rnd < 60) {
+        return 3;
+    } else if (rnd >= 60 && rnd < 70) {
+        return 4;
+    } else if (rnd >= 70 && rnd < 80) {
+        return 5;
+    } else if (rnd >= 80 && rnd < 85) {
+        return 6;
+    } else if (rnd >= 85 && rnd < 90) {
+        return 7;
+    } else if (rnd >= 90 && rnd < 94) {
+        return 8;
+    } else if (rnd >= 94 && rnd < 98) {
+        return 9;
+    } else if (rnd == 98) {
+        return 10;
+    } else {
+        return 11;
+    }
+}
+
+u8 EncounterSlot_WildMonSlotRoll_Surfing(void) {
+    u8 rnd = LCRandRange(100);
+
+    if (rnd < 60) {
+        return 0;
+    } else if (rnd >= 60 && rnd < 90) {
+        return 1;
+    } else if (rnd >= 90 && rnd < 95) {
+        return 2;
+    } else if (rnd >= 95 && rnd < 99) {
+        return 3;
+    } else {
+        return 4;
+    }
+}
+
+u8 EncounterSlot_WildMonSlotRoll_Fishing(void) {
+    u8 rnd = LCRandRange(100);
+
+    if (rnd < 40) {
+        return 0;
+    } else if (rnd < 70) {
+        return 1;
+    } else if (rnd < 85) {
+        return 2;
+    } else if (rnd < 95) {
+        return 3;
+    } else {
+        return 4;
+    }
+}
+
+u8 EncounterSlot_WildMonSlotRoll_RockSmash(void) {
+    u8 rnd = LCRandRange(100);
+
+    return rnd >= 80 ? 1 : 0;
+}
+
+u8 EncounterSlot_WildMonSlotRoll_Headbutt(void) {
+    u8 rnd = LCRandRange(100);
+
+    if (rnd < 50) {
+        return 0;
+    } else if (rnd < 65) {
+        return 1;
+    } else if (rnd < 80) {
+        return 2;
+    } else if (rnd < 90) {
+        return 3;
+    } else if (rnd < 95) {
+        return 4;
+    } else {
+        return 5;
+    }
 }
