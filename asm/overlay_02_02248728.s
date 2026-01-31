@@ -14809,7 +14809,7 @@ ov02_0224F5FC: ; 0x0224F5FC
 	ldr r2, [r5, r1]
 	ldr r1, _0224F640 ; =0x00000882
 	strh r0, [r2, r1]
-	bl sub_0205B994
+	bl MetatileBehavior_CanGenerateWalkingEncounters
 	cmp r0, #0
 	beq _0224F63A
 	mov r0, #1

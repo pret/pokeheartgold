@@ -138,8 +138,8 @@ static BOOL Task_StartEncounter(TaskManager *taskManager) { // todo: better name
             sub_020930C4(fieldSystem);
         }
 
-        fieldSystem->unk7E = 0;
-        fieldSystem->unk7C = 0;
+        fieldSystem->encounterInhibitSteps = 0;
+        fieldSystem->encounterRateRampUpSteps = 0;
 
         if (Encounter_GetResult(encounter, fieldSystem) == FALSE) {
             if (encounter->setup->battleType & BATTLE_TYPE_11) {

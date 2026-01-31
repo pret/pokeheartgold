@@ -238,7 +238,7 @@
 .public MetatileBehavior_IsEncounterGrass
 .public sub_0205B6F4
 .public MetatileBehavior_IsSurfableWater
-.public sub_0205B994
+.public MetatileBehavior_CanGenerateWalkingEncounters
 .public sub_0205BAD0
 .public sub_0205BAE4
 .public sub_0205BB04

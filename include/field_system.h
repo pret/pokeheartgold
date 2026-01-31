@@ -136,8 +136,8 @@ struct FieldSystem {
     const struct UnkStruct_020FC5CC *unk74;
     u16 unk78;
     u16 unk7A;
-    u16 unk7C;
-    u16 unk7E;
+    u16 encounterRateRampUpSteps;
+    u16 encounterInhibitSteps;
     struct UnkStruct_02059E1C *unk80;
     struct UnkStruct_0205AC88 *unk84;
     u8 filler_88[0x8];

@@ -3,12 +3,14 @@
 #include "global.h"
 
 #include "constants/abilities.h"
+#include "constants/maps.h"
 
 #include "battle/battle_setup.h"
 #include "overlay_2/overlay_02_gear_phone.h"
 
 #include "bug_contest.h"
 #include "encounter.h"
+#include "follow_mon.h"
 #include "gf_rtc.h"
 #include "map_events.h"
 #include "math_util.h"
@@ -56,10 +58,10 @@ BOOL ov02_0224749C(FieldSystem *fieldSystem, Pokemon *leadMon, BattleSetup *batt
 BOOL ov02_022474E0(FieldSystem *fieldSystem, Pokemon *leadMon, BattleSetup *battleSetup, ENC_SLOT *encSlots, UnkStruct_ov02_02248618 *a4, BOOL a5);
 BOOL ov02_02247514(FieldSystem *fieldSystem, Pokemon *leadMon, BattleSetup *battleSetup, ENC_SLOT *encSlots, UnkStruct_ov02_02248618 *a4, int rodType, BOOL isSafari);
 BOOL ov02_0224754C(FieldSystem *fieldSystem, Pokemon *leadMon, BattleSetup *battleSetup, ENC_SLOT *encSlots, UnkStruct_ov02_02248618 *a4);
-BOOL ov02_02247568(FieldSystem *fieldSystem, u8 encounterRate, u8 metatileBehavior);
-u8 ov02_02247610(u16 a0);
-u8 ov02_0224762C(FieldSystem *fieldSystem, u8 metatileBehavior, u8 *a2);
-BOOL ov02_0224766C(FieldSystem *fieldSystem, u16 encounterRate);
+BOOL FieldSystem_EncounterRateRoll(FieldSystem *fieldSystem, u8 encounterRate, u8 metatileBehavior);
+u8 getStepCountEncounterRateBoost(u16 stepCount);
+u8 FieldSystem_GetTileEncounterTypeAndRate(FieldSystem *fieldSystem, u8 metatileBehavior, u8 *pEncType);
+BOOL FieldSystem_SecondEncounterRoll(FieldSystem *fieldSystem, u16 encounterRate);
 u8 EncounterSlot_WildMonSlotRoll_Land(void);
 u8 EncounterSlot_WildMonSlotRoll_Surfing(void);
 u8 EncounterSlot_WildMonSlotRoll_Fishing(int rodType);
@@ -67,17 +69,18 @@ u8 EncounterSlot_WildMonSlotRoll_RockSmash(void);
 u8 EncounterSlot_WildMonSlotRoll_Headbutt(void);
 void ApplyLeadMonHeldItemEffectToEncounterRate(Pokemon *leadMon, u8 *pEncounterRate);
 void ApplyFluteEffectToEncounterRate(FieldSystem *fieldSystem, u8 *pEncounterRate);
-u8 ov02_02247854(Pokemon *pokemon, UnkStruct_ov02_02248618 *a1);
+u8 getWildMonNature(Pokemon *pokemon, UnkStruct_ov02_02248618 *a1);
 u8 EncounterSlot_WildMonLevelRoll(ENC_SLOT *encSlot, UnkStruct_ov02_02248618 *a1);
 void ov02_02247910(u16 species, u8 level, int battler, u32 otid, UnkStruct_ov02_02248618 *a4, Pokemon *leadMon, BattleSetup *battleSetup);
 void ov02_02247A18(u16 species, u8 level, int battler, BOOL forceOnePerfectIV, UnkStruct_ov02_02248618 *a4, Pokemon *leadMon, BattleSetup *battleSetup);
 BOOL ov02_02247B64(Pokemon *leadMon, int rodType, UnkStruct_ov02_02248618 *a2, ENC_SLOT *encSlots, u8 encType, int battler, BattleSetup *battleSetup);
 BOOL ov02_02247DA0(FieldSystem *fieldSystem, Pokemon *leadMon, int rodType, UnkStruct_ov02_02248618 *a3, u8 encType, int battler, BattleSetup *battleSetup);
-BOOL ov02_02247ED8(FieldSystem *fieldSystem, Pokemon *leadMon, u8 a2, UnkStruct_ov02_02248618 *a3, u8 encType, int battler, BattleSetup *battleSetup);
-int ov02_02248014(FieldSystem *fieldSystem);
-int ov02_02248020(FieldSystem *fieldSystem);
-u8 ov02_0224802C(FieldSystem *fieldSystem, u8 a1);
-int ov02_022480B4(FieldSystem *fieldSystem);
+BOOL ov02_02247ED8(FieldSystem *fieldSystem, Pokemon *leadMon, int rodType, UnkStruct_ov02_02248618 *a3, u8 encType, int battler, BattleSetup *battleSetup);
+int FieldSystem_GetLandEncounterRate(FieldSystem *fieldSystem);
+int FieldSystem_GetSurfingEncounterRate(FieldSystem *fieldSystem);
+u8 FieldSystem_GetFishingEncounterRate(FieldSystem *fieldSystem, u8 rodType);
+u8 getFriendshipBoostToFishingBiteRate(u8 friendship);
+int FieldSystem_GetRockSmashEncounterRate(FieldSystem *fieldSystem);
 BOOL EncounterSlot_AbilityInfluenceOnSlotChoiceCheck(Pokemon *leadMon, UnkStruct_ov02_02248618 *a1, ENC_SLOT *encSlots, u8 numSlots, u8 type, u8 ability, u8 *slotNum);
 u8 ov02_02248190(int a0, u8 a1, UnkStruct_ov02_02248618 *a2, u16 a3, Pokemon *leadMon);
 BOOL ov02_022481EC(UnkStruct_ov02_02248618 *a0, Pokemon *leadMon, u8 level);
@@ -196,7 +199,7 @@ void ov02_02246BD8(FieldSystem *fieldSystem, u8 a1, const ENC_DATA *a2, ENC_SLOT
 }
 
 BOOL FieldSystem_PerformLandOrSurfEncounterCheck(FieldSystem *fieldSystem) {
-    if (fieldSystem->unk7E <= 3) {
+    if (fieldSystem->encounterInhibitSteps <= 3) {
         return FALSE;
     }
 
@@ -210,7 +213,7 @@ BOOL FieldSystem_PerformLandOrSurfEncounterCheck(FieldSystem *fieldSystem) {
     u32 x = PlayerAvatar_GetXCoord(fieldSystem->playerAvatar);
     u32 z = PlayerAvatar_GetZCoord(fieldSystem->playerAvatar);
     u8 metatileBehavior = GetMetatileBehavior(fieldSystem, x, z);
-    encounterRate = ov02_0224762C(fieldSystem, metatileBehavior, &encounterType);
+    encounterRate = FieldSystem_GetTileEncounterTypeAndRate(fieldSystem, metatileBehavior, &encounterType);
     if (encounterRate == 0) {
         return FALSE;
     }
@@ -227,7 +230,7 @@ BOOL FieldSystem_PerformLandOrSurfEncounterCheck(FieldSystem *fieldSystem) {
     encounterRate = ov02_02248190(0, encounterRate, &sp24, LocalFieldData_GetWeatherType(Save_LocalFieldData_Get(fieldSystem->saveData)), leadMon);
     ApplyFluteEffectToEncounterRate(fieldSystem, &encounterRate);
     ApplyLeadMonHeldItemEffectToEncounterRate(leadMon, &encounterRate);
-    BOOL ret = ov02_02247568(fieldSystem, encounterRate, metatileBehavior) ? TRUE : FALSE;
+    BOOL ret = FieldSystem_EncounterRateRoll(fieldSystem, encounterRate, metatileBehavior) ? TRUE : FALSE;
     if (!ret) {
         return FALSE;
     }
@@ -292,8 +295,8 @@ BOOL FieldSystem_PerformLandOrSurfEncounterCheck(FieldSystem *fieldSystem) {
     }
     if (found) {
         sub_02050B08(fieldSystem, battleSetup);
-        fieldSystem->unk7E = 0;
-        fieldSystem->unk7C = 0;
+        fieldSystem->encounterInhibitSteps = 0;
+        fieldSystem->encounterRateRampUpSteps = 0;
     } else {
         ret = FALSE;
     }
@@ -309,7 +312,7 @@ BOOL FieldSystem_PerformFishEncounterCheck(FieldSystem *fieldSystem, u8 rodType,
     ENC_SLOT encSlots[NUM_ENCOUNTERS_LAND];
     UnkStruct_ov02_02248618 sp24;
 
-    u8 encounterRate = ov02_0224802C(fieldSystem, rodType);
+    u8 encounterRate = FieldSystem_GetFishingEncounterRate(fieldSystem, rodType);
     if (encounterRate == 0) {
         return FALSE;
     }
@@ -331,13 +334,13 @@ BOOL FieldSystem_PerformFishEncounterCheck(FieldSystem *fieldSystem, u8 rodType,
     const ENC_DATA *encData = MapEvents_GetLoadedEncTable(fieldSystem);
     const ENC_DATA_SLOT *rodSlots;
     switch (rodType) {
-    case 0:
+    case ROD_TYPE_OLD:
         rodSlots = encData->oldRodSlots;
         break;
-    case 1:
+    case ROD_TYPE_GOOD:
         rodSlots = encData->goodRodSlots;
         break;
-    case 2:
+    case ROD_TYPE_SUPER:
         rodSlots = encData->superRodSlots;
         break;
     }
@@ -356,7 +359,7 @@ BOOL FieldSystem_PerformRockSmashEncounterCheck(FieldSystem *fieldSystem, Battle
     ENC_SLOT encSlots[NUM_ENCOUNTERS_LAND];
     UnkStruct_ov02_02248618 sp10;
 
-    u8 encounterRate = ov02_022480B4(fieldSystem);
+    u8 encounterRate = FieldSystem_GetRockSmashEncounterRate(fieldSystem);
     if (encounterRate == 0) {
         return FALSE;
     }
@@ -390,13 +393,13 @@ BOOL FieldSystem_PerformSweetScentEncounterCheck(FieldSystem *fieldSystem, TaskM
     UnkStruct_ov02_02248618 sp20;
     BattleSetup *battleSetup;
     Roamer *roamer;
-    u8 sp14;
+    u8 encType;
     SaveVarsFlags *saveVarsFlags = Save_VarsFlags_Get(fieldSystem->saveData);
     u32 x = PlayerAvatar_GetXCoord(fieldSystem->playerAvatar);
     u32 z = PlayerAvatar_GetZCoord(fieldSystem->playerAvatar);
     u8 metatileBehavior = GetMetatileBehavior(fieldSystem, x, z);
 
-    if (!ov02_0224762C(fieldSystem, metatileBehavior, &sp14)) {
+    if (!FieldSystem_GetTileEncounterTypeAndRate(fieldSystem, metatileBehavior, &encType)) {
         return FALSE;
     }
 
@@ -429,7 +432,7 @@ BOOL FieldSystem_PerformSweetScentEncounterCheck(FieldSystem *fieldSystem, TaskM
     }
     BattleSetup_InitFromFieldSystem(battleSetup, fieldSystem);
     BOOL found;
-    if (sp14 == 0) {
+    if (encType == 0) {
         ov02_02246A84(encData, encSlots);
         ov02_02246B58(fieldSystem, encData, &encSlots[0], &encSlots[1]);
         ov02_02246B00(fieldSystem, encData, encSlots);
@@ -446,7 +449,7 @@ BOOL FieldSystem_PerformSweetScentEncounterCheck(FieldSystem *fieldSystem, TaskM
             EnemyTrainerSet_Init(battleSetup, fieldSystem->saveData, HEAP_ID_FIELD2);
             found = ov02_0224749C(fieldSystem, leadMon, battleSetup, encSlots, &sp20);
         }
-    } else if (sp14 == 1) {
+    } else if (encType == 1) {
         for (int i = 0; i < NUM_ENCOUNTERS_SURF; ++i) {
             encSlots[i].species = encData->surfSlots[i].species;
             encSlots[i].level_max = encData->surfSlots[i].level_max;
@@ -463,31 +466,31 @@ BOOL FieldSystem_PerformSweetScentEncounterCheck(FieldSystem *fieldSystem, TaskM
     } else {
         GF_ASSERT(FALSE);
     }
-    fieldSystem->unk7E = 0;
-    fieldSystem->unk7C = 0;
+    fieldSystem->encounterInhibitSteps = 0;
+    fieldSystem->encounterRateRampUpSteps = 0;
     return TRUE;
 }
 
 BOOL FieldSystem_PerformHeadbuttEncounterCheck(FieldSystem *fieldSystem, BattleSetup **pBattleSetup, const HeadbuttSlot *headbuttSlots) {
-    ENC_SLOT sp48[NUM_ENCOUNTERS_LAND];
+    ENC_SLOT encSlots[NUM_ENCOUNTERS_LAND];
     UnkStruct_ov02_02248618 sp2C;
-    ENC_DATA_SLOT sp14[NUM_ENCOUNTERS_HEADBUTT];
+    ENC_DATA_SLOT encDataSlots[NUM_ENCOUNTERS_HEADBUTT];
 
-    Pokemon *sp10 = Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->saveData), 0);
-    ov02_02248618(fieldSystem, sp10, NULL, &sp2C);
+    Pokemon *leadMon = Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->saveData), 0);
+    ov02_02248618(fieldSystem, leadMon, NULL, &sp2C);
     ov02_02248244(fieldSystem, 0, pBattleSetup);
     BattleSetup_InitFromFieldSystem(*pBattleSetup, fieldSystem);
     for (u8 i = 0; i < NUM_ENCOUNTERS_HEADBUTT; ++i) {
-        sp14[i].species = headbuttSlots[i].species;
-        sp14[i].level_max = headbuttSlots[i].maxLevel;
-        sp14[i].level_min = headbuttSlots[i].minLevel;
+        encDataSlots[i].species = headbuttSlots[i].species;
+        encDataSlots[i].level_max = headbuttSlots[i].maxLevel;
+        encDataSlots[i].level_min = headbuttSlots[i].minLevel;
     }
     for (u8 i = 0; i < NUM_ENCOUNTERS_HEADBUTT; ++i) {
-        sp48[i].species = sp14[i].species;
-        sp48[i].level_max = sp14[i].level_max;
-        sp48[i].level_min = sp14[i].level_min;
+        encSlots[i].species = encDataSlots[i].species;
+        encSlots[i].level_max = encDataSlots[i].level_max;
+        encSlots[i].level_min = encDataSlots[i].level_min;
     }
-    if (!ov02_02247B64(sp10, 0xFF, &sp2C, sp48, 4, BATTLER_ENEMY, *pBattleSetup)) {
+    if (!ov02_02247B64(leadMon, ROD_TYPE_NONE, &sp2C, encSlots, ENCOUNTER_TYPE_HEADBUTT, BATTLER_ENEMY, *pBattleSetup)) {
         BattleSetup_Delete(*pBattleSetup);
         return FALSE;
     }
@@ -496,109 +499,111 @@ BOOL FieldSystem_PerformHeadbuttEncounterCheck(FieldSystem *fieldSystem, BattleS
 }
 
 BOOL ov02_02247424(FieldSystem *fieldSystem, Pokemon *leadMon, BattleSetup *battleSetup, const ENC_DATA *encData, ENC_SLOT *encSlots, UnkStruct_ov02_02248618 *a5) {
-    return ov02_02247B64(leadMon, 0xFF, a5, encSlots, 0, BATTLER_ENEMY, battleSetup);
+    return ov02_02247B64(leadMon, ROD_TYPE_NONE, a5, encSlots, ENCOUNTER_TYPE_LAND, BATTLER_ENEMY, battleSetup);
 }
 
 BOOL ov02_02247444(FieldSystem *fieldSystem, Pokemon *leadMon, BattleSetup *battleSetup, const ENC_DATA *encData, ENC_SLOT *encSlots, UnkStruct_ov02_02248618 *a5) {
-    return ov02_02247DA0(fieldSystem, leadMon, 0xFF, a5, 0, 1, battleSetup);
+    return ov02_02247DA0(fieldSystem, leadMon, ROD_TYPE_NONE, a5, ENCOUNTER_TYPE_LAND, BATTLER_ENEMY, battleSetup);
 }
 
 BOOL ov02_02247460(FieldSystem *fieldSystem, Pokemon *leadMon, BattleSetup *battleSetup, const ENC_DATA *encData, ENC_SLOT *encSlots, UnkStruct_ov02_02248618 *a5) {
     FSOverlayID ovyId = FS_OVERLAY_ID(bug_contest);
 
     HandleLoadOverlay(ovyId, OVY_LOAD_ASYNC);
-    BOOL ret = ov02_02247ED8(fieldSystem, leadMon, 0xFF, a5, 0, 1, battleSetup);
+    BOOL ret = ov02_02247ED8(fieldSystem, leadMon, ROD_TYPE_NONE, a5, ENCOUNTER_TYPE_LAND, BATTLER_ENEMY, battleSetup);
     UnloadOverlayByID(ovyId);
     return ret;
 }
 
 BOOL ov02_0224749C(FieldSystem *fieldSystem, Pokemon *leadMon, BattleSetup *battleSetup, ENC_SLOT *encSlots, UnkStruct_ov02_02248618 *a5) {
-    if (ov02_02247B64(leadMon, 0xFF, a5, encSlots, 0, BATTLER_ENEMY, battleSetup) == FALSE) { // explicit comparison to FALSE required to match
+    if (ov02_02247B64(leadMon, ROD_TYPE_NONE, a5, encSlots, ENCOUNTER_TYPE_LAND, BATTLER_ENEMY, battleSetup) == FALSE) { // explicit comparison to FALSE required to match
         return FALSE;
     } else {
-        return ov02_02247B64(leadMon, 0xFF, a5, encSlots, 0, BATTLER_ENEMY2, battleSetup);
+        return ov02_02247B64(leadMon, ROD_TYPE_NONE, a5, encSlots, ENCOUNTER_TYPE_LAND, BATTLER_ENEMY2, battleSetup);
     }
 }
 
 BOOL ov02_022474E0(FieldSystem *fieldSystem, Pokemon *leadMon, BattleSetup *battleSetup, ENC_SLOT *encSlots, UnkStruct_ov02_02248618 *a4, BOOL a5) {
     if (a5) {
-        return ov02_02247DA0(fieldSystem, leadMon, 0xFF, a4, 1, 1, battleSetup);
+        return ov02_02247DA0(fieldSystem, leadMon, ROD_TYPE_NONE, a4, ENCOUNTER_TYPE_SURFING, BATTLER_ENEMY, battleSetup);
     } else {
-        return ov02_02247B64(leadMon, 0xFF, a4, encSlots, 1, BATTLER_ENEMY, battleSetup);
+        return ov02_02247B64(leadMon, ROD_TYPE_NONE, a4, encSlots, ENCOUNTER_TYPE_SURFING, BATTLER_ENEMY, battleSetup);
     }
 }
 
 BOOL ov02_02247514(FieldSystem *fieldSystem, Pokemon *leadMon, BattleSetup *battleSetup, ENC_SLOT *encSlots, UnkStruct_ov02_02248618 *a4, int rodType, BOOL isSafari) {
     if (isSafari) {
-        return ov02_02247DA0(fieldSystem, leadMon, rodType, a4, 2, 1, battleSetup);
+        return ov02_02247DA0(fieldSystem, leadMon, rodType, a4, ENCOUNTER_TYPE_FISHING, BATTLER_ENEMY, battleSetup);
     } else {
-        return ov02_02247B64(leadMon, rodType, a4, encSlots, 2, BATTLER_ENEMY, battleSetup);
+        return ov02_02247B64(leadMon, rodType, a4, encSlots, ENCOUNTER_TYPE_FISHING, BATTLER_ENEMY, battleSetup);
     }
 }
 
 BOOL ov02_0224754C(FieldSystem *fieldSystem, Pokemon *leadMon, BattleSetup *battleSetup, ENC_SLOT *encSlots, UnkStruct_ov02_02248618 *a4) {
-    return ov02_02247B64(leadMon, 0xFF, a4, encSlots, 3, BATTLER_ENEMY, battleSetup);
+    return ov02_02247B64(leadMon, ROD_TYPE_NONE, a4, encSlots, ENCOUNTER_TYPE_ROCK_SMASH, BATTLER_ENEMY, battleSetup);
 }
 
-BOOL ov02_02247568(FieldSystem *fieldSystem, u8 encounterRate, u8 metatileBehavior) {
+BOOL FieldSystem_EncounterRateRoll(FieldSystem *fieldSystem, u8 encounterRate, u8 metatileBehavior) {
     if (encounterRate > 100) {
         encounterRate = 100;
     }
     int avatarState = PlayerAvatar_GetState(fieldSystem->playerAvatar);
-    u8 r4 = 40;
-    if (avatarState != 1 && avatarState != 2 && !sub_0205DE98(fieldSystem->playerAvatar)) {
-        r4 -= 20;
+    u8 modifiedRate = 40;
+    if (avatarState != PLAYER_STATE_CYCLING && avatarState != PLAYER_STATE_SURFING && !sub_0205DE98(fieldSystem->playerAvatar)) {
+        modifiedRate -= 20;
     }
     if (sub_0205B6F4(metatileBehavior)) {
-        r4 += 40;
-    } else if (avatarState == 1) {
-        r4 += 30;
+        modifiedRate += 40;
+    } else if (avatarState == PLAYER_STATE_CYCLING) {
+        modifiedRate += 30;
     }
-    r4 += ov02_02247610(fieldSystem->unk7C);
+    modifiedRate += getStepCountEncounterRateBoost(fieldSystem->encounterRateRampUpSteps);
     if (GetRadioMusicPlayingSeq() == RADIO_MUSIC_SEQ_MARCH) {
-        r4 += 25;
+        modifiedRate += 25;
     } else if (GetRadioMusicPlayingSeq() == RADIO_MUSIC_SEQ_LULLABY) {
-        r4 -= 25;
+        modifiedRate -= 25;
     }
-    if (r4 > 100) {
-        r4 = 100;
+    if (modifiedRate > 100) {
+        modifiedRate = 100;
     }
-    if (LCRandRange(100) < r4 && ov02_0224766C(fieldSystem, encounterRate)) {
+    if (LCRandRange(100) < modifiedRate && FieldSystem_SecondEncounterRoll(fieldSystem, encounterRate)) {
         return TRUE;
     }
 
     return FALSE;
 }
 
-u8 ov02_02247610(u16 a0) {
+u8 getStepCountEncounterRateBoost(u16 stepCount) {
     u8 result = 0;
 
-    if (a0 >= 4) {
+    if (stepCount >= 4) {
         result = 60;
-    } else if (a0 >= 3) {
+    } else if (stepCount >= 3) {
         result = 40;
-    } else if (a0 >= 2) {
+    } else if (stepCount >= 2) {
         result = 30;
     }
 
     return result;
 }
 
-u8 ov02_0224762C(FieldSystem *fieldSystem, u8 metatileBehavior, u8 *a2) {
-    if (sub_0205B994(metatileBehavior)) {
+u8 FieldSystem_GetTileEncounterTypeAndRate(FieldSystem *fieldSystem, u8 metatileBehavior, u8 *pEncType) {
+    if (MetatileBehavior_CanGenerateWalkingEncounters(metatileBehavior)) {
         if (MetatileBehavior_IsSurfableWater(metatileBehavior)) {
-            *a2 = 1;
-            return ov02_02248020(fieldSystem);
+            *pEncType = ENCOUNTER_TYPE_SURFING;
+            return FieldSystem_GetSurfingEncounterRate(fieldSystem);
         } else {
-            *a2 = 0;
-            return ov02_02248014(fieldSystem);
+            *pEncType = ENCOUNTER_TYPE_LAND;
+            return FieldSystem_GetLandEncounterRate(fieldSystem);
         }
     }
 
     return 0;
 }
 
-BOOL ov02_0224766C(FieldSystem *fieldSystem, u16 encounterRate) {
+BOOL FieldSystem_SecondEncounterRoll(FieldSystem *fieldSystem, u16 encounterRate) {
+    // This may have been used for some additional logic, but it's essentially
+    // just an encounter roll against the unmodified rate.
     if (LCRandRange(100) < encounterRate) {
         return TRUE;
     }
@@ -707,7 +712,7 @@ void ApplyFluteEffectToEncounterRate(FieldSystem *fieldSystem, u8 *pEncounterRat
     }
 }
 
-u8 ov02_02247854(Pokemon *pokemon, UnkStruct_ov02_02248618 *a1) {
+u8 getWildMonNature(Pokemon *pokemon, UnkStruct_ov02_02248618 *a1) {
     if (a1->unk_0D == 0 && a1->unk_0E == ABILITY_SYNCHRONIZE && LCRandRange(2) == 0) {
         return GetMonData(pokemon, MON_DATA_PERSONALITY, NULL) % 25;
     } else {
@@ -820,7 +825,7 @@ void ov02_02247A18(u16 species, u8 level, int battler, BOOL forceOnePerfectIV, U
         } else {
             GF_ASSERT(FALSE); // can't put cute charm on a genderless pokemon
         }
-        CreateMonWithGenderNatureLetter(wildMon, species, level, 0x20, monGender, ov02_02247854(leadMon, a4), 0);
+        CreateMonWithGenderNatureLetter(wildMon, species, level, 0x20, monGender, getWildMonNature(leadMon, a4), 0);
         SetMonData(wildMon, MON_DATA_OT_ID, &a4->unk_00);
         GF_ASSERT(ov02_0224855C(battler, a4, wildMon, battleSetup));
         Heap_Free(wildMon);
@@ -831,7 +836,7 @@ void ov02_02247A18(u16 species, u8 level, int battler, BOOL forceOnePerfectIV, U
         int i;
         BOOL sp18 = FALSE;
         for (i = 0; i < 4; ++i) {
-            CreateMonWithNature(wildMon, species, level, 0x20, ov02_02247854(leadMon, a4));
+            CreateMonWithNature(wildMon, species, level, 0x20, getWildMonNature(leadMon, a4));
             for (int j = 0; j < 6; ++j) {
                 if (GetMonData(wildMon, MON_DATA_HP_IV + j, NULL) == 31) {
                     sp18 = TRUE;
@@ -843,7 +848,7 @@ void ov02_02247A18(u16 species, u8 level, int battler, BOOL forceOnePerfectIV, U
             }
         }
     } else {
-        CreateMonWithNature(wildMon, species, level, 0x20, ov02_02247854(leadMon, a4));
+        CreateMonWithNature(wildMon, species, level, 0x20, getWildMonNature(leadMon, a4));
     }
 
     SetMonData(wildMon, MON_DATA_OT_ID, &a4->unk_00);
@@ -851,11 +856,11 @@ void ov02_02247A18(u16 species, u8 level, int battler, BOOL forceOnePerfectIV, U
     Heap_Free(wildMon);
 }
 
-BOOL ov02_02247B64(Pokemon *leadMon, int rodType, UnkStruct_ov02_02248618 *a2, ENC_SLOT *encSlots, u8 a4, int battler, BattleSetup *battleSetup) {
+BOOL ov02_02247B64(Pokemon *leadMon, int rodType, UnkStruct_ov02_02248618 *a2, ENC_SLOT *encSlots, u8 encType, int battler, BattleSetup *battleSetup) {
     u8 slot = 0;
     u8 level = 0;
 
-    switch (a4) {
+    switch (encType) {
     case 0:
         if (!EncounterSlot_AbilityInfluenceOnSlotChoiceCheck(leadMon, a2, encSlots, NUM_ENCOUNTERS_LAND, TYPE_STEEL, ABILITY_MAGNET_PULL, &slot) && !EncounterSlot_AbilityInfluenceOnSlotChoiceCheck(leadMon, a2, encSlots, NUM_ENCOUNTERS_LAND, TYPE_ELECTRIC, ABILITY_STATIC, &slot)) {
             slot = EncounterSlot_WildMonSlotRoll_Land();
@@ -928,11 +933,11 @@ BOOL ov02_02247DA0(FieldSystem *fieldSystem, Pokemon *leadMon, int rodType, UnkS
     }
 
     slot = 0;
-    BOOL r0 = EncounterSlot_AbilityInfluenceOnSlotChoiceCheck(leadMon, a3, encSlots, NUM_ENCOUNTERS_SAFARI, TYPE_STEEL, ABILITY_MAGNET_PULL, &slot);
-    if (!r0) {
-        r0 = EncounterSlot_AbilityInfluenceOnSlotChoiceCheck(leadMon, a3, encSlots, NUM_ENCOUNTERS_SAFARI, TYPE_ELECTRIC, ABILITY_STATIC, &slot);
+    BOOL encSlotModified = EncounterSlot_AbilityInfluenceOnSlotChoiceCheck(leadMon, a3, encSlots, NUM_ENCOUNTERS_SAFARI, TYPE_STEEL, ABILITY_MAGNET_PULL, &slot);
+    if (!encSlotModified) {
+        encSlotModified = EncounterSlot_AbilityInfluenceOnSlotChoiceCheck(leadMon, a3, encSlots, NUM_ENCOUNTERS_SAFARI, TYPE_ELECTRIC, ABILITY_STATIC, &slot);
     }
-    if (!r0) {
+    if (!encSlotModified) {
         slot = LCRandom() % NUM_ENCOUNTERS_SAFARI;
     }
     if (encType == 0) {
@@ -950,7 +955,7 @@ BOOL ov02_02247DA0(FieldSystem *fieldSystem, Pokemon *leadMon, int rodType, UnkS
     return TRUE;
 }
 
-BOOL ov02_02247ED8(FieldSystem *fieldSystem, Pokemon *leadMon, u8 a2, UnkStruct_ov02_02248618 *a3, u8 encType, int battler, BattleSetup *battleSetup) {
+BOOL ov02_02247ED8(FieldSystem *fieldSystem, Pokemon *leadMon, int rodType, UnkStruct_ov02_02248618 *a3, u8 encType, int battler, BattleSetup *battleSetup) {
     ENC_SLOT *encSlot = BugContest_GetEncounterSlot(FieldSystem_BugContest_Get(fieldSystem), HEAP_ID_FIELD1);
     if (ov02_02248290(encSlot->level_max, a3) == TRUE) {
         Heap_Free(encSlot);
@@ -972,4 +977,92 @@ void ov02_02247F30(FieldSystem *fieldSystem, u16 species, u8 level, BOOL shiny, 
     } else {
         ov02_02247A18(species, level, BATTLER_ENEMY, FALSE, &sp10, leadMon, battleSetup);
     }
+}
+
+BOOL ov02_02247F9C(FieldSystem *fieldSystem, u8 metatileBehavior) {
+    int encounterRate = 0;
+
+    if (MetatileBehavior_CanGenerateWalkingEncounters(metatileBehavior)) {
+        if (MetatileBehavior_IsSurfableWater(metatileBehavior)) {
+            encounterRate = FieldSystem_GetSurfingEncounterRate(fieldSystem);
+        } else {
+            encounterRate = FieldSystem_GetLandEncounterRate(fieldSystem);
+        }
+    }
+
+    if (encounterRate != 0) {
+        if (fieldSystem->location->mapId == MAP_RUINS_OF_ALPH_UNDERGROUND_HALL
+            || fieldSystem->location->mapId == MAP_RUINS_OF_ALPH_UNDERGROUND_HALL_SINJOH_EVENT
+            || fieldSystem->location->mapId == MAP_RUINS_OF_ALPH_HALL_ENTRANCE_SINJOH_EVENT
+            || fieldSystem->location->mapId == MAP_RUINS_OF_ALPH_UNDERGROUND_HALL_SINJOH_EVENT_2) {
+            SaveVarsFlags *varsFlags = Save_VarsFlags_Get(fieldSystem->saveData);
+            for (u8 i = 0; i < 4; ++i) {
+                if (Save_VarsFlags_CheckAlphPuzzleFlag(varsFlags, i)) {
+                    return TRUE;
+                }
+            }
+            return FALSE;
+        }
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
+int FieldSystem_GetLandEncounterRate(FieldSystem *fieldSystem) {
+    const ENC_DATA *encData = MapEvents_GetLoadedEncTable(fieldSystem);
+    return encData->encounterRate_walking;
+}
+
+int FieldSystem_GetSurfingEncounterRate(FieldSystem *fieldSystem) {
+    const ENC_DATA *encData = MapEvents_GetLoadedEncTable(fieldSystem);
+    return encData->encounterRate_surfing;
+}
+
+u8 FieldSystem_GetFishingEncounterRate(FieldSystem *fieldSystem, u8 rodType) {
+    const ENC_DATA *encData = MapEvents_GetLoadedEncTable(fieldSystem);
+    u8 ret;
+
+    switch (rodType) {
+    case ROD_TYPE_OLD:
+        ret = encData->encounterRate_oldRod;
+        break;
+    case ROD_TYPE_GOOD:
+        ret = encData->encounterRate_goodRod;
+        break;
+    case ROD_TYPE_SUPER:
+        ret = encData->encounterRate_superRod;
+        break;
+    default:
+        GF_ASSERT(FALSE);
+        return 0;
+    }
+    if (ret == 0) {
+        return 0;
+    }
+    if (FollowMon_IsActive(fieldSystem)) {
+        ret += getFriendshipBoostToFishingBiteRate(GetMonData(GetFirstAliveMonInParty_CrashIfNone(SaveArray_Party_Get(fieldSystem->saveData)), MON_DATA_FRIENDSHIP, NULL));
+    }
+    return ret;
+}
+
+u8 getFriendshipBoostToFishingBiteRate(u8 friendship) {
+    if (friendship <= 99) {
+        return 0;
+    }
+    if (friendship <= 149) {
+        return 20;
+    }
+    if (friendship <= 199) {
+        return 30;
+    }
+    if (friendship <= 249) {
+        return 40;
+    }
+    return 50;
+}
+
+int FieldSystem_GetRockSmashEncounterRate(FieldSystem *fieldSystem) {
+    const ENC_DATA *encData = MapEvents_GetLoadedEncTable(fieldSystem);
+    return encData->encounterRate_rockSmash;
 }
