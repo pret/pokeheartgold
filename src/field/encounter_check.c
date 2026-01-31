@@ -64,6 +64,7 @@ void ApplyLeadMonHeldItemEffectToEncounterRate(Pokemon *leadMon, u8 *pEncounterR
 void ApplyFluteEffectToEncounterRate(FieldSystem *fieldSystem, u8 *pEncounterRate);
 u8 ov02_02247854(Pokemon *pokemon, UnkStruct_ov02_02248618 *a1);
 u8 EncounterSlot_WildMonLevelRoll(ENC_SLOT *encSlot, UnkStruct_ov02_02248618 *a1);
+void ov02_02247910(u16 species, u8 level, int battler, u32 otid, UnkStruct_ov02_02248618 *a4, Pokemon *leadMon, BattleSetup *battleSetup);
 BOOL ov02_02247B64(Pokemon *leadMon, int rodType, UnkStruct_ov02_02248618 *a2, ENC_SLOT *encSlots, u8 a4, u8 a5, BattleSetup *battleSetup);
 BOOL ov02_02247DA0(FieldSystem *fieldSystem, Pokemon *leadMon, int rodType, UnkStruct_ov02_02248618 *a3, u8 a4, u8 a5, BattleSetup *battleSetup);
 BOOL ov02_02247ED8(FieldSystem *fieldSystem, Pokemon *leadMon, u8 a2, UnkStruct_ov02_02248618 *a3, u8 a4, u8 a5, BattleSetup *battleSetup);
@@ -78,6 +79,7 @@ int ov02_022480B4(FieldSystem *fieldSystem);
 BOOL ov02_02248290(u8 roamerLevel, UnkStruct_ov02_02248618 *a1);
 void ov02_022482BC(u32 otId, Roamer *roamer, BattleSetup *battleSetup);
 void ov02_02248244(FieldSystem *fieldSystem, u8 a1, BattleSetup **pBattleSetup);
+BOOL ov02_0224855C(int battler, UnkStruct_ov02_02248618 *a1, Pokemon *pokemon, BattleSetup *battleSetup);
 
 void ov02_02246A84(const ENC_DATA *a0, ENC_SLOT *a1) {
     TIMEOFDAY timeOfDay = GF_RTC_GetTimeOfDay();
@@ -725,4 +727,60 @@ u8 EncounterSlot_WildMonLevelRoll(ENC_SLOT *encSlot, UnkStruct_ov02_02248618 *a1
     }
 
     return lo + lvl;
+}
+
+void ov02_02247910(u16 species, u8 level, int battler, u32 otid, UnkStruct_ov02_02248618 *a4, Pokemon *leadMon, BattleSetup *battleSetup) {
+    u8 monGender;
+    u8 monNature;
+    Pokemon *wildMon = AllocMonZeroed(HEAP_ID_FIELD2);
+    BOOL overrideGenderOrNature;
+    u32 personality;
+
+    ZeroMonData(wildMon);
+
+    overrideGenderOrNature = FALSE;
+    if (a4->unk_0D == 0) {
+        if (a4->unk_0E == ABILITY_CUTE_CHARM) {
+            switch (GetMonBaseStat(species, BASE_GENDER_RATIO)) {
+            case MON_RATIO_MALE:
+            case MON_RATIO_FEMALE:
+            case MON_RATIO_UNKNOWN:
+                break;
+            default:
+                if (LCRandRange(3) != 0) {
+                    monGender = GetMonData(leadMon, MON_DATA_GENDER, NULL);
+                    overrideGenderOrNature = TRUE;
+                }
+                break;
+            }
+        } else if (a4->unk_0E == ABILITY_SYNCHRONIZE) {
+            if (LCRandRange(2) == 0) {
+                monNature = GetMonNature(leadMon);
+                overrideGenderOrNature = TRUE;
+            }
+        }
+    }
+    personality = GenerateShinyPersonality(otid);
+    if (overrideGenderOrNature) {
+        do {
+            if (a4->unk_0E == ABILITY_CUTE_CHARM) {
+                u8 generatedGender = GetGenderBySpeciesAndPersonality(species, personality);
+                GF_ASSERT(generatedGender != MON_GENDERLESS);
+                if (generatedGender != monGender) {
+                    break;
+                }
+                personality = GenerateShinyPersonality(otid);
+            } else if (a4->unk_0E == ABILITY_SYNCHRONIZE) {
+                u8 generatedNature = GetNatureFromPersonality(personality);
+                if (generatedNature == monNature) {
+                    break;
+                }
+                personality = GenerateShinyPersonality(otid);
+            }
+        } while (TRUE);
+    }
+
+    CreateMon(wildMon, species, level, 0x20, TRUE, personality, OT_ID_PRESET, a4->unk_00);
+    GF_ASSERT(ov02_0224855C(battler, a4, wildMon, battleSetup));
+    Heap_Free(wildMon);
 }
