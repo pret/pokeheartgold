@@ -17,6 +17,8 @@
 #include "unk_02097F6C.h"
 #include "wild_encounter.h"
 
+FS_EXTERN_OVERLAY(bug_contest);
+
 typedef struct UnkStruct_ov02_02248618 {
     u32 unk_00;
     BOOL unk_04;
@@ -38,27 +40,29 @@ void ov02_02246B00(FieldSystem *fieldSystem, const ENC_DATA *a1, ENC_SLOT *a2);
 void ov02_02246B58(FieldSystem *fieldSystem, const ENC_DATA *a1, ENC_SLOT *a2, ENC_SLOT *a3);
 void ov02_02246B9C(FieldSystem *fieldSystem, const ENC_DATA *a1, ENC_SLOT *a2);
 void ov02_02246BD8(FieldSystem *fieldSystem, u8 a1, const ENC_DATA *a2, ENC_SLOT *a3);
-u8 ov02_0224762C(FieldSystem *fieldSystem, u8 metatileBehavior, u8 *a2);
-u8 ov02_02248190(int a0, u8 a1, UnkStruct_ov02_02248618 *a2, u16 a3, Pokemon *a4);
-void ov02_02248618(FieldSystem *fieldSystem, Pokemon *pokemon, const ENC_DATA *encData, UnkStruct_ov02_02248618 *a3);
-void ov02_02248698(FieldSystem *fieldSystem);
-void ApplyFluteEffectToEncounterRate(FieldSystem *fieldSystem, u8 *a1);
-void ApplyLeadMonHeldItemEffectToEncounterRate(Pokemon *leadMon, u8 *a1);
 BOOL ov02_02247424(FieldSystem *fieldSystem, Pokemon *leadMon, BattleSetup *battleSetup, const ENC_DATA *encData, ENC_SLOT *encSlots, UnkStruct_ov02_02248618 *a5);
 BOOL ov02_02247444(FieldSystem *fieldSystem, Pokemon *leadMon, BattleSetup *battleSetup, const ENC_DATA *encData, ENC_SLOT *encSlots, UnkStruct_ov02_02248618 *a5);
 BOOL ov02_02247460(FieldSystem *fieldSystem, Pokemon *leadMon, BattleSetup *battleSetup, const ENC_DATA *encData, ENC_SLOT *encSlots, UnkStruct_ov02_02248618 *a5);
 BOOL ov02_0224749C(FieldSystem *fieldSystem, Pokemon *leadMon, BattleSetup *battleSetup, ENC_SLOT *encSlots, UnkStruct_ov02_02248618 *a5);
 BOOL ov02_022474E0(FieldSystem *fieldSystem, Pokemon *leadMon, BattleSetup *battleSetup, ENC_SLOT *encounterSlots, UnkStruct_ov02_02248618 *a4, BOOL a5);
+BOOL ov02_02247514(FieldSystem *fieldSystem, Pokemon *leadMon, BattleSetup *battleSetup, ENC_SLOT *encSlots, UnkStruct_ov02_02248618 *a4, int rodType, BOOL isSafari);
+BOOL ov02_0224754C(FieldSystem *fieldSystem, Pokemon *leadMon, BattleSetup *battleSetup, ENC_SLOT *encSlots, UnkStruct_ov02_02248618 *a4);
 BOOL ov02_02247568(FieldSystem *fieldSystem, u8 a1, u8 metatile);
+u8 ov02_0224762C(FieldSystem *fieldSystem, u8 metatileBehavior, u8 *a2);
+BOOL ov02_02247B64(Pokemon *leadMon, int rodType, UnkStruct_ov02_02248618 *a2, ENC_SLOT *encSlots, u8 a4, u8 a5, BattleSetup *battleSetup);
+BOOL ov02_02247DA0(FieldSystem *fieldSystem, Pokemon *leadMon, int rodType, UnkStruct_ov02_02248618 *a3, u8 a4, u8 a5, BattleSetup *battleSetup);
+BOOL ov02_02247ED8(FieldSystem *fieldSystem, Pokemon *leadMon, u8 a2, UnkStruct_ov02_02248618 *a3, u8 a4, u8 a5, BattleSetup *battleSetup);
+u8 ov02_02248190(int a0, u8 a1, UnkStruct_ov02_02248618 *a2, u16 a3, Pokemon *a4);
+void ov02_02248618(FieldSystem *fieldSystem, Pokemon *pokemon, const ENC_DATA *encData, UnkStruct_ov02_02248618 *a3);
+void ov02_02248698(FieldSystem *fieldSystem);
+void ApplyFluteEffectToEncounterRate(FieldSystem *fieldSystem, u8 *a1);
+void ApplyLeadMonHeldItemEffectToEncounterRate(Pokemon *leadMon, u8 *a1);
 BOOL ov02_GetRandomActiveRoamerInCurrMap(FieldSystem *fieldSystem, Roamer **out);
-BOOL ov02_02247B64(Pokemon *leadMon, u8 a1, UnkStruct_ov02_02248618 *a2, ENC_SLOT *encSlots, u8 a4, u8 a5, BattleSetup *battleSetup);
 u8 ov02_0224802C(FieldSystem *fieldSystem, u8 a1);
 int ov02_022480B4(FieldSystem *fieldSystem);
 BOOL ov02_02248290(u8 roamerLevel, UnkStruct_ov02_02248618 *a1);
 void ov02_022482BC(u32 otId, Roamer *roamer, BattleSetup *battleSetup);
 void ov02_02248244(FieldSystem *fieldSystem, u8 a1, BattleSetup **pBattleSetup);
-BOOL ov02_02247514(FieldSystem *fieldSystem, Pokemon *leadMon, BattleSetup *battleSetup, ENC_SLOT *encSlots, UnkStruct_ov02_02248618 *a4, u8 rodType, BOOL isSafari);
-BOOL ov02_0224754C(FieldSystem *fieldSystem, Pokemon *leadMon, BattleSetup *battleSetup, ENC_SLOT *encSlots, UnkStruct_ov02_02248618 *a4);
 
 void ov02_02246A84(const ENC_DATA *a0, ENC_SLOT *a1) {
     TIMEOFDAY timeOfDay = GF_RTC_GetTimeOfDay();
@@ -463,4 +467,49 @@ BOOL FieldSystem_PerformHeadbuttEncounterCheck(FieldSystem *fieldSystem, BattleS
     }
 
     return TRUE;
+}
+
+BOOL ov02_02247424(FieldSystem *fieldSystem, Pokemon *leadMon, BattleSetup *battleSetup, const ENC_DATA *encData, ENC_SLOT *encSlots, UnkStruct_ov02_02248618 *a5) {
+    return ov02_02247B64(leadMon, 0xFF, a5, encSlots, 0, 1, battleSetup);
+}
+
+BOOL ov02_02247444(FieldSystem *fieldSystem, Pokemon *leadMon, BattleSetup *battleSetup, const ENC_DATA *encData, ENC_SLOT *encSlots, UnkStruct_ov02_02248618 *a5) {
+    return ov02_02247DA0(fieldSystem, leadMon, 0xFF, a5, 0, 1, battleSetup);
+}
+
+BOOL ov02_02247460(FieldSystem *fieldSystem, Pokemon *leadMon, BattleSetup *battleSetup, const ENC_DATA *encData, ENC_SLOT *encSlots, UnkStruct_ov02_02248618 *a5) {
+    FSOverlayID ovyId = FS_OVERLAY_ID(bug_contest);
+
+    HandleLoadOverlay(ovyId, OVY_LOAD_ASYNC);
+    BOOL ret = ov02_02247ED8(fieldSystem, leadMon, 0xFF, a5, 0, 1, battleSetup);
+    UnloadOverlayByID(ovyId);
+    return ret;
+}
+
+BOOL ov02_0224749C(FieldSystem *fieldSystem, Pokemon *leadMon, BattleSetup *battleSetup, ENC_SLOT *encSlots, UnkStruct_ov02_02248618 *a5) {
+    if (ov02_02247B64(leadMon, 0xFF, a5, encSlots, 0, 1, battleSetup) == FALSE) { // explicit comparison to FALSE required to match
+        return FALSE;
+    } else {
+        return ov02_02247B64(leadMon, 0xFF, a5, encSlots, 0, 3, battleSetup);
+    }
+}
+
+BOOL ov02_022474E0(FieldSystem *fieldSystem, Pokemon *leadMon, BattleSetup *battleSetup, ENC_SLOT *encounterSlots, UnkStruct_ov02_02248618 *a4, BOOL a5) {
+    if (a5) {
+        return ov02_02247DA0(fieldSystem, leadMon, 0xFF, a4, 1, 1, battleSetup);
+    } else {
+        return ov02_02247B64(leadMon, 0xFF, a4, encounterSlots, 1, 1, battleSetup);
+    }
+}
+
+BOOL ov02_02247514(FieldSystem *fieldSystem, Pokemon *leadMon, BattleSetup *battleSetup, ENC_SLOT *encSlots, UnkStruct_ov02_02248618 *a4, int rodType, BOOL isSafari) {
+    if (isSafari) {
+        return ov02_02247DA0(fieldSystem, leadMon, rodType, a4, 2, 1, battleSetup);
+    } else {
+        return ov02_02247B64(leadMon, rodType, a4, encSlots, 2, 1, battleSetup);
+    }
+}
+
+BOOL ov02_0224754C(FieldSystem *fieldSystem, Pokemon *leadMon, BattleSetup *battleSetup, ENC_SLOT *encSlots, UnkStruct_ov02_02248618 *a4) {
+    return ov02_02247B64(leadMon, 0xFF, a4, encSlots, 3, 1, battleSetup);
 }
