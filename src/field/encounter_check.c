@@ -7,6 +7,7 @@
 #include "battle/battle_setup.h"
 #include "overlay_2/overlay_02_gear_phone.h"
 
+#include "bug_contest.h"
 #include "encounter.h"
 #include "gf_rtc.h"
 #include "map_events.h"
@@ -20,6 +21,7 @@
 #include "sys_vars.h"
 #include "unk_02054648.h"
 #include "unk_0205CB48.h"
+#include "unk_0206D494.h"
 #include "unk_02097268.h"
 #include "unk_02097F6C.h"
 #include "wild_encounter.h"
@@ -793,17 +795,6 @@ void ov02_02247910(u16 species, u8 level, int battler, u32 otid, UnkStruct_ov02_
     Heap_Free(wildMon);
 }
 
-static inline BOOL canCoerceGender(u16 species) {
-    switch (GetMonBaseStat(species, BASE_GENDER_RATIO)) {
-    case MON_RATIO_MALE:
-    case MON_RATIO_FEMALE:
-    case MON_RATIO_UNKNOWN:
-        return FALSE;
-    default:
-        return TRUE;
-    }
-}
-
 void ov02_02247A18(u16 species, u8 level, int battler, BOOL forceOnePerfectIV, UnkStruct_ov02_02248618 *a4, Pokemon *leadMon, BattleSetup *battleSetup) {
     u8 monGender;
     u8 canCoerceGender;
@@ -957,4 +948,28 @@ BOOL ov02_02247DA0(FieldSystem *fieldSystem, Pokemon *leadMon, int rodType, UnkS
     ov02_02247A18(species, level, battler, TRUE, a3, leadMon, battleSetup);
     Heap_Free(encSlots);
     return TRUE;
+}
+
+BOOL ov02_02247ED8(FieldSystem *fieldSystem, Pokemon *leadMon, u8 a2, UnkStruct_ov02_02248618 *a3, u8 encType, int battler, BattleSetup *battleSetup) {
+    ENC_SLOT *encSlot = BugContest_GetEncounterSlot(FieldSystem_BugContest_Get(fieldSystem), HEAP_ID_FIELD1);
+    if (ov02_02248290(encSlot->level_max, a3) == TRUE) {
+        Heap_Free(encSlot);
+        return FALSE;
+    }
+
+    ov02_02247A18(encSlot->species, encSlot->level_max, battler, TRUE, a3, leadMon, battleSetup);
+    Heap_Free(encSlot);
+    return TRUE;
+}
+
+void ov02_02247F30(FieldSystem *fieldSystem, u16 species, u8 level, BOOL shiny, BattleSetup *battleSetup) {
+    UnkStruct_ov02_02248618 sp10;
+    Pokemon *leadMon = Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->saveData), 0);
+    ov02_02248618(fieldSystem, leadMon, NULL, &sp10);
+    if (shiny) {
+        u32 otid = PlayerProfile_GetTrainerID(Save_PlayerData_GetProfile(fieldSystem->saveData));
+        ov02_02247910(species, level, BATTLER_ENEMY, otid, &sp10, leadMon, battleSetup);
+    } else {
+        ov02_02247A18(species, level, BATTLER_ENEMY, FALSE, &sp10, leadMon, battleSetup);
+    }
 }

@@ -7,6 +7,7 @@
 #include "constants/std_script.h"
 
 #include "battle/battle_setup.h"
+#include "field/encounter_check.h"
 #include "fielddata/script/scr_seq/event_D10R0101.h"
 #include "frontier/overlay_80.h"
 
