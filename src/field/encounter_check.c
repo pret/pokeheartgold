@@ -65,6 +65,7 @@ void ApplyFluteEffectToEncounterRate(FieldSystem *fieldSystem, u8 *pEncounterRat
 u8 ov02_02247854(Pokemon *pokemon, UnkStruct_ov02_02248618 *a1);
 u8 EncounterSlot_WildMonLevelRoll(ENC_SLOT *encSlot, UnkStruct_ov02_02248618 *a1);
 void ov02_02247910(u16 species, u8 level, int battler, u32 otid, UnkStruct_ov02_02248618 *a4, Pokemon *leadMon, BattleSetup *battleSetup);
+void ov02_02247A18(u16 species, u8 level, int battler, BOOL forceOnePerfectIV, UnkStruct_ov02_02248618 *a4, Pokemon *leadMon, BattleSetup *battleSetup);
 BOOL ov02_02247B64(Pokemon *leadMon, int rodType, UnkStruct_ov02_02248618 *a2, ENC_SLOT *encSlots, u8 a4, u8 a5, BattleSetup *battleSetup);
 BOOL ov02_02247DA0(FieldSystem *fieldSystem, Pokemon *leadMon, int rodType, UnkStruct_ov02_02248618 *a3, u8 a4, u8 a5, BattleSetup *battleSetup);
 BOOL ov02_02247ED8(FieldSystem *fieldSystem, Pokemon *leadMon, u8 a2, UnkStruct_ov02_02248618 *a3, u8 a4, u8 a5, BattleSetup *battleSetup);
@@ -781,6 +782,73 @@ void ov02_02247910(u16 species, u8 level, int battler, u32 otid, UnkStruct_ov02_
     }
 
     CreateMon(wildMon, species, level, 0x20, TRUE, personality, OT_ID_PRESET, a4->unk_00);
+    GF_ASSERT(ov02_0224855C(battler, a4, wildMon, battleSetup));
+    Heap_Free(wildMon);
+}
+
+static inline BOOL canCoerceGender(u16 species) {
+    switch (GetMonBaseStat(species, BASE_GENDER_RATIO)) {
+    case MON_RATIO_MALE:
+    case MON_RATIO_FEMALE:
+    case MON_RATIO_UNKNOWN:
+        return FALSE;
+    default:
+        return TRUE;
+    }
+}
+
+void ov02_02247A18(u16 species, u8 level, int battler, BOOL forceOnePerfectIV, UnkStruct_ov02_02248618 *a4, Pokemon *leadMon, BattleSetup *battleSetup) {
+    u8 monGender;
+    u8 canCoerceGender;
+    Pokemon *wildMon = AllocMonZeroed(HEAP_ID_FIELD2);
+    ZeroMonData(wildMon);
+
+    canCoerceGender = TRUE;
+    switch (GetMonBaseStat(species, BASE_GENDER_RATIO)) {
+    case MON_RATIO_MALE:
+    case MON_RATIO_FEMALE:
+    case MON_RATIO_UNKNOWN:
+        canCoerceGender = FALSE;
+    default:
+        break;
+    }
+
+    if (canCoerceGender && a4->unk_0D == 0 && a4->unk_0E == ABILITY_CUTE_CHARM && LCRandRange(3) != 0) {
+        monGender = GetMonData(leadMon, MON_DATA_GENDER, NULL);
+        if (monGender == MON_FEMALE) {
+            monGender = MON_MALE;
+        } else if (monGender == MON_MALE) {
+            monGender = MON_FEMALE;
+        } else {
+            GF_ASSERT(FALSE); // can't put cute charm on a genderless pokemon
+        }
+        CreateMonWithGenderNatureLetter(wildMon, species, level, 0x20, monGender, ov02_02247854(leadMon, a4), 0);
+        SetMonData(wildMon, MON_DATA_OT_ID, &a4->unk_00);
+        GF_ASSERT(ov02_0224855C(battler, a4, wildMon, battleSetup));
+        Heap_Free(wildMon);
+        return;
+    }
+
+    if (forceOnePerfectIV) {
+        int i;
+        BOOL sp18 = FALSE;
+        for (i = 0; i < 4; ++i) {
+            CreateMonWithNature(wildMon, species, level, 0x20, ov02_02247854(leadMon, a4));
+            for (int j = 0; j < 6; ++j) {
+                if (GetMonData(wildMon, MON_DATA_HP_IV + j, NULL) == 31) {
+                    sp18 = TRUE;
+                    break;
+                }
+            }
+            if (sp18) {
+                break;
+            }
+        }
+    } else {
+        CreateMonWithNature(wildMon, species, level, 0x20, ov02_02247854(leadMon, a4));
+    }
+
+    SetMonData(wildMon, MON_DATA_OT_ID, &a4->unk_00);
     GF_ASSERT(ov02_0224855C(battler, a4, wildMon, battleSetup));
     Heap_Free(wildMon);
 }
