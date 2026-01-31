@@ -458,11 +458,11 @@
 .public ov02_02246714
 .public OpenAlphHiddenRoom
 .public ov02_022469B4
-.public FieldSystem_PerformLandEncounterCheck
+.public FieldSystem_PerformLandOrSurfEncounterCheck
 .public FieldSystem_PerformFishEncounterCheck
 .public FieldSystem_PerformRockSmashEncounterCheck
-.public ov02_02247170
-.public FieldSystem_ChooseHeadbuttEncounter
+.public FieldSystem_PerformSweetScentEncounterCheck
+.public FieldSystem_PerformHeadbuttEncounterCheck
 .public ov02_02247F30
 .public ov02_02247F9C
 .public ov02_02249458

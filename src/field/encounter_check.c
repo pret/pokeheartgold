@@ -51,6 +51,7 @@ BOOL ov02_0224749C(FieldSystem *fieldSystem, Pokemon *leadMon, BattleSetup *batt
 BOOL ov02_022474E0(FieldSystem *fieldSystem, Pokemon *leadMon, BattleSetup *battleSetup, ENC_SLOT *encounterSlots, UnkStruct_ov02_02248618 *a4, BOOL a5);
 BOOL ov02_02247568(FieldSystem *fieldSystem, u8 a1, u8 metatile);
 BOOL ov02_GetRandomActiveRoamerInCurrMap(FieldSystem *fieldSystem, Roamer **out);
+BOOL ov02_02247B64(Pokemon *leadMon, u8 a1, UnkStruct_ov02_02248618 *a2, ENC_SLOT *encSlots, u8 a4, u8 a5, BattleSetup *battleSetup);
 u8 ov02_0224802C(FieldSystem *fieldSystem, u8 a1);
 int ov02_022480B4(FieldSystem *fieldSystem);
 BOOL ov02_02248290(u8 roamerLevel, UnkStruct_ov02_02248618 *a1);
@@ -163,7 +164,7 @@ void ov02_02246BD8(FieldSystem *fieldSystem, u8 a1, const ENC_DATA *a2, ENC_SLOT
     }
 }
 
-BOOL FieldSystem_PerformLandEncounterCheck(FieldSystem *fieldSystem) {
+BOOL FieldSystem_PerformLandOrSurfEncounterCheck(FieldSystem *fieldSystem) {
     if (fieldSystem->unk7E <= 3) {
         return FALSE;
     }
@@ -246,7 +247,7 @@ BOOL FieldSystem_PerformLandEncounterCheck(FieldSystem *fieldSystem) {
             r0 = ov02_0224749C(fieldSystem, sp10, sp20, sp40, &sp24);
         }
     } else if (sp19 == 1) {
-        for (int i = 0; i < 5; ++i) {
+        for (int i = 0; i < NUM_ENCOUNTERS_SURF; ++i) {
             sp40[i].species = r4->surfSlots[i].species;
             sp40[i].level_max = r4->surfSlots[i].level_max;
             sp40[i].level_min = r4->surfSlots[i].level_min;
@@ -347,6 +348,116 @@ BOOL FieldSystem_PerformRockSmashEncounterCheck(FieldSystem *fieldSystem, Battle
         sp2C[i].level_min = r5_2[i].level_min;
     }
     if (!ov02_0224754C(fieldSystem, sp8, *pBattleSetup, sp2C, &sp10)) {
+        BattleSetup_Delete(*pBattleSetup);
+        return FALSE;
+    }
+
+    return TRUE;
+}
+
+BOOL FieldSystem_PerformSweetScentEncounterCheck(FieldSystem *fieldSystem, TaskManager *taskManager) {
+    ENC_SLOT sp3C[NUM_ENCOUNTERS_LAND];
+    UnkStruct_ov02_02248618 sp20;
+    BattleSetup *sp1C;
+    Roamer *sp18;
+    u8 sp14;
+    SaveVarsFlags *r7 = Save_VarsFlags_Get(fieldSystem->saveData);
+    u32 x = PlayerAvatar_GetXCoord(fieldSystem->playerAvatar);
+    u32 z = PlayerAvatar_GetZCoord(fieldSystem->playerAvatar);
+    u8 metatileBehavior = GetMetatileBehavior(fieldSystem, x, z);
+
+    if (!ov02_0224762C(fieldSystem, metatileBehavior, &sp14)) {
+        return FALSE;
+    }
+
+    Party *r6 = SaveArray_Party_Get(fieldSystem->saveData);
+    const ENC_DATA *r4 = MapEvents_GetLoadedEncTable(fieldSystem);
+    Pokemon *sp10 = Party_GetMonByIndex(r6, 0);
+    ov02_02248618(fieldSystem, sp10, r4, &sp20);
+    sp20.unk_08 = 1;
+    BOOL spC = Save_VarsFlags_CheckHaveFollower(r7);
+    if (!spC && ov02_GetRandomActiveRoamerInCurrMap(fieldSystem, &sp18)) {
+        sp1C = BattleSetup_New(HEAP_ID_FIELD2, BATTLE_TYPE_ROAMER);
+        BattleSetup_InitFromFieldSystem(sp1C, fieldSystem);
+        ov02_022482BC(sp20.unk_00, sp18, sp1C);
+        FieldSystem_StartForcedWildBattle(fieldSystem, taskManager, sp1C);
+        return TRUE;
+    }
+
+    BOOL r6_2 = Save_VarsFlags_CheckSafariSysFlag(r7);
+    BOOL r7_2 = Save_VarsFlags_CheckBugContestFlag(r7);
+    if (!spC) {
+        u8 r1 = 0;
+        if (r6_2) {
+            r1 = 1;
+        } else if (r7_2) {
+            r1 = 2;
+        }
+        ov02_02248244(fieldSystem, r1, &sp1C);
+    } else {
+        sp1C = BattleSetup_New(HEAP_ID_FIELD2, BATTLE_TYPE_DOUBLES | BATTLE_TYPE_MULTI | BATTLE_TYPE_AI);
+    }
+    BattleSetup_InitFromFieldSystem(sp1C, fieldSystem);
+    BOOL r0;
+    if (sp14 == 0) {
+        ov02_02246A84(r4, sp3C);
+        ov02_02246B58(fieldSystem, r4, &sp3C[0], &sp3C[1]);
+        ov02_02246B00(fieldSystem, r4, sp3C);
+        if (!spC) {
+            if (r6_2) {
+                r0 = ov02_02247444(fieldSystem, sp10, sp1C, r4, sp3C, &sp20);
+            } else if (r7_2) {
+                r0 = ov02_02247460(fieldSystem, sp10, sp1C, r4, sp3C, &sp20);
+            } else {
+                r0 = ov02_02247424(fieldSystem, sp10, sp1C, r4, sp3C, &sp20);
+            }
+        } else {
+            sp1C->trainerId[BATTLER_PLAYER2] = Save_VarsFlags_GetFollowerTrainerNum(Save_VarsFlags_Get(fieldSystem->saveData));
+            EnemyTrainerSet_Init(sp1C, fieldSystem->saveData, HEAP_ID_FIELD2);
+            r0 = ov02_0224749C(fieldSystem, sp10, sp1C, sp3C, &sp20);
+        }
+    } else if (sp14 == 1) {
+        for (int i = 0; i < NUM_ENCOUNTERS_SURF; ++i) {
+            sp3C[i].species = r4->surfSlots[i].species;
+            sp3C[i].level_max = r4->surfSlots[i].level_max;
+            sp3C[i].level_min = r4->surfSlots[i].level_min;
+        }
+        ov02_02246B9C(fieldSystem, r4, sp3C);
+        r0 = ov02_022474E0(fieldSystem, sp10, sp1C, sp3C, &sp20, r6_2);
+    } else {
+        GF_ASSERT(FALSE);
+        return FALSE;
+    }
+    if (r0) {
+        FieldSystem_StartForcedWildBattle(fieldSystem, taskManager, sp1C);
+    } else {
+        GF_ASSERT(FALSE);
+    }
+    fieldSystem->unk7E = 0;
+    fieldSystem->unk7C = 0;
+    return TRUE;
+}
+
+BOOL FieldSystem_PerformHeadbuttEncounterCheck(FieldSystem *fieldSystem, BattleSetup **pBattleSetup, const HeadbuttSlot *headbuttSlots) {
+    ENC_SLOT sp48[NUM_ENCOUNTERS_LAND];
+    UnkStruct_ov02_02248618 sp2C;
+    ENC_DATA_SLOT sp14[NUM_ENCOUNTERS_HEADBUTT];
+
+    Pokemon *sp10 = Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->saveData), 0);
+    ov02_02248618(fieldSystem, sp10, NULL, &sp2C);
+    ov02_02248244(fieldSystem, 0, pBattleSetup);
+    BattleSetup_InitFromFieldSystem(*pBattleSetup, fieldSystem);
+    for (u8 i = 0; i < NUM_ENCOUNTERS_HEADBUTT; ++i) {
+        sp14[i].species = headbuttSlots[i].species;
+        sp14[i].level_max = headbuttSlots[i].maxLevel;
+        sp14[i].level_min = headbuttSlots[i].minLevel;
+    }
+    for (u8 i = 0; i < NUM_ENCOUNTERS_HEADBUTT; ++i) {
+        sp48[i].species = sp14[i].species;
+        sp48[i].level_max = sp14[i].level_max;
+        sp48[i].level_min = sp14[i].level_min;
+    }
+    if (!ov02_02247B64(sp10, 0xFF, &sp2C, sp48, 4, 1, *pBattleSetup)) {
         BattleSetup_Delete(*pBattleSetup);
         return FALSE;
     }

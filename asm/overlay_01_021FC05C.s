@@ -552,7 +552,7 @@ _021FC434:
 _021FC444:
 	add r0, r5, #0
 	add r1, r6, #0
-	bl ov02_02247170
+	bl FieldSystem_PerformSweetScentEncounterCheck
 	cmp r0, #0
 	bne _021FC4B2
 	bl GF_AssertFail
