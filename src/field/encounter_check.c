@@ -12,12 +12,15 @@
 #include "map_events.h"
 #include "math_util.h"
 #include "metatile_behavior.h"
+#include "overlay_02.h"
 #include "roamer.h"
+#include "safari_zone.h"
 #include "script_pokemon_util.h"
 #include "sys_flags.h"
 #include "sys_vars.h"
 #include "unk_02054648.h"
 #include "unk_0205CB48.h"
+#include "unk_02097268.h"
 #include "unk_02097F6C.h"
 #include "wild_encounter.h"
 
@@ -67,8 +70,8 @@ u8 EncounterSlot_WildMonLevelRoll(ENC_SLOT *encSlot, UnkStruct_ov02_02248618 *a1
 void ov02_02247910(u16 species, u8 level, int battler, u32 otid, UnkStruct_ov02_02248618 *a4, Pokemon *leadMon, BattleSetup *battleSetup);
 void ov02_02247A18(u16 species, u8 level, int battler, BOOL forceOnePerfectIV, UnkStruct_ov02_02248618 *a4, Pokemon *leadMon, BattleSetup *battleSetup);
 BOOL ov02_02247B64(Pokemon *leadMon, int rodType, UnkStruct_ov02_02248618 *a2, ENC_SLOT *encSlots, u8 encType, int battler, BattleSetup *battleSetup);
-BOOL ov02_02247DA0(FieldSystem *fieldSystem, Pokemon *leadMon, int rodType, UnkStruct_ov02_02248618 *a3, u8 a4, u8 a5, BattleSetup *battleSetup);
-BOOL ov02_02247ED8(FieldSystem *fieldSystem, Pokemon *leadMon, u8 a2, UnkStruct_ov02_02248618 *a3, u8 a4, u8 a5, BattleSetup *battleSetup);
+BOOL ov02_02247DA0(FieldSystem *fieldSystem, Pokemon *leadMon, int rodType, UnkStruct_ov02_02248618 *a3, u8 encType, int battler, BattleSetup *battleSetup);
+BOOL ov02_02247ED8(FieldSystem *fieldSystem, Pokemon *leadMon, u8 a2, UnkStruct_ov02_02248618 *a3, u8 encType, int battler, BattleSetup *battleSetup);
 int ov02_02248014(FieldSystem *fieldSystem);
 int ov02_02248020(FieldSystem *fieldSystem);
 u8 ov02_0224802C(FieldSystem *fieldSystem, u8 a1);
@@ -907,5 +910,51 @@ BOOL ov02_02247B64(Pokemon *leadMon, int rodType, UnkStruct_ov02_02248618 *a2, E
         return FALSE;
     }
     ov02_02247A18(encSlots[slot].species, level, battler, FALSE, a2, leadMon, battleSetup);
+    return TRUE;
+}
+
+BOOL ov02_02247DA0(FieldSystem *fieldSystem, Pokemon *leadMon, int rodType, UnkStruct_ov02_02248618 *a3, u8 encType, int battler, BattleSetup *battleSetup) {
+    u8 slot;
+    SAFARIZONE_AREASET *sp14 = SafariZone_GetAreaSet(Save_SafariZone_Get(fieldSystem->saveData), 3);
+    u16 species;
+    u8 level;
+    ENC_SLOT *encSlots;
+    int r7 = ov02_0224E340(fieldSystem);
+    TimeOfDayWildParam r3 = GF_RTC_GetTimeOfDayWildParam();
+
+    switch (encType) {
+    case 0:
+        encSlots = sub_020974C4(sp14, r7, 0, r3, 4);
+        break;
+    case 1:
+        encSlots = sub_020974C4(sp14, r7, 1, r3, 4);
+        break;
+    case 2:
+        encSlots = sub_020974C4(sp14, r7, rodType + 2, r3, 4);
+        break;
+    default:
+        GF_ASSERT(FALSE);
+    }
+
+    slot = 0;
+    BOOL r0 = EncounterSlot_AbilityInfluenceOnSlotChoiceCheck(leadMon, a3, encSlots, NUM_ENCOUNTERS_SAFARI, TYPE_STEEL, ABILITY_MAGNET_PULL, &slot);
+    if (!r0) {
+        r0 = EncounterSlot_AbilityInfluenceOnSlotChoiceCheck(leadMon, a3, encSlots, NUM_ENCOUNTERS_SAFARI, TYPE_ELECTRIC, ABILITY_STATIC, &slot);
+    }
+    if (!r0) {
+        slot = LCRandom() % NUM_ENCOUNTERS_SAFARI;
+    }
+    if (encType == 0) {
+        slot = ov02_022485B0(encSlots, NUM_ENCOUNTERS_SAFARI, a3, slot);
+    }
+    species = encSlots[slot].species;
+    level = encSlots[slot].level_max;
+    if (ov02_022481EC(a3, leadMon, level) || ov02_02248290(level, a3) == TRUE) {
+        Heap_Free(encSlots);
+        return FALSE;
+    }
+
+    ov02_02247A18(species, level, battler, TRUE, a3, leadMon, battleSetup);
+    Heap_Free(encSlots);
     return TRUE;
 }
