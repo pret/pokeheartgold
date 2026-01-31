@@ -41,8 +41,7 @@ typedef struct UnkStruct_ov02_02248618 {
     u8 unk_0F;
     u8 unk_10;
     u8 unk_11;
-    u8 unk_12;
-    int unk_14;
+    u8 unk_12[4];
     Pokedex *unk_18;
 } UnkStruct_ov02_02248618;
 
@@ -86,10 +85,10 @@ BOOL ov02_022480C0(ENC_SLOT *encSlots, u8 numEncSlots, u8 type, u8 *slot);
 BOOL EncounterSlot_AbilityInfluenceOnSlotChoiceCheck(Pokemon *leadMon, UnkStruct_ov02_02248618 *a1, ENC_SLOT *encSlots, u8 numSlots, u8 type, u8 ability, u8 *slotNum);
 u8 ov02_02248190(BOOL isFishing, u8 encounterRate, UnkStruct_ov02_02248618 *a2, u16 weatherType, Pokemon *leadMon);
 BOOL ov02_022481EC(UnkStruct_ov02_02248618 *a0, Pokemon *leadMon, u8 level);
+void ov02_02248244(FieldSystem *fieldSystem, u8 a1, BattleSetup **pBattleSetup);
 BOOL ov02_02248290(u8 roamerLevel, UnkStruct_ov02_02248618 *a1);
 BOOL ov02_022482A4(UnkStruct_ov02_02248618 *a0);
 void ov02_022482BC(u32 otId, Roamer *roamer, BattleSetup *battleSetup);
-void ov02_02248244(FieldSystem *fieldSystem, u8 a1, BattleSetup **pBattleSetup);
 BOOL ov02_0224855C(int battler, UnkStruct_ov02_02248618 *a1, Pokemon *pokemon, BattleSetup *battleSetup);
 u8 ov02_022485B0(ENC_SLOT *encSlots, u8 numEncSlots, UnkStruct_ov02_02248618 *a2, u8 chosenSlot);
 void ov02_02248618(FieldSystem *fieldSystem, Pokemon *pokemon, const ENC_DATA *encData, UnkStruct_ov02_02248618 *a3);
@@ -1123,4 +1122,58 @@ u8 ov02_02248190(BOOL isFishing, u8 encounterRate, UnkStruct_ov02_02248618 *a2, 
     }
 
     return ret;
+}
+
+BOOL ov02_022481EC(UnkStruct_ov02_02248618 *a0, Pokemon *leadMon, u8 level) {
+    if (a0->unk_08) {
+        return FALSE;
+    }
+    if (a0->unk_0D == 0) {
+        if (a0->unk_0E == ABILITY_KEEN_EYE || a0->unk_0E == ABILITY_INTIMIDATE) {
+            u8 leadMonLevel = GetMonData(leadMon, MON_DATA_LEVEL, NULL);
+            if (leadMonLevel <= 5) {
+                return FALSE;
+            } else if (level <= leadMonLevel - 5 && LCRandRange(2) == 0) {
+                return TRUE;
+            }
+        }
+    }
+
+    return FALSE;
+}
+
+void ov02_02248244(FieldSystem *fieldSystem, u8 a1, BattleSetup **pBattleSetup) {
+    switch (a1) {
+    case 1: {
+        LocalFieldData *localFieldData = Save_LocalFieldData_Get(fieldSystem->saveData);
+        u16 *pSafariBalls = LocalFieldData_GetSafariBallsCounter(localFieldData);
+        *pBattleSetup = BattleSetup_New_SafariZone(HEAP_ID_FIELD2, *pSafariBalls);
+    } break;
+    case 2: {
+        BugContest *bugContest = FieldSystem_BugContest_Get(fieldSystem);
+        u16 *pSportBalls = BugContest_GetSportBallsAddr(bugContest);
+        *pBattleSetup = BattleSetup_New_BugContest(HEAP_ID_FIELD2, *pSportBalls, bugContest->mon);
+    } break;
+    default:
+        *pBattleSetup = BattleSetup_New(HEAP_ID_FIELD2, BATTLE_TYPE_NONE);
+        break;
+    }
+}
+
+BOOL ov02_02248290(u8 roamerLevel, UnkStruct_ov02_02248618 *a1) {
+    if (a1->unk_04 && a1->unk_0C > roamerLevel) {
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
+BOOL ov02_022482A4(UnkStruct_ov02_02248618 *a0) {
+    for (int i = 0; i < 4; ++i) {
+        if (a0->unk_12[i]) {
+            return TRUE;
+        }
+    }
+
+    return FALSE;
 }
