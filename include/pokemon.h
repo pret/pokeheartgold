@@ -45,7 +45,7 @@ void CreateBoxMon(BoxPokemon *boxMon, int species, int level, int fixedIV, int h
 void CreateMonWithNature(Pokemon *mon, u16 species, u8 level, u8 fixedIv, u8 nature);
 void CreateMonWithGenderNatureLetter(Pokemon *mon, u16 species, u8 level, u8 fixedIv, u8 gender, u8 nature, u8 letter);
 u32 GenPersonalityByGenderAndNature(u16 species, u8 gender, u8 nature);
-void CreateMonWithFixedIVs(Pokemon *mon, int species, int level, int ivs, int personality);
+void CreateMonWithFixedIVs(Pokemon *mon, u16 species, u8 level, u32 ivs, u32 personality);
 void CalcMonLevelAndStats(Pokemon *mon);
 void CalcMonStats(Pokemon *mon);
 u32 GetMonData(Pokemon *mon, int attr, void *ptr);

@@ -296,7 +296,7 @@ u32 GenPersonalityByGenderAndNature(u16 species, u8 gender, u8 nature) {
     return (u32)pid;
 }
 
-void CreateMonWithFixedIVs(Pokemon *mon, int species, int level, int ivs, int personality) {
+void CreateMonWithFixedIVs(Pokemon *mon, u16 species, u8 level, u32 ivs, u32 personality) {
     CreateMon(mon, species, level, 0, 1, personality, 0, 0);
     SetMonData(mon, MON_DATA_COMBINED_IVS, &ivs);
     CalcMonLevelAndStats(mon);

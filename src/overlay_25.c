@@ -300,11 +300,10 @@ static void TrainerHouse_CopyToPokemon(TrainerHouseMon *trainerHouseMon, Pokemon
     s32 i;
     u8 tempByte;
     ZeroMonData(mon);
-    u32 level = trainerHouseMon->level > MAX_TRAINER_HOUSE_LEVEL
+    tempByte = trainerHouseMon->level > MAX_TRAINER_HOUSE_LEVEL
         ? MAX_TRAINER_HOUSE_LEVEL
         : trainerHouseMon->level;
-    tempByte = level;
-    u32 species = trainerHouseMon->species;
+    u16 species = trainerHouseMon->species;
     u32 ivs = trainerHouseMon->ivsWord & 0x3fffffff;
     u32 pid = trainerHouseMon->pid;
     CreateMonWithFixedIVs(mon, species, tempByte, ivs, pid);

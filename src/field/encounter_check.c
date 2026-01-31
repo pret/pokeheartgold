@@ -11,6 +11,7 @@
 
 #include "bug_contest.h"
 #include "encounter.h"
+#include "field_roamer.h"
 #include "follow_mon.h"
 #include "gf_rtc.h"
 #include "map_events.h"
@@ -89,11 +90,12 @@ void ov02_02248244(FieldSystem *fieldSystem, u8 a1, BattleSetup **pBattleSetup);
 BOOL ov02_02248290(u8 roamerLevel, UnkStruct_ov02_02248618 *a1);
 BOOL ov02_022482A4(UnkStruct_ov02_02248618 *a0);
 void ov02_022482BC(u32 otId, Roamer *roamer, BattleSetup *battleSetup);
+BOOL ov02_GetRandomActiveRoamerInCurrMap(FieldSystem *fieldSystem, Roamer **pRoamer);
+BOOL ov02_02248418(Pokedex *pokedex, int numForms, int targetForm);
 BOOL ov02_0224855C(int battler, UnkStruct_ov02_02248618 *a1, Pokemon *pokemon, BattleSetup *battleSetup);
 u8 ov02_022485B0(ENC_SLOT *encSlots, u8 numEncSlots, UnkStruct_ov02_02248618 *a2, u8 chosenSlot);
 void ov02_02248618(FieldSystem *fieldSystem, Pokemon *pokemon, const ENC_DATA *encData, UnkStruct_ov02_02248618 *a3);
 void ov02_02248698(FieldSystem *fieldSystem);
-BOOL ov02_GetRandomActiveRoamerInCurrMap(FieldSystem *fieldSystem, Roamer **pRoamer);
 
 void ov02_02246A84(const ENC_DATA *a0, ENC_SLOT *a1) {
     TIMEOFDAY timeOfDay = GF_RTC_GetTimeOfDay();
@@ -1171,6 +1173,60 @@ BOOL ov02_02248290(u8 roamerLevel, UnkStruct_ov02_02248618 *a1) {
 BOOL ov02_022482A4(UnkStruct_ov02_02248618 *a0) {
     for (int i = 0; i < 4; ++i) {
         if (a0->unk_12[i]) {
+            return TRUE;
+        }
+    }
+
+    return FALSE;
+}
+
+void ov02_022482BC(u32 otId, Roamer *roamer, BattleSetup *battleSetup) {
+    Pokemon *pokemon = AllocMonZeroed(HEAP_ID_FIELD1);
+    u32 species = GetRoamerData(roamer, ROAMER_DATA_SPECIES);
+    u8 level = GetRoamerData(roamer, ROAMER_DATA_LEVEL);
+    u32 ivs = GetRoamerData(roamer, ROAMER_DATA_IVS);
+    u32 pid = GetRoamerData(roamer, ROAMER_DATA_PERSONALITY);
+    u32 status = GetRoamerData(roamer, ROAMER_DATA_STATUS);
+    u16 hp = GetRoamerData(roamer, ROAMER_DATA_HP);
+
+    CreateMonWithFixedIVs(pokemon, species, level, ivs, pid);
+    SetMonData(pokemon, MON_DATA_OT_ID, &otId);
+    SetMonData(pokemon, MON_DATA_STATUS, &status);
+    SetMonData(pokemon, MON_DATA_HP, &hp);
+    GF_ASSERT(Party_AddMon(battleSetup->party[BATTLER_ENEMY], pokemon));
+    Heap_Free(pokemon);
+}
+
+BOOL ov02_GetRandomActiveRoamerInCurrMap(FieldSystem *fieldSystem, Roamer **pRoamer) {
+    Roamer *foundRoamers[ROAMER_MAX];
+    u8 nRoamers = 0;
+    RoamerSaveData *saveRoamers = Save_Roamers_Get(fieldSystem->saveData);
+
+    for (u8 i = 0; i < ROAMER_MAX; ++i) {
+        u32 mapId = GetRoamMapByLocationIdx(Roamer_GetLocation(saveRoamers, i));
+        if (GetRoamerIsActiveByIndex(saveRoamers, i) && mapId == fieldSystem->location->mapId) {
+            foundRoamers[nRoamers] = Roamers_GetRoamMonStats(saveRoamers, i);
+            ++nRoamers;
+        }
+    }
+    if (nRoamers == 0) {
+        return FALSE;
+    }
+    if (LCRandRange(2) == 0) {
+        return FALSE;
+    }
+    if (nRoamers > 1) {
+        u16 chosenRoamer = LCRandRange(nRoamers);
+        *pRoamer = foundRoamers[chosenRoamer];
+    } else {
+        *pRoamer = foundRoamers[0];
+    }
+    return TRUE;
+}
+
+BOOL ov02_02248418(Pokedex *pokedex, int numForms, int targetForm) {
+    for (int i = 0; i < numForms; ++i) {
+        if (targetForm == Pokedex_GetSeenFormByIdx_Unown(pokedex, i, TRUE)) {
             return TRUE;
         }
     }
