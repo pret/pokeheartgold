@@ -75,7 +75,6 @@ void ov02_022507B4(FieldSystem *fieldSystem, u8 a1);
 void ov02_022508B4(FieldSystem *fieldSystem);
 void ov02_022523B4(TaskManager *taskManager);
 
-BOOL ov02_022470A0(FieldSystem *fieldSystem, BattleSetup **setupPtr);
 void ov02_BattleExit_HandleRoamerAction(FieldSystem *fieldSystem, BattleSetup *setup);
 BOOL FieldSystem_ChooseHeadbuttEncounter(FieldSystem *fieldSystem, BattleSetup **setup, const HeadbuttSlot *headbuttSlots);
 void ov02_02247F30(FieldSystem *fieldSystem, u16 mon, u8 level, BOOL shiny, BattleSetup *setup);

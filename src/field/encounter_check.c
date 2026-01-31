@@ -8,6 +8,7 @@
 #include "encounter.h"
 #include "gf_rtc.h"
 #include "map_events.h"
+#include "math_util.h"
 #include "roamer.h"
 #include "script_pokemon_util.h"
 #include "sys_flags.h"
@@ -32,11 +33,11 @@ typedef struct UnkStruct_ov02_02248618 {
 } UnkStruct_ov02_02248618;
 
 void ov02_02246A84(const ENC_DATA *a0, ENC_SLOT *a1);
-void ov02_02246AD4(const ENC_DATA *a0, int a1, ENC_SLOT *a2);
+void ov02_02246AD4(const ENC_DATA *a0, u8 a1, ENC_SLOT *a2);
 void ov02_02246B00(FieldSystem *fieldSystem, const ENC_DATA *a1, ENC_SLOT *a2);
 void ov02_02246B58(FieldSystem *fieldSystem, const ENC_DATA *a1, ENC_SLOT *a2, ENC_SLOT *a3);
 void ov02_02246B9C(FieldSystem *fieldSystem, const ENC_DATA *a1, ENC_SLOT *a2);
-void ov02_02246BD8(FieldSystem *fieldSystem, int a1, const ENC_DATA *a2, ENC_SLOT *a3);
+void ov02_02246BD8(FieldSystem *fieldSystem, u8 a1, const ENC_DATA *a2, ENC_SLOT *a3);
 u8 ov02_0224762C(FieldSystem *fieldSystem, u8 metatileBehavior, u8 *a2);
 u8 ov02_02248190(int a0, u8 a1, UnkStruct_ov02_02248618 *a2, u16 a3, Pokemon *a4);
 void ov02_02248618(FieldSystem *fieldSystem, Pokemon *pokemon, const ENC_DATA *encData, UnkStruct_ov02_02248618 *a3);
@@ -50,9 +51,13 @@ BOOL ov02_0224749C(FieldSystem *fieldSystem, Pokemon *leadMon, BattleSetup *batt
 BOOL ov02_022474E0(FieldSystem *fieldSystem, Pokemon *leadMon, BattleSetup *battleSetup, ENC_SLOT *encounterSlots, UnkStruct_ov02_02248618 *a4, BOOL a5);
 BOOL ov02_02247568(FieldSystem *fieldSystem, u8 a1, u8 metatile);
 BOOL ov02_GetRandomActiveRoamerInCurrMap(FieldSystem *fieldSystem, Roamer **out);
+u8 ov02_0224802C(FieldSystem *fieldSystem, u8 a1);
+int ov02_022480B4(FieldSystem *fieldSystem);
 BOOL ov02_02248290(u8 roamerLevel, UnkStruct_ov02_02248618 *a1);
 void ov02_022482BC(u32 otId, Roamer *roamer, BattleSetup *battleSetup);
-void ov02_02248244(FieldSystem *fieldSystem, int a1, BattleSetup **pBattleSetup);
+void ov02_02248244(FieldSystem *fieldSystem, u8 a1, BattleSetup **pBattleSetup);
+BOOL ov02_02247514(FieldSystem *fieldSystem, Pokemon *leadMon, BattleSetup *battleSetup, ENC_SLOT *encSlots, UnkStruct_ov02_02248618 *a4, u8 rodType, BOOL isSafari);
+BOOL ov02_0224754C(FieldSystem *fieldSystem, Pokemon *leadMon, BattleSetup *battleSetup, ENC_SLOT *encSlots, UnkStruct_ov02_02248618 *a4);
 
 void ov02_02246A84(const ENC_DATA *a0, ENC_SLOT *a1) {
     TIMEOFDAY timeOfDay = GF_RTC_GetTimeOfDay();
@@ -75,7 +80,7 @@ void ov02_02246A84(const ENC_DATA *a0, ENC_SLOT *a1) {
     }
 }
 
-void ov02_02246AD4(const ENC_DATA *a0, int a1, ENC_SLOT *a2) {
+void ov02_02246AD4(const ENC_DATA *a0, u8 a1, ENC_SLOT *a2) {
     TIMEOFDAY timeOfDay = GF_RTC_GetTimeOfDay();
 
     if (timeOfDay == RTC_TIMEOFDAY_NITE || timeOfDay == RTC_TIMEOFDAY_LATE) {
@@ -116,7 +121,7 @@ void ov02_02246B9C(FieldSystem *fieldSystem, const ENC_DATA *a1, ENC_SLOT *a2) {
     }
 }
 
-void ov02_02246BD8(FieldSystem *fieldSystem, int a1, const ENC_DATA *a2, ENC_SLOT *a3) {
+void ov02_02246BD8(FieldSystem *fieldSystem, u8 a1, const ENC_DATA *a2, ENC_SLOT *a3) {
     RoamerSaveData *sp0 = Save_Roamers_Get(fieldSystem->saveData);
     if (RoamerSave_OutbreakActive(sp0) && sub_02097F6C(Roamers_GetRand(sp0, 2), fieldSystem->location->mapId, 2)) {
         extern const int ov02_02253290[1];
@@ -158,7 +163,7 @@ void ov02_02246BD8(FieldSystem *fieldSystem, int a1, const ENC_DATA *a2, ENC_SLO
     }
 }
 
-BOOL ov02_02246C8C(FieldSystem *fieldSystem) {
+BOOL FieldSystem_PerformLandEncounterCheck(FieldSystem *fieldSystem) {
     if (fieldSystem->unk7E <= 3) {
         return FALSE;
     }
@@ -211,7 +216,7 @@ BOOL ov02_02246C8C(FieldSystem *fieldSystem) {
     BOOL sp8 = Save_VarsFlags_CheckBugContestFlag(sp14);
 
     if (!r6_2) {
-        int r1 = 0;
+        u8 r1 = 0;
         if (spC) {
             r1 = 1;
         } else if (sp8) {
@@ -266,4 +271,85 @@ BOOL ov02_02246C8C(FieldSystem *fieldSystem) {
         BattleSetup_Delete(sp20);
     }
     return r7_2;
+}
+
+BOOL FieldSystem_PerformFishEncounterCheck(FieldSystem *fieldSystem, u8 rodType, BattleSetup **pBattleSetup) {
+    ENC_SLOT sp40[NUM_ENCOUNTERS_LAND];
+    UnkStruct_ov02_02248618 sp24;
+
+    u8 r4 = ov02_0224802C(fieldSystem, rodType);
+    if (r4 == 0) {
+        return FALSE;
+    }
+
+    Pokemon *sp1C = Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->saveData), 0);
+    ov02_02248618(fieldSystem, sp1C, NULL, &sp24);
+    r4 = ov02_02248190(1, r4, &sp24, LocalFieldData_GetWeatherType(Save_LocalFieldData_Get(fieldSystem->saveData)), sp1C);
+    u16 rnd = LCRandom() % 100;
+    if (rnd >= r4) {
+        return FALSE;
+    }
+    BOOL sp18 = Save_VarsFlags_CheckSafariSysFlag(Save_VarsFlags_Get(fieldSystem->saveData));
+    if (sp18) {
+        ov02_02248244(fieldSystem, 1, pBattleSetup);
+    } else {
+        ov02_02248244(fieldSystem, 0, pBattleSetup);
+    }
+    BattleSetup_InitFromFieldSystem(*pBattleSetup, fieldSystem);
+    sub_02052544(*pBattleSetup);
+    const ENC_DATA *sp14 = MapEvents_GetLoadedEncTable(fieldSystem);
+    const ENC_DATA_SLOT *r7;
+    switch (rodType) {
+    case 0:
+        r7 = sp14->oldRodSlots;
+        break;
+    case 1:
+        r7 = sp14->goodRodSlots;
+        break;
+    case 2:
+        r7 = sp14->superRodSlots;
+        break;
+    }
+    // potential UB: r7 is uninitialized on invalid rod type
+    for (u8 i = 0; i < NUM_ENCOUNTERS_FISH; ++i) {
+        sp40[i].species = r7[i].species;
+        sp40[i].level_max = r7[i].level_max;
+        sp40[i].level_min = r7[i].level_min;
+    }
+    ov02_02246AD4(sp14, rodType, sp40);
+    ov02_02246BD8(fieldSystem, rodType, sp14, sp40);
+    return ov02_02247514(fieldSystem, sp1C, *pBattleSetup, sp40, &sp24, rodType, sp18) ? TRUE : FALSE;
+}
+
+BOOL FieldSystem_PerformRockSmashEncounterCheck(FieldSystem *fieldSystem, BattleSetup **pBattleSetup) {
+    ENC_SLOT sp2C[NUM_ENCOUNTERS_LAND];
+    UnkStruct_ov02_02248618 sp10;
+
+    u8 r4 = ov02_022480B4(fieldSystem);
+    if (r4 == 0) {
+        return FALSE;
+    }
+
+    Pokemon *sp8 = Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->saveData), 0);
+    ov02_02248618(fieldSystem, sp8, NULL, &sp10);
+    r4 = ov02_02248190(0, r4, &sp10, LocalFieldData_GetWeatherType(Save_LocalFieldData_Get(fieldSystem->saveData)), sp8);
+    if ((LCRandom() % 100) >= r4) {
+        return FALSE;
+    }
+
+    ov02_02248244(fieldSystem, 0, pBattleSetup);
+    BattleSetup_InitFromFieldSystem(*pBattleSetup, fieldSystem);
+    const ENC_DATA *r5 = MapEvents_GetLoadedEncTable(fieldSystem);
+    const ENC_DATA_SLOT *r5_2 = r5->rockSmashSlots;
+    for (u8 i = 0; i < NUM_ENCOUNTERS_ROCKSMASH; ++i) {
+        sp2C[i].species = r5_2[i].species;
+        sp2C[i].level_max = r5_2[i].level_max;
+        sp2C[i].level_min = r5_2[i].level_min;
+    }
+    if (!ov02_0224754C(fieldSystem, sp8, *pBattleSetup, sp2C, &sp10)) {
+        BattleSetup_Delete(*pBattleSetup);
+        return FALSE;
+    }
+
+    return TRUE;
 }

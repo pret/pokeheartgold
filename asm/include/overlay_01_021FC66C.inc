@@ -56,4 +56,4 @@
 .public Task_OverworldFish
 .public ov01_02200400
 .public ov01_02200540
-.public ov02_02246F70
+.public FieldSystem_PerformFishEncounterCheck

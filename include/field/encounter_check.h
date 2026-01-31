@@ -3,6 +3,8 @@
 
 #include "field_system.h"
 
-BOOL ov02_02246C8C(FieldSystem *fieldSystem);
+BOOL FieldSystem_PerformLandEncounterCheck(FieldSystem *fieldSystem);
+BOOL FieldSystem_PerformFishEncounterCheck(FieldSystem *fieldSystem, u8 rodType, BattleSetup **pBattleSetup);
+BOOL FieldSystem_PerformRockSmashEncounterCheck(FieldSystem *fieldSystem, BattleSetup **pBattleSetup);
 
 #endif // GUARD_POKEHEARTGOLD_FIELD_ENCOUNTER_CHECK_H

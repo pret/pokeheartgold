@@ -177,7 +177,7 @@
 .public ov01_021F6B64
 .public ov01_021FB630
 .public ov01_02206378
-.public ov02_02246C8C
+.public FieldSystem_PerformLandEncounterCheck
 .public PlayerStepEvent_RepelCounterDecrement
 .public ov02_0224E35C
 .public ov02_0224E4CC
