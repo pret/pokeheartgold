@@ -301,8 +301,8 @@ Static main
     Object src/mail_misc.o
     Object src/unk_02091054.o
     Object src/hatch_egg_task.o
-    Object asm/unk_02091278.o
-    Object asm/unk_020912AC.o
+    Object src/unk_02091278.o
+    Object src/unk_020912AC.o
     Object src/dex_mon_measures.o
     Object asm/unk_02091564.o
     Object asm/unk_020915B0.o
