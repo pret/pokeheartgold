@@ -68,13 +68,13 @@ static const u8 _02108EDA[][5] = {
     { 4, 8, 13, 18, 23 },
 };
 
-void sub_02097268(UnkStruct_02097268 *a0, int a1, BOOL a2) {
+void sub_02097268(UnkStruct_02097268 *a0, int a1, int a2) {
     if (a1 >= 24) {
         GF_ASSERT(FALSE);
         a1 = 0;
     }
     *a0 = _02108EEE[a1];
-    if (a0->unk_1_7 && a2 == TRUE) {
+    if (a0->unk_1_7 && a2 == 1) {
         ++a0->unk_0;
     }
 }
@@ -263,4 +263,28 @@ u8 sub_02097650(u8 a0, u8 a1) {
         return 6;
     }
     return 7;
+}
+
+void sub_02097694(SAFARIZONE_AREASET *areaSet, int area, UnkStruct_02097694 *out) {
+    UnkStruct_02097268 sp8;
+    u8 sp4;
+    SAFARIZONE_AREA *sp0;
+
+    sp0 = &areaSet->areas[area];
+    sp4 = areaSet->unk2DC[sp0->area_no] / 10;
+
+    MI_CpuClear8(out, sizeof(UnkStruct_02097694));
+
+    for (int i = 0; i < sp0->active_object_count; ++i) {
+        sub_02097268(&sp8, sp0->objects[i].unk[0], 2);
+        if (sp8.unk_2 != 0) {
+            ++out->unk_4[sp8.unk_2 - 1];
+            u8 r3 = sub_02097650(sp4, sp8.unk_2);
+            if (out->unk_0[sp8.unk_2 - 1] + r3 > 255) {
+                out->unk_0[sp8.unk_2 - 1] = 255;
+            } else {
+                out->unk_0[sp8.unk_2 - 1] += r3;
+            }
+        }
+    }
 }
