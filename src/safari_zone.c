@@ -99,7 +99,7 @@ u8 sub_0202F6AC(SafariZone *safari_zone) {
     return safari_zone->unk5F8;
 }
 
-void sub_0202F6B8(SAFARIZONE_AREASET *area_set, s32 a1) {
+void sub_0202F6B8(SafariZone *safariZone, s32 a1) {
     u8 sp8[6];
     u32 area_no;
     int j;
@@ -112,15 +112,15 @@ void sub_0202F6B8(SAFARIZONE_AREASET *area_set, s32 a1) {
     j = 0;
     MI_CpuClear8(sp8, NELEMS(sp8));
     for (i = 0; i < SAFARI_ZONE_MAX_AREAS_PER_SET; i++) {
-        area_no = area_set->areas[i].area_no;
+        area_no = safariZone->area_sets[0].areas[i].area_no;
         if (sub_0202FA3C(area_no, sp8, j)) {
             continue;
         }
 
-        if (area_set->unk2DC[area_no] + a1 < 0xFF) {
-            area_set->unk2DC[area_no] += a1;
+        if (safariZone->area_sets[0].unk2DC[area_no] + a1 < 0xFF) {
+            safariZone->area_sets[0].unk2DC[area_no] += a1;
         } else {
-            area_set->unk2DC[area_no] = 0xFF;
+            safariZone->area_sets[0].unk2DC[area_no] = 0xFF;
         }
 
         sp8[j++] = area_no;

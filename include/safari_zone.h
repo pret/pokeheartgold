@@ -72,7 +72,7 @@ void SafariZone_CopyAreaSet(SafariZone *safari_zone, s32 area_set_no, SAFARIZONE
 void SafariZone_SetAreaSet(SafariZone *safari_zone, s32 area_set_no, SAFARIZONE_AREASET *area_set_src);
 void sub_0202F6A0(SafariZone *safari_zone, u8 a1);
 u8 sub_0202F6AC(SafariZone *safari_zone);
-void sub_0202F6B8(SAFARIZONE_AREASET *area_set, s32 a1);
+void sub_0202F6B8(SafariZone *safariZone, s32 a1);
 u8 SafariZone_GetObjectUnlockLevel(SafariZone *safari_zone);
 u8 SafariZone_IncObjectUnlockLevel(SafariZone *safari_zone, s32 a1);
 void SafariZone_SetObjectUnlockLevel(SafariZone *safari_zone, u8 a1);
