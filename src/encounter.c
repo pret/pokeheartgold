@@ -139,7 +139,7 @@ static BOOL Task_StartEncounter(TaskManager *taskManager) { // todo: better name
         }
 
         fieldSystem->encounterInhibitSteps = 0;
-        fieldSystem->encounterRateRampUpSteps = 0;
+        fieldSystem->reverseTurnFrameSteps = 0;
 
         if (Encounter_GetResult(encounter, fieldSystem) == FALSE) {
             if (encounter->setup->battleType & BATTLE_TYPE_11) {

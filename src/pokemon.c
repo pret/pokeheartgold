@@ -4,6 +4,7 @@
 
 #include "constants/abilities.h"
 #include "constants/balls.h"
+#include "constants/battle.h"
 #include "constants/items.h"
 #include "constants/map_sections.h"
 #include "constants/moves.h"
@@ -3737,13 +3738,13 @@ static const u16 sItemOdds[2][2] = {
     { 20, 80 },
 };
 
-void WildMonSetRandomHeldItem(Pokemon *mon, u32 a1, u32 a2) {
+void WildMonSetRandomHeldItem(Pokemon *mon, u32 battleType, u32 isCompoundEyes) {
     u32 chance;
     u16 species;
     u16 form;
     u16 item1;
     u16 item2;
-    if (!(a1 & 0x81)) {
+    if (!(battleType & (BATTLE_TYPE_TRAINER | BATTLE_TYPE_FRONTIER))) {
         chance = (u32)(LCRandom() % 100);
         species = (u16)GetMonData(mon, MON_DATA_SPECIES, 0);
         form = (u16)GetMonData(mon, MON_DATA_FORM, 0);
@@ -3752,8 +3753,8 @@ void WildMonSetRandomHeldItem(Pokemon *mon, u32 a1, u32 a2) {
         if (item1 == item2 && item1 != ITEM_NONE) {
             SetMonData(mon, MON_DATA_HELD_ITEM, &item1);
         } else {
-            if (chance >= sItemOdds[a2][0]) {
-                if (chance < sItemOdds[a2][1]) {
+            if (chance >= sItemOdds[isCompoundEyes][0]) {
+                if (chance < sItemOdds[isCompoundEyes][1]) {
                     SetMonData(mon, MON_DATA_HELD_ITEM, &item1);
                 } else {
                     SetMonData(mon, MON_DATA_HELD_ITEM, &item2);

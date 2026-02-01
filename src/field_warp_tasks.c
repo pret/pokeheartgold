@@ -210,7 +210,7 @@ void sub_02053038(FieldSystem *fieldSystem, BOOL isConnection) {
     }
     TryStartMapScriptByType(fieldSystem, 2);
     fieldSystem->encounterInhibitSteps = 0;
-    fieldSystem->encounterRateRampUpSteps = 0;
+    fieldSystem->reverseTurnFrameSteps = 0;
     fieldSystem->unk78 = 0;
     Save_FollowMon_SetInhibitFlagState(Save_FollowMon_Get(fieldSystem->saveData), FALSE);
     ClearFlag99A(Save_VarsFlags_Get(fieldSystem->saveData));

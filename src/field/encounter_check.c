@@ -32,18 +32,23 @@
 
 FS_EXTERN_OVERLAY(bug_contest);
 
+typedef struct UnkStruct_ov02_022532B4 {
+    int unk_0;
+    const u8 *unk_4;
+} UnkStruct_ov02_022532B4;
+
 typedef struct UnkStruct_ov02_02248618 {
-    u32 unk_00;
-    BOOL unk_04;
-    int unk_08;
-    u8 unk_0C;
-    u8 unk_0D;
-    u8 unk_0E;
+    u32 playerId;
+    BOOL isRepel;
+    BOOL isSweetScent;
+    u8 level;
+    u8 isEgg;
+    u8 ability;
     u8 unk_0F;
     u8 unk_10;
-    u8 unk_11;
-    u8 unk_12[4];
-    Pokedex *unk_18;
+    u8 isSinjohMap;
+    u8 unownPuzzleFlags[4];
+    Pokedex *pokedex;
 } UnkStruct_ov02_02248618;
 
 void ov02_02246A84(const ENC_DATA *a0, ENC_SLOT *a1);
@@ -91,9 +96,10 @@ BOOL ov02_02248290(u8 roamerLevel, UnkStruct_ov02_02248618 *a1);
 BOOL ov02_022482A4(UnkStruct_ov02_02248618 *a0);
 void ov02_022482BC(u32 otId, Roamer *roamer, BattleSetup *battleSetup);
 BOOL ov02_GetRandomActiveRoamerInCurrMap(FieldSystem *fieldSystem, Roamer **pRoamer);
-BOOL ov02_02248418(Pokedex *pokedex, int numForms, int targetForm);
+BOOL ov02_02248418(Pokedex *pokedex, u8 numForms, u8 targetForm);
+u8 ov02_02248444(UnkStruct_ov02_02248618 *a0);
 BOOL ov02_0224855C(int battler, UnkStruct_ov02_02248618 *a1, Pokemon *pokemon, BattleSetup *battleSetup);
-u8 ov02_022485B0(ENC_SLOT *encSlots, u8 numEncSlots, UnkStruct_ov02_02248618 *a2, u8 chosenSlot);
+u8 ov02_022485B0(ENC_SLOT *encSlots, int numEncSlots, UnkStruct_ov02_02248618 *a2, u8 chosenSlot);
 void ov02_02248618(FieldSystem *fieldSystem, Pokemon *pokemon, const ENC_DATA *encData, UnkStruct_ov02_02248618 *a3);
 void ov02_02248698(FieldSystem *fieldSystem);
 
@@ -162,17 +168,12 @@ void ov02_02246B9C(FieldSystem *fieldSystem, const ENC_DATA *a1, ENC_SLOT *a2) {
 void ov02_02246BD8(FieldSystem *fieldSystem, u8 a1, const ENC_DATA *a2, ENC_SLOT *a3) {
     RoamerSaveData *sp0 = Save_Roamers_Get(fieldSystem->saveData);
     if (RoamerSave_OutbreakActive(sp0) && sub_02097F6C(Roamers_GetRand(sp0, 2), fieldSystem->location->mapId, 2)) {
-        extern const int ov02_02253290[1];
-        int sp8[1];
-        ARRAY_ASSIGN(sp8, ov02_02253290);
-
-        extern const int ov02_02253294[3];
-        int sp20[3];
-        ARRAY_ASSIGN(sp20, ov02_02253294);
-
-        extern const int ov02_022532A0[5];
-        int spC[5];
-        ARRAY_ASSIGN(spC, ov02_022532A0);
+        // ov02_02253290
+        int sp8[1] = { 2 };
+        // ov02_02253294
+        int sp20[3] = { 0, 2, 3 };
+        // ov02_022532A0
+        int spC[5] = { 0, 1, 2, 3, 4 };
 
         const int *r3;
         u32 r1;
@@ -227,8 +228,8 @@ BOOL FieldSystem_PerformLandOrSurfEncounterCheck(FieldSystem *fieldSystem) {
     ov02_02248618(fieldSystem, leadMon, encData, &sp24);
     if (!RoamerSave_RepelNotInUse(Save_Roamers_Get(fieldSystem->saveData))) {
         Pokemon *mon = GetFirstAliveMonInParty_CrashIfNone(r6);
-        sp24.unk_04 = TRUE;
-        sp24.unk_0C = GetMonData(mon, MON_DATA_LEVEL, NULL);
+        sp24.isRepel = TRUE;
+        sp24.level = GetMonData(mon, MON_DATA_LEVEL, NULL);
     }
     encounterRate = ov02_02248190(FALSE, encounterRate, &sp24, LocalFieldData_GetWeatherType(Save_LocalFieldData_Get(fieldSystem->saveData)), leadMon);
     ApplyFluteEffectToEncounterRate(fieldSystem, &encounterRate);
@@ -242,7 +243,7 @@ BOOL FieldSystem_PerformLandOrSurfEncounterCheck(FieldSystem *fieldSystem) {
         if (!ov02_02248290(GetRoamerData(roamer, ROAMER_DATA_LEVEL), &sp24)) {
             battleSetup = BattleSetup_New(HEAP_ID_FIELD2, BATTLE_TYPE_ROAMER);
             BattleSetup_InitFromFieldSystem(battleSetup, fieldSystem);
-            ov02_022482BC(sp24.unk_00, roamer, battleSetup);
+            ov02_022482BC(sp24.playerId, roamer, battleSetup);
             sub_02050B08(fieldSystem, battleSetup);
             return TRUE;
         }
@@ -299,7 +300,7 @@ BOOL FieldSystem_PerformLandOrSurfEncounterCheck(FieldSystem *fieldSystem) {
     if (found) {
         sub_02050B08(fieldSystem, battleSetup);
         fieldSystem->encounterInhibitSteps = 0;
-        fieldSystem->encounterRateRampUpSteps = 0;
+        fieldSystem->reverseTurnFrameSteps = 0;
     } else {
         ret = FALSE;
     }
@@ -410,12 +411,12 @@ BOOL FieldSystem_PerformSweetScentEncounterCheck(FieldSystem *fieldSystem, TaskM
     const ENC_DATA *encData = MapEvents_GetLoadedEncTable(fieldSystem);
     Pokemon *leadMon = Party_GetMonByIndex(party, 0);
     ov02_02248618(fieldSystem, leadMon, encData, &sp20);
-    sp20.unk_08 = 1;
+    sp20.isSweetScent = TRUE;
     BOOL followerFlag = Save_VarsFlags_CheckHaveFollower(saveVarsFlags);
     if (!followerFlag && ov02_GetRandomActiveRoamerInCurrMap(fieldSystem, &roamer)) {
         battleSetup = BattleSetup_New(HEAP_ID_FIELD2, BATTLE_TYPE_ROAMER);
         BattleSetup_InitFromFieldSystem(battleSetup, fieldSystem);
-        ov02_022482BC(sp20.unk_00, roamer, battleSetup);
+        ov02_022482BC(sp20.playerId, roamer, battleSetup);
         FieldSystem_StartForcedWildBattle(fieldSystem, taskManager, battleSetup);
         return TRUE;
     }
@@ -470,7 +471,7 @@ BOOL FieldSystem_PerformSweetScentEncounterCheck(FieldSystem *fieldSystem, TaskM
         GF_ASSERT(FALSE);
     }
     fieldSystem->encounterInhibitSteps = 0;
-    fieldSystem->encounterRateRampUpSteps = 0;
+    fieldSystem->reverseTurnFrameSteps = 0;
     return TRUE;
 }
 
@@ -560,7 +561,7 @@ BOOL FieldSystem_EncounterRateRoll(FieldSystem *fieldSystem, u8 encounterRate, u
     } else if (avatarState == PLAYER_STATE_CYCLING) {
         modifiedRate += 30;
     }
-    modifiedRate += getStepCountEncounterRateBoost(fieldSystem->encounterRateRampUpSteps);
+    modifiedRate += getStepCountEncounterRateBoost(fieldSystem->reverseTurnFrameSteps);
     if (GetRadioMusicPlayingSeq() == RADIO_MUSIC_SEQ_MARCH) {
         modifiedRate += 25;
     } else if (GetRadioMusicPlayingSeq() == RADIO_MUSIC_SEQ_LULLABY) {
@@ -716,7 +717,7 @@ void ApplyFluteEffectToEncounterRate(FieldSystem *fieldSystem, u8 *pEncounterRat
 }
 
 u8 getWildMonNature(Pokemon *pokemon, UnkStruct_ov02_02248618 *a1) {
-    if (a1->unk_0D == 0 && a1->unk_0E == ABILITY_SYNCHRONIZE && LCRandRange(2) == 0) {
+    if (!a1->isEgg && a1->ability == ABILITY_SYNCHRONIZE && LCRandRange(2) == 0) {
         return GetMonData(pokemon, MON_DATA_PERSONALITY, NULL) % 25;
     } else {
         return LCRandRange(25);
@@ -737,7 +738,7 @@ u8 EncounterSlot_WildMonLevelRoll(ENC_SLOT *encSlot, UnkStruct_ov02_02248618 *a1
 
     u8 range = hi - lo + 1;
     u8 lvl = LCRandom() % range;
-    if (a1->unk_0D == 0 && (a1->unk_0E == ABILITY_HUSTLE || a1->unk_0E == ABILITY_VITAL_SPIRIT || a1->unk_0E == ABILITY_PRESSURE)) {
+    if (!a1->isEgg && (a1->ability == ABILITY_HUSTLE || a1->ability == ABILITY_VITAL_SPIRIT || a1->ability == ABILITY_PRESSURE)) {
         if (LCRandRange(2) == 0) {
             return lo + lvl;
         }
@@ -757,8 +758,8 @@ void ov02_02247910(u16 species, u8 level, int battler, u32 otid, UnkStruct_ov02_
     ZeroMonData(wildMon);
 
     overrideGenderOrNature = FALSE;
-    if (a4->unk_0D == 0) {
-        if (a4->unk_0E == ABILITY_CUTE_CHARM) {
+    if (a4->isEgg == 0) {
+        if (a4->ability == ABILITY_CUTE_CHARM) {
             switch (GetMonBaseStat(species, BASE_GENDER_RATIO)) {
             case MON_RATIO_MALE:
             case MON_RATIO_FEMALE:
@@ -771,7 +772,7 @@ void ov02_02247910(u16 species, u8 level, int battler, u32 otid, UnkStruct_ov02_
                 }
                 break;
             }
-        } else if (a4->unk_0E == ABILITY_SYNCHRONIZE) {
+        } else if (a4->ability == ABILITY_SYNCHRONIZE) {
             if (LCRandRange(2) == 0) {
                 monNature = GetMonNature(leadMon);
                 overrideGenderOrNature = TRUE;
@@ -781,14 +782,14 @@ void ov02_02247910(u16 species, u8 level, int battler, u32 otid, UnkStruct_ov02_
     personality = GenerateShinyPersonality(otid);
     if (overrideGenderOrNature) {
         do {
-            if (a4->unk_0E == ABILITY_CUTE_CHARM) {
+            if (a4->ability == ABILITY_CUTE_CHARM) {
                 u8 generatedGender = GetGenderBySpeciesAndPersonality(species, personality);
                 GF_ASSERT(generatedGender != MON_GENDERLESS);
                 if (generatedGender != monGender) {
                     break;
                 }
                 personality = GenerateShinyPersonality(otid);
-            } else if (a4->unk_0E == ABILITY_SYNCHRONIZE) {
+            } else if (a4->ability == ABILITY_SYNCHRONIZE) {
                 u8 generatedNature = GetNatureFromPersonality(personality);
                 if (generatedNature == monNature) {
                     break;
@@ -798,7 +799,7 @@ void ov02_02247910(u16 species, u8 level, int battler, u32 otid, UnkStruct_ov02_
         } while (TRUE);
     }
 
-    CreateMon(wildMon, species, level, 0x20, TRUE, personality, OT_ID_PRESET, a4->unk_00);
+    CreateMon(wildMon, species, level, 0x20, TRUE, personality, OT_ID_PRESET, a4->playerId);
     GF_ASSERT(ov02_0224855C(battler, a4, wildMon, battleSetup));
     Heap_Free(wildMon);
 }
@@ -819,7 +820,7 @@ void ov02_02247A18(u16 species, u8 level, int battler, BOOL forceOnePerfectIV, U
         break;
     }
 
-    if (canCoerceGender && a4->unk_0D == 0 && a4->unk_0E == ABILITY_CUTE_CHARM && LCRandRange(3) != 0) {
+    if (canCoerceGender && a4->isEgg == 0 && a4->ability == ABILITY_CUTE_CHARM && LCRandRange(3) != 0) {
         monGender = GetMonData(leadMon, MON_DATA_GENDER, NULL);
         if (monGender == MON_FEMALE) {
             monGender = MON_MALE;
@@ -829,7 +830,7 @@ void ov02_02247A18(u16 species, u8 level, int battler, BOOL forceOnePerfectIV, U
             GF_ASSERT(FALSE); // can't put cute charm on a genderless pokemon
         }
         CreateMonWithGenderNatureLetter(wildMon, species, level, 0x20, monGender, getWildMonNature(leadMon, a4), 0);
-        SetMonData(wildMon, MON_DATA_OT_ID, &a4->unk_00);
+        SetMonData(wildMon, MON_DATA_OT_ID, &a4->playerId);
         GF_ASSERT(ov02_0224855C(battler, a4, wildMon, battleSetup));
         Heap_Free(wildMon);
         return;
@@ -854,7 +855,7 @@ void ov02_02247A18(u16 species, u8 level, int battler, BOOL forceOnePerfectIV, U
         CreateMonWithNature(wildMon, species, level, 0x20, getWildMonNature(leadMon, a4));
     }
 
-    SetMonData(wildMon, MON_DATA_OT_ID, &a4->unk_00);
+    SetMonData(wildMon, MON_DATA_OT_ID, &a4->playerId);
     GF_ASSERT(ov02_0224855C(battler, a4, wildMon, battleSetup));
     Heap_Free(wildMon);
 }
@@ -1094,7 +1095,7 @@ BOOL ov02_022480C0(ENC_SLOT *encSlots, u8 numEncSlots, u8 type, u8 *slot) {
 }
 
 BOOL EncounterSlot_AbilityInfluenceOnSlotChoiceCheck(Pokemon *leadMon, UnkStruct_ov02_02248618 *a1, ENC_SLOT *encSlots, u8 numSlots, u8 type, u8 ability, u8 *slotNum) {
-    if (a1->unk_0D == 0 && a1->unk_0E == ability && LCRandRange(2) == 0) {
+    if (!a1->isEgg && a1->ability == ability && LCRandRange(2) == 0) {
         return ov02_022480C0(encSlots, numSlots, type, slotNum);
     }
 
@@ -1104,18 +1105,18 @@ BOOL EncounterSlot_AbilityInfluenceOnSlotChoiceCheck(Pokemon *leadMon, UnkStruct
 u8 ov02_02248190(BOOL isFishing, u8 encounterRate, UnkStruct_ov02_02248618 *a2, u16 weatherType, Pokemon *leadMon) {
     int ret = encounterRate;
 
-    if (a2->unk_0D == 0) {
+    if (a2->isEgg == 0) {
         if (isFishing) {
-            if (a2->unk_0E == ABILITY_STICKY_HOLD || a2->unk_0E == ABILITY_SUCTION_CUPS) {
+            if (a2->ability == ABILITY_STICKY_HOLD || a2->ability == ABILITY_SUCTION_CUPS) {
                 ret *= 2;
             }
-        } else if (a2->unk_0E == ABILITY_ARENA_TRAP || a2->unk_0E == ABILITY_NO_GUARD || a2->unk_0E == ABILITY_ILLUMINATE) {
+        } else if (a2->ability == ABILITY_ARENA_TRAP || a2->ability == ABILITY_NO_GUARD || a2->ability == ABILITY_ILLUMINATE) {
             ret *= 2;
-        } else if (a2->unk_0E == ABILITY_SNOW_CLOAK) {
+        } else if (a2->ability == ABILITY_SNOW_CLOAK) {
             if (weatherType == WEATHER_SNOW) {
                 ret /= 2;
             }
-        } else if (a2->unk_0E == ABILITY_WHITE_SMOKE || a2->unk_0E == ABILITY_QUICK_FEET || a2->unk_0E == ABILITY_STENCH) {
+        } else if (a2->ability == ABILITY_WHITE_SMOKE || a2->ability == ABILITY_QUICK_FEET || a2->ability == ABILITY_STENCH) {
             ret /= 2;
         }
         if (ret > 100) {
@@ -1127,11 +1128,11 @@ u8 ov02_02248190(BOOL isFishing, u8 encounterRate, UnkStruct_ov02_02248618 *a2, 
 }
 
 BOOL ov02_022481EC(UnkStruct_ov02_02248618 *a0, Pokemon *leadMon, u8 level) {
-    if (a0->unk_08) {
+    if (a0->isSweetScent) {
         return FALSE;
     }
-    if (a0->unk_0D == 0) {
-        if (a0->unk_0E == ABILITY_KEEN_EYE || a0->unk_0E == ABILITY_INTIMIDATE) {
+    if (a0->isEgg == 0) {
+        if (a0->ability == ABILITY_KEEN_EYE || a0->ability == ABILITY_INTIMIDATE) {
             u8 leadMonLevel = GetMonData(leadMon, MON_DATA_LEVEL, NULL);
             if (leadMonLevel <= 5) {
                 return FALSE;
@@ -1163,7 +1164,7 @@ void ov02_02248244(FieldSystem *fieldSystem, u8 a1, BattleSetup **pBattleSetup) 
 }
 
 BOOL ov02_02248290(u8 roamerLevel, UnkStruct_ov02_02248618 *a1) {
-    if (a1->unk_04 && a1->unk_0C > roamerLevel) {
+    if (a1->isRepel && a1->level > roamerLevel) {
         return TRUE;
     }
 
@@ -1172,7 +1173,7 @@ BOOL ov02_02248290(u8 roamerLevel, UnkStruct_ov02_02248618 *a1) {
 
 BOOL ov02_022482A4(UnkStruct_ov02_02248618 *a0) {
     for (int i = 0; i < 4; ++i) {
-        if (a0->unk_12[i]) {
+        if (a0->unownPuzzleFlags[i]) {
             return TRUE;
         }
     }
@@ -1224,7 +1225,7 @@ BOOL ov02_GetRandomActiveRoamerInCurrMap(FieldSystem *fieldSystem, Roamer **pRoa
     return TRUE;
 }
 
-BOOL ov02_02248418(Pokedex *pokedex, int numForms, int targetForm) {
+BOOL ov02_02248418(Pokedex *pokedex, u8 numForms, u8 targetForm) {
     for (int i = 0; i < numForms; ++i) {
         if (targetForm == Pokedex_GetSeenFormByIdx_Unown(pokedex, i, TRUE)) {
             return TRUE;
@@ -1232,4 +1233,182 @@ BOOL ov02_02248418(Pokedex *pokedex, int numForms, int targetForm) {
     }
 
     return FALSE;
+}
+
+static const u8 ov02_022532EC[] = {
+    UNOWN_A,
+    UNOWN_B,
+    UNOWN_C,
+    UNOWN_D,
+    UNOWN_E,
+    UNOWN_F,
+    UNOWN_G,
+    UNOWN_H,
+    UNOWN_I,
+    UNOWN_J,
+};
+static const u8 ov02_022532DC[] = {
+    UNOWN_R,
+    UNOWN_S,
+    UNOWN_T,
+    UNOWN_U,
+    UNOWN_V,
+};
+static const u8 ov02_022532E4[] = {
+    UNOWN_K,
+    UNOWN_L,
+    UNOWN_M,
+    UNOWN_N,
+    UNOWN_O,
+    UNOWN_P,
+    UNOWN_Q,
+};
+static const u8 ov02_0225328C[] = {
+    UNOWN_W,
+    UNOWN_X,
+    UNOWN_Y,
+    UNOWN_Z,
+};
+static const u8 ov02_02253288[] = {
+    UNOWN_EXCLAMATION_MARK,
+    UNOWN_QUESTION_MARK,
+};
+
+static const UnkStruct_ov02_022532B4 ov02_022532B4[] = {
+    { NELEMS(ov02_022532EC), ov02_022532EC },
+    { NELEMS(ov02_022532DC), ov02_022532DC },
+    { NELEMS(ov02_022532E4), ov02_022532E4 },
+    { NELEMS(ov02_0225328C), ov02_0225328C },
+    { NELEMS(ov02_02253288), ov02_02253288 },
+};
+
+u8 ov02_02248444(UnkStruct_ov02_02248618 *a0) {
+    u8 ret;
+    int i;
+    int j;
+    int r6;
+    int r7;
+    int sp14;
+    BOOL spC = FALSE;
+    u8 *sp8;
+    u8 *sp4;
+    const UnkStruct_ov02_022532B4 *r4;
+
+    if (a0->isSinjohMap) {
+        return ov02_022532B4[4].unk_4[LCRandom() % 2];
+    }
+
+    sp8 = Heap_AllocAtEnd(HEAP_ID_FIELD1, UNOWN_FORM_MAX);
+    sp4 = Heap_AllocAtEnd(HEAP_ID_FIELD1, UNOWN_FORM_MAX);
+    MI_CpuClear8(sp8, UNOWN_FORM_MAX);
+    MI_CpuClear8(sp4, UNOWN_FORM_MAX);
+    if (GetRadioMusicPlayingSeq() == RADIO_MUSIC_SEQ_UNOWN) {
+        spC = TRUE;
+    }
+    r6 = 0;
+    r7 = 0;
+    sp14 = Pokedex_GetSeenFormNum_Unown(a0->pokedex, TRUE);
+    for (i = 0; i < 4; ++i) {
+        if (!a0->unownPuzzleFlags[i]) {
+            continue;
+        }
+        r4 = &ov02_022532B4[i];
+        for (j = 0; j < r4->unk_0; ++j) {
+            if (!ov02_02248418(a0->pokedex, sp14, r4->unk_4[j])) {
+                sp4[r6] = r4->unk_4[j];
+                ++r6;
+            }
+            sp8[r7] = r4->unk_4[j];
+            ++r7;
+        }
+    }
+    if (spC && r6 > 0 && (LCRandom() % 100) < 50) {
+        ret = sp4[LCRandom() % r6];
+    } else {
+        ret = sp8[LCRandom() % r7];
+    }
+    Heap_Free(sp4);
+    Heap_Free(sp8);
+    return ret;
+}
+
+BOOL ov02_0224855C(int battler, UnkStruct_ov02_02248618 *a1, Pokemon *pokemon, BattleSetup *battleSetup) {
+    WildMonSetRandomHeldItem(pokemon, battleSetup->battleType, !a1->isEgg && a1->ability == ABILITY_COMPOUNDEYES ? 1 : 0);
+    if (GetMonData(pokemon, MON_DATA_SPECIES, NULL) == SPECIES_UNOWN) {
+        u8 form = ov02_02248444(a1);
+        SetMonData(pokemon, MON_DATA_FORM, &form);
+    }
+    return Party_AddMon(battleSetup->party[battler], pokemon);
+}
+
+u8 ov02_022485B0(ENC_SLOT *encSlots, int numEncSlots, UnkStruct_ov02_02248618 *a2, u8 chosenSlot) {
+    if (a2->isEgg == 0 && (a2->ability == ABILITY_VITAL_SPIRIT || a2->ability == ABILITY_HUSTLE || a2->ability == ABILITY_PRESSURE)) {
+        if (LCRandRange(2) == 0) {
+            return chosenSlot;
+        }
+        for (u8 i = 0; i < numEncSlots; ++i) {
+            if (encSlots[i].species == encSlots[chosenSlot].species && encSlots[i].level_max > encSlots[chosenSlot].level_max) {
+                chosenSlot = i;
+            }
+        }
+        return chosenSlot;
+    }
+
+    return chosenSlot;
+}
+
+void ov02_02248618(FieldSystem *fieldSystem, Pokemon *pokemon, const ENC_DATA *encData, UnkStruct_ov02_02248618 *a3) {
+    if (!GetMonData(pokemon, MON_DATA_IS_EGG, NULL)) {
+        a3->isEgg = FALSE;
+        a3->ability = GetMonData(pokemon, MON_DATA_ABILITY, NULL);
+    } else {
+        a3->isEgg = TRUE;
+        a3->ability = NUM_ABILITIES;
+    }
+    a3->level = 0;
+    a3->isRepel = FALSE;
+    a3->isSweetScent = FALSE;
+    a3->unk_0F = 0;
+    a3->unk_10 = 0;
+    SaveVarsFlags *saveVarsFlags = Save_VarsFlags_Get(fieldSystem->saveData);
+    a3->isSinjohMap = fieldSystem->location->mapId == MAP_RUINS_OF_ALPH_HALL_ENTRANCE_SINJOH_EVENT;
+    for (int i = 0; i < 4; ++i) {
+        a3->unownPuzzleFlags[i] = Save_VarsFlags_CheckAlphPuzzleFlag(saveVarsFlags, i);
+    }
+    a3->pokedex = Save_Pokedex_Get(fieldSystem->saveData);
+    a3->playerId = PlayerProfile_GetTrainerID(Save_PlayerData_GetProfile(fieldSystem->saveData));
+}
+
+void ov02_02248698(FieldSystem *fieldSystem) {
+    u8 facingDirection = PlayerAvatar_GetFacingDirection(fieldSystem->playerAvatar);
+    BOOL r1 = FALSE;
+    switch (facingDirection) {
+    case DIR_NORTH:
+        if (fieldSystem->lastFacingDirection == DIR_SOUTH) {
+            r1 = TRUE;
+        }
+        break;
+    case DIR_SOUTH:
+        if (fieldSystem->lastFacingDirection == DIR_NORTH) {
+            r1 = TRUE;
+        }
+        break;
+    case DIR_WEST:
+        if (fieldSystem->lastFacingDirection == DIR_EAST) {
+            r1 = TRUE;
+        }
+        break;
+    case DIR_EAST:
+        if (fieldSystem->lastFacingDirection == DIR_WEST) {
+            r1 = TRUE;
+        }
+        break;
+    default:
+        GF_ASSERT(FALSE);
+        return;
+    }
+    if (r1 && fieldSystem->reverseTurnFrameSteps < 0xFFFF) {
+        ++fieldSystem->reverseTurnFrameSteps;
+    }
+    fieldSystem->lastFacingDirection = facingDirection;
 }
