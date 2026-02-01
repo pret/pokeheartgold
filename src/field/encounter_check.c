@@ -18,6 +18,7 @@
 #include "map_events.h"
 #include "math_util.h"
 #include "metatile_behavior.h"
+#include "overlay_01.h"
 #include "overlay_02.h"
 #include "roamer.h"
 #include "safari_zone.h"
@@ -37,10 +38,9 @@
 #define ENCOUNTER_TYPE_ROCK_SMASH 3
 #define ENCOUNTER_TYPE_HEADBUTT   4
 
-#define ROD_TYPE_OLD   0
-#define ROD_TYPE_GOOD  1
-#define ROD_TYPE_SUPER 2
-#define ROD_TYPE_NONE  0xFF
+#define ENCOUNTER_CONTEXT_REGULAR     0
+#define ENCOUNTER_CONTEXT_SAFARI      1
+#define ENCOUNTER_CONTEXT_BUG_CONTEST 2
 
 FS_EXTERN_OVERLAY(bug_contest);
 
@@ -103,7 +103,7 @@ static BOOL chooseAbilityCoercedSlot(ENC_SLOT *encSlots, u8 numEncSlots, u8 type
 static BOOL EncounterSlot_AbilityInfluenceOnSlotChoiceCheck(Pokemon *leadMon, EncounterGenState *encounterGen, ENC_SLOT *encSlots, u8 numSlots, u8 type, u8 ability, u8 *slotNum);
 static u8 ApplyAbilityEffectToEncounterRate(BOOL isFishing, u8 encounterRate, EncounterGenState *encounterGen, u16 weatherType, Pokemon *leadMon);
 static BOOL DoesAbilitySuppressEncounter(EncounterGenState *encounterGen, Pokemon *leadMon, u8 level);
-static void FieldSystem_CreateBattleSetupForWildBattle(FieldSystem *fieldSystem, u8 type, BattleSetup **pBattleSetup);
+static void FieldSystem_CreateBattleSetupForWildBattle(FieldSystem *fieldSystem, u8 encounterCtx, BattleSetup **pBattleSetup);
 static BOOL EncounterGen_DoesRepelSuppressEncounter(u8 roamerLevel, EncounterGenState *encounterGen);
 static BOOL EncounterGen_CanGenerateUnownEncounter(EncounterGenState *encounterGen);
 static void initRoamingWildmon(u32 otId, Roamer *roamer, BattleSetup *battleSetup);
@@ -264,13 +264,13 @@ BOOL FieldSystem_PerformLandOrSurfEncounterCheck(FieldSystem *fieldSystem) {
     BOOL bugContestFlag = Save_VarsFlags_CheckBugContestFlag(saveVarsFlags);
 
     if (!followerFlag) {
-        u8 r1 = 0;
+        u8 encounterCtx = ENCOUNTER_CONTEXT_REGULAR;
         if (safariFlag) {
-            r1 = 1;
+            encounterCtx = ENCOUNTER_CONTEXT_SAFARI;
         } else if (bugContestFlag) {
-            r1 = 2;
+            encounterCtx = ENCOUNTER_CONTEXT_BUG_CONTEST;
         }
-        FieldSystem_CreateBattleSetupForWildBattle(fieldSystem, r1, &battleSetup);
+        FieldSystem_CreateBattleSetupForWildBattle(fieldSystem, encounterCtx, &battleSetup);
     } else {
         battleSetup = BattleSetup_New(HEAP_ID_FIELD2, BATTLE_TYPE_DOUBLES | BATTLE_TYPE_MULTI | BATTLE_TYPE_AI);
     }
@@ -338,9 +338,9 @@ BOOL FieldSystem_PerformFishEncounterCheck(FieldSystem *fieldSystem, u8 rodType,
     }
     BOOL safariFlag = Save_VarsFlags_CheckSafariSysFlag(Save_VarsFlags_Get(fieldSystem->saveData));
     if (safariFlag) {
-        FieldSystem_CreateBattleSetupForWildBattle(fieldSystem, 1, pBattleSetup);
+        FieldSystem_CreateBattleSetupForWildBattle(fieldSystem, ENCOUNTER_CONTEXT_SAFARI, pBattleSetup);
     } else {
-        FieldSystem_CreateBattleSetupForWildBattle(fieldSystem, 0, pBattleSetup);
+        FieldSystem_CreateBattleSetupForWildBattle(fieldSystem, ENCOUNTER_CONTEXT_REGULAR, pBattleSetup);
     }
     BattleSetup_InitFromFieldSystem(*pBattleSetup, fieldSystem);
     sub_02052544(*pBattleSetup);
@@ -384,7 +384,7 @@ BOOL FieldSystem_PerformRockSmashEncounterCheck(FieldSystem *fieldSystem, Battle
         return FALSE;
     }
 
-    FieldSystem_CreateBattleSetupForWildBattle(fieldSystem, 0, pBattleSetup);
+    FieldSystem_CreateBattleSetupForWildBattle(fieldSystem, ENCOUNTER_CONTEXT_REGULAR, pBattleSetup);
     BattleSetup_InitFromFieldSystem(*pBattleSetup, fieldSystem);
     const ENC_DATA *r5 = MapEvents_GetLoadedEncTable(fieldSystem);
     const ENC_DATA_SLOT *r5_2 = r5->rockSmashSlots;
@@ -433,13 +433,13 @@ BOOL FieldSystem_PerformSweetScentEncounterCheck(FieldSystem *fieldSystem, TaskM
     BOOL safariFlag = Save_VarsFlags_CheckSafariSysFlag(saveVarsFlags);
     BOOL bugContestFlag = Save_VarsFlags_CheckBugContestFlag(saveVarsFlags);
     if (!followerFlag) {
-        u8 r1 = 0;
+        u8 encounterCtx = ENCOUNTER_CONTEXT_REGULAR;
         if (safariFlag) {
-            r1 = 1;
+            encounterCtx = ENCOUNTER_CONTEXT_SAFARI;
         } else if (bugContestFlag) {
-            r1 = 2;
+            encounterCtx = ENCOUNTER_CONTEXT_BUG_CONTEST;
         }
-        FieldSystem_CreateBattleSetupForWildBattle(fieldSystem, r1, &battleSetup);
+        FieldSystem_CreateBattleSetupForWildBattle(fieldSystem, encounterCtx, &battleSetup);
     } else {
         battleSetup = BattleSetup_New(HEAP_ID_FIELD2, BATTLE_TYPE_DOUBLES | BATTLE_TYPE_MULTI | BATTLE_TYPE_AI);
     }
@@ -491,7 +491,7 @@ BOOL FieldSystem_PerformHeadbuttEncounterCheck(FieldSystem *fieldSystem, BattleS
 
     Pokemon *leadMon = Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->saveData), 0);
     EncounterGenState_Init(fieldSystem, leadMon, NULL, &encounterGen);
-    FieldSystem_CreateBattleSetupForWildBattle(fieldSystem, 0, pBattleSetup);
+    FieldSystem_CreateBattleSetupForWildBattle(fieldSystem, ENCOUNTER_CONTEXT_REGULAR, pBattleSetup);
     BattleSetup_InitFromFieldSystem(*pBattleSetup, fieldSystem);
     for (u8 i = 0; i < NUM_ENCOUNTERS_HEADBUTT; ++i) {
         encDataSlots[i].species = headbuttSlots[i].species;
@@ -1154,14 +1154,14 @@ static BOOL DoesAbilitySuppressEncounter(EncounterGenState *encounterGen, Pokemo
     return FALSE;
 }
 
-static void FieldSystem_CreateBattleSetupForWildBattle(FieldSystem *fieldSystem, u8 type, BattleSetup **pBattleSetup) {
-    switch (type) {
-    case 1: {
+static void FieldSystem_CreateBattleSetupForWildBattle(FieldSystem *fieldSystem, u8 encounterCtx, BattleSetup **pBattleSetup) {
+    switch (encounterCtx) {
+    case ENCOUNTER_CONTEXT_SAFARI: {
         LocalFieldData *localFieldData = Save_LocalFieldData_Get(fieldSystem->saveData);
         u16 *pSafariBalls = LocalFieldData_GetSafariBallsCounter(localFieldData);
         *pBattleSetup = BattleSetup_New_SafariZone(HEAP_ID_FIELD2, *pSafariBalls);
     } break;
-    case 2: {
+    case ENCOUNTER_CONTEXT_BUG_CONTEST: {
         BugContest *bugContest = FieldSystem_BugContest_Get(fieldSystem);
         u16 *pSportBalls = BugContest_GetSportBallsAddr(bugContest);
         *pBattleSetup = BattleSetup_New_BugContest(HEAP_ID_FIELD2, *pSportBalls, bugContest->mon);
@@ -1390,33 +1390,33 @@ static void EncounterGenState_Init(FieldSystem *fieldSystem, Pokemon *pokemon, c
 
 static void FieldSystem_UpdateTurnFrameCounter(FieldSystem *fieldSystem) {
     u8 facingDirection = PlayerAvatar_GetFacingDirection(fieldSystem->playerAvatar);
-    BOOL r1 = FALSE;
+    BOOL isTurnFrame = FALSE;
     switch (facingDirection) {
     case DIR_NORTH:
         if (fieldSystem->lastFacingDirection == DIR_SOUTH) {
-            r1 = TRUE;
+            isTurnFrame = TRUE;
         }
         break;
     case DIR_SOUTH:
         if (fieldSystem->lastFacingDirection == DIR_NORTH) {
-            r1 = TRUE;
+            isTurnFrame = TRUE;
         }
         break;
     case DIR_WEST:
         if (fieldSystem->lastFacingDirection == DIR_EAST) {
-            r1 = TRUE;
+            isTurnFrame = TRUE;
         }
         break;
     case DIR_EAST:
         if (fieldSystem->lastFacingDirection == DIR_WEST) {
-            r1 = TRUE;
+            isTurnFrame = TRUE;
         }
         break;
     default:
         GF_ASSERT(FALSE);
         return;
     }
-    if (r1 && fieldSystem->reverseTurnFrameSteps < 0xFFFF) {
+    if (isTurnFrame && fieldSystem->reverseTurnFrameSteps < 0xFFFF) {
         ++fieldSystem->reverseTurnFrameSteps;
     }
     fieldSystem->lastFacingDirection = facingDirection;
