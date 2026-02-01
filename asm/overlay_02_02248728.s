@@ -12346,6 +12346,15 @@ _0224E312:
 _0224E318: .word 0x00000165
 	thumb_func_end ov02_0224E308
 
+/*
+ * int ov02_0224E31C(int x, int z) {
+ *     int ret  = ((x - 32) / 32) + (((z - 32) / 32) * 3);
+ *     if (ret < 0 || ret >= 6) {
+ *         ret = 0;
+ *     }
+ *     return ret;
+ * }
+ */
 	thumb_func_start ov02_0224E31C
 ov02_0224E31C: ; 0x0224E31C
 	sub r0, #0x20
