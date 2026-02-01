@@ -34,7 +34,7 @@ FrtCmd_087: ; 0x022353B0
 	strh r0, [r1]
 	ldr r1, _022353CC ; =ov80_022353D0
 	add r0, r4, #0
-	bl ov80_0222AB84
+	bl FrontierScriptContext_Pause
 	mov r0, #1
 	pop {r4, pc}
 	nop
@@ -60,7 +60,7 @@ _022353E2:
 	thumb_func_start FrtCmd_088
 FrtCmd_088: ; 0x022353E8
 	push {r3, lr}
-	bl FrontierScript_ReadU16
+	bl FrontierScriptContext_ReadHalfWord
 	bl PlayFanfare
 	mov r0, #0
 	pop {r3, pc}
@@ -71,7 +71,7 @@ FrtCmd_088: ; 0x022353E8
 FrtCmd_089: ; 0x022353F8
 	push {r3, lr}
 	ldr r1, _02235404 ; =ov80_02235408
-	bl ov80_0222AB84
+	bl FrontierScriptContext_Pause
 	mov r0, #1
 	pop {r3, pc}
 	.balign 4, 0
@@ -95,7 +95,7 @@ _02235416:
 	thumb_func_start FrtCmd_090
 FrtCmd_090: ; 0x0223541C
 	push {r4, lr}
-	bl FrontierScript_ReadU16
+	bl FrontierScriptContext_ReadHalfWord
 	add r4, r0, #0
 	lsl r0, r4, #0x10
 	lsr r0, r0, #0x10
