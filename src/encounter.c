@@ -543,7 +543,7 @@ void SetupAndStartWildBattle(TaskManager *taskManager, u16 species, u8 level, u3
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     setup = BattleSetup_New(HEAP_ID_FIELD2, BATTLE_TYPE_NONE);
     BattleSetup_InitFromFieldSystem(setup, fieldSystem);
-    ov02_02247F30(fieldSystem, species, level, shiny, setup);
+    FieldSystem_GenerateSingleWildPokemon(fieldSystem, species, level, shiny, setup);
 
     if (canFlee) {
         setup->battleSpecial |= 8;
@@ -559,7 +559,7 @@ void SetupAndStartFatefulWildBattle(TaskManager *taskManager, u16 species, u8 le
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     setup = BattleSetup_New(HEAP_ID_FIELD2, 0);
     BattleSetup_InitFromFieldSystem(setup, fieldSystem);
-    ov02_02247F30(fieldSystem, species, level, FALSE, setup);
+    FieldSystem_GenerateSingleWildPokemon(fieldSystem, species, level, FALSE, setup);
 
     u32 var = 1;
 
@@ -634,7 +634,7 @@ void SetupAndStartFirstBattle(TaskManager *taskManager, u16 species, u8 level) {
     BattleSetup *setup = BattleSetup_New(HEAP_ID_FIELD2, BATTLE_TYPE_NONE);
     BattleSetup_InitFromFieldSystem(setup, fieldSystem);
 
-    ov02_02247F30(fieldSystem, species, level, FALSE, setup);
+    FieldSystem_GenerateSingleWildPokemon(fieldSystem, species, level, FALSE, setup);
 
     setup->battleSpecial = BATTLE_SPECIAL_FIRST_RIVAL;
 

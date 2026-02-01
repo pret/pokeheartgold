@@ -463,7 +463,7 @@
 .public FieldSystem_PerformRockSmashEncounterCheck
 .public FieldSystem_PerformSweetScentEncounterCheck
 .public FieldSystem_PerformHeadbuttEncounterCheck
-.public ov02_02247F30
+.public FieldSystem_GenerateSingleWildPokemon
 .public ov02_02247F9C
 .public ov02_02249458
 .public ov02_0224953C
