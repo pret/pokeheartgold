@@ -301,8 +301,8 @@ Static main
     Object src/mail_misc.o
     Object src/unk_02091054.o
     Object src/hatch_egg_task.o
-    Object asm/unk_02091278.o
-    Object asm/unk_020912AC.o
+    Object src/unk_02091278.o
+    Object src/unk_020912AC.o
     Object src/dex_mon_measures.o
     Object asm/unk_02091564.o
     Object asm/unk_020915B0.o
@@ -1001,7 +1001,7 @@ Overlay OVY_80
     After OVY_42
     Object asm/overlay_80_02229EE0.o
     Object asm/frontier_system.o
-    Object asm/overlay_80_0222AB40.o
+    Object src/frontier/frontier_script_context.o
     Object asm/overlay_80_0222ACA0.o
     Object asm/overlay_80_0222AEF8.o
     Object asm/overlay_80_0222BDF4.o

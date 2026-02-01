@@ -848,13 +848,13 @@ FrtCmd_105: ; 0x0222FC50
 FrtCmd_106: ; 0x0222FC80
 	push {r4, lr}
 	add r4, r0, #0
-	bl FrontierScript_ReadU16
+	bl FrontierScriptContext_ReadHalfWord
 	add r1, r4, #0
 	add r1, #0x78
 	strh r0, [r1]
 	ldr r1, _0222FC9C ; =ov80_0222FCA0
 	add r0, r4, #0
-	bl ov80_0222AB84
+	bl FrontierScriptContext_Pause
 	mov r0, #1
 	pop {r4, pc}
 	nop
