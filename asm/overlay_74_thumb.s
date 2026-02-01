@@ -17680,7 +17680,7 @@ _0223180A:
 	bl ov74_02233F68
 	add r1, r0, #0
 	add r0, r5, #0
-	bl sub_0202EC28
+	bl MigratedPokemon_RecordMigration
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
@@ -17825,7 +17825,7 @@ ov74_02231930: ; 0x02231930
 	bl ov74_02233F68
 	add r1, r0, #0
 	add r0, r4, #0
-	bl sub_0202EC28
+	bl MigratedPokemon_RecordMigration
 	mov r0, #4
 	bl sub_0201A728
 	ldr r0, [r5, #0x10]
@@ -17870,7 +17870,7 @@ _02231976:
 	ldr r0, [sp]
 	add r1, r6, #0
 	add r2, r4, #0
-	bl sub_0202EC14
+	bl MigratedPokemon_CopyBoxPokemonToSlot
 	add r4, r4, #1
 	add r5, #0xc
 	cmp r4, #6
@@ -20776,7 +20776,7 @@ _02233092:
 	pop {r4, r5, r6, r7, pc}
 _022330B4:
 	ldr r0, [sp, #8]
-	bl sub_0202EC98
+	bl MigratedPokemon_CountPokemon
 	cmp r0, #0
 	beq _022330C4
 	add sp, #0xc
