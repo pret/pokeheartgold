@@ -502,7 +502,7 @@ _021FC3A8:
 	bl GetMetatileBehavior
 	add r1, r0, #0
 	add r0, r5, #0
-	bl ov02_02247F9C
+	bl FieldSystem_CanGenerateStepEncounter
 	cmp r0, #0
 	beq _021FC3EE
 	mov r0, #6

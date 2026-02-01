@@ -9,6 +9,7 @@
 #include "battle/battle_setup.h"
 #include "overlay_2/overlay_02_gear_phone.h"
 
+#include "alph_puzzle.h"
 #include "bug_contest.h"
 #include "encounter.h"
 #include "field_roamer.h"
@@ -30,6 +31,17 @@
 #include "unk_02097F6C.h"
 #include "wild_encounter.h"
 
+#define ENCOUNTER_TYPE_LAND       0
+#define ENCOUNTER_TYPE_SURFING    1
+#define ENCOUNTER_TYPE_FISHING    2
+#define ENCOUNTER_TYPE_ROCK_SMASH 3
+#define ENCOUNTER_TYPE_HEADBUTT   4
+
+#define ROD_TYPE_OLD   0
+#define ROD_TYPE_GOOD  1
+#define ROD_TYPE_SUPER 2
+#define ROD_TYPE_NONE  0xFF
+
 FS_EXTERN_OVERLAY(bug_contest);
 
 typedef struct UnlockedUnown {
@@ -47,23 +59,23 @@ typedef struct EncounterGenState {
     u8 unk_0F;
     u8 unk_10;
     u8 isSinjohMap;
-    u8 unownPuzzleFlags[4];
+    u8 unownPuzzleFlags[ALPH_PUZZLE_MAX];
     Pokedex *pokedex;
 } EncounterGenState;
 
-static void EncSlotArray_Init_Land(const ENC_DATA *a0, ENC_SLOT *a1);
-static void EncSlotArray_Update_NightFishing(const ENC_DATA *a0, u8 a1, ENC_SLOT *a2);
-static void EncSlotArray_Update_HoennSinnohSounds(FieldSystem *fieldSystem, const ENC_DATA *a1, ENC_SLOT *a2);
-static void EncSlots_Update_LandSwarm(FieldSystem *fieldSystem, const ENC_DATA *a1, ENC_SLOT *a2, ENC_SLOT *a3);
-static void EncSlots_Update_SurfingSwarm(FieldSystem *fieldSystem, const ENC_DATA *a1, ENC_SLOT *a2);
-static void EncSlots_Update_FishingSwarm(FieldSystem *fieldSystem, u8 a1, const ENC_DATA *a2, ENC_SLOT *a3);
-static BOOL ov02_02247424(FieldSystem *fieldSystem, Pokemon *leadMon, BattleSetup *battleSetup, const ENC_DATA *encData, ENC_SLOT *encSlots, EncounterGenState *a5);
-static BOOL ov02_02247444(FieldSystem *fieldSystem, Pokemon *leadMon, BattleSetup *battleSetup, const ENC_DATA *encData, ENC_SLOT *encSlots, EncounterGenState *a5);
-static BOOL FieldSystem_GenerateBugContestEncounter(FieldSystem *fieldSystem, Pokemon *leadMon, BattleSetup *battleSetup, const ENC_DATA *encData, ENC_SLOT *encSlots, EncounterGenState *a5);
-static BOOL ov02_0224749C(FieldSystem *fieldSystem, Pokemon *leadMon, BattleSetup *battleSetup, ENC_SLOT *encSlots, EncounterGenState *a5);
-static BOOL ov02_022474E0(FieldSystem *fieldSystem, Pokemon *leadMon, BattleSetup *battleSetup, ENC_SLOT *encSlots, EncounterGenState *a4, BOOL a5);
-static BOOL ov02_02247514(FieldSystem *fieldSystem, Pokemon *leadMon, BattleSetup *battleSetup, ENC_SLOT *encSlots, EncounterGenState *a4, int rodType, BOOL isSafari);
-static BOOL ov02_0224754C(FieldSystem *fieldSystem, Pokemon *leadMon, BattleSetup *battleSetup, ENC_SLOT *encSlots, EncounterGenState *a4);
+static void EncSlotArray_Init_Land(const ENC_DATA *encData, ENC_SLOT *encSlots);
+static void EncSlotArray_Update_NightFishing(const ENC_DATA *encData, u8 rodType, ENC_SLOT *encSlots);
+static void EncSlotArray_Update_HoennSinnohSounds(FieldSystem *fieldSystem, const ENC_DATA *encData, ENC_SLOT *encSlots);
+static void EncSlots_Update_LandSwarm(FieldSystem *fieldSystem, const ENC_DATA *encData, ENC_SLOT *encSlotA, ENC_SLOT *encSlotB);
+static void EncSlots_Update_SurfingSwarm(FieldSystem *fieldSystem, const ENC_DATA *encData, ENC_SLOT *encSlot);
+static void EncSlots_Update_FishingSwarm(FieldSystem *fieldSystem, u8 rodType, const ENC_DATA *encData, ENC_SLOT *encSlots);
+static BOOL FieldSystem_GenerateLandRegularEncounter(FieldSystem *fieldSystem, Pokemon *leadMon, BattleSetup *battleSetup, const ENC_DATA *encData, ENC_SLOT *encSlots, EncounterGenState *encounterGen);
+static BOOL FieldSystem_GenerateLandSafariEncounter(FieldSystem *fieldSystem, Pokemon *leadMon, BattleSetup *battleSetup, const ENC_DATA *encData, ENC_SLOT *encSlots, EncounterGenState *encounterGen);
+static BOOL FieldSystem_GenerateBugContestEncounter(FieldSystem *fieldSystem, Pokemon *leadMon, BattleSetup *battleSetup, const ENC_DATA *encData, ENC_SLOT *encSlots, EncounterGenState *encounterGen);
+static BOOL FieldSystem_GenerateDoubleEncounter(FieldSystem *fieldSystem, Pokemon *leadMon, BattleSetup *battleSetup, ENC_SLOT *encSlots, EncounterGenState *encounterGen);
+static BOOL FieldSystem_GenerateSurfingEncounter(FieldSystem *fieldSystem, Pokemon *leadMon, BattleSetup *battleSetup, ENC_SLOT *encSlots, EncounterGenState *encounterGen, BOOL isSafari);
+static BOOL FieldSystem_GenerateFishingEncounter(FieldSystem *fieldSystem, Pokemon *leadMon, BattleSetup *battleSetup, ENC_SLOT *encSlots, EncounterGenState *encounterGen, int rodType, BOOL isSafari);
+static BOOL FieldSystem_GenerateRockSmashEncounter(FieldSystem *fieldSystem, Pokemon *leadMon, BattleSetup *battleSetup, ENC_SLOT *encSlots, EncounterGenState *encounterGen);
 static BOOL FieldSystem_EncounterRateRoll(FieldSystem *fieldSystem, u8 encounterRate, u8 metatileBehavior);
 static u8 getStepCountEncounterRateBoost(u16 stepCount);
 static u8 FieldSystem_GetTileEncounterTypeAndRate(FieldSystem *fieldSystem, u8 metatileBehavior, u8 *pEncType);
@@ -75,32 +87,32 @@ static u8 EncounterSlot_WildMonSlotRoll_RockSmash(void);
 static u8 EncounterSlot_WildMonSlotRoll_Headbutt(void);
 static void ApplyLeadMonHeldItemEffectToEncounterRate(Pokemon *leadMon, u8 *pEncounterRate);
 static void ApplyFluteEffectToEncounterRate(FieldSystem *fieldSystem, u8 *pEncounterRate);
-static u8 getWildMonNature(Pokemon *pokemon, EncounterGenState *a1);
-static u8 EncounterSlot_WildMonLevelRoll(ENC_SLOT *encSlot, EncounterGenState *a1);
-static void generateWildShinyAndAddToParty(u16 species, u8 level, int battler, u32 otid, EncounterGenState *a4, Pokemon *leadMon, BattleSetup *battleSetup);
-static void generateWildNonShinyAndAddToParty(u16 species, u8 level, int battler, BOOL forceOnePerfectIV, EncounterGenState *a4, Pokemon *leadMon, BattleSetup *battleSetup);
-static BOOL ov02_02247B64(Pokemon *leadMon, int rodType, EncounterGenState *a2, ENC_SLOT *encSlots, u8 encType, int battler, BattleSetup *battleSetup);
-static BOOL FieldSystem_GenerateSafariEncounter(FieldSystem *fieldSystem, Pokemon *leadMon, int rodType, EncounterGenState *a3, u8 encType, int battler, BattleSetup *battleSetup);
-static BOOL FieldSystem_GenerateBugContestEncounter_Internal(FieldSystem *fieldSystem, Pokemon *leadMon, int rodType, EncounterGenState *a3, u8 encType, int battler, BattleSetup *battleSetup);
+static u8 getWildMonNature(Pokemon *pokemon, EncounterGenState *encounterGen);
+static u8 EncounterSlot_WildMonLevelRoll(ENC_SLOT *encSlot, EncounterGenState *encounterGen);
+static void generateWildShinyAndAddToParty(u16 species, u8 level, int battler, u32 otid, EncounterGenState *encounterGen, Pokemon *leadMon, BattleSetup *battleSetup);
+static void generateWildNonShinyAndAddToParty(u16 species, u8 level, int battler, BOOL forceOnePerfectIV, EncounterGenState *encounterGen, Pokemon *leadMon, BattleSetup *battleSetup);
+static BOOL FieldSystem_GenerateRegularEncounter(Pokemon *leadMon, int rodType, EncounterGenState *encounterGen, ENC_SLOT *encSlots, u8 encType, int battler, BattleSetup *battleSetup);
+static BOOL FieldSystem_GenerateSafariEncounter(FieldSystem *fieldSystem, Pokemon *leadMon, int rodType, EncounterGenState *encounterGen, u8 encType, int battler, BattleSetup *battleSetup);
+static BOOL FieldSystem_GenerateBugContestEncounter_Internal(FieldSystem *fieldSystem, Pokemon *leadMon, int rodType, EncounterGenState *encounterGen, u8 encType, int battler, BattleSetup *battleSetup);
 static int FieldSystem_GetLandEncounterRate(FieldSystem *fieldSystem);
 static int FieldSystem_GetSurfingEncounterRate(FieldSystem *fieldSystem);
 static u8 FieldSystem_GetFishingEncounterRate(FieldSystem *fieldSystem, u8 rodType);
 static u8 getFriendshipBoostToFishingBiteRate(u8 friendship);
 static int FieldSystem_GetRockSmashEncounterRate(FieldSystem *fieldSystem);
-static BOOL ov02_022480C0(ENC_SLOT *encSlots, u8 numEncSlots, u8 type, u8 *slot);
-static BOOL EncounterSlot_AbilityInfluenceOnSlotChoiceCheck(Pokemon *leadMon, EncounterGenState *a1, ENC_SLOT *encSlots, u8 numSlots, u8 type, u8 ability, u8 *slotNum);
-static u8 ApplyAbilityEffectToEncounterRate(BOOL isFishing, u8 encounterRate, EncounterGenState *a2, u16 weatherType, Pokemon *leadMon);
-static BOOL DoesAbilitySuppressEncounter(EncounterGenState *a0, Pokemon *leadMon, u8 level);
-static void ov02_02248244(FieldSystem *fieldSystem, u8 a1, BattleSetup **pBattleSetup);
-static BOOL EncounterGen_DoesRepelSuppressEncounter(u8 roamerLevel, EncounterGenState *a1);
-static BOOL EncounterGen_CanGenerateUnownEncounter(EncounterGenState *a0);
-static void ov02_022482BC(u32 otId, Roamer *roamer, BattleSetup *battleSetup);
-static BOOL ov02_GetRandomActiveRoamerInCurrMap(FieldSystem *fieldSystem, Roamer **pRoamer);
+static BOOL chooseAbilityCoercedSlot(ENC_SLOT *encSlots, u8 numEncSlots, u8 type, u8 *slot);
+static BOOL EncounterSlot_AbilityInfluenceOnSlotChoiceCheck(Pokemon *leadMon, EncounterGenState *encounterGen, ENC_SLOT *encSlots, u8 numSlots, u8 type, u8 ability, u8 *slotNum);
+static u8 ApplyAbilityEffectToEncounterRate(BOOL isFishing, u8 encounterRate, EncounterGenState *encounterGen, u16 weatherType, Pokemon *leadMon);
+static BOOL DoesAbilitySuppressEncounter(EncounterGenState *encounterGen, Pokemon *leadMon, u8 level);
+static void FieldSystem_CreateBattleSetupForWildBattle(FieldSystem *fieldSystem, u8 type, BattleSetup **pBattleSetup);
+static BOOL EncounterGen_DoesRepelSuppressEncounter(u8 roamerLevel, EncounterGenState *encounterGen);
+static BOOL EncounterGen_CanGenerateUnownEncounter(EncounterGenState *encounterGen);
+static void initRoamingWildmon(u32 otId, Roamer *roamer, BattleSetup *battleSetup);
+static BOOL getRandomActiveRoamerInCurrMap(FieldSystem *fieldSystem, Roamer **pRoamer);
 static BOOL hasCaughtUnownForm(Pokedex *pokedex, u8 numForms, u8 targetForm);
-static u8 EncounterGen_ChooseUnownForm(EncounterGenState *a0);
-static BOOL addGeneratedMonToBattleSetupParty(int battler, EncounterGenState *a1, Pokemon *pokemon, BattleSetup *battleSetup);
-static u8 ApplyAbilityEffectToSlotLevel(ENC_SLOT *encSlots, int numEncSlots, EncounterGenState *a2, u8 chosenSlot);
-static void EncounterGenState_Init(FieldSystem *fieldSystem, Pokemon *pokemon, const ENC_DATA *encData, EncounterGenState *a3);
+static u8 EncounterGen_ChooseUnownForm(EncounterGenState *encounterGen);
+static BOOL addGeneratedMonToBattleSetupParty(int battler, EncounterGenState *encounterGen, Pokemon *pokemon, BattleSetup *battleSetup);
+static u8 ApplyAbilityEffectToSlotLevel(ENC_SLOT *encSlots, int numEncSlots, EncounterGenState *encounterGen, u8 chosenSlot);
+static void EncounterGenState_Init(FieldSystem *fieldSystem, Pokemon *pokemon, const ENC_DATA *encData, EncounterGenState *encounterGen);
 static void FieldSystem_UpdateTurnFrameCounter(FieldSystem *fieldSystem);
 
 static void EncSlotArray_Init_Land(const ENC_DATA *encData, ENC_SLOT *encSlots) {
@@ -236,11 +248,11 @@ BOOL FieldSystem_PerformLandOrSurfEncounterCheck(FieldSystem *fieldSystem) {
         return FALSE;
     }
     BOOL followerFlag = Save_VarsFlags_CheckHaveFollower(Save_VarsFlags_Get(fieldSystem->saveData)) ? TRUE : FALSE;
-    if (!followerFlag && ov02_GetRandomActiveRoamerInCurrMap(fieldSystem, &roamer)) {
+    if (!followerFlag && getRandomActiveRoamerInCurrMap(fieldSystem, &roamer)) {
         if (!EncounterGen_DoesRepelSuppressEncounter(GetRoamerData(roamer, ROAMER_DATA_LEVEL), &encounterGen)) {
             battleSetup = BattleSetup_New(HEAP_ID_FIELD2, BATTLE_TYPE_ROAMER);
             BattleSetup_InitFromFieldSystem(battleSetup, fieldSystem);
-            ov02_022482BC(encounterGen.playerId, roamer, battleSetup);
+            initRoamingWildmon(encounterGen.playerId, roamer, battleSetup);
             sub_02050B08(fieldSystem, battleSetup);
             return TRUE;
         }
@@ -249,16 +261,16 @@ BOOL FieldSystem_PerformLandOrSurfEncounterCheck(FieldSystem *fieldSystem) {
 
     SaveVarsFlags *saveVarsFlags = Save_VarsFlags_Get(fieldSystem->saveData);
     BOOL safariFlag = Save_VarsFlags_CheckSafariSysFlag(saveVarsFlags);
-    BOOL bugContetFlag = Save_VarsFlags_CheckBugContestFlag(saveVarsFlags);
+    BOOL bugContestFlag = Save_VarsFlags_CheckBugContestFlag(saveVarsFlags);
 
     if (!followerFlag) {
         u8 r1 = 0;
         if (safariFlag) {
             r1 = 1;
-        } else if (bugContetFlag) {
+        } else if (bugContestFlag) {
             r1 = 2;
         }
-        ov02_02248244(fieldSystem, r1, &battleSetup);
+        FieldSystem_CreateBattleSetupForWildBattle(fieldSystem, r1, &battleSetup);
     } else {
         battleSetup = BattleSetup_New(HEAP_ID_FIELD2, BATTLE_TYPE_DOUBLES | BATTLE_TYPE_MULTI | BATTLE_TYPE_AI);
     }
@@ -270,16 +282,16 @@ BOOL FieldSystem_PerformLandOrSurfEncounterCheck(FieldSystem *fieldSystem) {
         EncSlotArray_Update_HoennSinnohSounds(fieldSystem, encData, encSlots);
         if (!followerFlag) {
             if (safariFlag) {
-                found = ov02_02247444(fieldSystem, leadMon, battleSetup, encData, encSlots, &encounterGen);
-            } else if (bugContetFlag) {
+                found = FieldSystem_GenerateLandSafariEncounter(fieldSystem, leadMon, battleSetup, encData, encSlots, &encounterGen);
+            } else if (bugContestFlag) {
                 found = FieldSystem_GenerateBugContestEncounter(fieldSystem, leadMon, battleSetup, encData, encSlots, &encounterGen);
             } else {
-                found = ov02_02247424(fieldSystem, leadMon, battleSetup, encData, encSlots, &encounterGen);
+                found = FieldSystem_GenerateLandRegularEncounter(fieldSystem, leadMon, battleSetup, encData, encSlots, &encounterGen);
             }
         } else {
             battleSetup->trainerId[BATTLER_PLAYER2] = Save_VarsFlags_GetFollowerTrainerNum(Save_VarsFlags_Get(fieldSystem->saveData));
             EnemyTrainerSet_Init(battleSetup, fieldSystem->saveData, HEAP_ID_FIELD2);
-            found = ov02_0224749C(fieldSystem, leadMon, battleSetup, encSlots, &encounterGen);
+            found = FieldSystem_GenerateDoubleEncounter(fieldSystem, leadMon, battleSetup, encSlots, &encounterGen);
         }
     } else if (encounterType == ENCOUNTER_TYPE_SURFING) {
         for (int i = 0; i < NUM_ENCOUNTERS_SURF; ++i) {
@@ -288,7 +300,7 @@ BOOL FieldSystem_PerformLandOrSurfEncounterCheck(FieldSystem *fieldSystem) {
             encSlots[i].level_min = encData->surfSlots[i].level_min;
         }
         EncSlots_Update_SurfingSwarm(fieldSystem, encData, encSlots);
-        found = ov02_022474E0(fieldSystem, leadMon, battleSetup, encSlots, &encounterGen, safariFlag);
+        found = FieldSystem_GenerateSurfingEncounter(fieldSystem, leadMon, battleSetup, encSlots, &encounterGen, safariFlag);
     } else {
         GF_ASSERT(FALSE);
         BattleSetup_Delete(battleSetup);
@@ -311,7 +323,7 @@ BOOL FieldSystem_PerformLandOrSurfEncounterCheck(FieldSystem *fieldSystem) {
 
 BOOL FieldSystem_PerformFishEncounterCheck(FieldSystem *fieldSystem, u8 rodType, BattleSetup **pBattleSetup) {
     ENC_SLOT encSlots[NUM_ENCOUNTERS_LAND];
-    EncounterGenState sp24;
+    EncounterGenState encounterGen;
 
     u8 encounterRate = FieldSystem_GetFishingEncounterRate(fieldSystem, rodType);
     if (encounterRate == 0) {
@@ -319,16 +331,16 @@ BOOL FieldSystem_PerformFishEncounterCheck(FieldSystem *fieldSystem, u8 rodType,
     }
 
     Pokemon *leadMon = Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->saveData), 0);
-    EncounterGenState_Init(fieldSystem, leadMon, NULL, &sp24);
-    encounterRate = ApplyAbilityEffectToEncounterRate(TRUE, encounterRate, &sp24, LocalFieldData_GetWeatherType(Save_LocalFieldData_Get(fieldSystem->saveData)), leadMon);
+    EncounterGenState_Init(fieldSystem, leadMon, NULL, &encounterGen);
+    encounterRate = ApplyAbilityEffectToEncounterRate(TRUE, encounterRate, &encounterGen, LocalFieldData_GetWeatherType(Save_LocalFieldData_Get(fieldSystem->saveData)), leadMon);
     if (LCRandRange(100) >= encounterRate) {
         return FALSE;
     }
-    BOOL sp18 = Save_VarsFlags_CheckSafariSysFlag(Save_VarsFlags_Get(fieldSystem->saveData));
-    if (sp18) {
-        ov02_02248244(fieldSystem, 1, pBattleSetup);
+    BOOL safariFlag = Save_VarsFlags_CheckSafariSysFlag(Save_VarsFlags_Get(fieldSystem->saveData));
+    if (safariFlag) {
+        FieldSystem_CreateBattleSetupForWildBattle(fieldSystem, 1, pBattleSetup);
     } else {
-        ov02_02248244(fieldSystem, 0, pBattleSetup);
+        FieldSystem_CreateBattleSetupForWildBattle(fieldSystem, 0, pBattleSetup);
     }
     BattleSetup_InitFromFieldSystem(*pBattleSetup, fieldSystem);
     sub_02052544(*pBattleSetup);
@@ -353,12 +365,12 @@ BOOL FieldSystem_PerformFishEncounterCheck(FieldSystem *fieldSystem, u8 rodType,
     }
     EncSlotArray_Update_NightFishing(encData, rodType, encSlots);
     EncSlots_Update_FishingSwarm(fieldSystem, rodType, encData, encSlots);
-    return ov02_02247514(fieldSystem, leadMon, *pBattleSetup, encSlots, &sp24, rodType, sp18) ? TRUE : FALSE;
+    return FieldSystem_GenerateFishingEncounter(fieldSystem, leadMon, *pBattleSetup, encSlots, &encounterGen, rodType, safariFlag) ? TRUE : FALSE;
 }
 
 BOOL FieldSystem_PerformRockSmashEncounterCheck(FieldSystem *fieldSystem, BattleSetup **pBattleSetup) {
     ENC_SLOT encSlots[NUM_ENCOUNTERS_LAND];
-    EncounterGenState sp10;
+    EncounterGenState encounterGen;
 
     u8 encounterRate = FieldSystem_GetRockSmashEncounterRate(fieldSystem);
     if (encounterRate == 0) {
@@ -366,13 +378,13 @@ BOOL FieldSystem_PerformRockSmashEncounterCheck(FieldSystem *fieldSystem, Battle
     }
 
     Pokemon *leadMon = Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->saveData), 0);
-    EncounterGenState_Init(fieldSystem, leadMon, NULL, &sp10);
-    encounterRate = ApplyAbilityEffectToEncounterRate(FALSE, encounterRate, &sp10, LocalFieldData_GetWeatherType(Save_LocalFieldData_Get(fieldSystem->saveData)), leadMon);
+    EncounterGenState_Init(fieldSystem, leadMon, NULL, &encounterGen);
+    encounterRate = ApplyAbilityEffectToEncounterRate(FALSE, encounterRate, &encounterGen, LocalFieldData_GetWeatherType(Save_LocalFieldData_Get(fieldSystem->saveData)), leadMon);
     if ((LCRandom() % 100) >= encounterRate) {
         return FALSE;
     }
 
-    ov02_02248244(fieldSystem, 0, pBattleSetup);
+    FieldSystem_CreateBattleSetupForWildBattle(fieldSystem, 0, pBattleSetup);
     BattleSetup_InitFromFieldSystem(*pBattleSetup, fieldSystem);
     const ENC_DATA *r5 = MapEvents_GetLoadedEncTable(fieldSystem);
     const ENC_DATA_SLOT *r5_2 = r5->rockSmashSlots;
@@ -381,7 +393,7 @@ BOOL FieldSystem_PerformRockSmashEncounterCheck(FieldSystem *fieldSystem, Battle
         encSlots[i].level_max = r5_2[i].level_max;
         encSlots[i].level_min = r5_2[i].level_min;
     }
-    if (!ov02_0224754C(fieldSystem, leadMon, *pBattleSetup, encSlots, &sp10)) {
+    if (!FieldSystem_GenerateRockSmashEncounter(fieldSystem, leadMon, *pBattleSetup, encSlots, &encounterGen)) {
         BattleSetup_Delete(*pBattleSetup);
         return FALSE;
     }
@@ -391,7 +403,7 @@ BOOL FieldSystem_PerformRockSmashEncounterCheck(FieldSystem *fieldSystem, Battle
 
 BOOL FieldSystem_PerformSweetScentEncounterCheck(FieldSystem *fieldSystem, TaskManager *taskManager) {
     ENC_SLOT encSlots[NUM_ENCOUNTERS_LAND];
-    EncounterGenState sp20;
+    EncounterGenState encounterGen;
     BattleSetup *battleSetup;
     Roamer *roamer;
     u8 encType;
@@ -407,13 +419,13 @@ BOOL FieldSystem_PerformSweetScentEncounterCheck(FieldSystem *fieldSystem, TaskM
     Party *party = SaveArray_Party_Get(fieldSystem->saveData);
     const ENC_DATA *encData = MapEvents_GetLoadedEncTable(fieldSystem);
     Pokemon *leadMon = Party_GetMonByIndex(party, 0);
-    EncounterGenState_Init(fieldSystem, leadMon, encData, &sp20);
-    sp20.isSweetScent = TRUE;
+    EncounterGenState_Init(fieldSystem, leadMon, encData, &encounterGen);
+    encounterGen.isSweetScent = TRUE;
     BOOL followerFlag = Save_VarsFlags_CheckHaveFollower(saveVarsFlags);
-    if (!followerFlag && ov02_GetRandomActiveRoamerInCurrMap(fieldSystem, &roamer)) {
+    if (!followerFlag && getRandomActiveRoamerInCurrMap(fieldSystem, &roamer)) {
         battleSetup = BattleSetup_New(HEAP_ID_FIELD2, BATTLE_TYPE_ROAMER);
         BattleSetup_InitFromFieldSystem(battleSetup, fieldSystem);
-        ov02_022482BC(sp20.playerId, roamer, battleSetup);
+        initRoamingWildmon(encounterGen.playerId, roamer, battleSetup);
         FieldSystem_StartForcedWildBattle(fieldSystem, taskManager, battleSetup);
         return TRUE;
     }
@@ -427,37 +439,37 @@ BOOL FieldSystem_PerformSweetScentEncounterCheck(FieldSystem *fieldSystem, TaskM
         } else if (bugContestFlag) {
             r1 = 2;
         }
-        ov02_02248244(fieldSystem, r1, &battleSetup);
+        FieldSystem_CreateBattleSetupForWildBattle(fieldSystem, r1, &battleSetup);
     } else {
         battleSetup = BattleSetup_New(HEAP_ID_FIELD2, BATTLE_TYPE_DOUBLES | BATTLE_TYPE_MULTI | BATTLE_TYPE_AI);
     }
     BattleSetup_InitFromFieldSystem(battleSetup, fieldSystem);
     BOOL found;
-    if (encType == 0) {
+    if (encType == ENCOUNTER_TYPE_LAND) {
         EncSlotArray_Init_Land(encData, encSlots);
         EncSlots_Update_LandSwarm(fieldSystem, encData, &encSlots[0], &encSlots[1]);
         EncSlotArray_Update_HoennSinnohSounds(fieldSystem, encData, encSlots);
         if (!followerFlag) {
             if (safariFlag) {
-                found = ov02_02247444(fieldSystem, leadMon, battleSetup, encData, encSlots, &sp20);
+                found = FieldSystem_GenerateLandSafariEncounter(fieldSystem, leadMon, battleSetup, encData, encSlots, &encounterGen);
             } else if (bugContestFlag) {
-                found = FieldSystem_GenerateBugContestEncounter(fieldSystem, leadMon, battleSetup, encData, encSlots, &sp20);
+                found = FieldSystem_GenerateBugContestEncounter(fieldSystem, leadMon, battleSetup, encData, encSlots, &encounterGen);
             } else {
-                found = ov02_02247424(fieldSystem, leadMon, battleSetup, encData, encSlots, &sp20);
+                found = FieldSystem_GenerateLandRegularEncounter(fieldSystem, leadMon, battleSetup, encData, encSlots, &encounterGen);
             }
         } else {
             battleSetup->trainerId[BATTLER_PLAYER2] = Save_VarsFlags_GetFollowerTrainerNum(Save_VarsFlags_Get(fieldSystem->saveData));
             EnemyTrainerSet_Init(battleSetup, fieldSystem->saveData, HEAP_ID_FIELD2);
-            found = ov02_0224749C(fieldSystem, leadMon, battleSetup, encSlots, &sp20);
+            found = FieldSystem_GenerateDoubleEncounter(fieldSystem, leadMon, battleSetup, encSlots, &encounterGen);
         }
-    } else if (encType == 1) {
+    } else if (encType == ENCOUNTER_TYPE_SURFING) {
         for (int i = 0; i < NUM_ENCOUNTERS_SURF; ++i) {
             encSlots[i].species = encData->surfSlots[i].species;
             encSlots[i].level_max = encData->surfSlots[i].level_max;
             encSlots[i].level_min = encData->surfSlots[i].level_min;
         }
         EncSlots_Update_SurfingSwarm(fieldSystem, encData, encSlots);
-        found = ov02_022474E0(fieldSystem, leadMon, battleSetup, encSlots, &sp20, safariFlag);
+        found = FieldSystem_GenerateSurfingEncounter(fieldSystem, leadMon, battleSetup, encSlots, &encounterGen, safariFlag);
     } else {
         GF_ASSERT(FALSE);
         return FALSE;
@@ -474,12 +486,12 @@ BOOL FieldSystem_PerformSweetScentEncounterCheck(FieldSystem *fieldSystem, TaskM
 
 BOOL FieldSystem_PerformHeadbuttEncounterCheck(FieldSystem *fieldSystem, BattleSetup **pBattleSetup, const HeadbuttSlot *headbuttSlots) {
     ENC_SLOT encSlots[NUM_ENCOUNTERS_LAND];
-    EncounterGenState sp2C;
+    EncounterGenState encounterGen;
     ENC_DATA_SLOT encDataSlots[NUM_ENCOUNTERS_HEADBUTT];
 
     Pokemon *leadMon = Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->saveData), 0);
-    EncounterGenState_Init(fieldSystem, leadMon, NULL, &sp2C);
-    ov02_02248244(fieldSystem, 0, pBattleSetup);
+    EncounterGenState_Init(fieldSystem, leadMon, NULL, &encounterGen);
+    FieldSystem_CreateBattleSetupForWildBattle(fieldSystem, 0, pBattleSetup);
     BattleSetup_InitFromFieldSystem(*pBattleSetup, fieldSystem);
     for (u8 i = 0; i < NUM_ENCOUNTERS_HEADBUTT; ++i) {
         encDataSlots[i].species = headbuttSlots[i].species;
@@ -491,7 +503,7 @@ BOOL FieldSystem_PerformHeadbuttEncounterCheck(FieldSystem *fieldSystem, BattleS
         encSlots[i].level_max = encDataSlots[i].level_max;
         encSlots[i].level_min = encDataSlots[i].level_min;
     }
-    if (!ov02_02247B64(leadMon, ROD_TYPE_NONE, &sp2C, encSlots, ENCOUNTER_TYPE_HEADBUTT, BATTLER_ENEMY, *pBattleSetup)) {
+    if (!FieldSystem_GenerateRegularEncounter(leadMon, ROD_TYPE_NONE, &encounterGen, encSlots, ENCOUNTER_TYPE_HEADBUTT, BATTLER_ENEMY, *pBattleSetup)) {
         BattleSetup_Delete(*pBattleSetup);
         return FALSE;
     }
@@ -499,49 +511,49 @@ BOOL FieldSystem_PerformHeadbuttEncounterCheck(FieldSystem *fieldSystem, BattleS
     return TRUE;
 }
 
-static BOOL ov02_02247424(FieldSystem *fieldSystem, Pokemon *leadMon, BattleSetup *battleSetup, const ENC_DATA *encData, ENC_SLOT *encSlots, EncounterGenState *a5) {
-    return ov02_02247B64(leadMon, ROD_TYPE_NONE, a5, encSlots, ENCOUNTER_TYPE_LAND, BATTLER_ENEMY, battleSetup);
+static BOOL FieldSystem_GenerateLandRegularEncounter(FieldSystem *fieldSystem, Pokemon *leadMon, BattleSetup *battleSetup, const ENC_DATA *encData, ENC_SLOT *encSlots, EncounterGenState *encounterGen) {
+    return FieldSystem_GenerateRegularEncounter(leadMon, ROD_TYPE_NONE, encounterGen, encSlots, ENCOUNTER_TYPE_LAND, BATTLER_ENEMY, battleSetup);
 }
 
-static BOOL ov02_02247444(FieldSystem *fieldSystem, Pokemon *leadMon, BattleSetup *battleSetup, const ENC_DATA *encData, ENC_SLOT *encSlots, EncounterGenState *a5) {
-    return FieldSystem_GenerateSafariEncounter(fieldSystem, leadMon, ROD_TYPE_NONE, a5, ENCOUNTER_TYPE_LAND, BATTLER_ENEMY, battleSetup);
+static BOOL FieldSystem_GenerateLandSafariEncounter(FieldSystem *fieldSystem, Pokemon *leadMon, BattleSetup *battleSetup, const ENC_DATA *encData, ENC_SLOT *encSlots, EncounterGenState *encounterGen) {
+    return FieldSystem_GenerateSafariEncounter(fieldSystem, leadMon, ROD_TYPE_NONE, encounterGen, ENCOUNTER_TYPE_LAND, BATTLER_ENEMY, battleSetup);
 }
 
-static BOOL FieldSystem_GenerateBugContestEncounter(FieldSystem *fieldSystem, Pokemon *leadMon, BattleSetup *battleSetup, const ENC_DATA *encData, ENC_SLOT *encSlots, EncounterGenState *a5) {
+static BOOL FieldSystem_GenerateBugContestEncounter(FieldSystem *fieldSystem, Pokemon *leadMon, BattleSetup *battleSetup, const ENC_DATA *encData, ENC_SLOT *encSlots, EncounterGenState *encounterGen) {
     FSOverlayID ovyId = FS_OVERLAY_ID(bug_contest);
 
     HandleLoadOverlay(ovyId, OVY_LOAD_ASYNC);
-    BOOL ret = FieldSystem_GenerateBugContestEncounter_Internal(fieldSystem, leadMon, ROD_TYPE_NONE, a5, ENCOUNTER_TYPE_LAND, BATTLER_ENEMY, battleSetup);
+    BOOL ret = FieldSystem_GenerateBugContestEncounter_Internal(fieldSystem, leadMon, ROD_TYPE_NONE, encounterGen, ENCOUNTER_TYPE_LAND, BATTLER_ENEMY, battleSetup);
     UnloadOverlayByID(ovyId);
     return ret;
 }
 
-static BOOL ov02_0224749C(FieldSystem *fieldSystem, Pokemon *leadMon, BattleSetup *battleSetup, ENC_SLOT *encSlots, EncounterGenState *a5) {
-    if (ov02_02247B64(leadMon, ROD_TYPE_NONE, a5, encSlots, ENCOUNTER_TYPE_LAND, BATTLER_ENEMY, battleSetup) == FALSE) { // explicit comparison to FALSE required to match
+static BOOL FieldSystem_GenerateDoubleEncounter(FieldSystem *fieldSystem, Pokemon *leadMon, BattleSetup *battleSetup, ENC_SLOT *encSlots, EncounterGenState *encounterGen) {
+    if (FieldSystem_GenerateRegularEncounter(leadMon, ROD_TYPE_NONE, encounterGen, encSlots, ENCOUNTER_TYPE_LAND, BATTLER_ENEMY, battleSetup) == FALSE) { // explicit comparison to FALSE required to match
         return FALSE;
     } else {
-        return ov02_02247B64(leadMon, ROD_TYPE_NONE, a5, encSlots, ENCOUNTER_TYPE_LAND, BATTLER_ENEMY2, battleSetup);
+        return FieldSystem_GenerateRegularEncounter(leadMon, ROD_TYPE_NONE, encounterGen, encSlots, ENCOUNTER_TYPE_LAND, BATTLER_ENEMY2, battleSetup);
     }
 }
 
-static BOOL ov02_022474E0(FieldSystem *fieldSystem, Pokemon *leadMon, BattleSetup *battleSetup, ENC_SLOT *encSlots, EncounterGenState *encounterGen, BOOL isSafari) {
+static BOOL FieldSystem_GenerateSurfingEncounter(FieldSystem *fieldSystem, Pokemon *leadMon, BattleSetup *battleSetup, ENC_SLOT *encSlots, EncounterGenState *encounterGen, BOOL isSafari) {
     if (isSafari) {
         return FieldSystem_GenerateSafariEncounter(fieldSystem, leadMon, ROD_TYPE_NONE, encounterGen, ENCOUNTER_TYPE_SURFING, BATTLER_ENEMY, battleSetup);
     } else {
-        return ov02_02247B64(leadMon, ROD_TYPE_NONE, encounterGen, encSlots, ENCOUNTER_TYPE_SURFING, BATTLER_ENEMY, battleSetup);
+        return FieldSystem_GenerateRegularEncounter(leadMon, ROD_TYPE_NONE, encounterGen, encSlots, ENCOUNTER_TYPE_SURFING, BATTLER_ENEMY, battleSetup);
     }
 }
 
-static BOOL ov02_02247514(FieldSystem *fieldSystem, Pokemon *leadMon, BattleSetup *battleSetup, ENC_SLOT *encSlots, EncounterGenState *encounterGen, int rodType, BOOL isSafari) {
+static BOOL FieldSystem_GenerateFishingEncounter(FieldSystem *fieldSystem, Pokemon *leadMon, BattleSetup *battleSetup, ENC_SLOT *encSlots, EncounterGenState *encounterGen, int rodType, BOOL isSafari) {
     if (isSafari) {
         return FieldSystem_GenerateSafariEncounter(fieldSystem, leadMon, rodType, encounterGen, ENCOUNTER_TYPE_FISHING, BATTLER_ENEMY, battleSetup);
     } else {
-        return ov02_02247B64(leadMon, rodType, encounterGen, encSlots, ENCOUNTER_TYPE_FISHING, BATTLER_ENEMY, battleSetup);
+        return FieldSystem_GenerateRegularEncounter(leadMon, rodType, encounterGen, encSlots, ENCOUNTER_TYPE_FISHING, BATTLER_ENEMY, battleSetup);
     }
 }
 
-static BOOL ov02_0224754C(FieldSystem *fieldSystem, Pokemon *leadMon, BattleSetup *battleSetup, ENC_SLOT *encSlots, EncounterGenState *a4) {
-    return ov02_02247B64(leadMon, ROD_TYPE_NONE, a4, encSlots, ENCOUNTER_TYPE_ROCK_SMASH, BATTLER_ENEMY, battleSetup);
+static BOOL FieldSystem_GenerateRockSmashEncounter(FieldSystem *fieldSystem, Pokemon *leadMon, BattleSetup *battleSetup, ENC_SLOT *encSlots, EncounterGenState *encounterGen) {
+    return FieldSystem_GenerateRegularEncounter(leadMon, ROD_TYPE_NONE, encounterGen, encSlots, ENCOUNTER_TYPE_ROCK_SMASH, BATTLER_ENEMY, battleSetup);
 }
 
 static BOOL FieldSystem_EncounterRateRoll(FieldSystem *fieldSystem, u8 encounterRate, u8 metatileBehavior) {
@@ -713,15 +725,15 @@ static void ApplyFluteEffectToEncounterRate(FieldSystem *fieldSystem, u8 *pEncou
     }
 }
 
-static u8 getWildMonNature(Pokemon *pokemon, EncounterGenState *a1) {
-    if (!a1->isEgg && a1->ability == ABILITY_SYNCHRONIZE && LCRandRange(2) == 0) {
+static u8 getWildMonNature(Pokemon *pokemon, EncounterGenState *encounterGen) {
+    if (!encounterGen->isEgg && encounterGen->ability == ABILITY_SYNCHRONIZE && LCRandRange(2) == 0) {
         return GetMonData(pokemon, MON_DATA_PERSONALITY, NULL) % 25;
     } else {
         return LCRandRange(25);
     }
 }
 
-static u8 EncounterSlot_WildMonLevelRoll(ENC_SLOT *encSlot, EncounterGenState *a1) {
+static u8 EncounterSlot_WildMonLevelRoll(ENC_SLOT *encSlot, EncounterGenState *encounterGen) {
     u8 hi;
     u8 lo;
 
@@ -735,7 +747,7 @@ static u8 EncounterSlot_WildMonLevelRoll(ENC_SLOT *encSlot, EncounterGenState *a
 
     u8 range = hi - lo + 1;
     u8 lvl = LCRandom() % range;
-    if (!a1->isEgg && (a1->ability == ABILITY_HUSTLE || a1->ability == ABILITY_VITAL_SPIRIT || a1->ability == ABILITY_PRESSURE)) {
+    if (!encounterGen->isEgg && (encounterGen->ability == ABILITY_HUSTLE || encounterGen->ability == ABILITY_VITAL_SPIRIT || encounterGen->ability == ABILITY_PRESSURE)) {
         if (LCRandRange(2) == 0) {
             return lo + lvl;
         }
@@ -835,16 +847,16 @@ static void generateWildNonShinyAndAddToParty(u16 species, u8 level, int battler
 
     if (forceOnePerfectIV) {
         int i;
-        BOOL sp18 = FALSE;
+        BOOL success = FALSE;
         for (i = 0; i < 4; ++i) {
             CreateMonWithNature(wildMon, species, level, 0x20, getWildMonNature(leadMon, encounterGen));
             for (int j = 0; j < 6; ++j) {
                 if (GetMonData(wildMon, MON_DATA_HP_IV + j, NULL) == 31) {
-                    sp18 = TRUE;
+                    success = TRUE;
                     break;
                 }
             }
-            if (sp18) {
+            if (success) {
                 break;
             }
         }
@@ -857,7 +869,7 @@ static void generateWildNonShinyAndAddToParty(u16 species, u8 level, int battler
     Heap_Free(wildMon);
 }
 
-static BOOL ov02_02247B64(Pokemon *leadMon, int rodType, EncounterGenState *encounterGen, ENC_SLOT *encSlots, u8 encType, int battler, BattleSetup *battleSetup) {
+static BOOL FieldSystem_GenerateRegularEncounter(Pokemon *leadMon, int rodType, EncounterGenState *encounterGen, ENC_SLOT *encSlots, u8 encType, int battler, BattleSetup *battleSetup) {
     u8 slot = 0;
     u8 level = 0;
 
@@ -912,7 +924,7 @@ static BOOL ov02_02247B64(Pokemon *leadMon, int rodType, EncounterGenState *enco
 
 static BOOL FieldSystem_GenerateSafariEncounter(FieldSystem *fieldSystem, Pokemon *leadMon, int rodType, EncounterGenState *encounterGen, u8 encType, int battler, BattleSetup *battleSetup) {
     u8 slot;
-    SAFARIZONE_AREASET *sp14 = SafariZone_GetAreaSet(Save_SafariZone_Get(fieldSystem->saveData), 3);
+    SAFARIZONE_AREASET *areaSet = SafariZone_GetAreaSet(Save_SafariZone_Get(fieldSystem->saveData), 3);
     u16 species;
     u8 level;
     ENC_SLOT *encSlots;
@@ -921,13 +933,13 @@ static BOOL FieldSystem_GenerateSafariEncounter(FieldSystem *fieldSystem, Pokemo
 
     switch (encType) {
     case ENCOUNTER_TYPE_LAND:
-        encSlots = sub_020974C4(sp14, coordParam, 0, timeOfDay, 4);
+        encSlots = sub_020974C4(areaSet, coordParam, 0, timeOfDay, 4);
         break;
     case ENCOUNTER_TYPE_SURFING:
-        encSlots = sub_020974C4(sp14, coordParam, 1, timeOfDay, 4);
+        encSlots = sub_020974C4(areaSet, coordParam, 1, timeOfDay, 4);
         break;
     case ENCOUNTER_TYPE_FISHING:
-        encSlots = sub_020974C4(sp14, coordParam, rodType + 2, timeOfDay, 4);
+        encSlots = sub_020974C4(areaSet, coordParam, rodType + 2, timeOfDay, 4);
         break;
     default: // other encounter types invalid in safari
         GF_ASSERT(FALSE);
@@ -980,7 +992,7 @@ void FieldSystem_GenerateSingleWildPokemon(FieldSystem *fieldSystem, u16 species
     }
 }
 
-BOOL ov02_02247F9C(FieldSystem *fieldSystem, u8 metatileBehavior) {
+BOOL FieldSystem_CanGenerateStepEncounter(FieldSystem *fieldSystem, u8 metatileBehavior) {
     int encounterRate = 0;
 
     if (MetatileBehavior_CanGenerateWalkingEncounters(metatileBehavior)) {
@@ -1068,7 +1080,7 @@ static int FieldSystem_GetRockSmashEncounterRate(FieldSystem *fieldSystem) {
     return encData->encounterRate_rockSmash;
 }
 
-static BOOL ov02_022480C0(ENC_SLOT *encSlots, u8 numEncSlots, u8 type, u8 *slot) {
+static BOOL chooseAbilityCoercedSlot(ENC_SLOT *encSlots, u8 numEncSlots, u8 type, u8 *slot) {
     u8 foundSlots[NUM_ENCOUNTERS_LAND];
     u8 i;
     u8 numFoundSlots;
@@ -1091,9 +1103,9 @@ static BOOL ov02_022480C0(ENC_SLOT *encSlots, u8 numEncSlots, u8 type, u8 *slot)
     return TRUE;
 }
 
-static BOOL EncounterSlot_AbilityInfluenceOnSlotChoiceCheck(Pokemon *leadMon, EncounterGenState *a1, ENC_SLOT *encSlots, u8 numSlots, u8 type, u8 ability, u8 *slotNum) {
-    if (!a1->isEgg && a1->ability == ability && LCRandRange(2) == 0) {
-        return ov02_022480C0(encSlots, numSlots, type, slotNum);
+static BOOL EncounterSlot_AbilityInfluenceOnSlotChoiceCheck(Pokemon *leadMon, EncounterGenState *encounterGen, ENC_SLOT *encSlots, u8 numSlots, u8 type, u8 ability, u8 *slotNum) {
+    if (!encounterGen->isEgg && encounterGen->ability == ability && LCRandRange(2) == 0) {
+        return chooseAbilityCoercedSlot(encSlots, numSlots, type, slotNum);
     }
 
     return FALSE;
@@ -1142,8 +1154,8 @@ static BOOL DoesAbilitySuppressEncounter(EncounterGenState *encounterGen, Pokemo
     return FALSE;
 }
 
-static void ov02_02248244(FieldSystem *fieldSystem, u8 a1, BattleSetup **pBattleSetup) {
-    switch (a1) {
+static void FieldSystem_CreateBattleSetupForWildBattle(FieldSystem *fieldSystem, u8 type, BattleSetup **pBattleSetup) {
+    switch (type) {
     case 1: {
         LocalFieldData *localFieldData = Save_LocalFieldData_Get(fieldSystem->saveData);
         u16 *pSafariBalls = LocalFieldData_GetSafariBallsCounter(localFieldData);
@@ -1169,7 +1181,7 @@ static BOOL EncounterGen_DoesRepelSuppressEncounter(u8 roamerLevel, EncounterGen
 }
 
 static BOOL EncounterGen_CanGenerateUnownEncounter(EncounterGenState *encounterGen) {
-    for (int i = 0; i < 4; ++i) {
+    for (int i = 0; i < ALPH_PUZZLE_MAX; ++i) {
         if (encounterGen->unownPuzzleFlags[i]) {
             return TRUE;
         }
@@ -1178,7 +1190,7 @@ static BOOL EncounterGen_CanGenerateUnownEncounter(EncounterGenState *encounterG
     return FALSE;
 }
 
-static void ov02_022482BC(u32 otId, Roamer *roamer, BattleSetup *battleSetup) {
+static void initRoamingWildmon(u32 otId, Roamer *roamer, BattleSetup *battleSetup) {
     Pokemon *pokemon = AllocMonZeroed(HEAP_ID_FIELD1);
     u32 species = GetRoamerData(roamer, ROAMER_DATA_SPECIES);
     u8 level = GetRoamerData(roamer, ROAMER_DATA_LEVEL);
@@ -1195,7 +1207,7 @@ static void ov02_022482BC(u32 otId, Roamer *roamer, BattleSetup *battleSetup) {
     Heap_Free(pokemon);
 }
 
-static BOOL ov02_GetRandomActiveRoamerInCurrMap(FieldSystem *fieldSystem, Roamer **pRoamer) {
+static BOOL getRandomActiveRoamerInCurrMap(FieldSystem *fieldSystem, Roamer **pRoamer) {
     Roamer *foundRoamers[ROAMER_MAX];
     u8 nRoamers = 0;
     RoamerSaveData *saveRoamers = Save_Roamers_Get(fieldSystem->saveData);
@@ -1338,8 +1350,8 @@ static BOOL addGeneratedMonToBattleSetupParty(int battler, EncounterGenState *en
     return Party_AddMon(battleSetup->party[battler], pokemon);
 }
 
-static u8 ApplyAbilityEffectToSlotLevel(ENC_SLOT *encSlots, int numEncSlots, EncounterGenState *a2, u8 chosenSlot) {
-    if (!a2->isEgg && (a2->ability == ABILITY_VITAL_SPIRIT || a2->ability == ABILITY_HUSTLE || a2->ability == ABILITY_PRESSURE)) {
+static u8 ApplyAbilityEffectToSlotLevel(ENC_SLOT *encSlots, int numEncSlots, EncounterGenState *encounterGen, u8 chosenSlot) {
+    if (!encounterGen->isEgg && (encounterGen->ability == ABILITY_VITAL_SPIRIT || encounterGen->ability == ABILITY_HUSTLE || encounterGen->ability == ABILITY_PRESSURE)) {
         if (LCRandRange(2) == 0) {
             return chosenSlot;
         }
@@ -1354,26 +1366,26 @@ static u8 ApplyAbilityEffectToSlotLevel(ENC_SLOT *encSlots, int numEncSlots, Enc
     return chosenSlot;
 }
 
-static void EncounterGenState_Init(FieldSystem *fieldSystem, Pokemon *pokemon, const ENC_DATA *encData, EncounterGenState *a3) {
+static void EncounterGenState_Init(FieldSystem *fieldSystem, Pokemon *pokemon, const ENC_DATA *encData, EncounterGenState *encounterGen) {
     if (!GetMonData(pokemon, MON_DATA_IS_EGG, NULL)) {
-        a3->isEgg = FALSE;
-        a3->ability = GetMonData(pokemon, MON_DATA_ABILITY, NULL);
+        encounterGen->isEgg = FALSE;
+        encounterGen->ability = GetMonData(pokemon, MON_DATA_ABILITY, NULL);
     } else {
-        a3->isEgg = TRUE;
-        a3->ability = NUM_ABILITIES;
+        encounterGen->isEgg = TRUE;
+        encounterGen->ability = NUM_ABILITIES;
     }
-    a3->level = 0;
-    a3->isRepel = FALSE;
-    a3->isSweetScent = FALSE;
-    a3->unk_0F = 0;
-    a3->unk_10 = 0;
+    encounterGen->level = 0;
+    encounterGen->isRepel = FALSE;
+    encounterGen->isSweetScent = FALSE;
+    encounterGen->unk_0F = 0;
+    encounterGen->unk_10 = 0;
     SaveVarsFlags *saveVarsFlags = Save_VarsFlags_Get(fieldSystem->saveData);
-    a3->isSinjohMap = fieldSystem->location->mapId == MAP_RUINS_OF_ALPH_HALL_ENTRANCE_SINJOH_EVENT;
+    encounterGen->isSinjohMap = fieldSystem->location->mapId == MAP_RUINS_OF_ALPH_HALL_ENTRANCE_SINJOH_EVENT;
     for (int i = 0; i < 4; ++i) {
-        a3->unownPuzzleFlags[i] = Save_VarsFlags_CheckAlphPuzzleFlag(saveVarsFlags, i);
+        encounterGen->unownPuzzleFlags[i] = Save_VarsFlags_CheckAlphPuzzleFlag(saveVarsFlags, i);
     }
-    a3->pokedex = Save_Pokedex_Get(fieldSystem->saveData);
-    a3->playerId = PlayerProfile_GetTrainerID(Save_PlayerData_GetProfile(fieldSystem->saveData));
+    encounterGen->pokedex = Save_Pokedex_Get(fieldSystem->saveData);
+    encounterGen->playerId = PlayerProfile_GetTrainerID(Save_PlayerData_GetProfile(fieldSystem->saveData));
 }
 
 static void FieldSystem_UpdateTurnFrameCounter(FieldSystem *fieldSystem) {

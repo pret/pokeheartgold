@@ -464,7 +464,7 @@
 .public FieldSystem_PerformSweetScentEncounterCheck
 .public FieldSystem_PerformHeadbuttEncounterCheck
 .public FieldSystem_GenerateSingleWildPokemon
-.public ov02_02247F9C
+.public FieldSystem_CanGenerateStepEncounter
 .public ov02_02249458
 .public ov02_0224953C
 .public ov02_02249548
