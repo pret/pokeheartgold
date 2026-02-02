@@ -7,6 +7,7 @@
 #include "msgdata/msg.naix"
 #include "msgdata/msg/msg_0445.h"
 
+#include "field_map_change.h"
 #include "follow_mon.h"
 #include "metatile_behavior.h"
 #include "mom_gift.h"
@@ -24,7 +25,6 @@
 #include "unk_02055418.h"
 #include "unk_0205B3DC.h"
 #include "unk_0205BB1C.h"
-#include "unk_02067A60.h"
 #include "unk_0206D494.h"
 #include "unk_02088288.h"
 #include "unk_02092BE8.h"
@@ -62,7 +62,7 @@ BattleSetup *BattleSetup_New(enum HeapID heapID, u32 battleTypeFlags) {
     setup->bag = Save_Bag_New(heapID);
     setup->pokedex = Pokedex_New(heapID);
     setup->options = Options_New(heapID);
-    setup->unk_134 = sub_02067A60(heapID);
+    setup->unk_134 = MapChange_AllocState(heapID);
     setup->bagCursor = NULL;
     setup->unk1B8 = NULL;
     setup->safariBalls = 0;
@@ -161,7 +161,7 @@ void BattleSetup_Delete(BattleSetup *setup) {
     Heap_Free(setup->bag);
     Heap_Free(setup->pokedex);
     Heap_Free(setup->options);
-    sub_02067A78(setup->unk_134);
+    MapChange_FreeState(setup->unk_134);
     Heap_Free(setup->bugContestMon);
     Heap_Free(setup);
 }
