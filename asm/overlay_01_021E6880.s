@@ -2199,7 +2199,7 @@ ov01_021E7A08: ; 0x021E7A08
 	bne _021E7A56
 	add r0, r5, #0
 	mov r1, #2
-	bl sub_0202F08C
+	bl PhoneCallPersistentState_CheckCallTriggerFlag
 	cmp r0, #0
 	bne _021E7A56
 	ldr r0, [r4, #0xc]

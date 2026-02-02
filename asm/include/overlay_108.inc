@@ -197,7 +197,7 @@
 .public Save_VarsFlags_Get
 .public ChangeFlag99D
 .public BgConfig_LoadAssetFromOpenNarc
-.public sub_02097268
+.public GetSafariObjectConfig
 .public NNS_GfdGetLnkTexVramManagerWorkSize
 .public NNS_GfdGetLnkPlttVramManagerWorkSize
 .public NNS_G3dAnmObjInit

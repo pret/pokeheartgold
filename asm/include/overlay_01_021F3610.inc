@@ -8,7 +8,7 @@
 .public sub_0201F990
 .public sub_02020D2C
 .public GF_AssertFail
-.public sub_02097268
+.public GetSafariObjectConfig
 .public NNS_G3dGlbFlushP
 .public NNS_G3dGlbSetBaseTrans
 .public NNS_G3dGlbSetBaseScale

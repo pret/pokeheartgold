@@ -933,13 +933,13 @@ static BOOL FieldSystem_GenerateSafariEncounter(FieldSystem *fieldSystem, Pokemo
 
     switch (encType) {
     case ENCOUNTER_TYPE_LAND:
-        encSlots = sub_020974C4(areaSet, area, SAFARI_ENCOUNTER_SLOTS_LAND, timeOfDay, HEAP_ID_FIELD1);
+        encSlots = SafariZoneAreaSet_LoadAreaEncounters(areaSet, area, SAFARI_ENCOUNTER_SLOTS_LAND, timeOfDay, HEAP_ID_FIELD1);
         break;
     case ENCOUNTER_TYPE_SURFING:
-        encSlots = sub_020974C4(areaSet, area, SAFARI_ENCOUNTER_SLOTS_SURFING, timeOfDay, HEAP_ID_FIELD1);
+        encSlots = SafariZoneAreaSet_LoadAreaEncounters(areaSet, area, SAFARI_ENCOUNTER_SLOTS_SURFING, timeOfDay, HEAP_ID_FIELD1);
         break;
     case ENCOUNTER_TYPE_FISHING:
-        encSlots = sub_020974C4(areaSet, area, SAFARI_ENCOUNTER_SLOTS_ROD(rodType), timeOfDay, HEAP_ID_FIELD1);
+        encSlots = SafariZoneAreaSet_LoadAreaEncounters(areaSet, area, SAFARI_ENCOUNTER_SLOTS_ROD(rodType), timeOfDay, HEAP_ID_FIELD1);
         break;
     default: // other encounter types invalid in safari
         GF_ASSERT(FALSE);

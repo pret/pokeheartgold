@@ -77,7 +77,7 @@ static void FieldSystem_InitPokegearArgs(FieldSystem *sys, PokegearArgs *pokegea
             pokegearArgs->callScriptID = Unk_struct.callScriptID;     // message num?
             pokegearArgs->isScriptedCall = Unk_struct.isScriptedCall; // call type?
             if (pokegearArgs->isScriptedCall == 3) {
-                sub_0202F050(SaveData_GetPhoneCallPersistentState(sys->saveData), Unk_struct.unk_2);
+                PhoneCallPersistentState_ClearCallTriggerFlag(SaveData_GetPhoneCallPersistentState(sys->saveData), Unk_struct.unk_2);
             } else if (pokegearArgs->isScriptedCall == 0) {
                 sub_0202AB18(Save_Misc_Get(sys->saveData), Unk_struct.unk_0, Unk_struct.unk_1, pokegearArgs->callerId);
             }
@@ -134,7 +134,7 @@ PhoneBookEntry *GearPhoneRingManager_GetCallerPhoneBookEntry(GearPhoneRingManage
 }
 
 void sub_02092E14(GearPhoneRingManager *ptr, u8 a1, BOOL a2) {
-    sub_0202F01C(ptr->savingsData, a1);
+    PhoneCallPersistentState_SetCallTriggerFlag(ptr->savingsData, a1);
     if (a2) {
         if (ptr->unk_var8 < ptr->unk_varC - 1) {
             ptr->unk_var8 = ptr->unk_varC - 1;
@@ -160,7 +160,7 @@ static void sub_02092E54(GearPhoneRingManager *ptr) {
     u8 var4057 = Save_VarsFlags_GetVar4057(state);
     u8 i;
     for (i = 0; i < 5; i++) {
-        if (sub_0202F08C(ptr->savingsData, i + 7)) {
+        if (PhoneCallPersistentState_CheckCallTriggerFlag(ptr->savingsData, i + 7)) {
             return;
         }
     }

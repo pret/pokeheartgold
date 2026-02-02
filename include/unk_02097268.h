@@ -10,18 +10,19 @@
 #define SAFARI_ENCOUNTER_SLOTS_LAND          0
 #define SAFARI_ENCOUNTER_SLOTS_SURFING       1
 #define SAFARI_ENCOUNTER_SLOTS_ROD(rod_type) (2 + (rod_type))
+#define NUM_SAFARI_ENCOUNTER_TYPES           5
 
-typedef struct UnkStruct_02097268 {
+typedef struct SafariObjectConfig {
     u8 unk_0;
     u8 unk_1_0 : 1;
     u8 unk_1_1 : 3;
     u8 unk_1_4 : 3;
     u8 hasGenderedLayout : 1;
     u8 objectType;
-} UnkStruct_02097268;
+} SafariObjectConfig;
 
-void sub_02097268(UnkStruct_02097268 *a0, int a1, BOOL a2);
-void sub_0209730C(SaveData *saveData, int a1);
-ENC_SLOT *sub_020974C4(SAFARIZONE_AREASET *areaSet, int area, int encounterType, TimeOfDayWildParam timeOfDay, enum HeapID heapID);
+void GetSafariObjectConfig(SafariObjectConfig *a0, int a1, BOOL a2);
+void SaveData_SafariZone_CheckAreasWithUpdatedEncounters(SaveData *saveData, int a1);
+ENC_SLOT *SafariZoneAreaSet_LoadAreaEncounters(SAFARIZONE_AREASET *areaSet, int area, int encounterType, TimeOfDayWildParam timeOfDay, enum HeapID heapID);
 
 #endif // POKEHEARTGOLD_UNK_02097268_H

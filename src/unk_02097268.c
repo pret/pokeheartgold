@@ -2,6 +2,8 @@
 
 #include "constants/buildmodel.h"
 
+#include "overlay_2/overlay_02_gear_phone.h"
+
 #include "gf_gfx_loader.h"
 #include "sys_flags.h"
 
@@ -10,33 +12,33 @@ typedef struct SafariZoneAreaEncounterSlot {
     u16 level;
 } SafariZoneAreaEncounterSlot;
 
-typedef struct UnkStruct_020874C4_sub8 {
-    u8 unk_0;
-    u8 unk_1;
-    u8 unk_2;
-    u8 unk_3;
-} UnkStruct_020874C4_sub8;
+typedef struct SafariZoneAreaBonusSlotUnlockConditions {
+    u8 object1_type;
+    u8 object1_level;
+    u8 object2_type;
+    u8 object2_level;
+} SafariZoneAreaBonusSlotUnlockConditions;
 
-typedef struct UnkStruct_02097694 {
+typedef struct SafariZoneObjectLevels {
     u8 levels[4];
     u8 count[4];
-} UnkStruct_02097694;
+} SafariZoneObjectLevels;
 
-typedef struct UnkStruct_020874C4 {
-    SafariZoneAreaEncounterSlot *unk_00;
-    SafariZoneAreaEncounterSlot *unk_04;
-    UnkStruct_020874C4_sub8 *unk_08;
-    int unk_0C;
-    u8 unk_10;
-} UnkStruct_020874C4;
+typedef struct LoadedSafariZoneEncounterData {
+    SafariZoneAreaEncounterSlot *baseMons;
+    SafariZoneAreaEncounterSlot *bonusMons;
+    SafariZoneAreaBonusSlotUnlockConditions *unlockConditions;
+    int bonusMonsArraySize;
+    u8 numBonusMons;
+} LoadedSafariZoneEncounterData;
 
-static BOOL sub_020972A4(const ENC_SLOT *a, const ENC_SLOT *b);
-static BOOL sub_020972C4(const ENC_SLOT *a, const ENC_SLOT *b);
-static BOOL sub_020972EC(u8 a0, const u8 *a1, u8 a2);
-static u8 sub_02097650(u8 a0, u8 a1);
-static void sub_02097694(SAFARIZONE_AREASET *areaSet, int area, UnkStruct_02097694 *out);
+static BOOL encSlotsEqual(const ENC_SLOT *a, const ENC_SLOT *b);
+static BOOL encSlotArraysEqual(const ENC_SLOT *a, const ENC_SLOT *b);
+static BOOL areaIsInArray(u8 areaNum, const u8 *areas, u8 numAreas);
+static u8 getObjectLevelBoost(u8 days, u8 objectType);
+static void SafariZoneAreaSet_GetObjectsInArea(SAFARIZONE_AREASET *areaSet, int area, SafariZoneObjectLevels *out);
 
-static const UnkStruct_02097268 _02108EEE[NUM_SAFARI_ZONE_OBJECT_IDS] = {
+static const SafariObjectConfig sObjects[NUM_SAFARI_ZONE_OBJECT_IDS] = {
     [SAFARI_ZONE_OBJECTID_SHRUBBERY] = { BUILD_MODEL_SAF_GO01,  0, 1, 1, FALSE, SAFARI_ZONE_OBJECT_TYPE_PLAINS },
     [SAFARI_ZONE_OBJECTID_RED_FLOWER] = { BUILD_MODEL_SAF_GO02,  0, 1, 1, FALSE, SAFARI_ZONE_OBJECT_TYPE_PLAINS },
     [SAFARI_ZONE_OBJECTID_WHITE_FLOWER] = { BUILD_MODEL_SAF_GO03,  0, 1, 1, FALSE, SAFARI_ZONE_OBJECT_TYPE_PLAINS },
@@ -63,18 +65,18 @@ static const UnkStruct_02097268 _02108EEE[NUM_SAFARI_ZONE_OBJECT_IDS] = {
     [SAFARI_ZONE_OBJECTID_TRASH_CAN] = { BUILD_MODEL_SAF_EO12,  0, 1, 1, FALSE, SAFARI_ZONE_OBJECT_TYPE_NONE   },
 };
 
-void sub_02097268(UnkStruct_02097268 *dest, int idx, int gender) {
+void GetSafariObjectConfig(SafariObjectConfig *dest, int idx, int gender) {
     if (idx >= NUM_SAFARI_ZONE_OBJECT_IDS) {
         GF_ASSERT(FALSE);
         idx = 0;
     }
-    *dest = _02108EEE[idx];
+    *dest = sObjects[idx];
     if (dest->hasGenderedLayout && gender == TRAINER_FEMALE) {
         ++dest->unk_0;
     }
 }
 
-static BOOL sub_020972A4(const ENC_SLOT *a, const ENC_SLOT *b) {
+static BOOL encSlotsEqual(const ENC_SLOT *a, const ENC_SLOT *b) {
     if (a->species != b->species || a->level_max != b->level_max || a->level_min != b->level_min) {
         return FALSE;
     }
@@ -82,9 +84,9 @@ static BOOL sub_020972A4(const ENC_SLOT *a, const ENC_SLOT *b) {
     return TRUE;
 }
 
-static BOOL sub_020972C4(const ENC_SLOT *a, const ENC_SLOT *b) {
+static BOOL encSlotArraysEqual(const ENC_SLOT *a, const ENC_SLOT *b) {
     for (int i = 0; i < NUM_ENCOUNTERS_SAFARI; ++i) {
-        if (!sub_020972A4(&a[i], &b[i])) {
+        if (!encSlotsEqual(&a[i], &b[i])) {
             return FALSE;
         }
     }
@@ -92,9 +94,9 @@ static BOOL sub_020972C4(const ENC_SLOT *a, const ENC_SLOT *b) {
     return TRUE;
 }
 
-static BOOL sub_020972EC(u8 a0, const u8 *a1, u8 a2) {
-    for (int i = 0; i < a2; ++i) {
-        if (a1[i] == a0) {
+static BOOL areaIsInArray(u8 areaNum, const u8 *areas, u8 numAreas) {
+    for (int i = 0; i < numAreas; ++i) {
+        if (areas[i] == areaNum) {
             return TRUE;
         }
     }
@@ -102,188 +104,190 @@ static BOOL sub_020972EC(u8 a0, const u8 *a1, u8 a2) {
     return FALSE;
 }
 
-void sub_0209730C(SaveData *saveData, int a1) {
+void SaveData_SafariZone_CheckAreasWithUpdatedEncounters(SaveData *saveData, int daysElapsed) {
     int i;
     int j;
-    int sp20;
-    ENC_SLOT *sp38[6][5];
-    ENC_SLOT *r6;
-    u8 sp30[6];
-    PhoneCallPersistentState *sp2C = SaveData_GetPhoneCallPersistentState(saveData);
-    SafariZone *sp28 = Save_SafariZone_Get(saveData);
-    SAFARIZONE_AREASET *sp24 = SafariZone_GetAreaSet(sp28, 0);
+    int numAreas;
+    ENC_SLOT *allEncounterSlots[SAFARI_ZONE_MAX_AREAS_PER_SET][NUM_SAFARI_ENCOUNTER_TYPES];
+    ENC_SLOT *encounters;
+    u8 areas[SAFARI_ZONE_MAX_AREAS_PER_SET];
+    PhoneCallPersistentState *callPersistentState = SaveData_GetPhoneCallPersistentState(saveData);
+    SafariZone *safariZone = Save_SafariZone_Get(saveData);
+    SAFARIZONE_AREASET *areaSet = SafariZone_GetAreaSet(safariZone, 0);
 
     static const u16 ffff = 0xFFFF;
 
-    if (SafariZone_GetObjectUnlockLevel(sp28) == 0 || a1 <= 0) {
+    if (SafariZone_GetObjectUnlockLevel(safariZone) == 0 || daysElapsed <= 0) {
         return;
     }
 
     if (Save_VarsFlags_CheckSafariSysFlag(Save_VarsFlags_Get(saveData))) {
-        int r2 = sub_0202F6AC(sp28);
-        sub_0202F6A0(sp28, r2 + a1);
+        int zoneLevel = SafariZone_GetLevel(safariZone);
+        SafariZone_SetLevel(safariZone, zoneLevel + daysElapsed);
         return;
     }
 
-    sp20 = 0;
-    MI_CpuClear8(sp30, sizeof(sp30));
-    MI_CpuClear8(sp38, sizeof(sp38));
-    for (i = 0; i < 6; ++i) {
+    numAreas = 0;
+    MI_CpuClear8(areas, sizeof(areas));
+    MI_CpuClear8(allEncounterSlots, sizeof(allEncounterSlots));
+    for (i = 0; i < SAFARI_ZONE_MAX_AREAS_PER_SET; ++i) {
+        // (((ffff >> i) & 1) * 4) + 1
+        // fancy way of saying
+        // mapHasWater ? 5 : 1
         for (j = 0; j < (((ffff >> i) & 1) * 4) + 1; ++j) {
-            sp38[i][j] = sub_020974C4(sp24, i, j, TIMEOFDAY_WILD_MORN, HEAP_ID_FIELD2);
+            allEncounterSlots[i][j] = SafariZoneAreaSet_LoadAreaEncounters(areaSet, i, j, TIMEOFDAY_WILD_MORN, HEAP_ID_FIELD2);
         }
     }
-    sub_0202F6B8(sp28, a1);
-    for (i = 0; i < 6; ++i) {
-        u8 r7 = sp24->areas[i].area_no;
-        if (sub_020972EC(r7, sp30, sp20)) {
+    SafariZone_AddToAllAreaLevels(safariZone, daysElapsed);
+    for (i = 0; i < SAFARI_ZONE_MAX_AREAS_PER_SET; ++i) {
+        u8 areaNum = areaSet->areas[i].area_no;
+        if (areaIsInArray(areaNum, areas, numAreas)) {
             continue;
         }
         for (j = 0; j < (((ffff >> i) & 1) * 4) + 1; ++j) {
-            r6 = sub_020974C4(sp24, i, j, TIMEOFDAY_WILD_MORN, HEAP_ID_FIELD2);
-            if (sub_020972C4(sp38[i][j], r6)) {
-                Heap_Free(r6);
+            encounters = SafariZoneAreaSet_LoadAreaEncounters(areaSet, i, j, TIMEOFDAY_WILD_MORN, HEAP_ID_FIELD2);
+            if (encSlotArraysEqual(allEncounterSlots[i][j], encounters)) {
+                Heap_Free(encounters);
                 continue;
             }
-            if (!sub_020972EC(r7, sp30, sp20)) {
-                sp30[sp20++] = r7;
+            if (!areaIsInArray(areaNum, areas, numAreas)) {
+                areas[numAreas++] = areaNum;
             }
-            Heap_Free(r6);
+            Heap_Free(encounters);
         }
     }
-    for (i = 0; i < 6; ++i) {
+    for (i = 0; i < SAFARI_ZONE_MAX_AREAS_PER_SET; ++i) {
         for (j = 0; j < (((ffff >> i) & 1) * 4) + 1; ++j) {
-            if (sp38[i][j] != NULL) {
-                Heap_Free(sp38[i][j]);
+            if (allEncounterSlots[i][j] != NULL) {
+                Heap_Free(allEncounterSlots[i][j]);
             }
         }
     }
-    if (sp20 == 0) {
-        sub_0202F050(sp2C, 6);
-        PhoneCallPersistentState_SafariZoneArrangement_Set(sp2C, NULL, 0);
+    if (numAreas == 0) {
+        PhoneCallPersistentState_ClearCallTriggerFlag(callPersistentState, CALL_TRIGGER_BAOBA_UNK6);
+        PhoneCallPersistentState_SafariZoneArrangement_Set(callPersistentState, NULL, 0);
     } else {
-        sub_0202F01C(sp2C, 6);
-        PhoneCallPersistentState_SafariZoneArrangement_Set(sp2C, sp30, sp20);
+        PhoneCallPersistentState_SetCallTriggerFlag(callPersistentState, CALL_TRIGGER_BAOBA_UNK6);
+        PhoneCallPersistentState_SafariZoneArrangement_Set(callPersistentState, areas, numAreas);
     }
 }
 
-ENC_SLOT *sub_020974C4(SAFARIZONE_AREASET *areaSet, int area, int encounterType, TimeOfDayWildParam timeOfDay, enum HeapID heapID) {
+ENC_SLOT *SafariZoneAreaSet_LoadAreaEncounters(SAFARIZONE_AREASET *areaSet, int area, int encounterType, TimeOfDayWildParam timeOfDay, enum HeapID heapID) {
     int i;
     int offset;
-    u8 *r5;
-    ENC_SLOT *sp20;
-    SAFARIZONE_AREA *r7;
-    UnkStruct_020874C4 *sp1C;
+    u8 *encDataArc;
+    ENC_SLOT *ret;
+    SAFARIZONE_AREA *safariZoneArea;
+    LoadedSafariZoneEncounterData *loadedEncData;
     u32 lcl_heapID; // required to match
 
-    r7 = &areaSet->areas[area];
+    safariZoneArea = &areaSet->areas[area];
     lcl_heapID = heapID;
-    sp20 = Heap_AllocAtEnd((enum HeapID)lcl_heapID, NUM_ENCOUNTERS_SAFARI * sizeof(ENC_SLOT));
+    ret = Heap_AllocAtEnd((enum HeapID)lcl_heapID, NUM_ENCOUNTERS_SAFARI * sizeof(ENC_SLOT));
 
     for (i = 0; i < NUM_ENCOUNTERS_SAFARI; ++i) {
         if (encounterType == SAFARI_ENCOUNTER_SLOTS_LAND) {
-            sp20[i].species = SPECIES_RATTATA;
+            ret[i].species = SPECIES_RATTATA;
         } else {
-            sp20[i].species = SPECIES_MAGIKARP;
+            ret[i].species = SPECIES_MAGIKARP;
         }
-        sp20[i].level_max = sp20[i].level_min = 5;
+        ret[i].level_max = ret[i].level_min = 5;
     }
 
-    r5 = GfGfxLoader_LoadFromNarc(NARC_a_2_3_0, r7->area_no, FALSE, (enum HeapID)lcl_heapID, TRUE);
-    if (r5 == NULL) {
-        return sp20;
+    encDataArc = GfGfxLoader_LoadFromNarc(NARC_a_2_3_0, safariZoneArea->area_no, FALSE, (enum HeapID)lcl_heapID, TRUE);
+    if (encDataArc == NULL) {
+        return ret;
     }
 
-    sp1C = Heap_AllocAtEnd((enum HeapID)lcl_heapID, 5 * sizeof(UnkStruct_020874C4));
+    loadedEncData = Heap_AllocAtEnd((enum HeapID)lcl_heapID, NUM_SAFARI_ENCOUNTER_TYPES * sizeof(LoadedSafariZoneEncounterData));
     offset = 8;
-    for (i = 0; i < 5; ++i) {
-        sp1C[i].unk_00 = (SafariZoneAreaEncounterSlot *)&r5[offset];
-        offset += 3 * NUM_ENCOUNTERS_SAFARI * sizeof(SafariZoneAreaEncounterSlot);
-        sp1C[i].unk_04 = (SafariZoneAreaEncounterSlot *)&r5[offset];
-        sp1C[i].unk_10 = r5[i];
-        sp1C[i].unk_0C = sp1C[i].unk_10 * sizeof(SafariZoneAreaEncounterSlot);
-        offset += 3 * sp1C[i].unk_0C;
-        sp1C[i].unk_08 = (UnkStruct_020874C4_sub8 *)&r5[offset];
-        offset += sp1C[i].unk_10 * sizeof(UnkStruct_020874C4_sub8);
+    for (i = 0; i < NUM_SAFARI_ENCOUNTER_TYPES; ++i) {
+        loadedEncData[i].baseMons = (SafariZoneAreaEncounterSlot *)&encDataArc[offset];
+        offset += TIMEOFDAY_WILD_MAX * NUM_ENCOUNTERS_SAFARI * sizeof(SafariZoneAreaEncounterSlot);
+        loadedEncData[i].bonusMons = (SafariZoneAreaEncounterSlot *)&encDataArc[offset];
+        loadedEncData[i].numBonusMons = encDataArc[i];
+        loadedEncData[i].bonusMonsArraySize = loadedEncData[i].numBonusMons * sizeof(SafariZoneAreaEncounterSlot);
+        offset += TIMEOFDAY_WILD_MAX * loadedEncData[i].bonusMonsArraySize;
+        loadedEncData[i].unlockConditions = (SafariZoneAreaBonusSlotUnlockConditions *)&encDataArc[offset];
+        offset += loadedEncData[i].numBonusMons * sizeof(SafariZoneAreaBonusSlotUnlockConditions);
     }
-    if (sp1C[1].unk_10 == 0 && encounterType > 0) {
-        Heap_Free(sp1C);
-        Heap_Free(r5);
-        return sp20;
+    if (loadedEncData[1].numBonusMons == 0 && encounterType > 0) {
+        Heap_Free(loadedEncData);
+        Heap_Free(encDataArc);
+        return ret;
     }
     offset = NUM_ENCOUNTERS_SAFARI * timeOfDay;
     for (i = 0; i < NUM_ENCOUNTERS_SAFARI; ++i) {
-        SafariZoneAreaEncounterSlot *r6 = &sp1C[encounterType].unk_00[offset + i];
-        sp20[i].species = r6->species;
-        sp20[i].level_max = sp20[i].level_min = r6->level;
+        SafariZoneAreaEncounterSlot *slot = &loadedEncData[encounterType].baseMons[offset + i];
+        ret[i].species = slot->species;
+        ret[i].level_max = ret[i].level_min = slot->level;
     }
 
     {
-        UnkStruct_02097694 sp2C;
-        u8 sp18 = 0;
-        sub_02097694(areaSet, area, &sp2C);
-        for (i = 0; i < sp1C[encounterType].unk_10; ++i) {
+        SafariZoneObjectLevels areaObjects;
+        u8 numBonusMons = 0;
+        SafariZoneAreaSet_GetObjectsInArea(areaSet, area, &areaObjects);
+        for (i = 0; i < loadedEncData[encounterType].numBonusMons; ++i) {
             int idx;
-            UnkStruct_020874C4_sub8 *r0;
-            r0 = &sp1C[encounterType].unk_08[i];
-            if (sp2C.levels[r0->unk_0 - 1] < r0->unk_1) {
+            SafariZoneAreaBonusSlotUnlockConditions *unlockConditions = &loadedEncData[encounterType].unlockConditions[i];
+            if (areaObjects.levels[unlockConditions->object1_type - 1] < unlockConditions->object1_level) {
                 continue;
             }
-            if (r0->unk_2 != 0 && sp2C.levels[r0->unk_2 - 1] < r0->unk_3) {
+            if (unlockConditions->object2_type != 0 && areaObjects.levels[unlockConditions->object2_type - 1] < unlockConditions->object2_level) {
                 continue;
             }
-            idx = sp1C[encounterType].unk_10 * timeOfDay + i;
-            sp20[sp18].species = sp1C[encounterType].unk_04[idx].species;
-            sp20[sp18].level_max = sp20[sp18].level_min = sp1C[encounterType].unk_04[idx].level;
-            if (++sp18 > NUM_ENCOUNTERS_SAFARI - 1) {
+            idx = loadedEncData[encounterType].numBonusMons * timeOfDay + i;
+            ret[numBonusMons].species = loadedEncData[encounterType].bonusMons[idx].species;
+            ret[numBonusMons].level_max = ret[numBonusMons].level_min = loadedEncData[encounterType].bonusMons[idx].level;
+            if (++numBonusMons > NUM_ENCOUNTERS_SAFARI - 1) {
                 break;
             }
         }
     }
-    Heap_Free(sp1C);
-    Heap_Free(r5);
-    return sp20;
+    Heap_Free(loadedEncData);
+    Heap_Free(encDataArc);
+    return ret;
 }
 
-static const u8 _02108EDA[][5] = {
+static const u8 sObjectLevelBoosts[][5] = {
     [SAFARI_ZONE_OBJECT_TYPE_PLAINS - 1] = { 1, 5, 10, 15, 20 },
     [SAFARI_ZONE_OBJECT_TYPE_FOREST - 1] = { 2, 6, 11, 16, 21 },
     [SAFARI_ZONE_OBJECT_TYPE_PEAK - 1] = { 3, 7, 12, 17, 22 },
     [SAFARI_ZONE_OBJECT_TYPE_WATER - 1] = { 4, 8, 13, 18, 23 },
 };
 
-static u8 sub_02097650(u8 level, u8 attr) {
-    if (attr == SAFARI_ZONE_OBJECT_TYPE_NONE) {
+static u8 getObjectLevelBoost(u8 days, u8 objectType) {
+    if (objectType == SAFARI_ZONE_OBJECT_TYPE_NONE) {
         return 0;
     }
     for (int i = 0; i < 5; ++i) {
-        if (level < _02108EDA[attr - 1][i]) {
+        if (days < sObjectLevelBoosts[objectType - 1][i]) {
             return i + 1;
         }
     }
-    if (level < 25) {
+    if (days < 25) {
         return 6;
     }
     return 7;
 }
 
-static void sub_02097694(SAFARIZONE_AREASET *areaSet, int area, UnkStruct_02097694 *out) {
-    UnkStruct_02097268 sp8;
+static void SafariZoneAreaSet_GetObjectsInArea(SAFARIZONE_AREASET *areaSet, int area, SafariZoneObjectLevels *out) {
+    SafariObjectConfig sp8;
     u8 areaLevel;
     SAFARIZONE_AREA *szArea;
 
     szArea = &areaSet->areas[area];
-    areaLevel = areaSet->unk2DC[szArea->area_no] / 10;
+    areaLevel = areaSet->areaLevels[szArea->area_no] / 10;
 
-    MI_CpuClear8(out, sizeof(UnkStruct_02097694));
+    MI_CpuClear8(out, sizeof(SafariZoneObjectLevels));
 
     for (int i = 0; i < szArea->active_object_count; ++i) {
-        sub_02097268(&sp8, szArea->objects[i].unk[0], 2);
+        GetSafariObjectConfig(&sp8, szArea->objects[i].unk[0], 2);
         if (sp8.objectType == SAFARI_ZONE_OBJECT_TYPE_NONE) {
             continue;
         }
         ++out->count[sp8.objectType - 1];
-        u8 attrBonus = sub_02097650(areaLevel, sp8.objectType);
+        u8 attrBonus = getObjectLevelBoost(areaLevel, sp8.objectType);
         if (out->levels[sp8.objectType - 1] + attrBonus > 255) {
             out->levels[sp8.objectType - 1] = 255;
         } else {

@@ -43,7 +43,7 @@ void SafariZone_ResetAreaSetToDefaultSet(SAFARIZONE_AREASET *area_set, u32 defau
         SafariZone_InitArea(&area_set->areas[i], sSafariZoneDefaultAreaSets[default_set_no_mod][i]);
     }
 
-    MI_CpuClear8(area_set->unk2DC, sizeof(area_set->unk2DC));
+    MI_CpuClear8(area_set->areaLevels, sizeof(area_set->areaLevels));
 }
 
 void sub_0202F5F8(SafariZone *safari_zone, s32 areaSetNo) {
@@ -91,15 +91,15 @@ void SafariZone_SetAreaSet(SafariZone *safari_zone, s32 area_set_no, SAFARIZONE_
     MI_CpuCopy8(area_set_src, &safari_zone->area_sets[area_set_no], sizeof(SAFARIZONE_AREASET));
 }
 
-void sub_0202F6A0(SafariZone *safari_zone, u8 a1) {
+void SafariZone_SetLevel(SafariZone *safari_zone, u8 a1) {
     safari_zone->unk5F8 = a1;
 }
 
-u8 sub_0202F6AC(SafariZone *safari_zone) {
+u8 SafariZone_GetLevel(SafariZone *safari_zone) {
     return safari_zone->unk5F8;
 }
 
-void sub_0202F6B8(SafariZone *safariZone, s32 a1) {
+void SafariZone_AddToAllAreaLevels(SafariZone *safariZone, s32 a1) {
     u8 sp8[6];
     u32 area_no;
     int j;
@@ -117,10 +117,10 @@ void sub_0202F6B8(SafariZone *safariZone, s32 a1) {
             continue;
         }
 
-        if (safariZone->area_sets[0].unk2DC[area_no] + a1 < 0xFF) {
-            safariZone->area_sets[0].unk2DC[area_no] += a1;
+        if (safariZone->area_sets[0].areaLevels[area_no] + a1 < 0xFF) {
+            safariZone->area_sets[0].areaLevels[area_no] += a1;
         } else {
-            safariZone->area_sets[0].unk2DC[area_no] = 0xFF;
+            safariZone->area_sets[0].areaLevels[area_no] = 0xFF;
         }
 
         sp8[j++] = area_no;

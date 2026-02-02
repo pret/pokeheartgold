@@ -12958,7 +12958,7 @@ _0224E7D4:
 	ldrb r1, [r5]
 	ldr r2, [sp, #4]
 	add r0, sp, #0xc
-	bl sub_02097268
+	bl GetSafariObjectConfig
 	ldrb r1, [r5, #1]
 	cmp r7, r1
 	blt _0224E810

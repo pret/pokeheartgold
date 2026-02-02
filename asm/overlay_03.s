@@ -9676,7 +9676,7 @@ ScrCmd_720: ; 0x02258A18
 	ldrb r1, [r4]
 	add r0, sp, #0x1c
 	lsr r2, r2, #0x18
-	bl sub_02097268
+	bl GetSafariObjectConfig
 	ldrb r0, [r4, #3]
 	mov ip, r0
 	add r0, sp, #0x1c
