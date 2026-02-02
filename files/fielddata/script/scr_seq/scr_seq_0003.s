@@ -317,19 +317,19 @@ _0445:
 
 	.balign 4, 0
 _0454:
-	step 100, 1
-	step 62, 1
-	step_end
+	NurseJoyBow
+	Delay4
+	EndMovement
 
 	.balign 4, 0
 _0460:
-	step 102, 1
-	step_end
+	PlayerGive
+	EndMovement
 
 	.balign 4, 0
 _0468:
-	step 104, 1
-	step_end
+	PlayerReceive
+	EndMovement
 
 scr_seq_0003_069:
 	fade_screen 6, 1, 0, RGB_BLACK
@@ -1190,33 +1190,33 @@ _104A:
 
 	.balign 4, 0
 _1054:
-	step 0, 1
-	step_end
+	FaceNorth
+	EndMovement
 
 	.balign 4, 0
 _105C:
-	step 1, 1
-	step_end
+	FaceSouth
+	EndMovement
 
 	.balign 4, 0
 _1064:
-	step 2, 1
-	step_end
+	FaceWest
+	EndMovement
 
 	.balign 4, 0
 _106C:
-	step 0, 1
-	step_end
+	FaceNorth
+	EndMovement
 
 	.balign 4, 0
 _1074:
-	step 3, 1
-	step_end
+	FaceEast
+	EndMovement
 
 	.balign 4, 0
 _107C:
-	step 1, 1
-	step_end
+	FaceSouth
+	EndMovement
 
 scr_seq_0003_015:
 	play_se SEQ_SE_DP_SELECT

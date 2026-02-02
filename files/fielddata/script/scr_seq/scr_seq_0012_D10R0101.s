@@ -108,8 +108,8 @@ _0110:
 
 	.balign 4, 0
 _0134:
-	step 12, 1
-	step_end
+	WalkNormalNorth
+	EndMovement
 
 scr_seq_D10R0101_005:
 	play_se SEQ_SE_DP_SELECT
@@ -132,8 +132,8 @@ _0169:
 
 	.balign 4, 0
 _0178:
-	step 34, 1
-	step_end
+	WalkOnSpotNormalWest
+	EndMovement
 
 _0180:
 	npc_msg msg_0052_D10R0101_00000

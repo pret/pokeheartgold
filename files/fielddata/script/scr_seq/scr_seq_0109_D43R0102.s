@@ -28,6 +28,6 @@ _0043:
 
 	.balign 4, 0
 _0048:
-	step 68, 1
-	step_end
+	WarpIn
+	EndMovement
 	.balign 4, 0

@@ -224,15 +224,15 @@ _0305:
 
 	.balign 4, 0
 _0340:
-	step 75, 1
-	step 63, 1
-	step 0, 2
-	step_end
+	EmoteExclamationMark
+	Delay8
+	FaceNorth 2
+	EndMovement
 
 	.balign 4, 0
 _0350:
-	step 75, 1
-	step 63, 1
-	step 3, 2
-	step_end
+	EmoteExclamationMark
+	Delay8
+	FaceEast 2
+	EndMovement
 	.balign 4, 0

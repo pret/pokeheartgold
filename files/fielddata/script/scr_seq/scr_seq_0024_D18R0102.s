@@ -139,102 +139,102 @@ _01D4:
 
 	.balign 4, 0
 _0224:
-	step 105, 1
-	step 69, 1
-	step_end
+	MoveAction_105 1
+	SetInvisible
+	EndMovement
 	end
 
 	.balign 4, 0
 _0234:
-	step 106, 1
-	step 69, 1
-	step_end
+	MoveAction_106 1
+	SetInvisible
+	EndMovement
 	end
 
 	.balign 4, 0
 _0244:
-	step 107, 1
-	step 3, 1
-	step_end
+	MoveAction_107 1
+	FaceEast
+	EndMovement
 	end
 
 	.balign 4, 0
 _0254:
-	step 62, 6
-	step 108, 1
-	step 69, 1
-	step_end
+	Delay4 6
+	MoveAction_108 1
+	SetInvisible
+	EndMovement
 	end
 
 	.balign 4, 0
 _0268:
-	step 109, 1
-	step 3, 1
-	step_end
+	MoveAction_109 1
+	FaceEast
+	EndMovement
 	end
 
 	.balign 4, 0
 _0278:
-	step 62, 6
-	step 110, 1
-	step 69, 1
-	step_end
+	Delay4 6
+	MoveAction_110 1
+	SetInvisible
+	EndMovement
 	end
 
 	.balign 4, 0
 _028C:
-	step 14, 1
-	step 1, 1
-	step_end
+	WalkNormalWest
+	FaceSouth
+	EndMovement
 	end
 
 	.balign 4, 0
 _029C:
-	step 17, 1
-	step 18, 3
-	step 1, 1
-	step_end
+	WalkFastSouth
+	WalkFastWest 3
+	FaceSouth
+	EndMovement
 	end
 
 	.balign 4, 0
 _02B0:
-	step 18, 5
-	step 17, 1
-	step 1, 1
-	step_end
+	WalkFastWest 5
+	WalkFastSouth
+	FaceSouth
+	EndMovement
 	end
 
 	.balign 4, 0
 _02C4:
-	step 18, 1
-	step 0, 1
-	step_end
+	WalkFastWest
+	FaceNorth
+	EndMovement
 
 	.balign 4, 0
 _02D0:
-	step 3, 1
-	step_end
+	FaceEast
+	EndMovement
 
 	.balign 4, 0
 _02D8:
-	step 62, 6
-	step 2, 1
-	step_end
+	Delay4 6
+	FaceWest
+	EndMovement
 	end
 
 	.balign 4, 0
 _02E8:
-	step 19, 4
-	step 16, 1
-	step_end
+	WalkFastEast 4
+	WalkFastNorth
+	EndMovement
 	end
 
 	.balign 4, 0
 _02F8:
-	step 16, 1
-	step 19, 5
-	step 0, 1
-	step_end
+	WalkFastNorth
+	WalkFastEast 5
+	FaceNorth
+	EndMovement
 	end
 
 scr_seq_D18R0102_001:

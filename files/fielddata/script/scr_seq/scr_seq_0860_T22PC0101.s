@@ -150,19 +150,19 @@ _0235:
 
 	.balign 4, 0
 _023C:
-	step 63, 1
-	step 32, 1
-	step 63, 2
-	step 33, 1
-	step_end
+	Delay8
+	WalkOnSpotNormalNorth
+	Delay8 2
+	WalkOnSpotNormalSouth
+	EndMovement
 
 	.balign 4, 0
 _0250:
-	step 63, 1
-	step 32, 1
-	step 63, 2
-	step 35, 1
-	step_end
+	Delay8
+	WalkOnSpotNormalNorth
+	Delay8 2
+	WalkOnSpotNormalEast
+	EndMovement
 
 scr_seq_T22PC0101_005:
 	play_se SEQ_SE_DP_SELECT

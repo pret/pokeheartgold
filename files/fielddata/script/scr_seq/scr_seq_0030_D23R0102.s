@@ -427,75 +427,75 @@ _05C0:
 
 	.balign 4, 0
 _05CC:
-	step 1, 1
-	step 13, 2
-	step 14, 1
-	step 34, 1
-	step_end
+	FaceSouth
+	WalkNormalSouth 2
+	WalkNormalWest
+	WalkOnSpotNormalWest
+	EndMovement
 
 	.balign 4, 0
 _05E0:
-	step 13, 2
-	step 14, 1
-	step 32, 1
-	step_end
+	WalkNormalSouth 2
+	WalkNormalWest
+	WalkOnSpotNormalNorth
+	EndMovement
 
 	.balign 4, 0
 _05F0:
-	step 1, 1
-	step 13, 1
-	step 34, 1
-	step_end
+	FaceSouth
+	WalkNormalSouth
+	WalkOnSpotNormalWest
+	EndMovement
 
 	.balign 4, 0
 _0600:
-	step 13, 1
-	step 32, 1
-	step_end
+	WalkNormalSouth
+	WalkOnSpotNormalNorth
+	EndMovement
 
 	.balign 4, 0
 _060C:
-	step 32, 1
-	step_end
+	WalkOnSpotNormalNorth
+	EndMovement
 
 	.balign 4, 0
 _0614:
-	step 13, 1
-	step 14, 2
-	step_end
+	WalkNormalSouth
+	WalkNormalWest 2
+	EndMovement
 
 	.balign 4, 0
 _0620:
-	step 34, 1
-	step_end
+	WalkOnSpotNormalWest
+	EndMovement
 
 	.balign 4, 0
 _0628:
-	step 33, 1
-	step_end
+	WalkOnSpotNormalSouth
+	EndMovement
 
 	.balign 4, 0
 _0630:
-	step 13, 1
-	step_end
+	WalkNormalSouth
+	EndMovement
 
 	.balign 4, 0
 _0638:
-	step 0, 1
-	step 12, 1
-	step 34, 1
-	step_end
+	FaceNorth
+	WalkNormalNorth
+	WalkOnSpotNormalWest
+	EndMovement
 
 	.balign 4, 0
 _0648:
-	step 13, 2
-	step 15, 3
-	step_end
+	WalkNormalSouth 2
+	WalkNormalEast 3
+	EndMovement
 
 	.balign 4, 0
 _0654:
-	step 14, 3
-	step 12, 2
-	step 33, 1
-	step_end
+	WalkNormalWest 3
+	WalkNormalNorth 2
+	WalkOnSpotNormalSouth
+	EndMovement
 	.balign 4, 0

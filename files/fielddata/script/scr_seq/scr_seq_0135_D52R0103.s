@@ -63,9 +63,9 @@ scr_seq_D52R0103_001:
 
 	.balign 4, 0
 _00B4:
-	step 12, 8
-	step 63, 2
-	step_end
+	WalkNormalNorth 8
+	Delay8 2
+	EndMovement
 
 scr_seq_D52R0103_000:
 	play_se SEQ_SE_DP_SELECT

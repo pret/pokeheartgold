@@ -1703,8 +1703,8 @@ _0EB3:
 
 	.balign 4, 0
 _0EBC:
-	step 101, 1
-	step_end
+	RevealTrainer
+	EndMovement
 
 scr_seq_0953_739:
 	wait_following_pokemon_movement

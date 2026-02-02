@@ -80,24 +80,24 @@ scr_seq_T27GYM0101_004:
 
 	.balign 4, 0
 _0108:
-	step 75, 1
-	step 13, 3
-	step 63, 1
-	step_end
+	EmoteExclamationMark
+	WalkNormalSouth 3
+	Delay8
+	EndMovement
 
 	.balign 4, 0
 _0118:
-	step 9, 1
-	step 71, 1
-	step 12, 1
-	step_end
+	WalkSlowSouth
+	LockDir
+	WalkNormalNorth
+	EndMovement
 
 	.balign 4, 0
 _0128:
-	step 63, 1
-	step 13, 1
-	step 63, 1
-	step_end
+	Delay8
+	WalkNormalSouth
+	Delay8
+	EndMovement
 
 scr_seq_T27GYM0101_001:
 	play_se SEQ_SE_DP_SELECT
@@ -169,24 +169,24 @@ scr_seq_T27GYM0101_002:
 
 	.balign 4, 0
 _0230:
-	step 1, 2
-	step 2, 2
-	step 0, 2
-	step 3, 2
-	step 1, 2
-	step 2, 2
-	step 0, 2
-	step 3, 2
-	step 1, 2
-	step 2, 2
-	step 0, 2
-	step 3, 2
-	step 1, 2
-	step 2, 2
-	step 0, 2
-	step 3, 1
-	step 69, 0
-	step_end
+	FaceSouth 2
+	FaceWest 2
+	FaceNorth 2
+	FaceEast 2
+	FaceSouth 2
+	FaceWest 2
+	FaceNorth 2
+	FaceEast 2
+	FaceSouth 2
+	FaceWest 2
+	FaceNorth 2
+	FaceEast 2
+	FaceSouth 2
+	FaceWest 2
+	FaceNorth 2
+	FaceEast
+	SetInvisible 0
+	EndMovement
 
 scr_seq_T27GYM0101_003:
 	play_se SEQ_SE_DP_SELECT

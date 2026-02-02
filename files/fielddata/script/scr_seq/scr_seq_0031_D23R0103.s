@@ -165,11 +165,11 @@ _01E2:
 
 	.balign 4, 0
 _01F0:
-	step 14, 2
-	step_end
+	WalkNormalWest 2
+	EndMovement
 
 	.balign 4, 0
 _01F8:
-	step 15, 2
-	step_end
+	WalkNormalEast 2
+	EndMovement
 	.balign 4, 0

@@ -238,68 +238,68 @@ _0402:
 
 	.balign 4, 0
 _0428:
-	step 75, 1
-	step 63, 2
-	step 3, 2
-	step 63, 1
-	step 2, 2
-	step 63, 1
-	step 3, 2
-	step 63, 1
-	step 0, 2
-	step 63, 1
-	step_end
+	EmoteExclamationMark
+	Delay8 2
+	FaceEast 2
+	Delay8
+	FaceWest 2
+	Delay8
+	FaceEast 2
+	Delay8
+	FaceNorth 2
+	Delay8
+	EndMovement
 
 	.balign 4, 0
 _0454:
-	step 75, 1
-	step 63, 2
-	step_end
+	EmoteExclamationMark
+	Delay8 2
+	EndMovement
 
 	.balign 4, 0
 _0460:
-	step 23, 11
-	step 0, 2
-	step_end
+	WalkFasterEast 11
+	FaceNorth 2
+	EndMovement
 
 	.balign 4, 0
 _046C:
-	step 23, 11
-	step 1, 2
-	step_end
+	WalkFasterEast 11
+	FaceSouth 2
+	EndMovement
 
 	.balign 4, 0
 _0478:
-	step 1, 2
-	step 63, 2
-	step_end
+	FaceSouth 2
+	Delay8 2
+	EndMovement
 
 	.balign 4, 0
 _0484:
-	step 0, 2
-	step 63, 2
-	step_end
+	FaceNorth 2
+	Delay8 2
+	EndMovement
 
 	.balign 4, 0
 _0490:
-	step 2, 2
-	step 22, 10
-	step_end
+	FaceWest 2
+	WalkFasterWest 10
+	EndMovement
 
 	.balign 4, 0
 _049C:
-	step 2, 1
-	step_end
+	FaceWest
+	EndMovement
 
 	.balign 4, 0
 _04A4:
-	step 1, 1
-	step_end
+	FaceSouth
+	EndMovement
 
 	.balign 4, 0
 _04AC:
-	step 0, 1
-	step_end
+	FaceNorth
+	EndMovement
 
 scr_seq_D35R0102_005:
 	scrcmd_609
@@ -396,75 +396,75 @@ _0649:
 
 	.balign 4, 0
 _0668:
-	step 22, 9
-	step 0, 2
-	step_end
+	WalkFasterWest 9
+	FaceNorth 2
+	EndMovement
 
 	.balign 4, 0
 _0674:
-	step 22, 9
-	step 1, 2
-	step_end
+	WalkFasterWest 9
+	FaceSouth 2
+	EndMovement
 
 	.balign 4, 0
 _0680:
-	step 23, 11
-	step 0, 2
-	step_end
+	WalkFasterEast 11
+	FaceNorth 2
+	EndMovement
 
 	.balign 4, 0
 _068C:
-	step 23, 11
-	step 1, 2
-	step_end
+	WalkFasterEast 11
+	FaceSouth 2
+	EndMovement
 
 	.balign 4, 0
 _0698:
-	step 23, 11
-	step 0, 2
-	step_end
+	WalkFasterEast 11
+	FaceNorth 2
+	EndMovement
 
 	.balign 4, 0
 _06A4:
-	step 23, 11
-	step 1, 2
-	step_end
+	WalkFasterEast 11
+	FaceSouth 2
+	EndMovement
 
 	.balign 4, 0
 _06B0:
-	step 22, 9
-	step 0, 2
-	step_end
+	WalkFasterWest 9
+	FaceNorth 2
+	EndMovement
 
 	.balign 4, 0
 _06BC:
-	step 22, 9
-	step 1, 2
-	step_end
+	WalkFasterWest 9
+	FaceSouth 2
+	EndMovement
 
 	.balign 4, 0
 _06C8:
-	step 3, 2
-	step 23, 10
-	step_end
+	FaceEast 2
+	WalkFasterEast 10
+	EndMovement
 
 	.balign 4, 0
 _06D4:
-	step 2, 2
-	step 22, 10
-	step_end
+	FaceWest 2
+	WalkFasterWest 10
+	EndMovement
 
 	.balign 4, 0
 _06E0:
-	step 2, 2
-	step 22, 10
-	step_end
+	FaceWest 2
+	WalkFasterWest 10
+	EndMovement
 
 	.balign 4, 0
 _06EC:
-	step 3, 2
-	step 23, 10
-	step_end
+	FaceEast 2
+	WalkFasterEast 10
+	EndMovement
 
 scr_seq_D35R0102_006:
 	scrcmd_609
