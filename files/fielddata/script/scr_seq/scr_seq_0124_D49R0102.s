@@ -436,13 +436,13 @@ _05FF:
 
 	.balign 4, 0
 _0610:
-	step 35, 1
-	step_end
+	WalkOnSpotNormalEast
+	EndMovement
 
 	.balign 4, 0
 _0618:
-	step 32, 1
-	step_end
+	WalkOnSpotNormalNorth
+	EndMovement
 
 scr_seq_D49R0102_011:
 	play_se SEQ_SE_DP_SELECT

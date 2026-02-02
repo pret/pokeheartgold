@@ -192,18 +192,18 @@ scr_seq_T07R0104_006:
 
 	.balign 4, 0
 _026C:
-	step 34, 1
-	step_end
+	WalkOnSpotNormalWest
+	EndMovement
 
 	.balign 4, 0
 _0274:
-	step 35, 1
-	step_end
+	WalkOnSpotNormalEast
+	EndMovement
 
 	.balign 4, 0
 _027C:
-	step 33, 1
-	step_end
+	WalkOnSpotNormalSouth
+	EndMovement
 
 scr_seq_T07R0104_000:
 	play_se SEQ_SE_DP_SELECT

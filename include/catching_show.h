@@ -4,7 +4,7 @@
 #include "battle/battle_setup.h"
 
 #include "script.h"
-#include "unk_0202EB30.h"
+#include "palPark_migration.h"
 
 enum PalParkEncounterType {
     PP_ENCTYPE_NONE,

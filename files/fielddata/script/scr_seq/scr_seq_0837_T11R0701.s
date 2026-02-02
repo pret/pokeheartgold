@@ -242,36 +242,36 @@ _039B:
 
 	.balign 4, 0
 _03AC:
-	step 33, 1
-	step_end
+	WalkOnSpotNormalSouth
+	EndMovement
 
 	.balign 4, 0
 _03B4:
-	step 34, 1
-	step_end
+	WalkOnSpotNormalWest
+	EndMovement
 
 	.balign 4, 0
 _03BC:
-	step 35, 1
-	step_end
+	WalkOnSpotNormalEast
+	EndMovement
 
 	.balign 4, 0
 _03C4:
-	step 75, 1
-	step_end
+	EmoteExclamationMark
+	EndMovement
 
 	.balign 4, 0
 _03CC:
-	step 14, 2
-	step 13, 3
-	step 14, 8
-	step_end
+	WalkNormalWest 2
+	WalkNormalSouth 3
+	WalkNormalWest 8
+	EndMovement
 
 	.balign 4, 0
 _03DC:
-	step 13, 3
-	step 14, 10
-	step_end
+	WalkNormalSouth 3
+	WalkNormalWest 10
+	EndMovement
 
 _03E8:
 	play_se SEQ_SE_DP_SELECT
@@ -357,20 +357,20 @@ _04F5:
 
 	.balign 4, 0
 _0504:
-	step 14, 2
-	step 13, 5
-	step 14, 1
-	step 13, 1
-	step 69, 1
-	step_end
+	WalkNormalWest 2
+	WalkNormalSouth 5
+	WalkNormalWest
+	WalkNormalSouth
+	SetInvisible
+	EndMovement
 
 	.balign 4, 0
 _051C:
-	step 13, 5
-	step 14, 3
-	step 13, 1
-	step 69, 1
-	step_end
+	WalkNormalSouth 5
+	WalkNormalWest 3
+	WalkNormalSouth
+	SetInvisible
+	EndMovement
 
 scr_seq_T11R0701_003:
 	play_se SEQ_SE_DP_SELECT

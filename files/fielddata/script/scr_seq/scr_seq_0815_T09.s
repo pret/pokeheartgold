@@ -169,72 +169,72 @@ _024B:
 
 	.balign 4, 0
 _0268:
-	step 35, 1
-	step 63, 2
-	step 32, 1
-	step 63, 2
-	step 33, 1
-	step_end
+	WalkOnSpotNormalEast
+	Delay8 2
+	WalkOnSpotNormalNorth
+	Delay8 2
+	WalkOnSpotNormalSouth
+	EndMovement
 
 	.balign 4, 0
 _0280:
-	step 32, 1
-	step 63, 2
-	step 35, 1
-	step 63, 2
-	step 34, 1
-	step_end
+	WalkOnSpotNormalNorth
+	Delay8 2
+	WalkOnSpotNormalEast
+	Delay8 2
+	WalkOnSpotNormalWest
+	EndMovement
 
 	.balign 4, 0
 _0298:
-	step 14, 1
-	step 13, 1
-	step_end
+	WalkNormalWest
+	WalkNormalSouth
+	EndMovement
 
 	.balign 4, 0
 _02A4:
-	step 13, 1
-	step 14, 1
-	step_end
+	WalkNormalSouth
+	WalkNormalWest
+	EndMovement
 
 	.balign 4, 0
 _02B0:
-	step 13, 2
-	step 14, 2
-	step 13, 8
-	step_end
+	WalkNormalSouth 2
+	WalkNormalWest 2
+	WalkNormalSouth 8
+	EndMovement
 
 	.balign 4, 0
 _02C0:
-	step 13, 1
-	step 13, 2
-	step 14, 2
-	step 13, 7
-	step_end
+	WalkNormalSouth
+	WalkNormalSouth 2
+	WalkNormalWest 2
+	WalkNormalSouth 7
+	EndMovement
 
 	.balign 4, 0
 _02D4:
-	step 13, 1
-	step 15, 1
-	step 34, 1
-	step_end
+	WalkNormalSouth
+	WalkNormalEast
+	WalkOnSpotNormalWest
+	EndMovement
 
 	.balign 4, 0
 _02E4:
-	step 14, 1
-	step 12, 1
-	step 35, 1
-	step_end
+	WalkNormalWest
+	WalkNormalNorth
+	WalkOnSpotNormalEast
+	EndMovement
 
 	.balign 4, 0
 _02F4:
-	step 33, 1
-	step_end
+	WalkOnSpotNormalSouth
+	EndMovement
 
 	.balign 4, 0
 _02FC:
-	step 60, 1
-	step_end
+	Delay1
+	EndMovement
 
 _0304:
 	npc_msg msg_0519_T09_00005

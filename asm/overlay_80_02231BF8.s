@@ -895,13 +895,13 @@ FrtCmd_162: ; 0x022322C8
 FrtCmd_163: ; 0x022322F8
 	push {r4, lr}
 	add r4, r0, #0
-	bl FrontierScript_ReadU16
+	bl FrontierScriptContext_ReadHalfWord
 	add r1, r4, #0
 	add r1, #0x78
 	strh r0, [r1]
 	ldr r1, _02232314 ; =ov80_02232318
 	add r0, r4, #0
-	bl ov80_0222AB84
+	bl FrontierScriptContext_Pause
 	mov r0, #1
 	pop {r4, pc}
 	nop
@@ -938,13 +938,13 @@ _02232344: .word 0x00000A1A
 FrtCmd_165: ; 0x02232348
 	push {r4, lr}
 	add r4, r0, #0
-	bl FrontierScript_ReadU16
+	bl FrontierScriptContext_ReadHalfWord
 	add r1, r4, #0
 	add r1, #0x78
 	strh r0, [r1]
 	ldr r1, _02232364 ; =ov80_02232368
 	add r0, r4, #0
-	bl ov80_0222AB84
+	bl FrontierScriptContext_Pause
 	mov r0, #1
 	pop {r4, pc}
 	nop

@@ -1,3 +1,5 @@
+#include <stdexcept>
+#include <iostream>
 #include "Manifest.h"
 
 std::map<std::pair<fs::path, std::string>, std::map<std::string, int>> HeaderCache {
@@ -9,11 +11,24 @@ std::map<std::pair<fs::path, std::string>, std::map<std::string, int>> HeaderCac
 
 void ColumnSpec::translate_width(std::string &width, int &bytes, int &bits) {
     int dotpos = width.find('.');
-    bytes = std::stoi(width.substr(0, dotpos));
+    
+    try {
+        bytes = std::stoi(width.substr(0, dotpos));
+    } catch (std::invalid_argument &e) {
+        throw std::invalid_argument("invalid width bytes value: \"" + width.substr(0, dotpos) + "\" in width spec \"" + width + "\"");
+    } catch (std::out_of_range &e) {
+        throw std::invalid_argument("width bytes value out of range: \"" + width.substr(0, dotpos) + "\" in width spec \"" + width + "\"");
+    }
     if (dotpos == std::string::npos) {
         bits = 0;
     } else {
-        bits = std::stoi(width.substr(dotpos + 1));
+        try {
+            bits = std::stoi(width.substr(dotpos + 1));
+        } catch (std::invalid_argument &e) {
+            throw std::invalid_argument("invalid width bits value: \"" + width.substr(dotpos + 1) + "\" in width spec \"" + width + "\"");
+        } catch (std::out_of_range &e) {
+            throw std::invalid_argument("width bits value out of range: \"" + width.substr(dotpos + 1) + "\" in width spec \"" + width + "\"");
+        }
     }
 }
 
@@ -25,15 +40,32 @@ void ColumnSpec::_init(int _width, const fs::path &headerfile, const std::string
             constants = HeaderCache.at({headerfile, prefix});
         } catch (const std::out_of_range &e) {
             std::ifstream handle(headerfile);
+            if (!handle.is_open()) {
+                throw std::runtime_error("unable to open header file \"" + headerfile.string() + "\"");
+            }
             std::regex pattern("#define +(" + prefix + "\\w+) +(\\d+)$");
             std::string line;
             std::smatch results;
+            int line_num = 0;
             while (std::getline(handle, line)) {
+                line_num++;
+                while (!line.empty() && (line.back() == '\r' || line.back() == ' ' || line.back() == '\t')) {
+                    line.pop_back();
+                }
                 if (std::regex_match(line, results, pattern)) {
-                    constants[results[1]] = std::stoi(results[2]);
+                    try {
+                        constants[results[1]] = std::stoi(results[2]);
+                    } catch (std::invalid_argument &e2) {
+                        throw std::invalid_argument("invalid constant value: \"" + results[2].str() + "\" in header file \"" + headerfile.string() + "\" line " + std::to_string(line_num));
+                    } catch (std::out_of_range &e2) {
+                        throw std::invalid_argument("constant value out of range: \"" + results[2].str() + "\" in header file \"" + headerfile.string() + "\" line " + std::to_string(line_num));
+                    }
                 }
             }
             HeaderCache[{headerfile, prefix}] = constants;
+            if (constants.empty()) {
+                std::cerr << "csv2bin warning: no constants found in header file \"" << headerfile.string() << "\"" << std::endl;
+            }
         }
     }
 }
@@ -249,7 +281,24 @@ void BufferedRowConverter::to_bytes() {
             if (spec.is_padding()) {
                 val = 0;
             } else {
-                val = spec[row.at(column_i++)];
+                //val = spec[row.at(column_i++)];
+                try {
+                    const std::string &cell_value = row.at(column_i);
+                    val = spec[cell_value];
+                    column_i++;
+                } catch (std::invalid_argument &e) {
+                    std::string msg = "row" + std::to_string(row_cursor + 1) + " (1-indexed), column \"" + colname + "\" (index " + std::to_string(column_i) + "): " + e.what();
+                    if (column_i < row.size()) {
+                        msg += " (cell value: \"" + row.at(column_i) + "\")";
+                    } else {
+                        msg += " (cell value: <missing>)";
+                    }
+                    throw std::invalid_argument(msg);
+                } catch (std::out_of_range &e) {
+                    std::string msg = "row" + std::to_string(row_cursor + 1) + " (1-indexed), column \"" + colname + "\" (index " + std::to_string(column_i) + "): " + e.what();
+                    msg += "(row has " + std::to_string(row.size()) + "columns)";
+                    throw std::invalid_argument(msg);
+                }
             }
             set(val, spec.type(), spec.num_bits());
             advance(spec.size(), spec.num_bits());

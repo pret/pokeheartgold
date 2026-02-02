@@ -164,13 +164,13 @@ _0209:
 
 	.balign 4, 0
 _0210:
-	step 75, 1
-	step 35, 1
-	step_end
+	EmoteExclamationMark
+	WalkOnSpotNormalEast
+	EndMovement
 
 	.balign 4, 0
 _021C:
-	step 75, 1
-	step 33, 1
-	step_end
+	EmoteExclamationMark
+	WalkOnSpotNormalSouth
+	EndMovement
 	.balign 4, 0

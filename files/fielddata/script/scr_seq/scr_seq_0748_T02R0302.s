@@ -43,10 +43,10 @@ _006C:
 
 	.balign 4, 0
 _0070:
-	step 14, 2
-	step 13, 1
-	step 14, 2
-	step_end
+	WalkNormalWest 2
+	WalkNormalSouth
+	WalkNormalWest 2
+	EndMovement
 
 scr_seq_T02R0302_000:
 scr_seq_T02R0302_003:
@@ -98,8 +98,8 @@ _00ED:
 
 	.balign 4, 0
 _0120:
-	step 34, 1
-	step_end
+	WalkOnSpotNormalWest
+	EndMovement
 
 scr_seq_T02R0302_001:
 	scrcmd_609
@@ -131,11 +131,11 @@ _0168:
 
 	.balign 4, 0
 _017C:
-	step 13, 3
-	step_end
+	WalkNormalSouth 3
+	EndMovement
 
 	.balign 4, 0
 _0184:
-	step 15, 1
-	step_end
+	WalkNormalEast
+	EndMovement
 	.balign 4, 0
