@@ -1,5 +1,7 @@
 #include "unk_02097268.h"
 
+#include "constants/buildmodel.h"
+
 #include "gf_gfx_loader.h"
 #include "sys_flags.h"
 
@@ -16,8 +18,8 @@ typedef struct UnkStruct_020874C4_sub8 {
 } UnkStruct_020874C4_sub8;
 
 typedef struct UnkStruct_02097694 {
-    u8 unk_0[4];
-    u8 unk_4[4];
+    u8 levels[4];
+    u8 count[4];
 } UnkStruct_02097694;
 
 typedef struct UnkStruct_020874C4 {
@@ -28,58 +30,51 @@ typedef struct UnkStruct_020874C4 {
     u8 unk_10;
 } UnkStruct_020874C4;
 
-BOOL sub_020972A4(const ENC_SLOT *a, const ENC_SLOT *b);
-BOOL sub_020972C4(const ENC_SLOT *a, const ENC_SLOT *b);
-BOOL sub_020972EC(u8 a0, const u8 *a1, u8 a2);
-u8 sub_02097650(u8 a0, u8 a1);
-void sub_02097694(SAFARIZONE_AREASET *areaSet, int area, UnkStruct_02097694 *out);
+static BOOL sub_020972A4(const ENC_SLOT *a, const ENC_SLOT *b);
+static BOOL sub_020972C4(const ENC_SLOT *a, const ENC_SLOT *b);
+static BOOL sub_020972EC(u8 a0, const u8 *a1, u8 a2);
+static u8 sub_02097650(u8 a0, u8 a1);
+static void sub_02097694(SAFARIZONE_AREASET *areaSet, int area, UnkStruct_02097694 *out);
 
-static const UnkStruct_02097268 _02108EEE[24] = {
-    { 0xBD, 0x12, 0, 1 },
-    { 0xBE, 0x12, 0, 1 },
-    { 0xBF, 0x12, 0, 1 },
-    { 0xC0, 0x24, 0, 2 },
-    { 0xC1, 0x24, 0, 2 },
-    { 0xC2, 0x24, 0, 2 },
-    { 0xC3, 0x12, 0, 3 },
-    { 0xC4, 0x24, 0, 3 },
-    { 0xC5, 0x24, 0, 3 },
-    { 0xC6, 0x24, 0, 4 },
-    { 0xC7, 0x25, 0, 4 },
-    { 0xC8, 0x24, 0, 4 },
-    { 0xC9, 0x14, 0, 0 },
-    { 0xCA, 0x12, 0, 0 },
-    { 0xCB, 0x12, 0, 0 },
-    { 0xCC, 0x14, 0, 0 },
-    { 0xCD, 0x22, 0, 0 },
-    { 0xCE, 0x12, 0, 0 },
-    { 0xCF, 0x12, 1, 0 },
-    { 0xD1, 0x12, 1, 0 },
-    { 0xD3, 0x12, 0, 0 },
-    { 0xD4, 0x12, 0, 0 },
-    { 0xD5, 0x12, 0, 0 },
-    { 0xD6, 0x12, 0, 0 },
+static const UnkStruct_02097268 _02108EEE[NUM_SAFARI_ZONE_OBJECT_IDS] = {
+    [SAFARI_ZONE_OBJECTID_SHRUBBERY] = { BUILD_MODEL_SAF_GO01,  0, 1, 1, FALSE, SAFARI_ZONE_OBJECT_TYPE_PLAINS },
+    [SAFARI_ZONE_OBJECTID_RED_FLOWER] = { BUILD_MODEL_SAF_GO02,  0, 1, 1, FALSE, SAFARI_ZONE_OBJECT_TYPE_PLAINS },
+    [SAFARI_ZONE_OBJECTID_WHITE_FLOWER] = { BUILD_MODEL_SAF_GO03,  0, 1, 1, FALSE, SAFARI_ZONE_OBJECT_TYPE_PLAINS },
+    [SAFARI_ZONE_OBJECTID_TREE] = { BUILD_MODEL_SAF_TO01,  0, 2, 2, FALSE, SAFARI_ZONE_OBJECT_TYPE_FOREST },
+    [SAFARI_ZONE_OBJECTID_STUMP] = { BUILD_MODEL_SAF_TO02,  0, 2, 2, FALSE, SAFARI_ZONE_OBJECT_TYPE_FOREST },
+    [SAFARI_ZONE_OBJECTID_BRANCHES] = { BUILD_MODEL_SAF_TO03,  0, 2, 2, FALSE, SAFARI_ZONE_OBJECT_TYPE_FOREST },
+    [SAFARI_ZONE_OBJECTID_SMALL_ROCK] = { BUILD_MODEL_SAF_RO01,  0, 1, 1, FALSE, SAFARI_ZONE_OBJECT_TYPE_PEAK   },
+    [SAFARI_ZONE_OBJECTID_BIG_ROCK] = { BUILD_MODEL_SAF_RO02,  0, 2, 2, FALSE, SAFARI_ZONE_OBJECT_TYPE_PEAK   },
+    [SAFARI_ZONE_OBJECTID_MOSSY_ROCK] = { BUILD_MODEL_SAF_RO03,  0, 2, 2, FALSE, SAFARI_ZONE_OBJECT_TYPE_PEAK   },
+    [SAFARI_ZONE_OBJECTID_PUDDLE] = { BUILD_MODEL_SAF_WO01,  0, 2, 2, FALSE, SAFARI_ZONE_OBJECT_TYPE_WATER  },
+    [SAFARI_ZONE_OBJECTID_FOUNTAIN] = { BUILD_MODEL_SAF_WO02,  1, 2, 2, FALSE, SAFARI_ZONE_OBJECT_TYPE_WATER  },
+    [SAFARI_ZONE_OBJECTID_WATER_HOLE] = { BUILD_MODEL_SAF_WO03,  0, 2, 2, FALSE, SAFARI_ZONE_OBJECT_TYPE_WATER  },
+    [SAFARI_ZONE_OBJECTID_BENCH] = { BUILD_MODEL_SAF_EO01,  0, 2, 1, FALSE, SAFARI_ZONE_OBJECT_TYPE_NONE   },
+    [SAFARI_ZONE_OBJECTID_SHORT_FENCE1] = { BUILD_MODEL_SAF_EO02,  0, 1, 1, FALSE, SAFARI_ZONE_OBJECT_TYPE_NONE   },
+    [SAFARI_ZONE_OBJECTID_SHORT_FENCE2] = { BUILD_MODEL_SAF_EO03,  0, 1, 1, FALSE, SAFARI_ZONE_OBJECT_TYPE_NONE   },
+    [SAFARI_ZONE_OBJECTID_LONG_FENCE1] = { BUILD_MODEL_SAF_EO04,  0, 2, 1, FALSE, SAFARI_ZONE_OBJECT_TYPE_NONE   },
+    [SAFARI_ZONE_OBJECTID_LONG_FENCE2] = { BUILD_MODEL_SAF_EO05,  0, 1, 2, FALSE, SAFARI_ZONE_OBJECT_TYPE_NONE   },
+    [SAFARI_ZONE_OBJECTID_SIGNBOARD] = { BUILD_MODEL_SAF_EO06,  0, 1, 1, FALSE, SAFARI_ZONE_OBJECT_TYPE_NONE   },
+    [SAFARI_ZONE_OBJECTID_YOUR_STATUE] = { BUILD_MODEL_SAF_EO07M, 0, 1, 1, TRUE,  SAFARI_ZONE_OBJECT_TYPE_NONE   },
+    [SAFARI_ZONE_OBJECTID_YOUR_FLAG] = { BUILD_MODEL_SAF_EO08M, 0, 1, 1, TRUE,  SAFARI_ZONE_OBJECT_TYPE_NONE   },
+    [SAFARI_ZONE_OBJECTID_OUTSIDE_LAMP] = { BUILD_MODEL_SAF_EO09,  0, 1, 1, FALSE, SAFARI_ZONE_OBJECT_TYPE_NONE   },
+    [SAFARI_ZONE_OBJECTID_GUIDEPOST_R_] = { BUILD_MODEL_SAF_EO10,  0, 1, 1, FALSE, SAFARI_ZONE_OBJECT_TYPE_NONE   },
+    [SAFARI_ZONE_OBJECTID_GUIDEPOST_L_] = { BUILD_MODEL_SAF_EO11,  0, 1, 1, FALSE, SAFARI_ZONE_OBJECT_TYPE_NONE   },
+    [SAFARI_ZONE_OBJECTID_TRASH_CAN] = { BUILD_MODEL_SAF_EO12,  0, 1, 1, FALSE, SAFARI_ZONE_OBJECT_TYPE_NONE   },
 };
 
-static const u8 _02108EDA[][5] = {
-    { 1, 5, 10, 15, 20 },
-    { 2, 6, 11, 16, 21 },
-    { 3, 7, 12, 17, 22 },
-    { 4, 8, 13, 18, 23 },
-};
-
-void sub_02097268(UnkStruct_02097268 *a0, int a1, int a2) {
-    if (a1 >= 24) {
+void sub_02097268(UnkStruct_02097268 *dest, int idx, int gender) {
+    if (idx >= NUM_SAFARI_ZONE_OBJECT_IDS) {
         GF_ASSERT(FALSE);
-        a1 = 0;
+        idx = 0;
     }
-    *a0 = _02108EEE[a1];
-    if (a0->unk_1_7 && a2 == 1) {
-        ++a0->unk_0;
+    *dest = _02108EEE[idx];
+    if (dest->hasGenderedLayout && gender == TRAINER_FEMALE) {
+        ++dest->unk_0;
     }
 }
 
-BOOL sub_020972A4(const ENC_SLOT *a, const ENC_SLOT *b) {
+static BOOL sub_020972A4(const ENC_SLOT *a, const ENC_SLOT *b) {
     if (a->species != b->species || a->level_max != b->level_max || a->level_min != b->level_min) {
         return FALSE;
     }
@@ -87,7 +82,7 @@ BOOL sub_020972A4(const ENC_SLOT *a, const ENC_SLOT *b) {
     return TRUE;
 }
 
-BOOL sub_020972C4(const ENC_SLOT *a, const ENC_SLOT *b) {
+static BOOL sub_020972C4(const ENC_SLOT *a, const ENC_SLOT *b) {
     for (int i = 0; i < NUM_ENCOUNTERS_SAFARI; ++i) {
         if (!sub_020972A4(&a[i], &b[i])) {
             return FALSE;
@@ -97,7 +92,7 @@ BOOL sub_020972C4(const ENC_SLOT *a, const ENC_SLOT *b) {
     return TRUE;
 }
 
-BOOL sub_020972EC(u8 a0, const u8 *a1, u8 a2) {
+static BOOL sub_020972EC(u8 a0, const u8 *a1, u8 a2) {
     for (int i = 0; i < a2; ++i) {
         if (a1[i] == a0) {
             return TRUE;
@@ -231,10 +226,10 @@ ENC_SLOT *sub_020974C4(SAFARIZONE_AREASET *areaSet, int area, int encounterType,
             int idx;
             UnkStruct_020874C4_sub8 *r0;
             r0 = &sp1C[encounterType].unk_08[i];
-            if (sp2C.unk_0[r0->unk_0 - 1] < r0->unk_1) {
+            if (sp2C.levels[r0->unk_0 - 1] < r0->unk_1) {
                 continue;
             }
-            if (r0->unk_2 != 0 && sp2C.unk_0[r0->unk_2 - 1] < r0->unk_3) {
+            if (r0->unk_2 != 0 && sp2C.levels[r0->unk_2 - 1] < r0->unk_3) {
                 continue;
             }
             idx = sp1C[encounterType].unk_10 * timeOfDay + i;
@@ -250,41 +245,49 @@ ENC_SLOT *sub_020974C4(SAFARIZONE_AREASET *areaSet, int area, int encounterType,
     return sp20;
 }
 
-u8 sub_02097650(u8 a0, u8 a1) {
-    if (a1 == 0) {
+static const u8 _02108EDA[][5] = {
+    [SAFARI_ZONE_OBJECT_TYPE_PLAINS - 1] = { 1, 5, 10, 15, 20 },
+    [SAFARI_ZONE_OBJECT_TYPE_FOREST - 1] = { 2, 6, 11, 16, 21 },
+    [SAFARI_ZONE_OBJECT_TYPE_PEAK - 1] = { 3, 7, 12, 17, 22 },
+    [SAFARI_ZONE_OBJECT_TYPE_WATER - 1] = { 4, 8, 13, 18, 23 },
+};
+
+static u8 sub_02097650(u8 level, u8 attr) {
+    if (attr == SAFARI_ZONE_OBJECT_TYPE_NONE) {
         return 0;
     }
     for (int i = 0; i < 5; ++i) {
-        if (a0 < _02108EDA[a1 - 1][i]) {
+        if (level < _02108EDA[attr - 1][i]) {
             return i + 1;
         }
     }
-    if (a0 < 25) {
+    if (level < 25) {
         return 6;
     }
     return 7;
 }
 
-void sub_02097694(SAFARIZONE_AREASET *areaSet, int area, UnkStruct_02097694 *out) {
+static void sub_02097694(SAFARIZONE_AREASET *areaSet, int area, UnkStruct_02097694 *out) {
     UnkStruct_02097268 sp8;
-    u8 sp4;
-    SAFARIZONE_AREA *sp0;
+    u8 areaLevel;
+    SAFARIZONE_AREA *szArea;
 
-    sp0 = &areaSet->areas[area];
-    sp4 = areaSet->unk2DC[sp0->area_no] / 10;
+    szArea = &areaSet->areas[area];
+    areaLevel = areaSet->unk2DC[szArea->area_no] / 10;
 
     MI_CpuClear8(out, sizeof(UnkStruct_02097694));
 
-    for (int i = 0; i < sp0->active_object_count; ++i) {
-        sub_02097268(&sp8, sp0->objects[i].unk[0], 2);
-        if (sp8.unk_2 != 0) {
-            ++out->unk_4[sp8.unk_2 - 1];
-            u8 r3 = sub_02097650(sp4, sp8.unk_2);
-            if (out->unk_0[sp8.unk_2 - 1] + r3 > 255) {
-                out->unk_0[sp8.unk_2 - 1] = 255;
-            } else {
-                out->unk_0[sp8.unk_2 - 1] += r3;
-            }
+    for (int i = 0; i < szArea->active_object_count; ++i) {
+        sub_02097268(&sp8, szArea->objects[i].unk[0], 2);
+        if (sp8.objectType == SAFARI_ZONE_OBJECT_TYPE_NONE) {
+            continue;
+        }
+        ++out->count[sp8.objectType - 1];
+        u8 attrBonus = sub_02097650(areaLevel, sp8.objectType);
+        if (out->levels[sp8.objectType - 1] + attrBonus > 255) {
+            out->levels[sp8.objectType - 1] = 255;
+        } else {
+            out->levels[sp8.objectType - 1] += attrBonus;
         }
     }
 }

@@ -13,9 +13,11 @@
 
 typedef struct UnkStruct_02097268 {
     u8 unk_0;
-    u8 unk_1_0 : 7;
-    u8 unk_1_7 : 1;
-    u8 unk_2;
+    u8 unk_1_0 : 1;
+    u8 unk_1_1 : 3;
+    u8 unk_1_4 : 3;
+    u8 hasGenderedLayout : 1;
+    u8 objectType;
 } UnkStruct_02097268;
 
 void sub_02097268(UnkStruct_02097268 *a0, int a1, BOOL a2);

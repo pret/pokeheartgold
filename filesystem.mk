@@ -454,6 +454,7 @@ $(eval $(call arc_strip_name,files/pbr/dp_height_o.narc,files/a/1/9/5))
 $(eval $(call arc_strip_name,files/resource/eng/pms_aikotoba/pms_aikotoba.narc,files/a/2/1/2))
 $(eval $(call arc_strip_name,files/application/zukanlist/zukan_data/zukan_data_gira.narc,files/a/2/1/4))
 $(eval $(call arc_strip_name,files/fielddata/sodateya/kowaza_list.narc,files/a/2/2/9))
+$(eval $(call arc_strip_name,files/arc/safari_enc.narc,files/a/2/3/0))
 $(eval $(call arc_strip_name,files/arc/headbutt.$(buildname).narc,files/a/2/5/2))
 $(eval $(call arc_strip_name,files/demo/opening/gs_opening.narc,files/a/2/6/2))
 $(eval $(call arc_strip_name,files/application/voltorb_flip.narc,files/a/2/6/4))
@@ -534,6 +535,7 @@ include files/application/guinness.mk
 include files/demo/intro/intro.mk
 include files/data/namein.mk
 include files/data/sbox_gra.mk
+include files/arc/safari_enc.mk
 
 $(filter-out $(DIFF_ARCS) $(FS_RULE_OVERRIDES),$(NITROFS_FILES)): ;
 
