@@ -356,13 +356,13 @@ Pokedex_Exit: ; 0x021E5B80
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	bl OverlayManager_GetData
-	ldr r6, _021E5C08 ; =FS_OVERLAY_ID(OVY_123)
+	ldr r6, _021E5C08 ; =FS_OVERLAY_ID(ds_protect)
 	add r4, r0, #0
 	mov r0, #0
 	add r1, r6, #0
 	bl FS_LoadOverlay
 	ldr r0, _021E5C0C ; =ov18_021E5C1C
-	bl ov123_0225F520
+	bl DSProt_DetectEmulator
 	cmp r0, #0
 	beq _021E5BA8
 	mov r1, #0xfa
@@ -379,7 +379,7 @@ _021E5BA8:
 	ldr r0, [r0, #8]
 	bl sub_02092BD8
 	ldr r0, _021E5C14 ; =ov18_021E5C2C
-	bl ov123_0225F430
+	bl DSProt_DetectFlashcart
 	cmp r0, #0
 	beq _021E5BD0
 	mov r1, #0xfa
@@ -396,7 +396,7 @@ _021E5BD0:
 	bl GF_SndHandleSetPlayerVolume
 	bl sub_02004B10
 	ldr r0, _021E5C18 ; =ov18_021E5C3C
-	bl ov123_0225F688
+	bl DSProt_DetectNotDummy
 	cmp r0, #0
 	bne _021E5BFC
 	mov r1, #0xfa
@@ -410,7 +410,7 @@ _021E5BFC:
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-_021E5C08: .word FS_OVERLAY_ID(OVY_123)
+_021E5C08: .word FS_OVERLAY_ID(ds_protect)
 _021E5C0C: .word ov18_021E5C1C
 _021E5C10: .word 0x00001858
 _021E5C14: .word ov18_021E5C2C

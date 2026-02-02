@@ -1301,29 +1301,46 @@ Overlay voltorb_flip
     Object src/voltorb_flip/voltorb_flip_game.o
     Object src/voltorb_flip/voltorb_flip_input.o
 }
-Overlay OVY_123
+Overlay ds_protect
 {
     After OVY_31
-    Object lib/asm/overlay_123.o
+	Object lib/dsprot/dsprot_main_encrypted.o        
+	Object lib/dsprot/dsprot_main_decrypter_encoded.o
+	Object lib/dsprot/dsprot_main_decrypter_decoder.o
+	Object lib/dsprot/extra.o                        
+	Object lib/dsprot/integrity_encrypted.o          
+	Object lib/dsprot/integrity_decrypter_encoded.o  
+	Object lib/dsprot/integrity_decrypter_decoder.o  
+	Object lib/dsprot/encryptor_encoded.o            
+	Object lib/dsprot/encryptor_decoder.o            
+	Object lib/dsprot/mac_owner_encrypted.o          
+	Object lib/dsprot/mac_owner_decrypter_encoded.o  
+	Object lib/dsprot/rom_util_encrypted.o           
+	Object lib/dsprot/rom_util_decrypter_encoded.o   
+	Object lib/dsprot/rom_test_encrypted.o           
+	Object lib/dsprot/rom_test_decrypter_encoded.o   
+	Object lib/dsprot/coretests_decrypter_decoder.o  
+	Object lib/dsprot/rc4_encoded.o                  
+	Object lib/dsprot/rc4_decoder.o
 }
 Overlay OVY_124
 {
-    After OVY_123
+    After ds_protect
     Object src/overlay_124.o
 }
 Overlay OVY_125
 {
-    After OVY_123
+    After ds_protect
 }
 Overlay OVY_126
 {
-    After OVY_123
+    After ds_protect
 }
 Overlay OVY_127
 {
-    After OVY_123
+    After ds_protect
 }
 Overlay OVY_128
 {
-    After OVY_123
+    After ds_protect
 }
