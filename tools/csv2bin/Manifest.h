@@ -115,7 +115,7 @@ public:
             } catch (std::invalid_argument &e2) {
                 std::string msg = "invalid integer value: \"" + key + "\"";
                 if (!constants.empty()) {
-                    msg += " (not found in constants map with " + std::to_string(constants.size()) + " entries)";  
+                    msg += " (not found in constants map with " + std::to_string(constants.size()) + " entries)";
                 }
                 throw std::invalid_argument(msg);
             } catch (std::out_of_range &e2) {

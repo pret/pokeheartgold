@@ -27,7 +27,7 @@ int sub_020912AC(int index) {
 }
 
 // Get dex cycle value with offset wrapping
-s16 sub_020912D0(u32 value, u32 offset) {
+s16 sub_020912D0(s16 value, u32 offset) {
     u32 i;
 
     for (i = 0; i < 6; i++) {

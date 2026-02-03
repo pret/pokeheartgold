@@ -9,6 +9,7 @@
 #include "game_stats.h"
 #include "hall_of_fame.h"
 #include "mystery_gift.h"
+#include "palPark_migration.h"
 #include "photo_album.h"
 #include "pokedex.h"
 #include "pokemon_storage_system.h"
@@ -31,7 +32,6 @@
 #include "save_vars_flags.h"
 #include "save_wifi_history.h"
 #include "unk_0202E41C.h"
-#include "palPark_migration.h"
 #include "unk_02030A98.h"
 
 // These macros are temporary. As the respective sources

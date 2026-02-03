@@ -673,6 +673,11 @@ Overlay OVY_17
 Overlay OVY_18
 {
     After main
+    Object src/poketool/pokefoot.o
+    Object src/application/pokedex/ov18_021E590C.o
+    Object src/application/pokedex/ov18_021E5AA0.o
+    Object src/application/pokedex/ov18_021E5C40.o
+    Object src/application/pokedex/ov18_021E8BF4.o
     Object asm/overlay_18.o
 }
 Overlay OVY_19

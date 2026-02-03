@@ -1,5 +1,7 @@
 $(CLOBBER_SIZE_NCGR_FILES): GFX_FLAGS = -clobbersize
 $(CLOBBER_SIZE_VERSION101_NCGR_FILES): GFX_FLAGS = -clobbersize -version101
+$(CLOBBER_SIZE_VERSION101_64K_NCGR_FILES): GFX_FLAGS = -clobbersize -version101 -mappingtype 64
+$(CLOBBER_SIZE_VERSION101_128K_NCGR_FILES): GFX_FLAGS = -clobbersize -version101 -mappingtype 128
 $(VERSION101_SOPC_8BPP_NCGR_FILES): GFX_FLAGS = -version101 -sopc -bitdepth 8
 $(VERSION101_SOPC_NCGR_FILES): GFX_FLAGS = -version101 -sopc
 $(SCANNED_NCGR_FILES): GFX_FLAGS = -scanned

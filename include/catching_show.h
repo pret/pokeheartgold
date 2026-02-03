@@ -3,8 +3,8 @@
 
 #include "battle/battle_setup.h"
 
-#include "script.h"
 #include "palPark_migration.h"
+#include "script.h"
 
 enum PalParkEncounterType {
     PP_ENCTYPE_NONE,
