@@ -1740,7 +1740,7 @@
 #define FLAG_UNK_982                                      0x982
 #define FLAG_SYS_HATCHED_TOGEPI_EGG                       0x983
 #define FLAG_UNK_984                                      0x984
-#define FLAG_UNK_985                                      0x985
+#define FLAG_SYS_GOT_BILL_PC_FULL_CALL                    0x985
 #define FLAG_SYS_MOMS_SAVINGS                             0x986
 #define FLAG_SYS_OAK_ACKNOWLEDGED_JOHTO_DEX_COMPLETION    0x987
 #define FLAG_SYS_OAK_ACKNOWLEDGED_NATIONAL_DEX_COMPLETION 0x988
@@ -1753,7 +1753,7 @@
 #define FLAG_UNK_98F                                      0x98F
 #define FLAG_UNK_990                                      0x990
 #define FLAG_UNK_991                                      0x991
-#define FLAG_UNK_992                                      0x992
+#define FLAG_SYS_TRIGGER_EGG_CALL                         0x992
 #define FLAG_BUG_CONTEST_ACTIVE                           0x993
 #define FLAG_UNK_994                                      0x994
 #define FLAG_UNK_995                                      0x995
@@ -1765,7 +1765,7 @@
 #define FLAG_ROCKET_TAKEOVER_ACTIVE                       0x99B
 #define FLAG_UNK_99C                                      0x99C
 #define FLAG_UNK_99D                                      0x99D
-#define FLAG_UNK_99E                                      0x99E
+#define FLAG_SYS_SUBSCRIBED_TO_EGG_CALLS                  0x99E
 #define FLAG_UNK_99F                                      0x99F
 #define FLAG_UNK_9A0                                      0x9A0
 #define FLAG_UNK_9A1                                      0x9A1

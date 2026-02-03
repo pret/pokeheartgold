@@ -767,7 +767,7 @@ const PhoneCallScriptDef gPhoneCallScriptDef[] = {
      .msgIds = { msg_0665_00010, msg_0665_00011 },
      .scriptType = PHONESCRIPTTYPE_FLAG,
      .param0 = 1,
-     .param1 = FLAG_UNK_985,
+     .param1 = FLAG_SYS_GOT_BILL_PC_FULL_CALL,
      },
 
     // Day Care Man
@@ -783,7 +783,7 @@ const PhoneCallScriptDef gPhoneCallScriptDef[] = {
      .msgIds = { msg_0661_00012, msg_0661_00012 },
      .scriptType = PHONESCRIPTTYPE_FLAG,
      .param0 = 1,
-     .param1 = FLAG_UNK_992,
+     .param1 = FLAG_SYS_TRIGGER_EGG_CALL,
      },
     // PHONE_SCRIPT_096
     {

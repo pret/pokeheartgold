@@ -98,7 +98,7 @@ u8 ov02_02251EE8(GearPhoneRingManager *gearPhone, Unk_PokegearSTRUCT_14 *a1) {
     a1->unk_1 = gearPhone->unk_arr5[1];
     a1->isScriptedCall = gearPhone->isScriptedCall;
     a1->callScriptID = gearPhone->callScriptID;
-    a1->unk_2 = gearPhone->unk_var7;
+    a1->callTriggerID = gearPhone->callTriggerID;
     return gearPhone->callerId;
 }
 
@@ -455,14 +455,14 @@ _022521AC:
 #endif
 
 static u32 ov02_022521C0(GearPhoneRingManager *gearPhone, PhoneBook *phoneBook, u32 mapId) {
-    u8 r6 = ov02_02252218(gearPhone, phoneBook, mapId);
-    if (r6 == 0xFF) {
+    u8 callTriggerID = ov02_02252218(gearPhone, phoneBook, mapId);
+    if (callTriggerID == 0xFF) {
         return FALSE;
     }
-    GearPhoneRingManager_SetCallerParams(gearPhone, ov02_02253C84[r6].callerId, 0xFF, 0, 3, ov02_02253C84[r6].callScriptID);
+    GearPhoneRingManager_SetCallerParams(gearPhone, ov02_02253C84[callTriggerID].callerId, 0xFF, 0, 3, ov02_02253C84[callTriggerID].callScriptID);
     GearPhoneRingManager_StartRinging(gearPhone);
-    gearPhone->unk_var7 = r6;
-    return ov02_02253C84[r6].forcePickUp + 1;
+    gearPhone->callTriggerID = callTriggerID;
+    return ov02_02253C84[callTriggerID].forcePickUp + 1;
 }
 
 // FIXME: This is a fakematch from decomp.me, it doesn't match locally without the label https://decomp.me/scratch/YdDak

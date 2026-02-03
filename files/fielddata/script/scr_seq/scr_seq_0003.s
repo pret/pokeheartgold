@@ -243,7 +243,7 @@ _034D:
 
 _0364:
 	setflag FLAG_WAS_TOLD_ABOUT_POKERUS
-	scrcmd_148 1, 0
+	scrcmd_148 CALL_TRIGGER_ELM_POKERUS, FALSE
 	apply_movement obj_player, _0468
 	wait_movement
 	get_player_state VAR_SPECIAL_RESULT

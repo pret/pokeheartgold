@@ -7,6 +7,7 @@
 #include "constants/flags.h"
 #include "constants/mmodel.h"
 #include "constants/items.h"
+#include "constants/phone_constants.h"
 #include "msgdata/msg/msg_0096_D31R0201.h"
 #include "msgdata/msg/msg_0066_D23R0102.h"
 	.include "asm/macros.inc"
@@ -2212,8 +2213,8 @@ ov01_021E7A08: ; 0x021E7A08
 	blo _021E7A56
 	add r0, r4, #0
 	bl FieldSystem_GetGearPhoneRingManager
-	mov r1, #2
-	mov r2, #1
+	mov r1, #CALL_TRIGGER_BIKE_SHOP_STEPS
+	mov r2, #1  // TRUE
 	bl sub_02092E14
 	mov r0, #0
 	pop {r3, r4, r5, pc}

@@ -50,7 +50,7 @@ struct GearPhoneRingManager {
     u8 isScriptedCall;
     u8 callScriptID;
     u8 unk_arr5[2];
-    u8 unk_var7;
+    u8 callTriggerID;
     s32 unk_var8;
     s32 unk_varC;
     u16 maxActiveDuration;

@@ -164,10 +164,10 @@ void SaveData_SafariZone_CheckAreasWithUpdatedEncounters(SaveData *saveData, int
         }
     }
     if (numAreas == 0) {
-        PhoneCallPersistentState_ClearCallTriggerFlag(callPersistentState, CALL_TRIGGER_BAOBA_UNK6);
+        PhoneCallPersistentState_ClearCallTriggerFlag(callPersistentState, CALL_TRIGGER_BAOBA_NEW_POKEMON);
         PhoneCallPersistentState_SafariZoneArrangement_Set(callPersistentState, NULL, 0);
     } else {
-        PhoneCallPersistentState_SetCallTriggerFlag(callPersistentState, CALL_TRIGGER_BAOBA_UNK6);
+        PhoneCallPersistentState_SetCallTriggerFlag(callPersistentState, CALL_TRIGGER_BAOBA_NEW_POKEMON);
         PhoneCallPersistentState_SafariZoneArrangement_Set(callPersistentState, areas, numAreas);
     }
 }
