@@ -16,8 +16,8 @@ void ov18_021E5C3C(void);
 BOOL Pokedex_Init(OverlayManager *man, int *state) {
     PokedexAppData *appData;
 
-    Heap_Create(HEAP_ID_3, HEAP_ID_37, 0x61000);
-    appData = OverlayManager_CreateAndGetData(man, sizeof(PokedexAppData), HEAP_ID_37);
+    Heap_Create(HEAP_ID_3, HEAP_ID_POKEDEX_APP, 0x61000);
+    appData = OverlayManager_CreateAndGetData(man, sizeof(PokedexAppData), HEAP_ID_POKEDEX_APP);
     MI_CpuClear8(appData, sizeof(PokedexAppData));
     appData->args = OverlayManager_GetArgs(man);
     appData->unk_085C = 5;
@@ -67,7 +67,7 @@ BOOL Pokedex_Exit(OverlayManager *man, int *state) {
         Heap_AllocAtEnd(HEAP_ID_3, 1000);
     }
     OverlayManager_FreeData(man);
-    Heap_Destroy(HEAP_ID_37);
+    Heap_Destroy(HEAP_ID_POKEDEX_APP);
     GF_SndHandleSetPlayerVolume(1, 127);
     sub_02004B10();
     // DSProt_DetectNotDummy

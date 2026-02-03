@@ -19792,7 +19792,7 @@ ov18_021F8168: ; 0x021F8168
 	blo _021F8178
 	bl GF_AssertFail
 _021F8178:
-	; ret = GfGfxLoader_LoadFromNarc_GetSizeOut(GetPokedexDataNarcID(), a0 + 11, FALSE, HEAP_ID_37, FALSE, &size);
+	; ret = GfGfxLoader_LoadFromNarc_GetSizeOut(GetPokedexDataNarcID(), a0 + 11, FALSE, HEAP_ID_POKEDEX_APP, FALSE, &size);
 	bl GetPokedexDataNarcID
 	mov r2, #0
 	str r2, [sp]

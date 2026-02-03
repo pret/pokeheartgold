@@ -13,12 +13,12 @@ typedef struct PokedexData {
     s16 *monScale;
 } PokedexData; // size=0x18
 
-struct PokedexData *PokedexData_Create(enum HeapID heapID);
-void PokedexData_Delete(struct PokedexData *zkn);
-void PokedexData_LoadAll(struct PokedexData *zkn, int playerGender, enum HeapID heapID);
-void PokedexData_UnloadAll(struct PokedexData *zkn);
-u32 PokedexData_GetHeight(struct PokedexData *zkn, int species);
-u32 PokedexData_GetWeight(struct PokedexData *zkn, int species);
+PokedexData *PokedexData_Create(enum HeapID heapID);
+void PokedexData_Delete(PokedexData *pokedexData);
+void PokedexData_LoadAll(PokedexData *pokedexData, int playerGender, enum HeapID heapID);
+void PokedexData_UnloadAll(PokedexData *pokedexData);
+u32 PokedexData_GetHeight(PokedexData *pokedexData, int species);
+u32 PokedexData_GetWeight(PokedexData *pokedexData, int species);
 void SetDexBanksByGiratinaForm(int form);
 NarcId GetPokedexDataNarcID(void);
 int GetDexWeightMsgBank(void);
@@ -26,26 +26,26 @@ int GetDexHeightMsgBank(void);
 
 static inline u32 SpeciesGetDexHeight(int species, enum HeapID heapID) {
     u32 ret;
-    struct PokedexData *zkn;
+    PokedexData *pokedexData;
 
-    zkn = PokedexData_Create(heapID);
-    PokedexData_LoadAll(zkn, 0, heapID);
-    ret = PokedexData_GetHeight(zkn, species);
-    PokedexData_UnloadAll(zkn);
-    PokedexData_Delete(zkn);
+    pokedexData = PokedexData_Create(heapID);
+    PokedexData_LoadAll(pokedexData, 0, heapID);
+    ret = PokedexData_GetHeight(pokedexData, species);
+    PokedexData_UnloadAll(pokedexData);
+    PokedexData_Delete(pokedexData);
 
     return ret;
 }
 
 static inline u32 SpeciesGetDexWeight(int species, enum HeapID heapID) {
     u32 ret;
-    struct PokedexData *zkn;
+    PokedexData *pokedexData;
 
-    zkn = PokedexData_Create(heapID);
-    PokedexData_LoadAll(zkn, 0, heapID);
-    ret = PokedexData_GetWeight(zkn, species);
-    PokedexData_UnloadAll(zkn);
-    PokedexData_Delete(zkn);
+    pokedexData = PokedexData_Create(heapID);
+    PokedexData_LoadAll(pokedexData, 0, heapID);
+    ret = PokedexData_GetWeight(pokedexData, species);
+    PokedexData_UnloadAll(pokedexData);
+    PokedexData_Delete(pokedexData);
 
     return ret;
 }

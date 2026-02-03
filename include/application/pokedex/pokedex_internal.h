@@ -297,7 +297,7 @@ struct PokedexAppData {
     u8 unk_185E;                                    // 0x185E
     int unk_1860;                                   // 0x1860
     GridInputHandler *unk_1864;                     // 0x1864
-    u32 dexSearchCriteria[dex_search_criteria_num]; // 0x1868
+    u32 dexSearchCriteria[DEX_SEARCH_CRITERIA_NUM]; // 0x1868
     u32 dexSearchCriteriaBak[2];                    // 0x1890
     int unk_1898;                                   // 0x1898
     u8 filler_189C[4];                              // 0x189C
