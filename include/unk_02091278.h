@@ -1,6 +1,8 @@
 #ifndef POKEHEARTGOLD_UNK_02091278_H
 #define POKEHEARTGOLD_UNK_02091278_H
 
+#include "global.h"
+
 #include "config.h"
 
 #define DEX_LANGUAGE_FLAG_JAPANESE 0
@@ -28,6 +30,6 @@
 #endif
 
 int LanguageToDexFlag(u32 language);
-int sub_02091294(int a0);
+int sub_02091294(int index);
 
 #endif // POKEHEARTGOLD_UNK_02091278_H

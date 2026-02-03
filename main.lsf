@@ -130,7 +130,7 @@ Static main
     Object src/hall_of_fame.o
     Object asm/unk_0202E41C.o
     Object src/save_rankings.o
-    Object asm/unk_0202EB30.o
+    Object src/palPark_migration.o
     Object src/update_dex_received.o
     Object src/save_follow_mon.o
     Object src/save_pokegear.o
@@ -301,8 +301,8 @@ Static main
     Object src/mail_misc.o
     Object src/unk_02091054.o
     Object src/hatch_egg_task.o
-    Object asm/unk_02091278.o
-    Object asm/unk_020912AC.o
+    Object src/unk_02091278.o
+    Object src/unk_020912AC.o
     Object src/dex_mon_measures.o
     Object asm/unk_02091564.o
     Object asm/unk_020915B0.o
@@ -316,7 +316,7 @@ Static main
     Object asm/unk_02092B04.o
     Object asm/unk_02092BB8.o
     Object src/unk_02092BE8.o
-    Object asm/unk_020931C4.o
+    Object src/mom_gift.o
     Object src/unk_020932A4.o
     Object asm/unk_020932E0.o
     Object asm/unk_020957B0.o
@@ -1004,7 +1004,7 @@ Overlay OVY_80
     After OVY_42
     Object asm/overlay_80_02229EE0.o
     Object asm/frontier_system.o
-    Object asm/overlay_80_0222AB40.o
+    Object src/frontier/frontier_script_context.o
     Object asm/overlay_80_0222ACA0.o
     Object asm/overlay_80_0222AEF8.o
     Object asm/overlay_80_0222BDF4.o

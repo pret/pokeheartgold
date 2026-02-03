@@ -1,6 +1,9 @@
 #ifndef GUARD_POKEHEARTGOLD_UNK_020912AC_H
 #define GUARD_POKEHEARTGOLD_UNK_020912AC_H
 
-s16 sub_020912D0(s16 a0, int a2);
+#include "global.h"
+
+int sub_020912AC(int index);
+s16 sub_020912D0(s16 a0, u32 a2);
 
 #endif // GUARD_POKEHEARTGOLD_UNK_020912AC_H
