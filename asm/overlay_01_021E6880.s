@@ -2194,7 +2194,7 @@ ov01_021E7A08: ; 0x021E7A08
 	add r5, r0, #0
 	ldr r0, [r4, #0xc]
 	bl Save_VarsFlags_Get
-	ldr r1, _021E7A5C ; =FLAG_UNK_984
+	ldr r1, _021E7A5C ; =FLAG_SYS_GOT_BIKE_SHOP_CALL
 	bl Save_VarsFlags_CheckFlagInArray
 	cmp r0, #0
 	bne _021E7A56
@@ -2222,7 +2222,7 @@ _021E7A56:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	nop
-_021E7A5C: .word FLAG_UNK_984
+_021E7A5C: .word FLAG_SYS_GOT_BIKE_SHOP_CALL
 	thumb_func_end ov01_021E7A08
 
 	thumb_func_start BugContestTimeoutCheck

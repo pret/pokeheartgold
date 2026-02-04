@@ -13,10 +13,10 @@
 #define NUM_SAFARI_ENCOUNTER_TYPES           5
 
 typedef struct SafariObjectConfig {
-    u8 unk_0;
-    u8 unk_1_0 : 1;
-    u8 unk_1_1 : 3;
-    u8 unk_1_4 : 3;
+    u8 buildModel;
+    u8 isAnimated : 1;
+    u8 width : 3;
+    u8 height : 3;
     u8 hasGenderedLayout : 1;
     u8 objectType;
 } SafariObjectConfig;

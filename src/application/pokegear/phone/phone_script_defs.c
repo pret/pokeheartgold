@@ -707,7 +707,7 @@ const PhoneCallScriptDef gPhoneCallScriptDef[] = {
      .msgIds = { msg_0642_00003, msg_0642_00003 },
      .scriptType = PHONESCRIPTTYPE_FLAG,
      .param0 = 1,
-     .param1 = FLAG_UNK_984,
+     .param1 = FLAG_SYS_GOT_BIKE_SHOP_CALL,
      },
 
     // Black Belt Kenji
