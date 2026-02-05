@@ -1,8 +1,7 @@
 #include "unk_02097268.h"
 
 #include "constants/buildmodel.h"
-
-#include "overlay_2/overlay_02_gear_phone.h"
+#include "constants/phone_constants.h"
 
 #include "gf_gfx_loader.h"
 #include "sys_flags.h"
