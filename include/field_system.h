@@ -145,7 +145,7 @@ struct FieldSystem {
     BagCursor *bagCursor;
     u8 filler_98[0x4];
     void *unk9C;
-    UnkStruct_Fsys_A0 *unkA0;
+    FrontierFieldSystem *frontier;
     Save_LinkBattleRuleset *linkBattleRuleset;
     u32 *unkA8;
     u32 unkAC;

@@ -4152,7 +4152,7 @@ BOOL ScrCmd_627(ScriptContext *ctx) {
     MI_CpuClear8(param, sizeof(FrontierLaunchParam));
     *pParam = param;
     if (r6 == 5 || r6 == 6) {
-        param->unk0 = ctx->fieldSystem->unkA0;
+        param->unk0 = ctx->fieldSystem->frontier;
     } else {
         param->unk0 = NULL;
     }
