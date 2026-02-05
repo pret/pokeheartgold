@@ -253,12 +253,14 @@ ENC_SLOT *SafariZoneAreaSet_LoadAreaEncounters(SAFARIZONE_AREASET *areaSet, int 
     return ret;
 }
 
+// clang-format off
 static const u8 sObjectLevelBoosts[][5] = {
     [SAFARI_ZONE_OBJECT_TYPE_PLAINS - 1] = { 1, 5, 10, 15, 20 },
     [SAFARI_ZONE_OBJECT_TYPE_FOREST - 1] = { 2, 6, 11, 16, 21 },
-    [SAFARI_ZONE_OBJECT_TYPE_PEAK - 1] = { 3, 7, 12, 17, 22 },
-    [SAFARI_ZONE_OBJECT_TYPE_WATER - 1] = { 4, 8, 13, 18, 23 },
+    [SAFARI_ZONE_OBJECT_TYPE_PEAK   - 1] = { 3, 7, 12, 17, 22 },
+    [SAFARI_ZONE_OBJECT_TYPE_WATER  - 1] = { 4, 8, 13, 18, 23 },
 };
+// clang-format on
 
 static u8 getObjectLevelBoost(u8 days, u8 objectType) {
     if (objectType == SAFARI_ZONE_OBJECT_TYPE_NONE) {
@@ -276,7 +278,7 @@ static u8 getObjectLevelBoost(u8 days, u8 objectType) {
 }
 
 static void SafariZoneAreaSet_GetObjectsInArea(SAFARIZONE_AREASET *areaSet, int area, SafariZoneObjectLevels *out) {
-    SafariObjectConfig sp8;
+    SafariObjectConfig objectConfig;
     u8 areaLevel;
     SAFARIZONE_AREA *szArea;
 
@@ -286,16 +288,16 @@ static void SafariZoneAreaSet_GetObjectsInArea(SAFARIZONE_AREASET *areaSet, int 
     MI_CpuClear8(out, sizeof(SafariZoneObjectLevels));
 
     for (int i = 0; i < szArea->active_object_count; ++i) {
-        GetSafariObjectConfig(&sp8, szArea->objects[i].unk[0], 2);
-        if (sp8.objectType == SAFARI_ZONE_OBJECT_TYPE_NONE) {
+        GetSafariObjectConfig(&objectConfig, szArea->objects[i].unk[0], 2);
+        if (objectConfig.objectType == SAFARI_ZONE_OBJECT_TYPE_NONE) {
             continue;
         }
-        ++out->count[sp8.objectType - 1];
-        u8 attrBonus = getObjectLevelBoost(areaLevel, sp8.objectType);
-        if (out->levels[sp8.objectType - 1] + attrBonus > 255) {
-            out->levels[sp8.objectType - 1] = 255;
+        ++out->count[objectConfig.objectType - 1];
+        u8 attrBonus = getObjectLevelBoost(areaLevel, objectConfig.objectType);
+        if (out->levels[objectConfig.objectType - 1] + attrBonus > 255) {
+            out->levels[objectConfig.objectType - 1] = 255;
         } else {
-            out->levels[sp8.objectType - 1] += attrBonus;
+            out->levels[objectConfig.objectType - 1] += attrBonus;
         }
     }
 }
