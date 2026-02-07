@@ -214,7 +214,7 @@ void sub_0204B720(FrontierFieldSystem *frontierFsys, u32 a1) {
     frontierFsys->unk83e[0] = a1;
 }
 
-u16 GetRandomBattleTowerTrainer(FrontierFieldSystem *frontierFsys, u8 difficultyBracket, u8 winsThisRound, u32 towerMode) { // sub_0204B73C
+u16 GetRandomBattleTowerTrainer(FrontierFieldSystem *frontierFsys, u8 difficultyBracket, u8 winsThisRound, u32 towerMode) {
     if (towerMode == TOWER_MODE_SINGLE) {
         // If we are between battles 15-21 and have completed 6 battles in our current round, meaning this is battle 21:
         if (difficultyBracket == 2 && winsThisRound == 6) {
@@ -247,7 +247,7 @@ static u16 *sub_0204B7D0(FrontierTrainer *frontierTrainer, u32 frontierTrainerIn
     frontierTrainer->unk1a = frontierTrainerIndex * 3;
     frontierTrainer->trainerClass = frontierTrainerData[0];
     String *trainerName = NewString_ReadMsgData(messageData, frontierTrainerIndex);
-    CopyStringToU16Array(trainerName, frontierTrainer->unk08, NELEMS(frontierTrainer->unk08));
+    CopyStringToU16Array(trainerName, frontierTrainer->name, NELEMS(frontierTrainer->name));
     String_Delete(trainerName);
     DestroyMsgData(messageData);
     return frontierTrainerData;
@@ -330,7 +330,7 @@ u32 sub_0204BA04(FrontierFieldSystem *frontierFsys, FrontierTrainer *frontierTra
     return replaceItem;
 }
 
-void GenerateAllyFrontierMons(FrontierFieldSystem *frontierFsys, FrontierTrainer *frontierTrainer, u16 frontierTrainerIndex, u32 replaceItem, FrontierMultiBattleAllyData *multiBattleAllyData, enum HeapID heapID) { // sub_0204BA50
+void GenerateAllyFrontierMons(FrontierFieldSystem *frontierFsys, FrontierTrainer *frontierTrainer, u16 frontierTrainerIndex, u32 replaceItem, FrontierMultiBattleAllyData *multiBattleAllyData, enum HeapID heapID) {
     u8 iv;
     u16 *frontierTrainerData = sub_0204B7D0(frontierTrainer, frontierTrainerIndex, heapID);
     iv = GetFrontierTrainerIVs(frontierTrainerIndex);

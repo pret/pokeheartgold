@@ -74,7 +74,7 @@ BOOL ScrCmd_412(ScriptContext *ctx) {
         }
         break;
     case 2:
-        sub_0204A68C();
+        ResetSystem();
         break;
     case 3:
         sub_0204A698(sub_0202D908(ctx->fieldSystem->saveData));
@@ -254,7 +254,7 @@ BOOL ScrCmd_416(ScriptContext *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_417(ScriptContext *ctx) { // TODO: INVESTIGATE
+BOOL ScrCmd_417(ScriptContext *ctx) {
     FrontierFieldSystem *frontierFsys = ctx->fieldSystem->frontier;
     u16 unk6 = ScriptGetVar(ctx);
     u16 unk7 = ScriptReadHalfword(ctx);

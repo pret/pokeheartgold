@@ -4,13 +4,13 @@
 #include "frontier_data.h"
 #include "save.h"
 
-#define TOWER_MODE_SINGLE   0
-#define TOWER_MODE_DOUBLE   1
-#define TOWER_MODE_MULTI    2
-#define TOWER_MODE_LINK     3
-#define TOWER_MODE_WIFI     4
-#define TOWER_MODE_5        5
-#define TOWER_MODE_6        6
+#define TOWER_MODE_SINGLE               0
+#define TOWER_MODE_DOUBLE               1
+#define TOWER_MODE_MULTI                2
+#define TOWER_MODE_LINK                 3
+#define TOWER_MODE_WIFI                 4
+#define TOWER_MODE_WIFI_PRACTICE        5
+#define TOWER_MODE_6                    6
 
 typedef struct FrontierMonStruct { // UnkStruct_0204B470
     u16 species : 11;
@@ -43,7 +43,7 @@ typedef struct FrontierTrainer { // UnkStruct_0204B7D0
     u32 index;
     u16 trainerClass;
     u8 filler06[2];
-    u16 unk08[8];
+    u16 name[8];
     u16 unk18;
     u16 unk1a;
     u8 filler1c[0x14];
@@ -93,10 +93,10 @@ typedef struct FrontierFieldSystem { // UnkStruct_Fsys_A0
     FrontierTrainer unk78[2];
     FrontierTrainer frontierStatTrainers[5];
     FrontierMultiBattleAllyData multiBattleAllyData[5];
-    u8 unk838[5]; // Related to multi battle allies.
+    u8 unk838[5]; // Related to multi battle allies' replaced items.
     u8 filler83d;
     u16 unk83e[35]; // Related to unk10_3 somehow. Also player gender? Also species??? these seem to be some sort of struct?
-    u16 unk884[35];
+    u16 unk884[35]; // Seemingly never set. Probably relates to tag partner somehow.
     u8 filler8CA[10];
     u8 unk8D4;
     u8 unk8D5;
