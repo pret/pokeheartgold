@@ -156,39 +156,39 @@ _024D:
 
 	.balign 4, 0
 _0264:
-	step 15, 1
-	step 12, 2
-	step 14, 1
-	step 12, 3
-	step 33, 1
-	step_end
+	WalkNormalEast
+	WalkNormalNorth 2
+	WalkNormalWest
+	WalkNormalNorth 3
+	WalkOnSpotNormalSouth
+	EndMovement
 
 	.balign 4, 0
 _027C:
-	step 12, 3
-	step 33, 1
-	step_end
+	WalkNormalNorth 3
+	WalkOnSpotNormalSouth
+	EndMovement
 
 	.balign 4, 0
 _0288:
-	step 12, 1
-	step 14, 1
-	step 12, 3
-	step 33, 1
-	step_end
+	WalkNormalNorth
+	WalkNormalWest
+	WalkNormalNorth 3
+	WalkOnSpotNormalSouth
+	EndMovement
 
 	.balign 4, 0
 _029C:
-	step 63, 1
-	step 32, 1
-	step_end
+	Delay8
+	WalkOnSpotNormalNorth
+	EndMovement
 
 	.balign 4, 0
 _02A8:
-	step 15, 1
-	step 12, 1
-	step 1, 1
-	step_end
+	WalkNormalEast
+	WalkNormalNorth
+	FaceSouth
+	EndMovement
 
 scr_seq_D24R0101_007:
 	scrcmd_609
@@ -331,113 +331,113 @@ _0530:
 
 	.balign 4, 0
 _0534:
-	step 62, 1
-	step 17, 3
-	step 71, 1
-	step 20, 1
-	step 72, 1
-	step_end
+	Delay4
+	WalkFastSouth 3
+	LockDir
+	WalkFasterNorth
+	UnlockDir
+	EndMovement
 
 	.balign 4, 0
 _054C:
-	step 17, 1
-	step_end
+	WalkFastSouth
+	EndMovement
 
 	.balign 4, 0
 _0554:
-	step 38, 1
-	step 75, 1
-	step 63, 1
-	step 71, 1
-	step 15, 1
-	step 72, 1
-	step_end
+	WalkOnSpotFastWest
+	EmoteExclamationMark
+	Delay8
+	LockDir
+	WalkNormalEast
+	UnlockDir
+	EndMovement
 
 	.balign 4, 0
 _0570:
-	step 75, 1
-	step 63, 1
-	step 15, 1
-	step 37, 1
-	step_end
+	EmoteExclamationMark
+	Delay8
+	WalkNormalEast
+	WalkOnSpotFastSouth
+	EndMovement
 
 	.balign 4, 0
 _0584:
-	step 15, 1
-	step 14, 2
-	step 63, 1
-	step 15, 2
-	step 39, 1
-	step 14, 1
-	step 37, 1
-	step_end
+	WalkNormalEast
+	WalkNormalWest 2
+	Delay8
+	WalkNormalEast 2
+	WalkOnSpotFastEast
+	WalkNormalWest
+	WalkOnSpotFastSouth
+	EndMovement
 
 	.balign 4, 0
 _05A4:
-	step 75, 1
-	step 63, 1
-	step 37, 1
-	step_end
+	EmoteExclamationMark
+	Delay8
+	WalkOnSpotFastSouth
+	EndMovement
 
 	.balign 4, 0
 _05B4:
-	step 14, 1
-	step 13, 1
-	step 37, 1
-	step_end
+	WalkNormalWest
+	WalkNormalSouth
+	WalkOnSpotFastSouth
+	EndMovement
 
 	.balign 4, 0
 _05C4:
-	step 71, 1
-	step 57, 1
-	step 17, 2
-	step 72, 1
-	step 32, 1
-	step_end
+	LockDir
+	JumpFarSouth
+	WalkFastSouth 2
+	UnlockDir
+	WalkOnSpotNormalNorth
+	EndMovement
 
 	.balign 4, 0
 _05DC:
-	step 71, 1
-	step 18, 1
-	step 72, 1
-	step 63, 2
-	step 33, 1
-	step_end
+	LockDir
+	WalkFastWest
+	UnlockDir
+	Delay8 2
+	WalkOnSpotNormalSouth
+	EndMovement
 
 	.balign 4, 0
 _05F4:
-	step 50, 1
-	step 63, 3
-	step 33, 1
-	step_end
+	JumpOnSpotFastWest
+	Delay8 3
+	WalkOnSpotNormalSouth
+	EndMovement
 
 	.balign 4, 0
 _0604:
-	step 71, 1
-	step 17, 5
-	step 72, 1
-	step_end
+	LockDir
+	WalkFastSouth 5
+	UnlockDir
+	EndMovement
 
 	.balign 4, 0
 _0614:
-	step 13, 3
-	step 15, 1
-	step 32, 1
-	step_end
+	WalkNormalSouth 3
+	WalkNormalEast
+	WalkOnSpotNormalNorth
+	EndMovement
 
 	.balign 4, 0
 _0624:
-	step 13, 4
-	step 32, 1
-	step_end
+	WalkNormalSouth 4
+	WalkOnSpotNormalNorth
+	EndMovement
 
 	.balign 4, 0
 _0630:
-	step 63, 2
-	step 12, 1
-	step 15, 1
-	step 12, 1
-	step_end
+	Delay8 2
+	WalkNormalNorth
+	WalkNormalEast
+	WalkNormalNorth
+	EndMovement
 
 scr_seq_D24R0101_000:
 	scrcmd_055 2, 0

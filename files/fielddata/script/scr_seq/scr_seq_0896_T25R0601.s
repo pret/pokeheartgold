@@ -70,52 +70,52 @@ _00EA:
 
 	.balign 4, 0
 _00FC:
-	step 12, 1
-	step 63, 1
-	step_end
+	WalkNormalNorth
+	Delay8
+	EndMovement
 
 	.balign 4, 0
 _0108:
-	step 3, 1
-	step_end
+	FaceEast
+	EndMovement
 
 	.balign 4, 0
 _0110:
-	step 63, 1
-	step 2, 1
-	step 75, 1
-	step_end
+	Delay8
+	FaceWest
+	EmoteExclamationMark
+	EndMovement
 
 	.balign 4, 0
 _0120:
-	step 13, 1
-	step 14, 1
-	step_end
+	WalkNormalSouth
+	WalkNormalWest
+	EndMovement
 
 	.balign 4, 0
 _012C:
-	step 38, 4
-	step_end
+	WalkOnSpotFastWest 4
+	EndMovement
 
 	.balign 4, 0
 _0134:
-	step 37, 4
-	step_end
+	WalkOnSpotFastSouth 4
+	EndMovement
 
 	.balign 4, 0
 _013C:
-	step 36, 4
-	step_end
+	WalkOnSpotFastNorth 4
+	EndMovement
 
 	.balign 4, 0
 _0144:
-	step 39, 4
-	step_end
+	WalkOnSpotFastEast 4
+	EndMovement
 
 	.balign 4, 0
 _014C:
-	step 3, 1
-	step_end
+	FaceEast
+	EndMovement
 
 scr_seq_T25R0601_000:
 	goto_if_set FLAG_UNK_0B5, _01E5
@@ -355,6 +355,6 @@ _04DD:
 
 	.balign 4, 0
 _04F0:
-	step 75, 1
-	step_end
+	EmoteExclamationMark
+	EndMovement
 	.balign 4, 0

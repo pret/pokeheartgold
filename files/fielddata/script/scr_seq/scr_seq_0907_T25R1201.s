@@ -86,18 +86,18 @@ _00FD:
 
 	.balign 4, 0
 _0108:
-	step 13, 1
-	step_end
+	WalkNormalSouth
+	EndMovement
 
 	.balign 4, 0
 _0110:
-	step 13, 1
-	step_end
+	WalkNormalSouth
+	EndMovement
 
 	.balign 4, 0
 _0118:
-	step 13, 2
-	step_end
+	WalkNormalSouth 2
+	EndMovement
 
 scr_seq_T25R1201_000:
 	play_se SEQ_SE_DP_SELECT
@@ -267,24 +267,24 @@ _0391:
 
 	.balign 4, 0
 _03A0:
-	step 15, 1
-	step 32, 1
-	step_end
+	WalkNormalEast
+	WalkOnSpotNormalNorth
+	EndMovement
 
 	.balign 4, 0
 _03AC:
-	step 12, 1
-	step_end
+	WalkNormalNorth
+	EndMovement
 
 	.balign 4, 0
 _03B4:
-	step 12, 2
-	step_end
+	WalkNormalNorth 2
+	EndMovement
 
 	.balign 4, 0
 _03BC:
-	step 1, 1
-	step_end
+	FaceSouth
+	EndMovement
 
 _03C4:
 	callstd std_party_illegal

@@ -53,45 +53,45 @@ _0093:
 
 	.balign 4, 0
 _009C:
-	step 2, 1
-	step 0, 1
-	step 3, 1
-	step 1, 1
-	step 2, 1
-	step 0, 1
-	step 3, 1
-	step 1, 1
-	step 2, 1
-	step 0, 1
-	step 3, 1
-	step 1, 1
-	step 2, 1
-	step 0, 1
-	step 3, 1
-	step 1, 1
-	step 75, 1
-	step_end
+	FaceWest
+	FaceNorth
+	FaceEast
+	FaceSouth
+	FaceWest
+	FaceNorth
+	FaceEast
+	FaceSouth
+	FaceWest
+	FaceNorth
+	FaceEast
+	FaceSouth
+	FaceWest
+	FaceNorth
+	FaceEast
+	FaceSouth
+	EmoteExclamationMark
+	EndMovement
 
 	.balign 4, 0
 _00E4:
-	step 1, 1
-	step 2, 1
-	step 0, 1
-	step 3, 1
-	step 1, 1
-	step 2, 1
-	step 0, 1
-	step 3, 1
-	step 1, 1
-	step 2, 1
-	step 0, 1
-	step 3, 1
-	step 1, 1
-	step 2, 1
-	step 0, 1
-	step 3, 1
-	step 75, 1
-	step_end
+	FaceSouth
+	FaceWest
+	FaceNorth
+	FaceEast
+	FaceSouth
+	FaceWest
+	FaceNorth
+	FaceEast
+	FaceSouth
+	FaceWest
+	FaceNorth
+	FaceEast
+	FaceSouth
+	FaceWest
+	FaceNorth
+	FaceEast
+	EmoteExclamationMark
+	EndMovement
 
 scr_seq_D24R0102_001:
 	play_se SEQ_SE_DP_SELECT

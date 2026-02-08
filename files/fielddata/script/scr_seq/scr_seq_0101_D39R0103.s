@@ -30,8 +30,8 @@ _004D:
 
 	.balign 4, 0
 _0050:
-	step 68, 1
-	step_end
+	WarpIn
+	EndMovement
 
 scr_seq_D39R0103_002:
 	simple_npc_msg msg_0123_D39R0103_00000

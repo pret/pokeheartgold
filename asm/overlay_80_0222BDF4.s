@@ -8,7 +8,7 @@
 FrontierScript_ReadVarPtr: ; 0x0222BDF4
 	push {r4, lr}
 	add r4, r0, #0
-	bl FrontierScript_ReadU16
+	bl FrontierScriptContext_ReadHalfWord
 	add r1, r0, #0
 	add r0, r4, #0
 	bl ov80_0222BE24
@@ -24,7 +24,7 @@ _0222BE0C:
 FrontierScript_ReadVar: ; 0x0222BE10
 	push {r4, lr}
 	add r4, r0, #0
-	bl FrontierScript_ReadU16
+	bl FrontierScriptContext_ReadHalfWord
 	add r1, r0, #0
 	add r0, r4, #0
 	bl ov80_0222BE9C
@@ -122,7 +122,7 @@ FrtCmd_000: ; 0x0222BEB0
 	thumb_func_start FrtCmd_001
 FrtCmd_001: ; 0x0222BEB4
 	push {r3, lr}
-	bl ov80_0222AB90
+	bl FrontierScriptContext_Stop
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
@@ -132,7 +132,7 @@ FrtCmd_001: ; 0x0222BEB4
 FrtCmd_002: ; 0x0222BEC0
 	push {r4, lr}
 	add r4, r0, #0
-	bl ov80_0222AB90
+	bl FrontierScriptContext_Stop
 	ldr r0, [r4]
 	ldr r0, [r0]
 	bl sub_0209684C
@@ -152,7 +152,7 @@ FrtCmd_003: ; 0x0222BED4
 	bl sub_02096854
 	ldr r1, _0222BEF8 ; =ov80_0222BEFC
 	add r0, r5, #0
-	bl ov80_0222AB84
+	bl FrontierScriptContext_Pause
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -180,7 +180,7 @@ FrtCmd_004: ; 0x0222BF00
 	add r1, r6, #0
 	bl sub_02096854
 	add r0, r5, #0
-	bl ov80_0222AB90
+	bl FrontierScriptContext_Stop
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -190,10 +190,10 @@ FrtCmd_004: ; 0x0222BF00
 FrtCmd_005: ; 0x0222BF28
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl FrontierScript_ReadU16
+	bl FrontierScriptContext_ReadHalfWord
 	add r4, r0, #0
 	add r0, r5, #0
-	bl FrontierScript_ReadU16
+	bl FrontierScriptContext_ReadHalfWord
 	add r6, r0, #0
 	add r0, r5, #0
 	add r1, r6, #0
@@ -204,7 +204,7 @@ FrtCmd_005: ; 0x0222BF28
 	strh r6, [r0]
 	ldr r1, _0222BF58 ; =ov80_0222BF5C
 	add r0, r5, #0
-	bl ov80_0222AB84
+	bl FrontierScriptContext_Pause
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 	nop
@@ -238,7 +238,7 @@ FrtCmd_006: ; 0x0222BF7C
 	bl FrontierScript_ReadVarPtr
 	add r4, r0, #0
 	add r0, r5, #0
-	bl FrontierScript_ReadU16
+	bl FrontierScriptContext_ReadHalfWord
 	strh r0, [r4]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
@@ -314,7 +314,7 @@ FrtCmd_032: ; 0x0222BFF8
 	bl FrontierScript_ReadVar
 	add r4, r0, #0
 	add r0, r5, #0
-	bl FrontierScript_ReadU16
+	bl FrontierScriptContext_ReadHalfWord
 	add r1, r0, #0
 	add r0, r4, #0
 	bl ov80_0222BFE4
@@ -353,7 +353,7 @@ ov80_0222C03C: ; 0x0222C03C
 FrtCmd_010: ; 0x0222C040
 	push {r4, lr}
 	add r4, r0, #0
-	bl ov80_0222AC70
+	bl FrontierScriptContext_ReadWord
 	add r2, r0, #0
 	ldr r1, [r4, #0x1c]
 	add r0, r4, #0
@@ -371,7 +371,7 @@ FrtCmd_011: ; 0x0222C058
 	add r1, r2, #1
 	str r1, [r5, #0x1c]
 	ldrb r4, [r2]
-	bl ov80_0222AC70
+	bl FrontierScriptContext_ReadWord
 	add r1, r0, #0
 	lsl r0, r4, #1
 	add r4, r4, r0
@@ -398,12 +398,12 @@ _0222C08C: .word ov80_0223B9D8
 FrtCmd_012: ; 0x0222C090
 	push {r4, lr}
 	add r4, r0, #0
-	bl ov80_0222AC70
+	bl FrontierScriptContext_ReadWord
 	add r2, r0, #0
 	ldr r1, [r4, #0x1c]
 	add r0, r4, #0
 	add r1, r1, r2
-	bl ov80_0222AC3C
+	bl FrontierScriptContext_Call
 	mov r0, #0
 	pop {r4, pc}
 	thumb_func_end FrtCmd_012
@@ -411,7 +411,7 @@ FrtCmd_012: ; 0x0222C090
 	thumb_func_start FrtCmd_013
 FrtCmd_013: ; 0x0222C0A8
 	push {r3, lr}
-	bl ov80_0222AC4C
+	bl FrontierScriptContext_Return
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
@@ -425,7 +425,7 @@ FrtCmd_014: ; 0x0222C0B4
 	add r1, r2, #1
 	str r1, [r5, #0x1c]
 	ldrb r4, [r2]
-	bl ov80_0222AC70
+	bl FrontierScriptContext_ReadWord
 	add r1, r0, #0
 	lsl r0, r4, #1
 	add r4, r4, r0
@@ -440,7 +440,7 @@ FrtCmd_014: ; 0x0222C0B4
 	ldr r2, [r5, #0x1c]
 	add r0, r5, #0
 	add r1, r2, r1
-	bl ov80_0222AC3C
+	bl FrontierScriptContext_Call
 _0222C0E4:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
@@ -453,7 +453,7 @@ FrtCmd_015: ; 0x0222C0EC
 	push {r4, lr}
 	sub sp, #8
 	add r4, r0, #0
-	bl FrontierScript_ReadU16
+	bl FrontierScriptContext_ReadHalfWord
 	add r2, r0, #0
 	mov r3, #0
 	add r0, sp, #4
@@ -479,7 +479,7 @@ FrtCmd_016: ; 0x0222C11C
 	push {r3, r4, lr}
 	sub sp, #4
 	add r4, r0, #0
-	bl FrontierScript_ReadU16
+	bl FrontierScriptContext_ReadHalfWord
 	mov r3, #0
 	add r1, r4, #0
 	str r3, [sp]
@@ -490,7 +490,7 @@ FrtCmd_016: ; 0x0222C11C
 	bl ov80_0222E268
 	ldr r1, _0222C148 ; =ov80_0222C17C
 	add r0, r4, #0
-	bl ov80_0222AB84
+	bl FrontierScriptContext_Pause
 	mov r0, #1
 	add sp, #4
 	pop {r3, r4, pc}
@@ -503,7 +503,7 @@ FrtCmd_017: ; 0x0222C14C
 	push {r3, r4, lr}
 	sub sp, #4
 	add r4, r0, #0
-	bl FrontierScript_ReadU16
+	bl FrontierScriptContext_ReadHalfWord
 	add r2, r0, #0
 	mov r0, #0
 	add r1, r4, #0
@@ -515,7 +515,7 @@ FrtCmd_017: ; 0x0222C14C
 	bl ov80_0222E268
 	ldr r1, _0222C178 ; =ov80_0222C17C
 	add r0, r4, #0
-	bl ov80_0222AB84
+	bl FrontierScriptContext_Pause
 	mov r0, #1
 	add sp, #4
 	pop {r3, r4, pc}
@@ -556,16 +556,16 @@ FrtCmd_019: ; 0x0222C1A8
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r5, r0, #0
-	bl FrontierScript_ReadU16
+	bl FrontierScriptContext_ReadHalfWord
 	add r4, r0, #0
 	add r0, r5, #0
-	bl FrontierScript_ReadU16
+	bl FrontierScriptContext_ReadHalfWord
 	add r6, r0, #0
 	add r0, r5, #0
-	bl FrontierScript_ReadU16
+	bl FrontierScriptContext_ReadHalfWord
 	add r7, r0, #0
 	add r0, r5, #0
-	bl FrontierScript_ReadU16
+	bl FrontierScriptContext_ReadHalfWord
 	str r4, [sp]
 	add r3, r0, #0
 	str r6, [sp, #4]
@@ -588,7 +588,7 @@ FrtCmd_019: ; 0x0222C1A8
 FrtCmd_020: ; 0x0222C1F0
 	push {r3, lr}
 	ldr r1, _0222C1FC ; =ov80_0222C200
-	bl ov80_0222AB84
+	bl FrontierScriptContext_Pause
 	mov r0, #1
 	pop {r3, pc}
 	.balign 4, 0
@@ -630,7 +630,7 @@ FrtCmd_021: ; 0x0222C214
 	add r1, r2, #1
 	str r1, [r5, #0x1c]
 	ldrb r6, [r2]
-	bl FrontierScript_ReadU16
+	bl FrontierScriptContext_ReadHalfWord
 	str r0, [sp, #0x18]
 	ldr r1, [sp, #0x18]
 	add r0, r5, #0
@@ -677,7 +677,7 @@ FrtCmd_022: ; 0x0222C270
 	add r1, r2, #1
 	str r1, [r5, #0x1c]
 	ldrb r6, [r2]
-	bl FrontierScript_ReadU16
+	bl FrontierScriptContext_ReadHalfWord
 	str r0, [sp, #0x18]
 	ldr r1, [sp, #0x18]
 	add r0, r5, #0
@@ -710,10 +710,10 @@ FrtCmd_023: ; 0x0222C2D0
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	ldr r4, [r5]
-	bl FrontierScript_ReadU16
+	bl FrontierScriptContext_ReadHalfWord
 	add r6, r0, #0
 	add r0, r5, #0
-	bl FrontierScript_ReadU16
+	bl FrontierScriptContext_ReadHalfWord
 	add r3, r0, #0
 	ldr r0, [r4, #0x60]
 	add r1, r6, #0
@@ -729,13 +729,13 @@ FrtCmd_024: ; 0x0222C2F4
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	ldr r4, [r5]
-	bl FrontierScript_ReadU16
+	bl FrontierScriptContext_ReadHalfWord
 	add r6, r0, #0
 	add r0, r5, #0
-	bl FrontierScript_ReadU16
+	bl FrontierScriptContext_ReadHalfWord
 	add r7, r0, #0
 	add r0, r5, #0
-	bl FrontierScript_ReadU16
+	bl FrontierScriptContext_ReadHalfWord
 	add r3, r0, #0
 	ldr r0, [r4, #0x60]
 	add r1, r6, #0
@@ -755,7 +755,7 @@ FrtCmd_025: ; 0x0222C320
 	bl ov80_0222E5B0
 	ldr r1, _0222C338 ; =ov80_0222C33C
 	add r0, r4, #0
-	bl ov80_0222AB84
+	bl FrontierScriptContext_Pause
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
@@ -810,7 +810,7 @@ FrtCmd_026: ; 0x0222C368
 	add r1, r2, #1
 	str r1, [r5, #0x1c]
 	ldrb r6, [r2]
-	bl FrontierScript_ReadU16
+	bl FrontierScriptContext_ReadHalfWord
 	str r0, [sp, #0x18]
 	ldr r1, [sp, #0x18]
 	add r0, r5, #0
@@ -857,7 +857,7 @@ FrtCmd_027: ; 0x0222C3C4
 	add r1, r2, #1
 	str r1, [r5, #0x1c]
 	ldrb r6, [r2]
-	bl FrontierScript_ReadU16
+	bl FrontierScriptContext_ReadHalfWord
 	str r0, [sp, #0x18]
 	ldr r1, [sp, #0x18]
 	add r0, r5, #0
@@ -890,13 +890,13 @@ FrtCmd_028: ; 0x0222C424
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	ldr r4, [r5]
-	bl FrontierScript_ReadU16
+	bl FrontierScriptContext_ReadHalfWord
 	add r6, r0, #0
 	add r0, r5, #0
-	bl FrontierScript_ReadU16
+	bl FrontierScriptContext_ReadHalfWord
 	add r7, r0, #0
 	add r0, r5, #0
-	bl FrontierScript_ReadU16
+	bl FrontierScriptContext_ReadHalfWord
 	add r3, r0, #0
 	ldr r0, [r4, #0x60]
 	add r1, r6, #0
@@ -916,7 +916,7 @@ FrtCmd_029: ; 0x0222C450
 	bl ov80_0222E948
 	ldr r1, _0222C468 ; =ov80_0222C33C
 	add r0, r4, #0
-	bl ov80_0222AB84
+	bl FrontierScriptContext_Pause
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
@@ -944,7 +944,7 @@ FrtCmd_031: ; 0x0222C47C
 	bl FrontierSystem_GetFrontierMap
 	add r6, r0, #0
 	add r0, r5, #0
-	bl FrontierScript_ReadU16
+	bl FrontierScriptContext_ReadHalfWord
 	ldr r1, [r5, #0x1c]
 	add r7, r0, #0
 	add r0, r1, #1
@@ -964,7 +964,7 @@ FrtCmd_031: ; 0x0222C47C
 	strh r7, [r0]
 	ldr r1, _0222C4CC ; =ov80_0222C4D0
 	add r0, r5, #0
-	bl ov80_0222AB84
+	bl FrontierScriptContext_Pause
 	mov r0, #1
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
@@ -1032,7 +1032,7 @@ FrtCmd_034: ; 0x0222C52C
 	bl sub_0209680C
 	add r4, r0, #0
 	ldr r0, [sp]
-	bl ov80_0222AC70
+	bl FrontierScriptContext_ReadWord
 	ldr r1, [sp]
 	ldr r1, [r1, #0x1c]
 	str r1, [sp, #4]
@@ -1140,7 +1140,7 @@ FrtCmd_036: ; 0x0222C60C
 	bl sub_0209680C
 	str r0, [sp, #4]
 	add r0, r5, #0
-	bl ov80_0222AC70
+	bl FrontierScriptContext_ReadWord
 	ldr r1, [r5, #0x1c]
 	add r4, r5, #0
 	add r0, r1, r0
@@ -1168,11 +1168,11 @@ _0222C632:
 	ldrb r0, [r1]
 	strb r0, [r6, #0xa]
 	add r0, r5, #0
-	bl FrontierScript_ReadU16
+	bl FrontierScriptContext_ReadHalfWord
 	sub r0, #8
 	strh r0, [r6, #6]
 	add r0, r5, #0
-	bl FrontierScript_ReadU16
+	bl FrontierScriptContext_ReadHalfWord
 	sub r0, #0x10
 	strh r0, [r6, #8]
 	ldr r0, [r4]
@@ -1302,7 +1302,7 @@ FrtCmd_040: ; 0x0222C750
 	bl FrontierScript_ReadVar
 	add r7, r0, #0
 	add r0, r5, #0
-	bl ov80_0222AC70
+	bl FrontierScriptContext_ReadWord
 	add r6, r0, #0
 	ldr r0, [r4]
 	add r1, r7, #0
@@ -1377,7 +1377,7 @@ _0222C7F8: .word 0x0000EAC4
 FrtCmd_041: ; 0x0222C7FC
 	push {r3, lr}
 	ldr r1, _0222C808 ; =ov80_0222C80C
-	bl ov80_0222AB84
+	bl FrontierScriptContext_Pause
 	mov r0, #1
 	pop {r3, pc}
 	.balign 4, 0
@@ -1409,7 +1409,7 @@ FrtCmd_042: ; 0x0222C820
 	bl sub_0209680C
 	add r5, r0, #0
 	add r0, r6, #0
-	bl ov80_0222AC70
+	bl FrontierScriptContext_ReadWord
 	ldr r1, [r6, #0x1c]
 	add r0, r1, r0
 	str r0, [r6, #0x1c]
@@ -1479,7 +1479,7 @@ FrtCmd_044: ; 0x0222C8B0
 	bl sub_0209680C
 	add r6, r0, #0
 	add r0, r5, #0
-	bl ov80_0222AC70
+	bl FrontierScriptContext_ReadWord
 	ldr r1, [r5, #0x1c]
 	add r4, r5, #0
 	add r0, r1, r0
@@ -1701,7 +1701,7 @@ FrtCmd_051: ; 0x0222CA74
 	strh r0, [r1]
 	ldr r1, _0222CA90 ; =ov80_0222CA94
 	add r0, r4, #0
-	bl ov80_0222AB84
+	bl FrontierScriptContext_Pause
 	mov r0, #1
 	pop {r4, pc}
 	nop
@@ -1871,7 +1871,7 @@ FrtCmd_109: ; 0x0222CBB4
 	sub sp, #8
 	add r5, r0, #0
 	ldr r4, [r5]
-	bl FrontierScript_ReadU16
+	bl FrontierScriptContext_ReadHalfWord
 	str r0, [sp, #4]
 	add r0, r5, #0
 	bl FrontierScript_ReadVar
@@ -1907,7 +1907,7 @@ _0222CBE2:
 	ldr r1, _0222CC1C ; =ov80_0222CC20
 	add r0, r5, #0
 	str r7, [r4]
-	bl ov80_0222AB84
+	bl FrontierScriptContext_Pause
 	mov r0, #1
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
@@ -2255,7 +2255,7 @@ FrtCmd_115: ; 0x0222CE48
 	bl Save_PrepareForAsyncWrite
 	ldr r1, _0222CE7C ; =ov80_0222CE80
 	add r0, r5, #0
-	bl ov80_0222AB84
+	bl FrontierScriptContext_Pause
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -2547,7 +2547,7 @@ FrtCmd_126: ; 0x0222D084
 	bl FrontierScript_ReadVar
 	add r7, r0, #0
 	add r0, r5, #0
-	bl FrontierScript_ReadU16
+	bl FrontierScriptContext_ReadHalfWord
 	ldr r1, [r5, #0x1c]
 	str r0, [sp, #8]
 	add r0, r1, #1
@@ -2718,7 +2718,7 @@ FrtCmd_053: ; 0x0222D1D8
 	bl sub_02037AC0
 	ldr r1, _0222D1FC ; =ov80_0222D200
 	add r0, r4, #0
-	bl ov80_0222AB84
+	bl FrontierScriptContext_Pause
 	mov r0, #1
 	pop {r4, pc}
 	nop
@@ -2760,7 +2760,7 @@ FrtCmd_055: ; 0x0222D22C
 	bl sub_02058284
 	ldr r1, _0222D240 ; =ov80_0222D244
 	add r0, r4, #0
-	bl ov80_0222AB84
+	bl FrontierScriptContext_Pause
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
@@ -2819,7 +2819,7 @@ FrtCmd_057: ; 0x0222D284
 FrtCmd_058: ; 0x0222D29C
 	push {r3, lr}
 	ldr r1, _0222D2A8 ; =ov80_0222D2AC
-	bl ov80_0222AB84
+	bl FrontierScriptContext_Pause
 	mov r0, #1
 	pop {r3, pc}
 	.balign 4, 0
@@ -2857,7 +2857,7 @@ FrtCmd_059: ; 0x0222D2CC
 	strh r0, [r1]
 	ldr r1, _0222D2E8 ; =ov80_0222D2EC
 	add r0, r4, #0
-	bl ov80_0222AB84
+	bl FrontierScriptContext_Pause
 	mov r0, #1
 	pop {r4, pc}
 	nop
@@ -2913,7 +2913,7 @@ FrtCmd_060: ; 0x0222D328
 FrtCmd_061: ; 0x0222D334
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl FrontierScript_ReadU16
+	bl FrontierScriptContext_ReadHalfWord
 	add r6, r0, #0
 	add r0, r5, #0
 	bl FrontierScript_ReadVar
@@ -2934,7 +2934,7 @@ FrtCmd_061: ; 0x0222D334
 FrtCmd_062: ; 0x0222D360
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl FrontierScript_ReadU16
+	bl FrontierScriptContext_ReadHalfWord
 	add r6, r0, #0
 	add r0, r5, #0
 	bl FrontierScript_ReadVarPtr
@@ -4135,7 +4135,7 @@ FrtCmd_063: ; 0x0222DC70
 	bl Frontier_SetData
 	ldr r1, _0222DCEC ; =ov80_0222DCF0
 	add r0, r5, #0
-	bl ov80_0222AB84
+	bl FrontierScriptContext_Pause
 	mov r1, #0
 	str r1, [sp]
 	mov r0, #1
@@ -4287,7 +4287,7 @@ FrtCmd_067: ; 0x0222DDBC
 FrtCmd_068: ; 0x0222DDF0
 	push {r3, lr}
 	ldr r1, _0222DDFC ; =ov80_0222DE00
-	bl ov80_0222AB84
+	bl FrontierScriptContext_Pause
 	mov r0, #1
 	pop {r3, pc}
 	.balign 4, 0
@@ -4365,7 +4365,7 @@ _0222DE88: .word 0x00011170
 FrtCmd_077: ; 0x0222DE8C
 	push {r3, lr}
 	ldr r1, _0222DE98 ; =ov80_0222DE9C
-	bl ov80_0222AB84
+	bl FrontierScriptContext_Pause
 	mov r0, #1
 	pop {r3, pc}
 	.balign 4, 0
@@ -4445,7 +4445,7 @@ _0222DF28: .word ov80_0222F53C
 FrtCmd_079: ; 0x0222DF2C
 	push {r3, lr}
 	ldr r1, _0222DF38 ; =ov80_0222DF3C
-	bl ov80_0222AB84
+	bl FrontierScriptContext_Pause
 	mov r0, #1
 	pop {r3, pc}
 	.balign 4, 0
@@ -4473,7 +4473,7 @@ _0222DF52:
 	thumb_func_start FrtCmd_150
 FrtCmd_150: ; 0x0222DF58
 	push {r3, lr}
-	bl FrontierScript_ReadU16
+	bl FrontierScriptContext_ReadHalfWord
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
@@ -4497,12 +4497,12 @@ FrtCmd_069: ; 0x0222DF64
 	bl FrontierScript_ReadVar
 	add r6, r0, #0
 	add r0, r5, #0
-	bl FrontierScript_ReadU16
+	bl FrontierScriptContext_ReadHalfWord
 	str r0, [sp, #0x1c]
 	add r0, r5, #0
-	bl FrontierScript_ReadU16
+	bl FrontierScriptContext_ReadHalfWord
 	add r0, r5, #0
-	bl FrontierScript_ReadU16
+	bl FrontierScriptContext_ReadHalfWord
 	ldr r0, [r5]
 	ldr r0, [r0]
 	bl Frontier_GetLaunchParam
@@ -4536,7 +4536,7 @@ FrtCmd_070: ; 0x0222DFD4
 	bl FrontierSystem_GetFrontierMap
 	add r4, r0, #0
 	add r0, r5, #0
-	bl FrontierScript_ReadU16
+	bl FrontierScriptContext_ReadHalfWord
 	add r1, r0, #0
 	add r0, r4, #0
 	bl ov80_0222F1D0
@@ -4554,7 +4554,7 @@ FrtCmd_071: ; 0x0222DFF4
 	bl FrontierSystem_GetFrontierMap
 	add r4, r0, #0
 	add r0, r5, #0
-	bl FrontierScript_ReadU16
+	bl FrontierScriptContext_ReadHalfWord
 	add r1, sp, #0x10
 	add r6, r0, #0
 	add r0, r4, #0
@@ -4584,7 +4584,7 @@ FrtCmd_071: ; 0x0222DFF4
 	bl Sound_SetSceneAndPlayBGM
 	ldr r1, _0222E058 ; =ov80_0222E05C
 	add r0, r5, #0
-	bl ov80_0222AB84
+	bl FrontierScriptContext_Pause
 	mov r0, #1
 	add sp, #0x14
 	pop {r3, r4, r5, r6, pc}
@@ -4615,7 +4615,7 @@ _0222E074:
 FrtCmd_072: ; 0x0222E078
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl FrontierScript_ReadU16
+	bl FrontierScriptContext_ReadHalfWord
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0]
@@ -4633,7 +4633,7 @@ FrtCmd_072: ; 0x0222E078
 FrtCmd_073: ; 0x0222E09C
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl FrontierScript_ReadU16
+	bl FrontierScriptContext_ReadHalfWord
 	add r4, r0, #0
 	add r0, r5, #0
 	bl FrontierScript_ReadVar
@@ -4654,7 +4654,7 @@ FrtCmd_073: ; 0x0222E09C
 FrtCmd_074: ; 0x0222E0C8
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl FrontierScript_ReadU16
+	bl FrontierScriptContext_ReadHalfWord
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0]
@@ -4753,7 +4753,7 @@ FrtCmd_203: ; 0x0222E170
 	bl sub_02037AC0
 	ldr r1, _0222E194 ; =ov80_0222E198
 	add r0, r4, #0
-	bl ov80_0222AB84
+	bl FrontierScriptContext_Pause
 	mov r0, #1
 	pop {r4, pc}
 	nop
@@ -7256,7 +7256,7 @@ _0222F498:
 _0222F4BC:
 	ldr r1, _0222F4CC ; =ov80_0222F4D0
 	add r0, r5, #0
-	bl ov80_0222AB84
+	bl FrontierScriptContext_Pause
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
