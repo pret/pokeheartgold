@@ -1,13 +1,12 @@
+#include <dsprot.h>
+
 #include "application/pokedex/pokedex_internal.h"
 
 #include "dex_mon_measures.h"
 #include "overlay_18.h"
 #include "sound_02004A44.h"
-// TODO: after merging hsla(0, 100%, 13%, 1.00), uncomment this
-// #include <dsprot.h>
-#include "overlay_123.h"
 
-FS_EXTERN_OVERLAY(OVY_123);
+FS_EXTERN_OVERLAY(ds_protect);
 
 void ov18_021E5C1C(void);
 void ov18_021E5C2C(void);
@@ -56,25 +55,22 @@ BOOL Pokedex_Main(OverlayManager *man, int *state) {
 BOOL Pokedex_Exit(OverlayManager *man, int *state) {
     PokedexAppData *appData = OverlayManager_GetData(man);
 
-    FS_LoadOverlay(MI_PROCESSOR_ARM9, FS_OVERLAY_ID(OVY_123));
-    // DSProt_DetectEmulator
-    if (ov123_0225F520(ov18_021E5C1C)) {
+    FS_LoadOverlay(MI_PROCESSOR_ARM9, FS_OVERLAY_ID(ds_protect));
+    if (DSProt_DetectEmulator(ov18_021E5C1C)) {
         Heap_AllocAtEnd(HEAP_ID_3, 1000);
     }
     sub_02092BD8(appData->args->unk_08, ov18_021F8838(appData), appData->unk_1858);
-    // DSProt_DetectFlashcart
-    if (ov123_0225F430(ov18_021E5C2C)) {
+    if (DSProt_DetectFlashcart(ov18_021E5C2C)) {
         Heap_AllocAtEnd(HEAP_ID_3, 1000);
     }
     OverlayManager_FreeData(man);
     Heap_Destroy(HEAP_ID_POKEDEX_APP);
     GF_SndHandleSetPlayerVolume(1, 127);
     sub_02004B10();
-    // DSProt_DetectNotDummy
-    if (!ov123_0225F688(ov18_021E5C3C)) {
+    if (!DSProt_DetectNotDummy(ov18_021E5C3C)) {
         Heap_AllocAtEnd(HEAP_ID_3, 1000);
     }
-    FS_UnloadOverlay(MI_PROCESSOR_ARM9, FS_OVERLAY_ID(OVY_123));
+    FS_UnloadOverlay(MI_PROCESSOR_ARM9, FS_OVERLAY_ID(ds_protect));
     return TRUE;
 }
 

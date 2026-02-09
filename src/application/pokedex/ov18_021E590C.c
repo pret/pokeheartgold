@@ -1,6 +1,6 @@
 #include "constants/species.h"
 
-#include "application/pokedex//pokedex_internal.h"
+#include "application/pokedex/pokedex_internal.h"
 #include "msgdata/msg.naix"
 
 #include "msgdata.h"
