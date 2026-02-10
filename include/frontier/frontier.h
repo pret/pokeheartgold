@@ -3,17 +3,20 @@
 
 #include "bag_cursor.h"
 #include "overlay_manager.h"
+#include "field_system.h"
 
 typedef struct FrontierLaunchParam {
     void *unk0;
     Options *options;
     SaveData *saveData;
     BagCursor *bagCursor;
-    u8 unk10[0x8];
+    u32 unk10;
+    u32 unk14;
     u32 mapId;
     void *unk1C;
     u8 unk20;
-    u8 unk21[0x7];
+    u8 unk21[0x3];
+    FieldSystem *fieldSystem; // 0x24
 } FrontierLaunchParam;
 
 extern const OverlayManagerTemplate gOverlayTemplate_Frontier;
