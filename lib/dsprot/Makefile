@@ -2,13 +2,17 @@
 # See doc/BUILD_OVERVIEW.TXT for a clearer outline of this build process
 # ===================================================================
 
+MWCCVER        := 2.0/sp2p3
+PROC           := arm946e
+PROC_S         := arm5te
+PROC_LD        := v5te
+OPTFLAGS       := -O4,p
+
 # Need GLB_DEFINES and CLI_DEFINES from config
 include ../../config.mk
 
 # Undef this from config.mk so common.mk knows this is not building a linked elf
 ELFNAME :=
-
-MWCCVER := 2.0/sp2p3
 
 # Relevant directories
 BUILD_DIR   :=  ./build
@@ -56,8 +60,8 @@ LIBRARY_FILES := \
 
 
 .PHONY: all clean tidy tools dsprot install
-.DELETE_ON_ERROR: 
-.NOTPARALLEL: 
+.DELETE_ON_ERROR:
+.NOTPARALLEL:
 .SECONDARY: none
 
 all: dsprot

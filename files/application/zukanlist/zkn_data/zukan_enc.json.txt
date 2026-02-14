@@ -1,0 +1,55 @@
+{{ doNotModifyHeader }}
+
+    .rodata
+
+    .type gDungeons, @object
+    .balign 4, 0
+gDungeons:
+## for dungeon in dungeons
+    .byte {{ dungeon.unk_0 }}
+    .byte {{ dungeon.unk_1 }}
+    .byte {{ dungeon.unk_2 }}
+    .byte {{ dungeon.unk_3 }}
+
+## endfor
+    .size gDungeons,.-gDungeons
+
+    .type gOverworlds, @object
+    .balign 4, 0
+gOverworlds:
+## for overworld in overworlds
+    .byte {{ overworld.unk_0 }}
+    .byte {{ overworld.unk_1 }}
+    .byte {{ overworld.unk_2 }}
+    .byte {{ overworld.unk_3 }}
+## for x in overworld.unk_4
+        .byte {{ x }}
+## endfor
+
+## endfor
+    .size gOverworlds,.-gOverworlds
+
+## for method, mons in encounters
+## for mon, maps in mons
+    .type gEncounters_{{ method }}_{{ mon }}, @object
+    .balign 4, 0
+gEncounters_{{ method }}_{{ mon }}:
+## if isArray(maps)
+## for map in maps
+    .word {{ map }}
+## endfor
+## else
+#ifdef SOULSILVER
+## for map in maps.SILVER
+    .word {{ map }}
+## endfor
+#else
+## for map in maps.GOLD
+    .word {{ map }}
+## endfor
+#endif
+## endif
+    .size gEncounters_{{ method }}_{{ mon }},.-gEncounters_{{ method }}_{{ mon }}
+
+## endfor
+## endfor
