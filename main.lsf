@@ -327,7 +327,7 @@ Static main
     Object src/error_message_reset.o
     Object src/sin_vcount.o
     Object asm/frontier.o
-    Object asm/unk_020968B0.o
+	Object src/unk_020968B0.o
     Object asm/unk_02096910.o
     Object asm/unk_02096C88.o
     Object asm/unk_02097024.o
