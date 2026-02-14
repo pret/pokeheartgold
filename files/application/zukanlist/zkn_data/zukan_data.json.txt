@@ -1,0 +1,143 @@
+{{ doNotModifyHeader }}
+
+#include "constants/species.h"
+
+    .rodata
+    .balign 4, 0
+
+    .type mon_stats_height, @object
+    .balign 4, 255
+mon_stats_height:
+## for mon in mon_stats
+## if isInteger(mon.height)
+    .word {{ mon.height }} // {{ mon.species }}
+## else
+#ifdef GIRA
+    .word {{ mon.height.origin }} // {{ mon.species }} origin
+#else
+    .word {{ mon.height.altered }} // {{ mon.species }} altered
+#endif
+## endif
+## endfor
+    .size mon_stats_height,.-mon_stats_height
+
+    .type mon_stats_weight, @object
+    .balign 4, 255
+mon_stats_weight:
+## for mon in mon_stats
+## if isInteger(mon.weight)
+    .word {{ mon.weight }} // {{ mon.species }}
+## else
+#ifdef GIRA
+    .word {{ mon.weight.origin }} // {{ mon.species }} origin
+#else
+    .word {{ mon.weight.altered }} // {{ mon.species }} altered
+#endif
+## endif
+## endfor
+    .size mon_stats_weight,.-mon_stats_weight
+
+    .type mon_stats_body_style, @object
+    .balign 4, 255
+mon_stats_body_style:
+## for mon in mon_stats
+## if isInteger(mon.body_style)
+    .byte {{ mon.body_style }} // {{ mon.species }}
+## else
+#ifdef GIRA
+    .byte {{ mon.body_style.origin }} // {{ mon.species }} origin
+#else
+    .byte {{ mon.body_style.altered }} // {{ mon.species }} altered
+#endif
+## endif
+## endfor
+    .size mon_stats_body_style,.-mon_stats_body_style
+
+    .type mon_stats_player_scale_f, @object
+    .balign 4, 255
+mon_stats_player_scale_f:
+## for mon in mon_stats
+    .short {{ mon.scale_f }} // {{ mon.species }}
+## endfor
+    .size mon_stats_player_scale_f,.-mon_stats_player_scale_f
+
+    .type mon_stats_mon_scale_f, @object
+    .balign 4, 255
+mon_stats_mon_scale_f:
+## for mon in mon_stats
+    .short {{ mon.mon_scale_f }} // {{ mon.species }}
+## endfor
+    .size mon_stats_mon_scale_f,.-mon_stats_mon_scale_f
+
+    .type mon_stats_player_scale_m, @object
+    .balign 4, 255
+mon_stats_player_scale_m:
+## for mon in mon_stats
+    .short {{ mon.scale_m }} // {{ mon.species }}
+## endfor
+    .size mon_stats_player_scale_m,.-mon_stats_player_scale_m
+
+    .type mon_stats_mon_scale_m, @object
+    .balign 4, 255
+mon_stats_mon_scale_m:
+## for mon in mon_stats
+    .short {{ mon.mon_scale_m }} // {{ mon.species }}
+## endfor
+    .size mon_stats_mon_scale_m,.-mon_stats_mon_scale_m
+
+    .type mon_stats_player_ypos_f, @object
+    .balign 4, 255
+mon_stats_player_ypos_f:
+## for mon in mon_stats
+    .short {{ mon.ypos_f }} // {{ mon.species }}
+## endfor
+    .size mon_stats_player_ypos_f,.-mon_stats_player_ypos_f
+
+    .type mon_stats_mon_ypos_f, @object
+    .balign 4, 255
+mon_stats_mon_ypos_f:
+## for mon in mon_stats
+    .short {{ mon.mon_ypos_f }} // {{ mon.species }}
+## endfor
+    .size mon_stats_mon_ypos_f,.-mon_stats_mon_ypos_f
+
+    .type mon_stats_player_ypos_m, @object
+    .balign 4, 255
+mon_stats_player_ypos_m:
+## for mon in mon_stats
+    .short {{ mon.ypos_m }} // {{ mon.species }}
+## endfor
+    .size mon_stats_player_ypos_m,.-mon_stats_player_ypos_m
+
+    .type mon_stats_mon_ypos_m, @object
+    .balign 4, 255
+mon_stats_mon_ypos_m:
+## for mon in mon_stats
+    .short {{ mon.mon_ypos_m }} // {{ mon.species }}
+## endfor
+    .size mon_stats_mon_ypos_m,.-mon_stats_mon_ypos_m
+
+## for group in sorting
+## for subgroup in group.options
+    .type sort_order_{{ group.type }}_{{ subgroup.id }}, @object
+    .balign 4, 255
+sort_order_{{ group.type }}_{{ subgroup.id }}:
+## if isArray(subgroup.mons)
+## for mon in subgroup.mons
+    .short {{ mon }}
+## endfor
+## else
+#ifdef GIRA
+## for mon in subgroup.mons.origin
+    .short {{ mon }}
+## endfor
+#else
+## for mon in subgroup.mons.altered
+    .short {{ mon }}
+## endfor
+#endif
+##endif
+    .size sort_order_{{ group.type }}_{{ subgroup.id }},.-sort_order_{{ group.type }}_{{ subgroup.id }}
+
+## endfor
+## endfor

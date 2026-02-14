@@ -5,6 +5,7 @@
 
     .section .rodata
 {% for table in tables %}
+    .type gHeadbuttMons_{{table.Map}}, @object
 gHeadbuttMons_{{table.Map}}:
     .short {{length(table.Trees)}}
     .short {{length(table.SecretTrees)}}

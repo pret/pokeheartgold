@@ -39,7 +39,7 @@ enum HeapID {
     HEAP_ID_34,
     HEAP_ID_35,
     HEAP_ID_36,
-    HEAP_ID_37,
+    HEAP_ID_POKEDEX_APP,
     HEAP_ID_OPTIONS_APP,
     HEAP_ID_39,
     HEAP_ID_OV55,

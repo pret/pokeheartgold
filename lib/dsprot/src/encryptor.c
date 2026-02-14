@@ -58,22 +58,19 @@ void Encryptor_DecodeFunctionTable(FuncInfo *functions) {
                 u32 operands = ((*addr & INS_OPERANDS_MASK) - ENC_VAL_1) & INS_OPERANDS_MASK;
 
                 *addr = opcode | operands;
-            }
-            break;
+            } break;
 
             case INS_TYPE_B: {
                 u32 opcode = (*addr & INS_OPCODE_MASK) ^ (INS_OPCODE_LINKBIT << INS_OPCODE_SHIFT);
                 u32 operands = ((*addr & INS_OPERANDS_MASK) - ENC_VAL_2) & INS_OPERANDS_MASK;
 
                 *addr = opcode | operands;
-            }
-            break;
+            } break;
 
             default: {
                 u8 *addrBytes = (u8 *)addr;
                 *addr = (addrBytes[0] ^ ENC_BYTE_A) | ((addrBytes[1] ^ ENC_BYTE_B) << 8) | ((addrBytes[2] ^ ENC_BYTE_C) << 16) | ((addrBytes[3] ^ ENC_BYTE_D) << 24);
-            }
-            break;
+            } break;
             }
         }
 
