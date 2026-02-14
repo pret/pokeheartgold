@@ -240,7 +240,7 @@ Static main
     Object asm/unk_02066EDC.o
     Object src/field_roamer.o
     Object asm/unk_0206793C.o
-    Object asm/unk_02067A60.o
+    Object src/field_map_change.o
     Object src/field_move.o
     Object src/field_move_environment.o
     Object asm/unk_020689C8.o

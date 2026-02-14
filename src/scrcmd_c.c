@@ -22,6 +22,7 @@
 #include "easy_chat.h"
 #include "encounter.h"
 #include "fashion_case.h"
+#include "field_map_change.h"
 #include "field_roamer.h"
 #include "field_system.h"
 #include "field_take_photo.h"
@@ -88,7 +89,6 @@
 #include "unk_0205FD20.h"
 #include "unk_02062108.h"
 #include "unk_020658D4.h"
-#include "unk_02067A80.h"
 #include "unk_02068FC8.h"
 #include "unk_0206B910.h"
 #include "unk_0206D494.h"
@@ -4141,7 +4141,7 @@ BOOL ScrCmd_HideSaveStats(ScriptContext *ctx) {
 
 BOOL ScrCmd_595(ScriptContext *ctx) {
     u8 r1 = ScriptReadByte(ctx);
-    sub_02067A80(ctx->fieldSystem, r1);
+    FieldSystem_SetTeleportWarpFlag(ctx->fieldSystem, r1);
     return FALSE;
 }
 
