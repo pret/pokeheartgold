@@ -238,7 +238,7 @@
 .public MetatileBehavior_IsEncounterGrass
 .public sub_0205B6F4
 .public MetatileBehavior_IsSurfableWater
-.public sub_0205B994
+.public MetatileBehavior_CanGenerateWalkingEncounters
 .public sub_0205BAD0
 .public sub_0205BAE4
 .public sub_0205BB04
@@ -458,13 +458,13 @@
 .public ov02_02246714
 .public OpenAlphHiddenRoom
 .public ov02_022469B4
-.public ov02_02246C8C
-.public ov02_02246F70
-.public ov02_022470A0
-.public ov02_02247170
-.public FieldSystem_ChooseHeadbuttEncounter
-.public ov02_02247F30
-.public ov02_02247F9C
+.public FieldSystem_PerformLandOrSurfEncounterCheck
+.public FieldSystem_PerformFishEncounterCheck
+.public FieldSystem_PerformRockSmashEncounterCheck
+.public FieldSystem_PerformSweetScentEncounterCheck
+.public FieldSystem_PerformHeadbuttEncounterCheck
+.public FieldSystem_GenerateSingleWildPokemon
+.public FieldSystem_CanGenerateStepEncounter
 .public ov02_02249458
 .public ov02_0224953C
 .public ov02_02249548
@@ -539,3 +539,5 @@
 .public ov02_02253188
 .public ov02_022531B4
 .public BugContest_GetEncounterSlot
+.public ov02_022494C4
+.public ov02_0224E340
