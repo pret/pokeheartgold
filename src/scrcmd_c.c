@@ -3406,10 +3406,10 @@ BOOL ScrCmd_SafariZoneAction(ScriptContext *ctx) {
     case 1:
         Save_VarsFlags_ClearSafariSysFlag(varsFlags);
         sub_0202F5F8(safariZone, 1);
-        r1 = sub_0202F6AC(safariZone);
+        r1 = SafariZone_GetLevel(safariZone);
         if (r1 != 0) {
-            sub_0209730C(ctx->fieldSystem->saveData, r1);
-            sub_0202F6A0(safariZone, 0);
+            SaveData_SafariZone_CheckAreasWithUpdatedEncounters(ctx->fieldSystem->saveData, r1);
+            SafariZone_SetLevel(safariZone, 0);
         }
         *p_nSafariBall = 0;
         *p_nSafariSteps = 0;
@@ -4734,7 +4734,7 @@ BOOL ScrCmd_148(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_149(ScriptContext *ctx) {
-    sub_0202F050(SaveData_GetPhoneCallPersistentState(ctx->fieldSystem->saveData), ScriptReadByte(ctx));
+    PhoneCallPersistentState_ClearCallTriggerFlag(SaveData_GetPhoneCallPersistentState(ctx->fieldSystem->saveData), ScriptReadByte(ctx));
     return FALSE;
 }
 
