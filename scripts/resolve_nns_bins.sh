@@ -56,5 +56,8 @@ for fl in "$dir"/*.bin; do
         continue
     fi
     mv "$fl" "${fl%.*}.$ext"
+    if [ -n "$lz" ]; then
+        mv "$fl$lz" "${fl%.*}.$ext$lz"
+    fi
     echo "${fl%.*}.$ext$lz"
 done

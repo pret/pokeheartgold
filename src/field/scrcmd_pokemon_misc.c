@@ -48,7 +48,7 @@
 #include "unk_0206D494.h"
 #include "unk_02092BE8.h"
 #include "update_dex_received.h"
-// #include "application/zukanlist/zukan_data/zukan_data.naix"
+// #include "application/zukanlist/zkn_data/zukan_data.naix"
 
 typedef struct UnkStructScr_648 {
     FieldSystem *fieldSystem;
@@ -187,7 +187,7 @@ static BOOL ov01_02200C6C(ScriptContext *ctx) {
 
 static void *ov01_02200C94(enum HeapID heapID, s32 fileId, int *unkPtr) {
     u32 size;
-    void *data = GfGfxLoader_LoadFromNarc_GetSizeOut(NARC_application_zukanlist_zukan_data_zukan_data, fileId, FALSE, heapID, FALSE, &size);
+    void *data = GfGfxLoader_LoadFromNarc_GetSizeOut(NARC_application_zukanlist_zkn_data_zukan_data, fileId, FALSE, heapID, FALSE, &size);
     *unkPtr = size / 2;
     return data;
 }

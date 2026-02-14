@@ -1,6 +1,7 @@
-#include <stdexcept>
-#include <iostream>
 #include "Manifest.h"
+
+#include <iostream>
+#include <stdexcept>
 
 std::map<std::pair<fs::path, std::string>, std::map<std::string, int>> HeaderCache {
     {{"bool", ""}, {
@@ -11,7 +12,7 @@ std::map<std::pair<fs::path, std::string>, std::map<std::string, int>> HeaderCac
 
 void ColumnSpec::translate_width(std::string &width, int &bytes, int &bits) {
     int dotpos = width.find('.');
-    
+
     try {
         bytes = std::stoi(width.substr(0, dotpos));
     } catch (std::invalid_argument &e) {
@@ -281,7 +282,7 @@ void BufferedRowConverter::to_bytes() {
             if (spec.is_padding()) {
                 val = 0;
             } else {
-                //val = spec[row.at(column_i++)];
+                // val = spec[row.at(column_i++)];
                 try {
                     const std::string &cell_value = row.at(column_i);
                     val = spec[cell_value];

@@ -316,7 +316,7 @@ Static main
     Object asm/unk_02092B04.o
     Object asm/unk_02092BB8.o
     Object src/unk_02092BE8.o
-    Object asm/unk_020931C4.o
+    Object src/mom_gift.o
     Object src/unk_020932A4.o
     Object asm/unk_020932E0.o
     Object asm/unk_020957B0.o
@@ -675,6 +675,11 @@ Overlay OVY_17
 Overlay OVY_18
 {
     After main
+    Object src/poketool/pokefoot.o
+    Object src/application/pokedex/ov18_021E590C.o
+    Object src/application/pokedex/ov18_021E5AA0.o
+    Object src/application/pokedex/ov18_021E5C40.o
+    Object src/application/pokedex/ov18_021E8BF4.o
     Object asm/overlay_18.o
 }
 Overlay OVY_19
@@ -1303,29 +1308,46 @@ Overlay voltorb_flip
     Object src/voltorb_flip/voltorb_flip_game.o
     Object src/voltorb_flip/voltorb_flip_input.o
 }
-Overlay OVY_123
+Overlay ds_protect
 {
     After OVY_31
-    Object lib/asm/overlay_123.o
+	Object lib/dsprot/dsprot_main_encrypted.o        
+	Object lib/dsprot/dsprot_main_decrypter_encoded.o
+	Object lib/dsprot/dsprot_main_decrypter_decoder.o
+	Object lib/dsprot/extra.o                        
+	Object lib/dsprot/integrity_encrypted.o          
+	Object lib/dsprot/integrity_decrypter_encoded.o  
+	Object lib/dsprot/integrity_decrypter_decoder.o  
+	Object lib/dsprot/encryptor_encoded.o            
+	Object lib/dsprot/encryptor_decoder.o            
+	Object lib/dsprot/mac_owner_encrypted.o          
+	Object lib/dsprot/mac_owner_decrypter_encoded.o  
+	Object lib/dsprot/rom_util_encrypted.o           
+	Object lib/dsprot/rom_util_decrypter_encoded.o   
+	Object lib/dsprot/rom_test_encrypted.o           
+	Object lib/dsprot/rom_test_decrypter_encoded.o   
+	Object lib/dsprot/coretests_decrypter_decoder.o  
+	Object lib/dsprot/rc4_encoded.o                  
+	Object lib/dsprot/rc4_decoder.o
 }
 Overlay OVY_124
 {
-    After OVY_123
+    After ds_protect
     Object src/overlay_124.o
 }
 Overlay OVY_125
 {
-    After OVY_123
+    After ds_protect
 }
 Overlay OVY_126
 {
-    After OVY_123
+    After ds_protect
 }
 Overlay OVY_127
 {
-    After OVY_123
+    After ds_protect
 }
 Overlay OVY_128
 {
-    After OVY_123
+    After ds_protect
 }
