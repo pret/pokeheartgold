@@ -99,7 +99,7 @@ BOOL ScrCmd_442(ScriptContext *ctx) {
 
 BOOL ScrCmd_443(ScriptContext *ctx) {
     u8 r1 = ScriptReadByte(ctx);
-    void *r2 = ctx->fieldSystem->unkA0;
+    void *r2 = ctx->fieldSystem->frontier;
     if (r2 == NULL) {
         return FALSE;
     }
