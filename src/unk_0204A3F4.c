@@ -28,16 +28,16 @@ typedef struct SpeciesAndItem {
     u16 item;
 } SpeciesAndItem;
 
-static u32 sub_0204B318(FrontierFieldSystem *frontierFsys);
-static void sub_0204B470(FrontierFieldSystem *frontierFsys, SaveData *saveData, u32 a2);
+static u32 FrontierFieldSystem_0204B318(FrontierFieldSystem *frontierFsys);
+static void FrontierFieldSystem_0204B470(FrontierFieldSystem *frontierFsys, SaveData *saveData, u32 a2);
 static BOOL TryGiveTowerRibbons(SaveData *saveData, u32 ribbon, FrontierFieldSystem *frontierFsys);
 
-static const u8 WifiBattlePointRewards[] = { 0, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 0 }; // _020FBF98
+static const u8 WifiBattlePointRewards[] = { 0, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 0 };
 static const u8 _020FBF8C[] = { 0, 5, 4, 4, 3, 3, 2, 2, 1, 1, 0, 0 };
-static const u8 RegularBattlePointRewards[] = { 0, 3, 3, 4, 4, 5, 5, 7 }; // _020FBF84
-static const u8 LinkBattlePointRewards[] = { 0, 8, 9, 11, 12, 14, 15, 18 }; // _020FBF7C
+static const u8 RegularBattlePointRewards[] = { 0, 3, 3, 4, 4, 5, 5, 7 };
+static const u8 LinkBattlePointRewards[] = { 0, 8, 9, 11, 12, 14, 15, 18 };
 
-static u32 NumMonsForTowerMode(u32 towerMode) { // sub_0204A3F4
+static u32 NumMonsForTowerMode(u32 towerMode) {
     switch (towerMode) {
     case TOWER_MODE_SINGLE:
     case TOWER_MODE_WIFI:
@@ -54,7 +54,7 @@ static u32 NumMonsForTowerMode(u32 towerMode) { // sub_0204A3F4
     }
 }
 
-static BOOL PlayerHasDuplicateItem(SpeciesAndItem *validMons, u32 species, u32 item, s32 partySize) { // sub_0204A424
+static BOOL PlayerHasDuplicateItem(SpeciesAndItem *validMons, u32 species, u32 item, s32 partySize) {
     for (s32 i = 0; i < partySize; i++) {
         if (species == validMons[i].species
             && item != ITEM_NONE
@@ -65,7 +65,7 @@ static BOOL PlayerHasDuplicateItem(SpeciesAndItem *validMons, u32 species, u32 i
     return FALSE;
 }
 
-static BOOL PlayerSpeciesAndItemsAreUnique(SpeciesAndItem *mons, s32 size) { // sub_0204A450
+static BOOL PlayerSpeciesAndItemsAreUnique(SpeciesAndItem *mons, s32 size) {
     for (s32 i = 0; i < size - 1; i++) {
         for (s32 j = i + 1; j < size; j++) {
             if (mons[i].species == mons[j].species) {
@@ -79,9 +79,7 @@ static BOOL PlayerSpeciesAndItemsAreUnique(SpeciesAndItem *mons, s32 size) { // 
     return TRUE;
 }
 
-static BOOL PlayerHasEnoughValidUniqueSpeciesAndItems(SpeciesAndItem *validMons, u32 numRequired, s32 numValid, s32 n) { // sub_0204A4A0
-    // This assumes that numRequired is always either 2, 3, or 4.
-    SpeciesAndItem mons[4];
+static BOOL PlayerHasEnoughValidUniqueSpeciesAndItems(SpeciesAndItem *validMons, u32 numRequired, s32 numValid, s32 n) {
     MI_CpuClear8(mons, sizeof(SpeciesAndItem) * NELEMS(mons));
     for (s32 i = 0; i < n; i++) {
         mons[0] = validMons[i];
@@ -226,12 +224,12 @@ u16 sub_0204A800(SaveData *saveData) {
     return sub_0202D7B0(sub_0202D928(saveData));
 }
 
-void sub_0204A810(FrontierFieldSystem **frontierFsys) {
+void FrontierFieldSystem_0204A810(FrontierFieldSystem **frontierFsys) {
     GF_ASSERT(*frontierFsys == NULL);
     *frontierFsys = NULL;
 }
 
-FrontierFieldSystem *InitFrontierFieldSystem(SaveData *saveData, BOOL resumeFromPrevious, u32 towerMode) {
+FrontierFieldSystem *FrontierFieldSystem_New(SaveData *saveData, BOOL resumeFromPrevious, u32 towerMode) {
     FrontierFieldSystem *frontierFsys = Heap_Alloc(HEAP_ID_FIELD2, sizeof(FrontierFieldSystem));
     MI_CpuClear8(frontierFsys, sizeof(FrontierFieldSystem));
     frontierFsys->heapID = HEAP_ID_FIELD2;
@@ -264,7 +262,7 @@ FrontierFieldSystem *InitFrontierFieldSystem(SaveData *saveData, BOOL resumeFrom
         if (frontierFsys->towerMode == TOWER_MODE_MULTI) {
             frontierFsys->multiBattleAllyID = sub_0202D284(frontierFsys->unk70, 9, 0);
             sub_0202D284(frontierFsys->unk70, 6, &frontierFsys->multiBattleAllyData[frontierFsys->multiBattleAllyID]);
-            GenerateAllyFrontierMons(frontierFsys,
+            FrontierFieldSystem_GenerateAllyFrontierMons(frontierFsys,
                 &frontierFsys->frontierStatTrainers[frontierFsys->multiBattleAllyID],
                 300 + frontierFsys->multiBattleAllyID,
                 sub_0202D284(frontierFsys->unk70, 7, 0),
@@ -300,7 +298,7 @@ FrontierFieldSystem *InitFrontierFieldSystem(SaveData *saveData, BOOL resumeFrom
     return frontierFsys;
 }
 
-void sub_0204AA2C(FrontierFieldSystem *frontierFsys) {
+void FrontierFieldSystem_0204AA2C(FrontierFieldSystem *frontierFsys) {
     if (frontierFsys == NULL) {
         return;
     }
@@ -309,11 +307,11 @@ void sub_0204AA2C(FrontierFieldSystem *frontierFsys) {
     Heap_Free(frontierFsys);
 }
 
-void sub_0204AA58(FrontierFieldSystem *frontierFsys, TaskManager *taskManager, void *a2) {
+void FrontierFieldSystem_0204AA58(FrontierFieldSystem *frontierFsys, TaskManager *taskManager, void *a2) {
     sub_02067118(taskManager, a2, 17, 0, frontierFsys->numMons, frontierFsys->numMons, 100, 0);
 }
 
-BOOL sub_0204AA78(FrontierFieldSystem *frontierFsys, void **a1, SaveData *saveData) {
+BOOL FrontierFieldSystem_0204AA78(FrontierFieldSystem *frontierFsys, void **a1, SaveData *saveData) {
     Party *party;
     u8 *unk = *a1;
     if (unk[0x27] != 0 || unk[0x26] == 7) {
@@ -333,7 +331,7 @@ BOOL sub_0204AA78(FrontierFieldSystem *frontierFsys, void **a1, SaveData *saveDa
     return TRUE;
 }
 
-u32 SelectedPartyHasDuplicateSpeciesOrItem(FrontierFieldSystem *frontierFsys, SaveData *saveData) {
+u32 FrontierFieldSystem_SelectedPartyHasDuplicateSpeciesOrItem(FrontierFieldSystem *frontierFsys, SaveData *saveData) {
     u16 species[4];
     u16 items[4];
     Party *party = SaveArray_Party_Get(saveData);
@@ -356,7 +354,7 @@ u32 SelectedPartyHasDuplicateSpeciesOrItem(FrontierFieldSystem *frontierFsys, Sa
     return 0;
 }
 
-static BOOL FrontierTrainerAlreadyInCurrentRound(u16 *existingIDs, u32 frontierTrainerID, u16 comparisons) { // sub_0204ABA0
+static BOOL FrontierTrainerAlreadyInCurrentRound(u16 *existingIDs, u32 frontierTrainerID, u16 comparisons) {
     for (u16 i = 0; i < comparisons; i++) {
         if (frontierTrainerID == existingIDs[i]) {
             return TRUE;
@@ -365,7 +363,7 @@ static BOOL FrontierTrainerAlreadyInCurrentRound(u16 *existingIDs, u32 frontierT
     return FALSE;
 }
 
-void SetRandomFrontierTrainers(FrontierFieldSystem *frontierFsys, SaveData *saveData) {
+void FrontierFieldSystem_SetRandomFrontierTrainers(FrontierFieldSystem *frontierFsys, SaveData *saveData) {
     // saveData is unused
     s32 i;
     u32 frontierTrainerID;
@@ -381,25 +379,25 @@ void SetRandomFrontierTrainers(FrontierFieldSystem *frontierFsys, SaveData *save
         difficultyBracket = temp;
         for (i = 0; i < 14; i++) {
             do {
-                frontierTrainerID = GetRandomFrontierTrainerID(frontierFsys, difficultyBracket, i / 2, frontierFsys->towerMode);
+                frontierTrainerID = FrontierFieldSystem_GetRandomFrontierTrainerID(frontierFsys, difficultyBracket, i / 2, frontierFsys->towerMode);
             } while (FrontierTrainerAlreadyInCurrentRound(frontierFsys->trainersInCurrentRound, frontierTrainerID, i));
             frontierFsys->trainersInCurrentRound[i] = frontierTrainerID;
         }
     } else {
         for (i = 0; i < 7; i++) {
             do {
-                frontierTrainerID = GetRandomFrontierTrainerID(frontierFsys, frontierFsys->currentRound, i, frontierFsys->towerMode);
+                frontierTrainerID = FrontierFieldSystem_GetRandomFrontierTrainerID(frontierFsys, frontierFsys->currentRound, i, frontierFsys->towerMode);
             } while (FrontierTrainerAlreadyInCurrentRound(frontierFsys->trainersInCurrentRound, frontierTrainerID, i));
             frontierFsys->trainersInCurrentRound[i] = frontierTrainerID;
         }
     }
 }
 
-u8 GetFrontierBattleNumber(FrontierFieldSystem *frontierFsys) {
+u8 FrontierFieldSystem_GetFrontierBattleNumber(FrontierFieldSystem *frontierFsys) {
     return frontierFsys->currentBattleNumber;
 }
 
-BOOL sub_0204AC7C(FrontierFieldSystem *frontierFsys) {
+BOOL FrontierFieldSystem_0204AC7C(FrontierFieldSystem *frontierFsys) {
     if (frontierFsys->unk10_0) {
         return TRUE;
     }
@@ -410,16 +408,16 @@ BOOL sub_0204AC7C(FrontierFieldSystem *frontierFsys) {
     return FALSE;
 }
 
-static void sub_0204ACA0(FrontierFieldSystem *frontierFsys, SaveData *saveData, BOOL a2, u16 a3) {
+static void FrontierFieldSystem_0204ACA0(FrontierFieldSystem *frontierFsys, SaveData *saveData, BOOL a2, u16 a3) {
     // a2 and a3 are unused
     switch (frontierFsys->towerMode) {
     case TOWER_MODE_SINGLE:
-        sub_0204B470(frontierFsys, saveData, 0);
+        FrontierFieldSystem_0204B470(frontierFsys, saveData, 0);
         break;
     case TOWER_MODE_DOUBLE:
         break;
     case TOWER_MODE_WIFI:
-        sub_0204B470(frontierFsys, saveData, 1);
+        FrontierFieldSystem_0204B470(frontierFsys, saveData, 1);
         sub_0202D3B0(frontierFsys->unk70, frontierFsys->unk28, frontierFsys->unk24, frontierFsys->unk26);
         u8 temp = frontierFsys->towerMode;
         sub_0202D308(frontierFsys->unk70, 0, &temp);
@@ -429,7 +427,7 @@ static void sub_0204ACA0(FrontierFieldSystem *frontierFsys, SaveData *saveData, 
     }
 }
 
-void sub_0204AD04(FrontierFieldSystem *frontierFsys, SaveData *saveData) {
+void FrontierFieldSystem_0204AD04(FrontierFieldSystem *frontierFsys, SaveData *saveData) {
     GameStats *gameStats = Save_GameStats_Get(saveData);
     FrontierSave *frontierSaveData = Save_Frontier_GetStatic(saveData);
     if (frontierFsys->towerMode == TOWER_MODE_WIFI_PRACTICE) {
@@ -454,15 +452,15 @@ void sub_0204AD04(FrontierFieldSystem *frontierFsys, SaveData *saveData) {
     if (frontierFsys->towerMode != TOWER_MODE_6) {
         GameStats_Add(Save_GameStats_Get(saveData), GAME_STAT_BATTLE_TOWER_BATTLE_COUNT, 1);
     }
-    sub_0204B318(frontierFsys);
+    FrontierFieldSystem_0204B318(frontierFsys);
     unk++;
     if (unk > 9999) {
         unk = 9999;
     }
-    sub_0204ACA0(frontierFsys, saveData, 0, unk);
+    FrontierFieldSystem_0204ACA0(frontierFsys, saveData, 0, unk);
 }
 
-void sub_0204AE20(FrontierFieldSystem *frontierFsys, SaveData *saveData) {
+void FrontierFieldSystem_0204AE20(FrontierFieldSystem *frontierFsys, SaveData *saveData) {
     if (frontierFsys->towerMode == TOWER_MODE_WIFI_PRACTICE) {
         return;
     }
@@ -488,11 +486,11 @@ void sub_0204AE20(FrontierFieldSystem *frontierFsys, SaveData *saveData) {
         GameStats_Add(gameStats, GAME_STAT_BATTLE_TOWER_BATTLE_COUNT, 1);
     }
     GameStats_AddScore(gameStats, SCORE_EVENT_14);
-    sub_0204B318(frontierFsys);
-    sub_0204ACA0(frontierFsys, saveData, 1, unk6);
+    FrontierFieldSystem_0204B318(frontierFsys);
+    FrontierFieldSystem_0204ACA0(frontierFsys, saveData, 1, unk6);
 }
 
-void sub_0204AF2C(FrontierFieldSystem *frontierFsys) {
+void FrontierFieldSystem_0204AF2C(FrontierFieldSystem *frontierFsys) {
     u8 temp = frontierFsys->towerMode;
     sub_0202D308(frontierFsys->unk70, 0, &temp);
     temp = frontierFsys->currentBattleNumber;
@@ -510,25 +508,25 @@ void sub_0204AF2C(FrontierFieldSystem *frontierFsys) {
     }
 }
 
-void sub_0204AFE0(FrontierFieldSystem *frontierFsys) {
+void FrontierFieldSystem_0204AFE0(FrontierFieldSystem *frontierFsys) {
     for (s32 i = 0; i < 5; i++) {
-        frontierFsys->unk838[i] = sub_0204BA04(frontierFsys, &frontierFsys->frontierStatTrainers[i], 300 + i, frontierFsys->numMons, frontierFsys->partyMonSpecies, frontierFsys->partyMonItems, &frontierFsys->multiBattleAllyData[i], frontierFsys->heapID);
+        frontierFsys->unk838[i] = FrontierFieldSystem_0204BA04(frontierFsys, &frontierFsys->frontierStatTrainers[i], 300 + i, frontierFsys->numMons, frontierFsys->partyMonSpecies, frontierFsys->partyMonItems, &frontierFsys->multiBattleAllyData[i], frontierFsys->heapID);
     }
 }
 
-u32 sub_0204B044(FrontierFieldSystem *frontierFsys, u32 a1) {
+u32 FrontierFieldSystem_0204B044(FrontierFieldSystem *frontierFsys, u32 a1) {
     sub_0204B5E8(frontierFsys->unk78[a1].unk04);
 }
 
-u32 GetBattleTowerMode(FrontierFieldSystem *frontierFsys) {
+u32 FrontierFieldSystem_GetBattleTowerMode(FrontierFieldSystem *frontierFsys) {
     return frontierFsys->towerMode;
 }
 
-u32 GetPalmerDefeated(FrontierFieldSystem *frontierFsys) {
+u32 FrontierFieldSystem_GetPalmerDefeated(FrontierFieldSystem *frontierFsys) {
     return frontierFsys->palmerDefeated;
 }
 
-u32 AwardTowerBattlePoints(FrontierFieldSystem *frontierFsys) {
+u32 FrontierFieldSystem_AwardTowerBattlePoints(FrontierFieldSystem *frontierFsys) {
     u32 battlePoints;
     if (frontierFsys->towerMode == TOWER_MODE_WIFI_PRACTICE) {
         return 0;
@@ -558,7 +556,7 @@ u32 AwardTowerBattlePoints(FrontierFieldSystem *frontierFsys) {
     return battlePoints;
 }
 
-BOOL sub_0204B0E0(FrontierFieldSystem *frontierFsys, SaveData *saveData) {
+BOOL FrontierFieldSystem_0204B0E0(FrontierFieldSystem *frontierFsys, SaveData *saveData) {
     u32 unk = sub_0204A6F8(saveData, frontierFsys->towerMode);
     if (unk < 50) {
         return FALSE;
@@ -572,7 +570,7 @@ BOOL sub_0204B0E0(FrontierFieldSystem *frontierFsys, SaveData *saveData) {
     return TRUE;
 }
 
-u32 sub_0204B120(FrontierFieldSystem *frontierFsys, SaveData *saveData, u32 a2) {
+u32 FrontierFieldSystem_0204B120(FrontierFieldSystem *frontierFsys, SaveData *saveData, u32 a2) {
     FRONTIERDATA *frontierData = Save_FrontierData_Get(saveData);
     switch (a2) {
     case 0:
@@ -609,7 +607,7 @@ u32 sub_0204B120(FrontierFieldSystem *frontierFsys, SaveData *saveData, u32 a2) 
     return 0;
 }
 
-BOOL TryGivePalmerRibbons(FrontierFieldSystem *frontierFsys, SaveData *saveData) {
+BOOL FrontierFieldSystem_TryGivePalmerRibbons(FrontierFieldSystem *frontierFsys, SaveData *saveData) {
     if (frontierFsys->towerMode != TOWER_MODE_SINGLE) {
         return FALSE;
     }
@@ -622,7 +620,7 @@ BOOL TryGivePalmerRibbons(FrontierFieldSystem *frontierFsys, SaveData *saveData)
     return FALSE;
 }
 
-BOOL TryGiveOtherTowerRibbons(FrontierFieldSystem *frontierFsys, SaveData *saveData) {
+BOOL FrontierFieldSystem_TryGiveOtherTowerRibbons(FrontierFieldSystem *frontierFsys, SaveData *saveData) {
     if (frontierFsys->towerMode == TOWER_MODE_WIFI_PRACTICE) {
         return FALSE;
     }
@@ -650,7 +648,7 @@ BOOL TryGiveOtherTowerRibbons(FrontierFieldSystem *frontierFsys, SaveData *saveD
     return TryGiveTowerRibbons(saveData, ribbon, frontierFsys);
 }
 
-u16 sub_0204B258(FrontierFieldSystem *frontierFsys, SaveData *saveData) {
+u16 FrontierFieldSystem_0204B258(FrontierFieldSystem *frontierFsys, SaveData *saveData) {
     u8 unk;
     if (frontierFsys->towerMode == TOWER_MODE_6) {
         unk = FrontierSave_GetStat(Save_Frontier_GetStatic(saveData), 100, sub_0205C268(100));
@@ -665,7 +663,7 @@ u16 sub_0204B258(FrontierFieldSystem *frontierFsys, SaveData *saveData) {
     return frontierFsys->unk08 / 0xffff; // unk08 is a u32, so this should return between 0-3?
 }
 
-static BOOL TryGiveTowerRibbons(SaveData *saveData, u32 ribbon, FrontierFieldSystem *frontierFsys) { // sub_0204B2B8
+static BOOL TryGiveTowerRibbons(SaveData *saveData, u32 ribbon, FrontierFieldSystem *frontierFsys) {
     u8 value = TRUE;
     Party *party = SaveArray_Party_Get(saveData);
     u8 count = 0;
@@ -683,7 +681,7 @@ static BOOL TryGiveTowerRibbons(SaveData *saveData, u32 ribbon, FrontierFieldSys
     }
 }
 
-static u32 sub_0204B318(FrontierFieldSystem *frontierFsys) {
+static u32 FrontierFieldSystem_0204B318(FrontierFieldSystem *frontierFsys) {
     if (frontierFsys->towerMode == TOWER_MODE_WIFI_PRACTICE || frontierFsys->towerMode == TOWER_MODE_SINGLE || frontierFsys->towerMode == TOWER_MODE_6 || frontierFsys->towerMode == TOWER_MODE_WIFI) {
         return FALSE;
     }
@@ -694,7 +692,7 @@ static u32 sub_0204B318(FrontierFieldSystem *frontierFsys) {
     return TRUE;
 }
 
-static void SetFrontierMonStruct(FrontierMonStruct *frontierMonStruct, Pokemon *mon) { // sub_0204B34C
+static void SetFrontierMonStruct(FrontierMonStruct *frontierMonStruct, Pokemon *mon) {
     frontierMonStruct->species = GetMonData(mon, MON_DATA_SPECIES, NULL);
     frontierMonStruct->form = GetMonData(mon, MON_DATA_FORM, NULL);
     frontierMonStruct->item = GetMonData(mon, MON_DATA_HELD_ITEM, NULL);
@@ -714,7 +712,7 @@ static void SetFrontierMonStruct(FrontierMonStruct *frontierMonStruct, Pokemon *
     GetMonData(mon, MON_DATA_NICKNAME, frontierMonStruct->nickname);
 }
 
-static void sub_0204B470(FrontierFieldSystem *frontierFsys, SaveData *saveData, u32 a2) {
+static void FrontierFieldSystem_0204B470(FrontierFieldSystem *frontierFsys, SaveData *saveData, u32 a2) {
     FrontierMonStruct *frontierMonStructs = Heap_AllocAtEnd(frontierFsys->heapID, 3 * sizeof(FrontierMonStruct));
     MI_CpuClear8(frontierMonStructs, 3 * sizeof(FrontierMonStruct));
     Party *party = SaveArray_Party_Get(saveData);
@@ -751,7 +749,7 @@ u8 GetFrontierTrainerIVs(u32 frontierTrainerIndex) {
     return 31;
 }
 
-u16 sub_0204B510(FrontierFieldSystem *frontierFsys) {
+u16 FrontierFieldSystem_0204B510(FrontierFieldSystem *frontierFsys) {
     if (frontierFsys->towerMode == TOWER_MODE_6) {
         return LCRandom();
     }

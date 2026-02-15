@@ -99,11 +99,11 @@ BOOL ScrCmd_442(ScriptContext *ctx) {
 
 BOOL ScrCmd_443(ScriptContext *ctx) {
     u8 r1 = ScriptReadByte(ctx);
-    void *r2 = ctx->fieldSystem->frontier;
-    if (r2 == NULL) {
+    void *frontierFsys = ctx->fieldSystem->frontier;
+    if (frontierFsys == NULL) {
         return FALSE;
     }
-    u16 *r4 = r2 + 0x90 + r1 * 0x110;
+    u16 *r4 = frontierFsys + 0x90 + r1 * 0x110;
     if (r4[0] == 0xFFFF) {
         MsgData *messageData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, 723, HEAP_ID_FIELD3);
         ov01_021EF4DC(ctx, messageData, r4[1], TRUE, NULL);

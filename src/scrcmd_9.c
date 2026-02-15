@@ -114,47 +114,47 @@ BOOL ScrCmd_412(ScriptContext *ctx) {
         return TRUE;
     case 30:
         unk = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
-        sub_0204AA58(frontierFsys, ctx->taskman, unk);
+        FrontierFieldSystem_0204AA58(frontierFsys, ctx->taskman, unk);
         return TRUE;
     case 31:
         unk = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
-        *result = sub_0204AA78(frontierFsys, unk, ctx->fieldSystem->saveData);
+        *result = FrontierFieldSystem_0204AA78(frontierFsys, unk, ctx->fieldSystem->saveData);
         break;
     case 32:
-        *result = SelectedPartyHasDuplicateSpeciesOrItem(frontierFsys, ctx->fieldSystem->saveData);
+        *result = FrontierFieldSystem_SelectedPartyHasDuplicateSpeciesOrItem(frontierFsys, ctx->fieldSystem->saveData);
         break;
     case 35:
-        *result = sub_0204AC7C(frontierFsys);
+        *result = FrontierFieldSystem_0204AC7C(frontierFsys);
         break;
     case 37: // unused
-        sub_0204AD04(frontierFsys, ctx->fieldSystem->saveData);
+        FrontierFieldSystem_0204AD04(frontierFsys, ctx->fieldSystem->saveData);
         break;
     case 38: // unused
-        sub_0204AE20(frontierFsys, ctx->fieldSystem->saveData);
+        FrontierFieldSystem_0204AE20(frontierFsys, ctx->fieldSystem->saveData);
         break;
     case 39:
-        sub_0204AF2C(frontierFsys);
+        FrontierFieldSystem_0204AF2C(frontierFsys);
         break;
     case 56:
-        sub_0204AFE0(frontierFsys);
+        FrontierFieldSystem_0204AFE0(frontierFsys);
         break;
     case 41: // unused
-        *result = sub_0204B044(frontierFsys, arg);
+        *result = FrontierFieldSystem_0204B044(frontierFsys, arg);
         break;
     case 43:
-        *result = sub_0204B05C(frontierFsys);
+        *result = FrontierFieldSystem_0204B05C(frontierFsys);
         break;
     case 45:
-        *result = GetPalmerDefeated(frontierFsys);
+        *result = FrontierFieldSystem_GetPalmerDefeated(frontierFsys);
         break;
     case 47: // unused
-        sub_0204B0E0(frontierFsys, ctx->fieldSystem->saveData);
+        FrontierFieldSystem_0204B0E0(frontierFsys, ctx->fieldSystem->saveData);
         break;
     case 48:
-        *result = TryGivePalmerRibbons(frontierFsys, ctx->fieldSystem->saveData);
+        *result = FrontierFieldSystem_TryGivePalmerRibbons(frontierFsys, ctx->fieldSystem->saveData);
         break;
     case 49:
-        *result = TryGiveOtherTowerRibbons(frontierFsys, ctx->fieldSystem->saveData);
+        *result = FrontierFieldSystem_TryGiveOtherTowerRibbons(frontierFsys, ctx->fieldSystem->saveData);
         break;
     case 50:
         frontierFsys->multiBattleAllyID = arg;
@@ -163,19 +163,19 @@ BOOL ScrCmd_412(ScriptContext *ctx) {
         *result = frontierFsys->multiBattleAllyID;
         break;
     case 52:
-        SetRandomFrontierTrainers(frontierFsys, ctx->fieldSystem->saveData);
+        FrontierFieldSystem_SetRandomFrontierTrainers(frontierFsys, ctx->fieldSystem->saveData);
         break;
     case 53:
         *result = frontierFsys->partyMonIndexes[arg];
         break;
     case 54:
-        *result = sub_0204B120(frontierFsys, ctx->fieldSystem->saveData, 1);
+        *result = FrontierFieldSystem_0204B120(frontierFsys, ctx->fieldSystem->saveData, 1);
         break;
     case 55:
-        *result = sub_0204A2A8(frontierFsys, arg);
+        *result = FrontierFieldSystem_0204A2A8(frontierFsys, arg);
         break;
     case 57:
-        *result = sub_0204B258(frontierFsys, ctx->fieldSystem->saveData);
+        *result = FrontierFieldSystem_0204B258(frontierFsys, ctx->fieldSystem->saveData);
         break;
     case 100:
         if (frontierFsys == NULL) {

@@ -31,7 +31,7 @@ typedef struct FrontierMon {
     u16 form;
 } FrontierMon;
 
-static u32 sub_0204BABC(FrontierFieldSystem *frontierFsys, u16 *frontierTrainerData, u16 frontierTrainerIndex, FrontierMonStruct *frontierMonStruct, u8 numPokemon, u16 *partySpecies, u16 *partyItems, FrontierMultiBattleAllyData *multiBattleAllyData, enum HeapID heapID);
+static u32 FrontierFieldSystem_0204BABC(FrontierFieldSystem *frontierFsys, u16 *frontierTrainerData, u16 frontierTrainerIndex, FrontierMonStruct *frontierMonStruct, u8 numPokemon, u16 *partySpecies, u16 *partyItems, FrontierMultiBattleAllyData *multiBattleAllyData, enum HeapID heapID);
 static u16 *GetFrontierTrainerData(u32 frontierTrainerIndex, enum HeapID heapID);
 static void GetFrontierMon(FrontierMon *mon, u32 frontierMonIndex);
 
@@ -49,7 +49,7 @@ static const u16 FrontierTrainerDifficultyBracket[][2] = {
     { 200, 299 }, // Bracket 7: 50+. Unused.
 };
 // Unused.
-static const u16 FrontierTrainerOverworlds[][2] = { // _020FBFEC
+static const u16 FrontierTrainerOverworlds[][2] = {
     { TRAINERCLASS_PKMN_TRAINER_CHERYL, SPRITE_SEVEN1       },
     { TRAINERCLASS_PKMN_TRAINER_RILEY,  SPRITE_SEVEN2       },
     { TRAINERCLASS_PKMN_TRAINER_MARLEY, SPRITE_SEVEN3       },
@@ -169,14 +169,14 @@ u16 sub_0204B610(FieldSystem *fieldSystem, u16 *linkAllyData) { // SetLinkAllyDa
     u16 unk = 0;
     FrontierFieldSystem *frontierFsys = fieldSystem->frontier;
     frontierFsys->linkAllyGender = linkAllyData[0];
-    frontierFsys->linkAllyMonSpecies_1 = linkAllyData[1];
-    frontierFsys->linkAllyMonSpecies_2 = linkAllyData[2];
+    frontierFsys->linkAllyMonSpecies[0] = linkAllyData[1];
+    frontierFsys->linkAllyMonSpecies[1] = linkAllyData[2];
     frontierFsys->linkAllyRound = linkAllyData[3];
     frontierFsys->multiBattleAllyID = frontierFsys->linkAllyGender + 5; // Either 5 or 6.
-    if (frontierFsys->partyMonSpecies[0] == frontierFsys->linkAllyMonSpecies_1 || frontierFsys->partyMonSpecies[0] == frontierFsys->linkAllyMonSpecies_2) {
+    if (frontierFsys->partyMonSpecies[0] == frontierFsys->linkAllyMonSpecies[0] || frontierFsys->partyMonSpecies[0] == frontierFsys->linkAllyMonSpecies[1]) {
         unk++;
     }
-    if (frontierFsys->partyMonSpecies[1] == frontierFsys->linkAllyMonSpecies_1 || frontierFsys->partyMonSpecies[1] == frontierFsys->linkAllyMonSpecies_2) {
+    if (frontierFsys->partyMonSpecies[1] == frontierFsys->linkAllyMonSpecies[0] || frontierFsys->partyMonSpecies[1] == frontierFsys->linkAllyMonSpecies[1]) {
         unk += 2;
     }
     return unk; // return 1 if partyMonSpecies[0] matches, 2 if partyMonSpecies[1] matches, 3 if both match.
@@ -195,7 +195,7 @@ BOOL sub_0204B690(FieldSystem *fieldSystem, u16 *a1) {
     return fieldSystem->frontier->unk10_3 || a1[0] != 0;
 }
 
-void sub_0204B6AC(FrontierFieldSystem *frontierFsys, SaveData *saveData) {
+void FrontierFieldSystem_0204B6AC(FrontierFieldSystem *frontierFsys, SaveData *saveData) {
     frontierFsys->unk83e[0] = PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfile(saveData));
     Party *party = SaveArray_Party_Get(saveData);
     for (s32 i = 0; i < 2; i++) {
@@ -205,16 +205,16 @@ void sub_0204B6AC(FrontierFieldSystem *frontierFsys, SaveData *saveData) {
     frontierFsys->unk83e[3] = sub_0202D57C(frontierFsys->frontierData, 3, 0);
 }
 
-void sub_0204B708(FrontierFieldSystem *frontierFsys) {
+void FrontierFieldSystem_0204B708(FrontierFieldSystem *frontierFsys) {
     MI_CpuCopy8(frontierFsys->trainersInCurrentRound, frontierFsys->unk83e, sizeof(frontierFsys->trainersInCurrentRound));
 }
 
-void sub_0204B720(FrontierFieldSystem *frontierFsys, u32 a1) {
+void FrontierFieldSystem_0204B720(FrontierFieldSystem *frontierFsys, u32 a1) {
     frontierFsys->unk10_3 = a1;
     frontierFsys->unk83e[0] = a1;
 }
 
-u16 GetRandomBattleTowerTrainer(FrontierFieldSystem *frontierFsys, u8 difficultyBracket, u8 winsThisRound, u32 towerMode) {
+u16 FrontierFieldSystem_GetRandomBattleTowerTrainer(FrontierFieldSystem *frontierFsys, u8 difficultyBracket, u8 winsThisRound, u32 towerMode) {
     if (towerMode == TOWER_MODE_SINGLE) {
         // If we are between battles 15-21 and have completed 6 battles in our current round, meaning this is battle 21:
         if (difficultyBracket == 2 && winsThisRound == 6) {
@@ -228,13 +228,13 @@ u16 GetRandomBattleTowerTrainer(FrontierFieldSystem *frontierFsys, u8 difficulty
     if (difficultyBracket < 7) {
         if (winsThisRound == 6) {
             u16 mod = FrontierTrainerBracketBosses[difficultyBracket][1] - FrontierTrainerBracketBosses[difficultyBracket][0] + 1;
-            return sub_0204B510(frontierFsys) % mod + FrontierTrainerBracketBosses[difficultyBracket][0];
+            return FrontierFieldSystem_0204B510(frontierFsys) % mod + FrontierTrainerBracketBosses[difficultyBracket][0];
         } else {
             u16 mod = FrontierTrainerDifficultyBracket[difficultyBracket][1] - FrontierTrainerDifficultyBracket[difficultyBracket][0] + 1;
-            return sub_0204B510(frontierFsys) % mod + FrontierTrainerDifficultyBracket[difficultyBracket][0];
+            return FrontierFieldSystem_0204B510(frontierFsys) % mod + FrontierTrainerDifficultyBracket[difficultyBracket][0];
         }
     } else {
-        return sub_0204B510(frontierFsys) % 100 + 200;
+        return FrontierFieldSystem_0204B510(frontierFsys) % 100 + 200;
     }
 }
 
@@ -253,7 +253,7 @@ static u16 *sub_0204B7D0(FrontierTrainer *frontierTrainer, u32 frontierTrainerIn
     return frontierTrainerData;
 }
 
-static u32 GenerateFrontierMon(FrontierFieldSystem *frontierFsys, FrontierMonStruct *frontierMonStruct, u16 frontierMonIndex, u32 otID, u32 pid, u8 iv, u8 replacementItemIndex, BOOL replaceItem, enum HeapID heapID) { // sub_0204B834
+static u32 FrontierFieldSystem_GenerateFrontierMon(FrontierFieldSystem *frontierFsys, FrontierMonStruct *frontierMonStruct, u16 frontierMonIndex, u32 otID, u32 pid, u8 iv, u8 replacementItemIndex, BOOL replaceItem, enum HeapID heapID) {
     s32 i;
     FrontierMon frontierMon;
     MI_CpuClear8(frontierMonStruct, sizeof(FrontierMonStruct));
@@ -275,7 +275,7 @@ static u32 GenerateFrontierMon(FrontierFieldSystem *frontierFsys, FrontierMonStr
     u32 pidGen;
     if (pid == 0) {
         do {
-            pidGen = sub_0204B510(frontierFsys) | sub_0204B510(frontierFsys) << 16;
+            pidGen = FrontierFieldSystem_0204B510(frontierFsys) | FrontierFieldSystem_0204B510(frontierFsys) << 16;
         } while (frontierMon.nature != GetNatureFromPersonality(pidGen)
             || CalcShininessByOtIdAndPersonality(otID, pidGen) == TRUE);
         frontierMonStruct->pid = pidGen;
@@ -323,24 +323,24 @@ static u32 GenerateFrontierMon(FrontierFieldSystem *frontierFsys, FrontierMonStr
     return pidGen;
 }
 
-u32 sub_0204BA04(FrontierFieldSystem *frontierFsys, FrontierTrainer *frontierTrainer, u16 frontierTrainerIndex, u32 numPokemon, u16 *partySpecies, u16 *partyItems, FrontierMultiBattleAllyData *multiBattleAllyData, enum HeapID heapID) {
+u32 FrontierFieldSystem_0204BA04(FrontierFieldSystem *frontierFsys, FrontierTrainer *frontierTrainer, u16 frontierTrainerIndex, u32 numPokemon, u16 *partySpecies, u16 *partyItems, FrontierMultiBattleAllyData *multiBattleAllyData, enum HeapID heapID) {
     u16 *frontierTrainerData = sub_0204B7D0(frontierTrainer, frontierTrainerIndex, heapID);
-    u32 replaceItem = sub_0204BABC(frontierFsys, frontierTrainerData, frontierTrainerIndex, frontierTrainer->frontierMonStructs, numPokemon, partySpecies, partyItems, multiBattleAllyData, heapID);
+    u32 replaceItem = FrontierFieldSystem_0204BABC(frontierFsys, frontierTrainerData, frontierTrainerIndex, frontierTrainer->frontierMonStructs, numPokemon, partySpecies, partyItems, multiBattleAllyData, heapID);
     Heap_Free(frontierTrainerData);
     return replaceItem;
 }
 
-void GenerateAllyFrontierMons(FrontierFieldSystem *frontierFsys, FrontierTrainer *frontierTrainer, u16 frontierTrainerIndex, u32 replaceItem, FrontierMultiBattleAllyData *multiBattleAllyData, enum HeapID heapID) {
+void FrontierFieldSystem_GenerateAllyFrontierMons(FrontierFieldSystem *frontierFsys, FrontierTrainer *frontierTrainer, u16 frontierTrainerIndex, u32 replaceItem, FrontierMultiBattleAllyData *multiBattleAllyData, enum HeapID heapID) {
     u8 iv;
     u16 *frontierTrainerData = sub_0204B7D0(frontierTrainer, frontierTrainerIndex, heapID);
     iv = GetFrontierTrainerIVs(frontierTrainerIndex);
     for (s32 i = 0; i < 2; i++) {
-        GenerateFrontierMon(frontierFsys, &frontierTrainer->frontierMonStructs[i], multiBattleAllyData->frontierMonIDs[i], multiBattleAllyData->otID, multiBattleAllyData->frontierMonPIDs[i], iv, i, replaceItem, heapID);
+        FrontierFieldSystem_GenerateFrontierMon(frontierFsys, &frontierTrainer->frontierMonStructs[i], multiBattleAllyData->frontierMonIDs[i], multiBattleAllyData->otID, multiBattleAllyData->frontierMonPIDs[i], iv, i, replaceItem, heapID);
     }
     Heap_Free(frontierTrainerData);
 }
 
-static u32 sub_0204BABC(FrontierFieldSystem *frontierFsys, u16 *frontierTrainerData, u16 frontierTrainerIndex, FrontierMonStruct *frontierMonStruct, u8 numPokemon, u16 *partySpecies, u16 *partyItems, FrontierMultiBattleAllyData *multiBattleAllyData, enum HeapID heapID) {
+static u32 FrontierFieldSystem_0204BABC(FrontierFieldSystem *frontierFsys, u16 *frontierTrainerData, u16 frontierTrainerIndex, FrontierMonStruct *frontierMonStruct, u8 numPokemon, u16 *partySpecies, u16 *partyItems, FrontierMultiBattleAllyData *multiBattleAllyData, enum HeapID heapID) {
     s32 i;
     u8 iv;
     u32 otID;
@@ -356,7 +356,7 @@ static u32 sub_0204BABC(FrontierFieldSystem *frontierFsys, u16 *frontierTrainerD
     s32 count = 0;
     failedItemGenAttempts = 0;
     while (count != numPokemon) {
-        u8 index = sub_0204B510(frontierFsys) % frontierTrainerData[1];
+        u8 index = FrontierFieldSystem_0204B510(frontierFsys) % frontierTrainerData[1];
         frontierMonIndex = frontierTrainerData[2 + index];
         GetFrontierMon(&frontierMon_2, frontierMonIndex);
         for (i = 0; i < count; i++) {
@@ -405,12 +405,12 @@ static u32 sub_0204BABC(FrontierFieldSystem *frontierFsys, u16 *frontierTrainerD
         count++;
     }
     iv = GetFrontierTrainerIVs(frontierTrainerIndex);
-    otID = sub_0204B510(frontierFsys) | sub_0204B510(frontierFsys) << 16;
+    otID = FrontierFieldSystem_0204B510(frontierFsys) | FrontierFieldSystem_0204B510(frontierFsys) << 16;
     if (failedItemGenAttempts >= 50) {
         replaceItem = TRUE;
     }
     for (i = 0; i < count; i++) {
-        frontierMonPIDs[i] = GenerateFrontierMon(frontierFsys, &frontierMonStruct[i], frontierMonIDs[i], otID, 0, iv, i, replaceItem, heapID);
+        frontierMonPIDs[i] = FrontierFieldSystem_GenerateFrontierMon(frontierFsys, &frontierMonStruct[i], frontierMonIDs[i], otID, 0, iv, i, replaceItem, heapID);
     }
     if (multiBattleAllyData == NULL) {
         return replaceItem;

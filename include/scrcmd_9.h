@@ -12,7 +12,7 @@
 #define TOWER_MODE_WIFI_PRACTICE        5
 #define TOWER_MODE_6                    6
 
-typedef struct FrontierMonStruct { // UnkStruct_0204B470
+typedef struct FrontierMonStruct {
     u16 species : 11;
     u16 form : 5;
     u16 item;
@@ -39,7 +39,7 @@ typedef struct FrontierMonStruct { // UnkStruct_0204B470
     u16 nickname[11];
 } FrontierMonStruct;
 
-typedef struct FrontierTrainer { // UnkStruct_0204B7D0
+typedef struct FrontierTrainer {
     u32 index;
     u16 trainerClass;
     u8 filler06[2];
@@ -51,13 +51,13 @@ typedef struct FrontierTrainer { // UnkStruct_0204B7D0
     u8 fillera0[0x70];
 } FrontierTrainer;
 
-typedef struct FrontierMultiBattleAllyData { // UnkStruct_0204A824_7E8
+typedef struct FrontierMultiBattleAllyData {
     u32 otID;
     u16 frontierMonIDs[2];
     u32 frontierMonPIDs[2];
 } FrontierMultiBattleAllyData;
 
-typedef struct FrontierFieldSystem { // UnkStruct_Fsys_A0
+typedef struct FrontierFieldSystem {
     u32 unk00;
     enum HeapID heapID;
     u32 unk08;
@@ -74,8 +74,7 @@ typedef struct FrontierFieldSystem { // UnkStruct_Fsys_A0
     u8 linkAllyGender;
     u8 filler13;
     u16 linkAllyRound; // Takes precedence over currentRound in Link Mode if it is higher.
-    u16 linkAllyMonSpecies_1;
-    u16 linkAllyMonSpecies_2;
+    u16 linkAllyMonSpecies[2];
     u16 currentBattleInSession; // Battles won in this session.
     u16 currentRound; // Rounds (sets of 7 battles) won in the current streak.
     u8 filler1e[2];
