@@ -4146,10 +4146,10 @@ BOOL ScrCmd_595(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_627(ScriptContext *ctx) {
-    FrontierLaunchParam **pParam = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
+    FrontierLaunchArgs **pParam = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
     u8 r6 = ScriptReadByte(ctx);
-    FrontierLaunchParam *param = Heap_AllocAtEnd(HEAP_ID_FIELD2, sizeof(FrontierLaunchParam));
-    MI_CpuClear8(param, sizeof(FrontierLaunchParam));
+    FrontierLaunchArgs *param = Heap_AllocAtEnd(HEAP_ID_FIELD2, sizeof(FrontierLaunchArgs));
+    MI_CpuClear8(param, sizeof(FrontierLaunchArgs));
     *pParam = param;
     if (r6 == 5 || r6 == 6) {
         param->unk0 = ctx->fieldSystem->unkA0;

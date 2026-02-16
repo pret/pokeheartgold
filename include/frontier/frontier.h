@@ -5,7 +5,7 @@
 #include "overlay_manager.h"
 #include "field_system.h"
 
-typedef struct FrontierLaunchParam {
+typedef struct FrontierLaunchArgs {
     void *unk0;
     Options *options;
     SaveData *saveData;
@@ -16,13 +16,13 @@ typedef struct FrontierLaunchParam {
     void *unk1C;
     u8 unk20;
     FieldSystem *fieldSystem;
-} FrontierLaunchParam;
+} FrontierLaunchArgs;
 
 extern const OverlayManagerTemplate gOverlayTemplate_Frontier;
 
 typedef void(UnkFuncPtr_020965A4)(void *);
 
-FrontierLaunchParam *Frontier_GetLaunchParam(void *a0);
+FrontierLaunchArgs *Frontier_GetLaunchParam(void *a0);
 void Frontier_SetData(void *a0, u32 a1);
 void *Frontier_GetData(void *a0);
 void Frontier_LaunchApplication(void *a0, const OverlayManagerTemplate *ovyTemp, void *args, u32 a3, UnkFuncPtr_020965A4 func);
