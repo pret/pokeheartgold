@@ -6,19 +6,19 @@
 #include "frontier/frontier.h"
 
 FrontierLaunchArgs *sub_020968B0(FieldSystem* fieldSystem, void* param1) {
-	FrontierLaunchArgs *param = Heap_AllocAtEnd(HEAP_ID_FIELD2, sizeof(FrontierLaunchArgs));
-	MI_CpuFill8(param, 0, sizeof(FrontierLaunchArgs));
+	FrontierLaunchArgs *args = Heap_AllocAtEnd(HEAP_ID_FIELD2, sizeof(FrontierLaunchArgs));
+	MI_CpuFill8(args, 0, sizeof(FrontierLaunchArgs));
 
-    param->unk0 = param1;
-    param->options = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);
-    param->saveData = fieldSystem->saveData;
-    param->bagCursor = fieldSystem->bagCursor;
-	param->unk1C = fieldSystem->unkB0;
-	param->unk10 = 0;
-    param->unk14 = 0;
-    param->mapId = fieldSystem->location->mapId;
-    param->unk20 = 14;
-    param->fieldSystem = fieldSystem;
-    FieldSystem_LaunchApplication(fieldSystem, &gOverlayTemplate_Frontier, param);
-    return param;
+    args->unk0 = param1;
+    args->options = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);
+    args->saveData = fieldSystem->saveData;
+    args->bagCursor = fieldSystem->bagCursor;
+	args->unk1C = fieldSystem->unkB0;
+	args->unk10 = 0;
+    args->unk14 = 0;
+    args->mapId = fieldSystem->location->mapId;
+    args->unk20 = 14;
+    args->fieldSystem = fieldSystem;
+    FieldSystem_LaunchApplication(fieldSystem, &gOverlayTemplate_Frontier, args);
+    return args;
 }
