@@ -314,8 +314,7 @@ int ArgParse_CreateTask(EncodingTask *task, char **argv) {
     }
 
     if (task->replace_prefix != NULL && task->encoding_type == ENC_ENCODE && task->key_mode == MODE_KEYED) {
-        if ((task->wrapper_prefix == NULL && strcmp(task->replace_prefix, DEFAULT_ADDED_PREFIX) == 0) ||
-            (task->wrapper_prefix != NULL && strcmp(task->wrapper_prefix, task->replace_prefix) == 0)) {
+        if ((task->wrapper_prefix == NULL && strcmp(task->replace_prefix, DEFAULT_ADDED_PREFIX) == 0) || (task->wrapper_prefix != NULL && strcmp(task->wrapper_prefix, task->replace_prefix) == 0)) {
             printf("Error: replaced prefix and added prefix cannot be the same\n");
             return 1;
         }

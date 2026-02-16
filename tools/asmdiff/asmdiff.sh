@@ -269,7 +269,7 @@ case "$mode" in
       mkdir -p $(dirname $basefile)
       "${MYDIR}"/ntrextractfile "${baserom}" "${filepath}" >"${basefile}"
     }
-    cmp -s "$basefile" "$buildfile" || diff -u <(hexdump -Cv "$basefile") <(hexdump -Cv "$buildfile")
+    cmp -s "$basefile" "$buildfile" || diff $difftype <(hexdump -Cv "$basefile") <(hexdump -Cv "$buildfile")
     exit 0
     ;;
 esac

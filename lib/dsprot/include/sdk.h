@@ -22,7 +22,6 @@
 
 #endif // SDK_TWL
 
-
 // Not included in all SDK versions, regardless of Nitro/Twl
 // Ensure they are defined
 #ifndef CARDMST_ENABLE
