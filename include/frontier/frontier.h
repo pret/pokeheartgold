@@ -15,8 +15,7 @@ typedef struct FrontierLaunchParam {
     u32 mapId;
     void *unk1C;
     u8 unk20;
-    u8 unk21[0x3];
-    FieldSystem *fieldSystem; // 0x24
+    FieldSystem *fieldSystem;
 } FrontierLaunchParam;
 
 extern const OverlayManagerTemplate gOverlayTemplate_Frontier;
