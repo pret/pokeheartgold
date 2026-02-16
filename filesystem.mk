@@ -420,8 +420,10 @@ $(eval $(call arc_strip_name,files/demo/title/titledemo.narc,files/a/0/4/6))
 $(eval $(call arc_strip_name,files/poketool/trainer/trdata.narc,files/a/0/5/5))
 $(eval $(call arc_strip_name,files/poketool/trainer/trpoke.narc,files/a/0/5/6))
 $(eval $(call arc_strip_name,files/poketool/trmsg/trtbl.narc,files/a/0/5/7))
-$(eval $(call arc_strip_name,files/application/zukanlist/zukan_data/zukan_data.narc,files/a/0/7/4))
-$(eval $(call arc_strip_name,files/a/0/7/5.$(buildname),files/a/0/7/5))
+$(eval $(call arc_strip_name,files/graphic/zukan_gra.narc,files/a/0/6/8))
+$(eval $(call arc_strip_name,files/poketool/pokefoot/pokefoot.narc,files/a/0/6/9))
+$(eval $(call arc_strip_name,files/application/zukanlist/zkn_data/zukan_data.narc,files/a/0/7/4))
+$(eval $(call arc_strip_name,files/application/zukanlist/zkn_data/zukan_hw_data_$(shortname).narc,files/a/0/7/5))
 $(eval $(call arc_strip_name,files/data/mmodel/mmodel.narc,files/a/0/8/1))
 $(eval $(call arc_strip_name,files/application/choose_starter/choose_starter_main_res.narc,files/a/0/8/2))
 $(eval $(call arc_strip_name,files/application/record/record.narc,files/a/0/8/4))
@@ -431,7 +433,7 @@ $(eval $(call arc_strip_name,files/poketool/pokegra/height_o.narc,files/a/1/1/7)
 $(eval $(call arc_strip_name,files/demo/intro/intro.narc,files/a/1/2/0))
 $(eval $(call arc_strip_name,files/arc/ppark.narc,files/a/1/2/5))
 $(eval $(call arc_strip_name,files/poketool/trmsg/trtblofs.narc,files/a/1/3/1))
-$(eval $(call arc_strip_name,files/application/zukanlist/zukan_data/zukan_enc_$(shortname).narc,files/a/1/3/3))
+$(eval $(call arc_strip_name,files/application/zukanlist/zkn_data/zukan_enc_$(shortname).narc,files/a/1/3/3))
 $(eval $(call arc_strip_name,files/fielddata/encountdata/s_enc_data.narc,files/a/1/3/6))
 $(eval $(call arc_strip_name,files/poketool/johtozukan.narc,files/a/1/3/8))
 $(eval $(call arc_strip_name,files/fielddata/tsurepoke/tp_param.narc,files/a/1/4/1))
@@ -452,7 +454,7 @@ $(eval $(call arc_strip_name,files/application/custom_ball/edit/gs_cb_data.narc,
 $(eval $(call arc_strip_name,files/pbr/dp_height.narc,files/a/1/9/4))
 $(eval $(call arc_strip_name,files/pbr/dp_height_o.narc,files/a/1/9/5))
 $(eval $(call arc_strip_name,files/resource/eng/pms_aikotoba/pms_aikotoba.narc,files/a/2/1/2))
-$(eval $(call arc_strip_name,files/application/zukanlist/zukan_data/zukan_data_gira.narc,files/a/2/1/4))
+$(eval $(call arc_strip_name,files/application/zukanlist/zkn_data/zukan_data_gira.narc,files/a/2/1/4))
 $(eval $(call arc_strip_name,files/fielddata/sodateya/kowaza_list.narc,files/a/2/2/9))
 $(eval $(call arc_strip_name,files/arc/headbutt.$(buildname).narc,files/a/2/5/2))
 $(eval $(call arc_strip_name,files/demo/opening/gs_opening.narc,files/a/2/6/2))
@@ -503,7 +505,9 @@ include files/poketool/personal/evo.mk
 include files/poketool/personal/growtbl.mk
 include files/poketool/pokegra/otherpoke.mk
 include files/poketool/pokegra/pokegra.mk
+include files/graphic/zukan_gra.mk
 include files/poketool/trainer/trainer.mk
+include files/poketool/pokefoot/pokefoot.mk
 include files/fielddata/mapmatrix/map_matrix.mk
 include files/resource/eng/pms_aikotoba/pms_aikotoba.mk
 include files/data/mmodel/mmodel.mk
@@ -527,6 +531,9 @@ include files/demo/legend.mk
 include files/arc/headbutt.mk
 include files/poketool/personal/personal.mk
 include files/fielddata/graphic/preview_graphic/preview_graphic.mk
+include files/application/zukanlist/zkn_data/zukan_enc.mk
+include files/application/zukanlist/zkn_data/zukan_data.mk
+include files/application/zukanlist/zkn_data/zukan_hw_data.mk
 include files/data/photo_data.mk
 include files/tel/pmtel_book.mk
 include files/graphic/camera_viewfinder.mk

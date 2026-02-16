@@ -79,8 +79,7 @@ u32 RC4_EncryptInstructions(RC4_Ctx *ctx, void *src, void *dst, u32 size) {
             u32 operands = ((*dstAddr & INS_OPERANDS_MASK) + ENC_VAL_2) & INS_OPERANDS_MASK;
 
             *dstAddr = opcode | operands;
-        }
-        break;
+        } break;
 
         case INS_TYPE_B: {
             u32 *srcAddr = (u32 *)(srcBytes + offset);
@@ -92,8 +91,7 @@ u32 RC4_EncryptInstructions(RC4_Ctx *ctx, void *src, void *dst, u32 size) {
             u32 operands = ((*dstAddr & INS_OPERANDS_MASK) + ENC_VAL_1) & INS_OPERANDS_MASK;
 
             *dstAddr = opcode | operands;
-        }
-        break;
+        } break;
 
         default:
             dstBytes[offset] = srcBytes[offset] ^ RC4_Byte(ctx);
@@ -131,8 +129,7 @@ u32 RC4_DecryptInstructions(RC4_Ctx *ctx, void *src, void *dst, u32 size) {
             u32 operands = ((*dstAddr & INS_OPERANDS_MASK) - ENC_VAL_1) & INS_OPERANDS_MASK;
 
             *dstAddr = opcode | operands;
-        }
-        break;
+        } break;
 
         case INS_TYPE_B: {
             u32 *srcAddr = (u32 *)(srcBytes + offset);
@@ -144,8 +141,7 @@ u32 RC4_DecryptInstructions(RC4_Ctx *ctx, void *src, void *dst, u32 size) {
             u32 operands = ((*dstAddr & INS_OPERANDS_MASK) - ENC_VAL_2) & INS_OPERANDS_MASK;
 
             *dstAddr = opcode | operands;
-        }
-        break;
+        } break;
 
         default:
             dstBytes[offset] = srcBytes[offset] ^ RC4_Byte(ctx);

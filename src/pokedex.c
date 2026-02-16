@@ -665,13 +665,13 @@ u32 Pokedex_GetSeenSpindaPersonality(Pokedex *pokedex, u32 arg) {
     return personality;
 }
 
-int Pokedex_SpeciesGetLastSeenGender(Pokedex *pokedex, u16 species, u32 a2) {
+int Pokedex_SpeciesGetLastSeenGender(Pokedex *pokedex, u16 species, u32 idx) {
     ASSERT_POKEDEX(pokedex);
     if (DexSpeciesIsInvalid(species)) {
         return -1;
     }
     if (CheckDexFlag((u8 *)pokedex->seenSpecies, species)) {
-        return Pokedex_SpeciesGetLastSeenGender_Internal(pokedex, species, a2);
+        return Pokedex_SpeciesGetLastSeenGender_Internal(pokedex, species, idx);
     }
     return -1;
 }
