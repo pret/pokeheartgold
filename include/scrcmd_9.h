@@ -88,7 +88,7 @@ typedef struct FrontierFieldSystem {
     u16 trainersInCurrentRound[14];
     u8 filler5a[20];
     u32 unk70; // Seems to be some sort of frontier save data.
-    FRONTIERDATA *frontierData;
+    FrontierData *frontierData;
     FrontierTrainer unk78[2];
     FrontierTrainer frontierStatTrainers[5];
     FrontierMultiBattleAllyData multiBattleAllyData[5];

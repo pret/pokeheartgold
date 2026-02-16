@@ -188,7 +188,7 @@ u32 sub_0204A6F8(SaveData *saveData, u32 towerMode) {
 }
 
 void sub_0204A730(SaveData *saveData, u8 a1) {
-    FRONTIERDATA *frontierData = Save_FrontierData_Get(saveData);
+    FrontierData *frontierData = Save_FrontierData_Get(saveData);
     if (a1 == 0) {
         sub_0202D5DC(frontierData, 5, 2);
     } else {
@@ -202,7 +202,7 @@ u16 sub_0204A750(SaveData *saveData) {
 
 u32 sub_0204A764(SaveData *saveData) {
     u32 unk = sub_0202D908(saveData);
-    FRONTIERDATA *frontierData = Save_FrontierData_Get(saveData);
+    FrontierData *frontierData = Save_FrontierData_Get(saveData);
     u8 towerMode = sub_0202D284(unk, 0, 0);
     if (towerMode == TOWER_MODE_WIFI_PRACTICE) {
         return towerMode;
@@ -571,7 +571,7 @@ BOOL FrontierFieldSystem_0204B0E0(FrontierFieldSystem *frontierFsys, SaveData *s
 }
 
 u32 FrontierFieldSystem_0204B120(FrontierFieldSystem *frontierFsys, SaveData *saveData, u32 a2) {
-    FRONTIERDATA *frontierData = Save_FrontierData_Get(saveData);
+    FrontierData *frontierData = Save_FrontierData_Get(saveData);
     switch (a2) {
     case 0:
         return sub_0202D488(frontierData, 0);
