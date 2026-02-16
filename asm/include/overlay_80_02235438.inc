@@ -20,7 +20,7 @@
 .public sub_0204B068
 .public BattleSetup_Delete
 .public IsBattleResultWin
-.public Frontier_GetLaunchParam
+.public Frontier_GetLaunchArgs
 .public Frontier_GetData
 .public Frontier_LaunchApplication
 .public MI_CpuFill8
