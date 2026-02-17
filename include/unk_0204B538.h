@@ -13,8 +13,8 @@ BOOL sub_0204B690(FieldSystem *fieldSystem, u16 *a1);
 void FrontierFieldSystem_0204B6AC(FrontierFieldSystem *frontierFsys, SaveData *saveData);
 void FrontierFieldSystem_0204B708(FrontierFieldSystem *frontierFsys);
 void FrontierFieldSystem_0204B720(FrontierFieldSystem *frontierFsys, u32 a1);
-u16 FrontierFieldSystem_GetRandomBattleTowerTrainer(FrontierFieldSystem *frontierFsys, u8 difficultyBracket, u8 winsThisRound, u32 towerMode); // sub_0204B73C
+u16 FrontierFieldSystem_GetRandomBattleTowerTrainer(FrontierFieldSystem *frontierFsys, u8 difficultyBracket, u8 winsThisRound, u32 towerMode);
 u32 FrontierFieldSystem_0204BA04(FrontierFieldSystem *frontierFsys, FrontierTrainer *frontierTrainer, u16 frontierTrainerIndex, u32 numPokemon, u16 *partySpecies, u16 *partyItems, FrontierMultiBattleAllyData *multiBattleAllyData, enum HeapID heapID);
-void FrontierFieldSystem_GenerateAllyFrontierMons(FrontierFieldSystem *frontierFsys, FrontierTrainer *frontierTrainer, u16 frontierTrainerIndex, u32 replaceItem, FrontierMultiBattleAllyData *multiBattleAllyData, enum HeapID heapID); // sub_0204BA50
+void FrontierFieldSystem_GenerateAllyFrontierMons(FrontierFieldSystem *frontierFsys, FrontierTrainer *frontierTrainer, u16 frontierTrainerIndex, u32 replaceItem, FrontierMultiBattleAllyData *multiBattleAllyData, enum HeapID heapID);
 
 #endif // POKEHEARTGOLD_UNK_0204B538_H
