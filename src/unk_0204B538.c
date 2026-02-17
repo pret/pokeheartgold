@@ -22,18 +22,18 @@
 #include "unk_02035900.h"
 #include "unk_0204A3F4.h"
 
-typedef struct FrontierMon {
+typedef struct FrontierMonNarcData {
     u16 species;
     u16 moves[4];
     u8 evs;
     u8 nature;
     u16 item;
     u16 form;
-} FrontierMon;
+} FrontierMonNarcData;
 
-static u32 FrontierFieldSystem_0204BABC(FrontierFieldSystem *frontierFsys, u16 *frontierTrainerData, u16 frontierTrainerIndex, FrontierMonStruct *frontierMonStruct, u8 numPokemon, u16 *partySpecies, u16 *partyItems, FrontierMultiBattleAllyData *multiBattleAllyData, enum HeapID heapID);
+static u32 FrontierFieldSystem_0204BABC(FrontierFieldSystem *frontierFsys, u16 *frontierTrainerData, u16 frontierTrainerIndex, FrontierMon *frontierMon, u8 numPokemon, u16 *partySpecies, u16 *partyItems, FrontierMultiBattleAllyData *multiBattleAllyData, enum HeapID heapID);
 static u16 *GetFrontierTrainerData(u32 frontierTrainerIndex, enum HeapID heapID);
-static void GetFrontierMon(FrontierMon *mon, u32 frontierMonIndex);
+static void GetFrontierMonNarcData(FrontierMonNarcData *mon, u32 frontierMonIndex);
 
 static const u16 ItemReplacementList[] = { ITEM_BRIGHT_POWDER, ITEM_LUM_BERRY, ITEM_LEFTOVERS, ITEM_QUICK_CLAW };
 
@@ -253,45 +253,45 @@ static u16 *sub_0204B7D0(FrontierTrainer *frontierTrainer, u32 frontierTrainerIn
     return frontierTrainerData;
 }
 
-static u32 FrontierFieldSystem_GenerateFrontierMon(FrontierFieldSystem *frontierFsys, FrontierMonStruct *frontierMonStruct, u16 frontierMonIndex, u32 otID, u32 pid, u8 iv, u8 replacementItemIndex, BOOL replaceItem, enum HeapID heapID) {
+static u32 FrontierFieldSystem_GenerateFrontierMon(FrontierFieldSystem *frontierFsys, FrontierMon *frontierMon, u16 frontierMonIndex, u32 otID, u32 pid, u8 iv, u8 replacementItemIndex, BOOL replaceItem, enum HeapID heapID) {
     s32 i;
-    FrontierMon frontierMon;
-    MI_CpuClear8(frontierMonStruct, sizeof(FrontierMonStruct));
-    GetFrontierMon(&frontierMon, frontierMonIndex);
-    frontierMonStruct->species = frontierMon.species;
-    frontierMonStruct->form = frontierMon.form;
-    frontierMonStruct->item = replaceItem ? ItemReplacementList[replacementItemIndex] : frontierMon.item;
+    FrontierMonNarcData frontierMonNarcData;
+    MI_CpuClear8(frontierMon, sizeof(FrontierMon));
+    GetFrontierMonNarcData(&frontierMonNarcData, frontierMonIndex);
+    frontierMon->species = frontierMonNarcData.species;
+    frontierMon->form = frontierMonNarcData.form;
+    frontierMon->item = replaceItem ? ItemReplacementList[replacementItemIndex] : frontierMonNarcData.item;
     
-    // Use max friendship unless the FrontierMon knows Frustration.
+    // Use max friendship unless the mon knows Frustration.
     u32 friendship = FRIENDSHIP_MAX;
     for (i = 0; i < MAX_MON_MOVES; i++) {
-        frontierMonStruct->moves[i] = frontierMon.moves[i];
-        if (frontierMon.moves[i] == MOVE_FRUSTRATION) {
+        frontierMon->moves[i] = frontierMonNarcData.moves[i];
+        if (frontierMonNarcData.moves[i] == MOVE_FRUSTRATION) {
             friendship = 0;
         }
     }
 
-    frontierMonStruct->otID = otID;
+    frontierMon->otID = otID;
     u32 pidGen;
     if (pid == 0) {
         do {
             pidGen = FrontierFieldSystem_0204B510(frontierFsys) | FrontierFieldSystem_0204B510(frontierFsys) << 16;
-        } while (frontierMon.nature != GetNatureFromPersonality(pidGen)
+        } while (frontierMonNarcData.nature != GetNatureFromPersonality(pidGen)
             || CalcShininessByOtIdAndPersonality(otID, pidGen) == TRUE);
-        frontierMonStruct->pid = pidGen;
+        frontierMon->pid = pidGen;
     } else {
-        frontierMonStruct->pid = pid;
+        frontierMon->pid = pid;
         pidGen = pid;
     }
-    frontierMonStruct->hpIv = iv;
-    frontierMonStruct->atkIv = iv;
-    frontierMonStruct->defIv = iv;
-    frontierMonStruct->spdIv = iv;
-    frontierMonStruct->spAtkIv = iv;
-    frontierMonStruct->spDefIv = iv;
+    frontierMon->hpIv = iv;
+    frontierMon->atkIv = iv;
+    frontierMon->defIv = iv;
+    frontierMon->spdIv = iv;
+    frontierMon->spAtkIv = iv;
+    frontierMon->spDefIv = iv;
     s32 ev = 0;
     for (i = 0; i < NUM_STATS; i++) {
-        if (frontierMon.evs & MaskOfFlagNo(i)) {
+        if (frontierMonNarcData.evs & MaskOfFlagNo(i)) {
             ev++;
         }
     }
@@ -300,32 +300,32 @@ static u32 FrontierFieldSystem_GenerateFrontierMon(FrontierFieldSystem *frontier
         ev = 255;
     }
     for (i = 0; i < NUM_STATS; i++) {
-        if (frontierMon.evs & MaskOfFlagNo(i)) {
-            frontierMonStruct->evs[i] = ev;
+        if (frontierMonNarcData.evs & MaskOfFlagNo(i)) {
+            frontierMon->evs[i] = ev;
         }
     }
-    frontierMonStruct->ppUp = 0;
-    frontierMonStruct->language = gGameLanguage;
-    u32 ability = GetMonBaseStat(frontierMonStruct->species, BASE_ABILITY_2);
+    frontierMon->ppUp = 0;
+    frontierMon->language = gGameLanguage;
+    u32 ability = GetMonBaseStat(frontierMon->species, BASE_ABILITY_2);
 
     // Check if there is only 1 ability, and if not, randomize between them.
     if (ability != ABILITY_NONE) {
-        if (frontierMonStruct->pidGen % 2) {
-            frontierMonStruct->ability = ability;
+        if (frontierMon->pidGen % 2) {
+            frontierMon->ability = ability;
         } else {
-            frontierMonStruct->ability = GetMonBaseStat(frontierMonStruct->species, BASE_ABILITY_1);
+            frontierMon->ability = GetMonBaseStat(frontierMon->species, BASE_ABILITY_1);
         }
     } else {
-        frontierMonStruct->ability = GetMonBaseStat(frontierMonStruct->species, BASE_ABILITY_1);
+        frontierMon->ability = GetMonBaseStat(frontierMon->species, BASE_ABILITY_1);
     }
-    frontierMonStruct->friendship = friendship;
-    GetSpeciesNameIntoArray(frontierMonStruct->species, heapID, frontierMonStruct->nickname);
+    frontierMon->friendship = friendship;
+    GetSpeciesNameIntoArray(frontierMon->species, heapID, frontierMon->nickname);
     return pidGen;
 }
 
 u32 FrontierFieldSystem_0204BA04(FrontierFieldSystem *frontierFsys, FrontierTrainer *frontierTrainer, u16 frontierTrainerIndex, u32 numPokemon, u16 *partySpecies, u16 *partyItems, FrontierMultiBattleAllyData *multiBattleAllyData, enum HeapID heapID) {
     u16 *frontierTrainerData = sub_0204B7D0(frontierTrainer, frontierTrainerIndex, heapID);
-    u32 replaceItem = FrontierFieldSystem_0204BABC(frontierFsys, frontierTrainerData, frontierTrainerIndex, frontierTrainer->frontierMonStructs, numPokemon, partySpecies, partyItems, multiBattleAllyData, heapID);
+    u32 replaceItem = FrontierFieldSystem_0204BABC(frontierFsys, frontierTrainerData, frontierTrainerIndex, frontierTrainer->frontierMons, numPokemon, partySpecies, partyItems, multiBattleAllyData, heapID);
     Heap_Free(frontierTrainerData);
     return replaceItem;
 }
@@ -335,12 +335,12 @@ void FrontierFieldSystem_GenerateAllyFrontierMons(FrontierFieldSystem *frontierF
     u16 *frontierTrainerData = sub_0204B7D0(frontierTrainer, frontierTrainerIndex, heapID);
     iv = GetFrontierTrainerIVs(frontierTrainerIndex);
     for (s32 i = 0; i < 2; i++) {
-        FrontierFieldSystem_GenerateFrontierMon(frontierFsys, &frontierTrainer->frontierMonStructs[i], multiBattleAllyData->frontierMonIDs[i], multiBattleAllyData->otID, multiBattleAllyData->frontierMonPIDs[i], iv, i, replaceItem, heapID);
+        FrontierFieldSystem_GenerateFrontierMon(frontierFsys, &frontierTrainer->frontierMons[i], multiBattleAllyData->frontierMonIDs[i], multiBattleAllyData->otID, multiBattleAllyData->frontierMonPIDs[i], iv, i, replaceItem, heapID);
     }
     Heap_Free(frontierTrainerData);
 }
 
-static u32 FrontierFieldSystem_0204BABC(FrontierFieldSystem *frontierFsys, u16 *frontierTrainerData, u16 frontierTrainerIndex, FrontierMonStruct *frontierMonStruct, u8 numPokemon, u16 *partySpecies, u16 *partyItems, FrontierMultiBattleAllyData *multiBattleAllyData, enum HeapID heapID) {
+static u32 FrontierFieldSystem_0204BABC(FrontierFieldSystem *frontierFsys, u16 *frontierTrainerData, u16 frontierTrainerIndex, FrontierMon *frontierMon, u8 numPokemon, u16 *partySpecies, u16 *partyItems, FrontierMultiBattleAllyData *multiBattleAllyData, enum HeapID heapID) {
     s32 i;
     u8 iv;
     u32 otID;
@@ -349,8 +349,7 @@ static u32 FrontierFieldSystem_0204BABC(FrontierFieldSystem *frontierFsys, u16 *
     u32 frontierMonPIDs[4];
     s32 failedItemGenAttempts;
     BOOL replaceItem = FALSE;
-    FrontierMon frontierMon_1;
-    FrontierMon frontierMon_2;
+    FrontierMonNarcData frontierMonNarcData[2];
     GF_ASSERT(numPokemon <= 4);
 
     s32 count = 0;
@@ -358,10 +357,10 @@ static u32 FrontierFieldSystem_0204BABC(FrontierFieldSystem *frontierFsys, u16 *
     while (count != numPokemon) {
         u8 index = FrontierFieldSystem_0204B510(frontierFsys) % frontierTrainerData[1];
         frontierMonIndex = frontierTrainerData[2 + index];
-        GetFrontierMon(&frontierMon_2, frontierMonIndex);
+        GetFrontierMonNarcData(&frontierMonNarcData[1], frontierMonIndex);
         for (i = 0; i < count; i++) {
-            GetFrontierMon(&frontierMon_1, frontierMonIDs[i]);
-            if (frontierMon_1.species == frontierMon_2.species) {
+            GetFrontierMonNarcData(&frontierMonNarcData[0], frontierMonIDs[i]);
+            if (frontierMonNarcData[0].species == frontierMonNarcData[1].species) {
                 break;
             }
         }
@@ -370,7 +369,7 @@ static u32 FrontierFieldSystem_0204BABC(FrontierFieldSystem *frontierFsys, u16 *
         }
         if (partySpecies) {
             for (i = 0; i < numPokemon; i++) {
-                if (partySpecies[i] == frontierMon_2.species) {
+                if (partySpecies[i] == frontierMonNarcData[1].species) {
                     break;
                 }
             }
@@ -380,8 +379,8 @@ static u32 FrontierFieldSystem_0204BABC(FrontierFieldSystem *frontierFsys, u16 *
         }
         if (failedItemGenAttempts < 50) {
             for (i = 0; i < count; i++) {
-                GetFrontierMon(&frontierMon_1, frontierMonIDs[i]);
-                if (frontierMon_1.item && frontierMon_1.item == frontierMon_2.item) {
+                GetFrontierMonNarcData(&frontierMonNarcData[0], frontierMonIDs[i]);
+                if (frontierMonNarcData[0].item && frontierMonNarcData[0].item == frontierMonNarcData[1].item) {
                     break;
                 }
             }
@@ -391,7 +390,7 @@ static u32 FrontierFieldSystem_0204BABC(FrontierFieldSystem *frontierFsys, u16 *
             }
             if (partyItems) {
                 for (i = 0; i < numPokemon; i++) {
-                    if (partyItems[i] == frontierMon_2.item && partyItems[i] != ITEM_NONE) {
+                    if (partyItems[i] == frontierMonNarcData[1].item && partyItems[i] != ITEM_NONE) {
                         break;
                     }
                 }
@@ -410,7 +409,7 @@ static u32 FrontierFieldSystem_0204BABC(FrontierFieldSystem *frontierFsys, u16 *
         replaceItem = TRUE;
     }
     for (i = 0; i < count; i++) {
-        frontierMonPIDs[i] = FrontierFieldSystem_GenerateFrontierMon(frontierFsys, &frontierMonStruct[i], frontierMonIDs[i], otID, 0, iv, i, replaceItem, heapID);
+        frontierMonPIDs[i] = FrontierFieldSystem_GenerateFrontierMon(frontierFsys, &frontierMon[i], frontierMonIDs[i], otID, 0, iv, i, replaceItem, heapID);
     }
     if (multiBattleAllyData == NULL) {
         return replaceItem;
@@ -427,6 +426,6 @@ static u16 *GetFrontierTrainerData(u32 frontierTrainerIndex, enum HeapID heapID)
     return AllocAndReadWholeNarcMemberByIdPair(NARC_a_2_0_2, frontierTrainerIndex, heapID);
 }
 
-static void GetFrontierMon(FrontierMon *mon, u32 frontierMonIndex) {
+static void GetFrontierMonNarcData(FrontierMonNarcData *mon, u32 frontierMonIndex) {
     ReadWholeNarcMemberByIdPair(mon, NARC_a_2_0_3, frontierMonIndex);
 }

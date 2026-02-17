@@ -692,36 +692,36 @@ static u32 FrontierFieldSystem_0204B318(FrontierFieldSystem *frontierFsys) {
     return TRUE;
 }
 
-static void SetFrontierMonStruct(FrontierMonStruct *frontierMonStruct, Pokemon *mon) {
-    frontierMonStruct->species = GetMonData(mon, MON_DATA_SPECIES, NULL);
-    frontierMonStruct->form = GetMonData(mon, MON_DATA_FORM, NULL);
-    frontierMonStruct->item = GetMonData(mon, MON_DATA_HELD_ITEM, NULL);
+static void SetFrontierMon(FrontierMon *frontierMon, Pokemon *mon) {
+    frontierMon->species = GetMonData(mon, MON_DATA_SPECIES, NULL);
+    frontierMon->form = GetMonData(mon, MON_DATA_FORM, NULL);
+    frontierMon->item = GetMonData(mon, MON_DATA_HELD_ITEM, NULL);
     for (s32 i = 0; i < MAX_MON_MOVES; i++) {
-        frontierMonStruct->moves[i] = GetMonData(mon, MON_DATA_MOVE1 + i, NULL);
-        frontierMonStruct->ppUp |= GetMonData(mon, MON_DATA_MOVE1_PP_UPS + i, NULL) << (i * 2);
+        frontierMon->moves[i] = GetMonData(mon, MON_DATA_MOVE1 + i, NULL);
+        frontierMon->ppUp |= GetMonData(mon, MON_DATA_MOVE1_PP_UPS + i, NULL) << (i * 2);
     }
-    frontierMonStruct->language = GetMonData(mon, MON_DATA_LANGUAGE, NULL);
-    frontierMonStruct->otID = GetMonData(mon, MON_DATA_OT_ID, NULL);
-    frontierMonStruct->pid = GetMonData(mon, MON_DATA_PERSONALITY, NULL);
-    frontierMonStruct->ivsWord = GetMonData(mon, MON_DATA_COMBINED_IVS, NULL);
+    frontierMon->language = GetMonData(mon, MON_DATA_LANGUAGE, NULL);
+    frontierMon->otID = GetMonData(mon, MON_DATA_OT_ID, NULL);
+    frontierMon->pid = GetMonData(mon, MON_DATA_PERSONALITY, NULL);
+    frontierMon->ivsWord = GetMonData(mon, MON_DATA_COMBINED_IVS, NULL);
     for (s32 i = 0; i < NUM_STATS; i++) {
-        frontierMonStruct->evs[i] = GetMonData(mon, MON_DATA_HP_EV + i, NULL);
+        frontierMon->evs[i] = GetMonData(mon, MON_DATA_HP_EV + i, NULL);
     }
-    frontierMonStruct->ability = GetMonData(mon, MON_DATA_ABILITY, NULL);
-    frontierMonStruct->friendship = GetMonData(mon, MON_DATA_FRIENDSHIP, NULL);
-    GetMonData(mon, MON_DATA_NICKNAME, frontierMonStruct->nickname);
+    frontierMon->ability = GetMonData(mon, MON_DATA_ABILITY, NULL);
+    frontierMon->friendship = GetMonData(mon, MON_DATA_FRIENDSHIP, NULL);
+    GetMonData(mon, MON_DATA_NICKNAME, frontierMon->nickname);
 }
 
 static void FrontierFieldSystem_0204B470(FrontierFieldSystem *frontierFsys, SaveData *saveData, u32 a2) {
-    FrontierMonStruct *frontierMonStructs = Heap_AllocAtEnd(frontierFsys->heapID, 3 * sizeof(FrontierMonStruct));
-    MI_CpuClear8(frontierMonStructs, 3 * sizeof(FrontierMonStruct));
+    FrontierMon *frontierMons = Heap_AllocAtEnd(frontierFsys->heapID, 3 * sizeof(FrontierMon));
+    MI_CpuClear8(frontierMons, 3 * sizeof(FrontierMon));
     Party *party = SaveArray_Party_Get(saveData);
     for (s32 i = 0; i < 3; i++) {
-        SetFrontierMonStruct(&frontierMonStructs[i], Party_GetMonByIndex(party, frontierFsys->partyMonIndexes[i]));
+        SetFrontierMon(&frontierMons[i], Party_GetMonByIndex(party, frontierFsys->partyMonIndexes[i]));
     }
-    sub_0202D4B8(frontierFsys->frontierData, a2, frontierMonStructs);
-    MI_CpuClear8(frontierMonStructs, 3 * sizeof(FrontierMonStruct));
-    Heap_Free(frontierMonStructs);
+    sub_0202D4B8(frontierFsys->frontierData, a2, frontierMons);
+    MI_CpuClear8(frontierMons, 3 * sizeof(FrontierMon));
+    Heap_Free(frontierMons);
 }
 
 u8 GetFrontierTrainerIVs(u32 frontierTrainerIndex) {

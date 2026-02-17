@@ -201,8 +201,8 @@ BOOL ScrCmd_413(ScriptContext *ctx) {
     u16 allyMonIndex = ScriptGetVar(ctx);
     u16 *speciesPtr = ScriptGetVarPointer(ctx);
     u16 *movePtr = ScriptGetVarPointer(ctx);
-    *speciesPtr = frontierFsys->frontierStatTrainers[multiBattleAllyIndex].frontierMonStructs[allyMonIndex].species;
-    *movePtr = frontierFsys->frontierStatTrainers[multiBattleAllyIndex].frontierMonStructs[allyMonIndex].moves[0];
+    *speciesPtr = frontierFsys->frontierStatTrainers[multiBattleAllyIndex].frontierMons[allyMonIndex].species;
+    *movePtr = frontierFsys->frontierStatTrainers[multiBattleAllyIndex].frontierMons[allyMonIndex].moves[0];
     return FALSE;
 }
 

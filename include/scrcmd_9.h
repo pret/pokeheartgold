@@ -12,7 +12,7 @@
 #define TOWER_MODE_WIFI_PRACTICE        5
 #define TOWER_MODE_6                    6
 
-typedef struct FrontierMonStruct {
+typedef struct FrontierMon {
     u16 species : 11;
     u16 form : 5;
     u16 item;
@@ -37,7 +37,7 @@ typedef struct FrontierMonStruct {
     u8 ability;
     u8 friendship;
     u16 nickname[11];
-} FrontierMonStruct;
+} FrontierMon;
 
 typedef struct FrontierTrainer {
     u32 index;
@@ -47,7 +47,7 @@ typedef struct FrontierTrainer {
     u16 unk18;
     u16 unk1a;
     u8 filler1c[0x14];
-    FrontierMonStruct frontierMonStructs[2];
+    FrontierMon frontierMons[2];
     u8 fillera0[0x70];
 } FrontierTrainer;
 
