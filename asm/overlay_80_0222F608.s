@@ -18,7 +18,7 @@ FrtCmd_092: ; 0x0222F608
 	add r6, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl Frontier_GetLaunchParam
+	bl Frontier_GetLaunchArgs
 	lsl r2, r4, #0x18
 	lsl r3, r6, #0x18
 	ldr r0, [r0, #8]
@@ -67,7 +67,7 @@ FrtCmd_095: ; 0x0222F678
 	add r6, r0, #0
 	ldr r0, [r6]
 	ldr r0, [r0]
-	bl Frontier_GetLaunchParam
+	bl Frontier_GetLaunchArgs
 	add r7, r0, #0
 	ldr r0, [r6]
 	ldr r0, [r0]
@@ -137,7 +137,7 @@ FrtCmd_097: ; 0x0222F708
 	add r5, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl Frontier_GetLaunchParam
+	bl Frontier_GetLaunchArgs
 	add r6, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0]
@@ -168,7 +168,7 @@ FrtCmd_098: ; 0x0222F74C
 	add r6, r0, #0
 	ldr r0, [r6]
 	ldr r0, [r0]
-	bl Frontier_GetLaunchParam
+	bl Frontier_GetLaunchArgs
 	add r7, r0, #0
 	ldr r0, [r6]
 	ldr r0, [r0]
@@ -893,7 +893,7 @@ FrtCmd_107: ; 0x0222FCD0
 	add r5, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl Frontier_GetLaunchParam
+	bl Frontier_GetLaunchArgs
 	ldr r1, [r5, #0x1c]
 	add r0, r1, #1
 	str r0, [r5, #0x1c]

@@ -11,7 +11,7 @@
 .public OverlayManager_Run
 .public Heap_Free
 .public GF_AssertFail
-.public Frontier_GetLaunchParam
+.public Frontier_GetLaunchArgs
 .public sub_0209680C
 .public Frontier_GetData
 .public Frontier_SetData

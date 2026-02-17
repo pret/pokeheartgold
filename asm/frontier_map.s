@@ -8,7 +8,7 @@
 FrontierMap_Init: ; 0x02238648
 	push {r3, r4, r5, r6, r7, lr}
 	add r6, r0, #0
-	bl Frontier_GetLaunchParam
+	bl Frontier_GetLaunchArgs
 	add r4, r0, #0
 	ldr r0, [r4, #8]
 	bl Save_PlayerData_GetProfile
@@ -223,7 +223,7 @@ FrontierMap_Free: ; 0x0223885C
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #8]
-	bl Frontier_GetLaunchParam
+	bl Frontier_GetLaunchArgs
 	add r2, r4, #0
 	add r2, #0xc1
 	add r1, r4, #0
@@ -546,7 +546,7 @@ FrontierMap_Scroll: ; 0x02238B28
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #8]
-	bl Frontier_GetLaunchParam
+	bl Frontier_GetLaunchArgs
 	add r4, r0, #0
 	add r0, #0x20
 	ldrb r0, [r0]
@@ -591,7 +591,7 @@ ov80_02238B7C: ; 0x02238B7C
 	sub sp, #0x10
 	add r5, r0, #0
 	ldr r0, [r5, #8]
-	bl Frontier_GetLaunchParam
+	bl Frontier_GetLaunchArgs
 	add r7, r0, #0
 	add r0, r5, #0
 	add r0, #0x1c
@@ -1026,7 +1026,7 @@ FrontierMap_LoadPaletteData: ; 0x02238F10
 	mov r3, #0x65
 	bl PaletteData_LoadNarc
 	ldr r0, [r4, #8]
-	bl Frontier_GetLaunchParam
+	bl Frontier_GetLaunchArgs
 	ldr r0, [r0, #4]
 	bl Options_GetFrame
 	lsl r0, r0, #0x18
