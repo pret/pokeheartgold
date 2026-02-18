@@ -787,8 +787,10 @@
 #define TRMSG_DBL_AFTER_2 9
 #define TRMSG_DBL_1POKE_2 10
 // 11-14 are unused.
-#define TRMSG_LAST_POKE      15
-#define TRMSG_LAST_POKE_HALF 16
+#define TRMSG_HIT_POKE_FIRST_TIME   13
+#define TRMSG_CURRENT_POKE_HALF     14
+#define TRMSG_LAST_POKE             15
+#define TRMSG_LAST_POKE_HALF        16
 // The texts change when it's a phone trainer.
 #define TRMSG_PHONE_REMATCH_INTRO       17
 #define TRMSG_PHONE_REMATCH_DBL_INTRO_1 18
