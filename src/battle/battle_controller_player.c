@@ -2862,8 +2862,8 @@ static void BattleControllerPlayer_HpCalc(BattleSystem *battleSystem, BattleCont
 
             ctx->unk_30E4[ctx->battlerIdTarget] += ctx->damage;
 
-            if (ctx->battleMons[ctx->battlerIdTarget].unk78 < 255) {
-                ctx->battleMons[ctx->battlerIdTarget].unk78++;
+            if (ctx->battleMons[ctx->battlerIdTarget].hitCount < 255) {
+                ctx->battleMons[ctx->battlerIdTarget].hitCount++;
             }
 
             if (ctx->trainerAIData.moveData[ctx->moveNoCur].category == CATEGORY_PHYSICAL) {
