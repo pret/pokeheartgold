@@ -1,6 +1,8 @@
 #include "unk_020971F8.h"
 
 #include "global.h"
+#include "unk_02033AE0.h"
+#include "overlay_44.h"
 
 void sub_020971F8(s32 arg0) {
     const UnkStruct_0203AC88* unkStruct;
