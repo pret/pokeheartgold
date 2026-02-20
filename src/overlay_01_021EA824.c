@@ -3,8 +3,8 @@
 #include "global.h"
 
 UnkStruct_Ov01_021EA824* ov01_021EA824() {
-    UnkStruct_Ov01_021EA824* dst = Heap_Alloc(HEAP_ID_FIELD1, 56);
-    MIi_CpuClear32(0, (void*)dst, 56);
+    UnkStruct_Ov01_021EA824* dst = Heap_Alloc(HEAP_ID_FIELD1, sizeof(UnkStruct_Ov01_021EA824));
+    MIi_CpuClear32(0, (void*)dst, sizeof(UnkStruct_Ov01_021EA824));
     return dst;
 }
 
