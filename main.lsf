@@ -304,7 +304,7 @@ Static main
     Object src/unk_02091278.o
     Object src/unk_020912AC.o
     Object src/dex_mon_measures.o
-    Object asm/unk_02091564.o
+    Object src/unk_02091564.o
     Object asm/unk_020915B0.o
     Object src/location_gmm_dat.o
     Object src/move_relearner.o
