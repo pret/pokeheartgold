@@ -17,7 +17,7 @@ typedef struct {
     u32 fogTable[8];
 } UnkStruct_Ov01_021EA824;
 
-void* ov01_021EA824();
+UnkStruct_Ov01_021EA824* ov01_021EA824();
 void ov01_021EA840(s32* arg0);
 BOOL ov01_021EA854(UnkStruct_Ov01_021EA824* arg0);
 GXFogSlope ov01_021EA858(UnkStruct_Ov01_021EA824* arg0);

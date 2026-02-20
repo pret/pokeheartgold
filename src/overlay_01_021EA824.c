@@ -2,9 +2,9 @@
 
 #include "global.h"
 
-void* ov01_021EA824() {
-    void* dst = Heap_Alloc(HEAP_ID_FIELD1, 56);
-    MIi_CpuClear32(0, dst, 56);
+UnkStruct_Ov01_021EA824* ov01_021EA824() {
+    UnkStruct_Ov01_021EA824* dst = Heap_Alloc(HEAP_ID_FIELD1, 56);
+    MIi_CpuClear32(0, (void*)dst, 56);
     return dst;
 }
 
@@ -30,29 +30,29 @@ u16 ov01_021EA860(UnkStruct_Ov01_021EA824 *arg0) {
 }
 
 void ov01_021EA864(UnkStruct_Ov01_021EA824* arg0, s32 arg1, BOOL enable, GXFogBlend fogMode, GXFogSlope fogSlope, int fogOffset) {
-    if (1 & arg1) {
+    if (arg1 & 1 << 0) {
         arg0->enable = enable;
     }
-    if (2 & arg1) {
+    if (arg1 & 1 << 1) {
         arg0->fogMode = fogMode;
     }
-    if (4 & arg1) {
+    if (arg1 & 1 << 2) {
         arg0->fogSlope = fogSlope;
     }
-    if (8 & arg1) {
+    if (arg1 & 1 << 3) {
         arg0->fogOffset = fogOffset;
     }
     G3X_SetFog(arg0->enable, arg0->fogMode, arg0->fogSlope, arg0->fogOffset);
 }
 
 void ov01_021EA89C(UnkStruct_Ov01_021EA824* arg0, u32 arg1, u16 arg2, u32 arg3) {
-    if (16 & arg1) {
+    if (arg1 & 1 << 4) {
         arg0->unk10 = arg2;
     }
-    if (arg1 & 32) {
+    if (arg1 & 1 << 5) {
         arg0->unk14 = arg3;
     }
-    *(s32* )67109720 = arg0->unk10 | (arg0->unk14 << 16);
+    reg_G3X_FOG_COLOR = arg0->unk10 | (arg0->unk14 << 16);
 }
 
 void ov01_021EA8C4(UnkStruct_Ov01_021EA824 *arg0, const u32 *src) {
