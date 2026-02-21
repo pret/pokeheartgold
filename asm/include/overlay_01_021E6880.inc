@@ -14,7 +14,7 @@
 .public GameStats_GetCapped
 .public GameStats_AddScore
 .public SaveData_GetPhoneCallPersistentState
-.public sub_0202F08C
+.public PhoneCallPersistentState_CheckCallTriggerFlag
 .public Save_SafariZone_Get
 .public sub_0202F620
 .public Save_ApricornBox_Get
@@ -177,7 +177,7 @@
 .public ov01_021F6B64
 .public ov01_021FB630
 .public ov01_02206378
-.public ov02_02246C8C
+.public FieldSystem_PerformLandOrSurfEncounterCheck
 .public PlayerStepEvent_RepelCounterDecrement
 .public ov02_0224E35C
 .public ov02_0224E4CC

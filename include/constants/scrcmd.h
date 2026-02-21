@@ -8,10 +8,12 @@
 #include "constants/game_stats.h"
 #include "constants/global.h"
 #include "constants/global_fieldmap.h"
+#include "constants/init_script_types.h"
 #include "constants/items.h"
 #include "constants/maps.h"
 #include "constants/movements.h"
 #include "constants/moves.h"
+#include "constants/phone_constants.h"
 #include "constants/phone_contacts.h"
 #include "constants/pokemon.h"
 #include "constants/ranking.h"
@@ -23,7 +25,6 @@
 #include "constants/std_script.h"
 #include "constants/trainers.h"
 #include "constants/vars.h"
-#include "constants/init_script_types.h"
 
 #define lt 0
 #define eq 1
