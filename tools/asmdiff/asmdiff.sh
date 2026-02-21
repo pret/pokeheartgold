@@ -65,7 +65,7 @@ POSITIONAL=()
 
 usage () {
     echo "Diff segments of a Nintendo DS ROM"
-    echo "Usage: $0 [-h] [-7] [-m OVERLAY] [-r BASEROM] [-d BUILDDIR] [START [END]]"
+    echo "Usage: $0 [-h] [-7] [-m OVERLAY] [-r BASEROM] [-d BUILDDIR] [START [SIZE]]"
     echo ""
     echo "Arguments:"
     echo "  START, END    Start and end virtual addresses to diff"
