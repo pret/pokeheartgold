@@ -1,6 +1,9 @@
 #ifndef POKEHEARTGOLD_UNK_02033AE0_H
 #define POKEHEARTGOLD_UNK_02033AE0_H
 
+#include "unk_0203AC88.h"
+
 BOOL sub_0203401C(int);
+void sub_0203410C(const UnkStruct_0203AC88*, int, s32 arg2);
 
 #endif // POKEHEARTGOLD_UNK_02033AE0_H
