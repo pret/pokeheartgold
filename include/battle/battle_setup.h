@@ -4,6 +4,7 @@
 #include "constants/battle.h"
 
 #include "bag.h"
+#include "field_map_change.h"
 #include "field_types_def.h"
 #include "game_stats.h"
 #include "gf_rtc.h"
@@ -16,7 +17,6 @@
 #include "save_palpad.h"
 #include "save_wifi_history.h"
 #include "trainer_data.h"
-#include "unk_02067A60.h"
 #include "unk_020755E8.h"
 
 struct BattleSetupSub_138 {
@@ -40,7 +40,7 @@ struct BattleSetup {                     // declared in trainer_data.h
     void *unk_128;
     SaveWiFiHistory *wifiHistory;
     Options *options; // 130
-    struct UnkStruct_02067A60 *unk_134;
+    MapChangeState *unk_134;
     struct BattleSetupSub_138 unk138;
     GameStats *gameStats; // 144
     SavePalPad *palPad;   // 148
