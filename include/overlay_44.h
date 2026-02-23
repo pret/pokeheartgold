@@ -44,6 +44,11 @@ typedef struct sub_struct {
     u8 unk3;
 } sub_struct;
 
+ov44_02234204(UnkStruct_ov44_02235340* arg0);
+ov44_02233214(UnkStruct_ov44_02235340* arg0, enum HeapID arg1);
+ov44_02234028(UnkStruct_ov44_02235340* arg0);
+ov44_022331C4(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_02235340* arg1, enum HeapID arg2);
+
 s32 ov44_02235268(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_02235340* arg1, enum HeapID arg2);
 s32 ov44_0223532C(UnkStruct_ov44_02235340* arg0);
 s32 ov44_02235340(UnkStruct_ov44_02235340* arg0);

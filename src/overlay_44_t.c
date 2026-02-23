@@ -1,6 +1,8 @@
 #include "overlay_44.h"
 
 #include "unk_02037C94.h"
+#include "unk_0200FA24.h"
+#include "unk_0203A3B0.h"
 
 s32 ov44_02235268(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_02235340* arg1, enum HeapID arg2) {
     sub_struct* temp_r0;
