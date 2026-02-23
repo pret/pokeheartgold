@@ -16,5 +16,10 @@ void sub_0205ABB0(struct UnkStruct_02059E1C *fieldSystem_unk80);
 void sub_0205A508(int a0);
 void sub_0205AB88(MailMessage *mailMessage);
 void sub_0205AA6C(struct UnkStruct_02059E1C *fieldSystem_unk80, MailMessage *mailMessage);
+void sub_0205A4C4(void);
+void sub_0205A44C(void);
+void sub_0205A46C(void);
+void sub_0205A498(void);
+void sub_0205A4B4(void);
 
 #endif // POKEHEARTGOLD_UNK_0205A44C_H
