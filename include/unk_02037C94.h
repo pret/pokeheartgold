@@ -22,5 +22,7 @@ void *sub_0203A040(UnkStruct_021D2230 *a0);
 void sub_020398D4(int a0, int a1);
 void sub_02039B58(void);
 void sub_02039358(void);
+BOOL sub_020390C4(void);
+void sub_020378E4(int a0);
 
 #endif // POKEHEARTGOLD_UNK_02037C94_H

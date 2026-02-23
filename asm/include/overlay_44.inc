@@ -380,3 +380,11 @@
 .public ov44_0223317C
 .public ov44_02235340
 .public ov44_0223532C
+.public ov44_02235268
+.public ov44_02235218
+.public ov44_022351DC
+.public ov44_022351BC
+.public ov44_0223518C
+.public ov44_02235158
+.public ov44_02235100
+.public ov44_02235090
