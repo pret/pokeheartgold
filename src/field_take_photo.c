@@ -6,6 +6,7 @@
 
 #include "graphic/camera_viewfinder.naix"
 
+#include "field_map_change.h"
 #include "field_warp_tasks.h"
 #include "follow_mon.h"
 #include "gf_gfx_loader.h"
@@ -24,7 +25,6 @@
 #include "unk_02054E00.h"
 #include "unk_02055244.h"
 #include "unk_020552A4.h"
-#include "unk_02067A80.h"
 
 typedef enum FieldViewPhotoTaskState {
     VIEW_PHOTO_STATE_INIT,
@@ -220,7 +220,7 @@ static BOOL FieldTask_ViewPhoto(TaskManager *taskManager) {
         viewPhoto->state = ViewPhotoFieldTask_RestorePlayerOverworldPosition(fieldSystem, taskManager, viewPhoto);
         break;
     case VIEW_PHOTO_STATE_QUIT2:
-        sub_02067A80(fieldSystem, 0);
+        FieldSystem_SetTeleportWarpFlag(fieldSystem, 0);
         Heap_Free(viewPhoto);
         return TRUE;
     }
@@ -352,7 +352,7 @@ static BOOL FieldTask_DoViewPhoto(TaskManager *taskManager) {
 
     switch (taskData->state) {
     case FIELD_PHOTO_DO_VIEW_STATE_0:
-        sub_02067A80(fieldSystem, 1);
+        FieldSystem_SetTeleportWarpFlag(fieldSystem, 1);
         GF_RTC_SetAndFreezeTime(photo->hour, photo->min);
         {
             Location location;
@@ -595,7 +595,7 @@ static BOOL FieldTask_TakePhoto(TaskManager *taskManager) {
         takePhoto->state = TAKE_PHOTO_STATE_SAVE_PLAYER_STATE;
         break;
     case TAKE_PHOTO_STATE_SAVE_PLAYER_STATE:
-        sub_02067A80(fieldSystem, 1);
+        FieldSystem_SetTeleportWarpFlag(fieldSystem, 1);
         FieldTakePhoto_SetLocationBuf(takePhoto, DIR_SOUTH, takePhoto->pPhoto->y, takePhoto->pPhoto->x, takePhoto->pPhoto->mapId);
         sub_020537A8(taskManager, &takePhoto->locationBuf);
         takePhoto->state = TAKE_PHOTO_STATE_INIT_RESTORE_OVERWORLD;
@@ -783,7 +783,7 @@ static BOOL FieldTask_TakePhoto(TaskManager *taskManager) {
         takePhoto->state = TAKE_PHOTO_STATE_RESTORE_PLAYER;
         break;
     case TAKE_PHOTO_STATE_RESTORE_PLAYER:
-        sub_02067A80(fieldSystem, 0);
+        FieldSystem_SetTeleportWarpFlag(fieldSystem, 0);
         FieldTakePhoto_SetLocationBuf(takePhoto, takePhoto->savedDirection, takePhoto->savedZ, takePhoto->savedX, takePhoto->savedMapId);
         sub_020537A8(taskManager, &takePhoto->locationBuf);
         takePhoto->state = TAKE_PHOTO_STATE_RESUME_OVERWORLD_AFTER;

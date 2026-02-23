@@ -9,6 +9,7 @@
 #include "msgdata/msg/msg_0040.h"
 
 #include "bg_window.h"
+#include "field_map_change.h"
 #include "game_stats.h"
 #include "hall_of_fame.h"
 #include "launch_application.h"
@@ -30,7 +31,6 @@
 #include "unk_02054E00.h"
 #include "unk_020552A4.h"
 #include "unk_02055418.h"
-#include "unk_0206793C.h"
 #include "unk_0206D494.h"
 #include "use_item_on_mon.h"
 
