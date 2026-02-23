@@ -23,7 +23,7 @@ void Save_VarsFlags_ClearRocketCostumeFlag(SaveVarsFlags *state);
 BOOL Save_VarsFlags_CheckRocketCostumeFlag(SaveVarsFlags *state);
 BOOL EventFlagCheck_RematchGroup(SaveVarsFlags *state, u16 flag_id);
 void Save_VarsFlags_SetAlphPuzzleFlag(SaveVarsFlags *state, u8 flag);
-BOOL Save_VarsFlags_CheckAlphPuzzleFlag(SaveVarsFlags *state, u8 flag);
+BOOL Save_VarsFlags_CheckAlphPuzzleFlag(SaveVarsFlags *state, int flag);
 void Save_VarsFlags_MomsSavingsFlagAction(SaveVarsFlags *state, BOOL set);
 BOOL Save_VarsFlags_MomsSavingsFlagCheck(SaveVarsFlags *state);
 u16 GetOverriddenMapMusic(SaveVarsFlags *state, u32 map_no);

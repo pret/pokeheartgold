@@ -134,7 +134,7 @@ void Save_VarsFlags_SetAlphPuzzleFlag(SaveVarsFlags *state, u8 flag) {
     }
 }
 
-BOOL Save_VarsFlags_CheckAlphPuzzleFlag(SaveVarsFlags *state, u8 flag) {
+BOOL Save_VarsFlags_CheckAlphPuzzleFlag(SaveVarsFlags *state, int flag) {
     BOOL ret = FALSE;
 
     switch (flag) {

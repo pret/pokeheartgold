@@ -378,7 +378,7 @@ _021F38AC:
 	ldrb r1, [r4, #2]
 	ldr r2, [sp, #0x4c]
 	add r0, sp, #0x14
-	bl sub_02097268
+	bl GetSafariObjectConfig
 	add r1, sp, #0x14
 	ldrb r2, [r1]
 	ldr r0, [sp, #8]

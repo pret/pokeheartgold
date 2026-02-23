@@ -16,8 +16,8 @@ extern "C" {
 
 typedef struct ENC_SLOT {
     u32 species;
-    u16 level_min;
     u16 level_max;
+    u16 level_min;
 } ENC_SLOT;
 
 typedef struct ENC_DATA_LAND {

@@ -414,12 +414,12 @@ _0550:
 _055F:
 	get_party_lead_alive VAR_TEMP_x4000
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4001
-	scrcmd_149 0
-	compare VAR_TEMP_x4001, 175
+	unset_phone_call_trigger CALL_TRIGGER_ELM_EGG_HATCHED
+	compare VAR_TEMP_x4001, SPECIES_TOGEPI
 	goto_if_eq _0599
-	compare VAR_TEMP_x4001, 176
+	compare VAR_TEMP_x4001, SPECIES_TOGETIC
 	goto_if_eq _0599
-	compare VAR_TEMP_x4001, 468
+	compare VAR_TEMP_x4001, SPECIES_TOGEKISS
 	goto_if_eq _0599
 	goto _0637
 

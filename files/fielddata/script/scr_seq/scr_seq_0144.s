@@ -160,7 +160,7 @@ _01F3:
 	goto_if_eq _0222
 	callstd std_give_item_verbose
 	scrcmd_812
-	scrcmd_149 12
+	unset_phone_call_trigger CALL_TRIGGER_MOM_BOUGHT_SOMETHING
 	npc_msg msg_0209_00020
 	wait_button_or_walk_away
 	closemsg

@@ -1,4 +1,5 @@
 #include "constants/maps.h"
+#include "constants/phone_scripts.h"
 #include "constants/sndseq.h"
 
 #include "overlay_2/overlay_02_gear_phone.h"
@@ -17,27 +18,37 @@
 #include "unk_02092BE8.h"
 
 typedef struct UnkStruct_02253C86 {
-    u8 unk0;
+    u8 callerId;
     u8 unk1;
-    u16 unk2;
-    u8 unk4;
+    u16 callScriptID;
+    u8 forcePickUp;
     u8 unk5;
 } UnkStruct_02253C86;
 
 static const UnkStruct_02253C86 ov02_02253C84[] = {
-    { 1,  0, 13,  0, 0 },
-    { 1,  0, 7,   0, 0 },
-    { 15, 0, 85,  1, 0 },
-    { 9,  0, 93,  1, 0 },
-    { 2,  0, 0,   0, 0 },
-    { 6,  0, 0,   0, 0 },
-    { 24, 0, 0,   0, 0 },
-    { 24, 0, 142, 1, 0 },
-    { 24, 0, 143, 1, 0 },
-    { 24, 0, 144, 1, 0 },
-    { 24, 0, 145, 1, 0 },
-    { 24, 0, 146, 1, 0 },
-    { 0,  0, 27,  0, 0 }
+    // Hey, player, this is great news! A Pokémon hatched from that Egg!
+    { PHONE_CONTACT_PROF__ELM, 0, PHONE_SCRIPT_013,  FALSE, 0 },
+    // Hello, player? I discovered something called Pokérus
+    { PHONE_CONTACT_PROF__ELM, 0, PHONE_SCRIPT_007,  FALSE, 0 },
+    // Oh hey, this is the Bike Shop!
+    { PHONE_CONTACT_BIKE_SHOP, 0, PHONE_SCRIPT_085,  TRUE,  0 },
+    // Hey, this is Bill here. You know your PC boxes are full, right?
+    { PHONE_CONTACT_BILL,      0, PHONE_SCRIPT_093,  TRUE,  0 },
+    { PHONE_CONTACT_PROF__OAK, 0, PHONE_SCRIPT_NONE, FALSE, 0 },
+    { PHONE_CONTACT_DAY_C_MAN, 0, PHONE_SCRIPT_NONE, FALSE, 0 },
+    { PHONE_CONTACT_BAOBA,     0, PHONE_SCRIPT_NONE, FALSE, 0 },
+    // This is Baoba, I've finally come up with the next test
+    { PHONE_CONTACT_BAOBA,     0, PHONE_SCRIPT_142,  TRUE,  0 },
+    // This is Baoba, I thought of a new way to play! It's called Object Arrangement!
+    { PHONE_CONTACT_BAOBA,     0, PHONE_SCRIPT_143,  TRUE,  0 },
+    // This is Baoba, we've come up with new objects
+    { PHONE_CONTACT_BAOBA,     0, PHONE_SCRIPT_144,  TRUE,  0 },
+    // This is Baoba, we've come up with so many objects!
+    { PHONE_CONTACT_BAOBA,     0, PHONE_SCRIPT_145,  TRUE,  0 },
+    // This is Baoba, I'm stuck in a time loop!
+    { PHONE_CONTACT_BAOBA,     0, PHONE_SCRIPT_146,  TRUE,  0 },
+    // Hi honey, I bought something with your money :3
+    { PHONE_CONTACT_MOTHER,    0, PHONE_SCRIPT_027,  FALSE, 0 }
 };
 
 static u32 ov02_02251FDC(GearPhoneRingManager *gearPhone, PhoneBook *phoneBook, u32 mapId);
@@ -87,7 +98,7 @@ u8 ov02_02251EE8(GearPhoneRingManager *gearPhone, Unk_PokegearSTRUCT_14 *a1) {
     a1->unk_1 = gearPhone->unk_arr5[1];
     a1->isScriptedCall = gearPhone->isScriptedCall;
     a1->callScriptID = gearPhone->callScriptID;
-    a1->unk_2 = gearPhone->unk_var7;
+    a1->callTriggerID = gearPhone->callTriggerID;
     return gearPhone->callerId;
 }
 
@@ -107,7 +118,7 @@ BOOL ov02_02251F20(GearPhoneRingManager *gearPhone) {
     if (var) {
         FreePhoneBook(phoneBook);
         if (var == 2) {
-            gearPhone->sys->unkD2_7 = 1;
+            gearPhone->sys->unkD2_7 = TRUE;
             StartMapSceneScript(gearPhone->sys, 0x7FF, 0);
             return TRUE;
         }
@@ -444,27 +455,27 @@ _022521AC:
 #endif
 
 static u32 ov02_022521C0(GearPhoneRingManager *gearPhone, PhoneBook *phoneBook, u32 mapId) {
-    u8 r6 = ov02_02252218(gearPhone, phoneBook, mapId);
-    if (r6 == 0xFF) {
+    u8 callTriggerID = ov02_02252218(gearPhone, phoneBook, mapId);
+    if (callTriggerID == 0xFF) {
         return FALSE;
     }
-    GearPhoneRingManager_SetCallerParams(gearPhone, ov02_02253C84[r6].unk0, 0xFF, 0, 3, ov02_02253C84[r6].unk2);
+    GearPhoneRingManager_SetCallerParams(gearPhone, ov02_02253C84[callTriggerID].callerId, 0xFF, 0, 3, ov02_02253C84[callTriggerID].callScriptID);
     GearPhoneRingManager_StartRinging(gearPhone);
-    gearPhone->unk_var7 = r6;
-    return ov02_02253C84[r6].unk4 + 1;
+    gearPhone->callTriggerID = callTriggerID;
+    return ov02_02253C84[callTriggerID].forcePickUp + 1;
 }
 
 // FIXME: This is a fakematch from decomp.me, it doesn't match locally without the label https://decomp.me/scratch/YdDak
 static u8 ov02_02252218(GearPhoneRingManager *gearPhone, PhoneBook *phoneBook, u32 mapId) {
-    u8 *ptr = Heap_AllocAtEnd(HEAP_ID_FIELD1, 13);
-    MI_CpuFill8(ptr, 0, 13);
+    u8 *ptr = Heap_AllocAtEnd(HEAP_ID_FIELD1, NUM_CALL_TRIGGERS);
+    MI_CpuFill8(ptr, 0, NUM_CALL_TRIGGERS);
 
     int cnt = 0;
-    for (int i = 0; i < 13; i++) {
-        if (sub_0202F08C(gearPhone->savingsData, i) == 0) {
+    for (int i = 0; i < NUM_CALL_TRIGGERS; i++) {
+        if (PhoneCallPersistentState_CheckCallTriggerFlag(gearPhone->savingsData, i) == 0) {
             continue;
         }
-        PhoneBookEntry *entry = &phoneBook->entries[ov02_02253C84[i].unk0];
+        PhoneBookEntry *entry = &phoneBook->entries[ov02_02253C84[i].callerId];
         if (entry->id == PHONE_CONTACT_DAY_C_MAN) {
             if (SavePokegear_IsNumberRegistered(gearPhone->pokegearData, PHONE_CONTACT_DAY_C_MAN) != 0xFF) {
                 // had to do this to match
@@ -493,24 +504,24 @@ static void ov02_022522AC(GearPhoneRingManager *gearPhone, BOOL a1) {
     GearPhone_ToggleRinging(gearPhone, a1);
 }
 
-int GetRadioMusicPlayingSeq(void) {
+enum RadioMusicPlayingSeq GetRadioMusicPlayingSeq(void) {
     u16 seq = SndRadio_GetSeqNo();
     switch (seq) {
     case SEQ_GS_RADIO_MARCH:
     case SEQ_GS_P_RADIO_MARCH:
-        return 1;
+        return RADIO_MUSIC_SEQ_MARCH;
     case SEQ_GS_RADIO_KOMORIUTA:
     case SEQ_GS_P_RADIO_KOMORIUTA:
-        return 2;
+        return RADIO_MUSIC_SEQ_LULLABY;
     case SEQ_GS_RADIO_R_101:
-        return 3;
+        return RADIO_MUSIC_SEQ_HOENN_SOUNDS;
     case SEQ_GS_RADIO_R_201:
-        return 4;
+        return RADIO_MUSIC_SEQ_SINNOH_SOUNDS;
     case SEQ_GS_RADIO_UNKNOWN:
-        return 6;
+        return RADIO_MUSIC_SEQ_UNOWN;
     case SEQ_GS_HUE:
     case SEQ_GS_P_HUE:
-        return 5;
+        return RADIO_MUSIC_SEQ_POKEFLUTE;
     }
-    return 0;
+    return RADIO_MUSIC_SEQ_NONE;
 }

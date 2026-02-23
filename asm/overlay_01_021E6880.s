@@ -7,6 +7,7 @@
 #include "constants/flags.h"
 #include "constants/mmodel.h"
 #include "constants/items.h"
+#include "constants/phone_constants.h"
 #include "msgdata/msg/msg_0096_D31R0201.h"
 #include "msgdata/msg/msg_0066_D23R0102.h"
 	.include "asm/macros.inc"
@@ -1138,7 +1139,7 @@ _021E7172:
 	cmp r0, #0
 	beq _021E718E
 	add r0, r4, #0
-	bl ov02_02246C8C
+	bl FieldSystem_PerformLandOrSurfEncounterCheck
 	cmp r0, #1
 	bne _021E718E
 	add sp, #8
@@ -2193,13 +2194,13 @@ ov01_021E7A08: ; 0x021E7A08
 	add r5, r0, #0
 	ldr r0, [r4, #0xc]
 	bl Save_VarsFlags_Get
-	ldr r1, _021E7A5C ; =FLAG_UNK_984
+	ldr r1, _021E7A5C ; =FLAG_SYS_GOT_BIKE_SHOP_CALL
 	bl Save_VarsFlags_CheckFlagInArray
 	cmp r0, #0
 	bne _021E7A56
 	add r0, r5, #0
 	mov r1, #2
-	bl sub_0202F08C
+	bl PhoneCallPersistentState_CheckCallTriggerFlag
 	cmp r0, #0
 	bne _021E7A56
 	ldr r0, [r4, #0xc]
@@ -2212,8 +2213,8 @@ ov01_021E7A08: ; 0x021E7A08
 	blo _021E7A56
 	add r0, r4, #0
 	bl FieldSystem_GetGearPhoneRingManager
-	mov r1, #2
-	mov r2, #1
+	mov r1, #CALL_TRIGGER_BIKE_SHOP_STEPS
+	mov r2, #1  // TRUE
 	bl sub_02092E14
 	mov r0, #0
 	pop {r3, r4, r5, pc}
@@ -2221,7 +2222,7 @@ _021E7A56:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	nop
-_021E7A5C: .word FLAG_UNK_984
+_021E7A5C: .word FLAG_SYS_GOT_BIKE_SHOP_CALL
 	thumb_func_end ov01_021E7A08
 
 	thumb_func_start BugContestTimeoutCheck

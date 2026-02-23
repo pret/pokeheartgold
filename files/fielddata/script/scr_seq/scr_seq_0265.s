@@ -37,7 +37,7 @@ _0057:
 	touchscreen_menu_show
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0082
-	setflag FLAG_UNK_99E
+	setflag FLAG_SYS_SUBSCRIBED_TO_EGG_CALLS
 	npc_msg msg_0439_00015
 	wait_button_or_walk_away
 	closemsg
@@ -45,8 +45,8 @@ _0057:
 	end
 
 _0082:
-	clearflag FLAG_UNK_99E
-	scrcmd_149 5
+	clearflag FLAG_SYS_SUBSCRIBED_TO_EGG_CALLS
+	unset_phone_call_trigger CALL_TRIGGER_DAYCARE_HAS_EGG
 	npc_msg msg_0439_00016
 	wait_button_or_walk_away
 	closemsg
@@ -54,7 +54,7 @@ _0082:
 	end
 
 _0094:
-	scrcmd_149 5
+	unset_phone_call_trigger CALL_TRIGGER_DAYCARE_HAS_EGG
 	npc_msg msg_0439_00001
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_RESULT
@@ -72,7 +72,7 @@ _0094:
 	goto_if_ne _00EB
 	npc_msg msg_0439_00012
 	setvar VAR_UNK_408E, 4
-	setflag FLAG_UNK_992
+	setflag FLAG_SYS_TRIGGER_EGG_CALL
 	goto _0057
 
 _00EB:
@@ -104,7 +104,7 @@ _0114:
 	goto_if_ne _0146
 	npc_msg msg_0439_00011
 	setvar VAR_UNK_408E, 4
-	setflag FLAG_UNK_992
+	setflag FLAG_SYS_TRIGGER_EGG_CALL
 	goto _0057
 
 _0146:

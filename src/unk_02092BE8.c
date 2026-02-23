@@ -77,7 +77,7 @@ static void FieldSystem_InitPokegearArgs(FieldSystem *sys, PokegearArgs *pokegea
             pokegearArgs->callScriptID = Unk_struct.callScriptID;     // message num?
             pokegearArgs->isScriptedCall = Unk_struct.isScriptedCall; // call type?
             if (pokegearArgs->isScriptedCall == 3) {
-                sub_0202F050(SaveData_GetPhoneCallPersistentState(sys->saveData), Unk_struct.unk_2);
+                PhoneCallPersistentState_ClearCallTriggerFlag(SaveData_GetPhoneCallPersistentState(sys->saveData), Unk_struct.callTriggerID);
             } else if (pokegearArgs->isScriptedCall == 0) {
                 sub_0202AB18(Save_Misc_Get(sys->saveData), Unk_struct.unk_0, Unk_struct.unk_1, pokegearArgs->callerId);
             }
@@ -134,7 +134,7 @@ PhoneBookEntry *GearPhoneRingManager_GetCallerPhoneBookEntry(GearPhoneRingManage
 }
 
 void sub_02092E14(GearPhoneRingManager *ptr, u8 a1, BOOL a2) {
-    sub_0202F01C(ptr->savingsData, a1);
+    PhoneCallPersistentState_SetCallTriggerFlag(ptr->savingsData, a1);
     if (a2) {
         if (ptr->unk_var8 < ptr->unk_varC - 1) {
             ptr->unk_var8 = ptr->unk_varC - 1;
@@ -160,7 +160,7 @@ static void sub_02092E54(GearPhoneRingManager *ptr) {
     u8 var4057 = Save_VarsFlags_GetVar4057(state);
     u8 i;
     for (i = 0; i < 5; i++) {
-        if (sub_0202F08C(ptr->savingsData, i + 7)) {
+        if (PhoneCallPersistentState_CheckCallTriggerFlag(ptr->savingsData, i + 7)) {
             return;
         }
     }
@@ -172,7 +172,7 @@ static void sub_02092E54(GearPhoneRingManager *ptr) {
         if (sub_0202F798(zone, igt, 3) == 0) {
             return;
         }
-        sub_02092E14(ptr, 7, TRUE);
+        sub_02092E14(ptr, CALL_TRIGGER_BAOBA_NEXT_TEST, TRUE);
     } else {
         if (var4057 < 6) {
             return;
@@ -186,19 +186,17 @@ static void sub_02092E54(GearPhoneRingManager *ptr) {
         }
         if (Unkvar > 1) {
             if (var < 3) {
-                sub_02092E14(ptr, 11, TRUE);
+                sub_02092E14(ptr, CALL_TRIGGER_BAOBA_MEMORY_LOSS, TRUE);
             } else {
-                sub_02092E14(ptr, 10, TRUE);
+                sub_02092E14(ptr, CALL_TRIGGER_BAOBA_EVEN_MORE_OBJECTS, TRUE);
             }
         } else {
             if (var == 0) {
-                sub_02092E14(ptr, 8, TRUE);
+                sub_02092E14(ptr, CALL_TRIGGER_BAOBA_OBJECT_ARRANGEMENT, TRUE);
+            } else if (var == 3) {
+                sub_02092E14(ptr, CALL_TRIGGER_BAOBA_EVEN_MORE_OBJECTS, TRUE);
             } else {
-                if (var == 3) {
-                    sub_02092E14(ptr, 10, TRUE);
-                } else {
-                    sub_02092E14(ptr, 9, TRUE);
-                }
+                sub_02092E14(ptr, CALL_TRIGGER_BAOBA_MORE_OBJECTS, TRUE);
             }
         }
     }
@@ -228,7 +226,7 @@ static void gearRingingManagerReset(GearPhoneRingManager *ptr) {
     ptr->callerId = PHONE_CONTACT_NONE;
     ptr->isScriptedCall = 0;
     ptr->callScriptID = 0;
-    ptr->unk_var7 = 0;
+    ptr->callTriggerID = 0;
     ptr->entry.id = PHONE_CONTACT_NONE;
     ptr->unk_var12 = 50;
 }
@@ -282,13 +280,13 @@ BOOL sub_02093070(FieldSystem *sys) {
     if (SavePokegear_IsNumberRegistered(SaveData_Pokegear_Get(sys->saveData), PHONE_CONTACT_BILL) == 0xff) {
         return FALSE;
     }
-    if (Save_VarsFlags_CheckFlagInArray(Save_VarsFlags_Get(sys->saveData), FLAG_UNK_985)) {
+    if (Save_VarsFlags_CheckFlagInArray(Save_VarsFlags_Get(sys->saveData), FLAG_SYS_GOT_BILL_PC_FULL_CALL)) {
         return FALSE;
     }
     if (PCStorage_CountEmptySpotsInAllBoxes(SaveArray_PCStorage_Get(sys->saveData)) != 0) {
         return FALSE;
     }
-    sub_02092E14(FieldSystem_GetGearPhoneRingManager(sys), 3, TRUE);
+    sub_02092E14(FieldSystem_GetGearPhoneRingManager(sys), CALL_TRIGGER_BILL_PC_FULL, TRUE);
     return TRUE;
 }
 
@@ -306,7 +304,7 @@ BOOL sub_020930C4(FieldSystem *sys) {
         var = 9; // unreachable
     }
     if (!Save_VarsFlags_CheckFlagInArray(state, var + FLAG_SYS_OAK_ACKNOWLEDGED_NATIONAL_DEX_COMPLETION)) {
-        sub_02092E14(FieldSystem_GetGearPhoneRingManager(sys), 4, FALSE);
+        sub_02092E14(FieldSystem_GetGearPhoneRingManager(sys), CALL_TRIGGER_OAK_DEX_PROGRESS, FALSE);
         return TRUE;
     }
     return FALSE;
@@ -316,7 +314,7 @@ BOOL sub_02093134(FieldSystem *sys, Pokemon *mon) {
     if (MonIsFromTogepiEgg(mon, sys->saveData) == 0) {
         return FALSE;
     }
-    sub_02092E14(FieldSystem_GetGearPhoneRingManager(sys), 0, 1);
+    sub_02092E14(FieldSystem_GetGearPhoneRingManager(sys), CALL_TRIGGER_ELM_EGG_HATCHED, 1);
     Save_VarsFlags_SetFlagInArray(Save_VarsFlags_Get(sys->saveData), FLAG_SYS_HATCHED_TOGEPI_EGG);
     return TRUE;
 }
@@ -326,9 +324,9 @@ BOOL sub_0209316C(FieldSystem *sys) {
     if (SavePokegear_IsNumberRegistered(SaveData_Pokegear_Get(sys->saveData), PHONE_CONTACT_DAY_C_MAN) == 0xff) {
         return FALSE;
     }
-    if (Save_VarsFlags_CheckFlagInArray(state, FLAG_UNK_992) && !Save_VarsFlags_CheckFlagInArray(state, FLAG_UNK_99E)) {
+    if (Save_VarsFlags_CheckFlagInArray(state, FLAG_SYS_TRIGGER_EGG_CALL) && !Save_VarsFlags_CheckFlagInArray(state, FLAG_SYS_SUBSCRIBED_TO_EGG_CALLS)) {
         return FALSE;
     }
-    sub_02092E14(FieldSystem_GetGearPhoneRingManager(sys), 5, 1);
+    sub_02092E14(FieldSystem_GetGearPhoneRingManager(sys), CALL_TRIGGER_DAYCARE_HAS_EGG, 1);
     return TRUE;
 }
