@@ -378,3 +378,5 @@
 .public ov44_02233100
 .public ov44_02233160
 .public ov44_0223317C
+.public ov44_02235340
+.public ov44_0223532C
