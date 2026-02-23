@@ -36,25 +36,25 @@
 #include "unk_02096910.h"
 
 static BOOL sub_0204A1E8(ScriptContext *ctx);
-static u32 sub_0204A2A8(UnkStruct_Fsys_A0 *unkStruct, u8 a1);
+static u32 sub_0204A2A8(FrontierFieldSystem *frontierFsys, u8 a1);
 
-static const u16 _020FBF70[] = { 141, 145, 142, 143, 144 };
+static const u16 StatTrainerOverworlds[] = { SPRITE_SEVEN1, SPRITE_SEVEN5, SPRITE_SEVEN2, SPRITE_SEVEN3, SPRITE_SEVEN4 };
 
 BOOL ScrCmd_410(ScriptContext *ctx) {
-    u16 unk4 = ScriptReadHalfword(ctx);
-    u16 unk6 = ScriptReadHalfword(ctx);
-    ctx->fieldSystem->unkA0 = sub_0204A824(FieldSystem_GetSaveData(ctx->fieldSystem), unk4, unk6);
+    u16 resumeFromPrevious = ScriptReadHalfword(ctx);
+    u16 towerMode = ScriptReadHalfword(ctx);
+    ctx->fieldSystem->frontier = InitFrontierFieldSystem(FieldSystem_GetSaveData(ctx->fieldSystem), resumeFromPrevious, towerMode);
     return FALSE;
 }
 
 BOOL ScrCmd_409(ScriptContext *ctx) {
-    sub_0204A810(&(ctx->fieldSystem->unkA0));
+    sub_0204A810(&(ctx->fieldSystem->frontier));
     return FALSE;
 }
 
 BOOL ScrCmd_411(ScriptContext *ctx) {
-    sub_0204AA2C(ctx->fieldSystem->unkA0);
-    ctx->fieldSystem->unkA0 = NULL;
+    sub_0204AA2C(ctx->fieldSystem->frontier);
+    ctx->fieldSystem->frontier = NULL;
     return FALSE;
 }
 
@@ -64,17 +64,17 @@ BOOL ScrCmd_412(ScriptContext *ctx) {
     u16 arg = ScriptGetVar(ctx);
     u16 resultVarId = ScriptReadHalfword(ctx);
     u16 *result = GetVarPointer(ctx->fieldSystem, resultVarId);
-    UnkStruct_Fsys_A0 *unkStruct = ctx->fieldSystem->unkA0;
+    FrontierFieldSystem *frontierFsys = ctx->fieldSystem->frontier;
     switch (id) {
     case 1:
         if (arg == 0) {
-            *result = sub_0204A5B0(unkStruct->unk0e, ctx->fieldSystem->saveData, TRUE);
+            *result = PartyIsValidForTower(frontierFsys->numMons, ctx->fieldSystem->saveData, TRUE);
         } else {
-            *result = sub_0204A5B0(arg, ctx->fieldSystem->saveData, TRUE);
+            *result = PartyIsValidForTower(arg, ctx->fieldSystem->saveData, TRUE);
         }
         break;
     case 2:
-        sub_0204A68C();
+        ResetSystem();
         break;
     case 3:
         sub_0204A698(sub_0202D908(ctx->fieldSystem->saveData));
@@ -114,78 +114,78 @@ BOOL ScrCmd_412(ScriptContext *ctx) {
         return TRUE;
     case 30:
         unk = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
-        sub_0204AA58(unkStruct, ctx->taskman, unk);
+        FrontierFieldSystem_0204AA58(frontierFsys, ctx->taskman, unk);
         return TRUE;
     case 31:
         unk = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
-        *result = sub_0204AA78(unkStruct, unk, ctx->fieldSystem->saveData);
+        *result = FrontierFieldSystem_0204AA78(frontierFsys, unk, ctx->fieldSystem->saveData);
         break;
     case 32:
-        *result = sub_0204AB10(unkStruct, ctx->fieldSystem->saveData);
+        *result = FrontierFieldSystem_SelectedPartyHasDuplicateSpeciesOrItem(frontierFsys, ctx->fieldSystem->saveData);
         break;
     case 35:
-        *result = sub_0204AC7C(unkStruct);
+        *result = FrontierFieldSystem_0204AC7C(frontierFsys);
         break;
     case 37: // unused
-        sub_0204AD04(unkStruct, ctx->fieldSystem->saveData);
+        FrontierFieldSystem_0204AD04(frontierFsys, ctx->fieldSystem->saveData);
         break;
     case 38: // unused
-        sub_0204AE20(unkStruct, ctx->fieldSystem->saveData);
+        FrontierFieldSystem_0204AE20(frontierFsys, ctx->fieldSystem->saveData);
         break;
     case 39:
-        sub_0204AF2C(unkStruct);
+        FrontierFieldSystem_0204AF2C(frontierFsys);
         break;
     case 56:
-        sub_0204AFE0(unkStruct);
+        FrontierFieldSystem_0204AFE0(frontierFsys);
         break;
     case 41: // unused
-        *result = sub_0204B044(unkStruct, arg);
+        *result = FrontierFieldSystem_0204B044(frontierFsys, arg);
         break;
     case 43:
-        *result = sub_0204B05C(unkStruct);
+        *result = FrontierFieldSystem_0204B05C(frontierFsys);
         break;
     case 45:
-        *result = sub_0204B060(unkStruct);
+        *result = FrontierFieldSystem_GetPalmerDefeated(frontierFsys);
         break;
     case 47: // unused
-        sub_0204B0E0(unkStruct, ctx->fieldSystem->saveData);
+        FrontierFieldSystem_0204B0E0(frontierFsys, ctx->fieldSystem->saveData);
         break;
     case 48:
-        *result = sub_0204B1CC(unkStruct, ctx->fieldSystem->saveData);
+        *result = FrontierFieldSystem_TryGivePalmerRibbons(frontierFsys, ctx->fieldSystem->saveData);
         break;
     case 49:
-        *result = sub_0204B204(unkStruct, ctx->fieldSystem->saveData);
+        *result = FrontierFieldSystem_TryGiveOtherTowerRibbons(frontierFsys, ctx->fieldSystem->saveData);
         break;
     case 50:
-        unkStruct->unk10_5 = arg;
+        frontierFsys->multiBattleAllyID = arg;
         break;
     case 51:
-        *result = unkStruct->unk10_5;
+        *result = frontierFsys->multiBattleAllyID;
         break;
     case 52:
-        sub_0204ABC8(unkStruct, ctx->fieldSystem->saveData);
+        FrontierFieldSystem_SetRandomFrontierTrainers(frontierFsys, ctx->fieldSystem->saveData);
         break;
     case 53:
-        *result = unkStruct->unk2a[arg];
+        *result = frontierFsys->partyMonIndexes[arg];
         break;
     case 54:
-        *result = sub_0204B120(unkStruct, ctx->fieldSystem->saveData, 1);
+        *result = FrontierFieldSystem_0204B120(frontierFsys, ctx->fieldSystem->saveData, 1);
         break;
     case 55:
-        *result = sub_0204A2A8(unkStruct, arg);
+        *result = FrontierFieldSystem_0204A2A8(frontierFsys, arg);
         break;
     case 57:
-        *result = sub_0204B258(unkStruct, ctx->fieldSystem->saveData);
+        *result = FrontierFieldSystem_0204B258(frontierFsys, ctx->fieldSystem->saveData);
         break;
     case 100:
-        if (unkStruct == NULL) {
+        if (frontierFsys == NULL) {
             *result = TRUE;
         } else {
             *result = FALSE;
         }
         break;
     case 58:
-        MI_CpuClear8(unkStruct->unk884, sizeof(unkStruct->unk884));
+        MI_CpuClear8(frontierFsys->unk884, sizeof(frontierFsys->unk884));
         break;
     default:
         GF_ASSERT(FALSE);
@@ -196,13 +196,13 @@ BOOL ScrCmd_412(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_413(ScriptContext *ctx) {
-    UnkStruct_Fsys_A0 *unkStruct = ctx->fieldSystem->unkA0;
-    u16 unk6 = ScriptGetVar(ctx);
-    u16 unk7 = ScriptGetVar(ctx);
+    FrontierFieldSystem *frontierFsys = ctx->fieldSystem->frontier;
+    u16 multiBattleAllyIndex = ScriptGetVar(ctx);
+    u16 allyMonIndex = ScriptGetVar(ctx);
     u16 *speciesPtr = ScriptGetVarPointer(ctx);
     u16 *movePtr = ScriptGetVarPointer(ctx);
-    *speciesPtr = unkStruct->unk298[unk6].unk30[unk7].species;
-    *movePtr = unkStruct->unk298[unk6].unk30[unk7].moves[0];
+    *speciesPtr = frontierFsys->frontierStatTrainers[multiBattleAllyIndex].frontierMons[allyMonIndex].species;
+    *movePtr = frontierFsys->frontierStatTrainers[multiBattleAllyIndex].frontierMons[allyMonIndex].moves[0];
     return FALSE;
 }
 
@@ -222,32 +222,32 @@ BOOL ScrCmd_416(ScriptContext *ctx) {
     u16 unk7 = ScriptGetVar(ctx);
     u16 unk4 = ScriptGetVar(ctx);
     u16 *unkPtr = ScriptGetVarPointer(ctx);
-    UnkStruct_Fsys_A0 *unkStruct = ctx->fieldSystem->unkA0;
+    FrontierFieldSystem *frontierFsys = ctx->fieldSystem->frontier;
     *unkPtr = FALSE;
     u32 unk0;
     switch (unk7) {
     case 0:
         unk0 = 62;
-        sub_0204B6AC(ctx->fieldSystem->unkA0, ctx->fieldSystem->saveData);
+        sub_0204B6AC(ctx->fieldSystem->frontier, ctx->fieldSystem->saveData);
         break;
     case 1:
         unk0 = 63;
-        sub_0204B708(ctx->fieldSystem->unkA0);
+        sub_0204B708(ctx->fieldSystem->frontier);
         break;
     case 2:
         unk0 = 64;
-        sub_0204B720(ctx->fieldSystem->unkA0, unk4);
+        sub_0204B720(ctx->fieldSystem->frontier, unk4);
         break;
     }
     if (sub_0205C298(ctx->fieldSystem->saveData) == 1) {
-        if (sub_02037C0C(sub_0203769C(), unkStruct->unk83e) == 1) {
+        if (sub_02037C0C(sub_0203769C(), frontierFsys->unk83e) == 1) {
             *unkPtr = TRUE;
         } else {
             return TRUE;
         }
     } else {
-        sub_02096910((void *)unkStruct);
-        if (sub_02037030(unk0, unkStruct->unk83e, sizeof(unkStruct->unk83e)) == 1) {
+        sub_02096910((void *)frontierFsys);
+        if (sub_02037030(unk0, frontierFsys->unk83e, sizeof(frontierFsys->unk83e)) == 1) {
             *unkPtr = TRUE;
         }
     }
@@ -255,26 +255,26 @@ BOOL ScrCmd_416(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_417(ScriptContext *ctx) {
-    UnkStruct_Fsys_A0 *unkStruct = ctx->fieldSystem->unkA0;
+    FrontierFieldSystem *frontierFsys = ctx->fieldSystem->frontier;
     u16 unk6 = ScriptGetVar(ctx);
     u16 unk7 = ScriptReadHalfword(ctx);
     if (sub_0205C298(ctx->fieldSystem->saveData) == 1) {
         sub_020672A4(ctx->fieldSystem->taskman, unk6, unk7);
     } else {
-        unkStruct->unk8DA = unk7;
-        unkStruct->unk8D5 = unk6;
+        frontierFsys->unk8DA = unk7;
+        frontierFsys->unk8D5 = unk6;
         SetupNativeScript(ctx, sub_0204A1E8);
     }
     return TRUE;
 }
 
 static BOOL sub_0204A1E8(ScriptContext *ctx) {
-    UnkStruct_Fsys_A0 *unkStruct = ctx->fieldSystem->unkA0;
-    u16 *unkPtr = GetVarPointer(ctx->fieldSystem, unkStruct->unk8DA);
-    u32 unk = unkStruct->unk8D5 == 1 ? 1 : 2;
-    if (unkStruct->unk8D4 == unk) {
-        unkStruct->unk8D4 = 0;
-        *unkPtr = unkStruct->unk8D8;
+    FrontierFieldSystem *frontierFsys = ctx->fieldSystem->frontier;
+    u16 *unkPtr = GetVarPointer(ctx->fieldSystem, frontierFsys->unk8DA);
+    u32 unk = frontierFsys->unk8D5 == 1 ? 1 : 2;
+    if (frontierFsys->unk8D4 == unk) {
+        frontierFsys->unk8D4 = 0;
+        *unkPtr = frontierFsys->unk8D8;
         return TRUE;
     } else {
         return FALSE;
@@ -297,16 +297,16 @@ BOOL ScrCmd_419(ScriptContext *ctx) {
     return FALSE;
 }
 
-static u32 sub_0204A2A8(UnkStruct_Fsys_A0 *unkStruct, u8 a1) {
+static u32 sub_0204A2A8(FrontierFieldSystem *frontierFsys, u8 a1) {
     if (a1 == 2) {
-        return unkStruct->unk10_5;
+        return frontierFsys->multiBattleAllyID;
     } else if (a1 == 1) {
-        if (unkStruct->unk0f == 2) {
-            return _020FBF70[unkStruct->unk10_5];
+        if (frontierFsys->towerMode == TOWER_MODE_MULTI) {
+            return StatTrainerOverworlds[frontierFsys->multiBattleAllyID];
         }
-        return unkStruct->unk12 ? 97 : 0;
+        return frontierFsys->linkAllyGender ? SPRITE_HEROINE : SPRITE_HERO;
     } else {
-        return unkStruct->unk11 ? 97 : 0;
+        return frontierFsys->trainerGender ? SPRITE_HEROINE : SPRITE_HERO;
     }
 }
 
