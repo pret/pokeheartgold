@@ -17,7 +17,7 @@ void sub_0205A430(void);
 void sub_0205A40C(void);
 void sub_0205A410(void);
 void sub_02059AE4(void);
-void sub_02059B08(void);
+u32 sub_02059B08(void);
 void sub_02059B18(void);
 void sub_02059B34(void);
 

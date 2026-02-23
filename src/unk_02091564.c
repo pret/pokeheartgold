@@ -131,46 +131,46 @@ static const UnkStruct_02091564 sUnkTable_02106078[] = {
 	{ sub_02050398, sub_020342B8, NULL }
 };
 
-s32 sub_02091564() {
-    return 24;
+u32 sub_02091564() {
+    return 0x18;
 }
 
-s32 sub_02091568() {
-    return 89 << 4;
+u32 sub_02091568() {
+    return 0x590;
 }
 
-void sub_02091570(void) {}
+void sub_02091570() {}
 
 void sub_02091574(void* arg0) {
-	sub_0203410C(&sUnkTable_02106078, sizeof(sUnkTable_02106078) / sizeof(sUnkTable_02106078[0]), arg0);
+	sub_0203410C(&sUnkTable_02106078, NELEMS(sUnkTable_02106078), arg0);
 }
 
-s32 sub_02091588(void) {
-    return 0x0000066c;
+u32 sub_02091588() {
+    return 0x66C;
 }
 
-s32 sub_02091590(void) {
-    return 47 << 6;
+u32 sub_02091590() {
+    return 0xBC0;
 }
 
-s32 sub_02091598(void) {
-    return 63 << 4;
+u32 sub_02091598() {
+    return 0x3F0;
 }
 
-s32 sub_020915A0() {
-    return 10;
+u32 sub_020915A0() {
+    return 0xA;
 }
 
-s32 sub_020915A4() {
-    return 50;
+u32 sub_020915A4() {
+    return 0x32;
 }
 
-s32 sub_020915A8()
+u32 sub_020915A8()
 {
-    return 4;
+    return 0x4;
 }
 
-s32 sub_020915AC()
+u32 sub_020915AC()
 {
-    return 4;
+    return 0x4;
 }
