@@ -3,7 +3,7 @@
 
 #include "global.h"
 
-void sub_020971F8(s32 arg0);
+void sub_020971F8(void* arg0);
 void sub_02097214(void);
 s32 sub_0209722C(void);
 s32 sub_02097230(void);

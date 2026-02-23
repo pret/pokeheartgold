@@ -4,7 +4,7 @@
 #include "unk_02033AE0.h"
 #include "overlay_44.h"
 
-void sub_020971F8(s32 arg0) {
+void sub_020971F8(void* arg0) {
     const UnkStruct_0203AC88* unkStruct;
 
     unkStruct = sub_0203AC88();
