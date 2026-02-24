@@ -812,7 +812,7 @@ Overlay OVY_44
 {
     After OVY_42
     Object asm/overlay_44.o
-    Object src/overlay_44_t.o
+    Object src/overlay_44_02235340.o
 }
 Overlay OVY_45
 {

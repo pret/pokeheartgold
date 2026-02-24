@@ -5,15 +5,15 @@
 #include "heap.h"
 #include "list_menu_2d.h"
 
-typedef struct UnkStruct_ov44_02235340_1 {
+typedef struct UnkStruct_ov44_02235004 {
     u8 unk0[27];
     u8 unk1B;
     u8 unk1C[5];
     u8 unk21;
-} UnkStruct_ov44_02235340_1;
+} UnkStruct_ov44_02235004;
 
 typedef struct UnkStruct_ov44_02235340 {
-    UnkStruct_ov44_02235340_1* unk0;
+    UnkStruct_ov44_02235004* unk0;
     u8 unk4;
     u8 unk5;
     u8 unk6;
@@ -44,17 +44,17 @@ typedef struct UnkStruct_ov44_02235340 {
     u8 unk2D;
     u8 unk2E;
     u8 unk2F;
-    BgConfig* unk30;
+    BgConfig* bgConfig;
     u8 unk34[472];
-    struct ListMenu2D* unk20C;
+    struct ListMenu2D* listMenu2D;
 } UnkStruct_ov44_02235340;
 
-typedef struct sub_struct {
+typedef struct UnkStruct_ov44_02235340_sub {
     u8 unk0;
     u8 unk1;
     u8 unk2;
     u8 unk3;
-} sub_struct;
+} UnkStruct_ov44_02235340_sub;
 
 extern const struct WindowTemplate ov44_0223645C;
 
