@@ -388,3 +388,13 @@
 .public ov44_02235158
 .public ov44_02235100
 .public ov44_02235090
+.public ov44_02235038
+.public ov44_02235004
+.public ov44_02234FDC
+.public ov44_02234FC4
+.public ov44_02234F88
+.public ov44_02234F60
+.public ov44_02234F44
+.public ov44_02234EF4
+.public ov44_02234EA4
+.public ov44_02234E08

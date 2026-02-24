@@ -5,9 +5,163 @@
 #include "unk_0203A3B0.h"
 #include "unk_02034354.h"
 #include "unk_02035900.h"
+#include "unk_020379A0.h"
 
 // const struct WindowTemplate ov44_0223645C = {0x02, 0x19, 0x0D, 0x05, 0x04, 0x01, 0x39};
 extern const WindowTemplate ov44_0223645C;
+
+s32 ov44_02234E08(UnkStruct_ov44_02235340* arg0, s32 arg1, enum HeapID heapID) {
+    ov44_02233F6C(arg0, heapID);
+    if (arg0->unk12 != 0) {
+        arg0->unk12 = 0U;
+        if (arg0->unk0->unk21 == 1) {
+            ov44_02233F20(arg0);
+            ov44_02233F3C(arg0);
+        }
+        ov44_022340B4(arg0);
+    }
+    if (ov44_0223442C(arg0) == 1) {
+        sub_02037BEC();
+        sub_02037AC0(0xE);
+        ov44_022342E0(arg0, arg1, heapID);
+        ov44_02233860(&arg0->unk30, arg1, 0x66, heapID);
+        ov44_02234440(arg0);
+        arg0->unk8 = 0x12C;
+        ov44_022342B8(arg0);
+        arg0->unk5 = 0xB;
+    } else if (0x400 & gSystem.newKeys) {
+        ov44_022342E0(arg0, arg1, heapID);
+        arg0->unk5 = 0x12;
+    }
+    return 0;
+}
+
+s32 ov44_02234EA4(UnkStruct_ov44_02235340* arg0) {
+    s32 temp_r0;
+
+    if (sub_02037B38(0xE) != 0) {
+        s16 subroutine_arg0 = (s16) arg0->unk0->unk1B;
+        if (ov44_02233F64(arg0) != sub_02037454()) {
+            temp_r0 = arg0->unk8 - 1;
+            arg0->unk8 = temp_r0;
+            if (temp_r0 <= 0) {
+                arg0->unk5 = 0xF;
+            }
+            return 0;
+        }
+        if (sub_02037C0C(sub_0203769C(), &subroutine_arg0) == 1) {
+            arg0->unk5 = 0xC;
+        }
+    }
+    return 0;
+}
+
+s32 ov44_02234EF4(UnkStruct_ov44_02235340* arg0) {
+    s32 sp0;
+    s32 temp_r7;
+    s32 var_r4;
+    s32 var_r5;
+    u16* temp_r0;
+
+    temp_r7 = ov44_02233F64();
+    sp0 = sub_0203769C();
+    var_r5 = 0;
+    var_r4 = 0;
+    if (temp_r7 > 0) {
+        do {
+            if (sp0 != var_r4) {
+                temp_r0 = sub_02037C44(var_r4);
+                if (temp_r0 != NULL) {
+                    if (*temp_r0 == arg0->unk0->unk1B) {
+                        var_r5 += 1;
+                    } else {
+                        arg0->unk5 = 0xF;
+                    }
+                }
+            } else {
+                var_r5 += 1;
+            }
+            var_r4 += 1;
+        } while (var_r4 < temp_r7);
+    }
+    if (var_r5 == temp_r7) {
+        arg0->unk5 = 0xD;
+    }
+    return 0;
+}
+
+s32 ov44_02234F44(UnkStruct_ov44_02235340* arg0) {
+    sub_020398D4(1, 1);
+    sub_02037AC0(0x12);
+    arg0->unk5 = 0xE;
+    return 0;
+}
+
+s32 ov44_02234F60(UnkStruct_ov44_02235340* arg0, s32 arg1, enum HeapID heapID) {
+    if (sub_02037B38(0x12) != 0) {
+        ov44_022342E0(arg0, arg1, heapID);
+        arg0->unk7 = 1;
+        return 1;
+    }
+    return 0;
+}
+
+s32 ov44_02234F88(UnkStruct_ov44_02235340* arg0, s32 arg1, enum HeapID heapID) {
+    if (arg0->unk20C != NULL) {
+        Clear2dMenuWindowAndDelete(arg0->unk20C, heapID);
+        arg0->unk20C = NULL;
+    }
+    ov44_02233A34(&arg0->unk30);
+    ov44_022342E0(arg0, arg1, heapID);
+    arg0->unk5 = 0x10;
+    return 0;
+}
+
+s32 ov44_02234FC4(UnkStruct_ov44_02235340* arg0, s32 arg1, enum HeapID heapID) {
+    ov44_02233860(&arg0->unk30, arg1, 0x76, heapID);
+    arg0->unk5 = 0x11;
+    return 0;
+}
+
+s32 ov44_02234FDC(UnkStruct_ov44_02235340* arg0) {
+    if (ov44_02233914(&arg0->unk30) == 0) {
+        return 0;
+    }
+    sub_02039358();
+    sub_02039B58();
+    arg0->unk7 = 0;
+    sub_020398D4(0, 1);
+    return 1;
+}
+
+s32 ov44_02235004(UnkStruct_ov44_02235340* arg0, s32 arg1, enum HeapID heapID) {
+    s32 var_r2;
+
+    ov44_02233F6C(arg0, heapID);
+    if (arg0->unk0->unk21 == 1) {
+        var_r2 = 0x7D;
+    } else {
+        var_r2 = 0x7C;
+    }
+    ov44_02233860(&arg0->unk30, arg1, var_r2, heapID);
+    arg0->unk5 = 0x13;
+    return 0;
+}
+
+s32 ov44_02235038(UnkStruct_ov44_02235340* arg0, s32 arg1, enum HeapID heapID) {
+    ov44_02233F6C(arg0, heapID);
+    if (ov44_0223442C(arg0) == 1) {
+        arg0->unk5 = 0xA;
+        ov44_02233954(&arg0->unk30);
+        return 0;
+    }
+    if (ov44_02233914(&arg0->unk30) == 0) {
+        return 0;
+    }
+    arg0->unk20C = Std_CreateYesNoMenu(arg0->unk30, &ov44_0223645C, 0x30, 4, heapID);
+    arg0->unk5 = 0x14;
+    return 0;
+}
 
 s32 ov44_02235090(UnkStruct_ov44_02235340* arg0, s32 arg1, enum HeapID heapID) {
     s32 temp_r0;
@@ -32,15 +186,15 @@ s32 ov44_02235090(UnkStruct_ov44_02235340* arg0, s32 arg1, enum HeapID heapID) {
     return 0;
 }
 
-s32 ov44_02235100(UnkStruct_ov44_02235340* arg0, s32 arg1, s32 arg2) {
+s32 ov44_02235100(UnkStruct_ov44_02235340* arg0, s32 arg1, enum HeapID heapID) {
     arg0->unk26 = sub_02034870(0);
     if (arg0->unk26 == 0x20) {
         GF_AssertFail();
     }
-    ov44_02233C88(&arg0->unk30, arg1, 0, 0, arg2);
+    ov44_02233C88(&arg0->unk30, arg1, 0, 0, heapID);
     sub_02039358();
     arg0->unk27 = 0;
-    ov44_02233860(&arg0->unk30, arg1, 0x84, arg2);
+    ov44_02233860(&arg0->unk30, arg1, 0x84, heapID);
     arg0->unk5 = 0x16;
     return 0;
 }
@@ -71,8 +225,8 @@ s32 ov44_0223518C(UnkStruct_ov44_02235340* arg0, s32 arg1, enum HeapID heapID) {
     return 0;
 }
 
-s32 ov44_022351BC(UnkStruct_ov44_02235340* arg0, s32 arg1, s32 arg2) {
-    ov44_02233860(&arg0->unk30, arg1, 0x11, arg2);
+s32 ov44_022351BC(UnkStruct_ov44_02235340* arg0, s32 arg1, enum HeapID heapID) {
+    ov44_02233860(&arg0->unk30, arg1, 0x11, heapID);
     ov44_022342B8(arg0);
     arg0->unk8 = 0x5A;
     arg0->unk5 = 0x19;
