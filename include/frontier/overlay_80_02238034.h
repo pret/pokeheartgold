@@ -6,7 +6,7 @@
 
 u8 BattleArcade_GetMonCount(u8 type, int a1);
 u8 BattleArcade_GetOpponentMonCount(u8 type, int a1);
-BattleSetup *BattleArcade_NewBattleSetup(ArcadeContext *ctx, FrontierLaunchParam *param);
+BattleSetup *BattleArcade_NewBattleSetup(ArcadeContext *ctx, FrontierLaunchArgs *args);
 u32 ov80_02238498(ArcadeContext *ctx);
 u32 ov80_02238430(ArcadeContext *ctx, u8 a1);
 BOOL BattleArcade_MultiplayerCheck(int type);

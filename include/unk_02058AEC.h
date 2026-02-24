@@ -12,5 +12,13 @@ u32 sub_0205A35C(struct UnkStruct_02059E1C *fieldSystem_unk80);
 void sub_0205A3B0(struct UnkStruct_02059E1C *fieldSystem_unk80, int a1, int a2);
 int sub_0205A39C(struct UnkStruct_02059E1C *fieldSystem_unk80);
 int sub_0205A47C(struct UnkStruct_02059E1C *fieldSystem_unk80, int a1);
+void sub_0205A408(void);
+void sub_0205A430(void);
+void sub_0205A40C(void);
+void sub_0205A410(void);
+void sub_02059AE4(void);
+u32 sub_02059B08(void);
+void sub_02059B18(void);
+void sub_02059B34(void);
 
 #endif // POKEHEARTGOLD_UNK_02058AEC_H

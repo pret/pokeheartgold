@@ -16,7 +16,7 @@
 .public GetMonData
 .public Mon_GetBoxMon
 .public Party_GetMonByIndex
-.public Frontier_GetLaunchParam
+.public Frontier_GetLaunchArgs
 .public Frontier_GetData
 .public Frontier_SetData
 .public Frontier_LaunchApplication

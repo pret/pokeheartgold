@@ -28,7 +28,7 @@ FrtCmd_151: ; 0x02231BF8
 	str r0, [sp, #0x14]
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl Frontier_GetLaunchParam
+	bl Frontier_GetLaunchArgs
 	str r6, [sp]
 	lsl r2, r4, #0x18
 	ldr r1, [sp, #0x14]
@@ -82,7 +82,7 @@ FrtCmd_154: ; 0x02231C8C
 	add r5, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl Frontier_GetLaunchParam
+	bl Frontier_GetLaunchArgs
 	add r6, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0]
@@ -121,7 +121,7 @@ FrtCmd_164: ; 0x02231CE0
 	add r5, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl Frontier_GetLaunchParam
+	bl Frontier_GetLaunchArgs
 	add r6, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0]
@@ -221,7 +221,7 @@ FrtCmd_156: ; 0x02231DBC
 	add r5, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl Frontier_GetLaunchParam
+	bl Frontier_GetLaunchArgs
 	add r6, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0]
@@ -250,7 +250,7 @@ FrtCmd_157: ; 0x02231DF8
 	add r5, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl Frontier_GetLaunchParam
+	bl Frontier_GetLaunchArgs
 	add r6, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0]
@@ -389,7 +389,7 @@ FrtCmd_160: ; 0x02231ED0
 	ldr r0, [sp, #0x10]
 	ldr r0, [r0]
 	ldr r0, [r0]
-	bl Frontier_GetLaunchParam
+	bl Frontier_GetLaunchArgs
 	add r7, r0, #0
 	ldr r0, [sp, #0x18]
 	cmp r0, #0x2c
@@ -1034,7 +1034,7 @@ FrtCmd_166: ; 0x022323E8
 	add r6, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl Frontier_GetLaunchParam
+	bl Frontier_GetLaunchArgs
 	ldr r0, [r0, #8]
 	bl Save_Frontier_GetStatic
 	add r5, r0, #0
@@ -1066,7 +1066,7 @@ FrtCmd_167: ; 0x02232430
 	add r6, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl Frontier_GetLaunchParam
+	bl Frontier_GetLaunchArgs
 	ldr r0, [r0, #8]
 	bl Save_Frontier_GetStatic
 	lsl r1, r4, #0x18
@@ -1089,7 +1089,7 @@ FrtCmd_168: ; 0x02232460
 	add r6, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl Frontier_GetLaunchParam
+	bl Frontier_GetLaunchArgs
 	lsl r1, r4, #0x18
 	ldr r0, [r0, #8]
 	lsr r1, r1, #0x18
@@ -1106,7 +1106,7 @@ FrtCmd_169: ; 0x0223248C
 	add r5, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl Frontier_GetLaunchParam
+	bl Frontier_GetLaunchArgs
 	ldr r1, [r5, #0x1c]
 	add r0, r1, #1
 	str r0, [r5, #0x1c]
