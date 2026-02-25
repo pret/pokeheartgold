@@ -36,7 +36,7 @@ typedef struct UnkStruct_ov44_02235340 {
     u8 unk1A;
     u8 unk1B;
     u32 unk1C;
-    u8 unk20[4];
+    u32 unk20;
     u8 unk24;
     u8 unk25;
     u8 unk26;
@@ -47,10 +47,8 @@ typedef struct UnkStruct_ov44_02235340 {
     u8 unk2B;
     u8 unk2C;
     u8 unk2D;
-    u8 unk2E;
-    u8 unk2F;
-    BgConfig* bgConfig;
-    u8 unk34[472];
+    Window window;
+    u8 unk34[457];
     struct ListMenu2D* listMenu2D;
 } UnkStruct_ov44_02235340;
 
@@ -64,29 +62,29 @@ typedef struct UnkStruct_ov44_02235340_sub {
 extern const WindowTemplate ov44_0223645C;
 
 void ov44_02233FA8(UnkStruct_ov44_02235340* arg0);
-void ov44_0223398C(BgConfig** arg0, s32 arg1, s32 arg2, enum HeapID heapID);
+void ov44_0223398C(Window* arg0, s32 arg1, s32 arg2, enum HeapID heapID);
 s32 ov44_02233E6C(UnkStruct_ov44_02235340* arg0);
 void ov44_02233EB4(UnkStruct_ov44_02235340* arg0, s32 arg1);
 void ov44_02233FE8(UnkStruct_ov44_02235340* arg0);
 void ov44_02234450(UnkStruct_ov44_02235340* arg0);
 void ov44_022340BC(UnkStruct_ov44_02235340* arg0, BOOL arg1, enum HeapID heapID);
-void ov44_0223386C(BgConfig** arg0, s32 arg1, s32 arg2, s32 arg3, enum HeapID heapID);
+void ov44_0223386C(Window* arg0, s32 arg1, s32 arg2, s32 arg3, enum HeapID heapID);
 void ov44_02234440(UnkStruct_ov44_02235340* arg0);
 void ov44_02233F3C(UnkStruct_ov44_02235340* arg0);
 void ov44_02233F20(UnkStruct_ov44_02235340* arg0);
 s32 ov44_02233F64(UnkStruct_ov44_02235340* arg0);
 s32 ov44_02234F60(UnkStruct_ov44_02235340* arg0, s32 arg1, enum HeapID heapID);
-void ov44_02233A34(BgConfig** arg0);
+void ov44_02233A34(Window* arg0);
 void ov44_022340B4(UnkStruct_ov44_02235340* arg0);
 void ov44_02233D38(UnkStruct_ov44_02235340* arg0, enum HeapID heapID);
-void ov44_02233954(BgConfig** arg0);
+void ov44_02233954(Window* arg0);
 BOOL ov44_0223442C(UnkStruct_ov44_02235340* arg0);
 void ov44_02233F6C(UnkStruct_ov44_02235340* arg0, enum HeapID heapID);
-void ov44_02233C88(BgConfig** arg0, s32 arg1, s32 arg2, s32 arg3, enum HeapID heapID);
+void ov44_02233C88(Window* arg0, s32 arg1, s32 arg2, s32 arg3, enum HeapID heapID);
 void ov44_022342B8(UnkStruct_ov44_02235340* arg0);
-void ov44_02233860(BgConfig** arg0, s32 arg1, s32 arg2, enum HeapID heapID);
+void ov44_02233860(Window* arg0, s32 arg1, s32 arg2, enum HeapID heapID);
 int ov44_02233E80(u8 arg0, u8 arg1);
-int ov44_02233914(BgConfig** arg0);
+int ov44_02233914(Window* arg0);
 void ov44_022342E0(UnkStruct_ov44_02235340* arg0, s32 arg1, enum HeapID heapID);
 void ov44_02233E48();
 void ov44_02234204(UnkStruct_ov44_02235340* arg0);
