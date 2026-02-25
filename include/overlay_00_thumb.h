@@ -3,5 +3,8 @@
 
 s32 ov00_021E6A70(u32, u32);
 int ov00_021E6EBC(void);
+void ov00_021E7220(s32);
+s32 ov00_021E70F4(void);
+void ov00_021E7130(void);
 
 #endif // POKEHEARTGOLD_OVERLAY_00_THUMB_H

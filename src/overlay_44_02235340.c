@@ -6,10 +6,218 @@
 #include "unk_02034354.h"
 #include "unk_02035900.h"
 #include "unk_020379A0.h"
+#include "unk_02005D10.h"
 #include "overlay_00_arm.h"
+#include "overlay_00_thumb.h"
 
-// const struct WindowTemplate ov44_0223645C = {0x02, 0x19, 0x0D, 0x05, 0x04, 0x01, 0x39};
 extern const WindowTemplate ov44_0223645C;
+
+s32 ov44_022344AC(UnkStruct_ov44_02235340* arg0, s32 arg1, enum HeapID arg2) {
+    ov44_02233860(&arg0->bgConfig, arg1, 0x6B, arg2);
+    arg0->unk5 = 2;
+    return 0;
+}
+
+s32 ov44_022344C4(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_02235340_sub* arg1) {
+    s32 temp_r0;
+
+    if (ov44_02233914(&arg0->bgConfig) == 0) {
+        return 0;
+    }
+    if (ov44_02233E6C(arg0) == 1) {
+        temp_r0 = sub_02034780();
+        if ((temp_r0 != 0xFF) && (arg0->unk6 != 0)) {
+            if (sub_02034870(temp_r0) == 0x20) {
+                UnkStruct_ov44_022345FC subroutine_arg0;
+                subroutine_arg0.unk0 = temp_r0;
+                subroutine_arg0.unk2 = 0;
+                sub_020346E8(temp_r0);
+                if (sub_02037030(0x16, &subroutine_arg0, 8) != 1) {
+                    GF_AssertFail();
+                }
+            } else {
+                arg0->unk6 = (u8) temp_r0;
+            }
+        }
+    }
+    if (1 & gSystem.newKeys) {
+        PlaySE(0x5DD);
+        if (ov44_02233E6C(arg0) == 0) {
+            arg0->unk5 = 6;
+        } else if ((s32) arg1->unk1 <= ov44_02233F64(arg0)) {
+            arg0->unk5 = 8;
+        } else {
+            arg0->unk5 = 6;
+        }
+    } else if (gSystem.newKeys & 2) {
+        PlaySE(0x5DD);
+        arg0->unk5 = 0x16;
+    } else if (arg0->unk6 != 0xFF) {
+        PlaySE(0x5DD);
+        arg0->unk5 = 3;
+    } else if (gSystem.newKeys & 0x400) {
+        arg0->unk5 = 0x1E;
+        PlaySE(0x5DD);
+    }
+    return 0;
+}
+
+s32 ov44_022345A0(UnkStruct_ov44_02235340* arg0, s32 arg1, enum HeapID arg2) {
+    ov44_0223398C(&arg0->bgConfig, arg1, arg0->unk6, arg2);
+    ov44_02233860(&arg0->bgConfig, arg1, 0x6C, arg2);
+    arg0->unk5 = 4;
+    return 0;
+}
+
+s32 ov44_022345C8(UnkStruct_ov44_02235340* arg0, s32 arg1, enum HeapID heapID) {
+    if (ov44_02233914(&arg0->bgConfig) == 0) {
+        return 0;
+    }
+    arg0->listMenu2D = Std_CreateYesNoMenu(arg0->bgConfig, &ov44_0223645C, 0x30, 4, heapID);
+    arg0->unk5 = 5;
+    return 0;
+}
+
+s32 ov44_022345FC(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_02235340_sub* arg1, enum HeapID arg2) {
+    s32 temp_r0;
+
+    temp_r0 = Handle2dMenuInput_DeleteOnFinish(arg0->listMenu2D, arg2);
+    if (temp_r0 != -1) {
+        UnkStruct_ov44_022345FC subroutine_arg0;
+        subroutine_arg0.unk0 = (s16) arg0->unk6;
+        if (temp_r0 == 0) {
+            subroutine_arg0.unk2 = 1;
+            ov44_022340BC(arg0, arg0->unk6, arg2);
+            if (arg0->unk0->unk21 == 1) {
+                ov44_02233F20(arg0);
+                ov44_02233F3C(arg0);
+            }
+            if ((s32) arg1->unk2 <= ov44_02233F64(arg0)) {
+                arg0->unk5 = 8;
+            } else {
+                arg0->unk5 = 1;
+            }
+        } else {
+            subroutine_arg0.unk2 = 0;
+            sub_020346E8(arg0->unk6);
+            arg0->unk5 = 1;
+        }
+        if (sub_02037030(0x16, &subroutine_arg0, 8) != 1) {
+            GF_AssertFail();
+        }
+        arg0->unk6 = 0xFF;
+        ov44_02233A34(&arg0->bgConfig);
+        arg0->listMenu2D = NULL;
+    }
+    return 0;
+}
+
+s32 ov44_0223469C(UnkStruct_ov44_02235340* arg0, s32 arg1, enum HeapID arg2) {
+    ov44_02233860(&arg0->bgConfig, arg1, 0x77, arg2);
+    arg0->unk5 = 7;
+    return 0;
+}
+
+s32 ov44_022346B4(UnkStruct_ov44_02235340* arg0) {
+    if (ov44_02233914(&arg0->bgConfig) == 0) {
+        return 0;
+    }
+    arg0->unk5 = 0x13;
+    return 0;
+}
+
+s32 ov44_022346D0(UnkStruct_ov44_02235340* arg0, s32 arg1, enum HeapID arg2) {
+    ov44_02233860(&arg0->bgConfig, arg1, 0x6F, arg2);
+    arg0->unk5 = 9;
+    return 0;
+}
+
+s32 ov44_022346E8(UnkStruct_ov44_02235340* arg0, s32 arg1, enum HeapID heapID) {
+    if (ov44_02233914(&arg0->bgConfig) == 0) {
+        return 0;
+    }
+    arg0->listMenu2D = Std_CreateYesNoMenu(arg0->bgConfig, &ov44_0223645C, 0x30, 4, heapID);
+    arg0->unk5 = 0xA;
+    return 0;
+}
+
+s32 ov44_0223471C(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_02235340_sub* arg1, enum HeapID arg2) {
+    s32 temp_r0;
+
+    temp_r0 = Handle2dMenuInput_DeleteOnFinish(arg0->listMenu2D, arg2);
+    if (temp_r0 != -1) {
+        if (temp_r0 == 0) {
+            arg0->unk5 = 0xB;
+        } else if ((s32) arg1->unk2 <= ov44_02233F64(arg0)) {
+            arg0->unk5 = 0x13;
+        } else {
+            arg0->unk5 = 1;
+        }
+        arg0->listMenu2D = NULL;
+    }
+    return 0;
+}
+
+s32 ov44_02234764(UnkStruct_ov44_02235340* arg0, s32 arg1, enum HeapID arg2) {
+    arg0->unk8 = 0x1E;
+    ov44_02233FA8(arg0);
+    ov44_02233860(&arg0->bgConfig, arg1, 0x66, arg2);
+    ov44_022342B8(arg0);
+    ov44_02234440(arg0);
+    arg0->unk5 = 0xC;
+    ov00_021E7130();
+    return 0;
+}
+
+s32 ov44_0223479C(UnkStruct_ov44_02235340* arg0) {
+    s32 temp_r5;
+
+    temp_r5 = sub_02037454();
+    if (temp_r5 != sub_020347A0()) {
+        ov44_02233FA8(arg0);
+        return 0;
+    }
+    if (ov00_021E70F4() == 0) {
+        return 0;
+    }
+    ov00_021E7220(1);
+    arg0->unk5 = 0xD;
+    return 0;
+}
+
+s32 ov44_022347D4(UnkStruct_ov44_02235340* arg0) {
+    s32 temp_r0;
+
+    temp_r0 = arg0->unk8;
+    if (temp_r0 == 0) {
+        if (sub_02037030(0x17, NULL, 0) != 0) {
+            arg0->unk5 = 0xE;
+        }
+    } else {
+        arg0->unk8 = (s32) (temp_r0 - 1);
+    }
+    return 0;
+}
+
+s32 ov44_022347FC(UnkStruct_ov44_02235340* arg0, s32 arg1) {
+    if (sub_02037B38(0xD) != 0) {
+        ov44_02233EB4(arg0, arg1);
+        sub_02037BEC();
+        sub_02037AC0(0xE);
+        arg0->unk5 = 0xF;
+    }
+    return 0;
+}
+
+s32 ov44_02234828(UnkStruct_ov44_02235340* arg0) {
+    if (sub_02037B38(0xE) != 0) {
+        s16 subroutine_arg0 = (s16) arg0->unk0->unk1B;
+        if (sub_02037C0C(sub_0203769C(), &subroutine_arg0) == 1) {
+            arg0->unk5 = 0x10;
+        }
+    }
+    return 0;
+}
 
 s32 ov44_02234858(UnkStruct_ov44_02235340* arg0) {
     s32 sp0;
