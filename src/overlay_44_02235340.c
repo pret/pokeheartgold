@@ -18,7 +18,7 @@ s32 ov44_022344AC(UnkStruct_ov44_02235340* arg0, s32 arg1, enum HeapID arg2) {
     return 0;
 }
 
-s32 ov44_022344C4(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_02235340_sub* arg1) {
+s32 ov44_022344C4(UnkStruct_ov44_02235340* arg0, u8* arg1) {
     s32 temp_r0;
 
     if (ov44_02233914(&arg0->window) == 0) {
@@ -44,7 +44,7 @@ s32 ov44_022344C4(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_02235340_sub* ar
         PlaySE(0x5DD);
         if (ov44_02233E6C(arg0) == 0) {
             arg0->unk5 = 6;
-        } else if ((s32) arg1->unk1 <= ov44_02233F64(arg0)) {
+        } else if ((s32) arg1[1] <= ov44_02233F64(arg0)) {
             arg0->unk5 = 8;
         } else {
             arg0->unk5 = 6;
@@ -78,7 +78,7 @@ s32 ov44_022345C8(UnkStruct_ov44_02235340* arg0, s32 arg1, enum HeapID heapID) {
     return 0;
 }
 
-s32 ov44_022345FC(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_02235340_sub* arg1, enum HeapID arg2) {
+s32 ov44_022345FC(UnkStruct_ov44_02235340* arg0, u8* arg1, enum HeapID arg2) {
     s32 temp_r0;
 
     temp_r0 = Handle2dMenuInput_DeleteOnFinish(arg0->listMenu2D, arg2);
@@ -92,7 +92,7 @@ s32 ov44_022345FC(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_02235340_sub* ar
                 ov44_02233F20(arg0);
                 ov44_02233F3C(arg0);
             }
-            if ((s32) arg1->unk2 <= ov44_02233F64(arg0)) {
+            if ((s32) arg1[2] <= ov44_02233F64(arg0)) {
                 arg0->unk5 = 8;
             } else {
                 arg0->unk5 = 1;
@@ -141,14 +141,14 @@ s32 ov44_022346E8(UnkStruct_ov44_02235340* arg0, s32 arg1, enum HeapID heapID) {
     return 0;
 }
 
-s32 ov44_0223471C(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_02235340_sub* arg1, enum HeapID arg2) {
+s32 ov44_0223471C(UnkStruct_ov44_02235340* arg0, u8* arg1, enum HeapID arg2) {
     s32 temp_r0;
 
     temp_r0 = Handle2dMenuInput_DeleteOnFinish(arg0->listMenu2D, arg2);
     if (temp_r0 != -1) {
         if (temp_r0 == 0) {
             arg0->unk5 = 0xB;
-        } else if ((s32) arg1->unk2 <= ov44_02233F64(arg0)) {
+        } else if ((s32) arg1[2] <= ov44_02233F64(arg0)) {
             arg0->unk5 = 0x13;
         } else {
             arg0->unk5 = 1;
@@ -238,7 +238,7 @@ s32 ov44_02234858(UnkStruct_ov44_02235340* arg0) {
                     if (*temp_r0 == arg0->unk0->unk1B) {
                         var_r5 += 1;
                     } else {
-                        arg0->unk5 = 0x1B;
+                        arg0->unk5 = 27;
                     }
                 }
             } else {
@@ -248,15 +248,15 @@ s32 ov44_02234858(UnkStruct_ov44_02235340* arg0) {
         } while (var_r4 < temp_r7);
     }
     if (var_r5 == temp_r7) {
-        arg0->unk5 = 0x11;
+        arg0->unk5 = 17;
     }
     return 0;
 }
 
 s32 ov44_022348A8(UnkStruct_ov44_02235340* arg0) {
     sub_020398D4(1, 1);
-    sub_02037AC0(0x12);
-    arg0->unk5 = 0x12;
+    sub_02037AC0(18);
+    arg0->unk5 = 18;
     return 0;
 }
 
@@ -270,8 +270,8 @@ s32 ov44_022348C4(UnkStruct_ov44_02235340* arg0, s32 arg1, enum HeapID heapID) {
 }
 
 s32 ov44_022348EC(UnkStruct_ov44_02235340* arg0, s32 arg1, enum HeapID heapID) {
-    ov44_02233860(&arg0->window, arg1, 0x78, heapID);
-    arg0->unk5 = 0x14;
+    ov44_02233860(&arg0->window, arg1, 120, heapID);
+    arg0->unk5 = 20;
     return 0;
 }
 
@@ -279,20 +279,20 @@ s32 ov44_02234904(UnkStruct_ov44_02235340* arg0, s32 arg1, enum HeapID heapID) {
     if (ov44_02233914(&arg0->window) == 0) {
         return 0;
     }
-    arg0->listMenu2D = CreateYesNoMenu(arg0->window.bgConfig, &ov44_0223645C, 0x30U, 4, 1, heapID);
-    arg0->unk5 = 0x15;
+    arg0->listMenu2D = CreateYesNoMenu(arg0->window.bgConfig, &ov44_0223645C, 48U, 4, 1, heapID);
+    arg0->unk5 = 21;
     return 0;
 }
 
-s32 ov44_02234944(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_02235340_sub* arg1, enum HeapID heapID) {
+s32 ov44_02234944(UnkStruct_ov44_02235340* arg0, u8* arg1, enum HeapID heapID) {
     s32 temp_r0;
 
     temp_r0 = Handle2dMenuInput_DeleteOnFinish(arg0->listMenu2D, heapID);
     if (temp_r0 != -1) {
         if (temp_r0 == 0) {
-            arg0->unk5 = 0x16;
+            arg0->unk5 = 22;
         } else if (ov44_02233E6C(arg0) != 0) {
-            if ((s32) arg1->unk2 <= ov44_02233F64(arg0)) {
+            if ((s32) arg1[2] <= ov44_02233F64(arg0)) {
                 arg0->unk5 = 8;
             } else {
                 arg0->unk5 = 1;
@@ -306,8 +306,8 @@ s32 ov44_02234944(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_02235340_sub* ar
 }
 
 s32 ov44_0223499C(UnkStruct_ov44_02235340* arg0, s32 arg1, enum HeapID heapID) {
-    ov44_02233860(&arg0->window, arg1, 0x79, heapID);
-    arg0->unk5 = 0x17;
+    ov44_02233860(&arg0->window, arg1, 121, heapID);
+    arg0->unk5 = 23;
     return 0;
 }
 
@@ -315,20 +315,20 @@ s32 ov44_022349B4(UnkStruct_ov44_02235340* arg0, s32 arg1, enum HeapID heapID) {
     if (ov44_02233914(&arg0->window) == 0) {
         return 0;
     }
-    arg0->listMenu2D = CreateYesNoMenu(arg0->window.bgConfig, &ov44_0223645C, 0x30, 4, 1, heapID);
-    arg0->unk5 = 0x18;
+    arg0->listMenu2D = CreateYesNoMenu(arg0->window.bgConfig, &ov44_0223645C, 48, 4, 1, heapID);
+    arg0->unk5 = 24;
     return 0;
 }
 
-s32 ov44_022349F4(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_02235340_sub* arg1, enum HeapID heapID) {
+s32 ov44_022349F4(UnkStruct_ov44_02235340* arg0, u8* arg1, enum HeapID heapID) {
     s32 temp_r0;
 
     temp_r0 = Handle2dMenuInput_DeleteOnFinish(arg0->listMenu2D, heapID);
     if (temp_r0 != -1) {
         if (temp_r0 == 0) {
-            arg0->unk5 = 0x19;
+            arg0->unk5 = 25;
         } else if (ov44_02233E6C(arg0) != 0) {
-            if (arg1->unk2 <= ov44_02233F64(arg0)) {
+            if (arg1[2] <= ov44_02233F64(arg0)) {
                 arg0->unk5 = 8;
             } else {
                 arg0->unk5 = 1;
@@ -342,9 +342,9 @@ s32 ov44_022349F4(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_02235340_sub* ar
 }
 
 s32 ov44_02234A4C(UnkStruct_ov44_02235340* arg0, s32 arg1, enum HeapID heapID) {
-    ov44_02233860(&arg0->window, arg1, 0x7A, heapID);
-    arg0->unk8 = 0x1E;
-    arg0->unk5 = 0x1A;
+    ov44_02233860(&arg0->window, arg1, 122, heapID);
+    arg0->unk8 = 30;
+    arg0->unk5 = 26;
     return 0;
 }
 
@@ -374,13 +374,13 @@ s32 ov44_02234AA8(UnkStruct_ov44_02235340* arg0, s32 arg1, enum HeapID heapID) {
     }
     ov44_02233A34(&arg0->window);
     ov44_022342E0(arg0, arg1, heapID);
-    arg0->unk5 = 0x1C;
+    arg0->unk5 = 28;
     return 0;
 }
 
 s32 ov44_02234AE4(UnkStruct_ov44_02235340* arg0, s32 arg1, enum HeapID heapID) {
-    ov44_02233860(&arg0->window, arg1, 0x76, heapID);
-    arg0->unk5 = 0x1D;
+    ov44_02233860(&arg0->window, arg1, 118, heapID);
+    arg0->unk5 = 29;
     ov44_02233FE8(arg0);
     ov44_02233EB4(arg0, arg1);
     if ((u32) (sub_020390C4() - 4) <= 1U) {
@@ -408,12 +408,12 @@ s32 ov44_02234B58(UnkStruct_ov44_02235340* arg0, s32 arg1, enum HeapID heapID) {
     s32 var_r2;
 
     if (arg0->unk0->unk21 == 1) {
-        var_r2 = 0x7D;
+        var_r2 = 125;
     } else {
-        var_r2 = 0x7C;
+        var_r2 = 124;
     }
     ov44_02233860(&arg0->window, arg1, var_r2, heapID);
-    arg0->unk5 = 0x1F;
+    arg0->unk5 = 31;
     return 0;
 }
 
@@ -421,8 +421,8 @@ s32 ov44_02234B80(UnkStruct_ov44_02235340* arg0, s32 arg1, enum HeapID heapID) {
     if (ov44_02233914(&arg0->window) == 0) {
         return 0;
     }
-    arg0->listMenu2D = Std_CreateYesNoMenu(arg0->window.bgConfig, &ov44_0223645C, 0x30, 4, heapID);
-    arg0->unk5 = 0x20;
+    arg0->listMenu2D = Std_CreateYesNoMenu(arg0->window.bgConfig, &ov44_0223645C, 48, 4, heapID);
+    arg0->unk5 = 32;
     return 0;
 }
 
@@ -453,7 +453,7 @@ s32 ov44_02234C10(UnkStruct_ov44_02235340* arg0, s32 arg1, enum HeapID heapID) {
     ov44_02233F6C(arg0, heapID);
     if (sub_020373B4(0) == 0) {
         ov44_02234450(arg0);
-        arg0->unk5 = 0xF;
+        arg0->unk5 = 15;
     } else if (sub_02034750(0) != 0) {
         ov44_02234450(arg0);
         arg0->unk5 = 2;
@@ -464,7 +464,7 @@ s32 ov44_02234C10(UnkStruct_ov44_02235340* arg0, s32 arg1, enum HeapID heapID) {
 s32 ov44_02234C48(UnkStruct_ov44_02235340* arg0, s32 arg1, enum HeapID heapID) {
     ov44_02233F6C(arg0, heapID);
     ov44_02233C88(&arg0->window, arg1, 0, 0, heapID);
-    ov44_02233860(&arg0->window, arg1, 0x72, heapID);
+    ov44_02233860(&arg0->window, arg1, 114, heapID);
     ov44_022342B8(arg0);
     arg0->unk5 = 3;
     return 0;
@@ -486,11 +486,11 @@ s32 ov44_02234C88(UnkStruct_ov44_02235340* arg0, s32 arg1, enum HeapID heapID) {
             break;
         case 2:
             arg0->unk5 = 6;
-            arg0->unk2D = 0x74;
+            arg0->unk2D = 116;
             break;
         case 3:
             arg0->unk5 = 6;
-            arg0->unk2D = 0x84;
+            arg0->unk2D = 132;
             break;
         }
     }
@@ -499,7 +499,7 @@ s32 ov44_02234C88(UnkStruct_ov44_02235340* arg0, s32 arg1, enum HeapID heapID) {
 
 s32 ov44_02234CE8(UnkStruct_ov44_02235340* arg0, s32 arg1, enum HeapID heapID) {
     ov44_02233C88(&arg0->window, arg1, 0, 0, heapID);
-    ov44_0223386C(&arg0->window, arg1, 0x73, 0x1e, heapID);
+    ov44_0223386C(&arg0->window, arg1, 115, 30, heapID);
     arg0->unk5 = 5;
     ov44_022340BC(arg0, sub_0203769C(), HEAP_ID_103);
     return 0;
@@ -534,7 +534,7 @@ s32 ov44_02234D88(UnkStruct_ov44_02235340* arg0) {
 
 s32 ov44_02234DA8(UnkStruct_ov44_02235340* arg0, s32 arg1, enum HeapID heapID) {
     ov44_02233F6C(arg0, heapID);
-    ov44_02233860(&arg0->window, arg1, 0x7B, heapID);
+    ov44_02233860(&arg0->window, arg1, 123, heapID);
     ov44_022342B8(arg0);
     arg0->unk5 = 9;
     if (arg0->unk0->unk21 == 1) {
@@ -801,7 +801,7 @@ s32 ov44_02235218(UnkStruct_ov44_02235340* arg0, s32 arg1, enum HeapID heapID) {
 }
 
 s32 ov44_02235268(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_02235340* arg1, enum HeapID heapID) {
-    UnkStruct_ov44_02235340_sub* temp_r0;
+    u8* temp_r0;
     
     if (IsPaletteFadeFinished() != 0) {
         sub_02034354(arg1->unk8, 0);
@@ -815,25 +815,25 @@ s32 ov44_02235268(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_02235340* arg1, 
         sub_0203A880();
         arg0->unk12 = 0;
         arg0->unk13 = 0;
-        temp_r0 = (UnkStruct_ov44_02235340_sub*)&arg0->unk14;
-        arg0->unk14 = 0;
-        temp_r0->unk1 = 0;
-        temp_r0->unk2 = 0;
-        temp_r0->unk3 = 0;
-        temp_r0 = (UnkStruct_ov44_02235340_sub*)&arg0->unk18;
-        arg0->unk18 = 0;
-        temp_r0->unk1 = 0;
-        temp_r0->unk2 = 0;
-        temp_r0->unk3 = 0;
+        temp_r0 = arg0->unk14;
+        arg0->unk14[0] = 0;
+        temp_r0[1] = 0;
+        temp_r0[2] = 0;
+        temp_r0[3] = 0;
+        temp_r0 = arg0->unk18;
+        arg0->unk18[0] = 0;
+        temp_r0[1] = 0;
+        temp_r0[2] = 0;
+        temp_r0[3] = 0;
         MI_CpuFill8(&arg0->unk1C, 1, 4);
         MI_CpuFill8(&arg0->unk20, 1, 4);
-        temp_r0 = (UnkStruct_ov44_02235340_sub*)&arg0->unk28;
+        temp_r0 = arg0->unk28;
         arg0->unk24 = 0;
         arg0->unk26 = 0;
-        arg0->unk28 = 0;
-        temp_r0->unk1 = 0;
-        temp_r0->unk2 = 0;
-        temp_r0->unk3 = 0;
+        arg0->unk28[0] = 0;
+        temp_r0[1] = 0;
+        temp_r0[2] = 0;
+        temp_r0[3] = 0;
         BeginNormalPaletteFade(3, 1, 1, 0, 6, 1, heapID);
         arg0->unk5 = 28;
     }
