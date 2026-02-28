@@ -54,13 +54,13 @@ void GetSwarmInfoFromRand(u32 rand, u16 *mapno, u16 *species) {
     WildEncounters_ReadFromNarc(&encData, (*swarmMap)[0]);
     switch ((*swarmMap)[1]) {
     case 1:
-        *species = encData.swarmSpecies[1];
+        *species = encData.surfSwarm;
         break;
     case 2:
-        *species = encData.swarmSpecies[3];
+        *species = encData.fishSwarm;
         break;
     case 0:
-        *species = encData.swarmSpecies[0];
+        *species = encData.landSwarm;
         break;
     }
     GF_ASSERT(*species != SPECIES_NONE);

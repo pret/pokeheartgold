@@ -13,7 +13,7 @@ $(ENCDATA_NARCS): %.narc: $(ENCDATA_JSON) $(ENCDATA_JSON).txt | $(WORK_DIR)/incl
 	$(JSONPROC) $^ $*.c
 	$(WINE) $(MWCC) $(MWCFLAGS) -D$(GAME_VERSION_S) -c -o $*.o $*.c
 	$(O2NARC) $*.o $@ -n
-	@$(RM) $*.o $*.c
+#	@$(RM) $*.o $*.c
 
 clean-gs-enc-data:
 	$(RM) $(ENCDATA_NARCS)

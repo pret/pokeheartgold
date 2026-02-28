@@ -291,8 +291,8 @@ u16 RadioShow_PokemonTalk_SampleSpeciesFromMapEncounters(PokemonTalkData *data, 
             RadioShow_PokemonTalk_AddSpecies(data, pokedex, encData.superRodSlots[i].species);
         }
     }
-    if (encData.swarmSpecies[2] != SPECIES_NONE) {
-        RadioShow_PokemonTalk_AddSpecies(data, pokedex, encData.swarmSpecies[2]);
+    if (encData.nightFish != SPECIES_NONE) {
+        RadioShow_PokemonTalk_AddSpecies(data, pokedex, encData.nightFish);
     }
     if (data->numPrioritySpecies == 0 || (data->numPrioritySpecies == 1 && (LCRandom() % 1000) < 500)) {
         return data->speciesBuffer[LCRandom() % data->numSpecies];

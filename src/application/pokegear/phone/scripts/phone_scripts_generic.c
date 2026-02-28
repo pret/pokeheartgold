@@ -174,7 +174,7 @@ static u16 getRandomEncounterSlot(u16 mapId, u8 trainerClass, u8 timeOfDay) {
     WildEncounters_ReadFromNarc(&encounters, mapId);
     if (trainerClass == TRAINERCLASS_FISHERMAN) {
         if (timeOfDay == TIMEOFDAY_WILD_NITE) {
-            encounters.goodRodSlots[3].species = encounters.swarmSpecies[2];
+            encounters.goodRodSlots[3].species = encounters.nightFish;
         }
         return encounters.goodRodSlots[LCRandom() % 5].species;
     } else {

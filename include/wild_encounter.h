@@ -49,7 +49,10 @@ typedef struct EncounterData {
     EncounterDataSlot oldRodSlots[NUM_ENCOUNTERS_FISH];         // 0x80
     EncounterDataSlot goodRodSlots[NUM_ENCOUNTERS_FISH];        // 0x94
     EncounterDataSlot superRodSlots[NUM_ENCOUNTERS_FISH];       // 0xA8
-    u16 swarmSpecies[NUM_ENCOUNTERS_SWARM];                     // 0xBC
+    u16 landSwarm;                                              // 0xBC
+    u16 surfSwarm;                                              // 0xBE
+    u16 nightFish;                                              // 0xC0
+    u16 fishSwarm;                                              // 0xC2
 } EncounterData;                                                // size=0xC4
 
 #ifdef __cplusplus

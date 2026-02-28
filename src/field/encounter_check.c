@@ -141,9 +141,9 @@ static void EncSlotArray_Update_NightFishing(const EncounterData *encData, u8 ro
 
     if (timeOfDay == RTC_TIMEOFDAY_NITE || timeOfDay == RTC_TIMEOFDAY_LATE) {
         if (rodType == ROD_TYPE_GOOD) {
-            encSlots[3].species = encData->swarmSpecies[2];
+            encSlots[3].species = encData->nightFish;
         } else if (rodType == ROD_TYPE_SUPER) {
-            encSlots[1].species = encData->swarmSpecies[2];
+            encSlots[1].species = encData->nightFish;
         }
     }
 }
@@ -165,15 +165,15 @@ static void EncSlotArray_Update_HoennSinnohSounds(FieldSystem *fieldSystem, cons
 static void EncSlots_Update_LandSwarm(FieldSystem *fieldSystem, const EncounterData *encData, EncounterSlot *encSlotA, EncounterSlot *encSlotB) {
     RoamerSaveData *roamerSave = Save_Roamers_Get(fieldSystem->saveData);
     if (RoamerSave_OutbreakActive(roamerSave) && sub_02097F6C(Roamers_GetRand(roamerSave, 2), fieldSystem->location->mapId, 0)) {
-        encSlotA->species = encData->swarmSpecies[0];
-        encSlotB->species = encData->swarmSpecies[0];
+        encSlotA->species = encData->landSwarm;
+        encSlotB->species = encData->landSwarm;
     }
 }
 
 static void EncSlots_Update_SurfingSwarm(FieldSystem *fieldSystem, const EncounterData *encData, EncounterSlot *encSlot) {
     RoamerSaveData *roamerSave = Save_Roamers_Get(fieldSystem->saveData);
     if (RoamerSave_OutbreakActive(roamerSave) && sub_02097F6C(Roamers_GetRand(roamerSave, 2), fieldSystem->location->mapId, 1)) {
-        encSlot->species = encData->swarmSpecies[1];
+        encSlot->species = encData->surfSwarm;
     }
 }
 
@@ -206,7 +206,7 @@ static void EncSlots_Update_FishingSwarm(FieldSystem *fieldSystem, u8 rodType, c
         }
 
         for (u8 i = 0; i < numSlots; ++i) {
-            encSlots[slots[i]].species = encData->swarmSpecies[3];
+            encSlots[slots[i]].species = encData->fishSwarm;
         }
     }
 }
