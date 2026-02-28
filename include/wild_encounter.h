@@ -16,8 +16,8 @@ extern "C" {
 
 typedef struct EncounterSlot {
     u32 species;
-    u16 level_max;
-    u16 level_min;
+    u16 maxLevel;
+    u16 minLevel;
 } EncounterSlot;
 
 typedef struct LandEncounterData {

@@ -183,8 +183,8 @@ EncounterSlot *BugContest_GetEncounterSlot(BugContest *bugContest, enum HeapID h
     }
     slot->species = bugContest->encounters[i].species;
     modulo = bugContest->encounters[i].lvlmax - bugContest->encounters[i].lvlmin + 1;
-    slot->level_max = (LCRandom() % modulo) + bugContest->encounters[i].lvlmin;
-    slot->level_min = 0;
+    slot->maxLevel = (LCRandom() % modulo) + bugContest->encounters[i].lvlmin;
+    slot->minLevel = 0;
     return slot;
 }
 

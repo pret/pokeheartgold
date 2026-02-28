@@ -131,8 +131,8 @@ static void EncSlotArray_Init_Land(const EncounterData *encData, EncounterSlot *
     }
     for (int i = 0; i < NUM_ENCOUNTERS_LAND; ++i) {
         encSlots[i].species = slotSpecies[i];
-        encSlots[i].level_max = encData->landSlots.levels[i];
-        encSlots[i].level_min = encData->landSlots.levels[i];
+        encSlots[i].maxLevel = encData->landSlots.levels[i];
+        encSlots[i].minLevel = encData->landSlots.levels[i];
     }
 }
 
@@ -180,25 +180,25 @@ static void EncSlots_Update_SurfingSwarm(FieldSystem *fieldSystem, const Encount
 static void EncSlots_Update_FishingSwarm(FieldSystem *fieldSystem, u8 rodType, const EncounterData *encData, EncounterSlot *encSlots) {
     RoamerSaveData *roamerSave = Save_Roamers_Get(fieldSystem->saveData);
     if (RoamerSave_OutbreakActive(roamerSave) && sub_02097F6C(Roamers_GetRand(roamerSave, 2), fieldSystem->location->mapId, 2)) {
-        int slots_oldRod[1] = { 2 };
-        int slots_goodRod[3] = { 0, 2, 3 };
-        int slots_superRod[5] = { 0, 1, 2, 3, 4 };
+        int sOldRodSlotIdxs[1] = { 2 };
+        int sGoodRodSlotIdxs[3] = { 0, 2, 3 };
+        int sSuperRodSlotIdxs[5] = { 0, 1, 2, 3, 4 };
 
         const int *slots;
         u32 numSlots;
 
         switch (rodType) {
         case ROD_TYPE_OLD:
-            numSlots = NELEMS(slots_oldRod);
-            slots = slots_oldRod;
+            numSlots = NELEMS(sOldRodSlotIdxs);
+            slots = sOldRodSlotIdxs;
             break;
         case ROD_TYPE_GOOD:
-            numSlots = NELEMS(slots_goodRod);
-            slots = slots_goodRod;
+            numSlots = NELEMS(sGoodRodSlotIdxs);
+            slots = sGoodRodSlotIdxs;
             break;
         case ROD_TYPE_SUPER:
-            numSlots = NELEMS(slots_superRod);
-            slots = slots_superRod;
+            numSlots = NELEMS(sSuperRodSlotIdxs);
+            slots = sSuperRodSlotIdxs;
             break;
         default:
             GF_ASSERT(FALSE);
@@ -247,6 +247,11 @@ BOOL FieldSystem_PerformLandOrSurfEncounterCheck(FieldSystem *fieldSystem) {
     if (!ret) {
         return FALSE;
     }
+
+    // followerFlag is a holdover from the Sinnoh games.
+    // It indicates whether you have Cheryl, Marley, Mira, Riley, or Buck with you.
+    // If so, wild battles are double battles with you fighting along the given companion.
+    // This never happens in HGSS, so it is always FALSE.
     BOOL followerFlag = Save_VarsFlags_CheckHaveFollower(Save_VarsFlags_Get(fieldSystem->saveData)) ? TRUE : FALSE;
     if (!followerFlag && getRandomActiveRoamerInCurrMap(fieldSystem, &roamer)) {
         if (!EncounterGen_DoesRepelSuppressEncounter(GetRoamerData(roamer, ROAMER_DATA_LEVEL), &encounterGen)) {
@@ -296,8 +301,8 @@ BOOL FieldSystem_PerformLandOrSurfEncounterCheck(FieldSystem *fieldSystem) {
     } else if (encounterType == ENCOUNTER_TYPE_SURFING) {
         for (int i = 0; i < NUM_ENCOUNTERS_SURF; ++i) {
             encSlots[i].species = encData->surfSlots[i].species;
-            encSlots[i].level_max = encData->surfSlots[i].level_max;
-            encSlots[i].level_min = encData->surfSlots[i].level_min;
+            encSlots[i].maxLevel = encData->surfSlots[i].level_max;
+            encSlots[i].minLevel = encData->surfSlots[i].level_min;
         }
         EncSlots_Update_SurfingSwarm(fieldSystem, encData, encSlots);
         found = FieldSystem_GenerateSurfingEncounter(fieldSystem, leadMon, battleSetup, encSlots, &encounterGen, safariFlag);
@@ -357,11 +362,11 @@ BOOL FieldSystem_PerformFishEncounterCheck(FieldSystem *fieldSystem, u8 rodType,
         rodSlots = encData->superRodSlots;
         break;
     }
-    // potential UB: r7 is uninitialized on invalid rod type
+    // potential UB: rodSlots is uninitialized on invalid rod type
     for (u8 i = 0; i < NUM_ENCOUNTERS_FISH; ++i) {
         encSlots[i].species = rodSlots[i].species;
-        encSlots[i].level_max = rodSlots[i].level_max;
-        encSlots[i].level_min = rodSlots[i].level_min;
+        encSlots[i].maxLevel = rodSlots[i].level_max;
+        encSlots[i].minLevel = rodSlots[i].level_min;
     }
     EncSlotArray_Update_NightFishing(encData, rodType, encSlots);
     EncSlots_Update_FishingSwarm(fieldSystem, rodType, encData, encSlots);
@@ -386,12 +391,12 @@ BOOL FieldSystem_PerformRockSmashEncounterCheck(FieldSystem *fieldSystem, Battle
 
     FieldSystem_CreateBattleSetupForWildBattle(fieldSystem, ENCOUNTER_CONTEXT_REGULAR, pBattleSetup);
     BattleSetup_InitFromFieldSystem(*pBattleSetup, fieldSystem);
-    const EncounterData *r5 = MapEvents_GetLoadedEncTable(fieldSystem);
-    const EncounterDataSlot *r5_2 = r5->rockSmashSlots;
+    const EncounterData *encData = MapEvents_GetLoadedEncTable(fieldSystem);
+    const EncounterDataSlot *encDataSlots = encData->rockSmashSlots;
     for (u8 i = 0; i < NUM_ENCOUNTERS_ROCKSMASH; ++i) {
-        encSlots[i].species = r5_2[i].species;
-        encSlots[i].level_max = r5_2[i].level_max;
-        encSlots[i].level_min = r5_2[i].level_min;
+        encSlots[i].species = encDataSlots[i].species;
+        encSlots[i].maxLevel = encDataSlots[i].level_max;
+        encSlots[i].minLevel = encDataSlots[i].level_min;
     }
     if (!FieldSystem_GenerateRockSmashEncounter(fieldSystem, leadMon, *pBattleSetup, encSlots, &encounterGen)) {
         BattleSetup_Delete(*pBattleSetup);
@@ -465,8 +470,8 @@ BOOL FieldSystem_PerformSweetScentEncounterCheck(FieldSystem *fieldSystem, TaskM
     } else if (encType == ENCOUNTER_TYPE_SURFING) {
         for (int i = 0; i < NUM_ENCOUNTERS_SURF; ++i) {
             encSlots[i].species = encData->surfSlots[i].species;
-            encSlots[i].level_max = encData->surfSlots[i].level_max;
-            encSlots[i].level_min = encData->surfSlots[i].level_min;
+            encSlots[i].maxLevel = encData->surfSlots[i].level_max;
+            encSlots[i].minLevel = encData->surfSlots[i].level_min;
         }
         EncSlots_Update_SurfingSwarm(fieldSystem, encData, encSlots);
         found = FieldSystem_GenerateSurfingEncounter(fieldSystem, leadMon, battleSetup, encSlots, &encounterGen, safariFlag);
@@ -500,8 +505,8 @@ BOOL FieldSystem_PerformHeadbuttEncounterCheck(FieldSystem *fieldSystem, BattleS
     }
     for (u8 i = 0; i < NUM_ENCOUNTERS_HEADBUTT; ++i) {
         encSlots[i].species = encDataSlots[i].species;
-        encSlots[i].level_max = encDataSlots[i].level_max;
-        encSlots[i].level_min = encDataSlots[i].level_min;
+        encSlots[i].maxLevel = encDataSlots[i].level_max;
+        encSlots[i].minLevel = encDataSlots[i].level_min;
     }
     if (!FieldSystem_GenerateRegularEncounter(leadMon, ROD_TYPE_NONE, &encounterGen, encSlots, ENCOUNTER_TYPE_HEADBUTT, BATTLER_ENEMY, *pBattleSetup)) {
         BattleSetup_Delete(*pBattleSetup);
@@ -529,7 +534,7 @@ static BOOL FieldSystem_GenerateBugContestEncounter(FieldSystem *fieldSystem, Po
 }
 
 static BOOL FieldSystem_GenerateDoubleEncounter(FieldSystem *fieldSystem, Pokemon *leadMon, BattleSetup *battleSetup, EncounterSlot *encSlots, EncounterGenState *encounterGen) {
-    if (FieldSystem_GenerateRegularEncounter(leadMon, ROD_TYPE_NONE, encounterGen, encSlots, ENCOUNTER_TYPE_LAND, BATTLER_ENEMY, battleSetup) == FALSE) { // explicit comparison to FALSE required to match
+    if (FieldSystem_GenerateRegularEncounter(leadMon, ROD_TYPE_NONE, encounterGen, encSlots, ENCOUNTER_TYPE_LAND, BATTLER_ENEMY, battleSetup) == FALSE) {
         return FALSE;
     } else {
         return FieldSystem_GenerateRegularEncounter(leadMon, ROD_TYPE_NONE, encounterGen, encSlots, ENCOUNTER_TYPE_LAND, BATTLER_ENEMY2, battleSetup);
@@ -737,12 +742,12 @@ static u8 EncounterSlot_WildMonLevelRoll(EncounterSlot *encSlot, EncounterGenSta
     u8 hi;
     u8 lo;
 
-    if (encSlot->level_max >= encSlot->level_min) {
-        lo = encSlot->level_min;
-        hi = encSlot->level_max;
+    if (encSlot->maxLevel >= encSlot->minLevel) {
+        lo = encSlot->minLevel;
+        hi = encSlot->maxLevel;
     } else {
-        lo = encSlot->level_max;
-        hi = encSlot->level_min;
+        lo = encSlot->maxLevel;
+        hi = encSlot->minLevel;
     }
 
     u8 range = hi - lo + 1;
@@ -879,7 +884,7 @@ static BOOL FieldSystem_GenerateRegularEncounter(Pokemon *leadMon, int rodType, 
             slot = EncounterSlot_WildMonSlotRoll_Land();
         }
         slot = ApplyAbilityEffectToSlotLevel(encSlots, NUM_ENCOUNTERS_LAND, encounterGen, slot);
-        level = encSlots[slot].level_max;
+        level = encSlots[slot].maxLevel;
         break;
     case ENCOUNTER_TYPE_ROCK_SMASH:
         if (!EncounterSlot_AbilityInfluenceOnSlotChoiceCheck(leadMon, encounterGen, encSlots, NUM_ENCOUNTERS_ROCKSMASH, TYPE_STEEL, ABILITY_MAGNET_PULL, &slot) && !EncounterSlot_AbilityInfluenceOnSlotChoiceCheck(leadMon, encounterGen, encSlots, NUM_ENCOUNTERS_ROCKSMASH, TYPE_ELECTRIC, ABILITY_STATIC, &slot)) {
@@ -957,7 +962,7 @@ static BOOL FieldSystem_GenerateSafariEncounter(FieldSystem *fieldSystem, Pokemo
         slot = ApplyAbilityEffectToSlotLevel(encSlots, NUM_ENCOUNTERS_SAFARI, encounterGen, slot);
     }
     species = encSlots[slot].species;
-    level = encSlots[slot].level_max;
+    level = encSlots[slot].maxLevel;
     if (DoesAbilitySuppressEncounter(encounterGen, leadMon, level) || EncounterGen_DoesRepelSuppressEncounter(level, encounterGen) == TRUE) {
         Heap_Free(encSlots);
         return FALSE;
@@ -970,12 +975,12 @@ static BOOL FieldSystem_GenerateSafariEncounter(FieldSystem *fieldSystem, Pokemo
 
 static BOOL FieldSystem_GenerateBugContestEncounter_Internal(FieldSystem *fieldSystem, Pokemon *leadMon, int rodType, EncounterGenState *encounterGen, u8 encType, int battler, BattleSetup *battleSetup) {
     EncounterSlot *encSlot = BugContest_GetEncounterSlot(FieldSystem_BugContest_Get(fieldSystem), HEAP_ID_FIELD1);
-    if (EncounterGen_DoesRepelSuppressEncounter(encSlot->level_max, encounterGen) == TRUE) {
+    if (EncounterGen_DoesRepelSuppressEncounter(encSlot->maxLevel, encounterGen) == TRUE) {
         Heap_Free(encSlot);
         return FALSE;
     }
 
-    generateWildNonShinyAndAddToParty(encSlot->species, encSlot->level_max, battler, TRUE, encounterGen, leadMon, battleSetup);
+    generateWildNonShinyAndAddToParty(encSlot->species, encSlot->maxLevel, battler, TRUE, encounterGen, leadMon, battleSetup);
     Heap_Free(encSlot);
     return TRUE;
 }
@@ -1356,7 +1361,7 @@ static u8 ApplyAbilityEffectToSlotLevel(EncounterSlot *encSlots, int numEncSlots
             return chosenSlot;
         }
         for (u8 i = 0; i < numEncSlots; ++i) {
-            if (encSlots[i].species == encSlots[chosenSlot].species && encSlots[i].level_max > encSlots[chosenSlot].level_max) {
+            if (encSlots[i].species == encSlots[chosenSlot].species && encSlots[i].maxLevel > encSlots[chosenSlot].maxLevel) {
                 chosenSlot = i;
             }
         }
