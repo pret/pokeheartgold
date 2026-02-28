@@ -255,7 +255,7 @@ void RadioShow_PokemonTalk_AddSpecies(PokemonTalkData *data, Pokedex *pokedex, u
 
 u16 RadioShow_PokemonTalk_SampleSpeciesFromMapEncounters(PokemonTalkData *data, Pokedex *pokedex, u16 mapID) {
     int i;
-    ENC_DATA encData;
+    EncounterData encData;
 
     WildEncounters_ReadFromNarc(&encData, mapID);
 

@@ -4,7 +4,7 @@
 #include "constants/maps.h"
 #include "wild_encounter.h"
 
-const ENC_DATA __data[] = {
+const EncounterData __data[] = {
 ## for encounter in encounters
     // MAP_{{ encounter.map }}
     {
@@ -277,4 +277,4 @@ const ENC_DATA __data[] = {
 ## endfor
 };
 
-u32 __size = sizeof(ENC_DATA);
+u32 __size = sizeof(EncounterData);

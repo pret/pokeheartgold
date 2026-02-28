@@ -165,7 +165,7 @@ static BOOL PhoneScript_Generic_DuringRocketTakeover(PokegearPhoneCallContext *c
 }
 
 static u16 getRandomEncounterSlot(u16 mapId, u8 trainerClass, u8 timeOfDay) {
-    ENC_DATA encounters;
+    EncounterData encounters;
     u16 *slots;
 
     if (!MapHeader_HasWildEncounters(mapId)) {

@@ -47,7 +47,7 @@ BOOL sub_02097F6C(u32 rand, u16 mapno, u16 swarmValue) {
 }
 
 void GetSwarmInfoFromRand(u32 rand, u16 *mapno, u16 *species) {
-    ENC_DATA encData;
+    EncounterData encData;
     const u16(*swarmMap)[2];
 
     swarmMap = &sSwarmMapLUT[rand % SWARM_MAP_COUNT];
