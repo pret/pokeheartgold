@@ -200,7 +200,7 @@ BOOL sub_0205B984(u8 tile) {
     return tile == TILE_BEHAVIOR_22 || tile == TILE_BEHAVIOR_29;
 }
 
-BOOL sub_0205B994(u8 tile) {
+BOOL MetatileBehavior_CanGenerateWalkingEncounters(u8 tile) {
     return (_020FCA74[tile] & 2) != 0;
 }
 

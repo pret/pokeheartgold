@@ -493,24 +493,24 @@ static void ov02_022522AC(GearPhoneRingManager *gearPhone, BOOL a1) {
     GearPhone_ToggleRinging(gearPhone, a1);
 }
 
-int GetRadioMusicPlayingSeq(void) {
+enum RadioMusicPlayingSeq GetRadioMusicPlayingSeq(void) {
     u16 seq = SndRadio_GetSeqNo();
     switch (seq) {
     case SEQ_GS_RADIO_MARCH:
     case SEQ_GS_P_RADIO_MARCH:
-        return 1;
+        return RADIO_MUSIC_SEQ_MARCH;
     case SEQ_GS_RADIO_KOMORIUTA:
     case SEQ_GS_P_RADIO_KOMORIUTA:
-        return 2;
+        return RADIO_MUSIC_SEQ_LULLABY;
     case SEQ_GS_RADIO_R_101:
-        return 3;
+        return RADIO_MUSIC_SEQ_HOENN_SOUNDS;
     case SEQ_GS_RADIO_R_201:
-        return 4;
+        return RADIO_MUSIC_SEQ_SINNOH_SOUNDS;
     case SEQ_GS_RADIO_UNKNOWN:
-        return 6;
+        return RADIO_MUSIC_SEQ_UNOWN;
     case SEQ_GS_HUE:
     case SEQ_GS_P_HUE:
-        return 5;
+        return RADIO_MUSIC_SEQ_POKEFLUTE;
     }
-    return 0;
+    return RADIO_MUSIC_SEQ_NONE;
 }

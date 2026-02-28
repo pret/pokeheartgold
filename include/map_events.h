@@ -23,8 +23,8 @@ BOOL Field_SetEventDefaultDirection(FieldSystem *fieldSystem, int id, u16 dirn);
 BOOL Field_SetEventDefaultMovement(FieldSystem *fieldSystem, int id, u16 movement);
 BOOL Field_SetWarpXYPos(FieldSystem *fieldSystem, int warpno, u16 x, u16 y);
 BOOL Field_SetBgEventXYPos(FieldSystem *fieldSystem, int bgno, u32 x, u32 y);
-void WildEncounters_ReadFromNarc(ENC_DATA *encData, u32 mapno);
-ENC_DATA *MapEvents_GetLoadedEncTable(FieldSystem *fieldSystem);
+void WildEncounters_ReadFromNarc(EncounterData *encData, u32 mapno);
+EncounterData *MapEvents_GetLoadedEncTable(FieldSystem *fieldSystem);
 u8 *MapEvents_GetScriptHeader(FieldSystem *fieldSystem);
 
 #endif // POKEHEARTGOLD_MAP_EVENTS_H

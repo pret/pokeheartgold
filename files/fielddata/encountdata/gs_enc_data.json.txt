@@ -4,7 +4,7 @@
 #include "constants/maps.h"
 #include "wild_encounter.h"
 
-const ENC_DATA __data[] = {
+const EncounterData __data[] = {
 ## for encounter in encounters
     // MAP_{{ encounter.map }}
     {
@@ -260,21 +260,52 @@ const ENC_DATA __data[] = {
             },
 ## endfor
         },
-        .swarmSpecies = {
-## for mon in encounter.swarm
-## if isObject(mon)
+## if existsIn(encounter, "landSwarm")
+## if isObject(encounter.landSwarm)
 #ifdef ENC_SOULSILVER
-            {{ mon.SOULSILVER }},
+        .landSwarm = {{ encounter.landSwarm.SOULSILVER }},
 #else
-            {{ mon.HEARTGOLD }},
+        .landSwarm = {{ encounter.landSwarm.HEARTGOLD }},
 #endif
 ## else
-            {{ mon }},
+        .landSwarm = {{ encounter.landSwarm }},
 ## endif
-## endfor
-        },
+## endif
+## if existsIn(encounter, "surfSwarm")
+## if isObject(encounter.surfSwarm)
+#ifdef ENC_SOULSILVER
+        .surfSwarm = {{ encounter.surfSwarm.SOULSILVER }},
+#else
+        .surfSwarm = {{ encounter.surfSwarm.HEARTGOLD }},
+#endif
+## else
+        .surfSwarm = {{ encounter.surfSwarm }},
+## endif
+## endif
+## if existsIn(encounter, "nightFish")
+## if isObject(encounter.nightFish)
+#ifdef ENC_SOULSILVER
+        .nightFish = {{ encounter.nightFish.SOULSILVER }},
+#else
+        .nightFish = {{ encounter.nightFish.HEARTGOLD }},
+#endif
+## else
+        .nightFish = {{ encounter.nightFish }},
+## endif
+## endif
+## if existsIn(encounter, "fishSwarm")
+## if isObject(encounter.fishSwarm)
+#ifdef ENC_SOULSILVER
+        .fishSwarm = {{ encounter.fishSwarm.SOULSILVER }},
+#else
+        .fishSwarm = {{ encounter.fishSwarm.HEARTGOLD }},
+#endif
+## else
+        .fishSwarm = {{ encounter.fishSwarm }},
+## endif
+## endif
     },
 ## endfor
 };
 
-u32 __size = sizeof(ENC_DATA);
+u32 __size = sizeof(EncounterData);
