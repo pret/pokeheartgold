@@ -6,6 +6,22 @@
 
 This document provides a synopsis and loose guidelines for how to contribute to this project. It is a work in progress. Maintainers should expand this document.
 
+## AI Policy
+
+Any use of an AI large language model (LLM) to contribute to this project, must be disclosed in full. Undisclosed LLM use shall, upon detection, result in a permanent ban from contributing to this project.
+
+This applies to any act that introduces or changes text in the repository, including but not limited to:
+- Commit content
+- Commit message
+- Pull requests
+- Pull request reviews
+- Issues
+- Issue comments
+- Messages to maintaners
+  
+This does not apply to:
+- Asking questions about the code
+
 ## Code Formatting
 
 This repository includes an opinionated `clang-format` specification to ensure that we maintain a common code style. For convenience, a pre-commit hook is also provided in `.githooks` which will run `clang-format` against any staged changes prior to executing a commit.
