@@ -8,7 +8,19 @@ This document provides a synopsis and loose guidelines for how to contribute to 
 
 ## AI Policy
 
-Any use of an AI large language model (LLM) to contribute to this project, must be disclosed in full. Undisclosed LLM use shall, upon detection, result in a permanent ban from contributing to this project. This extends to both authoring and reviewing pull requests.
+Any use of an AI large language model (LLM) to contribute to this project, must be disclosed in full. Undisclosed LLM use shall, upon detection, result in a permanent ban from contributing to this project.
+
+This applies to any act that introduces or changes text in the repository:
+- Commit content
+- Commit message
+- Pull requests
+- Pull request reviews
+- Issues
+- Issue comments
+- Messages to maintaners
+  
+This does not apply to:
+- Asking questions about the code
 
 ## Code Formatting
 
