@@ -304,7 +304,7 @@ Static main
     Object src/unk_02091278.o
     Object src/unk_020912AC.o
     Object src/dex_mon_measures.o
-    Object asm/unk_02091564.o
+    Object src/unk_02091564.o
     Object asm/unk_020915B0.o
     Object src/location_gmm_dat.o
     Object src/move_relearner.o
@@ -327,7 +327,7 @@ Static main
     Object src/error_message_reset.o
     Object src/sin_vcount.o
     Object asm/frontier.o
-    Object asm/unk_020968B0.o
+	Object src/unk_020968B0.o
     Object asm/unk_02096910.o
     Object asm/unk_02096C88.o
     Object asm/unk_02097024.o
@@ -493,7 +493,7 @@ Overlay field
     Object asm/overlay_01_021E8744.o
     Object asm/overlay_01_021E90C0.o
     Object asm/overlay_01_021EA6C4.o
-    Object asm/overlay_01_021EA824.o
+    Object src/overlay_01_021EA824.o
     Object asm/overlay_01_021EA8E0.o
     Object asm/overlay_01_021EABA8.o
     Object asm/overlay_01_021EAF00.o

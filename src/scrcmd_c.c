@@ -4146,23 +4146,23 @@ BOOL ScrCmd_595(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_627(ScriptContext *ctx) {
-    FrontierLaunchParam **pParam = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
+    FrontierLaunchArgs **pArgs = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
     u8 r6 = ScriptReadByte(ctx);
-    FrontierLaunchParam *param = Heap_AllocAtEnd(HEAP_ID_FIELD2, sizeof(FrontierLaunchParam));
-    MI_CpuClear8(param, sizeof(FrontierLaunchParam));
-    *pParam = param;
+    FrontierLaunchArgs *args = Heap_AllocAtEnd(HEAP_ID_FIELD2, sizeof(FrontierLaunchArgs));
+    MI_CpuClear8(args, sizeof(FrontierLaunchArgs));
+    *pArgs = args;
     if (r6 == 5 || r6 == 6) {
-        param->unk0 = ctx->fieldSystem->unkA0;
+        args->unk0 = ctx->fieldSystem->unkA0;
     } else {
-        param->unk0 = NULL;
+        args->unk0 = NULL;
     }
-    param->options = Save_PlayerData_GetOptionsAddr(ctx->fieldSystem->saveData);
-    param->unk20 = r6;
-    param->saveData = ctx->fieldSystem->saveData;
-    param->mapId = ctx->fieldSystem->location->mapId;
-    param->bagCursor = ctx->fieldSystem->bagCursor;
-    param->unk1C = ctx->fieldSystem->unkB0;
-    CallApplicationAsTask(ctx->taskman, &gOverlayTemplate_Frontier, param);
+    args->options = Save_PlayerData_GetOptionsAddr(ctx->fieldSystem->saveData);
+    args->unk20 = r6;
+    args->saveData = ctx->fieldSystem->saveData;
+    args->mapId = ctx->fieldSystem->location->mapId;
+    args->bagCursor = ctx->fieldSystem->bagCursor;
+    args->unk1C = ctx->fieldSystem->unkB0;
+    CallApplicationAsTask(ctx->taskman, &gOverlayTemplate_Frontier, args);
     SetupNativeScript(ctx, ScrNative_WaitApplication_DestroyTaskData);
     return TRUE;
 }
