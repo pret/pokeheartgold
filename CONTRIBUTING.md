@@ -10,7 +10,7 @@ This document provides a synopsis and loose guidelines for how to contribute to 
 
 Any use of an AI large language model (LLM) to contribute to this project, must be disclosed in full. Undisclosed LLM use shall, upon detection, result in a permanent ban from contributing to this project.
 
-This applies to any act that introduces or changes text in the repository:
+This applies to any act that introduces or changes text in the repository, including but not limited to:
 - Commit content
 - Commit message
 - Pull requests
