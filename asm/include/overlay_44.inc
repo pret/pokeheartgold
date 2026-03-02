@@ -440,3 +440,13 @@
 .public ov44_022347D4
 .public ov44_022347FC
 .public ov44_02234828
+.public ov44_0223435C
+.public ov44_02234388
+.public ov44_0223438C
+.public ov44_0223442C
+.public ov44_02234440
+.public ov44_02234450
+.public ov44_02234458
+.public ov44_02234474
+.public ov44_02234328
+.public ov44_02234324

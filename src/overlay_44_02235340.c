@@ -9,8 +9,116 @@
 #include "unk_02005D10.h"
 #include "overlay_00_arm.h"
 #include "overlay_00_thumb.h"
+#include "overlay_42.h"
 
 extern const WindowTemplate ov44_0223645C;
+extern const u8 ov44_02236458[4];
+
+void ov44_02234324() {
+
+}
+
+void ov44_02234328(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_02235004* arg1) {
+    ov42_0222919C(arg1->unk4, 0);
+    ov42_022291A0(arg1->unk4);
+    ov42_02229200(arg1->unk4, 1);
+    arg1->unk8 = 2;
+    s32 idx = ov42_02228188(arg1->unk0, 6);
+    arg1->unkA = ov44_02236458[idx] + 16;
+}
+
+void ov44_0223435C(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_02235004* arg1) {
+    ov42_022291AC(arg1->unk4);
+    arg1->unkA = (arg1->unkA - 1);
+    if ((s32) arg1->unkA <= 0) {
+        ov42_022291B8(arg1->unk4);
+        ov42_0222919C(arg1->unk4, 1);
+        arg1->unk8 = 3;
+    }
+}
+
+void ov44_02234388(void) {
+
+}
+
+void ov44_0223438C(UnkStruct_ov44_02235340* arg0) {
+    u8 sp4[4];
+    s32 sp0;
+    s32 sp_count;
+    s32 temp_r7;
+    u32 var_r0;
+    sp0 = 0;
+    if (sub_02034420() != 0) {
+        sp_count = sub_020347A0();
+        if ((sub_020346D4() != 0) && (sub_02037824(5) == 0)) {
+            sp0 = 1;
+        }
+        s32 var_r4 = 0;
+        if (sp_count > 0) {
+            do {
+                if (var_r4 == 0) {
+                    var_r0 = arg0->unk0->unk21;
+                } else {
+                    temp_r7 = sub_02034870(var_r4);
+                    if (temp_r7 == 0x20) {
+                        GF_AssertFail();
+                    }
+                    var_r0 = *(u8*)((u8*)(arg0->unk0) + 0x24 * temp_r7 + 0x45);
+                }
+                if (var_r0 != arg0->unk20[var_r4]) {
+                    sp0 = 1;
+                }
+                arg0->unk20[var_r4] = (u8)var_r0;
+                var_r4 += 1;
+            } while (var_r4 < sp_count);
+        }
+        if (sp0 == 1) {
+            __memcpy(&sp4, arg0->unk20, 4);
+            sub_02037030(0x18, &sp4, 4);
+        }
+    }
+}
+
+int ov44_0223442C(UnkStruct_ov44_02235340* arg0) {
+    if (sub_02037B38(0xD) != 0) {
+        return 1;
+    }
+    return 0;
+}
+
+void ov44_02234440(UnkStruct_ov44_02235340* arg0) {
+    arg0->unk10 = 1;
+    arg0->unkC = 0x708;
+}
+
+void ov44_02234450(UnkStruct_ov44_02235340* arg0) {
+    arg0->unk10 = 0;
+}
+
+s32 ov44_02234458(UnkStruct_ov44_02235340* arg0) {
+    s32 temp_r1;
+
+    if (arg0->unk10 == 0) {
+        return 0;
+    }
+    temp_r1 = arg0->unkC;
+    if (temp_r1 > 0) {
+        arg0->unkC = (s32) (temp_r1 - 1);
+        return 0;
+    }
+    return 1;
+}
+
+s32 ov44_02234474(UnkStruct_ov44_02235340* arg0, s32 arg1, enum HeapID arg2) {
+    if (arg0->unk0->unk21 == 1) {
+        ov44_02233F3C(arg0);
+    }
+    ov00_021E7220(0);
+    sub_020398D4(0, 1);
+    ov44_022340EC(arg0, sub_0203769C(), arg2);
+    arg0->unk5 = 1;
+    return 0;
+}
 
 s32 ov44_022344AC(UnkStruct_ov44_02235340* arg0, s32 arg1, enum HeapID arg2) {
     ov44_02233860(&arg0->window, arg1, 0x6B, arg2);

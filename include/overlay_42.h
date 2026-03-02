@@ -2,5 +2,11 @@
 #define POKEHEARTGOLD_OVY_42_H
 
 u32 ov42_02229248(u32 a0);
+void ov42_022291AC(u32 a0);
+void ov42_022291B8(u32 a0);
+void ov42_0222919C(u32 a0, u32 a1);
+void ov42_022291A0(u32 a0); 
+void ov42_02229200(u32 a0, u32 a1);
+s32 ov42_02228188(u32 a0, u32 a1);
 
 #endif // POKEHEARTGOLD_OVY_42_H

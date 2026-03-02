@@ -4,11 +4,18 @@
 #include "global.h"
 #include "heap.h"
 #include "list_menu_2d.h"
+#include "render_window.h"
 
 typedef struct UnkStruct_ov44_02235004 {
-    u8 unk0[27];
+    u32 unk0;
+    u32 unk4;
+    u16 unk8;
+    s16 unkA;
+    u8 unkC[15];
     u8 unk1B;
-    u8 unk1C[5];
+    u8 unk1C[2];
+    u8 unk1E;
+    u8 unk1F[2];
     u8 unk21;
 } UnkStruct_ov44_02235004;
 
@@ -24,7 +31,9 @@ typedef struct UnkStruct_ov44_02235340 {
     u8 unk6;
     u8 unk7;
     s32 unk8;
-    u8 unkC[6];
+    u32 unkC;
+    u8 unk10;
+    u8 unk11;
     u8 unk12;
     u8 unk13;
     u8 unk14[4];
@@ -39,12 +48,22 @@ typedef struct UnkStruct_ov44_02235340 {
     u8 unk2C;
     u8 unk2D;
     Window window;
-    u8 unk34[457];
-    struct ListMenu2D* listMenu2D;
+    u8 unk40[324];
+    u32 unk184;
+    u32 unk188;
+    s32* unk18C;
+    s32* unk190;
+    s16 unk194;
+    s16 unk196;
+    u8 unk198[36];
+    Window window_1BC; 
+    u8 unk1CC[64];
+    struct ListMenu2D* listMenu2D; //0x20C
 } UnkStruct_ov44_02235340;
 
 extern const WindowTemplate ov44_0223645C;
 
+void ov44_022340EC(UnkStruct_ov44_02235340* arg0, s32 arg1, enum HeapID heapID);
 void ov44_02233FA8(UnkStruct_ov44_02235340* arg0);
 void ov44_0223398C(Window* arg0, s32 arg1, s32 arg2, enum HeapID heapID);
 s32 ov44_02233E6C(UnkStruct_ov44_02235340* arg0);
@@ -76,6 +95,16 @@ void ov44_02233214(UnkStruct_ov44_02235340* arg0, enum HeapID arg1);
 void ov44_02234028(UnkStruct_ov44_02235340* arg0);
 void ov44_022331C4(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_02235340* arg1, enum HeapID heapID);
 
+void ov44_02234324();
+void ov44_02234328(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_02235004* arg1);
+void ov44_0223435C(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_02235004* arg1);
+void ov44_02234388(void);
+void ov44_0223438C(UnkStruct_ov44_02235340* arg0);
+int ov44_0223442C(UnkStruct_ov44_02235340* arg0);
+void ov44_02234440(UnkStruct_ov44_02235340* arg0);
+void ov44_02234450(UnkStruct_ov44_02235340* arg0);
+s32 ov44_02234458(UnkStruct_ov44_02235340* arg0);
+s32 ov44_02234474(UnkStruct_ov44_02235340* arg0, s32 arg1, enum HeapID arg2);
 s32 ov44_022344AC(UnkStruct_ov44_02235340* arg0, s32 arg1, enum HeapID arg2);
 s32 ov44_022344C4(UnkStruct_ov44_02235340* arg0, u8* arg1);
 s32 ov44_022345A0(UnkStruct_ov44_02235340* arg0, s32 arg1, enum HeapID arg2);
