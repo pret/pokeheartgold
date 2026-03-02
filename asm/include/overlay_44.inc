@@ -450,3 +450,10 @@
 .public ov44_02234474
 .public ov44_02234328
 .public ov44_02234324
+.public ov44_022341C0
+.public ov44_02234204
+.public ov44_02234224
+.public ov44_02234248
+.public ov44_0223427C
+.public ov44_022342B8
+.public ov44_022342E0
