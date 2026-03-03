@@ -7,6 +7,7 @@
 #include "unk_02035900.h"
 #include "unk_020379A0.h"
 #include "unk_02005D10.h"
+#include "sound_02004A44.h"
 #include "overlay_00_arm.h"
 #include "overlay_00_thumb.h"
 #include "overlay_42.h"
@@ -26,6 +27,216 @@
 extern const WindowTemplate ov44_0223645C;
 extern const u8 ov44_02236458[4];
 extern const func_type ov44_02236464[4];
+extern const u16 ov44_02236510[];
+
+void ov44_02233EB4(UnkStruct_ov44_02235340* arg0, u8 arg1[]) {
+    switch (arg1[0]) {
+    case 0:
+        arg0->unk0->unk1B = 0x12;
+        break;
+    case 1:
+        arg0->unk0->unk1B = 0x16;
+        break;
+    case 2:
+        arg0->unk0->unk1B = 0x18;
+        break;
+    case 3:
+        arg0->unk0->unk1B = 0x1A;
+        break;
+    }
+    ov00_021E6D60(arg0->unk0, 0x24);
+}
+
+s32 ov44_02233EF8(UnkStruct_ov44_02235340* arg0) {
+    if (arg0->unk11 == 1) {
+        return 0;
+    }
+    if (ov44_02233E6C(arg0) == 1) {
+        ov00_021E69A8(0x68);
+        arg0->unk11 = 1;
+        return 1;
+    }
+    return 0;
+}
+
+s32 ov44_02233F20(UnkStruct_ov44_02235340* arg0) {
+    if (arg0->unk11 == 0) {
+        return 0;
+    }
+    ov00_021E6A4C();
+    arg0->unk11 = 0U;
+    return 1;
+}
+
+void ov44_02233F3C(UnkStruct_ov44_02235340* arg0) {
+    if (ov44_02233EF8(arg0) != 0) {
+        GF_GetCurrentPlayingBGM();
+        sub_02005448();
+    }
+}
+
+void ov44_02233F50(UnkStruct_ov44_02235340* arg0) {
+    if (ov44_02233F20(arg0) != 0) {
+        GF_SndHandleSetInitialVolume(0, 120);
+    }
+}
+
+s32 ov44_02233F64(UnkStruct_ov44_02235340* arg0) {
+    return sub_020347A0();
+}
+
+s32 ov44_02233F6C(UnkStruct_ov44_02235340* arg0, enum HeapID heapID) {
+    s32 var_r4;
+    s32 var_r7;
+
+    var_r7 = 1;
+    var_r4 = sub_0203769C() - 1;
+    if (var_r4 >= 0) {
+        do {
+            if (sub_02034714(var_r4) == 1) {
+                ov44_022340BC(arg0, var_r4, heapID);
+            } else if (sub_02034750(var_r4) == 0) {
+                var_r7 = 0;
+            }
+            var_r4 -= 1;
+        } while (var_r4 >= 0);
+    }
+    return var_r7;
+}
+
+void ov44_02233FA8(UnkStruct_ov44_02235340* arg0) {
+    UnkStruct_ov44_022345FC var_r5;
+    var_r5.unk2 = 0;
+    s32 counter = 1;
+    do {
+        if (sub_02034714(counter) == 1) {
+            var_r5.unk0 = counter;
+            
+            if (sub_02037030(0x16, &var_r5, 8) != 1) { //0/sp
+                GF_AssertFail();
+            }
+            sub_020346E8(counter);
+        }
+        counter += 1;
+    } while (counter < 4);
+}
+
+void ov44_02233FE8(UnkStruct_ov44_02235340* arg0) {
+    UnkStruct_ov44_022345FC var_r5;
+    var_r5.unk2 = 0;
+    s32 counter = 1;
+    do {
+        if (sub_02034730(counter) == 1) {
+            var_r5.unk0 = counter;
+            if (sub_02037030(0x16, &var_r5, 8) != 1) {
+                GF_AssertFail();
+            }
+            sub_020346E8(counter);
+        }
+        counter += 1;
+    } while (counter < 4);
+}
+
+void ov44_02234028(UnkStruct_ov44_02235340* arg0) {
+    ov00_021E5CA0(ov44_02234070, (s32)arg0);
+}
+
+void ov44_02234038(void) {
+    ov00_021E5CA0(0, 0);
+}
+
+s32 ov44_02234044(s32 arg0) {
+    s32 counter;
+    s32 var_r7;
+    UnkStruct_ov44_02235340* var_r5;
+
+    var_r7 = 0;
+    counter = 0;
+    do {
+        var_r5 = (UnkStruct_ov44_02235340*)(arg0 + counter);
+        if (var_r5->unk14[0] == 1) {
+            if (sub_02034750(var_r5->unk14[4]) == 1) {
+                var_r7 = 1;
+            }
+            var_r5->unk14[0] = 0;
+            var_r5->unk18[0]= 0;
+        }
+        counter += 1;
+    } while (counter < 4);
+    return var_r7;
+}
+
+void ov44_02234070(u8 arg0, UnkStruct_ov44_02235340* arg1, s32 arg2) {
+    arg1->unk14[arg0] = 1;
+    arg1->unk18[arg0] = arg0;
+}
+
+s32 ov44_0223407C(UnkStruct_ov44_02235340* arg0) {
+    int i;
+    s32 ret = 0;
+    for (i = 0; i < 4; i++) {
+        if (arg0->unk1C[i] != arg0->unk20[i]) {
+            ret = 1;
+        }
+        arg0->unk1C[i] = arg0->unk20[i];
+    }
+    
+    if (arg0->unk24 != 0) {
+        arg0->unk24 = 0;
+        ret = 1;
+    }
+    
+    return ret;
+}
+
+void ov44_022340B4(UnkStruct_ov44_02235340* arg0) {
+    arg0->unk24 = 1;
+}
+
+void ov44_022340BC(UnkStruct_ov44_02235340* arg0, s32 arg1, enum HeapID arg2) {
+    if (sub_02034750(arg1) == 0) {
+        sub_0203476C(arg1);
+        arg0->unk25 = arg1;
+        ov44_022340EC(arg0, arg1, arg2);
+        ov44_022340B4(arg0);
+    }
+}
+
+void ov44_022340EC(UnkStruct_ov44_02235340* arg0, s32 arg1, enum HeapID arg2) {
+    u16 sp4[6];
+    s32 temp_r4 = arg1 * 0xC;
+    s32 temp_r7 = (s32)&arg0->unk18C;
+    
+    if (*(u32 *)(temp_r7 + temp_r4) == 0) {
+        u16* temp_r0 = (u16*)((u8*)ov44_02236510 + temp_r4);
+        sp4[0] = temp_r0[0];
+        sp4[1] = temp_r0[1];
+        sp4[2] = temp_r0[2];
+        sp4[3] = temp_r0[3];
+        sp4[4] = temp_r0[4];
+        sp4[5] = temp_r0[5];
+        
+        if (arg1 != sub_0203769C()) {
+            PlayerProfile* playerProfile = sub_02034818(arg1);
+            if (playerProfile == NULL) {
+                GF_AssertFail();
+            }
+            sp4[5] = PlayerProfile_GetAvatar(playerProfile);
+        } else if (arg0->unk0->unk1E == 0) {
+            sp4[5] = 0;
+        } else {
+            sp4[5] = 0x61;
+        }
+        *(s32*)(temp_r7 + temp_r4) = ov42_022280B8(arg0->unk184, sp4);
+        if (ov42_02229010(arg0->unk188, sp4[5]) == 0) {
+            ov42_02228FE0(arg0->unk188, sp4[5], 2, arg2);
+        }
+        s32 temp_r6 = (s32)&arg0->unk190;
+        *(s32*)(temp_r6 + temp_r4) = ov42_0222903C(arg0->unk188, *(s32*)(temp_r7 + temp_r4), 0, arg2);
+        ov42_02229200(*(s32*)(temp_r6 + temp_r4), 0);
+        *(u16*)((u8*)&arg0->unk194 + temp_r4) += 1;
+    }
+}
 
 void ov44_022341C0(UnkStruct_ov44_02235340* arg0) {
     s32 var_r6;
@@ -397,7 +608,7 @@ s32 ov44_022347D4(UnkStruct_ov44_02235340* arg0) {
     return 0;
 }
 
-s32 ov44_022347FC(UnkStruct_ov44_02235340* arg0, UnkStruct_02111868_sub* arg1) {
+s32 ov44_022347FC(UnkStruct_ov44_02235340* arg0, u8 arg1[]) {
     if (sub_02037B38(0xD) != 0) {
         ov44_02233EB4(arg0, arg1);
         sub_02037BEC();
@@ -576,8 +787,8 @@ s32 ov44_02234AA8(UnkStruct_ov44_02235340* arg0, UnkStruct_02111868_sub* arg1, e
     return 0;
 }
 
-s32 ov44_02234AE4(UnkStruct_ov44_02235340* arg0, UnkStruct_02111868_sub* arg1, enum HeapID heapID) {
-    ov44_02233860(&arg0->window, arg1, 118, heapID);
+s32 ov44_02234AE4(UnkStruct_ov44_02235340* arg0, u8 arg1[], enum HeapID heapID) {
+    ov44_02233860(&arg0->window, (UnkStruct_02111868_sub*)arg1, 118, heapID);
     arg0->unk5 = 29;
     ov44_02233FE8(arg0);
     ov44_02233EB4(arg0, arg1);
