@@ -205,7 +205,7 @@ void ov44_022340BC(UnkStruct_ov44_02235340* arg0, s32 arg1, enum HeapID arg2) {
 void ov44_022340EC(UnkStruct_ov44_02235340* arg0, s32 arg1, enum HeapID arg2) {
     u16 sp4[6];
     s32 temp_r4 = arg1 * 0xC;
-    s32 temp_r7 = (s32)&arg0->unk18C;
+    s32 temp_r7 = (s32)&arg0->unk30.unk15C;
     
     if (*(u32 *)(temp_r7 + temp_r4) == 0) {
         u16* temp_r0 = (u16*)((u8*)ov44_02236510 + temp_r4);
@@ -227,14 +227,14 @@ void ov44_022340EC(UnkStruct_ov44_02235340* arg0, s32 arg1, enum HeapID arg2) {
         } else {
             sp4[5] = 0x61;
         }
-        *(s32*)(temp_r7 + temp_r4) = ov42_022280B8(arg0->unk184, sp4);
-        if (ov42_02229010(arg0->unk188, sp4[5]) == 0) {
-            ov42_02228FE0(arg0->unk188, sp4[5], 2, arg2);
+        *(s32*)(temp_r7 + temp_r4) = ov42_022280B8(arg0->unk30.unk154, sp4);
+        if (ov42_02229010(arg0->unk30.unk158, sp4[5]) == 0) {
+            ov42_02228FE0(arg0->unk30.unk158, sp4[5], 2, arg2);
         }
-        s32 temp_r6 = (s32)&arg0->unk190;
-        *(s32*)(temp_r6 + temp_r4) = ov42_0222903C(arg0->unk188, *(s32*)(temp_r7 + temp_r4), 0, arg2);
+        s32 temp_r6 = (s32)&arg0->unk30.unk160;
+        *(s32*)(temp_r6 + temp_r4) = ov42_0222903C(arg0->unk30.unk158, *(s32*)(temp_r7 + temp_r4), 0, arg2);
         ov42_02229200(*(s32*)(temp_r6 + temp_r4), 0);
-        *(u16*)((u8*)&arg0->unk194 + temp_r4) += 1;
+        *(u16*)((u8*)&arg0->unk30.unk164 + temp_r4) += 1;
     }
 }
 
@@ -244,7 +244,7 @@ void ov44_022341C0(UnkStruct_ov44_02235340* arg0) {
     s32 var_r5;
 
     var_r6 = 0;
-    var_r4 = (s32)&arg0->unk18C;
+    var_r4 = (s32)&arg0->unk30.unk15C;
     var_r5 = (s32)arg0;
     
     do {
@@ -254,13 +254,13 @@ void ov44_022341C0(UnkStruct_ov44_02235340* arg0) {
         var_r4 += 0xC;
         var_r5 = var_r5 + 0xC;
     } while (var_r6 < 4);
-    ov42_0222807C(arg0->unk184);
-    ov42_022290DC(arg0->unk188);
+    ov42_0222807C(arg0->unk30.unk154);
+    ov42_022290DC(arg0->unk30.unk158);
 }
 
 void ov44_02234204(UnkStruct_ov44_02235340* arg0) {
-    ov42_0222901C(arg0->unk188);
-    memset(&arg0->unk18C, 0, 0x30);
+    ov42_0222901C(arg0->unk30.unk158);
+    memset(&arg0->unk30.unk15C, 0, 0x30);
 }
 
 void ov44_02234224(UnkStruct_ov44_02235340* arg0, s32 arg1) {
@@ -300,18 +300,18 @@ void ov44_0223427C(UnkStruct_ov44_02235340* arg0, enum HeapID arg1) {
 }
 
 void ov44_022342B8(UnkStruct_ov44_02235340* arg0) {
-    if (arg0->waitingIcon != 0) {
+    if (arg0->unk30.unk1E8 != 0) {
         GF_AssertFail();
     }
-    arg0->waitingIcon = WaitingIcon_New(&arg0->window_1BC, 1);
+    arg0->unk30.unk1E8 = WaitingIcon_New(&arg0->unk30.window_list[0], 1);
 }
 
 void ov44_022342E0(UnkStruct_ov44_02235340* arg0, UnkStruct_02111868_sub* arg1, enum HeapID arg2) {
-    if (arg0->waitingIcon != 0) {
-        sub_0200F450(arg0->waitingIcon);
-        arg0->waitingIcon = 0;
+    if (arg0->unk30.unk1E8 != 0) {
+        sub_0200F450(arg0->unk30.unk1E8);
+        arg0->unk30.unk1E8 = 0;
         Options* options = Save_PlayerData_GetOptionsAddr(arg1->saveData);
-        LoadUserFrameGfx2(arg0->window.bgConfig, GF_BG_LYR_MAIN_1, 1, 2, Options_GetFrame(options), arg2);
+        LoadUserFrameGfx2(arg0->unk30.bgConfig, GF_BG_LYR_MAIN_1, 1, 2, Options_GetFrame(options), arg2);
     }
 }
 
@@ -422,7 +422,7 @@ s32 ov44_02234474(UnkStruct_ov44_02235340* arg0, s32 arg1, enum HeapID arg2) {
 }
 
 s32 ov44_022344AC(UnkStruct_ov44_02235340* arg0, UnkStruct_02111868_sub* arg1, enum HeapID arg2) {
-    ov44_02233860(&arg0->window, arg1, 0x6B, arg2);
+    ov44_02233860(&arg0->unk30, arg1, 0x6B, arg2);
     arg0->unk5 = 2;
     return 0;
 }
@@ -430,7 +430,7 @@ s32 ov44_022344AC(UnkStruct_ov44_02235340* arg0, UnkStruct_02111868_sub* arg1, e
 s32 ov44_022344C4(UnkStruct_ov44_02235340* arg0, u8* arg1) {
     s32 temp_r0;
 
-    if (ov44_02233914(&arg0->window) == 0) {
+    if (ov44_02233914(&arg0->unk30) == 0) {
         return 0;
     }
     if (ov44_02233E6C(arg0) == 1) {
@@ -472,17 +472,17 @@ s32 ov44_022344C4(UnkStruct_ov44_02235340* arg0, u8* arg1) {
 }
 
 s32 ov44_022345A0(UnkStruct_ov44_02235340* arg0, UnkStruct_02111868_sub* arg1, enum HeapID arg2) {
-    ov44_0223398C(&arg0->window, arg1, arg0->unk6, arg2);
-    ov44_02233860(&arg0->window, arg1, 0x6C, arg2);
+    ov44_0223398C(&arg0->unk30, arg1, arg0->unk6, arg2);
+    ov44_02233860(&arg0->unk30, arg1, 0x6C, arg2);
     arg0->unk5 = 4;
     return 0;
 }
 
 s32 ov44_022345C8(UnkStruct_ov44_02235340* arg0, s32 arg1, enum HeapID heapID) {
-    if (ov44_02233914(&arg0->window) == 0) {
+    if (ov44_02233914(&arg0->unk30) == 0) {
         return 0;
     }
-    arg0->listMenu2D = Std_CreateYesNoMenu(arg0->window.bgConfig, &ov44_0223645C, 0x30, 4, heapID);
+    arg0->unk30.unk1DC = Std_CreateYesNoMenu(arg0->unk30.bgConfig, &ov44_0223645C, 0x30, 4, heapID);
     arg0->unk5 = 5;
     return 0;
 }
@@ -490,7 +490,7 @@ s32 ov44_022345C8(UnkStruct_ov44_02235340* arg0, s32 arg1, enum HeapID heapID) {
 s32 ov44_022345FC(UnkStruct_ov44_02235340* arg0, u8* arg1, enum HeapID arg2) {
     s32 temp_r0;
 
-    temp_r0 = Handle2dMenuInput_DeleteOnFinish(arg0->listMenu2D, arg2);
+    temp_r0 = Handle2dMenuInput_DeleteOnFinish(arg0->unk30.unk1DC, arg2);
     if (temp_r0 != -1) {
         UnkStruct_ov44_022345FC subroutine_arg0;
         subroutine_arg0.unk0 = (s16) arg0->unk6;
@@ -515,20 +515,20 @@ s32 ov44_022345FC(UnkStruct_ov44_02235340* arg0, u8* arg1, enum HeapID arg2) {
             GF_AssertFail();
         }
         arg0->unk6 = 0xFF;
-        ov44_02233A34(&arg0->window);
-        arg0->listMenu2D = NULL;
+        ov44_02233A34(&arg0->unk30);
+        arg0->unk30.unk1DC = NULL;
     }
     return 0;
 }
 
 s32 ov44_0223469C(UnkStruct_ov44_02235340* arg0, UnkStruct_02111868_sub* arg1, enum HeapID arg2) {
-    ov44_02233860(&arg0->window, arg1, 0x77, arg2);
+    ov44_02233860(&arg0->unk30, arg1, 0x77, arg2);
     arg0->unk5 = 7;
     return 0;
 }
 
 s32 ov44_022346B4(UnkStruct_ov44_02235340* arg0) {
-    if (ov44_02233914(&arg0->window) == 0) {
+    if (ov44_02233914(&arg0->unk30) == 0) {
         return 0;
     }
     arg0->unk5 = 0x13;
@@ -536,16 +536,16 @@ s32 ov44_022346B4(UnkStruct_ov44_02235340* arg0) {
 }
 
 s32 ov44_022346D0(UnkStruct_ov44_02235340* arg0, UnkStruct_02111868_sub* arg1, enum HeapID arg2) {
-    ov44_02233860(&arg0->window, arg1, 0x6F, arg2);
+    ov44_02233860(&arg0->unk30, arg1, 0x6F, arg2);
     arg0->unk5 = 9;
     return 0;
 }
 
 s32 ov44_022346E8(UnkStruct_ov44_02235340* arg0, s32 arg1, enum HeapID heapID) {
-    if (ov44_02233914(&arg0->window) == 0) {
+    if (ov44_02233914(&arg0->unk30) == 0) {
         return 0;
     }
-    arg0->listMenu2D = Std_CreateYesNoMenu(arg0->window.bgConfig, &ov44_0223645C, 0x30, 4, heapID);
+    arg0->unk30.unk1DC = Std_CreateYesNoMenu(arg0->unk30.bgConfig, &ov44_0223645C, 0x30, 4, heapID);
     arg0->unk5 = 0xA;
     return 0;
 }
@@ -553,7 +553,7 @@ s32 ov44_022346E8(UnkStruct_ov44_02235340* arg0, s32 arg1, enum HeapID heapID) {
 s32 ov44_0223471C(UnkStruct_ov44_02235340* arg0, u8* arg1, enum HeapID arg2) {
     s32 temp_r0;
 
-    temp_r0 = Handle2dMenuInput_DeleteOnFinish(arg0->listMenu2D, arg2);
+    temp_r0 = Handle2dMenuInput_DeleteOnFinish(arg0->unk30.unk1DC, arg2);
     if (temp_r0 != -1) {
         if (temp_r0 == 0) {
             arg0->unk5 = 0xB;
@@ -562,7 +562,7 @@ s32 ov44_0223471C(UnkStruct_ov44_02235340* arg0, u8* arg1, enum HeapID arg2) {
         } else {
             arg0->unk5 = 1;
         }
-        arg0->listMenu2D = NULL;
+        arg0->unk30.unk1DC = NULL;
     }
     return 0;
 }
@@ -570,7 +570,7 @@ s32 ov44_0223471C(UnkStruct_ov44_02235340* arg0, u8* arg1, enum HeapID arg2) {
 s32 ov44_02234764(UnkStruct_ov44_02235340* arg0, UnkStruct_02111868_sub* arg1, enum HeapID arg2) {
     arg0->unk8 = 0x1E;
     ov44_02233FA8(arg0);
-    ov44_02233860(&arg0->window, arg1, 0x66, arg2);
+    ov44_02233860(&arg0->unk30, arg1, 0x66, arg2);
     ov44_022342B8(arg0);
     ov44_02234440(arg0);
     arg0->unk5 = 0xC;
@@ -679,16 +679,16 @@ s32 ov44_022348C4(UnkStruct_ov44_02235340* arg0, UnkStruct_02111868_sub* arg1, e
 }
 
 s32 ov44_022348EC(UnkStruct_ov44_02235340* arg0, UnkStruct_02111868_sub* arg1, enum HeapID heapID) {
-    ov44_02233860(&arg0->window, arg1, 120, heapID);
+    ov44_02233860(&arg0->unk30, arg1, 120, heapID);
     arg0->unk5 = 20;
     return 0;
 }
 
 s32 ov44_02234904(UnkStruct_ov44_02235340* arg0, s32 arg1, enum HeapID heapID) {
-    if (ov44_02233914(&arg0->window) == 0) {
+    if (ov44_02233914(&arg0->unk30) == 0) {
         return 0;
     }
-    arg0->listMenu2D = CreateYesNoMenu(arg0->window.bgConfig, &ov44_0223645C, 48U, 4, 1, heapID);
+    arg0->unk30.unk1DC = CreateYesNoMenu(arg0->unk30.bgConfig, &ov44_0223645C, 48U, 4, 1, heapID);
     arg0->unk5 = 21;
     return 0;
 }
@@ -696,7 +696,7 @@ s32 ov44_02234904(UnkStruct_ov44_02235340* arg0, s32 arg1, enum HeapID heapID) {
 s32 ov44_02234944(UnkStruct_ov44_02235340* arg0, u8* arg1, enum HeapID heapID) {
     s32 temp_r0;
 
-    temp_r0 = Handle2dMenuInput_DeleteOnFinish(arg0->listMenu2D, heapID);
+    temp_r0 = Handle2dMenuInput_DeleteOnFinish(arg0->unk30.unk1DC, heapID);
     if (temp_r0 != -1) {
         if (temp_r0 == 0) {
             arg0->unk5 = 22;
@@ -709,22 +709,22 @@ s32 ov44_02234944(UnkStruct_ov44_02235340* arg0, u8* arg1, enum HeapID heapID) {
         } else {
             arg0->unk5 = 1;
         }
-        arg0->listMenu2D = NULL;
+        arg0->unk30.unk1DC = NULL;
     }
     return 0;
 }
 
 s32 ov44_0223499C(UnkStruct_ov44_02235340* arg0, UnkStruct_02111868_sub* arg1, enum HeapID heapID) {
-    ov44_02233860(&arg0->window, arg1, 121, heapID);
+    ov44_02233860(&arg0->unk30, arg1, 121, heapID);
     arg0->unk5 = 23;
     return 0;
 }
 
 s32 ov44_022349B4(UnkStruct_ov44_02235340* arg0, s32 arg1, enum HeapID heapID) {
-    if (ov44_02233914(&arg0->window) == 0) {
+    if (ov44_02233914(&arg0->unk30) == 0) {
         return 0;
     }
-    arg0->listMenu2D = CreateYesNoMenu(arg0->window.bgConfig, &ov44_0223645C, 48, 4, 1, heapID);
+    arg0->unk30.unk1DC = CreateYesNoMenu(arg0->unk30.bgConfig, &ov44_0223645C, 48, 4, 1, heapID);
     arg0->unk5 = 24;
     return 0;
 }
@@ -732,7 +732,7 @@ s32 ov44_022349B4(UnkStruct_ov44_02235340* arg0, s32 arg1, enum HeapID heapID) {
 s32 ov44_022349F4(UnkStruct_ov44_02235340* arg0, u8* arg1, enum HeapID heapID) {
     s32 temp_r0;
 
-    temp_r0 = Handle2dMenuInput_DeleteOnFinish(arg0->listMenu2D, heapID);
+    temp_r0 = Handle2dMenuInput_DeleteOnFinish(arg0->unk30.unk1DC, heapID);
     if (temp_r0 != -1) {
         if (temp_r0 == 0) {
             arg0->unk5 = 25;
@@ -745,13 +745,13 @@ s32 ov44_022349F4(UnkStruct_ov44_02235340* arg0, u8* arg1, enum HeapID heapID) {
         } else {
             arg0->unk5 = 1;
         }
-        arg0->listMenu2D = NULL;
+        arg0->unk30.unk1DC = NULL;
     }
     return 0;
 }
 
 s32 ov44_02234A4C(UnkStruct_ov44_02235340* arg0, UnkStruct_02111868_sub* arg1, enum HeapID heapID) {
-    ov44_02233860(&arg0->window, arg1, 122, heapID);
+    ov44_02233860(&arg0->unk30, arg1, 122, heapID);
     arg0->unk8 = 30;
     arg0->unk5 = 26;
     return 0;
@@ -760,7 +760,7 @@ s32 ov44_02234A4C(UnkStruct_ov44_02235340* arg0, UnkStruct_02111868_sub* arg1, e
 s32 ov44_02234A68(UnkStruct_ov44_02235340* arg0) {
     s32 temp_r0;
 
-    if (ov44_02233914(&arg0->window) == 0) {
+    if (ov44_02233914(&arg0->unk30) == 0) {
         return 0;
     }
     temp_r0 = arg0->unk8 - 1;
@@ -777,18 +777,18 @@ s32 ov44_02234A68(UnkStruct_ov44_02235340* arg0) {
 }
 
 s32 ov44_02234AA8(UnkStruct_ov44_02235340* arg0, UnkStruct_02111868_sub* arg1, enum HeapID heapID) {
-    if (arg0->listMenu2D != NULL) {
-        Clear2dMenuWindowAndDelete(arg0->listMenu2D, heapID);
-        arg0->listMenu2D = NULL;
+    if (arg0->unk30.unk1DC != NULL) {
+        Clear2dMenuWindowAndDelete(arg0->unk30.unk1DC, heapID);
+        arg0->unk30.unk1DC = NULL;
     }
-    ov44_02233A34(&arg0->window);
+    ov44_02233A34(&arg0->unk30);
     ov44_022342E0(arg0, arg1, heapID);
     arg0->unk5 = 28;
     return 0;
 }
 
 s32 ov44_02234AE4(UnkStruct_ov44_02235340* arg0, u8 arg1[], enum HeapID heapID) {
-    ov44_02233860(&arg0->window, (UnkStruct_02111868_sub*)arg1, 118, heapID);
+    ov44_02233860(&arg0->unk30, (UnkStruct_02111868_sub*)arg1, 118, heapID);
     arg0->unk5 = 29;
     ov44_02233FE8(arg0);
     ov44_02233EB4(arg0, arg1);
@@ -802,7 +802,7 @@ s32 ov44_02234B18(UnkStruct_ov44_02235340* arg0) {
     if ((u32) (sub_020390C4() - 4) <= 1) {
         ov00_021EDB1C();
     }
-    if (ov44_02233914(&arg0->window) == 0) {
+    if (ov44_02233914(&arg0->unk30) == 0) {
         return 0;
     }
     sub_02039358();
@@ -821,16 +821,16 @@ s32 ov44_02234B58(UnkStruct_ov44_02235340* arg0, UnkStruct_02111868_sub* arg1, e
     } else {
         var_r2 = 124;
     }
-    ov44_02233860(&arg0->window, arg1, var_r2, heapID);
+    ov44_02233860(&arg0->unk30, arg1, var_r2, heapID);
     arg0->unk5 = 31;
     return 0;
 }
 
 s32 ov44_02234B80(UnkStruct_ov44_02235340* arg0, s32 arg1, enum HeapID heapID) {
-    if (ov44_02233914(&arg0->window) == 0) {
+    if (ov44_02233914(&arg0->unk30) == 0) {
         return 0;
     }
-    arg0->listMenu2D = Std_CreateYesNoMenu(arg0->window.bgConfig, &ov44_0223645C, 48, 4, heapID);
+    arg0->unk30.unk1DC = Std_CreateYesNoMenu(arg0->unk30.bgConfig, &ov44_0223645C, 48, 4, heapID);
     arg0->unk5 = 32;
     return 0;
 }
@@ -838,14 +838,14 @@ s32 ov44_02234B80(UnkStruct_ov44_02235340* arg0, s32 arg1, enum HeapID heapID) {
 s32 ov44_02234BB4(UnkStruct_ov44_02235340* arg0, s32 arg1, enum HeapID heapID) {
     s32 temp_r0;
 
-    temp_r0 = Handle2dMenuInput_DeleteOnFinish(arg0->listMenu2D, heapID);
+    temp_r0 = Handle2dMenuInput_DeleteOnFinish(arg0->unk30.unk1DC, heapID);
     if (temp_r0 != -1) {
         if (temp_r0 == 0) {
             ov44_02233D38(arg0, heapID);
             ov44_022340B4(arg0);
         }
         arg0->unk5 = 1;
-        arg0->listMenu2D = NULL;
+        arg0->unk30.unk1DC = NULL;
     }
     return 0;
 }
@@ -872,8 +872,8 @@ s32 ov44_02234C10(UnkStruct_ov44_02235340* arg0, s32 arg1, enum HeapID heapID) {
 
 s32 ov44_02234C48(UnkStruct_ov44_02235340* arg0, UnkStruct_02111868_sub* arg1, enum HeapID heapID) {
     ov44_02233F6C(arg0, heapID);
-    ov44_02233C88(&arg0->window, arg1, 0, 0, heapID);
-    ov44_02233860(&arg0->window, arg1, 114, heapID);
+    ov44_02233C88(&arg0->unk30, arg1, 0, 0, heapID);
+    ov44_02233860(&arg0->unk30, arg1, 114, heapID);
     ov44_022342B8(arg0);
     arg0->unk5 = 3;
     return 0;
@@ -883,7 +883,7 @@ s32 ov44_02234C88(UnkStruct_ov44_02235340* arg0, UnkStruct_02111868_sub* arg1, e
     u8 temp_r0;
 
     ov44_02233F6C(arg0, heapID);
-    if (ov44_02233914(&arg0->window) == 0) {
+    if (ov44_02233914(&arg0->unk30) == 0) {
         return 0;
     }
     if (arg0->unk13 != 0) {
@@ -907,8 +907,8 @@ s32 ov44_02234C88(UnkStruct_ov44_02235340* arg0, UnkStruct_02111868_sub* arg1, e
 }
 
 s32 ov44_02234CE8(UnkStruct_ov44_02235340* arg0, UnkStruct_02111868_sub* arg1, enum HeapID heapID) {
-    ov44_02233C88(&arg0->window, arg1, 0, 0, heapID);
-    ov44_0223386C(&arg0->window, arg1, 115, 30, heapID);
+    ov44_02233C88(&arg0->unk30, arg1, 0, 0, heapID);
+    ov44_0223386C(&arg0->unk30, arg1, 115, 30, heapID);
     arg0->unk5 = 5;
     ov44_022340BC(arg0, sub_0203769C(), HEAP_ID_103);
     return 0;
@@ -916,7 +916,7 @@ s32 ov44_02234CE8(UnkStruct_ov44_02235340* arg0, UnkStruct_02111868_sub* arg1, e
 
 s32 ov44_02234D28(UnkStruct_ov44_02235340* arg0, UnkStruct_02111868_sub* arg1, enum HeapID heapID) {
     ov44_02233F6C(arg0, heapID);
-    if (ov44_02233914(&arg0->window) == 0) {
+    if (ov44_02233914(&arg0->unk30) == 0) {
         return 0;
     }
     arg0->unk5 = 8;
@@ -924,8 +924,8 @@ s32 ov44_02234D28(UnkStruct_ov44_02235340* arg0, UnkStruct_02111868_sub* arg1, e
 }
 
 s32 ov44_02234D4C(UnkStruct_ov44_02235340* arg0, UnkStruct_02111868_sub* arg1, enum HeapID heapID) {
-    ov44_02233C88(&arg0->window, arg1, 0, 0, heapID);
-    ov44_02233860(&arg0->window, arg1, arg0->unk2D, heapID);
+    ov44_02233C88(&arg0->unk30, arg1, 0, 0, heapID);
+    ov44_02233860(&arg0->unk30, arg1, arg0->unk2D, heapID);
     arg0->unk5 = 7;
     sub_02039358();
     sub_02039B58();
@@ -933,7 +933,7 @@ s32 ov44_02234D4C(UnkStruct_ov44_02235340* arg0, UnkStruct_02111868_sub* arg1, e
 }
 
 s32 ov44_02234D88(UnkStruct_ov44_02235340* arg0) {
-    if (ov44_02233914(&arg0->window) == 0) {
+    if (ov44_02233914(&arg0->unk30) == 0) {
         return 0;
     }
     arg0->unk7 = 0;
@@ -943,7 +943,7 @@ s32 ov44_02234D88(UnkStruct_ov44_02235340* arg0) {
 
 s32 ov44_02234DA8(UnkStruct_ov44_02235340* arg0, UnkStruct_02111868_sub* arg1, enum HeapID heapID) {
     ov44_02233F6C(arg0, heapID);
-    ov44_02233860(&arg0->window, arg1, 123, heapID);
+    ov44_02233860(&arg0->unk30, arg1, 123, heapID);
     ov44_022342B8(arg0);
     arg0->unk5 = 9;
     if (arg0->unk0->unk21 == 1) {
@@ -954,7 +954,7 @@ s32 ov44_02234DA8(UnkStruct_ov44_02235340* arg0, UnkStruct_02111868_sub* arg1, e
 
 s32 ov44_02234DE4(UnkStruct_ov44_02235340* arg0, s32 arg1, enum HeapID heapID) {
     ov44_02233F6C(arg0, heapID);
-    if (ov44_02233914(&arg0->window) == 0) {
+    if (ov44_02233914(&arg0->unk30) == 0) {
         return 0;
     }
     arg0->unk5 = 10;
@@ -975,7 +975,7 @@ s32 ov44_02234E08(UnkStruct_ov44_02235340* arg0, UnkStruct_02111868_sub* arg1, e
         sub_02037BEC();
         sub_02037AC0(14);
         ov44_022342E0(arg0, arg1, heapID);
-        ov44_02233860(&arg0->window, arg1, 102, heapID);
+        ov44_02233860(&arg0->unk30, arg1, 102, heapID);
         ov44_02234440(arg0);
         arg0->unk8 = 300;
         ov44_022342B8(arg0);
@@ -1058,24 +1058,24 @@ s32 ov44_02234F60(UnkStruct_ov44_02235340* arg0, UnkStruct_02111868_sub* arg1, e
 }
 
 s32 ov44_02234F88(UnkStruct_ov44_02235340* arg0, UnkStruct_02111868_sub* arg1, enum HeapID heapID) {
-    if (arg0->listMenu2D != NULL) {
-        Clear2dMenuWindowAndDelete(arg0->listMenu2D, heapID);
-        arg0->listMenu2D = NULL;
+    if (arg0->unk30.unk1DC != NULL) {
+        Clear2dMenuWindowAndDelete(arg0->unk30.unk1DC, heapID);
+        arg0->unk30.unk1DC = NULL;
     }
-    ov44_02233A34(&arg0->window);
+    ov44_02233A34(&arg0->unk30);
     ov44_022342E0(arg0, arg1, heapID);
     arg0->unk5 = 16;
     return 0;
 }
 
 s32 ov44_02234FC4(UnkStruct_ov44_02235340* arg0, UnkStruct_02111868_sub* arg1, enum HeapID heapID) {
-    ov44_02233860(&arg0->window, arg1, 118, heapID);
+    ov44_02233860(&arg0->unk30, arg1, 118, heapID);
     arg0->unk5 = 17;
     return 0;
 }
 
 s32 ov44_02234FDC(UnkStruct_ov44_02235340* arg0) {
-    if (ov44_02233914(&arg0->window) == 0) {
+    if (ov44_02233914(&arg0->unk30) == 0) {
         return 0;
     }
     sub_02039358();
@@ -1094,7 +1094,7 @@ s32 ov44_02235004(UnkStruct_ov44_02235340* arg0, UnkStruct_02111868_sub* arg1, e
     } else {
         var_r2 = 124;
     }
-    ov44_02233860(&arg0->window, arg1, var_r2, heapID);
+    ov44_02233860(&arg0->unk30, arg1, var_r2, heapID);
     arg0->unk5 = 19;
     return 0;
 }
@@ -1103,13 +1103,13 @@ s32 ov44_02235038(UnkStruct_ov44_02235340* arg0, s32 arg1, enum HeapID heapID) {
     ov44_02233F6C(arg0, heapID);
     if (ov44_0223442C(arg0) == 1) {
         arg0->unk5 = 10;
-        ov44_02233954(&arg0->window);
+        ov44_02233954(&arg0->unk30);
         return 0;
     }
-    if (ov44_02233914(&arg0->window) == 0) {
+    if (ov44_02233914(&arg0->unk30) == 0) {
         return 0;
     }
-    arg0->listMenu2D = Std_CreateYesNoMenu(arg0->window.bgConfig, &ov44_0223645C, 48, 4, heapID);
+    arg0->unk30.unk1DC = Std_CreateYesNoMenu(arg0->unk30.bgConfig, &ov44_0223645C, 48, 4, heapID);
     arg0->unk5 = 20;
     return 0;
 }
@@ -1120,19 +1120,19 @@ s32 ov44_02235090(UnkStruct_ov44_02235340* arg0, s32 arg1, enum HeapID heapID) {
     ov44_02233F6C(arg0, heapID);
     if (ov44_0223442C(arg0) == 1) {
         arg0->unk5 = 10;
-        ov44_02233954(&arg0->window);
-        Clear2dMenuWindowAndDelete(arg0->listMenu2D, heapID);
-        arg0->listMenu2D = 0;
+        ov44_02233954(&arg0->unk30);
+        Clear2dMenuWindowAndDelete(arg0->unk30.unk1DC, heapID);
+        arg0->unk30.unk1DC = 0;
         return 0;
     }
-    temp_r0 = Handle2dMenuInput_DeleteOnFinish(arg0->listMenu2D, heapID);
+    temp_r0 = Handle2dMenuInput_DeleteOnFinish(arg0->unk30.unk1DC, heapID);
     if (temp_r0 != -1) {
         if (temp_r0 == 0) {
             ov44_02233D38(arg0, heapID);
             ov44_022340B4(arg0);
         }
         arg0->unk5 = 8;
-        arg0->listMenu2D = 0;
+        arg0->unk30.unk1DC = 0;
     }
     return 0;
 }
@@ -1142,19 +1142,19 @@ s32 ov44_02235100(UnkStruct_ov44_02235340* arg0, UnkStruct_02111868_sub* arg1, e
     if (arg0->unk26 == 32) {
         GF_AssertFail();
     }
-    ov44_02233C88(&arg0->window, arg1, 0, 0, heapID);
+    ov44_02233C88(&arg0->unk30, arg1, 0, 0, heapID);
     sub_02039358();
     arg0->unk27 = 0;
-    ov44_02233860(&arg0->window, arg1, 132, heapID);
+    ov44_02233860(&arg0->unk30, arg1, 132, heapID);
     arg0->unk5 = 22;
     return 0;
 }
 
 s32 ov44_02235158(UnkStruct_ov44_02235340* arg0, s32 arg1, enum HeapID heapID) {
-    if (ov44_02233914(&arg0->window) == 0) {
+    if (ov44_02233914(&arg0->unk30) == 0) {
         return 0;
     }
-    arg0->listMenu2D = Std_CreateYesNoMenu(arg0->window.bgConfig, &ov44_0223645C, 48, 4, heapID);
+    arg0->unk30.unk1DC = Std_CreateYesNoMenu(arg0->unk30.bgConfig, &ov44_0223645C, 48, 4, heapID);
     arg0->unk5 = 23;
     return 0;
 }
@@ -1163,7 +1163,7 @@ s32 ov44_0223518C(UnkStruct_ov44_02235340* arg0, s32 arg1, enum HeapID heapID) {
     s32 temp_r0;
     s8 var_r0;
 
-    temp_r0 = Handle2dMenuInput_DeleteOnFinish(arg0->listMenu2D, heapID);
+    temp_r0 = Handle2dMenuInput_DeleteOnFinish(arg0->unk30.unk1DC, heapID);
     if (temp_r0 != -1) {
         if (temp_r0 == 0) {
             var_r0 = 24;
@@ -1171,13 +1171,13 @@ s32 ov44_0223518C(UnkStruct_ov44_02235340* arg0, s32 arg1, enum HeapID heapID) {
             var_r0 = 29;
         }
         arg0->unk5 = var_r0;
-        arg0->listMenu2D = 0;
+        arg0->unk30.unk1DC = 0;
     }
     return 0;
 }
 
 s32 ov44_022351BC(UnkStruct_ov44_02235340* arg0, UnkStruct_02111868_sub* arg1, enum HeapID heapID) {
-    ov44_02233860(&arg0->window, arg1, 17, heapID);
+    ov44_02233860(&arg0->unk30, arg1, 17, heapID);
     ov44_022342B8(arg0);
     arg0->unk8 = 90;
     arg0->unk5 = 25;
@@ -1189,7 +1189,7 @@ s32 ov44_022351DC(UnkStruct_ov44_02235340* arg0, u8* arg1) {
         arg0->unk8 = arg0->unk8 - 1;
         return 0;
     }
-    if (ov44_02233914(&arg0->window) == 0) {
+    if (ov44_02233914(&arg0->unk30) == 0) {
         return 0;
     }
     if (ov44_02233E80(arg0->unk26, *arg1) != 0) {
@@ -1218,7 +1218,7 @@ s32 ov44_02235268(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_02235340* arg1, 
         ov44_02234204(arg0);
         ov44_02233214(arg0, heapID);
         arg0 = arg0;
-        memset(&arg0->window, 0, 504);
+        memset(&arg0->unk30, 0, 504);
         ov44_02234028(arg0);
         ov44_022331C4(arg0, arg1, heapID);
         sub_0203A880();
