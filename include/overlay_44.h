@@ -157,7 +157,7 @@ void ov44_02233FA8(UnkStruct_ov44_02235340* arg0);
 void ov44_02233FE8(UnkStruct_ov44_02235340* arg0);
 void ov44_02234028(UnkStruct_ov44_02235340* arg0);
 void ov44_02234038(UnkStruct_ov44_02235340* arg0);
-s32 ov44_02234044(s32 arg0);
+s32 ov44_02234044(UnkStruct_ov44_02235340* arg0);
 void ov44_02234070(u8 arg0, UnkStruct_ov44_02235340* arg1, s32 arg2);
 s32 ov44_0223407C(UnkStruct_ov44_02235340* arg0);
 void ov44_022340B4(UnkStruct_ov44_02235340* arg0);
