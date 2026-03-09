@@ -783,7 +783,7 @@ void ov44_02233FE8(UnkStruct_ov44_02235340* arg0) {
 }
 
 void ov44_02234028(UnkStruct_ov44_02235340* arg0) {
-    ov00_021E5CA0(ov44_02234070, (s32)arg0);
+    ov00_021E5CA0(ov44_02234070, arg0);
 }
 
 void ov44_02234038(UnkStruct_ov44_02235340* arg0) {
@@ -844,10 +844,8 @@ void ov44_022340BC(UnkStruct_ov44_02235340* arg0, s32 arg1, enum HeapID arg2) {
 
 void ov44_022340EC(UnkStruct_ov44_02235340* arg0, s32 arg1, enum HeapID arg2) {
     u16 sp4[6];
-    u32 temp_r4 = arg1 * 12;
-    u32 temp_r7 = (u32)&arg0->unk30.unk15C;
-    
-    if (*(u32 *)(temp_r7 + temp_r4) == 0) {
+
+    if (arg0->unk30.unk15C[arg1].unk0 == 0) {
         sp4 = ov44_02236510[arg1];
         
         if (arg1 != sub_0203769C()) {
@@ -861,33 +859,24 @@ void ov44_022340EC(UnkStruct_ov44_02235340* arg0, s32 arg1, enum HeapID arg2) {
         } else {
             sp4[5] = 97;
         }
-        *(s32*)(temp_r7 + temp_r4) = ov42_022280B8(arg0->unk30.unk154, sp4);
+        arg0->unk30.unk15C[arg1].unk0 = ov42_022280B8(arg0->unk30.unk154, sp4);
         if (ov42_02229010(arg0->unk30.unk158, sp4[5]) == 0) {
             ov42_02228FE0(arg0->unk30.unk158, sp4[5], 2, arg2);
         }
-        s32 temp_r6 = (s32)&arg0->unk30.unk160;
-        *(s32*)(temp_r6 + temp_r4) = ov42_0222903C(arg0->unk30.unk158, *(s32*)(temp_r7 + temp_r4), 0, arg2);
-        ov42_02229200(*(s32*)(temp_r6 + temp_r4), 0);
-        *(u16*)((u8*)&arg0->unk30.unk164 + temp_r4) += 1;
+
+        arg0->unk30.unk15C[arg1].unk4 = ov42_0222903C(arg0->unk30.unk158, arg0->unk30.unk15C[arg1].unk0, 0, arg2);
+        ov42_02229200(arg0->unk30.unk15C[arg1].unk4, 0);
+        arg0->unk30.unk15C[arg1].unk8 += 1;
     }
 }
 
 void ov44_022341C0(UnkStruct_ov44_02235340* arg0) {
-    s32 var_r6;
-    s32 var_r4;
-    s32 var_r5;
-
-    var_r6 = 0;
-    var_r4 = (s32)&arg0->unk30.unk15C;
-    var_r5 = (s32)arg0;
-    
+    s32 counter = 0; 
     do {
-        func_type ov44_func = ov44_02236464[*(u16*)(var_r5 + 404)];
-        ov44_func(arg0, (UnkStruct_ov44_02235004*)var_r4);
-        var_r6 += 1;
-        var_r4 += 12;
-        var_r5 = var_r5 + 12;
-    } while (var_r6 < 4);
+        func_type ov44_func = ov44_02236464[arg0->unk30.unk15C[counter].unk8];
+        ov44_func(arg0, &arg0->unk30.unk15C[counter]);
+        counter += 1;
+    } while (counter < 4);
     ov42_0222807C(arg0->unk30.unk154);
     ov42_022290DC(arg0->unk30.unk158);
 }
@@ -949,11 +938,11 @@ void ov44_022342E0(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enu
     }
 }
 
-void ov44_02234324(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_02235004* arg1) {
+void ov44_02234324(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_022341C0* arg1) {
 
 }
 
-void ov44_02234328(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_02235004* arg1) {
+void ov44_02234328(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_022341C0* arg1) {
     ov42_0222919C(arg1->unk4, 0);
     ov42_022291A0(arg1->unk4);
     ov42_02229200(arg1->unk4, 1);
@@ -962,7 +951,7 @@ void ov44_02234328(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_02235004* arg1)
     arg1->unkA = ov44_02236458[idx] + 16;
 }
 
-void ov44_0223435C(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_02235004* arg1) {
+void ov44_0223435C(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_022341C0* arg1) {
     ov42_022291AC(arg1->unk4);
     arg1->unkA = (arg1->unkA - 1);
     if (arg1->unkA <= 0) {
@@ -972,7 +961,7 @@ void ov44_0223435C(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_02235004* arg1)
     }
 }
 
-void ov44_02234388(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_02235004* arg1) {
+void ov44_02234388(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_022341C0* arg1) {
 
 }
 
@@ -992,13 +981,13 @@ void ov44_0223438C(UnkStruct_ov44_02235340* arg0) {
         if (sp_count > 0) {
             do {
                 if (var_r4 == 0) {
-                    var_r0 = arg0->unk0->unk21;
+                    var_r0 = arg0->unk0[0].unk21;
                 } else {
                     temp_r7 = sub_02034870(var_r4);
                     if (temp_r7 == 32) {
                         GF_AssertFail();
                     }
-                    var_r0 = *(u8*)((u8*)(arg0->unk0) + 36 * temp_r7 + 69);
+                    var_r0 = arg0->unk0[temp_r7 + 1].unk21;
                 }
                 if (var_r0 != arg0->unk20[var_r4]) {
                     sp0 = 1;
@@ -1031,14 +1020,11 @@ void ov44_02234450(UnkStruct_ov44_02235340* arg0) {
 }
 
 s32 ov44_02234458(UnkStruct_ov44_02235340* arg0) {
-    s32 temp_r1;
-
     if (arg0->unk10 == 0) {
         return 0;
     }
-    temp_r1 = arg0->unkC;
-    if (temp_r1 > 0) {
-        arg0->unkC = temp_r1 - 1;
+    if (arg0->unkC > 0) {
+        arg0->unkC -= 1;
         return 0;
     }
     return 1;
@@ -1135,7 +1121,7 @@ s32 ov44_022345FC(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum
                 ov44_02233F20(arg0);
                 ov44_02233F3C(arg0);
             }
-            if ((s32) arg1->unk2 <= ov44_02233F64(arg0)) {
+            if (arg1->unk2 <= ov44_02233F64(arg0)) {
                 arg0->unk5 = 8;
             } else {
                 arg0->unk5 = 1;
@@ -1213,10 +1199,7 @@ s32 ov44_02234764(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum
 }
 
 s32 ov44_0223479C(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum HeapID heapID) {
-    s32 temp_r5;
-
-    temp_r5 = sub_02037454();
-    if (temp_r5 != sub_020347A0()) {
+    if (sub_02037454() != sub_020347A0()) {
         ov44_02233FA8(arg0);
         return 0;
     }
@@ -1229,15 +1212,12 @@ s32 ov44_0223479C(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum
 }
 
 s32 ov44_022347D4(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum HeapID heapID) {
-    s32 temp_r0;
-
-    temp_r0 = arg0->unk8;
-    if (temp_r0 == 0) {
+    if (arg0->unk8 == 0) {
         if (sub_02037030(23, NULL, 0) != 0) {
             arg0->unk5 = 14;
         }
     } else {
-        arg0->unk8 = (s32) (temp_r0 - 1);
+        arg0->unk8 -= 1;
     }
     return 0;
 }
@@ -1335,7 +1315,7 @@ s32 ov44_02234944(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum
         if (temp_r0 == 0) {
             arg0->unk5 = 22;
         } else if (ov44_02233E6C(arg0) != 0) {
-            if ((s32) arg1->unk2 <= ov44_02233F64(arg0)) {
+            if (arg1->unk2 <= ov44_02233F64(arg0)) {
                 arg0->unk5 = 8;
             } else {
                 arg0->unk5 = 1;

@@ -6,7 +6,7 @@ int ov00_021E6EBC(void);
 void ov00_021E7220(s32);
 s32 ov00_021E70F4(void);
 void ov00_021E7130(void);
-void ov00_021E5CA0(void*, s32);
+void ov00_021E5CA0(void*, void*);
 void ov00_021E6A4C(void);
 void ov00_021E69A8(s32);
 void ov00_021E6D60(void*, s32);
