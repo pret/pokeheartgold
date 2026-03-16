@@ -205,7 +205,7 @@ void TrainerHouse_StartBattle(FieldSystem *fieldSystem, u32 trainerNum) {
     } else {
         setup = TrainerHouse_NewBattleSetup(fieldSystem, &trainerHouse->sets[trainerNum]);
     }
-    fieldSystem->unkA0 = NULL;
+    fieldSystem->frontier = NULL;
     u32 effect = BattleSetup_GetWildTransitionEffect(setup);
     u32 bgm = BattleSetup_GetWildBattleMusic(setup);
     u32 *winFlag = FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_BATTLE_WIN_FLAG);
