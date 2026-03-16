@@ -307,7 +307,7 @@ void PokeathlonCourse_InitPlayerProfiles(PokeathlonCourseData *data) {
 }
 
 PlayerProfile *PokeathlonCourse_GetPlayerProfile(PlayerProfile *profiles, int index) {
-    return (PlayerProfile *)((u8 *)profiles + (PlayerProfile_sizeof() * index));
+    return (PlayerProfile *)((u8 *)profiles + PlayerProfile_sizeof() * index);
 }
 
 u8 PokeathlonCourse_GetParticipantCount(PokeathlonCourseData *data) {
