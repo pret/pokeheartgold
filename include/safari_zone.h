@@ -1,28 +1,11 @@
 #ifndef POKEHEARTGOLD_SAFARI_ZONE_H
 #define POKEHEARTGOLD_SAFARI_ZONE_H
 
+#include "constants/safari.h"
+
 #include "igt.h"
 #include "player_data.h"
 #include "save.h"
-
-#define SAFARI_ZONE_MAX_OBJECTS       30
-#define SAFARI_ZONE_AREA_SET_COLS     3
-#define SAFARI_ZONE_AREA_SET_ROWS     2
-#define SAFARI_ZONE_MAX_AREAS_PER_SET (SAFARI_ZONE_AREA_SET_COLS * SAFARI_ZONE_AREA_SET_ROWS)
-#define SAFARI_ZONE_MAX_AREA_SETS     2
-
-#define SAFARI_ZONE_AREA_PLAINS      0
-#define SAFARI_ZONE_AREA_MEADOW      1
-#define SAFARI_ZONE_AREA_SAVANNAH    2
-#define SAFARI_ZONE_AREA_PEAK        3
-#define SAFARI_ZONE_AREA_ROCKY_BEACH 4
-#define SAFARI_ZONE_AREA_WETLAND     5
-#define SAFARI_ZONE_AREA_FOREST      6
-#define SAFARI_ZONE_AREA_SWAMP       7
-#define SAFARI_ZONE_AREA_MARSHLAND   8
-#define SAFARI_ZONE_AREA_WASTELAND   9
-#define SAFARI_ZONE_AREA_MOUNTAIN    10
-#define SAFARI_ZONE_AREA_DESERT      11
 
 typedef struct SAFARIZONE_OBJECT {
     u8 unk[4];
@@ -36,7 +19,7 @@ typedef struct SAFARIZONE_AREA {
 
 typedef struct SAFARIZONE_AREASET {
     SAFARIZONE_AREA areas[SAFARI_ZONE_MAX_AREAS_PER_SET];
-    u8 unk2DC[12];
+    u8 areaLevels[NUM_SAFARI_ZONE_AREAS];
 } SAFARIZONE_AREASET;
 
 typedef struct SAFARIZONE_LINKLEADER {
@@ -68,9 +51,9 @@ u8 sub_0202F620(SafariZone *safari_zone);
 SAFARIZONE_AREASET *SafariZone_GetAreaSet(SafariZone *safari_zone, s32 area_set_no);
 void SafariZone_CopyAreaSet(SafariZone *safari_zone, s32 area_set_no, SAFARIZONE_AREASET *area_set_dest);
 void SafariZone_SetAreaSet(SafariZone *safari_zone, s32 area_set_no, SAFARIZONE_AREASET *area_set_src);
-void sub_0202F6A0(SafariZone *safari_zone, u8 a1);
-u8 sub_0202F6AC(SafariZone *safari_zone);
-void sub_0202F6B8(SAFARIZONE_AREASET *area_set, s32 a1);
+void SafariZone_SetLevel(SafariZone *safari_zone, u8 a1);
+u8 SafariZone_GetLevel(SafariZone *safari_zone);
+void SafariZone_AddToAllAreaLevels(SafariZone *safariZone, s32 a1);
 u8 SafariZone_GetObjectUnlockLevel(SafariZone *safari_zone);
 u8 SafariZone_IncObjectUnlockLevel(SafariZone *safari_zone, s32 a1);
 void SafariZone_SetObjectUnlockLevel(SafariZone *safari_zone, u8 a1);
