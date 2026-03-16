@@ -1,5 +1,7 @@
 #include "overlay_13_thumb_1.h"
 
+#include <nitro/hw/common/io_reg.h>
+
 #include "global.h"
 
 #include "overlay_00_thumb.h"
@@ -7,8 +9,8 @@
 #include "unk_02034B0C.h"
 
 void ov13_0221BA00(enum HeapID HeapID) {
-    for (int playerNo = 0; playerNo < 0x20; playerNo += 1) {
-        NNS_SndPlayerSetPlayerVolume(playerNo, 0x7F);
+    for (int playerNo = 0; playerNo < 32; playerNo++) {
+        NNS_SndPlayerSetPlayerVolume(playerNo, 127);
         NNS_SndPlayerSetPlayableSeqCount(playerNo, 1);
         NNS_SndPlayerSetAllocatableChannel(playerNo, 0);
     }
@@ -22,6 +24,6 @@ void ov13_0221BA00(enum HeapID HeapID) {
     Heap_Free(buffer);
     OS_RestoreInterrupts(interrupts);
 
-    u16 oldValue = *(vu16 *)0x04000208;
-    *(u16 *)0x04000208 = 1;
+    u16 oldValue = reg_OS_IME;
+    reg_OS_IME = 1;
 }
