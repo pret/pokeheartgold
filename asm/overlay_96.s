@@ -9,8 +9,8 @@
 	.extern PokeathlonCourse_InitPlayerProfiles
 	.extern PokeathlonCourse_GetPlayerProfile
 	.extern PokeathlonCourse_GetParticipantCount
-	.extern PokeathlonCourse_GetParticipantData1
-	.extern PokeathlonCourse_GetParticipantData2
+	.extern PokeathlonCourse_GetParticipantData
+	.extern PokeathlonCourse_GetParticipantUnk04
 	.extern PokeathlonCourse_GetSaveData
 	.extern ov96_021E5D6C
 	.extern ov96_021E5D78
@@ -605,7 +605,7 @@ ov96_021E6168: ; 0x021E6168
 _021E617A:
 	add r0, r7, #0
 	add r1, r6, #0
-	bl PokeathlonCourse_GetParticipantData2
+	bl PokeathlonCourse_GetParticipantUnk04
 	mov r1, #0x28
 	add r3, r5, #0
 	mul r3, r1
@@ -1678,7 +1678,7 @@ ov96_021E6990: ; 0x021E6990
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	mov r1, #0
-	bl PokeathlonCourse_GetParticipantData1
+	bl PokeathlonCourse_GetParticipantData
 	add r4, r0, #0
 	bl ov96_021E99FC
 	add r6, r0, #0
@@ -3604,7 +3604,7 @@ _021E78AC:
 	bl ov96_021E5F24
 	add r1, r0, #0
 	ldr r0, [sp]
-	bl PokeathlonCourse_GetParticipantData2
+	bl PokeathlonCourse_GetParticipantUnk04
 	add r1, r4, #0
 	ldr r3, _021E7924 ; =0xFFFEFFFF
 	mov r2, #0
@@ -5246,7 +5246,7 @@ _021E84E8:
 _021E84EC:
 	ldr r0, [sp]
 	ldr r1, [sp, #4]
-	bl PokeathlonCourse_GetParticipantData1
+	bl PokeathlonCourse_GetParticipantData
 	add r5, r0, #0
 	ldr r0, [sp, #8]
 	ldrb r0, [r0]
@@ -7772,7 +7772,7 @@ ov96_021E9718: ; 0x021E9718
 	bne _021E9780
 	add r0, r4, #0
 	add r1, r5, #0
-	bl PokeathlonCourse_GetParticipantData1
+	bl PokeathlonCourse_GetParticipantData
 	add r1, r7, #0
 	add r2, r6, #0
 	bl memcpy
@@ -7817,7 +7817,7 @@ ov96_021E9784: ; 0x021E9784
 	add r7, r2, #0
 	add r0, r4, #0
 	add r1, r6, #0
-	bl PokeathlonCourse_GetParticipantData1
+	bl PokeathlonCourse_GetParticipantData
 	add r1, r7, #0
 	add r2, r5, #0
 	bl memcpy
@@ -12240,7 +12240,7 @@ _021EB82A:
 	add r1, #0xb2
 	ldrb r1, [r1]
 	ldr r0, [sp, #0xc]
-	bl PokeathlonCourse_GetParticipantData1
+	bl PokeathlonCourse_GetParticipantData
 	ldr r0, [r0]
 	cmp r0, #0
 	ble _021EB852
@@ -14175,10 +14175,10 @@ ov96_021EC790: ; 0x021EC790
 	add r4, r0, #0
 	ldr r0, [sp, #0xc]
 	ldr r1, [sp, #0x10]
-	bl PokeathlonCourse_GetParticipantData2
+	bl PokeathlonCourse_GetParticipantUnk04
 	ldr r0, [sp, #0xc]
 	ldr r1, [sp, #0x10]
-	bl PokeathlonCourse_GetParticipantData1
+	bl PokeathlonCourse_GetParticipantData
 	mov r0, #0
 	str r0, [sp, #0x14]
 	add r6, r4, #0
@@ -14590,7 +14590,7 @@ _021ECAF6:
 _021ECB0A:
 	add r0, r6, #0
 	add r1, r4, #0
-	bl PokeathlonCourse_GetParticipantData1
+	bl PokeathlonCourse_GetParticipantData
 	ldr r0, [r0]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
@@ -14620,7 +14620,7 @@ ov96_021ECB38: ; 0x021ECB38
 	add r0, r1, #0
 	add r1, r5, #0
 	add r7, r3, #0
-	bl PokeathlonCourse_GetParticipantData1
+	bl PokeathlonCourse_GetParticipantData
 	ldr r0, [r0]
 	cmp r0, #0
 	ble _021ECB56
@@ -14652,7 +14652,7 @@ _021ECB76:
 	beq _021ECBA6
 	ldr r0, [sp, #4]
 	add r1, r5, #0
-	bl PokeathlonCourse_GetParticipantData1
+	bl PokeathlonCourse_GetParticipantData
 	ldr r0, [r0]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
@@ -15868,7 +15868,7 @@ ov96_021ED524: ; 0x021ED524
 	add r4, r0, #0
 	add r0, r6, #0
 	add r1, r7, #0
-	bl PokeathlonCourse_GetParticipantData2
+	bl PokeathlonCourse_GetParticipantUnk04
 	add r6, r0, #0
 	ldr r1, [r4]
 	mov r0, #0xb
@@ -16440,7 +16440,7 @@ ov96_021ED954: ; 0x021ED954
 	str r0, [sp]
 	add r0, r4, #0
 	add r1, r5, #0
-	bl PokeathlonCourse_GetParticipantData2
+	bl PokeathlonCourse_GetParticipantUnk04
 	add r5, r0, #0
 	mov r7, #0
 	add r4, sp, #4
@@ -17601,7 +17601,7 @@ ov96_021EE1D8: ; 0x021EE1D8
 	ldr r1, [sp, #4]
 	add r0, r7, #0
 	mov r5, #0
-	bl PokeathlonCourse_GetParticipantData1
+	bl PokeathlonCourse_GetParticipantData
 	str r0, [sp, #8]
 	add r4, r5, #0
 _021EE1F0:
@@ -38621,7 +38621,7 @@ ov96_021F8830: ; 0x021F8830
 _021F8856:
 	ldr r0, [r5, #4]
 	ldr r1, [r6]
-	bl PokeathlonCourse_GetParticipantData1
+	bl PokeathlonCourse_GetParticipantData
 	str r0, [sp, #8]
 	ldr r0, [r0]
 	cmp r0, #0
@@ -40778,7 +40778,7 @@ _021F9968:
 _021F99F2:
 	add r0, r6, #0
 	add r1, r7, #0
-	bl PokeathlonCourse_GetParticipantData2
+	bl PokeathlonCourse_GetParticipantUnk04
 	mov r1, #0
 _021F99FC:
 	ldrh r2, [r0]
@@ -53560,7 +53560,7 @@ _021FFF80:
 	bl ov96_021E5F24
 	add r1, r0, #0
 	ldr r0, [sp]
-	bl PokeathlonCourse_GetParticipantData2
+	bl PokeathlonCourse_GetParticipantUnk04
 	add r4, r0, #0
 	mov r6, #0
 	add r5, r7, #0
@@ -69202,7 +69202,7 @@ _02207D10:
 	bl ov96_021E5F24
 	add r1, r0, #0
 	ldr r0, [sp]
-	bl PokeathlonCourse_GetParticipantData2
+	bl PokeathlonCourse_GetParticipantUnk04
 	add r4, r0, #0
 	mov r6, #0
 	add r5, r7, #0
@@ -73368,7 +73368,7 @@ _02209E14:
 	bl ov96_021E5F24
 	add r1, r0, #0
 	ldr r0, [sp]
-	bl PokeathlonCourse_GetParticipantData2
+	bl PokeathlonCourse_GetParticipantUnk04
 	add r5, r0, #0
 	mov r7, #0
 	add r4, r6, #0
@@ -105295,7 +105295,7 @@ _02219506:
 	bl ov96_021E5F24
 	add r1, r0, #0
 	ldr r0, [sp, #0x38]
-	bl PokeathlonCourse_GetParticipantData2
+	bl PokeathlonCourse_GetParticipantUnk04
 	add r6, r0, #0
 	mov r7, #0
 	add r5, r4, #0

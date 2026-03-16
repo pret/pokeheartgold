@@ -276,12 +276,12 @@ BOOL PokeathlonCourse_RunSubStateLoop(PokeathlonCourseData *data) {
     return FALSE;
 }
 
-void PokeathlonCourse_InitStateInfo(const void *src, PokeathlonStateInfo *dest) {
-    dest->ptr = (void *)src;
-    dest->field_04 = 1;
-    dest->stateArgsBase = 0;
-    dest->stateIndex = 0;
-    dest->field_07 = 0;
+void PokeathlonCourse_InitStateInfo(const void *funcTable, PokeathlonStateInfo *stateInfo) {
+    stateInfo->ptr = (void *)funcTable;
+    stateInfo->field_04 = 1;
+    stateInfo->stateArgsBase = 0;
+    stateInfo->stateIndex = 0;
+    stateInfo->field_07 = 0;
 }
 
 void PokeathlonCourse_InitPlayerProfiles(PokeathlonCourseData *data) {
@@ -314,12 +314,12 @@ u8 PokeathlonCourse_GetParticipantCount(PokeathlonCourseData *data) {
     return data->participantCount;
 }
 
-PokeathlonParticipantData *PokeathlonCourse_GetParticipantData1(PokeathlonCourseData *data, int index) {
-    return (PokeathlonParticipantData *)((u8 *)&data->participantData1Base + (0x7C * index));
+PokeathlonParticipantData *PokeathlonCourse_GetParticipantData(PokeathlonCourseData *data, int index) {
+    return &data->participants[index];
 }
 
-PokeathlonParticipantData *PokeathlonCourse_GetParticipantData2(PokeathlonCourseData *data, int index) {
-    return (PokeathlonParticipantData *)&data->participantData2[0x7C * index];
+u8 *PokeathlonCourse_GetParticipantUnk04(PokeathlonCourseData *data, int index) {
+    return &data->participants[index].field_04;
 }
 
 SaveData *PokeathlonCourse_GetSaveData(PokeathlonCourseData *data) {
@@ -327,11 +327,11 @@ SaveData *PokeathlonCourse_GetSaveData(PokeathlonCourseData *data) {
 }
 
 PokeathlonFieldData *ov96_021E5D6C(PokeathlonCourseData *data) {
-    return (PokeathlonFieldData *)data->field_72C;
+    return data->field_72C;
 }
 
 PokeathlonFieldData *ov96_021E5D78(PokeathlonCourseData *data, int index) {
-    return (PokeathlonFieldData *)&data->field_72C[0x60 * index];
+    return &data->field_72C[index];
 }
 
 void *ov96_021E5D88(PokeathlonCourseData *data) {
