@@ -4,6 +4,7 @@
 #include "msgdata/msg/msg_0203.h"
 
 #include "brightness.h"
+#include "field_map_change.h"
 #include "field_warp_tasks.h"
 #include "font.h"
 #include "gf_gfx_loader.h"
@@ -18,7 +19,6 @@
 #include "unk_0203BA5C.h"
 #include "unk_02054E00.h"
 #include "unk_020552A4.h"
-#include "unk_0206793C.h"
 #include "use_item_on_mon.h"
 
 static void Blackout_InitDisplays(BgConfig *bgConfig);
