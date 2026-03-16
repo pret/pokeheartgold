@@ -610,7 +610,7 @@ void sub_0207F178(PartyMenu *partyMenu) {
 
 void sub_0207F240(PartyMenu *partyMenu, u8 partySlot, int selected) {
     u8 sp1, sp0;
-    sub_02020A0C(&partyMenu->unk_948[partySlot], &sp1, &sp0);
+    DpadMenuBox_GetPosition(&partyMenu->dpadMenuBox[partySlot], &sp1, &sp0);
     Sprite_SetAnimCtrlSeq(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], sub_0207B5EC(partyMenu->args->unk_25, partySlot));
     Sprite_SetDrawFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], TRUE);
     Sprite_SetPositionXY(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], sp1, sp0);

@@ -86,17 +86,17 @@ _00E8:
 
 	.balign 4, 0
 _00F4:
-	step 12, 1
-	step 15, 1
-	step 2, 1
-	step_end
+	WalkNormalNorth
+	WalkNormalEast
+	FaceWest
+	EndMovement
 
 	.balign 4, 0
 _0104:
-	step 13, 1
-	step 15, 1
-	step 2, 1
-	step_end
+	WalkNormalSouth
+	WalkNormalEast
+	FaceWest
+	EndMovement
 
 scr_seq_T27R0201_001:
 	play_se SEQ_SE_DP_SELECT

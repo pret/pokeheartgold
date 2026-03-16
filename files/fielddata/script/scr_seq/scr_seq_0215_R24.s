@@ -44,29 +44,29 @@ _0078:
 
 	.balign 4, 0
 _0084:
-	step 75, 1
-	step 18, 3
-	step_end
+	EmoteExclamationMark
+	WalkFastWest 3
+	EndMovement
 
 	.balign 4, 0
 _0090:
-	step 0, 1
-	step 75, 1
-	step 18, 3
-	step_end
+	FaceNorth
+	EmoteExclamationMark
+	WalkFastWest 3
+	EndMovement
 
 	.balign 4, 0
 _00A0:
-	step 65, 3
-	step 1, 1
-	step_end
+	Delay16 3
+	FaceSouth
+	EndMovement
 
 	.balign 4, 0
 _00AC:
-	step 65, 3
-	step 17, 1
-	step 0, 1
-	step_end
+	Delay16 3
+	WalkFastSouth
+	FaceNorth
+	EndMovement
 
 scr_seq_R24_002:
 	play_se SEQ_SE_DP_SELECT
@@ -111,32 +111,32 @@ _014A:
 
 	.balign 4, 0
 _0150:
-	step 19, 1
-	step 17, 10
-	step_end
+	WalkFastEast
+	WalkFastSouth 10
+	EndMovement
 
 	.balign 4, 0
 _015C:
-	step 71, 1
-	step 19, 1
-	step 72, 1
-	step 1, 1
-	step_end
+	LockDir
+	WalkFastEast
+	UnlockDir
+	FaceSouth
+	EndMovement
 
 	.balign 4, 0
 _0170:
-	step 62, 12
-	step 2, 1
-	step_end
+	Delay4 12
+	FaceWest
+	EndMovement
 
 	.balign 4, 0
 _017C:
-	step 62, 1
-	step 1, 1
-	step 62, 10
-	step 12, 1
-	step 2, 1
-	step_end
+	Delay4
+	FaceSouth
+	Delay4 10
+	WalkNormalNorth
+	FaceWest
+	EndMovement
 
 scr_seq_R24_000:
 	play_se SEQ_SE_DP_SELECT

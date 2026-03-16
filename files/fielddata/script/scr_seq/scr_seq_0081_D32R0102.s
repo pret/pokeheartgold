@@ -118,67 +118,67 @@ _0183:
 
 	.balign 4, 0
 _019C:
-	step 18, 1
-	step 16, 5
-	step 76, 2
-	step 12, 1
-	step 34, 1
-	step_end
+	WalkFastWest
+	WalkFastNorth 5
+	WalkSlightlyFastNorth 2
+	WalkNormalNorth
+	WalkOnSpotNormalWest
+	EndMovement
 
 	.balign 4, 0
 _01B4:
-	step 16, 5
-	step 76, 2
-	step 12, 1
-	step 34, 1
-	step_end
+	WalkFastNorth 5
+	WalkSlightlyFastNorth 2
+	WalkNormalNorth
+	WalkOnSpotNormalWest
+	EndMovement
 
 	.balign 4, 0
 _01C8:
-	step 15, 1
-	step 16, 5
-	step 76, 2
-	step 12, 1
-	step 34, 1
-	step_end
+	WalkNormalEast
+	WalkFastNorth 5
+	WalkSlightlyFastNorth 2
+	WalkNormalNorth
+	WalkOnSpotNormalWest
+	EndMovement
 
 	.balign 4, 0
 _01E0:
-	step 16, 5
-	step 76, 2
-	step 12, 1
-	step 35, 1
-	step_end
+	WalkFastNorth 5
+	WalkSlightlyFastNorth 2
+	WalkNormalNorth
+	WalkOnSpotNormalEast
+	EndMovement
 
 	.balign 4, 0
 _01F4:
-	step 15, 1
-	step 16, 5
-	step 76, 2
-	step 12, 1
-	step 35, 1
-	step_end
+	WalkNormalEast
+	WalkFastNorth 5
+	WalkSlightlyFastNorth 2
+	WalkNormalNorth
+	WalkOnSpotNormalEast
+	EndMovement
 
 	.balign 4, 0
 _020C:
-	step 19, 2
-	step 16, 5
-	step 76, 2
-	step 12, 1
-	step 35, 1
-	step_end
+	WalkFastEast 2
+	WalkFastNorth 5
+	WalkSlightlyFastNorth 2
+	WalkNormalNorth
+	WalkOnSpotNormalEast
+	EndMovement
 
 	.balign 4, 0
 _0224:
-	step 63, 5
-	step 35, 1
-	step_end
+	Delay8 5
+	WalkOnSpotNormalEast
+	EndMovement
 
 	.balign 4, 0
 _0230:
-	step 63, 5
-	step 34, 1
-	step_end
+	Delay8 5
+	WalkOnSpotNormalWest
+	EndMovement
 
 scr_seq_D32R0102_003:
 	play_se SEQ_SE_DP_SELECT
@@ -267,47 +267,47 @@ _0378:
 
 	.balign 4, 0
 _038C:
-	step 15, 1
-	step 12, 2
-	step 14, 1
-	step 12, 3
-	step 33, 1
-	step_end
+	WalkNormalEast
+	WalkNormalNorth 2
+	WalkNormalWest
+	WalkNormalNorth 3
+	WalkOnSpotNormalSouth
+	EndMovement
 
 	.balign 4, 0
 _03A4:
-	step 12, 3
-	step 33, 1
-	step_end
+	WalkNormalNorth 3
+	WalkOnSpotNormalSouth
+	EndMovement
 
 	.balign 4, 0
 _03B0:
-	step 12, 1
-	step 14, 1
-	step 12, 3
-	step 33, 1
-	step_end
+	WalkNormalNorth
+	WalkNormalWest
+	WalkNormalNorth 3
+	WalkOnSpotNormalSouth
+	EndMovement
 
 	.balign 4, 0
 _03C4:
-	step 12, 1
-	step 15, 1
-	step 12, 3
-	step 33, 1
-	step_end
+	WalkNormalNorth
+	WalkNormalEast
+	WalkNormalNorth 3
+	WalkOnSpotNormalSouth
+	EndMovement
 
 	.balign 4, 0
 _03D8:
-	step 63, 1
-	step 32, 1
-	step_end
+	Delay8
+	WalkOnSpotNormalNorth
+	EndMovement
 
 	.balign 4, 0
 _03E4:
-	step 15, 1
-	step 12, 1
-	step 1, 1
-	step_end
+	WalkNormalEast
+	WalkNormalNorth
+	FaceSouth
+	EndMovement
 
 scr_seq_D32R0102_005:
 	goto_if_set FLAG_UNK_150, _0421
@@ -335,13 +335,13 @@ _042E:
 
 	.balign 4, 0
 _043C:
-	step 1, 1
-	step_end
+	FaceSouth
+	EndMovement
 
 	.balign 4, 0
 _0444:
-	step 0, 1
-	step_end
+	FaceNorth
+	EndMovement
 
 scr_seq_D32R0102_006:
 	simple_npc_msg msg_0104_D32R0102_00007

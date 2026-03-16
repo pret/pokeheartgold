@@ -83,7 +83,7 @@ void Radio_Load(PokegearRadioAppData *radioApp) {
     radioApp->pokegear->childAppdata = radioApp;
     radioApp->pokegear->reselectAppCB = Radio_OnReselectApp;
     radioApp->pokegear->deselectAppCB = Radio_UnknownCB;
-    radioApp->backgroundStyle = Pokegear_GetBackgroundStyle(radioApp->pokegear->savePokegear);
+    radioApp->skin = Pokegear_GetSkin(radioApp->pokegear->savePokegear);
     Pokegear_GetRadioCursorCoords(radioApp->pokegear->savePokegear, &radioApp->cursorX, &radioApp->cursorY);
     radioApp->selectedButton = 3;
     radioApp->stationSelection = Radio_GetAvailableChannels(radioApp);

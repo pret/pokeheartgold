@@ -21,7 +21,7 @@ typedef struct {
 } ROCK_SMASH;
 
 typedef struct {
-    BOOL followMonKnowsHM;
+    BOOL followMonUsingHm;
     int ability;
     u16 *itemFound; // TODO: bool16
     u16 *item;
@@ -93,9 +93,9 @@ static BOOL CheckRockSmashItemDrop(FieldSystem *fieldSystem, RockSmashItemCheckW
 static BOOL Task_GetRockSmashItem(TaskManager *taskman);
 static int DrawRockSmashIdx(FieldSystem *fieldSystem);
 
-void FieldSystem_RockSmashItemCheck(FieldSystem *fieldSystem, int followMonKnowsHm, u16 *itemFound, u16 *item) {
+void FieldSystem_RockSmashItemCheck(FieldSystem *fieldSystem, int followMonUsingHm, u16 *itemFound, u16 *item) {
     RockSmashItemCheckWork *env = Heap_AllocAtEnd(HEAP_ID_FIELD2, sizeof(RockSmashItemCheckWork));
-    env->followMonKnowsHM = followMonKnowsHm != 0;
+    env->followMonUsingHm = followMonUsingHm != 0;
     env->itemFound = itemFound;
     env->item = item;
     *env->itemFound = FALSE;
@@ -160,7 +160,7 @@ static BOOL CheckRockSmashItemDrop(FieldSystem *fieldSystem, RockSmashItemCheckW
         odds += 5;
         break;
     }
-    if (env->followMonKnowsHM) {
+    if (env->followMonUsingHm) {
         odds += 5;
     }
     if (odds > 100) {
@@ -183,7 +183,7 @@ static BOOL Task_GetRockSmashItem(TaskManager *taskman) {
 
     switch (*state_p) {
     case 0:
-        if (env->followMonKnowsHM) {
+        if (env->followMonUsingHm) {
             obj = FollowMon_GetMapObject(fieldSystem);
         } else {
             obj = PlayerAvatar_GetMapObject(fieldSystem->playerAvatar);

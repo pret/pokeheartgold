@@ -94,29 +94,29 @@ _014C:
 
 	.balign 4, 0
 _0154:
-	step 12, 2
-	step 33, 1
-	step_end
+	WalkNormalNorth 2
+	WalkOnSpotNormalSouth
+	EndMovement
 
 	.balign 4, 0
 _0160:
-	step 15, 1
-	step 12, 1
-	step 1, 1
-	step_end
+	WalkNormalEast
+	WalkNormalNorth
+	FaceSouth
+	EndMovement
 
 	.balign 4, 0
 _0170:
-	step 1, 1
-	step 13, 1
-	step 45, 3
-	step_end
+	FaceSouth
+	WalkNormalSouth
+	JumpOnSpotSlowSouth 3
+	EndMovement
 
 	.balign 4, 0
 _0180:
-	step 13, 2
-	step 33, 1
-	step_end
+	WalkNormalSouth 2
+	WalkOnSpotNormalSouth
+	EndMovement
 
 _018C:
 	toggle_following_pokemon_movement 0

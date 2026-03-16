@@ -179,21 +179,21 @@ scr_seq_T25GYM0101_001:
 
 	.balign 4, 0
 _0260:
-	step 75, 1
-	step 12, 3
-	step_end
+	EmoteExclamationMark
+	WalkNormalNorth 3
+	EndMovement
 
 	.balign 4, 0
 _026C:
-	step 13, 3
-	step 32, 1
-	step_end
+	WalkNormalSouth 3
+	WalkOnSpotNormalNorth
+	EndMovement
 
 	.balign 4, 0
 _0278:
-	step 63, 1
-	step 12, 1
-	step_end
+	Delay8
+	WalkNormalNorth
+	EndMovement
 
 scr_seq_T25GYM0101_002:
 	play_se SEQ_SE_DP_SELECT

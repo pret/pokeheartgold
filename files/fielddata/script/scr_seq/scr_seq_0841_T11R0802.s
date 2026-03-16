@@ -173,69 +173,69 @@ _0265:
 
 	.balign 4, 0
 _026C:
-	step 34, 1
-	step_end
+	WalkOnSpotNormalWest
+	EndMovement
 
 	.balign 4, 0
 _0274:
-	step 3, 1
-	step 1, 1
-	step 2, 1
-	step 0, 1
-	step 3, 1
-	step 1, 1
-	step 2, 1
-	step_end
+	FaceEast
+	FaceSouth
+	FaceWest
+	FaceNorth
+	FaceEast
+	FaceSouth
+	FaceWest
+	EndMovement
 
 	.balign 4, 0
 _0294:
-	step 1, 1
-	step 2, 1
-	step 0, 1
-	step 3, 1
-	step 1, 1
-	step 2, 1
-	step_end
+	FaceSouth
+	FaceWest
+	FaceNorth
+	FaceEast
+	FaceSouth
+	FaceWest
+	EndMovement
 
 	.balign 4, 0
 _02B0:
-	step 2, 1
-	step 0, 1
-	step 3, 1
-	step 1, 1
-	step 2, 1
-	step_end
+	FaceWest
+	FaceNorth
+	FaceEast
+	FaceSouth
+	FaceWest
+	EndMovement
 
 	.balign 4, 0
 _02C8:
-	step 3, 1
-	step 1, 1
-	step 2, 1
-	step 0, 1
-	step 3, 1
-	step 1, 1
-	step 2, 1
-	step 0, 1
-	step_end
+	FaceEast
+	FaceSouth
+	FaceWest
+	FaceNorth
+	FaceEast
+	FaceSouth
+	FaceWest
+	FaceNorth
+	EndMovement
 
 	.balign 4, 0
 _02EC:
-	step 3, 1
-	step 1, 1
-	step 2, 1
-	step 0, 1
-	step 3, 1
-	step_end
+	FaceEast
+	FaceSouth
+	FaceWest
+	FaceNorth
+	FaceEast
+	EndMovement
 
 	.balign 4, 0
 _0304:
-	step 3, 1
-	step 1, 1
-	step 2, 1
-	step 0, 1
-	step 3, 1
-	step 1, 1
-	step_end
+	FaceEast
+	FaceSouth
+	FaceWest
+	FaceNorth
+	FaceEast
+	FaceSouth
+	EndMovement
 
 scr_seq_T11R0802_003:
 	compare VAR_TEMP_x400A, 0
@@ -285,23 +285,23 @@ _03A3:
 
 	.balign 4, 0
 _03C0:
-	step 0, 1
-	step_end
+	FaceNorth
+	EndMovement
 
 	.balign 4, 0
 _03C8:
-	step 1, 1
-	step_end
+	FaceSouth
+	EndMovement
 
 	.balign 4, 0
 _03D0:
-	step 2, 1
-	step_end
+	FaceWest
+	EndMovement
 
 	.balign 4, 0
 _03D8:
-	step 3, 1
-	step_end
+	FaceEast
+	EndMovement
 
 scr_seq_T11R0802_001:
 	simple_npc_msg msg_0541_T11R0802_00015

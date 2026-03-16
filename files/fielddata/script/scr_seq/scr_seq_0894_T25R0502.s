@@ -45,20 +45,20 @@ scr_seq_T25R0502_000:
 
 	.balign 4, 0
 _008C:
-	step 13, 3
-	step 14, 8
-	step_end
+	WalkNormalSouth 3
+	WalkNormalWest 8
+	EndMovement
 
 	.balign 4, 0
 _0098:
-	step 15, 3
-	step 13, 3
-	step_end
+	WalkNormalEast 3
+	WalkNormalSouth 3
+	EndMovement
 
 	.balign 4, 0
 _00A4:
-	step 13, 2
-	step_end
+	WalkNormalSouth 2
+	EndMovement
 
 _00AC:
 	end

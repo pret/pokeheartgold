@@ -3697,7 +3697,7 @@ _021E75B2:
 	bne _021E75E6
 	add r0, r0, #4
 	ldr r0, [r5, r0]
-	bl sub_02019F74
+	bl GridInputHandler_GetNextInput
 	add r4, r0, #0
 	add r0, r5, #0
 	bl ov99_021E7508
@@ -4282,7 +4282,7 @@ ov99_021E7A78: ; 0x021E7A78
 	str r0, [sp, #8]
 	ldr r0, _021E7AB4 ; =ov99_021EA03C
 	add r3, r4, #0
-	bl sub_02019BA4
+	bl GridInputHandler_Create
 	mov r1, #0xff
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -4303,7 +4303,7 @@ ov99_021E7AB8: ; 0x021E7AB8
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _021E7AD2
-	bl sub_02019BDC
+	bl GridInputHandler_Free
 	mov r0, #0xff
 	mov r1, #0
 	lsl r0, r0, #2
@@ -4395,7 +4395,7 @@ _021E7B4C:
 	add r0, #8
 	ldr r0, [r5, r0]
 	mov r6, #0
-	bl sub_02019F74
+	bl GridInputHandler_GetNextInput
 	cmp r7, #0
 	beq _021E7B80
 	cmp r0, #0x1e
@@ -4421,7 +4421,7 @@ _021E7B96:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	add r1, r6, #0
-	bl sub_02019F7C
+	bl GridInputHandler_SetNextInput
 	add r0, r5, #0
 	add r1, r6, #0
 	bl ov99_021E7C58
@@ -4445,12 +4445,12 @@ ov99_021E7BC8: ; 0x021E7BC8
 	mov r0, #0xff
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_02019D18
+	bl GridInputHandler_HandleInput_AllowHold
 	add r6, r0, #0
 	mov r0, #0xff
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_02019F74
+	bl GridInputHandler_GetNextInput
 	add r4, r0, #0
 	ldr r0, _021E7C50 ; =ov99_021E9F54
 	bl TouchscreenHitbox_FindHitboxAtTouchNew
@@ -4520,11 +4520,11 @@ ov99_021E7C58: ; 0x021E7C58
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	add r4, r1, #0
-	bl sub_0201A018
+	bl GridInputHandler_GetDpadBox
 	add r1, sp, #0
 	add r1, #1
 	add r2, sp, #0
-	bl sub_02020A0C
+	bl DpadMenuBox_GetPosition
 	ldr r0, _021E7C9C ; =0x00000408
 	add r2, sp, #0
 	ldrb r1, [r2, #1]
@@ -4559,7 +4559,7 @@ ov99_021E7CA8: ; 0x021E7CA8
 	lsl r1, r4, #0x18
 	ldr r0, [r5, r0]
 	lsr r1, r1, #0x18
-	bl sub_02019F7C
+	bl GridInputHandler_SetNextInput
 	add r0, r5, #0
 	add r1, r4, #0
 	bl ov99_021E7C58

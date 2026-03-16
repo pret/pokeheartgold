@@ -63,21 +63,21 @@ _00C9:
 
 	.balign 4, 0
 _00D0:
-	step 75, 1
-	step 14, 4
-	step_end
+	EmoteExclamationMark
+	WalkNormalWest 4
+	EndMovement
 
 	.balign 4, 0
 _00DC:
-	step 63, 4
-	step 15, 1
-	step_end
+	Delay8 4
+	WalkNormalEast
+	EndMovement
 
 	.balign 4, 0
 _00E8:
-	step 19, 5
-	step 17, 9
-	step_end
+	WalkFastEast 5
+	WalkFastSouth 9
+	EndMovement
 
 _00F4:
 	end

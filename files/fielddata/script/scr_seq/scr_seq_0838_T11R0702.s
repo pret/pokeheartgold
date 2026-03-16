@@ -449,9 +449,9 @@ _06EA:
 
 	.balign 4, 0
 _06F0:
-	step 45, 2
-	step 69, 1
-	step_end
+	JumpOnSpotSlowSouth 2
+	SetInvisible
+	EndMovement
 
 _06FC:
 	setvar VAR_SPECIAL_x8001, 315
@@ -544,8 +544,8 @@ _07BA:
 
 	.balign 4, 0
 _07D0:
-	step 70, 1
-	step_end
+	SetVisible
+	EndMovement
 
 _07D8:
 	compare VAR_SPECIAL_x8004, 1

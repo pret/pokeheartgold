@@ -8506,10 +8506,10 @@ ov07_0221FB90: ; 0x0221FB90
 	str r0, [r4]
 	str r5, [r4, #4]
 	add r0, r7, #0
-	bl BattleSystem_GetSpriteRenderer
+	bl BattleSystem_GetSpriteSystem
 	str r0, [r4, #8]
 	add r0, r7, #0
-	bl BattleSystem_GetGfxHandler
+	bl BattleSystem_GetSpriteManager
 	str r0, [r4, #0xc]
 	add r0, r7, #0
 	bl BattleSystem_GetPaletteData

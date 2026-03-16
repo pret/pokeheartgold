@@ -21,3 +21,5 @@ Makefile text eol=lf
 
 *.h linguist-language=C
 *.inc linguist-language=Assembly
+
+*.narc binary diff=hex

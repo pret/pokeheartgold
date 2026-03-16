@@ -503,6 +503,6 @@ _0898:
 
 	.balign 4, 0
 _08B0:
-	step 33, 1
-	step_end
+	WalkOnSpotNormalSouth
+	EndMovement
 	.balign 4, 0

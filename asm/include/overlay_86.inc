@@ -59,11 +59,11 @@
 .public IsPaletteFadeFinished
 .public sub_020163E0
 .public sub_020164C4
-.public sub_02019BA4
-.public sub_02019BDC
-.public sub_02019BE4
-.public sub_02019F74
-.public sub_0201A018
+.public GridInputHandler_Create
+.public GridInputHandler_Free
+.public GridInputHandler_HandleInput_NoHold
+.public GridInputHandler_GetNextInput
+.public GridInputHandler_GetDpadBox
 .public Main_SetVBlankIntrCB
 .public Main_SetHBlankIntrCB
 .public Heap_Create
@@ -89,7 +89,7 @@
 .public ScheduleBgTilemapBufferTransfer
 .public ScheduleSetBgPosText
 .public AddTextPrinterParameterizedWithColor
-.public sub_02020A0C
+.public DpadMenuBox_GetPosition
 .public GfGfx_SetBanks
 .public GfGfx_DisableEngineAPlanes
 .public GfGfx_EngineATogglePlanes

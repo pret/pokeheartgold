@@ -89,6 +89,6 @@ _00F4:
 
 	.balign 4, 0
 _0100:
-	step 75, 1
-	step_end
+	EmoteExclamationMark
+	EndMovement
 	.balign 4, 0

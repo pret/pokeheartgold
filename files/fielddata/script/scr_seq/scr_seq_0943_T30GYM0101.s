@@ -160,24 +160,24 @@ scr_seq_T30GYM0101_002:
 
 	.balign 4, 0
 _0218:
-	step 1, 2
-	step 2, 2
-	step 0, 2
-	step 3, 2
-	step 1, 2
-	step 2, 2
-	step 0, 2
-	step 3, 2
-	step 1, 2
-	step 2, 2
-	step 0, 2
-	step 3, 2
-	step 1, 2
-	step 2, 2
-	step 0, 2
-	step 3, 1
-	step 69, 0
-	step_end
+	FaceSouth 2
+	FaceWest 2
+	FaceNorth 2
+	FaceEast 2
+	FaceSouth 2
+	FaceWest 2
+	FaceNorth 2
+	FaceEast 2
+	FaceSouth 2
+	FaceWest 2
+	FaceNorth 2
+	FaceEast 2
+	FaceSouth 2
+	FaceWest 2
+	FaceNorth 2
+	FaceEast
+	SetInvisible 0
+	EndMovement
 
 scr_seq_T30GYM0101_003:
 	play_se SEQ_SE_DP_SELECT
@@ -255,58 +255,58 @@ _0352:
 
 	.balign 4, 0
 _0370:
-	step 2, 1
-	step 75, 1
-	step 14, 2
-	step_end
+	FaceWest
+	EmoteExclamationMark
+	WalkNormalWest 2
+	EndMovement
 
 	.balign 4, 0
 _0380:
-	step 2, 1
-	step 75, 1
-	step 14, 1
-	step_end
+	FaceWest
+	EmoteExclamationMark
+	WalkNormalWest
+	EndMovement
 
 	.balign 4, 0
 _0390:
-	step 2, 1
-	step 75, 1
-	step_end
+	FaceWest
+	EmoteExclamationMark
+	EndMovement
 
 	.balign 4, 0
 _039C:
-	step 63, 5
-	step 3, 1
-	step_end
+	Delay8 5
+	FaceEast
+	EndMovement
 
 	.balign 4, 0
 _03A8:
-	step 63, 4
-	step 3, 1
-	step_end
+	Delay8 4
+	FaceEast
+	EndMovement
 
 	.balign 4, 0
 _03B4:
-	step 63, 2
-	step 3, 1
-	step_end
+	Delay8 2
+	FaceEast
+	EndMovement
 
 	.balign 4, 0
 _03C0:
-	step 15, 2
-	step 1, 1
-	step_end
+	WalkNormalEast 2
+	FaceSouth
+	EndMovement
 
 	.balign 4, 0
 _03CC:
-	step 15, 1
-	step 1, 1
-	step_end
+	WalkNormalEast
+	FaceSouth
+	EndMovement
 
 	.balign 4, 0
 _03D8:
-	step 1, 1
-	step_end
+	FaceSouth
+	EndMovement
 
 scr_seq_T30GYM0101_005:
 	play_se SEQ_SE_DP_SELECT

@@ -101,85 +101,85 @@ _013A:
 
 	.balign 4, 0
 _0144:
-	step 73, 1
-	step 75, 1
-	step 61, 1
-	step 74, 1
-	step_end
+	PauseAnimation
+	EmoteExclamationMark
+	Delay2
+	ResumeAnimation
+	EndMovement
 
 	.balign 4, 0
 _0158:
-	step 73, 1
-	step 49, 1
-	step 62, 1
-	step 74, 1
-	step_end
+	PauseAnimation
+	JumpOnSpotFastSouth
+	Delay4
+	ResumeAnimation
+	EndMovement
 
 	.balign 4, 0
 _016C:
-	step 73, 1
-	step 48, 1
-	step 62, 1
-	step 74, 1
-	step_end
+	PauseAnimation
+	JumpOnSpotFastNorth
+	Delay4
+	ResumeAnimation
+	EndMovement
 
 	.balign 4, 0
 _0180:
-	step 73, 1
-	step 51, 1
-	step 62, 1
-	step 74, 1
-	step_end
+	PauseAnimation
+	JumpOnSpotFastEast
+	Delay4
+	ResumeAnimation
+	EndMovement
 
 	.balign 4, 0
 _0194:
-	step 73, 1
-	step 50, 1
-	step 62, 1
-	step 74, 1
-	step_end
+	PauseAnimation
+	JumpOnSpotFastWest
+	Delay4
+	ResumeAnimation
+	EndMovement
 
 	.balign 4, 0
 _01A8:
-	step 73, 1
-	step 41, 1
-	step 42, 1
-	step 40, 1
-	step 43, 1
-	step 41, 1
-	step 74, 1
-	step_end
+	PauseAnimation
+	WalkOnSpotFasterSouth
+	WalkOnSpotFasterWest
+	WalkOnSpotFasterNorth
+	WalkOnSpotFasterEast
+	WalkOnSpotFasterSouth
+	ResumeAnimation
+	EndMovement
 
 	.balign 4, 0
 _01C8:
-	step 73, 1
-	step 40, 1
-	step 43, 1
-	step 41, 1
-	step 42, 1
-	step 40, 1
-	step 74, 1
-	step_end
+	PauseAnimation
+	WalkOnSpotFasterNorth
+	WalkOnSpotFasterEast
+	WalkOnSpotFasterSouth
+	WalkOnSpotFasterWest
+	WalkOnSpotFasterNorth
+	ResumeAnimation
+	EndMovement
 
 	.balign 4, 0
 _01E8:
-	step 73, 1
-	step 43, 1
-	step 41, 1
-	step 42, 1
-	step 40, 1
-	step 43, 1
-	step 74, 1
-	step_end
+	PauseAnimation
+	WalkOnSpotFasterEast
+	WalkOnSpotFasterSouth
+	WalkOnSpotFasterWest
+	WalkOnSpotFasterNorth
+	WalkOnSpotFasterEast
+	ResumeAnimation
+	EndMovement
 
 	.balign 4, 0
 _0208:
-	step 73, 1
-	step 42, 1
-	step 40, 1
-	step 43, 1
-	step 41, 1
-	step 42, 1
-	step 74, 1
-	step_end
+	PauseAnimation
+	WalkOnSpotFasterWest
+	WalkOnSpotFasterNorth
+	WalkOnSpotFasterEast
+	WalkOnSpotFasterSouth
+	WalkOnSpotFasterWest
+	ResumeAnimation
+	EndMovement
 	.balign 4, 0

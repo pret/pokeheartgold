@@ -228,9 +228,9 @@
 .public SaveMysteryGift_ReceivedFlagSet
 .public SaveMysteryGift_TestFlagx7FF
 .public SaveMysteryGift_SetFlagx7FF
-.public sub_0202EC14
-.public sub_0202EC28
-.public sub_0202EC98
+.public MigratedPokemon_CopyBoxPokemonToSlot
+.public MigratedPokemon_RecordMigration
+.public MigratedPokemon_CountPokemon
 .public sub_0203410C
 .public sub_020342C0
 .public sub_02034434

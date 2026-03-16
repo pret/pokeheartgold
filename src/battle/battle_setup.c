@@ -9,6 +9,7 @@
 
 #include "follow_mon.h"
 #include "metatile_behavior.h"
+#include "mom_gift.h"
 #include "msgdata.h"
 #include "save_link_ruleset.h"
 #include "save_local_field_data.h"
@@ -27,7 +28,6 @@
 #include "unk_0206D494.h"
 #include "unk_02088288.h"
 #include "unk_02092BE8.h"
-#include "unk_020931C4.h"
 
 static void BattleSetup_SetParty(BattleSetup *setup, Party *party, int battlerId);
 static void BattleSetup_SetProfile(BattleSetup *setup, PlayerProfile *profile, int battlerId);
@@ -409,7 +409,7 @@ static void sub_0205230C(FieldSystem *fieldSystem, PlayerProfile *profile1, Play
         } else {
             balanceResult = savingsBalance;
         }
-        if (sub_0209322C(savings, balanceResult, savingsBalance)) {
+        if (MomGift_TryEnqueueGiftOnBalanceChange(savings, balanceResult, savingsBalance)) {
             sub_02092E14(FieldSystem_GetGearPhoneRingManager(fieldSystem), 12, TRUE);
         }
     }

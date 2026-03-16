@@ -44,20 +44,20 @@ scr_seq_T11R0602_000:
 
 	.balign 4, 0
 _0088:
-	step 13, 3
-	step 15, 7
-	step_end
+	WalkNormalSouth 3
+	WalkNormalEast 7
+	EndMovement
 
 	.balign 4, 0
 _0094:
-	step 15, 11
-	step 13, 4
-	step_end
+	WalkNormalEast 11
+	WalkNormalSouth 4
+	EndMovement
 
 	.balign 4, 0
 _00A0:
-	step 13, 2
-	step_end
+	WalkNormalSouth 2
+	EndMovement
 
 _00A8:
 	end

@@ -83,104 +83,104 @@ _00DB:
 
 	.balign 4, 0
 _014C:
-	step 12, 7
-	step 14, 11
-	step_end
+	WalkNormalNorth 7
+	WalkNormalWest 11
+	EndMovement
 
 	.balign 4, 0
 _0158:
-	step 12, 7
-	step 14, 9
-	step_end
+	WalkNormalNorth 7
+	WalkNormalWest 9
+	EndMovement
 
 	.balign 4, 0
 _0164:
-	step 12, 7
-	step 14, 7
-	step_end
+	WalkNormalNorth 7
+	WalkNormalWest 7
+	EndMovement
 
 	.balign 4, 0
 _0170:
-	step 12, 7
-	step 14, 5
-	step_end
+	WalkNormalNorth 7
+	WalkNormalWest 5
+	EndMovement
 
 	.balign 4, 0
 _017C:
-	step 12, 7
-	step 14, 3
-	step_end
+	WalkNormalNorth 7
+	WalkNormalWest 3
+	EndMovement
 
 	.balign 4, 0
 _0188:
-	step 12, 1
-	step 2, 1
-	step 61, 1
-	step 1, 1
-	step 61, 1
-	step 3, 1
-	step 61, 1
-	step 0, 1
-	step 61, 1
-	step 2, 1
-	step 61, 1
-	step 1, 1
-	step 61, 1
-	step 3, 1
-	step 61, 1
-	step 0, 1
-	step 61, 1
-	step 2, 1
-	step 61, 1
-	step 1, 1
-	step 61, 1
-	step 3, 1
-	step 61, 1
-	step 0, 1
-	step_end
+	WalkNormalNorth
+	FaceWest
+	Delay2
+	FaceSouth
+	Delay2
+	FaceEast
+	Delay2
+	FaceNorth
+	Delay2
+	FaceWest
+	Delay2
+	FaceSouth
+	Delay2
+	FaceEast
+	Delay2
+	FaceNorth
+	Delay2
+	FaceWest
+	Delay2
+	FaceSouth
+	Delay2
+	FaceEast
+	Delay2
+	FaceNorth
+	EndMovement
 
 	.balign 4, 0
 _01EC:
-	step 67, 1
-	step_end
+	WarpOut
+	EndMovement
 
 	.balign 4, 0
 _01F4:
-	step 12, 6
-	step 14, 12
-	step 35, 1
-	step_end
+	WalkNormalNorth 6
+	WalkNormalWest 12
+	WalkOnSpotNormalEast
+	EndMovement
 
 	.balign 4, 0
 _0204:
-	step 12, 6
-	step 14, 10
-	step 35, 1
-	step_end
+	WalkNormalNorth 6
+	WalkNormalWest 10
+	WalkOnSpotNormalEast
+	EndMovement
 
 	.balign 4, 0
 _0214:
-	step 12, 6
-	step 14, 8
-	step 35, 1
-	step_end
+	WalkNormalNorth 6
+	WalkNormalWest 8
+	WalkOnSpotNormalEast
+	EndMovement
 
 	.balign 4, 0
 _0224:
-	step 12, 6
-	step 14, 6
-	step 35, 1
-	step_end
+	WalkNormalNorth 6
+	WalkNormalWest 6
+	WalkOnSpotNormalEast
+	EndMovement
 
 	.balign 4, 0
 _0234:
-	step 12, 6
-	step 14, 4
-	step 35, 1
-	step_end
+	WalkNormalNorth 6
+	WalkNormalWest 4
+	WalkOnSpotNormalEast
+	EndMovement
 
 	.balign 4, 0
 _0244:
-	step 32, 1
-	step_end
+	WalkOnSpotNormalNorth
+	EndMovement
 	.balign 4, 0

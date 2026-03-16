@@ -22,7 +22,7 @@ FrtCmd_139: ; 0x02230B8C
 	add r7, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl Frontier_GetLaunchParam
+	bl Frontier_GetLaunchArgs
 	lsl r1, r7, #0x18
 	lsr r1, r1, #0x18
 	str r1, [sp]
@@ -76,7 +76,7 @@ FrtCmd_142: ; 0x02230C10
 	add r6, r0, #0
 	ldr r0, [r6]
 	ldr r0, [r0]
-	bl Frontier_GetLaunchParam
+	bl Frontier_GetLaunchArgs
 	add r7, r0, #0
 	ldr r0, [r6]
 	ldr r0, [r0]
@@ -192,7 +192,7 @@ FrtCmd_144: ; 0x02230D0C
 	add r5, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl Frontier_GetLaunchParam
+	bl Frontier_GetLaunchArgs
 	add r6, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0]
@@ -253,7 +253,7 @@ FrtCmd_145: ; 0x02230D70
 	add r5, r0, #0
 	ldr r0, [r4]
 	ldr r0, [r0]
-	bl Frontier_GetLaunchParam
+	bl Frontier_GetLaunchArgs
 	str r0, [sp, #4]
 	ldr r0, [r4]
 	ldr r0, [r0]
@@ -588,13 +588,13 @@ FrtCmd_147: ; 0x02230FF0
 FrtCmd_148: ; 0x02231020
 	push {r4, lr}
 	add r4, r0, #0
-	bl FrontierScript_ReadU16
+	bl FrontierScriptContext_ReadHalfWord
 	add r1, r4, #0
 	add r1, #0x78
 	strh r0, [r1]
 	ldr r1, _0223103C ; =ov80_02231040
 	add r0, r4, #0
-	bl ov80_0222AB84
+	bl FrontierScriptContext_Pause
 	mov r0, #1
 	pop {r4, pc}
 	nop
@@ -632,7 +632,7 @@ FrtCmd_149: ; 0x0223106C
 	add r5, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl Frontier_GetLaunchParam
+	bl Frontier_GetLaunchArgs
 	ldr r1, [r5, #0x1c]
 	add r0, r1, #1
 	str r0, [r5, #0x1c]

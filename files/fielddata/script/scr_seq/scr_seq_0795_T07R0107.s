@@ -406,6 +406,6 @@ _06DE:
 
 	.balign 4, 0
 _06F8:
-	step 33, 1
-	step_end
+	WalkOnSpotNormalSouth
+	EndMovement
 	.balign 4, 0

@@ -28,11 +28,11 @@
 .public NewMsgDataFromNarc
 .public DestroyMsgData
 .public NewString_ReadMsgData
-.public sub_02019BA4
-.public sub_02019BDC
-.public sub_02019D18
-.public sub_02019F7C
-.public sub_0201A018
+.public GridInputHandler_Create
+.public GridInputHandler_Free
+.public GridInputHandler_HandleInput_AllowHold
+.public GridInputHandler_SetNextInput
+.public GridInputHandler_GetDpadBox
 .public Heap_Create
 .public Heap_Destroy
 .public InitBgFromTemplate

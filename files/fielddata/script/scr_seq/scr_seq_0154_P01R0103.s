@@ -135,44 +135,44 @@ _0158:
 
 	.balign 4, 0
 _0190:
-	step 71, 1
-	step 13, 1
-	step 72, 1
-	step 2, 2
-	step 71, 1
-	step 15, 1
-	step 72, 1
-	step_end
+	LockDir
+	WalkNormalSouth
+	UnlockDir
+	FaceWest 2
+	LockDir
+	WalkNormalEast
+	UnlockDir
+	EndMovement
 
 	.balign 4, 0
 _01B0:
-	step 13, 2
-	step_end
+	WalkNormalSouth 2
+	EndMovement
 
 	.balign 4, 0
 _01B8:
-	step 71, 1
-	step 12, 1
-	step 72, 1
-	step 2, 2
-	step 71, 1
-	step 15, 1
-	step 72, 1
-	step_end
+	LockDir
+	WalkNormalNorth
+	UnlockDir
+	FaceWest 2
+	LockDir
+	WalkNormalEast
+	UnlockDir
+	EndMovement
 
 	.balign 4, 0
 _01D8:
-	step 63, 1
-	step 12, 4
-	step_end
+	Delay8
+	WalkNormalNorth 4
+	EndMovement
 
 	.balign 4, 0
 _01E4:
-	step 14, 1
-	step 1, 2
-	step 13, 1
-	step 32, 1
-	step_end
+	WalkNormalWest
+	FaceSouth 2
+	WalkNormalSouth
+	WalkOnSpotNormalNorth
+	EndMovement
 
 scr_seq_P01R0103_002:
 	simple_npc_msg msg_0257_P01R0103_00003

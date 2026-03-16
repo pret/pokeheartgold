@@ -35,13 +35,13 @@ _0043:
 
 	.balign 4, 0
 _0070:
-	step 19, 1
-	step 69, 1
-	step_end
+	WalkFastEast
+	SetInvisible
+	EndMovement
 
 	.balign 4, 0
 _007C:
-	step 19, 1
-	step 69, 1
-	step_end
+	WalkFastEast
+	SetInvisible
+	EndMovement
 	.balign 4, 0

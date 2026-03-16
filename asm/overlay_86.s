@@ -3273,7 +3273,7 @@ ov86_021E73CC: ; 0x021E73CC
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _021E73E6
-	bl sub_02019BDC
+	bl GridInputHandler_Free
 	mov r0, #0x95
 	mov r1, #0
 	lsl r0, r0, #2
@@ -3564,11 +3564,11 @@ ov86_021E75EC: ; 0x021E75EC
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	add r4, r1, #0
-	bl sub_0201A018
+	bl GridInputHandler_GetDpadBox
 	add r1, sp, #0
 	add r1, #1
 	add r2, sp, #0
-	bl sub_02020A0C
+	bl DpadMenuBox_GetPosition
 	add r3, sp, #0
 	ldrb r2, [r3, #1]
 	ldrb r3, [r3]
@@ -3609,7 +3609,7 @@ ov86_021E7630: ; 0x021E7630
 	str r0, [sp, #8]
 	ldr r0, _021E7674 ; =ov86_021E8094
 	add r3, r4, #0
-	bl sub_02019BA4
+	bl GridInputHandler_Create
 	mov r1, #0x95
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -3716,7 +3716,7 @@ ov86_021E7710: ; 0x021E7710
 	mov r0, #0x95
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02019BE4
+	bl GridInputHandler_HandleInput_NoHold
 	add r5, r0, #0
 	cmp r5, #0x1a
 	bhi _021E7728
@@ -3851,11 +3851,11 @@ ov86_021E781C: ; 0x021E781C
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	add r4, r1, #0
-	bl sub_0201A018
+	bl GridInputHandler_GetDpadBox
 	add r1, sp, #0
 	add r1, #1
 	add r2, sp, #0
-	bl sub_02020A0C
+	bl DpadMenuBox_GetPosition
 	add r3, sp, #0
 	ldrb r2, [r3, #1]
 	ldrb r3, [r3]
@@ -3895,7 +3895,7 @@ ov86_021E7860: ; 0x021E7860
 	str r0, [sp, #8]
 	ldr r0, _021E78A4 ; =ov86_021E7F94
 	add r3, r5, #0
-	bl sub_02019BA4
+	bl GridInputHandler_Create
 	mov r1, #0x95
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -4044,7 +4044,7 @@ ov86_021E7984: ; 0x021E7984
 	mov r0, #0x95
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02019BE4
+	bl GridInputHandler_HandleInput_NoHold
 	add r5, r0, #0
 	cmp r5, #8
 	bhi _021E799C
@@ -4082,7 +4082,7 @@ _021E79D2:
 	mov r0, #0x95
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02019F74
+	bl GridInputHandler_GetNextInput
 	cmp r0, #7
 	bhi _021E7AB4
 	add r0, r0, r0

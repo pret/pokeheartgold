@@ -21,10 +21,10 @@
 .public ov80_0222AAF8
 .public ov80_0222AB2C
 .public FrontierSystem_GetFrontierMap
-.public ov80_0222AB40
-.public ov80_0222AB78
-.public ov80_0222AB98
-.public ov80_0222AC70
+.public FrontierScriptContext_Init
+.public FrontierScriptContext_Start
+.public FrontierScriptContext_Run
+.public FrontierScriptContext_ReadWord
 .public ov80_0222ACA0
 .public ov80_02239C54
 .public ov80_0223B9CC

@@ -115,34 +115,34 @@ _0193:
 
 	.balign 4, 0
 _019C:
-	step 14, 2
-	step 13, 2
-	step 14, 3
-	step 12, 2
-	step 62, 4
-	step 14, 1
-	step 12, 3
-	step 2, 1
-	step_end
+	WalkNormalWest 2
+	WalkNormalSouth 2
+	WalkNormalWest 3
+	WalkNormalNorth 2
+	Delay4 4
+	WalkNormalWest
+	WalkNormalNorth 3
+	FaceWest
+	EndMovement
 
 	.balign 4, 0
 _01C0:
-	step 15, 2
-	step 0, 1
-	step 63, 6
-	step 1, 1
-	step 63, 5
-	step 3, 1
-	step_end
+	WalkNormalEast 2
+	FaceNorth
+	Delay8 6
+	FaceSouth
+	Delay8 5
+	FaceEast
+	EndMovement
 
 	.balign 4, 0
 _01DC:
-	step 13, 1
-	step 15, 1
-	step 0, 1
-	step 63, 6
-	step 1, 1
-	step 63, 5
-	step 3, 1
-	step_end
+	WalkNormalSouth
+	WalkNormalEast
+	FaceNorth
+	Delay8 6
+	FaceSouth
+	Delay8 5
+	FaceEast
+	EndMovement
 	.balign 4, 0

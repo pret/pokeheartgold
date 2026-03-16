@@ -52,37 +52,37 @@ _0091:
 
 	.balign 4, 0
 _009C:
-	step 3, 1
-	step 0, 1
-	step 2, 1
-	step 1, 1
-	step 3, 1
-	step 0, 1
-	step 2, 1
-	step 1, 1
-	step_end
+	FaceEast
+	FaceNorth
+	FaceWest
+	FaceSouth
+	FaceEast
+	FaceNorth
+	FaceWest
+	FaceSouth
+	EndMovement
 
 	.balign 4, 0
 _00C0:
-	step 0, 1
-	step 2, 1
-	step 1, 1
-	step 3, 1
-	step 0, 1
-	step 2, 1
-	step 1, 1
-	step 3, 1
-	step_end
+	FaceNorth
+	FaceWest
+	FaceSouth
+	FaceEast
+	FaceNorth
+	FaceWest
+	FaceSouth
+	FaceEast
+	EndMovement
 
 	.balign 4, 0
 _00E4:
-	step 1, 1
-	step 3, 1
-	step 0, 1
-	step 2, 1
-	step 1, 1
-	step 3, 1
-	step 0, 1
-	step 2, 1
-	step_end
+	FaceSouth
+	FaceEast
+	FaceNorth
+	FaceWest
+	FaceSouth
+	FaceEast
+	FaceNorth
+	FaceWest
+	EndMovement
 	.balign 4, 0

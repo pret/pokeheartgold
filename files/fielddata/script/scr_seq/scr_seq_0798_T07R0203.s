@@ -78,57 +78,57 @@ scr_seq_T07R0203_010:
 
 	.balign 4, 0
 _012C:
-	step 14, 4
-	step 75, 1
-	step_end
+	WalkNormalWest 4
+	EmoteExclamationMark
+	EndMovement
 
 	.balign 4, 0
 _0138:
-	step 14, 4
-	step_end
+	WalkNormalWest 4
+	EndMovement
 
 	.balign 4, 0
 _0140:
-	step 14, 4
-	step_end
+	WalkNormalWest 4
+	EndMovement
 
 	.balign 4, 0
 _0148:
-	step 14, 4
-	step_end
+	WalkNormalWest 4
+	EndMovement
 
 	.balign 4, 0
 _0150:
-	step 13, 3
-	step 35, 1
-	step_end
+	WalkNormalSouth 3
+	WalkOnSpotNormalEast
+	EndMovement
 
 	.balign 4, 0
 _015C:
-	step 12, 2
-	step 14, 1
-	step 12, 1
-	step_end
+	WalkNormalNorth 2
+	WalkNormalWest
+	WalkNormalNorth
+	EndMovement
 
 	.balign 4, 0
 _016C:
-	step 14, 1
-	step 12, 2
-	step 14, 1
-	step 32, 1
-	step_end
+	WalkNormalWest
+	WalkNormalNorth 2
+	WalkNormalWest
+	WalkOnSpotNormalNorth
+	EndMovement
 
 	.balign 4, 0
 _0180:
-	step 12, 1
-	step 69, 1
-	step_end
+	WalkNormalNorth
+	SetInvisible
+	EndMovement
 
 	.balign 4, 0
 _018C:
-	step 12, 2
-	step 69, 1
-	step_end
+	WalkNormalNorth 2
+	SetInvisible
+	EndMovement
 
 scr_seq_T07R0203_000:
 	play_se SEQ_SE_DP_SELECT

@@ -482,19 +482,19 @@ _05DC:
 
 	.balign 4, 0
 _05EC:
-	step 62, 3
-	step 2, 1
-	step 62, 3
-	step 3, 1
-	step 62, 3
-	step 0, 1
-	step 12, 2
-	step 69, 1
-	step 63, 3
-	step 1, 1
-	step 70, 1
-	step 13, 2
-	step_end
+	Delay4 3
+	FaceWest
+	Delay4 3
+	FaceEast
+	Delay4 3
+	FaceNorth
+	WalkNormalNorth 2
+	SetInvisible
+	Delay8 3
+	FaceSouth
+	SetVisible
+	WalkNormalSouth 2
+	EndMovement
 
 _0620:
 	npc_msg msg_0439_00030

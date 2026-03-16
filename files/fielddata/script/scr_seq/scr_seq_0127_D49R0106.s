@@ -267,23 +267,23 @@ _041E:
 
 	.balign 4, 0
 _0434:
-	step 48, 2
-	step_end
+	JumpOnSpotFastNorth 2
+	EndMovement
 
 	.balign 4, 0
 _043C:
-	step 49, 2
-	step_end
+	JumpOnSpotFastSouth 2
+	EndMovement
 
 	.balign 4, 0
 _0444:
-	step 50, 2
-	step_end
+	JumpOnSpotFastWest 2
+	EndMovement
 
 	.balign 4, 0
 _044C:
-	step 51, 2
-	step_end
+	JumpOnSpotFastEast 2
+	EndMovement
 
 scr_seq_D49R0106_004:
 	play_se SEQ_SE_DP_SELECT

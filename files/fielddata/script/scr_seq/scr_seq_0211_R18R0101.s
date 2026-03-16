@@ -50,13 +50,13 @@ _006A:
 
 	.balign 4, 0
 _0084:
-	step 32, 1
-	step_end
+	WalkOnSpotNormalNorth
+	EndMovement
 
 	.balign 4, 0
 _008C:
-	step 15, 1
-	step_end
+	WalkNormalEast
+	EndMovement
 
 scr_seq_R18R0101_003:
 	set_bike_state_lock 0

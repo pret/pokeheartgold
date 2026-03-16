@@ -254,7 +254,7 @@ struct PokegearPhoneAppData {
     int subsubtaskState;                            // 0x008
     PokegearAppData *pokegear;                      // 0x00C
     u8 menuInputStateBak;                           // 0x010
-    u8 backgroundStyle;                             // 0x011
+    u8 skin;                                        // 0x011
     MsgData *msgData;                               // 0x014
     MessageFormat *msgFormat;                       // 0x018
     String *msgFormatBuf;                           // 0x01C

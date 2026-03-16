@@ -149,23 +149,23 @@ _0210:
 
 	.balign 4, 0
 _022C:
-	step 32, 1
-	step_end
+	WalkOnSpotNormalNorth
+	EndMovement
 
 	.balign 4, 0
 _0234:
-	step 33, 1
-	step_end
+	WalkOnSpotNormalSouth
+	EndMovement
 
 	.balign 4, 0
 _023C:
-	step 34, 1
-	step_end
+	WalkOnSpotNormalWest
+	EndMovement
 
 	.balign 4, 0
 _0244:
-	step 35, 1
-	step_end
+	WalkOnSpotNormalEast
+	EndMovement
 
 scr_seq_R47_004:
 	play_se SEQ_SE_DP_SELECT

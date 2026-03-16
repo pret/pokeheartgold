@@ -1,24 +1,40 @@
+#include "Options.h"
+
+#include <algorithm>
+#include <cstring>
 #include <iostream>
 #include <vector>
-#include <cstring>
-#include <algorithm>
-#include "Options.h"
+
 #include "Narc.h"
 #include "RelocElfReader.h"
 
+static const char usage[] = "usage: o2narc [options] OBJ NARC\n"
+                            "\n"
+                            "-f, --flatten        Create a single flat binary\n"
+                            "-p U8, --padding U8  Override fill value after each NARC member\n"
+                            "-n, --naix           Create a .naix file that can be included by C\n"
+                            "-N, --naix-names     Use symbol names in naix symbols. Implies --naix.\n"
+                            "-h, --help           Show this message and exit\n";
+
 Options::Options(int argc, char **argv) {
     for (int i = 1; i < argc; i++) {
-        string arg{argv[i]};
+        string arg { argv[i] };
         if (arg == "-f" || arg == "--flatten") {
             flatten = true;
         } else if (arg == "-p" || arg == "--padding") {
-            int padval_i = stoi(argv[++i]);
+            int padval_i = stoi(argv[++i], nullptr, 0);
             if (padval_i < 0 || padval_i > 255) {
-                throw command_error(string{"invalid 8-bit value "} + argv[i] + " for " + arg);
+                throw command_error(string { "invalid 8-bit value " } + argv[i] + " for " + arg);
             }
             padval = static_cast<char>(padval_i);
         } else if (arg == "-n" || arg == "--naix") {
             naix = true;
+        } else if (arg == "-N" || arg == "--naix-names") {
+            naix_names = true;
+            naix = true;
+        } else if (arg == "-h" || arg == "--help") {
+            std::cout << usage;
+            std::exit(1);
         } else if (arg[0] == '-') {
             throw command_error("unrecognized option flag: " + arg);
         } else if (posargs.size() >= 2) {
@@ -34,7 +50,7 @@ Options::Options(int argc, char **argv) {
     narcfile.open(posargs[1], ios::out | ios::binary);
 }
 
-void Options::ReadObjectFile(vector<unsigned char> &rodata, vector<uint32_t> &sizes) {
+void Options::ReadObjectFile(vector<unsigned char> &rodata, vector<uint32_t> &sizes, vector<string> &names) {
     ELF_ASSERT(objfile.HasSection(".rodata"));
     rodata.resize(objfile.GetSectionHeader(".rodata").sh_size);
     objfile.ReadSectionData(objfile.GetSectionHeader(".rodata"), rodata.data());
@@ -51,18 +67,27 @@ void Options::ReadObjectFile(vector<unsigned char> &rodata, vector<uint32_t> &si
         }
     } else {
         auto pred = [&](const Elf32_Sym &sym) {
-            return sym.st_size != 0
-                   && strcmp(objfile.GetSectionName(objfile.sections()[sym.st_shndx]), ".rodata") == 0
-                   && strcmp(objfile.GetSymbolName(sym), "__size") != 0
-                   && strcmp(objfile.GetSymbolName(sym), "__data") != 0
-                   && strcmp(objfile.GetSymbolName(sym), ".rodata") != 0;
+            return ELF32_ST_TYPE(sym.st_info) == STT_OBJECT
+                && strcmp(objfile.GetSectionName(objfile.sections()[sym.st_shndx]), ".rodata") == 0
+                && strcmp(objfile.GetSymbolName(sym), "__size") != 0
+                && strcmp(objfile.GetSymbolName(sym), "__data") != 0
+                && strcmp(objfile.GetSymbolName(sym), ".rodata") != 0;
         };
         sizes.resize(count_if(objfile.symbols().begin(), objfile.symbols().end(), pred));
         ELF_ASSERT(!sizes.empty());
+        names.resize(sizes.size());
         int t = 0;
         for (const auto &sym : objfile.symbols()) {
             if (pred(sym)) {
-                sizes[t++] = sym.st_size;
+                sizes[t] = sym.st_size;
+                names[t] = objfile.GetSymbolName(sym);
+                ++t;
+            }
+        }
+        if (naix_names) {
+            if (std::unique(names.begin(), names.end()) != names.end()) {
+                std::cerr << "FATAL: Duplicate symbol names detected\n";
+                std::exit(1);
             }
         }
     }
@@ -73,7 +98,7 @@ void Options::OverwritePadding(vector<unsigned char> &rodata, vector<uint32_t> &
         rodata.resize((rodata.size() + 3) & ~3, padval);
     }
     uint32_t end = 0;
-    for (auto & size : sizes) {
+    for (auto &size : sizes) {
         end += size;
         uint32_t pad_end = (end + 3) & ~3;
         memset(&rodata[end], padval, pad_end - end);
@@ -99,12 +124,14 @@ void Options::WriteNarc(vector<unsigned char> &rodata, vector<uint32_t> &sizes) 
     narcfile.write((char *)rodata.data(), rodata.size());
 }
 
-void Options::WriteNaix(vector<uint32_t> &sizes) {
+void Options::WriteNaix(vector<uint32_t> &sizes, vector<string> &names) {
     if (naix) {
         string naixname = posargs[1].substr(0, posargs[1].find_last_of('.')) + ".naix";
         string stem = naixname.substr(naixname.find_last_of('/') + 1, naixname.find_last_of('.') - naixname.find_last_of('/') - 1);
         string stem_upper = stem;
-        for (auto &c : stem_upper) { c = toupper(c); }
+        for (auto &c : stem_upper) {
+            c = toupper(c);
+        }
         ofstream naixfile(naixname);
         naixfile << "/*\n"
                     " * THIS FILE WAS AUTOMATICALLY\n"
@@ -112,21 +139,29 @@ void Options::WriteNaix(vector<uint32_t> &sizes) {
                     " *      DO NOT MODIFY!!!\n"
                     " */\n"
                     "\n"
-                    "#ifndef NARC_" << stem_upper << "_NAIX_\n"
-                                                     "#define NARC_" << stem_upper << "_NAIX_\n"
-                                                                                      "\n"
-                                                                                      "enum {\n";
+                    "#ifndef NARC_"
+                 << stem_upper << "_NAIX_\n"
+                                  "#define NARC_"
+                 << stem_upper << "_NAIX_\n"
+                                  "\n"
+                                  "enum {\n";
         char num_buf[9] = "00000000";
         for (int i = 0; i < sizes.size(); i++) {
-            naixfile << "    NARC_" << stem << "_" << stem << "_" << num_buf << " = " << i << "," << endl;
-            for (int k = 7; k >= 0; k--) {
-                num_buf[k]++;
-                if (num_buf[k] > '9') {
-                    num_buf[k] = '0';
-                } else {
-                    break;
+            naixfile << "    NARC_" << stem << "_";
+            if (naix_names) {
+                naixfile << names[i];
+            } else {
+                naixfile << stem << "_" << num_buf;
+                for (int k = 7; k >= 0; k--) {
+                    num_buf[k]++;
+                    if (num_buf[k] > '9') {
+                        num_buf[k] = '0';
+                    } else {
+                        break;
+                    }
                 }
             }
+            naixfile << " = " << i << "," << endl;
         }
         naixfile << "};\n\n#endif //NARC_" << stem_upper << "_NAIX_\n";
     }
@@ -134,11 +169,12 @@ void Options::WriteNaix(vector<uint32_t> &sizes) {
 
 int Options::main() {
     vector<uint32_t> sizes;
+    vector<string> names;
     vector<unsigned char> rodata;
 
-    ReadObjectFile(rodata, sizes);
+    ReadObjectFile(rodata, sizes, names);
     OverwritePadding(rodata, sizes);
     WriteNarc(rodata, sizes);
-    WriteNaix(sizes);
+    WriteNaix(sizes, names);
     return 0;
 }

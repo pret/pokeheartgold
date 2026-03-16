@@ -4,237 +4,321 @@
 
 #include "constants/sndseq.h"
 
-#include "voltorb_flip/voltorb_flip.h"
-#include "voltorb_flip/voltorb_flip_data.h"
-
 #include "heap.h"
 #include "sprite_system.h"
 #include "system.h"
 #include "touchscreen.h"
 #include "unk_02005D10.h"
 #include "unk_020192D0.h"
-#include "unk_02020654.h"
 
-static void ov122_021E8E78(Ov122_021E8CFC *);
-static void ov122_021E8F58(Ov122_021E8CFC *);
-static int ov122_021E8F6C(Ov122_021E8CFC *);
-static int ov122_021E9020(Ov122_021E8CFC *);
-static void ov122_021E9108(Ov122_021E8CFC *, int);
-static void ov122_021E9134(Ov122_021E8CFC *);
-static void ov122_021E9154(Ov122_021E8CFC *, int);
-static void ov122_021E91AC(struct Ov122_021E8CFC *, u32, int, int);
+static void VoltorbFlipInputHandler_HandleDpad(VoltorbFlipInputHandler *inputHandler);
+static void VoltorbFlipInputHandler_MoveMemoCursorToExit(VoltorbFlipInputHandler *inputHandler);
+static int VoltorbFlipInputHandler_HandleInput_Memo(VoltorbFlipInputHandler *inputHandler);
+static int VoltorbFlipInputHandler_HandleInput_NoMemo(VoltorbFlipInputHandler *inputHandler);
+static void VoltorbFlipInputHandler_SetFocus(VoltorbFlipInputHandler *inputHandler, int newFocus);
+static void VoltorbFlipInputHandler_SetMemoCursorSpritePos(VoltorbFlipInputHandler *inputHandler);
+static void VoltorbFlipInputHandler_UpdateBoardCursorAnim(VoltorbFlipInputHandler *inputHandler, int newFocus);
+static void VoltorbFlipInputHandler_HandleChangeFocus(VoltorbFlipInputHandler *inputHandler, int newFocus, int oldFocus, MenuInputState inputMode);
+static void VoltorbFlipInputCB_OnButtonPress(void *data, int new, int prev);
+static void VoltorbFlipInputCB_OnTouchSwitch(void *data, int new, int prev);
+static void VoltorbFlipInputCB_OnKeyMove(void *data, int new, int prev);
+static void VoltorbFlipInputCB_OnTouch(void *data, int new, int prev);
 
-extern const Ov122UnkCB ov122_021E9A0C[];
-extern const TouchscreenHitbox ov122_021E9A1C[];
-extern const u8 ov122_021E9A3C[];
-extern const u8 ov122_021E9AAC[];
-extern u8 ov122_021E9BA0[5][2];
+const GridCallbacks sInputCallbacks = {
+    VoltorbFlipInputCB_OnButtonPress,
+    VoltorbFlipInputCB_OnTouchSwitch,
+    VoltorbFlipInputCB_OnKeyMove,
+    VoltorbFlipInputCB_OnTouch,
+};
 
-Ov122_021E8CFC *ov122_021E8CFC(enum HeapID heapID, struct ManagedSprite *a1, struct ManagedSprite *a2) {
-    GF_ASSERT(a1 != NULL);
+// clang-format off
+const TouchscreenHitbox sMemoTouchscreenHitboxes[] = {
+    { .rect = {  80, 104, 200, 224 } },
+    { .rect = {  80, 104, 224, 248 } },
+    { .rect = { 104, 128, 200, 224 } },
+    { .rect = { 104, 128, 224, 248 } },
+    { .rect = { 128, 152, 224, 248 } },
+    { .rect = {   8,  72, 192, 256 } },
+    { .rect = { 160, 192, 192, 256 } },
+    { .rect = TOUCHSCREEN_RECTLIST_END },
+};
 
-    Ov122_021E8CFC *ptr = Heap_Alloc(heapID, sizeof(Ov122_021E8CFC));
-    MI_CpuFill8(ptr, 0, sizeof(Ov122_021E8CFC));
+const TouchscreenHitbox sTouchscreenHitboxes[] = {
+    { .rect = {   8,  32,   8,  32 } },
+    { .rect = {   8,  32,  40,  64 } },
+    { .rect = {   8,  32,  72,  96 } },
+    { .rect = {   8,  32, 104, 128 } },
+    { .rect = {   8,  32, 136, 160 } },
+    { .rect = {  40,  64,   8,  32 } },
+    { .rect = {  40,  64,  40,  64 } },
+    { .rect = {  40,  64,  72,  96 } },
+    { .rect = {  40,  64, 104, 128 } },
+    { .rect = {  40,  64, 136, 160 } },
+    { .rect = {  72,  96,   8,  32 } },
+    { .rect = {  72,  96,  40,  64 } },
+    { .rect = {  72,  96,  72,  96 } },
+    { .rect = {  72,  96, 104, 128 } },
+    { .rect = {  72,  96, 136, 160 } },
+    { .rect = { 104, 128,   8,  32 } },
+    { .rect = { 104, 128,  40,  64 } },
+    { .rect = { 104, 128,  72,  96 } },
+    { .rect = { 104, 128, 104, 128 } },
+    { .rect = { 104, 128, 136, 160 } },
+    { .rect = { 136, 160,   8,  32 } },
+    { .rect = { 136, 160,  40,  64 } },
+    { .rect = { 136, 160,  72,  96 } },
+    { .rect = { 136, 160, 104, 128 } },
+    { .rect = { 136, 160, 136, 160 } },
+    { .rect = {   8,  72, 192,   0 } },
+    { .rect = { 160, 192, 192,   0 } },
+    { .rect = TOUCHSCREEN_RECTLIST_END },
+};
 
-    ptr->unk0 = a1;
-    ptr->unk4 = a2;
-    ptr->unk8 = sub_02019BA4(ov122_021E9A3C, ov122_021E9AAC, ov122_021E9A0C, ptr, 1, ptr->unkD, heapID);
+const DpadMenuBox sDpadButtonSpecs[] = {
+    {   8,   8, 24, 24, 20,  5, 25, 1  },
+    {  40,   8, 24, 24, 21,  6,  0, 2  },
+    {  72,   8, 24, 24, 22,  7,  1, 3  },
+    { 104,   8, 24, 24, 23,  8,  2, 4  },
+    { 136,   8, 24, 24, 24,  9,  3, 25 },
+    {   8,  40, 24, 24,  0, 10, 25, 6  },
+    {  40,  40, 24, 24,  1, 11,  5, 7  },
+    {  72,  40, 24, 24,  2, 12,  6, 8  },
+    { 104,  40, 24, 24,  3, 13,  7, 9  },
+    { 136,  40, 24, 24,  4, 14,  8, 25 },
+    {   8,  72, 24, 24,  5, 15, 25, 11 },
+    {  40,  72, 24, 24,  6, 16, 10, 12 },
+    {  72,  72, 24, 24,  7, 17, 11, 13 },
+    { 104,  72, 24, 24,  8, 18, 12, 14 },
+    { 136,  72, 24, 24,  9, 19, 13, 25 },
+    {   8, 104, 24, 24, 10, 20, 26, 16 },
+    {  40, 104, 24, 24, 11, 21, 15, 17 },
+    {  72, 104, 24, 24, 12, 22, 16, 18 },
+    { 104, 104, 24, 24, 13, 23, 17, 19 },
+    { 136, 104, 24, 24, 14, 24, 18, 26 },
+    {   8, 136, 24, 24, 15,  0, 26, 21 },
+    {  40, 136, 24, 24, 16,  1, 20, 22 },
+    {  72, 136, 24, 24, 17,  2, 21, 23 },
+    { 104, 136, 24, 24, 18,  3, 22, 24 },
+    { 136, 136, 24, 24, 19,  4, 23, 26 },
+    { 224,  40,  0,  0, 25, 26, 27, 28 },
+    { 224, 176,  0,  0, 25, 26, 27, 28 },
+};
 
-    ov122_021E9108(ptr, 0);
+u8 sMemoCursorPos[5][2] = {
+    { 200,  80 },
+    { 224,  80 },
+    { 200, 104 },
+    { 224, 104 },
+    { 224, 128 },
+};
+// clang-format on
+
+VoltorbFlipInputHandler *VoltorbFlipInputHandler_Create(enum HeapID heapID, struct ManagedSprite *boardCursorSprite, struct ManagedSprite *memoCursorSprite) {
+    GF_ASSERT(boardCursorSprite != NULL);
+
+    VoltorbFlipInputHandler *ptr = Heap_Alloc(heapID, sizeof(VoltorbFlipInputHandler));
+    MI_CpuFill8(ptr, 0, sizeof(VoltorbFlipInputHandler));
+
+    ptr->boardCursorSprite = boardCursorSprite;
+    ptr->memoCursorSprite = memoCursorSprite;
+    ptr->gridInputHandler = GridInputHandler_Create(sTouchscreenHitboxes, sDpadButtonSpecs, &sInputCallbacks, ptr, 1, ptr->focus, heapID);
+
+    VoltorbFlipInputHandler_SetFocus(ptr, 0);
     return ptr;
 }
 
-void ov122_021E8D58(Ov122_021E8CFC *a0) {
-    GF_ASSERT(a0->unk8 != 0);
-    sub_02019BDC(a0->unk8);
-    Heap_Free(a0);
+void VoltorbFlipInputHandler_Free(VoltorbFlipInputHandler *inputHandler) {
+    GF_ASSERT(inputHandler->gridInputHandler != 0);
+    GridInputHandler_Free(inputHandler->gridInputHandler);
+    Heap_Free(inputHandler);
 }
 
-int ov122_021E8D74(Ov122_021E8CFC *a0) {
-    if (a0->memoFocused) {
-        return ov122_021E8F6C(a0);
+int VoltorbFlipInputHandler_HandleInput(VoltorbFlipInputHandler *inputHandler) {
+    if (inputHandler->memoFocused) {
+        return VoltorbFlipInputHandler_HandleInput_Memo(inputHandler);
+    } else {
+        return VoltorbFlipInputHandler_HandleInput_NoMemo(inputHandler);
     }
-    return ov122_021E9020(a0);
 }
 
-void ov122_021E8D8C(Ov122_021E8CFC *a0, int a1) {
-    if (a1 != 0) {
-        ManagedSprite_SetDrawFlag(a0->unk0, 1);
-        return;
+void VoltorbFlipInputHandler_SetBoardFocused(VoltorbFlipInputHandler *inputHandler, BOOL draw) {
+    if (draw) {
+        ManagedSprite_SetDrawFlag(inputHandler->boardCursorSprite, TRUE);
+    } else {
+        ManagedSprite_SetDrawFlag(inputHandler->boardCursorSprite, FALSE);
+        inputHandler->focus = 0;
     }
-    ManagedSprite_SetDrawFlag(a0->unk0, 0);
-    a0->unkD = 0;
 }
 
-void SetMemoOpen(Ov122_021E8CFC *a0, BOOL val) {
-    a0->memoOpen = val;
-    ov122_021E9154(a0, a0->unkD);
+void VoltorbFlipInputHandler_SetMemoOpen(VoltorbFlipInputHandler *inputHandler, BOOL open) {
+    inputHandler->memoOpen = open;
+    VoltorbFlipInputHandler_UpdateBoardCursorAnim(inputHandler, inputHandler->focus);
 }
 
-void SetMemoFocused(Ov122_021E8CFC *a0, BOOL val) {
-    a0->memoFocused = val;
-    ov122_021E9154(a0, a0->unkD);
-    ManagedSprite_SetDrawFlag(a0->unk4, val);
+void VoltorbFlipInputHandler_SetMemoFocused(VoltorbFlipInputHandler *inputHandler, BOOL focused) {
+    inputHandler->memoFocused = focused;
+    VoltorbFlipInputHandler_UpdateBoardCursorAnim(inputHandler, inputHandler->focus);
+    ManagedSprite_SetDrawFlag(inputHandler->memoCursorSprite, focused);
 }
 
-int ov122_021E8DF0(Ov122_021E8CFC *a0) {
-    GF_ASSERT(a0 != 0);
-    GF_ASSERT(a0->unk8 != 0);
+int VoltorbFlipInputHandler_GetCursorPos(VoltorbFlipInputHandler *inputHandler) {
+    GF_ASSERT(inputHandler != 0);
+    GF_ASSERT(inputHandler->gridInputHandler != 0);
     // This seems to return which touch screen hitbox was pressed/clicked
-    return sub_02019F74(a0->unk8);
+    return GridInputHandler_GetNextInput(inputHandler->gridInputHandler);
 }
 
-int ov122_021E8E0C(Ov122_021E8CFC *a0) {
-    GF_ASSERT(a0 != 0);
-    GF_ASSERT(a0->unk8 != 0);
-    return a0->unkEx;
+int VoltorbFlipInputHandler_GetMemoButtonID(VoltorbFlipInputHandler *inputHandler) {
+    GF_ASSERT(inputHandler != 0);
+    GF_ASSERT(inputHandler->gridInputHandler != 0);
+    return inputHandler->memoButtonID;
 }
 
-BOOL ov122_021E8E28(Ov122_021E8CFC *a0) {
-    int var1 = sub_02019F74(a0->unk8);
-    return var1 != 25 && var1 != 26;
+BOOL VoltorbFlipInputHandler_IsCursorInGridRange(VoltorbFlipInputHandler *inputHandler) {
+    int input = GridInputHandler_GetNextInput(inputHandler->gridInputHandler);
+    return input != VOLTORB_FLIP_INPUT_MEMO && input != VOLTORB_FLIP_INPUT_QUIT;
 }
 
-void ov122_021E8E40(Ov122_021E8CFC *a0) {
-    sub_02019F7C(a0->unk8, 0);
-    ov122_021E9108(a0, 0);
+void VoltorbFlipInputHandler_SetGridCursor0(VoltorbFlipInputHandler *inputHandler) {
+    GridInputHandler_SetNextInput(inputHandler->gridInputHandler, 0);
+    VoltorbFlipInputHandler_SetFocus(inputHandler, 0);
 }
 
-void ov122_021E8E58(Ov122_021E8CFC *a0) {
-    a0->unkEx = 0;
-    a0->unkEy = 0;
-    ov122_021E9134(a0);
+void VoltorbFlipInputHandler_SetMemoCursor0(VoltorbFlipInputHandler *inputHandler) {
+    inputHandler->memoButtonID = 0;
+    inputHandler->lastMemoButtonID = 0;
+    VoltorbFlipInputHandler_SetMemoCursorSpritePos(inputHandler);
 }
 
-BOOL ov122_021E8E70(Ov122_021E8CFC *a0) {
-    return a0->unkFz;
+BOOL VoltorbFlipInputHandler_GetTouchNew(VoltorbFlipInputHandler *inputHandler) {
+    return inputHandler->touchNew;
 }
 
 // Probably for handling focus movement
-static void ov122_021E8E78(Ov122_021E8CFC *a0) {
-    int var2;
-    u8 var1 = a0->unkEx;
+static void VoltorbFlipInputHandler_HandleDpad(VoltorbFlipInputHandler *inputHandler) {
+    int newMemoButtonID;
+    u8 lastMemoButtonID = inputHandler->memoButtonID;
 
-    if ((gSystem.newAndRepeatedKeys & 0x80) != 0) {
-        var2 = var1 + 2;
-        if (var2 > 4) {
-            var2 = 4;
+    if (gSystem.newAndRepeatedKeys & PAD_KEY_DOWN) {
+        newMemoButtonID = lastMemoButtonID + 2;
+        if (newMemoButtonID > 4) {
+            newMemoButtonID = 4;
         }
-        a0->unkEx = var2;
-    } else if ((gSystem.newAndRepeatedKeys & 0x20) != 0) {
-        var2 = var1 - 1;
-        if (var2 < 0) {
-            var2 = 0;
+        inputHandler->memoButtonID = newMemoButtonID;
+    } else if (gSystem.newAndRepeatedKeys & PAD_KEY_LEFT) {
+        newMemoButtonID = lastMemoButtonID - 1;
+        if (newMemoButtonID < 0) {
+            newMemoButtonID = 0;
         }
-        a0->unkEx = var2;
-    } else if ((gSystem.newAndRepeatedKeys & 0x40) != 0) {
-        if (var1 == 4 && (u8)(a0->unkEy + 0xfe) <= 1) {
-            a0->unkEx = (a0->unkEy);
+        inputHandler->memoButtonID = newMemoButtonID;
+    } else if (gSystem.newAndRepeatedKeys & PAD_KEY_UP) {
+        if (lastMemoButtonID == 4 && (inputHandler->lastMemoButtonID == 2 || inputHandler->lastMemoButtonID == 3)) {
+            inputHandler->memoButtonID = inputHandler->lastMemoButtonID;
         } else {
-            var2 = var1 - 2;
-            if (var2 < 0) {
-                var2 = 0;
+            newMemoButtonID = lastMemoButtonID - 2;
+            if (newMemoButtonID < 0) {
+                newMemoButtonID = 0;
             }
-            a0->unkEx = var2;
+            inputHandler->memoButtonID = newMemoButtonID;
         }
-    } else if ((gSystem.newAndRepeatedKeys & 0x10) != 0) {
-        var2 = var1 + 1;
-        if (var2 > 4) {
-            var2 = 4;
+    } else if (gSystem.newAndRepeatedKeys & PAD_KEY_RIGHT) {
+        newMemoButtonID = lastMemoButtonID + 1;
+        if (newMemoButtonID > 4) {
+            newMemoButtonID = 4;
         }
-        a0->unkEx = var2;
+        inputHandler->memoButtonID = newMemoButtonID;
     }
 
-    if (var1 != a0->unkEx) {
-        a0->unkEy = var1;
-        ov122_021E9134(a0);
+    if (lastMemoButtonID != inputHandler->memoButtonID) {
+        inputHandler->lastMemoButtonID = lastMemoButtonID;
+        VoltorbFlipInputHandler_SetMemoCursorSpritePos(inputHandler);
         PlaySE(SEQ_SE_DP_SELECT);
     }
 }
 
-static void ov122_021E8F58(Ov122_021E8CFC *a0) {
-    a0->unkEx = 4;
-    ov122_021E9134(a0);
+static void VoltorbFlipInputHandler_MoveMemoCursorToExit(VoltorbFlipInputHandler *inputHandler) {
+    inputHandler->memoButtonID = 4;
+    VoltorbFlipInputHandler_SetMemoCursorSpritePos(inputHandler);
 }
 
-static int ov122_021E8F6C(Ov122_021E8CFC *a0) {
-    a0->unkFz = FALSE;
+static int VoltorbFlipInputHandler_HandleInput_Memo(VoltorbFlipInputHandler *inputHandler) {
+    inputHandler->touchNew = FALSE;
 
-    if ((gSystem.newKeys & (1 << 10)) != 0) {
+    if (gSystem.newKeys & PAD_BUTTON_X) {
         return 4;
     }
-    if ((gSystem.newKeys & 2) != 0) {
-        ov122_021E8F58(a0);
+    if (gSystem.newKeys & PAD_BUTTON_B) {
+        VoltorbFlipInputHandler_MoveMemoCursorToExit(inputHandler);
         return 3;
     }
-    if ((gSystem.newKeys & 1) != 0) {
-        if (a0->unkEx == 4) {
-            ov122_021E8F58(a0);
+    if (gSystem.newKeys & PAD_BUTTON_A) {
+        if (inputHandler->memoButtonID == 4) {
+            VoltorbFlipInputHandler_MoveMemoCursorToExit(inputHandler);
             return 3;
         }
         return 1;
     }
 
-    ov122_021E8E78(a0);
-    a0->unkFz = TRUE;
+    VoltorbFlipInputHandler_HandleDpad(inputHandler);
+    inputHandler->touchNew = TRUE;
 
-    u8 var1 = TouchscreenHitbox_FindRectAtTouchNew(ov122_021E9A1C);
-    if (var1 < 8) {
-        switch (var1) {
+    u8 input = TouchscreenHitbox_FindRectAtTouchNew(sMemoTouchscreenHitboxes);
+    if (input < NELEMS(sMemoTouchscreenHitboxes)) { // bug: limit should be 1 fewer
+        switch (input) {
         case 4:
-            a0->unkEx = var1;
-            ov122_021E9134(a0);
+            inputHandler->memoButtonID = input;
+            VoltorbFlipInputHandler_SetMemoCursorSpritePos(inputHandler);
             return 3;
         case 5:
             return 4;
         case 6:
             return 2;
-        default:
-            a0->unkEx = var1;
-            ov122_021E9134(a0);
+        default: // 0-3
+            inputHandler->memoButtonID = input;
+            VoltorbFlipInputHandler_SetMemoCursorSpritePos(inputHandler);
             return 1;
         }
     }
     return 0;
 }
 
-static int ov122_021E9020(Ov122_021E8CFC *a0) {
-    int var1 = sub_02019F74(a0->unk8);
-    u32 elementId = sub_02019D18(a0->unk8);
-    sub_02019F74(a0->unk8);
+static int VoltorbFlipInputHandler_HandleInput_NoMemo(VoltorbFlipInputHandler *inputHandler) {
+    int newFocus = GridInputHandler_GetNextInput(inputHandler->gridInputHandler);
+    int elementId = GridInputHandler_HandleInput_AllowHold(inputHandler->gridInputHandler);
+    GridInputHandler_GetNextInput(inputHandler->gridInputHandler);
 
-    if (elementId < 28) {
-        a0->unkFz = System_GetTouchNew();
+    if (elementId < NELEMS(sTouchscreenHitboxes)) { // bug: limit should be 1 lower
+        inputHandler->touchNew = System_GetTouchNew();
         // Open/close Memo button
-        if (elementId == 25) {
-            if (a0->unkFz) {
-                a0->unkD = var1;
-                sub_02019F7C(a0->unk8, a0->unkD);
+        if (elementId == VOLTORB_FLIP_INPUT_MEMO) {
+            if (inputHandler->touchNew) {
+                inputHandler->focus = newFocus;
+                GridInputHandler_SetNextInput(inputHandler->gridInputHandler, inputHandler->focus);
             } else {
-                ov122_021E8E40(a0);
+                VoltorbFlipInputHandler_SetGridCursor0(inputHandler);
             }
             return 4;
         }
         // Quit button
-        if (elementId == 26) {
+        if (elementId == VOLTORB_FLIP_INPUT_QUIT) {
             return 2;
         }
         return 1;
     }
 
-    a0->unkFz = 0;
-    if ((gSystem.newKeys & (1 << 10)) != 0) {
-        if ((u8)(a0->unkD + 0xe7) <= 1) {
-            ov122_021E8E40(a0);
+    inputHandler->touchNew = FALSE;
+    if (gSystem.newKeys & PAD_BUTTON_X) {
+        if (inputHandler->focus == VOLTORB_FLIP_INPUT_MEMO || inputHandler->focus == VOLTORB_FLIP_INPUT_QUIT) {
+            VoltorbFlipInputHandler_SetGridCursor0(inputHandler);
         }
         return 4;
     }
-    if ((gSystem.newKeys & 2) != 0) {
+    if (gSystem.newKeys & PAD_BUTTON_B) {
         return 3;
     }
 
-    if (a0->memoOpen && a0->unkD != 25 && a0->unkD != 26) {
-        u32 whichButton = TouchscreenHitbox_FindRectAtTouchNew(ov122_021E9A1C);
+    if (inputHandler->memoOpen && inputHandler->focus != VOLTORB_FLIP_INPUT_MEMO && inputHandler->focus != VOLTORB_FLIP_INPUT_QUIT) {
+        u32 whichButton = TouchscreenHitbox_FindRectAtTouchNew(sMemoTouchscreenHitboxes);
         if (whichButton < 8) {
             switch (whichButton) {
             case 0:
@@ -251,82 +335,91 @@ static int ov122_021E9020(Ov122_021E8CFC *a0) {
     return 0;
 }
 
-static void ov122_021E9108(Ov122_021E8CFC *a0, int a1) {
-    u8 temp1;
-    u8 temp2;
+static void VoltorbFlipInputHandler_SetFocus(VoltorbFlipInputHandler *inputHandler, int newFocus) {
+    u8 x;
+    u8 y;
 
-    ov122_021E9154(a0, a1);
-    sub_02020A0C(sub_0201A018(a0->unk8, a1), &temp1, &temp2);
-    ManagedSprite_SetPositionXY(a0->unk0, temp1, temp2);
-    a0->unkD = a1;
+    VoltorbFlipInputHandler_UpdateBoardCursorAnim(inputHandler, newFocus);
+    DpadMenuBox_GetPosition(GridInputHandler_GetDpadBox(inputHandler->gridInputHandler, newFocus), &x, &y);
+    ManagedSprite_SetPositionXY(inputHandler->boardCursorSprite, x, y);
+    inputHandler->focus = newFocus;
 }
 
-static void ov122_021E9134(Ov122_021E8CFC *a0) {
-    ManagedSprite_SetPositionXY(a0->unk4, ov122_021E9BA0[a0->unkEx][0], ov122_021E9BA0[a0->unkEx][1]);
+static void VoltorbFlipInputHandler_SetMemoCursorSpritePos(VoltorbFlipInputHandler *inputHandler) {
+    ManagedSprite_SetPositionXY(inputHandler->memoCursorSprite, sMemoCursorPos[inputHandler->memoButtonID][0], sMemoCursorPos[inputHandler->memoButtonID][1]);
 }
 
-static void ov122_021E9154(Ov122_021E8CFC *a0, int newFocus) {
+static void VoltorbFlipInputHandler_UpdateBoardCursorAnim(VoltorbFlipInputHandler *inputHandler, int newFocus) {
     int indicatorType;
 
-    if (newFocus < 25) {
-        if (a0->memoFocused) {
+    if (newFocus < VOLTORB_FLIP_INPUT_GRID_NUM) { // In grid
+        if (inputHandler->memoFocused) {
             indicatorType = 24; // Disabled pencil
-        } else if (a0->memoOpen) {
+        } else if (inputHandler->memoOpen) {
             indicatorType = 23; // Pencil
         } else {
             indicatorType = 18; // Card focus
         }
-    } else if (newFocus == 25) {
-        indicatorType = 7; // Open/close Memo button
-    } else if (newFocus == 26) {
-        indicatorType = 4; // Quit button
+    } else if (newFocus == VOLTORB_FLIP_INPUT_MEMO) { // Memo
+        indicatorType = 7;                            // Open/close Memo button
+    } else if (newFocus == VOLTORB_FLIP_INPUT_QUIT) { // Quit
+        indicatorType = 4;                            // Quit button
     } else {
         GF_ASSERT(FALSE);
     }
 
-    if (a0->memoOpen) {
-        ManagedSprite_SetPaletteOverride(a0->unk0, 4);
+    if (inputHandler->memoOpen) {
+        ManagedSprite_SetPaletteOverride(inputHandler->boardCursorSprite, 4);
     } else {
-        ManagedSprite_SetPaletteOverride(a0->unk0, 2);
+        ManagedSprite_SetPaletteOverride(inputHandler->boardCursorSprite, 2);
     }
-    ManagedSprite_SetAnimNoRestart(a0->unk0, indicatorType);
+    ManagedSprite_SetAnimNoRestart(inputHandler->boardCursorSprite, indicatorType);
 }
 
-static void ov122_021E91AC(Ov122_021E8CFC *a0, u32 newFocus, int a2, int a3) {
-    if ((a3 == 0 || newFocus != 25) && newFocus != a2 && newFocus < 28) {
+static void VoltorbFlipInputHandler_HandleChangeFocus(VoltorbFlipInputHandler *inputHandler, int newFocus, int oldFocus, MenuInputState inputMode) {
+    if ((inputMode == MENU_INPUT_STATE_BUTTONS || newFocus != VOLTORB_FLIP_INPUT_MEMO) && newFocus != oldFocus && newFocus < NELEMS(sTouchscreenHitboxes)) {
         // Updates visual focus indicator
-        ov122_021E9108(a0, newFocus);
+        VoltorbFlipInputHandler_SetFocus(inputHandler, newFocus);
         // Plays when you switch focus
         PlaySE(SEQ_SE_DP_SELECT);
     }
 }
 
-void ov122_021E91D0(Ov122_021E8CFC *a0, int a1, int a2) {
-    sub_02019F7C(a0->unk8, (u8)a1);
-    ov122_021E9108(a0, a1);
+// DpadGridCallbacks
+
+static void VoltorbFlipInputCB_OnButtonPress(void *data, int new, int prev) {
+    VoltorbFlipInputHandler *inputHandler = data;
+
+    GridInputHandler_SetNextInput(inputHandler->gridInputHandler, (u8)new);
+    VoltorbFlipInputHandler_SetFocus(inputHandler, new);
     PlaySE(SEQ_SE_DP_SELECT);
 }
 
-void ov122_021E91F4(Ov122_021E8CFC *a0, int a1, int a2) {
+static void VoltorbFlipInputCB_OnTouchSwitch(void *data, int new, int prev) {
+    // no-op
 }
 
-void ov122_021E91F8(Ov122_021E8CFC *a0, int a1, int a2) {
-    if (a1 == 27) {
-        a1 = a0->unkC * 5 + 4;
-        GF_ASSERT(a1 < 25);
-        sub_02019F7C(a0->unk8, (u8)a1);
-    } else if (a1 == 28) {
-        a1 = a0->unkC * 5;
-        GF_ASSERT(a1 < 25);
-        sub_02019F7C(a0->unk8, (u8)a1);
+static void VoltorbFlipInputCB_OnKeyMove(void *data, int new, int prev) {
+    VoltorbFlipInputHandler *inputHandler = data;
+
+    if (new == VOLTORB_FLIP_COL4_ROWLAST) { // wrap around left
+        new = inputHandler->selectedRow * 5 + 4;
+        GF_ASSERT(new < VOLTORB_FLIP_INPUT_GRID_NUM);
+        GridInputHandler_SetNextInput(inputHandler->gridInputHandler, (u8)new);
+    } else if (new == VOLTORB_FLIP_COL0_ROWLAST) { // wrap around right
+        new = inputHandler->selectedRow * 5;
+        GF_ASSERT(new < VOLTORB_FLIP_INPUT_GRID_NUM);
+        GridInputHandler_SetNextInput(inputHandler->gridInputHandler, (u8)new);
     }
 
-    if (a1 != 25 && a1 != 26) {
-        a0->unkC = a1 / 5;
+    if (new != VOLTORB_FLIP_INPUT_MEMO && new != VOLTORB_FLIP_INPUT_QUIT) {
+        inputHandler->selectedRow = new / 5;
     }
-    ov122_021E91AC(a0, a1, a2, 0);
+    VoltorbFlipInputHandler_HandleChangeFocus(inputHandler, new, prev, MENU_INPUT_STATE_BUTTONS);
 }
 
-void ov122_021E925C(Ov122_021E8CFC *a0, int a1, int a2) {
-    ov122_021E91AC(a0, a1, a2, 1);
+static void VoltorbFlipInputCB_OnTouch(void *data, int new, int prev) {
+    VoltorbFlipInputHandler *inputHandler = data;
+
+    VoltorbFlipInputHandler_HandleChangeFocus(inputHandler, new, prev, MENU_INPUT_STATE_TOUCH);
 }

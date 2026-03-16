@@ -61,45 +61,45 @@ _00A5:
 
 	.balign 4, 0
 _00C4:
-	step 0, 2
-	step 12, 1
-	step 2, 2
-	step_end
+	FaceNorth 2
+	WalkNormalNorth
+	FaceWest 2
+	EndMovement
 
 	.balign 4, 0
 _00D4:
-	step 1, 2
-	step 13, 1
-	step 2, 2
-	step_end
+	FaceSouth 2
+	WalkNormalSouth
+	FaceWest 2
+	EndMovement
 
 	.balign 4, 0
 _00E4:
-	step 1, 2
-	step 13, 1
-	step 2, 2
-	step_end
+	FaceSouth 2
+	WalkNormalSouth
+	FaceWest 2
+	EndMovement
 
 	.balign 4, 0
 _00F4:
-	step 0, 2
-	step 12, 1
-	step 2, 2
-	step_end
+	FaceNorth 2
+	WalkNormalNorth
+	FaceWest 2
+	EndMovement
 
 	.balign 4, 0
 _0104:
-	step 71, 1
-	step 14, 1
-	step 72, 1
-	step_end
+	LockDir
+	WalkNormalWest
+	UnlockDir
+	EndMovement
 
 	.balign 4, 0
 _0114:
-	step 71, 1
-	step 14, 1
-	step 72, 1
-	step_end
+	LockDir
+	WalkNormalWest
+	UnlockDir
+	EndMovement
 
 scr_seq_P01R0307_000:
 	play_se SEQ_SE_DP_SELECT
@@ -167,33 +167,33 @@ _01D0:
 
 	.balign 4, 0
 _020C:
-	step 75, 1
-	step 63, 1
-	step_end
+	EmoteExclamationMark
+	Delay8
+	EndMovement
 
 	.balign 4, 0
 _0218:
-	step 71, 1
-	step 8, 1
-	step 72, 1
-	step_end
+	LockDir
+	WalkSlowNorth
+	UnlockDir
+	EndMovement
 
 	.balign 4, 0
 _0228:
-	step 71, 1
-	step 11, 2
-	step 72, 1
-	step_end
+	LockDir
+	WalkSlowEast 2
+	UnlockDir
+	EndMovement
 
 	.balign 4, 0
 _0238:
-	step 0, 2
-	step 8, 1
-	step_end
+	FaceNorth 2
+	WalkSlowNorth
+	EndMovement
 
 	.balign 4, 0
 _0244:
-	step 3, 2
-	step 11, 2
-	step_end
+	FaceEast 2
+	WalkSlowEast 2
+	EndMovement
 	.balign 4, 0

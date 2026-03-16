@@ -86,67 +86,67 @@ _0110:
 
 	.balign 4, 0
 _0114:
-	step 75, 1
-	step 21, 3
-	step 23, 2
-	step 1, 1
-	step_end
+	EmoteExclamationMark
+	WalkFasterSouth 3
+	WalkFasterEast 2
+	FaceSouth
+	EndMovement
 
 	.balign 4, 0
 _0128:
-	step 63, 6
-	step 1, 1
-	step 75, 1
-	step 21, 3
-	step 22, 1
-	step 1, 1
-	step_end
+	Delay8 6
+	FaceSouth
+	EmoteExclamationMark
+	WalkFasterSouth 3
+	WalkFasterWest
+	FaceSouth
+	EndMovement
 
 	.balign 4, 0
 _0144:
-	step 62, 3
-	step 22, 2
-	step 20, 3
-	step 1, 1
-	step_end
+	Delay4 3
+	WalkFasterWest 2
+	WalkFasterNorth 3
+	FaceSouth
+	EndMovement
 
 	.balign 4, 0
 _0158:
-	step 23, 1
-	step 20, 3
-	step_end
+	WalkFasterEast
+	WalkFasterNorth 3
+	EndMovement
 
 	.balign 4, 0
 _0164:
-	step 63, 6
-	step 0, 1
-	step 75, 1
-	step 20, 4
-	step 23, 1
-	step 0, 1
-	step_end
+	Delay8 6
+	FaceNorth
+	EmoteExclamationMark
+	WalkFasterNorth 4
+	WalkFasterEast
+	FaceNorth
+	EndMovement
 
 	.balign 4, 0
 _0180:
-	step 75, 1
-	step 20, 4
-	step 22, 2
-	step 0, 1
-	step_end
+	EmoteExclamationMark
+	WalkFasterNorth 4
+	WalkFasterWest 2
+	FaceNorth
+	EndMovement
 
 	.balign 4, 0
 _0194:
-	step 62, 3
-	step 22, 1
-	step 21, 4
-	step_end
+	Delay4 3
+	WalkFasterWest
+	WalkFasterSouth 4
+	EndMovement
 
 	.balign 4, 0
 _01A4:
-	step 23, 2
-	step 21, 4
-	step 0, 1
-	step_end
+	WalkFasterEast 2
+	WalkFasterSouth 4
+	FaceNorth
+	EndMovement
 
 scr_seq_R43R0201_000:
 	simple_npc_msg msg_0403_R43R0201_00003

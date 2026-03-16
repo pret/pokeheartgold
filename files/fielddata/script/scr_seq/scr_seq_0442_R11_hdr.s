@@ -1,10 +1,12 @@
 #include "constants/scrcmd.h"
 #include "fielddata/script/scr_seq/event_R11.h"
+#include "constants/init_script_types.h"
+	.include "asm/macros/script.inc"
+
 	.rodata
 	.option alignment off
 
-	.byte 4
-	.short _EV_scr_seq_R11_001 + 1, 0
-	.byte 0
+	InitScriptEntry_OnLoad _EV_scr_seq_R11_001 + 1
+	InitScriptEntryEnd
 
-	.balign 4, 0
+	InitScriptEnd

@@ -219,16 +219,16 @@ scr_seq_D37R0103_002:
 
 	.balign 4, 0
 _0504:
-	step 9, 2
-	step_end
+	WalkSlowSouth 2
+	EndMovement
 
 	.balign 4, 0
 _050C:
-	step 10, 2
-	step_end
+	WalkSlowWest 2
+	EndMovement
 
 	.balign 4, 0
 _0514:
-	step 11, 2
-	step_end
+	WalkSlowEast 2
+	EndMovement
 	.balign 4, 0

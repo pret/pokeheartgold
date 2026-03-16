@@ -20,13 +20,13 @@
 .public sub_0204B068
 .public BattleSetup_Delete
 .public IsBattleResultWin
-.public Frontier_GetLaunchParam
+.public Frontier_GetLaunchArgs
 .public Frontier_GetData
 .public Frontier_LaunchApplication
 .public MI_CpuFill8
 .public gOverlayTemplate_Battle
-.public ov80_0222AB84
-.public FrontierScript_ReadU16
+.public FrontierScriptContext_Pause
+.public FrontierScriptContext_ReadHalfWord
 .public FrontierScript_ReadVarPtr
 .public FrontierScript_ReadVar
 .public ov80_0222BE24

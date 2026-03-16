@@ -44,18 +44,18 @@ scr_seq_R30_000:
 
 	.balign 4, 0
 _0088:
-	step 48, 3
-	step_end
+	JumpOnSpotFastNorth 3
+	EndMovement
 
 	.balign 4, 0
 _0090:
-	step 49, 2
-	step_end
+	JumpOnSpotFastSouth 2
+	EndMovement
 
 	.balign 4, 0
 _0098:
-	step 32, 1
-	step_end
+	WalkOnSpotNormalNorth
+	EndMovement
 
 scr_seq_R30_002:
 	scrcmd_609
@@ -125,56 +125,56 @@ _0148:
 
 	.balign 4, 0
 _01B0:
-	step 13, 1
-	step_end
+	WalkNormalSouth
+	EndMovement
 
 	.balign 4, 0
 _01B8:
-	step 12, 1
-	step 69, 1
-	step_end
+	WalkNormalNorth
+	SetInvisible
+	EndMovement
 
 	.balign 4, 0
 _01C4:
-	step 35, 1
-	step_end
+	WalkOnSpotNormalEast
+	EndMovement
 
 	.balign 4, 0
 _01CC:
-	step 32, 1
-	step_end
+	WalkOnSpotNormalNorth
+	EndMovement
 
 	.balign 4, 0
 _01D4:
-	step 13, 2
-	step 34, 1
-	step 63, 2
-	step 14, 2
-	step_end
+	WalkNormalSouth 2
+	WalkOnSpotNormalWest
+	Delay8 2
+	WalkNormalWest 2
+	EndMovement
 
 	.balign 4, 0
 _01E8:
-	step 13, 2
-	step 34, 1
-	step 63, 2
-	step 14, 3
-	step_end
+	WalkNormalSouth 2
+	WalkOnSpotNormalWest
+	Delay8 2
+	WalkNormalWest 3
+	EndMovement
 
 	.balign 4, 0
 _01FC:
-	step 13, 2
-	step 34, 1
-	step 63, 2
-	step 14, 4
-	step_end
+	WalkNormalSouth 2
+	WalkOnSpotNormalWest
+	Delay8 2
+	WalkNormalWest 4
+	EndMovement
 
 	.balign 4, 0
 _0210:
-	step 13, 2
-	step 34, 1
-	step 63, 2
-	step 14, 5
-	step_end
+	WalkNormalSouth 2
+	WalkOnSpotNormalWest
+	Delay8 2
+	WalkNormalWest 5
+	EndMovement
 
 scr_seq_R30_003:
 	simple_npc_msg msg_0375_R30_00013

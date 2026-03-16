@@ -395,13 +395,13 @@ _050F:
 
 	.balign 4, 0
 _053C:
-	step 15, 5
-	step_end
+	WalkNormalEast 5
+	EndMovement
 
 	.balign 4, 0
 _0544:
-	step 14, 5
-	step_end
+	WalkNormalWest 5
+	EndMovement
 
 scr_seq_0151_008:
 	simple_npc_msg msg_0246_00048

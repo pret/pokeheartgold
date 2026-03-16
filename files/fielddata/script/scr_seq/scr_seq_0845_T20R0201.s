@@ -53,29 +53,29 @@ scr_seq_T20R0201_000:
 
 	.balign 4, 0
 _00A4:
-	step 62, 1
-	step 33, 1
-	step_end
+	Delay4
+	WalkOnSpotNormalSouth
+	EndMovement
 
 	.balign 4, 0
 _00B0:
-	step 32, 1
-	step_end
+	WalkOnSpotNormalNorth
+	EndMovement
 
 	.balign 4, 0
 _00B8:
-	step 12, 2
-	step 14, 3
-	step 12, 1
-	step_end
+	WalkNormalNorth 2
+	WalkNormalWest 3
+	WalkNormalNorth
+	EndMovement
 
 	.balign 4, 0
 _00C8:
-	step 33, 1
-	step 13, 3
-	step 15, 3
-	step 32, 1
-	step_end
+	WalkOnSpotNormalSouth
+	WalkNormalSouth 3
+	WalkNormalEast 3
+	WalkOnSpotNormalNorth
+	EndMovement
 
 scr_seq_T20R0201_006:
 	scrcmd_609

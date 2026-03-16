@@ -54,6 +54,6 @@ _009C:
 
 	.balign 4, 0
 _00A8:
-	step 0, 1
-	step_end
+	FaceNorth
+	EndMovement
 	.balign 4, 0

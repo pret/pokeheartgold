@@ -469,39 +469,39 @@ _0721:
 
 	.balign 4, 0
 _0738:
-	step 14, 1
-	step 12, 2
-	step 15, 1
-	step 12, 3
-	step 33, 1
-	step_end
+	WalkNormalWest
+	WalkNormalNorth 2
+	WalkNormalEast
+	WalkNormalNorth 3
+	WalkOnSpotNormalSouth
+	EndMovement
 
 	.balign 4, 0
 _0750:
-	step 12, 3
-	step 33, 1
-	step_end
+	WalkNormalNorth 3
+	WalkOnSpotNormalSouth
+	EndMovement
 
 	.balign 4, 0
 _075C:
-	step 12, 1
-	step 15, 1
-	step 12, 3
-	step 33, 1
-	step_end
+	WalkNormalNorth
+	WalkNormalEast
+	WalkNormalNorth 3
+	WalkOnSpotNormalSouth
+	EndMovement
 
 	.balign 4, 0
 _0770:
-	step 63, 1
-	step 32, 1
-	step_end
+	Delay8
+	WalkOnSpotNormalNorth
+	EndMovement
 
 	.balign 4, 0
 _077C:
-	step 15, 1
-	step 12, 1
-	step 1, 1
-	step_end
+	WalkNormalEast
+	WalkNormalNorth
+	FaceSouth
+	EndMovement
 
 scr_seq_T03R0101_019:
 	play_se SEQ_SE_DP_SELECT
@@ -622,77 +622,77 @@ _0963:
 
 	.balign 4, 0
 _0968:
-	step 34, 1
-	step_end
+	WalkOnSpotNormalWest
+	EndMovement
 
 	.balign 4, 0
 _0970:
-	step 63, 1
-	step 75, 1
-	step_end
+	Delay8
+	EmoteExclamationMark
+	EndMovement
 
 	.balign 4, 0
 _097C:
-	step 71, 1
-	step 15, 1
-	step 72, 1
-	step_end
+	LockDir
+	WalkNormalEast
+	UnlockDir
+	EndMovement
 
 	.balign 4, 0
 _098C:
-	step 15, 1
-	step 1, 1
-	step_end
+	WalkNormalEast
+	FaceSouth
+	EndMovement
 
 	.balign 4, 0
 _0998:
-	step 15, 1
-	step 13, 1
-	step_end
+	WalkNormalEast
+	WalkNormalSouth
+	EndMovement
 
 	.balign 4, 0
 _09A4:
-	step 13, 1
-	step 63, 1
-	step 12, 1
-	step 1, 1
-	step_end
+	WalkNormalSouth
+	Delay8
+	WalkNormalNorth
+	FaceSouth
+	EndMovement
 
 	.balign 4, 0
 _09B8:
-	step 3, 1
-	step_end
+	FaceEast
+	EndMovement
 
 	.balign 4, 0
 _09C0:
-	step 14, 8
-	step_end
+	WalkNormalWest 8
+	EndMovement
 
 	.balign 4, 0
 _09C8:
-	step 32, 1
-	step_end
+	WalkOnSpotNormalNorth
+	EndMovement
 
 	.balign 4, 0
 _09D0:
-	step 32, 1
-	step_end
+	WalkOnSpotNormalNorth
+	EndMovement
 
 	.balign 4, 0
 _09D8:
-	step 12, 1
-	step 32, 1
-	step 71, 1
-	step 13, 1
-	step 72, 1
-	step_end
+	WalkNormalNorth
+	WalkOnSpotNormalNorth
+	LockDir
+	WalkNormalSouth
+	UnlockDir
+	EndMovement
 
 	.balign 4, 0
 _09F0:
-	step 20, 1
-	step 23, 1
-	step 1, 1
-	step_end
+	WalkFasterNorth
+	WalkFasterEast
+	FaceSouth
+	EndMovement
 
 scr_seq_T03R0101_002:
 	simple_npc_msg msg_0464_T03R0101_00010

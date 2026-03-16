@@ -23,6 +23,7 @@
 #include "constants/std_script.h"
 #include "constants/trainers.h"
 #include "constants/vars.h"
+#include "constants/init_script_types.h"
 
 #define lt 0
 #define eq 1

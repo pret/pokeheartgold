@@ -244,116 +244,116 @@ _037D:
 
 	.balign 4, 0
 _0394:
-	step 2, 1
-	step 75, 1
-	step 14, 5
-	step_end
+	FaceWest
+	EmoteExclamationMark
+	WalkNormalWest 5
+	EndMovement
 
 	.balign 4, 0
 _03A4:
-	step 2, 1
-	step 75, 1
-	step 14, 4
-	step_end
+	FaceWest
+	EmoteExclamationMark
+	WalkNormalWest 4
+	EndMovement
 
 	.balign 4, 0
 _03B4:
-	step 2, 1
-	step 75, 1
-	step 14, 3
-	step_end
+	FaceWest
+	EmoteExclamationMark
+	WalkNormalWest 3
+	EndMovement
 
 	.balign 4, 0
 _03C4:
-	step 2, 1
-	step 75, 1
-	step 14, 2
-	step_end
+	FaceWest
+	EmoteExclamationMark
+	WalkNormalWest 2
+	EndMovement
 
 	.balign 4, 0
 _03D4:
-	step 2, 1
-	step 75, 1
-	step 14, 1
-	step_end
+	FaceWest
+	EmoteExclamationMark
+	WalkNormalWest
+	EndMovement
 
 	.balign 4, 0
 _03E4:
-	step 2, 1
-	step 75, 1
-	step_end
+	FaceWest
+	EmoteExclamationMark
+	EndMovement
 
 	.balign 4, 0
 _03F0:
-	step 3, 1
-	step 75, 1
-	step_end
+	FaceEast
+	EmoteExclamationMark
+	EndMovement
 
 	.balign 4, 0
 _03FC:
-	step 3, 1
-	step 75, 1
-	step 15, 1
-	step_end
+	FaceEast
+	EmoteExclamationMark
+	WalkNormalEast
+	EndMovement
 
 	.balign 4, 0
 _040C:
-	step 65, 2
-	step 3, 1
-	step_end
+	Delay16 2
+	FaceEast
+	EndMovement
 
 	.balign 4, 0
 _0418:
-	step 63, 2
-	step 3, 1
-	step_end
+	Delay8 2
+	FaceEast
+	EndMovement
 
 	.balign 4, 0
 _0424:
-	step 63, 2
-	step 2, 1
-	step_end
+	Delay8 2
+	FaceWest
+	EndMovement
 
 	.balign 4, 0
 _0430:
-	step 15, 5
-	step 1, 1
-	step_end
+	WalkNormalEast 5
+	FaceSouth
+	EndMovement
 
 	.balign 4, 0
 _043C:
-	step 15, 4
-	step 1, 1
-	step_end
+	WalkNormalEast 4
+	FaceSouth
+	EndMovement
 
 	.balign 4, 0
 _0448:
-	step 15, 3
-	step 1, 1
-	step_end
+	WalkNormalEast 3
+	FaceSouth
+	EndMovement
 
 	.balign 4, 0
 _0454:
-	step 15, 2
-	step 1, 1
-	step_end
+	WalkNormalEast 2
+	FaceSouth
+	EndMovement
 
 	.balign 4, 0
 _0460:
-	step 15, 1
-	step 1, 1
-	step_end
+	WalkNormalEast
+	FaceSouth
+	EndMovement
 
 	.balign 4, 0
 _046C:
-	step 1, 1
-	step_end
+	FaceSouth
+	EndMovement
 
 	.balign 4, 0
 _0474:
-	step 14, 1
-	step 1, 1
-	step_end
+	WalkNormalWest
+	FaceSouth
+	EndMovement
 
 scr_seq_T02GYM0101_004:
 	play_se SEQ_SE_DP_SELECT

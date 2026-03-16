@@ -1,0 +1,280 @@
+{{ doNotModifyHeader }}
+
+#include "constants/species.h"
+#include "constants/maps.h"
+#include "wild_encounter.h"
+
+const ENC_DATA __data[] = {
+## for encounter in encounters
+    // MAP_{{ encounter.map }}
+    {
+        .encounterRate_walking = {{ encounter.land.rate }},
+        .encounterRate_surfing = {{ encounter.surf.rate }},
+        .encounterRate_rockSmash = {{ encounter.rock_smash.rate }},
+        .encounterRate_oldRod = {{ encounter.fishing.old_rod.rate }},
+        .encounterRate_goodRod = {{ encounter.fishing.good_rod.rate }},
+        .encounterRate_superRod = {{ encounter.fishing.super_rod.rate }},
+        .dummy = {0, 0},
+        .landSlots = {
+            .levels = {
+## for land_enc in encounter.land.mons
+## if isObject(land_enc.level)
+#ifdef ENC_SOULSILVER
+                {{ land_enc.level.SOULSILVER }},
+#else
+                {{ land_enc.level.HEARTGOLD }},
+#endif
+## else
+                {{ land_enc.level }},
+## endif
+## endfor
+            },
+            .species_morn = {
+## for land_enc in encounter.land.mons
+## if isObject(land_enc.species.morn)
+#ifdef ENC_SOULSILVER
+                {{ land_enc.species.morn.SOULSILVER }},
+#else
+                {{ land_enc.species.morn.HEARTGOLD }},
+#endif
+## else
+                {{ land_enc.species.morn }},
+## endif
+## endfor
+            },
+            .species_day = {
+## for land_enc in encounter.land.mons
+## if isObject(land_enc.species.day)
+#ifdef ENC_SOULSILVER
+                {{ land_enc.species.day.SOULSILVER }},
+#else
+                {{ land_enc.species.day.HEARTGOLD }},
+#endif
+## else
+                {{ land_enc.species.day }},
+## endif
+## endfor
+            },
+            .species_nite = {
+## for land_enc in encounter.land.mons
+## if isObject(land_enc.species.nite)
+#ifdef ENC_SOULSILVER
+                {{ land_enc.species.nite.SOULSILVER }},
+#else
+                {{ land_enc.species.nite.HEARTGOLD }},
+#endif
+## else
+                {{ land_enc.species.nite }},
+## endif
+## endfor
+            },
+        },
+        .hoennSoundsSpecies = {
+## for mon in encounter.hoenn
+## if isObject(mon)
+#ifdef ENC_SOULSILVER
+            {{ mon.SOULSILVER }},
+#else
+            {{ mon.HEARTGOLD }},
+#endif
+## else
+            {{ mon }},
+## endif
+## endfor
+        },
+        .sinnohSoundsSpecies = {
+## for mon in encounter.sinnoh
+## if isObject(mon)
+#ifdef ENC_SOULSILVER
+            {{ mon.SOULSILVER }},
+#else
+            {{ mon.HEARTGOLD }},
+#endif
+## else
+            {{ mon }},
+## endif
+## endfor
+        },
+        .surfSlots = {
+## for mon in encounter.surf.mons
+            {
+## if isObject(mon.level.min)
+#ifdef ENC_SOULSILVER
+                .level_min = {{ mon.level.min.SOULSILVER }},
+#else
+                .level_min = {{ mon.level.min.HEARTGOLD }},
+#endif
+## else
+                .level_min = {{ mon.level.min }},
+## endif
+## if isObject(mon.level.max)
+#ifdef ENC_SOULSILVER
+                .level_max = {{ mon.level.max.SOULSILVER }},
+#else
+                .level_max = {{ mon.level.max.HEARTGOLD }},
+#endif
+## else
+                .level_max = {{ mon.level.max }},
+## endif
+## if isObject(mon.species)
+#ifdef ENC_SOULSILVER
+                .species = {{ mon.species.SOULSILVER }},
+#else
+                .species = {{ mon.species.HEARTGOLD }},
+#endif
+## else
+                .species = {{ mon.species }},
+## endif
+            },
+## endfor
+        },
+        .rockSmashSlots = {
+## for mon in encounter.rock_smash.mons
+            {
+## if isObject(mon.level.min)
+#ifdef ENC_SOULSILVER
+                .level_min = {{ mon.level.min.SOULSILVER }},
+#else
+                .level_min = {{ mon.level.min.HEARTGOLD }},
+#endif
+## else
+                .level_min = {{ mon.level.min }},
+## endif
+## if isObject(mon.level.max)
+#ifdef ENC_SOULSILVER
+                .level_max = {{ mon.level.max.SOULSILVER }},
+#else
+                .level_max = {{ mon.level.max.HEARTGOLD }},
+#endif
+## else
+                .level_max = {{ mon.level.max }},
+## endif
+## if isObject(mon.species)
+#ifdef ENC_SOULSILVER
+                .species = {{ mon.species.SOULSILVER }},
+#else
+                .species = {{ mon.species.HEARTGOLD }},
+#endif
+## else
+                .species = {{ mon.species }},
+## endif
+            },
+## endfor
+        },
+        .oldRodSlots = {
+## for mon in encounter.fishing.old_rod.mons
+            {
+## if isObject(mon.level.min)
+#ifdef ENC_SOULSILVER
+                .level_min = {{ mon.level.min.SOULSILVER }},
+#else
+                .level_min = {{ mon.level.min.HEARTGOLD }},
+#endif
+## else
+                .level_min = {{ mon.level.min }},
+## endif
+## if isObject(mon.level.max)
+#ifdef ENC_SOULSILVER
+                .level_max = {{ mon.level.max.SOULSILVER }},
+#else
+                .level_max = {{ mon.level.max.HEARTGOLD }},
+#endif
+## else
+                .level_max = {{ mon.level.max }},
+## endif
+## if isObject(mon.species)
+#ifdef ENC_SOULSILVER
+                .species = {{ mon.species.SOULSILVER }},
+#else
+                .species = {{ mon.species.HEARTGOLD }},
+#endif
+## else
+                .species = {{ mon.species }},
+## endif
+            },
+## endfor
+        },
+        .goodRodSlots = {
+## for mon in encounter.fishing.good_rod.mons
+            {
+## if isObject(mon.level.min)
+#ifdef ENC_SOULSILVER
+                .level_min = {{ mon.level.min.SOULSILVER }},
+#else
+                .level_min = {{ mon.level.min.HEARTGOLD }},
+#endif
+## else
+                .level_min = {{ mon.level.min }},
+## endif
+## if isObject(mon.level.max)
+#ifdef ENC_SOULSILVER
+                .level_max = {{ mon.level.max.SOULSILVER }},
+#else
+                .level_max = {{ mon.level.max.HEARTGOLD }},
+#endif
+## else
+                .level_max = {{ mon.level.max }},
+## endif
+## if isObject(mon.species)
+#ifdef ENC_SOULSILVER
+                .species = {{ mon.species.SOULSILVER }},
+#else
+                .species = {{ mon.species.HEARTGOLD }},
+#endif
+## else
+                .species = {{ mon.species }},
+## endif
+            },
+## endfor
+        },
+        .superRodSlots = {
+## for mon in encounter.fishing.super_rod.mons
+            {
+## if isObject(mon.level.min)
+#ifdef ENC_SOULSILVER
+                .level_min = {{ mon.level.min.SOULSILVER }},
+#else
+                .level_min = {{ mon.level.min.HEARTGOLD }},
+#endif
+## else
+                .level_min = {{ mon.level.min }},
+## endif
+## if isObject(mon.level.max)
+#ifdef ENC_SOULSILVER
+                .level_max = {{ mon.level.max.SOULSILVER }},
+#else
+                .level_max = {{ mon.level.max.HEARTGOLD }},
+#endif
+## else
+                .level_max = {{ mon.level.max }},
+## endif
+## if isObject(mon.species)
+#ifdef ENC_SOULSILVER
+                .species = {{ mon.species.SOULSILVER }},
+#else
+                .species = {{ mon.species.HEARTGOLD }},
+#endif
+## else
+                .species = {{ mon.species }},
+## endif
+            },
+## endfor
+        },
+        .swarmSpecies = {
+## for mon in encounter.swarm
+## if isObject(mon)
+#ifdef ENC_SOULSILVER
+            {{ mon.SOULSILVER }},
+#else
+            {{ mon.HEARTGOLD }},
+#endif
+## else
+            {{ mon }},
+## endif
+## endfor
+        },
+    },
+## endfor
+};
+
+u32 __size = sizeof(ENC_DATA);

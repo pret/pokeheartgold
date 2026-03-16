@@ -130,44 +130,44 @@ _018B:
 
 	.balign 4, 0
 _01C8:
-	step 21, 5
-	step_end
+	WalkFasterSouth 5
+	EndMovement
 
 	.balign 4, 0
 _01D0:
-	step 71, 1
-	step 56, 1
-	step 63, 2
-	step 17, 2
-	step_end
+	LockDir
+	JumpFarNorth
+	Delay8 2
+	WalkFastSouth 2
+	EndMovement
 
 	.balign 4, 0
 _01E4:
-	step 75, 1
-	step 71, 1
-	step 12, 2
-	step_end
+	EmoteExclamationMark
+	LockDir
+	WalkNormalNorth 2
+	EndMovement
 
 	.balign 4, 0
 _01F4:
-	step 13, 2
-	step_end
+	WalkNormalSouth 2
+	EndMovement
 
 	.balign 4, 0
 _01FC:
-	step 17, 1
-	step_end
+	WalkFastSouth
+	EndMovement
 
 	.balign 4, 0
 _0204:
-	step 18, 1
-	step 3, 1
-	step_end
+	WalkFastWest
+	FaceEast
+	EndMovement
 
 	.balign 4, 0
 _0210:
-	step 18, 1
-	step_end
+	WalkFastWest
+	EndMovement
 
 scr_seq_T04GYM0101_006:
 	scrcmd_814

@@ -144,13 +144,13 @@ _020C:
 
 	.balign 4, 0
 _021C:
-	step 35, 1
-	step_end
+	WalkOnSpotNormalEast
+	EndMovement
 
 	.balign 4, 0
 _0224:
-	step 34, 1
-	step_end
+	WalkOnSpotNormalWest
+	EndMovement
 
 scr_seq_R39R0201_002:
 	play_se SEQ_SE_DP_SELECT

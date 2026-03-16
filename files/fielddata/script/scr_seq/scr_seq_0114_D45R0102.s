@@ -198,110 +198,110 @@ _02C0:
 
 	.balign 4, 0
 _0304:
-	step 35, 1
-	step 75, 1
-	step 63, 1
-	step 19, 1
-	step 32, 1
-	step_end
+	WalkOnSpotNormalEast
+	EmoteExclamationMark
+	Delay8
+	WalkFastEast
+	WalkOnSpotNormalNorth
+	EndMovement
 
 	.balign 4, 0
 _031C:
-	step 75, 1
-	step 63, 1
-	step 33, 1
-	step_end
+	EmoteExclamationMark
+	Delay8
+	WalkOnSpotNormalSouth
+	EndMovement
 
 	.balign 4, 0
 _032C:
-	step 13, 1
-	step_end
+	WalkNormalSouth
+	EndMovement
 
 	.balign 4, 0
 _0334:
-	step 33, 1
-	step_end
+	WalkOnSpotNormalSouth
+	EndMovement
 
 	.balign 4, 0
 _033C:
-	step 71, 1
-	step 8, 1
-	step 72, 1
-	step 11, 2
-	step_end
+	LockDir
+	WalkSlowNorth
+	UnlockDir
+	WalkSlowEast 2
+	EndMovement
 
 	.balign 4, 0
 _0350:
-	step 13, 4
-	step 14, 2
-	step 13, 2
-	step_end
+	WalkNormalSouth 4
+	WalkNormalWest 2
+	WalkNormalSouth 2
+	EndMovement
 
 	.balign 4, 0
 _0360:
-	step 11, 2
-	step 9, 3
-	step 10, 2
-	step 9, 2
-	step_end
+	WalkSlowEast 2
+	WalkSlowSouth 3
+	WalkSlowWest 2
+	WalkSlowSouth 2
+	EndMovement
 
 	.balign 4, 0
 _0374:
-	step 32, 1
-	step 12, 1
-	step_end
+	WalkOnSpotNormalNorth
+	WalkNormalNorth
+	EndMovement
 
 	.balign 4, 0
 _0380:
-	step 63, 3
-	step 13, 1
-	step_end
+	Delay8 3
+	WalkNormalSouth
+	EndMovement
 
 	.balign 4, 0
 _038C:
-	step 75, 1
-	step 63, 1
-	step_end
+	EmoteExclamationMark
+	Delay8
+	EndMovement
 
 	.balign 4, 0
 _0398:
-	step 15, 1
-	step 12, 1
-	step_end
+	WalkNormalEast
+	WalkNormalNorth
+	EndMovement
 
 	.balign 4, 0
 _03A4:
-	step 49, 1
-	step_end
+	JumpOnSpotFastSouth
+	EndMovement
 
 	.balign 4, 0
 _03AC:
-	step 32, 1
-	step_end
+	WalkOnSpotNormalNorth
+	EndMovement
 
 	.balign 4, 0
 _03B4:
-	step 12, 1
-	step 35, 1
-	step_end
+	WalkNormalNorth
+	WalkOnSpotNormalEast
+	EndMovement
 
 	.balign 4, 0
 _03C0:
-	step 34, 1
-	step 63, 1
-	step 35, 1
-	step 63, 1
-	step_end
+	WalkOnSpotNormalWest
+	Delay8
+	WalkOnSpotNormalEast
+	Delay8
+	EndMovement
 
 	.balign 4, 0
 _03D4:
-	step 13, 1
-	step_end
+	WalkNormalSouth
+	EndMovement
 
 	.balign 4, 0
 _03DC:
-	step 39, 4
-	step_end
+	WalkOnSpotFastEast 4
+	EndMovement
 
 scr_seq_D45R0102_003:
 	play_se SEQ_SE_DP_SELECT

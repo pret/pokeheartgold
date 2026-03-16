@@ -95,65 +95,65 @@ _0117:
 
 	.balign 4, 0
 _0130:
-	step 35, 1
-	step 63, 1
-	step 15, 2
-	step 13, 1
-	step 15, 1
-	step_end
+	WalkOnSpotNormalEast
+	Delay8
+	WalkNormalEast 2
+	WalkNormalSouth
+	WalkNormalEast
+	EndMovement
 
 	.balign 4, 0
 _0148:
-	step 33, 1
-	step 63, 1
-	step 13, 3
-	step 14, 1
-	step 13, 1
-	step_end
+	WalkOnSpotNormalSouth
+	Delay8
+	WalkNormalSouth 3
+	WalkNormalWest
+	WalkNormalSouth
+	EndMovement
 
 	.balign 4, 0
 _0160:
-	step 75, 1
-	step 63, 1
-	step_end
+	EmoteExclamationMark
+	Delay8
+	EndMovement
 
 	.balign 4, 0
 _016C:
-	step 75, 1
-	step 63, 1
-	step_end
+	EmoteExclamationMark
+	Delay8
+	EndMovement
 
 	.balign 4, 0
 _0178:
-	step 35, 1
-	step_end
+	WalkOnSpotNormalEast
+	EndMovement
 
 	.balign 4, 0
 _0180:
-	step 33, 1
-	step_end
+	WalkOnSpotNormalSouth
+	EndMovement
 
 	.balign 4, 0
 _0188:
-	step 63, 1
-	step 15, 2
-	step_end
+	Delay8
+	WalkNormalEast 2
+	EndMovement
 
 	.balign 4, 0
 _0194:
-	step 63, 1
-	step 12, 4
-	step 15, 2
-	step 12, 9
-	step_end
+	Delay8
+	WalkNormalNorth 4
+	WalkNormalEast 2
+	WalkNormalNorth 9
+	EndMovement
 
 	.balign 4, 0
 _01A8:
-	step 71, 1
-	step 12, 1
-	step 72, 1
-	step 33, 1
-	step_end
+	LockDir
+	WalkNormalNorth
+	UnlockDir
+	WalkOnSpotNormalSouth
+	EndMovement
 
 scr_seq_D48R0101_000:
 	play_se SEQ_SE_DP_SELECT
@@ -197,18 +197,18 @@ _0215:
 
 	.balign 4, 0
 _0220:
-	step 36, 1
-	step_end
+	WalkOnSpotFastNorth
+	EndMovement
 
 	.balign 4, 0
 _0228:
-	step 12, 1
-	step_end
+	WalkNormalNorth
+	EndMovement
 
 	.balign 4, 0
 _0230:
-	step 12, 2
-	step_end
+	WalkNormalNorth 2
+	EndMovement
 
 scr_seq_D48R0101_001:
 	simple_npc_msg msg_0136_D48R0101_00005

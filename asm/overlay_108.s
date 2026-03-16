@@ -3262,7 +3262,7 @@ ov108_021E72CC: ; 0x021E72CC
 	str r0, [r4, r1]
 	ldr r1, [r4]
 	mov r0, #1
-	bl sub_02013534
+	bl FontSystem_NewInit
 	mov r1, #0xe7
 	lsl r1, r1, #2
 	str r0, [r4, r1]

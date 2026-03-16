@@ -160,22 +160,22 @@ scr_seq_T11GYM0101_003:
 
 	.balign 4, 0
 _01FC:
-	step 1, 2
-	step 2, 2
-	step 0, 2
-	step 3, 2
-	step 1, 2
-	step 2, 2
-	step 0, 2
-	step 3, 2
-	step 1, 2
-	step 2, 2
-	step 0, 2
-	step 3, 2
-	step 1, 2
-	step 2, 2
-	step 0, 2
-	step 3, 1
-	step 69, 0
-	step_end
+	FaceSouth 2
+	FaceWest 2
+	FaceNorth 2
+	FaceEast 2
+	FaceSouth 2
+	FaceWest 2
+	FaceNorth 2
+	FaceEast 2
+	FaceSouth 2
+	FaceWest 2
+	FaceNorth 2
+	FaceEast 2
+	FaceSouth 2
+	FaceWest 2
+	FaceNorth 2
+	FaceEast
+	SetInvisible 0
+	EndMovement
 	.balign 4, 0

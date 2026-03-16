@@ -408,61 +408,61 @@ _0607:
 
 	.balign 4, 0
 _0618:
-	step 12, 2
-	step 15, 1
-	step 12, 2
-	step 69, 1
-	step_end
+	WalkNormalNorth 2
+	WalkNormalEast
+	WalkNormalNorth 2
+	SetInvisible
+	EndMovement
 
 	.balign 4, 0
 _062C:
-	step 12, 4
-	step 69, 1
-	step_end
+	WalkNormalNorth 4
+	SetInvisible
+	EndMovement
 
 	.balign 4, 0
 _0638:
-	step 12, 1
-	step 15, 1
-	step 12, 2
-	step 69, 1
-	step_end
+	WalkNormalNorth
+	WalkNormalEast
+	WalkNormalNorth 2
+	SetInvisible
+	EndMovement
 
 	.balign 4, 0
 _064C:
-	step 12, 3
-	step 69, 1
-	step_end
+	WalkNormalNorth 3
+	SetInvisible
+	EndMovement
 
 	.balign 4, 0
 _0658:
-	step 21, 2
-	step 22, 1
-	step 21, 2
-	step 0, 1
-	step 70, 1
-	step_end
+	WalkFasterSouth 2
+	WalkFasterWest
+	WalkFasterSouth 2
+	FaceNorth
+	SetVisible
+	EndMovement
 
 	.balign 4, 0
 _0670:
-	step 21, 4
-	step 0, 1
-	step 70, 1
-	step_end
+	WalkFasterSouth 4
+	FaceNorth
+	SetVisible
+	EndMovement
 
 	.balign 4, 0
 _0680:
-	step 21, 1
-	step 22, 1
-	step 21, 2
-	step 70, 1
-	step_end
+	WalkFasterSouth
+	WalkFasterWest
+	WalkFasterSouth 2
+	SetVisible
+	EndMovement
 
 	.balign 4, 0
 _0694:
-	step 21, 3
-	step 70, 1
-	step_end
+	WalkFasterSouth 3
+	SetVisible
+	EndMovement
 
 _06A0:
 	npc_msg msg_0110_D32R0601_00000
@@ -572,17 +572,17 @@ scr_seq_D32R0601_004:
 
 	.balign 4, 0
 _07D8:
-	step 12, 2
-	step 63, 1
-	step 12, 1
-	step_end
+	WalkNormalNorth 2
+	Delay8
+	WalkNormalNorth
+	EndMovement
 
 	.balign 4, 0
 _07E8:
-	step 12, 2
-	step 63, 1
-	step 12, 1
-	step_end
+	WalkNormalNorth 2
+	Delay8
+	WalkNormalNorth
+	EndMovement
 
 scr_seq_D32R0601_006:
 	simple_npc_msg msg_0110_D32R0601_00046

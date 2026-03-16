@@ -46,33 +46,33 @@ scr_seq_T27PC0101_001:
 
 	.balign 4, 0
 _0084:
-	step 13, 4
-	step 15, 6
-	step 12, 2
-	step 62, 12
-	step 1, 1
-	step 62, 4
-	step_end
+	WalkNormalSouth 4
+	WalkNormalEast 6
+	WalkNormalNorth 2
+	Delay4 12
+	FaceSouth
+	Delay4 4
+	EndMovement
 
 	.balign 4, 0
 _00A0:
-	step 62, 20
-	step 12, 4
-	step_end
+	Delay4 20
+	WalkNormalNorth 4
+	EndMovement
 
 	.balign 4, 0
 _00AC:
-	step 15, 1
-	step 13, 4
-	step 14, 1
-	step 13, 2
-	step_end
+	WalkNormalEast
+	WalkNormalSouth 4
+	WalkNormalWest
+	WalkNormalSouth 2
+	EndMovement
 
 	.balign 4, 0
 _00C0:
-	step 62, 6
-	step 1, 1
-	step_end
+	Delay4 6
+	FaceSouth
+	EndMovement
 
 scr_seq_T27PC0101_002:
 	simple_npc_msg msg_0615_T27PC0101_00002

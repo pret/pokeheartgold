@@ -35,8 +35,8 @@ _0064:
 
 	.balign 4, 0
 _0068:
-	step 68, 1
-	step_end
+	WarpIn
+	EndMovement
 
 scr_seq_D24R0207_002:
 	scrcmd_609
@@ -135,53 +135,53 @@ _01F2:
 
 	.balign 4, 0
 _021C:
-	step 40, 4
-	step 69, 1
-	step_end
+	WalkOnSpotFasterNorth 4
+	SetInvisible
+	EndMovement
 
 	.balign 4, 0
 _0228:
-	step 62, 3
-	step 20, 1
-	step 69, 1
-	step_end
+	Delay4 3
+	WalkFasterNorth
+	SetInvisible
+	EndMovement
 
 	.balign 4, 0
 _0238:
-	step 41, 4
-	step 69, 1
-	step_end
+	WalkOnSpotFasterSouth 4
+	SetInvisible
+	EndMovement
 
 	.balign 4, 0
 _0244:
-	step 62, 3
-	step 21, 1
-	step 69, 1
-	step_end
+	Delay4 3
+	WalkFasterSouth
+	SetInvisible
+	EndMovement
 
 	.balign 4, 0
 _0254:
-	step 42, 4
-	step 69, 1
-	step_end
+	WalkOnSpotFasterWest 4
+	SetInvisible
+	EndMovement
 
 	.balign 4, 0
 _0260:
-	step 62, 3
-	step 22, 1
-	step 69, 1
-	step_end
+	Delay4 3
+	WalkFasterWest
+	SetInvisible
+	EndMovement
 
 	.balign 4, 0
 _0270:
-	step 43, 4
-	step 69, 1
-	step_end
+	WalkOnSpotFasterEast 4
+	SetInvisible
+	EndMovement
 
 	.balign 4, 0
 _027C:
-	step 62, 3
-	step 23, 1
-	step 69, 1
-	step_end
+	Delay4 3
+	WalkFasterEast
+	SetInvisible
+	EndMovement
 	.balign 4, 0

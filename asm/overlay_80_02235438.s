@@ -7,7 +7,7 @@
 	thumb_func_start FrtCmd_091
 FrtCmd_091: ; 0x02235438
 	push {r3, lr}
-	bl FrontierScript_ReadU16
+	bl FrontierScriptContext_ReadHalfWord
 	bl GF_GetCurrentPlayingBGM
 	mov r1, #0
 	bl StopBGM
@@ -21,10 +21,10 @@ FrtCmd_132: ; 0x0223544C
 	add r7, r0, #0
 	ldr r0, [r7]
 	ldr r0, [r0]
-	bl Frontier_GetLaunchParam
+	bl Frontier_GetLaunchArgs
 	add r5, r0, #0
 	add r0, r7, #0
-	bl FrontierScript_ReadU16
+	bl FrontierScriptContext_ReadHalfWord
 	add r6, r0, #0
 	add r0, r7, #0
 	bl FrontierScript_ReadVar
@@ -226,7 +226,7 @@ FrtCmd_133: ; 0x022355D0
 	add r5, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl Frontier_GetLaunchParam
+	bl Frontier_GetLaunchArgs
 	ldr r1, [r5, #0x1c]
 	add r0, r1, #1
 	str r0, [r5, #0x1c]
@@ -272,7 +272,7 @@ FrtCmd_135: ; 0x02235624
 	add r5, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl Frontier_GetLaunchParam
+	bl Frontier_GetLaunchArgs
 	add r6, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0]
@@ -337,7 +337,7 @@ FrtCmd_137: ; 0x022356AC
 	add r4, r0, #0
 	ldr r0, [r4]
 	ldr r0, [r0]
-	bl Frontier_GetLaunchParam
+	bl Frontier_GetLaunchArgs
 	add r0, r4, #0
 	bl FrontierScript_ReadVar
 	add r6, r0, #0
@@ -384,10 +384,10 @@ _0223570C: .word 0x0000083E
 FrtCmd_138: ; 0x02235710
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl FrontierScript_ReadU16
+	bl FrontierScriptContext_ReadHalfWord
 	add r4, r0, #0
 	add r0, r5, #0
-	bl FrontierScript_ReadU16
+	bl FrontierScriptContext_ReadHalfWord
 	add r1, r5, #0
 	add r1, #0x78
 	strh r4, [r1]
@@ -396,7 +396,7 @@ FrtCmd_138: ; 0x02235710
 	strh r0, [r1]
 	ldr r1, _02235738 ; =ov80_0223573C
 	add r0, r5, #0
-	bl ov80_0222AB84
+	bl FrontierScriptContext_Pause
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -409,7 +409,7 @@ ov80_0223573C: ; 0x0223573C
 	add r5, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl Frontier_GetLaunchParam
+	bl Frontier_GetLaunchArgs
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0]

@@ -1436,7 +1436,7 @@ _0223E9A2:
 	bl ov83_022407FC
 	ldr r0, _0223EC8C ; =0x0000085C
 	ldr r0, [r4, r0]
-	bl sub_02019F74
+	bl GridInputHandler_GetNextInput
 	add r1, r0, #0
 	add r0, r4, #0
 	bl ov83_022408E0
@@ -1469,7 +1469,7 @@ _0223E9EC:
 	bl ov83_022407FC
 	ldr r0, _0223EC8C ; =0x0000085C
 	ldr r0, [r4, r0]
-	bl sub_02019F74
+	bl GridInputHandler_GetNextInput
 	add r1, r0, #0
 	add r0, r4, #0
 	bl ov83_022408E0
@@ -19137,10 +19137,10 @@ ov83_022479E4: ; 0x022479E4
 
 	thumb_func_start ov83_02247A18
 ov83_02247A18: ; 0x02247A18
-	ldr r3, _02247A1C ; =sub_02019BDC
+	ldr r3, _02247A1C ; =GridInputHandler_Free
 	bx r3
 	.balign 4, 0
-_02247A1C: .word sub_02019BDC
+_02247A1C: .word GridInputHandler_Free
 	thumb_func_end ov83_02247A18
 
 	thumb_func_start ov83_02247A20
@@ -19166,7 +19166,7 @@ ov83_02247A24: ; 0x02247A24
 	ldr r0, _02247A68 ; =ov83_02248530
 	ldr r1, _02247A6C ; =ov83_022485A8
 	ldr r2, _02247A70 ; =ov83_02248500
-	bl sub_02019BA4
+	bl GridInputHandler_Create
 	add sp, #0xc
 	pop {pc}
 _02247A4A:
@@ -19180,7 +19180,7 @@ _02247A4A:
 	ldr r0, _02247A74 ; =ov83_02248558
 	ldr r1, _02247A78 ; =ov83_022485E8
 	ldr r2, _02247A70 ; =ov83_02248500
-	bl sub_02019BA4
+	bl GridInputHandler_Create
 	add sp, #0xc
 	pop {pc}
 	nop
@@ -19208,7 +19208,7 @@ ov83_02247A7C: ; 0x02247A7C
 	ldr r0, _02247AC0 ; =ov83_02248530
 	ldr r1, _02247AC4 ; =ov83_022485A8
 	ldr r2, _02247AC8 ; =ov83_02248510
-	bl sub_02019BA4
+	bl GridInputHandler_Create
 	add sp, #0xc
 	pop {pc}
 _02247AA2:
@@ -19222,7 +19222,7 @@ _02247AA2:
 	ldr r0, _02247ACC ; =ov83_02248558
 	ldr r1, _02247AD0 ; =ov83_022485E8
 	ldr r2, _02247AC8 ; =ov83_02248510
-	bl sub_02019BA4
+	bl GridInputHandler_Create
 	add sp, #0xc
 	pop {pc}
 	nop
@@ -19236,7 +19236,7 @@ _02247AD0: .word ov83_022485E8
 	thumb_func_start ov83_02247AD4
 ov83_02247AD4: ; 0x02247AD4
 	push {r3, lr}
-	bl sub_02019BE4
+	bl GridInputHandler_HandleInput_NoHold
 	add r1, r0, #4
 	cmp r1, #3
 	bhi _02247AF6
@@ -19266,12 +19266,12 @@ _02247B00: .word ov83_02248544
 ov83_02247B04: ; 0x02247B04
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_02019F74
+	bl GridInputHandler_GetNextInput
 	add r2, r0, #0
 	add r0, r4, #0
 	mov r1, #0
 	add r3, r2, #0
-	bl sub_02019F88
+	bl GridInputHandler_SetNextLastUnk0FInputs
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov83_02247B04
@@ -19347,7 +19347,7 @@ ov83_02247B7C: ; 0x02247B7C
 	ldr r1, _02247BBC ; =ov83_02248610
 	ldr r2, _02247BC0 ; =ov83_02248520
 	add r3, r4, #0
-	bl sub_02019BA4
+	bl GridInputHandler_Create
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #0x40
@@ -19370,7 +19370,7 @@ _02247BC0: .word ov83_02248520
 ov83_02247BC4: ; 0x02247BC4
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_02019BE4
+	bl GridInputHandler_HandleInput_NoHold
 	add r1, r0, #4
 	cmp r1, #3
 	bhi _02247C28
@@ -19394,7 +19394,7 @@ _02247BE8:
 	tst r0, r1
 	beq _02247C08
 	add r0, r4, #0
-	bl sub_02019F74
+	bl GridInputHandler_GetNextInput
 	cmp r0, #0
 	beq _02247C04
 	cmp r0, #2
@@ -19411,7 +19411,7 @@ _02247C08:
 	tst r0, r1
 	beq _02247C30
 	add r0, r4, #0
-	bl sub_02019F74
+	bl GridInputHandler_GetNextInput
 	cmp r0, #1
 	beq _02247C24
 	cmp r0, #3

@@ -1210,32 +1210,32 @@ _1301:
 
 	.balign 4, 0
 _1348:
-	step 62, 1
-	step 12, 2
-	step_end
+	Delay4
+	WalkNormalNorth 2
+	EndMovement
 
 	.balign 4, 0
 _1354:
-	step 12, 1
-	step 69, 1
-	step_end
+	WalkNormalNorth
+	SetInvisible
+	EndMovement
 
 	.balign 4, 0
 _1360:
-	step 62, 1
-	step 12, 2
-	step_end
+	Delay4
+	WalkNormalNorth 2
+	EndMovement
 
 	.balign 4, 0
 _136C:
-	step 12, 2
-	step 69, 1
-	step_end
+	WalkNormalNorth 2
+	SetInvisible
+	EndMovement
 
 	.balign 4, 0
 _1378:
-	step 3, 1
-	step_end
+	FaceEast
+	EndMovement
 
 scr_seq_D31R0201_009:
 	play_se SEQ_SE_DP_SELECT

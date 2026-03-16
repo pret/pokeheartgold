@@ -148,116 +148,116 @@ _022B:
 
 	.balign 4, 0
 _0240:
-	step 2, 1
-	step 75, 1
-	step_end
+	FaceWest
+	EmoteExclamationMark
+	EndMovement
 
 	.balign 4, 0
 _024C:
-	step 3, 1
-	step 75, 1
-	step_end
+	FaceEast
+	EmoteExclamationMark
+	EndMovement
 
 	.balign 4, 0
 _0258:
-	step 1, 1
-	step 75, 1
-	step_end
+	FaceSouth
+	EmoteExclamationMark
+	EndMovement
 
 	.balign 4, 0
 _0264:
-	step 71, 1
-	step 19, 1
-	step 72, 1
-	step_end
+	LockDir
+	WalkFastEast
+	UnlockDir
+	EndMovement
 
 	.balign 4, 0
 _0274:
-	step 71, 1
-	step 18, 1
-	step 72, 1
-	step_end
+	LockDir
+	WalkFastWest
+	UnlockDir
+	EndMovement
 
 	.balign 4, 0
 _0284:
-	step 18, 1
-	step_end
+	WalkFastWest
+	EndMovement
 
 	.balign 4, 0
 _028C:
-	step 19, 1
-	step_end
+	WalkFastEast
+	EndMovement
 
 	.balign 4, 0
 _0294:
-	step 1, 1
-	step 2, 1
-	step 0, 1
-	step 3, 1
-	step 1, 1
-	step 2, 1
-	step_end
+	FaceSouth
+	FaceWest
+	FaceNorth
+	FaceEast
+	FaceSouth
+	FaceWest
+	EndMovement
 
 	.balign 4, 0
 _02B0:
-	step 2, 1
-	step 0, 1
-	step 3, 1
-	step 1, 1
-	step 2, 1
-	step_end
+	FaceWest
+	FaceNorth
+	FaceEast
+	FaceSouth
+	FaceWest
+	EndMovement
 
 	.balign 4, 0
 _02C8:
-	step 0, 1
-	step 3, 1
-	step 1, 1
-	step 2, 1
-	step 0, 1
-	step 3, 1
-	step 1, 1
-	step 2, 1
-	step_end
+	FaceNorth
+	FaceEast
+	FaceSouth
+	FaceWest
+	FaceNorth
+	FaceEast
+	FaceSouth
+	FaceWest
+	EndMovement
 
 	.balign 4, 0
 _02EC:
-	step 3, 1
-	step 1, 1
-	step 2, 1
-	step 0, 1
-	step 3, 1
-	step 1, 1
-	step 2, 1
-	step 0, 1
-	step_end
+	FaceEast
+	FaceSouth
+	FaceWest
+	FaceNorth
+	FaceEast
+	FaceSouth
+	FaceWest
+	FaceNorth
+	EndMovement
 
 	.balign 4, 0
 _0310:
-	step 3, 1
-	step 1, 1
-	step 2, 1
-	step 0, 1
-	step 3, 1
-	step_end
+	FaceEast
+	FaceSouth
+	FaceWest
+	FaceNorth
+	FaceEast
+	EndMovement
 
 	.balign 4, 0
 _0328:
-	step 3, 1
-	step 1, 1
-	step 2, 1
-	step 0, 1
-	step 3, 1
-	step 1, 1
-	step_end
+	FaceEast
+	FaceSouth
+	FaceWest
+	FaceNorth
+	FaceEast
+	FaceSouth
+	EndMovement
 
 	.balign 4, 0
 _0344:
-	step 3, 1
-	step 1, 1
-	step 2, 1
-	step 0, 1
-	step 3, 1
-	step 1, 1
-	step 2, 1
-	step_end
+	FaceEast
+	FaceSouth
+	FaceWest
+	FaceNorth
+	FaceEast
+	FaceSouth
+	FaceWest
+	EndMovement
 	.balign 4, 0

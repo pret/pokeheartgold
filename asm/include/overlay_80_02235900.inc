@@ -18,14 +18,14 @@
 .public sub_0205C268
 .public SaveArray_Party_Get
 .public HealParty
-.public Frontier_GetLaunchParam
+.public Frontier_GetLaunchArgs
 .public Frontier_GetData
 .public Frontier_SetData
 .public sub_02096910
 .public sub_02096998
 .public ov80_0222A840
-.public ov80_0222AB84
-.public FrontierScript_ReadU16
+.public FrontierScriptContext_Pause
+.public FrontierScriptContext_ReadHalfWord
 .public FrontierScript_ReadVarPtr
 .public FrontierScript_ReadVar
 .public FrtCmd_170

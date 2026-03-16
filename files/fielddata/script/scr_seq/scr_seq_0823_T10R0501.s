@@ -39,8 +39,8 @@ scr_seq_T10R0501_000:
 
 	.balign 4, 0
 _0060:
-	step 12, 6
-	step_end
+	WalkNormalNorth 6
+	EndMovement
 
 scr_seq_T10R0501_001:
 	play_se SEQ_SE_DP_SELECT

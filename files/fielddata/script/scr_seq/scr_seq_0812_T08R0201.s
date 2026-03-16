@@ -184,22 +184,22 @@ _0274:
 
 	.balign 4, 0
 _0280:
-	step 36, 1
-	step 12, 2
-	step 15, 1
-	step 38, 1
-	step_end
+	WalkOnSpotFastNorth
+	WalkNormalNorth 2
+	WalkNormalEast
+	WalkOnSpotFastWest
+	EndMovement
 
 	.balign 4, 0
 _0294:
-	step 12, 5
-	step 69, 1
-	step_end
+	WalkNormalNorth 5
+	SetInvisible
+	EndMovement
 
 	.balign 4, 0
 _02A0:
-	step 0, 1
-	step_end
+	FaceNorth
+	EndMovement
 
 scr_seq_T08R0201_002:
 	scrcmd_609
@@ -281,31 +281,31 @@ _03A1:
 
 	.balign 4, 0
 _03BC:
-	step 14, 1
-	step 13, 2
-	step_end
+	WalkNormalWest
+	WalkNormalSouth 2
+	EndMovement
 
 	.balign 4, 0
 _03C8:
-	step 63, 2
-	step 34, 1
-	step_end
+	Delay8 2
+	WalkOnSpotNormalWest
+	EndMovement
 
 	.balign 4, 0
 _03D4:
-	step 13, 5
-	step_end
+	WalkNormalSouth 5
+	EndMovement
 
 	.balign 4, 0
 _03DC:
-	step 13, 2
-	step 39, 1
-	step_end
+	WalkNormalSouth 2
+	WalkOnSpotFastEast
+	EndMovement
 
 	.balign 4, 0
 _03E8:
-	step 13, 4
-	step_end
+	WalkNormalSouth 4
+	EndMovement
 
 _03F0:
 	simple_npc_msg msg_0516_T08R0201_00025

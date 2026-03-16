@@ -230,73 +230,73 @@ _02E2:
 
 	.balign 4, 0
 _0340: ; unreferenced
-	step 12, 2
-	step 1, 1
-	step_end
+	WalkNormalNorth 2
+	FaceSouth
+	EndMovement
 
 	.balign 4, 0
 _034C: ; unreferenced
-	step 62, 5
-	step 36, 2
-	step_end
+	Delay4 5
+	WalkOnSpotFastNorth 2
+	EndMovement
 
 	.balign 4, 0
 _0358: ; unreferenced
-	step 12, 1
-	step_end
+	WalkNormalNorth
+	EndMovement
 
 	.balign 4, 0
 _0360:
-	step 12, 3
-	step 3, 1
-	step_end
+	WalkNormalNorth 3
+	FaceEast
+	EndMovement
 
 	.balign 4, 0
 _036C: ; unreferenced
-	step 63, 1
-	step 1, 1
-	step_end
+	Delay8
+	FaceSouth
+	EndMovement
 
 	.balign 4, 0
 _0378:
-	step 14, 10
-	step_end
+	WalkNormalWest 10
+	EndMovement
 
 	.balign 4, 0
 _0380:
-	step 13, 2
-	step 14, 10
-	step_end
+	WalkNormalSouth 2
+	WalkNormalWest 10
+	EndMovement
 
 	.balign 4, 0
 _038C:
-	step 32, 3
-	step_end
+	WalkOnSpotNormalNorth 3
+	EndMovement
 
 	.balign 4, 0
 _0394:
-	step 36, 6
-	step_end
+	WalkOnSpotFastNorth 6
+	EndMovement
 
 	.balign 4, 0
 _039C:
-	step 30, 4
-	step_end
+	WalkOnSpotSlowWest 4
+	EndMovement
 
 	.balign 4, 0
 _03A4:
-	step 28, 4
-	step_end
+	WalkOnSpotSlowNorth 4
+	EndMovement
 
 	.balign 4, 0
 _03AC:
-	step 29, 4
-	step_end
+	WalkOnSpotSlowSouth 4
+	EndMovement
 
 	.balign 4, 0
 _03B4:
-	step 13, 1
-	step_end
+	WalkNormalSouth
+	EndMovement
 
 scr_seq_R36_001:
 	play_se SEQ_SE_DP_SELECT
@@ -404,8 +404,8 @@ _0533:
 
 	.balign 4, 0
 _053C:
-	step 0, 1
-	step_end
+	FaceNorth
+	EndMovement
 
 scr_seq_R36_008:
 	play_se SEQ_SE_DP_SELECT

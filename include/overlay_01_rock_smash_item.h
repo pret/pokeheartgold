@@ -9,6 +9,6 @@
 
 #define NUM_ROCK_SMASH_TYPE 3
 
-void FieldSystem_RockSmashItemCheck(FieldSystem *fieldSystem, int followMonKnowsHm, u16 *itemFound, u16 *item);
+void FieldSystem_RockSmashItemCheck(FieldSystem *fieldSystem, int followMonUsingHm, u16 *itemFound, u16 *item);
 
 #endif // POKEHEARTGOLD_OVERLAY_01_ROCK_SMASH_ITEM_H

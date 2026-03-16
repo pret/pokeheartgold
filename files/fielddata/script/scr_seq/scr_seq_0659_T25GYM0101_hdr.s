@@ -1,10 +1,12 @@
 #include "constants/scrcmd.h"
 #include "fielddata/script/scr_seq/event_T25GYM0101.h"
+#include "constants/init_script_types.h"
+	.include "asm/macros/script.inc"
+
 	.rodata
 	.option alignment off
 
-	.byte 2
-	.short _EV_scr_seq_T25GYM0101_004 + 1, 0
-	.byte 0
+	InitScriptEntry_OnTransition _EV_scr_seq_T25GYM0101_004 + 1
+	InitScriptEntryEnd
 
-	.balign 4, 0
+	InitScriptEnd

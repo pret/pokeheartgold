@@ -69,7 +69,7 @@ static const WindowTemplate sErrorMessageWindowTemplate = {
     .baseTile = 0x23,
 };
 
-static const HEAP_PARAM sErrorMessageHeapParams = {
+static const HeapParam sErrorMessageHeapParams = {
     .size = 0x20000,
     .arena = OS_ARENA_MAIN,
 };

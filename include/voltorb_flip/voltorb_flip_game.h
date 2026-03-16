@@ -38,7 +38,7 @@ typedef enum RoundOutcome {
     ROUND_OUTCOME_QUIT,
     ROUND_OUTCOME_WON,
     ROUND_OUTCOME_LOST,
-} RoundOutcome;
+} VoltorbFlipRoundOutcome;
 
 // Internally, levels are encoded in descending order:
 //
@@ -62,7 +62,7 @@ typedef struct Card {
 } Card;
 
 typedef struct RoundSummary {
-    RoundOutcome roundOutcome;
+    VoltorbFlipRoundOutcome roundOutcome;
     u8 cardsFlipped;
     u8 boardId;
     Level level;
@@ -74,7 +74,7 @@ typedef struct GameState {
     u8 pointsPerRow[5];
     u8 voltorbsPerCol[5];
     u8 voltorbsPerRow[5];
-    RoundOutcome roundOutcome;
+    VoltorbFlipRoundOutcome roundOutcome;
     u16 payout;
     u16 maxPayout;
     u16 multiplierCards; // number of x2 and x3 cards on board
@@ -83,9 +83,9 @@ typedef struct GameState {
     u8 boardId;
     Level level;
     u8 historyHead; // index of current game in `boardHistory`
-    u8 unk150[0x4];
-    RoundSummary boardHistory[5];
-} GameState;
+    u8 filler[4];
+    RoundSummary boardHistory[5]; // this is a ring buffer
+} VoltorbFlipGameState;
 
 // This structure specifies the number of Voltorbs, x2, and x3 cards in the
 // round and defines restrictions on the boards that can be generated.
@@ -105,26 +105,26 @@ typedef struct BoardConfig {
     u8 maxFreeMultipliers : 4;
 } BoardConfig;
 
-GameState *CreateGameState(enum HeapID);
-void FreeGameState(GameState *);
-void NewBoard(GameState *);
-void ov122_021E8528(GameState *);
-void SetRoundOutcome(GameState *, RoundOutcome);
-void MultiplyPayoutAndUpdateCardsFlipped(GameState *, CardType);
-void FlipCard(GameState *, int);
-BOOL DeductFromPayout(GameState *, u8);
-BOOL IsCardFlipped(GameState *, int);
-BOOL EarnedMaxPayout(GameState *);
-CardType GetCardType(GameState *, int);
-int IsCardMemoFlagOn(GameState *, int, int);
-void ToggleCardMemo(GameState *, int, int);
-int PointsAlongAxis(GameState *, Axis, u8);
-int VoltorbsAlongAxis(GameState *, Axis, u8);
-int FlippedCardsAlongAxis(GameState *, Axis, u8);
-u16 GamePayout(GameState *);
-u8 MultiplierCards(GameState *);
-u8 MultiplierCardsFlipped(GameState *);
-u8 GameLevel(GameState *);
-int LevelsGained(GameState *);
+VoltorbFlipGameState *VoltorbFlip_CreateGameState(enum HeapID);
+void VoltorbFlip_FreeGameState(VoltorbFlipGameState *gameState);
+void VoltorbFlipGameState_NewBoard(VoltorbFlipGameState *gameState);
+void VoltorbFlipGameState_UpdateHistoryAndReset(VoltorbFlipGameState *);
+void VoltorbFlipGameState_SetRoundOutcome(VoltorbFlipGameState *, VoltorbFlipRoundOutcome);
+void VoltorbFlipGameState_MultiplyPayoutAndUpdateCardsFlipped(VoltorbFlipGameState *, CardType);
+void VoltorbFlipGameState_FlipCard(VoltorbFlipGameState *, int);
+BOOL VoltorbFlipGameState_DeductFromPayout(VoltorbFlipGameState *, u8);
+BOOL VoltorbFlipGameState_IsCardFlipped(VoltorbFlipGameState *, int);
+BOOL VoltorbFlipGameState_HasEarnedMaxPayout(VoltorbFlipGameState *);
+CardType VoltorbFlipGameState_GetCardType(VoltorbFlipGameState *, int);
+BOOL VoltorbFlipGameState_IsCardMemoFlagOn(VoltorbFlipGameState *, int, int);
+void VoltorbFlipGameState_ToggleCardMemo(VoltorbFlipGameState *, int, int);
+int VoltorbFlipGameStates_GetPointsAlongAxis(VoltorbFlipGameState *, Axis, u8);
+int VoltorbFlipGameState_GetVoltorbsAlongAxis(VoltorbFlipGameState *, Axis, u8);
+int VoltorbFlipGameState_CountFlippedCardsAlongAxis(VoltorbFlipGameState *, Axis, u8);
+u16 VoltorbFlipGameState_GetGamePayout(VoltorbFlipGameState *);
+u8 VoltorbFlipGameState_GetMultiplierCards(VoltorbFlipGameState *);
+u8 VoltorbFlipGameState_GetMultiplierCardsFlipped(VoltorbFlipGameState *);
+u8 VoltorbFlipGameState_GetGameLevel(VoltorbFlipGameState *);
+int VoltorbFlipGameState_CalculateLevelsGained(VoltorbFlipGameState *);
 
 #endif // POKEHEARTGOLD_VOLTORB_FLIP_GAME_H

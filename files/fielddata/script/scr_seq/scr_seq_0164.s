@@ -69,13 +69,13 @@ _00EE:
 
 	.balign 4, 0
 _0100:
-	step 32, 1
-	step 63, 2
-	step 12, 4
-	step 14, 1
-	step 0, 1
-	step 63, 2
-	step_end
+	WalkOnSpotNormalNorth
+	Delay8 2
+	WalkNormalNorth 4
+	WalkNormalWest
+	FaceNorth
+	Delay8 2
+	EndMovement
 
 scr_seq_0164_001:
 	play_se SEQ_SE_DP_SELECT
@@ -308,66 +308,66 @@ _041C:
 
 	.balign 4, 0
 _0474:
-	step 15, 1
-	step 32, 1
-	step_end
+	WalkNormalEast
+	WalkOnSpotNormalNorth
+	EndMovement
 
 	.balign 4, 0
 _0480:
-	step 12, 2
-	step_end
+	WalkNormalNorth 2
+	EndMovement
 
 	.balign 4, 0
 _0488:
-	step 12, 1
-	step_end
+	WalkNormalNorth
+	EndMovement
 
 	.balign 4, 0
 _0490:
-	step 12, 1
-	step 69, 1
-	step_end
+	WalkNormalNorth
+	SetInvisible
+	EndMovement
 
 	.balign 4, 0
 _049C:
-	step 12, 2
-	step 69, 1
-	step_end
+	WalkNormalNorth 2
+	SetInvisible
+	EndMovement
 
 	.balign 4, 0
 _04A8:
-	step 1, 1
-	step 70, 1
-	step 13, 2
-	step_end
+	FaceSouth
+	SetVisible
+	WalkNormalSouth 2
+	EndMovement
 
 	.balign 4, 0
 _04B8:
-	step 13, 1
-	step_end
+	WalkNormalSouth
+	EndMovement
 
 	.balign 4, 0
 _04C0:
-	step 13, 2
-	step_end
+	WalkNormalSouth 2
+	EndMovement
 
 	.balign 4, 0
 _04C8:
-	step 35, 1
-	step_end
+	WalkOnSpotNormalEast
+	EndMovement
 
 	.balign 4, 0
 _04D0:
-	step 12, 1
-	step 15, 1
-	step 32, 1
-	step_end
+	WalkNormalNorth
+	WalkNormalEast
+	WalkOnSpotNormalNorth
+	EndMovement
 
 	.balign 4, 0
 _04E0:
-	step 12, 1
-	step 69, 1
-	step_end
+	WalkNormalNorth
+	SetInvisible
+	EndMovement
 
 _04EC:
 	callstd std_party_illegal

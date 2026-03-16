@@ -90,23 +90,23 @@ _0133:
 
 	.balign 4, 0
 _0188:
-	step 12, 14
-	step 3, 2
-	step_end
+	WalkNormalNorth 14
+	FaceEast 2
+	EndMovement
 
 	.balign 4, 0
 _0194:
-	step 12, 12
-	step 3, 2
-	step 15, 1
-	step 2, 2
-	step_end
+	WalkNormalNorth 12
+	FaceEast 2
+	WalkNormalEast
+	FaceWest 2
+	EndMovement
 
 	.balign 4, 0
 _01A8:
-	step 0, 2
-	step 12, 4
-	step_end
+	FaceNorth 2
+	WalkNormalNorth 4
+	EndMovement
 
 _01B4:
 	goto_if_set FLAG_GAME_CLEAR, _01C3

@@ -819,16 +819,16 @@ static u8 Save_Daycare_CalcCompatibilityInternal(Daycare *dayCare) {
 }
 
 static const u16 sEggCycleSpecialDates[] = {
-    112, // Jan 1st, New Years
-    214, // Feb 14th, Valentine's Day
-    303, // March 3rd
-    401, // April 1st, April Fools
-    501, // May 1st, Emerald US release date
-    611, // June 11th
-    707, // July 7th
-    821, // August 21st
-    907, // September 7th
-    928, // September 28th, Diamond/Pearl JP release date
+    112,  // Jan 1st, New Years
+    214,  // Feb 14th, Valentine's Day
+    303,  // March 3rd
+    401,  // April 1st, April Fools
+    501,  // May 1st, Emerald US release date
+    611,  // June 11th
+    707,  // July 7th
+    821,  // August 21st
+    907,  // September 7th
+    928,  // September 28th, Diamond/Pearl JP release date
     1031, // October 31st, Halloween
     1121, // November 21st, Ruby/Sapphire JP release date
     1214, // December 14th, Crystal JP release date

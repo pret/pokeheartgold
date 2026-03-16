@@ -86,105 +86,105 @@ _00CA:
 
 	.balign 4, 0
 _0138:
-	step 75, 1
-	step_end
+	EmoteExclamationMark
+	EndMovement
 
 	.balign 4, 0
 _0140:
-	step 63, 1
-	step 12, 3
-	step_end
+	Delay8
+	WalkNormalNorth 3
+	EndMovement
 
 	.balign 4, 0
 _014C:
-	step 16, 3
-	step 48, 2
-	step_end
+	WalkFastNorth 3
+	JumpOnSpotFastNorth 2
+	EndMovement
 
 	.balign 4, 0
 _0158:
-	step 63, 1
-	step 12, 3
-	step_end
+	Delay8
+	WalkNormalNorth 3
+	EndMovement
 
 	.balign 4, 0
 _0164:
-	step 33, 1
-	step_end
+	WalkOnSpotNormalSouth
+	EndMovement
 
 	.balign 4, 0
 _016C:
-	step 14, 1
-	step 13, 3
-	step 63, 1
-	step 75, 1
-	step 32, 1
-	step_end
+	WalkNormalWest
+	WalkNormalSouth 3
+	Delay8
+	EmoteExclamationMark
+	WalkOnSpotNormalNorth
+	EndMovement
 
 	.balign 4, 0
 _0184:
-	step 14, 2
-	step 13, 2
-	step_end
+	WalkNormalWest 2
+	WalkNormalSouth 2
+	EndMovement
 
 	.balign 4, 0
 _0190:
-	step 34, 1
-	step_end
+	WalkOnSpotNormalWest
+	EndMovement
 
 	.balign 4, 0
 _0198:
-	step 63, 1
-	step 12, 1
-	step 35, 1
-	step_end
+	Delay8
+	WalkNormalNorth
+	WalkOnSpotNormalEast
+	EndMovement
 
 	.balign 4, 0
 _01A8:
-	step 35, 1
-	step 71, 1
-	step 54, 1
-	step 72, 1
-	step_end
+	WalkOnSpotNormalEast
+	LockDir
+	JumpNearFastWest
+	UnlockDir
+	EndMovement
 
 	.balign 4, 0
 _01BC:
-	step 35, 1
-	step_end
+	WalkOnSpotNormalEast
+	EndMovement
 
 	.balign 4, 0
 _01C4:
-	step 32, 1
-	step_end
+	WalkOnSpotNormalNorth
+	EndMovement
 
 	.balign 4, 0
 _01CC:
-	step 32, 1
-	step_end
+	WalkOnSpotNormalNorth
+	EndMovement
 
 	.balign 4, 0
 _01D4:
-	step 13, 2
-	step 15, 1
-	step 13, 1
-	step 69, 1
-	step_end
+	WalkNormalSouth 2
+	WalkNormalEast
+	WalkNormalSouth
+	SetInvisible
+	EndMovement
 
 	.balign 4, 0
 _01E8:
-	step 63, 1
-	step 48, 2
-	step 63, 1
-	step 17, 3
-	step 19, 2
-	step 37, 1
-	step_end
+	Delay8
+	JumpOnSpotFastNorth 2
+	Delay8
+	WalkFastSouth 3
+	WalkFastEast 2
+	WalkOnSpotFastSouth
+	EndMovement
 
 	.balign 4, 0
 _0204:
-	step 63, 2
-	step 33, 1
-	step_end
+	Delay8 2
+	WalkOnSpotNormalSouth
+	EndMovement
 
 scr_seq_R34R0101_000:
 	update_day_care_mon_objects

@@ -2,6 +2,7 @@
 
 #include "constants/radio_station.h"
 
+#include "application/pokegear/radio/pgradio_gra.naix"
 #include "application/pokegear/radio/radio_internal.h"
 
 #include "font.h"
@@ -300,13 +301,13 @@ void Radio_UnloadBGs(PokegearRadioAppData *radioApp) {
 
 void Radio_LoadGraphics(PokegearRadioAppData *radioApp) {
     FontID_Alloc(4, radioApp->heapID);
-    NARC *narc = NARC_New(NARC_a_1_4_7, radioApp->heapID);
-    BgConfig_LoadAssetFromOpenNarc(radioApp->pokegear->bgConfig, radioApp->heapID, narc, NARC_a_1_4_7, radioApp->backgroundStyle + 16, GF_BG_LYR_MAIN_2, GF_BG_GFX_TYPE_CHAR, 0, 0);
-    BgConfig_LoadAssetFromOpenNarc(radioApp->pokegear->bgConfig, radioApp->heapID, narc, NARC_a_1_4_7, radioApp->backgroundStyle + 34, GF_BG_LYR_SUB_3, GF_BG_GFX_TYPE_CHAR, 0, 0);
-    BgConfig_LoadAssetFromOpenNarc(radioApp->pokegear->bgConfig, radioApp->heapID, narc, NARC_a_1_4_7, radioApp->backgroundStyle + 22, GF_BG_LYR_MAIN_2, GF_BG_GFX_TYPE_SCRN, 0x800, 0);
-    BgConfig_LoadAssetFromOpenNarc(radioApp->pokegear->bgConfig, radioApp->heapID, narc, NARC_a_1_4_7, radioApp->backgroundStyle + 28, GF_BG_LYR_MAIN_3, GF_BG_GFX_TYPE_SCRN, 0x800, 0);
-    BgConfig_LoadAssetFromOpenNarc(radioApp->pokegear->bgConfig, radioApp->heapID, narc, NARC_a_1_4_7, radioApp->backgroundStyle + 40, GF_BG_LYR_SUB_3, GF_BG_GFX_TYPE_SCRN, 0x800, 0);
-    radioApp->pNSCR = GfGfxLoader_GetScrnDataFromOpenNarc(narc, radioApp->backgroundStyle + 22, FALSE, &radioApp->screenData, radioApp->heapID);
+    NARC *narc = NARC_New(NARC_application_pokegear_radio_pgradio_gra, radioApp->heapID);
+    BgConfig_LoadAssetFromOpenNarc(radioApp->pokegear->bgConfig, radioApp->heapID, narc, NARC_application_pokegear_radio_pgradio_gra, radioApp->skin + NARC_pgradio_gra_pgradio_gra_00000016_NCGR, GF_BG_LYR_MAIN_2, GF_BG_GFX_TYPE_CHAR, 0, 0);
+    BgConfig_LoadAssetFromOpenNarc(radioApp->pokegear->bgConfig, radioApp->heapID, narc, NARC_application_pokegear_radio_pgradio_gra, radioApp->skin + NARC_pgradio_gra_pgradio_gra_00000034_NCGR, GF_BG_LYR_SUB_3, GF_BG_GFX_TYPE_CHAR, 0, 0);
+    BgConfig_LoadAssetFromOpenNarc(radioApp->pokegear->bgConfig, radioApp->heapID, narc, NARC_application_pokegear_radio_pgradio_gra, radioApp->skin + NARC_pgradio_gra_pgradio_gra_00000022_NSCR, GF_BG_LYR_MAIN_2, GF_BG_GFX_TYPE_SCRN, 0x800, 0);
+    BgConfig_LoadAssetFromOpenNarc(radioApp->pokegear->bgConfig, radioApp->heapID, narc, NARC_application_pokegear_radio_pgradio_gra, radioApp->skin + NARC_pgradio_gra_pgradio_gra_00000028_NSCR, GF_BG_LYR_MAIN_3, GF_BG_GFX_TYPE_SCRN, 0x800, 0);
+    BgConfig_LoadAssetFromOpenNarc(radioApp->pokegear->bgConfig, radioApp->heapID, narc, NARC_application_pokegear_radio_pgradio_gra, radioApp->skin + NARC_pgradio_gra_pgradio_gra_00000040_NSCR, GF_BG_LYR_SUB_3, GF_BG_GFX_TYPE_SCRN, 0x800, 0);
+    radioApp->pNSCR = GfGfxLoader_GetScrnDataFromOpenNarc(narc, radioApp->skin + 22, FALSE, &radioApp->screenData, radioApp->heapID);
     NARC_Delete(narc);
     ScheduleBgTilemapBufferTransfer(radioApp->pokegear->bgConfig, GF_BG_LYR_MAIN_2);
     ScheduleBgTilemapBufferTransfer(radioApp->pokegear->bgConfig, GF_BG_LYR_SUB_3);
@@ -318,12 +319,12 @@ void Radio_UnloadGraphics(PokegearRadioAppData *radioApp) {
 }
 
 void Radio_LoadPalettes(PokegearRadioAppData *radioApp) {
-    NARC *narc = NARC_New(NARC_a_1_4_7, radioApp->heapID);
+    NARC *narc = NARC_New(NARC_application_pokegear_radio_pgradio_gra, radioApp->heapID);
 
-    PaletteData_LoadFromOpenNarc(radioApp->pokegear->plttData, narc, radioApp->backgroundStyle + 10, radioApp->heapID, PLTTBUF_MAIN_BG, 0x1C0, 0, 0);
-    PaletteData_LoadFromOpenNarc(radioApp->pokegear->plttData, narc, radioApp->backgroundStyle + 4, radioApp->heapID, PLTTBUF_SUB_BG, 0x180, 0, 0);
-    PaletteData_LoadFromOpenNarc(radioApp->pokegear->plttData, narc, 0, radioApp->heapID, PLTTBUF_MAIN_OBJ, 0x180, 0x40, 0);
-    PaletteData_LoadFromOpenNarc(radioApp->pokegear->plttData, narc, 0, radioApp->heapID, PLTTBUF_SUB_OBJ, 0x180, 0x40, 0);
+    PaletteData_LoadFromOpenNarc(radioApp->pokegear->plttData, narc, radioApp->skin + NARC_pgradio_gra_pgradio_gra_00000010_NCLR, radioApp->heapID, PLTTBUF_MAIN_BG, 0x1C0, 0, 0);
+    PaletteData_LoadFromOpenNarc(radioApp->pokegear->plttData, narc, radioApp->skin + NARC_pgradio_gra_pgradio_gra_00000004_NCLR, radioApp->heapID, PLTTBUF_SUB_BG, 0x180, 0, 0);
+    PaletteData_LoadFromOpenNarc(radioApp->pokegear->plttData, narc, NARC_pgradio_gra_pgradio_gra_00000000_NCLR, radioApp->heapID, PLTTBUF_MAIN_OBJ, 0x180, 0x40, 0);
+    PaletteData_LoadFromOpenNarc(radioApp->pokegear->plttData, narc, NARC_pgradio_gra_pgradio_gra_00000000_NCLR, radioApp->heapID, PLTTBUF_SUB_OBJ, 0x180, 0x40, 0);
     PaletteData_SetAutoTransparent(radioApp->pokegear->plttData, TRUE);
     PaletteData_BlendPalette(radioApp->pokegear->plttData, PLTTBUF_MAIN_BG, 0, 0xE0, 16, RGB_BLACK);
     PaletteData_BlendPalette(radioApp->pokegear->plttData, PLTTBUF_MAIN_OBJ, 0x40, 0xC0, 16, RGB_BLACK);

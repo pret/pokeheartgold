@@ -82,13 +82,13 @@ _00E6:
 
 	.balign 4, 0
 _00FC:
-	step 35, 1
-	step_end
+	WalkOnSpotNormalEast
+	EndMovement
 
 	.balign 4, 0
 _0104:
-	step 33, 1
-	step_end
+	WalkOnSpotNormalSouth
+	EndMovement
 
 scr_seq_T26PC0101_001:
 	simple_npc_msg msg_0607_T26PC0101_00000

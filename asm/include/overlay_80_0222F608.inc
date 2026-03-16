@@ -16,7 +16,7 @@
 .public GetMonData
 .public Mon_GetBoxMon
 .public Party_GetMonByIndex
-.public Frontier_GetLaunchParam
+.public Frontier_GetLaunchArgs
 .public Frontier_GetData
 .public Frontier_SetData
 .public Frontier_LaunchApplication
@@ -28,8 +28,8 @@
 .public ov80_0222A474
 .public ov80_0222A52C
 .public FrontierSystem_GetFrontierMap
-.public ov80_0222AB84
-.public FrontierScript_ReadU16
+.public FrontierScriptContext_Pause
+.public FrontierScriptContext_ReadHalfWord
 .public FrontierScript_ReadVarPtr
 .public FrontierScript_ReadVar
 .public ov80_0222BE9C

@@ -3,10 +3,10 @@
 
 #include "hall_of_fame.h"
 #include "mystery_gift.h"
+#include "palPark_migration.h"
 #include "pokemon_storage_system.h"
 #include "save.h"
 #include "unk_0202E41C.h"
-#include "unk_0202EB30.h"
 #include "unk_02030A98.h"
 
 typedef u32 (*SAVESIZEFN)(void);

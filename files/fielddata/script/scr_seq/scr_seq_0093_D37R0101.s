@@ -92,75 +92,75 @@ _0100:
 
 	.balign 4, 0
 _0174:
-	step 78, 1
-	step 39, 1
-	step 50, 2
-	step 18, 3
-	step 0, 1
-	step 60, 1
-	step 3, 1
-	step 60, 1
-	step 1, 1
-	step 60, 1
-	step 2, 1
-	step 60, 1
-	step 0, 1
-	step 60, 1
-	step 3, 1
-	step 60, 1
-	step 1, 1
-	step_end
+	WalkSlightlyFastWest
+	WalkOnSpotFastEast
+	JumpOnSpotFastWest 2
+	WalkFastWest 3
+	FaceNorth
+	Delay1
+	FaceEast
+	Delay1
+	FaceSouth
+	Delay1
+	FaceWest
+	Delay1
+	FaceNorth
+	Delay1
+	FaceEast
+	Delay1
+	FaceSouth
+	EndMovement
 
 	.balign 4, 0
 _01BC:
-	step 12, 3
-	step_end
+	WalkNormalNorth 3
+	EndMovement
 
 	.balign 4, 0
 _01C4:
-	step 14, 1
-	step 75, 1
-	step_end
+	WalkNormalWest
+	EmoteExclamationMark
+	EndMovement
 
 	.balign 4, 0
 _01D0:
-	step 14, 1
-	step 13, 2
-	step 14, 1
-	step_end
+	WalkNormalWest
+	WalkNormalSouth 2
+	WalkNormalWest
+	EndMovement
 
 	.balign 4, 0
 _01E0:
-	step 63, 3
-	step 15, 1
-	step 13, 1
-	step_end
+	Delay8 3
+	WalkNormalEast
+	WalkNormalSouth
+	EndMovement
 
 	.balign 4, 0
 _01F0:
-	step 13, 2
-	step 14, 1
-	step 13, 1
-	step 69, 1
-	step_end
+	WalkNormalSouth 2
+	WalkNormalWest
+	WalkNormalSouth
+	SetInvisible
+	EndMovement
 
 	.balign 4, 0
 _0204:
-	step 13, 3
-	step 14, 1
-	step 13, 1
-	step 69, 1
-	step_end
+	WalkNormalSouth 3
+	WalkNormalWest
+	WalkNormalSouth
+	SetInvisible
+	EndMovement
 
 	.balign 4, 0
 _0218:
-	step 35, 1
-	step_end
+	WalkOnSpotNormalEast
+	EndMovement
 
 	.balign 4, 0
 _0220:
-	step 33, 1
-	step_end
+	WalkOnSpotNormalSouth
+	EndMovement
 
 _0228:
 	clearflag FLAG_HIDE_GOLDENROD_UNDERGROUND_FRIEND
@@ -210,40 +210,40 @@ _0228:
 
 	.balign 4, 0
 _0308:
-	step 75, 1
-	step_end
+	EmoteExclamationMark
+	EndMovement
 
 	.balign 4, 0
 _0310:
-	step 13, 2
-	step_end
+	WalkNormalSouth 2
+	EndMovement
 
 	.balign 4, 0
 _0318:
-	step 12, 2
-	step_end
+	WalkNormalNorth 2
+	EndMovement
 
 	.balign 4, 0
 _0320:
-	step 12, 1
-	step_end
+	WalkNormalNorth
+	EndMovement
 
 	.balign 4, 0
 _0328:
-	step 15, 1
-	step 12, 4
-	step 14, 2
-	step 69, 1
-	step_end
+	WalkNormalEast
+	WalkNormalNorth 4
+	WalkNormalWest 2
+	SetInvisible
+	EndMovement
 
 	.balign 4, 0
 _033C:
-	step 12, 1
-	step 15, 1
-	step 12, 4
-	step 14, 2
-	step 69, 1
-	step_end
+	WalkNormalNorth
+	WalkNormalEast
+	WalkNormalNorth 4
+	WalkNormalWest 2
+	SetInvisible
+	EndMovement
 
 _0354:
 	call _03A8
