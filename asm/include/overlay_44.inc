@@ -373,11 +373,7 @@
 .public ov44_0222A60C
 .public ov44_0222A758
 .public ov44_02232EA8
-.public ov44_02232F64
-.public ov44_022330A8
-.public ov44_02233100
-.public ov44_02233160
-.public ov44_0223317C
+
 .public ov44_02235340
 .public ov44_0223532C
 .public ov44_02235268

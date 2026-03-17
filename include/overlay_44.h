@@ -27,26 +27,6 @@ typedef struct UnkStruct_ov44_args {
     SaveData* unk8;
 } UnkStruct_ov44_args;
 
-typedef struct UnkStruct_ov44_02235004 {
-    u32 unk0;
-    u32 unk4;
-    u16 unk8;
-    s16 unkA;
-    u8 unkC[15];
-    u8 unk1B;
-    u8 unk1C[2];
-    u8 unk1E;
-    u8 unk1F[2];
-    u8 unk21;
-    u8 unk22;
-} UnkStruct_ov44_02235004;
-
-typedef struct UnkStruct_ov44_02233100 {
-    u16 unk0;
-    u16 unk2;
-    u32 unk4;
-} UnkStruct_ov44_02233100;
-
 typedef struct UnkStruct_ov44_022345FC {
     s16 unk0;
     s32 unk2;
@@ -54,7 +34,7 @@ typedef struct UnkStruct_ov44_022345FC {
 
 typedef struct UnkStruct_ov44_02232F64 {
     BgConfig* bgConfig;
-    MessageFormat* unk4;
+    MessageFormat* msgFmt;
     MsgData* unk8;
     String* unkC;
     String* unk10;
@@ -67,7 +47,7 @@ typedef struct UnkStruct_ov44_02232F64 {
     u32 unk154;
     u32 unk158;
     UnkStruct_ov44_022341C0 unk15C[4];
-    Window window_list[5]; // 0x18C - 0x1DC
+    Window windowList[5]; // 0x18C - 0x1DC
     struct ListMenu2D* unk1DC;
     void* unk1E0;
     NNSG2dScreenData* unk1E4;
@@ -76,11 +56,10 @@ typedef struct UnkStruct_ov44_02232F64 {
     NNSG2dPaletteData* unk1F0;
     u16 unk1F4;
     s16 unk1F6;
-    u8 unk1F8[36];
 } UnkStruct_ov44_02232F64;
 
 typedef struct UnkStruct_ov44_02235340 {
-    UnkStruct_ov44_02235004* unk0;
+    u8* unk0;
     u8 unk4;
     u8 unk5;
     u8 unk6;
@@ -105,17 +84,20 @@ typedef struct UnkStruct_ov44_02235340 {
     UnkStruct_ov44_02232F64 unk30;
 } UnkStruct_ov44_02235340;
 
-typedef void (*func_type)(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_022341C0* arg1);
-typedef s32 (*func_type_1)(UnkStruct_ov44_02235340*, UnkStruct_ov44_args*, enum HeapID);
+typedef void (*func_type_022341C0)(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_022341C0* arg1);
+typedef s32 (*func_type_02232F64)(UnkStruct_ov44_02235340*, UnkStruct_ov44_args*, enum HeapID);
 
-s32 ov44_02234F60(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum HeapID heapID);
-s32 ov44_02232F64(OverlayManager* arg0, u32* arg1);
+void ov44_02232EA8(OverlayManager* overlayMananger);
+s32 ov44_02232F64(OverlayManager* overlayManager, u32* arg1);
 s32 ov44_022330A8(OverlayManager* arg0);
-void ov44_02233100(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_02233100* arg1);
+void ov44_02233100(UnkStruct_ov44_02235340* arg0, String* arg1);
 void ov44_02233160(UnkStruct_ov44_02235340* arg0);
 void ov44_0223317C(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1);
+
+// The following functions are likely static
+s32 ov44_02234F60(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum HeapID heapID);
 void ov44_0223319C(UnkStruct_ov44_02235340* arg0);
-s32 ov44_022331B0(void);
+s32 ov44_022331B0(UnkStruct_ov44_02235340* arg0);
 void ov44_022331C4(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum HeapID heapID);
 void ov44_02233214(UnkStruct_ov44_02235340* arg0, enum HeapID arg1);
 void ov44_0223323C(void);
@@ -129,7 +111,7 @@ void ov44_02233698(UnkStruct_ov44_02232F64* arg0, UnkStruct_ov44_args* arg1, enu
 void ov44_0223376C(UnkStruct_ov44_02232F64* arg0, enum HeapID arg1);
 void ov44_02233820(UnkStruct_ov44_02232F64* arg0);
 void ov44_02233860(UnkStruct_ov44_02232F64* arg0, UnkStruct_ov44_args* arg1, s32 arg2, enum HeapID heapID);
-void ov44_0223386C(UnkStruct_ov44_02232F64* arg0, UnkStruct_ov44_args* arg1, s32 arg2, s32 arg3, enum HeapID heapID);
+void ov44_0223386C(UnkStruct_ov44_02232F64* arg0, UnkStruct_ov44_args* arg1, s32 strno, s32 arg3, enum HeapID heapID);
 s32 ov44_02233914(UnkStruct_ov44_02232F64* arg0);
 void ov44_02233954(UnkStruct_ov44_02232F64* arg0);
 void ov44_0223398C(UnkStruct_ov44_02232F64* arg0, UnkStruct_ov44_args* arg1, s32 arg2, enum HeapID heapID);

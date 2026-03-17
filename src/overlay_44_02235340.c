@@ -13,6 +13,7 @@
 #include "overlay_42.h"
 #include "unk_0200B150.h"
 #include "unk_0200A090.h"
+#include "unk_020971F8.h"
 
 #include "global.h"
 #include "obj_pltt_transfer.h"
@@ -23,6 +24,7 @@
 #include "font.h"
 #include "sprite.h"
 #include "gf_gfx_loader.h"
+#include "constants/sndseq.h"
 
 #include "bg_window.h"
 #include "filesystem.h"
@@ -83,7 +85,7 @@
 extern const u8 ov44_02236458[];
 extern const WindowTemplate ov44_0223645C;
 
-extern const func_type ov44_02236464[];
+extern const func_type_022341C0 ov44_02236464[];
 extern const GraphicsModes ov44_02236474;
 extern const ObjCharTransferTemplate ov44_02236484;
 extern const BgTemplate ov44_02236494;
@@ -92,29 +94,55 @@ extern const BgTemplate ov44_022364CC;
 extern const GraphicsBanks ov44_022364E8;
 extern const u16 ov44_02236510[4][6];
 
-extern const func_type_1 ov44_02236540[];
-extern const func_type_1 ov44_022365B8[];
+extern const func_type_02232F64 ov44_02236540[];
+extern const func_type_02232F64 ov44_022365B8[];
 extern const u8 ov44_0223663C[];
 
 extern u8 ov44_0223689C[];
 
 FS_EXTERN_OVERLAY(OVY_42);
 
-s32 ov44_02232F64(OverlayManager* arg0, u32* arg1) {
+void ov44_02232EA8(OverlayManager* overlayMananger) {
+    UnkStruct_ov44_args* temp_r5 = OverlayManager_GetArgs(overlayMananger);
+    HandleLoadOverlay(FS_OVERLAY_ID(OVY_42), OVY_LOAD_ASYNC);
+    if (sub_02039998() != 1) {
+        GF_AssertFail();
+    }
+    Heap_Create(HEAP_ID_3, HEAP_ID_103, 0x18000);
+    Heap_Create(HEAP_ID_3, HEAP_ID_104, 0xA000);
+    UnkStruct_ov44_02235340* temp_r0 = OverlayManager_CreateAndGetData(overlayMananger, 552, HEAP_ID_103);
+    MI_CpuFill8(temp_r0, 0, 552);
+    MI_CpuFill8(temp_r0->unk1C, 1, 4);
+    MI_CpuFill8(temp_r0->unk20, 1, 4);
+    GF_CreateVramTransferManager(16, HEAP_ID_103);
+    u8* temp_r0_2 = sub_020398C8();
+    temp_r0->unk0 = temp_r0_2;
+    temp_r0_2[33] = temp_r0_2[34];
+    temp_r0->unk4 = ov44_022331B0(temp_r0);
+    temp_r0->unk6 = 255;
+    sub_020971F8(temp_r0);
+    ov44_02234028(temp_r0);
+    ov44_022331C4(temp_r0, temp_r5, HEAP_ID_103);
+    Main_SetVBlankIntrCB((void*)&ov44_0223319C, temp_r0);
+    sub_0203A880();
+    temp_r0->unk27 = 1;
+}
+
+s32 ov44_02232F64(OverlayManager* overlayManager, u32* arg1) {
     UnkStruct_ov44_args* temp_r7;
     UnkStruct_ov44_02235340* temp_r4;
     s32 var_r6;
 
-    temp_r4 = OverlayManager_GetData(arg0);
-    temp_r7 = OverlayManager_GetArgs(arg0);
+    temp_r4 = OverlayManager_GetData(overlayManager);
+    temp_r7 = OverlayManager_GetArgs(overlayManager);
     switch (arg1[0]) {
         case 0:
             BeginNormalPaletteFade(3, 1, 1, 0, 6, 1, HEAP_ID_103);
-            arg1[0] += 1;
+            arg1[0]++;
             break;
         case 1:
             if (IsPaletteFadeFinished() != 0) {
-                arg1[0] += 1;
+                arg1[0]++;
             }
             break;
         case 2:
@@ -142,12 +170,12 @@ s32 ov44_02232F64(OverlayManager* arg0, u32* arg1) {
             if (var_r6 == 1) {
                 temp_r7->unk3 = temp_r4->unk7;
                 temp_r7->unk4 = temp_r4->unk11;
-                arg1[0] += 1;
+                arg1[0]++;
             }
             break;
         case 3:
             BeginNormalPaletteFade(3, 0, 0, 0, 6, 1, HEAP_ID_103);
-            arg1[0] += 1;
+            arg1[0]++;
             break;
         case 4:
             if (IsPaletteFadeFinished() != 0) {
@@ -177,11 +205,11 @@ s32 ov44_022330A8(OverlayManager* arg0) {
     return 1;
 }
 
-void ov44_02233100(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_02233100* arg1) {
+void ov44_02233100(UnkStruct_ov44_02235340* arg0, String* arg1) {
     if (arg0->unk4 == 0) {
         
-        if (arg1->unk0 == sub_0203769C()) {
-            switch (arg1->unk4) {
+        if (arg1->maxsize == sub_0203769C()) {
+            switch (arg1->magic) {
             case 1:        
                 arg0->unk13 = 1;
                 return;
@@ -194,11 +222,11 @@ void ov44_02233100(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_02233100* arg1)
                 return;
             }
         } else {
-            switch (arg1->unk4) {
+            switch (arg1->magic) {
             case 0:
                 break;
             case 1: 
-                arg0->unk28[arg1->unk0] = 1;
+                arg0->unk28[arg1->maxsize] = 1;
                 return;
             case 2: 
                 break;
@@ -206,7 +234,7 @@ void ov44_02233100(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_02233100* arg1)
                 return;
             }
             if (sub_02034420() == 1) {
-                sub_020346E8(arg1->unk0);
+                sub_020346E8(arg1->maxsize);
             }
         }
     }
@@ -214,7 +242,7 @@ void ov44_02233100(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_02233100* arg1)
 
 void ov44_02233160(UnkStruct_ov44_02235340* arg0) {
     if (arg0->unk2C == 0) {
-        arg0->unk2C = 1U;
+        arg0->unk2C = 1;
         sub_02037AC0(13);
     }
 }
@@ -231,7 +259,7 @@ void ov44_0223319C(UnkStruct_ov44_02235340* arg0) {
     OamManager_ApplyAndResetBuffers();
 }
 
-s32 ov44_022331B0(void) {
+s32 ov44_022331B0(UnkStruct_ov44_02235340* arg0) {
     if (sub_0203769C() == 0) {
         return 1;
     }
@@ -317,32 +345,32 @@ void ov44_02233444(UnkStruct_ov44_02232F64* arg0, UnkStruct_ov44_args* arg1, enu
     LoadUserFrameGfx2(arg0->bgConfig, GF_BG_LYR_MAIN_1, 1, 2, Options_GetFrame(options), arg2);
     LoadUserFrameGfx1(arg0->bgConfig, GF_BG_LYR_MAIN_1, 31, 3, 0, arg2);
     LoadUserFrameGfx1(arg0->bgConfig, GF_BG_LYR_MAIN_2, 48, 4, 0, arg2);
-    AddWindowParameterized(arg0->bgConfig, &arg0->window_list[0], 1, 2, 19, 27, 4, 1, 40);
-    FillWindowPixelBuffer(&arg0->window_list[0], 15);
-    DrawFrameAndWindow2(&arg0->window_list[0], 1, 1, 2);
-    AddWindowParameterized(arg0->bgConfig, &arg0->window_list[1], 1, 1, 1, 27, 2, 1, 148);
-    FillWindowPixelBuffer(&arg0->window_list[1], 15);
-    DrawFrameAndWindow1(&arg0->window_list[1], 1, 31, 3);
-    AddWindowParameterized(arg0->bgConfig, &arg0->window_list[2], 1, 2, 16, 28, 2, 1, 202);
-    FillWindowPixelBuffer(&arg0->window_list[2], 0);
-    AddWindowParameterized(arg0->bgConfig, &arg0->window_list[3], 1, 1, 5, 20, 8, 1, 258);
-    FillWindowPixelBuffer(&arg0->window_list[3], 15);
-    DrawFrameAndWindow1(&arg0->window_list[3], 1, 31, 3);
-    AddWindowParameterized(arg0->bgConfig, &arg0->window_list[4], 1, 23, 5, 7, 5, 1, 418);
-    FillWindowPixelBuffer(&arg0->window_list[4], 15);
+    AddWindowParameterized(arg0->bgConfig, &arg0->windowList[0], 1, 2, 19, 27, 4, 1, 40);
+    FillWindowPixelBuffer(&arg0->windowList[0], 15);
+    DrawFrameAndWindow2(&arg0->windowList[0], 1, 1, 2);
+    AddWindowParameterized(arg0->bgConfig, &arg0->windowList[1], 1, 1, 1, 27, 2, 1, 148);
+    FillWindowPixelBuffer(&arg0->windowList[1], 15);
+    DrawFrameAndWindow1(&arg0->windowList[1], 1, 31, 3);
+    AddWindowParameterized(arg0->bgConfig, &arg0->windowList[2], 1, 2, 16, 28, 2, 1, 202);
+    FillWindowPixelBuffer(&arg0->windowList[2], 0);
+    AddWindowParameterized(arg0->bgConfig, &arg0->windowList[3], 1, 1, 5, 20, 8, 1, 258);
+    FillWindowPixelBuffer(&arg0->windowList[3], 15);
+    DrawFrameAndWindow1(&arg0->windowList[3], 1, 31, 3);
+    AddWindowParameterized(arg0->bgConfig, &arg0->windowList[4], 1, 23, 5, 7, 5, 1, 418);
+    FillWindowPixelBuffer(&arg0->windowList[4], 15);
 }
 
 void ov44_022335AC(UnkStruct_ov44_02232F64* arg0, enum HeapID arg1) {
     ov44_02233954(arg0);
-    ClearFrameAndWindow2(&arg0->window_list[0], 0);
-    RemoveWindow(&arg0->window_list[0]);
-    sub_0200E5D4(&arg0->window_list[1], 0);
-    RemoveWindow(&arg0->window_list[1]);
-    RemoveWindow(&arg0->window_list[2]);
-    sub_0200E5D4(&arg0->window_list[3], 0);
-    RemoveWindow(&arg0->window_list[3]);
-    sub_0200E5D4(&arg0->window_list[4], 0);
-    RemoveWindow(&arg0->window_list[4]);
+    ClearFrameAndWindow2(&arg0->windowList[0], 0);
+    RemoveWindow(&arg0->windowList[0]);
+    sub_0200E5D4(&arg0->windowList[1], 0);
+    RemoveWindow(&arg0->windowList[1]);
+    RemoveWindow(&arg0->windowList[2]);
+    sub_0200E5D4(&arg0->windowList[3], 0);
+    RemoveWindow(&arg0->windowList[3]);
+    sub_0200E5D4(&arg0->windowList[4], 0);
+    RemoveWindow(&arg0->windowList[4]);
     
     if (arg0->unk1DC != NULL) {
         Clear2dMenuWindowAndDelete(arg0->unk1DC, arg1);
@@ -350,7 +378,7 @@ void ov44_022335AC(UnkStruct_ov44_02232F64* arg0, enum HeapID arg1) {
 }
 
 void ov44_0223362C(UnkStruct_ov44_02232F64* arg0, UnkStruct_ov44_args* arg1, enum HeapID arg2) {
-    arg0->unk4 = MessageFormat_New(arg2);
+    arg0->msgFmt = MessageFormat_New(arg2);
     arg0->unk8 = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, 778, arg2);
     arg0->unkC = String_New(256, arg2);
     arg0->unk10 = String_New(256, arg2);
@@ -364,7 +392,7 @@ void ov44_02233678(UnkStruct_ov44_02232F64* arg0) {
     String_Delete(arg0->unk10);
     String_Delete(arg0->unkC);
     DestroyMsgData(arg0->unk8);
-    MessageFormat_Delete(arg0->unk4);
+    MessageFormat_Delete(arg0->msgFmt);
 }
 
 void ov44_02233698(UnkStruct_ov44_02232F64* arg0, UnkStruct_ov44_args* arg1, enum HeapID arg2) {
@@ -375,24 +403,24 @@ void ov44_02233698(UnkStruct_ov44_02232F64* arg0, UnkStruct_ov44_args* arg1, enu
     case 0:
         break;
     case 1:
-        BufferWiFiPlazaActivityName(arg0->unk4, 0, 0);
+        BufferWiFiPlazaActivityName(arg0->msgFmt, 0, 0);
         break;
     case 2:
-        BufferWiFiPlazaActivityName(arg0->unk4, 0, 1);
+        BufferWiFiPlazaActivityName(arg0->msgFmt, 0, 1);
         break;
     case 3:
-        BufferWiFiPlazaActivityName(arg0->unk4, 0, 2);
+        BufferWiFiPlazaActivityName(arg0->msgFmt, 0, 2);
         break;
     }
     ReadMsgDataIntoString(arg0->unk8, ov44_0223689C[arg1->unk0], arg0->unk10);
-    StringExpandPlaceholders(arg0->unk4, arg0->unkC, arg0->unk10);
-    AddTextPrinterParameterizedWithColor(&arg0->window_list[1], 0, arg0->unkC, 0, 0, 255, 0x1020F, 0);
-    ScheduleWindowCopyToVram(&arg0->window_list[1]);
-    ScheduleWindowCopyToVram(&arg0->window_list[3]);
+    StringExpandPlaceholders(arg0->msgFmt, arg0->unkC, arg0->unk10);
+    AddTextPrinterParameterizedWithColor(&arg0->windowList[1], 0, arg0->unkC, 0, 0, 255, 0x1020F, 0);
+    ScheduleWindowCopyToVram(&arg0->windowList[1]);
+    ScheduleWindowCopyToVram(&arg0->windowList[3]);
     ReadMsgDataIntoString(arg0->unk8, 128, arg0->unkC);
-    AddTextPrinterParameterizedWithColor(&arg0->window_list[2], 0, arg0->unkC, 0, 0, 255, 0x10200, 0);
-    ScheduleWindowCopyToVram(&arg0->window_list[2]);
-    ScheduleWindowCopyToVram(&arg0->window_list[0]);
+    AddTextPrinterParameterizedWithColor(&arg0->windowList[2], 0, arg0->unkC, 0, 0, 255, 0x10200, 0);
+    ScheduleWindowCopyToVram(&arg0->windowList[2]);
+    ScheduleWindowCopyToVram(&arg0->windowList[0]);
 }
 
 void ov44_0223376C(UnkStruct_ov44_02232F64* arg0, enum HeapID arg1) {
@@ -407,13 +435,11 @@ void ov44_0223376C(UnkStruct_ov44_02232F64* arg0, enum HeapID arg1) {
     G2dRenderer_SetObjCharTransferReservedRegion(NNS_G2D_VRAM_TYPE_2DMAIN, GX_OBJVRAMMODE_CHAR_1D_128K);
     G2dRenderer_SetPlttTransferReservedRegion(NNS_G2D_VRAM_TYPE_2DMAIN);
     arg0->spriteList = G2dRenderer_Init(4, &arg0->unk1C, arg1);
-    s32 counter = 0;
-    s32 index = 0;
-    do {
-        arg0->unk144[index] = Create2DGfxResObjMan(4, (GfGfxResType)counter, arg1);
-        counter += 1;
-        index += 1;
-    } while (counter < 4);
+
+    for (s32 i = 0; i < 4; i++) {
+        arg0->unk144[i] = Create2DGfxResObjMan(4, (GfGfxResType)i, arg1);
+    }
+
     arg0->unk154 = ov42_02228010(4, arg1);
     arg0->unk158 = ov42_02228EDC(arg0->spriteList, 0, 4, 1, arg1);
 }
@@ -422,13 +448,11 @@ void ov44_02233820(UnkStruct_ov44_02232F64* arg0) {
     ov42_02228F94(arg0->unk158);
     ov42_02228050(arg0->unk154);
     SpriteList_Delete(arg0->spriteList);
-    s32 var_r4 = 0;
-    u32 var_r5 = 0;
-    do {
-        Destroy2DGfxResObjMan(arg0->unk144[var_r5]);
-        var_r4 += 1;
-        var_r5 += 1;
-    } while (var_r4 < 4);
+
+    for (s32 i = 0; i < 4; i++) {
+        Destroy2DGfxResObjMan(arg0->unk144[i]);
+    }
+
     ObjCharTransfer_Destroy();
     ObjPlttTransfer_Destroy();
     OamManager_Free();
@@ -438,21 +462,18 @@ void ov44_02233860(UnkStruct_ov44_02232F64* arg0, UnkStruct_ov44_args* arg1, s32
     ov44_0223386C(arg0, arg1, arg2, 0, heapID);
 }
 
-void ov44_0223386C(UnkStruct_ov44_02232F64* arg0, UnkStruct_ov44_args* arg1, s32 arg2, s32 arg3, enum HeapID heapID) {
-    s32 sp10;
-    void* temp_r0;
-
-    sp10 = arg2;
+void ov44_0223386C(UnkStruct_ov44_02232F64* arg0, UnkStruct_ov44_args* arg1, s32 strno, s32 arg3, enum HeapID heapID) {
+    s32 sp10 = strno;
     if ((arg0->unk14 != 255) && (TextPrinterCheckActive(arg0->unk14) != 0)) {
         RemoveTextPrinter(arg0->unk14);
         arg0->unk14 = 255;
     }
-    FillWindowPixelBuffer(&arg0->window_list[0], 15);
-    temp_r0 = String_New(256, heapID);
-    ReadMsgDataIntoString(arg0->unk8, arg2, temp_r0);
-    StringExpandPlaceholders(arg0->unk4, arg0->unkC, temp_r0);
-    arg0->unk14 = AddTextPrinterParameterizedWithColor(&arg0->window_list[0], 1, arg0->unkC, 0, 0, arg0->unk16, 0x1020F, 0);
-    ScheduleWindowCopyToVram(&arg0->window_list[0]);
+    FillWindowPixelBuffer(&arg0->windowList[0], 15);
+    String* temp_r0 = String_New(256, heapID);
+    ReadMsgDataIntoString(arg0->unk8, strno, temp_r0);
+    StringExpandPlaceholders(arg0->msgFmt, arg0->unkC, temp_r0);
+    arg0->unk14 = AddTextPrinterParameterizedWithColor(&arg0->windowList[0], 1, arg0->unkC, 0, 0, arg0->unk16, 0x1020F, 0);
+    ScheduleWindowCopyToVram(&arg0->windowList[0]);
     String_Delete(temp_r0);
     Options* options = Save_PlayerData_GetOptionsAddr(arg1->unk8);
     LoadUserFrameGfx2(arg0->bgConfig, GF_BG_LYR_MAIN_1, 1, 2, Options_GetFrame(options), heapID);
@@ -482,49 +503,46 @@ void ov44_02233954(UnkStruct_ov44_02232F64* arg0) {
         }
         arg0->unk14 = 255;
     }
-    FillWindowPixelBuffer(&arg0->window_list[0], 15);
-    ScheduleWindowCopyToVram(&arg0->window_list[0]);
+    FillWindowPixelBuffer(&arg0->windowList[0], 15);
+    ScheduleWindowCopyToVram(&arg0->windowList[0]);
     arg0->unk15 = 0;
 }
 
 void ov44_0223398C(UnkStruct_ov44_02232F64* arg0, UnkStruct_ov44_args* arg1, s32 arg2, enum HeapID heapID) {
-    String* String1 = String_New(256, heapID);
-    String* String2 = String_New(256, heapID);
+    String* string1 = String_New(256, heapID);
+    String* string2 = String_New(256, heapID);
     
     ov44_02233C88(arg0, arg1, arg2, 0, heapID);
     ov44_02233CA0(arg0, arg1, arg2, 1, heapID);
-    ReadMsgDataIntoString(arg0->unk8, 131, String1);
-    StringExpandPlaceholders(arg0->unk4, String2, String1);
-    FillWindowPixelBuffer(&arg0->window_list[4], 15);
-    AddTextPrinterParameterizedWithColor(&arg0->window_list[4], 0, String2, 0, 0, 255, 0x1020F, 0);
-    DrawFrameAndWindow1(&arg0->window_list[4], 1, 31, 3);
-    ScheduleWindowCopyToVram(&arg0->window_list[4]);
-    String_Delete(String1);
-    String_Delete(String2);
+    ReadMsgDataIntoString(arg0->unk8, 131, string1);
+    StringExpandPlaceholders(arg0->msgFmt, string2, string1);
+    FillWindowPixelBuffer(&arg0->windowList[4], 15);
+    AddTextPrinterParameterizedWithColor(&arg0->windowList[4], 0, string2, 0, 0, 255, 0x1020F, 0);
+    DrawFrameAndWindow1(&arg0->windowList[4], 1, 31, 3);
+    ScheduleWindowCopyToVram(&arg0->windowList[4]);
+    String_Delete(string1);
+    String_Delete(string2);
 }
 
 void ov44_02233A34(UnkStruct_ov44_02232F64* arg0) {
-    sub_0200E5D4(&arg0->window_list[4], 1);
-    ClearWindowTilemapAndScheduleTransfer(&arg0->window_list[4]);
+    sub_0200E5D4(&arg0->windowList[4], 1);
+    ClearWindowTilemapAndScheduleTransfer(&arg0->windowList[4]);
 }
 
 void ov44_02233A50(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum HeapID arg2) {
     UnkStruct_ov44_02232F64* temp_r6;
-    s32 var_r4;
 
     if (sub_02034420() != 0) {
-        var_r4 = 0;
         temp_r6 = &arg0->unk30;
-        do {
-            if ((var_r4 == 0) && (sub_02034730(var_r4) == 1)) {
-                ov44_02233AB8(arg0, temp_r6, arg1, var_r4, arg2);
-            } else if (sub_02034750(var_r4) == 1) {
-                ov44_02233AB8(arg0, temp_r6, arg1, var_r4, arg2);
+        for (s32 i = 0; i < 4; i++) {
+            if ((i == 0) && (sub_02034730(i) == 1)) {
+                ov44_02233AB8(arg0, temp_r6, arg1, i, arg2);
+            } else if (sub_02034750(i) == 1) {
+                ov44_02233AB8(arg0, temp_r6, arg1, i, arg2);
             } else {
-                ov44_02233C18(temp_r6, arg1, var_r4, arg2);
+                ov44_02233C18(temp_r6, arg1, i, arg2);
             }
-            var_r4 += 1;
-        } while (var_r4 < 4);
+        }
     }
 }
 
@@ -533,19 +551,19 @@ void ov44_02233AB8(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_02232F64* arg1,
     String* string2 = String_New(256, arg4);
     ov44_02233C88(arg1, arg2, arg3, 0, arg4);
     ReadMsgDataIntoString(arg1->unk8, 129, string1);
-    StringExpandPlaceholders(arg1->unk4, string2, string1);
+    StringExpandPlaceholders(arg1->msgFmt, string2, string1);
     
     u32 temp_r6 = arg3 * 16;
-    FillWindowPixelRect(&arg1->window_list[3], 15, 0, temp_r6, 160, 16);
-    AddTextPrinterParameterizedWithColor(&arg1->window_list[3], 0, string2, 0, temp_r6, 255, 0x1020F, 0);
+    FillWindowPixelRect(&arg1->windowList[3], 15, 0, temp_r6, 160, 16);
+    AddTextPrinterParameterizedWithColor(&arg1->windowList[3], 0, string2, 0, temp_r6, 255, 0x1020F, 0);
     ov44_02233CA0(arg1, arg2, arg3, 0, arg4);
     ReadMsgDataIntoString(arg1->unk8, 130, string1);
-    StringExpandPlaceholders(arg1->unk4, string2, string1);
-    AddTextPrinterParameterizedWithColor(&arg1->window_list[3], 0, string2, 72, temp_r6, 255, 0x1020F, 0);
-    ScheduleWindowCopyToVram(&arg1->window_list[3]);
+    StringExpandPlaceholders(arg1->msgFmt, string2, string1);
+    AddTextPrinterParameterizedWithColor(&arg1->windowList[3], 0, string2, 72, temp_r6, 255, 0x1020F, 0);
+    ScheduleWindowCopyToVram(&arg1->windowList[3]);
     s32 var_r2;
     if (arg3 == sub_0203769C()) {
-        if (arg0->unk0->unk21 != 0) {
+        if (arg0->unk0[33] != 0) {
             var_r2 = 2;
         } else {
             var_r2 = 1;
@@ -566,20 +584,20 @@ void ov44_02233AB8(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_02232F64* arg1,
 }
 
 void ov44_02233C18(UnkStruct_ov44_02232F64* arg0, UnkStruct_ov44_args* arg1, s32 arg2, enum HeapID arg3) {
-    FillWindowPixelRect(&arg0->window_list[3], 15, 0, arg2 * 16, 160, 16);
+    FillWindowPixelRect(&arg0->windowList[3], 15, 0, arg2 * 16, 160, 16);
 
     NNSG2dScreenData* screenData = arg0->unk1E4;
     CopyToBgTilemapRect(arg0->bgConfig, 2, 18, arg2 * 2 + 5, 2, 2, &screenData->rawData[0], 0, 0, screenData->screenWidth/8, screenData->screenHeight/8);
     ScheduleBgTilemapBufferTransfer(arg0->bgConfig, 2);
-    ScheduleWindowCopyToVram(&arg0->window_list[3]);
+    ScheduleWindowCopyToVram(&arg0->windowList[3]);
 }
 
 void ov44_02233C88(UnkStruct_ov44_02232F64* arg0, UnkStruct_ov44_args* arg1, s32 arg2, s32 arg3, enum HeapID heapID) {
-    BufferPlayersName(arg0->unk4, arg3, sub_02034818(arg2));
+    BufferPlayersName(arg0->msgFmt, arg3, sub_02034818(arg2));
 }
 
 void ov44_02233CA0(UnkStruct_ov44_02232F64* arg0, UnkStruct_ov44_args* arg1, s32 arg2, s32 arg3, enum HeapID heapID) {
-    BufferIntegerAsString(arg0->unk4, arg3, PlayerProfile_GetTrainerID_VisibleHalf(sub_02034818(arg2)), 5, PRINTING_MODE_LEADING_ZEROS, 1);
+    BufferIntegerAsString(arg0->msgFmt, arg3, PlayerProfile_GetTrainerID_VisibleHalf(sub_02034818(arg2)), 5, PRINTING_MODE_LEADING_ZEROS, 1);
 }
 
 void ov44_02233CCC(UnkStruct_ov44_02232F64* arg0) {
@@ -602,46 +620,47 @@ void ov44_02233D08(UnkStruct_ov44_02232F64* arg0, s32 arg1) {
 }
 
 u8 ov44_02233D38(UnkStruct_ov44_02235340* arg0, enum HeapID heapID) {
-    arg0->unk0->unk22 = 1 - arg0->unk0->unk22;
-    arg0->unk0->unk21 = arg0->unk0->unk22;
-    ov00_021E70B8(arg0->unk0->unk21);
+    arg0->unk0[34] = 1 - arg0->unk0[34];
+    arg0->unk0[33] = arg0->unk0[34];
+    ov00_021E70B8(arg0->unk0[33]);
     ov00_021E6D60(arg0->unk0, 36);
-    if (arg0->unk0->unk21 == 1) {
+    if (arg0->unk0[33] == 1) {
         ov44_02233F3C(arg0);
     } else {
         ov44_02233F50(arg0);
     }
-    return arg0->unk0->unk22;
+    return arg0->unk0[34];
 }
 
-void ov44_02233D8C(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum HeapID arg2) {
+void ov44_02233D8C(UnkStruct_ov44_02235340 *arg0, UnkStruct_ov44_args *arg1, enum HeapID arg2) {
     s32 temp_r7;
     s32 temp_r6;
     s32 var_r5;
 
     if (arg0->unk4 != 0) {
-        if ( (u8) (arg0->unk5 + 229) > 2) {
-            if ((sub_020390C4() <= 2) && (ov44_02233F64(arg0) <= 1) && (ov44_02233E6C(arg0) == 0)) {
-                return;
-            }
-            goto block_10;
+        if ((u8)(arg0->unk5 + 229) <= 2) {
+            return;
         }
-    } else if ((arg0->unk5 != 15) && (arg0->unk5 != 16) && (arg0->unk5 != 17) && ((u8) (arg0->unk5 + 250) > 1)) {
-        block_10:
-        temp_r6 = ov44_02234458(arg0);
-        temp_r7 = ov44_02234044(arg0);
-        if (ov44_02233F64(arg0) > sub_02037454()) {
-            var_r5 = 1;
-        } else {
-            var_r5 = 0;
+        if ((sub_020390C4() <= 2) && (ov44_02233F64(arg0) <= 1) && (ov44_02233E6C(arg0) == 0)) {
+            return;
         }
-        if ((sub_020390C4() >= 3) || (sub_020393C8() != 0) || (sub_02039264() != 0) || (sub_020373B4(0) == 0) || (ov44_02233E6C(arg0) == 0) || (var_r5 == 1) || (temp_r6 == 1) || (temp_r7 == 1)) {
-            if (arg0->unk4 != 0) {
-                arg0->unk5 = 27;
-                return;
-            }
-            arg0->unk5 = 15;
+    } else if ((arg0->unk5 == 15) || (arg0->unk5 == 16) || (arg0->unk5 == 17) || ((u8)(arg0->unk5 + 250) <= 1)) {
+        return;
+    }
+
+    temp_r6 = ov44_02234458(arg0);
+    temp_r7 = ov44_02234044(arg0);
+    if (ov44_02233F64(arg0) > sub_02037454()) {
+        var_r5 = 1;
+    } else {
+        var_r5 = 0;
+    }
+    if ((sub_020390C4() >= 3) || (sub_020393C8() != 0) || (sub_02039264() != 0) || (sub_020373B4(0) == 0) || (ov44_02233E6C(arg0) == 0) || (var_r5 == 1) || (temp_r6 == 1) || (temp_r7 == 1)) {
+        if (arg0->unk4 != 0) {
+            arg0->unk5 = 27;
+            return;
         }
+        arg0->unk5 = 15;
     }
 }
 
@@ -677,16 +696,16 @@ s32 ov44_02233E80(u32 arg0, u32 arg1) {
 void ov44_02233EB4(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1) {
     switch (arg1->unk0) {
     case 0:
-        arg0->unk0->unk1B = 18;
+        arg0->unk0[27] = 18;
         break;
     case 1:
-        arg0->unk0->unk1B = 22;
+        arg0->unk0[27] = 22;
         break;
     case 2:
-        arg0->unk0->unk1B = 24;
+        arg0->unk0[27] = 24;
         break;
     case 3:
-        arg0->unk0->unk1B = 26;
+        arg0->unk0[27] = 26;
         break;
     }
     ov00_021E6D60(arg0->unk0, 36);
@@ -731,20 +750,13 @@ s32 ov44_02233F64(UnkStruct_ov44_02235340* arg0) {
 }
 
 s32 ov44_02233F6C(UnkStruct_ov44_02235340* arg0, enum HeapID heapID) {
-    s32 var_r4;
-    s32 var_r7;
-
-    var_r7 = 1;
-    var_r4 = sub_0203769C() - 1;
-    if (var_r4 >= 0) {
-        do {
-            if (sub_02034714(var_r4) == 1) {
-                ov44_022340BC(arg0, var_r4, heapID);
-            } else if (sub_02034750(var_r4) == 0) {
-                var_r7 = 0;
-            }
-            var_r4 -= 1;
-        } while (var_r4 >= 0);
+    s32 var_r7 = 1;
+    for (s32 i = sub_0203769C() - 1; i >= 0; i--) {
+        if (sub_02034714(i) == 1) {
+            ov44_022340BC(arg0, i, heapID);
+        } else if (sub_02034750(i) == 0) {
+            var_r7 = 0;
+        }
     }
     return var_r7;
 }
@@ -752,34 +764,30 @@ s32 ov44_02233F6C(UnkStruct_ov44_02235340* arg0, enum HeapID heapID) {
 void ov44_02233FA8(UnkStruct_ov44_02235340* arg0) {
     UnkStruct_ov44_022345FC var_r5;
     var_r5.unk2 = 0;
-    s32 counter = 1;
-    do {
-        if (sub_02034714(counter) == 1) {
-            var_r5.unk0 = counter;
+    for (s32 i = 1; i < 4; i++) {
+        if (sub_02034714(i) == 1) {
+            var_r5.unk0 = i;
             
             if (sub_02037030(22, &var_r5, 8) != 1) {
                 GF_AssertFail();
             }
-            sub_020346E8(counter);
+            sub_020346E8(i);
         }
-        counter += 1;
-    } while (counter < 4);
+    }
 }
 
 void ov44_02233FE8(UnkStruct_ov44_02235340* arg0) {
     UnkStruct_ov44_022345FC var_r5;
     var_r5.unk2 = 0;
-    s32 counter = 1;
-    do {
-        if (sub_02034730(counter) == 1) {
-            var_r5.unk0 = counter;
+    for (s32 i = 1; i < 4; i++) {
+        if (sub_02034730(i) == 1) {
+            var_r5.unk0 = i;
             if (sub_02037030(22, &var_r5, 8) != 1) {
                 GF_AssertFail();
             }
-            sub_020346E8(counter);
+            sub_020346E8(i);
         }
-        counter += 1;
-    } while (counter < 4);
+    }
 }
 
 void ov44_02234028(UnkStruct_ov44_02235340* arg0) {
@@ -792,17 +800,15 @@ void ov44_02234038(UnkStruct_ov44_02235340* arg0) {
 
 s32 ov44_02234044(UnkStruct_ov44_02235340* arg0) {
     s32 var_r7 = 0;
-    s32 counter = 0;
-    do {
-        if (arg0->unk14[counter] == 1) {
-            if (sub_02034750(arg0->unk18[counter]) == 1) {
+    for (s32 i = 0; i < 4; i++) {
+        if (arg0->unk14[i] == 1) {
+            if (sub_02034750(arg0->unk18[i]) == 1) {
                 var_r7 = 1;
             }
-            arg0->unk14[counter] = 0;
-            arg0->unk18[counter]= 0;
+            arg0->unk14[i] = 0;
+            arg0->unk18[i]= 0;
         }
-        counter += 1;
-    } while (counter < 4);
+    }
     return var_r7;
 }
 
@@ -812,7 +818,7 @@ void ov44_02234070(u8 arg0, UnkStruct_ov44_02235340* arg1, s32 arg2) {
 }
 
 s32 ov44_0223407C(UnkStruct_ov44_02235340* arg0) {
-    int i;
+    s32 i;
     s32 ret = 0;
     for (i = 0; i < 4; i++) {
         if (arg0->unk1C[i] != arg0->unk20[i]) {
@@ -854,7 +860,7 @@ void ov44_022340EC(UnkStruct_ov44_02235340* arg0, s32 arg1, enum HeapID arg2) {
                 GF_AssertFail();
             }
             sp4[5] = PlayerProfile_GetAvatar(playerProfile);
-        } else if (arg0->unk0->unk1E == 0) {
+        } else if (arg0->unk0[30] == 0) {
             sp4[5] = 0;
         } else {
             sp4[5] = 97;
@@ -866,17 +872,15 @@ void ov44_022340EC(UnkStruct_ov44_02235340* arg0, s32 arg1, enum HeapID arg2) {
 
         arg0->unk30.unk15C[arg1].unk4 = ov42_0222903C(arg0->unk30.unk158, arg0->unk30.unk15C[arg1].unk0, 0, arg2);
         ov42_02229200(arg0->unk30.unk15C[arg1].unk4, 0);
-        arg0->unk30.unk15C[arg1].unk8 += 1;
+        arg0->unk30.unk15C[arg1].unk8++;
     }
 }
 
 void ov44_022341C0(UnkStruct_ov44_02235340* arg0) {
-    s32 counter = 0; 
-    do {
-        func_type ov44_func = ov44_02236464[arg0->unk30.unk15C[counter].unk8];
-        ov44_func(arg0, &arg0->unk30.unk15C[counter]);
-        counter += 1;
-    } while (counter < 4);
+    for (s32 i = 0; i < 4; i++) {
+        func_type_022341C0 ov44_func = ov44_02236464[arg0->unk30.unk15C[i].unk8];
+        ov44_func(arg0, &arg0->unk30.unk15C[i]);
+    }
     ov42_0222807C(arg0->unk30.unk154);
     ov42_022290DC(arg0->unk30.unk158);
 }
@@ -896,37 +900,29 @@ void ov44_02234224(UnkStruct_ov44_02235340* arg0, s32 arg1) {
 }
 
 void ov44_02234248(UnkStruct_ov44_02235340* arg0) {
-    s32 var_r4;
-
-    var_r4 = 0;
-    do {
-        if (((arg0->unk25 + 1) < var_r4) && (sub_02034714(var_r4) == 1)) {
-            ov44_02234224(arg0, var_r4);
-            sub_020346E8(var_r4);
+    for (s32 i = 0; i < 4; i++) {
+        if (((arg0->unk25 + 1) < i) && (sub_02034714(i) == 1)) {
+            ov44_02234224(arg0, i);
+            sub_020346E8(i);
         }
-        var_r4 += 1;
-    } while (var_r4 < 4);
+    }
 }
 
 void ov44_0223427C(UnkStruct_ov44_02235340* arg0, enum HeapID arg1) {
-    s32 var_r4;
-
-    var_r4 = 0;
-    do {
-        if ((arg0->unk28[var_r4] == 1) && (sub_02034730(var_r4) == 1)) {
-            ov44_022340BC(arg0, var_r4, arg1);
-            arg0->unk28[var_r4] = 0;
+    for (s32 i = 0; i < 4; i++) {
+        if ((arg0->unk28[i] == 1) && (sub_02034730(i) == 1)) {
+            ov44_022340BC(arg0, i, arg1);
+            arg0->unk28[i] = 0;
             arg0->unk12 = 1;
         }
-        var_r4 += 1;
-    } while (var_r4 < 4);
+    } 
 }
 
 void ov44_022342B8(UnkStruct_ov44_02235340* arg0) {
     if (arg0->unk30.unk1E8 != 0) {
         GF_AssertFail();
     }
-    arg0->unk30.unk1E8 = WaitingIcon_New(&arg0->unk30.window_list[0], 1);
+    arg0->unk30.unk1E8 = WaitingIcon_New(&arg0->unk30.windowList[0], 1);
 }
 
 void ov44_022342E0(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum HeapID arg2) {
@@ -977,24 +973,20 @@ void ov44_0223438C(UnkStruct_ov44_02235340* arg0) {
         if ((sub_020346D4() != 0) && (sub_02037824(5) == 0)) {
             sp0 = 1;
         }
-        s32 var_r4 = 0;
-        if (sp_count > 0) {
-            do {
-                if (var_r4 == 0) {
-                    var_r0 = arg0->unk0[0].unk21;
-                } else {
-                    temp_r7 = sub_02034870(var_r4);
-                    if (temp_r7 == 32) {
-                        GF_AssertFail();
-                    }
-                    var_r0 = arg0->unk0[temp_r7 + 1].unk21;
+        for (s32 i = 0; i < sp_count; i++) {
+            if (i == 0) {
+                var_r0 = arg0->unk0[33];
+            } else {
+                temp_r7 = sub_02034870(i);
+                if (temp_r7 == 32) {
+                    GF_AssertFail();
                 }
-                if (var_r0 != arg0->unk20[var_r4]) {
-                    sp0 = 1;
-                }
-                arg0->unk20[var_r4] = (u8)var_r0;
-                var_r4 += 1;
-            } while (var_r4 < sp_count);
+                var_r0 = arg0->unk0[33 + (temp_r7 + 1) * 36];
+            }
+            if (var_r0 != arg0->unk20[i]) {
+                sp0 = 1;
+            }
+            arg0->unk20[i] = var_r0;
         }
         if (sp0 == 1) {
             __memcpy(&sp4, arg0->unk20, 4);
@@ -1031,7 +1023,7 @@ s32 ov44_02234458(UnkStruct_ov44_02235340* arg0) {
 }
 
 s32 ov44_02234474(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum HeapID arg2) {
-    if (arg0->unk0->unk21 == 1) {
+    if (arg0->unk0[33] == 1) {
         ov44_02233F3C(arg0);
     }
     ov00_021E7220(0);
@@ -1070,7 +1062,7 @@ s32 ov44_022344C4(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum
         }
     }
     if (1 & gSystem.newKeys) {
-        PlaySE(1501);
+        PlaySE(SEQ_SE_DP_DECIDE);
         if (ov44_02233E6C(arg0) == 0) {
             arg0->unk5 = 6;
         } else if (arg1->unk1 <= ov44_02233F64(arg0)) {
@@ -1079,14 +1071,14 @@ s32 ov44_022344C4(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum
             arg0->unk5 = 6;
         }
     } else if (gSystem.newKeys & 2) {
-        PlaySE(1501);
+        PlaySE(SEQ_SE_DP_DECIDE);
         arg0->unk5 = 22;
     } else if (arg0->unk6 != 255) {
-        PlaySE(1501);
+        PlaySE(SEQ_SE_DP_DECIDE);
         arg0->unk5 = 3;
     } else if (gSystem.newKeys & 1024) {
         arg0->unk5 = 30;
-        PlaySE(1501);
+        PlaySE(SEQ_SE_DP_DECIDE);
     }
     return 0;
 }
@@ -1117,7 +1109,7 @@ s32 ov44_022345FC(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum
         if (temp_r0 == 0) {
             subroutine_arg0.unk2 = 1;
             ov44_022340BC(arg0, arg0->unk6, arg2);
-            if (arg0->unk0->unk21 == 1) {
+            if (arg0->unk0[33] == 1) {
                 ov44_02233F20(arg0);
                 ov44_02233F3C(arg0);
             }
@@ -1234,7 +1226,7 @@ s32 ov44_022347FC(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum
 
 s32 ov44_02234828(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum HeapID heapID) {
     if (sub_02037B38(14) != 0) {
-        s16 subroutine_arg0 = (s16) arg0->unk0->unk1B;
+        s16 subroutine_arg0 = (s16) arg0->unk0[27];
         if (sub_02037C0C(sub_0203769C(), &subroutine_arg0) == 1) {
             arg0->unk5 = 16;
         }
@@ -1243,32 +1235,24 @@ s32 ov44_02234828(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum
 }
 
 s32 ov44_02234858(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum HeapID heapID) {
-    s32 sp0;
-    s32 temp_r7;
-    s32 var_r4;
-    s32 var_r5;
-    u16* temp_r0;
+    s32 i = 0;
+    s32 temp_r7 = ov44_02233F64(arg0);
+    s32 sp0 = sub_0203769C();
+    s32 var_r5 = 0;
 
-    temp_r7 = ov44_02233F64(arg0);
-    sp0 = sub_0203769C();
-    var_r5 = 0;
-    var_r4 = 0;
-    if (temp_r7 > 0) {
-        do {
-            if (sp0 != var_r4) {
-                temp_r0 = sub_02037C44(var_r4);
-                if (temp_r0 != NULL) {
-                    if (*temp_r0 == arg0->unk0->unk1B) {
-                        var_r5 += 1;
-                    } else {
-                        arg0->unk5 = 27;
-                    }
+    for (i = 0; i < temp_r7; i++) {
+        if (sp0 != i) {
+            u16* temp_r0 = sub_02037C44(i);
+            if (temp_r0 != NULL) {
+                if (temp_r0[0] == arg0->unk0[27]) {
+                    var_r5++;
+                } else {
+                    arg0->unk5 = 27;
                 }
-            } else {
-                var_r5 += 1;
             }
-            var_r4 += 1;
-        } while (var_r4 < temp_r7);
+        } else {
+            var_r5++;
+        }
     }
     if (var_r5 == temp_r7) {
         arg0->unk5 = 17;
@@ -1430,7 +1414,7 @@ s32 ov44_02234B18(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum
 s32 ov44_02234B58(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum HeapID heapID) {
     s32 var_r2;
 
-    if (arg0->unk0->unk21 == 1) {
+    if (arg0->unk0[33] == 1) {
         var_r2 = 125;
     } else {
         var_r2 = 124;
@@ -1560,7 +1544,7 @@ s32 ov44_02234DA8(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum
     ov44_02233860(&arg0->unk30, arg1, 123, heapID);
     ov44_022342B8(arg0);
     arg0->unk5 = 9;
-    if (arg0->unk0->unk21 == 1) {
+    if (arg0->unk0[33] == 1) {
         ov44_02233F3C(arg0);
     }
     return 0;
@@ -1579,7 +1563,7 @@ s32 ov44_02234E08(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum
     ov44_02233F6C(arg0, heapID);
     if (arg0->unk12 != 0) {
         arg0->unk12 = 0U;
-        if (arg0->unk0->unk21 == 1) {
+        if (arg0->unk0[33] == 1) {
             ov44_02233F20(arg0);
             ov44_02233F3C(arg0);
         }
@@ -1605,7 +1589,7 @@ s32 ov44_02234EA4(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum
     s32 temp_r0;
 
     if (sub_02037B38(14) != 0) {
-        s16 subroutine_arg0 = (s16) arg0->unk0->unk1B;
+        s16 subroutine_arg0 = (s16) arg0->unk0[27];
         if (ov44_02233F64(arg0) != sub_02037454()) {
             temp_r0 = arg0->unk8 - 1;
             arg0->unk8 = temp_r0;
@@ -1622,35 +1606,28 @@ s32 ov44_02234EA4(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum
 }
 
 s32 ov44_02234EF4(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum HeapID heapID) {
-    s32 sp0;
-    s32 temp_r7;
-    s32 var_r4;
-    s32 var_r5;
-    u16* temp_r0;
-
-    temp_r7 = ov44_02233F64(arg0);
-    sp0 = sub_0203769C();
-    var_r5 = 0;
-    var_r4 = 0;
-    if (temp_r7 > 0) {
-        do {
-            if (sp0 != var_r4) {
-                temp_r0 = sub_02037C44(var_r4);
-                if (temp_r0 != NULL) {
-                    if (*temp_r0 == arg0->unk0->unk1B) {
-                        var_r5 += 1;
-                    } else {
-                        arg0->unk5 = 15;
-                    }
+    s32 i = 0;
+    s32 temp_r7 = ov44_02233F64(arg0);
+    s32 sp0 = sub_0203769C();
+    s32 var_r5 = 0;
+    
+    for (i = 0; i < temp_r7; i++) {
+        if (sp0 != i) {
+            u16* temp_r0 = sub_02037C44(i);
+            if (temp_r0 != NULL) {
+                if (temp_r0[0] == arg0->unk0[27]) {
+                    var_r5++;
+                } else {
+                    arg0->unk5 = 0xF;
                 }
-            } else {
-                var_r5 += 1;
             }
-            var_r4 += 1;
-        } while (var_r4 < temp_r7);
+        } else {
+            var_r5++;
+        }
     }
+
     if (var_r5 == temp_r7) {
-        arg0->unk5 = 13;
+        arg0->unk5 = 0xD;
     }
     return 0;
 }
@@ -1703,7 +1680,7 @@ s32 ov44_02235004(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum
     s32 var_r2;
 
     ov44_02233F6C(arg0, heapID);
-    if (arg0->unk0->unk21 == 1) {
+    if (arg0->unk0[33] == 1) {
         var_r2 = 125;
     } else {
         var_r2 = 124;
