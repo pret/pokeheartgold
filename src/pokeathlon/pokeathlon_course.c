@@ -30,7 +30,7 @@ extern void ov96_021E8810(void *ptr);
 
 // Data tables in assembly
 extern const OverlayManagerTemplate ov96_0221A7E4; // Sub-overlay template
-extern const void *ov96_0221A984;                  // Other data table
+extern const void *sPokeathlonStateInfoFuncTable;  // Other data table
 
 BOOL PokeathlonCourse_Init(OverlayManager *manager, int *state) {
     PokeathlonCourseData *data;
@@ -76,10 +76,10 @@ BOOL PokeathlonCourse_Init(OverlayManager *manager, int *state) {
     system = ov96_021E8770(param1, param2, data, specialMode, data->heapId);
     data->system = system;
 
-    PokeathlonCourse_InitStateInfo(&ov96_0221A984, &data->stateData);
+    PokeathlonCourse_InitStateInfo(&sPokeathlonStateInfoFuncTable, &data->stateInfo);
 
-    data->stateData.stateIndex = 0;
-    data->courseState.argsPtr = (void **)&data->stateData;
+    data->stateInfo.stateIndex = 0;
+    data->courseState.argsPtr = (void **)&data->stateInfo;
     data->courseState.exitFlag = 0;
 
     PokeathlonCourse_InitPlayerProfiles(data);
@@ -245,9 +245,9 @@ BOOL PokeathlonCourse_Exit(OverlayManager *manager, int *state) {
 }
 
 BOOL PokeathlonCourse_RunStateFunc(PokeathlonCourseData *data) {
-    void **stateDataPtr = (void **)&data->stateData.stateArgsBase;
-    u8 index = data->stateData.stateIndex;
-    PokeathlonStateFunc *functionTable = (PokeathlonStateFunc *)data->stateData.ptr;
+    void **stateDataPtr = (void **)&data->stateInfo.stateArgsBase;
+    u8 index = data->stateInfo.stateIndex;
+    PokeathlonStateFunc *functionTable = (PokeathlonStateFunc *)data->stateInfo.ptr;
     PokeathlonStateFunc func = functionTable[index];
     BOOL result = func(data, stateDataPtr);
 
@@ -307,7 +307,7 @@ void PokeathlonCourse_InitPlayerProfiles(PokeathlonCourseData *data) {
 }
 
 PlayerProfile *PokeathlonCourse_GetPlayerProfile(PlayerProfile *profiles, int index) {
-    return (PlayerProfile *)((u8 *)profiles + PlayerProfile_sizeof() * index);
+    return (PlayerProfile *)&((u8 *)profiles)[PlayerProfile_sizeof() * index];
 }
 
 u8 PokeathlonCourse_GetParticipantCount(PokeathlonCourseData *data) {

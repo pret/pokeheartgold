@@ -7,7 +7,6 @@
 #include "player_data.h"
 #include "save.h"
 
-// Forward declaration
 typedef struct PokeathlonCourseData PokeathlonCourseData;
 
 // Function pointer types for state management
@@ -93,7 +92,7 @@ struct PokeathlonCourseData {
     u8 dataCopyBuffer2[0x28];                  // 0x2DC - Destination buffer 2
     u8 filler_304[0xB0];                       // 0x304
     PokeathlonCourseState courseState;         // 0x3B4 - State machine structure (16 bytes: 4 fields x 4 bytes)
-    PokeathlonStateInfo stateData;             // 0x3C4 - State information (8 bytes)
+    PokeathlonStateInfo stateInfo;             // 0x3C4 - State information (8 bytes)
     u8 filler_3CC[0xC];                        // 0x3CC
     u32 field_3D8[4];                          // 0x3D8 - Array of 4 u32s (16 bytes)
     void *field_3E8;                           // 0x3E8
@@ -117,7 +116,6 @@ struct PokeathlonCourseData {
     u8 filler_D6C[4];                          // 0xD6C
 };
 
-// Function declarations
 BOOL PokeathlonCourse_Init(OverlayManager *manager, int *state);
 BOOL PokeathlonCourse_Main(OverlayManager *manager, int *state);
 BOOL PokeathlonCourse_Exit(OverlayManager *manager, int *state);
