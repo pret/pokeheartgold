@@ -107702,8 +107702,8 @@ _0221A7D8:
 	.byte 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.word 0
 
-	.global ov96_0221A7E4
-ov96_0221A7E4: ; 0x0221A7E4
+	.global subOverlayTemplate
+subOverlayTemplate: ; 0x0221A7E4
 	.word ov97_0221E5C0
 	.word ov97_0221E5D4
 	.word ov97_0221E69C

@@ -29,8 +29,8 @@ extern void ov96_021E9320(void *ptr);
 extern void ov96_021E8810(void *ptr);
 
 // Data tables in assembly
-extern const OverlayManagerTemplate ov96_0221A7E4; // Sub-overlay template
-extern const void *sPokeathlonStateInfoFuncTable;  // Other data table
+extern const OverlayManagerTemplate subOverlayTemplate;
+extern const void *sPokeathlonStateInfoFuncTable;
 
 BOOL PokeathlonCourse_Init(OverlayManager *manager, int *state) {
     PokeathlonCourseData *data;
@@ -39,7 +39,6 @@ BOOL PokeathlonCourse_Init(OverlayManager *manager, int *state) {
     BOOL specialMode;
     OverlayManagerTemplate subTemplate;
     void *system;
-    int param1, param2;
 
     Heap_Create(HEAP_ID_3, HEAP_ID_92, 0x72000);
 
@@ -51,7 +50,7 @@ BOOL PokeathlonCourse_Init(OverlayManager *manager, int *state) {
     args = OverlayManager_GetArgs(manager);
     data->args = args;
 
-    subTemplate = ov96_0221A7E4;
+    subTemplate = subOverlayTemplate;
 
     subOverlay = OverlayManager_New(&subTemplate, &data->args, HEAP_ID_92);
     data->subOverlay = subOverlay;
@@ -59,9 +58,8 @@ BOOL PokeathlonCourse_Init(OverlayManager *manager, int *state) {
     specialMode = FALSE;
     data->state = specialMode;
     args = data->args;
-    param1 = args->mode;
 
-    if (param1 == 1) {
+    if (args->mode == 1) {
         specialMode = TRUE;
         data->participantCount = sub_02037454();
         data->maxParticipants = 4;
@@ -70,10 +68,7 @@ BOOL PokeathlonCourse_Init(OverlayManager *manager, int *state) {
         data->maxParticipants = 3;
     }
 
-    param1 = ov96_021E8A24();
-    param2 = ov96_021E8A2C();
-
-    system = ov96_021E8770(param1, param2, data, specialMode, data->heapId);
+    system = ov96_021E8770(ov96_021E8A24(), ov96_021E8A2C(), data, specialMode, data->heapId);
     data->system = system;
 
     PokeathlonCourse_InitStateInfo(&sPokeathlonStateInfoFuncTable, &data->stateInfo);
