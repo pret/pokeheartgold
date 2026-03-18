@@ -1889,7 +1889,7 @@ _1967:
 
 _197A:
 	npc_msg msg_0199_00009
-	wait_button_or_walk_away
+	wait_button
 	setvar VAR_SPECIAL_RESULT, 1
 	goto _182A
 	end
@@ -1912,7 +1912,7 @@ _19A5:
 _19B8:
 	buffer_item_name 0, VAR_SPECIAL_x8004
 	npc_msg msg_0199_00004
-	wait_button_or_walk_away
+	wait_button
 	setvar VAR_SPECIAL_RESULT, 0
 	goto _182A
 	end

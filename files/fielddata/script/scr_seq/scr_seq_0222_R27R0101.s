@@ -19,7 +19,7 @@ scr_seq_R27R0101_000:
 	compare VAR_SPECIAL_RESULT, 150
 	goto_if_ge _003E
 	npc_msg msg_0370_R27R0101_00003
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -31,7 +31,7 @@ _003E:
 	setflag FLAG_GOT_TM37_FROM_ROUTE_27_WOMAN
 _006A:
 	npc_msg msg_0370_R27R0101_00002
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

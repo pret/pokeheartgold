@@ -14,7 +14,7 @@ scr_seq_D26R0103_000:
 	faceplayer
 	goto_if_set FLAG_GOT_KINGS_ROCK_FROM_SLOWPOKE_WELL_MAN, _004F
 	npc_msg msg_0092_D26R0103_00000
-	wait_button
+	wait_ab_press
 	closemsg
 	goto_if_no_item_space ITEM_KINGS_ROCK, 1, _005A
 	callstd std_give_item_verbose
@@ -23,7 +23,7 @@ scr_seq_D26R0103_000:
 
 _004F:
 	npc_msg msg_0092_D26R0103_00002
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

@@ -224,7 +224,7 @@ _03D0:
 
 _03DB:
 	npc_msg msg_0139_D49R0102_00016
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	touchscreen_menu_show
 	stop_bgm 0
@@ -247,7 +247,7 @@ scr_seq_D49R0102_001:
 _0417:
 	npc_msg msg_0139_D49R0102_00024
 _041A:
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -266,7 +266,7 @@ scr_seq_D49R0102_002:
 _0449:
 	npc_msg msg_0139_D49R0102_00026
 _044C:
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -285,7 +285,7 @@ scr_seq_D49R0102_003:
 _047B:
 	npc_msg msg_0139_D49R0102_00028
 _047E:
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -304,7 +304,7 @@ scr_seq_D49R0102_004:
 _04AD:
 	npc_msg msg_0139_D49R0102_00030
 _04B0:
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -323,7 +323,7 @@ scr_seq_D49R0102_005:
 _04DF:
 	npc_msg msg_0139_D49R0102_00032
 _04E2:
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -342,7 +342,7 @@ scr_seq_D49R0102_006:
 _0511:
 	npc_msg msg_0139_D49R0102_00034
 _0514:
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -361,7 +361,7 @@ scr_seq_D49R0102_007:
 _0544:
 	npc_msg msg_0139_D49R0102_00036
 _0547:
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -380,7 +380,7 @@ scr_seq_D49R0102_008:
 _0576:
 	npc_msg msg_0139_D49R0102_00039
 _0579:
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -398,7 +398,7 @@ scr_seq_D49R0102_009:
 _05A5:
 	npc_msg msg_0139_D49R0102_00041
 _05A8:
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -458,7 +458,7 @@ scr_seq_D49R0102_011:
 _0647:
 	npc_msg msg_0139_D49R0102_00047
 _064A:
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -477,7 +477,7 @@ scr_seq_D49R0102_012:
 _0679:
 	npc_msg msg_0139_D49R0102_00049
 _067C:
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -496,7 +496,7 @@ scr_seq_D49R0102_013:
 _06AB:
 	npc_msg msg_0139_D49R0102_00051
 _06AE:
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -517,7 +517,7 @@ _06E3:
 	npc_msg msg_0139_D49R0102_00018
 _06E6:
 	wait_cry
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -538,7 +538,7 @@ _071D:
 	npc_msg msg_0139_D49R0102_00020
 _0720:
 	wait_cry
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -559,7 +559,7 @@ _0757:
 	npc_msg msg_0139_D49R0102_00022
 _075A:
 	wait_cry
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

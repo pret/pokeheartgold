@@ -48,7 +48,7 @@ scr_seq_T03PC0101_001:
 	npc_trade_end
 	setflag FLAG_TRADE_PEWTER_CITY_HAUNTER_XATU
 	npc_msg msg_0463_T03PC0101_00004
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -56,21 +56,21 @@ scr_seq_T03PC0101_001:
 _00B1:
 	npc_trade_end
 	npc_msg msg_0463_T03PC0101_00005
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _00BE:
 	npc_msg msg_0463_T03PC0101_00006
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _00C9:
 	npc_msg msg_0463_T03PC0101_00007
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -86,7 +86,7 @@ scr_seq_T03PC0101_003:
 	play_cry SPECIES_JIGGLYPUFF, 0
 	npc_msg msg_0463_T03PC0101_00001
 	wait_cry
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

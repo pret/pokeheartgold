@@ -16,7 +16,7 @@ scr_seq_R34R0201_000:
 	faceplayer
 	goto_if_set FLAG_GOT_TM12_FROM_ILEX_FOREST_GATE_WOMAN, _0055
 	npc_msg msg_0386_R34R0201_00000
-	wait_button
+	wait_ab_press
 	goto_if_no_item_space ITEM_TM12, 1, _0060
 	callstd std_give_item_verbose
 	setflag FLAG_GOT_TM12_FROM_ILEX_FOREST_GATE_WOMAN
@@ -24,7 +24,7 @@ scr_seq_R34R0201_000:
 
 _0055:
 	npc_msg msg_0386_R34R0201_00002
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -42,7 +42,7 @@ scr_seq_R34R0201_001:
 	play_cry SPECIES_BUTTERFREE, 0
 	npc_msg msg_0386_R34R0201_00003
 	wait_cry
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

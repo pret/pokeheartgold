@@ -88,7 +88,7 @@ _00E5:
 _00EB:
 	goto_if_set FLAG_BOAT_ARRIVED, _0101
 	npc_msg msg_0259_P01R0301_00000
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -107,7 +107,7 @@ _0101:
 
 _012D:
 	npc_msg msg_0259_P01R0301_00003
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -115,7 +115,7 @@ _012D:
 _0138:
 	goto_if_set FLAG_BOAT_ARRIVED, _014E
 	npc_msg msg_0259_P01R0301_00001
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -133,7 +133,7 @@ _014E:
 
 _0174:
 	npc_msg msg_0259_P01R0301_00006
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -247,7 +247,7 @@ scr_seq_P01R0301_001:
 _02FA:
 	npc_msg msg_0259_P01R0301_00008
 _02FD:
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

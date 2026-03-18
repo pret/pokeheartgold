@@ -92,7 +92,7 @@ scr_seq_P01R0102_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0256_P01R0102_00002
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -163,7 +163,7 @@ _01F3:
 
 _0211:
 	npc_msg msg_0256_P01R0102_00001
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -235,7 +235,7 @@ _02C3:
 	wait_fanfare
 	register_gear_number PHONE_CONTACT_SABRINA
 	npc_msg msg_0256_P01R0102_00006
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
@@ -251,7 +251,7 @@ _02C3:
 _0306:
 	setvar VAR_TEMP_x4004, 1
 	npc_msg msg_0256_P01R0102_00007
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -283,21 +283,21 @@ _0322:
 	wait_fade
 	clearflag FLAG_UNK_189
 	npc_msg msg_0256_P01R0102_00011
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _0383:
 	npc_msg msg_0256_P01R0102_00012
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _038E:
 	npc_msg msg_0256_P01R0102_00013
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

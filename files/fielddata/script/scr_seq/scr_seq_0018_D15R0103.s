@@ -43,7 +43,7 @@ scr_seq_D15R0103_001:
 	wait 15, VAR_SPECIAL_RESULT
 	buffer_rivals_name 0
 	npc_msg msg_0056_D15R0103_00002
-	wait_button
+	wait_ab_press
 	closemsg
 	play_se SEQ_SE_DP_KAIDAN2
 	apply_movement obj_D15R0103_gsrivel, _00E0
@@ -126,14 +126,14 @@ scr_seq_D15R0103_002:
 	setflag FLAG_HIDE_VIOLET_GYM_GYM_GUY_AFTER_SPROUT
 	clearflag FLAG_HIDE_VIOLET_GYM_GYM_GUY_BEFORE_SPROUT
 	npc_msg msg_0056_D15R0103_00005
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _0197:
 	npc_msg msg_0056_D15R0103_00006
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
