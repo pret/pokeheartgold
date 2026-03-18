@@ -90,7 +90,7 @@ scr_seq_D52R0103_000:
 	goto_if_eq _0134
 _0123:
 	npc_msg msg_0150_D52R0103_00001
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	setvar VAR_SCENE_EMBEDDED_TOWER, 9
 	releaseall

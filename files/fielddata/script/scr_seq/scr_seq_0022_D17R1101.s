@@ -82,7 +82,7 @@ _00FA:
 	wait_fanfare
 	register_gear_number PHONE_CONTACT_MORTY
 	npc_msg msg_0059_D17R1101_00002
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
@@ -98,7 +98,7 @@ _00FA:
 _013D:
 	setvar VAR_TEMP_x4002, 1
 	npc_msg msg_0059_D17R1101_00003
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -130,21 +130,21 @@ _0159:
 	wait_fade
 	clearflag FLAG_UNK_189
 	npc_msg msg_0059_D17R1101_00007
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _01BA:
 	npc_msg msg_0059_D17R1101_00008
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _01C5:
 	npc_msg msg_0059_D17R1101_00009
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

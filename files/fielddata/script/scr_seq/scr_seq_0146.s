@@ -48,7 +48,7 @@ scr_seq_0146_000:
 
 _009E:
 	npc_msg msg_0211_00002
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	goto _093D
 	end
@@ -198,7 +198,7 @@ scr_seq_0146_001:
 
 _02D7:
 	npc_msg msg_0211_00004
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	goto _093D
 	end
@@ -364,7 +364,7 @@ _051C:
 
 _0564:
 	npc_msg msg_0211_00009
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	goto _093D
 	end
@@ -411,14 +411,14 @@ _05F4:
 	scrcmd_731
 _060E:
 	npc_msg msg_0211_00012
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	goto _093D
 	end
 
 _061D:
 	npc_msg msg_0211_00010
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	return
 
@@ -471,7 +471,7 @@ _06BD:
 	scrcmd_731
 _06D7:
 	npc_msg msg_0211_00012
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	goto _0945
 	end
@@ -484,7 +484,7 @@ scr_seq_0146_015:
 	screen_shake 0, 2, 1, 8
 	wait_se SEQ_SE_GS_IWAOTOSHI02
 	npc_msg msg_0211_00013
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	end
 
@@ -525,14 +525,14 @@ scr_seq_0146_003:
 
 _0797:
 	npc_msg msg_0211_00022
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	goto _0941
 	end
 
 _07A6:
 	npc_msg msg_0211_00023
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	goto _0941
 	end
@@ -575,7 +575,7 @@ scr_seq_0146_004:
 
 _0826:
 	npc_msg msg_0211_00016
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	goto _0941
 
@@ -693,7 +693,7 @@ scr_seq_0146_005:
 
 _0997:
 	npc_msg msg_0211_00026
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	goto _0941
 	end
@@ -741,7 +741,7 @@ scr_seq_0146_016:
 
 _0A34:
 	npc_msg msg_0211_00031
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	goto _0941
 	end
@@ -790,7 +790,7 @@ scr_seq_0146_014:
 
 _0AC2:
 	npc_msg msg_0211_00034
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	goto _093D
 	end

@@ -86,7 +86,7 @@ _0126:
 _012E:
 	setvar VAR_UNK_4142, 0
 	npc_msg msg_0107_D32R0301_00006
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -291,7 +291,7 @@ _0435:
 
 _0439:
 	npc_msg msg_0107_D32R0301_00009
-	wait_button
+	wait_ab_press
 	closemsg
 	apply_movement obj_player, _04D4
 	apply_movement VAR_SPECIAL_LAST_TALKED, _04FC
@@ -300,7 +300,7 @@ _0439:
 
 _0454:
 	npc_msg msg_0107_D32R0301_00009
-	wait_button
+	wait_ab_press
 	closemsg
 	apply_movement obj_player, _04D4
 	apply_movement VAR_SPECIAL_LAST_TALKED, _04FC

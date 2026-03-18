@@ -327,7 +327,7 @@ _0423:
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 13
 _046A:
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -335,7 +335,7 @@ _046A:
 _0472:
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 14
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -363,7 +363,7 @@ _04B3:
 	play_fanfare SEQ_ME_ITEM
 	wait_fanfare
 	setflag FLAG_DAILY_GOT_SHOCK_RIBBON
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -371,7 +371,7 @@ _04B3:
 _04E2:
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 41
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -379,7 +379,7 @@ _04E2:
 _04F6:
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 43
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -397,7 +397,7 @@ scr_seq_R36_007:
 _0530:
 	npc_msg msg_0390_R36_00014
 _0533:
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -418,13 +418,13 @@ scr_seq_R36_008:
 	giveitem_no_check ITEM_HM06, 1
 _0572:
 	npc_msg msg_0390_R36_00005
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 	; unreferenced
 	npc_msg msg_0390_R36_00005
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -446,7 +446,7 @@ scr_seq_R36_009:
 _05AE:
 	npc_msg msg_0390_R36_00008
 _05B1:
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

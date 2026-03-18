@@ -36,14 +36,14 @@ _0058:
 	callstd std_give_item_verbose
 	setflag FLAG_GOT_OLD_ROD
 	npc_msg msg_0381_R32PC0101_00003
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _008C:
 	npc_msg msg_0381_R32PC0101_00005
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -56,7 +56,7 @@ _0097:
 
 _00A1:
 	npc_msg msg_0381_R32PC0101_00004
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -81,7 +81,7 @@ _00E3:
 	goto_if_no_item_space ITEM_LURE_BALL, 2, _0117
 	callstd std_give_item_verbose
 	npc_msg msg_0381_R32PC0101_00010
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	setflag FLAG_GOT_LURE_BALL_FROM_ROUTE_32_KURT_FAN
@@ -95,7 +95,7 @@ _0117:
 
 _0121:
 	npc_msg msg_0381_R32PC0101_00011
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

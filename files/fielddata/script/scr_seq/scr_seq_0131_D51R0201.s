@@ -85,7 +85,7 @@ scr_seq_D51R0201_001:
 	compare VAR_TEMP_x4007, 1
 	goto_if_eq _011A
 	npc_msg msg_0146_D51R0201_00024
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -107,7 +107,7 @@ _011A:
 
 _0154:
 	npc_msg msg_0146_D51R0201_00002
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	setvar VAR_TEMP_x4004, 1
 	releaseall
@@ -115,7 +115,7 @@ _0154:
 
 _0165:
 	npc_msg msg_0146_D51R0201_00012
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -196,7 +196,7 @@ _024A:
 	apply_movement obj_player, _03C8
 	wait_movement
 	npc_msg msg_0146_D51R0201_00011
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -423,7 +423,7 @@ _053C:
 
 _0545:
 	npc_msg msg_0146_D51R0201_00030
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -487,21 +487,21 @@ _0615:
 
 _061D:
 	npc_msg msg_0146_D51R0201_00031
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _0628:
 	npc_msg msg_0146_D51R0201_00033
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _0633:
 	npc_msg msg_0146_D51R0201_00030
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
