@@ -25,6 +25,7 @@
 #include "sprite.h"
 #include "gf_gfx_loader.h"
 #include "constants/sndseq.h"
+#include "msgdata/msg.naix"
 #include "msgdata/msg/msg_0778.h"
 
 #include "bg_window.h"
@@ -113,8 +114,8 @@ void ov44_02232EA8(OverlayManager* overlayMananger) {
     }
     Heap_Create(HEAP_ID_3, HEAP_ID_103, 0x18000);
     Heap_Create(HEAP_ID_3, HEAP_ID_104, 0xA000);
-    UnkStruct_ov44_02235340* temp_r0 = OverlayManager_CreateAndGetData(overlayMananger, 552, HEAP_ID_103);
-    MI_CpuFill8(temp_r0, 0, 552);
+    UnkStruct_ov44_02235340* temp_r0 = OverlayManager_CreateAndGetData(overlayMananger, sizeof(UnkStruct_ov44_02235340), HEAP_ID_103);
+    MI_CpuFill8(temp_r0, 0, sizeof(UnkStruct_ov44_02235340));
     MI_CpuFill8(temp_r0->unk1C, 1, 4);
     MI_CpuFill8(temp_r0->unk20, 1, 4);
     GF_CreateVramTransferManager(16, HEAP_ID_103);
@@ -140,7 +141,7 @@ s32 ov44_02232F64(OverlayManager* overlayManager, u32* arg1) {
     temp_r7 = OverlayManager_GetArgs(overlayManager);
     switch (arg1[0]) {
         case 0:
-            BeginNormalPaletteFade(3, 1, 1, 0, 6, 1, HEAP_ID_103);
+            BeginNormalPaletteFade(3, 1, 1, RGB_BLACK, 6, 1, HEAP_ID_103);
             arg1[0]++;
             break;
         case 1:
@@ -177,7 +178,7 @@ s32 ov44_02232F64(OverlayManager* overlayManager, u32* arg1) {
             }
             break;
         case 3:
-            BeginNormalPaletteFade(3, 0, 0, 0, 6, 1, HEAP_ID_103);
+            BeginNormalPaletteFade(3, 0, 0, RGB_BLACK, 6, 1, HEAP_ID_103);
             arg1[0]++;
             break;
         case 4:
@@ -297,19 +298,19 @@ void ov44_0223325C(UnkStruct_ov44_02232F64* arg0, enum HeapID heapID) {
     SetBothScreensModesAndDisable(&graphicModes);
 
     BgTemplate bgTemplate1 = ov44_022364B0;
-    InitBgFromTemplate(arg0->bgConfig, 0, &bgTemplate1, 0);
-    BG_ClearCharDataRange(0, 32, 0, heapID);
-    BgClearTilemapBufferAndCommit(arg0->bgConfig, 0);
+    InitBgFromTemplate(arg0->bgConfig, GF_BG_LYR_MAIN_0, &bgTemplate1, 0);
+    BG_ClearCharDataRange(GF_BG_LYR_MAIN_0, 32, 0, heapID);
+    BgClearTilemapBufferAndCommit(arg0->bgConfig, GF_BG_LYR_MAIN_0);
 
     BgTemplate bgTemplate2 = ov44_02236494;
-    InitBgFromTemplate(arg0->bgConfig, 1, &bgTemplate2, 0);
-    BG_ClearCharDataRange(1, 32, 0, heapID);
-    BgClearTilemapBufferAndCommit(arg0->bgConfig, 1);
+    InitBgFromTemplate(arg0->bgConfig, GF_BG_LYR_MAIN_1, &bgTemplate2, 0);
+    BG_ClearCharDataRange(GF_BG_LYR_MAIN_1, 32, 0, heapID);
+    BgClearTilemapBufferAndCommit(arg0->bgConfig, GF_BG_LYR_MAIN_1);
 
     BgTemplate bgTemplate3 = ov44_022364CC;
-    InitBgFromTemplate(arg0->bgConfig, 2, &bgTemplate3, 0);
-    BG_ClearCharDataRange(2, 32, 0, heapID);
-    BgClearTilemapBufferAndCommit(arg0->bgConfig, 2);
+    InitBgFromTemplate(arg0->bgConfig, GF_BG_LYR_MAIN_2, &bgTemplate3, 0);
+    BG_ClearCharDataRange(GF_BG_LYR_MAIN_2, 32, 0, heapID);
+    BgClearTilemapBufferAndCommit(arg0->bgConfig, GF_BG_LYR_MAIN_2);
 
     GfGfx_EngineATogglePlanes(8, 0);
     GfGfx_EngineATogglePlanes(16, 1);
@@ -335,9 +336,9 @@ void ov44_0223325C(UnkStruct_ov44_02232F64* arg0, enum HeapID heapID) {
 void ov44_0223340C(UnkStruct_ov44_02232F64* arg0) {
     Heap_Free(arg0->unk1E0);
     Heap_Free(arg0->unk1EC);
-    FreeBgTilemapBuffer(arg0->bgConfig, 2);
-    FreeBgTilemapBuffer(arg0->bgConfig, 1);
-    FreeBgTilemapBuffer(arg0->bgConfig, 0);
+    FreeBgTilemapBuffer(arg0->bgConfig, GF_BG_LYR_MAIN_2);
+    FreeBgTilemapBuffer(arg0->bgConfig, GF_BG_LYR_MAIN_1);
+    FreeBgTilemapBuffer(arg0->bgConfig, GF_BG_LYR_MAIN_0);
     Heap_Free(arg0->bgConfig);
 }
 
@@ -348,18 +349,18 @@ void ov44_02233444(UnkStruct_ov44_02232F64* arg0, UnkStruct_ov44_args* arg1, enu
     LoadUserFrameGfx2(arg0->bgConfig, GF_BG_LYR_MAIN_1, 1, 2, Options_GetFrame(options), heapID);
     LoadUserFrameGfx1(arg0->bgConfig, GF_BG_LYR_MAIN_1, 31, 3, 0, heapID);
     LoadUserFrameGfx1(arg0->bgConfig, GF_BG_LYR_MAIN_2, 48, 4, 0, heapID);
-    AddWindowParameterized(arg0->bgConfig, &arg0->windowList[0], 1, 2, 19, 27, 4, 1, 40);
+    AddWindowParameterized(arg0->bgConfig, &arg0->windowList[0], GF_BG_LYR_MAIN_1, 2, 19, 27, 4, 1, 40);
     FillWindowPixelBuffer(&arg0->windowList[0], 15);
     DrawFrameAndWindow2(&arg0->windowList[0], 1, 1, 2);
-    AddWindowParameterized(arg0->bgConfig, &arg0->windowList[1], 1, 1, 1, 27, 2, 1, 148);
+    AddWindowParameterized(arg0->bgConfig, &arg0->windowList[1], GF_BG_LYR_MAIN_1, 1, 1, 27, 2, 1, 148);
     FillWindowPixelBuffer(&arg0->windowList[1], 15);
     DrawFrameAndWindow1(&arg0->windowList[1], 1, 31, 3);
-    AddWindowParameterized(arg0->bgConfig, &arg0->windowList[2], 1, 2, 16, 28, 2, 1, 202);
+    AddWindowParameterized(arg0->bgConfig, &arg0->windowList[2], GF_BG_LYR_MAIN_1, 2, 16, 28, 2, 1, 202);
     FillWindowPixelBuffer(&arg0->windowList[2], 0);
-    AddWindowParameterized(arg0->bgConfig, &arg0->windowList[3], 1, 1, 5, 20, 8, 1, 258);
+    AddWindowParameterized(arg0->bgConfig, &arg0->windowList[3], GF_BG_LYR_MAIN_1, 1, 5, 20, 8, 1, 258);
     FillWindowPixelBuffer(&arg0->windowList[3], 15);
     DrawFrameAndWindow1(&arg0->windowList[3], 1, 31, 3);
-    AddWindowParameterized(arg0->bgConfig, &arg0->windowList[4], 1, 23, 5, 7, 5, 1, 418);
+    AddWindowParameterized(arg0->bgConfig, &arg0->windowList[4], GF_BG_LYR_MAIN_1, 23, 5, 7, 5, 1, 418);
     FillWindowPixelBuffer(&arg0->windowList[4], 15);
 }
 
@@ -382,7 +383,7 @@ void ov44_022335AC(UnkStruct_ov44_02232F64* arg0, enum HeapID heapID) {
 
 void ov44_0223362C(UnkStruct_ov44_02232F64* arg0, UnkStruct_ov44_args* arg1, enum HeapID heapID) {
     arg0->msgFmt = MessageFormat_New(heapID);
-    arg0->unk8 = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, 778, heapID);
+    arg0->unk8 = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0778_bin, heapID);
     arg0->unkC = String_New(256, heapID);
     arg0->unk10 = String_New(256, heapID);
     arg0->unk14 = 255;
@@ -585,9 +586,9 @@ void ov44_02233AB8(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_02232F64* arg1,
 
     NNSG2dScreenData* screenData = arg1->unk1E4;
     u32 temp_r4 = (arg3 << 1) + 5;
-    CopyToBgTilemapRect(arg1->bgConfig, 2, 18, temp_r4, 2, 2, &screenData->rawData[0], var_r2*2, 0, screenData->screenWidth/8, screenData->screenHeight/8);
-    BgTilemapRectChangePalette(arg1->bgConfig, 2, 18, temp_r4, 2, 2, 5);
-    ScheduleBgTilemapBufferTransfer(arg1->bgConfig, 2);
+    CopyToBgTilemapRect(arg1->bgConfig, GF_BG_LYR_MAIN_2, 18, temp_r4, 2, 2, &screenData->rawData[0], var_r2*2, 0, screenData->screenWidth/8, screenData->screenHeight/8);
+    BgTilemapRectChangePalette(arg1->bgConfig, GF_BG_LYR_MAIN_2, 18, temp_r4, 2, 2, 5);
+    ScheduleBgTilemapBufferTransfer(arg1->bgConfig, GF_BG_LYR_MAIN_2);
     String_Delete(string1);
     String_Delete(string2);
 }
@@ -596,8 +597,8 @@ void ov44_02233C18(UnkStruct_ov44_02232F64* arg0, UnkStruct_ov44_args* arg1, s32
     FillWindowPixelRect(&arg0->windowList[3], 15, 0, arg2 * 16, 160, 16);
 
     NNSG2dScreenData* screenData = arg0->unk1E4;
-    CopyToBgTilemapRect(arg0->bgConfig, 2, 18, arg2 * 2 + 5, 2, 2, &screenData->rawData[0], 0, 0, screenData->screenWidth/8, screenData->screenHeight/8);
-    ScheduleBgTilemapBufferTransfer(arg0->bgConfig, 2);
+    CopyToBgTilemapRect(arg0->bgConfig, GF_BG_LYR_MAIN_2, 18, arg2 * 2 + 5, 2, 2, &screenData->rawData[0], 0, 0, screenData->screenWidth/8, screenData->screenHeight/8);
+    ScheduleBgTilemapBufferTransfer(arg0->bgConfig, GF_BG_LYR_MAIN_2);
     ScheduleWindowCopyToVram(&arg0->windowList[3]);
 }
 
@@ -1824,7 +1825,7 @@ s32 ov44_02235218(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum
     if ((sub_020390C4() == 1) && (sub_020373B4(0) == 1)) {
         sub_020378E4(0);
         ov44_022342E0(arg0, arg1, heapID);
-        BeginNormalPaletteFade(3, 0, 0, 0, 6, 1, heapID);
+        BeginNormalPaletteFade(3, 0, 0, RGB_BLACK, 6, 1, heapID);
         arg0->unk5 = 27;
     }
     return 0;
@@ -1864,7 +1865,7 @@ s32 ov44_02235268(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum
         temp_r0[1] = 0;
         temp_r0[2] = 0;
         temp_r0[3] = 0;
-        BeginNormalPaletteFade(3, 1, 1, 0, 6, 1, heapID);
+        BeginNormalPaletteFade(3, 1, 1, RGB_BLACK, 6, 1, heapID);
         arg0->unk5 = 28;
     }
     return 0;
