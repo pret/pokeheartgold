@@ -18677,13 +18677,13 @@ ov44_02236510: ; 0x02236510
 ov44_02236540: ; 0x02236540
 	.word ov44_02234BF0
 	.word ov44_02234C10
-	.word ov44_02234C48
+	.word Wifi_PromptAwaitingResponse
 	.word ov44_02234C88
 	.word ov44_02234CE8
 	.word ov44_02234D28
 	.word ov44_02234D4C
 	.word ov44_02234D88
-	.word ov44_02234DA8
+	.word Wifi_PromptAwaitingMembers
 	.word ov44_02234DE4
 	.word ov44_02234E08
 	.word ov44_02234EA4
@@ -18691,9 +18691,9 @@ ov44_02236540: ; 0x02236540
 	.word ov44_02234F44
 	.word ov44_02234F60
 	.word ov44_02234F88
-	.word ov44_02234FC4
+	.word Wifi_PromptMemberDrop
 	.word ov44_02234FDC
-	.word ov44_02235004
+	.word Wifi_PromptToggleVoiceChat_
 	.word ov44_02235038
 	.word ov44_02235090
 	.word ov44_02235100
@@ -18709,14 +18709,14 @@ ov44_02236540: ; 0x02236540
 .public ov44_022365B8
 ov44_022365B8: ; 0x022365B8
 	.word ov44_02234474
-	.word ov44_022344AC
+	.word Wifi_PromptReadyMessage
 	.word ov44_022344C4
-	.word ov44_022345A0
+	.word Wifi_PromptUserJoinRequest
 	.word ov44_022345C8
 	.word ov44_022345FC
-	.word ov44_0223469C
+	.word Wifi_PromptInsufficientMembers
 	.word ov44_022346B4
-	.word ov44_022346D0
+	.word Wifi_PromptConfirmMembers
 	.word ov44_022346E8
 	.word ov44_0223471C
 	.word ov44_02234764
@@ -18727,18 +18727,18 @@ ov44_022365B8: ; 0x022365B8
 	.word ov44_02234858
 	.word ov44_022348A8
 	.word ov44_022348C4
-	.word ov44_022348EC
+	.word Wifi_PromptStopFindingMembers
 	.word ov44_02234904
 	.word ov44_02234944
-	.word ov44_0223499C
+	.word Wifi_PromptDropAsLeader
 	.word ov44_022349B4
 	.word ov44_022349F4
-	.word ov44_02234A4C
+	.word Wifi_PromptCancelInvites
 	.word ov44_02234A68
 	.word ov44_02234AA8
-	.word ov44_02234AE4
+	.word Wifi_PromptMemberDropped
 	.word ov44_02234B18
-	.word ov44_02234B58
+	.word Wifi_PromptToggleVoiceChat
 	.word ov44_02234B80
 	.word ov44_02234BB4
 

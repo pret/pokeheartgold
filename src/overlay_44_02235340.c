@@ -62,24 +62,24 @@
 //     { 184, 72, 3, 0, 3, 0 },
 // };
 // const func_type_1 ov44_02236540[30] = 
-//     {ov44_02234BF0, ov44_02234C10, ov44_02234C48, ov44_02234C88, ov44_02234CE8,
-//     ov44_02234D28, ov44_02234D4C, ov44_02234D88, ov44_02234DA8,
+//     {ov44_02234BF0, ov44_02234C10, Wifi_PromptAwaitingResponse, ov44_02234C88, ov44_02234CE8,
+//     ov44_02234D28, ov44_02234D4C, ov44_02234D88, Wifi_PromptAwaitingMembers,
 //     ov44_02234DE4, ov44_02234E08, ov44_02234EA4, ov44_02234EF4,
-//     ov44_02234F44, ov44_02234F60, ov44_02234F88, ov44_02234FC4,
-//     ov44_02234FDC, ov44_02235004, ov44_02235038, ov44_02235090,
+//     ov44_02234F44, ov44_02234F60, ov44_02234F88, Wifi_PromptMemberDrop,
+//     ov44_02234FDC, Wifi_PromptToggleVoiceChat_, ov44_02235038, ov44_02235090,
 //     ov44_02235100, ov44_02235158, ov44_0223518C, ov44_022351BC,
 //     ov44_022351DC, ov44_02235218, ov44_02235268, ov44_0223532C,
 //     ov44_02235340};
 
 // const func_type_1 ov44_022365B8[33] = 
-//     {ov44_02234474, ov44_022344AC, ov44_022344C4, ov44_022345A0,
-//     ov44_022345C8, ov44_022345FC, ov44_0223469C, ov44_022346B4,
-//     ov44_022346D0, ov44_022346E8, ov44_0223471C, ov44_02234764,
+//     {ov44_02234474, Wifi_PromptReadyMessage, ov44_022344C4, Wifi_PromptUserJoinRequest,
+//     ov44_022345C8, ov44_022345FC, Wifi_PromptInsufficientMembers, ov44_022346B4,
+//     Wifi_PromptConfirmMembers, ov44_022346E8, ov44_0223471C, ov44_02234764,
 //     ov44_0223479C, ov44_022347D4, ov44_022347FC, ov44_02234828,
-//     ov44_02234858, ov44_022348A8, ov44_022348C4, ov44_022348EC,
-//     ov44_02234904, ov44_02234944, ov44_0223499C, ov44_022349B4,
-//     ov44_022349F4, ov44_02234A4C, ov44_02234A68, ov44_02234AA8,
-//     ov44_02234AE4, ov44_02234B18, ov44_02234B58, ov44_02234B80,
+//     ov44_02234858, ov44_022348A8, ov44_022348C4, Wifi_PromptStopFindingMembers,
+//     ov44_02234904, ov44_02234944, Wifi_PromptDropAsLeader, ov44_022349B4,
+//     ov44_022349F4, Wifi_PromptCancelInvites, ov44_02234A68, ov44_02234AA8,
+//     Wifi_PromptMemberDropped, ov44_02234B18, Wifi_PromptToggleVoiceChat, ov44_02234B80,
 //     ov44_02234BB4};
 
 // const u8 ov44_0223663C[20] = {5, 4, 3, 2, 1, 0, 0, 0, 0, 0, 1, 2, 3, 4, 5, 5, 5, 5, 0, 0};
@@ -200,7 +200,7 @@ s32 ov44_022330A8(OverlayManager* arg0) {
     ov44_02234038(temp_r4);
     ov44_02234204(temp_r4);
     ov44_02233F20(temp_r4);
-    ov44_02233214(temp_r4, HEAP_ID_103);
+    FreeStructOv44_02235340(temp_r4, HEAP_ID_103);
     GF_DestroyVramTransferManager();
     OverlayManager_FreeData(arg0);
     Heap_Destroy(HEAP_ID_104);
@@ -272,19 +272,19 @@ s32 ov44_022331B0(UnkStruct_ov44_02235340* arg0) {
 
 void ov44_022331C4(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum HeapID heapID) {
     ov44_0223323C();
-    ov44_0223325C(&arg0->unk30, heapID);
-    ov44_02233444(&arg0->unk30, arg1, heapID);
-    ov44_0223362C(&arg0->unk30, arg1, heapID);
+    InitBgAndScrnData(&arg0->unk30, heapID);
+    InitWindowList(&arg0->unk30, arg1, heapID);
+    InitStringAndMsgData(&arg0->unk30, arg1, heapID);
     ov44_02233698(&arg0->unk30, arg1, heapID);
     ov44_02233A50(arg0, arg1, heapID);
-    ov44_0223376C(&arg0->unk30, heapID);
+    InitSpritesAnd2DGfxResObjs(&arg0->unk30, heapID);
 }
 
-void ov44_02233214(UnkStruct_ov44_02235340* arg0, enum HeapID heapID) {
-    ov44_02233820(&arg0->unk30);
-    ov44_02233678(&arg0->unk30);
-    ov44_022335AC(&arg0->unk30, heapID);
-    ov44_0223340C(&arg0->unk30);
+void FreeStructOv44_02235340(UnkStruct_ov44_02235340* arg0, enum HeapID heapID) {
+    FreeSpritesAnd2DGfxResObjs(&arg0->unk30);
+    FreeStringAndMsgData(&arg0->unk30);
+    FreeWindowList(&arg0->unk30, heapID);
+    FreeBgAndScreenData(&arg0->unk30);
 }
 
 void ov44_0223323C(void) {
@@ -292,7 +292,7 @@ void ov44_0223323C(void) {
     GfGfx_SetBanks(&graphicsBanks);
 }
 
-void ov44_0223325C(UnkStruct_ov44_02232F64* arg0, enum HeapID heapID) {
+void InitBgAndScrnData(UnkStruct_ov44_02232F64* arg0, enum HeapID heapID) {
     arg0->bgConfig = BgConfig_Alloc(heapID);
     GraphicsModes graphicModes = ov44_02236474;
     SetBothScreensModesAndDisable(&graphicModes);
@@ -323,8 +323,8 @@ void ov44_0223325C(UnkStruct_ov44_02232F64* arg0, enum HeapID heapID) {
     NARC* narc = NARC_New(NARC_a_0_8_8, heapID);
     GfGfxLoader_GXLoadPalFromOpenNarc(narc, 14, GF_PAL_LOCATION_MAIN_BG, GF_PAL_SLOT_5_OFFSET, 32, heapID);
     GfGfxLoader_LoadCharDataFromOpenNarc(narc, 13, arg0->bgConfig, GF_BG_LYR_MAIN_2, 0, 1536, 0, heapID);
-    arg0->unk1E0 = GfGfxLoader_GetScrnDataFromOpenNarc(narc, 15, 0, &arg0->unk1E4, heapID);
-    arg0->unk1EC = GfGfxLoader_GetPlttDataFromOpenNarc(narc, 45, &arg0->unk1F0, heapID);
+    arg0->scrnDataRaw = GfGfxLoader_GetScrnDataFromOpenNarc(narc, 15, 0, &arg0->scrnData, heapID);
+    arg0->plttDataRaw = GfGfxLoader_GetPlttDataFromOpenNarc(narc, 45, &arg0->plttData, heapID);
     GfGfxLoader_LoadCharDataFromOpenNarc(narc, 46, arg0->bgConfig, GF_BG_LYR_MAIN_0, 0, 0, 0, heapID);
     GfGfxLoader_LoadScrnDataFromOpenNarc(narc, 47, arg0->bgConfig, GF_BG_LYR_MAIN_0, 0, 0, 0, heapID);
     ov44_02233D08(arg0, 0);
@@ -333,16 +333,16 @@ void ov44_0223325C(UnkStruct_ov44_02232F64* arg0, enum HeapID heapID) {
     NARC_Delete(narc);
 }
 
-void ov44_0223340C(UnkStruct_ov44_02232F64* arg0) {
-    Heap_Free(arg0->unk1E0);
-    Heap_Free(arg0->unk1EC);
+void FreeBgAndScreenData(UnkStruct_ov44_02232F64* arg0) {
+    Heap_Free(arg0->scrnDataRaw);
+    Heap_Free(arg0->plttDataRaw);
     FreeBgTilemapBuffer(arg0->bgConfig, GF_BG_LYR_MAIN_2);
     FreeBgTilemapBuffer(arg0->bgConfig, GF_BG_LYR_MAIN_1);
     FreeBgTilemapBuffer(arg0->bgConfig, GF_BG_LYR_MAIN_0);
     Heap_Free(arg0->bgConfig);
 }
 
-void ov44_02233444(UnkStruct_ov44_02232F64* arg0, UnkStruct_ov44_args* arg1, enum HeapID heapID) {
+void InitWindowList(UnkStruct_ov44_02232F64* arg0, UnkStruct_ov44_args* arg1, enum HeapID heapID) {
     LoadFontPal1(GF_PAL_LOCATION_MAIN_BG, GF_PAL_SLOT_1_OFFSET, heapID);
 
     Options* options = Save_PlayerData_GetOptionsAddr(arg1->unk8);
@@ -364,7 +364,7 @@ void ov44_02233444(UnkStruct_ov44_02232F64* arg0, UnkStruct_ov44_args* arg1, enu
     FillWindowPixelBuffer(&arg0->windowList[4], 15);
 }
 
-void ov44_022335AC(UnkStruct_ov44_02232F64* arg0, enum HeapID heapID) {
+void FreeWindowList(UnkStruct_ov44_02232F64* arg0, enum HeapID heapID) {
     ov44_02233954(arg0);
     ClearFrameAndWindow2(&arg0->windowList[0], 0);
     RemoveWindow(&arg0->windowList[0]);
@@ -376,26 +376,26 @@ void ov44_022335AC(UnkStruct_ov44_02232F64* arg0, enum HeapID heapID) {
     sub_0200E5D4(&arg0->windowList[4], 0);
     RemoveWindow(&arg0->windowList[4]);
     
-    if (arg0->unk1DC != NULL) {
-        Clear2dMenuWindowAndDelete(arg0->unk1DC, heapID);
+    if (arg0->listMenu2D != NULL) {
+        Clear2dMenuWindowAndDelete(arg0->listMenu2D, heapID);
     }
 }
 
-void ov44_0223362C(UnkStruct_ov44_02232F64* arg0, UnkStruct_ov44_args* arg1, enum HeapID heapID) {
+void InitStringAndMsgData(UnkStruct_ov44_02232F64* arg0, UnkStruct_ov44_args* arg1, enum HeapID heapID) {
     arg0->msgFmt = MessageFormat_New(heapID);
-    arg0->unk8 = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0778_bin, heapID);
-    arg0->unkC = String_New(256, heapID);
-    arg0->unk10 = String_New(256, heapID);
-    arg0->unk14 = 255;
+    arg0->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0778_bin, heapID);
+    arg0->string1 = String_New(256, heapID);
+    arg0->string2 = String_New(256, heapID);
+    arg0->printerId = 255;
 
     Options* options = Save_PlayerData_GetOptionsAddr(arg1->unk8);
-    arg0->unk16 = Options_GetTextFrameDelay(options);
+    arg0->textFrameDelay = Options_GetTextFrameDelay(options);
 }
 
-void ov44_02233678(UnkStruct_ov44_02232F64* arg0) {
-    String_Delete(arg0->unk10);
-    String_Delete(arg0->unkC);
-    DestroyMsgData(arg0->unk8);
+void FreeStringAndMsgData(UnkStruct_ov44_02232F64* arg0) {
+    String_Delete(arg0->string2);
+    String_Delete(arg0->string1);
+    DestroyMsgData(arg0->msgData);
     MessageFormat_Delete(arg0->msgFmt);
 }
 
@@ -415,20 +415,20 @@ void ov44_02233698(UnkStruct_ov44_02232F64* arg0, UnkStruct_ov44_args* arg1, enu
     }
 
     // Seeking Poffin cooks! OR // Seeking {STRVAR_3 0, 0, 0} players!
-    ReadMsgDataIntoString(arg0->unk8, ov44_0223689C[arg1->unk0], arg0->unk10);
-    StringExpandPlaceholders(arg0->msgFmt, arg0->unkC, arg0->unk10);
-    AddTextPrinterParameterizedWithColor(&arg0->windowList[1], 0, arg0->unkC, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 15), 0);
+    ReadMsgDataIntoString(arg0->msgData, ov44_0223689C[arg1->unk0], arg0->string2);
+    StringExpandPlaceholders(arg0->msgFmt, arg0->string1, arg0->string2);
+    AddTextPrinterParameterizedWithColor(&arg0->windowList[1], 0, arg0->string1, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 15), 0);
     ScheduleWindowCopyToVram(&arg0->windowList[1]);
     ScheduleWindowCopyToVram(&arg0->windowList[3]);
 
     // Voice Chat ON/OFF: X Button
-    ReadMsgDataIntoString(arg0->unk8, msg_0778_00128, arg0->unkC);
-    AddTextPrinterParameterizedWithColor(&arg0->windowList[2], 0, arg0->unkC, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), 0);
+    ReadMsgDataIntoString(arg0->msgData, msg_0778_00128, arg0->string1);
+    AddTextPrinterParameterizedWithColor(&arg0->windowList[2], 0, arg0->string1, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), 0);
     ScheduleWindowCopyToVram(&arg0->windowList[2]);
     ScheduleWindowCopyToVram(&arg0->windowList[0]);
 }
 
-void ov44_0223376C(UnkStruct_ov44_02232F64* arg0, enum HeapID heapID) {
+void InitSpritesAnd2DGfxResObjs(UnkStruct_ov44_02232F64* arg0, enum HeapID heapID) {
     NNS_G2dInitOamManagerModule();
     OamManager_Create(0, 126, 0, 31, 0, 126, 0, 31, heapID);
     ObjCharTransferTemplate objCharTransferTemplate = ov44_02236484;
@@ -439,23 +439,23 @@ void ov44_0223376C(UnkStruct_ov44_02232F64* arg0, enum HeapID heapID) {
     ObjPlttTransfer_Reset();
     G2dRenderer_SetObjCharTransferReservedRegion(NNS_G2D_VRAM_TYPE_2DMAIN, GX_OBJVRAMMODE_CHAR_1D_128K);
     G2dRenderer_SetPlttTransferReservedRegion(NNS_G2D_VRAM_TYPE_2DMAIN);
-    arg0->spriteList = G2dRenderer_Init(4, &arg0->unk1C, heapID);
+    arg0->spriteList = G2dRenderer_Init(4, &arg0->g2dRenderer, heapID);
 
     for (s32 i = 0; i < 4; i++) {
-        arg0->unk144[i] = Create2DGfxResObjMan(4, (GfGfxResType)i, heapID);
+        arg0->gf2DGfxResManList[i] = Create2DGfxResObjMan(4, (GfGfxResType)i, heapID);
     }
 
     arg0->unk154 = ov42_02228010(4, heapID);
     arg0->unk158 = ov42_02228EDC(arg0->spriteList, 0, 4, 1, heapID);
 }
 
-void ov44_02233820(UnkStruct_ov44_02232F64* arg0) {
+void FreeSpritesAnd2DGfxResObjs(UnkStruct_ov44_02232F64* arg0) {
     ov42_02228F94(arg0->unk158);
     ov42_02228050(arg0->unk154);
     SpriteList_Delete(arg0->spriteList);
 
     for (s32 i = 0; i < 4; i++) {
-        Destroy2DGfxResObjMan(arg0->unk144[i]);
+        Destroy2DGfxResObjMan(arg0->gf2DGfxResManList[i]);
     }
 
     ObjCharTransfer_Destroy();
@@ -463,49 +463,49 @@ void ov44_02233820(UnkStruct_ov44_02232F64* arg0) {
     OamManager_Free();
 }
 
-void ov44_02233860(UnkStruct_ov44_02232F64* arg0, UnkStruct_ov44_args* arg1, s32 strno, enum HeapID heapID) {
-    ov44_0223386C(arg0, arg1, strno, 0, heapID);
+void Wifi_LoadAndPrintTextToWindowWrapper(UnkStruct_ov44_02232F64* arg0, UnkStruct_ov44_args* arg1, s32 strno, enum HeapID heapID) {
+    Wifi_LoadAndPrintTextToWindow(arg0, arg1, strno, 0, heapID);
 }
 
-void ov44_0223386C(UnkStruct_ov44_02232F64* arg0, UnkStruct_ov44_args* arg1, s32 strno, s32 arg3, enum HeapID heapID) {
-    if ((arg0->unk14 != 255) && (TextPrinterCheckActive(arg0->unk14) != 0)) {
-        RemoveTextPrinter(arg0->unk14);
-        arg0->unk14 = 255;
+void Wifi_LoadAndPrintTextToWindow(UnkStruct_ov44_02232F64* arg0, UnkStruct_ov44_args* arg1, s32 strno, s32 arg3, enum HeapID heapID) {
+    if ((arg0->printerId != 255) && (TextPrinterCheckActive(arg0->printerId) != 0)) {
+        RemoveTextPrinter(arg0->printerId);
+        arg0->printerId = 255;
     }
     FillWindowPixelBuffer(&arg0->windowList[0], 15);
-    String* temp_r0 = String_New(256, heapID);
-    ReadMsgDataIntoString(arg0->unk8, strno, temp_r0);
-    StringExpandPlaceholders(arg0->msgFmt, arg0->unkC, temp_r0);
-    arg0->unk14 = AddTextPrinterParameterizedWithColor(&arg0->windowList[0], 1, arg0->unkC, 0, 0, arg0->unk16, MAKE_TEXT_COLOR(1, 2, 15), 0);
+    String* string = String_New(256, heapID);
+    ReadMsgDataIntoString(arg0->msgData, strno, string);
+    StringExpandPlaceholders(arg0->msgFmt, arg0->string1, string);
+    arg0->printerId = AddTextPrinterParameterizedWithColor(&arg0->windowList[0], 1, arg0->string1, 0, 0, arg0->textFrameDelay, MAKE_TEXT_COLOR(1, 2, 15), 0);
     ScheduleWindowCopyToVram(&arg0->windowList[0]);
-    String_Delete(temp_r0);
+    String_Delete(string);
     Options* options = Save_PlayerData_GetOptionsAddr(arg1->unk8);
     LoadUserFrameGfx2(arg0->bgConfig, GF_BG_LYR_MAIN_1, 1, 2, Options_GetFrame(options), heapID);
     arg0->unk15 = arg3;
 }
 
 s32 ov44_02233914(UnkStruct_ov44_02232F64* arg0) {
-    if (arg0->unk14 == 255) {
+    if (arg0->printerId == 255) {
         if (arg0->unk15 != 0) {
             arg0->unk15--;
             return 0;
         }
     }
-    else if ((TextPrinterCheckActive(arg0->unk14) == 0) && (arg0->unk14 != 255)) {
-        arg0->unk14 = 255;
+    else if ((TextPrinterCheckActive(arg0->printerId) == 0) && (arg0->printerId != 255)) {
+        arg0->printerId = 255;
     }
-    if ((arg0->unk14 == 255) && (arg0->unk15 == 0)) {
+    if ((arg0->printerId == 255) && (arg0->unk15 == 0)) {
         return 1;
     }
     return 0;
 }
 
 void ov44_02233954(UnkStruct_ov44_02232F64* arg0) {
-    if (arg0->unk14 != 255) {
-        if (TextPrinterCheckActive(arg0->unk14) != 0) {
-            RemoveTextPrinter(arg0->unk14);
+    if (arg0->printerId != 255) {
+        if (TextPrinterCheckActive(arg0->printerId) != 0) {
+            RemoveTextPrinter(arg0->printerId);
         }
-        arg0->unk14 = 255;
+        arg0->printerId = 255;
     }
     FillWindowPixelBuffer(&arg0->windowList[0], 15);
     ScheduleWindowCopyToVram(&arg0->windowList[0]);
@@ -520,7 +520,7 @@ void ov44_0223398C(UnkStruct_ov44_02232F64* arg0, UnkStruct_ov44_args* arg1, s32
     ov44_02233C88(arg0, arg1, arg2, 0, heapID);
     ov44_02233CA0(arg0, arg1, arg2, 1, heapID);
 
-    ReadMsgDataIntoString(arg0->unk8, msg_0778_00131, string1);
+    ReadMsgDataIntoString(arg0->msgData, msg_0778_00131, string1);
     StringExpandPlaceholders(arg0->msgFmt, string2, string1);
     FillWindowPixelBuffer(&arg0->windowList[4], 15);
     AddTextPrinterParameterizedWithColor(&arg0->windowList[4], 0, string2, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 15), 0);
@@ -558,7 +558,7 @@ void ov44_02233AB8(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_02232F64* arg1,
     ov44_02233C88(arg1, arg2, arg3, 0, heapID);
 
     // {STRVAR_1 3, 0, 0}
-    ReadMsgDataIntoString(arg1->unk8, msg_0778_00129, string1);
+    ReadMsgDataIntoString(arg1->msgData, msg_0778_00129, string1);
     StringExpandPlaceholders(arg1->msgFmt, string2, string1);
     
     u32 temp_r6 = arg3 * 16;
@@ -567,7 +567,7 @@ void ov44_02233AB8(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_02232F64* arg1,
     ov44_02233CA0(arg1, arg2, arg3, 0, heapID);
 
     // ID {STRVAR_1 54, 0, 0}
-    ReadMsgDataIntoString(arg1->unk8, msg_0778_00130, string1);
+    ReadMsgDataIntoString(arg1->msgData, msg_0778_00130, string1);
     StringExpandPlaceholders(arg1->msgFmt, string2, string1);
     AddTextPrinterParameterizedWithColor(&arg1->windowList[3], 0, string2, 72, temp_r6, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 15), 0);
     ScheduleWindowCopyToVram(&arg1->windowList[3]);
@@ -584,7 +584,7 @@ void ov44_02233AB8(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_02232F64* arg1,
         var_r2 = 1;
     }
 
-    NNSG2dScreenData* screenData = arg1->unk1E4;
+    NNSG2dScreenData* screenData = arg1->scrnData;
     u32 temp_r4 = (arg3 << 1) + 5;
     CopyToBgTilemapRect(arg1->bgConfig, GF_BG_LYR_MAIN_2, 18, temp_r4, 2, 2, &screenData->rawData[0], var_r2*2, 0, screenData->screenWidth/8, screenData->screenHeight/8);
     BgTilemapRectChangePalette(arg1->bgConfig, GF_BG_LYR_MAIN_2, 18, temp_r4, 2, 2, 5);
@@ -596,7 +596,7 @@ void ov44_02233AB8(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_02232F64* arg1,
 void ov44_02233C18(UnkStruct_ov44_02232F64* arg0, UnkStruct_ov44_args* arg1, s32 arg2, enum HeapID heapID) {
     FillWindowPixelRect(&arg0->windowList[3], 15, 0, arg2 * 16, 160, 16);
 
-    NNSG2dScreenData* screenData = arg0->unk1E4;
+    NNSG2dScreenData* screenData = arg0->scrnData;
     CopyToBgTilemapRect(arg0->bgConfig, GF_BG_LYR_MAIN_2, 18, arg2 * 2 + 5, 2, 2, &screenData->rawData[0], 0, 0, screenData->screenWidth/8, screenData->screenHeight/8);
     ScheduleBgTilemapBufferTransfer(arg0->bgConfig, GF_BG_LYR_MAIN_2);
     ScheduleWindowCopyToVram(&arg0->windowList[3]);
@@ -611,20 +611,17 @@ void ov44_02233CA0(UnkStruct_ov44_02232F64* arg0, UnkStruct_ov44_args* arg1, s32
 }
 
 void ov44_02233CCC(UnkStruct_ov44_02232F64* arg0) {
-    s16 temp_r2;
-
-    temp_r2 = arg0->unk1F4;
-    if (temp_r2 <= 0) {
+    if (arg0->unk1F4 <= 0) {
         ov44_02233D08(arg0, arg0->unk1F6);
         arg0->unk1F4 = 3;
-        arg0->unk1F6 =  (arg0->unk1F6 + 1) % 18;
+        arg0->unk1F6 = (arg0->unk1F6 + 1) % 18;
         return;
     }
-    arg0->unk1F4 = temp_r2 - 1;
+    arg0->unk1F4--;
 }
 
 void ov44_02233D08(UnkStruct_ov44_02232F64* arg0, s32 arg1) {
-    if (GF_CreateNewVramTransferTask(NNS_GFD_DST_2D_BG_PLTT_MAIN, 0, (ov44_0223663C[arg1] << 5) + arg0->unk1F0->pRawData, 32) == 0) {
+    if (GF_CreateNewVramTransferTask(NNS_GFD_DST_2D_BG_PLTT_MAIN, 0, (ov44_0223663C[arg1] << 5) + arg0->plttData->pRawData, 32) == 0) {
         GF_AssertFail();
     }
 }
@@ -929,16 +926,16 @@ void ov44_0223427C(UnkStruct_ov44_02235340* arg0, enum HeapID heapID) {
 }
 
 void ov44_022342B8(UnkStruct_ov44_02235340* arg0) {
-    if (arg0->unk30.unk1E8 != 0) {
+    if (arg0->unk30.waitingIcon != 0) {
         GF_AssertFail();
     }
-    arg0->unk30.unk1E8 = WaitingIcon_New(&arg0->unk30.windowList[0], 1);
+    arg0->unk30.waitingIcon = WaitingIcon_New(&arg0->unk30.windowList[0], 1);
 }
 
 void ov44_022342E0(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum HeapID heapID) {
-    if (arg0->unk30.unk1E8 != 0) {
-        sub_0200F450(arg0->unk30.unk1E8);
-        arg0->unk30.unk1E8 = 0;
+    if (arg0->unk30.waitingIcon != 0) {
+        sub_0200F450(arg0->unk30.waitingIcon);
+        arg0->unk30.waitingIcon = 0;
         Options* options = Save_PlayerData_GetOptionsAddr(arg1->unk8);
         LoadUserFrameGfx2(arg0->unk30.bgConfig, GF_BG_LYR_MAIN_1, 1, 2, Options_GetFrame(options), heapID);
     }
@@ -1044,8 +1041,8 @@ s32 ov44_02234474(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum
 }
 
 // When the group is ready:\nA Button: Proceed   B Button: Cancel
-s32 ov44_022344AC(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum HeapID heapID) {
-    ov44_02233860(&arg0->unk30, arg1, msg_0778_00107, heapID);
+s32 Wifi_PromptReadyMessage(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum HeapID heapID) {
+    Wifi_LoadAndPrintTextToWindowWrapper(&arg0->unk30, arg1, msg_0778_00107, heapID);
     arg0->unk5 = 2;
     return 0;
 }
@@ -1095,9 +1092,9 @@ s32 ov44_022344C4(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum
 }
 
 // Someone wishes to join.\nAccept this Trainer as a member?
-s32 ov44_022345A0(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum HeapID heapID) {
+s32 Wifi_PromptUserJoinRequest(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum HeapID heapID) {
     ov44_0223398C(&arg0->unk30, arg1, arg0->unk6, heapID);
-    ov44_02233860(&arg0->unk30, arg1, msg_0778_00108, heapID);
+    Wifi_LoadAndPrintTextToWindowWrapper(&arg0->unk30, arg1, msg_0778_00108, heapID);
     arg0->unk5 = 4;
     return 0;
 }
@@ -1106,7 +1103,7 @@ s32 ov44_022345C8(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum
     if (ov44_02233914(&arg0->unk30) == 0) {
         return 0;
     }
-    arg0->unk30.unk1DC = Std_CreateYesNoMenu(arg0->unk30.bgConfig, &ov44_0223645C, 48, 4, heapID);
+    arg0->unk30.listMenu2D = Std_CreateYesNoMenu(arg0->unk30.bgConfig, &ov44_0223645C, 48, 4, heapID);
     arg0->unk5 = 5;
     return 0;
 }
@@ -1114,7 +1111,7 @@ s32 ov44_022345C8(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum
 s32 ov44_022345FC(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum HeapID heapID) {
     s32 temp_r0;
 
-    temp_r0 = Handle2dMenuInput_DeleteOnFinish(arg0->unk30.unk1DC, heapID);
+    temp_r0 = Handle2dMenuInput_DeleteOnFinish(arg0->unk30.listMenu2D, heapID);
     if (temp_r0 != -1) {
         UnkStruct_ov44_022345FC subroutine_arg0;
         subroutine_arg0.unk0 = (s16) arg0->unk6;
@@ -1140,14 +1137,14 @@ s32 ov44_022345FC(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum
         }
         arg0->unk6 = 255;
         ov44_02233A34(&arg0->unk30);
-        arg0->unk30.unk1DC = NULL;
+        arg0->unk30.listMenu2D = NULL;
     }
     return 0;
 }
 
 // There aren’t enough members.\r
-s32 ov44_0223469C(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum HeapID heapID) {
-    ov44_02233860(&arg0->unk30, arg1, msg_0778_00119, heapID);
+s32 Wifi_PromptInsufficientMembers(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum HeapID heapID) {
+    Wifi_LoadAndPrintTextToWindowWrapper(&arg0->unk30, arg1, msg_0778_00119, heapID);
     arg0->unk5 = 7;
     return 0;
 }
@@ -1161,8 +1158,8 @@ s32 ov44_022346B4(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum
 }
 
 // Are these members OK?
-s32 ov44_022346D0(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum HeapID heapID) {
-    ov44_02233860(&arg0->unk30, arg1, msg_0778_00111, heapID);
+s32 Wifi_PromptConfirmMembers(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum HeapID heapID) {
+    Wifi_LoadAndPrintTextToWindowWrapper(&arg0->unk30, arg1, msg_0778_00111, heapID);
     arg0->unk5 = 9;
     return 0;
 }
@@ -1171,7 +1168,7 @@ s32 ov44_022346E8(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum
     if (ov44_02233914(&arg0->unk30) == 0) {
         return 0;
     }
-    arg0->unk30.unk1DC = Std_CreateYesNoMenu(arg0->unk30.bgConfig, &ov44_0223645C, 48, 4, heapID);
+    arg0->unk30.listMenu2D = Std_CreateYesNoMenu(arg0->unk30.bgConfig, &ov44_0223645C, 48, 4, heapID);
     arg0->unk5 = 10;
     return 0;
 }
@@ -1179,7 +1176,7 @@ s32 ov44_022346E8(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum
 s32 ov44_0223471C(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum HeapID heapID) {
     s32 temp_r0;
 
-    temp_r0 = Handle2dMenuInput_DeleteOnFinish(arg0->unk30.unk1DC, heapID);
+    temp_r0 = Handle2dMenuInput_DeleteOnFinish(arg0->unk30.listMenu2D, heapID);
     if (temp_r0 != -1) {
         if (temp_r0 == 0) {
             arg0->unk5 = 11;
@@ -1188,7 +1185,7 @@ s32 ov44_0223471C(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum
         } else {
             arg0->unk5 = 1;
         }
-        arg0->unk30.unk1DC = NULL;
+        arg0->unk30.listMenu2D = NULL;
     }
     return 0;
 }
@@ -1197,7 +1194,7 @@ s32 ov44_0223471C(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum
 s32 ov44_02234764(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum HeapID heapID) {
     arg0->unk8 = 30;
     ov44_02233FA8(arg0);
-    ov44_02233860(&arg0->unk30, arg1, msg_0778_00102, heapID);
+    Wifi_LoadAndPrintTextToWindowWrapper(&arg0->unk30, arg1, msg_0778_00102, heapID);
     ov44_022342B8(arg0);
     ov44_02234440(arg0);
     arg0->unk5 = 12;
@@ -1292,8 +1289,8 @@ s32 ov44_022348C4(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum
 }
 
 // Stop looking for members?
-s32 ov44_022348EC(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum HeapID heapID) {
-    ov44_02233860(&arg0->unk30, arg1, msg_0778_00120, heapID);
+s32 Wifi_PromptStopFindingMembers(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum HeapID heapID) {
+    Wifi_LoadAndPrintTextToWindowWrapper(&arg0->unk30, arg1, msg_0778_00120, heapID);
     arg0->unk5 = 20;
     return 0;
 }
@@ -1302,7 +1299,7 @@ s32 ov44_02234904(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum
     if (ov44_02233914(&arg0->unk30) == 0) {
         return 0;
     }
-    arg0->unk30.unk1DC = CreateYesNoMenu(arg0->unk30.bgConfig, &ov44_0223645C, 48U, 4, 1, heapID);
+    arg0->unk30.listMenu2D = CreateYesNoMenu(arg0->unk30.bgConfig, &ov44_0223645C, 48U, 4, 1, heapID);
     arg0->unk5 = 21;
     return 0;
 }
@@ -1310,7 +1307,7 @@ s32 ov44_02234904(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum
 s32 ov44_02234944(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum HeapID heapID) {
     s32 temp_r0;
 
-    temp_r0 = Handle2dMenuInput_DeleteOnFinish(arg0->unk30.unk1DC, heapID);
+    temp_r0 = Handle2dMenuInput_DeleteOnFinish(arg0->unk30.listMenu2D, heapID);
     if (temp_r0 != -1) {
         if (temp_r0 == 0) {
             arg0->unk5 = 22;
@@ -1323,14 +1320,14 @@ s32 ov44_02234944(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum
         } else {
             arg0->unk5 = 1;
         }
-        arg0->unk30.unk1DC = NULL;
+        arg0->unk30.listMenu2D = NULL;
     }
     return 0;
 }
 
 // If the leader drops out, the group will\nbe disbanded. Is that OK?
-s32 ov44_0223499C(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum HeapID heapID) {
-    ov44_02233860(&arg0->unk30, arg1, msg_0778_00121, heapID);
+s32 Wifi_PromptDropAsLeader(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum HeapID heapID) {
+    Wifi_LoadAndPrintTextToWindowWrapper(&arg0->unk30, arg1, msg_0778_00121, heapID);
     arg0->unk5 = 23;
     return 0;
 }
@@ -1339,7 +1336,7 @@ s32 ov44_022349B4(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum
     if (ov44_02233914(&arg0->unk30) == 0) {
         return 0;
     }
-    arg0->unk30.unk1DC = CreateYesNoMenu(arg0->unk30.bgConfig, &ov44_0223645C, 48, 4, 1, heapID);
+    arg0->unk30.listMenu2D = CreateYesNoMenu(arg0->unk30.bgConfig, &ov44_0223645C, 48, 4, 1, heapID);
     arg0->unk5 = 24;
     return 0;
 }
@@ -1347,7 +1344,7 @@ s32 ov44_022349B4(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum
 s32 ov44_022349F4(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum HeapID heapID) {
     s32 temp_r0;
 
-    temp_r0 = Handle2dMenuInput_DeleteOnFinish(arg0->unk30.unk1DC, heapID);
+    temp_r0 = Handle2dMenuInput_DeleteOnFinish(arg0->unk30.listMenu2D, heapID);
     if (temp_r0 != -1) {
         if (temp_r0 == 0) {
             arg0->unk5 = 25;
@@ -1360,14 +1357,14 @@ s32 ov44_022349F4(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum
         } else {
             arg0->unk5 = 1;
         }
-        arg0->unk30.unk1DC = NULL;
+        arg0->unk30.listMenu2D = NULL;
     }
     return 0;
 }
 
 // The member invitations will be canceled.
-s32 ov44_02234A4C(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum HeapID heapID) {
-    ov44_02233860(&arg0->unk30, arg1, msg_0778_00122, heapID);
+s32 Wifi_PromptCancelInvites(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum HeapID heapID) {
+    Wifi_LoadAndPrintTextToWindowWrapper(&arg0->unk30, arg1, msg_0778_00122, heapID);
     arg0->unk8 = 30;
     arg0->unk5 = 26;
     return 0;
@@ -1393,9 +1390,9 @@ s32 ov44_02234A68(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum
 }
 
 s32 ov44_02234AA8(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum HeapID heapID) {
-    if (arg0->unk30.unk1DC != NULL) {
-        Clear2dMenuWindowAndDelete(arg0->unk30.unk1DC, heapID);
-        arg0->unk30.unk1DC = NULL;
+    if (arg0->unk30.listMenu2D != NULL) {
+        Clear2dMenuWindowAndDelete(arg0->unk30.listMenu2D, heapID);
+        arg0->unk30.listMenu2D = NULL;
     }
     ov44_02233A34(&arg0->unk30);
     ov44_022342E0(arg0, arg1, heapID);
@@ -1404,8 +1401,8 @@ s32 ov44_02234AA8(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum
 }
 
 // A member had to drop out.\nPlease register from the start again.\r
-s32 ov44_02234AE4(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum HeapID heapID) {
-    ov44_02233860(&arg0->unk30, arg1, msg_0778_00118, heapID);
+s32 Wifi_PromptMemberDropped(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum HeapID heapID) {
+    Wifi_LoadAndPrintTextToWindowWrapper(&arg0->unk30, arg1, msg_0778_00118, heapID);
     arg0->unk5 = 29;
     ov44_02233FE8(arg0);
     ov44_02233EB4(arg0, arg1);
@@ -1430,7 +1427,7 @@ s32 ov44_02234B18(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum
     return 1;
 }
 
-s32 ov44_02234B58(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum HeapID heapID) {
+s32 Wifi_PromptToggleVoiceChat(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum HeapID heapID) {
     s32 strno;
 
     if (arg0->unk0[33] == 1) {
@@ -1440,7 +1437,7 @@ s32 ov44_02234B58(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum
         // Is it OK to turn on the Voice Chat?
         strno = msg_0778_00124;
     }
-    ov44_02233860(&arg0->unk30, arg1, strno, heapID);
+    Wifi_LoadAndPrintTextToWindowWrapper(&arg0->unk30, arg1, strno, heapID);
     arg0->unk5 = 31;
     return 0;
 }
@@ -1449,7 +1446,7 @@ s32 ov44_02234B80(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum
     if (ov44_02233914(&arg0->unk30) == 0) {
         return 0;
     }
-    arg0->unk30.unk1DC = Std_CreateYesNoMenu(arg0->unk30.bgConfig, &ov44_0223645C, 48, 4, heapID);
+    arg0->unk30.listMenu2D = Std_CreateYesNoMenu(arg0->unk30.bgConfig, &ov44_0223645C, 48, 4, heapID);
     arg0->unk5 = 32;
     return 0;
 }
@@ -1457,14 +1454,14 @@ s32 ov44_02234B80(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum
 s32 ov44_02234BB4(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum HeapID heapID) {
     s32 temp_r0;
 
-    temp_r0 = Handle2dMenuInput_DeleteOnFinish(arg0->unk30.unk1DC, heapID);
+    temp_r0 = Handle2dMenuInput_DeleteOnFinish(arg0->unk30.listMenu2D, heapID);
     if (temp_r0 != -1) {
         if (temp_r0 == 0) {
             ov44_02233D38(arg0, heapID);
             ov44_022340B4(arg0);
         }
         arg0->unk5 = 1;
-        arg0->unk30.unk1DC = NULL;
+        arg0->unk30.listMenu2D = NULL;
     }
     return 0;
 }
@@ -1490,10 +1487,10 @@ s32 ov44_02234C10(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum
 }
 
 // Awaiting {STRVAR_1 3, 0, 0}’s response...
-s32 ov44_02234C48(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum HeapID heapID) {
+s32 Wifi_PromptAwaitingResponse(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum HeapID heapID) {
     ov44_02233F6C(arg0, heapID);
     ov44_02233C88(&arg0->unk30, arg1, 0, 0, heapID);
-    ov44_02233860(&arg0->unk30, arg1, msg_0778_00114, heapID);
+    Wifi_LoadAndPrintTextToWindowWrapper(&arg0->unk30, arg1, msg_0778_00114, heapID);
     ov44_022342B8(arg0);
     arg0->unk5 = 3;
     return 0;
@@ -1530,7 +1527,7 @@ s32 ov44_02234C88(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum
 s32 ov44_02234CE8(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum HeapID heapID) {
     ov44_02233C88(&arg0->unk30, arg1, 0, 0, heapID);
 
-    ov44_0223386C(&arg0->unk30, arg1, msg_0778_00115, 30, heapID);
+    Wifi_LoadAndPrintTextToWindow(&arg0->unk30, arg1, msg_0778_00115, 30, heapID);
     arg0->unk5 = 5;
     ov44_022340BC(arg0, sub_0203769C(), HEAP_ID_103);
     return 0;
@@ -1547,7 +1544,7 @@ s32 ov44_02234D28(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum
 
 s32 ov44_02234D4C(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum HeapID heapID) {
     ov44_02233C88(&arg0->unk30, arg1, 0, 0, heapID);
-    ov44_02233860(&arg0->unk30, arg1, arg0->unk2D, heapID);
+    Wifi_LoadAndPrintTextToWindowWrapper(&arg0->unk30, arg1, arg0->unk2D, heapID);
     arg0->unk5 = 7;
     sub_02039358();
     sub_02039B58();
@@ -1564,9 +1561,9 @@ s32 ov44_02234D88(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum
 }
 
 // Awaiting other members.
-s32 ov44_02234DA8(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum HeapID heapID) {
+s32 Wifi_PromptAwaitingMembers(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum HeapID heapID) {
     ov44_02233F6C(arg0, heapID);
-    ov44_02233860(&arg0->unk30, arg1, msg_0778_00123, heapID);
+    Wifi_LoadAndPrintTextToWindowWrapper(&arg0->unk30, arg1, msg_0778_00123, heapID);
     ov44_022342B8(arg0);
     arg0->unk5 = 9;
     if (arg0->unk0[33] == 1) {
@@ -1599,7 +1596,7 @@ s32 ov44_02234E08(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum
         sub_02037BEC();
         sub_02037AC0(14);
         ov44_022342E0(arg0, arg1, heapID);
-        ov44_02233860(&arg0->unk30, arg1, msg_0778_00102, heapID);
+        Wifi_LoadAndPrintTextToWindowWrapper(&arg0->unk30, arg1, msg_0778_00102, heapID);
         ov44_02234440(arg0);
         arg0->unk8 = 300;
         ov44_022342B8(arg0);
@@ -1675,9 +1672,9 @@ s32 ov44_02234F60(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum
 }
 
 s32 ov44_02234F88(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum HeapID heapID) {
-    if (arg0->unk30.unk1DC != NULL) {
-        Clear2dMenuWindowAndDelete(arg0->unk30.unk1DC, heapID);
-        arg0->unk30.unk1DC = NULL;
+    if (arg0->unk30.listMenu2D != NULL) {
+        Clear2dMenuWindowAndDelete(arg0->unk30.listMenu2D, heapID);
+        arg0->unk30.listMenu2D = NULL;
     }
     ov44_02233A34(&arg0->unk30);
     ov44_022342E0(arg0, arg1, heapID);
@@ -1686,8 +1683,8 @@ s32 ov44_02234F88(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum
 }
 
 // A member had to drop out.\nPlease register from the start again.\r
-s32 ov44_02234FC4(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum HeapID heapID) {
-    ov44_02233860(&arg0->unk30, arg1, msg_0778_00118, heapID);
+s32 Wifi_PromptMemberDrop(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum HeapID heapID) {
+    Wifi_LoadAndPrintTextToWindowWrapper(&arg0->unk30, arg1, msg_0778_00118, heapID);
     arg0->unk5 = 17;
     return 0;
 }
@@ -1703,7 +1700,7 @@ s32 ov44_02234FDC(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum
     return 1;
 }
 
-s32 ov44_02235004(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum HeapID heapID) {
+s32 Wifi_PromptToggleVoiceChat_(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum HeapID heapID) {
     s32 strno;
 
     ov44_02233F6C(arg0, heapID);
@@ -1714,7 +1711,7 @@ s32 ov44_02235004(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum
         // Is it OK to turn on the Voice Chat?
         strno = msg_0778_00124;
     }
-    ov44_02233860(&arg0->unk30, arg1, strno, heapID);
+    Wifi_LoadAndPrintTextToWindowWrapper(&arg0->unk30, arg1, strno, heapID);
     arg0->unk5 = 19;
     return 0;
 }
@@ -1729,7 +1726,7 @@ s32 ov44_02235038(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum
     if (ov44_02233914(&arg0->unk30) == 0) {
         return 0;
     }
-    arg0->unk30.unk1DC = Std_CreateYesNoMenu(arg0->unk30.bgConfig, &ov44_0223645C, 48, 4, heapID);
+    arg0->unk30.listMenu2D = Std_CreateYesNoMenu(arg0->unk30.bgConfig, &ov44_0223645C, 48, 4, heapID);
     arg0->unk5 = 20;
     return 0;
 }
@@ -1741,18 +1738,18 @@ s32 ov44_02235090(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum
     if (ov44_0223442C(arg0) == 1) {
         arg0->unk5 = 10;
         ov44_02233954(&arg0->unk30);
-        Clear2dMenuWindowAndDelete(arg0->unk30.unk1DC, heapID);
-        arg0->unk30.unk1DC = 0;
+        Clear2dMenuWindowAndDelete(arg0->unk30.listMenu2D, heapID);
+        arg0->unk30.listMenu2D = 0;
         return 0;
     }
-    temp_r0 = Handle2dMenuInput_DeleteOnFinish(arg0->unk30.unk1DC, heapID);
+    temp_r0 = Handle2dMenuInput_DeleteOnFinish(arg0->unk30.listMenu2D, heapID);
     if (temp_r0 != -1) {
         if (temp_r0 == 0) {
             ov44_02233D38(arg0, heapID);
             ov44_022340B4(arg0);
         }
         arg0->unk5 = 8;
-        arg0->unk30.unk1DC = 0;
+        arg0->unk30.listMenu2D = 0;
     }
     return 0;
 }
@@ -1766,7 +1763,7 @@ s32 ov44_02235100(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum
     ov44_02233C88(&arg0->unk30, arg1, 0, 0, heapID);
     sub_02039358();
     arg0->unk27 = 0;
-    ov44_02233860(&arg0->unk30, arg1, msg_0778_00132, heapID);
+    Wifi_LoadAndPrintTextToWindowWrapper(&arg0->unk30, arg1, msg_0778_00132, heapID);
     arg0->unk5 = 22;
     return 0;
 }
@@ -1775,7 +1772,7 @@ s32 ov44_02235158(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum
     if (ov44_02233914(&arg0->unk30) == 0) {
         return 0;
     }
-    arg0->unk30.unk1DC = Std_CreateYesNoMenu(arg0->unk30.bgConfig, &ov44_0223645C, 48, 4, heapID);
+    arg0->unk30.listMenu2D = Std_CreateYesNoMenu(arg0->unk30.bgConfig, &ov44_0223645C, 48, 4, heapID);
     arg0->unk5 = 23;
     return 0;
 }
@@ -1784,7 +1781,7 @@ s32 ov44_0223518C(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum
     s32 temp_r0;
     s8 var_r0;
 
-    temp_r0 = Handle2dMenuInput_DeleteOnFinish(arg0->unk30.unk1DC, heapID);
+    temp_r0 = Handle2dMenuInput_DeleteOnFinish(arg0->unk30.listMenu2D, heapID);
     if (temp_r0 != -1) {
         if (temp_r0 == 0) {
             var_r0 = 24;
@@ -1792,14 +1789,14 @@ s32 ov44_0223518C(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum
             var_r0 = 29;
         }
         arg0->unk5 = var_r0;
-        arg0->unk30.unk1DC = 0;
+        arg0->unk30.listMenu2D = 0;
     }
     return 0;
 }
 
 // Communicating with {STRVAR_1 3, 0, 0}...
 s32 ov44_022351BC(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum HeapID heapID) {
-    ov44_02233860(&arg0->unk30, arg1, msg_0778_00017, heapID);
+    Wifi_LoadAndPrintTextToWindowWrapper(&arg0->unk30, arg1, msg_0778_00017, heapID);
     ov44_022342B8(arg0);
     arg0->unk8 = 90;
     arg0->unk5 = 25;
@@ -1838,7 +1835,7 @@ s32 ov44_02235268(UnkStruct_ov44_02235340* arg0, UnkStruct_ov44_args* arg1, enum
         sub_02034354(arg1->unk8, 0);
         arg0->unk27 = 1;
         ov44_02234204(arg0);
-        ov44_02233214(arg0, heapID);
+        FreeStructOv44_02235340(arg0, heapID);
         arg0 = arg0;
         memset(&arg0->unk30, 0, 504);
         ov44_02234028(arg0);
