@@ -8,5 +8,6 @@ void sub_02037AC0(u8 a0);
 BOOL sub_02037B38(u8 a0);
 void sub_02037BEC(void);
 u32 sub_02037C0C(u32 a0, u16 *a1);
+u16* sub_02037C44(s32 a0);
 
 #endif // POKEHEARTGOLD_UNK_020379A0_H
