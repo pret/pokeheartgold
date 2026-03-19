@@ -767,7 +767,7 @@ BOOL ScrCmd_MonHasItem(ScriptContext *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_GetPartymonForm(ScriptContext *ctx) {
+BOOL ScrCmd_GetPartyMonForm2(ScriptContext *ctx) {
     u16 slot = ScriptGetVar(ctx);
     u16 *form = ScriptGetVarPointer(ctx);
 

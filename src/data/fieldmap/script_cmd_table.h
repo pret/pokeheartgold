@@ -826,7 +826,7 @@ BOOL ScrCmd_823(ScriptContext *ctx);
 BOOL ScrCmd_824(ScriptContext *ctx);
 BOOL ScrCmd_GetShinyLeafCount(ScriptContext *ctx);
 BOOL ScrCmd_TryGiveShinyLeafCrown(ScriptContext *ctx);
-BOOL ScrCmd_GetPartymonForm(ScriptContext *ctx);
+BOOL ScrCmd_GetPartyMonForm2(ScriptContext *ctx);
 BOOL ScrCmd_MonAddContestValue(ScriptContext *ctx);
 BOOL ScrCmd_829(ScriptContext *ctx);
 BOOL ScrCmd_830(ScriptContext *ctx);
@@ -1681,7 +1681,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_824,
     ScrCmd_GetShinyLeafCount,
     ScrCmd_TryGiveShinyLeafCrown,
-    ScrCmd_GetPartymonForm,
+    ScrCmd_GetPartyMonForm2,
     ScrCmd_MonAddContestValue,
     ScrCmd_829,
     ScrCmd_830,
