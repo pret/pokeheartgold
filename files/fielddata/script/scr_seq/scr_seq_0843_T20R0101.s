@@ -296,7 +296,7 @@ _03BA:
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, SPECIES_PICHU
 	goto_if_ne _03F5
-	get_partymon_form VAR_TEMP_x4000, VAR_SPECIAL_RESULT
+	get_party_mon_form_2 VAR_TEMP_x4000, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0CDC
 _03F5:
