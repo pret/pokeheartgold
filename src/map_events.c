@@ -190,15 +190,15 @@ static void MapEvents_ComputeRamHeader(MapEvents *events) {
     }
 }
 
-void WildEncounters_ReadFromNarc(ENC_DATA *encData, u32 mapno) {
-    memset(encData, 0, sizeof(ENC_DATA));
+void WildEncounters_ReadFromNarc(EncounterData *encData, u32 mapno) {
+    memset(encData, 0, sizeof(EncounterData));
     if (MapHeader_HasWildEncounters(mapno)) {
         int bank = MapHeader_GetWildEncounterBank(mapno);
         ReadWholeNarcMemberByIdPair(encData, ENCDATA_NARC, bank);
     }
 }
 
-ENC_DATA *MapEvents_GetLoadedEncTable(FieldSystem *fieldSystem) {
+EncounterData *MapEvents_GetLoadedEncTable(FieldSystem *fieldSystem) {
     return &fieldSystem->mapEvents->wildEncounters;
 }
 

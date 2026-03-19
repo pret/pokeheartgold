@@ -12,6 +12,11 @@ struct ErrorContinueEnv {
     Location location;
 };
 
+#define ROD_TYPE_OLD   0
+#define ROD_TYPE_GOOD  1
+#define ROD_TYPE_SUPER 2
+#define ROD_TYPE_NONE  0xFF
+
 struct FishingRodWork;
 
 // TODO: does this struct have more members?
