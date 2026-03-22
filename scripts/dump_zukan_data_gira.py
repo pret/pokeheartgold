@@ -32,10 +32,9 @@ zukan_data_dir = pathlib.Path() / "zukan_data"
 if not zukan_data_dir.exists():
     subprocess.check_call(
         [
-            "tools/knarc/knarc",
-            "-u",
-            "files/application/zukanlist/zkn_data/zukan_data.narc",
-            "-d",
+            "tools/nitroarc/nitroarc",
+            "--extract",
+            "--file=files/application/zukanlist/zkn_data/zukan_data.narc",
             "zukan_data",
         ]
     )
@@ -44,10 +43,9 @@ zukan_data_gira_dir = pathlib.Path() / "zukan_data_gira"
 if not zukan_data_gira_dir.exists():
     subprocess.check_call(
         [
-            "tools/knarc/knarc",
-            "-u",
-            "files/application/zukanlist/zkn_data/zukan_data_gira.narc",
-            "-d",
+            "tools/nitroarc/nitroarc",
+            "--extract",
+            "--file=files/application/zukanlist/zkn_data/zukan_data_gira.narc",
             "zukan_data_gira",
         ]
     )
