@@ -40,19 +40,19 @@ BOOL PokeathlonCourse_Init(OverlayManager *manager, int *state) {
     OverlayManagerTemplate subTemplate;
     void *system;
 
-    Heap_Create(HEAP_ID_3, HEAP_ID_92, 0x72000);
+    Heap_Create(HEAP_ID_3, HEAP_ID_POKEATHLON, 0x72000);
 
-    data = OverlayManager_CreateAndGetData(manager, sizeof(PokeathlonCourseData), HEAP_ID_92);
+    data = OverlayManager_CreateAndGetData(manager, sizeof(PokeathlonCourseData), HEAP_ID_POKEATHLON);
     MI_CpuFill8(data, 0, sizeof(PokeathlonCourseData));
 
-    data->heapId = HEAP_ID_92;
+    data->heapId = HEAP_ID_POKEATHLON;
 
     args = OverlayManager_GetArgs(manager);
     data->args = args;
 
     subTemplate = subOverlayTemplate;
 
-    subOverlay = OverlayManager_New(&subTemplate, &data->args, HEAP_ID_92);
+    subOverlay = OverlayManager_New(&subTemplate, &data->args, HEAP_ID_POKEATHLON);
     data->subOverlay = subOverlay;
 
     specialMode = FALSE;
@@ -79,7 +79,7 @@ BOOL PokeathlonCourse_Init(OverlayManager *manager, int *state) {
 
     PokeathlonCourse_InitPlayerProfiles(data);
 
-    system = ov96_021E92E0(HEAP_ID_92);
+    system = ov96_021E92E0(HEAP_ID_POKEATHLON);
     data->graphicsSystem = system;
 
     if (data->args->mode != 1) {
@@ -206,7 +206,7 @@ BOOL PokeathlonCourse_Exit(OverlayManager *manager, int *state) {
     data = OverlayManager_GetData(manager);
 
     // Verify heap is valid
-    GF_ASSERT(GF_heap_c_dummy_return_true(HEAP_ID_92));
+    GF_ASSERT(GF_heap_c_dummy_return_true(HEAP_ID_POKEATHLON));
 
     // Check if we need to free certain allocations
     args = data->args;
@@ -229,12 +229,12 @@ BOOL PokeathlonCourse_Exit(OverlayManager *manager, int *state) {
 
     // Free system objects
     ov96_021E9320(data->graphicsSystem);
-    Heap_Free(data->heapAllocPtr1);
+    Heap_Free(data->playerProfiles);
     ov96_021E8810(data->system);
 
     // Clean up overlay data and heap
     OverlayManager_FreeData(manager);
-    Heap_Destroy(HEAP_ID_92);
+    Heap_Destroy(HEAP_ID_POKEATHLON);
 
     return TRUE;
 }
@@ -282,19 +282,19 @@ void PokeathlonCourse_InitStateInfo(const void *funcTable, PokeathlonStateInfo *
 void PokeathlonCourse_InitPlayerProfiles(PokeathlonCourseData *data) {
     int i;
 
-    data->heapAllocPtr1 = Heap_Alloc(data->heapId, PlayerProfile_sizeof() * 4);
+    data->playerProfiles = Heap_Alloc(data->heapId, PlayerProfile_sizeof() * 4);
 
     for (i = 0; i < 4; i++) {
-        PlayerProfile_Init(PokeathlonCourse_GetPlayerProfile(data->heapAllocPtr1, i));
+        PlayerProfile_Init(PokeathlonCourse_GetPlayerProfile(data->playerProfiles, i));
     }
 
     if (data->args->mode == 0) {
-        PlayerProfile *dest = PokeathlonCourse_GetPlayerProfile(data->heapAllocPtr1, 0);
+        PlayerProfile *dest = PokeathlonCourse_GetPlayerProfile(data->playerProfiles, 0);
         PlayerProfile *src = Save_PlayerData_GetProfile(data->args->saveData);
         PlayerProfile_Copy(src, dest);
     } else {
         for (i = 0; i < data->participantCount; i++) {
-            PlayerProfile *dest = PokeathlonCourse_GetPlayerProfile(data->heapAllocPtr1, i);
+            PlayerProfile *dest = PokeathlonCourse_GetPlayerProfile(data->playerProfiles, i);
             PlayerProfile *src = sub_02034818(i);
             PlayerProfile_Copy(src, dest);
         }
@@ -333,17 +333,17 @@ void *ov96_021E5D88(PokeathlonCourseData *data) {
     return data->filler_BA4;
 }
 
-void *PokeathlonCourse_AllocFromHeap(PokeathlonCourseData *data, u32 size) {
+void *PokeathlonCourse_AllocPtr4FromHeap(PokeathlonCourseData *data, u32 size) {
     data->heapAllocPtr4 = Heap_Alloc(data->heapId, size);
     return data->heapAllocPtr4;
 }
 
-void PokeathlonCourse_FreeHeapAlloc(PokeathlonCourseData *data) {
+void PokeathlonCourse_FreePtr4HeapAlloc(PokeathlonCourseData *data) {
     Heap_Free(data->heapAllocPtr4);
     data->heapAllocPtr4 = NULL;
 }
 
-void *PokeathlonCourse_GetHeapAllocPtr(PokeathlonCourseData *data) {
+void *PokeathlonCourse_GetHeapAllocPtr4(PokeathlonCourseData *data) {
     return data->heapAllocPtr4;
 }
 
