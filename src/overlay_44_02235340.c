@@ -22,7 +22,6 @@
 #include "vram_transfer_manager.h"
 #include "text.h"
 #include "font.h"
-#include "sprite.h"
 #include "gf_gfx_loader.h"
 #include "constants/sndseq.h"
 #include "msgdata/msg.naix"
