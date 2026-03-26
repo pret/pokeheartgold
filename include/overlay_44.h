@@ -7,6 +7,7 @@
 #include "list_menu_2d.h"
 #include "render_window.h"
 #include "sprite.h"
+#include "yes_no_prompt.h"
 #include "unk_02009D48.h"
 
 // overlay_44_02232E9C
@@ -91,18 +92,17 @@ typedef struct UnkStruct_ov44_02231A7C {
 } UnkStruct_ov44_02231A7C;
 
 struct UnkStruct_ov44_02232DA0 { 
-    SpriteList* unk0;
+    u32 unk0;
     enum HeapID unk4;
     u8 unk8;
     u8 unk9;
     s16 unkA;
     u32 unkC;
-    u32 unk10;
+    BgConfig* unk10;
     UnkStruct_ov44_02231A7C unk14;
     UnkStruct_ov44_02232B74 unk18C[48];
     UnkStruct_ov44_02232B74* unk6CC;
-    u32 unk6D0;
-    u8 unk6D4[16];
+    UnkStruct_ov44_02232E80 unk6D0;
     u16* unk6E4;
     u32 unk6E8;
     u32 unk6EC;
@@ -111,22 +111,73 @@ struct UnkStruct_ov44_02232DA0 {
     u32 unk6F8;
 };
 
+typedef struct UnkStruct_ov44_0223197C {
+    u8 unk0[33];
+    u8 unk21;
+    u8 unk22;
+    u8 unk23;
+    u32 unk24;
+} UnkStruct_ov44_0223197C;
+
 typedef struct UnkStruct_ov44_022319EC {
     u32 unk0;
-    u32* unk4;
+    UnkStruct_ov44_0223197C* unk4;
     u8 unk8[0x384];
-    UnkStruct_ov44_02232E2C unk38C;
-    u8 unk3A2[0x76A];
-    u32 unkB1C;
+    UnkStruct_ov44_02232DA0 unk38C;
+    u8 unkA88[0x94];
+    MessageFormat* unkB1C;
     u8 unkB20[0x244];
     u32 unkD64;
     u8 unkD68[0x330];
     u32 unk1098;
 } UnkStruct_ov44_022319EC;
 
-UnkStruct_ov44_02232B74* ov44_022321C4(UnkStruct_ov44_02232DA0* arg0, UnkStruct_ov44_02232B74* arg1, u16 arg2);
+s32 ov44_02229F44(s32);
+void ov44_0222F510(UnkStruct_ov44_022319EC*, s32, s32);
+void ov44_0222F7BC(UnkStruct_ov44_022319EC*);
+s32 ov44_02231CE8(UnkStruct_ov44_02232DA0* arg0);
 
-void ov44_02232248(UnkStruct_ov44_02232DA0* arg0, s32 arg1, s32 arg2, s32 arg3);
+void ov44_02231918(UnkStruct_ov44_022319EC* arg0, s32 arg1);
+s32* ov44_02231958(UnkStruct_ov44_022319EC* arg0, u32 arg1);
+void ov44_02231974(void);
+void ov44_0223197C(UnkStruct_ov44_022319EC* arg0, s32 arg1, s32 arg2);
+void ov44_022319BC(UnkStruct_ov44_022319EC* arg0, s32 arg1);
+void ov44_022319EC(UnkStruct_ov44_022319EC* arg0);
+YesNoPrompt* ov44_02231A14(BgConfig* arg0, UnkStruct_ov44_02231A28* arg1, u32 arg2);
+YesNoPrompt* ov44_02231A28(BgConfig* arg0, UnkStruct_ov44_02231A28* arg1, u32 arg2);
+void ov44_02231A7C(UnkStruct_ov44_02232DA0* arg0, enum HeapID heapID, NARC* arg2, BgConfig* arg3, s32 arg4, u32 arg5);
+void ov44_02231B4C(UnkStruct_ov44_02232DA0* arg0);
+s32 ov44_02231BB0(s32* arg0);
+s32 ov44_02231BB4(UnkStruct_ov44_02232DA0* arg0);
+void ov44_02231C60(UnkStruct_ov44_02232DA0* arg0);
+u8 ov44_02231C70(UnkStruct_ov44_02232DA0* arg0);
+void ov44_02231C8C(UnkStruct_ov44_02232DA0* arg0);
+void ov44_02231D48(UnkStruct_ov44_02232DA0* arg0, s32* arg1);
+void ov44_02231D8C(UnkStruct_ov44_02232DA0* arg0);
+void ov44_02231D94(UnkStruct_ov44_02232DA0* arg0, s32 arg1);
+s32 ov44_02231D98(UnkStruct_ov44_02232DA0* arg0);
+UnkStruct_ov44_02232B74* ov44_02231D9C(UnkStruct_ov44_02232DA0* arg0, s16 arg1);
+UnkStruct_ov44_02232B74* ov44_02231E08(UnkStruct_ov44_02232DA0* arg0, s16 arg1, s16 arg2);
+void ov44_02231E94(UnkStruct_ov44_02232DA0* arg0, UnkStruct_ov44_02232B74* arg1);
+void ov44_02231ED4(s32* arg0);
+u8 ov44_02231EF4(s32* arg0);
+void ov44_02231F04(s32* arg0);
+void ov44_02231F14(UnkStruct_ov44_02232DA0* arg0, UnkStruct_ov44_02232B74* arg1, s32 arg2);
+void ov44_02231F88(s32 arg0, UnkStruct_ov44_02232B74* arg1);
+void ov44_02231FA8(UnkStruct_ov44_02232DA0* arg0, UnkStruct_ov44_02232B74* arg1, u8 arg2);
+void ov44_02231FCC(UnkStruct_ov44_02232DA0* arg0);
+void ov44_02232008(UnkStruct_ov44_02232DA0* arg0);
+void ov44_02232018(UnkStruct_ov44_02232DA0* arg0);
+void ov44_02232028(UnkStruct_ov44_02232DA0* arg0);
+s32 ov44_02232050(UnkStruct_ov44_02232DA0* arg0);
+s32 ov44_02232070(UnkStruct_ov44_02232DA0* arg0);
+void ov44_02232104(UnkStruct_ov44_02232DA0* arg0);
+void ov44_02232158(UnkStruct_ov44_02232DA0* arg0);
+void ov44_02232194(UnkStruct_ov44_02232DA0* arg0);
+UnkStruct_ov44_02232B74* ov44_022321C4(UnkStruct_ov44_02232DA0* arg0, UnkStruct_ov44_02232B74* arg1, u16 arg2);
+void ov44_02232204(UnkStruct_ov44_02232DA0* arg0, s32 arg1, s32 arg2);
+void ov44_02232238(UnkStruct_ov44_02232DA0* arg0);
+void ov44_02232248(UnkStruct_ov44_02232DA0* arg0, s32 arg1, NARC* arg2, s32 arg3);
 void ov44_02232288(UnkStruct_ov44_02232DA0* arg0);
 void ov44_02232298(UnkStruct_ov44_02231A7C* arg0, enum HeapID heapID, NARC* narc);
 void ov44_022322E8(UnkStruct_ov44_02231A7C* arg0);
@@ -134,8 +185,8 @@ void ov44_02232314(UnkStruct_ov44_02231A7C* arg0, enum HeapID heapID , NARC* nar
 void ov44_0223231C(UnkStruct_ov44_02231A7C* arg0);
 void ov44_02232324(UnkStruct_ov44_02231A7C* arg1, enum HeapID heapID);
 void ov44_0223232C(UnkStruct_ov44_02231A7C* arg0);
-void ov44_02232334(void);
-void ov44_02232338(void);
+void ov44_02232334(BgConfig* arg0, enum HeapID heapID);
+void ov44_02232338(BgConfig* arg0);
 void ov44_0223233C(BgConfig *bgConfig, enum HeapID heapID, NARC* narc);
 void ov44_0223237C(UnkStruct_ov44_02231A7C* arg0, enum HeapID heapID, NARC* narc);
 void ov44_0223247C(UnkStruct_ov44_02231A7C* arg0);
@@ -171,17 +222,17 @@ void ov44_02232C6C(UnkStruct_ov44_02232DA0* arg0, s16 arg1, UnkStruct_ov44_02232
 s32 ov44_02232C94(UnkStruct_ov44_02232B74* arg0);
 void ov44_02232CA8(UnkStruct_ov44_02232DA0* arg0, UnkStruct_ov44_02232B74* arg1, u8 arg2);
 void ov44_02232CCC(UnkStruct_ov44_02232DA0* arg0, UnkStruct_ov44_02232E80* arg1, NARC* arg2);
-void ov44_02232D08(s32 arg0, UnkStruct_ov44_02232E80* arg1);
-void ov44_02232D20(u32 arg0, UnkStruct_ov44_02232E80* arg1);
+void ov44_02232D08(UnkStruct_ov44_02232DA0* arg0, UnkStruct_ov44_02232E80* arg1);
+void ov44_02232D20(UnkStruct_ov44_02232DA0* arg0, UnkStruct_ov44_02232E80* arg1);
 void ov44_02232D34(UnkStruct_ov44_02232E80* arg0);
 void ov44_02232DA0(UnkStruct_ov44_02232E80* arg0);
 void* ov44_02232E2C(UnkStruct_ov44_02232E80* arg0, s32 arg1);
 void ov44_02232E38(UnkStruct_ov44_02232E80* arg0);
 void ov44_02232E54(UnkStruct_ov44_02232E80* arg0);
-void ov44_02232E5C(UnkStruct_ov44_02232E80* arg0, s8 arg1);
+void ov44_02232E5C(UnkStruct_ov44_02232E80* arg0, u8 arg1);
 void ov44_02232E80(UnkStruct_ov44_02232E80* arg0);
 s32 ov44_02232E90(s32 arg0);
-s32 ov44_02232E9C(s32 arg0);
+s32 ov44_02232E9C(u32 arg0);
 
 // overlay_44_02235340
 typedef struct UnkStruct_ov44_022341C0 {

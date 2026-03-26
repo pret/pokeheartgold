@@ -30,8 +30,27 @@ void ov42_022291D8(s32, UnkStruct_ov44_02232914);
 s32 ov42_022291F4(s32);                        
 ov42_02229218(s32, s32);  
 void ov42_02229258(s32, UnkStruct_ov44_02232914);  
-s32 ov42_022293B8(void*, s32, void*, s32); 
+s32 ov42_022293B8(G2dRenderer*, BgConfig*, void*, s32); 
 ov42_0222940C(s32);
 ov42_02229A8C(s32, void*);  
+void ov42_02229028(u32, s32, s32);
+u32 ov42_02228F24(SpriteList*, s32, s32, s32, s32, s32, s32);
+s32 ov42_022283BC(u32, u32);
+void ov42_02228068(u32, u32*);
+s32 ov42_02228C80(u16*, u32, u32*, u32*);
+s32 ov42_02229AC8(u32, u32*);
+u32 ov42_02228270(UnkStruct_ov44_02232914, u16);
+void ov42_022282A4(void);
+void ov42_02228100(s32);
+void ov42_022290C4(s32);
+void ov42_02229420(u32, u32*);
+void ov42_02229358(u32*, u32);
+s32 ov42_0222920C(s32);
+void ov42_02227F28(u16*);
+void ov42_02229A78(u32);
+u32 ov42_02229A40(s32, s32);
+void ov42_02229394(u32*);
+void ov42_02227F48(u16*, s32);
+u16* ov42_02227EE0(u16, u16, enum HeapID);
 
 #endif // POKEHEARTGOLD_OVY_42_H

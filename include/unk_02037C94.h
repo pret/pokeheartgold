@@ -26,7 +26,7 @@ BOOL sub_020390C4(void);
 void sub_020378E4(int a0);
 void sub_02039B18(void);
 void sub_02039AF8(void);
-s32 sub_02039080(void);
+s32 sub_02039080(s32);
 s32 sub_02039264(void);
 u8* sub_020398C8(void);
 
