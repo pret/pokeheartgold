@@ -33,11 +33,6 @@ typedef struct UnkStruct_ov44_02232E80 {
     u8 unk10;
 } UnkStruct_ov44_02232E80;
 
-typedef struct UnkStruct_ov44_02232724 {
-    s16 unk0;
-    s16 unk2;
-} UnkStruct_ov44_02232724;
-
 typedef struct UnkStruct_ov44_02232914 {
     u16 unk0;
     u16 unk2;
@@ -68,22 +63,9 @@ typedef struct UnkStruct_ov44_02232C4C {
     u8 unk3;
 } UnkStruct_ov44_02232C4C;
 
-typedef struct UnkStruct_ov44_02232E2C {
-    u32 unk0;
-    u32 unk4;
-    s16 unk8;
-    s16 unkA;
-    u32 unkC;
-    u32 unk10;
-    u32 unk14;
-    u8 unk18[9];
-    u8 unk21;
-} UnkStruct_ov44_02232E2C;
-
 typedef struct UnkStruct_ov44_02231A7C {
     SpriteList* unk0;
     G2dRenderer unk4;
-    // u8 unk8[292];
     GF_2DGfxResMan* unk12C[4];
     SpriteResource* unk13C[4];
     SpriteResourcesHeader unk14C;

@@ -57,7 +57,7 @@ void ov44_02231918(UnkStruct_ov44_022319EC* arg0, s32 arg1) {
 }
 
 s32* ov44_02231958(UnkStruct_ov44_022319EC* arg0, u32 arg1) {
-    if (arg1 >= 0x20) {
+    if (arg1 >= 32) {
         return &arg0->unk1098;
     }
     return &arg0->unk4->unk24 + 9 * arg1;
@@ -72,9 +72,9 @@ void ov44_0223197C(UnkStruct_ov44_022319EC* arg0, s32 arg1, s32 arg2) {
     sub_020379A0(HEAP_ID_15);
     ov00_021E70B8(arg0->unk4->unk21);
     if (ov44_02229F44(arg2) == 1) {
-        ov00_021E714C(1, 0x80);
+        ov00_021E714C(1, 128);
     } else {
-        ov00_021E714C(0, 0x80);
+        ov00_021E714C(0, 128);
     }
     sub_02097214();
     sub_02039080(arg1);
@@ -118,7 +118,7 @@ YesNoPrompt* ov44_02231A28(BgConfig* arg0, UnkStruct_ov44_02231A28* arg1, u32 ar
     yesNoPromptTemplate.shapeParam = 0;
     YesNoPrompt_InitFromTemplate(yesNoPrompt, &yesNoPromptTemplate);
     return yesNoPrompt;
-}
+}   
 
 void ov44_02231A7C(UnkStruct_ov44_02232DA0* arg0, enum HeapID arg1, NARC* arg2, BgConfig* arg3, s32 arg4, u32 arg5) {
     memset(arg0, 0, sizeof(UnkStruct_ov44_02232DA0));
@@ -129,12 +129,10 @@ void ov44_02231A7C(UnkStruct_ov44_02232DA0* arg0, enum HeapID arg1, NARC* arg2, 
     ov44_02232334(arg0->unk10, arg1);
     
     u32 temp_r0 = ov44_02232E90(temp_r7);
-    UnkStruct_ov44_02232914 sp4[2];
-    sp4[0].unk0 = temp_r0;
-    sp4[0].unk2 = temp_r0 >> 0x10;
-    sp4[1] = sp4[0];
+    UnkStruct_ov44_02232914 sp4;
+    sp4 = (UnkStruct_ov44_02232914){temp_r0, temp_r0 >> 0x10};
     
-    arg0->unk6E4 = ov42_02227EE0(sp4[1].unk0, sp4[0].unk2, arg1);
+    arg0->unk6E4 = ov42_02227EE0(sp4.unk0, sp4.unk2, arg1);
     ov42_02227F48(arg0->unk6E4, ov44_02232E9C(temp_r7));
     arg0->unk6E8 = ov42_02228010(0x30, arg1);
     ov44_02232204(arg0, arg4, arg1);
@@ -175,7 +173,7 @@ s32 ov44_02231BB4(UnkStruct_ov44_02232DA0* arg0) {
     if (ov44_02232050(arg0) == 1) {
         if (ov44_02232604(arg0) == 1) {
             ov44_0223254C(arg0);
-            if (0x80 & gSystem.heldKeys) {
+            if (128 & gSystem.heldKeys) {
                 return 1;
             }
         }
@@ -211,7 +209,7 @@ void ov44_02231C8C(UnkStruct_ov44_02232DA0* arg0) {
     u32 temp_r0 = ov42_022282DC(arg0->unk6CC->unk0);
     vu16 sp0[4];
     sp0[0] = temp_r0;
-    sp0[1] = temp_r0 >> 0x10;
+    sp0[1] = temp_r0 >> 16;
     sp0[2] = sp0[0];
     sp0[3] = sp0[1];
     ov42_02227FDC(arg0->unk6E4, (s16)sp0[2] / 16, (s16)sp0[3] / 16);
@@ -223,22 +221,17 @@ s32 ov44_02231CE8(UnkStruct_ov44_02232DA0* arg0) {
     }
     
     u32 temp_r0 = ov42_022282DC(arg0->unk6CC->unk0);
-    vu16 sp0[4];
-    sp0[0] = temp_r0;
-    sp0[1] = temp_r0 >> 0x10;
-    sp0[2] = sp0[0];
-    sp0[3] = sp0[1];
-    ov42_02227FDC(arg0->unk6E4, (s16)sp0[2] / 16, ((s16)sp0[3] / 16) + 1);
+    UnkStruct_ov44_02232914 sp0;
+    sp0 = (UnkStruct_ov44_02232914){temp_r0,  temp_r0 >> 0x10};
+    ov42_02227FDC(arg0->unk6E4, (s16)sp0.unk0 / 16, ((s16)sp0.unk2 / 16) + 1);
 }
 
 void ov44_02231D48(UnkStruct_ov44_02232DA0* arg0, s32* arg1) {    
     u32 temp_r0 = ov42_022282DC(arg1[0]);
     UnkStruct_ov44_02232914 sp0[2];
     sp0[0].unk0 = temp_r0;
-    sp0[0].unk2 = temp_r0 >> 0x10;
-    sp0[1].unk0 = sp0[0].unk0;
-    sp0[1].unk2 = sp0[0].unk2;
-    
+    sp0[0].unk2 = temp_r0 >> 16;
+    sp0[1] = sp0[0];
     ov44_022325A4(arg0, sp0[1], ov42_0222920C(arg1[1]) - 2);
 }
 
@@ -276,7 +269,7 @@ UnkStruct_ov44_02232B74* ov44_02231E08(UnkStruct_ov44_02232DA0* arg0, s16 arg1, 
     if (arg0->unk6CC != NULL) {
         u32 temp_r0_2 = ov42_022282DC(arg0->unk6CC->unk0);
         spC[0] = temp_r0_2;
-        spC[1] = temp_r0_2 >> 0x10;
+        spC[1] = temp_r0_2 >> 16;
         spC[2] = spC[0];
         spC[3] = spC[1];
         if (((s16) spC[2] == (s16)spC[4]) && ((s16) spC[3] == (s16)spC[5])) {
@@ -303,7 +296,7 @@ void ov44_02231E94(UnkStruct_ov44_02232DA0* arg0, UnkStruct_ov44_02232B74* arg1)
 void ov44_02231ED4(s32* arg0) {
     ov42_022290C4(arg0[1]);
     ov42_02228100(arg0[0]);
-    __builtin__clear(arg0, 0x1C);
+    __builtin__clear(arg0, 28);
 }
 
 u8 ov44_02231EF4(s32* arg0) {
@@ -324,9 +317,7 @@ void ov44_02231F14(UnkStruct_ov44_02232DA0* arg0, UnkStruct_ov44_02232B74* arg1,
     ov42_0222919C(arg1->unk4, 0);
     ov42_02229218(arg1->unk4, arg2);
     
-    UnkStruct_ov44_02232914 temp_r3;
-    temp_r3.unk0 = ov42_02228188(arg1->unk0, 0);
-    temp_r3.unk2 = ov42_02228188(arg1->unk0, 1);
+    UnkStruct_ov44_02232914 temp_r3 = {ov42_02228188(arg1->unk0, 0), ov42_02228188(arg1->unk0, 1)};
     ov42_022291D8(arg1->unk4, temp_r3);
 }
 
@@ -386,20 +377,14 @@ s32 ov44_02232050(UnkStruct_ov44_02232DA0* arg0) {
 
 s32 ov44_02232070(UnkStruct_ov44_02232DA0* arg0) {
     u32 temp = ov42_022282DC(arg0->unk6CC->unk0);
-    UnkStruct_ov44_02232914 sp0[4];
-    sp0[1].unk0 = temp;
-    sp0[1].unk2 = temp >> 0x10;
-    sp0[3].unk0 = sp0[1].unk0;
-    sp0[3].unk2 = sp0[1].unk2;
+    UnkStruct_ov44_02232914 sp0[2];
+    sp0[1] = (UnkStruct_ov44_02232914){temp, temp >> 16};
     
     u16 temp_r4 = ov42_02228188(arg0->unk6CC->unk0, 6); 
-    temp = ov42_02228270(sp0[3], temp_r4);
-    sp0[0].unk0 = temp;
-    sp0[0].unk2 = temp >> 0x10;
-    sp0[2].unk0 = sp0[0].unk0;
-    sp0[2].unk2 = sp0[0].unk2;
+    temp = ov42_02228270(sp0[1], temp_r4);
+    sp0[0] = (UnkStruct_ov44_02232914){temp, temp >> 16};
     
-    s32 temp_r0_3 = ov42_02227FDC(arg0->unk6E4, (s16)sp0[2].unk0 / 16, (s16)sp0[2].unk2 / 16);
+    s32 temp_r0_3 = ov42_02227FDC(arg0->unk6E4, (s16)sp0[0].unk0 / 16, (s16)sp0[0].unk2 / 16);
     if ((temp_r4 == 0) && (temp_r0_3 == 2)) {
         return 1;
     }
@@ -447,7 +432,7 @@ UnkStruct_ov44_02232B74* ov44_022321C4(UnkStruct_ov44_02232DA0* arg0, UnkStruct_
 }
 
 void ov44_02232204(UnkStruct_ov44_02232DA0* arg0, s32 arg1, s32 arg2) {
-    arg0->unk6EC = ov42_02228F24(arg0->unk14.unk0, 0, 0x30, arg1, 0, 1, arg2);
+    arg0->unk6EC = ov42_02228F24(arg0->unk14.unk0, 0, 48, arg1, 0, 1, arg2);
     ov42_02229028(arg0->unk6EC, 2, arg2);
 }
 
@@ -603,11 +588,11 @@ s32 ov44_02232604(UnkStruct_ov44_02232DA0* arg0) {
     }
     u32 temp_r0_2 = ov42_022282DC(arg0->unk6CC->unk0);
     
-    UnkStruct_ov44_02232724 sp4;
-    sp4 = (UnkStruct_ov44_02232724){temp_r0_2, temp_r0_2 >> 16};
+    s16 sp4[2];
+    sp4 = (s16[2]){temp_r0_2, temp_r0_2 >> 16};
     
     u16 temp_r4 = ov42_02228188(arg0->unk6CC->unk0, 6);
-    if (ov42_02227FDC(arg0->unk6E4, sp4.unk0 / 16, sp4.unk2 / 16) == 15 && temp_r4 == 1) {
+    if (ov42_02227FDC(arg0->unk6E4, sp4[0] / 16, sp4[1] / 16) == 0xF && temp_r4 == 1) {
         return 1;
     }
     return 0;
@@ -733,45 +718,37 @@ void ov44_02232910(UnkStruct_ov44_02232DA0* arg0, UnkStruct_ov44_02232B74* arg1)
 }
 
 void ov44_02232914(UnkStruct_ov44_02232DA0 *arg0, UnkStruct_ov44_02232B74* arg1) {
-    UnkStruct_ov44_02232914 sp0[2];
-
     ov42_022291AC(arg1->unk4);
     if (ov42_022291F4(arg1->unk4) == 0) {
         ov42_02229200(arg1->unk4, 1);
     }
-    sp0[1].unk0 = ov42_02228188(arg1->unk0, 0);
-    sp0[1].unk2 = ov42_02228188(arg1->unk0, 1);
-    sp0[0].unk0 = sp0[1].unk0;
-    sp0[0].unk2 = sp0[1].unk2;
+    UnkStruct_ov44_02232914 sp0 = {ov42_02228188(arg1->unk0, 0), ov42_02228188(arg1->unk0, 1)};
+    UnkStruct_ov44_02232914 sp4 = sp0;
     
     s64 temp_ret = (s64)GF_SinDegNoWrap(arg1->unk8) * (signed)0xFFF40000;
     temp_ret += 2048;
     
     s32 r1 = (temp_ret >> 12);
-    sp0[1].unk2 = (s16)sp0[1].unk2 + (r1 >> 12);
+    sp0.unk2 = (s16)sp0.unk2 + (r1 >> 12);
 
-    ov42_022291D8(arg1->unk4, sp0[1]);
-    ov42_02229258(arg1->unk4, sp0[0]);
+    ov42_022291D8(arg1->unk4, sp0);
+    ov42_02229258(arg1->unk4, sp4);
 }
 
 void ov44_022329B0(UnkStruct_ov44_02232DA0 *arg0, UnkStruct_ov44_02232B74* arg1) {
-    UnkStruct_ov44_02232914 sp0[2];
-    
-    sp0[1].unk0 = ov42_02228188(arg1->unk0, 0);
-    sp0[1].unk2 = ov42_02228188(arg1->unk0, 1);
-    sp0[0].unk0 = sp0[1].unk0;
-    sp0[0].unk2 = sp0[1].unk2;
+    UnkStruct_ov44_02232914 sp0 = {ov42_02228188(arg1->unk0, 0), ov42_02228188(arg1->unk0, 1)};
+    UnkStruct_ov44_02232914 sp4 = sp0;
     
     s16 temp_r0 = arg1->unk8 - 16;
     if (temp_r0 > 0) {
-        s32 temp_r0_2 = (s16)(temp_r0 % 6) * 180;
+        s32 temp_r0_2 = (s16)(temp_r0 % 6)* 180;
         s32 temp_r0_3 = GF_SinDegNoWrap(temp_r0_2 / 6);
         
         s64 r6 = ((s64)temp_r0_3 << 14) + 2048;
-        sp0[1].unk2 = (s16)sp0[1].unk2 - ((s32)(r6 >> 12) >> 12);
+        sp0.unk2 = (s16)sp0.unk2 - ((s32)(r6 >> 12) >> 12);
     }
-    ov42_022291D8(arg1->unk4, sp0[1]);
-    ov42_02229258(arg1->unk4, sp0[0]);
+    ov42_022291D8(arg1->unk4, sp0);
+    ov42_02229258(arg1->unk4, sp4);
     
     ov42_02229218(arg1->unk4, 1);
 }
