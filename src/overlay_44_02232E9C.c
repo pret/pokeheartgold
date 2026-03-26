@@ -20,16 +20,28 @@
 #include "unk_0200ACF0.h"
 #include "unk_0200A090.h"
 
-// extern FS_OVERLAY_ID_OVY_42;
-extern u16 ov44_02235600[];
-extern u8 ov44_02235604[11];
-extern u32 ov44_02235630[];
-extern u32 ov44_0223688C[];
+// const u16 ov44_02235600[2] = {3, 2};
 
-extern u8 ov44_0223560F[];
-extern u8 ov44_02235610[];
-extern u8 ov44_02235611[];
-extern u8 ov44_02235612[];
+// const u8 ov44_02235604[11] = {0, 0, 0, 28, 0, 0, 3, 0, 88, 22, 0};
+
+// const u32 ov44_02235630[4] = {0xB0010, 0xB0010, 0xB0016, 0xB001C};
+
+// const void* ov44_0223688C[4];
+
+// const u8 ov44_0223560F[1] = {0};
+// const u8 ov44_02235610[1] = {0};
+// const u8 ov44_02235611[1] = {0};
+// const u8 ov44_02235612[30] = {1, 1, 2, 1, 0, 1, 4, 1, 1, 1, 2, 1, 0, 0, 0, 0, 1, 1, 2, 1, 1, 1, 4, 1, 0, 1, 3, 1, 1, 0};
+
+extern u16 ov44_02235600[2];
+extern u8 ov44_02235604[11];
+extern u32 ov44_02235630[4];
+extern u32 ov44_0223688C[4];
+
+extern u8 ov44_0223560F[1];
+extern u8 ov44_02235610[1];
+extern u8 ov44_02235611[1];
+extern u8 ov44_02235612[30];
 
 void ov44_02232248(UnkStruct_ov44_02232DA0* arg0, s32 arg1, s32 arg2, s32 arg3) {
     u32 index = 0;
@@ -45,10 +57,10 @@ void ov44_02232288(UnkStruct_ov44_02232DA0* arg0) {
 }
 
 void ov44_02232298(UnkStruct_ov44_02231A7C* arg0, enum HeapID heapID, NARC* narc) {
-    arg0->unk0 = G2dRenderer_Init(0x60, &arg0->unk4, heapID);
+    arg0->unk0 = G2dRenderer_Init(96, &arg0->unk4, heapID);
     G2dRenderer_SetSubSurfaceCoords(&arg0->unk4, 0, 0x320000);
     for (s32 i = 0; i < 4; i ++) {
-        arg0->unk12C[i] = Create2DGfxResObjMan(0x10, (GfGfxResType)i, heapID);
+        arg0->unk12C[i] = Create2DGfxResObjMan(16, (GfGfxResType)i, heapID);
     }
     ov44_02232314(arg0, heapID, narc);
     ov44_02232324(arg0, heapID);
@@ -88,16 +100,16 @@ void ov44_02232338(void) {
 }
 
 void ov44_0223233C(BgConfig *bgConfig, enum HeapID heapID, NARC* narc) {
-    GfGfxLoader_GXLoadPalFromOpenNarc(narc, 0x1F, GF_PAL_LOCATION_MAIN_BG, GF_PAL_SLOT_0_OFFSET, 0x100, heapID);
+    GfGfxLoader_GXLoadPalFromOpenNarc(narc, 31, GF_PAL_LOCATION_MAIN_BG, GF_PAL_SLOT_0_OFFSET, 256, heapID);
     BG_SetMaskColor(0, 0);
-    GfGfxLoader_LoadCharDataFromOpenNarc(narc, 0x1E, bgConfig, GF_BG_LYR_MAIN_0, 0, 0, 0, heapID);
+    GfGfxLoader_LoadCharDataFromOpenNarc(narc, 30, bgConfig, GF_BG_LYR_MAIN_0, 0, 0, 0, heapID);
 }
 
 void ov44_0223237C(UnkStruct_ov44_02231A7C* arg0, enum HeapID heapID, NARC* narc) {
-    arg0->unk13C[0] = AddCharResObjFromOpenNarc(arg0->unk12C[0], narc, 0x26, 0, 0x32, 1, heapID);
-    arg0->unk13C[1] = AddPlttResObjFromOpenNarc(arg0->unk12C[1], narc, 0x25, 0, 0x32, 1, 1, heapID);
-    arg0->unk13C[2] = AddCellOrAnimResObjFromOpenNarc(arg0->unk12C[2], narc, 0x27, 0, 0x32, GF_GFX_RES_TYPE_CELL, heapID);
-    arg0->unk13C[3] = AddCellOrAnimResObjFromOpenNarc(arg0->unk12C[3], narc, 0x28, 0, 0x32, GF_GFX_RES_TYPE_ANIM, heapID);
+    arg0->unk13C[0] = AddCharResObjFromOpenNarc(arg0->unk12C[0], narc, NARC_a_0_3_8, FALSE, 50, NNS_G2D_VRAM_TYPE_2DMAIN, heapID);
+    arg0->unk13C[1] = AddPlttResObjFromOpenNarc(arg0->unk12C[1], narc, NARC_fielddata_encountdata_g_enc_data, FALSE, 50, NNS_G2D_VRAM_TYPE_2DMAIN, 1, heapID);
+    arg0->unk13C[2] = AddCellOrAnimResObjFromOpenNarc(arg0->unk12C[2], narc, NARC_a_0_3_9, FALSE, 50, GF_GFX_RES_TYPE_CELL, heapID);
+    arg0->unk13C[3] = AddCellOrAnimResObjFromOpenNarc(arg0->unk12C[3], narc, NARC_a_0_4_0, FALSE, 50, GF_GFX_RES_TYPE_ANIM, heapID);
     if (sub_0200ADA4(arg0->unk13C[0]) != 1) {
         GF_AssertFail();
     }
@@ -106,7 +118,7 @@ void ov44_0223237C(UnkStruct_ov44_02231A7C* arg0, enum HeapID heapID, NARC* narc
     }
     sub_0200A740(arg0->unk13C[0]);
     sub_0200A740(arg0->unk13C[1]);
-    CreateSpriteResourcesHeader(&arg0->unk14C, 0x32, 0x32, 0x32, 0x32, -1, -1, 0, 2, arg0->unk12C[0], arg0->unk12C[1], arg0->unk12C[2], arg0->unk12C[3], 0, 0);
+    CreateSpriteResourcesHeader(&arg0->unk14C, 50, 50, 50, 50, -1, -1, 0, 2, arg0->unk12C[0], arg0->unk12C[1], arg0->unk12C[2], arg0->unk12C[3], 0, 0);
 }
 
 void ov44_0223247C(UnkStruct_ov44_02231A7C* arg0) {
@@ -124,8 +136,8 @@ void ov44_022324B0(UnkStruct_ov44_02231A7C* arg0, enum HeapID heapID) {
     
     spriteTemplate.whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN;
 
-    spriteTemplate.scale.x = 0x1000;
-    spriteTemplate.scale.y = 0x1000;
+    spriteTemplate.scale.x = 4096;
+    spriteTemplate.scale.y = 4096;
     spriteTemplate.heapID = heapID;
     
     spriteTemplate.drawPriority = 0;
@@ -149,9 +161,9 @@ void ov44_0223254C(UnkStruct_ov44_02232DA0* arg0) {
     
     ov44_02232724(arg0, sp0);
     sp0[0] = sp0[0] + 8;
-    sp0[1] = sp0[1] + 0x20;
-    vec.x = sp0[0] << 0xC;
-    vec.y = sp0[1] << 0xC;
+    sp0[1] = sp0[1] + 32;
+    vec.x = sp0[0] << 12;
+    vec.y = sp0[1] << 12;
     Sprite_SetMatrix(arg0->unk14.unk170, &vec);
     Sprite_SetDrawFlag(arg0->unk14.unk170, 1);
 }
@@ -162,7 +174,7 @@ void ov44_02232594(UnkStruct_ov44_02232DA0* arg0) {
 
 void ov44_022325A4(UnkStruct_ov44_02232DA0* arg0, UnkStruct_ov44_02232914 arg1, s32 arg2) {
     VecFx32 vec;
-    vec.x = (s16)arg1.unk0 + 8 << 0x10 >> 0x4;
+    vec.x = (s16)arg1.unk0 + 8 << 16 >> 4;
     vec.y = (s16)(arg1.unk2) * 4096;
     Sprite_SetMatrix(arg0->unk14.unk174, &vec);
     Sprite_SetDrawPriority(arg0->unk14.unk174, arg2);
@@ -183,7 +195,7 @@ s32 ov44_02232604(UnkStruct_ov44_02232DA0* arg0) {
     sp4 = (UnkStruct_ov44_02232724){temp_r0_2, temp_r0_2 >> 16};
     
     u16 temp_r4 = ov42_02228188(arg0->unk6CC->unk0, 6);
-    if (ov42_02227FDC(arg0->unk6E4, sp4.unk0 / 16, sp4.unk2 / 16) == 0xF && temp_r4 == 1) {
+    if (ov42_02227FDC(arg0->unk6E4, sp4.unk0 / 16, sp4.unk2 / 16) == 15 && temp_r4 == 1) {
         return 1;
     }
     return 0;
@@ -217,7 +229,7 @@ void ov44_02232724(UnkStruct_ov44_02232DA0* arg0, s16* arg1) {
 
     for (u32 i = 0; i < temp_r0; i++) {
         for (u32 j = 0; j < temp_r5; j++) {
-             if (ov42_02227FDC(arg0->unk6E4, j, i) == 0xF) {
+             if (ov42_02227FDC(arg0->unk6E4, j, i) == 15) {
                 arg1[0] = j << 4;
                 arg1[1] = i << 4;
                 return;
@@ -228,7 +240,7 @@ void ov44_02232724(UnkStruct_ov44_02232DA0* arg0, s16* arg1) {
 }
 
 UnkStruct_ov44_02232B74* ov44_02232798(UnkStruct_ov44_02232DA0* arg0) {
-    for (s32 i = 0; i < 0x30; i++) {
+    for (s32 i = 0; i < 48; i++) {
         if (arg0->unk18C[i].unk0 == 0) {
             return &arg0->unk18C[i];
         }
@@ -282,14 +294,14 @@ void ov44_02232864(UnkStruct_ov44_02232DA0* arg0, UnkStruct_ov44_02232B74* arg1)
 void ov44_02232884(UnkStruct_ov44_02232DA0* arg0, UnkStruct_ov44_02232B74* arg1) {
     arg1->unk10 = ov44_02232B74;
     arg1->unk18 = ov44_02232914;
-    arg1->unk8 = 0x2D;
+    arg1->unk8 = 45;
     arg1->unkC = 1;
 }
 
 void ov44_022328A0(UnkStruct_ov44_02232DA0* arg0, UnkStruct_ov44_02232B74* arg1) {
     arg1->unk10 = ov44_02232BE4;
     arg1->unk18 = ov44_02232910;
-    arg1->unk8 = (0x3FF & MTRandom()) + 0x100;
+    arg1->unk8 = (1023 & MTRandom()) + 256;
     arg1->unkC = 3;
     ov44_02232C6C(arg0, 0, arg1);
     ov42_0222919C(arg1->unk4, 1);
@@ -298,7 +310,7 @@ void ov44_022328A0(UnkStruct_ov44_02232DA0* arg0, UnkStruct_ov44_02232B74* arg1)
 void ov44_022328E4(UnkStruct_ov44_02232DA0* arg0, UnkStruct_ov44_02232B74* arg1) {
     arg1->unk10 = ov44_02232C30;
     arg1->unk18 = ov44_022329B0;
-    arg1->unk8 = 0x1C;
+    arg1->unk8 = 28;
     arg1->unkC = 4;
     ov44_02232C6C(arg0, 4, arg1);
     ov42_0222919C(arg1->unk4, 0);
@@ -321,10 +333,10 @@ void ov44_02232914(UnkStruct_ov44_02232DA0 *arg0, UnkStruct_ov44_02232B74* arg1)
     sp0[0].unk2 = sp0[1].unk2;
     
     s64 temp_ret = (s64)GF_SinDegNoWrap(arg1->unk8) * (signed)0xFFF40000;
-    temp_ret += 0x800;
+    temp_ret += 2048;
     
-    s32 r1 = (temp_ret >> 0xC);
-    sp0[1].unk2 = (s16)sp0[1].unk2 + (r1 >> 0xC);
+    s32 r1 = (temp_ret >> 12);
+    sp0[1].unk2 = (s16)sp0[1].unk2 + (r1 >> 12);
 
     ov42_022291D8(arg1->unk4, sp0[1]);
     ov42_02229258(arg1->unk4, sp0[0]);
@@ -338,13 +350,13 @@ void ov44_022329B0(UnkStruct_ov44_02232DA0 *arg0, UnkStruct_ov44_02232B74* arg1)
     sp0[0].unk0 = sp0[1].unk0;
     sp0[0].unk2 = sp0[1].unk2;
     
-    s16 temp_r0 = arg1->unk8 - 0x10;
+    s16 temp_r0 = arg1->unk8 - 16;
     if (temp_r0 > 0) {
         s32 temp_r0_2 = (s16)(temp_r0 % 6) * 180;
         s32 temp_r0_3 = GF_SinDegNoWrap(temp_r0_2 / 6);
         
-        s64 r6 = ((s64)temp_r0_3 << 0xE) + 0x800;
-        sp0[1].unk2 = (s16)sp0[1].unk2 - ((s32)(r6 >> 0xC) >> 0xC);
+        s64 r6 = ((s64)temp_r0_3 << 14) + 2048;
+        sp0[1].unk2 = (s16)sp0[1].unk2 - ((s32)(r6 >> 12) >> 12);
     }
     ov42_022291D8(arg1->unk4, sp0[1]);
     ov42_02229258(arg1->unk4, sp0[0]);
@@ -377,19 +389,19 @@ s32 ov44_02232A60(UnkStruct_ov44_02232DA0* arg0, UnkStruct_ov44_02232B74* arg1) 
     if (gSystem.heldKeys & 2) {
         var_r1 = 3;
     }
-    if (0x40 & gSystem.heldKeys) {
+    if (64 & gSystem.heldKeys) {
         if (temp_r4 == 0) {
             ov44_02232C4C(arg0, var_r1, temp_r4, temp_r7);
         } else {
             ov44_02232C4C(arg0, 1, 0, temp_r7);
         }
-    } else if (0x80 & gSystem.heldKeys) {
+    } else if (128 & gSystem.heldKeys) {
         if (temp_r4 == 1) {
             ov44_02232C4C(arg0, var_r1, temp_r4, temp_r7);
         } else {
             ov44_02232C4C(arg0, 1, 1, temp_r7);
         }
-    } else if (0x20 & gSystem.heldKeys) {
+    } else if (32 & gSystem.heldKeys) {
         if (temp_r4 == 2) {
             ov44_02232C4C(arg0, var_r1, temp_r4, temp_r7);
         } else {
@@ -423,7 +435,7 @@ s32 ov44_02232B74(UnkStruct_ov44_02232DA0* arg0, UnkStruct_ov44_02232B74* arg1) 
 
 s32 ov44_02232BCC(UnkStruct_ov44_02232DA0* arg0, UnkStruct_ov44_02232B74* arg1) {
     arg1->unk8++;
-    if (arg1->unk8 > 0x2D) {
+    if (arg1->unk8 > 45) {
         return 1;
     }
     return 0;
@@ -432,7 +444,7 @@ s32 ov44_02232BCC(UnkStruct_ov44_02232DA0* arg0, UnkStruct_ov44_02232B74* arg1) 
 s32 ov44_02232BE4(UnkStruct_ov44_02232DA0* arg0, UnkStruct_ov44_02232B74* arg1) {
     arg1->unk8--;
     if (arg1->unk8 <= 0) {
-        arg1->unk8 =  (0x3FF & MTRandom()) + 0x100;
+        arg1->unk8 =  (1023 & MTRandom()) + 256;
         u32 temp_r4 = MTRandom() & 3;
         ov44_02232C4C(arg0, 0, temp_r4, ov42_02228188(arg1->unk0, 4));
     }
@@ -442,7 +454,7 @@ s32 ov44_02232BE4(UnkStruct_ov44_02232DA0* arg0, UnkStruct_ov44_02232B74* arg1) 
 s32 ov44_02232C30(UnkStruct_ov44_02232DA0* arg0, UnkStruct_ov44_02232B74* arg1) {
     arg1->unk8--;
     if (arg1->unk8 < 0) {
-        arg1->unk8 = 0x1C;
+        arg1->unk8 = 28;
     }
     return 0;
 }
@@ -489,8 +501,8 @@ void ov44_02232CA8(UnkStruct_ov44_02232DA0* arg0, UnkStruct_ov44_02232B74* arg1,
 
 void ov44_02232CCC(UnkStruct_ov44_02232DA0* arg0, UnkStruct_ov44_02232E80* arg1, NARC* arg2) {
     __builtin__clear(arg1, sizeof(UnkStruct_ov44_02232E80));
-    arg1->unk0 = GfGfxLoader_GetPlttDataFromOpenNarc(arg2, 0x20, &arg1->unk4, arg0->unk4);
-    arg1->unk8 = 0xF;
+    arg1->unk0 = GfGfxLoader_GetPlttDataFromOpenNarc(arg2, 32, &arg1->unk4, arg0->unk4);
+    arg1->unk8 = 15;
     arg1->unk9 = 0;
     arg1->unkA = ov44_02235600[arg1->unk9];
 }
@@ -519,7 +531,7 @@ void ov44_02232D34(UnkStruct_ov44_02232E80* arg0) {
         }
         for (s32 i = 0; i < 4; i ++) {
             if (arg0->unk8 & (1 << i)) {
-                GF_CreateNewVramTransferTask(NNS_GFD_DST_2D_BG_PLTT_MAIN, ((i + 1) * 2) + 0xE0, ov44_02232E2C(arg0, var_r6), 2);
+                GF_CreateNewVramTransferTask(NNS_GFD_DST_2D_BG_PLTT_MAIN, ((i + 1) * 2) + 224, ov44_02232E2C(arg0, var_r6), 2);
             }
         }
     }
@@ -550,7 +562,7 @@ void ov44_02232DA0(UnkStruct_ov44_02232E80* arg0) {
         r1 = ov44_02235612[arg0->unkD << 2];
     }
     if (r0 != 0) {
-        GF_CreateNewVramTransferTask(NNS_GFD_DST_2D_BG_PLTT_MAIN, ((arg0->unkC + 1)* 2) + 0xE0, ov44_02232E2C(arg0, r1), 2);
+        GF_CreateNewVramTransferTask(NNS_GFD_DST_2D_BG_PLTT_MAIN, ((arg0->unkC + 1)* 2) + 224, ov44_02232E2C(arg0, r1), 2);
     }
 }
 
