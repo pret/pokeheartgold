@@ -119,6 +119,7 @@ void ov44_0222F510(UnkStruct_ov44_022319EC*, s32, s32);
 void ov44_0222F7BC(UnkStruct_ov44_022319EC*);
 s32 ov44_02231CE8(UnkStruct_ov44_02232DA0* arg0);
 
+// The following functions are static
 void ov44_02231918(UnkStruct_ov44_022319EC* arg0, s32 arg1);
 s32* ov44_02231958(UnkStruct_ov44_022319EC* arg0, u32 arg1);
 void ov44_02231974(void);
@@ -179,7 +180,6 @@ void ov44_02232594(UnkStruct_ov44_02232DA0* arg0);
 void ov44_022325A4(UnkStruct_ov44_02232DA0* arg0, UnkStruct_ov44_02232914 arg1, s32 arg2);
 void ov44_022325F4(UnkStruct_ov44_02232DA0* arg0);
 s32 ov44_02232604(UnkStruct_ov44_02232DA0* arg0);
-
 void ov44_02232680(UnkStruct_ov44_02232DA0* arg0, u16* arg1, u32 arg2);
 void ov44_02232724(UnkStruct_ov44_02232DA0* arg0, s16* arg1);
 UnkStruct_ov44_02232B74* ov44_02232798(UnkStruct_ov44_02232DA0* arg0);
@@ -198,7 +198,7 @@ s32 ov44_02232B74(UnkStruct_ov44_02232DA0* arg0, UnkStruct_ov44_02232B74* arg1);
 s32 ov44_02232BCC(UnkStruct_ov44_02232DA0* arg0, UnkStruct_ov44_02232B74* arg1);
 s32 ov44_02232BE4(UnkStruct_ov44_02232DA0* arg0, UnkStruct_ov44_02232B74* arg1);
 s32 ov44_02232C30(UnkStruct_ov44_02232DA0* arg0, UnkStruct_ov44_02232B74* arg1);
-s32 ov44_02232C48(void);
+s32 ov44_02232C48(UnkStruct_ov44_02232DA0* arg0, UnkStruct_ov44_02232B74* arg1);
 void ov44_02232C4C(UnkStruct_ov44_02232DA0* arg0, s16 arg1, u32 arg2, u16 arg3);
 void ov44_02232C6C(UnkStruct_ov44_02232DA0* arg0, s16 arg1, UnkStruct_ov44_02232B74* arg2);
 s32 ov44_02232C94(UnkStruct_ov44_02232B74* arg0);
