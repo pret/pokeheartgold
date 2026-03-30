@@ -98,7 +98,7 @@ scr_seq_D18R0101_000:
 	wait_movement
 	buffer_players_name 0
 	npc_msg msg_0060_D18R0101_00002
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	callstd std_fade_end_eusine_music
 	setvar VAR_UNK_40A2, 1

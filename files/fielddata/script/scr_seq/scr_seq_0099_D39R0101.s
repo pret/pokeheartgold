@@ -48,7 +48,7 @@ _0084:
 	setvar VAR_UNK_4100, 1
 _008A:
 	npc_msg msg_0122_D39R0101_00002
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -79,7 +79,7 @@ _00E5:
 	apply_movement obj_player, _011C
 	wait_movement
 	npc_msg msg_0122_D39R0101_00002
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	setvar VAR_UNK_4100, 1
@@ -122,7 +122,7 @@ _0151:
 _0157:
 	buffer_players_name 0
 	npc_msg msg_0122_D39R0101_00003
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	callstd std_fade_end_kimono_girl_music
@@ -271,7 +271,7 @@ _034A:
 	clearflag FLAG_UNK_189
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 2
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -279,7 +279,7 @@ _034A:
 _0384:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 5
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -287,7 +287,7 @@ _0384:
 _0398:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 3
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

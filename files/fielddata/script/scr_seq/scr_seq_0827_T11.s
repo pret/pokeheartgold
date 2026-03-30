@@ -115,7 +115,7 @@ _0194:
 	clearflag FLAG_UNK_189
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 2
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -220,7 +220,7 @@ _0312:
 	clearflag FLAG_UNK_189
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 2
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -228,7 +228,7 @@ _0312:
 _034C:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 5
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -236,7 +236,7 @@ _034C:
 _0360:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 3
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -264,14 +264,14 @@ scr_seq_T11_002:
 	faceplayer
 	goto_if_set FLAG_HIDE_SAFFRON_CITY_COPYCAT_HOUSE_CLEFAIRY_DOLL, _03BE
 	npc_msg msg_0529_T11_00002
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _03BE:
 	npc_msg msg_0529_T11_00003
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

@@ -174,7 +174,7 @@ scr_seq_D24R0204_002:
 _02A9:
 	wait 20, VAR_SPECIAL_x8004
 	npc_msg msg_0075_D24R0204_00001
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

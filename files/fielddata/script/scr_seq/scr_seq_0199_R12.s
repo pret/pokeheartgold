@@ -112,7 +112,7 @@ _0177:
 	clearflag FLAG_UNK_189
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 2
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -120,7 +120,7 @@ _0177:
 _01B1:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 5
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -128,7 +128,7 @@ _01B1:
 _01C5:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 3
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -184,7 +184,7 @@ scr_seq_R12_005:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0268
 	npc_msg msg_0348_R12_00002
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

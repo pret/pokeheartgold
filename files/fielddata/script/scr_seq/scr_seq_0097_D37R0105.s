@@ -32,7 +32,7 @@ scr_seq_D37R0105_001:
 _005B:
 	npc_msg msg_0120_D37R0105_00002
 	npc_msg msg_0120_D37R0105_00003
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

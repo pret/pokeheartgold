@@ -16,14 +16,14 @@ scr_seq_R46_000:
 	faceplayer
 	goto_if_set FLAG_GAVE_RIVAL_NAME_TO_OFFICER, _002C
 	npc_msg msg_0406_R46_00002
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _002C:
 	npc_msg msg_0406_R46_00003
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

@@ -56,7 +56,7 @@ scr_seq_T01R0301_006:
 	toggle_following_pokemon_movement 1
 	following_pokemon_movement 48
 	npc_msg msg_0451_T01R0301_00042
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	setvar VAR_UNK_4131, 2
 	releaseall
@@ -138,7 +138,7 @@ _01EC:
 	end
 
 _01F0:
-	wait_button
+	wait_ab_press
 _01F2:
 	setflag FLAG_SYS_OAK_ACKNOWLEDGED_NATIONAL_DEX_COMPLETION
 	buffer_players_name 0
@@ -162,35 +162,35 @@ _01F2:
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	npc_msg msg_0451_T01R0301_00030
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _0256:
 	npc_msg msg_0451_T01R0301_00031
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _0261:
 	npc_msg msg_0451_T01R0301_00032
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _026C:
 	npc_msg msg_0451_T01R0301_00042
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _0277:
 	npc_msg msg_0451_T01R0301_00053
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -204,7 +204,7 @@ _0282:
 	gender_msgbox msg_0451_T01R0301_00006, msg_0451_T01R0301_00007
 	setvar VAR_UNK_4110, 2
 	setflag FLAG_UNLOCKED_MT_SILVER
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	setflag FLAG_GOT_HM08
 	releaseall
@@ -212,7 +212,7 @@ _0282:
 
 _02C0:
 	npc_msg msg_0451_T01R0301_00057
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -451,7 +451,7 @@ scr_seq_T01R0301_002:
 	faceplayer
 	buffer_players_name 0
 	npc_msg msg_0451_T01R0301_00034
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -462,7 +462,7 @@ scr_seq_T01R0301_003:
 	faceplayer
 	buffer_players_name 0
 	npc_msg msg_0451_T01R0301_00035
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -471,7 +471,7 @@ scr_seq_T01R0301_004:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0451_T01R0301_00036
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -482,7 +482,7 @@ scr_seq_T01R0301_005:
 	faceplayer
 	buffer_players_name 0
 	gender_msgbox msg_0451_T01R0301_00037, msg_0451_T01R0301_00038
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -666,7 +666,7 @@ _0908:
 	wait_movement
 _0912:
 	npc_msg msg_0451_T01R0301_00052
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	copyvar VAR_UNK_4131, VAR_SPECIAL_x8006
@@ -692,7 +692,7 @@ _0929:
 _096C:
 	scrcmd_453
 	npc_msg msg_0451_T01R0301_00047
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	touchscreen_menu_show
 	releaseall
@@ -705,7 +705,7 @@ _097B:
 _097D:
 	buffer_rivals_name 1
 	npc_msg msg_0451_T01R0301_00054
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -713,7 +713,7 @@ _097D:
 _098B:
 	touchscreen_menu_show
 	npc_msg msg_0451_T01R0301_00051
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	return

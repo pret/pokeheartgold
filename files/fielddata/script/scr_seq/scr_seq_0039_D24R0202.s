@@ -171,7 +171,7 @@ scr_seq_D24R0202_002:
 _029A:
 	wait 10, VAR_SPECIAL_x8004
 	npc_msg msg_0074_D24R0202_00003
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -187,14 +187,14 @@ scr_seq_D24R0202_003:
 	faceplayer
 	goto_if_set FLAG_UNK_188, _02D2
 	npc_msg msg_0074_D24R0202_00000
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _02D2:
 	npc_msg msg_0074_D24R0202_00001
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

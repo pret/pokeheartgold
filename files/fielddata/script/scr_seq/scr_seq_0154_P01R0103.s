@@ -105,14 +105,14 @@ _00EF:
 
 _0142:
 	npc_msg msg_0257_P01R0103_00001
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _014D:
 	npc_msg msg_0257_P01R0103_00002
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
