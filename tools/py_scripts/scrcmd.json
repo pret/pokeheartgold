@@ -5164,7 +5164,7 @@
       ]
     },
     {
-      "name": "get_partymon_form",
+      "name": "get_party_mon_form_2",
       "args": [
         "var",
         "var"

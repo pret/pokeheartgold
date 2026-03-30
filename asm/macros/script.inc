@@ -4622,7 +4622,7 @@
 	.short \arg0
 	.endm
 
-	.macro get_partymon_form arg0, arg1
+	.macro get_party_mon_form_2 arg0, arg1
 	.short 827
 	.short \arg0
 	.short \arg1
