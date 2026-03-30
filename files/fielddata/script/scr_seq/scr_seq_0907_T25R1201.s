@@ -166,7 +166,7 @@ _0227:
 
 _0240:
 	npc_msg msg_0600_T25R1201_00009
-	wait_button_or_walk_away
+	wait_button
 	touchscreen_menu_show
 	closemsg
 	releaseall
@@ -225,7 +225,7 @@ _0330:
 	setvar VAR_UNK_4133, 0
 	touchscreen_menu_show
 	npc_msg msg_0600_T25R1201_00006
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -233,7 +233,7 @@ _0330:
 _0343:
 	setvar VAR_UNK_4133, 0
 	npc_msg msg_0600_T25R1201_00006
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -260,7 +260,7 @@ _0378:
 _0391:
 	touchscreen_menu_show
 	npc_msg msg_0600_T25R1201_00008
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -288,7 +288,7 @@ _03BC:
 
 _03C4:
 	callstd std_party_illegal
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -479,7 +479,7 @@ _0674:
 	end
 
 _067F:
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -501,14 +501,14 @@ scr_seq_T25R1201_016:
 	compare VAR_SPECIAL_x8004, 0
 	goto_if_eq _06D1
 	npc_msg msg_0600_T25R1201_00025
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _06D1:
 	npc_msg msg_0600_T25R1201_00026
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -517,7 +517,7 @@ scr_seq_T25R1201_017:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0600_T25R1201_00036
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

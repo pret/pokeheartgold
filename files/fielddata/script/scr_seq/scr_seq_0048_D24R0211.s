@@ -40,7 +40,7 @@ scr_seq_D24R0211_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0079_D24R0211_00000
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -78,7 +78,7 @@ scr_seq_D24R0211_001:
 	play_fanfare SEQ_ME_LVUP
 	wait_fanfare
 	addvar VAR_UNOWN_REPORT_LEVEL, 1
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -174,7 +174,7 @@ _0256:
 	clearflag FLAG_UNK_189
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 2
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -182,7 +182,7 @@ _0256:
 _0290:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 5
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -190,7 +190,7 @@ _0290:
 _02A4:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 3
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -303,7 +303,7 @@ _040E:
 	clearflag FLAG_UNK_189
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 2
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

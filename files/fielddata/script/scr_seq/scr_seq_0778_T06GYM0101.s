@@ -204,7 +204,7 @@ _027D:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0485_T06GYM0101_00008
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -213,11 +213,11 @@ _028E:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0485_T06GYM0101_00009
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	vermilion_gym_lock_action 0, 0
 	npc_msg msg_0485_T06GYM0101_00011
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -226,13 +226,13 @@ _02AA:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0485_T06GYM0101_00009
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	vermilion_gym_lock_action 1, 0
 	setflag FLAG_SYS_SOLVED_LT_SURGE_GYM
 	stop_se SEQ_SE_GS_DENGEKIBARIA
 	npc_msg msg_0485_T06GYM0101_00012
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -241,7 +241,7 @@ _02CE:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0485_T06GYM0101_00010
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	vermilion_gym_lock_action 0, 1
 	resample_vermilion_gym_cans
@@ -252,7 +252,7 @@ _02E5:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0485_T06GYM0101_00008
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -314,7 +314,7 @@ _0389:
 	callstd std_give_item_verbose
 	setflag FLAG_GOT_TM34_FROM_LT_SURGE
 	npc_msg msg_0485_T06GYM0101_00004
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -328,7 +328,7 @@ _03BD:
 _03C7:
 	goto_if_unset FLAG_GOT_TM34_FROM_LT_SURGE, _0389
 	npc_msg msg_0485_T06GYM0101_00005
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -346,14 +346,14 @@ scr_seq_T06GYM0101_024:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0409
 	npc_msg msg_0485_T06GYM0101_00006
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _0409:
 	npc_msg msg_0485_T06GYM0101_00007
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -372,7 +372,7 @@ scr_seq_T06GYM0101_025:
 _043B:
 	npc_msg msg_0485_T06GYM0101_00014
 _043E:
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

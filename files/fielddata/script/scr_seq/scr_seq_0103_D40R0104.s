@@ -39,7 +39,7 @@ scr_seq_D40R0104_000:
 	goto_if_set FLAG_UNK_106, _00C5
 	goto_if_set FLAG_UNK_094, _00B4
 	npc_msg msg_0124_D40R0104_00001
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -48,7 +48,7 @@ _0093:
 	goto_if_set FLAG_UNK_106, _00C5
 	goto_if_set FLAG_UNK_094, _00B4
 	npc_msg msg_0124_D40R0104_00000
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -69,28 +69,28 @@ _00C5:
 	goto_if_set FLAG_UNK_105, _0102
 _00EC:
 	npc_msg msg_0124_D40R0104_00004
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _00F7:
 	npc_msg msg_0124_D40R0104_00006
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _0102:
 	npc_msg msg_0124_D40R0104_00005
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _010D:
 	npc_msg msg_0124_D40R0104_00007
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

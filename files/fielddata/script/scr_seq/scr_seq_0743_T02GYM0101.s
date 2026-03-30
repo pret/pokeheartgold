@@ -78,7 +78,7 @@ _00F0:
 	setflag FLAG_GOT_TM92_FROM_BLUE
 	buffer_players_name 0
 	npc_msg msg_0454_T02GYM0101_00004
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -92,7 +92,7 @@ _0127:
 _0131:
 	goto_if_unset FLAG_GOT_TM92_FROM_BLUE, _00F0
 	npc_msg msg_0454_T02GYM0101_00005
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -115,14 +115,14 @@ scr_seq_T02GYM0101_001:
 	scrcmd_607
 	scrcmd_109 253, 56
 	setvar VAR_UNK_4127, 1
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _0186:
 	npc_msg msg_0454_T02GYM0101_00007
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -369,7 +369,7 @@ scr_seq_T02GYM0101_004:
 _04A7:
 	npc_msg msg_0454_T02GYM0101_00010
 _04AA:
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

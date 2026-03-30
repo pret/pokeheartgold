@@ -80,7 +80,7 @@ _011D:
 	play_fanfare SEQ_ME_WASURE
 	wait_fanfare
 	npc_msg msg_0635_T30R0601_00008
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -97,7 +97,7 @@ _013F:
 
 _014A:
 	npc_msg msg_0635_T30R0601_00003
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -142,28 +142,28 @@ scr_seq_T30R0601_001:
 	takeitem ITEM_HEART_SCALE, 1, VAR_SPECIAL_RESULT
 	buffer_players_name 3
 	npc_msg msg_0635_T30R0601_00025
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _0222:
 	npc_msg msg_0635_T30R0601_00014
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _022D:
 	npc_msg msg_0635_T30R0601_00011
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _0238:
 	npc_msg msg_0635_T30R0601_00009
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	setflag FLAG_MET_MOVE_MANIAC
@@ -171,7 +171,7 @@ _0238:
 
 _0247:
 	npc_msg msg_0635_T30R0601_00015
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -201,28 +201,28 @@ _0287:
 
 _02A5:
 	npc_msg msg_0635_T30R0601_00028
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _02B0:
 	npc_msg msg_0635_T30R0601_00029
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _02BB:
 	npc_msg msg_0635_T30R0601_00032
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _02C6:
 	npc_msg msg_0635_T30R0601_00033
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -230,14 +230,14 @@ _02C6:
 _02D1:
 	buffer_move_name 0, MOVE_DRACO_METEOR
 	npc_msg msg_0635_T30R0601_00034
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _02E1:
 	npc_msg msg_0635_T30R0601_00031
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -306,7 +306,7 @@ _03EF:
 	compare VAR_SPECIAL_RESULT, 255
 	goto_if_eq _02A5
 	npc_msg msg_0635_T30R0601_00042
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -480,7 +480,7 @@ _06E4:
 
 _06EE:
 	npc_msg msg_0635_T30R0601_00046
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	touchscreen_menu_show
 	releaseall
@@ -488,7 +488,7 @@ _06EE:
 
 _06FB:
 	npc_msg msg_0635_T30R0601_00048
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	touchscreen_menu_show
 	releaseall
@@ -496,7 +496,7 @@ _06FB:
 
 _0708:
 	npc_msg msg_0635_T30R0601_00049
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	touchscreen_menu_show
 	releaseall
@@ -504,7 +504,7 @@ _0708:
 
 _0715:
 	npc_msg msg_0635_T30R0601_00050
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	touchscreen_menu_show
 	releaseall
@@ -512,7 +512,7 @@ _0715:
 
 _0722:
 	npc_msg msg_0635_T30R0601_00051
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	touchscreen_menu_show
 	releaseall
@@ -522,7 +522,7 @@ scr_seq_T30R0601_004:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0635_T30R0601_00061
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

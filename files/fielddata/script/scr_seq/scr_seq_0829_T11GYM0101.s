@@ -80,7 +80,7 @@ _0102:
 	callstd std_give_item_verbose
 	setflag FLAG_GOT_TM48_FROM_SABRINA
 	npc_msg msg_0531_T11GYM0101_00004
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -94,7 +94,7 @@ _0136:
 _0140:
 	goto_if_unset FLAG_GOT_TM48_FROM_SABRINA, _0102
 	npc_msg msg_0531_T11GYM0101_00005
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -112,14 +112,14 @@ scr_seq_T11GYM0101_001:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0182
 	npc_msg msg_0531_T11GYM0101_00006
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _0182:
 	npc_msg msg_0531_T11GYM0101_00007
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -138,7 +138,7 @@ scr_seq_T11GYM0101_002:
 _01B4:
 	npc_msg msg_0531_T11GYM0101_00009
 _01B7:
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

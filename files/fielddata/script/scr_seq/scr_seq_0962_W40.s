@@ -58,7 +58,7 @@ _00B2:
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 1
 _00F9:
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -66,7 +66,7 @@ _00F9:
 _0101:
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 2
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -94,7 +94,7 @@ _0142:
 	play_fanfare SEQ_ME_ITEM
 	wait_fanfare
 	setflag FLAG_DAILY_GOT_SHOCK_RIBBON
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -102,7 +102,7 @@ _0142:
 _0171:
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 29
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -110,7 +110,7 @@ _0171:
 _0185:
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 31
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

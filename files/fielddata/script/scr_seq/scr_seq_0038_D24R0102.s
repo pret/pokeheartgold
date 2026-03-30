@@ -239,7 +239,7 @@ _035D:
 	goto _0366
 
 _0366:
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

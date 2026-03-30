@@ -17,14 +17,14 @@ scr_seq_T28GYM0103_000:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0030
 	npc_msg msg_0623_T28GYM0103_00000
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _0030:
 	npc_msg msg_0623_T28GYM0103_00001
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -43,7 +43,7 @@ scr_seq_T28GYM0103_001:
 _0062:
 	npc_msg msg_0623_T28GYM0103_00003
 _0065:
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

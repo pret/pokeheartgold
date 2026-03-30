@@ -42,14 +42,14 @@ _0065:
 
 _0081:
 	npc_msg msg_0584_T25R0201_00003
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _008C:
 	npc_msg msg_0584_T25R0201_00004
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	touchscreen_menu_show
 	releaseall

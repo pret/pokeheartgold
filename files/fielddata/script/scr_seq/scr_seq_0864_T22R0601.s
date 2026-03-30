@@ -47,7 +47,7 @@ _0041:
 	npc_trade_end
 	setflag FLAG_TRADE_VIOLET_CITY_BELLSPROUT_ONIX
 	npc_msg msg_0562_T22R0601_00002
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -55,21 +55,21 @@ _0041:
 _00A5:
 	npc_trade_end
 	npc_msg msg_0562_T22R0601_00003
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _00B2:
 	npc_msg msg_0562_T22R0601_00004
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _00BD:
 	npc_msg msg_0562_T22R0601_00005
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

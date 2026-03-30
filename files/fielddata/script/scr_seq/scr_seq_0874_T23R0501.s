@@ -46,7 +46,7 @@ scr_seq_T23R0501_001:
 	faceplayer
 	buffer_players_name 0
 	npc_msg msg_0571_T23R0501_00000
-	wait_button
+	wait_ab_press
 	closemsg
 	get_player_facing VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 0
@@ -120,7 +120,7 @@ _0189:
 	setflag FLAG_DAILY_KURT_MAKING_BALLS
 	npc_msg msg_0571_T23R0501_00005
 _0190:
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	compare VAR_UNK_4080, 3
 	goto_if_eq _022D
@@ -161,7 +161,7 @@ _020F:
 	compare VAR_UNK_4080, 3
 	goto_if_eq _022D
 _021F:
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -194,14 +194,14 @@ _026E:
 	wait_fanfare
 	register_gear_number PHONE_CONTACT_KURT
 	npc_msg msg_0571_T23R0501_00017
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _0289:
 	npc_msg msg_0571_T23R0501_00018
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -272,7 +272,7 @@ scr_seq_T23R0501_002:
 	faceplayer
 	goto_if_set FLAG_UNK_077, _0332
 	npc_msg msg_0571_T23R0501_00011
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -280,7 +280,7 @@ scr_seq_T23R0501_002:
 _0332:
 	goto_if_set FLAG_BEAT_AZALEA_ROCKETS, _0348
 	npc_msg msg_0571_T23R0501_00012
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -291,14 +291,14 @@ _0348:
 	goto_if_eq _02A2
 	goto_if_set FLAG_GAME_CLEAR, _0371
 	npc_msg msg_0571_T23R0501_00013
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _0371:
 	npc_msg msg_0571_T23R0501_00014
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -310,7 +310,7 @@ scr_seq_T23R0501_003:
 	play_cry SPECIES_SLOWPOKE, 0
 	npc_msg msg_0571_T23R0501_00020
 	wait_cry
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -343,7 +343,7 @@ _03DE:
 _03F4:
 	npc_msg msg_0571_T23R0501_00023
 _03F7:
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

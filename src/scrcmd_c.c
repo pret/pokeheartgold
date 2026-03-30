@@ -602,7 +602,7 @@ BOOL ScrCmd_048(ScriptContext *ctx) {
 
 static BOOL sub_02041000(ScriptContext *ctx);
 
-BOOL ScrCmd_WaitButton(ScriptContext *ctx) {
+BOOL ScrCmd_WaitABPress(ScriptContext *ctx) {
     SetupNativeScript(ctx, sub_02041000);
     return TRUE;
 }
@@ -629,7 +629,7 @@ static BOOL sub_02041040(ScriptContext *ctx) {
 
 static BOOL sub_02041074(ScriptContext *ctx);
 
-BOOL ScrCmd_WaitButtonOrWalkAway(ScriptContext *ctx) {
+BOOL ScrCmd_WaitButton(ScriptContext *ctx) {
     SetupNativeScript(ctx, sub_02041074);
     return TRUE;
 }
