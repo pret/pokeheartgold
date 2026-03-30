@@ -64,7 +64,7 @@ PGEAR_GRA_FILES := \
 	pgear_gra_00000059.NSCR
 
 $(PGEAR_GRA_NARC): $(addprefix $(PGEAR_GRA_DIR)/,$(PGEAR_GRA_FILES))
-	$(KNARC) -p $@ -d $(PGEAR_GRA_DIR) -i
+	$(NARC) -cf $@ --index-namespace $(PGEAR_GRA_DIR)
 
 CLOBBER_SIZE_VERSION101_NCGR_FILES += \
 	$(PGEAR_GRA_DIR)/pgear_gra_00000006.NCGR \

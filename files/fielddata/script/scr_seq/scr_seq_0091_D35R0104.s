@@ -440,7 +440,7 @@ _055F:
 
 _0561:
 	npc_msg msg_0114_D35R0104_00011
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

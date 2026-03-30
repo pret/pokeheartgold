@@ -248,7 +248,7 @@ _028F:
 	call_if_set FLAG_HIDE_POKEATHLON_POKEGEAR_SIGN, _0689
 	call_if_set FLAG_HIDE_POKEATHLON_BALL_SIGN, _06A2
 	npc_msg msg_0312_00010
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	scrcmd_606
@@ -505,7 +505,7 @@ _07D9:
 	touchscreen_menu_show
 _07DB:
 	npc_msg msg_0312_00010
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -513,7 +513,7 @@ _07DB:
 _07E6:
 	touchscreen_menu_show
 	npc_msg msg_0312_00037
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -851,7 +851,7 @@ _0CD2:
 	scrcmd_283
 	touchscreen_menu_show
 	npc_msg msg_0312_00029
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	scrcmd_606
@@ -991,7 +991,7 @@ _0EB8:
 	call_if_set FLAG_HIDE_POKEATHLON_POKEGEAR_SIGN, _0689
 	call_if_set FLAG_HIDE_POKEATHLON_BALL_SIGN, _06A2
 	npc_msg msg_0312_00010
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	scrcmd_606
@@ -1051,7 +1051,7 @@ _0FDC:
 
 _0FE4:
 	npc_msg msg_0312_00038
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

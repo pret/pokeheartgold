@@ -72,14 +72,14 @@ _00F1:
 	compare VAR_SCENE_MR_POKEMONS_HOUSE, 2
 	goto_if_ge _011F
 	npc_msg msg_0377_R30R0201_00005
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _011F:
 	npc_msg msg_0377_R30R0201_00006
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -102,14 +102,14 @@ _012A:
 
 _0189:
 	npc_msg msg_0377_R30R0201_00020
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _0194:
 	npc_msg msg_0377_R30R0201_00019
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -199,14 +199,14 @@ _02B6:
 	callstd std_give_item_verbose
 	closemsg
 	npc_msg msg_0377_R30R0201_00026
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _02CD:
 	npc_msg msg_0377_R30R0201_00027
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

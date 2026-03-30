@@ -53,7 +53,7 @@ scr_seq_T25R0601_003:
 	goto_if_eq _00EA
 	callstd std_give_item_verbose
 	npc_msg msg_0589_T25R0601_00007
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	setflag FLAG_UNK_15D
 	setvar VAR_UNK_4082, 0
@@ -141,7 +141,7 @@ _0185:
 
 _01D0:
 	npc_msg msg_0589_T25R0601_00002
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -207,7 +207,7 @@ _0276:
 	goto _031F
 
 _031F:
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	touchscreen_menu_show
 	hide_money_box
@@ -284,7 +284,7 @@ scr_seq_T25R0601_001:
 	goto_if_eq _0432
 _03F2:
 	npc_msg msg_0589_T25R0601_00004
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -298,7 +298,7 @@ _03FD:
 	compare VAR_TEMP_x4001, 492
 	goto_if_ne _03F2
 	npc_msg msg_0589_T25R0601_00007
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -338,7 +338,7 @@ _049E:
 	goto_if_eq _04DD
 	callstd std_give_item_verbose
 	npc_msg msg_0589_T25R0601_00007
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	setflag FLAG_UNK_15D
 	setvar VAR_UNK_4082, 0

@@ -183,7 +183,7 @@ _0253:
 	settrainerflag TRAINER_LASS_LINDA
 _0277:
 	npc_msg msg_0514_T08GYM0101_00008
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -256,7 +256,7 @@ _036B:
 	settrainerflag TRAINER_CAMPER_BARRY
 _038F:
 	npc_msg msg_0514_T08GYM0101_00010
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -331,7 +331,7 @@ _0488:
 	settrainerflag TRAINER_LASS_ALICE
 _04AC:
 	npc_msg msg_0514_T08GYM0101_00013
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -406,7 +406,7 @@ _05A5:
 	settrainerflag TRAINER_PICNICKER_CINDY
 _05C9:
 	npc_msg msg_0514_T08GYM0101_00016
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -539,7 +539,7 @@ _074F:
 _0778:
 	goto_if_unset FLAG_GOT_TM84_FROM_JANINE, _074F
 	npc_msg msg_0514_T08GYM0101_00004
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -563,14 +563,14 @@ scr_seq_T08GYM0101_002:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _07C4
 	npc_msg msg_0514_T08GYM0101_00005
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _07C4:
 	npc_msg msg_0514_T08GYM0101_00006
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -589,7 +589,7 @@ scr_seq_T08GYM0101_007:
 _07F6:
 	npc_msg msg_0514_T08GYM0101_00018
 _07F9:
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

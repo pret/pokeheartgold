@@ -32,7 +32,7 @@ scr_seq_D26R0102_001:
 _0047:
 	buffer_players_name 0
 	npc_msg msg_0091_D26R0102_00004
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

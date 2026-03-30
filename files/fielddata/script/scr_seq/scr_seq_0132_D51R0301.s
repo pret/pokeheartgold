@@ -24,7 +24,7 @@ _002E:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _004C
 	npc_msg msg_0147_D51R0301_00002
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -214,7 +214,7 @@ scr_seq_D51R0301_001:
 	goto_if_ge _026E
 	goto_if_set FLAG_UNK_09D, _0263
 	npc_msg msg_0147_D51R0301_00007
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	setflag FLAG_UNK_09D
 	releaseall
@@ -222,14 +222,14 @@ scr_seq_D51R0301_001:
 
 _0263:
 	npc_msg msg_0147_D51R0301_00008
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _026E:
 	npc_msg msg_0147_D51R0301_00009
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -273,7 +273,7 @@ _02E4:
 
 _030C:
 	npc_msg msg_0147_D51R0301_00012
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -317,7 +317,7 @@ scr_seq_D51R0301_003:
 	play_cry SPECIES_ABRA, 0
 	npc_msg msg_0147_D51R0301_00013
 	wait_cry
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

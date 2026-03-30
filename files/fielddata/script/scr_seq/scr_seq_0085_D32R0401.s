@@ -218,7 +218,7 @@ _02F5:
 _02FD:
 	setvar VAR_UNK_4145, 0
 	npc_msg msg_0108_D32R0401_00006
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -481,7 +481,7 @@ _071D:
 
 _0721:
 	npc_msg msg_0108_D32R0401_00009
-	wait_button
+	wait_ab_press
 	closemsg
 	apply_movement obj_player, _07C8
 	apply_movement VAR_SPECIAL_LAST_TALKED, _07F0
@@ -490,7 +490,7 @@ _0721:
 
 _073C:
 	npc_msg msg_0108_D32R0401_00009
-	wait_button
+	wait_ab_press
 	closemsg
 	apply_movement obj_player, _07C8
 	apply_movement VAR_SPECIAL_LAST_TALKED, _07F0
@@ -736,7 +736,7 @@ scr_seq_D32R0401_009:
 	play_cry SPECIES_SLOWBRO, 0
 	npc_msg msg_0108_D32R0401_00062
 	wait_cry
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -807,7 +807,7 @@ _0AFF:
 	end
 
 _0B0E:
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -893,7 +893,7 @@ _0C16:
 	end
 
 _0C21:
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -979,7 +979,7 @@ _0D29:
 	end
 
 _0D34:
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -1028,7 +1028,7 @@ _0DBC:
 	end
 
 _0DC7:
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

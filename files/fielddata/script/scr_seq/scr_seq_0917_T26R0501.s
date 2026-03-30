@@ -64,7 +64,7 @@ _008F:
 	wait_fanfare
 	npc_msg msg_0609_T26R0501_00009
 _00E3:
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

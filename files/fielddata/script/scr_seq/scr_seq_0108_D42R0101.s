@@ -19,14 +19,14 @@ scr_seq_D42R0101_000:
 	setflag FLAG_GOT_BLACKGLASSES_FROM_DARK_CAVE_MAN
 _0045:
 	npc_msg msg_0127_D42R0101_00002
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _0050:
 	npc_msg msg_0127_D42R0101_00003
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

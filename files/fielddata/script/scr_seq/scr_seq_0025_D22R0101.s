@@ -171,7 +171,7 @@ scr_seq_D22R0101_026:
 	goto_if_eq _02C7
 	buffer_players_name 0
 	npc_msg msg_0062_D22R0101_00084
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -199,21 +199,21 @@ _02C7:
 	wait_fade
 	clearflag FLAG_UNK_189
 	npc_msg msg_0062_D22R0101_00087
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _032B:
 	npc_msg msg_0062_D22R0101_00088
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _0336:
 	npc_msg msg_0062_D22R0101_00089
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -229,7 +229,7 @@ scr_seq_D22R0101_000:
 	setflag FLAG_GOT_QUICK_CLAW_FROM_NATIONAL_PARK_WOMAN
 _0380:
 	npc_msg msg_0062_D22R0101_00004
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -304,7 +304,7 @@ _0483:
 	clearflag FLAG_UNK_189
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 2
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -417,7 +417,7 @@ _0616:
 	clearflag FLAG_UNK_189
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 2
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -425,7 +425,7 @@ _0616:
 _0650:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 5
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -433,7 +433,7 @@ _0650:
 _0664:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 3
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -503,7 +503,7 @@ scr_seq_D22R0101_010:
 	npc_msg msg_0062_D22R0101_00008
 	play_cry SPECIES_PERSIAN, 0
 	wait_cry
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

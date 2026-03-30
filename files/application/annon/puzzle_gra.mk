@@ -18,7 +18,7 @@ ALPH_PUZZLE_FILES := \
 	puzzle_gra_00000015.NSCR
 
 $(ALPH_PUZZLE_DIR).narc: $(addprefix $(ALPH_PUZZLE_DIR)/,$(ALPH_PUZZLE_FILES))
-	$(KNARC) -p $@ -d $(ALPH_PUZZLE_DIR) -i
+	$(NARC) -cf $@ --index-namespace $(ALPH_PUZZLE_DIR)
 
 CLOBBER_SIZE_VERSION101_NCGR_FILES += \
 	$(ALPH_PUZZLE_DIR)/puzzle_gra_00000001.NCGR \

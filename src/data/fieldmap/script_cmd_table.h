@@ -48,8 +48,8 @@ BOOL ScrCmd_NPCMsg(ScriptContext *ctx);
 BOOL ScrCmd_NonNpcMsgVar(ScriptContext *ctx);
 BOOL ScrCmd_NpcMsgVar(ScriptContext *ctx);
 BOOL ScrCmd_048(ScriptContext *ctx);
+BOOL ScrCmd_WaitABPress(ScriptContext *ctx);
 BOOL ScrCmd_WaitButton(ScriptContext *ctx);
-BOOL ScrCmd_WaitButtonOrWalkAway(ScriptContext *ctx);
 BOOL ScrCmd_WaitButtonOrDpad(ScriptContext *ctx);
 BOOL ScrCmd_OpenMsg(ScriptContext *ctx);
 BOOL ScrCmd_CloseMsg(ScriptContext *ctx);
@@ -826,7 +826,7 @@ BOOL ScrCmd_823(ScriptContext *ctx);
 BOOL ScrCmd_824(ScriptContext *ctx);
 BOOL ScrCmd_GetShinyLeafCount(ScriptContext *ctx);
 BOOL ScrCmd_TryGiveShinyLeafCrown(ScriptContext *ctx);
-BOOL ScrCmd_GetPartymonForm(ScriptContext *ctx);
+BOOL ScrCmd_GetPartyMonForm2(ScriptContext *ctx);
 BOOL ScrCmd_MonAddContestValue(ScriptContext *ctx);
 BOOL ScrCmd_829(ScriptContext *ctx);
 BOOL ScrCmd_830(ScriptContext *ctx);
@@ -903,8 +903,8 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_NonNpcMsgVar,
     ScrCmd_NpcMsgVar,
     ScrCmd_048,
+    ScrCmd_WaitABPress,
     ScrCmd_WaitButton,
-    ScrCmd_WaitButtonOrWalkAway,
     ScrCmd_WaitButtonOrDpad,
     ScrCmd_OpenMsg,
     ScrCmd_CloseMsg,
@@ -1681,7 +1681,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_824,
     ScrCmd_GetShinyLeafCount,
     ScrCmd_TryGiveShinyLeafCrown,
-    ScrCmd_GetPartymonForm,
+    ScrCmd_GetPartyMonForm2,
     ScrCmd_MonAddContestValue,
     ScrCmd_829,
     ScrCmd_830,

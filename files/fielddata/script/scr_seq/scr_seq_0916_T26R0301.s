@@ -42,7 +42,7 @@ _0037:
 	npc_trade_end
 	setflag FLAG_TRADE_OLIVINE_CITY_KRABBY_VOLTORB
 	npc_msg msg_0608_T26R0301_00001
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -50,21 +50,21 @@ _0037:
 _009B:
 	npc_trade_end
 	npc_msg msg_0608_T26R0301_00002
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _00A8:
 	npc_msg msg_0608_T26R0301_00003
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _00B3:
 	npc_msg msg_0608_T26R0301_00004
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

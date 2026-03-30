@@ -114,7 +114,7 @@ _015C:
 
 _0190:
 	npc_msg msg_0516_T08R0201_00007
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -166,7 +166,7 @@ _01FB:
 
 _0260:
 	npc_msg msg_0516_T08R0201_00012
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -177,7 +177,7 @@ _026B:
 
 _0274:
 	npc_msg msg_0516_T08R0201_00015
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -259,7 +259,7 @@ _034E:
 
 _0384:
 	npc_msg msg_0516_T08R0201_00021
-	wait_button
+	wait_ab_press
 	closemsg
 	goto _03A1
 
@@ -324,21 +324,21 @@ scr_seq_T08R0201_004:
 
 _042E:
 	npc_msg msg_0516_T08R0201_00041
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _0439:
 	npc_msg msg_0516_T08R0201_00042
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _0444:
 	npc_msg msg_0516_T08R0201_00043
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -383,14 +383,14 @@ scr_seq_T08R0201_009:
 
 _0506:
 	npc_msg msg_0516_T08R0201_00034
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _0511:
 	npc_msg msg_0516_T08R0201_00040
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
