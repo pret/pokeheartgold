@@ -50,7 +50,7 @@ PGRADIO_GRA_FILES := \
 	pgradio_gra_00000045.NSCR
 
 $(PGRADIO_GRA_NARC): $(addprefix $(PGRADIO_GRA_DIR)/,$(PGRADIO_GRA_FILES))
-	$(KNARC) -p $@ -d $(PGRADIO_GRA_DIR) -i
+	$(NARC) -cf $@ --index-namespace $(PGRADIO_GRA_DIR)
 
 CLOBBER_SIZE_VERSION101_NCGR_FILES += \
 	$(PGRADIO_GRA_DIR)/pgradio_gra_00000001.NCGR
