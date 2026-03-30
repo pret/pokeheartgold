@@ -140,7 +140,7 @@ scr_seq_T07_001:
 	play_cry SPECIES_POLIWRATH, 0
 	npc_msg msg_0491_T07_00001
 	wait_cry
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -272,7 +272,7 @@ _0302:
 	apply_movement obj_T07_gsleader6, _0464
 	wait_movement
 	npc_msg msg_0491_T07_00018
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -301,7 +301,7 @@ _03E2:
 	wait_fanfare
 	register_gear_number PHONE_CONTACT_ERIKA
 	npc_msg msg_0491_T07_00021
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
@@ -317,7 +317,7 @@ _03E2:
 
 _0429:
 	npc_msg msg_0491_T07_00022
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -369,21 +369,21 @@ _046C:
 	wait_fade
 	clearflag FLAG_UNK_189
 	npc_msg msg_0491_T07_00026
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _04D5:
 	npc_msg msg_0491_T07_00027
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _04E0:
 	npc_msg msg_0491_T07_00028
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -462,7 +462,7 @@ _0601:
 	clearflag FLAG_UNK_189
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 2
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -470,7 +470,7 @@ _0601:
 _063B:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 5
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -478,7 +478,7 @@ _063B:
 _064F:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 3
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

@@ -20,7 +20,7 @@ scr_seq_T07R0205_000:
 	compare VAR_TEMP_x4000, 4
 	goto_if_eq _0045
 	npc_msg msg_0505_T07R0205_00001
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -32,7 +32,7 @@ _0045:
 	setflag FLAG_GOT_SPELL_TAG_FROM_CELADON_CITY_MAN
 _0071:
 	npc_msg msg_0505_T07R0205_00003
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

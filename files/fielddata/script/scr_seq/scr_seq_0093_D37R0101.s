@@ -310,7 +310,7 @@ _043B:
 _0451:
 	npc_msg msg_0116_D37R0101_00000
 _0454:
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -339,7 +339,7 @@ _0490:
 _04A6:
 	npc_msg msg_0116_D37R0101_00003
 _04A9:
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

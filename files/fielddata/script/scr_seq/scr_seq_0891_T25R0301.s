@@ -32,42 +32,42 @@ scr_seq_T25R0301_000:
 
 _006C:
 	npc_msg msg_0585_T25R0301_00001
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _0077:
 	npc_msg msg_0585_T25R0301_00002
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _0082:
 	npc_msg msg_0585_T25R0301_00003
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _008D:
 	npc_msg msg_0585_T25R0301_00004
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _0098:
 	npc_msg msg_0585_T25R0301_00005
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _00A3:
 	npc_msg msg_0585_T25R0301_00006
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

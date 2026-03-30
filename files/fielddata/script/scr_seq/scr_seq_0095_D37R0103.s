@@ -212,7 +212,7 @@ scr_seq_D37R0103_002:
 	play_cry SPECIES_MACHOKE, 0
 	npc_msg msg_0118_D37R0103_00002
 	wait_cry
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

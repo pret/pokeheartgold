@@ -238,7 +238,7 @@ _0307:
 	setflag FLAG_GOT_TM03_FROM_MISTY
 	buffer_players_name 0
 	npc_msg msg_0469_T04GYM0101_00012
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -252,7 +252,7 @@ _033E:
 _0348:
 	goto_if_unset FLAG_GOT_TM03_FROM_MISTY, _0307
 	npc_msg msg_0469_T04GYM0101_00013
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -310,7 +310,7 @@ _03ED:
 _03F3:
 	npc_msg msg_0469_T04GYM0101_00005
 _03F6:
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -323,14 +323,14 @@ scr_seq_T04GYM0101_001:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0424
 	npc_msg msg_0469_T04GYM0101_00014
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _0424:
 	npc_msg msg_0469_T04GYM0101_00015
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

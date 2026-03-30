@@ -248,7 +248,7 @@ scr_seq_D44R0102_001:
 	buffer_players_name 0
 	buffer_rivals_name 1
 	npc_msg msg_0129_D44R0102_00007
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	setflag FLAG_UNK_0E2
 	releaseall
@@ -257,7 +257,7 @@ scr_seq_D44R0102_001:
 _0340:
 	buffer_rivals_name 1
 	npc_msg msg_0129_D44R0102_00008
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -289,7 +289,7 @@ _039D:
 	wait_fanfare
 	register_gear_number PHONE_CONTACT_CLAIR
 	npc_msg msg_0129_D44R0102_00011
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
@@ -305,7 +305,7 @@ _039D:
 _03E0:
 	setvar VAR_TEMP_x4002, 1
 	npc_msg msg_0129_D44R0102_00012
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -337,21 +337,21 @@ _03FC:
 	wait_fade
 	clearflag FLAG_UNK_189
 	npc_msg msg_0129_D44R0102_00031
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _045D:
 	npc_msg msg_0129_D44R0102_00032
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _0468:
 	npc_msg msg_0129_D44R0102_00033
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

@@ -177,7 +177,7 @@ _019C:
 _02D3:
 	npc_msg msg_0130_D44R0103_00021
 _02D6:
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	setflag FLAG_UNK_998
@@ -200,7 +200,7 @@ _0310:
 	apply_movement obj_D44R0103_chourou, _0388
 	wait_movement
 	npc_msg msg_0130_D44R0103_00008
-	wait_button
+	wait_ab_press
 	switch VAR_SPECIAL_x8004
 	case 0, _00A0
 	case 1, _00DF
@@ -330,7 +330,7 @@ scr_seq_D44R0103_000:
 _049B:
 	npc_msg msg_0130_D44R0103_00022
 _049E:
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -370,20 +370,20 @@ _050E:
 _052E:
 	setflag FLAG_GOT_DRATINI_FROM_MASTER_JUST_NOW
 	npc_msg msg_0130_D44R0103_00029
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _053D:
 	npc_msg msg_0130_D44R0103_00030
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _0548:
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -460,7 +460,7 @@ _0664:
 	clearflag FLAG_UNK_189
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 2
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -468,7 +468,7 @@ _0664:
 _069E:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 5
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -476,7 +476,7 @@ _069E:
 _06B2:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 3
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
