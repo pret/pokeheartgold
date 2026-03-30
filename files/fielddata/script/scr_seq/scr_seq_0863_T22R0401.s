@@ -21,7 +21,7 @@ scr_seq_T22R0401_003:
 	play_cry SPECIES_PIDGEY, 0
 	npc_msg msg_0561_T22R0401_00002
 	wait_cry
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

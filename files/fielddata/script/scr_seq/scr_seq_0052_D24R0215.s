@@ -112,7 +112,7 @@ scr_seq_D24R0215_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0083_D24R0215_00000
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

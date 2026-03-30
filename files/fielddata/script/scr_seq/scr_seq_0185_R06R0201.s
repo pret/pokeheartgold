@@ -14,14 +14,14 @@ scr_seq_R06R0201_000:
 	faceplayer
 	goto_if_set FLAG_RESTORED_POWER, _0024
 	npc_msg msg_0335_R06R0201_00000
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _0024:
 	npc_msg msg_0335_R06R0201_00001
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

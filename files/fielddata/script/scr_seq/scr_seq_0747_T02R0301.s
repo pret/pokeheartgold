@@ -39,7 +39,7 @@ scr_seq_T02R0301_005:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0457_T02R0301_00005
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -48,7 +48,7 @@ scr_seq_T02R0301_006:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0457_T02R0301_00006
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

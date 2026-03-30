@@ -439,7 +439,7 @@ scr_seq_D40R0107_005:
 	wait_movement
 	buffer_players_name 0
 	npc_msg msg_0125_D40R0107_00003
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	setflag FLAG_UNK_10B
@@ -638,7 +638,7 @@ scr_seq_D40R0107_001:
 	faceplayer
 	goto_if_set FLAG_UNK_109, _0B62
 	npc_msg msg_0125_D40R0107_00001
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -664,7 +664,7 @@ _0B8E:
 _0BA4:
 	npc_msg msg_0125_D40R0107_00007
 _0BA7:
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -675,14 +675,14 @@ scr_seq_D40R0107_003:
 	faceplayer
 	goto_if_set FLAG_UNK_109, _0BCD
 	npc_msg msg_0125_D40R0107_00001
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _0BCD:
 	npc_msg msg_0125_D40R0107_00005
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

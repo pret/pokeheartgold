@@ -95,7 +95,7 @@ _0143:
 	clearflag FLAG_UNK_189
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 2
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -103,7 +103,7 @@ _0143:
 _017D:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 5
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -111,7 +111,7 @@ _017D:
 _0191:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 3
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -292,7 +292,7 @@ _03D2:
 	wait_movement
 	buffer_players_name 0
 	npc_msg msg_0351_R14_00006
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	callstd std_fade_end_eusine_music
 	hide_person obj_R14_tsure_poke_static_suicune
@@ -480,7 +480,7 @@ scr_seq_R14_005:
 	goto_if_eq _060D
 _0602:
 	npc_msg msg_0351_R14_00001
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -493,7 +493,7 @@ _060D:
 	callstd std_give_item_verbose
 	setflag FLAG_GOT_LUCKY_PUNCH_FROM_ROUTE_14_WOMAN
 	npc_msg msg_0351_R14_00003
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -514,14 +514,14 @@ _0658:
 	goto_if_eq _068B
 _0680:
 	npc_msg msg_0351_R14_00005
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _068B:
 	npc_msg msg_0351_R14_00004
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

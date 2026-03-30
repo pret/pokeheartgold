@@ -72,7 +72,7 @@ _00C1:
 _00D7:
 	npc_msg msg_0065_D23R0101_00000
 _00DA:
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -160,7 +160,7 @@ scr_seq_D23R0101_002:
 
 _0221:
 	npc_msg msg_0065_D23R0101_00013
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	touchscreen_menu_show
 	releaseall
@@ -170,7 +170,7 @@ _022E:
 	play_se SEQ_SE_DP_BOX03
 	wait_se SEQ_SE_DP_BOX03
 	npc_msg msg_0065_D23R0101_00012
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	touchscreen_menu_show
 	releaseall
@@ -178,7 +178,7 @@ _022E:
 
 _0243:
 	npc_msg msg_0065_D23R0101_00011
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -208,7 +208,7 @@ scr_seq_D23R0101_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0065_D23R0101_00016
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -217,7 +217,7 @@ scr_seq_D23R0101_004:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0065_D23R0101_00017
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -229,7 +229,7 @@ scr_seq_D23R0101_005:
 	compare VAR_SCENE_ROCKET_TAKEOVER, 3
 	goto_if_eq _02C2
 	npc_msg msg_0065_D23R0101_00018
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -268,7 +268,7 @@ _0333:
 	setvar VAR_TEMP_x400B, 11
 _0346:
 	npc_msg msg_0065_D23R0101_00020
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -769,14 +769,14 @@ _09AF:
 
 _09CF:
 	npc_msg msg_0065_D23R0101_00029
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _09DA:
 	npc_msg msg_0065_D23R0101_00030
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -796,7 +796,7 @@ _09E5:
 
 _0A24:
 	npc_msg msg_0065_D23R0101_00035
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -879,7 +879,7 @@ _0B4A:
 _0B75:
 	copyvar VAR_UNK_4136, VAR_SPECIAL_x8002
 	npc_msg msg_0065_D23R0101_00042
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -894,7 +894,7 @@ _0B98:
 	setvar VAR_UNK_4136, 0
 	setflag FLAG_UNK_AA6
 	npc_msg msg_0065_D23R0101_00044
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

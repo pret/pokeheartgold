@@ -237,7 +237,7 @@ _033F:
 	end
 _034C:
 	npc_msg msg_0046_00029
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	touchscreen_menu_show
 	releaseall
@@ -245,7 +245,7 @@ _034C:
 
 _0359:
 	npc_msg msg_0046_00029
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -290,7 +290,7 @@ _0423:
 
 _0440:
 	npc_msg msg_0046_00010
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	touchscreen_menu_show
 	releaseall
@@ -305,7 +305,7 @@ _044D:
 
 _046A:
 	npc_msg msg_0046_00141
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	touchscreen_menu_show
 	releaseall
@@ -320,7 +320,7 @@ _0477:
 
 _0494:
 	npc_msg msg_0046_00140
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	touchscreen_menu_show
 	releaseall
@@ -435,20 +435,20 @@ _0702:
 	end
 _072A:
 	npc_msg msg_0046_00122
-	wait_button
+	wait_ab_press
 	compare VAR_TEMP_x4003, 3
 	goto_if_eq _059A
 	goto _04AF
 	end
 _0744:
 	npc_msg msg_0046_00136
-	wait_button
+	wait_ab_press
 	goto _04AF
 	end
 _0751:
 	closemsg
 	scrcmd_801 VAR_TEMP_x4000
-	wait_button
+	wait_ab_press
 	scrcmd_802
 	goto _0682
 	end
@@ -608,7 +608,7 @@ _0A23:
 	scrcmd_283
 	touchscreen_menu_show
 	npc_msg msg_0046_00030
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -616,7 +616,7 @@ _0A23:
 _0A32:
 	scrcmd_283
 	npc_msg msg_0046_00029
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	touchscreen_menu_show
 	releaseall
@@ -645,7 +645,7 @@ _0A90:
 _0A9C:
 	scrcmd_283
 	npc_msg msg_0046_00030
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	touchscreen_menu_show
 	releaseall
@@ -654,7 +654,7 @@ _0A9C:
 _0AAB:
 	scrcmd_283
 	npc_msg msg_0046_00029
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	touchscreen_menu_show
 	releaseall
@@ -765,7 +765,7 @@ _0C04:
 
 _0C10:
 	npc_msg msg_0046_00144
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -896,7 +896,7 @@ _0E34:
 
 _0E3A:
 	npc_msg msg_0046_00146
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -910,7 +910,7 @@ _0E45:
 _0E5B:
 	npc_msg msg_0046_00147
 _0E5E:
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -978,14 +978,14 @@ _0EF6:
 	end
 _0F1C:
 	npc_msg msg_0046_00118
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _0F27:
 	call _0F3F
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

@@ -25,14 +25,14 @@ scr_seq_R12R0101_000:
 	giveitem_no_check ITEM_SUPER_ROD, 1
 _004C:
 	npc_msg msg_0349_R12R0101_00002
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _0057:
 	npc_msg msg_0349_R12R0101_00003
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

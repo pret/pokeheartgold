@@ -20,7 +20,7 @@ _001F:
 	compare VAR_SPECIAL_RESULT, 15
 	goto_if_eq _0056
 	npc_msg msg_0449_T01R0201_00000
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -83,28 +83,28 @@ _00F0:
 _012D:
 	setflag FLAG_UNK_AA8
 	npc_msg msg_0449_T01R0201_00004
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _013C:
 	npc_msg msg_0449_T01R0201_00007
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _0147:
 	npc_msg msg_0449_T01R0201_00006
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _0152:
 	npc_msg msg_0449_T01R0201_00005
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -125,14 +125,14 @@ _016D:
 	play_fanfare SEQ_ME_POKEGEAR_REGIST
 	wait_fanfare
 	npc_msg msg_0449_T01R0201_00010
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _019D:
 	npc_msg msg_0449_T01R0201_00011
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	setvar VAR_TEMP_x4004, 1
 	releaseall

@@ -48,8 +48,8 @@ BOOL ScrCmd_NPCMsg(ScriptContext *ctx);
 BOOL ScrCmd_NonNpcMsgVar(ScriptContext *ctx);
 BOOL ScrCmd_NpcMsgVar(ScriptContext *ctx);
 BOOL ScrCmd_048(ScriptContext *ctx);
+BOOL ScrCmd_WaitABPress(ScriptContext *ctx);
 BOOL ScrCmd_WaitButton(ScriptContext *ctx);
-BOOL ScrCmd_WaitButtonOrWalkAway(ScriptContext *ctx);
 BOOL ScrCmd_WaitButtonOrDpad(ScriptContext *ctx);
 BOOL ScrCmd_OpenMsg(ScriptContext *ctx);
 BOOL ScrCmd_CloseMsg(ScriptContext *ctx);
@@ -903,8 +903,8 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_NonNpcMsgVar,
     ScrCmd_NpcMsgVar,
     ScrCmd_048,
+    ScrCmd_WaitABPress,
     ScrCmd_WaitButton,
-    ScrCmd_WaitButtonOrWalkAway,
     ScrCmd_WaitButtonOrDpad,
     ScrCmd_OpenMsg,
     ScrCmd_CloseMsg,

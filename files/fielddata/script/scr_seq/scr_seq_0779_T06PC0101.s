@@ -22,14 +22,14 @@ scr_seq_T06PC0101_001:
 	faceplayer
 	goto_if_set FLAG_CAUGHT_SNORLAX, _003C
 	npc_msg msg_0486_T06PC0101_00000
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _003C:
 	npc_msg msg_0486_T06PC0101_00001
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

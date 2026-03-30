@@ -109,7 +109,7 @@ _0157:
 	wait_fanfare
 	register_gear_number PHONE_CONTACT_BROCK
 	npc_msg msg_0047_D01R0101_00003
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
@@ -125,7 +125,7 @@ _0157:
 _019A:
 	setvar VAR_TEMP_x4003, 1
 	npc_msg msg_0047_D01R0101_00004
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -176,21 +176,21 @@ _020E:
 	wait_fade
 	clearflag FLAG_UNK_189
 	npc_msg msg_0047_D01R0101_00008
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _027C:
 	npc_msg msg_0047_D01R0101_00009
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _0287:
 	npc_msg msg_0047_D01R0101_00010
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -233,7 +233,7 @@ _02AF:
 	setflag FLAG_TRADE_BROCK_BONSLY_RHYHORN
 	setvar VAR_TEMP_x4000, 55
 	npc_msg msg_0047_D01R0101_00016
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -241,14 +241,14 @@ _02AF:
 _0339:
 	npc_trade_end
 	npc_msg msg_0047_D01R0101_00018
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _0346:
 	npc_msg msg_0047_D01R0101_00014
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	setvar VAR_TEMP_x4000, 111
@@ -256,7 +256,7 @@ _0346:
 
 _0357:
 	npc_msg msg_0047_D01R0101_00017
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

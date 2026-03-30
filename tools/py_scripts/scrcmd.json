@@ -317,11 +317,11 @@
       ]
     },
     {
-      "name": "wait_button",
+      "name": "wait_ab_press",
       "args": []
     },
     {
-      "name": "wait_button_or_walk_away",
+      "name": "wait_button",
       "args": []
     },
     {

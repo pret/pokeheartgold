@@ -21,7 +21,7 @@ scr_seq_T24R0201_000:
 _0037:
 	npc_msg msg_0576_T24R0201_00011
 _003A:
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

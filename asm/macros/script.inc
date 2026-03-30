@@ -346,12 +346,12 @@
 	.endm
 
 	; Waits for A or B button
-	.macro wait_button
+	.macro wait_ab_press
 	.short 49
 	.endm
 
 	; Waits for A, B, or dpad. On pressing dpad, does a turn frame.
-	.macro wait_button_or_walk_away
+	.macro wait_button
 	.short 50
 	.endm
 
@@ -4936,7 +4936,7 @@
 	lockall
 	faceplayer
 	npc_msg \msgid
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	.endm
