@@ -13,3 +13,9 @@ void sub_0205453C(FieldSystem *fieldSystem) {
 		fieldSystem->unk5C = NULL;
 	}
 }
+
+u8 *sub_02054550(u8 index, u8 *a1) {
+    u8 val = a1[index];
+    u8 *ptr = a1 + 0xe2;
+    return ptr + ((u32)val << 11);
+}

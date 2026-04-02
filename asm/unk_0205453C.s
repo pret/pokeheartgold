@@ -4,16 +4,6 @@
 
 	.text
 
-	thumb_func_start sub_02054550
-sub_02054550: ; 0x02054550
-	ldrb r0, [r1, r0]
-	add r2, r1, #0
-	add r2, #0xe2
-	lsl r0, r0, #0xb
-	add r0, r2, r0
-	bx lr
-	thumb_func_end sub_02054550
-
 	thumb_func_start sub_0205455C
 sub_0205455C: ; 0x0205455C
 	push {r4, r5, r6, r7, lr}
