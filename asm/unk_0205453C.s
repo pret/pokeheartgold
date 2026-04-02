@@ -4,28 +4,6 @@
 
 	.text
 
-	thumb_func_start sub_02054514
-sub_02054514: ; 0x02054514
-	push {r3, r4, r5, lr}
-	add r5, r0, #0
-	ldr r0, [r5, #0x5c]
-	add r4, r1, #0
-	cmp r0, #0
-	bne _02054534
-	ldr r1, _02054538 ; =0x000080E2
-	mov r0, #0xb
-	bl Heap_Alloc
-	str r0, [r5, #0x5c]
-	ldr r0, [r5, #0x30]
-	ldr r1, [r5, #0x5c]
-	add r2, r4, #0
-	bl sub_0205455C
-_02054534:
-	pop {r3, r4, r5, pc}
-	nop
-_02054538: .word 0x000080E2
-	thumb_func_end sub_02054514
-
 	thumb_func_start sub_0205453C
 sub_0205453C: ; 0x0205453C
 	push {r4, lr}
