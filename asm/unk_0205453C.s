@@ -4,20 +4,6 @@
 
 	.text
 
-	thumb_func_start sub_0205453C
-sub_0205453C: ; 0x0205453C
-	push {r4, lr}
-	add r4, r0, #0
-	ldr r0, [r4, #0x5c]
-	cmp r0, #0
-	beq _0205454E
-	bl Heap_Free
-	mov r0, #0
-	str r0, [r4, #0x5c]
-_0205454E:
-	pop {r4, pc}
-	thumb_func_end sub_0205453C
-
 	thumb_func_start sub_02054550
 sub_02054550: ; 0x02054550
 	ldrb r0, [r1, r0]
