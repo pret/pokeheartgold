@@ -23,6 +23,7 @@
 #include "scrcmd_9.h"
 #include "sys_task.h"
 #include "sys_task_api.h"
+#include "terrain_attributes.h"
 
 typedef struct FollowMon {
     LocalMapObject *mapObject;
@@ -128,7 +129,7 @@ struct FieldSystem {
     u8 filler48[0xC];
     void *unk54;
     u32 unk58;
-    void *unk5C;
+    TerrainAttributes *terrainAttributes;
     u32 unk60;
     int unk64;
     struct FieldSystemUnkSub68 *unk68;

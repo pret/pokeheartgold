@@ -9,6 +9,6 @@
 .public MapMatrix_GetMapModelNo
 .public MapMatrix_GetWidth
 .public MapMatrix_GetHeight
-.public sub_02054514
-.public sub_0205453C
-.public sub_02054550
+.public TerrainAttributes_New
+.public TerrainAttributes_Free
+.public TerrainAttributes_Get

@@ -69,7 +69,7 @@ typedef enum NarcId {
     NARC_a_0_6_2 = 62,
     NARC_a_0_6_3 = 63,
     NARC_a_0_6_4 = 64,
-    NARC_a_0_6_5 = 65,
+    NARC_fielddata_landdata_land_data = 65,
     NARC_a_0_6_6 = 66,
     NARC_a_0_6_7 = 67,
     NARC_graphic_zukan_gra = 68,

@@ -22,7 +22,7 @@
 #include "unk_02005D10.h"
 #include "unk_0200FA24.h"
 #include "unk_0203BA5C.h"
-#include "unk_02054514.h"
+#include "terrain_attributes.h"
 #include "unk_02054648.h"
 #include "unk_02054E00.h"
 #include "unk_02055244.h"
@@ -276,7 +276,7 @@ static void sub_02053284(FieldSystem *fieldSystem) {
     fieldSystem->unk18 = fieldSystem->unk74->unk0_00;
     sub_0205489C(&fieldSystem->unk60, fieldSystem->unk74->unk0_08);
     if (fieldSystem->unk74->unk0_10) {
-        sub_02054514(fieldSystem, fieldSystem->unk74->unk0_18);
+        TerrainAttributes_New(fieldSystem, fieldSystem->unk74->unk0_18);
     }
 }
 
@@ -285,7 +285,7 @@ static void sub_02053324(FieldSystem *fieldSystem) {
     fieldSystem->unk60 = 0;
     fieldSystem->unk18 = 7;
     if (fieldSystem->unk74->unk0_10) {
-        sub_0205453C(fieldSystem);
+        TerrainAttributes_Free(fieldSystem);
     }
     fieldSystem->unk74 = NULL;
 }
