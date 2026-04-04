@@ -68,7 +68,8 @@ typedef struct PokeathlonCourseState {
 
 // Pokeathlon course data structure (0xD70 = 3440 bytes)
 struct PokeathlonCourseData {
-    u8 filler_0[0x15C];                        // 0x000
+    u32 field_0[4];                            // 0x000
+    u8 filler_10[0x14C];                       // 0x010
     u8 field_15C;                              // 0x15C
     u8 filler_15D[0x83];                       // 0x15D
     u32 state;                                 // 0x1E0
@@ -140,8 +141,10 @@ u8 ov96_021E5DD4(PokeathlonCourseData *data);
 void ov96_021E5DE0(PokeathlonCourseData *data, int param);
 void ov96_021E5DEC(PokeathlonCourseData *data);
 void ov96_021E5DFC(PokeathlonCourseData *data, int param);
+void ov96_021E5E04(PokeathlonCourseData *data, u8 *param);
 
 // Internal overlay 96 functions (stubs for now, in assembly)
+void *ov96_021E5E7C(PokeathlonCourseData *data);
 void *ov96_021E8770(int a0, int a1, PokeathlonCourseData *data, int a3, enum HeapID heapId);
 int ov96_021E8A24(void);
 int ov96_021E8A2C(void);

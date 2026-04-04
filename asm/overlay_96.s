@@ -23,42 +23,7 @@
 	.extern ov96_021E5DE0
 	.extern ov96_021E5DEC
 	.extern ov96_021E5DFC
-
-	thumb_func_start ov96_021E5E04
-ov96_021E5E04: ; 0x021E5E04
-	push {r4, r5, r6, lr}
-	ldr r2, _021E5E40 ; =0x0000072A
-	add r4, r0, #0
-	ldrb r2, [r4, r2]
-	mov r0, #0
-	cmp r2, #0
-	ble _021E5E28
-	mov r3, #0xf6
-	ldr r5, _021E5E40 ; =0x0000072A
-	add r2, r4, #0
-	lsl r3, r3, #2
-_021E5E1A:
-	ldrb r6, [r1, r0]
-	add r0, r0, #1
-	str r6, [r2, r3]
-	ldrb r6, [r4, r5]
-	add r2, r2, #4
-	cmp r0, r6
-	blt _021E5E1A
-_021E5E28:
-	add r0, r4, #0
-	bl ov96_021E5E7C
-	mov r1, #0xfa
-	lsl r1, r1, #2
-	str r0, [r4, r1]
-	mov r0, #0x9f
-	ldr r1, [r4, r1]
-	lsl r0, r0, #2
-	str r1, [r4, r0]
-	pop {r4, r5, r6, pc}
-	nop
-_021E5E40: .word 0x0000072A
-	thumb_func_end ov96_021E5E04
+	.extern ov96_021E5E04
 
 	thumb_func_start ov96_021E5E44
 ov96_021E5E44: ; 0x021E5E44

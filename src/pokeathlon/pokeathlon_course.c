@@ -366,3 +366,12 @@ void ov96_021E5DEC(PokeathlonCourseData *data) {
 void ov96_021E5DFC(PokeathlonCourseData *data, int param) {
     data->field_1F4 = param;
 }
+
+void ov96_021E5E04(PokeathlonCourseData *data, u8 *param) {
+    for (int i = 0; i < data->maxParticipants; i++) {
+        data->field_3D8[i] = param[i];
+    }
+
+    data->field_3E8 = ov96_021E5E7C(data);
+    data->field_27C = data->field_3E8;
+}
