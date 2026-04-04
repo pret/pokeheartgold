@@ -24,41 +24,8 @@
 	.extern ov96_021E5DEC
 	.extern ov96_021E5DFC
 	.extern ov96_021E5E04
-
-	thumb_func_start ov96_021E5E44
-ov96_021E5E44: ; 0x021E5E44
-	mov r1, #0x1f
-	lsl r1, r1, #4
-	ldr r1, [r0, r1]
-	lsl r1, r1, #2
-	add r1, r0, r1
-	mov r0, #0xf6
-	lsl r0, r0, #2
-	ldr r0, [r1, r0]
-	bx lr
-	.balign 4, 0
-	thumb_func_end ov96_021E5E44
-
-	thumb_func_start ov96_021E5E58
-ov96_021E5E58: ; 0x021E5E58
-	push {r3, lr}
-	ldr r2, _021E5E78 ; =0x0000072A
-	ldrb r2, [r0, r2]
-	cmp r1, r2
-	blo _021E5E6A
-	bl GF_AssertFail
-	mov r0, #0
-	pop {r3, pc}
-_021E5E6A:
-	lsl r1, r1, #2
-	add r1, r0, r1
-	mov r0, #0xf6
-	lsl r0, r0, #2
-	ldr r0, [r1, r0]
-	pop {r3, pc}
-	nop
-_021E5E78: .word 0x0000072A
-	thumb_func_end ov96_021E5E58
+	.extern ov96_021E5E44
+	.extern ov96_021E5E58
 
 	thumb_func_start ov96_021E5E7C
 ov96_021E5E7C: ; 0x021E5E7C

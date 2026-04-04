@@ -375,3 +375,16 @@ void ov96_021E5E04(PokeathlonCourseData *data, u8 *param) {
     data->field_3E8 = ov96_021E5E7C(data);
     data->field_27C = data->field_3E8;
 }
+
+u32 ov96_021E5E44(PokeathlonCourseData *data) {
+    // Based on ov96_021E5E58, field_1F0 might be like current participant index or similar
+    return data->field_3D8[data->field_1F0];
+}
+
+u32 ov96_021E5E58(PokeathlonCourseData *data, u8 index) {
+    if (index >= data->maxParticipants) {
+        GF_AssertFail(); // Cannot use GF_ASSERT because of the following early return
+        return 0;
+    }
+    return data->field_3D8[index];
+}

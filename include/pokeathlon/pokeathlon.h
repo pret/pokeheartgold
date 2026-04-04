@@ -142,6 +142,8 @@ void ov96_021E5DE0(PokeathlonCourseData *data, int param);
 void ov96_021E5DEC(PokeathlonCourseData *data);
 void ov96_021E5DFC(PokeathlonCourseData *data, int param);
 void ov96_021E5E04(PokeathlonCourseData *data, u8 *param);
+u32 ov96_021E5E44(PokeathlonCourseData *data);
+u32 ov96_021E5E58(PokeathlonCourseData *data, u8 index);
 
 // Internal overlay 96 functions (stubs for now, in assembly)
 void *ov96_021E5E7C(PokeathlonCourseData *data);
