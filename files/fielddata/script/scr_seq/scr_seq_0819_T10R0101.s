@@ -67,7 +67,7 @@ scr_seq_T10R0101_003:
 	play_cry SPECIES_ABRA, 0
 	npc_msg msg_0522_T10R0101_00002
 	wait_cry
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -205,7 +205,7 @@ _0287:
 
 _0293:
 	npc_msg msg_0522_T10R0101_00006
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

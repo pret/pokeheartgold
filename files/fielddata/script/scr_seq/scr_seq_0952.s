@@ -112,7 +112,7 @@ _0118:
 	goto_if_eq _0186
 	script_overlay_cmd 4, 0
 	show_trainer_house_intro_message VAR_TEMP_x4000
-	wait_button
+	wait_ab_press
 	closemsg
 	script_overlay_cmd 4, 1
 	scrcmd_808 VAR_TEMP_x4000
@@ -125,7 +125,7 @@ _0118:
 
 _0186:
 	npc_msg msg_0726_00001
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

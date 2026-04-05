@@ -10,7 +10,7 @@ OTHERPOKE_PIC_FILES := $(find $(OTHERPOKE_SPRITES_DIR) -name '*.png')
 $(OTHERPOKE_NARC): %.narc: $(OTHERPOKE_PIC_FILES)
 	mkdir -p $(OTHERPOKE_BUILD_DIR)
 	while read -r line; do $(GFX) $$line; done < $(OTHERPOKE_MAP_TXT)
-	$(KNARC) -d $(OTHERPOKE_BUILD_DIR) -p $@ -i
+	$(NARC) -cf $@ --index-namespace $(OTHERPOKE_BUILD_DIR)
 
 clean-otherpoke:
 	$(RM) -r $(OTHERPOKE_NARC) $(OTHERPOKE_BUILD_DIR)

@@ -242,7 +242,7 @@ scr_seq_D35R0101_002:
 
 _031C:
 	npc_msg msg_0111_D35R0101_00001
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -406,7 +406,7 @@ _0539:
 _054F:
 	npc_msg msg_0111_D35R0101_00013
 _0552:
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

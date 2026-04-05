@@ -101,7 +101,7 @@ _012F:
 	callstd std_give_item_verbose
 	setflag FLAG_GOT_TM07_FROM_PRYCE
 	npc_msg msg_0622_T28GYM0101_00004
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -114,7 +114,7 @@ _0172:
 _0178:
 	goto_if_set FLAG_GAME_CLEAR, _0198
 	npc_msg msg_0622_T28GYM0101_00005
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -147,21 +147,21 @@ _0198:
 	wait_fade
 	clearflag FLAG_UNK_189
 	npc_msg msg_0622_T28GYM0101_00008
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _01F9:
 	npc_msg msg_0622_T28GYM0101_00009
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _0204:
 	npc_msg msg_0622_T28GYM0101_00010
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

@@ -51,7 +51,7 @@ scr_seq_T07R0105_005:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0498_T07R0105_00003
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

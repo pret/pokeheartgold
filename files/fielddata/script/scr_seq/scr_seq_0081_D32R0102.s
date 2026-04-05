@@ -50,14 +50,14 @@ scr_seq_D32R0102_000:
 	compare VAR_UNK_40E5, 2
 	goto_if_eq _009E
 	npc_msg msg_0104_D32R0102_00002
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _009E:
 	npc_msg msg_0104_D32R0102_00003
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -109,7 +109,7 @@ _0173:
 _0183:
 	wait_movement
 	npc_msg msg_0104_D32R0102_00001
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	setvar VAR_UNK_40E5, 1
@@ -244,7 +244,7 @@ _032A:
 	clearflag FLAG_UNK_189
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 2
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -252,7 +252,7 @@ _032A:
 _0364:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 5
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -260,7 +260,7 @@ _0364:
 _0378:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 3
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

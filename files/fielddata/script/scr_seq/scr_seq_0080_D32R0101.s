@@ -44,7 +44,7 @@ _0077:
 	call _00A6
 	touchscreen_menu_show
 	npc_msg msg_0103_D32R0101_00010
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -79,7 +79,7 @@ _00A6:
 _012B:
 	touchscreen_menu_show
 	npc_msg msg_0103_D32R0101_00010
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -139,7 +139,7 @@ _01B8:
 	end
 
 _01C3:
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -169,7 +169,7 @@ _0205:
 	end
 
 _0210:
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -199,7 +199,7 @@ _0252:
 	end
 
 _025D:
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -229,7 +229,7 @@ _029F:
 	end
 
 _02AA:
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -259,7 +259,7 @@ _02EC:
 	end
 
 _02F7:
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

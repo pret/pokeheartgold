@@ -43,14 +43,14 @@ scr_seq_D49R0106_001:
 	faceplayer
 	goto_if_set FLAG_UNK_0F1, _0093
 	npc_msg msg_0142_D49R0106_00001
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _0093:
 	npc_msg msg_0142_D49R0106_00002
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -225,7 +225,7 @@ _036D:
 
 _03AC:
 	npc_msg msg_0142_D49R0106_00018
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	touchscreen_menu_show
 	releaseall
@@ -260,7 +260,7 @@ _041E:
 	play_cry SPECIES_DODRIO, 0
 	npc_msg msg_0142_D49R0106_00024
 	wait_cry
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -307,14 +307,14 @@ scr_seq_D49R0106_005:
 	faceplayer
 	goto_if_unset FLAG_HIDE_POKEATHLON_POKEGEAR_SIGN, _04A3
 	npc_msg msg_0142_D49R0106_00019
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _04A3:
 	npc_msg msg_0142_D49R0106_00020
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -325,14 +325,14 @@ scr_seq_D49R0106_006:
 	faceplayer
 	goto_if_unset FLAG_HIDE_POKEATHLON_BALL_SIGN, _04CC
 	npc_msg msg_0142_D49R0106_00021
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _04CC:
 	npc_msg msg_0142_D49R0106_00022
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

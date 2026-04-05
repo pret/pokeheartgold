@@ -61,7 +61,7 @@ _00B1:
 
 _00BE:
 	npc_msg msg_0745_W40R0101_00002
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -97,7 +97,7 @@ scr_seq_W40R0101_002:
 _0108:
 	npc_msg msg_0745_W40R0101_00004
 _010B:
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

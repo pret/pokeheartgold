@@ -551,7 +551,7 @@ NTR_FILE_EXT := bin NCGR NCLR NCER NSCR NSBMD NSBCA NSBTA
 
 %.narc: NARC_DEPS = $(foreach ext,$(NTR_FILE_EXT),$(wildcard $*/*.$ext))
 %.narc: $(NARC_DEPS)
-	$(KNARC) -d $* -p $@ -i
+	$(NARC) -cf $@ --index-namespace $*
 %.naix: %.narc
 
 .PHONY: filesystem clean-filesystem clean-fs

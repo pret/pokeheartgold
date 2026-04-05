@@ -117,7 +117,7 @@ _0195:
 	goto_if_unset FLAG_GOT_TM80_FROM_BROCK, _016C
 	buffer_players_name 0
 	npc_msg msg_0462_T03GYM0101_00005
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -141,14 +141,14 @@ scr_seq_T03GYM0101_001:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _01E4
 	npc_msg msg_0462_T03GYM0101_00006
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _01E4:
 	npc_msg msg_0462_T03GYM0101_00007
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -167,7 +167,7 @@ scr_seq_T03GYM0101_002:
 _0216:
 	npc_msg msg_0462_T03GYM0101_00009
 _0219:
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

@@ -165,7 +165,7 @@ _0216:
 	wait_fanfare
 	register_gear_number PHONE_CONTACT_PRYCE
 	npc_msg msg_0626_T29_00015
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
@@ -181,7 +181,7 @@ _0216:
 _0259:
 	setvar VAR_TEMP_x4004, 1
 	npc_msg msg_0626_T29_00016
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -220,7 +220,7 @@ _02DC:
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 9
 _0323:
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -228,7 +228,7 @@ _0323:
 _032B:
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 10
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -256,7 +256,7 @@ _036C:
 	play_fanfare SEQ_ME_ITEM
 	wait_fanfare
 	setflag FLAG_DAILY_GOT_SHOCK_RIBBON
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -264,7 +264,7 @@ _036C:
 _039B:
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 37
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -272,7 +272,7 @@ _039B:
 _03AF:
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 39
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -347,7 +347,7 @@ scr_seq_T29_003:
 _04BB:
 	buffer_players_name 0
 	gender_msgbox msg_0626_T29_00005, msg_0626_T29_00006
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	apply_movement obj_T29_tsure_poke_static_dragonite, _0538
 	wait_movement
@@ -365,7 +365,7 @@ _04BB:
 _04FA:
 	setflag FLAG_UNK_0C3
 	npc_msg msg_0626_T29_00007
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -401,14 +401,14 @@ scr_seq_T29_004:
 	faceplayer
 	goto_if_set FLAG_RED_GYARADOS_MEET, _056A
 	npc_msg msg_0626_T29_00009
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _056A:
 	npc_msg msg_0626_T29_00010
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -503,7 +503,7 @@ _0691:
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
 	buffer_pocket_name 2, VAR_SPECIAL_RESULT
 	npc_msg msg_0626_T29_00034
-	wait_button_or_walk_away
+	wait_button
 	setvar VAR_SPECIAL_RESULT, 1
 _06C4:
 	closemsg
@@ -513,7 +513,7 @@ _06C4:
 _06CA:
 	buffer_item_name 0, VAR_SPECIAL_x8004
 	npc_msg msg_0626_T29_00035
-	wait_button_or_walk_away
+	wait_button
 	setvar VAR_SPECIAL_RESULT, 0
 	goto _06C4
 	end
@@ -524,7 +524,7 @@ scr_seq_T29_018:
 	faceplayer
 	play_cry SPECIES_DRAGONITE, 0
 	npc_msg msg_0626_T29_00001
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

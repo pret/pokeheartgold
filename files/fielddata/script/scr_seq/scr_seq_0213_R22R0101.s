@@ -102,7 +102,7 @@ scr_seq_R22R0101_000:
 	apply_movement obj_player, _0164
 	wait_movement
 	npc_msg msg_0361_R22R0101_00000
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	setvar VAR_UNK_4110, 1
 	releaseall
@@ -249,14 +249,14 @@ scr_seq_R22R0101_004:
 	faceplayer
 	goto_if_set FLAG_UNLOCKED_WEST_KANTO, _0306
 	npc_msg msg_0361_R22R0101_00004
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _0306:
 	npc_msg msg_0361_R22R0101_00006
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -388,14 +388,14 @@ scr_seq_R22R0101_005:
 	faceplayer
 	goto_if_set FLAG_UNLOCKED_MT_SILVER, _049A
 	npc_msg msg_0361_R22R0101_00001
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _049A:
 	npc_msg msg_0361_R22R0101_00003
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -427,7 +427,7 @@ _04F4:
 	wait_fanfare
 	register_gear_number PHONE_CONTACT_JANINE
 	npc_msg msg_0361_R22R0101_00009
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
@@ -443,7 +443,7 @@ _04F4:
 _0537:
 	setvar VAR_TEMP_x4005, 1
 	npc_msg msg_0361_R22R0101_00010
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -475,21 +475,21 @@ _0553:
 	wait_fade
 	clearflag FLAG_UNK_189
 	npc_msg msg_0361_R22R0101_00014
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _05B4:
 	npc_msg msg_0361_R22R0101_00015
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _05BF:
 	npc_msg msg_0361_R22R0101_00016
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

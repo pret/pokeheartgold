@@ -95,7 +95,7 @@ _014A:
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 21
 _0191:
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -103,7 +103,7 @@ _0191:
 _0199:
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 22
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -131,7 +131,7 @@ _01DA:
 	play_fanfare SEQ_ME_ITEM
 	wait_fanfare
 	setflag FLAG_DAILY_GOT_SHOCK_RIBBON
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -139,7 +139,7 @@ _01DA:
 _0209:
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 49
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -147,7 +147,7 @@ _0209:
 _021D:
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 51
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -162,14 +162,14 @@ scr_seq_T30_001:
 	faceplayer
 	goto_if_set FLAG_UNK_0D1, _0262
 	npc_msg msg_0629_T30_00001
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _0262:
 	npc_msg msg_0629_T30_00002
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -194,7 +194,7 @@ scr_seq_T30_004:
 _02B1:
 	npc_msg msg_0629_T30_00006
 _02B4:
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -256,7 +256,7 @@ _0387:
 	clearflag FLAG_UNK_189
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 2
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -264,7 +264,7 @@ _0387:
 _03C1:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 5
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -272,7 +272,7 @@ _03C1:
 _03D5:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 3
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

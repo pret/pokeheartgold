@@ -34,12 +34,12 @@ _0051:
 	lockall
 	faceplayer
 	npc_msg msg_0577_T24R0501_00000
-	wait_button
+	wait_ab_press
 	goto_if_no_item_space ITEM_SECRETPOTION, 1, _009C
 	callstd std_give_item_verbose
 	setflag FLAG_GOT_SECRETPOTION
 	npc_msg msg_0577_T24R0501_00002
-	wait_button
+	wait_ab_press
 	closemsg
 	apply_movement obj_T24R0501_sunglasses, _00A8
 	wait_movement

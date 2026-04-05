@@ -348,14 +348,14 @@ scr_seq_T27R0501_004:
 	compare VAR_TEMP_x400A, 10
 	goto_if_eq _04C0
 	npc_msg msg_0618_T27R0501_00010
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _04B5:
 	npc_msg msg_0618_T27R0501_00008
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -363,7 +363,7 @@ _04B5:
 _04C0:
 	buffer_players_name 0
 	npc_msg msg_0618_T27R0501_00009
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -410,14 +410,14 @@ scr_seq_T27R0501_000:
 	faceplayer
 	goto_if_set FLAG_GOT_HM03, _059E
 	npc_msg msg_0618_T27R0501_00025
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _059E:
 	npc_msg msg_0618_T27R0501_00029
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -465,7 +465,7 @@ scr_seq_T27R0501_001:
 	play_cry SPECIES_PSYDUCK, 0
 	npc_msg msg_0618_T27R0501_00030
 	wait_cry
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -479,14 +479,14 @@ scr_seq_T27R0501_002:
 	compare VAR_UNK_410C, 1
 	goto_if_eq _064F
 	npc_msg msg_0618_T27R0501_00031
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _0644:
 	npc_msg msg_0618_T27R0501_00033
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -506,7 +506,7 @@ _0665:
 _067B:
 	npc_msg msg_0618_T27R0501_00035
 _067E:
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	compare VAR_TEMP_x400B, 2
@@ -528,21 +528,21 @@ scr_seq_T27R0501_014:
 	compare VAR_UNK_410C, 1
 	goto_if_eq _06DD
 	npc_msg msg_0618_T27R0501_00036
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _06D2:
 	npc_msg msg_0618_T27R0501_00038
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _06DD:
 	npc_msg msg_0618_T27R0501_00037
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -558,14 +558,14 @@ scr_seq_T27R0501_005:
 	goto_if_set FLAG_UNK_108, _0724
 	goto_if_set FLAG_UNK_109, _0724
 	npc_msg msg_0618_T27R0501_00019
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _0724:
 	npc_msg msg_0618_T27R0501_00040
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -577,14 +577,14 @@ scr_seq_T27R0501_006:
 	goto_if_set FLAG_UNK_108, _0758
 	goto_if_set FLAG_UNK_109, _0758
 	npc_msg msg_0618_T27R0501_00019
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _0758:
 	npc_msg msg_0618_T27R0501_00041
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -667,7 +667,7 @@ _085C:
 _0868:
 	buffer_players_name 0
 	npc_msg msg_0618_T27R0501_00042
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	setflag FLAG_UNK_107
 	releaseall
@@ -680,14 +680,14 @@ scr_seq_T27R0501_008:
 	goto_if_set FLAG_UNK_108, _08A3
 	goto_if_set FLAG_UNK_109, _08A3
 	npc_msg msg_0618_T27R0501_00019
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _08A3:
 	npc_msg msg_0618_T27R0501_00043
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -699,14 +699,14 @@ scr_seq_T27R0501_009:
 	goto_if_set FLAG_UNK_108, _08D7
 	goto_if_set FLAG_UNK_109, _08D7
 	npc_msg msg_0618_T27R0501_00019
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _08D7:
 	npc_msg msg_0618_T27R0501_00044
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -893,7 +893,7 @@ _0BC9:
 
 _0BD3:
 	npc_msg msg_0618_T27R0501_00014
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	call _0BB0
 	end

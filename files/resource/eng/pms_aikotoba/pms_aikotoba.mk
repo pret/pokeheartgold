@@ -20,7 +20,7 @@ $(PMS_AIKOTOBA_NARC): %.narc: %.s %.d
 	@$(WINE) $(MWAS) $(MWASFLAGS) $(DEPFLAGS) -DPM_ASM -o $*.o $< || { rm -f $*.d; exit 1; }
 	@$(call fixdep,$*.d)
 	@$(OBJCOPY) -O binary $*.o $*/tmp.bin
-	@$(KNARC) -p $@ -d $*
+	@$(NARC) -cf $@ $*
 	@$(RM) -r $*
 
 $(PMS_AIKOTOBA_DEP):
@@ -33,6 +33,6 @@ $(PMS_AIKOTOBA_NARC): %.narc: %.s
 	@$(RM) $*/*
 	@$(WINE) $(MWAS) $(MWASFLAGS) -DPM_ASM -o $*.o $<
 	@$(OBJCOPY) -O binary $*.o $*/tmp.bin
-	@$(KNARC) -p $@ -d $*
+	@$(NARC) -cf $@ $*
 	@$(RM) -r $*
 endif
