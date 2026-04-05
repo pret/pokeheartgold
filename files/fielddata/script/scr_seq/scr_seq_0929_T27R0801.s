@@ -26,7 +26,7 @@ scr_seq_T27R0801_000:
 
 _0044:
 	npc_msg msg_0619_T27R0801_00001
-	wait_button
+	wait_ab_press
 	goto_if_no_item_space ITEM_DOWSING_MCHN, 1, _0083
 	callstd std_give_item_verbose
 	setflag FLAG_GOT_DOWSING_MACHINE
@@ -34,7 +34,7 @@ _0044:
 
 _0078:
 	npc_msg msg_0619_T27R0801_00003
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -47,7 +47,7 @@ _0083:
 
 _008D:
 	npc_msg msg_0619_T27R0801_00004
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -79,7 +79,7 @@ _00C7:
 
 _00EE:
 	npc_msg msg_0619_T27R0801_00007
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

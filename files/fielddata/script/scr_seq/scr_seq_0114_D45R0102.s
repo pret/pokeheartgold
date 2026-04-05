@@ -310,14 +310,14 @@ scr_seq_D45R0102_003:
 	compare VAR_UNK_40FE, 4
 	goto_if_ge _0404
 	npc_msg msg_0131_D45R0102_00020
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _0404:
 	npc_msg msg_0131_D45R0102_00021
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

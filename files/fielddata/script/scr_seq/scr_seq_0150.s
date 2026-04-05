@@ -34,14 +34,14 @@ scr_seq_0150_000:
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _007D
 	npc_msg msg_0023_00004
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _007D:
 	npc_msg msg_0023_00006
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -49,14 +49,14 @@ _007D:
 _0088:
 	wait 15, VAR_SPECIAL_RESULT
 	npc_msg msg_0023_00002
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _0099:
 	npc_msg msg_0023_00007
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

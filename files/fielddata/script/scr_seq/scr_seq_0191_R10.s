@@ -96,7 +96,7 @@ _0138:
 	register_gear_number PHONE_CONTACT_LT__SURGE
 _0148:
 	npc_msg msg_0341_R10_00002
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
@@ -112,7 +112,7 @@ _0148:
 _017B:
 	setvar VAR_TEMP_x4002, 1
 	npc_msg msg_0341_R10_00003
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -124,7 +124,7 @@ _018C:
 
 _0197:
 	npc_msg msg_0341_R10_00005
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
