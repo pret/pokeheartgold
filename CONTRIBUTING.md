@@ -17,7 +17,7 @@ This applies to any act that introduces or changes text in the repository, inclu
 - Pull request reviews
 - Issues
 - Issue comments
-- Messages to maintaners
+- Messages to maintainers
   
 This does not apply to:
 - Asking questions about the code
