@@ -82,7 +82,7 @@ _0115:
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 17
 _015C:
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -90,7 +90,7 @@ _015C:
 _0164:
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 18
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -118,7 +118,7 @@ _01A5:
 	play_fanfare SEQ_ME_ITEM
 	wait_fanfare
 	setflag FLAG_DAILY_GOT_SHOCK_RIBBON
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -126,7 +126,7 @@ _01A5:
 _01D4:
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 45
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -134,7 +134,7 @@ _01D4:
 _01E8:
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 47
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -150,7 +150,7 @@ scr_seq_R32_000:
 	setflag FLAG_GOT_TM05_FROM_ROUTE_32_MAN
 _023B:
 	npc_msg msg_0380_R32_00012
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -172,7 +172,7 @@ scr_seq_R32_001:
 	goto_if_unset FLAG_UNK_074, _02A5
 	npc_msg msg_0380_R32_00007
 _0284:
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -208,7 +208,7 @@ _02C8:
 	compare VAR_TEMP_x4002, 0
 	goto_if_ne _0304
 	npc_msg msg_0380_R32_00008
-	wait_button_or_walk_away
+	wait_button
 	goto _0307
 
 _0304:
@@ -400,7 +400,7 @@ scr_seq_R32_003:
 _052D:
 	npc_msg msg_0380_R32_00016
 _0530:
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -469,7 +469,7 @@ _0626:
 	clearflag FLAG_UNK_189
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 2
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -477,7 +477,7 @@ _0626:
 _0660:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 5
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -485,7 +485,7 @@ _0660:
 _0674:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 3
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

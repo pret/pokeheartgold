@@ -81,7 +81,7 @@ _00CD:
 
 _00F7:
 	npc_msg msg_0557_T22FS0101_00008
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	setflag FLAG_UNK_06F
@@ -89,7 +89,7 @@ _00F7:
 
 _0106:
 	npc_msg msg_0557_T22FS0101_00007
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	setflag FLAG_UNK_06F

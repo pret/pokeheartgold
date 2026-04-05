@@ -97,7 +97,7 @@ _0118:
 	setvar VAR_UNK_4133, 0
 	clearflag FLAG_UNK_966
 	npc_msg msg_0043_00011
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -462,7 +462,7 @@ _067A:
 	end
 _068E:
 	npc_msg msg_0043_00159
-	wait_button_or_walk_away
+	wait_button
 	goto _0A9C
 	end
 
@@ -500,7 +500,7 @@ _0728:
 	end
 _0736:
 	npc_msg msg_0043_00174
-	wait_button_or_walk_away
+	wait_button
 	goto _0A9C
 	end
 _0743:
@@ -548,7 +548,7 @@ _0802:
 	end
 _0810:
 	npc_msg msg_0043_00167
-	wait_button_or_walk_away
+	wait_button
 	goto _0A9C
 	end
 _081D:
@@ -702,7 +702,7 @@ _0A8C: ; unreferenced
 	end
 _0A97:
 	npc_msg msg_0043_00116
-	wait_button_or_walk_away
+	wait_button
 _0A9C:
 	closemsg
 	releaseall

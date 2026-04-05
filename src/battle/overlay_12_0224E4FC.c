@@ -11,6 +11,7 @@
 #include "constants/move_effects.h"
 #include "constants/moves.h"
 #include "constants/species.h"
+#include "constants/trainers.h"
 
 #include "battle/battle.h"
 #include "battle/battle_controller.h"
@@ -135,7 +136,7 @@ void BattleSystem_GetBattleMon(BattleSystem *battleSystem, BattleContext *ctx, i
     GetMonData(mon, MON_DATA_NICKNAME, ctx->battleMons[battlerId].nickname);
     GetMonData(mon, MON_DATA_OT_NAME, ctx->battleMons[battlerId].otName);
 
-    ctx->battleMons[battlerId].unk78 = 0;
+    ctx->battleMons[battlerId].hitCount = 0;
     ctx->battleMons[battlerId].msgFlag = 0;
 
     side = BattleSystem_GetFieldSide(battleSystem, battlerId);
@@ -391,7 +392,7 @@ int GetBattlerVar(BattleContext *ctx, int battlerId, u32 id, void *data) {
     case BMON_DATA_HELD_ITEM:
         return mon->item;
     case BMON_DATA_TIMES_DAMAGED:
-        return mon->unk78;
+        return mon->hitCount;
     case BMON_DATA_MSG_FLAG:
         return mon->msgFlag;
     case BMON_DATA_OT_GENDER:
@@ -633,7 +634,7 @@ void SetBattlerVar(BattleContext *ctx, int battlerId, u32 id, void *data) {
         mon->item = *data16;
         break;
     case BMON_DATA_TIMES_DAMAGED:
-        mon->unk78 = *data8;
+        mon->hitCount = *data8;
         break;
     case BMON_DATA_MSG_FLAG:
         mon->msgFlag = *data8;
@@ -1596,7 +1597,7 @@ BOOL CheckTrainerMessage(BattleSystem *battleSystem, BattleContext *ctx) {
     int state = BattleSystem_GetBattleType(battleSystem); // note: this should be battleType for the following three if statements, but it won't match if an additional variable is used
     int trainerIndex;
 
-    if (state & 0x84) {
+    if (state & (BATTLE_TYPE_FRONTIER | BATTLE_TYPE_LINK)) {
         return FALSE;
     }
 
@@ -1614,17 +1615,17 @@ BOOL CheckTrainerMessage(BattleSystem *battleSystem, BattleContext *ctx) {
     do {
         switch (state) {
         case 0:
-            if (ctx->battleMons[1].unk78 == 1 && !(ctx->battleStatus2 & BATTLE_STATUS2_FIRST_DAMAGE_MESSAGE) && TrainerMessageWithIdPairExists(trainerIndex, 13, HEAP_ID_BATTLE)) {
+            if (ctx->battleMons[1].hitCount == 1 && !(ctx->battleStatus2 & BATTLE_STATUS2_FIRST_DAMAGE_MESSAGE) && TrainerMessageWithIdPairExists(trainerIndex, TRMSG_HIT_POKE_FIRST_TIME, HEAP_ID_BATTLE)) {
                 ctx->battleStatus2 |= BATTLE_STATUS2_FIRST_DAMAGE_MESSAGE;
-                ctx->msgTemp = 13;
+                ctx->msgTemp = TRMSG_HIT_POKE_FIRST_TIME;
                 return TRUE;
             }
             state++;
             break;
         case 1:
-            if (!(ctx->battleMons[1].msgFlag & 2) && ctx->battleMons[1].hp <= ctx->battleMons[1].maxHp / 2 && TrainerMessageWithIdPairExists(trainerIndex, 14, HEAP_ID_BATTLE)) {
+            if (!(ctx->battleMons[1].msgFlag & 2) && ctx->battleMons[1].hp <= ctx->battleMons[1].maxHp / 2 && TrainerMessageWithIdPairExists(trainerIndex, TRMSG_CURRENT_POKE_HALF, HEAP_ID_BATTLE)) {
                 ctx->battleMons[1].msgFlag |= 2;
-                ctx->msgTemp = 14;
+                ctx->msgTemp = TRMSG_CURRENT_POKE_HALF;
                 return TRUE;
             }
             state++;
@@ -1647,7 +1648,7 @@ BOOL CheckTrainerMessage(BattleSystem *battleSystem, BattleContext *ctx) {
                 }
                 if (aliveMons == 1 && TrainerMessageWithIdPairExists(trainerIndex, 15, HEAP_ID_BATTLE)) {
                     ctx->battleMons[1].msgFlag |= 3;
-                    ctx->msgTemp = 15;
+                    ctx->msgTemp = TRMSG_LAST_POKE;
                     return TRUE;
                 }
             }
@@ -1671,7 +1672,7 @@ BOOL CheckTrainerMessage(BattleSystem *battleSystem, BattleContext *ctx) {
                 }
                 if (aliveMons == 1 && (ctx->battleMons[1].hp <= ctx->battleMons[1].maxHp / 2) && TrainerMessageWithIdPairExists(trainerIndex, 16, HEAP_ID_BATTLE)) {
                     ctx->battleMons[1].msgFlag |= 4;
-                    ctx->msgTemp = 16;
+                    ctx->msgTemp = TRMSG_LAST_POKE_HALF;
                     return TRUE;
                 }
             }

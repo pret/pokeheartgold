@@ -381,7 +381,7 @@ _06B4:
 	end
 
 _06BF:
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -390,7 +390,7 @@ _06C7:
 	setvar VAR_ELEVATOR_LAST_FLOOR, 65535
 	wait 1, VAR_SPECIAL_RESULT
 	npc_msg msg_0500_T07R0107_00004
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -399,7 +399,7 @@ _06DE:
 	setvar VAR_ELEVATOR_LAST_FLOOR, 65535
 	wait 1, VAR_SPECIAL_RESULT
 	npc_msg msg_0500_T07R0107_00001
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

@@ -130,7 +130,7 @@ _01CF:
 	clearflag FLAG_UNK_189
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 2
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -138,7 +138,7 @@ _01CF:
 _0209:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 5
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -146,7 +146,7 @@ _0209:
 _021D:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 3
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -621,7 +621,7 @@ _0B02:
 	scrcmd_117
 	touchscreen_menu_show
 	npc_msg msg_0100_D32_00022
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	script_overlay_cmd 3, 1
@@ -909,7 +909,7 @@ scr_seq_D32_030:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0100_D32_00039
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -918,7 +918,7 @@ scr_seq_D32_031:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0100_D32_00040
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -927,7 +927,7 @@ scr_seq_D32_032:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0100_D32_00041
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

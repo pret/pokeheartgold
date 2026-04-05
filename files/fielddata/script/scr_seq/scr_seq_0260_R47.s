@@ -99,7 +99,7 @@ scr_seq_R47_001:
 	faceplayer
 	goto_if_set FLAG_MET_ROUTE_47_EMBEDDED_TOWER_HIKER, _019E
 	npc_msg msg_0407_R47_00000
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	setflag FLAG_MET_ROUTE_47_EMBEDDED_TOWER_HIKER
 	releaseall
@@ -107,7 +107,7 @@ scr_seq_R47_001:
 
 _019E:
 	npc_msg msg_0407_R47_00001
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -192,21 +192,21 @@ scr_seq_R47_004:
 	wait_fade
 	clearflag FLAG_UNK_189
 	npc_msg msg_0407_R47_00007
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _02B5:
 	npc_msg msg_0407_R47_00008
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _02C0:
 	npc_msg msg_0407_R47_00009
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

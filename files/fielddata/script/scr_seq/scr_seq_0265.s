@@ -24,7 +24,7 @@ scr_seq_0265_000:
 	compare VAR_UNK_408E, 4
 	goto_if_eq _0057
 	npc_msg msg_0439_00000
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -39,7 +39,7 @@ _0057:
 	goto_if_eq _0082
 	setflag FLAG_SYS_SUBSCRIBED_TO_EGG_CALLS
 	npc_msg msg_0439_00015
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -48,7 +48,7 @@ _0082:
 	clearflag FLAG_SYS_SUBSCRIBED_TO_EGG_CALLS
 	unset_phone_call_trigger CALL_TRIGGER_DAYCARE_HAS_EGG
 	npc_msg msg_0439_00016
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -77,7 +77,7 @@ _0094:
 
 _00EB:
 	npc_msg msg_0439_00003
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -88,7 +88,7 @@ _00F6:
 	compare VAR_SPECIAL_RESULT, 6
 	goto_if_ne _0114
 	npc_msg msg_0439_00004
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -109,7 +109,7 @@ _0114:
 
 _0146:
 	npc_msg msg_0439_00006
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -117,7 +117,7 @@ _0146:
 _0151:
 	buffer_day_care_mon_nicks
 	npc_msg msg_0439_00002
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -147,7 +147,7 @@ _01AC:
 _01B2:
 	npc_msg msg_0439_00017
 _01B5:
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -164,7 +164,7 @@ _01D3:
 _01D9:
 	npc_msg msg_0439_00018
 _01DC:
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -181,7 +181,7 @@ _01FA:
 _0200:
 	npc_msg msg_0439_00019
 _0203:
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -198,7 +198,7 @@ _0221:
 _0227:
 	npc_msg msg_0439_00020
 _022A:
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -222,7 +222,7 @@ scr_seq_0265_001:
 	goto_if_eq _0290
 	touchscreen_menu_show
 	npc_msg msg_0439_00026
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	hide_money_box
 	releaseall
@@ -281,7 +281,7 @@ _0374:
 	touchscreen_menu_show
 	play_cry VAR_SPECIAL_x8001, 0
 	npc_msg msg_0439_00041
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	wait_cry
 	hide_money_box
@@ -306,7 +306,7 @@ _03B1:
 	call _038B
 	touchscreen_menu_show
 	npc_msg msg_0439_00040
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	hide_money_box
 	releaseall
@@ -317,7 +317,7 @@ _03C6:
 	touchscreen_menu_show
 _03CE:
 	npc_msg msg_0439_00029
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	hide_money_box
 	releaseall
@@ -336,7 +336,7 @@ _03DB:
 _03FB:
 	touchscreen_menu_show
 	npc_msg msg_0439_00036
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	hide_money_box
 	releaseall
@@ -346,7 +346,7 @@ _040A:
 	call _038B
 	touchscreen_menu_show
 	npc_msg msg_0439_00038
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	hide_money_box
 	releaseall
@@ -355,7 +355,7 @@ _040A:
 _041F:
 	touchscreen_menu_show
 	npc_msg msg_0439_00039
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	hide_money_box
 	releaseall
@@ -363,7 +363,7 @@ _041F:
 
 _042E:
 	npc_msg msg_0439_00025
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	hide_money_box
 	releaseall
@@ -434,7 +434,7 @@ _0544:
 	goto_if_eq _0566
 	touchscreen_menu_show
 	npc_msg msg_0439_00027
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	hide_money_box
 	releaseall
@@ -474,7 +474,7 @@ _05BE:
 _05DC:
 	touchscreen_menu_show
 	npc_msg msg_0439_00032
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	hide_money_box
 	releaseall
@@ -509,7 +509,7 @@ _0620:
 	goto_if_eq _0498
 	touchscreen_menu_show
 	npc_msg msg_0439_00029
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	hide_money_box
 	releaseall

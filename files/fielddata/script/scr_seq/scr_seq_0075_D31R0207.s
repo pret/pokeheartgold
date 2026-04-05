@@ -184,7 +184,7 @@ scr_seq_D31R0207_001:
 	goto_if_eq _02B2
 _02A7:
 	npc_msg msg_0099_D31R0207_00007
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -216,7 +216,7 @@ scr_seq_D31R0207_002:
 	goto_if_eq _031A
 _030F:
 	npc_msg msg_0099_D31R0207_00016
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -248,7 +248,7 @@ scr_seq_D31R0207_003:
 	goto_if_eq _0382
 _0377:
 	npc_msg msg_0099_D31R0207_00004
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -279,7 +279,7 @@ scr_seq_D31R0207_004:
 	goto_if_eq _03E7
 _03DC:
 	npc_msg msg_0099_D31R0207_00013
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -310,7 +310,7 @@ scr_seq_D31R0207_005:
 	goto_if_eq _044C
 _0441:
 	npc_msg msg_0099_D31R0207_00010
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

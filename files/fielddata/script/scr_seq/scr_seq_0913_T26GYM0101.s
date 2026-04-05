@@ -144,7 +144,7 @@ _01CE:
 	goto_if_no_item_space ITEM_TM23, 1, _0202
 	callstd std_give_item_verbose
 	npc_msg msg_0606_T26GYM0101_00005
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	setflag FLAG_GOT_TM23_FROM_JASMINE
@@ -162,7 +162,7 @@ _020C:
 	compare VAR_TEMP_x4001, 1
 	goto_if_eq _023B
 	npc_msg msg_0606_T26GYM0101_00006
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -178,7 +178,7 @@ _023B:
 	goto_if_eq _0264
 	setvar VAR_TEMP_x4000, 77
 	npc_msg msg_0606_T26GYM0101_00007
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -203,7 +203,7 @@ _0264:
 	goto_if_eq _034B
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
 	get_partymon_species VAR_SPECIAL_x8004, VAR_TEMP_x4003
-	get_partymon_form VAR_SPECIAL_x8004, VAR_TEMP_x4004
+	get_party_mon_form_2 VAR_SPECIAL_x8004, VAR_TEMP_x4004
 	compare VAR_TEMP_x4003, 0
 	goto_if_eq _0356
 	compare VAR_TEMP_x4004, 0
@@ -231,14 +231,14 @@ _030E:
 	setflag FLAG_TRADE_JASMINE_STEELIX
 	setvar VAR_TEMP_x4000, 55
 	npc_msg msg_0606_T26GYM0101_00011
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _034B:
 	npc_msg msg_0606_T26GYM0101_00010
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -246,14 +246,14 @@ _034B:
 _0356:
 	buffer_players_name 0
 	npc_msg msg_0606_T26GYM0101_00014
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _0364:
 	npc_msg msg_0606_T26GYM0101_00015
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -267,7 +267,7 @@ _036F:
 _0385:
 	npc_msg msg_0606_T26GYM0101_00012
 _0388:
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -295,7 +295,7 @@ _03E2:
 	apply_movement obj_player, _042C
 	wait_movement
 	npc_msg msg_0606_T26GYM0101_00019
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	compare VAR_UNK_410E, 1
@@ -357,7 +357,7 @@ _048E:
 	apply_movement obj_player, _0434
 	wait_movement
 	npc_msg msg_0606_T26GYM0101_00021
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	compare VAR_UNK_410E, 2
@@ -394,7 +394,7 @@ scr_seq_T26GYM0101_003:
 _04F4:
 	npc_msg msg_0606_T26GYM0101_00019
 _04F7:
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	compare VAR_UNK_410E, 1
@@ -416,7 +416,7 @@ scr_seq_T26GYM0101_004:
 _0536:
 	npc_msg msg_0606_T26GYM0101_00021
 _0539:
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	compare VAR_UNK_410E, 2
@@ -440,14 +440,14 @@ scr_seq_T26GYM0101_005:
 _0585:
 	npc_msg msg_0606_T26GYM0101_00017
 _0588:
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _0590:
 	npc_msg msg_0606_T26GYM0101_00018
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -466,7 +466,7 @@ scr_seq_T26GYM0101_006:
 _05C2:
 	npc_msg msg_0606_T26GYM0101_00024
 _05C5:
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

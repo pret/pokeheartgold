@@ -43,7 +43,7 @@ scr_seq_D10R0101_001:
 	; unreferenced
 	palpark_action 0
 	setvar VAR_UNK_4124, 1
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -147,14 +147,14 @@ _0180:
 	goto_if_eq _01B9
 	buffer_players_name 0
 	npc_msg msg_0052_D10R0101_00002
-	wait_button_or_walk_away
+	wait_button
 	setvar VAR_SPECIAL_RESULT, 0
 	return
 
 _01B9:
 	buffer_players_name 0
 	npc_msg msg_0052_D10R0101_00003
-	wait_button_or_walk_away
+	wait_button
 	setvar VAR_SPECIAL_RESULT, 0
 	return
 

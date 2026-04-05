@@ -19,7 +19,7 @@ scr_seq_T11R0501_000:
 	setflag FLAG_GOT_TM29_FROM_MR_PSYCHIC
 _0045:
 	npc_msg msg_0534_T11R0501_00001
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

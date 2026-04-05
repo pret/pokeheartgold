@@ -1060,7 +1060,7 @@ _0222C550:
 	bne _0222C596
 	ldr r0, [sp, #8]
 	ldr r0, [r0]
-	bl Frontier_GetLaunchParam
+	bl Frontier_GetLaunchArgs
 	ldr r0, [r0, #8]
 	bl Save_PlayerData_GetProfile
 	bl ov80_0222A7EC
@@ -1195,7 +1195,7 @@ _0222C632:
 	bne _0222C6AA
 	ldr r0, [sp, #8]
 	ldr r0, [r0]
-	bl Frontier_GetLaunchParam
+	bl Frontier_GetLaunchArgs
 	ldr r0, [r0, #8]
 	bl Save_PlayerData_GetProfile
 	bl ov80_0222A7EC
@@ -1818,7 +1818,7 @@ FrtCmd_052: ; 0x0222CB54
 	add r4, r0, #0
 	ldr r0, [r4]
 	ldr r0, [r0]
-	bl Frontier_GetLaunchParam
+	bl Frontier_GetLaunchArgs
 	ldr r0, [r0, #4]
 	mov r1, #0
 	str r0, [sp]
@@ -1856,7 +1856,7 @@ FrtCmd_108: ; 0x0222CB9C
 	push {r3, lr}
 	ldr r0, [r0]
 	ldr r0, [r0]
-	bl Frontier_GetLaunchParam
+	bl Frontier_GetLaunchArgs
 	ldr r0, [r0, #8]
 	mov r1, #0xb
 	add r2, sp, #0
@@ -1922,7 +1922,7 @@ ov80_0222CC20: ; 0x0222CC20
 	sub sp, #8
 	ldr r4, [r0]
 	ldr r0, [r4]
-	bl Frontier_GetLaunchParam
+	bl Frontier_GetLaunchArgs
 	add r1, r4, #0
 	add r1, #0xb0
 	str r1, [sp]
@@ -2151,7 +2151,7 @@ FrtCmd_110: ; 0x0222CD94
 	add r5, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl Frontier_GetLaunchParam
+	bl Frontier_GetLaunchArgs
 	mov r1, #0x75
 	add r4, r0, #0
 	mov r0, #0xb
@@ -2204,7 +2204,7 @@ FrtCmd_112: ; 0x0222CE00
 	add r5, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl Frontier_GetLaunchParam
+	bl Frontier_GetLaunchArgs
 	add r4, r0, #0
 	add r0, r5, #0
 	bl FrontierScript_ReadVarPtr
@@ -2225,7 +2225,7 @@ FrtCmd_114: ; 0x0222CE28
 	add r4, r0, #0
 	ldr r0, [r4]
 	ldr r0, [r0]
-	bl Frontier_GetLaunchParam
+	bl Frontier_GetLaunchArgs
 	add r5, r0, #0
 	add r0, r4, #0
 	bl FrontierScript_ReadVarPtr
@@ -2242,7 +2242,7 @@ FrtCmd_115: ; 0x0222CE48
 	add r5, r0, #0
 	ldr r4, [r5]
 	ldr r0, [r4]
-	bl Frontier_GetLaunchParam
+	bl Frontier_GetLaunchArgs
 	add r6, r0, #0
 	add r0, r5, #0
 	bl FrontierScript_ReadVarPtr
@@ -2267,7 +2267,7 @@ ov80_0222CE80: ; 0x0222CE80
 	push {r3, lr}
 	ldr r0, [r0]
 	ldr r0, [r0]
-	bl Frontier_GetLaunchParam
+	bl Frontier_GetLaunchArgs
 	ldr r0, [r0, #8]
 	bl Save_WriteFileAsync
 	cmp r0, #2
@@ -2295,7 +2295,7 @@ FrtCmd_116: ; 0x0222CEB8
 	push {r3, lr}
 	ldr r0, [r0]
 	ldr r0, [r0]
-	bl Frontier_GetLaunchParam
+	bl Frontier_GetLaunchArgs
 	ldr r0, [r0, #8]
 	bl Save_WipeExtraChunks
 	mov r0, #0
@@ -2308,7 +2308,7 @@ FrtCmd_117: ; 0x0222CECC
 	add r5, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl Frontier_GetLaunchParam
+	bl Frontier_GetLaunchArgs
 	add r4, r0, #0
 	add r0, r5, #0
 	bl FrontierScript_ReadVarPtr
@@ -2476,7 +2476,7 @@ FrtCmd_123: ; 0x0222D008
 	add r5, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl Frontier_GetLaunchParam
+	bl Frontier_GetLaunchArgs
 	ldr r2, [r5, #0x1c]
 	add r1, r2, #1
 	str r1, [r5, #0x1c]
@@ -2499,7 +2499,7 @@ FrtCmd_124: ; 0x0222D034
 	add r5, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl Frontier_GetLaunchParam
+	bl Frontier_GetLaunchArgs
 	ldr r1, [r5, #0x1c]
 	add r0, r1, #1
 	str r0, [r5, #0x1c]
@@ -2617,7 +2617,7 @@ FrtCmd_128: ; 0x0222D118
 	add r4, r0, #0
 	ldr r0, [r4]
 	ldr r0, [r0]
-	bl Frontier_GetLaunchParam
+	bl Frontier_GetLaunchArgs
 	ldr r1, [r4, #0x1c]
 	add r2, r0, #0
 	add r0, r1, #1
@@ -2637,7 +2637,7 @@ FrtCmd_129: ; 0x0222D13C
 	add r5, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl Frontier_GetLaunchParam
+	bl Frontier_GetLaunchArgs
 	add r4, r0, #0
 	add r0, r5, #0
 	bl FrontierScript_ReadVarPtr
@@ -2659,7 +2659,7 @@ FrtCmd_130: ; 0x0222D168
 	add r5, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl Frontier_GetLaunchParam
+	bl Frontier_GetLaunchArgs
 	add r4, r0, #0
 	add r0, r5, #0
 	bl FrontierScript_ReadVar
@@ -2685,7 +2685,7 @@ FrtCmd_131: ; 0x0222D1A0
 	add r5, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl Frontier_GetLaunchParam
+	bl Frontier_GetLaunchArgs
 	add r4, r0, #0
 	add r0, r5, #0
 	bl FrontierScript_ReadVar
@@ -2807,7 +2807,7 @@ FrtCmd_057: ; 0x0222D284
 	push {r3, lr}
 	ldr r0, [r0]
 	ldr r0, [r0]
-	bl Frontier_GetLaunchParam
+	bl Frontier_GetLaunchArgs
 	ldr r0, [r0, #8]
 	bl SaveArray_Party_Get
 	bl HealParty
@@ -2920,7 +2920,7 @@ FrtCmd_061: ; 0x0222D334
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl Frontier_GetLaunchParam
+	bl Frontier_GetLaunchArgs
 	ldr r0, [r0, #8]
 	bl Save_VarsFlags_Get
 	add r1, r6, #0
@@ -2941,7 +2941,7 @@ FrtCmd_062: ; 0x0222D360
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl Frontier_GetLaunchParam
+	bl Frontier_GetLaunchArgs
 	ldr r0, [r0, #8]
 	bl Save_VarsFlags_Get
 	add r1, r6, #0
@@ -4102,7 +4102,7 @@ FrtCmd_063: ; 0x0222DC70
 	add r5, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl Frontier_GetLaunchParam
+	bl Frontier_GetLaunchArgs
 	add r0, r5, #0
 	bl FrontierScript_ReadVar
 	add r1, r5, #0
@@ -4200,7 +4200,7 @@ FrtCmd_064: ; 0x0222DD3C
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl Frontier_GetLaunchParam
+	bl Frontier_GetLaunchArgs
 	ldr r0, [r0, #8]
 	bl Save_PlayerData_GetProfile
 	bl PlayerProfile_GetTrainerGender
@@ -4505,7 +4505,7 @@ FrtCmd_069: ; 0x0222DF64
 	bl FrontierScriptContext_ReadHalfWord
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl Frontier_GetLaunchParam
+	bl Frontier_GetLaunchArgs
 	ldr r0, [r0, #8]
 	bl SaveArray_Party_Get
 	ldr r1, [sp, #0x18]
@@ -4619,7 +4619,7 @@ FrtCmd_072: ; 0x0222E078
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl Frontier_GetLaunchParam
+	bl Frontier_GetLaunchArgs
 	ldr r0, [r0, #8]
 	bl Save_GameStats_Get
 	add r1, r4, #0
@@ -4640,7 +4640,7 @@ FrtCmd_073: ; 0x0222E09C
 	add r6, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl Frontier_GetLaunchParam
+	bl Frontier_GetLaunchArgs
 	ldr r0, [r0, #8]
 	bl Save_GameStats_Get
 	add r1, r4, #0
@@ -4658,7 +4658,7 @@ FrtCmd_074: ; 0x0222E0C8
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl Frontier_GetLaunchParam
+	bl Frontier_GetLaunchArgs
 	ldr r0, [r0, #8]
 	bl Save_GameStats_Get
 	add r1, r4, #0
@@ -4676,7 +4676,7 @@ FrtCmd_075: ; 0x0222E0EC
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl Frontier_GetLaunchParam
+	bl Frontier_GetLaunchArgs
 	ldr r0, [r0, #8]
 	bl sub_0205C298
 	strh r0, [r4]
@@ -4702,7 +4702,7 @@ FrtCmd_183: ; 0x0222E120
 	push {r4, lr}
 	ldr r0, [r0]
 	ldr r0, [r0]
-	bl Frontier_GetLaunchParam
+	bl Frontier_GetLaunchArgs
 	ldr r0, [r0, #8]
 	bl sub_0202C6F4
 	add r4, r0, #0
@@ -4721,7 +4721,7 @@ FrtCmd_200: ; 0x0222E144
 	add r4, r0, #0
 	ldr r0, [r4]
 	ldr r0, [r0]
-	bl Frontier_GetLaunchParam
+	bl Frontier_GetLaunchArgs
 	ldr r0, [r0, #8]
 	bl sub_020270C4
 	add r0, r4, #0
@@ -4898,7 +4898,7 @@ ov80_0222E268: ; 0x0222E268
 	add r0, r5, #0
 	bl FrontierSystem_GetFrontierMap
 	ldr r0, [r0, #8]
-	bl Frontier_GetLaunchParam
+	bl Frontier_GetLaunchArgs
 	ldr r0, [r0, #4]
 	bl Options_GetTextFrameDelay
 	add r2, r0, #0
@@ -7216,7 +7216,7 @@ ov80_0222F458: ; 0x0222F458
 	add r4, r1, #0
 	ldr r0, [r0]
 	add r6, r2, #0
-	bl Frontier_GetLaunchParam
+	bl Frontier_GetLaunchArgs
 	ldrh r2, [r4]
 	ldr r1, _0222F4C8 ; =0x0000FFFF
 	cmp r2, r1

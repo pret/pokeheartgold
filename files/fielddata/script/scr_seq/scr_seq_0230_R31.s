@@ -51,7 +51,7 @@ _006F:
 	goto_if_eq _02AE
 _008D:
 	npc_msg msg_0378_R31_00000
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -127,7 +127,7 @@ _01EB:
 	setvar VAR_LOAN_SPEAROW, 5
 _01F1:
 	npc_msg msg_0378_R31_00008
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -143,7 +143,7 @@ _0206:
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	npc_msg msg_0378_R31_00009
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -153,7 +153,7 @@ _021F:
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	npc_msg msg_0378_R31_00015
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -163,7 +163,7 @@ _0238:
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	npc_msg msg_0378_R31_00002
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -173,7 +173,7 @@ _0251:
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	npc_msg msg_0378_R31_00003
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -197,7 +197,7 @@ _0295:
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	npc_msg msg_0378_R31_00010
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

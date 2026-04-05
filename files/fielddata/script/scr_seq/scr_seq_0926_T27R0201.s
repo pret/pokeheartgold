@@ -41,7 +41,7 @@ scr_seq_T27R0201_000:
 _008B:
 	npc_msg msg_0616_T27R0201_00001
 _008E:
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -65,7 +65,7 @@ _00B3:
 
 _00C9:
 	npc_msg msg_0616_T27R0201_00004
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -79,7 +79,7 @@ _00D4:
 
 _00E8:
 	npc_msg msg_0616_T27R0201_00005
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -113,21 +113,21 @@ scr_seq_T27R0201_001:
 _014C:
 	npc_msg msg_0616_T27R0201_00007
 _014F:
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _0157:
 	npc_msg msg_0616_T27R0201_00008
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _0162:
 	npc_msg msg_0616_T27R0201_00009
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

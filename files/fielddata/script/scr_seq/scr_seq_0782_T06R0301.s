@@ -22,7 +22,7 @@ scr_seq_T06R0301_000:
 	goto_if_unset FLAG_GOT_RARE_CANDY_FROM_FAN_CLUB_CHAIRMAN, _0044
 	buffer_players_name 0
 	gender_msgbox msg_0488_T06R0301_00004, msg_0488_T06R0301_00005
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -39,21 +39,21 @@ _0044:
 	callstd std_give_item_verbose
 	setflag FLAG_GOT_RARE_CANDY_FROM_FAN_CLUB_CHAIRMAN
 	npc_msg msg_0488_T06R0301_00003
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _0093:
 	npc_msg msg_0488_T06R0301_00007
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _009E:
 	npc_msg msg_0488_T06R0301_00006
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -75,14 +75,14 @@ scr_seq_T06R0301_002:
 	goto_if_set FLAG_UNK_119, _0116
 	goto_if_set FLAG_RESTORED_POWER, _010B
 	npc_msg msg_0488_T06R0301_00009
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _010B:
 	npc_msg msg_0488_T06R0301_00010
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -100,7 +100,7 @@ _0116:
 
 _0141:
 	npc_msg msg_0488_T06R0301_00013
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -116,7 +116,7 @@ scr_seq_T06R0301_004:
 	play_cry SPECIES_BAYLEEF, 0
 	npc_msg msg_0488_T06R0301_00016
 	wait_cry
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

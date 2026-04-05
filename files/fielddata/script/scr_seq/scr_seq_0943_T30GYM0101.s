@@ -106,14 +106,14 @@ scr_seq_T30GYM0101_000:
 	setflag FLAG_HIDE_BLACKTHORN_DEN_GUARD_INFRONT
 	clearflag FLAG_HIDE_BLACKTHRON_DEN_GUARD_ASIDE
 	npc_msg msg_0631_T30GYM0101_00004
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _017D:
 	npc_msg msg_0631_T30GYM0101_00005
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -132,14 +132,14 @@ _018E:
 	npc_msg msg_0631_T30GYM0101_00007
 _01C8:
 	npc_msg msg_0631_T30GYM0101_00009
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _01D3:
 	npc_msg msg_0631_T30GYM0101_00008
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -190,14 +190,14 @@ scr_seq_T30GYM0101_003:
 	scrcmd_607
 	scrcmd_109 253, 56
 	setvar VAR_UNK_4120, 1
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _0291:
 	npc_msg msg_0631_T30GYM0101_00001
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -322,7 +322,7 @@ scr_seq_T30GYM0101_005:
 _0407:
 	npc_msg msg_0631_T30GYM0101_00011
 _040A:
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
