@@ -79,7 +79,7 @@ scr_seq_D52R0101_000:
 	goto_if_eq _00FB
 _00EC:
 	npc_msg msg_0148_D52R0101_00001
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	setflag FLAG_BEAT_OR_ESCAPED_FROM_GROUDON_OR_KYOGRE
 	releaseall

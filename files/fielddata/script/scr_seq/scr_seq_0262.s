@@ -34,7 +34,7 @@ _0049:
 _005F:
 	npc_msg msg_0427_00010
 _0062:
-	wait_button_or_walk_away
+	wait_button
 	goto _00B5
 
 _006A:
@@ -53,7 +53,7 @@ _006A:
 	goto_if_eq _00B7
 	scrcmd_718 0, VAR_SPECIAL_RESULT
 	npc_msg msg_0427_00005
-	wait_button_or_walk_away
+	wait_button
 _00B5:
 	closemsg
 _00B7:
@@ -80,7 +80,7 @@ scr_seq_0262_001:
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	npc_msg msg_0427_00007
-	wait_button_or_walk_away
+	wait_button
 _0112:
 	closemsg
 _0114:

@@ -78,7 +78,7 @@ _00FC:
 	setflag FLAG_GOT_TM47_FROM_ROUTE_28_CELEBRITY
 _012A:
 	npc_msg msg_0372_R28R0101_00002
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

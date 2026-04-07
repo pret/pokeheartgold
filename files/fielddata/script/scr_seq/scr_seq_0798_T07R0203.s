@@ -169,14 +169,14 @@ _01ED:
 	wait_fade
 _023A:
 	npc_msg msg_0503_T07R0203_00003
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _0245:
 	npc_msg msg_0503_T07R0203_00000
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -189,7 +189,7 @@ scr_seq_T07R0203_009:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0276
 	npc_msg msg_0503_T07R0203_00007
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -201,14 +201,14 @@ _0276:
 	npc_msg msg_0503_T07R0203_00008
 	giveitem_no_check ITEM_GB_SOUNDS, 1
 	npc_msg msg_0503_T07R0203_00010
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _02A7:
 	npc_msg msg_0503_T07R0203_00011
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -229,7 +229,7 @@ scr_seq_T07R0203_004:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0503_T07R0203_00016
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -238,7 +238,7 @@ scr_seq_T07R0203_013:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0503_T07R0203_00017
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -247,7 +247,7 @@ scr_seq_T07R0203_005:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0503_T07R0203_00018
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -256,7 +256,7 @@ scr_seq_T07R0203_006:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0503_T07R0203_00019
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -265,7 +265,7 @@ scr_seq_T07R0203_007:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0503_T07R0203_00020
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

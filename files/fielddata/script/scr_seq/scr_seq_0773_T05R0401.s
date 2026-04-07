@@ -23,7 +23,7 @@ scr_seq_T05R0401_000:
 
 _002E:
 	npc_msg msg_0480_T05R0401_00001
-	wait_button
+	wait_ab_press
 	closemsg
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
@@ -53,14 +53,14 @@ _002E:
 
 _00B3:
 	npc_msg msg_0480_T05R0401_00005
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _00BE:
 	npc_msg msg_0480_T05R0401_00008
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -68,7 +68,7 @@ _00BE:
 _00C9:
 	bufferpartymonnick 0, VAR_SPECIAL_x8005
 	npc_msg msg_0480_T05R0401_00007
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -86,7 +86,7 @@ _00D9:
 	goto_if_eq _011F
 	bufferpartymonnick 0, VAR_SPECIAL_x8005
 	npc_msg msg_0480_T05R0401_00004
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -94,7 +94,7 @@ _00D9:
 _011F:
 	bufferpartymonnick 0, VAR_SPECIAL_x8005
 	npc_msg msg_0480_T05R0401_00006
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

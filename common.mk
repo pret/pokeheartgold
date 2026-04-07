@@ -47,13 +47,16 @@ export LM_LICENSE_FILE := $(TOOLSDIR)/mwccarm/license.dat
 JSONPROC     := $(TOOLSDIR)/jsonproc/jsonproc$(EXE)
 GFX          := $(TOOLSDIR)/nitrogfx/nitrogfx$(EXE)
 FIXROM       := $(TOOLSDIR)/fixrom/fixrom$(EXE)
-KNARC        := $(TOOLSDIR)/knarc/knarc$(EXE)
+NARC         := $(TOOLSDIR)/nitroarc/nitroarc$(EXE)
 O2NARC       := $(TOOLSDIR)/o2narc/o2narc$(EXE)
 MSGENC       := $(TOOLSDIR)/msgenc/msgenc$(EXE)
 ASPATCH      := $(TOOLSDIR)/mwasmarm_patcher/mwasmarm_patcher$(EXE)
 CSV2BIN      := $(TOOLSDIR)/csv2bin/csv2bin$(EXE)
 MKFXCONST    := $(TOOLSDIR)/gen_fx_consts/gen_fx_consts$(EXE)
 ELFCODER     := $(TOOLSDIR)/elfcoder/elfcoder$(EXE)
+
+# Native libraries
+LIBNARC      := $(TOOLSDIR)/nitroarc/libnitroarc.a
 
 # Decompiled NitroSDK tools
 COMPSTATIC   := $(TOOLSDIR)/compstatic/compstatic$(EXE)
@@ -65,7 +68,7 @@ NATIVE_TOOLS := \
 	$(JSONPROC) \
 	$(GFX) \
 	$(FIXROM) \
-	$(KNARC) \
+	$(NARC) \
 	$(O2NARC) \
 	$(MSGENC) \
 	$(ASPATCH) \

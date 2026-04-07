@@ -29,7 +29,7 @@ scr_seq_R10R0202_006:
 	setvar VAR_SCENE_ROUTE_10_POWER_PLANT, 1
 _005C:
 	npc_msg msg_0345_R10R0202_00013
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	apply_movement obj_R10R0202_policeman, _0100
 	wait_movement
@@ -55,7 +55,7 @@ _0071:
 	npc_msg msg_0345_R10R0202_00016
 	giveitem_no_check ITEM_TM57, 1
 	npc_msg msg_0345_R10R0202_00017
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	setflag FLAG_UNK_258
 	clearflag FLAG_HIDE_LAVENDER_RADIO_TOWER_DIRECTOR
@@ -171,14 +171,14 @@ scr_seq_R10R0202_000:
 	faceplayer
 	goto_if_set FLAG_GOT_POWER_PLANT_MANAGERS_STORY, _0226
 	npc_msg msg_0345_R10R0202_00000
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _0226:
 	npc_msg msg_0345_R10R0202_00003
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -214,7 +214,7 @@ scr_seq_R10R0202_005:
 	npc_trade_end
 	setflag FLAG_TRADE_POWER_PLANT_DUGTRIO_MAGNETON
 	npc_msg msg_0345_R10R0202_00009
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -222,21 +222,21 @@ scr_seq_R10R0202_005:
 _02C0:
 	npc_trade_end
 	npc_msg msg_0345_R10R0202_00010
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _02CD:
 	npc_msg msg_0345_R10R0202_00011
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _02D8:
 	npc_msg msg_0345_R10R0202_00012
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

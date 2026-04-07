@@ -14,7 +14,7 @@ GUINNESS_FILES := \
 	guinness_00000009.NCGR.lz
 
 $(GUINNESS_NARC): $(addprefix $(GUINNESS_DIR)/,$(GUINNESS_FILES))
-	$(KNARC) -p $@ -d $(GUINNESS_DIR) -i
+	$(NARC) -cf $@ --index-namespace $(GUINNESS_DIR)
 
 clean-guinness:
 	$(RM) $(GUINNESS_NARC) \

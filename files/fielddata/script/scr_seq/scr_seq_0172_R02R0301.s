@@ -21,7 +21,7 @@ scr_seq_R02R0301_000:
 	setflag FLAG_GOT_SACRED_ASH_FROM_ROUTE_2_LAB_AIDE
 _004D:
 	npc_msg msg_0323_R02R0301_00002
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

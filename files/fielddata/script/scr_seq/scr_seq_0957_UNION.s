@@ -288,7 +288,7 @@ _0499:
 	scrcmd_262
 	scrcmd_267 0, VAR_SPECIAL_RESULT
 	non_npc_msg_var VAR_SPECIAL_RESULT
-	wait_button
+	wait_ab_press
 	closemsg
 	scrcmd_263
 	releaseall

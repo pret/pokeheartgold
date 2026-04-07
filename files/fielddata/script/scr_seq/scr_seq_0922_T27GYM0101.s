@@ -129,7 +129,7 @@ _019B:
 	callstd std_give_item_verbose
 	setflag FLAG_GOT_TM30_FROM_MORTY
 	npc_msg msg_0614_T27GYM0101_00005
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -143,7 +143,7 @@ _01CF:
 _01D9:
 	goto_if_unset FLAG_GOT_TM30_FROM_MORTY, _019B
 	npc_msg msg_0614_T27GYM0101_00006
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -196,7 +196,7 @@ scr_seq_T27GYM0101_003:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _029E
 	npc_msg msg_0614_T27GYM0101_00007
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -204,7 +204,7 @@ scr_seq_T27GYM0101_003:
 _029E:
 	buffer_players_name 0
 	npc_msg msg_0614_T27GYM0101_00008
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -223,7 +223,7 @@ scr_seq_T27GYM0101_005:
 _02D3:
 	npc_msg msg_0614_T27GYM0101_00011
 _02D6:
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

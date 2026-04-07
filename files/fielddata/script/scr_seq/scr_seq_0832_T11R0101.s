@@ -185,7 +185,7 @@ scr_seq_T11R0101_004:
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _02C1
 	npc_msg msg_0533_T11R0101_00009
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
@@ -215,7 +215,7 @@ scr_seq_T11R0101_005:
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0324
 	npc_msg msg_0533_T11R0101_00031
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
@@ -245,7 +245,7 @@ scr_seq_T11R0101_006:
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0387
 	npc_msg msg_0533_T11R0101_00019
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
@@ -275,7 +275,7 @@ scr_seq_T11R0101_007:
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _03EA
 	npc_msg msg_0533_T11R0101_00025
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
@@ -305,7 +305,7 @@ scr_seq_T11R0101_008:
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _044D
 	npc_msg msg_0533_T11R0101_00027
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
@@ -335,7 +335,7 @@ scr_seq_T11R0101_009:
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _04B0
 	npc_msg msg_0533_T11R0101_00033
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
@@ -365,7 +365,7 @@ scr_seq_T11R0101_010:
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0513
 	npc_msg msg_0533_T11R0101_00035
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
@@ -395,7 +395,7 @@ scr_seq_T11R0101_011:
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0576
 	npc_msg msg_0533_T11R0101_00011
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
@@ -425,7 +425,7 @@ scr_seq_T11R0101_012:
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _05D9
 	npc_msg msg_0533_T11R0101_00029
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
@@ -455,7 +455,7 @@ scr_seq_T11R0101_013:
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _063C
 	npc_msg msg_0533_T11R0101_00007
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
@@ -485,7 +485,7 @@ scr_seq_T11R0101_014:
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _069F
 	npc_msg msg_0533_T11R0101_00023
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
@@ -515,7 +515,7 @@ scr_seq_T11R0101_015:
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0702
 	npc_msg msg_0533_T11R0101_00005
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
@@ -545,7 +545,7 @@ scr_seq_T11R0101_016:
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0765
 	npc_msg msg_0533_T11R0101_00021
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
@@ -575,7 +575,7 @@ scr_seq_T11R0101_017:
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _07C8
 	npc_msg msg_0533_T11R0101_00015
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
@@ -605,7 +605,7 @@ scr_seq_T11R0101_018:
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _082B
 	npc_msg msg_0533_T11R0101_00013
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
@@ -635,7 +635,7 @@ scr_seq_T11R0101_019:
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _088E
 	npc_msg msg_0533_T11R0101_00017
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
@@ -660,14 +660,14 @@ scr_seq_T11R0101_000:
 	faceplayer
 	goto_if_set FLAG_BEAT_KARATE_KING, _08B2
 	npc_msg msg_0533_T11R0101_00000
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _08B2:
 	npc_msg msg_0533_T11R0101_00001
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

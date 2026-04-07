@@ -26,7 +26,7 @@ scr_seq_R05R0202_000:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _005F
 	npc_msg msg_0331_R05R0202_00000
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -58,7 +58,7 @@ _00BE:
 	npc_msg msg_0331_R05R0202_00005
 	closemsg
 	npc_msg msg_0331_R05R0202_00006
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	setvar VAR_TEMP_x4001, 1
 	setflag FLAG_UNK_164
@@ -67,14 +67,14 @@ _00BE:
 
 _00D8:
 	npc_msg msg_0331_R05R0202_00007
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _00E3:
 	npc_msg msg_0331_R05R0202_00008
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	setvar VAR_TEMP_x4000, 1
@@ -82,7 +82,7 @@ _00E3:
 
 _00F4:
 	npc_msg msg_0331_R05R0202_00009
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
