@@ -104,7 +104,7 @@ struct PokeathlonCourseData {
     u8 filler_618[0x112];                      // 0x618
     u8 maxParticipants;                        // 0x72A - Maximum participant limit (3 or 4)
     u8 filler_72B[1];                          // 0x72B
-    PokeathlonFieldData field_72C[11];         // 0x72C - Array of PokeathlonFieldData (11 * 0x60 = 0x420 bytes)
+    PokeathlonFieldData fieldData[11];         // 0x72C - Array of PokeathlonFieldData (11 * 0x60 = 0x420 bytes)
     u8 filler_B4C[0x58];                       // 0xB4C
     u8 filler_BA4[0x180];                      // 0xBA4
     s32 frameCounter;                          // 0xD24 - Increments every 0x708 frames (max 0xEA5F)
@@ -153,6 +153,9 @@ void ov96_021E5F10(PokeathlonCourseData *data);
 void *PokeathlonCourse_GetSystem(PokeathlonCourseData *data);
 BOOL ov96_021E5F24(PokeathlonCourseData *data);
 PlayerProfile *ov96_021E5F34(PokeathlonCourseData *data, int index);
+void *ov96_021E5F44(PokeathlonCourseData *data, int index);
+u8 *ov96_021E5F54(PokeathlonCourseData *data);
+void ov96_021E5F5C(PokeathlonCourseData *data);
 
 // Internal overlay 96 functions (stubs for now, in assembly)
 void *ov96_021E8770(int a0, int a1, PokeathlonCourseData *data, int a3, enum HeapID heapId);

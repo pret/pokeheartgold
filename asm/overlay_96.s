@@ -35,40 +35,9 @@
 	.extern PokeathlonCourse_GetSystem
 	.extern ov96_021E5F24
 	.extern ov96_021E5F34
-
-	thumb_func_start ov96_021E5F44
-ov96_021E5F44: ; 0x021E5F44
-	ldr r2, _021E5F50 ; =0x00000974
-	add r2, r0, r2
-	mov r0, #0x74
-	mul r0, r1
-	add r0, r2, r0
-	bx lr
-	.balign 4, 0
-_021E5F50: .word 0x00000974
-	thumb_func_end ov96_021E5F44
-
-	thumb_func_start ov96_021E5F54
-ov96_021E5F54: ; 0x021E5F54
-	mov r1, #0xa3
-	lsl r1, r1, #2
-	add r0, r0, r1
-	bx lr
-	thumb_func_end ov96_021E5F54
-
-	thumb_func_start ov96_021E5F5C
-ov96_021E5F5C: ; 0x021E5F5C
-	mov r1, #0xa3
-	lsl r1, r1, #2
-	mov r2, #0x4a
-	add r0, r0, r1
-	ldr r3, _021E5F6C ; =MI_CpuFill8
-	mov r1, #0
-	lsl r2, r2, #2
-	bx r3
-	.balign 4, 0
-_021E5F6C: .word MI_CpuFill8
-	thumb_func_end ov96_021E5F5C
+	.extern ov96_021E5F44
+	.extern ov96_021E5F54
+	.extern ov96_021E5F5C
 
 	thumb_func_start ov96_021E5F70
 ov96_021E5F70: ; 0x021E5F70

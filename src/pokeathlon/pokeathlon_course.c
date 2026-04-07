@@ -322,11 +322,11 @@ SaveData *PokeathlonCourse_GetSaveData(PokeathlonCourseData *data) {
 }
 
 PokeathlonFieldData *ov96_021E5D6C(PokeathlonCourseData *data) {
-    return data->field_72C;
+    return data->fieldData;
 }
 
 PokeathlonFieldData *ov96_021E5D78(PokeathlonCourseData *data, int index) {
-    return &data->field_72C[index];
+    return &data->fieldData[index];
 }
 
 void *ov96_021E5D88(PokeathlonCourseData *data) {
@@ -439,4 +439,21 @@ BOOL ov96_021E5F24(PokeathlonCourseData *data) {
 
 PlayerProfile *ov96_021E5F34(PokeathlonCourseData *data, int index) {
     return PokeathlonCourse_GetPlayerProfile(data->playerProfiles, index);
+}
+
+void *ov96_021E5F44(PokeathlonCourseData *data, int index) {
+    //0x974;
+    //data->fieldData; // 0x72C;
+    //0x974 - 0x72C; // r2 = fieldData + 0x248
+    //index * 0x74; // r0
+    return (void *)((u8 *)data + 0x974 + index * 0x74); // r2+r0
+}
+
+u8 *ov96_021E5F54(PokeathlonCourseData *data) {
+    return data->dataCopySource;
+}
+
+void ov96_021E5F5C(PokeathlonCourseData *data) {
+    // Look like it's filling dataCopySource + dataCopyBuffer1 + dataCopyBuffer2 + full filler_304
+    MI_CpuFill8(data->dataCopySource, 0, 296);
 }
