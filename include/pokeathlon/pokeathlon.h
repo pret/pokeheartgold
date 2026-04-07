@@ -84,7 +84,7 @@ struct PokeathlonCourseData {
     u8 filler_1FC[0x74];                       // 0x1FC
     void *field_270;                           // 0x270
     u8 filler_274[0x8];                        // 0x274
-    void *field_27C;                           // 0x27C
+    u32 field_27C;                             // 0x27C
     OverlayManager *subOverlay;                // 0x280
     enum HeapID heapId;                        // 0x284
     void *system;                              // 0x288
@@ -96,7 +96,7 @@ struct PokeathlonCourseData {
     PokeathlonStateInfo stateInfo;             // 0x3C4 - State information (8 bytes)
     u8 filler_3CC[0xC];                        // 0x3CC
     u32 field_3D8[4];                          // 0x3D8 - Array of 4 u32s (16 bytes)
-    void *field_3E8;                           // 0x3E8
+    u32 field_3E8;                             // 0x3E8
     PokeathlonParticipantData participants[4]; // 0x3EC - 4 participant data elements (0x7C each = 0x1F0 bytes)
     PlayerProfile* playerProfiles;             // 0x5DC - Player profiles pointer (heap allocated, 4 profiles)
     u8 filler_5E0[0x34];                       // 0x5E0
@@ -144,9 +144,11 @@ void ov96_021E5DFC(PokeathlonCourseData *data, int param);
 void ov96_021E5E04(PokeathlonCourseData *data, u8 *param);
 u32 ov96_021E5E44(PokeathlonCourseData *data);
 u32 ov96_021E5E58(PokeathlonCourseData *data, u8 index);
+u32 ov96_021E5E7C(PokeathlonCourseData *data);
+
+u32 ov96_021E5EE8(PokeathlonCourseData *data);
 
 // Internal overlay 96 functions (stubs for now, in assembly)
-void *ov96_021E5E7C(PokeathlonCourseData *data);
 void *ov96_021E8770(int a0, int a1, PokeathlonCourseData *data, int a3, enum HeapID heapId);
 int ov96_021E8A24(void);
 int ov96_021E8A2C(void);

@@ -30,6 +30,7 @@ extern void ov96_021E8810(void *ptr);
 
 // Data tables in assembly
 extern const OverlayManagerTemplate subOverlayTemplate;
+extern const u8 ov96_0221A934[40];
 extern const void *sPokeathlonStateInfoFuncTable;
 
 BOOL PokeathlonCourse_Init(OverlayManager *manager, int *state) {
@@ -387,4 +388,25 @@ u32 ov96_021E5E58(PokeathlonCourseData *data, u8 index) {
         return 0;
     }
     return data->field_3D8[index];
+}
+
+u32 ov96_021E5E7C(PokeathlonCourseData *data) {
+    u8 i, j, numParticipants;
+    BOOL flag = (ov96_021E5EE8(data) == 1);
+    u32* fieldPtr = data->field_3D8;
+    numParticipants = flag ? 4 : 3;
+
+    for (i = 0; i < 10; i++) {
+        BOOL match = TRUE;
+        for (j = 0; j < numParticipants; j++) {
+            if (fieldPtr[j] != ov96_0221A934[i*4+j]) {
+                match = FALSE;
+                break;
+            }
+        }
+        if (match) {
+            return i;
+        }
+    }
+    return 10;
 }

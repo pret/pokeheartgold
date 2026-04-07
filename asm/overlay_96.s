@@ -26,68 +26,7 @@
 	.extern ov96_021E5E04
 	.extern ov96_021E5E44
 	.extern ov96_021E5E58
-
-	thumb_func_start ov96_021E5E7C
-ov96_021E5E7C: ; 0x021E5E7C
-	push {r3, r4, r5, r6, r7, lr}
-	add r4, r0, #0
-	bl ov96_021E5EE8
-	cmp r0, #1
-	bne _021E5E8C
-	mov r1, #1
-	b _021E5E8E
-_021E5E8C:
-	mov r1, #0
-_021E5E8E:
-	mov r0, #0xf6
-	lsl r0, r0, #2
-	add r3, r4, r0
-	cmp r1, #0
-	beq _021E5E9C
-	mov r0, #4
-	b _021E5E9E
-_021E5E9C:
-	mov r0, #3
-_021E5E9E:
-	lsl r0, r0, #0x18
-	lsr r2, r0, #0x18
-	mov r0, #0
-_021E5EA4:
-	mov r4, #1
-	mov r1, #0
-	cmp r2, #0
-	bls _021E5ECA
-	ldr r5, _021E5EDC ; =ov96_0221A934
-	lsl r6, r0, #2
-	add r5, r5, r6
-_021E5EB2:
-	lsl r6, r1, #2
-	ldr r7, [r3, r6]
-	ldrb r6, [r5, r1]
-	cmp r7, r6
-	beq _021E5EC0
-	mov r4, #0
-	b _021E5ECA
-_021E5EC0:
-	add r1, r1, #1
-	lsl r1, r1, #0x18
-	lsr r1, r1, #0x18
-	cmp r1, r2
-	blo _021E5EB2
-_021E5ECA:
-	cmp r4, #0
-	bne _021E5EDA
-	add r0, r0, #1
-	lsl r0, r0, #0x18
-	lsr r0, r0, #0x18
-	cmp r0, #0xa
-	blo _021E5EA4
-	mov r0, #0xa
-_021E5EDA:
-	pop {r3, r4, r5, r6, r7, pc}
-	.balign 4, 0
-_021E5EDC: .word ov96_0221A934
-	thumb_func_end ov96_021E5E7C
+	.extern ov96_021E5E7C
 
 	thumb_func_start ov96_021E5EE0
 ov96_021E5EE0: ; 0x021E5EE0
@@ -107750,6 +107689,7 @@ ov96_0221A920:
 	.word ov96_021F553C
 	.word 1
 
+	.global ov96_0221A934
 ov96_0221A934: ; 0x0221A934
 	.byte 0x00, 0x01, 0x06, 0x0A, 0x03, 0x02, 0x09, 0x0A, 0x08, 0x09, 0x01, 0x0A
 	.byte 0x07, 0x06, 0x03, 0x0A, 0x05, 0x04, 0x00, 0x0A, 0x00, 0x05, 0x04, 0x06, 0x05, 0x04, 0x01, 0x08
