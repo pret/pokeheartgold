@@ -156,10 +156,6 @@ BOOL ScrCmd_Dummy(ScriptContext *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_Dummy486(ScriptContext *ctx) {
-    return ScrCmd_Dummy(ctx);
-}
-
 BOOL ScrCmd_End(ScriptContext *ctx) {
     StopScript(ctx);
     return FALSE;
