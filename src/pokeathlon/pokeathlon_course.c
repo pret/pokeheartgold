@@ -18,7 +18,6 @@ extern int ov97_0221E5D4(OverlayManager *man, int *state); // Main/Exec
 extern int ov97_0221E69C(OverlayManager *man, int *state); // Exit
 extern void sub_02037AC0(u8 param);
 extern BOOL sub_02037B38(u8 param);
-extern BOOL ov96_021E5F24(PokeathlonCourseData *data);
 extern void *ov96_021E9A14(void);
 extern void ov96_021E87B4(int a0, void *a1, void *a2, int a3);
 extern u8 *ov96_021E8A20(void *ptr);
@@ -378,8 +377,7 @@ void ov96_021E5E04(PokeathlonCourseData *data, u8 *param) {
 }
 
 u32 ov96_021E5E44(PokeathlonCourseData *data) {
-    // Based on ov96_021E5E58, field_1F0 might be like current participant index or similar
-    return data->field_3D8[data->field_1F0];
+    return data->field_3D8[data->currentParticipantIndex];
 }
 
 u32 ov96_021E5E58(PokeathlonCourseData *data, u8 index) {
@@ -392,7 +390,7 @@ u32 ov96_021E5E58(PokeathlonCourseData *data, u8 index) {
 
 u32 ov96_021E5E7C(PokeathlonCourseData *data) {
     u8 i, j, numParticipants;
-    BOOL flag = (ov96_021E5EE8(data) == 1);
+    BOOL flag = (PokeathlonCourse_GetMode(data) == 1);
     u32* fieldPtr = data->field_3D8;
     numParticipants = flag ? 4 : 3;
 
@@ -409,4 +407,36 @@ u32 ov96_021E5E7C(PokeathlonCourseData *data) {
         }
     }
     return 10;
+}
+
+u32 PokeathlonCourse_GetCurrentParticipantIndex(PokeathlonCourseData *data) {
+    return data->currentParticipantIndex;
+}
+
+u32 PokeathlonCourse_GetMode(PokeathlonCourseData *data) {
+    return data->args->mode;
+}
+
+u8 ov96_021E5EF4(PokeathlonCourseData *data) {
+    return data->field_1EF;
+}
+
+void ov96_021E5F00(PokeathlonCourseData *data) {
+    data->field_1EF++;
+}
+
+void ov96_021E5F10(PokeathlonCourseData *data) {
+    data->field_1EF = 0;
+}
+
+void *PokeathlonCourse_GetSystem(PokeathlonCourseData *data) {
+    return data->system;
+}
+
+BOOL ov96_021E5F24(PokeathlonCourseData *data) {
+    return ov96_021E8828(data->system);
+}
+
+PlayerProfile *ov96_021E5F34(PokeathlonCourseData *data, int index) {
+    return PokeathlonCourse_GetPlayerProfile(data->playerProfiles, index);
 }
