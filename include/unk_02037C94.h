@@ -19,5 +19,15 @@ BOOL sub_0203A05C(SaveData *saveData);
 void sub_02039F68(void *);
 void sub_02039AD8(int);
 void *sub_0203A040(UnkStruct_021D2230 *a0);
+void sub_020398D4(int a0, int a1);
+void sub_02039B58(void);
+void sub_02039358(void);
+BOOL sub_020390C4(void);
+void sub_020378E4(int a0);
+void sub_02039B18(void);
+void sub_02039AF8(void);
+s32 sub_02039080(void);
+s32 sub_02039264(void);
+u8* sub_020398C8(void);
 
 #endif // POKEHEARTGOLD_UNK_02037C94_H

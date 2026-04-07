@@ -9,7 +9,7 @@ CAMERA_VIEWFINDER_SRCS_ABS := $(addprefix $(CAMERA_VIEWFINDER_DIR)/,$(CAMERA_VIE
 VERSION101_SOPC_NCGR_FILES += $(CAMERA_VIEWFINDER_DIR)/camera_viewfinder.NCGR
 
 $(CAMERA_VIEWFINDER_NARC): %.narc: $(CAMERA_VIEWFINDER_SRCS_ABS)
-	$(KNARC) -p $@ -d $* -i
+	$(NARC) -cf $@ --index-namespace $(CAMERA_VIEWFINDER_DIR)
 
 clean-camera-viewfinder:
 	$(RM) $(CAMERA_VIEWFINDER_NARC) \
