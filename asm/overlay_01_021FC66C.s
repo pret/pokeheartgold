@@ -63,7 +63,7 @@ _021FC6B6:
 	ldr r1, [r5, #0xc]
 	add r0, r4, #0
 	add r2, #0x10
-	bl ov02_02246F70
+	bl FieldSystem_PerformFishEncounterCheck
 	str r0, [r5, #8]
 	ldr r1, [r5, #0xc]
 	ldr r2, [r5, #8]
