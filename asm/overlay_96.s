@@ -38,74 +38,12 @@
 	.extern ov96_021E5F44
 	.extern ov96_021E5F54
 	.extern ov96_021E5F5C
-
-	thumb_func_start ov96_021E5F70
-ov96_021E5F70: ; 0x021E5F70
-	push {r3, r4}
-	mov r4, #0xe9
-	lsl r4, r4, #2
-	str r1, [r0, r4]
-	add r1, r4, #4
-	str r2, [r0, r1]
-	add r1, r4, #0
-	add r1, #8
-	str r3, [r0, r1]
-	mov r1, #1
-	add r4, #0xc
-	str r1, [r0, r4]
-	pop {r3, r4}
-	bx lr
-	thumb_func_end ov96_021E5F70
-
-	thumb_func_start ov96_021E5F8C
-ov96_021E5F8C: ; 0x021E5F8C
-	mov r2, #0xe9
-	lsl r2, r2, #2
-	mov r3, #0
-	str r3, [r0, r2]
-	add r1, r2, #4
-	str r3, [r0, r1]
-	add r1, r2, #0
-	add r1, #8
-	str r3, [r0, r1]
-	add r2, #0xc
-	str r3, [r0, r2]
-	bx lr
-	thumb_func_end ov96_021E5F8C
-
-	thumb_func_start ov96_021E5FA4
-ov96_021E5FA4: ; 0x021E5FA4
-	mov r1, #0xea
-	lsl r1, r1, #2
-	ldr r0, [r0, r1]
-	bx lr
-	thumb_func_end ov96_021E5FA4
-
-	thumb_func_start ov96_021E5FAC
-ov96_021E5FAC: ; 0x021E5FAC
-	mov r0, #4
-	bx lr
-	thumb_func_end ov96_021E5FAC
-
-	thumb_func_start ov96_021E5FB0
-ov96_021E5FB0: ; 0x021E5FB0
-	lsl r1, r1, #2
-	add r1, r0, r1
-	mov r0, #0x5e
-	lsl r0, r0, #4
-	strh r2, [r1, r0]
-	bx lr
-	thumb_func_end ov96_021E5FB0
-
-	thumb_func_start ov96_021E5FBC
-ov96_021E5FBC: ; 0x021E5FBC
-	lsl r1, r1, #2
-	add r1, r0, r1
-	mov r0, #0x5f
-	lsl r0, r0, #4
-	ldrh r0, [r1, r0]
-	bx lr
-	thumb_func_end ov96_021E5FBC
+	.extern ov96_021E5F70
+	.extern ov96_021E5F8C
+	.extern ov96_021E5FA4
+	.extern ov96_021E5FAC
+	.extern ov96_021E5FB0
+	.extern ov96_021E5FBC
 
 	thumb_func_start ov96_021E5FC8
 ov96_021E5FC8: ; 0x021E5FC8

@@ -91,7 +91,8 @@ struct PokeathlonCourseData {
     u8 dataCopySource[0x28];                   // 0x28C - Source buffer for exit data copy
     u8 dataCopyBuffer1[0x28];                  // 0x2B4 - Destination buffer 1
     u8 dataCopyBuffer2[0x28];                  // 0x2DC - Destination buffer 2
-    u8 filler_304[0xB0];                       // 0x304
+    u8 filler_304[0xA0];                       // 0x304
+    u32 field_3A4[4];                          // 0x3A4
     PokeathlonCourseState courseState;         // 0x3B4 - State machine structure (16 bytes: 4 fields x 4 bytes)
     PokeathlonStateInfo stateInfo;             // 0x3C4 - State information (8 bytes)
     u8 filler_3CC[0xC];                        // 0x3CC
@@ -99,7 +100,9 @@ struct PokeathlonCourseData {
     u32 field_3E8;                             // 0x3E8
     PokeathlonParticipantData participants[4]; // 0x3EC - 4 participant data elements (0x7C each = 0x1F0 bytes)
     PlayerProfile* playerProfiles;             // 0x5DC - Player profiles pointer (heap allocated, 4 profiles)
-    u8 filler_5E0[0x34];                       // 0x5E0
+    u16 field_5E0[8];                          // 0x5E0
+    u16 field_5F0[8];                          // 0x5F0
+    u8 filler_600[0x14];                       // 0x600
     void *graphicsSystem;                      // 0x614 - Graphics/UI subsystem pointer
     u8 filler_618[0x112];                      // 0x618
     u8 maxParticipants;                        // 0x72A - Maximum participant limit (3 or 4)
@@ -156,6 +159,12 @@ PlayerProfile *ov96_021E5F34(PokeathlonCourseData *data, int index);
 void *ov96_021E5F44(PokeathlonCourseData *data, int index);
 u8 *ov96_021E5F54(PokeathlonCourseData *data);
 void ov96_021E5F5C(PokeathlonCourseData *data);
+void ov96_021E5F70(PokeathlonCourseData *data, u32 a0, u32 a1, u32 a2);
+void ov96_021E5F8C(PokeathlonCourseData *data);
+u32 ov96_021E5FA4(PokeathlonCourseData *data);
+u32 ov96_021E5FAC();
+void ov96_021E5FB0(PokeathlonCourseData *data, int index, u16 value);
+u16 ov96_021E5FBC(PokeathlonCourseData *data, int index);
 
 // Internal overlay 96 functions (stubs for now, in assembly)
 void *ov96_021E8770(int a0, int a1, PokeathlonCourseData *data, int a3, enum HeapID heapId);

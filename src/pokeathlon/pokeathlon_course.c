@@ -454,6 +454,36 @@ u8 *ov96_021E5F54(PokeathlonCourseData *data) {
 }
 
 void ov96_021E5F5C(PokeathlonCourseData *data) {
-    // Look like it's filling dataCopySource + dataCopyBuffer1 + dataCopyBuffer2 + full filler_304
+    // Look like it's filling dataCopySource + dataCopyBuffer1 + dataCopyBuffer2 + filler_304 + field_3A4
     MI_CpuFill8(data->dataCopySource, 0, 296);
+}
+
+void ov96_021E5F70(PokeathlonCourseData *data, u32 a0, u32 a1, u32 a2) {
+    data->field_3A4[0] = a0;
+    data->field_3A4[1] = a1;
+    data->field_3A4[2] = a2;
+    data->field_3A4[3] = 1;
+}
+
+void ov96_021E5F8C(PokeathlonCourseData *data) {
+    data->field_3A4[0] = 0;
+    data->field_3A4[1] = 0;
+    data->field_3A4[2] = 0;
+    data->field_3A4[3] = 0;
+}
+
+u32 ov96_021E5FA4(PokeathlonCourseData *data) {
+    return data->field_3A4[1];
+}
+
+u32 ov96_021E5FAC() {
+    return 4;
+}
+
+void ov96_021E5FB0(PokeathlonCourseData *data, int index, u16 value) {
+    data->field_5E0[index*2] = value;
+}
+
+u16 ov96_021E5FBC(PokeathlonCourseData *data, int index) {
+    return data->field_5F0[index*2];
 }
