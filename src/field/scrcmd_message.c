@@ -59,7 +59,7 @@ BOOL ScrCmd_GetStdMsgNaix(ScriptContext *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_NonNpcMsgExtern(ScriptContext *ctx) {
+BOOL ScrCmd_NonNPCMsgExtern(ScriptContext *ctx) {
     u16 fileId = ScriptGetVar(ctx);
     u16 messageNum = ScriptGetVar(ctx);
     MsgData *messageData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, fileId, HEAP_ID_FIELD3);
@@ -68,7 +68,7 @@ BOOL ScrCmd_NonNpcMsgExtern(ScriptContext *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_MsgboxExtern(ScriptContext *ctx) {
+BOOL ScrCmd_MsgBoxExtern(ScriptContext *ctx) {
     u16 fileId = ScriptGetVar(ctx);
     u16 messageNum = ScriptGetVar(ctx);
     MsgData *messageData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, fileId, HEAP_ID_FIELD3);
@@ -151,7 +151,7 @@ BOOL ov01_021EF348(ScriptContext *ctx) {
     return IsPrintFinished(*textPrinterNumPtr);
 }
 
-BOOL ScrCmd_NonNpcMsgVar(ScriptContext *ctx) {
+BOOL ScrCmd_NonNPCMsgVar(ScriptContext *ctx) {
     u16 messageNum = ScriptGetVar(ctx);
     ov01_021EF4DC(ctx, ctx->msgdata, (u8)messageNum, TRUE, NULL);
     SetupNativeScript(ctx, ov01_021EF348);
@@ -168,14 +168,14 @@ BOOL ScrCmd_592(ScriptContext *ctx) {
     return TRUE;
 }
 
-BOOL ScrCmd_NpcMsgVar(ScriptContext *ctx) {
+BOOL ScrCmd_NPCMsgVar(ScriptContext *ctx) {
     u16 messageNum = ScriptGetVar(ctx);
     ov01_021EF4DC(ctx, ctx->msgdata, (u8)messageNum, FALSE, NULL);
     SetupNativeScript(ctx, ov01_021EF348);
     return TRUE;
 }
 
-BOOL ScrCmd_GenderMsgbox(ScriptContext *ctx) {
+BOOL ScrCmd_GenderMsgBox(ScriptContext *ctx) {
     void *unused = Save_PlayerData_GetProfile(FieldSystem_GetSaveData(ctx->fieldSystem));
     u8 messageNumMale = ScriptReadByte(ctx);
     u8 messageNumFemale = ScriptReadByte(ctx);

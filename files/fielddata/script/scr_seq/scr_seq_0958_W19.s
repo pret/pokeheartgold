@@ -5,43 +5,43 @@
 
 	.rodata
 
-	scrdef scr_seq_W19_000
-	scrdef scr_seq_W19_001
-	scrdef scr_seq_W19_002
-	scrdef scr_seq_W19_003
-	scrdef scr_seq_W19_004
-	scrdef scr_seq_W19_005
-	scrdef_end
+	ScrDef scr_seq_W19_000
+	ScrDef scr_seq_W19_001
+	ScrDef scr_seq_W19_002
+	ScrDef scr_seq_W19_003
+	ScrDef scr_seq_W19_004
+	ScrDef scr_seq_W19_005
+	ScrDefEnd
 
 scr_seq_W19_000:
-	simple_npc_msg msg_0740_W19_00000
-	end
+	SimpleNPCMsg msg_0740_W19_00000
+	End
 
 scr_seq_W19_001:
-	simple_npc_msg msg_0740_W19_00002
-	end
+	SimpleNPCMsg msg_0740_W19_00002
+	End
 
 scr_seq_W19_002:
-	simple_npc_msg msg_0740_W19_00001
-	end
+	SimpleNPCMsg msg_0740_W19_00001
+	End
 
 scr_seq_W19_003:
-	simple_npc_msg msg_0740_W19_00003
-	end
+	SimpleNPCMsg msg_0740_W19_00003
+	End
 
 scr_seq_W19_004:
-	direction_signpost msg_0740_W19_00004, 1, 4, VAR_SPECIAL_RESULT
-	scrcmd_057 3
-	scrcmd_058
-	scrcmd_060 VAR_SPECIAL_RESULT
-	callstd std_signpost
-	end
+	DirectionSignpost msg_0740_W19_00004, 1, 4, VAR_SPECIAL_RESULT
+	ScrCmd_057 3
+	ScrCmd_058
+	ScrCmd_060 VAR_SPECIAL_RESULT
+	CallStd std_signpost
+	End
 
 scr_seq_W19_005:
-	scrcmd_055 3, 0
-	scrcmd_057 3
-	scrcmd_058
-	trainer_tips msg_0740_W19_00005, VAR_SPECIAL_RESULT
-	callstd std_signpost
-	end
+	ScrCmd_055 3, 0
+	ScrCmd_057 3
+	ScrCmd_058
+	TrainerTips msg_0740_W19_00005, VAR_SPECIAL_RESULT
+	CallStd std_signpost
+	End
 	.balign 4, 0
