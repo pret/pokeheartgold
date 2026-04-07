@@ -5,36 +5,36 @@
 
 	.rodata
 
-	scrdef scr_seq_R43_000
-	scrdef scr_seq_R43_001
-	scrdef scr_seq_R43_002
-	scrdef scr_seq_R43_003
-	scrdef_end
+	ScrDef scr_seq_R43_000
+	ScrDef scr_seq_R43_001
+	ScrDef scr_seq_R43_002
+	ScrDef scr_seq_R43_003
+	ScrDefEnd
 
 scr_seq_R43_000:
-	end
+	End
 
 scr_seq_R43_001:
-	direction_signpost msg_0401_R43_00018, 1, 3, VAR_SPECIAL_RESULT
-	scrcmd_057 3
-	scrcmd_058
-	scrcmd_060 VAR_SPECIAL_RESULT
-	callstd std_signpost
-	end
+	DirectionSignpost msg_0401_R43_00018, 1, 3, VAR_SPECIAL_RESULT
+	ScrCmd_057 3
+	ScrCmd_058
+	ScrCmd_060 VAR_SPECIAL_RESULT
+	CallStd std_signpost
+	End
 
 scr_seq_R43_002:
-	scrcmd_055 3, 0
-	scrcmd_057 3
-	scrcmd_058
-	trainer_tips msg_0401_R43_00019, VAR_SPECIAL_RESULT
-	callstd std_signpost
-	end
+	ScrCmd_055 3, 0
+	ScrCmd_057 3
+	ScrCmd_058
+	TrainerTips msg_0401_R43_00019, VAR_SPECIAL_RESULT
+	CallStd std_signpost
+	End
 
 scr_seq_R43_003:
-	direction_signpost msg_0401_R43_00020, 1, 6, VAR_SPECIAL_RESULT
-	scrcmd_057 3
-	scrcmd_058
-	scrcmd_060 VAR_SPECIAL_RESULT
-	callstd std_signpost
-	end
+	DirectionSignpost msg_0401_R43_00020, 1, 6, VAR_SPECIAL_RESULT
+	ScrCmd_057 3
+	ScrCmd_058
+	ScrCmd_060 VAR_SPECIAL_RESULT
+	CallStd std_signpost
+	End
 	.balign 4, 0

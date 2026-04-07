@@ -5,19 +5,19 @@
 
 	.rodata
 
-	scrdef scr_seq_T21R0501_000
-	scrdef scr_seq_T21R0501_001
-	scrdef scr_seq_T21R0501_002
-	scrdef_end
+	ScrDef scr_seq_T21R0501_000
+	ScrDef scr_seq_T21R0501_001
+	ScrDef scr_seq_T21R0501_002
+	ScrDefEnd
 
 scr_seq_T21R0501_000:
-	end
+	End
 
 scr_seq_T21R0501_001:
-	simple_npc_msg msg_0555_T21R0501_00000
-	end
+	SimpleNPCMsg msg_0555_T21R0501_00000
+	End
 
 scr_seq_T21R0501_002:
-	simple_npc_msg msg_0555_T21R0501_00001
-	end
+	SimpleNPCMsg msg_0555_T21R0501_00001
+	End
 	.balign 4, 0

@@ -5,41 +5,41 @@
 
 	.rodata
 
-	scrdef scr_seq_T02R0302_000
-	scrdef scr_seq_T02R0302_001
-	scrdef scr_seq_T02R0302_002
-	scrdef scr_seq_T02R0302_003
-	scrdef_end
+	ScrDef scr_seq_T02R0302_000
+	ScrDef scr_seq_T02R0302_001
+	ScrDef scr_seq_T02R0302_002
+	ScrDef scr_seq_T02R0302_003
+	ScrDefEnd
 
 scr_seq_T02R0302_002:
-	scrcmd_609
-	lockall
-	setvar VAR_UNK_412E, 2
-	npc_msg msg_0458_T02R0302_00007
-	closemsg
-	toggle_following_pokemon_movement 0
-	wait_following_pokemon_movement
-	following_pokemon_movement 55
-	apply_movement obj_player, _0070
-	wait_movement
-	wait_following_pokemon_movement
-	toggle_following_pokemon_movement 1
-	following_pokemon_movement 48
-	npc_msg msg_0458_T02R0302_00008
-	goto_if_set FLAG_UNK_176, _0063
-	npc_msg msg_0458_T02R0302_00009
-	setflag FLAG_UNK_25B
-	dummy_486
-	setvar VAR_UNK_40E5, 2
-	npc_msg msg_0458_T02R0302_00011
-	setflag FLAG_UNK_176
+	ScrCmd_609
+	LockAll
+	SetVar VAR_UNK_412E, 2
+	NPCMsg msg_0458_T02R0302_00007
+	CloseMsg
+	ToggleFollowingPokemonMovement 0
+	WaitFollowingPokemonMovement
+	FollowingPokemonMovement 55
+	ApplyMovement obj_player, _0070
+	WaitMovement
+	WaitFollowingPokemonMovement
+	ToggleFollowingPokemonMovement 1
+	FollowingPokemonMovement 48
+	NPCMsg msg_0458_T02R0302_00008
+	GoToIfSet FLAG_UNK_176, _0063
+	NPCMsg msg_0458_T02R0302_00009
+	SetFlag FLAG_UNK_25B
+	Dummy486
+	SetVar VAR_UNK_40E5, 2
+	NPCMsg msg_0458_T02R0302_00011
+	SetFlag FLAG_UNK_176
 _0063:
-	npc_msg msg_0458_T02R0302_00012
-	goto _0091
+	NPCMsg msg_0458_T02R0302_00012
+	GoTo _0091
 
 _006C:
-	releaseall
-	end
+	ReleaseAll
+	End
 
 	.balign 4, 0
 _0070:
@@ -50,51 +50,51 @@ _0070:
 
 scr_seq_T02R0302_000:
 scr_seq_T02R0302_003:
-	scrcmd_609
-	lockall
-	apply_movement obj_player, _0120
-	wait_movement
-	npc_msg msg_0458_T02R0302_00000
+	ScrCmd_609
+	LockAll
+	ApplyMovement obj_player, _0120
+	WaitMovement
+	NPCMsg msg_0458_T02R0302_00000
 _0091:
-	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_RESULT
-	touchscreen_menu_show
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _00ED
-	set_follow_mon_inhibit_state 1
-	setvar VAR_UNK_412E, 5
-	callstd std_prompt_save
-	copyvar VAR_SPECIAL_RESULT, VAR_TEMP_x4000
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _00ED
-	touchscreen_menu_show
-	scrcmd_600
-	heal_party
-	npc_msg msg_0458_T02R0302_00002
-	closemsg
-	apply_movement obj_player, _017C
-	wait_movement
-	scrcmd_607
-	scrcmd_109 253, 56
-	setvar VAR_UNK_412E, 4
-	releaseall
-	end
+	TouchscreenMenuHide
+	GetMenuChoice VAR_SPECIAL_RESULT
+	TouchscreenMenuShow
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _00ED
+	SetFollowMonInhibitState 1
+	SetVar VAR_UNK_412E, 5
+	CallStd std_prompt_save
+	CopyVar VAR_SPECIAL_RESULT, VAR_TEMP_x4000
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _00ED
+	TouchscreenMenuShow
+	ScrCmd_600
+	HealParty
+	NPCMsg msg_0458_T02R0302_00002
+	CloseMsg
+	ApplyMovement obj_player, _017C
+	WaitMovement
+	ScrCmd_607
+	ScrCmd_109 253, 56
+	SetVar VAR_UNK_412E, 4
+	ReleaseAll
+	End
 
 _00ED:
-	set_follow_mon_inhibit_state 0
-	npc_msg msg_0458_T02R0302_00003
-	closemsg
-	toggle_following_pokemon_movement 0
-	wait_following_pokemon_movement
-	following_pokemon_movement 55
-	apply_movement obj_player, _0184
-	wait_movement
-	wait_following_pokemon_movement
-	toggle_following_pokemon_movement 1
-	following_pokemon_movement 48
-	setvar VAR_UNK_412E, 3
-	releaseall
-	end
+	SetFollowMonInhibitState 0
+	NPCMsg msg_0458_T02R0302_00003
+	CloseMsg
+	ToggleFollowingPokemonMovement 0
+	WaitFollowingPokemonMovement
+	FollowingPokemonMovement 55
+	ApplyMovement obj_player, _0184
+	WaitMovement
+	WaitFollowingPokemonMovement
+	ToggleFollowingPokemonMovement 1
+	FollowingPokemonMovement 48
+	SetVar VAR_UNK_412E, 3
+	ReleaseAll
+	End
 
 	.balign 4, 0
 _0120:
@@ -102,32 +102,32 @@ _0120:
 	EndMovement
 
 scr_seq_T02R0302_001:
-	scrcmd_609
-	lockall
-	npc_msg msg_0458_T02R0302_00004
-	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_RESULT
-	touchscreen_menu_show
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _0168
-	npc_msg msg_0458_T02R0302_00005
-	closemsg
-	apply_movement obj_player, _0184
-	wait_movement
-	set_follow_mon_inhibit_state 0
-	scrcmd_606
-	scrcmd_109 253, 48
-	setvar VAR_UNK_412E, 3
-	releaseall
-	end
+	ScrCmd_609
+	LockAll
+	NPCMsg msg_0458_T02R0302_00004
+	TouchscreenMenuHide
+	GetMenuChoice VAR_SPECIAL_RESULT
+	TouchscreenMenuShow
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _0168
+	NPCMsg msg_0458_T02R0302_00005
+	CloseMsg
+	ApplyMovement obj_player, _0184
+	WaitMovement
+	SetFollowMonInhibitState 0
+	ScrCmd_606
+	ScrCmd_109 253, 48
+	SetVar VAR_UNK_412E, 3
+	ReleaseAll
+	End
 
 _0168:
-	npc_msg msg_0458_T02R0302_00006
-	closemsg
-	apply_movement obj_player, _017C
-	wait_movement
-	releaseall
-	end
+	NPCMsg msg_0458_T02R0302_00006
+	CloseMsg
+	ApplyMovement obj_player, _017C
+	WaitMovement
+	ReleaseAll
+	End
 
 	.balign 4, 0
 _017C:

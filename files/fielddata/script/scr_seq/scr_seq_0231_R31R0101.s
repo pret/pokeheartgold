@@ -5,140 +5,140 @@
 
 	.rodata
 
-	scrdef scr_seq_R31R0101_000
-	scrdef scr_seq_R31R0101_001
-	scrdef scr_seq_R31R0101_002
-	scrdef_end
+	ScrDef scr_seq_R31R0101_000
+	ScrDef scr_seq_R31R0101_001
+	ScrDef scr_seq_R31R0101_002
+	ScrDefEnd
 
 scr_seq_R31R0101_001:
-	get_friend_sprite VAR_OBJ_0
-	end
+	GetFriendSprite VAR_OBJ_0
+	End
 
 scr_seq_R31R0101_000:
-	scrcmd_609
-	lockall
-	callstd std_play_friend_music
-	apply_movement obj_R31R0101_tsure_poke_static_marill, _028C
-	wait_movement
-	play_se SEQ_SE_DP_KAIDAN2
-	move_person_facing obj_R31R0101_var_1, 10, 1, 7, DIR_WEST
-	move_person_facing obj_R31R0101_tsure_poke_static_marill, 10, 1, 7, DIR_WEST
-	apply_movement obj_R31R0101_var_1, _0284
-	wait_movement
-	wait_se SEQ_SE_DP_KAIDAN2
-	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
-	scrcmd_729 VAR_TEMP_x4002
-	compare VAR_TEMP_x4002, 1
-	goto_if_ne _00C3
-	compare VAR_TEMP_x4001, 6
-	goto_if_ne _008A
-	apply_movement obj_R31R0101_var_1, _02AC
-	apply_movement obj_R31R0101_tsure_poke_static_marill, _02FC
-	goto _00BD
+	ScrCmd_609
+	LockAll
+	CallStd std_play_friend_music
+	ApplyMovement obj_R31R0101_tsure_poke_static_marill, _028C
+	WaitMovement
+	PlaySE SEQ_SE_DP_KAIDAN2
+	MovePersonFacing obj_R31R0101_var_1, 10, 1, 7, DIR_WEST
+	MovePersonFacing obj_R31R0101_tsure_poke_static_marill, 10, 1, 7, DIR_WEST
+	ApplyMovement obj_R31R0101_var_1, _0284
+	WaitMovement
+	WaitSE SEQ_SE_DP_KAIDAN2
+	GetPlayerCoords VAR_TEMP_x4000, VAR_TEMP_x4001
+	ScrCmd_729 VAR_TEMP_x4002
+	Compare VAR_TEMP_x4002, 1
+	GoToIfNe _00C3
+	Compare VAR_TEMP_x4001, 6
+	GoToIfNe _008A
+	ApplyMovement obj_R31R0101_var_1, _02AC
+	ApplyMovement obj_R31R0101_tsure_poke_static_marill, _02FC
+	GoTo _00BD
 
 _008A:
-	compare VAR_TEMP_x4001, 7
-	goto_if_ne _00AD
-	apply_movement obj_R31R0101_var_1, _02BC
-	apply_movement obj_R31R0101_tsure_poke_static_marill, _0314
-	goto _00BD
+	Compare VAR_TEMP_x4001, 7
+	GoToIfNe _00AD
+	ApplyMovement obj_R31R0101_var_1, _02BC
+	ApplyMovement obj_R31R0101_tsure_poke_static_marill, _0314
+	GoTo _00BD
 
 _00AD:
-	apply_movement obj_R31R0101_var_1, _02C4
-	apply_movement obj_R31R0101_tsure_poke_static_marill, _0324
+	ApplyMovement obj_R31R0101_var_1, _02C4
+	ApplyMovement obj_R31R0101_tsure_poke_static_marill, _0324
 _00BD:
-	goto _0119
+	GoTo _0119
 
 _00C3:
-	compare VAR_TEMP_x4001, 6
-	goto_if_ne _00E6
-	apply_movement obj_R31R0101_var_1, _02D4
-	apply_movement obj_R31R0101_tsure_poke_static_marill, _033C
-	goto _0119
+	Compare VAR_TEMP_x4001, 6
+	GoToIfNe _00E6
+	ApplyMovement obj_R31R0101_var_1, _02D4
+	ApplyMovement obj_R31R0101_tsure_poke_static_marill, _033C
+	GoTo _0119
 
 _00E6:
-	compare VAR_TEMP_x4001, 7
-	goto_if_ne _0109
-	apply_movement obj_R31R0101_var_1, _02E4
-	apply_movement obj_R31R0101_tsure_poke_static_marill, _0354
-	goto _0119
+	Compare VAR_TEMP_x4001, 7
+	GoToIfNe _0109
+	ApplyMovement obj_R31R0101_var_1, _02E4
+	ApplyMovement obj_R31R0101_tsure_poke_static_marill, _0354
+	GoTo _0119
 
 _0109:
-	apply_movement obj_R31R0101_var_1, _02EC
-	apply_movement obj_R31R0101_tsure_poke_static_marill, _0364
+	ApplyMovement obj_R31R0101_var_1, _02EC
+	ApplyMovement obj_R31R0101_tsure_poke_static_marill, _0364
 _0119:
-	wait_movement
-	apply_movement obj_player, _0294
-	compare VAR_TEMP_x4002, 1
-	goto_if_ne _0138
-	apply_movement obj_partner_poke, _0294
+	WaitMovement
+	ApplyMovement obj_player, _0294
+	Compare VAR_TEMP_x4002, 1
+	GoToIfNe _0138
+	ApplyMovement obj_partner_poke, _0294
 _0138:
-	wait_movement
-	buffer_players_name 0
-	gender_msgbox msg_0379_R31R0101_00002, msg_0379_R31R0101_00003
-	giveitem_no_check ITEM_VS__RECORDER, 1
-	gender_msgbox msg_0379_R31R0101_00004, msg_0379_R31R0101_00005
-	closemsg
-	apply_movement obj_R31R0101_var_1, _0294
-	wait_movement
-	gender_msgbox msg_0379_R31R0101_00006, msg_0379_R31R0101_00007
-	closemsg
-	apply_movement obj_R31R0101_tsure_poke_static_marill, _02A4
-	wait_movement
-	compare VAR_TEMP_x4002, 1
-	goto_if_ne _01DA
-	compare VAR_TEMP_x4001, 6
-	goto_if_ne _01A1
-	apply_movement obj_R31R0101_var_1, _037C
-	apply_movement obj_R31R0101_tsure_poke_static_marill, _03EC
-	goto _01D4
+	WaitMovement
+	BufferPlayersName 0
+	GenderMsgBox msg_0379_R31R0101_00002, msg_0379_R31R0101_00003
+	GiveItemNoCheck ITEM_VS__RECORDER, 1
+	GenderMsgBox msg_0379_R31R0101_00004, msg_0379_R31R0101_00005
+	CloseMsg
+	ApplyMovement obj_R31R0101_var_1, _0294
+	WaitMovement
+	GenderMsgBox msg_0379_R31R0101_00006, msg_0379_R31R0101_00007
+	CloseMsg
+	ApplyMovement obj_R31R0101_tsure_poke_static_marill, _02A4
+	WaitMovement
+	Compare VAR_TEMP_x4002, 1
+	GoToIfNe _01DA
+	Compare VAR_TEMP_x4001, 6
+	GoToIfNe _01A1
+	ApplyMovement obj_R31R0101_var_1, _037C
+	ApplyMovement obj_R31R0101_tsure_poke_static_marill, _03EC
+	GoTo _01D4
 
 _01A1:
-	compare VAR_TEMP_x4001, 7
-	goto_if_ne _01C4
-	apply_movement obj_R31R0101_var_1, _038C
-	apply_movement obj_R31R0101_tsure_poke_static_marill, _0404
-	goto _01D4
+	Compare VAR_TEMP_x4001, 7
+	GoToIfNe _01C4
+	ApplyMovement obj_R31R0101_var_1, _038C
+	ApplyMovement obj_R31R0101_tsure_poke_static_marill, _0404
+	GoTo _01D4
 
 _01C4:
-	apply_movement obj_R31R0101_var_1, _03A4
-	apply_movement obj_R31R0101_tsure_poke_static_marill, _0424
+	ApplyMovement obj_R31R0101_var_1, _03A4
+	ApplyMovement obj_R31R0101_tsure_poke_static_marill, _0424
 _01D4:
-	goto _0230
+	GoTo _0230
 
 _01DA:
-	compare VAR_TEMP_x4001, 6
-	goto_if_ne _01FD
-	apply_movement obj_R31R0101_var_1, _03B4
-	apply_movement obj_R31R0101_tsure_poke_static_marill, _043C
-	goto _0230
+	Compare VAR_TEMP_x4001, 6
+	GoToIfNe _01FD
+	ApplyMovement obj_R31R0101_var_1, _03B4
+	ApplyMovement obj_R31R0101_tsure_poke_static_marill, _043C
+	GoTo _0230
 
 _01FD:
-	compare VAR_TEMP_x4001, 7
-	goto_if_ne _0220
-	apply_movement obj_R31R0101_var_1, _03C4
-	apply_movement obj_R31R0101_tsure_poke_static_marill, _0454
-	goto _0230
+	Compare VAR_TEMP_x4001, 7
+	GoToIfNe _0220
+	ApplyMovement obj_R31R0101_var_1, _03C4
+	ApplyMovement obj_R31R0101_tsure_poke_static_marill, _0454
+	GoTo _0230
 
 _0220:
-	apply_movement obj_R31R0101_var_1, _03DC
-	apply_movement obj_R31R0101_tsure_poke_static_marill, _0474
+	ApplyMovement obj_R31R0101_var_1, _03DC
+	ApplyMovement obj_R31R0101_tsure_poke_static_marill, _0474
 _0230:
-	wait 16, VAR_SPECIAL_RESULT
-	apply_movement obj_player, _029C
-	compare VAR_TEMP_x4002, 1
-	goto_if_ne _0253
-	apply_movement obj_partner_poke, _029C
+	Wait 16, VAR_SPECIAL_RESULT
+	ApplyMovement obj_player, _029C
+	Compare VAR_TEMP_x4002, 1
+	GoToIfNe _0253
+	ApplyMovement obj_partner_poke, _029C
 _0253:
-	wait_movement
-	play_se SEQ_SE_DP_KAIDAN2
-	wait_se SEQ_SE_DP_KAIDAN2
-	move_person_facing obj_R31R0101_var_1, 12, 0, 28, DIR_NORTH
-	move_person_facing obj_R31R0101_tsure_poke_static_marill, 12, 0, 28, DIR_NORTH
-	callstd std_fade_end_friend_music
-	releaseall
-	setvar VAR_UNK_4132, 1
-	end
+	WaitMovement
+	PlaySE SEQ_SE_DP_KAIDAN2
+	WaitSE SEQ_SE_DP_KAIDAN2
+	MovePersonFacing obj_R31R0101_var_1, 12, 0, 28, DIR_NORTH
+	MovePersonFacing obj_R31R0101_tsure_poke_static_marill, 12, 0, 28, DIR_NORTH
+	CallStd std_fade_end_friend_music
+	ReleaseAll
+	SetVar VAR_UNK_4132, 1
+	End
 
 	.balign 4, 0
 _0284:
@@ -358,6 +358,6 @@ _0474:
 	EndMovement
 
 scr_seq_R31R0101_002:
-	simple_npc_msg msg_0379_R31R0101_00000
-	end
+	SimpleNPCMsg msg_0379_R31R0101_00000
+	End
 	.balign 4, 0
