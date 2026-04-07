@@ -63,7 +63,7 @@ scr_seq_D23R0102_003:
 	play_cry SPECIES_JIGGLYPUFF, 0
 	npc_msg msg_0066_D23R0102_00003
 	wait_cry
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -80,7 +80,7 @@ scr_seq_D23R0102_004:
 _00F7:
 	npc_msg msg_0066_D23R0102_00001
 _00FA:
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -101,7 +101,7 @@ scr_seq_D23R0102_006:
 _0133:
 	npc_msg msg_0066_D23R0102_00004
 _0136:
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -119,7 +119,7 @@ _015C:
 	goto _016A
 
 _0162:
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -150,7 +150,7 @@ _01D2:
 	closemsg
 	goto_if_set FLAG_DAILY_HEARD_BUENAS_PASSWORD, _01EA
 	npc_msg msg_0066_D23R0102_00028
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -368,21 +368,21 @@ _0539:
 
 _0547:
 	npc_msg msg_0066_D23R0102_00029
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _0552:
 	npc_msg msg_0066_D23R0102_00019
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _055D:
 	npc_msg msg_0066_D23R0102_00023
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -405,7 +405,7 @@ scr_seq_D23R0102_010:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ge _05B0
 	npc_msg msg_0066_D23R0102_00033
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -413,14 +413,14 @@ scr_seq_D23R0102_010:
 _05B0:
 	buffer_int 0, VAR_BLUE_CARD_POINTS
 	npc_msg msg_0066_D23R0102_00034
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _05C0:
 	npc_msg msg_0066_D23R0102_00039
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

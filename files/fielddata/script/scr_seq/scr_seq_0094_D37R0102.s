@@ -148,7 +148,7 @@ _01F5:
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0324
 	npc_msg msg_0117_D37R0102_00011
-	wait_button
+	wait_ab_press
 	closemsg
 	hide_money_box
 	fade_screen 6, 1, 0, RGB_BLACK
@@ -168,7 +168,7 @@ _01F5:
 	submoneyimmediate 500
 	update_money_box
 	npc_msg msg_0117_D37R0102_00012
-	wait_button
+	wait_ab_press
 	closemsg
 	fade_screen 6, 1, 0, RGB_WHITE
 	wait_fade
@@ -178,7 +178,7 @@ _01F5:
 	fade_screen 6, 1, 1, RGB_WHITE
 	wait_fade
 	npc_msg msg_0117_D37R0102_00013
-	wait_button
+	wait_ab_press
 	setflag FLAG_DAILY_GOT_HAIRCUT
 	call _04C8
 	random VAR_SPECIAL_RESULT, 100
@@ -192,7 +192,7 @@ _02CA:
 	mon_add_friendship 1, VAR_SPECIAL_x8005
 	bufferpartymonnick 0, VAR_SPECIAL_x8005
 	npc_msg msg_0117_D37R0102_00024
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -201,7 +201,7 @@ _02E0:
 	mon_add_friendship 5, VAR_SPECIAL_x8005
 	bufferpartymonnick 0, VAR_SPECIAL_x8005
 	npc_msg msg_0117_D37R0102_00025
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -210,14 +210,14 @@ _02F6:
 	mon_add_friendship 10, VAR_SPECIAL_x8005
 	bufferpartymonnick 0, VAR_SPECIAL_x8005
 	npc_msg msg_0117_D37R0102_00026
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _030C:
 	npc_msg msg_0117_D37R0102_00014
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	hide_money_box
 	releaseall
@@ -225,14 +225,14 @@ _030C:
 
 _0319:
 	npc_msg msg_0117_D37R0102_00014
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _0324:
 	npc_msg msg_0117_D37R0102_00015
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	hide_money_box
 	releaseall
@@ -240,7 +240,7 @@ _0324:
 
 _0331:
 	npc_msg msg_0117_D37R0102_00016
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -265,7 +265,7 @@ _0375:
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _04B0
 	npc_msg msg_0117_D37R0102_00018
-	wait_button
+	wait_ab_press
 	closemsg
 	hide_money_box
 	fade_screen 6, 1, 0, RGB_BLACK
@@ -285,7 +285,7 @@ _0375:
 	submoneyimmediate 300
 	update_money_box
 	npc_msg msg_0117_D37R0102_00019
-	wait_button
+	wait_ab_press
 	closemsg
 	fade_screen 6, 1, 0, RGB_WHITE
 	wait_fade
@@ -295,7 +295,7 @@ _0375:
 	fade_screen 6, 1, 1, RGB_WHITE
 	wait_fade
 	npc_msg msg_0117_D37R0102_00020
-	wait_button
+	wait_ab_press
 	setflag FLAG_DAILY_GOT_HAIRCUT
 	random VAR_SPECIAL_RESULT, 100
 	compare VAR_SPECIAL_RESULT, 40
@@ -309,7 +309,7 @@ _0444:
 	mon_add_friendship 1, VAR_SPECIAL_x8005
 	bufferpartymonnick 0, VAR_SPECIAL_x8005
 	npc_msg msg_0117_D37R0102_00024
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -319,7 +319,7 @@ _0460:
 	mon_add_friendship 5, VAR_SPECIAL_x8005
 	bufferpartymonnick 0, VAR_SPECIAL_x8005
 	npc_msg msg_0117_D37R0102_00025
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -329,14 +329,14 @@ _047C:
 	mon_add_friendship 10, VAR_SPECIAL_x8005
 	bufferpartymonnick 0, VAR_SPECIAL_x8005
 	npc_msg msg_0117_D37R0102_00026
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _0498:
 	npc_msg msg_0117_D37R0102_00021
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	hide_money_box
 	releaseall
@@ -344,14 +344,14 @@ _0498:
 
 _04A5:
 	npc_msg msg_0117_D37R0102_00021
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _04B0:
 	npc_msg msg_0117_D37R0102_00022
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	hide_money_box
 	releaseall
@@ -359,7 +359,7 @@ _04B0:
 
 _04BD:
 	npc_msg msg_0117_D37R0102_00023
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -566,14 +566,14 @@ _0886:
 	touchscreen_menu_show
 	hide_money_box
 	npc_msg msg_0117_D37R0102_00009
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _0895:
 	npc_msg msg_0117_D37R0102_00008
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -695,7 +695,7 @@ _0A71:
 	wait_fade
 	setvar VAR_SCENE_ROCKET_TAKEOVER, 3
 	npc_msg msg_0117_D37R0102_00037
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -979,7 +979,7 @@ _0DBC:
 
 _0DDA:
 	npc_msg msg_0117_D37R0102_00040
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -1001,7 +1001,7 @@ _0DEE:
 	scrcmd_494 0, VAR_SPECIAL_x8004
 	npc_msg msg_0117_D37R0102_00046
 	npc_msg msg_0117_D37R0102_00052
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -1013,7 +1013,7 @@ _0E35:
 
 _0E40:
 	npc_msg msg_0117_D37R0102_00048
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -1106,7 +1106,7 @@ scr_seq_D37R0102_006:
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0F05
 	npc_msg msg_0117_D37R0102_00034
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -1161,14 +1161,14 @@ _0F79:
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	npc_msg msg_0117_D37R0102_00032
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _0FDA:
 	npc_msg msg_0117_D37R0102_00035
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -1308,7 +1308,7 @@ scr_seq_D37R0102_010:
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _1189
 	npc_msg msg_0117_D37R0102_00027
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -1495,7 +1495,7 @@ scr_seq_D37R0102_022:
 
 _144B:
 	npc_msg msg_0117_D37R0102_00053
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -1546,21 +1546,21 @@ _14EB:
 
 _1521:
 	npc_msg msg_0117_D37R0102_00058
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	goto _1568
 	end
 
 _1530:
 	npc_msg msg_0117_D37R0102_00059
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	goto _1568
 	end
 
 _153F:
 	npc_msg msg_0117_D37R0102_00060
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	goto _1568
 	end

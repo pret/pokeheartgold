@@ -15,7 +15,7 @@
 .public Party_AddMon
 .public Party_GetMonByIndex
 .public SaveArray_Party_Get
-.public Frontier_GetLaunchParam
+.public Frontier_GetLaunchArgs
 .public Frontier_GetData
 .public Frontier_SetData
 .public Frontier_LaunchApplication

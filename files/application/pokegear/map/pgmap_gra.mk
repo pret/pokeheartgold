@@ -100,7 +100,7 @@ VERSION101_SOPC_NCGR_FILES += \
 	$(PGMAP_GRA_DIR)/pgmap_gra_00000068.NCGR
 
 $(PGMAP_GRA_NARC): $(addprefix $(PGMAP_GRA_DIR)/,$(PGMAP_GRA_FILES))
-	$(KNARC) -p $@ -d $(PGMAP_GRA_DIR) -i
+	$(NARC) -cf $@ --index-namespace $(PGMAP_GRA_DIR)
 
 clean-pgmap-gra:
 	$(RM) $(PGMAP_GRA_NARC)

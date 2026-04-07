@@ -20,7 +20,7 @@ scr_seq_R05R0401_000:
 	setflag FLAG_GOT_CLEANSE_TAG_FROM_ROUTE_5_GRANDMA
 _0049:
 	npc_msg msg_0333_R05R0401_00001
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

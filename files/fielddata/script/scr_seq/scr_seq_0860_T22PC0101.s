@@ -118,29 +118,29 @@ _01F4:
 	play_fanfare SEQ_ME_TAMAGO_GET
 	npc_msg msg_0559_T22PC0101_00019
 	wait_fanfare
-	wait_button_or_walk_away
+	wait_button
 	goto _0235
 
 _0207:
 	npc_msg msg_0559_T22PC0101_00020
-	wait_button_or_walk_away
+	wait_button
 	goto _0235
 
 _0212:
 	npc_msg msg_0559_T22PC0101_00014
-	wait_button_or_walk_away
+	wait_button
 	goto _0235
 
 _021D:
 	touchscreen_menu_show
 _021F:
 	npc_msg msg_0559_T22PC0101_00015
-	wait_button_or_walk_away
+	wait_button
 	goto _0235
 
 _022A:
 	npc_msg msg_0559_T22PC0101_00016
-	wait_button_or_walk_away
+	wait_button
 	goto _0235
 
 _0235:
@@ -214,7 +214,7 @@ _0331:
 	touchscreen_menu_show
 _0333:
 	npc_msg msg_0559_T22PC0101_00025
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

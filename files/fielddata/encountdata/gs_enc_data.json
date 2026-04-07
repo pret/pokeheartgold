@@ -174,12 +174,9 @@
             },
             "hoenn": [],
             "sinnoh": [],
-            "swarm": [
-                "SPECIES_NONE",
-                "SPECIES_TENTACOOL",
-                "SPECIES_SHELLDER",
-                "SPECIES_MAGIKARP"
-            ]
+            "surfSwarm": "SPECIES_TENTACOOL",
+            "nightFish": "SPECIES_SHELLDER",
+            "fishSwarm": "SPECIES_MAGIKARP"
         },
         {
             "map": "R29",
@@ -332,12 +329,7 @@
                 "SPECIES_SHINX",
                 "SPECIES_SHINX"
             ],
-            "swarm": [
-                "SPECIES_PIDGEY",
-                "SPECIES_NONE",
-                "SPECIES_NONE",
-                "SPECIES_NONE"
-            ]
+            "landSwarm": "SPECIES_PIDGEY"
         },
         {
             "map": "T21",
@@ -513,12 +505,9 @@
             },
             "hoenn": [],
             "sinnoh": [],
-            "swarm": [
-                "SPECIES_NONE",
-                "SPECIES_TENTACOOL",
-                "SPECIES_STARYU",
-                "SPECIES_MAGIKARP"
-            ]
+            "surfSwarm": "SPECIES_TENTACOOL",
+            "nightFish": "SPECIES_STARYU",
+            "fishSwarm": "SPECIES_MAGIKARP"
         },
         {
             "map": "R30",
@@ -857,15 +846,13 @@
                 "SPECIES_BUIZEL",
                 "SPECIES_BIDOOF"
             ],
-            "swarm": [
-                {
-                    "HEARTGOLD": "SPECIES_PIDGEY",
-                    "SOULSILVER": "SPECIES_LEDYBA"
-                },
-                "SPECIES_POLIWAG",
-                "SPECIES_POLIWAG",
-                "SPECIES_MAGIKARP"
-            ]
+            "landSwarm": {
+                "HEARTGOLD": "SPECIES_PIDGEY",
+                "SOULSILVER": "SPECIES_LEDYBA"
+            },
+            "surfSwarm": "SPECIES_POLIWAG",
+            "nightFish": "SPECIES_POLIWAG",
+            "fishSwarm": "SPECIES_MAGIKARP"
         },
         {
             "map": "R31",
@@ -1210,15 +1197,13 @@
                 "SPECIES_BUIZEL",
                 "SPECIES_BIDOOF"
             ],
-            "swarm": [
-                {
-                    "HEARTGOLD": "SPECIES_PIDGEY",
-                    "SOULSILVER": "SPECIES_LEDYBA"
-                },
-                "SPECIES_POLIWAG",
-                "SPECIES_POLIWAG",
-                "SPECIES_MAGIKARP"
-            ]
+            "landSwarm": {
+                "HEARTGOLD": "SPECIES_PIDGEY",
+                "SOULSILVER": "SPECIES_LEDYBA"
+            },
+            "surfSwarm": "SPECIES_POLIWAG",
+            "nightFish": "SPECIES_POLIWAG",
+            "fishSwarm": "SPECIES_MAGIKARP"
         },
         {
             "map": "T22",
@@ -1394,12 +1379,9 @@
             },
             "hoenn": [],
             "sinnoh": [],
-            "swarm": [
-                "SPECIES_NONE",
-                "SPECIES_POLIWAG",
-                "SPECIES_POLIWAG",
-                "SPECIES_WHISCASH"
-            ]
+            "surfSwarm": "SPECIES_POLIWAG",
+            "nightFish": "SPECIES_POLIWAG",
+            "fishSwarm": "SPECIES_WHISCASH"
         },
         {
             "map": "D15R0102",
@@ -1534,12 +1516,7 @@
                 "SPECIES_CHATOT",
                 "SPECIES_MEDITITE"
             ],
-            "swarm": [
-                "SPECIES_RATTATA",
-                "SPECIES_NONE",
-                "SPECIES_NONE",
-                "SPECIES_NONE"
-            ]
+            "landSwarm": "SPECIES_RATTATA"
         },
         {
             "map": "D15R0103",
@@ -1674,12 +1651,7 @@
                 "SPECIES_CHATOT",
                 "SPECIES_MEDITITE"
             ],
-            "swarm": [
-                "SPECIES_RATTATA",
-                "SPECIES_NONE",
-                "SPECIES_NONE",
-                "SPECIES_NONE"
-            ]
+            "landSwarm": "SPECIES_RATTATA"
         },
         {
             "map": "R32",
@@ -1976,12 +1948,10 @@
                 "SPECIES_BUIZEL",
                 "SPECIES_BIDOOF"
             ],
-            "swarm": [
-                "SPECIES_BELLSPROUT",
-                "SPECIES_TENTACOOL",
-                "SPECIES_TENTACOOL",
-                "SPECIES_QWILFISH"
-            ]
+            "landSwarm": "SPECIES_BELLSPROUT",
+            "surfSwarm": "SPECIES_TENTACOOL",
+            "nightFish": "SPECIES_TENTACOOL",
+            "fishSwarm": "SPECIES_QWILFISH"
         },
         {
             "map": "D24R0101",
@@ -2275,12 +2245,10 @@
                 "SPECIES_BUIZEL",
                 "SPECIES_BIDOOF"
             ],
-            "swarm": [
-                "SPECIES_NATU",
-                "SPECIES_WOOPER",
-                "SPECIES_POLIWAG",
-                "SPECIES_MAGIKARP"
-            ]
+            "landSwarm": "SPECIES_NATU",
+            "surfSwarm": "SPECIES_WOOPER",
+            "nightFish": "SPECIES_POLIWAG",
+            "fishSwarm": "SPECIES_MAGIKARP"
         },
         {
             "map": "D24R0205",
@@ -2415,12 +2383,7 @@
                 "SPECIES_UNOWN",
                 "SPECIES_UNOWN"
             ],
-            "swarm": [
-                "SPECIES_UNOWN",
-                "SPECIES_NONE",
-                "SPECIES_NONE",
-                "SPECIES_NONE"
-            ]
+            "landSwarm": "SPECIES_UNOWN"
         },
         {
             "map": "D24R0216",
@@ -2555,12 +2518,7 @@
                 "SPECIES_UNOWN",
                 "SPECIES_UNOWN"
             ],
-            "swarm": [
-                "SPECIES_UNOWN",
-                "SPECIES_NONE",
-                "SPECIES_NONE",
-                "SPECIES_NONE"
-            ]
+            "landSwarm": "SPECIES_UNOWN"
         },
         {
             "map": "D24R0218",
@@ -2695,12 +2653,7 @@
                 "SPECIES_UNOWN",
                 "SPECIES_UNOWN"
             ],
-            "swarm": [
-                "SPECIES_UNOWN",
-                "SPECIES_NONE",
-                "SPECIES_NONE",
-                "SPECIES_NONE"
-            ]
+            "landSwarm": "SPECIES_UNOWN"
         },
         {
             "map": "D24R0217",
@@ -2835,12 +2788,7 @@
                 "SPECIES_UNOWN",
                 "SPECIES_UNOWN"
             ],
-            "swarm": [
-                "SPECIES_UNOWN",
-                "SPECIES_NONE",
-                "SPECIES_NONE",
-                "SPECIES_NONE"
-            ]
+            "landSwarm": "SPECIES_UNOWN"
         },
         {
             "map": "D25R0101",
@@ -3137,12 +3085,10 @@
                 "SPECIES_BRONZOR",
                 "SPECIES_CHINGLING"
             ],
-            "swarm": [
-                "SPECIES_GEODUDE",
-                "SPECIES_WOOPER",
-                "SPECIES_GOLDEEN",
-                "SPECIES_MAGIKARP"
-            ]
+            "landSwarm": "SPECIES_GEODUDE",
+            "surfSwarm": "SPECIES_WOOPER",
+            "nightFish": "SPECIES_GOLDEEN",
+            "fishSwarm": "SPECIES_MAGIKARP"
         },
         {
             "map": "D25R0102",
@@ -3439,12 +3385,10 @@
                 "SPECIES_BRONZOR",
                 "SPECIES_CHINGLING"
             ],
-            "swarm": [
-                "SPECIES_GEODUDE",
-                "SPECIES_WOOPER",
-                "SPECIES_GOLDEEN",
-                "SPECIES_MAGIKARP"
-            ]
+            "landSwarm": "SPECIES_GEODUDE",
+            "surfSwarm": "SPECIES_WOOPER",
+            "nightFish": "SPECIES_GOLDEEN",
+            "fishSwarm": "SPECIES_MAGIKARP"
         },
         {
             "map": "D25R0103",
@@ -3723,12 +3667,10 @@
                 "SPECIES_BRONZOR",
                 "SPECIES_CHINGLING"
             ],
-            "swarm": [
-                "SPECIES_ZUBAT",
-                "SPECIES_TENTACOOL",
-                "SPECIES_STARYU",
-                "SPECIES_MAGIKARP"
-            ]
+            "landSwarm": "SPECIES_ZUBAT",
+            "surfSwarm": "SPECIES_TENTACOOL",
+            "nightFish": "SPECIES_STARYU",
+            "fishSwarm": "SPECIES_MAGIKARP"
         },
         {
             "map": "R33",
@@ -3881,12 +3823,7 @@
                 "SPECIES_SHINX",
                 "SPECIES_SHINX"
             ],
-            "swarm": [
-                "SPECIES_HOPPIP",
-                "SPECIES_NONE",
-                "SPECIES_NONE",
-                "SPECIES_NONE"
-            ]
+            "landSwarm": "SPECIES_HOPPIP"
         },
         {
             "map": "D26R0102",
@@ -4165,12 +4102,10 @@
                 "SPECIES_BRONZOR",
                 "SPECIES_CHINGLING"
             ],
-            "swarm": [
-                "SPECIES_ZUBAT",
-                "SPECIES_SLOWPOKE",
-                "SPECIES_GOLDEEN",
-                "SPECIES_MAGIKARP"
-            ]
+            "landSwarm": "SPECIES_ZUBAT",
+            "surfSwarm": "SPECIES_SLOWPOKE",
+            "nightFish": "SPECIES_GOLDEEN",
+            "fishSwarm": "SPECIES_MAGIKARP"
         },
         {
             "map": "D26R0103",
@@ -4449,12 +4384,10 @@
                 "SPECIES_BRONZOR",
                 "SPECIES_CHINGLING"
             ],
-            "swarm": [
-                "SPECIES_ZUBAT",
-                "SPECIES_SLOWPOKE",
-                "SPECIES_GOLDEEN",
-                "SPECIES_MAGIKARP"
-            ]
+            "landSwarm": "SPECIES_ZUBAT",
+            "surfSwarm": "SPECIES_SLOWPOKE",
+            "nightFish": "SPECIES_GOLDEEN",
+            "fishSwarm": "SPECIES_MAGIKARP"
         },
         {
             "map": "D36R0101",
@@ -4775,15 +4708,13 @@
                 "SPECIES_BUDEW",
                 "SPECIES_CARNIVINE"
             ],
-            "swarm": [
-                {
-                    "HEARTGOLD": "SPECIES_CATERPIE",
-                    "SOULSILVER": "SPECIES_WEEDLE"
-                },
-                "SPECIES_PSYDUCK",
-                "SPECIES_POLIWAG",
-                "SPECIES_MAGIKARP"
-            ]
+            "landSwarm": {
+                "HEARTGOLD": "SPECIES_CATERPIE",
+                "SOULSILVER": "SPECIES_WEEDLE"
+            },
+            "surfSwarm": "SPECIES_PSYDUCK",
+            "nightFish": "SPECIES_POLIWAG",
+            "fishSwarm": "SPECIES_MAGIKARP"
         },
         {
             "map": "R34",
@@ -5062,12 +4993,10 @@
                 "SPECIES_BUIZEL",
                 "SPECIES_BIDOOF"
             ],
-            "swarm": [
-                "SPECIES_RALTS",
-                "SPECIES_TENTACOOL",
-                "SPECIES_STARYU",
-                "SPECIES_MAGIKARP"
-            ]
+            "landSwarm": "SPECIES_RALTS",
+            "surfSwarm": "SPECIES_TENTACOOL",
+            "nightFish": "SPECIES_STARYU",
+            "fishSwarm": "SPECIES_MAGIKARP"
         },
         {
             "map": "R35",
@@ -5382,12 +5311,10 @@
                 "SPECIES_BUIZEL",
                 "SPECIES_BIDOOF"
             ],
-            "swarm": [
-                "SPECIES_YANMA",
-                "SPECIES_PSYDUCK",
-                "SPECIES_POLIWAG",
-                "SPECIES_MAGIKARP"
-            ]
+            "landSwarm": "SPECIES_YANMA",
+            "surfSwarm": "SPECIES_PSYDUCK",
+            "nightFish": "SPECIES_POLIWAG",
+            "fishSwarm": "SPECIES_MAGIKARP"
         },
         {
             "map": "D22R0101",
@@ -5552,15 +5479,10 @@
                 "SPECIES_SHINX",
                 "SPECIES_SHINX"
             ],
-            "swarm": [
-                {
-                    "HEARTGOLD": "SPECIES_CATERPIE",
-                    "SOULSILVER": "SPECIES_WEEDLE"
-                },
-                "SPECIES_NONE",
-                "SPECIES_NONE",
-                "SPECIES_NONE"
-            ]
+            "landSwarm": {
+                "HEARTGOLD": "SPECIES_CATERPIE",
+                "SOULSILVER": "SPECIES_WEEDLE"
+            }
         },
         {
             "map": "D22R0102",
@@ -5815,15 +5737,10 @@
                     "SOULSILVER": "SPECIES_WEEDLE"
                 }
             ],
-            "swarm": [
-                {
-                    "HEARTGOLD": "SPECIES_CATERPIE",
-                    "SOULSILVER": "SPECIES_WEEDLE"
-                },
-                "SPECIES_NONE",
-                "SPECIES_NONE",
-                "SPECIES_NONE"
-            ]
+            "landSwarm": {
+                "HEARTGOLD": "SPECIES_CATERPIE",
+                "SOULSILVER": "SPECIES_WEEDLE"
+            }
         },
         {
             "map": "R36",
@@ -6024,15 +5941,10 @@
                 "SPECIES_SHINX",
                 "SPECIES_SHINX"
             ],
-            "swarm": [
-                {
-                    "HEARTGOLD": "SPECIES_NIDORAN_M",
-                    "SOULSILVER": "SPECIES_NIDORAN_F"
-                },
-                "SPECIES_NONE",
-                "SPECIES_NONE",
-                "SPECIES_NONE"
-            ]
+            "landSwarm": {
+                "HEARTGOLD": "SPECIES_NIDORAN_M",
+                "SOULSILVER": "SPECIES_NIDORAN_F"
+            }
         },
         {
             "map": "R37",
@@ -6227,15 +6139,10 @@
                 "SPECIES_SHINX",
                 "SPECIES_SHINX"
             ],
-            "swarm": [
-                {
-                    "HEARTGOLD": "SPECIES_PIDGEY",
-                    "SOULSILVER": "SPECIES_LEDYBA"
-                },
-                "SPECIES_NONE",
-                "SPECIES_NONE",
-                "SPECIES_NONE"
-            ]
+            "landSwarm": {
+                "HEARTGOLD": "SPECIES_PIDGEY",
+                "SOULSILVER": "SPECIES_LEDYBA"
+            }
         },
         {
             "map": "T27",
@@ -6411,12 +6318,9 @@
             },
             "hoenn": [],
             "sinnoh": [],
-            "swarm": [
-                "SPECIES_NONE",
-                "SPECIES_POLIWAG",
-                "SPECIES_POLIWAG",
-                "SPECIES_MAGIKARP"
-            ]
+            "surfSwarm": "SPECIES_POLIWAG",
+            "nightFish": "SPECIES_POLIWAG",
+            "fishSwarm": "SPECIES_MAGIKARP"
         },
         {
             "map": "D18R0101",
@@ -6551,12 +6455,7 @@
                 "SPECIES_CHATOT",
                 "SPECIES_MEDITITE"
             ],
-            "swarm": [
-                "SPECIES_RATTATA",
-                "SPECIES_NONE",
-                "SPECIES_NONE",
-                "SPECIES_NONE"
-            ]
+            "landSwarm": "SPECIES_RATTATA"
         },
         {
             "map": "D18R0102",
@@ -6691,12 +6590,7 @@
                 "SPECIES_CHATOT",
                 "SPECIES_MEDITITE"
             ],
-            "swarm": [
-                "SPECIES_RATTATA",
-                "SPECIES_NONE",
-                "SPECIES_NONE",
-                "SPECIES_NONE"
-            ]
+            "landSwarm": "SPECIES_RATTATA"
         },
         {
             "map": "D17R0102",
@@ -6831,12 +6725,7 @@
                 "SPECIES_CHATOT",
                 "SPECIES_MEDITITE"
             ],
-            "swarm": [
-                "SPECIES_RATTATA",
-                "SPECIES_NONE",
-                "SPECIES_NONE",
-                "SPECIES_NONE"
-            ]
+            "landSwarm": "SPECIES_RATTATA"
         },
         {
             "map": "D17R0103",
@@ -6971,12 +6860,7 @@
                 "SPECIES_CHATOT",
                 "SPECIES_MEDITITE"
             ],
-            "swarm": [
-                "SPECIES_RATTATA",
-                "SPECIES_NONE",
-                "SPECIES_NONE",
-                "SPECIES_NONE"
-            ]
+            "landSwarm": "SPECIES_RATTATA"
         },
         {
             "map": "D17R0104",
@@ -7111,12 +6995,7 @@
                 "SPECIES_CHATOT",
                 "SPECIES_MEDITITE"
             ],
-            "swarm": [
-                "SPECIES_RATTATA",
-                "SPECIES_NONE",
-                "SPECIES_NONE",
-                "SPECIES_NONE"
-            ]
+            "landSwarm": "SPECIES_RATTATA"
         },
         {
             "map": "D17R0105",
@@ -7251,12 +7130,7 @@
                 "SPECIES_CHATOT",
                 "SPECIES_MEDITITE"
             ],
-            "swarm": [
-                "SPECIES_RATTATA",
-                "SPECIES_NONE",
-                "SPECIES_NONE",
-                "SPECIES_NONE"
-            ]
+            "landSwarm": "SPECIES_RATTATA"
         },
         {
             "map": "D17R0106",
@@ -7391,12 +7265,7 @@
                 "SPECIES_CHATOT",
                 "SPECIES_MEDITITE"
             ],
-            "swarm": [
-                "SPECIES_RATTATA",
-                "SPECIES_NONE",
-                "SPECIES_NONE",
-                "SPECIES_NONE"
-            ]
+            "landSwarm": "SPECIES_RATTATA"
         },
         {
             "map": "D17R0107",
@@ -7531,12 +7400,7 @@
                 "SPECIES_CHATOT",
                 "SPECIES_MEDITITE"
             ],
-            "swarm": [
-                "SPECIES_RATTATA",
-                "SPECIES_NONE",
-                "SPECIES_NONE",
-                "SPECIES_NONE"
-            ]
+            "landSwarm": "SPECIES_RATTATA"
         },
         {
             "map": "D17R0108",
@@ -7671,12 +7535,7 @@
                 "SPECIES_CHATOT",
                 "SPECIES_MEDITITE"
             ],
-            "swarm": [
-                "SPECIES_RATTATA",
-                "SPECIES_NONE",
-                "SPECIES_NONE",
-                "SPECIES_NONE"
-            ]
+            "landSwarm": "SPECIES_RATTATA"
         },
         {
             "map": "D17R0109",
@@ -7811,12 +7670,7 @@
                 "SPECIES_CHATOT",
                 "SPECIES_MEDITITE"
             ],
-            "swarm": [
-                "SPECIES_RATTATA",
-                "SPECIES_NONE",
-                "SPECIES_NONE",
-                "SPECIES_NONE"
-            ]
+            "landSwarm": "SPECIES_RATTATA"
         },
         {
             "map": "R38",
@@ -7981,12 +7835,7 @@
                 "SPECIES_SHINX",
                 "SPECIES_SHINX"
             ],
-            "swarm": [
-                "SPECIES_SNUBBULL",
-                "SPECIES_NONE",
-                "SPECIES_NONE",
-                "SPECIES_NONE"
-            ]
+            "landSwarm": "SPECIES_SNUBBULL"
         },
         {
             "map": "R39",
@@ -8151,15 +8000,10 @@
                 "SPECIES_SHINX",
                 "SPECIES_SHINX"
             ],
-            "swarm": [
-                {
-                    "HEARTGOLD": "SPECIES_RATTATA",
-                    "SOULSILVER": "SPECIES_MEOWTH"
-                },
-                "SPECIES_NONE",
-                "SPECIES_NONE",
-                "SPECIES_NONE"
-            ]
+            "landSwarm": {
+                "HEARTGOLD": "SPECIES_RATTATA",
+                "SOULSILVER": "SPECIES_MEOWTH"
+            }
         },
         {
             "map": "T26",
@@ -8335,12 +8179,9 @@
             },
             "hoenn": [],
             "sinnoh": [],
-            "swarm": [
-                "SPECIES_NONE",
-                "SPECIES_TENTACOOL",
-                "SPECIES_STARYU",
-                "SPECIES_MAGIKARP"
-            ]
+            "surfSwarm": "SPECIES_TENTACOOL",
+            "nightFish": "SPECIES_STARYU",
+            "fishSwarm": "SPECIES_MAGIKARP"
         },
         {
             "map": "W40",
@@ -8516,12 +8357,9 @@
             },
             "hoenn": [],
             "sinnoh": [],
-            "swarm": [
-                "SPECIES_NONE",
-                "SPECIES_TENTACOOL",
-                "SPECIES_STARYU",
-                "SPECIES_MAGIKARP"
-            ]
+            "surfSwarm": "SPECIES_TENTACOOL",
+            "nightFish": "SPECIES_STARYU",
+            "fishSwarm": "SPECIES_MAGIKARP"
         },
         {
             "map": "W41",
@@ -8715,12 +8553,9 @@
             },
             "hoenn": [],
             "sinnoh": [],
-            "swarm": [
-                "SPECIES_NONE",
-                "SPECIES_TENTACOOL",
-                "SPECIES_SHELLDER",
-                "SPECIES_MAGIKARP"
-            ]
+            "surfSwarm": "SPECIES_TENTACOOL",
+            "nightFish": "SPECIES_SHELLDER",
+            "fishSwarm": "SPECIES_MAGIKARP"
         },
         {
             "map": "D40R0101",
@@ -8999,12 +8834,10 @@
                 "SPECIES_BRONZOR",
                 "SPECIES_CHINGLING"
             ],
-            "swarm": [
-                "SPECIES_KRABBY",
-                "SPECIES_TENTACOOL",
-                "SPECIES_HORSEA",
-                "SPECIES_MAGIKARP"
-            ]
+            "landSwarm": "SPECIES_KRABBY",
+            "surfSwarm": "SPECIES_TENTACOOL",
+            "nightFish": "SPECIES_HORSEA",
+            "fishSwarm": "SPECIES_MAGIKARP"
         },
         {
             "map": "D40R0102",
@@ -9139,12 +8972,7 @@
                 "SPECIES_BRONZOR",
                 "SPECIES_CHINGLING"
             ],
-            "swarm": [
-                "SPECIES_KRABBY",
-                "SPECIES_NONE",
-                "SPECIES_NONE",
-                "SPECIES_NONE"
-            ]
+            "landSwarm": "SPECIES_KRABBY"
         },
         {
             "map": "UNUSED_045",
@@ -9175,13 +9003,7 @@
                 }
             },
             "hoenn": [],
-            "sinnoh": [],
-            "swarm": [
-                "SPECIES_NONE",
-                "SPECIES_NONE",
-                "SPECIES_NONE",
-                "SPECIES_NONE"
-            ]
+            "sinnoh": []
         },
         {
             "map": "D40R0104",
@@ -9460,12 +9282,10 @@
                 "SPECIES_BRONZOR",
                 "SPECIES_CHINGLING"
             ],
-            "swarm": [
-                "SPECIES_KRABBY",
-                "SPECIES_HORSEA",
-                "SPECIES_HORSEA",
-                "SPECIES_MAGIKARP"
-            ]
+            "landSwarm": "SPECIES_KRABBY",
+            "surfSwarm": "SPECIES_HORSEA",
+            "nightFish": "SPECIES_HORSEA",
+            "fishSwarm": "SPECIES_MAGIKARP"
         },
         {
             "map": "UNUSED_047",
@@ -9496,13 +9316,7 @@
                 }
             },
             "hoenn": [],
-            "sinnoh": [],
-            "swarm": [
-                "SPECIES_NONE",
-                "SPECIES_NONE",
-                "SPECIES_NONE",
-                "SPECIES_NONE"
-            ]
+            "sinnoh": []
         },
         {
             "map": "D40R0106",
@@ -9637,12 +9451,7 @@
                 "SPECIES_BRONZOR",
                 "SPECIES_CHINGLING"
             ],
-            "swarm": [
-                "SPECIES_KRABBY",
-                "SPECIES_NONE",
-                "SPECIES_NONE",
-                "SPECIES_NONE"
-            ]
+            "landSwarm": "SPECIES_KRABBY"
         },
         {
             "map": "UNUSED_049",
@@ -9673,13 +9482,7 @@
                 }
             },
             "hoenn": [],
-            "sinnoh": [],
-            "swarm": [
-                "SPECIES_NONE",
-                "SPECIES_NONE",
-                "SPECIES_NONE",
-                "SPECIES_NONE"
-            ]
+            "sinnoh": []
         },
         {
             "map": "UNUSED_050",
@@ -9710,13 +9513,7 @@
                 }
             },
             "hoenn": [],
-            "sinnoh": [],
-            "swarm": [
-                "SPECIES_NONE",
-                "SPECIES_NONE",
-                "SPECIES_NONE",
-                "SPECIES_NONE"
-            ]
+            "sinnoh": []
         },
         {
             "map": "T24",
@@ -9907,12 +9704,9 @@
             },
             "hoenn": [],
             "sinnoh": [],
-            "swarm": [
-                "SPECIES_NONE",
-                "SPECIES_TENTACOOL",
-                "SPECIES_STARYU",
-                "SPECIES_MAGIKARP"
-            ]
+            "surfSwarm": "SPECIES_TENTACOOL",
+            "nightFish": "SPECIES_STARYU",
+            "fishSwarm": "SPECIES_MAGIKARP"
         },
         {
             "map": "R42",
@@ -10263,15 +10057,13 @@
                 "SPECIES_BUIZEL",
                 "SPECIES_BIDOOF"
             ],
-            "swarm": [
-                {
-                    "HEARTGOLD": "SPECIES_MANKEY",
-                    "SOULSILVER": "SPECIES_MAREEP"
-                },
-                "SPECIES_GOLDEEN",
-                "SPECIES_GOLDEEN",
-                "SPECIES_MAGIKARP"
-            ]
+            "landSwarm": {
+                "HEARTGOLD": "SPECIES_MANKEY",
+                "SOULSILVER": "SPECIES_MAREEP"
+            },
+            "surfSwarm": "SPECIES_GOLDEEN",
+            "nightFish": "SPECIES_GOLDEEN",
+            "fishSwarm": "SPECIES_MAGIKARP"
         },
         {
             "map": "D38R0101",
@@ -10550,12 +10342,10 @@
                 "SPECIES_BRONZOR",
                 "SPECIES_CHINGLING"
             ],
-            "swarm": [
-                "SPECIES_MARILL",
-                "SPECIES_GOLDEEN",
-                "SPECIES_GOLDEEN",
-                "SPECIES_MAGIKARP"
-            ]
+            "landSwarm": "SPECIES_MARILL",
+            "surfSwarm": "SPECIES_GOLDEEN",
+            "nightFish": "SPECIES_GOLDEEN",
+            "fishSwarm": "SPECIES_MAGIKARP"
         },
         {
             "map": "D38R0102",
@@ -10690,12 +10480,7 @@
                 "SPECIES_BRONZOR",
                 "SPECIES_CHINGLING"
             ],
-            "swarm": [
-                "SPECIES_GEODUDE",
-                "SPECIES_NONE",
-                "SPECIES_NONE",
-                "SPECIES_NONE"
-            ]
+            "landSwarm": "SPECIES_GEODUDE"
         },
         {
             "map": "D38R0103",
@@ -10974,12 +10759,10 @@
                 "SPECIES_BRONZOR",
                 "SPECIES_CHINGLING"
             ],
-            "swarm": [
-                "SPECIES_GRAVELER",
-                "SPECIES_GOLDEEN",
-                "SPECIES_GOLDEEN",
-                "SPECIES_MAGIKARP"
-            ]
+            "landSwarm": "SPECIES_GRAVELER",
+            "surfSwarm": "SPECIES_GOLDEEN",
+            "nightFish": "SPECIES_GOLDEEN",
+            "fishSwarm": "SPECIES_MAGIKARP"
         },
         {
             "map": "D38R0104",
@@ -11258,12 +11041,10 @@
                 "SPECIES_BRONZOR",
                 "SPECIES_CHINGLING"
             ],
-            "swarm": [
-                "SPECIES_ZUBAT",
-                "SPECIES_GOLDEEN",
-                "SPECIES_GOLDEEN",
-                "SPECIES_MAGIKARP"
-            ]
+            "landSwarm": "SPECIES_ZUBAT",
+            "surfSwarm": "SPECIES_GOLDEEN",
+            "nightFish": "SPECIES_GOLDEEN",
+            "fishSwarm": "SPECIES_MAGIKARP"
         },
         {
             "map": "R43",
@@ -11542,12 +11323,10 @@
                 "SPECIES_BUIZEL",
                 "SPECIES_BIDOOF"
             ],
-            "swarm": [
-                "SPECIES_FLAAFFY",
-                "SPECIES_MAGIKARP",
-                "SPECIES_POLIWAG",
-                "SPECIES_MAGIKARP"
-            ]
+            "landSwarm": "SPECIES_FLAAFFY",
+            "surfSwarm": "SPECIES_MAGIKARP",
+            "nightFish": "SPECIES_POLIWAG",
+            "fishSwarm": "SPECIES_MAGIKARP"
         },
         {
             "map": "T29",
@@ -11723,12 +11502,9 @@
             },
             "hoenn": [],
             "sinnoh": [],
-            "swarm": [
-                "SPECIES_NONE",
-                "SPECIES_MAGIKARP",
-                "SPECIES_GYARADOS",
-                "SPECIES_MAGIKARP"
-            ]
+            "surfSwarm": "SPECIES_MAGIKARP",
+            "nightFish": "SPECIES_GYARADOS",
+            "fishSwarm": "SPECIES_MAGIKARP"
         },
         {
             "map": "R44",
@@ -12007,12 +11783,10 @@
                 "SPECIES_BUIZEL",
                 "SPECIES_BIDOOF"
             ],
-            "swarm": [
-                "SPECIES_TANGELA",
-                "SPECIES_POLIWAG",
-                "SPECIES_POLIWAG",
-                "SPECIES_REMORAID"
-            ]
+            "landSwarm": "SPECIES_TANGELA",
+            "surfSwarm": "SPECIES_POLIWAG",
+            "nightFish": "SPECIES_POLIWAG",
+            "fishSwarm": "SPECIES_REMORAID"
         },
         {
             "map": "D39R0101",
@@ -12165,12 +11939,7 @@
                 "SPECIES_BRONZOR",
                 "SPECIES_CHINGLING"
             ],
-            "swarm": [
-                "SPECIES_SWINUB",
-                "SPECIES_NONE",
-                "SPECIES_NONE",
-                "SPECIES_NONE"
-            ]
+            "landSwarm": "SPECIES_SWINUB"
         },
         {
             "map": "D39R0102",
@@ -12323,12 +12092,7 @@
                 "SPECIES_BRONZOR",
                 "SPECIES_CHINGLING"
             ],
-            "swarm": [
-                "SPECIES_SWINUB",
-                "SPECIES_NONE",
-                "SPECIES_NONE",
-                "SPECIES_NONE"
-            ]
+            "landSwarm": "SPECIES_SWINUB"
         },
         {
             "map": "D39R0103",
@@ -12481,12 +12245,7 @@
                 "SPECIES_BRONZOR",
                 "SPECIES_CHINGLING"
             ],
-            "swarm": [
-                "SPECIES_SWINUB",
-                "SPECIES_NONE",
-                "SPECIES_NONE",
-                "SPECIES_NONE"
-            ]
+            "landSwarm": "SPECIES_SWINUB"
         },
         {
             "map": "D39R0104",
@@ -12639,12 +12398,7 @@
                 "SPECIES_BRONZOR",
                 "SPECIES_CHINGLING"
             ],
-            "swarm": [
-                "SPECIES_SWINUB",
-                "SPECIES_NONE",
-                "SPECIES_NONE",
-                "SPECIES_NONE"
-            ]
+            "landSwarm": "SPECIES_SWINUB"
         },
         {
             "map": "UNUSED_064",
@@ -12675,13 +12429,7 @@
                 }
             },
             "hoenn": [],
-            "sinnoh": [],
-            "swarm": [
-                "SPECIES_NONE",
-                "SPECIES_NONE",
-                "SPECIES_NONE",
-                "SPECIES_NONE"
-            ]
+            "sinnoh": []
         },
         {
             "map": "T30",
@@ -12857,12 +12605,9 @@
             },
             "hoenn": [],
             "sinnoh": [],
-            "swarm": [
-                "SPECIES_NONE",
-                "SPECIES_MAGIKARP",
-                "SPECIES_POLIWAG",
-                "SPECIES_MAGIKARP"
-            ]
+            "surfSwarm": "SPECIES_MAGIKARP",
+            "nightFish": "SPECIES_POLIWAG",
+            "fishSwarm": "SPECIES_MAGIKARP"
         },
         {
             "map": "D44R0102",
@@ -13038,12 +12783,9 @@
             },
             "hoenn": [],
             "sinnoh": [],
-            "swarm": [
-                "SPECIES_NONE",
-                "SPECIES_MAGIKARP",
-                "SPECIES_DRATINI",
-                "SPECIES_MAGIKARP"
-            ]
+            "surfSwarm": "SPECIES_MAGIKARP",
+            "nightFish": "SPECIES_DRATINI",
+            "fishSwarm": "SPECIES_MAGIKARP"
         },
         {
             "map": "R45",
@@ -13376,12 +13118,10 @@
                 "SPECIES_BUIZEL",
                 "SPECIES_BIDOOF"
             ],
-            "swarm": [
-                "SPECIES_SWABLU",
-                "SPECIES_MAGIKARP",
-                "SPECIES_POLIWAG",
-                "SPECIES_MAGIKARP"
-            ]
+            "landSwarm": "SPECIES_SWABLU",
+            "surfSwarm": "SPECIES_MAGIKARP",
+            "nightFish": "SPECIES_POLIWAG",
+            "fishSwarm": "SPECIES_MAGIKARP"
         },
         {
             "map": "R46",
@@ -13516,12 +13256,7 @@
                 "SPECIES_SHINX",
                 "SPECIES_SHINX"
             ],
-            "swarm": [
-                "SPECIES_GEODUDE",
-                "SPECIES_NONE",
-                "SPECIES_NONE",
-                "SPECIES_NONE"
-            ]
+            "landSwarm": "SPECIES_GEODUDE"
         },
         {
             "map": "D42R0102",
@@ -13815,12 +13550,10 @@
                 "SPECIES_BRONZOR",
                 "SPECIES_CHINGLING"
             ],
-            "swarm": [
-                "SPECIES_DUNSPARCE",
-                "SPECIES_MAGIKARP",
-                "SPECIES_GOLDEEN",
-                "SPECIES_MAGIKARP"
-            ]
+            "landSwarm": "SPECIES_DUNSPARCE",
+            "surfSwarm": "SPECIES_MAGIKARP",
+            "nightFish": "SPECIES_GOLDEEN",
+            "fishSwarm": "SPECIES_MAGIKARP"
         },
         {
             "map": "D42R0101",
@@ -14099,12 +13832,10 @@
                 "SPECIES_BRONZOR",
                 "SPECIES_CHINGLING"
             ],
-            "swarm": [
-                "SPECIES_GEODUDE",
-                "SPECIES_MAGIKARP",
-                "SPECIES_GOLDEEN",
-                "SPECIES_MAGIKARP"
-            ]
+            "landSwarm": "SPECIES_GEODUDE",
+            "surfSwarm": "SPECIES_MAGIKARP",
+            "nightFish": "SPECIES_GOLDEEN",
+            "fishSwarm": "SPECIES_MAGIKARP"
         },
         {
             "map": "R47",
@@ -14383,12 +14114,10 @@
                 "SPECIES_BUIZEL",
                 "SPECIES_BIDOOF"
             ],
-            "swarm": [
-                "SPECIES_DITTO",
-                "SPECIES_TENTACOOL",
-                "SPECIES_SHELLDER",
-                "SPECIES_MAGIKARP"
-            ]
+            "landSwarm": "SPECIES_DITTO",
+            "surfSwarm": "SPECIES_TENTACOOL",
+            "nightFish": "SPECIES_SHELLDER",
+            "fishSwarm": "SPECIES_MAGIKARP"
         },
         {
             "map": "D02R0103",
@@ -14564,12 +14293,9 @@
             },
             "hoenn": [],
             "sinnoh": [],
-            "swarm": [
-                "SPECIES_NONE",
-                "SPECIES_POLIWAG",
-                "SPECIES_POLIWAG",
-                "SPECIES_MAGIKARP"
-            ]
+            "surfSwarm": "SPECIES_POLIWAG",
+            "nightFish": "SPECIES_POLIWAG",
+            "fishSwarm": "SPECIES_MAGIKARP"
         },
         {
             "map": "D02R0104",
@@ -14745,12 +14471,9 @@
             },
             "hoenn": [],
             "sinnoh": [],
-            "swarm": [
-                "SPECIES_NONE",
-                "SPECIES_POLIWAG",
-                "SPECIES_MAGIKARP",
-                "SPECIES_POLIWAG"
-            ]
+            "surfSwarm": "SPECIES_POLIWAG",
+            "nightFish": "SPECIES_MAGIKARP",
+            "fishSwarm": "SPECIES_POLIWAG"
         },
         {
             "map": "D11R0101",
@@ -14885,12 +14608,7 @@
                 "SPECIES_BRONZOR",
                 "SPECIES_CHINGLING"
             ],
-            "swarm": [
-                "SPECIES_ZUBAT",
-                "SPECIES_NONE",
-                "SPECIES_NONE",
-                "SPECIES_NONE"
-            ]
+            "landSwarm": "SPECIES_ZUBAT"
         },
         {
             "map": "D11R0102",
@@ -15025,12 +14743,7 @@
                 "SPECIES_BRONZOR",
                 "SPECIES_CHINGLING"
             ],
-            "swarm": [
-                "SPECIES_SEEL",
-                "SPECIES_NONE",
-                "SPECIES_NONE",
-                "SPECIES_NONE"
-            ]
+            "landSwarm": "SPECIES_SEEL"
         },
         {
             "map": "D11R0103",
@@ -15165,12 +14878,7 @@
                 "SPECIES_BRONZOR",
                 "SPECIES_CHINGLING"
             ],
-            "swarm": [
-                "SPECIES_SEEL",
-                "SPECIES_NONE",
-                "SPECIES_NONE",
-                "SPECIES_NONE"
-            ]
+            "landSwarm": "SPECIES_SEEL"
         },
         {
             "map": "D11R0104",
@@ -15305,12 +15013,7 @@
                 "SPECIES_BRONZOR",
                 "SPECIES_CHINGLING"
             ],
-            "swarm": [
-                "SPECIES_DEWGONG",
-                "SPECIES_NONE",
-                "SPECIES_NONE",
-                "SPECIES_NONE"
-            ]
+            "landSwarm": "SPECIES_DEWGONG"
         },
         {
             "map": "D11R0105",
@@ -15589,12 +15292,10 @@
                 "SPECIES_BRONZOR",
                 "SPECIES_CHINGLING"
             ],
-            "swarm": [
-                "SPECIES_SEEL",
-                "SPECIES_SEEL",
-                "SPECIES_HORSEA",
-                "SPECIES_MAGIKARP"
-            ]
+            "landSwarm": "SPECIES_SEEL",
+            "surfSwarm": "SPECIES_SEEL",
+            "nightFish": "SPECIES_HORSEA",
+            "fishSwarm": "SPECIES_MAGIKARP"
         },
         {
             "map": "D41R0105",
@@ -15891,12 +15592,10 @@
                 "SPECIES_BRONZOR",
                 "SPECIES_CHINGLING"
             ],
-            "swarm": [
-                "SPECIES_QUAGSIRE",
-                "SPECIES_SEAKING",
-                "SPECIES_GOLDEEN",
-                "SPECIES_MAGIKARP"
-            ]
+            "landSwarm": "SPECIES_QUAGSIRE",
+            "surfSwarm": "SPECIES_SEAKING",
+            "nightFish": "SPECIES_GOLDEEN",
+            "fishSwarm": "SPECIES_MAGIKARP"
         },
         {
             "map": "D41R0106",
@@ -16202,12 +15901,10 @@
                 "SPECIES_BRONZOR",
                 "SPECIES_CHINGLING"
             ],
-            "swarm": [
-                "SPECIES_QUAGSIRE",
-                "SPECIES_SEAKING",
-                "SPECIES_GOLDEEN",
-                "SPECIES_MAGIKARP"
-            ]
+            "landSwarm": "SPECIES_QUAGSIRE",
+            "surfSwarm": "SPECIES_SEAKING",
+            "nightFish": "SPECIES_GOLDEEN",
+            "fishSwarm": "SPECIES_MAGIKARP"
         },
         {
             "map": "D41R0107",
@@ -16504,12 +16201,10 @@
                 "SPECIES_BRONZOR",
                 "SPECIES_CHINGLING"
             ],
-            "swarm": [
-                "SPECIES_SNEASEL",
-                "SPECIES_SEAKING",
-                "SPECIES_GOLDEEN",
-                "SPECIES_MAGIKARP"
-            ]
+            "landSwarm": "SPECIES_SNEASEL",
+            "surfSwarm": "SPECIES_SEAKING",
+            "nightFish": "SPECIES_GOLDEEN",
+            "fishSwarm": "SPECIES_MAGIKARP"
         },
         {
             "map": "D48R0101",
@@ -16685,12 +16380,9 @@
             },
             "hoenn": [],
             "sinnoh": [],
-            "swarm": [
-                "SPECIES_NONE",
-                "SPECIES_WOOPER",
-                "SPECIES_MAGIKARP",
-                "SPECIES_MAGIKARP"
-            ]
+            "surfSwarm": "SPECIES_WOOPER",
+            "nightFish": "SPECIES_MAGIKARP",
+            "fishSwarm": "SPECIES_MAGIKARP"
         },
         {
             "map": "D50R0101",
@@ -16840,12 +16532,7 @@
                 "SPECIES_BRONZOR",
                 "SPECIES_CHINGLING"
             ],
-            "swarm": [
-                "SPECIES_GOLBAT",
-                "SPECIES_NONE",
-                "SPECIES_NONE",
-                "SPECIES_NONE"
-            ]
+            "landSwarm": "SPECIES_GOLBAT"
         },
         {
             "map": "D17R0112",
@@ -16980,12 +16667,7 @@
                 "SPECIES_CHATOT",
                 "SPECIES_MEDITITE"
             ],
-            "swarm": [
-                "SPECIES_RATTATA",
-                "SPECIES_NONE",
-                "SPECIES_NONE",
-                "SPECIES_NONE"
-            ]
+            "landSwarm": "SPECIES_RATTATA"
         },
         {
             "map": "T31",
@@ -17282,12 +16964,10 @@
                 "SPECIES_BUIZEL",
                 "SPECIES_BIDOOF"
             ],
-            "swarm": [
-                "SPECIES_TANGELA",
-                "SPECIES_POLIWHIRL",
-                "SPECIES_POLIWAG",
-                "SPECIES_MAGIKARP"
-            ]
+            "landSwarm": "SPECIES_TANGELA",
+            "surfSwarm": "SPECIES_POLIWHIRL",
+            "nightFish": "SPECIES_POLIWAG",
+            "fishSwarm": "SPECIES_MAGIKARP"
         },
         {
             "map": "D41R0101",
@@ -17593,12 +17273,10 @@
                 "SPECIES_BRONZOR",
                 "SPECIES_CHINGLING"
             ],
-            "swarm": [
-                "SPECIES_ONIX",
-                "SPECIES_SEAKING",
-                "SPECIES_GYARADOS",
-                "SPECIES_MAGIKARP"
-            ]
+            "landSwarm": "SPECIES_ONIX",
+            "surfSwarm": "SPECIES_SEAKING",
+            "nightFish": "SPECIES_GYARADOS",
+            "fishSwarm": "SPECIES_MAGIKARP"
         },
         {
             "map": "D41R0103",
@@ -17760,12 +17438,7 @@
                 "SPECIES_BRONZOR",
                 "SPECIES_CHINGLING"
             ],
-            "swarm": [
-                "SPECIES_GOLBAT",
-                "SPECIES_NONE",
-                "SPECIES_NONE",
-                "SPECIES_NONE"
-            ]
+            "landSwarm": "SPECIES_GOLBAT"
         },
         {
             "map": "D41R0104",
@@ -17930,12 +17603,7 @@
                 "SPECIES_BRONZOR",
                 "SPECIES_CHINGLING"
             ],
-            "swarm": [
-                "SPECIES_QUAGSIRE",
-                "SPECIES_NONE",
-                "SPECIES_NONE",
-                "SPECIES_NONE"
-            ]
+            "landSwarm": "SPECIES_QUAGSIRE"
         },
         {
             "map": "D41R0102",
@@ -18232,12 +17900,10 @@
                 "SPECIES_BRONZOR",
                 "SPECIES_CHINGLING"
             ],
-            "swarm": [
-                "SPECIES_SNEASEL",
-                "SPECIES_SEAKING",
-                "SPECIES_GOLDEEN",
-                "SPECIES_MAGIKARP"
-            ]
+            "landSwarm": "SPECIES_SNEASEL",
+            "surfSwarm": "SPECIES_SEAKING",
+            "nightFish": "SPECIES_GOLDEEN",
+            "fishSwarm": "SPECIES_MAGIKARP"
         },
         {
             "map": "090",
@@ -18268,13 +17934,7 @@
                 }
             },
             "hoenn": [],
-            "sinnoh": [],
-            "swarm": [
-                "SPECIES_NONE",
-                "SPECIES_NONE",
-                "SPECIES_NONE",
-                "SPECIES_NONE"
-            ]
+            "sinnoh": []
         },
         {
             "map": "D47R0102",
@@ -18553,12 +18213,10 @@
                 "SPECIES_BIDOOF",
                 "SPECIES_BIDOOF"
             ],
-            "swarm": [
-                "SPECIES_RATTATA",
-                "SPECIES_MAGIKARP",
-                "SPECIES_GOLDEEN",
-                "SPECIES_GOLDEEN"
-            ]
+            "landSwarm": "SPECIES_RATTATA",
+            "surfSwarm": "SPECIES_MAGIKARP",
+            "nightFish": "SPECIES_GOLDEEN",
+            "fishSwarm": "SPECIES_GOLDEEN"
         },
         {
             "map": "R12",
@@ -18734,12 +18392,9 @@
             },
             "hoenn": [],
             "sinnoh": [],
-            "swarm": [
-                "SPECIES_NONE",
-                "SPECIES_TENTACOOL",
-                "SPECIES_TENTACOOL",
-                "SPECIES_RELICANTH"
-            ]
+            "surfSwarm": "SPECIES_TENTACOOL",
+            "nightFish": "SPECIES_TENTACOOL",
+            "fishSwarm": "SPECIES_RELICANTH"
         },
         {
             "map": "W19",
@@ -18930,12 +18585,9 @@
             },
             "hoenn": [],
             "sinnoh": [],
-            "swarm": [
-                "SPECIES_NONE",
-                "SPECIES_CLAMPERL",
-                "SPECIES_STARYU",
-                "SPECIES_MAGIKARP"
-            ]
+            "surfSwarm": "SPECIES_CLAMPERL",
+            "nightFish": "SPECIES_STARYU",
+            "fishSwarm": "SPECIES_MAGIKARP"
         },
         {
             "map": "W20",
@@ -19111,12 +18763,9 @@
             },
             "hoenn": [],
             "sinnoh": [],
-            "swarm": [
-                "SPECIES_NONE",
-                "SPECIES_TENTACOOL",
-                "SPECIES_SHELLDER",
-                "SPECIES_MAGIKARP"
-            ]
+            "surfSwarm": "SPECIES_TENTACOOL",
+            "nightFish": "SPECIES_SHELLDER",
+            "fishSwarm": "SPECIES_MAGIKARP"
         },
         {
             "map": "T01",
@@ -19292,12 +18941,9 @@
             },
             "hoenn": [],
             "sinnoh": [],
-            "swarm": [
-                "SPECIES_NONE",
-                "SPECIES_TENTACOOL",
-                "SPECIES_SHELLDER",
-                "SPECIES_MAGIKARP"
-            ]
+            "surfSwarm": "SPECIES_TENTACOOL",
+            "nightFish": "SPECIES_SHELLDER",
+            "fishSwarm": "SPECIES_MAGIKARP"
         },
         {
             "map": "T02",
@@ -19473,12 +19119,9 @@
             },
             "hoenn": [],
             "sinnoh": [],
-            "swarm": [
-                "SPECIES_NONE",
-                "SPECIES_POLIWAG",
-                "SPECIES_POLIWAG",
-                "SPECIES_MAGIKARP"
-            ]
+            "surfSwarm": "SPECIES_POLIWAG",
+            "nightFish": "SPECIES_POLIWAG",
+            "fishSwarm": "SPECIES_MAGIKARP"
         },
         {
             "map": "T04",
@@ -19654,12 +19297,9 @@
             },
             "hoenn": [],
             "sinnoh": [],
-            "swarm": [
-                "SPECIES_NONE",
-                "SPECIES_GOLDEEN",
-                "SPECIES_GOLDEEN",
-                "SPECIES_MAGIKARP"
-            ]
+            "surfSwarm": "SPECIES_GOLDEEN",
+            "nightFish": "SPECIES_GOLDEEN",
+            "fishSwarm": "SPECIES_MAGIKARP"
         },
         {
             "map": "T06",
@@ -19850,12 +19490,9 @@
             },
             "hoenn": [],
             "sinnoh": [],
-            "swarm": [
-                "SPECIES_NONE",
-                "SPECIES_WINGULL",
-                "SPECIES_SHELLDER",
-                "SPECIES_MAGIKARP"
-            ]
+            "surfSwarm": "SPECIES_WINGULL",
+            "nightFish": "SPECIES_SHELLDER",
+            "fishSwarm": "SPECIES_MAGIKARP"
         },
         {
             "map": "T07",
@@ -19923,12 +19560,7 @@
             },
             "hoenn": [],
             "sinnoh": [],
-            "swarm": [
-                "SPECIES_NONE",
-                "SPECIES_GRIMER",
-                "SPECIES_NONE",
-                "SPECIES_NONE"
-            ]
+            "surfSwarm": "SPECIES_GRIMER"
         },
         {
             "map": "T08",
@@ -20104,12 +19736,9 @@
             },
             "hoenn": [],
             "sinnoh": [],
-            "swarm": [
-                "SPECIES_NONE",
-                "SPECIES_MAGIKARP",
-                "SPECIES_GYARADOS",
-                "SPECIES_MAGIKARP"
-            ]
+            "surfSwarm": "SPECIES_MAGIKARP",
+            "nightFish": "SPECIES_GYARADOS",
+            "fishSwarm": "SPECIES_MAGIKARP"
         },
         {
             "map": "T09",
@@ -20285,12 +19914,9 @@
             },
             "hoenn": [],
             "sinnoh": [],
-            "swarm": [
-                "SPECIES_NONE",
-                "SPECIES_TENTACOOL",
-                "SPECIES_SHELLDER",
-                "SPECIES_MAGIKARP"
-            ]
+            "surfSwarm": "SPECIES_TENTACOOL",
+            "nightFish": "SPECIES_SHELLDER",
+            "fishSwarm": "SPECIES_MAGIKARP"
         },
         {
             "map": "R48",
@@ -20449,12 +20075,7 @@
                 "SPECIES_SHINX",
                 "SPECIES_SHINX"
             ],
-            "swarm": [
-                "SPECIES_TAUROS",
-                "SPECIES_NONE",
-                "SPECIES_NONE",
-                "SPECIES_NONE"
-            ]
+            "landSwarm": "SPECIES_TAUROS"
         },
         {
             "map": "R26",
@@ -20775,12 +20396,10 @@
                 "SPECIES_BUIZEL",
                 "SPECIES_BIDOOF"
             ],
-            "swarm": [
-                "SPECIES_DODUO",
-                "SPECIES_TENTACOOL",
-                "SPECIES_SHELLDER",
-                "SPECIES_MAGIKARP"
-            ]
+            "landSwarm": "SPECIES_DODUO",
+            "surfSwarm": "SPECIES_TENTACOOL",
+            "nightFish": "SPECIES_SHELLDER",
+            "fishSwarm": "SPECIES_MAGIKARP"
         },
         {
             "map": "R27",
@@ -21119,12 +20738,10 @@
                 "SPECIES_BUIZEL",
                 "SPECIES_BIDOOF"
             ],
-            "swarm": [
-                "SPECIES_DODUO",
-                "SPECIES_LUVDISC",
-                "SPECIES_SHELLDER",
-                "SPECIES_MAGIKARP"
-            ]
+            "landSwarm": "SPECIES_DODUO",
+            "surfSwarm": "SPECIES_LUVDISC",
+            "nightFish": "SPECIES_SHELLDER",
+            "fishSwarm": "SPECIES_MAGIKARP"
         },
         {
             "map": "R28",
@@ -21421,12 +21038,10 @@
                 "SPECIES_BUIZEL",
                 "SPECIES_BIDOOF"
             ],
-            "swarm": [
-                "SPECIES_TANGELA",
-                "SPECIES_POLIWAG",
-                "SPECIES_POLIWAG",
-                "SPECIES_MAGIKARP"
-            ]
+            "landSwarm": "SPECIES_TANGELA",
+            "surfSwarm": "SPECIES_POLIWAG",
+            "nightFish": "SPECIES_POLIWAG",
+            "fishSwarm": "SPECIES_MAGIKARP"
         },
         {
             "map": "D02R0101",
@@ -21597,12 +21212,7 @@
                 "SPECIES_BRONZOR",
                 "SPECIES_CHINGLING"
             ],
-            "swarm": [
-                "SPECIES_ZUBAT",
-                "SPECIES_NONE",
-                "SPECIES_NONE",
-                "SPECIES_NONE"
-            ]
+            "landSwarm": "SPECIES_ZUBAT"
         },
         {
             "map": "D02R0102",
@@ -21773,12 +21383,7 @@
                 "SPECIES_BRONZOR",
                 "SPECIES_CHINGLING"
             ],
-            "swarm": [
-                "SPECIES_ZUBAT",
-                "SPECIES_NONE",
-                "SPECIES_NONE",
-                "SPECIES_NONE"
-            ]
+            "landSwarm": "SPECIES_ZUBAT"
         },
         {
             "map": "D05R0101",
@@ -21913,12 +21518,7 @@
                 "SPECIES_BRONZOR",
                 "SPECIES_CHINGLING"
             ],
-            "swarm": [
-                "SPECIES_CUBONE",
-                "SPECIES_NONE",
-                "SPECIES_NONE",
-                "SPECIES_NONE"
-            ]
+            "landSwarm": "SPECIES_CUBONE"
         },
         {
             "map": "D05R0102",
@@ -22068,12 +21668,7 @@
                 "SPECIES_BRONZOR",
                 "SPECIES_CHINGLING"
             ],
-            "swarm": [
-                "SPECIES_CUBONE",
-                "SPECIES_NONE",
-                "SPECIES_NONE",
-                "SPECIES_NONE"
-            ]
+            "landSwarm": "SPECIES_CUBONE"
         },
         {
             "map": "D43R0101",
@@ -22226,12 +21821,7 @@
                 "SPECIES_BRONZOR",
                 "SPECIES_CHINGLING"
             ],
-            "swarm": [
-                "SPECIES_GRAVELER",
-                "SPECIES_NONE",
-                "SPECIES_NONE",
-                "SPECIES_NONE"
-            ]
+            "landSwarm": "SPECIES_GRAVELER"
         },
         {
             "map": "R01",
@@ -22366,12 +21956,7 @@
                 "SPECIES_SHINX",
                 "SPECIES_SHINX"
             ],
-            "swarm": [
-                "SPECIES_POOCHYENA",
-                "SPECIES_NONE",
-                "SPECIES_NONE",
-                "SPECIES_NONE"
-            ]
+            "landSwarm": "SPECIES_POOCHYENA"
         },
         {
             "map": "R02",
@@ -22584,15 +22169,10 @@
                 "SPECIES_SHINX",
                 "SPECIES_SHINX"
             ],
-            "swarm": [
-                {
-                    "HEARTGOLD": "SPECIES_CATERPIE",
-                    "SOULSILVER": "SPECIES_WEEDLE"
-                },
-                "SPECIES_NONE",
-                "SPECIES_NONE",
-                "SPECIES_NONE"
-            ]
+            "landSwarm": {
+                "HEARTGOLD": "SPECIES_CATERPIE",
+                "SOULSILVER": "SPECIES_WEEDLE"
+            }
         },
         {
             "map": "R03",
@@ -22763,15 +22343,10 @@
                 "SPECIES_SHINX",
                 "SPECIES_SHINX"
             ],
-            "swarm": [
-                {
-                    "HEARTGOLD": "SPECIES_BALTOY",
-                    "SOULSILVER": "SPECIES_GULPIN"
-                },
-                "SPECIES_NONE",
-                "SPECIES_NONE",
-                "SPECIES_NONE"
-            ]
+            "landSwarm": {
+                "HEARTGOLD": "SPECIES_BALTOY",
+                "SOULSILVER": "SPECIES_GULPIN"
+            }
         },
         {
             "map": "R04",
@@ -23092,12 +22667,10 @@
                 "SPECIES_BUIZEL",
                 "SPECIES_BIDOOF"
             ],
-            "swarm": [
-                "SPECIES_SPEAROW",
-                "SPECIES_GOLDEEN",
-                "SPECIES_GOLDEEN",
-                "SPECIES_MAGIKARP"
-            ]
+            "landSwarm": "SPECIES_SPEAROW",
+            "surfSwarm": "SPECIES_GOLDEEN",
+            "nightFish": "SPECIES_GOLDEEN",
+            "fishSwarm": "SPECIES_MAGIKARP"
         },
         {
             "map": "R05",
@@ -23250,12 +22823,7 @@
                 "SPECIES_SHINX",
                 "SPECIES_SHINX"
             ],
-            "swarm": [
-                "SPECIES_PIDGEY",
-                "SPECIES_NONE",
-                "SPECIES_NONE",
-                "SPECIES_NONE"
-            ]
+            "landSwarm": "SPECIES_PIDGEY"
         },
         {
             "map": "R06",
@@ -23552,12 +23120,10 @@
                 "SPECIES_BUIZEL",
                 "SPECIES_BIDOOF"
             ],
-            "swarm": [
-                "SPECIES_PIDGEY",
-                "SPECIES_PSYDUCK",
-                "SPECIES_POLIWAG",
-                "SPECIES_MAGIKARP"
-            ]
+            "landSwarm": "SPECIES_PIDGEY",
+            "surfSwarm": "SPECIES_PSYDUCK",
+            "nightFish": "SPECIES_POLIWAG",
+            "fishSwarm": "SPECIES_MAGIKARP"
         },
         {
             "map": "R07",
@@ -23752,15 +23318,10 @@
                 "SPECIES_SHINX",
                 "SPECIES_SHINX"
             ],
-            "swarm": [
-                {
-                    "HEARTGOLD": "SPECIES_RATTATA",
-                    "SOULSILVER": "SPECIES_MEOWTH"
-                },
-                "SPECIES_NONE",
-                "SPECIES_NONE",
-                "SPECIES_NONE"
-            ]
+            "landSwarm": {
+                "HEARTGOLD": "SPECIES_RATTATA",
+                "SOULSILVER": "SPECIES_MEOWTH"
+            }
         },
         {
             "map": "R08",
@@ -23931,15 +23492,10 @@
                 "SPECIES_SHINX",
                 "SPECIES_SHINX"
             ],
-            "swarm": [
-                {
-                    "HEARTGOLD": "SPECIES_PIDGEOTTO",
-                    "SOULSILVER": "SPECIES_MEOWTH"
-                },
-                "SPECIES_NONE",
-                "SPECIES_NONE",
-                "SPECIES_NONE"
-            ]
+            "landSwarm": {
+                "HEARTGOLD": "SPECIES_PIDGEOTTO",
+                "SOULSILVER": "SPECIES_MEOWTH"
+            }
         },
         {
             "map": "R09",
@@ -24266,15 +23822,13 @@
                 "SPECIES_BUIZEL",
                 "SPECIES_BIDOOF"
             ],
-            "swarm": [
-                {
-                    "HEARTGOLD": "SPECIES_SABLEYE",
-                    "SOULSILVER": "SPECIES_MAWILE"
-                },
-                "SPECIES_GOLDEEN",
-                "SPECIES_GOLDEEN",
-                "SPECIES_MAGIKARP"
-            ]
+            "landSwarm": {
+                "HEARTGOLD": "SPECIES_SABLEYE",
+                "SOULSILVER": "SPECIES_MAWILE"
+            },
+            "surfSwarm": "SPECIES_GOLDEEN",
+            "nightFish": "SPECIES_GOLDEEN",
+            "fishSwarm": "SPECIES_MAGIKARP"
         },
         {
             "map": "R10",
@@ -24553,12 +24107,10 @@
                 "SPECIES_BUIZEL",
                 "SPECIES_BIDOOF"
             ],
-            "swarm": [
-                "SPECIES_SPEAROW",
-                "SPECIES_GOLDEEN",
-                "SPECIES_GOLDEEN",
-                "SPECIES_MAGIKARP"
-            ]
+            "landSwarm": "SPECIES_SPEAROW",
+            "surfSwarm": "SPECIES_GOLDEEN",
+            "nightFish": "SPECIES_GOLDEEN",
+            "fishSwarm": "SPECIES_MAGIKARP"
         },
         {
             "map": "R11",
@@ -24693,12 +24245,7 @@
                 "SPECIES_SHINX",
                 "SPECIES_SHINX"
             ],
-            "swarm": [
-                "SPECIES_DROWZEE",
-                "SPECIES_NONE",
-                "SPECIES_NONE",
-                "SPECIES_NONE"
-            ]
+            "landSwarm": "SPECIES_DROWZEE"
         },
         {
             "map": "R13",
@@ -25013,12 +24560,10 @@
                 "SPECIES_BUIZEL",
                 "SPECIES_BIDOOF"
             ],
-            "swarm": [
-                "SPECIES_CHANSEY",
-                "SPECIES_TENTACOOL",
-                "SPECIES_TENTACOOL",
-                "SPECIES_MAGIKARP"
-            ]
+            "landSwarm": "SPECIES_CHANSEY",
+            "surfSwarm": "SPECIES_TENTACOOL",
+            "nightFish": "SPECIES_TENTACOOL",
+            "fishSwarm": "SPECIES_MAGIKARP"
         },
         {
             "map": "R14",
@@ -25189,15 +24734,10 @@
                 "SPECIES_SHINX",
                 "SPECIES_SHINX"
             ],
-            "swarm": [
-                {
-                    "HEARTGOLD": "SPECIES_NIDORINA",
-                    "SOULSILVER": "SPECIES_NIDORINO"
-                },
-                "SPECIES_NONE",
-                "SPECIES_NONE",
-                "SPECIES_NONE"
-            ]
+            "landSwarm": {
+                "HEARTGOLD": "SPECIES_NIDORINA",
+                "SOULSILVER": "SPECIES_NIDORINO"
+            }
         },
         {
             "map": "R15",
@@ -25368,15 +24908,10 @@
                 "SPECIES_SHINX",
                 "SPECIES_SHINX"
             ],
-            "swarm": [
-                {
-                    "HEARTGOLD": "SPECIES_NIDORINA",
-                    "SOULSILVER": "SPECIES_NIDORINO"
-                },
-                "SPECIES_NONE",
-                "SPECIES_NONE",
-                "SPECIES_NONE"
-            ]
+            "landSwarm": {
+                "HEARTGOLD": "SPECIES_NIDORINA",
+                "SOULSILVER": "SPECIES_NIDORINO"
+            }
         },
         {
             "map": "R16R0301",
@@ -25511,12 +25046,7 @@
                 "SPECIES_SHINX",
                 "SPECIES_SHINX"
             ],
-            "swarm": [
-                "SPECIES_GRIMER",
-                "SPECIES_NONE",
-                "SPECIES_NONE",
-                "SPECIES_NONE"
-            ]
+            "landSwarm": "SPECIES_GRIMER"
         },
         {
             "map": "R17",
@@ -25651,12 +25181,7 @@
                 "SPECIES_SHINX",
                 "SPECIES_SHINX"
             ],
-            "swarm": [
-                "SPECIES_FEAROW",
-                "SPECIES_NONE",
-                "SPECIES_NONE",
-                "SPECIES_NONE"
-            ]
+            "landSwarm": "SPECIES_FEAROW"
         },
         {
             "map": "R18",
@@ -25791,12 +25316,7 @@
                 "SPECIES_SHINX",
                 "SPECIES_SHINX"
             ],
-            "swarm": [
-                "SPECIES_GRIMER",
-                "SPECIES_NONE",
-                "SPECIES_NONE",
-                "SPECIES_NONE"
-            ]
+            "landSwarm": "SPECIES_GRIMER"
         },
         {
             "map": "W21",
@@ -26075,12 +25595,10 @@
                 "SPECIES_BUIZEL",
                 "SPECIES_BIDOOF"
             ],
-            "swarm": [
-                "SPECIES_TANGELA",
-                "SPECIES_TENTACOOL",
-                "SPECIES_SHELLDER",
-                "SPECIES_MAGIKARP"
-            ]
+            "landSwarm": "SPECIES_TANGELA",
+            "surfSwarm": "SPECIES_TENTACOOL",
+            "nightFish": "SPECIES_SHELLDER",
+            "fishSwarm": "SPECIES_MAGIKARP"
         },
         {
             "map": "R22",
@@ -26359,12 +25877,10 @@
                 "SPECIES_BUIZEL",
                 "SPECIES_BIDOOF"
             ],
-            "swarm": [
-                "SPECIES_RATTATA",
-                "SPECIES_POLIWAG",
-                "SPECIES_POLIWAG",
-                "SPECIES_MAGIKARP"
-            ]
+            "landSwarm": "SPECIES_RATTATA",
+            "surfSwarm": "SPECIES_POLIWAG",
+            "nightFish": "SPECIES_POLIWAG",
+            "fishSwarm": "SPECIES_MAGIKARP"
         },
         {
             "map": "R24",
@@ -26643,12 +26159,10 @@
                 "SPECIES_BUIZEL",
                 "SPECIES_BIDOOF"
             ],
-            "swarm": [
-                "SPECIES_BELLSPROUT",
-                "SPECIES_GOLDEEN",
-                "SPECIES_GOLDEEN",
-                "SPECIES_MAGIKARP"
-            ]
+            "landSwarm": "SPECIES_BELLSPROUT",
+            "surfSwarm": "SPECIES_GOLDEEN",
+            "nightFish": "SPECIES_GOLDEEN",
+            "fishSwarm": "SPECIES_MAGIKARP"
         },
         {
             "map": "R25",
@@ -26927,12 +26441,10 @@
                 "SPECIES_BUIZEL",
                 "SPECIES_BIDOOF"
             ],
-            "swarm": [
-                "SPECIES_BUNEARY",
-                "SPECIES_GOLDEEN",
-                "SPECIES_GOLDEEN",
-                "SPECIES_MAGIKARP"
-            ]
+            "landSwarm": "SPECIES_BUNEARY",
+            "surfSwarm": "SPECIES_GOLDEEN",
+            "nightFish": "SPECIES_GOLDEEN",
+            "fishSwarm": "SPECIES_MAGIKARP"
         },
         {
             "map": "D45R0101",
@@ -27211,12 +26723,10 @@
                 "SPECIES_BRONZOR",
                 "SPECIES_CHINGLING"
             ],
-            "swarm": [
-                "SPECIES_ZUBAT",
-                "SPECIES_GOLDEEN",
-                "SPECIES_GOLDEEN",
-                "SPECIES_MAGIKARP"
-            ]
+            "landSwarm": "SPECIES_ZUBAT",
+            "surfSwarm": "SPECIES_GOLDEEN",
+            "nightFish": "SPECIES_GOLDEEN",
+            "fishSwarm": "SPECIES_MAGIKARP"
         },
         {
             "map": "D01R0101",
@@ -27351,12 +26861,7 @@
                 "SPECIES_BRONZOR",
                 "SPECIES_CHINGLING"
             ],
-            "swarm": [
-                "SPECIES_DIGLETT",
-                "SPECIES_NONE",
-                "SPECIES_NONE",
-                "SPECIES_NONE"
-            ]
+            "landSwarm": "SPECIES_DIGLETT"
         },
         {
             "map": "D43R0102",
@@ -27509,12 +27014,7 @@
                 "SPECIES_BRONZOR",
                 "SPECIES_CHINGLING"
             ],
-            "swarm": [
-                "SPECIES_GRAVELER",
-                "SPECIES_NONE",
-                "SPECIES_NONE",
-                "SPECIES_NONE"
-            ]
+            "landSwarm": "SPECIES_GRAVELER"
         },
         {
             "map": "D43R0103",
@@ -27682,12 +27182,7 @@
                 "SPECIES_BRONZOR",
                 "SPECIES_CHINGLING"
             ],
-            "swarm": [
-                "SPECIES_GRAVELER",
-                "SPECIES_NONE",
-                "SPECIES_NONE",
-                "SPECIES_NONE"
-            ]
+            "landSwarm": "SPECIES_GRAVELER"
         },
         {
             "map": "R02R0101",
@@ -27906,15 +27401,10 @@
                 "SPECIES_SHINX",
                 "SPECIES_SHINX"
             ],
-            "swarm": [
-                {
-                    "HEARTGOLD": "SPECIES_CATERPIE",
-                    "SOULSILVER": "SPECIES_WEEDLE"
-                },
-                "SPECIES_NONE",
-                "SPECIES_NONE",
-                "SPECIES_NONE"
-            ]
+            "landSwarm": {
+                "HEARTGOLD": "SPECIES_CATERPIE",
+                "SOULSILVER": "SPECIES_WEEDLE"
+            }
         },
         {
             "map": "D46R0101",
@@ -28085,12 +27575,7 @@
                 "SPECIES_BUDEW",
                 "SPECIES_CARNIVINE"
             ],
-            "swarm": [
-                "SPECIES_KRICKETOT",
-                "SPECIES_NONE",
-                "SPECIES_NONE",
-                "SPECIES_NONE"
-            ]
+            "landSwarm": "SPECIES_KRICKETOT"
         },
         {
             "map": "UNUSED_138",
@@ -28121,13 +27606,7 @@
                 }
             },
             "hoenn": [],
-            "sinnoh": [],
-            "swarm": [
-                "SPECIES_NONE",
-                "SPECIES_NONE",
-                "SPECIES_NONE",
-                "SPECIES_NONE"
-            ]
+            "sinnoh": []
         },
         {
             "map": "D03R0101",
@@ -28436,12 +27915,10 @@
                 "SPECIES_BRONZOR",
                 "SPECIES_CHINGLING"
             ],
-            "swarm": [
-                "SPECIES_GOLBAT",
-                "SPECIES_POLIWAG",
-                "SPECIES_POLIWAG",
-                "SPECIES_MAGIKARP"
-            ]
+            "landSwarm": "SPECIES_GOLBAT",
+            "surfSwarm": "SPECIES_POLIWAG",
+            "nightFish": "SPECIES_POLIWAG",
+            "fishSwarm": "SPECIES_MAGIKARP"
         },
         {
             "map": "D03R0102",
@@ -28720,12 +28197,10 @@
                 "SPECIES_BRONZOR",
                 "SPECIES_CHINGLING"
             ],
-            "swarm": [
-                "SPECIES_KADABRA",
-                "SPECIES_POLIWAG",
-                "SPECIES_POLIWAG",
-                "SPECIES_MAGIKARP"
-            ]
+            "landSwarm": "SPECIES_KADABRA",
+            "surfSwarm": "SPECIES_POLIWAG",
+            "nightFish": "SPECIES_POLIWAG",
+            "fishSwarm": "SPECIES_MAGIKARP"
         },
         {
             "map": "D03R0103",
@@ -29019,12 +28494,10 @@
                 "SPECIES_BRONZOR",
                 "SPECIES_CHINGLING"
             ],
-            "swarm": [
-                "SPECIES_KADABRA",
-                "SPECIES_POLIWAG",
-                "SPECIES_POLIWAG",
-                "SPECIES_MAGIKARP"
-            ]
+            "landSwarm": "SPECIES_KADABRA",
+            "surfSwarm": "SPECIES_POLIWAG",
+            "nightFish": "SPECIES_POLIWAG",
+            "fishSwarm": "SPECIES_MAGIKARP"
         }
     ]
 }

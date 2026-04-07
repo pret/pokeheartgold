@@ -57,7 +57,7 @@ _00C1:
 
 _00DB:
 	npc_msg msg_0212_HIROBA_00000
-	wait_button
+	wait_ab_press
 	closemsg
 	apply_movement obj_player, _0188
 	apply_movement obj_HIROBA_wifisf, _0244

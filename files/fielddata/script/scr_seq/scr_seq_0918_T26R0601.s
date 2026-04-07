@@ -26,18 +26,18 @@ scr_seq_T26R0601_000:
 _0040:
 	goto_if_no_item_space ITEM_GOOD_ROD, 1, _0084
 	npc_msg msg_0610_T26R0601_00001
-	wait_button_or_walk_away
+	wait_button
 	callstd std_give_item_verbose
 	setflag FLAG_GOT_GOOD_ROD
 	npc_msg msg_0610_T26R0601_00003
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _0079:
 	npc_msg msg_0610_T26R0601_00004
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -50,7 +50,7 @@ _0084:
 
 _008E:
 	npc_msg msg_0610_T26R0601_00005
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

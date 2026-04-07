@@ -56,7 +56,7 @@ PGPHONE_GRA_FILES := \
 	pgphone_gra_00000051.NSCR
 
 $(PGPHONE_GRA_NARC): $(addprefix $(PGPHONE_GRA_DIR)/,$(PGPHONE_GRA_FILES))
-	$(KNARC) -p $@ -d $(PGPHONE_GRA_DIR) -i
+	$(NARC) -cf $@ --index-namespace $(PGPHONE_GRA_DIR)
 
 CLOBBER_SIZE_VERSION101_NCGR_FILES += \
 	$(PGPHONE_GRA_DIR)/pgphone_gra_00000001.NCGR

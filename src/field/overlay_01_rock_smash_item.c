@@ -5,12 +5,13 @@
 #include "constants/abilities.h"
 #include "constants/items.h"
 
+#include "field/encounter_check.h"
+
 #include "encounter.h"
 #include "filesystem.h"
 #include "follow_mon.h"
 #include "math_util.h"
 #include "overlay_01_022001E4.h"
-#include "overlay_02.h"
 #include "script.h"
 #include "task.h"
 #include "unk_020689C8.h"
@@ -108,7 +109,7 @@ static BOOL Task_RockSmashItemCheck(TaskManager *taskman) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskman);
     RockSmashItemCheckWork *env = TaskManager_GetEnvironment(taskman);
 
-    if (ov02_022470A0(fieldSystem, &setup)) {
+    if (FieldSystem_PerformRockSmashEncounterCheck(fieldSystem, &setup)) {
         *env->itemFound = FALSE;
         *env->item = ITEM_NONE;
         Heap_Free(env);

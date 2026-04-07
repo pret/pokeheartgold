@@ -20,14 +20,14 @@ scr_seq_T11R0801_001:
 	faceplayer
 	goto_if_set FLAG_RESTORED_POWER, _003F
 	npc_msg msg_0540_T11R0801_00001
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _003F:
 	npc_msg msg_0540_T11R0801_00002
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -39,7 +39,7 @@ scr_seq_T11R0801_002:
 	play_cry SPECIES_BLISSEY, 0
 	npc_msg msg_0540_T11R0801_00003
 	wait_cry
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

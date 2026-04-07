@@ -119,7 +119,7 @@ _01EF:
 	goto_if_ne _0579
 _021E:
 	npc_msg msg_0204_00006
-	wait_button
+	wait_ab_press
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	closemsg
@@ -134,12 +134,12 @@ _021E:
 	scrcmd_465 2, 0, 0
 	scrcmd_465 3, 0, 1
 	npc_msg msg_0204_00007
-	wait_button_or_walk_away
+	wait_button
 	goto _057E
 
 _027C:
 	npc_msg msg_0204_00027
-	wait_button_or_walk_away
+	wait_button
 	goto _057E
 
 _0287:
@@ -265,7 +265,7 @@ _0528:
 	buffer_players_name 0
 	scrcmd_465 2, VAR_SPECIAL_x8004, 1
 	npc_msg msg_0204_00009
-	wait_button_or_walk_away
+	wait_button
 	goto _057E
 
 _056C:
@@ -277,7 +277,7 @@ _0577:
 	touchscreen_menu_show
 _0579:
 	npc_msg msg_0204_00004
-	wait_button_or_walk_away
+	wait_button
 _057E:
 	closemsg
 	releaseall

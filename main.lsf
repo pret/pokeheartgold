@@ -202,7 +202,7 @@ Static main
     Object src/game_clear.o
     Object src/field_warp_tasks.o
     Object src/script_pokemon_util.o
-    Object asm/unk_02054514.o
+    Object src/terrain_attributes.o
     Object asm/unk_02054648.o
     Object asm/unk_02054E00.o
     Object asm/unk_020551B8.o
@@ -304,7 +304,7 @@ Static main
     Object src/unk_02091278.o
     Object src/unk_020912AC.o
     Object src/dex_mon_measures.o
-    Object asm/unk_02091564.o
+    Object src/unk_02091564.o
     Object asm/unk_020915B0.o
     Object src/location_gmm_dat.o
     Object src/move_relearner.o
@@ -327,7 +327,7 @@ Static main
     Object src/error_message_reset.o
     Object src/sin_vcount.o
     Object asm/frontier.o
-    Object asm/unk_020968B0.o
+	Object src/unk_020968B0.o
     Object asm/unk_02096910.o
     Object asm/unk_02096C88.o
     Object asm/unk_02097024.o
@@ -493,7 +493,7 @@ Overlay field
     Object asm/overlay_01_021E8744.o
     Object asm/overlay_01_021E90C0.o
     Object asm/overlay_01_021EA6C4.o
-    Object asm/overlay_01_021EA824.o
+    Object src/overlay_01_021EA824.o
     Object asm/overlay_01_021EA8E0.o
     Object asm/overlay_01_021EABA8.o
     Object asm/overlay_01_021EAF00.o
@@ -568,6 +568,8 @@ Overlay OVY_2
 {
     After field
     Object asm/overlay_02_02245B80.o
+    Object src/field/encounter_check.o
+    Object asm/overlay_02_02248728.o
     Object src/field/legend_cutscene_camera.o
     Object src/field/overlay_2_gear_phone.o
     Object src/field/event_cutscene_shaymin.o
@@ -643,7 +645,7 @@ Overlay OVY_12
 Overlay OVY_13
 {
     After OVY_0
-    Object asm/overlay_13_thumb_1.o
+    Object src/overlay_13_thumb_1.o
     Object lib/NitroSDK/asm/mb.o
     Object asm/overlay_13_thumb_2.o
     Object lib/NitroDWC/asm/overlay_13_arm_2.o
@@ -812,6 +814,7 @@ Overlay OVY_44
 {
     After OVY_42
     Object asm/overlay_44.o
+    Object src/overlay_44_02235340.o
 }
 Overlay OVY_45
 {
@@ -1118,6 +1121,7 @@ Overlay OVY_96
     After main
     Object src/pokeathlon/pokeathlon_course.o
     Object asm/overlay_96.o
+    Object src/pokeathlon/pokeathlon_data.o
 }
 Overlay OVY_97
 {

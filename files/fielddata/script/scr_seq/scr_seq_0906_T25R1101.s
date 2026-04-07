@@ -114,14 +114,14 @@ _013D:
 
 _0177:
 	npc_msg msg_0599_T25R1101_00025
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	setvar VAR_TEMP_x4001, 1
 	return
 
 _0186:
 	npc_msg msg_0599_T25R1101_00026
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	script_overlay_cmd 3, 1
 	setvar VAR_TEMP_x4001, 1
@@ -472,7 +472,7 @@ scr_seq_T25R1101_000:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _069B
 	npc_msg msg_0599_T25R1101_00001
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -540,7 +540,7 @@ _0796:
 _07A1:
 	npc_msg msg_0599_T25R1101_00004
 _07A4:
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	touchscreen_menu_show
 	scrcmd_117
@@ -928,7 +928,7 @@ _0FB7:
 	compare VAR_SPECIAL_x8005, 6
 	goto_if_ne _0FD5
 	npc_msg msg_0599_T25R1101_00013
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	goto _1208
 
@@ -1093,7 +1093,7 @@ _11F3:
 
 _11F9:
 	npc_msg msg_0599_T25R1101_00008
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	goto _1208
 	end
@@ -1124,7 +1124,7 @@ scr_seq_T25R1101_005:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _12DE
 	npc_msg msg_0599_T25R1101_00031
-	wait_button_or_walk_away
+	wait_button
 	npc_msg msg_0599_T25R1101_00028
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_RESULT
@@ -1132,7 +1132,7 @@ scr_seq_T25R1101_005:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _12DE
 	npc_msg msg_0599_T25R1101_00032
-	wait_button_or_walk_away
+	wait_button
 	npc_msg msg_0599_T25R1101_00028
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_RESULT
@@ -1140,7 +1140,7 @@ scr_seq_T25R1101_005:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _12DE
 	npc_msg msg_0599_T25R1101_00033
-	wait_button_or_walk_away
+	wait_button
 	npc_msg msg_0599_T25R1101_00028
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_RESULT
@@ -1148,7 +1148,7 @@ scr_seq_T25R1101_005:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _12DE
 	npc_msg msg_0599_T25R1101_00034
-	wait_button_or_walk_away
+	wait_button
 	npc_msg msg_0599_T25R1101_00028
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_RESULT
@@ -1156,16 +1156,16 @@ scr_seq_T25R1101_005:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _12DE
 	npc_msg msg_0599_T25R1101_00035
-	wait_button_or_walk_away
+	wait_button
 	npc_msg msg_0599_T25R1101_00030
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _12DE:
 	npc_msg msg_0599_T25R1101_00029
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

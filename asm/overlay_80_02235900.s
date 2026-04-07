@@ -10,7 +10,7 @@ FrtCmd_170: ; 0x02235900
 	add r4, r0, #0
 	ldr r0, [r4]
 	ldr r0, [r0]
-	bl Frontier_GetLaunchParam
+	bl Frontier_GetLaunchArgs
 	ldr r0, [r0, #8]
 	bl ov80_02235FC8
 	add r1, r0, #0
@@ -196,7 +196,7 @@ FrtCmd_175: ; 0x02235A44
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl Frontier_GetLaunchParam
+	bl Frontier_GetLaunchArgs
 	ldr r1, [r0, #0x24]
 	add r0, r4, #0
 	add r0, #0x98
@@ -314,7 +314,7 @@ FrtCmd_178: ; 0x02235B20
 	add r4, r0, #0
 	ldr r0, [r7]
 	ldr r0, [r0]
-	bl Frontier_GetLaunchParam
+	bl Frontier_GetLaunchArgs
 	add r7, r0, #0
 	ldr r0, [sp]
 	cmp r0, #0xd
@@ -717,7 +717,7 @@ FrtCmd_179: ; 0x02235E84
 	add r5, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl Frontier_GetLaunchParam
+	bl Frontier_GetLaunchArgs
 	add r7, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0]

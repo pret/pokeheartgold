@@ -56,14 +56,14 @@ _00AF:
 	callstd std_give_item_verbose
 	setflag FLAG_GOT_TM01_FROM_CHUCK
 	npc_msg msg_0574_T24GYM0101_00006
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _00E3:
 	npc_msg msg_0574_T24GYM0101_00007
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -71,7 +71,7 @@ _00E3:
 _00EE:
 	goto_if_unset FLAG_GOT_TM01_FROM_CHUCK, _00AF
 	npc_msg msg_0574_T24GYM0101_00008
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -83,7 +83,7 @@ _0104:
 
 _010A:
 	npc_msg msg_0574_T24GYM0101_00009
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -95,7 +95,7 @@ scr_seq_T24GYM0101_002:
 	compare VAR_TEMP_x4000, 0
 	goto_if_eq _0135
 	npc_msg msg_0574_T24GYM0101_00012
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -137,7 +137,7 @@ scr_seq_T24GYM0101_003:
 _019A:
 	npc_msg msg_0574_T24GYM0101_00014
 _019D:
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

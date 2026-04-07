@@ -73,7 +73,7 @@ _00A6:
 
 _00D4:
 	npc_msg msg_0526_T10R0501_00002
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

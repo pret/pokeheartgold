@@ -255,7 +255,7 @@ typedef struct BattleMon {
     u32 otid;
     u16 item;
     u16 unk76;
-    u8 unk78;
+    u8 hitCount;
     u8 msgFlag;
     u8 gender : 4;
     u8 otGender : 4;

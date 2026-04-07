@@ -315,11 +315,11 @@ _02096800: .word FS_OVERLAY_ID(OVY_81)
 _02096804: .word FS_OVERLAY_ID(OVY_42)
 	thumb_func_end Frontier_UnloadOverlays
 
-	thumb_func_start Frontier_GetLaunchParam
-Frontier_GetLaunchParam: ; 0x02096808
+	thumb_func_start Frontier_GetLaunchArgs
+Frontier_GetLaunchArgs: ; 0x02096808
 	ldr r0, [r0]
 	bx lr
-	thumb_func_end Frontier_GetLaunchParam
+	thumb_func_end Frontier_GetLaunchArgs
 
 	thumb_func_start sub_0209680C
 sub_0209680C: ; 0x0209680C

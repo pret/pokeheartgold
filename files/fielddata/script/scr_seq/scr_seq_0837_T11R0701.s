@@ -86,7 +86,7 @@ scr_seq_T11R0701_001:
 	setflag FLAG_GOT_UPGRADE_FROM_SAFFRON_CITY_GUARD
 _015A:
 	npc_msg msg_0537_T11R0701_00002
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -205,14 +205,14 @@ _031F:
 
 _033B:
 	npc_msg msg_0537_T11R0701_00023
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _0346:
 	npc_msg msg_0537_T11R0701_00028
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -342,7 +342,7 @@ _04CE:
 
 _04EA:
 	npc_msg msg_0537_T11R0701_00010
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -350,7 +350,7 @@ _04EA:
 _04F5:
 	npc_trade_end
 	npc_msg msg_0537_T11R0701_00011
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -376,7 +376,7 @@ scr_seq_T11R0701_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0537_T11R0701_00003
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end

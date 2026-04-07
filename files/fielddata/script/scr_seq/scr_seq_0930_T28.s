@@ -49,13 +49,13 @@ _009D:
 	callstd std_give_item_verbose
 	submoneyimmediate 200
 	npc_msg msg_0620_T28_00005
-	wait_button_or_walk_away
+	wait_button
 	setflag FLAG_GOT_RAGECANDYBAR
 	goto _014C
 
 _00EC:
 	npc_msg msg_0620_T28_00007
-	wait_button_or_walk_away
+	wait_button
 	goto _014C
 
 _00F7:
@@ -64,12 +64,12 @@ _00F7:
 
 _0101:
 	npc_msg msg_0620_T28_00009
-	wait_button_or_walk_away
+	wait_button
 	goto _014C
 
 _010C:
 	npc_msg msg_0620_T28_00001
-	wait_button_or_walk_away
+	wait_button
 	goto _014C
 
 _0117:
@@ -84,7 +84,7 @@ _0117:
 	goto_if_eq _0101
 _0147:
 	npc_msg msg_0620_T28_00004
-	wait_button_or_walk_away
+	wait_button
 _014C:
 	closemsg
 	releaseall
@@ -213,14 +213,14 @@ scr_seq_T28_002:
 	faceplayer
 	goto_if_set FLAG_GOT_RED_SCALE, _02FA
 	npc_msg msg_0620_T28_00014
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
 
 _02FA:
 	npc_msg msg_0620_T28_00015
-	wait_button_or_walk_away
+	wait_button
 	closemsg
 	releaseall
 	end
