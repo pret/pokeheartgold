@@ -44,92 +44,11 @@
 	.extern ov96_021E5FAC
 	.extern ov96_021E5FB0
 	.extern ov96_021E5FBC
-
-	thumb_func_start ov96_021E5FC8
-ov96_021E5FC8: ; 0x021E5FC8
-	push {r3, r4, r5, lr}
-	add r5, r0, #0
-	mov r0, #0xf
-	lsl r0, r0, #6
-	ldr r0, [r5, r0]
-	add r4, r1, #0
-	cmp r0, #1
-	bne _021E5FDC
-	bl GF_AssertFail
-_021E5FDC:
-	mov r0, #0xf
-	mov r1, #1
-	lsl r0, r0, #6
-	str r1, [r5, r0]
-	sub r0, #0xc
-	ldr r0, [r5, r0]
-	strb r4, [r0, #7]
-	pop {r3, r4, r5, pc}
-	thumb_func_end ov96_021E5FC8
-
-	thumb_func_start ov96_021E5FEC
-ov96_021E5FEC: ; 0x021E5FEC
-	push {r3, r4, r5, lr}
-	add r5, r0, #0
-	mov r0, #0xed
-	lsl r0, r0, #2
-	add r4, r1, #0
-	ldr r1, [r5, r0]
-	ldrb r1, [r1, #7]
-	cmp r1, r2
-	beq _021E6018
-	add r0, #0xc
-	ldr r0, [r5, r0]
-	cmp r0, #1
-	bne _021E600A
-	bl GF_AssertFail
-_021E600A:
-	mov r0, #0xf
-	mov r1, #1
-	lsl r0, r0, #6
-	str r1, [r5, r0]
-	sub r0, #0xc
-	ldr r0, [r5, r0]
-	strb r4, [r0, #7]
-_021E6018:
-	pop {r3, r4, r5, pc}
-	.balign 4, 0
-	thumb_func_end ov96_021E5FEC
-
-	thumb_func_start ov96_021E601C
-ov96_021E601C: ; 0x021E601C
-	mov r2, #0x7e
-	lsl r2, r2, #2
-	ldr r2, [r0, r2]
-	ldr r2, [r2, #4]
-	cmp r2, #1
-	bne _021E602E
-	mov r2, #0xee
-	lsl r2, r2, #2
-	str r1, [r0, r2]
-_021E602E:
-	bx lr
-	thumb_func_end ov96_021E601C
-
-	thumb_func_start ov96_021E6030
-ov96_021E6030: ; 0x021E6030
-	ldr r3, _021E6038 ; =Main_SetVBlankIntrCB
-	add r1, r0, #0
-	ldr r0, _021E603C ; =ov96_021E75BC
-	bx r3
-	.balign 4, 0
-_021E6038: .word Main_SetVBlankIntrCB
-_021E603C: .word ov96_021E75BC
-	thumb_func_end ov96_021E6030
-
-	thumb_func_start ov96_021E6040
-ov96_021E6040: ; 0x021E6040
-	ldr r1, _021E6048 ; =0x00000614
-	ldr r0, [r0, r1]
-	bx lr
-	nop
-_021E6048: .word 0x00000614
-	thumb_func_end ov96_021E6040
+	.extern ov96_021E5FC8
+	.extern ov96_021E5FEC
+	.extern ov96_021E601C
+	.extern ov96_021E6030
+	.extern PokeathlonCourse_GetGraphicsSystem
 
 	thumb_func_start ov96_021E604C
 ov96_021E604C: ; 0x021E604C
@@ -15839,7 +15758,7 @@ ov96_021ED728: ; 0x021ED728
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18
 	add r0, r5, #0
-	bl ov96_021E6040
+	bl PokeathlonCourse_GetGraphicsSystem
 	add r1, r4, #0
 	add r2, r6, #0
 	bl ov96_021E95D8
@@ -22158,7 +22077,7 @@ ov96_021F08F4: ; 0x021F08F4
 	add r5, r0, #0
 	bl PokeathlonCourse_GetHeapAllocPtr4
 	add r0, r5, #0
-	bl ov96_021E6040
+	bl PokeathlonCourse_GetGraphicsSystem
 	add r6, r0, #0
 	bl ov96_021E9510
 	mov r4, #0
@@ -31828,7 +31747,7 @@ ov96_021F54D4: ; 0x021F54D4
 	add r5, r0, #0
 	bl PokeathlonCourse_GetHeapAllocPtr4
 	add r0, r5, #0
-	bl ov96_021E6040
+	bl PokeathlonCourse_GetGraphicsSystem
 	add r6, r0, #0
 	bl ov96_021E9510
 	mov r4, #0
@@ -36537,7 +36456,7 @@ _021F7A04:
 	add r3, r1, #0
 	bl ov96_021EB5C8
 	add r0, r5, #0
-	bl ov96_021E6040
+	bl PokeathlonCourse_GetGraphicsSystem
 	add r7, r0, #0
 	bl ov96_021E9524
 	add r6, r0, #0
@@ -37103,7 +37022,7 @@ _021F7F0C:
 	add r5, sp, #0x1c
 _021F7F10:
 	add r0, r6, #0
-	bl ov96_021E6040
+	bl PokeathlonCourse_GetGraphicsSystem
 	lsl r1, r4, #0x18
 	lsr r1, r1, #0x18
 	bl ov96_021E94EC
@@ -37172,7 +37091,7 @@ _021F7F96:
 	bl ov96_021E5E44
 	add r4, r0, #0
 	add r0, r6, #0
-	bl ov96_021E6040
+	bl PokeathlonCourse_GetGraphicsSystem
 	add r1, r4, #0
 	add r2, r5, #0
 	bl ov96_021E95D8
@@ -37697,7 +37616,7 @@ ov96_021F8378: ; 0x021F8378
 	add r0, r1, #0
 	add r4, r2, #0
 	add r6, r3, #0
-	bl ov96_021E6040
+	bl PokeathlonCourse_GetGraphicsSystem
 	add r7, r0, #0
 	bl ov96_021E9524
 	add r2, r5, #0
@@ -40826,7 +40745,7 @@ ov96_021F9CC4: ; 0x021F9CC4
 	add r6, r0, #0
 	bl PokeathlonCourse_GetHeapAllocPtr4
 	add r0, r6, #0
-	bl ov96_021E6040
+	bl PokeathlonCourse_GetGraphicsSystem
 	str r0, [sp, #0x1c]
 	bl ov96_021E9510
 	mov r5, #0
@@ -46941,7 +46860,7 @@ ov96_021FCD84: ; 0x021FCD84
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x1c
 	add r5, r0, #0
-	bl ov96_021E6040
+	bl PokeathlonCourse_GetGraphicsSystem
 	add r6, r0, #0
 	bl ov96_021E9510
 	mov r4, #0
@@ -56719,7 +56638,7 @@ ov96_02201B34: ; 0x02201B34
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r5, r0, #0
-	bl ov96_021E6040
+	bl PokeathlonCourse_GetGraphicsSystem
 	add r6, r0, #0
 	bl ov96_021E9510
 	mov r4, #0
@@ -62893,7 +62812,7 @@ ov96_02204DF8: ; 0x02204DF8
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r5, r0, #0
-	bl ov96_021E6040
+	bl PokeathlonCourse_GetGraphicsSystem
 	add r6, r0, #0
 	bl ov96_021E9510
 	mov r4, #0
@@ -72231,7 +72150,7 @@ ov96_02209748: ; 0x02209748
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r5, r0, #0
-	bl ov96_021E6040
+	bl PokeathlonCourse_GetGraphicsSystem
 	add r6, r0, #0
 	bl ov96_021E9510
 	mov r4, #0
@@ -82350,7 +82269,7 @@ ov96_0220E60C: ; 0x0220E60C
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r5, r0, #0
-	bl ov96_021E6040
+	bl PokeathlonCourse_GetGraphicsSystem
 	add r6, r0, #0
 	bl ov96_021E9510
 	mov r4, #0
@@ -88489,7 +88408,7 @@ ov96_02211660: ; 0x02211660
 	add r5, r0, #0
 	bl PokeathlonCourse_GetHeapAllocPtr4
 	add r0, r5, #0
-	bl ov96_021E6040
+	bl PokeathlonCourse_GetGraphicsSystem
 	add r6, r0, #0
 	bl ov96_021E9510
 	mov r4, #0
@@ -97707,7 +97626,7 @@ ov96_02215CE8: ; 0x02215CE8
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r5, r0, #0
-	bl ov96_021E6040
+	bl PokeathlonCourse_GetGraphicsSystem
 	add r6, r0, #0
 	bl ov96_021E9510
 	mov r4, #0

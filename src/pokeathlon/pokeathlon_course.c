@@ -18,14 +18,7 @@ extern int ov97_0221E5D4(OverlayManager *man, int *state); // Main/Exec
 extern int ov97_0221E69C(OverlayManager *man, int *state); // Exit
 extern void sub_02037AC0(u8 param);
 extern BOOL sub_02037B38(u8 param);
-extern void *ov96_021E9A14(void);
-extern void ov96_021E87B4(int a0, void *a1, void *a2, int a3);
-extern u8 *ov96_021E8A20(void *ptr);
-extern void ov96_021E67AC(PokeathlonCourseData *data);
 extern BOOL GF_heap_c_dummy_return_true(enum HeapID heapId);
-extern void ov96_021E7F98(s32 frameCount, u32 maxValue, Pokeathlon_UnkSubStruct_B00 *result);
-extern void ov96_021E9320(void *ptr);
-extern void ov96_021E8810(void *ptr);
 
 // Data tables in assembly
 extern const OverlayManagerTemplate subOverlayTemplate;
@@ -74,7 +67,7 @@ BOOL PokeathlonCourse_Init(OverlayManager *manager, int *state) {
     PokeathlonCourse_InitStateInfo(&sPokeathlonStateInfoFuncTable, &data->stateInfo);
 
     data->stateInfo.stateIndex = 0;
-    data->courseState.argsPtr = (void **)&data->stateInfo;
+    data->courseState.argsPtr = &data->stateInfo;
     data->courseState.exitFlag = 0;
 
     PokeathlonCourse_InitPlayerProfiles(data);
@@ -486,4 +479,32 @@ void ov96_021E5FB0(PokeathlonCourseData *data, int index, u16 value) {
 
 u16 ov96_021E5FBC(PokeathlonCourseData *data, int index) {
     return data->field_5F0[index*2];
+}
+
+void ov96_021E5FC8(PokeathlonCourseData *data, u8 value) {
+    GF_ASSERT(data->courseState.exitFlag != 1);
+    data->courseState.exitFlag = 1;
+    data->courseState.argsPtr->field_07 = value;
+}
+
+void ov96_021E5FEC(PokeathlonCourseData *data, u8 value, u8 value2) {
+    if (data->courseState.argsPtr->field_07 != value2) {
+        GF_ASSERT(data->courseState.exitFlag != 1);
+        data->courseState.exitFlag = 1;
+        data->courseState.argsPtr->field_07 = value;
+    }
+}
+
+void ov96_021E601C(PokeathlonCourseData *data, u32 transitionType) {
+    if (data->args->mode == 1) {
+        data->courseState.transitionType = transitionType;
+    }
+}
+
+void ov96_021E6030(PokeathlonCourseData *data) {
+    Main_SetVBlankIntrCB(ov96_021E75BC, data);
+}
+
+void *PokeathlonCourse_GetGraphicsSystem(PokeathlonCourseData *data) {
+    return data->graphicsSystem;
 }

@@ -6,6 +6,7 @@
 #include "overlay_manager.h"
 #include "player_data.h"
 #include "save.h"
+#include "save_pokeathlon.h"
 
 typedef struct PokeathlonCourseData PokeathlonCourseData;
 
@@ -60,7 +61,7 @@ typedef enum PokeathlonCourseMainState {
 // State machine structure (overlays stateArgsPtr at 0x3B4)
 // This struct maps to a u32 array view for code generation compatibility
 typedef struct PokeathlonCourseState {
-    void **argsPtr;     // [0] 0x3B4 - Pointer to state data pointer
+    PokeathlonStateInfo *argsPtr;     // [0] 0x3B4 - Pointer to state data pointer
     u32 transitionType; // [1] 0x3B8 - Transition type (0x10 = exit)
     u32 mainState;      // [2] 0x3BC - Main state machine state
     u32 exitFlag;       // [3] 0x3C0 - Exit flag
@@ -165,12 +166,25 @@ u32 ov96_021E5FA4(PokeathlonCourseData *data);
 u32 ov96_021E5FAC();
 void ov96_021E5FB0(PokeathlonCourseData *data, int index, u16 value);
 u16 ov96_021E5FBC(PokeathlonCourseData *data, int index);
+void ov96_021E5FC8(PokeathlonCourseData *data, u8 value);
+void ov96_021E5FEC(PokeathlonCourseData *data, u8 value, u8 value2);
+void ov96_021E601C(PokeathlonCourseData *data, u32 transitionType);
+void ov96_021E6030(PokeathlonCourseData *data);
+void *PokeathlonCourse_GetGraphicsSystem(PokeathlonCourseData *data);
 
 // Internal overlay 96 functions (stubs for now, in assembly)
+void ov96_021E67AC(PokeathlonCourseData *data);
+void ov96_021E75BC(void*);
+void ov96_021E7F98(s32 frameCount, u32 maxValue, Pokeathlon_UnkSubStruct_B00 *result);
 void *ov96_021E8770(int a0, int a1, PokeathlonCourseData *data, int a3, enum HeapID heapId);
+void ov96_021E87B4(int a0, void *a1, void *a2, int a3);
+void ov96_021E8810(void *ptr);
 BOOL ov96_021E8828(void*);
+u8 *ov96_021E8A20(void *ptr);
 int ov96_021E8A24(void);
 int ov96_021E8A2C(void);
 void *ov96_021E92E0(enum HeapID heapId);
+void ov96_021E9320(void *ptr);
+void *ov96_021E9A14(void);
 
 #endif // POKEHEARTGOLD_POKEATHLON_H
