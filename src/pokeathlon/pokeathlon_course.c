@@ -3,12 +3,12 @@
 #include "global.h"
 
 #include "pokeathlon/pokeathlon.h"
+#include "pokeathlon/pokeathlon_save.h"
 
 #include "assert.h"
 #include "heap.h"
 #include "player_data.h"
 #include "render_text.h"
-#include "unk_02031904.h"
 #include "unk_02034354.h"
 #include "unk_02035900.h"
 

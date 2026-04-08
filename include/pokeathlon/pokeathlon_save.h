@@ -1,7 +1,9 @@
-#ifndef POKEHEARTGOLD_UNK_02031904_H
-#define POKEHEARTGOLD_UNK_02031904_H
+#ifndef POKEHEARTGOLD_POKEATHLON_SAVE_H
+#define POKEHEARTGOLD_POKEATHLON_SAVE_H
 
 #include "save_pokeathlon.h"
+
+u32 Save_Pokeathlon_sizeof();
 
 Pokeathlon_UnkSubStruct_B00 *sub_020319F0(POKEATHLON_SAV *pokeathlonSave);
 Pokeathlon_UnkSubStruct_B00 *sub_0203199C(POKEATHLON_SAV *pokeathlonSave);
@@ -14,4 +16,4 @@ void *sub_0203197C(POKEATHLON_SAV *pokeathlonSave);
 void *sub_02031984(POKEATHLON_SAV *pokeathlonSave);
 void *sub_02031990(POKEATHLON_SAV *pokeathlonSave);
 
-#endif // POKEHEARTGOLD_UNK_02031904_H
+#endif // POKEHEARTGOLD_POKEATHLON_SAVE_H

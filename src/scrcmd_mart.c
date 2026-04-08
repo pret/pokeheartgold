@@ -7,7 +7,7 @@
 #include "pokedex.h"
 #include "save_vars_flags.h"
 #include "scrcmd.h"
-#include "unk_02031904.h"
+#include "pokeathlon/pokeathlon_save.h"
 
 struct BadgeMartItems {
     u16 item_id;

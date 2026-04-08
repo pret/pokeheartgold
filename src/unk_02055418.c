@@ -17,7 +17,7 @@
 #include "script.h"
 #include "sys_vars.h"
 #include "unk_0202C730.h"
-#include "unk_02031904.h"
+#include "pokeathlon/pokeathlon_save.h"
 #include "unk_02031B0C.h"
 #include "unk_02066EDC.h"
 #include "unk_0206D494.h"

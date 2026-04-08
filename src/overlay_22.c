@@ -5,7 +5,7 @@
 #include "overlay_01_021EDAFC.h"
 #include "scrcmd.h"
 #include "script.h"
-#include "unk_02031904.h"
+#include "pokeathlon/pokeathlon_save.h"
 
 extern Window *ov01_021EEC00(struct FieldSystem *fieldSystem, u8 type, u8 x, u8 y);
 
