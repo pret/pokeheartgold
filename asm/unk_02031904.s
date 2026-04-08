@@ -5,56 +5,7 @@
 	.text
 
 	.extern Save_Pokeathlon_sizeof
-
-	thumb_func_start Save_Pokeathlon_Init
-Save_Pokeathlon_Init: ; 0x0203190C
-	push {r3, r4, r5, r6, r7, lr}
-	mov r2, #0x2e
-	mov r1, #0
-	lsl r2, r2, #6
-	str r0, [sp]
-	bl MI_CpuFill8
-	mov r0, #0
-	mov r7, #0xb3
-	ldr r1, _02031960 ; =0x0000FFFF
-	ldr r6, _02031964 ; =0x00000484
-	mov ip, r0
-	lsl r7, r7, #2
-_02031926:
-	mov r0, ip
-	mov r2, #0x2c
-	mul r2, r0
-	ldr r0, [sp]
-	mov r3, #0
-	add r4, r0, r2
-	mov r0, ip
-	mov r2, #0xa4
-	mul r2, r0
-	ldr r0, [sp]
-	add r5, r0, r2
-_0203193C:
-	lsl r2, r3, #3
-	add r0, r4, r2
-	strh r1, [r0, r7]
-	add r0, r5, r2
-	strh r1, [r0, r6]
-	add r0, r3, #1
-	lsl r0, r0, #0x18
-	lsr r3, r0, #0x18
-	cmp r3, #5
-	blo _0203193C
-	mov r0, ip
-	add r0, r0, #1
-	lsl r0, r0, #0x18
-	lsr r0, r0, #0x18
-	mov ip, r0
-	cmp r0, #0xa
-	blo _02031926
-	pop {r3, r4, r5, r6, r7, pc}
-	.balign 4, 0
-_02031960: .word 0x0000FFFF
-_02031964: .word 0x00000484
-	thumb_func_end Save_Pokeathlon_Init
+	.extern Save_Pokeathlon_Init
 
 	thumb_func_start Save_Pokeathlon_Get
 Save_Pokeathlon_Get: ; 0x02031968
