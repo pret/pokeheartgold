@@ -18,44 +18,7 @@
 	.extern Save_Pokeathlon_GetAgainUnk2CC
 	.extern Save_Pokeathlon_GetAgainUnk484
 	.extern Save_Pokeathlon_GetAgainUnkB00
-
-	thumb_func_start sub_020319F8
-sub_020319F8: ; 0x020319F8
-	push {r4, r5, r6, lr}
-	add r4, r1, #0
-	sub r1, r2, #1
-	bpl _02031A06
-	bl GF_AssertFail
-	pop {r4, r5, r6, pc}
-_02031A06:
-	add r2, r0, r1
-	mov r0, #1
-	mov r3, #0
-	add r2, #0xdc
-	add r6, r0, #0
-_02031A10:
-	add r1, r4, #0
-	asr r1, r3
-	and r1, r6
-	lsl r1, r1, #0x18
-	lsr r1, r1, #0x18
-	beq _02031A2A
-	add r5, r0, #0
-	lsl r5, r3
-	lsl r5, r5, #0x18
-	ldrb r1, [r2]
-	lsr r5, r5, #0x18
-	orr r1, r5
-	strb r1, [r2]
-_02031A2A:
-	add r1, r3, #1
-	lsl r1, r1, #0x18
-	lsr r3, r1, #0x18
-	cmp r3, #5
-	blo _02031A10
-	pop {r4, r5, r6, pc}
-	.balign 4, 0
-	thumb_func_end sub_020319F8
+	.extern sub_020319F8
 
 	thumb_func_start SavePokeathlon_AddAthletePoints
 SavePokeathlon_AddAthletePoints: ; 0x02031A38

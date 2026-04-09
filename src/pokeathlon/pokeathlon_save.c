@@ -76,3 +76,18 @@ Pokeathlon_UnkSubStruct_A4 *Save_Pokeathlon_GetAgainUnk484(POKEATHLON_SAV *pokea
 Pokeathlon_UnkSubStruct_B00 *Save_Pokeathlon_GetAgainUnkB00(POKEATHLON_SAV *pokeathlonSave) {
     return &pokeathlonSave->unk_B00;
 }
+
+void sub_020319F8(POKEATHLON_SAV *pokeathlonSave, int a0, int a1) {
+    u8 i, bit;
+    int index = a1 - 1;
+    if (index < 0) {
+        GF_AssertFail();
+        return;
+    }
+    for (i = 0; i < 5; i++) {
+        if ((u8)((a0 >> i) & 1) != 0) {
+            bit = (u8)(1 << i);
+            pokeathlonSave->unk_DC[index] |= bit;
+        }
+    }
+}
