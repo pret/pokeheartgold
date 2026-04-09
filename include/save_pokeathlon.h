@@ -45,7 +45,7 @@ typedef struct POKEATHLON_SAV {
     Pokeathlon_UnkSubStruct_A4 unk_484[10]; // pointed to by Save_Pokeathlon_GetUnk484 / Save_Pokeathlon_GetAgainUnk484
     u8 unk_AEC[0x14]; // pointed to by Save_Pokeathlon_GetUnkAEC
     Pokeathlon_UnkSubStruct_B00 unk_B00; // pointed to by Save_Pokeathlon_GetUnkB00 / Save_Pokeathlon_GetAgainUnkB00
-    u32 athletePoints; // 0xB74 - capped at 99999
+    int athletePoints; // 0xB74 - capped at 99999
     u32 unk_B78;       // bitfield, bits 0-26 (sub_02031A78 / sub_02031A98)
     u16 unk_B7C;       // bitfield (sub_02031AB8 / sub_02031ACC / sub_02031AE4)
     u16 unk_B7E;

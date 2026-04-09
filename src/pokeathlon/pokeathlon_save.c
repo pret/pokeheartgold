@@ -91,3 +91,21 @@ void sub_020319F8(POKEATHLON_SAV *pokeathlonSave, int a0, int a1) {
         }
     }
 }
+
+void SavePokeathlon_AddAthletePoints(POKEATHLON_SAV *pokeathlonSave, u16 amount) {
+    pokeathlonSave->athletePoints += amount;
+    if (pokeathlonSave->athletePoints > 99999) {
+        pokeathlonSave->athletePoints = 99999;
+    }
+}
+
+void SavePokeathlon_SubAthletePoints(POKEATHLON_SAV *pokeathlonSave, u16 amount) {
+    pokeathlonSave->athletePoints -= amount;
+    if (pokeathlonSave->athletePoints < 0) {
+        pokeathlonSave->athletePoints = 0;
+    }
+}
+
+u32 SavePokeathlon_GetAthletePoints(POKEATHLON_SAV *pokeathlonSave) {
+    return pokeathlonSave->athletePoints;
+}
