@@ -1739,8 +1739,8 @@ ov96_021E6A00: ; 0x021E6A00
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	ldr r0, [r0]
-	bl Save_Pokeathlon_Get
-	bl Save_Pokeathlon_GetAgainUnkB00
+	bl PokeathlonSave_Get
+	bl PokeathlonSave_GetAgainUnkB00
 	add r5, r0, #0
 	mov r0, #9
 	lsl r0, r0, #8
@@ -3040,8 +3040,8 @@ _021E7416:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	ldr r0, [r0]
-	bl Save_Pokeathlon_Get
-	bl Save_Pokeathlon_GetUnkB00
+	bl PokeathlonSave_Get
+	bl PokeathlonSave_GetUnkB00
 	add r6, r0, #0
 	bl sub_02031B10
 	lsl r4, r0, #2
@@ -3413,7 +3413,7 @@ ov96_021E7718: ; 0x021E7718
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	ldr r0, [r0]
-	bl Save_Pokeathlon_Get
+	bl PokeathlonSave_Get
 	add r6, r0, #0
 	add r0, r5, #0
 	bl ov96_021E5D6C
@@ -3457,7 +3457,7 @@ _021E7772:
 _021E7784:
 	add r0, r6, #0
 	add r1, r7, #0
-	bl SavePokeathlon_AddAthletePoints
+	bl PokeathlonSave_AddAthletePoints
 	mov r0, #0x7e
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -3465,17 +3465,17 @@ _021E7784:
 	cmp r0, #1
 	bne _021E77A8
 	add r0, r6, #0
-	bl Save_Pokeathlon_GetAgainUnk484
+	bl PokeathlonSave_GetAgainUnk484
 	add r1, r0, #0
 	add r0, r5, #0
 	bl ov96_021E7A2C
 	b _021E780A
 _021E77A8:
 	add r0, r6, #0
-	bl Save_Pokeathlon_GetUnk2CC
+	bl PokeathlonSave_GetUnk2CC
 	str r0, [sp, #4]
 	add r0, r6, #0
-	bl Save_Pokeathlon_GetUnkAEC
+	bl PokeathlonSave_GetUnkAEC
 	add r2, r0, #0
 	ldr r1, [sp, #4]
 	add r0, r5, #0
@@ -3487,7 +3487,7 @@ _021E77A8:
 	lsr r0, r0, #0x1f
 	beq _021E77FC
 	add r0, r6, #0
-	bl Save_Pokeathlon_dummy2
+	bl PokeathlonSave_dummy2
 	add r1, r0, #0
 	add r0, r5, #0
 	bl ov96_021E786C
@@ -3497,7 +3497,7 @@ _021E77A8:
 	cmp r0, #0
 	bne _021E77FC
 	add r0, r6, #0
-	bl Save_Pokeathlon_dummy2
+	bl PokeathlonSave_dummy2
 	bl ov96_021E8060
 	cmp r0, #0
 	beq _021E77FC
@@ -3506,13 +3506,13 @@ _021E77A8:
 	bl Save_VarsFlags_SetFlagInArray
 _021E77FC:
 	add r0, r6, #0
-	bl Save_Pokeathlon_GetAgainUnk2CC
+	bl PokeathlonSave_GetAgainUnk2CC
 	add r1, r0, #0
 	add r0, r5, #0
 	bl ov96_021E7938
 _021E780A:
 	add r0, r6, #0
-	bl Save_Pokeathlon_GetAgainUnkB00
+	bl PokeathlonSave_GetAgainUnkB00
 	add r1, r0, #0
 	add r0, r5, #0
 	bl ov96_021E7D6C
@@ -4596,7 +4596,7 @@ ov96_021E8028: ; 0x021E8028
 	ldr r0, [r5, r0]
 	add r6, r1, #0
 	ldr r0, [r0]
-	bl Save_Pokeathlon_Get
+	bl PokeathlonSave_Get
 	add r7, r0, #0
 	mov r4, #0
 _021E803E:
@@ -4608,7 +4608,7 @@ _021E803E:
 	ldrh r2, [r3, r2]
 	add r0, r7, #0
 	add r1, r6, #0
-	bl SavePokeathlon_SetUnkDC_AtIndex
+	bl PokeathlonSave_SetUnkDC_AtIndex
 	add r0, r4, #1
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18
@@ -4650,7 +4650,7 @@ ov96_021E8084: ; 0x021E8084
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
 	ldr r0, [r0]
-	bl Save_Pokeathlon_Get
+	bl PokeathlonSave_Get
 	add r7, r0, #0
 	mov r4, #0
 _021E8098:
@@ -4662,7 +4662,7 @@ _021E8098:
 	ldrh r0, [r1, r0]
 	sub r5, r0, #1
 	add r0, r7, #0
-	bl Save_Pokeathlon_GetUnkDC
+	bl PokeathlonSave_GetUnkDC
 	ldrb r0, [r0, r5]
 	cmp r0, #0x1f
 	bne _021E80B6
@@ -4685,8 +4685,8 @@ ov96_021E80C4: ; 0x021E80C4
 	lsl r1, r1, #2
 	ldr r0, [r0, r1]
 	ldr r0, [r0]
-	bl Save_Pokeathlon_Get
-	bl Save_Pokeathlon_GetAgainUnk2CC
+	bl PokeathlonSave_Get
+	bl PokeathlonSave_GetAgainUnk2CC
 	ldr r6, _021E8110 ; =ov96_0221A894
 	ldr r7, _021E8114 ; =_0221A7D8
 	add r5, r0, #0
@@ -5080,7 +5080,7 @@ ov96_021E839C: ; 0x021E839C
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	ldr r0, [r0]
-	bl Save_Pokeathlon_Get
+	bl PokeathlonSave_Get
 	add r6, r0, #0
 	ldr r0, _021E8418 ; =0x00000D2A
 	ldrh r1, [r5, r0]
@@ -5101,12 +5101,12 @@ _021E83C0:
 	cmp r0, #1
 	bne _021E83DE
 	add r0, r6, #0
-	bl Save_Pokeathlon_GetAgainUnk484
+	bl PokeathlonSave_GetAgainUnk484
 	mov r1, #0xa4
 	b _021E83E6
 _021E83DE:
 	add r0, r6, #0
-	bl Save_Pokeathlon_GetAgainUnk2CC
+	bl PokeathlonSave_GetAgainUnk2CC
 	mov r1, #0x2c
 _021E83E6:
 	mul r1, r4
@@ -13294,8 +13294,8 @@ _021EC07E:
 _021EC0B0:
 	add r0, r6, #0
 	bl PokeathlonCourse_GetSaveData
-	bl Save_Pokeathlon_Get
-	bl Save_Pokeathlon_dummy2
+	bl PokeathlonSave_Get
+	bl PokeathlonSave_dummy2
 	add r1, r4, #0
 	add r1, #0x9c
 	ldr r1, [r1]
@@ -17471,8 +17471,8 @@ _021EE0CE:
 	bne _021EE0CE
 	add r0, r2, #0
 	bl PokeathlonCourse_GetSaveData
-	bl Save_Pokeathlon_Get
-	bl Save_Pokeathlon_GetAgainUnkB00
+	bl PokeathlonSave_Get
+	bl PokeathlonSave_GetAgainUnkB00
 	add r6, r0, #0
 	add r0, sp, #0x20
 	add r1, r6, #0
@@ -20174,8 +20174,8 @@ ov96_021EF5F4: ; 0x021EF5F4
 	ldr r0, [r0]
 	add r4, r1, #0
 	bl PokeathlonCourse_GetSaveData
-	bl Save_Pokeathlon_Get
-	bl Save_Pokeathlon_GetAgainUnk2CC
+	bl PokeathlonSave_Get
+	bl PokeathlonSave_GetAgainUnk2CC
 	mov r1, #0x2c
 	mul r1, r4
 	ldrh r0, [r0, r1]

@@ -75,8 +75,8 @@
 .public String_Delete
 .public CopyU16ArrayToString
 .public SaveArray_PCStorage_Get
-.public Save_Pokeathlon_Get
-.public SavePokeathlon_GetUnkDC_AtIndex
+.public PokeathlonSave_Get
+.public PokeathlonSave_GetUnkDC_AtIndex
 .public sub_0203A994
 .public GetMonData
 .public GetBoxMonData

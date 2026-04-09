@@ -4,26 +4,26 @@
 
 	.text
 
-	.extern Save_Pokeathlon_sizeof
-	.extern Save_Pokeathlon_Init
-	.extern Save_Pokeathlon_Get
-	.extern Save_Pokeathlon_dummy1
-	.extern Save_Pokeathlon_GetUnkDC
-	.extern Save_Pokeathlon_GetUnk2CC
-	.extern Save_Pokeathlon_GetUnk484
-	.extern Save_Pokeathlon_GetUnkAEC
-	.extern Save_Pokeathlon_GetUnkB00
-	.extern Save_Pokeathlon_dummy2
-	.extern SavePokeathlon_GetUnkDC_AtIndex
-	.extern Save_Pokeathlon_GetAgainUnk2CC
-	.extern Save_Pokeathlon_GetAgainUnk484
-	.extern Save_Pokeathlon_GetAgainUnkB00
-	.extern SavePokeathlon_SetUnkDC_AtIndex
-	.extern SavePokeathlon_AddAthletePoints
-	.extern SavePokeathlon_SubAthletePoints
-	.extern SavePokeathlon_GetAthletePoints
-	.extern SavePokeathlon_GetUnkB78_AtIndex
-	.extern SavePokeathlon_SetUnkB78_AtIndex
+	.extern PokeathlonSave_sizeof
+	.extern PokeathlonSave_Init
+	.extern PokeathlonSave_Get
+	.extern PokeathlonSave_dummy1
+	.extern PokeathlonSave_GetUnkDC
+	.extern PokeathlonSave_GetUnk2CC
+	.extern PokeathlonSave_GetUnk484
+	.extern PokeathlonSave_GetUnkAEC
+	.extern PokeathlonSave_GetUnkB00
+	.extern PokeathlonSave_dummy2
+	.extern PokeathlonSave_GetUnkDC_AtIndex
+	.extern PokeathlonSave_GetAgainUnk2CC
+	.extern PokeathlonSave_GetAgainUnk484
+	.extern PokeathlonSave_GetAgainUnkB00
+	.extern PokeathlonSave_SetUnkDC_AtIndex
+	.extern PokeathlonSave_AddAthletePoints
+	.extern PokeathlonSave_SubAthletePoints
+	.extern PokeathlonSave_GetAthletePoints
+	.extern PokeathlonSave_GetUnkB78_AtIndex
+	.extern PokeathlonSave_SetUnkB78_AtIndex
 
 	thumb_func_start sub_02031AB8
 sub_02031AB8: ; 0x02031AB8

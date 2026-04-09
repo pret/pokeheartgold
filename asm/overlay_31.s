@@ -47,7 +47,7 @@ ov31_0225D520: ; 0x0225D520
 	str r0, [r4, r1]
 	ldr r0, [r4, #0x1c]
 	ldr r0, [r0, #0xc]
-	bl Save_Pokeathlon_Get
+	bl PokeathlonSave_Get
 	mov r1, #0x5b
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -1220,7 +1220,7 @@ _0225DEBC:
 	mov r0, #0x5b
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl SavePokeathlon_GetAthletePoints
+	bl PokeathlonSave_GetAthletePoints
 	b _0225DF2A
 _0225DF12:
 	mov r0, #0x56
@@ -1511,7 +1511,7 @@ _0225E14E:
 	mul r1, r2
 	ldr r0, [r5, r0]
 	add r1, r4, r1
-	bl SavePokeathlon_GetUnkB78_AtIndex
+	bl PokeathlonSave_GetUnkB78_AtIndex
 	cmp r0, #0
 	bne _0225E176
 	mov r0, #1
@@ -2507,7 +2507,7 @@ ov31_0225E95C: ; 0x0225E95C
 	bhi _0225E97A
 	sub r0, #0x2f
 	ldr r0, [r5, r0]
-	bl SavePokeathlon_GetAthletePoints
+	bl PokeathlonSave_GetAthletePoints
 	b _0225E982
 _0225E97A:
 	sub r0, #0x3b

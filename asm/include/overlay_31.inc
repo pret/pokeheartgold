@@ -65,9 +65,9 @@
 .public PlayerProfile_GetMoney
 .public Options_GetTextFrameDelay
 .public Options_GetFrame
-.public Save_Pokeathlon_Get
-.public SavePokeathlon_GetAthletePoints
-.public SavePokeathlon_GetUnkB78_AtIndex
+.public PokeathlonSave_Get
+.public PokeathlonSave_GetAthletePoints
+.public PokeathlonSave_GetUnkB78_AtIndex
 .public sub_02031AB8
 .public GetItemAttr
 .public GXS_SetGraphicsMode

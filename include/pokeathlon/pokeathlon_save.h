@@ -40,37 +40,37 @@ typedef struct Pokeathlon_UnkSubStruct_A4 {
 
 typedef struct POKEATHLON_SAV {
     u8 unk_0[0xDC];
-    u8 unk_DC[0x1F0]; // sub-struct pointed to by Save_Pokeathlon_GetUnkDC; byte[slot-1] holds per-pokemon course bits
-    Pokeathlon_UnkSubStruct_2C unk_2CC[10]; // pointed to by Save_Pokeathlon_GetUnk2CC / Save_Pokeathlon_GetAgainUnk2CC
-    Pokeathlon_UnkSubStruct_A4 unk_484[10]; // pointed to by Save_Pokeathlon_GetUnk484 / Save_Pokeathlon_GetAgainUnk484
-    u8 unk_AEC[0x14]; // pointed to by Save_Pokeathlon_GetUnkAEC
-    Pokeathlon_UnkSubStruct_B00 unk_B00; // pointed to by Save_Pokeathlon_GetUnkB00 / Save_Pokeathlon_GetAgainUnkB00
+    u8 unk_DC[0x1F0]; // sub-struct pointed to by PokeathlonSave_GetUnkDC; byte[slot-1] holds per-pokemon course bits
+    Pokeathlon_UnkSubStruct_2C unk_2CC[10]; // pointed to by PokeathlonSave_GetUnk2CC / PokeathlonSave_GetAgainUnk2CC
+    Pokeathlon_UnkSubStruct_A4 unk_484[10]; // pointed to by PokeathlonSave_GetUnk484 / PokeathlonSave_GetAgainUnk484
+    u8 unk_AEC[0x14]; // pointed to by PokeathlonSave_GetUnkAEC
+    Pokeathlon_UnkSubStruct_B00 unk_B00; // pointed to by PokeathlonSave_GetUnkB00 / PokeathlonSave_GetAgainUnkB00
     int athletePoints; // 0xB74 - capped at 99999
-    u32 unk_B78;       // bitfield, bits 0-26 (SavePokeathlon_GetUnkB78_AtIndex / SavePokeathlon_SetUnkB78_AtIndex)
+    u32 unk_B78;       // bitfield, bits 0-26 (PokeathlonSave_GetUnkB78_AtIndex / PokeathlonSave_SetUnkB78_AtIndex)
     u16 unk_B7C;       // bitfield (sub_02031AB8 / sub_02031ACC / sub_02031AE4)
     u16 unk_B7E;
 } POKEATHLON_SAV; // size: 0xB80
 
-u32 Save_Pokeathlon_sizeof();
-void Save_Pokeathlon_Init(POKEATHLON_SAV *dest);
-POKEATHLON_SAV *Save_Pokeathlon_Get(SaveData *saveData);
-POKEATHLON_SAV *Save_Pokeathlon_dummy1(POKEATHLON_SAV *pokeathlon);
-void *Save_Pokeathlon_GetUnkDC(POKEATHLON_SAV *pokeathlonSave);
-Pokeathlon_UnkSubStruct_2C *Save_Pokeathlon_GetUnk2CC(POKEATHLON_SAV *pokeathlonSave);
-Pokeathlon_UnkSubStruct_A4 *Save_Pokeathlon_GetUnk484(POKEATHLON_SAV *pokeathlonSave);
-void *Save_Pokeathlon_GetUnkAEC(POKEATHLON_SAV *pokeathlonSave);
-Pokeathlon_UnkSubStruct_B00 *Save_Pokeathlon_GetUnkB00(POKEATHLON_SAV *pokeathlonSave);
-POKEATHLON_SAV *Save_Pokeathlon_dummy2(POKEATHLON_SAV *pokeathlon);
-BOOL SavePokeathlon_GetUnkDC_AtIndex(POKEATHLON_SAV *pokeathlonSave, int a0, int a1);
-Pokeathlon_UnkSubStruct_2C *Save_Pokeathlon_GetAgainUnk2CC(POKEATHLON_SAV *pokeathlonSave);
-Pokeathlon_UnkSubStruct_A4 *Save_Pokeathlon_GetAgainUnk484(POKEATHLON_SAV *pokeathlonSave);
-Pokeathlon_UnkSubStruct_B00 *Save_Pokeathlon_GetAgainUnkB00(POKEATHLON_SAV *pokeathlonSave);
-void SavePokeathlon_SetUnkDC_AtIndex(POKEATHLON_SAV *pokeathlonSave, int a0, int a1);
-void SavePokeathlon_AddAthletePoints(POKEATHLON_SAV *pokeathlonSave, u16 amount);
-void SavePokeathlon_SubAthletePoints(POKEATHLON_SAV *pokeathlonSave, u16 amount);
-u32 SavePokeathlon_GetAthletePoints(POKEATHLON_SAV *pokeathlonSave);
-BOOL SavePokeathlon_GetUnkB78_AtIndex(POKEATHLON_SAV *pokeathlon, int idx);
-void SavePokeathlon_SetUnkB78_AtIndex(POKEATHLON_SAV *pokeathlon, int idx);
+u32 PokeathlonSave_sizeof();
+void PokeathlonSave_Init(POKEATHLON_SAV *dest);
+POKEATHLON_SAV *PokeathlonSave_Get(SaveData *saveData);
+POKEATHLON_SAV *PokeathlonSave_dummy1(POKEATHLON_SAV *pokeathlon);
+void *PokeathlonSave_GetUnkDC(POKEATHLON_SAV *pokeathlonSave);
+Pokeathlon_UnkSubStruct_2C *PokeathlonSave_GetUnk2CC(POKEATHLON_SAV *pokeathlonSave);
+Pokeathlon_UnkSubStruct_A4 *PokeathlonSave_GetUnk484(POKEATHLON_SAV *pokeathlonSave);
+void *PokeathlonSave_GetUnkAEC(POKEATHLON_SAV *pokeathlonSave);
+Pokeathlon_UnkSubStruct_B00 *PokeathlonSave_GetUnkB00(POKEATHLON_SAV *pokeathlonSave);
+POKEATHLON_SAV *PokeathlonSave_dummy2(POKEATHLON_SAV *pokeathlon);
+BOOL PokeathlonSave_GetUnkDC_AtIndex(POKEATHLON_SAV *pokeathlonSave, int a0, int a1);
+Pokeathlon_UnkSubStruct_2C *PokeathlonSave_GetAgainUnk2CC(POKEATHLON_SAV *pokeathlonSave);
+Pokeathlon_UnkSubStruct_A4 *PokeathlonSave_GetAgainUnk484(POKEATHLON_SAV *pokeathlonSave);
+Pokeathlon_UnkSubStruct_B00 *PokeathlonSave_GetAgainUnkB00(POKEATHLON_SAV *pokeathlonSave);
+void PokeathlonSave_SetUnkDC_AtIndex(POKEATHLON_SAV *pokeathlonSave, int a0, int a1);
+void PokeathlonSave_AddAthletePoints(POKEATHLON_SAV *pokeathlonSave, u16 amount);
+void PokeathlonSave_SubAthletePoints(POKEATHLON_SAV *pokeathlonSave, u16 amount);
+u32 PokeathlonSave_GetAthletePoints(POKEATHLON_SAV *pokeathlonSave);
+BOOL PokeathlonSave_GetUnkB78_AtIndex(POKEATHLON_SAV *pokeathlon, int idx);
+void PokeathlonSave_SetUnkB78_AtIndex(POKEATHLON_SAV *pokeathlon, int idx);
 BOOL sub_02031AB8(POKEATHLON_SAV *pokeathlon, int idx);
 void sub_02031AE4(POKEATHLON_SAV *pokeathlon);
 

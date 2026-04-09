@@ -89,7 +89,7 @@ void sub_02055508(FieldSystem *fieldSystem, int days) {
         sub_02031CCC(Save_ApricornBox_Get(fieldSystem->saveData), days);
         sub_0209730C(fieldSystem->saveData, days);
     }
-    sub_02031AE4(Save_Pokeathlon_Get(fieldSystem->saveData));
+    sub_02031AE4(PokeathlonSave_Get(fieldSystem->saveData));
     Save_VarsFlags_UpdateBuenasPasswordSet(Save_VarsFlags_Get(fieldSystem->saveData));
 }
 
