@@ -7283,7 +7283,7 @@ _02257840:
 	sub r1, #0x8a
 	ldr r0, [r5, r0]
 	sub r1, r2, r1
-	bl sub_02031A78
+	bl SavePokeathlon_GetUnkB78_AtIndex
 	cmp r0, #0
 	beq _0225785E
 	mov r0, #3
@@ -8117,7 +8117,7 @@ _02257EC6:
 	sub r2, #0x8a
 	ldr r0, [r4, r0]
 	sub r1, r1, r2
-	bl sub_02031A98
+	bl SavePokeathlon_SetUnkB78_AtIndex
 	b _02257EF0
 _02257EDE:
 	add r0, r2, #0
@@ -10172,7 +10172,7 @@ ov03_02258ECC: ; 0x02258ECC
 _02258EDA:
 	ldr r0, [r0, #0x20]
 	sub r1, r1, #1
-	bl sub_02031A78
+	bl SavePokeathlon_GetUnkB78_AtIndex
 	pop {r3, pc}
 	.balign 4, 0
 _02258EE4: .word ov03_02259880

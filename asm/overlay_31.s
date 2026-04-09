@@ -1511,7 +1511,7 @@ _0225E14E:
 	mul r1, r2
 	ldr r0, [r5, r0]
 	add r1, r4, r1
-	bl sub_02031A78
+	bl SavePokeathlon_GetUnkB78_AtIndex
 	cmp r0, #0
 	bne _0225E176
 	mov r0, #1

@@ -304,7 +304,7 @@
 .public Save_Pokeathlon_GetAgainUnk2CC
 .public Save_Pokeathlon_GetAgainUnk484
 .public Save_Pokeathlon_GetAgainUnkB00
-.public sub_020319F8
+.public SavePokeathlon_SetUnkDC_AtIndex
 .public SavePokeathlon_AddAthletePoints
 .public sub_02031B00
 .public sub_02031B10

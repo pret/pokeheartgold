@@ -4608,7 +4608,7 @@ _021E803E:
 	ldrh r2, [r3, r2]
 	add r0, r7, #0
 	add r1, r6, #0
-	bl sub_020319F8
+	bl SavePokeathlon_SetUnkDC_AtIndex
 	add r0, r4, #1
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18

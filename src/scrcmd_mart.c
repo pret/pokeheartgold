@@ -477,7 +477,7 @@ BOOL ScrCmd_772(ScriptContext *ctx) {
 
     pokeathlon = Save_Pokeathlon_Get(ctx->fieldSystem->saveData);
     for (i = 0; i < 27; i++) {
-        if (!sub_02031A78(pokeathlon, i)) {
+        if (!SavePokeathlon_GetUnkB78_AtIndex(pokeathlon, i)) {
             break;
         }
     }
@@ -533,7 +533,7 @@ BOOL ScrCmd_835(ScriptContext *ctx) {
     ret_ptr = ScriptGetVarPointer(ctx);
     pokeathlon = Save_Pokeathlon_Get(ctx->fieldSystem->saveData);
     for (i = 0; i < 27; i++) {
-        if (!sub_02031A78(pokeathlon, i)) {
+        if (!SavePokeathlon_GetUnkB78_AtIndex(pokeathlon, i)) {
             break;
         }
     }

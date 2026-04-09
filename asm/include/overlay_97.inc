@@ -76,7 +76,7 @@
 .public CopyU16ArrayToString
 .public SaveArray_PCStorage_Get
 .public Save_Pokeathlon_Get
-.public sub_020319A8
+.public SavePokeathlon_GetUnkDC_AtIndex
 .public sub_0203A994
 .public GetMonData
 .public GetBoxMonData

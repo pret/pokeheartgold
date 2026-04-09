@@ -49,7 +49,7 @@ POKEATHLON_SAV *Save_Pokeathlon_dummy2(POKEATHLON_SAV *pokeathlon) {
     return pokeathlon;
 }
 
-BOOL sub_020319A8(POKEATHLON_SAV *pokeathlonSave, int a0, int a1) {
+BOOL SavePokeathlon_GetUnkDC_AtIndex(POKEATHLON_SAV *pokeathlonSave, int a0, int a1) {
     if (a0 < 0 || a0 > 4) {
         GF_AssertFail();
         return 0;
@@ -77,7 +77,7 @@ Pokeathlon_UnkSubStruct_B00 *Save_Pokeathlon_GetAgainUnkB00(POKEATHLON_SAV *poke
     return &pokeathlonSave->unk_B00;
 }
 
-void sub_020319F8(POKEATHLON_SAV *pokeathlonSave, int a0, int a1) {
+void SavePokeathlon_SetUnkDC_AtIndex(POKEATHLON_SAV *pokeathlonSave, int a0, int a1) {
     u8 i, bit;
     int index = a1 - 1;
     if (index < 0) {
@@ -108,4 +108,14 @@ void SavePokeathlon_SubAthletePoints(POKEATHLON_SAV *pokeathlonSave, u16 amount)
 
 u32 SavePokeathlon_GetAthletePoints(POKEATHLON_SAV *pokeathlonSave) {
     return pokeathlonSave->athletePoints;
+}
+
+BOOL SavePokeathlon_GetUnkB78_AtIndex(POKEATHLON_SAV *pokeathlon, int idx) {
+    GF_ASSERT(idx < 27);
+    return (pokeathlon->unk_B78 >> idx) & 1;
+}
+
+void SavePokeathlon_SetUnkB78_AtIndex(POKEATHLON_SAV *pokeathlon, int idx) {
+    GF_ASSERT(idx < 27);
+    pokeathlon->unk_B78 |= 1 << idx;
 }

@@ -14,54 +14,16 @@
 	.extern Save_Pokeathlon_GetUnkAEC
 	.extern Save_Pokeathlon_GetUnkB00
 	.extern Save_Pokeathlon_dummy2
-	.extern sub_020319A8
+	.extern SavePokeathlon_GetUnkDC_AtIndex
 	.extern Save_Pokeathlon_GetAgainUnk2CC
 	.extern Save_Pokeathlon_GetAgainUnk484
 	.extern Save_Pokeathlon_GetAgainUnkB00
-	.extern sub_020319F8
+	.extern SavePokeathlon_SetUnkDC_AtIndex
 	.extern SavePokeathlon_AddAthletePoints
 	.extern SavePokeathlon_SubAthletePoints
 	.extern SavePokeathlon_GetAthletePoints
-
-	thumb_func_start sub_02031A78
-sub_02031A78: ; 0x02031A78
-	push {r3, r4, r5, lr}
-	add r4, r1, #0
-	add r5, r0, #0
-	cmp r4, #0x1b
-	blt _02031A86
-	bl GF_AssertFail
-_02031A86:
-	ldr r0, _02031A94 ; =0x00000B78
-	ldr r0, [r5, r0]
-	add r1, r0, #0
-	lsr r1, r4
-	mov r0, #1
-	and r0, r1
-	pop {r3, r4, r5, pc}
-	.balign 4, 0
-_02031A94: .word 0x00000B78
-	thumb_func_end sub_02031A78
-
-	thumb_func_start sub_02031A98
-sub_02031A98: ; 0x02031A98
-	push {r3, r4, r5, lr}
-	add r4, r1, #0
-	add r5, r0, #0
-	cmp r4, #0x1b
-	blt _02031AA6
-	bl GF_AssertFail
-_02031AA6:
-	ldr r0, _02031AB4 ; =0x00000B78
-	mov r1, #1
-	ldr r2, [r5, r0]
-	lsl r1, r4
-	orr r1, r2
-	str r1, [r5, r0]
-	pop {r3, r4, r5, pc}
-	.balign 4, 0
-_02031AB4: .word 0x00000B78
-	thumb_func_end sub_02031A98
+	.extern SavePokeathlon_GetUnkB78_AtIndex
+	.extern SavePokeathlon_SetUnkB78_AtIndex
 
 	thumb_func_start sub_02031AB8
 sub_02031AB8: ; 0x02031AB8

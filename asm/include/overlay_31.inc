@@ -67,7 +67,7 @@
 .public Options_GetFrame
 .public Save_Pokeathlon_Get
 .public SavePokeathlon_GetAthletePoints
-.public sub_02031A78
+.public SavePokeathlon_GetUnkB78_AtIndex
 .public sub_02031AB8
 .public GetItemAttr
 .public GXS_SetGraphicsMode
