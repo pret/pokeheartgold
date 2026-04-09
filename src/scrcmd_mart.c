@@ -2,12 +2,13 @@
 #include "constants/items.h"
 #include "constants/seals.h"
 
+#include "pokeathlon/pokeathlon_save.h"
+
 #include "field_system.h"
 #include "mart.h"
 #include "pokedex.h"
 #include "save_vars_flags.h"
 #include "scrcmd.h"
-#include "pokeathlon/pokeathlon_save.h"
 
 struct BadgeMartItems {
     u16 item_id;

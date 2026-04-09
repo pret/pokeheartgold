@@ -3,6 +3,8 @@
 
 #include "constants/heap.h"
 
+#include "pokeathlon/pokeathlon_save.h"
+
 #include "overlay_manager.h"
 #include "player_data.h"
 #include "save.h"

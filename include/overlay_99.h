@@ -4,7 +4,7 @@
 #include "overlay_manager.h"
 #include "player_data.h"
 #include "pokedex.h"
-#include "save_pokeathlon.h"
+#include "pokeathlon/pokeathlon_save.h"
 
 typedef struct PokeathlonMedalsArgs {
     Pokedex *pokedex;

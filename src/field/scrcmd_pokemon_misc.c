@@ -10,6 +10,8 @@
 #include "overlay_2/overlay_02_02251E74.h"
 #include "overlay_2/overlay_02_gear_phone.h"
 
+#include "pokeathlon/pokeathlon_save.h"
+
 #include "bag.h"
 #include "bug_contest.h"
 #include "fieldmap.h"
@@ -40,7 +42,6 @@
 #include "unk_0200FA24.h"
 #include "unk_02023694.h"
 #include "unk_02030A98.h"
-#include "pokeathlon/pokeathlon_save.h"
 #include "unk_02031AF0.h"
 #include "unk_02031B0C.h"
 #include "unk_02037C94.h"

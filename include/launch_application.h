@@ -39,7 +39,6 @@
 #include "register_hall_of_fame.h"
 #include "sav_system_info.h"
 #include "save_palpad.h"
-#include "save_pokeathlon.h"
 #include "save_special_ribbons.h"
 #include "save_wifi_history.h"
 #include "script.h"
