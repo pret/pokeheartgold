@@ -127,8 +127,8 @@
 .public PokeathlonSave_GetAthletePoints
 .public PokeathlonSave_GetUnkB78_AtIndex
 .public PokeathlonSave_SetUnkB78_AtIndex
-.public sub_02031AB8
-.public sub_02031ACC
+.public PokeathlonSave_GetUnkB7C_AtIndex
+.public PokeathlonSave_SetUnkB7C_AtIndex
 .public Save_ApricornBox_Get
 .public ApricornBox_GiveApricorn
 .public ApricornBox_CountApricorn

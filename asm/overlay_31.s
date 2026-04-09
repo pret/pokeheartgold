@@ -1489,7 +1489,7 @@ ov31_0225E12C: ; 0x0225E12C
 	bne _0225E14E
 	sub r0, #0x2f
 	ldr r0, [r5, r0]
-	bl sub_02031AB8
+	bl PokeathlonSave_GetUnkB7C_AtIndex
 	cmp r0, #0
 	bne _0225E14A
 	mov r0, #1

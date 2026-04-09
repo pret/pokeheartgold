@@ -7268,7 +7268,7 @@ ov03_02257814: ; 0x02257814
 	ldr r2, [r5, r2]
 	ldr r0, [r5, r0]
 	add r1, r2, r1
-	bl sub_02031AB8
+	bl PokeathlonSave_GetUnkB7C_AtIndex
 	cmp r0, #0
 	beq _0225785E
 	mov r0, #2
@@ -8105,7 +8105,7 @@ _02257EA0:
 	ldr r3, [r4, r1]
 	ldrb r1, [r4, r2]
 	add r1, r3, r1
-	bl sub_02031ACC
+	bl PokeathlonSave_SetUnkB7C_AtIndex
 	b _02257EF0
 _02257EC6:
 	cmp r0, #4

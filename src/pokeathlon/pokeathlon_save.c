@@ -119,3 +119,15 @@ void PokeathlonSave_SetUnkB78_AtIndex(POKEATHLON_SAV *pokeathlon, int idx) {
     GF_ASSERT(idx < 27);
     pokeathlon->unk_B78 |= 1 << idx;
 }
+
+BOOL PokeathlonSave_GetUnkB7C_AtIndex(POKEATHLON_SAV *pokeathlon, int idx) {
+    return (pokeathlon->unk_B7C >> idx) & 1;
+}
+
+void PokeathlonSave_SetUnkB7C_AtIndex(POKEATHLON_SAV *pokeathlon, int idx) {
+    pokeathlon->unk_B7C |= 1 << idx;
+}
+
+void PokeathlonSave_ResetUnkB7C(POKEATHLON_SAV *pokeathlon) {
+    pokeathlon->unk_B7C = 0;
+}

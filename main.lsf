@@ -142,7 +142,6 @@ Static main
     Object src/unk_0203170C.o
     Object asm/unk_020318C8.o
     Object src/pokeathlon/pokeathlon_save.o
-    Object asm/unk_02031904.o
     Object src/unk_02031AF0.o
     Object asm/unk_02031B0C.o
     Object src/pokewalker.o

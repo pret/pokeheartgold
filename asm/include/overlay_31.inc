@@ -68,7 +68,7 @@
 .public PokeathlonSave_Get
 .public PokeathlonSave_GetAthletePoints
 .public PokeathlonSave_GetUnkB78_AtIndex
-.public sub_02031AB8
+.public PokeathlonSave_GetUnkB7C_AtIndex
 .public GetItemAttr
 .public GXS_SetGraphicsMode
 .public GX_SetBankForSubBG

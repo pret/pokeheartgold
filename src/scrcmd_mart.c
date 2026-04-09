@@ -513,7 +513,7 @@ BOOL ScrCmd_834(ScriptContext *ctx) {
         r6++;
     }
     for (i = 0; i < 12; i++) {
-        if (sub_02031AB8(pokeathlon, i)) {
+        if (PokeathlonSave_GetUnkB7C_AtIndex(pokeathlon, i)) {
             r4++;
         }
     }

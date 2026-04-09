@@ -47,7 +47,7 @@ typedef struct POKEATHLON_SAV {
     Pokeathlon_UnkSubStruct_B00 unk_B00; // pointed to by PokeathlonSave_GetUnkB00 / PokeathlonSave_GetAgainUnkB00
     int athletePoints; // 0xB74 - capped at 99999
     u32 unk_B78;       // bitfield, bits 0-26 (PokeathlonSave_GetUnkB78_AtIndex / PokeathlonSave_SetUnkB78_AtIndex)
-    u16 unk_B7C;       // bitfield (sub_02031AB8 / sub_02031ACC / sub_02031AE4)
+    u16 unk_B7C;       // bitfield (PokeathlonSave_GetUnkB7C_AtIndex / PokeathlonSave_SetUnkB7C_AtIndex / PokeathlonSave_ResetUnkB7C)
     u16 unk_B7E;
 } POKEATHLON_SAV; // size: 0xB80
 
@@ -71,7 +71,8 @@ void PokeathlonSave_SubAthletePoints(POKEATHLON_SAV *pokeathlonSave, u16 amount)
 u32 PokeathlonSave_GetAthletePoints(POKEATHLON_SAV *pokeathlonSave);
 BOOL PokeathlonSave_GetUnkB78_AtIndex(POKEATHLON_SAV *pokeathlon, int idx);
 void PokeathlonSave_SetUnkB78_AtIndex(POKEATHLON_SAV *pokeathlon, int idx);
-BOOL sub_02031AB8(POKEATHLON_SAV *pokeathlon, int idx);
-void sub_02031AE4(POKEATHLON_SAV *pokeathlon);
+BOOL PokeathlonSave_GetUnkB7C_AtIndex(POKEATHLON_SAV *pokeathlon, int idx);
+void PokeathlonSave_SetUnkB7C_AtIndex(POKEATHLON_SAV *pokeathlon, int idx);
+void PokeathlonSave_ResetUnkB7C(POKEATHLON_SAV *pokeathlon);
 
 #endif // POKEHEARTGOLD_POKEATHLON_SAVE_H
