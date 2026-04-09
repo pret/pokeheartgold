@@ -808,7 +808,7 @@ BOOL ScrCmd_725(ScriptContext *ctx) {
     u8 unkA = ScriptReadByte(ctx);
     u32 unkB = ScriptGetVar(ctx);
 
-    Pokeathlon_UnkSubStruct_B00 *unkPtr = sub_020319F0(Save_Pokeathlon_Get(ctx->fieldSystem->saveData));
+    Pokeathlon_UnkSubStruct_B00 *unkPtr = Save_Pokeathlon_GetAgainUnkB00(Save_Pokeathlon_Get(ctx->fieldSystem->saveData));
 
     if (unkA == 0) {
         val = unkPtr->unk70 + unkB;

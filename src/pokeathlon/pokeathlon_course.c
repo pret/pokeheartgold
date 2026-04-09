@@ -219,7 +219,7 @@ BOOL PokeathlonCourse_Exit(OverlayManager *manager, int *state) {
     // Get Pokeathlon save data and process result
     saveData = *(SaveData **)data->args;
     pokeathlonSave = Save_Pokeathlon_Get(saveData);
-    result = sub_020319F0(pokeathlonSave);
+    result = Save_Pokeathlon_GetAgainUnkB00(pokeathlonSave);
     ov96_021E7F98(data->frameCounter, 59999, result);
 
     // Reset text flags

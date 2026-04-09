@@ -15,31 +15,9 @@
 	.extern Save_Pokeathlon_GetUnkB00
 	.extern Save_Pokeathlon_dummy2
 	.extern sub_020319A8
-
-	thumb_func_start sub_020319DC
-sub_020319DC: ; 0x020319DC
-	mov r1, #0xb3
-	lsl r1, r1, #2
-	add r0, r0, r1
-	bx lr
-	thumb_func_end sub_020319DC
-
-	thumb_func_start sub_020319E4
-sub_020319E4: ; 0x020319E4
-	ldr r1, _020319EC ; =0x00000484
-	add r0, r0, r1
-	bx lr
-	nop
-_020319EC: .word 0x00000484
-	thumb_func_end sub_020319E4
-
-	thumb_func_start sub_020319F0
-sub_020319F0: ; 0x020319F0
-	mov r1, #0xb
-	lsl r1, r1, #8
-	add r0, r0, r1
-	bx lr
-	thumb_func_end sub_020319F0
+	.extern Save_Pokeathlon_GetAgainUnk2CC
+	.extern Save_Pokeathlon_GetAgainUnk484
+	.extern Save_Pokeathlon_GetAgainUnkB00
 
 	thumb_func_start sub_020319F8
 sub_020319F8: ; 0x020319F8

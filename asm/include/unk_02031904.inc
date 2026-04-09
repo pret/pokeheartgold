@@ -13,9 +13,9 @@
 .public Save_Pokeathlon_GetUnkB00
 .public Save_Pokeathlon_dummy2
 .public sub_020319A8
-.public sub_020319DC
-.public sub_020319E4
-.public sub_020319F0
+.public Save_Pokeathlon_GetAgainUnk2CC
+.public Save_Pokeathlon_GetAgainUnk484
+.public Save_Pokeathlon_GetAgainUnkB00
 .public sub_020319F8
 .public SavePokeathlon_AddAthletePoints
 .public SavePokeathlon_SubAthletePoints
