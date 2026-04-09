@@ -48,3 +48,19 @@ Pokeathlon_UnkSubStruct_B00 *Save_Pokeathlon_GetUnkB00(POKEATHLON_SAV *pokeathlo
 POKEATHLON_SAV *Save_Pokeathlon_dummy2(POKEATHLON_SAV *pokeathlon) {
     return pokeathlon;
 }
+
+BOOL sub_020319A8(POKEATHLON_SAV *pokeathlonSave, int a0, int a1) {
+    if (a0 < 0 || a0 > 4) {
+        GF_AssertFail();
+        return 0;
+    }
+    int index = a1 - 1;
+    if (index < 0) {
+        GF_AssertFail();
+        return 0;
+    }
+    if (!(((int)pokeathlonSave->unk_DC[index]) >> a0 & 1)) {
+        return 0;
+    }
+    return 1;
+}

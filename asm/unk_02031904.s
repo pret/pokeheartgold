@@ -14,38 +14,7 @@
 	.extern Save_Pokeathlon_GetUnkAEC
 	.extern Save_Pokeathlon_GetUnkB00
 	.extern Save_Pokeathlon_dummy2
-
-	thumb_func_start sub_020319A8
-sub_020319A8: ; 0x020319A8
-	push {r3, lr}
-	cmp r1, #0
-	blt _020319B2
-	cmp r1, #4
-	ble _020319BA
-_020319B2:
-	bl GF_AssertFail
-	mov r0, #0
-	pop {r3, pc}
-_020319BA:
-	sub r2, r2, #1
-	bpl _020319C6
-	bl GF_AssertFail
-	mov r0, #0
-	pop {r3, pc}
-_020319C6:
-	add r0, r0, r2
-	add r0, #0xdc
-	ldrb r0, [r0]
-	add r2, r0, #0
-	asr r2, r1
-	mov r0, #1
-	add r1, r2, #0
-	tst r1, r0
-	bne _020319DA
-	mov r0, #0
-_020319DA:
-	pop {r3, pc}
-	thumb_func_end sub_020319A8
+	.extern sub_020319A8
 
 	thumb_func_start sub_020319DC
 sub_020319DC: ; 0x020319DC

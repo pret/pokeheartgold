@@ -12,6 +12,7 @@ Pokeathlon_UnkSubStruct_A4 *Save_Pokeathlon_GetUnk484(POKEATHLON_SAV *pokeathlon
 void *Save_Pokeathlon_GetUnkAEC(POKEATHLON_SAV *pokeathlonSave);
 Pokeathlon_UnkSubStruct_B00 *Save_Pokeathlon_GetUnkB00(POKEATHLON_SAV *pokeathlonSave);
 POKEATHLON_SAV *Save_Pokeathlon_dummy2(POKEATHLON_SAV *pokeathlon);
+BOOL sub_020319A8(POKEATHLON_SAV *pokeathlonSave, int a0, int a1);
 
 Pokeathlon_UnkSubStruct_B00 *sub_020319F0(POKEATHLON_SAV *pokeathlonSave);
 void SavePokeathlon_AddAthletePoints(POKEATHLON_SAV *pokeathlonSave, u16 amount);
