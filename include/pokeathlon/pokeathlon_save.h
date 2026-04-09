@@ -5,16 +5,17 @@
 
 u32 Save_Pokeathlon_sizeof();
 void Save_Pokeathlon_Init(POKEATHLON_SAV *dest);
-
-Pokeathlon_UnkSubStruct_B00 *sub_020319F0(POKEATHLON_SAV *pokeathlonSave);
-Pokeathlon_UnkSubStruct_B00 *sub_0203199C(POKEATHLON_SAV *pokeathlonSave);
-void SavePokeathlon_AddAthletePoints(POKEATHLON_SAV *pokeathlonSave, u16 amount);
-void SavePokeathlon_SubAthletePoints(POKEATHLON_SAV *pokeathlonSave, u16 amount);
-u32 SavePokeathlon_GetAthletePoints(POKEATHLON_SAV *pokeathlonSave);
 POKEATHLON_SAV *Save_Pokeathlon_Get(SaveData *saveData);
 void *sub_02031978(POKEATHLON_SAV *pokeathlonSave);
 void *sub_0203197C(POKEATHLON_SAV *pokeathlonSave);
 void *sub_02031984(POKEATHLON_SAV *pokeathlonSave);
 void *sub_02031990(POKEATHLON_SAV *pokeathlonSave);
+Pokeathlon_UnkSubStruct_B00 *sub_0203199C(POKEATHLON_SAV *pokeathlonSave);
+POKEATHLON_SAV *sub_020319A4(POKEATHLON_SAV *pokeathlon);
+
+Pokeathlon_UnkSubStruct_B00 *sub_020319F0(POKEATHLON_SAV *pokeathlonSave);
+void SavePokeathlon_AddAthletePoints(POKEATHLON_SAV *pokeathlonSave, u16 amount);
+void SavePokeathlon_SubAthletePoints(POKEATHLON_SAV *pokeathlonSave, u16 amount);
+u32 SavePokeathlon_GetAthletePoints(POKEATHLON_SAV *pokeathlonSave);
 
 #endif // POKEHEARTGOLD_POKEATHLON_SAVE_H

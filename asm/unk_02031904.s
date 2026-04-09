@@ -6,67 +6,14 @@
 
 	.extern Save_Pokeathlon_sizeof
 	.extern Save_Pokeathlon_Init
-
-	thumb_func_start Save_Pokeathlon_Get
-Save_Pokeathlon_Get: ; 0x02031968
-	ldr r3, _02031970 ; =SaveArray_Get
-	mov r1, #0x25
-	bx r3
-	nop
-_02031970: .word SaveArray_Get
-	thumb_func_end Save_Pokeathlon_Get
-
-	thumb_func_start sub_02031974
-sub_02031974: ; 0x02031974
-	bx lr
-	.balign 4, 0
-	thumb_func_end sub_02031974
-
-	thumb_func_start sub_02031978
-sub_02031978: ; 0x02031978
-	add r0, #0xdc
-	bx lr
-	thumb_func_end sub_02031978
-
-	thumb_func_start sub_0203197C
-sub_0203197C: ; 0x0203197C
-	mov r1, #0xb3
-	lsl r1, r1, #2
-	add r0, r0, r1
-	bx lr
-	thumb_func_end sub_0203197C
-
-	thumb_func_start sub_02031984
-sub_02031984: ; 0x02031984
-	ldr r1, _0203198C ; =0x00000484
-	add r0, r0, r1
-	bx lr
-	nop
-_0203198C: .word 0x00000484
-	thumb_func_end sub_02031984
-
-	thumb_func_start sub_02031990
-sub_02031990: ; 0x02031990
-	ldr r1, _02031998 ; =0x00000AEC
-	add r0, r0, r1
-	bx lr
-	nop
-_02031998: .word 0x00000AEC
-	thumb_func_end sub_02031990
-
-	thumb_func_start sub_0203199C
-sub_0203199C: ; 0x0203199C
-	mov r1, #0xb
-	lsl r1, r1, #8
-	add r0, r0, r1
-	bx lr
-	thumb_func_end sub_0203199C
-
-	thumb_func_start sub_020319A4
-sub_020319A4: ; 0x020319A4
-	bx lr
-	.balign 4, 0
-	thumb_func_end sub_020319A4
+	.extern Save_Pokeathlon_Get
+	.extern sub_02031974
+	.extern sub_02031978
+	.extern sub_0203197C
+	.extern sub_02031984
+	.extern sub_02031990
+	.extern sub_0203199C
+	.extern sub_020319A4
 
 	thumb_func_start sub_020319A8
 sub_020319A8: ; 0x020319A8

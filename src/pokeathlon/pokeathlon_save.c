@@ -16,3 +16,35 @@ void Save_Pokeathlon_Init(POKEATHLON_SAV *dest) {
         }
     }
 }
+
+POKEATHLON_SAV *Save_Pokeathlon_Get(SaveData *saveData) {
+    return SaveArray_Get(saveData, 0x25);
+}
+
+POKEATHLON_SAV *sub_02031974(POKEATHLON_SAV *pokeathlon) {
+    return pokeathlon;
+}
+
+void *sub_02031978(POKEATHLON_SAV *pokeathlonSave) {
+    return pokeathlonSave->unk_DC;
+}
+
+void *sub_0203197C(POKEATHLON_SAV *pokeathlonSave) {
+    return pokeathlonSave->unk_2CC;
+}
+
+void *sub_02031984(POKEATHLON_SAV *pokeathlonSave) {
+    return pokeathlonSave->unk_484;
+}
+
+void *sub_02031990(POKEATHLON_SAV *pokeathlonSave) {
+    return pokeathlonSave->unk_AEC;
+}
+
+Pokeathlon_UnkSubStruct_B00 *sub_0203199C(POKEATHLON_SAV *pokeathlonSave) {
+    return &pokeathlonSave->unk_B00;
+}
+
+POKEATHLON_SAV *sub_020319A4(POKEATHLON_SAV *pokeathlon) {
+    return pokeathlon;
+}
