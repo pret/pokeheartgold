@@ -761,7 +761,7 @@ BOOL ScrCmd_724(ScriptContext *ctx) {
     u8 unkVar = ScriptGetVar(ctx);
     u16 *unkPtrA = ScriptGetVarPointer(ctx);
 
-    Pokeathlon_UnkSubStruct_B00 *unkPtrB = sub_0203199C(Save_Pokeathlon_Get(ctx->fieldSystem->saveData));
+    Pokeathlon_UnkSubStruct_B00 *unkPtrB = Save_Pokeathlon_GetUnkB00(Save_Pokeathlon_Get(ctx->fieldSystem->saveData));
 
     if (unkVar <= 9) {
         *unkPtrA = ov01_02201B2C(unkPtrB->unk44[unkVar]);

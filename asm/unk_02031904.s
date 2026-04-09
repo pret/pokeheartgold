@@ -7,13 +7,13 @@
 	.extern Save_Pokeathlon_sizeof
 	.extern Save_Pokeathlon_Init
 	.extern Save_Pokeathlon_Get
-	.extern sub_02031974
-	.extern sub_02031978
-	.extern sub_0203197C
-	.extern sub_02031984
-	.extern sub_02031990
-	.extern sub_0203199C
-	.extern sub_020319A4
+	.extern Save_Pokeathlon_dummy1
+	.extern Save_Pokeathlon_GetUnkDC
+	.extern Save_Pokeathlon_GetUnk2CC
+	.extern Save_Pokeathlon_GetUnk484
+	.extern Save_Pokeathlon_GetUnkAEC
+	.extern Save_Pokeathlon_GetUnkB00
+	.extern Save_Pokeathlon_dummy2
 
 	thumb_func_start sub_020319A8
 sub_020319A8: ; 0x020319A8

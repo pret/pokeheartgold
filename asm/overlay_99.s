@@ -2789,7 +2789,7 @@ ov99_021E6F70: ; 0x021E6F70
 	bl GF_AssertFail
 _021E6F7C:
 	add r0, r5, #0
-	bl sub_02031990
+	bl Save_Pokeathlon_GetUnkAEC
 	mov r2, #0
 _021E6F84:
 	lsl r1, r2, #1
@@ -2851,13 +2851,13 @@ ov99_021E6FD0: ; 0x021E6FD0
 	ldr r6, [r5]
 	str r0, [sp, #8]
 	add r0, r6, #0
-	bl sub_02031974
+	bl Save_Pokeathlon_dummy1
 	add r5, r0, #0
 	add r0, r6, #0
-	bl sub_0203197C
+	bl Save_Pokeathlon_GetUnk2CC
 	str r0, [sp, #4]
 	add r0, r6, #0
-	bl sub_02031978
+	bl Save_Pokeathlon_GetUnkDC
 	str r0, [sp]
 	mov r2, #0
 	add r3, r4, #0

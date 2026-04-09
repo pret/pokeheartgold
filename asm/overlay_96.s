@@ -3041,7 +3041,7 @@ _021E7416:
 	ldr r0, [r5, r0]
 	ldr r0, [r0]
 	bl Save_Pokeathlon_Get
-	bl sub_0203199C
+	bl Save_Pokeathlon_GetUnkB00
 	add r6, r0, #0
 	bl sub_02031B10
 	lsl r4, r0, #2
@@ -3472,10 +3472,10 @@ _021E7784:
 	b _021E780A
 _021E77A8:
 	add r0, r6, #0
-	bl sub_0203197C
+	bl Save_Pokeathlon_GetUnk2CC
 	str r0, [sp, #4]
 	add r0, r6, #0
-	bl sub_02031990
+	bl Save_Pokeathlon_GetUnkAEC
 	add r2, r0, #0
 	ldr r1, [sp, #4]
 	add r0, r5, #0
@@ -3487,7 +3487,7 @@ _021E77A8:
 	lsr r0, r0, #0x1f
 	beq _021E77FC
 	add r0, r6, #0
-	bl sub_020319A4
+	bl Save_Pokeathlon_dummy2
 	add r1, r0, #0
 	add r0, r5, #0
 	bl ov96_021E786C
@@ -3497,7 +3497,7 @@ _021E77A8:
 	cmp r0, #0
 	bne _021E77FC
 	add r0, r6, #0
-	bl sub_020319A4
+	bl Save_Pokeathlon_dummy2
 	bl ov96_021E8060
 	cmp r0, #0
 	beq _021E77FC
@@ -4662,7 +4662,7 @@ _021E8098:
 	ldrh r0, [r1, r0]
 	sub r5, r0, #1
 	add r0, r7, #0
-	bl sub_02031978
+	bl Save_Pokeathlon_GetUnkDC
 	ldrb r0, [r0, r5]
 	cmp r0, #0x1f
 	bne _021E80B6
@@ -13295,7 +13295,7 @@ _021EC0B0:
 	add r0, r6, #0
 	bl PokeathlonCourse_GetSaveData
 	bl Save_Pokeathlon_Get
-	bl sub_020319A4
+	bl Save_Pokeathlon_dummy2
 	add r1, r4, #0
 	add r1, #0x9c
 	ldr r1, [r1]

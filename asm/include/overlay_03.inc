@@ -122,7 +122,7 @@
 .public SafariZone_SetLinkLeaderFromProfile
 .public SafariZone_RemoveObjectFromArea
 .public Save_Pokeathlon_Get
-.public sub_0203199C
+.public Save_Pokeathlon_GetUnkB00
 .public SavePokeathlon_SubAthletePoints
 .public SavePokeathlon_GetAthletePoints
 .public sub_02031A78

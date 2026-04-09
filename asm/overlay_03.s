@@ -9961,7 +9961,7 @@ ov03_02258CFC: ; 0x02258CFC
 	ldr r0, [r5, #0xc]
 	bl Save_Pokeathlon_Get
 	str r0, [r4, #0x20]
-	bl sub_0203199C
+	bl Save_Pokeathlon_GetUnkB00
 	str r0, [r4, #0x24]
 	ldr r0, [r5, #0x10]
 	ldr r1, _02258D38 ; =ov03_02258D3C

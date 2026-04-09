@@ -21,30 +21,30 @@ POKEATHLON_SAV *Save_Pokeathlon_Get(SaveData *saveData) {
     return SaveArray_Get(saveData, 0x25);
 }
 
-POKEATHLON_SAV *sub_02031974(POKEATHLON_SAV *pokeathlon) {
+POKEATHLON_SAV *Save_Pokeathlon_dummy1(POKEATHLON_SAV *pokeathlon) {
     return pokeathlon;
 }
 
-void *sub_02031978(POKEATHLON_SAV *pokeathlonSave) {
+void *Save_Pokeathlon_GetUnkDC(POKEATHLON_SAV *pokeathlonSave) {
     return pokeathlonSave->unk_DC;
 }
 
-void *sub_0203197C(POKEATHLON_SAV *pokeathlonSave) {
+Pokeathlon_UnkSubStruct_2C *Save_Pokeathlon_GetUnk2CC(POKEATHLON_SAV *pokeathlonSave) {
     return pokeathlonSave->unk_2CC;
 }
 
-void *sub_02031984(POKEATHLON_SAV *pokeathlonSave) {
+Pokeathlon_UnkSubStruct_A4 *Save_Pokeathlon_GetUnk484(POKEATHLON_SAV *pokeathlonSave) {
     return pokeathlonSave->unk_484;
 }
 
-void *sub_02031990(POKEATHLON_SAV *pokeathlonSave) {
+void *Save_Pokeathlon_GetUnkAEC(POKEATHLON_SAV *pokeathlonSave) {
     return pokeathlonSave->unk_AEC;
 }
 
-Pokeathlon_UnkSubStruct_B00 *sub_0203199C(POKEATHLON_SAV *pokeathlonSave) {
+Pokeathlon_UnkSubStruct_B00 *Save_Pokeathlon_GetUnkB00(POKEATHLON_SAV *pokeathlonSave) {
     return &pokeathlonSave->unk_B00;
 }
 
-POKEATHLON_SAV *sub_020319A4(POKEATHLON_SAV *pokeathlon) {
+POKEATHLON_SAV *Save_Pokeathlon_dummy2(POKEATHLON_SAV *pokeathlon) {
     return pokeathlon;
 }

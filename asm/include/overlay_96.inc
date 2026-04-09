@@ -296,11 +296,11 @@
 .public PlayerProfile_GetLanguage
 .public Options_GetTextFrameDelay
 .public Save_Pokeathlon_Get
-.public sub_02031978
-.public sub_0203197C
-.public sub_02031990
-.public sub_0203199C
-.public sub_020319A4
+.public Save_Pokeathlon_GetUnkDC
+.public Save_Pokeathlon_GetUnk2CC
+.public Save_Pokeathlon_GetUnkAEC
+.public Save_Pokeathlon_GetUnkB00
+.public Save_Pokeathlon_dummy2
 .public sub_020319DC
 .public sub_020319E4
 .public sub_020319F0
