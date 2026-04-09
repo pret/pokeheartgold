@@ -297,12 +297,12 @@
 .public Options_GetTextFrameDelay
 .public PokeathlonSave_Get
 .public PokeathlonSave_GetUnkDC
-.public PokeathlonSave_GetUnk2CC
+.public PokeathlonSave_GetRecordsSolo
 .public PokeathlonSave_GetUnkAEC
 .public PokeathlonSave_GetUnkB00
 .public PokeathlonSave_dummy2
-.public PokeathlonSave_GetAgainUnk2CC
-.public PokeathlonSave_GetAgainUnk484
+.public PokeathlonSave_GetRecordsSolo2
+.public PokeathlonSave_GetRecordsLink2
 .public PokeathlonSave_GetAgainUnkB00
 .public PokeathlonSave_SetUnkDC_AtIndex
 .public PokeathlonSave_AddAthletePoints

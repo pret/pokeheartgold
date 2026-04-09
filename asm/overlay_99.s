@@ -2854,7 +2854,7 @@ ov99_021E6FD0: ; 0x021E6FD0
 	bl PokeathlonSave_dummy1
 	add r5, r0, #0
 	add r0, r6, #0
-	bl PokeathlonSave_GetUnk2CC
+	bl PokeathlonSave_GetRecordsSolo
 	str r0, [sp, #4]
 	add r0, r6, #0
 	bl PokeathlonSave_GetUnkDC

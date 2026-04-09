@@ -725,8 +725,8 @@ PokeathlonEventRecordArgs *PokeathlonEventRecord_LaunchApp(FieldSystem *fieldSys
     PokeathlonEventRecordArgs *args = Heap_AllocAtEnd(HEAP_ID_FIELD2, sizeof(PokeathlonEventRecordArgs));
     SaveData *saveData = FieldSystem_GetSaveData(fieldSystem);
     POKEATHLON_SAV *pokeathlonSave = PokeathlonSave_Get(saveData);
-    args->unk0 = PokeathlonSave_GetUnk2CC(pokeathlonSave);
-    args->unk4 = PokeathlonSave_GetUnk484(pokeathlonSave);
+    args->recordsSolo = PokeathlonSave_GetRecordsSolo(pokeathlonSave);
+    args->recordsLink = PokeathlonSave_GetRecordsLink(pokeathlonSave);
     args->profile = Save_PlayerData_GetProfile(saveData);
     args->unk10 = sub_0203EE54(saveData);
     args->unk8 = PokeathlonSave_GetUnkAEC(pokeathlonSave);

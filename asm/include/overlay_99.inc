@@ -79,7 +79,7 @@
 .public Pokedex_GetSeenFormByIdx
 .public PokeathlonSave_dummy1
 .public PokeathlonSave_GetUnkDC
-.public PokeathlonSave_GetUnk2CC
+.public PokeathlonSave_GetRecordsSolo
 .public PokeathlonSave_GetUnkAEC
 .public GetGenderBySpeciesAndPersonality
 .public G2x_SetBlendAlpha_

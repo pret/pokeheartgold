@@ -14,8 +14,8 @@ typedef struct PokeathlonMedalsArgs {
 } PokeathlonMedalsArgs;
 
 typedef struct PokeathlonEventRecordArgs {
-    void *unk0;
-    void *unk4;
+    Pokeathlon_RecordsSolo *recordsSolo;
+    Pokeathlon_RecordsLink *recordsLink;
     void *unk8;
     PlayerProfile *profile;
     BOOL unk10;

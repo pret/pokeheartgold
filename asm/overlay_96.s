@@ -3465,14 +3465,14 @@ _021E7784:
 	cmp r0, #1
 	bne _021E77A8
 	add r0, r6, #0
-	bl PokeathlonSave_GetAgainUnk484
+	bl PokeathlonSave_GetRecordsLink2
 	add r1, r0, #0
 	add r0, r5, #0
 	bl ov96_021E7A2C
 	b _021E780A
 _021E77A8:
 	add r0, r6, #0
-	bl PokeathlonSave_GetUnk2CC
+	bl PokeathlonSave_GetRecordsSolo
 	str r0, [sp, #4]
 	add r0, r6, #0
 	bl PokeathlonSave_GetUnkAEC
@@ -3506,7 +3506,7 @@ _021E77A8:
 	bl Save_VarsFlags_SetFlagInArray
 _021E77FC:
 	add r0, r6, #0
-	bl PokeathlonSave_GetAgainUnk2CC
+	bl PokeathlonSave_GetRecordsSolo2
 	add r1, r0, #0
 	add r0, r5, #0
 	bl ov96_021E7938
@@ -4686,7 +4686,7 @@ ov96_021E80C4: ; 0x021E80C4
 	ldr r0, [r0, r1]
 	ldr r0, [r0]
 	bl PokeathlonSave_Get
-	bl PokeathlonSave_GetAgainUnk2CC
+	bl PokeathlonSave_GetRecordsSolo2
 	ldr r6, _021E8110 ; =ov96_0221A894
 	ldr r7, _021E8114 ; =_0221A7D8
 	add r5, r0, #0
@@ -5101,12 +5101,12 @@ _021E83C0:
 	cmp r0, #1
 	bne _021E83DE
 	add r0, r6, #0
-	bl PokeathlonSave_GetAgainUnk484
+	bl PokeathlonSave_GetRecordsLink2
 	mov r1, #0xa4
 	b _021E83E6
 _021E83DE:
 	add r0, r6, #0
-	bl PokeathlonSave_GetAgainUnk2CC
+	bl PokeathlonSave_GetRecordsSolo2
 	mov r1, #0x2c
 _021E83E6:
 	mul r1, r4
@@ -20175,7 +20175,7 @@ ov96_021EF5F4: ; 0x021EF5F4
 	add r4, r1, #0
 	bl PokeathlonCourse_GetSaveData
 	bl PokeathlonSave_Get
-	bl PokeathlonSave_GetAgainUnk2CC
+	bl PokeathlonSave_GetRecordsSolo2
 	mov r1, #0x2c
 	mul r1, r4
 	ldrh r0, [r0, r1]

@@ -11,14 +11,14 @@ void PokeathlonSave_Init(POKEATHLON_SAV *dest) {
     
     for (i = 0; i < 10; i++) {
         for (j = 0; j < 5; j++) {
-            dest->unk_2CC[i].entries[j].unk_0 = 0xFFFF;
-            dest->unk_484[i].entries[j].unk_0 = 0xFFFF;
+            dest->recordsSolo[i].entries[j].unk_0 = 0xFFFF;
+            dest->recordsLink[i].entries[j].unk_0 = 0xFFFF;
         }
     }
 }
 
 POKEATHLON_SAV *PokeathlonSave_Get(SaveData *saveData) {
-    return SaveArray_Get(saveData, 0x25);
+    return SaveArray_Get(saveData, SAVE_POKEATHLON);
 }
 
 POKEATHLON_SAV *PokeathlonSave_dummy1(POKEATHLON_SAV *pokeathlon) {
@@ -29,12 +29,12 @@ void *PokeathlonSave_GetUnkDC(POKEATHLON_SAV *pokeathlonSave) {
     return pokeathlonSave->unk_DC;
 }
 
-Pokeathlon_UnkSubStruct_2C *PokeathlonSave_GetUnk2CC(POKEATHLON_SAV *pokeathlonSave) {
-    return pokeathlonSave->unk_2CC;
+Pokeathlon_RecordsSolo *PokeathlonSave_GetRecordsSolo(POKEATHLON_SAV *pokeathlonSave) {
+    return pokeathlonSave->recordsSolo;
 }
 
-Pokeathlon_UnkSubStruct_A4 *PokeathlonSave_GetUnk484(POKEATHLON_SAV *pokeathlonSave) {
-    return pokeathlonSave->unk_484;
+Pokeathlon_RecordsLink *PokeathlonSave_GetRecordsLink(POKEATHLON_SAV *pokeathlonSave) {
+    return pokeathlonSave->recordsLink;
 }
 
 void *PokeathlonSave_GetUnkAEC(POKEATHLON_SAV *pokeathlonSave) {
@@ -65,12 +65,12 @@ BOOL PokeathlonSave_GetUnkDC_AtIndex(POKEATHLON_SAV *pokeathlonSave, int a0, int
     return 1;
 }
 
-Pokeathlon_UnkSubStruct_2C *PokeathlonSave_GetAgainUnk2CC(POKEATHLON_SAV *pokeathlonSave) {
-    return pokeathlonSave->unk_2CC;
+Pokeathlon_RecordsSolo *PokeathlonSave_GetRecordsSolo2(POKEATHLON_SAV *pokeathlonSave) {
+    return pokeathlonSave->recordsSolo;
 }
 
-Pokeathlon_UnkSubStruct_A4 *PokeathlonSave_GetAgainUnk484(POKEATHLON_SAV *pokeathlonSave) {
-    return pokeathlonSave->unk_484;
+Pokeathlon_RecordsLink *PokeathlonSave_GetRecordsLink2(POKEATHLON_SAV *pokeathlonSave) {
+    return pokeathlonSave->recordsLink;
 }
 
 Pokeathlon_UnkSubStruct_B00 *PokeathlonSave_GetAgainUnkB00(POKEATHLON_SAV *pokeathlonSave) {
