@@ -12,8 +12,8 @@
 	.extern PokeathlonCourse_GetParticipantData
 	.extern PokeathlonCourse_GetParticipantUnk04
 	.extern PokeathlonCourse_GetSaveData
-	.extern ov96_021E5D6C
-	.extern ov96_021E5D78
+	.extern PokeathlonCourse_GetFieldData
+	.extern PokeathlonCourse_GetFieldData_AtIndex
 	.extern ov96_021E5D88
 	.extern PokeathlonCourse_AllocPtr4FromHeap
 	.extern PokeathlonCourse_FreePtr4HeapAlloc
@@ -2748,7 +2748,7 @@ ov96_021E74E0: ; 0x021E74E0
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	mov r1, #0
-	bl ov96_021E5D78
+	bl PokeathlonCourse_GetFieldData_AtIndex
 	add r4, r0, #0
 	bl ov96_021E9A1C
 	add r6, r0, #0
@@ -3043,7 +3043,7 @@ ov96_021E7718: ; 0x021E7718
 	bl Save_Pokeathlon_Get
 	add r6, r0, #0
 	add r0, r5, #0
-	bl ov96_021E5D6C
+	bl PokeathlonCourse_GetFieldData
 	add r4, r0, #0
 	mov r0, #0x7e
 	lsl r0, r0, #2
@@ -7632,7 +7632,7 @@ ov96_021E98F4: ; 0x021E98F4
 	lsl r1, r4, #0x18
 	ldr r0, [sp]
 	lsr r1, r1, #0x18
-	bl ov96_021E5D78
+	bl PokeathlonCourse_GetFieldData_AtIndex
 	add r5, r0, #0
 	mov r6, #0
 _021E991A:
@@ -7826,12 +7826,12 @@ _021E9A44: .word ov96_021E5F44
 
 	thumb_func_start ov96_021E9A48
 ov96_021E9A48: ; 0x021E9A48
-	ldr r3, _021E9A50 ; =ov96_021E5D78
+	ldr r3, _021E9A50 ; =PokeathlonCourse_GetFieldData_AtIndex
 	add r0, r1, #0
 	mov r1, #0
 	bx r3
 	.balign 4, 0
-_021E9A50: .word ov96_021E5D78
+_021E9A50: .word PokeathlonCourse_GetFieldData_AtIndex
 	thumb_func_end ov96_021E9A48
 
 	thumb_func_start ov96_021E9A54
@@ -16199,7 +16199,7 @@ ov96_021EDA58: ; 0x021EDA58
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x38
 	str r0, [sp]
-	bl ov96_021E5D6C
+	bl PokeathlonCourse_GetFieldData
 	str r0, [sp, #0x10]
 	ldr r0, [sp]
 	bl ov96_021E5F54
@@ -16558,7 +16558,7 @@ ov96_021EDCEC: ; 0x021EDCEC
 	add r7, r1, #0
 	add r4, r2, #0
 	add r5, r3, #0
-	bl ov96_021E5D6C
+	bl PokeathlonCourse_GetFieldData
 	add r6, r0, #0
 	cmp r4, #4
 	blo _021EDD02
@@ -16761,7 +16761,7 @@ ov96_021EDE64: ; 0x021EDE64
 	bl PokeathlonCourse_GetHeapAllocPtr4
 	str r0, [sp]
 	add r0, r4, #0
-	bl ov96_021E5D6C
+	bl PokeathlonCourse_GetFieldData
 	add r7, r0, #0
 	ldr r0, [sp]
 	add r0, #0x9c

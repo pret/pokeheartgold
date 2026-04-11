@@ -314,11 +314,11 @@ SaveData *PokeathlonCourse_GetSaveData(PokeathlonCourseData *data) {
     return data->args->saveData;
 }
 
-PokeathlonFieldData *ov96_021E5D6C(PokeathlonCourseData *data) {
+PokeathlonFieldData *PokeathlonCourse_GetFieldData(PokeathlonCourseData *data) {
     return data->fieldData;
 }
 
-PokeathlonFieldData *ov96_021E5D78(PokeathlonCourseData *data, int index) {
+PokeathlonFieldData *PokeathlonCourse_GetFieldData_AtIndex(PokeathlonCourseData *data, int index) {
     return &data->fieldData[index];
 }
 
@@ -375,7 +375,7 @@ u32 ov96_021E5E44(PokeathlonCourseData *data) {
 
 u32 ov96_021E5E58(PokeathlonCourseData *data, u8 index) {
     if (index >= data->maxParticipants) {
-        GF_AssertFail(); // Cannot use GF_ASSERT because of the following early return
+        GF_ASSERT(FALSE);
         return 0;
     }
     return data->field_3D8[index];
@@ -474,11 +474,11 @@ u32 ov96_021E5FAC() {
 }
 
 void ov96_021E5FB0(PokeathlonCourseData *data, int index, u16 value) {
-    data->field_5E0[index*2] = value;
+    data->field_5E0[index][0] = value;
 }
 
 u16 ov96_021E5FBC(PokeathlonCourseData *data, int index) {
-    return data->field_5F0[index*2];
+    return data->field_5F0[index][0];
 }
 
 void ov96_021E5FC8(PokeathlonCourseData *data, u8 value) {

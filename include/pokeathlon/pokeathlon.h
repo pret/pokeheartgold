@@ -101,8 +101,8 @@ struct PokeathlonCourseData {
     u32 field_3E8;                             // 0x3E8
     PokeathlonParticipantData participants[4]; // 0x3EC - 4 participant data elements (0x7C each = 0x1F0 bytes)
     PlayerProfile* playerProfiles;             // 0x5DC - Player profiles pointer (heap allocated, 4 profiles)
-    u16 field_5E0[8];                          // 0x5E0
-    u16 field_5F0[8];                          // 0x5F0
+    u16 field_5E0[4][2];                       // 0x5E0
+    u16 field_5F0[4][2];                       // 0x5F0
     u8 filler_600[0x14];                       // 0x600
     void *graphicsSystem;                      // 0x614 - Graphics/UI subsystem pointer
     u8 filler_618[0x112];                      // 0x618
@@ -134,8 +134,8 @@ u8 PokeathlonCourse_GetParticipantCount(PokeathlonCourseData *data);
 PokeathlonParticipantData *PokeathlonCourse_GetParticipantData(PokeathlonCourseData *data, int index);
 u8 *PokeathlonCourse_GetParticipantUnk04(PokeathlonCourseData *data, int index);
 SaveData *PokeathlonCourse_GetSaveData(PokeathlonCourseData *data);
-PokeathlonFieldData *ov96_021E5D6C(PokeathlonCourseData *data);
-PokeathlonFieldData *ov96_021E5D78(PokeathlonCourseData *data, int index);
+PokeathlonFieldData *PokeathlonCourse_GetFieldData(PokeathlonCourseData *data);
+PokeathlonFieldData *PokeathlonCourse_GetFieldData_AtIndex(PokeathlonCourseData *data, int index);
 void *ov96_021E5D88(PokeathlonCourseData *data);
 void *PokeathlonCourse_AllocPtr4FromHeap(PokeathlonCourseData *data, u32 size);
 void PokeathlonCourse_FreePtr4HeapAlloc(PokeathlonCourseData *data);
