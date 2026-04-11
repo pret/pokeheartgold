@@ -24,6 +24,7 @@
 #include "sys_task.h"
 #include "sys_task_api.h"
 #include "terrain_attributes.h"
+#include "unk_02092BB8.h"
 
 typedef struct FollowMon {
     LocalMapObject *mapObject;
@@ -149,7 +150,7 @@ struct FieldSystem {
     void *unk9C;
     UnkStruct_Fsys_A0 *unkA0;
     Save_LinkBattleRuleset *linkBattleRuleset;
-    struct UnkStruct_02092BB8 *unkA8;
+    UnkStruct_02092BB8 *unkA8;
     u32 unkAC;
     void *unkB0;
     s64 unkB4;

@@ -314,7 +314,7 @@ Static main
     Object src/save_data_read_error.o
     Object src/save_data_write_error.o
     Object asm/unk_02092B04.o
-    Object asm/unk_02092BB8.o
+    Object src/unk_02092BB8.o
     Object src/unk_02092BE8.o
     Object src/mom_gift.o
     Object src/unk_020932A4.o
