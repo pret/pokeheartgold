@@ -51,12 +51,12 @@ POKEATHLON_SAV *PokeathlonSave_dummy2(POKEATHLON_SAV *pokeathlon) {
 
 BOOL PokeathlonSave_GetUnkDC_AtIndex(POKEATHLON_SAV *pokeathlonSave, int a0, int a1) {
     if (a0 < 0 || a0 > 4) {
-        GF_AssertFail();
+        GF_ASSERT(FALSE);
         return 0;
     }
     int index = a1 - 1;
     if (index < 0) {
-        GF_AssertFail();
+        GF_ASSERT(FALSE);
         return 0;
     }
     if (!(((int)pokeathlonSave->unk_DC[index]) >> a0 & 1)) {
@@ -81,7 +81,7 @@ void PokeathlonSave_SetUnkDC_AtIndex(POKEATHLON_SAV *pokeathlonSave, int a0, int
     u8 i, bit;
     int index = a1 - 1;
     if (index < 0) {
-        GF_AssertFail();
+        GF_ASSERT(FALSE);
         return;
     }
     for (i = 0; i < 5; i++) {
