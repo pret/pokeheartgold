@@ -251,10 +251,10 @@ ov45_0222A0F0: ; 0x0222A0F0
 	bl UnkStruct_020318C8_Get
 	ldr r1, [sp]
 	add r4, r0, #0
-	bl UnkStruct_020318C8_SetUnk0
+	bl UnkStruct_020318C8_SetActivityId
 	ldr r1, [sp, #4]
 	add r0, r4, #0
-	bl UnkStruct_020318C8_SetUnk4
+	bl UnkStruct_020318C8_SetRank
 	ldr r0, _0222A158 ; =0x00000508
 	add r0, r6, r0
 	bl ov45_0222BCD8

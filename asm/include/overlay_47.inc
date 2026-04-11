@@ -107,8 +107,8 @@
 .public Options_GetTextFrameDelay
 .public Options_GetFrame
 .public UnkStruct_020318C8_Get
-.public UnkStruct_020318C8_GetUnk0
-.public UnkStruct_020318C8_GetUnk4
+.public UnkStruct_020318C8_GetActivityId
+.public UnkStruct_020318C8_GetRank
 .public sub_0203A880
 .public NNS_G2dInitOamManagerModule
 .public memset

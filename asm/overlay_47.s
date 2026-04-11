@@ -2114,10 +2114,10 @@ _0225987C:
 	ldr r0, [r6]
 	bl UnkStruct_020318C8_Get
 	add r5, r0, #0
-	bl UnkStruct_020318C8_GetUnk0
+	bl UnkStruct_020318C8_GetActivityId
 	str r0, [sp, #0x18]
 	add r0, r5, #0
-	bl UnkStruct_020318C8_GetUnk4
+	bl UnkStruct_020318C8_GetRank
 	str r0, [sp, #0x1c]
 	ldr r0, [r6, #4]
 	bl ov45_0222A53C

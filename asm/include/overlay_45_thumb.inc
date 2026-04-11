@@ -123,8 +123,8 @@
 .public Save_GameStats_Get
 .public GameStats_Inc
 .public UnkStruct_020318C8_Get
-.public UnkStruct_020318C8_SetUnk0
-.public UnkStruct_020318C8_SetUnk4
+.public UnkStruct_020318C8_SetActivityId
+.public UnkStruct_020318C8_SetRank
 .public sub_020393C8
 .public sub_020397FC
 .public sub_02039FD8
