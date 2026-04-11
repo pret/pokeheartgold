@@ -122,9 +122,9 @@
 .public WiFiHistory_GetPlayerRegion
 .public Save_GameStats_Get
 .public GameStats_Inc
-.public sub_020318E8
-.public sub_020318FC
-.public sub_02031900
+.public UnkStruct_020318C8_Get
+.public UnkStruct_020318C8_SetUnk0
+.public UnkStruct_020318C8_SetUnk4
 .public sub_020393C8
 .public sub_020397FC
 .public sub_02039FD8

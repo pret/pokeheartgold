@@ -2112,12 +2112,12 @@ _0225985C:
 	b _02259948
 _0225987C:
 	ldr r0, [r6]
-	bl sub_020318E8
+	bl UnkStruct_020318C8_Get
 	add r5, r0, #0
-	bl sub_020318F4
+	bl UnkStruct_020318C8_GetUnk0
 	str r0, [sp, #0x18]
 	add r0, r5, #0
-	bl sub_020318F8
+	bl UnkStruct_020318C8_GetUnk4
 	str r0, [sp, #0x1c]
 	ldr r0, [r6, #4]
 	bl ov45_0222A53C

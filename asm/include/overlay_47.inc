@@ -106,9 +106,9 @@
 .public PlayerProfile_New
 .public Options_GetTextFrameDelay
 .public Options_GetFrame
-.public sub_020318E8
-.public sub_020318F4
-.public sub_020318F8
+.public UnkStruct_020318C8_Get
+.public UnkStruct_020318C8_GetUnk0
+.public UnkStruct_020318C8_GetUnk4
 .public sub_0203A880
 .public NNS_G2dInitOamManagerModule
 .public memset

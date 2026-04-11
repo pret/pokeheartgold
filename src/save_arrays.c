@@ -50,7 +50,7 @@ DECL_CHUNK_EX(sub_0202E41C, sub_0202E424)
 DECL_CHUNK_EX(sub_0202C034, sub_0202C03C)
 DECL_CHUNK_EX(sub_02031AF0, sub_02031AF4)
 DECL_CHUNK_EX(sub_0203170C, sub_02031710)
-DECL_CHUNK_EX(sub_020318C8, sub_020318CC)
+DECL_CHUNK_EX(UnkStruct_020318C8_Sizeof, UnkStruct_020318C8_Init)
 DECL_CHUNK(Save_Pokeathlon)
 DECL_CHUNK(Save_ApricornBox)
 
@@ -250,8 +250,8 @@ const struct SaveChunkHeader gSaveChunkHeaders[] = {
     {
      SAVE_UNK_32,
      0,
-     (SAVESIZEFN)sub_020318C8,
-     (SAVEINITFN)sub_020318CC,
+     (SAVESIZEFN)UnkStruct_020318C8_Sizeof,
+     (SAVEINITFN)UnkStruct_020318C8_Init,
      },
     {
      SAVE_FOLLOW_MON,
