@@ -24,6 +24,7 @@
 #include "sys_task.h"
 #include "sys_task_api.h"
 #include "terrain_attributes.h"
+#include "unk_02092BB8.h"
 
 typedef struct FollowMon {
     LocalMapObject *mapObject;
