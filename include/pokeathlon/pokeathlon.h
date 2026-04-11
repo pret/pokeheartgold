@@ -67,6 +67,11 @@ typedef struct PokeathlonCourseState {
     u32 exitFlag;       // [3] 0x3C0 - Exit flag
 } PokeathlonCourseState;
 
+// Unknown sub-structure at offset 0x974 (0x74 bytes)
+typedef struct PokeathlonUnkSubStruct_974 {
+    u8 data[0x74]; // Opaque data for now
+} PokeathlonUnkSubStruct_974;
+
 // Pokeathlon course data structure (0xD70 = 3440 bytes)
 struct PokeathlonCourseData {
     u32 field_0[4];                            // 0x000
@@ -110,8 +115,8 @@ struct PokeathlonCourseData {
     u8 filler_72B[1];                          // 0x72B
     PokeathlonFieldData fieldData[6];          // 0x72C - Array of PokeathlonFieldData (6 * 0x60 = 0x1E0 bytes)
     u8 filler_96C[8];                          // 0x96C
-    u8 filler_974[0x1D8];                      // 0x974
-    u8 filler_B4C[0x58];                       // 0xB4C
+    PokeathlonUnkSubStruct_974 field_974[4];   // 0x974 - Array of 4 unknown sub-structures (0x74 bytes each = 0x1D0 bytes)
+    u8 filler_B44[0x60];                       // 0xB44
     u8 filler_BA4[0x180];                      // 0xBA4
     s32 frameCounter;                          // 0xD24 - Increments every 0x708 frames (max 0xEA5F)
     u16 frameTimer;                            // 0xD28 - Frame counter, resets at 0x708
@@ -159,7 +164,7 @@ void ov96_021E5F10(PokeathlonCourseData *data);
 void *PokeathlonCourse_GetSystem(PokeathlonCourseData *data);
 BOOL ov96_021E5F24(PokeathlonCourseData *data);
 PlayerProfile *ov96_021E5F34(PokeathlonCourseData *data, int index);
-void *ov96_021E5F44(PokeathlonCourseData *data, int index);
+PokeathlonUnkSubStruct_974 *ov96_021E5F44(PokeathlonCourseData *data, int index);
 u8 *ov96_021E5F54(PokeathlonCourseData *data);
 void ov96_021E5F5C(PokeathlonCourseData *data);
 void ov96_021E5F70(PokeathlonCourseData *data, u32 a0, u32 a1, u32 a2);

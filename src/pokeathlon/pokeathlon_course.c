@@ -434,8 +434,8 @@ PlayerProfile *ov96_021E5F34(PokeathlonCourseData *data, int index) {
     return PokeathlonCourse_GetPlayerProfile(data->playerProfiles, index);
 }
 
-void *ov96_021E5F44(PokeathlonCourseData *data, int index) {
-    return &data->filler_974[index * 0x74];
+PokeathlonUnkSubStruct_974 *ov96_021E5F44(PokeathlonCourseData *data, int index) {
+    return &data->field_974[index];
 }
 
 u8 *ov96_021E5F54(PokeathlonCourseData *data) {
