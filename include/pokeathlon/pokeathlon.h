@@ -108,7 +108,9 @@ struct PokeathlonCourseData {
     u8 filler_618[0x112];                      // 0x618
     u8 maxParticipants;                        // 0x72A - Maximum participant limit (3 or 4)
     u8 filler_72B[1];                          // 0x72B
-    PokeathlonFieldData fieldData[11];         // 0x72C - Array of PokeathlonFieldData (11 * 0x60 = 0x420 bytes)
+    PokeathlonFieldData fieldData[6];          // 0x72C - Array of PokeathlonFieldData (6 * 0x60 = 0x1E0 bytes)
+    u8 filler_96C[8];                          // 0x96C
+    u8 filler_974[0x1D8];                      // 0x974
     u8 filler_B4C[0x58];                       // 0xB4C
     u8 filler_BA4[0x180];                      // 0xBA4
     s32 frameCounter;                          // 0xD24 - Increments every 0x708 frames (max 0xEA5F)

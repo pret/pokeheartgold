@@ -435,11 +435,7 @@ PlayerProfile *ov96_021E5F34(PokeathlonCourseData *data, int index) {
 }
 
 void *ov96_021E5F44(PokeathlonCourseData *data, int index) {
-    //0x974;
-    //data->fieldData; // 0x72C;
-    //0x974 - 0x72C; // r2 = fieldData + 0x248
-    //index * 0x74; // r0
-    return (void *)((u8 *)data + 0x974 + index * 0x74); // r2+r0
+    return &data->filler_974[index * 0x74];
 }
 
 u8 *ov96_021E5F54(PokeathlonCourseData *data) {
