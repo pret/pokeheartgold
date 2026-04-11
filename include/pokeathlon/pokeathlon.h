@@ -158,7 +158,7 @@ u32 PokeathlonCourse_GetField3D8_AtIndex(PokeathlonCourseData *data, u8 index);
 u32 ov96_021E5E7C(PokeathlonCourseData *data);
 u32 PokeathlonCourse_GetCurrentParticipantIndex(PokeathlonCourseData *data);
 u32 PokeathlonCourse_GetMode(PokeathlonCourseData *data);
-u8 ov96_021E5EF4(PokeathlonCourseData *data);
+u8 PokeathlonCourse_GetField1EF(PokeathlonCourseData *data);
 void PokeathlonCourse_IncrementField1EF(PokeathlonCourseData *data);
 void PokeathlonCourse_ResetField1EF(PokeathlonCourseData *data);
 void *PokeathlonCourse_GetSystem(PokeathlonCourseData *data);
@@ -173,10 +173,10 @@ u32 PokeathlonCourse_GetField3A4(PokeathlonCourseData *data);
 u32 PokeathlonCourse_GetUnkConstant4();
 void PokeathlonCourse_SetField5E0_AtIndex(PokeathlonCourseData *data, int index, u16 value);
 u16 PokeathlonCourse_GetField5F0_AtIndex(PokeathlonCourseData *data, int index);
-void ov96_021E5FC8(PokeathlonCourseData *data, u8 value);
-void ov96_021E5FEC(PokeathlonCourseData *data, u8 value, u8 value2);
-void ov96_021E601C(PokeathlonCourseData *data, u32 transitionType);
-void ov96_021E6030(PokeathlonCourseData *data);
+void PokeathlonCourse_SetStateField07(PokeathlonCourseData *data, u8 value);
+void PokeathlonCourse_SetStateField07_IfDifferent(PokeathlonCourseData *data, u8 value, u8 value2);
+void PokeathlonCourse_SetStateTransitionType(PokeathlonCourseData *data, u32 transitionType);
+void PokeathlonCourse_SetVBlankIntrCB(PokeathlonCourseData *data);
 void *PokeathlonCourse_GetGraphicsSystem(PokeathlonCourseData *data);
 
 // Internal overlay 96 functions (stubs for now, in assembly)

@@ -410,7 +410,7 @@ u32 PokeathlonCourse_GetMode(PokeathlonCourseData *data) {
     return data->args->mode;
 }
 
-u8 ov96_021E5EF4(PokeathlonCourseData *data) {
+u8 PokeathlonCourse_GetField1EF(PokeathlonCourseData *data) {
     return data->field_1EF;
 }
 
@@ -477,13 +477,13 @@ u16 PokeathlonCourse_GetField5F0_AtIndex(PokeathlonCourseData *data, int index) 
     return data->field_5F0[index][0];
 }
 
-void ov96_021E5FC8(PokeathlonCourseData *data, u8 value) {
+void PokeathlonCourse_SetStateField07(PokeathlonCourseData *data, u8 value) {
     GF_ASSERT(data->courseState.exitFlag != 1);
     data->courseState.exitFlag = 1;
     data->courseState.argsPtr->field_07 = value;
 }
 
-void ov96_021E5FEC(PokeathlonCourseData *data, u8 value, u8 value2) {
+void PokeathlonCourse_SetStateField07_IfDifferent(PokeathlonCourseData *data, u8 value, u8 value2) {
     if (data->courseState.argsPtr->field_07 != value2) {
         GF_ASSERT(data->courseState.exitFlag != 1);
         data->courseState.exitFlag = 1;
@@ -491,13 +491,13 @@ void ov96_021E5FEC(PokeathlonCourseData *data, u8 value, u8 value2) {
     }
 }
 
-void ov96_021E601C(PokeathlonCourseData *data, u32 transitionType) {
+void PokeathlonCourse_SetStateTransitionType(PokeathlonCourseData *data, u32 transitionType) {
     if (data->args->mode == 1) {
         data->courseState.transitionType = transitionType;
     }
 }
 
-void ov96_021E6030(PokeathlonCourseData *data) {
+void PokeathlonCourse_SetVBlankIntrCB(PokeathlonCourseData *data) {
     Main_SetVBlankIntrCB(ov96_021E75BC, data);
 }
 

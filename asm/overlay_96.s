@@ -29,7 +29,7 @@
 	.extern ov96_021E5E7C
 	.extern PokeathlonCourse_GetCurrentParticipantIndex
 	.extern PokeathlonCourse_GetMode
-	.extern ov96_021E5EF4
+	.extern PokeathlonCourse_GetField1EF
 	.extern PokeathlonCourse_IncrementField1EF
 	.extern PokeathlonCourse_ResetField1EF
 	.extern PokeathlonCourse_GetSystem
@@ -44,10 +44,10 @@
 	.extern PokeathlonCourse_GetUnkConstant4
 	.extern PokeathlonCourse_SetField5E0_AtIndex
 	.extern PokeathlonCourse_GetField5F0_AtIndex
-	.extern ov96_021E5FC8
-	.extern ov96_021E5FEC
-	.extern ov96_021E601C
-	.extern ov96_021E6030
+	.extern PokeathlonCourse_SetStateField07
+	.extern PokeathlonCourse_SetStateField07_IfDifferent
+	.extern PokeathlonCourse_SetStateTransitionType
+	.extern PokeathlonCourse_SetVBlankIntrCB
 	.extern PokeathlonCourse_GetGraphicsSystem
 
 	thumb_func_start ov96_021E604C
@@ -1092,7 +1092,7 @@ _021E67FC:
 	add r0, r4, #0
 	mov r1, #0x26
 	mov r2, #1
-	bl ov96_021E5FEC
+	bl PokeathlonCourse_SetStateField07_IfDifferent
 _021E680A:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
@@ -1128,21 +1128,21 @@ ov96_021E6814: ; 0x021E6814
 	strb r1, [r0, #0xe]
 	add r0, r4, #0
 	mov r1, #0x25
-	bl ov96_021E5FC8
+	bl PokeathlonCourse_SetStateField07
 	b _021E686C
 _021E6852:
 	mov r1, #0
 	strb r1, [r0, #0xe]
 	add r0, r4, #0
 	mov r1, #3
-	bl ov96_021E5FC8
+	bl PokeathlonCourse_SetStateField07
 	b _021E686C
 _021E6860:
 	mov r1, #0
 	strb r1, [r0, #0xe]
 	add r0, r4, #0
 	mov r1, #2
-	bl ov96_021E5FC8
+	bl PokeathlonCourse_SetStateField07
 _021E686C:
 	mov r0, #0
 	pop {r4, pc}
@@ -1262,7 +1262,7 @@ _021E692A:
 _021E6944:
 	add r0, r4, #0
 	mov r1, #3
-	bl ov96_021E5FC8
+	bl PokeathlonCourse_SetStateField07
 _021E694C:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
@@ -1293,7 +1293,7 @@ ov96_021E695C: ; 0x021E695C
 	beq _021E698A
 	add r0, r4, #0
 	mov r1, #0x26
-	bl ov96_021E5FC8
+	bl PokeathlonCourse_SetStateField07
 _021E698A:
 	mov r0, #0
 	pop {r4, pc}
@@ -1320,7 +1320,7 @@ ov96_021E6990: ; 0x021E6990
 	beq _021E69C0
 	add r0, r5, #0
 	mov r1, #0x26
-	bl ov96_021E5FC8
+	bl PokeathlonCourse_SetStateField07
 _021E69C0:
 	mov r0, #0
 	pop {r4, r5, r6, pc}
@@ -1350,7 +1350,7 @@ _021E69EA:
 	add r0, r4, #0
 	mov r1, #0x26
 	mov r2, #6
-	bl ov96_021E5FEC
+	bl PokeathlonCourse_SetStateField07_IfDifferent
 _021E69F8:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
@@ -1394,7 +1394,7 @@ _021E6A1E:
 	beq _021E6A4E
 	add r0, r4, #0
 	mov r1, #0x26
-	bl ov96_021E5FC8
+	bl PokeathlonCourse_SetStateField07
 _021E6A4E:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
@@ -1423,7 +1423,7 @@ ov96_021E6A54: ; 0x021E6A54
 	bl PokeathlonCourse_InitStateInfo
 	add r0, r4, #0
 	mov r1, #8
-	bl ov96_021E5FC8
+	bl PokeathlonCourse_SetStateField07
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
@@ -1454,10 +1454,10 @@ ov96_021E6A94: ; 0x021E6A94
 	bl ov96_021E87B0
 	add r0, r4, #0
 	mov r1, #6
-	bl ov96_021E601C
+	bl PokeathlonCourse_SetStateTransitionType
 	add r0, r4, #0
 	mov r1, #9
-	bl ov96_021E5FC8
+	bl PokeathlonCourse_SetStateField07
 	mov r0, #0
 	bl sub_02004AD8
 	ldr r1, _021E6AE4 ; =0x0000046F
@@ -1482,7 +1482,7 @@ ov96_021E6AE8: ; 0x021E6AE8
 	cmp r3, #0
 	bne _021E6B02
 	mov r1, #0xa
-	bl ov96_021E5FC8
+	bl PokeathlonCourse_SetStateField07
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 _021E6B02:
@@ -1527,7 +1527,7 @@ _021E6B1E:
 	str r1, [r4, r0]
 	add r0, r4, #0
 	mov r1, #0xa
-	bl ov96_021E5FC8
+	bl PokeathlonCourse_SetStateField07
 	b _021E6BB6
 _021E6B5A:
 	add r0, r4, #0
@@ -1597,7 +1597,7 @@ ov96_021E6BC0: ; 0x021E6BC0
 _021E6BDE:
 	add r0, r4, #0
 	mov r1, #0xb
-	bl ov96_021E5FC8
+	bl PokeathlonCourse_SetStateField07
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
@@ -1621,7 +1621,7 @@ ov96_021E6BEC: ; 0x021E6BEC
 	bl PokeathlonCourse_InitStateInfo
 	add r0, r4, #0
 	mov r1, #0xc
-	bl ov96_021E5FC8
+	bl PokeathlonCourse_SetStateField07
 	mov r0, #0
 	pop {r4, pc}
 	nop
@@ -1638,10 +1638,10 @@ ov96_021E6C20: ; 0x021E6C20
 	beq _021E6C3C
 	add r0, r4, #0
 	mov r1, #7
-	bl ov96_021E601C
+	bl PokeathlonCourse_SetStateTransitionType
 	add r0, r4, #0
 	mov r1, #0xd
-	bl ov96_021E5FC8
+	bl PokeathlonCourse_SetStateField07
 _021E6C3C:
 	mov r0, #0
 	pop {r4, pc}
@@ -1658,7 +1658,7 @@ ov96_021E6C40: ; 0x021E6C40
 	cmp r3, #0
 	bne _021E6C5A
 	mov r1, #0xe
-	bl ov96_021E5FC8
+	bl PokeathlonCourse_SetStateField07
 	mov r0, #0
 	pop {r4, pc}
 _021E6C5A:
@@ -1703,7 +1703,7 @@ _021E6C76:
 	str r1, [r4, r0]
 	add r0, r4, #0
 	mov r1, #0xe
-	bl ov96_021E5FC8
+	bl PokeathlonCourse_SetStateField07
 _021E6CB0:
 	mov r0, #0
 	pop {r4, pc}
@@ -1730,7 +1730,7 @@ ov96_021E6CB8: ; 0x021E6CB8
 _021E6CD6:
 	add r0, r4, #0
 	mov r1, #0xf
-	bl ov96_021E5FC8
+	bl PokeathlonCourse_SetStateField07
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
@@ -1777,7 +1777,7 @@ ov96_021E6CE4: ; 0x021E6CE4
 	bl PokeathlonCourse_InitStateInfo
 	add r0, r4, #0
 	mov r1, #0x10
-	bl ov96_021E5FC8
+	bl PokeathlonCourse_SetStateField07
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	nop
@@ -1810,7 +1810,7 @@ ov96_021E6D54: ; 0x021E6D54
 	bl ov96_021E87B0
 	add r0, r4, #0
 	mov r1, #8
-	bl ov96_021E601C
+	bl PokeathlonCourse_SetStateTransitionType
 	mov r0, #0x1f
 	lsl r0, r0, #4
 	ldr r1, [r4, r0]
@@ -1839,7 +1839,7 @@ _021E6DBA:
 	bl sub_020053A8
 	add r0, r4, #0
 	mov r1, #0x11
-	bl ov96_021E5FC8
+	bl PokeathlonCourse_SetStateField07
 	mov r0, #0x5c
 	bl GF_heap_c_dummy_return_true
 	cmp r0, #0
@@ -1880,16 +1880,16 @@ ov96_021E6DE8: ; 0x021E6DE8
 	beq _021E6E32
 	add r0, r4, #0
 	mov r1, #0x26
-	bl ov96_021E5FC8
+	bl PokeathlonCourse_SetStateField07
 	b _021E6E32
 _021E6E22:
 	add r0, r4, #0
 	mov r1, #0x26
-	bl ov96_021E5FC8
+	bl PokeathlonCourse_SetStateField07
 	b _021E6E32
 _021E6E2C:
 	mov r1, #0x12
-	bl ov96_021E5FC8
+	bl PokeathlonCourse_SetStateField07
 _021E6E32:
 	mov r0, #0
 	pop {r4, pc}
@@ -1907,7 +1907,7 @@ ov96_021E6E38: ; 0x021E6E38
 	cmp r3, #0
 	bne _021E6E52
 	mov r1, #0x18
-	bl ov96_021E5FC8
+	bl PokeathlonCourse_SetStateField07
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 _021E6E52:
@@ -1952,10 +1952,10 @@ _021E6E6E:
 	str r1, [r4, r0]
 	add r0, r4, #0
 	mov r1, #0x10
-	bl ov96_021E601C
+	bl PokeathlonCourse_SetStateTransitionType
 	add r0, r4, #0
 	mov r1, #0x13
-	bl ov96_021E5FC8
+	bl PokeathlonCourse_SetStateField07
 	b _021E6F0E
 _021E6EB2:
 	add r0, r4, #0
@@ -2013,7 +2013,7 @@ ov96_021E6F18: ; 0x021E6F18
 	bl PokeathlonCourse_ResetDataCopyArea
 	add r0, r4, #0
 	mov r1, #0x14
-	bl ov96_021E5FC8
+	bl PokeathlonCourse_SetStateField07
 	mov r0, #0
 	pop {r4, pc}
 	thumb_func_end ov96_021E6F18
@@ -2111,7 +2111,7 @@ _021E6FE6:
 	beq _021E6FF4
 	add r0, r7, #0
 	mov r1, #0x26
-	bl ov96_021E5FC8
+	bl PokeathlonCourse_SetStateField07
 _021E6FF4:
 	mov r0, #0
 	add sp, #8
@@ -2139,7 +2139,7 @@ ov96_021E6FFC: ; 0x021E6FFC
 	beq _021E702C
 	add r0, r5, #0
 	mov r1, #0x26
-	bl ov96_021E5FC8
+	bl PokeathlonCourse_SetStateField07
 _021E702C:
 	mov r0, #0
 	pop {r4, r5, r6, pc}
@@ -2183,7 +2183,7 @@ _021E7064:
 	bl ov96_021E7658
 	add r0, r4, #0
 	mov r1, #0x17
-	bl ov96_021E5FC8
+	bl PokeathlonCourse_SetStateField07
 	mov r0, #0
 	pop {r4, pc}
 	thumb_func_end ov96_021E7030
@@ -2226,19 +2226,19 @@ _021E70AE:
 	beq _021E70D0
 	add r0, r4, #0
 	mov r1, #0x19
-	bl ov96_021E5FC8
+	bl PokeathlonCourse_SetStateField07
 	b _021E70E6
 _021E70D0:
 	add r0, r4, #0
 	mov r1, #0x18
-	bl ov96_021E5FC8
+	bl PokeathlonCourse_SetStateField07
 	b _021E70E6
 _021E70DA:
 	add r1, r2, #1
 	str r1, [r4, r0]
 	add r0, r4, #0
 	mov r1, #0x1d
-	bl ov96_021E5FC8
+	bl PokeathlonCourse_SetStateField07
 _021E70E6:
 	mov r0, #0
 	pop {r4, pc}
@@ -2260,11 +2260,11 @@ ov96_021E70F0: ; 0x021E70F0
 	cmp r2, r1
 	blt _021E710E
 	mov r1, #0x1d
-	bl ov96_021E5FC8
+	bl PokeathlonCourse_SetStateField07
 	b _021E7114
 _021E710E:
 	mov r1, #0xb
-	bl ov96_021E5FC8
+	bl PokeathlonCourse_SetStateField07
 _021E7114:
 	mov r0, #0
 	pop {r3, pc}
@@ -2290,7 +2290,7 @@ ov96_021E711C: ; 0x021E711C
 	bl PokeathlonCourse_InitStateInfo
 	add r0, r4, #0
 	mov r1, #0x1a
-	bl ov96_021E5FC8
+	bl PokeathlonCourse_SetStateField07
 	mov r0, #0
 	pop {r4, pc}
 	nop
@@ -2320,10 +2320,10 @@ ov96_021E7150: ; 0x021E7150
 	bl ov96_021E87B0
 	add r0, r4, #0
 	mov r1, #0xb
-	bl ov96_021E601C
+	bl PokeathlonCourse_SetStateTransitionType
 	add r0, r4, #0
 	mov r1, #0x1b
-	bl ov96_021E5FC8
+	bl PokeathlonCourse_SetStateField07
 _021E718C:
 	mov r0, #0
 	pop {r4, pc}
@@ -2340,7 +2340,7 @@ ov96_021E7190: ; 0x021E7190
 	cmp r3, #0
 	bne _021E71AA
 	mov r1, #0x1c
-	bl ov96_021E5FC8
+	bl PokeathlonCourse_SetStateField07
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 _021E71AA:
@@ -2385,7 +2385,7 @@ _021E71C6:
 	str r1, [r4, r0]
 	add r0, r4, #0
 	mov r1, #0x1c
-	bl ov96_021E5FC8
+	bl PokeathlonCourse_SetStateField07
 	b _021E725E
 _021E7202:
 	add r0, r4, #0
@@ -2455,7 +2455,7 @@ ov96_021E7268: ; 0x021E7268
 _021E7286:
 	add r0, r4, #0
 	mov r1, #0x18
-	bl ov96_021E5FC8
+	bl PokeathlonCourse_SetStateField07
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
@@ -2480,7 +2480,7 @@ ov96_021E7294: ; 0x021E7294
 	bl PokeathlonCourse_InitStateInfo
 	add r0, r4, #0
 	mov r1, #0x20
-	bl ov96_021E5FC8
+	bl PokeathlonCourse_SetStateField07
 	mov r0, #0
 	pop {r4, pc}
 	nop
@@ -2510,10 +2510,10 @@ ov96_021E72CC: ; 0x021E72CC
 	bl ov96_021E87B0
 	add r0, r4, #0
 	mov r1, #0xc
-	bl ov96_021E601C
+	bl PokeathlonCourse_SetStateTransitionType
 	add r0, r4, #0
 	mov r1, #0x21
-	bl ov96_021E5FC8
+	bl PokeathlonCourse_SetStateField07
 	mov r0, #0
 	bl sub_02004AD8
 	ldr r1, _021E731C ; =0x00000474
@@ -2538,7 +2538,7 @@ ov96_021E7320: ; 0x021E7320
 	cmp r3, #0
 	bne _021E733A
 	mov r1, #0x22
-	bl ov96_021E5FC8
+	bl PokeathlonCourse_SetStateField07
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 _021E733A:
@@ -2583,7 +2583,7 @@ _021E7356:
 	str r1, [r4, r0]
 	add r0, r4, #0
 	mov r1, #0x22
-	bl ov96_021E5FC8
+	bl PokeathlonCourse_SetStateField07
 	b _021E73EE
 _021E7392:
 	add r0, r4, #0
@@ -2700,15 +2700,15 @@ _021E7416:
 	bne _021E7496
 	add r0, r5, #0
 	mov r1, #0xe
-	bl ov96_021E601C
+	bl PokeathlonCourse_SetStateTransitionType
 	add r0, r5, #0
 	mov r1, #0x23
-	bl ov96_021E5FC8
+	bl PokeathlonCourse_SetStateField07
 	b _021E749E
 _021E7496:
 	add r0, r5, #0
 	mov r1, #0x25
-	bl ov96_021E5FC8
+	bl PokeathlonCourse_SetStateField07
 _021E749E:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
@@ -2735,7 +2735,7 @@ ov96_021E74AC: ; 0x021E74AC
 	beq _021E74D6
 	add r0, r4, #0
 	mov r1, #0x26
-	bl ov96_021E5FC8
+	bl PokeathlonCourse_SetStateField07
 _021E74D6:
 	mov r0, #0
 	pop {r4, pc}
@@ -2763,7 +2763,7 @@ ov96_021E74E0: ; 0x021E74E0
 	beq _021E7510
 	add r0, r5, #0
 	mov r1, #0x26
-	bl ov96_021E5FC8
+	bl PokeathlonCourse_SetStateField07
 _021E7510:
 	mov r0, #0
 	pop {r4, r5, r6, pc}
@@ -2786,7 +2786,7 @@ ov96_021E7514: ; 0x021E7514
 	beq _021E753A
 	add r0, r4, #0
 	mov r1, #0x26
-	bl ov96_021E5FC8
+	bl PokeathlonCourse_SetStateField07
 _021E753A:
 	mov r0, #0
 	pop {r4, pc}
@@ -2822,7 +2822,7 @@ ov96_021E7544: ; 0x021E7544
 _021E757E:
 	add r0, r5, #0
 	mov r1, #0x25
-	bl ov96_021E5FC8
+	bl PokeathlonCourse_SetStateField07
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	nop
@@ -7378,10 +7378,10 @@ ov96_021E96F8: ; 0x021E96F8
 	bl ov96_021E5E04
 	add r0, r4, #0
 	mov r1, #1
-	bl ov96_021E601C
+	bl PokeathlonCourse_SetStateTransitionType
 	add r0, r4, #0
 	mov r1, #1
-	bl ov96_021E5FC8
+	bl PokeathlonCourse_SetStateField07
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov96_021E96F8
@@ -7409,15 +7409,15 @@ ov96_021E9718: ; 0x021E9718
 	bl PokeathlonCourse_GetParticipantCount
 	add r5, r0, #0
 	add r0, r4, #0
-	bl ov96_021E5EF4
+	bl PokeathlonCourse_GetField1EF
 	cmp r5, r0
 	bne _021E9780
 	add r0, r4, #0
-	bl ov96_021E5EF4
+	bl PokeathlonCourse_GetField1EF
 	cmp r0, #4
 	bhs _021E9772
 	add r0, r4, #0
-	bl ov96_021E5EF4
+	bl PokeathlonCourse_GetField1EF
 	mov r1, #4
 	sub r1, r1, r0
 	lsl r1, r1, #0x18
@@ -7429,7 +7429,7 @@ _021E9772:
 	bl PokeathlonCourse_ResetField1EF
 	add r0, r4, #0
 	mov r1, #4
-	bl ov96_021E5FC8
+	bl PokeathlonCourse_SetStateField07
 _021E9780:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -7452,10 +7452,10 @@ ov96_021E9784: ; 0x021E9784
 	bl ov96_021E604C
 	add r0, r4, #0
 	mov r1, #3
-	bl ov96_021E601C
+	bl PokeathlonCourse_SetStateTransitionType
 	add r0, r4, #0
 	mov r1, #5
-	bl ov96_021E5FC8
+	bl PokeathlonCourse_SetStateField07
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 	thumb_func_end ov96_021E9784
@@ -7479,10 +7479,10 @@ ov96_021E97B8: ; 0x021E97B8
 _021E97DA:
 	add r0, r4, #0
 	mov r1, #4
-	bl ov96_021E601C
+	bl PokeathlonCourse_SetStateTransitionType
 	add r0, r4, #0
 	mov r1, #6
-	bl ov96_021E5FC8
+	bl PokeathlonCourse_SetStateField07
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov96_021E97B8
 
@@ -7496,17 +7496,17 @@ ov96_021E97EC: ; 0x021E97EC
 	bl PokeathlonCourse_GetParticipantCount
 	add r4, r0, #0
 	add r0, r5, #0
-	bl ov96_021E5EF4
+	bl PokeathlonCourse_GetField1EF
 	cmp r4, r0
 	bne _021E981E
 	add r0, r5, #0
 	bl PokeathlonCourse_ResetField1EF
 	add r0, r5, #0
 	mov r1, #5
-	bl ov96_021E601C
+	bl PokeathlonCourse_SetStateTransitionType
 	add r0, r5, #0
 	mov r1, #7
-	bl ov96_021E5FC8
+	bl PokeathlonCourse_SetStateField07
 _021E981E:
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov96_021E97EC
@@ -7547,10 +7547,10 @@ ov96_021E9858: ; 0x021E9858
 	add r4, r3, #0
 	add r0, r4, #0
 	mov r1, #0xa
-	bl ov96_021E601C
+	bl PokeathlonCourse_SetStateTransitionType
 	add r0, r4, #0
 	mov r1, #0x12
-	bl ov96_021E5FC8
+	bl PokeathlonCourse_SetStateField07
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov96_021E9858
@@ -7586,14 +7586,14 @@ ov96_021E9870: ; 0x021E9870
 	bl PokeathlonCourse_GetParticipantCount
 	add r4, r0, #0
 	add r0, r5, #0
-	bl ov96_021E5EF4
+	bl PokeathlonCourse_GetField1EF
 	cmp r4, r0
 	bne _021E98CE
 	add r0, r5, #0
 	bl PokeathlonCourse_ResetField1EF
 	add r0, r5, #0
 	mov r1, #0x15
-	bl ov96_021E5FC8
+	bl PokeathlonCourse_SetStateField07
 _021E98CE:
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov96_021E9870
@@ -7612,7 +7612,7 @@ ov96_021E98D0: ; 0x021E98D0
 	bl memcpy
 	add r0, r6, #0
 	mov r1, #0x16
-	bl ov96_021E5FC8
+	bl PokeathlonCourse_SetStateField07
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 	thumb_func_end ov96_021E98D0
@@ -7682,14 +7682,14 @@ _021E991A:
 	bl PokeathlonCourse_GetParticipantCount
 	add r4, r0, #0
 	ldr r0, [sp]
-	bl ov96_021E5EF4
+	bl PokeathlonCourse_GetField1EF
 	cmp r4, r0
 	bne _021E9990
 	ldr r0, [sp]
 	bl PokeathlonCourse_ResetField1EF
 	ldr r0, [sp]
 	mov r1, #0x1e
-	bl ov96_021E5FC8
+	bl PokeathlonCourse_SetStateField07
 _021E9990:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -7705,10 +7705,10 @@ ov96_021E9994: ; 0x021E9994
 	bl ov96_021E5F24
 	add r0, r4, #0
 	mov r1, #0xd
-	bl ov96_021E601C
+	bl PokeathlonCourse_SetStateTransitionType
 	add r0, r4, #0
 	mov r1, #0x1f
-	bl ov96_021E5FC8
+	bl PokeathlonCourse_SetStateField07
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov96_021E9994
@@ -7725,17 +7725,17 @@ ov96_021E99B8: ; 0x021E99B8
 	bl PokeathlonCourse_GetParticipantCount
 	add r4, r0, #0
 	add r0, r5, #0
-	bl ov96_021E5EF4
+	bl PokeathlonCourse_GetField1EF
 	cmp r4, r0
 	bne _021E99F0
 	add r0, r5, #0
 	bl PokeathlonCourse_ResetField1EF
 	add r0, r5, #0
 	mov r1, #0xf
-	bl ov96_021E601C
+	bl PokeathlonCourse_SetStateTransitionType
 	add r0, r5, #0
 	mov r1, #0x24
-	bl ov96_021E5FC8
+	bl PokeathlonCourse_SetStateField07
 _021E99F0:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -11723,7 +11723,7 @@ _021EB712:
 	beq _021EB728
 	add r0, r5, #0
 	mov r1, #1
-	bl ov96_021E5FC8
+	bl PokeathlonCourse_SetStateField07
 	b _021EB728
 _021EB724:
 	bl GF_AssertFail
@@ -12027,7 +12027,7 @@ _021EB978:
 	bl ov96_021EE944
 	ldr r0, [sp, #0xc]
 	mov r1, #2
-	bl ov96_021E5FC8
+	bl PokeathlonCourse_SetStateField07
 	add sp, #0x14
 	mov r0, #0
 	pop {r4, r5, r6, r7, pc}
@@ -12253,7 +12253,7 @@ _021EBB46:
 	beq _021EBB5C
 	add r0, r5, #0
 	mov r1, #1
-	bl ov96_021E5FC8
+	bl PokeathlonCourse_SetStateField07
 	b _021EBB5C
 _021EBB58:
 	bl GF_AssertFail
@@ -13011,7 +13011,7 @@ _021EC170:
 	bl ov96_021EE944
 	add r0, r6, #0
 	mov r1, #2
-	bl ov96_021E5FC8
+	bl PokeathlonCourse_SetStateField07
 	add sp, #0x18
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
@@ -15320,7 +15320,7 @@ _021ED344:
 _021ED39A:
 	ldr r0, [sp, #0xc]
 	ldr r0, [r0, #4]
-	bl ov96_021E6030
+	bl PokeathlonCourse_SetVBlankIntrCB
 	ldr r0, [sp, #8]
 	mov r1, #1
 	bl PokeathlonCourse_SetField1F4
@@ -18900,7 +18900,7 @@ _021EEE90:
 	bl ov96_021EE994
 	add r0, r5, #0
 	mov r1, #0x11
-	bl ov96_021E601C
+	bl PokeathlonCourse_SetStateTransitionType
 	add sp, #0xc
 	mov r0, #1
 	pop {r4, r5, pc}
@@ -20738,7 +20738,7 @@ _021EFD88:
 _021EFD8C:
 	ldr r1, [r4, #0x18]
 	add r0, r5, #0
-	bl ov96_021E5FC8
+	bl PokeathlonCourse_SetStateField07
 	add sp, #0xc
 	pop {r4, r5, pc}
 	.balign 4, 0
@@ -20865,7 +20865,7 @@ _021EFE70:
 _021EFE8A:
 	add r0, r6, #0
 	mov r1, #1
-	bl ov96_021E5FC8
+	bl PokeathlonCourse_SetStateField07
 	b _021EFEAC
 _021EFE94:
 	ldr r0, [r5, #0x1c]
@@ -20875,7 +20875,7 @@ _021EFE94:
 	blt _021EFEAC
 	add r0, r6, #0
 	mov r1, #4
-	bl ov96_021E5FC8
+	bl PokeathlonCourse_SetStateField07
 	b _021EFEAC
 _021EFEA8:
 	bl GF_AssertFail
@@ -20925,7 +20925,7 @@ _021EFEF2:
 _021EFF02:
 	add r0, r5, #0
 	mov r1, #4
-	bl ov96_021E5FC8
+	bl PokeathlonCourse_SetStateField07
 	b _021EFF10
 _021EFF0C:
 	bl GF_AssertFail
@@ -21678,7 +21678,7 @@ _021F0596:
 	bl ov96_021E5F24
 	str r0, [sp, #0x40]
 	ldr r0, [r6]
-	bl ov96_021E6030
+	bl PokeathlonCourse_SetVBlankIntrCB
 	add r0, r7, #0
 	mov r1, #1
 	bl PokeathlonCourse_SetField1F4
@@ -22252,7 +22252,7 @@ ov96_021F0A7C: ; 0x021F0A7C
 _021F0A98:
 	add r0, r5, #0
 	mov r1, #0x15
-	bl ov96_021E601C
+	bl PokeathlonCourse_SetStateTransitionType
 	ldrb r0, [r4]
 	add r0, r0, #1
 	strb r0, [r4]
@@ -22279,7 +22279,7 @@ _021F0AC8:
 	beq _021F0AD8
 	add r0, r5, #0
 	mov r1, #1
-	bl ov96_021E5FC8
+	bl PokeathlonCourse_SetStateField07
 _021F0AD8:
 	mov r0, #0
 	add sp, #0xc
@@ -22341,7 +22341,7 @@ _021F0B28:
 	bl BeginNormalPaletteFade
 	add r0, r5, #0
 	mov r1, #2
-	bl ov96_021E5FC8
+	bl PokeathlonCourse_SetStateField07
 _021F0B52:
 	mov r0, #0
 	add sp, #0xc
@@ -31462,7 +31462,7 @@ _021F523C:
 	mov r1, #1
 	bl Sprite_SetDrawPriority
 	ldr r0, [r4]
-	bl ov96_021E6030
+	bl PokeathlonCourse_SetVBlankIntrCB
 	ldr r0, [sp, #0x14]
 	mov r1, #1
 	bl PokeathlonCourse_SetField1F4
@@ -31933,7 +31933,7 @@ _021F567C:
 	bl ov96_021F5B60
 	add r0, r5, #0
 	mov r1, #0x14
-	bl ov96_021E601C
+	bl PokeathlonCourse_SetStateTransitionType
 	ldrb r0, [r4]
 	add r0, r0, #1
 	strb r0, [r4]
@@ -32007,7 +32007,7 @@ _021F56FE:
 	bl BeginNormalPaletteFade
 	add r0, r5, #0
 	mov r1, #1
-	bl ov96_021E5FC8
+	bl PokeathlonCourse_SetStateField07
 _021F5728:
 	mov r0, #0
 	add sp, #0xc
@@ -36501,7 +36501,7 @@ _021F7A04:
 	b _021F7C32
 _021F7AA0:
 	ldr r0, [r4, #0xc]
-	bl ov96_021E6030
+	bl PokeathlonCourse_SetVBlankIntrCB
 	ldr r0, [r4, #0xc]
 	ldr r1, [r4]
 	bl ov96_021F7D30
@@ -39499,7 +39499,7 @@ ov96_021F91E8: ; 0x021F91E8
 ov96_021F9234: ; 0x021F9234
 	push {r3, lr}
 	mov r1, #1
-	bl ov96_021E5FC8
+	bl PokeathlonCourse_SetStateField07
 	mov r0, #0
 	pop {r3, pc}
 	thumb_func_end ov96_021F9234
@@ -39646,7 +39646,7 @@ _021F9340:
 	bl BeginNormalPaletteFade
 	add r0, r7, #0
 	mov r1, #2
-	bl ov96_021E5FC8
+	bl PokeathlonCourse_SetStateField07
 _021F9370:
 	add r0, r7, #0
 	bl ov96_021FAF1C
@@ -40486,7 +40486,7 @@ _021F9A94:
 	b _021F9C8A
 _021F9AA4:
 	ldr r0, [r4, #4]
-	bl ov96_021E6030
+	bl PokeathlonCourse_SetVBlankIntrCB
 	ldr r0, [r4, #4]
 	ldr r1, [r4]
 	bl ov96_021F9FE8
@@ -46530,7 +46530,7 @@ _021FCABE:
 	str r0, [sp, #0x30]
 	ldr r0, [sp, #0x34]
 	ldr r0, [r0]
-	bl ov96_021E6030
+	bl PokeathlonCourse_SetVBlankIntrCB
 	add r0, r4, #0
 	mov r1, #1
 	bl PokeathlonCourse_SetField1F4
@@ -47571,7 +47571,7 @@ _021FD370:
 	strb r1, [r0]
 	ldr r0, [sp, #0xc]
 	mov r1, #0x12
-	bl ov96_021E601C
+	bl PokeathlonCourse_SetStateTransitionType
 	b _021FD3D6
 _021FD3A0:
 	mov r0, #6
@@ -47598,7 +47598,7 @@ _021FD3C6:
 	beq _021FD3D6
 	ldr r0, [sp, #0xc]
 	mov r1, #1
-	bl ov96_021E5FC8
+	bl PokeathlonCourse_SetStateField07
 _021FD3D6:
 	mov r0, #0
 	add sp, #0x2c
@@ -47666,7 +47666,7 @@ _021FD434:
 	bl BeginNormalPaletteFade
 	add r0, r5, #0
 	mov r1, #2
-	bl ov96_021E5FC8
+	bl PokeathlonCourse_SetStateField07
 _021FD464:
 	mov r0, #0
 	add sp, #0xc
@@ -56334,7 +56334,7 @@ _02201882:
 	ldr r0, [r3]
 	str r0, [r2]
 	ldr r0, [r7]
-	bl ov96_021E6030
+	bl PokeathlonCourse_SetVBlankIntrCB
 	add r0, r6, #0
 	mov r1, #1
 	bl PokeathlonCourse_SetField1F4
@@ -57396,7 +57396,7 @@ _0220219C:
 	bl BeginNormalPaletteFade
 	add r0, r5, #0
 	mov r1, #1
-	bl ov96_021E5FC8
+	bl PokeathlonCourse_SetStateField07
 _022021CC:
 	mov r0, #0
 	add sp, #0xc
@@ -62492,7 +62492,7 @@ _02204B3E:
 	str r0, [sp, #0x34]
 	ldr r0, [sp, #0x38]
 	ldr r0, [r0]
-	bl ov96_021E6030
+	bl PokeathlonCourse_SetVBlankIntrCB
 	add r0, r4, #0
 	mov r1, #1
 	bl PokeathlonCourse_SetField1F4
@@ -63545,7 +63545,7 @@ _0220541C:
 	strb r1, [r0]
 	ldr r0, [sp, #0xc]
 	mov r1, #0x13
-	bl ov96_021E601C
+	bl PokeathlonCourse_SetStateTransitionType
 	b _02205466
 _02205430:
 	mov r0, #6
@@ -63572,7 +63572,7 @@ _02205456:
 	beq _02205466
 	ldr r0, [sp, #0xc]
 	mov r1, #1
-	bl ov96_021E5FC8
+	bl PokeathlonCourse_SetStateField07
 _02205466:
 	ldr r0, [sp, #0xc]
 	bl ov96_02205D30
@@ -63650,7 +63650,7 @@ _022054EA:
 	bl BeginNormalPaletteFade
 	add r0, r5, #0
 	mov r1, #2
-	bl ov96_021E5FC8
+	bl PokeathlonCourse_SetStateField07
 _0220551A:
 	mov r0, #0
 	add sp, #0xc
@@ -71482,7 +71482,7 @@ _0220918A:
 	bl ov96_021EB144
 	add r0, r6, #0
 	mov r1, #1
-	bl ov96_021E5FC8
+	bl PokeathlonCourse_SetStateField07
 	b _022091AA
 _022091A6:
 	bl GF_AssertFail
@@ -71732,7 +71732,7 @@ _02209394:
 	bl BeginNormalPaletteFade
 	add r0, r5, #0
 	mov r1, #2
-	bl ov96_021E5FC8
+	bl PokeathlonCourse_SetStateField07
 _022093C8:
 	mov r0, #0
 	add sp, #0xc
@@ -72068,7 +72068,7 @@ _0220968E:
 	bl ov96_02209F8C
 	ldr r0, [sp, #0x14]
 	ldr r0, [r0, #4]
-	bl ov96_021E6030
+	bl PokeathlonCourse_SetVBlankIntrCB
 	mov r0, #1
 	bl sub_0203A994
 	ldr r0, [sp, #0xc]
@@ -81861,7 +81861,7 @@ _0220E282:
 	beq _0220E29A
 	add r0, r6, #0
 	mov r1, #1
-	bl ov96_021E5FC8
+	bl PokeathlonCourse_SetStateField07
 	b _0220E29A
 _0220E296:
 	bl GF_AssertFail
@@ -81971,7 +81971,7 @@ _0220E31A:
 	bl BeginNormalPaletteFade
 	add r0, r5, #0
 	mov r1, #2
-	bl ov96_021E5FC8
+	bl PokeathlonCourse_SetStateField07
 	b _0220E386
 _0220E382:
 	bl GF_AssertFail
@@ -82185,7 +82185,7 @@ _0220E4F6:
 	add r0, r4, r0
 	bl ov96_0220D420
 	ldr r0, [r4, #8]
-	bl ov96_021E6030
+	bl PokeathlonCourse_SetVBlankIntrCB
 	add r0, r5, #0
 	mov r1, #1
 	bl PokeathlonCourse_SetField1F4
@@ -87928,7 +87928,7 @@ _0221124A:
 	bl ov96_021E5F24
 	str r0, [sp, #0x50]
 	ldr r0, [r4, #4]
-	bl ov96_021E6030
+	bl PokeathlonCourse_SetVBlankIntrCB
 	ldr r0, [sp, #0x14]
 	mov r1, #1
 	bl PokeathlonCourse_SetField1F4
@@ -88627,7 +88627,7 @@ _02211834:
 	bl BeginNormalPaletteFade
 	add r0, r5, #0
 	mov r1, #1
-	bl ov96_021E5FC8
+	bl PokeathlonCourse_SetStateField07
 _0221186A:
 	mov r0, #0
 	add sp, #0xc
@@ -97264,7 +97264,7 @@ _022159CC:
 	beq _022159E4
 	add r0, r5, #0
 	mov r1, #1
-	bl ov96_021E5FC8
+	bl PokeathlonCourse_SetStateField07
 	b _022159E4
 _022159E0:
 	bl GF_AssertFail
@@ -97326,7 +97326,7 @@ _02215A22:
 	bl BeginNormalPaletteFade
 	add r0, r5, #0
 	mov r1, #2
-	bl ov96_021E5FC8
+	bl PokeathlonCourse_SetStateField07
 	b _02215A64
 _02215A60:
 	bl GF_AssertFail
@@ -97546,7 +97546,7 @@ _02215C0A:
 	add r0, r4, r0
 	bl ov96_02217544
 	ldr r0, [r4, #4]
-	bl ov96_021E6030
+	bl PokeathlonCourse_SetVBlankIntrCB
 	ldr r0, _02215CC8 ; =0x000007F8
 	ldr r1, [r4, #4]
 	ldr r2, [r4, #8]
