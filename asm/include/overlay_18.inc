@@ -256,7 +256,7 @@
 .public GetDexHeightMsgBank
 .public UnkStruct_02092BB8_Set
 .public UnkStruct_02092BB8_GetUnk2
-.public UnkStruct_02092BB8_GetUnk0
+.public UnkStruct_02092BB8_GetSpecies
 .public NNS_G2dGetImageLocation
 .public NNS_G2dGetImagePaletteLocation
 .public FX_Div

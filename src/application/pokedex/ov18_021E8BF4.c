@@ -3464,7 +3464,7 @@ static void ov18_021EDDA4(PokedexAppData *pokedexApp, int a1) {
 }
 
 static void ov18_021EDDB4(PokedexAppData *pokedexApp) {
-    u32 r4 = Pokedex_ConvertToCurrentDexNo(pokedexApp->unk_1858, ov18_021F8850(&pokedexApp->unk_0878, UnkStruct_02092BB8_GetUnk0(pokedexApp->args->unk_08))) - 1;
+    u32 r4 = Pokedex_ConvertToCurrentDexNo(pokedexApp->unk_1858, ov18_021F8850(&pokedexApp->unk_0878, UnkStruct_02092BB8_GetSpecies(pokedexApp->args->unk_08))) - 1;
     pokedexApp->unk_185A = r4 % 15;
     pokedexApp->unk_1859 = r4 / 15;
 }
