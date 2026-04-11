@@ -8,19 +8,19 @@ UnkStruct_02092BB8 *UnkStruct_02092BB8_New(enum HeapID heapID) {
     return ret;
 }
 
-void UnkStruct_02092BB8_Free(UnkStruct_02092BB8 *a0) {
-    Heap_Free(a0);
+void UnkStruct_02092BB8_Free(UnkStruct_02092BB8 *data) {
+    Heap_Free(data);
 }
 
-void UnkStruct_02092BB8_Set(UnkStruct_02092BB8 *a0, u16 a1, u16 a2) {
-    a0->species = a1;
-    a0->unk_2 = a2;
+void UnkStruct_02092BB8_Set(UnkStruct_02092BB8 *data, u16 species, u16 a2) {
+    data->species = species;
+    data->unk_2 = a2;
 }
 
-u16 UnkStruct_02092BB8_GetUnk2(UnkStruct_02092BB8 *a0) {
-    return a0->unk_2;
+u16 UnkStruct_02092BB8_GetUnk2(UnkStruct_02092BB8 *data) {
+    return data->unk_2;
 }
 
-u32 UnkStruct_02092BB8_GetSpecies(UnkStruct_02092BB8 *a0) {
-    return a0->species;
+u32 UnkStruct_02092BB8_GetSpecies(UnkStruct_02092BB8 *data) {
+    return data->species;
 }
