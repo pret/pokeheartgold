@@ -224,7 +224,7 @@ BOOL ScrCmd_StaticWildWonOrCaughtCheck(ScriptContext *ctx) {
     return TRUE;
 }
 
-BOOL Scrcmd_LatiCaughtCheck(ScriptContext *ctx) {
+BOOL ScrCmd_LatiCaughtCheck(ScriptContext *ctx) {
     u32 *winFlag = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_BATTLE_WIN_FLAG);
     u16 *retPtr = ScriptGetVarPointer(ctx);
     *retPtr = IsBattleResultLatiCaught(*winFlag);
@@ -250,7 +250,7 @@ BOOL ScrCmd_224(ScriptContext *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_GotoIfTrainerDefeated(ScriptContext *ctx) {
+BOOL ScrCmd_GoToIfTrainerDefeated(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
     LocalMapObject **lastInteracted = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_LAST_INTERACTED);
     u32 offset = ScriptReadWord(ctx);

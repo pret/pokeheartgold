@@ -5,23 +5,23 @@
 
 	.rodata
 
-	scrdef scr_seq_R18_000
-	scrdef scr_seq_R18_001
-	scrdef_end
+	ScrDef scr_seq_R18_000
+	ScrDef scr_seq_R18_001
+	ScrDefEnd
 
 scr_seq_R18_000:
-	goto_if_set FLAG_UNK_149, _0017
-	end
+	GoToIfSet FLAG_UNK_149, _0017
+	End
 
 _0017:
-	set_bike_state_lock 1
-	end
+	SetBikeStateLock 1
+	End
 
 scr_seq_R18_001:
-	direction_signpost msg_0358_R18_00000, 1, 1, VAR_SPECIAL_RESULT
-	scrcmd_057 3
-	scrcmd_058
-	scrcmd_060 VAR_SPECIAL_RESULT
-	callstd std_signpost
-	end
+	DirectionSignpost msg_0358_R18_00000, 1, 1, VAR_SPECIAL_RESULT
+	ScrCmd_057 3
+	ScrCmd_058
+	ScrCmd_060 VAR_SPECIAL_RESULT
+	CallStd std_signpost
+	End
 	.balign 4, 0

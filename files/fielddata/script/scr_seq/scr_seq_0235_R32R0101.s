@@ -5,24 +5,24 @@
 
 	.rodata
 
-	scrdef scr_seq_R32R0101_000
-	scrdef scr_seq_R32R0101_001
-	scrdef scr_seq_R32R0101_002
-	scrdef scr_seq_R32R0101_003
-	scrdef_end
+	ScrDef scr_seq_R32R0101_000
+	ScrDef scr_seq_R32R0101_001
+	ScrDef scr_seq_R32R0101_002
+	ScrDef scr_seq_R32R0101_003
+	ScrDefEnd
 
 scr_seq_R32R0101_000:
-	end
+	End
 
 scr_seq_R32R0101_001:
-	simple_npc_msg msg_0382_R32R0101_00000
-	end
+	SimpleNPCMsg msg_0382_R32R0101_00000
+	End
 
 scr_seq_R32R0101_002:
-	simple_npc_msg msg_0382_R32R0101_00002
-	end
+	SimpleNPCMsg msg_0382_R32R0101_00002
+	End
 
 scr_seq_R32R0101_003:
-	simple_npc_msg msg_0382_R32R0101_00001
-	end
+	SimpleNPCMsg msg_0382_R32R0101_00001
+	End
 	.balign 4, 0

@@ -5,59 +5,59 @@
 
 	.rodata
 
-	scrdef scr_seq_W41_000
-	scrdef scr_seq_W41_001
-	scrdef scr_seq_W41_002
-	scrdef scr_seq_W41_003
-	scrdef scr_seq_W41_004
-	scrdef scr_seq_W41_005
-	scrdef scr_seq_W41_006
-	scrdef scr_seq_W41_007
-	scrdef scr_seq_W41_008
-	scrdef scr_seq_W41_009
-	scrdef scr_seq_W41_010
-	scrdef_end
+	ScrDef scr_seq_W41_000
+	ScrDef scr_seq_W41_001
+	ScrDef scr_seq_W41_002
+	ScrDef scr_seq_W41_003
+	ScrDef scr_seq_W41_004
+	ScrDef scr_seq_W41_005
+	ScrDef scr_seq_W41_006
+	ScrDef scr_seq_W41_007
+	ScrDef scr_seq_W41_008
+	ScrDef scr_seq_W41_009
+	ScrDef scr_seq_W41_010
+	ScrDefEnd
 
 scr_seq_W41_000:
-	end
+	End
 
 scr_seq_W41_001:
-	simple_npc_msg msg_0746_W41_00000
-	end
+	SimpleNPCMsg msg_0746_W41_00000
+	End
 
 scr_seq_W41_002:
-	simple_npc_msg msg_0746_W41_00003
-	end
+	SimpleNPCMsg msg_0746_W41_00003
+	End
 
 scr_seq_W41_003:
-	simple_npc_msg msg_0746_W41_00006
-	end
+	SimpleNPCMsg msg_0746_W41_00006
+	End
 
 scr_seq_W41_004:
-	simple_npc_msg msg_0746_W41_00012
-	end
+	SimpleNPCMsg msg_0746_W41_00012
+	End
 
 scr_seq_W41_005:
-	simple_npc_msg msg_0746_W41_00009
-	end
+	SimpleNPCMsg msg_0746_W41_00009
+	End
 
 scr_seq_W41_006:
-	simple_npc_msg msg_0746_W41_00015
-	end
+	SimpleNPCMsg msg_0746_W41_00015
+	End
 
 scr_seq_W41_007:
-	simple_npc_msg msg_0746_W41_00018
-	end
+	SimpleNPCMsg msg_0746_W41_00018
+	End
 
 scr_seq_W41_008:
-	simple_npc_msg msg_0746_W41_00021
-	end
+	SimpleNPCMsg msg_0746_W41_00021
+	End
 
 scr_seq_W41_009:
-	simple_npc_msg msg_0746_W41_00024
-	end
+	SimpleNPCMsg msg_0746_W41_00024
+	End
 
 scr_seq_W41_010:
-	simple_npc_msg msg_0746_W41_00027
-	end
+	SimpleNPCMsg msg_0746_W41_00027
+	End
 	.balign 4, 0

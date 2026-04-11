@@ -5,147 +5,147 @@
 
 	.rodata
 
-	scrdef scr_seq_0264_000
-	scrdef scr_seq_0264_001
-	scrdef scr_seq_0264_002
-	scrdef scr_seq_0264_003
-	scrdef scr_seq_0264_004
-	scrdef scr_seq_0264_005
-	scrdef_end
+	ScrDef scr_seq_0264_000
+	ScrDef scr_seq_0264_001
+	ScrDef scr_seq_0264_002
+	ScrDef scr_seq_0264_003
+	ScrDef scr_seq_0264_004
+	ScrDef scr_seq_0264_005
+	ScrDefEnd
 
 scr_seq_0264_000:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	setvar VAR_SPECIAL_x8000, 1
-	goto _002E
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	SetVar VAR_SPECIAL_x8000, 1
+	GoTo _002E
+	End
 
 _002E:
-	call _01EE
-	call _01F5
-	switch VAR_SPECIAL_x8001
-	case 3, _0221
-	case -2, _0221
-	call _0229
-	goto _002E
-	end
+	Call _01EE
+	Call _01F5
+	Switch VAR_SPECIAL_x8001
+	Case 3, _0221
+	Case -2, _0221
+	Call _0229
+	GoTo _002E
+	End
 
 scr_seq_0264_001:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	setvar VAR_SPECIAL_x8000, 1
-	goto _007C
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	SetVar VAR_SPECIAL_x8000, 1
+	GoTo _007C
+	End
 
 _007C:
-	call _01EE
-	call _01F5
-	switch VAR_SPECIAL_x8001
-	case 3, _0221
-	case -2, _0221
-	call _0229
-	goto _007C
-	end
+	Call _01EE
+	Call _01F5
+	Switch VAR_SPECIAL_x8001
+	Case 3, _0221
+	Case -2, _0221
+	Call _0229
+	GoTo _007C
+	End
 
 scr_seq_0264_002:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	setvar VAR_SPECIAL_x8000, 2
-	goto _00CA
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	SetVar VAR_SPECIAL_x8000, 2
+	GoTo _00CA
+	End
 
 _00CA:
-	call _01EE
-	call _01F5
-	switch VAR_SPECIAL_x8001
-	case 3, _0221
-	case -2, _0221
-	call _0229
-	goto _00CA
-	end
+	Call _01EE
+	Call _01F5
+	Switch VAR_SPECIAL_x8001
+	Case 3, _0221
+	Case -2, _0221
+	Call _0229
+	GoTo _00CA
+	End
 
 scr_seq_0264_003:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	setvar VAR_SPECIAL_x8000, 5
-	goto _0118
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	SetVar VAR_SPECIAL_x8000, 5
+	GoTo _0118
+	End
 
 _0118:
-	call _01EE
-	call _01F5
-	switch VAR_SPECIAL_x8001
-	case 3, _0221
-	case -2, _0221
-	call _0229
-	goto _0118
-	end
+	Call _01EE
+	Call _01F5
+	Switch VAR_SPECIAL_x8001
+	Case 3, _0221
+	Case -2, _0221
+	Call _0229
+	GoTo _0118
+	End
 
 scr_seq_0264_004:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	setvar VAR_SPECIAL_x8000, 4
-	goto _0166
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	SetVar VAR_SPECIAL_x8000, 4
+	GoTo _0166
+	End
 
 _0166:
-	call _01EE
-	call _01F5
-	switch VAR_SPECIAL_x8001
-	case 3, _0221
-	case -2, _0221
-	call _0229
-	goto _0166
-	end
+	Call _01EE
+	Call _01F5
+	Switch VAR_SPECIAL_x8001
+	Case 3, _0221
+	Case -2, _0221
+	Call _0229
+	GoTo _0166
+	End
 
 scr_seq_0264_005:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	setvar VAR_SPECIAL_x8000, 6
-	goto _01B4
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	SetVar VAR_SPECIAL_x8000, 6
+	GoTo _01B4
+	End
 
 _01B4:
-	call _01EE
-	call _01F5
-	switch VAR_SPECIAL_x8001
-	case 3, _0221
-	case -2, _0221
-	call _0229
-	goto _01B4
-	end
+	Call _01EE
+	Call _01F5
+	Switch VAR_SPECIAL_x8001
+	Case 3, _0221
+	Case -2, _0221
+	Call _0229
+	GoTo _01B4
+	End
 
 _01EE:
-	npc_msg msg_0019_00000
-	touchscreen_menu_hide
-	return
+	NPCMsg msg_0019_00000
+	TouchscreenMenuHide
+	Return
 
 _01F5:
-	menu_init 1, 1, 0, 1, VAR_SPECIAL_x8001
-	menu_item_add 1, 255, 0
-	menu_item_add 2, 255, 1
-	menu_item_add 3, 255, 2
-	menu_item_add 4, 255, 3
-	menu_exec
-	return
+	MenuInit 1, 1, 0, 1, VAR_SPECIAL_x8001
+	MenuItemAdd 1, 255, 0
+	MenuItemAdd 2, 255, 1
+	MenuItemAdd 3, 255, 2
+	MenuItemAdd 4, 255, 3
+	MenuExec
+	Return
 
 _0221:
-	closemsg
-	touchscreen_menu_show
-	releaseall
-	end
+	CloseMsg
+	TouchscreenMenuShow
+	ReleaseAll
+	End
 
 _0229:
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	closemsg
-	call _023F
-	return
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	CloseMsg
+	Call _023F
+	Return
 
 _023F:
-	scrcmd_631 VAR_SPECIAL_x8001, VAR_SPECIAL_x8000, VAR_SPECIAL_x8003
-	restore_overworld
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
-	return
+	ScrCmd_631 VAR_SPECIAL_x8001, VAR_SPECIAL_x8000, VAR_SPECIAL_x8003
+	RestoreOverworld
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
+	Return
 	.balign 4, 0

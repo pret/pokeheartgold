@@ -5,33 +5,33 @@
 
 	.rodata
 
-	scrdef scr_seq_D24R0207_000
-	scrdef scr_seq_D24R0207_001
-	scrdef scr_seq_D24R0207_002
-	scrdef_end
+	ScrDef scr_seq_D24R0207_000
+	ScrDef scr_seq_D24R0207_001
+	ScrDef scr_seq_D24R0207_002
+	ScrDefEnd
 
 scr_seq_D24R0207_000:
-	play_se SEQ_SE_GS_RAKKA01
-	apply_movement obj_player, _0068
-	scrcmd_374 obj_player
-	wait_movement
-	screen_shake 0, 1, 1, 8
-	play_se SEQ_SE_DP_SUTYA2
-	setvar VAR_UNK_40D5, 0
-	compare VAR_UNK_40EF, 1
-	goto_if_eq _004D
-	setvar VAR_UNK_40EF, 1
-	addvar VAR_UNK_40F1, 1
+	PlaySE SEQ_SE_GS_RAKKA01
+	ApplyMovement obj_player, _0068
+	ScrCmd_374 obj_player
+	WaitMovement
+	ScreenShake 0, 1, 1, 8
+	PlaySE SEQ_SE_DP_SUTYA2
+	SetVar VAR_UNK_40D5, 0
+	Compare VAR_UNK_40EF, 1
+	GoToIfEq _004D
+	SetVar VAR_UNK_40EF, 1
+	AddVar VAR_UNK_40F1, 1
 _004D:
-	end
+	End
 
 scr_seq_D24R0207_001:
-	compare VAR_UNK_40D5, 1
-	goto_if_ne _0064
-	nop_var_490 VAR_UNK_40D5
-	make_object_visible obj_player
+	Compare VAR_UNK_40D5, 1
+	GoToIfNe _0064
+	NopVar490 VAR_UNK_40D5
+	MakeObjectVisible obj_player
 _0064:
-	end
+	End
 
 	.balign 4, 0
 _0068:
@@ -39,99 +39,99 @@ _0068:
 	EndMovement
 
 scr_seq_D24R0207_002:
-	scrcmd_609
-	lockall
-	setvar VAR_UNK_40CE, 1
-	setflag FLAG_UNK_111
-	scrcmd_729 VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _009E
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _0103
-	end
+	ScrCmd_609
+	LockAll
+	SetVar VAR_UNK_40CE, 1
+	SetFlag FLAG_UNK_111
+	ScrCmd_729 VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _009E
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _0103
+	End
 
 _009E:
-	get_player_facing VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_ne _00BD
-	apply_movement obj_player, _021C
-	goto _00FB
+	GetPlayerFacing VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfNe _00BD
+	ApplyMovement obj_player, _021C
+	GoTo _00FB
 
 _00BD:
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_ne _00D8
-	apply_movement obj_player, _0238
-	goto _00FB
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfNe _00D8
+	ApplyMovement obj_player, _0238
+	GoTo _00FB
 
 _00D8:
-	compare VAR_SPECIAL_RESULT, 2
-	goto_if_ne _00F3
-	apply_movement obj_player, _0254
-	goto _00FB
+	Compare VAR_SPECIAL_RESULT, 2
+	GoToIfNe _00F3
+	ApplyMovement obj_player, _0254
+	GoTo _00FB
 
 _00F3:
-	apply_movement obj_player, _0270
+	ApplyMovement obj_player, _0270
 _00FB:
-	wait_movement
-	goto _0182
+	WaitMovement
+	GoTo _0182
 
 _0103:
-	get_player_facing VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_ne _012A
-	apply_movement obj_player, _021C
-	apply_movement obj_partner_poke, _0228
-	goto _0180
+	GetPlayerFacing VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfNe _012A
+	ApplyMovement obj_player, _021C
+	ApplyMovement obj_partner_poke, _0228
+	GoTo _0180
 
 _012A:
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_ne _014D
-	apply_movement obj_player, _0238
-	apply_movement obj_partner_poke, _0244
-	goto _0180
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfNe _014D
+	ApplyMovement obj_player, _0238
+	ApplyMovement obj_partner_poke, _0244
+	GoTo _0180
 
 _014D:
-	compare VAR_SPECIAL_RESULT, 2
-	goto_if_ne _0170
-	apply_movement obj_player, _0254
-	apply_movement obj_partner_poke, _0260
-	goto _0180
+	Compare VAR_SPECIAL_RESULT, 2
+	GoToIfNe _0170
+	ApplyMovement obj_player, _0254
+	ApplyMovement obj_partner_poke, _0260
+	GoTo _0180
 
 _0170:
-	apply_movement obj_player, _0270
-	apply_movement obj_partner_poke, _027C
+	ApplyMovement obj_player, _0270
+	ApplyMovement obj_partner_poke, _027C
 _0180:
-	wait_movement
+	WaitMovement
 _0182:
-	play_se SEQ_SE_GS_RAKKA01
-	compare VAR_UNOWN_REPORT_LEVEL, 7
-	goto_if_ge _01C8
-	compare VAR_UNOWN_REPORT_LEVEL, 6
-	goto_if_eq _01F2
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	warp MAP_RUINS_OF_ALPH_UNDERGROUND_HALL, 0, 5, 42, VAR_SPECIAL_RESULT
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
+	PlaySE SEQ_SE_GS_RAKKA01
+	Compare VAR_UNOWN_REPORT_LEVEL, 7
+	GoToIfGe _01C8
+	Compare VAR_UNOWN_REPORT_LEVEL, 6
+	GoToIfEq _01F2
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	Warp MAP_RUINS_OF_ALPH_UNDERGROUND_HALL, 0, 5, 42, VAR_SPECIAL_RESULT
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
 _01C4:
-	releaseall
-	end
+	ReleaseAll
+	End
 
 _01C8:
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	warp MAP_RUINS_OF_ALPH_UNDERGROUND_HALL_SINJOH_EVENT_2, 0, 5, 42, VAR_SPECIAL_RESULT
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
-	goto _01C4
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	Warp MAP_RUINS_OF_ALPH_UNDERGROUND_HALL_SINJOH_EVENT_2, 0, 5, 42, VAR_SPECIAL_RESULT
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
+	GoTo _01C4
 
 _01F2:
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	warp MAP_RUINS_OF_ALPH_UNDERGROUND_HALL_SINJOH_EVENT, 0, 5, 42, VAR_SPECIAL_RESULT
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
-	goto _01C4
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	Warp MAP_RUINS_OF_ALPH_UNDERGROUND_HALL_SINJOH_EVENT, 0, 5, 42, VAR_SPECIAL_RESULT
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
+	GoTo _01C4
 
 	.balign 4, 0
 _021C:
