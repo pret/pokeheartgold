@@ -8,7 +8,6 @@
 #include "overlay_manager.h"
 #include "player_data.h"
 #include "save.h"
-#include "save_pokeathlon.h"
 
 typedef struct PokeathlonCourseData PokeathlonCourseData;
 
