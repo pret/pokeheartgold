@@ -1,6 +1,7 @@
 # Contributing to pret/pokeheartgold
 
 <!--toc:start-->
+- [AI Policy](#ai-policy)
 - [Code Formatting](#code-formatting)
 <!--toc:end-->
 
