@@ -5,61 +5,61 @@
 
 	.rodata
 
-	scrdef scr_seq_D02R0101_000
-	scrdef_end
+	ScrDef scr_seq_D02R0101_000
+	ScrDefEnd
 
 scr_seq_D02R0101_000:
-	callstd std_play_rival_intro_music
-	toggle_following_pokemon_movement 0
-	wait_following_pokemon_movement
-	following_pokemon_movement 55
-	apply_movement obj_D02R0101_gsrivel, _00D0
-	apply_movement obj_player, _00DC
-	wait_movement
-	wait_following_pokemon_movement
-	toggle_following_pokemon_movement 1
-	following_pokemon_movement 48
-	buffer_players_name 0
-	buffer_rivals_name 1
-	npc_msg msg_0049_D02R0101_00000
-	closemsg
-	get_starter_choice VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 152
-	goto_if_ne _005A
-	trainer_battle TRAINER_RIVAL_SILVER_15, 0, 0, 0
-	goto _007D
+	CallStd std_play_rival_intro_music
+	ToggleFollowingPokemonMovement 0
+	WaitFollowingPokemonMovement
+	FollowingPokemonMovement 55
+	ApplyMovement obj_D02R0101_gsrivel, _00D0
+	ApplyMovement obj_player, _00DC
+	WaitMovement
+	WaitFollowingPokemonMovement
+	ToggleFollowingPokemonMovement 1
+	FollowingPokemonMovement 48
+	BufferPlayersName 0
+	BufferRivalsName 1
+	NPCMsg msg_0049_D02R0101_00000
+	CloseMsg
+	GetStarterChoice VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 152
+	GoToIfNe _005A
+	TrainerBattle TRAINER_RIVAL_SILVER_15, 0, 0, 0
+	GoTo _007D
 
 _005A:
-	compare VAR_SPECIAL_RESULT, 155
-	goto_if_ne _0075
-	trainer_battle TRAINER_RIVAL_SILVER_16, 0, 0, 0
-	goto _007D
+	Compare VAR_SPECIAL_RESULT, 155
+	GoToIfNe _0075
+	TrainerBattle TRAINER_RIVAL_SILVER_16, 0, 0, 0
+	GoTo _007D
 
 _0075:
-	trainer_battle TRAINER_RIVAL_SILVER_14, 0, 0, 0
+	TrainerBattle TRAINER_RIVAL_SILVER_14, 0, 0, 0
 _007D:
-	check_battle_won VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _00C9
-	callstd std_play_rival_outro_music
-	buffer_players_name 0
-	buffer_rivals_name 1
-	npc_msg msg_0049_D02R0101_00001
-	closemsg
-	apply_movement obj_D02R0101_gsrivel, _00E8
-	wait_movement
-	hide_person obj_D02R0101_gsrivel
-	callstd std_fade_end_rival_outro_music
-	setflag FLAG_UNK_25C
-	clearflag FLAG_HIDE_DRAGONS_DEN_RIVAL
-	setvar VAR_UNK_40FC, 1
-	setvar VAR_UNK_40F5, 1
-	setflag FLAG_UNK_0E3
-	end
+	CheckBattleWon VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _00C9
+	CallStd std_play_rival_outro_music
+	BufferPlayersName 0
+	BufferRivalsName 1
+	NPCMsg msg_0049_D02R0101_00001
+	CloseMsg
+	ApplyMovement obj_D02R0101_gsrivel, _00E8
+	WaitMovement
+	HidePerson obj_D02R0101_gsrivel
+	CallStd std_fade_end_rival_outro_music
+	SetFlag FLAG_UNK_25C
+	ClearFlag FLAG_HIDE_DRAGONS_DEN_RIVAL
+	SetVar VAR_UNK_40FC, 1
+	SetVar VAR_UNK_40F5, 1
+	SetFlag FLAG_UNK_0E3
+	End
 
 _00C9:
-	white_out
-	end
+	WhiteOut
+	End
 
 	.balign 4, 0
 _00D0:
@@ -80,6 +80,6 @@ _00E8:
 	EndMovement
 
 _00F4:
-	end
+	End
 
 	.balign 4, 0

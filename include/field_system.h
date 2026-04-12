@@ -23,6 +23,8 @@
 #include "scrcmd_9.h"
 #include "sys_task.h"
 #include "sys_task_api.h"
+#include "terrain_attributes.h"
+#include "unk_02092BB8.h"
 
 typedef struct FollowMon {
     LocalMapObject *mapObject;
@@ -127,7 +129,8 @@ struct FieldSystem {
     void *unk_44;
     u8 filler48[0xC];
     void *unk54;
-    u8 filler_58[0x8];
+    u32 unk58;
+    TerrainAttributes *terrainAttributes;
     u32 unk60;
     int unk64;
     struct FieldSystemUnkSub68 *unk68;
@@ -135,9 +138,9 @@ struct FieldSystem {
     int unk70;
     const struct UnkStruct_020FC5CC *unk74;
     u16 unk78;
-    u16 unk7A;
-    u16 unk7C;
-    u16 unk7E;
+    u16 lastFacingDirection;   // 0x7A, used to determine whether the following field should be incremented
+    u16 reverseTurnFrameSteps; // 0x7C, turning back and forth in place will increase the effective encounter rate
+    u16 encounterInhibitSteps; // 0x7E, don't generate an encounter in the first 4 steps on a new map
     struct UnkStruct_02059E1C *unk80;
     struct UnkStruct_0205AC88 *unk84;
     u8 filler_88[0x8];
@@ -147,7 +150,7 @@ struct FieldSystem {
     void *unk9C;
     UnkStruct_Fsys_A0 *unkA0;
     Save_LinkBattleRuleset *linkBattleRuleset;
-    struct UnkStruct_02092BB8 *unkA8;
+    UnkStruct_02092BB8 *unkA8;
     u32 unkAC;
     void *unkB0;
     s64 unkB4;
