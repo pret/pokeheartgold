@@ -5,24 +5,24 @@
 
 	.rodata
 
-	scrdef scr_seq_D02FS0101_000
-	scrdef scr_seq_D02FS0101_001
-	scrdef_end
+	ScrDef scr_seq_D02FS0101_000
+	ScrDef scr_seq_D02FS0101_001
+	ScrDefEnd
 
 scr_seq_D02FS0101_001:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	setflag FLAG_SPECIAL_MART_MT_MOON
-	npc_msg msg_0048_D02FS0101_00001
-	holdmsg
-	setvar VAR_SPECIAL_x8004, 27
-	callstd std_special_mart
-	clearflag FLAG_SPECIAL_MART_MT_MOON
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	SetFlag FLAG_SPECIAL_MART_MT_MOON
+	NPCMsg msg_0048_D02FS0101_00001
+	HoldMsg
+	SetVar VAR_SPECIAL_x8004, 27
+	CallStd std_special_mart
+	ClearFlag FLAG_SPECIAL_MART_MT_MOON
+	ReleaseAll
+	End
 
 scr_seq_D02FS0101_000:
-	simple_npc_msg msg_0048_D02FS0101_00000
-	end
+	SimpleNPCMsg msg_0048_D02FS0101_00000
+	End
 	.balign 4, 0
