@@ -5,379 +5,379 @@
 
 	.rodata
 
-	scrdef scr_seq_D17R0110_000
-	scrdef scr_seq_D17R0110_001
-	scrdef scr_seq_D17R0110_002
-	scrdef scr_seq_D17R0110_003
-	scrdef scr_seq_D17R0110_004
-	scrdef scr_seq_D17R0110_005
-	scrdef scr_seq_D17R0110_006
-	scrdef_end
+	ScrDef scr_seq_D17R0110_000
+	ScrDef scr_seq_D17R0110_001
+	ScrDef scr_seq_D17R0110_002
+	ScrDef scr_seq_D17R0110_003
+	ScrDef scr_seq_D17R0110_004
+	ScrDef scr_seq_D17R0110_005
+	ScrDef scr_seq_D17R0110_006
+	ScrDefEnd
 
 scr_seq_D17R0110_002:
-	goto_if_set FLAG_ENGAGING_STATIC_POKEMON, _002B
-	end
+	GoToIfSet FLAG_ENGAGING_STATIC_POKEMON, _002B
+	End
 
 _002B:
-	setflag FLAG_HIDE_BELL_TOWER_HO_OH
-	hide_person obj_D17R0110_hou_obj01
-	clearflag FLAG_ENGAGING_STATIC_POKEMON
-	end
+	SetFlag FLAG_HIDE_BELL_TOWER_HO_OH
+	HidePerson obj_D17R0110_hou_obj01
+	ClearFlag FLAG_ENGAGING_STATIC_POKEMON
+	End
 
 scr_seq_D17R0110_003:
-	setvar VAR_TEMP_x4003, 111
-	setflag FLAG_UNK_105
-	end
+	SetVar VAR_TEMP_x4003, 111
+	SetFlag FLAG_UNK_105
+	End
 
 scr_seq_D17R0110_005:
-	compare VAR_TEMP_x400B, 123
-	goto_if_ne _005C
-	stop_se SEQ_SE_GS_KYOUHUU
-	setvar VAR_TEMP_x400B, 0
+	Compare VAR_TEMP_x400B, 123
+	GoToIfNe _005C
+	StopSE SEQ_SE_GS_KYOUHUU
+	SetVar VAR_TEMP_x400B, 0
 _005C:
-	goto_if_set FLAG_UNK_108, _00C3
-	goto_if_unset FLAG_UNK_10A, _00C3
-	compare VAR_TEMP_x4003, 111
-	goto_if_ne _00BB
-	move_person_facing obj_D17R0110_dancer, 16, 1, 18, DIR_NORTH
-	move_person_facing obj_D17R0110_dancer_2, 12, 1, 18, DIR_NORTH
-	move_person_facing obj_D17R0110_dancer_3, 12, 1, 12, DIR_SOUTH
-	move_person_facing obj_D17R0110_dancer_4, 18, 1, 18, DIR_NORTH
-	move_person_facing obj_D17R0110_dancer_5, 18, 1, 12, DIR_SOUTH
+	GoToIfSet FLAG_UNK_108, _00C3
+	GoToIfUnset FLAG_UNK_10A, _00C3
+	Compare VAR_TEMP_x4003, 111
+	GoToIfNe _00BB
+	MovePersonFacing obj_D17R0110_dancer, 16, 1, 18, DIR_NORTH
+	MovePersonFacing obj_D17R0110_dancer_2, 12, 1, 18, DIR_NORTH
+	MovePersonFacing obj_D17R0110_dancer_3, 12, 1, 12, DIR_SOUTH
+	MovePersonFacing obj_D17R0110_dancer_4, 18, 1, 18, DIR_NORTH
+	MovePersonFacing obj_D17R0110_dancer_5, 18, 1, 12, DIR_SOUTH
 _00BB:
-	setvar VAR_TEMP_x4003, 0
-	end
+	SetVar VAR_TEMP_x4003, 0
+	End
 
 _00C3:
-	end
+	End
 
 scr_seq_D17R0110_000:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	setvar VAR_TEMP_x400A, 250
-	play_cry VAR_TEMP_x400A, 0
-	npc_msg msg_0058_D17R0110_00004
-	wait_cry
-	closemsg
-	get_game_version VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 7
-	goto_if_ne _00FD
-	setvar VAR_SPECIAL_x8004, 45
-	goto _0103
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	SetVar VAR_TEMP_x400A, 250
+	PlayCry VAR_TEMP_x400A, 0
+	NPCMsg msg_0058_D17R0110_00004
+	WaitCry
+	CloseMsg
+	GetGameVersion VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 7
+	GoToIfNe _00FD
+	SetVar VAR_SPECIAL_x8004, 45
+	GoTo _0103
 
 _00FD:
-	setvar VAR_SPECIAL_x8004, 70
+	SetVar VAR_SPECIAL_x8004, 70
 _0103:
-	setflag FLAG_ENGAGING_STATIC_POKEMON
-	wild_battle VAR_TEMP_x400A, VAR_SPECIAL_x8004, 0
-	clearflag FLAG_ENGAGING_STATIC_POKEMON
-	get_static_encounter_outcome VAR_TEMP_x4005
-	compare VAR_TEMP_x4005, 2
-	goto_if_eq _0167
-	compare VAR_TEMP_x4005, 3
-	goto_if_eq _0167
-	compare VAR_TEMP_x4005, 4
-	call_if_eq _0171
-	releaseall
-	setflag FLAG_UNK_108
-	setvar VAR_SCENE_NEW_BARK_EAST_EXIT, 3
-	setflag FLAG_HIDE_NEW_BARK_FRIEND
-	setflag FLAG_HIDE_NEW_BARK_MARILL
-	setflag FLAG_HIDE_NEW_BARK_FRIEND_2
-	clearflag FLAG_HIDE_NEW_BARK_FRIENDS_ROOM_FRIEND
-	setflag FLAG_HIDE_BELL_TOWER_SUMMIT_KIMONO_GIRLS
-	clearflag FLAG_HIDE_DANCE_STUDIO_KIMONO_GIRLS
-	clearflag FLAG_UNK_241
-	end
+	SetFlag FLAG_ENGAGING_STATIC_POKEMON
+	WildBattle VAR_TEMP_x400A, VAR_SPECIAL_x8004, 0
+	ClearFlag FLAG_ENGAGING_STATIC_POKEMON
+	GetStaticEncounterOutcome VAR_TEMP_x4005
+	Compare VAR_TEMP_x4005, 2
+	GoToIfEq _0167
+	Compare VAR_TEMP_x4005, 3
+	GoToIfEq _0167
+	Compare VAR_TEMP_x4005, 4
+	CallIfEq _0171
+	ReleaseAll
+	SetFlag FLAG_UNK_108
+	SetVar VAR_SCENE_NEW_BARK_EAST_EXIT, 3
+	SetFlag FLAG_HIDE_NEW_BARK_FRIEND
+	SetFlag FLAG_HIDE_NEW_BARK_MARILL
+	SetFlag FLAG_HIDE_NEW_BARK_FRIEND_2
+	ClearFlag FLAG_HIDE_NEW_BARK_FRIENDS_ROOM_FRIEND
+	SetFlag FLAG_HIDE_BELL_TOWER_SUMMIT_KIMONO_GIRLS
+	ClearFlag FLAG_HIDE_DANCE_STUDIO_KIMONO_GIRLS
+	ClearFlag FLAG_UNK_241
+	End
 
 _0167:
-	clearflag FLAG_HIDE_BELL_TOWER_HO_OH
-	white_out
-	releaseall
-	end
+	ClearFlag FLAG_HIDE_BELL_TOWER_HO_OH
+	WhiteOut
+	ReleaseAll
+	End
 
 _0171:
-	setflag FLAG_CAUGHT_HO_OH
-	return
+	SetFlag FLAG_CAUGHT_HO_OH
+	Return
 
 scr_seq_D17R0110_006:
-	scrcmd_609
-	lockall
-	scrcmd_805
-	apply_movement obj_D17R0110_dancer, _0790
-	wait_movement
-	npc_msg msg_0058_D17R0110_00000
-	closemsg
-	stop_se SEQ_SE_GS_KYOUHUU
-	fade_screen 4, 4, 0, RGB_WHITE
-	wait_fade
-	legend_cutscene_clear_bell_anim_begin
-	legend_cutscene_clear_bell_rise_from_bag
-	play_se SEQ_SE_GS_SUZUSYUTUGEN_HO
-	fade_screen 4, 4, 1, RGB_WHITE
-	wait_fade
-	wait_se SEQ_SE_GS_SUZUSYUTUGEN_HO
-	apply_movement obj_D17R0110_dancer, _0754
-	apply_movement obj_D17R0110_dancer_2, _0760
-	apply_movement obj_D17R0110_dancer_3, _076C
-	apply_movement obj_D17R0110_dancer_4, _0778
-	apply_movement obj_D17R0110_dancer_5, _0784
-	wait_movement
-	wait 16, VAR_SPECIAL_RESULT
-	apply_movement obj_D17R0110_dancer, _0790
-	apply_movement obj_D17R0110_dancer_2, _0790
-	apply_movement obj_D17R0110_dancer_3, _0790
-	apply_movement obj_D17R0110_dancer_4, _0790
-	apply_movement obj_D17R0110_dancer_5, _0790
-	wait_movement
-	wait 16, VAR_SPECIAL_RESULT
-	stop_bgm 0
-	temp_bgm SEQ_GS_E_MAIKO_MAI
-	wait 18, VAR_SPECIAL_RESULT
-	apply_movement obj_D17R0110_dancer, _07A0
-	apply_movement obj_D17R0110_dancer_2, _07A0
-	apply_movement obj_D17R0110_dancer_3, _07A0
-	apply_movement obj_D17R0110_dancer_4, _07A0
-	apply_movement obj_D17R0110_dancer_5, _07A0
-	wait 12, VAR_SPECIAL_RESULT
-	legend_cutscene_clear_bell_shimmer 1
-	play_se SEQ_SE_GS_SUZUNOONPA_RU
-	wait_movement
-	wait 67, VAR_SPECIAL_RESULT
-	apply_movement obj_D17R0110_dancer, _07A0
-	apply_movement obj_D17R0110_dancer_2, _07A0
-	apply_movement obj_D17R0110_dancer_3, _07A0
-	apply_movement obj_D17R0110_dancer_4, _07A0
-	apply_movement obj_D17R0110_dancer_5, _07A0
-	wait 12, VAR_SPECIAL_RESULT
-	legend_cutscene_clear_bell_shimmer 1
-	play_se SEQ_SE_GS_SUZUNOONPA_RU
-	wait_movement
-	fade_screen 4, 6, 1, RGB_WHITE
-	legend_cutscene_waves_or_leaves_effect_begin
-	wait_fade
-	wait 4, VAR_SPECIAL_RESULT
-	apply_movement obj_D17R0110_dancer, _0914
-	apply_movement obj_D17R0110_dancer_2, _0904
-	apply_movement obj_D17R0110_dancer_3, _091C
-	apply_movement obj_D17R0110_dancer_4, _0914
-	apply_movement obj_D17R0110_dancer_5, _090C
-	wait_movement
-	apply_movement obj_D17R0110_dancer, _080C
-	apply_movement obj_D17R0110_dancer_2, _07C4
-	apply_movement obj_D17R0110_dancer_3, _0830
-	apply_movement obj_D17R0110_dancer_4, _080C
-	apply_movement obj_D17R0110_dancer_5, _07E8
-	wait 12, VAR_SPECIAL_RESULT
-	legend_cutscene_clear_bell_shimmer 1
-	play_se SEQ_SE_GS_SUZUNOONPA_RU
-	wait_movement
-	wait 32, VAR_SPECIAL_RESULT
-	apply_movement obj_D17R0110_dancer, _0904
-	apply_movement obj_D17R0110_dancer_2, _0904
-	apply_movement obj_D17R0110_dancer_3, _091C
-	apply_movement obj_D17R0110_dancer_4, _0914
-	apply_movement obj_D17R0110_dancer_5, _090C
-	wait_movement
-	apply_movement obj_D17R0110_dancer, _07C4
-	apply_movement obj_D17R0110_dancer_2, _07C4
-	apply_movement obj_D17R0110_dancer_3, _0830
-	apply_movement obj_D17R0110_dancer_4, _080C
-	apply_movement obj_D17R0110_dancer_5, _07E8
-	wait 12, VAR_SPECIAL_RESULT
-	legend_cutscene_clear_bell_shimmer 1
-	play_se SEQ_SE_GS_SUZUNOONPA_RU
-	wait_movement
-	wait 33, VAR_SPECIAL_RESULT
-	apply_movement obj_D17R0110_dancer, _0904
-	apply_movement obj_D17R0110_dancer_2, _0904
-	apply_movement obj_D17R0110_dancer_3, _091C
-	apply_movement obj_D17R0110_dancer_4, _0914
-	apply_movement obj_D17R0110_dancer_5, _090C
-	wait_movement
-	apply_movement obj_D17R0110_dancer, _07C4
-	apply_movement obj_D17R0110_dancer_2, _0854
-	apply_movement obj_D17R0110_dancer_3, _08D8
-	apply_movement obj_D17R0110_dancer_4, _08AC
-	apply_movement obj_D17R0110_dancer_5, _0880
-	wait 12, VAR_SPECIAL_RESULT
-	legend_cutscene_clear_bell_shimmer 1
-	play_se SEQ_SE_GS_SUZUNOONPA_RU
-	wait_movement
-	wait 32, VAR_SPECIAL_RESULT
-	apply_movement obj_D17R0110_dancer, _091C
-	apply_movement obj_D17R0110_dancer_2, _091C
-	apply_movement obj_D17R0110_dancer_3, _090C
-	apply_movement obj_D17R0110_dancer_4, _0904
-	apply_movement obj_D17R0110_dancer_5, _0914
-	wait_movement
-	apply_movement obj_D17R0110_dancer, _0830
-	apply_movement obj_D17R0110_dancer_2, _0830
-	apply_movement obj_D17R0110_dancer_3, _07E8
-	apply_movement obj_D17R0110_dancer_4, _07C4
-	apply_movement obj_D17R0110_dancer_5, _080C
-	wait 12, VAR_SPECIAL_RESULT
-	legend_cutscene_clear_bell_shimmer 1
-	play_se SEQ_SE_GS_SUZUNOONPA_RU
-	wait_movement
-	legend_cutscene_waves_or_leaves_effect_end
-	legend_cutscene_pan_camera_to 0
-	wait 32, VAR_SPECIAL_RESULT
-	apply_movement obj_D17R0110_dancer, _091C
-	apply_movement obj_D17R0110_dancer_2, _091C
-	apply_movement obj_D17R0110_dancer_3, _090C
-	apply_movement obj_D17R0110_dancer_4, _0904
-	apply_movement obj_D17R0110_dancer_5, _0914
-	wait_movement
-	apply_movement obj_D17R0110_dancer, _0830
-	apply_movement obj_D17R0110_dancer_2, _0830
-	apply_movement obj_D17R0110_dancer_3, _07E8
-	apply_movement obj_D17R0110_dancer_4, _07C4
-	apply_movement obj_D17R0110_dancer_5, _080C
-	wait 12, VAR_SPECIAL_RESULT
-	legend_cutscene_clear_bell_shimmer 0
-	play_se SEQ_SE_GS_SUZUNOONPA2
-	wait_movement
-	wait 32, VAR_SPECIAL_RESULT
-	apply_movement obj_D17R0110_dancer, _090C
-	apply_movement obj_D17R0110_dancer_2, _091C
-	apply_movement obj_D17R0110_dancer_3, _090C
-	apply_movement obj_D17R0110_dancer_4, _0904
-	apply_movement obj_D17R0110_dancer_5, _0914
-	wait_movement
-	apply_movement obj_D17R0110_dancer, _07E8
-	apply_movement obj_D17R0110_dancer_2, _0830
-	apply_movement obj_D17R0110_dancer_3, _07E8
-	apply_movement obj_D17R0110_dancer_4, _07C4
-	apply_movement obj_D17R0110_dancer_5, _080C
-	wait 12, VAR_SPECIAL_RESULT
-	legend_cutscene_clear_bell_shimmer 0
-	play_se SEQ_SE_GS_SUZUNOONPA2
-	wait_movement
-	wait 41, VAR_SPECIAL_RESULT
-	legend_cutscene_wait_camera_pan
-	wait 8, VAR_SPECIAL_RESULT
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	legend_cutscene_move_camera_to 1
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
-	wait 20, VAR_SPECIAL_RESULT
-	legend_cutscene_clear_bell_shimmer 0
-	play_se SEQ_SE_GS_SUZUNOONPA2
-	release obj_D17R0110_dancer
-	release obj_D17R0110_dancer_2
-	release obj_D17R0110_dancer_3
-	release obj_D17R0110_dancer_4
-	release obj_D17R0110_dancer_5
-	move_person_facing obj_D17R0110_dancer, 15, 1, 18, DIR_NORTH
-	move_person_facing obj_D17R0110_dancer_2, 12, 1, 18, DIR_NORTH
-	move_person_facing obj_D17R0110_dancer_3, 12, 1, 12, DIR_SOUTH
-	move_person_facing obj_D17R0110_dancer_4, 18, 1, 18, DIR_NORTH
-	move_person_facing obj_D17R0110_dancer_5, 18, 1, 12, DIR_SOUTH
-	wait 86, VAR_SPECIAL_RESULT
-	legend_cutscene_clear_bell_shimmer 0
-	play_se SEQ_SE_GS_SUZUNOONPA2
-	wait 32, VAR_SPECIAL_RESULT
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	legend_cutscene_move_camera_to 2
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
-	wait 22, VAR_SPECIAL_RESULT
-	apply_movement obj_D17R0110_dancer, _07C4
-	apply_movement obj_D17R0110_dancer_2, _07C4
-	apply_movement obj_D17R0110_dancer_3, _07E8
-	apply_movement obj_D17R0110_dancer_4, _07C4
-	apply_movement obj_D17R0110_dancer_5, _07E8
-	wait 12, VAR_SPECIAL_RESULT
-	legend_cutscene_clear_bell_shimmer 0
-	play_se SEQ_SE_GS_SUZUNOONPA2
-	wait_movement
-	wait 32, VAR_SPECIAL_RESULT
-	wait 34, VAR_SPECIAL_RESULT
-	apply_movement obj_D17R0110_dancer, _07C4
-	apply_movement obj_D17R0110_dancer_2, _07C4
-	apply_movement obj_D17R0110_dancer_3, _07E8
-	apply_movement obj_D17R0110_dancer_4, _07C4
-	apply_movement obj_D17R0110_dancer_5, _07E8
-	wait 12, VAR_SPECIAL_RESULT
-	legend_cutscene_clear_bell_shimmer 0
-	play_se SEQ_SE_GS_SUZUNOONPA2
-	wait_movement
-	wait 60, VAR_SPECIAL_RESULT
-	legend_cutscene_pan_camera_to 1
-	legend_cutscene_wait_camera_pan
-	stop_bgm 0
-	legend_cutscene_clear_bell_anim_end
-	setvar VAR_TEMP_x400B, 123
-	fade_screen 6, 1, 0, RGB_WHITE
-	wait_fade
-	cinematic 0
-	clearflag FLAG_HIDE_BELL_TOWER_HO_OH
-	show_person obj_D17R0110_hou_obj01
-	make_object_visible obj_D17R0110_hou_obj01
-	wait 6, VAR_SPECIAL_RESULT
-	fade_screen 6, 1, 1, RGB_WHITE
-	wait_fade
-	wait 20, VAR_SPECIAL_RESULT
-	legend_cutscene_bird_final_approach
-	stop_bgm 30
-	apply_movement obj_D17R0110_dancer, _0798
-	wait_movement
-	scrcmd_726
-	buffer_players_name 0
-	npc_msg msg_0058_D17R0110_00002
-	closemsg
-	apply_movement obj_D17R0110_dancer, _0790
-	wait_movement
-	buffer_players_name 0
-	npc_msg msg_0058_D17R0110_00003
-	closemsg
-	apply_movement obj_D17R0110_dancer, _092C
-	wait_movement
-	releaseall
-	setflag FLAG_UNK_10A
-	setvar VAR_UNK_40FA, 2
-	end
+	ScrCmd_609
+	LockAll
+	ScrCmd_805
+	ApplyMovement obj_D17R0110_dancer, _0790
+	WaitMovement
+	NPCMsg msg_0058_D17R0110_00000
+	CloseMsg
+	StopSE SEQ_SE_GS_KYOUHUU
+	FadeScreen 4, 4, 0, RGB_WHITE
+	WaitFade
+	LegendCutsceneClearBellAnimBegin
+	LegendCutsceneClearBellRiseFromBag
+	PlaySE SEQ_SE_GS_SUZUSYUTUGEN_HO
+	FadeScreen 4, 4, 1, RGB_WHITE
+	WaitFade
+	WaitSE SEQ_SE_GS_SUZUSYUTUGEN_HO
+	ApplyMovement obj_D17R0110_dancer, _0754
+	ApplyMovement obj_D17R0110_dancer_2, _0760
+	ApplyMovement obj_D17R0110_dancer_3, _076C
+	ApplyMovement obj_D17R0110_dancer_4, _0778
+	ApplyMovement obj_D17R0110_dancer_5, _0784
+	WaitMovement
+	Wait 16, VAR_SPECIAL_RESULT
+	ApplyMovement obj_D17R0110_dancer, _0790
+	ApplyMovement obj_D17R0110_dancer_2, _0790
+	ApplyMovement obj_D17R0110_dancer_3, _0790
+	ApplyMovement obj_D17R0110_dancer_4, _0790
+	ApplyMovement obj_D17R0110_dancer_5, _0790
+	WaitMovement
+	Wait 16, VAR_SPECIAL_RESULT
+	StopBGM 0
+	TempBGM SEQ_GS_E_MAIKO_MAI
+	Wait 18, VAR_SPECIAL_RESULT
+	ApplyMovement obj_D17R0110_dancer, _07A0
+	ApplyMovement obj_D17R0110_dancer_2, _07A0
+	ApplyMovement obj_D17R0110_dancer_3, _07A0
+	ApplyMovement obj_D17R0110_dancer_4, _07A0
+	ApplyMovement obj_D17R0110_dancer_5, _07A0
+	Wait 12, VAR_SPECIAL_RESULT
+	LegendCutsceneClearBellShimmer 1
+	PlaySE SEQ_SE_GS_SUZUNOONPA_RU
+	WaitMovement
+	Wait 67, VAR_SPECIAL_RESULT
+	ApplyMovement obj_D17R0110_dancer, _07A0
+	ApplyMovement obj_D17R0110_dancer_2, _07A0
+	ApplyMovement obj_D17R0110_dancer_3, _07A0
+	ApplyMovement obj_D17R0110_dancer_4, _07A0
+	ApplyMovement obj_D17R0110_dancer_5, _07A0
+	Wait 12, VAR_SPECIAL_RESULT
+	LegendCutsceneClearBellShimmer 1
+	PlaySE SEQ_SE_GS_SUZUNOONPA_RU
+	WaitMovement
+	FadeScreen 4, 6, 1, RGB_WHITE
+	LegendCutsceneWavesOrLeavesEffectBegin
+	WaitFade
+	Wait 4, VAR_SPECIAL_RESULT
+	ApplyMovement obj_D17R0110_dancer, _0914
+	ApplyMovement obj_D17R0110_dancer_2, _0904
+	ApplyMovement obj_D17R0110_dancer_3, _091C
+	ApplyMovement obj_D17R0110_dancer_4, _0914
+	ApplyMovement obj_D17R0110_dancer_5, _090C
+	WaitMovement
+	ApplyMovement obj_D17R0110_dancer, _080C
+	ApplyMovement obj_D17R0110_dancer_2, _07C4
+	ApplyMovement obj_D17R0110_dancer_3, _0830
+	ApplyMovement obj_D17R0110_dancer_4, _080C
+	ApplyMovement obj_D17R0110_dancer_5, _07E8
+	Wait 12, VAR_SPECIAL_RESULT
+	LegendCutsceneClearBellShimmer 1
+	PlaySE SEQ_SE_GS_SUZUNOONPA_RU
+	WaitMovement
+	Wait 32, VAR_SPECIAL_RESULT
+	ApplyMovement obj_D17R0110_dancer, _0904
+	ApplyMovement obj_D17R0110_dancer_2, _0904
+	ApplyMovement obj_D17R0110_dancer_3, _091C
+	ApplyMovement obj_D17R0110_dancer_4, _0914
+	ApplyMovement obj_D17R0110_dancer_5, _090C
+	WaitMovement
+	ApplyMovement obj_D17R0110_dancer, _07C4
+	ApplyMovement obj_D17R0110_dancer_2, _07C4
+	ApplyMovement obj_D17R0110_dancer_3, _0830
+	ApplyMovement obj_D17R0110_dancer_4, _080C
+	ApplyMovement obj_D17R0110_dancer_5, _07E8
+	Wait 12, VAR_SPECIAL_RESULT
+	LegendCutsceneClearBellShimmer 1
+	PlaySE SEQ_SE_GS_SUZUNOONPA_RU
+	WaitMovement
+	Wait 33, VAR_SPECIAL_RESULT
+	ApplyMovement obj_D17R0110_dancer, _0904
+	ApplyMovement obj_D17R0110_dancer_2, _0904
+	ApplyMovement obj_D17R0110_dancer_3, _091C
+	ApplyMovement obj_D17R0110_dancer_4, _0914
+	ApplyMovement obj_D17R0110_dancer_5, _090C
+	WaitMovement
+	ApplyMovement obj_D17R0110_dancer, _07C4
+	ApplyMovement obj_D17R0110_dancer_2, _0854
+	ApplyMovement obj_D17R0110_dancer_3, _08D8
+	ApplyMovement obj_D17R0110_dancer_4, _08AC
+	ApplyMovement obj_D17R0110_dancer_5, _0880
+	Wait 12, VAR_SPECIAL_RESULT
+	LegendCutsceneClearBellShimmer 1
+	PlaySE SEQ_SE_GS_SUZUNOONPA_RU
+	WaitMovement
+	Wait 32, VAR_SPECIAL_RESULT
+	ApplyMovement obj_D17R0110_dancer, _091C
+	ApplyMovement obj_D17R0110_dancer_2, _091C
+	ApplyMovement obj_D17R0110_dancer_3, _090C
+	ApplyMovement obj_D17R0110_dancer_4, _0904
+	ApplyMovement obj_D17R0110_dancer_5, _0914
+	WaitMovement
+	ApplyMovement obj_D17R0110_dancer, _0830
+	ApplyMovement obj_D17R0110_dancer_2, _0830
+	ApplyMovement obj_D17R0110_dancer_3, _07E8
+	ApplyMovement obj_D17R0110_dancer_4, _07C4
+	ApplyMovement obj_D17R0110_dancer_5, _080C
+	Wait 12, VAR_SPECIAL_RESULT
+	LegendCutsceneClearBellShimmer 1
+	PlaySE SEQ_SE_GS_SUZUNOONPA_RU
+	WaitMovement
+	LegendCutsceneWavesOrLeavesEffectEnd
+	LegendCutscenePanCameraTo 0
+	Wait 32, VAR_SPECIAL_RESULT
+	ApplyMovement obj_D17R0110_dancer, _091C
+	ApplyMovement obj_D17R0110_dancer_2, _091C
+	ApplyMovement obj_D17R0110_dancer_3, _090C
+	ApplyMovement obj_D17R0110_dancer_4, _0904
+	ApplyMovement obj_D17R0110_dancer_5, _0914
+	WaitMovement
+	ApplyMovement obj_D17R0110_dancer, _0830
+	ApplyMovement obj_D17R0110_dancer_2, _0830
+	ApplyMovement obj_D17R0110_dancer_3, _07E8
+	ApplyMovement obj_D17R0110_dancer_4, _07C4
+	ApplyMovement obj_D17R0110_dancer_5, _080C
+	Wait 12, VAR_SPECIAL_RESULT
+	LegendCutsceneClearBellShimmer 0
+	PlaySE SEQ_SE_GS_SUZUNOONPA2
+	WaitMovement
+	Wait 32, VAR_SPECIAL_RESULT
+	ApplyMovement obj_D17R0110_dancer, _090C
+	ApplyMovement obj_D17R0110_dancer_2, _091C
+	ApplyMovement obj_D17R0110_dancer_3, _090C
+	ApplyMovement obj_D17R0110_dancer_4, _0904
+	ApplyMovement obj_D17R0110_dancer_5, _0914
+	WaitMovement
+	ApplyMovement obj_D17R0110_dancer, _07E8
+	ApplyMovement obj_D17R0110_dancer_2, _0830
+	ApplyMovement obj_D17R0110_dancer_3, _07E8
+	ApplyMovement obj_D17R0110_dancer_4, _07C4
+	ApplyMovement obj_D17R0110_dancer_5, _080C
+	Wait 12, VAR_SPECIAL_RESULT
+	LegendCutsceneClearBellShimmer 0
+	PlaySE SEQ_SE_GS_SUZUNOONPA2
+	WaitMovement
+	Wait 41, VAR_SPECIAL_RESULT
+	LegendCutsceneWaitCameraPan
+	Wait 8, VAR_SPECIAL_RESULT
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	LegendCutsceneMoveCameraTo 1
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
+	Wait 20, VAR_SPECIAL_RESULT
+	LegendCutsceneClearBellShimmer 0
+	PlaySE SEQ_SE_GS_SUZUNOONPA2
+	Release obj_D17R0110_dancer
+	Release obj_D17R0110_dancer_2
+	Release obj_D17R0110_dancer_3
+	Release obj_D17R0110_dancer_4
+	Release obj_D17R0110_dancer_5
+	MovePersonFacing obj_D17R0110_dancer, 15, 1, 18, DIR_NORTH
+	MovePersonFacing obj_D17R0110_dancer_2, 12, 1, 18, DIR_NORTH
+	MovePersonFacing obj_D17R0110_dancer_3, 12, 1, 12, DIR_SOUTH
+	MovePersonFacing obj_D17R0110_dancer_4, 18, 1, 18, DIR_NORTH
+	MovePersonFacing obj_D17R0110_dancer_5, 18, 1, 12, DIR_SOUTH
+	Wait 86, VAR_SPECIAL_RESULT
+	LegendCutsceneClearBellShimmer 0
+	PlaySE SEQ_SE_GS_SUZUNOONPA2
+	Wait 32, VAR_SPECIAL_RESULT
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	LegendCutsceneMoveCameraTo 2
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
+	Wait 22, VAR_SPECIAL_RESULT
+	ApplyMovement obj_D17R0110_dancer, _07C4
+	ApplyMovement obj_D17R0110_dancer_2, _07C4
+	ApplyMovement obj_D17R0110_dancer_3, _07E8
+	ApplyMovement obj_D17R0110_dancer_4, _07C4
+	ApplyMovement obj_D17R0110_dancer_5, _07E8
+	Wait 12, VAR_SPECIAL_RESULT
+	LegendCutsceneClearBellShimmer 0
+	PlaySE SEQ_SE_GS_SUZUNOONPA2
+	WaitMovement
+	Wait 32, VAR_SPECIAL_RESULT
+	Wait 34, VAR_SPECIAL_RESULT
+	ApplyMovement obj_D17R0110_dancer, _07C4
+	ApplyMovement obj_D17R0110_dancer_2, _07C4
+	ApplyMovement obj_D17R0110_dancer_3, _07E8
+	ApplyMovement obj_D17R0110_dancer_4, _07C4
+	ApplyMovement obj_D17R0110_dancer_5, _07E8
+	Wait 12, VAR_SPECIAL_RESULT
+	LegendCutsceneClearBellShimmer 0
+	PlaySE SEQ_SE_GS_SUZUNOONPA2
+	WaitMovement
+	Wait 60, VAR_SPECIAL_RESULT
+	LegendCutscenePanCameraTo 1
+	LegendCutsceneWaitCameraPan
+	StopBGM 0
+	LegendCutsceneClearBellAnimEnd
+	SetVar VAR_TEMP_x400B, 123
+	FadeScreen 6, 1, 0, RGB_WHITE
+	WaitFade
+	Cinematic 0
+	ClearFlag FLAG_HIDE_BELL_TOWER_HO_OH
+	ShowPerson obj_D17R0110_hou_obj01
+	MakeObjectVisible obj_D17R0110_hou_obj01
+	Wait 6, VAR_SPECIAL_RESULT
+	FadeScreen 6, 1, 1, RGB_WHITE
+	WaitFade
+	Wait 20, VAR_SPECIAL_RESULT
+	LegendCutsceneBirdFinalApproach
+	StopBGM 30
+	ApplyMovement obj_D17R0110_dancer, _0798
+	WaitMovement
+	ScrCmd_726
+	BufferPlayersName 0
+	NPCMsg msg_0058_D17R0110_00002
+	CloseMsg
+	ApplyMovement obj_D17R0110_dancer, _0790
+	WaitMovement
+	BufferPlayersName 0
+	NPCMsg msg_0058_D17R0110_00003
+	CloseMsg
+	ApplyMovement obj_D17R0110_dancer, _092C
+	WaitMovement
+	ReleaseAll
+	SetFlag FLAG_UNK_10A
+	SetVar VAR_UNK_40FA, 2
+	End
 
 scr_seq_D17R0110_001:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	goto_if_set FLAG_UNK_108, _0704
-	npc_msg msg_0058_D17R0110_00001
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	GoToIfSet FLAG_UNK_108, _0704
+	NPCMsg msg_0058_D17R0110_00001
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0704:
-	compare VAR_TEMP_x4005, 5
-	goto_if_ne _071A
-	npc_msg msg_0058_D17R0110_00008
-	goto _0749
+	Compare VAR_TEMP_x4005, 5
+	GoToIfNe _071A
+	NPCMsg msg_0058_D17R0110_00008
+	GoTo _0749
 
 _071A:
-	compare VAR_TEMP_x4005, 6
-	goto_if_ne _0730
-	npc_msg msg_0058_D17R0110_00008
-	goto _0749
+	Compare VAR_TEMP_x4005, 6
+	GoToIfNe _0730
+	NPCMsg msg_0058_D17R0110_00008
+	GoTo _0749
 
 _0730:
-	compare VAR_TEMP_x4005, 4
-	goto_if_ne _0746
-	npc_msg msg_0058_D17R0110_00006
-	goto _0749
+	Compare VAR_TEMP_x4005, 4
+	GoToIfNe _0746
+	NPCMsg msg_0058_D17R0110_00006
+	GoTo _0749
 
 _0746:
-	npc_msg msg_0058_D17R0110_00007
+	NPCMsg msg_0058_D17R0110_00007
 _0749:
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 	.balign 4, 0
 _0754:
@@ -569,20 +569,20 @@ _092C:
 	EndMovement
 
 scr_seq_D17R0110_004:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	goto_if_set FLAG_UNK_108, _095E
-	npc_msg msg_0058_D17R0110_00001
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	GoToIfSet FLAG_UNK_108, _095E
+	NPCMsg msg_0058_D17R0110_00001
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _095E:
-	npc_msg msg_0058_D17R0110_00005
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0058_D17R0110_00005
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 	.balign 4, 0

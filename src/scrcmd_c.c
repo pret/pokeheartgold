@@ -400,7 +400,7 @@ BOOL ScrCmd_ObjectGoTo(ScriptContext *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_BgGoTo(ScriptContext *ctx) {
+BOOL ScrCmd_BGGoTo(ScriptContext *ctx) {
     u32 bg = sub_02050658(ctx->taskman);
     u8 required_bg = ScriptReadByte(ctx);
 
@@ -602,7 +602,7 @@ BOOL ScrCmd_048(ScriptContext *ctx) {
 
 static BOOL sub_02041000(ScriptContext *ctx);
 
-BOOL ScrCmd_WaitButton(ScriptContext *ctx) {
+BOOL ScrCmd_WaitABPress(ScriptContext *ctx) {
     SetupNativeScript(ctx, sub_02041000);
     return TRUE;
 }
@@ -629,7 +629,7 @@ static BOOL sub_02041040(ScriptContext *ctx) {
 
 static BOOL sub_02041074(ScriptContext *ctx);
 
-BOOL ScrCmd_WaitButtonOrWalkAway(ScriptContext *ctx) {
+BOOL ScrCmd_WaitButton(ScriptContext *ctx) {
     SetupNativeScript(ctx, sub_02041074);
     return TRUE;
 }
@@ -1385,7 +1385,7 @@ BOOL ScrCmd_ReleaseAll(ScriptContext *ctx) {
     return TRUE;
 }
 
-BOOL ScrCmd_098(ScriptContext *ctx) {
+BOOL ScrCmd_Lock(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
     u16 objectId = ScriptReadHalfword(ctx);
     LocalMapObject *object = MapObjectManager_GetFirstActiveObjectByID(fieldSystem->mapObjectManager, objectId);
@@ -1397,7 +1397,7 @@ BOOL ScrCmd_098(ScriptContext *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_099(ScriptContext *ctx) {
+BOOL ScrCmd_Release(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
     u16 objectId = ScriptReadHalfword(ctx);
     LocalMapObject *object = MapObjectManager_GetFirstActiveObjectByID(fieldSystem->mapObjectManager, objectId);
@@ -1617,7 +1617,7 @@ BOOL ScrCmd_350(ScriptContext *ctx) { // todo: union pokemon selection
     return TRUE;
 }
 
-BOOL ScrCmd_PartySelect(ScriptContext *ctx) { // todo: get selected pokemon slot
+BOOL ScrCmd_GetPartySelection(ScriptContext *ctx) { // todo: get selected pokemon slot
     u16 *dest_p = ScriptGetVarPointer(ctx);
     PartyMenuArgs **partyMenu = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
     GF_ASSERT(*partyMenu != NULL);
@@ -2016,7 +2016,7 @@ BOOL ScrCmd_162(ScriptContext *ctx) {
     return TRUE;
 }
 
-BOOL ScrCmd_HOF_Credits(ScriptContext *ctx) {
+BOOL ScrCmd_HOFCredits(ScriptContext *ctx) {
     u16 vsTrainerRed = ScriptReadHalfword(ctx);
     CallTask_GameClear(ctx->fieldSystem->taskman, vsTrainerRed);
     return TRUE;
@@ -3012,7 +3012,7 @@ BOOL ScrCmd_MoveWarp(ScriptContext *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_MoveBgEvent(ScriptContext *ctx) {
+BOOL ScrCmd_MoveBGEvent(ScriptContext *ctx) {
     u16 bgId = ScriptGetVar(ctx);
     u16 x = ScriptGetVar(ctx);
     u16 y = ScriptGetVar(ctx);
@@ -3463,7 +3463,7 @@ BOOL ScrCmd_NPCTradeGetReqSpecies(ScriptContext *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_GetNpcTradeUnusedFlag(ScriptContext *ctx) {
+BOOL ScrCmd_GetNPCTradeUnusedFlag(ScriptContext *ctx) {
     NPCTradeAppData **p_tradeWork = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MISC_DATA_PTR);
     u16 *p_ret = ScriptGetVarPointer(ctx);
     *p_ret = NPCTradeApp_GetUnusedFlag(*p_tradeWork);

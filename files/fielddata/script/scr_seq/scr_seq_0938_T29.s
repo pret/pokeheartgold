@@ -5,384 +5,384 @@
 
 	.rodata
 
-	scrdef scr_seq_T29_000
-	scrdef scr_seq_T29_001
-	scrdef scr_seq_T29_002
-	scrdef scr_seq_T29_003
-	scrdef scr_seq_T29_004
-	scrdef scr_seq_T29_005
-	scrdef scr_seq_T29_006
-	scrdef scr_seq_T29_007
-	scrdef scr_seq_T29_008
-	scrdef scr_seq_T29_009
-	scrdef scr_seq_T29_010
-	scrdef scr_seq_T29_011
-	scrdef scr_seq_T29_012
-	scrdef scr_seq_T29_013
-	scrdef scr_seq_T29_014
-	scrdef scr_seq_T29_015
-	scrdef scr_seq_T29_016
-	scrdef scr_seq_T29_017
-	scrdef scr_seq_T29_018
-	scrdef_end
+	ScrDef scr_seq_T29_000
+	ScrDef scr_seq_T29_001
+	ScrDef scr_seq_T29_002
+	ScrDef scr_seq_T29_003
+	ScrDef scr_seq_T29_004
+	ScrDef scr_seq_T29_005
+	ScrDef scr_seq_T29_006
+	ScrDef scr_seq_T29_007
+	ScrDef scr_seq_T29_008
+	ScrDef scr_seq_T29_009
+	ScrDef scr_seq_T29_010
+	ScrDef scr_seq_T29_011
+	ScrDef scr_seq_T29_012
+	ScrDef scr_seq_T29_013
+	ScrDef scr_seq_T29_014
+	ScrDef scr_seq_T29_015
+	ScrDef scr_seq_T29_016
+	ScrDef scr_seq_T29_017
+	ScrDef scr_seq_T29_018
+	ScrDefEnd
 
 scr_seq_T29_000:
-	goto_if_set FLAG_GOT_RED_SCALE, _007F
-	setflag FLAG_UNK_1FC
-	setflag FLAG_UNK_1FE
-	setflag FLAG_MAPTEMP_011
-	setflag FLAG_MAPTEMP_013
-	setflag FLAG_MAPTEMP_014
-	setflag FLAG_MAPTEMP_015
-	setflag FLAG_UNK_289
-	setflag FLAG_UNK_28B
-	setflag FLAG_UNK_28C
-	end
+	GoToIfSet FLAG_GOT_RED_SCALE, _007F
+	SetFlag FLAG_UNK_1FC
+	SetFlag FLAG_UNK_1FE
+	SetFlag FLAG_MAPTEMP_011
+	SetFlag FLAG_MAPTEMP_013
+	SetFlag FLAG_MAPTEMP_014
+	SetFlag FLAG_MAPTEMP_015
+	SetFlag FLAG_UNK_289
+	SetFlag FLAG_UNK_28B
+	SetFlag FLAG_UNK_28C
+	End
 
 _007F:
-	goto _0115
+	GoTo _0115
 
 _0085:
-	compare VAR_UNK_4037, 61993
-	goto_if_eq _00BC
-	setflag FLAG_UNK_1FC
-	setflag FLAG_UNK_1FE
-	clearflag FLAG_HIDE_LAKE_OF_RAGE_FISHERMEN
-	setflag FLAG_MAPTEMP_011
-	setflag FLAG_MAPTEMP_013
-	setflag FLAG_MAPTEMP_014
-	setflag FLAG_MAPTEMP_015
-	setflag FLAG_UNK_289
-	setflag FLAG_UNK_28B
-	setflag FLAG_UNK_28C
-	end
+	Compare VAR_UNK_4037, 61993
+	GoToIfEq _00BC
+	SetFlag FLAG_UNK_1FC
+	SetFlag FLAG_UNK_1FE
+	ClearFlag FLAG_HIDE_LAKE_OF_RAGE_FISHERMEN
+	SetFlag FLAG_MAPTEMP_011
+	SetFlag FLAG_MAPTEMP_013
+	SetFlag FLAG_MAPTEMP_014
+	SetFlag FLAG_MAPTEMP_015
+	SetFlag FLAG_UNK_289
+	SetFlag FLAG_UNK_28B
+	SetFlag FLAG_UNK_28C
+	End
 
 _00BC:
-	clearflag FLAG_UNK_1FC
-	clearflag FLAG_UNK_1FE
-	setflag FLAG_HIDE_LAKE_OF_RAGE_FISHERMEN
-	clearflag FLAG_UNK_289
-	clearflag FLAG_UNK_28B
-	clearflag FLAG_UNK_28C
-	goto_if_set FLAG_UNK_146, _00E5
-	goto _00E9
+	ClearFlag FLAG_UNK_1FC
+	ClearFlag FLAG_UNK_1FE
+	SetFlag FLAG_HIDE_LAKE_OF_RAGE_FISHERMEN
+	ClearFlag FLAG_UNK_289
+	ClearFlag FLAG_UNK_28B
+	ClearFlag FLAG_UNK_28C
+	GoToIfSet FLAG_UNK_146, _00E5
+	GoTo _00E9
 
 _00E5:
-	setflag FLAG_UNK_289
+	SetFlag FLAG_UNK_289
 _00E9:
-	goto_if_set FLAG_UNK_147, _00FA
-	goto _00FE
+	GoToIfSet FLAG_UNK_147, _00FA
+	GoTo _00FE
 
 _00FA:
-	setflag FLAG_UNK_28B
+	SetFlag FLAG_UNK_28B
 _00FE:
-	goto_if_set FLAG_UNK_148, _010F
-	goto _0113
+	GoToIfSet FLAG_UNK_148, _010F
+	GoTo _0113
 
 _010F:
-	setflag FLAG_UNK_28C
+	SetFlag FLAG_UNK_28C
 _0113:
-	end
+	End
 
 _0115:
-	check_registered_phone_number PHONE_CONTACT_PRYCE, VAR_TEMP_x4001
-	compare VAR_TEMP_x4001, 1
-	goto_if_eq _01A7
-	goto_if_set FLAG_GAME_CLEAR, _0139
-	goto _01A7
+	CheckRegisteredPhoneNumber PHONE_CONTACT_PRYCE, VAR_TEMP_x4001
+	Compare VAR_TEMP_x4001, 1
+	GoToIfEq _01A7
+	GoToIfSet FLAG_GAME_CLEAR, _0139
+	GoTo _01A7
 
 _0139:
-	scrcmd_522 VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 6
-	goto_if_ne _0154
-	clearflag FLAG_HIDE_LAKE_OF_RAGE_PRYCE
-	goto _019F
+	ScrCmd_522 VAR_TEMP_x4000
+	Compare VAR_TEMP_x4000, 6
+	GoToIfNe _0154
+	ClearFlag FLAG_HIDE_LAKE_OF_RAGE_PRYCE
+	GoTo _019F
 
 _0154:
-	compare VAR_TEMP_x4000, 7
-	goto_if_ne _016B
-	clearflag FLAG_HIDE_LAKE_OF_RAGE_PRYCE
-	goto _019F
+	Compare VAR_TEMP_x4000, 7
+	GoToIfNe _016B
+	ClearFlag FLAG_HIDE_LAKE_OF_RAGE_PRYCE
+	GoTo _019F
 
 _016B:
-	compare VAR_TEMP_x4000, 8
-	goto_if_ne _0182
-	clearflag FLAG_HIDE_LAKE_OF_RAGE_PRYCE
-	goto _019F
+	Compare VAR_TEMP_x4000, 8
+	GoToIfNe _0182
+	ClearFlag FLAG_HIDE_LAKE_OF_RAGE_PRYCE
+	GoTo _019F
 
 _0182:
-	compare VAR_TEMP_x4000, 9
-	goto_if_ne _0199
-	clearflag FLAG_HIDE_LAKE_OF_RAGE_PRYCE
-	goto _019F
+	Compare VAR_TEMP_x4000, 9
+	GoToIfNe _0199
+	ClearFlag FLAG_HIDE_LAKE_OF_RAGE_PRYCE
+	GoTo _019F
 
 _0199:
-	goto _01A7
+	GoTo _01A7
 
 _019F:
-	goto _0085
-	end
+	GoTo _0085
+	End
 
 _01A7:
-	setflag FLAG_HIDE_LAKE_OF_RAGE_PRYCE
-	goto _0085
-	end
+	SetFlag FLAG_HIDE_LAKE_OF_RAGE_PRYCE
+	GoTo _0085
+	End
 
 scr_seq_T29_002:
-	goto_if_set FLAG_ENGAGING_STATIC_POKEMON, _01C0
-	end
+	GoToIfSet FLAG_ENGAGING_STATIC_POKEMON, _01C0
+	End
 
 _01C0:
-	setflag FLAG_HIDE_LAKE_OF_RAGE_RED_GYARADOS
-	hide_person obj_T29_rgyaradosu
-	clearflag FLAG_HIDE_LAKE_OF_RAGE_LANCE
-	show_person obj_T29_wataru
-	show_person obj_T29_tsure_poke_static_dragonite
-	clearflag FLAG_ENGAGING_STATIC_POKEMON
-	end
+	SetFlag FLAG_HIDE_LAKE_OF_RAGE_RED_GYARADOS
+	HidePerson obj_T29_rgyaradosu
+	ClearFlag FLAG_HIDE_LAKE_OF_RAGE_LANCE
+	ShowPerson obj_T29_wataru
+	ShowPerson obj_T29_tsure_poke_static_dragonite
+	ClearFlag FLAG_ENGAGING_STATIC_POKEMON
+	End
 
 scr_seq_T29_017:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	compare VAR_TEMP_x4004, 1
-	goto_if_ge _026A
-	npc_msg msg_0626_T29_00013
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	Compare VAR_TEMP_x4004, 1
+	GoToIfGe _026A
+	NPCMsg msg_0626_T29_00013
 _01F2:
-	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_RESULT
-	touchscreen_menu_show
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0216
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_ge _0259
-	end
+	TouchscreenMenuHide
+	GetMenuChoice VAR_SPECIAL_RESULT
+	TouchscreenMenuShow
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0216
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfGe _0259
+	End
 
 _0216:
-	buffer_players_name 0
-	npc_msg msg_0626_T29_00014
-	play_fanfare SEQ_ME_POKEGEAR_REGIST
-	wait_fanfare
-	register_gear_number PHONE_CONTACT_PRYCE
-	npc_msg msg_0626_T29_00015
-	wait_button_or_walk_away
-	closemsg
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	setflag FLAG_HIDE_LAKE_OF_RAGE_PRYCE
-	hide_person obj_T29_gsleader7
-	play_se SEQ_SE_DP_KAIDAN2
-	wait_se SEQ_SE_DP_KAIDAN2
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
-	releaseall
-	end
+	BufferPlayersName 0
+	NPCMsg msg_0626_T29_00014
+	PlayFanfare SEQ_ME_POKEGEAR_REGIST
+	WaitFanfare
+	RegisterGearNumber PHONE_CONTACT_PRYCE
+	NPCMsg msg_0626_T29_00015
+	WaitButton
+	CloseMsg
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	SetFlag FLAG_HIDE_LAKE_OF_RAGE_PRYCE
+	HidePerson obj_T29_gsleader7
+	PlaySE SEQ_SE_DP_KAIDAN2
+	WaitSE SEQ_SE_DP_KAIDAN2
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
+	ReleaseAll
+	End
 
 _0259:
-	setvar VAR_TEMP_x4004, 1
-	npc_msg msg_0626_T29_00016
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	SetVar VAR_TEMP_x4004, 1
+	NPCMsg msg_0626_T29_00016
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _026A:
-	npc_msg msg_0626_T29_00017
-	goto _01F2
-	end
+	NPCMsg msg_0626_T29_00017
+	GoTo _01F2
+	End
 
 scr_seq_T29_005:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	get_party_lead_alive VAR_SPECIAL_x8002
-	mon_has_ribbon VAR_SPECIAL_RESULT, VAR_SPECIAL_x8002, RIBBON_DOWNCAST
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _039B
-	goto_if_set FLAG_DAILY_GOT_SHOCK_RIBBON, _03AF
-	compare VAR_NUM_MET_WEEKDAY_SIBLINGS, 7
-	goto_if_eq _0349
-	goto_if_set FLAG_GOT_BLACK_BELT_FROM_WESLEY, _032B
-	get_weekday VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 3
-	goto_if_eq _02DC
-	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 11
-	goto _0323
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	GetPartyLeadAlive VAR_SPECIAL_x8002
+	MonHasRibbon VAR_SPECIAL_RESULT, VAR_SPECIAL_x8002, RIBBON_DOWNCAST
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _039B
+	GoToIfSet FLAG_DAILY_GOT_SHOCK_RIBBON, _03AF
+	Compare VAR_NUM_MET_WEEKDAY_SIBLINGS, 7
+	GoToIfEq _0349
+	GoToIfSet FLAG_GOT_BLACK_BELT_FROM_WESLEY, _032B
+	GetWeekday VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 3
+	GoToIfEq _02DC
+	GetStdMsgNaix 0, VAR_SPECIAL_RESULT
+	MsgBoxExtern VAR_SPECIAL_RESULT, 11
+	GoTo _0323
 
 _02DC:
-	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 8
-	goto_if_no_item_space ITEM_BLACK_BELT, 1, _033F
-	callstd std_give_item_verbose
-	setflag FLAG_GOT_BLACK_BELT_FROM_WESLEY
-	addvar VAR_NUM_MET_WEEKDAY_SIBLINGS, 1
-	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 9
+	GetStdMsgNaix 0, VAR_SPECIAL_RESULT
+	MsgBoxExtern VAR_SPECIAL_RESULT, 8
+	GoToIfNoItemSpace ITEM_BLACK_BELT, 1, _033F
+	CallStd std_give_item_verbose
+	SetFlag FLAG_GOT_BLACK_BELT_FROM_WESLEY
+	AddVar VAR_NUM_MET_WEEKDAY_SIBLINGS, 1
+	GetStdMsgNaix 0, VAR_SPECIAL_RESULT
+	MsgBoxExtern VAR_SPECIAL_RESULT, 9
 _0323:
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _032B:
-	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 10
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	GetStdMsgNaix 0, VAR_SPECIAL_RESULT
+	MsgBoxExtern VAR_SPECIAL_RESULT, 10
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _033F:
-	callstd std_bag_is_full
-	closemsg
-	releaseall
-	end
+	CallStd std_bag_is_full
+	CloseMsg
+	ReleaseAll
+	End
 
 _0349:
-	get_weekday VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 3
-	goto_if_eq _036C
-	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 11
-	goto _0323
+	GetWeekday VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 3
+	GoToIfEq _036C
+	GetStdMsgNaix 0, VAR_SPECIAL_RESULT
+	MsgBoxExtern VAR_SPECIAL_RESULT, 11
+	GoTo _0323
 
 _036C:
-	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 36
-	buffer_mon_species_name 0, VAR_SPECIAL_x8002
-	msgbox_extern VAR_SPECIAL_RESULT, 38
-	give_ribbon VAR_SPECIAL_x8002, RIBBON_DOWNCAST
-	play_fanfare SEQ_ME_ITEM
-	wait_fanfare
-	setflag FLAG_DAILY_GOT_SHOCK_RIBBON
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	GetStdMsgNaix 0, VAR_SPECIAL_RESULT
+	MsgBoxExtern VAR_SPECIAL_RESULT, 36
+	BufferMonSpeciesName 0, VAR_SPECIAL_x8002
+	MsgBoxExtern VAR_SPECIAL_RESULT, 38
+	GiveRibbon VAR_SPECIAL_x8002, RIBBON_DOWNCAST
+	PlayFanfare SEQ_ME_ITEM
+	WaitFanfare
+	SetFlag FLAG_DAILY_GOT_SHOCK_RIBBON
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _039B:
-	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 37
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	GetStdMsgNaix 0, VAR_SPECIAL_RESULT
+	MsgBoxExtern VAR_SPECIAL_RESULT, 37
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _03AF:
-	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 39
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	GetStdMsgNaix 0, VAR_SPECIAL_RESULT
+	MsgBoxExtern VAR_SPECIAL_RESULT, 39
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_T29_001:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	play_cry SPECIES_GYARADOS, 0
-	npc_msg msg_0626_T29_00000
-	wait_cry
-	closemsg
-	setflag FLAG_ENGAGING_STATIC_POKEMON
-	wild_battle SPECIES_GYARADOS, 30, 1
-	clearflag FLAG_ENGAGING_STATIC_POKEMON
-	check_battle_won VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0456
-	get_static_encounter_outcome VAR_TEMP_x4002
-	compare VAR_TEMP_x4002, 3
-	goto_if_eq _0452
-	compare VAR_TEMP_x4002, 4
-	call_if_eq _0466
-	goto_if_set FLAG_GOT_RED_SCALE, _046C
-	openmsg
-	goto_if_no_item_space ITEM_RED_SCALE, 1, _045C
-	callstd std_give_item_verbose
-	setflag FLAG_GOT_RED_SCALE
-	clearflag FLAG_HIDE_LAKE_OF_RAGE_ACE_TRAINER_LOIS
-	closemsg
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	PlayCry SPECIES_GYARADOS, 0
+	NPCMsg msg_0626_T29_00000
+	WaitCry
+	CloseMsg
+	SetFlag FLAG_ENGAGING_STATIC_POKEMON
+	WildBattle SPECIES_GYARADOS, 30, 1
+	ClearFlag FLAG_ENGAGING_STATIC_POKEMON
+	CheckBattleWon VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0456
+	GetStaticEncounterOutcome VAR_TEMP_x4002
+	Compare VAR_TEMP_x4002, 3
+	GoToIfEq _0452
+	Compare VAR_TEMP_x4002, 4
+	CallIfEq _0466
+	GoToIfSet FLAG_GOT_RED_SCALE, _046C
+	OpenMsg
+	GoToIfNoItemSpace ITEM_RED_SCALE, 1, _045C
+	CallStd std_give_item_verbose
+	SetFlag FLAG_GOT_RED_SCALE
+	ClearFlag FLAG_HIDE_LAKE_OF_RAGE_ACE_TRAINER_LOIS
+	CloseMsg
 _0452:
-	releaseall
-	end
+	ReleaseAll
+	End
 
 _0456:
-	white_out
-	releaseall
-	end
+	WhiteOut
+	ReleaseAll
+	End
 
 _045C:
-	callstd std_bag_is_full
-	closemsg
-	releaseall
-	end
+	CallStd std_bag_is_full
+	CloseMsg
+	ReleaseAll
+	End
 
 _0466:
-	setflag FLAG_CAUGHT_RED_GYARADOS
-	return
+	SetFlag FLAG_CAUGHT_RED_GYARADOS
+	Return
 
 _046C:
-	clearflag FLAG_HIDE_LAKE_OF_RAGE_LANCE
-	hide_person obj_T29_wataru
-	hide_person obj_T29_tsure_poke_static_dragonite
-	releaseall
-	end
+	ClearFlag FLAG_HIDE_LAKE_OF_RAGE_LANCE
+	HidePerson obj_T29_wataru
+	HidePerson obj_T29_tsure_poke_static_dragonite
+	ReleaseAll
+	End
 
 scr_seq_T29_003:
-	goto_if_set FLAG_UNK_0C3, _0509
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	npc_msg msg_0626_T29_00002
-	faceplayer
-	buffer_players_name 0
-	gender_msgbox msg_0626_T29_00003, msg_0626_T29_00004
-	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_RESULT
-	touchscreen_menu_show
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _04BB
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _04FA
+	GoToIfSet FLAG_UNK_0C3, _0509
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	NPCMsg msg_0626_T29_00002
+	FacePlayer
+	BufferPlayersName 0
+	GenderMsgBox msg_0626_T29_00003, msg_0626_T29_00004
+	TouchscreenMenuHide
+	GetMenuChoice VAR_SPECIAL_RESULT
+	TouchscreenMenuShow
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _04BB
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _04FA
 _04BB:
-	buffer_players_name 0
-	gender_msgbox msg_0626_T29_00005, msg_0626_T29_00006
-	wait_button_or_walk_away
-	closemsg
-	apply_movement obj_T29_tsure_poke_static_dragonite, _0538
-	wait_movement
-	apply_movement obj_T29_wataru, _0544
-	wait_movement
-	scrcmd_775 8, 10
-	setflag FLAG_HIDE_LAKE_OF_RAGE_LANCE
-	hide_person obj_T29_wataru
-	hide_person obj_T29_tsure_poke_static_dragonite
-	clearflag FLAG_HIDE_MAHOGANY_SHOP_LANCE
-	setvar VAR_UNK_40A8, 1
-	releaseall
-	end
+	BufferPlayersName 0
+	GenderMsgBox msg_0626_T29_00005, msg_0626_T29_00006
+	WaitButton
+	CloseMsg
+	ApplyMovement obj_T29_tsure_poke_static_dragonite, _0538
+	WaitMovement
+	ApplyMovement obj_T29_wataru, _0544
+	WaitMovement
+	ScrCmd_775 8, 10
+	SetFlag FLAG_HIDE_LAKE_OF_RAGE_LANCE
+	HidePerson obj_T29_wataru
+	HidePerson obj_T29_tsure_poke_static_dragonite
+	ClearFlag FLAG_HIDE_MAHOGANY_SHOP_LANCE
+	SetVar VAR_UNK_40A8, 1
+	ReleaseAll
+	End
 
 _04FA:
-	setflag FLAG_UNK_0C3
-	npc_msg msg_0626_T29_00007
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	SetFlag FLAG_UNK_0C3
+	NPCMsg msg_0626_T29_00007
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0509:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0626_T29_00008
-	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_RESULT
-	touchscreen_menu_show
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _04BB
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _04FA
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	NPCMsg msg_0626_T29_00008
+	TouchscreenMenuHide
+	GetMenuChoice VAR_SPECIAL_RESULT
+	TouchscreenMenuShow
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _04BB
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _04FA
+	End
 
 	.balign 4, 0
 _0538:
@@ -396,176 +396,176 @@ _0544:
 	EndMovement
 
 scr_seq_T29_004:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	goto_if_set FLAG_RED_GYARADOS_MEET, _056A
-	npc_msg msg_0626_T29_00009
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	GoToIfSet FLAG_RED_GYARADOS_MEET, _056A
+	NPCMsg msg_0626_T29_00009
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _056A:
-	npc_msg msg_0626_T29_00010
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
-	end
+	NPCMsg msg_0626_T29_00010
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
+	End
 
 scr_seq_T29_006:
-	goto_if_set FLAG_UNK_139, _0597
-	scrcmd_055 2, 0
-	scrcmd_057 3
-	scrcmd_058
-	trainer_tips msg_0626_T29_00031, VAR_SPECIAL_RESULT
-	callstd std_signpost
-	end
+	GoToIfSet FLAG_UNK_139, _0597
+	ScrCmd_055 2, 0
+	ScrCmd_057 3
+	ScrCmd_058
+	TrainerTips msg_0626_T29_00031, VAR_SPECIAL_RESULT
+	CallStd std_signpost
+	End
 
 _0597:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	script_overlay_cmd 0, 0
-	buffer_record_size 0, 1, SPECIES_MAGIKARP
-	script_overlay_cmd 0, 1
-	buffer_players_name 2
-	scrcmd_055 2, 0
-	scrcmd_057 3
-	scrcmd_058
-	trainer_tips msg_0626_T29_00032, VAR_SPECIAL_RESULT
-	callstd std_signpost
-	dummy_486
-	dummy_486
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	ScriptOverlayCmd 0, 0
+	BufferRecordSize 0, 1, SPECIES_MAGIKARP
+	ScriptOverlayCmd 0, 1
+	BufferPlayersName 2
+	ScrCmd_055 2, 0
+	ScrCmd_057 3
+	ScrCmd_058
+	TrainerTips msg_0626_T29_00032, VAR_SPECIAL_RESULT
+	CallStd std_signpost
+	Dummy486
+	Dummy486
+	ReleaseAll
+	End
 
 scr_seq_T29_014:
-	setvar VAR_TEMP_x4001, 1
-	setvar VAR_SPECIAL_x8008, 27
-	setvar VAR_SPECIAL_x8009, 1
-	goto _061B
-	end
+	SetVar VAR_TEMP_x4001, 1
+	SetVar VAR_SPECIAL_x8008, 27
+	SetVar VAR_SPECIAL_x8009, 1
+	GoTo _061B
+	End
 
 scr_seq_T29_015:
-	setvar VAR_TEMP_x4001, 2
-	setvar VAR_SPECIAL_x8008, 29
-	setvar VAR_SPECIAL_x8009, 1
-	goto _061B
-	end
+	SetVar VAR_TEMP_x4001, 2
+	SetVar VAR_SPECIAL_x8008, 29
+	SetVar VAR_SPECIAL_x8009, 1
+	GoTo _061B
+	End
 
 scr_seq_T29_016:
-	setvar VAR_TEMP_x4001, 3
-	setvar VAR_SPECIAL_x8008, 23
-	setvar VAR_SPECIAL_x8009, 1
-	goto _061B
-	end
+	SetVar VAR_TEMP_x4001, 3
+	SetVar VAR_SPECIAL_x8008, 23
+	SetVar VAR_SPECIAL_x8009, 1
+	GoTo _061B
+	End
 
 _061B:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	wait_se SEQ_SE_DP_SELECT
-	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x8008
-	copyvar VAR_SPECIAL_x8005, VAR_SPECIAL_x8009
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _0657
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _06CA
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	WaitSE SEQ_SE_DP_SELECT
+	CopyVar VAR_SPECIAL_x8004, VAR_SPECIAL_x8008
+	CopyVar VAR_SPECIAL_x8005, VAR_SPECIAL_x8009
+	HasSpaceForItem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _0657
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _06CA
+	End
 
 _0657:
-	callstd std_hidden_item_fanfare
-	hide_person VAR_SPECIAL_LAST_TALKED
-	compare VAR_TEMP_x4001, 1
-	goto_if_ne _0676
-	setflag FLAG_UNK_146
-	goto _0691
+	CallStd std_hidden_item_fanfare
+	HidePerson VAR_SPECIAL_LAST_TALKED
+	Compare VAR_TEMP_x4001, 1
+	GoToIfNe _0676
+	SetFlag FLAG_UNK_146
+	GoTo _0691
 
 _0676:
-	compare VAR_TEMP_x4001, 2
-	goto_if_ne _068D
-	setflag FLAG_UNK_147
-	goto _0691
+	Compare VAR_TEMP_x4001, 2
+	GoToIfNe _068D
+	SetFlag FLAG_UNK_147
+	GoTo _0691
 
 _068D:
-	setflag FLAG_UNK_148
+	SetFlag FLAG_UNK_148
 _0691:
-	giveitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
-	buffer_players_name 0
-	buffer_item_name 1, VAR_SPECIAL_x8004
-	npc_msg msg_0626_T29_00033
-	wait_fanfare
-	buffer_players_name 0
-	buffer_item_name 1, VAR_SPECIAL_x8004
-	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
-	buffer_pocket_name 2, VAR_SPECIAL_RESULT
-	npc_msg msg_0626_T29_00034
-	wait_button_or_walk_away
-	setvar VAR_SPECIAL_RESULT, 1
+	GiveItem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
+	BufferPlayersName 0
+	BufferItemName 1, VAR_SPECIAL_x8004
+	NPCMsg msg_0626_T29_00033
+	WaitFanfare
+	BufferPlayersName 0
+	BufferItemName 1, VAR_SPECIAL_x8004
+	GetItemPocket VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
+	BufferPocketName 2, VAR_SPECIAL_RESULT
+	NPCMsg msg_0626_T29_00034
+	WaitButton
+	SetVar VAR_SPECIAL_RESULT, 1
 _06C4:
-	closemsg
-	releaseall
-	end
+	CloseMsg
+	ReleaseAll
+	End
 
 _06CA:
-	buffer_item_name 0, VAR_SPECIAL_x8004
-	npc_msg msg_0626_T29_00035
-	wait_button_or_walk_away
-	setvar VAR_SPECIAL_RESULT, 0
-	goto _06C4
-	end
+	BufferItemName 0, VAR_SPECIAL_x8004
+	NPCMsg msg_0626_T29_00035
+	WaitButton
+	SetVar VAR_SPECIAL_RESULT, 0
+	GoTo _06C4
+	End
 
 scr_seq_T29_018:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	play_cry SPECIES_DRAGONITE, 0
-	npc_msg msg_0626_T29_00001
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	PlayCry SPECIES_DRAGONITE, 0
+	NPCMsg msg_0626_T29_00001
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_T29_007:
-	scrcmd_055 2, 0
-	scrcmd_057 3
-	scrcmd_058
-	trainer_tips msg_0626_T29_00030, VAR_SPECIAL_RESULT
-	callstd std_signpost
-	end
+	ScrCmd_055 2, 0
+	ScrCmd_057 3
+	ScrCmd_058
+	TrainerTips msg_0626_T29_00030, VAR_SPECIAL_RESULT
+	CallStd std_signpost
+	End
 
 _0710:
-	simple_npc_msg msg_0626_T29_00009
-	end
+	SimpleNPCMsg msg_0626_T29_00009
+	End
 
 scr_seq_T29_008:
-	simple_npc_msg msg_0626_T29_00012
-	end
+	SimpleNPCMsg msg_0626_T29_00012
+	End
 
 scr_seq_T29_009:
-	simple_npc_msg msg_0626_T29_00011
-	end
+	SimpleNPCMsg msg_0626_T29_00011
+	End
 
 _0749:
-	simple_npc_msg msg_0626_T29_00000
-	end
+	SimpleNPCMsg msg_0626_T29_00000
+	End
 
 scr_seq_T29_010:
-	simple_npc_msg msg_0626_T29_00018
-	end
+	SimpleNPCMsg msg_0626_T29_00018
+	End
 
 scr_seq_T29_011:
-	simple_npc_msg msg_0626_T29_00021
-	end
+	SimpleNPCMsg msg_0626_T29_00021
+	End
 
 scr_seq_T29_012:
-	simple_npc_msg msg_0626_T29_00024
-	end
+	SimpleNPCMsg msg_0626_T29_00024
+	End
 
 scr_seq_T29_013:
-	simple_npc_msg msg_0626_T29_00027
-	end
+	SimpleNPCMsg msg_0626_T29_00027
+	End
 	.balign 4, 0

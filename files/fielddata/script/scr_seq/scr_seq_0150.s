@@ -5,59 +5,59 @@
 
 	.rodata
 
-	scrdef scr_seq_0150_000
-	scrdef_end
+	ScrDef scr_seq_0150_000
+	ScrDefEnd
 
 scr_seq_0150_000:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0023_00000
-	closemsg
-	hasitem ITEM_APRICORN_BOX, 1, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0099
-	anim_apricorn_tree VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0088
-	apricorn_tree_get_apricorn VAR_SPECIAL_x8000
-	setvar VAR_SPECIAL_x8005, 1
-	buffer_players_name 0
-	buffer_apricorn_name 1, VAR_SPECIAL_x8000
-	npc_msg msg_0023_00001
-	closemsg
-	play_fanfare SEQ_ME_ITEM
-	npc_msg msg_0023_00003
-	wait_fanfare
-	give_apricorn_from_tree VAR_SPECIAL_x8000, 1, VAR_SPECIAL_RESULT
-	add_special_game_stat SCORE_EVENT_1
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _007D
-	npc_msg msg_0023_00004
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	NPCMsg msg_0023_00000
+	CloseMsg
+	HasItem ITEM_APRICORN_BOX, 1, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0099
+	AnimApricornTree VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0088
+	ApricornTreeGetApricorn VAR_SPECIAL_x8000
+	SetVar VAR_SPECIAL_x8005, 1
+	BufferPlayersName 0
+	BufferApricornName 1, VAR_SPECIAL_x8000
+	NPCMsg msg_0023_00001
+	CloseMsg
+	PlayFanfare SEQ_ME_ITEM
+	NPCMsg msg_0023_00003
+	WaitFanfare
+	GiveApricornFromTree VAR_SPECIAL_x8000, 1, VAR_SPECIAL_RESULT
+	AddSpecialGameStat SCORE_EVENT_1
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _007D
+	NPCMsg msg_0023_00004
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _007D:
-	npc_msg msg_0023_00006
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0023_00006
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0088:
-	wait 15, VAR_SPECIAL_RESULT
-	npc_msg msg_0023_00002
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	Wait 15, VAR_SPECIAL_RESULT
+	NPCMsg msg_0023_00002
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0099:
-	npc_msg msg_0023_00007
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0023_00007
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 	.balign 4, 0

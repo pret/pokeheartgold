@@ -5,82 +5,82 @@
 
 	.rodata
 
-	scrdef scr_seq_R11_000
-	scrdef scr_seq_R11_001
-	scrdef scr_seq_R11_002
-	scrdef scr_seq_R11_003
-	scrdef_end
+	ScrDef scr_seq_R11_000
+	ScrDef scr_seq_R11_001
+	ScrDef scr_seq_R11_002
+	ScrDef scr_seq_R11_003
+	ScrDefEnd
 
 scr_seq_R11_001:
-	goto_if_set FLAG_ENGAGING_STATIC_POKEMON, _002A
-	goto_if_set FLAG_SNORLAX_MEET, _0044
-	end
+	GoToIfSet FLAG_ENGAGING_STATIC_POKEMON, _002A
+	GoToIfSet FLAG_SNORLAX_MEET, _0044
+	End
 
 _002A:
-	setflag FLAG_HIDE_ROUTE_11_SNORLAX
-	hide_person obj_R11_kabigon
-	hide_person obj_R11_gsbabyboy1_2
-	hide_person obj_R11_gsbabyboy1
-	hide_person obj_R11_gsbabyboy1_3
-	clearflag FLAG_ENGAGING_STATIC_POKEMON
-	end
+	SetFlag FLAG_HIDE_ROUTE_11_SNORLAX
+	HidePerson obj_R11_kabigon
+	HidePerson obj_R11_gsbabyboy1_2
+	HidePerson obj_R11_gsbabyboy1
+	HidePerson obj_R11_gsbabyboy1_3
+	ClearFlag FLAG_ENGAGING_STATIC_POKEMON
+	End
 
 _0044:
-	end
+	End
 
 scr_seq_R11_000:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	radio_music_is_playing 5, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _006A
-	npc_msg msg_0346_R11_00002
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	RadioMusicIsPlaying 5, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _006A
+	NPCMsg msg_0346_R11_00002
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _006A:
-	play_cry SPECIES_SNORLAX, 0
-	npc_msg msg_0346_R11_00003
-	wait_cry
-	closemsg
-	setflag FLAG_ENGAGING_STATIC_POKEMON
-	wild_battle SPECIES_SNORLAX, 50, 0
-	clearflag FLAG_ENGAGING_STATIC_POKEMON
-	check_battle_won VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _00B4
-	get_static_encounter_outcome VAR_TEMP_x4005
-	compare VAR_TEMP_x4005, 4
-	call_if_eq _00BA
-	setflag FLAG_UNK_998
-	setflag FLAG_SNORLAX_MEET
-	releaseall
-	end
+	PlayCry SPECIES_SNORLAX, 0
+	NPCMsg msg_0346_R11_00003
+	WaitCry
+	CloseMsg
+	SetFlag FLAG_ENGAGING_STATIC_POKEMON
+	WildBattle SPECIES_SNORLAX, 50, 0
+	ClearFlag FLAG_ENGAGING_STATIC_POKEMON
+	CheckBattleWon VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _00B4
+	GetStaticEncounterOutcome VAR_TEMP_x4005
+	Compare VAR_TEMP_x4005, 4
+	CallIfEq _00BA
+	SetFlag FLAG_UNK_998
+	SetFlag FLAG_SNORLAX_MEET
+	ReleaseAll
+	End
 
 _00B4:
-	white_out
-	releaseall
-	end
+	WhiteOut
+	ReleaseAll
+	End
 
 _00BA:
-	setflag FLAG_CAUGHT_SNORLAX
-	return
+	SetFlag FLAG_CAUGHT_SNORLAX
+	Return
 
 scr_seq_R11_002:
-	direction_signpost msg_0346_R11_00000, 1, 2, VAR_SPECIAL_RESULT
-	scrcmd_057 3
-	scrcmd_058
-	scrcmd_060 VAR_SPECIAL_RESULT
-	callstd std_signpost
-	end
+	DirectionSignpost msg_0346_R11_00000, 1, 2, VAR_SPECIAL_RESULT
+	ScrCmd_057 3
+	ScrCmd_058
+	ScrCmd_060 VAR_SPECIAL_RESULT
+	CallStd std_signpost
+	End
 
 scr_seq_R11_003:
-	scrcmd_055 2, 0
-	scrcmd_057 3
-	scrcmd_058
-	trainer_tips msg_0346_R11_00001, VAR_SPECIAL_RESULT
-	callstd std_signpost
-	end
+	ScrCmd_055 2, 0
+	ScrCmd_057 3
+	ScrCmd_058
+	TrainerTips msg_0346_R11_00001, VAR_SPECIAL_RESULT
+	CallStd std_signpost
+	End
 	.balign 4, 0

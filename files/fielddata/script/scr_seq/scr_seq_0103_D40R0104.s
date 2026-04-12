@@ -5,112 +5,112 @@
 
 	.rodata
 
-	scrdef scr_seq_D40R0104_000
-	scrdef scr_seq_D40R0104_001
-	scrdef scr_seq_D40R0104_002
-	scrdef scr_seq_D40R0104_003
-	scrdef_end
+	ScrDef scr_seq_D40R0104_000
+	ScrDef scr_seq_D40R0104_001
+	ScrDef scr_seq_D40R0104_002
+	ScrDef scr_seq_D40R0104_003
+	ScrDefEnd
 
 scr_seq_D40R0104_003:
-	setvar VAR_TEMP_x4003, 111
-	end
+	SetVar VAR_TEMP_x4003, 111
+	End
 
 scr_seq_D40R0104_001:
-	compare VAR_TEMP_x4003, 111
-	goto_if_ne _0032
-	goto_if_set FLAG_UNK_106, _003A
+	Compare VAR_TEMP_x4003, 111
+	GoToIfNe _0032
+	GoToIfSet FLAG_UNK_106, _003A
 _0032:
-	setvar VAR_TEMP_x4003, 0
-	end
+	SetVar VAR_TEMP_x4003, 0
+	End
 
 _003A:
-	move_person_facing obj_D40R0104_bozu, 34, 1, 29, DIR_EAST
-	setvar VAR_TEMP_x4003, 0
-	end
+	MovePersonFacing obj_D40R0104_bozu, 34, 1, 29, DIR_EAST
+	SetVar VAR_TEMP_x4003, 0
+	End
 
 scr_seq_D40R0104_000:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	goto_if_set FLAG_CAUGHT_LUGIA, _010D
-	get_game_version VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 8
-	goto_if_eq _0093
-	goto_if_set FLAG_UNK_106, _00C5
-	goto_if_set FLAG_UNK_094, _00B4
-	npc_msg msg_0124_D40R0104_00001
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	GoToIfSet FLAG_CAUGHT_LUGIA, _010D
+	GetGameVersion VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 8
+	GoToIfEq _0093
+	GoToIfSet FLAG_UNK_106, _00C5
+	GoToIfSet FLAG_UNK_094, _00B4
+	NPCMsg msg_0124_D40R0104_00001
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0093:
-	goto_if_set FLAG_UNK_106, _00C5
-	goto_if_set FLAG_UNK_094, _00B4
-	npc_msg msg_0124_D40R0104_00000
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	GoToIfSet FLAG_UNK_106, _00C5
+	GoToIfSet FLAG_UNK_094, _00B4
+	NPCMsg msg_0124_D40R0104_00000
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _00B4:
-	npc_msg msg_0124_D40R0104_00002
-	closemsg
-	show_legendary_wing 1
-	releaseall
-	setflag FLAG_UNK_106
-	end
+	NPCMsg msg_0124_D40R0104_00002
+	CloseMsg
+	ShowLegendaryWing 1
+	ReleaseAll
+	SetFlag FLAG_UNK_106
+	End
 
 _00C5:
-	get_game_version VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 8
-	goto_if_ne _00EC
-	goto_if_set FLAG_UNK_109, _00F7
-	goto_if_set FLAG_UNK_105, _0102
+	GetGameVersion VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 8
+	GoToIfNe _00EC
+	GoToIfSet FLAG_UNK_109, _00F7
+	GoToIfSet FLAG_UNK_105, _0102
 _00EC:
-	npc_msg msg_0124_D40R0104_00004
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0124_D40R0104_00004
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _00F7:
-	npc_msg msg_0124_D40R0104_00006
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0124_D40R0104_00006
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0102:
-	npc_msg msg_0124_D40R0104_00005
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0124_D40R0104_00005
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _010D:
-	npc_msg msg_0124_D40R0104_00007
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0124_D40R0104_00007
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_D40R0104_002:
-	wait 60, VAR_SPECIAL_RESULT
-	npc_msg msg_0124_D40R0104_00003
-	closemsg
-	get_player_facing VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_ne _0142
-	apply_movement obj_D40R0104_bozu, _0168
-	goto _014A
+	Wait 60, VAR_SPECIAL_RESULT
+	NPCMsg msg_0124_D40R0104_00003
+	CloseMsg
+	GetPlayerFacing VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfNe _0142
+	ApplyMovement obj_D40R0104_bozu, _0168
+	GoTo _014A
 
 _0142:
-	apply_movement obj_D40R0104_bozu, _0154
+	ApplyMovement obj_D40R0104_bozu, _0154
 _014A:
-	wait_movement
-	wait 30, VAR_SPECIAL_RESULT
-	end
+	WaitMovement
+	Wait 30, VAR_SPECIAL_RESULT
+	End
 
 	.balign 4, 0
 _0154:

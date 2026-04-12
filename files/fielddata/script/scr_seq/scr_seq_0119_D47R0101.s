@@ -5,111 +5,111 @@
 
 	.rodata
 
-	scrdef scr_seq_D47R0101_000
-	scrdef scr_seq_D47R0101_001
-	scrdef scr_seq_D47R0101_002
-	scrdef scr_seq_D47R0101_003
-	scrdef scr_seq_D47R0101_004
-	scrdef scr_seq_D47R0101_005
-	scrdef scr_seq_D47R0101_006
-	scrdef scr_seq_D47R0101_007
-	scrdef scr_seq_D47R0101_008
-	scrdef scr_seq_D47R0101_009
-	scrdef scr_seq_D47R0101_010
-	scrdef scr_seq_D47R0101_011
-	scrdef_end
+	ScrDef scr_seq_D47R0101_000
+	ScrDef scr_seq_D47R0101_001
+	ScrDef scr_seq_D47R0101_002
+	ScrDef scr_seq_D47R0101_003
+	ScrDef scr_seq_D47R0101_004
+	ScrDef scr_seq_D47R0101_005
+	ScrDef scr_seq_D47R0101_006
+	ScrDef scr_seq_D47R0101_007
+	ScrDef scr_seq_D47R0101_008
+	ScrDef scr_seq_D47R0101_009
+	ScrDef scr_seq_D47R0101_010
+	ScrDef scr_seq_D47R0101_011
+	ScrDefEnd
 
 scr_seq_D47R0101_006:
-	scrcmd_609
-	lockall
-	apply_movement obj_D47R0101_counterm_3, _01EC
-	apply_movement obj_D47R0101_counterm_5, _01EC
-	wait_movement
-	npc_msg msg_0135_D47R0101_00007
-	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_ne _0062
-	safari_zone_action 1, 0
+	ScrCmd_609
+	LockAll
+	ApplyMovement obj_D47R0101_counterm_3, _01EC
+	ApplyMovement obj_D47R0101_counterm_5, _01EC
+	WaitMovement
+	NPCMsg msg_0135_D47R0101_00007
+	TouchscreenMenuHide
+	GetMenuChoice VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfNe _0062
+	SafariZoneAction 1, 0
 _0062:
-	touchscreen_menu_show
-	closemsg
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _00BD
-	apply_movement obj_player, _01B4
-	wait_movement
-	play_se SEQ_SE_DP_KAIDAN2
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	warp MAP_SAFARI_ZONE_ENTRANCE_EXTERIOR, 0, 79, 100, DIR_NORTH
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
-	lock obj_partner_poke
-	scrcmd_606
-	apply_movement obj_partner_poke, _0200
-	wait_movement
-	release obj_partner_poke
-	releaseall
-	end
+	TouchscreenMenuShow
+	CloseMsg
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _00BD
+	ApplyMovement obj_player, _01B4
+	WaitMovement
+	PlaySE SEQ_SE_DP_KAIDAN2
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	Warp MAP_SAFARI_ZONE_ENTRANCE_EXTERIOR, 0, 79, 100, DIR_NORTH
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
+	Lock obj_partner_poke
+	ScrCmd_606
+	ApplyMovement obj_partner_poke, _0200
+	WaitMovement
+	Release obj_partner_poke
+	ReleaseAll
+	End
 
 _00BD:
-	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
-	compare VAR_TEMP_x4000, 5
-	goto_if_ne _00E2
-	setvar VAR_TEMP_x4002, 5
-	setvar VAR_TEMP_x4003, 5
-	goto _00EE
+	GetPlayerCoords VAR_TEMP_x4000, VAR_TEMP_x4001
+	Compare VAR_TEMP_x4000, 5
+	GoToIfNe _00E2
+	SetVar VAR_TEMP_x4002, 5
+	SetVar VAR_TEMP_x4003, 5
+	GoTo _00EE
 
 _00E2:
-	setvar VAR_TEMP_x4002, 19
-	setvar VAR_TEMP_x4003, 5
+	SetVar VAR_TEMP_x4002, 19
+	SetVar VAR_TEMP_x4003, 5
 _00EE:
-	apply_movement obj_player, _01DC
-	wait_movement
-	scrcmd_307 0, 0, VAR_TEMP_x4002, VAR_TEMP_x4003, 77
-	call _08AF
-	apply_movement obj_player, _01BC
-	apply_movement obj_D47R0101_counterm_3, _01F4
-	apply_movement obj_D47R0101_counterm_5, _01F4
-	wait_movement
-	call _08B7
-	setvar VAR_SCENE_SAFARI_ZONE_ENTRANCE, 0
-	npc_msg msg_0135_D47R0101_00008
-	npc_msg msg_0135_D47R0101_00009
-	wait_button_or_walk_away
-	closemsg
-	scrcmd_606
-	releaseall
-	end
+	ApplyMovement obj_player, _01DC
+	WaitMovement
+	ScrCmd_307 0, 0, VAR_TEMP_x4002, VAR_TEMP_x4003, 77
+	Call _08AF
+	ApplyMovement obj_player, _01BC
+	ApplyMovement obj_D47R0101_counterm_3, _01F4
+	ApplyMovement obj_D47R0101_counterm_5, _01F4
+	WaitMovement
+	Call _08B7
+	SetVar VAR_SCENE_SAFARI_ZONE_ENTRANCE, 0
+	NPCMsg msg_0135_D47R0101_00008
+	NPCMsg msg_0135_D47R0101_00009
+	WaitButton
+	CloseMsg
+	ScrCmd_606
+	ReleaseAll
+	End
 
 scr_seq_D47R0101_007:
-	scrcmd_609
-	lockall
-	apply_movement obj_player, _01E4
-	wait_movement
-	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
-	compare VAR_TEMP_x4000, 5
-	goto_if_ne _0172
-	setvar VAR_TEMP_x4002, 5
-	setvar VAR_TEMP_x4003, 5
-	goto _017E
+	ScrCmd_609
+	LockAll
+	ApplyMovement obj_player, _01E4
+	WaitMovement
+	GetPlayerCoords VAR_TEMP_x4000, VAR_TEMP_x4001
+	Compare VAR_TEMP_x4000, 5
+	GoToIfNe _0172
+	SetVar VAR_TEMP_x4002, 5
+	SetVar VAR_TEMP_x4003, 5
+	GoTo _017E
 
 _0172:
-	setvar VAR_TEMP_x4002, 19
-	setvar VAR_TEMP_x4003, 5
+	SetVar VAR_TEMP_x4002, 19
+	SetVar VAR_TEMP_x4003, 5
 _017E:
-	scrcmd_307 0, 0, VAR_TEMP_x4002, VAR_TEMP_x4003, 77
-	call _08AF
-	apply_movement obj_player, _01BC
-	wait_movement
-	call _08B7
-	setvar VAR_SCENE_SAFARI_ZONE_ENTRANCE, 0
-	npc_msg msg_0135_D47R0101_00009
-	wait_button_or_walk_away
-	closemsg
-	scrcmd_606
-	releaseall
-	end
+	ScrCmd_307 0, 0, VAR_TEMP_x4002, VAR_TEMP_x4003, 77
+	Call _08AF
+	ApplyMovement obj_player, _01BC
+	WaitMovement
+	Call _08B7
+	SetVar VAR_SCENE_SAFARI_ZONE_ENTRANCE, 0
+	NPCMsg msg_0135_D47R0101_00009
+	WaitButton
+	CloseMsg
+	ScrCmd_606
+	ReleaseAll
+	End
 
 	.balign 4, 0
 _01B4:
@@ -157,81 +157,81 @@ _0200:
 	EndMovement
 
 scr_seq_D47R0101_008:
-	scrcmd_609
-	lockall
-	toggle_following_pokemon_movement 0
-	wait_following_pokemon_movement
-	following_pokemon_movement 55
-	apply_movement obj_D47R0101_gsgentleman, _0310
-	apply_movement obj_player, _03B8
-	wait_movement
-	wait_following_pokemon_movement
-	toggle_following_pokemon_movement 1
-	following_pokemon_movement 48
-	npc_msg msg_0135_D47R0101_00029
-	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_RESULT
-	touchscreen_menu_show
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _025B
+	ScrCmd_609
+	LockAll
+	ToggleFollowingPokemonMovement 0
+	WaitFollowingPokemonMovement
+	FollowingPokemonMovement 55
+	ApplyMovement obj_D47R0101_gsgentleman, _0310
+	ApplyMovement obj_player, _03B8
+	WaitMovement
+	WaitFollowingPokemonMovement
+	ToggleFollowingPokemonMovement 1
+	FollowingPokemonMovement 48
+	NPCMsg msg_0135_D47R0101_00029
+	TouchscreenMenuHide
+	GetMenuChoice VAR_SPECIAL_RESULT
+	TouchscreenMenuShow
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _025B
 _024A:
-	npc_msg msg_0135_D47R0101_00030
-	wait_button_or_walk_away
-	closemsg
-	setvar VAR_UNK_4057, 2
-	releaseall
-	end
+	NPCMsg msg_0135_D47R0101_00030
+	WaitButton
+	CloseMsg
+	SetVar VAR_UNK_4057, 2
+	ReleaseAll
+	End
 
 _025B:
-	npc_msg msg_0135_D47R0101_00031
-	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_RESULT
-	touchscreen_menu_show
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _025B
-	goto _024A
+	NPCMsg msg_0135_D47R0101_00031
+	TouchscreenMenuHide
+	GetMenuChoice VAR_SPECIAL_RESULT
+	TouchscreenMenuShow
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _025B
+	GoTo _024A
 
 scr_seq_D47R0101_009:
-	scrcmd_609
-	lockall
-	toggle_following_pokemon_movement 0
-	wait_following_pokemon_movement
-	following_pokemon_movement 55
-	apply_movement obj_D47R0101_gsgentleman, _0310
-	apply_movement obj_player, _03B8
-	wait_movement
-	wait_following_pokemon_movement
-	toggle_following_pokemon_movement 1
-	following_pokemon_movement 48
-	npc_msg msg_0135_D47R0101_00034
-	closemsg
-	toggle_following_pokemon_movement 0
-	wait_following_pokemon_movement
-	following_pokemon_movement 55
-	apply_movement obj_D47R0101_gsgentleman, _0324
-	apply_movement obj_player, _03C8
-	wait_movement
-	wait_following_pokemon_movement
-	toggle_following_pokemon_movement 1
-	following_pokemon_movement 48
-	npc_msg msg_0135_D47R0101_00035
-	closemsg
-	toggle_following_pokemon_movement 0
-	wait_following_pokemon_movement
-	following_pokemon_movement 55
-	apply_movement obj_D47R0101_gsgentleman, _0334
-	apply_movement obj_player, _03D8
-	wait_movement
-	wait_following_pokemon_movement
-	toggle_following_pokemon_movement 1
-	following_pokemon_movement 48
-	npc_msg msg_0135_D47R0101_00036
-	wait_button_or_walk_away
-	closemsg
-	setvar VAR_UNK_4057, 5
-	clearflag FLAG_HIDE_SAFARI_ZONE_WORKERS
-	releaseall
-	end
+	ScrCmd_609
+	LockAll
+	ToggleFollowingPokemonMovement 0
+	WaitFollowingPokemonMovement
+	FollowingPokemonMovement 55
+	ApplyMovement obj_D47R0101_gsgentleman, _0310
+	ApplyMovement obj_player, _03B8
+	WaitMovement
+	WaitFollowingPokemonMovement
+	ToggleFollowingPokemonMovement 1
+	FollowingPokemonMovement 48
+	NPCMsg msg_0135_D47R0101_00034
+	CloseMsg
+	ToggleFollowingPokemonMovement 0
+	WaitFollowingPokemonMovement
+	FollowingPokemonMovement 55
+	ApplyMovement obj_D47R0101_gsgentleman, _0324
+	ApplyMovement obj_player, _03C8
+	WaitMovement
+	WaitFollowingPokemonMovement
+	ToggleFollowingPokemonMovement 1
+	FollowingPokemonMovement 48
+	NPCMsg msg_0135_D47R0101_00035
+	CloseMsg
+	ToggleFollowingPokemonMovement 0
+	WaitFollowingPokemonMovement
+	FollowingPokemonMovement 55
+	ApplyMovement obj_D47R0101_gsgentleman, _0334
+	ApplyMovement obj_player, _03D8
+	WaitMovement
+	WaitFollowingPokemonMovement
+	ToggleFollowingPokemonMovement 1
+	FollowingPokemonMovement 48
+	NPCMsg msg_0135_D47R0101_00036
+	WaitButton
+	CloseMsg
+	SetVar VAR_UNK_4057, 5
+	ClearFlag FLAG_HIDE_SAFARI_ZONE_WORKERS
+	ReleaseAll
+	End
 
 	.balign 4, 0
 _0310:
@@ -362,328 +362,328 @@ _0420:
 	EndMovement
 
 scr_seq_D47R0101_010:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	goto_if_set FLAG_UNK_183, _0599
-	compare VAR_UNK_4057, 2
-	goto_if_eq _049D
-	compare VAR_UNK_4057, 3
-	goto_if_eq _048B
-	compare VAR_UNK_4057, 5
-	goto_if_eq _04CB
-	compare VAR_UNK_4057, 6
-	goto_if_eq _0494
-	compare VAR_UNK_4057, 7
-	goto_if_eq _058F
-	npc_msg msg_0135_D47R0101_00042
-	goto _0587
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	GoToIfSet FLAG_UNK_183, _0599
+	Compare VAR_UNK_4057, 2
+	GoToIfEq _049D
+	Compare VAR_UNK_4057, 3
+	GoToIfEq _048B
+	Compare VAR_UNK_4057, 5
+	GoToIfEq _04CB
+	Compare VAR_UNK_4057, 6
+	GoToIfEq _0494
+	Compare VAR_UNK_4057, 7
+	GoToIfEq _058F
+	NPCMsg msg_0135_D47R0101_00042
+	GoTo _0587
+	End
 
 _048B:
-	npc_msg msg_0135_D47R0101_00042
-	goto _0587
+	NPCMsg msg_0135_D47R0101_00042
+	GoTo _0587
 
 _0494:
-	npc_msg msg_0135_D47R0101_00040
-	goto _0587
+	NPCMsg msg_0135_D47R0101_00040
+	GoTo _0587
 
 _049D:
-	scrcmd_791 0, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_ne _04B8
-	npc_msg msg_0135_D47R0101_00033
-	goto _04C3
+	ScrCmd_791 0, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfNe _04B8
+	NPCMsg msg_0135_D47R0101_00033
+	GoTo _04C3
 
 _04B8:
-	npc_msg msg_0135_D47R0101_00032
-	setvar VAR_UNK_4057, 3
-	scrcmd_792
+	NPCMsg msg_0135_D47R0101_00032
+	SetVar VAR_UNK_4057, 3
+	ScrCmd_792
 _04C3:
-	goto _0587
-	end
+	GoTo _0587
+	End
 
 _04CB:
-	scrcmd_791 1, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _057E
-	npc_msg msg_0135_D47R0101_00037
-	closemsg
-	toggle_following_pokemon_movement 0
-	wait_following_pokemon_movement
-	following_pokemon_movement 55
-	get_player_facing VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_ne _0515
-	apply_movement obj_D47R0101_gsgentleman, _034C
-	apply_movement obj_player, _03E0
-	wait_movement
-	goto _054C
+	ScrCmd_791 1, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _057E
+	NPCMsg msg_0135_D47R0101_00037
+	CloseMsg
+	ToggleFollowingPokemonMovement 0
+	WaitFollowingPokemonMovement
+	FollowingPokemonMovement 55
+	GetPlayerFacing VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfNe _0515
+	ApplyMovement obj_D47R0101_gsgentleman, _034C
+	ApplyMovement obj_player, _03E0
+	WaitMovement
+	GoTo _054C
 
 _0515:
-	compare VAR_SPECIAL_RESULT, 3
-	goto_if_ne _053A
-	apply_movement obj_D47R0101_gsgentleman, _0360
-	apply_movement obj_player, _03F8
-	wait_movement
-	goto _054C
+	Compare VAR_SPECIAL_RESULT, 3
+	GoToIfNe _053A
+	ApplyMovement obj_D47R0101_gsgentleman, _0360
+	ApplyMovement obj_player, _03F8
+	WaitMovement
+	GoTo _054C
 
 _053A:
-	apply_movement obj_D47R0101_gsgentleman, _0360
-	apply_movement obj_player, _0404
-	wait_movement
+	ApplyMovement obj_D47R0101_gsgentleman, _0360
+	ApplyMovement obj_player, _0404
+	WaitMovement
 _054C:
-	npc_msg msg_0135_D47R0101_00038
-	closemsg
-	apply_movement obj_D47R0101_gsgentleman, _0370
-	apply_movement obj_player, _040C
-	wait_movement
-	wait_following_pokemon_movement
-	toggle_following_pokemon_movement 1
-	following_pokemon_movement 48
-	npc_msg msg_0135_D47R0101_00039
-	setvar VAR_UNK_4057, 6
-	scrcmd_792
-	goto _0587
+	NPCMsg msg_0135_D47R0101_00038
+	CloseMsg
+	ApplyMovement obj_D47R0101_gsgentleman, _0370
+	ApplyMovement obj_player, _040C
+	WaitMovement
+	WaitFollowingPokemonMovement
+	ToggleFollowingPokemonMovement 1
+	FollowingPokemonMovement 48
+	NPCMsg msg_0135_D47R0101_00039
+	SetVar VAR_UNK_4057, 6
+	ScrCmd_792
+	GoTo _0587
 
 _057E:
-	npc_msg msg_0135_D47R0101_00041
-	goto _0587
+	NPCMsg msg_0135_D47R0101_00041
+	GoTo _0587
 
 _0587:
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _058F:
-	setflag FLAG_UNK_183
-	npc_msg msg_0135_D47R0101_00043
-	npc_msg msg_0135_D47R0101_00044
+	SetFlag FLAG_UNK_183
+	NPCMsg msg_0135_D47R0101_00043
+	NPCMsg msg_0135_D47R0101_00044
 _0599:
-	npc_msg msg_0135_D47R0101_00045
-	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _0683
+	NPCMsg msg_0135_D47R0101_00045
+	TouchscreenMenuHide
+	GetMenuChoice VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _0683
 _05AF:
-	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_RESULT
-	menu_item_add 463, 255, 0
-	menu_item_add 464, 255, 1
-	menu_item_add 465, 255, 2
-	menu_item_add 466, 255, 3
-	menu_item_add 467, 255, 4
-	menu_item_add 468, 255, 5
-	menu_item_add 469, 255, 6
-	menu_exec
-	switch VAR_SPECIAL_RESULT
-	case 0, _064D
-	case 1, _0656
-	case 2, _065F
-	case 3, _0668
-	case 4, _0671
-	case 5, _067A
-	goto _0683
-	end
+	MenuInitStdGmm 1, 1, 0, 1, VAR_SPECIAL_RESULT
+	MenuItemAdd 463, 255, 0
+	MenuItemAdd 464, 255, 1
+	MenuItemAdd 465, 255, 2
+	MenuItemAdd 466, 255, 3
+	MenuItemAdd 467, 255, 4
+	MenuItemAdd 468, 255, 5
+	MenuItemAdd 469, 255, 6
+	MenuExec
+	Switch VAR_SPECIAL_RESULT
+	Case 0, _064D
+	Case 1, _0656
+	Case 2, _065F
+	Case 3, _0668
+	Case 4, _0671
+	Case 5, _067A
+	GoTo _0683
+	End
 
 _064D:
-	npc_msg msg_0135_D47R0101_00047
-	goto _05AF
+	NPCMsg msg_0135_D47R0101_00047
+	GoTo _05AF
 
 _0656:
-	npc_msg msg_0135_D47R0101_00048
-	goto _05AF
+	NPCMsg msg_0135_D47R0101_00048
+	GoTo _05AF
 
 _065F:
-	npc_msg msg_0135_D47R0101_00049
-	goto _05AF
+	NPCMsg msg_0135_D47R0101_00049
+	GoTo _05AF
 
 _0668:
-	npc_msg msg_0135_D47R0101_00050
-	goto _05AF
+	NPCMsg msg_0135_D47R0101_00050
+	GoTo _05AF
 
 _0671:
-	npc_msg msg_0135_D47R0101_00051
-	goto _05AF
+	NPCMsg msg_0135_D47R0101_00051
+	GoTo _05AF
 
 _067A:
-	npc_msg msg_0135_D47R0101_00052
-	goto _05AF
+	NPCMsg msg_0135_D47R0101_00052
+	GoTo _05AF
 
 _0683:
-	touchscreen_menu_show
-	npc_msg msg_0135_D47R0101_00053
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	TouchscreenMenuShow
+	NPCMsg msg_0135_D47R0101_00053
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_D47R0101_000:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	compare VAR_UNK_4057, 6
-	goto_if_lt _06AE
-	npc_msg msg_0135_D47R0101_00015
-	goto _06B1
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	Compare VAR_UNK_4057, 6
+	GoToIfLt _06AE
+	NPCMsg msg_0135_D47R0101_00015
+	GoTo _06B1
 
 _06AE:
-	npc_msg msg_0135_D47R0101_00014
+	NPCMsg msg_0135_D47R0101_00014
 _06B1:
-	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_RESULT
-	touchscreen_menu_show
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _06E7
-	setvar VAR_SPECIAL_x8004, 30
-	buffer_int 1, VAR_SPECIAL_x8004
-	setvar VAR_SPECIAL_x8005, 1000
-	buffer_int 2, VAR_SPECIAL_x8005
-	npc_msg msg_0135_D47R0101_00016
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	TouchscreenMenuHide
+	GetMenuChoice VAR_SPECIAL_RESULT
+	TouchscreenMenuShow
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _06E7
+	SetVar VAR_SPECIAL_x8004, 30
+	BufferInt 1, VAR_SPECIAL_x8004
+	SetVar VAR_SPECIAL_x8005, 1000
+	BufferInt 2, VAR_SPECIAL_x8005
+	NPCMsg msg_0135_D47R0101_00016
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _06E7:
-	npc_msg msg_0135_D47R0101_00017
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0135_D47R0101_00017
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_D47R0101_001:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	compare VAR_UNK_4057, 7
-	goto_if_eq _0899
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	Compare VAR_UNK_4057, 7
+	GoToIfEq _0899
 _0707:
-	compare VAR_UNK_4057, 6
-	goto_if_lt _0728
-	setvar VAR_SPECIAL_RESULT, 500
-	buffer_int 1, VAR_SPECIAL_RESULT
-	npc_msg msg_0135_D47R0101_00001
-	goto _0736
+	Compare VAR_UNK_4057, 6
+	GoToIfLt _0728
+	SetVar VAR_SPECIAL_RESULT, 500
+	BufferInt 1, VAR_SPECIAL_RESULT
+	NPCMsg msg_0135_D47R0101_00001
+	GoTo _0736
 
 _0728:
-	setvar VAR_SPECIAL_RESULT, 500
-	buffer_int 1, VAR_SPECIAL_RESULT
-	npc_msg msg_0135_D47R0101_00000
+	SetVar VAR_SPECIAL_RESULT, 500
+	BufferInt 1, VAR_SPECIAL_RESULT
+	NPCMsg msg_0135_D47R0101_00000
 _0736:
-	show_money_box 20, 2
-	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_RESULT
-	touchscreen_menu_show
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _0846
-	count_pc_empty_space VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_ne _0773
-	get_party_count VAR_SPECIAL_x8004
-	compare VAR_SPECIAL_x8004, 6
-	goto_if_eq _0853
+	ShowMoneyBox 20, 2
+	TouchscreenMenuHide
+	GetMenuChoice VAR_SPECIAL_RESULT
+	TouchscreenMenuShow
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _0846
+	CountPCEmptySpace VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfNe _0773
+	GetPartyCount VAR_SPECIAL_x8004
+	Compare VAR_SPECIAL_x8004, 6
+	GoToIfEq _0853
 _0773:
-	hasenoughmoneyimmediate VAR_SPECIAL_RESULT, 500
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0876
-	setvar VAR_SPECIAL_RESULT, 500
-	buffer_int 1, VAR_SPECIAL_RESULT
-	npc_msg msg_0135_D47R0101_00002
-	play_se SEQ_SE_DP_REGI
-	submoneyimmediate 500
-	update_money_box
-	npc_msg msg_0135_D47R0101_00004
-	buffer_players_name 0
-	setvar VAR_SPECIAL_RESULT, 30
-	buffer_int 1, VAR_SPECIAL_RESULT
-	npc_msg msg_0135_D47R0101_00005
-	play_fanfare SEQ_ME_ITEM
-	wait_fanfare
-	npc_msg msg_0135_D47R0101_00006
-	closemsg
-	hide_money_box
-	scrcmd_600
-	apply_movement obj_player, _08C4
-	wait_movement
-	scrcmd_307 0, 0, 5, 5, 77
-	call _08AF
-	apply_movement obj_player, _08D0
-	wait_movement
-	call _08B7
-	setvar VAR_SCENE_SAFARI_ZONE_ENTRANCE, 1
-	safari_zone_action 0, 0
-	set_dynamic_warp MAP_SAFARI_ZONE_ENTRANCE_INTERIOR, 1, 5, 2, 1
-	play_se SEQ_SE_DP_KAIDAN2
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	warp MAP_SAFARI_ZONE_ENTRANCE_EXTERIOR, 0, 79, 100, DIR_NORTH
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
-	lock obj_partner_poke
-	scrcmd_606
-	apply_movement obj_partner_poke, _0200
-	wait_movement
-	release obj_partner_poke
-	releaseall
-	end
+	HasEnoughMoneyImmediate VAR_SPECIAL_RESULT, 500
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0876
+	SetVar VAR_SPECIAL_RESULT, 500
+	BufferInt 1, VAR_SPECIAL_RESULT
+	NPCMsg msg_0135_D47R0101_00002
+	PlaySE SEQ_SE_DP_REGI
+	SubMoneyImmediate 500
+	UpdateMoneyBox
+	NPCMsg msg_0135_D47R0101_00004
+	BufferPlayersName 0
+	SetVar VAR_SPECIAL_RESULT, 30
+	BufferInt 1, VAR_SPECIAL_RESULT
+	NPCMsg msg_0135_D47R0101_00005
+	PlayFanfare SEQ_ME_ITEM
+	WaitFanfare
+	NPCMsg msg_0135_D47R0101_00006
+	CloseMsg
+	HideMoneyBox
+	ScrCmd_600
+	ApplyMovement obj_player, _08C4
+	WaitMovement
+	ScrCmd_307 0, 0, 5, 5, 77
+	Call _08AF
+	ApplyMovement obj_player, _08D0
+	WaitMovement
+	Call _08B7
+	SetVar VAR_SCENE_SAFARI_ZONE_ENTRANCE, 1
+	SafariZoneAction 0, 0
+	SetDynamicWarp MAP_SAFARI_ZONE_ENTRANCE_INTERIOR, 1, 5, 2, 1
+	PlaySE SEQ_SE_DP_KAIDAN2
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	Warp MAP_SAFARI_ZONE_ENTRANCE_EXTERIOR, 0, 79, 100, DIR_NORTH
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
+	Lock obj_partner_poke
+	ScrCmd_606
+	ApplyMovement obj_partner_poke, _0200
+	WaitMovement
+	Release obj_partner_poke
+	ReleaseAll
+	End
 
 _0846:
-	hide_money_box
-	npc_msg msg_0135_D47R0101_00003
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	HideMoneyBox
+	NPCMsg msg_0135_D47R0101_00003
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0853:
-	hide_money_box
-	compare VAR_UNK_4057, 6
-	goto_if_lt _086B
-	npc_msg msg_0135_D47R0101_00013
-	goto _086E
+	HideMoneyBox
+	Compare VAR_UNK_4057, 6
+	GoToIfLt _086B
+	NPCMsg msg_0135_D47R0101_00013
+	GoTo _086E
 
 _086B:
-	npc_msg msg_0135_D47R0101_00012
+	NPCMsg msg_0135_D47R0101_00012
 _086E:
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0876:
-	hide_money_box
-	compare VAR_UNK_4057, 6
-	goto_if_lt _088E
-	npc_msg msg_0135_D47R0101_00011
-	goto _0891
+	HideMoneyBox
+	Compare VAR_UNK_4057, 6
+	GoToIfLt _088E
+	NPCMsg msg_0135_D47R0101_00011
+	GoTo _0891
 
 _088E:
-	npc_msg msg_0135_D47R0101_00010
+	NPCMsg msg_0135_D47R0101_00010
 _0891:
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0899:
-	goto_if_set FLAG_UNK_183, _0707
-	npc_msg msg_0135_D47R0101_00018
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	GoToIfSet FLAG_UNK_183, _0707
+	NPCMsg msg_0135_D47R0101_00018
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _08AF:
-	scrcmd_310 77
-	scrcmd_308 77
-	return
+	ScrCmd_310 77
+	ScrCmd_308 77
+	Return
 
 _08B7:
-	scrcmd_311 77
-	scrcmd_308 77
-	scrcmd_309 77
-	return
+	ScrCmd_311 77
+	ScrCmd_308 77
+	ScrCmd_309 77
+	Return
 
 	.balign 4, 0
 _08C4:
@@ -697,472 +697,472 @@ _08D0:
 	EndMovement
 
 scr_seq_D47R0101_002:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	compare VAR_UNK_4057, 0
-	goto_if_eq _09DC
-	compare VAR_UNK_4057, 1
-	goto_if_eq _09DC
-	compare VAR_UNK_4057, 2
-	goto_if_eq _09DC
-	compare VAR_UNK_4057, 3
-	goto_if_eq _09DC
-	npc_msg msg_0135_D47R0101_00019
-	touchscreen_menu_hide
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	Compare VAR_UNK_4057, 0
+	GoToIfEq _09DC
+	Compare VAR_UNK_4057, 1
+	GoToIfEq _09DC
+	Compare VAR_UNK_4057, 2
+	GoToIfEq _09DC
+	Compare VAR_UNK_4057, 3
+	GoToIfEq _09DC
+	NPCMsg msg_0135_D47R0101_00019
+	TouchscreenMenuHide
 _0919:
-	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_RESULT
-	menu_item_add 457, 255, 0
-	menu_item_add 458, 255, 1
-	menu_item_add 459, 255, 2
-	menu_item_add 460, 255, 3
-	menu_item_add 461, 255, 4
-	menu_item_add 462, 255, 5
-	menu_exec
-	switch VAR_SPECIAL_RESULT
-	case 0, _09A2
-	case 1, _09AB
-	case 2, _09B4
-	case 3, _09BD
-	case 4, _09C6
-	goto _09CF
-	end
+	MenuInitStdGmm 1, 1, 0, 1, VAR_SPECIAL_RESULT
+	MenuItemAdd 457, 255, 0
+	MenuItemAdd 458, 255, 1
+	MenuItemAdd 459, 255, 2
+	MenuItemAdd 460, 255, 3
+	MenuItemAdd 461, 255, 4
+	MenuItemAdd 462, 255, 5
+	MenuExec
+	Switch VAR_SPECIAL_RESULT
+	Case 0, _09A2
+	Case 1, _09AB
+	Case 2, _09B4
+	Case 3, _09BD
+	Case 4, _09C6
+	GoTo _09CF
+	End
 
 _09A2:
-	npc_msg msg_0135_D47R0101_00020
-	goto _0919
+	NPCMsg msg_0135_D47R0101_00020
+	GoTo _0919
 
 _09AB:
-	npc_msg msg_0135_D47R0101_00021
-	goto _0919
+	NPCMsg msg_0135_D47R0101_00021
+	GoTo _0919
 
 _09B4:
-	npc_msg msg_0135_D47R0101_00022
-	goto _0919
+	NPCMsg msg_0135_D47R0101_00022
+	GoTo _0919
 
 _09BD:
-	npc_msg msg_0135_D47R0101_00023
-	goto _0919
+	NPCMsg msg_0135_D47R0101_00023
+	GoTo _0919
 
 _09C6:
-	npc_msg msg_0135_D47R0101_00024
-	goto _0919
+	NPCMsg msg_0135_D47R0101_00024
+	GoTo _0919
 
 _09CF:
-	touchscreen_menu_show
-	npc_msg msg_0135_D47R0101_00026
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	TouchscreenMenuShow
+	NPCMsg msg_0135_D47R0101_00026
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _09DC:
-	npc_msg msg_0135_D47R0101_00025
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0135_D47R0101_00025
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_D47R0101_003:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	compare VAR_UNK_4057, 7
-	goto_if_eq _0C21
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	Compare VAR_UNK_4057, 7
+	GoToIfEq _0C21
 _09FC:
-	scrcmd_247
-	nat_dex_flag_action 2, VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 0
-	goto_if_eq _0DF2
-	compare VAR_UNK_4057, 6
-	goto_if_lt _0A26
-	npc_msg msg_0135_D47R0101_00065
-	goto _0A29
+	ScrCmd_247
+	NatDexFlagAction 2, VAR_TEMP_x4000
+	Compare VAR_TEMP_x4000, 0
+	GoToIfEq _0DF2
+	Compare VAR_UNK_4057, 6
+	GoToIfLt _0A26
+	NPCMsg msg_0135_D47R0101_00065
+	GoTo _0A29
 
 _0A26:
-	npc_msg msg_0135_D47R0101_00066
+	NPCMsg msg_0135_D47R0101_00066
 _0A29:
-	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_RESULT
-	closemsg
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _0BFC
-	callstd std_prompt_save
-	copyvar VAR_SPECIAL_RESULT, VAR_TEMP_x4000
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _0A5D
-	goto _0C16
-	end
+	TouchscreenMenuHide
+	GetMenuChoice VAR_SPECIAL_RESULT
+	CloseMsg
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _0BFC
+	CallStd std_prompt_save
+	CopyVar VAR_SPECIAL_RESULT, VAR_TEMP_x4000
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _0A5D
+	GoTo _0C16
+	End
 
 _0A5D:
-	touchscreen_menu_hide
-	npc_msg msg_0135_D47R0101_00071
-	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_RESULT
-	menu_item_add 14, 255, 0
-	menu_item_add 15, 255, 1
-	menu_item_add 5, 255, 2
-	menu_exec
-	switch VAR_SPECIAL_RESULT
-	case 0, _0AAC
-	case 1, _0B2F
-	goto _0BFC
-	end
+	TouchscreenMenuHide
+	NPCMsg msg_0135_D47R0101_00071
+	MenuInitStdGmm 1, 1, 0, 1, VAR_SPECIAL_RESULT
+	MenuItemAdd 14, 255, 0
+	MenuItemAdd 15, 255, 1
+	MenuItemAdd 5, 255, 2
+	MenuExec
+	Switch VAR_SPECIAL_RESULT
+	Case 0, _0AAC
+	Case 1, _0B2F
+	GoTo _0BFC
+	End
 
 _0AAC:
-	npc_msg msg_0135_D47R0101_00086
-	getmenuchoice VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _0A5D
-	setvar VAR_SPECIAL_x8004, 39
-	setvar VAR_SPECIAL_x8005, 0
-	scrcmd_226 VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, 0, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _0B05
-	compare VAR_SPECIAL_RESULT, 3
-	goto_if_eq _0B11
-	compare VAR_SPECIAL_RESULT, 4
-	goto_if_eq _0B20
-	goto _0BB2
-	end
+	NPCMsg msg_0135_D47R0101_00086
+	GetMenuChoice VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _0A5D
+	SetVar VAR_SPECIAL_x8004, 39
+	SetVar VAR_SPECIAL_x8005, 0
+	ScrCmd_226 VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, 0, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _0B05
+	Compare VAR_SPECIAL_RESULT, 3
+	GoToIfEq _0B11
+	Compare VAR_SPECIAL_RESULT, 4
+	GoToIfEq _0B20
+	GoTo _0BB2
+	End
 
 _0B05:
-	scrcmd_283
-	touchscreen_menu_hide
-	goto _0A5D
-	end
+	ScrCmd_283
+	TouchscreenMenuHide
+	GoTo _0A5D
+	End
 
 _0B11:
-	scrcmd_283
-	touchscreen_menu_show
-	npc_msg msg_0135_D47R0101_00087
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	ScrCmd_283
+	TouchscreenMenuShow
+	NPCMsg msg_0135_D47R0101_00087
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0B20:
-	scrcmd_283
-	npc_msg msg_0135_D47R0101_00085
-	wait_button_or_walk_away
-	closemsg
-	touchscreen_menu_show
-	releaseall
-	end
+	ScrCmd_283
+	NPCMsg msg_0135_D47R0101_00085
+	WaitButton
+	CloseMsg
+	TouchscreenMenuShow
+	ReleaseAll
+	End
 
 _0B2F:
-	npc_msg msg_0135_D47R0101_00086
-	getmenuchoice VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _0A5D
-	setvar VAR_SPECIAL_x8004, 39
-	setvar VAR_SPECIAL_x8005, 0
-	scrcmd_227 VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, 0, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _0B88
-	compare VAR_SPECIAL_RESULT, 3
-	goto_if_eq _0B94
-	compare VAR_SPECIAL_RESULT, 4
-	goto_if_eq _0BA3
-	goto _0BB2
-	end
+	NPCMsg msg_0135_D47R0101_00086
+	GetMenuChoice VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _0A5D
+	SetVar VAR_SPECIAL_x8004, 39
+	SetVar VAR_SPECIAL_x8005, 0
+	ScrCmd_227 VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, 0, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _0B88
+	Compare VAR_SPECIAL_RESULT, 3
+	GoToIfEq _0B94
+	Compare VAR_SPECIAL_RESULT, 4
+	GoToIfEq _0BA3
+	GoTo _0BB2
+	End
 
 _0B88:
-	scrcmd_283
-	touchscreen_menu_hide
-	goto _0A5D
-	end
+	ScrCmd_283
+	TouchscreenMenuHide
+	GoTo _0A5D
+	End
 
 _0B94:
-	scrcmd_283
-	npc_msg msg_0135_D47R0101_00087
-	wait_button_or_walk_away
-	closemsg
-	touchscreen_menu_show
-	releaseall
-	end
+	ScrCmd_283
+	NPCMsg msg_0135_D47R0101_00087
+	WaitButton
+	CloseMsg
+	TouchscreenMenuShow
+	ReleaseAll
+	End
 
 _0BA3:
-	scrcmd_283
-	npc_msg msg_0135_D47R0101_00085
-	wait_button_or_walk_away
-	closemsg
-	touchscreen_menu_show
-	releaseall
-	end
+	ScrCmd_283
+	NPCMsg msg_0135_D47R0101_00085
+	WaitButton
+	CloseMsg
+	TouchscreenMenuShow
+	ReleaseAll
+	End
 
 _0BB2:
-	setvar VAR_UNK_4133, 1
-	npc_msg msg_0135_D47R0101_00081
-	scrcmd_257 96
-	scrcmd_822
-	scrcmd_283
-	setvar VAR_TEMP_x4000, 0
-	scrcmd_823 VAR_TEMP_x4000
-	touchscreen_menu_hide
-	npc_msg msg_0135_D47R0101_00082
-	npc_msg msg_0135_D47R0101_00088
-	add_waiting_icon
-	save_game_normal VAR_SPECIAL_RESULT
-	remove_waiting_icon
-	buffer_players_name 0
-	npc_msg msg_0135_D47R0101_00089
-	play_se SEQ_SE_DP_SAVE
-	wait_se SEQ_SE_DP_SAVE
-	npc_msg msg_0135_D47R0101_00083
-	setvar VAR_UNK_4133, 0
-	touchscreen_menu_show
-	closemsg
-	releaseall
-	end
+	SetVar VAR_UNK_4133, 1
+	NPCMsg msg_0135_D47R0101_00081
+	ScrCmd_257 96
+	ScrCmd_822
+	ScrCmd_283
+	SetVar VAR_TEMP_x4000, 0
+	ScrCmd_823 VAR_TEMP_x4000
+	TouchscreenMenuHide
+	NPCMsg msg_0135_D47R0101_00082
+	NPCMsg msg_0135_D47R0101_00088
+	AddWaitingIcon
+	SaveGameNormal VAR_SPECIAL_RESULT
+	RemoveWaitingIcon
+	BufferPlayersName 0
+	NPCMsg msg_0135_D47R0101_00089
+	PlaySE SEQ_SE_DP_SAVE
+	WaitSE SEQ_SE_DP_SAVE
+	NPCMsg msg_0135_D47R0101_00083
+	SetVar VAR_UNK_4133, 0
+	TouchscreenMenuShow
+	CloseMsg
+	ReleaseAll
+	End
 
 _0BFC:
-	npc_msg msg_0135_D47R0101_00085
-	wait_button_or_walk_away
-	closemsg
-	touchscreen_menu_show
-	releaseall
-	end
+	NPCMsg msg_0135_D47R0101_00085
+	WaitButton
+	CloseMsg
+	TouchscreenMenuShow
+	ReleaseAll
+	End
 
 _0C09:
-	npc_msg msg_0135_D47R0101_00085
-	wait_button_or_walk_away
-	closemsg
-	touchscreen_menu_show
-	releaseall
-	end
+	NPCMsg msg_0135_D47R0101_00085
+	WaitButton
+	CloseMsg
+	TouchscreenMenuShow
+	ReleaseAll
+	End
 
 _0C16:
-	npc_msg msg_0135_D47R0101_00085
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0135_D47R0101_00085
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0C21:
-	goto_if_set FLAG_UNK_183, _09FC
-	npc_msg msg_0135_D47R0101_00018
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	GoToIfSet FLAG_UNK_183, _09FC
+	NPCMsg msg_0135_D47R0101_00018
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_D47R0101_004:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	compare VAR_UNK_4057, 7
-	goto_if_eq _0DFD
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	Compare VAR_UNK_4057, 7
+	GoToIfEq _0DFD
 _0C4C:
-	scrcmd_247
-	nat_dex_flag_action 2, VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 0
-	goto_if_eq _0DF2
-	scrcmd_824 VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 0
-	goto_if_eq _0C84
-	setvar VAR_TEMP_x4000, 0
-	scrcmd_823 VAR_TEMP_x4000
-	npc_msg msg_0135_D47R0101_00054
-	goto _0C8F
+	ScrCmd_247
+	NatDexFlagAction 2, VAR_TEMP_x4000
+	Compare VAR_TEMP_x4000, 0
+	GoToIfEq _0DF2
+	ScrCmd_824 VAR_TEMP_x4000
+	Compare VAR_TEMP_x4000, 0
+	GoToIfEq _0C84
+	SetVar VAR_TEMP_x4000, 0
+	ScrCmd_823 VAR_TEMP_x4000
+	NPCMsg msg_0135_D47R0101_00054
+	GoTo _0C8F
 
 _0C84:
-	npc_msg msg_0135_D47R0101_00060
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0135_D47R0101_00060
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0C8F:
-	show_money_box 20, 2
-	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_RESULT
-	touchscreen_menu_show
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _0D9F
-	count_pc_empty_space VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_ne _0CCC
-	get_party_count VAR_SPECIAL_x8004
-	compare VAR_SPECIAL_x8004, 6
-	goto_if_eq _0DAC
+	ShowMoneyBox 20, 2
+	TouchscreenMenuHide
+	GetMenuChoice VAR_SPECIAL_RESULT
+	TouchscreenMenuShow
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _0D9F
+	CountPCEmptySpace VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfNe _0CCC
+	GetPartyCount VAR_SPECIAL_x8004
+	Compare VAR_SPECIAL_x8004, 6
+	GoToIfEq _0DAC
 _0CCC:
-	hasenoughmoneyimmediate VAR_SPECIAL_RESULT, 500
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0DCF
-	setvar VAR_SPECIAL_RESULT, 500
-	buffer_int 1, VAR_SPECIAL_RESULT
-	npc_msg msg_0135_D47R0101_00055
-	play_se SEQ_SE_DP_REGI
-	submoneyimmediate 500
-	update_money_box
-	npc_msg msg_0135_D47R0101_00057
-	buffer_players_name 0
-	setvar VAR_SPECIAL_RESULT, 30
-	buffer_int 1, VAR_SPECIAL_RESULT
-	npc_msg msg_0135_D47R0101_00058
-	play_fanfare SEQ_ME_ITEM
-	wait_fanfare
-	npc_msg msg_0135_D47R0101_00059
-	closemsg
-	hide_money_box
-	scrcmd_600
-	apply_movement obj_player, _08C4
-	wait_movement
-	scrcmd_307 0, 0, 19, 5, 77
-	call _08AF
-	apply_movement obj_player, _08D0
-	wait_movement
-	call _08B7
-	setvar VAR_SCENE_SAFARI_ZONE_ENTRANCE, 3
-	safari_zone_action 0, 1
-	set_dynamic_warp MAP_SAFARI_ZONE_ENTRANCE_INTERIOR, 2, 19, 2, 1
-	play_se SEQ_SE_DP_KAIDAN2
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	warp MAP_SAFARI_ZONE_ENTRANCE_EXTERIOR, 0, 79, 100, DIR_NORTH
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
-	lock obj_partner_poke
-	scrcmd_606
-	apply_movement obj_partner_poke, _0200
-	wait_movement
-	release obj_partner_poke
-	releaseall
-	end
+	HasEnoughMoneyImmediate VAR_SPECIAL_RESULT, 500
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0DCF
+	SetVar VAR_SPECIAL_RESULT, 500
+	BufferInt 1, VAR_SPECIAL_RESULT
+	NPCMsg msg_0135_D47R0101_00055
+	PlaySE SEQ_SE_DP_REGI
+	SubMoneyImmediate 500
+	UpdateMoneyBox
+	NPCMsg msg_0135_D47R0101_00057
+	BufferPlayersName 0
+	SetVar VAR_SPECIAL_RESULT, 30
+	BufferInt 1, VAR_SPECIAL_RESULT
+	NPCMsg msg_0135_D47R0101_00058
+	PlayFanfare SEQ_ME_ITEM
+	WaitFanfare
+	NPCMsg msg_0135_D47R0101_00059
+	CloseMsg
+	HideMoneyBox
+	ScrCmd_600
+	ApplyMovement obj_player, _08C4
+	WaitMovement
+	ScrCmd_307 0, 0, 19, 5, 77
+	Call _08AF
+	ApplyMovement obj_player, _08D0
+	WaitMovement
+	Call _08B7
+	SetVar VAR_SCENE_SAFARI_ZONE_ENTRANCE, 3
+	SafariZoneAction 0, 1
+	SetDynamicWarp MAP_SAFARI_ZONE_ENTRANCE_INTERIOR, 2, 19, 2, 1
+	PlaySE SEQ_SE_DP_KAIDAN2
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	Warp MAP_SAFARI_ZONE_ENTRANCE_EXTERIOR, 0, 79, 100, DIR_NORTH
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
+	Lock obj_partner_poke
+	ScrCmd_606
+	ApplyMovement obj_partner_poke, _0200
+	WaitMovement
+	Release obj_partner_poke
+	ReleaseAll
+	End
 
 _0D9F:
-	hide_money_box
-	npc_msg msg_0135_D47R0101_00003
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	HideMoneyBox
+	NPCMsg msg_0135_D47R0101_00003
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0DAC:
-	hide_money_box
-	compare VAR_UNK_4057, 6
-	goto_if_lt _0DC4
-	npc_msg msg_0135_D47R0101_00013
-	goto _0DC7
+	HideMoneyBox
+	Compare VAR_UNK_4057, 6
+	GoToIfLt _0DC4
+	NPCMsg msg_0135_D47R0101_00013
+	GoTo _0DC7
 
 _0DC4:
-	npc_msg msg_0135_D47R0101_00012
+	NPCMsg msg_0135_D47R0101_00012
 _0DC7:
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0DCF:
-	hide_money_box
-	compare VAR_UNK_4057, 6
-	goto_if_lt _0DE7
-	npc_msg msg_0135_D47R0101_00011
-	goto _0DEA
+	HideMoneyBox
+	Compare VAR_UNK_4057, 6
+	GoToIfLt _0DE7
+	NPCMsg msg_0135_D47R0101_00011
+	GoTo _0DEA
 
 _0DE7:
-	npc_msg msg_0135_D47R0101_00010
+	NPCMsg msg_0135_D47R0101_00010
 _0DEA:
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0DF2:
-	npc_msg msg_0135_D47R0101_00084
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0135_D47R0101_00084
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0DFD:
-	goto_if_set FLAG_UNK_183, _0C4C
-	npc_msg msg_0135_D47R0101_00018
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	GoToIfSet FLAG_UNK_183, _0C4C
+	NPCMsg msg_0135_D47R0101_00018
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_D47R0101_011:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	scrcmd_247
-	nat_dex_flag_action 2, VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 0
-	goto_if_eq _0E73
-	compare VAR_UNK_4057, 6
-	goto_if_lt _0E45
-	npc_msg msg_0135_D47R0101_00093
-	goto _0E48
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	ScrCmd_247
+	NatDexFlagAction 2, VAR_TEMP_x4000
+	Compare VAR_TEMP_x4000, 0
+	GoToIfEq _0E73
+	Compare VAR_UNK_4057, 6
+	GoToIfLt _0E45
+	NPCMsg msg_0135_D47R0101_00093
+	GoTo _0E48
 
 _0E45:
-	npc_msg msg_0135_D47R0101_00094
+	NPCMsg msg_0135_D47R0101_00094
 _0E48:
-	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_RESULT
-	touchscreen_menu_show
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _0E68
-	npc_msg msg_0135_D47R0101_00095
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	TouchscreenMenuHide
+	GetMenuChoice VAR_SPECIAL_RESULT
+	TouchscreenMenuShow
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _0E68
+	NPCMsg msg_0135_D47R0101_00095
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0E68:
-	npc_msg msg_0135_D47R0101_00096
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0135_D47R0101_00096
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0E73:
-	npc_msg msg_0135_D47R0101_00092
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0135_D47R0101_00092
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_D47R0101_005:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	compare VAR_UNK_4057, 0
-	goto_if_eq _0EF1
-	compare VAR_UNK_4057, 1
-	goto_if_eq _0EF1
-	compare VAR_UNK_4057, 2
-	goto_if_eq _0EF1
-	compare VAR_UNK_4057, 3
-	goto_if_eq _0EF1
-	buffer_players_name 0
-	npc_msg msg_0135_D47R0101_00027
-	closemsg
-	clearflag FLAG_UNK_99D
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	scrcmd_716
-	restore_overworld
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
-	goto_if_set FLAG_UNK_99D, _0EFC
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	Compare VAR_UNK_4057, 0
+	GoToIfEq _0EF1
+	Compare VAR_UNK_4057, 1
+	GoToIfEq _0EF1
+	Compare VAR_UNK_4057, 2
+	GoToIfEq _0EF1
+	Compare VAR_UNK_4057, 3
+	GoToIfEq _0EF1
+	BufferPlayersName 0
+	NPCMsg msg_0135_D47R0101_00027
+	CloseMsg
+	ClearFlag FLAG_UNK_99D
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	ScrCmd_716
+	RestoreOverworld
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
+	GoToIfSet FLAG_UNK_99D, _0EFC
+	ReleaseAll
+	End
 
 _0EF1:
-	npc_msg msg_0135_D47R0101_00028
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0135_D47R0101_00028
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0EFC:
-	screen_shake 0, 2, 10, 6
-	play_se SEQ_SE_DP_KI_GASYAN
-	npc_msg msg_0135_D47R0101_00091
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	ScreenShake 0, 2, 10, 6
+	PlaySE SEQ_SE_DP_KI_GASYAN
+	NPCMsg msg_0135_D47R0101_00091
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 	.balign 4, 0

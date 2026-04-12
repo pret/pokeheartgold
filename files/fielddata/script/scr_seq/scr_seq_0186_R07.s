@@ -5,24 +5,24 @@
 
 	.rodata
 
-	scrdef scr_seq_R07_000
-	scrdef scr_seq_R07_001
-	scrdef_end
+	ScrDef scr_seq_R07_000
+	ScrDef scr_seq_R07_001
+	ScrDefEnd
 
 scr_seq_R07_000:
-	scrcmd_055 2, 0
-	scrcmd_057 3
-	scrcmd_058
-	trainer_tips msg_0336_R07_00000, VAR_SPECIAL_RESULT
-	callstd std_signpost
-	end
+	ScrCmd_055 2, 0
+	ScrCmd_057 3
+	ScrCmd_058
+	TrainerTips msg_0336_R07_00000, VAR_SPECIAL_RESULT
+	CallStd std_signpost
+	End
 
 scr_seq_R07_001:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	npc_msg msg_0336_R07_00001
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	NPCMsg msg_0336_R07_00001
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 	.balign 4, 0

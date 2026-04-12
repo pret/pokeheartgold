@@ -5,110 +5,110 @@
 
 	.rodata
 
-	scrdef scr_seq_T06_000
-	scrdef scr_seq_T06_001
-	scrdef scr_seq_T06_002
-	scrdef scr_seq_T06_003
-	scrdef scr_seq_T06_004
-	scrdef scr_seq_T06_005
-	scrdef scr_seq_T06_006
-	scrdef scr_seq_T06_007
-	scrdef scr_seq_T06_008
-	scrdef scr_seq_T06_009
-	scrdef scr_seq_T06_010
-	scrdef scr_seq_T06_011
-	scrdef scr_seq_T06_012
-	scrdef scr_seq_T06_013
-	scrdef_end
+	ScrDef scr_seq_T06_000
+	ScrDef scr_seq_T06_001
+	ScrDef scr_seq_T06_002
+	ScrDef scr_seq_T06_003
+	ScrDef scr_seq_T06_004
+	ScrDef scr_seq_T06_005
+	ScrDef scr_seq_T06_006
+	ScrDef scr_seq_T06_007
+	ScrDef scr_seq_T06_008
+	ScrDef scr_seq_T06_009
+	ScrDef scr_seq_T06_010
+	ScrDef scr_seq_T06_011
+	ScrDef scr_seq_T06_012
+	ScrDef scr_seq_T06_013
+	ScrDefEnd
 
 scr_seq_T06_009:
-	goto_if_unset FLAG_UNK_189, _004B
-	clearflag FLAG_UNK_189
-	end
+	GoToIfUnset FLAG_UNK_189, _004B
+	ClearFlag FLAG_UNK_189
+	End
 
 _004B:
-	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 4
-	goto_if_ne _0066
-	clearflag FLAG_HIDE_CAMERON
-	goto _0081
+	GetWeekday VAR_TEMP_x4000
+	Compare VAR_TEMP_x4000, 4
+	GoToIfNe _0066
+	ClearFlag FLAG_HIDE_CAMERON
+	GoTo _0081
 
 _0066:
-	compare VAR_TEMP_x4000, 0
-	goto_if_ne _007D
-	clearflag FLAG_HIDE_CAMERON
-	goto _0081
+	Compare VAR_TEMP_x4000, 0
+	GoToIfNe _007D
+	ClearFlag FLAG_HIDE_CAMERON
+	GoTo _0081
 
 _007D:
-	setflag FLAG_HIDE_CAMERON
+	SetFlag FLAG_HIDE_CAMERON
 _0081:
-	setvar VAR_UNK_4085, 0
-	end
+	SetVar VAR_UNK_4085, 0
+	End
 
 scr_seq_T06_013:
-	scrcmd_609
-	lockall
-	apply_movement obj_T06_daigo, _016C
-	toggle_following_pokemon_movement 0
-	wait_following_pokemon_movement
-	following_pokemon_movement 55
-	apply_movement obj_player, _0190
-	wait_movement
-	wait_following_pokemon_movement
-	toggle_following_pokemon_movement 1
-	following_pokemon_movement 48
-	npc_msg msg_0483_T06_00016
-	closemsg
-	apply_movement obj_T06_daigo, _0180
-	wait_movement
-	get_game_version VAR_TEMP_x4004
-	compare VAR_TEMP_x4004, 8
-	goto_if_eq _0109
-	scrcmd_452 SPECIES_LATIAS, 1
-	npc_msg msg_0483_T06_00017
-	closemsg
-	create_roamer 2
-	scrcmd_453
-	apply_movement obj_T06_daigo, _0180
-	wait_movement
-	npc_msg msg_0483_T06_00019
-	closemsg
-	apply_movement obj_T06_daigo, _0180
-	wait_movement
-	npc_msg msg_0483_T06_00021
-	closemsg
-	goto _013F
-	end
+	ScrCmd_609
+	LockAll
+	ApplyMovement obj_T06_daigo, _016C
+	ToggleFollowingPokemonMovement 0
+	WaitFollowingPokemonMovement
+	FollowingPokemonMovement 55
+	ApplyMovement obj_player, _0190
+	WaitMovement
+	WaitFollowingPokemonMovement
+	ToggleFollowingPokemonMovement 1
+	FollowingPokemonMovement 48
+	NPCMsg msg_0483_T06_00016
+	CloseMsg
+	ApplyMovement obj_T06_daigo, _0180
+	WaitMovement
+	GetGameVersion VAR_TEMP_x4004
+	Compare VAR_TEMP_x4004, 8
+	GoToIfEq _0109
+	ScrCmd_452 SPECIES_LATIAS, 1
+	NPCMsg msg_0483_T06_00017
+	CloseMsg
+	CreateRoamer 2
+	ScrCmd_453
+	ApplyMovement obj_T06_daigo, _0180
+	WaitMovement
+	NPCMsg msg_0483_T06_00019
+	CloseMsg
+	ApplyMovement obj_T06_daigo, _0180
+	WaitMovement
+	NPCMsg msg_0483_T06_00021
+	CloseMsg
+	GoTo _013F
+	End
 
 _0109:
-	scrcmd_452 SPECIES_LATIOS, 0
-	npc_msg msg_0483_T06_00018
-	closemsg
-	create_roamer 3
-	scrcmd_453
-	apply_movement obj_T06_daigo, _0180
-	wait_movement
-	npc_msg msg_0483_T06_00020
-	closemsg
-	apply_movement obj_T06_daigo, _0180
-	wait_movement
-	npc_msg msg_0483_T06_00022
-	closemsg
-	goto _013F
-	end
+	ScrCmd_452 SPECIES_LATIOS, 0
+	NPCMsg msg_0483_T06_00018
+	CloseMsg
+	CreateRoamer 3
+	ScrCmd_453
+	ApplyMovement obj_T06_daigo, _0180
+	WaitMovement
+	NPCMsg msg_0483_T06_00020
+	CloseMsg
+	ApplyMovement obj_T06_daigo, _0180
+	WaitMovement
+	NPCMsg msg_0483_T06_00022
+	CloseMsg
+	GoTo _013F
+	End
 
 _013F:
-	apply_movement obj_T06_daigo, _0180
-	wait_movement
-	npc_msg msg_0483_T06_00023
-	closemsg
-	apply_movement obj_T06_daigo, _0188
-	wait_movement
-	setvar VAR_UNK_4130, 2
-	hide_person obj_T06_daigo
-	setflag FLAG_HIDE_VERMILION_CITY_STEVEN
-	releaseall
-	end
+	ApplyMovement obj_T06_daigo, _0180
+	WaitMovement
+	NPCMsg msg_0483_T06_00023
+	CloseMsg
+	ApplyMovement obj_T06_daigo, _0188
+	WaitMovement
+	SetVar VAR_UNK_4130, 2
+	HidePerson obj_T06_daigo
+	SetFlag FLAG_HIDE_VERMILION_CITY_STEVEN
+	ReleaseAll
+	End
 
 	.balign 4, 0
 _016C:
@@ -136,159 +136,159 @@ _0190:
 	EndMovement
 
 scr_seq_T06_000:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	scrcmd_491 247
-	goto_if_set FLAG_GOT_PP_MAX_FROM_VERMILLION_CITY_MAN, _01FF
-	compare VAR_UNK_4135, 8
-	goto_if_ge _020A
-	compare VAR_UNK_4135, 5
-	goto_if_ge _01F4
-	compare VAR_UNK_4135, 1
-	goto_if_ge _01E9
-	npc_msg msg_0483_T06_00004
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	ScrCmd_491 247
+	GoToIfSet FLAG_GOT_PP_MAX_FROM_VERMILLION_CITY_MAN, _01FF
+	Compare VAR_UNK_4135, 8
+	GoToIfGe _020A
+	Compare VAR_UNK_4135, 5
+	GoToIfGe _01F4
+	Compare VAR_UNK_4135, 1
+	GoToIfGe _01E9
+	NPCMsg msg_0483_T06_00004
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _01E9:
-	npc_msg msg_0483_T06_00005
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0483_T06_00005
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _01F4:
-	npc_msg msg_0483_T06_00006
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0483_T06_00006
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _01FF:
-	npc_msg msg_0483_T06_00009
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0483_T06_00009
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _020A:
-	npc_msg msg_0483_T06_00007
-	goto_if_no_item_space ITEM_PP_MAX, 1, _0241
-	callstd std_give_item_verbose
-	setflag FLAG_GOT_PP_MAX_FROM_VERMILLION_CITY_MAN
-	npc_msg msg_0483_T06_00008
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0483_T06_00007
+	GoToIfNoItemSpace ITEM_PP_MAX, 1, _0241
+	CallStd std_give_item_verbose
+	SetFlag FLAG_GOT_PP_MAX_FROM_VERMILLION_CITY_MAN
+	NPCMsg msg_0483_T06_00008
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0241:
-	callstd std_bag_is_full
-	closemsg
-	releaseall
-	end
+	CallStd std_bag_is_full
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_T06_011:
-	scrcmd_609
-	lockall
-	clearflag FLAG_HIDE_VERMILION_EUSINE
-	show_person obj_T06_minaki
-	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
-	compare VAR_TEMP_x4000, 1334
-	goto_if_ne _0270
-	goto _037F
+	ScrCmd_609
+	LockAll
+	ClearFlag FLAG_HIDE_VERMILION_EUSINE
+	ShowPerson obj_T06_minaki
+	GetPlayerCoords VAR_TEMP_x4000, VAR_TEMP_x4001
+	Compare VAR_TEMP_x4000, 1334
+	GoToIfNe _0270
+	GoTo _037F
 
 _0270:
-	apply_movement obj_player, _040C
-	wait_movement
-	play_cry SPECIES_SUICUNE, 0
-	release obj_T06_tsure_poke_static_suicune
-	scrcmd_523 obj_T06_tsure_poke_static_suicune, 2, 90, 2, 0
-	lock obj_T06_tsure_poke_static_suicune
-	wait_cry
-	callstd std_play_eusine_music
-	toggle_following_pokemon_movement 0
-	wait_following_pokemon_movement
-	following_pokemon_movement 55
-	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
-	compare VAR_TEMP_x4001, 331
-	goto_if_ne _02D5
-	apply_movement obj_player, _0460
-	apply_movement obj_T06_minaki, _0490
-	apply_movement obj_T06_tsure_poke_static_suicune, _0414
-	goto _0318
+	ApplyMovement obj_player, _040C
+	WaitMovement
+	PlayCry SPECIES_SUICUNE, 0
+	Release obj_T06_tsure_poke_static_suicune
+	ScrCmd_523 obj_T06_tsure_poke_static_suicune, 2, 90, 2, 0
+	Lock obj_T06_tsure_poke_static_suicune
+	WaitCry
+	CallStd std_play_eusine_music
+	ToggleFollowingPokemonMovement 0
+	WaitFollowingPokemonMovement
+	FollowingPokemonMovement 55
+	GetPlayerCoords VAR_TEMP_x4000, VAR_TEMP_x4001
+	Compare VAR_TEMP_x4001, 331
+	GoToIfNe _02D5
+	ApplyMovement obj_player, _0460
+	ApplyMovement obj_T06_minaki, _0490
+	ApplyMovement obj_T06_tsure_poke_static_suicune, _0414
+	GoTo _0318
 
 _02D5:
-	compare VAR_TEMP_x4001, 332
-	goto_if_ne _0300
-	apply_movement obj_player, _0470
-	apply_movement obj_T06_minaki, _04A0
-	apply_movement obj_T06_tsure_poke_static_suicune, _0420
-	goto _0318
+	Compare VAR_TEMP_x4001, 332
+	GoToIfNe _0300
+	ApplyMovement obj_player, _0470
+	ApplyMovement obj_T06_minaki, _04A0
+	ApplyMovement obj_T06_tsure_poke_static_suicune, _0420
+	GoTo _0318
 
 _0300:
-	apply_movement obj_player, _0480
-	apply_movement obj_T06_minaki, _04B0
-	apply_movement obj_T06_tsure_poke_static_suicune, _042C
+	ApplyMovement obj_player, _0480
+	ApplyMovement obj_T06_minaki, _04B0
+	ApplyMovement obj_T06_tsure_poke_static_suicune, _042C
 _0318:
-	wait_movement
-	wait_following_pokemon_movement
-	toggle_following_pokemon_movement 1
-	following_pokemon_movement 48
-	npc_msg msg_0483_T06_00014
-	closemsg
-	apply_movement obj_T06_minaki, _04D0
-	wait_movement
-	buffer_players_name 0
-	npc_msg msg_0483_T06_00015
-	closemsg
-	apply_movement obj_T06_minaki, _04E8
-	apply_movement obj_player, _04F0
-	wait_movement
+	WaitMovement
+	WaitFollowingPokemonMovement
+	ToggleFollowingPokemonMovement 1
+	FollowingPokemonMovement 48
+	NPCMsg msg_0483_T06_00014
+	CloseMsg
+	ApplyMovement obj_T06_minaki, _04D0
+	WaitMovement
+	BufferPlayersName 0
+	NPCMsg msg_0483_T06_00015
+	CloseMsg
+	ApplyMovement obj_T06_minaki, _04E8
+	ApplyMovement obj_player, _04F0
+	WaitMovement
 _034D:
-	callstd std_fade_end_eusine_music
-	hide_person obj_T06_minaki
-	hide_person obj_T06_tsure_poke_static_suicune
-	setflag FLAG_HIDE_VERMILION_EUSINE
-	setflag FLAG_HIDE_VERMILION_EUSINE_2
-	setflag FLAG_HIDE_VERMILION_SUICUNE
-	setvar VAR_UNK_4070, 0
-	setvar VAR_UNK_4071, 0
-	clearflag FLAG_HIDE_ROUTE_14_SUICUNE
-	setvar VAR_UNK_4086, 1
-	releaseall
-	end
+	CallStd std_fade_end_eusine_music
+	HidePerson obj_T06_minaki
+	HidePerson obj_T06_tsure_poke_static_suicune
+	SetFlag FLAG_HIDE_VERMILION_EUSINE
+	SetFlag FLAG_HIDE_VERMILION_EUSINE_2
+	SetFlag FLAG_HIDE_VERMILION_SUICUNE
+	SetVar VAR_UNK_4070, 0
+	SetVar VAR_UNK_4071, 0
+	ClearFlag FLAG_HIDE_ROUTE_14_SUICUNE
+	SetVar VAR_UNK_4086, 1
+	ReleaseAll
+	End
 
 _037F:
-	apply_movement obj_player, _040C
-	apply_movement obj_T06_tsure_poke_static_suicune, _0458
-	wait_movement
-	play_cry SPECIES_SUICUNE, 0
-	release obj_T06_tsure_poke_static_suicune
-	scrcmd_523 obj_T06_tsure_poke_static_suicune, 2, 90, 2, 0
-	lock obj_T06_tsure_poke_static_suicune
-	wait_cry
-	callstd std_play_eusine_music
-	apply_movement obj_T06_tsure_poke_static_suicune, _0438
-	apply_movement obj_T06_minaki, _04C0
-	apply_movement obj_player, _04F8
-	wait_movement
-	apply_movement obj_T06_minaki, _04E0
-	apply_movement obj_player, _0504
-	wait_movement
-	npc_msg msg_0483_T06_00014
-	closemsg
-	apply_movement obj_T06_minaki, _04D8
-	wait_movement
-	npc_msg msg_0483_T06_00015
-	closemsg
-	apply_movement obj_T06_minaki, _04E8
-	apply_movement obj_player, _04F0
-	wait_movement
-	goto _034D
+	ApplyMovement obj_player, _040C
+	ApplyMovement obj_T06_tsure_poke_static_suicune, _0458
+	WaitMovement
+	PlayCry SPECIES_SUICUNE, 0
+	Release obj_T06_tsure_poke_static_suicune
+	ScrCmd_523 obj_T06_tsure_poke_static_suicune, 2, 90, 2, 0
+	Lock obj_T06_tsure_poke_static_suicune
+	WaitCry
+	CallStd std_play_eusine_music
+	ApplyMovement obj_T06_tsure_poke_static_suicune, _0438
+	ApplyMovement obj_T06_minaki, _04C0
+	ApplyMovement obj_player, _04F8
+	WaitMovement
+	ApplyMovement obj_T06_minaki, _04E0
+	ApplyMovement obj_player, _0504
+	WaitMovement
+	NPCMsg msg_0483_T06_00014
+	CloseMsg
+	ApplyMovement obj_T06_minaki, _04D8
+	WaitMovement
+	NPCMsg msg_0483_T06_00015
+	CloseMsg
+	ApplyMovement obj_T06_minaki, _04E8
+	ApplyMovement obj_player, _04F0
+	WaitMovement
+	GoTo _034D
 
 	.balign 4, 0
 _040C:
@@ -415,69 +415,69 @@ _0504:
 	EndMovement
 
 scr_seq_T06_012:
-	scrcmd_609
-	lockall
-	clearflag FLAG_HIDE_VERMILION_EUSINE_2
-	show_person obj_T06_minaki_2
-	apply_movement obj_player, _040C
-	wait_movement
-	play_cry SPECIES_SUICUNE, 0
-	release obj_T06_tsure_poke_static_suicune
-	scrcmd_523 obj_T06_tsure_poke_static_suicune, 2, 90, 2, 0
-	lock obj_T06_tsure_poke_static_suicune
-	wait_cry
-	callstd std_play_eusine_music
-	toggle_following_pokemon_movement 0
-	wait_following_pokemon_movement
-	following_pokemon_movement 55
-	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
-	compare VAR_TEMP_x4000, 1324
-	goto_if_ne _057D
-	apply_movement obj_T06_minaki_2, _0654
-	apply_movement obj_player, _0630
-	apply_movement obj_T06_tsure_poke_static_suicune, _0414
-	goto _05C0
+	ScrCmd_609
+	LockAll
+	ClearFlag FLAG_HIDE_VERMILION_EUSINE_2
+	ShowPerson obj_T06_minaki_2
+	ApplyMovement obj_player, _040C
+	WaitMovement
+	PlayCry SPECIES_SUICUNE, 0
+	Release obj_T06_tsure_poke_static_suicune
+	ScrCmd_523 obj_T06_tsure_poke_static_suicune, 2, 90, 2, 0
+	Lock obj_T06_tsure_poke_static_suicune
+	WaitCry
+	CallStd std_play_eusine_music
+	ToggleFollowingPokemonMovement 0
+	WaitFollowingPokemonMovement
+	FollowingPokemonMovement 55
+	GetPlayerCoords VAR_TEMP_x4000, VAR_TEMP_x4001
+	Compare VAR_TEMP_x4000, 1324
+	GoToIfNe _057D
+	ApplyMovement obj_T06_minaki_2, _0654
+	ApplyMovement obj_player, _0630
+	ApplyMovement obj_T06_tsure_poke_static_suicune, _0414
+	GoTo _05C0
 
 _057D:
-	compare VAR_TEMP_x4000, 1325
-	goto_if_ne _05A8
-	apply_movement obj_T06_minaki_2, _0668
-	apply_movement obj_player, _063C
-	apply_movement obj_T06_tsure_poke_static_suicune, _0420
-	goto _05C0
+	Compare VAR_TEMP_x4000, 1325
+	GoToIfNe _05A8
+	ApplyMovement obj_T06_minaki_2, _0668
+	ApplyMovement obj_player, _063C
+	ApplyMovement obj_T06_tsure_poke_static_suicune, _0420
+	GoTo _05C0
 
 _05A8:
-	apply_movement obj_T06_minaki_2, _067C
-	apply_movement obj_player, _0648
-	apply_movement obj_T06_tsure_poke_static_suicune, _042C
+	ApplyMovement obj_T06_minaki_2, _067C
+	ApplyMovement obj_player, _0648
+	ApplyMovement obj_T06_tsure_poke_static_suicune, _042C
 _05C0:
-	wait_movement
-	wait_following_pokemon_movement
-	toggle_following_pokemon_movement 1
-	following_pokemon_movement 48
-	npc_msg msg_0483_T06_00014
-	closemsg
-	apply_movement obj_T06_minaki_2, _0690
-	apply_movement obj_player, _06A4
-	wait_movement
-	buffer_players_name 0
-	npc_msg msg_0483_T06_00015
-	closemsg
-	apply_movement obj_T06_minaki_2, _0698
-	apply_movement obj_player, _06AC
-	wait_movement
-	callstd std_fade_end_eusine_music
-	hide_person obj_T06_minaki_2
-	hide_person obj_T06_tsure_poke_static_suicune
-	setflag FLAG_HIDE_VERMILION_EUSINE
-	setflag FLAG_HIDE_VERMILION_EUSINE_2
-	setflag FLAG_HIDE_VERMILION_SUICUNE
-	setvar VAR_UNK_4070, 0
-	setvar VAR_UNK_4071, 0
-	clearflag FLAG_HIDE_ROUTE_14_SUICUNE
-	setvar VAR_UNK_4086, 1
-	releaseall
-	end
+	WaitMovement
+	WaitFollowingPokemonMovement
+	ToggleFollowingPokemonMovement 1
+	FollowingPokemonMovement 48
+	NPCMsg msg_0483_T06_00014
+	CloseMsg
+	ApplyMovement obj_T06_minaki_2, _0690
+	ApplyMovement obj_player, _06A4
+	WaitMovement
+	BufferPlayersName 0
+	NPCMsg msg_0483_T06_00015
+	CloseMsg
+	ApplyMovement obj_T06_minaki_2, _0698
+	ApplyMovement obj_player, _06AC
+	WaitMovement
+	CallStd std_fade_end_eusine_music
+	HidePerson obj_T06_minaki_2
+	HidePerson obj_T06_tsure_poke_static_suicune
+	SetFlag FLAG_HIDE_VERMILION_EUSINE
+	SetFlag FLAG_HIDE_VERMILION_EUSINE_2
+	SetFlag FLAG_HIDE_VERMILION_SUICUNE
+	SetVar VAR_UNK_4070, 0
+	SetVar VAR_UNK_4071, 0
+	ClearFlag FLAG_HIDE_ROUTE_14_SUICUNE
+	SetVar VAR_UNK_4086, 1
+	ReleaseAll
+	End
 
 	.balign 4, 0
 _0630:
@@ -546,138 +546,138 @@ _06AC:
 	EndMovement
 
 scr_seq_T06_001:
-	simple_npc_msg msg_0483_T06_00000
-	end
+	SimpleNPCMsg msg_0483_T06_00000
+	End
 
 scr_seq_T06_002:
-	simple_npc_msg msg_0483_T06_00003
-	end
+	SimpleNPCMsg msg_0483_T06_00003
+	End
 
 scr_seq_T06_003:
-	simple_npc_msg msg_0483_T06_00001
-	end
+	SimpleNPCMsg msg_0483_T06_00001
+	End
 
 scr_seq_T06_004:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	play_cry SPECIES_MACHOP, 0
-	npc_msg msg_0483_T06_00002
-	wait_cry
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	PlayCry SPECIES_MACHOP, 0
+	NPCMsg msg_0483_T06_00002
+	WaitCry
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_T06_005:
-	direction_signpost msg_0483_T06_00010, 0, 6, VAR_SPECIAL_RESULT
-	scrcmd_057 3
-	scrcmd_058
-	scrcmd_060 VAR_SPECIAL_RESULT
-	callstd std_signpost
-	end
+	DirectionSignpost msg_0483_T06_00010, 0, 6, VAR_SPECIAL_RESULT
+	ScrCmd_057 3
+	ScrCmd_058
+	ScrCmd_060 VAR_SPECIAL_RESULT
+	CallStd std_signpost
+	End
 
 scr_seq_T06_006:
-	scrcmd_055 2, 0
-	scrcmd_057 3
-	scrcmd_058
-	trainer_tips msg_0483_T06_00011, VAR_SPECIAL_RESULT
-	callstd std_signpost
-	end
+	ScrCmd_055 2, 0
+	ScrCmd_057 3
+	ScrCmd_058
+	TrainerTips msg_0483_T06_00011, VAR_SPECIAL_RESULT
+	CallStd std_signpost
+	End
 
 scr_seq_T06_007:
-	scrcmd_055 2, 0
-	scrcmd_057 3
-	scrcmd_058
-	trainer_tips msg_0483_T06_00012, VAR_SPECIAL_RESULT
-	callstd std_signpost
-	end
+	ScrCmd_055 2, 0
+	ScrCmd_057 3
+	ScrCmd_058
+	TrainerTips msg_0483_T06_00012, VAR_SPECIAL_RESULT
+	CallStd std_signpost
+	End
 
 scr_seq_T06_008:
-	scrcmd_055 2, 0
-	scrcmd_057 3
-	scrcmd_058
-	trainer_tips msg_0483_T06_00013, VAR_SPECIAL_RESULT
-	callstd std_signpost
-	end
+	ScrCmd_055 2, 0
+	ScrCmd_057 3
+	ScrCmd_058
+	TrainerTips msg_0483_T06_00013, VAR_SPECIAL_RESULT
+	CallStd std_signpost
+	End
 
 scr_seq_T06_010:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 0
-	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_RESULT
-	touchscreen_menu_show
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _086F
-	photo_album_is_full VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _0883
-	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 1
-	closemsg
-	toggle_following_pokemon_movement 0
-	wait_following_pokemon_movement
-	following_pokemon_movement 55
-	get_player_facing VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_ne _07DB
-	apply_movement obj_player, _0898
-	goto _080E
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	GetStdMsgNaix 2, VAR_SPECIAL_RESULT
+	MsgBoxExtern VAR_SPECIAL_RESULT, 0
+	TouchscreenMenuHide
+	GetMenuChoice VAR_SPECIAL_RESULT
+	TouchscreenMenuShow
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _086F
+	PhotoAlbumIsFull VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _0883
+	GetStdMsgNaix 2, VAR_SPECIAL_RESULT
+	MsgBoxExtern VAR_SPECIAL_RESULT, 1
+	CloseMsg
+	ToggleFollowingPokemonMovement 0
+	WaitFollowingPokemonMovement
+	FollowingPokemonMovement 55
+	GetPlayerFacing VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfNe _07DB
+	ApplyMovement obj_player, _0898
+	GoTo _080E
 
 _07DB:
-	compare VAR_SPECIAL_RESULT, 3
-	goto_if_ne _07FE
-	apply_movement obj_player, _08B8
-	apply_movement obj_T06_gsmiddleman1_2, _08CC
-	goto _080E
+	Compare VAR_SPECIAL_RESULT, 3
+	GoToIfNe _07FE
+	ApplyMovement obj_player, _08B8
+	ApplyMovement obj_T06_gsmiddleman1_2, _08CC
+	GoTo _080E
 
 _07FE:
-	apply_movement obj_player, _08A4
-	apply_movement obj_T06_gsmiddleman1_2, _08CC
+	ApplyMovement obj_player, _08A4
+	ApplyMovement obj_T06_gsmiddleman1_2, _08CC
 _080E:
-	wait_movement
-	wait_following_pokemon_movement
-	toggle_following_pokemon_movement 1
-	following_pokemon_movement 48
-	scrcmd_729 VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_ne _0835
-	apply_movement obj_partner_poke, _08D8
-	wait_movement
+	WaitMovement
+	WaitFollowingPokemonMovement
+	ToggleFollowingPokemonMovement 1
+	FollowingPokemonMovement 48
+	ScrCmd_729 VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfNe _0835
+	ApplyMovement obj_partner_poke, _08D8
+	WaitMovement
 _0835:
-	setflag FLAG_UNK_189
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	cameron_photo 50
-	lockall
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
-	clearflag FLAG_UNK_189
-	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 2
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	SetFlag FLAG_UNK_189
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	CameronPhoto 50
+	LockAll
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
+	ClearFlag FLAG_UNK_189
+	GetStdMsgNaix 2, VAR_SPECIAL_RESULT
+	MsgBoxExtern VAR_SPECIAL_RESULT, 2
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _086F:
-	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 5
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	GetStdMsgNaix 2, VAR_SPECIAL_RESULT
+	MsgBoxExtern VAR_SPECIAL_RESULT, 5
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0883:
-	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 3
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	GetStdMsgNaix 2, VAR_SPECIAL_RESULT
+	MsgBoxExtern VAR_SPECIAL_RESULT, 3
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 	.balign 4, 0
 _0898:

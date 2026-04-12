@@ -5,72 +5,72 @@
 
 	.rodata
 
-	scrdef scr_seq_D27R0108_000
-	scrdef_end
+	ScrDef scr_seq_D27R0108_000
+	ScrDefEnd
 
 scr_seq_D27R0108_000:
-	scrcmd_609
-	lockall
-	scrcmd_729 VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0058
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _002A
-	end
+	ScrCmd_609
+	LockAll
+	ScrCmd_729 VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0058
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _002A
+	End
 
 _002A:
-	toggle_following_pokemon_movement 0
-	wait_following_pokemon_movement
-	following_pokemon_movement 55
-	apply_movement obj_player, _00F4
-	wait_movement
-	wait_following_pokemon_movement
-	toggle_following_pokemon_movement 1
-	following_pokemon_movement 48
-	apply_movement obj_partner_poke, _0100
-	wait_movement
-	goto _0062
+	ToggleFollowingPokemonMovement 0
+	WaitFollowingPokemonMovement
+	FollowingPokemonMovement 55
+	ApplyMovement obj_player, _00F4
+	WaitMovement
+	WaitFollowingPokemonMovement
+	ToggleFollowingPokemonMovement 1
+	FollowingPokemonMovement 48
+	ApplyMovement obj_partner_poke, _0100
+	WaitMovement
+	GoTo _0062
 
 _0058:
-	apply_movement obj_player, _00F4
-	wait_movement
+	ApplyMovement obj_player, _00F4
+	WaitMovement
 _0062:
-	get_dynamic_warp_floor_no VAR_ELEVATOR_LAST_FLOOR
-	switch VAR_ELEVATOR_LAST_FLOOR
-	case 0, _0088
-	case 1, _00A5
-	end
+	GetDynamicWarpFloorNo VAR_ELEVATOR_LAST_FLOOR
+	Switch VAR_ELEVATOR_LAST_FLOOR
+	Case 0, _0088
+	Case 1, _00A5
+	End
 
 _0088:
-	npc_msg msg_0095_D27R0108_00000
-	closemsg
-	set_dynamic_warp MAP_OLIVINE_LIGHTHOUSE_LIGHT_ROOM, 1, 5, 3, 1
-	setvar VAR_SPECIAL_x8004, 0
-	goto _00C2
+	NPCMsg msg_0095_D27R0108_00000
+	CloseMsg
+	SetDynamicWarp MAP_OLIVINE_LIGHTHOUSE_LIGHT_ROOM, 1, 5, 3, 1
+	SetVar VAR_SPECIAL_x8004, 0
+	GoTo _00C2
 
 _00A5:
-	npc_msg msg_0095_D27R0108_00001
-	closemsg
-	set_dynamic_warp MAP_OLIVINE_LIGHTHOUSE_1F, 1, 5, 3, 1
-	setvar VAR_SPECIAL_x8004, 1
-	goto _00C2
+	NPCMsg msg_0095_D27R0108_00001
+	CloseMsg
+	SetDynamicWarp MAP_OLIVINE_LIGHTHOUSE_1F, 1, 5, 3, 1
+	SetVar VAR_SPECIAL_x8004, 1
+	GoTo _00C2
 
 _00C2:
-	wait_se SEQ_SE_DP_SELECT
-	elevator_anim VAR_SPECIAL_x8004, 5
-	compare VAR_ELEVATOR_LAST_FLOOR, 0
-	goto_if_ne _00E2
-	npc_msg msg_0095_D27R0108_00002
-	goto _00E5
+	WaitSE SEQ_SE_DP_SELECT
+	ElevatorAnim VAR_SPECIAL_x8004, 5
+	Compare VAR_ELEVATOR_LAST_FLOOR, 0
+	GoToIfNe _00E2
+	NPCMsg msg_0095_D27R0108_00002
+	GoTo _00E5
 
 _00E2:
-	npc_msg msg_0095_D27R0108_00003
+	NPCMsg msg_0095_D27R0108_00003
 _00E5:
-	wait_button_or_walk_away
-	closemsg
-	setvar VAR_UNK_4125, 1
-	releaseall
-	end
+	WaitButton
+	CloseMsg
+	SetVar VAR_UNK_4125, 1
+	ReleaseAll
+	End
 
 	.balign 4, 0
 _00F4:

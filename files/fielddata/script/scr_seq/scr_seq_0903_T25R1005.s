@@ -5,193 +5,193 @@
 
 	.rodata
 
-	scrdef scr_seq_T25R1005_000
-	scrdef scr_seq_T25R1005_001
-	scrdef scr_seq_T25R1005_002
-	scrdef scr_seq_T25R1005_003
-	scrdef scr_seq_T25R1005_004
-	scrdef scr_seq_T25R1005_005
-	scrdef scr_seq_T25R1005_006
-	scrdef_end
+	ScrDef scr_seq_T25R1005_000
+	ScrDef scr_seq_T25R1005_001
+	ScrDef scr_seq_T25R1005_002
+	ScrDef scr_seq_T25R1005_003
+	ScrDef scr_seq_T25R1005_004
+	ScrDef scr_seq_T25R1005_005
+	ScrDef scr_seq_T25R1005_006
+	ScrDefEnd
 
 scr_seq_T25R1005_005:
-	setflag FLAG_HIDE_GOLDENROD_DEPT_STORE_5F_RETURN_FRUSTRATION_LADY
-	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 0
-	goto_if_eq _0046
-	compare VAR_TEMP_x4000, 0
-	goto_if_ne _0044
-	clearflag FLAG_HIDE_GOLDENROD_DEPT_STORE_5F_RETURN_FRUSTRATION_LADY
+	SetFlag FLAG_HIDE_GOLDENROD_DEPT_STORE_5F_RETURN_FRUSTRATION_LADY
+	GetWeekday VAR_TEMP_x4000
+	Compare VAR_TEMP_x4000, 0
+	GoToIfEq _0046
+	Compare VAR_TEMP_x4000, 0
+	GoToIfNe _0044
+	ClearFlag FLAG_HIDE_GOLDENROD_DEPT_STORE_5F_RETURN_FRUSTRATION_LADY
 _0044:
-	end
+	End
 
 _0046:
-	clearflag FLAG_HIDE_GOLDENROD_DEPT_STORE_5F_RETURN_FRUSTRATION_LADY
-	end
+	ClearFlag FLAG_HIDE_GOLDENROD_DEPT_STORE_5F_RETURN_FRUSTRATION_LADY
+	End
 
 scr_seq_T25R1005_000:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	callstd std_mart_intro
-	holdmsg
-	setvar VAR_SPECIAL_x8004, 7
-	callstd std_special_mart
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	CallStd std_mart_intro
+	HoldMsg
+	SetVar VAR_SPECIAL_x8004, 7
+	CallStd std_special_mart
+	ReleaseAll
+	End
 
 scr_seq_T25R1005_001:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	compare VAR_SCENE_ROCKET_TAKEOVER, 3
-	goto_if_ne _0086
-	npc_msg msg_0596_T25R1005_00018
-	goto _0089
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	Compare VAR_SCENE_ROCKET_TAKEOVER, 3
+	GoToIfNe _0086
+	NPCMsg msg_0596_T25R1005_00018
+	GoTo _0089
 
 _0086:
-	npc_msg msg_0596_T25R1005_00017
+	NPCMsg msg_0596_T25R1005_00017
 _0089:
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_T25R1005_002:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	compare VAR_SCENE_ROCKET_TAKEOVER, 3
-	goto_if_ne _00AF
-	npc_msg msg_0596_T25R1005_00016
-	goto _00B2
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	Compare VAR_SCENE_ROCKET_TAKEOVER, 3
+	GoToIfNe _00AF
+	NPCMsg msg_0596_T25R1005_00016
+	GoTo _00B2
 
 _00AF:
-	npc_msg msg_0596_T25R1005_00015
+	NPCMsg msg_0596_T25R1005_00015
 _00B2:
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_T25R1005_003:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	goto_if_set FLAG_SYS_ROCKET_COSTUME, _017D
-	goto_if_set FLAG_TRADE_GOLDENROD_CITY_DROWZEE_MACHOP, _0172
-	npc_msg msg_0596_T25R1005_00009
-	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_RESULT
-	touchscreen_menu_show
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _00F6
-	goto _0167
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	GoToIfSet FLAG_SYS_ROCKET_COSTUME, _017D
+	GoToIfSet FLAG_TRADE_GOLDENROD_CITY_DROWZEE_MACHOP, _0172
+	NPCMsg msg_0596_T25R1005_00009
+	TouchscreenMenuHide
+	GetMenuChoice VAR_SPECIAL_RESULT
+	TouchscreenMenuShow
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _00F6
+	GoTo _0167
 
 _00F6:
-	closemsg
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	scrcmd_566
-	get_party_selection VAR_SPECIAL_RESULT
-	restore_overworld
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
-	compare VAR_SPECIAL_RESULT, 255
-	goto_if_eq _0167
-	load_npc_trade 1
-	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
-	get_partymon_species VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
-	npc_trade_get_req_species VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
-	goto_if_ne _015A
-	npc_trade_exec VAR_SPECIAL_x8004
-	npc_trade_end
-	setflag FLAG_TRADE_GOLDENROD_CITY_DROWZEE_MACHOP
-	npc_msg msg_0596_T25R1005_00010
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	CloseMsg
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	ScrCmd_566
+	GetPartySelection VAR_SPECIAL_RESULT
+	RestoreOverworld
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
+	Compare VAR_SPECIAL_RESULT, 255
+	GoToIfEq _0167
+	LoadNPCTrade 1
+	CopyVar VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
+	GetPartyMonSpecies VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
+	NPCTradeGetReqSpecies VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
+	GoToIfNe _015A
+	NPCTradeExec VAR_SPECIAL_x8004
+	NPCTradeEnd
+	SetFlag FLAG_TRADE_GOLDENROD_CITY_DROWZEE_MACHOP
+	NPCMsg msg_0596_T25R1005_00010
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _015A:
-	npc_trade_end
-	npc_msg msg_0596_T25R1005_00011
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCTradeEnd
+	NPCMsg msg_0596_T25R1005_00011
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0167:
-	npc_msg msg_0596_T25R1005_00012
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0596_T25R1005_00012
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0172:
-	npc_msg msg_0596_T25R1005_00013
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0596_T25R1005_00013
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _017D:
-	npc_msg msg_0596_T25R1005_00014
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0596_T25R1005_00014
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_T25R1005_004:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	npc_msg msg_0596_T25R1005_00019
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	NPCMsg msg_0596_T25R1005_00019
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_T25R1005_006:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	goto_if_set FLAG_UNK_08E, _0219
-	get_party_lead_alive VAR_SPECIAL_x8000
-	buffer_mon_species_name 0, VAR_SPECIAL_x8000
-	npc_msg msg_0596_T25R1005_00000
-	mon_get_friendship VAR_SPECIAL_RESULT, VAR_SPECIAL_x8000
-	compare VAR_SPECIAL_RESULT, 149
-	goto_if_ge _01E3
-	compare VAR_SPECIAL_RESULT, 50
-	goto_if_le _01FE
-	npc_msg msg_0596_T25R1005_00003
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	GoToIfSet FLAG_UNK_08E, _0219
+	GetPartyLeadAlive VAR_SPECIAL_x8000
+	BufferMonSpeciesName 0, VAR_SPECIAL_x8000
+	NPCMsg msg_0596_T25R1005_00000
+	MonGetFriendship VAR_SPECIAL_RESULT, VAR_SPECIAL_x8000
+	Compare VAR_SPECIAL_RESULT, 149
+	GoToIfGe _01E3
+	Compare VAR_SPECIAL_RESULT, 50
+	GoToIfLe _01FE
+	NPCMsg msg_0596_T25R1005_00003
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _01E3:
-	npc_msg msg_0596_T25R1005_00001
-	setvar VAR_SPECIAL_x8004, 354
-	setvar VAR_SPECIAL_x8005, 1
-	callstd std_obtain_item_verbose
-	closemsg
-	goto _0219
+	NPCMsg msg_0596_T25R1005_00001
+	SetVar VAR_SPECIAL_x8004, 354
+	SetVar VAR_SPECIAL_x8005, 1
+	CallStd std_obtain_item_verbose
+	CloseMsg
+	GoTo _0219
 
 _01FE:
-	npc_msg msg_0596_T25R1005_00004
-	setvar VAR_SPECIAL_x8004, 348
-	setvar VAR_SPECIAL_x8005, 1
-	callstd std_obtain_item_verbose
-	closemsg
-	goto _0219
+	NPCMsg msg_0596_T25R1005_00004
+	SetVar VAR_SPECIAL_x8004, 348
+	SetVar VAR_SPECIAL_x8005, 1
+	CallStd std_obtain_item_verbose
+	CloseMsg
+	GoTo _0219
 
 _0219:
-	npc_msg msg_0596_T25R1005_00006
-	setflag FLAG_UNK_08E
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0596_T25R1005_00006
+	SetFlag FLAG_UNK_08E
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 	.balign 4, 0

@@ -5,164 +5,164 @@
 
 	.rodata
 
-	scrdef scr_seq_T03_000
-	scrdef scr_seq_T03_001
-	scrdef scr_seq_T03_002
-	scrdef scr_seq_T03_003
-	scrdef scr_seq_T03_004
-	scrdef scr_seq_T03_005
-	scrdef scr_seq_T03_006
-	scrdef scr_seq_T03_007
-	scrdef scr_seq_T03_008
-	scrdef scr_seq_T03_009
-	scrdef scr_seq_T03_010
-	scrdef scr_seq_T03_011
-	scrdef scr_seq_T03_012
-	scrdef scr_seq_T03_013
-	scrdef_end
+	ScrDef scr_seq_T03_000
+	ScrDef scr_seq_T03_001
+	ScrDef scr_seq_T03_002
+	ScrDef scr_seq_T03_003
+	ScrDef scr_seq_T03_004
+	ScrDef scr_seq_T03_005
+	ScrDef scr_seq_T03_006
+	ScrDef scr_seq_T03_007
+	ScrDef scr_seq_T03_008
+	ScrDef scr_seq_T03_009
+	ScrDef scr_seq_T03_010
+	ScrDef scr_seq_T03_011
+	ScrDef scr_seq_T03_012
+	ScrDef scr_seq_T03_013
+	ScrDefEnd
 
 scr_seq_T03_008:
-	goto_if_unset FLAG_UNK_189, _004B
-	clearflag FLAG_UNK_189
-	end
+	GoToIfUnset FLAG_UNK_189, _004B
+	ClearFlag FLAG_UNK_189
+	End
 
 _004B:
-	goto _030E
+	GoTo _030E
 
 _0051:
-	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 2
-	goto_if_eq _0075
-	compare VAR_TEMP_x4000, 6
-	goto_if_eq _0075
-	setflag FLAG_HIDE_CAMERON
-	end
+	GetWeekday VAR_TEMP_x4000
+	Compare VAR_TEMP_x4000, 2
+	GoToIfEq _0075
+	Compare VAR_TEMP_x4000, 6
+	GoToIfEq _0075
+	SetFlag FLAG_HIDE_CAMERON
+	End
 
 _0075:
-	clearflag FLAG_HIDE_CAMERON
-	end
+	ClearFlag FLAG_HIDE_CAMERON
+	End
 
 scr_seq_T03_000:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	get_game_version VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 7
-	goto_if_ne _00A5
-	goto_if_set FLAG_UNK_094, _0108
-	goto _00B0
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	GetGameVersion VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 7
+	GoToIfNe _00A5
+	GoToIfSet FLAG_UNK_094, _0108
+	GoTo _00B0
 
 _00A5:
-	goto_if_set FLAG_UNK_093, _0108
+	GoToIfSet FLAG_UNK_093, _0108
 _00B0:
-	npc_msg msg_0460_T03_00002
-	get_game_version VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 7
-	goto_if_ne _00E6
-	setvar VAR_SPECIAL_x8004, ITEM_SILVER_WING
-	setvar VAR_SPECIAL_x8005, 1
-	callstd std_obtain_item_verbose
-	setflag FLAG_UNK_094
-	clearflag FLAG_HIDE_WHIRL_ISLAND_LUGIA
-	setflag FLAG_HIDE_WHIRL_ISLANDS_BOTTOM_KIMONO_GIRLS
-	goto _0102
+	NPCMsg msg_0460_T03_00002
+	GetGameVersion VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 7
+	GoToIfNe _00E6
+	SetVar VAR_SPECIAL_x8004, ITEM_SILVER_WING
+	SetVar VAR_SPECIAL_x8005, 1
+	CallStd std_obtain_item_verbose
+	SetFlag FLAG_UNK_094
+	ClearFlag FLAG_HIDE_WHIRL_ISLAND_LUGIA
+	SetFlag FLAG_HIDE_WHIRL_ISLANDS_BOTTOM_KIMONO_GIRLS
+	GoTo _0102
 
 _00E6:
-	setvar VAR_SPECIAL_x8004, ITEM_RAINBOW_WING
-	setvar VAR_SPECIAL_x8005, 1
-	callstd std_obtain_item_verbose
-	setflag FLAG_UNK_093
-	clearflag FLAG_HIDE_BELL_TOWER_HO_OH
-	setflag FLAG_HIDE_BELL_TOWER_SUMMIT_KIMONO_GIRLS
+	SetVar VAR_SPECIAL_x8004, ITEM_RAINBOW_WING
+	SetVar VAR_SPECIAL_x8005, 1
+	CallStd std_obtain_item_verbose
+	SetFlag FLAG_UNK_093
+	ClearFlag FLAG_HIDE_BELL_TOWER_HO_OH
+	SetFlag FLAG_HIDE_BELL_TOWER_SUMMIT_KIMONO_GIRLS
 _0102:
-	closemsg
-	releaseall
-	end
+	CloseMsg
+	ReleaseAll
+	End
 
 _0108:
-	npc_msg msg_0460_T03_00005
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0460_T03_00005
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_T03_007:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 0
-	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_RESULT
-	touchscreen_menu_show
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _0218
-	photo_album_is_full VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _022C
-	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 1
-	closemsg
-	toggle_following_pokemon_movement 0
-	wait_following_pokemon_movement
-	following_pokemon_movement 55
-	get_player_facing VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_ne _0184
-	apply_movement obj_player, _0240
-	goto _01B7
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	GetStdMsgNaix 2, VAR_SPECIAL_RESULT
+	MsgBoxExtern VAR_SPECIAL_RESULT, 0
+	TouchscreenMenuHide
+	GetMenuChoice VAR_SPECIAL_RESULT
+	TouchscreenMenuShow
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _0218
+	PhotoAlbumIsFull VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _022C
+	GetStdMsgNaix 2, VAR_SPECIAL_RESULT
+	MsgBoxExtern VAR_SPECIAL_RESULT, 1
+	CloseMsg
+	ToggleFollowingPokemonMovement 0
+	WaitFollowingPokemonMovement
+	FollowingPokemonMovement 55
+	GetPlayerFacing VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfNe _0184
+	ApplyMovement obj_player, _0240
+	GoTo _01B7
 
 _0184:
-	compare VAR_SPECIAL_RESULT, 3
-	goto_if_ne _01A7
-	apply_movement obj_player, _0260
-	apply_movement obj_T03_gsmiddleman1, _0274
-	goto _01B7
+	Compare VAR_SPECIAL_RESULT, 3
+	GoToIfNe _01A7
+	ApplyMovement obj_player, _0260
+	ApplyMovement obj_T03_gsmiddleman1, _0274
+	GoTo _01B7
 
 _01A7:
-	apply_movement obj_player, _024C
-	apply_movement obj_T03_gsmiddleman1, _0274
+	ApplyMovement obj_player, _024C
+	ApplyMovement obj_T03_gsmiddleman1, _0274
 _01B7:
-	wait_movement
-	wait_following_pokemon_movement
-	toggle_following_pokemon_movement 1
-	following_pokemon_movement 48
-	scrcmd_729 VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_ne _01DE
-	apply_movement obj_partner_poke, _0280
-	wait_movement
+	WaitMovement
+	WaitFollowingPokemonMovement
+	ToggleFollowingPokemonMovement 1
+	FollowingPokemonMovement 48
+	ScrCmd_729 VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfNe _01DE
+	ApplyMovement obj_partner_poke, _0280
+	WaitMovement
 _01DE:
-	setflag FLAG_UNK_189
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	cameron_photo 66
-	lockall
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
-	clearflag FLAG_UNK_189
-	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 2
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	SetFlag FLAG_UNK_189
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	CameronPhoto 66
+	LockAll
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
+	ClearFlag FLAG_UNK_189
+	GetStdMsgNaix 2, VAR_SPECIAL_RESULT
+	MsgBoxExtern VAR_SPECIAL_RESULT, 2
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0218:
-	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 5
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	GetStdMsgNaix 2, VAR_SPECIAL_RESULT
+	MsgBoxExtern VAR_SPECIAL_RESULT, 5
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _022C:
-	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 3
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	GetStdMsgNaix 2, VAR_SPECIAL_RESULT
+	MsgBoxExtern VAR_SPECIAL_RESULT, 3
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 	.balign 4, 0
 _0240:
@@ -200,136 +200,136 @@ _0280:
 	EndMovement
 
 scr_seq_T03_001:
-	simple_npc_msg msg_0460_T03_00000
-	end
+	SimpleNPCMsg msg_0460_T03_00000
+	End
 
 scr_seq_T03_002:
-	simple_npc_msg msg_0460_T03_00001
-	end
+	SimpleNPCMsg msg_0460_T03_00001
+	End
 
 scr_seq_T03_003:
-	direction_signpost msg_0460_T03_00020, 0, 3, VAR_SPECIAL_RESULT
-	scrcmd_057 3
-	scrcmd_058
-	scrcmd_060 VAR_SPECIAL_RESULT
-	callstd std_signpost
-	end
+	DirectionSignpost msg_0460_T03_00020, 0, 3, VAR_SPECIAL_RESULT
+	ScrCmd_057 3
+	ScrCmd_058
+	ScrCmd_060 VAR_SPECIAL_RESULT
+	CallStd std_signpost
+	End
 
 scr_seq_T03_004:
-	scrcmd_055 2, 0
-	scrcmd_057 3
-	scrcmd_058
-	trainer_tips msg_0460_T03_00021, VAR_SPECIAL_RESULT
-	callstd std_signpost
-	end
+	ScrCmd_055 2, 0
+	ScrCmd_057 3
+	ScrCmd_058
+	TrainerTips msg_0460_T03_00021, VAR_SPECIAL_RESULT
+	CallStd std_signpost
+	End
 
 scr_seq_T03_005:
-	scrcmd_055 2, 0
-	scrcmd_057 3
-	scrcmd_058
-	trainer_tips msg_0460_T03_00022, VAR_SPECIAL_RESULT
-	callstd std_signpost
-	end
+	ScrCmd_055 2, 0
+	ScrCmd_057 3
+	ScrCmd_058
+	TrainerTips msg_0460_T03_00022, VAR_SPECIAL_RESULT
+	CallStd std_signpost
+	End
 
 scr_seq_T03_006:
-	direction_signpost msg_0460_T03_00023, 2, 0, VAR_SPECIAL_RESULT
-	scrcmd_057 3
-	scrcmd_058
-	scrcmd_060 VAR_SPECIAL_RESULT
-	callstd std_signpost
-	end
+	DirectionSignpost msg_0460_T03_00023, 2, 0, VAR_SPECIAL_RESULT
+	ScrCmd_057 3
+	ScrCmd_058
+	ScrCmd_060 VAR_SPECIAL_RESULT
+	CallStd std_signpost
+	End
 
 _030E:
-	compare VAR_UNK_4083, 4
-	goto_if_eq _0341
-	compare VAR_UNK_4083, 2
-	goto_if_eq _033D
-	compare VAR_UNK_4083, 3
-	goto_if_eq _033D
-	goto _0051
-	end
+	Compare VAR_UNK_4083, 4
+	GoToIfEq _0341
+	Compare VAR_UNK_4083, 2
+	GoToIfEq _033D
+	Compare VAR_UNK_4083, 3
+	GoToIfEq _033D
+	GoTo _0051
+	End
 
 _033D:
-	clearflag FLAG_HIDE_PEWTER_CITY_STEVEN
+	ClearFlag FLAG_HIDE_PEWTER_CITY_STEVEN
 _0341:
-	get_game_version VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 7
-	goto_if_ne _035C
-	clearflag FLAG_HIDE_PEWTER_CITY_LATIOS
-	goto _0360
+	GetGameVersion VAR_TEMP_x4000
+	Compare VAR_TEMP_x4000, 7
+	GoToIfNe _035C
+	ClearFlag FLAG_HIDE_PEWTER_CITY_LATIOS
+	GoTo _0360
 
 _035C:
-	clearflag FLAG_HIDE_PEWTER_CITY_LATIAS
+	ClearFlag FLAG_HIDE_PEWTER_CITY_LATIAS
 _0360:
-	end
+	End
 
 scr_seq_T03_011:
-	compare VAR_UNK_4083, 2
-	goto_if_eq _0371
-	end
+	Compare VAR_UNK_4083, 2
+	GoToIfEq _0371
+	End
 
 _0371:
-	move_person_facing obj_T03_daigo, 1047, 6, 81, DIR_WEST
-	end
+	MovePersonFacing obj_T03_daigo, 1047, 6, 81, DIR_WEST
+	End
 
 scr_seq_T03_013:
-	goto_if_set FLAG_ENGAGING_STATIC_POKEMON, _038C
-	end
+	GoToIfSet FLAG_ENGAGING_STATIC_POKEMON, _038C
+	End
 
 _038C:
-	get_game_version VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 7
-	goto_if_ne _03AB
-	setflag FLAG_HIDE_PEWTER_CITY_LATIOS
-	hide_person obj_T03_tsure_poke_static_latios
-	goto _03B3
+	GetGameVersion VAR_TEMP_x4000
+	Compare VAR_TEMP_x4000, 7
+	GoToIfNe _03AB
+	SetFlag FLAG_HIDE_PEWTER_CITY_LATIOS
+	HidePerson obj_T03_tsure_poke_static_latios
+	GoTo _03B3
 
 _03AB:
-	setflag FLAG_HIDE_PEWTER_CITY_LATIAS
-	hide_person obj_T03_tsure_poke_static_latias
+	SetFlag FLAG_HIDE_PEWTER_CITY_LATIAS
+	HidePerson obj_T03_tsure_poke_static_latias
 _03B3:
-	end
+	End
 
 scr_seq_T03_012:
-	scrcmd_609
-	lockall
-	toggle_following_pokemon_movement 0
-	wait_following_pokemon_movement
-	following_pokemon_movement 55
-	apply_movement obj_player, _0440
-	wait_movement
-	apply_movement obj_T03_daigo, _045C
-	wait_movement
-	get_game_version VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 7
-	goto_if_ne _03F1
-	npc_msg msg_0460_T03_00006
-	goto _03F4
+	ScrCmd_609
+	LockAll
+	ToggleFollowingPokemonMovement 0
+	WaitFollowingPokemonMovement
+	FollowingPokemonMovement 55
+	ApplyMovement obj_player, _0440
+	WaitMovement
+	ApplyMovement obj_T03_daigo, _045C
+	WaitMovement
+	GetGameVersion VAR_TEMP_x4000
+	Compare VAR_TEMP_x4000, 7
+	GoToIfNe _03F1
+	NPCMsg msg_0460_T03_00006
+	GoTo _03F4
 
 _03F1:
-	npc_msg msg_0460_T03_00007
+	NPCMsg msg_0460_T03_00007
 _03F4:
-	closemsg
-	apply_movement obj_T03_daigo, _0464
-	apply_movement obj_player, _0464
-	wait_movement
-	wait_following_pokemon_movement
-	toggle_following_pokemon_movement 1
-	following_pokemon_movement 48
-	get_game_version VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 7
-	goto_if_ne _042C
-	npc_msg msg_0460_T03_00008
-	goto _042F
+	CloseMsg
+	ApplyMovement obj_T03_daigo, _0464
+	ApplyMovement obj_player, _0464
+	WaitMovement
+	WaitFollowingPokemonMovement
+	ToggleFollowingPokemonMovement 1
+	FollowingPokemonMovement 48
+	GetGameVersion VAR_TEMP_x4000
+	Compare VAR_TEMP_x4000, 7
+	GoToIfNe _042C
+	NPCMsg msg_0460_T03_00008
+	GoTo _042F
 
 _042C:
-	npc_msg msg_0460_T03_00009
+	NPCMsg msg_0460_T03_00009
 _042F:
-	wait_button_or_walk_away
-	closemsg
-	setvar VAR_UNK_4083, 3
-	releaseall
-	end
+	WaitButton
+	CloseMsg
+	SetVar VAR_UNK_4083, 3
+	ReleaseAll
+	End
 
 	.balign 4, 0
 _0440:
@@ -371,132 +371,132 @@ _0480:
 	EndMovement
 
 scr_seq_T03_010:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	scrcmd_546 0, VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 0
-	goto_if_eq _0649
-	get_game_version VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 7
-	goto_if_ne _04C8
-	setvar VAR_TEMP_x400A, SPECIES_LATIOS
-	play_cry VAR_TEMP_x400A, 0
-	npc_msg msg_0460_T03_00010
-	goto _04D7
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	ScrCmd_546 0, VAR_TEMP_x4000
+	Compare VAR_TEMP_x4000, 0
+	GoToIfEq _0649
+	GetGameVersion VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 7
+	GoToIfNe _04C8
+	SetVar VAR_TEMP_x400A, SPECIES_LATIOS
+	PlayCry VAR_TEMP_x400A, 0
+	NPCMsg msg_0460_T03_00010
+	GoTo _04D7
 
 _04C8:
-	setvar VAR_TEMP_x400A, SPECIES_LATIAS
-	play_cry VAR_TEMP_x400A, 0
-	npc_msg msg_0460_T03_00011
+	SetVar VAR_TEMP_x400A, SPECIES_LATIAS
+	PlayCry VAR_TEMP_x400A, 0
+	NPCMsg msg_0460_T03_00011
 _04D7:
-	wait_cry
-	closemsg
-	setflag FLAG_ENGAGING_STATIC_POKEMON
-	wild_battle VAR_TEMP_x400A, 40, 0
-	clearflag FLAG_ENGAGING_STATIC_POKEMON
-	get_static_encounter_outcome VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 2
-	goto_if_eq _057B
-	compare VAR_TEMP_x4000, 3
-	goto_if_eq _057B
-	lati_caught_check VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _0526
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _055A
+	WaitCry
+	CloseMsg
+	SetFlag FLAG_ENGAGING_STATIC_POKEMON
+	WildBattle VAR_TEMP_x400A, 40, 0
+	ClearFlag FLAG_ENGAGING_STATIC_POKEMON
+	GetStaticEncounterOutcome VAR_TEMP_x4000
+	Compare VAR_TEMP_x4000, 2
+	GoToIfEq _057B
+	Compare VAR_TEMP_x4000, 3
+	GoToIfEq _057B
+	LatiCaughtCheck VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _0526
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _055A
 _0526:
-	get_game_version VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 7
-	goto_if_ne _0540
-	npc_msg msg_0460_T03_00012
-	goto _0543
+	GetGameVersion VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 7
+	GoToIfNe _0540
+	NPCMsg msg_0460_T03_00012
+	GoTo _0543
 
 _0540:
-	npc_msg msg_0460_T03_00013
+	NPCMsg msg_0460_T03_00013
 _0543:
-	closemsg
-	compare VAR_UNK_4083, 4
-	goto_if_eq _0649
-	goto _0585
-	end
+	CloseMsg
+	Compare VAR_UNK_4083, 4
+	GoToIfEq _0649
+	GoTo _0585
+	End
 
 _055A:
-	copyvar VAR_TEMP_x4009, VAR_UNK_4083
-	setvar VAR_UNK_4083, 5
-	compare VAR_TEMP_x4009, 4
-	goto_if_eq _0649
-	goto _0585
-	end
+	CopyVar VAR_TEMP_x4009, VAR_UNK_4083
+	SetVar VAR_UNK_4083, 5
+	Compare VAR_TEMP_x4009, 4
+	GoToIfEq _0649
+	GoTo _0585
+	End
 
 _057B:
-	white_out
-	goto _0649
-	end
+	WhiteOut
+	GoTo _0649
+	End
 
 _0585:
-	toggle_following_pokemon_movement 0
-	wait_following_pokemon_movement
-	following_pokemon_movement 55
-	apply_movement obj_T03_daigo, _046C
-	apply_movement obj_player, _044C
-	wait_movement
-	wait_following_pokemon_movement
-	toggle_following_pokemon_movement 1
-	following_pokemon_movement 48
-	compare VAR_TEMP_x4000, 5
-	goto_if_eq _060C
-	compare VAR_TEMP_x4000, 1
-	goto_if_eq _05D2
-	compare VAR_TEMP_x4000, 4
-	goto_if_eq _05FF
+	ToggleFollowingPokemonMovement 0
+	WaitFollowingPokemonMovement
+	FollowingPokemonMovement 55
+	ApplyMovement obj_T03_daigo, _046C
+	ApplyMovement obj_player, _044C
+	WaitMovement
+	WaitFollowingPokemonMovement
+	ToggleFollowingPokemonMovement 1
+	FollowingPokemonMovement 48
+	Compare VAR_TEMP_x4000, 5
+	GoToIfEq _060C
+	Compare VAR_TEMP_x4000, 1
+	GoToIfEq _05D2
+	Compare VAR_TEMP_x4000, 4
+	GoToIfEq _05FF
 _05D2:
-	get_game_version VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 7
-	goto_if_ne _05EC
-	npc_msg msg_0460_T03_00016
-	goto _05EF
+	GetGameVersion VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 7
+	GoToIfNe _05EC
+	NPCMsg msg_0460_T03_00016
+	GoTo _05EF
 
 _05EC:
-	npc_msg msg_0460_T03_00017
+	NPCMsg msg_0460_T03_00017
 _05EF:
-	closemsg
-	setvar VAR_UNK_4083, 4
-	goto _061F
-	end
+	CloseMsg
+	SetVar VAR_UNK_4083, 4
+	GoTo _061F
+	End
 
 _05FF:
-	npc_msg msg_0460_T03_00014
-	closemsg
-	goto _061F
-	end
+	NPCMsg msg_0460_T03_00014
+	CloseMsg
+	GoTo _061F
+	End
 
 _060C:
-	npc_msg msg_0460_T03_00018
-	closemsg
-	setvar VAR_UNK_4083, 4
-	goto _061F
-	end
+	NPCMsg msg_0460_T03_00018
+	CloseMsg
+	SetVar VAR_UNK_4083, 4
+	GoTo _061F
+	End
 
 _061F:
-	apply_movement obj_T03_daigo, _0478
-	wait_movement
-	npc_msg msg_0460_T03_00015
-	closemsg
-	apply_movement obj_T03_daigo, _0480
-	wait_movement
-	hide_person obj_T03_daigo
-	compare VAR_UNK_4130, 4
-	call_if_eq _064D
+	ApplyMovement obj_T03_daigo, _0478
+	WaitMovement
+	NPCMsg msg_0460_T03_00015
+	CloseMsg
+	ApplyMovement obj_T03_daigo, _0480
+	WaitMovement
+	HidePerson obj_T03_daigo
+	Compare VAR_UNK_4130, 4
+	CallIfEq _064D
 _0649:
-	releaseall
-	end
+	ReleaseAll
+	End
 
 _064D:
-	clearflag FLAG_HIDE_STEVEN_IN_HOUSE_AFTER_LATIS
-	return
+	ClearFlag FLAG_HIDE_STEVEN_IN_HOUSE_AFTER_LATIS
+	Return
 
 scr_seq_T03_009:
-	simple_npc_msg msg_0460_T03_00019
-	end
+	SimpleNPCMsg msg_0460_T03_00019
+	End
 	.balign 4, 0

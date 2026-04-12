@@ -6,5 +6,8 @@
 void sub_02058190(FieldSystem *fieldSystem);
 void sub_02058284(void);
 void sub_020582A8(void);
+void sub_020588CC(void);
+void sub_020588DC(void);
+void sub_02058720(void);
 
 #endif // POKEHEARTGOLD_UNK_02058034_H

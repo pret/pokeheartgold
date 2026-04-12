@@ -5,149 +5,149 @@
 
 	.rodata
 
-	scrdef scr_seq_T25R0401_000
-	scrdef scr_seq_T25R0401_001
-	scrdef scr_seq_T25R0401_002
-	scrdef_end
+	ScrDef scr_seq_T25R0401_000
+	ScrDef scr_seq_T25R0401_001
+	ScrDef scr_seq_T25R0401_002
+	ScrDefEnd
 
 scr_seq_T25R0401_000:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	goto_if_set FLAG_GOT_EEVEE_FROM_BILL, _00E9
-	buffer_players_name 0
-	npc_msg msg_0586_T25R0401_00000
-	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_RESULT
-	touchscreen_menu_show
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _004B
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _00D3
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	GoToIfSet FLAG_GOT_EEVEE_FROM_BILL, _00E9
+	BufferPlayersName 0
+	NPCMsg msg_0586_T25R0401_00000
+	TouchscreenMenuHide
+	GetMenuChoice VAR_SPECIAL_RESULT
+	TouchscreenMenuShow
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _004B
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _00D3
+	End
 
 _004B:
-	get_party_count VAR_SPECIAL_x8005
-	compare VAR_SPECIAL_x8005, 6
-	goto_if_eq _00DE
-	npc_msg msg_0586_T25R0401_00001
-	give_mon SPECIES_EEVEE, 5, 0, 0, 0, VAR_SPECIAL_RESULT
-	setflag FLAG_GOT_EEVEE_FROM_BILL
-	buffer_players_name 0
-	npc_msg msg_0586_T25R0401_00002
-	play_fanfare SEQ_ME_POKEGET
-	wait_fanfare
-	npc_msg msg_0586_T25R0401_00007
-	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _00A0
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_ge _00C6
+	GetPartyCount VAR_SPECIAL_x8005
+	Compare VAR_SPECIAL_x8005, 6
+	GoToIfEq _00DE
+	NPCMsg msg_0586_T25R0401_00001
+	GiveMon SPECIES_EEVEE, 5, 0, 0, 0, VAR_SPECIAL_RESULT
+	SetFlag FLAG_GOT_EEVEE_FROM_BILL
+	BufferPlayersName 0
+	NPCMsg msg_0586_T25R0401_00002
+	PlayFanfare SEQ_ME_POKEGET
+	WaitFanfare
+	NPCMsg msg_0586_T25R0401_00007
+	TouchscreenMenuHide
+	GetMenuChoice VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _00A0
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfGe _00C6
 _00A0:
-	closemsg
-	setvar VAR_TEMP_x4000, 0
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	nickname_input VAR_SPECIAL_x8005, VAR_TEMP_x4000
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
+	CloseMsg
+	SetVar VAR_TEMP_x4000, 0
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	NicknameInput VAR_SPECIAL_x8005, VAR_TEMP_x4000
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
 _00C6:
-	npc_msg msg_0586_T25R0401_00003
-	wait_button_or_walk_away
-	closemsg
-	touchscreen_menu_show
-	releaseall
-	end
+	NPCMsg msg_0586_T25R0401_00003
+	WaitButton
+	CloseMsg
+	TouchscreenMenuShow
+	ReleaseAll
+	End
 
 _00D3:
-	npc_msg msg_0586_T25R0401_00005
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0586_T25R0401_00005
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _00DE:
-	npc_msg msg_0586_T25R0401_00004
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0586_T25R0401_00004
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _00E9:
-	npc_msg msg_0586_T25R0401_00006
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0586_T25R0401_00006
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_T25R0401_001:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	compare VAR_UNK_410D, 1
-	goto_if_eq _0114
-	npc_msg msg_0586_T25R0401_00009
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	Compare VAR_UNK_410D, 1
+	GoToIfEq _0114
+	NPCMsg msg_0586_T25R0401_00009
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0114:
-	npc_msg msg_0586_T25R0401_00010
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0586_T25R0401_00010
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_T25R0401_002:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	check_registered_phone_number PHONE_CONTACT_BILL, VAR_TEMP_x4001
-	compare VAR_TEMP_x4001, 1
-	goto_if_eq _019C
-	compare VAR_UNK_410D, 1
-	goto_if_eq _0152
-	npc_msg msg_0586_T25R0401_00011
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	CheckRegisteredPhoneNumber PHONE_CONTACT_BILL, VAR_TEMP_x4001
+	Compare VAR_TEMP_x4001, 1
+	GoToIfEq _019C
+	Compare VAR_UNK_410D, 1
+	GoToIfEq _0152
+	NPCMsg msg_0586_T25R0401_00011
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0152:
-	npc_msg msg_0586_T25R0401_00012
-	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_RESULT
-	touchscreen_menu_show
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0179
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _0191
-	end
+	NPCMsg msg_0586_T25R0401_00012
+	TouchscreenMenuHide
+	GetMenuChoice VAR_SPECIAL_RESULT
+	TouchscreenMenuShow
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0179
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _0191
+	End
 
 _0179:
-	buffer_players_name 0
-	npc_msg msg_0586_T25R0401_00013
-	register_gear_number PHONE_CONTACT_BILL
-	play_fanfare SEQ_ME_POKEGEAR_REGIST
-	wait_fanfare
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	BufferPlayersName 0
+	NPCMsg msg_0586_T25R0401_00013
+	RegisterGearNumber PHONE_CONTACT_BILL
+	PlayFanfare SEQ_ME_POKEGEAR_REGIST
+	WaitFanfare
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0191:
-	npc_msg msg_0586_T25R0401_00015
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0586_T25R0401_00015
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _019C:
-	npc_msg msg_0586_T25R0401_00015
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0586_T25R0401_00015
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 	.balign 4, 0

@@ -5,84 +5,84 @@
 
 	.rodata
 
-	scrdef scr_seq_T27R0201_000
-	scrdef scr_seq_T27R0201_001
-	scrdef scr_seq_T27R0201_002
-	scrdef scr_seq_T27R0201_003
-	scrdef_end
+	ScrDef scr_seq_T27R0201_000
+	ScrDef scr_seq_T27R0201_001
+	ScrDef scr_seq_T27R0201_002
+	ScrDef scr_seq_T27R0201_003
+	ScrDefEnd
 
 scr_seq_T27R0201_003:
-	goto_if_set FLAG_UNK_108, _001F
-	end
+	GoToIfSet FLAG_UNK_108, _001F
+	End
 
 _001F:
-	move_person_facing obj_T27R0201_bozu, 16, 0, 8, DIR_WEST
-	end
+	MovePersonFacing obj_T27R0201_bozu, 16, 0, 8, DIR_WEST
+	End
 
 scr_seq_T27R0201_000:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	goto_if_set FLAG_UNK_108, _00E8
-	compare VAR_TEMP_x4002, 1
-	goto_if_ge _00C9
-	get_player_facing VAR_TEMP_x4001
-	compare VAR_TEMP_x4001, 1
-	goto_if_eq _00D4
-	check_badge BADGE_FOG, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _0096
-	get_game_version VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 7
-	goto_if_ne _008B
-	npc_msg msg_0616_T27R0201_00000
-	goto _008E
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	GoToIfSet FLAG_UNK_108, _00E8
+	Compare VAR_TEMP_x4002, 1
+	GoToIfGe _00C9
+	GetPlayerFacing VAR_TEMP_x4001
+	Compare VAR_TEMP_x4001, 1
+	GoToIfEq _00D4
+	CheckBadge BADGE_FOG, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _0096
+	GetGameVersion VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 7
+	GoToIfNe _008B
+	NPCMsg msg_0616_T27R0201_00000
+	GoTo _008E
 
 _008B:
-	npc_msg msg_0616_T27R0201_00001
+	NPCMsg msg_0616_T27R0201_00001
 _008E:
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0096:
-	get_game_version VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 7
-	goto_if_ne _00B0
-	npc_msg msg_0616_T27R0201_00002
-	goto _00B3
+	GetGameVersion VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 7
+	GoToIfNe _00B0
+	NPCMsg msg_0616_T27R0201_00002
+	GoTo _00B3
 
 _00B0:
-	npc_msg msg_0616_T27R0201_00003
+	NPCMsg msg_0616_T27R0201_00003
 _00B3:
-	closemsg
-	apply_movement obj_T27R0201_bozu, _00F4
-	wait_movement
-	setvar VAR_TEMP_x4002, 1
-	releaseall
-	end
+	CloseMsg
+	ApplyMovement obj_T27R0201_bozu, _00F4
+	WaitMovement
+	SetVar VAR_TEMP_x4002, 1
+	ReleaseAll
+	End
 
 _00C9:
-	npc_msg msg_0616_T27R0201_00004
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0616_T27R0201_00004
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _00D4:
-	apply_movement obj_T27R0201_bozu, _0104
-	wait_movement
-	setvar VAR_TEMP_x4002, 1
-	releaseall
-	end
+	ApplyMovement obj_T27R0201_bozu, _0104
+	WaitMovement
+	SetVar VAR_TEMP_x4002, 1
+	ReleaseAll
+	End
 
 _00E8:
-	npc_msg msg_0616_T27R0201_00005
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0616_T27R0201_00005
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 	.balign 4, 0
 _00F4:
@@ -99,40 +99,40 @@ _0104:
 	EndMovement
 
 scr_seq_T27R0201_001:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	goto_if_set FLAG_UNK_108, _0162
-	goto_if_set FLAG_UNK_103, _0157
-	get_game_version VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 7
-	goto_if_ne _014C
-	npc_msg msg_0616_T27R0201_00006
-	goto _014F
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	GoToIfSet FLAG_UNK_108, _0162
+	GoToIfSet FLAG_UNK_103, _0157
+	GetGameVersion VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 7
+	GoToIfNe _014C
+	NPCMsg msg_0616_T27R0201_00006
+	GoTo _014F
 
 _014C:
-	npc_msg msg_0616_T27R0201_00007
+	NPCMsg msg_0616_T27R0201_00007
 _014F:
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0157:
-	npc_msg msg_0616_T27R0201_00008
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0616_T27R0201_00008
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0162:
-	npc_msg msg_0616_T27R0201_00009
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0616_T27R0201_00009
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_T27R0201_002:
-	simple_npc_msg msg_0616_T27R0201_00010
-	end
+	SimpleNPCMsg msg_0616_T27R0201_00010
+	End
 	.balign 4, 0

@@ -5,46 +5,46 @@
 
 	.rodata
 
-	scrdef scr_seq_T28GYM0103_000
-	scrdef scr_seq_T28GYM0103_001
-	scrdef_end
+	ScrDef scr_seq_T28GYM0103_000
+	ScrDef scr_seq_T28GYM0103_001
+	ScrDefEnd
 
 scr_seq_T28GYM0103_000:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	check_badge BADGE_GLACIER, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _0030
-	npc_msg msg_0623_T28GYM0103_00000
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	CheckBadge BADGE_GLACIER, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _0030
+	NPCMsg msg_0623_T28GYM0103_00000
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0030:
-	npc_msg msg_0623_T28GYM0103_00001
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0623_T28GYM0103_00001
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_T28GYM0103_001:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	check_badge BADGE_GLACIER, VAR_SPECIAL_RESULT
-	buffer_players_name 0
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_ne _0062
-	npc_msg msg_0623_T28GYM0103_00002
-	goto _0065
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	CheckBadge BADGE_GLACIER, VAR_SPECIAL_RESULT
+	BufferPlayersName 0
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfNe _0062
+	NPCMsg msg_0623_T28GYM0103_00002
+	GoTo _0065
 
 _0062:
-	npc_msg msg_0623_T28GYM0103_00003
+	NPCMsg msg_0623_T28GYM0103_00003
 _0065:
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 	.balign 4, 0

@@ -5,114 +5,114 @@
 
 	.rodata
 
-	scrdef scr_seq_R10R0201_000
-	scrdef scr_seq_R10R0201_001
-	scrdef scr_seq_R10R0201_002
-	scrdef scr_seq_R10R0201_003
-	scrdef scr_seq_R10R0201_004
-	scrdef scr_seq_R10R0201_005
-	scrdef scr_seq_R10R0201_006
-	scrdef scr_seq_R10R0201_007
-	scrdef scr_seq_R10R0201_008
-	scrdef_end
+	ScrDef scr_seq_R10R0201_000
+	ScrDef scr_seq_R10R0201_001
+	ScrDef scr_seq_R10R0201_002
+	ScrDef scr_seq_R10R0201_003
+	ScrDef scr_seq_R10R0201_004
+	ScrDef scr_seq_R10R0201_005
+	ScrDef scr_seq_R10R0201_006
+	ScrDef scr_seq_R10R0201_007
+	ScrDef scr_seq_R10R0201_008
+	ScrDefEnd
 
 scr_seq_R10R0201_000:
-	simple_npc_msg msg_0344_R10R0201_00003
-	end
+	SimpleNPCMsg msg_0344_R10R0201_00003
+	End
 
 scr_seq_R10R0201_001:
-	simple_npc_msg msg_0344_R10R0201_00004
-	end
+	SimpleNPCMsg msg_0344_R10R0201_00004
+	End
 
 scr_seq_R10R0201_002:
-	simple_npc_msg msg_0344_R10R0201_00005
-	end
+	SimpleNPCMsg msg_0344_R10R0201_00005
+	End
 
 scr_seq_R10R0201_003:
-	simple_npc_msg msg_0344_R10R0201_00006
-	end
+	SimpleNPCMsg msg_0344_R10R0201_00006
+	End
 
 scr_seq_R10R0201_004:
-	simple_npc_msg msg_0344_R10R0201_00007
-	end
+	SimpleNPCMsg msg_0344_R10R0201_00007
+	End
 
 scr_seq_R10R0201_005:
-	simple_npc_msg msg_0344_R10R0201_00008
-	end
+	SimpleNPCMsg msg_0344_R10R0201_00008
+	End
 
 scr_seq_R10R0201_006:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	goto_if_set FLAG_TRADE_POWER_PLANT_DUGTRIO_MAGNETON, _013F
-	npc_msg msg_0344_R10R0201_00009
-	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_RESULT
-	touchscreen_menu_show
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _0134
-	closemsg
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	scrcmd_566
-	get_party_selection VAR_SPECIAL_RESULT
-	restore_overworld
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
-	compare VAR_SPECIAL_RESULT, 255
-	goto_if_eq _0134
-	load_npc_trade 8
-	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
-	get_partymon_species VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
-	npc_trade_get_req_species VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
-	goto_if_ne _0127
-	npc_trade_exec VAR_SPECIAL_x8004
-	npc_trade_end
-	setflag FLAG_TRADE_POWER_PLANT_DUGTRIO_MAGNETON
-	npc_msg msg_0344_R10R0201_00010
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	GoToIfSet FLAG_TRADE_POWER_PLANT_DUGTRIO_MAGNETON, _013F
+	NPCMsg msg_0344_R10R0201_00009
+	TouchscreenMenuHide
+	GetMenuChoice VAR_SPECIAL_RESULT
+	TouchscreenMenuShow
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _0134
+	CloseMsg
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	ScrCmd_566
+	GetPartySelection VAR_SPECIAL_RESULT
+	RestoreOverworld
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
+	Compare VAR_SPECIAL_RESULT, 255
+	GoToIfEq _0134
+	LoadNPCTrade 8
+	CopyVar VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
+	GetPartyMonSpecies VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
+	NPCTradeGetReqSpecies VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
+	GoToIfNe _0127
+	NPCTradeExec VAR_SPECIAL_x8004
+	NPCTradeEnd
+	SetFlag FLAG_TRADE_POWER_PLANT_DUGTRIO_MAGNETON
+	NPCMsg msg_0344_R10R0201_00010
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0127:
-	npc_trade_end
-	npc_msg msg_0344_R10R0201_00011
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCTradeEnd
+	NPCMsg msg_0344_R10R0201_00011
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0134:
-	npc_msg msg_0344_R10R0201_00012
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0344_R10R0201_00012
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _013F:
-	npc_msg msg_0344_R10R0201_00013
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0344_R10R0201_00013
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_R10R0201_007:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	npc_msg msg_0344_R10R0201_00014
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	NPCMsg msg_0344_R10R0201_00014
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_R10R0201_008:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	npc_msg msg_0344_R10R0201_00015
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	NPCMsg msg_0344_R10R0201_00015
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 	.balign 4, 0

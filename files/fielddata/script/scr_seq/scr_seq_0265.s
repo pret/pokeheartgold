@@ -5,480 +5,480 @@
 
 	.rodata
 
-	scrdef scr_seq_0265_000
-	scrdef scr_seq_0265_001
-	scrdef_end
+	ScrDef scr_seq_0265_000
+	ScrDef scr_seq_0265_001
+	ScrDefEnd
 
 scr_seq_0265_000:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	buffer_day_care_mon_nicks
-	get_day_care_state VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _0094
-	compare VAR_SPECIAL_RESULT, 2
-	goto_if_eq _0151
-	compare VAR_SPECIAL_RESULT, 3
-	goto_if_eq _015E
-	compare VAR_UNK_408E, 4
-	goto_if_eq _0057
-	npc_msg msg_0439_00000
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	BufferDaycareMonNicks
+	GetDaycareState VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _0094
+	Compare VAR_SPECIAL_RESULT, 2
+	GoToIfEq _0151
+	Compare VAR_SPECIAL_RESULT, 3
+	GoToIfEq _015E
+	Compare VAR_UNK_408E, 4
+	GoToIfEq _0057
+	NPCMsg msg_0439_00000
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0057:
-	buffer_players_name 0
-	gender_msgbox msg_0439_00013, msg_0439_00014
-	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_RESULT
-	touchscreen_menu_show
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _0082
-	setflag FLAG_UNK_99E
-	npc_msg msg_0439_00015
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	BufferPlayersName 0
+	GenderMsgBox msg_0439_00013, msg_0439_00014
+	TouchscreenMenuHide
+	GetMenuChoice VAR_SPECIAL_RESULT
+	TouchscreenMenuShow
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _0082
+	SetFlag FLAG_UNK_99E
+	NPCMsg msg_0439_00015
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0082:
-	clearflag FLAG_UNK_99E
-	scrcmd_149 5
-	npc_msg msg_0439_00016
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	ClearFlag FLAG_UNK_99E
+	ScrCmd_149 5
+	NPCMsg msg_0439_00016
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0094:
-	scrcmd_149 5
-	npc_msg msg_0439_00001
-	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _00F6
-	npc_msg msg_0439_00010
-	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _00F6
-	touchscreen_menu_show
-	clearflag FLAG_UNK_067
-	reset_day_care_egg
-	compare VAR_UNK_408E, 3
-	goto_if_ne _00EB
-	npc_msg msg_0439_00012
-	setvar VAR_UNK_408E, 4
-	setflag FLAG_UNK_992
-	goto _0057
+	ScrCmd_149 5
+	NPCMsg msg_0439_00001
+	TouchscreenMenuHide
+	GetMenuChoice VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _00F6
+	NPCMsg msg_0439_00010
+	TouchscreenMenuHide
+	GetMenuChoice VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _00F6
+	TouchscreenMenuShow
+	ClearFlag FLAG_UNK_067
+	ResetDaycareEgg
+	Compare VAR_UNK_408E, 3
+	GoToIfNe _00EB
+	NPCMsg msg_0439_00012
+	SetVar VAR_UNK_408E, 4
+	SetFlag FLAG_UNK_992
+	GoTo _0057
 
 _00EB:
-	npc_msg msg_0439_00003
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0439_00003
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _00F6:
-	touchscreen_menu_show
-	get_party_count VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 6
-	goto_if_ne _0114
-	npc_msg msg_0439_00004
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	TouchscreenMenuShow
+	GetPartyCount VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 6
+	GoToIfNe _0114
+	NPCMsg msg_0439_00004
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0114:
-	buffer_players_name 0
-	npc_msg msg_0439_00005
-	play_fanfare SEQ_ME_TAMAGO_GET
-	wait_fanfare
-	give_day_care_egg
-	clearflag FLAG_UNK_067
-	compare VAR_UNK_408E, 3
-	goto_if_ne _0146
-	npc_msg msg_0439_00011
-	setvar VAR_UNK_408E, 4
-	setflag FLAG_UNK_992
-	goto _0057
+	BufferPlayersName 0
+	NPCMsg msg_0439_00005
+	PlayFanfare SEQ_ME_TAMAGO_GET
+	WaitFanfare
+	GiveDaycareEgg
+	ClearFlag FLAG_UNK_067
+	Compare VAR_UNK_408E, 3
+	GoToIfNe _0146
+	NPCMsg msg_0439_00011
+	SetVar VAR_UNK_408E, 4
+	SetFlag FLAG_UNK_992
+	GoTo _0057
 
 _0146:
-	npc_msg msg_0439_00006
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0439_00006
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0151:
-	buffer_day_care_mon_nicks
-	npc_msg msg_0439_00002
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	BufferDaycareMonNicks
+	NPCMsg msg_0439_00002
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _015E:
-	buffer_day_care_mon_nicks
-	npc_msg msg_0439_00009
-	get_day_care_compatibility VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0196
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _01BD
-	compare VAR_SPECIAL_RESULT, 2
-	goto_if_eq _01E4
-	goto _020B
-	end
+	BufferDaycareMonNicks
+	NPCMsg msg_0439_00009
+	GetDaycareCompatibility VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0196
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _01BD
+	Compare VAR_SPECIAL_RESULT, 2
+	GoToIfEq _01E4
+	GoTo _020B
+	End
 
 _0196:
-	compare VAR_UNK_408E, 4
-	goto_if_ne _01B2
-	npc_msg msg_0439_00047
-	goto _0057
+	Compare VAR_UNK_408E, 4
+	GoToIfNe _01B2
+	NPCMsg msg_0439_00047
+	GoTo _0057
 
 _01AC:
-	goto _01B5
+	GoTo _01B5
 
 _01B2:
-	npc_msg msg_0439_00017
+	NPCMsg msg_0439_00017
 _01B5:
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _01BD:
-	compare VAR_UNK_408E, 4
-	goto_if_ne _01D9
-	npc_msg msg_0439_00048
-	goto _0057
+	Compare VAR_UNK_408E, 4
+	GoToIfNe _01D9
+	NPCMsg msg_0439_00048
+	GoTo _0057
 
 _01D3:
-	goto _01DC
+	GoTo _01DC
 
 _01D9:
-	npc_msg msg_0439_00018
+	NPCMsg msg_0439_00018
 _01DC:
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _01E4:
-	compare VAR_UNK_408E, 4
-	goto_if_ne _0200
-	npc_msg msg_0439_00049
-	goto _0057
+	Compare VAR_UNK_408E, 4
+	GoToIfNe _0200
+	NPCMsg msg_0439_00049
+	GoTo _0057
 
 _01FA:
-	goto _0203
+	GoTo _0203
 
 _0200:
-	npc_msg msg_0439_00019
+	NPCMsg msg_0439_00019
 _0203:
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _020B:
-	compare VAR_UNK_408E, 4
-	goto_if_ne _0227
-	npc_msg msg_0439_00050
-	goto _0057
+	Compare VAR_UNK_408E, 4
+	GoToIfNe _0227
+	NPCMsg msg_0439_00050
+	GoTo _0057
 
 _0221:
-	goto _022A
+	GoTo _022A
 
 _0227:
-	npc_msg msg_0439_00020
+	NPCMsg msg_0439_00020
 _022A:
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_0265_001:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	show_money_box 20, 2
-	get_day_care_state VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _042E
-	compare VAR_SPECIAL_RESULT, 2
-	goto_if_eq _0455
-	compare VAR_SPECIAL_RESULT, 3
-	goto_if_eq _0620
-	npc_msg msg_0439_00021
-	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0290
-	touchscreen_menu_show
-	npc_msg msg_0439_00026
-	wait_button_or_walk_away
-	closemsg
-	hide_money_box
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	ShowMoneyBox 20, 2
+	GetDaycareState VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _042E
+	Compare VAR_SPECIAL_RESULT, 2
+	GoToIfEq _0455
+	Compare VAR_SPECIAL_RESULT, 3
+	GoToIfEq _0620
+	NPCMsg msg_0439_00021
+	TouchscreenMenuHide
+	GetMenuChoice VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0290
+	TouchscreenMenuShow
+	NPCMsg msg_0439_00026
+	WaitButton
+	CloseMsg
+	HideMoneyBox
+	ReleaseAll
+	End
 
 _0290:
-	party_count_not_egg VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _03FB
-	count_alive_mons_and_pc VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 2
-	goto_if_eq _041F
-	npc_msg msg_0439_00022
-	closemsg
-	hide_money_box
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	setvar VAR_SPECIAL_RESULT, 0
+	PartyCountNotEgg VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _03FB
+	CountAliveMonsAndPC VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 2
+	GoToIfEq _041F
+	NPCMsg msg_0439_00022
+	CloseMsg
+	HideMoneyBox
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	SetVar VAR_SPECIAL_RESULT, 0
 _02CB:
-	scrcmd_551 VAR_SPECIAL_RESULT
-	scrcmd_552 VAR_SPECIAL_x8000, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _02F4
-	pokemon_summary_screen 0, VAR_SPECIAL_x8000, 0
-	get_move_selection 0, VAR_SPECIAL_RESULT
-	goto _02CB
+	ScrCmd_551 VAR_SPECIAL_RESULT
+	ScrCmd_552 VAR_SPECIAL_x8000, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _02F4
+	PokemonSummaryScreen 0, VAR_SPECIAL_x8000, 0
+	GetMoveSelection 0, VAR_SPECIAL_RESULT
+	GoTo _02CB
 
 _02F4:
-	compare VAR_SPECIAL_x8000, 255
-	goto_if_eq _03C6
-	day_care_sanitize_mon VAR_SPECIAL_x8000, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 255
-	goto_if_eq _03A1
-	get_partymon_species VAR_SPECIAL_x8000, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _03B1
-	count_alive_mons VAR_SPECIAL_RESULT, VAR_SPECIAL_x8000
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _040A
-	put_mon_in_day_care VAR_SPECIAL_x8000
-	call _038B
-	get_tail_day_care_mon_species_and_nick VAR_SPECIAL_x8001
-	setflag FLAG_UNK_068
-	get_day_care_state VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 2
-	goto_if_eq _0363
-	goto _0374
+	Compare VAR_SPECIAL_x8000, 255
+	GoToIfEq _03C6
+	DaycareSanitizeMon VAR_SPECIAL_x8000, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 255
+	GoToIfEq _03A1
+	GetPartyMonSpecies VAR_SPECIAL_x8000, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _03B1
+	CountAliveMons VAR_SPECIAL_RESULT, VAR_SPECIAL_x8000
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _040A
+	PutMonInDaycare VAR_SPECIAL_x8000
+	Call _038B
+	GetTailDaycareMonSpeciesAndNick VAR_SPECIAL_x8001
+	SetFlag FLAG_UNK_068
+	GetDaycareState VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 2
+	GoToIfEq _0363
+	GoTo _0374
 
 _0363:
-	play_cry VAR_SPECIAL_x8001, 0
-	npc_msg msg_0439_00023
-	wait_cry
-	goto _03DB
+	PlayCry VAR_SPECIAL_x8001, 0
+	NPCMsg msg_0439_00023
+	WaitCry
+	GoTo _03DB
 
 _0374:
-	touchscreen_menu_show
-	play_cry VAR_SPECIAL_x8001, 0
-	npc_msg msg_0439_00041
-	wait_button_or_walk_away
-	closemsg
-	wait_cry
-	hide_money_box
-	releaseall
-	end
+	TouchscreenMenuShow
+	PlayCry VAR_SPECIAL_x8001, 0
+	NPCMsg msg_0439_00041
+	WaitButton
+	CloseMsg
+	WaitCry
+	HideMoneyBox
+	ReleaseAll
+	End
 
 _038B:
-	restore_overworld
-	show_money_box 20, 2
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
-	return
+	RestoreOverworld
+	ShowMoneyBox 20, 2
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
+	Return
 
 _03A1:
-	call _038B
-	touchscreen_menu_show
-	hide_money_box
-	callstd std_bag_is_full_griseous_orb
-	end
+	Call _038B
+	TouchscreenMenuShow
+	HideMoneyBox
+	CallStd std_bag_is_full_griseous_orb
+	End
 
 _03B1:
-	call _038B
-	touchscreen_menu_show
-	npc_msg msg_0439_00040
-	wait_button_or_walk_away
-	closemsg
-	hide_money_box
-	releaseall
-	end
+	Call _038B
+	TouchscreenMenuShow
+	NPCMsg msg_0439_00040
+	WaitButton
+	CloseMsg
+	HideMoneyBox
+	ReleaseAll
+	End
 
 _03C6:
-	call _038B
-	touchscreen_menu_show
+	Call _038B
+	TouchscreenMenuShow
 _03CE:
-	npc_msg msg_0439_00029
-	wait_button_or_walk_away
-	closemsg
-	hide_money_box
-	releaseall
-	end
+	NPCMsg msg_0439_00029
+	WaitButton
+	CloseMsg
+	HideMoneyBox
+	ReleaseAll
+	End
 
 _03DB:
-	npc_msg msg_0439_00024
-	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0290
-	touchscreen_menu_show
-	goto _03CE
-	end
+	NPCMsg msg_0439_00024
+	TouchscreenMenuHide
+	GetMenuChoice VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0290
+	TouchscreenMenuShow
+	GoTo _03CE
+	End
 
 _03FB:
-	touchscreen_menu_show
-	npc_msg msg_0439_00036
-	wait_button_or_walk_away
-	closemsg
-	hide_money_box
-	releaseall
-	end
+	TouchscreenMenuShow
+	NPCMsg msg_0439_00036
+	WaitButton
+	CloseMsg
+	HideMoneyBox
+	ReleaseAll
+	End
 
 _040A:
-	call _038B
-	touchscreen_menu_show
-	npc_msg msg_0439_00038
-	wait_button_or_walk_away
-	closemsg
-	hide_money_box
-	releaseall
-	end
+	Call _038B
+	TouchscreenMenuShow
+	NPCMsg msg_0439_00038
+	WaitButton
+	CloseMsg
+	HideMoneyBox
+	ReleaseAll
+	End
 
 _041F:
-	touchscreen_menu_show
-	npc_msg msg_0439_00039
-	wait_button_or_walk_away
-	closemsg
-	hide_money_box
-	releaseall
-	end
+	TouchscreenMenuShow
+	NPCMsg msg_0439_00039
+	WaitButton
+	CloseMsg
+	HideMoneyBox
+	ReleaseAll
+	End
 
 _042E:
-	npc_msg msg_0439_00025
-	wait_button_or_walk_away
-	closemsg
-	hide_money_box
-	releaseall
-	end
+	NPCMsg msg_0439_00025
+	WaitButton
+	CloseMsg
+	HideMoneyBox
+	ReleaseAll
+	End
 
 _043B:
-	npc_msg msg_0439_00031
-	return
+	NPCMsg msg_0439_00031
+	Return
 
 _0440:
-	buffer_day_care_mon_growth VAR_SPECIAL_RESULT, VAR_SPECIAL_x8000
-	compare VAR_SPECIAL_RESULT, 0
-	call_if_ne _043B
-	return
+	BufferDaycareMonGrowth VAR_SPECIAL_RESULT, VAR_SPECIAL_x8000
+	Compare VAR_SPECIAL_RESULT, 0
+	CallIfNe _043B
+	Return
 
 _0455:
-	npc_msg msg_0439_00030
-	setvar VAR_SPECIAL_x8000, 0
-	call _0440
-	npc_msg msg_0439_00024
-	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0290
-	npc_msg msg_0439_00037
-	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0498
-	touchscreen_menu_show
-	goto _03CE
+	NPCMsg msg_0439_00030
+	SetVar VAR_SPECIAL_x8000, 0
+	Call _0440
+	NPCMsg msg_0439_00024
+	TouchscreenMenuHide
+	GetMenuChoice VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0290
+	NPCMsg msg_0439_00037
+	TouchscreenMenuHide
+	GetMenuChoice VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0498
+	TouchscreenMenuShow
+	GoTo _03CE
 
 _0498:
-	get_party_count VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 6
-	goto_if_eq _05DC
-	get_day_care_state VAR_SPECIAL_RESULT
-	setvar VAR_SPECIAL_x8001, 0
-	compare VAR_SPECIAL_RESULT, 2
-	goto_if_eq _0520
-	touchscreen_menu_hide
-	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x8001
-	buffer_day_care_mon_stats 0, 1, 2, 0
-	menu_item_add 136, 255, 0
-	buffer_day_care_mon_stats 0, 1, 2, 1
-	menu_item_add 137, 255, 1
-	menu_item_add 138, 255, 2
-	menu_exec
-	switch VAR_SPECIAL_x8001
-	case 0, _0520
-	case 1, _0520
-	touchscreen_menu_show
-	goto _03CE
+	GetPartyCount VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 6
+	GoToIfEq _05DC
+	GetDaycareState VAR_SPECIAL_RESULT
+	SetVar VAR_SPECIAL_x8001, 0
+	Compare VAR_SPECIAL_RESULT, 2
+	GoToIfEq _0520
+	TouchscreenMenuHide
+	MenuInitStdGmm 1, 1, 0, 1, VAR_SPECIAL_x8001
+	BufferDaycareMonStats 0, 1, 2, 0
+	MenuItemAdd 136, 255, 0
+	BufferDaycareMonStats 0, 1, 2, 1
+	MenuItemAdd 137, 255, 1
+	MenuItemAdd 138, 255, 2
+	MenuExec
+	Switch VAR_SPECIAL_x8001
+	Case 0, _0520
+	Case 1, _0520
+	TouchscreenMenuShow
+	GoTo _03CE
 
 _0520:
-	buffer_day_care_withdraw_cost VAR_SPECIAL_x8004, VAR_SPECIAL_x8001
-	npc_msg msg_0439_00033
-	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0544
-	touchscreen_menu_show
-	goto _03CE
+	BufferDaycareWithdrawCost VAR_SPECIAL_x8004, VAR_SPECIAL_x8001
+	NPCMsg msg_0439_00033
+	TouchscreenMenuHide
+	GetMenuChoice VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0544
+	TouchscreenMenuShow
+	GoTo _03CE
 
 _0544:
-	hasenoughmoneyvar VAR_SPECIAL_RESULT, VAR_SPECIAL_x8004
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _0566
-	touchscreen_menu_show
-	npc_msg msg_0439_00027
-	wait_button_or_walk_away
-	closemsg
-	hide_money_box
-	releaseall
-	end
+	HasEnoughMoneyVar VAR_SPECIAL_RESULT, VAR_SPECIAL_x8004
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _0566
+	TouchscreenMenuShow
+	NPCMsg msg_0439_00027
+	WaitButton
+	CloseMsg
+	HideMoneyBox
+	ReleaseAll
+	End
 
 _0566:
-	retrieve_day_care_mon VAR_SPECIAL_x8002, VAR_SPECIAL_x8001
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	update_day_care_mon_objects
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
-	submoneyvar VAR_SPECIAL_x8004
-	update_money_box
-	play_se SEQ_SE_DP_REGI
-	wait_se SEQ_SE_DP_REGI
-	npc_msg msg_0439_00034
-	play_cry VAR_SPECIAL_x8002, 0
-	buffer_players_name 1
-	npc_msg msg_0439_00035
-	wait_cry
-	get_day_care_state VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 2
-	goto_if_eq _05BE
-	touchscreen_menu_show
-	goto _03CE
+	RetrieveDaycareMon VAR_SPECIAL_x8002, VAR_SPECIAL_x8001
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	UpdateDaycareMonObjects
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
+	SubMoneyVar VAR_SPECIAL_x8004
+	UpdateMoneyBox
+	PlaySE SEQ_SE_DP_REGI
+	WaitSE SEQ_SE_DP_REGI
+	NPCMsg msg_0439_00034
+	PlayCry VAR_SPECIAL_x8002, 0
+	BufferPlayersName 1
+	NPCMsg msg_0439_00035
+	WaitCry
+	GetDaycareState VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 2
+	GoToIfEq _05BE
+	TouchscreenMenuShow
+	GoTo _03CE
 
 _05BE:
-	npc_msg msg_0439_00028
-	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0498
-	touchscreen_menu_show
-	goto _03CE
+	NPCMsg msg_0439_00028
+	TouchscreenMenuHide
+	GetMenuChoice VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0498
+	TouchscreenMenuShow
+	GoTo _03CE
 
 _05DC:
-	touchscreen_menu_show
-	npc_msg msg_0439_00032
-	wait_button_or_walk_away
-	closemsg
-	hide_money_box
-	releaseall
-	end
+	TouchscreenMenuShow
+	NPCMsg msg_0439_00032
+	WaitButton
+	CloseMsg
+	HideMoneyBox
+	ReleaseAll
+	End
 
 	.balign 4, 0
 _05EC:
@@ -497,31 +497,31 @@ _05EC:
 	EndMovement
 
 _0620:
-	npc_msg msg_0439_00030
-	setvar VAR_SPECIAL_x8000, 0
-	call _0440
-	setvar VAR_SPECIAL_x8000, 1
-	call _0440
-	npc_msg msg_0439_00037
-	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0498
-	touchscreen_menu_show
-	npc_msg msg_0439_00029
-	wait_button_or_walk_away
-	closemsg
-	hide_money_box
-	releaseall
-	end
+	NPCMsg msg_0439_00030
+	SetVar VAR_SPECIAL_x8000, 0
+	Call _0440
+	SetVar VAR_SPECIAL_x8000, 1
+	Call _0440
+	NPCMsg msg_0439_00037
+	TouchscreenMenuHide
+	GetMenuChoice VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0498
+	TouchscreenMenuShow
+	NPCMsg msg_0439_00029
+	WaitButton
+	CloseMsg
+	HideMoneyBox
+	ReleaseAll
+	End
 
 _0660:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	npc_msg msg_0439_00042
-	egg_hatch_anim
-	closemsg
-	hide_money_box
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	NPCMsg msg_0439_00042
+	EggHatchAnim
+	CloseMsg
+	HideMoneyBox
+	ReleaseAll
+	End
 	.balign 4, 0

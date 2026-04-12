@@ -6,161 +6,161 @@
 
 	.rodata
 
-	scrdef scr_seq_T23_000
-	scrdef scr_seq_T23_001
-	scrdef scr_seq_T23_002
-	scrdef scr_seq_T23_003
-	scrdef scr_seq_T23_004
-	scrdef scr_seq_T23_005
-	scrdef scr_seq_T23_006
-	scrdef scr_seq_T23_007
-	scrdef scr_seq_T23_008
-	scrdef scr_seq_T23_009
-	scrdef scr_seq_T23_010
-	scrdef scr_seq_T23_011
-	scrdef scr_seq_T23_012
-	scrdef scr_seq_T23_013
-	scrdef scr_seq_T23_014
-	scrdef scr_seq_T23_015
-	scrdef scr_seq_T23_016
-	scrdef_end
+	ScrDef scr_seq_T23_000
+	ScrDef scr_seq_T23_001
+	ScrDef scr_seq_T23_002
+	ScrDef scr_seq_T23_003
+	ScrDef scr_seq_T23_004
+	ScrDef scr_seq_T23_005
+	ScrDef scr_seq_T23_006
+	ScrDef scr_seq_T23_007
+	ScrDef scr_seq_T23_008
+	ScrDef scr_seq_T23_009
+	ScrDef scr_seq_T23_010
+	ScrDef scr_seq_T23_011
+	ScrDef scr_seq_T23_012
+	ScrDef scr_seq_T23_013
+	ScrDef scr_seq_T23_014
+	ScrDef scr_seq_T23_015
+	ScrDef scr_seq_T23_016
+	ScrDefEnd
 
 scr_seq_T23_004:
-	compare VAR_UNK_4080, 0
-	goto_if_ne _005F
-	setflag FLAG_UNK_19F
-	clearflag FLAG_AZALEA_ROCKET_HARASSING_CIVILIAN
-	clearflag FLAG_AZALEA_HARASSED_CIVILIAN
+	Compare VAR_UNK_4080, 0
+	GoToIfNe _005F
+	SetFlag FLAG_UNK_19F
+	ClearFlag FLAG_AZALEA_ROCKET_HARASSING_CIVILIAN
+	ClearFlag FLAG_AZALEA_HARASSED_CIVILIAN
 _005F:
-	end
+	End
 
 scr_seq_T23_000:
 scr_seq_T23_005:
-	simple_npc_msg msg_0564_T23_00003
-	end
+	SimpleNPCMsg msg_0564_T23_00003
+	End
 
 scr_seq_T23_001:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0564_T23_00009
-	play_cry SPECIES_SLOWPOKE, 0
-	npc_msg msg_0564_T23_00010
-	wait_cry
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	NPCMsg msg_0564_T23_00009
+	PlayCry SPECIES_SLOWPOKE, 0
+	NPCMsg msg_0564_T23_00010
+	WaitCry
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_T23_002:
-	scrcmd_609
-	lockall
-	fade_out_bgm 0, 3
-	apply_movement obj_player, _02A4
-	wait_movement
-	setvar VAR_FARFETCHD1_STICKS1, STICKS_ACTIVE
-	callstd std_play_rival_intro_music
-	get_player_coords VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
-	compare VAR_SPECIAL_x8005, 462
-	goto_if_ne _00E5
-	move_person_facing obj_T23_gsrivel, 404, 0, 463, DIR_WEST
-	apply_movement obj_T23_gsrivel, _028C
-	apply_movement obj_player, _02AC
-	goto _018E
+	ScrCmd_609
+	LockAll
+	FadeOutBGM 0, 3
+	ApplyMovement obj_player, _02A4
+	WaitMovement
+	SetVar VAR_FARFETCHD1_STICKS1, STICKS_ACTIVE
+	CallStd std_play_rival_intro_music
+	GetPlayerCoords VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
+	Compare VAR_SPECIAL_x8005, 462
+	GoToIfNe _00E5
+	MovePersonFacing obj_T23_gsrivel, 404, 0, 463, DIR_WEST
+	ApplyMovement obj_T23_gsrivel, _028C
+	ApplyMovement obj_player, _02AC
+	GoTo _018E
 
 _00E5:
-	compare VAR_SPECIAL_x8005, 463
-	goto_if_ne _0114
-	move_person_facing obj_T23_gsrivel, 404, 0, 464, DIR_WEST
-	apply_movement obj_T23_gsrivel, _028C
-	apply_movement obj_player, _02AC
-	goto _018E
+	Compare VAR_SPECIAL_x8005, 463
+	GoToIfNe _0114
+	MovePersonFacing obj_T23_gsrivel, 404, 0, 464, DIR_WEST
+	ApplyMovement obj_T23_gsrivel, _028C
+	ApplyMovement obj_player, _02AC
+	GoTo _018E
 
 _0114:
-	compare VAR_SPECIAL_x8005, 464
-	goto_if_ne _0143
-	move_person_facing obj_T23_gsrivel, 404, 0, 463, DIR_WEST
-	apply_movement obj_T23_gsrivel, _0298
-	apply_movement obj_player, _02C0
-	goto _018E
+	Compare VAR_SPECIAL_x8005, 464
+	GoToIfNe _0143
+	MovePersonFacing obj_T23_gsrivel, 404, 0, 463, DIR_WEST
+	ApplyMovement obj_T23_gsrivel, _0298
+	ApplyMovement obj_player, _02C0
+	GoTo _018E
 
 _0143:
-	compare VAR_SPECIAL_x8005, 465
-	goto_if_ne _0172
-	move_person_facing obj_T23_gsrivel, 404, 0, 464, DIR_WEST
-	apply_movement obj_T23_gsrivel, _0298
-	apply_movement obj_player, _02C0
-	goto _018E
+	Compare VAR_SPECIAL_x8005, 465
+	GoToIfNe _0172
+	MovePersonFacing obj_T23_gsrivel, 404, 0, 464, DIR_WEST
+	ApplyMovement obj_T23_gsrivel, _0298
+	ApplyMovement obj_player, _02C0
+	GoTo _018E
 
 _0172:
-	move_person_facing obj_T23_gsrivel, 404, 0, 465, DIR_WEST
-	apply_movement obj_T23_gsrivel, _0298
-	apply_movement obj_player, _02C0
+	MovePersonFacing obj_T23_gsrivel, 404, 0, 465, DIR_WEST
+	ApplyMovement obj_T23_gsrivel, _0298
+	ApplyMovement obj_player, _02C0
 _018E:
-	wait_movement
-	buffer_rivals_name 0
-	npc_msg msg_0564_T23_00001
-	closemsg
-	get_starter_choice VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 152
-	goto_if_ne _01B7
-	trainer_battle TRAINER_RIVAL_SILVER_7, 0, 0, 0
-	goto _01DA
+	WaitMovement
+	BufferRivalsName 0
+	NPCMsg msg_0564_T23_00001
+	CloseMsg
+	GetStarterChoice VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 152
+	GoToIfNe _01B7
+	TrainerBattle TRAINER_RIVAL_SILVER_7, 0, 0, 0
+	GoTo _01DA
 
 _01B7:
-	compare VAR_SPECIAL_RESULT, 155
-	goto_if_ne _01D2
-	trainer_battle TRAINER_RIVAL_SILVER_10, 0, 0, 0
-	goto _01DA
+	Compare VAR_SPECIAL_RESULT, 155
+	GoToIfNe _01D2
+	TrainerBattle TRAINER_RIVAL_SILVER_10, 0, 0, 0
+	GoTo _01DA
 
 _01D2:
-	trainer_battle TRAINER_RIVAL_SILVER, 0, 0, 0
+	TrainerBattle TRAINER_RIVAL_SILVER, 0, 0, 0
 _01DA:
-	check_battle_won VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0285
-	callstd std_play_rival_outro_music
-	buffer_rivals_name 0
-	npc_msg msg_0564_T23_00002
-	closemsg
-	setvar VAR_UNK_4075, 2
-	get_player_coords VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
-	compare VAR_SPECIAL_x8005, 462
-	goto_if_ne _021E
-	apply_movement obj_T23_gsrivel, _02D4
-	goto _0277
+	CheckBattleWon VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0285
+	CallStd std_play_rival_outro_music
+	BufferRivalsName 0
+	NPCMsg msg_0564_T23_00002
+	CloseMsg
+	SetVar VAR_UNK_4075, 2
+	GetPlayerCoords VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
+	Compare VAR_SPECIAL_x8005, 462
+	GoToIfNe _021E
+	ApplyMovement obj_T23_gsrivel, _02D4
+	GoTo _0277
 
 _021E:
-	compare VAR_SPECIAL_x8005, 463
-	goto_if_ne _0239
-	apply_movement obj_T23_gsrivel, _02DC
-	goto _0277
+	Compare VAR_SPECIAL_x8005, 463
+	GoToIfNe _0239
+	ApplyMovement obj_T23_gsrivel, _02DC
+	GoTo _0277
 
 _0239:
-	compare VAR_SPECIAL_x8005, 464
-	goto_if_ne _0254
-	apply_movement obj_T23_gsrivel, _02D4
-	goto _0277
+	Compare VAR_SPECIAL_x8005, 464
+	GoToIfNe _0254
+	ApplyMovement obj_T23_gsrivel, _02D4
+	GoTo _0277
 
 _0254:
-	compare VAR_SPECIAL_x8005, 465
-	goto_if_ne _026F
-	apply_movement obj_T23_gsrivel, _02DC
-	goto _0277
+	Compare VAR_SPECIAL_x8005, 465
+	GoToIfNe _026F
+	ApplyMovement obj_T23_gsrivel, _02DC
+	GoTo _0277
 
 _026F:
-	apply_movement obj_T23_gsrivel, _02EC
+	ApplyMovement obj_T23_gsrivel, _02EC
 _0277:
-	wait_movement
-	hide_person obj_T23_gsrivel
-	callstd std_fade_end_rival_outro_music
-	releaseall
-	end
+	WaitMovement
+	HidePerson obj_T23_gsrivel
+	CallStd std_fade_end_rival_outro_music
+	ReleaseAll
+	End
 
 _0285:
-	white_out
-	releaseall
-	end
+	WhiteOut
+	ReleaseAll
+	End
 
 	.balign 4, 0
 _028C:
@@ -215,26 +215,26 @@ _02EC:
 	EndMovement
 
 scr_seq_T23_003:
-	scrcmd_609
-	lockall
-	apply_movement obj_T23_rocketm_3, _0350
-	wait_movement
-	npc_msg msg_0564_T23_00016
-	play_se SEQ_SE_DP_WALL_HIT
-	npc_msg msg_0564_T23_00017
-	closemsg
-	apply_movement obj_T23_gsmiddleman1_2, _0358
-	wait_movement
-	move_person_facing obj_T23_gsmiddleman1_2, 23, 0, 16, DIR_EAST
-	apply_movement obj_T23_rocketm_3, _0374
-	wait_movement
-	hide_person obj_T23_gsmiddleman1_2
-	setflag FLAG_AZALEA_HARASSED_CIVILIAN
-	setflag FLAG_AZALEA_ROCKET_HARASSING_CIVILIAN
-	clearflag FLAG_UNK_19F
-	setvar VAR_UNK_4080, 1
-	releaseall
-	end
+	ScrCmd_609
+	LockAll
+	ApplyMovement obj_T23_rocketm_3, _0350
+	WaitMovement
+	NPCMsg msg_0564_T23_00016
+	PlaySE SEQ_SE_DP_WALL_HIT
+	NPCMsg msg_0564_T23_00017
+	CloseMsg
+	ApplyMovement obj_T23_gsmiddleman1_2, _0358
+	WaitMovement
+	MovePersonFacing obj_T23_gsmiddleman1_2, 23, 0, 16, DIR_EAST
+	ApplyMovement obj_T23_rocketm_3, _0374
+	WaitMovement
+	HidePerson obj_T23_gsmiddleman1_2
+	SetFlag FLAG_AZALEA_HARASSED_CIVILIAN
+	SetFlag FLAG_AZALEA_ROCKET_HARASSING_CIVILIAN
+	ClearFlag FLAG_UNK_19F
+	SetVar VAR_UNK_4080, 1
+	ReleaseAll
+	End
 
 	.balign 4, 0
 _0350:
@@ -258,90 +258,90 @@ _0374:
 	EndMovement
 
 scr_seq_T23_006:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	goto_if_set FLAG_BEAT_AZALEA_ROCKETS, _039C
-	npc_msg msg_0564_T23_00018
-	goto _039F
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	GoToIfSet FLAG_BEAT_AZALEA_ROCKETS, _039C
+	NPCMsg msg_0564_T23_00018
+	GoTo _039F
 
 _039C:
-	npc_msg msg_0564_T23_00019
+	NPCMsg msg_0564_T23_00019
 _039F:
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_T23_007:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	goto_if_set FLAG_BEAT_AZALEA_ROCKETS, _03C3
-	npc_msg msg_0564_T23_00005
-	goto _039F
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	GoToIfSet FLAG_BEAT_AZALEA_ROCKETS, _03C3
+	NPCMsg msg_0564_T23_00005
+	GoTo _039F
 
 _03C3:
-	npc_msg msg_0564_T23_00006
-	goto _039F
+	NPCMsg msg_0564_T23_00006
+	GoTo _039F
 
 scr_seq_T23_008:
-	scrcmd_055 2, 0
-	scrcmd_057 3
-	scrcmd_058
-	trainer_tips msg_0564_T23_00012, VAR_SPECIAL_RESULT
-	callstd std_signpost
-	end
+	ScrCmd_055 2, 0
+	ScrCmd_057 3
+	ScrCmd_058
+	TrainerTips msg_0564_T23_00012, VAR_SPECIAL_RESULT
+	CallStd std_signpost
+	End
 
 scr_seq_T23_009:
-	scrcmd_055 2, 0
-	scrcmd_057 3
-	scrcmd_058
-	trainer_tips msg_0564_T23_00013, VAR_SPECIAL_RESULT
-	callstd std_signpost
-	end
+	ScrCmd_055 2, 0
+	ScrCmd_057 3
+	ScrCmd_058
+	TrainerTips msg_0564_T23_00013, VAR_SPECIAL_RESULT
+	CallStd std_signpost
+	End
 
 scr_seq_T23_010:
-	scrcmd_055 2, 0
-	scrcmd_057 3
-	scrcmd_058
-	trainer_tips msg_0564_T23_00015, VAR_SPECIAL_RESULT
-	callstd std_signpost
-	end
+	ScrCmd_055 2, 0
+	ScrCmd_057 3
+	ScrCmd_058
+	TrainerTips msg_0564_T23_00015, VAR_SPECIAL_RESULT
+	CallStd std_signpost
+	End
 
 scr_seq_T23_011:
-	direction_signpost msg_0564_T23_00011, 0, 14, VAR_SPECIAL_RESULT
-	scrcmd_057 3
-	scrcmd_058
-	scrcmd_060 VAR_SPECIAL_RESULT
-	callstd std_signpost
-	end
+	DirectionSignpost msg_0564_T23_00011, 0, 14, VAR_SPECIAL_RESULT
+	ScrCmd_057 3
+	ScrCmd_058
+	ScrCmd_060 VAR_SPECIAL_RESULT
+	CallStd std_signpost
+	End
 
 scr_seq_T23_012:
-	scrcmd_055 2, 0
-	scrcmd_057 3
-	scrcmd_058
-	trainer_tips msg_0564_T23_00014, VAR_SPECIAL_RESULT
-	callstd std_signpost
-	end
+	ScrCmd_055 2, 0
+	ScrCmd_057 3
+	ScrCmd_058
+	TrainerTips msg_0564_T23_00014, VAR_SPECIAL_RESULT
+	CallStd std_signpost
+	End
 
 scr_seq_T23_013:
-	direction_signpost msg_0564_T23_00000, 1, 2, VAR_SPECIAL_RESULT
-	scrcmd_057 3
-	scrcmd_058
-	scrcmd_060 VAR_SPECIAL_RESULT
-	callstd std_signpost
-	end
+	DirectionSignpost msg_0564_T23_00000, 1, 2, VAR_SPECIAL_RESULT
+	ScrCmd_057 3
+	ScrCmd_058
+	ScrCmd_060 VAR_SPECIAL_RESULT
+	CallStd std_signpost
+	End
 
 scr_seq_T23_014:
-	simple_npc_msg msg_0564_T23_00004
-	end
+	SimpleNPCMsg msg_0564_T23_00004
+	End
 
 scr_seq_T23_015:
-	simple_npc_msg msg_0564_T23_00007
-	end
+	SimpleNPCMsg msg_0564_T23_00007
+	End
 
 scr_seq_T23_016:
-	simple_npc_msg msg_0564_T23_00008
-	end
+	SimpleNPCMsg msg_0564_T23_00008
+	End
 	.balign 4, 0

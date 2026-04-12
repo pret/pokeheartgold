@@ -5,128 +5,128 @@
 
 	.rodata
 
-	scrdef scr_seq_R39R0101_000
-	scrdef scr_seq_R39R0101_001
-	scrdef_end
+	ScrDef scr_seq_R39R0101_000
+	ScrDef scr_seq_R39R0101_001
+	ScrDefEnd
 
 scr_seq_R39R0101_000:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	goto_if_set FLAG_UNK_0AA, _002C
-	setflag FLAG_UNK_0A8
-	npc_msg msg_0397_R39R0101_00000
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	GoToIfSet FLAG_UNK_0AA, _002C
+	SetFlag FLAG_UNK_0A8
+	NPCMsg msg_0397_R39R0101_00000
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _002C:
-	setvar VAR_SPECIAL_x8004, 33
-	setvar VAR_SPECIAL_x8005, 0
-	hasitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 999
-	goto_if_ne _0058
-	npc_msg msg_0397_R39R0101_00006
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	SetVar VAR_SPECIAL_x8004, 33
+	SetVar VAR_SPECIAL_x8005, 0
+	HasItem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 999
+	GoToIfNe _0058
+	NPCMsg msg_0397_R39R0101_00006
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0058:
-	show_money_box 20, 2
-	npc_msg msg_0397_R39R0101_00001
-	touchscreen_menu_hide
-	menu_init 1, 1, 0, 1, VAR_SPECIAL_RESULT
-	menu_item_add 12, 255, 1
-	menu_item_add 13, 255, 2
-	menu_item_add 14, 255, 3
-	menu_exec
-	touchscreen_menu_show
-	compare VAR_SPECIAL_RESULT, 3
-	goto_if_eq _0111
-	compare VAR_SPECIAL_RESULT, 1
-	call_if_eq _011E
-	compare VAR_SPECIAL_RESULT, 2
-	call_if_eq _012C
-	hasenoughmoneyvar VAR_SPECIAL_RESULT, VAR_TEMP_x4001
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _00F7
-	goto_if_no_item_space ITEM_MOOMOO_MILK, VAR_TEMP_x4000, _0104
-	submoneyvar VAR_TEMP_x4001
-	update_money_box
-	npc_msg msg_0397_R39R0101_00002
-	callstd std_give_item_verbose
-	closemsg
-	hide_money_box
-	releaseall
-	end
+	ShowMoneyBox 20, 2
+	NPCMsg msg_0397_R39R0101_00001
+	TouchscreenMenuHide
+	MenuInit 1, 1, 0, 1, VAR_SPECIAL_RESULT
+	MenuItemAdd 12, 255, 1
+	MenuItemAdd 13, 255, 2
+	MenuItemAdd 14, 255, 3
+	MenuExec
+	TouchscreenMenuShow
+	Compare VAR_SPECIAL_RESULT, 3
+	GoToIfEq _0111
+	Compare VAR_SPECIAL_RESULT, 1
+	CallIfEq _011E
+	Compare VAR_SPECIAL_RESULT, 2
+	CallIfEq _012C
+	HasEnoughMoneyVar VAR_SPECIAL_RESULT, VAR_TEMP_x4001
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _00F7
+	GoToIfNoItemSpace ITEM_MOOMOO_MILK, VAR_TEMP_x4000, _0104
+	SubMoneyVar VAR_TEMP_x4001
+	UpdateMoneyBox
+	NPCMsg msg_0397_R39R0101_00002
+	CallStd std_give_item_verbose
+	CloseMsg
+	HideMoneyBox
+	ReleaseAll
+	End
 
 _00F7:
-	npc_msg msg_0397_R39R0101_00003
-	wait_button_or_walk_away
-	closemsg
-	hide_money_box
-	releaseall
-	end
+	NPCMsg msg_0397_R39R0101_00003
+	WaitButton
+	CloseMsg
+	HideMoneyBox
+	ReleaseAll
+	End
 
 _0104:
-	npc_msg msg_0397_R39R0101_00004
-	wait_button_or_walk_away
-	closemsg
-	hide_money_box
-	releaseall
-	end
+	NPCMsg msg_0397_R39R0101_00004
+	WaitButton
+	CloseMsg
+	HideMoneyBox
+	ReleaseAll
+	End
 
 _0111:
-	npc_msg msg_0397_R39R0101_00005
-	wait_button_or_walk_away
-	closemsg
-	hide_money_box
-	releaseall
-	end
+	NPCMsg msg_0397_R39R0101_00005
+	WaitButton
+	CloseMsg
+	HideMoneyBox
+	ReleaseAll
+	End
 
 _011E:
-	setvar VAR_TEMP_x4000, 1
-	setvar VAR_TEMP_x4001, 500
-	return
+	SetVar VAR_TEMP_x4000, 1
+	SetVar VAR_TEMP_x4001, 500
+	Return
 
 _012C:
-	setvar VAR_TEMP_x4000, 12
-	setvar VAR_TEMP_x4001, 6000
-	return
+	SetVar VAR_TEMP_x4000, 12
+	SetVar VAR_TEMP_x4001, 6000
+	Return
 
 scr_seq_R39R0101_001:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	goto_if_set FLAG_UNK_0AA, _0158
-	npc_msg msg_0397_R39R0101_00007
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	GoToIfSet FLAG_UNK_0AA, _0158
+	NPCMsg msg_0397_R39R0101_00007
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0158:
-	goto_if_set FLAG_GOT_TM83_FROM_MOOMOO_FARM_WOMAN, _0197
-	npc_msg msg_0397_R39R0101_00008
-	wait_button
-	goto_if_no_item_space ITEM_TM83, 1, _01A2
-	callstd std_give_item_verbose
-	setflag FLAG_GOT_TM83_FROM_MOOMOO_FARM_WOMAN
-	goto _0197
+	GoToIfSet FLAG_GOT_TM83_FROM_MOOMOO_FARM_WOMAN, _0197
+	NPCMsg msg_0397_R39R0101_00008
+	WaitABPress
+	GoToIfNoItemSpace ITEM_TM83, 1, _01A2
+	CallStd std_give_item_verbose
+	SetFlag FLAG_GOT_TM83_FROM_MOOMOO_FARM_WOMAN
+	GoTo _0197
 
 _0197:
-	npc_msg msg_0397_R39R0101_00010
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0397_R39R0101_00010
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _01A2:
-	npc_msg msg_0397_R39R0101_00011
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0397_R39R0101_00011
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 	.balign 4, 0

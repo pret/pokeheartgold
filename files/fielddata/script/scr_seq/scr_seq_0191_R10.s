@@ -5,214 +5,214 @@
 
 	.rodata
 
-	scrdef scr_seq_R10_000
-	scrdef scr_seq_R10_001
-	scrdef scr_seq_R10_002
-	scrdef scr_seq_R10_003
-	scrdef scr_seq_R10_004
-	scrdef scr_seq_R10_005
-	scrdef scr_seq_R10_006
-	scrdef_end
+	ScrDef scr_seq_R10_000
+	ScrDef scr_seq_R10_001
+	ScrDef scr_seq_R10_002
+	ScrDef scr_seq_R10_003
+	ScrDef scr_seq_R10_004
+	ScrDef scr_seq_R10_005
+	ScrDef scr_seq_R10_006
+	ScrDefEnd
 
 scr_seq_R10_004:
-	goto_if_set FLAG_ENGAGING_STATIC_POKEMON, _002B
-	end
+	GoToIfSet FLAG_ENGAGING_STATIC_POKEMON, _002B
+	End
 
 _002B:
-	setflag FLAG_HIDE_ROUTE_10_ZAPDOS
-	hide_person obj_R10_tsure_poke_static_zapdos
-	clearflag FLAG_ENGAGING_STATIC_POKEMON
-	end
+	SetFlag FLAG_HIDE_ROUTE_10_ZAPDOS
+	HidePerson obj_R10_tsure_poke_static_zapdos
+	ClearFlag FLAG_ENGAGING_STATIC_POKEMON
+	End
 
 scr_seq_R10_001:
-	check_badge BADGE_EARTH, VAR_TEMP_x4004
-	compare VAR_TEMP_x4004, 1
-	goto_if_eq _0052
-	goto _00BF
+	CheckBadge BADGE_EARTH, VAR_TEMP_x4004
+	Compare VAR_TEMP_x4004, 1
+	GoToIfEq _0052
+	GoTo _00BF
 
 _0052:
-	goto_if_unset FLAG_CAUGHT_ZAPDOS, _00BF
-	check_registered_phone_number PHONE_CONTACT_LT__SURGE, VAR_TEMP_x4001
-	compare VAR_TEMP_x4001, 1
-	goto_if_eq _00BF
-	scrcmd_522 VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 9
-	goto_if_ne _008B
-	clearflag FLAG_HIDE_ROUTE_10_LT_SURGE
-	goto _00BD
+	GoToIfUnset FLAG_CAUGHT_ZAPDOS, _00BF
+	CheckRegisteredPhoneNumber PHONE_CONTACT_LT__SURGE, VAR_TEMP_x4001
+	Compare VAR_TEMP_x4001, 1
+	GoToIfEq _00BF
+	ScrCmd_522 VAR_TEMP_x4000
+	Compare VAR_TEMP_x4000, 9
+	GoToIfNe _008B
+	ClearFlag FLAG_HIDE_ROUTE_10_LT_SURGE
+	GoTo _00BD
 
 _008B:
-	compare VAR_TEMP_x4000, 10
-	goto_if_ne _00A2
-	clearflag FLAG_HIDE_ROUTE_10_LT_SURGE
-	goto _00BD
+	Compare VAR_TEMP_x4000, 10
+	GoToIfNe _00A2
+	ClearFlag FLAG_HIDE_ROUTE_10_LT_SURGE
+	GoTo _00BD
 
 _00A2:
-	compare VAR_TEMP_x4000, 11
-	goto_if_ne _00B9
-	clearflag FLAG_HIDE_ROUTE_10_LT_SURGE
-	goto _00BD
+	Compare VAR_TEMP_x4000, 11
+	GoToIfNe _00B9
+	ClearFlag FLAG_HIDE_ROUTE_10_LT_SURGE
+	GoTo _00BD
 
 _00B9:
-	setflag FLAG_HIDE_ROUTE_10_LT_SURGE
+	SetFlag FLAG_HIDE_ROUTE_10_LT_SURGE
 _00BD:
-	end
+	End
 
 _00BF:
-	end
+	End
 
 scr_seq_R10_002:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	check_registered_phone_number PHONE_CONTACT_LT__SURGE, VAR_TEMP_x4001
-	compare VAR_TEMP_x4001, 1
-	goto_if_eq _0148
-	player_on_bike_check VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _0197
-	get_party_lead_alive VAR_TEMP_x4000
-	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4001
-	compare VAR_TEMP_x4001, 25
-	goto_if_ne _0197
-	compare VAR_TEMP_x4002, 1
-	goto_if_ge _018C
-	npc_msg msg_0341_R10_00000
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	CheckRegisteredPhoneNumber PHONE_CONTACT_LT__SURGE, VAR_TEMP_x4001
+	Compare VAR_TEMP_x4001, 1
+	GoToIfEq _0148
+	PlayerOnBikeCheck VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _0197
+	GetPartyLeadAlive VAR_TEMP_x4000
+	GetPartyMonSpecies VAR_TEMP_x4000, VAR_TEMP_x4001
+	Compare VAR_TEMP_x4001, 25
+	GoToIfNe _0197
+	Compare VAR_TEMP_x4002, 1
+	GoToIfGe _018C
+	NPCMsg msg_0341_R10_00000
 _0114:
-	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_RESULT
-	touchscreen_menu_show
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0138
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_ge _017B
-	end
+	TouchscreenMenuHide
+	GetMenuChoice VAR_SPECIAL_RESULT
+	TouchscreenMenuShow
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0138
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfGe _017B
+	End
 
 _0138:
-	buffer_players_name 0
-	npc_msg msg_0341_R10_00001
-	play_fanfare SEQ_ME_POKEGEAR_REGIST
-	wait_fanfare
-	register_gear_number PHONE_CONTACT_LT__SURGE
+	BufferPlayersName 0
+	NPCMsg msg_0341_R10_00001
+	PlayFanfare SEQ_ME_POKEGEAR_REGIST
+	WaitFanfare
+	RegisterGearNumber PHONE_CONTACT_LT__SURGE
 _0148:
-	npc_msg msg_0341_R10_00002
-	wait_button_or_walk_away
-	closemsg
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	setflag FLAG_HIDE_ROUTE_10_LT_SURGE
-	hide_person obj_R10_gsleader9
-	play_se SEQ_SE_DP_KAIDAN2
-	wait_se SEQ_SE_DP_KAIDAN2
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
-	releaseall
-	end
+	NPCMsg msg_0341_R10_00002
+	WaitButton
+	CloseMsg
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	SetFlag FLAG_HIDE_ROUTE_10_LT_SURGE
+	HidePerson obj_R10_gsleader9
+	PlaySE SEQ_SE_DP_KAIDAN2
+	WaitSE SEQ_SE_DP_KAIDAN2
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
+	ReleaseAll
+	End
 
 _017B:
-	setvar VAR_TEMP_x4002, 1
-	npc_msg msg_0341_R10_00003
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	SetVar VAR_TEMP_x4002, 1
+	NPCMsg msg_0341_R10_00003
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _018C:
-	npc_msg msg_0341_R10_00004
-	goto _0114
-	end
+	NPCMsg msg_0341_R10_00004
+	GoTo _0114
+	End
 
 _0197:
-	npc_msg msg_0341_R10_00005
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0341_R10_00005
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_R10_000:
-	scrcmd_609
-	lockall
-	goto_if_set FLAG_RESTORED_POWER, _0209
-	scrcmd_729 VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _01D5
-	scrcmd_596 VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_ne _01D5
-	scrcmd_600
+	ScrCmd_609
+	LockAll
+	GoToIfSet FLAG_RESTORED_POWER, _0209
+	ScrCmd_729 VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _01D5
+	ScrCmd_596 VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfNe _01D5
+	ScrCmd_600
 _01D5:
-	play_se SEQ_SE_DP_KAIDAN2
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	warp MAP_ROUTE_10_POWER_PLANT_BROKEN, 0, 7, 20, DIR_NORTH
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
-	scrcmd_582 MAP_ROUTE_10, 1423, 185
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_KAIDAN2
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	Warp MAP_ROUTE_10_POWER_PLANT_BROKEN, 0, 7, 20, DIR_NORTH
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
+	ScrCmd_582 MAP_ROUTE_10, 1423, 185
+	ReleaseAll
+	End
 
 _0209:
-	scrcmd_729 VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _022D
-	scrcmd_596 VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_ne _022D
-	scrcmd_600
+	ScrCmd_729 VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _022D
+	ScrCmd_596 VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfNe _022D
+	ScrCmd_600
 _022D:
-	play_se SEQ_SE_DP_KAIDAN2
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	warp MAP_ROUTE_10_POWER_PLANT_REPAIRED, 0, 7, 20, DIR_NORTH
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
-	scrcmd_582 MAP_ROUTE_10, 1423, 185
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_KAIDAN2
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	Warp MAP_ROUTE_10_POWER_PLANT_REPAIRED, 0, 7, 20, DIR_NORTH
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
+	ScrCmd_582 MAP_ROUTE_10, 1423, 185
+	ReleaseAll
+	End
 
 scr_seq_R10_003:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	play_cry SPECIES_ZAPDOS, 0
-	wait_cry
-	setflag FLAG_ENGAGING_STATIC_POKEMON
-	wild_battle SPECIES_ZAPDOS, 50, 0
-	clearflag FLAG_ENGAGING_STATIC_POKEMON
-	check_battle_won VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _02B3
-	get_static_encounter_outcome VAR_TEMP_x4002
-	compare VAR_TEMP_x4002, 3
-	goto_if_eq _02AF
-	compare VAR_TEMP_x4002, 4
-	call_if_eq _02B9
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	PlayCry SPECIES_ZAPDOS, 0
+	WaitCry
+	SetFlag FLAG_ENGAGING_STATIC_POKEMON
+	WildBattle SPECIES_ZAPDOS, 50, 0
+	ClearFlag FLAG_ENGAGING_STATIC_POKEMON
+	CheckBattleWon VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _02B3
+	GetStaticEncounterOutcome VAR_TEMP_x4002
+	Compare VAR_TEMP_x4002, 3
+	GoToIfEq _02AF
+	Compare VAR_TEMP_x4002, 4
+	CallIfEq _02B9
 _02AF:
-	releaseall
-	end
+	ReleaseAll
+	End
 
 _02B3:
-	white_out
-	releaseall
-	end
+	WhiteOut
+	ReleaseAll
+	End
 
 _02B9:
-	setflag FLAG_CAUGHT_ZAPDOS
-	return
+	SetFlag FLAG_CAUGHT_ZAPDOS
+	Return
 
 scr_seq_R10_005:
-	scrcmd_055 2, 0
-	scrcmd_057 3
-	scrcmd_058
-	trainer_tips msg_0341_R10_00008, VAR_SPECIAL_RESULT
-	callstd std_signpost
-	end
+	ScrCmd_055 2, 0
+	ScrCmd_057 3
+	ScrCmd_058
+	TrainerTips msg_0341_R10_00008, VAR_SPECIAL_RESULT
+	CallStd std_signpost
+	End
 
 scr_seq_R10_006:
-	scrcmd_055 2, 0
-	scrcmd_057 3
-	scrcmd_058
-	trainer_tips msg_0341_R10_00009, VAR_SPECIAL_RESULT
-	callstd std_signpost
-	end
+	ScrCmd_055 2, 0
+	ScrCmd_057 3
+	ScrCmd_058
+	TrainerTips msg_0341_R10_00009, VAR_SPECIAL_RESULT
+	CallStd std_signpost
+	End
 	.balign 4, 0

@@ -5,35 +5,35 @@
 
 	.rodata
 
-	scrdef scr_seq_R12R0101_000
-	scrdef_end
+	ScrDef scr_seq_R12R0101_000
+	ScrDefEnd
 
 scr_seq_R12R0101_000:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	getitemquantity ITEM_SUPER_ROD, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_ne _004C
-	npc_msg msg_0349_R12R0101_00000
-	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_RESULT
-	touchscreen_menu_show
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _0057
-	npc_msg msg_0349_R12R0101_00001
-	giveitem_no_check ITEM_SUPER_ROD, 1
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	GetItemQuantity ITEM_SUPER_ROD, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfNe _004C
+	NPCMsg msg_0349_R12R0101_00000
+	TouchscreenMenuHide
+	GetMenuChoice VAR_SPECIAL_RESULT
+	TouchscreenMenuShow
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _0057
+	NPCMsg msg_0349_R12R0101_00001
+	GiveItemNoCheck ITEM_SUPER_ROD, 1
 _004C:
-	npc_msg msg_0349_R12R0101_00002
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0349_R12R0101_00002
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0057:
-	npc_msg msg_0349_R12R0101_00003
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0349_R12R0101_00003
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 	.balign 4, 0

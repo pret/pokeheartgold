@@ -1138,7 +1138,7 @@ _021E7172:
 	cmp r0, #0
 	beq _021E718E
 	add r0, r4, #0
-	bl ov02_02246C8C
+	bl FieldSystem_PerformLandOrSurfEncounterCheck
 	cmp r0, #1
 	bne _021E718E
 	add sp, #8

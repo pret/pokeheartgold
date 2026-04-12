@@ -5,27 +5,27 @@
 
 	.rodata
 
-	scrdef scr_seq_T03R0201_000
-	scrdef scr_seq_T03R0201_001
-	scrdef_end
+	ScrDef scr_seq_T03R0201_000
+	ScrDef scr_seq_T03R0201_001
+	ScrDefEnd
 
 scr_seq_T03R0201_000:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	npc_msg msg_0465_T03R0201_00000
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	NPCMsg msg_0465_T03R0201_00000
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_T03R0201_001:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	play_cry SPECIES_NIDORAN_M, 0
-	npc_msg msg_0465_T03R0201_00001
-	wait_cry
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	PlayCry SPECIES_NIDORAN_M, 0
+	NPCMsg msg_0465_T03R0201_00001
+	WaitCry
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 	.balign 4, 0

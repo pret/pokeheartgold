@@ -5,183 +5,183 @@
 
 	.rodata
 
-	scrdef scr_seq_D23R0101_000
-	scrdef scr_seq_D23R0101_001
-	scrdef scr_seq_D23R0101_002
-	scrdef scr_seq_D23R0101_003
-	scrdef scr_seq_D23R0101_004
-	scrdef scr_seq_D23R0101_005
-	scrdef scr_seq_D23R0101_006
-	scrdef scr_seq_D23R0101_007
-	scrdef scr_seq_D23R0101_008
-	scrdef scr_seq_D23R0101_009
-	scrdef scr_seq_D23R0101_010
-	scrdef_end
+	ScrDef scr_seq_D23R0101_000
+	ScrDef scr_seq_D23R0101_001
+	ScrDef scr_seq_D23R0101_002
+	ScrDef scr_seq_D23R0101_003
+	ScrDef scr_seq_D23R0101_004
+	ScrDef scr_seq_D23R0101_005
+	ScrDef scr_seq_D23R0101_006
+	ScrDef scr_seq_D23R0101_007
+	ScrDef scr_seq_D23R0101_008
+	ScrDef scr_seq_D23R0101_009
+	ScrDef scr_seq_D23R0101_010
+	ScrDefEnd
 
 scr_seq_D23R0101_008:
-	setflag FLAG_HIDE_ROCKET_TAKEOVER_6
-	setflag FLAG_HIDE_ROCKET_TAKEOVER_2
-	compare VAR_SCENE_ROCKET_TAKEOVER, 2
-	goto_if_ne _004D
-	clearflag FLAG_HIDE_ROCKET_TAKEOVER_6
-	goto _0085
+	SetFlag FLAG_HIDE_ROCKET_TAKEOVER_6
+	SetFlag FLAG_HIDE_ROCKET_TAKEOVER_2
+	Compare VAR_SCENE_ROCKET_TAKEOVER, 2
+	GoToIfNe _004D
+	ClearFlag FLAG_HIDE_ROCKET_TAKEOVER_6
+	GoTo _0085
 
 _004D:
-	compare VAR_SCENE_ROCKET_TAKEOVER, 4
-	goto_if_ne _0066
-	goto _008B
+	Compare VAR_SCENE_ROCKET_TAKEOVER, 4
+	GoToIfNe _0066
+	GoTo _008B
 
 _0060:
-	goto _0085
+	GoTo _0085
 
 _0066:
-	compare VAR_SCENE_ROCKET_TAKEOVER, 3
-	goto_if_ne _0081
-	clearflag FLAG_HIDE_ROCKET_TAKEOVER_6
-	clearflag FLAG_HIDE_RADIO_TOWER_RIVAL
-	goto _0085
+	Compare VAR_SCENE_ROCKET_TAKEOVER, 3
+	GoToIfNe _0081
+	ClearFlag FLAG_HIDE_ROCKET_TAKEOVER_6
+	ClearFlag FLAG_HIDE_RADIO_TOWER_RIVAL
+	GoTo _0085
 
 _0081:
-	clearflag FLAG_HIDE_ROCKET_TAKEOVER_2
+	ClearFlag FLAG_HIDE_ROCKET_TAKEOVER_2
 _0085:
-	setvar VAR_TEMP_x400A, 0
+	SetVar VAR_TEMP_x400A, 0
 _008B:
-	end
+	End
 
 scr_seq_D23R0101_000:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	compare VAR_SCENE_ROCKET_TAKEOVER, 2
-	goto_if_ne _00AB
-	npc_msg msg_0065_D23R0101_00001
-	goto _00DA
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	Compare VAR_SCENE_ROCKET_TAKEOVER, 2
+	GoToIfNe _00AB
+	NPCMsg msg_0065_D23R0101_00001
+	GoTo _00DA
 
 _00AB:
-	compare VAR_SCENE_ROCKET_TAKEOVER, 4
-	goto_if_ne _00C1
-	npc_msg msg_0065_D23R0101_00001
-	goto _00DA
+	Compare VAR_SCENE_ROCKET_TAKEOVER, 4
+	GoToIfNe _00C1
+	NPCMsg msg_0065_D23R0101_00001
+	GoTo _00DA
 
 _00C1:
-	compare VAR_SCENE_ROCKET_TAKEOVER, 3
-	goto_if_ne _00D7
-	npc_msg msg_0065_D23R0101_00002
-	goto _00DA
+	Compare VAR_SCENE_ROCKET_TAKEOVER, 3
+	GoToIfNe _00D7
+	NPCMsg msg_0065_D23R0101_00002
+	GoTo _00DA
 
 _00D7:
-	npc_msg msg_0065_D23R0101_00000
+	NPCMsg msg_0065_D23R0101_00000
 _00DA:
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_D23R0101_010:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0065_D23R0101_00014
-	apply_movement obj_D23R0101_gsleader3, _036C
-	wait_movement
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	NPCMsg msg_0065_D23R0101_00014
+	ApplyMovement obj_D23R0101_gsleader3, _036C
+	WaitMovement
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_D23R0101_002:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	goto_if_set FLAG_GOT_RADIO_CARD, _0243
-	npc_msg msg_0065_D23R0101_00003
-	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _0221
-	npc_msg msg_0065_D23R0101_00004
-	getmenuchoice VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _022E
-	play_se SEQ_SE_DP_PINPON
-	wait_se SEQ_SE_DP_PINPON
-	npc_msg msg_0065_D23R0101_00005
-	getmenuchoice VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _022E
-	play_se SEQ_SE_DP_PINPON
-	wait_se SEQ_SE_DP_PINPON
-	npc_msg msg_0065_D23R0101_00006
-	getmenuchoice VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _022E
-	play_se SEQ_SE_DP_PINPON
-	wait_se SEQ_SE_DP_PINPON
-	npc_msg msg_0065_D23R0101_00007
-	getmenuchoice VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _022E
-	play_se SEQ_SE_DP_PINPON
-	wait_se SEQ_SE_DP_PINPON
-	npc_msg msg_0065_D23R0101_00008
-	getmenuchoice VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _022E
-	wait 30, VAR_SPECIAL_RESULT
-	play_se SEQ_SE_DP_PINPON
-	wait_se SEQ_SE_DP_PINPON
-	touchscreen_menu_show
-	npc_msg msg_0065_D23R0101_00009
-	buffer_players_name 0
-	npc_msg msg_0065_D23R0101_00010
-	play_fanfare SEQ_ME_KEYITEM
-	wait_fanfare
-	closemsg
-	register_pokegear_card 2
-	setflag FLAG_GOT_RADIO_CARD
-	toggle_following_pokemon_movement 0
-	wait_following_pokemon_movement
-	following_pokemon_movement 55
-	apply_movement obj_D23R0101_gsleader3, _0250
-	apply_movement obj_player, _0270
-	wait_movement
-	wait_following_pokemon_movement
-	toggle_following_pokemon_movement 1
-	following_pokemon_movement 48
-	npc_msg msg_0065_D23R0101_00015
-	closemsg
-	apply_movement obj_D23R0101_gsleader3, _0264
-	wait 24, VAR_SPECIAL_RESULT
-	apply_movement obj_player, _036C
-	wait_movement
-	hide_person obj_D23R0101_gsleader3
-	setflag FLAG_UNK_318
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	GoToIfSet FLAG_GOT_RADIO_CARD, _0243
+	NPCMsg msg_0065_D23R0101_00003
+	TouchscreenMenuHide
+	GetMenuChoice VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _0221
+	NPCMsg msg_0065_D23R0101_00004
+	GetMenuChoice VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _022E
+	PlaySE SEQ_SE_DP_PINPON
+	WaitSE SEQ_SE_DP_PINPON
+	NPCMsg msg_0065_D23R0101_00005
+	GetMenuChoice VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _022E
+	PlaySE SEQ_SE_DP_PINPON
+	WaitSE SEQ_SE_DP_PINPON
+	NPCMsg msg_0065_D23R0101_00006
+	GetMenuChoice VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _022E
+	PlaySE SEQ_SE_DP_PINPON
+	WaitSE SEQ_SE_DP_PINPON
+	NPCMsg msg_0065_D23R0101_00007
+	GetMenuChoice VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _022E
+	PlaySE SEQ_SE_DP_PINPON
+	WaitSE SEQ_SE_DP_PINPON
+	NPCMsg msg_0065_D23R0101_00008
+	GetMenuChoice VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _022E
+	Wait 30, VAR_SPECIAL_RESULT
+	PlaySE SEQ_SE_DP_PINPON
+	WaitSE SEQ_SE_DP_PINPON
+	TouchscreenMenuShow
+	NPCMsg msg_0065_D23R0101_00009
+	BufferPlayersName 0
+	NPCMsg msg_0065_D23R0101_00010
+	PlayFanfare SEQ_ME_KEYITEM
+	WaitFanfare
+	CloseMsg
+	RegisterPokegearCard 2
+	SetFlag FLAG_GOT_RADIO_CARD
+	ToggleFollowingPokemonMovement 0
+	WaitFollowingPokemonMovement
+	FollowingPokemonMovement 55
+	ApplyMovement obj_D23R0101_gsleader3, _0250
+	ApplyMovement obj_player, _0270
+	WaitMovement
+	WaitFollowingPokemonMovement
+	ToggleFollowingPokemonMovement 1
+	FollowingPokemonMovement 48
+	NPCMsg msg_0065_D23R0101_00015
+	CloseMsg
+	ApplyMovement obj_D23R0101_gsleader3, _0264
+	Wait 24, VAR_SPECIAL_RESULT
+	ApplyMovement obj_player, _036C
+	WaitMovement
+	HidePerson obj_D23R0101_gsleader3
+	SetFlag FLAG_UNK_318
+	ReleaseAll
+	End
 
 _0221:
-	npc_msg msg_0065_D23R0101_00013
-	wait_button_or_walk_away
-	closemsg
-	touchscreen_menu_show
-	releaseall
-	end
+	NPCMsg msg_0065_D23R0101_00013
+	WaitButton
+	CloseMsg
+	TouchscreenMenuShow
+	ReleaseAll
+	End
 
 _022E:
-	play_se SEQ_SE_DP_BOX03
-	wait_se SEQ_SE_DP_BOX03
-	npc_msg msg_0065_D23R0101_00012
-	wait_button_or_walk_away
-	closemsg
-	touchscreen_menu_show
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_BOX03
+	WaitSE SEQ_SE_DP_BOX03
+	NPCMsg msg_0065_D23R0101_00012
+	WaitButton
+	CloseMsg
+	TouchscreenMenuShow
+	ReleaseAll
+	End
 
 _0243:
-	npc_msg msg_0065_D23R0101_00011
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0065_D23R0101_00011
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 	.balign 4, 0
 _0250:
@@ -205,73 +205,73 @@ _0270:
 	EndMovement
 
 scr_seq_D23R0101_003:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	npc_msg msg_0065_D23R0101_00016
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	NPCMsg msg_0065_D23R0101_00016
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_D23R0101_004:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	npc_msg msg_0065_D23R0101_00017
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	NPCMsg msg_0065_D23R0101_00017
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_D23R0101_005:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	compare VAR_SCENE_ROCKET_TAKEOVER, 3
-	goto_if_eq _02C2
-	npc_msg msg_0065_D23R0101_00018
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	Compare VAR_SCENE_ROCKET_TAKEOVER, 3
+	GoToIfEq _02C2
+	NPCMsg msg_0065_D23R0101_00018
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _02C2:
-	compare VAR_TEMP_x400A, 1
-	goto_if_eq _0316
-	npc_msg msg_0065_D23R0101_00019
-	closemsg
-	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
-	compare VAR_TEMP_x4001, 5
-	goto_if_ne _02F5
-	apply_movement obj_D23R0101_rocketm, _0354
-	goto _030A
+	Compare VAR_TEMP_x400A, 1
+	GoToIfEq _0316
+	NPCMsg msg_0065_D23R0101_00019
+	CloseMsg
+	GetPlayerCoords VAR_TEMP_x4000, VAR_TEMP_x4001
+	Compare VAR_TEMP_x4001, 5
+	GoToIfNe _02F5
+	ApplyMovement obj_D23R0101_rocketm, _0354
+	GoTo _030A
 
 _02F5:
-	compare VAR_TEMP_x4001, 6
-	goto_if_ne _030A
-	apply_movement obj_D23R0101_rocketm, _0360
+	Compare VAR_TEMP_x4001, 6
+	GoToIfNe _030A
+	ApplyMovement obj_D23R0101_rocketm, _0360
 _030A:
-	wait_movement
-	releaseall
-	setvar VAR_TEMP_x400A, 1
-	end
+	WaitMovement
+	ReleaseAll
+	SetVar VAR_TEMP_x400A, 1
+	End
 
 _0316:
-	get_player_facing VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 3
-	goto_if_ne _0333
-	setvar VAR_TEMP_x400B, 33
-	goto _0346
+	GetPlayerFacing VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 3
+	GoToIfNe _0333
+	SetVar VAR_TEMP_x400B, 33
+	GoTo _0346
 
 _0333:
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_ne _0346
-	setvar VAR_TEMP_x400B, 11
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfNe _0346
+	SetVar VAR_TEMP_x400B, 11
 _0346:
-	npc_msg msg_0065_D23R0101_00020
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0065_D23R0101_00020
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 	.balign 4, 0
 _0354:
@@ -301,170 +301,170 @@ _037C:
 	EndMovement
 
 scr_seq_D23R0101_009:
-	scrcmd_609
-	lockall
-	move_person_facing obj_D23R0101_gsrivel, 13, 1, 6, DIR_EAST
-	callstd std_play_rival_intro_music
-	get_person_coords 6, VAR_TEMP_x4000, VAR_TEMP_x4001
-	compare VAR_TEMP_x4001, 5
-	goto_if_ne _03D0
-	apply_movement obj_D23R0101_gsrivel, _0670
-	compare VAR_TEMP_x400B, 33
-	goto_if_ne _03CA
-	apply_movement obj_D23R0101_rocketm, _069C
+	ScrCmd_609
+	LockAll
+	MovePersonFacing obj_D23R0101_gsrivel, 13, 1, 6, DIR_EAST
+	CallStd std_play_rival_intro_music
+	GetPersonCoords 6, VAR_TEMP_x4000, VAR_TEMP_x4001
+	Compare VAR_TEMP_x4001, 5
+	GoToIfNe _03D0
+	ApplyMovement obj_D23R0101_gsrivel, _0670
+	Compare VAR_TEMP_x400B, 33
+	GoToIfNe _03CA
+	ApplyMovement obj_D23R0101_rocketm, _069C
 _03CA:
-	goto _03FA
+	GoTo _03FA
 
 _03D0:
-	compare VAR_TEMP_x4001, 6
-	goto_if_ne _03FA
-	apply_movement obj_D23R0101_gsrivel, _067C
-	compare VAR_TEMP_x400B, 11
-	goto_if_ne _03FA
-	apply_movement obj_D23R0101_rocketm, _06A8
+	Compare VAR_TEMP_x4001, 6
+	GoToIfNe _03FA
+	ApplyMovement obj_D23R0101_gsrivel, _067C
+	Compare VAR_TEMP_x400B, 11
+	GoToIfNe _03FA
+	ApplyMovement obj_D23R0101_rocketm, _06A8
 _03FA:
-	wait_movement
-	buffer_rivals_name 1
-	npc_msg msg_0065_D23R0101_00021
-	closemsg
-	apply_movement obj_D23R0101_gsrivel, _0664
-	wait_movement
-	compare VAR_TEMP_x4001, 5
-	goto_if_ne _0431
-	apply_movement obj_D23R0101_gsrivel, _0684
-	apply_movement obj_D23R0101_rocketm, _06B4
-	goto _044E
+	WaitMovement
+	BufferRivalsName 1
+	NPCMsg msg_0065_D23R0101_00021
+	CloseMsg
+	ApplyMovement obj_D23R0101_gsrivel, _0664
+	WaitMovement
+	Compare VAR_TEMP_x4001, 5
+	GoToIfNe _0431
+	ApplyMovement obj_D23R0101_gsrivel, _0684
+	ApplyMovement obj_D23R0101_rocketm, _06B4
+	GoTo _044E
 
 _0431:
-	compare VAR_TEMP_x4001, 6
-	goto_if_ne _044E
-	apply_movement obj_D23R0101_gsrivel, _0690
-	apply_movement obj_D23R0101_rocketm, _06C8
+	Compare VAR_TEMP_x4001, 6
+	GoToIfNe _044E
+	ApplyMovement obj_D23R0101_gsrivel, _0690
+	ApplyMovement obj_D23R0101_rocketm, _06C8
 _044E:
-	wait_movement
-	compare VAR_TEMP_x4001, 5
-	goto_if_ne _046B
-	apply_movement obj_player, _06E4
-	goto _0480
+	WaitMovement
+	Compare VAR_TEMP_x4001, 5
+	GoToIfNe _046B
+	ApplyMovement obj_player, _06E4
+	GoTo _0480
 
 _046B:
-	compare VAR_TEMP_x4001, 6
-	goto_if_ne _0480
-	apply_movement obj_player, _06EC
+	Compare VAR_TEMP_x4001, 6
+	GoToIfNe _0480
+	ApplyMovement obj_player, _06EC
 _0480:
-	wait_movement
-	buffer_players_name 0
-	buffer_rivals_name 1
-	npc_msg msg_0065_D23R0101_00022
-	closemsg
-	compare VAR_TEMP_x4001, 5
-	goto_if_ne _04A8
-	apply_movement obj_player, _06FC
-	goto _04BD
+	WaitMovement
+	BufferPlayersName 0
+	BufferRivalsName 1
+	NPCMsg msg_0065_D23R0101_00022
+	CloseMsg
+	Compare VAR_TEMP_x4001, 5
+	GoToIfNe _04A8
+	ApplyMovement obj_player, _06FC
+	GoTo _04BD
 
 _04A8:
-	compare VAR_TEMP_x4001, 6
-	goto_if_ne _04BD
-	apply_movement obj_player, _07BC
+	Compare VAR_TEMP_x4001, 6
+	GoToIfNe _04BD
+	ApplyMovement obj_player, _07BC
 _04BD:
-	wait 50, VAR_SPECIAL_RESULT
-	set_avatar_bits PLAYER_TRANSITION_WALKING
-	update_avatar_state
-	rocket_costume_flag_action 0
-	wait_movement
-	compare VAR_TEMP_x4001, 5
-	goto_if_ne _04E9
-	apply_movement obj_D23R0101_rocketm, _0874
-	goto _04FE
+	Wait 50, VAR_SPECIAL_RESULT
+	SetAvatarBits PLAYER_TRANSITION_WALKING
+	UpdateAvatarState
+	RocketCostumeFlagAction 0
+	WaitMovement
+	Compare VAR_TEMP_x4001, 5
+	GoToIfNe _04E9
+	ApplyMovement obj_D23R0101_rocketm, _0874
+	GoTo _04FE
 
 _04E9:
-	compare VAR_TEMP_x4001, 6
-	goto_if_ne _04FE
-	apply_movement obj_D23R0101_rocketm, _0890
+	Compare VAR_TEMP_x4001, 6
+	GoToIfNe _04FE
+	ApplyMovement obj_D23R0101_rocketm, _0890
 _04FE:
-	wait_movement
-	compare VAR_TEMP_x4001, 5
-	goto_if_ne _0523
-	apply_movement obj_D23R0101_rocketm, _08AC
-	apply_movement obj_D23R0101_gsrivel, _08BC
-	goto _0540
+	WaitMovement
+	Compare VAR_TEMP_x4001, 5
+	GoToIfNe _0523
+	ApplyMovement obj_D23R0101_rocketm, _08AC
+	ApplyMovement obj_D23R0101_gsrivel, _08BC
+	GoTo _0540
 
 _0523:
-	compare VAR_TEMP_x4001, 6
-	goto_if_ne _0540
-	apply_movement obj_D23R0101_rocketm, _08B4
-	apply_movement obj_D23R0101_gsrivel, _08D4
+	Compare VAR_TEMP_x4001, 6
+	GoToIfNe _0540
+	ApplyMovement obj_D23R0101_rocketm, _08B4
+	ApplyMovement obj_D23R0101_gsrivel, _08D4
 _0540:
-	wait_movement
-	npc_msg msg_0065_D23R0101_00023
-	closemsg
-	trainer_battle TRAINER_TEAM_ROCKET_GRUNT_3, 0, 0, 0
-	check_battle_won VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0655
-	npc_msg msg_0065_D23R0101_00024
-	closemsg
-	toggle_following_pokemon_movement 0
-	wait_following_pokemon_movement
-	following_pokemon_movement 56
-	compare VAR_TEMP_x4001, 5
-	goto_if_ne _0592
-	apply_movement obj_D23R0101_rocketm, _08EC
-	apply_movement obj_player, _0900
-	goto _05AF
+	WaitMovement
+	NPCMsg msg_0065_D23R0101_00023
+	CloseMsg
+	TrainerBattle TRAINER_TEAM_ROCKET_GRUNT_3, 0, 0, 0
+	CheckBattleWon VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0655
+	NPCMsg msg_0065_D23R0101_00024
+	CloseMsg
+	ToggleFollowingPokemonMovement 0
+	WaitFollowingPokemonMovement
+	FollowingPokemonMovement 56
+	Compare VAR_TEMP_x4001, 5
+	GoToIfNe _0592
+	ApplyMovement obj_D23R0101_rocketm, _08EC
+	ApplyMovement obj_player, _0900
+	GoTo _05AF
 
 _0592:
-	compare VAR_TEMP_x4001, 6
-	goto_if_ne _05AF
-	apply_movement obj_D23R0101_rocketm, _08F4
-	apply_movement obj_player, _0914
+	Compare VAR_TEMP_x4001, 6
+	GoToIfNe _05AF
+	ApplyMovement obj_D23R0101_rocketm, _08F4
+	ApplyMovement obj_player, _0914
 _05AF:
-	wait_movement
-	wait_following_pokemon_movement
-	toggle_following_pokemon_movement 1
-	following_pokemon_movement 48
-	hide_person obj_D23R0101_rocketm
-	callstd std_play_rival_outro_music
-	compare VAR_TEMP_x4001, 5
-	goto_if_ne _05DE
-	apply_movement obj_D23R0101_gsrivel, _0928
-	goto _05F3
+	WaitMovement
+	WaitFollowingPokemonMovement
+	ToggleFollowingPokemonMovement 1
+	FollowingPokemonMovement 48
+	HidePerson obj_D23R0101_rocketm
+	CallStd std_play_rival_outro_music
+	Compare VAR_TEMP_x4001, 5
+	GoToIfNe _05DE
+	ApplyMovement obj_D23R0101_gsrivel, _0928
+	GoTo _05F3
 
 _05DE:
-	compare VAR_TEMP_x4001, 6
-	goto_if_ne _05F3
-	apply_movement obj_D23R0101_gsrivel, _0930
+	Compare VAR_TEMP_x4001, 6
+	GoToIfNe _05F3
+	ApplyMovement obj_D23R0101_gsrivel, _0930
 _05F3:
-	wait_movement
-	compare VAR_TEMP_x4001, 5
-	goto_if_ne _0610
-	apply_movement obj_player, _06DC
-	goto _0625
+	WaitMovement
+	Compare VAR_TEMP_x4001, 5
+	GoToIfNe _0610
+	ApplyMovement obj_player, _06DC
+	GoTo _0625
 
 _0610:
-	compare VAR_TEMP_x4001, 6
-	goto_if_ne _0625
-	apply_movement obj_player, _06F4
+	Compare VAR_TEMP_x4001, 6
+	GoToIfNe _0625
+	ApplyMovement obj_player, _06F4
 _0625:
-	wait_movement
-	buffer_rivals_name 1
-	npc_msg msg_0065_D23R0101_00025
-	closemsg
-	apply_movement obj_D23R0101_gsrivel, _0938
-	wait_movement
-	hide_person obj_D23R0101_gsrivel
-	callstd std_fade_end_rival_outro_music
-	releaseall
-	setvar VAR_SCENE_ROCKET_TAKEOVER, 4
-	setflag FLAG_HIDE_RADIO_TOWER_RIVAL
-	setvar VAR_UNK_409F, 1
-	end
+	WaitMovement
+	BufferRivalsName 1
+	NPCMsg msg_0065_D23R0101_00025
+	CloseMsg
+	ApplyMovement obj_D23R0101_gsrivel, _0938
+	WaitMovement
+	HidePerson obj_D23R0101_gsrivel
+	CallStd std_fade_end_rival_outro_music
+	ReleaseAll
+	SetVar VAR_SCENE_ROCKET_TAKEOVER, 4
+	SetFlag FLAG_HIDE_RADIO_TOWER_RIVAL
+	SetVar VAR_UNK_409F, 1
+	End
 
 _0655:
-	setvar VAR_SCENE_ROCKET_TAKEOVER, 2
-	white_out
-	releaseall
-	end
+	SetVar VAR_SCENE_ROCKET_TAKEOVER, 2
+	WhiteOut
+	ReleaseAll
+	End
 
 	.balign 4, 0
 _0664:
@@ -734,168 +734,168 @@ _0938:
 	EndMovement
 
 scr_seq_D23R0101_006:
-	simple_npc_msg msg_0065_D23R0101_00026
-	end
+	SimpleNPCMsg msg_0065_D23R0101_00026
+	End
 
 scr_seq_D23R0101_007:
-	simple_npc_msg msg_0065_D23R0101_00027
-	end
+	SimpleNPCMsg msg_0065_D23R0101_00027
+	End
 
 scr_seq_D23R0101_001:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	compare VAR_UNK_4136, 0
-	goto_if_ne _0B86
-	goto_if_set FLAG_UNK_AA6, _09CF
-	goto_if_set FLAG_UNK_AA5, _09AF
-	npc_msg msg_0065_D23R0101_00028
-	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_RESULT
-	touchscreen_menu_show
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _09E5
-	goto _09DA
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	Compare VAR_UNK_4136, 0
+	GoToIfNe _0B86
+	GoToIfSet FLAG_UNK_AA6, _09CF
+	GoToIfSet FLAG_UNK_AA5, _09AF
+	NPCMsg msg_0065_D23R0101_00028
+	TouchscreenMenuHide
+	GetMenuChoice VAR_SPECIAL_RESULT
+	TouchscreenMenuShow
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _09E5
+	GoTo _09DA
 
 _09AF:
-	npc_msg msg_0065_D23R0101_00045
-	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_RESULT
-	touchscreen_menu_show
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _09E5
-	goto _09DA
-	end
+	NPCMsg msg_0065_D23R0101_00045
+	TouchscreenMenuHide
+	GetMenuChoice VAR_SPECIAL_RESULT
+	TouchscreenMenuShow
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _09E5
+	GoTo _09DA
+	End
 
 _09CF:
-	npc_msg msg_0065_D23R0101_00029
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0065_D23R0101_00029
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _09DA:
-	npc_msg msg_0065_D23R0101_00030
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0065_D23R0101_00030
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _09E5:
-	setflag FLAG_UNK_AA5
-	npc_msg msg_0065_D23R0101_00031
-	loto_id_get VAR_SPECIAL_x8000
-	buffer_int_ex 0, VAR_SPECIAL_x8000, 2, 5
-	npc_msg msg_0065_D23R0101_00032
-	loto_id_search VAR_SPECIAL_x8001, VAR_SPECIAL_x8002, VAR_SPECIAL_x8003, VAR_SPECIAL_x8000
-	compare VAR_SPECIAL_x8002, 0
-	goto_if_eq _0A24
-	compare VAR_SPECIAL_x8003, 0
-	goto_if_eq _0A2F
-	goto _0A3D
+	SetFlag FLAG_UNK_AA5
+	NPCMsg msg_0065_D23R0101_00031
+	LotoIDGet VAR_SPECIAL_x8000
+	BufferIntEx 0, VAR_SPECIAL_x8000, 2, 5
+	NPCMsg msg_0065_D23R0101_00032
+	LotoIDSearch VAR_SPECIAL_x8001, VAR_SPECIAL_x8002, VAR_SPECIAL_x8003, VAR_SPECIAL_x8000
+	Compare VAR_SPECIAL_x8002, 0
+	GoToIfEq _0A24
+	Compare VAR_SPECIAL_x8003, 0
+	GoToIfEq _0A2F
+	GoTo _0A3D
 
 _0A24:
-	npc_msg msg_0065_D23R0101_00035
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0065_D23R0101_00035
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0A2F:
-	bufferpartymonnick 0, VAR_SPECIAL_x8001
-	npc_msg msg_0065_D23R0101_00033
-	goto _0A4B
+	BufferPartyMonNick 0, VAR_SPECIAL_x8001
+	NPCMsg msg_0065_D23R0101_00033
+	GoTo _0A4B
 
 _0A3D:
-	bufferboxmonnick 0, VAR_SPECIAL_x8001
-	npc_msg msg_0065_D23R0101_00034
-	goto _0A4B
+	BufferBoxMonNick 0, VAR_SPECIAL_x8001
+	NPCMsg msg_0065_D23R0101_00034
+	GoTo _0A4B
 
 _0A4B:
-	switch VAR_SPECIAL_x8002
-	case 1, _0A94
-	case 2, _0A9F
-	case 3, _0AA8
-	case 4, _0AB1
-	case 5, _0ABA
-	end
+	Switch VAR_SPECIAL_x8002
+	Case 1, _0A94
+	Case 2, _0A9F
+	Case 3, _0AA8
+	Case 4, _0AB1
+	Case 5, _0ABA
+	End
 
 _0A94:
-	npc_msg msg_0065_D23R0101_00036
-	goto _0AC3
-	end
+	NPCMsg msg_0065_D23R0101_00036
+	GoTo _0AC3
+	End
 
 _0A9F:
-	npc_msg msg_0065_D23R0101_00038
-	goto _0AC3
+	NPCMsg msg_0065_D23R0101_00038
+	GoTo _0AC3
 
 _0AA8:
-	npc_msg msg_0065_D23R0101_00039
-	goto _0AC3
+	NPCMsg msg_0065_D23R0101_00039
+	GoTo _0AC3
 
 _0AB1:
-	npc_msg msg_0065_D23R0101_00040
-	goto _0AC3
+	NPCMsg msg_0065_D23R0101_00040
+	GoTo _0AC3
 
 _0ABA:
-	npc_msg msg_0065_D23R0101_00041
-	goto _0AC3
+	NPCMsg msg_0065_D23R0101_00041
+	GoTo _0AC3
 
 _0AC3:
-	switch VAR_SPECIAL_x8002
-	case 1, _0B0C
-	case 2, _0B1A
-	case 3, _0B26
-	case 4, _0B32
-	case 5, _0B3E
-	end
+	Switch VAR_SPECIAL_x8002
+	Case 1, _0B0C
+	Case 2, _0B1A
+	Case 3, _0B26
+	Case 4, _0B32
+	Case 5, _0B3E
+	End
 
 _0B0C:
-	setvar VAR_SPECIAL_x8003, 2
-	goto _0B4A
-	end
+	SetVar VAR_SPECIAL_x8003, 2
+	GoTo _0B4A
+	End
 
 _0B1A:
-	setvar VAR_SPECIAL_x8003, 51
-	goto _0B4A
+	SetVar VAR_SPECIAL_x8003, 51
+	GoTo _0B4A
 
 _0B26:
-	setvar VAR_SPECIAL_x8003, 216
-	goto _0B4A
+	SetVar VAR_SPECIAL_x8003, 216
+	GoTo _0B4A
 
 _0B32:
-	setvar VAR_SPECIAL_x8003, 29
-	goto _0B4A
+	SetVar VAR_SPECIAL_x8003, 29
+	GoTo _0B4A
 
 _0B3E:
-	setvar VAR_SPECIAL_x8003, 1
-	goto _0B4A
+	SetVar VAR_SPECIAL_x8003, 1
+	GoTo _0B4A
 
 _0B4A:
-	goto_if_no_item_space VAR_SPECIAL_x8003, 1, _0B75
-	callstd std_give_item_verbose
-	goto _0B98
+	GoToIfNoItemSpace VAR_SPECIAL_x8003, 1, _0B75
+	CallStd std_give_item_verbose
+	GoTo _0B98
 
 _0B75:
-	copyvar VAR_UNK_4136, VAR_SPECIAL_x8002
-	npc_msg msg_0065_D23R0101_00042
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	CopyVar VAR_UNK_4136, VAR_SPECIAL_x8002
+	NPCMsg msg_0065_D23R0101_00042
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0B86:
-	buffer_players_name 0
-	npc_msg msg_0065_D23R0101_00043
-	copyvar VAR_SPECIAL_x8002, VAR_UNK_4136
-	goto _0AC3
+	BufferPlayersName 0
+	NPCMsg msg_0065_D23R0101_00043
+	CopyVar VAR_SPECIAL_x8002, VAR_UNK_4136
+	GoTo _0AC3
 
 _0B98:
-	setvar VAR_UNK_4136, 0
-	setflag FLAG_UNK_AA6
-	npc_msg msg_0065_D23R0101_00044
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	SetVar VAR_UNK_4136, 0
+	SetFlag FLAG_UNK_AA6
+	NPCMsg msg_0065_D23R0101_00044
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 	.balign 4, 0

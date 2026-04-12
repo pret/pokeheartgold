@@ -5,133 +5,133 @@
 
 	.rodata
 
-	scrdef scr_seq_P01R0103_000
-	scrdef scr_seq_P01R0103_001
-	scrdef scr_seq_P01R0103_002
-	scrdef_end
+	ScrDef scr_seq_P01R0103_000
+	ScrDef scr_seq_P01R0103_001
+	ScrDef scr_seq_P01R0103_002
+	ScrDefEnd
 
 scr_seq_P01R0103_001:
-	scrcmd_445 VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 387
-	goto_if_eq _0021
-	end
+	ScrCmd_445 VAR_TEMP_x4000
+	Compare VAR_TEMP_x4000, 387
+	GoToIfEq _0021
+	End
 
 _0021:
-	set_object_facing obj_P01R0103_seaman_2, DIR_SOUTH
-	end
+	SetObjectFacing obj_P01R0103_seaman_2, DIR_SOUTH
+	End
 
 scr_seq_P01R0103_000:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	compare VAR_TEMP_x4002, 1
-	goto_if_ge _014D
-	get_player_facing VAR_TEMP_x4001
-	compare VAR_TEMP_x4001, 0
-	goto_if_eq _0158
-	get_weekday VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_ne _006C
-	goto _00EF
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	Compare VAR_TEMP_x4002, 1
+	GoToIfGe _014D
+	GetPlayerFacing VAR_TEMP_x4001
+	Compare VAR_TEMP_x4001, 0
+	GoToIfEq _0158
+	GetWeekday VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfNe _006C
+	GoTo _00EF
 
 _0066:
-	goto _00EF
+	GoTo _00EF
 
 _006C:
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_ne _0085
-	goto _0142
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfNe _0085
+	GoTo _0142
 
 _007F:
-	goto _00EF
+	GoTo _00EF
 
 _0085:
-	compare VAR_SPECIAL_RESULT, 2
-	goto_if_ne _009E
-	goto _0142
+	Compare VAR_SPECIAL_RESULT, 2
+	GoToIfNe _009E
+	GoTo _0142
 
 _0098:
-	goto _00EF
+	GoTo _00EF
 
 _009E:
-	compare VAR_SPECIAL_RESULT, 3
-	goto_if_ne _00B7
-	goto _00EF
+	Compare VAR_SPECIAL_RESULT, 3
+	GoToIfNe _00B7
+	GoTo _00EF
 
 _00B1:
-	goto _00EF
+	GoTo _00EF
 
 _00B7:
-	compare VAR_SPECIAL_RESULT, 4
-	goto_if_ne _00D0
-	goto _0142
+	Compare VAR_SPECIAL_RESULT, 4
+	GoToIfNe _00D0
+	GoTo _0142
 
 _00CA:
-	goto _00EF
+	GoTo _00EF
 
 _00D0:
-	compare VAR_SPECIAL_RESULT, 5
-	goto_if_ne _00E9
-	goto _0142
+	Compare VAR_SPECIAL_RESULT, 5
+	GoToIfNe _00E9
+	GoTo _0142
 
 _00E3:
-	goto _00EF
+	GoTo _00EF
 
 _00E9:
-	goto _0142
+	GoTo _0142
 
 _00EF:
-	npc_msg msg_0257_P01R0103_00000
-	closemsg
-	apply_movement obj_P01R0103_seaman_2, _0190
-	wait_movement
-	toggle_following_pokemon_movement 0
-	wait_following_pokemon_movement
-	following_pokemon_movement 55
-	apply_movement obj_player, _01B0
-	wait_movement
-	wait_following_pokemon_movement
-	toggle_following_pokemon_movement 1
-	following_pokemon_movement 48
-	setvar VAR_TEMP_x4002, 1
-	setvar VAR_BOAT_DIRECTION, 2
-	setvar VAR_UNK_40DC, 0
-	clearflag FLAG_BOAT_ARRIVED
-	setflag FLAG_UNK_22A
-	clearflag FLAG_UNK_22C
-	setflag FLAG_UNK_22B
-	releaseall
-	end
+	NPCMsg msg_0257_P01R0103_00000
+	CloseMsg
+	ApplyMovement obj_P01R0103_seaman_2, _0190
+	WaitMovement
+	ToggleFollowingPokemonMovement 0
+	WaitFollowingPokemonMovement
+	FollowingPokemonMovement 55
+	ApplyMovement obj_player, _01B0
+	WaitMovement
+	WaitFollowingPokemonMovement
+	ToggleFollowingPokemonMovement 1
+	FollowingPokemonMovement 48
+	SetVar VAR_TEMP_x4002, 1
+	SetVar VAR_BOAT_DIRECTION, 2
+	SetVar VAR_UNK_40DC, 0
+	ClearFlag FLAG_BOAT_ARRIVED
+	SetFlag FLAG_UNK_22A
+	ClearFlag FLAG_UNK_22C
+	SetFlag FLAG_UNK_22B
+	ReleaseAll
+	End
 
 _0142:
-	npc_msg msg_0257_P01R0103_00001
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0257_P01R0103_00001
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _014D:
-	npc_msg msg_0257_P01R0103_00002
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0257_P01R0103_00002
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0158:
-	apply_movement obj_P01R0103_seaman_2, _01B8
-	wait_movement
-	toggle_following_pokemon_movement 0
-	wait_following_pokemon_movement
-	following_pokemon_movement 55
-	apply_movement obj_player, _01D8
-	wait_movement
-	wait_following_pokemon_movement
-	toggle_following_pokemon_movement 1
-	following_pokemon_movement 48
-	apply_movement obj_P01R0103_seaman_2, _01E4
-	wait_movement
-	releaseall
-	end
+	ApplyMovement obj_P01R0103_seaman_2, _01B8
+	WaitMovement
+	ToggleFollowingPokemonMovement 0
+	WaitFollowingPokemonMovement
+	FollowingPokemonMovement 55
+	ApplyMovement obj_player, _01D8
+	WaitMovement
+	WaitFollowingPokemonMovement
+	ToggleFollowingPokemonMovement 1
+	FollowingPokemonMovement 48
+	ApplyMovement obj_P01R0103_seaman_2, _01E4
+	WaitMovement
+	ReleaseAll
+	End
 
 	.balign 4, 0
 _0190:
@@ -175,6 +175,6 @@ _01E4:
 	EndMovement
 
 scr_seq_P01R0103_002:
-	simple_npc_msg msg_0257_P01R0103_00003
-	end
+	SimpleNPCMsg msg_0257_P01R0103_00003
+	End
 	.balign 4, 0

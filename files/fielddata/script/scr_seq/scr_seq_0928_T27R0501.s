@@ -5,108 +5,108 @@
 
 	.rodata
 
-	scrdef scr_seq_T27R0501_000
-	scrdef scr_seq_T27R0501_001
-	scrdef scr_seq_T27R0501_002
-	scrdef scr_seq_T27R0501_003
-	scrdef scr_seq_T27R0501_004
-	scrdef scr_seq_T27R0501_005
-	scrdef scr_seq_T27R0501_006
-	scrdef scr_seq_T27R0501_007
-	scrdef scr_seq_T27R0501_008
-	scrdef scr_seq_T27R0501_009
-	scrdef scr_seq_T27R0501_010
-	scrdef scr_seq_T27R0501_011
-	scrdef scr_seq_T27R0501_012
-	scrdef scr_seq_T27R0501_013
-	scrdef scr_seq_T27R0501_014
-	scrdef scr_seq_T27R0501_015
-	scrdef scr_seq_T27R0501_016
-	scrdef_end
+	ScrDef scr_seq_T27R0501_000
+	ScrDef scr_seq_T27R0501_001
+	ScrDef scr_seq_T27R0501_002
+	ScrDef scr_seq_T27R0501_003
+	ScrDef scr_seq_T27R0501_004
+	ScrDef scr_seq_T27R0501_005
+	ScrDef scr_seq_T27R0501_006
+	ScrDef scr_seq_T27R0501_007
+	ScrDef scr_seq_T27R0501_008
+	ScrDef scr_seq_T27R0501_009
+	ScrDef scr_seq_T27R0501_010
+	ScrDef scr_seq_T27R0501_011
+	ScrDef scr_seq_T27R0501_012
+	ScrDef scr_seq_T27R0501_013
+	ScrDef scr_seq_T27R0501_014
+	ScrDef scr_seq_T27R0501_015
+	ScrDef scr_seq_T27R0501_016
+	ScrDefEnd
 
 scr_seq_T27R0501_013:
-	compare VAR_UNK_410C, 1
-	goto_if_gt _0057
-	make_object_visible obj_T27R0501_rocketm_2
+	Compare VAR_UNK_410C, 1
+	GoToIfGt _0057
+	MakeObjectVisible obj_T27R0501_rocketm_2
 _0057:
-	compare VAR_UNK_410C, 0
-	goto_if_ne _007C
-	move_person_facing obj_T27R0501_rocketm, 6, 0, 6, DIR_EAST
-	move_person_facing obj_T27R0501_dancer_3, 8, 0, 6, DIR_WEST
+	Compare VAR_UNK_410C, 0
+	GoToIfNe _007C
+	MovePersonFacing obj_T27R0501_rocketm, 6, 0, 6, DIR_EAST
+	MovePersonFacing obj_T27R0501_dancer_3, 8, 0, 6, DIR_WEST
 _007C:
-	compare VAR_TEMP_x4009, 222
-	goto_if_ne _0110
-	move_person_facing obj_T27R0501_rocketm, 29, 0, 29, DIR_SOUTH
-	make_object_visible obj_T27R0501_rocketm
-	get_player_facing VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 0
-	goto_if_ne _00BC
-	move_person_facing obj_T27R0501_rocketm_2, 7, 0, 6, DIR_SOUTH
-	goto _0106
+	Compare VAR_TEMP_x4009, 222
+	GoToIfNe _0110
+	MovePersonFacing obj_T27R0501_rocketm, 29, 0, 29, DIR_SOUTH
+	MakeObjectVisible obj_T27R0501_rocketm
+	GetPlayerFacing VAR_TEMP_x4000
+	Compare VAR_TEMP_x4000, 0
+	GoToIfNe _00BC
+	MovePersonFacing obj_T27R0501_rocketm_2, 7, 0, 6, DIR_SOUTH
+	GoTo _0106
 
 _00BC:
-	compare VAR_TEMP_x4000, 1
-	goto_if_ne _00DB
-	move_person_facing obj_T27R0501_rocketm_2, 7, 0, 6, DIR_NORTH
-	goto _0106
+	Compare VAR_TEMP_x4000, 1
+	GoToIfNe _00DB
+	MovePersonFacing obj_T27R0501_rocketm_2, 7, 0, 6, DIR_NORTH
+	GoTo _0106
 
 _00DB:
-	compare VAR_TEMP_x4000, 2
-	goto_if_ne _00FA
-	move_person_facing obj_T27R0501_rocketm_2, 7, 0, 6, DIR_EAST
-	goto _0106
+	Compare VAR_TEMP_x4000, 2
+	GoToIfNe _00FA
+	MovePersonFacing obj_T27R0501_rocketm_2, 7, 0, 6, DIR_EAST
+	GoTo _0106
 
 _00FA:
-	move_person_facing obj_T27R0501_rocketm_2, 7, 0, 6, DIR_WEST
+	MovePersonFacing obj_T27R0501_rocketm_2, 7, 0, 6, DIR_WEST
 _0106:
-	scrcmd_374 obj_T27R0501_rocketm_2
-	setvar VAR_TEMP_x4009, 0
+	ScrCmd_374 obj_T27R0501_rocketm_2
+	SetVar VAR_TEMP_x4009, 0
 _0110:
-	compare VAR_TEMP_x400A, 10
-	goto_if_eq _0136
-	compare VAR_UNK_410C, 3
-	goto_if_ne _0136
-	move_person_facing obj_T27R0501_dancer_3, 7, 0, 6, DIR_SOUTH
+	Compare VAR_TEMP_x400A, 10
+	GoToIfEq _0136
+	Compare VAR_UNK_410C, 3
+	GoToIfNe _0136
+	MovePersonFacing obj_T27R0501_dancer_3, 7, 0, 6, DIR_SOUTH
 _0136:
-	end
+	End
 
 scr_seq_T27R0501_015:
-	scrcmd_609
-	lockall
-	npc_msg msg_0618_T27R0501_00000
-	closemsg
-	apply_movement obj_T27R0501_rocketm, _01CC
-	wait_movement
-	get_player_coords VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
-	scrcmd_102 VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
-	apply_movement 241, _01D4
-	wait_movement
-	wait 10, VAR_SPECIAL_RESULT
-	apply_movement obj_T27R0501_rocketm, _01F0
-	wait_movement
-	npc_msg msg_0618_T27R0501_00001
-	closemsg
-	apply_movement obj_T27R0501_dancer_3, _01F8
-	wait_movement
-	npc_msg msg_0618_T27R0501_00002
-	closemsg
-	apply_movement obj_T27R0501_rocketm, _0200
-	wait_movement
-	npc_msg msg_0618_T27R0501_00003
-	closemsg
-	apply_movement obj_T27R0501_dancer_3, _0208
-	wait_movement
-	npc_msg msg_0618_T27R0501_00004
-	closemsg
-	apply_movement obj_T27R0501_rocketm, _0218
-	wait_movement
-	apply_movement obj_T27R0501_rocketm, _0220
-	apply_movement 241, _01DC
-	wait_movement
-	scrcmd_103
-	releaseall
-	setvar VAR_UNK_410C, 1
-	end
+	ScrCmd_609
+	LockAll
+	NPCMsg msg_0618_T27R0501_00000
+	CloseMsg
+	ApplyMovement obj_T27R0501_rocketm, _01CC
+	WaitMovement
+	GetPlayerCoords VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
+	ScrCmd_102 VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
+	ApplyMovement 241, _01D4
+	WaitMovement
+	Wait 10, VAR_SPECIAL_RESULT
+	ApplyMovement obj_T27R0501_rocketm, _01F0
+	WaitMovement
+	NPCMsg msg_0618_T27R0501_00001
+	CloseMsg
+	ApplyMovement obj_T27R0501_dancer_3, _01F8
+	WaitMovement
+	NPCMsg msg_0618_T27R0501_00002
+	CloseMsg
+	ApplyMovement obj_T27R0501_rocketm, _0200
+	WaitMovement
+	NPCMsg msg_0618_T27R0501_00003
+	CloseMsg
+	ApplyMovement obj_T27R0501_dancer_3, _0208
+	WaitMovement
+	NPCMsg msg_0618_T27R0501_00004
+	CloseMsg
+	ApplyMovement obj_T27R0501_rocketm, _0218
+	WaitMovement
+	ApplyMovement obj_T27R0501_rocketm, _0220
+	ApplyMovement 241, _01DC
+	WaitMovement
+	ScrCmd_103
+	ReleaseAll
+	SetVar VAR_UNK_410C, 1
+	End
 
 	.balign 4, 0
 _01CC:
@@ -215,76 +215,76 @@ _0220:
 	EndMovement
 
 scr_seq_T27R0501_003:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	stop_bgm 0
-	play_bgm SEQ_GS_EYE_ROCKET
-	npc_msg msg_0618_T27R0501_00005
-	closemsg
-	setvar VAR_TEMP_x4009, 222
-	trainer_battle TRAINER_TEAM_ROCKET_GRUNT_26, 0, 0, 0
-	check_battle_won VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _040C
-	npc_msg msg_0618_T27R0501_00006
-	closemsg
-	get_player_facing VAR_SPECIAL_x8004
-	compare VAR_SPECIAL_x8004, 0
-	goto_if_ne _0354
-	apply_movement obj_T27R0501_rocketm_2, _0414
-	goto _0392
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	StopBGM 0
+	PlayBGM SEQ_GS_EYE_ROCKET
+	NPCMsg msg_0618_T27R0501_00005
+	CloseMsg
+	SetVar VAR_TEMP_x4009, 222
+	TrainerBattle TRAINER_TEAM_ROCKET_GRUNT_26, 0, 0, 0
+	CheckBattleWon VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _040C
+	NPCMsg msg_0618_T27R0501_00006
+	CloseMsg
+	GetPlayerFacing VAR_SPECIAL_x8004
+	Compare VAR_SPECIAL_x8004, 0
+	GoToIfNe _0354
+	ApplyMovement obj_T27R0501_rocketm_2, _0414
+	GoTo _0392
 
 _0354:
-	compare VAR_SPECIAL_x8004, 1
-	goto_if_ne _036F
-	apply_movement obj_T27R0501_rocketm_2, _0424
-	goto _0392
+	Compare VAR_SPECIAL_x8004, 1
+	GoToIfNe _036F
+	ApplyMovement obj_T27R0501_rocketm_2, _0424
+	GoTo _0392
 
 _036F:
-	compare VAR_SPECIAL_x8004, 2
-	goto_if_ne _038A
-	apply_movement obj_T27R0501_rocketm_2, _0434
-	goto _0392
+	Compare VAR_SPECIAL_x8004, 2
+	GoToIfNe _038A
+	ApplyMovement obj_T27R0501_rocketm_2, _0434
+	GoTo _0392
 
 _038A:
-	apply_movement obj_T27R0501_rocketm_2, _0444
+	ApplyMovement obj_T27R0501_rocketm_2, _0444
 _0392:
-	wait_movement
-	npc_msg msg_0618_T27R0501_00007
-	closemsg
-	compare VAR_SPECIAL_x8004, 0
-	goto_if_ne _03B4
-	apply_movement obj_T27R0501_rocketm_2, _0454
-	goto _03F2
+	WaitMovement
+	NPCMsg msg_0618_T27R0501_00007
+	CloseMsg
+	Compare VAR_SPECIAL_x8004, 0
+	GoToIfNe _03B4
+	ApplyMovement obj_T27R0501_rocketm_2, _0454
+	GoTo _03F2
 
 _03B4:
-	compare VAR_SPECIAL_x8004, 1
-	goto_if_ne _03CF
-	apply_movement obj_T27R0501_rocketm_2, _0460
-	goto _03F2
+	Compare VAR_SPECIAL_x8004, 1
+	GoToIfNe _03CF
+	ApplyMovement obj_T27R0501_rocketm_2, _0460
+	GoTo _03F2
 
 _03CF:
-	compare VAR_SPECIAL_x8004, 2
-	goto_if_ne _03EA
-	apply_movement obj_T27R0501_rocketm_2, _046C
-	goto _03F2
+	Compare VAR_SPECIAL_x8004, 2
+	GoToIfNe _03EA
+	ApplyMovement obj_T27R0501_rocketm_2, _046C
+	GoTo _03F2
 
 _03EA:
-	apply_movement obj_T27R0501_rocketm_2, _0478
+	ApplyMovement obj_T27R0501_rocketm_2, _0478
 _03F2:
-	wait_movement
-	hide_person obj_T27R0501_rocketm_2
-	setflag FLAG_UNK_23A
-	releaseall
-	setvar VAR_UNK_410C, 2
-	setvar VAR_TEMP_x400A, 10
-	end
+	WaitMovement
+	HidePerson obj_T27R0501_rocketm_2
+	SetFlag FLAG_UNK_23A
+	ReleaseAll
+	SetVar VAR_UNK_410C, 2
+	SetVar VAR_TEMP_x400A, 10
+	End
 
 _040C:
-	white_out
-	releaseall
-	end
+	WhiteOut
+	ReleaseAll
+	End
 
 	.balign 4, 0
 _0414:
@@ -340,93 +340,93 @@ _0478:
 	EndMovement
 
 scr_seq_T27R0501_004:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	compare VAR_UNK_410C, 1
-	goto_if_eq _04B5
-	compare VAR_TEMP_x400A, 10
-	goto_if_eq _04C0
-	npc_msg msg_0618_T27R0501_00010
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	Compare VAR_UNK_410C, 1
+	GoToIfEq _04B5
+	Compare VAR_TEMP_x400A, 10
+	GoToIfEq _04C0
+	NPCMsg msg_0618_T27R0501_00010
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _04B5:
-	npc_msg msg_0618_T27R0501_00008
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0618_T27R0501_00008
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _04C0:
-	buffer_players_name 0
-	npc_msg msg_0618_T27R0501_00009
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	BufferPlayersName 0
+	NPCMsg msg_0618_T27R0501_00009
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_T27R0501_011:
-	scrcmd_609
-	lockall
-	apply_movement obj_T27R0501_gsgentleman, _05B4
-	wait_movement
-	npc_msg msg_0618_T27R0501_00026
-	goto_if_no_item_space ITEM_HM03, 1, _05A9
-	callstd std_give_item_verbose
-	setflag FLAG_GOT_HM03
-	setvar VAR_UNK_410C, 3
-	setvar VAR_UNK_4090, 1
-	npc_msg msg_0618_T27R0501_00028
-	closemsg
-	apply_movement obj_T27R0501_gsgentleman, _05C4
-	wait_movement
-	releaseall
-	end
+	ScrCmd_609
+	LockAll
+	ApplyMovement obj_T27R0501_gsgentleman, _05B4
+	WaitMovement
+	NPCMsg msg_0618_T27R0501_00026
+	GoToIfNoItemSpace ITEM_HM03, 1, _05A9
+	CallStd std_give_item_verbose
+	SetFlag FLAG_GOT_HM03
+	SetVar VAR_UNK_410C, 3
+	SetVar VAR_UNK_4090, 1
+	NPCMsg msg_0618_T27R0501_00028
+	CloseMsg
+	ApplyMovement obj_T27R0501_gsgentleman, _05C4
+	WaitMovement
+	ReleaseAll
+	End
 
 scr_seq_T27R0501_012:
-	scrcmd_609
-	lockall
-	apply_movement obj_T27R0501_gsgentleman, _05D8
-	wait_movement
-	npc_msg msg_0618_T27R0501_00026
-	goto_if_no_item_space ITEM_HM03, 1, _05A9
-	callstd std_give_item_verbose
-	setflag FLAG_GOT_HM03
-	setvar VAR_UNK_4090, 1
-	setvar VAR_UNK_410C, 3
-	npc_msg msg_0618_T27R0501_00028
-	closemsg
-	apply_movement obj_T27R0501_gsgentleman, _05E8
-	wait_movement
-	releaseall
-	end
+	ScrCmd_609
+	LockAll
+	ApplyMovement obj_T27R0501_gsgentleman, _05D8
+	WaitMovement
+	NPCMsg msg_0618_T27R0501_00026
+	GoToIfNoItemSpace ITEM_HM03, 1, _05A9
+	CallStd std_give_item_verbose
+	SetFlag FLAG_GOT_HM03
+	SetVar VAR_UNK_4090, 1
+	SetVar VAR_UNK_410C, 3
+	NPCMsg msg_0618_T27R0501_00028
+	CloseMsg
+	ApplyMovement obj_T27R0501_gsgentleman, _05E8
+	WaitMovement
+	ReleaseAll
+	End
 
 scr_seq_T27R0501_000:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	goto_if_set FLAG_GOT_HM03, _059E
-	npc_msg msg_0618_T27R0501_00025
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	GoToIfSet FLAG_GOT_HM03, _059E
+	NPCMsg msg_0618_T27R0501_00025
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _059E:
-	npc_msg msg_0618_T27R0501_00029
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0618_T27R0501_00029
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _05A9:
-	callstd std_bag_is_full
-	closemsg
-	releaseall
-	end
+	CallStd std_bag_is_full
+	CloseMsg
+	ReleaseAll
+	End
 
 	.balign 4, 0
 _05B4:
@@ -459,182 +459,182 @@ _05E8:
 	EndMovement
 
 scr_seq_T27R0501_001:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	play_cry SPECIES_PSYDUCK, 0
-	npc_msg msg_0618_T27R0501_00030
-	wait_cry
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	PlayCry SPECIES_PSYDUCK, 0
+	NPCMsg msg_0618_T27R0501_00030
+	WaitCry
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_T27R0501_002:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	compare VAR_TEMP_x400A, 10
-	goto_if_eq _0644
-	compare VAR_UNK_410C, 1
-	goto_if_eq _064F
-	npc_msg msg_0618_T27R0501_00031
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	Compare VAR_TEMP_x400A, 10
+	GoToIfEq _0644
+	Compare VAR_UNK_410C, 1
+	GoToIfEq _064F
+	NPCMsg msg_0618_T27R0501_00031
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0644:
-	npc_msg msg_0618_T27R0501_00033
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0618_T27R0501_00033
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _064F:
-	compare VAR_TEMP_x400B, 0
-	goto_if_ne _0665
-	npc_msg msg_0618_T27R0501_00032
-	goto _067E
+	Compare VAR_TEMP_x400B, 0
+	GoToIfNe _0665
+	NPCMsg msg_0618_T27R0501_00032
+	GoTo _067E
 
 _0665:
-	compare VAR_TEMP_x400B, 1
-	goto_if_ne _067B
-	npc_msg msg_0618_T27R0501_00034
-	goto _067E
+	Compare VAR_TEMP_x400B, 1
+	GoToIfNe _067B
+	NPCMsg msg_0618_T27R0501_00034
+	GoTo _067E
 
 _067B:
-	npc_msg msg_0618_T27R0501_00035
+	NPCMsg msg_0618_T27R0501_00035
 _067E:
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	compare VAR_TEMP_x400B, 2
-	goto_if_ge _069D
-	addvar VAR_TEMP_x400B, 1
-	goto _06A3
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	Compare VAR_TEMP_x400B, 2
+	GoToIfGe _069D
+	AddVar VAR_TEMP_x400B, 1
+	GoTo _06A3
 
 _069D:
-	setvar VAR_TEMP_x400B, 0
+	SetVar VAR_TEMP_x400B, 0
 _06A3:
-	end
+	End
 
 scr_seq_T27R0501_014:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	compare VAR_TEMP_x400A, 10
-	goto_if_eq _06D2
-	compare VAR_UNK_410C, 1
-	goto_if_eq _06DD
-	npc_msg msg_0618_T27R0501_00036
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	Compare VAR_TEMP_x400A, 10
+	GoToIfEq _06D2
+	Compare VAR_UNK_410C, 1
+	GoToIfEq _06DD
+	NPCMsg msg_0618_T27R0501_00036
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _06D2:
-	npc_msg msg_0618_T27R0501_00038
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0618_T27R0501_00038
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _06DD:
-	npc_msg msg_0618_T27R0501_00037
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0618_T27R0501_00037
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_T27R0501_010:
-	simple_npc_msg msg_0618_T27R0501_00039
-	end
+	SimpleNPCMsg msg_0618_T27R0501_00039
+	End
 
 scr_seq_T27R0501_005:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	goto_if_set FLAG_UNK_108, _0724
-	goto_if_set FLAG_UNK_109, _0724
-	npc_msg msg_0618_T27R0501_00019
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	GoToIfSet FLAG_UNK_108, _0724
+	GoToIfSet FLAG_UNK_109, _0724
+	NPCMsg msg_0618_T27R0501_00019
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0724:
-	npc_msg msg_0618_T27R0501_00040
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0618_T27R0501_00040
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_T27R0501_006:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	goto_if_set FLAG_UNK_108, _0758
-	goto_if_set FLAG_UNK_109, _0758
-	npc_msg msg_0618_T27R0501_00019
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	GoToIfSet FLAG_UNK_108, _0758
+	GoToIfSet FLAG_UNK_109, _0758
+	NPCMsg msg_0618_T27R0501_00019
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0758:
-	npc_msg msg_0618_T27R0501_00041
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0618_T27R0501_00041
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_T27R0501_007:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	setvar VAR_SPECIAL_x8000, 77
-	goto_if_set FLAG_UNK_108, _0868
-	goto_if_set FLAG_UNK_109, _0868
-	npc_msg msg_0618_T27R0501_00013
-	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x8004
-	touchscreen_menu_show
-	compare VAR_SPECIAL_x8004, 1
-	goto_if_eq _0BD3
-	closemsg
-	get_player_facing VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	call_if_ne _07BA
-	goto _0944
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	SetVar VAR_SPECIAL_x8000, 77
+	GoToIfSet FLAG_UNK_108, _0868
+	GoToIfSet FLAG_UNK_109, _0868
+	NPCMsg msg_0618_T27R0501_00013
+	TouchscreenMenuHide
+	GetMenuChoice VAR_SPECIAL_x8004
+	TouchscreenMenuShow
+	Compare VAR_SPECIAL_x8004, 1
+	GoToIfEq _0BD3
+	CloseMsg
+	GetPlayerFacing VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	CallIfNe _07BA
+	GoTo _0944
+	End
 
 _07BA:
-	toggle_following_pokemon_movement 0
-	wait_following_pokemon_movement
-	following_pokemon_movement 55
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_ne _07DF
-	apply_movement obj_player, _0828
-	goto _080F
+	ToggleFollowingPokemonMovement 0
+	WaitFollowingPokemonMovement
+	FollowingPokemonMovement 55
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfNe _07DF
+	ApplyMovement obj_player, _0828
+	GoTo _080F
 
 _07DF:
-	compare VAR_SPECIAL_RESULT, 2
-	goto_if_ne _07FA
-	apply_movement obj_player, _083C
-	goto _080F
+	Compare VAR_SPECIAL_RESULT, 2
+	GoToIfNe _07FA
+	ApplyMovement obj_player, _083C
+	GoTo _080F
 
 _07FA:
-	compare VAR_SPECIAL_RESULT, 3
-	goto_if_ne _080F
-	apply_movement obj_player, _084C
+	Compare VAR_SPECIAL_RESULT, 3
+	GoToIfNe _080F
+	ApplyMovement obj_player, _084C
 _080F:
-	apply_movement obj_T27R0501_dancer_6, _085C
-	wait_movement
-	wait_following_pokemon_movement
-	toggle_following_pokemon_movement 1
-	following_pokemon_movement 48
-	return
+	ApplyMovement obj_T27R0501_dancer_6, _085C
+	WaitMovement
+	WaitFollowingPokemonMovement
+	ToggleFollowingPokemonMovement 1
+	FollowingPokemonMovement 48
+	Return
 
 	.balign 4, 0
 _0828:
@@ -665,238 +665,238 @@ _085C:
 	EndMovement
 
 _0868:
-	buffer_players_name 0
-	npc_msg msg_0618_T27R0501_00042
-	wait_button_or_walk_away
-	closemsg
-	setflag FLAG_UNK_107
-	releaseall
-	end
+	BufferPlayersName 0
+	NPCMsg msg_0618_T27R0501_00042
+	WaitButton
+	CloseMsg
+	SetFlag FLAG_UNK_107
+	ReleaseAll
+	End
 
 scr_seq_T27R0501_008:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	goto_if_set FLAG_UNK_108, _08A3
-	goto_if_set FLAG_UNK_109, _08A3
-	npc_msg msg_0618_T27R0501_00019
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	GoToIfSet FLAG_UNK_108, _08A3
+	GoToIfSet FLAG_UNK_109, _08A3
+	NPCMsg msg_0618_T27R0501_00019
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _08A3:
-	npc_msg msg_0618_T27R0501_00043
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0618_T27R0501_00043
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_T27R0501_009:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	goto_if_set FLAG_UNK_108, _08D7
-	goto_if_set FLAG_UNK_109, _08D7
-	npc_msg msg_0618_T27R0501_00019
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	GoToIfSet FLAG_UNK_108, _08D7
+	GoToIfSet FLAG_UNK_109, _08D7
+	NPCMsg msg_0618_T27R0501_00019
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _08D7:
-	npc_msg msg_0618_T27R0501_00044
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0618_T27R0501_00044
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_T27R0501_016:
-	scrcmd_609
-	lockall
-	setvar VAR_SPECIAL_x8000, 11
-	setvar VAR_UNK_410C, 5
-	toggle_following_pokemon_movement 0
-	wait_following_pokemon_movement
-	following_pokemon_movement 55
-	apply_movement obj_player, _0BF4
-	wait_movement
-	wait_following_pokemon_movement
-	toggle_following_pokemon_movement 1
-	following_pokemon_movement 48
-	get_game_version VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 7
-	goto_if_ne _092A
-	npc_msg msg_0618_T27R0501_00011
-	goto _092D
+	ScrCmd_609
+	LockAll
+	SetVar VAR_SPECIAL_x8000, 11
+	SetVar VAR_UNK_410C, 5
+	ToggleFollowingPokemonMovement 0
+	WaitFollowingPokemonMovement
+	FollowingPokemonMovement 55
+	ApplyMovement obj_player, _0BF4
+	WaitMovement
+	WaitFollowingPokemonMovement
+	ToggleFollowingPokemonMovement 1
+	FollowingPokemonMovement 48
+	GetGameVersion VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 7
+	GoToIfNe _092A
+	NPCMsg msg_0618_T27R0501_00011
+	GoTo _092D
 
 _092A:
-	npc_msg msg_0618_T27R0501_00012
+	NPCMsg msg_0618_T27R0501_00012
 _092D:
-	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x8004
-	touchscreen_menu_show
-	compare VAR_SPECIAL_x8004, 1
-	goto_if_eq _0BD3
-	closemsg
+	TouchscreenMenuHide
+	GetMenuChoice VAR_SPECIAL_x8004
+	TouchscreenMenuShow
+	Compare VAR_SPECIAL_x8004, 1
+	GoToIfEq _0BD3
+	CloseMsg
 _0944:
-	stop_bgm 30
-	play_bgm SEQ_GS_EYE_MAIKO
-	apply_movement obj_T27R0501_dancer_6, _0D74
-	wait_movement
-	npc_msg msg_0618_T27R0501_00045
-	closemsg
-	wait 10, VAR_SPECIAL_RESULT
-	trainer_battle TRAINER_KIMONO_GIRL_ZUKI, 0, 0, 0
-	check_battle_won VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0BC9
-	apply_movement obj_T27R0501_dancer_6, _0C0C
-	wait_movement
-	stop_bgm 30
-	play_bgm SEQ_GS_EYE_MAIKO
-	apply_movement obj_T27R0501_dancer, _0C18
-	wait_movement
-	npc_msg msg_0618_T27R0501_00015
-	closemsg
-	trainer_battle TRAINER_KIMONO_GIRL_NAOKO, 0, 0, 0
-	check_battle_won VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0BC9
-	apply_movement obj_T27R0501_dancer, _0C48
-	wait_movement
-	stop_bgm 30
-	play_bgm SEQ_GS_EYE_MAIKO
-	apply_movement obj_T27R0501_dancer_5, _0C54
-	wait_movement
-	npc_msg msg_0618_T27R0501_00016
-	closemsg
-	trainer_battle TRAINER_KIMONO_GIRL_MIKI, 0, 0, 0
-	check_battle_won VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0BC9
-	apply_movement obj_T27R0501_dancer_5, _0C84
-	wait_movement
-	stop_bgm 30
-	play_bgm SEQ_GS_EYE_MAIKO
-	apply_movement obj_T27R0501_dancer_2, _0C90
-	wait_movement
-	npc_msg msg_0618_T27R0501_00017
-	closemsg
-	trainer_battle TRAINER_KIMONO_GIRL_SAYO, 0, 0, 0
-	check_battle_won VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0BC9
-	apply_movement obj_T27R0501_dancer_2, _0CBC
-	wait_movement
-	stop_bgm 30
-	play_bgm SEQ_GS_EYE_MAIKO
-	apply_movement obj_T27R0501_dancer_4, _0CCC
-	wait_movement
-	npc_msg msg_0618_T27R0501_00018
-	closemsg
-	trainer_battle TRAINER_KIMONO_GIRL_KUNI, 0, 0, 0
-	check_battle_won VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0BC9
-	apply_movement obj_T27R0501_dancer_4, _0CF8
-	wait_movement
-	apply_movement obj_T27R0501_dancer_6, _0D08
-	wait_movement
-	npc_msg msg_0618_T27R0501_00020
-	get_game_version VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 7
-	goto_if_ne _0AA4
-	giveitem_no_check ITEM_CLEAR_BELL, 1
-	setflag FLAG_UNK_103
-	goto _0AB8
+	StopBGM 30
+	PlayBGM SEQ_GS_EYE_MAIKO
+	ApplyMovement obj_T27R0501_dancer_6, _0D74
+	WaitMovement
+	NPCMsg msg_0618_T27R0501_00045
+	CloseMsg
+	Wait 10, VAR_SPECIAL_RESULT
+	TrainerBattle TRAINER_KIMONO_GIRL_ZUKI, 0, 0, 0
+	CheckBattleWon VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0BC9
+	ApplyMovement obj_T27R0501_dancer_6, _0C0C
+	WaitMovement
+	StopBGM 30
+	PlayBGM SEQ_GS_EYE_MAIKO
+	ApplyMovement obj_T27R0501_dancer, _0C18
+	WaitMovement
+	NPCMsg msg_0618_T27R0501_00015
+	CloseMsg
+	TrainerBattle TRAINER_KIMONO_GIRL_NAOKO, 0, 0, 0
+	CheckBattleWon VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0BC9
+	ApplyMovement obj_T27R0501_dancer, _0C48
+	WaitMovement
+	StopBGM 30
+	PlayBGM SEQ_GS_EYE_MAIKO
+	ApplyMovement obj_T27R0501_dancer_5, _0C54
+	WaitMovement
+	NPCMsg msg_0618_T27R0501_00016
+	CloseMsg
+	TrainerBattle TRAINER_KIMONO_GIRL_MIKI, 0, 0, 0
+	CheckBattleWon VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0BC9
+	ApplyMovement obj_T27R0501_dancer_5, _0C84
+	WaitMovement
+	StopBGM 30
+	PlayBGM SEQ_GS_EYE_MAIKO
+	ApplyMovement obj_T27R0501_dancer_2, _0C90
+	WaitMovement
+	NPCMsg msg_0618_T27R0501_00017
+	CloseMsg
+	TrainerBattle TRAINER_KIMONO_GIRL_SAYO, 0, 0, 0
+	CheckBattleWon VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0BC9
+	ApplyMovement obj_T27R0501_dancer_2, _0CBC
+	WaitMovement
+	StopBGM 30
+	PlayBGM SEQ_GS_EYE_MAIKO
+	ApplyMovement obj_T27R0501_dancer_4, _0CCC
+	WaitMovement
+	NPCMsg msg_0618_T27R0501_00018
+	CloseMsg
+	TrainerBattle TRAINER_KIMONO_GIRL_KUNI, 0, 0, 0
+	CheckBattleWon VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0BC9
+	ApplyMovement obj_T27R0501_dancer_4, _0CF8
+	WaitMovement
+	ApplyMovement obj_T27R0501_dancer_6, _0D08
+	WaitMovement
+	NPCMsg msg_0618_T27R0501_00020
+	GetGameVersion VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 7
+	GoToIfNe _0AA4
+	GiveItemNoCheck ITEM_CLEAR_BELL, 1
+	SetFlag FLAG_UNK_103
+	GoTo _0AB8
 
 _0AA4:
-	giveitem_no_check ITEM_TIDAL_BELL, 1
-	setflag FLAG_UNK_104
+	GiveItemNoCheck ITEM_TIDAL_BELL, 1
+	SetFlag FLAG_UNK_104
 _0AB8:
-	closemsg
-	play_se SEQ_SE_DP_KI_GASYAN
-	screen_shake 0, 2, 10, 6
-	wait_se SEQ_SE_DP_KI_GASYAN
-	clearflag FLAG_HIDE_DANCE_STUDIO_LITTLE_GIRL
-	show_person obj_T27R0501_gsbabygirl1
-	apply_movement obj_T27R0501_gsbabygirl1, _0D10
-	wait_movement
-	apply_movement obj_T27R0501_dancer_6, _0BEC
-	wait_movement
-	get_game_version VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 7
-	goto_if_ne _0B02
-	npc_msg msg_0618_T27R0501_00021
-	goto _0B05
+	CloseMsg
+	PlaySE SEQ_SE_DP_KI_GASYAN
+	ScreenShake 0, 2, 10, 6
+	WaitSE SEQ_SE_DP_KI_GASYAN
+	ClearFlag FLAG_HIDE_DANCE_STUDIO_LITTLE_GIRL
+	ShowPerson obj_T27R0501_gsbabygirl1
+	ApplyMovement obj_T27R0501_gsbabygirl1, _0D10
+	WaitMovement
+	ApplyMovement obj_T27R0501_dancer_6, _0BEC
+	WaitMovement
+	GetGameVersion VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 7
+	GoToIfNe _0B02
+	NPCMsg msg_0618_T27R0501_00021
+	GoTo _0B05
 
 _0B02:
-	npc_msg msg_0618_T27R0501_00022
+	NPCMsg msg_0618_T27R0501_00022
 _0B05:
-	closemsg
-	apply_movement obj_T27R0501_dancer_6, _0BE4
-	wait_movement
-	buffer_players_name 0
-	compare VAR_SPECIAL_RESULT, 7
-	goto_if_ne _0B2A
-	npc_msg msg_0618_T27R0501_00023
-	goto _0B2D
+	CloseMsg
+	ApplyMovement obj_T27R0501_dancer_6, _0BE4
+	WaitMovement
+	BufferPlayersName 0
+	Compare VAR_SPECIAL_RESULT, 7
+	GoToIfNe _0B2A
+	NPCMsg msg_0618_T27R0501_00023
+	GoTo _0B2D
 
 _0B2A:
-	npc_msg msg_0618_T27R0501_00024
+	NPCMsg msg_0618_T27R0501_00024
 _0B2D:
-	closemsg
-	apply_movement obj_T27R0501_dancer, _0D1C
-	apply_movement obj_T27R0501_dancer_2, _0D28
-	apply_movement obj_T27R0501_dancer_6, _0D38
-	apply_movement obj_T27R0501_dancer_4, _0D48
-	apply_movement obj_T27R0501_dancer_5, _0D58
-	apply_movement obj_T27R0501_gsbabygirl1, _0D64
-	wait_movement
-	hide_person obj_T27R0501_dancer
-	hide_person obj_T27R0501_dancer_2
-	hide_person obj_T27R0501_dancer_6
-	hide_person obj_T27R0501_dancer_4
-	hide_person obj_T27R0501_dancer_5
-	hide_person obj_T27R0501_gsbabygirl1
-	setflag FLAG_HIDE_DANCE_STUDIO_KIMONO_GIRLS
-	setflag FLAG_HIDE_DANCE_STUDIO_LITTLE_GIRL
-	call _0BB0
-	setvar VAR_UNK_410C, 6
-	setvar VAR_UNK_40FA, 1
-	compare VAR_SPECIAL_RESULT, 7
-	goto_if_ne _0BAA
-	clearflag FLAG_HIDE_BELL_TOWER_SUMMIT_KIMONO_GIRLS
-	goto _0BAE
+	CloseMsg
+	ApplyMovement obj_T27R0501_dancer, _0D1C
+	ApplyMovement obj_T27R0501_dancer_2, _0D28
+	ApplyMovement obj_T27R0501_dancer_6, _0D38
+	ApplyMovement obj_T27R0501_dancer_4, _0D48
+	ApplyMovement obj_T27R0501_dancer_5, _0D58
+	ApplyMovement obj_T27R0501_gsbabygirl1, _0D64
+	WaitMovement
+	HidePerson obj_T27R0501_dancer
+	HidePerson obj_T27R0501_dancer_2
+	HidePerson obj_T27R0501_dancer_6
+	HidePerson obj_T27R0501_dancer_4
+	HidePerson obj_T27R0501_dancer_5
+	HidePerson obj_T27R0501_gsbabygirl1
+	SetFlag FLAG_HIDE_DANCE_STUDIO_KIMONO_GIRLS
+	SetFlag FLAG_HIDE_DANCE_STUDIO_LITTLE_GIRL
+	Call _0BB0
+	SetVar VAR_UNK_410C, 6
+	SetVar VAR_UNK_40FA, 1
+	Compare VAR_SPECIAL_RESULT, 7
+	GoToIfNe _0BAA
+	ClearFlag FLAG_HIDE_BELL_TOWER_SUMMIT_KIMONO_GIRLS
+	GoTo _0BAE
 
 _0BAA:
-	clearflag FLAG_HIDE_WHIRL_ISLANDS_BOTTOM_KIMONO_GIRLS
+	ClearFlag FLAG_HIDE_WHIRL_ISLANDS_BOTTOM_KIMONO_GIRLS
 _0BAE:
-	end
+	End
 
 _0BB0:
-	compare VAR_SPECIAL_x8000, 77
-	goto_if_ne _0BC5
-	releaseall
-	goto _0BC7
+	Compare VAR_SPECIAL_x8000, 77
+	GoToIfNe _0BC5
+	ReleaseAll
+	GoTo _0BC7
 
 _0BC5:
-	releaseall
+	ReleaseAll
 _0BC7:
-	return
+	Return
 
 _0BC9:
-	white_out
-	call _0BB0
-	end
+	WhiteOut
+	Call _0BB0
+	End
 
 _0BD3:
-	npc_msg msg_0618_T27R0501_00014
-	wait_button_or_walk_away
-	closemsg
-	call _0BB0
-	end
+	NPCMsg msg_0618_T27R0501_00014
+	WaitButton
+	CloseMsg
+	Call _0BB0
+	End
 
 	.balign 4, 0
 _0BE4:

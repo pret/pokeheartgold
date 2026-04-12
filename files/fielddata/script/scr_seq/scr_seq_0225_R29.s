@@ -5,345 +5,345 @@
 
 	.rodata
 
-	scrdef scr_seq_R29_000
-	scrdef scr_seq_R29_001
-	scrdef scr_seq_R29_002
-	scrdef scr_seq_R29_003
-	scrdef scr_seq_R29_004
-	scrdef scr_seq_R29_005
-	scrdef scr_seq_R29_006
-	scrdef scr_seq_R29_007
-	scrdef scr_seq_R29_008
-	scrdef_end
+	ScrDef scr_seq_R29_000
+	ScrDef scr_seq_R29_001
+	ScrDef scr_seq_R29_002
+	ScrDef scr_seq_R29_003
+	ScrDef scr_seq_R29_004
+	ScrDef scr_seq_R29_005
+	ScrDef scr_seq_R29_006
+	ScrDef scr_seq_R29_007
+	ScrDef scr_seq_R29_008
+	ScrDefEnd
 
 scr_seq_R29_000:
-	get_friend_sprite VAR_OBJ_1
-	check_badge BADGE_ZEPHYR, VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 1
-	goto_if_eq _0043
-	setflag FLAG_UNK_207
-	end
+	GetFriendSprite VAR_OBJ_1
+	CheckBadge BADGE_ZEPHYR, VAR_TEMP_x4000
+	Compare VAR_TEMP_x4000, 1
+	GoToIfEq _0043
+	SetFlag FLAG_UNK_207
+	End
 
 _0043:
-	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 2
-	goto_if_ne _005E
-	clearflag FLAG_UNK_207
-	goto _0062
+	GetWeekday VAR_TEMP_x4000
+	Compare VAR_TEMP_x4000, 2
+	GoToIfNe _005E
+	ClearFlag FLAG_UNK_207
+	GoTo _0062
 
 _005E:
-	setflag FLAG_UNK_207
+	SetFlag FLAG_UNK_207
 _0062:
-	end
+	End
 
 scr_seq_R29_003:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	get_party_lead_alive VAR_SPECIAL_x8002
-	mon_has_ribbon VAR_SPECIAL_RESULT, VAR_SPECIAL_x8002, RIBBON_SHOCK
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _018A
-	goto_if_set FLAG_DAILY_GOT_SHOCK_RIBBON, _019E
-	compare VAR_NUM_MET_WEEKDAY_SIBLINGS, 7
-	goto_if_eq _0138
-	goto_if_set FLAG_GOT_TWISTEDSPOON_FROM_TUSCANY, _011A
-	get_weekday VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 2
-	goto_if_eq _00CB
-	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 7
-	goto _0112
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	GetPartyLeadAlive VAR_SPECIAL_x8002
+	MonHasRibbon VAR_SPECIAL_RESULT, VAR_SPECIAL_x8002, RIBBON_SHOCK
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _018A
+	GoToIfSet FLAG_DAILY_GOT_SHOCK_RIBBON, _019E
+	Compare VAR_NUM_MET_WEEKDAY_SIBLINGS, 7
+	GoToIfEq _0138
+	GoToIfSet FLAG_GOT_TWISTEDSPOON_FROM_TUSCANY, _011A
+	GetWeekday VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 2
+	GoToIfEq _00CB
+	GetStdMsgNaix 0, VAR_SPECIAL_RESULT
+	MsgBoxExtern VAR_SPECIAL_RESULT, 7
+	GoTo _0112
 
 _00CB:
-	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 4
-	goto_if_no_item_space ITEM_TWISTEDSPOON, 1, _012E
-	callstd std_give_item_verbose
-	setflag FLAG_GOT_TWISTEDSPOON_FROM_TUSCANY
-	addvar VAR_NUM_MET_WEEKDAY_SIBLINGS, 1
-	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 5
+	GetStdMsgNaix 0, VAR_SPECIAL_RESULT
+	MsgBoxExtern VAR_SPECIAL_RESULT, 4
+	GoToIfNoItemSpace ITEM_TWISTEDSPOON, 1, _012E
+	CallStd std_give_item_verbose
+	SetFlag FLAG_GOT_TWISTEDSPOON_FROM_TUSCANY
+	AddVar VAR_NUM_MET_WEEKDAY_SIBLINGS, 1
+	GetStdMsgNaix 0, VAR_SPECIAL_RESULT
+	MsgBoxExtern VAR_SPECIAL_RESULT, 5
 _0112:
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _011A:
-	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 6
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	GetStdMsgNaix 0, VAR_SPECIAL_RESULT
+	MsgBoxExtern VAR_SPECIAL_RESULT, 6
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _012E:
-	callstd std_bag_is_full
-	closemsg
-	releaseall
-	end
+	CallStd std_bag_is_full
+	CloseMsg
+	ReleaseAll
+	End
 
 _0138:
-	get_weekday VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 2
-	goto_if_eq _015B
-	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 7
-	goto _0112
+	GetWeekday VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 2
+	GoToIfEq _015B
+	GetStdMsgNaix 0, VAR_SPECIAL_RESULT
+	MsgBoxExtern VAR_SPECIAL_RESULT, 7
+	GoTo _0112
 
 _015B:
-	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 32
-	buffer_mon_species_name 0, VAR_SPECIAL_x8002
-	msgbox_extern VAR_SPECIAL_RESULT, 34
-	give_ribbon VAR_SPECIAL_x8002, RIBBON_SHOCK
-	play_fanfare SEQ_ME_ITEM
-	wait_fanfare
-	setflag FLAG_DAILY_GOT_SHOCK_RIBBON
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	GetStdMsgNaix 0, VAR_SPECIAL_RESULT
+	MsgBoxExtern VAR_SPECIAL_RESULT, 32
+	BufferMonSpeciesName 0, VAR_SPECIAL_x8002
+	MsgBoxExtern VAR_SPECIAL_RESULT, 34
+	GiveRibbon VAR_SPECIAL_x8002, RIBBON_SHOCK
+	PlayFanfare SEQ_ME_ITEM
+	WaitFanfare
+	SetFlag FLAG_DAILY_GOT_SHOCK_RIBBON
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _018A:
-	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 33
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	GetStdMsgNaix 0, VAR_SPECIAL_RESULT
+	MsgBoxExtern VAR_SPECIAL_RESULT, 33
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _019E:
-	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 35
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	GetStdMsgNaix 0, VAR_SPECIAL_RESULT
+	MsgBoxExtern VAR_SPECIAL_RESULT, 35
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_R29_001:
-	scrcmd_609
-	lockall
-	play_cry SPECIES_MARILL, 0
-	wait_cry
-	apply_movement obj_R29_tsure_poke_static_marill, _05C4
-	wait_movement
-	apply_movement obj_R29_var_2, _05D8
-	wait_movement
-	callstd std_play_friend_music
-	gender_msgbox msg_0373_R29_00017, msg_0373_R29_00018
-	closemsg
-	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
-	release obj_R29_tsure_poke_static_marill
-	compare VAR_TEMP_x4001, 396
-	goto_if_ne _0209
-	apply_movement obj_R29_var_2, _0660
-	apply_movement obj_R29_tsure_poke_static_marill, _06D4
-	goto _02D5
+	ScrCmd_609
+	LockAll
+	PlayCry SPECIES_MARILL, 0
+	WaitCry
+	ApplyMovement obj_R29_tsure_poke_static_marill, _05C4
+	WaitMovement
+	ApplyMovement obj_R29_var_2, _05D8
+	WaitMovement
+	CallStd std_play_friend_music
+	GenderMsgBox msg_0373_R29_00017, msg_0373_R29_00018
+	CloseMsg
+	GetPlayerCoords VAR_TEMP_x4000, VAR_TEMP_x4001
+	Release obj_R29_tsure_poke_static_marill
+	Compare VAR_TEMP_x4001, 396
+	GoToIfNe _0209
+	ApplyMovement obj_R29_var_2, _0660
+	ApplyMovement obj_R29_tsure_poke_static_marill, _06D4
+	GoTo _02D5
 
 _0209:
-	compare VAR_TEMP_x4001, 397
-	goto_if_ne _022C
-	apply_movement obj_R29_var_2, _067C
-	apply_movement obj_R29_tsure_poke_static_marill, _06F4
-	goto _02D5
+	Compare VAR_TEMP_x4001, 397
+	GoToIfNe _022C
+	ApplyMovement obj_R29_var_2, _067C
+	ApplyMovement obj_R29_tsure_poke_static_marill, _06F4
+	GoTo _02D5
 
 _022C:
-	compare VAR_TEMP_x4001, 398
-	goto_if_ne _024F
-	apply_movement obj_R29_var_2, _068C
-	apply_movement obj_R29_tsure_poke_static_marill, _0708
-	goto _02D5
+	Compare VAR_TEMP_x4001, 398
+	GoToIfNe _024F
+	ApplyMovement obj_R29_var_2, _068C
+	ApplyMovement obj_R29_tsure_poke_static_marill, _0708
+	GoTo _02D5
 
 _024F:
-	compare VAR_TEMP_x4001, 399
-	goto_if_ne _0272
-	apply_movement obj_R29_var_2, _069C
-	apply_movement obj_R29_tsure_poke_static_marill, _071C
-	goto _02D5
+	Compare VAR_TEMP_x4001, 399
+	GoToIfNe _0272
+	ApplyMovement obj_R29_var_2, _069C
+	ApplyMovement obj_R29_tsure_poke_static_marill, _071C
+	GoTo _02D5
 
 _0272:
-	compare VAR_TEMP_x4001, 400
-	goto_if_ne _0295
-	apply_movement obj_R29_var_2, _06AC
-	apply_movement obj_R29_tsure_poke_static_marill, _0730
-	goto _02D5
+	Compare VAR_TEMP_x4001, 400
+	GoToIfNe _0295
+	ApplyMovement obj_R29_var_2, _06AC
+	ApplyMovement obj_R29_tsure_poke_static_marill, _0730
+	GoTo _02D5
 
 _0295:
-	compare VAR_TEMP_x4001, 401
-	goto_if_ne _02B8
-	apply_movement obj_R29_var_2, _06B4
-	apply_movement obj_R29_tsure_poke_static_marill, _073C
-	goto _02D5
+	Compare VAR_TEMP_x4001, 401
+	GoToIfNe _02B8
+	ApplyMovement obj_R29_var_2, _06B4
+	ApplyMovement obj_R29_tsure_poke_static_marill, _073C
+	GoTo _02D5
 
 _02B8:
-	compare VAR_TEMP_x4001, 402
-	goto_if_ne _02D5
-	apply_movement obj_R29_var_2, _06C4
-	apply_movement obj_R29_tsure_poke_static_marill, _0750
+	Compare VAR_TEMP_x4001, 402
+	GoToIfNe _02D5
+	ApplyMovement obj_R29_var_2, _06C4
+	ApplyMovement obj_R29_tsure_poke_static_marill, _0750
 _02D5:
-	wait_movement
-	lock obj_R29_tsure_poke_static_marill
-	buffer_players_name 0
-	gender_msgbox msg_0373_R29_00000, msg_0373_R29_00001
-	closemsg
-	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
-	get_player_gender VAR_TEMP_x4002
-	toggle_following_pokemon_movement 0
-	wait_following_pokemon_movement
-	following_pokemon_movement 55
-	compare VAR_TEMP_x4001, 396
-	goto_if_ne _033E
-	apply_movement obj_R29_var_2, _0764
-	apply_movement obj_R29_tsure_poke_static_marill, _07B4
-	compare VAR_TEMP_x4002, 0
-	goto_if_ne _0330
-	apply_movement obj_player, _0820
-	goto _0338
+	WaitMovement
+	Lock obj_R29_tsure_poke_static_marill
+	BufferPlayersName 0
+	GenderMsgBox msg_0373_R29_00000, msg_0373_R29_00001
+	CloseMsg
+	GetPlayerCoords VAR_TEMP_x4000, VAR_TEMP_x4001
+	GetPlayerGender VAR_TEMP_x4002
+	ToggleFollowingPokemonMovement 0
+	WaitFollowingPokemonMovement
+	FollowingPokemonMovement 55
+	Compare VAR_TEMP_x4001, 396
+	GoToIfNe _033E
+	ApplyMovement obj_R29_var_2, _0764
+	ApplyMovement obj_R29_tsure_poke_static_marill, _07B4
+	Compare VAR_TEMP_x4002, 0
+	GoToIfNe _0330
+	ApplyMovement obj_player, _0820
+	GoTo _0338
 
 _0330:
-	apply_movement obj_player, _08A4
+	ApplyMovement obj_player, _08A4
 _0338:
-	goto _04DC
+	GoTo _04DC
 
 _033E:
-	compare VAR_TEMP_x4001, 397
-	goto_if_ne _0384
-	apply_movement obj_R29_var_2, _0770
-	apply_movement obj_R29_tsure_poke_static_marill, _07C4
-	compare VAR_TEMP_x4002, 0
-	goto_if_ne _0376
-	apply_movement obj_player, _0834
-	goto _037E
+	Compare VAR_TEMP_x4001, 397
+	GoToIfNe _0384
+	ApplyMovement obj_R29_var_2, _0770
+	ApplyMovement obj_R29_tsure_poke_static_marill, _07C4
+	Compare VAR_TEMP_x4002, 0
+	GoToIfNe _0376
+	ApplyMovement obj_player, _0834
+	GoTo _037E
 
 _0376:
-	apply_movement obj_player, _08B8
+	ApplyMovement obj_player, _08B8
 _037E:
-	goto _04DC
+	GoTo _04DC
 
 _0384:
-	compare VAR_TEMP_x4001, 398
-	goto_if_ne _03CA
-	apply_movement obj_R29_var_2, _077C
-	apply_movement obj_R29_tsure_poke_static_marill, _07D4
-	compare VAR_TEMP_x4002, 0
-	goto_if_ne _03BC
-	apply_movement obj_player, _0848
-	goto _03C4
+	Compare VAR_TEMP_x4001, 398
+	GoToIfNe _03CA
+	ApplyMovement obj_R29_var_2, _077C
+	ApplyMovement obj_R29_tsure_poke_static_marill, _07D4
+	Compare VAR_TEMP_x4002, 0
+	GoToIfNe _03BC
+	ApplyMovement obj_player, _0848
+	GoTo _03C4
 
 _03BC:
-	apply_movement obj_player, _08CC
+	ApplyMovement obj_player, _08CC
 _03C4:
-	goto _04DC
+	GoTo _04DC
 
 _03CA:
-	compare VAR_TEMP_x4001, 399
-	goto_if_ne _0410
-	apply_movement obj_R29_var_2, _0788
-	apply_movement obj_R29_tsure_poke_static_marill, _07E4
-	compare VAR_TEMP_x4002, 0
-	goto_if_ne _0402
-	apply_movement obj_player, _085C
-	goto _040A
+	Compare VAR_TEMP_x4001, 399
+	GoToIfNe _0410
+	ApplyMovement obj_R29_var_2, _0788
+	ApplyMovement obj_R29_tsure_poke_static_marill, _07E4
+	Compare VAR_TEMP_x4002, 0
+	GoToIfNe _0402
+	ApplyMovement obj_player, _085C
+	GoTo _040A
 
 _0402:
-	apply_movement obj_player, _08E0
+	ApplyMovement obj_player, _08E0
 _040A:
-	goto _04DC
+	GoTo _04DC
 
 _0410:
-	compare VAR_TEMP_x4001, 400
-	goto_if_ne _0456
-	apply_movement obj_R29_var_2, _0794
-	apply_movement obj_R29_tsure_poke_static_marill, _07F4
-	compare VAR_TEMP_x4002, 0
-	goto_if_ne _0448
-	apply_movement obj_player, _0870
-	goto _0450
+	Compare VAR_TEMP_x4001, 400
+	GoToIfNe _0456
+	ApplyMovement obj_R29_var_2, _0794
+	ApplyMovement obj_R29_tsure_poke_static_marill, _07F4
+	Compare VAR_TEMP_x4002, 0
+	GoToIfNe _0448
+	ApplyMovement obj_player, _0870
+	GoTo _0450
 
 _0448:
-	apply_movement obj_player, _08F4
+	ApplyMovement obj_player, _08F4
 _0450:
-	goto _04DC
+	GoTo _04DC
 
 _0456:
-	compare VAR_TEMP_x4001, 401
-	goto_if_ne _049C
-	apply_movement obj_R29_var_2, _07A0
-	apply_movement obj_R29_tsure_poke_static_marill, _0804
-	compare VAR_TEMP_x4002, 0
-	goto_if_ne _048E
-	apply_movement obj_player, _0884
-	goto _0496
+	Compare VAR_TEMP_x4001, 401
+	GoToIfNe _049C
+	ApplyMovement obj_R29_var_2, _07A0
+	ApplyMovement obj_R29_tsure_poke_static_marill, _0804
+	Compare VAR_TEMP_x4002, 0
+	GoToIfNe _048E
+	ApplyMovement obj_player, _0884
+	GoTo _0496
 
 _048E:
-	apply_movement obj_player, _0908
+	ApplyMovement obj_player, _0908
 _0496:
-	goto _04DC
+	GoTo _04DC
 
 _049C:
-	compare VAR_TEMP_x4001, 402
-	goto_if_ne _04DC
-	apply_movement obj_R29_var_2, _07AC
-	apply_movement obj_R29_tsure_poke_static_marill, _0814
-	compare VAR_TEMP_x4002, 0
-	goto_if_ne _04D4
-	apply_movement obj_player, _0898
-	goto _04DC
+	Compare VAR_TEMP_x4001, 402
+	GoToIfNe _04DC
+	ApplyMovement obj_R29_var_2, _07AC
+	ApplyMovement obj_R29_tsure_poke_static_marill, _0814
+	Compare VAR_TEMP_x4002, 0
+	GoToIfNe _04D4
+	ApplyMovement obj_player, _0898
+	GoTo _04DC
 
 _04D4:
-	apply_movement obj_player, _091C
+	ApplyMovement obj_player, _091C
 _04DC:
-	wait_movement
-	wait_following_pokemon_movement
-	toggle_following_pokemon_movement 1
-	following_pokemon_movement 48
-	compare VAR_TEMP_x4002, 0
-	call_if_eq _0559
-	wait 10, VAR_SPECIAL_RESULT
-	catching_tutorial
-	apply_movement obj_R29_var_2, _064C
-	apply_movement obj_R29_tsure_poke_static_marill, _0654
-	wait_movement
-	gender_msgbox msg_0373_R29_00003, msg_0373_R29_00004
-	giveitem_no_check ITEM_POKE_BALL, 5
-	gender_msgbox msg_0373_R29_00007, msg_0373_R29_00008
-	closemsg
-	apply_movement obj_R29_var_2, _0928
-	apply_movement obj_R29_tsure_poke_static_marill, _093C
-	wait_movement
-	hide_person obj_R29_var_2
-	hide_person obj_R29_tsure_poke_static_marill
-	setflag FLAG_HIDE_ROUTE_29_FRIEND
-	setflag FLAG_HIDE_ROUTE_29_MARILL
-	setvar VAR_UNK_408B, 0
-	setflag FLAG_UNK_09A
-	releaseall
-	end
+	WaitMovement
+	WaitFollowingPokemonMovement
+	ToggleFollowingPokemonMovement 1
+	FollowingPokemonMovement 48
+	Compare VAR_TEMP_x4002, 0
+	CallIfEq _0559
+	Wait 10, VAR_SPECIAL_RESULT
+	CatchingTutorial
+	ApplyMovement obj_R29_var_2, _064C
+	ApplyMovement obj_R29_tsure_poke_static_marill, _0654
+	WaitMovement
+	GenderMsgBox msg_0373_R29_00003, msg_0373_R29_00004
+	GiveItemNoCheck ITEM_POKE_BALL, 5
+	GenderMsgBox msg_0373_R29_00007, msg_0373_R29_00008
+	CloseMsg
+	ApplyMovement obj_R29_var_2, _0928
+	ApplyMovement obj_R29_tsure_poke_static_marill, _093C
+	WaitMovement
+	HidePerson obj_R29_var_2
+	HidePerson obj_R29_tsure_poke_static_marill
+	SetFlag FLAG_HIDE_ROUTE_29_FRIEND
+	SetFlag FLAG_HIDE_ROUTE_29_MARILL
+	SetVar VAR_UNK_408B, 0
+	SetFlag FLAG_UNK_09A
+	ReleaseAll
+	End
 
 _0559:
-	apply_movement obj_R29_var_2, _05BC
-	wait_movement
-	apply_movement obj_R29_var_2, _05E4
-	apply_movement obj_R29_tsure_poke_static_marill, _0600
-	wait_movement
-	apply_movement obj_R29_var_2, _061C
-	apply_movement obj_R29_tsure_poke_static_marill, _0624
-	wait_movement
-	npc_msg msg_0373_R29_00002
-	closemsg
-	toggle_following_pokemon_movement 0
-	wait_following_pokemon_movement
-	following_pokemon_movement 55
-	apply_movement obj_R29_var_2, _062C
-	apply_movement obj_R29_tsure_poke_static_marill, _0634
-	apply_movement obj_player, _0640
-	wait_movement
-	wait_following_pokemon_movement
-	toggle_following_pokemon_movement 1
-	following_pokemon_movement 48
-	return
+	ApplyMovement obj_R29_var_2, _05BC
+	WaitMovement
+	ApplyMovement obj_R29_var_2, _05E4
+	ApplyMovement obj_R29_tsure_poke_static_marill, _0600
+	WaitMovement
+	ApplyMovement obj_R29_var_2, _061C
+	ApplyMovement obj_R29_tsure_poke_static_marill, _0624
+	WaitMovement
+	NPCMsg msg_0373_R29_00002
+	CloseMsg
+	ToggleFollowingPokemonMovement 0
+	WaitFollowingPokemonMovement
+	FollowingPokemonMovement 55
+	ApplyMovement obj_R29_var_2, _062C
+	ApplyMovement obj_R29_tsure_poke_static_marill, _0634
+	ApplyMovement obj_player, _0640
+	WaitMovement
+	WaitFollowingPokemonMovement
+	ToggleFollowingPokemonMovement 1
+	FollowingPokemonMovement 48
+	Return
 
 	.balign 4, 0
 _05BC:
@@ -744,60 +744,60 @@ _093C:
 	EndMovement
 
 scr_seq_R29_002:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	scrcmd_379 VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_ne _0976
-	npc_msg msg_0373_R29_00012
-	goto _09A5
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	ScrCmd_379 VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfNe _0976
+	NPCMsg msg_0373_R29_00012
+	GoTo _09A5
 
 _0976:
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_ne _098C
-	npc_msg msg_0373_R29_00013
-	goto _09A5
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfNe _098C
+	NPCMsg msg_0373_R29_00013
+	GoTo _09A5
 
 _098C:
-	compare VAR_SPECIAL_RESULT, 2
-	goto_if_ne _09A2
-	npc_msg msg_0373_R29_00013
-	goto _09A5
+	Compare VAR_SPECIAL_RESULT, 2
+	GoToIfNe _09A2
+	NPCMsg msg_0373_R29_00013
+	GoTo _09A5
 
 _09A2:
-	npc_msg msg_0373_R29_00014
+	NPCMsg msg_0373_R29_00014
 _09A5:
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_R29_004:
-	direction_signpost msg_0373_R29_00016, 1, 1, VAR_SPECIAL_RESULT
-	scrcmd_057 3
-	scrcmd_058
-	scrcmd_060 VAR_SPECIAL_RESULT
-	callstd std_signpost
-	end
+	DirectionSignpost msg_0373_R29_00016, 1, 1, VAR_SPECIAL_RESULT
+	ScrCmd_057 3
+	ScrCmd_058
+	ScrCmd_060 VAR_SPECIAL_RESULT
+	CallStd std_signpost
+	End
 
 scr_seq_R29_005:
-	direction_signpost msg_0373_R29_00015, 1, 2, VAR_SPECIAL_RESULT
-	scrcmd_057 3
-	scrcmd_058
-	scrcmd_060 VAR_SPECIAL_RESULT
-	callstd std_signpost
-	end
+	DirectionSignpost msg_0373_R29_00015, 1, 2, VAR_SPECIAL_RESULT
+	ScrCmd_057 3
+	ScrCmd_058
+	ScrCmd_060 VAR_SPECIAL_RESULT
+	CallStd std_signpost
+	End
 
 scr_seq_R29_006:
-	simple_npc_msg msg_0373_R29_00009
-	end
+	SimpleNPCMsg msg_0373_R29_00009
+	End
 
 scr_seq_R29_007:
-	simple_npc_msg msg_0373_R29_00011
-	end
+	SimpleNPCMsg msg_0373_R29_00011
+	End
 
 scr_seq_R29_008:
-	simple_npc_msg msg_0373_R29_00010
-	end
+	SimpleNPCMsg msg_0373_R29_00010
+	End
 	.balign 4, 0

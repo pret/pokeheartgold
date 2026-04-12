@@ -5,166 +5,166 @@
 
 	.rodata
 
-	scrdef scr_seq_T22GYM0101_000
-	scrdef scr_seq_T22GYM0101_001
-	scrdef scr_seq_T22GYM0101_002
-	scrdef scr_seq_T22GYM0101_003
-	scrdef scr_seq_T22GYM0101_004
-	scrdef scr_seq_T22GYM0101_005
-	scrdef_end
+	ScrDef scr_seq_T22GYM0101_000
+	ScrDef scr_seq_T22GYM0101_001
+	ScrDef scr_seq_T22GYM0101_002
+	ScrDef scr_seq_T22GYM0101_003
+	ScrDef scr_seq_T22GYM0101_004
+	ScrDef scr_seq_T22GYM0101_005
+	ScrDefEnd
 
 scr_seq_T22GYM0101_000:
-	violet_gym_init
-	get_phone_book_rematch PHONE_CONTACT_FALKNER, VAR_TEMP_x4001
-	compare VAR_TEMP_x4001, 0
-	goto_if_ne _00A7
-	check_registered_phone_number PHONE_CONTACT_FALKNER, VAR_TEMP_x4001
-	compare VAR_TEMP_x4001, 1
-	goto_if_eq _007E
-	check_badge BADGE_SOUL, VAR_TEMP_x4001
-	compare VAR_TEMP_x4001, 1
-	goto_if_eq _005B
-	goto _00A1
+	VioletGymInit
+	GetPhoneBookRematch PHONE_CONTACT_FALKNER, VAR_TEMP_x4001
+	Compare VAR_TEMP_x4001, 0
+	GoToIfNe _00A7
+	CheckRegisteredPhoneNumber PHONE_CONTACT_FALKNER, VAR_TEMP_x4001
+	Compare VAR_TEMP_x4001, 1
+	GoToIfEq _007E
+	CheckBadge BADGE_SOUL, VAR_TEMP_x4001
+	Compare VAR_TEMP_x4001, 1
+	GoToIfEq _005B
+	GoTo _00A1
 
 _005B:
-	get_weekday VAR_TEMP_x4001
-	compare VAR_TEMP_x4001, 1
-	goto_if_ne _0076
-	setflag FLAG_HIDE_VIOLET_GYM_FALKNER
-	goto _007C
+	GetWeekday VAR_TEMP_x4001
+	Compare VAR_TEMP_x4001, 1
+	GoToIfNe _0076
+	SetFlag FLAG_HIDE_VIOLET_GYM_FALKNER
+	GoTo _007C
 
 _0076:
-	goto _00A1
+	GoTo _00A1
 
 _007C:
-	end
+	End
 
 _007E:
-	get_weekday VAR_TEMP_x4001
-	compare VAR_TEMP_x4001, 3
-	goto_if_ne _0099
-	setflag FLAG_HIDE_VIOLET_GYM_FALKNER
-	goto _009F
+	GetWeekday VAR_TEMP_x4001
+	Compare VAR_TEMP_x4001, 3
+	GoToIfNe _0099
+	SetFlag FLAG_HIDE_VIOLET_GYM_FALKNER
+	GoTo _009F
 
 _0099:
-	goto _00A1
+	GoTo _00A1
 
 _009F:
-	end
+	End
 
 _00A1:
-	clearflag FLAG_HIDE_VIOLET_GYM_FALKNER
-	end
+	ClearFlag FLAG_HIDE_VIOLET_GYM_FALKNER
+	End
 
 _00A7:
-	setflag FLAG_HIDE_VIOLET_GYM_FALKNER
-	end
+	SetFlag FLAG_HIDE_VIOLET_GYM_FALKNER
+	End
 
 scr_seq_T22GYM0101_001:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	check_badge BADGE_ZEPHYR, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _0168
-	npc_msg msg_0558_T22GYM0101_00000
-	closemsg
-	trainer_battle TRAINER_LEADER_FALKNER_FALKNER, 0, 0, 0
-	check_battle_won VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _017E
-	give_badge BADGE_ZEPHYR
-	add_special_game_stat SCORE_EVENT_BADGE_GET
-	settrainerflag TRAINER_BIRD_KEEPER_GS_ROD
-	settrainerflag TRAINER_BIRD_KEEPER_GS_ABE
-	setvar VAR_SCENE_VIOLET_CITY_OW, 1
-	setflag FLAG_UNK_192
-	setvar VAR_SCENE_ELMS_LAB, 6
-	setflag FLAG_UNK_0F4
-	setflag FLAG_HIDE_WIFI_CLUB_CLOSED_LADY
-	npc_msg msg_0558_T22GYM0101_00001
-	buffer_players_name 0
-	npc_msg msg_0558_T22GYM0101_00002
-	play_fanfare SEQ_ME_BADGE
-	wait_fanfare
-	npc_msg msg_0558_T22GYM0101_00003
-	goto _0126
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	CheckBadge BADGE_ZEPHYR, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _0168
+	NPCMsg msg_0558_T22GYM0101_00000
+	CloseMsg
+	TrainerBattle TRAINER_LEADER_FALKNER_FALKNER, 0, 0, 0
+	CheckBattleWon VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _017E
+	GiveBadge BADGE_ZEPHYR
+	AddSpecialGameStat SCORE_EVENT_BADGE_GET
+	SetTrainerFlag TRAINER_BIRD_KEEPER_GS_ROD
+	SetTrainerFlag TRAINER_BIRD_KEEPER_GS_ABE
+	SetVar VAR_SCENE_VIOLET_CITY_OW, 1
+	SetFlag FLAG_UNK_192
+	SetVar VAR_SCENE_ELMS_LAB, 6
+	SetFlag FLAG_UNK_0F4
+	SetFlag FLAG_HIDE_WIFI_CLUB_CLOSED_LADY
+	NPCMsg msg_0558_T22GYM0101_00001
+	BufferPlayersName 0
+	NPCMsg msg_0558_T22GYM0101_00002
+	PlayFanfare SEQ_ME_BADGE
+	WaitFanfare
+	NPCMsg msg_0558_T22GYM0101_00003
+	GoTo _0126
 
 _0126:
-	goto_if_no_item_space ITEM_TM51, 1, _015E
-	callstd std_give_item_verbose
-	setflag FLAG_GOT_TM51_FROM_FALKNER
-	clearflag FLAG_HIDE_NEW_BARK_FRIENDS_ROOM_FRIEND
-	npc_msg msg_0558_T22GYM0101_00004
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	GoToIfNoItemSpace ITEM_TM51, 1, _015E
+	CallStd std_give_item_verbose
+	SetFlag FLAG_GOT_TM51_FROM_FALKNER
+	ClearFlag FLAG_HIDE_NEW_BARK_FRIENDS_ROOM_FRIEND
+	NPCMsg msg_0558_T22GYM0101_00004
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _015E:
-	callstd std_bag_is_full
-	closemsg
-	releaseall
-	end
+	CallStd std_bag_is_full
+	CloseMsg
+	ReleaseAll
+	End
 
 _0168:
-	goto_if_unset FLAG_GOT_TM51_FROM_FALKNER, _0126
-	npc_msg msg_0558_T22GYM0101_00005
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	GoToIfUnset FLAG_GOT_TM51_FROM_FALKNER, _0126
+	NPCMsg msg_0558_T22GYM0101_00005
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _017E:
-	white_out
-	releaseall
-	end
+	WhiteOut
+	ReleaseAll
+	End
 
 scr_seq_T22GYM0101_002:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	check_badge BADGE_ZEPHYR, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _01AA
-	npc_msg msg_0558_T22GYM0101_00007
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	CheckBadge BADGE_ZEPHYR, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _01AA
+	NPCMsg msg_0558_T22GYM0101_00007
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _01AA:
-	npc_msg msg_0558_T22GYM0101_00008
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0558_T22GYM0101_00008
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_T22GYM0101_005:
-	simple_npc_msg msg_0558_T22GYM0101_00006
-	end
+	SimpleNPCMsg msg_0558_T22GYM0101_00006
+	End
 
 scr_seq_T22GYM0101_003:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	check_badge BADGE_ZEPHYR, VAR_SPECIAL_RESULT
-	buffer_players_name 0
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_ne _01EF
-	npc_msg msg_0558_T22GYM0101_00009
-	goto _01F2
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	CheckBadge BADGE_ZEPHYR, VAR_SPECIAL_RESULT
+	BufferPlayersName 0
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfNe _01EF
+	NPCMsg msg_0558_T22GYM0101_00009
+	GoTo _01F2
 
 _01EF:
-	npc_msg msg_0558_T22GYM0101_00010
+	NPCMsg msg_0558_T22GYM0101_00010
 _01F2:
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_T22GYM0101_004:
-	setvar VAR_TEMP_x4000, 0
-	violet_gym_elevator
-	end
+	SetVar VAR_TEMP_x4000, 0
+	VioletGymElevator
+	End
 	.balign 4, 0

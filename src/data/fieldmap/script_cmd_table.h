@@ -23,7 +23,7 @@ BOOL ScrCmd_CallStd(ScriptContext *ctx);
 BOOL ScrCmd_RestartCurrentScript(ScriptContext *ctx);
 BOOL ScrCmd_GoTo(ScriptContext *ctx);
 BOOL ScrCmd_ObjectGoTo(ScriptContext *ctx);
-BOOL ScrCmd_BgGoTo(ScriptContext *ctx);
+BOOL ScrCmd_BGGoTo(ScriptContext *ctx);
 BOOL ScrCmd_DirectionGoTo(ScriptContext *ctx);
 BOOL ScrCmd_Call(ScriptContext *ctx);
 BOOL ScrCmd_Return(ScriptContext *ctx);
@@ -45,11 +45,11 @@ BOOL ScrCmd_CopyVar(ScriptContext *ctx);
 BOOL ScrCmd_SetOrCopyVar(ScriptContext *ctx);
 BOOL ScrCmd_NonNPCMsg(ScriptContext *ctx);
 BOOL ScrCmd_NPCMsg(ScriptContext *ctx);
-BOOL ScrCmd_NonNpcMsgVar(ScriptContext *ctx);
-BOOL ScrCmd_NpcMsgVar(ScriptContext *ctx);
+BOOL ScrCmd_NonNPCMsgVar(ScriptContext *ctx);
+BOOL ScrCmd_NPCMsgVar(ScriptContext *ctx);
 BOOL ScrCmd_048(ScriptContext *ctx);
+BOOL ScrCmd_WaitABPress(ScriptContext *ctx);
 BOOL ScrCmd_WaitButton(ScriptContext *ctx);
-BOOL ScrCmd_WaitButtonOrWalkAway(ScriptContext *ctx);
 BOOL ScrCmd_WaitButtonOrDpad(ScriptContext *ctx);
 BOOL ScrCmd_OpenMsg(ScriptContext *ctx);
 BOOL ScrCmd_CloseMsg(ScriptContext *ctx);
@@ -97,8 +97,8 @@ BOOL ScrCmd_ApplyMovement(ScriptContext *ctx);
 BOOL ScrCmd_WaitMovement(ScriptContext *ctx);
 BOOL ScrCmd_LockAll(ScriptContext *ctx);
 BOOL ScrCmd_ReleaseAll(ScriptContext *ctx);
-BOOL ScrCmd_098(ScriptContext *ctx);
-BOOL ScrCmd_099(ScriptContext *ctx);
+BOOL ScrCmd_Lock(ScriptContext *ctx);
+BOOL ScrCmd_Release(ScriptContext *ctx);
 BOOL ScrCmd_ShowPerson(ScriptContext *ctx);
 BOOL ScrCmd_HidePerson(ScriptContext *ctx);
 BOOL ScrCmd_102(ScriptContext *ctx);
@@ -131,7 +131,7 @@ BOOL ScrCmd_HasItem(ScriptContext *ctx);
 BOOL ScrCmd_ItemIsTMOrHM(ScriptContext *ctx);
 BOOL ScrCmd_GetItemPocket(ScriptContext *ctx);
 BOOL ScrCmd_SetStarterChoice(ScriptContext *ctx);
-BOOL ScrCmd_GenderMsgbox(ScriptContext *ctx);
+BOOL ScrCmd_GenderMsgBox(ScriptContext *ctx);
 BOOL ScrCmd_GetSealQuantity(ScriptContext *ctx);
 BOOL ScrCmd_GiveOrTakeSeal(ScriptContext *ctx);
 BOOL ScrCmd_GiveRandomSeal(ScriptContext *ctx);
@@ -162,7 +162,7 @@ BOOL ScrCmd_159(ScriptContext *ctx);
 BOOL ScrCmd_160(ScriptContext *ctx);
 BOOL ScrCmd_161(ScriptContext *ctx);
 BOOL ScrCmd_162(ScriptContext *ctx);
-BOOL ScrCmd_HOF_Credits(ScriptContext *ctx);
+BOOL ScrCmd_HOFCredits(ScriptContext *ctx);
 BOOL ScrCmd_164(ScriptContext *ctx);
 BOOL ScrCmd_165(ScriptContext *ctx);
 BOOL ScrCmd_166(ScriptContext *ctx);
@@ -224,7 +224,7 @@ BOOL ScrCmd_StaticWildWonOrCaughtCheck(ScriptContext *ctx);
 BOOL ScrCmd_PartyCheckForDouble(ScriptContext *ctx);
 BOOL ScrCmd_223(ScriptContext *ctx);
 BOOL ScrCmd_224(ScriptContext *ctx);
-BOOL ScrCmd_GotoIfTrainerDefeated(ScriptContext *ctx);
+BOOL ScrCmd_GoToIfTrainerDefeated(ScriptContext *ctx);
 BOOL ScrCmd_226(ScriptContext *ctx);
 BOOL ScrCmd_227(ScriptContext *ctx);
 BOOL ScrCmd_228(ScriptContext *ctx);
@@ -342,7 +342,7 @@ BOOL ScrCmd_MovePersonFacing(ScriptContext *ctx);
 BOOL ScrCmd_SetObjectMovementType(ScriptContext *ctx);
 BOOL ScrCmd_SetObjectFacing(ScriptContext *ctx);
 BOOL ScrCmd_MoveWarp(ScriptContext *ctx);
-BOOL ScrCmd_MoveBgEvent(ScriptContext *ctx);
+BOOL ScrCmd_MoveBGEvent(ScriptContext *ctx);
 BOOL ScrCmd_344(ScriptContext *ctx);
 BOOL ScrCmd_AddWaitingIcon(ScriptContext *ctx);
 BOOL ScrCmd_RemoveWaitingIcon(ScriptContext *ctx);
@@ -350,11 +350,11 @@ BOOL ScrCmd_347(ScriptContext *ctx);
 BOOL ScrCmd_WaitButtonOrDelay(ScriptContext *ctx);
 BOOL ScrCmd_PartySelectUI(ScriptContext *ctx);
 BOOL ScrCmd_350(ScriptContext *ctx);
-BOOL ScrCmd_PartySelect(ScriptContext *ctx);
+BOOL ScrCmd_GetPartySelection(ScriptContext *ctx);
 BOOL ScrCmd_PokemonSummaryScreen(ScriptContext *ctx);
 BOOL ScrCmd_GetMoveSelection(ScriptContext *ctx);
 BOOL ScrCmd_GetPartyMonSpecies(ScriptContext *ctx);
-BOOL ScrCmd_PartymonIsMine(ScriptContext *ctx);
+BOOL ScrCmd_PartyMonIsMine(ScriptContext *ctx);
 BOOL ScrCmd_PartyCountNotEgg(ScriptContext *ctx);
 BOOL ScrCmd_CountAliveMons(ScriptContext *ctx);
 BOOL ScrCmd_CountAliveMonsAndPC(ScriptContext *ctx);
@@ -363,7 +363,7 @@ BOOL ScrCmd_SubMoneyVar(ScriptContext *ctx);
 BOOL ScrCmd_RetrieveDaycareMon(ScriptContext *ctx);
 BOOL ScrCmd_GiveLoanMon(ScriptContext *ctx);
 BOOL ScrCmd_CheckReturnLoanMon(ScriptContext *ctx);
-BOOL ScrCmd_TakeMon(ScriptContext *ctx);
+BOOL ScrCmd_ReturnLoanMon(ScriptContext *ctx);
 BOOL ScrCmd_ResetDaycareEgg(ScriptContext *ctx);
 BOOL ScrCmd_GiveDaycareEgg(ScriptContext *ctx);
 BOOL ScrCmd_BufferDaycareWithdrawCost(ScriptContext *ctx);
@@ -438,8 +438,8 @@ BOOL ScrCmd_SurvivePoisoning(ScriptContext *ctx);
 BOOL ScrCmd_436(ScriptContext *ctx);
 BOOL ScrCmd_DebugWatch(ScriptContext *ctx);
 BOOL ScrCmd_GetStdMsgNaix(ScriptContext *ctx);
-BOOL ScrCmd_NonNpcMsgExtern(ScriptContext *ctx);
-BOOL ScrCmd_MsgboxExtern(ScriptContext *ctx);
+BOOL ScrCmd_NonNPCMsgExtern(ScriptContext *ctx);
+BOOL ScrCmd_MsgBoxExtern(ScriptContext *ctx);
 BOOL ScrCmd_441(ScriptContext *ctx);
 BOOL ScrCmd_442(ScriptContext *ctx);
 BOOL ScrCmd_443(ScriptContext *ctx);
@@ -466,8 +466,8 @@ BOOL ScrCmd_EnableMassOutbreaks(ScriptContext *ctx);
 BOOL ScrCmd_CreateRoamer(ScriptContext *ctx);
 BOOL ScrCmd_465(ScriptContext *ctx);
 BOOL ScrCmd_466(ScriptContext *ctx);
-BOOL ScrCmd_MoveRelearner(ScriptContext *ctx);
-BOOL ScrCmd_MoveTutor(ScriptContext *ctx);
+BOOL ScrCmd_MoveRelearnerInit(ScriptContext *ctx);
+BOOL ScrCmd_MoveTutorInit(ScriptContext *ctx);
 BOOL ScrCmd_MoveRelearnerGetResult(ScriptContext *ctx);
 BOOL ScrCmd_LoadNPCTrade(ScriptContext *ctx);
 BOOL ScrCmd_GetOfferedSpecies(ScriptContext *ctx);
@@ -502,9 +502,9 @@ BOOL ScrCmd_PrimoPasswordCheck2(ScriptContext *ctx);
 BOOL ScrCmd_500(ScriptContext *ctx);
 BOOL ScrCmd_501(ScriptContext *ctx);
 BOOL ScrCmd_502(ScriptContext *ctx);
-BOOL ScrCmd_LotoIdGet(ScriptContext *ctx);
-BOOL ScrCmd_LotoIdSearch(ScriptContext *ctx);
-BOOL ScrCmd_LotoIdSet(ScriptContext *ctx);
+BOOL ScrCmd_LotoIDGet(ScriptContext *ctx);
+BOOL ScrCmd_LotoIDSearch(ScriptContext *ctx);
+BOOL ScrCmd_LotoIDSet(ScriptContext *ctx);
 BOOL ScrCmd_BufferBoxMonNick(ScriptContext *ctx);
 BOOL ScrCmd_CountPCEmptySpace(ScriptContext *ctx);
 BOOL ScrCmd_PalParkAction(ScriptContext *ctx);
@@ -566,7 +566,7 @@ BOOL ScrCmd_563(ScriptContext *ctx);
 BOOL ScrCmd_564(ScriptContext *ctx);
 BOOL ScrCmd_565(ScriptContext *ctx);
 BOOL ScrCmd_566(ScriptContext *ctx);
-BOOL ScrCmd_GetDPPlPrizeItemIdAndCost(ScriptContext *ctx);
+BOOL ScrCmd_GetDPPlPrizeItemIDAndCost(ScriptContext *ctx);
 BOOL ScrCmd_568(ScriptContext *ctx);
 BOOL ScrCmd_569(ScriptContext *ctx);
 BOOL ScrCmd_CheckCoinsVar(ScriptContext *ctx);
@@ -587,7 +587,7 @@ BOOL ScrCmd_PartyLegalCheck(ScriptContext *ctx);
 BOOL ScrCmd_585(ScriptContext *ctx);
 BOOL ScrCmd_586(ScriptContext *ctx);
 BOOL ScrCmd_587(ScriptContext *ctx);
-BOOL Scrcmd_LatiCaughtCheck(ScriptContext *ctx);
+BOOL ScrCmd_LatiCaughtCheck(ScriptContext *ctx);
 BOOL ScrCmd_WildBattle(ScriptContext *ctx);
 BOOL ScrCmd_GetTrcardStars(ScriptContext *ctx);
 BOOL ScrCmd_591(ScriptContext *ctx);
@@ -611,7 +611,7 @@ BOOL ScrCmd_608(ScriptContext *ctx);
 BOOL ScrCmd_609(ScriptContext *ctx);
 BOOL ScrCmd_610(ScriptContext *ctx);
 BOOL ScrCmd_Pokeathlon(ScriptContext *ctx);
-BOOL ScrCmd_GetNpcTradeUnusedFlag(ScriptContext *ctx);
+BOOL ScrCmd_GetNPCTradeUnusedFlag(ScriptContext *ctx);
 BOOL ScrCmd_GetPhoneContactRandomGiftBerry(ScriptContext *ctx);
 BOOL ScrCmd_GetPhoneContactGiftItem(ScriptContext *ctx);
 BOOL ScrCmd_CameronPhoto(ScriptContext *ctx);
@@ -682,7 +682,7 @@ BOOL ScrCmd_679(ScriptContext *ctx);
 BOOL ScrCmd_AddSpecialGameStat2(ScriptContext *ctx);
 BOOL ScrCmd_681(ScriptContext *ctx);
 BOOL ScrCmd_682(ScriptContext *ctx);
-BOOL ScrCmd_GetStaticEncounterOutcomeFlag(ScriptContext *ctx);
+BOOL ScrCmd_GetStaticEncounterOutcome(ScriptContext *ctx);
 BOOL ScrCmd_684(ScriptContext *ctx);
 BOOL ScrCmd_GetPlayerXYZ(ScriptContext *ctx);
 BOOL ScrCmd_686(ScriptContext *ctx);
@@ -826,7 +826,7 @@ BOOL ScrCmd_823(ScriptContext *ctx);
 BOOL ScrCmd_824(ScriptContext *ctx);
 BOOL ScrCmd_GetShinyLeafCount(ScriptContext *ctx);
 BOOL ScrCmd_TryGiveShinyLeafCrown(ScriptContext *ctx);
-BOOL ScrCmd_GetPartymonForm(ScriptContext *ctx);
+BOOL ScrCmd_GetPartyMonForm2(ScriptContext *ctx);
 BOOL ScrCmd_MonAddContestValue(ScriptContext *ctx);
 BOOL ScrCmd_829(ScriptContext *ctx);
 BOOL ScrCmd_830(ScriptContext *ctx);
@@ -878,7 +878,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_RestartCurrentScript,
     ScrCmd_GoTo,
     ScrCmd_ObjectGoTo,
-    ScrCmd_BgGoTo,
+    ScrCmd_BGGoTo,
     ScrCmd_DirectionGoTo,
     ScrCmd_Call,
     ScrCmd_Return,
@@ -900,11 +900,11 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_SetOrCopyVar,
     ScrCmd_NonNPCMsg,
     ScrCmd_NPCMsg,
-    ScrCmd_NonNpcMsgVar,
-    ScrCmd_NpcMsgVar,
+    ScrCmd_NonNPCMsgVar,
+    ScrCmd_NPCMsgVar,
     ScrCmd_048,
+    ScrCmd_WaitABPress,
     ScrCmd_WaitButton,
-    ScrCmd_WaitButtonOrWalkAway,
     ScrCmd_WaitButtonOrDpad,
     ScrCmd_OpenMsg,
     ScrCmd_CloseMsg,
@@ -952,8 +952,8 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_WaitMovement,
     ScrCmd_LockAll,
     ScrCmd_ReleaseAll,
-    ScrCmd_098,
-    ScrCmd_099,
+    ScrCmd_Lock,
+    ScrCmd_Release,
     ScrCmd_ShowPerson,
     ScrCmd_HidePerson,
     ScrCmd_102,
@@ -986,7 +986,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_ItemIsTMOrHM,
     ScrCmd_GetItemPocket,
     ScrCmd_SetStarterChoice,
-    ScrCmd_GenderMsgbox,
+    ScrCmd_GenderMsgBox,
     ScrCmd_GetSealQuantity,
     ScrCmd_GiveOrTakeSeal,
     ScrCmd_GiveRandomSeal,
@@ -1017,7 +1017,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_160,
     ScrCmd_161,
     ScrCmd_162,
-    ScrCmd_HOF_Credits,
+    ScrCmd_HOFCredits,
     ScrCmd_164,
     ScrCmd_165,
     ScrCmd_166,
@@ -1079,7 +1079,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_PartyCheckForDouble,
     ScrCmd_223,
     ScrCmd_224,
-    ScrCmd_GotoIfTrainerDefeated,
+    ScrCmd_GoToIfTrainerDefeated,
     ScrCmd_226,
     ScrCmd_227,
     ScrCmd_228,
@@ -1197,7 +1197,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_SetObjectMovementType,
     ScrCmd_SetObjectFacing,
     ScrCmd_MoveWarp,
-    ScrCmd_MoveBgEvent,
+    ScrCmd_MoveBGEvent,
     ScrCmd_344,
     ScrCmd_AddWaitingIcon,
     ScrCmd_RemoveWaitingIcon,
@@ -1205,11 +1205,11 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_WaitButtonOrDelay,
     ScrCmd_PartySelectUI,
     ScrCmd_350,
-    ScrCmd_PartySelect,
+    ScrCmd_GetPartySelection,
     ScrCmd_PokemonSummaryScreen,
     ScrCmd_GetMoveSelection,
     ScrCmd_GetPartyMonSpecies,
-    ScrCmd_PartymonIsMine,
+    ScrCmd_PartyMonIsMine,
     ScrCmd_PartyCountNotEgg,
     ScrCmd_CountAliveMons,
     ScrCmd_CountAliveMonsAndPC,
@@ -1218,7 +1218,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_RetrieveDaycareMon,
     ScrCmd_GiveLoanMon,
     ScrCmd_CheckReturnLoanMon,
-    ScrCmd_TakeMon,
+    ScrCmd_ReturnLoanMon,
     ScrCmd_ResetDaycareEgg,
     ScrCmd_GiveDaycareEgg,
     ScrCmd_BufferDaycareWithdrawCost,
@@ -1293,8 +1293,8 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_436,
     ScrCmd_DebugWatch,
     ScrCmd_GetStdMsgNaix,
-    ScrCmd_NonNpcMsgExtern,
-    ScrCmd_MsgboxExtern,
+    ScrCmd_NonNPCMsgExtern,
+    ScrCmd_MsgBoxExtern,
     ScrCmd_441,
     ScrCmd_442,
     ScrCmd_443,
@@ -1321,8 +1321,8 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_CreateRoamer,
     ScrCmd_465,
     ScrCmd_466,
-    ScrCmd_MoveRelearner,
-    ScrCmd_MoveTutor,
+    ScrCmd_MoveRelearnerInit,
+    ScrCmd_MoveTutorInit,
     ScrCmd_MoveRelearnerGetResult,
     ScrCmd_LoadNPCTrade,
     ScrCmd_GetOfferedSpecies,
@@ -1357,9 +1357,9 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_500,
     ScrCmd_501,
     ScrCmd_502,
-    ScrCmd_LotoIdGet,
-    ScrCmd_LotoIdSearch,
-    ScrCmd_LotoIdSet,
+    ScrCmd_LotoIDGet,
+    ScrCmd_LotoIDSearch,
+    ScrCmd_LotoIDSet,
     ScrCmd_BufferBoxMonNick,
     ScrCmd_CountPCEmptySpace,
     ScrCmd_PalParkAction,
@@ -1421,7 +1421,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_564,
     ScrCmd_565,
     ScrCmd_566,
-    ScrCmd_GetDPPlPrizeItemIdAndCost,
+    ScrCmd_GetDPPlPrizeItemIDAndCost,
     ScrCmd_568,
     ScrCmd_569,
     ScrCmd_CheckCoinsVar,
@@ -1442,7 +1442,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_585,
     ScrCmd_586,
     ScrCmd_587,
-    Scrcmd_LatiCaughtCheck,
+    ScrCmd_LatiCaughtCheck,
     ScrCmd_WildBattle,
     ScrCmd_GetTrcardStars,
     ScrCmd_591,
@@ -1466,7 +1466,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_609,
     ScrCmd_610,
     ScrCmd_Pokeathlon,
-    ScrCmd_GetNpcTradeUnusedFlag,
+    ScrCmd_GetNPCTradeUnusedFlag,
     ScrCmd_GetPhoneContactRandomGiftBerry,
     ScrCmd_GetPhoneContactGiftItem,
     ScrCmd_CameronPhoto,
@@ -1537,7 +1537,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_AddSpecialGameStat2,
     ScrCmd_681,
     ScrCmd_682,
-    ScrCmd_GetStaticEncounterOutcomeFlag,
+    ScrCmd_GetStaticEncounterOutcome,
     ScrCmd_684,
     ScrCmd_GetPlayerXYZ,
     ScrCmd_686,
@@ -1681,7 +1681,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_824,
     ScrCmd_GetShinyLeafCount,
     ScrCmd_TryGiveShinyLeafCrown,
-    ScrCmd_GetPartymonForm,
+    ScrCmd_GetPartyMonForm2,
     ScrCmd_MonAddContestValue,
     ScrCmd_829,
     ScrCmd_830,

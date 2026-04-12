@@ -5,580 +5,580 @@
 
 	.rodata
 
-	scrdef scr_seq_T07R0501_000
-	scrdef scr_seq_T07R0501_001
-	scrdef scr_seq_T07R0501_002
-	scrdef scr_seq_T07R0501_003
-	scrdef scr_seq_T07R0501_004
-	scrdef_end
+	ScrDef scr_seq_T07R0501_000
+	ScrDef scr_seq_T07R0501_001
+	ScrDef scr_seq_T07R0501_002
+	ScrDef scr_seq_T07R0501_003
+	ScrDef scr_seq_T07R0501_004
+	ScrDefEnd
 
 scr_seq_T07R0501_002:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	goto_if_set FLAG_UNK_172, _004D
-	setflag FLAG_UNK_172
-	npc_msg msg_0509_T07R0501_00002
-	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_RESULT
-	touchscreen_menu_show
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _00F2
-	goto _006D
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	GoToIfSet FLAG_UNK_172, _004D
+	SetFlag FLAG_UNK_172
+	NPCMsg msg_0509_T07R0501_00002
+	TouchscreenMenuHide
+	GetMenuChoice VAR_SPECIAL_RESULT
+	TouchscreenMenuShow
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _00F2
+	GoTo _006D
+	End
 
 _004D:
-	npc_msg msg_0509_T07R0501_00003
-	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_RESULT
-	touchscreen_menu_show
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _00F2
-	goto _006D
-	end
+	NPCMsg msg_0509_T07R0501_00003
+	TouchscreenMenuHide
+	GetMenuChoice VAR_SPECIAL_RESULT
+	TouchscreenMenuShow
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _00F2
+	GoTo _006D
+	End
 
 _006D:
-	closemsg
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	party_select_ui
-	get_party_selection VAR_SPECIAL_x8000
-	restore_overworld
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
-	compare VAR_SPECIAL_x8000, 255
-	goto_if_eq _00F2
-	get_partymon_species VAR_SPECIAL_x8000, VAR_SPECIAL_x8001
-	compare VAR_SPECIAL_x8001, 0
-	goto_if_eq _00FD
-	get_hidden_power_type VAR_SPECIAL_x8000, VAR_SPECIAL_x8004
-	compare VAR_SPECIAL_x8004, 65535
-	goto_if_eq _00E7
-	mon_has_move VAR_SPECIAL_RESULT, MOVE_HIDDEN_POWER, VAR_SPECIAL_x8000
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0108
-	buffer_type_name 0, VAR_SPECIAL_x8004
-	npc_msg msg_0509_T07R0501_00005
-	goto _0118
-	end
+	CloseMsg
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	PartySelectUI
+	GetPartySelection VAR_SPECIAL_x8000
+	RestoreOverworld
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
+	Compare VAR_SPECIAL_x8000, 255
+	GoToIfEq _00F2
+	GetPartyMonSpecies VAR_SPECIAL_x8000, VAR_SPECIAL_x8001
+	Compare VAR_SPECIAL_x8001, 0
+	GoToIfEq _00FD
+	GetHiddenPowerType VAR_SPECIAL_x8000, VAR_SPECIAL_x8004
+	Compare VAR_SPECIAL_x8004, 65535
+	GoToIfEq _00E7
+	MonHasMove VAR_SPECIAL_RESULT, MOVE_HIDDEN_POWER, VAR_SPECIAL_x8000
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0108
+	BufferTypeName 0, VAR_SPECIAL_x8004
+	NPCMsg msg_0509_T07R0501_00005
+	GoTo _0118
+	End
 
 _00E7:
-	npc_msg msg_0509_T07R0501_00008
-	goto _0118
-	end
+	NPCMsg msg_0509_T07R0501_00008
+	GoTo _0118
+	End
 
 _00F2:
-	npc_msg msg_0509_T07R0501_00006
-	goto _0118
-	end
+	NPCMsg msg_0509_T07R0501_00006
+	GoTo _0118
+	End
 
 _00FD:
-	npc_msg msg_0509_T07R0501_00007
-	goto _0118
-	end
+	NPCMsg msg_0509_T07R0501_00007
+	GoTo _0118
+	End
 
 _0108:
-	buffer_type_name 0, VAR_SPECIAL_x8004
-	npc_msg msg_0509_T07R0501_00004
-	goto _0118
-	end
+	BufferTypeName 0, VAR_SPECIAL_x8004
+	NPCMsg msg_0509_T07R0501_00004
+	GoTo _0118
+	End
 
 _0118:
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_T07R0501_003:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	script_overlay_cmd 3, 0
-	npc_msg msg_0509_T07R0501_00009
-	touchscreen_menu_hide
-	scrcmd_116 0, 20, 2
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	ScriptOverlayCmd 3, 0
+	NPCMsg msg_0509_T07R0501_00009
+	TouchscreenMenuHide
+	ScrCmd_116 0, 20, 2
 _0138:
-	menu_init 1, 1, 0, 1, VAR_TEMP_x4000
-	menu_item_add 21, 255, 0
-	menu_item_add 22, 255, 1
-	menu_item_add 20, 255, 2
-	menu_exec
-	switch VAR_TEMP_x4000
-	case 0, _0180
-	case 1, _021C
-	goto _0A43
+	MenuInit 1, 1, 0, 1, VAR_TEMP_x4000
+	MenuItemAdd 21, 255, 0
+	MenuItemAdd 22, 255, 1
+	MenuItemAdd 20, 255, 2
+	MenuExec
+	Switch VAR_TEMP_x4000
+	Case 0, _0180
+	Case 1, _021C
+	GoTo _0A43
 
 _0180:
-	menu_init 1, 1, 0, 1, VAR_TEMP_x4000
-	menu_item_add 23, 255, 0
-	menu_item_add 24, 255, 1
-	menu_item_add 25, 255, 2
-	menu_item_add 26, 255, 3
-	menu_item_add 27, 255, 4
-	menu_item_add 28, 255, 5
-	menu_item_add 20, 255, 6
-	menu_exec
-	switch VAR_TEMP_x4000
-	case 0, _028E
-	case 1, _0319
-	case 2, _03A4
-	case 3, _042F
-	case 4, _04BA
-	case 5, _0545
-	goto _0138
+	MenuInit 1, 1, 0, 1, VAR_TEMP_x4000
+	MenuItemAdd 23, 255, 0
+	MenuItemAdd 24, 255, 1
+	MenuItemAdd 25, 255, 2
+	MenuItemAdd 26, 255, 3
+	MenuItemAdd 27, 255, 4
+	MenuItemAdd 28, 255, 5
+	MenuItemAdd 20, 255, 6
+	MenuExec
+	Switch VAR_TEMP_x4000
+	Case 0, _028E
+	Case 1, _0319
+	Case 2, _03A4
+	Case 3, _042F
+	Case 4, _04BA
+	Case 5, _0545
+	GoTo _0138
 
 _021C:
-	menu_init 1, 1, 0, 1, VAR_TEMP_x4000
-	menu_item_add 29, 255, 0
-	menu_item_add 30, 255, 1
-	menu_item_add 31, 255, 2
-	menu_item_add 32, 255, 3
-	menu_item_add 20, 255, 4
-	menu_exec
-	switch VAR_TEMP_x4000
-	case 0, _05D0
-	case 1, _065B
-	case 2, _06E6
-	case 3, _0771
-	goto _0138
+	MenuInit 1, 1, 0, 1, VAR_TEMP_x4000
+	MenuItemAdd 29, 255, 0
+	MenuItemAdd 30, 255, 1
+	MenuItemAdd 31, 255, 2
+	MenuItemAdd 32, 255, 3
+	MenuItemAdd 20, 255, 4
+	MenuExec
+	Switch VAR_TEMP_x4000
+	Case 0, _05D0
+	Case 1, _065B
+	Case 2, _06E6
+	Case 3, _0771
+	GoTo _0138
 
 _028E:
-	goto_if_no_item_space ITEM_TM58, 1, _0990
-	buffer_item_name 0, VAR_SPECIAL_x8004
-	npc_msg msg_0509_T07R0501_00012
-	getmenuchoice VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _02D7
-	closemsg
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _0180
+	GoToIfNoItemSpace ITEM_TM58, 1, _0990
+	BufferItemName 0, VAR_SPECIAL_x8004
+	NPCMsg msg_0509_T07R0501_00012
+	GetMenuChoice VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _02D7
+	CloseMsg
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _0180
 _02D7:
-	get_coin_amount VAR_SPECIAL_x8006
-	compare VAR_SPECIAL_x8006, 2000
-	goto_if_lt _0A31
-	npc_msg msg_0509_T07R0501_00013
-	play_se SEQ_SE_DP_REGI
-	take_coins 2000
-	scrcmd_118 0
-	buffer_item_name 0, VAR_SPECIAL_x8004
-	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
-	buffer_pocket_name 1, VAR_SPECIAL_RESULT
-	npc_msg msg_0509_T07R0501_00019
-	giveitem VAR_SPECIAL_x8004, 1, VAR_SPECIAL_RESULT
-	goto _0180
-	end
+	GetCoinAmount VAR_SPECIAL_x8006
+	Compare VAR_SPECIAL_x8006, 2000
+	GoToIfLt _0A31
+	NPCMsg msg_0509_T07R0501_00013
+	PlaySE SEQ_SE_DP_REGI
+	TakeCoins 2000
+	ScrCmd_118 0
+	BufferItemName 0, VAR_SPECIAL_x8004
+	GetItemPocket VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
+	BufferPocketName 1, VAR_SPECIAL_RESULT
+	NPCMsg msg_0509_T07R0501_00019
+	GiveItem VAR_SPECIAL_x8004, 1, VAR_SPECIAL_RESULT
+	GoTo _0180
+	End
 
 _0319:
-	goto_if_no_item_space ITEM_TM32, 1, _0990
-	buffer_item_name 0, VAR_SPECIAL_x8004
-	npc_msg msg_0509_T07R0501_00012
-	getmenuchoice VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0362
-	closemsg
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _0180
+	GoToIfNoItemSpace ITEM_TM32, 1, _0990
+	BufferItemName 0, VAR_SPECIAL_x8004
+	NPCMsg msg_0509_T07R0501_00012
+	GetMenuChoice VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0362
+	CloseMsg
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _0180
 _0362:
-	get_coin_amount VAR_SPECIAL_x8006
-	compare VAR_SPECIAL_x8006, 4000
-	goto_if_lt _0A31
-	npc_msg msg_0509_T07R0501_00013
-	play_se SEQ_SE_DP_REGI
-	take_coins 4000
-	scrcmd_118 0
-	buffer_item_name 0, VAR_SPECIAL_x8004
-	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
-	buffer_pocket_name 1, VAR_SPECIAL_RESULT
-	npc_msg msg_0509_T07R0501_00019
-	giveitem VAR_SPECIAL_x8004, 1, VAR_SPECIAL_RESULT
-	goto _0180
-	end
+	GetCoinAmount VAR_SPECIAL_x8006
+	Compare VAR_SPECIAL_x8006, 4000
+	GoToIfLt _0A31
+	NPCMsg msg_0509_T07R0501_00013
+	PlaySE SEQ_SE_DP_REGI
+	TakeCoins 4000
+	ScrCmd_118 0
+	BufferItemName 0, VAR_SPECIAL_x8004
+	GetItemPocket VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
+	BufferPocketName 1, VAR_SPECIAL_RESULT
+	NPCMsg msg_0509_T07R0501_00019
+	GiveItem VAR_SPECIAL_x8004, 1, VAR_SPECIAL_RESULT
+	GoTo _0180
+	End
 
 _03A4:
-	goto_if_no_item_space ITEM_TM10, 1, _0990
-	buffer_item_name 0, VAR_SPECIAL_x8004
-	npc_msg msg_0509_T07R0501_00012
-	getmenuchoice VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _03ED
-	closemsg
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _0180
+	GoToIfNoItemSpace ITEM_TM10, 1, _0990
+	BufferItemName 0, VAR_SPECIAL_x8004
+	NPCMsg msg_0509_T07R0501_00012
+	GetMenuChoice VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _03ED
+	CloseMsg
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _0180
 _03ED:
-	get_coin_amount VAR_SPECIAL_x8006
-	compare VAR_SPECIAL_x8006, 6000
-	goto_if_lt _0A31
-	npc_msg msg_0509_T07R0501_00013
-	play_se SEQ_SE_DP_REGI
-	take_coins 6000
-	scrcmd_118 0
-	buffer_item_name 0, VAR_SPECIAL_x8004
-	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
-	buffer_pocket_name 1, VAR_SPECIAL_RESULT
-	npc_msg msg_0509_T07R0501_00019
-	giveitem VAR_SPECIAL_x8004, 1, VAR_SPECIAL_RESULT
-	goto _0180
-	end
+	GetCoinAmount VAR_SPECIAL_x8006
+	Compare VAR_SPECIAL_x8006, 6000
+	GoToIfLt _0A31
+	NPCMsg msg_0509_T07R0501_00013
+	PlaySE SEQ_SE_DP_REGI
+	TakeCoins 6000
+	ScrCmd_118 0
+	BufferItemName 0, VAR_SPECIAL_x8004
+	GetItemPocket VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
+	BufferPocketName 1, VAR_SPECIAL_RESULT
+	NPCMsg msg_0509_T07R0501_00019
+	GiveItem VAR_SPECIAL_x8004, 1, VAR_SPECIAL_RESULT
+	GoTo _0180
+	End
 
 _042F:
-	goto_if_no_item_space ITEM_TM29, 1, _0990
-	buffer_item_name 0, VAR_SPECIAL_x8004
-	npc_msg msg_0509_T07R0501_00012
-	getmenuchoice VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0478
-	closemsg
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _0180
+	GoToIfNoItemSpace ITEM_TM29, 1, _0990
+	BufferItemName 0, VAR_SPECIAL_x8004
+	NPCMsg msg_0509_T07R0501_00012
+	GetMenuChoice VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0478
+	CloseMsg
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _0180
 _0478:
-	get_coin_amount VAR_SPECIAL_x8006
-	compare VAR_SPECIAL_x8006, 10000
-	goto_if_lt _0A31
-	npc_msg msg_0509_T07R0501_00013
-	play_se SEQ_SE_DP_REGI
-	take_coins 10000
-	scrcmd_118 0
-	buffer_item_name 0, VAR_SPECIAL_x8004
-	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
-	buffer_pocket_name 1, VAR_SPECIAL_RESULT
-	npc_msg msg_0509_T07R0501_00019
-	giveitem VAR_SPECIAL_x8004, 1, VAR_SPECIAL_RESULT
-	goto _0180
-	end
+	GetCoinAmount VAR_SPECIAL_x8006
+	Compare VAR_SPECIAL_x8006, 10000
+	GoToIfLt _0A31
+	NPCMsg msg_0509_T07R0501_00013
+	PlaySE SEQ_SE_DP_REGI
+	TakeCoins 10000
+	ScrCmd_118 0
+	BufferItemName 0, VAR_SPECIAL_x8004
+	GetItemPocket VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
+	BufferPocketName 1, VAR_SPECIAL_RESULT
+	NPCMsg msg_0509_T07R0501_00019
+	GiveItem VAR_SPECIAL_x8004, 1, VAR_SPECIAL_RESULT
+	GoTo _0180
+	End
 
 _04BA:
-	goto_if_no_item_space ITEM_TM74, 1, _0990
-	buffer_item_name 0, VAR_SPECIAL_x8004
-	npc_msg msg_0509_T07R0501_00012
-	getmenuchoice VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0503
-	closemsg
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _0180
+	GoToIfNoItemSpace ITEM_TM74, 1, _0990
+	BufferItemName 0, VAR_SPECIAL_x8004
+	NPCMsg msg_0509_T07R0501_00012
+	GetMenuChoice VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0503
+	CloseMsg
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _0180
 _0503:
-	get_coin_amount VAR_SPECIAL_x8006
-	compare VAR_SPECIAL_x8006, 10000
-	goto_if_lt _0A31
-	npc_msg msg_0509_T07R0501_00013
-	play_se SEQ_SE_DP_REGI
-	take_coins 10000
-	scrcmd_118 0
-	buffer_item_name 0, VAR_SPECIAL_x8004
-	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
-	buffer_pocket_name 1, VAR_SPECIAL_RESULT
-	npc_msg msg_0509_T07R0501_00019
-	giveitem VAR_SPECIAL_x8004, 1, VAR_SPECIAL_RESULT
-	goto _0180
-	end
+	GetCoinAmount VAR_SPECIAL_x8006
+	Compare VAR_SPECIAL_x8006, 10000
+	GoToIfLt _0A31
+	NPCMsg msg_0509_T07R0501_00013
+	PlaySE SEQ_SE_DP_REGI
+	TakeCoins 10000
+	ScrCmd_118 0
+	BufferItemName 0, VAR_SPECIAL_x8004
+	GetItemPocket VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
+	BufferPocketName 1, VAR_SPECIAL_RESULT
+	NPCMsg msg_0509_T07R0501_00019
+	GiveItem VAR_SPECIAL_x8004, 1, VAR_SPECIAL_RESULT
+	GoTo _0180
+	End
 
 _0545:
-	goto_if_no_item_space ITEM_TM68, 1, _0990
-	buffer_item_name 0, VAR_SPECIAL_x8004
-	npc_msg msg_0509_T07R0501_00012
-	getmenuchoice VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _058E
-	closemsg
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _0180
+	GoToIfNoItemSpace ITEM_TM68, 1, _0990
+	BufferItemName 0, VAR_SPECIAL_x8004
+	NPCMsg msg_0509_T07R0501_00012
+	GetMenuChoice VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _058E
+	CloseMsg
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _0180
 _058E:
-	get_coin_amount VAR_SPECIAL_x8006
-	compare VAR_SPECIAL_x8006, 15000
-	goto_if_lt _0A31
-	npc_msg msg_0509_T07R0501_00013
-	play_se SEQ_SE_DP_REGI
-	take_coins 15000
-	scrcmd_118 0
-	buffer_item_name 0, VAR_SPECIAL_x8004
-	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
-	buffer_pocket_name 1, VAR_SPECIAL_RESULT
-	npc_msg msg_0509_T07R0501_00019
-	giveitem VAR_SPECIAL_x8004, 1, VAR_SPECIAL_RESULT
-	goto _0180
-	end
+	GetCoinAmount VAR_SPECIAL_x8006
+	Compare VAR_SPECIAL_x8006, 15000
+	GoToIfLt _0A31
+	NPCMsg msg_0509_T07R0501_00013
+	PlaySE SEQ_SE_DP_REGI
+	TakeCoins 15000
+	ScrCmd_118 0
+	BufferItemName 0, VAR_SPECIAL_x8004
+	GetItemPocket VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
+	BufferPocketName 1, VAR_SPECIAL_RESULT
+	NPCMsg msg_0509_T07R0501_00019
+	GiveItem VAR_SPECIAL_x8004, 1, VAR_SPECIAL_RESULT
+	GoTo _0180
+	End
 
 _05D0:
-	goto_if_no_item_space ITEM_SILK_SCARF, 1, _0990
-	buffer_item_name 0, VAR_SPECIAL_x8004
-	npc_msg msg_0509_T07R0501_00012
-	getmenuchoice VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0619
-	closemsg
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _021C
+	GoToIfNoItemSpace ITEM_SILK_SCARF, 1, _0990
+	BufferItemName 0, VAR_SPECIAL_x8004
+	NPCMsg msg_0509_T07R0501_00012
+	GetMenuChoice VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0619
+	CloseMsg
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _021C
 _0619:
-	get_coin_amount VAR_SPECIAL_x8006
-	compare VAR_SPECIAL_x8006, 1000
-	goto_if_lt _0A31
-	npc_msg msg_0509_T07R0501_00013
-	play_se SEQ_SE_DP_REGI
-	take_coins 1000
-	scrcmd_118 0
-	buffer_item_name 0, VAR_SPECIAL_x8004
-	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
-	buffer_pocket_name 1, VAR_SPECIAL_RESULT
-	npc_msg msg_0509_T07R0501_00019
-	giveitem VAR_SPECIAL_x8004, 1, VAR_SPECIAL_RESULT
-	goto _021C
-	end
+	GetCoinAmount VAR_SPECIAL_x8006
+	Compare VAR_SPECIAL_x8006, 1000
+	GoToIfLt _0A31
+	NPCMsg msg_0509_T07R0501_00013
+	PlaySE SEQ_SE_DP_REGI
+	TakeCoins 1000
+	ScrCmd_118 0
+	BufferItemName 0, VAR_SPECIAL_x8004
+	GetItemPocket VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
+	BufferPocketName 1, VAR_SPECIAL_RESULT
+	NPCMsg msg_0509_T07R0501_00019
+	GiveItem VAR_SPECIAL_x8004, 1, VAR_SPECIAL_RESULT
+	GoTo _021C
+	End
 
 _065B:
-	goto_if_no_item_space ITEM_WIDE_LENS, 1, _0990
-	buffer_item_name 0, VAR_SPECIAL_x8004
-	npc_msg msg_0509_T07R0501_00012
-	getmenuchoice VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _06A4
-	closemsg
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _021C
+	GoToIfNoItemSpace ITEM_WIDE_LENS, 1, _0990
+	BufferItemName 0, VAR_SPECIAL_x8004
+	NPCMsg msg_0509_T07R0501_00012
+	GetMenuChoice VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _06A4
+	CloseMsg
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _021C
 _06A4:
-	get_coin_amount VAR_SPECIAL_x8006
-	compare VAR_SPECIAL_x8006, 1000
-	goto_if_lt _0A31
-	npc_msg msg_0509_T07R0501_00013
-	play_se SEQ_SE_DP_REGI
-	take_coins 1000
-	scrcmd_118 0
-	buffer_item_name 0, VAR_SPECIAL_x8004
-	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
-	buffer_pocket_name 1, VAR_SPECIAL_RESULT
-	npc_msg msg_0509_T07R0501_00019
-	giveitem VAR_SPECIAL_x8004, 1, VAR_SPECIAL_RESULT
-	goto _021C
-	end
+	GetCoinAmount VAR_SPECIAL_x8006
+	Compare VAR_SPECIAL_x8006, 1000
+	GoToIfLt _0A31
+	NPCMsg msg_0509_T07R0501_00013
+	PlaySE SEQ_SE_DP_REGI
+	TakeCoins 1000
+	ScrCmd_118 0
+	BufferItemName 0, VAR_SPECIAL_x8004
+	GetItemPocket VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
+	BufferPocketName 1, VAR_SPECIAL_RESULT
+	NPCMsg msg_0509_T07R0501_00019
+	GiveItem VAR_SPECIAL_x8004, 1, VAR_SPECIAL_RESULT
+	GoTo _021C
+	End
 
 _06E6:
-	goto_if_no_item_space ITEM_ZOOM_LENS, 1, _0990
-	buffer_item_name 0, VAR_SPECIAL_x8004
-	npc_msg msg_0509_T07R0501_00012
-	getmenuchoice VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _072F
-	closemsg
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _021C
+	GoToIfNoItemSpace ITEM_ZOOM_LENS, 1, _0990
+	BufferItemName 0, VAR_SPECIAL_x8004
+	NPCMsg msg_0509_T07R0501_00012
+	GetMenuChoice VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _072F
+	CloseMsg
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _021C
 _072F:
-	get_coin_amount VAR_SPECIAL_x8006
-	compare VAR_SPECIAL_x8006, 1000
-	goto_if_lt _0A31
-	npc_msg msg_0509_T07R0501_00013
-	play_se SEQ_SE_DP_REGI
-	take_coins 1000
-	scrcmd_118 0
-	buffer_item_name 0, VAR_SPECIAL_x8004
-	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
-	buffer_pocket_name 1, VAR_SPECIAL_RESULT
-	npc_msg msg_0509_T07R0501_00019
-	giveitem VAR_SPECIAL_x8004, 1, VAR_SPECIAL_RESULT
-	goto _021C
-	end
+	GetCoinAmount VAR_SPECIAL_x8006
+	Compare VAR_SPECIAL_x8006, 1000
+	GoToIfLt _0A31
+	NPCMsg msg_0509_T07R0501_00013
+	PlaySE SEQ_SE_DP_REGI
+	TakeCoins 1000
+	ScrCmd_118 0
+	BufferItemName 0, VAR_SPECIAL_x8004
+	GetItemPocket VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
+	BufferPocketName 1, VAR_SPECIAL_RESULT
+	NPCMsg msg_0509_T07R0501_00019
+	GiveItem VAR_SPECIAL_x8004, 1, VAR_SPECIAL_RESULT
+	GoTo _021C
+	End
 
 _0771:
-	goto_if_no_item_space ITEM_METRONOME, 1, _0990
-	buffer_item_name 0, VAR_SPECIAL_x8004
-	npc_msg msg_0509_T07R0501_00012
-	getmenuchoice VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _07BA
-	closemsg
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _021C
+	GoToIfNoItemSpace ITEM_METRONOME, 1, _0990
+	BufferItemName 0, VAR_SPECIAL_x8004
+	NPCMsg msg_0509_T07R0501_00012
+	GetMenuChoice VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _07BA
+	CloseMsg
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _021C
 _07BA:
-	get_coin_amount VAR_SPECIAL_x8006
-	compare VAR_SPECIAL_x8006, 1000
-	goto_if_lt _0A31
-	npc_msg msg_0509_T07R0501_00013
-	play_se SEQ_SE_DP_REGI
-	take_coins 1000
-	scrcmd_118 0
-	buffer_item_name 0, VAR_SPECIAL_x8004
-	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
-	buffer_pocket_name 1, VAR_SPECIAL_RESULT
-	npc_msg msg_0509_T07R0501_00019
-	giveitem VAR_SPECIAL_x8004, 1, VAR_SPECIAL_RESULT
-	goto _021C
-	end
+	GetCoinAmount VAR_SPECIAL_x8006
+	Compare VAR_SPECIAL_x8006, 1000
+	GoToIfLt _0A31
+	NPCMsg msg_0509_T07R0501_00013
+	PlaySE SEQ_SE_DP_REGI
+	TakeCoins 1000
+	ScrCmd_118 0
+	BufferItemName 0, VAR_SPECIAL_x8004
+	GetItemPocket VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
+	BufferPocketName 1, VAR_SPECIAL_RESULT
+	NPCMsg msg_0509_T07R0501_00019
+	GiveItem VAR_SPECIAL_x8004, 1, VAR_SPECIAL_RESULT
+	GoTo _021C
+	End
 
 scr_seq_T07R0501_004:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	script_overlay_cmd 3, 0
-	npc_msg msg_0509_T07R0501_00018
-	touchscreen_menu_hide
-	scrcmd_116 0, 20, 2
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	ScriptOverlayCmd 3, 0
+	NPCMsg msg_0509_T07R0501_00018
+	TouchscreenMenuHide
+	ScrCmd_116 0, 20, 2
 _0814:
-	menu_init 1, 1, 0, 1, VAR_TEMP_x4000
-	menu_item_add 33, 255, 0
-	menu_item_add 34, 255, 1
-	menu_item_add 35, 255, 2
-	menu_item_add 20, 255, 3
-	menu_exec
-	switch VAR_TEMP_x4000
-	case 0, _0871
-	case 1, _087D
-	case 2, _0889
-	goto _0A43
+	MenuInit 1, 1, 0, 1, VAR_TEMP_x4000
+	MenuItemAdd 33, 255, 0
+	MenuItemAdd 34, 255, 1
+	MenuItemAdd 35, 255, 2
+	MenuItemAdd 20, 255, 3
+	MenuExec
+	Switch VAR_TEMP_x4000
+	Case 0, _0871
+	Case 1, _087D
+	Case 2, _0889
+	GoTo _0A43
 
 _0871:
-	setorcopyvar VAR_TEMP_x4002, 122
-	goto _0895
+	SetOrCopyVar VAR_TEMP_x4002, 122
+	GoTo _0895
 
 _087D:
-	setorcopyvar VAR_TEMP_x4002, 133
-	goto _0895
+	SetOrCopyVar VAR_TEMP_x4002, 133
+	GoTo _0895
 
 _0889:
-	setorcopyvar VAR_TEMP_x4002, 137
-	goto _0895
+	SetOrCopyVar VAR_TEMP_x4002, 137
+	GoTo _0895
 
 _0895:
-	get_party_count VAR_SPECIAL_x8005
-	compare VAR_SPECIAL_x8005, 6
-	goto_if_ne _08B3
-	npc_msg msg_0509_T07R0501_00015
-	wait_button_or_walk_away
-	closemsg
-	goto _0A52
+	GetPartyCount VAR_SPECIAL_x8005
+	Compare VAR_SPECIAL_x8005, 6
+	GoToIfNe _08B3
+	NPCMsg msg_0509_T07R0501_00015
+	WaitButton
+	CloseMsg
+	GoTo _0A52
 
 _08B3:
-	buffer_species_name 1, VAR_TEMP_x4002, 0, 0
-	npc_msg msg_0509_T07R0501_00016
-	getmenuchoice VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _08D7
-	closemsg
-	goto _0814
+	BufferSpeciesName 1, VAR_TEMP_x4002, 0, 0
+	NPCMsg msg_0509_T07R0501_00016
+	GetMenuChoice VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _08D7
+	CloseMsg
+	GoTo _0814
 
 _08D7:
-	compare VAR_TEMP_x4002, 122
-	goto_if_ne _08FB
-	get_coin_amount VAR_SPECIAL_x8006
-	compare VAR_SPECIAL_x8006, 3333
-	goto_if_lt _0A3A
-	goto _0930
+	Compare VAR_TEMP_x4002, 122
+	GoToIfNe _08FB
+	GetCoinAmount VAR_SPECIAL_x8006
+	Compare VAR_SPECIAL_x8006, 3333
+	GoToIfLt _0A3A
+	GoTo _0930
 
 _08FB:
-	compare VAR_TEMP_x4002, 133
-	goto_if_ne _091F
-	get_coin_amount VAR_SPECIAL_x8006
-	compare VAR_SPECIAL_x8006, 6666
-	goto_if_lt _0A3A
-	goto _0930
+	Compare VAR_TEMP_x4002, 133
+	GoToIfNe _091F
+	GetCoinAmount VAR_SPECIAL_x8006
+	Compare VAR_SPECIAL_x8006, 6666
+	GoToIfLt _0A3A
+	GoTo _0930
 
 _091F:
-	get_coin_amount VAR_SPECIAL_x8006
-	compare VAR_SPECIAL_x8006, 9999
-	goto_if_lt _0A3A
+	GetCoinAmount VAR_SPECIAL_x8006
+	Compare VAR_SPECIAL_x8006, 9999
+	GoToIfLt _0A3A
 _0930:
-	npc_msg msg_0509_T07R0501_00013
-	play_se SEQ_SE_DP_REGI
-	give_mon VAR_TEMP_x4002, 15, 0, 0, 0, VAR_SPECIAL_RESULT
-	buffer_players_name 0
-	buffer_species_name 1, VAR_TEMP_x4002, 0, 0
-	npc_msg msg_0509_T07R0501_00017
-	compare VAR_TEMP_x4002, 122
-	goto_if_ne _096A
-	take_coins 3333
-	goto _0985
+	NPCMsg msg_0509_T07R0501_00013
+	PlaySE SEQ_SE_DP_REGI
+	GiveMon VAR_TEMP_x4002, 15, 0, 0, 0, VAR_SPECIAL_RESULT
+	BufferPlayersName 0
+	BufferSpeciesName 1, VAR_TEMP_x4002, 0, 0
+	NPCMsg msg_0509_T07R0501_00017
+	Compare VAR_TEMP_x4002, 122
+	GoToIfNe _096A
+	TakeCoins 3333
+	GoTo _0985
 
 _096A:
-	compare VAR_TEMP_x4002, 133
-	goto_if_ne _0981
-	take_coins 6666
-	goto _0985
+	Compare VAR_TEMP_x4002, 133
+	GoToIfNe _0981
+	TakeCoins 6666
+	GoTo _0985
 
 _0981:
-	take_coins 9999
+	TakeCoins 9999
 _0985:
-	scrcmd_118 0
-	goto _0814
-	end
+	ScrCmd_118 0
+	GoTo _0814
+	End
 
 _0990:
-	npc_msg msg_0509_T07R0501_00014
-	closemsg
+	NPCMsg msg_0509_T07R0501_00014
+	CloseMsg
 _0995:
-	compare VAR_SPECIAL_x8004, 385
-	goto_if_ne _09AE
-	goto _0180
+	Compare VAR_SPECIAL_x8004, 385
+	GoToIfNe _09AE
+	GoTo _0180
 
 _09A8:
-	goto _0A31
+	GoTo _0A31
 
 _09AE:
-	compare VAR_SPECIAL_x8004, 359
-	goto_if_ne _09C7
-	goto _0180
+	Compare VAR_SPECIAL_x8004, 359
+	GoToIfNe _09C7
+	GoTo _0180
 
 _09C1:
-	goto _0A31
+	GoTo _0A31
 
 _09C7:
-	compare VAR_SPECIAL_x8004, 337
-	goto_if_ne _09E0
-	goto _0180
+	Compare VAR_SPECIAL_x8004, 337
+	GoToIfNe _09E0
+	GoTo _0180
 
 _09DA:
-	goto _0A31
+	GoTo _0A31
 
 _09E0:
-	compare VAR_SPECIAL_x8004, 356
-	goto_if_ne _09F9
-	goto _0180
+	Compare VAR_SPECIAL_x8004, 356
+	GoToIfNe _09F9
+	GoTo _0180
 
 _09F3:
-	goto _0A31
+	GoTo _0A31
 
 _09F9:
-	compare VAR_SPECIAL_x8004, 401
-	goto_if_ne _0A12
-	goto _0180
+	Compare VAR_SPECIAL_x8004, 401
+	GoToIfNe _0A12
+	GoTo _0180
 
 _0A0C:
-	goto _0A31
+	GoTo _0A31
 
 _0A12:
-	compare VAR_SPECIAL_x8004, 395
-	goto_if_ne _0A2B
-	goto _0180
+	Compare VAR_SPECIAL_x8004, 395
+	GoToIfNe _0A2B
+	GoTo _0180
 
 _0A25:
-	goto _0A31
+	GoTo _0A31
 
 _0A2B:
-	goto _021C
+	GoTo _021C
 
 _0A31:
-	npc_msg msg_0509_T07R0501_00011
-	goto _0995
+	NPCMsg msg_0509_T07R0501_00011
+	GoTo _0995
 
 _0A3A:
-	npc_msg msg_0509_T07R0501_00011
-	goto _0814
+	NPCMsg msg_0509_T07R0501_00011
+	GoTo _0814
 
 _0A43:
-	npc_msg msg_0509_T07R0501_00010
-	wait_button_or_walk_away
-	closemsg
-	goto _0A52
-	end
+	NPCMsg msg_0509_T07R0501_00010
+	WaitButton
+	CloseMsg
+	GoTo _0A52
+	End
 
 _0A52:
-	scrcmd_117
-	touchscreen_menu_show
-	script_overlay_cmd 3, 1
-	releaseall
-	end
+	ScrCmd_117
+	TouchscreenMenuShow
+	ScriptOverlayCmd 3, 1
+	ReleaseAll
+	End
 
 scr_seq_T07R0501_000:
-	simple_npc_msg msg_0509_T07R0501_00000
-	end
+	SimpleNPCMsg msg_0509_T07R0501_00000
+	End
 
 scr_seq_T07R0501_001:
-	simple_npc_msg msg_0509_T07R0501_00001
-	end
+	SimpleNPCMsg msg_0509_T07R0501_00001
+	End
 	.balign 4, 0

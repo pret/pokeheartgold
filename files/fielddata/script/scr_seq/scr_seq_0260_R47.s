@@ -5,147 +5,147 @@
 
 	.rodata
 
-	scrdef scr_seq_R47_000
-	scrdef scr_seq_R47_001
-	scrdef scr_seq_R47_002
-	scrdef scr_seq_R47_003
-	scrdef scr_seq_R47_004
-	scrdef_end
+	ScrDef scr_seq_R47_000
+	ScrDef scr_seq_R47_001
+	ScrDef scr_seq_R47_002
+	ScrDef scr_seq_R47_003
+	ScrDef scr_seq_R47_004
+	ScrDefEnd
 
 scr_seq_R47_000:
-	setvar VAR_UNK_40EB, 1
-	setflag FLAG_UNK_9C9
-	get_game_version VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 7
-	goto_if_ne _004F
-	move_warp 4, 87, 385
-	move_warp 5, 87, 389
-	move_warp 6, 87, 385
-	goto _0067
+	SetVar VAR_UNK_40EB, 1
+	SetFlag FLAG_UNK_9C9
+	GetGameVersion VAR_TEMP_x4000
+	Compare VAR_TEMP_x4000, 7
+	GoToIfNe _004F
+	MoveWarp 4, 87, 385
+	MoveWarp 5, 87, 389
+	MoveWarp 6, 87, 385
+	GoTo _0067
 
 _004F:
-	move_warp 4, 87, 389
-	move_warp 5, 87, 385
-	move_warp 6, 87, 385
+	MoveWarp 4, 87, 389
+	MoveWarp 5, 87, 385
+	MoveWarp 6, 87, 385
 _0067:
-	compare VAR_SCENE_EMBEDDED_TOWER, 2
-	goto_if_eq _00E6
-	compare VAR_SCENE_EMBEDDED_TOWER, 3
-	goto_if_eq _00E6
-	compare VAR_SCENE_EMBEDDED_TOWER, 5
-	goto_if_ge _00EC
-	goto_if_unset FLAG_UNK_189, _009F
-	clearflag FLAG_UNK_189
-	end
+	Compare VAR_SCENE_EMBEDDED_TOWER, 2
+	GoToIfEq _00E6
+	Compare VAR_SCENE_EMBEDDED_TOWER, 3
+	GoToIfEq _00E6
+	Compare VAR_SCENE_EMBEDDED_TOWER, 5
+	GoToIfGe _00EC
+	GoToIfUnset FLAG_UNK_189, _009F
+	ClearFlag FLAG_UNK_189
+	End
 
 _009F:
-	goto_if_set FLAG_GAME_CLEAR, _00B2
-	goto _00E6
-	end
+	GoToIfSet FLAG_GAME_CLEAR, _00B2
+	GoTo _00E6
+	End
 
 _00B2:
-	get_phone_book_rematch PHONE_CONTACT_CHUCK, VAR_TEMP_x4001
-	compare VAR_TEMP_x4001, 0
-	goto_if_ne _00E6
-	get_weekday VAR_TEMP_x4002
-	compare VAR_TEMP_x4002, 0
-	goto_if_ne _00E0
-	clearflag FLAG_HIDE_ROUTE_47_CHUCK
-	goto _00E4
+	GetPhoneBookRematch PHONE_CONTACT_CHUCK, VAR_TEMP_x4001
+	Compare VAR_TEMP_x4001, 0
+	GoToIfNe _00E6
+	GetWeekday VAR_TEMP_x4002
+	Compare VAR_TEMP_x4002, 0
+	GoToIfNe _00E0
+	ClearFlag FLAG_HIDE_ROUTE_47_CHUCK
+	GoTo _00E4
 
 _00E0:
-	setflag FLAG_HIDE_ROUTE_47_CHUCK
+	SetFlag FLAG_HIDE_ROUTE_47_CHUCK
 _00E4:
-	end
+	End
 
 _00E6:
-	setflag FLAG_HIDE_ROUTE_47_CHUCK
-	end
+	SetFlag FLAG_HIDE_ROUTE_47_CHUCK
+	End
 
 _00EC:
-	move_warp 4, 87, 385
-	move_warp 5, 87, 385
-	move_warp 6, 87, 389
-	goto _00E6
-	end
+	MoveWarp 4, 87, 385
+	MoveWarp 5, 87, 385
+	MoveWarp 6, 87, 389
+	GoTo _00E6
+	End
 
 scr_seq_R47_002:
-	compare VAR_SCENE_EMBEDDED_TOWER, 5
-	goto_if_ge _0162
-	get_game_version VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 7
-	goto_if_ne _0148
-	move_warp 4, 87, 385
-	move_warp 5, 87, 389
-	move_warp 6, 87, 385
-	goto _0160
+	Compare VAR_SCENE_EMBEDDED_TOWER, 5
+	GoToIfGe _0162
+	GetGameVersion VAR_TEMP_x4000
+	Compare VAR_TEMP_x4000, 7
+	GoToIfNe _0148
+	MoveWarp 4, 87, 385
+	MoveWarp 5, 87, 389
+	MoveWarp 6, 87, 385
+	GoTo _0160
 
 _0148:
-	move_warp 4, 87, 389
-	move_warp 5, 87, 385
-	move_warp 6, 87, 385
+	MoveWarp 4, 87, 389
+	MoveWarp 5, 87, 385
+	MoveWarp 6, 87, 385
 _0160:
-	end
+	End
 
 _0162:
-	move_warp 4, 87, 385
-	move_warp 5, 87, 385
-	move_warp 6, 87, 389
-	end
+	MoveWarp 4, 87, 385
+	MoveWarp 5, 87, 385
+	MoveWarp 6, 87, 389
+	End
 
 scr_seq_R47_001:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	goto_if_set FLAG_MET_ROUTE_47_EMBEDDED_TOWER_HIKER, _019E
-	npc_msg msg_0407_R47_00000
-	wait_button_or_walk_away
-	closemsg
-	setflag FLAG_MET_ROUTE_47_EMBEDDED_TOWER_HIKER
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	GoToIfSet FLAG_MET_ROUTE_47_EMBEDDED_TOWER_HIKER, _019E
+	NPCMsg msg_0407_R47_00000
+	WaitButton
+	CloseMsg
+	SetFlag FLAG_MET_ROUTE_47_EMBEDDED_TOWER_HIKER
+	ReleaseAll
+	End
 
 _019E:
-	npc_msg msg_0407_R47_00001
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0407_R47_00001
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_R47_003:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	goto_if_set FLAG_UNK_157, _0210
-	npc_msg msg_0407_R47_00002
-	apply_movement obj_R47_leader3, _022C
-	wait_movement
-	npc_msg msg_0407_R47_00003
-	get_player_facing VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_ne _01EB
-	apply_movement obj_R47_leader3, _0234
-	goto _020E
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	GoToIfSet FLAG_UNK_157, _0210
+	NPCMsg msg_0407_R47_00002
+	ApplyMovement obj_R47_leader3, _022C
+	WaitMovement
+	NPCMsg msg_0407_R47_00003
+	GetPlayerFacing VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfNe _01EB
+	ApplyMovement obj_R47_leader3, _0234
+	GoTo _020E
 
 _01EB:
-	compare VAR_SPECIAL_RESULT, 3
-	goto_if_ne _0206
-	apply_movement obj_R47_leader3, _023C
-	goto _020E
+	Compare VAR_SPECIAL_RESULT, 3
+	GoToIfNe _0206
+	ApplyMovement obj_R47_leader3, _023C
+	GoTo _020E
 
 _0206:
-	apply_movement obj_R47_leader3, _0244
+	ApplyMovement obj_R47_leader3, _0244
 _020E:
-	wait_movement
+	WaitMovement
 _0210:
-	buffer_players_name 0
-	npc_msg msg_0407_R47_00004
-	closemsg
-	apply_movement obj_R47_leader3, _022C
-	wait_movement
-	setflag FLAG_UNK_157
-	releaseall
-	end
+	BufferPlayersName 0
+	NPCMsg msg_0407_R47_00004
+	CloseMsg
+	ApplyMovement obj_R47_leader3, _022C
+	WaitMovement
+	SetFlag FLAG_UNK_157
+	ReleaseAll
+	End
 
 	.balign 4, 0
 _022C:
@@ -168,46 +168,46 @@ _0244:
 	EndMovement
 
 scr_seq_R47_004:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0407_R47_00005
-	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_RESULT
-	touchscreen_menu_show
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _02B5
-	photo_album_is_full VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _02C0
-	npc_msg msg_0407_R47_00006
-	closemsg
-	setflag FLAG_UNK_189
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	cameron_photo 91
-	faceplayer
-	lockall
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
-	clearflag FLAG_UNK_189
-	npc_msg msg_0407_R47_00007
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	NPCMsg msg_0407_R47_00005
+	TouchscreenMenuHide
+	GetMenuChoice VAR_SPECIAL_RESULT
+	TouchscreenMenuShow
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _02B5
+	PhotoAlbumIsFull VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _02C0
+	NPCMsg msg_0407_R47_00006
+	CloseMsg
+	SetFlag FLAG_UNK_189
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	CameronPhoto 91
+	FacePlayer
+	LockAll
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
+	ClearFlag FLAG_UNK_189
+	NPCMsg msg_0407_R47_00007
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _02B5:
-	npc_msg msg_0407_R47_00008
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0407_R47_00008
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _02C0:
-	npc_msg msg_0407_R47_00009
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0407_R47_00009
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 	.balign 4, 0

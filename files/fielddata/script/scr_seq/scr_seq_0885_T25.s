@@ -5,249 +5,249 @@
 
 	.rodata
 
-	scrdef scr_seq_T25_000
-	scrdef scr_seq_T25_001
-	scrdef scr_seq_T25_002
-	scrdef scr_seq_T25_003
-	scrdef scr_seq_T25_004
-	scrdef scr_seq_T25_005
-	scrdef scr_seq_T25_006
-	scrdef scr_seq_T25_007
-	scrdef scr_seq_T25_008
-	scrdef scr_seq_T25_009
-	scrdef scr_seq_T25_010
-	scrdef scr_seq_T25_011
-	scrdef scr_seq_T25_012
-	scrdef scr_seq_T25_013
-	scrdef scr_seq_T25_014
-	scrdef scr_seq_T25_015
-	scrdef scr_seq_T25_016
-	scrdef scr_seq_T25_017
-	scrdef scr_seq_T25_018
-	scrdef scr_seq_T25_019
-	scrdef scr_seq_T25_020
-	scrdef scr_seq_T25_021
-	scrdef scr_seq_T25_022
-	scrdef scr_seq_T25_023
-	scrdef scr_seq_T25_024
-	scrdef scr_seq_T25_025
-	scrdef scr_seq_T25_026
-	scrdef scr_seq_T25_027
-	scrdef scr_seq_T25_028
-	scrdef scr_seq_T25_029
-	scrdef scr_seq_T25_030
-	scrdef scr_seq_T25_031
-	scrdef scr_seq_T25_032
-	scrdef_end
+	ScrDef scr_seq_T25_000
+	ScrDef scr_seq_T25_001
+	ScrDef scr_seq_T25_002
+	ScrDef scr_seq_T25_003
+	ScrDef scr_seq_T25_004
+	ScrDef scr_seq_T25_005
+	ScrDef scr_seq_T25_006
+	ScrDef scr_seq_T25_007
+	ScrDef scr_seq_T25_008
+	ScrDef scr_seq_T25_009
+	ScrDef scr_seq_T25_010
+	ScrDef scr_seq_T25_011
+	ScrDef scr_seq_T25_012
+	ScrDef scr_seq_T25_013
+	ScrDef scr_seq_T25_014
+	ScrDef scr_seq_T25_015
+	ScrDef scr_seq_T25_016
+	ScrDef scr_seq_T25_017
+	ScrDef scr_seq_T25_018
+	ScrDef scr_seq_T25_019
+	ScrDef scr_seq_T25_020
+	ScrDef scr_seq_T25_021
+	ScrDef scr_seq_T25_022
+	ScrDef scr_seq_T25_023
+	ScrDef scr_seq_T25_024
+	ScrDef scr_seq_T25_025
+	ScrDef scr_seq_T25_026
+	ScrDef scr_seq_T25_027
+	ScrDef scr_seq_T25_028
+	ScrDef scr_seq_T25_029
+	ScrDef scr_seq_T25_030
+	ScrDef scr_seq_T25_031
+	ScrDef scr_seq_T25_032
+	ScrDefEnd
 
 scr_seq_T25_018:
-	setflag FLAG_HIDE_ROCKET_TAKEOVER_3
-	setflag FLAG_HIDE_ROCKET_TAKEOVER_4
-	setflag FLAG_HIDE_ROCKET_TAKEOVER_1
-	setflag FLAG_HIDE_ROCKET_TAKEOVER_5
-	setflag FLAG_HIDE_ROCKET_TAKEOVER_2
-	compare VAR_SCENE_ROCKET_TAKEOVER, 0
-	goto_if_ne _00B5
-	clearflag FLAG_HIDE_ROCKET_TAKEOVER_2
-	clearflag FLAG_HIDE_ROCKET_TAKEOVER_3
-	goto _011A
+	SetFlag FLAG_HIDE_ROCKET_TAKEOVER_3
+	SetFlag FLAG_HIDE_ROCKET_TAKEOVER_4
+	SetFlag FLAG_HIDE_ROCKET_TAKEOVER_1
+	SetFlag FLAG_HIDE_ROCKET_TAKEOVER_5
+	SetFlag FLAG_HIDE_ROCKET_TAKEOVER_2
+	Compare VAR_SCENE_ROCKET_TAKEOVER, 0
+	GoToIfNe _00B5
+	ClearFlag FLAG_HIDE_ROCKET_TAKEOVER_2
+	ClearFlag FLAG_HIDE_ROCKET_TAKEOVER_3
+	GoTo _011A
 
 _00B5:
-	compare VAR_SCENE_ROCKET_TAKEOVER, 1
-	goto_if_ne _00D4
-	clearflag FLAG_HIDE_ROCKET_TAKEOVER_2
-	clearflag FLAG_HIDE_ROCKET_TAKEOVER_3
-	clearflag FLAG_HIDE_ROCKET_TAKEOVER_4
-	goto _011A
+	Compare VAR_SCENE_ROCKET_TAKEOVER, 1
+	GoToIfNe _00D4
+	ClearFlag FLAG_HIDE_ROCKET_TAKEOVER_2
+	ClearFlag FLAG_HIDE_ROCKET_TAKEOVER_3
+	ClearFlag FLAG_HIDE_ROCKET_TAKEOVER_4
+	GoTo _011A
 
 _00D4:
-	compare VAR_SCENE_ROCKET_TAKEOVER, 3
-	goto_if_ne _00F7
-	clearflag FLAG_HIDE_ROCKET_TAKEOVER_3
-	clearflag FLAG_HIDE_ROCKET_TAKEOVER_4
-	clearflag FLAG_HIDE_ROCKET_TAKEOVER_1
-	clearflag FLAG_HIDE_ROCKET_TAKEOVER_5
-	goto _011A
+	Compare VAR_SCENE_ROCKET_TAKEOVER, 3
+	GoToIfNe _00F7
+	ClearFlag FLAG_HIDE_ROCKET_TAKEOVER_3
+	ClearFlag FLAG_HIDE_ROCKET_TAKEOVER_4
+	ClearFlag FLAG_HIDE_ROCKET_TAKEOVER_1
+	ClearFlag FLAG_HIDE_ROCKET_TAKEOVER_5
+	GoTo _011A
 
 _00F7:
-	compare VAR_SCENE_ROCKET_TAKEOVER, 5
-	goto_if_ne _010E
-	clearflag FLAG_HIDE_ROCKET_TAKEOVER_2
-	goto _011A
+	Compare VAR_SCENE_ROCKET_TAKEOVER, 5
+	GoToIfNe _010E
+	ClearFlag FLAG_HIDE_ROCKET_TAKEOVER_2
+	GoTo _011A
 
 _010E:
-	clearflag FLAG_HIDE_ROCKET_TAKEOVER_3
-	clearflag FLAG_HIDE_ROCKET_TAKEOVER_4
-	clearflag FLAG_HIDE_ROCKET_TAKEOVER_1
+	ClearFlag FLAG_HIDE_ROCKET_TAKEOVER_3
+	ClearFlag FLAG_HIDE_ROCKET_TAKEOVER_4
+	ClearFlag FLAG_HIDE_ROCKET_TAKEOVER_1
 _011A:
-	end
+	End
 
 scr_seq_T25_000:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	compare VAR_UNK_40DA, 1
-	goto_if_ne _013E
-	compare VAR_UNK_40DB, 0
-	goto_if_eq _0149
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	Compare VAR_UNK_40DA, 1
+	GoToIfNe _013E
+	Compare VAR_UNK_40DB, 0
+	GoToIfEq _0149
 _013E:
-	npc_msg msg_0581_T25_00009
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0581_T25_00009
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0149:
-	npc_msg msg_0581_T25_00010
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0581_T25_00010
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_T25_001:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	compare VAR_SCENE_ROCKET_TAKEOVER, 2
-	goto_if_ge _0172
-	npc_msg msg_0581_T25_00004
-	goto _0175
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	Compare VAR_SCENE_ROCKET_TAKEOVER, 2
+	GoToIfGe _0172
+	NPCMsg msg_0581_T25_00004
+	GoTo _0175
 
 _0172:
-	npc_msg msg_0581_T25_00005
+	NPCMsg msg_0581_T25_00005
 _0175:
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_T25_002:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	goto_if_set FLAG_GOT_RADIO_CARD, _019B
-	npc_msg msg_0581_T25_00006
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	GoToIfSet FLAG_GOT_RADIO_CARD, _019B
+	NPCMsg msg_0581_T25_00006
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _019B:
-	npc_msg msg_0581_T25_00007
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0581_T25_00007
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_T25_003:
-	simple_npc_msg msg_0581_T25_00008
-	end
+	SimpleNPCMsg msg_0581_T25_00008
+	End
 
 scr_seq_T25_004:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	player_on_bike_check VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _01DD
-	npc_msg msg_0581_T25_00002
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	PlayerOnBikeCheck VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _01DD
+	NPCMsg msg_0581_T25_00002
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _01DD:
-	npc_msg msg_0581_T25_00003
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0581_T25_00003
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_T25_005:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	compare VAR_UNK_40DA, 1
-	goto_if_ne _020A
-	compare VAR_UNK_40DB, 0
-	goto_if_eq _0215
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	Compare VAR_UNK_40DA, 1
+	GoToIfNe _020A
+	Compare VAR_UNK_40DB, 0
+	GoToIfEq _0215
 _020A:
-	npc_msg msg_0581_T25_00000
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0581_T25_00000
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0215:
-	npc_msg msg_0581_T25_00001
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0581_T25_00001
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_T25_006:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	compare VAR_UNK_40DA, 1
-	goto_if_ne _0242
-	compare VAR_UNK_40DB, 0
-	goto_if_eq _024D
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	Compare VAR_UNK_40DA, 1
+	GoToIfNe _0242
+	Compare VAR_UNK_40DB, 0
+	GoToIfEq _024D
 _0242:
-	npc_msg msg_0581_T25_00011
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0581_T25_00011
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _024D:
-	npc_msg msg_0581_T25_00012
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0581_T25_00012
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_T25_007:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	npc_msg msg_0581_T25_00013
-	closemsg
-	get_player_facing VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_ne _0284
-	apply_movement obj_T25_rocketm, _02F8
-	wait_movement
-	goto _02B8
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	NPCMsg msg_0581_T25_00013
+	CloseMsg
+	GetPlayerFacing VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfNe _0284
+	ApplyMovement obj_T25_rocketm, _02F8
+	WaitMovement
+	GoTo _02B8
 
 _0284:
-	compare VAR_SPECIAL_RESULT, 2
-	goto_if_ne _02A1
-	apply_movement obj_T25_rocketm, _0308
-	wait_movement
-	goto _02B8
+	Compare VAR_SPECIAL_RESULT, 2
+	GoToIfNe _02A1
+	ApplyMovement obj_T25_rocketm, _0308
+	WaitMovement
+	GoTo _02B8
 
 _02A1:
-	compare VAR_SPECIAL_RESULT, 3
-	goto_if_ne _02B8
-	apply_movement obj_T25_rocketm, _0300
-	wait_movement
+	Compare VAR_SPECIAL_RESULT, 3
+	GoToIfNe _02B8
+	ApplyMovement obj_T25_rocketm, _0300
+	WaitMovement
 _02B8:
-	compare VAR_SCENE_ROCKET_TAKEOVER, 3
-	goto_if_ne _02CE
-	npc_msg msg_0581_T25_00015
-	goto _02D1
+	Compare VAR_SCENE_ROCKET_TAKEOVER, 3
+	GoToIfNe _02CE
+	NPCMsg msg_0581_T25_00015
+	GoTo _02D1
 
 _02CE:
-	npc_msg msg_0581_T25_00014
+	NPCMsg msg_0581_T25_00014
 _02D1:
-	closemsg
-	compare VAR_TEMP_x4001, 350
-	goto_if_eq _02EA
-	apply_movement obj_T25_rocketm, _02F0
-	wait_movement
+	CloseMsg
+	Compare VAR_TEMP_x4001, 350
+	GoToIfEq _02EA
+	ApplyMovement obj_T25_rocketm, _02F0
+	WaitMovement
 _02EA:
-	releaseall
-	end
+	ReleaseAll
+	End
 
 	.balign 4, 0
 _02F0:
@@ -270,291 +270,291 @@ _0308:
 	EndMovement
 
 scr_seq_T25_008:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	compare VAR_SCENE_ROCKET_TAKEOVER, 3
-	goto_if_ne _032E
-	npc_msg msg_0581_T25_00017
-	goto _0331
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	Compare VAR_SCENE_ROCKET_TAKEOVER, 3
+	GoToIfNe _032E
+	NPCMsg msg_0581_T25_00017
+	GoTo _0331
 
 _032E:
-	npc_msg msg_0581_T25_00016
+	NPCMsg msg_0581_T25_00016
 _0331:
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_T25_009:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	compare VAR_SCENE_ROCKET_TAKEOVER, 3
-	goto_if_ne _0357
-	npc_msg msg_0581_T25_00019
-	goto _035A
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	Compare VAR_SCENE_ROCKET_TAKEOVER, 3
+	GoToIfNe _0357
+	NPCMsg msg_0581_T25_00019
+	GoTo _035A
 
 _0357:
-	npc_msg msg_0581_T25_00018
+	NPCMsg msg_0581_T25_00018
 _035A:
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_T25_010:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	compare VAR_SCENE_ROCKET_TAKEOVER, 3
-	goto_if_ne _0380
-	npc_msg msg_0581_T25_00021
-	goto _0383
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	Compare VAR_SCENE_ROCKET_TAKEOVER, 3
+	GoToIfNe _0380
+	NPCMsg msg_0581_T25_00021
+	GoTo _0383
 
 _0380:
-	npc_msg msg_0581_T25_00020
+	NPCMsg msg_0581_T25_00020
 _0383:
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_T25_011:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	compare VAR_SCENE_ROCKET_TAKEOVER, 3
-	goto_if_ne _03A9
-	npc_msg msg_0581_T25_00023
-	goto _03AC
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	Compare VAR_SCENE_ROCKET_TAKEOVER, 3
+	GoToIfNe _03A9
+	NPCMsg msg_0581_T25_00023
+	GoTo _03AC
 
 _03A9:
-	npc_msg msg_0581_T25_00022
+	NPCMsg msg_0581_T25_00022
 _03AC:
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_T25_012:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	compare VAR_SCENE_ROCKET_TAKEOVER, 3
-	goto_if_ne _03D2
-	npc_msg msg_0581_T25_00025
-	goto _03D5
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	Compare VAR_SCENE_ROCKET_TAKEOVER, 3
+	GoToIfNe _03D2
+	NPCMsg msg_0581_T25_00025
+	GoTo _03D5
 
 _03D2:
-	npc_msg msg_0581_T25_00024
+	NPCMsg msg_0581_T25_00024
 _03D5:
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_T25_013:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	compare VAR_SCENE_ROCKET_TAKEOVER, 3
-	goto_if_ne _03FB
-	npc_msg msg_0581_T25_00030
-	goto _03FE
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	Compare VAR_SCENE_ROCKET_TAKEOVER, 3
+	GoToIfNe _03FB
+	NPCMsg msg_0581_T25_00030
+	GoTo _03FE
 
 _03FB:
-	npc_msg msg_0581_T25_00029
+	NPCMsg msg_0581_T25_00029
 _03FE:
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_T25_030:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	npc_msg msg_0581_T25_00026
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	NPCMsg msg_0581_T25_00026
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_T25_032:
-	simple_npc_msg msg_0581_T25_00028
-	end
+	SimpleNPCMsg msg_0581_T25_00028
+	End
 
 scr_seq_T25_031:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	npc_msg msg_0581_T25_00027
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	NPCMsg msg_0581_T25_00027
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_T25_014:
-	simple_npc_msg msg_0581_T25_00031
-	end
+	SimpleNPCMsg msg_0581_T25_00031
+	End
 
 scr_seq_T25_015:
-	simple_npc_msg msg_0581_T25_00032
-	end
+	SimpleNPCMsg msg_0581_T25_00032
+	End
 
 scr_seq_T25_016:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	compare VAR_SCENE_ROCKET_TAKEOVER, 3
-	goto_if_ne _047F
-	npc_msg msg_0581_T25_00034
-	goto _0482
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	Compare VAR_SCENE_ROCKET_TAKEOVER, 3
+	GoToIfNe _047F
+	NPCMsg msg_0581_T25_00034
+	GoTo _0482
 
 _047F:
-	npc_msg msg_0581_T25_00033
+	NPCMsg msg_0581_T25_00033
 _0482:
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_T25_017:
-	scrcmd_609
-	lockall
-	apply_movement obj_T25_rocketm_9, _06E4
-	wait_movement
-	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
-	compare VAR_TEMP_x4000, 354
-	goto_if_ne _04B9
-	apply_movement obj_T25_rocketm_9, _06EC
-	goto _05A6
+	ScrCmd_609
+	LockAll
+	ApplyMovement obj_T25_rocketm_9, _06E4
+	WaitMovement
+	GetPlayerCoords VAR_TEMP_x4000, VAR_TEMP_x4001
+	Compare VAR_TEMP_x4000, 354
+	GoToIfNe _04B9
+	ApplyMovement obj_T25_rocketm_9, _06EC
+	GoTo _05A6
 
 _04B9:
-	compare VAR_TEMP_x4000, 355
-	goto_if_ne _04D4
-	apply_movement obj_T25_rocketm_9, _06F4
-	goto _05A6
+	Compare VAR_TEMP_x4000, 355
+	GoToIfNe _04D4
+	ApplyMovement obj_T25_rocketm_9, _06F4
+	GoTo _05A6
 
 _04D4:
-	compare VAR_TEMP_x4000, 356
-	goto_if_ne _04EF
-	apply_movement obj_T25_rocketm_9, _06FC
-	goto _05A6
+	Compare VAR_TEMP_x4000, 356
+	GoToIfNe _04EF
+	ApplyMovement obj_T25_rocketm_9, _06FC
+	GoTo _05A6
 
 _04EF:
-	compare VAR_TEMP_x4000, 357
-	goto_if_ne _050A
-	apply_movement obj_T25_rocketm_9, _0704
-	goto _05A6
+	Compare VAR_TEMP_x4000, 357
+	GoToIfNe _050A
+	ApplyMovement obj_T25_rocketm_9, _0704
+	GoTo _05A6
 
 _050A:
-	compare VAR_TEMP_x4000, 358
-	goto_if_ne _0525
-	apply_movement obj_T25_rocketm_9, _070C
-	goto _05A6
+	Compare VAR_TEMP_x4000, 358
+	GoToIfNe _0525
+	ApplyMovement obj_T25_rocketm_9, _070C
+	GoTo _05A6
 
 _0525:
-	compare VAR_TEMP_x4000, 359
-	goto_if_ne _0540
-	apply_movement obj_T25_rocketm_9, _0714
-	goto _05A6
+	Compare VAR_TEMP_x4000, 359
+	GoToIfNe _0540
+	ApplyMovement obj_T25_rocketm_9, _0714
+	GoTo _05A6
 
 _0540:
-	compare VAR_TEMP_x4000, 360
-	goto_if_ne _055B
-	apply_movement obj_T25_rocketm_9, _071C
-	goto _05A6
+	Compare VAR_TEMP_x4000, 360
+	GoToIfNe _055B
+	ApplyMovement obj_T25_rocketm_9, _071C
+	GoTo _05A6
 
 _055B:
-	compare VAR_TEMP_x4000, 361
-	goto_if_ne _0576
-	apply_movement obj_T25_rocketm_9, _0724
-	goto _05A6
+	Compare VAR_TEMP_x4000, 361
+	GoToIfNe _0576
+	ApplyMovement obj_T25_rocketm_9, _0724
+	GoTo _05A6
 
 _0576:
-	compare VAR_TEMP_x4000, 362
-	goto_if_ne _0591
-	apply_movement obj_T25_rocketm_9, _072C
-	goto _05A6
+	Compare VAR_TEMP_x4000, 362
+	GoToIfNe _0591
+	ApplyMovement obj_T25_rocketm_9, _072C
+	GoTo _05A6
 
 _0591:
-	compare VAR_TEMP_x4000, 363
-	goto_if_ne _05A6
-	apply_movement obj_T25_rocketm_9, _0734
+	Compare VAR_TEMP_x4000, 363
+	GoToIfNe _05A6
+	ApplyMovement obj_T25_rocketm_9, _0734
 _05A6:
-	wait_movement
-	toggle_following_pokemon_movement 0
-	wait_following_pokemon_movement
-	following_pokemon_movement 56
-	apply_movement obj_T25_rocketm_9, _073C
-	apply_movement obj_player, _0744
-	wait_movement
-	wait_following_pokemon_movement
-	toggle_following_pokemon_movement 1
-	following_pokemon_movement 48
-	npc_msg msg_0581_T25_00035
-	closemsg
-	compare VAR_TEMP_x4000, 354
-	goto_if_ne _05EE
-	apply_movement obj_T25_rocketm_9, _0754
-	goto _06DB
+	WaitMovement
+	ToggleFollowingPokemonMovement 0
+	WaitFollowingPokemonMovement
+	FollowingPokemonMovement 56
+	ApplyMovement obj_T25_rocketm_9, _073C
+	ApplyMovement obj_player, _0744
+	WaitMovement
+	WaitFollowingPokemonMovement
+	ToggleFollowingPokemonMovement 1
+	FollowingPokemonMovement 48
+	NPCMsg msg_0581_T25_00035
+	CloseMsg
+	Compare VAR_TEMP_x4000, 354
+	GoToIfNe _05EE
+	ApplyMovement obj_T25_rocketm_9, _0754
+	GoTo _06DB
 
 _05EE:
-	compare VAR_TEMP_x4000, 355
-	goto_if_ne _0609
-	apply_movement obj_T25_rocketm_9, _0764
-	goto _06DB
+	Compare VAR_TEMP_x4000, 355
+	GoToIfNe _0609
+	ApplyMovement obj_T25_rocketm_9, _0764
+	GoTo _06DB
 
 _0609:
-	compare VAR_TEMP_x4000, 356
-	goto_if_ne _0624
-	apply_movement obj_T25_rocketm_9, _0774
-	goto _06DB
+	Compare VAR_TEMP_x4000, 356
+	GoToIfNe _0624
+	ApplyMovement obj_T25_rocketm_9, _0774
+	GoTo _06DB
 
 _0624:
-	compare VAR_TEMP_x4000, 357
-	goto_if_ne _063F
-	apply_movement obj_T25_rocketm_9, _0784
-	goto _06DB
+	Compare VAR_TEMP_x4000, 357
+	GoToIfNe _063F
+	ApplyMovement obj_T25_rocketm_9, _0784
+	GoTo _06DB
 
 _063F:
-	compare VAR_TEMP_x4000, 358
-	goto_if_ne _065A
-	apply_movement obj_T25_rocketm_9, _0794
-	goto _06DB
+	Compare VAR_TEMP_x4000, 358
+	GoToIfNe _065A
+	ApplyMovement obj_T25_rocketm_9, _0794
+	GoTo _06DB
 
 _065A:
-	compare VAR_TEMP_x4000, 359
-	goto_if_ne _0675
-	apply_movement obj_T25_rocketm_9, _07A4
-	goto _06DB
+	Compare VAR_TEMP_x4000, 359
+	GoToIfNe _0675
+	ApplyMovement obj_T25_rocketm_9, _07A4
+	GoTo _06DB
 
 _0675:
-	compare VAR_TEMP_x4000, 360
-	goto_if_ne _0690
-	apply_movement obj_T25_rocketm_9, _07B0
-	goto _06DB
+	Compare VAR_TEMP_x4000, 360
+	GoToIfNe _0690
+	ApplyMovement obj_T25_rocketm_9, _07B0
+	GoTo _06DB
 
 _0690:
-	compare VAR_TEMP_x4000, 361
-	goto_if_ne _06AB
-	apply_movement obj_T25_rocketm_9, _07C0
-	goto _06DB
+	Compare VAR_TEMP_x4000, 361
+	GoToIfNe _06AB
+	ApplyMovement obj_T25_rocketm_9, _07C0
+	GoTo _06DB
 
 _06AB:
-	compare VAR_TEMP_x4000, 362
-	goto_if_ne _06C6
-	apply_movement obj_T25_rocketm_9, _07D0
-	goto _06DB
+	Compare VAR_TEMP_x4000, 362
+	GoToIfNe _06C6
+	ApplyMovement obj_T25_rocketm_9, _07D0
+	GoTo _06DB
 
 _06C6:
-	compare VAR_TEMP_x4000, 363
-	goto_if_ne _06DB
-	apply_movement obj_T25_rocketm_9, _07E0
+	Compare VAR_TEMP_x4000, 363
+	GoToIfNe _06DB
+	ApplyMovement obj_T25_rocketm_9, _07E0
 _06DB:
-	wait_movement
-	releaseall
-	end
+	WaitMovement
+	ReleaseAll
+	End
 
 	.balign 4, 0
 _06E4:
@@ -693,90 +693,90 @@ _07E0:
 	EndMovement
 
 scr_seq_T25_019:
-	scrcmd_055 2, 0
-	scrcmd_057 3
-	scrcmd_058
-	trainer_tips msg_0581_T25_00036, VAR_SPECIAL_RESULT
-	callstd std_signpost
-	end
+	ScrCmd_055 2, 0
+	ScrCmd_057 3
+	ScrCmd_058
+	TrainerTips msg_0581_T25_00036, VAR_SPECIAL_RESULT
+	CallStd std_signpost
+	End
 
 scr_seq_T25_020:
-	scrcmd_055 2, 0
-	scrcmd_057 3
-	scrcmd_058
-	trainer_tips msg_0581_T25_00037, VAR_SPECIAL_RESULT
-	callstd std_signpost
-	end
+	ScrCmd_055 2, 0
+	ScrCmd_057 3
+	ScrCmd_058
+	TrainerTips msg_0581_T25_00037, VAR_SPECIAL_RESULT
+	CallStd std_signpost
+	End
 
 scr_seq_T25_021:
-	scrcmd_055 2, 0
-	scrcmd_057 3
-	scrcmd_058
-	trainer_tips msg_0581_T25_00038, VAR_SPECIAL_RESULT
-	callstd std_signpost
-	end
+	ScrCmd_055 2, 0
+	ScrCmd_057 3
+	ScrCmd_058
+	TrainerTips msg_0581_T25_00038, VAR_SPECIAL_RESULT
+	CallStd std_signpost
+	End
 
 scr_seq_T25_022:
-	direction_signpost msg_0581_T25_00039, 0, 16, VAR_SPECIAL_RESULT
-	scrcmd_057 3
-	scrcmd_058
-	scrcmd_060 VAR_SPECIAL_RESULT
-	callstd std_signpost
-	end
+	DirectionSignpost msg_0581_T25_00039, 0, 16, VAR_SPECIAL_RESULT
+	ScrCmd_057 3
+	ScrCmd_058
+	ScrCmd_060 VAR_SPECIAL_RESULT
+	CallStd std_signpost
+	End
 
 scr_seq_T25_023:
-	scrcmd_055 2, 0
-	scrcmd_057 3
-	scrcmd_058
-	trainer_tips msg_0581_T25_00040, VAR_SPECIAL_RESULT
-	callstd std_signpost
-	end
+	ScrCmd_055 2, 0
+	ScrCmd_057 3
+	ScrCmd_058
+	TrainerTips msg_0581_T25_00040, VAR_SPECIAL_RESULT
+	CallStd std_signpost
+	End
 
 scr_seq_T25_024:
-	scrcmd_055 2, 0
-	scrcmd_057 3
-	scrcmd_058
-	trainer_tips msg_0581_T25_00041, VAR_SPECIAL_RESULT
-	callstd std_signpost
-	end
+	ScrCmd_055 2, 0
+	ScrCmd_057 3
+	ScrCmd_058
+	TrainerTips msg_0581_T25_00041, VAR_SPECIAL_RESULT
+	CallStd std_signpost
+	End
 
 scr_seq_T25_025:
-	scrcmd_055 2, 0
-	scrcmd_057 3
-	scrcmd_058
-	trainer_tips msg_0581_T25_00042, VAR_SPECIAL_RESULT
-	callstd std_signpost
-	end
+	ScrCmd_055 2, 0
+	ScrCmd_057 3
+	ScrCmd_058
+	TrainerTips msg_0581_T25_00042, VAR_SPECIAL_RESULT
+	CallStd std_signpost
+	End
 
 scr_seq_T25_026:
-	scrcmd_055 3, 0
-	scrcmd_057 3
-	scrcmd_058
-	trainer_tips msg_0581_T25_00043, VAR_SPECIAL_RESULT
-	callstd std_signpost
-	end
+	ScrCmd_055 3, 0
+	ScrCmd_057 3
+	ScrCmd_058
+	TrainerTips msg_0581_T25_00043, VAR_SPECIAL_RESULT
+	CallStd std_signpost
+	End
 
 scr_seq_T25_027:
-	scrcmd_055 3, 0
-	scrcmd_057 3
-	scrcmd_058
-	trainer_tips msg_0581_T25_00044, VAR_SPECIAL_RESULT
-	callstd std_signpost
-	end
+	ScrCmd_055 3, 0
+	ScrCmd_057 3
+	ScrCmd_058
+	TrainerTips msg_0581_T25_00044, VAR_SPECIAL_RESULT
+	CallStd std_signpost
+	End
 
 scr_seq_T25_028:
-	scrcmd_055 2, 0
-	scrcmd_057 3
-	scrcmd_058
-	trainer_tips msg_0581_T25_00045, VAR_SPECIAL_RESULT
-	callstd std_signpost
-	end
+	ScrCmd_055 2, 0
+	ScrCmd_057 3
+	ScrCmd_058
+	TrainerTips msg_0581_T25_00045, VAR_SPECIAL_RESULT
+	CallStd std_signpost
+	End
 
 scr_seq_T25_029:
-	scrcmd_055 2, 0
-	scrcmd_057 3
-	scrcmd_058
-	trainer_tips msg_0581_T25_00046, VAR_SPECIAL_RESULT
-	callstd std_signpost
-	end
+	ScrCmd_055 2, 0
+	ScrCmd_057 3
+	ScrCmd_058
+	TrainerTips msg_0581_T25_00046, VAR_SPECIAL_RESULT
+	CallStd std_signpost
+	End
 	.balign 4, 0

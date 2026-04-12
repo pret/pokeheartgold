@@ -5,700 +5,700 @@
 
 	.rodata
 
-	scrdef scr_seq_D37R0102_000
-	scrdef scr_seq_D37R0102_001
-	scrdef scr_seq_D37R0102_002
-	scrdef scr_seq_D37R0102_003
-	scrdef scr_seq_D37R0102_004
-	scrdef scr_seq_D37R0102_005
-	scrdef scr_seq_D37R0102_006
-	scrdef scr_seq_D37R0102_007
-	scrdef scr_seq_D37R0102_008
-	scrdef scr_seq_D37R0102_009
-	scrdef scr_seq_D37R0102_010
-	scrdef scr_seq_D37R0102_011
-	scrdef scr_seq_D37R0102_012
-	scrdef scr_seq_D37R0102_013
-	scrdef scr_seq_D37R0102_014
-	scrdef scr_seq_D37R0102_015
-	scrdef scr_seq_D37R0102_016
-	scrdef scr_seq_D37R0102_017
-	scrdef scr_seq_D37R0102_018
-	scrdef scr_seq_D37R0102_019
-	scrdef scr_seq_D37R0102_020
-	scrdef scr_seq_D37R0102_021
-	scrdef scr_seq_D37R0102_022
-	scrdef scr_seq_D37R0102_023
-	scrdef_end
+	ScrDef scr_seq_D37R0102_000
+	ScrDef scr_seq_D37R0102_001
+	ScrDef scr_seq_D37R0102_002
+	ScrDef scr_seq_D37R0102_003
+	ScrDef scr_seq_D37R0102_004
+	ScrDef scr_seq_D37R0102_005
+	ScrDef scr_seq_D37R0102_006
+	ScrDef scr_seq_D37R0102_007
+	ScrDef scr_seq_D37R0102_008
+	ScrDef scr_seq_D37R0102_009
+	ScrDef scr_seq_D37R0102_010
+	ScrDef scr_seq_D37R0102_011
+	ScrDef scr_seq_D37R0102_012
+	ScrDef scr_seq_D37R0102_013
+	ScrDef scr_seq_D37R0102_014
+	ScrDef scr_seq_D37R0102_015
+	ScrDef scr_seq_D37R0102_016
+	ScrDef scr_seq_D37R0102_017
+	ScrDef scr_seq_D37R0102_018
+	ScrDef scr_seq_D37R0102_019
+	ScrDef scr_seq_D37R0102_020
+	ScrDef scr_seq_D37R0102_021
+	ScrDef scr_seq_D37R0102_022
+	ScrDef scr_seq_D37R0102_023
+	ScrDefEnd
 
 scr_seq_D37R0102_008:
-	setflag FLAG_UNK_1B0
-	setflag FLAG_UNK_1B1
-	setflag FLAG_UNK_1B2
-	setflag FLAG_UNK_1B3
-	setflag FLAG_UNK_1B4
-	setflag FLAG_HIDE_ROCKET_TAKEOVER_2
-	compare VAR_SCENE_ROCKET_TAKEOVER, 2
-	goto_if_eq _0144
-	compare VAR_SCENE_ROCKET_TAKEOVER, 4
-	goto_if_eq _0144
-	compare VAR_SCENE_ROCKET_TAKEOVER, 3
-	goto_if_eq _0144
-	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 0
-	goto_if_ne _00C0
-	clearflag FLAG_UNK_1B1
-	clearflag FLAG_UNK_1B3
-	goto _0131
+	SetFlag FLAG_UNK_1B0
+	SetFlag FLAG_UNK_1B1
+	SetFlag FLAG_UNK_1B2
+	SetFlag FLAG_UNK_1B3
+	SetFlag FLAG_UNK_1B4
+	SetFlag FLAG_HIDE_ROCKET_TAKEOVER_2
+	Compare VAR_SCENE_ROCKET_TAKEOVER, 2
+	GoToIfEq _0144
+	Compare VAR_SCENE_ROCKET_TAKEOVER, 4
+	GoToIfEq _0144
+	Compare VAR_SCENE_ROCKET_TAKEOVER, 3
+	GoToIfEq _0144
+	GetWeekday VAR_TEMP_x4000
+	Compare VAR_TEMP_x4000, 0
+	GoToIfNe _00C0
+	ClearFlag FLAG_UNK_1B1
+	ClearFlag FLAG_UNK_1B3
+	GoTo _0131
 
 _00C0:
-	compare VAR_TEMP_x4000, 2
-	goto_if_ne _00D7
-	clearflag FLAG_UNK_1B2
-	goto _0131
+	Compare VAR_TEMP_x4000, 2
+	GoToIfNe _00D7
+	ClearFlag FLAG_UNK_1B2
+	GoTo _0131
 
 _00D7:
-	compare VAR_TEMP_x4000, 3
-	goto_if_ne _00EE
-	clearflag FLAG_UNK_1B3
-	goto _0131
+	Compare VAR_TEMP_x4000, 3
+	GoToIfNe _00EE
+	ClearFlag FLAG_UNK_1B3
+	GoTo _0131
 
 _00EE:
-	compare VAR_TEMP_x4000, 4
-	goto_if_ne _0105
-	clearflag FLAG_UNK_1B2
-	goto _0131
+	Compare VAR_TEMP_x4000, 4
+	GoToIfNe _0105
+	ClearFlag FLAG_UNK_1B2
+	GoTo _0131
 
 _0105:
-	compare VAR_TEMP_x4000, 5
-	goto_if_ne _011C
-	clearflag FLAG_UNK_1B3
-	goto _0131
+	Compare VAR_TEMP_x4000, 5
+	GoToIfNe _011C
+	ClearFlag FLAG_UNK_1B3
+	GoTo _0131
 
 _011C:
-	compare VAR_TEMP_x4000, 6
-	goto_if_ne _0131
-	clearflag FLAG_UNK_1B1
-	clearflag FLAG_UNK_1B2
+	Compare VAR_TEMP_x4000, 6
+	GoToIfNe _0131
+	ClearFlag FLAG_UNK_1B1
+	ClearFlag FLAG_UNK_1B2
 _0131:
-	compare VAR_TEMP_x4000, 1
-	call_if_eq _0161
-	clearflag FLAG_HIDE_ROCKET_TAKEOVER_2
-	end
+	Compare VAR_TEMP_x4000, 1
+	CallIfEq _0161
+	ClearFlag FLAG_HIDE_ROCKET_TAKEOVER_2
+	End
 
 _0144:
-	compare VAR_UNK_409F, 1
-	goto_if_ne _015B
-	setflag FLAG_UNK_1B4
-	goto _015F
+	Compare VAR_UNK_409F, 1
+	GoToIfNe _015B
+	SetFlag FLAG_UNK_1B4
+	GoTo _015F
 
 _015B:
-	clearflag FLAG_UNK_1B4
+	ClearFlag FLAG_UNK_1B4
 _015F:
-	end
+	End
 
 _0161:
-	scrcmd_522 VAR_TEMP_x4001
-	compare VAR_TEMP_x4001, 4
-	goto_if_ge _017C
-	setflag FLAG_UNK_1B0
-	goto _0197
+	ScrCmd_522 VAR_TEMP_x4001
+	Compare VAR_TEMP_x4001, 4
+	GoToIfGe _017C
+	SetFlag FLAG_UNK_1B0
+	GoTo _0197
 
 _017C:
-	compare VAR_TEMP_x4001, 9
-	goto_if_le _0193
-	setflag FLAG_UNK_1B0
-	goto _0197
+	Compare VAR_TEMP_x4001, 9
+	GoToIfLe _0193
+	SetFlag FLAG_UNK_1B0
+	GoTo _0197
 
 _0193:
-	clearflag FLAG_UNK_1B0
+	ClearFlag FLAG_UNK_1B0
 _0197:
-	return
+	Return
 
 scr_seq_D37R0102_000:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	setflag FLAG_SPECIAL_MART_BITTER
-	npc_msg msg_0117_D37R0102_00000
-	holdmsg
-	setvar VAR_SPECIAL_x8004, 8
-	callstd std_special_mart
-	clearflag FLAG_SPECIAL_MART_BITTER
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	SetFlag FLAG_SPECIAL_MART_BITTER
+	NPCMsg msg_0117_D37R0102_00000
+	HoldMsg
+	SetVar VAR_SPECIAL_x8004, 8
+	CallStd std_special_mart
+	ClearFlag FLAG_SPECIAL_MART_BITTER
+	ReleaseAll
+	End
 
 scr_seq_D37R0102_001:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	goto_if_set FLAG_DAILY_GOT_HAIRCUT, _0331
-	show_money_box 20, 2
-	npc_msg msg_0117_D37R0102_00010
-	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_RESULT
-	touchscreen_menu_show
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _01F5
-	goto _030C
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	GoToIfSet FLAG_DAILY_GOT_HAIRCUT, _0331
+	ShowMoneyBox 20, 2
+	NPCMsg msg_0117_D37R0102_00010
+	TouchscreenMenuHide
+	GetMenuChoice VAR_SPECIAL_RESULT
+	TouchscreenMenuShow
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _01F5
+	GoTo _030C
+	End
 
 _01F5:
-	hasenoughmoneyimmediate VAR_SPECIAL_RESULT, 500
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0324
-	npc_msg msg_0117_D37R0102_00011
-	wait_button
-	closemsg
-	hide_money_box
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	party_select_ui
-	get_party_selection VAR_SPECIAL_RESULT
-	restore_overworld
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
-	compare VAR_SPECIAL_RESULT, 255
-	goto_if_eq _0319
-	copyvar VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
-	get_partymon_species VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0319
-	show_money_box 20, 2
-	submoneyimmediate 500
-	update_money_box
-	npc_msg msg_0117_D37R0102_00012
-	wait_button
-	closemsg
-	fade_screen 6, 1, 0, RGB_WHITE
-	wait_fade
-	play_fanfare SEQ_ME_ASA
-	wait_fanfare
-	hide_money_box
-	fade_screen 6, 1, 1, RGB_WHITE
-	wait_fade
-	npc_msg msg_0117_D37R0102_00013
-	wait_button
-	setflag FLAG_DAILY_GOT_HAIRCUT
-	call _04C8
-	random VAR_SPECIAL_RESULT, 100
-	compare VAR_SPECIAL_RESULT, 40
-	goto_if_ge _02F6
-	compare VAR_SPECIAL_RESULT, 10
-	goto_if_ge _02E0
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_ge _02CA
+	HasEnoughMoneyImmediate VAR_SPECIAL_RESULT, 500
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0324
+	NPCMsg msg_0117_D37R0102_00011
+	WaitABPress
+	CloseMsg
+	HideMoneyBox
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	PartySelectUI
+	GetPartySelection VAR_SPECIAL_RESULT
+	RestoreOverworld
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
+	Compare VAR_SPECIAL_RESULT, 255
+	GoToIfEq _0319
+	CopyVar VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
+	GetPartyMonSpecies VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0319
+	ShowMoneyBox 20, 2
+	SubMoneyImmediate 500
+	UpdateMoneyBox
+	NPCMsg msg_0117_D37R0102_00012
+	WaitABPress
+	CloseMsg
+	FadeScreen 6, 1, 0, RGB_WHITE
+	WaitFade
+	PlayFanfare SEQ_ME_ASA
+	WaitFanfare
+	HideMoneyBox
+	FadeScreen 6, 1, 1, RGB_WHITE
+	WaitFade
+	NPCMsg msg_0117_D37R0102_00013
+	WaitABPress
+	SetFlag FLAG_DAILY_GOT_HAIRCUT
+	Call _04C8
+	Random VAR_SPECIAL_RESULT, 100
+	Compare VAR_SPECIAL_RESULT, 40
+	GoToIfGe _02F6
+	Compare VAR_SPECIAL_RESULT, 10
+	GoToIfGe _02E0
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfGe _02CA
 _02CA:
-	mon_add_friendship 1, VAR_SPECIAL_x8005
-	bufferpartymonnick 0, VAR_SPECIAL_x8005
-	npc_msg msg_0117_D37R0102_00024
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	MonAddFriendship 1, VAR_SPECIAL_x8005
+	BufferPartyMonNick 0, VAR_SPECIAL_x8005
+	NPCMsg msg_0117_D37R0102_00024
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _02E0:
-	mon_add_friendship 5, VAR_SPECIAL_x8005
-	bufferpartymonnick 0, VAR_SPECIAL_x8005
-	npc_msg msg_0117_D37R0102_00025
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	MonAddFriendship 5, VAR_SPECIAL_x8005
+	BufferPartyMonNick 0, VAR_SPECIAL_x8005
+	NPCMsg msg_0117_D37R0102_00025
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _02F6:
-	mon_add_friendship 10, VAR_SPECIAL_x8005
-	bufferpartymonnick 0, VAR_SPECIAL_x8005
-	npc_msg msg_0117_D37R0102_00026
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	MonAddFriendship 10, VAR_SPECIAL_x8005
+	BufferPartyMonNick 0, VAR_SPECIAL_x8005
+	NPCMsg msg_0117_D37R0102_00026
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _030C:
-	npc_msg msg_0117_D37R0102_00014
-	wait_button_or_walk_away
-	closemsg
-	hide_money_box
-	releaseall
-	end
+	NPCMsg msg_0117_D37R0102_00014
+	WaitButton
+	CloseMsg
+	HideMoneyBox
+	ReleaseAll
+	End
 
 _0319:
-	npc_msg msg_0117_D37R0102_00014
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0117_D37R0102_00014
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0324:
-	npc_msg msg_0117_D37R0102_00015
-	wait_button_or_walk_away
-	closemsg
-	hide_money_box
-	releaseall
-	end
+	NPCMsg msg_0117_D37R0102_00015
+	WaitButton
+	CloseMsg
+	HideMoneyBox
+	ReleaseAll
+	End
 
 _0331:
-	npc_msg msg_0117_D37R0102_00016
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0117_D37R0102_00016
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_D37R0102_002:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	goto_if_set FLAG_DAILY_GOT_HAIRCUT, _04BD
-	show_money_box 20, 2
-	npc_msg msg_0117_D37R0102_00017
-	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_RESULT
-	touchscreen_menu_show
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0375
-	goto _0498
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	GoToIfSet FLAG_DAILY_GOT_HAIRCUT, _04BD
+	ShowMoneyBox 20, 2
+	NPCMsg msg_0117_D37R0102_00017
+	TouchscreenMenuHide
+	GetMenuChoice VAR_SPECIAL_RESULT
+	TouchscreenMenuShow
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0375
+	GoTo _0498
+	End
 
 _0375:
-	hasenoughmoneyimmediate VAR_SPECIAL_RESULT, 300
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _04B0
-	npc_msg msg_0117_D37R0102_00018
-	wait_button
-	closemsg
-	hide_money_box
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	party_select_ui
-	get_party_selection VAR_SPECIAL_RESULT
-	restore_overworld
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
-	compare VAR_SPECIAL_RESULT, 255
-	goto_if_eq _04A5
-	copyvar VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
-	get_partymon_species VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _04A5
-	show_money_box 20, 2
-	submoneyimmediate 300
-	update_money_box
-	npc_msg msg_0117_D37R0102_00019
-	wait_button
-	closemsg
-	fade_screen 6, 1, 0, RGB_WHITE
-	wait_fade
-	play_fanfare SEQ_ME_ASA
-	wait_fanfare
-	hide_money_box
-	fade_screen 6, 1, 1, RGB_WHITE
-	wait_fade
-	npc_msg msg_0117_D37R0102_00020
-	wait_button
-	setflag FLAG_DAILY_GOT_HAIRCUT
-	random VAR_SPECIAL_RESULT, 100
-	compare VAR_SPECIAL_RESULT, 40
-	goto_if_ge _0444
-	compare VAR_SPECIAL_RESULT, 10
-	goto_if_ge _0460
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_ge _047C
+	HasEnoughMoneyImmediate VAR_SPECIAL_RESULT, 300
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _04B0
+	NPCMsg msg_0117_D37R0102_00018
+	WaitABPress
+	CloseMsg
+	HideMoneyBox
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	PartySelectUI
+	GetPartySelection VAR_SPECIAL_RESULT
+	RestoreOverworld
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
+	Compare VAR_SPECIAL_RESULT, 255
+	GoToIfEq _04A5
+	CopyVar VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
+	GetPartyMonSpecies VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _04A5
+	ShowMoneyBox 20, 2
+	SubMoneyImmediate 300
+	UpdateMoneyBox
+	NPCMsg msg_0117_D37R0102_00019
+	WaitABPress
+	CloseMsg
+	FadeScreen 6, 1, 0, RGB_WHITE
+	WaitFade
+	PlayFanfare SEQ_ME_ASA
+	WaitFanfare
+	HideMoneyBox
+	FadeScreen 6, 1, 1, RGB_WHITE
+	WaitFade
+	NPCMsg msg_0117_D37R0102_00020
+	WaitABPress
+	SetFlag FLAG_DAILY_GOT_HAIRCUT
+	Random VAR_SPECIAL_RESULT, 100
+	Compare VAR_SPECIAL_RESULT, 40
+	GoToIfGe _0444
+	Compare VAR_SPECIAL_RESULT, 10
+	GoToIfGe _0460
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfGe _047C
 _0444:
-	call _04C8
-	mon_add_friendship 1, VAR_SPECIAL_x8005
-	bufferpartymonnick 0, VAR_SPECIAL_x8005
-	npc_msg msg_0117_D37R0102_00024
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	Call _04C8
+	MonAddFriendship 1, VAR_SPECIAL_x8005
+	BufferPartyMonNick 0, VAR_SPECIAL_x8005
+	NPCMsg msg_0117_D37R0102_00024
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0460:
-	call _04C8
-	mon_add_friendship 5, VAR_SPECIAL_x8005
-	bufferpartymonnick 0, VAR_SPECIAL_x8005
-	npc_msg msg_0117_D37R0102_00025
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	Call _04C8
+	MonAddFriendship 5, VAR_SPECIAL_x8005
+	BufferPartyMonNick 0, VAR_SPECIAL_x8005
+	NPCMsg msg_0117_D37R0102_00025
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _047C:
-	call _04D8
-	mon_add_friendship 10, VAR_SPECIAL_x8005
-	bufferpartymonnick 0, VAR_SPECIAL_x8005
-	npc_msg msg_0117_D37R0102_00026
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	Call _04D8
+	MonAddFriendship 10, VAR_SPECIAL_x8005
+	BufferPartyMonNick 0, VAR_SPECIAL_x8005
+	NPCMsg msg_0117_D37R0102_00026
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0498:
-	npc_msg msg_0117_D37R0102_00021
-	wait_button_or_walk_away
-	closemsg
-	hide_money_box
-	releaseall
-	end
+	NPCMsg msg_0117_D37R0102_00021
+	WaitButton
+	CloseMsg
+	HideMoneyBox
+	ReleaseAll
+	End
 
 _04A5:
-	npc_msg msg_0117_D37R0102_00021
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0117_D37R0102_00021
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _04B0:
-	npc_msg msg_0117_D37R0102_00022
-	wait_button_or_walk_away
-	closemsg
-	hide_money_box
-	releaseall
-	end
+	NPCMsg msg_0117_D37R0102_00022
+	WaitButton
+	CloseMsg
+	HideMoneyBox
+	ReleaseAll
+	End
 
 _04BD:
-	npc_msg msg_0117_D37R0102_00023
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0117_D37R0102_00023
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _04C8:
-	mon_add_contest_value VAR_SPECIAL_x8005, 1, 16
-	mon_add_contest_value VAR_SPECIAL_x8005, 5, 11
-	return
+	MonAddContestValue VAR_SPECIAL_x8005, 1, 16
+	MonAddContestValue VAR_SPECIAL_x8005, 5, 11
+	Return
 
 _04D8:
-	mon_add_contest_value VAR_SPECIAL_x8005, 1, 24
-	mon_add_contest_value VAR_SPECIAL_x8005, 5, 18
-	return
+	MonAddContestValue VAR_SPECIAL_x8005, 1, 24
+	MonAddContestValue VAR_SPECIAL_x8005, 5, 18
+	Return
 
 scr_seq_D37R0102_003:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	goto_if_set FLAG_UNK_AB7, _0895
-	show_money_box 20, 2
-	npc_msg msg_0117_D37R0102_00001
-	setvar VAR_TEMP_x4003, 0
-	setvar VAR_TEMP_x4004, 0
-	setvar VAR_TEMP_x4005, 0
-	setvar VAR_TEMP_x4006, 0
-	setvar VAR_TEMP_x4007, 0
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	GoToIfSet FLAG_UNK_AB7, _0895
+	ShowMoneyBox 20, 2
+	NPCMsg msg_0117_D37R0102_00001
+	SetVar VAR_TEMP_x4003, 0
+	SetVar VAR_TEMP_x4004, 0
+	SetVar VAR_TEMP_x4005, 0
+	SetVar VAR_TEMP_x4006, 0
+	SetVar VAR_TEMP_x4007, 0
 _0522:
-	touchscreen_menu_hide
-	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_RESULT
-	menu_item_add 445, 255, 0
-	menu_item_add 446, 255, 1
-	menu_item_add 447, 255, 2
-	menu_item_add 448, 255, 3
-	menu_item_add 449, 255, 4
-	menu_item_add 450, 255, 7
-	menu_exec
-	switch VAR_SPECIAL_RESULT
-	case 0, _05AB
-	case 1, _05D0
-	case 2, _05F5
-	case 3, _061A
-	case 4, _063F
-	goto _0886
+	TouchscreenMenuHide
+	MenuInitStdGmm 1, 1, 0, 1, VAR_SPECIAL_RESULT
+	MenuItemAdd 445, 255, 0
+	MenuItemAdd 446, 255, 1
+	MenuItemAdd 447, 255, 2
+	MenuItemAdd 448, 255, 3
+	MenuItemAdd 449, 255, 4
+	MenuItemAdd 450, 255, 7
+	MenuExec
+	Switch VAR_SPECIAL_RESULT
+	Case 0, _05AB
+	Case 1, _05D0
+	Case 2, _05F5
+	Case 3, _061A
+	Case 4, _063F
+	GoTo _0886
 
 _05AB:
-	compare VAR_TEMP_x4003, 1
-	goto_if_eq _086B
-	setvar VAR_SPECIAL_x8004, 92
-	setvar VAR_SPECIAL_x8005, 1
-	setvar VAR_SPECIAL_x8006, 4500
-	goto _0664
+	Compare VAR_TEMP_x4003, 1
+	GoToIfEq _086B
+	SetVar VAR_SPECIAL_x8004, 92
+	SetVar VAR_SPECIAL_x8005, 1
+	SetVar VAR_SPECIAL_x8006, 4500
+	GoTo _0664
 
 _05D0:
-	compare VAR_TEMP_x4004, 1
-	goto_if_eq _086B
-	setvar VAR_SPECIAL_x8004, 88
-	setvar VAR_SPECIAL_x8005, 1
-	setvar VAR_SPECIAL_x8006, 650
-	goto _0664
+	Compare VAR_TEMP_x4004, 1
+	GoToIfEq _086B
+	SetVar VAR_SPECIAL_x8004, 88
+	SetVar VAR_SPECIAL_x8005, 1
+	SetVar VAR_SPECIAL_x8006, 650
+	GoTo _0664
 
 _05F5:
-	compare VAR_TEMP_x4005, 1
-	goto_if_eq _086B
-	setvar VAR_SPECIAL_x8004, 89
-	setvar VAR_SPECIAL_x8005, 1
-	setvar VAR_SPECIAL_x8006, 3500
-	goto _0664
+	Compare VAR_TEMP_x4005, 1
+	GoToIfEq _086B
+	SetVar VAR_SPECIAL_x8004, 89
+	SetVar VAR_SPECIAL_x8005, 1
+	SetVar VAR_SPECIAL_x8006, 3500
+	GoTo _0664
 
 _061A:
-	compare VAR_TEMP_x4006, 1
-	goto_if_eq _086B
-	setvar VAR_SPECIAL_x8004, 90
-	setvar VAR_SPECIAL_x8005, 1
-	setvar VAR_SPECIAL_x8006, 900
-	goto _0664
+	Compare VAR_TEMP_x4006, 1
+	GoToIfEq _086B
+	SetVar VAR_SPECIAL_x8004, 90
+	SetVar VAR_SPECIAL_x8005, 1
+	SetVar VAR_SPECIAL_x8006, 900
+	GoTo _0664
 
 _063F:
-	compare VAR_TEMP_x4007, 1
-	goto_if_eq _086B
-	setvar VAR_SPECIAL_x8004, 91
-	setvar VAR_SPECIAL_x8005, 1
-	setvar VAR_SPECIAL_x8006, 4600
-	goto _0664
+	Compare VAR_TEMP_x4007, 1
+	GoToIfEq _086B
+	SetVar VAR_SPECIAL_x8004, 91
+	SetVar VAR_SPECIAL_x8005, 1
+	SetVar VAR_SPECIAL_x8006, 4600
+	GoTo _0664
 
 _0664:
-	buffer_item_name 0, VAR_SPECIAL_x8004
-	buffer_int 1, VAR_SPECIAL_x8006
-	npc_msg msg_0117_D37R0102_00002
-	getmenuchoice VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _068A
-	closemsg
-	goto _0522
+	BufferItemName 0, VAR_SPECIAL_x8004
+	BufferInt 1, VAR_SPECIAL_x8006
+	NPCMsg msg_0117_D37R0102_00002
+	GetMenuChoice VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _068A
+	CloseMsg
+	GoTo _0522
 
 _068A:
-	compare VAR_SPECIAL_x8004, 92
-	goto_if_ne _06CD
-	hasenoughmoneyimmediate VAR_SPECIAL_RESULT, 4500
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0874
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _087D
-	submoneyimmediate 4500
-	goto _07C6
+	Compare VAR_SPECIAL_x8004, 92
+	GoToIfNe _06CD
+	HasEnoughMoneyImmediate VAR_SPECIAL_RESULT, 4500
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0874
+	HasSpaceForItem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _087D
+	SubMoneyImmediate 4500
+	GoTo _07C6
 
 _06CD:
-	compare VAR_SPECIAL_x8004, 88
-	goto_if_ne _0710
-	hasenoughmoneyimmediate VAR_SPECIAL_RESULT, 650
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0874
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _087D
-	submoneyimmediate 650
-	goto _07C6
+	Compare VAR_SPECIAL_x8004, 88
+	GoToIfNe _0710
+	HasEnoughMoneyImmediate VAR_SPECIAL_RESULT, 650
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0874
+	HasSpaceForItem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _087D
+	SubMoneyImmediate 650
+	GoTo _07C6
 
 _0710:
-	compare VAR_SPECIAL_x8004, 89
-	goto_if_ne _0753
-	hasenoughmoneyimmediate VAR_SPECIAL_RESULT, 3500
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0874
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _087D
-	submoneyimmediate 3500
-	goto _07C6
+	Compare VAR_SPECIAL_x8004, 89
+	GoToIfNe _0753
+	HasEnoughMoneyImmediate VAR_SPECIAL_RESULT, 3500
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0874
+	HasSpaceForItem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _087D
+	SubMoneyImmediate 3500
+	GoTo _07C6
 
 _0753:
-	compare VAR_SPECIAL_x8004, 90
-	goto_if_ne _0796
-	hasenoughmoneyimmediate VAR_SPECIAL_RESULT, 900
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0874
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _087D
-	submoneyimmediate 900
-	goto _07C6
+	Compare VAR_SPECIAL_x8004, 90
+	GoToIfNe _0796
+	HasEnoughMoneyImmediate VAR_SPECIAL_RESULT, 900
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0874
+	HasSpaceForItem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _087D
+	SubMoneyImmediate 900
+	GoTo _07C6
 
 _0796:
-	hasenoughmoneyimmediate VAR_SPECIAL_RESULT, 4600
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0874
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _087D
-	submoneyimmediate 4600
+	HasEnoughMoneyImmediate VAR_SPECIAL_RESULT, 4600
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0874
+	HasSpaceForItem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _087D
+	SubMoneyImmediate 4600
 _07C6:
-	update_money_box
-	play_se SEQ_SE_DP_REGI
-	buffer_item_name 0, VAR_SPECIAL_x8004
-	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
-	buffer_pocket_name 1, VAR_SPECIAL_RESULT
-	npc_msg msg_0117_D37R0102_00003
-	npc_msg msg_0117_D37R0102_00004
-	giveitem VAR_SPECIAL_x8004, 1, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_x8004, 92
-	goto_if_ne _0803
-	setvar VAR_TEMP_x4003, 1
-	goto _0861
+	UpdateMoneyBox
+	PlaySE SEQ_SE_DP_REGI
+	BufferItemName 0, VAR_SPECIAL_x8004
+	GetItemPocket VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
+	BufferPocketName 1, VAR_SPECIAL_RESULT
+	NPCMsg msg_0117_D37R0102_00003
+	NPCMsg msg_0117_D37R0102_00004
+	GiveItem VAR_SPECIAL_x8004, 1, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_x8004, 92
+	GoToIfNe _0803
+	SetVar VAR_TEMP_x4003, 1
+	GoTo _0861
 
 _0803:
-	compare VAR_SPECIAL_x8004, 88
-	goto_if_ne _081C
-	setvar VAR_TEMP_x4004, 1
-	goto _0861
+	Compare VAR_SPECIAL_x8004, 88
+	GoToIfNe _081C
+	SetVar VAR_TEMP_x4004, 1
+	GoTo _0861
 
 _081C:
-	compare VAR_SPECIAL_x8004, 89
-	goto_if_ne _0835
-	setvar VAR_TEMP_x4005, 1
-	goto _0861
+	Compare VAR_SPECIAL_x8004, 89
+	GoToIfNe _0835
+	SetVar VAR_TEMP_x4005, 1
+	GoTo _0861
 
 _0835:
-	compare VAR_SPECIAL_x8004, 90
-	goto_if_ne _084E
-	setvar VAR_TEMP_x4006, 1
-	goto _0861
+	Compare VAR_SPECIAL_x8004, 90
+	GoToIfNe _084E
+	SetVar VAR_TEMP_x4006, 1
+	GoTo _0861
 
 _084E:
-	compare VAR_SPECIAL_x8004, 91
-	goto_if_ne _0861
-	setvar VAR_TEMP_x4007, 1
+	Compare VAR_SPECIAL_x8004, 91
+	GoToIfNe _0861
+	SetVar VAR_TEMP_x4007, 1
 _0861:
-	setflag FLAG_UNK_AB7
-	goto _0522
+	SetFlag FLAG_UNK_AB7
+	GoTo _0522
 
 _086B:
-	npc_msg msg_0117_D37R0102_00005
-	goto _0522
+	NPCMsg msg_0117_D37R0102_00005
+	GoTo _0522
 
 _0874:
-	npc_msg msg_0117_D37R0102_00006
-	goto _0522
+	NPCMsg msg_0117_D37R0102_00006
+	GoTo _0522
 
 _087D:
-	npc_msg msg_0117_D37R0102_00007
-	goto _0522
+	NPCMsg msg_0117_D37R0102_00007
+	GoTo _0522
 
 _0886:
-	touchscreen_menu_show
-	hide_money_box
-	npc_msg msg_0117_D37R0102_00009
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	TouchscreenMenuShow
+	HideMoneyBox
+	NPCMsg msg_0117_D37R0102_00009
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0895:
-	npc_msg msg_0117_D37R0102_00008
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0117_D37R0102_00008
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_D37R0102_004:
-	scrcmd_609
-	lockall
-	apply_movement obj_D37R0102_rocketm, _0AC4
-	wait_movement
-	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
-	compare VAR_TEMP_x4001, 7
-	goto_if_ne _08CF
-	apply_movement obj_D37R0102_rocketm, _0ACC
-	goto _096B
+	ScrCmd_609
+	LockAll
+	ApplyMovement obj_D37R0102_rocketm, _0AC4
+	WaitMovement
+	GetPlayerCoords VAR_TEMP_x4000, VAR_TEMP_x4001
+	Compare VAR_TEMP_x4001, 7
+	GoToIfNe _08CF
+	ApplyMovement obj_D37R0102_rocketm, _0ACC
+	GoTo _096B
 
 _08CF:
-	compare VAR_TEMP_x4001, 8
-	goto_if_ne _08EA
-	apply_movement obj_D37R0102_rocketm, _0AD4
-	goto _096B
+	Compare VAR_TEMP_x4001, 8
+	GoToIfNe _08EA
+	ApplyMovement obj_D37R0102_rocketm, _0AD4
+	GoTo _096B
 
 _08EA:
-	compare VAR_TEMP_x4001, 9
-	goto_if_ne _0905
-	apply_movement obj_D37R0102_rocketm, _0ADC
-	goto _096B
+	Compare VAR_TEMP_x4001, 9
+	GoToIfNe _0905
+	ApplyMovement obj_D37R0102_rocketm, _0ADC
+	GoTo _096B
 
 _0905:
-	compare VAR_TEMP_x4001, 10
-	goto_if_ne _0920
-	apply_movement obj_D37R0102_rocketm, _0AE4
-	goto _096B
+	Compare VAR_TEMP_x4001, 10
+	GoToIfNe _0920
+	ApplyMovement obj_D37R0102_rocketm, _0AE4
+	GoTo _096B
 
 _0920:
-	compare VAR_TEMP_x4001, 11
-	goto_if_ne _093B
-	apply_movement obj_D37R0102_rocketm, _0AEC
-	goto _096B
+	Compare VAR_TEMP_x4001, 11
+	GoToIfNe _093B
+	ApplyMovement obj_D37R0102_rocketm, _0AEC
+	GoTo _096B
 
 _093B:
-	compare VAR_TEMP_x4001, 12
-	goto_if_ne _0956
-	apply_movement obj_D37R0102_rocketm, _0AF4
-	goto _096B
+	Compare VAR_TEMP_x4001, 12
+	GoToIfNe _0956
+	ApplyMovement obj_D37R0102_rocketm, _0AF4
+	GoTo _096B
 
 _0956:
-	compare VAR_TEMP_x4001, 13
-	goto_if_ne _096B
-	apply_movement obj_D37R0102_rocketm, _0AFC
+	Compare VAR_TEMP_x4001, 13
+	GoToIfNe _096B
+	ApplyMovement obj_D37R0102_rocketm, _0AFC
 _096B:
-	wait_movement
-	npc_msg msg_0117_D37R0102_00036
-	closemsg
-	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
-	toggle_following_pokemon_movement 0
-	wait_following_pokemon_movement
-	following_pokemon_movement 55
-	compare VAR_TEMP_x4001, 7
-	goto_if_ne _09A5
-	apply_movement obj_D37R0102_rocketm, _0B04
-	apply_movement obj_player, _0B70
-	goto _0A71
+	WaitMovement
+	NPCMsg msg_0117_D37R0102_00036
+	CloseMsg
+	GetPlayerCoords VAR_TEMP_x4000, VAR_TEMP_x4001
+	ToggleFollowingPokemonMovement 0
+	WaitFollowingPokemonMovement
+	FollowingPokemonMovement 55
+	Compare VAR_TEMP_x4001, 7
+	GoToIfNe _09A5
+	ApplyMovement obj_D37R0102_rocketm, _0B04
+	ApplyMovement obj_player, _0B70
+	GoTo _0A71
 
 _09A5:
-	compare VAR_TEMP_x4001, 8
-	goto_if_ne _09C8
-	apply_movement obj_D37R0102_rocketm, _0B10
-	apply_movement obj_player, _0B7C
-	goto _0A71
+	Compare VAR_TEMP_x4001, 8
+	GoToIfNe _09C8
+	ApplyMovement obj_D37R0102_rocketm, _0B10
+	ApplyMovement obj_player, _0B7C
+	GoTo _0A71
 
 _09C8:
-	compare VAR_TEMP_x4001, 9
-	goto_if_ne _09EB
-	apply_movement obj_D37R0102_rocketm, _0B20
-	apply_movement obj_player, _0B88
-	goto _0A71
+	Compare VAR_TEMP_x4001, 9
+	GoToIfNe _09EB
+	ApplyMovement obj_D37R0102_rocketm, _0B20
+	ApplyMovement obj_player, _0B88
+	GoTo _0A71
 
 _09EB:
-	compare VAR_TEMP_x4001, 10
-	goto_if_ne _0A0E
-	apply_movement obj_D37R0102_rocketm, _0B30
-	apply_movement obj_player, _0B94
-	goto _0A71
+	Compare VAR_TEMP_x4001, 10
+	GoToIfNe _0A0E
+	ApplyMovement obj_D37R0102_rocketm, _0B30
+	ApplyMovement obj_player, _0B94
+	GoTo _0A71
 
 _0A0E:
-	compare VAR_TEMP_x4001, 11
-	goto_if_ne _0A31
-	apply_movement obj_D37R0102_rocketm, _0B40
-	apply_movement obj_player, _0BA0
-	goto _0A71
+	Compare VAR_TEMP_x4001, 11
+	GoToIfNe _0A31
+	ApplyMovement obj_D37R0102_rocketm, _0B40
+	ApplyMovement obj_player, _0BA0
+	GoTo _0A71
 
 _0A31:
-	compare VAR_TEMP_x4001, 12
-	goto_if_ne _0A54
-	apply_movement obj_D37R0102_rocketm, _0B50
-	apply_movement obj_player, _0BAC
-	goto _0A71
+	Compare VAR_TEMP_x4001, 12
+	GoToIfNe _0A54
+	ApplyMovement obj_D37R0102_rocketm, _0B50
+	ApplyMovement obj_player, _0BAC
+	GoTo _0A71
 
 _0A54:
-	compare VAR_TEMP_x4001, 13
-	goto_if_ne _0A71
-	apply_movement obj_D37R0102_rocketm, _0B60
-	apply_movement obj_player, _0BB8
+	Compare VAR_TEMP_x4001, 13
+	GoToIfNe _0A71
+	ApplyMovement obj_D37R0102_rocketm, _0B60
+	ApplyMovement obj_player, _0BB8
 _0A71:
-	wait_movement
-	wait_following_pokemon_movement
-	toggle_following_pokemon_movement 1
-	following_pokemon_movement 48
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	set_avatar_bits PLAYER_TRANSITION_ROCKET
-	update_avatar_state
-	rocket_costume_flag_action 1
-	play_se SEQ_SE_DP_CARD2
-	wait 24, VAR_SPECIAL_RESULT
-	play_se SEQ_SE_DP_CARD2
-	wait_se SEQ_SE_DP_CARD2
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
-	setvar VAR_SCENE_ROCKET_TAKEOVER, 3
-	npc_msg msg_0117_D37R0102_00037
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	WaitMovement
+	WaitFollowingPokemonMovement
+	ToggleFollowingPokemonMovement 1
+	FollowingPokemonMovement 48
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	SetAvatarBits PLAYER_TRANSITION_ROCKET
+	UpdateAvatarState
+	RocketCostumeFlagAction 1
+	PlaySE SEQ_SE_DP_CARD2
+	Wait 24, VAR_SPECIAL_RESULT
+	PlaySE SEQ_SE_DP_CARD2
+	WaitSE SEQ_SE_DP_CARD2
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
+	SetVar VAR_SCENE_ROCKET_TAKEOVER, 3
+	NPCMsg msg_0117_D37R0102_00037
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 	.balign 4, 0
 _0AC4:
@@ -831,192 +831,192 @@ _0BB8:
 	EndMovement
 
 scr_seq_D37R0102_009:
-	simple_npc_msg msg_0117_D37R0102_00037
-	end
+	SimpleNPCMsg msg_0117_D37R0102_00037
+	End
 
 scr_seq_D37R0102_005:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	setvar VAR_SPECIAL_x8007, 0
-	call_if_unset FLAG_UNK_08C, _0C0E
-	compare VAR_TEMP_x400A, 0
-	goto_if_eq _0C16
-	compare VAR_TEMP_x400A, 1
-	goto_if_ge _0C1F
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	SetVar VAR_SPECIAL_x8007, 0
+	CallIfUnset FLAG_UNK_08C, _0C0E
+	Compare VAR_TEMP_x400A, 0
+	GoToIfEq _0C16
+	Compare VAR_TEMP_x400A, 1
+	GoToIfGe _0C1F
+	ReleaseAll
+	End
 
 _0C0E:
-	setvar VAR_SPECIAL_x8007, 1
-	return
+	SetVar VAR_SPECIAL_x8007, 1
+	Return
 
 _0C16:
-	npc_msg msg_0117_D37R0102_00039
-	goto _0C58
+	NPCMsg msg_0117_D37R0102_00039
+	GoTo _0C58
 
 _0C1F:
-	npc_msg msg_0117_D37R0102_00049
-	goto _0C58
+	NPCMsg msg_0117_D37R0102_00049
+	GoTo _0C58
 
 _0C28:
-	npc_msg msg_0117_D37R0102_00041
-	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_RESULT
-	touchscreen_menu_show
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0C4F
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _0CA0
-	end
+	NPCMsg msg_0117_D37R0102_00041
+	TouchscreenMenuHide
+	GetMenuChoice VAR_SPECIAL_RESULT
+	TouchscreenMenuShow
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0C4F
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _0CA0
+	End
 
 _0C4F:
-	npc_msg msg_0117_D37R0102_00044
-	goto _0C7C
+	NPCMsg msg_0117_D37R0102_00044
+	GoTo _0C7C
 
 _0C58:
-	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_RESULT
-	touchscreen_menu_show
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0C28
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _0DDA
-	end
+	TouchscreenMenuHide
+	GetMenuChoice VAR_SPECIAL_RESULT
+	TouchscreenMenuShow
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0C28
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _0DDA
+	End
 
 _0C7C:
-	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_RESULT
-	touchscreen_menu_show
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0CA0
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _0DDA
-	end
+	TouchscreenMenuHide
+	GetMenuChoice VAR_SPECIAL_RESULT
+	TouchscreenMenuShow
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0CA0
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _0DDA
+	End
 
 _0CA0:
-	get_party_count VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _0CC0
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_ne _0CCC
-	end
+	GetPartyCount VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _0CC0
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfNe _0CCC
+	End
 
 _0CC0:
-	setvar VAR_TEMP_x4002, 0
-	goto _0D17
+	SetVar VAR_TEMP_x4002, 0
+	GoTo _0D17
 
 _0CCC:
-	npc_msg msg_0117_D37R0102_00042
-	closemsg
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	party_select_ui
-	get_party_selection VAR_TEMP_x4002
-	restore_overworld
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
-	compare VAR_TEMP_x4002, 255
-	goto_if_eq _0DDA
-	get_partymon_species VAR_TEMP_x4002, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0DE5
-	goto _0D17
+	NPCMsg msg_0117_D37R0102_00042
+	CloseMsg
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	PartySelectUI
+	GetPartySelection VAR_TEMP_x4002
+	RestoreOverworld
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
+	Compare VAR_TEMP_x4002, 255
+	GoToIfEq _0DDA
+	GetPartyMonSpecies VAR_TEMP_x4002, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0DE5
+	GoTo _0D17
 
 _0D17:
-	npc_msg msg_0117_D37R0102_00043
-	closemsg
-	get_player_facing VAR_SPECIAL_x8006
-	compare VAR_SPECIAL_x8006, 0
-	goto_if_eq _0D49
-	compare VAR_SPECIAL_x8006, 2
-	goto_if_eq _0D4F
-	compare VAR_SPECIAL_x8006, 3
-	goto_if_eq _0D55
-	end
+	NPCMsg msg_0117_D37R0102_00043
+	CloseMsg
+	GetPlayerFacing VAR_SPECIAL_x8006
+	Compare VAR_SPECIAL_x8006, 0
+	GoToIfEq _0D49
+	Compare VAR_SPECIAL_x8006, 2
+	GoToIfEq _0D4F
+	Compare VAR_SPECIAL_x8006, 3
+	GoToIfEq _0D55
+	End
 
 _0D49:
-	goto _0D5B
+	GoTo _0D5B
 
 _0D4F:
-	goto _0D5B
+	GoTo _0D5B
 
 _0D55:
-	goto _0D5B
+	GoTo _0D5B
 
 _0D5B:
-	setflag FLAG_UNK_08C
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	scrcmd_154 VAR_TEMP_x4002, VAR_SPECIAL_x8005, VAR_SPECIAL_x8007
-	restore_overworld
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
-	compare VAR_SPECIAL_x8006, 0
-	goto_if_eq _0DAA
-	compare VAR_SPECIAL_x8006, 2
-	goto_if_eq _0DB0
-	compare VAR_SPECIAL_x8006, 3
-	goto_if_eq _0DB6
-	end
+	SetFlag FLAG_UNK_08C
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	ScrCmd_154 VAR_TEMP_x4002, VAR_SPECIAL_x8005, VAR_SPECIAL_x8007
+	RestoreOverworld
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
+	Compare VAR_SPECIAL_x8006, 0
+	GoToIfEq _0DAA
+	Compare VAR_SPECIAL_x8006, 2
+	GoToIfEq _0DB0
+	Compare VAR_SPECIAL_x8006, 3
+	GoToIfEq _0DB6
+	End
 
 _0DAA:
-	goto _0DBC
+	GoTo _0DBC
 
 _0DB0:
-	goto _0DBC
+	GoTo _0DBC
 
 _0DB6:
-	goto _0DBC
+	GoTo _0DBC
 
 _0DBC:
-	compare VAR_SPECIAL_x8005, 0
-	goto_if_eq _0E40
-	setvar VAR_TEMP_x400A, 1
-	npc_msg msg_0117_D37R0102_00045
-	closemsg
-	goto _0DEE
+	Compare VAR_SPECIAL_x8005, 0
+	GoToIfEq _0E40
+	SetVar VAR_TEMP_x400A, 1
+	NPCMsg msg_0117_D37R0102_00045
+	CloseMsg
+	GoTo _0DEE
 
 _0DDA:
-	npc_msg msg_0117_D37R0102_00040
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0117_D37R0102_00040
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0DE5:
-	npc_msg msg_0117_D37R0102_00051
-	goto _0CCC
+	NPCMsg msg_0117_D37R0102_00051
+	GoTo _0CCC
 
 _0DEE:
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	scrcmd_492 0, VAR_SPECIAL_RESULT, VAR_SPECIAL_x8004
-	restore_overworld
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0E35
-	scrcmd_256 VAR_SPECIAL_x8004
-	scrcmd_494 0, VAR_SPECIAL_x8004
-	npc_msg msg_0117_D37R0102_00046
-	npc_msg msg_0117_D37R0102_00052
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	ScrCmd_492 0, VAR_SPECIAL_RESULT, VAR_SPECIAL_x8004
+	RestoreOverworld
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0E35
+	ScrCmd_256 VAR_SPECIAL_x8004
+	ScrCmd_494 0, VAR_SPECIAL_x8004
+	NPCMsg msg_0117_D37R0102_00046
+	NPCMsg msg_0117_D37R0102_00052
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0E35:
-	npc_msg msg_0117_D37R0102_00047
-	closemsg
-	goto _0DEE
+	NPCMsg msg_0117_D37R0102_00047
+	CloseMsg
+	GoTo _0DEE
 
 _0E40:
-	npc_msg msg_0117_D37R0102_00048
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0117_D37R0102_00048
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 	.balign 4, 0
 _0E4C:
@@ -1093,85 +1093,85 @@ _0ED0:
 	EndMovement
 
 _0ED8:
-	end
+	End
 
 scr_seq_D37R0102_006:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0117_D37R0102_00029
-	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_RESULT
-	touchscreen_menu_show
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0F05
-	npc_msg msg_0117_D37R0102_00034
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	NPCMsg msg_0117_D37R0102_00029
+	TouchscreenMenuHide
+	GetMenuChoice VAR_SPECIAL_RESULT
+	TouchscreenMenuShow
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0F05
+	NPCMsg msg_0117_D37R0102_00034
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0F05:
-	photo_album_is_full VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _0FDA
-	npc_msg msg_0117_D37R0102_00030
-	closemsg
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	set_avatar_bits PLAYER_TRANSITION_ROCKET
-	update_avatar_state
-	rocket_costume_flag_action 1
-	toggle_following_pokemon_movement 0
-	wait_following_pokemon_movement
-	following_pokemon_movement 55
-	apply_movement obj_player, _0FE8
-	apply_movement obj_D37R0102_gsmiddleman1, _1000
-	wait_movement
-	wait_following_pokemon_movement
-	toggle_following_pokemon_movement 1
-	following_pokemon_movement 48
-	scrcmd_729 VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_ne _0F79
-	release obj_partner_poke
-	apply_movement obj_partner_poke, _0FF8
-	lock obj_partner_poke
-	wait_movement
+	PhotoAlbumIsFull VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _0FDA
+	NPCMsg msg_0117_D37R0102_00030
+	CloseMsg
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	SetAvatarBits PLAYER_TRANSITION_ROCKET
+	UpdateAvatarState
+	RocketCostumeFlagAction 1
+	ToggleFollowingPokemonMovement 0
+	WaitFollowingPokemonMovement
+	FollowingPokemonMovement 55
+	ApplyMovement obj_player, _0FE8
+	ApplyMovement obj_D37R0102_gsmiddleman1, _1000
+	WaitMovement
+	WaitFollowingPokemonMovement
+	ToggleFollowingPokemonMovement 1
+	FollowingPokemonMovement 48
+	ScrCmd_729 VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfNe _0F79
+	Release obj_partner_poke
+	ApplyMovement obj_partner_poke, _0FF8
+	Lock obj_partner_poke
+	WaitMovement
 _0F79:
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
-	npc_msg msg_0117_D37R0102_00031
-	closemsg
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	cameron_photo 10
-	lockall
-	set_avatar_bits PLAYER_TRANSITION_WALKING
-	update_avatar_state
-	rocket_costume_flag_action 0
-	toggle_following_pokemon_movement 0
-	wait_following_pokemon_movement
-	following_pokemon_movement 55
-	apply_movement obj_player, _1010
-	wait_movement
-	wait_following_pokemon_movement
-	toggle_following_pokemon_movement 1
-	following_pokemon_movement 48
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
-	npc_msg msg_0117_D37R0102_00032
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
+	NPCMsg msg_0117_D37R0102_00031
+	CloseMsg
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	CameronPhoto 10
+	LockAll
+	SetAvatarBits PLAYER_TRANSITION_WALKING
+	UpdateAvatarState
+	RocketCostumeFlagAction 0
+	ToggleFollowingPokemonMovement 0
+	WaitFollowingPokemonMovement
+	FollowingPokemonMovement 55
+	ApplyMovement obj_player, _1010
+	WaitMovement
+	WaitFollowingPokemonMovement
+	ToggleFollowingPokemonMovement 1
+	FollowingPokemonMovement 48
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
+	NPCMsg msg_0117_D37R0102_00032
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0FDA:
-	npc_msg msg_0117_D37R0102_00035
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0117_D37R0102_00035
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 	.balign 4, 0
 _0FE8:
@@ -1206,41 +1206,41 @@ _101C:
 	EndMovement
 
 scr_seq_D37R0102_011:
-	scrcmd_609
-	lockall
-	callstd std_play_kimono_girl_music
-	get_player_coords VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
-	compare VAR_SPECIAL_x8005, 31
-	goto_if_ne _1055
-	apply_movement obj_D37R0102_dancer, _10B4
-	goto _105D
+	ScrCmd_609
+	LockAll
+	CallStd std_play_kimono_girl_music
+	GetPlayerCoords VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
+	Compare VAR_SPECIAL_x8005, 31
+	GoToIfNe _1055
+	ApplyMovement obj_D37R0102_dancer, _10B4
+	GoTo _105D
 
 _1055:
-	apply_movement obj_D37R0102_dancer, _10C8
+	ApplyMovement obj_D37R0102_dancer, _10C8
 _105D:
-	wait_movement
-	npc_msg msg_0117_D37R0102_00055
-	closemsg
-	apply_movement obj_D37R0102_dancer, _10E4
-	wait_movement
-	npc_msg msg_0117_D37R0102_00056
-	closemsg
-	get_player_coords VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
-	compare VAR_SPECIAL_x8005, 31
-	goto_if_ne _1094
-	apply_movement obj_D37R0102_dancer, _10F0
-	goto _109C
+	WaitMovement
+	NPCMsg msg_0117_D37R0102_00055
+	CloseMsg
+	ApplyMovement obj_D37R0102_dancer, _10E4
+	WaitMovement
+	NPCMsg msg_0117_D37R0102_00056
+	CloseMsg
+	GetPlayerCoords VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
+	Compare VAR_SPECIAL_x8005, 31
+	GoToIfNe _1094
+	ApplyMovement obj_D37R0102_dancer, _10F0
+	GoTo _109C
 
 _1094:
-	apply_movement obj_D37R0102_dancer, _1120
+	ApplyMovement obj_D37R0102_dancer, _1120
 _109C:
-	wait_movement
-	hide_person obj_D37R0102_dancer
-	setflag FLAG_HIDE_UNDERGROUND_KIMONO_GIRL
-	callstd std_fade_end_kimono_girl_music
-	releaseall
-	setvar VAR_UNK_40E7, 3
-	end
+	WaitMovement
+	HidePerson obj_D37R0102_dancer
+	SetFlag FLAG_HIDE_UNDERGROUND_KIMONO_GIRL
+	CallStd std_fade_end_kimono_girl_music
+	ReleaseAll
+	SetVar VAR_UNK_40E7, 3
+	End
 
 	.balign 4, 0
 _10B4:
@@ -1297,31 +1297,31 @@ _1120:
 	EndMovement
 
 scr_seq_D37R0102_007:
-	simple_npc_msg msg_0117_D37R0102_00027
-	end
+	SimpleNPCMsg msg_0117_D37R0102_00027
+	End
 
 scr_seq_D37R0102_010:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	getitemquantity ITEM_BASEMENT_KEY, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_ne _1189
-	npc_msg msg_0117_D37R0102_00027
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	GetItemQuantity ITEM_BASEMENT_KEY, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfNe _1189
+	NPCMsg msg_0117_D37R0102_00027
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _1189:
-	buffer_players_name 0
-	npc_msg msg_0117_D37R0102_00028
-	closemsg
-	apply_movement obj_D37R0102_babyboy1_8, _11A4
-	wait_movement
-	releaseall
-	setflag FLAG_UNK_1C0
-	end
+	BufferPlayersName 0
+	NPCMsg msg_0117_D37R0102_00028
+	CloseMsg
+	ApplyMovement obj_D37R0102_babyboy1_8, _11A4
+	WaitMovement
+	ReleaseAll
+	SetFlag FLAG_UNK_1C0
+	End
 
 	.balign 4, 0
 _11A4:
@@ -1329,255 +1329,255 @@ _11A4:
 	EndMovement
 
 scr_seq_D37R0102_012:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	scrcmd_255 0, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _144B
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	scrcmd_155 0, VAR_SPECIAL_RESULT
-	restore_overworld
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	ScrCmd_255 0, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _144B
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	ScrCmd_155 0, VAR_SPECIAL_RESULT
+	RestoreOverworld
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
+	ReleaseAll
+	End
 
 scr_seq_D37R0102_013:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	scrcmd_255 1, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _144B
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	scrcmd_155 1, VAR_SPECIAL_RESULT
-	restore_overworld
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	ScrCmd_255 1, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _144B
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	ScrCmd_155 1, VAR_SPECIAL_RESULT
+	RestoreOverworld
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
+	ReleaseAll
+	End
 
 scr_seq_D37R0102_014:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	scrcmd_255 2, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _144B
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	scrcmd_155 2, VAR_SPECIAL_RESULT
-	restore_overworld
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	ScrCmd_255 2, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _144B
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	ScrCmd_155 2, VAR_SPECIAL_RESULT
+	RestoreOverworld
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
+	ReleaseAll
+	End
 
 scr_seq_D37R0102_015:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	scrcmd_255 3, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _144B
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	scrcmd_155 3, VAR_SPECIAL_RESULT
-	restore_overworld
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	ScrCmd_255 3, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _144B
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	ScrCmd_155 3, VAR_SPECIAL_RESULT
+	RestoreOverworld
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
+	ReleaseAll
+	End
 
 scr_seq_D37R0102_016:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	scrcmd_255 4, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _144B
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	scrcmd_155 4, VAR_SPECIAL_RESULT
-	restore_overworld
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	ScrCmd_255 4, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _144B
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	ScrCmd_155 4, VAR_SPECIAL_RESULT
+	RestoreOverworld
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
+	ReleaseAll
+	End
 
 scr_seq_D37R0102_017:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	scrcmd_255 5, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _144B
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	scrcmd_155 5, VAR_SPECIAL_RESULT
-	restore_overworld
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	ScrCmd_255 5, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _144B
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	ScrCmd_155 5, VAR_SPECIAL_RESULT
+	RestoreOverworld
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
+	ReleaseAll
+	End
 
 scr_seq_D37R0102_018:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	scrcmd_255 6, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _144B
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	scrcmd_155 6, VAR_SPECIAL_RESULT
-	restore_overworld
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	ScrCmd_255 6, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _144B
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	ScrCmd_155 6, VAR_SPECIAL_RESULT
+	RestoreOverworld
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
+	ReleaseAll
+	End
 
 scr_seq_D37R0102_019:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	scrcmd_255 7, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _144B
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	scrcmd_155 7, VAR_SPECIAL_RESULT
-	restore_overworld
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	ScrCmd_255 7, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _144B
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	ScrCmd_155 7, VAR_SPECIAL_RESULT
+	RestoreOverworld
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
+	ReleaseAll
+	End
 
 scr_seq_D37R0102_020:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	scrcmd_255 8, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _144B
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	scrcmd_155 8, VAR_SPECIAL_RESULT
-	restore_overworld
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	ScrCmd_255 8, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _144B
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	ScrCmd_155 8, VAR_SPECIAL_RESULT
+	RestoreOverworld
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
+	ReleaseAll
+	End
 
 scr_seq_D37R0102_021:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	scrcmd_255 9, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _144B
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	scrcmd_155 9, VAR_SPECIAL_RESULT
-	restore_overworld
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	ScrCmd_255 9, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _144B
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	ScrCmd_155 9, VAR_SPECIAL_RESULT
+	RestoreOverworld
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
+	ReleaseAll
+	End
 
 scr_seq_D37R0102_022:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	scrcmd_255 10, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _144B
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	scrcmd_155 10, VAR_SPECIAL_RESULT
-	restore_overworld
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	ScrCmd_255 10, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _144B
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	ScrCmd_155 10, VAR_SPECIAL_RESULT
+	RestoreOverworld
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
+	ReleaseAll
+	End
 
 _144B:
-	npc_msg msg_0117_D37R0102_00053
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0117_D37R0102_00053
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_D37R0102_023:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	scrcmd_830 VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_ne _1480
-	scrcmd_832 VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _1521
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	ScrCmd_830 VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfNe _1480
+	ScrCmd_832 VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _1521
 _1480:
-	npc_msg msg_0117_D37R0102_00057
-	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_RESULT
-	touchscreen_menu_show
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _1530
-	hasenoughmoneyimmediate VAR_SPECIAL_RESULT, 100
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _153F
-	submoneyimmediate 100
-	scrcmd_553 5, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _154E
-	scrcmd_831 VAR_SPECIAL_x8004
-	scrcmd_404 VAR_SPECIAL_x8004, 1, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _155B
-	npc_msg msg_0117_D37R0102_00061
-	setvar VAR_SPECIAL_x8005, 1
-	callstd std_receive_accessory
+	NPCMsg msg_0117_D37R0102_00057
+	TouchscreenMenuHide
+	GetMenuChoice VAR_SPECIAL_RESULT
+	TouchscreenMenuShow
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _1530
+	HasEnoughMoneyImmediate VAR_SPECIAL_RESULT, 100
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _153F
+	SubMoneyImmediate 100
+	ScrCmd_553 5, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _154E
+	ScrCmd_831 VAR_SPECIAL_x8004
+	ScrCmd_404 VAR_SPECIAL_x8004, 1, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _155B
+	NPCMsg msg_0117_D37R0102_00061
+	SetVar VAR_SPECIAL_x8005, 1
+	CallStd std_receive_accessory
 _14EB:
-	scrcmd_832 VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _1530
-	scrcmd_553 95, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _1530
-	scrcmd_833 VAR_SPECIAL_x8004
-	npc_msg msg_0117_D37R0102_00062
-	callstd std_receive_background
-	goto _1530
-	end
+	ScrCmd_832 VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _1530
+	ScrCmd_553 95, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _1530
+	ScrCmd_833 VAR_SPECIAL_x8004
+	NPCMsg msg_0117_D37R0102_00062
+	CallStd std_receive_background
+	GoTo _1530
+	End
 
 _1521:
-	npc_msg msg_0117_D37R0102_00058
-	wait_button_or_walk_away
-	closemsg
-	goto _1568
-	end
+	NPCMsg msg_0117_D37R0102_00058
+	WaitButton
+	CloseMsg
+	GoTo _1568
+	End
 
 _1530:
-	npc_msg msg_0117_D37R0102_00059
-	wait_button_or_walk_away
-	closemsg
-	goto _1568
-	end
+	NPCMsg msg_0117_D37R0102_00059
+	WaitButton
+	CloseMsg
+	GoTo _1568
+	End
 
 _153F:
-	npc_msg msg_0117_D37R0102_00060
-	wait_button_or_walk_away
-	closemsg
-	goto _1568
-	end
+	NPCMsg msg_0117_D37R0102_00060
+	WaitButton
+	CloseMsg
+	GoTo _1568
+	End
 
 _154E:
-	npc_msg msg_0117_D37R0102_00064
-	closemsg
-	goto _1530
-	end
+	NPCMsg msg_0117_D37R0102_00064
+	CloseMsg
+	GoTo _1530
+	End
 
 _155B:
-	npc_msg msg_0117_D37R0102_00064
-	closemsg
-	goto _14EB
-	end
+	NPCMsg msg_0117_D37R0102_00064
+	CloseMsg
+	GoTo _14EB
+	End
 
 _1568:
-	releaseall
-	end
+	ReleaseAll
+	End
 	.balign 4, 0

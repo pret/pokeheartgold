@@ -5,37 +5,37 @@
 
 	.rodata
 
-	scrdef scr_seq_T10R0201_000
-	scrdef scr_seq_T10R0201_001
-	scrdef scr_seq_T10R0201_002
-	scrdef_end
+	ScrDef scr_seq_T10R0201_000
+	ScrDef scr_seq_T10R0201_001
+	ScrDef scr_seq_T10R0201_002
+	ScrDefEnd
 
 scr_seq_T10R0201_002:
-	goto_if_set FLAG_DEFEATED_WILL, _0023
-	make_object_visible obj_T10R0201_stop
-	make_object_visible obj_T10R0201_stop_2
-	end
+	GoToIfSet FLAG_DEFEATED_WILL, _0023
+	MakeObjectVisible obj_T10R0201_stop
+	MakeObjectVisible obj_T10R0201_stop_2
+	End
 
 _0023:
-	end
+	End
 
 scr_seq_T10R0201_000:
-	scrcmd_609
-	lockall
-	toggle_following_pokemon_movement 0
-	wait_following_pokemon_movement
-	following_pokemon_movement 55
-	apply_movement obj_player, _0060
-	wait_movement
-	wait_following_pokemon_movement
-	toggle_following_pokemon_movement 1
-	following_pokemon_movement 48
-	play_se SEQ_SE_DP_KI_GASYAN
-	clearflag FLAG_HIDE_WILLS_ROOM_RETREAT
-	show_person obj_T10R0201_babyboy1_11
-	setvar VAR_TEMP_x4001, 1
-	releaseall
-	end
+	ScrCmd_609
+	LockAll
+	ToggleFollowingPokemonMovement 0
+	WaitFollowingPokemonMovement
+	FollowingPokemonMovement 55
+	ApplyMovement obj_player, _0060
+	WaitMovement
+	WaitFollowingPokemonMovement
+	ToggleFollowingPokemonMovement 1
+	FollowingPokemonMovement 48
+	PlaySE SEQ_SE_DP_KI_GASYAN
+	ClearFlag FLAG_HIDE_WILLS_ROOM_RETREAT
+	ShowPerson obj_T10R0201_babyboy1_11
+	SetVar VAR_TEMP_x4001, 1
+	ReleaseAll
+	End
 
 	.balign 4, 0
 _0060:
@@ -43,42 +43,42 @@ _0060:
 	EndMovement
 
 scr_seq_T10R0201_001:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	goto_if_set FLAG_DEFEATED_WILL, _00D1
-	npc_msg msg_0523_T10R0201_00000
-	closemsg
-	compare VAR_UNK_4135, 8
-	goto_if_lt _009B
-	trainer_battle TRAINER_ELITE_FOUR_WILL_WILL_2, 0, 0, 0
-	goto _00A3
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	GoToIfSet FLAG_DEFEATED_WILL, _00D1
+	NPCMsg msg_0523_T10R0201_00000
+	CloseMsg
+	Compare VAR_UNK_4135, 8
+	GoToIfLt _009B
+	TrainerBattle TRAINER_ELITE_FOUR_WILL_WILL_2, 0, 0, 0
+	GoTo _00A3
 
 _009B:
-	trainer_battle TRAINER_ELITE_FOUR_WILL_WILL, 0, 0, 0
+	TrainerBattle TRAINER_ELITE_FOUR_WILL_WILL, 0, 0, 0
 _00A3:
-	check_battle_won VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _00DC
-	setflag FLAG_DEFEATED_WILL
-	npc_msg msg_0523_T10R0201_00001
-	closemsg
-	play_se SEQ_SE_DP_KI_GASYAN
-	hide_person obj_T10R0201_leag_door2
-	hide_person obj_T10R0201_stop
-	hide_person obj_T10R0201_stop_2
-	releaseall
-	end
+	CheckBattleWon VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _00DC
+	SetFlag FLAG_DEFEATED_WILL
+	NPCMsg msg_0523_T10R0201_00001
+	CloseMsg
+	PlaySE SEQ_SE_DP_KI_GASYAN
+	HidePerson obj_T10R0201_leag_door2
+	HidePerson obj_T10R0201_stop
+	HidePerson obj_T10R0201_stop_2
+	ReleaseAll
+	End
 
 _00D1:
-	npc_msg msg_0523_T10R0201_00002
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0523_T10R0201_00002
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _00DC:
-	white_out
-	releaseall
-	end
+	WhiteOut
+	ReleaseAll
+	End
 	.balign 4, 0

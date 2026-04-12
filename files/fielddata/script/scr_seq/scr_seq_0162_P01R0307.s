@@ -5,59 +5,59 @@
 
 	.rodata
 
-	scrdef scr_seq_P01R0307_000
-	scrdef scr_seq_P01R0307_001
-	scrdef scr_seq_P01R0307_002
-	scrdef scr_seq_P01R0307_003
-	scrdef_end
+	ScrDef scr_seq_P01R0307_000
+	ScrDef scr_seq_P01R0307_001
+	ScrDef scr_seq_P01R0307_002
+	ScrDef scr_seq_P01R0307_003
+	ScrDefEnd
 
 scr_seq_P01R0307_002:
-	compare VAR_UNK_40CB, 4
-	goto_if_ne _0029
-	clearflag FLAG_UNK_219
-	goto _002D
+	Compare VAR_UNK_40CB, 4
+	GoToIfNe _0029
+	ClearFlag FLAG_UNK_219
+	GoTo _002D
 
 _0029:
-	setflag FLAG_UNK_219
+	SetFlag FLAG_UNK_219
 _002D:
-	end
+	End
 
 scr_seq_P01R0307_001:
-	scrcmd_609
-	lockall
-	setflag FLAG_UNK_0ED
-	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
-	compare VAR_TEMP_x4001, 19
-	goto_if_eq _0088
-	apply_movement obj_P01R0307_seaman_2, _00C4
-	scrcmd_729 VAR_TEMP_x4002
-	compare VAR_TEMP_x4002, 0
-	goto_if_eq _006B
-	apply_movement obj_partner_poke, _0114
+	ScrCmd_609
+	LockAll
+	SetFlag FLAG_UNK_0ED
+	GetPlayerCoords VAR_TEMP_x4000, VAR_TEMP_x4001
+	Compare VAR_TEMP_x4001, 19
+	GoToIfEq _0088
+	ApplyMovement obj_P01R0307_seaman_2, _00C4
+	ScrCmd_729 VAR_TEMP_x4002
+	Compare VAR_TEMP_x4002, 0
+	GoToIfEq _006B
+	ApplyMovement obj_partner_poke, _0114
 _006B:
-	apply_movement obj_player, _0104
-	wait_movement
-	npc_msg msg_0263_P01R0307_00000
-	closemsg
-	apply_movement obj_P01R0307_seaman_2, _00D4
-	wait_movement
-	releaseall
-	end
+	ApplyMovement obj_player, _0104
+	WaitMovement
+	NPCMsg msg_0263_P01R0307_00000
+	CloseMsg
+	ApplyMovement obj_P01R0307_seaman_2, _00D4
+	WaitMovement
+	ReleaseAll
+	End
 
 _0088:
-	apply_movement obj_P01R0307_seaman_2, _00E4
-	compare VAR_TEMP_x4002, 0
-	goto_if_eq _00A5
-	apply_movement obj_partner_poke, _0114
+	ApplyMovement obj_P01R0307_seaman_2, _00E4
+	Compare VAR_TEMP_x4002, 0
+	GoToIfEq _00A5
+	ApplyMovement obj_partner_poke, _0114
 _00A5:
-	apply_movement obj_player, _0104
-	wait_movement
-	npc_msg msg_0263_P01R0307_00000
-	closemsg
-	apply_movement obj_P01R0307_seaman_2, _00F4
-	wait_movement
-	releaseall
-	end
+	ApplyMovement obj_player, _0104
+	WaitMovement
+	NPCMsg msg_0263_P01R0307_00000
+	CloseMsg
+	ApplyMovement obj_P01R0307_seaman_2, _00F4
+	WaitMovement
+	ReleaseAll
+	End
 
 	.balign 4, 0
 _00C4:
@@ -102,68 +102,68 @@ _0114:
 	EndMovement
 
 scr_seq_P01R0307_000:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	compare VAR_UNK_40CB, 3
-	goto_if_ge _0148
-	npc_msg msg_0263_P01R0307_00001
-	wait_button_or_walk_away
-	closemsg
-	setflag FLAG_UNK_0ED
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	Compare VAR_UNK_40CB, 3
+	GoToIfGe _0148
+	NPCMsg msg_0263_P01R0307_00001
+	WaitButton
+	CloseMsg
+	SetFlag FLAG_UNK_0ED
+	ReleaseAll
+	End
 
 _0148:
-	npc_msg msg_0263_P01R0307_00002
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0263_P01R0307_00002
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_P01R0307_003:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	apply_movement obj_P01R0307_gsbabygirl1, _020C
-	wait_movement
-	scrcmd_729 VAR_TEMP_x4002
-	compare VAR_TEMP_x4002, 0
-	goto_if_eq _0180
-	toggle_following_pokemon_movement 0
-	wait_following_pokemon_movement
-	following_pokemon_movement 56
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	ApplyMovement obj_P01R0307_gsbabygirl1, _020C
+	WaitMovement
+	ScrCmd_729 VAR_TEMP_x4002
+	Compare VAR_TEMP_x4002, 0
+	GoToIfEq _0180
+	ToggleFollowingPokemonMovement 0
+	WaitFollowingPokemonMovement
+	FollowingPokemonMovement 56
 _0180:
-	get_player_facing VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_ne _01A7
-	apply_movement obj_player, _0218
-	apply_movement obj_P01R0307_gsbabygirl1, _0238
-	goto _01B7
+	GetPlayerFacing VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfNe _01A7
+	ApplyMovement obj_player, _0218
+	ApplyMovement obj_P01R0307_gsbabygirl1, _0238
+	GoTo _01B7
 
 _01A7:
-	apply_movement obj_player, _0228
-	apply_movement obj_P01R0307_gsbabygirl1, _0244
+	ApplyMovement obj_player, _0228
+	ApplyMovement obj_P01R0307_gsbabygirl1, _0244
 _01B7:
-	wait_movement
-	compare VAR_TEMP_x4002, 0
-	goto_if_eq _01D0
-	wait_following_pokemon_movement
-	toggle_following_pokemon_movement 1
-	following_pokemon_movement 48
+	WaitMovement
+	Compare VAR_TEMP_x4002, 0
+	GoToIfEq _01D0
+	WaitFollowingPokemonMovement
+	ToggleFollowingPokemonMovement 1
+	FollowingPokemonMovement 48
 _01D0:
-	npc_msg msg_0263_P01R0307_00006
-	closemsg
-	play_se SEQ_SE_DP_KAIDAN2
-	wait_se SEQ_SE_DP_KAIDAN2
-	setvar VAR_UNK_40CB, 5
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	warp MAP_SS_AQUA_1F_NORTHWEST_ROOMS, 0, 9, 10, DIR_NORTH
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
-	releaseall
-	end
+	NPCMsg msg_0263_P01R0307_00006
+	CloseMsg
+	PlaySE SEQ_SE_DP_KAIDAN2
+	WaitSE SEQ_SE_DP_KAIDAN2
+	SetVar VAR_UNK_40CB, 5
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	Warp MAP_SS_AQUA_1F_NORTHWEST_ROOMS, 0, 9, 10, DIR_NORTH
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
+	ReleaseAll
+	End
 
 	.balign 4, 0
 _020C:

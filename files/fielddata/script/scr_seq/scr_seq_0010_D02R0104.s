@@ -5,187 +5,187 @@
 
 	.rodata
 
-	scrdef scr_seq_D02R0104_000
-	scrdef scr_seq_D02R0104_001
-	scrdef scr_seq_D02R0104_002
-	scrdef scr_seq_D02R0104_003
-	scrdef scr_seq_D02R0104_004
-	scrdef scr_seq_D02R0104_005
-	scrdef_end
+	ScrDef scr_seq_D02R0104_000
+	ScrDef scr_seq_D02R0104_001
+	ScrDef scr_seq_D02R0104_002
+	ScrDef scr_seq_D02R0104_003
+	ScrDef scr_seq_D02R0104_004
+	ScrDef scr_seq_D02R0104_005
+	ScrDefEnd
 
 scr_seq_D02R0104_000:
-	setflag FLAG_UNK_298
-	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 1
-	goto_if_ne _003B
-	goto _0060
+	SetFlag FLAG_UNK_298
+	GetWeekday VAR_TEMP_x4000
+	Compare VAR_TEMP_x4000, 1
+	GoToIfNe _003B
+	GoTo _0060
 
 _0035:
-	goto _005E
+	GoTo _005E
 
 _003B:
-	compare VAR_TEMP_x4000, 2
-	goto_if_ne _0054
-	goto _007D
+	Compare VAR_TEMP_x4000, 2
+	GoToIfNe _0054
+	GoTo _007D
 
 _004E:
-	goto _005E
+	GoTo _005E
 
 _0054:
-	setvar VAR_UNK_40F6, 1
-	setflag FLAG_UNK_26E
+	SetVar VAR_UNK_40F6, 1
+	SetFlag FLAG_UNK_26E
 _005E:
-	end
+	End
 
 _0060:
-	scrcmd_379 VAR_TEMP_x4001
-	compare VAR_TEMP_x4001, 3
-	goto_if_eq _009A
-	setvar VAR_UNK_40F6, 1
-	setflag FLAG_UNK_26E
-	end
+	ScrCmd_379 VAR_TEMP_x4001
+	Compare VAR_TEMP_x4001, 3
+	GoToIfEq _009A
+	SetVar VAR_UNK_40F6, 1
+	SetFlag FLAG_UNK_26E
+	End
 
 _007D:
-	scrcmd_379 VAR_TEMP_x4001
-	compare VAR_TEMP_x4001, 4
-	goto_if_eq _009A
-	setvar VAR_UNK_40F6, 1
-	setflag FLAG_UNK_26E
-	end
+	ScrCmd_379 VAR_TEMP_x4001
+	Compare VAR_TEMP_x4001, 4
+	GoToIfEq _009A
+	SetVar VAR_UNK_40F6, 1
+	SetFlag FLAG_UNK_26E
+	End
 
 _009A:
-	setvar VAR_UNK_40F6, 0
-	clearflag FLAG_UNK_26E
-	end
+	SetVar VAR_UNK_40F6, 0
+	ClearFlag FLAG_UNK_26E
+	End
 
 scr_seq_D02R0104_005:
-	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 1
-	goto_if_ne _00C3
-	goto _0113
+	GetWeekday VAR_TEMP_x4000
+	Compare VAR_TEMP_x4000, 1
+	GoToIfNe _00C3
+	GoTo _0113
 
 _00BD:
-	goto _00E2
+	GoTo _00E2
 
 _00C3:
-	compare VAR_TEMP_x4000, 2
-	goto_if_ne _00DC
-	goto _012A
+	Compare VAR_TEMP_x4000, 2
+	GoToIfNe _00DC
+	GoTo _012A
 
 _00D6:
-	goto _00E2
+	GoTo _00E2
 
 _00DC:
-	goto _00E2
+	GoTo _00E2
 
 _00E2:
-	compare VAR_UNK_40F6, 1
-	goto_if_eq _0141
-	setflag FLAG_UNK_26E
-	hide_person obj_D02R0104_tsure_poke_static_clefairy
-	hide_person obj_D02R0104_tsure_poke_static_clefairy_2
-	hide_person obj_D02R0104_tsure_poke_static_clefairy_3
-	hide_person obj_D02R0104_tsure_poke_static_clefairy_4
-	hide_person obj_D02R0104_tsure_poke_static_clefairy_5
-	hide_person obj_D02R0104_tsure_poke_static_clefairy_6
-	setvar VAR_UNK_40F6, 1
-	end
+	Compare VAR_UNK_40F6, 1
+	GoToIfEq _0141
+	SetFlag FLAG_UNK_26E
+	HidePerson obj_D02R0104_tsure_poke_static_clefairy
+	HidePerson obj_D02R0104_tsure_poke_static_clefairy_2
+	HidePerson obj_D02R0104_tsure_poke_static_clefairy_3
+	HidePerson obj_D02R0104_tsure_poke_static_clefairy_4
+	HidePerson obj_D02R0104_tsure_poke_static_clefairy_5
+	HidePerson obj_D02R0104_tsure_poke_static_clefairy_6
+	SetVar VAR_UNK_40F6, 1
+	End
 
 _0113:
-	scrcmd_379 VAR_TEMP_x4001
-	compare VAR_TEMP_x4001, 3
-	goto_if_eq _0141
-	goto _00E2
+	ScrCmd_379 VAR_TEMP_x4001
+	Compare VAR_TEMP_x4001, 3
+	GoToIfEq _0141
+	GoTo _00E2
 
 _012A:
-	scrcmd_379 VAR_TEMP_x4001
-	compare VAR_TEMP_x4001, 4
-	goto_if_eq _0141
-	goto _00E2
+	ScrCmd_379 VAR_TEMP_x4001
+	Compare VAR_TEMP_x4001, 4
+	GoToIfEq _0141
+	GoTo _00E2
 
 _0141:
-	end
+	End
 
 scr_seq_D02R0104_002:
-	scrcmd_609
-	lockall
-	clearflag FLAG_UNK_298
-	get_player_coords VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
-	scrcmd_102 VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
-	apply_movement 241, _0330
-	apply_movement obj_D02R0104_tsure_poke_static_clefairy, _0344
-	apply_movement obj_D02R0104_tsure_poke_static_clefairy_2, _0350
-	apply_movement obj_D02R0104_tsure_poke_static_clefairy_3, _035C
-	apply_movement obj_D02R0104_tsure_poke_static_clefairy_4, _0368
-	apply_movement obj_D02R0104_tsure_poke_static_clefairy_5, _0374
-	apply_movement obj_D02R0104_tsure_poke_static_clefairy_6, _037C
-	wait_movement
-	play_cry SPECIES_CLEFAIRY, 0
-	apply_movement obj_D02R0104_tsure_poke_static_clefairy, _0384
-	apply_movement obj_D02R0104_tsure_poke_static_clefairy_2, _0394
-	apply_movement obj_D02R0104_tsure_poke_static_clefairy_3, _03A4
-	apply_movement obj_D02R0104_tsure_poke_static_clefairy_4, _03B4
-	apply_movement obj_D02R0104_tsure_poke_static_clefairy_5, _03C4
-	apply_movement obj_D02R0104_tsure_poke_static_clefairy_6, _03CC
-	wait_movement
-	play_cry SPECIES_CLEFAIRY, 0
-	apply_movement obj_D02R0104_tsure_poke_static_clefairy, _03D4
-	apply_movement obj_D02R0104_tsure_poke_static_clefairy_2, _03F0
-	apply_movement obj_D02R0104_tsure_poke_static_clefairy_3, _040C
-	apply_movement obj_D02R0104_tsure_poke_static_clefairy_4, _0428
-	apply_movement obj_D02R0104_tsure_poke_static_clefairy_5, _0444
-	apply_movement obj_D02R0104_tsure_poke_static_clefairy_6, _0468
-	wait_movement
-	play_cry SPECIES_CLEFAIRY, 0
-	apply_movement obj_D02R0104_tsure_poke_static_clefairy, _048C
-	apply_movement obj_D02R0104_tsure_poke_static_clefairy_2, _04A8
-	apply_movement obj_D02R0104_tsure_poke_static_clefairy_3, _04C4
-	apply_movement obj_D02R0104_tsure_poke_static_clefairy_4, _04E0
-	apply_movement obj_D02R0104_tsure_poke_static_clefairy_5, _04FC
-	apply_movement obj_D02R0104_tsure_poke_static_clefairy_6, _0520
-	wait_movement
-	play_cry SPECIES_CLEFAIRY, 0
-	apply_movement obj_D02R0104_tsure_poke_static_clefairy, _0544
-	apply_movement obj_D02R0104_tsure_poke_static_clefairy_2, _0560
-	apply_movement obj_D02R0104_tsure_poke_static_clefairy_3, _057C
-	apply_movement obj_D02R0104_tsure_poke_static_clefairy_4, _0598
-	apply_movement obj_D02R0104_tsure_poke_static_clefairy_5, _05B4
-	apply_movement obj_D02R0104_tsure_poke_static_clefairy_6, _05D8
-	wait_movement
-	play_cry SPECIES_CLEFAIRY, 0
-	apply_movement obj_D02R0104_tsure_poke_static_clefairy, _05FC
-	apply_movement obj_D02R0104_tsure_poke_static_clefairy_2, _0614
-	apply_movement obj_D02R0104_tsure_poke_static_clefairy_3, _0630
-	apply_movement obj_D02R0104_tsure_poke_static_clefairy_4, _064C
-	apply_movement obj_D02R0104_tsure_poke_static_clefairy_5, _0668
-	apply_movement obj_D02R0104_tsure_poke_static_clefairy_6, _068C
-	wait_movement
-	play_cry SPECIES_CLEFAIRY, 0
-	apply_movement obj_D02R0104_tsure_poke_static_clefairy, _06B0
-	apply_movement obj_D02R0104_tsure_poke_static_clefairy_2, _06D4
-	apply_movement obj_D02R0104_tsure_poke_static_clefairy_3, _06F8
-	apply_movement obj_D02R0104_tsure_poke_static_clefairy_4, _0720
-	apply_movement obj_D02R0104_tsure_poke_static_clefairy_5, _0744
-	apply_movement obj_D02R0104_tsure_poke_static_clefairy_6, _0760
-	wait_movement
-	show_person obj_D02R0104_monstarball
-	apply_movement obj_D02R0104_tsure_poke_static_clefairy_4, _077C
-	apply_movement obj_D02R0104_tsure_poke_static_clefairy_6, _0798
-	wait_movement
-	hide_person obj_D02R0104_tsure_poke_static_clefairy
-	hide_person obj_D02R0104_tsure_poke_static_clefairy_2
-	hide_person obj_D02R0104_tsure_poke_static_clefairy_3
-	hide_person obj_D02R0104_tsure_poke_static_clefairy_4
-	hide_person obj_D02R0104_tsure_poke_static_clefairy_5
-	hide_person obj_D02R0104_tsure_poke_static_clefairy_6
-	setflag FLAG_UNK_26E
-	setvar VAR_UNK_40F6, 1
-	setflag FLAG_UNK_AB5
-	apply_movement 241, _0338
-	wait_movement
-	scrcmd_103
-	releaseall
-	end
+	ScrCmd_609
+	LockAll
+	ClearFlag FLAG_UNK_298
+	GetPlayerCoords VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
+	ScrCmd_102 VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
+	ApplyMovement 241, _0330
+	ApplyMovement obj_D02R0104_tsure_poke_static_clefairy, _0344
+	ApplyMovement obj_D02R0104_tsure_poke_static_clefairy_2, _0350
+	ApplyMovement obj_D02R0104_tsure_poke_static_clefairy_3, _035C
+	ApplyMovement obj_D02R0104_tsure_poke_static_clefairy_4, _0368
+	ApplyMovement obj_D02R0104_tsure_poke_static_clefairy_5, _0374
+	ApplyMovement obj_D02R0104_tsure_poke_static_clefairy_6, _037C
+	WaitMovement
+	PlayCry SPECIES_CLEFAIRY, 0
+	ApplyMovement obj_D02R0104_tsure_poke_static_clefairy, _0384
+	ApplyMovement obj_D02R0104_tsure_poke_static_clefairy_2, _0394
+	ApplyMovement obj_D02R0104_tsure_poke_static_clefairy_3, _03A4
+	ApplyMovement obj_D02R0104_tsure_poke_static_clefairy_4, _03B4
+	ApplyMovement obj_D02R0104_tsure_poke_static_clefairy_5, _03C4
+	ApplyMovement obj_D02R0104_tsure_poke_static_clefairy_6, _03CC
+	WaitMovement
+	PlayCry SPECIES_CLEFAIRY, 0
+	ApplyMovement obj_D02R0104_tsure_poke_static_clefairy, _03D4
+	ApplyMovement obj_D02R0104_tsure_poke_static_clefairy_2, _03F0
+	ApplyMovement obj_D02R0104_tsure_poke_static_clefairy_3, _040C
+	ApplyMovement obj_D02R0104_tsure_poke_static_clefairy_4, _0428
+	ApplyMovement obj_D02R0104_tsure_poke_static_clefairy_5, _0444
+	ApplyMovement obj_D02R0104_tsure_poke_static_clefairy_6, _0468
+	WaitMovement
+	PlayCry SPECIES_CLEFAIRY, 0
+	ApplyMovement obj_D02R0104_tsure_poke_static_clefairy, _048C
+	ApplyMovement obj_D02R0104_tsure_poke_static_clefairy_2, _04A8
+	ApplyMovement obj_D02R0104_tsure_poke_static_clefairy_3, _04C4
+	ApplyMovement obj_D02R0104_tsure_poke_static_clefairy_4, _04E0
+	ApplyMovement obj_D02R0104_tsure_poke_static_clefairy_5, _04FC
+	ApplyMovement obj_D02R0104_tsure_poke_static_clefairy_6, _0520
+	WaitMovement
+	PlayCry SPECIES_CLEFAIRY, 0
+	ApplyMovement obj_D02R0104_tsure_poke_static_clefairy, _0544
+	ApplyMovement obj_D02R0104_tsure_poke_static_clefairy_2, _0560
+	ApplyMovement obj_D02R0104_tsure_poke_static_clefairy_3, _057C
+	ApplyMovement obj_D02R0104_tsure_poke_static_clefairy_4, _0598
+	ApplyMovement obj_D02R0104_tsure_poke_static_clefairy_5, _05B4
+	ApplyMovement obj_D02R0104_tsure_poke_static_clefairy_6, _05D8
+	WaitMovement
+	PlayCry SPECIES_CLEFAIRY, 0
+	ApplyMovement obj_D02R0104_tsure_poke_static_clefairy, _05FC
+	ApplyMovement obj_D02R0104_tsure_poke_static_clefairy_2, _0614
+	ApplyMovement obj_D02R0104_tsure_poke_static_clefairy_3, _0630
+	ApplyMovement obj_D02R0104_tsure_poke_static_clefairy_4, _064C
+	ApplyMovement obj_D02R0104_tsure_poke_static_clefairy_5, _0668
+	ApplyMovement obj_D02R0104_tsure_poke_static_clefairy_6, _068C
+	WaitMovement
+	PlayCry SPECIES_CLEFAIRY, 0
+	ApplyMovement obj_D02R0104_tsure_poke_static_clefairy, _06B0
+	ApplyMovement obj_D02R0104_tsure_poke_static_clefairy_2, _06D4
+	ApplyMovement obj_D02R0104_tsure_poke_static_clefairy_3, _06F8
+	ApplyMovement obj_D02R0104_tsure_poke_static_clefairy_4, _0720
+	ApplyMovement obj_D02R0104_tsure_poke_static_clefairy_5, _0744
+	ApplyMovement obj_D02R0104_tsure_poke_static_clefairy_6, _0760
+	WaitMovement
+	ShowPerson obj_D02R0104_monstarball
+	ApplyMovement obj_D02R0104_tsure_poke_static_clefairy_4, _077C
+	ApplyMovement obj_D02R0104_tsure_poke_static_clefairy_6, _0798
+	WaitMovement
+	HidePerson obj_D02R0104_tsure_poke_static_clefairy
+	HidePerson obj_D02R0104_tsure_poke_static_clefairy_2
+	HidePerson obj_D02R0104_tsure_poke_static_clefairy_3
+	HidePerson obj_D02R0104_tsure_poke_static_clefairy_4
+	HidePerson obj_D02R0104_tsure_poke_static_clefairy_5
+	HidePerson obj_D02R0104_tsure_poke_static_clefairy_6
+	SetFlag FLAG_UNK_26E
+	SetVar VAR_UNK_40F6, 1
+	SetFlag FLAG_UNK_AB5
+	ApplyMovement 241, _0338
+	WaitMovement
+	ScrCmd_103
+	ReleaseAll
+	End
 
 	.balign 4, 0
 _0330:
@@ -621,67 +621,67 @@ _07B8:
 	EndMovement
 
 scr_seq_D02R0104_001:
-	scrcmd_055 2, 0
-	scrcmd_057 3
-	scrcmd_058
-	trainer_tips msg_0051_D02R0104_00001, VAR_SPECIAL_RESULT
-	callstd std_signpost
-	end
+	ScrCmd_055 2, 0
+	ScrCmd_057 3
+	ScrCmd_058
+	TrainerTips msg_0051_D02R0104_00001, VAR_SPECIAL_RESULT
+	CallStd std_signpost
+	End
 
 scr_seq_D02R0104_003:
-	setvar VAR_SPECIAL_x8008, 81
-	setvar VAR_SPECIAL_x8009, 1
-	goto _07E9
-	end
+	SetVar VAR_SPECIAL_x8008, 81
+	SetVar VAR_SPECIAL_x8009, 1
+	GoTo _07E9
+	End
 
 _07E9:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	wait_se SEQ_SE_DP_SELECT
-	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x8008
-	copyvar VAR_SPECIAL_x8005, VAR_SPECIAL_x8009
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _0825
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0866
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	WaitSE SEQ_SE_DP_SELECT
+	CopyVar VAR_SPECIAL_x8004, VAR_SPECIAL_x8008
+	CopyVar VAR_SPECIAL_x8005, VAR_SPECIAL_x8009
+	HasSpaceForItem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _0825
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0866
+	End
 
 _0825:
-	callstd std_hidden_item_fanfare
-	hide_person VAR_SPECIAL_LAST_TALKED
-	giveitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
-	buffer_players_name 0
-	buffer_item_name 1, VAR_SPECIAL_x8004
-	npc_msg msg_0051_D02R0104_00002
-	wait_fanfare
-	buffer_players_name 0
-	buffer_item_name 1, VAR_SPECIAL_x8004
-	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
-	buffer_pocket_name 2, VAR_SPECIAL_RESULT
-	npc_msg msg_0051_D02R0104_00003
-	wait_button_or_walk_away
-	setvar VAR_SPECIAL_RESULT, 1
+	CallStd std_hidden_item_fanfare
+	HidePerson VAR_SPECIAL_LAST_TALKED
+	GiveItem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
+	BufferPlayersName 0
+	BufferItemName 1, VAR_SPECIAL_x8004
+	NPCMsg msg_0051_D02R0104_00002
+	WaitFanfare
+	BufferPlayersName 0
+	BufferItemName 1, VAR_SPECIAL_x8004
+	GetItemPocket VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
+	BufferPocketName 2, VAR_SPECIAL_RESULT
+	NPCMsg msg_0051_D02R0104_00003
+	WaitButton
+	SetVar VAR_SPECIAL_RESULT, 1
 _0860:
-	closemsg
-	releaseall
-	end
+	CloseMsg
+	ReleaseAll
+	End
 
 _0866:
-	buffer_item_name 0, VAR_SPECIAL_x8004
-	npc_msg msg_0051_D02R0104_00004
-	wait_button_or_walk_away
-	setvar VAR_SPECIAL_RESULT, 0
-	goto _0860
-	end
+	BufferItemName 0, VAR_SPECIAL_x8004
+	NPCMsg msg_0051_D02R0104_00004
+	WaitButton
+	SetVar VAR_SPECIAL_RESULT, 0
+	GoTo _0860
+	End
 
 scr_seq_D02R0104_004:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	npc_msg msg_0051_D02R0104_00005
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	NPCMsg msg_0051_D02R0104_00005
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 	.balign 4, 0

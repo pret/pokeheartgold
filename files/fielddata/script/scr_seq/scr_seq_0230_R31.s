@@ -5,207 +5,207 @@
 
 	.rodata
 
-	scrdef scr_seq_R31_000
-	scrdef scr_seq_R31_001
-	scrdef scr_seq_R31_002
-	scrdef scr_seq_R31_003
-	scrdef scr_seq_R31_004
-	scrdef scr_seq_R31_005
-	scrdef_end
+	ScrDef scr_seq_R31_000
+	ScrDef scr_seq_R31_001
+	ScrDef scr_seq_R31_002
+	ScrDef scr_seq_R31_003
+	ScrDef scr_seq_R31_004
+	ScrDef scr_seq_R31_005
+	ScrDefEnd
 
 scr_seq_R31_000:
-	end
+	End
 
 scr_seq_R31_001:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	compare VAR_LOAN_SPEAROW, 1
-	goto_if_ne _003D
-	goto _0098
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	Compare VAR_LOAN_SPEAROW, 1
+	GoToIfNe _003D
+	GoTo _0098
 
 _0037:
-	goto _008D
+	GoTo _008D
 
 _003D:
-	compare VAR_LOAN_SPEAROW, 2
-	goto_if_ne _0056
-	goto _01AD
+	Compare VAR_LOAN_SPEAROW, 2
+	GoToIfNe _0056
+	GoTo _01AD
 
 _0050:
-	goto _008D
+	GoTo _008D
 
 _0056:
-	compare VAR_LOAN_SPEAROW, 4
-	goto_if_ne _006F
-	goto _01AD
+	Compare VAR_LOAN_SPEAROW, 4
+	GoToIfNe _006F
+	GoTo _01AD
 
 _0069:
-	goto _008D
+	GoTo _008D
 
 _006F:
-	compare VAR_LOAN_SPEAROW, 6
-	goto_if_ne _008D
-	kenya_check_party_or_mailbox VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _02AE
+	Compare VAR_LOAN_SPEAROW, 6
+	GoToIfNe _008D
+	KenyaCheckPartyOrMailbox VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _02AE
 _008D:
-	npc_msg msg_0378_R31_00000
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0378_R31_00000
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0098:
-	npc_msg msg_0378_R31_00001
-	closemsg
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	party_select_ui
-	get_party_selection VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 255
-	goto_if_eq _0206
-	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4001
-	compare VAR_TEMP_x4001, 0
-	goto_if_eq _021F
-	kenya_check VAR_SPECIAL_RESULT, VAR_TEMP_x4000, 0
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0238
-	kenya_check VAR_SPECIAL_RESULT, VAR_TEMP_x4000, 1
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0251
-	check_return_loan_mon 7, VAR_TEMP_x4000, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _026A
-	compare VAR_SPECIAL_RESULT, 4
-	goto_if_eq _0295
-	return_loan_mon VAR_TEMP_x4000
-	restore_overworld
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
-	get_player_facing VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_ne _0149
-	apply_movement obj_player, _02BC
-	goto _0187
+	NPCMsg msg_0378_R31_00001
+	CloseMsg
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	PartySelectUI
+	GetPartySelection VAR_TEMP_x4000
+	Compare VAR_TEMP_x4000, 255
+	GoToIfEq _0206
+	GetPartyMonSpecies VAR_TEMP_x4000, VAR_TEMP_x4001
+	Compare VAR_TEMP_x4001, 0
+	GoToIfEq _021F
+	KenyaCheck VAR_SPECIAL_RESULT, VAR_TEMP_x4000, 0
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0238
+	KenyaCheck VAR_SPECIAL_RESULT, VAR_TEMP_x4000, 1
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0251
+	CheckReturnLoanMon 7, VAR_TEMP_x4000, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _026A
+	Compare VAR_SPECIAL_RESULT, 4
+	GoToIfEq _0295
+	ReturnLoanMon VAR_TEMP_x4000
+	RestoreOverworld
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
+	GetPlayerFacing VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfNe _0149
+	ApplyMovement obj_player, _02BC
+	GoTo _0187
 
 _0149:
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_ne _0164
-	apply_movement obj_player, _02C4
-	goto _0187
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfNe _0164
+	ApplyMovement obj_player, _02C4
+	GoTo _0187
 
 _0164:
-	compare VAR_SPECIAL_RESULT, 2
-	goto_if_ne _017F
-	apply_movement obj_player, _02CC
-	goto _0187
+	Compare VAR_SPECIAL_RESULT, 2
+	GoToIfNe _017F
+	ApplyMovement obj_player, _02CC
+	GoTo _0187
 
 _017F:
-	apply_movement obj_player, _02D4
+	ApplyMovement obj_player, _02D4
 _0187:
-	wait_movement
-	buffer_players_name 0
-	npc_msg msg_0378_R31_00005
-	play_fanfare SEQ_ME_ITEM
-	wait_fanfare
+	WaitMovement
+	BufferPlayersName 0
+	NPCMsg msg_0378_R31_00005
+	PlayFanfare SEQ_ME_ITEM
+	WaitFanfare
 _0195:
-	npc_msg msg_0378_R31_00007
-	setvar VAR_LOAN_SPEAROW, 2
-	compare VAR_TEMP_x4000, VAR_TEMP_x4001
-	goto_if_ne _01AD
-	scrcmd_606
+	NPCMsg msg_0378_R31_00007
+	SetVar VAR_LOAN_SPEAROW, 2
+	Compare VAR_TEMP_x4000, VAR_TEMP_x4001
+	GoToIfNe _01AD
+	ScrCmd_606
 _01AD:
-	goto_if_no_item_space ITEM_TM44, 1, _01FC
-	callstd std_give_item_verbose
-	compare VAR_LOAN_SPEAROW, 2
-	goto_if_ne _01EB
-	setvar VAR_LOAN_SPEAROW, 3
-	goto _01F1
+	GoToIfNoItemSpace ITEM_TM44, 1, _01FC
+	CallStd std_give_item_verbose
+	Compare VAR_LOAN_SPEAROW, 2
+	GoToIfNe _01EB
+	SetVar VAR_LOAN_SPEAROW, 3
+	GoTo _01F1
 
 _01EB:
-	setvar VAR_LOAN_SPEAROW, 5
+	SetVar VAR_LOAN_SPEAROW, 5
 _01F1:
-	npc_msg msg_0378_R31_00008
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0378_R31_00008
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _01FC:
-	callstd std_bag_is_full
-	closemsg
-	releaseall
-	end
+	CallStd std_bag_is_full
+	CloseMsg
+	ReleaseAll
+	End
 
 _0206:
-	restore_overworld
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
-	npc_msg msg_0378_R31_00009
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	RestoreOverworld
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
+	NPCMsg msg_0378_R31_00009
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _021F:
-	restore_overworld
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
-	npc_msg msg_0378_R31_00015
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	RestoreOverworld
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
+	NPCMsg msg_0378_R31_00015
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0238:
-	restore_overworld
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
-	npc_msg msg_0378_R31_00002
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	RestoreOverworld
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
+	NPCMsg msg_0378_R31_00002
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0251:
-	restore_overworld
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
-	npc_msg msg_0378_R31_00003
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	RestoreOverworld
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
+	NPCMsg msg_0378_R31_00003
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _026A:
-	restore_overworld
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
-	npc_msg msg_0378_R31_00004
-	closemsg
-	buffer_players_name 0
-	npc_msg msg_0378_R31_00006
-	play_fanfare SEQ_ME_ITEM
-	wait_fanfare
-	mon_give_mail VAR_TEMP_x4000
-	goto _0195
-	end
+	RestoreOverworld
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
+	NPCMsg msg_0378_R31_00004
+	CloseMsg
+	BufferPlayersName 0
+	NPCMsg msg_0378_R31_00006
+	PlayFanfare SEQ_ME_ITEM
+	WaitFanfare
+	MonGiveMail VAR_TEMP_x4000
+	GoTo _0195
+	End
 
 _0295:
-	restore_overworld
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
-	npc_msg msg_0378_R31_00010
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	RestoreOverworld
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
+	NPCMsg msg_0378_R31_00010
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _02AE:
-	setvar VAR_LOAN_SPEAROW, 1
-	goto _0098
-	end
+	SetVar VAR_LOAN_SPEAROW, 1
+	GoTo _0098
+	End
 
 
 	.balign 4, 0
@@ -229,30 +229,30 @@ _02D4:
 	EndMovement
 
 scr_seq_R31_002:
-	direction_signpost msg_0378_R31_00013, 1, 2, VAR_SPECIAL_RESULT
-	scrcmd_057 3
-	scrcmd_058
-	scrcmd_060 VAR_SPECIAL_RESULT
-	callstd std_signpost
-	end
+	DirectionSignpost msg_0378_R31_00013, 1, 2, VAR_SPECIAL_RESULT
+	ScrCmd_057 3
+	ScrCmd_058
+	ScrCmd_060 VAR_SPECIAL_RESULT
+	CallStd std_signpost
+	End
 
 scr_seq_R31_003:
-	scrcmd_055 2, 0
-	scrcmd_057 3
-	scrcmd_058
-	trainer_tips msg_0378_R31_00014, VAR_SPECIAL_RESULT
-	callstd std_signpost
-	end
+	ScrCmd_055 2, 0
+	ScrCmd_057 3
+	ScrCmd_058
+	TrainerTips msg_0378_R31_00014, VAR_SPECIAL_RESULT
+	CallStd std_signpost
+	End
 
 scr_seq_R31_004:
-	simple_npc_msg msg_0378_R31_00012
-	end
+	SimpleNPCMsg msg_0378_R31_00012
+	End
 
 _0308:
-	simple_npc_msg msg_0378_R31_00001
-	end
+	SimpleNPCMsg msg_0378_R31_00001
+	End
 
 scr_seq_R31_005:
-	simple_npc_msg msg_0378_R31_00011
-	end
+	SimpleNPCMsg msg_0378_R31_00011
+	End
 	.balign 4, 0

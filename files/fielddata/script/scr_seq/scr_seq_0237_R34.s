@@ -5,89 +5,89 @@
 
 	.rodata
 
-	scrdef scr_seq_R34_000
-	scrdef scr_seq_R34_001
-	scrdef scr_seq_R34_002
-	scrdef scr_seq_R34_003
-	scrdef scr_seq_R34_004
-	scrdef scr_seq_R34_005
-	scrdef scr_seq_R34_006
-	scrdef scr_seq_R34_007
-	scrdef scr_seq_R34_008
-	scrdef scr_seq_R34_009
-	scrdef scr_seq_R34_010
-	scrdef scr_seq_R34_011
-	scrdef scr_seq_R34_012
-	scrdef_end
+	ScrDef scr_seq_R34_000
+	ScrDef scr_seq_R34_001
+	ScrDef scr_seq_R34_002
+	ScrDef scr_seq_R34_003
+	ScrDef scr_seq_R34_004
+	ScrDef scr_seq_R34_005
+	ScrDef scr_seq_R34_006
+	ScrDef scr_seq_R34_007
+	ScrDef scr_seq_R34_008
+	ScrDef scr_seq_R34_009
+	ScrDef scr_seq_R34_010
+	ScrDef scr_seq_R34_011
+	ScrDef scr_seq_R34_012
+	ScrDefEnd
 
 scr_seq_R34_000:
-	get_friend_sprite VAR_OBJ_0
-	check_day_care_egg VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 0
-	goto_if_eq _0057
-	set_object_movement_type obj_R34_gsoldman1, 16
-	goto _005D
+	GetFriendSprite VAR_OBJ_0
+	CheckDaycareEgg VAR_TEMP_x4000
+	Compare VAR_TEMP_x4000, 0
+	GoToIfEq _0057
+	SetObjectMovementType obj_R34_gsoldman1, 16
+	GoTo _005D
 
 _0057:
-	set_object_movement_type obj_R34_gsoldman1, 15
+	SetObjectMovementType obj_R34_gsoldman1, 15
 _005D:
-	goto_if_unset FLAG_UNK_189, _006E
-	clearflag FLAG_UNK_189
-	end
+	GoToIfUnset FLAG_UNK_189, _006E
+	ClearFlag FLAG_UNK_189
+	End
 
 _006E:
-	check_badge BADGE_PLAIN, VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 0
-	goto_if_eq _009F
-	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 3
-	goto_if_eq _00A9
-	compare VAR_TEMP_x4000, 4
-	goto_if_eq _00A9
+	CheckBadge BADGE_PLAIN, VAR_TEMP_x4000
+	Compare VAR_TEMP_x4000, 0
+	GoToIfEq _009F
+	GetWeekday VAR_TEMP_x4000
+	Compare VAR_TEMP_x4000, 3
+	GoToIfEq _00A9
+	Compare VAR_TEMP_x4000, 4
+	GoToIfEq _00A9
 _009F:
-	setflag FLAG_HIDE_CAMERON
-	goto _00AD
+	SetFlag FLAG_HIDE_CAMERON
+	GoTo _00AD
 
 _00A9:
-	clearflag FLAG_HIDE_CAMERON
+	ClearFlag FLAG_HIDE_CAMERON
 _00AD:
-	scrcmd_379 VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 3
-	goto_if_eq _00D5
-	compare VAR_TEMP_x4000, 4
-	goto_if_eq _00D5
-	clearflag FLAG_UNK_1D1
-	setflag FLAG_UNK_1D2
-	end
+	ScrCmd_379 VAR_TEMP_x4000
+	Compare VAR_TEMP_x4000, 3
+	GoToIfEq _00D5
+	Compare VAR_TEMP_x4000, 4
+	GoToIfEq _00D5
+	ClearFlag FLAG_UNK_1D1
+	SetFlag FLAG_UNK_1D2
+	End
 
 _00D5:
-	clearflag FLAG_UNK_1D2
-	setflag FLAG_UNK_1D1
-	end
+	ClearFlag FLAG_UNK_1D2
+	SetFlag FLAG_UNK_1D1
+	End
 
 scr_seq_R34_001:
-	scrcmd_609
-	lockall
-	apply_movement obj_R34_gsoldman1, _0130
-	apply_movement obj_player, _0140
-	wait_movement
-	npc_msg msg_0384_R34_00046
-	buffer_players_name 0
-	register_gear_number PHONE_CONTACT_DAY_C_MAN
-	npc_msg msg_0384_R34_00047
-	play_fanfare SEQ_ME_POKEGEAR_REGIST
-	wait_fanfare
-	register_gear_number PHONE_CONTACT_DAY_C_LADY
-	npc_msg msg_0384_R34_00048
-	play_fanfare SEQ_ME_POKEGEAR_REGIST
-	wait_fanfare
-	npc_msg msg_0384_R34_00049
-	closemsg
-	apply_movement obj_R34_gsoldman1, _014C
-	wait_movement
-	setvar VAR_UNK_408E, 3
-	releaseall
-	end
+	ScrCmd_609
+	LockAll
+	ApplyMovement obj_R34_gsoldman1, _0130
+	ApplyMovement obj_player, _0140
+	WaitMovement
+	NPCMsg msg_0384_R34_00046
+	BufferPlayersName 0
+	RegisterGearNumber PHONE_CONTACT_DAY_C_MAN
+	NPCMsg msg_0384_R34_00047
+	PlayFanfare SEQ_ME_POKEGEAR_REGIST
+	WaitFanfare
+	RegisterGearNumber PHONE_CONTACT_DAY_C_LADY
+	NPCMsg msg_0384_R34_00048
+	PlayFanfare SEQ_ME_POKEGEAR_REGIST
+	WaitFanfare
+	NPCMsg msg_0384_R34_00049
+	CloseMsg
+	ApplyMovement obj_R34_gsoldman1, _014C
+	WaitMovement
+	SetVar VAR_UNK_408E, 3
+	ReleaseAll
+	End
 
 	.balign 4, 0
 _0130:
@@ -110,187 +110,187 @@ _014C:
 	EndMovement
 
 scr_seq_R34_003:
-	scrcmd_609
-	lockall
-	gender_msgbox msg_0384_R34_00036, msg_0384_R34_00041
-	closemsg
-	apply_movement obj_R34_gsoldman1, _0510
-	wait_movement
-	callstd std_play_friend_music
-	apply_movement obj_R34_var_1, _049C
-	apply_movement obj_R34_tsure_poke_static_marill, _04B0
-	wait_movement
-	apply_movement obj_R34_gsoldman1, _0500
-	wait_movement
-	gender_msgbox msg_0384_R34_00037, msg_0384_R34_00042
-	closemsg
-	apply_movement obj_R34_var_1, _04F8
-	wait_movement
-	get_player_coords VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
-	buffer_players_name 0
-	compare VAR_SPECIAL_x8004, 368
-	goto_if_ne _01D4
-	apply_movement obj_R34_var_1, _04C0
-	apply_movement obj_R34_tsure_poke_static_marill, _04CC
-	apply_movement obj_R34_gsoldman1, _0494
-	goto _0207
+	ScrCmd_609
+	LockAll
+	GenderMsgBox msg_0384_R34_00036, msg_0384_R34_00041
+	CloseMsg
+	ApplyMovement obj_R34_gsoldman1, _0510
+	WaitMovement
+	CallStd std_play_friend_music
+	ApplyMovement obj_R34_var_1, _049C
+	ApplyMovement obj_R34_tsure_poke_static_marill, _04B0
+	WaitMovement
+	ApplyMovement obj_R34_gsoldman1, _0500
+	WaitMovement
+	GenderMsgBox msg_0384_R34_00037, msg_0384_R34_00042
+	CloseMsg
+	ApplyMovement obj_R34_var_1, _04F8
+	WaitMovement
+	GetPlayerCoords VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
+	BufferPlayersName 0
+	Compare VAR_SPECIAL_x8004, 368
+	GoToIfNe _01D4
+	ApplyMovement obj_R34_var_1, _04C0
+	ApplyMovement obj_R34_tsure_poke_static_marill, _04CC
+	ApplyMovement obj_R34_gsoldman1, _0494
+	GoTo _0207
 
 _01D4:
-	compare VAR_SPECIAL_x8004, 369
-	goto_if_ne _01FF
-	apply_movement obj_R34_var_1, _04C0
-	apply_movement obj_R34_tsure_poke_static_marill, _04CC
-	apply_movement obj_R34_gsoldman1, _0494
-	goto _0207
+	Compare VAR_SPECIAL_x8004, 369
+	GoToIfNe _01FF
+	ApplyMovement obj_R34_var_1, _04C0
+	ApplyMovement obj_R34_tsure_poke_static_marill, _04CC
+	ApplyMovement obj_R34_gsoldman1, _0494
+	GoTo _0207
 
 _01FF:
-	apply_movement obj_R34_var_1, _0518
+	ApplyMovement obj_R34_var_1, _0518
 _0207:
-	wait_movement
-	gender_msgbox msg_0384_R34_00038, msg_0384_R34_00043
-	closemsg
-	toggle_following_pokemon_movement 0
-	wait_following_pokemon_movement
-	following_pokemon_movement 55
-	compare VAR_SPECIAL_x8004, 363
-	goto_if_ne _0234
-	apply_movement obj_player, _0528
-	goto _02C3
+	WaitMovement
+	GenderMsgBox msg_0384_R34_00038, msg_0384_R34_00043
+	CloseMsg
+	ToggleFollowingPokemonMovement 0
+	WaitFollowingPokemonMovement
+	FollowingPokemonMovement 55
+	Compare VAR_SPECIAL_x8004, 363
+	GoToIfNe _0234
+	ApplyMovement obj_player, _0528
+	GoTo _02C3
 
 _0234:
-	compare VAR_SPECIAL_x8004, 364
-	goto_if_ne _024F
-	apply_movement obj_player, _0534
-	goto _02C3
+	Compare VAR_SPECIAL_x8004, 364
+	GoToIfNe _024F
+	ApplyMovement obj_player, _0534
+	GoTo _02C3
 
 _024F:
-	compare VAR_SPECIAL_x8004, 365
-	goto_if_ne _026A
-	apply_movement obj_player, _053C
-	goto _02C3
+	Compare VAR_SPECIAL_x8004, 365
+	GoToIfNe _026A
+	ApplyMovement obj_player, _053C
+	GoTo _02C3
 
 _026A:
-	compare VAR_SPECIAL_x8004, 366
-	goto_if_ne _0285
-	apply_movement obj_player, _0548
-	goto _02C3
+	Compare VAR_SPECIAL_x8004, 366
+	GoToIfNe _0285
+	ApplyMovement obj_player, _0548
+	GoTo _02C3
 
 _0285:
-	compare VAR_SPECIAL_x8004, 367
-	goto_if_ne _02A0
-	apply_movement obj_player, _0554
-	goto _02C3
+	Compare VAR_SPECIAL_x8004, 367
+	GoToIfNe _02A0
+	ApplyMovement obj_player, _0554
+	GoTo _02C3
 
 _02A0:
-	compare VAR_SPECIAL_x8004, 368
-	goto_if_ne _02BB
-	apply_movement obj_player, _0560
-	goto _02C3
+	Compare VAR_SPECIAL_x8004, 368
+	GoToIfNe _02BB
+	ApplyMovement obj_player, _0560
+	GoTo _02C3
 
 _02BB:
-	apply_movement obj_player, _056C
+	ApplyMovement obj_player, _056C
 _02C3:
-	wait_movement
-	wait_following_pokemon_movement
-	toggle_following_pokemon_movement 1
-	following_pokemon_movement 48
-	compare VAR_SPECIAL_x8004, 368
-	goto_if_ne _02EA
-	apply_movement obj_R34_var_1, _0510
-	goto _030D
+	WaitMovement
+	WaitFollowingPokemonMovement
+	ToggleFollowingPokemonMovement 1
+	FollowingPokemonMovement 48
+	Compare VAR_SPECIAL_x8004, 368
+	GoToIfNe _02EA
+	ApplyMovement obj_R34_var_1, _0510
+	GoTo _030D
 
 _02EA:
-	compare VAR_SPECIAL_x8004, 369
-	goto_if_ne _0305
-	apply_movement obj_R34_var_1, _0510
-	goto _030D
+	Compare VAR_SPECIAL_x8004, 369
+	GoToIfNe _0305
+	ApplyMovement obj_R34_var_1, _0510
+	GoTo _030D
 
 _0305:
-	apply_movement obj_R34_var_1, _0508
+	ApplyMovement obj_R34_var_1, _0508
 _030D:
-	wait_movement
-	buffer_players_name 0
-	gender_msgbox msg_0384_R34_00039, msg_0384_R34_00044
-	closemsg
-	compare VAR_SPECIAL_x8004, 368
-	goto_if_ne _033B
-	apply_movement obj_R34_var_1, _04D4
-	apply_movement obj_R34_tsure_poke_static_marill, _04E8
-	goto _036E
+	WaitMovement
+	BufferPlayersName 0
+	GenderMsgBox msg_0384_R34_00039, msg_0384_R34_00044
+	CloseMsg
+	Compare VAR_SPECIAL_x8004, 368
+	GoToIfNe _033B
+	ApplyMovement obj_R34_var_1, _04D4
+	ApplyMovement obj_R34_tsure_poke_static_marill, _04E8
+	GoTo _036E
 
 _033B:
-	compare VAR_SPECIAL_x8004, 369
-	goto_if_ne _035E
-	apply_movement obj_R34_var_1, _04D4
-	apply_movement obj_R34_tsure_poke_static_marill, _04E8
-	goto _036E
+	Compare VAR_SPECIAL_x8004, 369
+	GoToIfNe _035E
+	ApplyMovement obj_R34_var_1, _04D4
+	ApplyMovement obj_R34_tsure_poke_static_marill, _04E8
+	GoTo _036E
 
 _035E:
-	apply_movement obj_R34_var_1, _04E0
-	apply_movement obj_R34_tsure_poke_static_marill, _04F0
+	ApplyMovement obj_R34_var_1, _04E0
+	ApplyMovement obj_R34_tsure_poke_static_marill, _04F0
 _036E:
-	wait_movement
-	buffer_players_name 0
-	gender_msgbox msg_0384_R34_00040, msg_0384_R34_00045
-	closemsg
-	toggle_following_pokemon_movement 0
-	wait_following_pokemon_movement
-	following_pokemon_movement 55
-	compare VAR_SPECIAL_x8004, 368
-	goto_if_ne _03AE
-	apply_movement obj_R34_var_1, _0578
-	apply_movement obj_R34_tsure_poke_static_marill, _0590
-	apply_movement obj_player, _05A4
-	goto _03F1
+	WaitMovement
+	BufferPlayersName 0
+	GenderMsgBox msg_0384_R34_00040, msg_0384_R34_00045
+	CloseMsg
+	ToggleFollowingPokemonMovement 0
+	WaitFollowingPokemonMovement
+	FollowingPokemonMovement 55
+	Compare VAR_SPECIAL_x8004, 368
+	GoToIfNe _03AE
+	ApplyMovement obj_R34_var_1, _0578
+	ApplyMovement obj_R34_tsure_poke_static_marill, _0590
+	ApplyMovement obj_player, _05A4
+	GoTo _03F1
 
 _03AE:
-	compare VAR_SPECIAL_x8004, 369
-	goto_if_ne _03D9
-	apply_movement obj_R34_var_1, _0578
-	apply_movement obj_R34_tsure_poke_static_marill, _0590
-	apply_movement obj_player, _05A4
-	goto _03F1
+	Compare VAR_SPECIAL_x8004, 369
+	GoToIfNe _03D9
+	ApplyMovement obj_R34_var_1, _0578
+	ApplyMovement obj_R34_tsure_poke_static_marill, _0590
+	ApplyMovement obj_player, _05A4
+	GoTo _03F1
 
 _03D9:
-	apply_movement obj_R34_var_1, _0584
-	apply_movement obj_R34_tsure_poke_static_marill, _0598
-	apply_movement obj_player, _05B4
+	ApplyMovement obj_R34_var_1, _0584
+	ApplyMovement obj_R34_tsure_poke_static_marill, _0598
+	ApplyMovement obj_player, _05B4
 _03F1:
-	wait_movement
-	wait_following_pokemon_movement
-	toggle_following_pokemon_movement 1
-	following_pokemon_movement 48
-	scrcmd_307 11, 12, 16, 26, 77
-	scrcmd_310 77
-	scrcmd_308 77
-	apply_movement obj_R34_var_1, _05C4
-	apply_movement obj_R34_tsure_poke_static_marill, _05D0
-	wait_movement
-	toggle_following_pokemon_movement 0
-	wait_following_pokemon_movement
-	following_pokemon_movement 55
-	apply_movement obj_player, _05E0
-	wait_movement
-	wait_following_pokemon_movement
-	toggle_following_pokemon_movement 1
-	following_pokemon_movement 48
-	play_se SEQ_SE_DP_KAIDAN2
-	scrcmd_596 VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_ne _0455
-	scrcmd_600
+	WaitMovement
+	WaitFollowingPokemonMovement
+	ToggleFollowingPokemonMovement 1
+	FollowingPokemonMovement 48
+	ScrCmd_307 11, 12, 16, 26, 77
+	ScrCmd_310 77
+	ScrCmd_308 77
+	ApplyMovement obj_R34_var_1, _05C4
+	ApplyMovement obj_R34_tsure_poke_static_marill, _05D0
+	WaitMovement
+	ToggleFollowingPokemonMovement 0
+	WaitFollowingPokemonMovement
+	FollowingPokemonMovement 55
+	ApplyMovement obj_player, _05E0
+	WaitMovement
+	WaitFollowingPokemonMovement
+	ToggleFollowingPokemonMovement 1
+	FollowingPokemonMovement 48
+	PlaySE SEQ_SE_DP_KAIDAN2
+	ScrCmd_596 VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfNe _0455
+	ScrCmd_600
 _0455:
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_se SEQ_SE_DP_KAIDAN2
-	wait_fade
-	scrcmd_309 77
-	setvar VAR_UNK_408E, 1
-	warp MAP_ROUTE_34_DAYCARE, 0, 3, 12, DIR_NORTH
-	scrcmd_582 MAP_ROUTE_34, 368, 411
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
-	releaseall
-	end
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitSE SEQ_SE_DP_KAIDAN2
+	WaitFade
+	ScrCmd_309 77
+	SetVar VAR_UNK_408E, 1
+	Warp MAP_ROUTE_34_DAYCARE, 0, 3, 12, DIR_NORTH
+	ScrCmd_582 MAP_ROUTE_34, 368, 411
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
+	ReleaseAll
+	End
 
 	.balign 4, 0
 _0494:
@@ -472,93 +472,93 @@ _05E0:
 	EndMovement
 
 scr_seq_R34_002:
-	simple_npc_msg msg_0384_R34_00018
-	end
+	SimpleNPCMsg msg_0384_R34_00018
+	End
 
 scr_seq_R34_012:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 0
-	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_RESULT
-	touchscreen_menu_show
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _0727
-	photo_album_is_full VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _073B
-	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 1
-	closemsg
-	toggle_following_pokemon_movement 0
-	wait_following_pokemon_movement
-	following_pokemon_movement 55
-	get_player_facing VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_ne _0678
-	apply_movement obj_player, _0750
-	apply_movement obj_R34_gsmiddleman1_2, _079C
-	goto _06C6
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	GetStdMsgNaix 2, VAR_SPECIAL_RESULT
+	MsgBoxExtern VAR_SPECIAL_RESULT, 0
+	TouchscreenMenuHide
+	GetMenuChoice VAR_SPECIAL_RESULT
+	TouchscreenMenuShow
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _0727
+	PhotoAlbumIsFull VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _073B
+	GetStdMsgNaix 2, VAR_SPECIAL_RESULT
+	MsgBoxExtern VAR_SPECIAL_RESULT, 1
+	CloseMsg
+	ToggleFollowingPokemonMovement 0
+	WaitFollowingPokemonMovement
+	FollowingPokemonMovement 55
+	GetPlayerFacing VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfNe _0678
+	ApplyMovement obj_player, _0750
+	ApplyMovement obj_R34_gsmiddleman1_2, _079C
+	GoTo _06C6
 
 _0678:
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_ne _0693
-	apply_movement obj_player, _0768
-	goto _06C6
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfNe _0693
+	ApplyMovement obj_player, _0768
+	GoTo _06C6
 
 _0693:
-	compare VAR_SPECIAL_RESULT, 3
-	goto_if_ne _06B6
-	apply_movement obj_player, _0788
-	apply_movement obj_R34_gsmiddleman1_2, _079C
-	goto _06C6
+	Compare VAR_SPECIAL_RESULT, 3
+	GoToIfNe _06B6
+	ApplyMovement obj_player, _0788
+	ApplyMovement obj_R34_gsmiddleman1_2, _079C
+	GoTo _06C6
 
 _06B6:
-	apply_movement obj_player, _0774
-	apply_movement obj_R34_gsmiddleman1_2, _079C
+	ApplyMovement obj_player, _0774
+	ApplyMovement obj_R34_gsmiddleman1_2, _079C
 _06C6:
-	wait_movement
-	wait_following_pokemon_movement
-	toggle_following_pokemon_movement 1
-	following_pokemon_movement 48
-	scrcmd_729 VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_ne _06ED
-	apply_movement obj_partner_poke, _07A8
-	wait_movement
+	WaitMovement
+	WaitFollowingPokemonMovement
+	ToggleFollowingPokemonMovement 1
+	FollowingPokemonMovement 48
+	ScrCmd_729 VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfNe _06ED
+	ApplyMovement obj_partner_poke, _07A8
+	WaitMovement
 _06ED:
-	setflag FLAG_UNK_189
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	cameron_photo 9
-	lockall
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
-	clearflag FLAG_UNK_189
-	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 2
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	SetFlag FLAG_UNK_189
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	CameronPhoto 9
+	LockAll
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
+	ClearFlag FLAG_UNK_189
+	GetStdMsgNaix 2, VAR_SPECIAL_RESULT
+	MsgBoxExtern VAR_SPECIAL_RESULT, 2
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0727:
-	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 5
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	GetStdMsgNaix 2, VAR_SPECIAL_RESULT
+	MsgBoxExtern VAR_SPECIAL_RESULT, 5
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _073B:
-	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 3
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	GetStdMsgNaix 2, VAR_SPECIAL_RESULT
+	MsgBoxExtern VAR_SPECIAL_RESULT, 3
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 	.balign 4, 0
 _0750:
@@ -605,98 +605,98 @@ _07A8:
 	EndMovement
 
 scr_seq_R34_004:
-	scrcmd_609
-	lockall
-	count_alive_mons VAR_TEMP_x4003, 6
-	compare VAR_TEMP_x4003, 1
-	goto_if_ne _07DB
-	goto _07E1
+	ScrCmd_609
+	LockAll
+	CountAliveMons VAR_TEMP_x4003, 6
+	Compare VAR_TEMP_x4003, 1
+	GoToIfNe _07DB
+	GoTo _07E1
 
 _07D5:
-	goto _07E1
+	GoTo _07E1
 
 _07DB:
-	goto _087D
+	GoTo _087D
 
 _07E1:
-	apply_movement obj_R34_gswoman3, _0918
-	stop_bgm 0
-	play_bgm SEQ_GS_EYE_J_SHOUJO
-	wait_movement
-	apply_movement obj_player, _0944
-	wait_movement
-	npc_msg msg_0384_R34_00019
-	closemsg
-	trainer_battle TRAINER_ACE_TRAINER_F_IRENE, 0, 0, 0
-	check_battle_won VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0912
-	apply_movement obj_R34_gswoman3, _094C
-	wait_movement
-	npc_msg msg_0384_R34_00021
-	closemsg
-	apply_movement obj_R34_gswoman3_2, _0924
-	stop_bgm 0
-	play_bgm SEQ_GS_EYE_J_SHOUJO
-	wait_movement
-	apply_movement obj_player, _093C
-	wait_movement
-	npc_msg msg_0384_R34_00024
-	closemsg
-	trainer_battle TRAINER_ACE_TRAINER_F_JENN, 0, 0, 0
-	check_battle_won VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0912
-	apply_movement obj_R34_gswoman3_2, _0954
-	wait_movement
-	npc_msg msg_0384_R34_00026
-	wait_button_or_walk_away
-	closemsg
-	goto _0908
-	end
+	ApplyMovement obj_R34_gswoman3, _0918
+	StopBGM 0
+	PlayBGM SEQ_GS_EYE_J_SHOUJO
+	WaitMovement
+	ApplyMovement obj_player, _0944
+	WaitMovement
+	NPCMsg msg_0384_R34_00019
+	CloseMsg
+	TrainerBattle TRAINER_ACE_TRAINER_F_IRENE, 0, 0, 0
+	CheckBattleWon VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0912
+	ApplyMovement obj_R34_gswoman3, _094C
+	WaitMovement
+	NPCMsg msg_0384_R34_00021
+	CloseMsg
+	ApplyMovement obj_R34_gswoman3_2, _0924
+	StopBGM 0
+	PlayBGM SEQ_GS_EYE_J_SHOUJO
+	WaitMovement
+	ApplyMovement obj_player, _093C
+	WaitMovement
+	NPCMsg msg_0384_R34_00024
+	CloseMsg
+	TrainerBattle TRAINER_ACE_TRAINER_F_JENN, 0, 0, 0
+	CheckBattleWon VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0912
+	ApplyMovement obj_R34_gswoman3_2, _0954
+	WaitMovement
+	NPCMsg msg_0384_R34_00026
+	WaitButton
+	CloseMsg
+	GoTo _0908
+	End
 
 _087D:
-	apply_movement obj_R34_gswoman3, _0918
-	stop_bgm 0
-	play_bgm SEQ_GS_EYE_J_SHOUJO
-	wait_movement
-	apply_movement obj_player, _0944
-	wait_movement
-	npc_msg msg_0384_R34_00019
-	closemsg
-	apply_movement obj_R34_gswoman3_2, _0924
-	play_bgm SEQ_GS_EYE_J_SHOUJO
-	wait_movement
-	apply_movement obj_player, _093C
-	wait_movement
-	npc_msg msg_0384_R34_00024
-	closemsg
-	trainer_battle TRAINER_ACE_TRAINER_F_JENN, 120, 0, 0
-	check_battle_won VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0912
-	apply_movement obj_R34_gswoman3, _094C
-	wait_movement
-	apply_movement obj_player, _0944
-	wait_movement
-	npc_msg msg_0384_R34_00021
-	closemsg
-	apply_movement obj_R34_gswoman3_2, _0954
-	wait_movement
-	apply_movement obj_player, _093C
-	wait_movement
-	npc_msg msg_0384_R34_00026
-	wait_button_or_walk_away
-	closemsg
+	ApplyMovement obj_R34_gswoman3, _0918
+	StopBGM 0
+	PlayBGM SEQ_GS_EYE_J_SHOUJO
+	WaitMovement
+	ApplyMovement obj_player, _0944
+	WaitMovement
+	NPCMsg msg_0384_R34_00019
+	CloseMsg
+	ApplyMovement obj_R34_gswoman3_2, _0924
+	PlayBGM SEQ_GS_EYE_J_SHOUJO
+	WaitMovement
+	ApplyMovement obj_player, _093C
+	WaitMovement
+	NPCMsg msg_0384_R34_00024
+	CloseMsg
+	TrainerBattle TRAINER_ACE_TRAINER_F_JENN, 120, 0, 0
+	CheckBattleWon VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0912
+	ApplyMovement obj_R34_gswoman3, _094C
+	WaitMovement
+	ApplyMovement obj_player, _0944
+	WaitMovement
+	NPCMsg msg_0384_R34_00021
+	CloseMsg
+	ApplyMovement obj_R34_gswoman3_2, _0954
+	WaitMovement
+	ApplyMovement obj_player, _093C
+	WaitMovement
+	NPCMsg msg_0384_R34_00026
+	WaitButton
+	CloseMsg
 _0908:
-	setvar VAR_UNK_4097, 1
-	releaseall
-	end
+	SetVar VAR_UNK_4097, 1
+	ReleaseAll
+	End
 
 _0912:
-	white_out
-	releaseall
-	end
+	WhiteOut
+	ReleaseAll
+	End
 
 	.balign 4, 0
 _0918:
@@ -737,114 +737,114 @@ _0954:
 	EndMovement
 
 scr_seq_R34_005:
-	scrcmd_609
-	lockall
-	setvar VAR_TEMP_x4004, 777
-	apply_movement obj_R34_gswoman3_3, _0930
-	stop_bgm 0
-	play_bgm SEQ_GS_EYE_J_SHOUJO
-	wait_movement
-	npc_msg msg_0384_R34_00028
-	closemsg
-	stop_bgm 0
-	trainer_battle TRAINER_ACE_TRAINER_F_KATE, 0, 0, 0
-	check_battle_won VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0912
-	setvar VAR_UNK_4097, 2
+	ScrCmd_609
+	LockAll
+	SetVar VAR_TEMP_x4004, 777
+	ApplyMovement obj_R34_gswoman3_3, _0930
+	StopBGM 0
+	PlayBGM SEQ_GS_EYE_J_SHOUJO
+	WaitMovement
+	NPCMsg msg_0384_R34_00028
+	CloseMsg
+	StopBGM 0
+	TrainerBattle TRAINER_ACE_TRAINER_F_KATE, 0, 0, 0
+	CheckBattleWon VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0912
+	SetVar VAR_UNK_4097, 2
 _09A0:
-	npc_msg msg_0384_R34_00030
-	goto_if_no_item_space ITEM_POWER_HERB, 1, _09EE
-	callstd std_give_item_verbose
-	setvar VAR_UNK_4097, 3
-	npc_msg msg_0384_R34_00032
-	wait_button_or_walk_away
-	closemsg
+	NPCMsg msg_0384_R34_00030
+	GoToIfNoItemSpace ITEM_POWER_HERB, 1, _09EE
+	CallStd std_give_item_verbose
+	SetVar VAR_UNK_4097, 3
+	NPCMsg msg_0384_R34_00032
+	WaitButton
+	CloseMsg
 _09D5:
-	compare VAR_TEMP_x4004, 777
-	goto_if_ne _09EA
-	releaseall
-	goto _09EC
+	Compare VAR_TEMP_x4004, 777
+	GoToIfNe _09EA
+	ReleaseAll
+	GoTo _09EC
 
 _09EA:
-	releaseall
+	ReleaseAll
 _09EC:
-	end
+	End
 
 _09EE:
-	callstd std_bag_is_full
-	closemsg
-	goto _09D5
-	end
+	CallStd std_bag_is_full
+	CloseMsg
+	GoTo _09D5
+	End
 
 scr_seq_R34_006:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	compare VAR_UNK_4097, 1
-	goto_if_ne _0A1A
-	npc_msg msg_0384_R34_00022
-	goto _0A1D
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	Compare VAR_UNK_4097, 1
+	GoToIfNe _0A1A
+	NPCMsg msg_0384_R34_00022
+	GoTo _0A1D
 
 _0A1A:
-	npc_msg msg_0384_R34_00023
+	NPCMsg msg_0384_R34_00023
 _0A1D:
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_R34_007:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	compare VAR_UNK_4097, 1
-	goto_if_ne _0A43
-	npc_msg msg_0384_R34_00026
-	goto _0A46
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	Compare VAR_UNK_4097, 1
+	GoToIfNe _0A43
+	NPCMsg msg_0384_R34_00026
+	GoTo _0A46
 
 _0A43:
-	npc_msg msg_0384_R34_00027
+	NPCMsg msg_0384_R34_00027
 _0A46:
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_R34_008:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	setvar VAR_TEMP_x4004, 555
-	compare VAR_UNK_4097, 2
-	goto_if_eq _09A0
-	npc_msg msg_0384_R34_00032
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	SetVar VAR_TEMP_x4004, 555
+	Compare VAR_UNK_4097, 2
+	GoToIfEq _09A0
+	NPCMsg msg_0384_R34_00032
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_R34_009:
-	scrcmd_055 3, 0
-	scrcmd_057 3
-	scrcmd_058
-	trainer_tips msg_0384_R34_00034, VAR_SPECIAL_RESULT
-	callstd std_signpost
-	end
+	ScrCmd_055 3, 0
+	ScrCmd_057 3
+	ScrCmd_058
+	TrainerTips msg_0384_R34_00034, VAR_SPECIAL_RESULT
+	CallStd std_signpost
+	End
 
 scr_seq_R34_010:
-	scrcmd_055 2, 0
-	scrcmd_057 3
-	scrcmd_058
-	trainer_tips msg_0384_R34_00035, VAR_SPECIAL_RESULT
-	callstd std_signpost
-	end
+	ScrCmd_055 2, 0
+	ScrCmd_057 3
+	ScrCmd_058
+	TrainerTips msg_0384_R34_00035, VAR_SPECIAL_RESULT
+	CallStd std_signpost
+	End
 
 scr_seq_R34_011:
-	direction_signpost msg_0384_R34_00033, 1, 4, VAR_SPECIAL_RESULT
-	scrcmd_057 3
-	scrcmd_058
-	scrcmd_060 VAR_SPECIAL_RESULT
-	callstd std_signpost
-	end
+	DirectionSignpost msg_0384_R34_00033, 1, 4, VAR_SPECIAL_RESULT
+	ScrCmd_057 3
+	ScrCmd_058
+	ScrCmd_060 VAR_SPECIAL_RESULT
+	CallStd std_signpost
+	End
 	.balign 4, 0

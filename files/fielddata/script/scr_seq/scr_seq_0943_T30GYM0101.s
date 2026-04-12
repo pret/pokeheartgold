@@ -5,158 +5,158 @@
 
 	.rodata
 
-	scrdef scr_seq_T30GYM0101_000
-	scrdef scr_seq_T30GYM0101_001
-	scrdef scr_seq_T30GYM0101_002
-	scrdef scr_seq_T30GYM0101_003
-	scrdef scr_seq_T30GYM0101_004
-	scrdef scr_seq_T30GYM0101_005
-	scrdef_end
+	ScrDef scr_seq_T30GYM0101_000
+	ScrDef scr_seq_T30GYM0101_001
+	ScrDef scr_seq_T30GYM0101_002
+	ScrDef scr_seq_T30GYM0101_003
+	ScrDef scr_seq_T30GYM0101_004
+	ScrDef scr_seq_T30GYM0101_005
+	ScrDefEnd
 
 scr_seq_T30GYM0101_001:
-	blackthorn_gym_init
-	setvar VAR_UNK_4120, 0
-	get_phone_book_rematch PHONE_CONTACT_CLAIR, VAR_TEMP_x4001
-	compare VAR_TEMP_x4001, 0
-	goto_if_ne _010C
-	compare VAR_UNK_40FC, 2
-	goto_if_ge _0044
-	end
+	BlackthornGymInit
+	SetVar VAR_UNK_4120, 0
+	GetPhoneBookRematch PHONE_CONTACT_CLAIR, VAR_TEMP_x4001
+	Compare VAR_TEMP_x4001, 0
+	GoToIfNe _010C
+	Compare VAR_UNK_40FC, 2
+	GoToIfGe _0044
+	End
 
 _0044:
-	check_registered_phone_number PHONE_CONTACT_CLAIR, VAR_TEMP_x4001
-	compare VAR_TEMP_x4001, 1
-	goto_if_eq _00BD
-	scrcmd_522 VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 6
-	goto_if_ne _0072
-	setflag FLAG_HIDE_BLACKTHORN_GYM_CLAIR
-	goto _00BB
+	CheckRegisteredPhoneNumber PHONE_CONTACT_CLAIR, VAR_TEMP_x4001
+	Compare VAR_TEMP_x4001, 1
+	GoToIfEq _00BD
+	ScrCmd_522 VAR_TEMP_x4000
+	Compare VAR_TEMP_x4000, 6
+	GoToIfNe _0072
+	SetFlag FLAG_HIDE_BLACKTHORN_GYM_CLAIR
+	GoTo _00BB
 
 _0072:
-	compare VAR_TEMP_x4000, 7
-	goto_if_ne _0089
-	setflag FLAG_HIDE_BLACKTHORN_GYM_CLAIR
-	goto _00BB
+	Compare VAR_TEMP_x4000, 7
+	GoToIfNe _0089
+	SetFlag FLAG_HIDE_BLACKTHORN_GYM_CLAIR
+	GoTo _00BB
 
 _0089:
-	compare VAR_TEMP_x4000, 8
-	goto_if_ne _00A0
-	setflag FLAG_HIDE_BLACKTHORN_GYM_CLAIR
-	goto _00BB
+	Compare VAR_TEMP_x4000, 8
+	GoToIfNe _00A0
+	SetFlag FLAG_HIDE_BLACKTHORN_GYM_CLAIR
+	GoTo _00BB
 
 _00A0:
-	compare VAR_TEMP_x4000, 9
-	goto_if_ne _00B7
-	setflag FLAG_HIDE_BLACKTHORN_GYM_CLAIR
-	goto _00BB
+	Compare VAR_TEMP_x4000, 9
+	GoToIfNe _00B7
+	SetFlag FLAG_HIDE_BLACKTHORN_GYM_CLAIR
+	GoTo _00BB
 
 _00B7:
-	clearflag FLAG_HIDE_BLACKTHORN_GYM_CLAIR
+	ClearFlag FLAG_HIDE_BLACKTHORN_GYM_CLAIR
 _00BB:
-	end
+	End
 
 _00BD:
-	scrcmd_522 VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 16
-	goto_if_ne _00D8
-	setflag FLAG_HIDE_BLACKTHORN_GYM_CLAIR
-	goto _010A
+	ScrCmd_522 VAR_TEMP_x4000
+	Compare VAR_TEMP_x4000, 16
+	GoToIfNe _00D8
+	SetFlag FLAG_HIDE_BLACKTHORN_GYM_CLAIR
+	GoTo _010A
 
 _00D8:
-	compare VAR_TEMP_x4000, 17
-	goto_if_ne _00EF
-	setflag FLAG_HIDE_BLACKTHORN_GYM_CLAIR
-	goto _010A
+	Compare VAR_TEMP_x4000, 17
+	GoToIfNe _00EF
+	SetFlag FLAG_HIDE_BLACKTHORN_GYM_CLAIR
+	GoTo _010A
 
 _00EF:
-	compare VAR_TEMP_x4000, 18
-	goto_if_ne _0106
-	setflag FLAG_HIDE_BLACKTHORN_GYM_CLAIR
-	goto _010A
+	Compare VAR_TEMP_x4000, 18
+	GoToIfNe _0106
+	SetFlag FLAG_HIDE_BLACKTHORN_GYM_CLAIR
+	GoTo _010A
 
 _0106:
-	clearflag FLAG_HIDE_BLACKTHORN_GYM_CLAIR
+	ClearFlag FLAG_HIDE_BLACKTHORN_GYM_CLAIR
 _010A:
-	end
+	End
 
 _010C:
-	setflag FLAG_HIDE_BLACKTHORN_GYM_CLAIR
-	end
+	SetFlag FLAG_HIDE_BLACKTHORN_GYM_CLAIR
+	End
 
 scr_seq_T30GYM0101_000:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	goto_if_set FLAG_UNK_0EA, _018E
-	goto_if_set FLAG_UNK_0D1, _017D
-	npc_msg msg_0631_T30GYM0101_00003
-	closemsg
-	trainer_battle TRAINER_LEADER_CLAIR_CLAIR, 0, 0, 0
-	check_battle_won VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0188
-	settrainerflag TRAINER_ACE_TRAINER_M_PAULO
-	settrainerflag TRAINER_ACE_TRAINER_M_CODY
-	settrainerflag TRAINER_ACE_TRAINER_M_MIKE
-	settrainerflag TRAINER_ACE_TRAINER_F_FRAN
-	settrainerflag TRAINER_ACE_TRAINER_F_LOLA
-	add_special_game_stat SCORE_EVENT_BADGE_GET
-	setflag FLAG_UNK_0D1
-	setflag FLAG_HIDE_BLACKTHORN_DEN_GUARD_INFRONT
-	clearflag FLAG_HIDE_BLACKTHRON_DEN_GUARD_ASIDE
-	npc_msg msg_0631_T30GYM0101_00004
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	GoToIfSet FLAG_UNK_0EA, _018E
+	GoToIfSet FLAG_UNK_0D1, _017D
+	NPCMsg msg_0631_T30GYM0101_00003
+	CloseMsg
+	TrainerBattle TRAINER_LEADER_CLAIR_CLAIR, 0, 0, 0
+	CheckBattleWon VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0188
+	SetTrainerFlag TRAINER_ACE_TRAINER_M_PAULO
+	SetTrainerFlag TRAINER_ACE_TRAINER_M_CODY
+	SetTrainerFlag TRAINER_ACE_TRAINER_M_MIKE
+	SetTrainerFlag TRAINER_ACE_TRAINER_F_FRAN
+	SetTrainerFlag TRAINER_ACE_TRAINER_F_LOLA
+	AddSpecialGameStat SCORE_EVENT_BADGE_GET
+	SetFlag FLAG_UNK_0D1
+	SetFlag FLAG_HIDE_BLACKTHORN_DEN_GUARD_INFRONT
+	ClearFlag FLAG_HIDE_BLACKTHRON_DEN_GUARD_ASIDE
+	NPCMsg msg_0631_T30GYM0101_00004
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _017D:
-	npc_msg msg_0631_T30GYM0101_00005
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0631_T30GYM0101_00005
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0188:
-	white_out
-	releaseall
-	end
+	WhiteOut
+	ReleaseAll
+	End
 
 _018E:
-	goto_if_set FLAG_GOT_TM59_FROM_CLAIR, _01C8
-	npc_msg msg_0631_T30GYM0101_00006
-	goto_if_no_item_space ITEM_TM59, 1, _01D3
-	callstd std_give_item_verbose
-	setflag FLAG_GOT_TM59_FROM_CLAIR
-	npc_msg msg_0631_T30GYM0101_00007
+	GoToIfSet FLAG_GOT_TM59_FROM_CLAIR, _01C8
+	NPCMsg msg_0631_T30GYM0101_00006
+	GoToIfNoItemSpace ITEM_TM59, 1, _01D3
+	CallStd std_give_item_verbose
+	SetFlag FLAG_GOT_TM59_FROM_CLAIR
+	NPCMsg msg_0631_T30GYM0101_00007
 _01C8:
-	npc_msg msg_0631_T30GYM0101_00009
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0631_T30GYM0101_00009
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _01D3:
-	npc_msg msg_0631_T30GYM0101_00008
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0631_T30GYM0101_00008
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_T30GYM0101_002:
-	scrcmd_609
-	lockall
-	play_se SEQ_SE_DP_GYURU
-	apply_movement obj_player, _0218
-	wait_movement
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	warp MAP_BLACKTHORN_GYM, 0, 8, 83, DIR_NORTH
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
-	releaseall
-	end
+	ScrCmd_609
+	LockAll
+	PlaySE SEQ_SE_DP_GYURU
+	ApplyMovement obj_player, _0218
+	WaitMovement
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	Warp MAP_BLACKTHORN_GYM, 0, 8, 83, DIR_NORTH
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
+	ReleaseAll
+	End
 
 	.balign 4, 0
 _0218:
@@ -180,78 +180,78 @@ _0218:
 	EndMovement
 
 scr_seq_T30GYM0101_003:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	goto_if_set FLAG_UNK_0D1, _0291
-	npc_msg msg_0631_T30GYM0101_00000
-	scrcmd_600
-	set_follow_mon_inhibit_state 1
-	scrcmd_607
-	scrcmd_109 253, 56
-	setvar VAR_UNK_4120, 1
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	GoToIfSet FLAG_UNK_0D1, _0291
+	NPCMsg msg_0631_T30GYM0101_00000
+	ScrCmd_600
+	SetFollowMonInhibitState 1
+	ScrCmd_607
+	ScrCmd_109 253, 56
+	SetVar VAR_UNK_4120, 1
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0291:
-	npc_msg msg_0631_T30GYM0101_00001
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0631_T30GYM0101_00001
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_T30GYM0101_004:
-	scrcmd_609
-	lockall
-	goto_if_set FLAG_UNK_138, _0352
-	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
-	compare VAR_TEMP_x4000, 12
-	goto_if_ne _02D4
-	apply_movement obj_T30GYM0101_sunglasses, _0370
-	apply_movement obj_player, _039C
-	goto _0307
+	ScrCmd_609
+	LockAll
+	GoToIfSet FLAG_UNK_138, _0352
+	GetPlayerCoords VAR_TEMP_x4000, VAR_TEMP_x4001
+	Compare VAR_TEMP_x4000, 12
+	GoToIfNe _02D4
+	ApplyMovement obj_T30GYM0101_sunglasses, _0370
+	ApplyMovement obj_player, _039C
+	GoTo _0307
 
 _02D4:
-	compare VAR_TEMP_x4000, 13
-	goto_if_ne _02F7
-	apply_movement obj_T30GYM0101_sunglasses, _0380
-	apply_movement obj_player, _03A8
-	goto _0307
+	Compare VAR_TEMP_x4000, 13
+	GoToIfNe _02F7
+	ApplyMovement obj_T30GYM0101_sunglasses, _0380
+	ApplyMovement obj_player, _03A8
+	GoTo _0307
 
 _02F7:
-	apply_movement obj_T30GYM0101_sunglasses, _0390
-	apply_movement obj_player, _03B4
+	ApplyMovement obj_T30GYM0101_sunglasses, _0390
+	ApplyMovement obj_player, _03B4
 _0307:
-	wait_movement
-	npc_msg msg_0631_T30GYM0101_00002
-	closemsg
-	setflag FLAG_UNK_138
-	compare VAR_TEMP_x4000, 12
-	goto_if_ne _032D
-	apply_movement obj_T30GYM0101_sunglasses, _03C0
-	goto _0350
+	WaitMovement
+	NPCMsg msg_0631_T30GYM0101_00002
+	CloseMsg
+	SetFlag FLAG_UNK_138
+	Compare VAR_TEMP_x4000, 12
+	GoToIfNe _032D
+	ApplyMovement obj_T30GYM0101_sunglasses, _03C0
+	GoTo _0350
 
 _032D:
-	compare VAR_TEMP_x4000, 13
-	goto_if_ne _0348
-	apply_movement obj_T30GYM0101_sunglasses, _03CC
-	goto _0350
+	Compare VAR_TEMP_x4000, 13
+	GoToIfNe _0348
+	ApplyMovement obj_T30GYM0101_sunglasses, _03CC
+	GoTo _0350
 
 _0348:
-	apply_movement obj_T30GYM0101_sunglasses, _03D8
+	ApplyMovement obj_T30GYM0101_sunglasses, _03D8
 _0350:
-	wait_movement
+	WaitMovement
 _0352:
-	scrcmd_600
-	set_follow_mon_inhibit_state 1
-	scrcmd_607
-	scrcmd_109 253, 56
-	setvar VAR_UNK_4120, 1
-	setvar VAR_UNK_4120, 1
-	releaseall
-	end
+	ScrCmd_600
+	SetFollowMonInhibitState 1
+	ScrCmd_607
+	ScrCmd_109 253, 56
+	SetVar VAR_UNK_4120, 1
+	SetVar VAR_UNK_4120, 1
+	ReleaseAll
+	End
 
 	.balign 4, 0
 _0370:
@@ -309,21 +309,21 @@ _03D8:
 	EndMovement
 
 scr_seq_T30GYM0101_005:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	check_badge BADGE_RISING, VAR_SPECIAL_RESULT
-	buffer_players_name 0
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_ne _0407
-	npc_msg msg_0631_T30GYM0101_00010
-	goto _040A
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	CheckBadge BADGE_RISING, VAR_SPECIAL_RESULT
+	BufferPlayersName 0
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfNe _0407
+	NPCMsg msg_0631_T30GYM0101_00010
+	GoTo _040A
 
 _0407:
-	npc_msg msg_0631_T30GYM0101_00011
+	NPCMsg msg_0631_T30GYM0101_00011
 _040A:
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 	.balign 4, 0

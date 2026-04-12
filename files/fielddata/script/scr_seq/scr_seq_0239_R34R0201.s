@@ -5,49 +5,49 @@
 
 	.rodata
 
-	scrdef scr_seq_R34R0201_000
-	scrdef scr_seq_R34R0201_001
-	scrdef scr_seq_R34R0201_002
-	scrdef_end
+	ScrDef scr_seq_R34R0201_000
+	ScrDef scr_seq_R34R0201_001
+	ScrDef scr_seq_R34R0201_002
+	ScrDefEnd
 
 scr_seq_R34R0201_000:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	goto_if_set FLAG_GOT_TM12_FROM_ILEX_FOREST_GATE_WOMAN, _0055
-	npc_msg msg_0386_R34R0201_00000
-	wait_button
-	goto_if_no_item_space ITEM_TM12, 1, _0060
-	callstd std_give_item_verbose
-	setflag FLAG_GOT_TM12_FROM_ILEX_FOREST_GATE_WOMAN
-	goto _0055
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	GoToIfSet FLAG_GOT_TM12_FROM_ILEX_FOREST_GATE_WOMAN, _0055
+	NPCMsg msg_0386_R34R0201_00000
+	WaitABPress
+	GoToIfNoItemSpace ITEM_TM12, 1, _0060
+	CallStd std_give_item_verbose
+	SetFlag FLAG_GOT_TM12_FROM_ILEX_FOREST_GATE_WOMAN
+	GoTo _0055
 
 _0055:
-	npc_msg msg_0386_R34R0201_00002
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0386_R34R0201_00002
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0060:
-	callstd std_bag_is_full
-	closemsg
-	releaseall
-	end
+	CallStd std_bag_is_full
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_R34R0201_001:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	play_cry SPECIES_BUTTERFREE, 0
-	npc_msg msg_0386_R34R0201_00003
-	wait_cry
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	PlayCry SPECIES_BUTTERFREE, 0
+	NPCMsg msg_0386_R34R0201_00003
+	WaitCry
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_R34R0201_002:
-	simple_npc_msg msg_0386_R34R0201_00004
-	end
+	SimpleNPCMsg msg_0386_R34R0201_00004
+	End
 	.balign 4, 0

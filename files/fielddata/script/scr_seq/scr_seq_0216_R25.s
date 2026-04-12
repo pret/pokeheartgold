@@ -5,171 +5,171 @@
 
 	.rodata
 
-	scrdef scr_seq_R25_000
-	scrdef scr_seq_R25_001
-	scrdef scr_seq_R25_002
-	scrdef scr_seq_R25_003
-	scrdef scr_seq_R25_004
-	scrdef scr_seq_R25_005
-	scrdef scr_seq_R25_006
-	scrdef scr_seq_R25_007
-	scrdef scr_seq_R25_008
-	scrdef scr_seq_R25_009
-	scrdef_end
+	ScrDef scr_seq_R25_000
+	ScrDef scr_seq_R25_001
+	ScrDef scr_seq_R25_002
+	ScrDef scr_seq_R25_003
+	ScrDef scr_seq_R25_004
+	ScrDef scr_seq_R25_005
+	ScrDef scr_seq_R25_006
+	ScrDef scr_seq_R25_007
+	ScrDef scr_seq_R25_008
+	ScrDef scr_seq_R25_009
+	ScrDefEnd
 
 scr_seq_R25_003:
-	goto_if_unset FLAG_UNK_189, _003B
-	clearflag FLAG_UNK_189
-	end
+	GoToIfUnset FLAG_UNK_189, _003B
+	ClearFlag FLAG_UNK_189
+	End
 
 _003B:
-	compare VAR_SCENE_ROUTE_25, 2
-	goto_if_ne _0050
-	clearflag FLAG_HIDE_ROUTE_25_EUSINE_2
-	setflag FLAG_HIDE_ROUTE_25_EUSINE
+	Compare VAR_SCENE_ROUTE_25, 2
+	GoToIfNe _0050
+	ClearFlag FLAG_HIDE_ROUTE_25_EUSINE_2
+	SetFlag FLAG_HIDE_ROUTE_25_EUSINE
 _0050:
-	check_badge BADGE_EARTH, VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 0
-	goto_if_eq _011B
-	compare VAR_SCENE_ROUTE_25, 1
-	goto_if_eq _011B
-	compare VAR_SCENE_ROUTE_25, 2
-	goto_if_eq _011B
-	get_phone_book_rematch PHONE_CONTACT_MISTY, VAR_TEMP_x4001
-	compare VAR_TEMP_x4001, 0
-	goto_if_ne _0115
-	check_registered_phone_number PHONE_CONTACT_MISTY, VAR_TEMP_x4001
-	compare VAR_TEMP_x4001, 1
-	goto_if_eq _00DD
-	scrcmd_522 VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 16
-	goto_if_ne _00BE
-	clearflag FLAG_UNK_2CD
-	goto _00DB
+	CheckBadge BADGE_EARTH, VAR_TEMP_x4000
+	Compare VAR_TEMP_x4000, 0
+	GoToIfEq _011B
+	Compare VAR_SCENE_ROUTE_25, 1
+	GoToIfEq _011B
+	Compare VAR_SCENE_ROUTE_25, 2
+	GoToIfEq _011B
+	GetPhoneBookRematch PHONE_CONTACT_MISTY, VAR_TEMP_x4001
+	Compare VAR_TEMP_x4001, 0
+	GoToIfNe _0115
+	CheckRegisteredPhoneNumber PHONE_CONTACT_MISTY, VAR_TEMP_x4001
+	Compare VAR_TEMP_x4001, 1
+	GoToIfEq _00DD
+	ScrCmd_522 VAR_TEMP_x4000
+	Compare VAR_TEMP_x4000, 16
+	GoToIfNe _00BE
+	ClearFlag FLAG_UNK_2CD
+	GoTo _00DB
 
 _00BE:
-	compare VAR_TEMP_x4000, 17
-	goto_if_ne _00D5
-	clearflag FLAG_UNK_2CD
-	goto _00DB
+	Compare VAR_TEMP_x4000, 17
+	GoToIfNe _00D5
+	ClearFlag FLAG_UNK_2CD
+	GoTo _00DB
 
 _00D5:
-	goto _0115
+	GoTo _0115
 
 _00DB:
-	end
+	End
 
 _00DD:
-	scrcmd_522 VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 14
-	goto_if_ne _00F8
-	clearflag FLAG_UNK_2CD
-	goto _0113
+	ScrCmd_522 VAR_TEMP_x4000
+	Compare VAR_TEMP_x4000, 14
+	GoToIfNe _00F8
+	ClearFlag FLAG_UNK_2CD
+	GoTo _0113
 
 _00F8:
-	compare VAR_TEMP_x4000, 15
-	goto_if_ne _010F
-	clearflag FLAG_UNK_2CD
-	goto _0113
+	Compare VAR_TEMP_x4000, 15
+	GoToIfNe _010F
+	ClearFlag FLAG_UNK_2CD
+	GoTo _0113
 
 _010F:
-	setflag FLAG_UNK_2CD
+	SetFlag FLAG_UNK_2CD
 _0113:
-	end
+	End
 
 _0115:
-	setflag FLAG_UNK_2CD
-	end
+	SetFlag FLAG_UNK_2CD
+	End
 
 _011B:
-	setflag FLAG_UNK_2CD
-	end
+	SetFlag FLAG_UNK_2CD
+	End
 
 scr_seq_R25_008:
-	goto_if_set FLAG_ENGAGING_STATIC_POKEMON, _012E
-	end
+	GoToIfSet FLAG_ENGAGING_STATIC_POKEMON, _012E
+	End
 
 _012E:
-	setflag FLAG_HIDE_ROUTE_25_SUICUNE
-	hide_person obj_R25_tsure_poke_static_suicune
-	clearflag FLAG_ENGAGING_STATIC_POKEMON
-	end
+	SetFlag FLAG_HIDE_ROUTE_25_SUICUNE
+	HidePerson obj_R25_tsure_poke_static_suicune
+	ClearFlag FLAG_ENGAGING_STATIC_POKEMON
+	End
 
 scr_seq_R25_000:
-	scrcmd_609
-	lockall
-	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
-	compare VAR_TEMP_x4001, 40
-	goto_if_ne _0171
-	apply_movement obj_R25_gsleader11, _029C
-	apply_movement obj_R25_gsman1, _02B0
-	apply_movement obj_player, _0304
-	goto _01B4
+	ScrCmd_609
+	LockAll
+	GetPlayerCoords VAR_TEMP_x4000, VAR_TEMP_x4001
+	Compare VAR_TEMP_x4001, 40
+	GoToIfNe _0171
+	ApplyMovement obj_R25_gsleader11, _029C
+	ApplyMovement obj_R25_gsman1, _02B0
+	ApplyMovement obj_player, _0304
+	GoTo _01B4
 
 _0171:
-	compare VAR_TEMP_x4001, 41
-	goto_if_ne _019C
-	apply_movement obj_R25_gsleader11, _029C
-	apply_movement obj_R25_gsman1, _02CC
-	apply_movement obj_player, _0304
-	goto _01B4
+	Compare VAR_TEMP_x4001, 41
+	GoToIfNe _019C
+	ApplyMovement obj_R25_gsleader11, _029C
+	ApplyMovement obj_R25_gsman1, _02CC
+	ApplyMovement obj_player, _0304
+	GoTo _01B4
 
 _019C:
-	apply_movement obj_R25_gsleader11, _029C
-	apply_movement obj_R25_gsman1, _02E8
-	apply_movement obj_player, _0310
+	ApplyMovement obj_R25_gsleader11, _029C
+	ApplyMovement obj_R25_gsman1, _02E8
+	ApplyMovement obj_player, _0310
 _01B4:
-	wait_movement
-	stop_bgm SEQ_GS_R_12_24
-	play_bgm SEQ_GS_EYE_K_SHOUJO
-	compare VAR_TEMP_x4001, 40
-	goto_if_ne _01E1
-	apply_movement obj_R25_gsleader11, _032C
-	apply_movement obj_player, _0350
-	goto _0214
+	WaitMovement
+	StopBGM SEQ_GS_R_12_24
+	PlayBGM SEQ_GS_EYE_K_SHOUJO
+	Compare VAR_TEMP_x4001, 40
+	GoToIfNe _01E1
+	ApplyMovement obj_R25_gsleader11, _032C
+	ApplyMovement obj_player, _0350
+	GoTo _0214
 
 _01E1:
-	compare VAR_TEMP_x4001, 41
-	goto_if_ne _0204
-	apply_movement obj_R25_gsleader11, _0338
-	apply_movement obj_player, _0350
-	goto _0214
+	Compare VAR_TEMP_x4001, 41
+	GoToIfNe _0204
+	ApplyMovement obj_R25_gsleader11, _0338
+	ApplyMovement obj_player, _0350
+	GoTo _0214
 
 _0204:
-	apply_movement obj_R25_gsleader11, _0344
-	apply_movement obj_player, _0350
+	ApplyMovement obj_R25_gsleader11, _0344
+	ApplyMovement obj_player, _0350
 _0214:
-	wait_movement
-	npc_msg msg_0363_R25_00000
-	closemsg
-	compare VAR_TEMP_x4001, 40
-	goto_if_ne _023E
-	apply_movement obj_R25_gsleader11, _035C
-	apply_movement obj_player, _0380
-	goto _0271
+	WaitMovement
+	NPCMsg msg_0363_R25_00000
+	CloseMsg
+	Compare VAR_TEMP_x4001, 40
+	GoToIfNe _023E
+	ApplyMovement obj_R25_gsleader11, _035C
+	ApplyMovement obj_player, _0380
+	GoTo _0271
 
 _023E:
-	compare VAR_TEMP_x4001, 41
-	goto_if_ne _0261
-	apply_movement obj_R25_gsleader11, _0368
-	apply_movement obj_player, _0380
-	goto _0271
+	Compare VAR_TEMP_x4001, 41
+	GoToIfNe _0261
+	ApplyMovement obj_R25_gsleader11, _0368
+	ApplyMovement obj_player, _0380
+	GoTo _0271
 
 _0261:
-	apply_movement obj_R25_gsleader11, _0374
-	apply_movement obj_player, _0394
+	ApplyMovement obj_R25_gsleader11, _0374
+	ApplyMovement obj_player, _0394
 _0271:
-	wait_movement
-	hide_person obj_R25_gsman1
-	hide_person obj_R25_gsleader11
-	stop_bgm SEQ_GS_EYE_K_SHOUJO
-	play_bgm SEQ_GS_R_12_24
-	setflag FLAG_HIDE_ROUTE_25_MISTYS_BOYFRIEND
-	setflag FLAG_HIDE_ROUTE_25_MISTY
-	clearflag FLAG_HIDE_CERULEAN_GYM_POPULATION
-	setvar VAR_UNK_4088, 2
-	releaseall
-	end
+	WaitMovement
+	HidePerson obj_R25_gsman1
+	HidePerson obj_R25_gsleader11
+	StopBGM SEQ_GS_EYE_K_SHOUJO
+	PlayBGM SEQ_GS_R_12_24
+	SetFlag FLAG_HIDE_ROUTE_25_MISTYS_BOYFRIEND
+	SetFlag FLAG_HIDE_ROUTE_25_MISTY
+	ClearFlag FLAG_HIDE_CERULEAN_GYM_POPULATION
+	SetVar VAR_UNK_4088, 2
+	ReleaseAll
+	End
 
 	.balign 4, 0
 _029C:
@@ -284,196 +284,196 @@ _0394:
 	EndMovement
 
 scr_seq_R25_009:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	check_registered_phone_number PHONE_CONTACT_MISTY, VAR_TEMP_x4001
-	compare VAR_TEMP_x4001, 1
-	goto_if_eq _0456
-	compare VAR_TEMP_x4002, 1
-	goto_if_ge _044B
-	npc_msg msg_0363_R25_00001
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	CheckRegisteredPhoneNumber PHONE_CONTACT_MISTY, VAR_TEMP_x4001
+	Compare VAR_TEMP_x4001, 1
+	GoToIfEq _0456
+	Compare VAR_TEMP_x4002, 1
+	GoToIfGe _044B
+	NPCMsg msg_0363_R25_00001
 _03D3:
-	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_RESULT
-	touchscreen_menu_show
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _03F7
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_ge _043A
-	end
+	TouchscreenMenuHide
+	GetMenuChoice VAR_SPECIAL_RESULT
+	TouchscreenMenuShow
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _03F7
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfGe _043A
+	End
 
 _03F7:
-	buffer_players_name 0
-	npc_msg msg_0363_R25_00002
-	play_fanfare SEQ_ME_POKEGEAR_REGIST
-	wait_fanfare
-	register_gear_number PHONE_CONTACT_MISTY
-	npc_msg msg_0363_R25_00003
-	wait_button_or_walk_away
-	closemsg
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	setflag FLAG_UNK_2CD
-	hide_person obj_R25_gsleader11_2
-	play_se SEQ_SE_DP_KAIDAN2
-	wait_se SEQ_SE_DP_KAIDAN2
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
-	releaseall
-	end
+	BufferPlayersName 0
+	NPCMsg msg_0363_R25_00002
+	PlayFanfare SEQ_ME_POKEGEAR_REGIST
+	WaitFanfare
+	RegisterGearNumber PHONE_CONTACT_MISTY
+	NPCMsg msg_0363_R25_00003
+	WaitButton
+	CloseMsg
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	SetFlag FLAG_UNK_2CD
+	HidePerson obj_R25_gsleader11_2
+	PlaySE SEQ_SE_DP_KAIDAN2
+	WaitSE SEQ_SE_DP_KAIDAN2
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
+	ReleaseAll
+	End
 
 _043A:
-	setvar VAR_TEMP_x4002, 1
-	npc_msg msg_0363_R25_00004
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	SetVar VAR_TEMP_x4002, 1
+	NPCMsg msg_0363_R25_00004
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _044B:
-	npc_msg msg_0363_R25_00005
-	goto _03D3
-	end
+	NPCMsg msg_0363_R25_00005
+	GoTo _03D3
+	End
 
 _0456:
-	player_on_bike_check VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _04DA
-	scrcmd_733 11, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _04DA
-	npc_msg msg_0363_R25_00006
-	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_RESULT
-	touchscreen_menu_show
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _04E5
-	photo_album_is_full VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _04F0
-	npc_msg msg_0363_R25_00007
-	closemsg
-	setflag FLAG_UNK_189
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	cameron_photo 84
-	faceplayer
-	lockall
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
-	clearflag FLAG_UNK_189
-	npc_msg msg_0363_R25_00008
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlayerOnBikeCheck VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _04DA
+	ScrCmd_733 11, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _04DA
+	NPCMsg msg_0363_R25_00006
+	TouchscreenMenuHide
+	GetMenuChoice VAR_SPECIAL_RESULT
+	TouchscreenMenuShow
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _04E5
+	PhotoAlbumIsFull VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _04F0
+	NPCMsg msg_0363_R25_00007
+	CloseMsg
+	SetFlag FLAG_UNK_189
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	CameronPhoto 84
+	FacePlayer
+	LockAll
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
+	ClearFlag FLAG_UNK_189
+	NPCMsg msg_0363_R25_00008
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _04DA:
-	npc_msg msg_0363_R25_00003
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0363_R25_00003
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _04E5:
-	npc_msg msg_0363_R25_00009
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0363_R25_00009
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _04F0:
-	npc_msg msg_0363_R25_00010
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0363_R25_00010
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_R25_001:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	goto_if_set FLAG_GOT_NUGGET_FROM_ACE_TRAINER_M_KEVIN, _0558
-	npc_msg msg_0363_R25_00011
-	goto_if_no_item_space ITEM_NUGGET, 1, _0563
-	callstd std_give_item_verbose
-	setflag FLAG_GOT_NUGGET_FROM_ACE_TRAINER_M_KEVIN
-	npc_msg msg_0363_R25_00013
-	closemsg
-	trainer_battle TRAINER_ACE_TRAINER_M_KEVIN, 0, 0, 0
-	check_battle_won VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _056D
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	GoToIfSet FLAG_GOT_NUGGET_FROM_ACE_TRAINER_M_KEVIN, _0558
+	NPCMsg msg_0363_R25_00011
+	GoToIfNoItemSpace ITEM_NUGGET, 1, _0563
+	CallStd std_give_item_verbose
+	SetFlag FLAG_GOT_NUGGET_FROM_ACE_TRAINER_M_KEVIN
+	NPCMsg msg_0363_R25_00013
+	CloseMsg
+	TrainerBattle TRAINER_ACE_TRAINER_M_KEVIN, 0, 0, 0
+	CheckBattleWon VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _056D
 _0558:
-	npc_msg msg_0363_R25_00014
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0363_R25_00014
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0563:
-	callstd std_bag_is_full
-	closemsg
-	releaseall
-	end
+	CallStd std_bag_is_full
+	CloseMsg
+	ReleaseAll
+	End
 
 _056D:
-	white_out
-	releaseall
-	end
+	WhiteOut
+	ReleaseAll
+	End
 
 scr_seq_R25_004:
-	scrcmd_609
-	lockall
-	setflag FLAG_HIDE_ROUTE_14_EUSINE_2
-	clearflag FLAG_HIDE_ROUTE_25_EUSINE
-	show_person obj_R25_minaki
-	apply_movement obj_player, _0648
-	wait_movement
-	play_cry SPECIES_SUICUNE, 0
-	release obj_R25_tsure_poke_static_suicune
-	scrcmd_523 obj_R25_tsure_poke_static_suicune, 2, 90, 2, 0
-	lock obj_R25_tsure_poke_static_suicune
-	wait_cry
-	toggle_following_pokemon_movement 0
-	wait_following_pokemon_movement
-	following_pokemon_movement 55
-	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
-	compare VAR_TEMP_x4001, 40
-	goto_if_ne _05D4
-	apply_movement obj_player, _0650
-	goto _05F7
+	ScrCmd_609
+	LockAll
+	SetFlag FLAG_HIDE_ROUTE_14_EUSINE_2
+	ClearFlag FLAG_HIDE_ROUTE_25_EUSINE
+	ShowPerson obj_R25_minaki
+	ApplyMovement obj_player, _0648
+	WaitMovement
+	PlayCry SPECIES_SUICUNE, 0
+	Release obj_R25_tsure_poke_static_suicune
+	ScrCmd_523 obj_R25_tsure_poke_static_suicune, 2, 90, 2, 0
+	Lock obj_R25_tsure_poke_static_suicune
+	WaitCry
+	ToggleFollowingPokemonMovement 0
+	WaitFollowingPokemonMovement
+	FollowingPokemonMovement 55
+	GetPlayerCoords VAR_TEMP_x4000, VAR_TEMP_x4001
+	Compare VAR_TEMP_x4001, 40
+	GoToIfNe _05D4
+	ApplyMovement obj_player, _0650
+	GoTo _05F7
 
 _05D4:
-	compare VAR_TEMP_x4001, 41
-	goto_if_ne _05EF
-	apply_movement obj_player, _065C
-	goto _05F7
+	Compare VAR_TEMP_x4001, 41
+	GoToIfNe _05EF
+	ApplyMovement obj_player, _065C
+	GoTo _05F7
 
 _05EF:
-	apply_movement obj_player, _0670
+	ApplyMovement obj_player, _0670
 _05F7:
-	wait_movement
-	wait_following_pokemon_movement
-	toggle_following_pokemon_movement 1
-	following_pokemon_movement 48
-	callstd std_play_eusine_music
-	apply_movement obj_R25_minaki, _069C
-	apply_movement obj_player, _0690
-	wait_movement
-	npc_msg msg_0363_R25_00016
-	closemsg
-	apply_movement obj_R25_minaki, _06B0
-	apply_movement obj_player, _0684
-	wait_movement
-	npc_msg msg_0363_R25_00017
-	wait_button_or_walk_away
-	closemsg
-	callstd std_fade_end_eusine_music
-	setvar VAR_SCENE_ROUTE_25, 2
-	releaseall
-	end
+	WaitMovement
+	WaitFollowingPokemonMovement
+	ToggleFollowingPokemonMovement 1
+	FollowingPokemonMovement 48
+	CallStd std_play_eusine_music
+	ApplyMovement obj_R25_minaki, _069C
+	ApplyMovement obj_player, _0690
+	WaitMovement
+	NPCMsg msg_0363_R25_00016
+	CloseMsg
+	ApplyMovement obj_R25_minaki, _06B0
+	ApplyMovement obj_player, _0684
+	WaitMovement
+	NPCMsg msg_0363_R25_00017
+	WaitButton
+	CloseMsg
+	CallStd std_fade_end_eusine_music
+	SetVar VAR_SCENE_ROUTE_25, 2
+	ReleaseAll
+	End
 
 	.balign 4, 0
 _0648:
@@ -529,89 +529,89 @@ _06B0:
 	EndMovement
 
 scr_seq_R25_005:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	npc_msg msg_0363_R25_00017
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	NPCMsg msg_0363_R25_00017
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_R25_006:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	npc_msg msg_0363_R25_00017
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	NPCMsg msg_0363_R25_00017
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_R25_007:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	play_cry SPECIES_SUICUNE, 0
-	release obj_R25_tsure_poke_static_suicune
-	scrcmd_523 obj_R25_tsure_poke_static_suicune, 2, 90, 2, 0
-	lock obj_R25_tsure_poke_static_suicune
-	wait_cry
-	setflag FLAG_ENGAGING_STATIC_POKEMON
-	wild_battle SPECIES_SUICUNE, 40, 0
-	clearflag FLAG_ENGAGING_STATIC_POKEMON
-	check_battle_won VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _07AA
-	get_static_encounter_outcome VAR_TEMP_x4002
-	compare VAR_TEMP_x4002, 3
-	goto_if_eq _07A6
-	compare VAR_TEMP_x4002, 4
-	call_if_eq _07B0
-	compare VAR_TEMP_x4002, 5
-	goto_if_eq _07B6
-	buffer_players_name 0
-	npc_msg msg_0363_R25_00018
-	closemsg
-	goto_if_set FLAG_HIDE_ROUTE_25_EUSINE_2, _0766
-	goto _0786
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	PlayCry SPECIES_SUICUNE, 0
+	Release obj_R25_tsure_poke_static_suicune
+	ScrCmd_523 obj_R25_tsure_poke_static_suicune, 2, 90, 2, 0
+	Lock obj_R25_tsure_poke_static_suicune
+	WaitCry
+	SetFlag FLAG_ENGAGING_STATIC_POKEMON
+	WildBattle SPECIES_SUICUNE, 40, 0
+	ClearFlag FLAG_ENGAGING_STATIC_POKEMON
+	CheckBattleWon VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _07AA
+	GetStaticEncounterOutcome VAR_TEMP_x4002
+	Compare VAR_TEMP_x4002, 3
+	GoToIfEq _07A6
+	Compare VAR_TEMP_x4002, 4
+	CallIfEq _07B0
+	Compare VAR_TEMP_x4002, 5
+	GoToIfEq _07B6
+	BufferPlayersName 0
+	NPCMsg msg_0363_R25_00018
+	CloseMsg
+	GoToIfSet FLAG_HIDE_ROUTE_25_EUSINE_2, _0766
+	GoTo _0786
 
 _0766:
-	apply_movement obj_player, _07F4
-	apply_movement obj_R25_minaki, _0800
-	wait_movement
-	hide_person obj_R25_minaki
-	setflag FLAG_HIDE_ROUTE_25_EUSINE
-	goto _07A0
+	ApplyMovement obj_player, _07F4
+	ApplyMovement obj_R25_minaki, _0800
+	WaitMovement
+	HidePerson obj_R25_minaki
+	SetFlag FLAG_HIDE_ROUTE_25_EUSINE
+	GoTo _07A0
 
 _0786:
-	apply_movement obj_player, _07F4
-	apply_movement obj_R25_minaki_2, _0800
-	wait_movement
-	hide_person obj_R25_minaki_2
-	setflag FLAG_HIDE_ROUTE_25_EUSINE_2
+	ApplyMovement obj_player, _07F4
+	ApplyMovement obj_R25_minaki_2, _0800
+	WaitMovement
+	HidePerson obj_R25_minaki_2
+	SetFlag FLAG_HIDE_ROUTE_25_EUSINE_2
 _07A0:
-	setvar VAR_SCENE_ROUTE_25, 3
+	SetVar VAR_SCENE_ROUTE_25, 3
 _07A6:
-	releaseall
-	end
+	ReleaseAll
+	End
 
 _07AA:
-	white_out
-	releaseall
-	end
+	WhiteOut
+	ReleaseAll
+	End
 
 _07B0:
-	setflag FLAG_CAUGHT_SUICUNE
-	return
+	SetFlag FLAG_CAUGHT_SUICUNE
+	Return
 
 _07B6:
-	wait 20, VAR_SPECIAL_x8004
-	apply_movement obj_player, _07EC
-	wait_movement
-	buffer_players_name 0
-	npc_msg msg_0363_R25_00019
-	closemsg
-	goto_if_set FLAG_HIDE_ROUTE_25_EUSINE_2, _0766
-	goto _0786
+	Wait 20, VAR_SPECIAL_x8004
+	ApplyMovement obj_player, _07EC
+	WaitMovement
+	BufferPlayersName 0
+	NPCMsg msg_0363_R25_00019
+	CloseMsg
+	GoToIfSet FLAG_HIDE_ROUTE_25_EUSINE_2, _0766
+	GoTo _0786
 
 	.balign 4, 0
 _07E0:
@@ -636,10 +636,10 @@ _0800:
 	EndMovement
 
 scr_seq_R25_002:
-	scrcmd_055 2, 0
-	scrcmd_057 3
-	scrcmd_058
-	trainer_tips msg_0363_R25_00015, VAR_SPECIAL_RESULT
-	callstd std_signpost
-	end
+	ScrCmd_055 2, 0
+	ScrCmd_057 3
+	ScrCmd_058
+	TrainerTips msg_0363_R25_00015, VAR_SPECIAL_RESULT
+	CallStd std_signpost
+	End
 	.balign 4, 0

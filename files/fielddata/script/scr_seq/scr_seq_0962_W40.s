@@ -5,186 +5,186 @@
 
 	.rodata
 
-	scrdef scr_seq_W40_000
-	scrdef scr_seq_W40_001
-	scrdef scr_seq_W40_002
-	scrdef scr_seq_W40_003
-	scrdef scr_seq_W40_004
-	scrdef scr_seq_W40_005
-	scrdef scr_seq_W40_006
-	scrdef scr_seq_W40_007
-	scrdef scr_seq_W40_008
-	scrdef scr_seq_W40_009
-	scrdef_end
+	ScrDef scr_seq_W40_000
+	ScrDef scr_seq_W40_001
+	ScrDef scr_seq_W40_002
+	ScrDef scr_seq_W40_003
+	ScrDef scr_seq_W40_004
+	ScrDef scr_seq_W40_005
+	ScrDef scr_seq_W40_006
+	ScrDef scr_seq_W40_007
+	ScrDef scr_seq_W40_008
+	ScrDef scr_seq_W40_009
+	ScrDefEnd
 
 scr_seq_W40_000:
-	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 1
-	goto_if_ne _0045
-	clearflag FLAG_UNK_206
-	goto _0049
+	GetWeekday VAR_TEMP_x4000
+	Compare VAR_TEMP_x4000, 1
+	GoToIfNe _0045
+	ClearFlag FLAG_UNK_206
+	GoTo _0049
 
 _0045:
-	setflag FLAG_UNK_206
+	SetFlag FLAG_UNK_206
 _0049:
-	end
+	End
 
 scr_seq_W40_001:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	get_party_lead_alive VAR_SPECIAL_x8002
-	mon_has_ribbon VAR_SPECIAL_RESULT, VAR_SPECIAL_x8002, RIBBON_ALERT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _0171
-	goto_if_set FLAG_DAILY_GOT_SHOCK_RIBBON, _0185
-	compare VAR_NUM_MET_WEEKDAY_SIBLINGS, 7
-	goto_if_eq _011F
-	goto_if_set FLAG_GOT_SHARP_BEAK_FROM_MONICA, _0101
-	get_weekday VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _00B2
-	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 3
-	goto _00F9
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	GetPartyLeadAlive VAR_SPECIAL_x8002
+	MonHasRibbon VAR_SPECIAL_RESULT, VAR_SPECIAL_x8002, RIBBON_ALERT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _0171
+	GoToIfSet FLAG_DAILY_GOT_SHOCK_RIBBON, _0185
+	Compare VAR_NUM_MET_WEEKDAY_SIBLINGS, 7
+	GoToIfEq _011F
+	GoToIfSet FLAG_GOT_SHARP_BEAK_FROM_MONICA, _0101
+	GetWeekday VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _00B2
+	GetStdMsgNaix 0, VAR_SPECIAL_RESULT
+	MsgBoxExtern VAR_SPECIAL_RESULT, 3
+	GoTo _00F9
 
 _00B2:
-	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 0
-	goto_if_no_item_space ITEM_SHARP_BEAK, 1, _0115
-	callstd std_give_item_verbose
-	setflag FLAG_GOT_SHARP_BEAK_FROM_MONICA
-	addvar VAR_NUM_MET_WEEKDAY_SIBLINGS, 1
-	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 1
+	GetStdMsgNaix 0, VAR_SPECIAL_RESULT
+	MsgBoxExtern VAR_SPECIAL_RESULT, 0
+	GoToIfNoItemSpace ITEM_SHARP_BEAK, 1, _0115
+	CallStd std_give_item_verbose
+	SetFlag FLAG_GOT_SHARP_BEAK_FROM_MONICA
+	AddVar VAR_NUM_MET_WEEKDAY_SIBLINGS, 1
+	GetStdMsgNaix 0, VAR_SPECIAL_RESULT
+	MsgBoxExtern VAR_SPECIAL_RESULT, 1
 _00F9:
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0101:
-	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 2
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	GetStdMsgNaix 0, VAR_SPECIAL_RESULT
+	MsgBoxExtern VAR_SPECIAL_RESULT, 2
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0115:
-	callstd std_bag_is_full
-	closemsg
-	releaseall
-	end
+	CallStd std_bag_is_full
+	CloseMsg
+	ReleaseAll
+	End
 
 _011F:
-	get_weekday VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _0142
-	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 3
-	goto _00F9
+	GetWeekday VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _0142
+	GetStdMsgNaix 0, VAR_SPECIAL_RESULT
+	MsgBoxExtern VAR_SPECIAL_RESULT, 3
+	GoTo _00F9
 
 _0142:
-	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 28
-	buffer_mon_species_name 0, VAR_SPECIAL_x8002
-	msgbox_extern VAR_SPECIAL_RESULT, 30
-	give_ribbon VAR_SPECIAL_x8002, RIBBON_ALERT
-	play_fanfare SEQ_ME_ITEM
-	wait_fanfare
-	setflag FLAG_DAILY_GOT_SHOCK_RIBBON
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	GetStdMsgNaix 0, VAR_SPECIAL_RESULT
+	MsgBoxExtern VAR_SPECIAL_RESULT, 28
+	BufferMonSpeciesName 0, VAR_SPECIAL_x8002
+	MsgBoxExtern VAR_SPECIAL_RESULT, 30
+	GiveRibbon VAR_SPECIAL_x8002, RIBBON_ALERT
+	PlayFanfare SEQ_ME_ITEM
+	WaitFanfare
+	SetFlag FLAG_DAILY_GOT_SHOCK_RIBBON
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0171:
-	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 29
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	GetStdMsgNaix 0, VAR_SPECIAL_RESULT
+	MsgBoxExtern VAR_SPECIAL_RESULT, 29
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0185:
-	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 31
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	GetStdMsgNaix 0, VAR_SPECIAL_RESULT
+	MsgBoxExtern VAR_SPECIAL_RESULT, 31
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_W40_008:
-	scrcmd_609
-	lockall
-	apply_movement obj_W40_gsmiddleman1, _02C8
-	wait_movement
-	get_player_coords VAR_SPECIAL_x8000, VAR_SPECIAL_x8001
-	compare VAR_SPECIAL_x8000, 252
-	goto_if_ne _01C8
-	apply_movement obj_W40_gsmiddleman1, _02D4
-	goto _0206
+	ScrCmd_609
+	LockAll
+	ApplyMovement obj_W40_gsmiddleman1, _02C8
+	WaitMovement
+	GetPlayerCoords VAR_SPECIAL_x8000, VAR_SPECIAL_x8001
+	Compare VAR_SPECIAL_x8000, 252
+	GoToIfNe _01C8
+	ApplyMovement obj_W40_gsmiddleman1, _02D4
+	GoTo _0206
 
 _01C8:
-	compare VAR_SPECIAL_x8000, 253
-	goto_if_ne _01E3
-	apply_movement obj_W40_gsmiddleman1, _02E0
-	goto _0206
+	Compare VAR_SPECIAL_x8000, 253
+	GoToIfNe _01E3
+	ApplyMovement obj_W40_gsmiddleman1, _02E0
+	GoTo _0206
 
 _01E3:
-	compare VAR_SPECIAL_x8000, 254
-	goto_if_ne _01FE
-	apply_movement obj_W40_gsmiddleman1, _02F4
-	goto _0206
+	Compare VAR_SPECIAL_x8000, 254
+	GoToIfNe _01FE
+	ApplyMovement obj_W40_gsmiddleman1, _02F4
+	GoTo _0206
 
 _01FE:
-	apply_movement obj_W40_gsmiddleman1, _0308
+	ApplyMovement obj_W40_gsmiddleman1, _0308
 _0206:
-	wait_movement
-	scrcmd_729 VAR_TEMP_x4002
-	compare VAR_TEMP_x4002, 0
-	goto_if_eq _0223
-	toggle_following_pokemon_movement 0
-	wait_following_pokemon_movement
-	following_pokemon_movement 56
+	WaitMovement
+	ScrCmd_729 VAR_TEMP_x4002
+	Compare VAR_TEMP_x4002, 0
+	GoToIfEq _0223
+	ToggleFollowingPokemonMovement 0
+	WaitFollowingPokemonMovement
+	FollowingPokemonMovement 56
 _0223:
-	apply_movement obj_W40_gsmiddleman1, _031C
-	apply_movement obj_player, _02B8
-	wait_movement
-	wait_following_pokemon_movement
-	toggle_following_pokemon_movement 1
-	following_pokemon_movement 48
-	npc_msg msg_0744_W40_00015
-	closemsg
-	apply_movement obj_W40_gsmiddleman1, _02C8
-	wait_movement
-	npc_msg msg_0744_W40_00016
-	closemsg
-	get_player_coords VAR_SPECIAL_x8000, VAR_SPECIAL_x8001
-	compare VAR_SPECIAL_x8000, 252
-	goto_if_ne _0274
-	apply_movement obj_W40_gsmiddleman1, _0324
-	goto _02B2
+	ApplyMovement obj_W40_gsmiddleman1, _031C
+	ApplyMovement obj_player, _02B8
+	WaitMovement
+	WaitFollowingPokemonMovement
+	ToggleFollowingPokemonMovement 1
+	FollowingPokemonMovement 48
+	NPCMsg msg_0744_W40_00015
+	CloseMsg
+	ApplyMovement obj_W40_gsmiddleman1, _02C8
+	WaitMovement
+	NPCMsg msg_0744_W40_00016
+	CloseMsg
+	GetPlayerCoords VAR_SPECIAL_x8000, VAR_SPECIAL_x8001
+	Compare VAR_SPECIAL_x8000, 252
+	GoToIfNe _0274
+	ApplyMovement obj_W40_gsmiddleman1, _0324
+	GoTo _02B2
 
 _0274:
-	compare VAR_SPECIAL_x8000, 253
-	goto_if_ne _028F
-	apply_movement obj_W40_gsmiddleman1, _0330
-	goto _02B2
+	Compare VAR_SPECIAL_x8000, 253
+	GoToIfNe _028F
+	ApplyMovement obj_W40_gsmiddleman1, _0330
+	GoTo _02B2
 
 _028F:
-	compare VAR_SPECIAL_x8000, 254
-	goto_if_ne _02AA
-	apply_movement obj_W40_gsmiddleman1, _0344
-	goto _02B2
+	Compare VAR_SPECIAL_x8000, 254
+	GoToIfNe _02AA
+	ApplyMovement obj_W40_gsmiddleman1, _0344
+	GoTo _02B2
 
 _02AA:
-	apply_movement obj_W40_gsmiddleman1, _0358
+	ApplyMovement obj_W40_gsmiddleman1, _0358
 _02B2:
-	wait_movement
-	releaseall
-	end
+	WaitMovement
+	ReleaseAll
+	End
 
 	.balign 4, 0
 _02B8:
@@ -265,38 +265,38 @@ _0358:
 	EndMovement
 
 scr_seq_W40_007:
-	simple_npc_msg msg_0744_W40_00018
-	end
+	SimpleNPCMsg msg_0744_W40_00018
+	End
 
 scr_seq_W40_002:
-	direction_signpost msg_0744_W40_00019, 1, 4, VAR_SPECIAL_RESULT
-	scrcmd_057 3
-	scrcmd_058
-	scrcmd_060 VAR_SPECIAL_RESULT
-	callstd std_signpost
-	end
+	DirectionSignpost msg_0744_W40_00019, 1, 4, VAR_SPECIAL_RESULT
+	ScrCmd_057 3
+	ScrCmd_058
+	ScrCmd_060 VAR_SPECIAL_RESULT
+	CallStd std_signpost
+	End
 
 scr_seq_W40_009:
-	scrcmd_055 2, 0
-	scrcmd_057 3
-	scrcmd_058
-	trainer_tips msg_0744_W40_00020, VAR_SPECIAL_RESULT
-	callstd std_signpost
-	end
+	ScrCmd_055 2, 0
+	ScrCmd_057 3
+	ScrCmd_058
+	TrainerTips msg_0744_W40_00020, VAR_SPECIAL_RESULT
+	CallStd std_signpost
+	End
 
 scr_seq_W40_003:
-	simple_npc_msg msg_0744_W40_00000
-	end
+	SimpleNPCMsg msg_0744_W40_00000
+	End
 
 scr_seq_W40_004:
-	simple_npc_msg msg_0744_W40_00006
-	end
+	SimpleNPCMsg msg_0744_W40_00006
+	End
 
 scr_seq_W40_005:
-	simple_npc_msg msg_0744_W40_00003
-	end
+	SimpleNPCMsg msg_0744_W40_00003
+	End
 
 scr_seq_W40_006:
-	simple_npc_msg msg_0744_W40_00009
-	end
+	SimpleNPCMsg msg_0744_W40_00009
+	End
 	.balign 4, 0

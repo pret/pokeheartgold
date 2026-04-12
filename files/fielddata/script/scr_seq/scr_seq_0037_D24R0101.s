@@ -6,153 +6,153 @@
 
 	.rodata
 
-	scrdef scr_seq_D24R0101_000
-	scrdef scr_seq_D24R0101_001
-	scrdef scr_seq_D24R0101_002
-	scrdef scr_seq_D24R0101_003
-	scrdef scr_seq_D24R0101_004
-	scrdef scr_seq_D24R0101_005
-	scrdef scr_seq_D24R0101_006
-	scrdef scr_seq_D24R0101_007
-	scrdef_end
+	ScrDef scr_seq_D24R0101_000
+	ScrDef scr_seq_D24R0101_001
+	ScrDef scr_seq_D24R0101_002
+	ScrDef scr_seq_D24R0101_003
+	ScrDef scr_seq_D24R0101_004
+	ScrDef scr_seq_D24R0101_005
+	ScrDef scr_seq_D24R0101_006
+	ScrDef scr_seq_D24R0101_007
+	ScrDefEnd
 
 scr_seq_D24R0101_006:
-	compare VAR_UNOWN_REPORT_LEVEL, 7
-	goto_if_ge _005E
-	compare VAR_UNOWN_REPORT_LEVEL, 6
-	goto_if_eq _0080
+	Compare VAR_UNOWN_REPORT_LEVEL, 7
+	GoToIfGe _005E
+	Compare VAR_UNOWN_REPORT_LEVEL, 6
+	GoToIfEq _0080
 _003C:
-	move_warp 11, 418, 284
-	move_warp 12, 419, 284
-	move_warp 13, 418, 284
-	move_warp 14, 419, 284
-	end
+	MoveWarp 11, 418, 284
+	MoveWarp 12, 419, 284
+	MoveWarp 13, 418, 284
+	MoveWarp 14, 419, 284
+	End
 
 _005E:
-	move_warp 8, 418, 284
-	move_warp 9, 419, 284
-	move_warp 11, 418, 284
-	move_warp 12, 419, 284
-	end
+	MoveWarp 8, 418, 284
+	MoveWarp 9, 419, 284
+	MoveWarp 11, 418, 284
+	MoveWarp 12, 419, 284
+	End
 
 _0080:
-	move_warp 8, 418, 284
-	move_warp 9, 419, 284
-	move_warp 13, 418, 284
-	move_warp 14, 419, 284
-	end
+	MoveWarp 8, 418, 284
+	MoveWarp 9, 419, 284
+	MoveWarp 13, 418, 284
+	MoveWarp 14, 419, 284
+	End
 
 scr_seq_D24R0101_005:
-	goto_if_unset FLAG_UNK_189, _00B3
-	clearflag FLAG_UNK_189
-	end
+	GoToIfUnset FLAG_UNK_189, _00B3
+	ClearFlag FLAG_UNK_189
+	End
 
 _00B3:
-	compare VAR_SCENE_SINJOH_MYSTRI_ROOM, 9
-	goto_if_ge _00C6
-	setvar VAR_SCENE_SINJOH_MYSTRI_ROOM, 1
+	Compare VAR_SCENE_SINJOH_MYSTRI_ROOM, 9
+	GoToIfGe _00C6
+	SetVar VAR_SCENE_SINJOH_MYSTRI_ROOM, 1
 _00C6:
-	check_badge BADGE_PLAIN, VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 0
-	goto_if_eq _0104
-	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 5
-	goto_if_eq _010E
-	compare VAR_TEMP_x4000, 6
-	goto_if_eq _010E
-	compare VAR_TEMP_x4000, 0
-	goto_if_eq _010E
+	CheckBadge BADGE_PLAIN, VAR_TEMP_x4000
+	Compare VAR_TEMP_x4000, 0
+	GoToIfEq _0104
+	GetWeekday VAR_TEMP_x4000
+	Compare VAR_TEMP_x4000, 5
+	GoToIfEq _010E
+	Compare VAR_TEMP_x4000, 6
+	GoToIfEq _010E
+	Compare VAR_TEMP_x4000, 0
+	GoToIfEq _010E
 _0104:
-	setflag FLAG_HIDE_CAMERON
-	goto _0112
+	SetFlag FLAG_HIDE_CAMERON
+	GoTo _0112
 
 _010E:
-	clearflag FLAG_HIDE_CAMERON
+	ClearFlag FLAG_HIDE_CAMERON
 _0112:
-	compare VAR_UNOWN_REPORT_LEVEL, 7
-	goto_if_ge _005E
-	compare VAR_UNOWN_REPORT_LEVEL, 6
-	goto_if_eq _0080
-	goto _003C
-	end
+	Compare VAR_UNOWN_REPORT_LEVEL, 7
+	GoToIfGe _005E
+	Compare VAR_UNOWN_REPORT_LEVEL, 6
+	GoToIfEq _0080
+	GoTo _003C
+	End
 
 scr_seq_D24R0101_004:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 0
-	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_RESULT
-	touchscreen_menu_show
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _0239
-	photo_album_is_full VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _024D
-	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 1
-	closemsg
-	toggle_following_pokemon_movement 0
-	wait_following_pokemon_movement
-	following_pokemon_movement 55
-	get_player_facing VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_ne _01AD
-	apply_movement obj_player, _0264
-	apply_movement obj_D24R0101_gsmiddleman1, _029C
-	goto _01D8
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	GetStdMsgNaix 2, VAR_SPECIAL_RESULT
+	MsgBoxExtern VAR_SPECIAL_RESULT, 0
+	TouchscreenMenuHide
+	GetMenuChoice VAR_SPECIAL_RESULT
+	TouchscreenMenuShow
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _0239
+	PhotoAlbumIsFull VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _024D
+	GetStdMsgNaix 2, VAR_SPECIAL_RESULT
+	MsgBoxExtern VAR_SPECIAL_RESULT, 1
+	CloseMsg
+	ToggleFollowingPokemonMovement 0
+	WaitFollowingPokemonMovement
+	FollowingPokemonMovement 55
+	GetPlayerFacing VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfNe _01AD
+	ApplyMovement obj_player, _0264
+	ApplyMovement obj_D24R0101_gsmiddleman1, _029C
+	GoTo _01D8
 
 _01AD:
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_ne _01C8
-	apply_movement obj_player, _027C
-	goto _01D8
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfNe _01C8
+	ApplyMovement obj_player, _027C
+	GoTo _01D8
 
 _01C8:
-	apply_movement obj_player, _0288
-	apply_movement obj_D24R0101_gsmiddleman1, _029C
+	ApplyMovement obj_player, _0288
+	ApplyMovement obj_D24R0101_gsmiddleman1, _029C
 _01D8:
-	wait_movement
-	wait_following_pokemon_movement
-	toggle_following_pokemon_movement 1
-	following_pokemon_movement 48
-	scrcmd_729 VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_ne _01FF
-	apply_movement obj_partner_poke, _02A8
-	wait_movement
+	WaitMovement
+	WaitFollowingPokemonMovement
+	ToggleFollowingPokemonMovement 1
+	FollowingPokemonMovement 48
+	ScrCmd_729 VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfNe _01FF
+	ApplyMovement obj_partner_poke, _02A8
+	WaitMovement
 _01FF:
-	setflag FLAG_UNK_189
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	cameron_photo 3
-	lockall
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
-	clearflag FLAG_UNK_189
-	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 2
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	SetFlag FLAG_UNK_189
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	CameronPhoto 3
+	LockAll
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
+	ClearFlag FLAG_UNK_189
+	GetStdMsgNaix 2, VAR_SPECIAL_RESULT
+	MsgBoxExtern VAR_SPECIAL_RESULT, 2
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0239:
-	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 5
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	GetStdMsgNaix 2, VAR_SPECIAL_RESULT
+	MsgBoxExtern VAR_SPECIAL_RESULT, 5
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _024D:
-	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 3
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	GetStdMsgNaix 2, VAR_SPECIAL_RESULT
+	MsgBoxExtern VAR_SPECIAL_RESULT, 3
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 	.balign 4, 0
 _0264:
@@ -191,143 +191,143 @@ _02A8:
 	EndMovement
 
 scr_seq_D24R0101_007:
-	scrcmd_609
-	lockall
-	get_party_lead_alive VAR_TEMP_x4005
-	follower_poke_is_event_trigger EVENT_ARCEUS_MOVIE_GIFT, VAR_TEMP_x4005, VAR_TEMP_x4006
-	compare VAR_TEMP_x4006, 0
-	goto_if_eq _02DA
-	goto _02EE
+	ScrCmd_609
+	LockAll
+	GetPartyLeadAlive VAR_TEMP_x4005
+	FollowerPokeIsEventTrigger EVENT_ARCEUS_MOVIE_GIFT, VAR_TEMP_x4005, VAR_TEMP_x4006
+	Compare VAR_TEMP_x4006, 0
+	GoToIfEq _02DA
+	GoTo _02EE
 
 _02DA:
-	follower_poke_is_event_trigger EVENT_ARCEUS_HALL_OF_ORIGIN, VAR_TEMP_x4005, VAR_TEMP_x4007
-	compare VAR_TEMP_x4007, 0
-	goto_if_eq _0530
+	FollowerPokeIsEventTrigger EVENT_ARCEUS_HALL_OF_ORIGIN, VAR_TEMP_x4005, VAR_TEMP_x4007
+	Compare VAR_TEMP_x4007, 0
+	GoToIfEq _0530
 _02EE:
-	player_on_bike_check VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _0530
-	scrcmd_307 13, 8, 25, 29, 77
-	scrcmd_310 77
-	scrcmd_308 77
-	clearflag FLAG_HIDE_ALPH_OUTSIDE_ARCEUS_EVENT_SUIT
-	show_person obj_D24R0101_suit
-	scrcmd_311 77
-	scrcmd_308 77
-	scrcmd_309 77
-	apply_movement obj_D24R0101_suit, _0534
-	apply_movement obj_player, _05C4
-	get_player_facing VAR_TEMP_x4001
-	compare VAR_TEMP_x4001, 3
-	goto_if_ne _0350
-	apply_movement obj_partner_poke, _05DC
-	goto _0373
+	PlayerOnBikeCheck VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _0530
+	ScrCmd_307 13, 8, 25, 29, 77
+	ScrCmd_310 77
+	ScrCmd_308 77
+	ClearFlag FLAG_HIDE_ALPH_OUTSIDE_ARCEUS_EVENT_SUIT
+	ShowPerson obj_D24R0101_suit
+	ScrCmd_311 77
+	ScrCmd_308 77
+	ScrCmd_309 77
+	ApplyMovement obj_D24R0101_suit, _0534
+	ApplyMovement obj_player, _05C4
+	GetPlayerFacing VAR_TEMP_x4001
+	Compare VAR_TEMP_x4001, 3
+	GoToIfNe _0350
+	ApplyMovement obj_partner_poke, _05DC
+	GoTo _0373
 
 _0350:
-	compare VAR_TEMP_x4001, 2
-	goto_if_ne _036B
-	apply_movement obj_partner_poke, _05F4
-	goto _0373
+	Compare VAR_TEMP_x4001, 2
+	GoToIfNe _036B
+	ApplyMovement obj_partner_poke, _05F4
+	GoTo _0373
 
 _036B:
-	apply_movement obj_partner_poke, _0604
+	ApplyMovement obj_partner_poke, _0604
 _0373:
-	wait_movement
-	npc_msg msg_0072_D24R0101_00001
-	closemsg
-	apply_movement obj_D24R0101_suit, _054C
-	compare VAR_TEMP_x4001, 3
-	goto_if_ne _039D
-	apply_movement obj_partner_poke, _0614
-	goto _03C0
+	WaitMovement
+	NPCMsg msg_0072_D24R0101_00001
+	CloseMsg
+	ApplyMovement obj_D24R0101_suit, _054C
+	Compare VAR_TEMP_x4001, 3
+	GoToIfNe _039D
+	ApplyMovement obj_partner_poke, _0614
+	GoTo _03C0
 
 _039D:
-	compare VAR_TEMP_x4001, 2
-	goto_if_ne _03B8
-	apply_movement obj_partner_poke, _0624
-	goto _03C0
+	Compare VAR_TEMP_x4001, 2
+	GoToIfNe _03B8
+	ApplyMovement obj_partner_poke, _0624
+	GoTo _03C0
 
 _03B8:
-	apply_movement obj_partner_poke, _0630
+	ApplyMovement obj_partner_poke, _0630
 _03C0:
-	wait_movement
-	npc_msg msg_0072_D24R0101_00002
-	closemsg
-	compare VAR_TEMP_x4001, 3
-	goto_if_ne _03E2
-	apply_movement obj_D24R0101_suit, _0554
-	goto _03EA
+	WaitMovement
+	NPCMsg msg_0072_D24R0101_00002
+	CloseMsg
+	Compare VAR_TEMP_x4001, 3
+	GoToIfNe _03E2
+	ApplyMovement obj_D24R0101_suit, _0554
+	GoTo _03EA
 
 _03E2:
-	apply_movement obj_D24R0101_suit, _0570
+	ApplyMovement obj_D24R0101_suit, _0570
 _03EA:
-	wait_movement
-	npc_msg msg_0072_D24R0101_00003
-	closemsg
-	apply_movement obj_D24R0101_suit, _0584
-	wait_movement
-	npc_msg msg_0072_D24R0101_00004
-	closemsg
-	apply_movement obj_D24R0101_suit, _05A4
-	wait_movement
-	npc_msg msg_0072_D24R0101_00005
-	closemsg
-	apply_movement obj_D24R0101_suit, _05B4
-	wait_movement
-	npc_msg msg_0072_D24R0101_00006
-	closemsg
-	setvar VAR_SCENE_SINJOH_MYSTRI_ROOM, 2
-	setflag FLAG_HIDE_ALPH_OUTSIDE_ARCEUS_EVENT_SUIT
-	clearflag FLAG_HIDE_ALPH_MAIN_CHAMBER_ARCEUS_EVENT_PEOPLE
-	play_se SEQ_SE_DP_KAIDAN2
-	compare VAR_UNOWN_REPORT_LEVEL, 6
-	goto_if_ne _0467
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	warp MAP_RUINS_OF_ALPH_UNDERGROUND_HALL_SINJOH_EVENT, 0, 15, 24, DIR_WEST
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
-	goto _0530
+	WaitMovement
+	NPCMsg msg_0072_D24R0101_00003
+	CloseMsg
+	ApplyMovement obj_D24R0101_suit, _0584
+	WaitMovement
+	NPCMsg msg_0072_D24R0101_00004
+	CloseMsg
+	ApplyMovement obj_D24R0101_suit, _05A4
+	WaitMovement
+	NPCMsg msg_0072_D24R0101_00005
+	CloseMsg
+	ApplyMovement obj_D24R0101_suit, _05B4
+	WaitMovement
+	NPCMsg msg_0072_D24R0101_00006
+	CloseMsg
+	SetVar VAR_SCENE_SINJOH_MYSTRI_ROOM, 2
+	SetFlag FLAG_HIDE_ALPH_OUTSIDE_ARCEUS_EVENT_SUIT
+	ClearFlag FLAG_HIDE_ALPH_MAIN_CHAMBER_ARCEUS_EVENT_PEOPLE
+	PlaySE SEQ_SE_DP_KAIDAN2
+	Compare VAR_UNOWN_REPORT_LEVEL, 6
+	GoToIfNe _0467
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	Warp MAP_RUINS_OF_ALPH_UNDERGROUND_HALL_SINJOH_EVENT, 0, 15, 24, DIR_WEST
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
+	GoTo _0530
 
 _0467:
-	compare VAR_UNOWN_REPORT_LEVEL, 7
-	goto_if_ne _049E
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	warp MAP_RUINS_OF_ALPH_UNDERGROUND_HALL_SINJOH_EVENT_2, 0, 15, 24, DIR_WEST
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
-	goto _0530
+	Compare VAR_UNOWN_REPORT_LEVEL, 7
+	GoToIfNe _049E
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	Warp MAP_RUINS_OF_ALPH_UNDERGROUND_HALL_SINJOH_EVENT_2, 0, 15, 24, DIR_WEST
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
+	GoTo _0530
 
 _049E:
-	compare VAR_UNOWN_REPORT_LEVEL, 8
-	goto_if_ne _04D5
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	warp MAP_RUINS_OF_ALPH_UNDERGROUND_HALL_SINJOH_EVENT_2, 0, 15, 24, DIR_WEST
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
-	goto _0530
+	Compare VAR_UNOWN_REPORT_LEVEL, 8
+	GoToIfNe _04D5
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	Warp MAP_RUINS_OF_ALPH_UNDERGROUND_HALL_SINJOH_EVENT_2, 0, 15, 24, DIR_WEST
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
+	GoTo _0530
 
 _04D5:
-	compare VAR_UNOWN_REPORT_LEVEL, 9
-	goto_if_ne _050C
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	warp MAP_RUINS_OF_ALPH_UNDERGROUND_HALL_SINJOH_EVENT_2, 0, 15, 24, DIR_WEST
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
-	goto _0530
+	Compare VAR_UNOWN_REPORT_LEVEL, 9
+	GoToIfNe _050C
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	Warp MAP_RUINS_OF_ALPH_UNDERGROUND_HALL_SINJOH_EVENT_2, 0, 15, 24, DIR_WEST
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
+	GoTo _0530
 
 _050C:
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	warp MAP_RUINS_OF_ALPH_UNDERGROUND_HALL, 0, 15, 24, DIR_WEST
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	Warp MAP_RUINS_OF_ALPH_UNDERGROUND_HALL, 0, 15, 24, DIR_WEST
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
 _0530:
-	releaseall
-	end
+	ReleaseAll
+	End
 
 	.balign 4, 0
 _0534:
@@ -440,34 +440,34 @@ _0630:
 	EndMovement
 
 scr_seq_D24R0101_000:
-	scrcmd_055 2, 0
-	scrcmd_057 3
-	scrcmd_058
-	trainer_tips msg_0072_D24R0101_00010, VAR_SPECIAL_RESULT
-	callstd std_signpost
-	end
+	ScrCmd_055 2, 0
+	ScrCmd_057 3
+	ScrCmd_058
+	TrainerTips msg_0072_D24R0101_00010, VAR_SPECIAL_RESULT
+	CallStd std_signpost
+	End
 
 scr_seq_D24R0101_001:
-	scrcmd_055 2, 0
-	scrcmd_057 3
-	scrcmd_058
-	trainer_tips msg_0072_D24R0101_00009, VAR_SPECIAL_RESULT
-	callstd std_signpost
-	end
+	ScrCmd_055 2, 0
+	ScrCmd_057 3
+	ScrCmd_058
+	TrainerTips msg_0072_D24R0101_00009, VAR_SPECIAL_RESULT
+	CallStd std_signpost
+	End
 
 scr_seq_D24R0101_002:
-	scrcmd_055 2, 0
-	scrcmd_057 3
-	scrcmd_058
-	trainer_tips msg_0072_D24R0101_00007, VAR_SPECIAL_RESULT
-	callstd std_signpost
-	end
+	ScrCmd_055 2, 0
+	ScrCmd_057 3
+	ScrCmd_058
+	TrainerTips msg_0072_D24R0101_00007, VAR_SPECIAL_RESULT
+	CallStd std_signpost
+	End
 
 scr_seq_D24R0101_003:
-	scrcmd_055 2, 0
-	scrcmd_057 3
-	scrcmd_058
-	trainer_tips msg_0072_D24R0101_00008, VAR_SPECIAL_RESULT
-	callstd std_signpost
-	end
+	ScrCmd_055 2, 0
+	ScrCmd_057 3
+	ScrCmd_058
+	TrainerTips msg_0072_D24R0101_00008, VAR_SPECIAL_RESULT
+	CallStd std_signpost
+	End
 	.balign 4, 0

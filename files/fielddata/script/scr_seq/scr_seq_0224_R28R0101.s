@@ -5,16 +5,16 @@
 
 	.rodata
 
-	scrdef scr_seq_R28R0101_000
-	scrdef scr_seq_R28R0101_001
-	scrdef scr_seq_R28R0101_002
-	scrdef_end
+	ScrDef scr_seq_R28R0101_000
+	ScrDef scr_seq_R28R0101_001
+	ScrDef scr_seq_R28R0101_002
+	ScrDefEnd
 
 scr_seq_R28R0101_002:
-	apply_movement obj_R28R0101_gsgirl1, _0020
-	wait_movement
-	setvar VAR_UNK_4126, 1
-	end
+	ApplyMovement obj_R28R0101_gsgirl1, _0020
+	WaitMovement
+	SetVar VAR_UNK_4126, 1
+	End
 
 	.balign 4, 0
 _0020:
@@ -23,71 +23,71 @@ _0020:
 	EndMovement
 
 scr_seq_R28R0101_000:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	goto_if_set FLAG_GOT_TM47_FROM_ROUTE_28_CELEBRITY, _012A
-	faceplayer
-	get_player_facing VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_ne _0060
-	apply_movement obj_R28R0101_gsgirl1, _0140
-	goto _009E
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	GoToIfSet FLAG_GOT_TM47_FROM_ROUTE_28_CELEBRITY, _012A
+	FacePlayer
+	GetPlayerFacing VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfNe _0060
+	ApplyMovement obj_R28R0101_gsgirl1, _0140
+	GoTo _009E
 
 _0060:
-	compare VAR_SPECIAL_RESULT, 2
-	goto_if_ne _007B
-	apply_movement obj_R28R0101_gsgirl1, _014C
-	goto _009E
+	Compare VAR_SPECIAL_RESULT, 2
+	GoToIfNe _007B
+	ApplyMovement obj_R28R0101_gsgirl1, _014C
+	GoTo _009E
 
 _007B:
-	compare VAR_SPECIAL_RESULT, 3
-	goto_if_ne _0096
-	apply_movement obj_R28R0101_gsgirl1, _0158
-	goto _009E
+	Compare VAR_SPECIAL_RESULT, 3
+	GoToIfNe _0096
+	ApplyMovement obj_R28R0101_gsgirl1, _0158
+	GoTo _009E
 
 _0096:
-	apply_movement obj_R28R0101_gsgirl1, _0164
+	ApplyMovement obj_R28R0101_gsgirl1, _0164
 _009E:
-	wait_movement
-	npc_msg msg_0372_R28R0101_00000
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_ne _00BE
-	apply_movement obj_R28R0101_gsgirl1, _0164
-	goto _00FC
+	WaitMovement
+	NPCMsg msg_0372_R28R0101_00000
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfNe _00BE
+	ApplyMovement obj_R28R0101_gsgirl1, _0164
+	GoTo _00FC
 
 _00BE:
-	compare VAR_SPECIAL_RESULT, 2
-	goto_if_ne _00D9
-	apply_movement obj_R28R0101_gsgirl1, _0158
-	goto _00FC
+	Compare VAR_SPECIAL_RESULT, 2
+	GoToIfNe _00D9
+	ApplyMovement obj_R28R0101_gsgirl1, _0158
+	GoTo _00FC
 
 _00D9:
-	compare VAR_SPECIAL_RESULT, 3
-	goto_if_ne _00F4
-	apply_movement obj_R28R0101_gsgirl1, _014C
-	goto _00FC
+	Compare VAR_SPECIAL_RESULT, 3
+	GoToIfNe _00F4
+	ApplyMovement obj_R28R0101_gsgirl1, _014C
+	GoTo _00FC
 
 _00F4:
-	apply_movement obj_R28R0101_gsgirl1, _0140
+	ApplyMovement obj_R28R0101_gsgirl1, _0140
 _00FC:
-	wait_movement
-	npc_msg msg_0372_R28R0101_00001
-	goto_if_no_item_space ITEM_TM47, 1, _0135
-	callstd std_give_item_verbose
-	setflag FLAG_GOT_TM47_FROM_ROUTE_28_CELEBRITY
+	WaitMovement
+	NPCMsg msg_0372_R28R0101_00001
+	GoToIfNoItemSpace ITEM_TM47, 1, _0135
+	CallStd std_give_item_verbose
+	SetFlag FLAG_GOT_TM47_FROM_ROUTE_28_CELEBRITY
 _012A:
-	npc_msg msg_0372_R28R0101_00002
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0372_R28R0101_00002
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0135:
-	callstd std_bag_is_full
-	closemsg
-	releaseall
-	end
+	CallStd std_bag_is_full
+	CloseMsg
+	ReleaseAll
+	End
 
 	.balign 4, 0
 _0140:
@@ -114,8 +114,8 @@ _0164:
 	EndMovement
 
 scr_seq_R28R0101_001:
-	play_cry SPECIES_FEAROW, 0
-	simple_npc_msg msg_0372_R28R0101_00003
-	wait_cry
-	end
+	PlayCry SPECIES_FEAROW, 0
+	SimpleNPCMsg msg_0372_R28R0101_00003
+	WaitCry
+	End
 	.balign 4, 0
