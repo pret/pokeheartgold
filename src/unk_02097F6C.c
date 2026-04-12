@@ -47,20 +47,20 @@ BOOL sub_02097F6C(u32 rand, u16 mapno, u16 swarmValue) {
 }
 
 void GetSwarmInfoFromRand(u32 rand, u16 *mapno, u16 *species) {
-    ENC_DATA encData;
+    EncounterData encData;
     const u16(*swarmMap)[2];
 
     swarmMap = &sSwarmMapLUT[rand % SWARM_MAP_COUNT];
     WildEncounters_ReadFromNarc(&encData, (*swarmMap)[0]);
     switch ((*swarmMap)[1]) {
     case 1:
-        *species = encData.swarmSpecies[1];
+        *species = encData.surfSwarm;
         break;
     case 2:
-        *species = encData.swarmSpecies[3];
+        *species = encData.fishSwarm;
         break;
     case 0:
-        *species = encData.swarmSpecies[0];
+        *species = encData.landSwarm;
         break;
     }
     GF_ASSERT(*species != SPECIES_NONE);

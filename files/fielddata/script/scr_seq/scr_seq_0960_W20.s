@@ -5,23 +5,23 @@
 
 	.rodata
 
-	scrdef scr_seq_W20_000
-	scrdef scr_seq_W20_001
-	scrdef_end
+	ScrDef scr_seq_W20_000
+	ScrDef scr_seq_W20_001
+	ScrDefEnd
 
 scr_seq_W20_000:
-	scrcmd_055 2, 0
-	scrcmd_057 3
-	scrcmd_058
-	trainer_tips msg_0742_W20_00000, VAR_SPECIAL_RESULT
-	callstd std_signpost
-	end
+	ScrCmd_055 2, 0
+	ScrCmd_057 3
+	ScrCmd_058
+	TrainerTips msg_0742_W20_00000, VAR_SPECIAL_RESULT
+	CallStd std_signpost
+	End
 
 scr_seq_W20_001:
-	scrcmd_055 2, 0
-	scrcmd_057 3
-	scrcmd_058
-	trainer_tips msg_0742_W20_00001, VAR_SPECIAL_RESULT
-	callstd std_signpost
-	end
+	ScrCmd_055 2, 0
+	ScrCmd_057 3
+	ScrCmd_058
+	TrainerTips msg_0742_W20_00001, VAR_SPECIAL_RESULT
+	CallStd std_signpost
+	End
 	.balign 4, 0

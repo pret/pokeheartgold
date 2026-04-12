@@ -202,7 +202,7 @@ Static main
     Object src/game_clear.o
     Object src/field_warp_tasks.o
     Object src/script_pokemon_util.o
-    Object asm/unk_02054514.o
+    Object src/terrain_attributes.o
     Object asm/unk_02054648.o
     Object asm/unk_02054E00.o
     Object asm/unk_020551B8.o
@@ -314,7 +314,7 @@ Static main
     Object src/save_data_read_error.o
     Object src/save_data_write_error.o
     Object asm/unk_02092B04.o
-    Object asm/unk_02092BB8.o
+    Object src/unk_02092BB8.o
     Object src/unk_02092BE8.o
     Object src/mom_gift.o
     Object src/unk_020932A4.o
@@ -814,6 +814,7 @@ Overlay OVY_44
 {
     After OVY_42
     Object asm/overlay_44.o
+    Object src/overlay_44_02235340.o
 }
 Overlay OVY_45
 {

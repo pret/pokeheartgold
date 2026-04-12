@@ -31,8 +31,8 @@ typedef struct LoadedSafariZoneEncounterData {
     u8 numBonusMons;
 } LoadedSafariZoneEncounterData;
 
-static BOOL encSlotsEqual(const ENC_SLOT *a, const ENC_SLOT *b);
-static BOOL encSlotArraysEqual(const ENC_SLOT *a, const ENC_SLOT *b);
+static BOOL encSlotsEqual(const EncounterSlot *a, const EncounterSlot *b);
+static BOOL encSlotArraysEqual(const EncounterSlot *a, const EncounterSlot *b);
 static BOOL areaIsInArray(u8 areaNum, const u8 *areas, u8 numAreas);
 static u8 getObjectLevelBoost(u8 days, u8 objectType);
 static void SafariZoneAreaSet_GetObjectsInArea(SAFARIZONE_AREASET *areaSet, int area, SafariZoneObjectLevels *out);
@@ -79,15 +79,15 @@ void GetSafariObjectConfig(SafariObjectConfig *dest, int idx, int gender) {
     }
 }
 
-static BOOL encSlotsEqual(const ENC_SLOT *a, const ENC_SLOT *b) {
-    if (a->species != b->species || a->level_max != b->level_max || a->level_min != b->level_min) {
+static BOOL encSlotsEqual(const EncounterSlot *a, const EncounterSlot *b) {
+    if (a->species != b->species || a->maxLevel != b->maxLevel || a->minLevel != b->minLevel) {
         return FALSE;
     }
 
     return TRUE;
 }
 
-static BOOL encSlotArraysEqual(const ENC_SLOT *a, const ENC_SLOT *b) {
+static BOOL encSlotArraysEqual(const EncounterSlot *a, const EncounterSlot *b) {
     for (int i = 0; i < NUM_ENCOUNTERS_SAFARI; ++i) {
         if (!encSlotsEqual(&a[i], &b[i])) {
             return FALSE;
@@ -111,8 +111,8 @@ void SaveData_SafariZone_CheckAreasWithUpdatedEncounters(SaveData *saveData, int
     int i;
     int j;
     int numAreas;
-    ENC_SLOT *allEncounterSlots[SAFARI_ZONE_MAX_AREAS_PER_SET][NUM_SAFARI_ENCOUNTER_TYPES];
-    ENC_SLOT *encounters;
+    EncounterSlot *allEncounterSlots[SAFARI_ZONE_MAX_AREAS_PER_SET][NUM_SAFARI_ENCOUNTER_TYPES];
+    EncounterSlot *encounters;
     u8 areas[SAFARI_ZONE_MAX_AREAS_PER_SET];
     PhoneCallPersistentState *callPersistentState = SaveData_GetPhoneCallPersistentState(saveData);
     SafariZone *safariZone = Save_SafariZone_Get(saveData);
@@ -175,18 +175,18 @@ void SaveData_SafariZone_CheckAreasWithUpdatedEncounters(SaveData *saveData, int
     }
 }
 
-ENC_SLOT *SafariZoneAreaSet_LoadAreaEncounters(SAFARIZONE_AREASET *areaSet, int area, int encounterType, TimeOfDayWildParam timeOfDay, enum HeapID heapID) {
+EncounterSlot *SafariZoneAreaSet_LoadAreaEncounters(SAFARIZONE_AREASET *areaSet, int area, int encounterType, TimeOfDayWildParam timeOfDay, enum HeapID heapID) {
     int i;
     int offset;
     u8 *encDataArc;
-    ENC_SLOT *ret;
+    EncounterSlot *ret;
     SAFARIZONE_AREA *safariZoneArea;
     LoadedSafariZoneEncounterData *loadedEncData;
     u32 lcl_heapID; // required to match
 
     safariZoneArea = &areaSet->areas[area];
     lcl_heapID = heapID;
-    ret = Heap_AllocAtEnd((enum HeapID)lcl_heapID, NUM_ENCOUNTERS_SAFARI * sizeof(ENC_SLOT));
+    ret = Heap_AllocAtEnd((enum HeapID)lcl_heapID, NUM_ENCOUNTERS_SAFARI * sizeof(EncounterSlot));
 
     for (i = 0; i < NUM_ENCOUNTERS_SAFARI; ++i) {
         if (encounterType == SAFARI_ENCOUNTER_SLOTS_LAND) {
@@ -194,7 +194,7 @@ ENC_SLOT *SafariZoneAreaSet_LoadAreaEncounters(SAFARIZONE_AREASET *areaSet, int 
         } else {
             ret[i].species = SPECIES_MAGIKARP;
         }
-        ret[i].level_max = ret[i].level_min = 5;
+        ret[i].maxLevel = ret[i].minLevel = 5;
     }
 
     encDataArc = GfGfxLoader_LoadFromNarc(NARC_a_2_3_0, safariZoneArea->area_no, FALSE, (enum HeapID)lcl_heapID, TRUE);
@@ -223,7 +223,7 @@ ENC_SLOT *SafariZoneAreaSet_LoadAreaEncounters(SAFARIZONE_AREASET *areaSet, int 
     for (i = 0; i < NUM_ENCOUNTERS_SAFARI; ++i) {
         SafariZoneAreaEncounterSlot *slot = &loadedEncData[encounterType].baseMons[offset + i];
         ret[i].species = slot->species;
-        ret[i].level_max = ret[i].level_min = slot->level;
+        ret[i].maxLevel = ret[i].minLevel = slot->level;
     }
 
     {
@@ -241,7 +241,7 @@ ENC_SLOT *SafariZoneAreaSet_LoadAreaEncounters(SAFARIZONE_AREASET *areaSet, int 
             }
             idx = loadedEncData[encounterType].numBonusMons * timeOfDay + i;
             ret[numBonusMons].species = loadedEncData[encounterType].bonusMons[idx].species;
-            ret[numBonusMons].level_max = ret[numBonusMons].level_min = loadedEncData[encounterType].bonusMons[idx].level;
+            ret[numBonusMons].maxLevel = ret[numBonusMons].minLevel = loadedEncData[encounterType].bonusMons[idx].level;
             if (++numBonusMons > NUM_ENCOUNTERS_SAFARI - 1) {
                 break;
             }

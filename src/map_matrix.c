@@ -82,7 +82,7 @@ void MapMatrix_Free(MAPMATRIX *map_matrix) {
     Heap_Free(map_matrix);
 }
 
-u16 MapMatrix_GetMapModelNo(s32 map_no, MAPMATRIX *map_matrix) {
+u16 MapMatrix_GetMapModelNo(int map_no, MAPMATRIX *map_matrix) {
     GF_ASSERT(map_no < map_matrix->width * map_matrix->height);
     return map_matrix->data.maps.models[map_no];
 }

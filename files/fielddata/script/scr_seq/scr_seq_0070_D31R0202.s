@@ -5,121 +5,121 @@
 
 	.rodata
 
-	scrdef scr_seq_D31R0202_000
-	scrdef scr_seq_D31R0202_001
-	scrdef scr_seq_D31R0202_002
-	scrdef scr_seq_D31R0202_003
-	scrdef_end
+	ScrDef scr_seq_D31R0202_000
+	ScrDef scr_seq_D31R0202_001
+	ScrDef scr_seq_D31R0202_002
+	ScrDef scr_seq_D31R0202_003
+	ScrDefEnd
 
 scr_seq_D31R0202_000:
-	compare VAR_UNK_414D, 0
-	call_if_ne _008A
-	scrcmd_412 43, 0, VAR_TEMP_x400A
-	call _008E
-	compare VAR_TEMP_x400A, 2
-	call_if_eq _009E
-	compare VAR_TEMP_x400A, 3
-	call_if_eq _009E
-	compare VAR_TEMP_x400A, 0
-	call_if_eq _008E
-	compare VAR_TEMP_x400A, 1
-	call_if_eq _008E
-	compare VAR_TEMP_x400A, 4
-	call_if_eq _0096
-	compare VAR_TEMP_x400A, 5
-	call_if_eq _0096
-	compare VAR_TEMP_x400A, 6
-	call_if_eq _0096
-	end
+	Compare VAR_UNK_414D, 0
+	CallIfNe _008A
+	ScrCmd_412 43, 0, VAR_TEMP_x400A
+	Call _008E
+	Compare VAR_TEMP_x400A, 2
+	CallIfEq _009E
+	Compare VAR_TEMP_x400A, 3
+	CallIfEq _009E
+	Compare VAR_TEMP_x400A, 0
+	CallIfEq _008E
+	Compare VAR_TEMP_x400A, 1
+	CallIfEq _008E
+	Compare VAR_TEMP_x400A, 4
+	CallIfEq _0096
+	Compare VAR_TEMP_x400A, 5
+	CallIfEq _0096
+	Compare VAR_TEMP_x400A, 6
+	CallIfEq _0096
+	End
 
 _008A:
-	scrcmd_520
-	return
+	ScrCmd_520
+	Return
 
 _008E:
-	setvar VAR_OBJ_10, 282
-	return
+	SetVar VAR_OBJ_10, 282
+	Return
 
 _0096:
-	setvar VAR_OBJ_10, 286
-	return
+	SetVar VAR_OBJ_10, 286
+	Return
 
 _009E:
-	setvar VAR_OBJ_10, 283
-	return
+	SetVar VAR_OBJ_10, 283
+	Return
 
 _00A6:
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	scrcmd_412 43, 0, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 4
-	goto_if_eq _0200
-	compare VAR_SPECIAL_RESULT, 5
-	goto_if_eq _0200
-	scrcmd_436
-	scrcmd_627 5
-	restore_overworld
-	warp MAP_BATTLE_TOWER, 0, 15, 6, DIR_NORTH
-	end
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	ScrCmd_412 43, 0, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 4
+	GoToIfEq _0200
+	Compare VAR_SPECIAL_RESULT, 5
+	GoToIfEq _0200
+	ScrCmd_436
+	ScrCmd_627 5
+	RestoreOverworld
+	Warp MAP_BATTLE_TOWER, 0, 15, 6, DIR_NORTH
+	End
 
 _00E9:
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	scrcmd_436
-	scrcmd_627 6
-	restore_overworld
-	warp MAP_BATTLE_TOWER, 0, 11, 6, DIR_NORTH
-	end
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	ScrCmd_436
+	ScrCmd_627 6
+	RestoreOverworld
+	Warp MAP_BATTLE_TOWER, 0, 11, 6, DIR_NORTH
+	End
 
 _010A:
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	warp MAP_BATTLE_TOWER_PARTNER_ROOM, 0, 8, 2, DIR_SOUTH
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
-	releaseall
-	end
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	Warp MAP_BATTLE_TOWER_PARTNER_ROOM, 0, 8, 2, DIR_SOUTH
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
+	ReleaseAll
+	End
 
 _0132:
-	call _018E
-	elevator_anim VAR_TEMP_x4000, 3
-	call _019A
-	return
+	Call _018E
+	ElevatorAnim VAR_TEMP_x4000, 3
+	Call _019A
+	Return
 
 scr_seq_D31R0202_001:
-	scrcmd_609
-	lockall
-	setvar VAR_TEMP_x4000, 0
-	call _0132
-	goto _00A6
-	end
+	ScrCmd_609
+	LockAll
+	SetVar VAR_TEMP_x4000, 0
+	Call _0132
+	GoTo _00A6
+	End
 
 scr_seq_D31R0202_002:
-	scrcmd_609
-	lockall
-	setvar VAR_TEMP_x4000, 0
-	call _0132
-	goto _00E9
-	end
+	ScrCmd_609
+	LockAll
+	SetVar VAR_TEMP_x4000, 0
+	Call _0132
+	GoTo _00E9
+	End
 
 scr_seq_D31R0202_003:
-	scrcmd_609
-	lockall
-	setvar VAR_TEMP_x4000, 1
-	call _0132
-	goto _010A
-	end
+	ScrCmd_609
+	LockAll
+	SetVar VAR_TEMP_x4000, 1
+	Call _0132
+	GoTo _010A
+	End
 
 _018E:
-	apply_movement obj_player, _01C4
-	wait_movement
-	return
+	ApplyMovement obj_player, _01C4
+	WaitMovement
+	Return
 
 _019A:
-	apply_movement obj_D31R0202_var_11, _01D0
-	apply_movement obj_player, _01EC
-	wait_movement
-	return
+	ApplyMovement obj_D31R0202_var_11, _01D0
+	ApplyMovement obj_player, _01EC
+	WaitMovement
+	Return
 
 	.balign 4, 0
 _01B0:
@@ -154,9 +154,9 @@ _01EC:
 	EndMovement
 
 _0200:
-	scrcmd_436
-	scrcmd_627 5
-	restore_overworld
-	warp MAP_BATTLE_TOWER, 0, 19, 6, DIR_NORTH
-	end
+	ScrCmd_436
+	ScrCmd_627 5
+	RestoreOverworld
+	Warp MAP_BATTLE_TOWER, 0, 19, 6, DIR_NORTH
+	End
 	.balign 4, 0
