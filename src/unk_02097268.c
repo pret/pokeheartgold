@@ -35,7 +35,7 @@ static BOOL encSlotsEqual(const EncounterSlot *a, const EncounterSlot *b);
 static BOOL encSlotArraysEqual(const EncounterSlot *a, const EncounterSlot *b);
 static BOOL areaIsInArray(u8 areaNum, const u8 *areas, u8 numAreas);
 static u8 getObjectLevelBoost(u8 days, u8 objectType);
-static void SafariZoneAreaSet_GetObjectsInArea(SAFARIZONE_AREASET *areaSet, int area, SafariZoneObjectLevels *out);
+static void SafariZoneAreaSet_GetObjectsInArea(SafariZoneAreaSet *areaSet, int area, SafariZoneObjectLevels *out);
 
 // clang-format off
 static const SafariObjectConfig sObjects[NUM_SAFARI_ZONE_OBJECT_IDS] = {
@@ -116,7 +116,7 @@ void SaveData_SafariZone_CheckAreasWithUpdatedEncounters(SaveData *saveData, int
     u8 areas[SAFARI_ZONE_MAX_AREAS_PER_SET];
     PhoneCallPersistentState *callPersistentState = SaveData_GetPhoneCallPersistentState(saveData);
     SafariZone *safariZone = Save_SafariZone_Get(saveData);
-    SAFARIZONE_AREASET *areaSet = SafariZone_GetAreaSet(safariZone, 0);
+    SafariZoneAreaSet *areaSet = SafariZone_GetAreaSet(safariZone, 0);
 
     static const u16 ffff = 0xFFFF;
 
@@ -175,7 +175,7 @@ void SaveData_SafariZone_CheckAreasWithUpdatedEncounters(SaveData *saveData, int
     }
 }
 
-EncounterSlot *SafariZoneAreaSet_LoadAreaEncounters(SAFARIZONE_AREASET *areaSet, int area, int encounterType, TimeOfDayWildParam timeOfDay, enum HeapID heapID) {
+EncounterSlot *SafariZoneAreaSet_LoadAreaEncounters(SafariZoneAreaSet *areaSet, int area, int encounterType, TimeOfDayWildParam timeOfDay, enum HeapID heapID) {
     int i;
     int offset;
     u8 *encDataArc;
@@ -226,27 +226,26 @@ EncounterSlot *SafariZoneAreaSet_LoadAreaEncounters(SAFARIZONE_AREASET *areaSet,
         ret[i].maxLevel = ret[i].minLevel = slot->level;
     }
 
-    {
-        SafariZoneObjectLevels areaObjects;
-        u8 numBonusMons = 0;
-        SafariZoneAreaSet_GetObjectsInArea(areaSet, area, &areaObjects);
-        for (i = 0; i < loadedEncData[encounterType].numBonusMons; ++i) {
-            int idx;
-            SafariZoneAreaBonusSlotUnlockConditions *unlockConditions = &loadedEncData[encounterType].unlockConditions[i];
-            if (areaObjects.levels[unlockConditions->object1_type - 1] < unlockConditions->object1_level) {
-                continue;
-            }
-            if (unlockConditions->object2_type != 0 && areaObjects.levels[unlockConditions->object2_type - 1] < unlockConditions->object2_level) {
-                continue;
-            }
-            idx = loadedEncData[encounterType].numBonusMons * timeOfDay + i;
-            ret[numBonusMons].species = loadedEncData[encounterType].bonusMons[idx].species;
-            ret[numBonusMons].maxLevel = ret[numBonusMons].minLevel = loadedEncData[encounterType].bonusMons[idx].level;
-            if (++numBonusMons > NUM_ENCOUNTERS_SAFARI - 1) {
-                break;
-            }
+    SafariZoneObjectLevels areaObjects;
+    u8 numBonusMons = 0;
+    SafariZoneAreaSet_GetObjectsInArea(areaSet, area, &areaObjects);
+    for (i = 0; i < loadedEncData[encounterType].numBonusMons; ++i) {
+        int idx;
+        SafariZoneAreaBonusSlotUnlockConditions *unlockConditions = &loadedEncData[encounterType].unlockConditions[i];
+        if (areaObjects.levels[unlockConditions->object1_type - 1] < unlockConditions->object1_level) {
+            continue;
+        }
+        if (unlockConditions->object2_type != 0 && areaObjects.levels[unlockConditions->object2_type - 1] < unlockConditions->object2_level) {
+            continue;
+        }
+        idx = loadedEncData[encounterType].numBonusMons * timeOfDay + i;
+        ret[numBonusMons].species = loadedEncData[encounterType].bonusMons[idx].species;
+        ret[numBonusMons].maxLevel = ret[numBonusMons].minLevel = loadedEncData[encounterType].bonusMons[idx].level;
+        if (++numBonusMons > NUM_ENCOUNTERS_SAFARI - 1) {
+            break;
         }
     }
+
     Heap_Free(loadedEncData);
     Heap_Free(encDataArc);
     return ret;
@@ -276,7 +275,7 @@ static u8 getObjectLevelBoost(u8 days, u8 objectType) {
     return 7;
 }
 
-static void SafariZoneAreaSet_GetObjectsInArea(SAFARIZONE_AREASET *areaSet, int area, SafariZoneObjectLevels *out) {
+static void SafariZoneAreaSet_GetObjectsInArea(SafariZoneAreaSet *areaSet, int area, SafariZoneObjectLevels *out) {
     SafariObjectConfig objectConfig;
     u8 areaLevel;
     SAFARIZONE_AREA *szArea;

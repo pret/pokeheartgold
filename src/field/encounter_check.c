@@ -929,7 +929,7 @@ static BOOL FieldSystem_GenerateRegularEncounter(Pokemon *leadMon, int rodType, 
 
 static BOOL FieldSystem_GenerateSafariEncounter(FieldSystem *fieldSystem, Pokemon *leadMon, int rodType, EncounterGenState *encounterGen, u8 encType, int battler, BattleSetup *battleSetup) {
     u8 slot;
-    SAFARIZONE_AREASET *areaSet = SafariZone_GetAreaSet(Save_SafariZone_Get(fieldSystem->saveData), 3);
+    SafariZoneAreaSet *areaSet = SafariZone_GetAreaSet(Save_SafariZone_Get(fieldSystem->saveData), 3);
     u16 species;
     u8 level;
     EncounterSlot *encSlots;
