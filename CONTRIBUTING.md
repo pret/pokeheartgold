@@ -6,21 +6,13 @@
 
 This document provides a synopsis and loose guidelines for how to contribute to this project. It is a work in progress. Maintainers should expand this document.
 
+ALL PERSONS OPENING PULL REQUESTS TO THIS REPOSITORY AGREE TO ABIDE BY THE POLICIES OUTLINED IN THIS DOCUMENT.
+
 ## AI Policy
 
-Any use of an AI large language model (LLM) to contribute to this project, must be disclosed in full. Undisclosed LLM use shall, upon detection, result in a permanent ban from contributing to this project.
+We unequivocally prohibit the use of artifical intelligence (AI) large language models (LLMs) to generate contributions to this project, meaningful or otherwise. Any pull request found to have used AI for these tasks will be closed, and the contributor will be banned from interacting with the repository. This is a zero-tolerance policy, and we do not provide any avenue for appeal.
 
-This applies to any act that introduces or changes text in the repository, including but not limited to:
-- Commit content
-- Commit message
-- Pull requests
-- Pull request reviews
-- Issues
-- Issue comments
-- Messages to maintainers
-  
-This does not apply to:
-- Asking questions about the code
+You may use AI to ask general knowledge questions about ARM assembly, C syntax, Pokemon lore, etc. However, you may not use AI to generate content for this repository, nor generate any changes.
 
 ## Code Formatting
 
