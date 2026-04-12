@@ -23,11 +23,22 @@ typedef struct Pokeathlon_UnkSubStruct_B00 {
     u32 unk70;
 } Pokeathlon_UnkSubStruct_B00;
 
-typedef struct POKEATHLON_SAV POKEATHLON_SAV; // size: 0xB80
+typedef struct POKEATHLON_SAV {
+    u8 unk_000[0xDC];
+    u8 unk_0DC[0x1F0];
+    u8 unk_2CC[0x1B8];
+    u8 unk_484[0x668];
+    u8 unk_AEC[0x14];
+    Pokeathlon_UnkSubStruct_B00 unk_B00;
+    u32 athletePoints;
+    u32 prizeFlags;
+    u16 unk_B7C;
+    u16 padding_B7E;
+} POKEATHLON_SAV; // size: 0xB80
 
-BOOL sub_02031A78(POKEATHLON_SAV *pokeathlon, int idx);
-BOOL sub_02031AB8(POKEATHLON_SAV *pokeathlon, int idx);
-void sub_02031AE4(POKEATHLON_SAV *pokeathlon);
-POKEATHLON_SAV *sub_02031974(POKEATHLON_SAV *pokeathlon);
+BOOL sub_02031A78(POKEATHLON_SAV *pokeathlonSave, int idx);
+BOOL sub_02031AB8(POKEATHLON_SAV *pokeathlonSave, int idx);
+void sub_02031AE4(POKEATHLON_SAV *pokeathlonSave);
+POKEATHLON_SAV *sub_02031974(POKEATHLON_SAV *pokeathlonSave);
 
 #endif // POKEHEARTGOLD_SAVE_POKEATHLON_H
