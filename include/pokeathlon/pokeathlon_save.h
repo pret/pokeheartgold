@@ -51,6 +51,17 @@ typedef struct PokeathlonSave {
     u16 unk_B7E;
 } PokeathlonSave; // size: 0xB80
 
+typedef struct PokeathlonFriendshipRoomStatueData {
+    u16 species;
+    u8 gender;
+    u8 form;
+} PokeathlonFriendshipRoomStatueData;
+
+typedef struct PokeathlonSave_FriendshipRecords {
+    PokeathlonFriendshipRoomStatueData friendshipRoomStatues[3];
+    u8 unk[0x1C];
+} PokeathlonSave_FriendshipRecords;
+
 u32 PokeathlonSave_sizeof();
 void PokeathlonSave_Init(PokeathlonSave *dest);
 PokeathlonSave *Save_Pokeathlon_Get(SaveData *saveData);
@@ -74,5 +85,9 @@ void PokeathlonSave_SetUnkB78_AtIndex(PokeathlonSave *pokeathlon, int idx);
 BOOL PokeathlonSave_GetUnkB7C_AtIndex(PokeathlonSave *pokeathlon, int idx);
 void PokeathlonSave_SetUnkB7C_AtIndex(PokeathlonSave *pokeathlon, int idx);
 void PokeathlonSave_ResetUnkB7C(PokeathlonSave *pokeathlon);
+
+u32 PokeathlonSave_FriendshipRecords_sizeof();
+void PokeathlonSave_FriendshipRecords_Init(PokeathlonSave_FriendshipRecords *dest);
+PokeathlonSave_FriendshipRecords *Save_Pokeathlon_FriendshipRecords_Get(SaveData *saveData);
 
 #endif // POKEHEARTGOLD_POKEATHLON_SAVE_H

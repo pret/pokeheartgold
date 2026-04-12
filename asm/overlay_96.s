@@ -4096,7 +4096,7 @@ ov96_021E7F48: ; 0x021E7F48
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	ldr r0, [r0]
-	bl sub_02031B00
+	bl Save_Pokeathlon_FriendshipRecords_Get
 	add r4, r0, #0
 	add r0, r5, #0
 	bl ov96_021E5F24

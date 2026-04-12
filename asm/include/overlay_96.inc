@@ -306,7 +306,7 @@
 .public PokeathlonSave_GetAgainUnkB00
 .public PokeathlonSave_SetUnkDC_AtIndex
 .public PokeathlonSave_AddAthletePoints
-.public sub_02031B00
+.public Save_Pokeathlon_FriendshipRecords_Get
 .public sub_02031B10
 .public Save_ApricornBox_Get
 .public sub_020320E0

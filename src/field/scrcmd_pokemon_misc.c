@@ -42,7 +42,6 @@
 #include "unk_0200FA24.h"
 #include "unk_02023694.h"
 #include "unk_02030A98.h"
-#include "unk_02031AF0.h"
 #include "unk_02031B0C.h"
 #include "unk_02037C94.h"
 #include "unk_0205BFF0.h"
@@ -952,7 +951,7 @@ BOOL ScrCmd_CreatePokeathlonFriendshipRoomStatues(ScriptContext *ctx) {
     u16 species;
     FieldSystem *fieldSystem = ctx->fieldSystem;
 
-    PokeathlonSave_FriendshipRecords *unkPtr = sub_02031B00(fieldSystem->saveData);
+    PokeathlonSave_FriendshipRecords *unkPtr = Save_Pokeathlon_FriendshipRecords_Get(fieldSystem->saveData);
 
     for (i = 0; i < 3; i++) {
         LocalMapObject *mapObj = MapObjectManager_GetFirstActiveObjectByID(fieldSystem->mapObjectManager, 0xf6 + i);

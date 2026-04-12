@@ -129,3 +129,15 @@ void PokeathlonSave_SetUnkB7C_AtIndex(PokeathlonSave *pokeathlon, int idx) {
 void PokeathlonSave_ResetUnkB7C(PokeathlonSave *pokeathlon) {
     pokeathlon->unk_B7C = 0;
 }
+
+u32 PokeathlonSave_FriendshipRecords_sizeof() {
+    return sizeof(PokeathlonSave_FriendshipRecords);
+}
+
+void PokeathlonSave_FriendshipRecords_Init(PokeathlonSave_FriendshipRecords *dest) {
+    MI_CpuClear8(dest, sizeof(PokeathlonSave_FriendshipRecords));
+}
+
+PokeathlonSave_FriendshipRecords *Save_Pokeathlon_FriendshipRecords_Get(SaveData *saveData) {
+    return SaveArray_Get(saveData, SAVE_POKEATHLON_FRIENDSHIP_RECORDS);
+}
