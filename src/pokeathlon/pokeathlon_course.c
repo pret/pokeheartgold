@@ -192,7 +192,7 @@ BOOL PokeathlonCourse_Main(OverlayManager *manager, int *state) {
 BOOL PokeathlonCourse_Exit(OverlayManager *manager, int *state) {
     PokeathlonCourseData *data;
     PokeathlonCourseArgs *args;
-    POKEATHLON_SAV *pokeathlonSave;
+    PokeathlonSave *pokeathlonSave;
     Pokeathlon_UnkSubStruct_B00 *result;
     SaveData *saveData;
 
@@ -211,7 +211,7 @@ BOOL PokeathlonCourse_Exit(OverlayManager *manager, int *state) {
 
     // Get Pokeathlon save data and process result
     saveData = *(SaveData **)data->args;
-    pokeathlonSave = PokeathlonSave_Get(saveData);
+    pokeathlonSave = Save_Pokeathlon_Get(saveData);
     result = PokeathlonSave_GetAgainUnkB00(pokeathlonSave);
     ov96_021E7F98(data->frameCounter, 59999, result);
 

@@ -5934,7 +5934,7 @@ InitMartUI: ; 0x02256D34
 	add r1, #0x40
 	str r0, [r4, r1]
 	ldr r0, [r5, #0xc]
-	bl PokeathlonSave_Get
+	bl Save_Pokeathlon_Get
 	mov r1, #0x95
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -9959,7 +9959,7 @@ ov03_02258CFC: ; 0x02258CFC
 	str r0, [r4, #0xc]
 	str r5, [r4, #8]
 	ldr r0, [r5, #0xc]
-	bl PokeathlonSave_Get
+	bl Save_Pokeathlon_Get
 	str r0, [r4, #0x20]
 	bl PokeathlonSave_GetUnkB00
 	str r0, [r4, #0x24]

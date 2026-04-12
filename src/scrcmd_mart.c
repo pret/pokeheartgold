@@ -472,10 +472,10 @@ const struct MartItem *_0210F9D4[] = {
 };
 
 BOOL ScrCmd_772(ScriptContext *ctx) {
-    POKEATHLON_SAV *pokeathlon;
+    PokeathlonSave *pokeathlon;
     int i;
 
-    pokeathlon = PokeathlonSave_Get(ctx->fieldSystem->saveData);
+    pokeathlon = Save_Pokeathlon_Get(ctx->fieldSystem->saveData);
     for (i = 0; i < 27; i++) {
         if (!PokeathlonSave_GetUnkB78_AtIndex(pokeathlon, i)) {
             break;
@@ -487,7 +487,7 @@ BOOL ScrCmd_772(ScriptContext *ctx) {
 
 BOOL ScrCmd_834(ScriptContext *ctx) {
     u16 *sp0;
-    POKEATHLON_SAV *pokeathlon;
+    PokeathlonSave *pokeathlon;
     SaveVarsFlags *varsFlags;
     int r6;
     int r4;
@@ -496,7 +496,7 @@ BOOL ScrCmd_834(ScriptContext *ctx) {
     int i;
 
     sp0 = ScriptGetVarPointer(ctx);
-    pokeathlon = PokeathlonSave_Get(ctx->fieldSystem->saveData);
+    pokeathlon = Save_Pokeathlon_Get(ctx->fieldSystem->saveData);
     r6 = 0;
     r4 = 0;
     varsFlags = Save_VarsFlags_Get(ctx->fieldSystem->saveData);
@@ -528,10 +528,10 @@ BOOL ScrCmd_834(ScriptContext *ctx) {
 BOOL ScrCmd_835(ScriptContext *ctx) {
     u16 *ret_ptr;
     int i;
-    POKEATHLON_SAV *pokeathlon;
+    PokeathlonSave *pokeathlon;
 
     ret_ptr = ScriptGetVarPointer(ctx);
-    pokeathlon = PokeathlonSave_Get(ctx->fieldSystem->saveData);
+    pokeathlon = Save_Pokeathlon_Get(ctx->fieldSystem->saveData);
     for (i = 0; i < 27; i++) {
         if (!PokeathlonSave_GetUnkB78_AtIndex(pokeathlon, i)) {
             break;

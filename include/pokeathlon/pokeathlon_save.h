@@ -38,7 +38,7 @@ typedef struct Pokeathlon_RecordsLink {
     u8 unk_28[0x7C];
 } Pokeathlon_RecordsLink; // size: 0xA4
 
-typedef struct POKEATHLON_SAV {
+typedef struct PokeathlonSave {
     u8 unk_0[0xDC];
     u8 unk_DC[0x1F0]; // sub-struct pointed to by PokeathlonSave_GetUnkDC; byte[slot-1] holds per-pokemon course bits
     Pokeathlon_RecordsSolo recordsSolo[10]; // 0x2CC
@@ -49,30 +49,30 @@ typedef struct POKEATHLON_SAV {
     u32 unk_B78;       // bitfield, bits 0-26 (PokeathlonSave_GetUnkB78_AtIndex / PokeathlonSave_SetUnkB78_AtIndex)
     u16 unk_B7C;       // bitfield (PokeathlonSave_GetUnkB7C_AtIndex / PokeathlonSave_SetUnkB7C_AtIndex / PokeathlonSave_ResetUnkB7C)
     u16 unk_B7E;
-} POKEATHLON_SAV; // size: 0xB80
+} PokeathlonSave; // size: 0xB80
 
 u32 PokeathlonSave_sizeof();
-void PokeathlonSave_Init(POKEATHLON_SAV *dest);
-POKEATHLON_SAV *PokeathlonSave_Get(SaveData *saveData);
-POKEATHLON_SAV *PokeathlonSave_dummy1(POKEATHLON_SAV *pokeathlon);
-void *PokeathlonSave_GetUnkDC(POKEATHLON_SAV *pokeathlonSave);
-Pokeathlon_RecordsSolo *PokeathlonSave_GetRecordsSolo(POKEATHLON_SAV *pokeathlonSave);
-Pokeathlon_RecordsLink *PokeathlonSave_GetRecordsLink(POKEATHLON_SAV *pokeathlonSave);
-void *PokeathlonSave_GetUnkAEC(POKEATHLON_SAV *pokeathlonSave);
-Pokeathlon_UnkSubStruct_B00 *PokeathlonSave_GetUnkB00(POKEATHLON_SAV *pokeathlonSave);
-POKEATHLON_SAV *PokeathlonSave_dummy2(POKEATHLON_SAV *pokeathlon);
-BOOL PokeathlonSave_GetUnkDC_AtIndex(POKEATHLON_SAV *pokeathlonSave, int a0, int a1);
-Pokeathlon_RecordsSolo *PokeathlonSave_GetRecordsSolo2(POKEATHLON_SAV *pokeathlonSave);
-Pokeathlon_RecordsLink *PokeathlonSave_GetRecordsLink2(POKEATHLON_SAV *pokeathlonSave);
-Pokeathlon_UnkSubStruct_B00 *PokeathlonSave_GetAgainUnkB00(POKEATHLON_SAV *pokeathlonSave);
-void PokeathlonSave_SetUnkDC_AtIndex(POKEATHLON_SAV *pokeathlonSave, int a0, int a1);
-void PokeathlonSave_AddAthletePoints(POKEATHLON_SAV *pokeathlonSave, u16 amount);
-void PokeathlonSave_SubAthletePoints(POKEATHLON_SAV *pokeathlonSave, u16 amount);
-u32 PokeathlonSave_GetAthletePoints(POKEATHLON_SAV *pokeathlonSave);
-BOOL PokeathlonSave_GetUnkB78_AtIndex(POKEATHLON_SAV *pokeathlon, int idx);
-void PokeathlonSave_SetUnkB78_AtIndex(POKEATHLON_SAV *pokeathlon, int idx);
-BOOL PokeathlonSave_GetUnkB7C_AtIndex(POKEATHLON_SAV *pokeathlon, int idx);
-void PokeathlonSave_SetUnkB7C_AtIndex(POKEATHLON_SAV *pokeathlon, int idx);
-void PokeathlonSave_ResetUnkB7C(POKEATHLON_SAV *pokeathlon);
+void PokeathlonSave_Init(PokeathlonSave *dest);
+PokeathlonSave *Save_Pokeathlon_Get(SaveData *saveData);
+PokeathlonSave *PokeathlonSave_dummy1(PokeathlonSave *pokeathlon);
+void *PokeathlonSave_GetUnkDC(PokeathlonSave *pokeathlonSave);
+Pokeathlon_RecordsSolo *PokeathlonSave_GetRecordsSolo(PokeathlonSave *pokeathlonSave);
+Pokeathlon_RecordsLink *PokeathlonSave_GetRecordsLink(PokeathlonSave *pokeathlonSave);
+void *PokeathlonSave_GetUnkAEC(PokeathlonSave *pokeathlonSave);
+Pokeathlon_UnkSubStruct_B00 *PokeathlonSave_GetUnkB00(PokeathlonSave *pokeathlonSave);
+PokeathlonSave *PokeathlonSave_dummy2(PokeathlonSave *pokeathlon);
+BOOL PokeathlonSave_GetUnkDC_AtIndex(PokeathlonSave *pokeathlonSave, int shift, int index);
+Pokeathlon_RecordsSolo *PokeathlonSave_GetRecordsSolo2(PokeathlonSave *pokeathlonSave);
+Pokeathlon_RecordsLink *PokeathlonSave_GetRecordsLink2(PokeathlonSave *pokeathlonSave);
+Pokeathlon_UnkSubStruct_B00 *PokeathlonSave_GetAgainUnkB00(PokeathlonSave *pokeathlonSave);
+void PokeathlonSave_SetUnkDC_AtIndex(PokeathlonSave *pokeathlonSave, int shift, int index);
+void PokeathlonSave_AddAthletePoints(PokeathlonSave *pokeathlonSave, u16 amount);
+void PokeathlonSave_SubAthletePoints(PokeathlonSave *pokeathlonSave, u16 amount);
+u32 PokeathlonSave_GetAthletePoints(PokeathlonSave *pokeathlonSave);
+BOOL PokeathlonSave_GetUnkB78_AtIndex(PokeathlonSave *pokeathlon, int idx);
+void PokeathlonSave_SetUnkB78_AtIndex(PokeathlonSave *pokeathlon, int idx);
+BOOL PokeathlonSave_GetUnkB7C_AtIndex(PokeathlonSave *pokeathlon, int idx);
+void PokeathlonSave_SetUnkB7C_AtIndex(PokeathlonSave *pokeathlon, int idx);
+void PokeathlonSave_ResetUnkB7C(PokeathlonSave *pokeathlon);
 
 #endif // POKEHEARTGOLD_POKEATHLON_SAVE_H

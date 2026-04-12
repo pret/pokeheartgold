@@ -49,7 +49,7 @@
 .public Save_FrontierData_Get
 .public SaveData_GetPhoneCallPersistentState
 .public PhoneCallPersistentState_MomSavings_BalanceAction
-.public PokeathlonSave_Get
+.public Save_Pokeathlon_Get
 .public PokeathlonSave_GetAthletePoints
 .public memset
 .public _s32_div_f

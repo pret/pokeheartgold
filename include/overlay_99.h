@@ -22,12 +22,12 @@ typedef struct PokeathlonEventRecordArgs {
 } PokeathlonEventRecordArgs;
 
 typedef struct PokeathlonCourseRecordArgs {
-    POKEATHLON_SAV *pokeathlon;
+    PokeathlonSave *pokeathlon;
     BOOL unk4;
 } PokeathlonCourseRecordArgs;
 
 typedef struct UnkStruct_0203EFA0 {
-    POKEATHLON_SAV *pokeathlon;
+    PokeathlonSave *pokeathlon;
     PlayerProfile *profile;
 } UnkStruct_0203EFA0;
 

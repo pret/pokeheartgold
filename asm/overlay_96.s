@@ -1366,7 +1366,7 @@ ov96_021E6A00: ; 0x021E6A00
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	ldr r0, [r0]
-	bl PokeathlonSave_Get
+	bl Save_Pokeathlon_Get
 	bl PokeathlonSave_GetAgainUnkB00
 	add r5, r0, #0
 	mov r0, #9
@@ -2667,7 +2667,7 @@ _021E7416:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	ldr r0, [r0]
-	bl PokeathlonSave_Get
+	bl Save_Pokeathlon_Get
 	bl PokeathlonSave_GetUnkB00
 	add r6, r0, #0
 	bl sub_02031B10
@@ -3040,7 +3040,7 @@ ov96_021E7718: ; 0x021E7718
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	ldr r0, [r0]
-	bl PokeathlonSave_Get
+	bl Save_Pokeathlon_Get
 	add r6, r0, #0
 	add r0, r5, #0
 	bl PokeathlonCourse_GetFieldData
@@ -4223,7 +4223,7 @@ ov96_021E8028: ; 0x021E8028
 	ldr r0, [r5, r0]
 	add r6, r1, #0
 	ldr r0, [r0]
-	bl PokeathlonSave_Get
+	bl Save_Pokeathlon_Get
 	add r7, r0, #0
 	mov r4, #0
 _021E803E:
@@ -4277,7 +4277,7 @@ ov96_021E8084: ; 0x021E8084
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
 	ldr r0, [r0]
-	bl PokeathlonSave_Get
+	bl Save_Pokeathlon_Get
 	add r7, r0, #0
 	mov r4, #0
 _021E8098:
@@ -4312,7 +4312,7 @@ ov96_021E80C4: ; 0x021E80C4
 	lsl r1, r1, #2
 	ldr r0, [r0, r1]
 	ldr r0, [r0]
-	bl PokeathlonSave_Get
+	bl Save_Pokeathlon_Get
 	bl PokeathlonSave_GetRecordsSolo2
 	ldr r6, _021E8110 ; =ov96_0221A894
 	ldr r7, _021E8114 ; =_0221A7D8
@@ -4707,7 +4707,7 @@ ov96_021E839C: ; 0x021E839C
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	ldr r0, [r0]
-	bl PokeathlonSave_Get
+	bl Save_Pokeathlon_Get
 	add r6, r0, #0
 	ldr r0, _021E8418 ; =0x00000D2A
 	ldrh r1, [r5, r0]
@@ -12921,7 +12921,7 @@ _021EC07E:
 _021EC0B0:
 	add r0, r6, #0
 	bl PokeathlonCourse_GetSaveData
-	bl PokeathlonSave_Get
+	bl Save_Pokeathlon_Get
 	bl PokeathlonSave_dummy2
 	add r1, r4, #0
 	add r1, #0x9c
@@ -17098,7 +17098,7 @@ _021EE0CE:
 	bne _021EE0CE
 	add r0, r2, #0
 	bl PokeathlonCourse_GetSaveData
-	bl PokeathlonSave_Get
+	bl Save_Pokeathlon_Get
 	bl PokeathlonSave_GetAgainUnkB00
 	add r6, r0, #0
 	add r0, sp, #0x20
@@ -19801,7 +19801,7 @@ ov96_021EF5F4: ; 0x021EF5F4
 	ldr r0, [r0]
 	add r4, r1, #0
 	bl PokeathlonCourse_GetSaveData
-	bl PokeathlonSave_Get
+	bl Save_Pokeathlon_Get
 	bl PokeathlonSave_GetRecordsSolo2
 	mov r1, #0x2c
 	mul r1, r4

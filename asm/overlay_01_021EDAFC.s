@@ -2375,7 +2375,7 @@ _021EECEE:
 	bl NewString_ReadMsgData
 	add r4, r0, #0
 	ldr r0, [r5, #0xc]
-	bl PokeathlonSave_Get
+	bl Save_Pokeathlon_Get
 	bl PokeathlonSave_GetAthletePoints
 	add r2, r0, #0
 _021EED04:

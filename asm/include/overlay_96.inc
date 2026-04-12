@@ -295,7 +295,7 @@
 .public PlayerProfile_GetTrainerGender
 .public PlayerProfile_GetLanguage
 .public Options_GetTextFrameDelay
-.public PokeathlonSave_Get
+.public Save_Pokeathlon_Get
 .public PokeathlonSave_GetUnkDC
 .public PokeathlonSave_GetRecordsSolo
 .public PokeathlonSave_GetUnkAEC

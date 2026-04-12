@@ -121,7 +121,7 @@
 .public sub_0202F784
 .public SafariZone_SetLinkLeaderFromProfile
 .public SafariZone_RemoveObjectFromArea
-.public PokeathlonSave_Get
+.public Save_Pokeathlon_Get
 .public PokeathlonSave_GetUnkB00
 .public PokeathlonSave_SubAthletePoints
 .public PokeathlonSave_GetAthletePoints
