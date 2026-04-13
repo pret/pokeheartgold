@@ -2,7 +2,7 @@ name: build
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
   pull_request:
   workflow_dispatch:
 
@@ -62,14 +62,14 @@ jobs:
           GAME_VERSION: HEARTGOLD
           GAME_LANGUAGE: ENGLISH
           GAME_REVISION: 0
-        run: make -j4
+        run: make -j4 2> >(sed -r 's/^/::error::/')
 
       - name: Build SoulSilver
         env:
           GAME_VERSION: SOULSILVER
           GAME_LANGUAGE: ENGLISH
           GAME_REVISION: 0
-        run: make -j4
+        run: make -j4 2> >(sed -r 's/^/::error::/')
 
       - name: Webhook
         if: ${{ github.event_name == 'push' }}
@@ -95,8 +95,8 @@ jobs:
         if: ${{ github.event_name == 'push' }}
         uses: actions/checkout@v4
         with:
-          path: 'xmap'
-          ref: 'xmap'
+          path: "xmap"
+          ref: "xmap"
 
       - name: Move xMAP
         if: ${{ github.event_name == 'push' }}
