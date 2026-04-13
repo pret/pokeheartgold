@@ -84,7 +84,7 @@ void PokeathlonSave_SetUnkDC_AtIndex(PokeathlonSave *pokeathlonSave, int shift, 
     }
     for (i = 0; i < 5; i++) {
         if ((u8)((shift >> i) & 1) != 0) {
-            bit = (u8)(1 << i);
+            bit = 1 << i;
             pokeathlonSave->unk_DC[indexMinusOne] |= bit;
         }
     }
