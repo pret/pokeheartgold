@@ -14,7 +14,7 @@ ALL PERSONS OPENING PULL REQUESTS TO THIS REPOSITORY AGREE TO ABIDE BY THE POLIC
 We unequivocally prohibit the use of artifical intelligence (AI) large language models (LLMs) to generate contributions to this project, meaningful or otherwise. Any pull request found to have used AI for these tasks will be closed, and the contributor will be banned from interacting with the repository. This is a zero-tolerance policy, and we do not provide any avenue for appeal.
 
 The following use cases are deemed acceptable and stand as exceptions to the above statement, provided that they are disclosed in full. While this document is not legally binding, we do expect you to represent yourself truthfully. Undisclosed use of AI may result in a ban.
-- Automating the boring stuff. So long as the task is clearly defined by a human, is boiled down to pure execution with no further creative decision-making, and is sufficiently tedious to perform by hand. you may delegate it to an AI. However, we do strongly encourage you to do as much as you can by hand or write a script to automate the task, rather than invoking an AI to do it for you.
+- Automating the boring stuff. So long as the task is clearly defined by a human, is boiled down to pure execution with no further creative decision-making, and is sufficiently tedious to perform by hand, you may delegate it to an AI. However, we do strongly encourage you to do as much as you can by hand or write a script to automate the task, rather than invoking an AI to do it for you.
 - Asking general knowledge questions about C code, the ARM processor, Pokémon, etc.
 
 ## Code Formatting
