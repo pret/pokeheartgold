@@ -4,7 +4,7 @@
 #include "sound.h"
 #include "sound_02004A44.h"
 #include "unk_02005D10.h"
-#include "unk_02054E00.h"
+#include "field_bgm.h"
 
 BOOL ScrNative_GetFadeTimer(ScriptContext *ctx);
 BOOL ScrNative_SEPlaying(ScriptContext *ctx);

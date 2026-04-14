@@ -16,7 +16,7 @@
 #include "unk_0200B150.h"
 #include "unk_0200FA24.h"
 #include "unk_0203BA5C.h"
-#include "unk_02054E00.h"
+#include "field_bgm.h"
 #include "unk_020552A4.h"
 #include "unk_0206793C.h"
 #include "use_item_on_mon.h"

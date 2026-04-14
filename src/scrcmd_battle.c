@@ -10,7 +10,7 @@
 #include "sound_02004A44.h"
 #include "sys_flags.h"
 #include "sys_vars.h"
-#include "unk_02054E00.h"
+#include "field_bgm.h"
 #include "unk_020632B0.h"
 
 BOOL ScrCmd_GetTrainerPathToPlayer(ScriptContext *ctx) {

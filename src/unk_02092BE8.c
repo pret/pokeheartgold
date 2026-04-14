@@ -18,7 +18,7 @@
 #include "scrcmd.h"
 #include "sys_vars.h"
 #include "unk_02005D10.h"
-#include "unk_02054E00.h"
+#include "field_bgm.h"
 #include "unk_0206D494.h"
 
 static void FieldSystem_InitPokegearArgs(FieldSystem *sys, PokegearArgs *ptr, BOOL isMap);

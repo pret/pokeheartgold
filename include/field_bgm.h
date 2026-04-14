@@ -1,5 +1,5 @@
-#ifndef POKEHEARTGOLD_UNK_02054E00_H
-#define POKEHEARTGOLD_UNK_02054E00_H
+#ifndef POKEHEARTGOLD_FIELD_BGM_H
+#define POKEHEARTGOLD_FIELD_BGM_H
 
 #include "script.h"
 #include "field_system.h"
@@ -24,4 +24,4 @@ void FieldBGM_PlayForMapHeader(FieldSystem *fieldSystem, u32 mapId, u32 a2);
 BOOL FieldBGM_PlayEffectiveForMapHeader(FieldSystem *fieldSystem, u32 mapId);
 BOOL sub_02055198(FieldSystem *fieldSystem, u16 seqNo);
 
-#endif // POKEHEARTGOLD_UNK_02054E00_H
+#endif // POKEHEARTGOLD_FIELD_BGM_H

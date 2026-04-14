@@ -24,7 +24,7 @@
 #include "unk_0203BA5C.h"
 #include "terrain_attributes.h"
 #include "unk_02054648.h"
-#include "unk_02054E00.h"
+#include "field_bgm.h"
 #include "unk_02055244.h"
 #include "unk_020552A4.h"
 #include "unk_02055418.h"
