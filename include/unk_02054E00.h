@@ -21,7 +21,7 @@ void Sound_GetBGMFadeOutAndWaitFrames(FieldSystem *fieldSystem, int mode, int *f
 int Trainer_GetEncounterMusic(u16 a0, int regionNo);
 void FieldSystem_BeginFadeOutMusic(FieldSystem *fieldSystem, u32 mapId);
 void sub_02055110(FieldSystem *fieldSystem, u32 mapId, u32 a2);
-void sub_02055198(FieldSystem *fieldSystem, u16 a1);
-void sub_02055164(FieldSystem *fieldSystem, u32 mapId);
+BOOL sub_02055164(FieldSystem *fieldSystem, u32 mapId);
+BOOL sub_02055198(FieldSystem *fieldSystem, u16 seqNo);
 
 #endif // POKEHEARTGOLD_UNK_02054E00_H

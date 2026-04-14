@@ -251,8 +251,8 @@ sub_02004AB8: ; 0x02004AB8
 	.balign 4, 0
 	thumb_func_end sub_02004AB8
 
-	thumb_func_start sub_02004AC8
-sub_02004AC8: ; 0x02004AC8
+	thumb_func_start Sound_SetFieldBGM
+Sound_SetFieldBGM: ; 0x02004AC8
 	push {r4, lr}
 	add r4, r0, #0
 	mov r0, #0x20
@@ -260,7 +260,7 @@ sub_02004AC8: ; 0x02004AC8
 	strh r4, [r0]
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_02004AC8
+	thumb_func_end Sound_SetFieldBGM
 
 	thumb_func_start Sound_SetScene
 Sound_SetScene: ; 0x02004AD8

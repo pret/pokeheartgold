@@ -447,7 +447,7 @@ _02087D88:
 	ldr r1, [r0, #0x20]
 	ldr r1, [r1]
 	bl GetMapMusic
-	bl sub_02004AC8
+	bl Sound_SetFieldBGM
 	mov r0, #0
 	add r1, r4, #0
 	bl sub_02055198

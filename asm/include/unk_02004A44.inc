@@ -21,7 +21,7 @@
 .public GF_GetCurrentPlayingBGM
 .public GF_SetCurrentPlayingBGM
 .public sub_02004AB8
-.public sub_02004AC8
+.public Sound_SetFieldBGM
 .public Sound_SetScene
 .public sub_02004B10
 .public sub_02004B24

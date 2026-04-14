@@ -12,6 +12,8 @@
 #include "sound_02004A44.h"
 #include "trainer_data.h"
 
+#include "overlay_01_021E6880.h"
+
 // functions still in asm:
 void ov01_021F630C(int, FieldSystemUnkSub2C*, s32*);
 int ov01_021F3B44(int, u8);
@@ -24,8 +26,9 @@ void Sound_SetScene(int);
 BOOL GF_SND_BGM_DisableCheck();
 void GF_FadeStartMusicId(int, int, int, int, int, void*);
 void GF_NowStartMusicId(int, int, int, int, void*);
-void sub_02004AC8();
+void Sound_SetFieldBGM(u16);
 void sub_02005CF4(BOOL);
+BOOL sub_02004EB4(u16);
 
 // clang-format off
 // Class, Eyes meet theme
@@ -154,13 +157,13 @@ u16 FieldSystem_GetOverriddenMusicId(FieldSystem *fieldSystem, u32 mapId) {
         }
     }
 
-    u16 bgmID = GetMapMusic(fieldSystem, mapId);
+    u16 seqNo = GetMapMusic(fieldSystem, mapId);
 
     if (FieldSystem_GetSavedMusicId(fieldSystem) != SEQ_NONE) {
-        bgmID = FieldSystem_GetSavedMusicId(fieldSystem);
+        seqNo = FieldSystem_GetSavedMusicId(fieldSystem);
     }
 
-    return bgmID;
+    return seqNo;
 }
 
 // From platinum: Sound_GetBGMByMapID
@@ -240,16 +243,16 @@ int Trainer_GetEncounterMusic(u16 trainerID, int regionNo) {
     GF_ASSERT(regionNo < 2);
 
     u8 class = (u8)TrainerData_GetAttr(trainerID, TRATTR_CLASS);
-    u16 i, bgmID = SEQ_GS_EYE_J_SHOUNEN;
+    u16 i, seqNo = SEQ_GS_EYE_J_SHOUNEN;
 
     for (i = 0; i < NELEMS(sTrainerEncounterMusicParam); i++) {
         if (sTrainerEncounterMusicParam[i][0] == class) {
-            bgmID = sTrainerEncounterMusicParam[i][regionNo + 1];
+            seqNo = sTrainerEncounterMusicParam[i][regionNo + 1];
             break;
         }
     }
 
-    return bgmID;
+    return seqNo;
 }
 
 // From platinum: Sound_TryFadeInBGM
@@ -264,7 +267,7 @@ void FieldSystem_BeginFadeOutMusic(FieldSystem *fieldSystem, u32 mapId) {
 }
 
 void sub_02055110(FieldSystem *fieldSystem, u32 mapID, u32 a2) {
-    u16 bgmID;
+    u16 seqNo;
 
     if (GF_SND_BGM_DisableCheck() == 1) {
         return;
@@ -272,19 +275,38 @@ void sub_02055110(FieldSystem *fieldSystem, u32 mapID, u32 a2) {
 
     Sound_SetScene(SOUND_SCENE_NONE);
 
-    bgmID = GetMapMusic(fieldSystem, mapID);
+    seqNo = GetMapMusic(fieldSystem, mapID);
 
-    sub_02004AC8();
+    Sound_SetFieldBGM(seqNo);
 
     sub_02005CF4(TRUE);
 
     fieldSystem->unkC4 = -3;
 
     if (a2 == 1) {
-        sub_02055198(fieldSystem, bgmID); // Sound_SetFieldBGM? (plat name)
+        sub_02055198(fieldSystem, seqNo);
     } else {
-        sub_02055198(NULL, bgmID);
+        sub_02055198(NULL, seqNo);
     }
 
     sub_02005CF4(FALSE);
+}
+
+BOOL sub_02055164(FieldSystem *fieldSystem, u32 mapId) {
+    u16 seqNo = FieldSystem_GetOverriddenMusicId(fieldSystem, mapId);
+    Sound_SetFieldBGM(GetMapMusic(fieldSystem, mapId));
+
+    sub_02005CF4(TRUE);
+    u32 res = sub_02055198(NULL, seqNo);
+    sub_02005CF4(FALSE);
+
+    return res;
+}
+
+BOOL sub_02055198(FieldSystem *fieldSystem, u16 seqNo) {
+    BOOL res = sub_02004EB4(seqNo);
+    if (res == TRUE && fieldSystem != NULL) {
+        ov01_021E7F00(fieldSystem, FALSE);
+    }
+    return res;
 }
