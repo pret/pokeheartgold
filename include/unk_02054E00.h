@@ -5,7 +5,7 @@
 #include "field_system.h"
 #include "field_types_def.h"
 
-const /*static*/ u16 sTrainerEncounterMusicParam[][3];
+const static u16 sTrainerEncounterMusicParam[][3];
 
 BOOL MapModel_IsHeadbuttTree(u32 mapModelNo);
 u16 MapCoordToMatrixIndex(FieldSystem* fieldSystem, int coordX, int coordY);

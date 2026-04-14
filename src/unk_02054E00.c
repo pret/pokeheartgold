@@ -32,7 +32,7 @@ BOOL sub_02004EB4(u16);
 
 // clang-format off
 // Class, Eyes meet theme
-const /*static*/ u16 sTrainerEncounterMusicParam[][3] = {
+const static u16 sTrainerEncounterMusicParam[][3] = {
     { TRAINERCLASS_YOUNGSTER, SEQ_GS_EYE_J_SHOUNEN, SEQ_GS_EYE_J_SHOUNEN },
 	{ TRAINERCLASS_LASS, SEQ_GS_EYE_K_SHOUJO, SEQ_GS_EYE_K_SHOUJO },
 	{ TRAINERCLASS_CAMPER, SEQ_GS_EYE_J_SHOUNEN, SEQ_GS_EYE_J_SHOUNEN },
