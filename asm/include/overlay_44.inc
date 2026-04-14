@@ -17,7 +17,7 @@
 .public FontID_String_GetCenterAlignmentX
 .public BlendPalette
 .public GF_GetCurrentPlayingBGM
-.public sub_02004AD8
+.public Sound_SetScene
 .public Sound_SetSceneAndPlayBGM
 .public GF_SndHandleSetInitialVolume
 .public sub_02005448

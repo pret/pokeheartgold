@@ -3,9 +3,9 @@
 .public GF_SND_BGM_DisableCheck
 .public GF_GetCurrentPlayingBGM
 .public sub_02004AC8
-.public sub_02004AD8
+.public Sound_SetScene
 .public sub_02004EB4
-.public sub_020053F0
+.public Sound_ClearBGMPauseFlags
 .public GF_NowStartMusicId
 .public GF_FadeStartMusicId
 .public sub_02005CF4

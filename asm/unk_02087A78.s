@@ -437,7 +437,7 @@ _02087D88:
 	mov r0, #0
 	bl sub_02005B68
 	mov r0, #0
-	bl sub_02004AD8
+	bl Sound_SetScene
 	ldr r0, [r5, #0x28]
 	ldr r1, [r0, #0x20]
 	ldr r1, [r1]

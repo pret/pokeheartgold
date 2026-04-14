@@ -1,7 +1,7 @@
 #include <nitro/fs/overlay.h>
 #pragma once
 .public sub_02004AC8
-.public sub_02004AD8
+.public Sound_SetScene
 .public Sound_SetSceneAndPlayBGM
 .public GF_SndHandleSetPlayerVolume
 .public sub_02005B68
