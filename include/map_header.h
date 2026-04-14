@@ -26,7 +26,7 @@ typedef struct MapHeader {
     u16 mapsec : 8;
     u16 areaIcon : 4;
     u16 momCallIntroParam : 4;
-    u32 isKanto : 1;
+    u32 regionNo : 1;
     u32 weather : 7;
     u32 mapType : 4;
     u32 cameraType : 6;
@@ -51,6 +51,11 @@ typedef enum MapType {
     MAP_TYPE_UNDERGROUND,    // Leftover from the Sinnoh games
 } MapType;
 
+typedef enum MapRegion {
+    MAP_REGION_KANTO = 0,
+    MAP_REGION_JOHTO = 1,
+} MapRegion;
+
 u8 MapHeader_GetAreaDataBank(u32 mapId);
 u16 MapHeader_GetMoveModelBank(u32 mapId);
 u16 MapHeader_GetMatrixId(u32 mapId);
@@ -65,7 +70,7 @@ u16 MapHeader_GetEventsBank(u32 mapId);
 u32 MapHeader_GetMapSec(u32 mapId);
 u8 MapHeader_GetAreaIcon(u32 mapId);
 u8 MapHeader_GetMomCallIntroParam(u32 mapId);
-BOOL MapHeader_IsInKanto(u32 mapId);
+u32 MapHeader_GetRegionNo(u32 mapId);
 u32 MapHeader_GetWeatherType(u32 mapId);
 u32 MapHeader_GetCameraType(u32 mapId);
 BattleBg MapHeader_GetBattleBg(u32 mapId);

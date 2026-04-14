@@ -20,7 +20,7 @@ BOOL FieldSystem_PlayOrFadeToNewMusicId(FieldSystem *fieldSystem, u16 seqNo, int
 void Sound_GetBGMFadeOutAndWaitFrames(FieldSystem *fieldSystem, int mode, int *fadeOutFrames, int *waitFrames);
 void FieldSystem_BeginFadeOutMusic(FieldSystem *fieldSystem, u32 mapId);
 void sub_02055110(FieldSystem *fieldSystem, u32 mapId, u32 a2);
-int Trainer_GetEncounterMusic(u16 a0, BOOL isKanto);
+int Trainer_GetEncounterMusic(u16 a0, int regionNo);
 u16 GetMapMusic(FieldSystem *fieldSystem, int mapId);
 void sub_02055198(FieldSystem *fieldSystem, u16 a1);
 void FieldSystem_BeginFadeOutMusic(FieldSystem *fieldSystem, u32 mapId);

@@ -61,7 +61,7 @@ typedef struct RadioShow {
     u8 textNoScroll;           // 0x65
     u8 isSecondLine : 1;       // 0x66
     u8 statik : 1;             // 0x66. spelling intentional, "static" is a reserved keyword
-    u8 inKanto : 1;            // 0x66
+    u8 regionNo : 1;           // 0x66
     u8 isPlayingJingle : 1;    // 0x66
     u8 triggerCommercials : 1; // 0x66
     u8 delayCounter;           // 0x67
@@ -115,7 +115,7 @@ int Radio_HandleDragCursor(PokegearRadioAppData *radioApp);
 BOOL Radio_CoordsToStation(PokegearRadioAppData *radioApp, s16 x, s16 y);
 void Radio_SnapCursorToChannelHitbox(PokegearRadioAppData *radioApp, u8 channel);
 
-RadioShow *RadioShow_Create(SaveData *saveData, u16 mapID, u16 mapHeader, BOOL inKanto, Window *win1, Window *win2, Window *win3, u32 textColor, enum HeapID heapID);
+RadioShow *RadioShow_Create(SaveData *saveData, u16 mapID, u16 mapHeader, int regionNo, Window *win1, Window *win2, Window *win3, u32 textColor, enum HeapID heapID);
 void RadioShow_Delete(RadioShow *radioShow);
 void RadioShow_BeginSegment(RadioShow *radioShow, int station, int statik);
 void RadioShow_EndSegment(RadioShow *radioShow);

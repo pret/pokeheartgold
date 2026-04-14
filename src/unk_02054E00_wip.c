@@ -10,6 +10,7 @@
 #include "sys_flags.h"
 #include "sound.h"
 #include "sound_02004A44.h"
+#include "trainer_data.h"
 
 // functions still in asm:
 void ov01_021F630C(int, FieldSystemUnkSub2C*, s32*);
@@ -206,6 +207,7 @@ BOOL FieldSystem_PlayOrFadeToNewMusicId(FieldSystem *fieldSystem, u16 seqNo, int
     return TRUE;
 }
 
+// From platinum: Sound_GetBGMFadeOutAndWaitFrames
 void Sound_GetBGMFadeOutAndWaitFrames(FieldSystem *fieldSystem, int mode, int *fadeOutFrames, int *waitFrames) {
     switch (mode) {
     case 0:
@@ -229,4 +231,21 @@ void Sound_GetBGMFadeOutAndWaitFrames(FieldSystem *fieldSystem, int mode, int *f
         *waitFrames = 0;
         break;
     }
+}
+
+// From platinum: Trainer_GetEncounterBGM
+int Trainer_GetEncounterMusic(u16 trainerID, int regionNo) {
+    GF_ASSERT(regionNo < 2);
+
+    u8 class = (u8)TrainerData_GetAttr(trainerID, TRATTR_CLASS);
+    u16 i, bgmID = SEQ_GS_EYE_J_SHOUNEN;
+
+    for (i = 0; i < NELEMS(sTrainerEncounterMusicParam); i++) {
+        if (sTrainerEncounterMusicParam[i][0] == class) {
+            bgmID = sTrainerEncounterMusicParam[i][regionNo + 1];
+            break;
+        }
+    }
+
+    return bgmID;
 }

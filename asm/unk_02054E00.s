@@ -20,47 +20,7 @@
 	.extern FieldSystem_GetOverriddenMusicId
 	.extern GetMapMusic
 	.extern FieldSystem_PlayOrFadeToNewMusicId
-
-	thumb_func_start Trainer_GetEncounterMusic
-Trainer_GetEncounterMusic: ; 0x02055098
-	push {r3, r4, r5, r6, r7, lr}
-	add r4, r1, #0
-	add r5, r0, #0
-	cmp r4, #2
-	blt _020550A6
-	bl GF_AssertFail
-_020550A6:
-	add r0, r5, #0
-	mov r1, #1
-	bl TrainerData_GetAttr
-	lsl r0, r0, #0x18
-	lsr r5, r0, #0x18
-	ldr r0, _020550DC ; =SEQ_GS_EYE_J_SHOUNEN
-	ldr r1, _020550E0 ; =sTrainerEncounterMusicParam
-	mov r3, #0
-	mov r6, #6
-_020550BA:
-	add r7, r3, #0
-	mul r7, r6
-	add r2, r1, r7
-	ldrh r7, [r1, r7]
-	cmp r5, r7
-	bne _020550CE
-	add r0, r4, #1
-	lsl r0, r0, #1
-	ldrh r0, [r2, r0]
-	pop {r3, r4, r5, r6, r7, pc}
-_020550CE:
-	add r2, r3, #1
-	lsl r2, r2, #0x10
-	lsr r3, r2, #0x10
-	cmp r3, #0x2c
-	blo _020550BA
-	pop {r3, r4, r5, r6, r7, pc}
-	nop
-_020550DC: .word SEQ_GS_EYE_J_SHOUNEN
-_020550E0: .word sTrainerEncounterMusicParam
-	thumb_func_end Trainer_GetEncounterMusic
+	.extern Trainer_GetEncounterMusic
 
 	thumb_func_start FieldSystem_BeginFadeOutMusic
 FieldSystem_BeginFadeOutMusic: ; 0x020550E4
