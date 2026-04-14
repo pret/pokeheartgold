@@ -52,8 +52,8 @@ typedef enum MapType {
 } MapType;
 
 typedef enum MapRegion {
-    MAP_REGION_KANTO = 0,
-    MAP_REGION_JOHTO = 1,
+    MAP_REGION_JOHTO = 0,
+    MAP_REGION_KANTO = 1,
 } MapRegion;
 
 u8 MapHeader_GetAreaDataBank(u32 mapId);
