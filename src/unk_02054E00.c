@@ -100,15 +100,15 @@ u16 MapCoordToMatrixIndex(FieldSystem* fieldSystem, int coordX, int coordY) {
         GF_ASSERT(FALSE);
         return 0;
     }
-    return (u16) (posX + (posY * width));
+    return posX + posY * width;
 }
 
 void sub_02054EB0(FieldSystem *fieldSystem, int a1, BOOL a2) {
     int val;
-    for (u8 i = 0; i < 4U; i++) {
+    for (u8 i = 0; i < 4; i++) {
         ov01_021F630C(i, fieldSystem->unk2C, &val);
         if (val != 0) {
-            for (u8 j = 0; j < 0x20U; j++) {
+            for (u8 j = 0; j < 32; j++) {
                 int res = ov01_021F3B44(val, j);
                 if (ov01_021F3B30() != 0) {
                     int res2 = ov01_021F3B34(res);
@@ -143,7 +143,7 @@ u16 FieldSystem_GetSavedMusicId(FieldSystem *fieldSystem) {
 // From platinum: Sound_ClearSpecialBGM
 void FieldSystem_ClearSavedMusicId(FieldSystem *fieldSystem) {
     u16 *bgm = LocalFieldData_GetMusicIdAddr(Save_LocalFieldData_Get(fieldSystem->saveData));
-    *bgm = 0;
+    *bgm = SEQ_NONE;
 }
 
 // From platinum: Sound_GetOverrideBGM
@@ -242,7 +242,7 @@ void Sound_GetBGMFadeOutAndWaitFrames(FieldSystem *fieldSystem, int mode, int *f
 int Trainer_GetEncounterMusic(u16 trainerID, int regionNo) {
     GF_ASSERT(regionNo < 2);
 
-    u8 class = (u8)TrainerData_GetAttr(trainerID, TRATTR_CLASS);
+    u8 class = TrainerData_GetAttr(trainerID, TRATTR_CLASS);
     u16 i, seqNo = SEQ_GS_EYE_J_SHOUNEN;
 
     for (i = 0; i < NELEMS(sTrainerEncounterMusicParam); i++) {
