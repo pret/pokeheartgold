@@ -18,95 +18,11 @@
 	.extern FieldSystem_GetSavedMusicId
 	.extern FieldSystem_ClearSavedMusicId
 	.extern FieldSystem_GetOverriddenMusicId
+	.extern GetMapMusic
+	.extern FieldSystem_PlayOrFadeToNewMusicId
 
-	thumb_func_start GetMapMusic
-GetMapMusic: ; 0x02054FA8
-	push {r4, r5, r6, lr}
-	add r5, r0, #0
-	add r4, r1, #0
-	bl IsNighttime
-	cmp r0, #0
-	bne _02054FBE
-	add r0, r4, #0
-	bl MapHeader_GetDayMusicId
-	b _02054FC4
-_02054FBE:
-	add r0, r4, #0
-	bl MapHeader_GetNightMusicId
-_02054FC4:
-	add r6, r0, #0
-	ldr r0, [r5, #0xc]
-	bl Save_VarsFlags_Get
-	add r1, r4, #0
-	bl GetOverriddenMapMusic
-	cmp r0, #0
-	beq _02054FD8
-	add r6, r0, #0
-_02054FD8:
-	add r0, r6, #0
-	pop {r4, r5, r6, pc}
-	thumb_func_end GetMapMusic
-
-	thumb_func_start FieldSystem_PlayOrFadeToNewMusicId
-FieldSystem_PlayOrFadeToNewMusicId: ; 0x02054FDC
-	push {r3, r4, r5, r6, r7, lr}
-	sub sp, #0x10
-	add r5, r0, #0
-	ldr r0, [r5, #0x40]
-	add r4, r1, #0
-	add r7, r2, #0
-	bl PlayerAvatar_GetState
-	add r6, r0, #0
-	bl GF_SND_BGM_DisableCheck
-	cmp r0, #1
-	bne _02054FFC
-	add sp, #0x10
-	mov r0, #0
-	pop {r3, r4, r5, r6, r7, pc}
-_02054FFC:
-	add r0, r5, #0
-	bl GF_GetCurrentPlayingBGM
-	cmp r4, r0
-	bne _0205500C
-	add sp, #0x10
-	mov r0, #0
-	pop {r3, r4, r5, r6, r7, pc}
-_0205500C:
-	bl Sound_ClearBGMPauseFlags
-	add r0, r5, #0
-	add r1, r7, #0
-	add r2, sp, #0xc
-	add r3, sp, #8
-	bl sub_0205504C
-	cmp r6, #1
-	beq _02055022
-	bne _02055036
-_02055022:
-	mov r0, #0
-	str r0, [sp]
-	str r0, [sp, #4]
-	ldr r1, [sp, #0xc]
-	ldr r2, [sp, #8]
-	add r0, r4, #0
-	mov r3, #0x1e
-	bl GF_FadeStartMusicId
-	b _02055044
-_02055036:
-	mov r3, #0
-	str r3, [sp]
-	ldr r1, [sp, #0xc]
-	ldr r2, [sp, #8]
-	add r0, r4, #0
-	bl GF_NowStartMusicId
-_02055044:
-	mov r0, #1
-	add sp, #0x10
-	pop {r3, r4, r5, r6, r7, pc}
-	.balign 4, 0
-	thumb_func_end FieldSystem_PlayOrFadeToNewMusicId
-
-	thumb_func_start sub_0205504C
-sub_0205504C: ; 0x0205504C
+	thumb_func_start Sound_GetBGMFadeOutAndWaitFrames
+Sound_GetBGMFadeOutAndWaitFrames: ; 0x0205504C
 	cmp r1, #4
 	bhi _0205508E
 	add r0, r1, r1
@@ -151,7 +67,7 @@ _0205508E:
 	mov r0, #0
 	str r0, [r3]
 	bx lr
-	thumb_func_end sub_0205504C
+	thumb_func_end Sound_GetBGMFadeOutAndWaitFrames
 
 	thumb_func_start Trainer_GetEncounterMusic
 Trainer_GetEncounterMusic: ; 0x02055098

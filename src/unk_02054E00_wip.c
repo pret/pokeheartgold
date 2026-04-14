@@ -3,10 +3,13 @@
 #include "constants/sndseq.h"
 #include "constants/trainer_class.h"
 
+#include "gf_rtc.h"
+#include "map_header.h"
 #include "save_local_field_data.h"
 #include "save_vars_flags.h"
 #include "sys_flags.h"
 #include "sound.h"
+#include "sound_02004A44.h"
 
 // functions still in asm:
 void ov01_021F630C(int, FieldSystemUnkSub2C*, s32*);
@@ -17,6 +20,9 @@ void ov01_021F3B2C(int, int);
 void Sound_Stop();
 void Sound_ClearBGMPauseFlags();
 void Sound_SetScene(int);
+BOOL GF_SND_BGM_DisableCheck();
+void GF_FadeStartMusicId(int, int, int, int, int, void*);
+void GF_NowStartMusicId(int, int, int, int, void*);
 
 // clang-format off
 // Class, Eyes meet theme
@@ -152,4 +158,50 @@ u16 FieldSystem_GetOverriddenMusicId(FieldSystem *fieldSystem, u32 mapId) {
     }
 
     return bgmID;
+}
+
+// From platinum: Sound_GetBGMByMapID
+u16 GetMapMusic(FieldSystem *fieldSystem, int mapId) {
+    u16 sdatID;
+
+    if (IsNighttime() == FALSE) {
+        sdatID = MapHeader_GetDayMusicId(mapId);
+    } else {
+        sdatID = MapHeader_GetNightMusicId(mapId);
+    }
+
+    u16 altSdatID = GetOverriddenMapMusic(Save_VarsFlags_Get(fieldSystem->saveData), mapId);
+
+    if (altSdatID != SEQ_NONE) {
+        sdatID = altSdatID;
+    }
+
+    return sdatID;
+}
+
+// From platinum: Sound_TryFadeOutToBGM
+BOOL FieldSystem_PlayOrFadeToNewMusicId(FieldSystem *fieldSystem, u16 seqNo, int mode) {
+    int fadeOutFrames, waitFrames;
+
+    PlayerAvatar *playerAvatar = fieldSystem->playerAvatar;
+    int playerState = PlayerAvatar_GetState(playerAvatar);
+
+    if (GF_SND_BGM_DisableCheck() == TRUE) {
+        return FALSE;
+    }
+    if (seqNo == GF_GetCurrentPlayingBGM(fieldSystem)) {
+        return FALSE;
+    }
+
+    Sound_ClearBGMPauseFlags();
+    Sound_GetBGMFadeOutAndWaitFrames(fieldSystem, mode, &fadeOutFrames, &waitFrames);
+
+    // Yes, it's checking bike twice. Maybe there was a point were Acro and Mach Bikes were still a thing?
+    if ((playerState == PLAYER_STATE_CYCLING) || (playerState == PLAYER_STATE_CYCLING)) {
+        GF_FadeStartMusicId(seqNo, fadeOutFrames, waitFrames, 30, 0, NULL);
+    } else {
+        GF_NowStartMusicId(seqNo, fadeOutFrames, waitFrames, 0, NULL);
+    }
+
+    return TRUE;
 }
