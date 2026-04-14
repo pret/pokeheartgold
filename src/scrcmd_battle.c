@@ -193,7 +193,7 @@ BOOL ScrCmd_TrainerIsDoubleBattle(ScriptContext *ctx) {
 BOOL ScrCmd_EncounterMusic(ScriptContext *ctx) {
     u16 trainerID = ScriptGetVar(ctx);
     int regionNo = MapHeader_GetRegionNo(ctx->fieldSystem->location->mapId);
-    BGM_SaveStateAndPlayNew(Trainer_GetEncounterMusic(trainerID, regionNo));
+    BGM_SaveStateAndPlayNew(FieldBGM_GetEyesMeetForTrainer(trainerID, regionNo));
     return TRUE;
 }
 

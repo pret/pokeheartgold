@@ -2332,21 +2332,21 @@ BOOL ScrCmd_PlayerOnBikeCheck(ScriptContext *ctx) {
 BOOL ScrCmd_PlayerOnBikeSet(ScriptContext *ctx) {
     u8 flag = ScriptReadByte(ctx);
     if (flag == TRUE) {
-        FieldSystem_SetSavedMusicId(ctx->fieldSystem, SEQ_GS_BICYCLE);
-        FieldSystem_PlayOrFadeToNewMusicId(ctx->fieldSystem, SEQ_GS_BICYCLE, 1);
+        FieldBGM_SetOverride(ctx->fieldSystem, SEQ_GS_BICYCLE);
+        FieldBGM_TryFadeOut(ctx->fieldSystem, SEQ_GS_BICYCLE, 1);
         Field_PlayerAvatar_OrrTransitionFlags(ctx->fieldSystem->playerAvatar, PLAYER_TRANSITION_CYCLING);
         Field_PlayerAvatar_ApplyTransitionFlags(ctx->fieldSystem->playerAvatar);
     } else {
         Field_PlayerAvatar_OrrTransitionFlags(ctx->fieldSystem->playerAvatar, PLAYER_TRANSITION_WALKING);
         Field_PlayerAvatar_ApplyTransitionFlags(ctx->fieldSystem->playerAvatar);
-        FieldSystem_SetSavedMusicId(ctx->fieldSystem, 0);
-        FieldSystem_PlayOrFadeToNewMusicId(ctx->fieldSystem, FieldSystem_GetOverriddenMusicId(ctx->fieldSystem, ctx->fieldSystem->location->mapId), 1);
+        FieldBGM_SetOverride(ctx->fieldSystem, 0);
+        FieldBGM_TryFadeOut(ctx->fieldSystem, FieldBGM_GetEffective(ctx->fieldSystem, ctx->fieldSystem->location->mapId), 1);
     }
     return FALSE;
 }
 
 BOOL ScrCmd_591(ScriptContext *ctx) {
-    FieldSystem_SetSavedMusicId(ctx->fieldSystem, SEQ_PL_BICYCLE);
+    FieldBGM_SetOverride(ctx->fieldSystem, SEQ_PL_BICYCLE);
     return FALSE;
 }
 

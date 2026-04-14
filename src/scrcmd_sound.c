@@ -32,14 +32,14 @@ BOOL ScrCmd_StopBGM(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_ResetBGM(ScriptContext *ctx) {
-    u16 seqno = GetMapMusic(ctx->fieldSystem, ctx->fieldSystem->location->mapId);
+    u16 seqno = FieldBGM_GetForMapHeader(ctx->fieldSystem, ctx->fieldSystem->location->mapId);
     PlayBGM(seqno);
     return FALSE;
 }
 
 BOOL ScrCmd_083(ScriptContext *ctx) {
     u16 seqno = ScriptReadHalfword(ctx);
-    FieldSystem_SetSavedMusicId(ctx->fieldSystem, seqno);
+    FieldBGM_SetOverride(ctx->fieldSystem, seqno);
     return FALSE;
 }
 

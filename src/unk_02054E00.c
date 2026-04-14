@@ -121,33 +121,28 @@ void sub_02054EB0(FieldSystem *fieldSystem, int a1, BOOL a2) {
     }
 }
 
-// From platinum: sub_020553DC
-void sub_02054F14() {
+void FieldBGM_Stop() {
     Sound_Stop();
     Sound_ClearBGMPauseFlags();
     Sound_SetScene(SOUND_SCENE_NONE);
 }
 
-// From platinum: Sound_SetSpecialBGM
-void FieldSystem_SetSavedMusicId(FieldSystem *fieldSystem, u16 seqNo) {
+void FieldBGM_SetOverride(FieldSystem *fieldSystem, u16 seqNo) {
     u16 *bgm = LocalFieldData_GetMusicIdAddr(Save_LocalFieldData_Get(fieldSystem->saveData));
     *bgm = seqNo;
 }
 
-// From platinum: Sound_GetSpecialBGM
-u16 FieldSystem_GetSavedMusicId(FieldSystem *fieldSystem) {
+u16 FieldBGM_GetOverride(FieldSystem *fieldSystem) {
     u16 *bgm = LocalFieldData_GetMusicIdAddr(Save_LocalFieldData_Get(fieldSystem->saveData));
     return *bgm;
 }
 
-// From platinum: Sound_ClearSpecialBGM
-void FieldSystem_ClearSavedMusicId(FieldSystem *fieldSystem) {
+void FieldBGM_ClearOverride(FieldSystem *fieldSystem) {
     u16 *bgm = LocalFieldData_GetMusicIdAddr(Save_LocalFieldData_Get(fieldSystem->saveData));
     *bgm = SEQ_NONE;
 }
 
-// From platinum: Sound_GetOverrideBGM
-u16 FieldSystem_GetOverriddenMusicId(FieldSystem *fieldSystem, u32 mapId) {
+u16 FieldBGM_GetEffective(FieldSystem *fieldSystem, u32 mapId) {
     PlayerAvatar *playerAvatar = fieldSystem->playerAvatar;
     int playerState = PlayerAvatar_GetState(playerAvatar);
 
@@ -157,17 +152,16 @@ u16 FieldSystem_GetOverriddenMusicId(FieldSystem *fieldSystem, u32 mapId) {
         }
     }
 
-    u16 seqNo = GetMapMusic(fieldSystem, mapId);
+    u16 seqNo = FieldBGM_GetForMapHeader(fieldSystem, mapId);
 
-    if (FieldSystem_GetSavedMusicId(fieldSystem) != SEQ_NONE) {
-        seqNo = FieldSystem_GetSavedMusicId(fieldSystem);
+    if (FieldBGM_GetOverride(fieldSystem) != SEQ_NONE) {
+        seqNo = FieldBGM_GetOverride(fieldSystem);
     }
 
     return seqNo;
 }
 
-// From platinum: Sound_GetBGMByMapID
-u16 GetMapMusic(FieldSystem *fieldSystem, int mapId) {
+u16 FieldBGM_GetForMapHeader(FieldSystem *fieldSystem, int mapId) {
     u16 sdatID;
 
     if (IsNighttime() == FALSE) {
@@ -185,8 +179,7 @@ u16 GetMapMusic(FieldSystem *fieldSystem, int mapId) {
     return sdatID;
 }
 
-// From platinum: Sound_TryFadeOutToBGM
-BOOL FieldSystem_PlayOrFadeToNewMusicId(FieldSystem *fieldSystem, u16 seqNo, int mode) {
+BOOL FieldBGM_TryFadeOut(FieldSystem *fieldSystem, u16 seqNo, int mode) {
     int fadeOutFrames, waitFrames;
 
     PlayerAvatar *playerAvatar = fieldSystem->playerAvatar;
@@ -200,7 +193,7 @@ BOOL FieldSystem_PlayOrFadeToNewMusicId(FieldSystem *fieldSystem, u16 seqNo, int
     }
 
     Sound_ClearBGMPauseFlags();
-    Sound_GetBGMFadeOutAndWaitFrames(fieldSystem, mode, &fadeOutFrames, &waitFrames);
+    FieldBGM_GetFadeOutAndWaitFrames(fieldSystem, mode, &fadeOutFrames, &waitFrames);
 
     // Yes, it's checking bike twice. Maybe there was a point were Acro and Mach Bikes were still a thing?
     if ((playerState == PLAYER_STATE_CYCLING) || (playerState == PLAYER_STATE_CYCLING)) {
@@ -212,8 +205,7 @@ BOOL FieldSystem_PlayOrFadeToNewMusicId(FieldSystem *fieldSystem, u16 seqNo, int
     return TRUE;
 }
 
-// From platinum: Sound_GetBGMFadeOutAndWaitFrames
-void Sound_GetBGMFadeOutAndWaitFrames(FieldSystem *fieldSystem, int mode, int *fadeOutFrames, int *waitFrames) {
+static void FieldBGM_GetFadeOutAndWaitFrames(FieldSystem *fieldSystem, int mode, int *fadeOutFrames, int *waitFrames) {
     switch (mode) {
     case 0:
         *fadeOutFrames = 30;
@@ -238,8 +230,7 @@ void Sound_GetBGMFadeOutAndWaitFrames(FieldSystem *fieldSystem, int mode, int *f
     }
 }
 
-// From platinum: Trainer_GetEncounterBGM
-int Trainer_GetEncounterMusic(u16 trainerID, int regionNo) {
+int FieldBGM_GetEyesMeetForTrainer(u16 trainerID, int regionNo) {
     GF_ASSERT(regionNo < 2);
 
     u8 class = TrainerData_GetAttr(trainerID, TRATTR_CLASS);
@@ -255,18 +246,17 @@ int Trainer_GetEncounterMusic(u16 trainerID, int regionNo) {
     return seqNo;
 }
 
-// From platinum: Sound_TryFadeInBGM
-void FieldSystem_BeginFadeOutMusic(FieldSystem *fieldSystem, u32 mapId) {
+void FieldBGM_TryFadeIn(FieldSystem *fieldSystem, u32 mapId) {
     if (GF_SND_BGM_DisableCheck() == 1) {
         return;
     }
 
-    if (GF_GetCurrentPlayingBGM() != GetMapMusic(fieldSystem, mapId)) {
+    if (GF_GetCurrentPlayingBGM() != FieldBGM_GetForMapHeader(fieldSystem, mapId)) {
         GF_SndStartFadeOutBGM(0, 40);
     }
 }
 
-void sub_02055110(FieldSystem *fieldSystem, u32 mapID, u32 a2) {
+void FieldBGM_PlayForMapHeader(FieldSystem *fieldSystem, u32 mapID, u32 a2) {
     u16 seqNo;
 
     if (GF_SND_BGM_DisableCheck() == 1) {
@@ -275,7 +265,7 @@ void sub_02055110(FieldSystem *fieldSystem, u32 mapID, u32 a2) {
 
     Sound_SetScene(SOUND_SCENE_NONE);
 
-    seqNo = GetMapMusic(fieldSystem, mapID);
+    seqNo = FieldBGM_GetForMapHeader(fieldSystem, mapID);
 
     Sound_SetFieldBGM(seqNo);
 
@@ -292,9 +282,9 @@ void sub_02055110(FieldSystem *fieldSystem, u32 mapID, u32 a2) {
     sub_02005CF4(FALSE);
 }
 
-BOOL sub_02055164(FieldSystem *fieldSystem, u32 mapId) {
-    u16 seqNo = FieldSystem_GetOverriddenMusicId(fieldSystem, mapId);
-    Sound_SetFieldBGM(GetMapMusic(fieldSystem, mapId));
+BOOL FieldBGM_PlayEffectiveForMapHeader(FieldSystem *fieldSystem, u32 mapId) {
+    u16 seqNo = FieldBGM_GetEffective(fieldSystem, mapId);
+    Sound_SetFieldBGM(FieldBGM_GetForMapHeader(fieldSystem, mapId));
 
     sub_02005CF4(TRUE);
     u32 res = sub_02055198(NULL, seqNo);

@@ -112,7 +112,7 @@ BOOL sub_0205298C(TaskManager *taskman) {
         break;
     case 2:
         if (!GF_SndGetFadeTimer()) {
-            sub_02054F14();
+            FieldBGM_Stop();
             ++(*state);
             break;
         }

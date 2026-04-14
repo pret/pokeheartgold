@@ -1490,7 +1490,7 @@ static void Task_StartMenu_WaitEvolution(TaskManager *taskManager) {
         Heap_Destroy(HEAP_ID_EVOLUTION);
         StopBGM(SEQ_GS_SHINKA, 0);
         Sound_SetScene(SOUND_SCENE_NONE);
-        sub_02055164(fieldSystem, fieldSystem->location->mapId);
+        FieldBGM_PlayEffectiveForMapHeader(fieldSystem, fieldSystem->location->mapId);
         startMenu->exitTaskEnvironment = sub_0203E3FC(fieldSystem, &startMenu->itemCheckUseData);
         StartMenuAfterEvoPartySlotBak *unk = startMenu->exitTaskEnvironment2;
         sub_020778E0(startMenu->exitTaskEnvironment, unk->partySlot);

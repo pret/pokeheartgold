@@ -63,7 +63,7 @@ static void FieldSystem_InitPokegearArgs(FieldSystem *sys, PokegearArgs *pokegea
     pokegearArgs->playerGender = PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfile(FieldSystem_GetSaveData(sys)));
     pokegearArgs->menuInputStatePtr = &sys->menuInputState;
     pokegearArgs->menuInputState = sub_0203DF3C(sys);
-    pokegearArgs->mapMusicID = FieldSystem_GetOverriddenMusicId(sys, pokegearArgs->mapID);
+    pokegearArgs->mapMusicID = FieldBGM_GetEffective(sys, pokegearArgs->mapID);
 
     if (isMap) {
         return;

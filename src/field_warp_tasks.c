@@ -169,7 +169,7 @@ void sub_02053038(FieldSystem *fieldSystem, BOOL isConnection) {
     u16 weather;
     u16 spawnId;
 
-    FieldSystem_ClearSavedMusicId(fieldSystem);
+    FieldBGM_ClearOverride(fieldSystem);
     if (!fieldSystem->unkAC) {
         ClearTempFieldEventData(fieldSystem);
     }
@@ -464,7 +464,7 @@ static BOOL sub_02053688(TaskManager *taskManager) {
     switch (env->unk0) {
     case 0:
         PlaySE(SEQ_SE_DP_KAIDAN2);
-        FieldSystem_BeginFadeOutMusic(fieldSystem, env->location.mapId);
+        FieldBGM_TryFadeIn(fieldSystem, env->location.mapId);
         sub_020553B0(taskManager);
         env->unk0++;
         break;
@@ -476,7 +476,7 @@ static BOOL sub_02053688(TaskManager *taskManager) {
         if (GF_SndGetFadeTimer() != 0) {
             break;
         }
-        sub_02055110(fieldSystem, env->location.mapId, 0);
+        FieldBGM_PlayForMapHeader(fieldSystem, env->location.mapId, 0);
         sub_02055408(taskManager);
         env->unk0++;
         break;
@@ -550,7 +550,7 @@ static BOOL Task_ScriptWarp(TaskManager *taskManager) {
 
     switch (env->state) {
     case 0:
-        FieldSystem_BeginFadeOutMusic(fieldSystem, env->location.mapId);
+        FieldBGM_TryFadeIn(fieldSystem, env->location.mapId);
         CallTask_LeaveOverworld(taskManager);
         env->state++;
         break;
@@ -562,7 +562,7 @@ static BOOL Task_ScriptWarp(TaskManager *taskManager) {
         if (GF_SndGetFadeTimer() != 0) {
             break;
         }
-        sub_02055110(fieldSystem, env->location.mapId, 0);
+        FieldBGM_PlayForMapHeader(fieldSystem, env->location.mapId, 0);
         CallTask_RestoreOverworld(taskManager);
         env->state++;
         break;
@@ -617,7 +617,7 @@ static BOOL sub_02053950(TaskManager *taskManager) {
     Location *location = &env->location;
     switch (env->unk0) {
     case 0:
-        FieldSystem_BeginFadeOutMusic(fieldSystem, location->mapId);
+        FieldBGM_TryFadeIn(fieldSystem, location->mapId);
         sub_020539D8(taskManager);
         env->unk0++;
         break;
@@ -677,7 +677,7 @@ static BOOL sub_02053A2C(TaskManager *taskManager) {
         sub_0200615C(5, 10);
         GF_SndHandleMoveVolume(0, 128, 15);
         fieldSystem->unkC4 = -1;
-        sub_02055110(fieldSystem, fieldSystem->location->mapId, 1);
+        FieldBGM_PlayForMapHeader(fieldSystem, fieldSystem->location->mapId, 1);
         FieldSystem_DrawMapNameAnimation(fieldSystem);
         sub_02053AA0(taskManager);
         (*state_p)++;
@@ -726,7 +726,7 @@ static BOOL sub_02053B3C(TaskManager *taskManager) {
 
     switch (env->unk0) {
     case 0:
-        FieldSystem_BeginFadeOutMusic(fieldSystem, location->mapId);
+        FieldBGM_TryFadeIn(fieldSystem, location->mapId);
         sub_02053BE8(taskManager);
         env->unk0++;
         break;
@@ -739,7 +739,7 @@ static BOOL sub_02053B3C(TaskManager *taskManager) {
         if (GF_SndGetFadeTimer() != 0) {
             break;
         }
-        sub_02055110(fieldSystem, location->mapId, 0);
+        FieldBGM_PlayForMapHeader(fieldSystem, location->mapId, 0);
         if (env->unk4 == 2) {
             sub_02067BA4(fieldSystem);
         } else if (env->unk4 == 0 || env->unk4 == 1) {
@@ -839,7 +839,7 @@ static BOOL sub_02053CCC(TaskManager *taskManager) {
         break;
     case 2:
         if (env->unk4) {
-            FieldSystem_BeginFadeOutMusic(fieldSystem, location->mapId);
+            FieldBGM_TryFadeIn(fieldSystem, location->mapId);
             CallTask_LeaveOverworld(taskManager);
             env->unk0++;
         }
@@ -852,7 +852,7 @@ static BOOL sub_02053CCC(TaskManager *taskManager) {
         if (GF_SndGetFadeTimer() != 0) {
             break;
         }
-        sub_02055110(fieldSystem, location->mapId, 0);
+        FieldBGM_PlayForMapHeader(fieldSystem, location->mapId, 0);
         CallTask_RestoreOverworld(taskManager);
         env->unk0++;
         break;
@@ -902,7 +902,7 @@ static BOOL sub_02053E5C(TaskManager *taskManager) {
 
     switch (*state_p) {
     case 0:
-        FieldSystem_BeginFadeOutMusic(fieldSystem, location->mapId);
+        FieldBGM_TryFadeIn(fieldSystem, location->mapId);
         ov01_021F35C4(fieldSystem, 1, &env->unk4);
         (*state_p)++;
         break;
@@ -920,7 +920,7 @@ static BOOL sub_02053E5C(TaskManager *taskManager) {
         if (GF_SndGetFadeTimer() != 0) {
             break;
         }
-        sub_02055110(fieldSystem, location->mapId, 0);
+        FieldBGM_PlayForMapHeader(fieldSystem, location->mapId, 0);
         CallTask_RestoreOverworld(taskManager);
         (*state_p)++;
         break;
@@ -956,7 +956,7 @@ static BOOL sub_02053F70(TaskManager *taskManager) {
 
     switch (*state_p) {
     case 0:
-        FieldSystem_BeginFadeOutMusic(fieldSystem, location->mapId);
+        FieldBGM_TryFadeIn(fieldSystem, location->mapId);
         PaletteFadeUntilFinished(taskManager);
         (*state_p)++;
         break;
@@ -972,7 +972,7 @@ static BOOL sub_02053F70(TaskManager *taskManager) {
         if (GF_SndGetFadeTimer() != 0) {
             break;
         }
-        sub_02055110(fieldSystem, location->mapId, 0);
+        FieldBGM_PlayForMapHeader(fieldSystem, location->mapId, 0);
         CallTask_RestoreOverworld(taskManager);
         (*state_p)++;
         break;
@@ -1014,7 +1014,7 @@ static BOOL sub_020540A4(TaskManager *taskManager) {
     switch (env->unk0) {
     case 0:
         PlaySE(SEQ_SE_DP_KAIDAN2);
-        FieldSystem_BeginFadeOutMusic(fieldSystem, env->location.mapId);
+        FieldBGM_TryFadeIn(fieldSystem, env->location.mapId);
         sub_020553B0(taskManager);
         env->unk0++;
         break;
@@ -1026,7 +1026,7 @@ static BOOL sub_020540A4(TaskManager *taskManager) {
         if (GF_SndGetFadeTimer() != 0) {
             break;
         }
-        sub_02055110(fieldSystem, env->location.mapId, 0);
+        FieldBGM_PlayForMapHeader(fieldSystem, env->location.mapId, 0);
         CallTask_RestoreOverworld(taskManager);
         env->unk0++;
         break;

@@ -210,7 +210,7 @@ BOOL Task_Blackout(TaskManager *taskManager) {
         break;
     case STATE_BLACKOUT_TASK_SOUND_FADE_WAIT:
         if (GF_SndGetFadeTimer() == 0) {
-            sub_02054F14();
+            FieldBGM_Stop();
             (*state)++;
         }
         break;

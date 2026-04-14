@@ -27,8 +27,8 @@
 .public Save_VarsFlags_Get
 .public BattleSetup_New
 .public BattleSetup_Delete
-.public FieldSystem_GetOverriddenMusicId
-.public GetMapMusic
+.public FieldBGM_GetEffective
+.public FieldBGM_GetForMapHeader
 .public sub_02055198
 .public Save_VarsFlags_FlypointFlagAction
 .public BagCursor_New

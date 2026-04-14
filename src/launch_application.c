@@ -1259,7 +1259,7 @@ void HatchEggInParty(FieldSystem *fieldSystem) {
     data.mon = mon;
     data.options = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);
     data.profile = Save_PlayerData_GetProfile(fieldSystem->saveData);
-    data.unkC = FieldSystem_GetOverriddenMusicId(fieldSystem, fieldSystem->location->mapId);
+    data.unkC = FieldBGM_GetEffective(fieldSystem, fieldSystem->location->mapId);
     CallTask_HatchEggInParty(fieldSystem->taskman, &data);
 }
 
