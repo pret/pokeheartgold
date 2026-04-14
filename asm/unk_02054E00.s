@@ -21,54 +21,6 @@
 	.extern GetMapMusic
 	.extern FieldSystem_PlayOrFadeToNewMusicId
 
-	thumb_func_start Sound_GetBGMFadeOutAndWaitFrames
-Sound_GetBGMFadeOutAndWaitFrames: ; 0x0205504C
-	cmp r1, #4
-	bhi _0205508E
-	add r0, r1, r1
-	add r0, pc
-	ldrh r0, [r0, #6]
-	lsl r0, r0, #0x10
-	asr r0, r0, #0x10
-	add pc, r0
-_0205505C: ; jump table
-	.short _02055066 - _0205505C - 2 ; case 0
-	.short _02055070 - _0205505C - 2 ; case 1
-	.short _0205507A - _0205505C - 2 ; case 2
-	.short _0205508E - _0205505C - 2 ; case 3
-	.short _02055084 - _0205505C - 2 ; case 4
-_02055066:
-	mov r0, #0x1e
-	str r0, [r2]
-	mov r0, #0
-	str r0, [r3]
-	bx lr
-_02055070:
-	mov r0, #0x3c
-	str r0, [r2]
-	mov r0, #0
-	str r0, [r3]
-	bx lr
-_0205507A:
-	mov r0, #0x3c
-	str r0, [r2]
-	mov r0, #0xf
-	str r0, [r3]
-	bx lr
-_02055084:
-	mov r0, #0x1e
-	str r0, [r2]
-	mov r0, #0
-	str r0, [r3]
-	bx lr
-_0205508E:
-	mov r0, #0x3c
-	str r0, [r2]
-	mov r0, #0
-	str r0, [r3]
-	bx lr
-	thumb_func_end Sound_GetBGMFadeOutAndWaitFrames
-
 	thumb_func_start Trainer_GetEncounterMusic
 Trainer_GetEncounterMusic: ; 0x02055098
 	push {r3, r4, r5, r6, r7, lr}

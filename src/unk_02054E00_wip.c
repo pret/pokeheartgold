@@ -205,3 +205,28 @@ BOOL FieldSystem_PlayOrFadeToNewMusicId(FieldSystem *fieldSystem, u16 seqNo, int
 
     return TRUE;
 }
+
+void Sound_GetBGMFadeOutAndWaitFrames(FieldSystem *fieldSystem, int mode, int *fadeOutFrames, int *waitFrames) {
+    switch (mode) {
+    case 0:
+        *fadeOutFrames = 30;
+        *waitFrames = 0;
+        break;
+    case 1:
+        *fadeOutFrames = 60;
+        *waitFrames = 0;
+        break;
+    case 2:
+        *fadeOutFrames = 60;
+        *waitFrames = 15;
+        break;
+    case 4:
+        *fadeOutFrames = 30;
+        *waitFrames = 0;
+        break;
+    default:
+        *fadeOutFrames = 60;
+        *waitFrames = 0;
+        break;
+    }
+}
