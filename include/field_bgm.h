@@ -7,9 +7,6 @@
 
 const static u16 sTrainerEncounterMusicParam[][3];
 
-BOOL MapModel_IsHeadbuttTree(u32 mapModelNo);
-u16 MapCoordToMatrixIndex(FieldSystem* fieldSystem, int coordX, int coordY);
-void sub_02054EB0(FieldSystem *fieldSystem, int a1, BOOL a2);
 void FieldBGM_Stop();
 void FieldBGM_SetOverride(FieldSystem *fieldSystem, u16 seqNo);
 u16 FieldBGM_GetOverride(FieldSystem *fieldSystem);

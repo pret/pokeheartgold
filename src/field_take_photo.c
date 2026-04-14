@@ -21,7 +21,7 @@
 #include "task.h"
 #include "unk_02005D10.h"
 #include "unk_0200FA24.h"
-#include "field_bgm.h"
+#include "unk_02054E00.h"
 #include "unk_02055244.h"
 #include "unk_020552A4.h"
 #include "unk_02067A80.h"
