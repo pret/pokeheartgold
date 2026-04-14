@@ -24,6 +24,8 @@ void Sound_SetScene(int);
 BOOL GF_SND_BGM_DisableCheck();
 void GF_FadeStartMusicId(int, int, int, int, int, void*);
 void GF_NowStartMusicId(int, int, int, int, void*);
+void sub_02004AC8();
+void sub_02005CF4(BOOL);
 
 // clang-format off
 // Class, Eyes meet theme
@@ -248,4 +250,41 @@ int Trainer_GetEncounterMusic(u16 trainerID, int regionNo) {
     }
 
     return bgmID;
+}
+
+// From platinum: Sound_TryFadeInBGM
+void FieldSystem_BeginFadeOutMusic(FieldSystem *fieldSystem, u32 mapId) {
+    if (GF_SND_BGM_DisableCheck() == 1) {
+        return;
+    }
+
+    if (GF_GetCurrentPlayingBGM() != GetMapMusic(fieldSystem, mapId)) {
+        GF_SndStartFadeOutBGM(0, 40);
+    }
+}
+
+void sub_02055110(FieldSystem *fieldSystem, u32 mapID, u32 a2) {
+    u16 bgmID;
+
+    if (GF_SND_BGM_DisableCheck() == 1) {
+        return;
+    }
+
+    Sound_SetScene(SOUND_SCENE_NONE);
+
+    bgmID = GetMapMusic(fieldSystem, mapID);
+
+    sub_02004AC8();
+
+    sub_02005CF4(TRUE);
+
+    fieldSystem->unkC4 = -3;
+
+    if (a2 == 1) {
+        sub_02055198(fieldSystem, bgmID); // Sound_SetFieldBGM? (plat name)
+    } else {
+        sub_02055198(NULL, bgmID);
+    }
+
+    sub_02005CF4(FALSE);
 }
