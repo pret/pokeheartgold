@@ -61,7 +61,6 @@
 #include "pokedex_util.h"
 #include "pokegear_apps.h"
 #include "save_local_field_data.h"
-#include "save_pokeathlon.h"
 #include "save_special_ribbons.h"
 #include "save_trainer_card.h"
 #include "save_wifi_history.h"
@@ -73,7 +72,6 @@
 #include "unk_0202C730.h"
 #include "unk_0202D230.h"
 #include "unk_0202DB34.h"
-#include "unk_02031904.h"
 #include "unk_02037C94.h"
 #include "unk_02054E00.h"
 #include "unk_02055244.h"
@@ -693,8 +691,8 @@ static void PokeathlonCourseRecord_LaunchApp_Impl(FieldSystem *fieldSystem, Poke
 PokeathlonCourseRecordArgs *PokeathlonCourseRecord_LaunchApp(FieldSystem *fieldSystem) {
     PokeathlonCourseRecordArgs *args = Heap_AllocAtEnd(HEAP_ID_FIELD2, sizeof(PokeathlonCourseRecordArgs));
     SaveData *saveData = FieldSystem_GetSaveData(fieldSystem);
-    POKEATHLON_SAV *pokeathlon = Save_Pokeathlon_Get(saveData);
-    args->pokeathlon = sub_02031974(pokeathlon);
+    PokeathlonSave *pokeathlon = Save_Pokeathlon_Get(saveData);
+    args->pokeathlon = PokeathlonSave_dummy1(pokeathlon);
     args->unk4 = sub_0203EE54(saveData);
     PokeathlonCourseRecord_LaunchApp_Impl(fieldSystem, args);
     return args;
@@ -708,10 +706,10 @@ static void PokeathlonMedals_LaunchApp_Impl(FieldSystem *fieldSystem, Pokeathlon
 PokeathlonMedalsArgs *PokeathlonMedals_LaunchApp(FieldSystem *fieldSystem) {
     PokeathlonMedalsArgs *args = Heap_AllocAtEnd(HEAP_ID_FIELD2, sizeof(PokeathlonMedalsArgs));
     SaveData *saveData = FieldSystem_GetSaveData(fieldSystem);
-    POKEATHLON_SAV *pokeathlonSave = Save_Pokeathlon_Get(saveData);
+    PokeathlonSave *pokeathlonSave = Save_Pokeathlon_Get(saveData);
     Pokedex *pokedex = Save_Pokedex_Get(saveData);
     args->pokedex = pokedex;
-    args->unk4 = sub_02031978(pokeathlonSave);
+    args->unk4 = PokeathlonSave_GetUnkDC(pokeathlonSave);
     args->natDexEnabled = Pokedex_GetNatDexFlag(pokedex);
     args->unkC = sub_0203EE54(saveData);
     PokeathlonMedals_LaunchApp_Impl(fieldSystem, args);
@@ -726,12 +724,12 @@ static void PokeathlonEventRecord_LaunchApp_Impl(FieldSystem *fieldSystem, Pokea
 PokeathlonEventRecordArgs *PokeathlonEventRecord_LaunchApp(FieldSystem *fieldSystem) {
     PokeathlonEventRecordArgs *args = Heap_AllocAtEnd(HEAP_ID_FIELD2, sizeof(PokeathlonEventRecordArgs));
     SaveData *saveData = FieldSystem_GetSaveData(fieldSystem);
-    POKEATHLON_SAV *pokeathlonSave = Save_Pokeathlon_Get(saveData);
-    args->unk0 = sub_0203197C(pokeathlonSave);
-    args->unk4 = sub_02031984(pokeathlonSave);
+    PokeathlonSave *pokeathlonSave = Save_Pokeathlon_Get(saveData);
+    args->recordsSolo = PokeathlonSave_GetRecordsSolo(pokeathlonSave);
+    args->recordsLink = PokeathlonSave_GetRecordsLink(pokeathlonSave);
     args->profile = Save_PlayerData_GetProfile(saveData);
     args->unk10 = sub_0203EE54(saveData);
-    args->unk8 = sub_02031990(pokeathlonSave);
+    args->unk8 = PokeathlonSave_GetUnkAEC(pokeathlonSave);
     PokeathlonEventRecord_LaunchApp_Impl(fieldSystem, args);
     return args;
 }
