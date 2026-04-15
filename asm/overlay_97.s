@@ -7,28 +7,7 @@
 	.extern ov97_0221E5C0
 	.extern ov97_0221E5D4
 	.extern ov97_0221E69C
-
-	thumb_func_start ov97_0221E6DC
-ov97_0221E6DC: ; 0x0221E6DC
-	push {r3, r4, r5, lr}
-	add r5, r0, #0
-	bl OverlayManager_GetArgs
-	add r4, r0, #0
-_0221E6E6:
-	add r0, r5, #0
-	bl ov97_0221E700
-	cmp r0, #0
-	beq _0221E6F4
-	mov r0, #1
-	pop {r3, r4, r5, pc}
-_0221E6F4:
-	ldr r0, [r4]
-	ldr r0, [r0, #4]
-	cmp r0, #0
-	beq _0221E6E6
-	mov r0, #0
-	pop {r3, r4, r5, pc}
-	thumb_func_end ov97_0221E6DC
+	.extern ov97_0221E6DC
 
 	thumb_func_start ov97_0221E700
 ov97_0221E700: ; 0x0221E700

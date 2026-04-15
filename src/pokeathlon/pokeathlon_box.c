@@ -13,8 +13,8 @@ int sub_020935E0(int);
 void sub_02093A40(u32);
 void sub_02093354(u32);
 
-BOOL ov97_0221E5C0() {
-    if (ov97_0221E6DC() != 0) {
+BOOL ov97_0221E5C0(OverlayManager *manager) {
+    if (ov97_0221E6DC(manager) != FALSE) {
         return TRUE;
     }
     return FALSE;
@@ -23,19 +23,19 @@ BOOL ov97_0221E5C0() {
 BOOL ov97_0221E5D4(OverlayManager *manager) {
     PokeathlonBox* data = OverlayManager_GetData(manager);
     
-    switch (data->unk4) {
+    switch (data->state) {
         case 0:
-            data->unk4 = 1;
+            data->state = 1;
             break;
 
         case 1:
             BeginNormalPaletteFade(0, 1, 1, 0, 6, 1, HEAP_ID_POKEATHLON);
-            data->unk4 = 2;
+            data->state = 2;
             break;
 
         case 2:
             if (IsPaletteFadeFinished()) {
-                data->unk4 = 3;
+                data->state = 3;
             }
             break;
 
@@ -43,21 +43,21 @@ BOOL ov97_0221E5D4(OverlayManager *manager) {
             int res = sub_020935E0(data->unk8);
             if (res == 2) {
                 data->unk28 = FALSE;
-                data->unk4 = 4;
+                data->state = 4;
             } else if (res == 3) {
                 data->unk28 = TRUE;
-                data->unk4 = 4;
+                data->state = 4;
             }
             break;
 
         case 4:
             BeginNormalPaletteFade(0, 0, 0, 0, 6, 1, HEAP_ID_POKEATHLON);
-            data->unk4 = 5;
+            data->state = 5;
             break;
 
         case 5:
             if (IsPaletteFadeFinished()) {
-                void* args = OverlayManager_GetArgs(manager);
+                PokeathlonBoxArgs* args = OverlayManager_GetArgs(manager);
                 ov97_0221E98C(data, args);
                 return TRUE;
             }
@@ -71,6 +71,7 @@ BOOL ov97_0221E5D4(OverlayManager *manager) {
 
 BOOL ov97_0221E69C(OverlayManager *manager) {
     PokeathlonBox* data = OverlayManager_GetData(manager);
+    
     Main_SetVBlankIntrCB(NULL, NULL);
     ov97_0221F020(data->unkC);
     sub_02093354(data->unk8);
@@ -80,5 +81,18 @@ BOOL ov97_0221E69C(OverlayManager *manager) {
     ObjPlttTransfer_Destroy();
     Heap_Free(data->unk0);
     Heap_Free(data);
+
     return TRUE;
+}
+
+BOOL ov97_0221E6DC(OverlayManager *manager) {
+    PokeathlonBoxArgs* args = OverlayManager_GetArgs(manager);
+
+    do {
+        if (ov97_0221E700(manager) != 0) {
+            return TRUE;
+        }
+    } while (args->ptr->state == 0);
+
+    return FALSE;
 }
