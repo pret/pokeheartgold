@@ -77,10 +77,10 @@
 .public Pokedex_GetSeenSpindaPersonality
 .public Pokedex_SpeciesGetLastSeenGender
 .public Pokedex_GetSeenFormByIdx
-.public sub_02031974
-.public sub_02031978
-.public sub_0203197C
-.public sub_02031990
+.public PokeathlonSave_dummy1
+.public PokeathlonSave_GetUnkDC
+.public PokeathlonSave_GetRecordsSolo
+.public PokeathlonSave_GetUnkAEC
 .public GetGenderBySpeciesAndPersonality
 .public G2x_SetBlendAlpha_
 .public MI_CpuFill8

@@ -4,6 +4,8 @@
 
 #include "constants/sprites.h"
 
+#include "pokeathlon/pokeathlon_save.h"
+
 #include "apricorn_tree.h"
 #include "fieldmap.h"
 #include "friend_group.h"
@@ -17,7 +19,6 @@
 #include "script.h"
 #include "sys_vars.h"
 #include "unk_0202C730.h"
-#include "unk_02031904.h"
 #include "unk_02031B0C.h"
 #include "unk_02066EDC.h"
 #include "unk_0206D494.h"
@@ -88,7 +89,7 @@ void sub_02055508(FieldSystem *fieldSystem, int days) {
         sub_02031CCC(Save_ApricornBox_Get(fieldSystem->saveData), days);
         sub_0209730C(fieldSystem->saveData, days);
     }
-    sub_02031AE4(Save_Pokeathlon_Get(fieldSystem->saveData));
+    PokeathlonSave_ResetUnkB7C(Save_Pokeathlon_Get(fieldSystem->saveData));
     Save_VarsFlags_UpdateBuenasPasswordSet(Save_VarsFlags_Get(fieldSystem->saveData));
 }
 
