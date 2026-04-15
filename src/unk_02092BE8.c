@@ -18,7 +18,7 @@
 #include "scrcmd.h"
 #include "sys_vars.h"
 #include "unk_02005D10.h"
-#include "unk_02054E00.h"
+#include "field_bgm.h"
 #include "unk_0206D494.h"
 
 static void FieldSystem_InitPokegearArgs(FieldSystem *sys, PokegearArgs *ptr, BOOL isMap);
@@ -63,7 +63,7 @@ static void FieldSystem_InitPokegearArgs(FieldSystem *sys, PokegearArgs *pokegea
     pokegearArgs->playerGender = PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfile(FieldSystem_GetSaveData(sys)));
     pokegearArgs->menuInputStatePtr = &sys->menuInputState;
     pokegearArgs->menuInputState = sub_0203DF3C(sys);
-    pokegearArgs->mapMusicID = FieldSystem_GetOverriddenMusicId(sys, pokegearArgs->mapID);
+    pokegearArgs->mapMusicID = FieldBGM_GetEffective(sys, pokegearArgs->mapID);
 
     if (isMap) {
         return;

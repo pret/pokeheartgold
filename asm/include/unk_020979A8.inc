@@ -16,7 +16,7 @@
 .public TaskManager_GetEnvironment
 .public TaskManager_GetStatePtr
 .public sub_020537F0
-.public sub_02055110
+.public FieldBGM_PlayForMapHeader
 .public CallTask_LeaveOverworld
 .public sub_02055408
 .public Field_GetTimeOfDay

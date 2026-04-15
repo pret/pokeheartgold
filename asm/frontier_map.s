@@ -167,7 +167,7 @@ _022386D4:
 	bl ov80_0222ACA0
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_02004AC8
+	bl Sound_SetFieldBGM
 	add r0, r5, #0
 	mov r1, #3
 	bl ov80_0222ACA0
