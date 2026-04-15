@@ -1,6 +1,6 @@
 #include <nitro/fs/overlay.h>
 #pragma once
-.public sub_02004AC8
+.public Sound_SetFieldBGM
 .public PlayBGM
 .public PlaySE
 .public StopSE

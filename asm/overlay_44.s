@@ -8203,7 +8203,7 @@ ov44_0222E030: ; 0x0222E030
 	bne _0222E056
 	bl IsNighttime
 	mov r0, #0
-	bl sub_02004AD8
+	bl Sound_SetScene
 	ldr r1, _0222E070 ; =0x00000427
 	mov r0, #0xb
 	mov r2, #1

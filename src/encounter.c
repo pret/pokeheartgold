@@ -25,6 +25,7 @@
 #include "pokedex_util.h"
 #include "save_arrays.h"
 #include "save_local_field_data.h"
+#include "sound.h"
 #include "sound_02004A44.h"
 #include "sys_flags.h"
 #include "unk_0202FBCC.h"
@@ -230,7 +231,7 @@ static BOOL Task_02050960(TaskManager *taskManager) {
 
     switch (*state) {
     case 0:
-        sub_02004AD8(0);
+        Sound_SetScene(SOUND_SCENE_NONE);
         Sound_SetSceneAndPlayBGM(5, encounter->bgm, 1);
         CallTask_StartBattle(taskManager, encounter->setup);
         (*state)++;

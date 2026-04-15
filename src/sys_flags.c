@@ -328,6 +328,7 @@ void ClearFlag99A(SaveVarsFlags *state) {
 }
 
 BOOL CheckFlag99A(SaveVarsFlags *state) {
+    // called by FieldBGM_GetEffective, might be related to surf
     return CheckScriptFlag(state, FLAG_UNK_99A);
 }
 

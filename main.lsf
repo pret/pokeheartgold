@@ -141,8 +141,7 @@ Static main
     Object asm/unk_02030A98.o
     Object src/unk_0203170C.o
     Object asm/unk_020318C8.o
-    Object asm/unk_02031904.o
-    Object src/unk_02031AF0.o
+    Object src/pokeathlon/pokeathlon_save.o
     Object asm/unk_02031B0C.o
     Object src/pokewalker.o
     Object src/save_trainer_house.o
@@ -204,7 +203,8 @@ Static main
     Object src/script_pokemon_util.o
     Object src/terrain_attributes.o
     Object asm/unk_02054648.o
-    Object asm/unk_02054E00.o
+    Object src/unk_02054E00.o
+    Object src/field_bgm.o
     Object asm/unk_020551B8.o
     Object asm/unk_02055244.o
     Object src/unk_02055418.o

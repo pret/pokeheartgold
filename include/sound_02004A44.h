@@ -39,17 +39,17 @@ void GF_MIC_StopAutoSampling(void);
 void PlayCryEx(int, int, int, int, int, int);
 void sub_02004B24(int);
 void BGM_SaveStateAndPlayNew(int a0);
-u16 GF_GetCurrentPlayingBGM(void);
+u16 GF_GetCurrentPlayingBGM(); // Cannot put `void` in it since it's sometimes called with an argument (required for matching), sometimes not.
 void sub_020053A8(u8 a0, u8 a1);
 void GF_SND_BGM_DisableSet(u8 a0);
 BOOL sub_02005518(void);
-void Sound_SetSceneAndPlayBGM(u8 scene, u16 bgmID, int unused);
+void Sound_SetSceneAndPlayBGM(u8 scene, u16 seqNo, int unused);
 void GF_SetVolumeBySeqNo(u16 a0, u16 a1);
 void GF_SndHandleSetPlayerVolume(u32 a0, u32 a1);
 void GF_SndHandleSetInitialVolume(s32 a0, s32 a1);
 
 void sub_02005448(void);
-void sub_02004AD8(int a0);
+void Sound_SetScene(int a0);
 void sub_02005BEC(BOOL);
 
 #endif // POKEHEARTGOLD_SOUND_02004A44_H

@@ -10,6 +10,8 @@
 #include "overlay_2/overlay_02_02251E74.h"
 #include "overlay_2/overlay_02_gear_phone.h"
 
+#include "pokeathlon/pokeathlon_save.h"
+
 #include "bag.h"
 #include "bug_contest.h"
 #include "fieldmap.h"
@@ -40,8 +42,6 @@
 #include "unk_0200FA24.h"
 #include "unk_02023694.h"
 #include "unk_02030A98.h"
-#include "unk_02031904.h"
-#include "unk_02031AF0.h"
 #include "unk_02031B0C.h"
 #include "unk_02037C94.h"
 #include "unk_0205BFF0.h"
@@ -761,7 +761,7 @@ BOOL ScrCmd_724(ScriptContext *ctx) {
     u8 unkVar = ScriptGetVar(ctx);
     u16 *unkPtrA = ScriptGetVarPointer(ctx);
 
-    Pokeathlon_UnkSubStruct_B00 *unkPtrB = sub_0203199C(Save_Pokeathlon_Get(ctx->fieldSystem->saveData));
+    Pokeathlon_UnkSubStruct_B00 *unkPtrB = PokeathlonSave_GetUnkB00(Save_Pokeathlon_Get(ctx->fieldSystem->saveData));
 
     if (unkVar <= 9) {
         *unkPtrA = ov01_02201B2C(unkPtrB->unk44[unkVar]);
@@ -808,7 +808,7 @@ BOOL ScrCmd_725(ScriptContext *ctx) {
     u8 unkA = ScriptReadByte(ctx);
     u32 unkB = ScriptGetVar(ctx);
 
-    Pokeathlon_UnkSubStruct_B00 *unkPtr = sub_020319F0(Save_Pokeathlon_Get(ctx->fieldSystem->saveData));
+    Pokeathlon_UnkSubStruct_B00 *unkPtr = PokeathlonSave_GetAgainUnkB00(Save_Pokeathlon_Get(ctx->fieldSystem->saveData));
 
     if (unkA == 0) {
         val = unkPtr->unk70 + unkB;
@@ -951,7 +951,7 @@ BOOL ScrCmd_CreatePokeathlonFriendshipRoomStatues(ScriptContext *ctx) {
     u16 species;
     FieldSystem *fieldSystem = ctx->fieldSystem;
 
-    SavePokeathlonFriendshipRecords *unkPtr = sub_02031B00(fieldSystem->saveData);
+    PokeathlonSave_FriendshipRecords *unkPtr = Save_Pokeathlon_FriendshipRecords_Get(fieldSystem->saveData);
 
     for (i = 0; i < 3; i++) {
         LocalMapObject *mapObj = MapObjectManager_GetFirstActiveObjectByID(fieldSystem->mapObjectManager, 0xf6 + i);

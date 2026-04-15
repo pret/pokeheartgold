@@ -23,7 +23,7 @@
 #include "unk_02005D10.h"
 #include "unk_0200FA24.h"
 #include "unk_02054648.h"
-#include "unk_02054E00.h"
+#include "field_bgm.h"
 #include "unk_02055244.h"
 #include "unk_020552A4.h"
 #include "unk_02056680.h"
@@ -161,7 +161,7 @@ BOOL sub_02055DBC(TaskManager *man) {
         if (env->unk24 && sub_02068CCC(env->unk24)) {
             break;
         }
-        FieldSystem_BeginFadeOutMusic(fieldSystem, env->location.mapId);
+        FieldBGM_TryFadeIn(fieldSystem, env->location.mapId);
         TaskManager_Call(man, sMapExitRoutines[env->transitionNo], env);
         if (FollowMon_IsActive(fieldSystem) && ov01_022057C4(fieldSystem) && !FollowMon_GetPermission(fieldSystem)) {
             ov01_022057D0(fieldSystem);
@@ -191,7 +191,7 @@ BOOL sub_02055DBC(TaskManager *man) {
         break;
     case 7:
         if (GF_SndGetFadeTimer() == 0) {
-            sub_02055110(fieldSystem, env->location.mapId, 1);
+            FieldBGM_PlayForMapHeader(fieldSystem, env->location.mapId, 1);
             if (!MapHeader_IsCave(env->destinationMapID)) {                  // this has gotta be for the pre-entering images right?
                 int index = MapPreviewGraphic_GetIndex(env->location.mapId); // this gets the index of the location in the list of maps that have map icons
                 if (index != 255) {
