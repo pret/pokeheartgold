@@ -6,7 +6,7 @@
 #include "overlay_manager.h"
 
 typedef struct PokeathlonBox {
-    u32 unk0;
+    void* unk0;
     u32 unk4;
     u32 unk8;
     u32 unkC;
@@ -16,7 +16,11 @@ typedef struct PokeathlonBox {
 
 BOOL ov97_0221E5C0();
 BOOL ov97_0221E5D4(OverlayManager *manager);
+BOOL ov97_0221E69C(OverlayManager *manager);
 
-u32 ov97_0221E6DC();
+u32  ov97_0221E6DC();
+void ov97_0221E98C(PokeathlonBox*, void*);
+void ov97_0221F010(u32);
+void ov97_0221F020(u32);
 
 #endif // POKEHEARTGOLD_POKEATHLON_BOX_H

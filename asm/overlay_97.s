@@ -6,32 +6,7 @@
 
 	.extern ov97_0221E5C0
 	.extern ov97_0221E5D4
-
-	thumb_func_start ov97_0221E69C
-ov97_0221E69C: ; 0x0221E69C
-	push {r4, lr}
-	bl OverlayManager_GetData
-	add r4, r0, #0
-	mov r0, #0
-	add r1, r0, #0
-	bl Main_SetVBlankIntrCB
-	ldr r0, [r4, #0xc]
-	bl ov97_0221F020
-	ldr r0, [r4, #8]
-	bl sub_02093354
-	mov r0, #2
-	bl FontID_Release
-	bl OamManager_Free
-	bl ObjCharTransfer_Destroy
-	bl ObjPlttTransfer_Destroy
-	ldr r0, [r4]
-	bl Heap_Free
-	add r0, r4, #0
-	bl Heap_Free
-	mov r0, #1
-	pop {r4, pc}
-	.balign 4, 0
-	thumb_func_end ov97_0221E69C
+	.extern ov97_0221E69C
 
 	thumb_func_start ov97_0221E6DC
 ov97_0221E6DC: ; 0x0221E6DC
