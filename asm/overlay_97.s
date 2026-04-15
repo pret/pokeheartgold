@@ -4,19 +4,7 @@
 
 	.text
 
-	thumb_func_start ov97_0221E5C0
-ov97_0221E5C0: ; 0x0221E5C0
-	push {r3, lr}
-	bl ov97_0221E6DC
-	cmp r0, #0
-	beq _0221E5CE
-	mov r0, #1
-	pop {r3, pc}
-_0221E5CE:
-	mov r0, #0
-	pop {r3, pc}
-	.balign 4, 0
-	thumb_func_end ov97_0221E5C0
+	.extern ov97_0221E5C0
 
 	thumb_func_start ov97_0221E5D4
 ov97_0221E5D4: ; 0x0221E5D4
