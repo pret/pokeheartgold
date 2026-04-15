@@ -248,7 +248,7 @@ _021E5AB6:
 	ldr r1, [r4, #0x20]
 	add r0, r4, #0
 	ldr r1, [r1]
-	bl sub_02055164
+	bl FieldBGM_PlayEffectiveForMapHeader
 	cmp r0, #0
 	bne _021E5B2A
 	add r0, r4, #0
@@ -729,11 +729,11 @@ _021E5F3E:
 	ldr r1, [r5, #0x20]
 	add r0, r5, #0
 	ldr r1, [r1]
-	bl FieldSystem_GetOverriddenMusicId
+	bl FieldBGM_GetEffective
 	add r1, r0, #0
 	add r0, r5, #0
 	mov r2, #1
-	bl FieldSystem_PlayOrFadeToNewMusicId
+	bl FieldBGM_TryFadeOut
 	add r0, r5, #0
 	bl Field_InitMapObjectsFromZoneEventData
 	add r0, r7, #0

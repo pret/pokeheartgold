@@ -16,7 +16,7 @@
 #include "unk_0200B150.h"
 #include "unk_0200FA24.h"
 #include "unk_0203BA5C.h"
-#include "unk_02054E00.h"
+#include "field_bgm.h"
 #include "unk_020552A4.h"
 #include "unk_0206793C.h"
 #include "use_item_on_mon.h"
@@ -210,7 +210,7 @@ BOOL Task_Blackout(TaskManager *taskManager) {
         break;
     case STATE_BLACKOUT_TASK_SOUND_FADE_WAIT:
         if (GF_SndGetFadeTimer() == 0) {
-            sub_02054F14();
+            FieldBGM_Stop();
             (*state)++;
         }
         break;

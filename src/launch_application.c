@@ -73,7 +73,7 @@
 #include "unk_0202D230.h"
 #include "unk_0202DB34.h"
 #include "unk_02037C94.h"
-#include "unk_02054E00.h"
+#include "field_bgm.h"
 #include "unk_02055244.h"
 #include "unk_020552A4.h"
 #include "unk_02055418.h"
@@ -1259,7 +1259,7 @@ void HatchEggInParty(FieldSystem *fieldSystem) {
     data.mon = mon;
     data.options = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);
     data.profile = Save_PlayerData_GetProfile(fieldSystem->saveData);
-    data.unkC = FieldSystem_GetOverriddenMusicId(fieldSystem, fieldSystem->location->mapId);
+    data.unkC = FieldBGM_GetEffective(fieldSystem, fieldSystem->location->mapId);
     CallTask_HatchEggInParty(fieldSystem->taskman, &data);
 }
 

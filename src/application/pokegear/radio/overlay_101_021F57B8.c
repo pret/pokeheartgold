@@ -48,7 +48,7 @@ static const RadioFuncs sRadioShowFuncs[] = {
     { RadioShow_Commercials_Setup,         RadioShow_Commercials_Print,         RadioShow_Commercials_Teardown         },
 };
 
-RadioShow *RadioShow_Create(SaveData *saveData, u16 mapID, u16 mapHeader, BOOL inKanto, Window *win1, Window *win2, Window *win3, u32 textColor, enum HeapID heapID) {
+RadioShow *RadioShow_Create(SaveData *saveData, u16 mapID, u16 mapHeader, int regionNo, Window *win1, Window *win2, Window *win3, u32 textColor, enum HeapID heapID) {
     LocalFieldData *localFieldData = Save_LocalFieldData_Get(saveData);
     PlayerSaveData *playerData = LocalFieldData_GetPlayer(localFieldData);
     u16 *pMusicID = LocalFieldData_GetMusicIdAddr(localFieldData);
@@ -57,7 +57,7 @@ RadioShow *RadioShow_Create(SaveData *saveData, u16 mapID, u16 mapHeader, BOOL i
     ret->saveData = saveData;
     ret->mapID = mapID;
     ret->mapHeader = mapHeader;
-    ret->inKanto = inKanto;
+    ret->regionNo = regionNo;
     ret->showScriptWindow = win1;
     ret->showTitleWindow = win2;
     ret->showHostWindow = win3;

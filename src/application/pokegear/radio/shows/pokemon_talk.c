@@ -199,7 +199,7 @@ void RadioShow_PokemonTalk_SampleMapAreasAndEncounters(RadioShow *radioShow, Pok
     data->numSpecies = 0;
     data->numPrioritySpecies = 0;
     for (i = 0; i < MAP_ID_MAX; ++i) {
-        if (MapHeader_HasWildEncounters(i) && (radioShow->inKanto == MapHeader_IsInKanto(i))) {
+        if (MapHeader_HasWildEncounters(i) && (radioShow->regionNo == MapHeader_GetRegionNo(i))) {
             for (j = 0; j < NELEMS(sFilterLandmarks); ++j) {
                 if (i == sFilterLandmarks[j]) {
                     break;

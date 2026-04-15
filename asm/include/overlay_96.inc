@@ -9,7 +9,7 @@
 .public LoadFontPal0
 .public TintPalette_GrayScale
 .public GF_GetCurrentPlayingBGM
-.public sub_02004AD8
+.public Sound_SetScene
 .public Sound_SetSceneAndPlayBGM
 .public sub_020053A8
 .public sub_0200592C
