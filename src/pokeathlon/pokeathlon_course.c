@@ -3,12 +3,12 @@
 #include "global.h"
 
 #include "pokeathlon/pokeathlon.h"
+#include "pokeathlon/pokeathlon_save.h"
 
 #include "assert.h"
 #include "heap.h"
 #include "player_data.h"
 #include "render_text.h"
-#include "unk_02031904.h"
 #include "unk_02034354.h"
 #include "unk_02035900.h"
 
@@ -192,7 +192,7 @@ BOOL PokeathlonCourse_Main(OverlayManager *manager, int *state) {
 BOOL PokeathlonCourse_Exit(OverlayManager *manager, int *state) {
     PokeathlonCourseData *data;
     PokeathlonCourseArgs *args;
-    POKEATHLON_SAV *pokeathlonSave;
+    PokeathlonSave *pokeathlonSave;
     Pokeathlon_UnkSubStruct_B00 *result;
     SaveData *saveData;
 
@@ -212,7 +212,7 @@ BOOL PokeathlonCourse_Exit(OverlayManager *manager, int *state) {
     // Get Pokeathlon save data and process result
     saveData = *(SaveData **)data->args;
     pokeathlonSave = Save_Pokeathlon_Get(saveData);
-    result = sub_020319F0(pokeathlonSave);
+    result = PokeathlonSave_GetAgainUnkB00(pokeathlonSave);
     ov96_021E7F98(data->frameCounter, 59999, result);
 
     // Reset text flags
