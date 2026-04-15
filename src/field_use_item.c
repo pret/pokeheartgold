@@ -260,7 +260,7 @@ static void ItemMenuUseFunc_Bicycle(struct ItemMenuUseData *data, const struct I
 
 static BOOL ItemFieldUseFunc_Bicycle(struct ItemFieldUseData *data) {
     FieldSystem_CreateTask(data->fieldSystem, Task_MountOrDismountBicycle, NULL);
-    data->fieldSystem->unkD2_7 = 1;
+    data->fieldSystem->unkD2_7 = TRUE;
     return FALSE;
 }
 

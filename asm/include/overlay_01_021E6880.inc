@@ -14,7 +14,7 @@
 .public GameStats_GetCapped
 .public GameStats_AddScore
 .public SaveData_GetPhoneCallPersistentState
-.public sub_0202F08C
+.public PhoneCallPersistentState_CheckCallTriggerFlag
 .public Save_SafariZone_Get
 .public sub_0202F620
 .public Save_ApricornBox_Get

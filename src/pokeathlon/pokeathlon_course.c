@@ -384,13 +384,13 @@ u32 PokeathlonCourse_GetField3D8_AtIndex(PokeathlonCourseData *data, u8 index) {
 u32 ov96_021E5E7C(PokeathlonCourseData *data) {
     u8 i, j, numParticipants;
     BOOL flag = (PokeathlonCourse_GetMode(data) == 1);
-    u32* fieldPtr = data->field_3D8;
+    u32 *fieldPtr = data->field_3D8;
     numParticipants = flag ? 4 : 3;
 
     for (i = 0; i < 10; i++) {
         BOOL match = TRUE;
         for (j = 0; j < numParticipants; j++) {
-            if (fieldPtr[j] != ov96_0221A934[i*4+j]) {
+            if (fieldPtr[j] != ov96_0221A934[i * 4 + j]) {
                 match = FALSE;
                 break;
             }
