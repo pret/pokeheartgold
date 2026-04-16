@@ -69,9 +69,9 @@
 .public FieldSystem_TaskIsRunning
 .public sub_02053018
 .public sub_02053038
-.public FieldSystem_GetOverriddenMusicId
-.public FieldSystem_PlayOrFadeToNewMusicId
-.public sub_02055164
+.public FieldBGM_GetEffective
+.public FieldBGM_TryFadeOut
+.public FieldBGM_PlayEffectiveForMapHeader
 .public FieldSystem_StartBugContestTimer
 .public sub_02055680
 .public sub_020556A8

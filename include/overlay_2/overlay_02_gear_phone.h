@@ -1,6 +1,8 @@
 #ifndef POKEHEARTGOLD_OVERLAY_02_GEAR_PHONE_H
 #define POKEHEARTGOLD_OVERLAY_02_GEAR_PHONE_H
 
+#include "constants/phone_constants.h"
+
 #include "field_system.h"
 #include "unk_02092BE8.h"
 

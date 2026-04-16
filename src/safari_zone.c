@@ -31,19 +31,19 @@ SafariZone *Save_SafariZone_Get(SaveData *saveData) {
 
 void Save_SafariZone_Init(SafariZone *safari_zone) {
     for (s32 i = 0; i < SAFARI_ZONE_MAX_AREA_SETS; i++) {
-        MI_CpuClear8(&safari_zone->area_sets[i], sizeof(SAFARIZONE_AREASET));
+        MI_CpuClear8(&safari_zone->area_sets[i], sizeof(SafariZoneAreaSet));
     }
 
     SafariZone_ClearLeader(&safari_zone->link_leader);
 }
 
-void SafariZone_ResetAreaSetToDefaultSet(SAFARIZONE_AREASET *area_set, u32 default_set_no) {
+void SafariZone_ResetAreaSetToDefaultSet(SafariZoneAreaSet *area_set, u32 default_set_no) {
     u32 default_set_no_mod = default_set_no % NELEMS(sSafariZoneDefaultAreaSets);
     for (s32 i = 0; i < SAFARI_ZONE_MAX_AREAS_PER_SET; i++) {
         SafariZone_InitArea(&area_set->areas[i], sSafariZoneDefaultAreaSets[default_set_no_mod][i]);
     }
 
-    MI_CpuClear8(area_set->unk2DC, sizeof(area_set->unk2DC));
+    MI_CpuClear8(area_set->areaLevels, sizeof(area_set->areaLevels));
 }
 
 void sub_0202F5F8(SafariZone *safari_zone, s32 areaSetNo) {
@@ -59,7 +59,7 @@ u8 sub_0202F620(SafariZone *safari_zone) {
     return safari_zone->unk5F9_6;
 }
 
-SAFARIZONE_AREASET *SafariZone_GetAreaSet(SafariZone *safari_zone, s32 area_set_no) {
+SafariZoneAreaSet *SafariZone_GetAreaSet(SafariZone *safari_zone, s32 area_set_no) {
     if (area_set_no == 3) {
         area_set_no = safari_zone->unk5F9_6;
     }
@@ -72,34 +72,34 @@ SAFARIZONE_AREASET *SafariZone_GetAreaSet(SafariZone *safari_zone, s32 area_set_
     return &safari_zone->area_sets[area_set_no];
 }
 
-void SafariZone_CopyAreaSet(SafariZone *safari_zone, s32 area_set_no, SAFARIZONE_AREASET *area_set_dest) {
+void SafariZone_CopyAreaSet(SafariZone *safari_zone, s32 area_set_no, SafariZoneAreaSet *area_set_dest) {
     if (area_set_no >= SAFARI_ZONE_MAX_AREA_SETS) {
         GF_ASSERT(FALSE);
         SafariZone_InitAreaSet(area_set_dest);
         return;
     }
 
-    MI_CpuCopy8(&safari_zone->area_sets[area_set_no], area_set_dest, sizeof(SAFARIZONE_AREASET));
+    MI_CpuCopy8(&safari_zone->area_sets[area_set_no], area_set_dest, sizeof(SafariZoneAreaSet));
 }
 
-void SafariZone_SetAreaSet(SafariZone *safari_zone, s32 area_set_no, SAFARIZONE_AREASET *area_set_src) {
+void SafariZone_SetAreaSet(SafariZone *safari_zone, s32 area_set_no, SafariZoneAreaSet *area_set_src) {
     if (area_set_no >= SAFARI_ZONE_MAX_AREA_SETS) {
         GF_ASSERT(FALSE);
         return;
     }
 
-    MI_CpuCopy8(area_set_src, &safari_zone->area_sets[area_set_no], sizeof(SAFARIZONE_AREASET));
+    MI_CpuCopy8(area_set_src, &safari_zone->area_sets[area_set_no], sizeof(SafariZoneAreaSet));
 }
 
-void sub_0202F6A0(SafariZone *safari_zone, u8 a1) {
+void SafariZone_SetLevel(SafariZone *safari_zone, u8 a1) {
     safari_zone->unk5F8 = a1;
 }
 
-u8 sub_0202F6AC(SafariZone *safari_zone) {
+u8 SafariZone_GetLevel(SafariZone *safari_zone) {
     return safari_zone->unk5F8;
 }
 
-void sub_0202F6B8(SAFARIZONE_AREASET *area_set, s32 a1) {
+void SafariZone_AddToAllAreaLevels(SafariZone *safariZone, s32 a1) {
     u8 sp8[6];
     u32 area_no;
     int j;
@@ -112,15 +112,15 @@ void sub_0202F6B8(SAFARIZONE_AREASET *area_set, s32 a1) {
     j = 0;
     MI_CpuClear8(sp8, NELEMS(sp8));
     for (i = 0; i < SAFARI_ZONE_MAX_AREAS_PER_SET; i++) {
-        area_no = area_set->areas[i].area_no;
+        area_no = safariZone->area_sets[0].areas[i].area_no;
         if (sub_0202FA3C(area_no, sp8, j)) {
             continue;
         }
 
-        if (area_set->unk2DC[area_no] + a1 < 0xFF) {
-            area_set->unk2DC[area_no] += a1;
+        if (safariZone->area_sets[0].areaLevels[area_no] + a1 < 0xFF) {
+            safariZone->area_sets[0].areaLevels[area_no] += a1;
         } else {
-            area_set->unk2DC[area_no] = 0xFF;
+            safariZone->area_sets[0].areaLevels[area_no] = 0xFF;
         }
 
         sp8[j++] = area_no;
@@ -216,17 +216,17 @@ void SafariZone_DeactivateLinkIfExpired(SafariZone *safari_zone) {
     }
 }
 
-void SafariZone_SwapAreasInSet(SAFARIZONE_AREASET *area_set, u32 first, u32 second) {
+void SafariZone_SwapAreasInSet(SafariZoneAreaSet *area_set, u32 first, u32 second) {
     SAFARIZONE_AREA tmp = area_set->areas[first];
     area_set->areas[first] = area_set->areas[second];
     area_set->areas[second] = tmp;
 }
 
-void SafariZone_InitAreaInSet(SAFARIZONE_AREASET *area_set, s32 area_idx, u32 area_no) {
+void SafariZone_InitAreaInSet(SafariZoneAreaSet *area_set, s32 area_idx, u32 area_no) {
     SafariZone_InitArea(&area_set->areas[area_idx], area_no);
 }
 
-void SafariZone_AddObjectToArea(SAFARIZONE_AREASET *area_set, s32 area_idx, const SAFARIZONE_OBJECT *object) {
+void SafariZone_AddObjectToArea(SafariZoneAreaSet *area_set, s32 area_idx, const SAFARIZONE_OBJECT *object) {
     if (area_idx >= SAFARI_ZONE_MAX_AREAS_PER_SET) {
         GF_ASSERT(FALSE);
         return;
@@ -241,7 +241,7 @@ void SafariZone_AddObjectToArea(SAFARIZONE_AREASET *area_set, s32 area_idx, cons
     area->objects[area->active_object_count++] = *object;
 }
 
-void SafariZone_RemoveObjectFromArea(SAFARIZONE_AREASET *area_set, s32 area_idx, s32 object_idx) {
+void SafariZone_RemoveObjectFromArea(SafariZoneAreaSet *area_set, s32 area_idx, s32 object_idx) {
     if (area_idx >= SAFARI_ZONE_MAX_AREAS_PER_SET) {
         GF_ASSERT(FALSE);
         return;
@@ -264,7 +264,7 @@ void SafariZone_RemoveObjectFromArea(SAFARIZONE_AREASET *area_set, s32 area_idx,
     }
 }
 
-void SafariZone_InitAreaSet(SAFARIZONE_AREASET *area_set) {
+void SafariZone_InitAreaSet(SafariZoneAreaSet *area_set) {
     for (s32 i = 0; i < SAFARI_ZONE_MAX_AREAS_PER_SET; i++) {
         SafariZone_InitArea(&area_set->areas[i], i);
     }

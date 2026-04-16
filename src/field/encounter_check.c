@@ -929,7 +929,7 @@ static BOOL FieldSystem_GenerateRegularEncounter(Pokemon *leadMon, int rodType, 
 
 static BOOL FieldSystem_GenerateSafariEncounter(FieldSystem *fieldSystem, Pokemon *leadMon, int rodType, EncounterGenState *encounterGen, u8 encType, int battler, BattleSetup *battleSetup) {
     u8 slot;
-    SAFARIZONE_AREASET *areaSet = SafariZone_GetAreaSet(Save_SafariZone_Get(fieldSystem->saveData), 3);
+    SafariZoneAreaSet *areaSet = SafariZone_GetAreaSet(Save_SafariZone_Get(fieldSystem->saveData), 3);
     u16 species;
     u8 level;
     EncounterSlot *encSlots;
@@ -938,13 +938,13 @@ static BOOL FieldSystem_GenerateSafariEncounter(FieldSystem *fieldSystem, Pokemo
 
     switch (encType) {
     case ENCOUNTER_TYPE_LAND:
-        encSlots = sub_020974C4(areaSet, area, SAFARI_ENCOUNTER_SLOTS_LAND, timeOfDay, HEAP_ID_FIELD1);
+        encSlots = SafariZoneAreaSet_LoadAreaEncounters(areaSet, area, SAFARI_ENCOUNTER_SLOTS_LAND, timeOfDay, HEAP_ID_FIELD1);
         break;
     case ENCOUNTER_TYPE_SURFING:
-        encSlots = sub_020974C4(areaSet, area, SAFARI_ENCOUNTER_SLOTS_SURFING, timeOfDay, HEAP_ID_FIELD1);
+        encSlots = SafariZoneAreaSet_LoadAreaEncounters(areaSet, area, SAFARI_ENCOUNTER_SLOTS_SURFING, timeOfDay, HEAP_ID_FIELD1);
         break;
     case ENCOUNTER_TYPE_FISHING:
-        encSlots = sub_020974C4(areaSet, area, SAFARI_ENCOUNTER_SLOTS_ROD(rodType), timeOfDay, HEAP_ID_FIELD1);
+        encSlots = SafariZoneAreaSet_LoadAreaEncounters(areaSet, area, SAFARI_ENCOUNTER_SLOTS_ROD(rodType), timeOfDay, HEAP_ID_FIELD1);
         break;
     default: // other encounter types invalid in safari
         GF_ASSERT(FALSE);

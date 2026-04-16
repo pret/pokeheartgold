@@ -2137,7 +2137,7 @@ PokedexApp_MainSeq_62(PokedexAppData *pokedexApp) {
     case 0: {
         u16 r1 = ov18_021F8838(pokedexApp);
         if (r1 != 0) {
-            sub_02092BD8(pokedexApp->args->unk_08, r1, pokedexApp->unk_1858);
+            UnkStruct_02092BB8_Set(pokedexApp->args->unk_08, r1, pokedexApp->unk_1858);
         }
         ov18_021F7ED4(pokedexApp, pokedexApp->unk_1858, DEX_ORDER_NATIONAL, DEX_SEARCH_LETTERS_ALL, DEX_SEARCH_TYPE_ALL, DEX_SEARCH_TYPE_ALL, 0, 152, 0, 152, 1 << DEX_SEARCH_AREA_ALL, DEX_SEARCH_BODYTYPE_ALL);
         ov18_021F8884(pokedexApp, 1);
@@ -2174,7 +2174,7 @@ static int PokedexApp_MainSeq_63(PokedexAppData *pokedexApp) {
     case 0: {
         u16 species = ov18_021F8838(pokedexApp);
         if (species != SPECIES_NONE) {
-            sub_02092BD8(pokedexApp->args->unk_08, species, pokedexApp->unk_1858);
+            UnkStruct_02092BB8_Set(pokedexApp->args->unk_08, species, pokedexApp->unk_1858);
         }
         ov18_021F7ED4(pokedexApp, pokedexApp->unk_1858, DEX_ORDER_NATIONAL, DEX_SEARCH_LETTERS_ALL, DEX_SEARCH_TYPE_ALL, DEX_SEARCH_TYPE_ALL, 0, 152, 0, 152, 1 << DEX_SEARCH_AREA_ALL, DEX_SEARCH_BODYTYPE_ALL);
         ov18_021F8884(pokedexApp, 1);
@@ -2223,7 +2223,7 @@ static int PokedexApp_MainSeq_64(PokedexAppData *pokedexApp) {
     case 0: {
         u16 r1 = ov18_021F8838(pokedexApp);
         if (r1 != SPECIES_NONE) {
-            sub_02092BD8(pokedexApp->args->unk_08, r1, pokedexApp->unk_1858);
+            UnkStruct_02092BB8_Set(pokedexApp->args->unk_08, r1, pokedexApp->unk_1858);
         }
         sub_0201980C(pokedexApp->unk_0008, 4);
         ov18_021F2A2C(pokedexApp, 22, 0);
@@ -3427,7 +3427,7 @@ static int ov18_021EDC50(PokedexAppData *pokedexApp, u8 a1, u8 a2, u8 a3, u8 a4,
 }
 
 static void ov18_021EDC74(PokedexAppData *pokedexApp, int a1) {
-    sub_02092BD8(pokedexApp->args->unk_08, ov18_021F8838(pokedexApp), pokedexApp->unk_1858);
+    UnkStruct_02092BB8_Set(pokedexApp->args->unk_08, ov18_021F8838(pokedexApp), pokedexApp->unk_1858);
     pokedexApp->unk_1858 = a1;
     ov18_021E6A70(pokedexApp);
     ov18_021F2AC0(pokedexApp, 0);
@@ -3464,7 +3464,7 @@ static void ov18_021EDDA4(PokedexAppData *pokedexApp, int a1) {
 }
 
 static void ov18_021EDDB4(PokedexAppData *pokedexApp) {
-    u32 r4 = Pokedex_ConvertToCurrentDexNo(pokedexApp->unk_1858, ov18_021F8850(&pokedexApp->unk_0878, sub_02092BE4(pokedexApp->args->unk_08))) - 1;
+    u32 r4 = Pokedex_ConvertToCurrentDexNo(pokedexApp->unk_1858, ov18_021F8850(&pokedexApp->unk_0878, UnkStruct_02092BB8_GetSpecies(pokedexApp->args->unk_08))) - 1;
     pokedexApp->unk_185A = r4 % 15;
     pokedexApp->unk_1859 = r4 / 15;
 }

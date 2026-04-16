@@ -182,7 +182,7 @@
 .public SavePokegear_FindEmptyPhonebookSlot
 .public SavePokegear_IsNumberRegistered
 .public SavePokegear_AllocAndCopyPhonebook
-.public sub_0202F08C
+.public PhoneCallPersistentState_CheckCallTriggerFlag
 .public Save_SafariZone_Get
 .public sub_0202F620
 .public SafariZone_GetAreaSet
@@ -343,8 +343,8 @@
 .public FreePhoneBook
 .public GetPhoneMessageGmm
 .public sub_02095FF8
-.public sub_02097268
-.public sub_020974C4
+.public GetSafariObjectConfig
+.public SafariZoneAreaSet_LoadAreaEncounters
 .public sub_02097F6C
 .public NNS_G2dGetUnpackedCharacterData
 .public NNS_G2dGetUnpackedPaletteData

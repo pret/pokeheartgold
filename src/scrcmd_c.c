@@ -73,7 +73,7 @@
 #include "unk_02037C94.h"
 #include "unk_0203A3B0.h"
 #include "unk_02054648.h"
-#include "unk_02054E00.h"
+#include "field_bgm.h"
 #include "unk_02055244.h"
 #include "unk_020552A4.h"
 #include "unk_02055418.h"
@@ -400,7 +400,7 @@ BOOL ScrCmd_ObjectGoTo(ScriptContext *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_BgGoTo(ScriptContext *ctx) {
+BOOL ScrCmd_BGGoTo(ScriptContext *ctx) {
     u32 bg = sub_02050658(ctx->taskman);
     u8 required_bg = ScriptReadByte(ctx);
 
@@ -1385,7 +1385,7 @@ BOOL ScrCmd_ReleaseAll(ScriptContext *ctx) {
     return TRUE;
 }
 
-BOOL ScrCmd_098(ScriptContext *ctx) {
+BOOL ScrCmd_Lock(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
     u16 objectId = ScriptReadHalfword(ctx);
     LocalMapObject *object = MapObjectManager_GetFirstActiveObjectByID(fieldSystem->mapObjectManager, objectId);
@@ -1397,7 +1397,7 @@ BOOL ScrCmd_098(ScriptContext *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_099(ScriptContext *ctx) {
+BOOL ScrCmd_Release(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
     u16 objectId = ScriptReadHalfword(ctx);
     LocalMapObject *object = MapObjectManager_GetFirstActiveObjectByID(fieldSystem->mapObjectManager, objectId);
@@ -1617,7 +1617,7 @@ BOOL ScrCmd_350(ScriptContext *ctx) { // todo: union pokemon selection
     return TRUE;
 }
 
-BOOL ScrCmd_PartySelect(ScriptContext *ctx) { // todo: get selected pokemon slot
+BOOL ScrCmd_GetPartySelection(ScriptContext *ctx) { // todo: get selected pokemon slot
     u16 *dest_p = ScriptGetVarPointer(ctx);
     PartyMenuArgs **partyMenu = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
     GF_ASSERT(*partyMenu != NULL);
@@ -2016,7 +2016,7 @@ BOOL ScrCmd_162(ScriptContext *ctx) {
     return TRUE;
 }
 
-BOOL ScrCmd_HOF_Credits(ScriptContext *ctx) {
+BOOL ScrCmd_HOFCredits(ScriptContext *ctx) {
     u16 vsTrainerRed = ScriptReadHalfword(ctx);
     CallTask_GameClear(ctx->fieldSystem->taskman, vsTrainerRed);
     return TRUE;
@@ -2332,21 +2332,21 @@ BOOL ScrCmd_PlayerOnBikeCheck(ScriptContext *ctx) {
 BOOL ScrCmd_PlayerOnBikeSet(ScriptContext *ctx) {
     u8 flag = ScriptReadByte(ctx);
     if (flag == TRUE) {
-        FieldSystem_SetSavedMusicId(ctx->fieldSystem, SEQ_GS_BICYCLE);
-        FieldSystem_PlayOrFadeToNewMusicId(ctx->fieldSystem, SEQ_GS_BICYCLE, 1);
+        FieldBGM_SetOverride(ctx->fieldSystem, SEQ_GS_BICYCLE);
+        FieldBGM_TryFadeOut(ctx->fieldSystem, SEQ_GS_BICYCLE, 1);
         Field_PlayerAvatar_OrrTransitionFlags(ctx->fieldSystem->playerAvatar, PLAYER_TRANSITION_CYCLING);
         Field_PlayerAvatar_ApplyTransitionFlags(ctx->fieldSystem->playerAvatar);
     } else {
         Field_PlayerAvatar_OrrTransitionFlags(ctx->fieldSystem->playerAvatar, PLAYER_TRANSITION_WALKING);
         Field_PlayerAvatar_ApplyTransitionFlags(ctx->fieldSystem->playerAvatar);
-        FieldSystem_SetSavedMusicId(ctx->fieldSystem, 0);
-        FieldSystem_PlayOrFadeToNewMusicId(ctx->fieldSystem, FieldSystem_GetOverriddenMusicId(ctx->fieldSystem, ctx->fieldSystem->location->mapId), 1);
+        FieldBGM_SetOverride(ctx->fieldSystem, 0);
+        FieldBGM_TryFadeOut(ctx->fieldSystem, FieldBGM_GetEffective(ctx->fieldSystem, ctx->fieldSystem->location->mapId), 1);
     }
     return FALSE;
 }
 
 BOOL ScrCmd_591(ScriptContext *ctx) {
-    FieldSystem_SetSavedMusicId(ctx->fieldSystem, SEQ_PL_BICYCLE);
+    FieldBGM_SetOverride(ctx->fieldSystem, SEQ_PL_BICYCLE);
     return FALSE;
 }
 
@@ -3012,7 +3012,7 @@ BOOL ScrCmd_MoveWarp(ScriptContext *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_MoveBgEvent(ScriptContext *ctx) {
+BOOL ScrCmd_MoveBGEvent(ScriptContext *ctx) {
     u16 bgId = ScriptGetVar(ctx);
     u16 x = ScriptGetVar(ctx);
     u16 y = ScriptGetVar(ctx);
@@ -3406,10 +3406,10 @@ BOOL ScrCmd_SafariZoneAction(ScriptContext *ctx) {
     case 1:
         Save_VarsFlags_ClearSafariSysFlag(varsFlags);
         sub_0202F5F8(safariZone, 1);
-        r1 = sub_0202F6AC(safariZone);
+        r1 = SafariZone_GetLevel(safariZone);
         if (r1 != 0) {
-            sub_0209730C(ctx->fieldSystem->saveData, r1);
-            sub_0202F6A0(safariZone, 0);
+            SaveData_SafariZone_CheckAreasWithUpdatedEncounters(ctx->fieldSystem->saveData, r1);
+            SafariZone_SetLevel(safariZone, 0);
         }
         *p_nSafariBall = 0;
         *p_nSafariSteps = 0;
@@ -3463,7 +3463,7 @@ BOOL ScrCmd_NPCTradeGetReqSpecies(ScriptContext *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_GetNpcTradeUnusedFlag(ScriptContext *ctx) {
+BOOL ScrCmd_GetNPCTradeUnusedFlag(ScriptContext *ctx) {
     NPCTradeAppData **p_tradeWork = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MISC_DATA_PTR);
     u16 *p_ret = ScriptGetVarPointer(ctx);
     *p_ret = NPCTradeApp_GetUnusedFlag(*p_tradeWork);
@@ -4733,8 +4733,8 @@ BOOL ScrCmd_148(ScriptContext *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_149(ScriptContext *ctx) {
-    sub_0202F050(SaveData_GetPhoneCallPersistentState(ctx->fieldSystem->saveData), ScriptReadByte(ctx));
+BOOL UnsetPhoneCallTrigger(ScriptContext *ctx) {
+    PhoneCallPersistentState_ClearCallTriggerFlag(SaveData_GetPhoneCallPersistentState(ctx->fieldSystem->saveData), ScriptReadByte(ctx));
     return FALSE;
 }
 

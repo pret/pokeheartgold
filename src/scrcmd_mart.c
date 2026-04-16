@@ -2,12 +2,13 @@
 #include "constants/items.h"
 #include "constants/seals.h"
 
+#include "pokeathlon/pokeathlon_save.h"
+
 #include "field_system.h"
 #include "mart.h"
 #include "pokedex.h"
 #include "save_vars_flags.h"
 #include "scrcmd.h"
-#include "unk_02031904.h"
 
 struct BadgeMartItems {
     u16 item_id;
@@ -471,12 +472,12 @@ const struct MartItem *_0210F9D4[] = {
 };
 
 BOOL ScrCmd_772(ScriptContext *ctx) {
-    POKEATHLON_SAV *pokeathlon;
+    PokeathlonSave *pokeathlon;
     int i;
 
     pokeathlon = Save_Pokeathlon_Get(ctx->fieldSystem->saveData);
     for (i = 0; i < 27; i++) {
-        if (!sub_02031A78(pokeathlon, i)) {
+        if (!PokeathlonSave_GetUnkB78_AtIndex(pokeathlon, i)) {
             break;
         }
     }
@@ -486,7 +487,7 @@ BOOL ScrCmd_772(ScriptContext *ctx) {
 
 BOOL ScrCmd_834(ScriptContext *ctx) {
     u16 *sp0;
-    POKEATHLON_SAV *pokeathlon;
+    PokeathlonSave *pokeathlon;
     SaveVarsFlags *varsFlags;
     int r6;
     int r4;
@@ -512,7 +513,7 @@ BOOL ScrCmd_834(ScriptContext *ctx) {
         r6++;
     }
     for (i = 0; i < 12; i++) {
-        if (sub_02031AB8(pokeathlon, i)) {
+        if (PokeathlonSave_GetUnkB7C_AtIndex(pokeathlon, i)) {
             r4++;
         }
     }
@@ -527,12 +528,12 @@ BOOL ScrCmd_834(ScriptContext *ctx) {
 BOOL ScrCmd_835(ScriptContext *ctx) {
     u16 *ret_ptr;
     int i;
-    POKEATHLON_SAV *pokeathlon;
+    PokeathlonSave *pokeathlon;
 
     ret_ptr = ScriptGetVarPointer(ctx);
     pokeathlon = Save_Pokeathlon_Get(ctx->fieldSystem->saveData);
     for (i = 0; i < 27; i++) {
-        if (!sub_02031A78(pokeathlon, i)) {
+        if (!PokeathlonSave_GetUnkB78_AtIndex(pokeathlon, i)) {
             break;
         }
     }

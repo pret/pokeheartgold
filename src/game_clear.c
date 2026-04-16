@@ -27,7 +27,7 @@
 #include "text.h"
 #include "unk_02005D10.h"
 #include "unk_0200FA24.h"
-#include "unk_02054E00.h"
+#include "field_bgm.h"
 #include "unk_020552A4.h"
 #include "unk_02055418.h"
 #include "unk_0206793C.h"
@@ -112,7 +112,7 @@ BOOL sub_0205298C(TaskManager *taskman) {
         break;
     case 2:
         if (!GF_SndGetFadeTimer()) {
-            sub_02054F14();
+            FieldBGM_Stop();
             ++(*state);
             break;
         }

@@ -13,7 +13,7 @@
 .public LoadFontPal0
 .public FontID_String_GetWidthMultiline
 .public FontID_String_GetCenterAlignmentX
-.public sub_02004AD8
+.public Sound_SetScene
 .public Sound_SetSceneAndPlayBGM
 .public sub_02005AF8
 .public Sound_Stop

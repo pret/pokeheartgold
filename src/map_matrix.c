@@ -82,7 +82,7 @@ void MapMatrix_Free(MAPMATRIX *map_matrix) {
     Heap_Free(map_matrix);
 }
 
-u16 MapMatrix_GetMapModelNo(s32 map_no, MAPMATRIX *map_matrix) {
+u16 MapMatrix_GetMapModelNo(int map_no, MAPMATRIX *map_matrix) {
     GF_ASSERT(map_no < map_matrix->width * map_matrix->height);
     return map_matrix->data.maps.models[map_no];
 }
@@ -215,7 +215,7 @@ void PlaceSafariZoneAreas(MAPMATRIX *map_matrix, SaveData *save) {
     }
 
     SafariZone *safari_zone = Save_SafariZone_Get(save);
-    SAFARIZONE_AREASET *sz_area_set = SafariZone_GetAreaSet(safari_zone, 3);
+    SafariZoneAreaSet *sz_area_set = SafariZone_GetAreaSet(safari_zone, 3);
 
     for (s32 y = 0; y < SAFARI_ZONE_AREA_SET_ROWS; y++) {
         for (s32 x = 0; x < SAFARI_ZONE_AREA_SET_COLS; x++) {

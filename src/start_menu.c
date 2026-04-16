@@ -25,6 +25,7 @@
 #include "pokedex_util.h"
 #include "save_local_field_data.h"
 #include "save_vars_flags.h"
+#include "sound.h"
 #include "sound_02004A44.h"
 #include "sys_flags.h"
 #include "system.h"
@@ -33,7 +34,7 @@
 #include "unk_0200FA24.h"
 #include "unk_02034B0C.h"
 #include "unk_02037C94.h"
-#include "unk_02054E00.h"
+#include "field_bgm.h"
 #include "unk_0205A44C.h"
 #include "unk_0205AC88.h"
 #include "unk_0205CB48.h"
@@ -1488,8 +1489,8 @@ static void Task_StartMenu_WaitEvolution(TaskManager *taskManager) {
         sub_02075D4C(startMenu->exitTaskEnvironment);
         Heap_Destroy(HEAP_ID_EVOLUTION);
         StopBGM(SEQ_GS_SHINKA, 0);
-        sub_02004AD8(0);
-        sub_02055164(fieldSystem, fieldSystem->location->mapId);
+        Sound_SetScene(SOUND_SCENE_NONE);
+        FieldBGM_PlayEffectiveForMapHeader(fieldSystem, fieldSystem->location->mapId);
         startMenu->exitTaskEnvironment = sub_0203E3FC(fieldSystem, &startMenu->itemCheckUseData);
         StartMenuAfterEvoPartySlotBak *unk = startMenu->exitTaskEnvironment2;
         sub_020778E0(startMenu->exitTaskEnvironment, unk->partySlot);
