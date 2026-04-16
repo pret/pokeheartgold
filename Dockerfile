@@ -1,6 +1,7 @@
 # check=skip=FromPlatformFlagConstDisallowed
 FROM --platform=linux/amd64 ubuntu:22.04
-LABEL com.docker.image.name=ghcr.io/pret/pokeheartgold
+LABEL com.docker.image.name=ghcr.io/pret/pokeheartgold \
+      org.opencontainers.image.source=https://github/pret/pokeheartgold
 
 RUN apt-get -y update \
  && apt-get -y install \
