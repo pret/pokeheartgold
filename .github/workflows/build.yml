@@ -1,5 +1,8 @@
 name: build
 
+permissions:
+  packages: read
+
 on:
   push:
     branches: [master]
@@ -20,6 +23,9 @@ jobs:
     runs-on: ubuntu-22.04
     container:
       image: ghcr.io/pret/pokeheartgold:latest
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
 
     steps:
       - name: Checkout Repo
