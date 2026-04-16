@@ -1,3 +1,4 @@
+# check=skip=FromPlatformFlagConstDisallowed
 FROM --platform=linux/amd64 ubuntu:22.04
 LABEL com.docker.image.name=ghcr.io/pret/pokeheartgold
 
@@ -21,6 +22,8 @@ RUN apt-get -y update \
     build-essential \
     python3 \
     libpng-dev \
+    unzip \
+    sudo \
  && { ppa-purge -y ppa:ubuntu-toolchain-r/test || true; } \
  && dpkg --add-architecture i386 \
  && mkdir -pm755 /etc/apt/keyrings \

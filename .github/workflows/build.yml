@@ -2,7 +2,7 @@ name: build
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
   pull_request:
   workflow_dispatch:
 
@@ -18,24 +18,12 @@ env:
 jobs:
   build:
     runs-on: ubuntu-22.04
+    container:
+      image: ghcr.io/pret/pokeheartgold:latest
 
     steps:
-      - name: Update and Install Software
-        run: |
-          sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
-          sudo apt update
-          sudo apt -y --allow-downgrades install g++-10-multilib linux-libc-dev binutils-arm-none-eabi p7zip-full pkg-config libpugixml-dev ppa-purge
-          sudo ppa-purge -y ppa:ubuntu-toolchain-r/test || true
-          sudo dpkg --add-architecture i386
-          sudo mkdir -pm755 /etc/apt/keyrings
-          sudo wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key
-          sudo add-apt-repository ppa:cybermax-dexter/sdl2-backport
-          sudo wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/ubuntu/dists/$(lsb_release -cs)/winehq-$(lsb_release -cs).sources
-          sudo apt update
-          sudo apt -y --allow-downgrades install --install-recommends winehq-stable
-
       - name: Checkout Repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
       - name: Setup Repo
         run: |
@@ -50,10 +38,10 @@ jobs:
           mv NitroSDK-3_2-060901/include/nitro/specfiles/ARM7-TS.lcf.template $GITHUB_WORKSPACE/sub/
           mv NitroSDK-3_2-060901/include/nitro/specfiles/ARM9-TS.lcf.template $GITHUB_WORKSPACE/
           mv NitroSDK-3_2-060901/include/nitro/specfiles/mwldarm.response.template $GITHUB_WORKSPACE/
-        working-directory: ~
 
       - name: Set Swap Space
-        uses: pierotofy/set-swap-space@master
+        uses: pierotofy/set-swap-space@370d1278c848822779d7ef2a975300fffbd038ab # unreleased
+        if: ${{ github.actor != 'nektos/act' }}
         with:
           swap-size-gb: 19
 
@@ -79,13 +67,13 @@ jobs:
         continue-on-error: true
 
       - name: Post error archive
-        if: failure()
+        if: failure() && github.actor != 'nektos/act'
         continue-on-error: true
-        run: find . -maxdepth 2 -type d \( -name build -or -name files \) -exec tar -czvhf failure.tar.gz {} +
+        run: tar -czvhf failure.tar.gz $(git clean -ndx | sed 's/Would remove //')
 
       - name: Post error upload
-        if: failure()
-        uses: actions/upload-artifact@v4
+        if: failure() && github.actor != 'nektos/act'
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: pokeheartgold-failure-${{ github.run_id }}
           path: failure.tar.gz
@@ -93,10 +81,10 @@ jobs:
 
       - name: Checkout xMAP
         if: ${{ github.event_name == 'push' }}
-        uses: actions/checkout@v4
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
-          path: 'xmap'
-          ref: 'xmap'
+          path: "xmap"
+          ref: "xmap"
 
       - name: Move xMAP
         if: ${{ github.event_name == 'push' }}
@@ -108,7 +96,7 @@ jobs:
 
       - name: Update xMAP
         if: ${{ github.event_name == 'push' }}
-        uses: EndBug/add-and-commit@v9
+        uses: EndBug/add-and-commit@290ea2c423ad77ca9c62ae0f5b224379612c0321 # v10.0.0
         with:
           cwd: "./xmap"
           add: "*.xMAP"

@@ -1,7 +1,7 @@
 name: Close stale issues and PRs
 on:
   schedule:
-  - cron: "0 0 * * *"
+    - cron: "0 0 * * *"
 permissions:
   issues: write
   pull-requests: write
@@ -9,7 +9,7 @@ jobs:
   stale-bot:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/stale@v9.0.0
+      - uses: actions/stale@b5d41d4e1d5dceea10e7104786b73624c18a190f # v10.2.0
         with:
           days-before-close: 30
           stale-issue-message: "This issue has had no activity for 60 days and will be marked stale. If there is no further activity, it will be closed in 30 days."
