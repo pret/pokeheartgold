@@ -18,14 +18,14 @@ void sub_02093354(u32);
 u32 sub_020932E0(u32, u32, u32);
 void sub_02093440(u32, BgConfig*, PCStorage*, Party*, u32, u32, BOOL, u32, void*, void*, void*, void*, PokeathlonBox*);
 
-BOOL ov97_0221E5C0(OverlayManager *manager) {
+BOOL PokeathlonBox_Init(OverlayManager *manager) {
     if (ov97_0221E6DC(manager) != FALSE) {
         return TRUE;
     }
     return FALSE;
 }
 
-BOOL ov97_0221E5D4(OverlayManager *manager) {
+BOOL PokeathlonBox_Main(OverlayManager *manager) {
     PokeathlonBox* data = OverlayManager_GetData(manager);
     
     switch (data->state) {
@@ -74,7 +74,7 @@ BOOL ov97_0221E5D4(OverlayManager *manager) {
     return FALSE;
 }
 
-BOOL ov97_0221E69C(OverlayManager *manager) {
+BOOL PokeathlonBox_Exit(OverlayManager *manager) {
     PokeathlonBox* data = OverlayManager_GetData(manager);
 
     Main_SetVBlankIntrCB(NULL, NULL);

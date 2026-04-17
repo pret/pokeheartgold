@@ -20,9 +20,9 @@ typedef struct PokeathlonBox {
     u32 unk30;
 } PokeathlonBox; // size: 0x34
 
-BOOL ov97_0221E5C0(OverlayManager *manager);
-BOOL ov97_0221E5D4(OverlayManager *manager);
-BOOL ov97_0221E69C(OverlayManager *manager);
+BOOL PokeathlonBox_Init(OverlayManager *manager);
+BOOL PokeathlonBox_Main(OverlayManager *manager);
+BOOL PokeathlonBox_Exit(OverlayManager *manager);
 BOOL ov97_0221E6DC(OverlayManager *manager);
 BOOL ov97_0221E700(OverlayManager *manager);
 

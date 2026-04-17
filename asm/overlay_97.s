@@ -4,9 +4,9 @@
 
 	.text
 
-	.extern ov97_0221E5C0
-	.extern ov97_0221E5D4
-	.extern ov97_0221E69C
+	.extern PokeathlonBox_Init
+	.extern PokeathlonBox_Main
+	.extern PokeathlonBox_Exit
 	.extern ov97_0221E6DC
 	.extern ov97_0221E700
 
