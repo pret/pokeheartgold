@@ -30,13 +30,13 @@ jobs:
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
           ref: workflows/assets
-          path: ~/download
+          path: tmp-download
 
       - name: Install 7z
         uses: milliewalky/setup-7-zip@ce4c26956d369e4cce6c1a7c114a4ed6c98f458f # v2.0.0
 
       - name: Setup Repo
-        working-directory: ~/download
+        working-directory: tmp-download
         run: |
           unzip mwccarm.zip
           mv mwccarm $GITHUB_WORKSPACE/tools
@@ -45,12 +45,7 @@ jobs:
           mv NitroSDK-3_2-060901/include/nitro/specfiles/ARM7-TS.lcf.template $GITHUB_WORKSPACE/sub/
           mv NitroSDK-3_2-060901/include/nitro/specfiles/ARM9-TS.lcf.template $GITHUB_WORKSPACE/
           mv NitroSDK-3_2-060901/include/nitro/specfiles/mwldarm.response.template $GITHUB_WORKSPACE/
-
-      - name: Set Swap Space
-        uses: pierotofy/set-swap-space@fc79b3f67fa8a838184ce84a674ca12238d2c761 # unreleased
-        if: ${{ github.actor != 'nektos/act' }}
-        with:
-          swap-size-gb: 19
+          rm -rf ./*
 
       - name: Build HeartGold
         env:
