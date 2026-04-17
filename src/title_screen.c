@@ -146,7 +146,7 @@ static BOOL TitleScreen_Main(OverlayManager *man, int *state) {
         }
         break;
     case TITLESCREEN_MAIN_START_MUSIC:
-        sub_02004AD8(0);
+        Sound_SetScene(SOUND_SCENE_NONE);
         Sound_SetSceneAndPlayBGM(1, SEQ_GS_POKEMON_THEME, 1);
         *state = (int)TITLESCREEN_MAIN_PLAY;
         break;
@@ -251,11 +251,11 @@ static BOOL TitleScreen_Exit(OverlayManager *man, int *state) {
         RegisterMainOverlay(FS_OVERLAY_ID_NONE, &gApplication_DeleteSave);
         break;
     case TITLESCREEN_EXIT_TIMEOUT:
-        sub_02004AD8(0);
+        Sound_SetScene(SOUND_SCENE_NONE);
         RegisterMainOverlay(FS_OVERLAY_ID(intro_title), &gApplication_IntroMovie);
         break;
     case TITLESCREEN_EXIT_MIC_TEST:
-        sub_02004AD8(0);
+        Sound_SetScene(SOUND_SCENE_NONE);
         RegisterMainOverlay(FS_OVERLAY_ID(OVY_62), &gApplication_MicTest);
         break;
     }

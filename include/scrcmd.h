@@ -174,7 +174,7 @@ BOOL ScrCmd_RegisterPokegearCard(ScriptContext *ctx);
 BOOL ScrCmd_RegisterGearNumber(ScriptContext *ctx);
 BOOL ScrCmd_CheckRegisteredPhoneNumber(ScriptContext *ctx);
 BOOL ScrCmd_148(ScriptContext *ctx);
-BOOL ScrCmd_149(ScriptContext *ctx);
+BOOL UnsetPhoneCallTrigger(ScriptContext *ctx);
 BOOL ScrCmd_RestoreOverworld(ScriptContext *ctx);
 BOOL ScrCmd_151(ScriptContext *ctx);
 BOOL ScrCmd_152(ScriptContext *ctx);

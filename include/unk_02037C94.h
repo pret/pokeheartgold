@@ -28,6 +28,6 @@ void sub_02039B18(void);
 void sub_02039AF8(void);
 s32 sub_02039080(void);
 s32 sub_02039264(void);
-u8* sub_020398C8(void);
+u8 *sub_020398C8(void);
 
 #endif // POKEHEARTGOLD_UNK_02037C94_H

@@ -945,7 +945,7 @@
       ]
     },
     {
-      "name": "ScrCmd_149",
+      "name": "UnsetPhoneCallTrigger",
       "args": [
         1
       ]

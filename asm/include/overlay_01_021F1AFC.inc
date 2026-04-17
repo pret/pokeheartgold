@@ -20,9 +20,9 @@
 .public TaskManager_GetFieldSystem
 .public TaskManager_GetEnvironment
 .public sub_02054790
-.public FieldSystem_SetSavedMusicId
-.public GetMapMusic
-.public FieldSystem_PlayOrFadeToNewMusicId
+.public FieldBGM_SetOverride
+.public FieldBGM_GetForMapHeader
+.public FieldBGM_TryFadeOut
 .public MetatileBehavior_IsSurfableWater
 .public sub_0205B78C
 .public sub_0205B834

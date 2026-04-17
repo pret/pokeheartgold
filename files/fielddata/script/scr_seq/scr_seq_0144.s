@@ -160,7 +160,7 @@ _01F3:
 	GoToIfEq _0222
 	CallStd std_give_item_verbose
 	ScrCmd_812
-	ScrCmd_149 12
+	UnsetPhoneCallTrigger CALL_TRIGGER_MOM_BOUGHT_SOMETHING
 	NPCMsg msg_0209_00020
 	WaitButton
 	CloseMsg

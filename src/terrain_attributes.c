@@ -13,10 +13,10 @@ void TerrainAttributes_New(FieldSystem *fieldSystem, const u8 blockCount) {
 }
 
 void TerrainAttributes_Free(FieldSystem *fieldSystem) {
-	if (fieldSystem->terrainAttributes != NULL) {
-		Heap_Free(fieldSystem->terrainAttributes);
-		fieldSystem->terrainAttributes = NULL;
-	}
+    if (fieldSystem->terrainAttributes != NULL) {
+        Heap_Free(fieldSystem->terrainAttributes);
+        fieldSystem->terrainAttributes = NULL;
+    }
 }
 
 const u16 *TerrainAttributes_Get(const u32 mapMatrixIndex, const TerrainAttributes *terrainAttributes) {
@@ -56,7 +56,7 @@ static void TerrainAttributes_Load(MAPMATRIX *mapMatrix, TerrainAttributes *terr
     NARC_Delete(landDataNARC);
 }
 
-static const u8 TerrainAttributes_GetOrPushLandDataID(const u16 landDataID, u16 *blockIndexToLandDataID, u8 *blockCount){
+static const u8 TerrainAttributes_GetOrPushLandDataID(const u16 landDataID, u16 *blockIndexToLandDataID, u8 *blockCount) {
     u8 i;
 
     for (i = 0; i < *blockCount; i++) {

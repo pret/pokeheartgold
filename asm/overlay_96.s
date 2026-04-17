@@ -1459,7 +1459,7 @@ ov96_021E6A94: ; 0x021E6A94
 	mov r1, #9
 	bl PokeathlonCourse_SetStateField07
 	mov r0, #0
-	bl sub_02004AD8
+	bl Sound_SetScene
 	ldr r1, _021E6AE4 ; =0x0000046F
 	mov r0, #0x19
 	mov r2, #0
@@ -1820,7 +1820,7 @@ ov96_021E6D54: ; 0x021E6D54
 	cmp r1, r0
 	bne _021E6DAA
 	mov r0, #0
-	bl sub_02004AD8
+	bl Sound_SetScene
 	ldr r1, _021E6DE0 ; =0x00000472
 	mov r0, #0x18
 	mov r2, #0
@@ -1828,7 +1828,7 @@ ov96_021E6D54: ; 0x021E6D54
 	b _021E6DBA
 _021E6DAA:
 	mov r0, #0
-	bl sub_02004AD8
+	bl Sound_SetScene
 	ldr r1, _021E6DE4 ; =0x00000471
 	mov r0, #0x18
 	mov r2, #0
@@ -2515,7 +2515,7 @@ ov96_021E72CC: ; 0x021E72CC
 	mov r1, #0x21
 	bl PokeathlonCourse_SetStateField07
 	mov r0, #0
-	bl sub_02004AD8
+	bl Sound_SetScene
 	ldr r1, _021E731C ; =0x00000474
 	mov r0, #0x19
 	mov r2, #0

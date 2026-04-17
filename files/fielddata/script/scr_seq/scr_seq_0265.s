@@ -37,7 +37,7 @@ _0057:
 	TouchscreenMenuShow
 	Compare VAR_SPECIAL_RESULT, 1
 	GoToIfEq _0082
-	SetFlag FLAG_UNK_99E
+	SetFlag FLAG_SYS_SUBSCRIBED_TO_EGG_CALLS
 	NPCMsg msg_0439_00015
 	WaitButton
 	CloseMsg
@@ -45,8 +45,8 @@ _0057:
 	End
 
 _0082:
-	ClearFlag FLAG_UNK_99E
-	ScrCmd_149 5
+	ClearFlag FLAG_SYS_SUBSCRIBED_TO_EGG_CALLS
+	UnsetPhoneCallTrigger CALL_TRIGGER_DAYCARE_HAS_EGG
 	NPCMsg msg_0439_00016
 	WaitButton
 	CloseMsg
@@ -54,7 +54,7 @@ _0082:
 	End
 
 _0094:
-	ScrCmd_149 5
+	UnsetPhoneCallTrigger CALL_TRIGGER_DAYCARE_HAS_EGG
 	NPCMsg msg_0439_00001
 	TouchscreenMenuHide
 	GetMenuChoice VAR_SPECIAL_RESULT
@@ -72,7 +72,7 @@ _0094:
 	GoToIfNe _00EB
 	NPCMsg msg_0439_00012
 	SetVar VAR_UNK_408E, 4
-	SetFlag FLAG_UNK_992
+	SetFlag FLAG_SYS_TRIGGER_EGG_CALL
 	GoTo _0057
 
 _00EB:
@@ -104,7 +104,7 @@ _0114:
 	GoToIfNe _0146
 	NPCMsg msg_0439_00011
 	SetVar VAR_UNK_408E, 4
-	SetFlag FLAG_UNK_992
+	SetFlag FLAG_SYS_TRIGGER_EGG_CALL
 	GoTo _0057
 
 _0146:

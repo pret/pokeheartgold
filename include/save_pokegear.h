@@ -34,7 +34,7 @@ typedef struct PhoneCallPersistentState {
     u8 kenjiActive : 1;
     u8 numSafariAreas;
     u8 safariAreas[6];
-    u8 unk_14E[2];
+    u8 callTriggerFlags[2];
     u8 filler_150[4];
 } PhoneCallPersistentState; // size=0x154
 
@@ -82,9 +82,9 @@ void SavePokegear_RegisterPhoneNumber(SavePokegear *pokegear, u8 contact);
 PhoneContact *SavePokegear_AllocAndCopyPhonebook(SavePokegear *pokegear, enum HeapID heapID);
 void SavePokegear_SetPhonebookFromBuffer(SavePokegear *pokegear, PhoneContact *contacts, u8 num);
 
-void sub_0202F01C(PhoneCallPersistentState *callPersistentState, u8 idx);
-void sub_0202F050(PhoneCallPersistentState *callPersistentState, u8 idx);
-BOOL sub_0202F08C(PhoneCallPersistentState *callPersistentState, u8 idx);
+void PhoneCallPersistentState_SetCallTriggerFlag(PhoneCallPersistentState *callPersistentState, u8 idx);
+void PhoneCallPersistentState_ClearCallTriggerFlag(PhoneCallPersistentState *callPersistentState, u8 idx);
+BOOL PhoneCallPersistentState_CheckCallTriggerFlag(PhoneCallPersistentState *callPersistentState, u8 idx);
 void PhoneCallPersistentState_PhoneRematches_SetSeeking(PhoneCallPersistentState *callPersistentState, u8 idx, BOOL state);
 BOOL PhoneCallPersistentState_PhoneRematches_IsSeeking(PhoneCallPersistentState *callPersistentState, u8 idx);
 void PhoneCallPersistentState_PhoneRematches_GiftItemIdSet(PhoneCallPersistentState *callPersistentState, u8 idx, u16 itemId);

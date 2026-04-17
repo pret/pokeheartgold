@@ -903,7 +903,7 @@
 	.byte \arg1
 	.endm
 
-	.macro ScrCmd_149 arg0
+	.macro UnsetPhoneCallTrigger arg0
 	.short 149
 	.byte \arg0
 	.endm

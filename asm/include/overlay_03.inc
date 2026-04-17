@@ -214,7 +214,7 @@
 .public sub_020881C0
 .public sub_020910B8
 .public sub_02092B04
-.public sub_02097268
+.public GetSafariObjectConfig
 .public sub_02097720
 .public MI_CpuFill8
 .public abs
