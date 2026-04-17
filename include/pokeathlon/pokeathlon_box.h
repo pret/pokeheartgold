@@ -7,6 +7,7 @@
 
 #include "overlay_manager.h"
 #include "bg_window.h"
+#include "pokemon_storage_system.h"
 
 typedef struct PokeathlonBox {
     BgConfig* bgConfig; // 0x0
@@ -20,6 +21,19 @@ typedef struct PokeathlonBox {
     u32 unk30;
 } PokeathlonBox; // size: 0x34
 
+typedef struct PokeathlonBox_BoxMon {
+    u32 species;
+    u32 personality;
+    u16 isEgg;
+    u16 form;
+    u16 unkC;
+    u16 unkE;
+    u16 isShiny;
+    u16 gender;
+    u8 filler14[4];
+    u16 nickname[20];
+} PokeathlonBox_BoxMon;
+
 BOOL PokeathlonBox_Init(OverlayManager *manager);
 BOOL PokeathlonBox_Main(OverlayManager *manager);
 BOOL PokeathlonBox_Exit(OverlayManager *manager);
@@ -30,6 +44,7 @@ void PokeathlonBox_SetGraphicsModes(BgConfig* bgConfig);
 void PokeathlonBox_SetObjCharTransferTemplate();
 void ov97_0221E864(PokeathlonBox* data);
 void ov97_0221E88C(void* data);
+BOOL PokeathlonBox_GetBoxMon(PCStorage* storage, u32 boxno, u32 slotno, PokeathlonBox_BoxMon* ptr);
 
 void* ov97_0221E91C();
 void* ov97_0221E97C();

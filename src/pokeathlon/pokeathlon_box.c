@@ -6,6 +6,7 @@
 #include "nnsys.h"
 #include "obj_char_transfer.h"
 #include "obj_pltt_transfer.h"
+#include "pokemon.h"
 #include "save_arrays.h"
 #include "system.h"
 #include "text.h"
@@ -181,4 +182,29 @@ void ov97_0221E864(PokeathlonBox* data) {
 
 void ov97_0221E88C(void* data) {
     sub_02093594(((PokeathlonBox*) data)->unk8);
+}
+
+BOOL PokeathlonBox_GetBoxMon(PCStorage* storage, u32 boxno, u32 slotno, PokeathlonBox_BoxMon* ptr) {
+    BoxPokemon* boxMon = PCStorage_GetMonByIndexPair(storage, boxno, slotno);
+    if (GetBoxMonData(boxMon, MON_DATA_SPECIES_EXISTS, NULL) != 0) {
+        ptr->species = GetBoxMonData(boxMon, MON_DATA_SPECIES, NULL);
+        ptr->personality = GetBoxMonData(boxMon, MON_DATA_PERSONALITY, NULL);
+        ptr->isEgg = GetBoxMonData(boxMon, MON_DATA_IS_EGG, NULL);
+        ptr->form = GetBoxMonData(boxMon, MON_DATA_FORM, NULL);
+        ptr->unkC = 0;
+        ptr->unkE = 0;
+        GetBoxMonData(boxMon, MON_DATA_NICKNAME, ptr->nickname);
+        ptr->isShiny = BoxMonIsShiny(boxMon);
+        ptr->gender = GetBoxMonData(boxMon, MON_DATA_GENDER, NULL);
+        return TRUE;
+    }
+    ptr->species = 0;
+    ptr->personality = 0;
+    ptr->isEgg = 0;
+    ptr->form = 0;
+    ptr->unkC = 0;
+    ptr->unkE = 0;
+    ptr->isShiny = 0;
+    ptr->gender = 0;
+    return FALSE;
 }
