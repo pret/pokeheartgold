@@ -80,7 +80,8 @@ jobs:
       - name: Post error archive
         if: failure() && github.actor != 'nektos/act'
         continue-on-error: true
-        run: tar -czvhf failure.tar.gz $(git clean -ndx | sed 's/Would remove //')
+        run: tar -czvhf failure.tar.gz $(git clean -ndx | sed 's/Would remove //' | grep
+          -v '^tools/')
 
       - name: Post error upload
         if: failure() && github.actor != 'nektos/act'
