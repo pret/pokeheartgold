@@ -93,7 +93,7 @@ s32 ov44_02232F64(OverlayManager *overlayManager, u32 *arg1);
 s32 ov44_022330A8(OverlayManager *arg0);
 void ov44_02233100(UnkStruct_ov44_02235340 *arg0, String *arg1);
 void ov44_02233160(UnkStruct_ov44_02235340 *arg0);
-void ov44_0223317C(UnkStruct_ov44_02235340 *arg0, UnkStruct_ov44_args *arg1);
+void ov44_0223317C(UnkStruct_ov44_02235340 *arg0, String *arg1);
 
 // The following functions are likely static
 s32 ov44_02234F60(UnkStruct_ov44_02235340 *arg0, UnkStruct_ov44_args *arg1, enum HeapID heapID);
