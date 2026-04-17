@@ -5,7 +5,7 @@ permissions:
 
 on:
   push:
-    branches: [master]
+    branches: [ master ]
   pull_request:
   workflow_dispatch:
 
@@ -21,22 +21,23 @@ env:
 jobs:
   build:
     runs-on: ubuntu-22.04
-    container:
-      image: ghcr.io/pret/pokeheartgold:latest
-      credentials:
-        username: ${{ github.actor }}
-        password: ${{ secrets.GITHUB_TOKEN }}
 
     steps:
       - name: Checkout Repo
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
+      - name: Download assets
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          ref: workflows/assets
+          path: ~/download
+
+      - name: Install 7z
+        uses: milliewalky/setup-7-zip@ce4c26956d369e4cce6c1a7c114a4ed6c98f458f # v2.0.0
+
       - name: Setup Repo
+        working-directory: ~/download
         run: |
-          mkdir -p ~/download
-          cd ~/download
-          wget https://github.com/pret/pokeheartgold/raw/workflows/assets/mwccarm.zip
-          wget https://github.com/pret/pokeheartgold/raw/workflows/assets/NitroSDK-3_2-060901.7z
           unzip mwccarm.zip
           mv mwccarm $GITHUB_WORKSPACE/tools
           7z x NitroSDK-3_2-060901.7z
@@ -46,7 +47,7 @@ jobs:
           mv NitroSDK-3_2-060901/include/nitro/specfiles/mwldarm.response.template $GITHUB_WORKSPACE/
 
       - name: Set Swap Space
-        uses: pierotofy/set-swap-space@370d1278c848822779d7ef2a975300fffbd038ab # unreleased
+        uses: pierotofy/set-swap-space@fc79b3f67fa8a838184ce84a674ca12238d2c761 # unreleased
         if: ${{ github.actor != 'nektos/act' }}
         with:
           swap-size-gb: 19
@@ -56,14 +57,22 @@ jobs:
           GAME_VERSION: HEARTGOLD
           GAME_LANGUAGE: ENGLISH
           GAME_REVISION: 0
-        run: make -j4
+        uses: addnab/docker-run-action@4f65fabd2431ebc8d299f8e5a018d79a769ae185 # v3
+        with:
+          image: ghcr.io/pret/pokeheartgold:latest
+          options: -v ${{ github.workspace }}:/repo -w /repo --platform linux/amd64
+          run: make -j4
 
       - name: Build SoulSilver
         env:
           GAME_VERSION: SOULSILVER
           GAME_LANGUAGE: ENGLISH
           GAME_REVISION: 0
-        run: make -j4
+        uses: addnab/docker-run-action@4f65fabd2431ebc8d299f8e5a018d79a769ae185 # v3
+        with:
+          image: ghcr.io/pret/pokeheartgold:latest
+          options: -v ${{ github.workspace }}:/repo -w /repo --platform linux/amd64
+          run: make -j4
 
       - name: Webhook
         if: ${{ github.event_name == 'push' }}
