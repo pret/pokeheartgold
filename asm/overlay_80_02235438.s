@@ -83,10 +83,10 @@ _022354CC:
 	beq _0223556A
 	b _0223557A
 _022354D2:
-	bl sub_0204A68C
+	bl ResetSystem
 	b _0223557E
 _022354D8:
-	bl sub_0204B068
+	bl FrontierFieldSystem_AwardTowerBattlePoints
 	strh r0, [r4]
 	ldr r0, [r5, #8]
 	bl Save_GameStats_Get
@@ -102,7 +102,7 @@ _022354EE:
 	strh r0, [r4]
 	b _0223557E
 _022354FC:
-	bl sub_0204AC78
+	bl FrontierFieldSystem_GetFrontierBattleNumber
 	strh r0, [r4]
 	b _0223557E
 _02235504:
@@ -110,7 +110,7 @@ _02235504:
 	strh r0, [r4]
 	b _0223557E
 _0223550C:
-	bl sub_0204AC7C
+	bl FrontierFieldSystem_0204AC7C
 	strh r0, [r4]
 	b _0223557E
 _02235514:
@@ -118,7 +118,7 @@ _02235514:
 	strh r0, [r4]
 	b _0223557E
 _0223551C:
-	bl sub_0204B05C
+	bl FrontierFieldSystem_GetBattleTowerMode
 	strh r0, [r4]
 	b _0223557E
 _02235524:
@@ -136,14 +136,14 @@ _02235536:
 	b _0223557E
 _0223553E:
 	ldr r1, [r5, #8]
-	bl sub_0204AD04
+	bl FrontierFieldSystem_0204AD04
 	b _0223557E
 _02235546:
 	ldr r1, [r5, #8]
-	bl sub_0204AE20
+	bl FrontierFieldSystem_0204AE20
 	b _0223557E
 _0223554E:
-	bl sub_0204AF2C
+	bl FrontierFieldSystem_0204AF2C
 	b _0223557E
 _02235554:
 	ldr r1, _02235584 ; =0x00000884
@@ -259,7 +259,7 @@ FrtCmd_134: ; 0x02235610
 	ldr r0, [r0]
 	ldr r0, [r0]
 	bl Frontier_GetData
-	bl sub_0204AA2C
+	bl FrontierFieldSystem_Free
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0

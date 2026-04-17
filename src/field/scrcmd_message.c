@@ -98,18 +98,18 @@ BOOL ScrCmd_442(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_443(ScriptContext *ctx) {
-    u8 r1 = ScriptReadByte(ctx);
-    void *r2 = ctx->fieldSystem->unkA0;
-    if (r2 == NULL) {
+    u8 index = ScriptReadByte(ctx);
+    FrontierFieldSystem *frontierFsys = ctx->fieldSystem->frontier;
+    if (frontierFsys == NULL) {
         return FALSE;
     }
-    u16 *r4 = r2 + 0x90 + r1 * 0x110;
-    if (r4[0] == 0xFFFF) {
+    MailMessage *intro = &frontierFsys->unk78[index].introMessage;
+    if (intro->msg_bank == 0xFFFF) {
         MsgData *messageData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, 723, HEAP_ID_FIELD3);
-        ov01_021EF4DC(ctx, messageData, r4[1], TRUE, NULL);
+        ov01_021EF4DC(ctx, messageData, intro->msg_no, TRUE, NULL);
         DestroyMsgData(messageData);
     } else {
-        ov01_021EF564(ctx, r4[0], r4[1], r4[2], (s16)r4[3], TRUE);
+        ov01_021EF564(ctx, intro->msg_bank, intro->msg_no, intro->fields[0], intro->fields[1], TRUE);
     }
     SetupNativeScript(ctx, ov01_021EF348);
     return TRUE;
