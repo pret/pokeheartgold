@@ -250,7 +250,7 @@ void ov44_02233160(UnkStruct_ov44_02235340 *arg0) {
     }
 }
 
-void ov44_0223317C(UnkStruct_ov44_02235340 *arg0, UnkStruct_ov44_args *arg1) {
+void ov44_0223317C(UnkStruct_ov44_02235340 *arg0, String *arg1) {
     if (arg0->unk4 != 1) {
         __memcpy(arg0->unk20, arg1, 4);
     }
