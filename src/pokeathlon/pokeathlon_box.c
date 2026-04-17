@@ -3,6 +3,7 @@
 #include "font.h"
 #include "gf_gfx_planes.h"
 #include "heap.h"
+#include "nnsys.h"
 #include "obj_char_transfer.h"
 #include "obj_pltt_transfer.h"
 #include "save_arrays.h"
@@ -18,6 +19,7 @@ void sub_02093A40(u32);
 void sub_02093354(u32);
 u32 sub_020932E0(u32, u32, u32);
 void sub_02093440(u32, BgConfig*, PCStorage*, Party*, u32, u32, BOOL, u32, void*, void*, void*, void*, PokeathlonBox*);
+void sub_02093594(u32);
 
 extern const GraphicsBanks pokeathlonBoxGraphicsBanks;
 extern const GraphicsModes pokeathlonBoxGraphicsModes;
@@ -170,4 +172,13 @@ void PokeathlonBox_SetObjCharTransferTemplate() {
     ObjPlttTransfer_Init(0x14, HEAP_ID_POKEATHLON);
     ObjCharTransfer_ClearBuffers();
     ObjPlttTransfer_Reset();
+}
+
+void ov97_0221E864(PokeathlonBox* data) {
+    NNS_G2dInitOamManagerModule();
+    OamManager_Create(0, 0x7e, 0, 0x20, 1, 0x7e, 0, 0x20, HEAP_ID_POKEATHLON);
+}
+
+void ov97_0221E88C(void* data) {
+    sub_02093594(((PokeathlonBox*) data)->unk8);
 }

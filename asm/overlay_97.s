@@ -12,37 +12,8 @@
 	.extern PokeathlonBox_SetGraphicsBanks
 	.extern PokeathlonBox_SetGraphicsModes
 	.extern PokeathlonBox_SetObjCharTransferTemplate
-
-	thumb_func_start ov97_0221E864
-ov97_0221E864: ; 0x0221E864
-	push {lr}
-	sub sp, #0x14
-	bl NNS_G2dInitOamManagerModule
-	mov r0, #1
-	str r0, [sp]
-	mov r1, #0x7e
-	str r1, [sp, #4]
-	mov r0, #0
-	str r0, [sp, #8]
-	mov r3, #0x20
-	str r3, [sp, #0xc]
-	mov r2, #0x5c
-	str r2, [sp, #0x10]
-	add r2, r0, #0
-	bl OamManager_Create
-	add sp, #0x14
-	pop {pc}
-	.balign 4, 0
-	thumb_func_end ov97_0221E864
-
-	thumb_func_start ov97_0221E88C
-ov97_0221E88C: ; 0x0221E88C
-	ldr r3, _0221E894 ; =sub_02093594
-	ldr r0, [r0, #8]
-	bx r3
-	nop
-_0221E894: .word sub_02093594
-	thumb_func_end ov97_0221E88C
+	.extern ov97_0221E864
+	.extern ov97_0221E88C
 
 	thumb_func_start ov97_0221E898
 ov97_0221E898: ; 0x0221E898
