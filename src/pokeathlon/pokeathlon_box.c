@@ -21,6 +21,7 @@ void sub_02093440(u32, BgConfig*, PCStorage*, Party*, u32, u32, BOOL, u32, void*
 
 extern const GraphicsBanks pokeathlonBoxGraphicsBanks;
 extern const GraphicsModes pokeathlonBoxGraphicsModes;
+extern const ObjCharTransferTemplate pokeathlonBoxObjCharTransferTemplate;
 
 BOOL PokeathlonBox_Init(OverlayManager *manager) {
     if (ov97_0221E6DC(manager) != FALSE) {
@@ -127,7 +128,7 @@ BOOL ov97_0221E700(OverlayManager *manager) {
     data->unkC = ov97_0221EE84(HEAP_ID_POKEATHLON);
     
     PokeathlonBox_SetGraphicsModes(data->bgConfig);
-    ov97_0221E834();
+    PokeathlonBox_SetObjCharTransferTemplate();
 
     ov97_0221E864(data);
 
@@ -161,4 +162,12 @@ void PokeathlonBox_SetGraphicsBanks() {
 void PokeathlonBox_SetGraphicsModes(BgConfig* bgConfig) {
     GraphicsModes modes = pokeathlonBoxGraphicsModes;
     SetBothScreensModesAndDisable(&modes);
+}
+
+void PokeathlonBox_SetObjCharTransferTemplate() {
+    ObjCharTransferTemplate template = pokeathlonBoxObjCharTransferTemplate;
+    ObjCharTransfer_Init(&template);
+    ObjPlttTransfer_Init(0x14, HEAP_ID_POKEATHLON);
+    ObjCharTransfer_ClearBuffers();
+    ObjPlttTransfer_Reset();
 }
