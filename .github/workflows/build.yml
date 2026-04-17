@@ -45,29 +45,30 @@ jobs:
           mv NitroSDK-3_2-060901/include/nitro/specfiles/ARM7-TS.lcf.template $GITHUB_WORKSPACE/sub/
           mv NitroSDK-3_2-060901/include/nitro/specfiles/ARM9-TS.lcf.template $GITHUB_WORKSPACE/
           mv NitroSDK-3_2-060901/include/nitro/specfiles/mwldarm.response.template $GITHUB_WORKSPACE/
-          rm -rf ./*
+          cd .. && rm -rf tmp-download
+
+      - name: Login to GHCR
+        uses: docker/login-action@4907a6ddec9925e35a0a9e82d7399ccc52663121 # v4.1.0
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build HeartGold
         env:
           GAME_VERSION: HEARTGOLD
           GAME_LANGUAGE: ENGLISH
           GAME_REVISION: 0
-        uses: addnab/docker-run-action@4f65fabd2431ebc8d299f8e5a018d79a769ae185 # v3
-        with:
-          image: ghcr.io/pret/pokeheartgold:latest
-          options: -v ${{ github.workspace }}:/repo -w /repo --platform linux/amd64
-          run: make -j4
+        run: |
+          docker run -it --rm -v ${{ github.workspace }}:/repo -w /repo --platform linux/amd64 ghcr.io/pret/pokeheartgold:latest make -j4
 
       - name: Build SoulSilver
         env:
           GAME_VERSION: SOULSILVER
           GAME_LANGUAGE: ENGLISH
           GAME_REVISION: 0
-        uses: addnab/docker-run-action@4f65fabd2431ebc8d299f8e5a018d79a769ae185 # v3
-        with:
-          image: ghcr.io/pret/pokeheartgold:latest
-          options: -v ${{ github.workspace }}:/repo -w /repo --platform linux/amd64
-          run: make -j4
+        run: |
+          docker run -it --rm -v ${{ github.workspace }}:/repo -w /repo --platform linux/amd64 ghcr.io/pret/pokeheartgold:latest make -j4
 
       - name: Webhook
         if: ${{ github.event_name == 'push' }}
