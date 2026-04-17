@@ -47,7 +47,9 @@ typedef struct PokeathlonCourseArgs {
     u8 field_9;        // 0x009
     u8 filler_A[4];    // 0x00A
     u8 shouldFreeHeap; // 0x00E - Flag: if 0, free heap allocations in Exit
-    // ... more fields to be discovered
+    u8 field_F;        // 0x00F
+    u8 filler10[0x74]; // 0x010
+    u32 field_84;      // 0x084
 } PokeathlonCourseArgs;
 
 // Main state machine states

@@ -66,7 +66,10 @@ typedef struct SaveData {
     BOOL flashChipDetected;
     BOOL saveFileExists;
     BOOL isNewGame;
-    u32 statusFlags;
+    union {
+        u32 statusFlags;
+        u8 statusFlagsBytes[4]; // Individual byte access: [0]=0xC, [1]=0xD, [2]=0xE, [3]=0xF
+    };
     u8 dynamic_region[SAVE_PAGE_MAX * SAVE_SECTOR_SIZE];
     u32 saveCounter;
     struct SaveArrayHeader arrayHeaders[SAVE_BLOCK_NUM]; // 23014

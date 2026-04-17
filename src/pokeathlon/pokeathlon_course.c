@@ -210,7 +210,7 @@ BOOL PokeathlonCourse_Exit(OverlayManager *manager, int *state) {
     }
 
     // Get Pokeathlon save data and process result
-    saveData = *(SaveData **)data->args;
+    saveData = data->args->saveData;
     pokeathlonSave = Save_Pokeathlon_Get(saveData);
     result = PokeathlonSave_GetAgainUnkB00(pokeathlonSave);
     ov96_021E7F98(data->frameCounter, 59999, result);
