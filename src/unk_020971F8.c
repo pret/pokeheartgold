@@ -4,17 +4,11 @@
 #include "unk_02033AE0.h"
 
 void sub_020971F8(void* arg0) {
-    const UnkStruct_0203AC88* unkStruct;
-
-    unkStruct = sub_0203AC88();
-    sub_0203410C(unkStruct, sub_0203AC90(), arg0);
+    sub_0203410C(sub_0203AC88(), sub_0203AC90(), arg0);
 }
 
 void sub_02097214(void) {
-    const UnkStruct_0203AC88* unkStruct;
-
-    unkStruct = sub_0203AC88();
-    sub_0203410C(unkStruct, sub_0203AC90(), 0);
+    sub_0203410C(sub_0203AC88(), sub_0203AC90(), 0);
 }
 
 s32 sub_0209722C(void) {
