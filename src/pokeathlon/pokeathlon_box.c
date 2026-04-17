@@ -143,7 +143,7 @@ BOOL ov97_0221E700(OverlayManager *manager) {
     // There is an issue here (the cast to `(SaveData*)` makes it obvious it's not correct)
     PCStorage* pcStorage = SaveArray_PCStorage_Get((SaveData*)saveData->flashChipDetected);
     Party* party = SaveArray_Party_Get((SaveData*)saveData->flashChipDetected);
-    sub_02093440(data->unk8, data->bgConfig, pcStorage, party, 0, 0, r6, 0x12, &ov97_0221E91C, &ov97_0221E97C, &data->unk10, &ov97_0221EC14, data);
+    sub_02093440(data->unk8, data->bgConfig, pcStorage, party, 0, 0, r6, 0x12, &PokeathlonBox_GetLightBoxMon, &PokeathlonBox_GetBoxName, &data->unk10, &ov97_0221EC14, data);
 
     sub_0203A994(2);
     ov97_0221EEA4(data->unkC, data->bgConfig, (u8) data->unk30, saveData->statusFlagsBytes[3]);
@@ -207,4 +207,32 @@ BOOL PokeathlonBox_GetBoxMon(PCStorage* storage, u32 boxno, u32 slotno, Pokeathl
     ptr->isShiny = 0;
     ptr->gender = 0;
     return FALSE;
+}
+
+BOOL PokeathlonBox_GetLightBoxMon(PCStorage* storage, u32 boxno, u32 slotno, PokeathlonBox_BoxMon* ptr) {
+    BoxPokemon* boxMon = PCStorage_GetMonByIndexPair(storage, boxno, slotno);
+    if (GetBoxMonData(boxMon, MON_DATA_SPECIES_EXISTS, NULL) != 0) {
+        ptr->species = GetBoxMonData(boxMon, MON_DATA_SPECIES, NULL);
+        ptr->personality = 0;
+        ptr->isEgg = GetBoxMonData(boxMon, MON_DATA_IS_EGG, NULL);
+        ptr->form = GetBoxMonData(boxMon, MON_DATA_FORM, NULL);
+        ptr->unkC = 0;
+        ptr->unkE = 0;
+        ptr->isShiny = 0;
+        ptr->gender = 0;
+        return TRUE;
+    }
+    ptr->species = 0;
+    ptr->personality = 0;
+    ptr->isEgg = 0;
+    ptr->form = 0;
+    ptr->unkC = 0;
+    ptr->unkE = 0;
+    ptr->isShiny = 0;
+    ptr->gender = 0;
+    return FALSE;
+}
+
+void PokeathlonBox_GetBoxName(String *dest, PCStorage *storage, u32 boxno) {
+    PCStorage_GetBoxName(storage, boxno, dest);
 }

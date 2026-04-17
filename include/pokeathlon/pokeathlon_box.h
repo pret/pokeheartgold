@@ -45,9 +45,9 @@ void PokeathlonBox_SetObjCharTransferTemplate();
 void ov97_0221E864(PokeathlonBox* data);
 void ov97_0221E88C(void* data);
 BOOL PokeathlonBox_GetBoxMon(PCStorage* storage, u32 boxno, u32 slotno, PokeathlonBox_BoxMon* ptr);
+BOOL PokeathlonBox_GetLightBoxMon(PCStorage* storage, u32 boxno, u32 slotno, PokeathlonBox_BoxMon* ptr);
+void PokeathlonBox_GetBoxName(String *dest, PCStorage *storage, u32 boxno);
 
-void* ov97_0221E91C();
-void* ov97_0221E97C();
 void  ov97_0221E98C(PokeathlonBox*, void*);
 void* ov97_0221EC14();
 u32   ov97_0221EE84(u32);

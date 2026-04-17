@@ -15,66 +15,8 @@
 	.extern ov97_0221E864
 	.extern ov97_0221E88C
 	.extern PokeathlonBox_GetBoxMon
-
-	thumb_func_start ov97_0221E91C
-ov97_0221E91C: ; 0x0221E91C
-	push {r3, r4, r5, lr}
-	add r4, r3, #0
-	bl PCStorage_GetMonByIndexPair
-	mov r1, #0xac
-	mov r2, #0
-	add r5, r0, #0
-	bl GetBoxMonData
-	cmp r0, #0
-	beq _0221E966
-	add r0, r5, #0
-	mov r1, #5
-	mov r2, #0
-	bl GetBoxMonData
-	str r0, [r4]
-	mov r2, #0
-	str r2, [r4, #4]
-	add r0, r5, #0
-	mov r1, #0x4c
-	bl GetBoxMonData
-	strh r0, [r4, #8]
-	add r0, r5, #0
-	mov r1, #0x70
-	mov r2, #0
-	bl GetBoxMonData
-	strh r0, [r4, #0xa]
-	mov r0, #0
-	strh r0, [r4, #0xc]
-	strh r0, [r4, #0xe]
-	strh r0, [r4, #0x10]
-	strh r0, [r4, #0x12]
-	mov r0, #1
-	pop {r3, r4, r5, pc}
-_0221E966:
-	mov r0, #0
-	str r0, [r4]
-	str r0, [r4, #4]
-	strh r0, [r4, #8]
-	strh r0, [r4, #0xa]
-	strh r0, [r4, #0xc]
-	strh r0, [r4, #0xe]
-	strh r0, [r4, #0x10]
-	strh r0, [r4, #0x12]
-	pop {r3, r4, r5, pc}
-	.balign 4, 0
-	thumb_func_end ov97_0221E91C
-
-	thumb_func_start ov97_0221E97C
-ov97_0221E97C: ; 0x0221E97C
-	add r3, r0, #0
-	add r0, r1, #0
-	add r1, r2, #0
-	add r2, r3, #0
-	ldr r3, _0221E988 ; =PCStorage_GetBoxName
-	bx r3
-	.balign 4, 0
-_0221E988: .word PCStorage_GetBoxName
-	thumb_func_end ov97_0221E97C
+	.extern PokeathlonBox_GetLightBoxMon
+	.extern PokeathlonBox_GetBoxName
 
 	thumb_func_start ov97_0221E98C
 ov97_0221E98C: ; 0x0221E98C
