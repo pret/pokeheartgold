@@ -1,6 +1,7 @@
 #include "pokeathlon/pokeathlon_box.h"
 
 #include "font.h"
+#include "gf_gfx_planes.h"
 #include "heap.h"
 #include "obj_char_transfer.h"
 #include "obj_pltt_transfer.h"
@@ -17,6 +18,8 @@ void sub_02093A40(u32);
 void sub_02093354(u32);
 u32 sub_020932E0(u32, u32, u32);
 void sub_02093440(u32, BgConfig*, PCStorage*, Party*, u32, u32, BOOL, u32, void*, void*, void*, void*, PokeathlonBox*);
+
+extern const GraphicsBanks pokeathlonBoxGraphicsBanks;
 
 BOOL PokeathlonBox_Init(OverlayManager *manager) {
     if (ov97_0221E6DC(manager) != FALSE) {
@@ -117,7 +120,7 @@ BOOL ov97_0221E700(OverlayManager *manager) {
     data->flashChipDetected = saveData->flashChipDetected;
     data->unk30 = args->field_84;
 
-    ov97_0221E7F4();
+    PokeathlonBox_SetGraphicsBanks();
 
     data->unk8 = sub_020932E0(HEAP_ID_POKEATHLON, HEAP_ID_3, 0x13);
     data->unkC = ov97_0221EE84(HEAP_ID_POKEATHLON);
@@ -147,4 +150,9 @@ BOOL ov97_0221E700(OverlayManager *manager) {
     FontID_Alloc(2, HEAP_ID_POKEATHLON);
 
     return TRUE;
+}
+
+void PokeathlonBox_SetGraphicsBanks() {
+    GraphicsBanks banks = pokeathlonBoxGraphicsBanks;
+    GfGfx_SetBanks(&banks);
 }

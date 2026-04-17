@@ -26,7 +26,7 @@ BOOL PokeathlonBox_Exit(OverlayManager *manager);
 BOOL ov97_0221E6DC(OverlayManager *manager);
 BOOL ov97_0221E700(OverlayManager *manager);
 
-void  ov97_0221E7F4();
+void  PokeathlonBox_SetGraphicsBanks();
 void  ov97_0221E814(BgConfig* bgConfig);
 void  ov97_0221E834();
 void  ov97_0221E864(PokeathlonBox* data);
