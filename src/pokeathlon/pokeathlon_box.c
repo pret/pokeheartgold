@@ -20,6 +20,7 @@ u32 sub_020932E0(u32, u32, u32);
 void sub_02093440(u32, BgConfig*, PCStorage*, Party*, u32, u32, BOOL, u32, void*, void*, void*, void*, PokeathlonBox*);
 
 extern const GraphicsBanks pokeathlonBoxGraphicsBanks;
+extern const GraphicsModes pokeathlonBoxGraphicsModes;
 
 BOOL PokeathlonBox_Init(OverlayManager *manager) {
     if (ov97_0221E6DC(manager) != FALSE) {
@@ -125,7 +126,7 @@ BOOL ov97_0221E700(OverlayManager *manager) {
     data->unk8 = sub_020932E0(HEAP_ID_POKEATHLON, HEAP_ID_3, 0x13);
     data->unkC = ov97_0221EE84(HEAP_ID_POKEATHLON);
     
-    ov97_0221E814(data->bgConfig);
+    PokeathlonBox_SetGraphicsModes(data->bgConfig);
     ov97_0221E834();
 
     ov97_0221E864(data);
@@ -155,4 +156,9 @@ BOOL ov97_0221E700(OverlayManager *manager) {
 void PokeathlonBox_SetGraphicsBanks() {
     GraphicsBanks banks = pokeathlonBoxGraphicsBanks;
     GfGfx_SetBanks(&banks);
+}
+
+void PokeathlonBox_SetGraphicsModes(BgConfig* bgConfig) {
+    GraphicsModes modes = pokeathlonBoxGraphicsModes;
+    SetBothScreensModesAndDisable(&modes);
 }

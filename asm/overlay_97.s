@@ -10,25 +10,7 @@
 	.extern ov97_0221E6DC
 	.extern ov97_0221E700
 	.extern PokeathlonBox_SetGraphicsBanks
-
-	thumb_func_start ov97_0221E814
-ov97_0221E814: ; 0x0221E814
-	push {r4, lr}
-	sub sp, #0x10
-	ldr r4, _0221E830 ; =ov97_0221FCA8
-	add r3, sp, #0
-	add r2, r3, #0
-	ldmia r4!, {r0, r1}
-	stmia r3!, {r0, r1}
-	ldmia r4!, {r0, r1}
-	stmia r3!, {r0, r1}
-	add r0, r2, #0
-	bl SetBothScreensModesAndDisable
-	add sp, #0x10
-	pop {r4, pc}
-	.balign 4, 0
-_0221E830: .word ov97_0221FCA8
-	thumb_func_end ov97_0221E814
+	.extern PokeathlonBox_SetGraphicsModes
 
 	thumb_func_start ov97_0221E834
 ov97_0221E834: ; 0x0221E834
@@ -2542,7 +2524,8 @@ _0221FC98:
 	.byte 0x28, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00
 	.byte 0x00, 0x40, 0x00, 0x00, 0x5C, 0x00, 0x00, 0x00
 
-ov97_0221FCA8: ; 0x0221FCA8
+	.global pokeathlonBoxGraphicsModes
+pokeathlonBoxGraphicsModes: ; 0x0221FCA8
 	.byte 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 
