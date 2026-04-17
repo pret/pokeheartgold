@@ -738,7 +738,7 @@ _02235EA4:
 	ldr r0, [r7, #8]
 	mov r1, #0
 	mov r2, #6
-	bl sub_0204A824
+	bl FrontierFieldSystem_New
 	add r4, r0, #0
 	ldr r0, [r5]
 	add r1, r4, #0
@@ -803,7 +803,7 @@ _02235F10:
 	bne _02235F44
 	ldr r1, [r7, #8]
 	add r0, r4, #0
-	bl sub_0204ABC8
+	bl FrontierFieldSystem_SetRandomFrontierTrainers
 _02235F44:
 	ldr r0, [r7, #8]
 	bl SaveArray_Party_Get
@@ -872,7 +872,7 @@ FrtCmd_182: ; 0x02235FB4
 	ldr r0, [r0]
 	ldr r0, [r0]
 	bl Frontier_GetData
-	bl sub_0204AA2C
+	bl FrontierFieldSystem_Free
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0

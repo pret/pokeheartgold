@@ -9,9 +9,9 @@
 .public sub_02031108
 .public sub_0203769C
 .public sub_02037B5C
-.public sub_0204A824
-.public sub_0204AA2C
-.public sub_0204ABC8
+.public FrontierFieldSystem_New
+.public FrontierFieldSystem_Free
+.public FrontierFieldSystem_SetRandomFrontierTrainers
 .public sub_0204F878
 .public sub_0205C048
 .public sub_0205C11C
