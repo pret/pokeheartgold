@@ -83,8 +83,8 @@ BOOL PokeathlonBox_GetLightBoxMon(PCStorage* storage, u32 boxno, u32 slotno, Pok
 void PokeathlonBox_GetBoxName(String *dest, PCStorage *storage, u32 boxno);
 void PokeathlonBox_CopySelectedMons(PokeathlonBox* data, PokeathlonBoxArgs* args);
 void ov97_0221EA88(Party* party, u8 slot, PokeathlonBox_UnkStruct0221EA88* a2);
+void ov97_0221EB38(BoxPokemon* boxMon, PokeathlonBox_UnkStruct0221EA88* a1);
 
-void  ov97_0221EB38(BoxPokemon*, void*);
 void* ov97_0221EC14();
 u32   ov97_0221EE84(u32);
 void  ov97_0221EEA4(u32, BgConfig*, u8, u32);

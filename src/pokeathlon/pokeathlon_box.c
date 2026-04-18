@@ -282,3 +282,19 @@ void ov97_0221EA88(Party* party, u8 slot, PokeathlonBox_UnkStruct0221EA88* a2) {
     a2->unk6 = (a2->unk6 & 0xFFFFF1FF) | ((u32) (stars.color[1] << 0x1D) >> 0x14);
     a2->unk6 = (a2->unk6 & 0xFFFF8FFF) | ((u32) (stars.color[2] << 0x1D) >> 0x11);
 }
+
+void ov97_0221EB38(BoxPokemon* boxMon, PokeathlonBox_UnkStruct0221EA88* a1) {
+    PokeathlonPerformanceStars stars;
+    
+    CalcBoxmonPokeathlonStars(&stars, boxMon, NULL, HEAP_ID_POKEATHLON);
+    a1->unk0 = ((u32) (stars.stars << 0x1D) >> 0x1D);
+    a1->unk1 = ((u32) (stars.stars << 0x11) >> 0x1D);
+    a1->unk2 = ((u32) (stars.stars << 0x14) >> 0x1D);
+    a1->unk3 = ((u32) (stars.stars << 0x1A) >> 0x1D);
+    a1->unk4 = ((u32) (stars.stars << 0x17) >> 0x1D);
+    a1->unk6 = (a1->unk6 & ~7) | (7 & stars.color[0]);
+    a1->unk6 = (a1->unk6 & ~0x38) | ((u32) (stars.color[4] << 0x1D) >> 0x1A);
+    a1->unk6 = (a1->unk6 & 0xFFFFFE3F) | ((u32) (stars.color[3] << 0x1D) >> 0x17);
+    a1->unk6 = (a1->unk6 & 0xFFFFF1FF) | ((u32) (stars.color[1] << 0x1D) >> 0x14);
+    a1->unk6 = (a1->unk6 & 0xFFFF8FFF) | ((u32) (stars.color[2] << 0x1D) >> 0x11);
+}
