@@ -313,12 +313,12 @@ typedef struct PartyCore {
     Pokemon mons[PARTY_SIZE];
 } PartyCore;
 
-typedef struct PartyExtraSub {
+typedef struct PartyAprijuiceModifier {
     u8 unk_00[PERFORMANCE_MAX];
-} PartyExtraSub;
+} PartyAprijuiceModifier;
 
 typedef struct PartyExtra {
-    PartyExtraSub aprijuiceModifiers[PARTY_SIZE];
+    PartyAprijuiceModifier aprijuiceModifiers[PARTY_SIZE];
 } PartyExtra;
 
 typedef struct Party {
@@ -345,10 +345,10 @@ struct PokeathlonTodayPerformance {
     struct TodayPerformanceStat stats[PERFORMANCE_MAX];
 };
 
-struct PokeathlonPerformanceStars {
+typedef struct PokeathlonPerformanceStars {
     u16 stars;
     u8 color[PERFORMANCE_MAX];
     u8 dummy;
-};
+} PokeathlonPerformanceStars;
 
 #endif // POKEHEARTGOLD_POKEMON_TYPES_DEF_H

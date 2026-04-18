@@ -243,24 +243,42 @@ void PokeathlonBox_CopySelectedMons(PokeathlonBox* data, PokeathlonBoxArgs* args
     if (data->unk28 == 0) {
         for (int i = 0; i < 3; i++) {
             if (data->selectedMons[i].unk10 == 0x12) {
-                Pokemon* partyMon = Party_GetMonByIndex(SaveArray_Party_Get(args->courseArgs->saveData), data->selectedMons[i].unk14);
+                Pokemon* partyMon = Party_GetMonByIndex(SaveArray_Party_Get(args->courseArgs->saveData), data->selectedMons[i].slot);
                 args->selectedMons[i].species = GetMonData(partyMon, MON_DATA_SPECIES, NULL);
                 args->selectedMons[i].personality = GetMonData(partyMon, MON_DATA_PERSONALITY, NULL);
                 args->selectedMons[i].form = GetMonData(partyMon, MON_DATA_FORM, NULL);
                 GetMonData(partyMon, MON_DATA_NICKNAME, &args->selectedMons[i].nickname);
                 args->selectedMons[i].isShiny = MonIsShiny(partyMon);
                 args->selectedMons[i].gender = GetMonData(partyMon, MON_DATA_GENDER, NULL);
-                ov97_0221EA88(SaveArray_Party_Get(args->courseArgs->saveData), data->selectedMons[i].unk14, &args->selectedMons[i].unk10);
+                ov97_0221EA88(SaveArray_Party_Get(args->courseArgs->saveData), data->selectedMons[i].slot, &args->selectedMons[i].unk10);
             } else {
-                PokeathlonBox_GetBoxMon(SaveArray_PCStorage_Get(args->courseArgs->saveData), data->selectedMons[i].unk10, data->selectedMons[i].unk14, &boxMon);
+                PokeathlonBox_GetBoxMon(SaveArray_PCStorage_Get(args->courseArgs->saveData), data->selectedMons[i].unk10, data->selectedMons[i].slot, &boxMon);
                 args->selectedMons[i].species = boxMon.species;
                 args->selectedMons[i].personality = boxMon.personality;
                 args->selectedMons[i].form = boxMon.form;
                 CopyU16StringArrayN(args->selectedMons[i].nickname, boxMon.nickname, 11);
                 args->selectedMons[i].isShiny = boxMon.isShiny;
                 args->selectedMons[i].gender = boxMon.gender;
-                ov97_0221EB38(PCStorage_GetMonByIndexPair(SaveArray_PCStorage_Get(args->courseArgs->saveData), data->selectedMons[i].unk10, data->selectedMons[i].unk14), &args->selectedMons[i].unk10);
+                ov97_0221EB38(PCStorage_GetMonByIndexPair(SaveArray_PCStorage_Get(args->courseArgs->saveData), data->selectedMons[i].unk10, data->selectedMons[i].slot), &args->selectedMons[i].unk10);
             }
         }
     }
+}
+
+void ov97_0221EA88(Party* party, u8 slot, PokeathlonBox_UnkStruct0221EA88* a2) {
+    PartyAprijuiceModifier aprijuiceModifier;
+    PokeathlonPerformanceStars stars;
+
+    Party_GetMonAprijuiceModifiers(party, &aprijuiceModifier, slot);
+    CalcMonPokeathlonStars(&stars, Party_GetMonByIndex(party, slot), aprijuiceModifier.unk_00, HEAP_ID_POKEATHLON);
+    a2->unk0 = ((u32) (stars.stars << 0x1D) >> 0x1D);
+    a2->unk1 = ((u32) (stars.stars << 0x11) >> 0x1D);
+    a2->unk2 = ((u32) (stars.stars << 0x14) >> 0x1D);
+    a2->unk3 = ((u32) (stars.stars << 0x1A) >> 0x1D);
+    a2->unk4 = ((u32) (stars.stars << 0x17) >> 0x1D);
+    a2->unk6 = (a2->unk6 & ~7) | (7 & stars.color[0]);
+    a2->unk6 = (a2->unk6 & ~0x38) | ((u32) (stars.color[4] << 0x1D) >> 0x1A);
+    a2->unk6 = (a2->unk6 & 0xFFFFFE3F) | ((u32) (stars.color[3] << 0x1D) >> 0x17);
+    a2->unk6 = (a2->unk6 & 0xFFFFF1FF) | ((u32) (stars.color[1] << 0x1D) >> 0x14);
+    a2->unk6 = (a2->unk6 & 0xFFFF8FFF) | ((u32) (stars.color[2] << 0x1D) >> 0x11);
 }

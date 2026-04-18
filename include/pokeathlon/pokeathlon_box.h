@@ -8,6 +8,17 @@
 #include "overlay_manager.h"
 #include "bg_window.h"
 #include "pokemon_storage_system.h"
+#include "pokemon_types_def.h"
+
+typedef struct PokeathlonBox_UnkStruct0221EA88 {
+    s8 unk0;
+    s8 unk1;
+    s8 unk2;
+    s8 unk3;
+    s8 unk4;
+    s8 unk5;
+    u16 unk6;
+} PokeathlonBox_UnkStruct0221EA88;
 
 typedef struct PokeathlonBoxArgs_SelectedMon {
     u32 unk0; // 0x00
@@ -15,8 +26,7 @@ typedef struct PokeathlonBoxArgs_SelectedMon {
     u16 species; // 0x08
     u16 form; // 0x0A
     u32 personality; // 0x0C
-    u32 unk10; // 0x10
-    u32 unk14; // 0x14
+    PokeathlonBox_UnkStruct0221EA88 unk10; // 0x10
     u8 isShiny; // 0x18
     u8 gender; // 0x19
     u16 nickname[7]; // 0x1A
@@ -44,7 +54,7 @@ typedef struct PokeathlonBox_BoxMon {
 
 typedef struct PokeathlonBox_SelectedMon {
     u32 unk10;
-    u32 unk14;
+    u32 slot;
 } PokeathlonBox_SelectedMon;
 
 typedef struct PokeathlonBox {
@@ -72,8 +82,8 @@ BOOL PokeathlonBox_GetBoxMon(PCStorage* storage, u32 boxno, u32 slotno, Pokeathl
 BOOL PokeathlonBox_GetLightBoxMon(PCStorage* storage, u32 boxno, u32 slotno, PokeathlonBox_BoxMon* ptr);
 void PokeathlonBox_GetBoxName(String *dest, PCStorage *storage, u32 boxno);
 void PokeathlonBox_CopySelectedMons(PokeathlonBox* data, PokeathlonBoxArgs* args);
+void ov97_0221EA88(Party* party, u8 slot, PokeathlonBox_UnkStruct0221EA88* a2);
 
-void  ov97_0221EA88(Party*, u8, void*);
 void  ov97_0221EB38(BoxPokemon*, void*);
 void* ov97_0221EC14();
 u32   ov97_0221EE84(u32);
