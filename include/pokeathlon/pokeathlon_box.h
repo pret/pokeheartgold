@@ -9,6 +9,12 @@
 #include "bg_window.h"
 #include "pokemon_storage_system.h"
 
+typedef struct PokeathlonBoxArgs {
+    PokeathlonCourseArgs* courseArgs;
+    u8 filler4[0x80];
+    u32 unk84;
+} PokeathlonBoxArgs;
+
 typedef struct PokeathlonBox {
     BgConfig* bgConfig; // 0x0
     u32 state; // 0x4
@@ -17,7 +23,7 @@ typedef struct PokeathlonBox {
     u32 unk10;
     u8 filler14[20];
     BOOL unk28;
-    BOOL flashChipDetected; // 0x2C
+    SaveData* saveData; // 0x2C
     u32 unk30;
 } PokeathlonBox; // size: 0x34
 
@@ -47,8 +53,8 @@ void ov97_0221E88C(void* data);
 BOOL PokeathlonBox_GetBoxMon(PCStorage* storage, u32 boxno, u32 slotno, PokeathlonBox_BoxMon* ptr);
 BOOL PokeathlonBox_GetLightBoxMon(PCStorage* storage, u32 boxno, u32 slotno, PokeathlonBox_BoxMon* ptr);
 void PokeathlonBox_GetBoxName(String *dest, PCStorage *storage, u32 boxno);
+void ov97_0221E98C(PokeathlonBox* data, PokeathlonBoxArgs* args);
 
-void  ov97_0221E98C(PokeathlonBox*, void*);
 void* ov97_0221EC14();
 u32   ov97_0221EE84(u32);
 void  ov97_0221EEA4(u32, BgConfig*, u8, u32);

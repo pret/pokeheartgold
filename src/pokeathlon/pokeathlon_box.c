@@ -70,7 +70,7 @@ BOOL PokeathlonBox_Main(OverlayManager *manager) {
 
         case 5:
             if (IsPaletteFadeFinished()) {
-                PokeathlonCourseArgs* args = OverlayManager_GetArgs(manager);
+                PokeathlonBoxArgs* args = OverlayManager_GetArgs(manager);
                 ov97_0221E98C(data, args);
                 return TRUE;
             }
@@ -99,31 +99,31 @@ BOOL PokeathlonBox_Exit(OverlayManager *manager) {
 }
 
 BOOL ov97_0221E6DC(OverlayManager *manager) {
-    PokeathlonCourseArgs* args = OverlayManager_GetArgs(manager);
+    PokeathlonBoxArgs* args = OverlayManager_GetArgs(manager);
 
     do {
         if (ov97_0221E700(manager) != FALSE) {
             return TRUE;
         }
-    } while (args->saveData->saveFileExists == 0);
+    } while (args->courseArgs->mode == 0);
 
     return FALSE;
 }
 
 BOOL ov97_0221E700(OverlayManager *manager) {
     PokeathlonBox* data;
-    SaveData* saveData;
-    PokeathlonCourseArgs* args;
+    PokeathlonCourseArgs* courseArgs;
+    PokeathlonBoxArgs* args;
     
     args = OverlayManager_GetArgs(manager);
-    saveData = args->saveData;
+    courseArgs = args->courseArgs;
     data = OverlayManager_CreateAndGetData(manager, sizeof(PokeathlonBox), HEAP_ID_POKEATHLON);
     
     memset(data, 0, sizeof(PokeathlonBox));
 
     data->bgConfig = BgConfig_Alloc(HEAP_ID_POKEATHLON);
-    data->flashChipDetected = saveData->flashChipDetected;
-    data->unk30 = args->field_84;
+    data->saveData = courseArgs->saveData;
+    data->unk30 = args->unk84;
 
     PokeathlonBox_SetGraphicsBanks();
 
@@ -135,18 +135,17 @@ BOOL ov97_0221E700(OverlayManager *manager) {
 
     ov97_0221E864(data);
 
-    BOOL r6 = FALSE;
-    if (args->saveData->saveFileExists == FALSE) {
-        r6 = TRUE;
+    BOOL isMode0 = FALSE;
+    if (args->courseArgs->mode == 0) {
+        isMode0 = TRUE;
     }
 
-    // There is an issue here (the cast to `(SaveData*)` makes it obvious it's not correct)
-    PCStorage* pcStorage = SaveArray_PCStorage_Get((SaveData*)saveData->flashChipDetected);
-    Party* party = SaveArray_Party_Get((SaveData*)saveData->flashChipDetected);
-    sub_02093440(data->unk8, data->bgConfig, pcStorage, party, 0, 0, r6, 0x12, &PokeathlonBox_GetLightBoxMon, &PokeathlonBox_GetBoxName, &data->unk10, &ov97_0221EC14, data);
+    PCStorage* pcStorage = SaveArray_PCStorage_Get(courseArgs->saveData);
+    Party* party = SaveArray_Party_Get(courseArgs->saveData);
+    sub_02093440(data->unk8, data->bgConfig, pcStorage, party, 0, 0, isMode0, 0x12, &PokeathlonBox_GetLightBoxMon, &PokeathlonBox_GetBoxName, &data->unk10, &ov97_0221EC14, data);
 
     sub_0203A994(2);
-    ov97_0221EEA4(data->unkC, data->bgConfig, (u8) data->unk30, saveData->statusFlagsBytes[3]);
+    ov97_0221EEA4(data->unkC, data->bgConfig, (u8) data->unk30, courseArgs->field_F);
     Main_SetVBlankIntrCB(&ov97_0221E88C, data);
     data->state = 0;
 
