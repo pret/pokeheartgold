@@ -341,9 +341,9 @@ struct TodayPerformanceStat {
     s16 dailyMod;
 };
 
-struct PokeathlonTodayPerformance {
+typedef struct PokeathlonTodayPerformance {
     struct TodayPerformanceStat stats[PERFORMANCE_MAX];
-};
+} PokeathlonTodayPerformance;
 
 typedef struct PokeathlonPerformanceStars {
     u16 stars;

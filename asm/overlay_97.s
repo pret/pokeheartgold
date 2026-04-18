@@ -18,41 +18,9 @@
 	.extern PokeathlonBox_GetLightBoxMon
 	.extern PokeathlonBox_GetBoxName
 	.extern PokeathlonBox_CopySelectedMons
-	.extern ov97_0221EA88
-	.extern ov97_0221EB38
-
-	thumb_func_start ov97_0221EBD8
-ov97_0221EBD8: ; 0x0221EBD8
-	push {r3, r4, lr}
-	sub sp, #0x14
-	add r4, r1, #0
-	add r1, sp, #0
-	bl CalcBoxMonPokeathlonPerformance
-	add r0, sp, #0
-	ldrh r1, [r0]
-	lsl r1, r1, #0x1a
-	lsr r1, r1, #0x1d
-	strb r1, [r4]
-	ldrh r1, [r0, #0x10]
-	lsl r1, r1, #0x1a
-	lsr r1, r1, #0x1d
-	strb r1, [r4, #1]
-	ldrh r1, [r0, #0xc]
-	lsl r1, r1, #0x1a
-	lsr r1, r1, #0x1d
-	strb r1, [r4, #2]
-	ldrh r1, [r0, #4]
-	lsl r1, r1, #0x1a
-	lsr r1, r1, #0x1d
-	strb r1, [r4, #3]
-	ldrh r0, [r0, #8]
-	lsl r0, r0, #0x1a
-	lsr r0, r0, #0x1d
-	strb r0, [r4, #4]
-	add sp, #0x14
-	pop {r3, r4, pc}
-	.balign 4, 0
-	thumb_func_end ov97_0221EBD8
+	.extern PokeathlonBox_GetPartyMonStats
+	.extern PokeathlonBox_GetBoxMonStats
+	.extern PokeathlonBox_GetLightBoxMonStats
 
 	thumb_func_start ov97_0221EC14
 ov97_0221EC14: ; 0x0221EC14
@@ -129,10 +97,10 @@ _0221EC3C:
 	add r0, r7, #0
 	lsr r1, r1, #0x18
 	add r2, sp, #0x24
-	bl ov97_0221EA88
+	bl PokeathlonBox_GetPartyMonStats
 	add r0, r6, #0
 	add r1, sp, #0x1c
-	bl ov97_0221EBD8
+	bl PokeathlonBox_GetLightBoxMonStats
 	add r1, sp, #0x14
 	add r0, r7, #0
 	add r1, #2
@@ -209,11 +177,11 @@ _0221ED1C:
 	add r1, sp, #0xc
 	add r1, #2
 	add r4, r0, #0
-	bl ov97_0221EB38
+	bl PokeathlonBox_GetBoxMonStats
 	add r1, sp, #4
 	add r0, r4, #0
 	add r1, #2
-	bl ov97_0221EBD8
+	bl PokeathlonBox_GetLightBoxMonStats
 	add r0, sp, #0
 	mov r1, #0
 	mov r2, #5
