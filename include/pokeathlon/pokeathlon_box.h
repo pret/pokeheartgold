@@ -66,14 +66,37 @@ typedef struct PokeathlonBox_UnkStruct0221EC14 {
     s8 unk9;
     u16 nickname[11];
     u8 unk20[5];
-    u8 filler[40];
+    u8 unk25;
+    u16 unk26;
+    u8 unk28;
+    u8 unk29;
+    u8 filler2A[6];
+    u8 unk30;
+    u8 unk31;
+    u8 filler32[6];
+    u8 unk38;
+    u8 unk39;
+    u8 filler3A[6];
+    u8 unk40;
+    u8 unk41;
+    u8 filler42[6];
+    u8 unk48;
+    u8 unk49;
+    u8 filler[3];
 } PokeathlonBox_UnkStruct0221EC14;
+
+typedef struct PokeathlonBox_UnkStruct0221EE84 {
+    enum HeapID heapID; // 0x000
+    u8 filler4[0x74]; // 0x004
+    enum HeapID heapID2; // 0x078
+    u8 filler7C[0x280]; // 0x07C
+} PokeathlonBox_UnkStruct0221EE84; // size: 0x2FC
 
 typedef struct PokeathlonBox {
     BgConfig* bgConfig; // 0x0
     u32 state; // 0x4
     u32 unk8;
-    u32 unkC;
+    PokeathlonBox_UnkStruct0221EE84* unkC;
     PokeathlonBox_SelectedMon selectedMons[3];
     BOOL unk28;
     SaveData* saveData; // 0x2C
@@ -98,12 +121,12 @@ void PokeathlonBox_GetPartyMonStats(Party* party, u8 slot, PokeathlonBox_MonStat
 void PokeathlonBox_GetBoxMonStats(BoxPokemon* boxMon, PokeathlonBox_MonStats* stats);
 void PokeathlonBox_GetLightBoxMonStats(BoxPokemon *boxMon, PokeathlonBox_MonStats* stats);
 void ov97_0221EC14(int boxno, u8 slot, PokeathlonBox* data);
+void ov97_0221EDE4(PokeathlonBox_MonStats* stats1, PokeathlonBox_MonStats* stats2, PartyAprijuiceModifier* aprijuiceModifier, PokeathlonBox_UnkStruct0221EC14* mon);
+PokeathlonBox_UnkStruct0221EE84* ov97_0221EE84(enum HeapID heapID);
 
-void  ov97_0221EDE4(PokeathlonBox_MonStats*, PokeathlonBox_MonStats*, void*, PokeathlonBox_UnkStruct0221EC14*);
-u32   ov97_0221EE84(u32);
-void  ov97_0221EEA4(u32, BgConfig*, u8, u32);
-void  ov97_0221EFD0(u32, PokeathlonBox_UnkStruct0221EC14*);
-void  ov97_0221F010(u32);
-void  ov97_0221F020(u32);
+void  ov97_0221EEA4(PokeathlonBox_UnkStruct0221EE84*, BgConfig*, u8, u32);
+void  ov97_0221EFD0(PokeathlonBox_UnkStruct0221EE84*, PokeathlonBox_UnkStruct0221EC14*);
+void  ov97_0221F010(PokeathlonBox_UnkStruct0221EE84*);
+void  ov97_0221F020(PokeathlonBox_UnkStruct0221EE84*);
 
 #endif // POKEHEARTGOLD_POKEATHLON_BOX_H

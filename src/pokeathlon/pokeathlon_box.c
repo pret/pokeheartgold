@@ -21,6 +21,7 @@ void sub_02093354(u32);
 u32 sub_020932E0(u32, u32, u32);
 void sub_02093440(u32, BgConfig*, PCStorage*, Party*, u32, u32, BOOL, u32, void*, void*, void*, void*, PokeathlonBox*);
 void sub_02093594(u32);
+s8 sub_0208B85C(void*, u8, u8, u32, s8);
 
 extern const GraphicsBanks pokeathlonBoxGraphicsBanks;
 extern const GraphicsModes pokeathlonBoxGraphicsModes;
@@ -28,7 +29,7 @@ extern const ObjCharTransferTemplate pokeathlonBoxObjCharTransferTemplate;
 extern const u32 ov97_0221FCB8[5];
 
 BOOL PokeathlonBox_Init(OverlayManager *manager) {
-    if (ov97_0221E6DC(manager) != FALSE) {
+    if (ov97_0221E6DC(manager)) {
         return TRUE;
     }
     return FALSE;
@@ -103,7 +104,7 @@ BOOL ov97_0221E6DC(OverlayManager *manager) {
     PokeathlonBoxArgs* args = OverlayManager_GetArgs(manager);
 
     do {
-        if (ov97_0221E700(manager) != FALSE) {
+        if (ov97_0221E700(manager)) {
             return TRUE;
         }
     } while (args->courseArgs->mode == 0);
@@ -300,50 +301,16 @@ void PokeathlonBox_GetBoxMonStats(BoxPokemon* boxMon, PokeathlonBox_MonStats* st
     stats->stars = (stats->stars & 0xFFFF8FFF) | ((u32) (stars.color[PERFORMANCE_SPEED] << 0x1D) >> 0x11);
 }
 
-#ifdef NONMATCHING
-// See https://decomp.me/scratch/RmNAw
 void PokeathlonBox_GetLightBoxMonStats(BoxPokemon *boxMon, PokeathlonBox_MonStats* stats) {
     PokeathlonTodayPerformance performance;
     
     CalcBoxMonPokeathlonPerformance(boxMon, &performance);
-    stats->power = ((u32) (performance.stats[PERFORMANCE_POWER].base << 0x1A) >> 0x1D);
-    stats->stamina = ((u32) (performance.stats[PERFORMANCE_STAMINA].base << 0x1A) >> 0x1D);
-    stats->jump = ((u32) (performance.stats[PERFORMANCE_JUMP].base << 0x1A) >> 0x1D);
-    stats->skill = ((u32) (performance.stats[PERFORMANCE_SKILL].base << 0x1A) >> 0x1D);
-    stats->speed = ((u32) (performance.stats[PERFORMANCE_SPEED].base << 0x1A) >> 0x1D);
+    stats->power = performance.stats[PERFORMANCE_POWER].hi; // from the "<< 0x1A) >> 0x1D" ones
+    stats->stamina = performance.stats[PERFORMANCE_STAMINA].hi;
+    stats->jump = performance.stats[PERFORMANCE_JUMP].hi;
+    stats->skill = performance.stats[PERFORMANCE_SKILL].hi;
+    stats->speed = performance.stats[PERFORMANCE_SPEED].hi;
 }
-#else
-asm void PokeathlonBox_GetLightBoxMonStats(BoxPokemon *boxMon, PokeathlonBox_MonStats* stats) {
-	push {r3, r4, lr}
-	sub sp, #0x14
-	add r4, r1, #0
-	add r1, sp, #0
-	bl CalcBoxMonPokeathlonPerformance
-	add r0, sp, #0
-	ldrh r1, [r0]
-	lsl r1, r1, #0x1a
-	lsr r1, r1, #0x1d
-	strb r1, [r4]
-	ldrh r1, [r0, #0x10]
-	lsl r1, r1, #0x1a
-	lsr r1, r1, #0x1d
-	strb r1, [r4, #1]
-	ldrh r1, [r0, #0xc]
-	lsl r1, r1, #0x1a
-	lsr r1, r1, #0x1d
-	strb r1, [r4, #2]
-	ldrh r1, [r0, #4]
-	lsl r1, r1, #0x1a
-	lsr r1, r1, #0x1d
-	strb r1, [r4, #3]
-	ldrh r0, [r0, #8]
-	lsl r0, r0, #0x1a
-	lsr r0, r0, #0x1d
-	strb r0, [r4, #4]
-	add sp, #0x14
-	pop {r3, r4, pc}
-}
-#endif
 
 void ov97_0221EC14(int boxno, u8 slot, PokeathlonBox* data) {
     PokeathlonBox_UnkStruct0221EC14 sp70;
@@ -357,7 +324,7 @@ void ov97_0221EC14(int boxno, u8 slot, PokeathlonBox* data) {
     PokeathlonBox_MonStats boxLightMonStats;
     PokeathlonBox_BoxMon pokeathlonBoxMon;
     
-    u8 sp0[5];
+    PartyAprijuiceModifier emptyAprijuiceModifier;
 
     sp5C = ov97_0221FCB8;
     if (boxno != -1 && slot != -1) {  
@@ -377,7 +344,7 @@ void ov97_0221EC14(int boxno, u8 slot, PokeathlonBox* data) {
             Party_GetMonAprijuiceModifiers(party, &aprijuiceModifier, slot);
             ov97_0221EDE4(&partyLightMonStats, &partyMonStats, &aprijuiceModifier, &sp70);
             for (u8 i = 0; i < 5; i++) {
-                if (PokeathlonSave_GetUnkDC_AtIndex(Save_Pokeathlon_Get(data->saveData), sp5C[i], sp70.species) != 0) {
+                if (PokeathlonSave_GetUnkDC_AtIndex(Save_Pokeathlon_Get(data->saveData), sp5C[i], sp70.species)) {
                     sp70.unk20[i] = 1;
                 } else {
                     sp70.unk20[i] = 0;
@@ -391,16 +358,16 @@ void ov97_0221EC14(int boxno, u8 slot, PokeathlonBox* data) {
         sp70.personality = pokeathlonBoxMon.personality;
         sp70.species = pokeathlonBoxMon.species;
         sp70.form = pokeathlonBoxMon.form;
-        CopyU16StringArrayN(sp70.nickname, pokeathlonBoxMon.nickname, 0xB);
+        CopyU16StringArrayN(sp70.nickname, pokeathlonBoxMon.nickname, 11);
         sp70.isShiny = pokeathlonBoxMon.isShiny;
         sp70.gender = pokeathlonBoxMon.gender;
         BoxPokemon* boxMon = PCStorage_GetMonByIndexPair(SaveArray_PCStorage_Get(data->saveData), boxno, slot);
         PokeathlonBox_GetBoxMonStats(boxMon, &boxMonStats);
         PokeathlonBox_GetLightBoxMonStats(boxMon, &boxLightMonStats);
-        MI_CpuFill8(&sp0, 0, 5);
-        ov97_0221EDE4(&boxLightMonStats, &boxMonStats, &sp0, &sp70);
+        MI_CpuFill8(&emptyAprijuiceModifier, 0, 5);
+        ov97_0221EDE4(&boxLightMonStats, &boxMonStats, &emptyAprijuiceModifier, &sp70);
         for (u8 i = 0; i < 5; i++) {
-            if (PokeathlonSave_GetUnkDC_AtIndex(Save_Pokeathlon_Get(data->saveData), sp5C[i], sp70.species) != 0) {
+            if (PokeathlonSave_GetUnkDC_AtIndex(Save_Pokeathlon_Get(data->saveData), sp5C[i], sp70.species)) {
                 sp70.unk20[i] = 1;
             } else {
                 sp70.unk20[i] = 0;
@@ -412,4 +379,20 @@ void ov97_0221EC14(int boxno, u8 slot, PokeathlonBox* data) {
 
     sp70.unk9 = 0;
     ov97_0221EFD0(data->unkC, &sp70);
+}
+
+void ov97_0221EDE4(PokeathlonBox_MonStats* stats1, PokeathlonBox_MonStats* stats2, PartyAprijuiceModifier* aprijuiceModifier, PokeathlonBox_UnkStruct0221EC14* mon) {
+    mon->unk28 = sub_0208B85C(&mon->unk29, stats1->power, stats2->power, (u32) (stats2->stars << 0x1D) >> 0x1D, aprijuiceModifier->unk_00[0]);
+    mon->unk30 = sub_0208B85C(&mon->unk31, stats1->skill, stats2->skill, (u32) (stats2->stars << 0x14) >> 0x1D, aprijuiceModifier->unk_00[1]);
+    mon->unk38 = sub_0208B85C(&mon->unk39, stats1->speed, stats2->speed, (u32) (stats2->stars << 0x11) >> 0x1D, aprijuiceModifier->unk_00[2]);
+    mon->unk40 = sub_0208B85C(&mon->unk41, stats1->jump, stats2->jump, (u32) (stats2->stars << 0x17) >> 0x1D, aprijuiceModifier->unk_00[3]);
+    mon->unk48 = sub_0208B85C(&mon->unk49, stats1->stamina, stats2->stamina, (u32) (stats2->stars << 0x1A) >> 0x1D, aprijuiceModifier->unk_00[4]);
+}
+
+PokeathlonBox_UnkStruct0221EE84* ov97_0221EE84(enum HeapID heapID) {
+    PokeathlonBox_UnkStruct0221EE84* ptr = Heap_Alloc(heapID, sizeof(PokeathlonBox_UnkStruct0221EE84));
+    MI_CpuFill8(ptr, 0, sizeof(PokeathlonBox_UnkStruct0221EE84));
+    ptr->heapID = heapID;
+    ptr->heapID2 = heapID;
+    return ptr;
 }
