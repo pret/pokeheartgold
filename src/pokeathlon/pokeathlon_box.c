@@ -25,6 +25,7 @@ void sub_02093594(u32);
 extern const GraphicsBanks pokeathlonBoxGraphicsBanks;
 extern const GraphicsModes pokeathlonBoxGraphicsModes;
 extern const ObjCharTransferTemplate pokeathlonBoxObjCharTransferTemplate;
+extern const u32 ov97_0221FCB8[5];
 
 BOOL PokeathlonBox_Init(OverlayManager *manager) {
     if (ov97_0221E6DC(manager) != FALSE) {
@@ -185,7 +186,7 @@ void ov97_0221E88C(void* data) {
 
 BOOL PokeathlonBox_GetBoxMon(PCStorage* storage, u32 boxno, u32 slotno, PokeathlonBox_BoxMon* ptr) {
     BoxPokemon* boxMon = PCStorage_GetMonByIndexPair(storage, boxno, slotno);
-    if (!GetBoxMonData(boxMon, MON_DATA_SPECIES_EXISTS, NULL)) {
+    if (GetBoxMonData(boxMon, MON_DATA_SPECIES_EXISTS, NULL)) {
         ptr->species = GetBoxMonData(boxMon, MON_DATA_SPECIES, NULL);
         ptr->personality = GetBoxMonData(boxMon, MON_DATA_PERSONALITY, NULL);
         ptr->isEgg = GetBoxMonData(boxMon, MON_DATA_IS_EGG, NULL);
@@ -210,7 +211,7 @@ BOOL PokeathlonBox_GetBoxMon(PCStorage* storage, u32 boxno, u32 slotno, Pokeathl
 
 BOOL PokeathlonBox_GetLightBoxMon(PCStorage* storage, u32 boxno, u32 slotno, PokeathlonBox_BoxMon* ptr) {
     BoxPokemon* boxMon = PCStorage_GetMonByIndexPair(storage, boxno, slotno);
-    if (!GetBoxMonData(boxMon, MON_DATA_SPECIES_EXISTS, NULL)) {
+    if (GetBoxMonData(boxMon, MON_DATA_SPECIES_EXISTS, NULL)) {
         ptr->species = GetBoxMonData(boxMon, MON_DATA_SPECIES, NULL);
         ptr->personality = 0;
         ptr->isEgg = GetBoxMonData(boxMon, MON_DATA_IS_EGG, NULL);
@@ -343,3 +344,72 @@ asm void PokeathlonBox_GetLightBoxMonStats(BoxPokemon *boxMon, PokeathlonBox_Mon
 	pop {r3, r4, pc}
 }
 #endif
+
+void ov97_0221EC14(int boxno, u8 slot, PokeathlonBox* data) {
+    PokeathlonBox_UnkStruct0221EC14 sp70;
+    u32 sp5C[5];
+
+    PokeathlonBox_MonStats partyMonStats;
+    PokeathlonBox_MonStats partyLightMonStats;
+    PartyAprijuiceModifier aprijuiceModifier;
+
+    PokeathlonBox_MonStats boxMonStats;
+    PokeathlonBox_MonStats boxLightMonStats;
+    PokeathlonBox_BoxMon pokeathlonBoxMon;
+    
+    u8 sp0[5];
+
+    sp5C = ov97_0221FCB8;
+    if (boxno != -1 && slot != -1) {  
+        sp70.unk9 = 2;
+        if (boxno == NUM_BOXES) {
+            Party* party = SaveArray_Party_Get(data->saveData);
+            Pokemon* partyMon = Party_GetMonByIndex(party, slot);
+            sp70.personality = GetMonData(partyMon, MON_DATA_PERSONALITY, NULL);
+            sp70.species = GetMonData(partyMon, MON_DATA_SPECIES, NULL);
+            sp70.form = GetMonData(partyMon, MON_DATA_FORM, NULL);
+            GetMonData(partyMon, MON_DATA_NICKNAME, sp70.nickname);
+            sp70.isShiny = MonIsShiny(partyMon);
+            sp70.gender = GetMonData(partyMon, MON_DATA_GENDER, NULL);
+            BoxPokemon* boxMon = Mon_GetBoxMon(Party_GetMonByIndex(party, slot));
+            PokeathlonBox_GetPartyMonStats(party, (u32) slot, &partyMonStats);
+            PokeathlonBox_GetLightBoxMonStats(boxMon, &partyLightMonStats);
+            Party_GetMonAprijuiceModifiers(party, &aprijuiceModifier, slot);
+            ov97_0221EDE4(&partyLightMonStats, &partyMonStats, &aprijuiceModifier, &sp70);
+            for (u8 i = 0; i < 5; i++) {
+                if (PokeathlonSave_GetUnkDC_AtIndex(Save_Pokeathlon_Get(data->saveData), sp5C[i], sp70.species) != 0) {
+                    sp70.unk20[i] = 1;
+                } else {
+                    sp70.unk20[i] = 0;
+                }
+            }
+            ov97_0221EFD0(data->unkC, &sp70);
+            return;
+        }
+        
+        PokeathlonBox_GetBoxMon(SaveArray_PCStorage_Get(data->saveData), boxno, slot, &pokeathlonBoxMon);
+        sp70.personality = pokeathlonBoxMon.personality;
+        sp70.species = pokeathlonBoxMon.species;
+        sp70.form = pokeathlonBoxMon.form;
+        CopyU16StringArrayN(sp70.nickname, pokeathlonBoxMon.nickname, 0xB);
+        sp70.isShiny = pokeathlonBoxMon.isShiny;
+        sp70.gender = pokeathlonBoxMon.gender;
+        BoxPokemon* boxMon = PCStorage_GetMonByIndexPair(SaveArray_PCStorage_Get(data->saveData), boxno, slot);
+        PokeathlonBox_GetBoxMonStats(boxMon, &boxMonStats);
+        PokeathlonBox_GetLightBoxMonStats(boxMon, &boxLightMonStats);
+        MI_CpuFill8(&sp0, 0, 5);
+        ov97_0221EDE4(&boxLightMonStats, &boxMonStats, &sp0, &sp70);
+        for (u8 i = 0; i < 5; i++) {
+            if (PokeathlonSave_GetUnkDC_AtIndex(Save_Pokeathlon_Get(data->saveData), sp5C[i], sp70.species) != 0) {
+                sp70.unk20[i] = 1;
+            } else {
+                sp70.unk20[i] = 0;
+            }
+        }
+        ov97_0221EFD0(data->unkC, &sp70);
+        return;
+    }
+
+    sp70.unk9 = 0;
+    ov97_0221EFD0(data->unkC, &sp70);
+}

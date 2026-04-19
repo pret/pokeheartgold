@@ -57,6 +57,18 @@ typedef struct PokeathlonBox_SelectedMon {
     u32 slot;
 } PokeathlonBox_SelectedMon;
 
+typedef struct PokeathlonBox_UnkStruct0221EC14 {
+    u32 personality;
+    u16 species;
+    s8 isShiny;
+    s8 form;
+    s8 gender;
+    s8 unk9;
+    u16 nickname[11];
+    u8 unk20[5];
+    u8 filler[40];
+} PokeathlonBox_UnkStruct0221EC14;
+
 typedef struct PokeathlonBox {
     BgConfig* bgConfig; // 0x0
     u32 state; // 0x4
@@ -85,10 +97,12 @@ void PokeathlonBox_CopySelectedMons(PokeathlonBox* data, PokeathlonBoxArgs* args
 void PokeathlonBox_GetPartyMonStats(Party* party, u8 slot, PokeathlonBox_MonStats* stats);
 void PokeathlonBox_GetBoxMonStats(BoxPokemon* boxMon, PokeathlonBox_MonStats* stats);
 void PokeathlonBox_GetLightBoxMonStats(BoxPokemon *boxMon, PokeathlonBox_MonStats* stats);
+void ov97_0221EC14(int boxno, u8 slot, PokeathlonBox* data);
 
-void* ov97_0221EC14();
+void  ov97_0221EDE4(PokeathlonBox_MonStats*, PokeathlonBox_MonStats*, void*, PokeathlonBox_UnkStruct0221EC14*);
 u32   ov97_0221EE84(u32);
 void  ov97_0221EEA4(u32, BgConfig*, u8, u32);
+void  ov97_0221EFD0(u32, PokeathlonBox_UnkStruct0221EC14*);
 void  ov97_0221F010(u32);
 void  ov97_0221F020(u32);
 
