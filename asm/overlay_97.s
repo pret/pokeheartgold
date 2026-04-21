@@ -23,38 +23,9 @@
 	.extern PokeathlonBox_GetLightBoxMonStats
 	.extern ov97_0221EC14
 	.extern ov97_0221EDE4
-	.extern ov97_0221EE84
-	.extern ov97_0221EEA4
-
-	thumb_func_start ov97_0221EFD0
-ov97_0221EFD0: ; 0x0221EFD0
-	push {r3, r4, r5, lr}
-	add r4, r1, #0
-	ldrb r2, [r4, #9]
-	add r5, r0, #0
-	cmp r2, #2
-	bne _0221EFFA
-	bl ov97_0221F56C
-	add r0, r5, #0
-	add r1, r4, #0
-	bl ov97_0221F428
-	mov r0, #2
-	mov r1, #1
-	bl GfGfx_EngineBTogglePlanes
-	mov r0, #4
-	mov r1, #1
-	bl GfGfx_EngineBTogglePlanes
-	pop {r3, r4, r5, pc}
-_0221EFFA:
-	bl ov97_0221F74C
-	mov r0, #2
-	mov r1, #0
-	bl GfGfx_EngineBTogglePlanes
-	mov r0, #4
-	mov r1, #0
-	bl GfGfx_EngineBTogglePlanes
-	pop {r3, r4, r5, pc}
-	thumb_func_end ov97_0221EFD0
+	.extern PokeathlonBox_InitGraphics
+	.extern PokeathlonBox_SetupGraphics
+	.extern ov97_0221EFD0
 
 	thumb_func_start ov97_0221F010
 ov97_0221F010: ; 0x0221F010

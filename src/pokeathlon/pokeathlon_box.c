@@ -82,7 +82,7 @@ BOOL PokeathlonBox_Main(OverlayManager *manager) {
     }
 
     sub_02093A40(data->unk8);
-    ov97_0221F010(data->unkC);
+    ov97_0221F010(data->graphics);
     return FALSE;
 }
 
@@ -90,7 +90,7 @@ BOOL PokeathlonBox_Exit(OverlayManager *manager) {
     PokeathlonBox* data = OverlayManager_GetData(manager);
 
     Main_SetVBlankIntrCB(NULL, NULL);
-    ov97_0221F020(data->unkC);
+    ov97_0221F020(data->graphics);
     sub_02093354(data->unk8);
     FontID_Release(2);
     OamManager_Free();
@@ -132,7 +132,7 @@ BOOL ov97_0221E700(OverlayManager *manager) {
     PokeathlonBox_SetGraphicsBanks();
 
     data->unk8 = sub_020932E0(HEAP_ID_POKEATHLON, HEAP_ID_3, 0x13);
-    data->unkC = ov97_0221EE84(HEAP_ID_POKEATHLON);
+    data->graphics = PokeathlonBox_InitGraphics(HEAP_ID_POKEATHLON);
     
     PokeathlonBox_SetGraphicsModes(data->bgConfig);
     PokeathlonBox_SetObjCharTransferTemplate();
@@ -149,7 +149,7 @@ BOOL ov97_0221E700(OverlayManager *manager) {
     sub_02093440(data->unk8, data->bgConfig, pcStorage, party, 0, 0, isMode0, 18, &PokeathlonBox_GetLightBoxMon, &PokeathlonBox_GetBoxName, data->selectedMons, &ov97_0221EC14, data);
 
     sub_0203A994(2);
-    ov97_0221EEA4(data->unkC, data->bgConfig, data->unk30, courseArgs->field_F);
+    PokeathlonBox_SetupGraphics(data->graphics, data->bgConfig, data->unk30, courseArgs->field_F);
     Main_SetVBlankIntrCB(&ov97_0221E88C, data);
     data->state = 0;
 
@@ -352,7 +352,7 @@ void ov97_0221EC14(int boxno, u8 slot, PokeathlonBox* data) {
                     sp70.unk20[i] = 0;
                 }
             }
-            ov97_0221EFD0(data->unkC, &sp70);
+            ov97_0221EFD0(data->graphics, &sp70);
             return;
         }
         
@@ -375,12 +375,12 @@ void ov97_0221EC14(int boxno, u8 slot, PokeathlonBox* data) {
                 sp70.unk20[i] = 0;
             }
         }
-        ov97_0221EFD0(data->unkC, &sp70);
+        ov97_0221EFD0(data->graphics, &sp70);
         return;
     }
 
     sp70.unk9 = 0;
-    ov97_0221EFD0(data->unkC, &sp70);
+    ov97_0221EFD0(data->graphics, &sp70);
 }
 
 void ov97_0221EDE4(PokeathlonBox_MonStats* stats1, PokeathlonBox_MonStats* stats2, PartyAprijuiceModifier* aprijuiceModifier, PokeathlonBox_UnkStruct0221EC14* mon) {
@@ -391,31 +391,44 @@ void ov97_0221EDE4(PokeathlonBox_MonStats* stats1, PokeathlonBox_MonStats* stats
     mon->unk48 = sub_0208B85C(&mon->unk49, stats1->stamina, stats2->stamina, (u32) (stats2->stars << 0x1A) >> 0x1D, aprijuiceModifier->unk_00[4]);
 }
 
-PokeathlonBox_UnkStruct0221EE84* ov97_0221EE84(enum HeapID heapID) {
-    PokeathlonBox_UnkStruct0221EE84* ptr = Heap_Alloc(heapID, sizeof(PokeathlonBox_UnkStruct0221EE84));
-    MI_CpuFill8(ptr, 0, sizeof(PokeathlonBox_UnkStruct0221EE84));
+PokeathlonBox_Graphics* PokeathlonBox_InitGraphics(enum HeapID heapID) {
+    PokeathlonBox_Graphics* ptr = Heap_Alloc(heapID, sizeof(PokeathlonBox_Graphics));
+    MI_CpuFill8(ptr, 0, sizeof(PokeathlonBox_Graphics));
     ptr->heapID = heapID;
     ptr->heapID2 = heapID;
     return ptr;
 }
 
-void ov97_0221EEA4(PokeathlonBox_UnkStruct0221EE84* data, BgConfig* bgConfig, u8 arg2, u32 arg3) {
-    data->bgConfig = bgConfig;
-    ov97_0221F14C(bgConfig, data->heapID);
-    AddWindowParameterized(data->bgConfig, &data->window1, GF_BG_LYR_SUB_0, 1, 1, 17, 2, 15, 0x01);
-    AddWindowParameterized(data->bgConfig, &data->window2, GF_BG_LYR_SUB_0, 22, 1, 9, 2, 15, 0x23);
-    AddWindowParameterized(data->bgConfig, &data->window3, GF_BG_LYR_SUB_1, 1, 15, 8, 2, 15, 0x35);
-    AddWindowParameterized(data->bgConfig, &data->window4, GF_BG_LYR_SUB_1, 9, 15, 3, 2, 15, 0x45);
-    AddWindowParameterized(data->bgConfig, &data->window5, GF_BG_LYR_SUB_1, 13, 5, 10, 10, 15, 0x4B);
-    AddWindowParameterized(data->bgConfig, &data->window6, GF_BG_LYR_SUB_1, 1, 19, 12, 4, 15, 0xAF);
-    data->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0278_bin, data->heapID);
-    data->msgFormat = MessageFormat_New(data->heapID);
-    data->nickname = String_New(11, data->heapID);
-    data->unk68 = arg2;
-    data->unk6A = arg3;
-    ov97_0221F7DC(&data->heapID2);
-    ov97_0221F9E0(&data->heapID2);
-    ov97_0221F294(data);
+void PokeathlonBox_SetupGraphics(PokeathlonBox_Graphics* graphics, BgConfig* bgConfig, u8 arg2, u32 arg3) {
+    graphics->bgConfig = bgConfig;
+    ov97_0221F14C(bgConfig, graphics->heapID);
+    AddWindowParameterized(graphics->bgConfig, &graphics->window1, GF_BG_LYR_SUB_0, 1, 1, 17, 2, 15, 0x01);
+    AddWindowParameterized(graphics->bgConfig, &graphics->window2, GF_BG_LYR_SUB_0, 22, 1, 9, 2, 15, 0x23);
+    AddWindowParameterized(graphics->bgConfig, &graphics->window3, GF_BG_LYR_SUB_1, 1, 15, 8, 2, 15, 0x35);
+    AddWindowParameterized(graphics->bgConfig, &graphics->window4, GF_BG_LYR_SUB_1, 9, 15, 3, 2, 15, 0x45);
+    AddWindowParameterized(graphics->bgConfig, &graphics->window5, GF_BG_LYR_SUB_1, 13, 5, 10, 10, 15, 0x4B);
+    AddWindowParameterized(graphics->bgConfig, &graphics->window6, GF_BG_LYR_SUB_1, 1, 19, 12, 4, 15, 0xAF);
+    graphics->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0278_bin, graphics->heapID);
+    graphics->msgFormat = MessageFormat_New(graphics->heapID);
+    graphics->nickname = String_New(11, graphics->heapID);
+    graphics->unk68 = arg2;
+    graphics->unk6A = arg3;
+    ov97_0221F7DC(&graphics->heapID2);
+    ov97_0221F9E0(&graphics->heapID2);
+    ov97_0221F294(graphics);
+    GfGfx_EngineBTogglePlanes(GX_PLANEMASK_BG1, GF_PLANE_TOGGLE_OFF);
+    GfGfx_EngineBTogglePlanes(GX_PLANEMASK_BG2, GF_PLANE_TOGGLE_OFF);
+}
+
+void ov97_0221EFD0(PokeathlonBox_Graphics* graphics, PokeathlonBox_UnkStruct0221EC14* mon) {
+    if (mon->unk9 == 2) {
+        ov97_0221F56C(graphics, mon);
+        ov97_0221F428(graphics, mon);
+        GfGfx_EngineBTogglePlanes(GX_PLANEMASK_BG1, GF_PLANE_TOGGLE_ON);
+        GfGfx_EngineBTogglePlanes(GX_PLANEMASK_BG2, GF_PLANE_TOGGLE_ON);
+        return;
+    }
+    ov97_0221F74C();
     GfGfx_EngineBTogglePlanes(GX_PLANEMASK_BG1, GF_PLANE_TOGGLE_OFF);
     GfGfx_EngineBTogglePlanes(GX_PLANEMASK_BG2, GF_PLANE_TOGGLE_OFF);
 }

@@ -62,10 +62,10 @@ typedef struct PokeathlonBox_SelectedMon {
 typedef struct PokeathlonBox_UnkStruct0221EC14 {
     u32 personality;
     u16 species;
-    s8 isShiny;
-    s8 form;
-    s8 gender;
-    s8 unk9;
+    u8 isShiny;
+    u8 form;
+    u8 gender;
+    u8 unk9;
     u16 nickname[11];
     u8 unk20[5];
     u8 unk25;
@@ -87,7 +87,7 @@ typedef struct PokeathlonBox_UnkStruct0221EC14 {
     u8 filler[3];
 } PokeathlonBox_UnkStruct0221EC14;
 
-typedef struct PokeathlonBox_UnkStruct0221EE84 {
+typedef struct PokeathlonBox_Graphics {
     enum HeapID heapID; // 0x000
     BgConfig* bgConfig; // 0x004
     Window window1; // 0x008
@@ -103,13 +103,13 @@ typedef struct PokeathlonBox_UnkStruct0221EE84 {
     String *nickname; // 0x074
     enum HeapID heapID2; // 0x078
     u8 filler7C[0x280]; // 0x07C
-} PokeathlonBox_UnkStruct0221EE84; // size: 0x2FC
+} PokeathlonBox_Graphics; // size: 0x2FC
 
 typedef struct PokeathlonBox {
     BgConfig* bgConfig; // 0x0
     u32 state; // 0x4
     u32 unk8;
-    PokeathlonBox_UnkStruct0221EE84* unkC;
+    PokeathlonBox_Graphics* graphics;
     PokeathlonBox_SelectedMon selectedMons[3];
     BOOL unk28;
     SaveData* saveData; // 0x2C
@@ -135,15 +135,18 @@ void PokeathlonBox_GetBoxMonStats(BoxPokemon* boxMon, PokeathlonBox_MonStats* st
 void PokeathlonBox_GetLightBoxMonStats(BoxPokemon *boxMon, PokeathlonBox_MonStats* stats);
 void ov97_0221EC14(int boxno, u8 slot, PokeathlonBox* data);
 void ov97_0221EDE4(PokeathlonBox_MonStats* stats1, PokeathlonBox_MonStats* stats2, PartyAprijuiceModifier* aprijuiceModifier, PokeathlonBox_UnkStruct0221EC14* mon);
-PokeathlonBox_UnkStruct0221EE84* ov97_0221EE84(enum HeapID heapID);
-void ov97_0221EEA4(PokeathlonBox_UnkStruct0221EE84* data, BgConfig* bgConfig, u8 arg2, u32 arg3);
+PokeathlonBox_Graphics* PokeathlonBox_InitGraphics(enum HeapID heapID);
+void PokeathlonBox_SetupGraphics(PokeathlonBox_Graphics* graphics, BgConfig* bgConfig, u8 arg2, u32 arg3);
+void ov97_0221EFD0(PokeathlonBox_Graphics* graphics, PokeathlonBox_UnkStruct0221EC14* mon);
 
-void ov97_0221EFD0(PokeathlonBox_UnkStruct0221EE84*, PokeathlonBox_UnkStruct0221EC14*);
-void ov97_0221F010(PokeathlonBox_UnkStruct0221EE84*);
-void ov97_0221F020(PokeathlonBox_UnkStruct0221EE84*);
-void ov97_0221F14C(BgConfig*, enum HeapID);
-void ov97_0221F294(PokeathlonBox_UnkStruct0221EE84*);
-void ov97_0221F7DC(enum HeapID*);
-void ov97_0221F9E0(enum HeapID*);
+void ov97_0221F010(PokeathlonBox_Graphics* graphics);
+void ov97_0221F020(PokeathlonBox_Graphics* graphics);
+void ov97_0221F14C(BgConfig* bgConfig, enum HeapID heapID);
+void ov97_0221F294(PokeathlonBox_Graphics*);
+void ov97_0221F428(PokeathlonBox_Graphics* graphics, PokeathlonBox_UnkStruct0221EC14* mon);
+void ov97_0221F56C(PokeathlonBox_Graphics* graphics, PokeathlonBox_UnkStruct0221EC14* mon);
+void ov97_0221F74C();
+void ov97_0221F7DC(enum HeapID* heapID);
+void ov97_0221F9E0(enum HeapID* heapID);
 
 #endif // POKEHEARTGOLD_POKEATHLON_BOX_H
