@@ -1,5 +1,7 @@
 #include "pokeathlon/pokeathlon_box.h"
 
+#include "msgdata/msg.naix"
+
 #include "font.h"
 #include "gf_gfx_planes.h"
 #include "heap.h"
@@ -395,4 +397,25 @@ PokeathlonBox_UnkStruct0221EE84* ov97_0221EE84(enum HeapID heapID) {
     ptr->heapID = heapID;
     ptr->heapID2 = heapID;
     return ptr;
+}
+
+void ov97_0221EEA4(PokeathlonBox_UnkStruct0221EE84* data, BgConfig* bgConfig, u8 arg2, u32 arg3) {
+    data->bgConfig = bgConfig;
+    ov97_0221F14C(bgConfig, data->heapID);
+    AddWindowParameterized(data->bgConfig, &data->window1, GF_BG_LYR_SUB_0, 1, 1, 17, 2, 15, 0x01);
+    AddWindowParameterized(data->bgConfig, &data->window2, GF_BG_LYR_SUB_0, 22, 1, 9, 2, 15, 0x23);
+    AddWindowParameterized(data->bgConfig, &data->window3, GF_BG_LYR_SUB_1, 1, 15, 8, 2, 15, 0x35);
+    AddWindowParameterized(data->bgConfig, &data->window4, GF_BG_LYR_SUB_1, 9, 15, 3, 2, 15, 0x45);
+    AddWindowParameterized(data->bgConfig, &data->window5, GF_BG_LYR_SUB_1, 13, 5, 10, 10, 15, 0x4B);
+    AddWindowParameterized(data->bgConfig, &data->window6, GF_BG_LYR_SUB_1, 1, 19, 12, 4, 15, 0xAF);
+    data->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0278_bin, data->heapID);
+    data->msgFormat = MessageFormat_New(data->heapID);
+    data->nickname = String_New(11, data->heapID);
+    data->unk68 = arg2;
+    data->unk6A = arg3;
+    ov97_0221F7DC(&data->heapID2);
+    ov97_0221F9E0(&data->heapID2);
+    ov97_0221F294(data);
+    GfGfx_EngineBTogglePlanes(GX_PLANEMASK_BG1, GF_PLANE_TOGGLE_OFF);
+    GfGfx_EngineBTogglePlanes(GX_PLANEMASK_BG2, GF_PLANE_TOGGLE_OFF);
 }

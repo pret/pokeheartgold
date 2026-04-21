@@ -5,8 +5,10 @@
 
 #include "pokeathlon/pokeathlon.h"
 
-#include "overlay_manager.h"
 #include "bg_window.h"
+#include "message_format.h"
+#include "msgdata.h"
+#include "overlay_manager.h"
 #include "pokemon_storage_system.h"
 #include "pokemon_types_def.h"
 
@@ -87,7 +89,18 @@ typedef struct PokeathlonBox_UnkStruct0221EC14 {
 
 typedef struct PokeathlonBox_UnkStruct0221EE84 {
     enum HeapID heapID; // 0x000
-    u8 filler4[0x74]; // 0x004
+    BgConfig* bgConfig; // 0x004
+    Window window1; // 0x008
+    Window window2; // 0x018
+    Window window3; // 0x028
+    Window window4; // 0x038
+    Window window5; // 0x048
+    Window window6; // 0x058
+    u16 unk68; // 0x068
+    u16 unk6A; // 0x06A
+    MsgData *msgData; // 0x06C
+    MessageFormat *msgFormat; // 0x070
+    String *nickname; // 0x074
     enum HeapID heapID2; // 0x078
     u8 filler7C[0x280]; // 0x07C
 } PokeathlonBox_UnkStruct0221EE84; // size: 0x2FC
@@ -123,10 +136,14 @@ void PokeathlonBox_GetLightBoxMonStats(BoxPokemon *boxMon, PokeathlonBox_MonStat
 void ov97_0221EC14(int boxno, u8 slot, PokeathlonBox* data);
 void ov97_0221EDE4(PokeathlonBox_MonStats* stats1, PokeathlonBox_MonStats* stats2, PartyAprijuiceModifier* aprijuiceModifier, PokeathlonBox_UnkStruct0221EC14* mon);
 PokeathlonBox_UnkStruct0221EE84* ov97_0221EE84(enum HeapID heapID);
+void ov97_0221EEA4(PokeathlonBox_UnkStruct0221EE84* data, BgConfig* bgConfig, u8 arg2, u32 arg3);
 
-void  ov97_0221EEA4(PokeathlonBox_UnkStruct0221EE84*, BgConfig*, u8, u32);
-void  ov97_0221EFD0(PokeathlonBox_UnkStruct0221EE84*, PokeathlonBox_UnkStruct0221EC14*);
-void  ov97_0221F010(PokeathlonBox_UnkStruct0221EE84*);
-void  ov97_0221F020(PokeathlonBox_UnkStruct0221EE84*);
+void ov97_0221EFD0(PokeathlonBox_UnkStruct0221EE84*, PokeathlonBox_UnkStruct0221EC14*);
+void ov97_0221F010(PokeathlonBox_UnkStruct0221EE84*);
+void ov97_0221F020(PokeathlonBox_UnkStruct0221EE84*);
+void ov97_0221F14C(BgConfig*, enum HeapID);
+void ov97_0221F294(PokeathlonBox_UnkStruct0221EE84*);
+void ov97_0221F7DC(enum HeapID*);
+void ov97_0221F9E0(enum HeapID*);
 
 #endif // POKEHEARTGOLD_POKEATHLON_BOX_H
