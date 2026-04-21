@@ -11,6 +11,7 @@
 #include "overlay_manager.h"
 #include "pokemon_storage_system.h"
 #include "pokemon_types_def.h"
+#include "sprite.h"
 
 typedef struct PokeathlonBox_MonStats {
     s8 power;
@@ -102,7 +103,8 @@ typedef struct PokeathlonBox_Graphics {
     MessageFormat *msgFormat; // 0x070
     String *nickname; // 0x074
     enum HeapID heapID2; // 0x078
-    u8 filler7C[0x280]; // 0x07C
+    SpriteList *spriteList; // 0x07C
+    u8 filler80[0x27C]; // 0x080
 } PokeathlonBox_Graphics; // size: 0x2FC
 
 typedef struct PokeathlonBox {
@@ -139,7 +141,7 @@ PokeathlonBox_Graphics* PokeathlonBox_InitGraphics(enum HeapID heapID);
 void PokeathlonBox_SetupGraphics(PokeathlonBox_Graphics* graphics, BgConfig* bgConfig, u8 arg2, u32 arg3);
 void ov97_0221EFD0(PokeathlonBox_Graphics* graphics, PokeathlonBox_UnkStruct0221EC14* mon);
 
-void ov97_0221F010(PokeathlonBox_Graphics* graphics);
+void PokeathlonBox_RenderAndAnimateSprites(PokeathlonBox_Graphics* graphics);
 void ov97_0221F020(PokeathlonBox_Graphics* graphics);
 void ov97_0221F14C(BgConfig* bgConfig, enum HeapID heapID);
 void ov97_0221F294(PokeathlonBox_Graphics*);

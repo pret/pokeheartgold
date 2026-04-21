@@ -26,18 +26,7 @@
 	.extern PokeathlonBox_InitGraphics
 	.extern PokeathlonBox_SetupGraphics
 	.extern ov97_0221EFD0
-
-	thumb_func_start ov97_0221F010
-ov97_0221F010: ; 0x0221F010
-	push {r3, lr}
-	ldr r0, [r0, #0x7c]
-	cmp r0, #0
-	beq _0221F01C
-	bl SpriteList_RenderAndAnimateSprites
-_0221F01C:
-	pop {r3, pc}
-	.balign 4, 0
-	thumb_func_end ov97_0221F010
+	.extern PokeathlonBox_RenderAndAnimateSprites
 
 	thumb_func_start ov97_0221F020
 ov97_0221F020: ; 0x0221F020

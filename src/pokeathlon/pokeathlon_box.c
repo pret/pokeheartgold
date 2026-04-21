@@ -82,7 +82,7 @@ BOOL PokeathlonBox_Main(OverlayManager *manager) {
     }
 
     sub_02093A40(data->unk8);
-    ov97_0221F010(data->graphics);
+    PokeathlonBox_RenderAndAnimateSprites(data->graphics);
     return FALSE;
 }
 
@@ -431,4 +431,10 @@ void ov97_0221EFD0(PokeathlonBox_Graphics* graphics, PokeathlonBox_UnkStruct0221
     ov97_0221F74C();
     GfGfx_EngineBTogglePlanes(GX_PLANEMASK_BG1, GF_PLANE_TOGGLE_OFF);
     GfGfx_EngineBTogglePlanes(GX_PLANEMASK_BG2, GF_PLANE_TOGGLE_OFF);
+}
+
+void PokeathlonBox_RenderAndAnimateSprites(PokeathlonBox_Graphics* graphics) {
+    if (graphics->spriteList != NULL) {
+        SpriteList_RenderAndAnimateSprites(graphics->spriteList);
+    }
 }
