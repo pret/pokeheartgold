@@ -12,6 +12,7 @@
 #include "save_arrays.h"
 #include "system.h"
 #include "text.h"
+#include "unk_0200ACF0.h"
 #include "unk_0200B150.h"
 #include "unk_0200FA24.h"
 #include "unk_0203A3B0.h"
@@ -90,7 +91,7 @@ BOOL PokeathlonBox_Exit(OverlayManager *manager) {
     PokeathlonBox* data = OverlayManager_GetData(manager);
 
     Main_SetVBlankIntrCB(NULL, NULL);
-    ov97_0221F020(data->graphics);
+    PokeathlonBox_ReleaseGraphics(data->graphics);
     sub_02093354(data->unk8);
     FontID_Release(2);
     OamManager_Free();
@@ -438,3 +439,115 @@ void PokeathlonBox_RenderAndAnimateSprites(PokeathlonBox_Graphics* graphics) {
         SpriteList_RenderAndAnimateSprites(graphics->spriteList);
     }
 }
+
+#ifdef NONMATCHING
+// See https://decomp.me/scratch/2tPwe
+void PokeathlonBox_ReleaseGraphics(PokeathlonBox_Graphics* graphics) {
+    u8 i;
+
+    DestroyMsgData(graphics->msgData);
+    MessageFormat_Delete(graphics->msgFormat);
+    String_Delete(graphics->nickname);
+    RemoveWindow(&graphics->window1);
+    RemoveWindow(&graphics->window2);
+    RemoveWindow(&graphics->window3);
+    RemoveWindow(&graphics->window4);
+    RemoveWindow(&graphics->window5);
+    RemoveWindow(&graphics->window6);
+    FreeBgTilemapBuffer(graphics->bgConfig, GF_BG_LYR_SUB_0);
+    FreeBgTilemapBuffer(graphics->bgConfig, GF_BG_LYR_SUB_1);
+    FreeBgTilemapBuffer(graphics->bgConfig, GF_BG_LYR_SUB_2);
+    FreeBgTilemapBuffer(graphics->bgConfig, GF_BG_LYR_SUB_3);
+    ov97_0221F0E0(&graphics->heapID2);
+    for (i = 0; i < 3; i++) {
+        sub_0200AEB0(graphics->unk1C0[i].charResObj);
+        sub_0200B0A8(graphics->unk1C0[i].plttResObj);
+    }
+    for (i = 0; i < 6; i++) {
+        Destroy2DGfxResObjMan(graphics->mgrs[i]);
+    }
+    SpriteList_Delete(graphics->spriteList);
+    Heap_Free(graphics);
+}
+#else
+asm void PokeathlonBox_ReleaseGraphics(PokeathlonBox_Graphics* graphics) {
+    push {r3, r4, r5, r6, r7, lr}
+	add r7, r0, #0
+	ldr r0, [r7, #0x6c]
+	bl DestroyMsgData
+	ldr r0, [r7, #0x70]
+	bl MessageFormat_Delete
+	ldr r0, [r7, #0x74]
+	bl String_Delete
+	add r0, r7, #0
+	add r0, #8
+	bl RemoveWindow
+	add r0, r7, #0
+	add r0, #0x18
+	bl RemoveWindow
+	add r0, r7, #0
+	add r0, #0x28
+	bl RemoveWindow
+	add r0, r7, #0
+	add r0, #0x38
+	bl RemoveWindow
+	add r0, r7, #0
+	add r0, #0x48
+	bl RemoveWindow
+	add r0, r7, #0
+	add r0, #0x58
+	bl RemoveWindow
+	ldr r0, [r7, #4]
+	mov r1, #4
+	bl FreeBgTilemapBuffer
+	ldr r0, [r7, #4]
+	mov r1, #5
+	bl FreeBgTilemapBuffer
+	ldr r0, [r7, #4]
+	mov r1, #6
+	bl FreeBgTilemapBuffer
+	ldr r0, [r7, #4]
+	mov r1, #7
+	bl FreeBgTilemapBuffer
+	add r5, r7, #0
+	add r5, #0x78
+	add r0, r5, #0
+	bl ov97_0221F0E0
+	mov r4, #0
+_0221F092:
+	mov r0, #0x18
+	mul r0, r4
+	add r6, r5, r0
+	mov r0, #0x52
+	lsl r0, r0, #2
+	ldr r0, [r6, r0]
+	bl sub_0200AEB0
+	mov r0, #0x53
+	lsl r0, r0, #2
+	ldr r0, [r6, r0]
+	bl sub_0200B0A8
+	add r0, r4, #1
+	lsl r0, r0, #0x18
+	lsr r4, r0, #0x18
+	cmp r4, #3
+	blo _0221F092
+	mov r6, #0x13
+	mov r4, #0
+	lsl r6, r6, #4
+_0221F0BC:
+	lsl r0, r4, #2
+	add r0, r5, r0
+	ldr r0, [r0, r6]
+	bl Destroy2DGfxResObjMan
+	add r0, r4, #1
+	lsl r0, r0, #0x18
+	lsr r4, r0, #0x18
+	cmp r4, #6
+	blo _0221F0BC
+	ldr r0, [r5, #4]
+	bl SpriteList_Delete
+	add r0, r7, #0
+	bl Heap_Free
+	pop {r3, r4, r5, r6, r7, pc}
+}
+#endif
