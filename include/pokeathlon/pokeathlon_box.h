@@ -95,12 +95,24 @@ typedef struct PokeathlonBox_UnkStruct0221F020 {
     u8 padding[0x10];
 } PokeathlonBox_UnkStruct0221F020; // size: 0x18
 
+typedef struct PokeathlonBox_UnkStruct0221F0E0 {
+    Sprite* sprite;
+    Sprite* sprites[5];
+} PokeathlonBox_UnkStruct0221F0E0; // size: 0x18
+
 typedef struct PokeathlonBox_SubGraphics {
-    enum HeapID heapID; // 0x078
-    SpriteList *spriteList; // 0x07C
-    u8 filler80[0x128]; // 0x080
-    GF_2DGfxResMan* mgrs[6]; // 0x1A8
-    PokeathlonBox_UnkStruct0221F020 unk1C0[3]; // 0x1C0
+    enum HeapID heapID;                        // 0x000 / 0x078
+    SpriteList *spriteList;                    // 0x004 / 0x07C
+    u8 filler8[0x128];                         // 0x008 / 0x080
+    GF_2DGfxResMan* mgrs[6];                   // 0x130 / 0x1A8
+    PokeathlonBox_UnkStruct0221F020 unk1C0[3]; // 0x148 / 0x1C0
+    u8 filler190[0x24];                        // 0x190 / 0x208
+    Sprite* sprites[5];                        // 0x1B4 / 0x22C
+    u8 filler1C8[0x14];                        // 0x1C8 / 0x23C
+    PokeathlonBox_UnkStruct0221F0E0 unk1DC[5]; // 0x1DC / 0x250
+    Sprite* unk254;                            // 0x254 / 0x2C8
+    void* unk258;                              // 0x258 / 0x2CC
+    u8 filler25C[0x28];                        // 0x25C / 0x2D0
 } PokeathlonBox_SubGraphics;
 
 typedef struct PokeathlonBox_Graphics {
@@ -117,8 +129,7 @@ typedef struct PokeathlonBox_Graphics {
     MsgData *msgData; // 0x06C
     MessageFormat *msgFormat; // 0x070
     String *nickname; // 0x074
-    PokeathlonBox_SubGraphics sub;
-    u8 filler208[0xF4]; // 0x208
+    PokeathlonBox_SubGraphics sub; // 0x078
 } PokeathlonBox_Graphics; // size: 0x2FC
 
 typedef struct PokeathlonBox {

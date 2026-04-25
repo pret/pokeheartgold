@@ -469,3 +469,20 @@ void PokeathlonBox_ReleaseGraphics(PokeathlonBox_Graphics* graphics) {
     SpriteList_Delete(sub->spriteList);
     Heap_Free(graphics);
 }
+
+void ov97_0221F0E0(PokeathlonBox_SubGraphics* subGraphics) {
+    int i, j;
+    
+    for (i = 0; i < 5; i++) {
+        Sprite_Delete(subGraphics->sprites[i]);
+    }
+    for (i = 0; i < 5; i++) {
+        Sprite_Delete(subGraphics->unk1DC[i].sprite);
+        for (j = 0; j < 5; j++) {
+            Sprite_Delete(subGraphics->unk1DC[i].sprites[j]);
+        }
+    }
+    
+    Sprite_Delete(subGraphics->unk254);
+    Heap_Free(subGraphics->unk258);
+}
