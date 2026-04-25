@@ -95,6 +95,14 @@ typedef struct PokeathlonBox_UnkStruct0221F020 {
     u8 padding[0x10];
 } PokeathlonBox_UnkStruct0221F020; // size: 0x18
 
+typedef struct PokeathlonBox_SubGraphics {
+    enum HeapID heapID; // 0x078
+    SpriteList *spriteList; // 0x07C
+    u8 filler80[0x128]; // 0x080
+    GF_2DGfxResMan* mgrs[6]; // 0x1A8
+    PokeathlonBox_UnkStruct0221F020 unk1C0[3]; // 0x1C0
+} PokeathlonBox_SubGraphics;
+
 typedef struct PokeathlonBox_Graphics {
     enum HeapID heapID; // 0x000
     BgConfig* bgConfig; // 0x004
@@ -109,11 +117,7 @@ typedef struct PokeathlonBox_Graphics {
     MsgData *msgData; // 0x06C
     MessageFormat *msgFormat; // 0x070
     String *nickname; // 0x074
-    enum HeapID heapID2; // 0x078
-    SpriteList *spriteList; // 0x07C
-    u8 filler80[0x128]; // 0x080
-    GF_2DGfxResMan* mgrs[6]; // 0x1A8
-    PokeathlonBox_UnkStruct0221F020 unk1C0[3]; // 0x1C0
+    PokeathlonBox_SubGraphics sub;
     u8 filler208[0xF4]; // 0x208
 } PokeathlonBox_Graphics; // size: 0x2FC
 
@@ -152,14 +156,14 @@ void PokeathlonBox_SetupGraphics(PokeathlonBox_Graphics* graphics, BgConfig* bgC
 void ov97_0221EFD0(PokeathlonBox_Graphics* graphics, PokeathlonBox_UnkStruct0221EC14* mon);
 void PokeathlonBox_RenderAndAnimateSprites(PokeathlonBox_Graphics* graphics);
 void PokeathlonBox_ReleaseGraphics(PokeathlonBox_Graphics* graphics);
-void ov97_0221F0E0(enum HeapID*);
+void ov97_0221F0E0(PokeathlonBox_SubGraphics* subGraphics);
 
 void ov97_0221F14C(BgConfig* bgConfig, enum HeapID heapID);
 void ov97_0221F294(PokeathlonBox_Graphics*);
 void ov97_0221F428(PokeathlonBox_Graphics* graphics, PokeathlonBox_UnkStruct0221EC14* mon);
 void ov97_0221F56C(PokeathlonBox_Graphics* graphics, PokeathlonBox_UnkStruct0221EC14* mon);
 void ov97_0221F74C();
-void ov97_0221F7DC(enum HeapID* heapID);
-void ov97_0221F9E0(enum HeapID* heapID);
+void ov97_0221F7DC(PokeathlonBox_SubGraphics* subGraphics);
+void ov97_0221F9E0(PokeathlonBox_SubGraphics* subGraphics);
 
 #endif // POKEHEARTGOLD_POKEATHLON_BOX_H

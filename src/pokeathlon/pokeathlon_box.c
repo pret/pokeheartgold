@@ -396,7 +396,7 @@ PokeathlonBox_Graphics* PokeathlonBox_InitGraphics(enum HeapID heapID) {
     PokeathlonBox_Graphics* ptr = Heap_Alloc(heapID, sizeof(PokeathlonBox_Graphics));
     MI_CpuFill8(ptr, 0, sizeof(PokeathlonBox_Graphics));
     ptr->heapID = heapID;
-    ptr->heapID2 = heapID;
+    ptr->sub.heapID = heapID;
     return ptr;
 }
 
@@ -414,8 +414,8 @@ void PokeathlonBox_SetupGraphics(PokeathlonBox_Graphics* graphics, BgConfig* bgC
     graphics->nickname = String_New(11, graphics->heapID);
     graphics->unk68 = arg2;
     graphics->unk6A = arg3;
-    ov97_0221F7DC(&graphics->heapID2);
-    ov97_0221F9E0(&graphics->heapID2);
+    ov97_0221F7DC(&graphics->sub);
+    ov97_0221F9E0(&graphics->sub);
     ov97_0221F294(graphics);
     GfGfx_EngineBTogglePlanes(GX_PLANEMASK_BG1, GF_PLANE_TOGGLE_OFF);
     GfGfx_EngineBTogglePlanes(GX_PLANEMASK_BG2, GF_PLANE_TOGGLE_OFF);
@@ -435,13 +435,11 @@ void ov97_0221EFD0(PokeathlonBox_Graphics* graphics, PokeathlonBox_UnkStruct0221
 }
 
 void PokeathlonBox_RenderAndAnimateSprites(PokeathlonBox_Graphics* graphics) {
-    if (graphics->spriteList != NULL) {
-        SpriteList_RenderAndAnimateSprites(graphics->spriteList);
+    if (graphics->sub.spriteList != NULL) {
+        SpriteList_RenderAndAnimateSprites(graphics->sub.spriteList);
     }
 }
 
-#ifdef NONMATCHING
-// See https://decomp.me/scratch/2tPwe
 void PokeathlonBox_ReleaseGraphics(PokeathlonBox_Graphics* graphics) {
     u8 i;
 
@@ -458,96 +456,16 @@ void PokeathlonBox_ReleaseGraphics(PokeathlonBox_Graphics* graphics) {
     FreeBgTilemapBuffer(graphics->bgConfig, GF_BG_LYR_SUB_1);
     FreeBgTilemapBuffer(graphics->bgConfig, GF_BG_LYR_SUB_2);
     FreeBgTilemapBuffer(graphics->bgConfig, GF_BG_LYR_SUB_3);
-    ov97_0221F0E0(&graphics->heapID2);
+
+    PokeathlonBox_SubGraphics* sub = &graphics->sub;
+    ov97_0221F0E0(sub);
     for (i = 0; i < 3; i++) {
-        sub_0200AEB0(graphics->unk1C0[i].charResObj);
-        sub_0200B0A8(graphics->unk1C0[i].plttResObj);
+        sub_0200AEB0(sub->unk1C0[i].charResObj);
+        sub_0200B0A8(sub->unk1C0[i].plttResObj);
     }
     for (i = 0; i < 6; i++) {
-        Destroy2DGfxResObjMan(graphics->mgrs[i]);
+        Destroy2DGfxResObjMan(sub->mgrs[i]);
     }
-    SpriteList_Delete(graphics->spriteList);
+    SpriteList_Delete(sub->spriteList);
     Heap_Free(graphics);
 }
-#else
-asm void PokeathlonBox_ReleaseGraphics(PokeathlonBox_Graphics* graphics) {
-    push {r3, r4, r5, r6, r7, lr}
-	add r7, r0, #0
-	ldr r0, [r7, #0x6c]
-	bl DestroyMsgData
-	ldr r0, [r7, #0x70]
-	bl MessageFormat_Delete
-	ldr r0, [r7, #0x74]
-	bl String_Delete
-	add r0, r7, #0
-	add r0, #8
-	bl RemoveWindow
-	add r0, r7, #0
-	add r0, #0x18
-	bl RemoveWindow
-	add r0, r7, #0
-	add r0, #0x28
-	bl RemoveWindow
-	add r0, r7, #0
-	add r0, #0x38
-	bl RemoveWindow
-	add r0, r7, #0
-	add r0, #0x48
-	bl RemoveWindow
-	add r0, r7, #0
-	add r0, #0x58
-	bl RemoveWindow
-	ldr r0, [r7, #4]
-	mov r1, #4
-	bl FreeBgTilemapBuffer
-	ldr r0, [r7, #4]
-	mov r1, #5
-	bl FreeBgTilemapBuffer
-	ldr r0, [r7, #4]
-	mov r1, #6
-	bl FreeBgTilemapBuffer
-	ldr r0, [r7, #4]
-	mov r1, #7
-	bl FreeBgTilemapBuffer
-	add r5, r7, #0
-	add r5, #0x78
-	add r0, r5, #0
-	bl ov97_0221F0E0
-	mov r4, #0
-_0221F092:
-	mov r0, #0x18
-	mul r0, r4
-	add r6, r5, r0
-	mov r0, #0x52
-	lsl r0, r0, #2
-	ldr r0, [r6, r0]
-	bl sub_0200AEB0
-	mov r0, #0x53
-	lsl r0, r0, #2
-	ldr r0, [r6, r0]
-	bl sub_0200B0A8
-	add r0, r4, #1
-	lsl r0, r0, #0x18
-	lsr r4, r0, #0x18
-	cmp r4, #3
-	blo _0221F092
-	mov r6, #0x13
-	mov r4, #0
-	lsl r6, r6, #4
-_0221F0BC:
-	lsl r0, r4, #2
-	add r0, r5, r0
-	ldr r0, [r0, r6]
-	bl Destroy2DGfxResObjMan
-	add r0, r4, #1
-	lsl r0, r0, #0x18
-	lsr r4, r0, #0x18
-	cmp r4, #6
-	blo _0221F0BC
-	ldr r0, [r5, #4]
-	bl SpriteList_Delete
-	add r0, r7, #0
-	bl Heap_Free
-	pop {r3, r4, r5, r6, r7, pc}
-}
-#endif
