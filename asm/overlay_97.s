@@ -29,72 +29,7 @@
 	.extern PokeathlonBox_RenderAndAnimateSprites
 	.extern PokeathlonBox_ReleaseGraphics
 	.extern ov97_0221F0E0
-
-	thumb_func_start ov97_0221F14C
-ov97_0221F14C: ; 0x0221F14C
-	push {r3, r4, r5, lr}
-	sub sp, #0x10
-	add r5, r0, #0
-	add r4, r1, #0
-	bl ov97_0221F1D8
-	mov r1, #0
-	str r1, [sp]
-	mov r0, #0xf3
-	mov r2, #4
-	add r3, r1, #0
-	str r4, [sp, #4]
-	bl GfGfxLoader_GXLoadPal
-	mov r0, #0
-	str r0, [sp]
-	str r0, [sp, #4]
-	mov r1, #1
-	str r1, [sp, #8]
-	mov r0, #0xf3
-	add r2, r5, #0
-	mov r3, #7
-	str r4, [sp, #0xc]
-	bl GfGfxLoader_LoadCharData
-	mov r0, #0
-	str r0, [sp]
-	mov r0, #6
-	lsl r0, r0, #8
-	str r0, [sp, #4]
-	mov r0, #1
-	str r0, [sp, #8]
-	mov r0, #0xf3
-	mov r1, #2
-	add r2, r5, #0
-	mov r3, #7
-	str r4, [sp, #0xc]
-	bl GfGfxLoader_LoadScrnData
-	add r0, r5, #0
-	mov r1, #7
-	bl BgCommitTilemapBufferToVram
-	mov r0, #0
-	str r0, [sp]
-	mov r0, #6
-	lsl r0, r0, #8
-	str r0, [sp, #4]
-	mov r0, #1
-	str r0, [sp, #8]
-	mov r0, #0xf3
-	mov r1, #3
-	add r2, r5, #0
-	mov r3, #6
-	str r4, [sp, #0xc]
-	bl GfGfxLoader_LoadScrnData
-	add r0, r5, #0
-	mov r1, #6
-	bl BgCommitTilemapBufferToVram
-	mov r1, #0x1e
-	mov r0, #4
-	lsl r1, r1, #4
-	add r2, r4, #0
-	bl LoadFontPal0
-	add sp, #0x10
-	pop {r3, r4, r5, pc}
-	.balign 4, 0
-	thumb_func_end ov97_0221F14C
+	.extern ov97_0221F14C
 
 	thumb_func_start ov97_0221F1D8
 ov97_0221F1D8: ; 0x0221F1D8

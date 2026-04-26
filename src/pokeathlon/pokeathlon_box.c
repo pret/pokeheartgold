@@ -4,6 +4,7 @@
 
 #include "font.h"
 #include "gf_gfx_planes.h"
+#include "gf_gfx_loader.h"
 #include "heap.h"
 #include "nnsys.h"
 #include "obj_char_transfer.h"
@@ -485,4 +486,15 @@ void ov97_0221F0E0(PokeathlonBox_SubGraphics* subGraphics) {
     
     Sprite_Delete(subGraphics->unk254);
     Heap_Free(subGraphics->unk258);
+}
+
+void ov97_0221F14C(BgConfig* bgConfig, enum HeapID heapID) {
+    ov97_0221F1D8(bgConfig);
+    GfGfxLoader_GXLoadPal(NARC_a_2_4_1 /*243*/, 0, GF_PAL_LOCATION_SUB_BG, (enum GFPalSlotOffset)0, 0, heapID);
+    GfGfxLoader_LoadCharData(NARC_a_2_4_1 /*243*/, 1, bgConfig, GF_BG_LYR_SUB_3, 0, 0, 1, heapID);
+    GfGfxLoader_LoadScrnData(NARC_a_2_4_1 /*243*/, 2, bgConfig, GF_BG_LYR_SUB_3, 0, 0x600, 1, heapID);
+    BgCommitTilemapBufferToVram(bgConfig, GF_BG_LYR_SUB_3);
+    GfGfxLoader_LoadScrnData(NARC_a_2_4_1 /*243*/, 3, bgConfig, GF_BG_LYR_SUB_2, 0, 0x600, 1, heapID);
+    BgCommitTilemapBufferToVram(bgConfig, GF_BG_LYR_SUB_2);
+    LoadFontPal0(GF_PAL_LOCATION_SUB_BG, GF_PAL_SLOT_15_OFFSET, heapID);
 }

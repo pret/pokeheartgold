@@ -168,8 +168,9 @@ void ov97_0221EFD0(PokeathlonBox_Graphics* graphics, PokeathlonBox_UnkStruct0221
 void PokeathlonBox_RenderAndAnimateSprites(PokeathlonBox_Graphics* graphics);
 void PokeathlonBox_ReleaseGraphics(PokeathlonBox_Graphics* graphics);
 void ov97_0221F0E0(PokeathlonBox_SubGraphics* subGraphics);
-
 void ov97_0221F14C(BgConfig* bgConfig, enum HeapID heapID);
+
+void ov97_0221F1D8(BgConfig* bgConfig);
 void ov97_0221F294(PokeathlonBox_Graphics*);
 void ov97_0221F428(PokeathlonBox_Graphics* graphics, PokeathlonBox_UnkStruct0221EC14* mon);
 void ov97_0221F56C(PokeathlonBox_Graphics* graphics, PokeathlonBox_UnkStruct0221EC14* mon);
