@@ -133,7 +133,7 @@ BOOL ov97_0221E700(OverlayManager *manager) {
 
     data->bgConfig = BgConfig_Alloc(HEAP_ID_POKEATHLON);
     data->saveData = courseArgs->saveData;
-    data->unk30 = args->unk84;
+    data->courseId = args->courseId;
 
     PokeathlonBox_SetGraphicsBanks();
 
@@ -155,7 +155,7 @@ BOOL ov97_0221E700(OverlayManager *manager) {
     sub_02093440(data->unk8, data->bgConfig, pcStorage, party, 0, 0, isMode0, 18, &PokeathlonBox_GetLightBoxMon, &PokeathlonBox_GetBoxName, data->selectedMons, &ov97_0221EC14, data);
 
     sub_0203A994(2);
-    PokeathlonBox_SetupGraphics(data->graphics, data->bgConfig, data->unk30, courseArgs->field_F);
+    PokeathlonBox_SetupGraphics(data->graphics, data->bgConfig, data->courseId, courseArgs->field_F);
     Main_SetVBlankIntrCB(&ov97_0221E88C, data);
     data->state = 0;
 
@@ -405,7 +405,7 @@ PokeathlonBox_Graphics* PokeathlonBox_InitGraphics(enum HeapID heapID) {
     return ptr;
 }
 
-void PokeathlonBox_SetupGraphics(PokeathlonBox_Graphics* graphics, BgConfig* bgConfig, u8 arg2, u32 arg3) {
+void PokeathlonBox_SetupGraphics(PokeathlonBox_Graphics* graphics, BgConfig* bgConfig, u8 courseId, u32 arg3) {
     graphics->bgConfig = bgConfig;
     ov97_0221F14C(bgConfig, graphics->heapID);
     AddWindowParameterized(graphics->bgConfig, &graphics->window1, GF_BG_LYR_SUB_0, 1, 1, 17, 2, 15, 0x01);
@@ -417,7 +417,7 @@ void PokeathlonBox_SetupGraphics(PokeathlonBox_Graphics* graphics, BgConfig* bgC
     graphics->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0278_bin, graphics->heapID);
     graphics->msgFormat = MessageFormat_New(graphics->heapID);
     graphics->nickname = String_New(11, graphics->heapID);
-    graphics->unk68 = arg2;
+    graphics->courseId = courseId;
     graphics->unk6A = arg3;
     ov97_0221F7DC(&graphics->sub);
     ov97_0221F9E0(&graphics->sub);
@@ -519,4 +519,37 @@ void PokeathlonBox_InitBgFromTemplates(BgConfig* bgConfig) {
     BgTemplate bgTemplate4 = pokeathlonBoxBgTemplate4;
     InitBgFromTemplate(bgConfig, GF_BG_LYR_SUB_3, &bgTemplate4, 0);
     BgClearTilemapBufferAndCommit(bgConfig, GF_BG_LYR_SUB_3);
+}
+
+void ov97_0221F294(PokeathlonBox_Graphics* graphics) {
+    BufferPokeathlonCourseName(graphics->msgFormat, 0, (u8) graphics->courseId);
+    String* str = ReadMsgData_ExpandPlaceholders(graphics->msgFormat, graphics->msgData, 0, graphics->heapID);
+    FillWindowPixelBuffer(&graphics->window1, 0);
+    AddTextPrinterParameterizedWithColor(&graphics->window1, 0, str, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+    CopyWindowToVram(&graphics->window1);
+    String_Delete(str);
+    FillWindowPixelBuffer(&graphics->window2, 0);
+    if (graphics->unk6A != 0) {
+        str = NewString_ReadMsgData(graphics->msgData, 1);
+        AddTextPrinterParameterizedWithColor(&graphics->window2, 0, str, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+        String_Delete(str);
+    }
+    CopyWindowToVram(&graphics->window2);
+    FillWindowPixelBuffer(&graphics->window5, 0);
+    str = NewString_ReadMsgData(graphics->msgData, 8);
+    AddTextPrinterParameterizedWithColor(&graphics->window5, 0, str, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+    String_Delete(str);
+    str = NewString_ReadMsgData(graphics->msgData, 4);
+    AddTextPrinterParameterizedWithColor(&graphics->window5, 0, str, 0, 16, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+    String_Delete(str);
+    str = NewString_ReadMsgData(graphics->msgData, 6);
+    AddTextPrinterParameterizedWithColor(&graphics->window5, 0, str, 0, 32, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+    String_Delete(str);
+    str = NewString_ReadMsgData(graphics->msgData, 5);
+    AddTextPrinterParameterizedWithColor(&graphics->window5, 0, str, 0, 48, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+    String_Delete(str);
+    str = NewString_ReadMsgData(graphics->msgData, 7);
+    AddTextPrinterParameterizedWithColor(&graphics->window5, 0, str, 0, 64, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+    String_Delete(str);
+    CopyWindowToVram(&graphics->window5);
 }

@@ -40,7 +40,7 @@ typedef struct PokeathlonBoxArgs {
     PokeathlonCourseArgs* courseArgs; // 0x00
     PokeathlonBoxArgs_SelectedMon selectedMons[3]; // 0x04
     u8 filler7C[8]; // 0x7C
-    u32 unk84; // 0x84
+    u32 courseId; // 0x84
 } PokeathlonBoxArgs;
 
 typedef struct PokeathlonBox_BoxMon {
@@ -124,7 +124,7 @@ typedef struct PokeathlonBox_Graphics {
     Window window4; // 0x038
     Window window5; // 0x048
     Window window6; // 0x058
-    u16 unk68; // 0x068
+    u16 courseId; // 0x068
     u16 unk6A; // 0x06A
     MsgData *msgData; // 0x06C
     MessageFormat *msgFormat; // 0x070
@@ -140,7 +140,7 @@ typedef struct PokeathlonBox {
     PokeathlonBox_SelectedMon selectedMons[3];
     BOOL unk28;
     SaveData* saveData; // 0x2C
-    u32 unk30;
+    u32 courseId;
 } PokeathlonBox; // size: 0x34
 
 BOOL PokeathlonBox_Init(OverlayManager *manager);
@@ -163,15 +163,15 @@ void PokeathlonBox_GetLightBoxMonStats(BoxPokemon *boxMon, PokeathlonBox_MonStat
 void ov97_0221EC14(int boxno, u8 slot, PokeathlonBox* data);
 void ov97_0221EDE4(PokeathlonBox_MonStats* stats1, PokeathlonBox_MonStats* stats2, PartyAprijuiceModifier* aprijuiceModifier, PokeathlonBox_UnkStruct0221EC14* mon);
 PokeathlonBox_Graphics* PokeathlonBox_InitGraphics(enum HeapID heapID);
-void PokeathlonBox_SetupGraphics(PokeathlonBox_Graphics* graphics, BgConfig* bgConfig, u8 arg2, u32 arg3);
+void PokeathlonBox_SetupGraphics(PokeathlonBox_Graphics* graphics, BgConfig* bgConfig, u8 courseId, u32 arg3);
 void ov97_0221EFD0(PokeathlonBox_Graphics* graphics, PokeathlonBox_UnkStruct0221EC14* mon);
 void PokeathlonBox_RenderAndAnimateSprites(PokeathlonBox_Graphics* graphics);
 void PokeathlonBox_ReleaseGraphics(PokeathlonBox_Graphics* graphics);
 void ov97_0221F0E0(PokeathlonBox_SubGraphics* subGraphics);
 void ov97_0221F14C(BgConfig* bgConfig, enum HeapID heapID);
 void PokeathlonBox_InitBgFromTemplates(BgConfig* bgConfig);
+void ov97_0221F294(PokeathlonBox_Graphics* graphics);
 
-void ov97_0221F294(PokeathlonBox_Graphics*);
 void ov97_0221F428(PokeathlonBox_Graphics* graphics, PokeathlonBox_UnkStruct0221EC14* mon);
 void ov97_0221F56C(PokeathlonBox_Graphics* graphics, PokeathlonBox_UnkStruct0221EC14* mon);
 void ov97_0221F74C();
