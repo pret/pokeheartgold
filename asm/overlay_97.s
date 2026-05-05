@@ -30,92 +30,7 @@
 	.extern PokeathlonBox_ReleaseGraphics
 	.extern ov97_0221F0E0
 	.extern ov97_0221F14C
-
-	thumb_func_start ov97_0221F1D8
-ov97_0221F1D8: ; 0x0221F1D8
-	push {r3, r4, r5, lr}
-	sub sp, #0x70
-	ldr r5, _0221F284 ; =ov97_0221FD20
-	add r4, r0, #0
-	ldmia r5!, {r0, r1}
-	add r3, sp, #0x54
-	add r2, r3, #0
-	stmia r3!, {r0, r1}
-	ldmia r5!, {r0, r1}
-	stmia r3!, {r0, r1}
-	ldmia r5!, {r0, r1}
-	stmia r3!, {r0, r1}
-	ldr r0, [r5]
-	mov r1, #4
-	str r0, [r3]
-	add r0, r4, #0
-	mov r3, #0
-	bl InitBgFromTemplate
-	add r0, r4, #0
-	mov r1, #4
-	bl BgClearTilemapBufferAndCommit
-	ldr r5, _0221F288 ; =ov97_0221FD3C
-	add r3, sp, #0x38
-	ldmia r5!, {r0, r1}
-	add r2, r3, #0
-	stmia r3!, {r0, r1}
-	ldmia r5!, {r0, r1}
-	stmia r3!, {r0, r1}
-	ldmia r5!, {r0, r1}
-	stmia r3!, {r0, r1}
-	ldr r0, [r5]
-	mov r1, #5
-	str r0, [r3]
-	add r0, r4, #0
-	mov r3, #0
-	bl InitBgFromTemplate
-	add r0, r4, #0
-	mov r1, #5
-	bl BgClearTilemapBufferAndCommit
-	ldr r5, _0221F28C ; =ov97_0221FD04
-	add r3, sp, #0x1c
-	ldmia r5!, {r0, r1}
-	add r2, r3, #0
-	stmia r3!, {r0, r1}
-	ldmia r5!, {r0, r1}
-	stmia r3!, {r0, r1}
-	ldmia r5!, {r0, r1}
-	stmia r3!, {r0, r1}
-	ldr r0, [r5]
-	mov r1, #6
-	str r0, [r3]
-	add r0, r4, #0
-	mov r3, #0
-	bl InitBgFromTemplate
-	add r0, r4, #0
-	mov r1, #6
-	bl BgClearTilemapBufferAndCommit
-	ldr r5, _0221F290 ; =ov97_0221FD58
-	add r3, sp, #0
-	ldmia r5!, {r0, r1}
-	add r2, r3, #0
-	stmia r3!, {r0, r1}
-	ldmia r5!, {r0, r1}
-	stmia r3!, {r0, r1}
-	ldmia r5!, {r0, r1}
-	stmia r3!, {r0, r1}
-	ldr r0, [r5]
-	mov r1, #7
-	str r0, [r3]
-	add r0, r4, #0
-	mov r3, #0
-	bl InitBgFromTemplate
-	add r0, r4, #0
-	mov r1, #7
-	bl BgClearTilemapBufferAndCommit
-	add sp, #0x70
-	pop {r3, r4, r5, pc}
-	nop
-_0221F284: .word ov97_0221FD20
-_0221F288: .word ov97_0221FD3C
-_0221F28C: .word ov97_0221FD04
-_0221F290: .word ov97_0221FD58
-	thumb_func_end ov97_0221F1D8
+	.extern PokeathlonBox_InitBgFromTemplates
 
 	thumb_func_start ov97_0221F294
 ov97_0221F294: ; 0x0221F294
@@ -1375,20 +1290,24 @@ ov97_0221FCFC: ; 0x0221FCFC
 	.byte 0x01, 0x03, 0x02, 0x04
 	.byte 0x00, 0x00, 0x00, 0x00
 
-ov97_0221FD04: ; 0x0221FD04
+	.global pokeathlonBoxBgTemplate3
+pokeathlonBoxBgTemplate3: ; 0x0221FD04
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x1E, 0x02, 0x01, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 
-ov97_0221FD20: ; 0x0221FD20
+	.global pokeathlonBoxBgTemplate1
+pokeathlonBoxBgTemplate1: ; 0x0221FD20
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x01, 0x00, 0x1C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 
-ov97_0221FD3C: ; 0x0221FD3C
+	.global pokeathlonBoxBgTemplate2
+pokeathlonBoxBgTemplate2: ; 0x0221FD3C
 	.byte 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x1D, 0x00
 	.byte 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 
-ov97_0221FD58: ; 0x0221FD58
+	.global pokeathlonBoxBgTemplate4
+pokeathlonBoxBgTemplate4: ; 0x0221FD58
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x1F, 0x02, 0x01, 0x03, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00

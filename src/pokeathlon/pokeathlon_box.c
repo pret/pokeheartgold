@@ -31,6 +31,10 @@ extern const GraphicsBanks pokeathlonBoxGraphicsBanks;
 extern const GraphicsModes pokeathlonBoxGraphicsModes;
 extern const ObjCharTransferTemplate pokeathlonBoxObjCharTransferTemplate;
 extern const u32 ov97_0221FCB8[5];
+extern const BgTemplate pokeathlonBoxBgTemplate3;
+extern const BgTemplate pokeathlonBoxBgTemplate1;
+extern const BgTemplate pokeathlonBoxBgTemplate2;
+extern const BgTemplate pokeathlonBoxBgTemplate4;
 
 BOOL PokeathlonBox_Init(OverlayManager *manager) {
     if (ov97_0221E6DC(manager)) {
@@ -489,7 +493,7 @@ void ov97_0221F0E0(PokeathlonBox_SubGraphics* subGraphics) {
 }
 
 void ov97_0221F14C(BgConfig* bgConfig, enum HeapID heapID) {
-    ov97_0221F1D8(bgConfig);
+    PokeathlonBox_InitBgFromTemplates(bgConfig);
     GfGfxLoader_GXLoadPal(NARC_a_2_4_1 /*243*/, 0, GF_PAL_LOCATION_SUB_BG, (enum GFPalSlotOffset)0, 0, heapID);
     GfGfxLoader_LoadCharData(NARC_a_2_4_1 /*243*/, 1, bgConfig, GF_BG_LYR_SUB_3, 0, 0, 1, heapID);
     GfGfxLoader_LoadScrnData(NARC_a_2_4_1 /*243*/, 2, bgConfig, GF_BG_LYR_SUB_3, 0, 0x600, 1, heapID);
@@ -497,4 +501,22 @@ void ov97_0221F14C(BgConfig* bgConfig, enum HeapID heapID) {
     GfGfxLoader_LoadScrnData(NARC_a_2_4_1 /*243*/, 3, bgConfig, GF_BG_LYR_SUB_2, 0, 0x600, 1, heapID);
     BgCommitTilemapBufferToVram(bgConfig, GF_BG_LYR_SUB_2);
     LoadFontPal0(GF_PAL_LOCATION_SUB_BG, GF_PAL_SLOT_15_OFFSET, heapID);
+}
+
+void PokeathlonBox_InitBgFromTemplates(BgConfig* bgConfig) {
+    BgTemplate bgTemplate1 = pokeathlonBoxBgTemplate1;
+    InitBgFromTemplate(bgConfig, GF_BG_LYR_SUB_0, &bgTemplate1, 0);
+    BgClearTilemapBufferAndCommit(bgConfig, GF_BG_LYR_SUB_0);
+
+    BgTemplate bgTemplate2 = pokeathlonBoxBgTemplate2;
+    InitBgFromTemplate(bgConfig, GF_BG_LYR_SUB_1, &bgTemplate2, 0);
+    BgClearTilemapBufferAndCommit(bgConfig, GF_BG_LYR_SUB_1);
+
+    BgTemplate bgTemplate3 = pokeathlonBoxBgTemplate3;
+    InitBgFromTemplate(bgConfig, GF_BG_LYR_SUB_2, &bgTemplate3, 0);
+    BgClearTilemapBufferAndCommit(bgConfig, GF_BG_LYR_SUB_2);
+
+    BgTemplate bgTemplate4 = pokeathlonBoxBgTemplate4;
+    InitBgFromTemplate(bgConfig, GF_BG_LYR_SUB_3, &bgTemplate4, 0);
+    BgClearTilemapBufferAndCommit(bgConfig, GF_BG_LYR_SUB_3);
 }
