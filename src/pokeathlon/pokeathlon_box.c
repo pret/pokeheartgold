@@ -553,3 +553,36 @@ void ov97_0221F294(PokeathlonBox_Graphics* graphics) {
     String_Delete(str);
     CopyWindowToVram(&graphics->window5);
 }
+
+void ov97_0221F428(PokeathlonBox_Graphics* graphics, PokeathlonBox_UnkStruct0221EC14* mon) {
+    String* str;
+
+    CopyU16ArrayToString(graphics->nickname, mon->nickname);
+    FillWindowPixelBuffer(&graphics->window3, 0);
+    AddTextPrinterParameterizedWithColor(&graphics->window3, 0, graphics->nickname, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), 0);
+    CopyWindowToVram(&graphics->window3);
+    if (mon->gender == 0) {
+        str = NewString_ReadMsgData(graphics->msgData, 2);
+        FillWindowPixelBuffer(&graphics->window4, 0);
+        AddTextPrinterParameterizedWithColor(&graphics->window4, 0, str, 4, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(7, 8, 0), 0);
+        CopyWindowToVram(&graphics->window4);
+        String_Delete(str);
+    } else if (mon->gender == 1) {
+        str = NewString_ReadMsgData(graphics->msgData, 3);
+        FillWindowPixelBuffer(&graphics->window4, 0);
+        AddTextPrinterParameterizedWithColor(&graphics->window4, 0, str, 4, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(3, 4, 0), 0);
+        CopyWindowToVram(&graphics->window4);
+        String_Delete(str);
+    } else {
+        FillWindowPixelBuffer(&graphics->window4, 0);
+        CopyWindowToVram(&graphics->window4);
+    }
+    str = GetSpeciesName(mon->species, graphics->heapID);
+    BufferString(graphics->msgFormat, 0, str, 2, 1, 2);
+    String_Delete(str);
+    str = ReadMsgData_ExpandPlaceholders(graphics->msgFormat, graphics->msgData, 9, graphics->heapID);
+    FillWindowPixelBuffer(&graphics->window6, 0);
+    AddTextPrinterParameterizedWithColor(&graphics->window6, 0, str, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), 0);
+    CopyWindowToVram(&graphics->window6);
+    String_Delete(str);
+}

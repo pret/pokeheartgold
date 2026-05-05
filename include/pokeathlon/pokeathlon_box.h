@@ -62,13 +62,13 @@ typedef struct PokeathlonBox_SelectedMon {
 } PokeathlonBox_SelectedMon;
 
 typedef struct PokeathlonBox_UnkStruct0221EC14 {
-    u32 personality;
-    u16 species;
-    u8 isShiny;
-    u8 form;
-    u8 gender;
-    u8 unk9;
-    u16 nickname[11];
+    u32 personality; // 0x00
+    u16 species; // 0x04
+    u8 isShiny; // 0x06
+    u8 form; // 0x07
+    u8 gender;  // 0x08
+    u8 unk9;  // 0x09
+    u16 nickname[11]; // 0x0A
     u8 unk20[5];
     u8 unk25;
     u16 unk26;
@@ -171,8 +171,8 @@ void ov97_0221F0E0(PokeathlonBox_SubGraphics* subGraphics);
 void ov97_0221F14C(BgConfig* bgConfig, enum HeapID heapID);
 void PokeathlonBox_InitBgFromTemplates(BgConfig* bgConfig);
 void ov97_0221F294(PokeathlonBox_Graphics* graphics);
-
 void ov97_0221F428(PokeathlonBox_Graphics* graphics, PokeathlonBox_UnkStruct0221EC14* mon);
+
 void ov97_0221F56C(PokeathlonBox_Graphics* graphics, PokeathlonBox_UnkStruct0221EC14* mon);
 void ov97_0221F74C();
 void ov97_0221F7DC(PokeathlonBox_SubGraphics* subGraphics);
