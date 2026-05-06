@@ -172,10 +172,13 @@ void ov97_0221F14C(BgConfig* bgConfig, enum HeapID heapID);
 void PokeathlonBox_InitBgFromTemplates(BgConfig* bgConfig);
 void ov97_0221F294(PokeathlonBox_Graphics* graphics);
 void ov97_0221F428(PokeathlonBox_Graphics* graphics, PokeathlonBox_UnkStruct0221EC14* mon);
-
 void ov97_0221F56C(PokeathlonBox_Graphics* graphics, PokeathlonBox_UnkStruct0221EC14* mon);
+
+void ov97_0221F5F8(PokeathlonBox_SubGraphics* subGraphics, PokeathlonBox_UnkStruct0221EC14* mon);
 void ov97_0221F74C();
 void ov97_0221F7DC(PokeathlonBox_SubGraphics* subGraphics);
 void ov97_0221F9E0(PokeathlonBox_SubGraphics* subGraphics);
+void ov97_0221FBDC(PokeathlonBox_SubGraphics* subGraphics);
+void ov97_0221FC54(PokeathlonBox_SubGraphics* subGraphics);
 
 #endif // POKEHEARTGOLD_POKEATHLON_BOX_H

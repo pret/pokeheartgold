@@ -33,77 +33,7 @@
 	.extern PokeathlonBox_InitBgFromTemplates
 	.extern ov97_0221F294
 	.extern ov97_0221F428
-
-	thumb_func_start ov97_0221F56C
-ov97_0221F56C: ; 0x0221F56C
-	push {r3, r4, r5, r6, r7, lr}
-	sub sp, #8
-	add r4, r0, #0
-	add r5, r4, #0
-	add r5, #0x78
-	add r0, r5, #0
-	add r6, r1, #0
-	bl ov97_0221FBDC
-	add r0, r4, #0
-	add r0, #0x78
-	bl ov97_0221FC54
-	mov r0, #0xb3
-	lsl r0, r0, #2
-	ldr r0, [r4, r0]
-	mov r1, #1
-	bl Sprite_SetDrawFlag
-	add r4, #0x78
-	add r0, r4, #0
-	add r1, r6, #0
-	bl ov97_0221F5F8
-	ldr r1, _0221F5F4 ; =ov97_0221FCFC
-	add r0, sp, #0
-	ldrb r2, [r1]
-	add r7, sp, #0
-	mov r4, #0
-	strb r2, [r0]
-	ldrb r2, [r1, #1]
-	strb r2, [r0, #1]
-	ldrb r2, [r1, #2]
-	strb r2, [r0, #2]
-	ldrb r2, [r1, #3]
-	ldrb r1, [r1, #4]
-	strb r2, [r0, #3]
-	strb r1, [r0, #4]
-_0221F5B8:
-	ldrb r1, [r7, r4]
-	add r0, r6, r1
-	add r0, #0x20
-	ldrb r0, [r0]
-	cmp r0, #0
-	beq _0221F5D6
-	lsl r0, r1, #2
-	add r1, r5, r0
-	mov r0, #0x6d
-	lsl r0, r0, #2
-	ldr r0, [r1, r0]
-	mov r1, #1
-	bl Sprite_SetDrawFlag
-	b _0221F5E6
-_0221F5D6:
-	lsl r0, r1, #2
-	add r1, r5, r0
-	mov r0, #0x6d
-	lsl r0, r0, #2
-	ldr r0, [r1, r0]
-	mov r1, #0
-	bl Sprite_SetDrawFlag
-_0221F5E6:
-	add r0, r4, #1
-	lsl r0, r0, #0x18
-	lsr r4, r0, #0x18
-	cmp r4, #5
-	blo _0221F5B8
-	add sp, #8
-	pop {r3, r4, r5, r6, r7, pc}
-	.balign 4, 0
-_0221F5F4: .word ov97_0221FCFC
-	thumb_func_end ov97_0221F56C
+	.extern ov97_0221F56C
 
 	thumb_func_start ov97_0221F5F8
 ov97_0221F5F8: ; 0x0221F5F8
@@ -966,6 +896,7 @@ pokeathlonBoxGraphicsBanks: ; 0x0221FCCC
 ov97_0221FCF4: ; 0x0221FCF4
 	.byte 0x01, 0x03, 0x02, 0x04, 0x00, 0x00, 0x00, 0x00
 
+	.global ov97_0221FCFC
 ov97_0221FCFC: ; 0x0221FCFC
 	.byte 0x01, 0x03, 0x02, 0x04
 	.byte 0x00, 0x00, 0x00, 0x00

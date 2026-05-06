@@ -35,6 +35,7 @@ extern const BgTemplate pokeathlonBoxBgTemplate3;
 extern const BgTemplate pokeathlonBoxBgTemplate1;
 extern const BgTemplate pokeathlonBoxBgTemplate2;
 extern const BgTemplate pokeathlonBoxBgTemplate4;
+extern const u8 ov97_0221FCFC[5];
 
 BOOL PokeathlonBox_Init(OverlayManager *manager) {
     if (ov97_0221E6DC(manager)) {
@@ -585,4 +586,23 @@ void ov97_0221F428(PokeathlonBox_Graphics* graphics, PokeathlonBox_UnkStruct0221
     AddTextPrinterParameterizedWithColor(&graphics->window6, 0, str, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), 0);
     CopyWindowToVram(&graphics->window6);
     String_Delete(str);
+}
+
+void ov97_0221F56C(PokeathlonBox_Graphics* graphics, PokeathlonBox_UnkStruct0221EC14* mon) {
+    u8 i;
+    PokeathlonBox_SubGraphics* sub = &graphics->sub;
+    u8 subroutine_arg0[5];
+    
+    ov97_0221FBDC(&graphics->sub);
+    ov97_0221FC54(&graphics->sub);
+    Sprite_SetDrawFlag(graphics->sub.unk254, 1);
+    ov97_0221F5F8(&graphics->sub, mon);
+    subroutine_arg0 = ov97_0221FCFC;
+    for (i = 0; i < 5; i++) {
+        if (mon->unk20[subroutine_arg0[i]] != 0) {
+            Sprite_SetDrawFlag(sub->sprites[subroutine_arg0[i]], 1);
+        } else {
+            Sprite_SetDrawFlag(sub->sprites[subroutine_arg0[i]], 0);
+        }
+    }
 }
