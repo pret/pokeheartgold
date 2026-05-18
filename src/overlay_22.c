@@ -1,11 +1,12 @@
 #include "global.h"
 
+#include "pokeathlon/pokeathlon_save.h"
+
 #include "coins.h"
 #include "fieldmap.h"
 #include "overlay_01_021EDAFC.h"
 #include "scrcmd.h"
 #include "script.h"
-#include "unk_02031904.h"
 
 extern Window *ov01_021EEC00(struct FieldSystem *fieldSystem, u8 type, u8 x, u8 y);
 
@@ -95,14 +96,14 @@ BOOL ScrCmd_CheckGiveCoins(ScriptContext *ctx) {
 BOOL ScrCmd_GiveAthletePoints(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
     u16 amount = ScriptGetVar(ctx);
-    SavePokeathlon_AddAthletePoints(Save_Pokeathlon_Get(fieldSystem->saveData), amount);
+    PokeathlonSave_AddAthletePoints(Save_Pokeathlon_Get(fieldSystem->saveData), amount);
     return FALSE;
 }
 
 BOOL ScrCmd_TakeAthletePoints(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
     u16 amount = ScriptGetVar(ctx);
-    SavePokeathlon_SubAthletePoints(Save_Pokeathlon_Get(fieldSystem->saveData), amount);
+    PokeathlonSave_SubAthletePoints(Save_Pokeathlon_Get(fieldSystem->saveData), amount);
     return FALSE;
 }
 
@@ -110,7 +111,7 @@ BOOL ScrCmd_CheckAthletePoints(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
     u16 *ptr = ScriptGetVarPointer(ctx);
     u16 amount = ScriptGetVar(ctx);
-    u32 points = SavePokeathlon_GetAthletePoints(Save_Pokeathlon_Get(fieldSystem->saveData));
+    u32 points = PokeathlonSave_GetAthletePoints(Save_Pokeathlon_Get(fieldSystem->saveData));
     if (points < amount) {
         *ptr = FALSE;
     } else {

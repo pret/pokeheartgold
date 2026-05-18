@@ -59,7 +59,7 @@ typedef struct MapEvents {
     COORD_EVENT *coord_events;
     u8 event_data[0x800];
     u8 script_header[0x100];
-    ENC_DATA wildEncounters;
+    EncounterData wildEncounters;
 } MapEvents;
 
 #endif // POKEHEARTGOLD_MAP_EVENTS_INTERNAL_H

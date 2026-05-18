@@ -20,5 +20,6 @@ struct PokepicManager *DrawPokemonPicFromMon(BgConfig *bgConfig, GFBgLayer layer
 void sub_0200E398(BgConfig *bgConfig, u32 a1, u32 a2, u32 a3, enum HeapID heapID);
 u32 sub_0200E3D8(void);
 void sub_0200EB68(Window *window, int a1);
+void sub_0200F478(void);
 
 #endif // POKEHEARTGOLD_RENDER_WINDOW_H

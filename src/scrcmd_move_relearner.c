@@ -56,7 +56,7 @@ static void StartMoveRelearner(ScriptContext *ctx, int type, Pokemon *mon, u16 *
     Heap_Free(eligibleMoves);
 }
 
-BOOL ScrCmd_MoveRelearner(ScriptContext *ctx) {
+BOOL ScrCmd_MoveRelearnerInit(ScriptContext *ctx) {
     u16 slot = ScriptGetVar(ctx);
     Pokemon *mon = Party_GetMonByIndex(SaveArray_Party_Get(ctx->fieldSystem->saveData), slot);
     u16 *eligibleMoves = MoveRelearner_GetEligibleLevelUpMoves(mon, HEAP_ID_FIELD3);
@@ -64,7 +64,7 @@ BOOL ScrCmd_MoveRelearner(ScriptContext *ctx) {
     return TRUE;
 }
 
-BOOL ScrCmd_MoveTutor(ScriptContext *ctx) {
+BOOL ScrCmd_MoveTutorInit(ScriptContext *ctx) {
     u16 slot = ScriptGetVar(ctx);
     u16 move = ScriptGetVar(ctx);
     Pokemon *mon = Party_GetMonByIndex(SaveArray_Party_Get(ctx->fieldSystem->saveData), slot);

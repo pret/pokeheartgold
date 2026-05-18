@@ -1,9 +1,8 @@
 #ifndef GUARD_PLAYER_H
 #define GUARD_PLAYER_H
 
-typedef struct NNSSndHandle
-{
-    struct NNSSndSeqPlayer* player;
+typedef struct NNSSndHandle {
+    struct NNSSndSeqPlayer *player;
 } NNSSndHandle;
 
 void NNS_SndHandleInit(NNSSndHandle *handle);
@@ -14,5 +13,6 @@ void NNS_SndPlayerSetPlayableSeqCount(int playerNo, int seqCount);
 BOOL NNS_SndPlayerCreateHeap(int playerNo, NNSSndHeapHandle heap, u32 size);
 void NNS_SndPlayerPauseByPlayerNo(int playerNo, BOOL flag);
 int NNS_SndPlayerCountPlayingSeqByPlayerNo(int playerNo);
+void NNS_SndPlayerSetPlayerVolume(int playerNo, u8 volume);
 
-#endif //GUARD_PLAYER_H
+#endif // GUARD_PLAYER_H

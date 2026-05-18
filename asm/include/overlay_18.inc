@@ -254,9 +254,9 @@
 .public GetPokedexDataNarcID
 .public GetDexWeightMsgBank
 .public GetDexHeightMsgBank
-.public sub_02092BD8
-.public sub_02092BE0
-.public sub_02092BE4
+.public UnkStruct_02092BB8_Set
+.public UnkStruct_02092BB8_GetUnk2
+.public UnkStruct_02092BB8_GetSpecies
 .public NNS_G2dGetImageLocation
 .public NNS_G2dGetImagePaletteLocation
 .public FX_Div
@@ -292,6 +292,6 @@
 .public ov18_021F89D0
 .public ov18_021F95AC
 .public ov18_021F95F8
-.public ov123_0225F430
-.public ov123_0225F520
-.public ov123_0225F688
+.public DSProt_DetectFlashcart
+.public DSProt_DetectEmulator
+.public DSProt_DetectNotDummy

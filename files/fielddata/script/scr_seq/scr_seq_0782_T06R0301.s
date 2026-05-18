@@ -5,135 +5,135 @@
 
 	.rodata
 
-	scrdef scr_seq_T06R0301_000
-	scrdef scr_seq_T06R0301_001
-	scrdef scr_seq_T06R0301_002
-	scrdef scr_seq_T06R0301_003
-	scrdef scr_seq_T06R0301_004
-	scrdef scr_seq_T06R0301_005
-	scrdef scr_seq_T06R0301_006
-	scrdef scr_seq_T06R0301_007
-	scrdef_end
+	ScrDef scr_seq_T06R0301_000
+	ScrDef scr_seq_T06R0301_001
+	ScrDef scr_seq_T06R0301_002
+	ScrDef scr_seq_T06R0301_003
+	ScrDef scr_seq_T06R0301_004
+	ScrDef scr_seq_T06R0301_005
+	ScrDef scr_seq_T06R0301_006
+	ScrDef scr_seq_T06R0301_007
+	ScrDefEnd
 
 scr_seq_T06R0301_000:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	goto_if_unset FLAG_GOT_RARE_CANDY_FROM_FAN_CLUB_CHAIRMAN, _0044
-	buffer_players_name 0
-	gender_msgbox msg_0488_T06R0301_00004, msg_0488_T06R0301_00005
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	GoToIfUnset FLAG_GOT_RARE_CANDY_FROM_FAN_CLUB_CHAIRMAN, _0044
+	BufferPlayersName 0
+	GenderMsgBox msg_0488_T06R0301_00004, msg_0488_T06R0301_00005
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0044:
-	npc_msg msg_0488_T06R0301_00000
-	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_RESULT
-	touchscreen_menu_show
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _009E
-	npc_msg msg_0488_T06R0301_00001
-	goto_if_no_item_space ITEM_RARE_CANDY, 1, _0093
-	callstd std_give_item_verbose
-	setflag FLAG_GOT_RARE_CANDY_FROM_FAN_CLUB_CHAIRMAN
-	npc_msg msg_0488_T06R0301_00003
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0488_T06R0301_00000
+	TouchscreenMenuHide
+	GetMenuChoice VAR_SPECIAL_RESULT
+	TouchscreenMenuShow
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _009E
+	NPCMsg msg_0488_T06R0301_00001
+	GoToIfNoItemSpace ITEM_RARE_CANDY, 1, _0093
+	CallStd std_give_item_verbose
+	SetFlag FLAG_GOT_RARE_CANDY_FROM_FAN_CLUB_CHAIRMAN
+	NPCMsg msg_0488_T06R0301_00003
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0093:
-	npc_msg msg_0488_T06R0301_00007
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0488_T06R0301_00007
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _009E:
-	npc_msg msg_0488_T06R0301_00006
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0488_T06R0301_00006
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_T06R0301_001:
-	simple_npc_msg msg_0488_T06R0301_00008
-	end
+	SimpleNPCMsg msg_0488_T06R0301_00008
+	End
 
 scr_seq_T06R0301_002:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	getitemquantity ITEM_LOST_ITEM, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_ne _0141
-	getitemquantity ITEM_PASS, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_ne _0141
-	goto_if_set FLAG_UNK_119, _0116
-	goto_if_set FLAG_RESTORED_POWER, _010B
-	npc_msg msg_0488_T06R0301_00009
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	GetItemQuantity ITEM_LOST_ITEM, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfNe _0141
+	GetItemQuantity ITEM_PASS, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfNe _0141
+	GoToIfSet FLAG_UNK_119, _0116
+	GoToIfSet FLAG_RESTORED_POWER, _010B
+	NPCMsg msg_0488_T06R0301_00009
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _010B:
-	npc_msg msg_0488_T06R0301_00010
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0488_T06R0301_00010
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0116:
-	npc_msg msg_0488_T06R0301_00011
-	hide_person obj_T06R0301_mono_pip
-	setflag FLAG_HIDE_VERMILION_FAN_CLUB_LOST_ITEM
-	giveitem_no_check ITEM_LOST_ITEM, 1
-	setvar VAR_UNK_4130, 1
-	clearflag FLAG_HIDE_VERMILION_CITY_STEVEN
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0488_T06R0301_00011
+	HidePerson obj_T06R0301_mono_pip
+	SetFlag FLAG_HIDE_VERMILION_FAN_CLUB_LOST_ITEM
+	GiveItemNoCheck ITEM_LOST_ITEM, 1
+	SetVar VAR_UNK_4130, 1
+	ClearFlag FLAG_HIDE_VERMILION_CITY_STEVEN
+	CloseMsg
+	ReleaseAll
+	End
 
 _0141:
-	npc_msg msg_0488_T06R0301_00013
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0488_T06R0301_00013
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_T06R0301_003:
-	simple_npc_msg msg_0488_T06R0301_00014
-	end
+	SimpleNPCMsg msg_0488_T06R0301_00014
+	End
 
 scr_seq_T06R0301_004:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	play_cry SPECIES_BAYLEEF, 0
-	npc_msg msg_0488_T06R0301_00016
-	wait_cry
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	PlayCry SPECIES_BAYLEEF, 0
+	NPCMsg msg_0488_T06R0301_00016
+	WaitCry
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_T06R0301_007:
-	goto_if_set FLAG_HIDE_VERMILION_FAN_CLUB_LOST_ITEM, _0198
-	simple_npc_msg msg_0488_T06R0301_00015
-	end
+	GoToIfSet FLAG_HIDE_VERMILION_FAN_CLUB_LOST_ITEM, _0198
+	SimpleNPCMsg msg_0488_T06R0301_00015
+	End
 
 _0198:
-	end
+	End
 
 scr_seq_T06R0301_005:
-	simple_npc_msg msg_0488_T06R0301_00017
-	end
+	SimpleNPCMsg msg_0488_T06R0301_00017
+	End
 
 scr_seq_T06R0301_006:
-	simple_npc_msg msg_0488_T06R0301_00018
-	end
+	SimpleNPCMsg msg_0488_T06R0301_00018
+	End
 	.balign 4, 0

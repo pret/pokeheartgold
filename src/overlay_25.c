@@ -205,7 +205,7 @@ void TrainerHouse_StartBattle(FieldSystem *fieldSystem, u32 trainerNum) {
     } else {
         setup = TrainerHouse_NewBattleSetup(fieldSystem, &trainerHouse->sets[trainerNum]);
     }
-    fieldSystem->unkA0 = NULL;
+    fieldSystem->frontierFsys = NULL;
     u32 effect = BattleSetup_GetWildTransitionEffect(setup);
     u32 bgm = BattleSetup_GetWildBattleMusic(setup);
     u32 *winFlag = FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_BATTLE_WIN_FLAG);
@@ -300,11 +300,10 @@ static void TrainerHouse_CopyToPokemon(TrainerHouseMon *trainerHouseMon, Pokemon
     s32 i;
     u8 tempByte;
     ZeroMonData(mon);
-    u32 level = trainerHouseMon->level > MAX_TRAINER_HOUSE_LEVEL
+    tempByte = trainerHouseMon->level > MAX_TRAINER_HOUSE_LEVEL
         ? MAX_TRAINER_HOUSE_LEVEL
         : trainerHouseMon->level;
-    tempByte = level;
-    u32 species = trainerHouseMon->species;
+    u16 species = trainerHouseMon->species;
     u32 ivs = trainerHouseMon->ivsWord & 0x3fffffff;
     u32 pid = trainerHouseMon->pid;
     CreateMonWithFixedIVs(mon, species, tempByte, ivs, pid);

@@ -80,7 +80,7 @@ _0222A8DA:
 	cmp r4, #0
 	beq _0222A8FC
 	add r0, r4, #0
-	bl ov80_0222AB98
+	bl FrontierScriptContext_Run
 	cmp r0, #0
 	bne _0222A8FC
 	ldr r0, [sp]
@@ -156,7 +156,7 @@ FrontierSystem_AddTask: ; 0x0222A958
 	ldr r1, _0222A9D4 ; =gFrontierCommandTable
 	ldr r2, [r2]
 	add r0, r4, #0
-	bl ov80_0222AB40
+	bl FrontierScriptContext_Init
 	ldr r0, _0222A9D8 ; =0x0000FFFF
 	str r5, [r4]
 	cmp r6, r0
@@ -189,7 +189,7 @@ _0222A9B2:
 	add r1, #0x84
 	ldr r1, [r1]
 	add r0, r4, #0
-	bl ov80_0222AB78
+	bl FrontierScriptContext_Start
 	add r0, r4, #0
 	add r1, r7, #0
 	bl ov80_0222AB14
@@ -390,7 +390,7 @@ ov80_0222AB14: ; 0x0222AB14
 	lsl r1, r1, #2
 	add r1, r2, r1
 	str r1, [r4, #0x1c]
-	bl ov80_0222AC70
+	bl FrontierScriptContext_ReadWord
 	ldr r1, [r4, #0x1c]
 	add r0, r1, r0
 	str r0, [r4, #0x1c]

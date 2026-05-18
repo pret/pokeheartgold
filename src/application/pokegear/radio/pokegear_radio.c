@@ -158,7 +158,7 @@ u8 Radio_GetAvailableChannels(PokegearRadioAppData *radioApp) {
     if (Radio_IsInSpecialMap(mapID, RADIO_SPECIAL_MAP_TYPE_ALPH)) {
         return RADIO_STATION_SELECTION_ALPH;
     }
-    if (MapHeader_IsInKanto(mapID)) {
+    if (MapHeader_GetRegionNo(mapID)) {
         if (!Save_VarsFlags_CheckFlagInArray(radioApp->pokegear->saveVarsFlags, FLAG_RESTORED_POWER)) {
             return RADIO_STATION_SELECTION_NO_SIGNAL;
         } else if (Save_VarsFlags_CheckFlagInArray(radioApp->pokegear->saveVarsFlags, FLAG_GOT_EXPN_CARD)) {

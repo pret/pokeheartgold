@@ -3,7 +3,7 @@
 .public Heap_AllocAtEnd
 .public GF_AssertFail
 .public MapMatrix_GetWidth
-.public sub_02054550
+.public TerrainAttributes_Get
 .public sub_02054774
 .public sub_02054790
 .public sub_02054874

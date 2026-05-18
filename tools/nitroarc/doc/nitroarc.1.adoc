@@ -1,0 +1,181 @@
+nitroarc (1)
+============
+
+:doctype: manpage
+:manmanual: General Commands Manual
+:mansource: NitroARC Manual
+:source-highlighter: rouge
+
+Name
+----
+
+nitroarc - an archiving utility for Nintendo's Nitro Archive format
+
+Synopsis
+--------
+
+*nitroarc* *-cf* _ARCHIVE_ [*-INRS*] [*-E _PATTERN_*] [*-X _FILE_*] [*-T _FILE_*] _DIRECTORY_ +
+*nitroarc* *-mf* _ARCHIVE_ [*-H*] [*-F _FORMAT_*] +
+*nitroarc* *-tf* _ARCHIVE_ [*-H*] [*-F _FORMAT_*] +
+*nitroarc* *-xf* _ARCHIVE_ [_DIRECTORY_] +
+
+Description
+-----------
+
+*nitroarc* is an archiving utility which targets the Nitro Archive format for
+the Nintendo DS handheld. This tool is a minimal front-end for users and build
+systems. Programmers building applications that target the format may reference
+*nitroarc(3)*.
+
+*nitroarc* is a modal utility; functionality is controlled by specifying exactly
+one of the following flags:
+
+*-c, --create*::
+  Create _ARCHIVE_ with the files in _DIRECTORY_. All files which descend from
+  _DIRECTORY_ or any of its subdirectories will be included in _ARCHIVE_. By
+  default, all files which match either of the patterns “.\*ignore” or
+  “.\*order” will be ignored. If a file named “.narcorder” is present in
+  _DIRECTORY_, then it will be automatically loaded as if it had been given as
+  an argument to the *-T* option. If a file named “.narcignore” is present in
+  _DIRECTORY_, then it will be automatically loaded as if it had been given as
+  an argument to the *-X* option. In either case, a file given as an explicit
+  option-argument will take precedence.
+
+*-m, --meta, --metadata*::
+  View tabulated metadata about the sections of _ARCHIVE_.
+
+*-t, --list*::
+  List tabulated contents of _ARCHIVE_. When _ARCHIVE_ defines a filesystem,
+  the output table will list member files by their full paths with a preceding
+  forward-slash (‘/’). Otherwise, the output table will list member files as
+  they are ordered in _ARCHIVE_ and a best guess at the respective file-type.
+
+*-x, --extract*::
+  Extract the contents of _ARCHIVE_ to _DIRECTORY_. When _DIRECTORY_ is not
+  given, it will default to _ARCHIVE_ suffixed by “.d”. When _ARCHIVE_ defines a
+  filesystem, both the directory tree and member file-paths will be mirrored,
+  with _DIRECTORY_ acting as the effective root. Otherwise, each member's image
+  will be written to a file named by its index in _ARCHIVE_ and an extension
+  appropriate to its file-type (as in *--list*).
+
+*-?, -h, --help*::
+  Print a summary of program options and functionality.
+
+*-V, --version*::
+  Print the program version and a copyright summary.
+
+Additional options may further control program output. Some are only supported
+by specific operation modes; any options that are not supported by a mode are
+silently ignored. Only the last-specified instance of each option will be
+evaluated.
+
+=== Common Options ===
+
+*-C _DIRECTORY_, --create=_DIRECTORY_*::
+  Change the program's working directory before performing any other actions.
+  This option is always evaluated before any other options or arguments.
+
+*-v, --verbose*::
+  Write additional logging statements to the standard error stream during
+  execution.
+
+=== Controlling Archive Creation ===
+
+*-E _PATTERN_, --exclude=_PATTERN_*::
+  Exclude files with names matching _PATTERN_ while scanning _DIRECTORY_ for
+  potential members. Matches are evaluated using the same globbing rules as
+  *fnmatch(3)*. This pattern is *not* evaluated against member files which are
+  included using *--files-from*. To specify more than a single pattern, use
+  *--exclude-from*.
+
+*-X _FILE_, --exclude-from=_FILE_*::
+  Read lines from _FILE_ to be evaluated as exclusion patterns for potential
+  members, as in *--exclude*.
+
+*-T _FILE_, --files-from=_FILE_*::
+  Read lines from _FILE_ as the names of files to be included as members in
+  _ARCHIVE_. Members specified in this manner are added to _ARCHIVE_ in the same
+  ordering as they are listed in _FILE_. After all such members have been
+  included, execution will proceed to scanning _DIRECTORY_ for other potential
+  members in the usual manner, skipping those which were already added by this
+  option.
+
+*-I, --index*::
+  Output a C header for _ARCHIVE_ to a file-path mirroring _ARCHIVE_ with its
+  extension replaced by “.naix”. C programs may use this header to map relative
+  paths from the local filesystem to their indices in _ARCHIVE_ via preprocessor
+  “#define” statements. Any character in the local path for a member file which
+  is neither an alphanumeric ASCII character nor an ASCII underscore (‘_’) will
+  be replaced by an ASCII underscore in the respective preprocessor token. e.g.,
+  a member file located at “/path/to/file” will write “#define path_to_file”,
+  followed by a single ASCII space (‘ ’) and its member index on the same line.
+  If a member file is included in the archive multiple times, then occurrences
+  past the first will be suffixed with the number of previous occurrences.
+
+*-P, --index-namespace*::
+  Identical to *--index*, but all output preprocessor definitions are prefixed
+  with a namespace of “NARC_” and the name of the output archive, minus its
+  extension.
+
+*-N, --named*::
+  Mirror the local filesystem from _DIRECTORY_ in _ARCHIVE_, with _DIRECTORY_
+  acting as the effective root. Additionally, the behavior of *--files-from* is
+  altered such that any listed file-path is only included once.
+
+*-R, --no-recursion*::
+  Do not traverse subdirectories of _DIRECTORY_ for potential members.
+
+*-S, --stripped*::
+  Write _ARCHIVE_ as a “stripped” variant. The typical header will be replaced
+  by a minimal header specifying only the local byte-offsets and sizes of the
+  FNTB and FATB sections, and all byte-offsets listed in the FATB section will
+  be written as absolute values rather than values relative to the start of the
+  FIMG section.
+
+=== Formatting Tabulated Output ===
+
+*-F _FORMAT_, --format=_FORMAT_*::
+  Write tabulated data using _FORMAT_. Defaults to “markdown”. Recognized values
+  are “markdown” and “csv”.
+
+*-H, --no-header*::
+  Do not write the header row(s) for the output format. When writing output as
+  Markdown, this also removes the explicit cell-alignment row which would be
+  included between the header cells and the first row of data cells; such output
+  may thus be evaluated as a sequence of pipe-delimited rows.
+
+Exit Status
+-----------
+
+The *nitroarc* utility exits 0 on success, and >0 if an error occurs.
+
+Examples
+--------
+
+[source,bash,indent=0]
+----
+# Create archive.narc using all files in path/to/directory.
+nitroarc -cf archive.narc path/to/directory
+
+# Mirror the filesystem tree under path/to/directory in the created archive.
+nitroarc -cNf archive.narc path/to/directory
+
+# Write a stripped archive.
+nitroarc -cNSf archive.narc path/to/directory
+
+# View the members of archive.narc in CSV format.
+nitroarc -tf archive.narc -F csv
+
+# Dump the members of archive.narc to archive.narc.d.
+nitroarc -xf archive.narc
+----
+
+See Also
+--------
+
+*nitroarc(3)*, *fnmatch(3)*
+
+Contributions
+-------------
+
+Report bugs and submit patches to <rachel@lhea.me>.

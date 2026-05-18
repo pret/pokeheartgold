@@ -5,194 +5,194 @@
 
 	.rodata
 
-	scrdef scr_seq_R03_000
-	scrdef scr_seq_R03_001
-	scrdef scr_seq_R03_002
-	scrdef scr_seq_R03_003
-	scrdef scr_seq_R03_004
-	scrdef_end
+	ScrDef scr_seq_R03_000
+	ScrDef scr_seq_R03_001
+	ScrDef scr_seq_R03_002
+	ScrDef scr_seq_R03_003
+	ScrDef scr_seq_R03_004
+	ScrDefEnd
 
 scr_seq_R03_001:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	scrcmd_517 SPECIES_DEOXYS, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _02DF
-	get_party_lead_alive VAR_TEMP_x4000
-	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4001
-	compare VAR_TEMP_x4001, 386
-	goto_if_eq _0050
-	scrcmd_518 3
-	goto _00BE
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	ScrCmd_517 SPECIES_DEOXYS, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _02DF
+	GetPartyLeadAlive VAR_TEMP_x4000
+	GetPartyMonSpecies VAR_TEMP_x4000, VAR_TEMP_x4001
+	Compare VAR_TEMP_x4001, 386
+	GoToIfEq _0050
+	ScrCmd_518 3
+	GoTo _00BE
 
 _0050:
-	scrcmd_518 3
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	get_player_coords VAR_SPECIAL_x8006, VAR_SPECIAL_x8007
-	get_player_facing VAR_SPECIAL_RESULT
-	warp MAP_ROUTE_3, 0, VAR_SPECIAL_x8006, VAR_SPECIAL_x8007, VAR_SPECIAL_RESULT
-	player_on_bike_check VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _00B2
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_ne _009E
-	scrcmd_605 0, 1
-	goto _00A2
+	ScrCmd_518 3
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	GetPlayerCoords VAR_SPECIAL_x8006, VAR_SPECIAL_x8007
+	GetPlayerFacing VAR_SPECIAL_RESULT
+	Warp MAP_ROUTE_3, 0, VAR_SPECIAL_x8006, VAR_SPECIAL_x8007, VAR_SPECIAL_RESULT
+	PlayerOnBikeCheck VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _00B2
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfNe _009E
+	ScrCmd_605 0, 1
+	GoTo _00A2
 
 _009E:
-	scrcmd_605 3, 2
+	ScrCmd_605 3, 2
 _00A2:
-	toggle_following_pokemon_movement 0
-	scrcmd_608
-	wait 10, VAR_SPECIAL_RESULT
-	toggle_following_pokemon_movement 1
+	ToggleFollowingPokemonMovement 0
+	ScrCmd_608
+	Wait 10, VAR_SPECIAL_RESULT
+	ToggleFollowingPokemonMovement 1
 _00B2:
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
 _00BE:
-	play_cry SPECIES_DEOXYS, 0
-	npc_msg msg_0326_R03_00002
-	goto _02D5
+	PlayCry SPECIES_DEOXYS, 0
+	NPCMsg msg_0326_R03_00002
+	GoTo _02D5
 
 scr_seq_R03_002:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	scrcmd_517 SPECIES_DEOXYS, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _02DF
-	get_party_lead_alive VAR_TEMP_x4000
-	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4001
-	compare VAR_TEMP_x4001, 386
-	goto_if_eq _0107
-	scrcmd_518 2
-	goto _018C
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	ScrCmd_517 SPECIES_DEOXYS, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _02DF
+	GetPartyLeadAlive VAR_TEMP_x4000
+	GetPartyMonSpecies VAR_TEMP_x4000, VAR_TEMP_x4001
+	Compare VAR_TEMP_x4001, 386
+	GoToIfEq _0107
+	ScrCmd_518 2
+	GoTo _018C
 
 _0107:
-	scrcmd_518 2
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	get_player_coords VAR_SPECIAL_x8006, VAR_SPECIAL_x8007
-	get_player_facing VAR_SPECIAL_RESULT
-	warp MAP_ROUTE_3, 0, VAR_SPECIAL_x8006, VAR_SPECIAL_x8007, VAR_SPECIAL_RESULT
-	player_on_bike_check VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _0180
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_ne _0155
-	scrcmd_605 0, 1
-	goto _0170
+	ScrCmd_518 2
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	GetPlayerCoords VAR_SPECIAL_x8006, VAR_SPECIAL_x8007
+	GetPlayerFacing VAR_SPECIAL_RESULT
+	Warp MAP_ROUTE_3, 0, VAR_SPECIAL_x8006, VAR_SPECIAL_x8007, VAR_SPECIAL_RESULT
+	PlayerOnBikeCheck VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _0180
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfNe _0155
+	ScrCmd_605 0, 1
+	GoTo _0170
 
 _0155:
-	compare VAR_SPECIAL_RESULT, 3
-	goto_if_ne _016C
-	scrcmd_605 0, 1
-	goto _0170
+	Compare VAR_SPECIAL_RESULT, 3
+	GoToIfNe _016C
+	ScrCmd_605 0, 1
+	GoTo _0170
 
 _016C:
-	scrcmd_605 3, 2
+	ScrCmd_605 3, 2
 _0170:
-	toggle_following_pokemon_movement 0
-	scrcmd_608
-	wait 10, VAR_SPECIAL_RESULT
-	toggle_following_pokemon_movement 1
+	ToggleFollowingPokemonMovement 0
+	ScrCmd_608
+	Wait 10, VAR_SPECIAL_RESULT
+	ToggleFollowingPokemonMovement 1
 _0180:
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
 _018C:
-	play_cry SPECIES_DEOXYS, 0
-	npc_msg msg_0326_R03_00003
-	goto _02D5
+	PlayCry SPECIES_DEOXYS, 0
+	NPCMsg msg_0326_R03_00003
+	GoTo _02D5
 
 scr_seq_R03_003:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	scrcmd_517 SPECIES_DEOXYS, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _02DF
-	get_party_lead_alive VAR_TEMP_x4000
-	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4001
-	compare VAR_TEMP_x4001, 386
-	goto_if_eq _01D5
-	scrcmd_518 1
-	goto _022C
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	ScrCmd_517 SPECIES_DEOXYS, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _02DF
+	GetPartyLeadAlive VAR_TEMP_x4000
+	GetPartyMonSpecies VAR_TEMP_x4000, VAR_TEMP_x4001
+	Compare VAR_TEMP_x4001, 386
+	GoToIfEq _01D5
+	ScrCmd_518 1
+	GoTo _022C
 
 _01D5:
-	scrcmd_518 1
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	get_player_coords VAR_SPECIAL_x8006, VAR_SPECIAL_x8007
-	get_player_facing VAR_SPECIAL_RESULT
-	warp MAP_ROUTE_3, 0, VAR_SPECIAL_x8006, VAR_SPECIAL_x8007, VAR_SPECIAL_RESULT
-	player_on_bike_check VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _0220
-	scrcmd_605 2, 3
-	toggle_following_pokemon_movement 0
-	scrcmd_608
-	wait 10, VAR_SPECIAL_RESULT
-	toggle_following_pokemon_movement 1
+	ScrCmd_518 1
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	GetPlayerCoords VAR_SPECIAL_x8006, VAR_SPECIAL_x8007
+	GetPlayerFacing VAR_SPECIAL_RESULT
+	Warp MAP_ROUTE_3, 0, VAR_SPECIAL_x8006, VAR_SPECIAL_x8007, VAR_SPECIAL_RESULT
+	PlayerOnBikeCheck VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _0220
+	ScrCmd_605 2, 3
+	ToggleFollowingPokemonMovement 0
+	ScrCmd_608
+	Wait 10, VAR_SPECIAL_RESULT
+	ToggleFollowingPokemonMovement 1
 _0220:
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
 _022C:
-	play_cry SPECIES_DEOXYS, 0
-	npc_msg msg_0326_R03_00004
-	goto _02D5
+	PlayCry SPECIES_DEOXYS, 0
+	NPCMsg msg_0326_R03_00004
+	GoTo _02D5
 
 scr_seq_R03_004:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	scrcmd_517 SPECIES_DEOXYS, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _02DF
-	get_party_lead_alive VAR_TEMP_x4000
-	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4001
-	compare VAR_TEMP_x4001, 386
-	goto_if_eq _0275
-	scrcmd_518 0
-	goto _02CC
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	ScrCmd_517 SPECIES_DEOXYS, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _02DF
+	GetPartyLeadAlive VAR_TEMP_x4000
+	GetPartyMonSpecies VAR_TEMP_x4000, VAR_TEMP_x4001
+	Compare VAR_TEMP_x4001, 386
+	GoToIfEq _0275
+	ScrCmd_518 0
+	GoTo _02CC
 
 _0275:
-	scrcmd_518 0
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	get_player_coords VAR_SPECIAL_x8006, VAR_SPECIAL_x8007
-	get_player_facing VAR_SPECIAL_RESULT
-	warp MAP_ROUTE_3, 0, VAR_SPECIAL_x8006, VAR_SPECIAL_x8007, VAR_SPECIAL_RESULT
-	player_on_bike_check VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _02C0
-	scrcmd_605 3, 2
-	toggle_following_pokemon_movement 0
-	scrcmd_608
-	wait 10, VAR_SPECIAL_RESULT
-	toggle_following_pokemon_movement 1
+	ScrCmd_518 0
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	GetPlayerCoords VAR_SPECIAL_x8006, VAR_SPECIAL_x8007
+	GetPlayerFacing VAR_SPECIAL_RESULT
+	Warp MAP_ROUTE_3, 0, VAR_SPECIAL_x8006, VAR_SPECIAL_x8007, VAR_SPECIAL_RESULT
+	PlayerOnBikeCheck VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _02C0
+	ScrCmd_605 3, 2
+	ToggleFollowingPokemonMovement 0
+	ScrCmd_608
+	Wait 10, VAR_SPECIAL_RESULT
+	ToggleFollowingPokemonMovement 1
 _02C0:
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
 _02CC:
-	play_cry SPECIES_DEOXYS, 0
-	npc_msg msg_0326_R03_00005
+	PlayCry SPECIES_DEOXYS, 0
+	NPCMsg msg_0326_R03_00005
 _02D5:
-	wait_button_or_walk_away
-	wait_cry
-	closemsg
-	releaseall
-	end
+	WaitButton
+	WaitCry
+	CloseMsg
+	ReleaseAll
+	End
 
 _02DF:
-	npc_msg msg_0326_R03_00001
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0326_R03_00001
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_R03_000:
-	scrcmd_055 2, 0
-	scrcmd_057 3
-	scrcmd_058
-	trainer_tips msg_0326_R03_00000, VAR_SPECIAL_RESULT
-	callstd std_signpost
-	end
+	ScrCmd_055 2, 0
+	ScrCmd_057 3
+	ScrCmd_058
+	TrainerTips msg_0326_R03_00000, VAR_SPECIAL_RESULT
+	CallStd std_signpost
+	End
 	.balign 4, 0

@@ -1,5 +1,5 @@
-#ifndef POKEDIAMOND_POKEMON_H
-#define POKEDIAMOND_POKEMON_H
+#ifndef POKEHEARTGOLD_POKEMON_H
+#define POKEHEARTGOLD_POKEMON_H
 
 #include "pokemon_types_def.h"
 #include "sprite_system.h"
@@ -45,7 +45,7 @@ void CreateBoxMon(BoxPokemon *boxMon, int species, int level, int fixedIV, int h
 void CreateMonWithNature(Pokemon *mon, u16 species, u8 level, u8 fixedIv, u8 nature);
 void CreateMonWithGenderNatureLetter(Pokemon *mon, u16 species, u8 level, u8 fixedIv, u8 gender, u8 nature, u8 letter);
 u32 GenPersonalityByGenderAndNature(u16 species, u8 gender, u8 nature);
-void CreateMonWithFixedIVs(Pokemon *mon, int species, int level, int ivs, int personality);
+void CreateMonWithFixedIVs(Pokemon *mon, u16 species, u8 level, u32 ivs, u32 personality);
 void CalcMonLevelAndStats(Pokemon *mon);
 void CalcMonStats(Pokemon *mon);
 u32 GetMonData(Pokemon *mon, int attr, void *ptr);
@@ -176,7 +176,7 @@ void sub_020720FC(Pokemon *mon, PlayerProfile *a1, u32 pokeball, u32 a3, u32 enc
 void sub_0207213C(BoxPokemon *boxMon, PlayerProfile *playerProfile, u32 pokeball, u32 a3, u32 encounterType, enum HeapID heapID);
 void sub_0207217C(Pokemon *mon, PlayerProfile *a1, u32 pokeball, u32 a3, u32 encounterType, enum HeapID heapID);
 void sub_02072190(BoxPokemon *boxMon, PlayerProfile *a1, u32 pokeball, u32 a3, u32 encounterType, enum HeapID heapID);
-void WildMonSetRandomHeldItem(Pokemon *mon, u32 a1, u32 a2);
+void WildMonSetRandomHeldItem(Pokemon *mon, u32 battleType, u32 isCompoundEyes);
 BOOL GetMonTMHMCompat(Pokemon *mon, u8 tmhm);
 BOOL GetBoxMonTMHMCompat(BoxPokemon *boxMon, u8 tmhm);
 BOOL GetTMHMCompatBySpeciesAndForm(u16 species, u32 form, u8 tmhm);
@@ -209,4 +209,4 @@ void CalcMonPokeathlonPerformance(Pokemon *mon, struct PokeathlonTodayPerformanc
 void CalcBoxmonPokeathlonStars(struct PokeathlonPerformanceStars *dest, BoxPokemon *boxMon, const s8 *aprijuice, enum HeapID heapID);
 void CalcMonPokeathlonStars(struct PokeathlonPerformanceStars *dest, Pokemon *mon, const s8 *aprijuice, enum HeapID heapID);
 
-#endif // POKEDIAMOND_POKEMON_H
+#endif // POKEHEARTGOLD_POKEMON_H

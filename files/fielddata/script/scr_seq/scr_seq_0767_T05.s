@@ -5,61 +5,61 @@
 
 	.rodata
 
-	scrdef scr_seq_T05_000
-	scrdef scr_seq_T05_001
-	scrdef scr_seq_T05_002
-	scrdef scr_seq_T05_003
-	scrdef scr_seq_T05_004
-	scrdef scr_seq_T05_005
-	scrdef scr_seq_T05_006
-	scrdef scr_seq_T05_007
-	scrdef_end
+	ScrDef scr_seq_T05_000
+	ScrDef scr_seq_T05_001
+	ScrDef scr_seq_T05_002
+	ScrDef scr_seq_T05_003
+	ScrDef scr_seq_T05_004
+	ScrDef scr_seq_T05_005
+	ScrDef scr_seq_T05_006
+	ScrDef scr_seq_T05_007
+	ScrDefEnd
 
 scr_seq_T05_000:
-	simple_npc_msg msg_0475_T05_00000
-	end
+	SimpleNPCMsg msg_0475_T05_00000
+	End
 
 scr_seq_T05_001:
-	simple_npc_msg msg_0475_T05_00001
-	end
+	SimpleNPCMsg msg_0475_T05_00001
+	End
 
 scr_seq_T05_002:
-	simple_npc_msg msg_0475_T05_00002
-	end
+	SimpleNPCMsg msg_0475_T05_00002
+	End
 
 scr_seq_T05_003:
-	simple_npc_msg msg_0475_T05_00003
-	end
+	SimpleNPCMsg msg_0475_T05_00003
+	End
 
 scr_seq_T05_004:
-	direction_signpost msg_0475_T05_00004, 0, 5, VAR_SPECIAL_RESULT
-	scrcmd_057 3
-	scrcmd_058
-	scrcmd_060 VAR_SPECIAL_RESULT
-	callstd std_signpost
-	end
+	DirectionSignpost msg_0475_T05_00004, 0, 5, VAR_SPECIAL_RESULT
+	ScrCmd_057 3
+	ScrCmd_058
+	ScrCmd_060 VAR_SPECIAL_RESULT
+	CallStd std_signpost
+	End
 
 scr_seq_T05_005:
-	scrcmd_055 2, 0
-	scrcmd_057 3
-	scrcmd_058
-	trainer_tips msg_0475_T05_00005, VAR_SPECIAL_RESULT
-	callstd std_signpost
-	end
+	ScrCmd_055 2, 0
+	ScrCmd_057 3
+	ScrCmd_058
+	TrainerTips msg_0475_T05_00005, VAR_SPECIAL_RESULT
+	CallStd std_signpost
+	End
 
 scr_seq_T05_006:
-	scrcmd_055 2, 0
-	scrcmd_057 3
-	scrcmd_058
-	trainer_tips msg_0475_T05_00006, VAR_SPECIAL_RESULT
-	callstd std_signpost
-	end
+	ScrCmd_055 2, 0
+	ScrCmd_057 3
+	ScrCmd_058
+	TrainerTips msg_0475_T05_00006, VAR_SPECIAL_RESULT
+	CallStd std_signpost
+	End
 
 scr_seq_T05_007:
-	scrcmd_055 2, 0
-	scrcmd_057 3
-	scrcmd_058
-	trainer_tips msg_0475_T05_00007, VAR_SPECIAL_RESULT
-	callstd std_signpost
-	end
+	ScrCmd_055 2, 0
+	ScrCmd_057 3
+	ScrCmd_058
+	TrainerTips msg_0475_T05_00007, VAR_SPECIAL_RESULT
+	CallStd std_signpost
+	End
 	.balign 4, 0

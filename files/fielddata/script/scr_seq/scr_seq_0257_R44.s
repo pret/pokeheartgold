@@ -5,27 +5,27 @@
 
 	.rodata
 
-	scrdef scr_seq_R44_000
-	scrdef scr_seq_R44_001
-	scrdef scr_seq_R44_002
-	scrdef_end
+	ScrDef scr_seq_R44_000
+	ScrDef scr_seq_R44_001
+	ScrDef scr_seq_R44_002
+	ScrDefEnd
 
 scr_seq_R44_000:
-	end
+	End
 
 scr_seq_R44_001:
-	scrcmd_055 2, 0
-	scrcmd_057 3
-	scrcmd_058
-	trainer_tips msg_0404_R44_00000, VAR_SPECIAL_RESULT
-	callstd std_signpost
-	end
+	ScrCmd_055 2, 0
+	ScrCmd_057 3
+	ScrCmd_058
+	TrainerTips msg_0404_R44_00000, VAR_SPECIAL_RESULT
+	CallStd std_signpost
+	End
 
 scr_seq_R44_002:
-	direction_signpost msg_0404_R44_00001, 1, 1, VAR_SPECIAL_RESULT
-	scrcmd_057 3
-	scrcmd_058
-	scrcmd_060 VAR_SPECIAL_RESULT
-	callstd std_signpost
-	end
+	DirectionSignpost msg_0404_R44_00001, 1, 1, VAR_SPECIAL_RESULT
+	ScrCmd_057 3
+	ScrCmd_058
+	ScrCmd_060 VAR_SPECIAL_RESULT
+	CallStd std_signpost
+	End
 	.balign 4, 0

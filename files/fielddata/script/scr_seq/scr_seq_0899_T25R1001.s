@@ -5,74 +5,74 @@
 
 	.rodata
 
-	scrdef scr_seq_T25R1001_000
-	scrdef scr_seq_T25R1001_001
-	scrdef scr_seq_T25R1001_002
-	scrdef scr_seq_T25R1001_003
-	scrdef scr_seq_T25R1001_004
-	scrdef_end
+	ScrDef scr_seq_T25R1001_000
+	ScrDef scr_seq_T25R1001_001
+	ScrDef scr_seq_T25R1001_002
+	ScrDef scr_seq_T25R1001_003
+	ScrDef scr_seq_T25R1001_004
+	ScrDefEnd
 
 scr_seq_T25R1001_000:
-	simple_npc_msg msg_0592_T25R1001_00000
-	end
+	SimpleNPCMsg msg_0592_T25R1001_00000
+	End
 
 scr_seq_T25R1001_001:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	compare VAR_SCENE_ROCKET_TAKEOVER, 3
-	goto_if_ne _0047
-	npc_msg msg_0592_T25R1001_00002
-	goto _004A
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	Compare VAR_SCENE_ROCKET_TAKEOVER, 3
+	GoToIfNe _0047
+	NPCMsg msg_0592_T25R1001_00002
+	GoTo _004A
 
 _0047:
-	npc_msg msg_0592_T25R1001_00001
+	NPCMsg msg_0592_T25R1001_00001
 _004A:
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_T25R1001_002:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	compare VAR_SCENE_ROCKET_TAKEOVER, 3
-	goto_if_ne _0070
-	npc_msg msg_0592_T25R1001_00004
-	goto _0073
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	Compare VAR_SCENE_ROCKET_TAKEOVER, 3
+	GoToIfNe _0070
+	NPCMsg msg_0592_T25R1001_00004
+	GoTo _0073
 
 _0070:
-	npc_msg msg_0592_T25R1001_00003
+	NPCMsg msg_0592_T25R1001_00003
 _0073:
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_T25R1001_003:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	compare VAR_SCENE_ROCKET_TAKEOVER, 3
-	goto_if_ne _0099
-	npc_msg msg_0592_T25R1001_00006
-	goto _009C
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	Compare VAR_SCENE_ROCKET_TAKEOVER, 3
+	GoToIfNe _0099
+	NPCMsg msg_0592_T25R1001_00006
+	GoTo _009C
 
 _0099:
-	npc_msg msg_0592_T25R1001_00005
+	NPCMsg msg_0592_T25R1001_00005
 _009C:
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_T25R1001_004:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	npc_msg msg_0592_T25R1001_00007
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	NPCMsg msg_0592_T25R1001_00007
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 	.balign 4, 0

@@ -5,42 +5,42 @@
 
 	.rodata
 
-	scrdef scr_seq_T20R0202_000
-	scrdef scr_seq_T20R0202_001
-	scrdef_end
+	ScrDef scr_seq_T20R0202_000
+	ScrDef scr_seq_T20R0202_001
+	ScrDefEnd
 
 scr_seq_T20R0202_000:
-	scrcmd_609
-	lockall
-	play_se SEQ_SE_DP_PC_ON
-	buffer_players_name 0
-	npc_msg msg_0546_T20R0202_00000
-	closemsg
-	scrcmd_377 VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _004B
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	scrcmd_376
-	restore_overworld
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
-	releaseall
-	end
+	ScrCmd_609
+	LockAll
+	PlaySE SEQ_SE_DP_PC_ON
+	BufferPlayersName 0
+	NPCMsg msg_0546_T20R0202_00000
+	CloseMsg
+	ScrCmd_377 VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _004B
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	ScrCmd_376
+	RestoreOverworld
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
+	ReleaseAll
+	End
 
 _004B:
-	npc_msg msg_0546_T20R0202_00001
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0546_T20R0202_00001
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_T20R0202_001:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	npc_msg msg_0546_T20R0202_00002
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	NPCMsg msg_0546_T20R0202_00002
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 	.balign 4, 0

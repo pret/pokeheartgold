@@ -12,7 +12,7 @@
 .public PaletteData_PushTransparentBuffers
 .public PaletteData_SetAutoTransparent
 .public PaletteData_FillPaletteInBuffer
-.public sub_02004AC8
+.public Sound_SetFieldBGM
 .public NARC_New
 .public NARC_Delete
 .public GfGfxLoader_LoadCharDataFromOpenNarc
@@ -91,7 +91,7 @@
 .public sub_0203A880
 .public sub_0203A914
 .public sub_02055198
-.public Frontier_GetLaunchParam
+.public Frontier_GetLaunchArgs
 .public sub_02096864
 .public sub_02096868
 .public sub_0209686C

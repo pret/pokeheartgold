@@ -12,5 +12,8 @@ int sub_02037454(void);
 int sub_020378AC(int);
 BOOL sub_02037030(int, void *, int);
 void sub_020376EC(int);
+BOOL sub_020373B4(int);
+int sub_02037824(int);
+BOOL sub_02037880(void);
 
 #endif // POKEHEARTGOLD_UNK_02035900_H

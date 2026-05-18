@@ -22,6 +22,7 @@
 #include "save.h"
 #include "save_arrays.h"
 #include "save_data_read_error.h"
+#include "sound.h"
 #include "sound_02004A44.h"
 #include "sprite.h"
 #include "system.h"
@@ -1381,7 +1382,7 @@ BOOL MainMenuApp_Init(OverlayManager *manager, int *state) {
         data->dontHaveSavedata = TRUE;
     }
     sub_02005AF8(0);
-    sub_02004AD8(0);
+    Sound_SetScene(SOUND_SCENE_NONE);
 
     return TRUE;
 }

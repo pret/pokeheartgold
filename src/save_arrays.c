@@ -9,6 +9,7 @@
 #include "game_stats.h"
 #include "hall_of_fame.h"
 #include "mystery_gift.h"
+#include "palPark_migration.h"
 #include "photo_album.h"
 #include "pokedex.h"
 #include "pokemon_storage_system.h"
@@ -31,7 +32,6 @@
 #include "save_vars_flags.h"
 #include "save_wifi_history.h"
 #include "unk_0202E41C.h"
-#include "unk_0202EB30.h"
 #include "unk_02030A98.h"
 
 // These macros are temporary. As the respective sources
@@ -48,11 +48,10 @@ DECL_CHUNK(Save_Frontier)
 DECL_CHUNK_EX(sub_0202DB40, sub_0202DB44)
 DECL_CHUNK_EX(sub_0202E41C, sub_0202E424)
 DECL_CHUNK_EX(sub_0202C034, sub_0202C03C)
-DECL_CHUNK_EX(sub_0202EB30, sub_0202EB38)
-DECL_CHUNK_EX(sub_02031AF0, sub_02031AF4)
+DECL_CHUNK_EX(PokeathlonSave_FriendshipRecords_sizeof, PokeathlonSave_FriendshipRecords_Init)
 DECL_CHUNK_EX(sub_0203170C, sub_02031710)
 DECL_CHUNK_EX(sub_020318C8, sub_020318CC)
-DECL_CHUNK(Save_Pokeathlon)
+DECL_CHUNK(PokeathlonSave)
 DECL_CHUNK(Save_ApricornBox)
 
 const struct SaveChunkHeader gSaveChunkHeaders[] = {
@@ -227,14 +226,14 @@ const struct SaveChunkHeader gSaveChunkHeaders[] = {
     {
      SAVE_UNK_28,
      0,
-     (SAVESIZEFN)sub_0202EB30,
-     (SAVEINITFN)sub_0202EB38,
+     (SAVESIZEFN)MigratedPokemon_GetSize,
+     (SAVEINITFN)MigratedPokemon_Init,
      },
     {
      SAVE_POKEATHLON_FRIENDSHIP_RECORDS,
      0,
-     (SAVESIZEFN)sub_02031AF0,
-     (SAVEINITFN)sub_02031AF4,
+     (SAVESIZEFN)PokeathlonSave_FriendshipRecords_sizeof,
+     (SAVEINITFN)PokeathlonSave_FriendshipRecords_Init,
      },
     {
      SAVE_EASY_CHAT,
@@ -281,8 +280,8 @@ const struct SaveChunkHeader gSaveChunkHeaders[] = {
     {
      SAVE_POKEATHLON,
      0,
-     (SAVESIZEFN)Save_Pokeathlon_sizeof,
-     (SAVEINITFN)Save_Pokeathlon_Init,
+     (SAVESIZEFN)PokeathlonSave_sizeof,
+     (SAVEINITFN)PokeathlonSave_Init,
      },
     {
      SAVE_APRICORN_BOX,

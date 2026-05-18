@@ -5,453 +5,453 @@
 
 	.rodata
 
-	scrdef scr_seq_D35R0104_000
-	scrdef scr_seq_D35R0104_001
-	scrdef scr_seq_D35R0104_002
-	scrdef scr_seq_D35R0104_003
-	scrdef scr_seq_D35R0104_004
-	scrdef scr_seq_D35R0104_005
-	scrdef scr_seq_D35R0104_006
-	scrdef scr_seq_D35R0104_007
-	scrdef scr_seq_D35R0104_008
-	scrdef_end
+	ScrDef scr_seq_D35R0104_000
+	ScrDef scr_seq_D35R0104_001
+	ScrDef scr_seq_D35R0104_002
+	ScrDef scr_seq_D35R0104_003
+	ScrDef scr_seq_D35R0104_004
+	ScrDef scr_seq_D35R0104_005
+	ScrDef scr_seq_D35R0104_006
+	ScrDef scr_seq_D35R0104_007
+	ScrDef scr_seq_D35R0104_008
+	ScrDefEnd
 
 scr_seq_D35R0104_006:
-	goto_if_not_defeated TRAINER_TEAM_ROCKET_F_GRUNT_5, _004F
-	goto_if_not_defeated TRAINER_TEAM_ROCKET_GRUNT_19, _004F
-	compare VAR_UNK_40AC, 3
-	goto_if_ge _004F
-	setvar VAR_UNK_40AC, 2
+	GoToIfNotDefeated TRAINER_TEAM_ROCKET_F_GRUNT_5, _004F
+	GoToIfNotDefeated TRAINER_TEAM_ROCKET_GRUNT_19, _004F
+	Compare VAR_UNK_40AC, 3
+	GoToIfGe _004F
+	SetVar VAR_UNK_40AC, 2
 _004F:
-	end
+	End
 
 scr_seq_D35R0104_008:
-	compare VAR_UNK_40AC, 4
-	goto_if_ge _0060
-	end
+	Compare VAR_UNK_40AC, 4
+	GoToIfGe _0060
+	End
 
 _0060:
-	move_person_facing obj_D35R0104_babyboy1_9, 22, 0, 15, DIR_NORTH
-	move_person_facing obj_D35R0104_babyboy1_9_2, 22, 0, 15, DIR_NORTH
-	end
+	MovePersonFacing obj_D35R0104_babyboy1_9, 22, 0, 15, DIR_NORTH
+	MovePersonFacing obj_D35R0104_babyboy1_9_2, 22, 0, 15, DIR_NORTH
+	End
 
 scr_seq_D35R0104_001:
-	scrcmd_609
-	lockall
-	toggle_following_pokemon_movement 0
-	wait_following_pokemon_movement
-	following_pokemon_movement 55
-	apply_movement obj_player, _00EC
-	wait_movement
-	wait_following_pokemon_movement
-	toggle_following_pokemon_movement 1
-	following_pokemon_movement 48
-	apply_movement obj_D35R0104_wataru, _00F4
-	wait_movement
-	apply_movement obj_D35R0104_wataru, _00FC
-	apply_movement obj_D35R0104_tsure_poke_static_dragonite, _010C
-	wait_movement
-	buffer_players_name 0
-	gender_msgbox msg_0114_D35R0104_00000, msg_0114_D35R0104_00001
-	closemsg
-	apply_movement obj_D35R0104_wataru, _0124
-	apply_movement obj_D35R0104_tsure_poke_static_dragonite, _012C
-	wait_movement
-	hide_person obj_D35R0104_wataru
-	hide_person obj_D35R0104_tsure_poke_static_dragonite
-	setflag FLAG_HIDE_ROCKET_HIDEOUT_B3F_LANCE
-	releaseall
-	setvar VAR_UNK_40AC, 1
-	end
+	ScrCmd_609
+	LockAll
+	ToggleFollowingPokemonMovement 0
+	WaitFollowingPokemonMovement
+	FollowingPokemonMovement 55
+	ApplyMovement obj_player, _00EC
+	WaitMovement
+	WaitFollowingPokemonMovement
+	ToggleFollowingPokemonMovement 1
+	FollowingPokemonMovement 48
+	ApplyMovement obj_D35R0104_wataru, _00F4
+	WaitMovement
+	ApplyMovement obj_D35R0104_wataru, _00FC
+	ApplyMovement obj_D35R0104_tsure_poke_static_dragonite, _010C
+	WaitMovement
+	BufferPlayersName 0
+	GenderMsgBox msg_0114_D35R0104_00000, msg_0114_D35R0104_00001
+	CloseMsg
+	ApplyMovement obj_D35R0104_wataru, _0124
+	ApplyMovement obj_D35R0104_tsure_poke_static_dragonite, _012C
+	WaitMovement
+	HidePerson obj_D35R0104_wataru
+	HidePerson obj_D35R0104_tsure_poke_static_dragonite
+	SetFlag FLAG_HIDE_ROCKET_HIDEOUT_B3F_LANCE
+	ReleaseAll
+	SetVar VAR_UNK_40AC, 1
+	End
 
 	.balign 4, 0
 _00EC:
-	step 14, 1
-	step_end
+	WalkNormalWest
+	EndMovement
 
 	.balign 4, 0
 _00F4:
-	step 75, 1
-	step_end
+	EmoteExclamationMark
+	EndMovement
 
 	.balign 4, 0
 _00FC:
-	step 33, 1
-	step 13, 3
-	step 15, 3
-	step_end
+	WalkOnSpotNormalSouth
+	WalkNormalSouth 3
+	WalkNormalEast 3
+	EndMovement
 
 	.balign 4, 0
 _010C:
-	step 63, 1
-	step 61, 1
-	step 14, 1
-	step 13, 3
-	step 15, 2
-	step_end
+	Delay8
+	Delay2
+	WalkNormalWest
+	WalkNormalSouth 3
+	WalkNormalEast 2
+	EndMovement
 
 	.balign 4, 0
 _0124:
-	step 14, 9
-	step_end
+	WalkNormalWest 9
+	EndMovement
 
 	.balign 4, 0
 _012C:
-	step 61, 1
-	step 15, 1
-	step 14, 9
-	step_end
+	Delay2
+	WalkNormalEast
+	WalkNormalWest 9
+	EndMovement
 
 scr_seq_D35R0104_007:
-	scrcmd_609
-	lockall
-	apply_movement obj_D35R0104_tsure_poke_static_murkrow_2, _018C
-	wait_movement
-	npc_msg msg_0114_D35R0104_00010
-	closemsg
-	toggle_following_pokemon_movement 0
-	wait_following_pokemon_movement
-	following_pokemon_movement 55
-	apply_movement obj_D35R0104_tsure_poke_static_murkrow_2, _0194
-	apply_movement obj_player, _01A4
-	wait_movement
-	wait_following_pokemon_movement
-	toggle_following_pokemon_movement 1
-	following_pokemon_movement 48
-	setvar VAR_UNK_40AC, 6
-	hide_person obj_D35R0104_tsure_poke_static_murkrow_2
-	setflag FLAG_HIDE_ROCKET_HIDEOUT_B3F_MURKROW_2
-	clearflag FLAG_HIDE_ROCKET_HIDEOUT_B2F_MURKROW_2
-	releaseall
-	end
+	ScrCmd_609
+	LockAll
+	ApplyMovement obj_D35R0104_tsure_poke_static_murkrow_2, _018C
+	WaitMovement
+	NPCMsg msg_0114_D35R0104_00010
+	CloseMsg
+	ToggleFollowingPokemonMovement 0
+	WaitFollowingPokemonMovement
+	FollowingPokemonMovement 55
+	ApplyMovement obj_D35R0104_tsure_poke_static_murkrow_2, _0194
+	ApplyMovement obj_player, _01A4
+	WaitMovement
+	WaitFollowingPokemonMovement
+	ToggleFollowingPokemonMovement 1
+	FollowingPokemonMovement 48
+	SetVar VAR_UNK_40AC, 6
+	HidePerson obj_D35R0104_tsure_poke_static_murkrow_2
+	SetFlag FLAG_HIDE_ROCKET_HIDEOUT_B3F_MURKROW_2
+	ClearFlag FLAG_HIDE_ROCKET_HIDEOUT_B2F_MURKROW_2
+	ReleaseAll
+	End
 
 	.balign 4, 0
 _018C:
-	step 51, 2
-	step_end
+	JumpOnSpotFastEast 2
+	EndMovement
 
 	.balign 4, 0
 _0194:
-	step 1, 1
-	step 49, 1
-	step 17, 10
-	step_end
+	FaceSouth
+	JumpOnSpotFastSouth
+	WalkFastSouth 10
+	EndMovement
 
 	.balign 4, 0
 _01A4:
-	step 63, 1
-	step 33, 1
-	step_end
+	Delay8
+	WalkOnSpotNormalSouth
+	EndMovement
 
 scr_seq_D35R0104_000:
-	simple_npc_msg msg_0114_D35R0104_00002
-	end
+	SimpleNPCMsg msg_0114_D35R0104_00002
+	End
 
 scr_seq_D35R0104_002:
-	scrcmd_609
-	lockall
-	apply_movement obj_player, _00F4
-	wait_movement
-	callstd std_play_rival_intro_music
-	clearflag FLAG_HIDE_ROCKET_HIDEOUT_B3F_RIVAL
-	show_person obj_D35R0104_gsrivel
-	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
-	compare VAR_TEMP_x4001, 17
-	goto_if_ne _01FE
-	apply_movement obj_D35R0104_gsrivel, _0290
-	goto _0221
+	ScrCmd_609
+	LockAll
+	ApplyMovement obj_player, _00F4
+	WaitMovement
+	CallStd std_play_rival_intro_music
+	ClearFlag FLAG_HIDE_ROCKET_HIDEOUT_B3F_RIVAL
+	ShowPerson obj_D35R0104_gsrivel
+	GetPlayerCoords VAR_TEMP_x4000, VAR_TEMP_x4001
+	Compare VAR_TEMP_x4001, 17
+	GoToIfNe _01FE
+	ApplyMovement obj_D35R0104_gsrivel, _0290
+	GoTo _0221
 
 _01FE:
-	compare VAR_TEMP_x4001, 18
-	goto_if_ne _0219
-	apply_movement obj_D35R0104_gsrivel, _029C
-	goto _0221
+	Compare VAR_TEMP_x4001, 18
+	GoToIfNe _0219
+	ApplyMovement obj_D35R0104_gsrivel, _029C
+	GoTo _0221
 
 _0219:
-	apply_movement obj_D35R0104_gsrivel, _02A8
+	ApplyMovement obj_D35R0104_gsrivel, _02A8
 _0221:
-	toggle_following_pokemon_movement 0
-	wait_following_pokemon_movement
-	following_pokemon_movement 55
-	apply_movement obj_player, _02B4
-	wait_movement
-	wait_following_pokemon_movement
-	toggle_following_pokemon_movement 1
-	following_pokemon_movement 48
-	buffer_rivals_name 0
-	npc_msg msg_0114_D35R0104_00003
-	closemsg
-	toggle_following_pokemon_movement 0
-	wait_following_pokemon_movement
-	following_pokemon_movement 56
-	apply_movement obj_D35R0104_gsrivel, _02BC
-	apply_movement obj_player, _02C4
-	wait_movement
-	wait_following_pokemon_movement
-	toggle_following_pokemon_movement 1
-	following_pokemon_movement 48
-	apply_movement obj_D35R0104_gsrivel, _02D8
-	wait_movement
-	callstd std_fade_end_rival_intro_music
-	hide_person obj_D35R0104_gsrivel
-	setflag FLAG_HIDE_ROCKET_HIDEOUT_B3F_RIVAL
-	releaseall
-	setvar VAR_UNK_40AC, 3
-	end
+	ToggleFollowingPokemonMovement 0
+	WaitFollowingPokemonMovement
+	FollowingPokemonMovement 55
+	ApplyMovement obj_player, _02B4
+	WaitMovement
+	WaitFollowingPokemonMovement
+	ToggleFollowingPokemonMovement 1
+	FollowingPokemonMovement 48
+	BufferRivalsName 0
+	NPCMsg msg_0114_D35R0104_00003
+	CloseMsg
+	ToggleFollowingPokemonMovement 0
+	WaitFollowingPokemonMovement
+	FollowingPokemonMovement 56
+	ApplyMovement obj_D35R0104_gsrivel, _02BC
+	ApplyMovement obj_player, _02C4
+	WaitMovement
+	WaitFollowingPokemonMovement
+	ToggleFollowingPokemonMovement 1
+	FollowingPokemonMovement 48
+	ApplyMovement obj_D35R0104_gsrivel, _02D8
+	WaitMovement
+	CallStd std_fade_end_rival_intro_music
+	HidePerson obj_D35R0104_gsrivel
+	SetFlag FLAG_HIDE_ROCKET_HIDEOUT_B3F_RIVAL
+	ReleaseAll
+	SetVar VAR_UNK_40AC, 3
+	End
 
 	.balign 4, 0
 _0290:
-	step 13, 9
-	step 15, 2
-	step_end
+	WalkNormalSouth 9
+	WalkNormalEast 2
+	EndMovement
 
 	.balign 4, 0
 _029C:
-	step 13, 10
-	step 15, 2
-	step_end
+	WalkNormalSouth 10
+	WalkNormalEast 2
+	EndMovement
 
 	.balign 4, 0
 _02A8:
-	step 13, 11
-	step 15, 2
-	step_end
+	WalkNormalSouth 11
+	WalkNormalEast 2
+	EndMovement
 
 	.balign 4, 0
 _02B4:
-	step 14, 2
-	step_end
+	WalkNormalWest 2
+	EndMovement
 
 	.balign 4, 0
 _02BC:
-	step 19, 1
-	step_end
+	WalkFastEast
+	EndMovement
 
 	.balign 4, 0
 _02C4:
-	step 71, 1
-	step 19, 1
-	step 55, 1
-	step 72, 1
-	step_end
+	LockDir
+	WalkFastEast
+	JumpNearFastEast
+	UnlockDir
+	EndMovement
 
 	.balign 4, 0
 _02D8:
-	step 40, 1
-	step 42, 1
-	step 63, 1
-	step 14, 2
-	step 12, 9
-	step_end
+	WalkOnSpotFasterNorth
+	WalkOnSpotFasterWest
+	Delay8
+	WalkNormalWest 2
+	WalkNormalNorth 9
+	EndMovement
 
 scr_seq_D35R0104_003:
-	scrcmd_609
-	lockall
-	apply_movement obj_player, _00F4
-	wait_movement
-	toggle_following_pokemon_movement 0
-	wait_following_pokemon_movement
-	following_pokemon_movement 55
-	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
-	compare VAR_TEMP_x4000, 23
-	goto_if_ne _0329
-	apply_movement obj_player, _040C
-	goto _0331
+	ScrCmd_609
+	LockAll
+	ApplyMovement obj_player, _00F4
+	WaitMovement
+	ToggleFollowingPokemonMovement 0
+	WaitFollowingPokemonMovement
+	FollowingPokemonMovement 55
+	GetPlayerCoords VAR_TEMP_x4000, VAR_TEMP_x4001
+	Compare VAR_TEMP_x4000, 23
+	GoToIfNe _0329
+	ApplyMovement obj_player, _040C
+	GoTo _0331
 
 _0329:
-	apply_movement obj_player, _041C
+	ApplyMovement obj_player, _041C
 _0331:
-	apply_movement obj_D35R0104_sakaki, _0440
-	wait_movement
-	wait_following_pokemon_movement
-	toggle_following_pokemon_movement 1
-	following_pokemon_movement 48
-	buffer_players_name 0
-	npc_msg msg_0114_D35R0104_00004
-	closemsg
-	apply_movement obj_D35R0104_sakaki, _044C
-	wait_movement
-	npc_msg msg_0114_D35R0104_00005
-	closemsg
-	apply_movement obj_D35R0104_sakaki, _0458
-	wait_movement
-	clearflag FLAG_HIDE_ROCKET_HIDEOUT_B3F_PETREL
-	show_person obj_D35R0104_rkanbum2
-	setflag FLAG_HIDE_ROCKET_HIDEOUT_B3F_GIOVANNI
-	hide_person obj_D35R0104_sakaki
-	apply_movement obj_D35R0104_rkanbum2, _047C
-	wait_movement
-	npc_msg msg_0114_D35R0104_00006
-	closemsg
-	trainer_battle TRAINER_EXECUTIVE_PETREL_PETREL_2, 0, 0, 0
-	check_battle_won VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0405
-	npc_msg msg_0114_D35R0104_00007
-	closemsg
-	apply_movement obj_D35R0104_rkanbum2, _04A8
-	wait_movement
-	hide_person obj_D35R0104_rkanbum2
-	setflag FLAG_HIDE_ROCKET_HIDEOUT_B3F_PETREL
-	apply_movement obj_D35R0104_tsure_poke_static_murkrow, _04E4
-	wait_movement
-	npc_msg msg_0114_D35R0104_00008
-	closemsg
-	npc_msg msg_0114_D35R0104_00009
-	closemsg
-	toggle_following_pokemon_movement 0
-	wait_following_pokemon_movement
-	following_pokemon_movement 55
-	apply_movement obj_D35R0104_tsure_poke_static_murkrow, _04F4
-	apply_movement obj_player, _042C
-	wait_movement
-	wait_following_pokemon_movement
-	toggle_following_pokemon_movement 1
-	following_pokemon_movement 48
-	setvar VAR_UNK_40AC, 4
-	hide_person obj_D35R0104_tsure_poke_static_murkrow
-	setflag FLAG_HIDE_ROCKET_HIDEOUT_B3F_MURKROW_1
-	clearflag FLAG_HIDE_ROCKET_HIDEOUT_B2F_MURKROW_1
-	releaseall
-	end
+	ApplyMovement obj_D35R0104_sakaki, _0440
+	WaitMovement
+	WaitFollowingPokemonMovement
+	ToggleFollowingPokemonMovement 1
+	FollowingPokemonMovement 48
+	BufferPlayersName 0
+	NPCMsg msg_0114_D35R0104_00004
+	CloseMsg
+	ApplyMovement obj_D35R0104_sakaki, _044C
+	WaitMovement
+	NPCMsg msg_0114_D35R0104_00005
+	CloseMsg
+	ApplyMovement obj_D35R0104_sakaki, _0458
+	WaitMovement
+	ClearFlag FLAG_HIDE_ROCKET_HIDEOUT_B3F_PETREL
+	ShowPerson obj_D35R0104_rkanbum2
+	SetFlag FLAG_HIDE_ROCKET_HIDEOUT_B3F_GIOVANNI
+	HidePerson obj_D35R0104_sakaki
+	ApplyMovement obj_D35R0104_rkanbum2, _047C
+	WaitMovement
+	NPCMsg msg_0114_D35R0104_00006
+	CloseMsg
+	TrainerBattle TRAINER_EXECUTIVE_PETREL_PETREL_2, 0, 0, 0
+	CheckBattleWon VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0405
+	NPCMsg msg_0114_D35R0104_00007
+	CloseMsg
+	ApplyMovement obj_D35R0104_rkanbum2, _04A8
+	WaitMovement
+	HidePerson obj_D35R0104_rkanbum2
+	SetFlag FLAG_HIDE_ROCKET_HIDEOUT_B3F_PETREL
+	ApplyMovement obj_D35R0104_tsure_poke_static_murkrow, _04E4
+	WaitMovement
+	NPCMsg msg_0114_D35R0104_00008
+	CloseMsg
+	NPCMsg msg_0114_D35R0104_00009
+	CloseMsg
+	ToggleFollowingPokemonMovement 0
+	WaitFollowingPokemonMovement
+	FollowingPokemonMovement 55
+	ApplyMovement obj_D35R0104_tsure_poke_static_murkrow, _04F4
+	ApplyMovement obj_player, _042C
+	WaitMovement
+	WaitFollowingPokemonMovement
+	ToggleFollowingPokemonMovement 1
+	FollowingPokemonMovement 48
+	SetVar VAR_UNK_40AC, 4
+	HidePerson obj_D35R0104_tsure_poke_static_murkrow
+	SetFlag FLAG_HIDE_ROCKET_HIDEOUT_B3F_MURKROW_1
+	ClearFlag FLAG_HIDE_ROCKET_HIDEOUT_B2F_MURKROW_1
+	ReleaseAll
+	End
 
 _0405:
-	white_out
-	releaseall
-	end
+	WhiteOut
+	ReleaseAll
+	End
 
 	.balign 4, 0
 _040C:
-	step 12, 5
-	step 14, 1
-	step 34, 1
-	step_end
+	WalkNormalNorth 5
+	WalkNormalWest
+	WalkOnSpotNormalWest
+	EndMovement
 
 	.balign 4, 0
 _041C:
-	step 12, 5
-	step 14, 2
-	step 34, 1
-	step_end
+	WalkNormalNorth 5
+	WalkNormalWest 2
+	WalkOnSpotNormalWest
+	EndMovement
 
 	.balign 4, 0
 _042C:
-	step 63, 3
-	step 1, 1
-	step 63, 3
-	step 13, 3
-	step_end
+	Delay8 3
+	FaceSouth
+	Delay8 3
+	WalkNormalSouth 3
+	EndMovement
 
 	.balign 4, 0
 _0440:
-	step 63, 4
-	step 35, 1
-	step_end
+	Delay8 4
+	WalkOnSpotNormalEast
+	EndMovement
 
 	.balign 4, 0
 _044C:
-	step 75, 1
-	step 63, 2
-	step_end
+	EmoteExclamationMark
+	Delay8 2
+	EndMovement
 
 	.balign 4, 0
 _0458:
-	step 1, 1
-	step 2, 1
-	step 0, 1
-	step 3, 1
-	step 1, 1
-	step 2, 1
-	step 0, 1
-	step 3, 1
-	step_end
+	FaceSouth
+	FaceWest
+	FaceNorth
+	FaceEast
+	FaceSouth
+	FaceWest
+	FaceNorth
+	FaceEast
+	EndMovement
 
 	.balign 4, 0
 _047C:
-	step 1, 1
-	step 2, 1
-	step 0, 1
-	step 3, 1
-	step 1, 1
-	step 2, 1
-	step 0, 1
-	step 3, 1
-	step_end
+	FaceSouth
+	FaceWest
+	FaceNorth
+	FaceEast
+	FaceSouth
+	FaceWest
+	FaceNorth
+	FaceEast
+	EndMovement
 
 	.balign 4, 0
 _04A0:
-	step 15, 1
-	step_end
+	WalkNormalEast
+	EndMovement
 
 	.balign 4, 0
 _04A8:
-	step 71, 1
-	step 10, 1
-	step 72, 1
-	step 63, 1
-	step 17, 5
-	step 71, 1
-	step 52, 1
-	step 72, 1
-	step 17, 1
-	step 19, 3
-	step 17, 5
-	step 18, 7
-	step 16, 12
-	step 18, 4
-	step_end
+	LockDir
+	WalkSlowWest
+	UnlockDir
+	Delay8
+	WalkFastSouth 5
+	LockDir
+	JumpNearFastNorth
+	UnlockDir
+	WalkFastSouth
+	WalkFastEast 3
+	WalkFastSouth 5
+	WalkFastWest 7
+	WalkFastNorth 12
+	WalkFastWest 4
+	EndMovement
 
 	.balign 4, 0
 _04E4:
-	step 13, 3
-	step 15, 2
-	step 51, 2
-	step_end
+	WalkNormalSouth 3
+	WalkNormalEast 2
+	JumpOnSpotFastEast 2
+	EndMovement
 
 	.balign 4, 0
 _04F4:
-	step 1, 1
-	step 17, 1
-	step 19, 2
-	step 17, 9
-	step 18, 7
-	step 16, 13
-	step 18, 5
-	step_end
+	FaceSouth
+	WalkFastSouth
+	WalkFastEast 2
+	WalkFastSouth 9
+	WalkFastWest 7
+	WalkFastNorth 13
+	WalkFastWest 5
+	EndMovement
 
 scr_seq_D35R0104_004:
-	compare VAR_UNK_40AC, 4
-	goto_if_ge _055F
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	goto_if_not_defeated TRAINER_TEAM_ROCKET_F_GRUNT_5, _0561
-	goto_if_not_defeated TRAINER_TEAM_ROCKET_GRUNT_19, _0561
-	buffer_players_name 0
-	npc_msg msg_0114_D35R0104_00012
-	closemsg
-	play_se SEQ_SE_DP_DOOR10
-	apply_movement obj_D35R0104_babyboy1_9, _056C
-	apply_movement obj_D35R0104_babyboy1_9_2, _056C
-	wait_movement
-	releaseall
+	Compare VAR_UNK_40AC, 4
+	GoToIfGe _055F
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	GoToIfNotDefeated TRAINER_TEAM_ROCKET_F_GRUNT_5, _0561
+	GoToIfNotDefeated TRAINER_TEAM_ROCKET_GRUNT_19, _0561
+	BufferPlayersName 0
+	NPCMsg msg_0114_D35R0104_00012
+	CloseMsg
+	PlaySE SEQ_SE_DP_DOOR10
+	ApplyMovement obj_D35R0104_babyboy1_9, _056C
+	ApplyMovement obj_D35R0104_babyboy1_9_2, _056C
+	WaitMovement
+	ReleaseAll
 _055F:
-	end
+	End
 
 _0561:
-	npc_msg msg_0114_D35R0104_00011
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0114_D35R0104_00011
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 	.balign 4, 0
 _056C:
-	step 14, 3
-	step_end
+	WalkNormalWest 3
+	EndMovement
 
 scr_seq_D35R0104_005:
-	simple_npc_msg msg_0114_D35R0104_00008
-	setflag FLAG_UNK_0D3
-	end
+	SimpleNPCMsg msg_0114_D35R0104_00008
+	SetFlag FLAG_UNK_0D3
+	End
 	.balign 4, 0

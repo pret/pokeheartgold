@@ -5,20 +5,20 @@
 
 	.rodata
 
-	scrdef scr_seq_T24R0701_000
-	scrdef scr_seq_T24R0701_001
-	scrdef scr_seq_T24R0701_002
-	scrdef_end
+	ScrDef scr_seq_T24R0701_000
+	ScrDef scr_seq_T24R0701_001
+	ScrDef scr_seq_T24R0701_002
+	ScrDefEnd
 
 scr_seq_T24R0701_000:
-	simple_npc_msg msg_0579_T24R0701_00000
-	end
+	SimpleNPCMsg msg_0579_T24R0701_00000
+	End
 
 scr_seq_T24R0701_001:
-	simple_npc_msg msg_0579_T24R0701_00001
-	end
+	SimpleNPCMsg msg_0579_T24R0701_00001
+	End
 
 scr_seq_T24R0701_002:
-	simple_npc_msg msg_0579_T24R0701_00002
-	end
+	SimpleNPCMsg msg_0579_T24R0701_00002
+	End
 	.balign 4, 0

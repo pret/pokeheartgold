@@ -1,6 +1,7 @@
 #ifndef POKEHEARTGOLD_CONSTANTS_SNDSEQ_H
 #define POKEHEARTGOLD_CONSTANTS_SNDSEQ_H
 
+#define SEQ_NONE                      0
 #define SEQ_PV001                     1
 #define SEQ_PV                        2
 #define SEQ_PV_END                    3

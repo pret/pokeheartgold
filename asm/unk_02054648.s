@@ -305,7 +305,7 @@ sub_02054824: ; 0x02054824
 	mul r0, r2
 	add r0, r1, r0
 	ldr r1, [r6, #0x5c]
-	bl sub_02054550
+	bl TerrainAttributes_Get
 	lsr r2, r5, #0x1f
 	lsl r1, r5, #0x1b
 	sub r1, r1, r2

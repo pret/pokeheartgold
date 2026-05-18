@@ -5,188 +5,188 @@
 
 	.rodata
 
-	scrdef scr_seq_R34R0101_000
-	scrdef scr_seq_R34R0101_001
-	scrdef_end
+	ScrDef scr_seq_R34R0101_000
+	ScrDef scr_seq_R34R0101_001
+	ScrDefEnd
 
 scr_seq_R34R0101_001:
-	scrcmd_609
-	lockall
-	toggle_following_pokemon_movement 0
-	wait_following_pokemon_movement
-	following_pokemon_movement 55
-	apply_movement obj_R34R0101_var_1, _0140
-	apply_movement obj_R34R0101_tsure_poke_static_marill, _014C
-	apply_movement obj_player, _0158
-	wait_movement
-	wait_following_pokemon_movement
-	toggle_following_pokemon_movement 1
-	following_pokemon_movement 48
-	buffer_players_name 0
-	gender_msgbox msg_0385_R34R0101_00000, msg_0385_R34R0101_00010
-	closemsg
-	gender_msgbox msg_0385_R34R0101_00001, msg_0385_R34R0101_00011
-	closemsg
-	apply_movement obj_R34R0101_var_1, _0138
-	wait_movement
-	gender_msgbox msg_0385_R34R0101_00002, msg_0385_R34R0101_00012
-	closemsg
-	gender_msgbox msg_0385_R34R0101_00003, msg_0385_R34R0101_00013
-	closemsg
-	apply_movement obj_R34R0101_var_1, _0164
-	wait_movement
-	gender_msgbox msg_0385_R34R0101_00004, msg_0385_R34R0101_00014
-	closemsg
-	apply_movement obj_R34R0101_var_1, _016C
-	apply_movement obj_R34R0101_tsure_poke_static_marill, _0184
-	wait_movement
-	gender_msgbox msg_0385_R34R0101_00005, msg_0385_R34R0101_00015
-	closemsg
-	apply_movement obj_R34R0101_var_1, _0198
-	apply_movement obj_R34R0101_tsure_poke_static_marill, _01A8
-	wait_movement
-	apply_movement obj_player, _0190
-	wait_movement
-	gender_msgbox msg_0385_R34R0101_00006, msg_0385_R34R0101_00016
-	closemsg
-	get_player_gender VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_ne _00C6
-	register_gear_number PHONE_CONTACT_LYRA
-	goto _00CA
+	ScrCmd_609
+	LockAll
+	ToggleFollowingPokemonMovement 0
+	WaitFollowingPokemonMovement
+	FollowingPokemonMovement 55
+	ApplyMovement obj_R34R0101_var_1, _0140
+	ApplyMovement obj_R34R0101_tsure_poke_static_marill, _014C
+	ApplyMovement obj_player, _0158
+	WaitMovement
+	WaitFollowingPokemonMovement
+	ToggleFollowingPokemonMovement 1
+	FollowingPokemonMovement 48
+	BufferPlayersName 0
+	GenderMsgBox msg_0385_R34R0101_00000, msg_0385_R34R0101_00010
+	CloseMsg
+	GenderMsgBox msg_0385_R34R0101_00001, msg_0385_R34R0101_00011
+	CloseMsg
+	ApplyMovement obj_R34R0101_var_1, _0138
+	WaitMovement
+	GenderMsgBox msg_0385_R34R0101_00002, msg_0385_R34R0101_00012
+	CloseMsg
+	GenderMsgBox msg_0385_R34R0101_00003, msg_0385_R34R0101_00013
+	CloseMsg
+	ApplyMovement obj_R34R0101_var_1, _0164
+	WaitMovement
+	GenderMsgBox msg_0385_R34R0101_00004, msg_0385_R34R0101_00014
+	CloseMsg
+	ApplyMovement obj_R34R0101_var_1, _016C
+	ApplyMovement obj_R34R0101_tsure_poke_static_marill, _0184
+	WaitMovement
+	GenderMsgBox msg_0385_R34R0101_00005, msg_0385_R34R0101_00015
+	CloseMsg
+	ApplyMovement obj_R34R0101_var_1, _0198
+	ApplyMovement obj_R34R0101_tsure_poke_static_marill, _01A8
+	WaitMovement
+	ApplyMovement obj_player, _0190
+	WaitMovement
+	GenderMsgBox msg_0385_R34R0101_00006, msg_0385_R34R0101_00016
+	CloseMsg
+	GetPlayerGender VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfNe _00C6
+	RegisterGearNumber PHONE_CONTACT_LYRA
+	GoTo _00CA
 
 _00C6:
-	register_gear_number PHONE_CONTACT_ETHAN
+	RegisterGearNumber PHONE_CONTACT_ETHAN
 _00CA:
-	buffer_players_name 0
-	gender_msgbox msg_0385_R34R0101_00007, msg_0385_R34R0101_00017
-	play_fanfare SEQ_ME_POKEGEAR_REGIST
-	wait_fanfare
-	apply_movement obj_R34R0101_var_1, _01BC
-	wait_movement
-	gender_msgbox msg_0385_R34R0101_00008, msg_0385_R34R0101_00018
-	closemsg
-	apply_movement obj_R34R0101_var_1, _01C4
-	apply_movement obj_R34R0101_tsure_poke_static_marill, _01CC
-	wait_movement
-	gender_msgbox msg_0385_R34R0101_00009, msg_0385_R34R0101_00019
-	closemsg
-	apply_movement obj_R34R0101_var_1, _01D4
-	apply_movement obj_R34R0101_tsure_poke_static_marill, _01E8
-	apply_movement obj_player, _0204
-	wait_movement
-	play_se SEQ_SE_DP_KAIDAN2
-	hide_person obj_R34R0101_var_1
-	hide_person obj_R34R0101_tsure_poke_static_marill
-	wait_se SEQ_SE_DP_KAIDAN2
-	setvar VAR_UNK_408E, 2
-	setflag FLAG_UNK_22D
-	releaseall
-	end
+	BufferPlayersName 0
+	GenderMsgBox msg_0385_R34R0101_00007, msg_0385_R34R0101_00017
+	PlayFanfare SEQ_ME_POKEGEAR_REGIST
+	WaitFanfare
+	ApplyMovement obj_R34R0101_var_1, _01BC
+	WaitMovement
+	GenderMsgBox msg_0385_R34R0101_00008, msg_0385_R34R0101_00018
+	CloseMsg
+	ApplyMovement obj_R34R0101_var_1, _01C4
+	ApplyMovement obj_R34R0101_tsure_poke_static_marill, _01CC
+	WaitMovement
+	GenderMsgBox msg_0385_R34R0101_00009, msg_0385_R34R0101_00019
+	CloseMsg
+	ApplyMovement obj_R34R0101_var_1, _01D4
+	ApplyMovement obj_R34R0101_tsure_poke_static_marill, _01E8
+	ApplyMovement obj_player, _0204
+	WaitMovement
+	PlaySE SEQ_SE_DP_KAIDAN2
+	HidePerson obj_R34R0101_var_1
+	HidePerson obj_R34R0101_tsure_poke_static_marill
+	WaitSE SEQ_SE_DP_KAIDAN2
+	SetVar VAR_UNK_408E, 2
+	SetFlag FLAG_UNK_22D
+	ReleaseAll
+	End
 
 	.balign 4, 0
 _0138:
-	step 75, 1
-	step_end
+	EmoteExclamationMark
+	EndMovement
 
 	.balign 4, 0
 _0140:
-	step 63, 1
-	step 12, 3
-	step_end
+	Delay8
+	WalkNormalNorth 3
+	EndMovement
 
 	.balign 4, 0
 _014C:
-	step 16, 3
-	step 48, 2
-	step_end
+	WalkFastNorth 3
+	JumpOnSpotFastNorth 2
+	EndMovement
 
 	.balign 4, 0
 _0158:
-	step 63, 1
-	step 12, 3
-	step_end
+	Delay8
+	WalkNormalNorth 3
+	EndMovement
 
 	.balign 4, 0
 _0164:
-	step 33, 1
-	step_end
+	WalkOnSpotNormalSouth
+	EndMovement
 
 	.balign 4, 0
 _016C:
-	step 14, 1
-	step 13, 3
-	step 63, 1
-	step 75, 1
-	step 32, 1
-	step_end
+	WalkNormalWest
+	WalkNormalSouth 3
+	Delay8
+	EmoteExclamationMark
+	WalkOnSpotNormalNorth
+	EndMovement
 
 	.balign 4, 0
 _0184:
-	step 14, 2
-	step 13, 2
-	step_end
+	WalkNormalWest 2
+	WalkNormalSouth 2
+	EndMovement
 
 	.balign 4, 0
 _0190:
-	step 34, 1
-	step_end
+	WalkOnSpotNormalWest
+	EndMovement
 
 	.balign 4, 0
 _0198:
-	step 63, 1
-	step 12, 1
-	step 35, 1
-	step_end
+	Delay8
+	WalkNormalNorth
+	WalkOnSpotNormalEast
+	EndMovement
 
 	.balign 4, 0
 _01A8:
-	step 35, 1
-	step 71, 1
-	step 54, 1
-	step 72, 1
-	step_end
+	WalkOnSpotNormalEast
+	LockDir
+	JumpNearFastWest
+	UnlockDir
+	EndMovement
 
 	.balign 4, 0
 _01BC:
-	step 35, 1
-	step_end
+	WalkOnSpotNormalEast
+	EndMovement
 
 	.balign 4, 0
 _01C4:
-	step 32, 1
-	step_end
+	WalkOnSpotNormalNorth
+	EndMovement
 
 	.balign 4, 0
 _01CC:
-	step 32, 1
-	step_end
+	WalkOnSpotNormalNorth
+	EndMovement
 
 	.balign 4, 0
 _01D4:
-	step 13, 2
-	step 15, 1
-	step 13, 1
-	step 69, 1
-	step_end
+	WalkNormalSouth 2
+	WalkNormalEast
+	WalkNormalSouth
+	SetInvisible
+	EndMovement
 
 	.balign 4, 0
 _01E8:
-	step 63, 1
-	step 48, 2
-	step 63, 1
-	step 17, 3
-	step 19, 2
-	step 37, 1
-	step_end
+	Delay8
+	JumpOnSpotFastNorth 2
+	Delay8
+	WalkFastSouth 3
+	WalkFastEast 2
+	WalkOnSpotFastSouth
+	EndMovement
 
 	.balign 4, 0
 _0204:
-	step 63, 2
-	step 33, 1
-	step_end
+	Delay8 2
+	WalkOnSpotNormalSouth
+	EndMovement
 
 scr_seq_R34R0101_000:
-	update_day_care_mon_objects
-	end
+	UpdateDaycareMonObjects
+	End
 	.balign 4, 0

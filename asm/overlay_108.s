@@ -4613,7 +4613,7 @@ _021E7DD0:
 	ldrb r1, [r6, #2]
 	add r0, sp, #0x24
 	mov r2, #2
-	bl sub_02097268
+	bl GetSafariObjectConfig
 	ldrb r1, [r7, #2]
 	cmp r1, #0
 	bne _021E7DE8

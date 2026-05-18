@@ -5,41 +5,41 @@
 
 	.rodata
 
-	scrdef scr_seq_T04R0301_000
-	scrdef scr_seq_T04R0301_001
-	scrdef scr_seq_T04R0301_002
-	scrdef scr_seq_T04R0301_003
-	scrdef_end
+	ScrDef scr_seq_T04R0301_000
+	ScrDef scr_seq_T04R0301_001
+	ScrDef scr_seq_T04R0301_002
+	ScrDef scr_seq_T04R0301_003
+	ScrDefEnd
 
 scr_seq_T04R0301_000:
-	simple_npc_msg msg_0473_T04R0301_00000
-	end
+	SimpleNPCMsg msg_0473_T04R0301_00000
+	End
 
 scr_seq_T04R0301_001:
-	simple_npc_msg msg_0473_T04R0301_00001
-	end
+	SimpleNPCMsg msg_0473_T04R0301_00001
+	End
 
 scr_seq_T04R0301_002:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	play_cry SPECIES_KANGASKHAN, 0
-	npc_msg msg_0473_T04R0301_00002
-	wait_cry
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	PlayCry SPECIES_KANGASKHAN, 0
+	NPCMsg msg_0473_T04R0301_00002
+	WaitCry
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_T04R0301_003:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	play_cry SPECIES_ZUBAT, 0
-	npc_msg msg_0473_T04R0301_00003
-	wait_cry
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	PlayCry SPECIES_ZUBAT, 0
+	NPCMsg msg_0473_T04R0301_00003
+	WaitCry
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 	.balign 4, 0

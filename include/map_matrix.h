@@ -30,7 +30,7 @@ typedef struct MAPMATRIX {
 MAPMATRIX *MapMatrix_New(void);
 void MapMatrix_Load(u32 map_no, MAPMATRIX *map_matrix);
 void MapMatrix_Free(MAPMATRIX *map_matrix);
-u16 MapMatrix_GetMapModelNo(s32 map_no, MAPMATRIX *map_matrix);
+u16 MapMatrix_GetMapModelNo(int map_no, MAPMATRIX *map_matrix);
 u8 MapMatrix_GetWidth(MAPMATRIX *map_matrix);
 u8 MapMatrix_GetHeight(MAPMATRIX *map_matrix);
 u16 MapMatrix_GetMapHeader(MAPMATRIX *map_matrix, s32 x, s32 y);

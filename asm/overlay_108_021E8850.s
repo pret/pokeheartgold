@@ -3818,7 +3818,7 @@ _021EA6B4:
 	ldr r2, [sp, #4]
 	add r0, r5, #2
 	add r1, r6, #0
-	bl sub_02097268
+	bl GetSafariObjectConfig
 	ldrb r1, [r5, #3]
 	lsl r0, r1, #0x1c
 	lsl r1, r1, #0x19

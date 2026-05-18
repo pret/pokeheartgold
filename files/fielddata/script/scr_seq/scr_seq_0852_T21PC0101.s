@@ -5,49 +5,49 @@
 
 	.rodata
 
-	scrdef scr_seq_T21PC0101_000
-	scrdef scr_seq_T21PC0101_001
-	scrdef scr_seq_T21PC0101_002
-	scrdef scr_seq_T21PC0101_003
-	scrdef scr_seq_T21PC0101_004
-	scrdef scr_seq_T21PC0101_005
-	scrdef_end
+	ScrDef scr_seq_T21PC0101_000
+	ScrDef scr_seq_T21PC0101_001
+	ScrDef scr_seq_T21PC0101_002
+	ScrDef scr_seq_T21PC0101_003
+	ScrDef scr_seq_T21PC0101_004
+	ScrDef scr_seq_T21PC0101_005
+	ScrDefEnd
 
 scr_seq_T21PC0101_000:
-	setvar VAR_SPECIAL_x8007, 0
-	callstd std_nurse_joy
-	end
+	SetVar VAR_SPECIAL_x8007, 0
+	CallStd std_nurse_joy
+	End
 
 scr_seq_T21PC0101_004:
-	simple_npc_msg msg_0552_T21PC0101_00004
-	end
+	SimpleNPCMsg msg_0552_T21PC0101_00004
+	End
 
 scr_seq_T21PC0101_005:
-	simple_npc_msg msg_0552_T21PC0101_00005
-	end
+	SimpleNPCMsg msg_0552_T21PC0101_00005
+	End
 
 scr_seq_T21PC0101_003:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	compare VAR_SCENE_ELMS_LAB, 3
-	goto_if_lt _006A
-	npc_msg msg_0552_T21PC0101_00003
-	goto _006D
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	Compare VAR_SCENE_ELMS_LAB, 3
+	GoToIfLt _006A
+	NPCMsg msg_0552_T21PC0101_00003
+	GoTo _006D
 
 _006A:
-	npc_msg msg_0552_T21PC0101_00002
+	NPCMsg msg_0552_T21PC0101_00002
 _006D:
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_T21PC0101_001:
-	simple_npc_msg msg_0552_T21PC0101_00000
-	end
+	SimpleNPCMsg msg_0552_T21PC0101_00000
+	End
 
 scr_seq_T21PC0101_002:
-	simple_npc_msg msg_0552_T21PC0101_00001
-	end
+	SimpleNPCMsg msg_0552_T21PC0101_00001
+	End
 	.balign 4, 0

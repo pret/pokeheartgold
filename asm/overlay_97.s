@@ -907,7 +907,7 @@ _0221ECE2:
 	lsl r1, r4, #2
 	ldrh r2, [r6, #4]
 	ldr r1, [r7, r1]
-	bl sub_020319A8
+	bl PokeathlonSave_GetUnkDC_AtIndex
 	cmp r0, #0
 	beq _0221ECFE
 	add r1, r6, r4
@@ -988,7 +988,7 @@ _0221ED94:
 	lsl r1, r4, #2
 	ldrh r2, [r6, #4]
 	ldr r1, [r7, r1]
-	bl sub_020319A8
+	bl PokeathlonSave_GetUnkDC_AtIndex
 	cmp r0, #0
 	beq _0221EDB0
 	add r1, r6, r4

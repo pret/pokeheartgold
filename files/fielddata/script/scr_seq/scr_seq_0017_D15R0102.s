@@ -5,19 +5,19 @@
 
 	.rodata
 
-	scrdef scr_seq_D15R0102_000
-	scrdef scr_seq_D15R0102_001
-	scrdef scr_seq_D15R0102_002
-	scrdef_end
+	ScrDef scr_seq_D15R0102_000
+	ScrDef scr_seq_D15R0102_001
+	ScrDef scr_seq_D15R0102_002
+	ScrDefEnd
 
 scr_seq_D15R0102_000:
-	end
+	End
 
 scr_seq_D15R0102_001:
-	simple_npc_msg msg_0055_D15R0102_00000
-	end
+	SimpleNPCMsg msg_0055_D15R0102_00000
+	End
 
 scr_seq_D15R0102_002:
-	simple_npc_msg msg_0055_D15R0102_00001
-	end
+	SimpleNPCMsg msg_0055_D15R0102_00001
+	End
 	.balign 4, 0

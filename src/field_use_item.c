@@ -35,7 +35,7 @@
 #include "unk_0200FA24.h"
 #include "unk_0203DB6C.h"
 #include "unk_02054648.h"
-#include "unk_02054E00.h"
+#include "field_bgm.h"
 #include "unk_02062108.h"
 #include "unk_02066EDC.h"
 
@@ -260,7 +260,7 @@ static void ItemMenuUseFunc_Bicycle(struct ItemMenuUseData *data, const struct I
 
 static BOOL ItemFieldUseFunc_Bicycle(struct ItemFieldUseData *data) {
     FieldSystem_CreateTask(data->fieldSystem, Task_MountOrDismountBicycle, NULL);
-    data->fieldSystem->unkD2_7 = 1;
+    data->fieldSystem->unkD2_7 = TRUE;
     return FALSE;
 }
 
@@ -290,9 +290,9 @@ static BOOL Task_MountOrDismountBicycle(TaskManager *taskManager) {
             MapObject_UnpauseMovement(PlayerAvatar_GetMapObject(fieldSystem->playerAvatar));
             Field_PlayerAvatar_OrrTransitionFlags(fieldSystem->playerAvatar, 1);
             Field_PlayerAvatar_ApplyTransitionFlags(fieldSystem->playerAvatar);
-            FieldSystem_SetSavedMusicId(fieldSystem, 0);
+            FieldBGM_SetOverride(fieldSystem, 0);
             if (SndRadio_GetSeqNo() == 0) {
-                FieldSystem_PlayOrFadeToNewMusicId(fieldSystem, FieldSystem_GetOverriddenMusicId(fieldSystem, fieldSystem->location->mapId), 1);
+                FieldBGM_TryFadeOut(fieldSystem, FieldBGM_GetEffective(fieldSystem, fieldSystem->location->mapId), 1);
             }
             ov01_02205790(fieldSystem, PlayerAvatar_GetFacingDirection(fieldSystem->playerAvatar));
             if (FollowMon_IsActive(fieldSystem)) {
@@ -301,8 +301,8 @@ static BOOL Task_MountOrDismountBicycle(TaskManager *taskManager) {
             }
         } else {
             if (SndRadio_GetSeqNo() == 0) {
-                FieldSystem_SetSavedMusicId(fieldSystem, SEQ_GS_BICYCLE);
-                FieldSystem_PlayOrFadeToNewMusicId(fieldSystem, SEQ_GS_BICYCLE, 1);
+                FieldBGM_SetOverride(fieldSystem, SEQ_GS_BICYCLE);
+                FieldBGM_TryFadeOut(fieldSystem, SEQ_GS_BICYCLE, 1);
             }
             MapObject_UnpauseMovement(PlayerAvatar_GetMapObject(fieldSystem->playerAvatar));
             Field_PlayerAvatar_OrrTransitionFlags(fieldSystem->playerAvatar, 2);
@@ -428,12 +428,12 @@ static void ItemMenuUseFunc_OldRod(struct ItemMenuUseData *data, const struct It
     StartMenuTaskData *env = TaskManager_GetEnvironment(data->taskManager);
     FieldSystem_LoadFieldOverlay(fieldSystem);
     env->exitTaskFunc = Task_OverworldFish;
-    env->exitTaskEnvironment = CreateFishingRodTaskEnv(fieldSystem, HEAP_ID_FIELD2, 0);
+    env->exitTaskEnvironment = CreateFishingRodTaskEnv(fieldSystem, HEAP_ID_FIELD2, ROD_TYPE_OLD);
     env->state = 12;
 }
 
 static BOOL ItemFieldUseFunc_OldRod(struct ItemFieldUseData *data) {
-    FieldSystem_CreateTask(data->fieldSystem, Task_OverworldFish, CreateFishingRodTaskEnv(data->fieldSystem, HEAP_ID_FIELD1, 0));
+    FieldSystem_CreateTask(data->fieldSystem, Task_OverworldFish, CreateFishingRodTaskEnv(data->fieldSystem, HEAP_ID_FIELD1, ROD_TYPE_OLD));
     return FALSE;
 }
 
@@ -442,12 +442,12 @@ static void ItemMenuUseFunc_GoodRod(struct ItemMenuUseData *data, const struct I
     StartMenuTaskData *env = TaskManager_GetEnvironment(data->taskManager);
     FieldSystem_LoadFieldOverlay(fieldSystem);
     env->exitTaskFunc = Task_OverworldFish;
-    env->exitTaskEnvironment = CreateFishingRodTaskEnv(fieldSystem, HEAP_ID_FIELD2, 1);
+    env->exitTaskEnvironment = CreateFishingRodTaskEnv(fieldSystem, HEAP_ID_FIELD2, ROD_TYPE_GOOD);
     env->state = 12;
 }
 
 static BOOL ItemFieldUseFunc_GoodRod(struct ItemFieldUseData *data) {
-    FieldSystem_CreateTask(data->fieldSystem, Task_OverworldFish, CreateFishingRodTaskEnv(data->fieldSystem, HEAP_ID_FIELD1, 1));
+    FieldSystem_CreateTask(data->fieldSystem, Task_OverworldFish, CreateFishingRodTaskEnv(data->fieldSystem, HEAP_ID_FIELD1, ROD_TYPE_GOOD));
     return FALSE;
 }
 
@@ -456,12 +456,12 @@ static void ItemMenuUseFunc_SuperRod(struct ItemMenuUseData *data, const struct 
     StartMenuTaskData *env = TaskManager_GetEnvironment(data->taskManager);
     FieldSystem_LoadFieldOverlay(fieldSystem);
     env->exitTaskFunc = Task_OverworldFish;
-    env->exitTaskEnvironment = CreateFishingRodTaskEnv(fieldSystem, HEAP_ID_FIELD2, 2);
+    env->exitTaskEnvironment = CreateFishingRodTaskEnv(fieldSystem, HEAP_ID_FIELD2, ROD_TYPE_SUPER);
     env->state = 12;
 }
 
 static BOOL ItemFieldUseFunc_SuperRod(struct ItemFieldUseData *data) {
-    FieldSystem_CreateTask(data->fieldSystem, Task_OverworldFish, CreateFishingRodTaskEnv(data->fieldSystem, HEAP_ID_FIELD1, 2));
+    FieldSystem_CreateTask(data->fieldSystem, Task_OverworldFish, CreateFishingRodTaskEnv(data->fieldSystem, HEAP_ID_FIELD1, ROD_TYPE_SUPER));
     return FALSE;
 }
 

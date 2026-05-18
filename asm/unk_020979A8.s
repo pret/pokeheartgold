@@ -230,7 +230,7 @@ _02097B52:
 	ldr r1, [r4, #4]
 	add r0, r6, #0
 	mov r2, #0
-	bl sub_02055110
+	bl FieldBGM_PlayForMapHeader
 	add r0, r5, #0
 	bl sub_02055408
 	mov r0, #5

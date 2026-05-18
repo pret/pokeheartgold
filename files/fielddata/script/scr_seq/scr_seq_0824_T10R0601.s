@@ -5,308 +5,308 @@
 
 	.rodata
 
-	scrdef scr_seq_T10R0601_000
-	scrdef scr_seq_T10R0601_001
-	scrdef scr_seq_T10R0601_002
-	scrdef_end
+	ScrDef scr_seq_T10R0601_000
+	ScrDef scr_seq_T10R0601_001
+	ScrDef scr_seq_T10R0601_002
+	ScrDefEnd
 
 scr_seq_T10R0601_001:
-	scrcmd_609
-	lockall
-	toggle_following_pokemon_movement 0
-	wait_following_pokemon_movement
-	following_pokemon_movement 55
-	apply_movement obj_player, _0048
-	wait_movement
-	wait_following_pokemon_movement
-	toggle_following_pokemon_movement 1
-	following_pokemon_movement 48
-	play_se SEQ_SE_DP_KI_GASYAN
-	clearflag FLAG_UNK_210
-	show_person obj_T10R0601_babyboy1_11
-	setvar VAR_UNK_40C8, 1
-	releaseall
-	end
+	ScrCmd_609
+	LockAll
+	ToggleFollowingPokemonMovement 0
+	WaitFollowingPokemonMovement
+	FollowingPokemonMovement 55
+	ApplyMovement obj_player, _0048
+	WaitMovement
+	WaitFollowingPokemonMovement
+	ToggleFollowingPokemonMovement 1
+	FollowingPokemonMovement 48
+	PlaySE SEQ_SE_DP_KI_GASYAN
+	ClearFlag FLAG_UNK_210
+	ShowPerson obj_T10R0601_babyboy1_11
+	SetVar VAR_UNK_40C8, 1
+	ReleaseAll
+	End
 
 	.balign 4, 0
 _0048:
-	step 12, 6
-	step_end
+	WalkNormalNorth 6
+	EndMovement
 
 scr_seq_T10R0601_002:
-	setflag FLAG_UNK_210
-	setvar VAR_UNK_40C8, 0
-	end
+	SetFlag FLAG_UNK_210
+	SetVar VAR_UNK_40C8, 0
+	End
 
 scr_seq_T10R0601_000:
-	scrcmd_609
-	lockall
-	toggle_following_pokemon_movement 0
-	wait_following_pokemon_movement
-	following_pokemon_movement 55
-	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
-	compare VAR_TEMP_x4000, 5
-	goto_if_ne _008B
-	apply_movement obj_player, _0298
-	goto _00AE
+	ScrCmd_609
+	LockAll
+	ToggleFollowingPokemonMovement 0
+	WaitFollowingPokemonMovement
+	FollowingPokemonMovement 55
+	GetPlayerCoords VAR_TEMP_x4000, VAR_TEMP_x4001
+	Compare VAR_TEMP_x4000, 5
+	GoToIfNe _008B
+	ApplyMovement obj_player, _0298
+	GoTo _00AE
 
 _008B:
-	compare VAR_TEMP_x4000, 6
-	goto_if_ne _00A6
-	apply_movement obj_player, _02A8
-	goto _00AE
+	Compare VAR_TEMP_x4000, 6
+	GoToIfNe _00A6
+	ApplyMovement obj_player, _02A8
+	GoTo _00AE
 
 _00A6:
-	apply_movement obj_player, _02B0
+	ApplyMovement obj_player, _02B0
 _00AE:
-	wait_movement
-	wait_following_pokemon_movement
-	toggle_following_pokemon_movement 1
-	following_pokemon_movement 48
-	apply_movement obj_T10R0601_wataru, _02C0
-	wait_movement
-	buffer_players_name 0
-	gender_msgbox msg_0527_T10R0601_00000, msg_0527_T10R0601_00001
-	closemsg
-	compare VAR_UNK_4135, 8
-	goto_if_lt _00E8
-	trainer_battle TRAINER_CHAMPION_LANCE_2, 0, 0, 0
-	goto _00F0
+	WaitMovement
+	WaitFollowingPokemonMovement
+	ToggleFollowingPokemonMovement 1
+	FollowingPokemonMovement 48
+	ApplyMovement obj_T10R0601_wataru, _02C0
+	WaitMovement
+	BufferPlayersName 0
+	GenderMsgBox msg_0527_T10R0601_00000, msg_0527_T10R0601_00001
+	CloseMsg
+	Compare VAR_UNK_4135, 8
+	GoToIfLt _00E8
+	TrainerBattle TRAINER_CHAMPION_LANCE_2, 0, 0, 0
+	GoTo _00F0
 
 _00E8:
-	trainer_battle TRAINER_CHAMPION_LANCE, 0, 0, 0
+	TrainerBattle TRAINER_CHAMPION_LANCE, 0, 0, 0
 _00F0:
-	check_battle_won VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0290
-	buffer_players_name 0
-	gender_msgbox msg_0527_T10R0601_00002, msg_0527_T10R0601_00003
-	closemsg
-	wait 10, VAR_SPECIAL_x8004
-	play_se SEQ_SE_DP_KI_GASYAN
-	hide_person obj_T10R0601_leag_door2
-	move_person_facing obj_T10R0601_kurumi, 6, 0, 20, DIR_NORTH
-	move_person_facing obj_T10R0601_ookido, 6, 0, 17, DIR_NORTH
-	wait 30, VAR_SPECIAL_x8004
-	stop_bgm 0
-	play_bgm SEQ_GS_EYE_J_SHOUJO
-	apply_movement obj_T10R0601_wataru, _02C8
-	apply_movement obj_player, _02E0
-	wait_movement
-	scrcmd_729 VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _01A1
-	compare VAR_TEMP_x4000, 5
-	goto_if_ne _017C
-	apply_movement obj_partner_poke, _02F8
-	goto _019F
+	CheckBattleWon VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0290
+	BufferPlayersName 0
+	GenderMsgBox msg_0527_T10R0601_00002, msg_0527_T10R0601_00003
+	CloseMsg
+	Wait 10, VAR_SPECIAL_x8004
+	PlaySE SEQ_SE_DP_KI_GASYAN
+	HidePerson obj_T10R0601_leag_door2
+	MovePersonFacing obj_T10R0601_kurumi, 6, 0, 20, DIR_NORTH
+	MovePersonFacing obj_T10R0601_ookido, 6, 0, 17, DIR_NORTH
+	Wait 30, VAR_SPECIAL_x8004
+	StopBGM 0
+	PlayBGM SEQ_GS_EYE_J_SHOUJO
+	ApplyMovement obj_T10R0601_wataru, _02C8
+	ApplyMovement obj_player, _02E0
+	WaitMovement
+	ScrCmd_729 VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _01A1
+	Compare VAR_TEMP_x4000, 5
+	GoToIfNe _017C
+	ApplyMovement obj_partner_poke, _02F8
+	GoTo _019F
 
 _017C:
-	compare VAR_TEMP_x4000, 6
-	goto_if_ne _0197
-	apply_movement obj_partner_poke, _0308
-	goto _019F
+	Compare VAR_TEMP_x4000, 6
+	GoToIfNe _0197
+	ApplyMovement obj_partner_poke, _0308
+	GoTo _019F
 
 _0197:
-	apply_movement obj_partner_poke, _0320
+	ApplyMovement obj_partner_poke, _0320
 _019F:
-	wait_movement
+	WaitMovement
 _01A1:
-	apply_movement obj_T10R0601_kurumi, _0338
-	wait_movement
-	npc_msg msg_0527_T10R0601_00005
-	closemsg
-	apply_movement obj_T10R0601_ookido, _0348
-	apply_movement obj_T10R0601_kurumi, _0350
-	wait_movement
-	buffer_players_name 0
-	gender_msgbox msg_0527_T10R0601_00006, msg_0527_T10R0601_00007
-	closemsg
-	apply_movement obj_T10R0601_kurumi, _0360
-	wait_movement
-	npc_msg msg_0527_T10R0601_00008
-	apply_movement obj_T10R0601_wataru, _0368
-	apply_movement obj_player, _0378
-	wait_movement
-	buffer_players_name 0
-	gender_msgbox msg_0527_T10R0601_00009, msg_0527_T10R0601_00010
-	closemsg
-	toggle_following_pokemon_movement 0
-	wait_following_pokemon_movement
-	following_pokemon_movement 55
-	apply_movement obj_T10R0601_wataru, _0384
-	apply_movement obj_player, _0394
-	wait_movement
-	wait_following_pokemon_movement
-	toggle_following_pokemon_movement 1
-	following_pokemon_movement 48
-	scrcmd_729 VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0234
-	apply_movement obj_partner_poke, _03A4
-	wait_movement
+	ApplyMovement obj_T10R0601_kurumi, _0338
+	WaitMovement
+	NPCMsg msg_0527_T10R0601_00005
+	CloseMsg
+	ApplyMovement obj_T10R0601_ookido, _0348
+	ApplyMovement obj_T10R0601_kurumi, _0350
+	WaitMovement
+	BufferPlayersName 0
+	GenderMsgBox msg_0527_T10R0601_00006, msg_0527_T10R0601_00007
+	CloseMsg
+	ApplyMovement obj_T10R0601_kurumi, _0360
+	WaitMovement
+	NPCMsg msg_0527_T10R0601_00008
+	ApplyMovement obj_T10R0601_wataru, _0368
+	ApplyMovement obj_player, _0378
+	WaitMovement
+	BufferPlayersName 0
+	GenderMsgBox msg_0527_T10R0601_00009, msg_0527_T10R0601_00010
+	CloseMsg
+	ToggleFollowingPokemonMovement 0
+	WaitFollowingPokemonMovement
+	FollowingPokemonMovement 55
+	ApplyMovement obj_T10R0601_wataru, _0384
+	ApplyMovement obj_player, _0394
+	WaitMovement
+	WaitFollowingPokemonMovement
+	ToggleFollowingPokemonMovement 1
+	FollowingPokemonMovement 48
+	ScrCmd_729 VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0234
+	ApplyMovement obj_partner_poke, _03A4
+	WaitMovement
 _0234:
-	play_se SEQ_SE_DP_KAIDAN2
-	apply_movement obj_T10R0601_kurumi, _03AC
-	wait_movement
-	npc_msg msg_0527_T10R0601_00011
-	apply_movement obj_T10R0601_kurumi, _03BC
-	wait_movement
-	wait_button
-	closemsg
-	goto_if_set FLAG_GAME_CLEAR, _0268
-	clearflag FLAG_HIDE_OLIVINE_PORT_OAK
-	setvar VAR_UNK_411A, 1
+	PlaySE SEQ_SE_DP_KAIDAN2
+	ApplyMovement obj_T10R0601_kurumi, _03AC
+	WaitMovement
+	NPCMsg msg_0527_T10R0601_00011
+	ApplyMovement obj_T10R0601_kurumi, _03BC
+	WaitMovement
+	WaitABPress
+	CloseMsg
+	GoToIfSet FLAG_GAME_CLEAR, _0268
+	ClearFlag FLAG_HIDE_OLIVINE_PORT_OAK
+	SetVar VAR_UNK_411A, 1
 _0268:
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	warp MAP_POKEMON_LEAGUE_HALL_OF_FAME, 0, 6, 22, DIR_NORTH
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
-	releaseall
-	end
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	Warp MAP_POKEMON_LEAGUE_HALL_OF_FAME, 0, 6, 22, DIR_NORTH
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
+	ReleaseAll
+	End
 
 _0290:
-	white_out
-	releaseall
-	end
+	WhiteOut
+	ReleaseAll
+	End
 
 	.balign 4, 0
 _0298:
-	step 12, 2
-	step 15, 1
-	step 32, 1
-	step_end
+	WalkNormalNorth 2
+	WalkNormalEast
+	WalkOnSpotNormalNorth
+	EndMovement
 
 	.balign 4, 0
 _02A8:
-	step 12, 2
-	step_end
+	WalkNormalNorth 2
+	EndMovement
 
 	.balign 4, 0
 _02B0:
-	step 12, 2
-	step 14, 1
-	step 32, 1
-	step_end
+	WalkNormalNorth 2
+	WalkNormalWest
+	WalkOnSpotNormalNorth
+	EndMovement
 
 	.balign 4, 0
 _02C0:
-	step 33, 1
-	step_end
+	WalkOnSpotNormalSouth
+	EndMovement
 
 	.balign 4, 0
 _02C8:
-	step 1, 1
-	step 75, 0
-	step 71, 1
-	step 15, 1
-	step 72, 1
-	step_end
+	FaceSouth
+	EmoteExclamationMark 0
+	LockDir
+	WalkNormalEast
+	UnlockDir
+	EndMovement
 
 	.balign 4, 0
 _02E0:
-	step 1, 1
-	step 63, 4
-	step 71, 1
-	step 12, 2
-	step 72, 1
-	step_end
+	FaceSouth
+	Delay8 4
+	LockDir
+	WalkNormalNorth 2
+	UnlockDir
+	EndMovement
 
 	.balign 4, 0
 _02F8:
-	step 16, 3
-	step 19, 1
-	step 33, 1
-	step_end
+	WalkFastNorth 3
+	WalkFastEast
+	WalkOnSpotNormalSouth
+	EndMovement
 
 	.balign 4, 0
 _0308:
-	step 16, 2
-	step 18, 1
-	step 16, 2
-	step 19, 1
-	step 33, 1
-	step_end
+	WalkFastNorth 2
+	WalkFastWest
+	WalkFastNorth 2
+	WalkFastEast
+	WalkOnSpotNormalSouth
+	EndMovement
 
 	.balign 4, 0
 _0320:
-	step 16, 1
-	step 19, 1
-	step 16, 2
-	step 18, 2
-	step 33, 1
-	step_end
+	WalkFastNorth
+	WalkFastEast
+	WalkFastNorth 2
+	WalkFastWest 2
+	WalkOnSpotNormalSouth
+	EndMovement
 
 	.balign 4, 0
 _0338:
-	step 16, 12
-	step 1, 1
-	step 37, 3
-	step_end
+	WalkFastNorth 12
+	FaceSouth
+	WalkOnSpotFastSouth 3
+	EndMovement
 
 	.balign 4, 0
 _0348:
-	step 12, 8
-	step_end
+	WalkNormalNorth 8
+	EndMovement
 
 	.balign 4, 0
 _0350:
-	step 63, 6
-	step 14, 1
-	step 0, 1
-	step_end
+	Delay8 6
+	WalkNormalWest
+	FaceNorth
+	EndMovement
 
 	.balign 4, 0
 _0360:
-	step 36, 4
-	step_end
+	WalkOnSpotFastNorth 4
+	EndMovement
 
 	.balign 4, 0
 _0368:
-	step 12, 2
-	step 14, 1
-	step 1, 1
-	step_end
+	WalkNormalNorth 2
+	WalkNormalWest
+	FaceSouth
+	EndMovement
 
 	.balign 4, 0
 _0378:
-	step 63, 3
-	step 0, 1
-	step_end
+	Delay8 3
+	FaceNorth
+	EndMovement
 
 	.balign 4, 0
 _0384:
-	step 62, 1
-	step 12, 2
-	step 69, 1
-	step_end
+	Delay4
+	WalkNormalNorth 2
+	SetInvisible
+	EndMovement
 
 	.balign 4, 0
 _0394:
-	step 12, 2
-	step 12, 2
-	step 69, 1
-	step_end
+	WalkNormalNorth 2
+	WalkNormalNorth 2
+	SetInvisible
+	EndMovement
 
 	.balign 4, 0
 _03A4:
-	step 69, 1
-	step_end
+	SetInvisible
+	EndMovement
 
 	.balign 4, 0
 _03AC:
-	step 16, 4
-	step 75, 0
-	step 63, 2
-	step_end
+	WalkFastNorth 4
+	EmoteExclamationMark 0
+	Delay8 2
+	EndMovement
 
 	.balign 4, 0
 _03BC:
-	step 19, 1
-	step 18, 2
-	step 19, 2
-	step 18, 1
-	step 0, 1
-	step_end
+	WalkFastEast
+	WalkFastWest 2
+	WalkFastEast 2
+	WalkFastWest
+	FaceNorth
+	EndMovement
 	.balign 4, 0

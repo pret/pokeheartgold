@@ -5,49 +5,49 @@
 
 	.rodata
 
-	scrdef scr_seq_T08R0601_000
-	scrdef scr_seq_T08R0601_001
-	scrdef scr_seq_T08R0601_002
-	scrdef scr_seq_T08R0601_003
-	scrdef_end
+	ScrDef scr_seq_T08R0601_000
+	ScrDef scr_seq_T08R0601_001
+	ScrDef scr_seq_T08R0601_002
+	ScrDef scr_seq_T08R0601_003
+	ScrDefEnd
 
 scr_seq_T08R0601_000:
-	simple_npc_msg msg_0518_T08R0601_00000
-	end
+	SimpleNPCMsg msg_0518_T08R0601_00000
+	End
 
 scr_seq_T08R0601_001:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	play_cry SPECIES_AIPOM, 0
-	npc_msg msg_0518_T08R0601_00001
-	wait_cry
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	PlayCry SPECIES_AIPOM, 0
+	NPCMsg msg_0518_T08R0601_00001
+	WaitCry
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_T08R0601_002:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	play_cry SPECIES_AIPOM, 0
-	npc_msg msg_0518_T08R0601_00002
-	wait_cry
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	PlayCry SPECIES_AIPOM, 0
+	NPCMsg msg_0518_T08R0601_00002
+	WaitCry
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_T08R0601_003:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	play_cry SPECIES_AIPOM, 0
-	npc_msg msg_0518_T08R0601_00003
-	wait_cry
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	PlayCry SPECIES_AIPOM, 0
+	NPCMsg msg_0518_T08R0601_00003
+	WaitCry
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 	.balign 4, 0

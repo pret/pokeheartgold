@@ -333,7 +333,7 @@ _0206232A:
 	add r1, r3, #4
 	str r1, [r0, #0x10]
 	ldrh r1, [r3, #4]
-	cmp r1, #0xfe ; step_end
+	cmp r1, #0xfe ; EndMovement
 	beq _0206233C
 	mov r1, #0
 	str r1, [r0]

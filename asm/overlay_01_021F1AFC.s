@@ -844,11 +844,11 @@ _021F2148:
 	bne _021F2172
 	ldr r0, [r4, #0x1c]
 	mov r1, #0
-	bl FieldSystem_SetSavedMusicId
+	bl FieldBGM_SetOverride
 	ldr r0, [r4, #0x1c]
 	ldr r1, _021F2328 ; =0x000003F6
 	mov r2, #1
-	bl FieldSystem_PlayOrFadeToNewMusicId
+	bl FieldBGM_TryFadeOut
 _021F2172:
 	ldr r0, [r4]
 	add r0, r0, #1
@@ -1215,11 +1215,11 @@ _021F2476:
 	ldr r0, [r4, #8]
 	ldr r1, [r0, #0x20]
 	ldr r1, [r1]
-	bl GetMapMusic
+	bl FieldBGM_GetForMapHeader
 	add r1, r0, #0
 	ldr r0, [r4, #8]
 	mov r2, #4
-	bl FieldSystem_PlayOrFadeToNewMusicId
+	bl FieldBGM_TryFadeOut
 _021F249A:
 	bl SndRadio_GetSeqNo
 	cmp r0, #0

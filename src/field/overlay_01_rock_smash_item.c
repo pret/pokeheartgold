@@ -5,12 +5,13 @@
 #include "constants/abilities.h"
 #include "constants/items.h"
 
+#include "field/encounter_check.h"
+
 #include "encounter.h"
 #include "filesystem.h"
 #include "follow_mon.h"
 #include "math_util.h"
 #include "overlay_01_022001E4.h"
-#include "overlay_02.h"
 #include "script.h"
 #include "task.h"
 #include "unk_020689C8.h"
@@ -21,7 +22,7 @@ typedef struct {
 } ROCK_SMASH;
 
 typedef struct {
-    BOOL followMonKnowsHM;
+    BOOL followMonUsingHm;
     int ability;
     u16 *itemFound; // TODO: bool16
     u16 *item;
@@ -93,9 +94,9 @@ static BOOL CheckRockSmashItemDrop(FieldSystem *fieldSystem, RockSmashItemCheckW
 static BOOL Task_GetRockSmashItem(TaskManager *taskman);
 static int DrawRockSmashIdx(FieldSystem *fieldSystem);
 
-void FieldSystem_RockSmashItemCheck(FieldSystem *fieldSystem, int followMonKnowsHm, u16 *itemFound, u16 *item) {
+void FieldSystem_RockSmashItemCheck(FieldSystem *fieldSystem, int followMonUsingHm, u16 *itemFound, u16 *item) {
     RockSmashItemCheckWork *env = Heap_AllocAtEnd(HEAP_ID_FIELD2, sizeof(RockSmashItemCheckWork));
-    env->followMonKnowsHM = followMonKnowsHm != 0;
+    env->followMonUsingHm = followMonUsingHm != 0;
     env->itemFound = itemFound;
     env->item = item;
     *env->itemFound = FALSE;
@@ -108,7 +109,7 @@ static BOOL Task_RockSmashItemCheck(TaskManager *taskman) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskman);
     RockSmashItemCheckWork *env = TaskManager_GetEnvironment(taskman);
 
-    if (ov02_022470A0(fieldSystem, &setup)) {
+    if (FieldSystem_PerformRockSmashEncounterCheck(fieldSystem, &setup)) {
         *env->itemFound = FALSE;
         *env->item = ITEM_NONE;
         Heap_Free(env);
@@ -160,7 +161,7 @@ static BOOL CheckRockSmashItemDrop(FieldSystem *fieldSystem, RockSmashItemCheckW
         odds += 5;
         break;
     }
-    if (env->followMonKnowsHM) {
+    if (env->followMonUsingHm) {
         odds += 5;
     }
     if (odds > 100) {
@@ -183,7 +184,7 @@ static BOOL Task_GetRockSmashItem(TaskManager *taskman) {
 
     switch (*state_p) {
     case 0:
-        if (env->followMonKnowsHM) {
+        if (env->followMonUsingHm) {
             obj = FollowMon_GetMapObject(fieldSystem);
         } else {
             obj = PlayerAvatar_GetMapObject(fieldSystem->playerAvatar);

@@ -9,5 +9,6 @@ void PlayerAvatar_MoveControl(PlayerAvatar *playerAvatar, FieldSystemUnkSub2C *a
 void sub_0205CF44(PlayerAvatar *playerAvatar);
 BOOL sub_0205CF60(PlayerAvatar *playerAvatar);
 void sub_0205CFBC(PlayerAvatar *playerAvatar, int direction);
+BOOL sub_0205DE98(PlayerAvatar *playerAvatar);
 
 #endif // POKEHEARTGOLD_UNK_0205CB48_H

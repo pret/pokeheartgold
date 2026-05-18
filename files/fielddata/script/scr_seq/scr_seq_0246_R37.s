@@ -5,123 +5,123 @@
 
 	.rodata
 
-	scrdef scr_seq_R37_000
-	scrdef scr_seq_R37_001
-	scrdef scr_seq_R37_002
-	scrdef scr_seq_R37_003
-	scrdef_end
+	ScrDef scr_seq_R37_000
+	ScrDef scr_seq_R37_001
+	ScrDef scr_seq_R37_002
+	ScrDef scr_seq_R37_003
+	ScrDefEnd
 
 scr_seq_R37_000:
-	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 0
-	goto_if_ne _002D
-	clearflag FLAG_UNK_1C3
-	goto _0031
+	GetWeekday VAR_TEMP_x4000
+	Compare VAR_TEMP_x4000, 0
+	GoToIfNe _002D
+	ClearFlag FLAG_UNK_1C3
+	GoTo _0031
 
 _002D:
-	setflag FLAG_UNK_1C3
+	SetFlag FLAG_UNK_1C3
 _0031:
-	end
+	End
 
 scr_seq_R37_001:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	get_party_lead_alive VAR_SPECIAL_x8002
-	mon_has_ribbon VAR_SPECIAL_RESULT, VAR_SPECIAL_x8002, RIBBON_SMILE
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _0159
-	goto_if_set FLAG_DAILY_GOT_SHOCK_RIBBON, _016D
-	compare VAR_NUM_MET_WEEKDAY_SIBLINGS, 7
-	goto_if_eq _0107
-	goto_if_set FLAG_GOT_MAGNET_FROM_SUNNY, _00E9
-	get_weekday VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _009A
-	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 27
-	goto _00E1
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	GetPartyLeadAlive VAR_SPECIAL_x8002
+	MonHasRibbon VAR_SPECIAL_RESULT, VAR_SPECIAL_x8002, RIBBON_SMILE
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _0159
+	GoToIfSet FLAG_DAILY_GOT_SHOCK_RIBBON, _016D
+	Compare VAR_NUM_MET_WEEKDAY_SIBLINGS, 7
+	GoToIfEq _0107
+	GoToIfSet FLAG_GOT_MAGNET_FROM_SUNNY, _00E9
+	GetWeekday VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _009A
+	GetStdMsgNaix 0, VAR_SPECIAL_RESULT
+	MsgBoxExtern VAR_SPECIAL_RESULT, 27
+	GoTo _00E1
 
 _009A:
-	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 24
-	goto_if_no_item_space ITEM_MAGNET, 1, _00FD
-	callstd std_give_item_verbose
-	setflag FLAG_GOT_MAGNET_FROM_SUNNY
-	addvar VAR_NUM_MET_WEEKDAY_SIBLINGS, 1
-	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 25
+	GetStdMsgNaix 0, VAR_SPECIAL_RESULT
+	MsgBoxExtern VAR_SPECIAL_RESULT, 24
+	GoToIfNoItemSpace ITEM_MAGNET, 1, _00FD
+	CallStd std_give_item_verbose
+	SetFlag FLAG_GOT_MAGNET_FROM_SUNNY
+	AddVar VAR_NUM_MET_WEEKDAY_SIBLINGS, 1
+	GetStdMsgNaix 0, VAR_SPECIAL_RESULT
+	MsgBoxExtern VAR_SPECIAL_RESULT, 25
 _00E1:
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _00E9:
-	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 26
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	GetStdMsgNaix 0, VAR_SPECIAL_RESULT
+	MsgBoxExtern VAR_SPECIAL_RESULT, 26
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _00FD:
-	callstd std_bag_is_full
-	closemsg
-	releaseall
-	end
+	CallStd std_bag_is_full
+	CloseMsg
+	ReleaseAll
+	End
 
 _0107:
-	get_weekday VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _012A
-	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 27
-	goto _00E1
+	GetWeekday VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _012A
+	GetStdMsgNaix 0, VAR_SPECIAL_RESULT
+	MsgBoxExtern VAR_SPECIAL_RESULT, 27
+	GoTo _00E1
 
 _012A:
-	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 52
-	buffer_mon_species_name 0, VAR_SPECIAL_x8002
-	msgbox_extern VAR_SPECIAL_RESULT, 54
-	give_ribbon VAR_SPECIAL_x8002, RIBBON_SMILE
-	play_fanfare SEQ_ME_ITEM
-	wait_fanfare
-	setflag FLAG_DAILY_GOT_SHOCK_RIBBON
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	GetStdMsgNaix 0, VAR_SPECIAL_RESULT
+	MsgBoxExtern VAR_SPECIAL_RESULT, 52
+	BufferMonSpeciesName 0, VAR_SPECIAL_x8002
+	MsgBoxExtern VAR_SPECIAL_RESULT, 54
+	GiveRibbon VAR_SPECIAL_x8002, RIBBON_SMILE
+	PlayFanfare SEQ_ME_ITEM
+	WaitFanfare
+	SetFlag FLAG_DAILY_GOT_SHOCK_RIBBON
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0159:
-	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 53
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	GetStdMsgNaix 0, VAR_SPECIAL_RESULT
+	MsgBoxExtern VAR_SPECIAL_RESULT, 53
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _016D:
-	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 55
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	GetStdMsgNaix 0, VAR_SPECIAL_RESULT
+	MsgBoxExtern VAR_SPECIAL_RESULT, 55
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_R37_002:
-	direction_signpost msg_0393_R37_00000, 1, 3, VAR_SPECIAL_RESULT
-	scrcmd_057 3
-	scrcmd_058
-	scrcmd_060 VAR_SPECIAL_RESULT
-	callstd std_signpost
-	end
+	DirectionSignpost msg_0393_R37_00000, 1, 3, VAR_SPECIAL_RESULT
+	ScrCmd_057 3
+	ScrCmd_058
+	ScrCmd_060 VAR_SPECIAL_RESULT
+	CallStd std_signpost
+	End
 
 scr_seq_R37_003:
-	scrcmd_055 3, 0
-	scrcmd_057 3
-	scrcmd_058
-	trainer_tips msg_0393_R37_00001, VAR_SPECIAL_RESULT
-	callstd std_signpost
-	end
+	ScrCmd_055 3, 0
+	ScrCmd_057 3
+	ScrCmd_058
+	TrainerTips msg_0393_R37_00001, VAR_SPECIAL_RESULT
+	CallStd std_signpost
+	End
 	.balign 4, 0

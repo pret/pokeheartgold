@@ -1,5 +1,6 @@
 #include "catching_show.h"
 #include "field_system.h"
+#include "palPark_migration.h"
 #include "pokedex.h"
 #include "save_arrays.h"
 #include "save_pokegear.h"
@@ -44,7 +45,7 @@ BOOL ScrCmd_509(ScriptContext *ctx) {
     struct MigratedPokemon *unkStruct = Save_MigratedPokemon_Get(ctx->fieldSystem->saveData);
     Pokemon *mon = AllocMonZeroed(HEAP_ID_FIELD3);
     u16 *retPtr = ScriptGetVarPointer(ctx);
-    if (sub_0202EC98(unkStruct) == PARTY_SIZE) {
+    if (MigratedPokemon_CountPokemon(unkStruct) == PARTY_SIZE) {
         *retPtr = TRUE;
     } else {
         *retPtr = FALSE;
@@ -69,7 +70,7 @@ BOOL ScrCmd_510(ScriptContext *ctx) {
     }
 
     Heap_Free(mon);
-    sub_0202EB74(unkStruct);
+    MigratedPokemon_InitPokemonOnly(unkStruct);
     sub_02093070(ctx->fieldSystem);
     return FALSE;
 }

@@ -134,7 +134,7 @@ void Save_VarsFlags_SetAlphPuzzleFlag(SaveVarsFlags *state, u8 flag) {
     }
 }
 
-BOOL Save_VarsFlags_CheckAlphPuzzleFlag(SaveVarsFlags *state, u8 flag) {
+BOOL Save_VarsFlags_CheckAlphPuzzleFlag(SaveVarsFlags *state, int flag) {
     BOOL ret = FALSE;
 
     switch (flag) {
@@ -328,6 +328,7 @@ void ClearFlag99A(SaveVarsFlags *state) {
 }
 
 BOOL CheckFlag99A(SaveVarsFlags *state) {
+    // called by FieldBGM_GetEffective, might be related to surf
     return CheckScriptFlag(state, FLAG_UNK_99A);
 }
 

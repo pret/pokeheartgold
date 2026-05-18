@@ -30,7 +30,7 @@ CLOBBER_SIZE_VERSION101_NCGR_FILES += \
 	$(VOLTORB_FLIP_DIR)/voltorb_flip_00000015.NCGR
 
 $(VOLTORB_FLIP_DIR).narc: $(addprefix $(VOLTORB_FLIP_DIR)/,$(VOLTORB_FLIP_FILES))
-	$(KNARC) -p $@ -d $(VOLTORB_FLIP_DIR) -i
+	$(NARC) -cf $@ --index-namespace $(VOLTORB_FLIP_DIR)
 
 clean-voltorb-flip:
 	$(RM) $(VOLTORB_FLIP_DIR).narc $(VOLTORB_FLIP_DIR)/*.lz

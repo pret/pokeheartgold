@@ -7240,7 +7240,7 @@ ov03_022577F4: ; 0x022577F4
 	mov r1, #0x95
 	lsl r1, r1, #2
 	ldr r0, [r0, r1]
-	bl SavePokeathlon_GetAthletePoints
+	bl PokeathlonSave_GetAthletePoints
 	pop {r3, pc}
 _02257808:
 	mov r1, #0x92
@@ -7268,7 +7268,7 @@ ov03_02257814: ; 0x02257814
 	ldr r2, [r5, r2]
 	ldr r0, [r5, r0]
 	add r1, r2, r1
-	bl sub_02031AB8
+	bl PokeathlonSave_GetUnkB7C_AtIndex
 	cmp r0, #0
 	beq _0225785E
 	mov r0, #2
@@ -7283,7 +7283,7 @@ _02257840:
 	sub r1, #0x8a
 	ldr r0, [r5, r0]
 	sub r1, r2, r1
-	bl sub_02031A78
+	bl PokeathlonSave_GetUnkB78_AtIndex
 	cmp r0, #0
 	beq _0225785E
 	mov r0, #3
@@ -8013,7 +8013,7 @@ ov03_02257DF8: ; 0x02257DF8
 	lsl r1, r1, #0x10
 	ldr r0, [r2, r3]
 	lsr r1, r1, #0x10
-	bl SavePokeathlon_SubAthletePoints
+	bl PokeathlonSave_SubAthletePoints
 	pop {r4, pc}
 _02257E18:
 	add r1, r3, #0
@@ -8105,7 +8105,7 @@ _02257EA0:
 	ldr r3, [r4, r1]
 	ldrb r1, [r4, r2]
 	add r1, r3, r1
-	bl sub_02031ACC
+	bl PokeathlonSave_SetUnkB7C_AtIndex
 	b _02257EF0
 _02257EC6:
 	cmp r0, #4
@@ -8117,7 +8117,7 @@ _02257EC6:
 	sub r2, #0x8a
 	ldr r0, [r4, r0]
 	sub r1, r1, r2
-	bl sub_02031A98
+	bl PokeathlonSave_SetUnkB78_AtIndex
 	b _02257EF0
 _02257EDE:
 	add r0, r2, #0
@@ -9676,7 +9676,7 @@ ScrCmd_720: ; 0x02258A18
 	ldrb r1, [r4]
 	add r0, sp, #0x1c
 	lsr r2, r2, #0x18
-	bl sub_02097268
+	bl GetSafariObjectConfig
 	ldrb r0, [r4, #3]
 	mov ip, r0
 	add r0, sp, #0x1c
@@ -9961,7 +9961,7 @@ ov03_02258CFC: ; 0x02258CFC
 	ldr r0, [r5, #0xc]
 	bl Save_Pokeathlon_Get
 	str r0, [r4, #0x20]
-	bl sub_0203199C
+	bl PokeathlonSave_GetUnkB00
 	str r0, [r4, #0x24]
 	ldr r0, [r5, #0x10]
 	ldr r1, _02258D38 ; =ov03_02258D3C
@@ -10172,7 +10172,7 @@ ov03_02258ECC: ; 0x02258ECC
 _02258EDA:
 	ldr r0, [r0, #0x20]
 	sub r1, r1, #1
-	bl sub_02031A78
+	bl PokeathlonSave_GetUnkB78_AtIndex
 	pop {r3, pc}
 	.balign 4, 0
 _02258EE4: .word ov03_02259880
@@ -10513,10 +10513,22 @@ ov03_02259144: ; 0x02259144
 	.byte 0x00, 0x00, 0x00, 0x00, 0x05, 0x00, 0x05, 0x00, 0x00, 0x01, 0x00, 0x10, 0x2F, 0x00, 0x80, 0x80
 	.byte 0x00, 0x00, 0x00, 0x00
 
+; ListMenuTemplate struct
 ov03_02259164: ; 0x02259164
-	.byte 0x00, 0x00, 0x00, 0x00, 0x01, 0x41, 0x25, 0x02, 0x21, 0x41, 0x25, 0x02
-	.byte 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x05, 0x00, 0x00, 0x08, 0x00, 0x10, 0x2F, 0x00, 0x80, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00
+	.word 0x00000000
+	.word ov03_02254100
+	.word ov03_02254120
+	.word 0x00000000
+	.short 0x0010
+	.short 0x0005
+	.byte 0x00
+	.byte 0x08
+	.byte 0x00
+	.byte 0x10
+	.byte 0x2F
+	.byte 0x00
+	.short 0x0080
+	.word 0x00000000
 
 ov03_02259184: ; 0x02259184
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x26, 0x00, 0x26, 0x00, 0x26, 0x00
@@ -10688,8 +10700,9 @@ ov03_022597F0: ; 0x022597F0
 	.byte 0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0xFF, 0x00, 0x00, 0x00
 
 ov03_022597FC: ; 0x022597FC
-	.byte 0x4D, 0x88, 0x25, 0x02
-	.byte 0x29, 0x88, 0x25, 0x02, 0x31, 0x88, 0x25, 0x02
+	.word ov03_0225884C
+	.word ov03_02258828
+	.word ov03_02258830
 
 ov03_02259808: ; 0x02259808
 	.byte 0x4A, 0x00, 0x1B, 0x00

@@ -5,37 +5,37 @@
 
 	.rodata
 
-	scrdef scr_seq_D32R0103_000
-	scrdef scr_seq_D32R0103_001
-	scrdef scr_seq_D32R0103_002
-	scrdef scr_seq_D32R0103_003
-	scrdef_end
+	ScrDef scr_seq_D32R0103_000
+	ScrDef scr_seq_D32R0103_001
+	ScrDef scr_seq_D32R0103_002
+	ScrDef scr_seq_D32R0103_003
+	ScrDefEnd
 
 scr_seq_D32R0103_003:
-	setvar VAR_UNK_40E5, 2
-	end
+	SetVar VAR_UNK_40E5, 2
+	End
 
 scr_seq_D32R0103_000:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	callstd std_frontier_move_tutor_1
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	CallStd std_frontier_move_tutor_1
+	ReleaseAll
+	End
 
 scr_seq_D32R0103_001:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	callstd std_frontier_move_tutor_2
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	CallStd std_frontier_move_tutor_2
+	ReleaseAll
+	End
 
 scr_seq_D32R0103_002:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	callstd std_frontier_move_tutor_3
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	CallStd std_frontier_move_tutor_3
+	ReleaseAll
+	End
 	.balign 4, 0

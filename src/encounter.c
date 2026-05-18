@@ -7,6 +7,7 @@
 #include "constants/std_script.h"
 
 #include "battle/battle_setup.h"
+#include "field/encounter_check.h"
 #include "fielddata/script/scr_seq/event_D10R0101.h"
 #include "frontier/overlay_80.h"
 
@@ -24,6 +25,7 @@
 #include "pokedex_util.h"
 #include "save_arrays.h"
 #include "save_local_field_data.h"
+#include "sound.h"
 #include "sound_02004A44.h"
 #include "sys_flags.h"
 #include "unk_0202FBCC.h"
@@ -137,8 +139,8 @@ static BOOL Task_StartEncounter(TaskManager *taskManager) { // todo: better name
             sub_020930C4(fieldSystem);
         }
 
-        fieldSystem->unk7E = 0;
-        fieldSystem->unk7C = 0;
+        fieldSystem->encounterInhibitSteps = 0;
+        fieldSystem->reverseTurnFrameSteps = 0;
 
         if (Encounter_GetResult(encounter, fieldSystem) == FALSE) {
             if (encounter->setup->battleType & BATTLE_TYPE_11) {
@@ -229,7 +231,7 @@ static BOOL Task_02050960(TaskManager *taskManager) {
 
     switch (*state) {
     case 0:
-        sub_02004AD8(0);
+        Sound_SetScene(SOUND_SCENE_NONE);
         Sound_SetSceneAndPlayBGM(5, encounter->bgm, 1);
         CallTask_StartBattle(taskManager, encounter->setup);
         (*state)++;
@@ -269,7 +271,7 @@ static BOOL Task_020509F0(TaskManager *taskManager) {
         break;
     case 3:
         sub_02052444(encounter->setup, fieldSystem);
-        if (fieldSystem->unkA0 != NULL) {
+        if (fieldSystem->frontierFsys != NULL) {
             sub_02067484(fieldSystem, &encounter->setup->unk138);
         }
         Encounter_GetResult(encounter, fieldSystem);
@@ -542,7 +544,7 @@ void SetupAndStartWildBattle(TaskManager *taskManager, u16 species, u8 level, u3
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     setup = BattleSetup_New(HEAP_ID_FIELD2, BATTLE_TYPE_NONE);
     BattleSetup_InitFromFieldSystem(setup, fieldSystem);
-    ov02_02247F30(fieldSystem, species, level, shiny, setup);
+    FieldSystem_GenerateSingleWildPokemon(fieldSystem, species, level, shiny, setup);
 
     if (canFlee) {
         setup->battleSpecial |= 8;
@@ -558,7 +560,7 @@ void SetupAndStartFatefulWildBattle(TaskManager *taskManager, u16 species, u8 le
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     setup = BattleSetup_New(HEAP_ID_FIELD2, 0);
     BattleSetup_InitFromFieldSystem(setup, fieldSystem);
-    ov02_02247F30(fieldSystem, species, level, FALSE, setup);
+    FieldSystem_GenerateSingleWildPokemon(fieldSystem, species, level, FALSE, setup);
 
     u32 var = 1;
 
@@ -633,7 +635,7 @@ void SetupAndStartFirstBattle(TaskManager *taskManager, u16 species, u8 level) {
     BattleSetup *setup = BattleSetup_New(HEAP_ID_FIELD2, BATTLE_TYPE_NONE);
     BattleSetup_InitFromFieldSystem(setup, fieldSystem);
 
-    ov02_02247F30(fieldSystem, species, level, FALSE, setup);
+    FieldSystem_GenerateSingleWildPokemon(fieldSystem, species, level, FALSE, setup);
 
     setup->battleSpecial = BATTLE_SPECIAL_FIRST_RIVAL;
 

@@ -5,132 +5,132 @@
 
 	.rodata
 
-	scrdef scr_seq_D22R0102_000
-	scrdef scr_seq_D22R0102_001
-	scrdef scr_seq_D22R0102_002
-	scrdef scr_seq_D22R0102_003
-	scrdef scr_seq_D22R0102_004
-	scrdef scr_seq_D22R0102_005
-	scrdef scr_seq_D22R0102_006
-	scrdef scr_seq_D22R0102_007
-	scrdef scr_seq_D22R0102_008
-	scrdef scr_seq_D22R0102_009
-	scrdef scr_seq_D22R0102_010
-	scrdef scr_seq_D22R0102_011
-	scrdef scr_seq_D22R0102_012
-	scrdef_end
+	ScrDef scr_seq_D22R0102_000
+	ScrDef scr_seq_D22R0102_001
+	ScrDef scr_seq_D22R0102_002
+	ScrDef scr_seq_D22R0102_003
+	ScrDef scr_seq_D22R0102_004
+	ScrDef scr_seq_D22R0102_005
+	ScrDef scr_seq_D22R0102_006
+	ScrDef scr_seq_D22R0102_007
+	ScrDef scr_seq_D22R0102_008
+	ScrDef scr_seq_D22R0102_009
+	ScrDef scr_seq_D22R0102_010
+	ScrDef scr_seq_D22R0102_011
+	ScrDef scr_seq_D22R0102_012
+	ScrDefEnd
 
 scr_seq_D22R0102_003:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	npc_msg msg_0063_D22R0102_00003
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	NPCMsg msg_0063_D22R0102_00003
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_D22R0102_004:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	npc_msg msg_0063_D22R0102_00006
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	NPCMsg msg_0063_D22R0102_00006
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_D22R0102_005:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	npc_msg msg_0063_D22R0102_00009
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	NPCMsg msg_0063_D22R0102_00009
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_D22R0102_006:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	npc_msg msg_0063_D22R0102_00012
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	NPCMsg msg_0063_D22R0102_00012
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_D22R0102_007:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	npc_msg msg_0063_D22R0102_00015
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	NPCMsg msg_0063_D22R0102_00015
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_D22R0102_008:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	npc_msg msg_0063_D22R0102_00018
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	NPCMsg msg_0063_D22R0102_00018
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_D22R0102_009:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	npc_msg msg_0063_D22R0102_00021
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	NPCMsg msg_0063_D22R0102_00021
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_D22R0102_010:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	npc_msg msg_0063_D22R0102_00024
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	NPCMsg msg_0063_D22R0102_00024
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_D22R0102_011:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	npc_msg msg_0063_D22R0102_00027
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	NPCMsg msg_0063_D22R0102_00027
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_D22R0102_012:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	npc_msg msg_0063_D22R0102_00030
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	NPCMsg msg_0063_D22R0102_00030
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_D22R0102_000:
-	scrcmd_055 2, 0
-	scrcmd_057 3
-	scrcmd_058
-	trainer_tips msg_0063_D22R0102_00000, VAR_SPECIAL_RESULT
-	callstd std_signpost
-	end
+	ScrCmd_055 2, 0
+	ScrCmd_057 3
+	ScrCmd_058
+	TrainerTips msg_0063_D22R0102_00000, VAR_SPECIAL_RESULT
+	CallStd std_signpost
+	End
 
 scr_seq_D22R0102_001:
-	scrcmd_055 3, 0
-	scrcmd_057 3
-	scrcmd_058
-	trainer_tips msg_0063_D22R0102_00001, VAR_SPECIAL_RESULT
-	callstd std_signpost
-	end
+	ScrCmd_055 3, 0
+	ScrCmd_057 3
+	ScrCmd_058
+	TrainerTips msg_0063_D22R0102_00001, VAR_SPECIAL_RESULT
+	CallStd std_signpost
+	End
 
 scr_seq_D22R0102_002:
-	scrcmd_055 3, 0
-	scrcmd_057 3
-	scrcmd_058
-	trainer_tips msg_0063_D22R0102_00002, VAR_SPECIAL_RESULT
-	callstd std_signpost
-	end
+	ScrCmd_055 3, 0
+	ScrCmd_057 3
+	ScrCmd_058
+	TrainerTips msg_0063_D22R0102_00002, VAR_SPECIAL_RESULT
+	CallStd std_signpost
+	End
 	.balign 4, 0

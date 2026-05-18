@@ -51,7 +51,7 @@ BOOL sub_0205B918(u8 tile);
 BOOL sub_0205B93C(u8 tile);
 BOOL sub_0205B960(u8 tile);
 BOOL sub_0205B984(u8 tile);
-BOOL sub_0205B994(u8 tile);
+BOOL MetatileBehavior_CanGenerateWalkingEncounters(u8 tile);
 BOOL sub_0205B9AC(u8 tile);
 BOOL sub_0205B9B8(u8 tile);
 BOOL sub_0205B9DC(u8 tile);

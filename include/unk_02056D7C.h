@@ -7,5 +7,11 @@ void sub_02056E38(void);
 void sub_020573F0(FieldSystem *fieldSystem, int a1);
 int sub_02057A0C(void);
 void sub_02057F28(u16 val);
+void sub_020576C0(void);
+u32 sub_02057798(void);
+void sub_0205779C(void);
+void sub_0205776C(void);
+void sub_020573AC(void);
+void sub_02057D50(void);
 
 #endif // POKEHEARTGOLD_UNK_02056D7C_H
