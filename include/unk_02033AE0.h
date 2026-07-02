@@ -10,5 +10,6 @@ u32 sub_020342C0(void);
 u32 sub_020342B8(void);
 u32 sub_02057A08(void);
 s32 sub_02033FC4(u8 arg0);
+s32 sub_02034044(void);
 
 #endif // POKEHEARTGOLD_UNK_02033AE0_H

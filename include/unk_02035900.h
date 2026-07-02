@@ -24,5 +24,6 @@ void sub_02035FD8(void);
 int sub_02035ED8(int arg0, int arg1, int arg2, int arg3);
 void sub_02037988(void);
 int sub_02037700(void);
+void sub_020376E0(int, u8*);
 
 #endif // POKEHEARTGOLD_UNK_02035900_H

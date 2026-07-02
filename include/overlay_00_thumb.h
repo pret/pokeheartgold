@@ -29,5 +29,10 @@ int ov00_021E5E54(int arg0);
 void ov00_021E6CA4(void (*func)(u32));
 void ov00_021E5900(SaveData* saveData, int arg1, int arg2, int arg3);
 void ov00_021E5C84(void (*func0)(), void (*func1)());
+s32 ov00_021E5B6C(void);
+void ov00_021EC210(void);
+int ov00_021EC11C(s32* arg0, s32* arg1);
+s32 ov00_021E6690(void);
+u32 ov00_021E6D7C(s32 arg0, s32 arg1, s32 arg2);
 
 #endif // POKEHEARTGOLD_OVERLAY_00_THUMB_H

@@ -253,3 +253,4 @@
 .public sub_02039DC0
 .public sub_02039BA0
 .public sub_02039E30
+.public sub_020392F4
