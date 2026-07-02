@@ -138,7 +138,7 @@ typedef struct UnkStruct_0203F844 {
     GameStats *gameStats;
     Bag *bag;
     BOOL natDexEnabled;
-    void *unk34;
+    int unk34;
     u32 unk38;
     int unk3C;
 } UnkStruct_0203F844;

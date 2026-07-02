@@ -1349,8 +1349,7 @@ s32 ov44_0222B228(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
     } else {
         Sound_SetSceneAndPlayBGM(11, SEQ_GS_WIFI_ACCESS, 1);
         ov44_0222B0B0(arg0);
-        sub_0202C08C(arg0->unk0);
-        if (DWC_CheckHasProfile() == 0) {
+        if (DWC_CheckHasProfile(sub_0202C08C(arg0->unk0)) == 0) {
             SetBgPriority(0, 3);
             SetBgPriority(1, 0);
             SetBgPriority(3, 0);
@@ -1359,8 +1358,7 @@ s32 ov44_0222B228(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
             arg0->unk188 = ov44_02231A28(arg0->unk15C, &ov44_02235384, 0);
             arg0->unk348 = 6;
         } else {
-            sub_0202C08C(arg0->unk0);
-            if (DWC_CheckValidConsole() == 0) {
+            if (DWC_CheckValidConsole(sub_0202C08C(arg0->unk0)) == 0) {
                 ov44_0222F66C(arg0, 20);
                 arg0->unk348 = 3;
             } else {
@@ -3412,9 +3410,9 @@ s32 ov44_0222E9FC(UnkStruct_ov44_022319EC *arg0) {
 }
 
 s32 ov44_0222EA2C(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
-    ListMenuTemplate spC; // Unknown struct of size 0x20
+    s32 spC[8]; // Unknown struct of size 0x20
     if ((ov44_0222E7C4(arg0) == 0) && (sub_02037B38(18) != 0) && (ov44_0222E9FC(arg0) == 1)) {
-        sub_0203A1C4(arg0->saveData, &spC, HEAP_ID_53);
+        sub_0203A1C4(arg0->saveData, spC, HEAP_ID_53);
         ov44_0222F7BC(arg0);
         u32 temp_r0 = ov44_02229F00(arg0, ov44_02231958(arg0, ov00_021E6EBC()));
         u32 var_r1 = temp_r0;

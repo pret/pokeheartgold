@@ -2,6 +2,7 @@
 #define POKEHEARTGOLD_UNK_02034354_H
 
 #include "player_data.h"
+#include "dwcaccount.h"
 
 PlayerProfile *sub_02034818(u32 a0);
 void sub_02034AC0(SaveData *saveData, int a1);
@@ -19,5 +20,10 @@ int sub_02034714(int);
 void sub_0203476C(int);
 void sub_02034638(void);
 void sub_020343E4(void);
+void sub_02034A20(SaveData *saveData);
+DWCFriendData *sub_0203484C(int a0);
+int sub_020348A8(int a0);
+int sub_020348CC(int a0);
+u16* sub_02034884(int a0);
 
 #endif // POKEHEARTGOLD_UNK_02034354_H

@@ -1,0 +1,11 @@
+#ifndef POKEHEARTGOLD_OVERLAY_45_THUMB_H
+#define POKEHEARTGOLD_OVERLAY_45_THUMB_H
+
+void ov45_0222F70C(void);
+int ov45_0222F254(void);
+int ov45_0222E944(void);
+void ov45_0222E91C(void);
+int ov45_0222E6C8(void);
+int ov45_0222E8F4(void);
+
+#endif // POKEHEARTGOLD_OVERLAY_45_THUMB_H

@@ -242,3 +242,14 @@
 .public ov45_0222F350
 .public ov45_0222F464
 .public ov45_0222F70C
+
+.public sub_02039D78
+.public sub_02039DE4
+.public sub_02039DC4
+.public sub_02039E7C
+.public sub_02039C60
+.public sub_02039E7C
+.public sub_02039C14
+.public sub_02039DC0
+.public sub_02039BA0
+.public sub_02039E30
