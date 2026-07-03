@@ -7,6 +7,7 @@
 #include "unk_0200ACF0.h"
 
 void ov01_021E847C(GF_2DGfxResObjList *a0, SpriteResource *a1);
+void ov01_021E84B0(UnkStruct_ov01_021E7FDC *a0, NarcId a1, int a2, BOOL a3, GfGfxResType a4, int a5);
 
 void UnkFieldSpriteRenderer_ov01_021E7FDC_Init(UnkStruct_ov01_021E7FDC *a0, const u16 *resDatIdxs, int numSprites, enum HeapID heapID) {
     GF_2DGfxResHeader *curResHeader;
@@ -134,6 +135,30 @@ void ov01_021E8378(UnkStruct_ov01_021E7FDC *a0, NarcId a1, int a2, BOOL a3, int 
         GF_ASSERT(sub_0200B00C(r4) == TRUE);
         ov01_021E847C(a0->spriteResObjLists[GF_GFX_RES_TYPE_PLTT], r4);
         SpriteTransfer_GetPlttOffset(r4, a5);
+    } else {
+        GF_ASSERT(FALSE);
+    }
+}
+
+void ov01_021E83F0(UnkStruct_ov01_021E7FDC *a0, NarcId a1, int a2, BOOL a3, int a4) {
+    ov01_021E84B0(a0, a1, a2, a3, GF_GFX_RES_TYPE_CELL, a4);
+}
+
+void ov01_021E8404(UnkStruct_ov01_021E7FDC *a0, NarcId a1, int a2, BOOL a3, int a4) {
+    ov01_021E84B0(a0, a1, a2, a3, GF_GFX_RES_TYPE_ANIM, a4);
+}
+
+void ov01_021E8418(UnkStruct_ov01_021E7FDC *a0, NarcId a1, int a2, BOOL a3, NNS_G2D_VRAM_TYPE a4, int a5) {
+    SpriteResource *r4;
+
+    if (!GF2DGfxResObjExistsById(a0->spriteResManagers[GF_GFX_RES_TYPE_CHAR], a5)) {
+        GF_ASSERT(FALSE);
+        return;
+    }
+    r4 = AddCharResObjFromNarc(a0->spriteResManagers[GF_GFX_RES_TYPE_CHAR], a1, a2, a3, a5, a4, (enum HeapID)a0->heapID);
+    if (r4 != NULL) {
+        sub_0200ADA4(r4);
+        ov01_021E847C(a0->spriteResObjLists[GF_GFX_RES_TYPE_CHAR], r4);
     } else {
         GF_ASSERT(FALSE);
     }
