@@ -105,7 +105,7 @@ static const SpriteTemplate_ov01_021E81F0 ov19_0225A0C4[3] = {
      8,
      0xFF,
      0,
-     2,
+     NNS_G2D_VRAM_TYPE_2DSUB,
      1,
      },
     {
@@ -116,7 +116,7 @@ static const SpriteTemplate_ov01_021E81F0 ov19_0225A0C4[3] = {
      0,
      2,
      0,
-     2,
+     NNS_G2D_VRAM_TYPE_2DSUB,
      1,
      },
     { 1,
@@ -126,7 +126,7 @@ static const SpriteTemplate_ov01_021E81F0 ov19_0225A0C4[3] = {
      3,
      2,
      0,
-     2,
+     NNS_G2D_VRAM_TYPE_2DSUB,
      1 }
 };
 

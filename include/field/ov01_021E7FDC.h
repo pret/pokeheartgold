@@ -10,24 +10,24 @@ typedef struct UnkStruct_ov01_021E7FDC {
     SpriteResourceHeaderList *spriteResourceHeaderList;
     GF_2DGfxResMan *spriteResManagers[GF_GFX_RES_TYPE_MAX];
     GF_2DGfxResObjList *spriteResObjLists[GF_GFX_RES_TYPE_MAX];
-    u16 unk_160;
-    u16 unk_162;
+    u16 numResMans;
+    u16 heapID;
 } UnkStruct_ov01_021E7FDC;
 
 typedef struct SpriteTemplate_ov01_021E81F0 {
-    int unk_0;
-    s16 unk_4;
-    s16 unk_6;
-    s16 unk_8;
-    u16 unk_A;
-    int unk_C;
-    int unk_10;
-    int unk_14;
-    int unk_18;
+    int resId;
+    s16 xPos;
+    s16 yPos;
+    s16 zPos;
+    u16 animSeq;
+    int drawPriority;
+    int palIndex;
+    NNS_G2D_VRAM_TYPE vramType;
+    int dontOverridePalIndex;
     u8 filler_1C[0xC];
 } SpriteTemplate_ov01_021E81F0;
 
-void UnkFieldSpriteRenderer_ov01_021E7FDC_Init(UnkStruct_ov01_021E7FDC *a0, const u16 *a1, int a2, enum HeapID a3);
+void UnkFieldSpriteRenderer_ov01_021E7FDC_Init(UnkStruct_ov01_021E7FDC *a0, const u16 *resDatIdxs, int numSprites, enum HeapID heapID);
 void UnkFieldSpriteRenderer_ov01_021E7FDC_Release(UnkStruct_ov01_021E7FDC *a0);
 Sprite *ov01_021E81F0(UnkStruct_ov01_021E7FDC *a0, const SpriteTemplate_ov01_021E81F0 *a1);
 

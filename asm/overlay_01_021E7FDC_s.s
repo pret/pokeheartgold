@@ -14,93 +14,6 @@
 
 	.text
 
-	thumb_func_start ov01_021E81F0
-ov01_021E81F0: ; 0x021E81F0
-	push {r4, r5, r6, lr}
-	sub sp, #0x48
-	ldr r5, _021E8294 ; =ov01_022063FC
-	add r2, r0, #0
-	add r4, r1, #0
-	ldmia r5!, {r0, r1}
-	add r3, sp, #0xc
-	stmia r3!, {r0, r1}
-	ldr r0, [r5]
-	mov r1, #6
-	str r0, [r3]
-	mov r0, #4
-	ldrsh r0, [r4, r0]
-	mov r3, #8
-	ldrsh r3, [r4, r3]
-	lsl r0, r0, #0xc
-	str r0, [sp]
-	ldrsh r0, [r4, r1]
-	lsl r3, r3, #0xc
-	str r3, [sp, #8]
-	lsl r0, r0, #0xc
-	ldr r3, [r4, #0x14]
-	str r0, [sp, #4]
-	cmp r3, #2
-	bne _021E8228
-	lsl r1, r1, #0x11
-	add r0, r0, r1
-	str r0, [sp, #4]
-_021E8228:
-	ldr r0, [r2]
-	mov r3, #0x4b
-	str r0, [sp, #0x18]
-	lsl r3, r3, #2
-	ldr r0, [r2, r3]
-	ldr r1, [r4]
-	ldr r5, [r0]
-	mov r0, #0x24
-	mul r0, r1
-	add r0, r5, r0
-	add r6, sp, #0
-	str r0, [sp, #0x1c]
-	ldmia r6!, {r0, r1}
-	add r5, sp, #0x20
-	stmia r5!, {r0, r1}
-	ldr r0, [r6]
-	add r6, sp, #0xc
-	str r0, [r5]
-	ldmia r6!, {r0, r1}
-	add r5, sp, #0x2c
-	stmia r5!, {r0, r1}
-	ldr r0, [r6]
-	mov r1, #0
-	str r0, [r5]
-	add r0, sp, #0
-	strh r1, [r0, #0x38]
-	ldr r0, [r4, #0xc]
-	add r3, #0x36
-	str r0, [sp, #0x3c]
-	ldr r0, [r4, #0x14]
-	str r0, [sp, #0x40]
-	ldrh r0, [r2, r3]
-	str r0, [sp, #0x44]
-	add r0, sp, #0x18
-	bl Sprite_CreateAffine
-	add r5, r0, #0
-	bne _021E8278
-	bl GF_AssertFail
-_021E8278:
-	ldrh r1, [r4, #0xa]
-	add r0, r5, #0
-	bl Sprite_SetAnimCtrlSeq
-	ldr r0, [r4, #0x18]
-	cmp r0, #1
-	beq _021E828E
-	ldr r1, [r4, #0x10]
-	add r0, r5, #0
-	bl Sprite_SetPalIndexRespectVramOffset
-_021E828E:
-	add r0, r5, #0
-	add sp, #0x48
-	pop {r4, r5, r6, pc}
-	.balign 4, 0
-_021E8294: .word ov01_022063FC
-	thumb_func_end ov01_021E81F0
-
 	thumb_func_start ov01_021E8298
 ov01_021E8298: ; 0x021E8298
 	push {r4, r5, r6, r7, lr}
@@ -713,9 +626,3 @@ _021E8724:
 _021E8742:
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov01_021E86F4
-
-	.rodata
-
-ov01_022063FC: ; 0x022063FC
-	.byte 0x00, 0x10, 0x00, 0x00
-	.byte 0x00, 0x10, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00
