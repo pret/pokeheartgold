@@ -6,6 +6,8 @@
 #include "unk_0200A090.h"
 #include "unk_0200ACF0.h"
 
+void ov01_021E847C(GF_2DGfxResObjList *a0, SpriteResource *a1);
+
 void UnkFieldSpriteRenderer_ov01_021E7FDC_Init(UnkStruct_ov01_021E7FDC *a0, const u16 *resDatIdxs, int numSprites, enum HeapID heapID) {
     GF_2DGfxResHeader *curResHeader;
     NARC *resdatNarc;
@@ -117,5 +119,22 @@ void ov01_021E8298(UnkStruct_ov01_021E7FDC *a0, const int *a1, int a2, enum Heap
                 a0->spriteResObjLists[i]->obj[j] = NULL;
             }
         }
+    }
+}
+
+void ov01_021E8378(UnkStruct_ov01_021E7FDC *a0, NarcId a1, int a2, BOOL a3, int a4, NNS_G2D_VRAM_TYPE a5, int a6) {
+    SpriteResource *r4;
+
+    if (!GF2DGfxResObjExistsById(a0->spriteResManagers[GF_GFX_RES_TYPE_PLTT], a6)) {
+        GF_ASSERT(FALSE);
+        return;
+    }
+    r4 = AddPlttResObjFromNarc(a0->spriteResManagers[GF_GFX_RES_TYPE_PLTT], a1, a2, a3, a6, a5, a4, (enum HeapID)a0->heapID);
+    if (r4 != NULL) {
+        GF_ASSERT(sub_0200B00C(r4) == TRUE);
+        ov01_021E847C(a0->spriteResObjLists[GF_GFX_RES_TYPE_PLTT], r4);
+        SpriteTransfer_GetPlttOffset(r4, a5);
+    } else {
+        GF_ASSERT(FALSE);
     }
 }

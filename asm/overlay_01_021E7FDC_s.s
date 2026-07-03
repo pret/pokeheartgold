@@ -14,65 +14,6 @@
 
 	.text
 
-	thumb_func_start ov01_021E8378
-ov01_021E8378: ; 0x021E8378
-	push {r3, r4, r5, r6, r7, lr}
-	sub sp, #0x10
-	add r5, r0, #0
-	mov r0, #0x4d
-	lsl r0, r0, #2
-	add r4, r1, #0
-	ldr r0, [r5, r0]
-	ldr r1, [sp, #0x30]
-	add r6, r2, #0
-	add r7, r3, #0
-	bl GF2DGfxResObjExistsById
-	cmp r0, #0
-	bne _021E839C
-	bl GF_AssertFail
-	add sp, #0x10
-	pop {r3, r4, r5, r6, r7, pc}
-_021E839C:
-	ldr r0, [sp, #0x30]
-	add r2, r6, #0
-	str r0, [sp]
-	ldr r0, [sp, #0x2c]
-	add r3, r7, #0
-	str r0, [sp, #4]
-	ldr r0, [sp, #0x28]
-	str r0, [sp, #8]
-	ldr r0, _021E83EC ; =0x00000162
-	ldrh r1, [r5, r0]
-	sub r0, #0x2e
-	str r1, [sp, #0xc]
-	ldr r0, [r5, r0]
-	add r1, r4, #0
-	bl AddPlttResObjFromNarc
-	add r4, r0, #0
-	beq _021E83E4
-	bl sub_0200B00C
-	cmp r0, #1
-	beq _021E83CC
-	bl GF_AssertFail
-_021E83CC:
-	mov r0, #0x53
-	lsl r0, r0, #2
-	ldr r0, [r5, r0]
-	add r1, r4, #0
-	bl ov01_021E847C
-	ldr r1, [sp, #0x2c]
-	add r0, r4, #0
-	bl SpriteTransfer_GetPlttOffset
-	add sp, #0x10
-	pop {r3, r4, r5, r6, r7, pc}
-_021E83E4:
-	bl GF_AssertFail
-	add sp, #0x10
-	pop {r3, r4, r5, r6, r7, pc}
-	.balign 4, 0
-_021E83EC: .word 0x00000162
-	thumb_func_end ov01_021E8378
-
 	thumb_func_start ov01_021E83F0
 ov01_021E83F0: ; 0x021E83F0
 	push {r4, lr}
