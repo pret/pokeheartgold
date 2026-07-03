@@ -1,3 +1,5 @@
+#include "unk_02037C94.h"
+
 #include "communication_error.h"
 #include "dwcaccount.h"
 #include "overlay_00_thumb.h"
@@ -11,7 +13,6 @@
 #include "unk_02034B0C.h"
 #include "unk_02035900.h"
 #include "unk_020379A0.h"
-#include "unk_02037C94.h"
 #include "unk_0203A3B0.h"
 #include "unk_020915B0.h"
 
@@ -53,34 +54,36 @@ typedef struct UnkStruct_sub_02039C6C {
     u8 unk64;
 } UnkStruct_sub_02039C6C;
 
-extern UnkStruct_sub_02039C6C *_021D4150;
-extern u8 _0210F904[];
-extern u8 _0210F90C[];
-extern u8 _0210F914[];
-extern void *_020F6A90[3];
+UnkStruct_sub_02039C6C *_021D4150 = NULL;
+
+const voidFunc _020F6A90[3] = { sub_0203827C, sub_02038398, NULL };
+
+static u8 _0210F904[] = " GAME";
+static u8 _0210F90C[] = "FREAK";
+static u8 _0210F914[] = " FULL";
 
 s32 sub_02037C94(void) {
-    return 0x46;
+    return 70;
 }
 
-void sub_02037C98(SaveData *arg0, s8 arg1) {
+void sub_02037C98(SaveData *saveData, s8 arg1) {
     if (_021D4150 == NULL) {
-        GF_ASSERT(arg0);
+        GF_ASSERT(saveData);
         sub_02034D8C();
         UnkStruct_sub_02039C6C *temp_r0 = Heap_Alloc(HEAP_ID_15, sizeof(UnkStruct_sub_02039C6C));
         _021D4150 = temp_r0;
         MI_CpuFill8(temp_r0, 0, sizeof(UnkStruct_sub_02039C6C));
-        _021D4150->unk44 = 0x32;
+        _021D4150->unk44 = 50;
         _021D4150->unk52 = 1;
-        _021D4150->unk28 = arg0;
-        _021D4150->unk2C = Save_PlayerData_GetProfile(arg0);
+        _021D4150->unk28 = saveData;
+        _021D4150->unk2C = Save_PlayerData_GetProfile(saveData);
         _021D4150->unk4A = 2;
         _021D4150->unk4C = 0;
         _021D4150->unk57 = 0;
         _021D4150->unk4E = arg1;
         sub_0203778C(&_021D4150->mathRandContext);
         sub_0203410C(0, 0, 0);
-        if ((arg1 != 9) && (arg1 != 0x11) && (arg1 != 0xF)) {
+        if ((arg1 != 9) && (arg1 != 17) && (arg1 != 15)) {
             sub_0203A880();
         }
     }
@@ -107,20 +110,20 @@ BOOL sub_02037D78(void) {
     return _021D4150 ? TRUE : FALSE;
 }
 
-void sub_02037D8C(SaveData *arg0, s8 arg1, s8 arg2, s32 arg3) {
+void sub_02037D8C(SaveData *saveData, s8 arg1, s8 arg2, s32 arg3) {
     if (sub_02037474() == 0) {
-        Heap_CreateAtEnd(HEAP_ID_3, HEAP_ID_15, 0x7080U);
-        sub_02037C98(arg0, arg1);
+        Heap_CreateAtEnd(HEAP_ID_3, HEAP_ID_15, 28800);
+        sub_02037C98(saveData, arg1);
         _021D4150->unk4F = arg2;
         _021D4150->unk30 = arg3;
         sub_020381C0(sub_02038218, 0);
     }
 }
 
-void sub_02037DD4(SaveData *arg0, s8 arg1, s8 arg2, s32 arg3) {
+void sub_02037DD4(SaveData *saveData, s8 arg1, s8 arg2, s32 arg3) {
     if (sub_02037474() == 0) {
-        Heap_CreateAtEnd(HEAP_ID_3, HEAP_ID_15, 0x7080U);
-        sub_02037C98(arg0, arg1);
+        Heap_CreateAtEnd(HEAP_ID_3, HEAP_ID_15, 28800);
+        sub_02037C98(saveData, arg1);
         _021D4150->unk4F = arg2;
         _021D4150->unk30 = arg3;
         sub_020381C0(sub_02038294, 0);
@@ -154,7 +157,7 @@ void sub_02037E4C(void) {
 
 void sub_02037E9C(void) {
     if (_021D4150 != NULL) {
-        _021D4150->unk40 = 0x708;
+        _021D4150->unk40 = 1800;
         sub_020381C0(sub_02037E4C, 5);
     }
 }
@@ -164,9 +167,9 @@ void sub_02037EC0(void) {
 }
 
 s32 sub_02037EC8(void) {
-    void *sp0[3];
+    const voidFunc sp0[3];
     sp0 = _020F6A90;
-    void *func = _021D4150->unk24;
+    voidFunc func = _021D4150->unk24;
     if (!_021D4150) {
         return 0;
     }
@@ -178,12 +181,12 @@ s32 sub_02037EC8(void) {
     return 0;
 }
 
-void sub_02037F18(SaveData *arg0) {
+void sub_02037F18(SaveData *saveData) {
     if (_021D4150 == NULL) {
-        if (!Heap_CreateAtEnd(HEAP_ID_3, HEAP_ID_15, 0x7080U)) {
+        if (!Heap_CreateAtEnd(HEAP_ID_3, HEAP_ID_15, 28800)) {
             sub_020399EC();
         }
-        sub_02037C98(arg0, 9);
+        sub_02037C98(saveData, 9);
         _021D4150->unk4E = 9;
         _021D4150->unk4F = 0;
         sub_020381C0(sub_020384B4, 0);
@@ -233,7 +236,7 @@ void sub_02037FF0(void) {
     sub_02033908(_021D4150->unk4A);
     if (sub_0203769C() == 0) {
         sub_02033ACC(1);
-        sub_020381C0(sub_02038418, 0xF);
+        sub_020381C0(sub_02038418, 15);
     } else {
         sub_020381C0(sub_02038460, 5);
     }
@@ -270,25 +273,25 @@ void sub_020380CC(void) {
 }
 
 void sub_020380F4(void) {
-    _021D4150->unk4E = 0x12;
+    _021D4150->unk4E = 18;
 }
 
 void sub_02038104(void) {
     _021D4150->unk4E = 9;
 }
 
-void sub_02038114(SaveData *arg0, s8 arg1) {
+void sub_02038114(SaveData *saveData, s8 arg1) {
     if (sub_02037474() == 0) {
-        Heap_CreateAtEnd(HEAP_ID_3, HEAP_ID_15, 0x7080U);
-        sub_02037C98(arg0, arg1);
+        Heap_CreateAtEnd(HEAP_ID_3, HEAP_ID_15, 28800);
+        sub_02037C98(saveData, arg1);
         sub_020381C0(sub_02038E00, 0);
     }
 }
 
-void sub_02038148(SaveData *arg0, s8 arg1) {
+void sub_02038148(SaveData *saveData, s8 arg1) {
     if (sub_02037474() == 0) {
-        Heap_CreateAtEnd(HEAP_ID_3, HEAP_ID_15, 0x7080U);
-        sub_02037C98(arg0, arg1);
+        Heap_CreateAtEnd(HEAP_ID_3, HEAP_ID_15, 28800);
+        sub_02037C98(saveData, arg1);
         sub_020381C0(sub_02038E48, 0);
     }
 }
@@ -332,7 +335,7 @@ void sub_02038218(void) {
     if (sub_02034DB8() != 0) {
         sub_02034B0C(_021D4150->unk2C, 1);
         sub_02034354(_021D4150->unk28, _021D4150->unk30);
-        if (sub_02035ED8(1, 1U, 0x200, 1) != 0) {
+        if (sub_02035ED8(1, 1, 512, 1) != 0) {
             sub_02035FD8();
             sub_020381C0(sub_02038260, 0);
         }
@@ -355,7 +358,7 @@ void sub_02038294(void) {
     if (sub_02034DB8() != 0) {
         sub_02034B0C(_021D4150->unk2C, 1);
         sub_02034354(_021D4150->unk28, _021D4150->unk30);
-        if (sub_02035F14(1, 1, 0x200) != 0) {
+        if (sub_02035F14(1, 1, 512) != 0) {
             sub_02035FD8();
             sub_020381C0(sub_020382DC, 0);
         }
@@ -369,7 +372,7 @@ void sub_020382DC(void) {
 void sub_020382E4(void) {
     sub_0203528C();
     if (sub_020360E4(_021D4150->unk4D) != 0) {
-        sub_020381C0(sub_0203830C, 0xA);
+        sub_020381C0(sub_0203830C, 10);
     }
 }
 
@@ -392,9 +395,9 @@ void sub_02038358(void) {
         _021D4150->unk44--;
         return;
     }
-    if ((sub_02035664() != 0) && (sub_02035F14(0, 1, 0x200) != 0)) {
+    if ((sub_02035664() != 0) && (sub_02035F14(0, 1, 512) != 0)) {
         sub_02035FD8();
-        sub_020381C0(sub_020382E4, 0xA);
+        sub_020381C0(sub_020382E4, 10);
     }
 }
 
@@ -414,9 +417,9 @@ void sub_020383C4(void) {
         _021D4150->unk44--;
         return;
     }
-    if ((sub_02035664() != 0) && (sub_02035F14(0, 1, 0x200) != 0)) {
+    if ((sub_02035664() != 0) && (sub_02035F14(0, 1, 512) != 0)) {
         sub_02035FD8();
-        sub_020381C0(sub_020382DC, 0xA);
+        sub_020381C0(sub_020382DC, 10);
     }
 }
 
@@ -466,9 +469,9 @@ void sub_020384B4(void) {
         sub_02034B0C(_021D4150->unk2C, 1);
         sub_02033908(_021D4150->unk4A);
         sub_02034354(_021D4150->unk28, 0);
-        if (sub_02035F14(1, 1, 0x200) != 0) {
+        if (sub_02035F14(1, 1, 512) != 0) {
             sub_02035FD8();
-            sub_020381C0(sub_02038508, 0x40U);
+            sub_020381C0(sub_02038508, 64);
         }
     }
 }
@@ -491,14 +494,14 @@ void sub_02038538(void) {
 }
 
 void sub_02038550(void) {
-    if ((sub_02035664() != 0) && (sub_02035ED8(0, _021D4150->unk52, 0x200, 1) != 0)) {
+    if ((sub_02035664() != 0) && (sub_02035ED8(0, _021D4150->unk52, 512, 1) != 0)) {
         // Equivalent to MATH_Rand32(&_021D4150->mathRandContext, 0);
         MATHRandContext32 *mathRandContext = &_021D4150->mathRandContext;
         mathRandContext->x = (mathRandContext->mul * mathRandContext->x) + mathRandContext->add;
-        // Equivalent to MATH_Rand32(&_021D4150->mathRandContext, 0);
+        //
         sub_02035FD8();
         _021D4150->unk52 = 0;
-        sub_020381C0(&sub_020385B8, 0x2710);
+        sub_020381C0(&sub_020385B8, 10000);
     }
 }
 
@@ -521,14 +524,14 @@ void sub_020385B8(void) {
 }
 
 void sub_02038610(void) {
-    if ((sub_02035664() != 0) && (sub_02035F14(0, 0, 0x200) != 0)) {
+    if ((sub_02035664() != 0) && (sub_02035F14(0, 0, 512) != 0)) {
         sub_02035FD8();
-        // Equivalent to MATH_Rand32(&_021D4150->mathRandContext, 32)
+        // Equivalent to u32 rand = MATH_Rand32(&_021D4150->mathRandContext, 32)
         MATHRandContext32 *mathRandContext = &_021D4150->mathRandContext;
         u64 r0 = (mathRandContext->mul * mathRandContext->x) + mathRandContext->add;
         mathRandContext->x = r0;
         u32 rand = (u32)(((mathRandContext->x >> 32) * 32) >> 32);
-        // Equivalent to MATH_Rand32(&_021D4150->mathRandContext, 32)
+        //
         sub_020381C0(sub_02038508, rand);
     }
 }
@@ -540,15 +543,15 @@ void sub_02038668(void) {
 }
 
 void sub_02038680(void) {
-    if ((sub_02035664() != 0) && (sub_02035F14(0, 0, 0x200) != 0)) {
+    if ((sub_02035664() != 0) && (sub_02035F14(0, 0, 512) != 0)) {
         sub_02035FD8();
-        sub_020381C0(sub_020386AC, 0x64);
+        sub_020381C0(sub_020386AC, 100);
     }
 }
 
 void sub_020386AC(void) {
     if ((sub_020351AC(_021D4150->unk4D) != 0) && (sub_020360E4(_021D4150->unk4D) != 0)) {
-        sub_020381C0(sub_02038710, 0x64);
+        sub_020381C0(sub_02038710, 100);
         return;
     }
     if (sub_02037700() != 0) {
@@ -569,7 +572,7 @@ void sub_02038710(void) {
     }
     if (sub_020373B4(sub_0203769C()) != FALSE) {
         _021D4150->unk4C = 0;
-        sub_020381C0(sub_0203876C, 0x78);
+        sub_020381C0(sub_0203876C, 120);
         return;
     }
     if (_021D4150->unk44 != 0) {
@@ -593,7 +596,7 @@ void sub_0203876C(void) {
         sub_020381C0(sub_020387E8, 0);
         return;
     }
-    if (_021D4150->unk44 > 0x6E) {
+    if (_021D4150->unk44 > 110) {
         sub_020376E0(6, _0210F90C);
     }
     if (_021D4150->unk44 != 0) {
@@ -638,7 +641,7 @@ void sub_02038854(void) {
 }
 
 void sub_020388A8(void) {
-    if ((sub_02035664() != 0) && (sub_02035ED8(0, _021D4150->unk52, 0x200, 0) != 0)) {
+    if ((sub_02035664() != 0) && (sub_02035ED8(0, _021D4150->unk52, 512, 0) != 0)) {
         sub_02035FD8();
         sub_020381C0(sub_02038404, 0);
     }
@@ -646,14 +649,14 @@ void sub_020388A8(void) {
 
 void sub_020388E0(void) {
     u8 sp[2];
-    _021D4150->unk4E = 0xD;
+    _021D4150->unk4E = 13;
     if (sub_0203769C() == 0) {
         sp[1] = 0;
-        sub_020376E0(0xA, &sp[1]);
+        sub_020376E0(10, &sp[1]);
         return;
     }
     sp[0] = 0;
-    sub_020376E0(0xA, sp);
+    sub_020376E0(10, sp);
 }
 
 void sub_02038918(s8 arg0) {
@@ -675,12 +678,12 @@ void sub_0203894C(s8 arg0) {
 }
 
 void sub_0203897C(void) {
-    _021D4150->unk4E = 0x1A;
+    _021D4150->unk4E = 26;
 }
 
 void sub_0203898C(s8 arg0) {
     _021D4150->unk4D = arg0;
-    _021D4150->unk4E = 0x1A;
+    _021D4150->unk4E = 26;
     _021D4150->unk48 = 3;
     sub_0203A880();
     sub_020381C0(sub_02038668, 0);
@@ -694,17 +697,17 @@ void sub_020389BC(void) {
 
 void sub_020389D4(void) {
     if (sub_02035664() != 0) {
-        _021D4150->unk4E = 0xD;
-        if (sub_02035F14(0, 0, 0x200) != 0) {
+        _021D4150->unk4E = 13;
+        if (sub_02035F14(0, 0, 512) != 0) {
             sub_02035FE4();
-            sub_020381C0(sub_02038A10, 0x64);
+            sub_020381C0(sub_02038A10, 100);
         }
     }
 }
 
 void sub_02038A10(void) {
     if ((sub_020351AC(_021D4150->unk4D) != 0) && (sub_020360E4(_021D4150->unk4D) != 0)) {
-        sub_020381C0(sub_02038A94, 0x64);
+        sub_020381C0(sub_02038A94, 100);
         return;
     }
     if ((sub_02037700() != 0) || (_021D4150->unk44 == 0)) {
@@ -722,7 +725,7 @@ void sub_02038A10(void) {
 }
 
 void sub_02038A94(void) {
-    if (_021D4150->unk44 > 0x5A) {
+    if (_021D4150->unk44 > 90) {
         _021D4150->unk44--;
         return;
     }
@@ -820,8 +823,8 @@ void sub_02038C34(void) {
 
 void sub_02038C3C(u32 arg0, s32 arg1) {
     switch (arg0) {
-    case 0x333:
-        if (arg1 == 0xF) {
+    case 819:
+        if (arg1 == 15) {
             _021D4150->unk58 = (1 | _021D4150->unk58);
             return;
         }
@@ -839,7 +842,7 @@ void sub_02038C3C(u32 arg0, s32 arg1) {
 }
 
 void sub_02038CC4(void) {
-    if (sub_02035F14(1, 1, 0x20) != 0) {
+    if (sub_02035F14(1, 1, 32) != 0) {
         sub_02035FD8();
         sub_020381C0(sub_02038C34, 0);
     }
@@ -857,7 +860,7 @@ void sub_02038CE8(void) {
 void sub_02038D28(SaveData *arg0) {
     if (sub_02037474() == 0) {
         Heap_CreateAtEnd(HEAP_ID_3, HEAP_ID_15, 0x7000);
-        sub_02037C98(arg0, 0x11);
+        sub_02037C98(arg0, 17);
         _021D4150->unk4F = 0;
         sub_020381C0(sub_02038CE8, 0);
     }
@@ -878,12 +881,12 @@ BOOL sub_02038D90(void) {
     if (_021D4150 == NULL) {
         return TRUE;
     }
-    if ((_021D4150->unk4E == 0x18) || (_021D4150->unk4E == 0x19) || (_021D4150->unk4E == 0x24)) {
+    if ((_021D4150->unk4E == 24) || (_021D4150->unk4E == 25) || (_021D4150->unk4E == 36)) {
         ov00_021E6CB8();
         return TRUE;
     }
     if (sub_02039998() != 0) {
-        if (_021D4150->unk4E == 0x21) {
+        if (_021D4150->unk4E == 33) {
             sub_020381C0(sub_02039D78, 0);
         } else {
             sub_020381C0(sub_020392F4, 0);
@@ -898,7 +901,7 @@ void sub_02038E00(void) {
     if (sub_02034DB8() != 0) {
         sub_02034B0C(_021D4150->unk2C, 1);
         sub_02034354(_021D4150->unk28, 0);
-        if (sub_02035ED8(1, 1U, 0x200, 1) != 0) {
+        if (sub_02035ED8(1, 1, 512, 1) != 0) {
             sub_02035FD8();
             sub_020381C0(sub_02038260, 0);
         }
@@ -909,7 +912,7 @@ void sub_02038E48(void) {
     if (sub_02034DB8() != 0) {
         sub_02034B0C(_021D4150->unk2C, 1);
         sub_02034354(_021D4150->unk28, 0);
-        if (sub_02035F14(1, 1, 0x200) != 0) {
+        if (sub_02035F14(1, 1, 512) != 0) {
             sub_02035FD8();
             sub_020381C0(sub_020382DC, 0);
         }
@@ -934,7 +937,7 @@ void sub_02038EB4(void) {
 void sub_02038EB8(void) {
     sub_0203786C(1);
     s32 temp_r0 = ov00_021E5E54(0);
-    if ((temp_r0 >= 0xA) && (temp_r0 < 0x14)) {
+    if ((temp_r0 >= 10) && (temp_r0 < 20)) {
         sub_020381C0(sub_02038EB4, 0);
     } else if (temp_r0 < 0) {
         sub_020381C0(sub_02038E90, 0);
@@ -960,7 +963,7 @@ void sub_02038EB8(void) {
 
 void sub_02038F74(u32 arg0, s32 arg1, s32 arg2) {
     if (_021D4150 != NULL) {
-        if (arg0 - 0x19 > 1) {
+        if (arg0 - 25 > 1) {
             arg0 = -arg0;
         }
         _021D4150->unk34 = arg0;
@@ -971,17 +974,17 @@ void sub_02038F74(u32 arg0, s32 arg1, s32 arg2) {
 
 void sub_02038F9C(void) {
     s32 temp_r0 = ov00_021E5E54(0);
-    if ((temp_r0 >= 0xA) && (temp_r0 < 0x14)) {
+    if ((temp_r0 >= 10) && (temp_r0 < 20)) {
         sub_020381C0(sub_02038EB4, 0);
     } else if (temp_r0 < 0) {
         sub_020381C0(sub_02038E90, 0);
-    } else if (temp_r0 == 0x14) {
+    } else if (temp_r0 == 20) {
         sub_020381C0(sub_02038EB8, 0);
-    } else if (temp_r0 == 0x15) {
+    } else if (temp_r0 == 21) {
         sub_020381C0(sub_02038EB0, 0);
-    } else if (temp_r0 == 0x16) {
+    } else if (temp_r0 == 22) {
         sub_020381C0(sub_02038EB4, 0);
-    } else if (temp_r0 == 0x18) {
+    } else if (temp_r0 == 24) {
         sub_020381C0(sub_02038EB0, 0);
     }
 }
@@ -1062,7 +1065,7 @@ void sub_02039144(void) {
     s32 temp_r0_2 = ov00_021E6690();
     if (temp_r0_2 < 0) {
         sub_020381C0(sub_02038E90, 0);
-    } else if (temp_r0_2 == 0x1A) {
+    } else if (temp_r0_2 == 26) {
         sub_020381C0(sub_02038E90, 0);
     }
 }
@@ -1122,7 +1125,7 @@ u32 *sub_020392D8(void) {
 
 void sub_020392F4(void) {
     sub_0203786C(0);
-    if (ov00_021E6BE4(0U) != 0) {
+    if (ov00_021E6BE4(0) != 0) {
         ov00_021E6C68();
         sub_020381C0(sub_0203847C, 0);
     }
@@ -1160,7 +1163,7 @@ void sub_02039378(void) {
 
 void sub_020393B4(void) {
     u8 r1 = sub_0203769C();
-    sub_020376E0(0x15, &r1);
+    sub_020376E0(21, &r1);
 }
 
 BOOL sub_020393C8(void) {
@@ -1179,15 +1182,15 @@ BOOL sub_020393C8(void) {
     return FALSE;
 }
 
-void sub_02039418(SaveData *arg0) {
+void sub_02039418(SaveData *saveData) {
     if (_021D4150 == NULL) {
-        Heap_CreateAtEnd(HEAP_ID_3, HEAP_ID_15, 0x100U);
-        UnkStruct_sub_02039C6C *temp_r0 = Heap_Alloc(HEAP_ID_15, 0x68U);
+        Heap_CreateAtEnd(HEAP_ID_3, HEAP_ID_15, 256);
+        UnkStruct_sub_02039C6C *temp_r0 = Heap_Alloc(HEAP_ID_15, 104);
         _021D4150 = temp_r0;
-        MI_CpuFill8(temp_r0, 0U, 0x68U);
-        _021D4150->unk4E = 0x18;
+        MI_CpuFill8(temp_r0, 0, 104);
+        _021D4150->unk4E = 24;
         _021D4150->unk55 = 1;
-        _021D4150->unk28 = arg0;
+        _021D4150->unk28 = saveData;
         sub_020398D4(0, 1);
         sub_0201A728(1);
     }
@@ -1203,16 +1206,16 @@ void sub_0203946C(void) {
     }
 }
 
-void sub_020394A0(SaveData *arg0) {
+void sub_020394A0(SaveData *saveData) {
 
     if (_021D4150 == NULL) {
-        Heap_CreateAtEnd(HEAP_ID_3, HEAP_ID_15, 0x100U);
-        UnkStruct_sub_02039C6C *temp_r0 = Heap_Alloc(HEAP_ID_15, 0x68U);
+        Heap_CreateAtEnd(HEAP_ID_3, HEAP_ID_15, 256);
+        UnkStruct_sub_02039C6C *temp_r0 = Heap_Alloc(HEAP_ID_15, 104);
         _021D4150 = temp_r0;
-        MI_CpuFill8(temp_r0, 0U, 0x68U);
-        _021D4150->unk4E = 0x19;
+        MI_CpuFill8(temp_r0, 0, 104);
+        _021D4150->unk4E = 25;
         _021D4150->unk55 = 1;
-        _021D4150->unk28 = arg0;
+        _021D4150->unk28 = saveData;
         sub_020398D4(0, 1);
         sub_0201A728(1);
     }
@@ -1228,15 +1231,15 @@ void sub_020394F4(void) {
     }
 }
 
-void sub_02039528(SaveData *arg0) {
+void sub_02039528(SaveData *saveData) {
     if (_021D4150 == NULL) {
-        Heap_CreateAtEnd(HEAP_ID_3, HEAP_ID_15, 0x100U);
-        UnkStruct_sub_02039C6C *temp_r0 = Heap_Alloc(HEAP_ID_15, 0x68U);
+        Heap_CreateAtEnd(HEAP_ID_3, HEAP_ID_15, 256);
+        UnkStruct_sub_02039C6C *temp_r0 = Heap_Alloc(HEAP_ID_15, 104);
         _021D4150 = temp_r0;
-        MI_CpuFill8(temp_r0, 0U, 0x68U);
-        _021D4150->unk4E = 0x24;
+        MI_CpuFill8(temp_r0, 0, 104);
+        _021D4150->unk4E = 36;
         _021D4150->unk55 = 1;
-        _021D4150->unk28 = arg0;
+        _021D4150->unk28 = saveData;
         sub_020398D4(0, 1);
         sub_0201A728(1);
     }
@@ -1272,8 +1275,8 @@ BOOL sub_020395B0(void) {
 void sub_0203960C(void) {
     s32 temp_r0 = ov00_021E5B6C();
     _021D4150->unk44--;
-    if (temp_r0 == 0x1B) {
-        if (_021D4150->unk4E == 0x21) {
+    if (temp_r0 == 27) {
+        if (_021D4150->unk4E == 33) {
             if (ov45_0222E804(_021D4150->unk60) == 1) {
                 _021D4150->unk64 = 1;
                 sub_020381C0(sub_02039C14, _021D4150->unk44);
@@ -1295,43 +1298,43 @@ void sub_0203960C(void) {
 
 void sub_02039694(void) {
     if (sub_02034DB8() != 0) {
-        Heap_CreateAtEnd(HEAP_ID_3, HEAP_ID_48, 0x35400U);
-        if (sub_02035ED8(1, 1, 0x200, 1) != 0) {
-            ov00_021E5900(_021D4150->unk28, 0x30, 0x2C400, sub_02033FC4(_021D4150->unk4E) + 1);
+        Heap_CreateAtEnd(HEAP_ID_3, HEAP_ID_48, 0x35400);
+        if (sub_02035ED8(1, 1, 512, 1) != 0) {
+            ov00_021E5900(_021D4150->unk28, 48, 0x2C400, sub_02033FC4(_021D4150->unk4E) + 1);
             ov00_021E6CA4(sub_020399DC);
             sub_02035FD8();
-            sub_020381C0(sub_0203960C, 0xE10);
+            sub_020381C0(sub_0203960C, 3600);
         }
     }
 }
 
-UnkStruct_ov44_0223197C *sub_020396FC(SaveData *arg0, u32 arg1) {
-    Save_PlayerData_GetProfile(arg0);
+UnkStruct_ov44_0223197C *sub_020396FC(SaveData *saveData, u32 arg1) {
+    Save_PlayerData_GetProfile(saveData);
     if (sub_02037474() != 0) {
         return NULL;
     }
     sub_0201A728(1);
-    Heap_CreateAtEnd(HEAP_ID_3, HEAP_ID_15, 0x7080U);
-    sub_02037C98(arg0, 0x17);
+    Heap_CreateAtEnd(HEAP_ID_3, HEAP_ID_15, 28800);
+    sub_02037C98(saveData, 23);
     _021D4150->unk0 = Heap_Alloc(HEAP_ID_15, arg1);
     MI_CpuFill8(_021D4150->unk0, 0, arg1);
     _021D4150->unk4F = 0;
-    _021D4150->unk28 = arg0;
+    _021D4150->unk28 = saveData;
     sub_020381C0(sub_02039694, 0);
     return _021D4150->unk0;
 }
 
-void sub_0203976C(SaveData *arg0, s32 arg1) {
-    Save_PlayerData_GetProfile(arg0);
+void sub_0203976C(SaveData *saveData, s32 arg1) {
+    Save_PlayerData_GetProfile(saveData);
     if (sub_02037474() == 0) {
         sub_0201A728(1);
-        Heap_CreateAtEnd(HEAP_ID_3, HEAP_ID_15, 0x7080);
-        sub_02037C98(arg0, 0x21);
+        Heap_CreateAtEnd(HEAP_ID_3, HEAP_ID_15, 28800);
+        sub_02037C98(saveData, 33);
         _021D4150->unk0 = NULL;
         _021D4150->unk60 = arg1;
         _021D4150->unk64 = 0;
         _021D4150->unk4F = 0;
-        _021D4150->unk28 = arg0;
+        _021D4150->unk28 = saveData;
         sub_020381C0(sub_02039BA0, 0);
     }
 }
@@ -1378,14 +1381,13 @@ void sub_0203986C(void) {
 
 s32 sub_0203988C(void) {
     if (_021D4150 != NULL) {
-        void *temp_r1 = _021D4150->unk24;
-        if (temp_r1 == sub_02039DC4) {
+        if (_021D4150->unk24 == sub_02039DC4) {
             return 2;
         }
-        if (temp_r1 == sub_02039DE4) {
+        if (_021D4150->unk24 == sub_02039DE4) {
             return 1;
         }
-        if (temp_r1 == sub_02039E30) {
+        if (_021D4150->unk24 == sub_02039E30) {
             return 3;
         }
     }
@@ -1489,7 +1491,7 @@ void sub_02039A00(void) {
             sub_020399A4(5);
             return;
         }
-        if ((_021D4150->unk4E == 0x19) || (_021D4150->unk4E == 0xF) || (_021D4150->unk4E == 0x24)) {
+        if ((_021D4150->unk4E == 25) || (_021D4150->unk4E == 15) || (_021D4150->unk4E == 36)) {
             sub_020399A4(2);
             return;
         }
@@ -1520,40 +1522,40 @@ BOOL sub_02039AD8(int arg0) {
 }
 
 void sub_02039AF8(void) {
-    _021D4150->unk4E = 0x1D;
+    _021D4150->unk4E = 29;
     ov00_021E5C84(&sub_020369CC, &sub_020369CC);
 }
 
 void sub_02039B18(void) {
-    _021D4150->unk4E = 0x23;
+    _021D4150->unk4E = 35;
     ov00_021E5C84(&sub_020369CC, &sub_020369CC);
 }
 
 void sub_02039B38(void) {
-    _021D4150->unk4E = 0x21;
+    _021D4150->unk4E = 33;
     ov00_021E5C84(&sub_020369CC, &sub_020369CC);
 }
 
 void sub_02039B58(void) {
-    _021D4150->unk4E = 0x17;
+    _021D4150->unk4E = 23;
     ov00_021E5C84(&sub_02036904, &sub_020367A8);
 }
 
 void sub_02039B7C(void) {
-    _021D4150->unk4E = 0x13;
+    _021D4150->unk4E = 19;
     ov00_021E5C84(&sub_02036904, &sub_020367A8);
 }
 
 void sub_02039BA0(void) {
     if (sub_02034DB8() != 0) {
         Heap_CreateAtEnd(HEAP_ID_3, HEAP_ID_48, 0x60000);
-        if (sub_02035ED8(1, 1, 0x200, 1) != 0) {
-            ov00_021E5900(_021D4150->unk28, 0x30, 0x58000, sub_02033FC4(_021D4150->unk4E) + 1);
+        if (sub_02035ED8(1, 1, 512, 1) != 0) {
+            ov00_021E5900(_021D4150->unk28, 48, 0x58000, sub_02033FC4(_021D4150->unk4E) + 1);
             ov00_021E6CA4(sub_020399DC);
             sub_02035FD8();
             ov00_021E70B8(0);
             sub_020378E4(0);
-            sub_020381C0(sub_0203960C, 0xE10);
+            sub_020381C0(sub_0203960C, 3600);
         }
     }
 }
@@ -1578,7 +1580,7 @@ void sub_02039C60(void) {
 
 s32 sub_02039C6C(s32 arg0) {
     s32 var_r4 = 1;
-    if ((arg0 >= 0xA) && (arg0 < 0x14)) {
+    if ((arg0 >= 10) && (arg0 < 20)) {
         sub_020381C0(sub_02038EB4, 0);
         var_r4 = 0;
     } else if (arg0 < 0) {
@@ -1677,7 +1679,7 @@ void sub_02039DE4(void) {
     s32 sp0;
     sub_02039D54(&sp0);
     if (sp0 != 0) {
-        if (sp0 == 0x14) {
+        if (sp0 == 20) {
             sub_020381C0(sub_02039DC4, 0);
             return;
         }
@@ -1706,43 +1708,43 @@ void sub_02039E7C(void) {
 }
 
 void sub_02039E9C(void) {
-    _021D4150->unk4E = 0x22;
+    _021D4150->unk4E = 34;
 }
 
 void sub_02039EAC(s32 *arg0) {
     *arg0 = 0;
 }
 
-s32 sub_02039EB4(SaveData *arg0, s32 arg1, u32 *arg2) {
+s32 sub_02039EB4(SaveData *saveData, s32 arg1, u32 *arg2) {
     switch (*arg2) {
     case 0:
-        sub_02037AC0(0x6F);
+        sub_02037AC0(111);
         *arg2 = 1;
     default:
         break;
     case 1:
-        if (sub_02037B38(0x6F) != 0) {
-            Save_PrepareForAsyncWrite(arg0, arg1);
+        if (sub_02037B38(111) != 0) {
+            Save_PrepareForAsyncWrite(saveData, arg1);
             *arg2 = 2;
         }
         break;
     case 2:
-        s32 temp_r0 = Save_WriteFileAsync(arg0);
+        s32 temp_r0 = Save_WriteFileAsync(saveData);
         GF_ASSERT(temp_r0 != 2);
         if (temp_r0 == 1) {
             *arg2 = 3;
-            sub_02037AC0(0x70);
+            sub_02037AC0(112);
         } else if (temp_r0 == 3) {
             *arg2 = 7;
         }
         break;
     case 3:
-        if (sub_02037B38(0x70) != 0) {
+        if (sub_02037B38(112) != 0) {
             *arg2 = 4;
         }
         break;
     case 4:
-        temp_r0 = Save_WriteFileAsync(arg0);
+        temp_r0 = Save_WriteFileAsync(saveData);
         GF_ASSERT(temp_r0 != 1);
         if (temp_r0 == 2) {
             *arg2 = 5;
@@ -1778,23 +1780,23 @@ void sub_02039FB8(SaveWiFiHistory *arg0, s32 arg1, s32 arg2, u8 arg3) {
     }
 }
 
-s32 sub_02039FD8(enum HeapID arg0) {
-    void *temp_r0 = Heap_Alloc(arg0, 0x720);
+s32 sub_02039FD8(enum HeapID heapID) {
+    void *temp_r0 = Heap_Alloc(heapID, 1824);
     s32 temp_r5 = DWC_Init(((u32)temp_r0 + 31) & ~31); // TODO
     Heap_Free(temp_r0);
     return temp_r5;
 }
 
-s32 sub_02039FFC(enum HeapID arg0) {
+s32 sub_02039FFC(enum HeapID heapID) {
     LoadDwcOverlay();
     LoadOVY38();
-    s32 temp_r4 = sub_02039FD8(arg0);
+    s32 temp_r4 = sub_02039FD8(heapID);
     UnloadDwcOverlay();
     UnloadOVY38();
     return temp_r4;
 }
 
-void sub_0203A01C(UnkStruct_021D2230 *arg0) {
+void sub_0203A01C(WiFiList *arg0) {
 
     DWCUserData *userData = sub_0202C08C(arg0);
     if (DWC_CheckUserData(userData) == 0) {
@@ -1803,25 +1805,25 @@ void sub_0203A01C(UnkStruct_021D2230 *arg0) {
     }
 }
 
-int sub_0203A040(UnkStruct_021D2230 *arg0) {
+int sub_0203A040(WiFiList *arg0) {
     DWCUserData *userData = sub_0202C08C(arg0);
     DWCFriendData friendData;
     DWC_CreateExchangeToken(userData, &friendData);
     return DWC_GetGsProfileId(userData, &friendData);
 }
 
-BOOL sub_0203A05C(SaveData *arg0) {
-    DWCUserData *userData = sub_0202C08C(sub_0202C6F4(arg0));
+BOOL sub_0203A05C(SaveData *saveData) {
+    DWCUserData *userData = sub_0202C08C(sub_0202C6F4(saveData));
     if ((DWC_CheckHasProfile(userData) != 0) && (DWC_CheckValidConsole(userData) != 0)) {
         return TRUE;
     }
     return FALSE;
 }
 
-s32 sub_0203A084(SaveData *arg0, DWCFriendData *arg1, s32 *arg2) {
+s32 sub_0203A084(SaveData *saveData, DWCFriendData *arg1, s32 *arg2) {
     int i;
-    DWCUserData *userData = sub_0202C08C(sub_0202C6F4(arg0));
-    DWCFriendData *friendData = sub_0202C23C(sub_0202C6F4(arg0), 0);
+    DWCUserData *userData = sub_0202C08C(sub_0202C6F4(saveData));
+    DWCFriendData *friendData = sub_0202C23C(sub_0202C6F4(saveData), 0);
     *arg2 = -1;
     if (DWC_IsValidFriendData(arg1) == 0) {
         return 3;
@@ -1844,10 +1846,10 @@ s32 sub_0203A084(SaveData *arg0, DWCFriendData *arg1, s32 *arg2) {
     return 2;
 }
 
-int sub_0203A128(SaveData *arg0, u64 arg1, int *arg2) {
+int sub_0203A128(SaveData *saveData, u64 arg1, int *arg2) {
     int i;
-    DWCUserData *userData = sub_0202C08C(sub_0202C6F4(arg0));
-    DWCFriendData *friendData = sub_0202C23C(sub_0202C6F4(arg0), 0);
+    DWCUserData *userData = sub_0202C08C(sub_0202C6F4(saveData));
+    DWCFriendData *friendData = sub_0202C23C(sub_0202C6F4(saveData), 0);
     if (!DWC_CheckFriendKey(userData, arg1)) {
         return 3;
     }
@@ -1869,24 +1871,24 @@ int sub_0203A128(SaveData *arg0, u64 arg1, int *arg2) {
     return 2;
 }
 
-s32 sub_0203A1C4(SaveData *arg0, s32 *arg1, enum HeapID arg2) {
+s32 sub_0203A1C4(SaveData *saveData, s32 *arg1, enum HeapID heapID) {
     s32 spC = 0;
-    DWCFriendData *friendData = sub_0202C23C(sub_0202C6F4(arg0), 0);
+    DWCFriendData *friendData = sub_0202C23C(sub_0202C6F4(saveData), 0);
     for (int i = 0; i < sub_02037454(); i++) {
         if (i != sub_0203769C()) {
             DWCFriendData *temp_r0 = sub_0203484C(i);
             if (temp_r0 != NULL) {
                 s32 sp10;
-                *arg1 = sub_0203A084(arg0, temp_r0, &sp10);
+                *arg1 = sub_0203A084(saveData, temp_r0, &sp10);
                 GF_ASSERT(*arg1 != 3);
                 if (*arg1 == 0) {
-                    sub_0203A280(arg0, i, sp10, arg2, 2);
-                    sub_02034A20(arg0);
+                    sub_0203A280(saveData, i, sp10, heapID, 2);
+                    sub_02034A20(saveData);
                 } else if (*arg1 == 1) {
                     if (sub_02039998() == 0) {
-                        sub_0203A280(arg0, i, sp10, arg2, 1);
+                        sub_0203A280(saveData, i, sp10, heapID, 1);
                         MI_CpuCopy8(temp_r0, &friendData[sp10], sizeof(DWCFriendData));
-                        sub_02034A20(arg0);
+                        sub_02034A20(saveData);
                     }
                 } else if (*arg1 == 2) {
                     spC = 1;
@@ -1898,35 +1900,35 @@ s32 sub_0203A1C4(SaveData *arg0, s32 *arg1, enum HeapID arg2) {
     return spC;
 }
 
-void sub_0203A280(SaveData *arg0, s32 arg1, s32 arg2, enum HeapID arg3, u32 arg4) {
-    UnkStruct_021D2230 *temp_r0 = sub_0202C6F4(arg0);
-    void *sp8 = sub_0202C23C(temp_r0, arg2);
+void sub_0203A280(SaveData *saveData, s32 arg1, s32 arg2, enum HeapID heapID, u32 arg4) {
+    WiFiList *wifiList = sub_0202C6F4(saveData);
+    DWCFriendData *friendData = sub_0202C23C(wifiList, arg2);
     PlayerProfile *playerProfile = sub_02034818(arg1);
     if (arg4 != 2) {
-        MI_CpuCopy8(sub_0203484C(arg1), sp8, 0xC);
+        MI_CpuCopy8(sub_0203484C(arg1), friendData, 12);
     }
     if (arg4 == 0) {
-        String *string = PlayerProfile_GetPlayerName_NewString(playerProfile, arg3);
-        sub_0202C270(temp_r0, arg2, string);
+        String *string = PlayerProfile_GetPlayerName_NewString(playerProfile, heapID);
+        sub_0202C270(wifiList, arg2, string);
         String_Delete(string);
-        sub_0202C190(temp_r0, arg2, 8, PlayerProfile_GetTrainerGender(playerProfile));
-        sub_0202C190(temp_r0, arg2, 0, PlayerProfile_GetTrainerID(playerProfile));
-    } else if (((arg4 - 1) <= 1) && (sub_0202C090(temp_r0, arg2, 8) == 2)) {
-        sub_0202C190(temp_r0, arg2, 8, PlayerProfile_GetTrainerGender(playerProfile));
-        sub_0202C190(temp_r0, arg2, 0, PlayerProfile_GetTrainerID(playerProfile));
+        sub_0202C190(wifiList, arg2, 8, PlayerProfile_GetTrainerGender(playerProfile));
+        sub_0202C190(wifiList, arg2, 0, PlayerProfile_GetTrainerID(playerProfile));
+    } else if (((arg4 - 1) <= 1) && (sub_0202C090(wifiList, arg2, 8) == 2)) {
+        sub_0202C190(wifiList, arg2, 8, PlayerProfile_GetTrainerGender(playerProfile));
+        sub_0202C190(wifiList, arg2, 0, PlayerProfile_GetTrainerID(playerProfile));
     }
-    String *string = String_New(0x78, arg3);
+    String *string = String_New(120, heapID);
     CopyU16ArrayToString(string, sub_02034884(arg1));
-    sub_0202C2B4(temp_r0, arg2, string);
+    sub_0202C2B4(wifiList, arg2, string);
     String_Delete(string);
-    sub_0202C190(temp_r0, arg2, 7, PlayerProfile_GetAvatar(playerProfile));
-    sub_02034A20(arg0);
+    sub_0202C190(wifiList, arg2, 7, PlayerProfile_GetAvatar(playerProfile));
+    sub_02034A20(saveData);
 }
 
-s32 sub_0203A378(SaveData *arg0, s32 arg1) {
+s32 sub_0203A378(SaveData *saveData, s32 arg1) {
     int i;
     DWCFriendData *friendData = sub_0203484C(arg1);
-    UnkStruct_021D2230 *r5 = sub_0202C6F4(arg0);
+    WiFiList *r5 = sub_0202C6F4(saveData);
 
     for (i = 0; i < 32; i++) {
         if (DWC_IsEqualFriendData(friendData, sub_0202C23C(r5, i)) != 0) {

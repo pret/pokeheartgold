@@ -4517,7 +4517,7 @@ void ov44_02230D8C(UnkStruct_ov44_022319EC *arg0, enum HeapID heapID) {
 }
 
 void ov44_02230E5C(UnkStruct_ov44_022319EC *arg0, enum HeapID heapID) {
-    UnkStruct_021D2230 *temp_r6 = sub_0202C6F4(arg0->saveData);
+    WiFiList *temp_r6 = sub_0202C6F4(arg0->saveData);
     s32 temp_r4 = arg0->unkB1C.unk71 - 1;
     // PLAZA GAMES PLAYED
     ReadMsgDataIntoString(arg0->unk168, msg_0778_00070, arg0->unk178);
