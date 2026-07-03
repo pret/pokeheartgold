@@ -49,3 +49,16 @@ void UnkFieldSpriteRenderer_ov01_021E7FDC_Init(UnkStruct_ov01_021E7FDC *a0, cons
     Heap_Free(resdatNarcEntry);
     NARC_Delete(resdatNarc);
 }
+
+void UnkFieldSpriteRenderer_ov01_021E7FDC_Release(UnkStruct_ov01_021E7FDC *a0) {
+    u32 i;
+
+    SpriteList_Delete(a0->spriteList);
+    SpriteResourceHeaderList_Destroy(a0->spriteResourceHeaderList);
+    sub_0200AED4(a0->spriteResObjLists[GF_GFX_RES_TYPE_CHAR]);
+    sub_0200B0CC(a0->spriteResObjLists[GF_GFX_RES_TYPE_PLTT]);
+    for (i = 0; i < a0->unk_160; ++i) {
+        Delete2DGfxResObjList(a0->spriteResObjLists[i]);
+        Destroy2DGfxResObjMan(a0->spriteResManagers[i]);
+    }
+}
