@@ -93,3 +93,29 @@ Sprite *ov01_021E81F0(UnkStruct_ov01_021E7FDC *a0, const SpriteTemplate_ov01_021
     }
     return ret;
 }
+
+void ov01_021E8298(UnkStruct_ov01_021E7FDC *a0, const int *a1, int a2, enum HeapID a3) {
+    u32 i;
+    u32 j;
+
+    a0->spriteList = G2dRenderer_Init(a2, &a0->renderer, a3);
+    a0->heapID = a3;
+    if (a1[GF_GFX_RES_TYPE_MCEL] == 0 || a1[GF_GFX_RES_TYPE_MANM] == 0) {
+        a0->numResMans = 4;
+        a0->spriteResManagers[GF_GFX_RES_TYPE_MCEL] = NULL;
+        a0->spriteResManagers[GF_GFX_RES_TYPE_MANM] = NULL;
+    } else {
+        a0->numResMans = 6;
+    }
+    for (i = 0; i < a0->numResMans; ++i) {
+        a0->spriteResManagers[i] = Create2DGfxResObjMan(a1[i], (GfGfxResType)i, a3);
+    }
+    for (i = 0; i < a0->numResMans; ++i) {
+        if (a1[i] != 0) {
+            a0->spriteResObjLists[i] = Create2DGfxResObjList(a1[i], a3);
+            for (j = 0; j < a0->spriteResObjLists[i]->max; ++j) {
+                a0->spriteResObjLists[i]->obj[j] = NULL;
+            }
+        }
+    }
+}
