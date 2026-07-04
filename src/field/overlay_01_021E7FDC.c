@@ -6,67 +6,67 @@
 #include "unk_0200A090.h"
 #include "unk_0200ACF0.h"
 
-BOOL ov01_021E847C(GF_2DGfxResObjList *objList, SpriteResource *spriteResource);
-void ov01_021E84B0(UnkStruct_ov01_021E7FDC *a0, NarcId narcId, int fileId, BOOL compressed, GfGfxResType resType, int resId);
+static BOOL TryAddSpriteResourceToObjList(GF_2DGfxResObjList *objList, SpriteResource *spriteResource);
+static void FieldSpriteManager_AddCellOrAnimRes(FieldSpriteManager *fieldSpriteManager, NarcId narcId, int fileId, BOOL compressed, GfGfxResType resType, int resId);
 
-void UnkFieldSpriteRenderer_ov01_021E7FDC_Init(UnkStruct_ov01_021E7FDC *a0, const u16 *resDatIdxs, int numSprites, enum HeapID heapID) {
+void FieldSpriteManager_InitWithResDat(FieldSpriteManager *fieldSpriteManager, const u16 *resDatIdxs, int numSprites, enum HeapID heapID) {
     GF_2DGfxResHeader *curResHeader;
     NARC *resdatNarc;
     GF_2DGfxResHeader *resHeaders;
     struct ResdatNarcEntry *resdatNarcEntry;
     u32 i;
 
-    a0->spriteList = G2dRenderer_Init(numSprites, &a0->renderer, heapID);
-    a0->heapID = heapID;
+    fieldSpriteManager->spriteList = G2dRenderer_Init(numSprites, &fieldSpriteManager->renderer, heapID);
+    fieldSpriteManager->heapID = heapID;
     if (resDatIdxs[GF_GFX_RES_TYPE_MCEL] == 0xFFFF) {
-        a0->numResMans = 4;
+        fieldSpriteManager->numResMans = 4;
     } else {
-        a0->numResMans = 6;
+        fieldSpriteManager->numResMans = 6;
     }
-    resHeaders = Heap_Alloc(heapID, GF2DGfxResHeader_sizeof() * a0->numResMans);
+    resHeaders = Heap_Alloc(heapID, GF2DGfxResHeader_sizeof() * fieldSpriteManager->numResMans);
     resdatNarc = NARC_New(NARC_data_resdat, heapID);
-    for (i = 0; i < a0->numResMans; ++i) {
+    for (i = 0; i < fieldSpriteManager->numResMans; ++i) {
         curResHeader = GF2DGfxResHeader_GetByIndex(resHeaders, i);
         GF_2DGfxResHeaderNarcList *narcList = GfGfxLoader_LoadFromOpenNarc(resdatNarc, resDatIdxs[i], FALSE, heapID, TRUE);
         GF2DGfxResHeader_Init(narcList, curResHeader, heapID);
         Heap_Free(narcList);
     }
-    for (i = 0; i < a0->numResMans; ++i) {
+    for (i = 0; i < fieldSpriteManager->numResMans; ++i) {
         curResHeader = GF2DGfxResHeader_GetByIndex(resHeaders, i);
-        a0->spriteResManagers[i] = Create2DGfxResObjMan(GF2dGfxResHeader_GetNumObjects(curResHeader), (GfGfxResType)i, heapID);
+        fieldSpriteManager->spriteResManagers[i] = Create2DGfxResObjMan(GF2dGfxResHeader_GetNumObjects(curResHeader), (GfGfxResType)i, heapID);
     }
-    for (i = 0; i < a0->numResMans; ++i) {
+    for (i = 0; i < fieldSpriteManager->numResMans; ++i) {
         curResHeader = GF2DGfxResHeader_GetByIndex(resHeaders, i);
-        a0->spriteResObjLists[i] = Create2DGfxResObjList(GF2dGfxResHeader_GetNumObjects(curResHeader), heapID);
-        LoadAll2DGfxResObjsFromHeader(a0->spriteResManagers[i], curResHeader, a0->spriteResObjLists[i], heapID);
+        fieldSpriteManager->spriteResObjLists[i] = Create2DGfxResObjList(GF2dGfxResHeader_GetNumObjects(curResHeader), heapID);
+        LoadAll2DGfxResObjsFromHeader(fieldSpriteManager->spriteResManagers[i], curResHeader, fieldSpriteManager->spriteResObjLists[i], heapID);
     }
-    for (i = 0; i < a0->numResMans; ++i) {
+    for (i = 0; i < fieldSpriteManager->numResMans; ++i) {
         curResHeader = GF2DGfxResHeader_GetByIndex(resHeaders, i);
         GF2DGfxResHeader_Reset(curResHeader);
     }
     Heap_Free(resHeaders);
-    sub_0200ADE4(a0->spriteResObjLists[GF_GFX_RES_TYPE_CHAR]);
-    sub_0200B050(a0->spriteResObjLists[GF_GFX_RES_TYPE_PLTT]);
+    sub_0200ADE4(fieldSpriteManager->spriteResObjLists[GF_GFX_RES_TYPE_CHAR]);
+    sub_0200B050(fieldSpriteManager->spriteResObjLists[GF_GFX_RES_TYPE_PLTT]);
     resdatNarcEntry = GfGfxLoader_LoadFromOpenNarc(resdatNarc, resDatIdxs[6], FALSE, heapID, TRUE);
-    a0->spriteResourceHeaderList = SpriteResourceHeaderList_Create(resdatNarcEntry, heapID, a0->spriteResManagers[GF_GFX_RES_TYPE_CHAR], a0->spriteResManagers[GF_GFX_RES_TYPE_PLTT], a0->spriteResManagers[GF_GFX_RES_TYPE_CELL], a0->spriteResManagers[GF_GFX_RES_TYPE_ANIM], a0->spriteResManagers[GF_GFX_RES_TYPE_MCEL], a0->spriteResManagers[GF_GFX_RES_TYPE_MANM]);
+    fieldSpriteManager->spriteResourceHeaderList = SpriteResourceHeaderList_Create(resdatNarcEntry, heapID, fieldSpriteManager->spriteResManagers[GF_GFX_RES_TYPE_CHAR], fieldSpriteManager->spriteResManagers[GF_GFX_RES_TYPE_PLTT], fieldSpriteManager->spriteResManagers[GF_GFX_RES_TYPE_CELL], fieldSpriteManager->spriteResManagers[GF_GFX_RES_TYPE_ANIM], fieldSpriteManager->spriteResManagers[GF_GFX_RES_TYPE_MCEL], fieldSpriteManager->spriteResManagers[GF_GFX_RES_TYPE_MANM]);
     Heap_Free(resdatNarcEntry);
     NARC_Delete(resdatNarc);
 }
 
-void UnkFieldSpriteRenderer_ov01_021E7FDC_Release(UnkStruct_ov01_021E7FDC *a0) {
+void FieldSpriteManager_ReleaseWithResDat(FieldSpriteManager *fieldSpriteManager) {
     u32 i;
 
-    SpriteList_Delete(a0->spriteList);
-    SpriteResourceHeaderList_Destroy(a0->spriteResourceHeaderList);
-    sub_0200AED4(a0->spriteResObjLists[GF_GFX_RES_TYPE_CHAR]);
-    sub_0200B0CC(a0->spriteResObjLists[GF_GFX_RES_TYPE_PLTT]);
-    for (i = 0; i < a0->numResMans; ++i) {
-        Delete2DGfxResObjList(a0->spriteResObjLists[i]);
-        Destroy2DGfxResObjMan(a0->spriteResManagers[i]);
+    SpriteList_Delete(fieldSpriteManager->spriteList);
+    SpriteResourceHeaderList_Destroy(fieldSpriteManager->spriteResourceHeaderList);
+    sub_0200AED4(fieldSpriteManager->spriteResObjLists[GF_GFX_RES_TYPE_CHAR]);
+    sub_0200B0CC(fieldSpriteManager->spriteResObjLists[GF_GFX_RES_TYPE_PLTT]);
+    for (i = 0; i < fieldSpriteManager->numResMans; ++i) {
+        Delete2DGfxResObjList(fieldSpriteManager->spriteResObjLists[i]);
+        Destroy2DGfxResObjMan(fieldSpriteManager->spriteResManagers[i]);
     }
 }
 
-Sprite *ov01_021E81F0(UnkStruct_ov01_021E7FDC *a0, const SpriteTemplate_ov01_021E81F0 *a1) {
+Sprite *FieldSpriteManager_CreateSprite(FieldSpriteManager *fieldSpriteManager, const UnmanagedSpriteTemplate *a1) {
     SpriteTemplate spriteTemplate;
     VecFx32 scale = { FX32_ONE, FX32_ONE, FX32_ONE };
     VecFx32 position = {
@@ -76,95 +76,95 @@ Sprite *ov01_021E81F0(UnkStruct_ov01_021E7FDC *a0, const SpriteTemplate_ov01_021
     };
     Sprite *ret;
 
-    if (a1->vramType == NNS_G2D_VRAM_TYPE_2DSUB) {
+    if (a1->vram == NNS_G2D_VRAM_TYPE_2DSUB) {
         position.y += 192 * FX32_ONE;
     }
 
-    spriteTemplate.spriteList = a0->spriteList;
-    spriteTemplate.header = &a0->spriteResourceHeaderList->headers[a1->resId];
+    spriteTemplate.spriteList = fieldSpriteManager->spriteList;
+    spriteTemplate.header = &fieldSpriteManager->spriteResourceHeaderList->headers[a1->resourceSet];
     spriteTemplate.position = position;
     spriteTemplate.scale = scale;
     spriteTemplate.rotation = 0;
     spriteTemplate.drawPriority = a1->drawPriority;
-    spriteTemplate.whichScreen = a1->vramType;
-    spriteTemplate.heapID = (enum HeapID)a0->heapID;
+    spriteTemplate.whichScreen = a1->vram;
+    spriteTemplate.heapID = (enum HeapID)fieldSpriteManager->heapID;
     ret = Sprite_CreateAffine(&spriteTemplate);
     GF_ASSERT(ret != NULL);
-    Sprite_SetAnimCtrlSeq(ret, a1->animSeq);
-    if (a1->dontOverridePalIndex != 1) {
-        Sprite_SetPalIndexRespectVramOffset(ret, a1->palIndex);
+    Sprite_SetAnimCtrlSeq(ret, a1->animation);
+    if (a1->paletteMode != 1) {
+        Sprite_SetPalIndexRespectVramOffset(ret, a1->pal);
     }
     return ret;
 }
 
-void ov01_021E8298(UnkStruct_ov01_021E7FDC *a0, const int *resDatCounts, int numSprites, enum HeapID heapId) {
+void FieldSpriteManager_InitEmptyResLists(FieldSpriteManager *fieldSpriteManager, const int *resDatCounts, int numSprites, enum HeapID heapId) {
     u32 i;
     u32 j;
 
-    a0->spriteList = G2dRenderer_Init(numSprites, &a0->renderer, heapId);
-    a0->heapID = heapId;
+    fieldSpriteManager->spriteList = G2dRenderer_Init(numSprites, &fieldSpriteManager->renderer, heapId);
+    fieldSpriteManager->heapID = heapId;
     if (resDatCounts[GF_GFX_RES_TYPE_MCEL] == 0 || resDatCounts[GF_GFX_RES_TYPE_MANM] == 0) {
-        a0->numResMans = 4;
-        a0->spriteResManagers[GF_GFX_RES_TYPE_MCEL] = NULL;
-        a0->spriteResManagers[GF_GFX_RES_TYPE_MANM] = NULL;
+        fieldSpriteManager->numResMans = 4;
+        fieldSpriteManager->spriteResManagers[GF_GFX_RES_TYPE_MCEL] = NULL;
+        fieldSpriteManager->spriteResManagers[GF_GFX_RES_TYPE_MANM] = NULL;
     } else {
-        a0->numResMans = 6;
+        fieldSpriteManager->numResMans = 6;
     }
-    for (i = 0; i < a0->numResMans; ++i) {
-        a0->spriteResManagers[i] = Create2DGfxResObjMan(resDatCounts[i], (GfGfxResType)i, heapId);
+    for (i = 0; i < fieldSpriteManager->numResMans; ++i) {
+        fieldSpriteManager->spriteResManagers[i] = Create2DGfxResObjMan(resDatCounts[i], (GfGfxResType)i, heapId);
     }
-    for (i = 0; i < a0->numResMans; ++i) {
+    for (i = 0; i < fieldSpriteManager->numResMans; ++i) {
         if (resDatCounts[i] != 0) {
-            a0->spriteResObjLists[i] = Create2DGfxResObjList(resDatCounts[i], heapId);
-            for (j = 0; j < a0->spriteResObjLists[i]->max; ++j) {
-                a0->spriteResObjLists[i]->obj[j] = NULL;
+            fieldSpriteManager->spriteResObjLists[i] = Create2DGfxResObjList(resDatCounts[i], heapId);
+            for (j = 0; j < fieldSpriteManager->spriteResObjLists[i]->max; ++j) {
+                fieldSpriteManager->spriteResObjLists[i]->obj[j] = NULL;
             }
         }
     }
 }
 
-void ov01_021E8378(UnkStruct_ov01_021E7FDC *a0, NarcId narcId, int fileId, BOOL compressed, int plttNum, NNS_G2D_VRAM_TYPE vramType, int resId) {
+void FieldSpriteManager_AddPlttRes(FieldSpriteManager *fieldSpriteManager, NarcId narcId, int fileId, BOOL compressed, int plttNum, NNS_G2D_VRAM_TYPE vramType, int resId) {
     SpriteResource *spriteResource;
 
-    if (!GF2DGfxResObjExistsById(a0->spriteResManagers[GF_GFX_RES_TYPE_PLTT], resId)) {
+    if (!GF2DGfxResObjExistsById(fieldSpriteManager->spriteResManagers[GF_GFX_RES_TYPE_PLTT], resId)) {
         GF_ASSERT(FALSE);
         return;
     }
-    spriteResource = AddPlttResObjFromNarc(a0->spriteResManagers[GF_GFX_RES_TYPE_PLTT], narcId, fileId, compressed, resId, vramType, plttNum, (enum HeapID)a0->heapID);
+    spriteResource = AddPlttResObjFromNarc(fieldSpriteManager->spriteResManagers[GF_GFX_RES_TYPE_PLTT], narcId, fileId, compressed, resId, vramType, plttNum, (enum HeapID)fieldSpriteManager->heapID);
     if (spriteResource != NULL) {
         GF_ASSERT(sub_0200B00C(spriteResource) == TRUE);
-        ov01_021E847C(a0->spriteResObjLists[GF_GFX_RES_TYPE_PLTT], spriteResource);
+        TryAddSpriteResourceToObjList(fieldSpriteManager->spriteResObjLists[GF_GFX_RES_TYPE_PLTT], spriteResource);
         SpriteTransfer_GetPlttOffset(spriteResource, vramType);
     } else {
         GF_ASSERT(FALSE);
     }
 }
 
-void ov01_021E83F0(UnkStruct_ov01_021E7FDC *a0, NarcId narcId, int fileId, BOOL compressed, int resId) {
-    ov01_021E84B0(a0, narcId, fileId, compressed, GF_GFX_RES_TYPE_CELL, resId);
+void FieldSpriteManager_AddCellRes(FieldSpriteManager *fieldSpriteManager, NarcId narcId, int fileId, BOOL compressed, int resId) {
+    FieldSpriteManager_AddCellOrAnimRes(fieldSpriteManager, narcId, fileId, compressed, GF_GFX_RES_TYPE_CELL, resId);
 }
 
-void ov01_021E8404(UnkStruct_ov01_021E7FDC *a0, NarcId narcId, int fileId, BOOL compressed, int resId) {
-    ov01_021E84B0(a0, narcId, fileId, compressed, GF_GFX_RES_TYPE_ANIM, resId);
+void FieldSpriteManager_AddAnimRes(FieldSpriteManager *fieldSpriteManager, NarcId narcId, int fileId, BOOL compressed, int resId) {
+    FieldSpriteManager_AddCellOrAnimRes(fieldSpriteManager, narcId, fileId, compressed, GF_GFX_RES_TYPE_ANIM, resId);
 }
 
-void ov01_021E8418(UnkStruct_ov01_021E7FDC *a0, NarcId narcId, int fileId, BOOL compressed, NNS_G2D_VRAM_TYPE vramType, int resId) {
+void FieldSpriteManager_AddCharRes(FieldSpriteManager *fieldSpriteManager, NarcId narcId, int fileId, BOOL compressed, NNS_G2D_VRAM_TYPE vramType, int resId) {
     SpriteResource *spriteResource;
 
-    if (!GF2DGfxResObjExistsById(a0->spriteResManagers[GF_GFX_RES_TYPE_CHAR], resId)) {
+    if (!GF2DGfxResObjExistsById(fieldSpriteManager->spriteResManagers[GF_GFX_RES_TYPE_CHAR], resId)) {
         GF_ASSERT(FALSE);
         return;
     }
-    spriteResource = AddCharResObjFromNarc(a0->spriteResManagers[GF_GFX_RES_TYPE_CHAR], narcId, fileId, compressed, resId, vramType, (enum HeapID)a0->heapID);
+    spriteResource = AddCharResObjFromNarc(fieldSpriteManager->spriteResManagers[GF_GFX_RES_TYPE_CHAR], narcId, fileId, compressed, resId, vramType, (enum HeapID)fieldSpriteManager->heapID);
     if (spriteResource != NULL) {
         sub_0200ADA4(spriteResource);
-        ov01_021E847C(a0->spriteResObjLists[GF_GFX_RES_TYPE_CHAR], spriteResource);
+        TryAddSpriteResourceToObjList(fieldSpriteManager->spriteResObjLists[GF_GFX_RES_TYPE_CHAR], spriteResource);
     } else {
         GF_ASSERT(FALSE);
     }
 }
 
-BOOL ov01_021E847C(GF_2DGfxResObjList *objList, SpriteResource *spriteResource) {
+static BOOL TryAddSpriteResourceToObjList(GF_2DGfxResObjList *objList, SpriteResource *spriteResource) {
     int i;
 
     for (i = 0; i < objList->max; ++i) {
@@ -178,16 +178,16 @@ BOOL ov01_021E847C(GF_2DGfxResObjList *objList, SpriteResource *spriteResource) 
     return FALSE;
 }
 
-void ov01_021E84B0(UnkStruct_ov01_021E7FDC *a0, NarcId narcId, int fileId, BOOL compressed, GfGfxResType resType, int resId) {
+static void FieldSpriteManager_AddCellOrAnimRes(FieldSpriteManager *fieldSpriteManager, NarcId narcId, int fileId, BOOL compressed, GfGfxResType resType, int resId) {
     SpriteResource *spriteResource;
 
-    if (!GF2DGfxResObjExistsById(a0->spriteResManagers[resType], resId)) {
+    if (!GF2DGfxResObjExistsById(fieldSpriteManager->spriteResManagers[resType], resId)) {
         GF_ASSERT(FALSE);
         return;
     }
-    spriteResource = AddCellOrAnimResObjFromNarc(a0->spriteResManagers[resType], narcId, fileId, compressed, resId, resType, (enum HeapID)a0->heapID);
+    spriteResource = AddCellOrAnimResObjFromNarc(fieldSpriteManager->spriteResManagers[resType], narcId, fileId, compressed, resId, resType, (enum HeapID)fieldSpriteManager->heapID);
     if (spriteResource != NULL) {
-        if (ov01_021E847C(a0->spriteResObjLists[resType], spriteResource) != TRUE) {
+        if (TryAddSpriteResourceToObjList(fieldSpriteManager->spriteResObjLists[resType], spriteResource) != TRUE) {
             GF_ASSERT(FALSE);
             return;
         }
@@ -196,38 +196,38 @@ void ov01_021E84B0(UnkStruct_ov01_021E7FDC *a0, NarcId narcId, int fileId, BOOL 
     }
 }
 
-ManagedSprite *ov01_021E851C(UnkStruct_ov01_021E7FDC *a0, const UnkTemplate_ov01_021E851C *a1) {
+ManagedSprite *FieldSpriteManager_CreateManagedSprite(FieldSpriteManager *fieldSpriteManager, const ManagedSpriteTemplate *a1) {
     SpriteTemplate spriteTemplate;
     int resIds[6];
     ManagedSprite *sprite;
     int palIndex;
     int i;
 
-    sprite = Heap_Alloc((enum HeapID)a0->heapID, sizeof(ManagedSprite));
-    sprite->spriteResourceHeaderList = Heap_Alloc((enum HeapID)a0->heapID, sizeof(SpriteResourceHeaderList));
-    sprite->spriteResourceHeaderList->headers = Heap_Alloc((enum HeapID)a0->heapID, sizeof(SpriteResourcesHeader));
+    sprite = Heap_Alloc((enum HeapID)fieldSpriteManager->heapID, sizeof(ManagedSprite));
+    sprite->spriteResourceHeaderList = Heap_Alloc((enum HeapID)fieldSpriteManager->heapID, sizeof(SpriteResourceHeaderList));
+    sprite->spriteResourceHeaderList->headers = Heap_Alloc((enum HeapID)fieldSpriteManager->heapID, sizeof(SpriteResourcesHeader));
     sprite->spriteResourcesHeader = &sprite->spriteResourceHeaderList->headers[0];
     for (i = 0; i < GF_GFX_RES_TYPE_MAX; ++i) {
-        resIds[i] = a1->resIds[i];
+        resIds[i] = a1->resIdList[i];
     }
-    if (a0->spriteResManagers[GF_GFX_RES_TYPE_MCEL] == NULL || a0->spriteResManagers[GF_GFX_RES_TYPE_MANM] == NULL) {
+    if (fieldSpriteManager->spriteResManagers[GF_GFX_RES_TYPE_MCEL] == NULL || fieldSpriteManager->spriteResManagers[GF_GFX_RES_TYPE_MANM] == NULL) {
         resIds[GF_GFX_RES_TYPE_MCEL] = -1;
         resIds[GF_GFX_RES_TYPE_MANM] = -1;
     } else {
-        if (resIds[GF_GFX_RES_TYPE_MCEL] != -1 && !GF2DGfxResObjExistsById(a0->spriteResManagers[GF_GFX_RES_TYPE_MCEL], resIds[GF_GFX_RES_TYPE_MCEL])) {
+        if (resIds[GF_GFX_RES_TYPE_MCEL] != -1 && !GF2DGfxResObjExistsById(fieldSpriteManager->spriteResManagers[GF_GFX_RES_TYPE_MCEL], resIds[GF_GFX_RES_TYPE_MCEL])) {
             resIds[GF_GFX_RES_TYPE_MCEL] = -1;
         }
-        if (resIds[GF_GFX_RES_TYPE_MANM] != -1 && !GF2DGfxResObjExistsById(a0->spriteResManagers[GF_GFX_RES_TYPE_MANM], resIds[GF_GFX_RES_TYPE_MANM])) {
+        if (resIds[GF_GFX_RES_TYPE_MANM] != -1 && !GF2DGfxResObjExistsById(fieldSpriteManager->spriteResManagers[GF_GFX_RES_TYPE_MANM], resIds[GF_GFX_RES_TYPE_MANM])) {
             resIds[GF_GFX_RES_TYPE_MANM] = -1;
         }
     }
-    CreateSpriteResourcesHeader(sprite->spriteResourcesHeader, resIds[GF_GFX_RES_TYPE_CHAR], resIds[GF_GFX_RES_TYPE_PLTT], resIds[GF_GFX_RES_TYPE_CELL], resIds[GF_GFX_RES_TYPE_ANIM], resIds[GF_GFX_RES_TYPE_MCEL], resIds[GF_GFX_RES_TYPE_MANM], a1->transfer, a1->priority, a0->spriteResManagers[GF_GFX_RES_TYPE_CHAR], a0->spriteResManagers[GF_GFX_RES_TYPE_PLTT], a0->spriteResManagers[GF_GFX_RES_TYPE_CELL], a0->spriteResManagers[GF_GFX_RES_TYPE_ANIM], a0->spriteResManagers[GF_GFX_RES_TYPE_MCEL], a0->spriteResManagers[GF_GFX_RES_TYPE_MANM]);
-    spriteTemplate.spriteList = a0->spriteList;
+    CreateSpriteResourcesHeader(sprite->spriteResourcesHeader, resIds[GF_GFX_RES_TYPE_CHAR], resIds[GF_GFX_RES_TYPE_PLTT], resIds[GF_GFX_RES_TYPE_CELL], resIds[GF_GFX_RES_TYPE_ANIM], resIds[GF_GFX_RES_TYPE_MCEL], resIds[GF_GFX_RES_TYPE_MANM], a1->vramTransfer, a1->bgPriority, fieldSpriteManager->spriteResManagers[GF_GFX_RES_TYPE_CHAR], fieldSpriteManager->spriteResManagers[GF_GFX_RES_TYPE_PLTT], fieldSpriteManager->spriteResManagers[GF_GFX_RES_TYPE_CELL], fieldSpriteManager->spriteResManagers[GF_GFX_RES_TYPE_ANIM], fieldSpriteManager->spriteResManagers[GF_GFX_RES_TYPE_MCEL], fieldSpriteManager->spriteResManagers[GF_GFX_RES_TYPE_MANM]);
+    spriteTemplate.spriteList = fieldSpriteManager->spriteList;
     spriteTemplate.header = sprite->spriteResourcesHeader;
     spriteTemplate.position.x = FX32_CONST(a1->x);
     spriteTemplate.position.y = FX32_CONST(a1->y);
     spriteTemplate.position.z = FX32_CONST(a1->z);
-    if (a1->vramType == NNS_G2D_VRAM_TYPE_2DSUB) {
+    if (a1->vram == NNS_G2D_VRAM_TYPE_2DSUB) {
         spriteTemplate.position.y += 192 * FX32_ONE;
     }
     spriteTemplate.scale.x = FX32_ONE;
@@ -235,27 +235,27 @@ ManagedSprite *ov01_021E851C(UnkStruct_ov01_021E7FDC *a0, const UnkTemplate_ov01
     spriteTemplate.scale.z = FX32_ONE;
     spriteTemplate.rotation = 0;
     spriteTemplate.drawPriority = a1->drawPriority;
-    spriteTemplate.whichScreen = a1->vramType;
-    spriteTemplate.heapID = (enum HeapID)a0->heapID;
+    spriteTemplate.whichScreen = a1->vram;
+    spriteTemplate.heapID = (enum HeapID)fieldSpriteManager->heapID;
     sprite->sprite = Sprite_CreateAffine(&spriteTemplate);
     if (sprite->sprite != NULL) {
         palIndex = Sprite_GetPalIndex(sprite->sprite);
-        Sprite_SetAnimCtrlSeq(sprite->sprite, a1->animSeq);
-        Sprite_SetPaletteOverride(sprite->sprite, palIndex + a1->palIndex);
+        Sprite_SetAnimCtrlSeq(sprite->sprite, a1->animation);
+        Sprite_SetPaletteOverride(sprite->sprite, palIndex + a1->pal);
     } else {
         GF_ASSERT(FALSE);
     }
     return sprite;
 }
 
-void ov01_021E86F4(UnkStruct_ov01_021E7FDC *a0) {
+void FieldSpriteManager_ReleaseWithoutResDat(FieldSpriteManager *fieldSpriteManager) {
     u32 i;
 
-    SpriteList_Delete(a0->spriteList);
-    sub_0200AED4(a0->spriteResObjLists[GF_GFX_RES_TYPE_CHAR]);
-    sub_0200B0CC(a0->spriteResObjLists[GF_GFX_RES_TYPE_PLTT]);
-    for (i = 0; i < a0->numResMans; ++i) {
-        Delete2DGfxResObjList(a0->spriteResObjLists[i]);
-        Destroy2DGfxResObjMan(a0->spriteResManagers[i]);
+    SpriteList_Delete(fieldSpriteManager->spriteList);
+    sub_0200AED4(fieldSpriteManager->spriteResObjLists[GF_GFX_RES_TYPE_CHAR]);
+    sub_0200B0CC(fieldSpriteManager->spriteResObjLists[GF_GFX_RES_TYPE_PLTT]);
+    for (i = 0; i < fieldSpriteManager->numResMans; ++i) {
+        Delete2DGfxResObjList(fieldSpriteManager->spriteResObjLists[i]);
+        Destroy2DGfxResObjMan(fieldSpriteManager->spriteResManagers[i]);
     }
 }

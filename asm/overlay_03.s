@@ -8500,7 +8500,7 @@ ov03_022581BC: ; 0x022581BC
 	add r0, #0x94
 	mov r2, #0x13
 	mov r3, #0xb
-	bl UnkFieldSpriteRenderer_ov01_021E7FDC_Init
+	bl FieldSpriteManager_InitWithResDat
 	add r0, r7, #0
 	str r0, [sp]
 	add r0, #0x94
@@ -8511,7 +8511,7 @@ ov03_022581BC: ; 0x022581BC
 _022581DA:
 	ldr r0, [sp]
 	add r1, r4, #0
-	bl ov01_021E81F0
+	bl FieldSpriteManager_CreateSprite
 	mov r1, #0x7e
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -8604,7 +8604,7 @@ _02258296:
 	blo _02258296
 	ldr r0, [sp]
 	add r0, #0x94
-	bl UnkFieldSpriteRenderer_ov01_021E7FDC_Release
+	bl FieldSpriteManager_ReleaseWithResDat
 	ldr r0, [sp]
 	mov r1, #0
 	add r0, #0x94
