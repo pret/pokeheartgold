@@ -6,7 +6,7 @@
 #include "unk_0200A090.h"
 #include "unk_0200ACF0.h"
 
-void ov01_021E847C(GF_2DGfxResObjList *a0, SpriteResource *a1);
+BOOL ov01_021E847C(GF_2DGfxResObjList *a0, SpriteResource *a1);
 void ov01_021E84B0(UnkStruct_ov01_021E7FDC *a0, NarcId a1, int a2, BOOL a3, GfGfxResType a4, int a5);
 
 void UnkFieldSpriteRenderer_ov01_021E7FDC_Init(UnkStruct_ov01_021E7FDC *a0, const u16 *resDatIdxs, int numSprites, enum HeapID heapID) {
@@ -159,6 +159,38 @@ void ov01_021E8418(UnkStruct_ov01_021E7FDC *a0, NarcId a1, int a2, BOOL a3, NNS_
     if (r4 != NULL) {
         sub_0200ADA4(r4);
         ov01_021E847C(a0->spriteResObjLists[GF_GFX_RES_TYPE_CHAR], r4);
+    } else {
+        GF_ASSERT(FALSE);
+    }
+}
+
+BOOL ov01_021E847C(GF_2DGfxResObjList *a0, SpriteResource *a1) {
+    int i;
+
+    for (i = 0; i < a0->max; ++i) {
+        if (a0->obj[i] == NULL) {
+            a0->obj[i] = a1;
+            ++a0->num;
+            return TRUE;
+        }
+    }
+
+    return FALSE;
+}
+
+void ov01_021E84B0(UnkStruct_ov01_021E7FDC *a0, NarcId a1, int a2, BOOL a3, GfGfxResType a4, int a5) {
+    SpriteResource *r1;
+
+    if (!GF2DGfxResObjExistsById(a0->spriteResManagers[a4], a5)) {
+        GF_ASSERT(FALSE);
+        return;
+    }
+    r1 = AddCellOrAnimResObjFromNarc(a0->spriteResManagers[a4], a1, a2, a3, a5, a4, (enum HeapID)a0->heapID);
+    if (r1 != NULL) {
+        if (ov01_021E847C(a0->spriteResObjLists[a4], r1) != TRUE) {
+            GF_ASSERT(FALSE);
+            return;
+        }
     } else {
         GF_ASSERT(FALSE);
     }
