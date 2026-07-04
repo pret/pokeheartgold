@@ -1,0 +1,25 @@
+var scrcmd__17_8c =
+[
+    [ "ScrCmd_297", "scrcmd__17_8c.html#a92d97cef0e8bee27058972106582ff11", null ],
+    [ "ScrCmd_298", "scrcmd__17_8c.html#a41a4c6249022aab4612989f0be83a48a", null ],
+    [ "ScrCmd_302", "scrcmd__17_8c.html#af715e34ce5c08c75ab670b73a7d03b60", null ],
+    [ "ScrCmd_303", "scrcmd__17_8c.html#af02c2aa62c86bd56d56a007e2261148f", null ],
+    [ "ScrCmd_304", "scrcmd__17_8c.html#a72cc04672f8b75d46538e5af5e7b0df1", null ],
+    [ "ScrCmd_305", "scrcmd__17_8c.html#a4a674399e9bbeaf0723ba85d2cc49a92", null ],
+    [ "ScrCmd_306", "scrcmd__17_8c.html#adfc96c7c5f06a3c3338fc731ad62ffda", null ],
+    [ "ScrCmd_CheckBadge", "scrcmd__17_8c.html#af506c674ef9d9932bc161ee46dd040b7", null ],
+    [ "ScrCmd_CheckEscortMode", "scrcmd__17_8c.html#a4f2f72b9d81df65e08f1f157c64fd035", null ],
+    [ "ScrCmd_CheckPokedex", "scrcmd__17_8c.html#a9f11bb673ee3a9c2b12cc3d14f137b14", null ],
+    [ "ScrCmd_CheckRunningShoes", "scrcmd__17_8c.html#a520d4befe2e3d334f5f0abdc31ec67c6", null ],
+    [ "ScrCmd_ClearEscortMode", "scrcmd__17_8c.html#ab760357306adfd369049cb1121db9ef8", null ],
+    [ "ScrCmd_CountBadges", "scrcmd__17_8c.html#a81e2d331b45ed7bdc3bfac9896b30491", null ],
+    [ "ScrCmd_DefogAction", "scrcmd__17_8c.html#a451844a162ece119a9d3e8a8d2e03ddd", null ],
+    [ "ScrCmd_FlashAction", "scrcmd__17_8c.html#afd31ed6279b157ee29ccf032bcf9b496", null ],
+    [ "ScrCmd_GiveBadge", "scrcmd__17_8c.html#a8a836f334f036fa2d8b304edc0e06139", null ],
+    [ "ScrCmd_GivePokedex", "scrcmd__17_8c.html#aae52bbdfb52dcb7f9fe7e3363ac05026", null ],
+    [ "ScrCmd_GiveRunningShoes", "scrcmd__17_8c.html#afc73b1c70712349d07c75bb23697c8db", null ],
+    [ "ScrCmd_RocketCostumeFlagAction", "scrcmd__17_8c.html#a5d77fac796ffac3c4079b4944803eb3a", null ],
+    [ "ScrCmd_RocketCostumeFlagCheck", "scrcmd__17_8c.html#acfdcc3b7147a9247376226c13afe94f3", null ],
+    [ "ScrCmd_SetEscortMode", "scrcmd__17_8c.html#a337c13a1ad5fd7b21c5a662a81d6eacd", null ],
+    [ "ScrCmd_StrengthFlagAction", "scrcmd__17_8c.html#a5bdaf720e0b95a0a02c31d3bd2902a58", null ]
+];

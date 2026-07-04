@@ -12,3 +12,5 @@ The repository becomes complete when
 1) All code is translated to C
 2) All data are exported to a source format, be it text or binary
 3) Nintendo libraries and headers can be hotswapped in (allowing full access to available hardware features)
+
+[Documentation](docs/index.html) created using [doxygen](https://doxygen.nl)

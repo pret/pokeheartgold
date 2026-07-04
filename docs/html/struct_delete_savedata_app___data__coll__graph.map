@@ -1,0 +1,36 @@
+<map id="DeleteSavedataApp_Data" name="DeleteSavedataApp_Data">
+<area shape="rect" id="Node000001" title=" " alt="" coords="302,489,474,514"/>
+<area shape="rect" id="Node000002" href="$struct_string.html" title=" " alt="" coords="20,102,76,128"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="30,143,16,173,8,210,8,406,10,416,15,425,37,442,70,457,111,468,208,485,304,496,299,496,207,490,110,474,68,462,34,447,11,429,5,418,3,406,3,210,11,172,31,138"/>
+<area shape="rect" id="Node000012" href="$struct_l_i_s_t_m_e_n_u_i_t_e_m.html" title=" " alt="" coords="205,199,326,224"/>
+<area shape="poly" id="edge13_Node000012_Node000002" title=" " alt="" coords="89,132,240,196,235,200,90,137"/>
+<area shape="rect" id="Node000003" href="$struct_bg_config.html" title=" " alt="" coords="433,102,508,128"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="489,139,506,172,513,210,513,406,511,422,505,436,485,460,457,478,429,491,427,485,455,473,481,456,501,434,506,421,508,406,508,210,501,174,487,144"/>
+<area shape="rect" id="Node000009" href="$struct_window.html" title=" " alt="" coords="396,199,465,224"/>
+<area shape="poly" id="edge9_Node000009_Node000003" title=" " alt="" coords="443,136,434,153,430,176,431,199,426,197,424,176,430,151,439,140"/>
+<area shape="rect" id="Node000004" href="$struct_background.html" title=" " alt="" coords="426,5,516,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="472,44,473,102,468,100,469,49"/>
+<area shape="rect" id="Node000005" href="$struct_msg_data.html" title=" " alt="" coords="166,392,240,418"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="225,426,247,446,271,462,300,476,333,488,327,488,298,481,268,467,243,450,223,431"/>
+<area shape="rect" id="Node000006" href="$struct___m_a_t.html" title=" " alt="" coords="94,295,149,321"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="135,332,159,366,187,391,182,392,155,370,134,338"/>
+<area shape="rect" id="Node000007" href="$struct___m_a_t___e_n_t_r_y.html" title=" " alt="" coords="67,199,176,224"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="122,237,124,295,119,294,121,242"/>
+<area shape="rect" id="Node000008" href="$struct_n_a_r_c.html" title=" " alt="" coords="172,295,233,321"/>
+<area shape="poly" id="edge7_Node000005_Node000008" title=" " alt="" coords="204,334,205,392,200,390,201,338"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="434,238,435,359,432,421,422,466,404,491,401,486,418,464,426,420,430,358,430,242"/>
+<area shape="rect" id="Node000011" href="$struct_list_menu2_d_template.html" title=" " alt="" coords="257,295,402,321"/>
+<area shape="poly" id="edge14_Node000011_Node000009" title=" " alt="" coords="392,230,370,250,351,273,337,297,333,293,346,270,366,246,388,234"/>
+<area shape="rect" id="Node000010" href="$struct_list_menu2_d.html" title=" " alt="" coords="292,392,383,418"/>
+<area shape="poly" id="edge10_Node000001_Node000010" title=" " alt="" coords="337,431,339,449,344,463,354,476,368,489,363,488,350,480,340,466,334,450,333,435"/>
+<area shape="poly" id="edge11_Node000010_Node000011" title=" " alt="" coords="333,334,339,393,334,390,330,338"/>
+<area shape="poly" id="edge12_Node000011_Node000012" title=" " alt="" coords="276,236,295,270,317,295,312,295,291,273,275,241"/>
+<area shape="rect" id="Node000013" href="$struct_save_data.html" title=" " alt="" coords="687,392,766,418"/>
+<area shape="poly" id="edge15_Node000001_Node000013" title=" " alt="" coords="676,422,530,467,439,491,438,485,529,462,670,423"/>
+<area shape="rect" id="Node000014" href="$struct_save_array_header.html" title=" " alt="" coords="595,295,720,321"/>
+<area shape="poly" id="edge16_Node000013_Node000014" title=" " alt="" coords="666,334,683,366,709,392,704,391,679,370,663,339"/>
+<area shape="rect" id="Node000015" href="$struct_save_slot_spec.html" title=" " alt="" coords="744,295,848,321"/>
+<area shape="poly" id="edge17_Node000013_Node000015" title=" " alt="" coords="788,334,769,370,744,394,742,389,765,366,783,337"/>
+<area shape="rect" id="Node000016" href="$struct_async_write_manager.html" title=" " alt="" coords="872,295,1010,321"/>
+<area shape="poly" id="edge18_Node000013_Node000016" title=" " alt="" coords="926,332,907,354,884,370,855,383,824,393,767,403,766,398,823,388,853,378,881,366,903,350,921,334"/>
+</map>

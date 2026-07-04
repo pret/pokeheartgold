@@ -1,0 +1,22 @@
+<map id="PartyGaugeArrow" name="PartyGaugeArrow">
+<area shape="rect" id="Node000001" title=" " alt="" coords="261,473,385,499"/>
+<area shape="rect" id="Node000002" href="$struct_managed_sprite.html" title=" " alt="" coords="194,276,302,302"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="242,315,237,346,235,380,238,415,251,448,263,461,281,473,275,472,260,465,247,450,233,417,229,380,232,346,239,319"/>
+<area shape="rect" id="Node000003" href="$struct_sprite.html" title=" " alt="" coords="68,111,124,136"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="125,143,153,168,173,200,192,231,236,275,230,276,187,235,168,202,149,171,126,149"/>
+<area shape="poly" id="edge5_Node000003_Node000003" title=" " alt="" coords="139,112,148,116,150,124,142,135,126,136,123,132,140,130,145,123,144,120,140,117"/>
+<area shape="rect" id="Node000004" href="$struct_sprite_list.html" title=" " alt="" coords="18,276,94,302"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="53,140,33,153,17,171,10,186,8,200,17,232,29,255,46,275,41,276,25,258,12,234,3,200,5,185,12,168,30,148,55,135"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="60,260,94,134,93,139,65,261"/>
+<area shape="rect" id="Node000005" href="$struct_sprite_resources_header.html" title=" " alt="" coords="189,5,350,31"/>
+<area shape="poly" id="edge6_Node000002_Node000005" title=" " alt="" coords="267,44,263,102,251,276,246,275,258,102,265,48"/>
+<area shape="rect" id="Node000006" href="$struct_sprite_resource_header_list.html" title=" " alt="" coords="417,111,591,136"/>
+<area shape="poly" id="edge8_Node000006_Node000005" title=" " alt="" coords="311,35,479,109,474,111,311,40"/>
+<area shape="poly" id="edge7_Node000002_Node000006" title=" " alt="" coords="471,147,269,278,266,273,474,143"/>
+<area shape="rect" id="Node000007" href="$struct_sys_task.html" title=" " alt="" coords="401,276,474,302"/>
+<area shape="poly" id="edge9_Node000001_Node000007" title=" " alt="" coords="412,310,383,346,369,373,363,396,357,420,347,450,333,475,329,470,342,448,352,419,358,395,364,371,378,343,408,313"/>
+<area shape="poly" id="edge12_Node000007_Node000007" title=" " alt="" coords="472,270,491,274,498,280,500,289,496,300,486,307,472,308,458,305,458,299,472,303,484,301,492,297,495,289,493,283,489,278,473,275"/>
+<area shape="rect" id="Node000008" href="$struct_sys_task_queue.html" title=" " alt="" coords="433,473,543,499"/>
+<area shape="poly" id="edge11_Node000008_Node000007" title=" " alt="" coords="431,315,425,346,422,380,424,415,435,448,446,461,461,473,456,472,442,464,431,450,419,416,417,380,420,345,427,319"/>
+<area shape="poly" id="edge10_Node000007_Node000008" title=" " alt="" coords="513,459,519,448,529,420,534,396,531,373,519,346,497,321,470,305,471,299,500,317,524,343,536,371,539,396,534,421,524,450,516,464"/>
+</map>

@@ -1,0 +1,25 @@
+var struct_pokegear_radio_app_data =
+[
+    [ "bgmBak", "struct_pokegear_radio_app_data.html#aabc5c32a87664998dd44648336609c62", null ],
+    [ "cursorX", "struct_pokegear_radio_app_data.html#aa748a6107562a9d6bc62a8603fad8486", null ],
+    [ "cursorY", "struct_pokegear_radio_app_data.html#a3dbc3ed83d84f9b3a964479391678fc1", null ],
+    [ "heapID", "struct_pokegear_radio_app_data.html#a24d91245326308db167b1a5ca2bf9463", null ],
+    [ "isDraggingCursor", "struct_pokegear_radio_app_data.html#aa325fea1098bce7908aaf234b00bedd0", null ],
+    [ "pNSCR", "struct_pokegear_radio_app_data.html#a74ee156b47cba370c432e951d2244717", null ],
+    [ "pokegear", "struct_pokegear_radio_app_data.html#a63fe6fafc9f24ee798f877320b4d9807", null ],
+    [ "screenData", "struct_pokegear_radio_app_data.html#af2cad3394f70b61c1c2f3c6347fd2613", null ],
+    [ "selectedButton", "struct_pokegear_radio_app_data.html#a80c3b766a261ca3a3a30d91f9da8512e", null ],
+    [ "showData", "struct_pokegear_radio_app_data.html#a71109d1f1559bc76e8a6cef7de3997eb", null ],
+    [ "signalStrength", "struct_pokegear_radio_app_data.html#a303e7d0711e90b19d2a1baa4bfce059a", null ],
+    [ "skin", "struct_pokegear_radio_app_data.html#a515796b3fe57e9121430c2943dfe4cb2", null ],
+    [ "sprites", "struct_pokegear_radio_app_data.html#a0e3b5d5a4b1002748bfc75f527241007", null ],
+    [ "state", "struct_pokegear_radio_app_data.html#a15d8eb22ba1085592c1042eb50b5e745", null ],
+    [ "station", "struct_pokegear_radio_app_data.html#a05ec4bb73e44cce06e517c0be333a2f4", null ],
+    [ "stationActive", "struct_pokegear_radio_app_data.html#a79054e8c2699ed2d59f58cae1aa28e7e", null ],
+    [ "stationSelection", "struct_pokegear_radio_app_data.html#a0d074e0718ccc1677ea769129e6520ba", null ],
+    [ "substate", "struct_pokegear_radio_app_data.html#ae88b3c71ecc28ba9abc5ffcc00fafc78", null ],
+    [ "unk_24_0", "struct_pokegear_radio_app_data.html#aeef685487c326e8ad3f9f9ca00d8edd4", null ],
+    [ "windows", "struct_pokegear_radio_app_data.html#aeba971e5b52b902d197de5ccc965d324", null ],
+    [ "windowScrollFinished", "struct_pokegear_radio_app_data.html#ab847ef5019e6f8020dd441927eee89a4", null ],
+    [ "windowScrollStep", "struct_pokegear_radio_app_data.html#a4fcf158f88398b233b20f466a3da786d", null ]
+];

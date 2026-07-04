@@ -1,0 +1,35 @@
+var g2d___renderer_8h =
+[
+    [ "NNSG2dRenderSurface", "struct_n_n_s_g2d_render_surface.html", "struct_n_n_s_g2d_render_surface" ],
+    [ "NNSG2dRendererInstance", "struct_n_n_s_g2d_renderer_instance.html", "struct_n_n_s_g2d_renderer_instance" ],
+    [ "NNSG2dRendererInstance", "g2d___renderer_8h.html#abcaf78f8ead1b15e1a53ed711f8cb2dc", null ],
+    [ "NNSG2dRendererOverwriteParam", "g2d___renderer_8h.html#a9f52f8c4ddd087a5e60b5e34e7ba622f", null ],
+    [ "NNSG2dRenderSurface", "g2d___renderer_8h.html#adb76fe16c2b357dc5597ddcf6d399b79", null ],
+    [ "NNSG2dRndCellCullingFunction", "g2d___renderer_8h.html#ace8884fbe0e7e93a1f5552c5ae7cfeea", null ],
+    [ "NNSG2dRndDrawCellCallBack", "g2d___renderer_8h.html#a25b256482fad3ae1d01186f455471bcc", null ],
+    [ "NNSG2dRndDrawOamCallBack", "g2d___renderer_8h.html#a51838f69dd5d31a3dd3a0ed8fd022c56", null ],
+    [ "NNSG2dRendererOverwriteParam", "g2d___renderer_8h.html#abbd810e84266bb5eff9726d428a71d3e", [
+      [ "NNS_G2D_RND_OVERWRITE_NONE", "g2d___renderer_8h.html#abbd810e84266bb5eff9726d428a71d3ea0597ceb547482c2ef029dcb8f1c60a45", null ],
+      [ "NNS_G2D_RND_OVERWRITE_PRIORITY", "g2d___renderer_8h.html#abbd810e84266bb5eff9726d428a71d3ea81d53d88159bdab59c2030a8576c8fff", null ],
+      [ "NNS_G2D_RND_OVERWRITE_PLTTNO", "g2d___renderer_8h.html#abbd810e84266bb5eff9726d428a71d3ea6a0221e7b3128d83b1215cc181aae620", null ],
+      [ "NNS_G2D_RND_OVERWRITE_MOSAIC", "g2d___renderer_8h.html#abbd810e84266bb5eff9726d428a71d3eaa0866f3a999679eec2f930656be91217", null ],
+      [ "NNS_G2D_RND_OVERWRITE_OBJMODE", "g2d___renderer_8h.html#abbd810e84266bb5eff9726d428a71d3ea5b1e0f3d43a72d1839e9593a9ec7a15c", null ],
+      [ "NNS_G2D_RND_OVERWRITE_PLTTNO_OFFS", "g2d___renderer_8h.html#abbd810e84266bb5eff9726d428a71d3eae232279a27cc75ea59c97c96aa5a0620", null ],
+      [ "NNS_G2D_RND_OVERWRITE_MAX", "g2d___renderer_8h.html#abbd810e84266bb5eff9726d428a71d3ea303ff4bcec95cb0766df71934163d391", null ]
+    ] ],
+    [ "NNS_G2dBeginRendering", "g2d___renderer_8h.html#a7ccdff419b14897955a216c086ee1285", null ],
+    [ "NNS_G2dBeginRenderingEx", "g2d___renderer_8h.html#a5c04cff564b8ccac0a4f2ea1c545d597", null ],
+    [ "NNS_G2dDrawCell", "g2d___renderer_8h.html#a247f4da1d41162c9f4b2c6ea19f79228", null ],
+    [ "NNS_G2dDrawCellAnimation", "g2d___renderer_8h.html#a274e0589a0db2513c2f08cad5adb8e50", null ],
+    [ "NNS_G2dDrawMultiCell", "g2d___renderer_8h.html#acab14d79470e2a0a9ca37d68a90dae89", null ],
+    [ "NNS_G2dDrawMultiCellAnimation", "g2d___renderer_8h.html#a82966c0f594e81b953012664f9b12257", null ],
+    [ "NNS_G2dEndRendering", "g2d___renderer_8h.html#a6b069ee36152538c499b9ff6421302eb", null ],
+    [ "NNS_G2dInitRenderer", "g2d___renderer_8h.html#a70b5a0d755a55bfec48435e525ddf159", null ],
+    [ "NNS_G2dPopMtx", "g2d___renderer_8h.html#ac3d162a0b9d1730d62511472d657782b", null ],
+    [ "NNS_G2dPushMtx", "g2d___renderer_8h.html#a3812359dc1d9c569e4b1caa98adddb53", null ],
+    [ "NNS_G2dRotZ", "g2d___renderer_8h.html#aebcef803d3905de326d8cc04eb0c0f33", null ],
+    [ "NNS_G2dScale", "g2d___renderer_8h.html#ae04890aeceff37a02aee67f00088a266", null ],
+    [ "NNS_G2dSetRendererImageProxy", "g2d___renderer_8h.html#a798df9caec23c6900becfd7545c97972", null ],
+    [ "NNS_G2dSetTrans", "g2d___renderer_8h.html#ab725a342fdaaa3e8566cf38e90b3a161", null ],
+    [ "NNS_G2dTranslate", "g2d___renderer_8h.html#a59e93639781cf753568fe37ff290da62", null ]
+];

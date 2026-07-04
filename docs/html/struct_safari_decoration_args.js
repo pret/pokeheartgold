@@ -1,0 +1,27 @@
+var struct_safari_decoration_args =
+[
+    [ "deltaX", "struct_safari_decoration_args.html#a0b2fd890ae0f20e25f3ede01e26731a3", null ],
+    [ "deltaY", "struct_safari_decoration_args.html#ac512fb08d20e3b1b46fe94955e3db1fd", null ],
+    [ "saveData", "struct_safari_decoration_args.html#ac5ebaa67a409782ecac2e9d7fca65631", null ],
+    [ "unk04", "struct_safari_decoration_args.html#a68f2c61a4f7feb6b035e739a934b9cae", null ],
+    [ "unk08", "struct_safari_decoration_args.html#a2b65da5445d81d4436046a29daeb8978", null ],
+    [ "unk0A", "struct_safari_decoration_args.html#ab35248a4014cba48777159c2075bd55f", null ],
+    [ "unk0C", "struct_safari_decoration_args.html#a412093fdd3efbd9d7caf8504b5c2b03b", null ],
+    [ "unk0D", "struct_safari_decoration_args.html#ad2273ec7f5e216f2d1f3e601439af382", null ],
+    [ "unk0E", "struct_safari_decoration_args.html#af6ebc6c59738424d040f13ec19717420", null ],
+    [ "unk0F", "struct_safari_decoration_args.html#adcd196a5cfacf9fa426a3e0aece7446a", null ],
+    [ "unk10", "struct_safari_decoration_args.html#a2db7194d2506b3f2c4808b84056cb7b0", null ],
+    [ "unk11", "struct_safari_decoration_args.html#a4dfe7396644a4516dbc9c26740715312", null ],
+    [ "unk12", "struct_safari_decoration_args.html#a2573c70971c5926e20b53793446bf684", null ],
+    [ "unk13", "struct_safari_decoration_args.html#a85c074e4b15145372c3f063bcc66ff0f", null ],
+    [ "unk14", "struct_safari_decoration_args.html#aaab8d49cf5eec6348007fba134b72351", null ],
+    [ "unk15", "struct_safari_decoration_args.html#a51593e6017cf034cf4f01e4ef15cd807", null ],
+    [ "unk16", "struct_safari_decoration_args.html#a37f8ea7981c74079773b46fa480dffd0", null ],
+    [ "unk17", "struct_safari_decoration_args.html#ae21157ae250cf4a2729ca455a6893057", null ],
+    [ "unk18", "struct_safari_decoration_args.html#a0e9a71c80ae1b9ceb9fc3ea6757aeeeb", null ],
+    [ "unk19", "struct_safari_decoration_args.html#aedc968bceff8eb6bd735acefc1f513b4", null ],
+    [ "unk1A", "struct_safari_decoration_args.html#a5b5540a70a690a838b29272bd6ea33e2", null ],
+    [ "unk1B", "struct_safari_decoration_args.html#aaf7c9f624dcbed47f11338307738d97f", null ],
+    [ "unk1C", "struct_safari_decoration_args.html#a0e692c39aeb3afa1535c40cd0f449a69", null ],
+    [ "unk20", "struct_safari_decoration_args.html#a43de8f3ee834d66b86c8b24471378d28", null ]
+];

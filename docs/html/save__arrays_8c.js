@@ -1,0 +1,25 @@
+var save__arrays_8c =
+[
+    [ "DECL_CHUNK", "save__arrays_8c.html#ad213ad265b23409d931c7059a4cd6e53", null ],
+    [ "DECL_CHUNK_EX", "save__arrays_8c.html#a72635a13751fe565b1fd36a4d2e2de8c", null ],
+    [ "LoadHallOfFame", "save__arrays_8c.html#aafb7e1fceff17e48b06804934436b665", null ],
+    [ "PCStorage_GetNumBoxes", "save__arrays_8c.html#a6d91937bfac3ad8a553b4391a1d15adb", null ],
+    [ "PCStorage_GetSizeOfBox", "save__arrays_8c.html#a39954d013d44651281f09349c81269a3", null ],
+    [ "Save_GetPCBoxModifiedFlags", "save__arrays_8c.html#ae3dbee88e219b95ed24076347b6f32d9", null ],
+    [ "Save_MigratedPokemon_Get", "save__arrays_8c.html#a663f0fa427c9975e64e70dfd952ac7e5", null ],
+    [ "Save_MysteryGift_Get", "save__arrays_8c.html#a96848f6bc264da27dc09822bc7ab466a", null ],
+    [ "Save_ResetPCBoxModifiedFlags", "save__arrays_8c.html#a03e74247f641b7df81a81779c52bdbe9", null ],
+    [ "Save_SetAllPCBoxesModified", "save__arrays_8c.html#a0a14668c07fbfb5c5d534cb2484e3c95", null ],
+    [ "SaveArray_PCStorage_Get", "save__arrays_8c.html#ac0608a39bbd50de61fcd0e644b403749", null ],
+    [ "SaveHallOfFame", "save__arrays_8c.html#a42435c4a56cc472f82106fa686541a1b", null ],
+    [ "sub_020270C4", "save__arrays_8c.html#a5d1eb871d5e7d371a01cf9aa3a9ea816", null ],
+    [ "sub_0202711C", "save__arrays_8c.html#a745202791e11b6f15ed8d4e4a7cb1ae0", null ],
+    [ "sub_02027134", "save__arrays_8c.html#a2953424d146926a3b1c14ca3855798f5", null ],
+    [ "sub_02027144", "save__arrays_8c.html#a0252d480310e3a2433c22354ad24c63f", null ],
+    [ "sub_02027158", "save__arrays_8c.html#a8447068cf5f8ca9d8695e80694306729", null ],
+    [ "sub_020271A0", "save__arrays_8c.html#a1a4d034e31730ce2809b7a4eba010592", null ],
+    [ "gExtraSaveChunkHeaders", "save__arrays_8c.html#ab87ad2d343dd5a692397827718fe4922", null ],
+    [ "gNumExtraSaveChunkHeaders", "save__arrays_8c.html#a6bdb864d4769fbe75b426b21da801f80", null ],
+    [ "gNumSaveChunkHeaders", "save__arrays_8c.html#ae45ac33db37a37482f8c2ed4a8712b98", null ],
+    [ "gSaveChunkHeaders", "save__arrays_8c.html#afd1710902d56d4397b8acf1d4f3d6d86", null ]
+];

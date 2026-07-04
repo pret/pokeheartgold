@@ -1,0 +1,9 @@
+<map id="UnkStruct_ov74_02235414" name="UnkStruct_ov74_02235414">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,295,184,321"/>
+<area shape="rect" id="Node000002" href="$struct_window.html" title=" " alt="" coords="60,199,129,224"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="97,238,97,295,92,294,92,241"/>
+<area shape="rect" id="Node000003" href="$struct_bg_config.html" title=" " alt="" coords="57,102,132,128"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="96,141,97,199,92,198,93,145"/>
+<area shape="rect" id="Node000004" href="$struct_background.html" title=" " alt="" coords="49,5,140,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="95,44,97,102,92,101,94,49"/>
+</map>

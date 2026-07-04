@@ -1,0 +1,28 @@
+var spin_lock_8h =
+[
+    [ "OS_LOCK_ID_ERROR", "spin_lock_8h.html#a0cf6c1440855b45717bd117f81497ac1", null ],
+    [ "OS_MAINP_LOCK_ID_START", "spin_lock_8h.html#a1ab0dc3405e935a0e8b3909289aafbfd", null ],
+    [ "OS_MAINP_SYSTEM_LOCK_ID", "spin_lock_8h.html#ace7947f8c497764549f047f15ed24ddc", null ],
+    [ "OS_SUBP_LOCK_ID_START", "spin_lock_8h.html#a14394ec29f3140504ab05b7814a1bfb8", null ],
+    [ "OS_SUBP_SYSTEM_LOCK_ID", "spin_lock_8h.html#a837197f8adfdc45c2b5b1d89cbb25ee0", null ],
+    [ "FUN_037F8CB4", "spin_lock_8h.html#a1cae4d8af31f5480b3a3b92b3639dcd1", null ],
+    [ "OS_GetLockID", "spin_lock_8h.html#aa29903472ae1db1147fa7842b1709801", null ],
+    [ "OS_InitLock", "spin_lock_8h.html#a4628e6c9d19a5d441715b72393b4e0bf", null ],
+    [ "OS_LockByWord", "spin_lock_8h.html#a35573db640b59a49595013e147c79e31", null ],
+    [ "OS_LockCard", "spin_lock_8h.html#a7c543e2de4d2061c1a0e73df686aa30f", null ],
+    [ "OS_LockCartridge", "spin_lock_8h.html#a7d7cfaa104e9e7c91c0b9416f6555bb9", null ],
+    [ "OS_ReadOwnerOfLockWord", "spin_lock_8h.html#ae40972146207a1c1b8fd6979407deb87", null ],
+    [ "OS_ReleaseLockID", "spin_lock_8h.html#a28a03844be36c9592050e621a842aa09", null ],
+    [ "OS_TryLockCard", "spin_lock_8h.html#a6a3929b06d5691d8b62d34e137d61ce9", null ],
+    [ "OS_TryLockCartridge", "spin_lock_8h.html#a22d754f0fd1d9cb8a1e54ef6eccf671a", null ],
+    [ "OS_UnlockByWord", "spin_lock_8h.html#ab7b6479d710f1a94d60a5de602e76d78", null ],
+    [ "OS_UnLockCard", "spin_lock_8h.html#a046107768d7651f95717a47e05f73a58", null ],
+    [ "OS_UnlockCard", "spin_lock_8h.html#a2669ada3d79270c095b5be89db9c7e31", null ],
+    [ "OS_UnLockCartridge", "spin_lock_8h.html#a364dafe7f9115bfea1664afcd5aa0746", null ],
+    [ "OS_UnlockCartridge", "spin_lock_8h.html#ac2f9363fa40effced3542971feecd65f", null ],
+    [ "OSi_AllocateCartridgeBus", "spin_lock_8h.html#a9ba61230addc35e902cf33e3704751f9", null ],
+    [ "OSi_DoLockByWord", "spin_lock_8h.html#adbf64005b7edef4fe775281946cc031a", null ],
+    [ "OSi_DoTryLockByWord", "spin_lock_8h.html#a496ebb0f7dd44807613d17b6d21073c7", null ],
+    [ "OSi_DoUnlockByWord", "spin_lock_8h.html#a256c93ddff0a4bbbd53bcf0c71fbfc79", null ],
+    [ "OSi_FreeCartridgeBus", "spin_lock_8h.html#afd128c34458a1b984f005c83ac69c841", null ]
+];

@@ -1,0 +1,7 @@
+<map id="MessageFormatFields" name="MessageFormatFields">
+<area shape="rect" id="Node000001" title=" " alt="" coords="63,102,214,128"/>
+<area shape="rect" id="Node000002" href="$struct_message_format_attrs.html" title=" " alt="" coords="5,5,149,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="95,42,133,101,128,102,92,46"/>
+<area shape="rect" id="Node000003" href="$struct_string.html" title=" " alt="" coords="173,5,229,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="187,43,148,103,145,99,182,45"/>
+</map>

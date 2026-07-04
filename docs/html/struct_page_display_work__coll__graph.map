@@ -1,0 +1,13 @@
+<map id="PageDisplayWork" name="PageDisplayWork">
+<area shape="rect" id="Node000001" title=" " alt="" coords="196,318,322,344"/>
+<area shape="rect" id="Node000002" href="$struct_sys_task.html" title=" " alt="" coords="105,121,178,147"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="163,156,185,189,195,218,197,243,201,266,213,292,239,318,234,317,209,296,196,268,192,243,190,219,180,191,162,161"/>
+<area shape="poly" id="edge4_Node000002_Node000002" title=" " alt="" coords="193,121,201,126,204,134,196,146,179,149,177,144,193,141,199,133,197,129,193,126"/>
+<area shape="rect" id="Node000003" href="$struct_sys_task_queue.html" title=" " alt="" coords="40,318,150,344"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="89,148,55,164,39,176,26,191,12,218,8,242,13,266,26,292,38,306,55,316,50,318,35,310,22,296,8,267,3,242,7,216,22,188,35,172,52,160,92,143"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="107,302,110,293,129,210,139,149,142,145,135,211,115,295,111,305"/>
+<area shape="rect" id="Node000004" href="$struct_bg_config.html" title=" " alt="" coords="265,121,341,147"/>
+<area shape="poly" id="edge5_Node000001_Node000004" title=" " alt="" coords="301,160,293,224,276,295,266,320,263,316,271,293,287,223,298,164"/>
+<area shape="rect" id="Node000005" href="$struct_background.html" title=" " alt="" coords="258,5,348,31"/>
+<area shape="poly" id="edge6_Node000004_Node000005" title=" " alt="" coords="304,44,305,121,300,120,301,49"/>
+</map>

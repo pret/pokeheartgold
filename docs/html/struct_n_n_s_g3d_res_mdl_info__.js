@@ -1,0 +1,25 @@
+var struct_n_n_s_g3d_res_mdl_info__ =
+[
+    [ "boxD", "struct_n_n_s_g3d_res_mdl_info__.html#aa92eeff18337ed93a3b56fae3128376c", null ],
+    [ "boxH", "struct_n_n_s_g3d_res_mdl_info__.html#a7a10eb44c9eaa012805fa63dc0c37d34", null ],
+    [ "boxInvPosScale", "struct_n_n_s_g3d_res_mdl_info__.html#a36a9fe017b7b99e18dc7eb925054adba", null ],
+    [ "boxPosScale", "struct_n_n_s_g3d_res_mdl_info__.html#a2b555c047d4011193dc911a1cc20a5c5", null ],
+    [ "boxW", "struct_n_n_s_g3d_res_mdl_info__.html#a153da7a83150f60763126d87d5d2f1b8", null ],
+    [ "boxX", "struct_n_n_s_g3d_res_mdl_info__.html#a7b49ea4dc494338e176d9ccbd668ba1b", null ],
+    [ "boxY", "struct_n_n_s_g3d_res_mdl_info__.html#a1d3248f628c984717fed846f50cc540a", null ],
+    [ "boxZ", "struct_n_n_s_g3d_res_mdl_info__.html#ae83914e8e1bfbe8ba8e8bff7a442ff92", null ],
+    [ "dummy_", "struct_n_n_s_g3d_res_mdl_info__.html#a6a9b09f71862844b8e64a78ce15463fe", null ],
+    [ "firstUnusedMtxStackID", "struct_n_n_s_g3d_res_mdl_info__.html#ae444ca3299efd12a19d47652b0141f7c", null ],
+    [ "invPosScale", "struct_n_n_s_g3d_res_mdl_info__.html#a072f673130a75cffe5d2a65dc75fab05", null ],
+    [ "numMat", "struct_n_n_s_g3d_res_mdl_info__.html#a66d5c0ef6a2050030508bd06e44dfb9c", null ],
+    [ "numNode", "struct_n_n_s_g3d_res_mdl_info__.html#a78bc2d81baf8728364444416fb56db93", null ],
+    [ "numPolygon", "struct_n_n_s_g3d_res_mdl_info__.html#ad2e6d313b0fcd9f9f1fe5ddd13e4104a", null ],
+    [ "numQuad", "struct_n_n_s_g3d_res_mdl_info__.html#a46eb5695fd9fe319536ec7ac1471bcb2", null ],
+    [ "numShp", "struct_n_n_s_g3d_res_mdl_info__.html#a8cd3ba142d6c2dd28f191006b2e1862b", null ],
+    [ "numTriangle", "struct_n_n_s_g3d_res_mdl_info__.html#a4ab0f3cca5661cf55dbe0523a2bf5167", null ],
+    [ "numVertex", "struct_n_n_s_g3d_res_mdl_info__.html#a4b4b2ff2afb9ca818c5af403edaffca6", null ],
+    [ "posScale", "struct_n_n_s_g3d_res_mdl_info__.html#a74ae373d70828a9ec38c5176a851f39c", null ],
+    [ "sbcType", "struct_n_n_s_g3d_res_mdl_info__.html#a44e8f092688cec713c8198e5ae3c165f", null ],
+    [ "scalingRule", "struct_n_n_s_g3d_res_mdl_info__.html#a62971c1f2ed2c74b8e5917762bd79091", null ],
+    [ "texMtxMode", "struct_n_n_s_g3d_res_mdl_info__.html#ad4e755945705484ded1e03de6626e284", null ]
+];

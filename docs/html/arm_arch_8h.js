@@ -1,0 +1,28 @@
+var arm_arch_8h =
+[
+    [ "HW_C7_CACHE_INDEX_SHIFT", "arm_arch_8h.html#a603a0b171212b2b9577e0d60873fda79", null ],
+    [ "HW_C7_CACHE_SET_NO_MASK", "arm_arch_8h.html#ab071bccade79ddc7fa52100889c5f68f", null ],
+    [ "HW_C7_CACHE_SET_NO_SHIFT", "arm_arch_8h.html#a8569f6541abbb0fa126d77baa8ddec38", null ],
+    [ "HW_C7_DCACHE_INDEX_MASK", "arm_arch_8h.html#a88dbe7bd9c5bcb14ba8ee82953ab3c24", null ],
+    [ "HW_C7_ICACHE_INDEX_MASK", "arm_arch_8h.html#aaaa6224afa196c9cc750eaaa71d2ca4b", null ],
+    [ "HW_CPU_CLOCK_ARM7", "arm_arch_8h.html#a2b3cb46982307bbfbbe5f6d40ce443cd", null ],
+    [ "HW_CPU_CLOCK_ARM9", "arm_arch_8h.html#acfda6e6979866085e7625c39098f1b25", null ],
+    [ "HW_PSR_ABORT_MODE", "arm_arch_8h.html#ab692f63eb1a27b205399e24624906576", null ],
+    [ "HW_PSR_ARM_STATE", "arm_arch_8h.html#a528a6c6be104edd73f47a286f90116dd", null ],
+    [ "HW_PSR_C_FLAG", "arm_arch_8h.html#ae0f091e2737ba7da42eea338c2ece1f7", null ],
+    [ "HW_PSR_CPU_MODE_MASK", "arm_arch_8h.html#a4f50666a1821ef179fee0159930b556a", null ],
+    [ "HW_PSR_FIQ_DISABLE", "arm_arch_8h.html#ab4b15cb42d5759d561ef2ae88469f1f3", null ],
+    [ "HW_PSR_FIQ_MODE", "arm_arch_8h.html#af789880c81e9b038c60d6402cd642af1", null ],
+    [ "HW_PSR_IRQ_DISABLE", "arm_arch_8h.html#a1c811b2488eba29d3e91c924e271f3e7", null ],
+    [ "HW_PSR_IRQ_FIQ_DISABLE", "arm_arch_8h.html#a310cc1a9dd98864ef40c7cf9adae6390", null ],
+    [ "HW_PSR_IRQ_MODE", "arm_arch_8h.html#a42f0ebc087fbf13e3b18973284106a67", null ],
+    [ "HW_PSR_N_FLAG", "arm_arch_8h.html#a883ed0d09d8dc9e3f99cafcc62f7e53d", null ],
+    [ "HW_PSR_Q_FLAG", "arm_arch_8h.html#a0ec310f2c339bd285a14c6ee6dcfddc7", null ],
+    [ "HW_PSR_SVC_MODE", "arm_arch_8h.html#ac3370e3b5a5bb3a2e387e7857f41a0eb", null ],
+    [ "HW_PSR_SYS_MODE", "arm_arch_8h.html#aba79d194a9d9371531f020a0aee5e18c", null ],
+    [ "HW_PSR_THUMB_STATE", "arm_arch_8h.html#a63a6f418541a127c771f143f8dba7009", null ],
+    [ "HW_PSR_UNDEF_MODE", "arm_arch_8h.html#a26d5cc285765e751a6347beff52c01cf", null ],
+    [ "HW_PSR_USER_MODE", "arm_arch_8h.html#a95d3f086a3b2d0a7b5e2145af6b51d0e", null ],
+    [ "HW_PSR_V_FLAG", "arm_arch_8h.html#a1be0b4353113c3a14a425c4cf94ec640", null ],
+    [ "HW_PSR_Z_FLAG", "arm_arch_8h.html#a8c60828b986df766923b81927c9a982a", null ]
+];

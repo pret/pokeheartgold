@@ -1,0 +1,11 @@
+<map id="SpriteTemplate" name="SpriteTemplate">
+<area shape="rect" id="Node000001" title=" " alt="" coords="182,152,290,177"/>
+<area shape="rect" id="Node000002" href="$struct_sprite_list.html" title=" " alt="" coords="74,5,150,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="143,38,159,53,170,70,176,86,182,100,192,117,223,151,218,151,187,120,177,103,171,87,166,73,155,57,142,43"/>
+<area shape="rect" id="Node000003" href="$struct_sprite.html" title=" " alt="" coords="40,152,95,177"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="57,29,36,40,18,57,10,72,8,86,18,117,31,135,49,150,44,152,28,139,14,120,3,86,5,70,14,53,33,35,60,25"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="74,135,80,118,106,32,111,30,85,119,79,138"/>
+<area shape="poly" id="edge4_Node000003_Node000003" title=" " alt="" coords="106,148,117,153,122,164,119,174,111,180,91,180,90,175,110,174,115,171,117,164,114,157,105,153"/>
+<area shape="rect" id="Node000004" href="$struct_sprite_resources_header.html" title=" " alt="" coords="205,5,365,31"/>
+<area shape="poly" id="edge5_Node000001_Node000004" title=" " alt="" coords="280,44,258,120,243,153,240,149,253,118,276,48"/>
+</map>

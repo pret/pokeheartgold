@@ -1,0 +1,26 @@
+var struct_unk_struct__ov44__02232_f64 =
+[
+    [ "bgConfig", "struct_unk_struct__ov44__02232_f64.html#aa9788441384b59b8d48e44bbcac9a7db", null ],
+    [ "g2dRenderer", "struct_unk_struct__ov44__02232_f64.html#a37cec184a9b4be2ec36c5b6a3f3609d1", null ],
+    [ "gf2DGfxResManList", "struct_unk_struct__ov44__02232_f64.html#aa8ad9d196c4f53a9336dc7abaaff3ded", null ],
+    [ "listMenu2D", "struct_unk_struct__ov44__02232_f64.html#ae173b4a4aa06e8f28b1f49645825ec59", null ],
+    [ "msgData", "struct_unk_struct__ov44__02232_f64.html#ab4797af923c7cc65bc452f70da627efd", null ],
+    [ "msgFmt", "struct_unk_struct__ov44__02232_f64.html#ac8084264f6b03ac9af201b24e376e462", null ],
+    [ "plttData", "struct_unk_struct__ov44__02232_f64.html#afa404f2da0e9490134a0c08ff9ae734a", null ],
+    [ "plttDataRaw", "struct_unk_struct__ov44__02232_f64.html#a00749b2930816e47f5c617af9e0f549a", null ],
+    [ "printerId", "struct_unk_struct__ov44__02232_f64.html#aeaab874bfb760fb8654799197e46da81", null ],
+    [ "scrnData", "struct_unk_struct__ov44__02232_f64.html#ac7c6181233d39bfd37c72a49a086d2bc", null ],
+    [ "scrnDataRaw", "struct_unk_struct__ov44__02232_f64.html#a7aab9814a6fb23de66670b6b781fbe66", null ],
+    [ "spriteList", "struct_unk_struct__ov44__02232_f64.html#a09960a3349fe568c47ed8a23aa7a6760", null ],
+    [ "string1", "struct_unk_struct__ov44__02232_f64.html#abd17222342fe510f7af78939865efcd9", null ],
+    [ "string2", "struct_unk_struct__ov44__02232_f64.html#aea8855f008bc0026ca4c7870e1cb1723", null ],
+    [ "textFrameDelay", "struct_unk_struct__ov44__02232_f64.html#ac0afc41b6db0c1e902f47da4b175c2a0", null ],
+    [ "unk15", "struct_unk_struct__ov44__02232_f64.html#a2272b541499e9603e8715bb9d42b819e", null ],
+    [ "unk154", "struct_unk_struct__ov44__02232_f64.html#aa217018c81a49f4b8e6a32c02fec382b", null ],
+    [ "unk158", "struct_unk_struct__ov44__02232_f64.html#af64da3620efab244ebabbe86cecc32e3", null ],
+    [ "unk15C", "struct_unk_struct__ov44__02232_f64.html#a113fe3f79c88a3b437c9fded246ed7a7", null ],
+    [ "unk1F4", "struct_unk_struct__ov44__02232_f64.html#aead187b4f9c1938248bcf738252cf526", null ],
+    [ "unk1F6", "struct_unk_struct__ov44__02232_f64.html#a4a2a9007698aa519900675d74a79948d", null ],
+    [ "waitingIcon", "struct_unk_struct__ov44__02232_f64.html#a9fc58d92bf54a2b95398754425cdf61b", null ],
+    [ "windowList", "struct_unk_struct__ov44__02232_f64.html#ada1a89744224e1289bc09b0056103b55", null ]
+];

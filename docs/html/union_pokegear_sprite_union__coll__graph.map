@@ -1,0 +1,17 @@
+<map id="PokegearSpriteUnion" name="PokegearSpriteUnion">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,354,150,379"/>
+<area shape="rect" id="Node000002" href="$struct_managed_sprite.html" title=" " alt="" coords="214,257,322,283"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="232,292,103,356,101,351,228,288"/>
+<area shape="rect" id="Node000003" href="$struct_sprite.html" title=" " alt="" coords="63,111,118,136"/>
+<area shape="poly" id="edge9_Node000001_Node000003" title=" " alt="" coords="55,148,36,171,24,193,19,211,14,257,13,270,14,282,24,303,38,322,66,352,61,354,34,325,20,305,9,283,7,270,9,257,14,210,19,191,31,168,57,143"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="133,134,165,148,193,167,205,184,211,199,216,215,226,231,253,257,247,256,222,235,211,217,206,201,201,186,189,171,162,152,134,139"/>
+<area shape="poly" id="edge5_Node000003_Node000003" title=" " alt="" coords="134,112,142,116,145,124,137,135,120,136,118,132,134,130,140,123,138,120,135,117"/>
+<area shape="rect" id="Node000004" href="$struct_sprite_list.html" title=" " alt="" coords="99,257,176,283"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="63,150,52,170,42,202,44,216,51,231,73,250,101,262,97,264,70,255,47,235,38,218,37,202,47,168,65,145"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="126,242,93,139,96,134,132,242"/>
+<area shape="rect" id="Node000005" href="$struct_sprite_resources_header.html" title=" " alt="" coords="224,5,384,31"/>
+<area shape="poly" id="edge6_Node000002_Node000005" title=" " alt="" coords="303,45,272,258,267,256,298,48"/>
+<area shape="rect" id="Node000006" href="$struct_sprite_resource_header_list.html" title=" " alt="" coords="452,111,626,136"/>
+<area shape="poly" id="edge8_Node000006_Node000005" title=" " alt="" coords="345,35,514,109,509,111,345,40"/>
+<area shape="poly" id="edge7_Node000002_Node000006" title=" " alt="" coords="505,143,292,259,290,254,500,145"/>
+</map>

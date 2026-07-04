@@ -1,0 +1,9 @@
+<map id="YesNoPromptButton" name="YesNoPromptButton">
+<area shape="rect" id="Node000001" title=" " alt="" coords="60,199,201,224"/>
+<area shape="rect" id="Node000002" href="$struct_bg_config.html" title=" " alt="" coords="13,102,88,128"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="69,138,97,173,120,198,115,198,92,176,67,143"/>
+<area shape="rect" id="Node000003" href="$struct_background.html" title=" " alt="" coords="5,5,96,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="51,44,53,102,48,101,50,49"/>
+<area shape="rect" id="Node000004" href="$struct_yes_no_prompt_substruct00__18.html" title=" " alt="" coords="112,102,306,128"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="192,139,142,200,139,196,187,140"/>
+</map>

@@ -1,0 +1,27 @@
+var item_8c =
+[
+    [ "BallToItemId", "item_8c.html#a247daf07f9f687bdb67a890008356c52", null ],
+    [ "BerryToItemId", "item_8c.html#a1c94bb9eba8f9062dee71feb7d967b48", null ],
+    [ "GetItemAttr", "item_8c.html#a7430e0ce957592c5fe73821d396550bd", null ],
+    [ "GetItemAttr_PreloadedItemData", "item_8c.html#a8a95c8a23a56500c5d970e2b0341d7cc", null ],
+    [ "GetItemDataPtrFromArray", "item_8c.html#ab82d6043d80ad1b19dc6954ff5ed75b3", null ],
+    [ "GetItemDescIntoString", "item_8c.html#a765fd17376e2a599e83d90ca8cc91cb5", null ],
+    [ "GetItemIconAnim", "item_8c.html#ab4b81f960a8c45010d3bb5c90d4a47e9", null ],
+    [ "GetItemIconCell", "item_8c.html#af9a2ef685d10e75c8843b369ba9a093c", null ],
+    [ "GetItemIndexMapping", "item_8c.html#aeff0242b4d781dbe996b3c533e6fdde3", null ],
+    [ "GetItemNameIntoString", "item_8c.html#a7361785ac0cd3da02d0ca8a8e62e0936", null ],
+    [ "GetNutName", "item_8c.html#a3f53a9f6bba39991691cc06eeaccc267", null ],
+    [ "ItemIdIsBerry", "item_8c.html#a14ec46db7eb67eb7def440d3ad200d08", null ],
+    [ "ItemIdIsMail", "item_8c.html#a3c2cf70d535d96d8c0e4870e7479b7c0", null ],
+    [ "ItemIdIsNotJohtoBall", "item_8c.html#a066ffd8f94351e7e4e70a1cb58df3f82", null ],
+    [ "ItemToBallId", "item_8c.html#a5597cd1f3af50e4fc70396a0e89f827a", null ],
+    [ "ItemToMailId", "item_8c.html#aaf751b632bcf69aba8ea80326a1e0957", null ],
+    [ "ItemToTMHMId", "item_8c.html#a08979d14ac7fe97ef0f61310c14e2890", null ],
+    [ "LoadAllItemData", "item_8c.html#aaec5ecbb08a5724a716e56788cb4e3ad", null ],
+    [ "LoadItemDataOrGfx", "item_8c.html#a7dd2556bd14f618aff00c155470a84c6", null ],
+    [ "MailToItemId", "item_8c.html#a2c45438307abb5d42e1b96d08fa1427b", null ],
+    [ "MoveIsHM", "item_8c.html#ab50c80118e2ecd01537cdf3f710c7ec6", null ],
+    [ "MoveItemSlotInList", "item_8c.html#a7594bbbbf4431962e276bb1658f92b17", null ],
+    [ "TMHMGetMove", "item_8c.html#a5b4059b2abb9461773f45abef22d2cc7", null ],
+    [ "UpConvertItemId_Gen3to4", "item_8c.html#abb3818086a6056440796b0233a2a0030", null ]
+];

@@ -1,0 +1,15 @@
+<map id="IntroMovieScene2SpritePanController" name="IntroMovieScene2SpritePanController">
+<area shape="rect" id="Node000001" title=" " alt="" coords="148,221,331,262"/>
+<area shape="rect" id="Node000002" href="$struct_sys_task.html" title=" " alt="" coords="112,24,185,50"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="171,59,195,92,207,120,213,143,226,197,234,222,229,220,221,198,208,145,202,122,190,94,170,64"/>
+<area shape="poly" id="edge4_Node000002_Node000002" title=" " alt="" coords="177,15,200,18,208,25,211,37,207,52,194,59,179,59,164,53,163,48,179,54,193,54,202,48,206,37,204,28,198,22,178,20"/>
+<area shape="rect" id="Node000003" href="$struct_sys_task_queue.html" title=" " alt="" coords="5,229,116,254"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="95,51,62,68,46,79,33,94,21,120,19,143,24,167,33,196,41,213,52,228,47,229,37,215,28,198,19,169,14,143,16,119,29,92,42,76,59,63,99,47"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="95,218,117,196,134,157,143,116,148,53,151,48,148,117,139,159,121,199,99,222"/>
+<area shape="rect" id="Node000004" href="$struct_sprite.html" title=" " alt="" coords="336,24,391,50"/>
+<area shape="poly" id="edge5_Node000001_Node000004" title=" " alt="" coords="331,57,311,76,294,95,279,121,273,144,268,168,259,198,249,223,245,219,254,196,263,167,267,142,274,119,290,91,307,72,326,60"/>
+<area shape="poly" id="edge8_Node000004_Node000004" title=" " alt="" coords="389,15,409,18,415,26,417,37,413,52,403,59,389,59,376,53,376,48,390,54,401,54,409,48,412,37,410,28,406,23,390,20"/>
+<area shape="rect" id="Node000005" href="$struct_sprite_list.html" title=" " alt="" coords="389,229,465,254"/>
+<area shape="poly" id="edge7_Node000005_Node000004" title=" " alt="" coords="356,63,351,94,347,128,350,163,361,196,376,213,397,229,392,228,373,217,357,199,345,164,342,128,346,94,353,67"/>
+<area shape="poly" id="edge6_Node000004_Node000005" title=" " alt="" coords="428,212,427,156,423,124,413,94,397,71,379,53,380,48,401,67,418,92,428,123,433,156,432,215"/>
+</map>

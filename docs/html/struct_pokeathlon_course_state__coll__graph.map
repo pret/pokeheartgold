@@ -1,0 +1,5 @@
+<map id="PokeathlonCourseState" name="PokeathlonCourseState">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,102,165,128"/>
+<area shape="rect" id="Node000002" href="$struct_pokeathlon_state_info.html" title=" " alt="" coords="15,5,155,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="87,45,88,102,82,101,83,48"/>
+</map>

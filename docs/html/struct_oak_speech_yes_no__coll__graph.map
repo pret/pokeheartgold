@@ -1,0 +1,25 @@
+<map id="OakSpeechYesNo" name="OakSpeechYesNo">
+<area shape="rect" id="Node000001" title=" " alt="" coords="117,354,245,379"/>
+<area shape="rect" id="Node000002" href="$struct_bg_config.html" title=" " alt="" coords="13,102,88,128"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="38,145,27,190,26,216,32,241,56,279,89,310,124,334,157,353,151,353,121,338,85,314,52,282,27,243,20,217,22,189,38,139"/>
+<area shape="rect" id="Node000010" href="$struct_window.html" title=" " alt="" coords="102,208,170,233"/>
+<area shape="poly" id="edge13_Node000010_Node000002" title=" " alt="" coords="71,137,129,206,124,208,70,142"/>
+<area shape="rect" id="Node000003" href="$struct_background.html" title=" " alt="" coords="5,5,96,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="51,44,53,102,48,101,50,49"/>
+<area shape="rect" id="Node000004" href="$struct_sprite.html" title=" " alt="" coords="374,208,429,233"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="373,241,346,268,334,285,326,301,318,316,303,332,276,347,247,357,245,352,274,342,300,328,314,313,322,298,329,282,342,264,369,243"/>
+<area shape="poly" id="edge6_Node000004_Node000004" title=" " alt="" coords="445,209,453,213,455,221,447,231,430,233,429,228,445,227,450,220,449,216,444,214"/>
+<area shape="rect" id="Node000005" href="$struct_sprite_list.html" title=" " alt="" coords="403,354,479,379"/>
+<area shape="poly" id="edge5_Node000005_Node000004" title=" " alt="" coords="395,246,391,288,393,309,399,328,408,341,421,354,416,352,404,345,394,331,388,310,386,288,392,250"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="450,338,456,304,456,285,451,267,438,249,422,236,423,231,442,246,456,265,461,284,462,304,453,341"/>
+<area shape="rect" id="Node000006" href="$struct_message_format.html" title=" " alt="" coords="194,208,310,233"/>
+<area shape="poly" id="edge7_Node000001_Node000006" title=" " alt="" coords="239,245,230,267,188,355,184,352,225,265,235,249"/>
+<area shape="rect" id="Node000007" href="$struct_message_format_fields.html" title=" " alt="" coords="134,102,284,128"/>
+<area shape="poly" id="edge8_Node000006_Node000007" title=" " alt="" coords="221,139,250,208,244,207,219,144"/>
+<area shape="rect" id="Node000008" href="$struct_message_format_attrs.html" title=" " alt="" coords="136,5,280,31"/>
+<area shape="poly" id="edge9_Node000007_Node000008" title=" " alt="" coords="209,44,212,102,206,101,207,49"/>
+<area shape="rect" id="Node000009" href="$struct_string.html" title=" " alt="" coords="304,5,360,31"/>
+<area shape="poly" id="edge11_Node000006_Node000009" title=" " alt="" coords="326,44,308,107,280,176,261,209,257,205,275,174,303,105,323,48"/>
+<area shape="poly" id="edge10_Node000007_Node000009" title=" " alt="" coords="299,42,282,57,225,103,221,100,279,53,303,38"/>
+<area shape="poly" id="edge12_Node000001_Node000010" title=" " alt="" coords="131,246,130,288,133,309,139,328,148,341,162,354,156,353,145,345,134,331,127,310,125,288,128,251"/>
+</map>

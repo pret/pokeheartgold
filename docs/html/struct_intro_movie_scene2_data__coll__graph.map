@@ -1,0 +1,22 @@
+<map id="IntroMovieScene2Data" name="IntroMovieScene2Data">
+<area shape="rect" id="Node000001" title=" " alt="" coords="111,437,266,463"/>
+<area shape="rect" id="Node000002" href="$struct_sprite_resource.html" title=" " alt="" coords="27,281,139,307"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="77,319,73,367,77,391,87,412,100,425,118,437,113,437,97,429,82,415,72,392,68,367,74,324"/>
+<area shape="rect" id="Node000003" href="$struct_g_f__2_d_gfx_raw_res_obj.html" title=" " alt="" coords="5,24,161,50"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="85,64,86,281,80,281,81,67"/>
+<area shape="rect" id="Node000004" href="$struct_sprite.html" title=" " alt="" coords="267,24,323,50"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="261,61,248,76,233,94,211,141,195,190,186,241,182,292,183,380,189,438,184,436,178,380,177,291,181,241,190,189,206,139,229,92,244,73,265,57"/>
+<area shape="poly" id="edge6_Node000004_Node000004" title=" " alt="" coords="321,15,340,18,347,26,349,37,345,52,335,59,321,59,308,53,307,48,322,54,333,54,341,48,344,37,342,28,338,23,323,20"/>
+<area shape="rect" id="Node000005" href="$struct_sprite_list.html" title=" " alt="" coords="297,281,373,307"/>
+<area shape="poly" id="edge5_Node000005_Node000004" title=" " alt="" coords="268,64,260,78,252,94,242,122,239,146,241,169,252,196,264,208,279,219,329,280,324,280,276,223,260,213,247,199,236,170,233,146,237,121,247,92,256,75,271,59"/>
+<area shape="rect" id="Node000006" href="$struct_intro_movie_scene2_sprite_pan_controller.html" title=" " alt="" coords="397,274,580,314"/>
+<area shape="poly" id="edge12_Node000006_Node000004" title=" " alt="" coords="337,53,366,69,390,91,408,118,416,142,422,167,433,196,478,273,473,273,428,198,417,168,411,143,403,120,386,95,363,74,337,58"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="329,265,303,93,297,53,298,48,308,93,334,266"/>
+<area shape="poly" id="edge7_Node000001_Node000006" title=" " alt="" coords="454,323,387,369,300,410,224,439,222,434,298,405,384,364,449,325"/>
+<area shape="rect" id="Node000007" href="$struct_sys_task.html" title=" " alt="" coords="532,24,604,50"/>
+<area shape="poly" id="edge8_Node000006_Node000007" title=" " alt="" coords="537,58,521,76,508,94,492,142,485,192,485,238,488,274,483,272,480,238,480,191,487,141,504,92,517,73,533,61"/>
+<area shape="poly" id="edge11_Node000007_Node000007" title=" " alt="" coords="597,15,620,18,628,25,631,37,626,52,614,59,598,59,583,53,583,48,599,54,613,54,622,48,626,37,624,28,618,22,598,20"/>
+<area shape="rect" id="Node000008" href="$struct_sys_task_queue.html" title=" " alt="" coords="616,281,726,307"/>
+<area shape="poly" id="edge10_Node000008_Node000007" title=" " alt="" coords="562,63,555,128,557,163,566,196,578,209,594,219,661,281,656,281,591,223,574,213,562,199,551,164,549,127,559,67"/>
+<area shape="poly" id="edge9_Node000007_Node000008" title=" " alt="" coords="673,264,676,229,676,185,668,138,650,94,627,70,600,53,600,48,630,66,655,92,673,136,681,184,681,229,678,267"/>
+</map>

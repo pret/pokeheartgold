@@ -1,0 +1,15 @@
+<map id="SAVE_MISC_DATA" name="SAVE_MISC_DATA">
+<area shape="rect" id="Node000001" title=" " alt="" coords="263,199,399,224"/>
+<area shape="rect" id="Node000002" href="$struct_a_p_r_i_c_o_r_n___t_r_e_e.html" title=" " alt="" coords="5,102,142,128"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="93,137,114,157,138,172,168,185,200,194,265,207,260,207,199,199,167,190,136,177,111,161,92,142"/>
+<area shape="rect" id="Node000003" href="$struct_berry_pot.html" title=" " alt="" coords="165,102,238,128"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="221,137,258,173,302,198,296,198,255,177,219,142"/>
+<area shape="rect" id="Node000004" href="$struct_g_f___r_t_c___date_time.html" title=" " alt="" coords="262,102,400,128"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="333,141,333,200,329,197,329,145"/>
+<area shape="rect" id="Node000005" href="$struct_gymmick.html" title=" " alt="" coords="424,102,502,128"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="456,141,446,161,433,177,411,191,388,201,386,196,409,186,429,173,442,158,451,144"/>
+<area shape="rect" id="Node000006" href="$union_gymmick_union.html" title=" " alt="" coords="407,5,518,31"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="465,44,465,103,461,100,461,48"/>
+<area shape="rect" id="Node000007" href="$struct_mail_message.html" title=" " alt="" coords="526,102,624,128"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="559,139,539,161,516,177,458,198,400,209,399,204,457,193,514,172,536,157,554,141"/>
+</map>

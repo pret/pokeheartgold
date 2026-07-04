@@ -1,0 +1,27 @@
+<map id="IntroMovieScene3Data" name="IntroMovieScene3Data">
+<area shape="rect" id="Node000001" title=" " alt="" coords="362,257,516,283"/>
+<area shape="rect" id="Node000002" href="$struct_sprite_resource.html" title=" " alt="" coords="696,111,808,136"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="744,149,719,196,701,217,679,235,650,247,610,255,517,266,516,261,609,250,649,241,676,231,697,214,715,193,739,152"/>
+<area shape="rect" id="Node000003" href="$struct_g_f__2_d_gfx_raw_res_obj.html" title=" " alt="" coords="674,5,830,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="754,44,754,112,750,109,750,48"/>
+<area shape="rect" id="Node000004" href="$struct_sprite.html" title=" " alt="" coords="87,111,142,136"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="141,145,162,168,172,187,176,203,181,217,193,231,222,243,263,252,364,265,358,265,263,257,220,248,190,235,176,220,171,205,167,188,158,171,140,150"/>
+<area shape="poly" id="edge6_Node000004_Node000004" title=" " alt="" coords="158,112,166,116,169,124,161,135,144,137,142,132,158,130,164,123,162,120,159,117"/>
+<area shape="rect" id="Node000005" href="$struct_sprite_list.html" title=" " alt="" coords="31,257,108,283"/>
+<area shape="poly" id="edge5_Node000005_Node000004" title=" " alt="" coords="111,150,88,234,77,258,73,255,83,232,106,152"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="32,248,22,234,12,201,14,185,22,168,35,153,51,142,88,128,85,133,54,146,39,157,27,171,19,187,17,200,27,232,38,246"/>
+<area shape="rect" id="Node000006" href="$struct_camera.html" title=" " alt="" coords="250,111,318,136"/>
+<area shape="poly" id="edge7_Node000001_Node000006" title=" " alt="" coords="308,145,330,168,356,201,384,231,419,257,414,256,381,235,352,204,326,171,306,150"/>
+<area shape="rect" id="Node000007" href="$struct_camera_perspective.html" title=" " alt="" coords="5,5,142,31"/>
+<area shape="poly" id="edge8_Node000006_Node000007" title=" " alt="" coords="101,38,164,76,209,95,253,112,248,113,207,100,161,80,102,43"/>
+<area shape="rect" id="Node000008" href="$struct_camera_look_at.html" title=" " alt="" coords="166,5,274,31"/>
+<area shape="poly" id="edge9_Node000006_Node000008" title=" " alt="" coords="236,42,280,111,274,111,235,47"/>
+<area shape="rect" id="Node000009" href="$struct_camera_angle.html" title=" " alt="" coords="298,5,398,31"/>
+<area shape="poly" id="edge10_Node000006_Node000009" title=" " alt="" coords="335,43,293,112,289,109,331,46"/>
+<area shape="rect" id="Node000010" href="$struct_camera_history.html" title=" " alt="" coords="423,5,532,31"/>
+<area shape="poly" id="edge11_Node000006_Node000010" title=" " alt="" coords="440,40,371,80,309,113,307,108,368,76,444,38"/>
+<area shape="rect" id="Node000011" href="$struct_intro_movie_scene3_map_render.html" title=" " alt="" coords="342,111,536,136"/>
+<area shape="poly" id="edge12_Node000001_Node000011" title=" " alt="" coords="441,150,441,258,437,255,437,154"/>
+<area shape="rect" id="Node000012" href="$struct_g_f3_d_vram_man.html" title=" " alt="" coords="560,111,672,136"/>
+<area shape="poly" id="edge13_Node000001_Node000012" title=" " alt="" coords="602,148,567,193,520,235,475,259,474,254,517,231,563,189,597,150"/>
+</map>

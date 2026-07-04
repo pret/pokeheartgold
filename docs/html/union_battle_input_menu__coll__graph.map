@@ -1,0 +1,13 @@
+<map id="BattleInputMenu" name="BattleInputMenu">
+<area shape="rect" id="Node000001" title=" " alt="" coords="532,85,648,111"/>
+<area shape="rect" id="Node000002" href="$struct_battle_input_main_menu.html" title=" " alt="" coords="256,5,400,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="415,28,462,39,509,53,570,85,565,85,507,58,461,44,415,34"/>
+<area shape="rect" id="Node000003" href="$struct_battle_input_fight_menu.html" title=" " alt="" coords="255,59,400,84"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="416,78,534,92,529,93,416,83"/>
+<area shape="rect" id="Node000004" href="$struct_battle_input_target_menu.html" title=" " alt="" coords="252,112,404,138"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="419,123,508,116,540,112,545,111,508,121,420,128"/>
+<area shape="rect" id="Node000005" href="$struct_target_pokemon.html" title=" " alt="" coords="5,112,118,138"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="133,122,253,123,249,127,133,127"/>
+<area shape="rect" id="Node000006" href="$struct_battle_input_two_option_menu.html" title=" " alt="" coords="239,165,417,191"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="432,169,470,162,507,151,543,131,571,112,576,111,546,136,509,156,472,167,433,175"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="EncounterGenState" name="EncounterGenState">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,102,141,128"/>
+<area shape="rect" id="Node000002" href="$struct_pokedex.html" title=" " alt="" coords="37,5,109,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="75,45,76,102,70,101,71,48"/>
+</map>

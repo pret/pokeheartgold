@@ -1,0 +1,28 @@
+var struct_start_menu_task_data =
+[
+    [ "cursorActive", "struct_start_menu_task_data.html#a8695e7c26dd5fa9c34f63edd785ffe5f", null ],
+    [ "cursorSprite", "struct_start_menu_task_data.html#a5f0264fdf7d61822dbb2c2d96157ee1f", null ],
+    [ "exitTaskEnvironment", "struct_start_menu_task_data.html#ae8fde1d54ea18f4d410a501731929ca2", null ],
+    [ "exitTaskEnvironment2", "struct_start_menu_task_data.html#ad7121b0f328e1b3d53817970422fddbb", null ],
+    [ "exitTaskFunc", "struct_start_menu_task_data.html#aeac3f06494aa3b66c77c990d5ffb6fbb", null ],
+    [ "fieldMoveCheckData", "struct_start_menu_task_data.html#a41199235f54dc6f6f88b2ecced53e0aa", null ],
+    [ "filler_004", "struct_start_menu_task_data.html#acc0e064719396cb08830af63c7fdbfd8", null ],
+    [ "filler_044", "struct_start_menu_task_data.html#a6dcf4b626541b822409da5d92f705316", null ],
+    [ "filler_348", "struct_start_menu_task_data.html#a84405a8895440648eac60e7abfa903cc", null ],
+    [ "filler_unk_388", "struct_start_menu_task_data.html#aa80a637a1e56a2815f29cb775e531abb", null ],
+    [ "g2dRenderer", "struct_start_menu_task_data.html#abbf0970c8ebb1ec312ed4ca0b8c6514c", null ],
+    [ "gfxResMan", "struct_start_menu_task_data.html#aeb7c3549b6a9c01816c9eab1bd023aa4", null ],
+    [ "gfxResObj", "struct_start_menu_task_data.html#aae02eabea7dc05e010a03e6f873a8c79", null ],
+    [ "inhibitIconFlags", "struct_start_menu_task_data.html#ab9ab18a1dcf0a8b2f9a0535aead57908", null ],
+    [ "insertionOrder", "struct_start_menu_task_data.html#a6607ca059a60b8f2728dfe24ba0179dd", null ],
+    [ "itemCheckUseData", "struct_start_menu_task_data.html#a732305243821ead810ccfe11aa7f82e9", null ],
+    [ "lastButtonSelected", "struct_start_menu_task_data.html#a0517942b67ba12a6c108506968d9124d", null ],
+    [ "numActiveButtons", "struct_start_menu_task_data.html#a860f4b9eb255c76ac6b1f2fc641b3293", null ],
+    [ "selectedIndex", "struct_start_menu_task_data.html#a09a92b0c63decb9f4c65d62ffa07ed84", null ],
+    [ "selectionToAction", "struct_start_menu_task_data.html#a94ff3c839bd2cbbce16b0503546fa4fd", null ],
+    [ "spriteList", "struct_start_menu_task_data.html#a9fd1fb2d02ed496214f6ed500ec40da5", null ],
+    [ "spriteResourcesHeader", "struct_start_menu_task_data.html#a776848f8abbffe096ff88d027e8eb833", null ],
+    [ "state", "struct_start_menu_task_data.html#aca4d83291321b37831835ddb67c94561", null ],
+    [ "unk_000", "struct_start_menu_task_data.html#a5577cf5c47d76e74e412cc9cc9e14d2a", null ],
+    [ "unk_350", "struct_start_menu_task_data.html#ab4faf83ba35be235af67bf8052d43614", null ]
+];

@@ -1,0 +1,17 @@
+<map id="CutsceneWork" name="CutsceneWork">
+<area shape="rect" id="Node000001" title=" " alt="" coords="102,354,209,379"/>
+<area shape="rect" id="Node000002" href="$struct_n_a_r_c.html" title=" " alt="" coords="5,257,66,283"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="63,290,142,352,138,354,61,294"/>
+<area shape="rect" id="Node000003" href="$struct_cutscene_sprite_gfx.html" title=" " alt="" coords="89,257,222,283"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="158,296,158,354,153,352,153,300"/>
+<area shape="rect" id="Node000004" href="$struct_cutscene_sprites.html" title=" " alt="" coords="246,257,364,283"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="280,291,224,332,181,356,179,351,221,327,275,293"/>
+<area shape="rect" id="Node000005" href="$struct_cutscene_sprite.html" title=" " alt="" coords="249,160,360,186"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="306,199,307,258,302,255,303,203"/>
+<area shape="rect" id="Node000006" href="$struct_sprite.html" title=" " alt="" coords="348,14,403,40"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="340,47,318,74,309,96,305,120,306,161,301,159,300,119,304,95,313,71,336,51"/>
+<area shape="poly" id="edge8_Node000006_Node000006" title=" " alt="" coords="413,10,425,16,430,27,427,36,419,42,399,43,397,38,417,37,423,33,425,27,421,19,414,16"/>
+<area shape="rect" id="Node000007" href="$struct_sprite_list.html" title=" " alt="" coords="401,160,478,186"/>
+<area shape="poly" id="edge7_Node000007_Node000006" title=" " alt="" coords="368,53,364,95,366,116,373,135,386,149,404,161,398,161,383,153,369,138,361,117,358,95,365,57"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="439,144,436,110,425,74,411,56,396,43,396,38,415,53,430,71,442,109,444,146"/>
+</map>

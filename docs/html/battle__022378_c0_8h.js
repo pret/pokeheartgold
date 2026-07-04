@@ -1,0 +1,26 @@
+var battle__022378_c0_8h =
+[
+    [ "Battle_Run", "battle__022378_c0_8h.html#aec62c67f9b61e13f484b5e3381106f9b", null ],
+    [ "BgConfig_CleanupBattleMenuBackgrounds", "battle__022378_c0_8h.html#a962842b6b4f06ecb9decc2dc3a4e82b9", null ],
+    [ "ov12_02237B0C", "battle__022378_c0_8h.html#ad8d29c2b089a8cc79e06804c1dcdd192", null ],
+    [ "ov12_02237B6C", "battle__022378_c0_8h.html#a7ec6f93289bda6f7b6ffb6edde982db4", null ],
+    [ "ov12_02237BB8", "battle__022378_c0_8h.html#a1140464891714b65f2802734f6f63d4f", null ],
+    [ "ov12_02237CC4", "battle__022378_c0_8h.html#af72088e6891c437fb11ae0cb8ec158f6", null ],
+    [ "ov12_02237D00", "battle__022378_c0_8h.html#a05e3ae477e1d31ca57f39ed874f12e0e", null ],
+    [ "ov12_02237ED0", "battle__022378_c0_8h.html#a7682ee2ea6848771adc48709bd081515", null ],
+    [ "ov12_02237F18", "battle__022378_c0_8h.html#a3d05c194d50bfbc6c0175c833ec40a86", null ],
+    [ "ov12_02238358", "battle__022378_c0_8h.html#a1bfec894734638d79505e5197f96d861", null ],
+    [ "ov12_0223843C", "battle__022378_c0_8h.html#a63c114c9bf5cec930103a8bf415939a6", null ],
+    [ "ov12_02238A30", "battle__022378_c0_8h.html#a26ee6e06409de7ff9112de5e4e958c56", null ],
+    [ "ov12_02238A64", "battle__022378_c0_8h.html#ac17e3345e448c4efab05bb5bda075454", null ],
+    [ "ov12_022399D4", "battle__022378_c0_8h.html#a6d45abaabf9b8c2f24da86384b83a3d2", null ],
+    [ "ov12_02239C28", "battle__022378_c0_8h.html#a344a560e285b8d574d53985c064e094c", null ],
+    [ "ov12_0223A088", "battle__022378_c0_8h.html#a71e3429a20efd3f1402b6ed0e216ee6f", null ],
+    [ "ov12_0223A0D4", "battle__022378_c0_8h.html#a46e55ace466d3ad9030c7fa3568443e3", null ],
+    [ "ov12_0223A218", "battle__022378_c0_8h.html#aaa0cee24f10311f33a83d8d718dbf86a", null ],
+    [ "ov12_0223A260", "battle__022378_c0_8h.html#aa153ec9183a142b1b0f5a0cb8df871d8", null ],
+    [ "ov12_0223A3A8", "battle__022378_c0_8h.html#a2d4b6244597b9001127df63e29457e4b", null ],
+    [ "ov12_0223A3F0", "battle__022378_c0_8h.html#a5525e7dc75bc5350434ddfe932db9b8b", null ],
+    [ "ov12_0223A5E4", "battle__022378_c0_8h.html#a580919932d697d00884222e9f1144023", null ],
+    [ "ov12_0223A620", "battle__022378_c0_8h.html#a5698da804ec01f5d0b264a66cc022a4d", null ]
+];

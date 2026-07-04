@@ -1,0 +1,11 @@
+<map id="UnkStruct_ov55_021E5B08" name="UnkStruct_ov55_021E5B08">
+<area shape="rect" id="Node000001" title=" " alt="" coords="149,102,331,128"/>
+<area shape="rect" id="Node000002" href="$struct_options.html" title=" " alt="" coords="5,5,72,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="59,40,81,59,104,76,135,89,169,101,164,102,133,94,102,80,77,63,58,45"/>
+<area shape="rect" id="Node000003" href="$struct_menu_input_state_mgr.html" title=" " alt="" coords="96,5,232,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="161,44,163,62,168,77,181,90,198,102,193,101,177,94,164,79,157,63,158,49"/>
+<area shape="rect" id="Node000004" href="$struct_string.html" title=" " alt="" coords="290,5,345,31"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="310,44,290,80,261,104,259,99,286,76,305,47"/>
+<area shape="rect" id="Node000005" href="$struct_mail_message.html" title=" " alt="" coords="404,5,502,31"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="444,43,432,64,415,80,375,100,332,111,331,105,373,95,412,76,427,61,439,46"/>
+</map>

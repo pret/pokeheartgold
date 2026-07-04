@@ -1,0 +1,9 @@
+<map id="IntroMovieBgBlendAnim" name="IntroMovieBgBlendAnim">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,221,167,247"/>
+<area shape="rect" id="Node000002" href="$struct_sys_task.html" title=" " alt="" coords="114,24,186,50"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="115,61,102,76,90,94,80,128,78,164,86,221,80,221,73,164,75,127,85,92,98,73,118,57"/>
+<area shape="poly" id="edge4_Node000002_Node000002" title=" " alt="" coords="178,15,202,18,210,25,213,37,208,52,196,59,180,59,165,53,164,48,181,54,194,54,204,48,208,37,205,28,200,22,180,20"/>
+<area shape="rect" id="Node000003" href="$struct_sys_task_queue.html" title=" " alt="" coords="199,221,309,247"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="142,62,135,95,131,129,134,164,148,196,167,208,201,221,196,221,165,213,144,199,129,166,126,129,130,94,139,67"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="254,204,251,151,244,122,232,95,208,70,181,53,181,48,211,66,236,91,249,120,257,151,259,207"/>
+</map>

@@ -1,0 +1,29 @@
+<map id="TouchscreenListMenu" name="TouchscreenListMenu">
+<area shape="rect" id="Node000001" title=" " alt="" coords="343,392,492,418"/>
+<area shape="poly" id="edge14_Node000001_Node000001" title=" " alt="" coords="508,396,518,405,510,413,492,416,492,411,508,408,513,405,506,401"/>
+<area shape="rect" id="Node000002" href="$struct_touchscreen_list_menu_spawner.html" title=" " alt="" coords="11,295,210,321"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="165,323,380,390,376,393,164,329"/>
+<area shape="rect" id="Node000003" href="$struct_palette_data.html" title=" " alt="" coords="31,199,121,224"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="87,237,109,295,104,295,85,242"/>
+<area shape="rect" id="Node000004" href="$struct_palette_buffer.html" title=" " alt="" coords="27,102,125,128"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="77,140,79,198,73,198,75,146"/>
+<area shape="rect" id="Node000005" href="$struct_selected_palette_data.html" title=" " alt="" coords="5,5,147,31"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="76,44,79,102,73,101,76,49"/>
+<area shape="rect" id="Node000006" href="$struct_touchscreen_list_menu_header.html" title=" " alt="" coords="246,295,436,321"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="358,332,383,366,406,392,401,391,379,370,355,337"/>
+<area shape="rect" id="Node000007" href="$struct_touchscreen_list_menu_template.html" title=" " alt="" coords="145,199,346,224"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="254,237,264,255,275,269,291,283,310,295,305,295,288,287,271,273,259,257,253,242"/>
+<area shape="rect" id="Node000008" href="$struct_l_i_s_t_m_e_n_u_i_t_e_m.html" title=" " alt="" coords="370,199,491,224"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="363,230,346,250,339,272,341,296,336,294,334,272,341,247,359,233"/>
+<area shape="rect" id="Node000009" href="$struct_string.html" title=" " alt="" coords="403,102,458,128"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="432,141,433,199,428,197,429,145"/>
+<area shape="rect" id="Node000010" href="$struct_bg_config.html" title=" " alt="" coords="516,199,591,224"/>
+<area shape="poly" id="edge9_Node000006_Node000010" title=" " alt="" coords="503,227,460,251,448,262,435,274,383,297,381,292,432,269,444,258,457,246,499,229"/>
+<area shape="rect" id="Node000012" href="$struct_window.html" title=" " alt="" coords="460,295,529,321"/>
+<area shape="poly" id="edge12_Node000012_Node000010" title=" " alt="" coords="544,237,526,273,507,297,504,293,522,270,540,240"/>
+<area shape="rect" id="Node000011" href="$struct_background.html" title=" " alt="" coords="508,102,598,128"/>
+<area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="555,141,556,199,551,197,552,145"/>
+<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="478,332,429,394,426,389,473,334"/>
+<area shape="rect" id="Node000013" href="$union_touchscreen_hitbox.html" title=" " alt="" coords="553,295,687,321"/>
+<area shape="poly" id="edge13_Node000001_Node000013" title=" " alt="" coords="595,330,530,370,466,394,465,389,528,366,589,331"/>
+</map>

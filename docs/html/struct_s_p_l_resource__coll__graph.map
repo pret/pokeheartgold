@@ -1,0 +1,26 @@
+<map id="SPLResource" name="SPLResource">
+<area shape="rect" id="Node000001" title=" " alt="" coords="429,199,531,224"/>
+<area shape="rect" id="Node000002" href="$struct_s_p_l_res_base.html" title=" " alt="" coords="18,102,118,128"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="103,133,149,154,200,172,261,186,322,196,431,208,426,208,321,201,260,191,199,177,147,159,103,138"/>
+<area shape="rect" id="Node000003" href="$union_s_p_l_res_base_flag.html" title=" " alt="" coords="5,5,131,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="69,44,71,102,65,101,67,49"/>
+<area shape="rect" id="Node000004" href="$struct_s_p_l_res_scl_anm.html" title=" " alt="" coords="142,102,258,128"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="230,134,263,155,301,172,366,191,431,205,426,205,365,196,299,177,261,159,229,139"/>
+<area shape="rect" id="Node000005" href="$union_s_p_l_res_in_out.html" title=" " alt="" coords="221,5,323,31"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="256,42,211,103,207,100,251,45"/>
+<area shape="rect" id="Node000008" href="$struct_s_p_l_res_alp_anm.html" title=" " alt="" coords="282,102,398,128"/>
+<area shape="poly" id="edge8_Node000008_Node000005" title=" " alt="" coords="290,41,334,102,329,101,288,46"/>
+<area shape="rect" id="Node000006" href="$struct_s_p_l_res_clr_anm.html" title=" " alt="" coords="423,102,537,128"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="482,141,482,200,478,196,478,145"/>
+<area shape="rect" id="Node000007" href="$union_s_p_l_res_in_peak_out.html" title=" " alt="" coords="414,5,546,31"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="482,44,482,103,478,100,478,48"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="362,136,405,172,451,198,446,198,402,177,360,141"/>
+<area shape="rect" id="Node000009" href="$struct_s_p_l_res_tex_anm.html" title=" " alt="" coords="561,102,679,128"/>
+<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="600,138,555,177,510,201,509,196,552,172,595,140"/>
+<area shape="rect" id="Node000010" href="$struct_s_p_l_res_chld.html" title=" " alt="" coords="703,102,801,128"/>
+<area shape="poly" id="edge10_Node000001_Node000010" title=" " alt="" coords="728,136,696,159,661,177,595,197,532,208,531,203,593,192,659,172,693,155,723,138"/>
+<area shape="rect" id="Node000011" href="$union_s_p_l_res_chld_flag.html" title=" " alt="" coords="691,5,813,31"/>
+<area shape="poly" id="edge11_Node000010_Node000011" title=" " alt="" coords="754,44,754,103,750,100,750,48"/>
+<area shape="rect" id="Node000012" href="$struct_s_p_l_field.html" title=" " alt="" coords="824,102,898,128"/>
+<area shape="poly" id="edge12_Node000001_Node000012" title=" " alt="" coords="834,136,796,159,754,177,696,192,636,203,532,212,531,206,635,197,694,187,752,172,794,155,829,137"/>
+</map>

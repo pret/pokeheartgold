@@ -1,0 +1,7 @@
+<map id="TouchHitboxController" name="TouchHitboxController">
+<area shape="rect" id="Node000001" title=" " alt="" coords="93,102,243,128"/>
+<area shape="rect" id="Node000002" href="$union_touchscreen_hitbox.html" title=" " alt="" coords="5,5,139,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="96,40,158,101,153,102,94,44"/>
+<area shape="rect" id="Node000003" href="$struct_touch_hitbox_controller_template.html" title=" " alt="" coords="162,5,366,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="244,41,182,104,179,99,239,43"/>
+</map>

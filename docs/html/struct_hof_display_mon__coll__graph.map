@@ -1,0 +1,5 @@
+<map id="HofDisplayMon" name="HofDisplayMon">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,122,117,148"/>
+<area shape="rect" id="Node000002" href="$struct_string.html" title=" " alt="" coords="33,5,89,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="63,46,64,122,58,122,59,48"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="TaskData_TouchscreenListMenuGraphicsLoad" name="TaskData_TouchscreenListMenuGraphicsLoad">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,199,185,239"/>
+<area shape="rect" id="Node000002" href="$struct_bg_config.html" title=" " alt="" coords="57,102,133,128"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="97,141,98,199,92,198,93,145"/>
+<area shape="rect" id="Node000003" href="$struct_background.html" title=" " alt="" coords="50,5,140,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="96,44,98,102,92,101,94,49"/>
+</map>

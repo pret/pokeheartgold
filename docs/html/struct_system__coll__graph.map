@@ -1,0 +1,9 @@
+<map id="System" name="System">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,202,72,228"/>
+<area shape="rect" id="Node000002" href="$struct_sys_task_queue.html" title=" " alt="" coords="126,5,236,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="109,25,80,37,54,57,43,74,36,93,30,134,33,172,38,202,33,202,27,173,25,134,31,91,38,71,50,53,77,32,112,21"/>
+<area shape="rect" id="Node000003" href="$struct_sys_task.html" title=" " alt="" coords="181,202,253,228"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="176,44,172,99,173,129,179,158,191,181,207,202,202,201,187,184,174,160,168,130,167,99,174,48"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="224,186,230,159,234,125,233,90,223,56,214,44,203,34,203,29,218,40,228,54,238,89,239,125,235,160,228,189"/>
+<area shape="poly" id="edge4_Node000003_Node000003" title=" " alt="" coords="246,193,269,196,277,203,280,215,275,230,263,237,247,237,232,231,232,226,248,232,262,232,271,226,275,215,272,206,267,200,246,199"/>
+</map>

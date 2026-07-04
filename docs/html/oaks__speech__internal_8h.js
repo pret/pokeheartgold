@@ -1,0 +1,27 @@
+var oaks__speech__internal_8h =
+[
+    [ "OakSpeechMultichoice", "struct_oak_speech_multichoice.html", "struct_oak_speech_multichoice" ],
+    [ "OakSpeechData", "struct_oak_speech_data.html", "struct_oak_speech_data" ],
+    [ "GENDER_CURSOR_BOTH", "oaks__speech__internal_8h.html#a4ebdbc590f6a863d5cb569fde30b404d", null ],
+    [ "GENDER_CURSOR_FEMALE", "oaks__speech__internal_8h.html#a0e7b1eb43a72fff9f1809dc7d2d66572", null ],
+    [ "GENDER_CURSOR_MALE", "oaks__speech__internal_8h.html#af5a57f9478a55e7d416d2ef3832f2fde", null ],
+    [ "GENDER_CURSOR_NEITHER", "oaks__speech__internal_8h.html#ab7c53d7bece1a4e65bcdc86c5e5a3140", null ],
+    [ "TOUCHTOADVANCE_HIDE", "oaks__speech__internal_8h.html#ab565797b9b640717c853cc34f6306169", null ],
+    [ "TOUCHTOADVANCE_PRESS", "oaks__speech__internal_8h.html#a48a2189688e07da52c5c62cf5e012c99", null ],
+    [ "TOUCHTOADVANCE_RELEASE", "oaks__speech__internal_8h.html#a9de9d50959f244b41b9cde04ba0b1372", null ],
+    [ "TOUCHTOADVANCE_SHOW", "oaks__speech__internal_8h.html#a0cfe415953bdd08f025bba38949c4adc", null ],
+    [ "OakSpeechData", "oaks__speech__internal_8h.html#a019439495cb19f8aeb3b3bc2902513ec", null ],
+    [ "OakSpeechMultichoice", "oaks__speech__internal_8h.html#ac893c6742bd579c818f89199f6991faa", null ],
+    [ "OakSpeechYesNo", "oaks__speech__internal_8h.html#a58591adbbd05447ca98b4c865c893b71", null ],
+    [ "OakSpeech_CleanupSpriteEngine", "oaks__speech__internal_8h.html#a10f5265e2cd7b0d51d9eeab165767b5f", null ],
+    [ "OakSpeech_CreateSprites", "oaks__speech__internal_8h.html#aea55c425103528c0810cc188c4dda23f", null ],
+    [ "OakSpeech_DeadstrippedFunction1", "oaks__speech__internal_8h.html#aa6faebbe953b5014c140c95f50add64c", null ],
+    [ "OakSpeech_DeadstrippedFunction2", "oaks__speech__internal_8h.html#a409e63a68eb954eeb1dea26c11f1fd10", null ],
+    [ "OakSpeech_InitSpriteEngine", "oaks__speech__internal_8h.html#a81e372bf58b76899bd6312607cc66b83", null ],
+    [ "OakSpeech_SelectedGenderIndicatorSpritesAction", "oaks__speech__internal_8h.html#ae9d74508485ca2a500a9f478d779ac95", null ],
+    [ "OakSpeechYesNo_Create", "oaks__speech__internal_8h.html#af629f30123aa951e3c77d355bdea141b", null ],
+    [ "OakSpeechYesNo_Delete", "oaks__speech__internal_8h.html#ad2d2d88732324581f95f34744ef8974b", null ],
+    [ "OakSpeechYesNo_Main", "oaks__speech__internal_8h.html#a6a6101acd93f79540bdbe018c472927e", null ],
+    [ "OakSpeechYesNo_SetBackgroundPalette", "oaks__speech__internal_8h.html#acd63f1e55d71e0fedfef8c861dc84d37", null ],
+    [ "OakSpeechYesNo_Start", "oaks__speech__internal_8h.html#a395d0f8e3b9395716538333d2ee69d84", null ]
+];

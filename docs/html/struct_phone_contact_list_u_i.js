@@ -1,0 +1,27 @@
+var struct_phone_contact_list_u_i =
+[
+    [ "callContext", "struct_phone_contact_list_u_i.html#abe53a87ff02f2599ecd807f474e04319", null ],
+    [ "cursorPos", "struct_phone_contact_list_u_i.html#a0c89b4bf976228ce07cc23847c6676c5", null ],
+    [ "cursorSprites", "struct_phone_contact_list_u_i.html#a7e0890890d0c160933c4a942ba1db692", null ],
+    [ "firstBgColor", "struct_phone_contact_list_u_i.html#a5997116f1cb1fdddd658b04710da3758", null ],
+    [ "firstContactOnPage", "struct_phone_contact_list_u_i.html#af451cd7539a2993e1b5ad49dc2f4c1e6", null ],
+    [ "isPageScroll", "struct_phone_contact_list_u_i.html#a2e82b138c31a7aac652747df7ec4167e", null ],
+    [ "isScrolling", "struct_phone_contact_list_u_i.html#acf00c1820352f2a60dd0714737a5b765", null ],
+    [ "lastContactIndex", "struct_phone_contact_list_u_i.html#a783404bb8c91916dc3163179659d10e4", null ],
+    [ "listBottomIndex", "struct_phone_contact_list_u_i.html#af6c214b0c424ec7b55cee7eea0199c2e", null ],
+    [ "listScrollArrowSprites", "struct_phone_contact_list_u_i.html#a6610f72fc3b4d9b7216b830c96377c87", null ],
+    [ "menuInputStateBakPtr", "struct_phone_contact_list_u_i.html#a35135ca8cf49830f0c9fb804a1f79085", null ],
+    [ "menuInputStatePtr", "struct_phone_contact_list_u_i.html#a97083401fbfb5217f4e6ad218f14efd4", null ],
+    [ "moveContactArrowSprites", "struct_phone_contact_list_u_i.html#ae05355efeaa380404c1b5ed825a9b7f3", null ],
+    [ "movingContacts", "struct_phone_contact_list_u_i.html#a61752aca8578b729033f22f8d6561284", null ],
+    [ "numContacts", "struct_phone_contact_list_u_i.html#ac2b718b53f6abe80a5ce6f5a6563bc5d", null ],
+    [ "pageScrollFailed", "struct_phone_contact_list_u_i.html#af3d034c874cee381432b6e3a9f449aa1", null ],
+    [ "pageScrollStep", "struct_phone_contact_list_u_i.html#a31a87eed389c17d59e73d188673ffd18", null ],
+    [ "scrollDirection", "struct_phone_contact_list_u_i.html#ad7af7bbe84fe4c213ff0ea87f0280728", null ],
+    [ "scrollTimer", "struct_phone_contact_list_u_i.html#a3249578a8927e9d5d6135ac7ad6ca7b6", null ],
+    [ "selectedIndex", "struct_phone_contact_list_u_i.html#ae7bb9cdc4e98473bf253fbdbdc7eda8a", null ],
+    [ "slotData", "struct_phone_contact_list_u_i.html#a6f89127200c42bf4c92bd2b1cdaf7828", null ],
+    [ "textColors", "struct_phone_contact_list_u_i.html#a18b375a227b04e1ca045454937ab43ca", null ],
+    [ "unk_008_0", "struct_phone_contact_list_u_i.html#ab4bea85fbaa55d2fac720816ddd9c4ff", null ],
+    [ "window", "struct_phone_contact_list_u_i.html#a65b241e0d5d729c6b15ee97d2e6042bc", null ]
+];

@@ -1,0 +1,24 @@
+<map id="LugiaArrivesCutsceneCamera" name="LugiaArrivesCutsceneCamera">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,415,201,440"/>
+<area shape="rect" id="Node000002" href="$struct_camera_angle.html" title=" " alt="" coords="24,5,124,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="78,46,105,414,99,414,73,47"/>
+<area shape="rect" id="Node000004" href="$struct_camera.html" title=" " alt="" coords="183,121,250,147"/>
+<area shape="poly" id="edge6_Node000004_Node000002" title=" " alt="" coords="101,38,204,119,199,122,101,44"/>
+<area shape="rect" id="Node000003" href="$struct_g_f_camera_translation_wrapper.html" title=" " alt="" coords="198,318,395,344"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="260,353,129,417,127,412,256,349"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="229,159,294,317,289,317,226,164"/>
+<area shape="rect" id="Node000005" href="$struct_camera_perspective.html" title=" " alt="" coords="148,5,284,31"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="217,44,219,121,214,120,215,49"/>
+<area shape="rect" id="Node000006" href="$struct_camera_look_at.html" title=" " alt="" coords="309,5,417,31"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="337,44,298,80,236,122,233,118,295,76,341,40"/>
+<area shape="rect" id="Node000007" href="$struct_camera_history.html" title=" " alt="" coords="442,5,551,31"/>
+<area shape="poly" id="edge7_Node000004_Node000007" title=" " alt="" coords="459,40,420,62,373,81,342,88,318,91,293,95,264,104,233,123,230,119,262,100,292,90,317,86,341,83,372,75,418,57,463,37"/>
+<area shape="rect" id="Node000008" href="$struct_camera_translation_path_template.html" title=" " alt="" coords="275,121,486,147"/>
+<area shape="poly" id="edge8_Node000003_Node000008" title=" " alt="" coords="380,160,369,226,357,262,340,296,316,320,313,315,335,292,352,260,364,224,376,164"/>
+<area shape="rect" id="Node000009" href="$struct_sys_task.html" title=" " alt="" coords="510,121,582,147"/>
+<area shape="poly" id="edge9_Node000003_Node000009" title=" " alt="" coords="519,155,484,191,466,220,457,246,445,271,422,296,399,310,374,320,372,315,397,305,419,292,441,268,452,244,461,218,480,188,515,158"/>
+<area shape="poly" id="edge12_Node000009_Node000009" title=" " alt="" coords="597,121,606,126,608,134,600,146,583,149,581,144,597,141,603,133,601,129,597,126"/>
+<area shape="rect" id="Node000010" href="$struct_sys_task_queue.html" title=" " alt="" coords="497,318,608,344"/>
+<area shape="poly" id="edge11_Node000010_Node000009" title=" " alt="" coords="537,159,531,190,523,243,524,265,530,293,544,318,539,316,526,295,519,266,517,242,525,189,534,163"/>
+<area shape="poly" id="edge10_Node000009_Node000010" title=" " alt="" coords="601,307,614,293,627,266,630,242,626,219,614,191,595,167,571,150,571,145,598,163,619,188,631,217,635,242,632,267,619,295,604,312"/>
+</map>

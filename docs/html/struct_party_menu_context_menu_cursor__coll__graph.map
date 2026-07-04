@@ -1,0 +1,15 @@
+<map id="PartyMenuContextMenuCursor" name="PartyMenuContextMenuCursor">
+<area shape="rect" id="Node000001" title=" " alt="" coords="24,407,225,433"/>
+<area shape="rect" id="Node000002" href="$struct_unk_template_party_menu_context_menu__0207_e590.html" title=" " alt="" coords="21,295,228,336"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="127,350,127,408,122,406,123,353"/>
+<area shape="rect" id="Node000003" href="$struct_l_i_s_t_m_e_n_u_i_t_e_m.html" title=" " alt="" coords="5,199,127,224"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="81,236,116,295,111,296,80,241"/>
+<area shape="rect" id="Node000004" href="$struct_string.html" title=" " alt="" coords="38,102,94,128"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="66,140,69,198,63,198,66,146"/>
+<area shape="rect" id="Node000005" href="$struct_window.html" title=" " alt="" coords="150,199,219,224"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="172,236,138,297,134,294,168,240"/>
+<area shape="rect" id="Node000006" href="$struct_bg_config.html" title=" " alt="" coords="147,102,222,128"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="186,140,187,199,182,197,184,145"/>
+<area shape="rect" id="Node000007" href="$struct_background.html" title=" " alt="" coords="140,5,230,31"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="185,44,187,102,182,101,184,49"/>
+</map>

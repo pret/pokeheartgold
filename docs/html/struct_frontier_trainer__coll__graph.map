@@ -1,0 +1,7 @@
+<map id="FrontierTrainer" name="FrontierTrainer">
+<area shape="rect" id="Node000001" title=" " alt="" coords="60,102,166,128"/>
+<area shape="rect" id="Node000002" href="$struct_mail_message.html" title=" " alt="" coords="5,5,104,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="52,44,55,62,60,77,71,90,87,101,81,102,68,94,56,79,50,63,50,49"/>
+<area shape="rect" id="Node000003" href="$struct_frontier_mon.html" title=" " alt="" coords="128,5,218,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="164,44,146,79,126,104,123,100,142,77,160,47"/>
+</map>

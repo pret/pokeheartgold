@@ -1,0 +1,13 @@
+<map id="BattleInputTextObject" name="BattleInputTextObject">
+<area shape="rect" id="Node000001" title=" " alt="" coords="85,257,232,283"/>
+<area shape="rect" id="Node000002" href="$struct_text_o_b_j.html" title=" " alt="" coords="5,160,78,186"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="69,193,146,255,141,258,67,198"/>
+<area shape="rect" id="Node000003" href="$struct_sprite.html" title=" " alt="" coords="95,14,150,40"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="82,51,60,74,50,96,45,119,43,160,38,159,40,119,45,94,56,71,84,46"/>
+<area shape="poly" id="edge5_Node000003_Node000003" title=" " alt="" coords="160,10,173,16,177,27,174,36,166,42,147,43,144,38,165,37,170,33,172,27,169,19,161,16"/>
+<area shape="rect" id="Node000004" href="$struct_sprite_list.html" title=" " alt="" coords="102,160,178,186"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="118,52,116,94,121,136,133,160,128,160,116,137,111,94,116,57"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="165,147,172,135,181,104,172,74,159,56,144,43,144,38,163,52,177,72,186,104,177,137,169,151"/>
+<area shape="rect" id="Node000005" href="$struct_unk_struct__02021_a_c8.html" title=" " alt="" coords="202,160,350,186"/>
+<area shape="poly" id="edge6_Node000001_Node000005" title=" " alt="" coords="252,195,175,259,173,254,247,196"/>
+</map>

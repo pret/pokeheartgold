@@ -1,0 +1,7 @@
+<map id="StarterChooseMonObjResPtrs" name="StarterChooseMonObjResPtrs">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,300,204,326"/>
+<area shape="rect" id="Node000002" href="$struct_sprite_resource.html" title=" " alt="" coords="49,102,160,128"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="107,142,107,300,102,300,102,143"/>
+<area shape="rect" id="Node000003" href="$struct_g_f__2_d_gfx_raw_res_obj.html" title=" " alt="" coords="27,5,182,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="105,44,107,102,102,101,104,49"/>
+</map>

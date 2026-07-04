@@ -1,0 +1,19 @@
+<map id="MessageBox" name="MessageBox">
+<area shape="rect" id="Node000001" title=" " alt="" coords="61,316,158,341"/>
+<area shape="rect" id="Node000002" href="$struct_string.html" title=" " alt="" coords="30,5,85,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="42,47,30,76,16,113,9,154,13,194,29,231,51,265,98,314,93,316,47,268,24,234,8,196,3,154,11,112,25,74,43,42"/>
+<area shape="rect" id="Node000003" href="$struct_message_format.html" title=" " alt="" coords="52,219,167,245"/>
+<area shape="poly" id="edge6_Node000003_Node000002" title=" " alt="" coords="59,44,65,85,73,127,90,178,107,219,102,219,85,180,68,128,60,85,59,49"/>
+<area shape="rect" id="Node000004" href="$struct_message_format_fields.html" title=" " alt="" coords="123,102,273,128"/>
+<area shape="poly" id="edge5_Node000004_Node000002" title=" " alt="" coords="88,37,182,100,177,103,88,43"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="112,258,112,316,107,314,108,262"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="181,138,121,220,117,217,178,142"/>
+<area shape="rect" id="Node000005" href="$struct_message_format_attrs.html" title=" " alt="" coords="125,5,268,31"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="198,44,200,102,195,101,196,49"/>
+<area shape="rect" id="Node000006" href="$struct_window.html" title=" " alt="" coords="238,219,307,245"/>
+<area shape="poly" id="edge7_Node000001_Node000006" title=" " alt="" coords="257,256,240,277,219,294,190,309,160,319,158,314,188,304,216,289,236,273,253,258"/>
+<area shape="rect" id="Node000007" href="$struct_bg_config.html" title=" " alt="" coords="299,102,374,128"/>
+<area shape="poly" id="edge8_Node000006_Node000007" title=" " alt="" coords="325,140,281,220,277,217,320,143"/>
+<area shape="rect" id="Node000008" href="$struct_background.html" title=" " alt="" coords="293,5,383,31"/>
+<area shape="poly" id="edge9_Node000007_Node000008" title=" " alt="" coords="339,44,339,102,334,100,336,49"/>
+</map>

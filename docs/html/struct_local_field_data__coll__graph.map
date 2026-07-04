@@ -1,0 +1,7 @@
+<map id="LocalFieldData" name="LocalFieldData">
+<area shape="rect" id="Node000001" title=" " alt="" coords="54,183,163,209"/>
+<area shape="rect" id="Node000002" href="$struct_location.html" title=" " alt="" coords="5,5,76,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="34,44,30,101,34,131,44,158,56,171,73,182,67,183,53,175,40,161,28,132,25,101,33,49"/>
+<area shape="rect" id="Node000003" href="$struct_player_save_data.html" title=" " alt="" coords="118,5,235,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="177,45,171,101,162,132,149,161,127,185,124,181,145,158,157,130,166,100,174,49"/>
+</map>

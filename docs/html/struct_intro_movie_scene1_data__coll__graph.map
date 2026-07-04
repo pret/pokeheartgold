@@ -1,0 +1,13 @@
+<map id="IntroMovieScene1Data" name="IntroMovieScene1Data">
+<area shape="rect" id="Node000001" title=" " alt="" coords="76,277,231,303"/>
+<area shape="rect" id="Node000002" href="$struct_sprite_resource.html" title=" " alt="" coords="27,111,139,136"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="77,149,73,201,77,228,87,252,99,265,115,277,110,277,95,269,82,255,72,229,68,201,75,154"/>
+<area shape="rect" id="Node000003" href="$struct_g_f__2_d_gfx_raw_res_obj.html" title=" " alt="" coords="5,5,161,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="84,44,86,111,80,110,82,49"/>
+<area shape="rect" id="Node000004" href="$struct_sprite.html" title=" " alt="" coords="259,111,315,136"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="243,142,225,155,206,171,194,191,181,220,160,279,155,275,176,218,189,188,202,168,222,151,247,139"/>
+<area shape="poly" id="edge6_Node000004_Node000004" title=" " alt="" coords="330,112,338,116,341,124,333,135,316,137,314,132,330,130,336,123,334,120,330,117"/>
+<area shape="rect" id="Node000005" href="$struct_sprite_list.html" title=" " alt="" coords="288,277,364,303"/>
+<area shape="poly" id="edge5_Node000005_Node000004" title=" " alt="" coords="281,150,276,201,277,227,285,252,294,265,307,277,302,276,290,268,280,255,272,228,270,200,277,154"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="334,261,343,218,343,193,337,170,324,153,308,139,309,134,327,149,341,168,348,193,349,218,338,264"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="Window" name="Window">
+<area shape="rect" id="Node000001" title=" " alt="" coords="16,199,85,224"/>
+<area shape="rect" id="Node000002" href="$struct_bg_config.html" title=" " alt="" coords="13,102,88,128"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="53,142,53,198,48,198,48,144"/>
+<area shape="rect" id="Node000003" href="$struct_background.html" title=" " alt="" coords="5,5,96,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="51,44,53,102,48,101,50,49"/>
+</map>

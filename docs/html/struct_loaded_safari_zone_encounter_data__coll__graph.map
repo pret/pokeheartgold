@@ -1,0 +1,7 @@
+<map id="LoadedSafariZoneEncounterData" name="LoadedSafariZoneEncounterData">
+<area shape="rect" id="Node000001" title=" " alt="" coords="109,137,322,163"/>
+<area shape="rect" id="Node000002" href="$struct_safari_zone_area_encounter_slot.html" title=" " alt="" coords="5,13,199,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="125,48,207,136,202,137,122,52"/>
+<area shape="rect" id="Node000003" href="$struct_safari_zone_area_bonus_slot_unlock_conditions.html" title=" " alt="" coords="222,5,435,46"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="310,57,264,115,235,139,232,134,260,111,305,60"/>
+</map>

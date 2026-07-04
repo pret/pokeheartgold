@@ -1,0 +1,16 @@
+<map id="TextOBJTemplate" name="TextOBJTemplate">
+<area shape="rect" id="Node000001" title=" " alt="" coords="70,354,196,379"/>
+<area shape="rect" id="Node000002" href="$struct_window.html" title=" " alt="" coords="16,248,85,274"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="51,287,56,309,65,328,78,341,96,353,91,353,75,345,60,331,51,311,49,292"/>
+<area shape="rect" id="Node000003" href="$struct_bg_config.html" title=" " alt="" coords="13,102,88,128"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="52,141,53,248,48,248,49,145"/>
+<area shape="rect" id="Node000004" href="$struct_background.html" title=" " alt="" coords="5,5,96,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="51,44,53,102,48,101,50,49"/>
+<area shape="rect" id="Node000005" href="$struct_sprite_list.html" title=" " alt="" coords="139,102,215,128"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="165,140,162,152,148,210,140,268,136,354,131,352,135,268,143,209,157,151,162,144"/>
+<area shape="rect" id="Node000006" href="$struct_sprite.html" title=" " alt="" coords="219,248,274,274"/>
+<area shape="poly" id="edge6_Node000006_Node000005" title=" " alt="" coords="170,140,167,179,169,197,176,214,194,229,224,247,218,248,191,234,171,217,164,198,162,179,168,145"/>
+<area shape="poly" id="edge8_Node000001_Node000006" title=" " alt="" coords="225,284,148,355,145,351,220,284"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="249,232,250,193,246,172,238,153,226,140,212,131,212,126,229,136,242,150,251,170,255,192,254,234"/>
+<area shape="poly" id="edge7_Node000006_Node000006" title=" " alt="" coords="290,249,298,254,301,261,292,272,275,274,274,269,290,267,296,261,294,257,290,255"/>
+</map>

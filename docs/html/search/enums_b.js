@@ -1,0 +1,25 @@
+var searchData=
+[
+  ['namescreentype_0',['NameScreenType',['../launch__application_8h.html#a3601174486980f6b38081c086576d100',1,'launch_application.h']]],
+  ['namingscreeninitstate_1',['NamingScreenInitState',['../naming__screen_8c.html#a08a75a7d31a7ef04e298e063cf4e06ae',1,'naming_screen.c']]],
+  ['namingscreenmainstate_2',['NamingScreenMainState',['../naming__screen_8c.html#a41136f480fc21097ead4b8ae41525fea',1,'naming_screen.c']]],
+  ['namingscreenpageswitchstate_3',['NamingScreenPageSwitchState',['../naming__screen_8c.html#acd67af09eb1e27ae13e9bafc16e185f2',1,'naming_screen.c']]],
+  ['narcid_4',['NarcId',['../filesystem__files__def_8h.html#a004dbe447a77b43d1b6a027168abbdf4',1,'filesystem_files_def.h']]],
+  ['nns_5fg2d_5fvram_5ftype_5',['NNS_G2D_VRAM_TYPE',['../g2d___image_8h.html#ad7e9ccf7a8bc54977dcdd9308896be78',1,'g2d_Image.h']]],
+  ['nns_5fgfd_5fdst_5ftype_6',['NNS_GFD_DST_TYPE',['../gfd___vram_transfer_manager_8h.html#ad02afe84a1d651d6f983c890a59472f2',1,'gfd_VramTransferManager.h']]],
+  ['nnsg2danimationplaymode_7',['NNSG2dAnimationPlayMode',['../g2d___anim__data_8h.html#a2835a70fb1b22999ea47f0d52f27dc7e',1,'g2d_Anim_data.h']]],
+  ['nnsg2danmcallbacktype_8',['NNSG2dAnmCallbackType',['../g2d___animation_8h.html#aa473fec1c39c2f63800e3a4d04e57ee6',1,'g2d_Animation.h']]],
+  ['nnsg2dcharacterdatamapingtype_9',['NNSG2dCharacterDataMapingType',['../g2d___character__data_8h.html#ac7c32b7a89a72bc652f0c86b4e53e908',1,'g2d_Character_data.h']]],
+  ['nnsg2dmctype_10',['NNSG2dMCType',['../g2d___multi_cell_animation_8h.html#ae85bb23b13558395a163335596366858',1,'g2d_MultiCellAnimation.h']]],
+  ['nnsg2dnodetype_11',['NNSG2dNodeType',['../g2d___node_8h.html#ab0ba760060a055fcc5d2520d40ab3360',1,'g2d_Node.h']]],
+  ['nnsg2drendereraffinetypeoverwitemode_12',['NNSG2dRendererAffineTypeOverwiteMode',['../g2d___renderer_core_8h.html#a5aedf093985647341352c184afbb968a',1,'g2d_RendererCore.h']]],
+  ['nnsg2drendereroverwriteparam_13',['NNSG2dRendererOverwriteParam',['../g2d___renderer_8h.html#abbd810e84266bb5eff9726d428a71d3e',1,'g2d_Renderer.h']]],
+  ['nnsg2dsrtcontroltype_14',['NNSG2dSRTControlType',['../g2d___s_r_t_control__data_8h.html#a33b5cc49a2820cc0d29a4c1737957be0',1,'g2d_SRTControl_data.h']]],
+  ['nnsg2dsurfacetype_15',['NNSG2dSurfaceType',['../g2d___renderer_core_8h.html#aa4c7cf620c733636ed46acb60b9c8391',1,'g2d_RendererCore.h']]],
+  ['nnsg3dglbflag_16',['NNSG3dGlbFlag',['../glbstate_8h.html#aa389910f9f7a25eb3c5e1997a8096009',1,'glbstate.h']]],
+  ['nnsg3dmatflag_17',['NNSG3dMatFlag',['../res__struct_8h.html#a01c4861d09d4cc25e68ad3aa5b9dc631',1,'res_struct.h']]],
+  ['nnsg3dresplttflag_18',['NNSG3dResPlttFlag',['../res__struct_8h.html#aebadc8a406f822b8a219971220e3db73',1,'res_struct.h']]],
+  ['nnsg3drestexflag_19',['NNSG3dResTexFlag',['../res__struct_8h.html#aca2a175ac70d40a904067e1c6cab448c',1,'res_struct.h']]],
+  ['nnssndwaveformat_20',['NNSSndWaveFormat',['../waveout_8h.html#aae5d6ef7019d46175d3d3393fea870f9',1,'waveout.h']]],
+  ['npctradenum_21',['NpcTradeNum',['../constants_2npc__trade_8h.html#afe1fa09229339f5265c1f9f4023bd3ba',1,'npc_trade.h']]]
+];

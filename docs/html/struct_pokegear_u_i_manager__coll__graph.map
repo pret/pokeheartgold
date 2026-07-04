@@ -1,0 +1,23 @@
+<map id="PokegearUIManager" name="PokegearUIManager">
+<area shape="rect" id="Node000001" title=" " alt="" coords="226,345,366,370"/>
+<area shape="rect" id="Node000002" href="$struct_sprite_list.html" title=" " alt="" coords="60,199,137,224"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="130,231,150,246,166,264,176,280,186,294,203,310,232,328,264,344,258,344,230,333,200,314,182,298,172,283,161,267,146,250,130,236"/>
+<area shape="rect" id="Node000003" href="$struct_sprite.html" title=" " alt="" coords="47,345,102,370"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="44,227,31,237,18,250,10,266,8,279,11,294,18,311,33,329,52,343,47,345,29,333,14,313,6,295,3,280,5,264,14,247,27,233,47,223"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="76,329,94,225,99,224,81,330"/>
+<area shape="poly" id="edge4_Node000003_Node000003" title=" " alt="" coords="113,341,124,346,129,358,126,367,118,373,97,374,97,368,116,368,121,364,123,358,120,350,112,346"/>
+<area shape="rect" id="Node000004" href="$struct_g2d_renderer.html" title=" " alt="" coords="208,199,306,224"/>
+<area shape="poly" id="edge5_Node000001_Node000004" title=" " alt="" coords="266,237,295,345,290,344,262,241"/>
+<area shape="rect" id="Node000005" href="$struct_g_f__2_d_gfx_res_man.html" title=" " alt="" coords="330,199,464,224"/>
+<area shape="poly" id="edge6_Node000001_Node000005" title=" " alt="" coords="388,237,370,276,346,314,313,347,310,342,342,310,366,273,384,240"/>
+<area shape="rect" id="Node000006" href="$struct_g_f__2_d_gfx_raw_res_man.html" title=" " alt="" coords="290,102,451,128"/>
+<area shape="poly" id="edge7_Node000005_Node000006" title=" " alt="" coords="369,141,374,174,388,199,383,197,369,176,366,146"/>
+<area shape="rect" id="Node000007" href="$struct_g_f__2_d_gfx_raw_res_obj.html" title=" " alt="" coords="371,5,527,31"/>
+<area shape="poly" id="edge8_Node000006_Node000007" title=" " alt="" coords="431,41,382,103,379,100,427,45"/>
+<area shape="rect" id="Node000008" href="$struct_sprite_resource.html" title=" " alt="" coords="475,102,586,128"/>
+<area shape="poly" id="edge10_Node000008_Node000007" title=" " alt="" coords="470,40,523,102,517,101,469,46"/>
+<area shape="poly" id="edge9_Node000005_Node000008" title=" " alt="" coords="505,136,453,177,417,201,415,196,450,172,501,139"/>
+<area shape="rect" id="Node000009" href="$struct_g_f__2_d_gfx_res_obj_list.html" title=" " alt="" coords="488,199,637,224"/>
+<area shape="poly" id="edge12_Node000009_Node000008" title=" " alt="" coords="541,140,561,199,556,197,538,145"/>
+<area shape="poly" id="edge11_Node000001_Node000009" title=" " alt="" coords="555,237,535,279,521,298,503,314,471,332,436,345,367,357,366,352,434,340,468,327,500,310,517,294,531,276,551,240"/>
+</map>

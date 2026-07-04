@@ -1,0 +1,5 @@
+<map id="ItemData" name="ItemData">
+<area shape="rect" id="Node000001" title=" " alt="" coords="26,102,101,128"/>
+<area shape="rect" id="Node000002" href="$struct_item_party_param.html" title=" " alt="" coords="5,5,122,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="66,45,66,102,61,101,61,48"/>
+</map>

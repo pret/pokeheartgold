@@ -1,0 +1,14 @@
+<map id="PokepicManager" name="PokepicManager">
+<area shape="rect" id="Node000001" title=" " alt="" coords="235,219,353,245"/>
+<area shape="rect" id="Node000002" href="$struct_pokepic.html" title=" " alt="" coords="260,122,328,148"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="296,161,296,220,292,217,292,165"/>
+<area shape="poly" id="edge4_Node000002_Node000002" title=" " alt="" coords="344,125,352,129,355,136,346,145,329,147,328,142,344,140,350,135,348,133,343,130"/>
+<area shape="rect" id="Node000003" href="$struct_pokepic_template.html" title=" " alt="" coords="5,5,127,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="86,40,118,70,156,96,209,116,262,129,257,130,208,122,153,101,115,74,86,45"/>
+<area shape="rect" id="Node000004" href="$struct_pokepic_draw_param.html" title=" " alt="" coords="151,5,288,31"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="234,42,269,97,287,123,282,122,264,100,232,47"/>
+<area shape="rect" id="Node000005" href="$struct_pokepic_shadow.html" title=" " alt="" coords="312,5,428,31"/>
+<area shape="poly" id="edge5_Node000002_Node000005" title=" " alt="" coords="366,44,358,73,343,100,316,124,313,120,339,97,353,71,362,48"/>
+<area shape="rect" id="Node000006" href="$struct_pokepic_anim_script.html" title=" " alt="" coords="452,5,584,31"/>
+<area shape="poly" id="edge6_Node000002_Node000006" title=" " alt="" coords="503,42,477,74,443,101,415,114,384,124,329,134,328,129,383,118,413,109,441,96,473,70,499,45"/>
+</map>

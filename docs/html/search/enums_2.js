@@ -1,0 +1,24 @@
+var searchData=
+[
+  ['cardbackuptype_0',['CARDBackupType',['../card_2common_8h.html#a7308b60819b64fd6d21b8df93aa5c1e5',1,'common.h']]],
+  ['cardrequest_1',['CARDRequest',['../card_2common_8h.html#a5014573959448a23d491a2b03e731e37',1,'common.h']]],
+  ['cardrequestmode_2',['CARDRequestMode',['../card_2common_8h.html#a77d288556915e73acd8f0eb0092ed58c',1,'common.h']]],
+  ['cardresult_3',['CARDResult',['../card_2common_8h.html#a4d34b11dc6f81bdf91f48e51d25bb0b1',1,'common.h']]],
+  ['cardtargetmode_4',['CARDTargetMode',['../card_2common_8h.html#a8311298e7d19201fc85a248fe70ab39c',1,'common.h']]],
+  ['cardtype_5',['CardType',['../voltorb__flip__game_8h.html#a76b9e96d86b331202dcc0fba38b758cd',1,'voltorb_flip_game.h']]],
+  ['celebitimetravelstate_6',['CelebiTimeTravelState',['../event__cutscene__celebi_8c.html#ac5788bb17f9ca2cc30ed925077a24b67',1,'event_cutscene_celebi.c']]],
+  ['certificatesexecstates_7',['CertificatesExecStates',['../certificates__app_8h.html#a1ea85b04ce3d7034bf7ea8585b66a828',1,'certificates_app.h']]],
+  ['checksavedataapp_5fmainstate_8',['CheckSavedataApp_MainState',['../check__savedata_8c.html#a55c49494ff9c230532989a3b6188c088',1,'check_savedata.c']]],
+  ['checksavedataapp_5fprintstate_9',['CheckSavedataApp_PrintState',['../check__savedata_8c.html#acde1dee42cd0d8bb44a2fdf1cf0398da',1,'check_savedata.c']]],
+  ['choosestarter3dresnum_10',['ChooseStarter3dResNum',['../choose__starter__app_8c.html#a3c7842935d149dc988e96777b6f0fb83',1,'choose_starter_app.c']]],
+  ['choosestarteranim_11',['ChooseStarterAnim',['../choose__starter__app_8c.html#a77013f3083209d07aae43d637a6ccef0',1,'choose_starter_app.c']]],
+  ['choosestarterappstate_12',['ChooseStarterAppState',['../choose__starter__app_8c.html#add7930730bc12254f0ac0240825ce303',1,'choose_starter_app.c']]],
+  ['choosestarterinput_13',['ChooseStarterInput',['../choose__starter__app_8c.html#af02cecaa7bff6b3563fcf0c7e22537c7',1,'choose_starter_app.c']]],
+  ['choosestartermodel_14',['ChooseStarterModel',['../choose__starter__app_8c.html#a72c70bdb376e23476708ea0a38798b78',1,'choose_starter_app.c']]],
+  ['clearbellanimationstate_15',['ClearBellAnimationState',['../legend__cutscene__camera_8c.html#ae6b917fc07f5bdc0e56e258ef3191666',1,'legend_cutscene_camera.c']]],
+  ['coindisplay_16',['CoinDisplay',['../voltorb__flip_8c.html#a0b2ac817948683079c22897cbc14949f',1,'voltorb_flip.c']]],
+  ['commercialregion_17',['CommercialRegion',['../commercials_8c.html#abc958e565dd9517afa5f908bc3a2f762',1,'commercials.c']]],
+  ['commercialunlockflag_18',['CommercialUnlockFlag',['../commercials_8c.html#a397908b0e6331446b422d7001dbb316d',1,'commercials.c']]],
+  ['controllercommand_19',['ControllerCommand',['../constants_2battle_8h.html#af6ccc75071101b910928979929be7922',1,'battle.h']]],
+  ['creditsappstate_20',['CreditsAppState',['../credits_8c.html#a0cb7b34dca53a69eb2b69c327883d515',1,'credits.c']]]
+];

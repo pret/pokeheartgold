@@ -1,0 +1,11 @@
+<map id="SaveFashionData" name="SaveFashionData">
+<area shape="rect" id="Node000001" title=" " alt="" coords="202,199,328,224"/>
+<area shape="rect" id="Node000002" href="$struct_save_fashion_data_sub.html" title=" " alt="" coords="5,102,154,128"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="118,133,243,197,239,200,116,138"/>
+<area shape="rect" id="Node000003" href="$struct_mail_message.html" title=" " alt="" coords="30,5,129,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="81,44,82,102,77,101,78,49"/>
+<area shape="rect" id="Node000004" href="$struct_save_fashion_data_sub3_f_c.html" title=" " alt="" coords="178,102,352,128"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="267,141,267,199,263,197,263,145"/>
+<area shape="rect" id="Node000005" href="$struct_fashion_case.html" title=" " alt="" coords="376,102,474,128"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="396,136,333,177,289,201,288,196,330,172,391,137"/>
+</map>

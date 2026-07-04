@@ -1,0 +1,37 @@
+var roamer_8h =
+[
+    [ "Roamer", "struct_roamer.html", "struct_roamer" ],
+    [ "RoamerSaveData", "struct_roamer_save_data.html", "struct_roamer_save_data" ],
+    [ "Roamer", "roamer_8h.html#a367b9ca8ef8a85ab0fd840214eb655c8", null ],
+    [ "RoamerSaveData", "roamer_8h.html#a0bb3cca15da6c5b417555334bc7aadc5", null ],
+    [ "RoamerDataParam", "roamer_8h.html#ac6a8fe02b84afce1c366e71d3762e658", [
+      [ "ROAMER_DATA_MET_LOCATION", "roamer_8h.html#ac6a8fe02b84afce1c366e71d3762e658a7b2a088b42cfdb0f0b2e693b064ded3b", null ],
+      [ "ROAMER_DATA_IVS", "roamer_8h.html#ac6a8fe02b84afce1c366e71d3762e658af28df8b8b2b8e5ee3ca3f37151fede58", null ],
+      [ "ROAMER_DATA_PERSONALITY", "roamer_8h.html#ac6a8fe02b84afce1c366e71d3762e658a27a45e4121f34eba39457aa1edc08170", null ],
+      [ "ROAMER_DATA_SPECIES", "roamer_8h.html#ac6a8fe02b84afce1c366e71d3762e658aef7b25a2a9da3bf8b8e77ab2a4be6f72", null ],
+      [ "ROAMER_DATA_HP", "roamer_8h.html#ac6a8fe02b84afce1c366e71d3762e658a0da830df5c72b7020ecb1f735d427ba3", null ],
+      [ "ROAMER_DATA_LEVEL", "roamer_8h.html#ac6a8fe02b84afce1c366e71d3762e658aa1d15b536b469fc8941a28e729731b3c", null ],
+      [ "ROAMER_DATA_STATUS", "roamer_8h.html#ac6a8fe02b84afce1c366e71d3762e658a73d616ddf7b16f4c3b5d39661f4eb5bc", null ],
+      [ "ROAMER_DATA_ACTIVE", "roamer_8h.html#ac6a8fe02b84afce1c366e71d3762e658a5de08b2b16ca09af2cbf354d7e849680", null ]
+    ] ],
+    [ "GetRoamerData", "roamer_8h.html#a5e20b6f958a3bbd0bcf4cc56b8fd19f5", null ],
+    [ "GetRoamerIsActiveByIndex", "roamer_8h.html#a438f4fd55fcda956d63ffdbf9a5f8581", null ],
+    [ "PlayerLocationHistoryGetBack", "roamer_8h.html#a95bb76be2b98e8872f0406086080269b", null ],
+    [ "PlayerLocationHistoryPush", "roamer_8h.html#a62865d8e3f91303318d06aea342fa147", null ],
+    [ "Roamer_GetLocation", "roamer_8h.html#a4f5d83fc9d6fdad33c1fa37dc797b9cd", null ],
+    [ "Roamer_SetLocation", "roamer_8h.html#ab5e246b2a22e792fce04d234fcad0743", null ],
+    [ "RoamerMon_Init", "roamer_8h.html#ad7c50765dcf31fbcbb258ac4e14063fd", null ],
+    [ "Roamers_GetRand", "roamer_8h.html#ac18a5992d9a893c23fdc931fe6592eaa", null ],
+    [ "Roamers_GetRoamMonStats", "roamer_8h.html#a909488e86ffd896791c3775cecfb2ff6", null ],
+    [ "Roamers_SetRand", "roamer_8h.html#a14c1a28485dc1f688efeeaadbb37bd50", null ],
+    [ "RoamerSave_GetFlute", "roamer_8h.html#a881b5f1a6dc17d575ada7f4c019061aa", null ],
+    [ "RoamerSave_GetRepelAddr", "roamer_8h.html#ac8bfdddfe0b476150f08a3ed840fdfa6", null ],
+    [ "RoamerSave_OutbreakActive", "roamer_8h.html#a6f2c8ce0297ecf5e72cd2f515c99b1e6", null ],
+    [ "RoamerSave_RepelNotInUse", "roamer_8h.html#a34361d41c9551484697f426265513821", null ],
+    [ "RoamerSave_SetFlute", "roamer_8h.html#aa0396546cc68887e2b44028813f46626", null ],
+    [ "RoamerSave_SetOutbreakActive", "roamer_8h.html#a17ea5dcac1a829cd3844ef82b43c92ed", null ],
+    [ "Save_Roamers_Get", "roamer_8h.html#a1dd86c6ca1fdc63604aa9e003886a52c", null ],
+    [ "Save_Roamers_Init", "roamer_8h.html#a528d12a379e6ae948a1c46d2a8ad1921", null ],
+    [ "Save_Roamers_sizeof", "roamer_8h.html#a16bb3adec1d04e9101a53c84143ac861", null ],
+    [ "SetRoamerData", "roamer_8h.html#aaa9bd0f21b725816b9d2794cdaa73e8d", null ]
+];

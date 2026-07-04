@@ -1,0 +1,9 @@
+<map id="UnkStruct_ov42_02227114" name="UnkStruct_ov42_02227114">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,160,184,186"/>
+<area shape="rect" id="Node000002" href="$struct_sprite.html" title=" " alt="" coords="138,14,193,40"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="122,50,112,61,102,74,94,96,91,119,95,161,89,159,86,119,89,95,98,71,109,57,126,46"/>
+<area shape="poly" id="edge4_Node000002_Node000002" title=" " alt="" coords="203,10,215,16,219,27,217,36,209,42,189,43,187,38,207,37,212,33,214,27,211,19,203,16"/>
+<area shape="rect" id="Node000003" href="$struct_sprite_list.html" title=" " alt="" coords="208,160,285,186"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="158,53,153,95,155,116,163,135,180,147,211,161,205,160,178,151,159,138,150,117,147,95,154,57"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="240,144,231,110,215,74,200,56,184,43,184,38,203,53,219,71,236,108,245,146"/>
+</map>

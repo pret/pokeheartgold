@@ -1,0 +1,17 @@
+<map id="PokemonStorageSystem" name="PokemonStorageSystem">
+<area shape="rect" id="Node000001" title=" " alt="" coords="251,392,418,418"/>
+<area shape="rect" id="Node000002" href="$struct_p_c___box.html" title=" " alt="" coords="299,295,370,321"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="336,334,337,393,332,390,333,338"/>
+<area shape="rect" id="Node000003" href="$struct_box_pokemon.html" title="Boxed Pokemon data structure." alt="" coords="285,199,384,224"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="336,238,337,296,332,294,333,242"/>
+<area shape="rect" id="Node000004" href="$union_pokemon_data_block.html" title=" " alt="" coords="266,102,403,128"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="336,141,337,199,332,197,333,145"/>
+<area shape="rect" id="Node000005" href="$struct_pokemon_data_block_a.html" title="Block A of the BoxPokemon data structure." alt="" coords="5,5,152,31"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="122,35,229,75,299,100,294,103,227,81,123,40"/>
+<area shape="rect" id="Node000006" href="$struct_pokemon_data_block_b.html" title="Block B of the BoxPokemon data structure." alt="" coords="176,5,322,31"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="270,40,326,101,321,102,270,45"/>
+<area shape="rect" id="Node000007" href="$struct_pokemon_data_block_c.html" title="Block C of the BoxPokemon data structure." alt="" coords="346,5,494,31"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="401,41,347,103,344,100,397,44"/>
+<area shape="rect" id="Node000008" href="$struct_pokemon_data_block_d.html" title="Block D of the BoxPokemon data structure." alt="" coords="518,5,666,31"/>
+<area shape="poly" id="edge7_Node000004_Node000008" title=" " alt="" coords="546,39,442,81,373,104,371,99,440,75,550,36"/>
+</map>

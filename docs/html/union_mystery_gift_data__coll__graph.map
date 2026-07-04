@@ -1,0 +1,44 @@
+<map id="MysteryGiftData" name="MysteryGiftData">
+<area shape="rect" id="Node000001" title=" " alt="" coords="1305,261,1422,287"/>
+<area shape="rect" id="Node000002" href="$struct_mystery_gift_pokemon_tag.html" title=" " alt="" coords="979,211,1144,236"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1160,229,1282,248,1324,261,1319,261,1280,253,1160,235"/>
+<area shape="rect" id="Node000003" href="$struct_pokemon.html" title=" " alt="" coords="757,187,833,212"/>
+<area shape="poly" id="edge15_Node000001_Node000003" title=" " alt="" coords="848,184,888,178,986,169,1084,166,1133,168,1182,175,1232,186,1282,204,1304,215,1324,230,1354,262,1349,260,1320,234,1301,220,1280,209,1231,192,1181,180,1132,174,1084,171,986,174,889,183,849,190"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="849,202,981,216,976,216,849,207"/>
+<area shape="rect" id="Node000004" href="$struct_box_pokemon.html" title="Boxed Pokemon data structure." alt="" coords="535,145,634,171"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="650,168,759,192,754,192,650,174"/>
+<area shape="rect" id="Node000005" href="$union_pokemon_data_block.html" title=" " alt="" coords="272,112,409,138"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="424,134,537,151,532,152,425,139"/>
+<area shape="rect" id="Node000006" href="$struct_pokemon_data_block_a.html" title="Block A of the BoxPokemon data structure." alt="" coords="6,5,152,31"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="167,31,209,42,249,57,292,83,327,111,322,112,289,87,247,62,207,47,169,36"/>
+<area shape="rect" id="Node000007" href="$struct_pokemon_data_block_b.html" title="Block B of the BoxPokemon data structure." alt="" coords="6,59,152,84"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="167,83,248,98,293,110,288,112,247,103,168,88"/>
+<area shape="rect" id="Node000008" href="$struct_pokemon_data_block_c.html" title="Block C of the BoxPokemon data structure." alt="" coords="5,112,153,138"/>
+<area shape="poly" id="edge7_Node000005_Node000008" title=" " alt="" coords="167,122,273,123,269,127,169,127"/>
+<area shape="rect" id="Node000009" href="$struct_pokemon_data_block_d.html" title="Block D of the BoxPokemon data structure." alt="" coords="5,165,153,191"/>
+<area shape="poly" id="edge8_Node000005_Node000009" title=" " alt="" coords="167,165,247,151,302,137,298,140,248,156,169,170"/>
+<area shape="rect" id="Node000010" href="$struct_party_pokemon.html" title="Party Pokemon data structure This is used to store stats for a pokemon while it is in the players par..." alt="" coords="531,245,638,271"/>
+<area shape="poly" id="edge9_Node000003_Node000010" title=" " alt="" coords="648,238,754,211,759,209,649,243"/>
+<area shape="rect" id="Node000011" href="$struct_mail.html" title=" " alt="" coords="318,245,363,271"/>
+<area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="378,256,533,257,528,259,379,261"/>
+<area shape="rect" id="Node000012" href="$union_mail_pattern_data.html" title=" " alt="" coords="21,219,137,244"/>
+<area shape="poly" id="edge11_Node000011_Node000012" title=" " alt="" coords="152,236,319,254,316,258,153,242"/>
+<area shape="rect" id="Node000013" href="$struct_mail_message.html" title=" " alt="" coords="30,272,128,298"/>
+<area shape="poly" id="edge12_Node000011_Node000013" title=" " alt="" coords="143,281,247,273,320,262,315,264,248,278,145,286"/>
+<area shape="rect" id="Node000014" href="$struct_c_a_p_s_u_l_e.html" title=" " alt="" coords="298,299,382,324"/>
+<area shape="poly" id="edge13_Node000010_Node000014" title=" " alt="" coords="397,303,451,296,506,284,549,272,554,271,508,289,452,301,398,309"/>
+<area shape="rect" id="Node000015" href="$struct_s_e_a_l.html" title=" " alt="" coords="51,325,107,351"/>
+<area shape="poly" id="edge14_Node000014_Node000015" title=" " alt="" coords="122,331,298,313,297,318,123,336"/>
+<area shape="rect" id="Node000016" href="$struct_link_battle_ruleset.html" title=" " alt="" coords="1000,261,1124,287"/>
+<area shape="poly" id="edge16_Node000001_Node000016" title=" " alt="" coords="1139,272,1307,274,1302,274,1139,277"/>
+<area shape="rect" id="Node000017" href="$struct_mystery_gift_mon_decoration_tag.html" title=" " alt="" coords="963,315,1161,340"/>
+<area shape="poly" id="edge17_Node000001_Node000017" title=" " alt="" coords="1176,317,1280,300,1327,288,1332,287,1282,305,1177,322"/>
+<area shape="rect" id="Node000018" href="$struct_photo.html" title=" " alt="" coords="1034,368,1090,394"/>
+<area shape="poly" id="edge18_Node000001_Node000018" title=" " alt="" coords="1105,378,1188,371,1235,361,1280,344,1301,331,1320,316,1349,288,1354,286,1324,320,1304,336,1282,349,1237,366,1189,376,1105,384"/>
+<area shape="rect" id="Node000019" href="$struct_photo_camera_param.html" title=" " alt="" coords="725,323,865,348"/>
+<area shape="poly" id="edge19_Node000018_Node000019" title=" " alt="" coords="880,347,1036,376,1031,376,880,353"/>
+<area shape="rect" id="Node000020" href="$struct_camera_angle.html" title=" " alt="" coords="534,323,635,348"/>
+<area shape="poly" id="edge20_Node000019_Node000020" title=" " alt="" coords="650,333,727,335,722,336,651,338"/>
+<area shape="rect" id="Node000021" href="$struct_photo_mon.html" title=" " alt="" coords="755,376,835,402"/>
+<area shape="poly" id="edge21_Node000018_Node000021" title=" " alt="" coords="851,386,939,385,1031,383,1037,383,939,390,851,392"/>
+</map>

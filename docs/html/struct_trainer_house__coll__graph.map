@@ -1,0 +1,11 @@
+<map id="TrainerHouse" name="TrainerHouse">
+<area shape="rect" id="Node000001" title=" " alt="" coords="104,336,203,362"/>
+<area shape="rect" id="Node000002" href="$struct_trainer_house_set.html" title=" " alt="" coords="94,239,213,265"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="156,279,156,336,151,334,152,282"/>
+<area shape="rect" id="Node000003" href="$struct_trainer_house_trainer.html" title=" " alt="" coords="5,143,145,168"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="95,178,146,238,141,239,94,183"/>
+<area shape="rect" id="Node000004" href="$struct_mail_message.html" title=" " alt="" coords="26,5,124,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="76,44,78,142,72,142,74,49"/>
+<area shape="rect" id="Node000005" href="$struct_trainer_house_mon.html" title=" " alt="" coords="169,143,293,168"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="214,179,166,241,162,237,210,182"/>
+</map>

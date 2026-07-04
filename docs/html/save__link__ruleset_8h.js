@@ -1,0 +1,35 @@
+var save__link__ruleset_8h =
+[
+    [ "LinkBattleRuleset", "struct_link_battle_ruleset.html", "struct_link_battle_ruleset" ],
+    [ "Save_LinkBattleRuleset", "struct_save___link_battle_ruleset.html", "struct_save___link_battle_ruleset" ],
+    [ "FLAG_RULESET_BAN_SOUL_DEW", "save__link__ruleset_8h.html#a78341e8075fceb6a18bacab4026cec75", null ],
+    [ "NUM_SAVE_LINK_BATTLE_RULESETS", "save__link__ruleset_8h.html#a8cd87888d43087d1e11ea7f986355819", null ],
+    [ "LinkBattleRule", "save__link__ruleset_8h.html#ab4b29d3947d7488f6fb6e8cb8b92c512", null ],
+    [ "LinkBattleRuleset", "save__link__ruleset_8h.html#abc38ddef55b0aa60ebf989815f12b2d9", null ],
+    [ "Save_LinkBattleRuleset", "save__link__ruleset_8h.html#a5a7c6a9179f21ed9c5e38c78ae3cc1af", null ],
+    [ "LinkBattleRule", "save__link__ruleset_8h.html#ad712290093fd261d41dd0330ef3705bf", [
+      [ "LINKBATTLERULE_NONE", "save__link__ruleset_8h.html#ad712290093fd261d41dd0330ef3705bfa0cfb4d568e310f12be4eff32fed4c3c2", null ],
+      [ "LINKBATTLERULE_PARTY_COUNT", "save__link__ruleset_8h.html#ad712290093fd261d41dd0330ef3705bfafb6b40dc18442fa82e6b29bf8fdb8a13", null ],
+      [ "LINKBATTLERULE_MAX_LEVEL", "save__link__ruleset_8h.html#ad712290093fd261d41dd0330ef3705bfaa30eb16c2cb4ddaa47c1d976ba359a19", null ],
+      [ "LINKBATTLERULE_MAX_TOTAL_LEVEL", "save__link__ruleset_8h.html#ad712290093fd261d41dd0330ef3705bfa75af8308ab33f17487513257c111b5e4", null ],
+      [ "LINKBATTLERULE_EVOLVED_POKEMON", "save__link__ruleset_8h.html#ad712290093fd261d41dd0330ef3705bfa5c519c99f9ee7431d5b07f17de2a53a0", null ],
+      [ "LINKBATTLERULE_HEIGHT_LIMIT", "save__link__ruleset_8h.html#ad712290093fd261d41dd0330ef3705bfa4160e3efe221ac2afe6a4586f550f553", null ],
+      [ "LINKBATTLERULE_HEIGHT_LIMIT_COMPARE", "save__link__ruleset_8h.html#ad712290093fd261d41dd0330ef3705bfa9583ae893016be312f59737878abd066", null ],
+      [ "LINKBATTLERULE_WEIGHT_LIMIT", "save__link__ruleset_8h.html#ad712290093fd261d41dd0330ef3705bfa84024dfff2056810ffdf981bbae6d946", null ],
+      [ "LINKBATTLERULE_WEIGHT_LIMIT_COMPARE", "save__link__ruleset_8h.html#ad712290093fd261d41dd0330ef3705bfa4f87c23cf095268c16d2d0a662697109", null ],
+      [ "LINKBATTLERULE_ITEM_DUPE_CLAUSE", "save__link__ruleset_8h.html#ad712290093fd261d41dd0330ef3705bfae9726c617c8501153475597157e83923", null ],
+      [ "LINKBATTLERULE_SPECIES_DUPE_CLAUSE", "save__link__ruleset_8h.html#ad712290093fd261d41dd0330ef3705bfa200f7289789612550ca9dbd9b5a0a22c", null ],
+      [ "LINKBATTLERULE_UBERS_CLAUSE", "save__link__ruleset_8h.html#ad712290093fd261d41dd0330ef3705bfa1428336abfa968ac0bf9b5eeeaa01631", null ],
+      [ "LINKBATTLERULE_DRAGON_RAGE_CLAUSE", "save__link__ruleset_8h.html#ad712290093fd261d41dd0330ef3705bfa6e12d3c6d05a0e8d5f950220f8427d0b", null ],
+      [ "LINKBATTLERULE_SOUL_DEW_CLAUSE", "save__link__ruleset_8h.html#ad712290093fd261d41dd0330ef3705bfa6360c99c2eac78339cce37a25f7ee66a", null ]
+    ] ],
+    [ "LinkBattleRuleset_Copy", "save__link__ruleset_8h.html#a9018be69e7887f7ae8e664f1eb37effd", null ],
+    [ "LinkBattleRuleset_CopyNameToString", "save__link__ruleset_8h.html#ae7dd1643c62c6272416bd36e99fa314c", null ],
+    [ "LinkBattleRuleset_CreateStringFromName", "save__link__ruleset_8h.html#a97c56117666f40241661a2fce1fe5266", null ],
+    [ "LinkBattleRuleset_GetRuleValue", "save__link__ruleset_8h.html#a7fd17f0389e4cb4541cd86f23d0713fd", null ],
+    [ "LinkBattleRuleset_sizeof", "save__link__ruleset_8h.html#aa86d017858bbc5175d5f1fe34dae6ad3", null ],
+    [ "Save_LinkBattleRuleset_GetByIndex", "save__link__ruleset_8h.html#a75fabc6c1c4fc5e14cf52dbd6b314e5b", null ],
+    [ "Save_LinkBattleRuleset_Init", "save__link__ruleset_8h.html#a60ecffbb55d0f450d8a48d527f17d160", null ],
+    [ "Save_LinkBattleRuleset_Set", "save__link__ruleset_8h.html#aa8b87905411a1b9ea3f98c14815ff0e8", null ],
+    [ "Save_LinkBattleRuleset_sizeof", "save__link__ruleset_8h.html#a017dc0dfe851731bf6cfc32f579154d4", null ]
+];

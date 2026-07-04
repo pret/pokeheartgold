@@ -1,0 +1,9 @@
+<map id="WiggleEffectTaskData" name="WiggleEffectTaskData">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,160,158,186"/>
+<area shape="rect" id="Node000002" href="$struct_sprite.html" title=" " alt="" coords="124,14,180,40"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="109,48,97,59,85,74,78,96,76,119,81,160,76,159,70,120,72,95,81,71,93,56,113,44"/>
+<area shape="poly" id="edge4_Node000002_Node000002" title=" " alt="" coords="190,10,202,16,206,27,204,36,196,42,176,43,174,38,194,37,199,33,201,27,198,19,190,16"/>
+<area shape="rect" id="Node000003" href="$struct_sprite_list.html" title=" " alt="" coords="189,160,265,186"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="145,53,140,95,142,116,150,135,167,151,191,164,186,164,164,156,146,138,137,117,135,95,141,57"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="223,144,216,110,202,74,187,56,172,43,172,38,191,53,206,71,222,109,228,146"/>
+</map>

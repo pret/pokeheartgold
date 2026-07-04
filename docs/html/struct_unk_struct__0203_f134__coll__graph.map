@@ -1,0 +1,44 @@
+<map id="UnkStruct_0203F134" name="UnkStruct_0203F134">
+<area shape="rect" id="Node000001" title=" " alt="" coords="1346,453,1491,479"/>
+<area shape="rect" id="Node000002" href="$struct_unk_struct__0203_f0_d0.html" title=" " alt="" coords="1112,453,1259,479"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1275,464,1349,466,1343,466,1275,469"/>
+<area shape="rect" id="Node000003" href="$struct_pokemon.html" title=" " alt="" coords="841,285,918,311"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="933,298,1010,311,1051,325,1089,344,1120,369,1146,399,1180,454,1175,452,1142,402,1117,373,1087,348,1049,330,1009,317,933,303"/>
+<area shape="rect" id="Node000004" href="$struct_box_pokemon.html" title="Boxed Pokemon data structure." alt="" coords="623,143,723,168"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="706,175,861,284,856,285,705,180"/>
+<area shape="rect" id="Node000005" href="$union_pokemon_data_block.html" title=" " alt="" coords="286,112,423,138"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="438,130,625,149,621,152,439,135"/>
+<area shape="rect" id="Node000006" href="$struct_pokemon_data_block_a.html" title="Block A of the BoxPokemon data structure." alt="" coords="6,5,152,31"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="166,27,216,38,263,54,307,81,342,111,337,112,304,86,261,59,214,43,169,31"/>
+<area shape="rect" id="Node000007" href="$struct_pokemon_data_block_b.html" title="Block B of the BoxPokemon data structure." alt="" coords="6,59,152,84"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="166,81,262,98,308,110,303,113,261,103,168,86"/>
+<area shape="rect" id="Node000008" href="$struct_pokemon_data_block_c.html" title="Block C of the BoxPokemon data structure." alt="" coords="5,112,153,138"/>
+<area shape="poly" id="edge7_Node000005_Node000008" title=" " alt="" coords="167,122,287,123,283,127,170,127"/>
+<area shape="rect" id="Node000009" href="$struct_pokemon_data_block_d.html" title="Block D of the BoxPokemon data structure." alt="" coords="5,165,153,191"/>
+<area shape="poly" id="edge8_Node000005_Node000009" title=" " alt="" coords="167,167,261,151,317,136,313,140,262,156,170,171"/>
+<area shape="rect" id="Node000010" href="$struct_party_pokemon.html" title="Party Pokemon data structure This is used to store stats for a pokemon while it is in the players par..." alt="" coords="619,285,727,311"/>
+<area shape="poly" id="edge9_Node000003_Node000010" title=" " alt="" coords="742,296,843,298,838,299,743,301"/>
+<area shape="rect" id="Node000011" href="$struct_mail.html" title=" " alt="" coords="332,272,377,298"/>
+<area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="392,284,621,295,617,297,393,289"/>
+<area shape="rect" id="Node000012" href="$union_mail_pattern_data.html" title=" " alt="" coords="21,219,137,244"/>
+<area shape="poly" id="edge11_Node000011_Node000012" title=" " alt="" coords="151,239,262,258,334,277,329,280,261,263,153,244"/>
+<area shape="rect" id="Node000013" href="$struct_mail_message.html" title=" " alt="" coords="30,273,128,299"/>
+<area shape="poly" id="edge12_Node000011_Node000013" title=" " alt="" coords="143,283,333,283,330,287,144,288"/>
+<area shape="rect" id="Node000016" href="$struct_save_fashion_data_sub.html" title=" " alt="" coords="447,373,595,399"/>
+<area shape="poly" id="edge16_Node000016_Node000013" title=" " alt="" coords="141,302,155,311,164,326,166,340,169,353,178,364,212,383,248,396,286,404,325,408,399,406,466,399,461,401,400,411,324,413,285,409,246,401,209,388,175,369,164,356,161,341,159,328,151,315,143,307"/>
+<area shape="rect" id="Node000014" href="$struct_c_a_p_s_u_l_e.html" title=" " alt="" coords="312,325,396,351"/>
+<area shape="poly" id="edge13_Node000010_Node000014" title=" " alt="" coords="411,336,498,333,595,321,640,311,636,313,596,326,499,338,412,342"/>
+<area shape="rect" id="Node000015" href="$struct_s_e_a_l.html" title=" " alt="" coords="51,325,107,351"/>
+<area shape="poly" id="edge14_Node000014_Node000015" title=" " alt="" coords="121,336,313,336,310,340,123,341"/>
+<area shape="poly" id="edge15_Node000002_Node000016" title=" " alt="" coords="610,369,710,358,832,355,896,357,962,364,1027,376,1089,394,1114,406,1138,421,1174,454,1169,452,1134,425,1112,411,1087,399,1025,382,961,370,896,363,832,360,711,364,611,374"/>
+<area shape="rect" id="Node000017" href="$struct_fashion_case.html" title=" " alt="" coords="830,403,928,428"/>
+<area shape="poly" id="edge17_Node000002_Node000017" title=" " alt="" coords="944,419,1088,440,1138,453,1132,453,1088,445,944,424"/>
+<area shape="rect" id="Node000018" href="$struct_options.html" title=" " alt="" coords="846,453,912,479"/>
+<area shape="poly" id="edge18_Node000002_Node000018" title=" " alt="" coords="928,464,1115,466,1109,466,928,469"/>
+<area shape="rect" id="Node000019" href="$struct_game_stats.html" title=" " alt="" coords="836,507,923,532"/>
+<area shape="poly" id="edge19_Node000002_Node000019" title=" " alt="" coords="938,512,1010,505,1087,492,1142,480,1147,479,1089,497,1011,510,939,518"/>
+<area shape="rect" id="Node000020" href="$struct_player_profile.html" title=" " alt="" coords="832,560,927,586"/>
+<area shape="poly" id="edge20_Node000002_Node000020" title=" " alt="" coords="942,568,1013,559,1051,550,1087,537,1134,508,1169,481,1174,479,1137,513,1089,542,1052,555,1014,564,943,574"/>
+<area shape="rect" id="Node000021" href="$struct_menu_input_state_mgr.html" title=" " alt="" coords="812,613,947,639"/>
+<area shape="poly" id="edge21_Node000002_Node000021" title=" " alt="" coords="962,626,1026,617,1057,608,1087,594,1118,568,1144,536,1176,481,1181,478,1149,539,1122,571,1089,598,1059,613,1027,622,963,631"/>
+</map>

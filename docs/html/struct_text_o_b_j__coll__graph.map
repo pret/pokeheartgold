@@ -1,0 +1,9 @@
+<map id="TextOBJ" name="TextOBJ">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,160,78,186"/>
+<area shape="rect" id="Node000002" href="$struct_sprite.html" title=" " alt="" coords="95,14,150,40"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="80,49,68,60,56,74,47,96,43,119,43,160,37,159,37,119,42,94,52,71,65,56,83,45"/>
+<area shape="poly" id="edge4_Node000002_Node000002" title=" " alt="" coords="160,10,173,16,177,27,174,36,166,42,147,43,145,38,165,37,170,33,172,27,169,19,161,16"/>
+<area shape="rect" id="Node000003" href="$struct_sprite_list.html" title=" " alt="" coords="134,160,210,186"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="116,52,112,95,114,116,121,135,131,148,146,160,141,160,128,152,116,138,109,117,107,94,113,57"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="177,144,180,110,178,91,172,74,159,56,144,43,144,37,163,52,177,71,183,90,185,110,181,147"/>
+</map>

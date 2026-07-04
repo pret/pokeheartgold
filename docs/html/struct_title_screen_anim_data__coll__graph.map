@@ -1,0 +1,27 @@
+<map id="TitleScreenAnimData" name="TitleScreenAnimData">
+<area shape="rect" id="Node000001" title=" " alt="" coords="748,219,894,244"/>
+<area shape="rect" id="Node000002" href="$struct_title_screen_anim_object.html" title=" " alt="" coords="475,145,630,171"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="621,173,725,201,777,218,772,218,724,206,620,178"/>
+<area shape="rect" id="Node000003" href="$struct_camera.html" title=" " alt="" coords="285,112,352,138"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="367,129,477,147,472,148,368,134"/>
+<area shape="rect" id="Node000004" href="$struct_camera_perspective.html" title=" " alt="" coords="8,5,144,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="159,25,204,37,247,55,283,82,310,112,304,112,279,86,244,59,203,42,160,31"/>
+<area shape="rect" id="Node000005" href="$struct_camera_look_at.html" title=" " alt="" coords="22,59,130,84"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="145,78,246,98,287,112,282,113,245,103,146,84"/>
+<area shape="rect" id="Node000006" href="$struct_camera_angle.html" title=" " alt="" coords="26,112,126,138"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="141,122,286,123,282,127,142,127"/>
+<area shape="rect" id="Node000007" href="$struct_camera_history.html" title=" " alt="" coords="21,165,131,191"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="145,169,245,151,290,137,285,139,246,156,147,174"/>
+<area shape="rect" id="Node000008" href="$struct_window.html" title=" " alt="" coords="518,219,587,244"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="602,229,751,231,745,232,602,234"/>
+<area shape="rect" id="Node000009" href="$struct_bg_config.html" title=" " alt="" coords="281,219,356,244"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="371,229,521,231,516,232,372,234"/>
+<area shape="rect" id="Node000010" href="$struct_background.html" title=" " alt="" coords="31,219,121,244"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="136,229,282,229,279,234,137,234"/>
+<area shape="rect" id="Node000011" href="$struct_palette_data.html" title=" " alt="" coords="508,272,598,298"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="613,276,724,257,777,245,782,245,725,262,614,281"/>
+<area shape="rect" id="Node000012" href="$struct_palette_buffer.html" title=" " alt="" coords="270,272,367,298"/>
+<area shape="poly" id="edge11_Node000011_Node000012" title=" " alt="" coords="382,282,510,285,504,285,382,287"/>
+<area shape="rect" id="Node000013" href="$struct_selected_palette_data.html" title=" " alt="" coords="5,272,147,298"/>
+<area shape="poly" id="edge12_Node000012_Node000013" title=" " alt="" coords="162,282,272,284,267,285,162,287"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="BagCursor" name="BagCursor">
+<area shape="rect" id="Node000001" title=" " alt="" coords="89,102,172,128"/>
+<area shape="rect" id="Node000002" href="$struct_bag_cursor_field.html" title=" " alt="" coords="5,5,117,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="80,41,124,101,119,102,77,46"/>
+<area shape="rect" id="Node000003" href="$struct_bag_cursor_battle.html" title=" " alt="" coords="141,5,258,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="184,43,141,103,137,99,179,44"/>
+</map>

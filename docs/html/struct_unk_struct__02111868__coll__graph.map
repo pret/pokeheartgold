@@ -1,0 +1,19 @@
+<map id="UnkStruct_02111868" name="UnkStruct_02111868">
+<area shape="rect" id="Node000001" title=" " alt="" coords="134,336,276,362"/>
+<area shape="rect" id="Node000002" href="$struct_overlay_manager.html" title=" " alt="" coords="87,102,203,128"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="104,138,67,162,31,193,18,210,10,228,9,245,16,264,40,290,69,309,101,324,136,336,131,337,100,329,66,314,36,294,12,266,4,246,5,226,13,207,27,189,64,158,107,133"/>
+<area shape="rect" id="Node000003" href="$struct_overlay_manager_template.html" title=" " alt="" coords="127,239,296,265"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="137,140,134,179,136,197,143,214,155,227,172,238,166,239,151,231,138,217,131,198,129,179,135,145"/>
+<area shape="poly" id="edge4_Node000001_Node000003" title=" " alt="" coords="209,278,209,289,207,337,202,334,203,289,205,282"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="205,224,196,189,180,153,161,131,161,125,184,150,201,188,210,225"/>
+<area shape="rect" id="Node000004" href="$struct_unk_struct__02111868__sub.html" title=" " alt="" coords="326,239,497,265"/>
+<area shape="poly" id="edge5_Node000001_Node000004" title=" " alt="" coords="406,278,397,299,384,314,365,323,339,331,277,342,276,337,338,326,363,318,380,310,393,296,402,281"/>
+<area shape="rect" id="Node000005" href="$struct_save_data.html" title=" " alt="" coords="372,102,451,128"/>
+<area shape="poly" id="edge6_Node000004_Node000005" title=" " alt="" coords="413,141,414,240,409,238,410,145"/>
+<area shape="rect" id="Node000006" href="$struct_save_array_header.html" title=" " alt="" coords="211,5,335,31"/>
+<area shape="poly" id="edge7_Node000005_Node000006" title=" " alt="" coords="288,41,304,60,322,76,346,90,374,102,369,103,344,95,318,80,301,64,288,47"/>
+<area shape="rect" id="Node000007" href="$struct_save_slot_spec.html" title=" " alt="" coords="359,5,464,31"/>
+<area shape="poly" id="edge8_Node000005_Node000007" title=" " alt="" coords="413,44,414,102,409,100,410,49"/>
+<area shape="rect" id="Node000008" href="$struct_async_write_manager.html" title=" " alt="" coords="488,5,626,31"/>
+<area shape="poly" id="edge9_Node000005_Node000008" title=" " alt="" coords="545,43,531,64,514,80,484,97,453,108,450,103,482,92,511,76,527,60,541,46"/>
+</map>

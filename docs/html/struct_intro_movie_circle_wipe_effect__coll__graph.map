@@ -1,0 +1,9 @@
+<map id="IntroMovieCircleWipeEffect" name="IntroMovieCircleWipeEffect">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,221,187,247"/>
+<area shape="rect" id="Node000002" href="$struct_sys_task.html" title=" " alt="" coords="124,24,196,50"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="125,61,112,76,100,94,90,128,88,164,96,221,90,220,83,164,85,127,95,92,108,73,128,57"/>
+<area shape="poly" id="edge4_Node000002_Node000002" title=" " alt="" coords="188,15,212,18,220,25,223,37,218,52,206,59,190,59,175,53,174,48,191,54,204,54,214,48,218,37,215,28,210,22,190,20"/>
+<area shape="rect" id="Node000003" href="$struct_sys_task_queue.html" title=" " alt="" coords="214,221,324,247"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="152,62,145,95,141,129,144,164,158,196,179,209,217,222,211,222,177,214,154,199,139,166,136,129,140,94,149,67"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="268,204,263,151,255,122,242,95,218,70,190,53,190,48,221,66,246,91,260,120,268,150,273,207"/>
+</map>

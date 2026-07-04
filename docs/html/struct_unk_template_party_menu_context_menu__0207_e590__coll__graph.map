@@ -1,0 +1,13 @@
+<map id="UnkTemplatePartyMenuContextMenu_0207E590" name="UnkTemplatePartyMenuContextMenu_0207E590">
+<area shape="rect" id="Node000001" title=" " alt="" coords="21,295,228,336"/>
+<area shape="rect" id="Node000002" href="$struct_l_i_s_t_m_e_n_u_i_t_e_m.html" title=" " alt="" coords="5,199,127,224"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="82,236,116,295,111,295,79,240"/>
+<area shape="rect" id="Node000003" href="$struct_string.html" title=" " alt="" coords="38,102,94,128"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="67,140,69,198,63,198,65,145"/>
+<area shape="rect" id="Node000004" href="$struct_window.html" title=" " alt="" coords="150,199,219,224"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="172,236,138,297,134,293,168,239"/>
+<area shape="rect" id="Node000005" href="$struct_bg_config.html" title=" " alt="" coords="147,102,222,128"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="186,141,187,199,182,197,183,145"/>
+<area shape="rect" id="Node000006" href="$struct_background.html" title=" " alt="" coords="140,5,230,31"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="186,44,187,102,182,101,184,49"/>
+</map>

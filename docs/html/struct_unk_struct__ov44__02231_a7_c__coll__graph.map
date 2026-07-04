@@ -1,0 +1,24 @@
+<map id="UnkStruct_ov44_02231A7C" name="UnkStruct_ov44_02231A7C">
+<area shape="rect" id="Node000001" title=" " alt="" coords="211,374,395,400"/>
+<area shape="rect" id="Node000002" href="$struct_sprite_list.html" title=" " alt="" coords="12,102,88,128"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="34,144,23,173,12,209,9,246,13,264,20,281,37,304,57,322,105,351,158,369,214,381,208,381,157,374,103,356,53,327,33,307,15,284,7,266,4,247,7,208,18,171,35,139"/>
+<area shape="rect" id="Node000003" href="$struct_sprite.html" title=" " alt="" coords="66,248,121,274"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="43,140,42,178,43,197,48,214,61,232,77,247,72,249,57,235,44,216,38,198,36,178,42,145"/>
+<area shape="poly" id="edge13_Node000001_Node000003" title=" " alt="" coords="120,281,165,315,217,348,270,373,265,373,214,352,162,319,119,287"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="104,234,116,194,117,173,110,153,99,140,86,131,85,126,102,136,115,150,122,172,122,195,109,236"/>
+<area shape="poly" id="edge4_Node000003_Node000003" title=" " alt="" coords="137,248,145,253,148,261,146,269,139,274,123,276,121,271,137,269,141,266,143,261,141,256,137,253"/>
+<area shape="rect" id="Node000004" href="$struct_g2d_renderer.html" title=" " alt="" coords="202,248,300,274"/>
+<area shape="poly" id="edge5_Node000001_Node000004" title=" " alt="" coords="264,286,301,374,295,373,260,290"/>
+<area shape="rect" id="Node000005" href="$struct_g_f__2_d_gfx_res_man.html" title=" " alt="" coords="324,248,458,274"/>
+<area shape="poly" id="edge6_Node000001_Node000005" title=" " alt="" coords="376,285,313,376,310,371,371,287"/>
+<area shape="rect" id="Node000006" href="$struct_g_f__2_d_gfx_raw_res_man.html" title=" " alt="" coords="244,102,405,128"/>
+<area shape="poly" id="edge7_Node000005_Node000006" title=" " alt="" coords="320,140,319,178,322,197,328,214,343,232,364,248,359,247,340,236,323,217,316,198,314,179,317,145"/>
+<area shape="rect" id="Node000007" href="$struct_g_f__2_d_gfx_raw_res_obj.html" title=" " alt="" coords="325,5,481,31"/>
+<area shape="poly" id="edge8_Node000006_Node000007" title=" " alt="" coords="385,41,336,103,333,100,382,45"/>
+<area shape="rect" id="Node000008" href="$struct_sprite_resource.html" title=" " alt="" coords="429,102,540,128"/>
+<area shape="poly" id="edge10_Node000008_Node000007" title=" " alt="" coords="424,40,477,101,471,101,423,46"/>
+<area shape="poly" id="edge11_Node000001_Node000008" title=" " alt="" coords="489,141,491,209,485,247,472,284,451,323,418,352,393,366,366,376,364,371,390,361,415,348,446,319,467,282,480,246,486,209,486,145"/>
+<area shape="poly" id="edge9_Node000005_Node000008" title=" " alt="" coords="453,136,439,153,417,197,397,249,393,246,412,195,435,150,449,139"/>
+<area shape="rect" id="Node000009" href="$struct_sprite_resources_header.html" title=" " alt="" coords="583,248,743,274"/>
+<area shape="poly" id="edge12_Node000001_Node000009" title=" " alt="" coords="639,283,588,321,525,352,460,371,395,382,395,376,459,366,523,348,585,316,634,285"/>
+</map>

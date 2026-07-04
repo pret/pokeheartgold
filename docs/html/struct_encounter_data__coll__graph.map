@@ -1,0 +1,7 @@
+<map id="EncounterData" name="EncounterData">
+<area shape="rect" id="Node000001" title=" " alt="" coords="98,183,206,209"/>
+<area shape="rect" id="Node000002" href="$struct_land_encounter_data.html" title=" " alt="" coords="5,5,142,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="87,44,149,182,144,183,83,47"/>
+<area shape="rect" id="Node000003" href="$struct_encounter_data_slot.html" title=" " alt="" coords="165,5,296,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="233,45,227,102,218,132,204,161,192,175,177,185,175,180,188,171,199,158,213,130,221,101,229,49"/>
+</map>

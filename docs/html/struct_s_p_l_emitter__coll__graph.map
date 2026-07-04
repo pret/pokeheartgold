@@ -1,0 +1,36 @@
+<map id="SPLEmitter" name="SPLEmitter">
+<area shape="rect" id="Node000001" title=" " alt="" coords="744,258,833,284"/>
+<area shape="poly" id="edge1_Node000001_Node000001" title=" " alt="" coords="768,240,775,234,788,231,801,234,809,240,811,249,807,260,804,256,806,249,805,243,799,239,789,237,777,239,771,245"/>
+<area shape="rect" id="Node000002" href="$struct_s_p_l_particle_list.html" title=" " alt="" coords="503,106,614,132"/>
+<area shape="poly" id="edge2_Node000001_Node000002" title=" " alt="" coords="593,138,770,257,765,258,592,143"/>
+<area shape="rect" id="Node000003" href="$struct_s_p_l_particle.html" title=" " alt="" coords="278,73,368,98"/>
+<area shape="poly" id="edge3_Node000002_Node000003" title=" " alt="" coords="383,91,505,110,500,112,384,97"/>
+<area shape="poly" id="edge4_Node000003_Node000003" title=" " alt="" coords="300,56,308,49,323,46,337,48,345,55,348,64,344,74,339,71,342,64,341,58,335,53,323,51,310,54,304,59"/>
+<area shape="rect" id="Node000004" href="$struct_s_p_l_resource.html" title=" " alt="" coords="508,259,610,285"/>
+<area shape="poly" id="edge5_Node000001_Node000004" title=" " alt="" coords="625,269,746,271,741,272,626,274"/>
+<area shape="rect" id="Node000005" href="$struct_s_p_l_res_base.html" title=" " alt="" coords="273,126,373,152"/>
+<area shape="poly" id="edge6_Node000004_Node000005" title=" " alt="" coords="388,143,435,155,479,175,503,194,524,217,553,259,547,258,520,220,500,198,477,180,433,160,389,148"/>
+<area shape="rect" id="Node000006" href="$union_s_p_l_res_base_flag.html" title=" " alt="" coords="9,126,134,152"/>
+<area shape="poly" id="edge7_Node000005_Node000006" title=" " alt="" coords="148,136,274,137,270,141,150,141"/>
+<area shape="rect" id="Node000007" href="$struct_s_p_l_res_scl_anm.html" title=" " alt="" coords="265,179,381,205"/>
+<area shape="poly" id="edge8_Node000004_Node000007" title=" " alt="" coords="396,201,479,224,511,240,541,259,535,259,509,245,477,229,397,207"/>
+<area shape="rect" id="Node000008" href="$union_s_p_l_res_in_out.html" title=" " alt="" coords="20,206,123,232"/>
+<area shape="poly" id="edge9_Node000007_Node000008" title=" " alt="" coords="137,209,266,196,262,200,139,214"/>
+<area shape="rect" id="Node000011" href="$struct_s_p_l_res_alp_anm.html" title=" " alt="" coords="265,233,381,258"/>
+<area shape="poly" id="edge13_Node000011_Node000008" title=" " alt="" coords="137,230,162,234,267,243,262,246,161,239,139,235"/>
+<area shape="rect" id="Node000009" href="$struct_s_p_l_res_clr_anm.html" title=" " alt="" coords="266,286,380,312"/>
+<area shape="poly" id="edge10_Node000004_Node000009" title=" " alt="" coords="395,300,478,295,526,285,521,286,478,300,396,306"/>
+<area shape="rect" id="Node000010" href="$union_s_p_l_res_in_peak_out.html" title=" " alt="" coords="5,286,138,312"/>
+<area shape="poly" id="edge11_Node000009_Node000010" title=" " alt="" coords="153,296,267,297,263,301,154,301"/>
+<area shape="poly" id="edge12_Node000004_Node000011" title=" " alt="" coords="396,251,510,266,505,267,396,256"/>
+<area shape="rect" id="Node000012" href="$struct_s_p_l_res_tex_anm.html" title=" " alt="" coords="264,339,382,365"/>
+<area shape="poly" id="edge14_Node000004_Node000012" title=" " alt="" coords="397,351,438,344,477,329,484,322,488,314,500,297,521,287,525,284,504,301,493,317,488,326,479,333,440,349,398,356"/>
+<area shape="rect" id="Node000013" href="$struct_s_p_l_res_chld.html" title=" " alt="" coords="274,393,372,418"/>
+<area shape="poly" id="edge15_Node000004_Node000013" title=" " alt="" coords="387,408,434,401,457,393,476,380,484,371,488,362,489,342,489,320,500,297,516,287,521,284,504,300,494,321,494,342,493,363,489,374,480,384,459,398,436,407,388,413"/>
+<area shape="rect" id="Node000014" href="$union_s_p_l_res_chld_flag.html" title=" " alt="" coords="10,393,133,418"/>
+<area shape="poly" id="edge16_Node000013_Node000014" title=" " alt="" coords="148,403,276,404,272,407,148,408"/>
+<area shape="rect" id="Node000015" href="$struct_s_p_l_field.html" title=" " alt="" coords="286,446,360,472"/>
+<area shape="poly" id="edge17_Node000004_Node000015" title=" " alt="" coords="376,463,402,463,429,460,454,451,476,436,488,420,493,404,490,371,486,335,489,317,500,297,515,287,520,284,504,301,494,318,491,336,495,371,498,405,493,423,480,440,457,456,430,465,402,469,376,469"/>
+<area shape="rect" id="Node000016" href="$struct_s_p_l_emitter_flag.html" title=" " alt="" coords="502,311,615,337"/>
+<area shape="poly" id="edge18_Node000001_Node000016" title=" " alt="" coords="630,315,675,308,720,298,759,285,764,283,721,303,676,314,631,321"/>
+</map>

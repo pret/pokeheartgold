@@ -1,0 +1,15 @@
+<map id="TrainerCardAppArgs" name="TrainerCardAppArgs">
+<area shape="rect" id="Node000001" title=" " alt="" coords="77,295,216,321"/>
+<area shape="rect" id="Node000002" href="$struct_unk_struct__0203_f7_c2.html" title=" " alt="" coords="73,199,220,224"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="148,238,149,296,144,294,144,241"/>
+<area shape="rect" id="Node000003" href="$struct_menu_input_state_mgr.html" title=" " alt="" coords="5,102,141,128"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="69,140,72,159,77,173,89,186,106,197,101,199,86,190,72,176,66,160,68,146"/>
+<area shape="rect" id="Node000004" href="$struct_save_data.html" title=" " alt="" coords="181,102,261,128"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="213,140,194,176,167,200,163,196,190,173,209,144"/>
+<area shape="rect" id="Node000005" href="$struct_save_array_header.html" title=" " alt="" coords="20,5,144,31"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="97,41,114,60,131,76,156,90,183,102,178,104,154,95,128,80,110,64,98,47"/>
+<area shape="rect" id="Node000006" href="$struct_save_slot_spec.html" title=" " alt="" coords="169,5,273,31"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="222,44,224,102,218,101,220,49"/>
+<area shape="rect" id="Node000007" href="$struct_async_write_manager.html" title=" " alt="" coords="297,5,436,31"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="354,43,341,64,324,80,293,97,262,108,260,103,291,92,321,76,337,60,350,46"/>
+</map>

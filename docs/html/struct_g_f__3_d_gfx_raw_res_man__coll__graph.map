@@ -1,0 +1,10 @@
+<map id="GF_3DGfxRawResMan" name="GF_3DGfxRawResMan">
+<area shape="rect" id="Node000001" title=" " alt="" coords="96,199,256,224"/>
+<area shape="rect" id="Node000002" href="$struct_g_f__2_d_gfx_raw_res_man.html" title=" " alt="" coords="5,102,166,128"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="108,136,167,197,162,199,106,141"/>
+<area shape="rect" id="Node000003" href="$struct_g_f__2_d_gfx_raw_res_obj.html" title=" " alt="" coords="97,5,252,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="151,45,99,103,95,100,155,40"/>
+<area shape="rect" id="Node000004" href="$struct_g_f__3_d_gfx_raw_res_obj.html" title=" " alt="" coords="189,102,344,128"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="198,39,258,101,252,102,196,44"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="248,138,189,200,186,196,243,139"/>
+</map>

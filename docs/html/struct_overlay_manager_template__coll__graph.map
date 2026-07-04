@@ -1,0 +1,6 @@
+<map id="OverlayManagerTemplate" name="OverlayManagerTemplate">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,175,31"/>
+<area shape="rect" id="Node000002" href="$struct_overlay_manager.html" title=" " alt="" coords="32,143,148,168"/>
+<area shape="poly" id="edge2_Node000002_Node000001" title=" " alt="" coords="53,43,45,56,38,73,36,87,38,101,45,117,55,130,68,142,63,143,51,134,40,120,33,102,31,87,33,71,40,54,55,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="101,127,103,118,108,87,103,56,96,34,98,29,109,54,113,87,109,119,105,130"/>
+</map>

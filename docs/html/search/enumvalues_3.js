@@ -1,0 +1,21 @@
+var searchData=
+[
+  ['data_5fget_5fexp_5fframe_5fcounter_0',['DATA_GET_EXP_FRAME_COUNTER',['../battle__command_8c.html#a899099ef0fc3dee5694a1c59bcaeac86ad98e8bc503e3690accce281fe02fa1b6',1,'battle_command.c']]],
+  ['data_5fget_5fexp_5flearnset_5findex_1',['DATA_GET_EXP_LEARNSET_INDEX',['../battle__command_8c.html#a899099ef0fc3dee5694a1c59bcaeac86ad2a79c3f9039edd18c8fd53f751da061',1,'battle_command.c']]],
+  ['data_5fget_5fexp_5fmove_5fslot_5fto_5fforget_2',['DATA_GET_EXP_MOVE_SLOT_TO_FORGET',['../battle__command_8c.html#a899099ef0fc3dee5694a1c59bcaeac86ad235f8e90cfc75e0694fda45b81ace24',1,'battle_command.c']]],
+  ['data_5fget_5fexp_5fmove_5fto_5flearn_3',['DATA_GET_EXP_MOVE_TO_LEARN',['../battle__command_8c.html#a899099ef0fc3dee5694a1c59bcaeac86a3c2c79496e62ea1c59bc752a0846e911',1,'battle_command.c']]],
+  ['data_5fget_5fexp_5fparty_5fslot_4',['DATA_GET_EXP_PARTY_SLOT',['../battle__command_8c.html#a899099ef0fc3dee5694a1c59bcaeac86a59ebe66f48b5e9813ab5095cd91f5e28',1,'battle_command.c']]],
+  ['data_5fget_5fexp_5fprev_5fprogress_5fto_5fnext_5flevel_5',['DATA_GET_EXP_PREV_PROGRESS_TO_NEXT_LEVEL',['../battle__command_8c.html#a899099ef0fc3dee5694a1c59bcaeac86ae865ce982a3f4cd583ab6a4eb06dfe13',1,'battle_command.c']]],
+  ['data_5fget_5fexp_5fprinter_5fid_6',['DATA_GET_EXP_PRINTER_ID',['../battle__command_8c.html#a899099ef0fc3dee5694a1c59bcaeac86ac46107072a01cc9abd08485b57c40aaf',1,'battle_command.c']]],
+  ['data_5fget_5fpokemon_5fball_5fshake_5fanimations_7',['DATA_GET_POKEMON_BALL_SHAKE_ANIMATIONS',['../battle__command_8c.html#af30f0c9ebe2363871c2f60548c0c50f1ae9cb94b400405ccc150619d7291a3fd2',1,'battle_command.c']]],
+  ['data_5fget_5fpokemon_5fball_5fshakes_5ftotal_8',['DATA_GET_POKEMON_BALL_SHAKES_TOTAL',['../battle__command_8c.html#af30f0c9ebe2363871c2f60548c0c50f1a69880f8d6b0e3b03eaa5dd75eef7210c',1,'battle_command.c']]],
+  ['data_5fget_5fpokemon_5fframe_5fcounter_9',['DATA_GET_POKEMON_FRAME_COUNTER',['../battle__command_8c.html#af30f0c9ebe2363871c2f60548c0c50f1a329e37c4f062c9fed6e5f932a10dce25',1,'battle_command.c']]],
+  ['data_5fget_5fpokemon_5fneeds_5fextra_5fdisposal_5fcheck_10',['DATA_GET_POKEMON_NEEDS_EXTRA_DISPOSAL_CHECK',['../battle__command_8c.html#af30f0c9ebe2363871c2f60548c0c50f1a04b4cedbe7982eedad5da2a4a7cdac83',1,'battle_command.c']]],
+  ['data_5fget_5fpokemon_5fprinter_5fid_11',['DATA_GET_POKEMON_PRINTER_ID',['../battle__command_8c.html#af30f0c9ebe2363871c2f60548c0c50f1aee1da080cbdd1a1b1f3047bd13717c1e',1,'battle_command.c']]],
+  ['deoxys_5fattack_12',['DEOXYS_ATTACK',['../constants_2pokemon_8h.html#ac79c0b58706002a32d6033a7af2c117faf35e039ee6caa6fbbb55c2fd64e32ed9',1,'pokemon.h']]],
+  ['deoxys_5fdefense_13',['DEOXYS_DEFENSE',['../constants_2pokemon_8h.html#ac79c0b58706002a32d6033a7af2c117fa2c1849b8aa62c31fe3f1aa5bafec2a78',1,'pokemon.h']]],
+  ['deoxys_5fform_5fmax_14',['DEOXYS_FORM_MAX',['../constants_2pokemon_8h.html#ac79c0b58706002a32d6033a7af2c117fa58a40981dd133220614b959be9d719a2',1,'pokemon.h']]],
+  ['deoxys_5fnormal_15',['DEOXYS_NORMAL',['../constants_2pokemon_8h.html#ac79c0b58706002a32d6033a7af2c117fa4aa7de34bd10a66676d97bd8f3deaaaa',1,'pokemon.h']]],
+  ['deoxys_5fspeed_16',['DEOXYS_SPEED',['../constants_2pokemon_8h.html#ac79c0b58706002a32d6033a7af2c117fadc9255b0e19d2abb4a41a85649ae9968',1,'pokemon.h']]],
+  ['dialga_5fgame_5fevent_17',['DIALGA_GAME_EVENT',['../constants_2pokemon_8h.html#a507d2efcae399ba75ce6fc09c4183041ac6f948da1fe8a26dd5257135a862dc20',1,'pokemon.h']]]
+];

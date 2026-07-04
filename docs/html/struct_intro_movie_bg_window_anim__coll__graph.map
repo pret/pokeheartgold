@@ -1,0 +1,11 @@
+<map id="IntroMovieBgWindowAnim" name="IntroMovieBgWindowAnim">
+<area shape="rect" id="Node000001" title=" " alt="" coords="210,221,385,247"/>
+<area shape="rect" id="Node000002" href="$struct_sys_task.html" title=" " alt="" coords="82,24,155,50"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="141,59,288,220,284,222,138,64"/>
+<area shape="poly" id="edge4_Node000002_Node000002" title=" " alt="" coords="147,15,170,18,178,25,181,37,177,52,164,59,149,59,134,53,133,48,149,54,163,54,172,48,176,37,174,28,168,22,149,20"/>
+<area shape="rect" id="Node000003" href="$struct_sys_task_queue.html" title=" " alt="" coords="45,221,155,247"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="67,57,45,73,26,94,13,122,8,146,12,169,26,196,38,209,55,220,50,222,35,213,21,199,7,171,3,146,8,120,21,92,41,69,70,53"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="107,205,109,197,117,114,118,53,120,48,122,114,114,198,112,208"/>
+<area shape="rect" id="Node000004" href="$struct_intro_movie_bg_window_anim_param.html" title=" " alt="" coords="236,24,449,50"/>
+<area shape="poly" id="edge5_Node000001_Node000004" title=" " alt="" coords="339,64,302,222,298,219,334,67"/>
+</map>

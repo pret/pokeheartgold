@@ -1,0 +1,28 @@
+var struct_sprite =
+[
+    [ "affine", "struct_sprite.html#a7fc2167455548a2453d50750b1acc472", null ],
+    [ "affineMatrix", "struct_sprite.html#a8a323996a059449bc1071a43dade229d", null ],
+    [ "animActive", "struct_sprite.html#ab2b364511fc033502c6547d0828da009", null ],
+    [ "animationData", "struct_sprite.html#ac3a7f6b792cee3d1f4595f6d1e351d93", null ],
+    [ "animationNo", "struct_sprite.html#a28c602b35f0a993fd3ea6a7eaa5f2a1e", null ],
+    [ "drawFlag", "struct_sprite.html#ac0d71ec13cca3cca4d050dbc7c1df7ac", null ],
+    [ "drawPriority", "struct_sprite.html#a1c8f8b6ba8ba6bbeeef3614cc9d5d171", null ],
+    [ "flag", "struct_sprite.html#ab8f1ef456a16363806ce139c58dc907f", null ],
+    [ "flip", "struct_sprite.html#a1e0b36b04a91982108bb91a1a782a259", null ],
+    [ "imageProxy", "struct_sprite.html#a67c95e553c94e2a3cba6ecc5e3a40842", null ],
+    [ "matrix", "struct_sprite.html#a20bedb307357077c082d171176ae8dbc", null ],
+    [ "mode", "struct_sprite.html#a59d6af0a65d35792efdf0c7b86c56e75", null ],
+    [ "mosaic", "struct_sprite.html#abd895cda1d432714b817016e3430385b", null ],
+    [ "next", "struct_sprite.html#a52b8df63621811a2835cd11ba69cebfb", null ],
+    [ "overwrite", "struct_sprite.html#af71105ec19ffbc01f53d05fcfc2f82dc", null ],
+    [ "paletteProxy", "struct_sprite.html#a1a5bd6c4ed594d3c11f70d3bae171041", null ],
+    [ "palIndex", "struct_sprite.html#a7260da102464cf732bb15be4a5a7dc71", null ],
+    [ "palOffset", "struct_sprite.html#a5de9ef4384f27852a2018ac85b49bc2c", null ],
+    [ "prev", "struct_sprite.html#a2c09859f5f18f9d8272171eb43bf66e8", null ],
+    [ "priority", "struct_sprite.html#acf9da53f38c9d836e4fe01515b43b2c2", null ],
+    [ "rotation", "struct_sprite.html#a19372c50b8551ba5636ff5d2aa7a83a4", null ],
+    [ "scale", "struct_sprite.html#a198b346b52dbbc7601a9721e0a232030", null ],
+    [ "speed", "struct_sprite.html#ac11562143c1e350af7de4d91d517efdf", null ],
+    [ "spriteList", "struct_sprite.html#ae542b118a95ba370d7ce5728a61e5de4", null ],
+    [ "type", "struct_sprite.html#aa19fb2b9f04f4c6fd9b2c3f7f8aed724", null ]
+];

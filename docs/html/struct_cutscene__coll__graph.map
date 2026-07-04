@@ -1,0 +1,5 @@
+<map id="Cutscene" name="Cutscene">
+<area shape="rect" id="Node000001" title=" " alt="" coords="41,102,119,128"/>
+<area shape="rect" id="Node000002" href="$struct_cutscene_sprite_param.html" title=" " alt="" coords="5,5,155,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="82,45,83,102,77,101,78,48"/>
+</map>

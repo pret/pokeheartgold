@@ -1,0 +1,9 @@
+<map id="BattleInputMoveMemory_DisplayObj" name="BattleInputMoveMemory_DisplayObj">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,295,169,336"/>
+<area shape="rect" id="Node000002" href="$struct_window.html" title=" " alt="" coords="53,199,121,224"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="89,238,90,296,84,294,85,241"/>
+<area shape="rect" id="Node000003" href="$struct_bg_config.html" title=" " alt="" coords="49,102,125,128"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="88,140,90,198,84,198,86,145"/>
+<area shape="rect" id="Node000004" href="$struct_background.html" title=" " alt="" coords="42,5,132,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="88,44,90,102,84,101,86,49"/>
+</map>

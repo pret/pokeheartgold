@@ -1,0 +1,37 @@
+var voltorb__flip__tasks_8h =
+[
+    [ "VoltorbFlipTask", "struct_voltorb_flip_task.html", "struct_voltorb_flip_task" ],
+    [ "VoltorbFlipTaskEngine", "struct_voltorb_flip_task_engine.html", "struct_voltorb_flip_task_engine" ],
+    [ "VoltorbFlipTask", "voltorb__flip__tasks_8h.html#aa312afbff49ccf1b3b126d8df2ffd0b1", null ],
+    [ "VoltorbFlipTaskEngine", "voltorb__flip__tasks_8h.html#a698386dc6ee862247f6bda6f43e99cdf", null ],
+    [ "VoltorbFlipTaskFunc", "voltorb__flip__tasks_8h.html#ad7aaa8961102c083a31390120c6349b9", null ],
+    [ "VoltorbFlipTaskId", "voltorb__flip__tasks_8h.html#a8363d0b387cb5b3cd42478e662abfa95", null ],
+    [ "VoltorbFlipTasks", "voltorb__flip__tasks_8h.html#a3b67a089c367406284a205a6f323a3ea", null ],
+    [ "VoltorbFlipTaskId", "voltorb__flip__tasks_8h.html#a2d82aae517a88f9535cf37b4e2fff084", [
+      [ "WORKFLOW_COIN_CASE_FULL", "voltorb__flip__tasks_8h.html#a2d82aae517a88f9535cf37b4e2fff084abe13555f2846f9eee604c6fe52b68b87", null ],
+      [ "WORKFLOW_NEW_ROUND", "voltorb__flip__tasks_8h.html#a2d82aae517a88f9535cf37b4e2fff084a2467d310bae8e3c5f9643547a36fcfb4", null ],
+      [ "WORKFLOW_SELECT_MAIN_MENU", "voltorb__flip__tasks_8h.html#a2d82aae517a88f9535cf37b4e2fff084a6b5f6b8897392a6c56e51a44729248fd", null ],
+      [ "WORKFLOW_SELECT_GAME_INFO", "voltorb__flip__tasks_8h.html#a2d82aae517a88f9535cf37b4e2fff084a5b2cadf268270a7ea77c27d56c2fe31c", null ],
+      [ "WORKFLOW_HOW_TO_PLAY", "voltorb__flip__tasks_8h.html#a2d82aae517a88f9535cf37b4e2fff084a9016220ee30c47bb1e5067bbe212e09d", null ],
+      [ "WORKFLOW_HINT", "voltorb__flip__tasks_8h.html#a2d82aae517a88f9535cf37b4e2fff084afc07cc54b8437c922e349094ff31df95", null ],
+      [ "WORKFLOW_ABOUT_MEMO", "voltorb__flip__tasks_8h.html#a2d82aae517a88f9535cf37b4e2fff084ad54ecf250cc9a5f00fb4617a420535b0", null ],
+      [ "WORKFLOW_RENDER_BOARD", "voltorb__flip__tasks_8h.html#a2d82aae517a88f9535cf37b4e2fff084ae179ea60baad454c283440acec113b35", null ],
+      [ "WORKFLOW_AWAIT_BOARD_INTERACT", "voltorb__flip__tasks_8h.html#a2d82aae517a88f9535cf37b4e2fff084affa6985ff5afa1cdcd463d39efb9c794", null ],
+      [ "WORKFLOW_FLIP_CARD", "voltorb__flip__tasks_8h.html#a2d82aae517a88f9535cf37b4e2fff084a915a977c62d0765e0141350465427e57", null ],
+      [ "WORKFLOW_WIN_ROUND", "voltorb__flip__tasks_8h.html#a2d82aae517a88f9535cf37b4e2fff084aa5d205da7897d040cb3c881ebbaf982c", null ],
+      [ "WORKFLOW_AWARD_COINS", "voltorb__flip__tasks_8h.html#a2d82aae517a88f9535cf37b4e2fff084aa16046163d899f062ace7696e1515542", null ],
+      [ "WORKFLOW_REVEAL_BOARD", "voltorb__flip__tasks_8h.html#a2d82aae517a88f9535cf37b4e2fff084a223acb036a3cc3fd714e6f24c9879ec6", null ],
+      [ "WORKFLOW_MEMO_TOUCH", "voltorb__flip__tasks_8h.html#a2d82aae517a88f9535cf37b4e2fff084ae092d2f5be30fb9dba44292a2b766ebc", null ],
+      [ "WORKFLOW_MEMO_BUTTONS", "voltorb__flip__tasks_8h.html#a2d82aae517a88f9535cf37b4e2fff084a1750e0fba42def83eed675f6991f8f2c", null ],
+      [ "WORKFLOW_QUIT_ROUND", "voltorb__flip__tasks_8h.html#a2d82aae517a88f9535cf37b4e2fff084aa1bbfbeef2f2468b1ce27dd89b3c5b56", null ],
+      [ "WORKFLOW_TERMINATE", "voltorb__flip__tasks_8h.html#a2d82aae517a88f9535cf37b4e2fff084a1e7c75d4be6398f07b2a83b7e0ad14b5", null ],
+      [ "WORKFLOW_NONE", "voltorb__flip__tasks_8h.html#a2d82aae517a88f9535cf37b4e2fff084a81e320d1decd96cecc23f856361ee545", null ]
+    ] ],
+    [ "VoltorbFlipTaskEngine_Create", "voltorb__flip__tasks_8h.html#a16b8e96f30965d24cecdb24bab4ad4bc", null ],
+    [ "VoltorbFlipTaskEngine_CurrentTaskState", "voltorb__flip__tasks_8h.html#aaf5aff6dc263b2fbfcc9a516118a8da3", null ],
+    [ "VoltorbFlipTaskEngine_CurrentWorkflow", "voltorb__flip__tasks_8h.html#ad7daf8126e30e8411616b5ba1ec43fcc", null ],
+    [ "VoltorbFlipTaskEngine_Enqueue", "voltorb__flip__tasks_8h.html#a7c36da3baeda18b390dd19e9e5e780a0", null ],
+    [ "VoltorbFlipTaskEngine_Free", "voltorb__flip__tasks_8h.html#ad0667023c65da360eaa2022e292f6215", null ],
+    [ "VoltorbFlipTaskEngine_IncrementTaskState", "voltorb__flip__tasks_8h.html#ab29c5a3dc086281254b3a47328caf673", null ],
+    [ "VoltorbFlipTaskEngine_Run", "voltorb__flip__tasks_8h.html#a3399b0188a17233bf91c3b8134d26b72", null ]
+];

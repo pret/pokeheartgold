@@ -1,0 +1,9 @@
+<map id="SaveData" name="SaveData">
+<area shape="rect" id="Node000001" title=" " alt="" coords="166,102,246,128"/>
+<area shape="rect" id="Node000002" href="$struct_save_array_header.html" title=" " alt="" coords="5,5,130,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="83,41,99,60,116,76,141,90,169,103,163,103,139,95,113,80,95,64,82,46"/>
+<area shape="rect" id="Node000003" href="$struct_save_slot_spec.html" title=" " alt="" coords="154,5,258,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="208,45,209,103,204,100,204,48"/>
+<area shape="rect" id="Node000004" href="$struct_async_write_manager.html" title=" " alt="" coords="282,5,421,31"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="340,43,326,64,309,80,279,97,247,108,246,103,276,92,306,76,322,60,335,46"/>
+</map>

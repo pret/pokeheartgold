@@ -1,0 +1,7 @@
+<map id="OptionsApp_Args" name="OptionsApp_Args">
+<area shape="rect" id="Node000001" title=" " alt="" coords="40,102,163,128"/>
+<area shape="rect" id="Node000002" href="$struct_options.html" title=" " alt="" coords="5,5,72,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="56,42,96,101,91,102,53,46"/>
+<area shape="rect" id="Node000003" href="$struct_menu_input_state_mgr.html" title=" " alt="" coords="96,5,232,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="154,44,135,80,115,104,112,100,131,76,150,47"/>
+</map>

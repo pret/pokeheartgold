@@ -1,0 +1,7 @@
+<map id="ClearBellCutscene3dObjectTaskData_HeartGold" name="ClearBellCutscene3dObjectTaskData_HeartGold">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,199,188,239"/>
+<area shape="rect" id="Node000002" href="$struct_bg_config.html" title=" " alt="" coords="59,102,134,128"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="99,141,99,199,94,198,94,145"/>
+<area shape="rect" id="Node000003" href="$struct_background.html" title=" " alt="" coords="51,5,142,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="98,44,99,102,94,101,95,49"/>
+</map>

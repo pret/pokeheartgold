@@ -1,0 +1,19 @@
+var searchData=
+[
+  ['j_0',['j',['../struct_r_c4___ctx.html#aa8bc58278147a031f3921ab6d782f934',1,'RC4_Ctx']]],
+  ['j_5fnum_5fspecies_1',['J_NUM_SPECIES',['../johto__dex_8h.html#ae9bdd2a8399ad7cfe8046e0397b7fa5b',1,'johto_dex.h']]],
+  ['j_5fspecies_5fnone_2',['J_SPECIES_NONE',['../johto__dex_8h.html#a026f685c0a9fa9281127c3627fe4f532',1,'johto_dex.h']]],
+  ['january_3',['JANUARY',['../field__system__rtc__weather_8h.html#a828e0d3dc63102cb9085c2a30e0401b1',1,'field_system_rtc_weather.h']]],
+  ['jn_5fspl_2einc_4',['jn_spl.inc',['../jn__spl_8inc.html',1,'']]],
+  ['jn_5fspl_2es_5',['jn_spl.s',['../jn__spl_8s.html',1,'']]],
+  ['johto_5fdex_2eh_6',['johto_dex.h',['../johto__dex_8h.html',1,'']]],
+  ['johto_5fdex_5fcount_7',['JOHTO_DEX_COUNT',['../species_8h.html#ae7de7811aae92a55c68f413dbf513256',1,'species.h']]],
+  ['johtobadges_8',['johtoBadges',['../struct_player_profile.html#a06328630e5982f04288e43c0972c39c0',1,'PlayerProfile']]],
+  ['joinqueue_9',['joinQueue',['../struct___o_s_thread.html#a14c594bf9ab8e51ed47a6766fe1ded16',1,'_OSThread']]],
+  ['judgestatposition_10',['judgeStatPosition',['../struct_field_system.html#a045aacae0013426a01594d0a32bbb879',1,'FieldSystem']]],
+  ['july_11',['JULY',['../field__system__rtc__weather_8h.html#a4d78a104203d99b119cd3c167832d43f',1,'field_system_rtc_weather.h']]],
+  ['jumpdx_12',['jumpDx',['../struct_anim_apricorn_tree_work.html#ad05e8159ab4aeae1940dfbcb3d2b275d',1,'AnimApricornTreeWork']]],
+  ['jumpdz_13',['jumpDz',['../struct_anim_apricorn_tree_work.html#a141800be164fe4d8f32f8b02b805bfb1',1,'AnimApricornTreeWork']]],
+  ['jumptimer_14',['jumpTimer',['../struct_anim_apricorn_tree_work.html#a7ee077fb7da3ab378e171e0e066c5070',1,'AnimApricornTreeWork']]],
+  ['june_15',['JUNE',['../field__system__rtc__weather_8h.html#aa2a2ed014b48b6612aa861692d9955fa',1,'field_system_rtc_weather.h']]]
+];

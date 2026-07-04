@@ -1,0 +1,9 @@
+<map id="AlphPuzzleTile" name="AlphPuzzleTile">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,160,114,186"/>
+<area shape="rect" id="Node000002" href="$struct_sprite.html" title=" " alt="" coords="102,14,158,40"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="91,51,72,74,64,96,60,120,60,160,55,159,55,119,59,95,68,71,94,47"/>
+<area shape="poly" id="edge4_Node000002_Node000002" title=" " alt="" coords="168,10,180,16,184,27,182,36,174,42,154,43,152,38,172,37,177,33,179,27,176,19,168,16"/>
+<area shape="rect" id="Node000003" href="$struct_sprite_list.html" title=" " alt="" coords="155,160,231,186"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="123,53,119,95,121,116,128,135,140,148,157,160,152,160,137,152,124,138,115,117,113,95,120,57"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="193,143,191,110,180,74,166,56,151,43,151,38,170,53,185,71,196,109,198,146"/>
+</map>

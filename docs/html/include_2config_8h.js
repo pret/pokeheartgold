@@ -1,0 +1,26 @@
+var include_2config_8h =
+[
+    [ "ENGLISH", "include_2config_8h.html#a43f2e190df8f05a95ca4f49a33337e7f", null ],
+    [ "GAME_LANGUAGE", "include_2config_8h.html#aeb6e378268969c7dab504f1da420a73c", null ],
+    [ "GAME_VERSION", "include_2config_8h.html#af6419fce288d0638e125e8454f070db7", null ],
+    [ "HEARTGOLD", "include_2config_8h.html#a825b5f896c88c1a9d8f2d616ad52549c", null ],
+    [ "LANGUAGE_ENGLISH", "include_2config_8h.html#a064a3db01bc9aba9c63ba7c4801a66fc", null ],
+    [ "LANGUAGE_FRENCH", "include_2config_8h.html#a4014ec5024e4c863699f622b9c6464a3", null ],
+    [ "LANGUAGE_GERMAN", "include_2config_8h.html#ac4d7f9f3016ec572b25f9021fdb2c644", null ],
+    [ "LANGUAGE_ITALIAN", "include_2config_8h.html#a45881af6ce8d4d5e30d67e2297e0bc81", null ],
+    [ "LANGUAGE_JAPANESE", "include_2config_8h.html#a713eff879b2e81b863320aff9db34160", null ],
+    [ "LANGUAGE_KOREAN", "include_2config_8h.html#a8990828bbe83eac4d39e18d744f09126", null ],
+    [ "LANGUAGE_SPANISH", "include_2config_8h.html#a63bf32bffbc0ee4790069243778c5f38", null ],
+    [ "NONMATCHING", "include_2config_8h.html#a10d06833011f4ca3c500b26f579fb0e1", null ],
+    [ "VERSION_DIAMOND", "include_2config_8h.html#a407210d8e7d4690ec38d6eed65447899", null ],
+    [ "VERSION_EMERALD", "include_2config_8h.html#a10bc98b750aca013088161afbc2c8555", null ],
+    [ "VERSION_FIRERED", "include_2config_8h.html#a80e1db8f6b410a1b6fa0745f74c74f6a", null ],
+    [ "VERSION_GAMECUBE", "include_2config_8h.html#a6c7278fe60d34b55f2c14b7ca46c8bf0", null ],
+    [ "VERSION_HEARTGOLD", "include_2config_8h.html#acfd1fe394f6d865abb0100edbc4663e2", null ],
+    [ "VERSION_LEAFGREEN", "include_2config_8h.html#a059d1d9922746cda6d54d7ec91c29d38", null ],
+    [ "VERSION_PEARL", "include_2config_8h.html#acc5f9162af6a8cab537085aa1d506b27", null ],
+    [ "VERSION_PLATINUM", "include_2config_8h.html#a0698291335a923a57448c5c0d842627d", null ],
+    [ "VERSION_RUBY", "include_2config_8h.html#a751f1b18c129d9a0749c07ce298f38e6", null ],
+    [ "VERSION_SAPPHIRE", "include_2config_8h.html#acb0b460b69417f150de424d7e73d32f6", null ],
+    [ "VERSION_SOULSILVER", "include_2config_8h.html#a69b2bb8fe18560369f0e2494357e3130", null ]
+];

@@ -1,0 +1,26 @@
+var struct_s_p_l_manager =
+[
+    [ "act_emtr_list", "struct_s_p_l_manager.html#abad4ac91829c03b7e1944aaece8f35f5", null ],
+    [ "alloc", "struct_s_p_l_manager.html#a17f2fa3e6bcc123c3d19ee0871a7f846", null ],
+    [ "current", "struct_s_p_l_manager.html#a289b292933ed8e5049ce42810e91ae14", null ],
+    [ "current_state", "struct_s_p_l_manager.html#a55644589d758ebc637a4f05cce3c411b", null ],
+    [ "drawOrder", "struct_s_p_l_manager.html#a289d79e866a89129971edeb4e1a9a800", null ],
+    [ "fix", "struct_s_p_l_manager.html#a6b6ff41a88d398e2d804bd3e5927654a", null ],
+    [ "ina_emtr_list", "struct_s_p_l_manager.html#a2c8b830e729c601acbf10e2e971bbbdf", null ],
+    [ "ina_ptcl_list", "struct_s_p_l_manager.html#af27a9cd19c247667a62beca60e818ec9", null ],
+    [ "max", "struct_s_p_l_manager.html#aea1f43edd6cdd1747495c9f7d5cee7ca", null ],
+    [ "max_emtr_num", "struct_s_p_l_manager.html#a76989bfbcc115cab0f7897b4f010543f", null ],
+    [ "max_ptcl_num", "struct_s_p_l_manager.html#aee02e2dcf8c75aeb88f8c01688e12d44", null ],
+    [ "min", "struct_s_p_l_manager.html#a716a708813eabcc7395408f7ba6bbd66", null ],
+    [ "misc_flag", "struct_s_p_l_manager.html#a97b85858f87863f807aa49a7f9b05d4d", null ],
+    [ "p_cmr", "struct_s_p_l_manager.html#a5531b1eb286a09adc08422ae2b3224eb", null ],
+    [ "p_emtr", "struct_s_p_l_manager.html#ae96c6bdefd94ed383c5ac88d93fca06d", null ],
+    [ "polygonID", "struct_s_p_l_manager.html#a3fafa00f72774a27e796b592c5d3fd5e", null ],
+    [ "res_ary", "struct_s_p_l_manager.html#a282446b7f170a1459e91c546f27a4c66", null ],
+    [ "res_num", "struct_s_p_l_manager.html#a4e50a0f801e59647b3a90d19ed94ce47", null ],
+    [ "reserved", "struct_s_p_l_manager.html#aeafbdc136b4d30bf79fefe78d1682fdf", null ],
+    [ "reserved", "struct_s_p_l_manager.html#a9d59d017e89c662a545b274a0226e71f", null ],
+    [ "tex_ary", "struct_s_p_l_manager.html#a034345c29c2062a6cda52b83479136cf", null ],
+    [ "tex_num", "struct_s_p_l_manager.html#a0715af40e1f9f3d767d7f418a9401e8c", null ],
+    [ "uCurrentCycle", "struct_s_p_l_manager.html#a6c4846c204103783d86f4da4b32bc82e", null ]
+];

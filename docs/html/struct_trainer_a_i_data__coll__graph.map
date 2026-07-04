@@ -1,0 +1,9 @@
+<map id="TrainerAIData" name="TrainerAIData">
+<area shape="rect" id="Node000001" title=" " alt="" coords="39,199,142,224"/>
+<area shape="rect" id="Node000002" href="$struct_move_tbl.html" title=" " alt="" coords="5,102,77,128"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="37,141,40,159,45,173,55,186,69,198,63,199,51,190,40,176,35,160,36,146"/>
+<area shape="rect" id="Node000003" href="$struct_item_data.html" title=" " alt="" coords="102,102,177,128"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="129,140,113,176,99,200,95,197,108,173,125,143"/>
+<area shape="rect" id="Node000004" href="$struct_item_party_param.html" title=" " alt="" coords="82,5,198,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="141,44,142,102,137,101,138,49"/>
+</map>

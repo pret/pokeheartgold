@@ -1,0 +1,11 @@
+<map id="PartyMenuMonsDrawState" name="PartyMenuMonsDrawState">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,160,184,186"/>
+<area shape="rect" id="Node000002" href="$struct_string.html" title=" " alt="" coords="19,14,74,40"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="41,53,41,95,43,116,50,135,60,148,73,160,68,160,56,151,45,138,38,117,35,95,40,58"/>
+<area shape="rect" id="Node000003" href="$struct_sprite.html" title=" " alt="" coords="280,14,336,40"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="262,34,210,48,182,59,156,75,143,90,128,113,102,162,98,158,124,111,139,86,153,71,179,54,208,43,267,31"/>
+<area shape="poly" id="edge5_Node000003_Node000003" title=" " alt="" coords="346,10,358,16,362,27,359,36,351,42,331,43,330,38,350,37,355,33,357,27,354,19,346,16"/>
+<area shape="rect" id="Node000004" href="$struct_sprite_list.html" title=" " alt="" coords="310,160,386,186"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="302,53,298,95,300,116,306,135,315,148,328,161,323,159,311,151,301,138,294,117,293,95,298,57"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="356,145,363,110,362,92,357,74,344,56,329,43,330,38,348,52,362,72,368,91,368,111,360,148"/>
+</map>

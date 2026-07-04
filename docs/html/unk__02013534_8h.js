@@ -1,0 +1,27 @@
+var unk__02013534_8h =
+[
+    [ "TextOBJTemplate", "struct_text_o_b_j_template.html", "struct_text_o_b_j_template" ],
+    [ "TextOBJ", "struct_text_o_b_j.html", "struct_text_o_b_j" ],
+    [ "TextOBJ", "unk__02013534_8h.html#a78ac029ad5acfcb365259fa7f7430e07", null ],
+    [ "TextOBJTemplate", "unk__02013534_8h.html#afd4f69269920e4365093dc5588e87025", null ],
+    [ "UnkStruct_02013534", "unk__02013534_8h.html#a91324ffd040b5cda644cab2b76b73983", null ],
+    [ "UnkStruct_02013910", "unk__02013534_8h.html#a9bbbd95a55a4b7d703ad65ab7c00fc4c", null ],
+    [ "FontOAM_Delete", "unk__02013534_8h.html#a8a533c0da5c5403f387ca36d344e93f3", null ],
+    [ "FontSystem_NewInit", "unk__02013534_8h.html#af4e15f83eff7fed8352814d277e47611", null ],
+    [ "sub_020135AC", "unk__02013534_8h.html#acddedae9c9e15800e891819d71d52a84", null ],
+    [ "sub_020135D8", "unk__02013534_8h.html#ab7814d33b33692757d2fcb768f35af55", null ],
+    [ "sub_02013688", "unk__02013534_8h.html#a138afbd0e9180d5211150523b255b416", null ],
+    [ "sub_020136B4", "unk__02013534_8h.html#ae7470965392eb5873e749232377b13be", null ],
+    [ "sub_02013794", "unk__02013534_8h.html#a219a9391a3c6ff5a544e3c05420b6973", null ],
+    [ "sub_02013820", "unk__02013534_8h.html#ab258c7497d95667d307eb2cd7a77716d", null ],
+    [ "sub_020138E0", "unk__02013534_8h.html#ae2892be03192eda3ceed4e064499bca8", null ],
+    [ "sub_02013910", "unk__02013534_8h.html#a9c2d880efcd4a18562216453f5a9dc45", null ],
+    [ "sub_02013938", "unk__02013534_8h.html#a2f2fe49742d8722c90bbafb440c1c552", null ],
+    [ "sub_02013948", "unk__02013534_8h.html#ae2ce24a1832a3dfc6dd0b9d89f4883e5", null ],
+    [ "sub_02013A50", "unk__02013534_8h.html#a7e676ddcc375efa8b6376ce7b63da31a", null ],
+    [ "TextOBJ_CopyFromBGWindow", "unk__02013534_8h.html#a70aac4372c367eb62f2cd8d15ea3fce5", null ],
+    [ "TextOBJ_Create", "unk__02013534_8h.html#ad05d6fae5a6d1d4219f3dda286851dc9", null ],
+    [ "TextOBJ_Destroy", "unk__02013534_8h.html#a31ca44cc126d1c03b39dc97d0982450b", null ],
+    [ "TextOBJ_SetPaletteNum", "unk__02013534_8h.html#a52454fa230c3c3e99c3b1e252e2ed9f2", null ],
+    [ "TextOBJ_SetSpritesDrawFlag", "unk__02013534_8h.html#a8b06b91be00ee1704bd786e5e8cc4dc2", null ]
+];

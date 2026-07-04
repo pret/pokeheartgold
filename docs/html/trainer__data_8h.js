@@ -1,0 +1,47 @@
+var trainer__data_8h =
+[
+    [ "TrainerMonSpecies", "struct_trainer_mon_species.html", "struct_trainer_mon_species" ],
+    [ "TrainerMonSpeciesMoves", "struct_trainer_mon_species_moves.html", "struct_trainer_mon_species_moves" ],
+    [ "TrainerMonSpeciesItem", "struct_trainer_mon_species_item.html", "struct_trainer_mon_species_item" ],
+    [ "TrainerMonSpeciesItemMoves", "struct_trainer_mon_species_item_moves.html", "struct_trainer_mon_species_item_moves" ],
+    [ "TrainerMon", "union_trainer_mon.html", "union_trainer_mon" ],
+    [ "TrainerData", "struct_trainer_data.html", "struct_trainer_data" ],
+    [ "Trainer", "struct_trainer.html", "struct_trainer" ],
+    [ "BattleSetup", "trainer__data_8h.html#a48d715201f69b0d327d128ca6ccd022b", null ],
+    [ "Trainer", "trainer__data_8h.html#a6a68b2cceb078d310cb9ba206336806d", null ],
+    [ "TrainerAttr", "trainer__data_8h.html#a6251ef3d4022a0057ad10f5090975d8f", null ],
+    [ "TrainerData", "trainer__data_8h.html#a506b415b971c3b1f6c7ea35276bbd6d7", null ],
+    [ "TrainerGender", "trainer__data_8h.html#a995b28de1067f819b4458d8155fd8950", null ],
+    [ "TRPOKE", "trainer__data_8h.html#afb00d775d26b160faa9d6b56164bed80", null ],
+    [ "TRPOKE_ITEM_CUSTMOVES", "trainer__data_8h.html#a9acd6c3007959fab515257007f371dd1", null ],
+    [ "TRPOKE_ITEM_DFLTMOVES", "trainer__data_8h.html#afbb804f8394e0411844b1c26fb9d1f04", null ],
+    [ "TRPOKE_NOITEM_CUSTMOVES", "trainer__data_8h.html#a142fd4abddd47874d6257eade696013f", null ],
+    [ "TRPOKE_NOITEM_DFLTMOVES", "trainer__data_8h.html#aaac4179ae5ce48fa60f3dae5b89e0b03", null ],
+    [ "TrainerAttr", "trainer__data_8h.html#afbf9cbd4ff32ec4f25a6e951abf6e175", [
+      [ "TRATTR_TYPE", "trainer__data_8h.html#afbf9cbd4ff32ec4f25a6e951abf6e175aa8f0623ea9881876a6fc0834da9de337", null ],
+      [ "TRATTR_CLASS", "trainer__data_8h.html#afbf9cbd4ff32ec4f25a6e951abf6e175a04794bf4c230603d4e55284a4be911da", null ],
+      [ "TRATTR_UNK2", "trainer__data_8h.html#afbf9cbd4ff32ec4f25a6e951abf6e175ada80b2c67baff2adcfbc75e91349f044", null ],
+      [ "TRATTR_NPOKE", "trainer__data_8h.html#afbf9cbd4ff32ec4f25a6e951abf6e175aaa0daf7a21f02860b87d244616c65acc", null ],
+      [ "TRATTR_ITEM1", "trainer__data_8h.html#afbf9cbd4ff32ec4f25a6e951abf6e175a717f65afe433efc6f82dc0962aa0b93d", null ],
+      [ "TRATTR_ITEM2", "trainer__data_8h.html#afbf9cbd4ff32ec4f25a6e951abf6e175a2f80901386d42b2656590024aedd2875", null ],
+      [ "TRATTR_ITEM3", "trainer__data_8h.html#afbf9cbd4ff32ec4f25a6e951abf6e175a8e79c55e5315c2e8e3514508bdde439a", null ],
+      [ "TRATTR_ITEM4", "trainer__data_8h.html#afbf9cbd4ff32ec4f25a6e951abf6e175a1066749b430becf96236981209a37936", null ],
+      [ "TRATTR_AIFLAGS", "trainer__data_8h.html#afbf9cbd4ff32ec4f25a6e951abf6e175a464e572da44676453bffbe2ca97a11db", null ],
+      [ "TRATTR_DOUBLEBTL", "trainer__data_8h.html#afbf9cbd4ff32ec4f25a6e951abf6e175ae873a7c2d8debfe534c4e13561f91770", null ]
+    ] ],
+    [ "TrainerGender", "trainer__data_8h.html#a8a392ee6b8bc9d8aa634546c6922bff1", [
+      [ "TRAINER_MALE", "trainer__data_8h.html#a8a392ee6b8bc9d8aa634546c6922bff1a6df1e17746ecb6e44ffa46adeed6efe1", null ],
+      [ "TRAINER_FEMALE", "trainer__data_8h.html#a8a392ee6b8bc9d8aa634546c6922bff1a83dd72ae8cd262635a4796fbd09c69fb", null ],
+      [ "TRAINER_DOUBLE", "trainer__data_8h.html#a8a392ee6b8bc9d8aa634546c6922bff1a9718020231c7a05d96f8bb646c069120", null ]
+    ] ],
+    [ "CreateNPCTrainerParty", "trainer__data_8h.html#a6dfce2467f277dac57486fe1f822f20c", null ],
+    [ "EnemyTrainerSet_Init", "trainer__data_8h.html#a23734f7a5a3f41c694d77ef0f3c1d6c5", null ],
+    [ "GetTrainerMessageByIdPair", "trainer__data_8h.html#a48b3ed2c6ebcb9e74d24b23aa5ba9866", null ],
+    [ "TrainerClass_GetGenderOrTrainerCount", "trainer__data_8h.html#aee7da05d0cc7eb1dc44dfa47173c2346", null ],
+    [ "TrainerData_GetAttr", "trainer__data_8h.html#a31c27a506d2c322c06cf93c8a608c513", null ],
+    [ "TrainerData_ReadTrData", "trainer__data_8h.html#accd70586ebc245593f4eae4dbc0fa8cc", null ],
+    [ "TrainerData_ReadTrPoke", "trainer__data_8h.html#aeaefb48285feb3eff89a4ad6148e8696", null ],
+    [ "TrainerMessageWithIdPairExists", "trainer__data_8h.html#ac1a8fd71b7df72819f97b4c247bc8d22", null ],
+    [ "TrMon_FrustrationCheckAndSetFriendship", "trainer__data_8h.html#afd0f276173bc59d61fd8ad01031acb4d", null ],
+    [ "TrMon_OverridePidGender", "trainer__data_8h.html#a5e4bb8a0fc8b745ba0a4cd76923f2e71", null ]
+];

@@ -1,0 +1,28 @@
+var struct_f_s_file =
+[
+    [ "arc", "struct_f_s_file.html#ac7e30b1f30c1ee7a1795fdd28a30e254", null ],
+    [ "arg", "struct_f_s_file.html#a44875c4e0ebf3f16a6673d487e89be1b", null ],
+    [ "bottom", "struct_f_s_file.html#a16f6fca9ac36c337bd25c27a55b81263", null ],
+    [ "closefile", "struct_f_s_file.html#a2bb38d68a1bc5145bc301c2f8d85ba20", null ],
+    [ "command", "struct_f_s_file.html#a709daad03bbf7efb960b3d8e4ec6107e", null ],
+    [ "dir", "struct_f_s_file.html#a4abbf74f04cc7ba855a8d62210ccf3e5", null ],
+    [ "error", "struct_f_s_file.html#a171713e819a95c938a0ce5bd42efbdb5", null ],
+    [ "file", "struct_f_s_file.html#a9243e76ec68b70781b61a92fd363edb7", null ],
+    [ "findpath", "struct_f_s_file.html#a83f37b6e3abff46a1ed8e373a90e0ec9", null ],
+    [ "getpath", "struct_f_s_file.html#a016b5c9fde80fe6ae9d277ed3f56c8f7", null ],
+    [ "link", "struct_f_s_file.html#ac54b610d5f8bec821cb80e34085e35e7", null ],
+    [ "openfiledirect", "struct_f_s_file.html#af15e81c131d1a34b337776c1bac07a4a", null ],
+    [ "openfilefast", "struct_f_s_file.html#a6adb7f2a24671e3533a11fd0750acd19", null ],
+    [ "own_id", "struct_f_s_file.html#a611af5f8d40fb1036c23b8944436493c", null ],
+    [ "parent", "struct_f_s_file.html#aadec492adf8dfc39160811c8c77c9a23", null ],
+    [ "pos", "struct_f_s_file.html#a06558cea9613b42a0c569441f27da956", null ],
+    [ "pos", "struct_f_s_file.html#a0399b852ed5239c689a3958fdc91c4ed", null ],
+    [ "prop", "struct_f_s_file.html#a486a37fd2c152fd377f6bf7d2cc5f538", null ],
+    [ "queue", "struct_f_s_file.html#a6a9882cb7b4afb9f3b599c9431051840", null ],
+    [ "readdir", "struct_f_s_file.html#a777fdcd5f62a1a14657a4b75ad5faed1", null ],
+    [ "readfile", "struct_f_s_file.html#a9e8b3416e56cd29239f650a89babe0c8", null ],
+    [ "seekdir", "struct_f_s_file.html#a526e8ac837ea46be5c54f8034a5d780a", null ],
+    [ "stat", "struct_f_s_file.html#aa39f3b9370a04cbc050ec589636fc6aa", null ],
+    [ "top", "struct_f_s_file.html#a8538c779818c976d3266cccc6ee1378a", null ],
+    [ "writefile", "struct_f_s_file.html#a1d831f89748dbef66d84884dddec7d57", null ]
+];

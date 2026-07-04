@@ -1,0 +1,27 @@
+var pm__string_8h =
+[
+    [ "String", "struct_string.html", "struct_string" ],
+    [ "String", "pm__string_8h.html#a54ad19f2d17915dbf4eb4c2fa2fa8680", null ],
+    [ "CopyStringToU16Array", "pm__string_8h.html#afa42d47d6e058466a38be39621acfead", null ],
+    [ "CopyU16ArrayToString", "pm__string_8h.html#ac94b92f46685227b67372199acd825e7", null ],
+    [ "CopyU16ArrayToStringN", "pm__string_8h.html#a04ee7751129e77e8e2300d0468745f58", null ],
+    [ "String16_FormatInteger", "pm__string_8h.html#a0174cd68b860b3395791fd3984f90fa5", null ],
+    [ "String16_FormatUnsignedLongLong", "pm__string_8h.html#a664874e2ced4b6c9bd5414aca2757308", null ],
+    [ "String_AddChar", "pm__string_8h.html#a59e135c336c7475f43652b2c0dd2efdc", null ],
+    [ "String_atoi", "pm__string_8h.html#aa457161526164472dcb36291ed0816fb", null ],
+    [ "String_Cat", "pm__string_8h.html#ae818e45153fb64929eee777261d10e06", null ],
+    [ "String_Cat_HandleTrainerName", "pm__string_8h.html#a73ff6f34ce326496dc7bc8d7c0b355c7", null ],
+    [ "String_Compare", "pm__string_8h.html#a084d91d7033badaa24d198a62d09d3ea", null ],
+    [ "String_Copy", "pm__string_8h.html#a6030bab0ba230c879c05b3f7659949a4", null ],
+    [ "String_CountLines", "pm__string_8h.html#a296ad8490c6ab95d25292947f00c8059", null ],
+    [ "String_cstr", "pm__string_8h.html#ab7024b2b8e93ffb013eb0cd49fa86606", null ],
+    [ "String_Delete", "pm__string_8h.html#a13a6c1e42d26a03e65ad9a0703bd2cfa", null ],
+    [ "String_Dup", "pm__string_8h.html#a075f2b81008c8c0ac7b2ced022577446", null ],
+    [ "String_GetLength", "pm__string_8h.html#a8e9cfef7e6fadc4318eaa2f20ec28a79", null ],
+    [ "String_GetLineN", "pm__string_8h.html#a9f7ca24a1cd9075c5d3366281e750ad8", null ],
+    [ "String_IsTrainerName", "pm__string_8h.html#a370b503df1978715659106dece015dc7", null ],
+    [ "String_New", "pm__string_8h.html#a96182e5bcd2ff8450982c924eec33d11", null ],
+    [ "String_RadioAddStatic", "pm__string_8h.html#a7a0f51802be36c80931197bedfc680f6", null ],
+    [ "String_SetEmpty", "pm__string_8h.html#aff132dec6f712153de771e2bb06ee8c5", null ],
+    [ "String_UpperCharN", "pm__string_8h.html#a61a59ecc083e53990324ecf655c54eed", null ]
+];

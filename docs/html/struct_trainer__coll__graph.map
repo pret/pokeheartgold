@@ -1,0 +1,7 @@
+<map id="Trainer" name="Trainer">
+<area shape="rect" id="Node000001" title=" " alt="" coords="78,122,139,148"/>
+<area shape="rect" id="Node000002" href="$struct_trainer_data.html" title=" " alt="" coords="5,5,95,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="65,43,105,121,100,122,61,47"/>
+<area shape="rect" id="Node000003" href="$struct_mail_message.html" title=" " alt="" coords="118,5,216,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="158,44,131,100,117,124,114,120,126,97,153,46"/>
+</map>

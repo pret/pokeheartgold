@@ -1,0 +1,23 @@
+var searchData=
+[
+  ['valarm_2eh_0',['valarm.h',['../valarm_8h.html',1,'']]],
+  ['vars_2eh_1',['vars.h',['../vars_8h.html',1,'']]],
+  ['vibrate_2eh_2',['vibrate.h',['../vibrate_8h.html',1,'']]],
+  ['view_5fphoto_2ec_3',['view_photo.c',['../view__photo_8c.html',1,'']]],
+  ['view_5fphoto_2eh_4',['view_photo.h',['../view__photo_8h.html',1,'']]],
+  ['view_5frankings_2ec_5',['view_rankings.c',['../view__rankings_8c.html',1,'']]],
+  ['view_5frankings_2eh_6',['view_rankings.h',['../view__rankings_8h.html',1,'']]],
+  ['voltorb_5fflip_2ec_7',['voltorb_flip.c',['../voltorb__flip_8c.html',1,'']]],
+  ['voltorb_5fflip_2eh_8',['voltorb_flip.h',['../voltorb__flip_8h.html',1,'']]],
+  ['voltorb_5fflip_5fapp_5fdata_2eh_9',['voltorb_flip_app_data.h',['../voltorb__flip__app__data_8h.html',1,'']]],
+  ['voltorb_5fflip_5fgame_2ec_10',['voltorb_flip_game.c',['../voltorb__flip__game_8c.html',1,'']]],
+  ['voltorb_5fflip_5fgame_2eh_11',['voltorb_flip_game.h',['../voltorb__flip__game_8h.html',1,'']]],
+  ['voltorb_5fflip_5finput_2ec_12',['voltorb_flip_input.c',['../voltorb__flip__input_8c.html',1,'']]],
+  ['voltorb_5fflip_5finput_2eh_13',['voltorb_flip_input.h',['../voltorb__flip__input_8h.html',1,'']]],
+  ['voltorb_5fflip_5finternal_2eh_14',['voltorb_flip_internal.h',['../voltorb__flip__internal_8h.html',1,'']]],
+  ['voltorb_5fflip_5ftasks_2ec_15',['voltorb_flip_tasks.c',['../voltorb__flip__tasks_8c.html',1,'']]],
+  ['voltorb_5fflip_5ftasks_2eh_16',['voltorb_flip_tasks.h',['../voltorb__flip__tasks_8h.html',1,'']]],
+  ['vram_5ftransfer_5fmanager_2ec_17',['vram_transfer_manager.c',['../vram__transfer__manager_8c.html',1,'']]],
+  ['vram_5ftransfer_5fmanager_2eh_18',['vram_transfer_manager.h',['../vram__transfer__manager_8h.html',1,'']]],
+  ['vramexclusive_2eh_19',['vramExclusive.h',['../vram_exclusive_8h.html',1,'']]]
+];

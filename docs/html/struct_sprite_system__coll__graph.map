@@ -1,0 +1,5 @@
+<map id="SpriteSystem" name="SpriteSystem">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,102,106,128"/>
+<area shape="rect" id="Node000002" href="$struct_g2d_renderer.html" title=" " alt="" coords="6,5,105,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="58,45,58,102,53,101,53,48"/>
+</map>

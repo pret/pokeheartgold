@@ -1,0 +1,9 @@
+<map id="ViewRankingsAppPage" name="ViewRankingsAppPage">
+<area shape="rect" id="Node000001" title=" " alt="" coords="21,295,179,321"/>
+<area shape="rect" id="Node000002" href="$struct_view_rankings_app_page_entry.html" title=" " alt="" coords="5,199,195,224"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="102,238,103,296,97,294,98,241"/>
+<area shape="rect" id="Node000003" href="$struct_view_rankings_page_entry.html" title=" " alt="" coords="17,102,183,128"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="101,141,103,199,97,198,99,145"/>
+<area shape="rect" id="Node000004" href="$struct_string.html" title=" " alt="" coords="72,5,128,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="101,44,103,102,97,101,99,49"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="PhoneBook" name="PhoneBook">
+<area shape="rect" id="Node000001" title=" " alt="" coords="21,102,109,128"/>
+<area shape="rect" id="Node000002" href="$struct_phone_book_entry.html" title=" " alt="" coords="5,5,125,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="67,45,68,102,62,101,63,48"/>
+</map>

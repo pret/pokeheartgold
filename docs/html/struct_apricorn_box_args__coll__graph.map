@@ -1,0 +1,13 @@
+<map id="ApricornBoxArgs" name="ApricornBoxArgs">
+<area shape="rect" id="Node000001" title=" " alt="" coords="87,199,206,224"/>
+<area shape="rect" id="Node000002" href="$struct_menu_input_state_mgr.html" title=" " alt="" coords="5,102,141,128"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="69,141,72,159,77,173,89,186,106,198,101,198,86,190,72,176,66,160,67,145"/>
+<area shape="rect" id="Node000003" href="$struct_save_data.html" title=" " alt="" coords="181,102,261,128"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="213,141,194,176,166,201,164,196,190,173,209,144"/>
+<area shape="rect" id="Node000004" href="$struct_save_array_header.html" title=" " alt="" coords="20,5,144,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="98,41,114,60,131,76,156,90,184,102,178,104,154,95,128,80,110,64,98,47"/>
+<area shape="rect" id="Node000005" href="$struct_save_slot_spec.html" title=" " alt="" coords="169,5,273,31"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="223,44,223,102,219,100,219,48"/>
+<area shape="rect" id="Node000006" href="$struct_async_write_manager.html" title=" " alt="" coords="297,5,436,31"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="354,43,341,64,324,80,293,97,262,108,260,103,291,92,321,76,337,60,350,46"/>
+</map>

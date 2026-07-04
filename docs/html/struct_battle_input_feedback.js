@@ -1,0 +1,28 @@
+var struct_battle_input_feedback =
+[
+    [ "button", "struct_battle_input_feedback.html#a69f84d0c0f8b433096b3fad26c8ca48c", null ],
+    [ "delay", "struct_battle_input_feedback.html#ac144f229163d488ea4e72ef96c8c2809", null ],
+    [ "frameType", "struct_battle_input_feedback.html#a76c77656dc47674a186665c604ba4a58", null ],
+    [ "monSelect", "struct_battle_input_feedback.html#abab5162c41d000b90732cb0845505152", null ],
+    [ "move", "struct_battle_input_feedback.html#a89af0a01d7d8fa6ccdd893a94aac1527", null ],
+    [ "param", "struct_battle_input_feedback.html#a52c2084f8293f6dc32b5a4b14a8ca051", null ],
+    [ "pokemonIconIndex", "struct_battle_input_feedback.html#aaa8a53bb575db9608f164955e5de23ac", null ],
+    [ "pos", "struct_battle_input_feedback.html#a7458ca928d03cb49dc52330ed8bff7d9", null ],
+    [ "ret", "struct_battle_input_feedback.html#a5ad55d1bf8e4ba0d31f5be1a4a4b2aba", null ],
+    [ "screenOffsets", "struct_battle_input_feedback.html#a9bc7be50e3f0e339aebc90006f18fd2c", null ],
+    [ "shouldDeleteAfter", "struct_battle_input_feedback.html#a612d7000dcd0d2798fa78a8dc2cae923", null ],
+    [ "state", "struct_battle_input_feedback.html#aee9f2af24cbeec674346da3e4a4cb48d", null ],
+    [ "textObjId", "struct_battle_input_feedback.html#aff1bc94ed04bd68bad25c9cdde8c7684", null ],
+    [ "unk10", "struct_battle_input_feedback.html#a21e6fd26259128b21a9a5e2915ef68bd", null ],
+    [ "unk14", "struct_battle_input_feedback.html#af19dbf1dcb1ba9277fd96dea6912b5d7", null ],
+    [ "unk18", "struct_battle_input_feedback.html#a956bd5d05811e945c6b6014b382cb876", null ],
+    [ "unk1C", "struct_battle_input_feedback.html#a67bfab5e7fe01f98e404307e50f78a14", null ],
+    [ "unk4", "struct_battle_input_feedback.html#a873b6bfebe8835f5bee411f6f780268e", null ],
+    [ "unk4", "struct_battle_input_feedback.html#a8d1a72f1c92f230f5e5cca24b06ca8d9", null ],
+    [ "unk4", "struct_battle_input_feedback.html#a8fce27430813b1b89220d3efef1b06e2", null ],
+    [ "unk4", "struct_battle_input_feedback.html#ae879e8b56546a8dda4efd286b1e001d3", null ],
+    [ "unk4", "struct_battle_input_feedback.html#ad277df8c1378049010d411aaaa819342", null ],
+    [ "unk8", "struct_battle_input_feedback.html#a38fd739cd624f1d4a67f44a2182f7c68", null ],
+    [ "unk8", "struct_battle_input_feedback.html#a22496289c2774494e9ac81a804e3acb3", null ],
+    [ "unkBugContest", "struct_battle_input_feedback.html#ad21ab7ab60581aa0de91561dfda67510", null ]
+];

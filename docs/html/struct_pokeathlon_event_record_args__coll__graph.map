@@ -1,0 +1,12 @@
+<map id="PokeathlonEventRecordArgs" name="PokeathlonEventRecordArgs">
+<area shape="rect" id="Node000001" title=" " alt="" coords="187,199,376,224"/>
+<area shape="rect" id="Node000002" href="$struct_pokeathlon___records_solo.html" title=" " alt="" coords="5,102,174,128"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="124,133,200,172,255,198,249,198,198,177,123,138"/>
+<area shape="rect" id="Node000003" href="$struct_pokeathlon___course_entry.html" title=" " alt="" coords="102,5,269,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="161,44,104,103,100,100,164,40"/>
+<area shape="rect" id="Node000004" href="$struct_pokeathlon___records_link.html" title=" " alt="" coords="198,102,365,128"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="209,39,272,101,266,102,208,44"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="283,141,284,199,279,197,280,145"/>
+<area shape="rect" id="Node000005" href="$struct_player_profile.html" title=" " alt="" coords="388,102,484,128"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="414,137,363,177,314,201,313,196,360,172,409,139"/>
+</map>

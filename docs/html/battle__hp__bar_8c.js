@@ -1,0 +1,36 @@
+var battle__hp__bar_8c =
+[
+    [ "UnkStruct_ov12_0226D408", "struct_unk_struct__ov12__0226_d408.html", "struct_unk_struct__ov12__0226_d408" ],
+    [ "BattleHpBarExpBarFullFlashEffectTaskData", "struct_battle_hp_bar_exp_bar_full_flash_effect_task_data.html", "struct_battle_hp_bar_exp_bar_full_flash_effect_task_data" ],
+    [ "USE_SUBPIXELS_TEST", "battle__hp__bar_8c.html#ac8ba5cff1e443bf42f15234f9ca2b946", null ],
+    [ "BattleHpBarExpBarFullFlashEffectTaskData", "battle__hp__bar_8c.html#a73433f670882543fd6db9dade33cb678", null ],
+    [ "HPBarType", "battle__hp__bar_8c.html#a382c795e1eca6abfecd34a9a100843ea", null ],
+    [ "UnkStruct_ov12_0226D408", "battle__hp__bar_8c.html#a7226b7205c173bb0b6a0249c1ba6e550", null ],
+    [ "HPBarType", "battle__hp__bar_8c.html#a433e2dd0a7a7f595ab3f1a87cb21095f", [
+      [ "HP_BAR_TYPE_SINGLE_PLAYER", "battle__hp__bar_8c.html#a433e2dd0a7a7f595ab3f1a87cb21095fa6469f6231773529879298c6cbc2a91c5", null ],
+      [ "HP_BAR_TYPE_SINGLE_ENEMY", "battle__hp__bar_8c.html#a433e2dd0a7a7f595ab3f1a87cb21095fa5b2fc1df7ad85b78aa2ae42453c048be", null ],
+      [ "HP_BAR_TYPE_DOUBLE_PLAYER_LHS", "battle__hp__bar_8c.html#a433e2dd0a7a7f595ab3f1a87cb21095faf1c2ca388a019fc675d95103a31cbd2c", null ],
+      [ "HP_BAR_TYPE_DOUBLE_ENEMY_LHS", "battle__hp__bar_8c.html#a433e2dd0a7a7f595ab3f1a87cb21095fa3c1e43edc2b0ca28907c5836aedc5997", null ],
+      [ "HP_BAR_TYPE_DOUBLE_PLAYER_RHS", "battle__hp__bar_8c.html#a433e2dd0a7a7f595ab3f1a87cb21095fa0dd2fd7356433ab7597390d19c19ee7a", null ],
+      [ "HP_BAR_TYPE_DOUBLE_ENEMY_RHS", "battle__hp__bar_8c.html#a433e2dd0a7a7f595ab3f1a87cb21095fa0f51e4a18ebed76c7d6112aa7e639f34", null ],
+      [ "HP_BAR_TYPE_SAFARI", "battle__hp__bar_8c.html#a433e2dd0a7a7f595ab3f1a87cb21095faf94a4b0ebad33bc3d362d2b0c5c414f2", null ],
+      [ "HP_BAR_TYPE_PALPARK", "battle__hp__bar_8c.html#a433e2dd0a7a7f595ab3f1a87cb21095fa82e63ec7803b13b8e28c40997def26be", null ]
+    ] ],
+    [ "BattleHpBar_BeginExpBarFullFlashEffect", "battle__hp__bar_8c.html#a4e3916d743bd621a12689d729ab63dad", null ],
+    [ "BattleHpBar_FreeResources", "battle__hp__bar_8c.html#af60fb899450307adbdf1cf9b7215c004", null ],
+    [ "BattleHpBar_LoadResources", "battle__hp__bar_8c.html#a55d2e8f60b9afb4760bc9b45409a35b7", null ],
+    [ "BattleHpBar_SetEnabled", "battle__hp__bar_8c.html#a313b4dd4b6e3bbc59ed8de50d08369c7", null ],
+    [ "BattleHpBar_Util_GetBarTypeFromBattlerSide", "battle__hp__bar_8c.html#ab5c7683dcd792867edc5d21573d408e0", null ],
+    [ "ov12_0226498C", "battle__hp__bar_8c.html#a1615f405fa1ac1f43a54e701795718d2", null ],
+    [ "ov12_02264C84", "battle__hp__bar_8c.html#ade4e35be0d51e161949956746316ea59", null ],
+    [ "ov12_02264DCC", "battle__hp__bar_8c.html#a43d648e6110872849c7a4ee1cdf727ea", null ],
+    [ "ov12_02264E00", "battle__hp__bar_8c.html#af7328cac271d2444d97f5e2bdb601a16", null ],
+    [ "ov12_02264E34", "battle__hp__bar_8c.html#a59288291513a0bed2956ffe0426f3194", null ],
+    [ "ov12_02264E68", "battle__hp__bar_8c.html#a94344cb0fd9728f046e31ecdc4275bc2", null ],
+    [ "ov12_02264E84", "battle__hp__bar_8c.html#a0ce0a10051312ed6763b5d028f66d1c2", null ],
+    [ "ov12_02264EB4", "battle__hp__bar_8c.html#a19618f9cc6b18afd59f946fd19bfa71a", null ],
+    [ "ov12_02264EE0", "battle__hp__bar_8c.html#a2e583d1bdf9416cd29ea697b4f5d9bcd", null ],
+    [ "ov12_02264FB0", "battle__hp__bar_8c.html#a8d4f2ce68d55d19ffa4acebd7a67ef01", null ],
+    [ "ov12_02265D70", "battle__hp__bar_8c.html#aa4e2c5aeecbea78f44102b19e474bf2b", null ],
+    [ "ov12_02265D74", "battle__hp__bar_8c.html#ad5a14dcd528032342ed05ced9d35a098", null ]
+];

@@ -1,0 +1,13 @@
+<map id="PalPadArgs" name="PalPadArgs">
+<area shape="rect" id="Node000001" title=" " alt="" coords="226,199,317,224"/>
+<area shape="rect" id="Node000002" href="$struct_save_data.html" title=" " alt="" coords="166,102,246,128"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="223,138,247,173,265,199,260,198,243,176,221,143"/>
+<area shape="rect" id="Node000003" href="$struct_save_array_header.html" title=" " alt="" coords="5,5,130,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="83,41,99,60,116,76,141,90,169,102,164,104,139,95,113,80,95,64,83,47"/>
+<area shape="rect" id="Node000004" href="$struct_save_slot_spec.html" title=" " alt="" coords="154,5,258,31"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="208,44,209,102,204,100,205,48"/>
+<area shape="rect" id="Node000005" href="$struct_async_write_manager.html" title=" " alt="" coords="282,5,421,31"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="340,43,326,64,309,80,279,97,247,108,245,103,276,92,306,76,322,60,335,46"/>
+<area shape="rect" id="Node000006" href="$struct_menu_input_state_mgr.html" title=" " alt="" coords="270,102,406,128"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="330,141,311,176,288,200,285,196,307,173,325,143"/>
+</map>

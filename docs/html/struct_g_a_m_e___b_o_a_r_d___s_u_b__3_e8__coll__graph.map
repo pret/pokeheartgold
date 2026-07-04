@@ -1,0 +1,5 @@
+<map id="GAME_BOARD_SUB_3E8" name="GAME_BOARD_SUB_3E8">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,102,186,128"/>
+<area shape="rect" id="Node000002" href="$struct_g2d_renderer.html" title=" " alt="" coords="46,5,145,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="98,45,98,102,93,101,93,48"/>
+</map>

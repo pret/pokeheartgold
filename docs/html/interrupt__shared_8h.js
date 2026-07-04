@@ -1,0 +1,25 @@
+var interrupt__shared_8h =
+[
+    [ "OSIrqCallbackInfo", "struct_o_s_irq_callback_info.html", "struct_o_s_irq_callback_info" ],
+    [ "OS_IE_CARD_DATA", "interrupt__shared_8h.html#a6f42ac4f43f3c172524cc891fabdad4e", null ],
+    [ "OS_IE_CARD_IREQ", "interrupt__shared_8h.html#ad0db199747d5c22cfef6d397afba4cf6", null ],
+    [ "OS_IE_CARTRIDGE", "interrupt__shared_8h.html#ab413c57c777acfa3427236695d45f88a", null ],
+    [ "OS_IE_DMA0", "interrupt__shared_8h.html#a5f588e5de2a96608c4845e3bb895bd0a", null ],
+    [ "OS_IE_DMA1", "interrupt__shared_8h.html#ab65ccd4b00e041476522acf2ec60cd12", null ],
+    [ "OS_IE_DMA2", "interrupt__shared_8h.html#aae4d709f490bb754c2f5e7935343ceb4", null ],
+    [ "OS_IE_DMA3", "interrupt__shared_8h.html#a505bd850cbe1d45a18d74ef858520336", null ],
+    [ "OS_IE_HBLANK", "interrupt__shared_8h.html#a62a946e6a926eedb8219d37dd0a79ae7", null ],
+    [ "OS_IE_KEY", "interrupt__shared_8h.html#a453f8eb1db646c606ae4ca85f8936e10", null ],
+    [ "OS_IE_SIO", "interrupt__shared_8h.html#a96ef2ee0f86b1c299137bf42dbaa45ff", null ],
+    [ "OS_IE_SPFIFO_RECV", "interrupt__shared_8h.html#a50b0856bf2bb6d93ad9cae58f40bdde9", null ],
+    [ "OS_IE_SPFIFO_SEND", "interrupt__shared_8h.html#ab8e1fb7fc26869bb8fda217b1ef0eae7", null ],
+    [ "OS_IE_SUBP", "interrupt__shared_8h.html#a3943f4078f87d82d231c1c2948ec9b11", null ],
+    [ "OS_IE_TIMER0", "interrupt__shared_8h.html#a407b77064c5a1c8ee913c8078b701f67", null ],
+    [ "OS_IE_TIMER1", "interrupt__shared_8h.html#a5021a32c621af811bb6a5aa6e7368627", null ],
+    [ "OS_IE_TIMER2", "interrupt__shared_8h.html#ad698bcdbf817fc6238ae354b78af854d", null ],
+    [ "OS_IE_TIMER3", "interrupt__shared_8h.html#aa699fd8d8c587e5dd7505a7713825031", null ],
+    [ "OS_IE_V_COUNT", "interrupt__shared_8h.html#af86fbf08445e61611cb9a6c0d9b0c950", null ],
+    [ "OS_IE_VBLANK", "interrupt__shared_8h.html#aa8b0d8f3caddce875b18f116d77f0349", null ],
+    [ "OSIrqFunction", "interrupt__shared_8h.html#aa8c2859fc4aa0d29b91371b548454295", null ],
+    [ "OSIrqMask", "interrupt__shared_8h.html#a2b4651d7aa67bb8d0c7aadd242ed138e", null ]
+];

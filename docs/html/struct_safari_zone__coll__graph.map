@@ -1,0 +1,11 @@
+<map id="SafariZone" name="SafariZone">
+<area shape="rect" id="Node000001" title=" " alt="" coords="142,295,226,321"/>
+<area shape="rect" id="Node000002" href="$struct_safari_zone_area_set.html" title=" " alt="" coords="23,199,155,224"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="113,233,174,294,169,295,110,238"/>
+<area shape="rect" id="Node000003" href="$struct_s_a_f_a_r_i_z_o_n_e___a_r_e_a.html" title=" " alt="" coords="13,102,165,128"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="90,141,92,199,86,198,88,145"/>
+<area shape="rect" id="Node000004" href="$struct_s_a_f_a_r_i_z_o_n_e___o_b_j_e_c_t.html" title=" " alt="" coords="5,5,173,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="90,44,92,102,86,101,88,49"/>
+<area shape="rect" id="Node000005" href="$struct_s_a_f_a_r_i_z_o_n_e___l_i_n_k_l_e_a_d_e_r.html" title=" " alt="" coords="179,199,378,224"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="258,235,197,297,194,293,253,236"/>
+</map>

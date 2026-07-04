@@ -1,0 +1,11 @@
+<map id="PokemonDataBlock" name="PokemonDataBlock">
+<area shape="rect" id="Node000001" title=" " alt="" coords="266,102,403,128"/>
+<area shape="rect" id="Node000002" href="$struct_pokemon_data_block_a.html" title="Block A of the BoxPokemon data structure." alt="" coords="5,5,152,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="123,35,229,75,299,101,294,102,227,81,122,40"/>
+<area shape="rect" id="Node000003" href="$struct_pokemon_data_block_b.html" title="Block B of the BoxPokemon data structure." alt="" coords="176,5,322,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="271,40,326,102,321,101,269,45"/>
+<area shape="rect" id="Node000004" href="$struct_pokemon_data_block_c.html" title="Block C of the BoxPokemon data structure." alt="" coords="346,5,494,31"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="401,42,347,104,344,99,396,43"/>
+<area shape="rect" id="Node000005" href="$struct_pokemon_data_block_d.html" title="Block D of the BoxPokemon data structure." alt="" coords="518,5,666,31"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="550,37,442,81,373,104,372,99,440,75,545,38"/>
+</map>

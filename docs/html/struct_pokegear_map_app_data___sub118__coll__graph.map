@@ -1,0 +1,9 @@
+<map id="PokegearMapAppData_Sub118" name="PokegearMapAppData_Sub118">
+<area shape="rect" id="Node000001" title=" " alt="" coords="95,199,248,239"/>
+<area shape="rect" id="Node000002" href="$struct_pokegear_map_location_spec.html" title=" " alt="" coords="5,102,186,128"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="113,138,139,173,158,199,153,198,134,176,111,143"/>
+<area shape="rect" id="Node000003" href="$struct_map_markings_heap_node.html" title=" " alt="" coords="210,102,371,128"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="267,137,196,201,193,196,262,139"/>
+<area shape="rect" id="Node000004" href="$struct_unk_struct__0202_f3_d_c.html" title=" " alt="" coords="215,5,365,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="292,44,293,102,288,100,289,48"/>
+</map>

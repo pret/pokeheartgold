@@ -1,0 +1,21 @@
+<map id="GFCameraTranslationWrapper" name="GFCameraTranslationWrapper">
+<area shape="rect" id="Node000001" title=" " alt="" coords="350,318,547,344"/>
+<area shape="rect" id="Node000002" href="$struct_camera.html" title=" " alt="" coords="250,121,318,147"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="298,158,338,223,364,259,394,292,427,318,422,317,390,296,360,262,333,226,296,163"/>
+<area shape="rect" id="Node000003" href="$struct_camera_perspective.html" title=" " alt="" coords="5,5,142,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="102,38,162,76,256,119,251,122,160,80,102,43"/>
+<area shape="rect" id="Node000004" href="$struct_camera_look_at.html" title=" " alt="" coords="166,5,274,31"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="235,42,280,120,275,121,234,47"/>
+<area shape="rect" id="Node000005" href="$struct_camera_angle.html" title=" " alt="" coords="298,5,398,31"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="336,43,293,122,289,119,332,47"/>
+<area shape="rect" id="Node000006" href="$struct_camera_history.html" title=" " alt="" coords="423,5,532,31"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="441,40,332,104,304,123,301,118,329,100,445,37"/>
+<area shape="rect" id="Node000007" href="$struct_camera_translation_path_template.html" title=" " alt="" coords="342,121,554,147"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="450,161,451,319,446,316,446,164"/>
+<area shape="rect" id="Node000008" href="$struct_sys_task.html" title=" " alt="" coords="577,121,650,147"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="583,154,563,173,545,191,529,218,522,243,514,268,497,296,469,320,467,315,493,292,509,265,517,241,524,216,541,188,559,169,579,157"/>
+<area shape="poly" id="edge10_Node000008_Node000008" title=" " alt="" coords="665,121,673,126,676,134,668,146,651,149,649,144,665,141,671,133,669,129,665,126"/>
+<area shape="rect" id="Node000009" href="$struct_sys_task_queue.html" title=" " alt="" coords="613,318,723,344"/>
+<area shape="poly" id="edge9_Node000009_Node000008" title=" " alt="" coords="603,159,593,191,585,225,585,260,597,293,609,306,626,318,621,317,605,310,592,295,580,261,580,224,588,189,599,163"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="679,301,680,293,691,240,690,218,681,191,661,167,638,150,639,145,665,163,685,188,695,217,696,241,685,295,682,305"/>
+</map>

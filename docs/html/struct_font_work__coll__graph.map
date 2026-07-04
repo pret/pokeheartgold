@@ -1,0 +1,11 @@
+<map id="FontWork" name="FontWork">
+<area shape="rect" id="Node000001" title=" " alt="" coords="60,199,137,224"/>
+<area shape="rect" id="Node000002" href="$struct_glyph_info.html" title=" " alt="" coords="5,102,83,128"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="40,141,43,159,47,173,58,186,73,198,68,199,54,190,43,176,37,160,39,146"/>
+<area shape="rect" id="Node000003" href="$struct_font_data.html" title=" " alt="" coords="116,102,191,128"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="144,140,126,176,109,201,106,197,122,173,139,143"/>
+<area shape="rect" id="Node000004" href="$struct_n_a_r_c.html" title=" " alt="" coords="74,5,134,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="118,42,150,101,144,102,116,47"/>
+<area shape="rect" id="Node000005" href="$struct_font_header.html" title=" " alt="" coords="158,5,247,31"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="192,43,176,79,162,103,158,100,171,77,189,47"/>
+</map>

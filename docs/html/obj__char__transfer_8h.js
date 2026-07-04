@@ -1,0 +1,28 @@
+var obj__char__transfer_8h =
+[
+    [ "ObjCharTransferTemplate", "struct_obj_char_transfer_template.html", "struct_obj_char_transfer_template" ],
+    [ "UnkStruct_02021758", "struct_unk_struct__02021758.html", "struct_unk_struct__02021758" ],
+    [ "UnkStruct_02021AC8", "struct_unk_struct__02021_a_c8.html", "struct_unk_struct__02021_a_c8" ],
+    [ "ObjCharTransferTasksManager", "obj__char__transfer_8h.html#a7de7c2825c47907e10429bb7fc702846", null ],
+    [ "ObjCharTransferTaskTemplate", "obj__char__transfer_8h.html#ab89565cf882171cbbf85814494cb7812", null ],
+    [ "ObjCharTransferTemplate", "obj__char__transfer_8h.html#ab5505fa6938b09089f1c9240f4b8d59f", null ],
+    [ "UnkStruct_02021AC8", "obj__char__transfer_8h.html#a0b02cbf7a4c482b9a0267f60a98f4a54", null ],
+    [ "ObjCharTransfer_ClearBuffers", "obj__char__transfer_8h.html#ae92dd97a4ddbae10e1748ce975ea85ab", null ],
+    [ "ObjCharTransfer_CopyTransferTaskByProxyPtr", "obj__char__transfer_8h.html#a6b6a13203dd98cea22d706da650de2f2", null ],
+    [ "ObjCharTransfer_CreateTaskAndDoTransferFromTemplate", "obj__char__transfer_8h.html#a751c7e5c34ff78fa22caee100229946f", null ],
+    [ "ObjCharTransfer_CreateTaskAndDoTransferFromTemplate_UpdateMappingTypeFromHW", "obj__char__transfer_8h.html#a0ece5c11b51cafd1aeb39632a51524f7", null ],
+    [ "ObjCharTransfer_DeleteTaskCopyByProxyPtr", "obj__char__transfer_8h.html#a22d78e0986c8a6daea3eca3b9978f130", null ],
+    [ "ObjCharTransfer_Destroy", "obj__char__transfer_8h.html#a87be818c1fe71bdec05d223b732bf66a", null ],
+    [ "ObjCharTransfer_GetBlockSizeFromMode", "obj__char__transfer_8h.html#a6b3173d7f50669ad75c63d73450d0ff0", null ],
+    [ "ObjCharTransfer_GetProxyPtrByResID", "obj__char__transfer_8h.html#a93c66f105976a79ed6f2b21f6a949bfe", null ],
+    [ "ObjCharTransfer_Init", "obj__char__transfer_8h.html#a004c497449bef547fe078ba4a2c05469", null ],
+    [ "ObjCharTransfer_InitEx", "obj__char__transfer_8h.html#ac56c3ec6f677ffef6d12885db3b74667", null ],
+    [ "ObjCharTransfer_PopTaskManager", "obj__char__transfer_8h.html#a5476997cc09131f1872cf08f16ec461b", null ],
+    [ "ObjCharTransfer_PushTaskManager", "obj__char__transfer_8h.html#a56954b5b355810e40220677a77e5979c", null ],
+    [ "ObjCharTransfer_ReplaceGraphicsFromChardataByResID", "obj__char__transfer_8h.html#a1bae6d461d4ad7dd54434d744d21c9dc", null ],
+    [ "ObjCharTransfer_ResetTransferTasksByResID", "obj__char__transfer_8h.html#af6508775b02f40ab025f891a98282eda", null ],
+    [ "ObjCharTransfer_ResizeTaskByResID_GetProxyPtr", "obj__char__transfer_8h.html#a9635708d2ed4f0e32d09e63d10fad59b", null ],
+    [ "ObjCharTransfer_SetReservedRegion", "obj__char__transfer_8h.html#ac049ee7b370369c1b6a33dee480e2f94", null ],
+    [ "sub_02021AC8", "obj__char__transfer_8h.html#a69a54c20f47e700c84a8a326aa76f1f8", null ],
+    [ "sub_02021B5C", "obj__char__transfer_8h.html#adc33c972fd0e99307d23844291e26ab5", null ]
+];

@@ -1,0 +1,7 @@
+<map id="Sprite" name="Sprite">
+<area shape="rect" id="Node000001" title=" " alt="" coords="31,14,86,40"/>
+<area shape="poly" id="edge3_Node000001_Node000001" title=" " alt="" coords="96,10,108,16,113,27,110,36,102,42,82,43,80,38,100,37,105,33,107,27,104,19,97,16"/>
+<area shape="rect" id="Node000002" href="$struct_sprite_list.html" title=" " alt="" coords="20,160,97,186"/>
+<area shape="poly" id="edge2_Node000002_Node000001" title=" " alt="" coords="29,53,16,74,8,105,10,119,16,135,26,148,39,159,34,161,22,151,12,138,5,120,3,105,12,72,30,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="66,144,68,136,71,105,68,73,62,43,63,38,73,72,76,105,73,137,71,147"/>
+</map>

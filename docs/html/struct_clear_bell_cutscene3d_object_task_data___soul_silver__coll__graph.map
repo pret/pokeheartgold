@@ -1,0 +1,9 @@
+<map id="ClearBellCutscene3dObjectTaskData_SoulSilver" name="ClearBellCutscene3dObjectTaskData_SoulSilver">
+<area shape="rect" id="Node000001" title=" " alt="" coords="117,102,299,143"/>
+<area shape="rect" id="Node000002" href="$struct_field3d_model.html" title=" " alt="" coords="5,5,104,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="86,37,181,100,176,103,84,42"/>
+<area shape="rect" id="Node000003" href="$struct_field3_d_model_animation.html" title=" " alt="" coords="128,5,288,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="210,45,210,103,205,101,206,48"/>
+<area shape="rect" id="Node000004" href="$struct_field3d_object.html" title=" " alt="" coords="312,5,413,31"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="334,39,238,104,236,99,329,40"/>
+</map>

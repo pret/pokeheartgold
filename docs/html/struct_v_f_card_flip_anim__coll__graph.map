@@ -1,0 +1,36 @@
+<map id="VFCardFlipAnim" name="VFCardFlipAnim">
+<area shape="rect" id="Node000001" title=" " alt="" coords="1220,107,1337,133"/>
+<area shape="rect" id="Node000002" href="$struct_bg_config.html" title=" " alt="" coords="974,20,1050,46"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1064,46,1197,89,1241,106,1236,106,1195,94,1064,52"/>
+<area shape="rect" id="Node000003" href="$struct_background.html" title=" " alt="" coords="664,14,754,39"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="769,25,976,31,971,33,770,30"/>
+<area shape="rect" id="Node000004" href="$struct_game_state.html" title=" " alt="" coords="968,107,1056,133"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="1071,117,1222,119,1217,120,1071,122"/>
+<area shape="rect" id="Node000005" href="$struct_card.html" title=" " alt="" coords="684,67,733,93"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="749,82,970,113,965,115,749,88"/>
+<area shape="rect" id="Node000006" href="$struct_round_summary.html" title=" " alt="" coords="651,120,766,146"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="781,132,909,129,970,125,965,127,909,135,782,137"/>
+<area shape="rect" id="Node000007" href="$struct_voltorb_flip_input_handler.html" title=" " alt="" coords="933,267,1091,293"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="1047,256,1252,134,1257,132,1049,261"/>
+<area shape="rect" id="Node000008" href="$struct_managed_sprite.html" title=" " alt="" coords="654,267,763,293"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="778,277,936,279,930,280,779,282"/>
+<area shape="rect" id="Node000009" href="$struct_sprite.html" title=" " alt="" coords="327,170,382,195"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="398,191,661,265,656,268,397,197"/>
+<area shape="poly" id="edge11_Node000009_Node000009" title=" " alt="" coords="329,152,338,146,355,143,371,145,381,151,383,161,379,171,374,168,378,160,376,155,369,150,355,148,340,150,332,156"/>
+<area shape="rect" id="Node000010" href="$struct_sprite_list.html" title=" " alt="" coords="670,170,747,195"/>
+<area shape="poly" id="edge10_Node000010_Node000009" title=" " alt="" coords="397,169,466,156,546,149,625,156,673,169,667,170,625,161,546,154,466,161,399,174"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="653,184,384,185,383,180,657,181"/>
+<area shape="rect" id="Node000011" href="$struct_sprite_resources_header.html" title=" " alt="" coords="5,298,166,323"/>
+<area shape="poly" id="edge12_Node000008_Node000011" title=" " alt="" coords="180,297,189,296,450,282,656,279,651,281,450,288,190,301,182,301"/>
+<area shape="rect" id="Node000012" href="$struct_sprite_resource_header_list.html" title=" " alt="" coords="268,328,442,354"/>
+<area shape="poly" id="edge14_Node000012_Node000011" title=" " alt="" coords="181,319,269,330,265,332,182,324"/>
+<area shape="poly" id="edge13_Node000008_Node000012" title=" " alt="" coords="457,340,540,335,624,319,657,306,684,294,689,292,659,311,626,324,540,340,458,346"/>
+<area shape="rect" id="Node000013" href="$struct_grid_input_handler.html" title=" " alt="" coords="649,404,768,430"/>
+<area shape="poly" id="edge15_Node000007_Node000013" title=" " alt="" coords="752,395,979,294,984,293,754,400"/>
+<area shape="rect" id="Node000014" href="$union_touchscreen_hitbox.html" title=" " alt="" coords="288,378,422,403"/>
+<area shape="poly" id="edge16_Node000013_Node000014" title=" " alt="" coords="437,394,651,412,646,413,437,399"/>
+<area shape="rect" id="Node000015" href="$struct_dpad_menu_box.html" title=" " alt="" coords="301,431,408,457"/>
+<area shape="poly" id="edge17_Node000013_Node000015" title=" " alt="" coords="424,444,519,444,625,436,662,431,667,430,625,441,520,450,424,450"/>
+<area shape="rect" id="Node000016" href="$struct_grid_callbacks.html" title=" " alt="" coords="303,484,406,510"/>
+<area shape="poly" id="edge18_Node000013_Node000016" title=" " alt="" coords="422,499,519,496,573,488,624,474,663,452,692,431,697,429,666,457,626,479,574,493,520,501,422,504"/>
+</map>

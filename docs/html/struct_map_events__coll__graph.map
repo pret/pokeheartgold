@@ -1,0 +1,17 @@
+<map id="MapEvents" name="MapEvents">
+<area shape="rect" id="Node000001" title=" " alt="" coords="253,280,340,306"/>
+<area shape="rect" id="Node000002" href="$struct_b_g___e_v_e_n_t.html" title=" " alt="" coords="5,183,98,209"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="70,219,90,238,113,254,148,268,185,278,255,290,250,290,184,283,146,273,110,258,87,242,69,224"/>
+<area shape="rect" id="Node000003" href="$struct_object_event.html" title=" " alt="" coords="122,183,216,209"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="180,221,191,239,204,254,228,269,255,282,250,282,225,274,201,258,187,242,178,226"/>
+<area shape="rect" id="Node000004" href="$struct_w_a_r_p___e_v_e_n_t.html" title=" " alt="" coords="240,183,354,209"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="299,222,299,281,295,278,295,226"/>
+<area shape="rect" id="Node000005" href="$struct_c_o_o_r_d___e_v_e_n_t.html" title=" " alt="" coords="378,183,501,209"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="424,220,407,241,386,258,338,282,336,277,383,254,403,237,419,222"/>
+<area shape="rect" id="Node000006" href="$struct_encounter_data.html" title=" " alt="" coords="525,183,634,209"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="559,218,532,241,502,258,461,273,418,283,341,292,341,287,417,277,459,268,500,254,529,237,554,220"/>
+<area shape="rect" id="Node000007" href="$struct_land_encounter_data.html" title=" " alt="" coords="433,5,569,31"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="514,43,577,183,571,182,511,48"/>
+<area shape="rect" id="Node000008" href="$struct_encounter_data_slot.html" title=" " alt="" coords="592,5,724,31"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="660,45,654,102,645,132,631,161,619,175,604,185,602,180,615,171,627,158,640,130,649,101,656,49"/>
+</map>

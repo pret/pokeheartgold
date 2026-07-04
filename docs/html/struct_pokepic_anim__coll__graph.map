@@ -1,0 +1,5 @@
+<map id="PokepicAnim" name="PokepicAnim">
+<area shape="rect" id="Node000001" title=" " alt="" coords="22,102,121,128"/>
+<area shape="rect" id="Node000002" href="$struct_pokepic_anim_script.html" title=" " alt="" coords="5,5,138,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="74,45,74,102,69,101,69,48"/>
+</map>

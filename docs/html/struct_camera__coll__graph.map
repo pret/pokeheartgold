@@ -1,0 +1,11 @@
+<map id="Camera" name="Camera">
+<area shape="rect" id="Node000001" title=" " alt="" coords="250,102,318,128"/>
+<area shape="rect" id="Node000002" href="$struct_camera_perspective.html" title=" " alt="" coords="5,5,142,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="101,37,132,58,165,76,209,92,253,106,247,106,207,97,163,80,129,62,100,43"/>
+<area shape="rect" id="Node000003" href="$struct_camera_look_at.html" title=" " alt="" coords="166,5,274,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="238,42,279,102,273,101,236,46"/>
+<area shape="rect" id="Node000004" href="$struct_camera_angle.html" title=" " alt="" coords="298,5,398,31"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="335,42,312,80,294,104,291,100,307,76,330,45"/>
+<area shape="rect" id="Node000005" href="$struct_camera_history.html" title=" " alt="" coords="423,5,532,31"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="447,38,371,80,316,104,315,99,368,76,441,40"/>
+</map>

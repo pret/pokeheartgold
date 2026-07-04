@@ -1,0 +1,13 @@
+<map id="BattleInputMoveMemory" name="BattleInputMoveMemory">
+<area shape="rect" id="Node000001" title=" " alt="" coords="16,448,180,473"/>
+<area shape="rect" id="Node000002" href="$struct_battle_input_move.html" title=" " alt="" coords="5,303,122,328"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="72,342,98,447,93,447,68,345"/>
+<area shape="rect" id="Node000003" href="$struct_battle_input_move_memory___display_obj.html" title=" " alt="" coords="146,295,309,336"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="204,347,136,425,112,449,109,445,132,422,199,348"/>
+<area shape="rect" id="Node000004" href="$struct_window.html" title=" " alt="" coords="193,199,262,224"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="229,237,230,296,225,294,226,242"/>
+<area shape="rect" id="Node000005" href="$struct_bg_config.html" title=" " alt="" coords="190,102,265,128"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="229,140,230,199,225,197,226,145"/>
+<area shape="rect" id="Node000006" href="$struct_background.html" title=" " alt="" coords="182,5,273,31"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="228,44,230,102,225,101,227,49"/>
+</map>

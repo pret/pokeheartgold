@@ -1,0 +1,26 @@
+var struct_gear_phone_ring_manager =
+[
+    [ "PokegearRingingTask", "struct_gear_phone_ring_manager_1_1_pokegear_ringing_task.html", "struct_gear_phone_ring_manager_1_1_pokegear_ringing_task" ],
+    [ "active", "struct_gear_phone_ring_manager.html#a73f4794b36f5a3e6d212b55c3ead67d0", null ],
+    [ "activeTimer", "struct_gear_phone_ring_manager.html#af308c37faa5ab3ce5948dd41a0116fcd", null ],
+    [ "callerId", "struct_gear_phone_ring_manager.html#ad44fdc62fa0e3bc4119335ad44ca9c86", null ],
+    [ "callScriptID", "struct_gear_phone_ring_manager.html#abf6ebda162b105e6b2366b020e289747", null ],
+    [ "callTriggerID", "struct_gear_phone_ring_manager.html#af09c13e9a029392ddf21082566826f04", null ],
+    [ "entry", "struct_gear_phone_ring_manager.html#a05adb2e650d08b2a907e2602f2a6ae69", null ],
+    [ "gearRing", "struct_gear_phone_ring_manager.html#a6041c939b21c9447a62757b9ca81d10a", null ],
+    [ "isScriptedCall", "struct_gear_phone_ring_manager.html#ac6de9711323a0a2fd978425f4000a371", null ],
+    [ "maxActiveDuration", "struct_gear_phone_ring_manager.html#a15bff9335f7a2727af1980f6693abbe1", null ],
+    [ "pokegearData", "struct_gear_phone_ring_manager.html#afcc1d3085ba027cdefa1758bb9c2233a", null ],
+    [ "ringing", "struct_gear_phone_ring_manager.html#a3042916de8d1d7e3845cfa9b27f3ed15", null ],
+    [ "saveData", "struct_gear_phone_ring_manager.html#a308d890ecdc69872cc587873ad60a0cd", null ],
+    [ "savingsData", "struct_gear_phone_ring_manager.html#acb1f2d4fb652608e26e301e34921c3b7", null ],
+    [ "sys", "struct_gear_phone_ring_manager.html#ae945a587a33b07dedaae511bc49ca811", null ],
+    [ "unk_arr5", "struct_gear_phone_ring_manager.html#afebe1c8cbea5835079f631cf5d56939e", null ],
+    [ "unk_var0_1", "struct_gear_phone_ring_manager.html#a5ac03bc23cde868afb62486a6ea9f2d4", null ],
+    [ "unk_var0_2", "struct_gear_phone_ring_manager.html#a51efd23f7d1faba3299eb97e68930359", null ],
+    [ "unk_var0_4", "struct_gear_phone_ring_manager.html#a26053e4aa5fb7f3a41b963ca4451e0f3", null ],
+    [ "unk_var1", "struct_gear_phone_ring_manager.html#a9bb0fddefacc05169e6c73f7a2f14abf", null ],
+    [ "unk_var12", "struct_gear_phone_ring_manager.html#a767c6c2e6fa0ad58586132d5fecd637f", null ],
+    [ "unk_var8", "struct_gear_phone_ring_manager.html#a1a9797d7c0df1987ef0afb2d4a24364e", null ],
+    [ "unk_varC", "struct_gear_phone_ring_manager.html#ae40a4b242b72f7afef7e2f63adba5ab1", null ]
+];

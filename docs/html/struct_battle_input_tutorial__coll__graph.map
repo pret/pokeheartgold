@@ -1,0 +1,11 @@
+<map id="BattleInputTutorial" name="BattleInputTutorial">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,318,133,344"/>
+<area shape="rect" id="Node000002" href="$struct_battle_finger.html" title=" " alt="" coords="23,221,115,247"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="71,261,72,318,66,317,67,264"/>
+<area shape="rect" id="Node000003" href="$struct_sys_task.html" title=" " alt="" coords="97,24,169,50"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="98,61,85,76,73,94,63,128,61,164,69,221,63,221,56,164,58,127,68,92,81,73,101,57"/>
+<area shape="poly" id="edge5_Node000003_Node000003" title=" " alt="" coords="161,16,185,18,193,25,196,37,191,52,179,59,163,59,149,53,147,48,164,54,177,54,187,48,191,37,188,28,183,22,163,20"/>
+<area shape="rect" id="Node000004" href="$struct_sys_task_queue.html" title=" " alt="" coords="164,221,275,247"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="124,62,119,95,115,129,118,164,131,196,146,210,167,222,161,223,143,215,126,199,112,165,109,129,114,94,123,68"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="224,205,228,152,225,122,215,94,192,70,166,53,165,48,196,66,219,92,230,121,234,152,229,207"/>
+</map>

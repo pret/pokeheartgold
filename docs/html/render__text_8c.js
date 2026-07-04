@@ -1,0 +1,18 @@
+var render__text_8c =
+[
+    [ "RenderText", "render__text_8c.html#a806a346e11387c45bff3fa00dec1f7fb", null ],
+    [ "TextFlags_BeginAutoScroll", "render__text_8c.html#ab6556f70a818ec12e857e7c256d04eb1", null ],
+    [ "TextFlags_EndAutoScroll", "render__text_8c.html#a4ccddfd30b5c6073923312bc9fcadc99", null ],
+    [ "TextFlags_GetHasContinuedInput", "render__text_8c.html#ae50f50170b396ed0f67463bffa469d4d", null ],
+    [ "TextFlags_GetHasSpedUpInput", "render__text_8c.html#a19efb738e75ba3b137ae48a490a209db", null ],
+    [ "TextFlags_GetIsTouchSpeedingUpPrint", "render__text_8c.html#acb0f0fc9612c5ea88f9ac695d736ed7d", null ],
+    [ "TextFlags_ResetHasContinuedInput", "render__text_8c.html#a37b313c33df7aa2c0c07e5ce2d03529b", null ],
+    [ "TextFlags_ResetHasSpedUpInput", "render__text_8c.html#a0038550025bbd3945a5c36be9eb7b6ef", null ],
+    [ "TextFlags_SetAlternateDownArrow", "render__text_8c.html#a7c233100d12b95e7a93aa1bb5d52ad1d", null ],
+    [ "TextFlags_SetAutoScrollParam", "render__text_8c.html#a757ba26acd2eb04e829d41b72e8daea6", null ],
+    [ "TextFlags_SetCanABSpeedUpPrint", "render__text_8c.html#aa3df08a40ee64627a22d702fed270db4", null ],
+    [ "TextFlags_SetCanTouchSpeedUpPrint", "render__text_8c.html#a91683527e8ef91078192e281962704ef", null ],
+    [ "TextFlags_SetFastForwardTouchButtonHitbox", "render__text_8c.html#a7c107b75677ea6afdc69e169de7c3d09", null ],
+    [ "TextFlags_UnsetFastForwardTouchButtonHitbox", "render__text_8c.html#ab8586d400eac54ac340d81770a73ebab", null ],
+    [ "TextPrinter_SetDownArrowBaseTile", "render__text_8c.html#a842937c2405a4f576359574bb1af97f0", null ]
+];

@@ -1,0 +1,21 @@
+<map id="PokegearCursor" name="PokegearCursor">
+<area shape="rect" id="Node000001" title=" " alt="" coords="47,450,162,476"/>
+<area shape="rect" id="Node000002" href="$struct_pokegear_cursor_grid.html" title=" " alt="" coords="5,354,145,379"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="85,392,103,450,98,450,81,396"/>
+<area shape="rect" id="Node000003" href="$union_pokegear_sprite_union.html" title=" " alt="" coords="168,354,312,379"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="213,389,123,452,120,447,208,388"/>
+<area shape="rect" id="Node000004" href="$struct_managed_sprite.html" title=" " alt="" coords="376,257,484,283"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="394,289,266,356,263,351,389,291"/>
+<area shape="rect" id="Node000005" href="$struct_sprite.html" title=" " alt="" coords="225,111,280,136"/>
+<area shape="poly" id="edge11_Node000003_Node000005" title=" " alt="" coords="216,148,197,171,186,193,180,211,176,257,174,270,176,282,186,303,200,322,229,353,224,354,196,325,181,306,171,283,169,270,171,257,175,210,181,191,193,168,219,144"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="294,134,326,148,354,167,367,184,373,199,378,215,388,231,414,257,409,256,384,235,373,217,368,201,362,186,350,171,323,152,295,139"/>
+<area shape="poly" id="edge7_Node000005_Node000005" title=" " alt="" coords="295,112,304,116,307,124,298,135,282,137,279,132,296,130,301,123,300,120,296,117"/>
+<area shape="rect" id="Node000006" href="$struct_sprite_list.html" title=" " alt="" coords="261,257,337,283"/>
+<area shape="poly" id="edge6_Node000006_Node000005" title=" " alt="" coords="227,145,213,170,203,202,205,216,213,231,234,250,263,262,258,264,232,255,209,235,200,218,198,202,208,168,224,150"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="288,242,255,139,257,134,293,242"/>
+<area shape="rect" id="Node000007" href="$struct_sprite_resources_header.html" title=" " alt="" coords="386,5,546,31"/>
+<area shape="poly" id="edge8_Node000004_Node000007" title=" " alt="" coords="464,45,434,258,429,256,460,48"/>
+<area shape="rect" id="Node000008" href="$struct_sprite_resource_header_list.html" title=" " alt="" coords="613,111,788,136"/>
+<area shape="poly" id="edge10_Node000008_Node000007" title=" " alt="" coords="507,35,675,109,670,111,507,40"/>
+<area shape="poly" id="edge9_Node000004_Node000008" title=" " alt="" coords="667,143,454,259,451,254,662,145"/>
+</map>

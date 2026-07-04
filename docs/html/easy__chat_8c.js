@@ -1,0 +1,28 @@
+var easy__chat_8c =
+[
+    [ "ECIdenticalPhrases", "struct_e_c_identical_phrases.html", "struct_e_c_identical_phrases" ],
+    [ "ECIdenticalPhrases", "easy__chat_8c.html#a77436bc73a19d4382e45520656d24fd4", null ],
+    [ "EasyChat_GetMsgBankForGroup", "easy__chat_8c.html#a911b94fedf77b3fefe2cf0cceb44227d", null ],
+    [ "EasyChatManager_Delete", "easy__chat_8c.html#abffeb255b46e29d590effaeb48eedf15", null ],
+    [ "EasyChatManager_New", "easy__chat_8c.html#aeb5d3d06b8242055c2fff08057d4a441", null ],
+    [ "EasyChatManager_ReadWordIntoString", "easy__chat_8c.html#a7e92e3d41c1f0bc1107c1b7f2d444c2f", null ],
+    [ "GetCategoryAndMsgNoByECWordIdx", "easy__chat_8c.html#aa3118900d46393028ce825d904cd0f39", null ],
+    [ "GetDuplicateWordNum", "easy__chat_8c.html#aa1dbe8ddd1738b66ea3207810c5be936", null ],
+    [ "GetECWordIndexByPair", "easy__chat_8c.html#a66c57d91eaedb3bffa0084f6011fda7c", null ],
+    [ "GetECWordIntoStringByIndex", "easy__chat_8c.html#ad3ea1ca0daa9c03521ef472f9cdadfe8", null ],
+    [ "RemapDuplicateWord", "easy__chat_8c.html#acc7430935c28e43cc17af86c515f871a", null ],
+    [ "Save_EasyChat_Get", "easy__chat_8c.html#af120155b7a6c695bc0c84ab0acbc4b71", null ],
+    [ "Save_EasyChat_GetGreetingsFlag", "easy__chat_8c.html#aa8bf8251b4e68e7cd1d5c848ff79b749", null ],
+    [ "Save_EasyChat_GetTrendySayingFlag", "easy__chat_8c.html#ab4bcbc07c385e48bd1835b4b4c44d15b", null ],
+    [ "Save_EasyChat_Init", "easy__chat_8c.html#a685352eca36183bc1e2ded9dc70f6700", null ],
+    [ "Save_EasyChat_SetGreetingFlag", "easy__chat_8c.html#acc829901296b02593af785ff7e797bee", null ],
+    [ "Save_EasyChat_SetRandomTrendySaying", "easy__chat_8c.html#a0f41e6ddaf3da2111cdfa49eab38c04d", null ],
+    [ "Save_EasyChat_sizeof", "easy__chat_8c.html#aa24aaff4dd6d51b95941e7a08216871b", null ],
+    [ "Save_EasyChat_TrendySayingsUnlockedAllCheck", "easy__chat_8c.html#a008de6ce8c0e7ed60610374e35178e03", null ],
+    [ "TrendyWordIdxToECWord", "easy__chat_8c.html#ac363535f1285d3ad5364845a60057f40", null ],
+    [ "WallpaperPasswordBank_Create", "easy__chat_8c.html#aaab4f4dcadd6663c819530dde24a19dd", null ],
+    [ "WallpaperPasswordBank_Delete", "easy__chat_8c.html#acdb526c7a9ebb89b2200898d572546f4", null ],
+    [ "WallpaperPasswordBank_GetCount", "easy__chat_8c.html#a4b6b909b67f90f982192a3bf63067bbd", null ],
+    [ "WallpaperPasswordBank_GetIndexOfWord", "easy__chat_8c.html#a625d0039790cfc2e5b6dc74d9725447c", null ],
+    [ "WallpaperPasswordBank_GetWordAtIndex", "easy__chat_8c.html#a0b84a104f121914b91a19fb4032d4aab", null ]
+];

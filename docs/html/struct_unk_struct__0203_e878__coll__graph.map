@@ -1,0 +1,15 @@
+<map id="UnkStruct_0203E878" name="UnkStruct_0203E878">
+<area shape="rect" id="Node000001" title=" " alt="" coords="40,199,186,224"/>
+<area shape="rect" id="Node000002" href="$struct_unk_struct__0203_e8_c8.html" title=" " alt="" coords="5,102,154,128"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="91,140,111,198,106,198,87,144"/>
+<area shape="rect" id="Node000003" href="$struct_easy_chat_args.html" title=" " alt="" coords="178,102,285,128"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="207,138,130,200,127,196,202,138"/>
+<area shape="rect" id="Node000004" href="$struct_pokedex.html" title=" " alt="" coords="17,5,89,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="75,39,100,58,126,76,186,100,181,103,124,80,97,63,76,44"/>
+<area shape="rect" id="Node000005" href="$struct_save_easy_chat.html" title=" " alt="" coords="113,5,222,31"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="182,42,204,76,223,102,218,101,200,80,181,47"/>
+<area shape="rect" id="Node000006" href="$struct_mail_message.html" title=" " alt="" coords="246,5,345,31"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="287,43,268,80,247,104,243,99,264,76,283,47"/>
+<area shape="rect" id="Node000007" href="$struct_menu_input_state_mgr.html" title=" " alt="" coords="369,5,504,31"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="418,41,396,64,370,80,328,97,286,108,284,103,326,92,368,76,392,59,413,44"/>
+</map>

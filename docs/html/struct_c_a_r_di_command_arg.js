@@ -1,0 +1,26 @@
+var struct_c_a_r_di_command_arg =
+[
+    [ "addr_width", "struct_c_a_r_di_command_arg.html#a2b75337fd447f0cbd19e744c091c77bb", null ],
+    [ "caps", "struct_c_a_r_di_command_arg.html#a77fc4daf50344a47cad42c3abc68292d", null ],
+    [ "dest", "struct_c_a_r_di_command_arg.html#aa55e9564dbf300cd04293497c54c1ad5", null ],
+    [ "erase_chip", "struct_c_a_r_di_command_arg.html#a8d852661fee7f506d07cd6e337543cba", null ],
+    [ "erase_chip_total", "struct_c_a_r_di_command_arg.html#ad8da4b9b5b0f3cec4f2bf454b3168509", null ],
+    [ "erase_page", "struct_c_a_r_di_command_arg.html#a94d0efba79ae20029f0e645ff5b47ce7", null ],
+    [ "erase_sector", "struct_c_a_r_di_command_arg.html#a6e155e5b7ee3072d5e6253d4651fa0a5", null ],
+    [ "erase_sector_total", "struct_c_a_r_di_command_arg.html#a33e83c975fafb72a82e35a98c594503e", null ],
+    [ "id", "struct_c_a_r_di_command_arg.html#a810b88af40605fa147469ff74b7fdb12", null ],
+    [ "initial_status", "struct_c_a_r_di_command_arg.html#a303fd0a74d124acb3f58c7332217f91f", null ],
+    [ "len", "struct_c_a_r_di_command_arg.html#aab8e87eca0502bc806ca397bc3a46141", null ],
+    [ "padding1", "struct_c_a_r_di_command_arg.html#aa113f48f333d55b3bd4ccc535b8b7e94", null ],
+    [ "padding2", "struct_c_a_r_di_command_arg.html#a8c5dae44f9a8369942749d204c042089", null ],
+    [ "page_size", "struct_c_a_r_di_command_arg.html#a21412f6a01b74adb1b804289d0f2e9b1", null ],
+    [ "program_page", "struct_c_a_r_di_command_arg.html#ac4f2190b8867bd067f8f2cd6faf91503", null ],
+    [ "result", "struct_c_a_r_di_command_arg.html#aff46a1eb11e403c003ea1754f267e82e", null ],
+    [ "sect_size", "struct_c_a_r_di_command_arg.html#a0b94da151af9a727f5d55de4bb956960", null ],
+    [ "spec", "struct_c_a_r_di_command_arg.html#acbbe07bf610a3f55423aa429d5101d08", null ],
+    [ "src", "struct_c_a_r_di_command_arg.html#a4257425d5a06bea2ea9f30908b8b08b1", null ],
+    [ "total_size", "struct_c_a_r_di_command_arg.html#acc98d0d9ebdecd56deb66a4a82b1740a", null ],
+    [ "type", "struct_c_a_r_di_command_arg.html#a9484d2f08ccdbd36174a3fbeb769cee8", null ],
+    [ "write_page", "struct_c_a_r_di_command_arg.html#a315494c84965c2e6326893799b17b214", null ],
+    [ "write_page_total", "struct_c_a_r_di_command_arg.html#aa8aa5746deec99114e244e10fe19a573", null ]
+];

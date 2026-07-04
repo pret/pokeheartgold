@@ -1,0 +1,11 @@
+<map id="EasyChatManager" name="EasyChatManager">
+<area shape="rect" id="Node000001" title=" " alt="" coords="40,295,170,321"/>
+<area shape="rect" id="Node000002" href="$struct_msg_data.html" title=" " alt="" coords="68,199,142,224"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="107,238,107,296,102,294,103,241"/>
+<area shape="rect" id="Node000003" href="$struct___m_a_t.html" title=" " alt="" coords="32,102,87,128"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="63,140,75,173,94,198,89,199,70,176,62,146"/>
+<area shape="rect" id="Node000004" href="$struct___m_a_t___e_n_t_r_y.html" title=" " alt="" coords="5,5,114,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="60,44,62,102,57,101,59,49"/>
+<area shape="rect" id="Node000005" href="$struct_n_a_r_c.html" title=" " alt="" coords="111,102,171,128"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="132,140,112,199,107,197,129,145"/>
+</map>

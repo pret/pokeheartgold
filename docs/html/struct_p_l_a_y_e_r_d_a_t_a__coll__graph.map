@@ -1,0 +1,9 @@
+<map id="PLAYERDATA" name="PLAYERDATA">
+<area shape="rect" id="Node000001" title=" " alt="" coords="91,102,196,128"/>
+<area shape="rect" id="Node000002" href="$struct_options.html" title=" " alt="" coords="5,5,72,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="57,41,90,76,124,101,119,102,87,80,56,46"/>
+<area shape="rect" id="Node000003" href="$struct_player_profile.html" title=" " alt="" coords="96,5,192,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="146,45,146,102,141,100,142,48"/>
+<area shape="rect" id="Node000004" href="$struct_i_g_t.html" title=" " alt="" coords="216,5,259,31"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="223,42,194,80,164,104,161,99,190,76,218,45"/>
+</map>

@@ -1,0 +1,25 @@
+var searchData=
+[
+  ['radiomainstate_0',['RadioMainState',['../radio__internal_8h.html#ae1ed27666e70da16c98df6cba6a70207',1,'radio_internal.h']]],
+  ['radiomusicplayingseq_1',['RadioMusicPlayingSeq',['../overlay__02__gear__phone_8h.html#a8a94abad13b1caef146253d022f5a837',1,'overlay_02_gear_phone.h']]],
+  ['radioprintstate_2',['RadioPrintState',['../overlay__101__021_f57_b8_8c.html#a3811c3b4bbf11772a246712799492ff5',1,'overlay_101_021F57B8.c']]],
+  ['radiostationselection_3',['RadioStationSelection',['../radio__internal_8h.html#a9f62082d35575a5277669ab016ecc101',1,'radio_internal.h']]],
+  ['registerhalloffame_5findivmonsscene_5fsubprocstate_4',['RegisterHallOfFame_IndivMonsScene_SubprocState',['../register__hall__of__fame_8c.html#a949e020e3c6ac0449c085184c72d420a',1,'register_hall_of_fame.c']]],
+  ['registerhalloffame_5fmetlocationtype_5',['RegisterHallOfFame_MetLocationType',['../register__hall__of__fame_8c.html#afbd6616c71d429710cafeaccabe4ba3b',1,'register_hall_of_fame.c']]],
+  ['registerhalloffame_5fwholepartyscene_5fsubprocstate_6',['RegisterHallOfFame_WholePartyScene_SubprocState',['../register__hall__of__fame_8c.html#a305d18f94b4bb676e4f4f6bbbe1d51d9',1,'register_hall_of_fame.c']]],
+  ['registerhalloffameindivmonssubscene_7',['RegisterHallOfFameIndivMonsSubscene',['../register__hall__of__fame_8c.html#a087e6b1a5f8789ab94a5fa61aa9f9da9',1,'register_hall_of_fame.c']]],
+  ['registerhalloffamepicidx_5findiv_8',['RegisterHallOfFamePicIdx_Indiv',['../register__hall__of__fame_8c.html#a8cff8729eef0077816df68b25b27fa69',1,'register_hall_of_fame.c']]],
+  ['registerhalloffamepicidx_5fwholeparty_9',['RegisterHallOfFamePicIdx_WholeParty',['../register__hall__of__fame_8c.html#aa90b7ba76224a6bace921865a3b7824f',1,'register_hall_of_fame.c']]],
+  ['registerhalloffamescene_10',['RegisterHallOfFameScene',['../register__hall__of__fame_8c.html#ab21341bee98dde1f9e80ec81f72b9ec1',1,'register_hall_of_fame.c']]],
+  ['registerhalloffamesilhouettepal_11',['RegisterHallOfFameSilhouettePal',['../register__hall__of__fame_8c.html#a2bbe71a2f04640f5fbff8a3b56090e68',1,'register_hall_of_fame.c']]],
+  ['registerhalloffamewholepartyexitsubscene_12',['RegisterHallOfFameWholePartyExitSubscene',['../register__hall__of__fame_8c.html#ada2ae5fae736be027fdfba723e78b551',1,'register_hall_of_fame.c']]],
+  ['registerhalloffamewholepartysubscene_13',['RegisterHallOfFameWholePartySubscene',['../register__hall__of__fame_8c.html#a66f6acc5832e98c1d16caf64e03f389b',1,'register_hall_of_fame.c']]],
+  ['registeritemresult_14',['RegisterItemResult',['../bag__types__def_8h.html#a6085bf77f3a2f9acdea42d0b00d4db84',1,'bag_types_def.h']]],
+  ['renderresult_15',['RenderResult',['../font__types__def_8h.html#a4b52f6f3082951e101a74bbde426efee',1,'font_types_def.h']]],
+  ['ribbonattr_16',['RibbonAttr',['../ribbon_8h.html#a9fea87ff4e42f8bbb6457674b3374296',1,'ribbon.h']]],
+  ['roamerdataparam_17',['RoamerDataParam',['../roamer_8h.html#ac6a8fe02b84afce1c366e71d3762e658',1,'roamer.h']]],
+  ['roundoutcome_18',['RoundOutcome',['../voltorb__flip__game_8h.html#a9f6126c38f0a2f9ecd19877bf293c6d5',1,'voltorb_flip_game.h']]],
+  ['rtc_5ftimeofday_19',['RTC_TimeOfDay',['../gf__rtc_8h.html#a082e38cbd396a490b991020d29476990',1,'gf_rtc.h']]],
+  ['rtcresult_20',['RTCResult',['../api_8h.html#a807eb96e61713b978c93bde2e07f2d7e',1,'api.h']]],
+  ['rtcweek_21',['RTCWeek',['../api_8h.html#a0ffc47ab9d5036eee95b9f8ebd7e0f9b',1,'api.h']]]
+];

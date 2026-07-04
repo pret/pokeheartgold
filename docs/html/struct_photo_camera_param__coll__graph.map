@@ -1,0 +1,5 @@
+<map id="PhotoCameraParam" name="PhotoCameraParam">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,102,145,128"/>
+<area shape="rect" id="Node000002" href="$struct_camera_angle.html" title=" " alt="" coords="25,5,125,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="77,45,78,102,72,101,73,48"/>
+</map>

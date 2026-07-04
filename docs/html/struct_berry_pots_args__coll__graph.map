@@ -1,0 +1,19 @@
+<map id="BerryPotsArgs" name="BerryPotsArgs">
+<area shape="rect" id="Node000001" title=" " alt="" coords="168,199,274,224"/>
+<area shape="rect" id="Node000002" href="$struct_menu_input_state_mgr.html" title=" " alt="" coords="5,102,141,128"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="78,141,85,159,95,173,111,185,129,194,170,206,165,207,128,199,108,189,91,177,80,161,76,146"/>
+<area shape="rect" id="Node000003" href="$struct_bag_cursor.html" title=" " alt="" coords="171,102,255,128"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="217,141,222,199,218,197,213,145"/>
+<area shape="rect" id="Node000004" href="$struct_bag_cursor_field.html" title=" " alt="" coords="19,5,130,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="105,37,198,100,193,103,104,42"/>
+<area shape="rect" id="Node000005" href="$struct_bag_cursor_battle.html" title=" " alt="" coords="154,5,272,31"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="215,44,215,102,211,100,211,48"/>
+<area shape="rect" id="Node000006" href="$struct_save_data.html" title=" " alt="" coords="407,102,486,128"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="406,134,251,201,249,196,401,134"/>
+<area shape="rect" id="Node000007" href="$struct_save_array_header.html" title=" " alt="" coords="296,5,420,31"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="362,44,368,62,376,76,390,89,409,102,404,101,387,94,372,80,363,64,359,49"/>
+<area shape="rect" id="Node000008" href="$struct_save_slot_spec.html" title=" " alt="" coords="445,5,549,31"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="486,43,455,103,451,99,481,46"/>
+<area shape="rect" id="Node000009" href="$struct_async_write_manager.html" title=" " alt="" coords="573,5,712,31"/>
+<area shape="poly" id="edge8_Node000006_Node000009" title=" " alt="" coords="625,41,605,63,581,80,533,100,487,111,486,106,532,95,578,76,601,59,621,44"/>
+</map>

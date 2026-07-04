@@ -1,0 +1,5 @@
+<map id="BattleMon" name="BattleMon">
+<area shape="rect" id="Node000001" title=" " alt="" coords="29,102,109,128"/>
+<area shape="rect" id="Node000002" href="$struct_unk_battlemon_sub.html" title=" " alt="" coords="5,5,133,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="71,45,72,102,66,101,67,48"/>
+</map>

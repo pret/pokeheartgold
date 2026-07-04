@@ -1,0 +1,9 @@
+<map id="SealCase" name="SealCase">
+<area shape="rect" id="Node000001" title=" " alt="" coords="63,199,141,224"/>
+<area shape="rect" id="Node000002" href="$struct_c_a_p_s_u_l_e.html" title=" " alt="" coords="5,102,90,128"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="49,141,59,173,69,186,83,198,78,198,66,190,54,176,46,146"/>
+<area shape="rect" id="Node000003" href="$struct_s_e_a_l.html" title=" " alt="" coords="20,5,75,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="48,44,50,102,45,101,47,49"/>
+<area shape="rect" id="Node000004" href="$struct_s_e_a_l_b_a_g.html" title=" " alt="" coords="114,102,197,128"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="144,140,111,200,107,196,139,142"/>
+</map>

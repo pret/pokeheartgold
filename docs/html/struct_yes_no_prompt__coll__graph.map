@@ -1,0 +1,19 @@
+<map id="YesNoPrompt" name="YesNoPrompt">
+<area shape="rect" id="Node000001" title=" " alt="" coords="270,295,372,321"/>
+<area shape="rect" id="Node000002" href="$struct_touch_hitbox_controller.html" title=" " alt="" coords="169,199,319,224"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="241,238,243,256,248,270,261,283,278,295,273,294,257,287,244,273,238,257,238,242"/>
+<area shape="rect" id="Node000003" href="$union_touchscreen_hitbox.html" title=" " alt="" coords="5,102,139,128"/>
+<area shape="poly" id="edge4_Node000001_Node000003" title=" " alt="" coords="73,141,82,184,90,204,102,223,140,253,184,275,229,290,273,301,267,301,228,295,182,280,137,258,98,226,85,207,77,185,72,146"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="108,133,224,197,220,200,107,138"/>
+<area shape="rect" id="Node000004" href="$struct_touch_hitbox_controller_template.html" title=" " alt="" coords="162,102,366,128"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="260,141,249,199,244,197,256,145"/>
+<area shape="rect" id="Node000005" href="$struct_yes_no_prompt_button.html" title=" " alt="" coords="483,199,624,224"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="515,230,418,274,356,297,355,292,416,269,510,232"/>
+<area shape="rect" id="Node000006" href="$struct_bg_config.html" title=" " alt="" coords="390,102,466,128"/>
+<area shape="poly" id="edge9_Node000001_Node000006" title=" " alt="" coords="424,141,406,215,394,249,382,273,368,287,351,297,349,292,365,283,378,270,390,247,401,213,420,145"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="455,135,503,173,537,198,532,198,500,177,453,140"/>
+<area shape="rect" id="Node000007" href="$struct_background.html" title=" " alt="" coords="383,5,473,31"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="430,44,430,103,426,100,426,48"/>
+<area shape="rect" id="Node000008" href="$struct_yes_no_prompt_substruct00__18.html" title=" " alt="" coords="490,102,683,128"/>
+<area shape="poly" id="edge8_Node000005_Node000008" title=" " alt="" coords="579,141,560,200,556,196,575,144"/>
+</map>

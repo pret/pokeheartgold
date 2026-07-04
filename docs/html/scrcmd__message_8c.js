@@ -1,0 +1,25 @@
+var scrcmd__message_8c =
+[
+    [ "MessageBox", "struct_message_box.html", "struct_message_box" ],
+    [ "MessageBox", "scrcmd__message_8c.html#ad09bb159e2bb0d53110de75126666e8c", null ],
+    [ "ov01_021EF348", "scrcmd__message_8c.html#ae0632e473ad71b27e57cf997b1524add", null ],
+    [ "ov01_021EF4C4", "scrcmd__message_8c.html#a5bbb0a841cb716a1d9b1acca8f703d60", null ],
+    [ "ov01_021EF4DC", "scrcmd__message_8c.html#a4861341594ad2f63569e9e553792bdcf", null ],
+    [ "ov01_021EF564", "scrcmd__message_8c.html#a6fae0902e01234530043426dc447696a", null ],
+    [ "ScrCmd_441", "scrcmd__message_8c.html#a3a65a2f2dfa3cc1b198f2f28f2b419d7", null ],
+    [ "ScrCmd_442", "scrcmd__message_8c.html#a5695cf76d29d5a7df1c0bce18bbc6936", null ],
+    [ "ScrCmd_443", "scrcmd__message_8c.html#a1565b29a6ee8c5cc88b0466d1aa1880d", null ],
+    [ "ScrCmd_444", "scrcmd__message_8c.html#abc1d5a2c4af50cd9b21dfaf06e08f185", null ],
+    [ "ScrCmd_455", "scrcmd__message_8c.html#a241deef3defb8d6ec77640ec2e23be01", null ],
+    [ "ScrCmd_527", "scrcmd__message_8c.html#acdc7b425406ca894ab7d74155f22b273", null ],
+    [ "ScrCmd_592", "scrcmd__message_8c.html#a0ad85b1a41591f72f1c5f6c9e067323f", null ],
+    [ "ScrCmd_GenderMsgBox", "scrcmd__message_8c.html#a632a8cd6bfeb45d652fdf3b1adb4c382", null ],
+    [ "ScrCmd_GetStdMsgNaix", "scrcmd__message_8c.html#a935b290a02792c51766591db076fb3dd", null ],
+    [ "ScrCmd_MsgBoxExtern", "scrcmd__message_8c.html#ae77d8260e66ffd53cc65dceaaf840aa5", null ],
+    [ "ScrCmd_NonNPCMsg", "scrcmd__message_8c.html#a2f3b04e128f81b5d81b136d96ea24cee", null ],
+    [ "ScrCmd_NonNPCMsgExtern", "scrcmd__message_8c.html#ac9bc17cf6f4fb788e2b57c25992842c6", null ],
+    [ "ScrCmd_NonNPCMsgVar", "scrcmd__message_8c.html#a1efe7424b610fce6c22156ee987d69e1", null ],
+    [ "ScrCmd_NPCMsg", "scrcmd__message_8c.html#a9d686d563574e994562915c6c62721f9", null ],
+    [ "ScrCmd_NPCMsgVar", "scrcmd__message_8c.html#a3e35de10d2c59be18f95a82763620e44", null ],
+    [ "ov01_022067C8", "scrcmd__message_8c.html#a34986dbd8dbbda882ef00ff5201da154", null ]
+];

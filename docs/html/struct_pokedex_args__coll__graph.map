@@ -1,0 +1,11 @@
+<map id="PokedexArgs" name="PokedexArgs">
+<area shape="rect" id="Node000001" title=" " alt="" coords="172,102,271,128"/>
+<area shape="rect" id="Node000002" href="$struct_pokedex.html" title=" " alt="" coords="5,5,78,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="63,39,86,59,110,76,141,90,174,102,169,103,139,95,107,80,82,63,62,45"/>
+<area shape="rect" id="Node000003" href="$struct_player_profile.html" title=" " alt="" coords="102,5,197,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="164,42,188,76,210,102,205,101,183,80,162,47"/>
+<area shape="rect" id="Node000004" href="$struct_unk_struct__02092_b_b8.html" title=" " alt="" coords="221,5,368,31"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="287,44,268,80,241,104,238,99,263,76,282,47"/>
+<area shape="rect" id="Node000005" href="$struct_menu_input_state_mgr.html" title=" " alt="" coords="392,5,528,31"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="426,38,336,80,266,104,264,99,334,76,421,39"/>
+</map>

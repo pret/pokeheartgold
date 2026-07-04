@@ -1,0 +1,33 @@
+<map id="PageWork" name="PageWork">
+<area shape="rect" id="Node000001" title=" " alt="" coords="287,415,368,440"/>
+<area shape="rect" id="Node000002" href="$struct_msg_data.html" title=" " alt="" coords="66,318,141,344"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="119,355,134,373,152,388,185,404,220,414,289,426,284,426,219,420,183,409,149,393,130,377,117,360"/>
+<area shape="rect" id="Node000003" href="$struct___m_a_t.html" title=" " alt="" coords="32,121,87,147"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="55,159,53,224,57,259,67,293,76,305,88,317,82,318,72,309,62,295,52,260,48,224,54,164"/>
+<area shape="rect" id="Node000004" href="$struct___m_a_t___e_n_t_r_y.html" title=" " alt="" coords="5,5,114,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="60,44,62,121,57,120,59,49"/>
+<area shape="rect" id="Node000005" href="$struct_n_a_r_c.html" title=" " alt="" coords="111,121,171,147"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="138,161,108,318,103,317,133,163"/>
+<area shape="rect" id="Node000006" href="$struct_window.html" title=" " alt="" coords="165,318,234,344"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="212,355,224,374,239,389,262,403,289,416,284,416,259,408,235,393,220,377,210,360"/>
+<area shape="rect" id="Node000007" href="$struct_bg_config.html" title=" " alt="" coords="232,121,308,147"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="263,160,206,319,202,316,258,163"/>
+<area shape="rect" id="Node000010" href="$struct_page_display_work.html" title=" " alt="" coords="337,318,462,344"/>
+<area shape="poly" id="edge14_Node000010_Node000007" title=" " alt="" coords="291,156,316,188,363,260,396,318,390,317,358,263,312,191,290,161"/>
+<area shape="rect" id="Node000008" href="$struct_background.html" title=" " alt="" coords="225,5,315,31"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="271,44,273,121,268,120,269,49"/>
+<area shape="rect" id="Node000009" href="$struct_string.html" title=" " alt="" coords="257,318,312,344"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="292,357,305,389,320,415,315,413,300,392,289,361"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="384,355,338,416,335,412,379,357"/>
+<area shape="rect" id="Node000011" href="$struct_sys_task.html" title=" " alt="" coords="639,121,712,147"/>
+<area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="633,152,563,192,527,218,502,241,445,296,416,320,413,315,442,292,499,237,524,214,560,187,628,154"/>
+<area shape="poly" id="edge13_Node000011_Node000011" title=" " alt="" coords="727,121,735,126,738,134,730,146,713,149,711,144,727,141,733,133,731,129,727,126"/>
+<area shape="rect" id="Node000012" href="$struct_sys_task_queue.html" title=" " alt="" coords="762,318,872,344"/>
+<area shape="poly" id="edge12_Node000012_Node000011" title=" " alt="" coords="684,160,693,189,697,220,698,246,702,268,717,292,738,308,764,321,759,321,735,313,713,296,697,270,692,246,692,221,688,190,682,164"/>
+<area shape="rect" id="Node000014" href="$struct_screen_flip_work.html" title=" " alt="" coords="592,318,706,344"/>
+<area shape="poly" id="edge17_Node000014_Node000011" title=" " alt="" coords="654,156,636,191,628,219,627,241,636,293,644,319,640,316,631,295,621,241,623,218,631,189,650,160"/>
+<area shape="poly" id="edge11_Node000011_Node000012" title=" " alt="" coords="820,301,821,247,815,218,801,191,783,173,760,159,712,143,712,138,762,154,786,168,806,188,820,216,826,247,824,304"/>
+<area shape="rect" id="Node000013" href="$struct_page_state.html" title=" " alt="" coords="486,318,569,344"/>
+<area shape="poly" id="edge15_Node000001_Node000013" title=" " alt="" coords="518,356,506,377,489,393,460,408,428,419,369,428,368,423,427,413,458,403,486,388,502,374,513,359"/>
+<area shape="poly" id="edge16_Node000001_Node000014" title=" " alt="" coords="631,354,608,377,582,393,526,412,468,424,414,429,369,430,368,425,414,423,468,418,525,407,580,388,605,373,626,357"/>
+</map>

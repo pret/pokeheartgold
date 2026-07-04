@@ -1,0 +1,25 @@
+<map id="Daycare" name="Daycare">
+<area shape="rect" id="Node000001" title=" " alt="" coords="894,163,964,188"/>
+<area shape="rect" id="Node000002" href="$struct_daycare_mon.html" title=" " alt="" coords="710,163,806,188"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="821,173,896,175,891,176,821,178"/>
+<area shape="rect" id="Node000003" href="$struct_box_pokemon.html" title="Boxed Pokemon data structure." alt="" coords="530,120,629,146"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="645,146,712,164,707,164,644,151"/>
+<area shape="rect" id="Node000004" href="$union_pokemon_data_block.html" title=" " alt="" coords="272,112,409,138"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="424,125,532,131,527,132,425,130"/>
+<area shape="rect" id="Node000005" href="$struct_pokemon_data_block_a.html" title="Block A of the BoxPokemon data structure." alt="" coords="6,5,152,31"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="167,31,209,42,249,57,292,83,327,112,322,112,289,87,247,62,207,47,168,36"/>
+<area shape="rect" id="Node000006" href="$struct_pokemon_data_block_b.html" title="Block B of the BoxPokemon data structure." alt="" coords="6,59,152,84"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="167,83,248,98,293,111,288,112,247,103,168,88"/>
+<area shape="rect" id="Node000007" href="$struct_pokemon_data_block_c.html" title="Block C of the BoxPokemon data structure." alt="" coords="5,112,153,138"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="168,122,273,123,269,126,169,127"/>
+<area shape="rect" id="Node000008" href="$struct_pokemon_data_block_d.html" title="Block D of the BoxPokemon data structure." alt="" coords="5,165,153,191"/>
+<area shape="poly" id="edge7_Node000004_Node000008" title=" " alt="" coords="167,165,247,151,303,137,298,139,248,156,169,170"/>
+<area shape="rect" id="Node000009" href="$struct_daycare_mail.html" title=" " alt="" coords="532,216,627,242"/>
+<area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="639,208,710,189,715,188,641,214"/>
+<area shape="rect" id="Node000010" href="$struct_mail.html" title=" " alt="" coords="318,219,363,244"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="378,228,535,229,529,230,379,234"/>
+<area shape="rect" id="Node000011" href="$union_mail_pattern_data.html" title=" " alt="" coords="21,219,137,244"/>
+<area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="152,229,319,229,316,234,152,234"/>
+<area shape="rect" id="Node000012" href="$struct_mail_message.html" title=" " alt="" coords="30,272,128,298"/>
+<area shape="poly" id="edge11_Node000010_Node000012" title=" " alt="" coords="143,275,247,257,314,240,320,239,248,262,144,280"/>
+</map>

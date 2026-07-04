@@ -1,0 +1,21 @@
+var searchData=
+[
+  ['battlearcadechallengetype_0',['BattleArcadeChallengeType',['../scrcmd__battle__arcade_8c.html#a7c1ffe7f5f20c05adbb88c66388d1d10',1,'scrcmd_battle_arcade.c']]],
+  ['battlebg_1',['BattleBg',['../constants_2battle_8h.html#ab42810029904aa35062a87c3340a8a82',1,'battle.h']]],
+  ['battlecastlechallengetype_2',['BattleCastleChallengeType',['../scrcmd__battle__castle_8c.html#a9ad4b900e99976f08c450693467902fc',1,'scrcmd_battle_castle.c']]],
+  ['battlehallchallengetype_3',['BattleHallChallengeType',['../scrcmd__20_8c.html#aa5316f01f0c3b424e3bc1f274000da7c',1,'scrcmd_20.c']]],
+  ['battlemenucursorinput_4',['BattleMenuCursorInput',['../battle__menu_8h.html#afa92bc121e9f62dc736e319a82a95318',1,'battle_menu.h']]],
+  ['battlemenuid_5',['BattleMenuID',['../battle__menu_8h.html#a1646d7e6dd4a2ea8fe54c02bcd9860ca',1,'battle_menu.h']]],
+  ['battlemenuinputcodes_6',['BattleMenuInputCodes',['../battle__menu_8h.html#a83001b8c61d2711d1ad0b35a66096ccb',1,'battle_menu.h']]],
+  ['battlemenutargettype_7',['BattleMenuTargetType',['../battle__menu_8h.html#abee4109d1925185e828f34c5d3777537',1,'battle_menu.h']]],
+  ['battlemenutextobj_8',['BattleMenuTextObj',['../battle__menu_8h.html#a4ca560e6a23967b122df87b78b719c15',1,'battle_menu.h']]],
+  ['battleregulationcompliancemessage_9',['BattleRegulationComplianceMessage',['../battle__regulation_8h.html#a88ab9a7a4f5d9e522c8c3facaf40fc28',1,'battle_regulation.h']]],
+  ['battleselectstate_10',['BattleSelectState',['../battle__controller__player_8c.html#a5ac31db894d385e05c9e6807163aab45',1,'battle_controller_player.c']]],
+  ['battlestate_11',['BattleState',['../battle__022378_c0_8c.html#a17557ce1a5334619a8e02831bf82ba1f',1,'battle_022378C0.c']]],
+  ['beforeturnstate_12',['BeforeTurnState',['../battle__controller__player_8c.html#a3ffec41a095717468d442075679a6dcf',1,'battle_controller_player.c']]],
+  ['berryattr_13',['BerryAttr',['../overlay__16__022014_a0_8c.html#a662b62bd32baa31660cad33ade33c480',1,'overlay_16_022014A0.c']]],
+  ['berrypotsapp_5f022036fc_5faction_14',['BerryPotsApp_022036FC_Action',['../berry__pots__app__internal_8h.html#a018390411b7e43cfa5903154a3dd0e47',1,'berry_pots_app_internal.h']]],
+  ['bggfxassettype_15',['BgGfxAssetType',['../unk__0208805_c_8h.html#a533e66dd83179999df0204fe3a68060c',1,'unk_0208805C.h']]],
+  ['bgposadjustop_16',['BgPosAdjustOp',['../bg__window_8h.html#ab0b4626ec036eb6fcc90a67d72b61a62',1,'bg_window.h']]],
+  ['birdfinalapproachtaskstate_17',['BirdFinalApproachTaskState',['../legend__cutscene__camera_8c.html#a2a4093b573b6e1485c985fe556267bb9',1,'legend_cutscene_camera.c']]]
+];

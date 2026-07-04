@@ -1,0 +1,7 @@
+<map id="Mail" name="Mail">
+<area shape="rect" id="Node000001" title=" " alt="" coords="106,102,151,128"/>
+<area shape="rect" id="Node000002" href="$union_mail_pattern_data.html" title=" " alt="" coords="5,5,121,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="75,43,95,76,117,102,112,102,91,80,73,47"/>
+<area shape="rect" id="Node000003" href="$struct_mail_message.html" title=" " alt="" coords="144,5,243,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="185,44,166,80,144,104,141,99,162,76,181,47"/>
+</map>

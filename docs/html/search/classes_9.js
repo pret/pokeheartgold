@@ -1,0 +1,26 @@
+var searchData=
+[
+  ['iconformchangedata_0',['IconFormChangeData',['../struct_icon_form_change_data.html',1,'']]],
+  ['igt_1',['IGT',['../struct_i_g_t.html',1,'']]],
+  ['intromoviebgblendanim_2',['IntroMovieBgBlendAnim',['../struct_intro_movie_bg_blend_anim.html',1,'']]],
+  ['intromoviebglinearanims_3',['IntroMovieBgLinearAnims',['../struct_intro_movie_bg_linear_anims.html',1,'']]],
+  ['intromoviebgscrollanim_4',['IntroMovieBgScrollAnim',['../struct_intro_movie_bg_scroll_anim.html',1,'']]],
+  ['intromoviebgwindowanim_5',['IntroMovieBgWindowAnim',['../struct_intro_movie_bg_window_anim.html',1,'']]],
+  ['intromoviebgwindowanimparam_6',['IntroMovieBgWindowAnimParam',['../struct_intro_movie_bg_window_anim_param.html',1,'']]],
+  ['intromoviecirclewipeeffect_7',['IntroMovieCircleWipeEffect',['../struct_intro_movie_circle_wipe_effect.html',1,'']]],
+  ['intromovieovydata_8',['IntroMovieOvyData',['../struct_intro_movie_ovy_data.html',1,'']]],
+  ['intromoviescene1data_9',['IntroMovieScene1Data',['../struct_intro_movie_scene1_data.html',1,'']]],
+  ['intromoviescene2data_10',['IntroMovieScene2Data',['../struct_intro_movie_scene2_data.html',1,'']]],
+  ['intromoviescene2spritepancontroller_11',['IntroMovieScene2SpritePanController',['../struct_intro_movie_scene2_sprite_pan_controller.html',1,'']]],
+  ['intromoviescene3data_12',['IntroMovieScene3Data',['../struct_intro_movie_scene3_data.html',1,'']]],
+  ['intromoviescene3maprender_13',['IntroMovieScene3MapRender',['../struct_intro_movie_scene3_map_render.html',1,'']]],
+  ['intromoviescene4data_14',['IntroMovieScene4Data',['../struct_intro_movie_scene4_data.html',1,'']]],
+  ['intromoviescene5data_15',['IntroMovieScene5Data',['../struct_intro_movie_scene5_data.html',1,'']]],
+  ['itemcheckusedata_16',['ItemCheckUseData',['../struct_item_check_use_data.html',1,'']]],
+  ['itemdata_17',['ItemData',['../struct_item_data.html',1,'']]],
+  ['itemfieldusedata_18',['ItemFieldUseData',['../struct_item_field_use_data.html',1,'']]],
+  ['itemmenuusedata_19',['ItemMenuUseData',['../struct_item_menu_use_data.html',1,'']]],
+  ['itempartyparam_20',['ItemPartyParam',['../struct_item_party_param.html',1,'']]],
+  ['itemslot_21',['ItemSlot',['../struct_item_slot.html',1,'']]],
+  ['itemusefuncdat_22',['ItemUseFuncDat',['../struct_item_use_func_dat.html',1,'']]]
+];

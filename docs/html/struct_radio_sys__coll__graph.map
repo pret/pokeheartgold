@@ -1,0 +1,62 @@
+<map id="RadioSys" name="RadioSys">
+<area shape="rect" id="Node000001" title=" " alt="" coords="1122,222,1200,248"/>
+<area shape="rect" id="Node000002" href="$struct_save_data.html" title=" " alt="" coords="611,93,690,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="704,93,774,84,858,80,948,88,993,98,1036,113,1075,136,1108,165,1153,222,1148,222,1104,169,1071,140,1034,118,992,103,948,93,858,85,774,89,707,97"/>
+<area shape="rect" id="Node000006" href="$struct_radio_show.html" title=" " alt="" coords="946,512,1035,537"/>
+<area shape="poly" id="edge6_Node000006_Node000002" title=" " alt="" coords="705,105,758,111,817,125,875,150,901,168,924,189,940,215,953,253,973,348,985,444,991,512,986,510,980,444,968,349,948,254,935,218,920,193,898,172,873,155,816,130,757,116,707,110"/>
+<area shape="rect" id="Node000003" href="$struct_save_array_header.html" title=" " alt="" coords="245,93,369,119"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="383,103,613,104,609,107,386,108"/>
+<area shape="rect" id="Node000004" href="$struct_save_slot_spec.html" title=" " alt="" coords="255,146,359,172"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="373,150,516,131,613,113,608,117,516,137,376,155"/>
+<area shape="rect" id="Node000005" href="$struct_async_write_manager.html" title=" " alt="" coords="238,40,376,65"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="390,61,516,79,613,97,609,100,516,84,392,66"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="1005,497,1150,250,1154,247,1009,500"/>
+<area shape="rect" id="Node000007" href="$struct_window.html" title=" " alt="" coords="616,352,685,377"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="700,368,832,389,891,401,924,411,948,434,966,461,988,512,983,510,962,464,944,438,921,416,890,406,831,394,701,374"/>
+<area shape="rect" id="Node000008" href="$struct_bg_config.html" title=" " alt="" coords="269,334,344,360"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="359,347,618,361,614,364,361,352"/>
+<area shape="rect" id="Node000009" href="$struct_background.html" title=" " alt="" coords="32,334,122,360"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="137,345,271,345,267,349,139,349"/>
+<area shape="rect" id="Node000010" href="$struct_msg_data.html" title=" " alt="" coords="614,258,688,284"/>
+<area shape="poly" id="edge31_Node000001_Node000010" title=" " alt="" coords="702,266,733,256,759,239,768,226,771,214,769,187,768,161,773,148,784,136,801,124,818,118,850,117,923,135,986,152,1046,175,1139,222,1134,222,1044,180,984,157,922,140,849,122,819,123,804,129,787,140,777,151,773,162,774,187,776,214,773,229,763,242,735,261,704,270"/>
+<area shape="poly" id="edge10_Node000006_Node000010" title=" " alt="" coords="702,275,835,294,892,305,924,317,944,339,960,365,980,420,989,473,992,513,987,510,984,473,975,422,955,367,940,342,921,321,891,310,834,299,704,280"/>
+<area shape="rect" id="Node000011" href="$struct___m_a_t.html" title=" " alt="" coords="279,213,334,239"/>
+<area shape="poly" id="edge11_Node000010_Node000011" title=" " alt="" coords="349,229,615,265,611,268,351,234"/>
+<area shape="rect" id="Node000012" href="$struct___m_a_t___e_n_t_r_y.html" title=" " alt="" coords="23,213,131,239"/>
+<area shape="poly" id="edge12_Node000011_Node000012" title=" " alt="" coords="145,223,281,224,277,228,148,228"/>
+<area shape="rect" id="Node000013" href="$struct_n_a_r_c.html" title=" " alt="" coords="277,266,337,292"/>
+<area shape="poly" id="edge13_Node000010_Node000013" title=" " alt="" coords="351,277,516,275,615,272,611,275,516,281,353,282"/>
+<area shape="rect" id="Node000014" href="$struct_message_format.html" title=" " alt="" coords="593,520,708,545"/>
+<area shape="poly" id="edge14_Node000006_Node000014" title=" " alt="" coords="723,528,949,524,944,526,725,533"/>
+<area shape="rect" id="Node000015" href="$struct_message_format_fields.html" title=" " alt="" coords="232,520,382,545"/>
+<area shape="poly" id="edge15_Node000014_Node000015" title=" " alt="" coords="397,532,406,531,516,531,595,532,590,534,516,537,406,537,399,536"/>
+<area shape="rect" id="Node000016" href="$struct_message_format_attrs.html" title=" " alt="" coords="5,425,149,451"/>
+<area shape="poly" id="edge16_Node000015_Node000016" title=" " alt="" coords="124,454,275,517,271,521,125,460"/>
+<area shape="rect" id="Node000017" href="$struct_string.html" title=" " alt="" coords="49,549,105,575"/>
+<area shape="poly" id="edge32_Node000001_Node000017" title=" " alt="" coords="79,588,91,701,103,773,123,847,151,915,169,946,190,972,214,995,241,1011,271,1022,306,1026,991,1026,1020,1018,1045,997,1067,964,1086,920,1102,868,1116,808,1136,677,1148,540,1154,414,1158,250,1161,246,1160,414,1153,541,1141,677,1121,809,1107,869,1091,922,1072,967,1049,1001,1022,1023,992,1031,305,1031,270,1027,239,1016,211,999,186,976,165,949,146,918,118,848,98,774,86,702,78,593"/>
+<area shape="poly" id="edge19_Node000006_Node000017" title=" " alt="" coords="113,539,172,514,201,507,231,504,387,495,508,494,785,498,854,494,884,493,923,498,961,511,956,511,922,503,884,499,854,499,785,503,508,499,387,500,232,510,202,512,173,519,116,543"/>
+<area shape="poly" id="edge18_Node000014_Node000017" title=" " alt="" coords="119,566,232,578,307,582,382,578,477,563,595,543,590,545,478,569,382,583,307,587,231,583,121,571"/>
+<area shape="poly" id="edge17_Node000015_Node000017" title=" " alt="" coords="119,554,233,540,230,544,122,559"/>
+<area shape="rect" id="Node000018" href="$struct_radio_show_pokemon_music.html" title=" " alt="" coords="562,569,740,595"/>
+<area shape="poly" id="edge20_Node000006_Node000018" title=" " alt="" coords="754,579,837,572,922,556,970,537,965,539,923,561,838,578,755,584"/>
+<area shape="rect" id="Node000019" href="$struct_radio_show_pokemon_talk.html" title=" " alt="" coords="567,618,734,644"/>
+<area shape="poly" id="edge21_Node000006_Node000019" title=" " alt="" coords="749,638,792,637,836,632,880,622,921,605,941,591,958,572,981,540,985,536,962,576,945,595,924,610,882,627,837,637,792,642,751,643"/>
+<area shape="rect" id="Node000020" href="$struct_radio_show_pokemon_search_party.html" title=" " alt="" coords="543,672,758,697"/>
+<area shape="poly" id="edge22_Node000006_Node000020" title=" " alt="" coords="730,697,777,701,827,699,876,688,921,667,936,654,949,638,968,602,979,566,986,540,989,536,984,567,973,604,953,641,940,657,924,671,878,693,827,704,777,706,731,703"/>
+<area shape="rect" id="Node000021" href="$struct_radio_show_serial_radio_drama.html" title=" " alt="" coords="554,725,748,751"/>
+<area shape="poly" id="edge23_Node000006_Node000021" title=" " alt="" coords="711,752,761,760,816,762,872,753,897,743,921,729,941,709,957,685,969,658,977,630,986,577,988,540,991,535,991,577,983,631,974,660,962,688,946,713,924,734,900,748,873,758,817,767,761,765,712,757"/>
+<area shape="rect" id="Node000022" href="$struct_radio_show_buenas_password.html" title=" " alt="" coords="556,778,746,804"/>
+<area shape="poly" id="edge24_Node000006_Node000022" title=" " alt="" coords="761,802,856,806,895,801,921,791,935,773,947,745,966,671,979,593,986,540,990,535,984,594,972,672,952,747,939,776,924,795,896,806,857,811,762,808"/>
+<area shape="rect" id="Node000023" href="$struct_radio_show_trainer_profiles.html" title=" " alt="" coords="564,832,737,857"/>
+<area shape="poly" id="edge25_Node000006_Node000023" title=" " alt="" coords="710,859,760,868,816,870,872,861,898,850,920,835,936,814,950,780,969,693,981,602,987,540,990,536,986,602,974,693,955,782,941,816,924,839,900,855,873,866,817,875,760,873,710,864"/>
+<area shape="rect" id="Node000024" href="$struct_radio_show_that_town_these_people.html" title=" " alt="" coords="540,885,761,911"/>
+<area shape="poly" id="edge26_Node000006_Node000024" title=" " alt="" coords="760,910,856,914,895,910,921,899,939,873,954,832,966,780,974,724,983,613,987,540,991,535,989,613,979,724,971,781,959,833,944,875,924,903,897,915,857,919,761,916"/>
+<area shape="rect" id="Node000025" href="$struct_radio_show_unown.html" title=" " alt="" coords="586,936,715,961"/>
+<area shape="poly" id="edge27_Node000006_Node000025" title=" " alt="" coords="705,963,756,974,814,979,843,977,871,971,897,960,920,944,941,914,957,868,969,810,977,746,985,621,988,540,991,536,990,622,982,746,974,811,962,869,946,917,924,948,900,965,872,976,843,982,813,984,755,980,704,969"/>
+<area shape="rect" id="Node000026" href="$struct_radio_show_team_rocket.html" title=" " alt="" coords="570,10,732,36"/>
+<area shape="poly" id="edge28_Node000006_Node000026" title=" " alt="" coords="746,20,794,26,841,39,886,60,924,91,936,116,947,161,966,288,991,512,985,510,961,288,941,162,931,118,920,94,883,64,839,44,793,31,748,25"/>
+<area shape="rect" id="Node000027" href="$struct_radio_show_mahogany_signal.html" title=" " alt="" coords="558,202,743,228"/>
+<area shape="poly" id="edge29_Node000006_Node000027" title=" " alt="" coords="758,212,856,220,897,229,924,242,939,263,952,293,971,372,984,453,990,512,986,510,979,454,966,373,947,295,934,266,921,246,895,234,855,225,759,217"/>
+<area shape="rect" id="Node000028" href="$struct_radio_show_commercials.html" title=" " alt="" coords="568,418,733,444"/>
+<area shape="poly" id="edge30_Node000006_Node000028" title=" " alt="" coords="749,436,849,447,892,455,923,465,956,486,981,511,975,511,952,490,921,470,891,460,848,452,750,441"/>
+</map>

@@ -1,0 +1,25 @@
+var struct_f_s_archive =
+[
+    [ "base", "struct_f_s_archive.html#a7e1e9138c0b24036cb772d4bce7f984b", null ],
+    [ "fat", "struct_f_s_archive.html#ac055fef41b585aab6edc87bef19c9cf1", null ],
+    [ "fat_bak", "struct_f_s_archive.html#a1f645ee5a06867b6df5448923595df6a", null ],
+    [ "fat_size", "struct_f_s_archive.html#a74b551289eba3a824e76261de1cea676", null ],
+    [ "flag", "struct_f_s_archive.html#a3fd8aa52c4d593e255c7ba94ee7dd132", null ],
+    [ "fnt", "struct_f_s_archive.html#a619b7246a7d5711bab812986893342d7", null ],
+    [ "fnt_bak", "struct_f_s_archive.html#a9c8b504552d1ff6456d6618e233834ce", null ],
+    [ "fnt_size", "struct_f_s_archive.html#a1c34db3789000aa01aa98c1b82c6f27e", null ],
+    [ "list", "struct_f_s_archive.html#abfc67d3fc8eaa3f083d74308a32cbae7", null ],
+    [ "load_mem", "struct_f_s_archive.html#a8bd2e7685af57aebfaa45fb65971c8e4", null ],
+    [ "name", "struct_f_s_archive.html#a5b69955824f59845718e9c2ff71c5306", null ],
+    [ "next", "struct_f_s_archive.html#a38aca797007f000f196f8f9e6da6793c", null ],
+    [ "pack", "struct_f_s_archive.html#ad7aac55b487d952a1b0e0219ce38bb9b", null ],
+    [ "prev", "struct_f_s_archive.html#a29b70e8396ffad708a5cd1ebbe983452", null ],
+    [ "proc", "struct_f_s_archive.html#aea114f75ed6f9da20b4938ac6e40761a", null ],
+    [ "proc_flag", "struct_f_s_archive.html#a561304a46f8dcd14ac1200deca09de4c", null ],
+    [ "ptr", "struct_f_s_archive.html#a242bebc21cce8ec9d823bb3c56ab9caf", null ],
+    [ "read_func", "struct_f_s_archive.html#ae6c34033a4c35b73830855e8e9f8a994", null ],
+    [ "stat_q", "struct_f_s_archive.html#aa24e5ee04178404b0c06cbd32341469a", null ],
+    [ "sync_q", "struct_f_s_archive.html#a7724cda63ffaea692b6b1b4d194e4a4e", null ],
+    [ "table_func", "struct_f_s_archive.html#ab68fe587b35eee1ee302e0cbad42dab7", null ],
+    [ "write_func", "struct_f_s_archive.html#adc65509544263907107718aca0da8f41", null ]
+];

@@ -1,0 +1,13 @@
+<map id="TextPrinterTemplate" name="TextPrinterTemplate">
+<area shape="rect" id="Node000001" title=" " alt="" coords="42,295,180,321"/>
+<area shape="rect" id="Node000002" href="$union_strbuf_for_print.html" title=" " alt="" coords="5,199,108,224"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="54,238,57,256,61,270,72,283,87,295,82,295,68,287,57,273,51,257,52,243"/>
+<area shape="rect" id="Node000003" href="$struct_string.html" title=" " alt="" coords="29,102,84,128"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="57,140,59,198,54,198,56,145"/>
+<area shape="rect" id="Node000004" href="$struct_window.html" title=" " alt="" coords="132,199,200,224"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="155,237,137,273,121,297,118,293,133,270,151,240"/>
+<area shape="rect" id="Node000005" href="$struct_bg_config.html" title=" " alt="" coords="128,102,204,128"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="167,141,168,199,163,197,164,145"/>
+<area shape="rect" id="Node000006" href="$struct_background.html" title=" " alt="" coords="121,5,211,31"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="167,44,168,102,163,101,165,49"/>
+</map>

@@ -1,0 +1,9 @@
+<map id="BirdFinalApproachTaskData" name="BirdFinalApproachTaskData">
+<area shape="rect" id="Node000001" title=" " alt="" coords="116,102,300,128"/>
+<area shape="rect" id="Node000002" href="$struct_field3d_model.html" title=" " alt="" coords="5,5,104,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="88,37,190,100,186,103,86,42"/>
+<area shape="rect" id="Node000003" href="$struct_field3_d_model_animation.html" title=" " alt="" coords="128,5,288,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="210,45,210,103,205,100,206,48"/>
+<area shape="rect" id="Node000004" href="$struct_field3d_object.html" title=" " alt="" coords="312,5,413,31"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="333,39,229,104,227,99,327,40"/>
+</map>

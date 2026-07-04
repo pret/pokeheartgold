@@ -1,0 +1,17 @@
+<map id="NintendoWifiConnectArgs" name="NintendoWifiConnectArgs">
+<area shape="rect" id="Node000001" title=" " alt="" coords="176,199,349,224"/>
+<area shape="rect" id="Node000002" href="$struct_sys_info.html" title=" " alt="" coords="78,102,144,128"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="144,133,246,197,241,199,142,139"/>
+<area shape="rect" id="Node000003" href="$struct_sys_info___r_t_c.html" title=" " alt="" coords="5,5,107,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="71,42,106,101,101,102,70,47"/>
+<area shape="rect" id="Node000004" href="$struct_save_data.html" title=" " alt="" coords="223,102,302,128"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="265,141,265,199,260,197,261,145"/>
+<area shape="rect" id="Node000005" href="$struct_save_array_header.html" title=" " alt="" coords="131,5,256,31"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="201,44,219,76,245,102,240,102,215,80,200,49"/>
+<area shape="rect" id="Node000006" href="$struct_save_slot_spec.html" title=" " alt="" coords="280,5,384,31"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="324,44,305,80,280,104,277,99,301,76,320,47"/>
+<area shape="rect" id="Node000007" href="$struct_async_write_manager.html" title=" " alt="" coords="408,5,546,31"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="462,42,443,64,420,80,304,107,302,102,418,76,439,60,457,44"/>
+<area shape="rect" id="Node000008" href="$struct_options.html" title=" " alt="" coords="327,102,393,128"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="353,141,345,161,333,177,315,190,296,201,295,196,312,186,329,173,340,158,349,144"/>
+</map>

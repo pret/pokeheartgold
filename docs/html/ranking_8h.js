@@ -1,0 +1,28 @@
+var ranking_8h =
+[
+    [ "RANKINGS_COUNT", "ranking_8h.html#a5ccdb98085f6a148a0b379d5f81f1ba2", null ],
+    [ "RANKINGS_PAGE_BATTLE_TOWER", "ranking_8h.html#a35ae4d344cc36eb2b3ed0f01672f25cd", null ],
+    [ "RANKINGS_PAGE_CONTEST", "ranking_8h.html#af48e1ad311ec2dc3d9fb5429b4944235", null ],
+    [ "RANKINGS_PAGE_POKEMON", "ranking_8h.html#aaf45b543e4ee29d6ec6c2db495724d22", null ],
+    [ "RANKINGS_RECORD_BATTLE_TOWER_AVG_WIN_STREAK", "ranking_8h.html#a8403b4adb9e7271e9aa67d9127757466", null ],
+    [ "RANKINGS_RECORD_BATTLE_TOWER_BEGIN", "ranking_8h.html#a32d66cc3e0d84d223f36aede2d357686", null ],
+    [ "RANKINGS_RECORD_BATTLE_TOWER_COUNT", "ranking_8h.html#ad9a77b6ec075273bc060f99cb6e10df4", null ],
+    [ "RANKINGS_RECORD_BATTLE_TOWER_DOUBLE_WINS", "ranking_8h.html#a1277be59c52f969511ba99ed2c8dd5c7", null ],
+    [ "RANKINGS_RECORD_BATTLE_TOWER_MULTI_COMM_WINS", "ranking_8h.html#a4ec9b38f1d6c757c55c40b0ba193020f", null ],
+    [ "RANKINGS_RECORD_BATTLE_TOWER_MULTI_NPC_WINS", "ranking_8h.html#a61484a11ba8e883b2066ef372d13812c", null ],
+    [ "RANKINGS_RECORD_BATTLE_TOWER_SINGLE_WINS", "ranking_8h.html#a58ad5164204fdb47d05f2b385d83fc4c", null ],
+    [ "RANKINGS_RECORD_BATTLE_TOWER_WIFI_WINS", "ranking_8h.html#ab37f2a36d885a52c3a42bbf0937038ab", null ],
+    [ "RANKINGS_RECORD_CONTEST_BEGIN", "ranking_8h.html#a40d6bc3ad744d06c0d8170c325ff6e7a", null ],
+    [ "RANKINGS_RECORD_CONTEST_COUNT", "ranking_8h.html#a67797480f365d8953348a36886cbcc1b", null ],
+    [ "RANKINGS_RECORD_CONTEST_ENTRY", "ranking_8h.html#ac9c96bca6bc8fbe766558e7c06b06730", null ],
+    [ "RANKINGS_RECORD_CONTEST_RIBBONS", "ranking_8h.html#a68d11e94c542c1ba354405bb48b73f0a", null ],
+    [ "RANKINGS_RECORD_CONTEST_WIN", "ranking_8h.html#ac7b3514192aa334b29dff4940665f7dd", null ],
+    [ "RANKINGS_RECORD_POKEMON_BEGIN", "ranking_8h.html#a73186e62cedaf0abbc05e51e7ecebf7e", null ],
+    [ "RANKINGS_RECORD_POKEMON_COUNT", "ranking_8h.html#a89ca18817226d0ce3fa224252339e4ce", null ],
+    [ "RANKINGS_RECORD_POKEMON_MONS_CAUGHT", "ranking_8h.html#a1b5c2948830211000a1c916aafeaeafc", null ],
+    [ "RANKINGS_RECORD_POKEMON_MONS_DEFEATED", "ranking_8h.html#a41d92ab63742b66931460434e7743066", null ],
+    [ "RANKINGS_RECORD_POKEMON_MONS_FISHED", "ranking_8h.html#a788623d41cd7bbc7e781eb4e55bdfad6", null ],
+    [ "RANKINGS_RECORD_POKEMON_MONS_HATCHED", "ranking_8h.html#a5b3f6d77a97de5a0a600488c3eac3c21", null ],
+    [ "RANKINGS_SCOPE_GLOBAL", "ranking_8h.html#a5fc04f010b947e2983f70020cda409dd", null ],
+    [ "RANKINGS_SCOPE_GROUP", "ranking_8h.html#aa01007de8295737db60eeceba1fb5fe2", null ]
+];

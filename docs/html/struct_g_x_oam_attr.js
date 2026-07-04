@@ -1,0 +1,26 @@
+var struct_g_x_oam_attr =
+[
+    [ "_0", "struct_g_x_oam_attr.html#a237f0a164fd72b8d6e7063b7dd4e558e", null ],
+    [ "_1", "struct_g_x_oam_attr.html#acb77613bd2900cc0971bdbdc59ec161d", null ],
+    [ "_2", "struct_g_x_oam_attr.html#abef7e0931bc57d4b5814717baf9a8008", null ],
+    [ "_3", "struct_g_x_oam_attr.html#a2204b16c9bab605037929c7376a6bb96", null ],
+    [ "attr0", "struct_g_x_oam_attr.html#ab9dc4f7ab4590950c9d5e5ba52e3acc1", null ],
+    [ "attr01", "struct_g_x_oam_attr.html#a67e92f0bd6246e187852568aac946983", null ],
+    [ "attr1", "struct_g_x_oam_attr.html#a29e761251a51149ff02132eb97c62295", null ],
+    [ "attr2", "struct_g_x_oam_attr.html#adbd4e20b98e0f1c1d90b0a417e3961e0", null ],
+    [ "attr23", "struct_g_x_oam_attr.html#aab7fe435a6d374ffb2b98373fc98bb16", null ],
+    [ "charNo", "struct_g_x_oam_attr.html#a9045e903d24e92505733eb32b5847053", null ],
+    [ "colorMode", "struct_g_x_oam_attr.html#a28fd1aacc86a75e0fc3c158248eb0a80", null ],
+    [ "cParam", "struct_g_x_oam_attr.html#a3019cbd617c4b753c658e84f83de8200", null ],
+    [ "flipH", "struct_g_x_oam_attr.html#a31e31ddcee574400d0523280289a6f84", null ],
+    [ "flipV", "struct_g_x_oam_attr.html#af10b9c97afaec19d94f0707cf9dba4e4", null ],
+    [ "mosaic", "struct_g_x_oam_attr.html#a80407af0c35f6ad6d0feaa5c775689a3", null ],
+    [ "objMode", "struct_g_x_oam_attr.html#a5e7ae2450f1487a7dab649d9dc993f72", null ],
+    [ "priority", "struct_g_x_oam_attr.html#aac442903b5bcd8b23b60914692c9bc73", null ],
+    [ "rsMode", "struct_g_x_oam_attr.html#a711912332b07098e4d56dac072b11fbe", null ],
+    [ "rsParam", "struct_g_x_oam_attr.html#a5d5c0adf19a0a8c3fd5f7ab71da89171", null ],
+    [ "shape", "struct_g_x_oam_attr.html#a3fb90c2afaac1db2925fbaffc629fdb8", null ],
+    [ "size", "struct_g_x_oam_attr.html#a78e33dfd14b6a7a4f7a2cea57698ba87", null ],
+    [ "x", "struct_g_x_oam_attr.html#ac6316223f287e658883a514f97386966", null ],
+    [ "y", "struct_g_x_oam_attr.html#aa0ca8e07cfbd131be262d062d5d4c862", null ]
+];

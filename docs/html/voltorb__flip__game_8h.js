@@ -1,0 +1,56 @@
+var voltorb__flip__game_8h =
+[
+    [ "Card", "struct_card.html", "struct_card" ],
+    [ "RoundSummary", "struct_round_summary.html", "struct_round_summary" ],
+    [ "GameState", "struct_game_state.html", "struct_game_state" ],
+    [ "BoardConfig", "struct_board_config.html", "struct_board_config" ],
+    [ "IS_MULTIPLIER_CARD", "voltorb__flip__game_8h.html#a75979d6e25a500f59537e17e0c6736dd", null ],
+    [ "IS_NOT_ONE_CARD", "voltorb__flip__game_8h.html#a80b70498cbc06da771c1448dd2a51656", null ],
+    [ "Axis", "voltorb__flip__game_8h.html#a5bd8a6aaa5c2220ca1e5703255fad8d3", null ],
+    [ "BoardConfig", "voltorb__flip__game_8h.html#acd964d5cd5f0a55ed36abe85bd13bd7f", null ],
+    [ "Card", "voltorb__flip__game_8h.html#a23ff27324f1ac52bcafa4cc91e2c2744", null ],
+    [ "CardID", "voltorb__flip__game_8h.html#acbbcd06acee95330d7ed56a8e0e7f064", null ],
+    [ "CardType", "voltorb__flip__game_8h.html#abef3b2a609b4d25462a7074e25e481d9", null ],
+    [ "Level", "voltorb__flip__game_8h.html#ab7369d7af238190711596080511447f6", null ],
+    [ "RoundSummary", "voltorb__flip__game_8h.html#a94588449a03f57a865d783cf92aa701f", null ],
+    [ "VoltorbFlipGameState", "voltorb__flip__game_8h.html#a8f8d450ae51b479b3ab13f17a8b10dd7", null ],
+    [ "VoltorbFlipRoundOutcome", "voltorb__flip__game_8h.html#a0b6454fbc5f07f71db85afd82ff74d40", null ],
+    [ "Axis", "voltorb__flip__game_8h.html#ae3996976d8ffb3e58d88f58227473f8e", [
+      [ "AXIS_COL", "voltorb__flip__game_8h.html#ae3996976d8ffb3e58d88f58227473f8ea42abdcf5699da404a43dda80d9ba5633", null ],
+      [ "AXIS_ROW", "voltorb__flip__game_8h.html#ae3996976d8ffb3e58d88f58227473f8ea2d15bc2c8dcaca9179b2d478707502be", null ]
+    ] ],
+    [ "CardType", "voltorb__flip__game_8h.html#a76b9e96d86b331202dcc0fba38b758cd", [
+      [ "CARD_TYPE_NONE", "voltorb__flip__game_8h.html#a76b9e96d86b331202dcc0fba38b758cdabbce9f4a4c989239098130d5d17e1ade", null ],
+      [ "CARD_TYPE_ONE", "voltorb__flip__game_8h.html#a76b9e96d86b331202dcc0fba38b758cda98bbf4e62b38a2e22b2fb39951495308", null ],
+      [ "CARD_TYPE_TWO", "voltorb__flip__game_8h.html#a76b9e96d86b331202dcc0fba38b758cda61e27bfbf278cf3055a66d5c36874bfb", null ],
+      [ "CARD_TYPE_THREE", "voltorb__flip__game_8h.html#a76b9e96d86b331202dcc0fba38b758cda616605ea078c4d2bf4c5212b507e43bd", null ],
+      [ "CARD_TYPE_VOLTORB", "voltorb__flip__game_8h.html#a76b9e96d86b331202dcc0fba38b758cda293936883961604f82c6c88e0768e9a6", null ]
+    ] ],
+    [ "RoundOutcome", "voltorb__flip__game_8h.html#a9f6126c38f0a2f9ecd19877bf293c6d5", [
+      [ "ROUND_OUTCOME_NONE", "voltorb__flip__game_8h.html#a9f6126c38f0a2f9ecd19877bf293c6d5aa51f6ac74fcb98079d1b81e8507c7abf", null ],
+      [ "ROUND_OUTCOME_QUIT", "voltorb__flip__game_8h.html#a9f6126c38f0a2f9ecd19877bf293c6d5a3e96d81aa51282b0f438352da7748470", null ],
+      [ "ROUND_OUTCOME_WON", "voltorb__flip__game_8h.html#a9f6126c38f0a2f9ecd19877bf293c6d5a9d83dce393a131f6e06599ae6f0a5172", null ],
+      [ "ROUND_OUTCOME_LOST", "voltorb__flip__game_8h.html#a9f6126c38f0a2f9ecd19877bf293c6d5a42cd6c11fc729d023f691c1e22530529", null ]
+    ] ],
+    [ "VoltorbFlip_CreateGameState", "voltorb__flip__game_8h.html#ab4d5b837aa3287f7d2401362312f9c40", null ],
+    [ "VoltorbFlip_FreeGameState", "voltorb__flip__game_8h.html#af809e66dd41d6ae3856174ac75c75e1e", null ],
+    [ "VoltorbFlipGameState_CalculateLevelsGained", "voltorb__flip__game_8h.html#a9400a6bda87dd52e37c6be216dab38d8", null ],
+    [ "VoltorbFlipGameState_CountFlippedCardsAlongAxis", "voltorb__flip__game_8h.html#a2459acbf00b233ae4be0f8f73cca44f7", null ],
+    [ "VoltorbFlipGameState_DeductFromPayout", "voltorb__flip__game_8h.html#a84473d307d72f03a7ea01dbe0dc3ea82", null ],
+    [ "VoltorbFlipGameState_FlipCard", "voltorb__flip__game_8h.html#a08628e1b8b5af1ff483550f1a2f9bfdb", null ],
+    [ "VoltorbFlipGameState_GetCardType", "voltorb__flip__game_8h.html#a58d7fc11ef7ae0fff035fa63a8efc265", null ],
+    [ "VoltorbFlipGameState_GetGameLevel", "voltorb__flip__game_8h.html#a3cc056908639271984b8490c141dfaf2", null ],
+    [ "VoltorbFlipGameState_GetGamePayout", "voltorb__flip__game_8h.html#a37bdde01a1dd68ebcbc9d50db9060b15", null ],
+    [ "VoltorbFlipGameState_GetMultiplierCards", "voltorb__flip__game_8h.html#a8d59fc8547277f7cbc0692691bd1e3df", null ],
+    [ "VoltorbFlipGameState_GetMultiplierCardsFlipped", "voltorb__flip__game_8h.html#abb3a4d9b874cdabb3276e4161ae2103b", null ],
+    [ "VoltorbFlipGameState_GetVoltorbsAlongAxis", "voltorb__flip__game_8h.html#a0d297db776c735d9bd9d21e6cd59c8c2", null ],
+    [ "VoltorbFlipGameState_HasEarnedMaxPayout", "voltorb__flip__game_8h.html#a02575932e82d531770d089985b025abd", null ],
+    [ "VoltorbFlipGameState_IsCardFlipped", "voltorb__flip__game_8h.html#ab62a692c4083374abac735ea6bfc444a", null ],
+    [ "VoltorbFlipGameState_IsCardMemoFlagOn", "voltorb__flip__game_8h.html#a3adce5fa62792a88238fcaf529eb4e8b", null ],
+    [ "VoltorbFlipGameState_MultiplyPayoutAndUpdateCardsFlipped", "voltorb__flip__game_8h.html#a929019038047e7cef40018ace763c574", null ],
+    [ "VoltorbFlipGameState_NewBoard", "voltorb__flip__game_8h.html#ad143396d1dfffa9b1e81a3b80fa4dce7", null ],
+    [ "VoltorbFlipGameState_SetRoundOutcome", "voltorb__flip__game_8h.html#ab555f58ffbd9fec9b065048cf5f49884", null ],
+    [ "VoltorbFlipGameState_ToggleCardMemo", "voltorb__flip__game_8h.html#a0c9db737f500221e181522cf83418709", null ],
+    [ "VoltorbFlipGameState_UpdateHistoryAndReset", "voltorb__flip__game_8h.html#ad4c24c6704f7d09b41f29674f6b23fc5", null ],
+    [ "VoltorbFlipGameStates_GetPointsAlongAxis", "voltorb__flip__game_8h.html#a99b073500912bf3b467ee7f5a9bb3f81", null ]
+];

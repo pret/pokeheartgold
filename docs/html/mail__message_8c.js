@@ -1,0 +1,21 @@
+var mail__message_8c =
+[
+    [ "MailMsg_AllFieldsAreInit", "mail__message_8c.html#aacc10e4d30e099827f0380e2f62bc36e", null ],
+    [ "MailMsg_Compare", "mail__message_8c.html#ae52676def2628f017bc5ab16385fc7fd", null ],
+    [ "MailMsg_Copy", "mail__message_8c.html#ae218d833aa27ad111578a3ca6d8e2603", null ],
+    [ "MailMsg_GetExpandedString", "mail__message_8c.html#a9825a93e2ff22c99e203a62d6eecfd65", null ],
+    [ "MailMsg_GetFieldI", "mail__message_8c.html#aeb1e3f8c8b255cc0b13488c1dd496ed7", null ],
+    [ "MailMsg_GetMsgBank", "mail__message_8c.html#a5053c9965de2dd0488e8c4acb5e90a30", null ],
+    [ "MailMsg_GetMsgNo", "mail__message_8c.html#a88fe0821188ffe18df0c42817ca73023", null ],
+    [ "MailMsg_GetRawString", "mail__message_8c.html#a22447c99b448386da0aeff71361785fe", null ],
+    [ "MailMsg_Init", "mail__message_8c.html#afc9a91e70f496927b607402c665a361f", null ],
+    [ "MailMsg_Init_Default", "mail__message_8c.html#a69d0c9765878443cf71a8282b8602a92", null ],
+    [ "MailMsg_Init_FromTemplate", "mail__message_8c.html#aae39e98ac52b9791cf6e666605cbeea6", null ],
+    [ "MailMsg_Init_WithBank", "mail__message_8c.html#ae1a829818bd7ea73c19a727d612510b8", null ],
+    [ "MailMsg_IsInit", "mail__message_8c.html#a0d99d4f73284c18a2e61b2249ef4a009", null ],
+    [ "MailMsg_NumFields", "mail__message_8c.html#ac3d925e53830024d549db8456c97b9ea", null ],
+    [ "MailMsg_NumMsgsInBank", "mail__message_8c.html#aafa78dad3a3f7ee36465d4caafdd733d", null ],
+    [ "MailMsg_SetFieldI", "mail__message_8c.html#aeb7e21edbef7ec768f31704f76f28dd6", null ],
+    [ "MailMsg_SetMsgBankAndNum", "mail__message_8c.html#ac3aa56fbfe86885b5d9fd5de6cc68fe4", null ],
+    [ "MailMsg_SetTrailingFieldsEmpty", "mail__message_8c.html#a8f6375e2bddf10f20ec0b900c2a674ab", null ]
+];

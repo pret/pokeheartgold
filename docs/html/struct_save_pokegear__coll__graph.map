@@ -1,0 +1,13 @@
+<map id="SavePokegear" name="SavePokegear">
+<area shape="rect" id="Node000001" title=" " alt="" coords="213,199,320,224"/>
+<area shape="rect" id="Node000002" href="$struct_unk_pokegear_sub8_list.html" title=" " alt="" coords="5,102,157,128"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="119,133,245,197,240,200,118,138"/>
+<area shape="rect" id="Node000003" href="$struct_map_markings_save.html" title=" " alt="" coords="16,5,146,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="82,44,84,102,78,101,80,49"/>
+<area shape="rect" id="Node000004" href="$struct_phone_call_persistent_state.html" title=" " alt="" coords="181,102,352,128"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="268,141,269,199,264,197,264,145"/>
+<area shape="rect" id="Node000005" href="$struct_phone_rematch.html" title=" " alt="" coords="211,5,322,31"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="268,44,269,102,264,100,265,48"/>
+<area shape="rect" id="Node000006" href="$struct_phone_contact.html" title=" " alt="" coords="376,102,480,128"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="419,140,408,161,392,177,357,195,320,206,319,201,355,191,389,173,403,158,415,143"/>
+</map>

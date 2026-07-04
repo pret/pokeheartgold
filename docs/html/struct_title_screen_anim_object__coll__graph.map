@@ -1,0 +1,13 @@
+<map id="TitleScreenAnimObject" name="TitleScreenAnimObject">
+<area shape="rect" id="Node000001" title=" " alt="" coords="206,199,362,224"/>
+<area shape="rect" id="Node000002" href="$struct_camera.html" title=" " alt="" coords="250,102,318,128"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="286,141,286,199,282,197,282,145"/>
+<area shape="rect" id="Node000003" href="$struct_camera_perspective.html" title=" " alt="" coords="5,5,142,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="100,37,132,58,165,76,209,92,253,106,247,107,207,97,163,80,129,62,101,43"/>
+<area shape="rect" id="Node000004" href="$struct_camera_look_at.html" title=" " alt="" coords="166,5,274,31"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="238,42,279,102,273,101,236,47"/>
+<area shape="rect" id="Node000005" href="$struct_camera_angle.html" title=" " alt="" coords="298,5,398,31"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="334,42,312,80,294,104,291,100,307,76,330,45"/>
+<area shape="rect" id="Node000006" href="$struct_camera_history.html" title=" " alt="" coords="423,5,532,31"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="446,38,371,80,316,104,314,99,368,76,442,40"/>
+</map>

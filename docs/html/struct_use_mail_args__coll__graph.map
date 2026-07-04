@@ -1,0 +1,22 @@
+<map id="UseMailArgs" name="UseMailArgs">
+<area shape="rect" id="Node000001" title=" " alt="" coords="446,295,542,321"/>
+<area shape="rect" id="Node000002" href="$struct_save_data.html" title=" " alt="" coords="234,199,314,224"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="306,230,379,269,449,295,444,295,377,274,305,235"/>
+<area shape="rect" id="Node000003" href="$struct_save_array_header.html" title=" " alt="" coords="5,102,130,128"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="82,138,99,157,118,172,146,186,177,196,236,207,231,209,175,201,144,191,115,177,95,161,82,143"/>
+<area shape="rect" id="Node000004" href="$struct_save_slot_spec.html" title=" " alt="" coords="154,102,258,128"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="207,141,212,159,219,173,231,186,247,198,242,198,228,190,215,176,207,160,205,146"/>
+<area shape="rect" id="Node000005" href="$struct_async_write_manager.html" title=" " alt="" coords="282,102,421,128"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="339,139,315,176,290,200,287,196,311,173,335,142"/>
+<area shape="rect" id="Node000006" href="$struct_mail.html" title=" " alt="" coords="481,102,526,128"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="493,140,483,170,475,199,474,226,478,252,491,296,487,294,473,253,469,226,470,198,478,168,489,143"/>
+<area shape="rect" id="Node000009" href="$struct_mailbox.html" title=" " alt="" coords="517,199,583,224"/>
+<area shape="poly" id="edge9_Node000009_Node000006" title=" " alt="" coords="517,139,547,199,542,197,515,144"/>
+<area shape="rect" id="Node000007" href="$union_mail_pattern_data.html" title=" " alt="" coords="380,5,496,31"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="450,42,471,76,493,102,487,101,466,80,448,47"/>
+<area shape="rect" id="Node000008" href="$struct_mail_message.html" title=" " alt="" coords="520,5,618,31"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="560,44,542,80,519,104,516,99,537,76,556,47"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="538,236,503,297,500,293,533,239"/>
+<area shape="rect" id="Node000010" href="$struct_menu_input_state_mgr.html" title=" " alt="" coords="608,199,743,224"/>
+<area shape="poly" id="edge10_Node000001_Node000010" title=" " alt="" coords="650,233,589,274,532,297,531,292,586,269,645,234"/>
+</map>

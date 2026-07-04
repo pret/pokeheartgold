@@ -1,0 +1,28 @@
+var pm__string_8c =
+[
+    [ "ASSERT_STRING", "pm__string_8c.html#a98b3b513e82dd03b6f6c9524a3224134", null ],
+    [ "STRING_INVAL", "pm__string_8c.html#af531a1b972da6f374a87ee5455f7cc7b", null ],
+    [ "STRING_MAGIC", "pm__string_8c.html#a6e949318f991ef2e024e772c0d555536", null ],
+    [ "CopyStringToU16Array", "pm__string_8c.html#ad47775feb1612b7ce0ca89ffde460a5a", null ],
+    [ "CopyU16ArrayToString", "pm__string_8c.html#a4ca716e9e7495b273ad72b82ac9d71af", null ],
+    [ "CopyU16ArrayToStringN", "pm__string_8c.html#ab83ad1d0d499eed7c42b220f1144c908", null ],
+    [ "String16_FormatInteger", "pm__string_8c.html#a0174cd68b860b3395791fd3984f90fa5", null ],
+    [ "String16_FormatUnsignedLongLong", "pm__string_8c.html#a664874e2ced4b6c9bd5414aca2757308", null ],
+    [ "String_AddChar", "pm__string_8c.html#ad13e63d6ef5b3cb95902d1d5b0d28aca", null ],
+    [ "String_atoi", "pm__string_8c.html#aa457161526164472dcb36291ed0816fb", null ],
+    [ "String_Cat", "pm__string_8c.html#ae818e45153fb64929eee777261d10e06", null ],
+    [ "String_Cat_HandleTrainerName", "pm__string_8c.html#a73ff6f34ce326496dc7bc8d7c0b355c7", null ],
+    [ "String_Compare", "pm__string_8c.html#af26c1ea05d14b3e55b1ff0b5f7d45624", null ],
+    [ "String_Copy", "pm__string_8c.html#a6030bab0ba230c879c05b3f7659949a4", null ],
+    [ "String_CountLines", "pm__string_8c.html#a296ad8490c6ab95d25292947f00c8059", null ],
+    [ "String_cstr", "pm__string_8c.html#ae15e167da42b2fc80dd29008b5a1c85c", null ],
+    [ "String_Delete", "pm__string_8c.html#a13a6c1e42d26a03e65ad9a0703bd2cfa", null ],
+    [ "String_Dup", "pm__string_8c.html#a075f2b81008c8c0ac7b2ced022577446", null ],
+    [ "String_GetLength", "pm__string_8c.html#a8e9cfef7e6fadc4318eaa2f20ec28a79", null ],
+    [ "String_GetLineN", "pm__string_8c.html#a9f7ca24a1cd9075c5d3366281e750ad8", null ],
+    [ "String_IsTrainerName", "pm__string_8c.html#a370b503df1978715659106dece015dc7", null ],
+    [ "String_New", "pm__string_8c.html#a96182e5bcd2ff8450982c924eec33d11", null ],
+    [ "String_RadioAddStatic", "pm__string_8c.html#a7a0f51802be36c80931197bedfc680f6", null ],
+    [ "String_SetEmpty", "pm__string_8c.html#ac8e059f088f496ff0a2bc82d91ddc46f", null ],
+    [ "String_UpperCharN", "pm__string_8c.html#a61a59ecc083e53990324ecf655c54eed", null ]
+];

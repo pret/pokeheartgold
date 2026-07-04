@@ -1,0 +1,6 @@
+<map id="PhoneContactListNode" name="PhoneContactListNode">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,111,162,136"/>
+<area shape="poly" id="edge2_Node000001_Node000001" title=" " alt="" coords="178,114,188,124,180,133,163,136,162,131,178,128,183,124,176,119"/>
+<area shape="rect" id="Node000002" href="$struct_phone_contact.html" title=" " alt="" coords="31,5,136,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="86,45,86,111,81,110,81,48"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="GameState" name="GameState">
+<area shape="rect" id="Node000001" title=" " alt="" coords="40,102,127,128"/>
+<area shape="rect" id="Node000002" href="$struct_card.html" title=" " alt="" coords="5,5,55,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="46,43,79,101,74,102,43,47"/>
+<area shape="rect" id="Node000003" href="$struct_round_summary.html" title=" " alt="" coords="79,5,194,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="127,43,110,79,94,104,90,100,105,77,123,47"/>
+</map>

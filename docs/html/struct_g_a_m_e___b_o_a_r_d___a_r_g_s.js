@@ -1,0 +1,28 @@
+var struct_g_a_m_e___b_o_a_r_d___a_r_g_s =
+[
+    [ "bpGain", "struct_g_a_m_e___b_o_a_r_d___a_r_g_s.html#aad49978ca7a9038ff3df1f4dc7ac4b6e", null ],
+    [ "cursorSpeed", "struct_g_a_m_e___b_o_a_r_d___a_r_g_s.html#acf27001be1b657cf21c3a861dd1a8baf", null ],
+    [ "dummy1", "struct_g_a_m_e___b_o_a_r_d___a_r_g_s.html#a04c8e1f686f86dbfccffeaa7689f22e9", null ],
+    [ "dummy2", "struct_g_a_m_e___b_o_a_r_d___a_r_g_s.html#ae237061ec3b45a6e996905a8a4630819", null ],
+    [ "level", "struct_g_a_m_e___b_o_a_r_d___a_r_g_s.html#a88fa1ab94773ac3d0bcc621e35e7fbbf", null ],
+    [ "multiWinStreak", "struct_g_a_m_e___b_o_a_r_d___a_r_g_s.html#a8a6b0c5458f58b98dbd86d8e56ea2e88", null ],
+    [ "opponentHeldItemFlag", "struct_g_a_m_e___b_o_a_r_d___a_r_g_s.html#a57b11d22dbc129798f199cf0c5612c53", null ],
+    [ "opponentLevelFlag", "struct_g_a_m_e___b_o_a_r_d___a_r_g_s.html#aaf5eb10a30e10ea4e4eaf1c2cae75288", null ],
+    [ "opponentMoveFlag", "struct_g_a_m_e___b_o_a_r_d___a_r_g_s.html#ab93fd21a328feaf46e89e0e0020f0bec", null ],
+    [ "opponentParty", "struct_g_a_m_e___b_o_a_r_d___a_r_g_s.html#a8f60ee2f1dbd084adb12e158ef252e64", null ],
+    [ "opponentUnkFlag", "struct_g_a_m_e___b_o_a_r_d___a_r_g_s.html#a2378383fc2c86d97a4402fe4440d3f5d", null ],
+    [ "playerParty", "struct_g_a_m_e___b_o_a_r_d___a_r_g_s.html#a77bed44ce74942ef329baa69f7877f6a", null ],
+    [ "randomFlag", "struct_g_a_m_e___b_o_a_r_d___a_r_g_s.html#a0b45c17c6dd17924cee60712aa43b227", null ],
+    [ "returnWork", "struct_g_a_m_e___b_o_a_r_d___a_r_g_s.html#a41f279614ac0be58bf79fccebced6c7c", null ],
+    [ "saveData", "struct_g_a_m_e___b_o_a_r_d___a_r_g_s.html#af0dbb6d30149b7b14e24902a2b29eff0", null ],
+    [ "type", "struct_g_a_m_e___b_o_a_r_d___a_r_g_s.html#af9bdf8659798268cf342a6512c5d7696", null ],
+    [ "unk", "struct_g_a_m_e___b_o_a_r_d___a_r_g_s.html#a1e81ab394eae1d167ec61c85619ea850", null ],
+    [ "unk10", "struct_g_a_m_e___b_o_a_r_d___a_r_g_s.html#af23ccdf6ff695defae52f3418a07b5f5", null ],
+    [ "unk14", "struct_g_a_m_e___b_o_a_r_d___a_r_g_s.html#aae8d8e8b70be56f90167af999cc6e3ac", null ],
+    [ "unk1A", "struct_g_a_m_e___b_o_a_r_d___a_r_g_s.html#a81c3e1797c6803517189e7af89992643", null ],
+    [ "unk1E", "struct_g_a_m_e___b_o_a_r_d___a_r_g_s.html#a7e0f455f22bc032f3a5b4a5ec9822924", null ],
+    [ "unk6", "struct_g_a_m_e___b_o_a_r_d___a_r_g_s.html#adbeb890cba3ce7ba8aac72e23b35c984", null ],
+    [ "weather", "struct_g_a_m_e___b_o_a_r_d___a_r_g_s.html#aaf22d7f57c179426b70f9501a587fdfd", null ],
+    [ "winStreak", "struct_g_a_m_e___b_o_a_r_d___a_r_g_s.html#a6b1165145063256c9d87e96ede4a23de", null ],
+    [ "work", "struct_g_a_m_e___b_o_a_r_d___a_r_g_s.html#a8cd6894e216c8afe9305a9b09ed34757", null ]
+];

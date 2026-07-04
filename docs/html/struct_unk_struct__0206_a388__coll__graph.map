@@ -1,0 +1,12 @@
+<map id="UnkStruct_0206A388" name="UnkStruct_0206A388">
+<area shape="rect" id="Node000001" title=" " alt="" coords="75,310,220,336"/>
+<area shape="rect" id="Node000002" href="$struct_bg_config.html" title=" " alt="" coords="13,102,88,128"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="42,140,35,189,36,215,44,238,59,261,79,280,123,309,118,311,76,284,55,264,39,240,31,215,30,189,41,145"/>
+<area shape="rect" id="Node000004" href="$struct_window.html" title=" " alt="" coords="114,206,182,232"/>
+<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="73,137,139,205,134,207,72,142"/>
+<area shape="rect" id="Node000003" href="$struct_background.html" title=" " alt="" coords="5,5,96,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="51,44,53,102,48,101,50,49"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="150,246,150,311,145,309,146,249"/>
+<area shape="rect" id="Node000005" href="$struct_unk_state_machine_substruct__0206_a388.html" title=" " alt="" coords="206,199,388,239"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="261,248,207,289,169,312,167,307,204,284,256,250"/>
+</map>

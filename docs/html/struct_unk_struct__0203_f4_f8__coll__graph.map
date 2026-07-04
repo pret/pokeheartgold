@@ -1,0 +1,17 @@
+<map id="UnkStruct_0203F4F8" name="UnkStruct_0203F4F8">
+<area shape="rect" id="Node000001" title=" " alt="" coords="282,199,427,224"/>
+<area shape="rect" id="Node000002" href="$struct_save_data.html" title=" " alt="" coords="166,102,246,128"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="220,139,233,158,248,173,270,186,297,198,292,198,268,191,245,177,229,161,218,144"/>
+<area shape="rect" id="Node000003" href="$struct_save_array_header.html" title=" " alt="" coords="5,5,130,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="83,41,99,60,116,76,141,90,169,102,164,104,139,95,113,80,95,64,83,47"/>
+<area shape="rect" id="Node000004" href="$struct_save_slot_spec.html" title=" " alt="" coords="154,5,258,31"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="208,44,209,102,204,100,205,48"/>
+<area shape="rect" id="Node000005" href="$struct_async_write_manager.html" title=" " alt="" coords="282,5,421,31"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="340,43,326,64,309,80,279,97,247,108,245,103,276,92,306,76,322,60,335,46"/>
+<area shape="rect" id="Node000006" href="$struct_options.html" title=" " alt="" coords="270,102,337,128"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="313,141,328,173,346,199,341,197,323,176,310,145"/>
+<area shape="rect" id="Node000007" href="$struct_game_stats.html" title=" " alt="" coords="361,102,448,128"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="395,140,378,176,363,201,360,196,373,173,390,143"/>
+<area shape="rect" id="Node000008" href="$struct_menu_input_state_mgr.html" title=" " alt="" coords="473,102,608,128"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="519,137,493,159,465,177,404,201,402,196,462,172,490,155,514,139"/>
+</map>

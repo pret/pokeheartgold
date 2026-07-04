@@ -1,0 +1,9 @@
+<map id="TouchscreenListMenuSpawner" name="TouchscreenListMenuSpawner">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,295,205,321"/>
+<area shape="rect" id="Node000002" href="$struct_palette_data.html" title=" " alt="" coords="60,199,150,224"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="107,238,108,296,102,294,103,241"/>
+<area shape="rect" id="Node000003" href="$struct_palette_buffer.html" title=" " alt="" coords="56,102,154,128"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="106,141,108,199,102,198,104,145"/>
+<area shape="rect" id="Node000004" href="$struct_selected_palette_data.html" title=" " alt="" coords="34,5,176,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="106,44,108,102,102,101,104,49"/>
+</map>

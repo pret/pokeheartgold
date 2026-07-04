@@ -1,0 +1,11 @@
+<map id="EasyChatArgs" name="EasyChatArgs">
+<area shape="rect" id="Node000001" title=" " alt="" coords="167,102,273,128"/>
+<area shape="rect" id="Node000002" href="$struct_pokedex.html" title=" " alt="" coords="5,5,78,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="65,39,89,58,115,76,175,101,170,102,113,80,86,63,64,44"/>
+<area shape="rect" id="Node000003" href="$struct_save_easy_chat.html" title=" " alt="" coords="102,5,211,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="171,42,193,76,212,102,207,101,189,80,169,47"/>
+<area shape="rect" id="Node000004" href="$struct_mail_message.html" title=" " alt="" coords="235,5,333,31"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="276,44,257,80,235,104,232,99,253,76,271,47"/>
+<area shape="rect" id="Node000005" href="$struct_menu_input_state_mgr.html" title=" " alt="" coords="358,5,493,31"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="407,41,384,64,359,80,317,97,274,108,273,103,315,92,356,76,381,59,402,44"/>
+</map>

@@ -1,0 +1,27 @@
+var map__matrix_8h =
+[
+    [ "MAPDATA", "struct_m_a_p_d_a_t_a.html", "struct_m_a_p_d_a_t_a" ],
+    [ "MAPMATRIXDATA", "struct_m_a_p_m_a_t_r_i_x_d_a_t_a.html", "struct_m_a_p_m_a_t_r_i_x_d_a_t_a" ],
+    [ "MAPMATRIX", "struct_m_a_p_m_a_t_r_i_x.html", "struct_m_a_p_m_a_t_r_i_x" ],
+    [ "MAP_MATRIX_MAX_NAME_LENGTH", "map__matrix_8h.html#a02bfa409c25ef0cc188f67553d04ac10", null ],
+    [ "MAP_MATRIX_MAX_SIZE", "map__matrix_8h.html#a86cab381f40c50d9fe250fdff3035d15", null ],
+    [ "MAPDATA", "map__matrix_8h.html#ada54c6dda3973036ed5426c653a58104", null ],
+    [ "MAPMATRIX", "map__matrix_8h.html#a0184a5a660d33fda5b9e30250a8dccfe", null ],
+    [ "MAPMATRIXDATA", "map__matrix_8h.html#ace29aa85bd2c0b1b5f5bc6ab7166ed59", null ],
+    [ "GetMapModelNo", "map__matrix_8h.html#a50d72501a4f13cc276c988d7a109509e", null ],
+    [ "MapMatrix_Free", "map__matrix_8h.html#a498cf34282ceeed4904b10343c37d183", null ],
+    [ "MapMatrix_GetHeight", "map__matrix_8h.html#ac941973c8a7c1ca8eeb125ae83e11424", null ],
+    [ "MapMatrix_GetMapAltitude", "map__matrix_8h.html#a83f7639568a4e5749f4bbd6f40363ed4", null ],
+    [ "MapMatrix_GetMapHeader", "map__matrix_8h.html#a00598cc78a83f89b42cdc7fe244102cc", null ],
+    [ "MapMatrix_GetMapModelNo", "map__matrix_8h.html#a4b7bdffeeeb94ba710575d68cf0f34b8", null ],
+    [ "MapMatrix_GetMatrixId", "map__matrix_8h.html#a4b9ff24bf9de580d92c63d81a1c07e93", null ],
+    [ "MapMatrix_GetWidth", "map__matrix_8h.html#acbda130131cfbd781122e84b693ff4c3", null ],
+    [ "MapMatrix_Load", "map__matrix_8h.html#a2b74dd8a8a56cf718f4b445fc518ea99", null ],
+    [ "MapMatrix_MapData_Free", "map__matrix_8h.html#af4265fec06f90298fd01c43e8511ca46", null ],
+    [ "MapMatrix_MapData_New", "map__matrix_8h.html#a14b776c46ea9c0027ef838628af151fe", null ],
+    [ "MapMatrix_New", "map__matrix_8h.html#a0d77de84850934267e4fe46f7bd58757", null ],
+    [ "PlaceSafariZoneAreas", "map__matrix_8h.html#ac4e13eb38438cec04bca4e1f87ea48f8", null ],
+    [ "RemoveMahoganyTownAntennaTree", "map__matrix_8h.html#a47dedb516bb4a638634e131a5031f573", null ],
+    [ "SetLakeOfRageWaterLevel", "map__matrix_8h.html#a87578b21ad803b9fb64d9a90aa76105f", null ],
+    [ "ShouldUseAlternateLakeOfRage", "map__matrix_8h.html#a280db8abc9e5e633729fb3eee0ce19ca", null ]
+];

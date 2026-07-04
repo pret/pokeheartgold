@@ -1,0 +1,27 @@
+var struct_saved_map_object =
+[
+    [ "currentFacing", "struct_saved_map_object.html#ab6edc5cbf804b7e1c58b70f72e66d5a2", null ],
+    [ "currentX", "struct_saved_map_object.html#a9b0737f9bfa4f7d8b2897ef374603708", null ],
+    [ "currentY", "struct_saved_map_object.html#a542b6e535d969f2c74cd89c31ce8f621", null ],
+    [ "currentZ", "struct_saved_map_object.html#a67ce0322aa5b9c1fe6afe26cb291fc86", null ],
+    [ "eventFlag", "struct_saved_map_object.html#a524faa66d3b8bf8cb6747e5a1c11ccf9", null ],
+    [ "flags", "struct_saved_map_object.html#a6daff7f78aae8db6a80d770bad3d8e21", null ],
+    [ "flags2", "struct_saved_map_object.html#ab6a8f916e87e296a14288e447b3560ea", null ],
+    [ "initialFacing", "struct_saved_map_object.html#a50bd304ed8e5872869730385ffee13b4", null ],
+    [ "initialX", "struct_saved_map_object.html#a9d22dd94a3cbaacaefb9514d8bb37241", null ],
+    [ "initialY", "struct_saved_map_object.html#aeefd93602028c3c1925afb4656859f36", null ],
+    [ "initialZ", "struct_saved_map_object.html#a62ef2d9cbf93cbbe574e6bc1fb2e47b7", null ],
+    [ "mapId", "struct_saved_map_object.html#a0d70676a49189df7df4f39be314826e3", null ],
+    [ "movement", "struct_saved_map_object.html#a54ac7fd0fc4be9d7a34866205f5ba72f", null ],
+    [ "nextFacing", "struct_saved_map_object.html#a1a477e343295237105069c9770ebc03a", null ],
+    [ "objId", "struct_saved_map_object.html#a80155db7eff37b83a8524b0bcc2d0ecc", null ],
+    [ "param", "struct_saved_map_object.html#af2ed92d17c049be97963f38886b4b61e", null ],
+    [ "script", "struct_saved_map_object.html#aba60d88c7a1a2eea00c60e53a6f9724f", null ],
+    [ "spriteId", "struct_saved_map_object.html#a605ae737ab0a7c7d0315f5b044708aa8", null ],
+    [ "type", "struct_saved_map_object.html#a57c34dcaa51d1d66f32c5de17eee2c0e", null ],
+    [ "unk30", "struct_saved_map_object.html#a9d2a0c8a349a3c419d2914071d992638", null ],
+    [ "unk40", "struct_saved_map_object.html#a55b3d8768c4158f832a8b5177b9ff6ca", null ],
+    [ "vecY", "struct_saved_map_object.html#abfbe30285d9578a25124085a226777a4", null ],
+    [ "xRange", "struct_saved_map_object.html#abc91089ed453908855ea8310852648a1", null ],
+    [ "yRange", "struct_saved_map_object.html#a7fcd9377ffbc70ab5218c2487ff097ea", null ]
+];

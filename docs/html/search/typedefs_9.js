@@ -1,0 +1,22 @@
+var searchData=
+[
+  ['landencounterdata_0',['LandEncounterData',['../wild__encounter_8h.html#a8c0494e138f029f8223685045b084cb1',1,'wild_encounter.h']]],
+  ['legendarycinematicargs_1',['LegendaryCinematicArgs',['../unk__02097_b78_8h.html#a853bfd8237afff29dae2ad3f28998970',1,'unk_02097B78.h']]],
+  ['legendcutscenelugiaeyeglimmertaskdata_2',['LegendCutsceneLugiaEyeGlimmerTaskData',['../legend__cutscene__camera_8c.html#a96c1685cfeb2bba44cb0461ec6f6c398',1,'legend_cutscene_camera.c']]],
+  ['level_3',['Level',['../voltorb__flip__game_8h.html#ab7369d7af238190711596080511447f6',1,'voltorb_flip_game.h']]],
+  ['linkbattlerule_4',['LinkBattleRule',['../save__link__ruleset_8h.html#ab4b29d3947d7488f6fb6e8cb8b92c512',1,'save_link_ruleset.h']]],
+  ['linkbattleruleset_5',['LinkBattleRuleset',['../save__link__ruleset_8h.html#abc38ddef55b0aa60ebf989815f12b2d9',1,'save_link_ruleset.h']]],
+  ['listmenu_6',['ListMenu',['../list__menu_8h.html#acc769c109c2fa8fb1926265d8c22eaa2',1,'list_menu.h']]],
+  ['listmenuitem_7',['LISTMENUITEM',['../list__menu__items_8h.html#afc77013ab8374a12a28516421144b24c',1,'list_menu_items.h']]],
+  ['listmenutemplate_8',['ListMenuTemplate',['../list__menu_8h.html#a8af65ed7e69c6c9537fd2cafd5433d66',1,'list_menu.h']]],
+  ['lm_5fitemprintfunc_5ft_9',['LM_ItemPrintFunc_t',['../list__menu_8h.html#a29bf4605bc1e717cc6add26fd9f20933',1,'list_menu.h']]],
+  ['lm_5fmovecursorfunc_5ft_10',['LM_MoveCursorFunc_t',['../list__menu_8h.html#ada390ddf968854d498c49b02aafb0625',1,'list_menu.h']]],
+  ['loadedsafarizoneencounterdata_11',['LoadedSafariZoneEncounterData',['../unk__02097268_8c.html#aeb2ebc38cfe21f047f899955c58f954f',1,'unk_02097268.c']]],
+  ['localfielddata_12',['LocalFieldData',['../save__local__field__data_8h.html#ac12b49a1f63aec68dbc476fffa285122',1,'save_local_field_data.h']]],
+  ['localmapobject_13',['LocalMapObject',['../field__types__def_8h.html#acdc64fd8308388c6c9e6bad7984458bf',1,'field_types_def.h']]],
+  ['localmapobject_5funkcallback_14',['LocalMapObject_UnkCallback',['../map__object_8h.html#a8f93b936a0efebaf0d3483d0c4beb76b',1,'map_object.h']]],
+  ['location_15',['Location',['../field__types__def_8h.html#a8608f783ff32a567ff3a9808b1cbe642',1,'field_types_def.h']]],
+  ['locationgmmdat_16',['LocationGmmDat',['../location__gmm__dat_8c.html#a002487c95f0549b700486be7fe6113af',1,'location_gmm_dat.c']]],
+  ['lugiaarrivescutscenecamera_17',['LugiaArrivesCutsceneCamera',['../legend__cutscene__camera_8c.html#aaf76c52bd7cc803df9819c3837e964ae',1,'legend_cutscene_camera.c']]],
+  ['lugiaeyeglimmertaskstate_18',['LugiaEyeGlimmerTaskState',['../legend__cutscene__camera_8c.html#af84a52309aa8e28fe6096951a478cb33',1,'legend_cutscene_camera.c']]]
+];

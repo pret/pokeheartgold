@@ -1,0 +1,9 @@
+<map id="SubspritePosControllerTaskData" name="SubspritePosControllerTaskData">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,160,217,186"/>
+<area shape="rect" id="Node000002" href="$struct_sprite.html" title=" " alt="" coords="170,14,225,40"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="161,47,136,74,125,96,118,119,113,161,109,159,113,118,120,94,132,71,157,50"/>
+<area shape="poly" id="edge4_Node000002_Node000002" title=" " alt="" coords="235,10,247,16,252,27,249,36,241,42,221,43,220,38,240,37,245,33,247,27,244,19,236,16"/>
+<area shape="rect" id="Node000003" href="$struct_sprite_list.html" title=" " alt="" coords="241,160,317,186"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="190,53,185,95,187,116,195,135,213,147,243,161,238,160,210,151,191,138,182,117,180,95,187,57"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="273,144,264,110,247,74,232,56,216,43,217,38,236,53,252,71,269,108,278,146"/>
+</map>

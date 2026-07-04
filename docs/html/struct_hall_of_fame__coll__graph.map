@@ -1,0 +1,7 @@
+<map id="HallOfFame" name="HallOfFame">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,199,97,224"/>
+<area shape="rect" id="Node000002" href="$struct_h_o_f_party.html" title=" " alt="" coords="11,102,91,128"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="53,142,54,198,48,198,49,144"/>
+<area shape="rect" id="Node000003" href="$struct_h_o_f_mon.html" title=" " alt="" coords="14,5,88,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="52,44,54,102,48,101,50,49"/>
+</map>

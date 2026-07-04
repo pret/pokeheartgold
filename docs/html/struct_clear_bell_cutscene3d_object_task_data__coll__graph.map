@@ -1,0 +1,30 @@
+<map id="ClearBellCutscene3dObjectTaskData" name="ClearBellCutscene3dObjectTaskData">
+<area shape="rect" id="Node000001" title=" " alt="" coords="759,233,942,274"/>
+<area shape="rect" id="Node000002" href="$struct_field3d_model.html" title=" " alt="" coords="203,200,302,225"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="316,204,356,202,463,199,547,200,630,208,736,223,774,232,769,233,735,228,629,213,546,205,463,204,356,207,319,209"/>
+<area shape="rect" id="Node000005" href="$struct_clear_bell_cutscene3d_object_task_data___soul_silver.html" title=" " alt="" coords="440,233,622,274"/>
+<area shape="poly" id="edge5_Node000005_Node000002" title=" " alt="" coords="316,219,442,239,437,241,317,224"/>
+<area shape="rect" id="Node000003" href="$struct_field3_d_model_animation.html" title=" " alt="" coords="173,337,332,362"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="347,357,479,361,551,357,622,347,675,332,726,313,815,273,810,276,729,318,677,337,623,352,551,362,479,366,348,362"/>
+<area shape="poly" id="edge6_Node000005_Node000003" title=" " alt="" coords="305,329,471,273,468,276,308,334"/>
+<area shape="rect" id="Node000004" href="$struct_field3d_object.html" title=" " alt="" coords="202,417,303,442"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="318,440,383,449,460,453,542,448,583,441,621,431,655,417,688,399,748,355,796,310,830,276,835,273,800,313,751,359,691,403,658,422,623,436,584,447,543,454,460,458,383,454,319,445"/>
+<area shape="poly" id="edge7_Node000005_Node000004" title=" " alt="" coords="306,408,362,380,390,362,414,340,422,328,425,316,429,304,438,290,467,273,463,276,442,294,434,306,430,318,427,330,418,344,393,366,365,385,309,413"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="637,251,761,253,756,255,639,256"/>
+<area shape="rect" id="Node000006" href="$struct_clear_bell_cutscene3d_object_task_data___heart_gold.html" title=" " alt="" coords="440,8,622,49"/>
+<area shape="poly" id="edge8_Node000001_Node000006" title=" " alt="" coords="637,48,689,68,737,96,772,128,802,165,842,233,837,232,798,168,768,131,734,100,687,73,638,53"/>
+<area shape="rect" id="Node000007" href="$struct_bg_config.html" title=" " alt="" coords="215,16,290,41"/>
+<area shape="poly" id="edge9_Node000006_Node000007" title=" " alt="" coords="304,26,442,27,437,30,307,31"/>
+<area shape="rect" id="Node000008" href="$struct_background.html" title=" " alt="" coords="5,16,96,41"/>
+<area shape="poly" id="edge10_Node000007_Node000008" title=" " alt="" coords="110,26,216,26,212,30,113,31"/>
+<area shape="rect" id="Node000009" href="$struct_sys_task.html" title=" " alt="" coords="495,638,567,664"/>
+<area shape="poly" id="edge11_Node000001_Node000009" title=" " alt="" coords="553,625,594,587,645,549,670,538,692,533,713,528,734,513,758,485,779,454,812,386,832,322,844,276,847,272,837,323,816,388,784,456,762,489,737,517,715,533,694,539,672,543,648,553,597,591,556,630"/>
+<area shape="poly" id="edge14_Node000009_Node000009" title=" " alt="" coords="504,621,513,614,531,612,548,614,558,620,561,629,555,640,552,636,556,629,554,623,546,619,531,617,515,619,506,625"/>
+<area shape="rect" id="Node000010" href="$struct_sys_task_queue.html" title=" " alt="" coords="795,665,906,690"/>
+<area shape="poly" id="edge13_Node000010_Node000009" title=" " alt="" coords="583,653,798,673,792,673,583,658"/>
+<area shape="poly" id="edge12_Node000009_Node000010" title=" " alt="" coords="796,695,723,710,684,711,646,706,595,688,554,667,555,662,597,683,647,701,684,705,723,704,791,695"/>
+<area shape="rect" id="Node000011" href="$struct_camera_param.html" title=" " alt="" coords="478,73,584,98"/>
+<area shape="poly" id="edge15_Node000001_Node000011" title=" " alt="" coords="588,101,623,114,681,136,737,165,786,198,828,233,823,233,783,203,734,169,679,141,621,119,589,107"/>
+<area shape="rect" id="Node000012" href="$struct_camera_angle.html" title=" " alt="" coords="202,73,302,98"/>
+<area shape="poly" id="edge16_Node000011_Node000012" title=" " alt="" coords="317,83,480,84,476,87,319,88"/>
+</map>

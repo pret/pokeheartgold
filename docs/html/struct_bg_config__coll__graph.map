@@ -1,0 +1,5 @@
+<map id="BgConfig" name="BgConfig">
+<area shape="rect" id="Node000001" title=" " alt="" coords="13,102,88,128"/>
+<area shape="rect" id="Node000002" href="$struct_background.html" title=" " alt="" coords="5,5,96,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="53,45,53,102,48,101,48,48"/>
+</map>

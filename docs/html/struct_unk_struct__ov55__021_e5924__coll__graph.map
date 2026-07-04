@@ -1,0 +1,27 @@
+<map id="UnkStruct_ov55_021E5924" name="UnkStruct_ov55_021E5924">
+<area shape="rect" id="Node000001" title=" " alt="" coords="398,239,578,265"/>
+<area shape="rect" id="Node000002" href="$struct_easy_chat_args.html" title=" " alt="" coords="198,102,304,128"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="259,141,276,180,288,198,303,213,341,228,400,241,395,241,340,233,300,218,284,201,271,182,256,145"/>
+<area shape="rect" id="Node000003" href="$struct_pokedex.html" title=" " alt="" coords="5,5,78,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="55,42,72,61,90,76,116,89,143,98,199,110,195,112,142,103,113,94,87,80,68,64,56,47"/>
+<area shape="rect" id="Node000004" href="$struct_save_easy_chat.html" title=" " alt="" coords="102,5,211,31"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="151,44,154,62,160,76,177,92,200,104,195,105,174,97,155,80,149,63,150,49"/>
+<area shape="rect" id="Node000005" href="$struct_mail_message.html" title=" " alt="" coords="307,5,405,31"/>
+<area shape="poly" id="edge14_Node000001_Node000005" title=" " alt="" coords="364,44,377,77,403,125,433,171,481,240,476,238,428,174,399,128,372,79,362,48"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="290,30,272,41,255,57,250,67,248,79,250,102,245,100,243,78,245,65,250,53,269,37,294,27"/>
+<area shape="rect" id="Node000009" href="$struct_unk_struct__ov55__021_e5_b08.html" title=" " alt="" coords="486,102,669,128"/>
+<area shape="poly" id="edge13_Node000009_Node000005" title=" " alt="" coords="370,42,386,61,403,76,443,94,489,107,483,108,442,99,400,80,382,64,369,47"/>
+<area shape="rect" id="Node000006" href="$struct_menu_input_state_mgr.html" title=" " alt="" coords="514,5,649,31"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="547,38,521,57,509,69,495,80,450,96,413,100,375,101,327,105,305,108,304,103,327,99,374,95,412,95,449,91,492,76,505,65,518,53,543,40"/>
+<area shape="poly" id="edge11_Node000009_Node000006" title=" " alt="" coords="605,40,613,54,616,67,613,79,595,104,592,99,608,77,611,67,608,56,603,45"/>
+<area shape="rect" id="Node000007" href="$struct_overlay_manager.html" title=" " alt="" coords="693,102,809,128"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="698,133,663,154,645,170,634,185,622,202,603,218,576,231,547,241,546,236,574,226,600,213,618,198,629,182,641,166,660,149,693,135"/>
+<area shape="rect" id="Node000008" href="$struct_overlay_manager_template.html" title=" " alt="" coords="666,239,836,265"/>
+<area shape="poly" id="edge8_Node000008_Node000007" title=" " alt="" coords="724,137,716,153,708,184,716,214,724,227,735,240,730,238,720,230,711,216,702,184,711,151,720,140"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="752,222,752,215,752,152,751,130,754,126,757,152,757,215,756,226"/>
+<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="564,140,498,241,495,237,559,142"/>
+<area shape="rect" id="Node000010" href="$struct_options.html" title=" " alt="" coords="760,5,827,31"/>
+<area shape="poly" id="edge10_Node000009_Node000010" title=" " alt="" coords="780,43,763,64,743,80,707,96,670,107,668,102,705,91,740,76,760,60,775,45"/>
+<area shape="rect" id="Node000011" href="$struct_string.html" title=" " alt="" coords="851,5,906,31"/>
+<area shape="poly" id="edge12_Node000009_Node000011" title=" " alt="" coords="864,42,846,64,824,80,765,93,669,106,668,101,764,88,822,76,843,60,860,45"/>
+</map>

@@ -1,0 +1,11 @@
+<map id="PhotoAlbumScroll" name="PhotoAlbumScroll">
+<area shape="rect" id="Node000001" title=" " alt="" coords="79,295,204,321"/>
+<area shape="rect" id="Node000002" href="$struct_photo.html" title=" " alt="" coords="114,199,169,224"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="144,238,144,296,139,294,140,241"/>
+<area shape="rect" id="Node000003" href="$struct_photo_camera_param.html" title=" " alt="" coords="5,102,145,128"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="93,138,136,197,130,199,91,143"/>
+<area shape="rect" id="Node000004" href="$struct_camera_angle.html" title=" " alt="" coords="25,5,125,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="76,44,78,102,72,101,74,49"/>
+<area shape="rect" id="Node000005" href="$struct_photo_mon.html" title=" " alt="" coords="168,102,248,128"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="195,139,173,176,154,200,150,197,169,173,192,143"/>
+</map>

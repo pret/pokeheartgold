@@ -1,0 +1,9 @@
+<map id="FrontierMap" name="FrontierMap">
+<area shape="rect" id="Node000001" title=" " alt="" coords="31,295,121,321"/>
+<area shape="rect" id="Node000002" href="$struct_palette_data.html" title=" " alt="" coords="31,199,121,224"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="78,238,79,295,73,294,74,241"/>
+<area shape="rect" id="Node000003" href="$struct_palette_buffer.html" title=" " alt="" coords="27,102,125,128"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="77,140,79,198,73,198,75,145"/>
+<area shape="rect" id="Node000004" href="$struct_selected_palette_data.html" title=" " alt="" coords="5,5,147,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="77,44,79,102,73,101,75,49"/>
+</map>

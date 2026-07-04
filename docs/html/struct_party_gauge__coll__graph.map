@@ -1,0 +1,28 @@
+<map id="PartyGauge" name="PartyGauge">
+<area shape="rect" id="Node000001" title=" " alt="" coords="232,570,323,595"/>
+<area shape="rect" id="Node000002" href="$struct_party_gauge_arrow.html" title=" " alt="" coords="137,473,261,499"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="220,508,270,569,265,569,217,513"/>
+<area shape="rect" id="Node000003" href="$struct_managed_sprite.html" title=" " alt="" coords="201,276,309,302"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="185,306,157,322,133,346,119,373,115,397,119,421,133,448,144,461,161,472,156,473,141,465,128,450,114,422,109,397,114,371,128,343,154,318,188,302"/>
+<area shape="rect" id="Node000010" href="$struct_party_gauge_pokeballs.html" title=" " alt="" coords="285,473,432,499"/>
+<area shape="poly" id="edge15_Node000010_Node000003" title=" " alt="" coords="248,314,243,346,240,381,244,416,258,447,271,461,290,473,284,473,268,465,254,451,239,417,235,381,238,346,245,319"/>
+<area shape="rect" id="Node000004" href="$struct_sprite.html" title=" " alt="" coords="491,111,546,136"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="485,148,462,171,450,188,443,204,434,219,419,235,393,252,365,264,311,281,308,276,363,259,391,247,416,231,430,216,438,202,445,185,458,168,489,144"/>
+<area shape="poly" id="edge6_Node000004_Node000004" title=" " alt="" coords="562,112,570,116,573,124,565,135,548,137,546,132,562,130,568,123,566,120,562,117"/>
+<area shape="rect" id="Node000005" href="$struct_sprite_list.html" title=" " alt="" coords="562,276,638,302"/>
+<area shape="poly" id="edge5_Node000005_Node000004" title=" " alt="" coords="512,149,508,191,510,212,517,231,583,275,577,276,512,235,505,213,503,191,509,154"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="596,259,587,217,580,193,569,171,554,153,538,140,538,134,558,149,573,168,584,191,593,215,601,261"/>
+<area shape="rect" id="Node000006" href="$struct_sprite_resources_header.html" title=" " alt="" coords="5,5,166,31"/>
+<area shape="poly" id="edge7_Node000003_Node000006" title=" " alt="" coords="76,48,70,94,72,120,79,144,92,167,109,189,150,225,192,253,230,274,225,276,189,258,146,229,106,192,88,170,74,146,66,121,65,93,77,43"/>
+<area shape="rect" id="Node000007" href="$struct_sprite_resource_header_list.html" title=" " alt="" coords="233,111,407,136"/>
+<area shape="poly" id="edge9_Node000007_Node000006" title=" " alt="" coords="126,35,295,109,290,112,127,40"/>
+<area shape="poly" id="edge8_Node000003_Node000007" title=" " alt="" coords="279,147,270,158,261,171,252,198,249,227,255,276,249,275,244,227,246,197,256,168,266,154,283,143"/>
+<area shape="rect" id="Node000008" href="$struct_sys_task.html" title=" " alt="" coords="408,276,480,302"/>
+<area shape="poly" id="edge10_Node000002_Node000008" title=" " alt="" coords="412,309,394,328,379,346,372,360,369,374,369,399,368,425,363,438,352,451,319,463,262,476,261,471,317,458,349,447,358,435,363,424,364,399,364,373,367,358,374,343,390,324,408,312"/>
+<area shape="poly" id="edge13_Node000008_Node000008" title=" " alt="" coords="479,270,498,274,505,280,507,289,503,300,492,307,479,308,465,305,464,299,479,303,491,301,499,297,502,289,500,283,496,278,480,275"/>
+<area shape="rect" id="Node000009" href="$struct_sys_task_queue.html" title=" " alt="" coords="489,473,599,499"/>
+<area shape="poly" id="edge12_Node000009_Node000008" title=" " alt="" coords="495,300,528,317,543,329,555,343,566,378,566,415,560,448,551,474,547,471,555,447,561,414,561,379,550,346,539,333,526,321,495,306"/>
+<area shape="poly" id="edge16_Node000010_Node000008" title=" " alt="" coords="447,315,443,381,434,417,417,451,404,465,388,475,386,470,400,460,413,447,429,415,438,380,444,319"/>
+<area shape="poly" id="edge11_Node000008_Node000009" title=" " alt="" coords="516,461,507,450,494,422,490,398,486,374,476,346,452,305,454,300,481,344,491,373,495,397,499,421,511,448,521,462"/>
+<area shape="poly" id="edge14_Node000001_Node000010" title=" " alt="" coords="341,510,289,571,286,567,336,512"/>
+</map>

@@ -1,0 +1,9 @@
+<map id="CutsceneSprite" name="CutsceneSprite">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,160,117,186"/>
+<area shape="rect" id="Node000002" href="$struct_sprite.html" title=" " alt="" coords="104,14,159,40"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="92,51,74,74,65,96,61,120,62,160,57,159,56,119,60,95,69,71,95,47"/>
+<area shape="poly" id="edge4_Node000002_Node000002" title=" " alt="" coords="169,10,181,16,186,27,183,36,175,42,155,43,154,38,174,37,179,33,181,27,178,19,170,16"/>
+<area shape="rect" id="Node000003" href="$struct_sprite_list.html" title=" " alt="" coords="158,160,234,186"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="124,53,120,95,122,116,130,135,142,149,160,161,154,160,139,153,125,138,117,117,115,95,121,57"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="195,143,193,110,181,74,168,56,152,43,152,38,171,53,186,71,198,109,200,146"/>
+</map>

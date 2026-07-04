@@ -1,0 +1,18 @@
+<map id="TrainerCardAppState" name="TrainerCardAppState">
+<area shape="rect" id="Node000001" title=" " alt="" coords="213,336,356,362"/>
+<area shape="rect" id="Node000002" href="$struct_overlay_manager.html" title=" " alt="" coords="70,199,187,224"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="163,230,184,246,199,264,209,279,219,293,234,310,266,336,261,335,231,314,215,297,205,282,195,267,180,250,162,236"/>
+<area shape="rect" id="Node000003" href="$struct_overlay_manager_template.html" title=" " alt="" coords="5,336,175,362"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="73,235,62,250,54,265,53,279,62,311,79,336,73,336,57,313,47,279,49,264,57,247,76,230"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="95,320,123,226,128,224,100,322"/>
+<area shape="rect" id="Node000004" href="$struct_ov50__021_e5_a3_c.html" title=" " alt="" coords="238,199,360,224"/>
+<area shape="poly" id="edge4_Node000001_Node000004" title=" " alt="" coords="299,238,288,337,284,334,294,241"/>
+<area shape="rect" id="Node000005" href="$struct_save_data.html" title=" " alt="" coords="260,102,339,128"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="301,141,302,199,297,197,298,145"/>
+<area shape="rect" id="Node000006" href="$struct_save_array_header.html" title=" " alt="" coords="98,5,223,31"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="176,41,192,60,210,76,234,90,262,102,257,104,232,95,206,80,188,64,176,47"/>
+<area shape="rect" id="Node000007" href="$struct_save_slot_spec.html" title=" " alt="" coords="247,5,352,31"/>
+<area shape="poly" id="edge7_Node000005_Node000007" title=" " alt="" coords="301,44,302,102,297,101,298,49"/>
+<area shape="rect" id="Node000008" href="$struct_async_write_manager.html" title=" " alt="" coords="376,5,514,31"/>
+<area shape="poly" id="edge8_Node000005_Node000008" title=" " alt="" coords="433,43,419,64,402,80,372,97,341,108,338,103,370,92,399,76,415,60,429,46"/>
+</map>

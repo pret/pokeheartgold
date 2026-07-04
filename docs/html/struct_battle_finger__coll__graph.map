@@ -1,0 +1,9 @@
+<map id="BattleFinger" name="BattleFinger">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,221,97,247"/>
+<area shape="rect" id="Node000002" href="$struct_sys_task.html" title=" " alt="" coords="79,24,151,50"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="80,61,67,76,55,94,45,128,43,164,51,221,45,221,38,164,40,127,50,92,63,73,83,57"/>
+<area shape="poly" id="edge4_Node000002_Node000002" title=" " alt="" coords="143,15,167,18,175,25,178,37,173,52,161,59,145,59,130,53,129,48,146,54,159,54,169,48,173,37,170,28,165,22,145,20"/>
+<area shape="rect" id="Node000003" href="$struct_sys_task_queue.html" title=" " alt="" coords="146,221,257,247"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="107,63,101,95,97,129,100,164,113,196,128,210,149,223,143,223,125,215,108,199,94,165,91,129,96,94,104,67"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="206,205,210,152,207,122,197,94,174,70,148,53,147,48,178,66,201,92,212,121,216,152,210,208"/>
+</map>

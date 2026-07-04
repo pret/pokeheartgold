@@ -1,0 +1,26 @@
+var struct_c_a_r_di_common =
+[
+    [ "ALIGN", "struct_c_a_r_di_common.html#a146d37526f9deeb812b26eaaa07d8a1b", null ],
+    [ "busy_q", "struct_c_a_r_di_common.html#a272d98da4d1fcecc6c7458bf9b593ae8", null ],
+    [ "callback", "struct_c_a_r_di_common.html#a27099e088202f82562114e56384ac75e", null ],
+    [ "callback_arg", "struct_c_a_r_di_common.html#af159a3869ac7d02bc42855dd85f7f4ef", null ],
+    [ "cmd", "struct_c_a_r_di_common.html#a7610ad77e1ab4347497157f644d89e7c", null ],
+    [ "command", "struct_c_a_r_di_common.html#a42a01d997b3139857aba8a02739c801e", null ],
+    [ "cur_th", "struct_c_a_r_di_common.html#a675514490f0c9adbf13612a3d89794bc", null ],
+    [ "dma", "struct_c_a_r_di_common.html#afad2ffa9623780245b1767a8d8ecb695", null ],
+    [ "dst", "struct_c_a_r_di_common.html#aaf6ab83cb660ef7a50f2ba6efc713536", null ],
+    [ "dummy", "struct_c_a_r_di_common.html#ac684638f7d7e76c1b1657ac364d22f6d", null ],
+    [ "flag", "struct_c_a_r_di_common.html#a385251f6e9750c1075d4bb99ce7d0a0e", null ],
+    [ "len", "struct_c_a_r_di_common.html#a88b353e72f1eacbebb4379c4daae098b", null ],
+    [ "lock_owner", "struct_c_a_r_di_common.html#a3cb1b59725cca1b73306a639ca325545", null ],
+    [ "lock_queue", "struct_c_a_r_di_common.html#a61da402ed2809f1e2a143f028d155fd0", null ],
+    [ "lock_ref", "struct_c_a_r_di_common.html#a029734bded12e8bb896b5bb70136e2d0", null ],
+    [ "lock_target", "struct_c_a_r_di_common.html#ae5bf949a76480c14ca0df545613c6e6e", null ],
+    [ "priority", "struct_c_a_r_di_common.html#adfe24f62ddb3fe4e8d9a03c18ee9eaf7", null ],
+    [ "req_mode", "struct_c_a_r_di_common.html#a470d30103165d6fd5d91f8fb6414f573", null ],
+    [ "req_retry", "struct_c_a_r_di_common.html#af200cfed3a1b0e90a6dde41930861774", null ],
+    [ "req_type", "struct_c_a_r_di_common.html#ad0bda4777b440652d2f491773a886b19", null ],
+    [ "src", "struct_c_a_r_di_common.html#a5a777308cbf7040e142b15984ef44d7f", null ],
+    [ "task_func", "struct_c_a_r_di_common.html#a1565167e318ee8a120e7c9179ada146b", null ],
+    [ "thread", "struct_c_a_r_di_common.html#a686252b8e40dbbc4485aa567c3a5614a", null ]
+];

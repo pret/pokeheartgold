@@ -1,0 +1,9 @@
+<map id="BattleCursor" name="BattleCursor">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,221,100,247"/>
+<area shape="rect" id="Node000002" href="$struct_sys_task.html" title=" " alt="" coords="80,24,153,50"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="82,61,69,76,57,94,47,128,45,164,52,221,47,221,40,164,42,127,52,92,65,73,84,57"/>
+<area shape="poly" id="edge4_Node000002_Node000002" title=" " alt="" coords="144,15,168,18,176,25,179,37,175,52,162,59,147,59,132,53,131,48,147,54,161,54,170,48,174,37,172,28,166,22,147,20"/>
+<area shape="rect" id="Node000003" href="$struct_sys_task_queue.html" title=" " alt="" coords="149,221,260,247"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="108,63,102,95,98,129,101,164,114,196,130,211,152,223,146,223,127,215,110,199,96,165,93,129,97,94,106,67"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="208,205,212,152,209,122,198,94,176,70,149,53,149,48,179,66,203,92,214,121,218,152,213,208"/>
+</map>

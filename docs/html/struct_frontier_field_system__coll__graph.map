@@ -1,0 +1,11 @@
+<map id="FrontierFieldSystem" name="FrontierFieldSystem">
+<area shape="rect" id="Node000001" title=" " alt="" coords="127,219,265,245"/>
+<area shape="rect" id="Node000002" href="$struct_frontier_trainer.html" title=" " alt="" coords="60,102,166,128"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="115,141,121,169,132,193,146,206,163,219,158,218,142,211,128,197,116,171,112,146"/>
+<area shape="rect" id="Node000003" href="$struct_mail_message.html" title=" " alt="" coords="5,5,104,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="51,44,55,62,60,77,71,90,87,101,82,103,68,94,56,79,50,63,51,50"/>
+<area shape="rect" id="Node000004" href="$struct_frontier_mon.html" title=" " alt="" coords="128,5,218,31"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="163,43,146,79,127,103,123,100,142,77,160,48"/>
+<area shape="rect" id="Node000005" href="$struct_frontier_multi_battle_ally_data.html" title=" " alt="" coords="190,102,367,128"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="275,141,266,170,251,197,222,221,219,216,247,193,262,168,271,144"/>
+</map>
