@@ -3,7 +3,7 @@
 #include "global.h"
 
 #include "data/resdat.naix"
-#include "field/ov01_021E7FDC.h"
+#include "field/field_sprite_manager.h"
 #include "msgdata/msg.naix"
 
 #include "field_take_photo.h"

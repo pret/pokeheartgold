@@ -1,5 +1,5 @@
-#ifndef POKEHEARTGOLD_FIELD_OV01_021E7FDC_H
-#define POKEHEARTGOLD_FIELD_OV01_021E7FDC_H
+#ifndef POKEHEARTGOLD_FIELD_FIELD_SPRITE_MANAGER_H
+#define POKEHEARTGOLD_FIELD_FIELD_SPRITE_MANAGER_H
 
 #include "sprite.h"
 #include "sprite_system.h"
@@ -29,4 +29,4 @@ void FieldSpriteManager_AddCharRes(FieldSpriteManager *fieldSpriteManager, NarcI
 ManagedSprite *FieldSpriteManager_CreateManagedSprite(FieldSpriteManager *fieldSpriteManager, const ManagedSpriteTemplate *a1);
 void FieldSpriteManager_ReleaseWithoutResDat(FieldSpriteManager *fieldSpriteManager);
 
-#endif // POKEHEARTGOLD_FIELD_OV01_021E7FDC_H
+#endif // POKEHEARTGOLD_FIELD_FIELD_SPRITE_MANAGER_H

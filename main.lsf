@@ -489,7 +489,7 @@ Overlay field
     Object asm/overlay_01_021E5900.o
     Object src/field/overlay_01_021E66E4.o
     Object asm/overlay_01_021E6880.o
-    Object src/field/overlay_01_021E7FDC.o
+    Object src/field/field_sprite_manager.o
     Object asm/overlay_01_021E8744.o
     Object asm/overlay_01_021E90C0.o
     Object asm/overlay_01_021EA6C4.o

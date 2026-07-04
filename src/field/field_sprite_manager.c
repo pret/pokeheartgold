@@ -1,6 +1,6 @@
-#include "global.h"
+#include "field/field_sprite_manager.h"
 
-#include "field/ov01_021E7FDC.h"
+#include "global.h"
 
 #include "gf_gfx_loader.h"
 #include "unk_0200A090.h"
