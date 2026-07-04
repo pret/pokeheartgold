@@ -70,9 +70,9 @@ Sprite *ov01_021E81F0(UnkStruct_ov01_021E7FDC *a0, const SpriteTemplate_ov01_021
     SpriteTemplate spriteTemplate;
     VecFx32 scale = { FX32_ONE, FX32_ONE, FX32_ONE };
     VecFx32 position = {
-        a1->xPos * FX32_ONE,
-        a1->yPos * FX32_ONE,
-        a1->zPos * FX32_ONE,
+        a1->x * FX32_ONE,
+        a1->y * FX32_ONE,
+        a1->z * FX32_ONE,
     };
     Sprite *ret;
 
@@ -194,4 +194,56 @@ void ov01_021E84B0(UnkStruct_ov01_021E7FDC *a0, NarcId a1, int a2, BOOL a3, GfGf
     } else {
         GF_ASSERT(FALSE);
     }
+}
+
+ManagedSprite *ov01_021E851C(UnkStruct_ov01_021E7FDC *a0, const UnkTemplate_ov01_021E851C *a1) {
+    SpriteTemplate spriteTemplate;
+    int resIds[6];
+    ManagedSprite *sprite;
+    int palIndex;
+    int i;
+
+    sprite = Heap_Alloc((enum HeapID)a0->heapID, sizeof(ManagedSprite));
+    sprite->spriteResourceHeaderList = Heap_Alloc((enum HeapID)a0->heapID, sizeof(SpriteResourceHeaderList));
+    sprite->spriteResourceHeaderList->headers = Heap_Alloc((enum HeapID)a0->heapID, sizeof(SpriteResourcesHeader));
+    sprite->spriteResourcesHeader = &sprite->spriteResourceHeaderList->headers[0];
+    for (i = 0; i < GF_GFX_RES_TYPE_MAX; ++i) {
+        resIds[i] = a1->resIds[i];
+    }
+    if (a0->spriteResManagers[GF_GFX_RES_TYPE_MCEL] == NULL || a0->spriteResManagers[GF_GFX_RES_TYPE_MANM] == NULL) {
+        resIds[GF_GFX_RES_TYPE_MCEL] = -1;
+        resIds[GF_GFX_RES_TYPE_MANM] = -1;
+    } else {
+        if (resIds[GF_GFX_RES_TYPE_MCEL] != -1 && !GF2DGfxResObjExistsById(a0->spriteResManagers[GF_GFX_RES_TYPE_MCEL], resIds[GF_GFX_RES_TYPE_MCEL])) {
+            resIds[GF_GFX_RES_TYPE_MCEL] = -1;
+        }
+        if (resIds[GF_GFX_RES_TYPE_MANM] != -1 && !GF2DGfxResObjExistsById(a0->spriteResManagers[GF_GFX_RES_TYPE_MANM], resIds[GF_GFX_RES_TYPE_MANM])) {
+            resIds[GF_GFX_RES_TYPE_MANM] = -1;
+        }
+    }
+    CreateSpriteResourcesHeader(sprite->spriteResourcesHeader, resIds[GF_GFX_RES_TYPE_CHAR], resIds[GF_GFX_RES_TYPE_PLTT], resIds[GF_GFX_RES_TYPE_CELL], resIds[GF_GFX_RES_TYPE_ANIM], resIds[GF_GFX_RES_TYPE_MCEL], resIds[GF_GFX_RES_TYPE_MANM], a1->transfer, a1->priority, a0->spriteResManagers[GF_GFX_RES_TYPE_CHAR], a0->spriteResManagers[GF_GFX_RES_TYPE_PLTT], a0->spriteResManagers[GF_GFX_RES_TYPE_CELL], a0->spriteResManagers[GF_GFX_RES_TYPE_ANIM], a0->spriteResManagers[GF_GFX_RES_TYPE_MCEL], a0->spriteResManagers[GF_GFX_RES_TYPE_MANM]);
+    spriteTemplate.spriteList = a0->spriteList;
+    spriteTemplate.header = sprite->spriteResourcesHeader;
+    spriteTemplate.position.x = FX32_CONST(a1->x);
+    spriteTemplate.position.y = FX32_CONST(a1->y);
+    spriteTemplate.position.z = FX32_CONST(a1->z);
+    if (a1->vramType == NNS_G2D_VRAM_TYPE_2DSUB) {
+        spriteTemplate.position.y += 192 * FX32_ONE;
+    }
+    spriteTemplate.scale.x = FX32_ONE;
+    spriteTemplate.scale.y = FX32_ONE;
+    spriteTemplate.scale.z = FX32_ONE;
+    spriteTemplate.rotation = 0;
+    spriteTemplate.drawPriority = a1->drawPriority;
+    spriteTemplate.whichScreen = a1->vramType;
+    spriteTemplate.heapID = (enum HeapID)a0->heapID;
+    sprite->sprite = Sprite_CreateAffine(&spriteTemplate);
+    if (sprite->sprite != NULL) {
+        palIndex = Sprite_GetPalIndex(sprite->sprite);
+        Sprite_SetAnimCtrlSeq(sprite->sprite, a1->animSeq);
+        Sprite_SetPaletteOverride(sprite->sprite, palIndex + a1->palIndex);
+    } else {
+        GF_ASSERT(FALSE);
+    }
+    return sprite;
 }
