@@ -99,10 +99,10 @@ static const TouchscreenHitbox ov19_0225A05E[] = {
 };
 
 static const u16 sResDatIdxs[] = {
-    2,
-    3,
-    1,
-    0,
+    NARC_resdat_resdat_00000002_bin,
+    NARC_resdat_resdat_00000003_bin,
+    NARC_resdat_resdat_00000001_bin,
+    NARC_resdat_resdat_00000000_bin,
     -1,
     -1,
     NARC_resdat_resdat_00000072_bin,
