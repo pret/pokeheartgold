@@ -98,14 +98,14 @@ static const TouchscreenHitbox ov19_0225A05E[] = {
     { { TOUCHSCREEN_RECTLIST_END } },
 };
 
-static const u16 sResDatIdxs[] = {
-    NARC_resdat_resdat_00000002_bin,
-    NARC_resdat_resdat_00000003_bin,
-    NARC_resdat_resdat_00000001_bin,
-    NARC_resdat_resdat_00000000_bin,
-    -1,
-    -1,
-    NARC_resdat_resdat_00000072_bin,
+static const ResdatIdList sResDatIdxs = {
+    .charRes = NARC_resdat_resdat_00000002_bin,
+    .plttRes = NARC_resdat_resdat_00000003_bin,
+    .cellRes = NARC_resdat_resdat_00000001_bin,
+    .animRes = NARC_resdat_resdat_00000000_bin,
+    .mcelRes = -1,
+    .manmRes = -1,
+    .headerId = NARC_resdat_resdat_00000072_bin,
 };
 
 static const UnmanagedSpriteTemplate sSpriteTemplates[VIEW_PHOTO_NUM_SPRITES] = {
@@ -396,7 +396,7 @@ static void ViewPhotoSysTask_ReleaseWindows(ViewPhotoSysTaskData *viewPhoto) {
 }
 
 static void ViewPhotoSysTask_CreateSprites(ViewPhotoSysTaskData *viewPhoto) {
-    FieldSpriteManager_InitWithResDat(&viewPhoto->spriteRender, sResDatIdxs, VIEW_PHOTO_NUM_SPRITES, viewPhoto->heapID);
+    FieldSpriteManager_InitWithResDat(&viewPhoto->spriteRender, &sResDatIdxs, VIEW_PHOTO_NUM_SPRITES, viewPhoto->heapID);
     for (int i = 0; i < VIEW_PHOTO_NUM_SPRITES; ++i) {
         viewPhoto->sprites[i] = FieldSpriteManager_CreateSprite(&viewPhoto->spriteRender, &sSpriteTemplates[i]);
         Sprite_SetDrawFlag(viewPhoto->sprites[i], TRUE);

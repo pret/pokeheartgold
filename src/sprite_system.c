@@ -19,7 +19,7 @@ static void SpriteManager_FreeResourceHeaders(SpriteManager *spriteManager);
 static void SpriteManager_FreeResources(SpriteManager *spriteManager);
 static void SpriteSystem_FreeVramTransfers(SpriteSystem *spriteSystem);
 static void SpriteSystem_FreeSpriteManager(SpriteSystem *spriteSystem, SpriteManager *spriteManager);
-static BOOL SpriteSystem_LoadResourceDataFromFilepaths(SpriteSystem *spriteSystem, SpriteManager *spriteManager, const u16 *a2, int a3, int a4);
+static BOOL SpriteSystem_LoadResourceDataFromFilepaths(SpriteSystem *spriteSystem, SpriteManager *spriteManager, const ResdatIdList *a2, int a3, int a4);
 static Sprite *CreateSpriteFromResourceHeader(SpriteSystem *spriteSystem, SpriteManager *spriteManager, int headerIndex, s16 x, s16 y, s16 z, u16 animSeqNo, int priority, int palIndex, NNS_G2D_VRAM_TYPE whichScreen, int a10, int a11, int a12, int a13);
 static ManagedSprite *SpriteSystem_NewSpriteInternal(SpriteSystem *spriteSystem, SpriteManager *spriteManager, const ManagedSpriteTemplate *unkTemplate, fx32 yOffset);
 static BOOL LoadResObjInternal(SpriteSystem *spriteSystem, SpriteManager *spriteManager, NarcId narcId, int fileId, BOOL compressed, GfGfxResType a6, int resId);
@@ -154,7 +154,7 @@ void SpriteSystem_Free(SpriteSystem *spriteSystem) {
     Heap_Free(spriteSystem);
 }
 
-static BOOL SpriteSystem_LoadResourceDataFromFilepaths(SpriteSystem *spriteSystem, SpriteManager *spriteManager, const u16 *fileIdList, int loadCharMode, int loadPlttMode) {
+static BOOL SpriteSystem_LoadResourceDataFromFilepaths(SpriteSystem *spriteSystem, SpriteManager *spriteManager, const ResdatIdList *fileIdList, int loadCharMode, int loadPlttMode) {
     int i;
     int numGfxResTypes;
     int size;
@@ -167,7 +167,7 @@ static BOOL SpriteSystem_LoadResourceDataFromFilepaths(SpriteSystem *spriteSyste
     if (spriteSystem == NULL || spriteManager == NULL) {
         return FALSE;
     }
-    if (fileIdList[GF_GFX_RES_TYPE_MCEL] == 0xFFFF) {
+    if (fileIdList->mcelRes == 0xFFFF) {
         numGfxResTypes = GF_GFX_RES_TYPE_MAX - 2;
     }
     spriteManager->numGfxResObjectTypes = numGfxResTypes;
@@ -177,7 +177,7 @@ static BOOL SpriteSystem_LoadResourceDataFromFilepaths(SpriteSystem *spriteSyste
 
     for (i = 0; i < numGfxResTypes; ++i) {
         header = GF2DGfxResHeader_GetByIndex(spriteManager->_2dGfxResHeader, i);
-        data = GfGfxLoader_LoadFromOpenNarc(narc, fileIdList[i], FALSE, spriteSystem->heapID, TRUE);
+        data = GfGfxLoader_LoadFromOpenNarc(narc, fileIdList->raw[i], FALSE, spriteSystem->heapID, TRUE);
         GF2DGfxResHeader_Init((GF_2DGfxResHeaderNarcList *)data, header, spriteSystem->heapID);
         Heap_Free(data);
     }
@@ -213,7 +213,7 @@ static BOOL SpriteSystem_LoadResourceDataFromFilepaths(SpriteSystem *spriteSyste
         SpriteTransfer_CreateAllExtPlttTransferTasks(spriteManager->_2dGfxResObjList[GF_GFX_RES_TYPE_PLTT]);
         break;
     }
-    data = GfGfxLoader_LoadFromOpenNarc(narc, fileIdList[6], FALSE, spriteSystem->heapID, TRUE);
+    data = GfGfxLoader_LoadFromOpenNarc(narc, fileIdList->headerId, FALSE, spriteSystem->heapID, TRUE);
     spriteManager->spriteHeaderList = SpriteResourceHeaderList_Create(
         (struct ResdatNarcEntry *)data,
         spriteSystem->heapID,
@@ -228,11 +228,11 @@ static BOOL SpriteSystem_LoadResourceDataFromFilepaths(SpriteSystem *spriteSyste
     return TRUE;
 }
 
-BOOL sub_0200D294(SpriteSystem *spriteSystem, SpriteManager *spriteManager, const u16 *fileIdList) {
+BOOL sub_0200D294(SpriteSystem *spriteSystem, SpriteManager *spriteManager, const ResdatIdList *fileIdList) {
     return SpriteSystem_LoadResourceDataFromFilepaths(spriteSystem, spriteManager, fileIdList, 2, 1);
 }
 
-BOOL sub_0200D2A4(SpriteSystem *spriteSystem, SpriteManager *spriteManager, const u16 *fileIdList, int loadCharMode, int loadPlttMode) {
+BOOL sub_0200D2A4(SpriteSystem *spriteSystem, SpriteManager *spriteManager, const ResdatIdList *fileIdList, int loadCharMode, int loadPlttMode) {
     return SpriteSystem_LoadResourceDataFromFilepaths(spriteSystem, spriteManager, fileIdList, loadCharMode, loadPlttMode);
 }
 

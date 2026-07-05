@@ -16,7 +16,7 @@ typedef struct FieldSpriteManager {
 } FieldSpriteManager;
 
 // With these functions, the SpriteResourceHeaderList is owned by the FieldSpriteManager.
-void FieldSpriteManager_InitWithResDat(FieldSpriteManager *fieldSpriteManager, const u16 *resDatIdxs, int numSprites, enum HeapID heapID);
+void FieldSpriteManager_InitWithResDat(FieldSpriteManager *fieldSpriteManager, const ResdatIdList *resDatIdxs, int numSprites, enum HeapID heapID);
 void FieldSpriteManager_ReleaseWithResDat(FieldSpriteManager *fieldSpriteManager);
 Sprite *FieldSpriteManager_CreateSprite(FieldSpriteManager *fieldSpriteManager, const UnmanagedSpriteTemplate *a1);
 

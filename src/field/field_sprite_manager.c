@@ -9,7 +9,7 @@
 static BOOL TryAddSpriteResourceToObjList(GF_2DGfxResObjList *objList, SpriteResource *spriteResource);
 static void FieldSpriteManager_AddCellOrAnimRes(FieldSpriteManager *fieldSpriteManager, NarcId narcId, int fileId, BOOL compressed, GfGfxResType resType, int resId);
 
-void FieldSpriteManager_InitWithResDat(FieldSpriteManager *fieldSpriteManager, const u16 *resDatIdxs, int numSprites, enum HeapID heapID) {
+void FieldSpriteManager_InitWithResDat(FieldSpriteManager *fieldSpriteManager, const ResdatIdList *resDatIdxs, int numSprites, enum HeapID heapID) {
     GF_2DGfxResHeader *curResHeader;
     NARC *resdatNarc;
     GF_2DGfxResHeader *resHeaders;
@@ -18,16 +18,16 @@ void FieldSpriteManager_InitWithResDat(FieldSpriteManager *fieldSpriteManager, c
 
     fieldSpriteManager->spriteList = G2dRenderer_Init(numSprites, &fieldSpriteManager->renderer, heapID);
     fieldSpriteManager->heapID = heapID;
-    if (resDatIdxs[GF_GFX_RES_TYPE_MCEL] == 0xFFFF) {
-        fieldSpriteManager->numResMans = 4;
+    if (resDatIdxs->mcelRes == 0xFFFF) {
+        fieldSpriteManager->numResMans = GF_GFX_RES_TYPE_MAX - 2;
     } else {
-        fieldSpriteManager->numResMans = 6;
+        fieldSpriteManager->numResMans = GF_GFX_RES_TYPE_MAX;
     }
     resHeaders = Heap_Alloc(heapID, GF2DGfxResHeader_sizeof() * fieldSpriteManager->numResMans);
     resdatNarc = NARC_New(NARC_data_resdat, heapID);
     for (i = 0; i < fieldSpriteManager->numResMans; ++i) {
         curResHeader = GF2DGfxResHeader_GetByIndex(resHeaders, i);
-        GF_2DGfxResHeaderNarcList *narcList = GfGfxLoader_LoadFromOpenNarc(resdatNarc, resDatIdxs[i], FALSE, heapID, TRUE);
+        GF_2DGfxResHeaderNarcList *narcList = GfGfxLoader_LoadFromOpenNarc(resdatNarc, resDatIdxs->raw[i], FALSE, heapID, TRUE);
         GF2DGfxResHeader_Init(narcList, curResHeader, heapID);
         Heap_Free(narcList);
     }
@@ -47,7 +47,7 @@ void FieldSpriteManager_InitWithResDat(FieldSpriteManager *fieldSpriteManager, c
     Heap_Free(resHeaders);
     SpriteTransfer_CreateAllCharTransferTasks_AllocAtEnd(fieldSpriteManager->spriteResObjLists[GF_GFX_RES_TYPE_CHAR]);
     SpriteTransfer_CreateAllPlttTransferTasks(fieldSpriteManager->spriteResObjLists[GF_GFX_RES_TYPE_PLTT]);
-    resdatNarcEntry = GfGfxLoader_LoadFromOpenNarc(resdatNarc, resDatIdxs[6], FALSE, heapID, TRUE);
+    resdatNarcEntry = GfGfxLoader_LoadFromOpenNarc(resdatNarc, resDatIdxs->headerId, FALSE, heapID, TRUE);
     fieldSpriteManager->spriteResourceHeaderList = SpriteResourceHeaderList_Create(resdatNarcEntry, heapID, fieldSpriteManager->spriteResManagers[GF_GFX_RES_TYPE_CHAR], fieldSpriteManager->spriteResManagers[GF_GFX_RES_TYPE_PLTT], fieldSpriteManager->spriteResManagers[GF_GFX_RES_TYPE_CELL], fieldSpriteManager->spriteResManagers[GF_GFX_RES_TYPE_ANIM], fieldSpriteManager->spriteResManagers[GF_GFX_RES_TYPE_MCEL], fieldSpriteManager->spriteResManagers[GF_GFX_RES_TYPE_MANM]);
     Heap_Free(resdatNarcEntry);
     NARC_Delete(resdatNarc);
@@ -104,11 +104,11 @@ void FieldSpriteManager_InitEmptyResLists(FieldSpriteManager *fieldSpriteManager
     fieldSpriteManager->spriteList = G2dRenderer_Init(numSprites, &fieldSpriteManager->renderer, heapId);
     fieldSpriteManager->heapID = heapId;
     if (resDatCounts[GF_GFX_RES_TYPE_MCEL] == 0 || resDatCounts[GF_GFX_RES_TYPE_MANM] == 0) {
-        fieldSpriteManager->numResMans = 4;
+        fieldSpriteManager->numResMans = GF_GFX_RES_TYPE_MAX - 2;
         fieldSpriteManager->spriteResManagers[GF_GFX_RES_TYPE_MCEL] = NULL;
         fieldSpriteManager->spriteResManagers[GF_GFX_RES_TYPE_MANM] = NULL;
     } else {
-        fieldSpriteManager->numResMans = 6;
+        fieldSpriteManager->numResMans = GF_GFX_RES_TYPE_MAX;
     }
     for (i = 0; i < fieldSpriteManager->numResMans; ++i) {
         fieldSpriteManager->spriteResManagers[i] = Create2DGfxResObjMan(resDatCounts[i], (GfGfxResType)i, heapId);

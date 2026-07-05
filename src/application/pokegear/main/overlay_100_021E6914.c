@@ -11,7 +11,7 @@ typedef struct PokegearObjResSpec {
     u32 maxSprites;
     const OamManagerParam *oamManagerParam;
     const OamCharTransferParam *oamCharTransferParam;
-    const u16 *resIdList;
+    const ResdatIdList *resIdList;
 } PokegearObjResSpec;
 
 static void PokegearUIManager_LoadInitialGfx(PokegearUIManager *uiManager, u16 skin);
@@ -37,50 +37,50 @@ static const OamCharTransferParam sOamCharTransferParam = {
     .charModeSub = GX_OBJVRAMMODE_CHAR_1D_32K,
 };
 
-static const u16 sResList_Map[] = {
-    NARC_resdat_resdat_00000034_bin,
-    NARC_resdat_resdat_00000035_bin,
-    NARC_resdat_resdat_00000033_bin,
-    NARC_resdat_resdat_00000032_bin,
-    0xFFFF,
-    0xFFFF,
-    NARC_resdat_resdat_00000080_bin,
+static const ResdatIdList sResList_Map = {
+    .charRes = NARC_resdat_resdat_00000034_bin,
+    .plttRes = NARC_resdat_resdat_00000035_bin,
+    .cellRes = NARC_resdat_resdat_00000033_bin,
+    .animRes = NARC_resdat_resdat_00000032_bin,
+    .mcelRes = 0xFFFF,
+    .manmRes = 0xFFFF,
+    .headerId = NARC_resdat_resdat_00000080_bin,
 };
-static const u16 sResList_Configure[] = {
-    NARC_resdat_resdat_00000042_bin,
-    NARC_resdat_resdat_00000043_bin,
-    NARC_resdat_resdat_00000041_bin,
-    NARC_resdat_resdat_00000040_bin,
-    0xFFFF,
-    0xFFFF,
-    NARC_resdat_resdat_00000082_bin,
+static const ResdatIdList sResList_Configure = {
+    .charRes = NARC_resdat_resdat_00000042_bin,
+    .plttRes = NARC_resdat_resdat_00000043_bin,
+    .cellRes = NARC_resdat_resdat_00000041_bin,
+    .animRes = NARC_resdat_resdat_00000040_bin,
+    .mcelRes = 0xFFFF,
+    .manmRes = 0xFFFF,
+    .headerId = NARC_resdat_resdat_00000082_bin,
 };
-static const u16 sResList_Phone[] = {
-    NARC_resdat_resdat_00000046_bin,
-    NARC_resdat_resdat_00000047_bin,
-    NARC_resdat_resdat_00000045_bin,
-    NARC_resdat_resdat_00000044_bin,
-    0xFFFF,
-    0xFFFF,
-    NARC_resdat_resdat_00000083_bin,
+static const ResdatIdList sResList_Phone = {
+    .charRes = NARC_resdat_resdat_00000046_bin,
+    .plttRes = NARC_resdat_resdat_00000047_bin,
+    .cellRes = NARC_resdat_resdat_00000045_bin,
+    .animRes = NARC_resdat_resdat_00000044_bin,
+    .mcelRes = 0xFFFF,
+    .manmRes = 0xFFFF,
+    .headerId = NARC_resdat_resdat_00000083_bin,
 };
-static const u16 sResList_Radio[] = {
-    NARC_resdat_resdat_00000038_bin,
-    NARC_resdat_resdat_00000039_bin,
-    NARC_resdat_resdat_00000037_bin,
-    NARC_resdat_resdat_00000036_bin,
-    0xFFFF,
-    0xFFFF,
-    NARC_resdat_resdat_00000081_bin,
+static const ResdatIdList sResList_Radio = {
+    .charRes = NARC_resdat_resdat_00000038_bin,
+    .plttRes = NARC_resdat_resdat_00000039_bin,
+    .cellRes = NARC_resdat_resdat_00000037_bin,
+    .animRes = NARC_resdat_resdat_00000036_bin,
+    .mcelRes = 0xFFFF,
+    .manmRes = 0xFFFF,
+    .headerId = NARC_resdat_resdat_00000081_bin,
 };
 
 // clang-format off
 static const PokegearObjResSpec sPokegearObjResSpecs[] = {
-    [GEAR_APP_CONFIGURE] = { 0x80, &sOamManagerParam, &sOamCharTransferParam, sResList_Configure },
-    [GEAR_APP_RADIO]     = { 0x80, &sOamManagerParam, &sOamCharTransferParam, sResList_Radio     },
-    [GEAR_APP_MAP]       = { 0xC0, &sOamManagerParam, &sOamCharTransferParam, sResList_Map       },
-    [GEAR_APP_PHONE]     = { 0x80, &sOamManagerParam, &sOamCharTransferParam, sResList_Phone     },
-    [GEAR_APP_CANCEL]    = { 0x80, &sOamManagerParam, &sOamCharTransferParam, sResList_Map       },
+    [GEAR_APP_CONFIGURE] = { 0x80, &sOamManagerParam, &sOamCharTransferParam, &sResList_Configure },
+    [GEAR_APP_RADIO]     = { 0x80, &sOamManagerParam, &sOamCharTransferParam, &sResList_Radio     },
+    [GEAR_APP_MAP]       = { 0xC0, &sOamManagerParam, &sOamCharTransferParam, &sResList_Map       },
+    [GEAR_APP_PHONE]     = { 0x80, &sOamManagerParam, &sOamCharTransferParam, &sResList_Phone     },
+    [GEAR_APP_CANCEL]    = { 0x80, &sOamManagerParam, &sOamCharTransferParam, &sResList_Map       },
 };
 // clang-format on
 
