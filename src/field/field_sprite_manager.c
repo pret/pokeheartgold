@@ -66,44 +66,44 @@ void FieldSpriteManager_ReleaseWithResDat(FieldSpriteManager *fieldSpriteManager
     }
 }
 
-Sprite *FieldSpriteManager_CreateSprite(FieldSpriteManager *fieldSpriteManager, const UnmanagedSpriteTemplate *a1) {
+Sprite *FieldSpriteManager_CreateSprite(FieldSpriteManager *fieldSpriteManager, const UnmanagedSpriteTemplate *unmanagedSpriteTemplate) {
     SpriteTemplate spriteTemplate;
     VecFx32 scale = { FX32_ONE, FX32_ONE, FX32_ONE };
     VecFx32 position = {
-        a1->x * FX32_ONE,
-        a1->y * FX32_ONE,
-        a1->z * FX32_ONE,
+        unmanagedSpriteTemplate->x * FX32_ONE,
+        unmanagedSpriteTemplate->y * FX32_ONE,
+        unmanagedSpriteTemplate->z * FX32_ONE,
     };
     Sprite *ret;
 
-    if (a1->vram == NNS_G2D_VRAM_TYPE_2DSUB) {
+    if (unmanagedSpriteTemplate->vram == NNS_G2D_VRAM_TYPE_2DSUB) {
         position.y += 192 * FX32_ONE;
     }
 
     spriteTemplate.spriteList = fieldSpriteManager->spriteList;
-    spriteTemplate.header = &fieldSpriteManager->spriteResourceHeaderList->headers[a1->resourceSet];
+    spriteTemplate.header = &fieldSpriteManager->spriteResourceHeaderList->headers[unmanagedSpriteTemplate->resourceSet];
     spriteTemplate.position = position;
     spriteTemplate.scale = scale;
     spriteTemplate.rotation = 0;
-    spriteTemplate.drawPriority = a1->drawPriority;
-    spriteTemplate.whichScreen = a1->vram;
+    spriteTemplate.drawPriority = unmanagedSpriteTemplate->drawPriority;
+    spriteTemplate.whichScreen = unmanagedSpriteTemplate->vram;
     spriteTemplate.heapID = (enum HeapID)fieldSpriteManager->heapID;
     ret = Sprite_CreateAffine(&spriteTemplate);
     GF_ASSERT(ret != NULL);
-    Sprite_SetAnimCtrlSeq(ret, a1->animation);
-    if (a1->paletteMode != 1) {
-        Sprite_SetPalIndexRespectVramOffset(ret, a1->pal);
+    Sprite_SetAnimCtrlSeq(ret, unmanagedSpriteTemplate->animation);
+    if (unmanagedSpriteTemplate->paletteMode != 1) {
+        Sprite_SetPalIndexRespectVramOffset(ret, unmanagedSpriteTemplate->pal);
     }
     return ret;
 }
 
-void FieldSpriteManager_InitEmptyResLists(FieldSpriteManager *fieldSpriteManager, const int *resDatCounts, int numSprites, enum HeapID heapId) {
+void FieldSpriteManager_InitEmptyResLists(FieldSpriteManager *fieldSpriteManager, const SpriteResourceCountsListUnion *resDatCounts, int numSprites, enum HeapID heapId) {
     u32 i;
     u32 j;
 
     fieldSpriteManager->spriteList = G2dRenderer_Init(numSprites, &fieldSpriteManager->renderer, heapId);
     fieldSpriteManager->heapID = heapId;
-    if (resDatCounts[GF_GFX_RES_TYPE_MCEL] == 0 || resDatCounts[GF_GFX_RES_TYPE_MANM] == 0) {
+    if (resDatCounts->numMcel == 0 || resDatCounts->numManm == 0) {
         fieldSpriteManager->numResMans = GF_GFX_RES_TYPE_MAX - 2;
         fieldSpriteManager->spriteResManagers[GF_GFX_RES_TYPE_MCEL] = NULL;
         fieldSpriteManager->spriteResManagers[GF_GFX_RES_TYPE_MANM] = NULL;
@@ -111,11 +111,11 @@ void FieldSpriteManager_InitEmptyResLists(FieldSpriteManager *fieldSpriteManager
         fieldSpriteManager->numResMans = GF_GFX_RES_TYPE_MAX;
     }
     for (i = 0; i < fieldSpriteManager->numResMans; ++i) {
-        fieldSpriteManager->spriteResManagers[i] = Create2DGfxResObjMan(resDatCounts[i], (GfGfxResType)i, heapId);
+        fieldSpriteManager->spriteResManagers[i] = Create2DGfxResObjMan(resDatCounts->asArray[i], (GfGfxResType)i, heapId);
     }
     for (i = 0; i < fieldSpriteManager->numResMans; ++i) {
-        if (resDatCounts[i] != 0) {
-            fieldSpriteManager->spriteResObjLists[i] = Create2DGfxResObjList(resDatCounts[i], heapId);
+        if (resDatCounts->asArray[i] != 0) {
+            fieldSpriteManager->spriteResObjLists[i] = Create2DGfxResObjList(resDatCounts->asArray[i], heapId);
             for (j = 0; j < fieldSpriteManager->spriteResObjLists[i]->max; ++j) {
                 fieldSpriteManager->spriteResObjLists[i]->obj[j] = NULL;
             }
@@ -196,7 +196,7 @@ static void FieldSpriteManager_AddCellOrAnimRes(FieldSpriteManager *fieldSpriteM
     }
 }
 
-ManagedSprite *FieldSpriteManager_CreateManagedSprite(FieldSpriteManager *fieldSpriteManager, const ManagedSpriteTemplate *a1) {
+ManagedSprite *FieldSpriteManager_CreateManagedSprite(FieldSpriteManager *fieldSpriteManager, const ManagedSpriteTemplate *managedSpriteTemplate) {
     SpriteTemplate spriteTemplate;
     int resIds[6];
     ManagedSprite *sprite;
@@ -208,7 +208,7 @@ ManagedSprite *FieldSpriteManager_CreateManagedSprite(FieldSpriteManager *fieldS
     sprite->spriteResourceHeaderList->headers = Heap_Alloc((enum HeapID)fieldSpriteManager->heapID, sizeof(SpriteResourcesHeader));
     sprite->spriteResourcesHeader = &sprite->spriteResourceHeaderList->headers[0];
     for (i = 0; i < GF_GFX_RES_TYPE_MAX; ++i) {
-        resIds[i] = a1->resIdList[i];
+        resIds[i] = managedSpriteTemplate->resIdList[i];
     }
     if (fieldSpriteManager->spriteResManagers[GF_GFX_RES_TYPE_MCEL] == NULL || fieldSpriteManager->spriteResManagers[GF_GFX_RES_TYPE_MANM] == NULL) {
         resIds[GF_GFX_RES_TYPE_MCEL] = -1;
@@ -221,27 +221,27 @@ ManagedSprite *FieldSpriteManager_CreateManagedSprite(FieldSpriteManager *fieldS
             resIds[GF_GFX_RES_TYPE_MANM] = -1;
         }
     }
-    CreateSpriteResourcesHeader(sprite->spriteResourcesHeader, resIds[GF_GFX_RES_TYPE_CHAR], resIds[GF_GFX_RES_TYPE_PLTT], resIds[GF_GFX_RES_TYPE_CELL], resIds[GF_GFX_RES_TYPE_ANIM], resIds[GF_GFX_RES_TYPE_MCEL], resIds[GF_GFX_RES_TYPE_MANM], a1->vramTransfer, a1->bgPriority, fieldSpriteManager->spriteResManagers[GF_GFX_RES_TYPE_CHAR], fieldSpriteManager->spriteResManagers[GF_GFX_RES_TYPE_PLTT], fieldSpriteManager->spriteResManagers[GF_GFX_RES_TYPE_CELL], fieldSpriteManager->spriteResManagers[GF_GFX_RES_TYPE_ANIM], fieldSpriteManager->spriteResManagers[GF_GFX_RES_TYPE_MCEL], fieldSpriteManager->spriteResManagers[GF_GFX_RES_TYPE_MANM]);
+    CreateSpriteResourcesHeader(sprite->spriteResourcesHeader, resIds[GF_GFX_RES_TYPE_CHAR], resIds[GF_GFX_RES_TYPE_PLTT], resIds[GF_GFX_RES_TYPE_CELL], resIds[GF_GFX_RES_TYPE_ANIM], resIds[GF_GFX_RES_TYPE_MCEL], resIds[GF_GFX_RES_TYPE_MANM], managedSpriteTemplate->vramTransfer, managedSpriteTemplate->bgPriority, fieldSpriteManager->spriteResManagers[GF_GFX_RES_TYPE_CHAR], fieldSpriteManager->spriteResManagers[GF_GFX_RES_TYPE_PLTT], fieldSpriteManager->spriteResManagers[GF_GFX_RES_TYPE_CELL], fieldSpriteManager->spriteResManagers[GF_GFX_RES_TYPE_ANIM], fieldSpriteManager->spriteResManagers[GF_GFX_RES_TYPE_MCEL], fieldSpriteManager->spriteResManagers[GF_GFX_RES_TYPE_MANM]);
     spriteTemplate.spriteList = fieldSpriteManager->spriteList;
     spriteTemplate.header = sprite->spriteResourcesHeader;
-    spriteTemplate.position.x = FX32_CONST(a1->x);
-    spriteTemplate.position.y = FX32_CONST(a1->y);
-    spriteTemplate.position.z = FX32_CONST(a1->z);
-    if (a1->vram == NNS_G2D_VRAM_TYPE_2DSUB) {
+    spriteTemplate.position.x = FX32_CONST(managedSpriteTemplate->x);
+    spriteTemplate.position.y = FX32_CONST(managedSpriteTemplate->y);
+    spriteTemplate.position.z = FX32_CONST(managedSpriteTemplate->z);
+    if (managedSpriteTemplate->vram == NNS_G2D_VRAM_TYPE_2DSUB) {
         spriteTemplate.position.y += 192 * FX32_ONE;
     }
     spriteTemplate.scale.x = FX32_ONE;
     spriteTemplate.scale.y = FX32_ONE;
     spriteTemplate.scale.z = FX32_ONE;
     spriteTemplate.rotation = 0;
-    spriteTemplate.drawPriority = a1->drawPriority;
-    spriteTemplate.whichScreen = a1->vram;
+    spriteTemplate.drawPriority = managedSpriteTemplate->drawPriority;
+    spriteTemplate.whichScreen = managedSpriteTemplate->vram;
     spriteTemplate.heapID = (enum HeapID)fieldSpriteManager->heapID;
     sprite->sprite = Sprite_CreateAffine(&spriteTemplate);
     if (sprite->sprite != NULL) {
         palIndex = Sprite_GetPalIndex(sprite->sprite);
-        Sprite_SetAnimCtrlSeq(sprite->sprite, a1->animation);
-        Sprite_SetPaletteOverride(sprite->sprite, palIndex + a1->pal);
+        Sprite_SetAnimCtrlSeq(sprite->sprite, managedSpriteTemplate->animation);
+        Sprite_SetPaletteOverride(sprite->sprite, palIndex + managedSpriteTemplate->pal);
     } else {
         GF_ASSERT(FALSE);
     }
