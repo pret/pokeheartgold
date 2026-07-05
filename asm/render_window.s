@@ -2543,7 +2543,7 @@ sub_0200F748: ; 0x0200F748
 	ldr r0, [r5, r0]
 	ldr r1, _0200F828 ; =0x00015CD5
 	bl SpriteResourceCollection_Find
-	bl sub_0200AF00
+	bl SpriteTransfer_GetCharProxy
 	mov r1, #1
 	str r0, [sp, #4]
 	bl NNS_G2dGetImageLocation

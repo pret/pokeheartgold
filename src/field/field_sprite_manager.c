@@ -3,8 +3,8 @@
 #include "global.h"
 
 #include "gf_gfx_loader.h"
+#include "sprite_transfer.h"
 #include "unk_0200A090.h"
-#include "unk_0200ACF0.h"
 
 static BOOL TryAddSpriteResourceToObjList(GF_2DGfxResObjList *objList, SpriteResource *spriteResource);
 static void FieldSpriteManager_AddCellOrAnimRes(FieldSpriteManager *fieldSpriteManager, NarcId narcId, int fileId, BOOL compressed, GfGfxResType resType, int resId);
@@ -45,8 +45,8 @@ void FieldSpriteManager_InitWithResDat(FieldSpriteManager *fieldSpriteManager, c
         GF2DGfxResHeader_Reset(curResHeader);
     }
     Heap_Free(resHeaders);
-    sub_0200ADE4(fieldSpriteManager->spriteResObjLists[GF_GFX_RES_TYPE_CHAR]);
-    sub_0200B050(fieldSpriteManager->spriteResObjLists[GF_GFX_RES_TYPE_PLTT]);
+    SpriteTransfer_CreateAllCharTransferTasks_AllocAtEnd(fieldSpriteManager->spriteResObjLists[GF_GFX_RES_TYPE_CHAR]);
+    SpriteTransfer_CreateAllPlttTransferTasks(fieldSpriteManager->spriteResObjLists[GF_GFX_RES_TYPE_PLTT]);
     resdatNarcEntry = GfGfxLoader_LoadFromOpenNarc(resdatNarc, resDatIdxs[6], FALSE, heapID, TRUE);
     fieldSpriteManager->spriteResourceHeaderList = SpriteResourceHeaderList_Create(resdatNarcEntry, heapID, fieldSpriteManager->spriteResManagers[GF_GFX_RES_TYPE_CHAR], fieldSpriteManager->spriteResManagers[GF_GFX_RES_TYPE_PLTT], fieldSpriteManager->spriteResManagers[GF_GFX_RES_TYPE_CELL], fieldSpriteManager->spriteResManagers[GF_GFX_RES_TYPE_ANIM], fieldSpriteManager->spriteResManagers[GF_GFX_RES_TYPE_MCEL], fieldSpriteManager->spriteResManagers[GF_GFX_RES_TYPE_MANM]);
     Heap_Free(resdatNarcEntry);
@@ -58,8 +58,8 @@ void FieldSpriteManager_ReleaseWithResDat(FieldSpriteManager *fieldSpriteManager
 
     SpriteList_Delete(fieldSpriteManager->spriteList);
     SpriteResourceHeaderList_Destroy(fieldSpriteManager->spriteResourceHeaderList);
-    sub_0200AED4(fieldSpriteManager->spriteResObjLists[GF_GFX_RES_TYPE_CHAR]);
-    sub_0200B0CC(fieldSpriteManager->spriteResObjLists[GF_GFX_RES_TYPE_PLTT]);
+    SpriteTransfer_DeleteAllCharTransferTasks(fieldSpriteManager->spriteResObjLists[GF_GFX_RES_TYPE_CHAR]);
+    SpriteTransfer_DeleteAllPlttTransferTasks(fieldSpriteManager->spriteResObjLists[GF_GFX_RES_TYPE_PLTT]);
     for (i = 0; i < fieldSpriteManager->numResMans; ++i) {
         Delete2DGfxResObjList(fieldSpriteManager->spriteResObjLists[i]);
         Destroy2DGfxResObjMan(fieldSpriteManager->spriteResManagers[i]);
@@ -132,7 +132,7 @@ void FieldSpriteManager_AddPlttRes(FieldSpriteManager *fieldSpriteManager, NarcI
     }
     spriteResource = AddPlttResObjFromNarc(fieldSpriteManager->spriteResManagers[GF_GFX_RES_TYPE_PLTT], narcId, fileId, compressed, resId, vramType, plttNum, (enum HeapID)fieldSpriteManager->heapID);
     if (spriteResource != NULL) {
-        GF_ASSERT(sub_0200B00C(spriteResource) == TRUE);
+        GF_ASSERT(SpriteTransfer_CreatePlttTransferTask(spriteResource) == TRUE);
         TryAddSpriteResourceToObjList(fieldSpriteManager->spriteResObjLists[GF_GFX_RES_TYPE_PLTT], spriteResource);
         SpriteTransfer_GetPlttOffset(spriteResource, vramType);
     } else {
@@ -157,7 +157,7 @@ void FieldSpriteManager_AddCharRes(FieldSpriteManager *fieldSpriteManager, NarcI
     }
     spriteResource = AddCharResObjFromNarc(fieldSpriteManager->spriteResManagers[GF_GFX_RES_TYPE_CHAR], narcId, fileId, compressed, resId, vramType, (enum HeapID)fieldSpriteManager->heapID);
     if (spriteResource != NULL) {
-        sub_0200ADA4(spriteResource);
+        SpriteTransfer_CreateCharTransferTask_AllocAtEnd(spriteResource);
         TryAddSpriteResourceToObjList(fieldSpriteManager->spriteResObjLists[GF_GFX_RES_TYPE_CHAR], spriteResource);
     } else {
         GF_ASSERT(FALSE);
@@ -252,8 +252,8 @@ void FieldSpriteManager_ReleaseWithoutResDat(FieldSpriteManager *fieldSpriteMana
     u32 i;
 
     SpriteList_Delete(fieldSpriteManager->spriteList);
-    sub_0200AED4(fieldSpriteManager->spriteResObjLists[GF_GFX_RES_TYPE_CHAR]);
-    sub_0200B0CC(fieldSpriteManager->spriteResObjLists[GF_GFX_RES_TYPE_PLTT]);
+    SpriteTransfer_DeleteAllCharTransferTasks(fieldSpriteManager->spriteResObjLists[GF_GFX_RES_TYPE_CHAR]);
+    SpriteTransfer_DeleteAllPlttTransferTasks(fieldSpriteManager->spriteResObjLists[GF_GFX_RES_TYPE_PLTT]);
     for (i = 0; i < fieldSpriteManager->numResMans; ++i) {
         Delete2DGfxResObjList(fieldSpriteManager->spriteResObjLists[i]);
         Destroy2DGfxResObjMan(fieldSpriteManager->spriteResManagers[i]);

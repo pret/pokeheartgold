@@ -18,8 +18,8 @@
 .public ReplaceCharResObjFromNarc
 .public ReplacePlttResObjFromNarc
 .public SpriteResourceCollection_Find
-.public sub_0200AE8C
-.public sub_0200B084
+.public SpriteTransfer_ReplaceCharData
+.public SpriteTransfer_ReplacePlttData
 .public NewMsgDataFromNarc
 .public DestroyMsgData
 .public ReadMsgDataIntoString

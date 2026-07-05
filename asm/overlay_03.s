@@ -9033,7 +9033,7 @@ _022585CA:
 	mov r2, #0x12
 	bl ReplaceCharResObjFromNarc
 	add r0, r5, #0
-	bl sub_0200AE8C
+	bl SpriteTransfer_ReplaceCharData
 	mov r0, #0x72
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -9055,7 +9055,7 @@ _022585CA:
 	mov r2, #0x12
 	bl ReplacePlttResObjFromNarc
 	add r0, r5, #0
-	bl sub_0200B084
+	bl SpriteTransfer_ReplacePlttData
 	mov r0, #0x81
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -9094,7 +9094,7 @@ ov03_02258648: ; 0x02258648
 	mov r2, #0x12
 	bl ReplaceCharResObjFromNarc
 	add r0, r5, #0
-	bl sub_0200AE8C
+	bl SpriteTransfer_ReplaceCharData
 	mov r0, #0x72
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -9116,7 +9116,7 @@ ov03_02258648: ; 0x02258648
 	mov r2, #0x12
 	bl ReplacePlttResObjFromNarc
 	add r0, r5, #0
-	bl sub_0200B084
+	bl SpriteTransfer_ReplacePlttData
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov03_02258648

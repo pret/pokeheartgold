@@ -10,7 +10,7 @@
 .public PokepicManager_Create
 .public PokepicManager_Delete
 .public SpriteResourceCollection_Find
-.public sub_0200AF00
+.public SpriteTransfer_GetCharProxy
 .public SpriteTransfer_GetPaletteProxy
 .public Sprite_DeleteAndFreeResources
 .public SysTask_CreateOnVBlankQueue

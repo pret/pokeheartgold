@@ -1726,19 +1726,19 @@ ov65_0221CCB0: ; 0x0221CCB0
 	mov r0, #0xb7
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
-	bl sub_0200AEB0
+	bl SpriteTransfer_DeleteCharTransferTask
 	mov r0, #0xbb
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
-	bl sub_0200AEB0
+	bl SpriteTransfer_DeleteCharTransferTask
 	mov r0, #0x2e
 	lsl r0, r0, #4
 	ldr r0, [r6, r0]
-	bl sub_0200B0A8
+	bl SpriteTransfer_DeletePlttTransferTask
 	mov r0, #0x2f
 	lsl r0, r0, #4
 	ldr r0, [r6, r0]
-	bl sub_0200B0A8
+	bl SpriteTransfer_DeletePlttTransferTask
 	mov r7, #0xb3
 	mov r4, #0
 	add r5, r6, #0
@@ -2732,19 +2732,19 @@ _0221D424:
 	str r0, [r5, r1]
 	sub r1, #0x1c
 	ldr r0, [r5, r1]
-	bl sub_0200ACF0
+	bl SpriteTransfer_CreateCharTransferTask
 	mov r0, #0xbb
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_0200ACF0
+	bl SpriteTransfer_CreateCharTransferTask
 	mov r0, #0x2e
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl sub_0200AF94
+	bl SpriteTransfer_CreateExtPlttTransferTask
 	mov r0, #0x2f
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl sub_0200AF94
+	bl SpriteTransfer_CreateExtPlttTransferTask
 	bl sub_02074490
 	add r1, r0, #0
 	mov r0, #0x80

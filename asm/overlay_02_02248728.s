@@ -194,7 +194,7 @@ _0224887C:
 	cmp r2, r1
 	beq _02248892
 	ldr r0, [r0, #4]
-	bl sub_0200AEB0
+	bl SpriteTransfer_DeleteCharTransferTask
 _02248892:
 	ldrb r0, [r5]
 	add r6, r6, #1
@@ -218,7 +218,7 @@ _022488A8:
 	cmp r2, r1
 	beq _022488BE
 	ldr r0, [r0, #4]
-	bl sub_0200B0A8
+	bl SpriteTransfer_DeletePlttTransferTask
 _022488BE:
 	ldrb r0, [r5, #1]
 	add r6, r6, #1
@@ -394,7 +394,7 @@ _02248A04:
 	lsl r1, r2, #3
 	add r0, r0, r1
 	ldr r0, [r0, #4]
-	bl sub_0200ADA4
+	bl SpriteTransfer_CreateCharTransferTask_AllocAtEnd
 	pop {r4, r5, r6, pc}
 _02248A16:
 	add r2, r2, #1
@@ -517,7 +517,7 @@ _02248ADC:
 	lsl r1, r2, #3
 	add r0, r0, r1
 	ldr r0, [r0, #4]
-	bl sub_0200B00C
+	bl SpriteTransfer_CreatePlttTransferTask
 	pop {r4, r5, r6, pc}
 _02248AEE:
 	add r2, r2, #1
@@ -3061,7 +3061,7 @@ _02249D72:
 	ldr r0, [r5, r7]
 	cmp r0, #0
 	beq _02249D7C
-	bl sub_0200ADA4
+	bl SpriteTransfer_CreateCharTransferTask_AllocAtEnd
 _02249D7C:
 	add r4, r4, #1
 	add r5, r5, #4
@@ -3075,7 +3075,7 @@ _02249D8C:
 	ldr r0, [r4, r7]
 	cmp r0, #0
 	beq _02249D96
-	bl sub_0200B00C
+	bl SpriteTransfer_CreatePlttTransferTask
 _02249D96:
 	add r5, r5, #1
 	add r4, r4, #4
@@ -3196,7 +3196,7 @@ ov02_02249E58: ; 0x02249E58
 	ldr r1, [r4, r1]
 	cmp r1, #0
 	bne _02249E8A
-	bl sub_0200ADA4
+	bl SpriteTransfer_CreateCharTransferTask_AllocAtEnd
 	ldr r0, _02249E8C ; =ov02_02249E90
 	add r1, r4, #0
 	mov r2, #0x80
@@ -3713,7 +3713,7 @@ _0224A294:
 	ldr r0, [r5, r7]
 	cmp r0, #0
 	beq _0224A29E
-	bl sub_0200AEB0
+	bl SpriteTransfer_DeleteCharTransferTask
 _0224A29E:
 	add r4, r4, #1
 	add r5, r5, #4
@@ -3727,7 +3727,7 @@ _0224A2AE:
 	ldr r0, [r4, r7]
 	cmp r0, #0
 	beq _0224A2B8
-	bl sub_0200B0A8
+	bl SpriteTransfer_DeletePlttTransferTask
 _0224A2B8:
 	add r5, r5, #1
 	add r4, r4, #4
@@ -4494,7 +4494,7 @@ ov02_0224A834: ; 0x0224A834
 	ldr r0, [r0, r1]
 	mov r1, #3
 	bl SpriteResourceCollection_Find
-	bl sub_0200AF00
+	bl SpriteTransfer_GetCharProxy
 	mov r1, #1
 	bl NNS_G2dGetImageLocation
 	mov r1, #0x32
@@ -4541,7 +4541,7 @@ ov02_0224A88C: ; 0x0224A88C
 	ldr r0, [r5, r0]
 	mov r1, #3
 	bl SpriteResourceCollection_Find
-	bl sub_0200AF00
+	bl SpriteTransfer_GetCharProxy
 	add r6, r0, #0
 	mov r0, #0x1a
 	lsl r0, r0, #4
@@ -4574,7 +4574,7 @@ ov02_0224A8D4: ; 0x0224A8D4
 	mov r1, #3
 	bl SpriteResourceCollection_Find
 	add r4, r0, #0
-	bl sub_0200AEB0
+	bl SpriteTransfer_DeleteCharTransferTask
 	mov r0, #0x67
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -4611,7 +4611,7 @@ _0224A922:
 	mov r1, #3
 	bl SpriteResourceCollection_Find
 	add r4, r0, #0
-	bl sub_0200B0A8
+	bl SpriteTransfer_DeletePlttTransferTask
 	mov r0, #0x1a
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]

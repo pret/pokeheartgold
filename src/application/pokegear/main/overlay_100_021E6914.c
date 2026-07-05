@@ -3,7 +3,7 @@
 #include "data/resdat.naix"
 
 #include "math_util.h"
-#include "unk_0200ACF0.h"
+#include "sprite_transfer.h"
 #include "unk_0200B150.h"
 #include "vram_transfer_manager.h"
 
@@ -150,11 +150,11 @@ void PokegearUIManager_LoadSkinGfx(PokegearUIManager *uiManager, u8 skin) {
 
     obj = uiManager->spriteResources[GF_GFX_RES_TYPE_CHAR]->obj[0];
     ReplaceCharResObjFromNarc(uiManager->resourceManagers[GF_GFX_RES_TYPE_CHAR], obj, NARC_application_pokegear_pgear_gra, skin + NARC_pgear_gra_pgear_gra_00000006_NCGR, FALSE, uiManager->heapID);
-    sub_0200AE8C(obj);
+    SpriteTransfer_ReplaceCharData(obj);
 
     obj = uiManager->spriteResources[GF_GFX_RES_TYPE_PLTT]->obj[0];
     ReplacePlttResObjFromNarc(uiManager->resourceManagers[GF_GFX_RES_TYPE_PLTT], obj, NARC_application_pokegear_pgear_gra, skin + NARC_pgear_gra_pgear_gra_00000000_NCLR, FALSE, uiManager->heapID);
-    sub_0200B084(obj);
+    SpriteTransfer_ReplacePlttData(obj);
 }
 
 void PokegearUIManager_AnimateSprites(PokegearUIManager *uiManager) {
@@ -223,8 +223,8 @@ static void PokegearUIManager_LoadInitialGfx(PokegearUIManager *uiManager, u16 s
 
 static void PokegearUIManager_UnloadSprites(PokegearUIManager *auiManager) {
     SpriteList_Delete(auiManager->spriteList);
-    sub_0200AED4(auiManager->spriteResources[GF_GFX_RES_TYPE_CHAR]);
-    sub_0200B0CC(auiManager->spriteResources[GF_GFX_RES_TYPE_PLTT]);
+    SpriteTransfer_DeleteAllCharTransferTasks(auiManager->spriteResources[GF_GFX_RES_TYPE_CHAR]);
+    SpriteTransfer_DeleteAllPlttTransferTasks(auiManager->spriteResources[GF_GFX_RES_TYPE_PLTT]);
     for (u32 i = 0; i < 4; ++i) {
         Delete2DGfxResObjList(auiManager->spriteResources[i]);
         Destroy2DGfxResObjMan(auiManager->resourceManagers[i]);
@@ -239,14 +239,14 @@ static void PokegearUIManager_LoadInitialSkinGfx(PokegearUIManager *uiManager, u
     GF_ASSERT(objList->obj[0] != NULL);
     switch (uiManager->mode) {
     case 1:
-        sub_0200ADA4(objList->obj[0]);
+        SpriteTransfer_CreateCharTransferTask_AllocAtEnd(objList->obj[0]);
         break;
     case 2:
-        sub_0200AE18(objList->obj[0]);
+        SpriteTransfer_CreateCharTransferTask_UpdateMappingTypeFromHW_AllocAtEnd(objList->obj[0]);
         break;
     case 0:
     default:
-        sub_0200ACF0(objList->obj[0]);
+        SpriteTransfer_CreateCharTransferTask(objList->obj[0]);
         break;
     }
 
@@ -259,7 +259,7 @@ static void PokegearUIManager_LoadInitialSkinGfx(PokegearUIManager *uiManager, u
     objList = uiManager->spriteResources[GF_GFX_RES_TYPE_PLTT];
     objList->obj[0] = AddPlttResObjFromNarc(uiManager->resourceManagers[GF_GFX_RES_TYPE_PLTT], NARC_application_pokegear_pgear_gra, skin + NARC_pgear_gra_pgear_gra_00000000_NCLR, FALSE, 0xE000, (NNS_G2D_VRAM_TYPE)uiManager->vramType, 4, uiManager->heapID);
     GF_ASSERT(objList->obj[0] != NULL);
-    sub_0200B00C(objList->obj[0]);
+    SpriteTransfer_CreatePlttTransferTask(objList->obj[0]);
 }
 
 // functions for PokegearObjectsManager

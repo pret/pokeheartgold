@@ -811,13 +811,13 @@ ov47_02258DD0: ; 0x02258DD0
 	bl AddPlttResObjFromOpenNarc
 	str r0, [r5, #0x1c]
 	ldr r0, [r5, #0x18]
-	bl sub_0200ADA4
+	bl SpriteTransfer_CreateCharTransferTask_AllocAtEnd
 	cmp r0, #0
 	bne _02258E6C
 	bl GF_AssertFail
 _02258E6C:
 	ldr r0, [r5, #0x1c]
-	bl sub_0200B00C
+	bl SpriteTransfer_CreatePlttTransferTask
 	cmp r0, #0
 	bne _02258E7A
 	bl GF_AssertFail
@@ -1166,9 +1166,9 @@ ov47_0225912C: ; 0x0225912C
 	ldr r0, [r5, #0x14]
 	bl Sprite_Delete
 	ldr r0, [r5, #0x18]
-	bl sub_0200AEB0
+	bl SpriteTransfer_DeleteCharTransferTask
 	ldr r0, [r5, #0x1c]
-	bl sub_0200B0A8
+	bl SpriteTransfer_DeletePlttTransferTask
 	mov r7, #0x13
 	mov r6, #0
 	lsl r7, r7, #4

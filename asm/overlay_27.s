@@ -271,7 +271,7 @@ _0225A1C8:
 	lsl r7, r7, #2
 _0225A1EA:
 	ldr r0, [r5, r7]
-	bl sub_0200AEB0
+	bl SpriteTransfer_DeleteCharTransferTask
 	add r4, r4, #1
 	add r5, #0x10
 	cmp r4, #0xb
@@ -282,7 +282,7 @@ _0225A1EA:
 	lsl r7, r7, #2
 _0225A200:
 	ldr r0, [r4, r7]
-	bl sub_0200B0A8
+	bl SpriteTransfer_DeletePlttTransferTask
 	add r5, r5, #1
 	add r4, #0x10
 	cmp r5, #0xb
@@ -2036,11 +2036,11 @@ _0225AFAC:
 	bl AddPlttResObjFromNarc
 	str r0, [r4, #4]
 	ldr r0, [r4]
-	bl sub_0200ADA4
+	bl SpriteTransfer_CreateCharTransferTask_AllocAtEnd
 	ldr r0, [r4]
 	bl sub_0200A740
 	ldr r0, [r4, #4]
-	bl sub_0200B00C
+	bl SpriteTransfer_CreatePlttTransferTask
 	ldr r0, [r4, #4]
 	bl sub_0200A740
 	add sp, #0x24
@@ -4540,11 +4540,11 @@ ov27_0225C398: ; 0x0225C398
 	mov r0, #0xd5
 	lsl r0, r0, #2
 	ldr r0, [r7, r0]
-	bl sub_0200AEB0
+	bl SpriteTransfer_DeleteCharTransferTask
 	mov r0, #0xd6
 	lsl r0, r0, #2
 	ldr r0, [r7, r0]
-	bl sub_0200B0A8
+	bl SpriteTransfer_DeletePlttTransferTask
 	mov r6, #0xd1
 	mov r4, #0
 	add r5, r7, #0
@@ -5078,11 +5078,11 @@ _0225C75C:
 	str r0, [r6, r1]
 	sub r1, #0xc
 	ldr r0, [r6, r1]
-	bl sub_0200ADA4
+	bl SpriteTransfer_CreateCharTransferTask_AllocAtEnd
 	mov r0, #0xd6
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
-	bl sub_0200B00C
+	bl SpriteTransfer_CreatePlttTransferTask
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov27_0225C72C
