@@ -12,8 +12,6 @@ typedef struct {
     u64 add;
 } MATHRandContext32;
 
-typedef void (*voidFunc)(void);
-
 s32 sub_02037C94(void);
 void sub_02037C98(SaveData *saveData, s8 arg1);
 void sub_02037D2C(void);

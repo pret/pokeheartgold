@@ -1349,7 +1349,7 @@ s32 ov44_0222B228(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
     } else {
         Sound_SetSceneAndPlayBGM(11, SEQ_GS_WIFI_ACCESS, 1);
         ov44_0222B0B0(arg0);
-        if (DWC_CheckHasProfile(sub_0202C08C(arg0->unk0)) == 0) {
+        if (!DWC_CheckHasProfile(sub_0202C08C(arg0->unk0))) {
             SetBgPriority(0, 3);
             SetBgPriority(1, 0);
             SetBgPriority(3, 0);
@@ -1358,7 +1358,7 @@ s32 ov44_0222B228(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
             arg0->unk188 = ov44_02231A28(arg0->unk15C, &ov44_02235384, 0);
             arg0->unk348 = 6;
         } else {
-            if (DWC_CheckValidConsole(sub_0202C08C(arg0->unk0)) == 0) {
+            if (!DWC_CheckValidConsole(sub_0202C08C(arg0->unk0))) {
                 ov44_0222F66C(arg0, 20);
                 arg0->unk348 = 3;
             } else {
