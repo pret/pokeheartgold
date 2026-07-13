@@ -80,7 +80,7 @@
 .public ov01_021E8DE8
 .public ov01_021E8E70
 .public ov01_021E8ED0
-.public ov01_021EA864
+.public Fog_Set
 .public ov01_021EA89C
 .public ov01_021EA8C4
 .public ov01_021F3B04

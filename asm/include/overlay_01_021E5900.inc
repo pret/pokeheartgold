@@ -129,7 +129,7 @@
 .public ov01_021EA220
 .public ov01_021EA284
 .public ov01_021EA2A4
-.public ov01_021EA824
+.public Fog_New
 .public ov01_021EA840
 .public ov01_021EA8E0
 .public ov01_021EA8FC
@@ -150,10 +150,10 @@
 .public ov01_021EB114
 .public ov01_021EB1BC
 .public ov01_021EB1DC
-.public ov01_021EB1F4
-.public ov01_021EB234
-.public ov01_021EB260
-.public FieldWeatherUpdate_UsedFlash
+.public WeatherManager_New
+.public WeatherManager_Delete
+.public WeatherManager_SetWeather
+.public WeatherManager_ChangeWeather
 .public FieldDrawMapNameInfo_Create
 .public FieldDrawMapNameInfo_Destroy
 .public FieldSystem_DrawMapNameAnimation

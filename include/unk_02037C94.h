@@ -1,9 +1,9 @@
 #ifndef POKEHEARTGOLD_UNK_02037C94_H
 #define POKEHEARTGOLD_UNK_02037C94_H
 
+#include "overlay_44_02232E9C.h"
 #include "save.h"
 #include "unk_0202C034.h"
-#include "overlay_44_02232E9C.h"
 
 BOOL sub_02037D78(void);
 void sub_02037EC0(u32 arg0);
@@ -35,10 +35,10 @@ UnkStruct_ov44_0223197C *sub_020398C8(void);
 void sub_020393B4(void);
 BOOL sub_02039274(void);
 void sub_02039330(void);
-void sub_0203A1C4(SaveData* saveData, void* a1, enum HeapID heapID);
+void sub_0203A1C4(SaveData *saveData, void *a1, enum HeapID heapID);
 void sub_02039B7C(void);
 BOOL sub_020392A0(void);
-UnkStruct_ov44_0223197C* sub_020396FC(SaveData*, int);
+UnkStruct_ov44_0223197C *sub_020396FC(SaveData *, int);
 void sub_02039378(void);
 void sub_02039FD8(enum HeapID heapID);
 void sub_02039E9C(void);

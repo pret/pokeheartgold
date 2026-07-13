@@ -244,7 +244,7 @@ _021E5AB6:
 	add r1, r0, #0
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #0xc]
-	bl ov01_021EB260
+	bl WeatherManager_SetWeather
 	ldr r1, [r4, #0x20]
 	add r0, r4, #0
 	ldr r1, [r1]
@@ -543,7 +543,7 @@ _021E5D82:
 	bl FieldDrawMapNameInfo_Destroy
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #0xc]
-	bl ov01_021EB234
+	bl WeatherManager_Delete
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #0x20]
 	bl ov01_021FB610
@@ -741,7 +741,7 @@ _021E5F3E:
 	add r1, r0, #0
 	ldr r0, [r5, #4]
 	ldr r0, [r0, #0xc]
-	bl FieldWeatherUpdate_UsedFlash
+	bl WeatherManager_ChangeWeather
 	add r0, r6, #0
 	bl MapHeader_GetMapSec
 	add r6, r0, #0
@@ -1492,7 +1492,7 @@ ov01_021E6580: ; 0x021E6580
 	bl ov01_021EA8E0
 	str r0, [r4, #0x48]
 	bl ov01_021E61A4
-	bl ov01_021EA824
+	bl Fog_New
 	str r0, [r4, #0x4c]
 	ldr r0, [r4, #0xc]
 	bl Save_LocalFieldData_Get
@@ -1521,7 +1521,7 @@ _021E65D8:
 	bl ov01_021EA220
 	str r0, [r4, #0x50]
 	add r0, r4, #0
-	bl ov01_021EB1F4
+	bl WeatherManager_New
 	ldr r1, [r4, #4]
 	str r0, [r1, #0xc]
 	ldr r0, [r4, #8]

@@ -1838,7 +1838,7 @@ ov04_02254CBC: ; 0x02254CBC
 	ldr r0, [r5, #0x4c]
 	sub r1, r3, #1
 	mov r2, #1
-	bl ov01_021EA864
+	bl Fog_Set
 	mov r1, #0
 	ldr r0, [r5, #0x4c]
 	mvn r1, r1

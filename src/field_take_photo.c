@@ -4,6 +4,7 @@
 
 #include "constants/scrcmd.h"
 
+#include "field/weather_manager.h"
 #include "graphic/camera_viewfinder.naix"
 
 #include "field_warp_tasks.h"

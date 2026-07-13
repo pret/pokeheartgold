@@ -2,7 +2,9 @@
 #define POKEHEARTGOLD_FIELD_SYSTEM_H
 
 #include "field/draw_map_name.h"
+#include "field/fog.h"
 #include "field/overlay_01_021E66E4.h"
+#include "field/weather_manager.h"
 
 #include "bag_cursor.h"
 #include "battle_regulation.h"
@@ -15,7 +17,6 @@
 #include "map_events_internal.h"
 #include "map_matrix.h"
 #include "menu_input_state.h"
-#include "overlay_01_021EB1E8.h"
 #include "overlay_01_02204004.h"
 #include "overlay_manager.h"
 #include "photo_types_def.h"
@@ -100,7 +101,7 @@ typedef struct FieldSystemUnkSub4 {
     u32 unk0;
     Field3dObjectTaskManager *field3dObjectTaskManager;
     FieldDrawMapNameInfo *drawMapNameInfo;
-    void *unk_0C; // weather related?
+    WeatherManager *weatherManager; // weather related?
     UnkStruct_ov01_021EB1E8 *unk10;
     u32 unk14;
     u32 unk18;
@@ -127,7 +128,9 @@ struct FieldSystem {
     MapObjectManager *mapObjectManager;
     PlayerAvatar *playerAvatar;
     void *unk_44;
-    u8 filler48[0xC];
+    u32 unk_48;
+    FogData *fog;
+    u32 unk_50;
     void *unk54;
     u32 unk58;
     TerrainAttributes *terrainAttributes;
