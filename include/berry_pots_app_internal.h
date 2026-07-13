@@ -103,7 +103,7 @@ typedef struct BerryPotsAppData {
     Sprite *sprites[11];
     NARC *itemIconNarc;
     NARC *berryPotsAppNarc;
-    LISTMENUITEM *listMenuItems[4];
+    ListMenuItem *listMenuItems[4];
     TouchscreenListMenu *menu;
 } BerryPotsAppData;
 

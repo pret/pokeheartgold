@@ -180,7 +180,7 @@ static enum PalParkEncounterType GetEncounterArea(FieldSystem *fieldSystem, int 
     int behavior = GetMetatileBehavior(fieldSystem, playerX, playerY);
     int quadrant = (playerX < 32) ? 0 : 1;
     quadrant += (playerY < 32) ? 0 : 2;
-    if (MetatileBehavior_IsEncounterGrass(behavior)) {
+    if (MetatileBehavior_IsTallGrass(behavior)) {
         return (enum PalParkEncounterType)(quadrant + PP_ENCTYPE_LAND_MIN);
     } else if (MetatileBehavior_IsSurfableWater(behavior)) {
         return (enum PalParkEncounterType)(quadrant + PP_ENCTYPE_WATER_MIN);

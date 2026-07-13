@@ -583,7 +583,7 @@ sub_02056AEC: ; 0x02056AEC
 	add r1, r6, #0
 	bl GetMetatileBehavior
 	add r6, r0, #0
-	bl sub_0205B810
+	bl MetatileBehavior_IsWarpStairsEast
 	cmp r0, #0
 	beq _02056B5A
 	mov r0, #1
@@ -595,7 +595,7 @@ sub_02056AEC: ; 0x02056AEC
 	b _02056B70
 _02056B5A:
 	add r0, r6, #0
-	bl sub_0205B81C
+	bl MetatileBehavior_IsWarpStairsWest
 	cmp r0, #0
 	beq _02056B70
 	mov r0, #1

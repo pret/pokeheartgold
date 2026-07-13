@@ -17,7 +17,10 @@ typedef struct Pokeathlon_UnkSubStruct_B00 {
     u32 unk28;
     u32 unk2C;
     u32 unk30;
-    u8 unk34[0x10];
+    u32 unk34;
+    u32 unk38;
+    u32 unk3C;
+    u32 unk40;
     u32 unk44[10];
     u32 unk6C;
     u32 unk70;

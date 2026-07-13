@@ -209,12 +209,12 @@ u16 Save_VarsFlags_GetVar4042(SaveVarsFlags *state) {
     return GetScriptVar(state, VAR_UNK_4042);
 }
 
-u16 Save_VarsFlags_GetVar404B(SaveVarsFlags *state) {
-    return GetScriptVar(state, VAR_UNK_404B);
+u16 Save_VarsFlags_GetFriendshipSteps(SaveVarsFlags *state) {
+    return GetScriptVar(state, VAR_FRIENDSHIP_STEPS);
 }
 
-void Save_VarsFlags_SetVar404B(SaveVarsFlags *state, u16 value) {
-    SetScriptVar(state, VAR_UNK_404B, value);
+void Save_VarsFlags_SetFriendshipSteps(SaveVarsFlags *state, u16 value) {
+    SetScriptVar(state, VAR_FRIENDSHIP_STEPS, value);
 }
 
 u16 Save_VarsFlags_GetBattleFactoryPrintProgress(SaveVarsFlags *state) {

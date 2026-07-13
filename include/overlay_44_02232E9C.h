@@ -166,9 +166,9 @@ struct UnkStruct_ov44_022319EC {
     u8 unk2C[0x20];
     u32 unk4C[0x20];
     u32 unkCC[0x20];
-    LISTMENUITEM *unk14C;
+    ListMenuItem *unk14C;
     struct ListMenu *unk150;
-    LISTMENUITEM *unk154;
+    ListMenuItem *unk154;
     struct ListMenu *unk158;
     BgConfig *unk15C;
     SaveData *saveData;

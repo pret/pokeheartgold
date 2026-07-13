@@ -1747,25 +1747,25 @@
 	.short 301
 	.endm
 
-	.macro ScrCmd_302 arg0
+	.macro CheckStepTakenFlag arg0
 	.short 302
 	.short \arg0
 	.endm
 
-	.macro ScrCmd_303
+	.macro SetStepTakenFlag
 	.short 303
 	.endm
 
-	.macro ScrCmd_304
+	.macro GetStepTakenFlag
 	.short 304
 	.endm
 
-	.macro ScrCmd_305 arg0
+	.macro CheckGameClearFlag arg0
 	.short 305
 	.short \arg0
 	.endm
 
-	.macro ScrCmd_306
+	.macro SetGameClearFlag
 	.short 306
 	.endm
 
@@ -2768,7 +2768,7 @@
 	.short \arg0
 	.endm
 
-	.macro ScrCmd_485 arg0
+	.macro StartBattleRegulationMenuTask arg0
 	.short 485
 	.short \arg0
 	.endm
@@ -4446,13 +4446,13 @@
 	.short \arg1
 	.endm
 
-	.macro ScrCmd_791 arg0, arg1
+	.macro ScrCmd_CheckSafariZoneChallengeCompleted arg0, arg1
 	.short 791
 	.byte \arg0
 	.short \arg1
 	.endm
 
-	.macro ScrCmd_792
+	.macro ScrCmd_UpdateSafariZoneIGT
 	.short 792
 	.endm
 

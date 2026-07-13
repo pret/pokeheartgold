@@ -6,7 +6,9 @@
 #include "overlay_44_02232E9C.h"
 
 BOOL sub_02037D78(void);
+void sub_02037EC0(u32 arg0);
 void sub_02037FF0(void);
+void sub_020380B0(void);
 void sub_020380CC(void);
 u32 *sub_020392D8(void);
 BOOL sub_020393C8(void);

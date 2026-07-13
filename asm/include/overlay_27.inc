@@ -107,7 +107,7 @@
 .public sub_02058258
 .public sub_02058740
 .public sub_02058AA0
-.public PlayerAvatar_GetUnk14
+.public PlayerAvatar_GetPlayerMoveState
 .public PlayerAvatar_GetMapObject
 .public PlayerAvatar_GetState
 .public PlayerSaveData_CheckRunningShoes

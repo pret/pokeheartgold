@@ -469,13 +469,13 @@ sub_020570C8: ; 0x020570C8
 	ldr r0, [r0]
 	ldr r0, [r0, #0x30]
 	ldr r0, [r0, #0x40]
-	bl PlayerAvatar_GetUnk10
+	bl PlayerAvatar_GetMoveState
 	add r4, r0, #0
 	ldr r0, _02057128 ; =_021D41C4
 	ldr r0, [r0]
 	ldr r0, [r0, #0x30]
 	ldr r0, [r0, #0x40]
-	bl PlayerAvatar_GetUnk14
+	bl PlayerAvatar_GetPlayerMoveState
 	add r5, r0, #0
 	cmp r4, #0
 	bne _02057112

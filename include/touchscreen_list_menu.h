@@ -28,7 +28,7 @@ typedef struct TouchscreenListMenuTemplate {
 
 typedef struct TouchscreenListMenuHeader {
     TouchscreenListMenuTemplate template;
-    LISTMENUITEM *listMenuItems;
+    ListMenuItem *listMenuItems;
     BgConfig *bgConfig;
     u8 numWindows;
     u8 unk15[0x3];

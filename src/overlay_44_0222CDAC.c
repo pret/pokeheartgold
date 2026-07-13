@@ -248,7 +248,7 @@ static const ListMenuTemplate ov44_022354C8 = {
     .scrollMultiple = 0,
     .fontId = 0,
     .cursorKind = 0,
-    .unk_1C = 0,
+    .data = NULL,
 };
 static const ListMenuTemplate ov44_02235508 = {
     .items = NULL,
@@ -269,7 +269,7 @@ static const ListMenuTemplate ov44_02235508 = {
     .scrollMultiple = 0,
     .fontId = 0,
     .cursorKind = 0,
-    .unk_1C = 0,
+    .data = NULL,
 };
 static const ListMenuTemplate ov44_02235528 = {
     .items = NULL,
@@ -290,7 +290,7 @@ static const ListMenuTemplate ov44_02235528 = {
     .scrollMultiple = 0,
     .fontId = 0,
     .cursorKind = 0,
-    .unk_1C = 0,
+    .data = NULL,
 };
 static const TouchscreenHitbox ov44_022354E8[8] = {
     { .rect = { .top = 0, .bottom = 47, .left = 0, .right = 119 } },
@@ -373,7 +373,7 @@ static const SpriteTemplate ov44_02235570[3] = {
 //     .scrollMultiple = 0,
 //     .fontId = 0,
 //     .cursorKind = 0,
-//     .unk_1C = 0
+//     .data = NULL
 // };
 
 // UnkStruct_ov44_0222DD64 ov44_022366BC[4] = {

@@ -258,7 +258,7 @@ typedef enum PartyMenuSpriteId {
 } PartyMenuSpriteId;
 
 typedef struct UnkTemplatePartyMenuContextMenu_0207E590 {
-    LISTMENUITEM *items;
+    ListMenuItem *items;
     Window *window;
     u8 unk_08;
     u8 unk_09;
@@ -390,7 +390,7 @@ struct PartyMenu {
     String *formattedStrBuf;             // 0x7c8
     String *unformattedStrBuf;
     String *contextMenuStrings[PARTY_MON_CONTEXT_MENU_NUM_STRINGS]; // 0x7d0
-    LISTMENUITEM *listMenuItems;                                    // 0x820
+    ListMenuItem *listMenuItems;                                    // 0x820
     PartyMenuContextMenuCursor *contextMenuCursor;
     PartyMenuMonsDrawState monsDrawState[PARTY_SIZE]; // 0x828
     const DpadMenuBox *dpadMenuBox;

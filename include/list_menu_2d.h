@@ -5,7 +5,7 @@
 #include "list_menu_items.h"
 
 struct ListMenu2DTemplate {
-    LISTMENUITEM *items;
+    ListMenuItem *items;
     Window *window;
     u8 fontId;
     u8 itemsWide;
