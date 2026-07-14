@@ -42,15 +42,50 @@
 #include "unk_020379A0.h"
 #include "unk_02037C94.h"
 #include "unk_0203A3B0.h"
+#include "unk_02078834.h"
 #include "unk_020915B0.h"
 #include "unk_020971F8.h"
 #include "vram_transfer_manager.h"
 
+static const u8 ov44_0223535C[4] = { 1, 3, 5, 0 };
+
 static const u8 ov44_02235360[4] = { 0, 2, 4, 0 };
-static const u8 ov44_02235364[4] = { 8, 7, 5, 7 };
+
 static const u8 ov44_02235368[4] = { 0, 1, 2, 1 };
-static const u8 _0223535C[4] = { 1, 3, 5, 0 };
-static const s8 ov44_0223536C[8] = { 248, 247, 246, 246, 247, 0, 0, 0 };
+
+static const u8 ov44_02235364[4] = { 8, 7, 5, 7 };
+
+static const s8 ov44_0223536C[5] = { 248, 247, 246, 246, 247 };
+
+static const WindowTemplate ov44_0223538C = {
+    .bgId = 2,
+    .left = 25,
+    .top = 13,
+    .width = 6,
+    .height = 4,
+    .palette = 13,
+    .baseTile = 81,
+};
+
+static const WindowTemplate ov44_02235374 = {
+    .bgId = 2,
+    .left = 25,
+    .top = 10,
+    .width = 6,
+    .height = 8,
+    .palette = 14,
+    .baseTile = 81,
+};
+
+static const WindowTemplate ov44_0223537C = {
+    .bgId = 2,
+    .left = 25,
+    .top = 10,
+    .width = 6,
+    .height = 8,
+    .palette = 14,
+    .baseTile = 81,
+};
 
 static const WindowTemplate ov44_02235384 = {
     .bgId = 1,
@@ -61,197 +96,173 @@ static const WindowTemplate ov44_02235384 = {
     .palette = 14,
     .baseTile = 393,
 };
-static const WindowTemplate ov44_02235374 = {
-    .bgId = 2,
-    .left = 25,
-    .top = 10,
-    .width = 6,
-    .height = 8,
-    .palette = 14,
-    .baseTile = 81,
-};
-static const WindowTemplate ov44_0223537C = {
-    .bgId = 2,
-    .left = 25,
-    .top = 10,
-    .width = 6,
-    .height = 8,
-    .palette = 14,
-    .baseTile = 81,
-};
-static const WindowTemplate ov44_0223538C = {
-    .bgId = 2,
-    .left = 25,
-    .top = 13,
-    .width = 6,
-    .height = 4,
-    .palette = 13,
-    .baseTile = 81,
-};
+
 static const TouchscreenHitbox ov44_02235394[3] = {
     { .rect = { .top = 160, .bottom = 192, .left = 8, .right = 64 } },
     { .rect = { .top = 160, .bottom = 192, .left = 80, .right = 176 } },
     { .rect = { .top = 160, .bottom = 192, .left = 192, .right = 248 } },
 };
+
 static const UnkStruct_ov44_0222DD64 ov44_022353A0[2] = {
     { .strno = 39, .value = 1          },
     { .strno = 41, .value = 0xFFFFFFFE },
 };
+
 static const GraphicsModes ov44_022353B0 = {
     .dispMode = GX_DISPMODE_GRAPHICS,
     .bgMode = GX_BGMODE_0,
     .subMode = GX_BGMODE_0,
     ._2d3dMode = GX_BG0_AS_2D,
 };
+
 static const ObjCharTransferTemplate ov44_022353C0 = {
     .maxTasks = 20,
     .sizeMain = 0x20000,
     .sizeSub = 0x4000,
     .heapID = HEAP_ID_53,
 };
+
 static const u32 ov44_022353D0[6] = { 100, 102, 104, 108, 106, 110 };
 
 static const BgTemplate ov44_022353E8 = {
     .x = 0,
     .y = 0,
-    .bufferSize = 4096,
+    .bufferSize = GF_BG_BUF_SIZE_512x256_4BPP,
     .baseTile = 0,
-    .size = 3,
-    .colorMode = 0,
-    .screenBase = 28,
-    .charBase = 0,
-    .bgExtPltt = 0,
+    .size = GF_BG_SCR_SIZE_512x256,
+    .colorMode = GX_BG_COLORMODE_16,
+    .screenBase = GX_BG_SCRBASE_0xe000,
+    .charBase = GX_BG_CHARBASE_0x00000,
+    .bgExtPltt = GX_BG_EXTPLTT_01,
     .priority = 0,
-    .areaOver = 0,
+    .areaOver = GX_BG_AREAOVER_XLU,
     .dummy = 0,
     .mosaic = 0,
 };
-static const BgTemplate ov44_02235420 = {
-    .x = 0,
-    .y = 0,
-    .bufferSize = 2048,
-    .baseTile = 0,
-    .size = 1,
-    .colorMode = 0,
-    .screenBase = 30,
-    .charBase = 6,
-    .bgExtPltt = 1,
-    .priority = 3,
-    .areaOver = 0,
-    .dummy = 0,
-    .mosaic = 0,
-};
-static const BgTemplate ov44_0223543C = {
-    .x = 0,
-    .y = 0,
-    .bufferSize = 2048,
-    .baseTile = 0,
-    .size = 1,
-    .colorMode = 0,
-    .screenBase = 28,
-    .charBase = 0,
-    .bgExtPltt = 0,
-    .priority = 3,
-    .areaOver = 0,
-    .dummy = 0,
-    .mosaic = 0,
-};
-static const BgTemplate ov44_02235458 = {
-    .x = 0,
-    .y = 0,
-    .bufferSize = 2048,
-    .baseTile = 0,
-    .size = 1,
-    .colorMode = 0,
-    .screenBase = 29,
-    .charBase = 2,
-    .bgExtPltt = 0,
-    .priority = 0,
-    .areaOver = 0,
-    .dummy = 0,
-    .mosaic = 0,
-};
-static const BgTemplate ov44_02235474 = {
-    .x = 0,
-    .y = 0,
-    .bufferSize = 2048,
-    .baseTile = 0,
-    .size = 1,
-    .colorMode = 0,
-    .screenBase = 30,
-    .charBase = 4,
-    .bgExtPltt = 0,
-    .priority = 2,
-    .areaOver = 0,
-    .dummy = 0,
-    .mosaic = 0,
-};
-static const BgTemplate ov44_02235490 = {
-    .x = 0,
-    .y = 0,
-    .bufferSize = 2048,
-    .baseTile = 0,
-    .size = 1,
-    .colorMode = 0,
-    .screenBase = 27,
-    .charBase = 2,
-    .bgExtPltt = 1,
-    .priority = 2,
-    .areaOver = 0,
-    .dummy = 0,
-    .mosaic = 0,
-};
-static const BgTemplate ov44_022354AC = {
-    .x = 0,
-    .y = 0,
-    .bufferSize = 2048,
-    .baseTile = 0,
-    .size = 1,
-    .colorMode = 0,
-    .screenBase = 31,
-    .charBase = 6,
-    .bgExtPltt = 0,
-    .priority = 0,
-    .areaOver = 0,
-    .dummy = 0,
-    .mosaic = 0,
-};
+
 static const BgTemplate ov44_02235404 = {
     .x = 0,
     .y = 0,
-    .bufferSize = 2048,
+    .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
     .baseTile = 0,
-    .size = 1,
-    .colorMode = 0,
-    .screenBase = 26,
-    .charBase = 4,
-    .bgExtPltt = 0,
+    .size = GF_BG_SCR_SIZE_256x256,
+    .colorMode = GX_BG_COLORMODE_16,
+    .screenBase = GX_BG_SCRBASE_0xd000,
+    .charBase = GX_BG_CHARBASE_0x10000,
+    .bgExtPltt = GX_BG_EXTPLTT_01,
     .priority = 1,
-    .areaOver = 0,
+    .areaOver = GX_BG_AREAOVER_XLU,
     .dummy = 0,
     .mosaic = 0,
 };
-static const ListMenuTemplate ov44_022354C8 = {
-    .items = NULL,
-    .moveCursorFunc = ov44_0222C288,
-    .itemPrintFunc = NULL,
-    .window = NULL,
-    .totalItems = 2,
-    .maxShowed = 2,
-    .header_X = 0,
-    .item_X = 8,
-    .cursor_X = 0,
-    .upText_Y = 0,
-    .cursorPal = 1,
-    .fillValue = 15,
-    .cursorShadowPal = 2,
-    .lettersSpacing = 0,
-    .itemVerticalPadding = 0,
-    .scrollMultiple = 0,
-    .fontId = 0,
-    .cursorKind = 0,
-    .data = NULL,
+
+static const BgTemplate ov44_02235420 = {
+    .x = 0,
+    .y = 0,
+    .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
+    .baseTile = 0,
+    .size = GF_BG_SCR_SIZE_256x256,
+    .colorMode = GX_BG_COLORMODE_16,
+    .screenBase = GX_BG_SCRBASE_0xf000,
+    .charBase = GX_BG_CHARBASE_0x18000,
+    .bgExtPltt = GX_BG_EXTPLTT_23,
+    .priority = 3,
+    .areaOver = GX_BG_AREAOVER_XLU,
+    .dummy = 0,
+    .mosaic = 0,
 };
+
+static const BgTemplate ov44_0223543C = {
+    .x = 0,
+    .y = 0,
+    .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
+    .baseTile = 0,
+    .size = GF_BG_SCR_SIZE_256x256,
+    .colorMode = GX_BG_COLORMODE_16,
+    .screenBase = GX_BG_SCRBASE_0xe000,
+    .charBase = GX_BG_CHARBASE_0x00000,
+    .bgExtPltt = GX_BG_EXTPLTT_01,
+    .priority = 3,
+    .areaOver = GX_BG_AREAOVER_XLU,
+    .dummy = 0,
+    .mosaic = 0,
+};
+
+static const BgTemplate ov44_02235458 = {
+    .x = 0,
+    .y = 0,
+    .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
+    .baseTile = 0,
+    .size = GF_BG_SCR_SIZE_256x256,
+    .colorMode = GX_BG_COLORMODE_16,
+    .screenBase = GX_BG_SCRBASE_0xe800,
+    .charBase = GX_BG_CHARBASE_0x08000,
+    .bgExtPltt = GX_BG_EXTPLTT_01,
+    .priority = 0,
+    .areaOver = GX_BG_AREAOVER_XLU,
+    .dummy = 0,
+    .mosaic = 0,
+};
+
+static const BgTemplate ov44_02235474 = {
+    .x = 0,
+    .y = 0,
+    .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
+    .baseTile = 0,
+    .size = GF_BG_SCR_SIZE_256x256,
+    .colorMode = GX_BG_COLORMODE_16,
+    .screenBase = GX_BG_SCRBASE_0xf000,
+    .charBase = GX_BG_CHARBASE_0x10000,
+    .bgExtPltt = GX_BG_EXTPLTT_01,
+    .priority = 2,
+    .areaOver = GX_BG_AREAOVER_XLU,
+    .dummy = 0,
+    .mosaic = 0,
+};
+
+static const BgTemplate ov44_02235490 = {
+    .x = 0,
+    .y = 0,
+    .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
+    .baseTile = 0,
+    .size = GF_BG_SCR_SIZE_256x256,
+    .colorMode = GX_BG_COLORMODE_16,
+    .screenBase = GX_BG_SCRBASE_0xd800,
+    .charBase = GX_BG_CHARBASE_0x08000,
+    .bgExtPltt = GX_BG_EXTPLTT_23,
+    .priority = 2,
+    .areaOver = GX_BG_AREAOVER_XLU,
+    .dummy = 0,
+    .mosaic = 0,
+};
+
+static const BgTemplate ov44_022354AC = {
+    .x = 0,
+    .y = 0,
+    .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
+    .baseTile = 0,
+    .size = GF_BG_SCR_SIZE_256x256,
+    .colorMode = GX_BG_COLORMODE_16,
+    .screenBase = GX_BG_SCRBASE_0xf800,
+    .charBase = GX_BG_CHARBASE_0x18000,
+    .bgExtPltt = GX_BG_EXTPLTT_01,
+    .priority = 0,
+    .areaOver = GX_BG_AREAOVER_XLU,
+    .dummy = 0,
+    .mosaic = 0,
+};
+
+static const TouchscreenHitbox ov44_022354E8[8] = {
+    { .rect = { .top = 0, .bottom = 47, .left = 0, .right = 119 } },
+    { .rect = { .top = 48, .bottom = 95, .left = 0, .right = 119 } },
+    { .rect = { .top = 96, .bottom = 143, .left = 0, .right = 119 } },
+    { .rect = { .top = 144, .bottom = 191, .left = 0, .right = 119 } },
+    { .rect = { .top = 0, .bottom = 47, .left = 128, .right = 255 } },
+    { .rect = { .top = 48, .bottom = 95, .left = 128, .right = 255 } },
+    { .rect = { .top = 96, .bottom = 143, .left = 128, .right = 255 } },
+    { .rect = { .top = 144, .bottom = 191, .left = 128, .right = 255 } },
+};
+
 static const ListMenuTemplate ov44_02235508 = {
     .items = NULL,
     .moveCursorFunc = ov44_0222C288,
@@ -273,6 +284,7 @@ static const ListMenuTemplate ov44_02235508 = {
     .cursorKind = 0,
     .data = NULL,
 };
+
 static const ListMenuTemplate ov44_02235528 = {
     .items = NULL,
     .moveCursorFunc = ov44_0222C288,
@@ -294,16 +306,29 @@ static const ListMenuTemplate ov44_02235528 = {
     .cursorKind = 0,
     .data = NULL,
 };
-static const TouchscreenHitbox ov44_022354E8[8] = {
-    { .rect = { .top = 0, .bottom = 47, .left = 0, .right = 119 } },
-    { .rect = { .top = 48, .bottom = 95, .left = 0, .right = 119 } },
-    { .rect = { .top = 96, .bottom = 143, .left = 0, .right = 119 } },
-    { .rect = { .top = 144, .bottom = 191, .left = 0, .right = 119 } },
-    { .rect = { .top = 0, .bottom = 47, .left = 128, .right = 255 } },
-    { .rect = { .top = 48, .bottom = 95, .left = 128, .right = 255 } },
-    { .rect = { .top = 96, .bottom = 143, .left = 128, .right = 255 } },
-    { .rect = { .top = 144, .bottom = 191, .left = 128, .right = 255 } },
+
+static const ListMenuTemplate ov44_022354C8 = {
+    .items = NULL,
+    .moveCursorFunc = ov44_0222C288,
+    .itemPrintFunc = NULL,
+    .window = NULL,
+    .totalItems = 2,
+    .maxShowed = 2,
+    .header_X = 0,
+    .item_X = 8,
+    .cursor_X = 0,
+    .upText_Y = 0,
+    .cursorPal = 1,
+    .fillValue = 15,
+    .cursorShadowPal = 2,
+    .lettersSpacing = 0,
+    .itemVerticalPadding = 0,
+    .scrollMultiple = 0,
+    .fontId = 0,
+    .cursorKind = 0,
+    .data = NULL,
 };
+
 static const GraphicsBanks ov44_02235548 = {
     .bg = GX_VRAM_BG_128_A,
     .bgextpltt = GX_VRAM_BGEXTPLTT_NONE,
@@ -316,12 +341,13 @@ static const GraphicsBanks ov44_02235548 = {
     .tex = GX_VRAM_TEX_NONE,
     .texpltt = GX_VRAM_TEXPLTT_NONE,
 };
+
 static const SpriteTemplate ov44_02235570[3] = {
     {
      .spriteList = NULL,
      .header = NULL,
-     .position = { .x = 0x28000, .y = 0x1AC000, .z = 0 },
-     .scale = { .x = 4096, .y = 4096, .z = 4096 },
+     .position = { .x = FX32_CONST(40), .y = FX32_CONST(428), .z = 0 },
+     .scale = { .x = FX32_ONE, .y = FX32_ONE, .z = FX32_ONE },
      .rotation = 0,
      .drawPriority = 128,
      .whichScreen = NNS_G2D_VRAM_TYPE_2DSUB,
@@ -330,8 +356,8 @@ static const SpriteTemplate ov44_02235570[3] = {
     {
      .spriteList = NULL,
      .header = NULL,
-     .position = { .x = 0x80000, .y = 0x1AC000, .z = 0 },
-     .scale = { .x = 4096, .y = 4096, .z = 4096 },
+     .position = { .x = FX32_CONST(128), .y = FX32_CONST(428), .z = 0 },
+     .scale = { .x = FX32_ONE, .y = FX32_ONE, .z = FX32_ONE },
      .rotation = 0,
      .drawPriority = 128,
      .whichScreen = NNS_G2D_VRAM_TYPE_2DSUB,
@@ -340,8 +366,8 @@ static const SpriteTemplate ov44_02235570[3] = {
     {
      .spriteList = NULL,
      .header = NULL,
-     .position = { .x = 0xE0000, .y = 0x1AC000, .z = 0 },
-     .scale = { .x = 4096, .y = 4096, .z = 4096 },
+     .position = { .x = FX32_CONST(224), .y = FX32_CONST(428), .z = 0 },
+     .scale = { .x = FX32_ONE, .y = FX32_ONE, .z = FX32_ONE },
      .rotation = 0,
      .drawPriority = 128,
      .whichScreen = NNS_G2D_VRAM_TYPE_2DSUB,
@@ -349,78 +375,153 @@ static const SpriteTemplate ov44_02235570[3] = {
      },
 };
 
-// UnkStruct_ov44_0222DD64 _02236660[4] = {
-//     {.strno = 0x1E, .value = 0x13}, {.strno = 0x22, .value = 0x1D},
-// 	{.strno = 0x29, .value = 0xFFFFFFFE}, {.strno = 0x20, .value = 0x15}
-// };
+UnkStruct_ov44_0222DD64 ov44_02236660 = { .strno = 0x1E, .value = 0x13 };
+UnkStruct_ov44_0222DD64 ov44_02236678 = { .strno = 0x20, .value = 0x15 };
+UnkStruct_ov44_0222DD64 ov44_02236670 = { .strno = 0x29, .value = LIST_CANCEL };
+UnkStruct_ov44_0222DD64 ov44_02236668 = { .strno = 0x22, .value = 0x1D };
 
-// func_type_02236680 ov44_02236680[7] = {ov44_02230300, ov44_02230E5C, ov44_022307E0, ov44_022308B0, ov44_02230B2C, ov44_02230C68, ov44_02230D8C};
+func_type_02236680 ov44_02236680[7] = {
+    ov44_02230300,
+    ov44_02230E5C,
+    ov44_022307E0,
+    ov44_022308B0,
+    ov44_02230B2C,
+    ov44_02230C68,
+    ov44_02230D8C,
+};
 
-// ListMenuTemplate ov44_022366FC = {
-//     .items = NULL,
-//     .moveCursorFunc = ov44_0222C288,
-//     .itemPrintFunc = NULL,
-//     .window = NULL,
-//     .totalItems = 3,
-//     .maxShowed = 3,
-//     .header_X = 0,
-//     .item_X = 8,
-//     .cursor_X = 0,
-//     .upText_Y = 0,
-//     .cursorPal = 1,
-//     .fillValue = 0xF,
-//     .cursorShadowPal = 2,
-//     .lettersSpacing = 0,
-//     .itemVerticalPadding = 0,
-//     .scrollMultiple = 0,
-//     .fontId = 0,
-//     .cursorKind = 0,
-//     .data = NULL
-// };
+UnkStruct_ov44_0222DD64 ov44_0223669C[4] = {
+    { .strno = 0x47, .value = 0x17        },
+    { .strno = 0x47, .value = 0x19        },
+    { .strno = 0x47, .value = 0x1B        },
+    { .strno = 0x29, .value = LIST_CANCEL }
+};
 
-// UnkStruct_ov44_0222DD64 ov44_022366BC[4] = {
-// 	{.strno = 0x5F, .value = 0x0B}, {.strno = 0x60, .value = 0x09},
-//     {.strno = 0x61, .value = 0x0A}, {.strno = 0x29, .value = 0xFFFFFFFE}
-// };
-// UnkStruct_ov44_0222DD64 ov44_022366DC[4] = {
-// 	{.strno = 0x62, .value = 0x0E}, {.strno = 0x63, .value = 0x0C},
-//     {.strno = 0x64, .value = 0x0D}, {.strno = 0x29, .value = 0xFFFFFFFE}
-// };
-// UnkStruct_ov44_0222DD64 ov44_0223669C[4] = {
-//     {.strno = 0x47, .value = 0x17}, {.strno = 0x47, .value = 0x19},
-//     {.strno = 0x47, .value = 0x1B}, {.strno = 0x29, .value = 0xFFFFFFFE}
-// };
+UnkStruct_ov44_0222DD64 ov44_022366BC[4] = {
+    { .strno = 0x5F, .value = 0x0B        },
+    { .strno = 0x60, .value = 0x09        },
+    { .strno = 0x61, .value = 0x0A        },
+    { .strno = 0x29, .value = LIST_CANCEL }
+};
 
-// UnkStruct_ov44_0222DD64 ov44_0223671C[10] = {
-//     {.strno = 0x5D, .value = 0x00}, {.strno = 0x5E, .value = 0x01},
-//     {.strno = 0x1C, .value = 0x0F}, {.strno = 0x00, .value = 0x00},
-//     {.strno = 0x00, .value = 0x00}, {.strno = 0x00, .value = 0x00},
-//     {.strno = 0x00, .value = 0x00}, {.strno = 0x00, .value = 0x00},
-//     {.strno = 0x00, .value = 0x00}, {.strno = 0x00, .value = 0x00}
-// };
-// func_type_0222A60C ov44_0223676C[72] = {
-//     ov44_0222B228, ov44_0222B36C, ov44_0222B3A8, ov44_0222B42C, ov44_0222B494, ov44_0222B528, ov44_0222B64C, ov44_0222BA6C, ov44_0222BAB8, ov44_0222BAC4,
-//     ov44_0222BAD0, ov44_0222BB38, ov44_0222BBA4, ov44_0222BC78, ov44_0222B744, ov44_0222BE3C, ov44_0222C060, ov44_0222C084, ov44_0222C35C, ov44_0222C684,
-//     ov44_0222C9AC, ov44_0222C9F4, ov44_0222CB34, ov44_0222CB7C, ov44_0222CC34, ov44_0222CDAC, ov44_0222CE40, ov44_0222CFE0, ov44_0222D0A4, ov44_0222D10C,
-//     ov44_0222D1BC, ov44_0222D1C0, ov44_0222D1C4, ov44_0222EB90, ov44_0222F4E0, ov44_0222D1C8, ov44_0222D3DC, ov44_0222D594, ov44_0222DA64, ov44_0222D214,
-//     ov44_0222D23C, ov44_0222D2B0, ov44_0222DC18, ov44_0222DD64, ov44_0222E090, ov44_0222E45C, ov44_0222E62C, ov44_0222E630, ov44_0222E634, ov44_0222E860,
-//     ov44_0222E908, ov44_0222E948, ov44_0222E9C4, ov44_0222EA2C, ov44_0222EBB8, ov44_0222EBC4, ov44_0222EC14, ov44_0222EC2C, ov44_0222EC98, ov44_0222EDB8,
-//     ov44_0222EE10, ov44_0222EE54, ov44_0222EED4, ov44_0222F0AC, ov44_0222F194, ov44_0222BFF0, ov44_0222E5D8, ov44_0222E5DC, ov44_0222D824, ov44_0222BEE0,
-//     ov44_0222E5E0, ov44_0222BF6C};
+UnkStruct_ov44_0222DD64 ov44_022366DC[4] = {
+    { .strno = 0x62, .value = 0x0E        },
+    { .strno = 0x63, .value = 0x0C        },
+    { .strno = 0x64, .value = 0x0D        },
+    { .strno = 0x29, .value = LIST_CANCEL }
+};
 
-extern UnkStruct_ov44_0222DD64 _02236660[4];
-extern func_type_02236680 ov44_02236680[7];
-extern UnkStruct_ov44_0222DD64 ov44_0223669C[4];
-extern UnkStruct_ov44_0222DD64 ov44_022366BC[4];
-extern UnkStruct_ov44_0222DD64 ov44_022366DC[4];
-extern ListMenuTemplate ov44_022366FC;
-extern UnkStruct_ov44_0222DD64 ov44_0223671C[4];
-extern func_type_0222A60C ov44_0223676C[20];
+ListMenuTemplate ov44_022366FC = {
+    .items = NULL,
+    .moveCursorFunc = ov44_0222C288,
+    .itemPrintFunc = NULL,
+    .window = NULL,
+    .totalItems = 3,
+    .maxShowed = 3,
+    .header_X = 0,
+    .item_X = 8,
+    .cursor_X = 0,
+    .upText_Y = 0,
+    .cursorPal = 1,
+    .fillValue = 0xF,
+    .cursorShadowPal = 2,
+    .lettersSpacing = 0,
+    .itemVerticalPadding = 0,
+    .scrollMultiple = 0,
+    .fontId = 0,
+    .cursorKind = 0,
+    .data = NULL
+};
 
-// static s32 _022368A0[8];
+UnkStruct_ov44_0222DD64 ov44_0223671C[10] = {
+    { .strno = 0x5D, .value = 0  },
+    { .strno = 0x5E, .value = 1  },
+    { .strno = 0x1C, .value = 15 },
+    { .strno = 0x00, .value = 0  },
+    { .strno = 0x00, .value = 0  },
+    { .strno = 0x00, .value = 0  },
+    { .strno = 0x00, .value = 0  },
+    { .strno = 0x00, .value = 0  },
+    { .strno = 0x00, .value = 0  },
+    { .strno = 0x00, .value = 0  }
+};
 
-extern s32 _022368A0[8];
-extern void *sub_02078D24;
+func_type_0222A60C ov44_0223676C[72] = {
+    ov44_0222B228,
+    ov44_0222B36C,
+    ov44_0222B3A8,
+    ov44_0222B42C,
+    ov44_0222B494,
+    ov44_0222B528,
+    ov44_0222B64C,
+    ov44_0222BA6C,
+    ov44_0222BAB8,
+    ov44_0222BAC4,
+    ov44_0222BAD0,
+    ov44_0222BB38,
+    ov44_0222BBA4,
+    ov44_0222BC78,
+    ov44_0222B744,
+    ov44_0222BE3C,
+    ov44_0222C060,
+    ov44_0222C084,
+    ov44_0222C35C,
+    ov44_0222C684,
+    ov44_0222C9AC,
+    ov44_0222C9F4,
+    ov44_0222CB34,
+    ov44_0222CB7C,
+    ov44_0222CC34,
+    ov44_0222CDAC,
+    ov44_0222CE40,
+    ov44_0222CFE0,
+    ov44_0222D0A4,
+    ov44_0222D10C,
+    ov44_0222D1BC,
+    ov44_0222D1C0,
+    ov44_0222D1C4,
+    ov44_0222EB90,
+    ov44_0222F4E0,
+    ov44_0222D1C8,
+    ov44_0222D3DC,
+    ov44_0222D594,
+    ov44_0222DA64,
+    ov44_0222D214,
+    ov44_0222D23C,
+    ov44_0222D2B0,
+    ov44_0222DC18,
+    ov44_0222DD64,
+    ov44_0222E090,
+    ov44_0222E45C,
+    ov44_0222E62C,
+    ov44_0222E630,
+    ov44_0222E634,
+    ov44_0222E860,
+    ov44_0222E908,
+    ov44_0222E948,
+    ov44_0222E9C4,
+    ov44_0222EA2C,
+    ov44_0222EBB8,
+    ov44_0222EBC4,
+    ov44_0222EC14,
+    ov44_0222EC2C,
+    ov44_0222EC98,
+    ov44_0222EDB8,
+    ov44_0222EE10,
+    ov44_0222EE54,
+    ov44_0222EED4,
+    ov44_0222F0AC,
+    ov44_0222F194,
+    ov44_0222BFF0,
+    ov44_0222E5D8,
+    ov44_0222E5DC,
+    ov44_0222D824,
+    ov44_0222BEE0,
+    ov44_0222E5E0,
+    ov44_0222BF6C,
+};
+
+static s32 _022368A0[8];
 
 FS_EXTERN_OVERLAY(OVY_42);
 
@@ -1964,7 +2065,7 @@ s32 ov44_0222C35C(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
     if ((sub_020393C8() == 0) && (sub_020392A0() == 0)) {
         return arg1;
     }
-    ov00_021E5CBC(&sub_02078D24);
+    ov00_021E5CBC(sub_02078D24);
     arg0->unkD68.unk4 = 0;
     NARC *temp_r0 = NARC_New(NARC_a_0_8_8, HEAP_ID_53);
     ov44_0222AB24(arg0->unk15C, &arg0->unkB0C, temp_r0, HEAP_ID_53);
@@ -2592,7 +2693,7 @@ s32 ov44_0222D3DC(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
         listMenuTemplate.maxShowed++;
 
         s32 index = listLen - 1;
-        listMenuItems[index] = _02236660[0];
+        listMenuItems[index] = ov44_02236660;
     }
     if (ov44_02229EE0(arg0) == 1) {
         listLen++;
@@ -2600,7 +2701,7 @@ s32 ov44_0222D3DC(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
         listMenuTemplate.maxShowed++;
 
         s32 index = listLen - 1;
-        listMenuItems[index] = _02236660[3];
+        listMenuItems[index] = ov44_02236678;
     }
     if (ov44_02229EFC(arg0) == 1) {
         listLen++;
@@ -2608,11 +2709,11 @@ s32 ov44_0222D3DC(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
         listMenuTemplate.maxShowed++;
 
         s32 index = listLen - 1;
-        listMenuItems[index] = _02236660[1];
+        listMenuItems[index] = ov44_02236668;
     }
     listMenuTemplate.totalItems++;
     listMenuTemplate.maxShowed++;
-    listMenuItems[listLen] = _02236660[2];
+    listMenuItems[listLen] = ov44_02236670;
     arg0->unk154 = ListMenuItems_New(listLen + 1, HEAP_ID_53);
 
     for (s32 i = 0; i < listLen + 1; i++) {
@@ -4745,7 +4846,7 @@ void ov44_02231420(UnkStruct_ov44_022319EC *arg0, NARC *arg1, enum HeapID arg2) 
         spriteTemplateList[i].header = &spriteResourcesHeader;
         spriteTemplateList[i].heapID = arg2;
         arg0->unkB1C.unk21C[i] = Sprite_CreateAffine(&spriteTemplateList[i]);
-        Sprite_SetAnimCtrlSeq(arg0->unkB1C.unk21C[i], _0223535C[i]);
+        Sprite_SetAnimCtrlSeq(arg0->unkB1C.unk21C[i], ov44_0223535C[i]);
     }
     FontID_Alloc(2, arg2);
     Window window;
@@ -4835,7 +4936,7 @@ void ov44_022317F0(u32 arg0, u32 arg1, UnkStruct_ov44_022319EC *arg2) {
 }
 
 void ov44_02231800(UnkStruct_ov44_02231800 *arg0, s32 arg1) {
-    Sprite_SetAnimCtrlSeq(arg0->unk21C[arg1], _0223535C[arg1]);
+    Sprite_SetAnimCtrlSeq(arg0->unk21C[arg1], ov44_0223535C[arg1]);
     Sprite_SetAnimationFrame(arg0->unk21C[arg1], 4);
     if (arg1 == 1) {
         sub_020136B4(arg0->unk234, -32, -8);
@@ -4867,7 +4968,7 @@ s32 ov44_0223183C(UnkStruct_ov44_02231800 *arg0, s32 arg1, s32 arg2, s32 arg3) {
         u16 temp_r7_2 = Sprite_GetAnimationNumber(arg0->unk21C[arg1]);
         u16 spC = Sprite_GetAnimationFrame(arg0->unk21C[arg1]);
         if (temp_r7_2 == ov44_02235360[arg1]) {
-            Sprite_SetAnimCtrlSeq(arg0->unk21C[arg1], _0223535C[arg1]);
+            Sprite_SetAnimCtrlSeq(arg0->unk21C[arg1], ov44_0223535C[arg1]);
             Sprite_SetAnimationFrame(arg0->unk21C[arg1], 4 - spC);
         }
         Sprite_UpdateAnim(arg0->unk21C[arg1], 2 * FX32_ONE);
