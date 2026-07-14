@@ -1,6 +1,7 @@
+#include "global.h"
+
 #include "msgdata/msg.naix"
 #include "msgdata/msg/msg_0778.h"
-#include "msgdata/msg/msg_0800.h"
 
 #include "bg_window.h"
 #include "dwcaccount.h"
@@ -12,6 +13,7 @@
 #include "overlay_00_thumb.h"
 #include "overlay_44_02232E9C.h"
 #include "party.h"
+#include "poke_overlay.h"
 #include "pokedex.h"
 #include "pokemon.h"
 #include "render_text.h"
@@ -3360,7 +3362,7 @@ s32 ov44_0222E860(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
 
 s32 ov44_0222E908(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
     if ((ov44_0222E7C4(arg0) == 0) && (sub_02037B38(14) != 0)) {
-        u16 r1 = ov44_02229F00(arg0, &arg0->unk4->unk0);
+        s16 r1 = ov44_02229F00(arg0, &arg0->unk4->unk0);
         if (sub_02037C0C(sub_0203769C(), &r1) != 0) {
             arg0->unk348 = 51;
         }
@@ -4317,7 +4319,7 @@ void ov44_02230234(UnkStruct_ov44_022319EC *arg0, enum HeapID heapID) {
 }
 
 void ov44_02230300(UnkStruct_ov44_022319EC *arg0, enum HeapID heapID) {
-    s32 color;
+    u32 color;
     s32 temp_r4 = arg0->unkB1C.unk71 - 1;
     if (sub_0202C090(arg0->unk0, temp_r4, 8) == 0) {
         color = MAKE_TEXT_COLOR(5, 6, 0);
@@ -4594,7 +4596,7 @@ void ov44_02231148(UnkStruct_ov44_022319EC *arg0, u8 arg1, u8 arg2, u8 arg3, u8 
     BgTilemapRectChangePalette(arg0->unk15C, 6, arg1, arg2, 16, 6, arg3 + 4);
 }
 
-s32 ov44_0223120C(u32 arg0, s32 *color) {
+s32 ov44_0223120C(u32 arg0, u32 *color) {
     *color = MAKE_TEXT_COLOR(1, 2, 0);
     s32 ret = 0;
     switch (arg0) {
@@ -4724,7 +4726,7 @@ void ov44_022313C8(UnkStruct_ov44_022319EC *arg0) {
 
 void ov44_02231420(UnkStruct_ov44_022319EC *arg0, NARC *arg1, enum HeapID arg2) {
     SpriteTemplate spriteTemplateList[3];
-    spriteTemplateList = ov44_02235570;
+    ARRAY_ASSIGN(spriteTemplateList, ov44_02235570);
 
     GfGfx_EngineBTogglePlanes(16, 0);
     arg0->unkB1C.unk20C[0] = AddCharResObjFromOpenNarc(arg0->unk2BC[0], arg1, NARC_a_0_4_3, FALSE, 30, NNS_G2D_VRAM_TYPE_2DSUB, arg2);

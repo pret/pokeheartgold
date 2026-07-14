@@ -1,7 +1,5 @@
 #include "field/field_sprite_manager.h"
 
-#include "global.h"
-
 #include "gf_gfx_loader.h"
 #include "sprite_transfer.h"
 #include "unk_0200A090.h"

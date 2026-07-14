@@ -1,4 +1,3 @@
-#include "global.h"
 
 #include "constants/sndseq.h"
 
@@ -16,6 +15,7 @@
 #include "overlay_42.h"
 #include "overlay_44.h"
 #include "overlay_manager.h"
+#include "poke_overlay.h"
 #include "sound_02004A44.h"
 #include "sprite.h"
 #include "text.h"
@@ -250,7 +250,7 @@ void ov44_02233160(UnkStruct_ov44_02235340 *arg0) {
 
 void ov44_0223317C(UnkStruct_ov44_02235340 *arg0, String *arg1) {
     if (arg0->unk4 != 1) {
-        __memcpy(arg0->unk20, arg1, 4);
+        memcpy(arg0->unk20, arg1, 4);
     }
 }
 
@@ -976,7 +976,7 @@ void ov44_0223438C(UnkStruct_ov44_02235340 *arg0) {
         }
         if (sp0 == 1) {
             u8 sp4[4];
-            __memcpy(&sp4, arg0->unk20, 4);
+            memcpy(&sp4, arg0->unk20, 4);
             sub_02037030(24, &sp4, 4);
         }
     }

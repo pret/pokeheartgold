@@ -1,6 +1,6 @@
 #include "overlay_manager.h"
 
-#include "global.h"
+#include "poke_overlay.h"
 
 OverlayManager *OverlayManager_New(const OverlayManagerTemplate *template, void *args, enum HeapID heapID) {
     OverlayManager *ret;

@@ -4,7 +4,6 @@
 
 #include "constants/sndseq.h"
 
-#include "frontier/overlay_80.h"
 #include "frontier/overlay_80_02238034.h"
 #include "msgdata/msg.naix"
 
@@ -18,6 +17,7 @@
 #include "palette.h"
 #include "party.h"
 #include "party_menu.h"
+#include "poke_overlay.h"
 #include "pokemon.h"
 #include "pokemon_icon_idx.h"
 #include "sprite_transfer.h"

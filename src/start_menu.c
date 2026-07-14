@@ -1335,7 +1335,7 @@ static void sub_0203D664(TaskManager *taskManager, int a1) {
 
     Bag *bag = Save_Bag_Get(fieldSystem->saveData);
     for (u8 i = 0; i < NUM_BERRIES; ++i) {
-        if (Bag_HasItem(bag, BerryToItemId(i), 1, HEAP_ID_FIELD2)) {}
+        if (Bag_HasItem(bag, BerryToItemId(i), 1, HEAP_ID_FIELD2)) { }
     }
     u8 scroll, position;
     BagCursor_Field_PocketGetPosition(fieldSystem->bagCursor, POCKET_BERRIES, &position, &scroll);

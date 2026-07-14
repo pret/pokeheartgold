@@ -864,7 +864,7 @@ static void ViewRankings_TrySetCursorPosition(ViewRankingsAppData *appData, int 
 }
 
 static void ViewRankings_DrawCursor(ViewRankingsAppData *appData) {
-    VecFx32 pos = {};
+    VecFx32 pos = { };
     u8 idx = appData->cursorPos;
     pos.x = sCursorPositionParams[idx].x * FX32_ONE;
     pos.y = sCursorPositionParams[idx].y * FX32_ONE;

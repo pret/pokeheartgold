@@ -3952,7 +3952,7 @@ BOOL BtlCmd_TrySetMagicCoat(BattleSystem *battleSystem, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
     u32 unkA = BattleScriptReadWord(ctx);
 
-    for (i = 0; i < BattleSystem_GetMaxBattlers(battleSystem); i++) {}
+    for (i = 0; i < BattleSystem_GetMaxBattlers(battleSystem); i++) { }
 
     if (ctx->battlersOnField == 1) {
         BattleScriptIncrementPointer(ctx, unkA);

@@ -169,7 +169,7 @@
 #define MON_DATA_OT_ID                      7
 #define MON_DATA_EXPERIENCE                 8
 #define MON_DATA_FRIENDSHIP                 9
-#define MON_DATA_EGG_CYCLES                 9   // Eggs track their remaining cycles in the same place that Pokemon track friendship.
+#define MON_DATA_EGG_CYCLES                 9 // Eggs track their remaining cycles in the same place that Pokemon track friendship.
 #define MON_DATA_ABILITY                    10
 #define MON_DATA_MARKINGS                   11
 #define MON_DATA_LANGUAGE                   12

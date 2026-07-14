@@ -54,7 +54,7 @@ ListMenuItem *ListMenuItems_SeekEnd(ListMenuItem *items, enum HeapID *heapId_p) 
         }
     }
     out = items;
-    for (; items->text != (String *)-1; items++) {}
+    for (; items->text != (String *)-1; items++) { }
     *heapId_p = (enum HeapID)items->value;
     return out;
 }

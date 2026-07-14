@@ -1,7 +1,5 @@
 #include "party_menu.h"
 
-#include "global.h"
-
 #include "constants/maps.h"
 #include "constants/moves.h"
 
@@ -11,7 +9,6 @@
 
 #include "bag.h"
 #include "battle_regulation.h"
-#include "field_system.h"
 #include "font.h"
 #include "gf_gfx_loader.h"
 #include "menu_input_state.h"
@@ -20,6 +17,7 @@
 #include "party_menu_items.h"
 #include "party_menu_list_items.h"
 #include "party_menu_sprites.h"
+#include "poke_overlay.h"
 #include "render_text.h"
 #include "save_link_ruleset.h"
 #include "sound_02004A44.h"
@@ -2611,6 +2609,9 @@ static int PartyMenu_Subtask_SwitchItemsHandleYesNoInput(PartyMenu *partyMenu) {
         YesNoPrompt_Destroy(partyMenu->yesNoPrompt);
         PartyMenu_DisableMainScreenBlend_AfterYesNo();
         return PartyMenu_SwitchItemsDeclined(partyMenu);
+
+    default:
+        break;
     }
 
     return PARTY_MENU_STATE_YESNO_ASK_SWITCH_ITEMS;

@@ -1,6 +1,6 @@
+#include "poke_overlay.h"
 #define _IN_SCRCMD_C
 
-#include "constants/accessories.h"
 #include "constants/events.h"
 #include "constants/phone_contacts.h"
 #include "constants/trainers.h"
