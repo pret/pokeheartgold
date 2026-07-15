@@ -140,12 +140,12 @@ static void SinjohCutscene_LoadResources(SinjohCutsceneData *data) {
     u8 i, j;
 
     u32 unownAnimationFiles[2][2];
-    unownAnimationFiles = sUnownAnimationFiles;
+    ARRAY_ASSIGN(unownAnimationFiles, sUnownAnimationFiles);
     VecFx32 arceusPos;
     u32 unkData2[2];
     u32 unownModelFiles[2];
-    unkData2 = ov02_02253CF8_0;
-    unownModelFiles = sUnownModelFiles;
+    ARRAY_ASSIGN(unkData2, ov02_02253CF8_0);
+    ARRAY_ASSIGN(unownModelFiles, sUnownModelFiles);
 
     HeapExp_FndInitAllocator(&data->alloc, HEAP_ID_FIELD1, 32);
 
@@ -301,10 +301,10 @@ static const u32 sSinjohEggAnimationFiles[3][4] = {
 
 static void SinjohGetEggCutscene_LoadResources(SinjohGetEggCutsceneData *data) {
     u32 eggAnimationFiles[3][4];
-    eggAnimationFiles = sSinjohEggAnimationFiles;
+    ARRAY_ASSIGN(eggAnimationFiles, sSinjohEggAnimationFiles);
 
     u32 modelFiles[3];
-    modelFiles = sSinjohEggModelFiles;
+    ARRAY_ASSIGN(modelFiles, sSinjohEggModelFiles);
 
     VecFx32 arceusPos;
 
