@@ -47,25 +47,15 @@
 #include "unk_020971F8.h"
 #include "vram_transfer_manager.h"
 
-static const u8 ov44_0223535C[4] = { 1, 3, 5, 0 };
-
 static const u8 ov44_02235360[4] = { 0, 2, 4, 0 };
-
-static const u8 ov44_02235368[4] = { 0, 1, 2, 1 };
 
 static const u8 ov44_02235364[4] = { 8, 7, 5, 7 };
 
-static const s8 ov44_0223536C[5] = { 248, 247, 246, 246, 247 };
+static const u8 ov44_02235368[4] = { 0, 1, 2, 1 };
 
-static const WindowTemplate ov44_0223538C = {
-    .bgId = 2,
-    .left = 25,
-    .top = 13,
-    .width = 6,
-    .height = 4,
-    .palette = 13,
-    .baseTile = 81,
-};
+static const u8 ov44_0223535C[4] = { 1, 3, 5, 0 };
+
+static const s8 ov44_0223536C[5] = { 248, 247, 246, 246, 247 };
 
 static const WindowTemplate ov44_02235374 = {
     .bgId = 2,
@@ -95,6 +85,16 @@ static const WindowTemplate ov44_02235384 = {
     .height = 8,
     .palette = 14,
     .baseTile = 393,
+};
+
+static const WindowTemplate ov44_0223538C = {
+    .bgId = 2,
+    .left = 25,
+    .top = 13,
+    .width = 6,
+    .height = 4,
+    .palette = 13,
+    .baseTile = 81,
 };
 
 static const TouchscreenHitbox ov44_02235394[3] = {
@@ -342,43 +342,10 @@ static const GraphicsBanks ov44_02235548 = {
     .texpltt = GX_VRAM_TEXPLTT_NONE,
 };
 
-static const SpriteTemplate ov44_02235570[3] = {
-    {
-     .spriteList = NULL,
-     .header = NULL,
-     .position = { .x = FX32_CONST(40), .y = FX32_CONST(428), .z = 0 },
-     .scale = { .x = FX32_ONE, .y = FX32_ONE, .z = FX32_ONE },
-     .rotation = 0,
-     .drawPriority = 128,
-     .whichScreen = NNS_G2D_VRAM_TYPE_2DSUB,
-     .heapID = HEAP_ID_DEFAULT,
-     },
-    {
-     .spriteList = NULL,
-     .header = NULL,
-     .position = { .x = FX32_CONST(128), .y = FX32_CONST(428), .z = 0 },
-     .scale = { .x = FX32_ONE, .y = FX32_ONE, .z = FX32_ONE },
-     .rotation = 0,
-     .drawPriority = 128,
-     .whichScreen = NNS_G2D_VRAM_TYPE_2DSUB,
-     .heapID = HEAP_ID_DEFAULT,
-     },
-    {
-     .spriteList = NULL,
-     .header = NULL,
-     .position = { .x = FX32_CONST(224), .y = FX32_CONST(428), .z = 0 },
-     .scale = { .x = FX32_ONE, .y = FX32_ONE, .z = FX32_ONE },
-     .rotation = 0,
-     .drawPriority = 128,
-     .whichScreen = NNS_G2D_VRAM_TYPE_2DSUB,
-     .heapID = HEAP_ID_DEFAULT,
-     },
-};
-
-UnkStruct_ov44_0222DD64 ov44_02236660 = { .strno = 0x1E, .value = 0x13 };
-UnkStruct_ov44_0222DD64 ov44_02236678 = { .strno = 0x20, .value = 0x15 };
-UnkStruct_ov44_0222DD64 ov44_02236670 = { .strno = 0x29, .value = LIST_CANCEL };
 UnkStruct_ov44_0222DD64 ov44_02236668 = { .strno = 0x22, .value = 0x1D };
+UnkStruct_ov44_0222DD64 ov44_02236670 = { .strno = 0x29, .value = LIST_CANCEL };
+UnkStruct_ov44_0222DD64 ov44_02236678 = { .strno = 0x20, .value = 0x15 };
+UnkStruct_ov44_0222DD64 ov44_02236660 = { .strno = 0x1E, .value = 0x13 };
 
 func_type_02236680 ov44_02236680[7] = {
     ov44_02230300,
@@ -388,27 +355,6 @@ func_type_02236680 ov44_02236680[7] = {
     ov44_02230B2C,
     ov44_02230C68,
     ov44_02230D8C,
-};
-
-UnkStruct_ov44_0222DD64 ov44_0223669C[4] = {
-    { .strno = 0x47, .value = 0x17        },
-    { .strno = 0x47, .value = 0x19        },
-    { .strno = 0x47, .value = 0x1B        },
-    { .strno = 0x29, .value = LIST_CANCEL }
-};
-
-UnkStruct_ov44_0222DD64 ov44_022366BC[4] = {
-    { .strno = 0x5F, .value = 0x0B        },
-    { .strno = 0x60, .value = 0x09        },
-    { .strno = 0x61, .value = 0x0A        },
-    { .strno = 0x29, .value = LIST_CANCEL }
-};
-
-UnkStruct_ov44_0222DD64 ov44_022366DC[4] = {
-    { .strno = 0x62, .value = 0x0E        },
-    { .strno = 0x63, .value = 0x0C        },
-    { .strno = 0x64, .value = 0x0D        },
-    { .strno = 0x29, .value = LIST_CANCEL }
 };
 
 ListMenuTemplate ov44_022366FC = {
@@ -431,6 +377,27 @@ ListMenuTemplate ov44_022366FC = {
     .fontId = 0,
     .cursorKind = 0,
     .data = NULL
+};
+
+UnkStruct_ov44_0222DD64 ov44_0223669C[4] = {
+    { .strno = 0x47, .value = 0x17        },
+    { .strno = 0x47, .value = 0x19        },
+    { .strno = 0x47, .value = 0x1B        },
+    { .strno = 0x29, .value = LIST_CANCEL }
+};
+
+UnkStruct_ov44_0222DD64 ov44_022366BC[4] = {
+    { .strno = 0x5F, .value = 0x0B        },
+    { .strno = 0x60, .value = 0x09        },
+    { .strno = 0x61, .value = 0x0A        },
+    { .strno = 0x29, .value = LIST_CANCEL }
+};
+
+UnkStruct_ov44_0222DD64 ov44_022366DC[4] = {
+    { .strno = 0x62, .value = 0x0E        },
+    { .strno = 0x63, .value = 0x0C        },
+    { .strno = 0x64, .value = 0x0D        },
+    { .strno = 0x29, .value = LIST_CANCEL }
 };
 
 UnkStruct_ov44_0222DD64 ov44_0223671C[10] = {
@@ -4826,9 +4793,38 @@ void ov44_022313C8(UnkStruct_ov44_022319EC *arg0) {
 }
 
 void ov44_02231420(UnkStruct_ov44_022319EC *arg0, NARC *arg1, enum HeapID arg2) {
-    SpriteTemplate spriteTemplateList[3];
-    ARRAY_ASSIGN(spriteTemplateList, ov44_02235570);
-
+    SpriteTemplate spriteTemplateList[3] = {
+        {
+         .spriteList = NULL,
+         .header = NULL,
+         .position = { .x = FX32_CONST(40), .y = FX32_CONST(428), .z = 0 },
+         .scale = { .x = FX32_ONE, .y = FX32_ONE, .z = FX32_ONE },
+         .rotation = 0,
+         .drawPriority = 128,
+         .whichScreen = NNS_G2D_VRAM_TYPE_2DSUB,
+         .heapID = HEAP_ID_DEFAULT,
+         },
+        {
+         .spriteList = NULL,
+         .header = NULL,
+         .position = { .x = FX32_CONST(128), .y = FX32_CONST(428), .z = 0 },
+         .scale = { .x = FX32_ONE, .y = FX32_ONE, .z = FX32_ONE },
+         .rotation = 0,
+         .drawPriority = 128,
+         .whichScreen = NNS_G2D_VRAM_TYPE_2DSUB,
+         .heapID = HEAP_ID_DEFAULT,
+         },
+        {
+         .spriteList = NULL,
+         .header = NULL,
+         .position = { .x = FX32_CONST(224), .y = FX32_CONST(428), .z = 0 },
+         .scale = { .x = FX32_ONE, .y = FX32_ONE, .z = FX32_ONE },
+         .rotation = 0,
+         .drawPriority = 128,
+         .whichScreen = NNS_G2D_VRAM_TYPE_2DSUB,
+         .heapID = HEAP_ID_DEFAULT,
+         },
+    };
     GfGfx_EngineBTogglePlanes(16, 0);
     arg0->unkB1C.unk20C[0] = AddCharResObjFromOpenNarc(arg0->unk2BC[0], arg1, NARC_a_0_4_3, FALSE, 30, NNS_G2D_VRAM_TYPE_2DSUB, arg2);
     arg0->unkB1C.unk20C[1] = AddPlttResObjFromOpenNarc(arg0->unk2BC[1], arg1, NARC_a_0_4_4, FALSE, 30, NNS_G2D_VRAM_TYPE_2DSUB, 8, arg2);
