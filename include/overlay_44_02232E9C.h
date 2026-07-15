@@ -531,6 +531,6 @@ void ov44_02232E54(UnkStruct_ov44_02232E80 *arg0);
 void ov44_02232E5C(UnkStruct_ov44_02232E80 *arg0, u8 arg1);
 void ov44_02232E80(UnkStruct_ov44_02232E80 *arg0);
 UnkStruct_ov44_02232914 ov44_02232E90(s32 arg0);
-u32 *ov44_02232E9C(u32 arg0);
+const u32 *ov44_02232E9C(u32 arg0);
 
 #endif // POKEHEARTGOLD_OVY_44_02232E9C_H
