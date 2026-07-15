@@ -63,7 +63,7 @@ BOOL ScrCmd_720(ScriptContext *ctx) {
     areaSet = SafariZone_GetAreaSet(Save_SafariZone_Get(fieldSystem->saveData), 0);
     u32 temp_r0 = ov01_021F6320(fieldSystem->unk2C);
 
-    int sp20;
+    s32 sp20;
     ov01_021F630C((u8)temp_r0, fieldSystem->unk2C, &sp20);
     sp8 = ov01_021F65E4(fieldSystem->unk2C, (u8)temp_r0);
     sp4 = ov01_021F65F0(fieldSystem->unk2C, (u8)temp_r0);
