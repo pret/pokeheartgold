@@ -2,7 +2,7 @@
 #include "field/overlay_01_021FB878.h"
 #include "overlay_2/event_cutscene.h"
 
-#include "fieldmap.h"
+#include "script_manager.h"
 #include "follow_mon.h"
 #include "math_util.h"
 #include "overlay_01_021F467C.h"

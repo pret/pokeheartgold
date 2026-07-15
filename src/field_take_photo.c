@@ -384,8 +384,8 @@ static BOOL FieldTask_DoViewPhoto(TaskManager *taskManager) {
         break;
     case FIELD_PHOTO_DO_VIEW_STATE_3:
         ov01_021F9FB0(fieldSystem->mapObjectManager, sub_0205F1A0(fieldSystem->mapObjectManager));
-        ov01_022043D8(fieldSystem->unk_C8);
-        ov01_02204424(fieldSystem->unk_C8);
+        ov01_022043D8(fieldSystem->unkC8);
+        ov01_02204424(fieldSystem->unkC8);
         ov01_021EB1E8(fieldSystem->unk4->unk10);
         if (photo->subjectSpriteId) {
             taskData->state = FIELD_PHOTO_DO_VIEW_STATE_6;
@@ -711,8 +711,8 @@ static BOOL FieldTask_TakePhoto(TaskManager *taskManager) {
         }
         break;
     case TAKE_PHOTO_STATE_13:
-        ov01_022043D8(fieldSystem->unk_C8);
-        ov01_02204424(fieldSystem->unk_C8);
+        ov01_022043D8(fieldSystem->unkC8);
+        ov01_02204424(fieldSystem->unkC8);
         ov01_021EB1E8(fieldSystem->unk4->unk10);
         takePhoto->state = TAKE_PHOTO_STATE_DRAW_CAMERA_GFX;
         break;
@@ -725,7 +725,7 @@ static BOOL FieldTask_TakePhoto(TaskManager *taskManager) {
     case TAKE_PHOTO_STATE_SHUTTER:
         switch (takePhoto->shutterState) {
         case TAKE_PHOTO_SHUTTER_STATE_INIT:
-            ov01_021FB514(fieldSystem->unk4->unk1c);
+            ov01_021FB514(fieldSystem->unk4->unk1C);
             ++takePhoto->shutterState;
             // fallthrough
         case TAKE_PHOTO_SHUTTER_STATE_DELAY_BEFORE:
@@ -764,7 +764,7 @@ static BOOL FieldTask_TakePhoto(TaskManager *taskManager) {
             }
             break;
         case TAKE_PHOTO_SHUTTER_STATE_6:
-            ov01_021FB4F4(fieldSystem->unk4->unk1c);
+            ov01_021FB4F4(fieldSystem->unk4->unk1C);
             ++takePhoto->shutterState;
             break;
         case TAKE_PHOTO_SHUTTER_STATE_DELAY_AFTER:

@@ -1,0 +1,12 @@
+#ifndef POKEHEARTGOLD_FIELD_FIELDMAP_H
+#define POKEHEARTGOLD_FIELD_FIELDMAP_H
+
+#include "bg_window.h"
+#include "field_system.h"
+
+void ov01_021E6058_thunk(BgConfig* bgConfig);
+void ov01_021E6138_thunk(BgConfig *bgConfig);
+void ov01_021E631C(FieldSystem *fieldSystem, BOOL setFlag);
+void ov01_021E6340(FieldSystem* fieldSystem, BOOL setFlag);
+
+#endif // POKEHEARTGOLD_FIELD_FIELDMAP_H

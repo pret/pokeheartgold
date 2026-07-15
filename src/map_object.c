@@ -4,7 +4,7 @@
 
 #include "constants/sprites.h"
 
-#include "fieldmap.h"
+#include "script_manager.h"
 #include "filesystem.h"
 #include "heap.h"
 #include "overlay_01_021F944C.h"

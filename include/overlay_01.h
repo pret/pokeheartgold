@@ -1,6 +1,7 @@
 #ifndef POKEHEARTGOLD_OVERLAY_01_H
 #define POKEHEARTGOLD_OVERLAY_01_H
 
+#include "field_system.h"
 #include "overlay_01_rock_smash_item.h"
 #include "script.h"
 #include "unk_0206793C.h"
@@ -32,7 +33,7 @@ typedef struct UnkStruct_field_021F4360 {
     // TODO: Fill this in
 } UnkStruct_field_021F4360;
 
-void ov01_021E636C(int a0);
+void ov01_021E636C(const u8 fadeType);
 void FieldSystem_DrawMapNameAnimation(FieldSystem *fieldSystem);
 void ov01_021F35C4(FieldSystem *fieldSystem, int a1, int *a2);
 u32 GetHoneySweetScentWorkSize(void);
@@ -87,9 +88,9 @@ void CallFieldTask_RockClimb(TaskManager *taskManager, int playerDirection, int 
 void CallFieldTask_Surf(TaskManager *taskManager, int playerDirection, int partySlot);
 void CallFieldTask_Waterfall(TaskManager *taskManager, int playerDirection, int partySlot);
 void CallFieldTask_Whirlpool(TaskManager *taskManager, int playerDirection, int partySlot);
-void FieldWeatherUpdate_UsedFlash(void *unkWeatherRelated, int weatherType);
-u32 ov01_021F149C(void *, int);
-void ov01_021F14A8(void *, int, void *);
+void WeatherManager_ChangeWeather(void *unkWeatherRelated, int weatherType);
+u32 ov01_021F149C(FieldSystemUnkSub44 *, int);
+void ov01_021F14A8(FieldSystemUnkSub44 *, int, void *);
 void ov01_021F1448(void *);
 int MapNumToFloorNo(u32 mapId);
 void PrintCurFloorInNewWindow(FieldSystem *fieldSystem, u8 x, u8 y, u16 *p_ret, MessageFormat *msgFmt, u16 floor);
@@ -123,7 +124,7 @@ struct UnkStruct_020FACDC {
     int filler_00[12 / sizeof(int)];
 };
 
-void ov01_021F3C0C(void *fieldSystem_unk9C, int a1, const VecFx32 *unk_FACDC, int a3, void *fieldSystem_unk54);
+void ov01_021F3C0C(void *fieldSystem_unk9C, int a1, const VecFx32 *unk_FACDC, int a3, FieldSystemUnkSub54 *fieldSystem_unk54);
 BOOL ov01_022060B8(FieldSystem *fieldSystem, u8 a1, u8 a2);
 
 struct BankTransactionWorkSub {

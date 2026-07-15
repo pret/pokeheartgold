@@ -152,8 +152,8 @@
 .public ov01_021EB1DC
 .public ov01_021EB1F4
 .public ov01_021EB234
-.public ov01_021EB260
-.public FieldWeatherUpdate_UsedFlash
+.public WeatherManager_SetWeather
+.public WeatherManager_ChangeWeather
 .public FieldDrawMapNameInfo_Create
 .public FieldDrawMapNameInfo_Destroy
 .public FieldSystem_DrawMapNameAnimation
@@ -217,3 +217,5 @@
 .public DSProt_DetectDummy
 .public DSProt_DetectNotFlashcart
 .public DSProt_DetectNotEmulator
+.public ov01_021E5900
+.public ov01_021E61A4

@@ -19,7 +19,7 @@ typedef struct {
 } UnkStruct_Ov01_021EA824;
 
 UnkStruct_Ov01_021EA824 *ov01_021EA824();
-void ov01_021EA840(s32 *arg0);
+void FieldSystem_Unk4C_Free(void **unk4C);
 BOOL ov01_021EA854(UnkStruct_Ov01_021EA824 *arg0);
 GXFogSlope ov01_021EA858(UnkStruct_Ov01_021EA824 *arg0);
 int ov01_021EA85C(UnkStruct_Ov01_021EA824 *arg0);

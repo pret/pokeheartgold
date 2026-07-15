@@ -1,7 +1,7 @@
 #ifndef POKEHEARTGOLD_MAP_EVENTS_H
 #define POKEHEARTGOLD_MAP_EVENTS_H
 
-#include "fieldmap.h"
+#include "script_manager.h"
 #include "heap.h"
 #include "map_events_internal.h"
 #include "map_header.h"

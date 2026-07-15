@@ -3,7 +3,7 @@
 
 #include "constants/scrcmd.h"
 
-#include "fieldmap.h"
+#include "script_manager.h"
 #include "save_special_ribbons.h"
 #include "script.h"
 

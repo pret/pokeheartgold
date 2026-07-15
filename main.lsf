@@ -168,7 +168,7 @@ Static main
     Object src/location_backup.o
     Object src/launch_application.o
     Object src/script.o
-    Object src/fieldmap.o
+    Object src/script_manager.o
     Object src/scrcmd_c.o
     Object src/scrcmd_mart.o
     Object src/scrcmd_strbuf.o
@@ -486,7 +486,8 @@ Overlay OVY_0
 Overlay field
 {
     After main
-    Object asm/overlay_01_021E5900.o
+    Object src/field/fieldmap.o
+    Object asm/fieldmap_data.o
     Object src/field/overlay_01_021E66E4.o
     Object src/field/field_control.o
     Object asm/overlay_01_021E7FDC.o

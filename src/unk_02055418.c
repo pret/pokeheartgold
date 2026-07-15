@@ -7,7 +7,7 @@
 #include "pokeathlon/pokeathlon_save.h"
 
 #include "apricorn_tree.h"
-#include "fieldmap.h"
+#include "script_manager.h"
 #include "friend_group.h"
 #include "gf_3d_render.h"
 #include "map_object.h"
@@ -158,7 +158,7 @@ void sub_020556B8(FieldSystem *fieldSystem) {
 }
 
 void sub_020556C8(FieldSystem *fieldSystem, UnkStruct_020556FC *unkPtrB) {
-    void *unkB = fieldSystem->unk_44;
+    FieldSystemUnkSub44 *unkB = fieldSystem->unk44;
     unkPtrB->unk5c = Heap_Alloc(unkPtrB->heapID, ov01_021F149C(unkB, 31));
     ov01_021F14A8(unkB, 31, unkPtrB->unk5c);
     GF3dRender_InitObjFromHeader(&unkPtrB->unk4, &unkPtrB->unk58, &unkPtrB->unk5c);

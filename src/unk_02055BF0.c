@@ -56,13 +56,13 @@ BOOL RoutineFieldFade(TaskManager *man) {
     FieldFadeEnvironment *fenv = TaskManager_GetEnvironment(man);
     switch (fenv->state) {
     case 0:
-        ov01_021FB514(fieldSystem->unk4->unk1c);
+        ov01_021FB514(fieldSystem->unk4->unk1C);
         BeginNormalPaletteFade(fenv->pattern, fenv->typeTop, fenv->typeBottom, fenv->colour, fenv->duration, fenv->framesPer, fenv->heapID);
         fenv->state++;
         break;
     case 1:
         if (IsPaletteFadeFinished()) {
-            ov01_021FB4F4(fieldSystem->unk4->unk1c);
+            ov01_021FB4F4(fieldSystem->unk4->unk1C);
             Heap_Free(fenv);
             return TRUE;
         }

@@ -8,9 +8,9 @@ UnkStruct_Ov01_021EA824 *ov01_021EA824() {
     return dst;
 }
 
-void ov01_021EA840(s32 *arg0) {
-    Heap_FreeExplicit(HEAP_ID_FIELD1, (void *)*arg0);
-    *arg0 = 0;
+void FieldSystem_Unk4C_Free(void **unk4C) {
+    Heap_FreeExplicit(HEAP_ID_FIELD1, *unk4C);
+    *unk4C = NULL;
 }
 
 BOOL ov01_021EA854(UnkStruct_Ov01_021EA824 *arg0) {

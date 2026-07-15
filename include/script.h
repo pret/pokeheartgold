@@ -146,9 +146,14 @@ struct UnkStruct_020FC5CC {
     u32 unk0_10 : 4;
     u32 unk0_14 : 4;
     u32 unk0_18 : 8;
-    u8 unk_4;
-    u8 unk_5;
-    u8 unk_6;
+    union {
+        u32 unk_4;
+        struct {
+        u8 unk4;
+        u8 unk5;
+        u8 unk6;
+        };
+    };
 };
 
 struct UnkStruct_02059E1C;

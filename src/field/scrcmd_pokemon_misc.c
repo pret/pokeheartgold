@@ -13,7 +13,7 @@
 
 #include "bag.h"
 #include "bug_contest.h"
-#include "fieldmap.h"
+#include "script_manager.h"
 #include "follow_mon.h"
 #include "friend_group.h"
 #include "get_egg.h"

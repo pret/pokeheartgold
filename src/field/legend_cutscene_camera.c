@@ -562,7 +562,7 @@ static BOOL ov02_02251320(TaskManager *taskman) {
             ov01_021E8970(taskData->birdModelNum, i, 1, renderObj, fieldSystem->unk54);
         }
         for (i = 0; i < 2; ++i) {
-            UnkStruct_ov01_021E8B04 *anim = ov01_021E8B04(taskData->birdModelNum, i, fieldSystem->unk54);
+            FieldSystemUnkSub54 *anim = ov01_021E8B04(taskData->birdModelNum, i, fieldSystem->unk54);
             ov01_021E8B84(anim, 1);
             ov01_021E8B6C(anim);
         }

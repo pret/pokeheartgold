@@ -16,7 +16,7 @@
 
 #include "assert.h"
 #include "encounter.h"
-#include "fieldmap.h"
+#include "script_manager.h"
 #include "heap.h"
 #include "mail_message.h"
 #include "msgdata.h"
