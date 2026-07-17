@@ -39,6 +39,7 @@
 #include "npc_trade.h"
 #include "overlay_01.h"
 #include "overlay_01_021F1AFC.h"
+#include "overlay_01_021F3D38.h"
 #include "overlay_01_02204ED8.h"
 #include "overlay_03.h"
 #include "overlay_04.h"
