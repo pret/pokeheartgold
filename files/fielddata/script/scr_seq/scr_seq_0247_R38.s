@@ -22,7 +22,7 @@ scr_seq_R38_001:
 	End
 
 scr_seq_R38_002:
-	ScrCmd_055 3, 0
+	ScrCmd_056 3, 0
 	ScrCmd_057 3
 	ScrCmd_058
 	TrainerTips msg_0394_R38_00016, VAR_SPECIAL_RESULT

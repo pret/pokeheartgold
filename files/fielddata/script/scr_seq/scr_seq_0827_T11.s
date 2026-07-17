@@ -305,7 +305,7 @@ scr_seq_T11_007:
 	End
 
 scr_seq_T11_008:
-	ScrCmd_055 2, 0
+	ScrCmd_056 2, 0
 	ScrCmd_057 3
 	ScrCmd_058
 	TrainerTips msg_0529_T11_00009, VAR_SPECIAL_RESULT
@@ -321,7 +321,7 @@ scr_seq_T11_009:
 	End
 
 scr_seq_T11_010:
-	ScrCmd_055 2, 0
+	ScrCmd_056 2, 0
 	ScrCmd_057 3
 	ScrCmd_058
 	TrainerTips msg_0529_T11_00011, VAR_SPECIAL_RESULT
@@ -329,7 +329,7 @@ scr_seq_T11_010:
 	End
 
 scr_seq_T11_011:
-	ScrCmd_055 2, 0
+	ScrCmd_056 2, 0
 	ScrCmd_057 3
 	ScrCmd_058
 	TrainerTips msg_0529_T11_00012, VAR_SPECIAL_RESULT
@@ -337,7 +337,7 @@ scr_seq_T11_011:
 	End
 
 scr_seq_T11_012:
-	ScrCmd_055 2, 0
+	ScrCmd_056 2, 0
 	ScrCmd_057 3
 	ScrCmd_058
 	TrainerTips msg_0529_T11_00013, VAR_SPECIAL_RESULT
@@ -345,7 +345,7 @@ scr_seq_T11_012:
 	End
 
 scr_seq_T11_013:
-	ScrCmd_055 2, 0
+	ScrCmd_056 2, 0
 	ScrCmd_057 3
 	ScrCmd_058
 	TrainerTips msg_0529_T11_00014, VAR_SPECIAL_RESULT

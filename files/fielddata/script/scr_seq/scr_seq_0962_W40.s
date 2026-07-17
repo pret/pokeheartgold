@@ -277,7 +277,7 @@ scr_seq_W40_002:
 	End
 
 scr_seq_W40_009:
-	ScrCmd_055 2, 0
+	ScrCmd_056 2, 0
 	ScrCmd_057 3
 	ScrCmd_058
 	TrainerTips msg_0744_W40_00020, VAR_SPECIAL_RESULT
