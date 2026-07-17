@@ -431,7 +431,7 @@ int FieldInput_Process_BattleTower(FieldInput *fieldInput, FieldSystem *fieldSys
             return 1;
         }
 
-        BG_EVENT *bgEvents = Field_GetBgEvents(fieldSystem);
+        BgEvent *bgEvents = Field_GetBgEvents(fieldSystem);
         u32 bgEventScript = GetInteractedBackgroundEventScript(fieldSystem, bgEvents, Field_GetNumBgEvents(fieldSystem));
         if (bgEventScript != 0xFFFF) {
             StartMapSceneScript(fieldSystem, bgEventScript, NULL);
@@ -909,7 +909,7 @@ static BOOL FieldSystem_MapConnection(FieldSystem *fieldSystem, int x, int z, Lo
         return FALSE;
     }
 
-    const WARP_EVENT *warpEvent = Field_GetWarpEventI(fieldSystem, warpNo);
+    const WarpEvent *warpEvent = Field_GetWarpEventI(fieldSystem, warpNo);
     if (warpEvent == NULL) {
         return FALSE;
     }

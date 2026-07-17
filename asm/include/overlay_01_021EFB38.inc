@@ -84,8 +84,8 @@
 .public _s32_div_f
 .public _u32_div_f
 .public NNS_G3dGlb
-.public ov01_021E6058_thunk
-.public ov01_021E6138_thunk
+.public Thunk_BgConfig_Init
+.public Thunk_ov01_021E6138
 .public ov01_021E631C
 .public ov01_021E6340
 .public ov01_021EFB64

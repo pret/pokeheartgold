@@ -3,6 +3,11 @@
 
 #include "sprite.h"
 
+#include "constants/heap.h"
+
+void BillboardLists_Create(int count, enum HeapID heapID);
+void BillboardLists_Delete(void);
+void BillboardLists_Draw(void);
 void sub_02023910(void *arg0);
 void sub_02023EA4(Sprite *sprite, int arg1);
 

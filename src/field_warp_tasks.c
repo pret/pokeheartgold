@@ -201,7 +201,7 @@ static void sub_02052F30(FieldSystem *fieldSystem) {
 static void sub_02052F94(FieldSystem *fieldSystem, Location *location) {
     LocalFieldData *localFieldData = Save_LocalFieldData_Get(fieldSystem->saveData);
     Location *r2 = LocalFieldData_GetPreviousPosition(localFieldData);
-    const WARP_EVENT *warp;
+    const WarpEvent *warp;
     if (location != NULL) {
         *r2 = *fieldSystem->location;
         *fieldSystem->location = *location;

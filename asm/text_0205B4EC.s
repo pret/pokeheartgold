@@ -4,8 +4,8 @@
 
 	.text
 
-	thumb_func_start sub_0205B4EC
-sub_0205B4EC: ; 0x0205B4EC
+	thumb_func_start FieldMessage_LoadTextPalettes
+FieldMessage_LoadTextPalettes: ; 0x0205B4EC
 	push {r4, lr}
 	add r4, r0, #0
 	cmp r1, #1
@@ -24,7 +24,7 @@ _0205B4F8:
 	bl LoadFontPal1
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_0205B4EC
+	thumb_func_end FieldMessage_LoadTextPalettes
 
 	thumb_func_start sub_0205B514
 sub_0205B514: ; 0x0205B514

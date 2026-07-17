@@ -28,7 +28,7 @@ u16 MapCoordToMatrixIndex(FieldSystem *fieldSystem, int coordX, int coordY) {
 void sub_02054EB0(FieldSystem *fieldSystem, int a1, BOOL a2) {
     int val;
     for (u8 i = 0; i < 4; i++) {
-        ov01_021F630C(i, fieldSystem->unk2C, &val);
+        ov01_021F630C(i, fieldSystem->mapLoadManager, &val);
         if (val != 0) {
             for (u8 j = 0; j < 32; j++) {
                 int res = ov01_021F3B44(val, j);

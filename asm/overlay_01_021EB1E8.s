@@ -24,8 +24,8 @@ ov01_021EB1E8: ; 0x021EB1E8
 	.balign 4, 0
 	thumb_func_end ov01_021EB1E8
 
-	thumb_func_start ov01_021EB1F4
-ov01_021EB1F4: ; 0x021EB1F4
+	thumb_func_start WeatherManager_New
+WeatherManager_New: ; 0x021EB1F4
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	mov r0, #4
@@ -56,10 +56,10 @@ _021EB208:
 	bl GfGfx_EngineATogglePlanes
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end ov01_021EB1F4
+	thumb_func_end WeatherManager_New
 
-	thumb_func_start ov01_021EB234
-ov01_021EB234: ; 0x021EB234
+	thumb_func_start WeatherManager_Delete
+WeatherManager_Delete: ; 0x021EB234
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x14]
@@ -81,7 +81,7 @@ _021EB24E:
 	bl Heap_Free
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end ov01_021EB234
+	thumb_func_end WeatherManager_Delete
 
 	thumb_func_start WeatherManager_SetWeather
 WeatherManager_SetWeather: ; 0x021EB260

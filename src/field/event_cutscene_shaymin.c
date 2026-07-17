@@ -62,7 +62,7 @@ static BOOL ov02_022523D0(TaskManager *taskMan) {
         MapObject_CopyPositionVector(FollowMon_GetMapObject(fieldSystem), &pos);
         u32 res;
         if (FollowMon_IsVisible(fieldSystem)) {
-            env->unk4 = ov01_022052C4(fieldSystem->unk44, &pos);
+            env->unk4 = ov01_022052C4(fieldSystem->fieldEffectManager, &pos);
             res = 1;
         } else {
             env->unk4 = 0;

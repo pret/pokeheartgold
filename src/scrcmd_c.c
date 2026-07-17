@@ -1440,7 +1440,7 @@ BOOL ScrCmd_102(ScriptContext *ctx) {
     MapObject_SetVisible(*p_cameraObj, TRUE);
     MapObject_ClearFlag18(*p_cameraObj, FALSE);
     pos = MapObject_GetPositionVector(*p_cameraObj);
-    ov01_021F62E8(pos, ctx->fieldSystem->unk2C);
+    ov01_021F62E8(pos, ctx->fieldSystem->mapLoadManager);
     Camera_SetFixedTarget(pos, ctx->fieldSystem->camera);
     return FALSE;
 }
@@ -1450,7 +1450,7 @@ BOOL ScrCmd_103(ScriptContext *ctx) {
     VecFx32 *pos;
     MapObject_Remove(*p_cameraObj);
     pos = MapObject_GetPositionVector(MapObjectManager_GetFirstActiveObjectByID(ctx->fieldSystem->mapObjectManager, obj_player));
-    ov01_021F62E8(pos, ctx->fieldSystem->unk2C);
+    ov01_021F62E8(pos, ctx->fieldSystem->mapLoadManager);
     Camera_SetFixedTarget(pos, ctx->fieldSystem->camera);
     return FALSE;
 }

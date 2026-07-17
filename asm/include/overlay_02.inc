@@ -230,7 +230,7 @@
 .public sub_02054C90
 .public sub_02054DC8
 .public Field_GetTimeOfDay
-.public sub_0205B4EC
+.public FieldMessage_LoadTextPalettes
 .public sub_0205B514
 .public sub_0205B564
 .public sub_0205B5B4

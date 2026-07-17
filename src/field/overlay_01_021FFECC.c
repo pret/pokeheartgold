@@ -1,4 +1,5 @@
 #include "overlay_01_021FFECC.h"
+#include "overlay_01_021F1348.h"
 
 #include "map_object.h"
 #include "player_avatar.h"

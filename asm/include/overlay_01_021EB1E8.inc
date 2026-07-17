@@ -84,8 +84,8 @@
 .public ov01_021EA89C
 .public ov01_021EA8C4
 .public ov01_021EB1E8
-.public ov01_021EB1F4
-.public ov01_021EB234
+.public WeatherManager_New
+.public WeatherManager_Delete
 .public WeatherManager_SetWeather
 .public WeatherManager_ChangeWeather
 .public ov01_021EB31C

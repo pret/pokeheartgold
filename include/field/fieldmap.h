@@ -4,8 +4,8 @@
 #include "bg_window.h"
 #include "field_system.h"
 
-void ov01_021E6058_thunk(BgConfig* bgConfig);
-void ov01_021E6138_thunk(BgConfig *bgConfig);
+void Thunk_BgConfig_Init(BgConfig* bgConfig);
+void Thunk_ov01_021E6138(BgConfig *bgConfig);
 void ov01_021E631C(FieldSystem *fieldSystem, BOOL setFlag);
 void ov01_021E6340(FieldSystem* fieldSystem, BOOL setFlag);
 

@@ -3,10 +3,18 @@
 
 #include "field_system.h"
 
-void ov01_021F6304(FieldSystemUnkSub2C *unkSub2C);
-void ov01_021F630C(int arg0, FieldSystemUnkSub2C *unkSub2C, s32 *arg2);
-u8 ov01_021F6320(FieldSystemUnkSub2C *unkSub2C);
-u16 *ov01_021F65E4(FieldSystemUnkSub2C *unkSub2C, u8 arg1);
-u8 *ov01_021F65F0(FieldSystemUnkSub2C *unkSub2C, u8 arg1);
+void MapLoadManager_Tick(MapLoadManager *mapLoadManager);
+MapLoadManager *MapLoadManager_New(MapMatrix *mapMatrix, void *unk34, void *unkC0, FieldSystemUnkSub54 *unkSub54, void *unkCC, int unk64, SaveData *saveData);
+void MapLoadManager_InitialLoad(MapLoadManager *mapLoadManager, int x, int z);
+void MapLoadManager_RenderLoadedMaps(MapLoadManager *mapLoadManager, ModelAttributes *modelAttributes);
+void MapLoadManager_End(MapLoadManager *mapLoadManager);
+void MapLoadManager_FreeNARCAndLoadedMapBuffers(MapLoadManager *mapLoadManager);
+BOOL MapLoadManager_HasEnded(MapLoadManager *mapLoadManager);
+
+void ov01_021F6304(MapLoadManager *mapLoadManager);
+void ov01_021F630C(int arg0, MapLoadManager *mapLoadManager, s32 *arg2);
+u8 ov01_021F6320(MapLoadManager *mapLoadManager);
+u16 *ov01_021F65E4(MapLoadManager *mapLoadManager, u8 arg1);
+u8 *ov01_021F65F0(MapLoadManager *mapLoadManager, u8 arg1);
 
 #endif // POKEHEARTGOLD_OVERLAY_01_021F4704_H

@@ -617,7 +617,7 @@ ov34_0225D924: ; 0x0225D924
 	bl GfGfxLoader_LoadScrnData
 	mov r0, #4
 	mov r1, #0
-	bl sub_0205B4EC
+	bl FieldMessage_LoadTextPalettes
 	add sp, #0x80
 	pop {r3, r4, r5, pc}
 	nop

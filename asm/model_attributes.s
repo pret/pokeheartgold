@@ -14,8 +14,8 @@
 
 	.text
 
-	thumb_func_start ov01_021EA8E0
-ov01_021EA8E0: ; 0x021EA8E0
+	thumb_func_start ModelAttributes_Init
+ModelAttributes_Init: ; 0x021EA8E0
 	push {r4, lr}
 	mov r0, #4
 	mov r1, #0x48
@@ -28,10 +28,10 @@ ov01_021EA8E0: ; 0x021EA8E0
 	add r0, r4, #0
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end ov01_021EA8E0
+	thumb_func_end ModelAttributes_Init
 
-	thumb_func_start ov01_021EA8FC
-ov01_021EA8FC: ; 0x021EA8FC
+	thumb_func_start ModelAttributes_Free
+ModelAttributes_Free: ; 0x021EA8FC
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r1, [r4]
@@ -41,10 +41,10 @@ ov01_021EA8FC: ; 0x021EA8FC
 	str r0, [r4]
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end ov01_021EA8FC
+	thumb_func_end ModelAttributes_Free
 
-	thumb_func_start ov01_021EA910
-ov01_021EA910: ; 0x021EA910
+	thumb_func_start ModelAttributes_ApplyGlobal
+ModelAttributes_ApplyGlobal: ; 0x021EA910
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	str r0, [sp, #8]
@@ -126,7 +126,7 @@ _021EA984:
 _021EA9AC:
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
-	thumb_func_end ov01_021EA910
+	thumb_func_end ModelAttributes_ApplyGlobal
 
 	thumb_func_start ov01_021EA9B0
 ov01_021EA9B0: ; 0x021EA9B0
@@ -309,7 +309,7 @@ ov01_021EAAF4: ; 0x021EAAF4
 	bne _021EAB06
 	mov r1, #1
 	lsl r1, r1, #8
-	bl ov01_021EA910
+	bl ModelAttributes_ApplyGlobal
 _021EAB06:
 	pop {r3, pc}
 	thumb_func_end ov01_021EAAF4
@@ -322,7 +322,7 @@ ov01_021EAB08: ; 0x021EAB08
 	bne _021EAB18
 	mov r1, #2
 	lsl r1, r1, #8
-	bl ov01_021EA910
+	bl ModelAttributes_ApplyGlobal
 _021EAB18:
 	pop {r3, pc}
 	.balign 4, 0
@@ -337,7 +337,7 @@ ov01_021EAB1C: ; 0x021EAB1C
 	bne _021EAB2E
 	mov r1, #1
 	lsl r1, r1, #0xa
-	bl ov01_021EA910
+	bl ModelAttributes_ApplyGlobal
 _021EAB2E:
 	pop {r3, pc}
 	thumb_func_end ov01_021EAB1C
@@ -350,56 +350,56 @@ ov01_021EAB30: ; 0x021EAB30
 	bne _021EAB40
 	mov r1, #2
 	lsl r1, r1, #0xa
-	bl ov01_021EA910
+	bl ModelAttributes_ApplyGlobal
 _021EAB40:
 	pop {r3, pc}
 	.balign 4, 0
 	thumb_func_end ov01_021EAB30
 
-	thumb_func_start ov01_021EAB44
-ov01_021EAB44: ; 0x021EAB44
+	thumb_func_start ModelAttributes_SetPolygonMode
+ModelAttributes_SetPolygonMode: ; 0x021EAB44
 	push {r3, lr}
 	str r1, [r0, #0x34]
 	cmp r2, #1
 	bne _021EAB54
 	mov r1, #2
 	lsl r1, r1, #0xc
-	bl ov01_021EA910
+	bl ModelAttributes_ApplyGlobal
 _021EAB54:
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end ov01_021EAB44
+	thumb_func_end ModelAttributes_SetPolygonMode
 
-	thumb_func_start ov01_021EAB58
-ov01_021EAB58: ; 0x021EAB58
+	thumb_func_start ModelAttributes_SetCullMode
+ModelAttributes_SetCullMode: ; 0x021EAB58
 	push {r3, lr}
 	str r1, [r0, #0x38]
 	cmp r2, #1
 	bne _021EAB68
 	mov r1, #1
 	lsl r1, r1, #0xe
-	bl ov01_021EA910
+	bl ModelAttributes_ApplyGlobal
 _021EAB68:
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end ov01_021EAB58
+	thumb_func_end ModelAttributes_SetCullMode
 
-	thumb_func_start ov01_021EAB6C
-ov01_021EAB6C: ; 0x021EAB6C
+	thumb_func_start ModelAttributes_SetAlpha
+ModelAttributes_SetAlpha: ; 0x021EAB6C
 	push {r3, lr}
 	str r1, [r0, #0x40]
 	cmp r2, #1
 	bne _021EAB7C
 	mov r1, #1
 	lsl r1, r1, #0x10
-	bl ov01_021EA910
+	bl ModelAttributes_ApplyGlobal
 _021EAB7C:
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end ov01_021EAB6C
+	thumb_func_end ModelAttributes_SetAlpha
 
-	thumb_func_start ov01_021EAB80
-ov01_021EAB80: ; 0x021EAB80
+	thumb_func_start ModelAttributes_SetMiscAttrEnabled
+ModelAttributes_SetMiscAttrEnabled: ; 0x021EAB80
 	push {r3, lr}
 	cmp r2, #1
 	ldr r2, [r0, #0x44]
@@ -418,8 +418,8 @@ _021EAB92:
 	bne _021EABA4
 	mov r1, #1
 	lsl r1, r1, #0xc
-	bl ov01_021EA910
+	bl ModelAttributes_ApplyGlobal
 _021EABA4:
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end ov01_021EAB80
+	thumb_func_end ModelAttributes_SetMiscAttrEnabled

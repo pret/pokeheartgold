@@ -3,7 +3,10 @@
 
 #include "field/draw_map_name.h"
 #include "field/overlay_01_021E66E4.h"
-// #include "field/overlay_01_02204004.h"
+#include "field/model_attributes.h"
+#include "field/overlay_01_021EAFD4.h"
+#include "overlay_01_02204004.h"
+#include "overlay_01_021F1348.h"
 
 #include "bag_cursor.h"
 #include "battle_regulation.h"
@@ -17,7 +20,6 @@
 #include "map_matrix.h"
 #include "menu_input_state.h"
 #include "overlay_01_021EB1E8.h"
-#include "overlay_01_02204004.h"
 #include "overlay_manager.h"
 #include "photo_types_def.h"
 #include "save_pokegear.h"
@@ -88,7 +90,7 @@ typedef struct FieldSystemUnkSub4 {
     Field3dObjectTaskManager *field3dObjectTaskManager;
     FieldDrawMapNameInfo *drawMapNameInfo;
     void *weatherManager;
-    UnkStruct_ov01_021EB1E8 *unk10;
+    FieldTextureManager *textureManager;
     u32 unk14;
     UnkStruct_020556FC *unk18;
     void *unk1C;
@@ -103,30 +105,6 @@ typedef struct MapObjectsToPreload {
     u16 count;
     int ids[MAX_MAP_OBJECTS_TO_PRELOAD];
 } MapObjectsToPreload;
-
-typedef struct FieldSystemUnkSub44 {
-    u8 unk0[0x24];
-} FieldSystemUnkSub44;
-
-typedef struct FieldSystemUnkSub48 {
-    VecFx16 unk0;
-    u16 unk6;
-    u8 filler8[16];
-    GXRgb rgb;
-    u8 filler1A[6];
-    GXRgb diffuse;
-    GXRgb ambient;
-    GXRgb specular;
-    GXRgb emission;
-    BOOL isSetVtx;
-    BOOL isShiny;
-    int light;
-    GXPolygonMode polygonMode;
-    GXCull cullMode;
-    int id;
-    int alpha;
-    int polyAttrMisc;
-} FieldSystemUnkSub48;
 
 typedef struct FieldSystemUnkSub54 {
     u8 unk0[0x13C];
@@ -218,14 +196,14 @@ struct FieldSystem {
     Location *location;
     Camera *camera;
     void *unk28;
-    FieldSystemUnkSub2C *unk2C;
-    MAPMATRIX *mapMatrix;
+    MapLoadManager *mapLoadManager;
+    MapMatrix *mapMatrix;
     void *unk34;
     MapObjectsToPreload *mapObjectsToPreload;
     MapObjectManager *mapObjectManager;
     PlayerAvatar *playerAvatar;
-    FieldSystemUnkSub44 *unk44;
-    FieldSystemUnkSub48 *unk48;
+    FieldEffectManager *fieldEffectManager;
+    ModelAttributes *modelAttributes;
     void *unk4C;
     void *unk50;
     FieldSystemUnkSub54 *unk54;
@@ -303,9 +281,9 @@ typedef struct FieldInput {
     u16 unkA;
 } FieldInput;
 
-BOOL ov01_021E5924(OverlayManager *man, int *state);
-BOOL ov01_021E5BE4(OverlayManager *man, int *state);
-BOOL ov01_021E5C24(OverlayManager *man, int *state);
+BOOL FieldMap_Init(OverlayManager *man, int *state);
+BOOL FieldMap_Main(OverlayManager *man, int *state);
+BOOL FieldMap_Exit(OverlayManager *man, int *state);
 BOOL Field_Continue_AppInit(OverlayManager *man, int *unused);
 BOOL Field_NewGame_AppInit(OverlayManager *man, int *unused);
 BOOL Field_AppExec(OverlayManager *man, int *unused);

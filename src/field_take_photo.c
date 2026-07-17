@@ -386,7 +386,7 @@ static BOOL FieldTask_DoViewPhoto(TaskManager *taskManager) {
         ov01_021F9FB0(fieldSystem->mapObjectManager, sub_0205F1A0(fieldSystem->mapObjectManager));
         ov01_022043D8(fieldSystem->unkC8);
         ov01_02204424(fieldSystem->unkC8);
-        ov01_021EB1E8(fieldSystem->unk4->unk10);
+        ov01_021EB1E8(fieldSystem->unk4->textureManager);
         if (photo->subjectSpriteId) {
             taskData->state = FIELD_PHOTO_DO_VIEW_STATE_6;
         } else {
@@ -713,7 +713,7 @@ static BOOL FieldTask_TakePhoto(TaskManager *taskManager) {
     case TAKE_PHOTO_STATE_13:
         ov01_022043D8(fieldSystem->unkC8);
         ov01_02204424(fieldSystem->unkC8);
-        ov01_021EB1E8(fieldSystem->unk4->unk10);
+        ov01_021EB1E8(fieldSystem->unk4->textureManager);
         takePhoto->state = TAKE_PHOTO_STATE_DRAW_CAMERA_GFX;
         break;
     case TAKE_PHOTO_STATE_DRAW_CAMERA_GFX:

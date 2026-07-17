@@ -3405,7 +3405,7 @@ ov02_02249FD4: ; 0x02249FD4
 	strh r0, [r2, #6]
 	mov r0, #0
 	mov r1, #1
-	bl sub_0205B4EC
+	bl FieldMessage_LoadTextPalettes
 	mov r0, #8
 	mov r1, #1
 	bl GfGfx_EngineATogglePlanes
@@ -3441,7 +3441,7 @@ ov02_0224A028: ; 0x0224A028
 	strh r0, [r2, #6]
 	mov r0, #0
 	mov r1, #1
-	bl sub_0205B4EC
+	bl FieldMessage_LoadTextPalettes
 	mov r0, #8
 	mov r1, #1
 	bl GfGfx_EngineATogglePlanes

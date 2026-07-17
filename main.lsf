@@ -487,7 +487,6 @@ Overlay field
 {
     After main
     Object src/field/fieldmap.o
-    Object asm/fieldmap_data.o
     Object src/field/overlay_01_021E66E4.o
     Object src/field/field_control.o
     Object asm/overlay_01_021E7FDC.o
@@ -495,7 +494,7 @@ Overlay field
     Object asm/overlay_01_021E90C0.o
     Object asm/overlay_01_021EA6C4.o
     Object src/overlay_01_021EA824.o
-    Object asm/overlay_01_021EA8E0.o
+    Object asm/model_attributes.o
     Object asm/overlay_01_021EABA8.o
     Object asm/overlay_01_021EAF00.o
     Object asm/overlay_01_021EAFD4.o
