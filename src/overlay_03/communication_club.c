@@ -181,7 +181,7 @@ static void ov03_02253E20(s32 strno, BOOL arg1) {
         ReadMsgDataIntoString(sCommClubManager->msgData, strno, sCommClubManager->string[5]);
     }
     if (WindowIsInUse(&sCommClubManager->windows[2]) == FALSE) {
-        sub_0205B514(sCommClubManager->fieldSystem->bgConfig, &sCommClubManager->windows[2], 3);
+        sub_0205B514(sCommClubManager->fieldSystem->bgConfig, &sCommClubManager->windows[2], GF_BG_LYR_MAIN_3);
     }
     sub_0205B564(&sCommClubManager->windows[2], Save_PlayerData_GetOptionsAddr(sCommClubManager->fieldSystem->saveData));
     sCommClubManager->printerID = sub_0205B5B4(&sCommClubManager->windows[2], sCommClubManager->string[5], Save_PlayerData_GetOptionsAddr(sCommClubManager->fieldSystem->saveData), TRUE);
@@ -488,7 +488,7 @@ static void ov03_022546B0(void *arg0, CommClubManager *commClubManager) {
         ReadMsgDataIntoString(sCommClubManager->msgData, CommunicationClub_Text_AskingForRegistration, sCommClubManager->string[4]); // Asking {STRVAR_1 3, 1, 0} to do member\nregistration. Please wait.
         StringExpandPlaceholders(sCommClubManager->messageFormat[2], sCommClubManager->string[5], sCommClubManager->string[4]);
         if (WindowIsInUse(&sCommClubManager->windows[2]) == FALSE) {
-            sub_0205B514(sCommClubManager->fieldSystem->bgConfig, &sCommClubManager->windows[2], 3);
+            sub_0205B514(sCommClubManager->fieldSystem->bgConfig, &sCommClubManager->windows[2], GF_BG_LYR_MAIN_3);
         }
         sub_0205B564(&sCommClubManager->windows[2], Save_PlayerData_GetOptionsAddr(sCommClubManager->fieldSystem->saveData));
         TextFlags_SetCanABSpeedUpPrint(TRUE);

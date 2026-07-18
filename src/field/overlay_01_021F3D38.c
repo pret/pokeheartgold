@@ -74,7 +74,7 @@ void ov01_021F3E10(FieldSystem *fieldSystem) {
     BgSetPosTextAndCommit(fieldSystem->bgConfig, GF_BG_LYR_MAIN_3, BG_POS_OP_SET_Y, -48);
 
     if (!fieldSystem->unk68->unk13_7) {
-        sub_0205B63C(fieldSystem->bgConfig, &fieldSystem->unk68->unk0, fieldSystem->unk68->unk12, 3);
+        sub_0205B63C(fieldSystem->bgConfig, &fieldSystem->unk68->unk0, fieldSystem->unk68->unk12, GF_BG_LYR_MAIN_3);
         fieldSystem->unk68->unk13_7 = TRUE;
     }
     sub_0205B6A0(&fieldSystem->unk68->unk0, fieldSystem->unk68->unk12, fieldSystem->unk68->unk10);

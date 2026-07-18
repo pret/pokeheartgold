@@ -83,7 +83,7 @@ static const ListMenuTemplate sListMenuTemplate = {
 static void BattleRegulationMenu_PrintMessage(BattleRegulationMenu *menu, int entryID) {
     if (WindowIsInUse(&menu->windows[REGULATION_MENU_WINDOW_MSGBOX]) == FALSE) {
         InitWindow(&menu->windows[REGULATION_MENU_WINDOW_MSGBOX]);
-        sub_0205B514(menu->fieldSystem->bgConfig, &menu->windows[REGULATION_MENU_WINDOW_MSGBOX], 3);
+        sub_0205B514(menu->fieldSystem->bgConfig, &menu->windows[REGULATION_MENU_WINDOW_MSGBOX], GF_BG_LYR_MAIN_3);
         sub_0205B564(&menu->windows[REGULATION_MENU_WINDOW_MSGBOX], Save_PlayerData_GetOptionsAddr(menu->fieldSystem->saveData));
     } else {
         sub_0205B5A8(&menu->windows[REGULATION_MENU_WINDOW_MSGBOX]);

@@ -276,7 +276,7 @@ static void ovFieldMain_GetMsgBoxParametersEx(FieldSystem *fieldSystem, MessageF
 
 static void ovFieldMain_CreateMessageBox(FieldSystem *fieldSystem, MessageBox *messageBox) {
     if (*(messageBox->unk10) == 0) {
-        sub_0205B514(fieldSystem->bgConfig, messageBox->window, 3);
+        sub_0205B514(fieldSystem->bgConfig, messageBox->window, GF_BG_LYR_MAIN_3);
         sub_0205B564(messageBox->window, Save_PlayerData_GetOptionsAddr(fieldSystem->saveData));
         *(messageBox->unk10) = 1;
         fieldSystem->unkD2_6 = TRUE;

@@ -317,7 +317,7 @@ static void GameClearSave_InitGraphics(FieldSystem *fieldSystem, GameClearWork *
 static void GameClearSave_PrintSaving(FieldSystem *fieldSystem, GameClearWork *env) {
     Options *options = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);
     env->windowText = ReadMsgData_NewNarc_NewString(NARC_msgdata_msg, NARC_msg_msg_0040_bin, msg_0040_00015, HEAP_ID_FIELD3);
-    sub_0205B514(env->bgConfig, &env->window, 3);
+    sub_0205B514(env->bgConfig, &env->window, GF_BG_LYR_MAIN_3);
     sub_0205B564(&env->window, options);
     env->printerId = sub_0205B5B4(&env->window, env->windowText, options, 1);
     env->waitingIcon = WaitingIcon_New(&env->window, 0x000003e2);

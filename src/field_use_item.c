@@ -501,7 +501,7 @@ static BOOL Task_PrintRegisteredKeyItemUseMessage(TaskManager *taskManager) {
     case 0:
         fieldSystem->unkD2_6 = TRUE;
         MapObjectManager_PauseAllMovement(fieldSystem->mapObjectManager);
-        sub_0205B514(fieldSystem->bgConfig, &env->window, 3);
+        sub_0205B514(fieldSystem->bgConfig, &env->window, GF_BG_LYR_MAIN_3);
         options = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);
         sub_0205B564(&env->window, options);
         env->printerId = sub_0205B5B4(&env->window, env->strbuf, options, TRUE);
