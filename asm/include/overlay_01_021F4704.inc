@@ -75,7 +75,7 @@
 .public ov01_021FB308
 .public ov01_021FB354
 .public ov01_021FB360
-.public ov01_021FB9CC
+.public AreaDataManager_GetMapTexture
 .public ov01_021FBA00
 .public ov01_02204678
 .public ov01_02204688

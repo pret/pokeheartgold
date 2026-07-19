@@ -677,7 +677,7 @@ ov01_021F4BE8: ; 0x021F4BE8
 	str r0, [r4, #0x10]
 	add r0, r3, #0
 	add r7, r2, #0
-	bl ov01_021FB9CC
+	bl AreaDataManager_GetMapTexture
 	ldr r1, _021F4C64 ; =0x00000854
 	mov r3, #1
 	add r2, r5, r1
@@ -739,7 +739,7 @@ ov01_021F4C6C: ; 0x021F4C6C
 	add r0, r3, #0
 	add r4, r1, #0
 	add r6, r2, #0
-	bl ov01_021FB9CC
+	bl AreaDataManager_GetMapTexture
 	mov r2, #1
 	str r0, [sp]
 	lsl r2, r2, #8

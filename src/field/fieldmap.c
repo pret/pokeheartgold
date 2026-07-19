@@ -1,4 +1,5 @@
 #include "field/fieldmap.h"
+#include "field/area_data.h"
 #include "field/dynamic_terrain_height.h"
 #include "field/field_control.h"
 #include "field/hblank_system.h"
@@ -102,19 +103,10 @@ static void ov01_021E66E0(void);
 
 // TODO: Put in relevant headers
 
-// overlay_01_021FB878 (area_data_manager?) (fieldSystem->unk34 == areaDataManager?)
-void *ov01_021FB888(u8 areaDataBank); // AreaDataManager_Alloc
-NARC *ov01_021FB904(void *unk34);
-NNSG3dResFileHeader **ov01_021FB934(void *unk34); // AreaDataManager_GetMapPropModelFile
-void ov01_021FB944(void *unk34); // AreaDataManager_Free
-NNSG3dResTex *ov01_021FB9CC(void *unk34); // AreaDataManager_GetMapTexture
-u32 ov01_021FBA14(void *unk34); // AreaDataManager_GetAreaLightArchiveID
-void ov01_021FBA3C(void *unk34, void *unkC0, FieldSystemUnkSub54 *unk54, void *unkCC, void *unk104); // AreaDataManager_Load(?)
-
 // overlay_01_021F3610 (map_prop_manager?) (fieldSystem->unk9C == mapPropManager?)
 void *ov01_021F3638(enum HeapID heapID, void *unkC0); // MapPropManager_New
 void ov01_021F3660(void *unk9C);
-void ov01_021F3C9C(void *unk9C, void *unk34);  // MapPropManager_Render2
+void ov01_021F3C9C(void *unk9C, AreaDataManager *areaDataManager);  // MapPropManager_Render2
 
 // overlay_01_021E8744 (map_prop_animation_manager?) (FieldSystemUnkSub54 == MapPropAnimationManager?) (FieldSystemUnkSub58 == MapPropOneShotAnimationManager?)
 FieldSystemUnkSub54 *ov01_021E87E4(NARC *narc, FieldSystemUnkSubC8 *unkSubC8); // FieldSystemUnkSub54_Init // narc == animeListNARC?
@@ -216,7 +208,7 @@ BOOL FieldMap_Init(OverlayManager *man, int *state) {
         break;
     case FIELD_MAP_INIT_STATE_LOAD:
         InitGraphicsAndManagers(fieldSystem);
-        ov01_021FBA3C(fieldSystem->unk34, fieldSystem->unkC0, fieldSystem->unk54, fieldSystem->unkCC, fieldSystem->unk104);
+        AreaDataManager_Load(fieldSystem->areaDataManager, fieldSystem->unkC0, fieldSystem->unk54, fieldSystem->unkCC, fieldSystem->unk104);
         
         fieldSystem->unk9C = ov01_021F3638(HEAP_ID_FIELD1, fieldSystem->unkC0);
         
@@ -337,7 +329,7 @@ BOOL FieldMap_Exit(OverlayManager *man, int *state) {
     case 1:
         if (MapLoadManager_HasEnded(fieldSystem->mapLoadManager) == TRUE) {
             ov01_02204084(fieldSystem->unkC0);
-            ov01_021FB944(&fieldSystem->unk34);
+            AreaDataManager_Free(&fieldSystem->areaDataManager);
             MapLoadManager_FreeNARCAndLoadedMapBuffers(fieldSystem->mapLoadManager);
             FieldCamera_Delete(fieldSystem);
             AreaLightManager_Free(&fieldSystem->areaLightManager);
@@ -601,7 +593,7 @@ static void ov01_021E6220(FieldSystem* fieldSystem) {
 
     MapLoadManager_RenderLoadedMaps(fieldSystem->mapLoadManager, fieldSystem->modelAttributes);
 
-    ov01_021F3C9C(fieldSystem->unk9C, fieldSystem->unk34);
+    ov01_021F3C9C(fieldSystem->unk9C, fieldSystem->areaDataManager);
 
     camAngle = Camera_GetAngle(fieldSystem->camera);
     fx64 temp_ret = (fieldSystem->unk11C << FX32_SHIFT) * (fx64)(FX_CosIdx((u16)(-camAngle.x)));
@@ -665,8 +657,8 @@ static void InitGraphicsAndManagers(FieldSystem* fieldSystem) {
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG0, FALSE);
     G3_SwapBuffers(GX_SORTMODE_AUTO, gG3dDepthBufferingMode);
 
-    fieldSystem->unk34 = ov01_021FB888(MapHeader_GetAreaDataBank(fieldSystem->location->mapId));
-    fieldSystem->unkC0 = ov01_02204004(HEAP_ID_FIELD1, 550, 128, ov01_021FB934(fieldSystem->unk34));
+    fieldSystem->areaDataManager = AreaDataManager_Alloc(MapHeader_GetAreaDataBank(fieldSystem->location->mapId));
+    fieldSystem->unkC0 = ov01_02204004(HEAP_ID_FIELD1, 550, 128, AreaDataManager_GetMapPropModelFile(fieldSystem->areaDataManager));
     
     u16 moveModelBank = MapHeader_GetMoveModelBank(fieldSystem->location->mapId);
     
@@ -676,12 +668,12 @@ static void InitGraphicsAndManagers(FieldSystem* fieldSystem) {
     fieldSystem->unkC8 = ov01_022041C4(HEAP_ID_FIELD1);
     fieldSystem->unkCC = ov01_0220460C(fieldSystem->unkC8);
     fieldSystem->unk104 = ov01_02204744(HEAP_ID_FIELD1);
-    fieldSystem->unk54 = ov01_021E87E4(ov01_021FB904(fieldSystem->unk34), fieldSystem->unkC8);
+    fieldSystem->unk54 = ov01_021E87E4(ov01_021FB904(fieldSystem->areaDataManager), fieldSystem->unkC8);
     fieldSystem->unk58 = ov01_021E8DB4();
 }
 
 static void FieldSystem_InitMapLoadManager(FieldSystem* fieldSystem) {
-    fieldSystem->mapLoadManager = MapLoadManager_New(fieldSystem->mapMatrix, fieldSystem->unk34, fieldSystem->unkC0, fieldSystem->unk54, fieldSystem->unkCC, fieldSystem->unk64, fieldSystem->saveData);
+    fieldSystem->mapLoadManager = MapLoadManager_New(fieldSystem->mapMatrix, fieldSystem->areaDataManager, fieldSystem->unkC0, fieldSystem->unk54, fieldSystem->unkCC, fieldSystem->unk64, fieldSystem->saveData);
     fieldSystem->dynamicTerrainHeightManager = DynamicTerrainHeightManager_New(8, HEAP_ID_FIELD1);
     MapLoadManager_InitialLoad(fieldSystem->mapLoadManager, fieldSystem->location->x, fieldSystem->location->y);
 }
@@ -765,7 +757,7 @@ static void ov01_021E6580(FieldSystem *fieldSystem) {
     int cameraType = LocalFieldData_GetCameraType(Save_LocalFieldData_Get(fieldSystem->saveData));
     FieldCamera_Create(PlayerAvatar_GetPositionVector(fieldSystem->playerAvatar), fieldSystem, cameraType, TRUE);
     
-    u32 lightArchiveID = ov01_021FBA14(fieldSystem->unk34);
+    u32 lightArchiveID = AreaDataManager_GetAreaLightArchiveID(fieldSystem->areaDataManager);
     if (lightArchiveID == 3 && CheckFlag96A(Save_VarsFlags_Get(fieldSystem->saveData))) {
         lightArchiveID = 4;
     }
@@ -776,7 +768,7 @@ static void ov01_021E6580(FieldSystem *fieldSystem) {
     fieldSystem->signpost = Signpost_Init(HEAP_ID_FIELD1);
     fieldSystem->unk4->textureManager = FieldTextureManager_Init();
     
-    FieldTextureManager_LoadTexture(fieldSystem->unk4->textureManager, ov01_021FB9CC(fieldSystem->unk34));
+    FieldTextureManager_LoadTexture(fieldSystem->unk4->textureManager, AreaDataManager_GetMapTexture(fieldSystem->areaDataManager));
     sub_020648EC(fieldSystem); // Probably DynamicMapFeatures_Init
     Main_SetVBlankIntrCB(fieldmap, fieldSystem);
 }

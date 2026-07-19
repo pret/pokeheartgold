@@ -1,6 +1,7 @@
 #ifndef POKEHEARTGOLD_FIELD_SYSTEM_H
 #define POKEHEARTGOLD_FIELD_SYSTEM_H
 
+#include "field/area_data.h"
 #include "field/area_light.h"
 #include "field/draw_map_name.h"
 #include "field/dynamic_terrain_height.h"
@@ -191,7 +192,7 @@ struct FieldSystem {
     void *unk28;
     MapLoadManager *mapLoadManager;
     MapMatrix *mapMatrix;
-    void *unk34;
+    AreaDataManager *areaDataManager;
     MapObjectsToPreload *mapObjectsToPreload;
     MapObjectManager *mapObjectManager;
     PlayerAvatar *playerAvatar;
