@@ -11,6 +11,7 @@
 #include "field/signpost.h"
 #include "overlay_01.h"
 #include "overlay_01_021EA824.h"
+#include "field/overlay_01_021EABA8.h"
 #include "overlay_01_021EB1E8.h" // replace with field/weather_manager
 #include "overlay_01_021F1348.h"
 #include "overlay_01_021F6830.h"
@@ -127,11 +128,6 @@ void ov01_021E8DD4(FieldSystemUnkSub58 **unkSub58_ptr);
 
 // overlay_01_02204004
 void ov01_02204350(FieldSystemUnkSubC8 *unkSubC8); // MapPropAnimationManager_AdvanceAnimations??
-
-// overlay_01_021EABA8 (field_camera?)
-void ov01_021EABA8(const VecFx32 *_target, FieldSystem *fieldSystem, const u32 cameraType, const BOOL withHistory); // FieldCamera_Create
-void ov01_021EAC30(FieldSystem *fieldSystem); // FieldCamera_Delete
-void ov01_021EAD8C(void *unk28);
 
 int CARD_SpiWaitGetStatus();
 
@@ -346,7 +342,7 @@ BOOL FieldMap_Exit(OverlayManager *man, int *state) {
             ov01_02204084(fieldSystem->unkC0);
             ov01_021FB944(&fieldSystem->unk34);
             MapLoadManager_FreeNARCAndLoadedMapBuffers(fieldSystem->mapLoadManager);
-            ov01_021EAC30(fieldSystem);
+            FieldCamera_Delete(fieldSystem);
             AreaLightManager_Free(&fieldSystem->areaLightManager);
             Signpost_Free(fieldSystem->signpost);
             FieldDrawMapNameInfo_Destroy(fieldSystem->unk4->drawMapNameInfo);
@@ -770,7 +766,7 @@ static void ov01_021E6580(FieldSystem *fieldSystem) {
     fieldSystem->fog = Fog_New();
     
     int cameraType = LocalFieldData_GetCameraType(Save_LocalFieldData_Get(fieldSystem->saveData));
-    ov01_021EABA8(PlayerAvatar_GetPositionVector(fieldSystem->playerAvatar), fieldSystem, cameraType, TRUE);
+    FieldCamera_Create(PlayerAvatar_GetPositionVector(fieldSystem->playerAvatar), fieldSystem, cameraType, TRUE);
     
     u32 lightArchiveID = ov01_021FBA14(fieldSystem->unk34);
     if (lightArchiveID == 3 && CheckFlag96A(Save_VarsFlags_Get(fieldSystem->saveData))) {
