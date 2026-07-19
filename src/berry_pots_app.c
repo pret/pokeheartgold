@@ -269,8 +269,8 @@ void ov17_02201BC0(void) {
 
     sub_0200FBF4(PM_LCD_TOP, RGB_BLACK);
     sub_0200FBF4(PM_LCD_BOTTOM, RGB_BLACK);
-    sub_0200FBDC(0);
-    sub_0200FBDC(1);
+    ResetVisibleHardwareWindows(PM_LCD_TOP);
+    ResetVisibleHardwareWindows(PM_LCD_BOTTOM);
 }
 
 BOOL BerryPotsApp_Initialize(OverlayManager *manager, int *state) {

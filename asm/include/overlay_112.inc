@@ -113,7 +113,7 @@
 .public sub_0200F450
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
-.public sub_0200FBDC
+.public ResetVisibleHardwareWindows
 .public sub_02014494
 .public sub_02014540
 .public sub_020145B4

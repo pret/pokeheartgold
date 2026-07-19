@@ -132,8 +132,8 @@ BOOL FieldMap_Init(OverlayManager *man, int *state) {
 
         offset += (0x4CF * DSProt_DetectDummy(&ov01_021E66A8));
 
-        sub_0200FBDC(SCREEN_MAIN); // ResetVisibleHardwareWindows
-        sub_0200FBDC(SCREEN_SUB);
+        ResetVisibleHardwareWindows(PM_LCD_TOP);
+        ResetVisibleHardwareWindows(PM_LCD_BOTTOM);
         ov01_021E6364(fieldSystem);
         
         offset += (0x6B * (DSProt_DetectNotEmulator(&ov01_021E66D8) == FALSE));

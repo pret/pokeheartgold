@@ -762,9 +762,9 @@ _021E5E46:
 	bl ov111_021E66DC
 	str r0, [r4, #0x20]
 	mov r0, #0
-	bl sub_0200FBDC
+	bl ResetVisibleHardwareWindows
 	mov r0, #1
-	bl sub_0200FBDC
+	bl ResetVisibleHardwareWindows
 	mov r0, #1
 	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #1

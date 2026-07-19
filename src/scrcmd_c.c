@@ -2189,8 +2189,8 @@ BOOL ScrCmd_FadeScreen(ScriptContext *ctx) {
     u16 type = ScriptReadHalfword(ctx);
     u16 color = ScriptReadHalfword(ctx);
     BeginNormalPaletteFade(0, type, type, color, duration, speed, HEAP_ID_FIELD1);
-    sub_0200FBDC(0);
-    sub_0200FBDC(1);
+    ResetVisibleHardwareWindows(PM_LCD_TOP);
+    ResetVisibleHardwareWindows(PM_LCD_BOTTOM);
     return FALSE;
 }
 

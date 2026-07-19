@@ -5,7 +5,7 @@
 
 void BeginNormalPaletteFade(int pattern, int typeTop, int typeBottom, u16 color, int duration, int framesPer, enum HeapID heapID);
 void sub_0200FB70(void);
-void sub_0200FBDC(int a0);
+void ResetVisibleHardwareWindows(int screen);
 void sub_0200FBF4(int screen, int color);
 void HandleFadeUpdateFrame(void);
 BOOL IsPaletteFadeFinished(void);

@@ -593,8 +593,8 @@ static void ov62_021E5C34(enum HeapID heapID) {
     GfGfx_DisableEngineBPlanes();
     GX_SetVisiblePlane(0);
     GXS_SetVisiblePlane(0);
-    sub_0200FBDC(0);
-    sub_0200FBDC(1);
+    ResetVisibleHardwareWindows(PM_LCD_TOP);
+    ResetVisibleHardwareWindows(PM_LCD_BOTTOM);
     GF_CreateVramTransferManager(0x20, heapID);
 }
 

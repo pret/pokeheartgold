@@ -2317,8 +2317,8 @@ static void ov122_021E8094(OverlayManager *man) {
     Sound_SetSceneAndPlayBGM(0x46, 0, 0);
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
     GfGfx_EngineBTogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
-    sub_0200FBDC(0);
-    sub_0200FBDC(1);
+    ResetVisibleHardwareWindows(PM_LCD_TOP);
+    ResetVisibleHardwareWindows(PM_LCD_BOTTOM);
     TextFlags_SetCanABSpeedUpPrint(TRUE);
     TextFlags_SetCanTouchSpeedUpPrint(TRUE);
 

@@ -264,8 +264,8 @@ BOOL FlyMap_LoadGFX(PokegearMapAppData *mapApp) {
         GXS_SetVisiblePlane(0);
         sub_0200FBF4(0, 0);
         sub_0200FBF4(1, 0);
-        sub_0200FBDC(0);
-        sub_0200FBDC(1);
+        ResetVisibleHardwareWindows(PM_LCD_TOP);
+        ResetVisibleHardwareWindows(PM_LCD_BOTTOM);
         sub_020210BC();
         sub_02021148(2);
         break;

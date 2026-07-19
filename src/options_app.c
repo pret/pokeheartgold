@@ -482,8 +482,8 @@ static BOOL ov54_021E5CE4(OptionsApp_Data *data) {
 
         GX_SetDispSelect(GX_DISP_SELECT_SUB_MAIN);
 
-        sub_0200FBDC(0);
-        sub_0200FBDC(1);
+        ResetVisibleHardwareWindows(PM_LCD_TOP);
+        ResetVisibleHardwareWindows(PM_LCD_BOTTOM);
 
         OptionsApp_SetupBgConfig(data);
         OptionsApp_SetupSpriteRenderer(data);

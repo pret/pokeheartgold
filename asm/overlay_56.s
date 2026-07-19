@@ -859,9 +859,9 @@ _021E624E:
 	mov r1, #0
 	bl sub_0200FBF4
 	mov r0, #0
-	bl sub_0200FBDC
+	bl ResetVisibleHardwareWindows
 	mov r0, #1
-	bl sub_0200FBDC
+	bl ResetVisibleHardwareWindows
 	b _021E639A
 _021E6294:
 	bl ov56_021E647C

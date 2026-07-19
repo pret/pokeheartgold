@@ -26717,9 +26717,9 @@ _021F2DF4:
 	add r0, r4, #0
 	bl ov112_021F196C
 	mov r0, #0
-	bl sub_0200FBDC
+	bl ResetVisibleHardwareWindows
 	mov r0, #1
-	bl sub_0200FBDC
+	bl ResetVisibleHardwareWindows
 	ldr r0, _021F2E6C ; =ov112_021F2EB0
 	add r1, r4, #0
 	bl Main_SetVBlankIntrCB

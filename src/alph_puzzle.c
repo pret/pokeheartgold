@@ -655,8 +655,8 @@ static void AlphPuzzle_ScreenOff(void) {
     GXS_SetVisiblePlane(0);
     sub_0200FBF4(PM_LCD_TOP, RGB_BLACK);
     sub_0200FBF4(PM_LCD_BOTTOM, RGB_BLACK);
-    sub_0200FBDC(0);
-    sub_0200FBDC(1);
+    ResetVisibleHardwareWindows(PM_LCD_TOP);
+    ResetVisibleHardwareWindows(PM_LCD_BOTTOM);
 }
 
 static void AlphPuzzle_InitTextOptionsAndPuzzleIndex(AlphPuzzleData *data) {
