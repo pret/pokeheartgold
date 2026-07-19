@@ -269,19 +269,11 @@ scr_seq_W40_007:
 	End
 
 scr_seq_W40_002:
-	DirectionSignpost msg_0744_W40_00019, 1, 4, VAR_SPECIAL_RESULT
-	ScrCmd_057 3
-	ScrCmd_058
-	ScrCmd_060 VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	DirectionSignpostEx 1, 4, msg_0744_W40_00019
 	End
 
 scr_seq_W40_009:
-	ScrCmd_056 2, 0
-	ScrCmd_057 3
-	ScrCmd_058
-	TrainerTips msg_0744_W40_00020, VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	TrainerTipsEx 2, msg_0744_W40_00020
 	End
 
 scr_seq_W40_003:

@@ -123,43 +123,23 @@ scr_seq_T04_013:
 	End
 
 scr_seq_T04_006:
-	DirectionSignpost msg_0467_T04_00013, 0, 4, VAR_SPECIAL_RESULT
-	ScrCmd_057 3
-	ScrCmd_058
-	ScrCmd_060 VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	DirectionSignpostEx 0, 4, msg_0467_T04_00013
 	End
 
 scr_seq_T04_007:
-	ScrCmd_056 2, 0
-	ScrCmd_057 3
-	ScrCmd_058
-	TrainerTips msg_0467_T04_00014, VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	TrainerTipsEx 2, msg_0467_T04_00014
 	End
 
 scr_seq_T04_008:
-	ScrCmd_056 2, 0
-	ScrCmd_057 3
-	ScrCmd_058
-	TrainerTips msg_0467_T04_00015, VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	TrainerTipsEx 2, msg_0467_T04_00015
 	End
 
 scr_seq_T04_009:
-	ScrCmd_056 3, 0
-	ScrCmd_057 3
-	ScrCmd_058
-	TrainerTips msg_0467_T04_00016, VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	TrainerTipsEx 3, msg_0467_T04_00016
 	End
 
 scr_seq_T04_010:
-	DirectionSignpost msg_0467_T04_00017, 1, 14, VAR_SPECIAL_RESULT
-	ScrCmd_057 3
-	ScrCmd_058
-	ScrCmd_060 VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	DirectionSignpostEx 1, 14, msg_0467_T04_00017
 	End
 
 scr_seq_T04_011:

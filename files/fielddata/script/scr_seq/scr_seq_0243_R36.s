@@ -452,34 +452,18 @@ _05B1:
 	End
 
 scr_seq_R36_003:
-	DirectionSignpost msg_0390_R36_00009, 1, 15, VAR_SPECIAL_RESULT
-	ScrCmd_057 3
-	ScrCmd_058
-	ScrCmd_060 VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	DirectionSignpostEx 1, 15, msg_0390_R36_00009
 	End
 
 scr_seq_R36_004:
-	ScrCmd_056 2, 0
-	ScrCmd_057 3
-	ScrCmd_058
-	TrainerTips msg_0390_R36_00010, VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	TrainerTipsEx 2, msg_0390_R36_00010
 	End
 
 scr_seq_R36_005:
-	ScrCmd_056 3, 0
-	ScrCmd_057 3
-	ScrCmd_058
-	TrainerTips msg_0390_R36_00011, VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	TrainerTipsEx 3, msg_0390_R36_00011
 	End
 
 scr_seq_R36_006:
-	ScrCmd_056 3, 0
-	ScrCmd_057 3
-	ScrCmd_058
-	TrainerTips msg_0390_R36_00012, VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	TrainerTipsEx 3, msg_0390_R36_00012
 	End
 	.balign 4, 0

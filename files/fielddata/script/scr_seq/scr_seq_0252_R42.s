@@ -272,34 +272,18 @@ _0348:
 	EndMovement
 
 scr_seq_R42_002:
-	DirectionSignpost msg_0399_R42_00000, 1, 1, VAR_SPECIAL_RESULT
-	ScrCmd_057 3
-	ScrCmd_058
-	ScrCmd_060 VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	DirectionSignpostEx 1, 1, msg_0399_R42_00000
 	End
 
 scr_seq_R42_003:
-	ScrCmd_056 2, 0
-	ScrCmd_057 3
-	ScrCmd_058
-	TrainerTips msg_0399_R42_00001, VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	TrainerTipsEx 2, msg_0399_R42_00001
 	End
 
 scr_seq_R42_004:
-	ScrCmd_056 2, 0
-	ScrCmd_057 3
-	ScrCmd_058
-	TrainerTips msg_0399_R42_00002, VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	TrainerTipsEx 2, msg_0399_R42_00002
 	End
 
 scr_seq_R42_005:
-	DirectionSignpost msg_0399_R42_00003, 1, 2, VAR_SPECIAL_RESULT
-	ScrCmd_057 3
-	ScrCmd_058
-	ScrCmd_060 VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	DirectionSignpostEx 1, 2, msg_0399_R42_00003
 	End
 	.balign 4, 0

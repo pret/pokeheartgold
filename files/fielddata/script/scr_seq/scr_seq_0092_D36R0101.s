@@ -2562,10 +2562,6 @@ _21F4:
 	EndMovement
 
 scr_seq_D36R0101_013:
-	ScrCmd_056 3, 0
-	ScrCmd_057 3
-	ScrCmd_058
-	TrainerTips msg_0115_D36R0101_00027, VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	TrainerTipsEx 3, msg_0115_D36R0101_00027
 	End
 	.balign 4, 0

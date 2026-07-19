@@ -535,26 +535,14 @@ _06E0:
 	EndMovement
 
 scr_seq_R32_006:
-	DirectionSignpost msg_0380_R32_00018, 1, 2, VAR_SPECIAL_RESULT
-	ScrCmd_057 3
-	ScrCmd_058
-	ScrCmd_060 VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	DirectionSignpostEx 1, 2, msg_0380_R32_00018
 	End
 
 scr_seq_R32_007:
-	DirectionSignpost msg_0380_R32_00017, 1, 4, VAR_SPECIAL_RESULT
-	ScrCmd_057 3
-	ScrCmd_058
-	ScrCmd_060 VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	DirectionSignpostEx 1, 4, msg_0380_R32_00017
 	End
 
 scr_seq_R32_008:
-	DirectionSignpost msg_0380_R32_00019, 1, 13, VAR_SPECIAL_RESULT
-	ScrCmd_057 3
-	ScrCmd_058
-	ScrCmd_060 VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	DirectionSignpostEx 1, 13, msg_0380_R32_00019
 	End
 	.balign 4, 0

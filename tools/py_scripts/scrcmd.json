@@ -350,20 +350,20 @@
       ]
     },
     {
-      "name": "ScrCmd_056",
+      "name": "SetSignpostMap",
       "args": [
         1,
         2
       ]
     },
     {
-      "name": "ScrCmd_057",
+      "name": "SetSignpostAction",
       "args": [
         1
       ]
     },
     {
-      "name": "ScrCmd_058",
+      "name": "WaitSignpostAction",
       "args": []
     },
     {
@@ -374,7 +374,7 @@
       ]
     },
     {
-      "name": "ScrCmd_060",
+      "name": "WaitSignpost",
       "args": [
         "var"
       ]

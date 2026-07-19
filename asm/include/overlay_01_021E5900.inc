@@ -166,9 +166,9 @@
 .public ov01_021F3638
 .public ov01_021F3660
 .public ov01_021F3C9C
-.public ov01_021F3D38
-.public ov01_021F3D50
-.public ov01_021F3D98
+.public FieldSignpostWindow_New
+.public FieldSignpostWindow_Delete
+.public FieldSystem_ExecuteSignpostWindowCommand
 .public ov01_021F50F0
 .public ov01_021F6020
 .public ov01_021F6118

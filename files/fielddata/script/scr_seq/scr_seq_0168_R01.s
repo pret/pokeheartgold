@@ -153,10 +153,6 @@ _01DC:
 	EndMovement
 
 scr_seq_R01_002:
-	DirectionSignpost msg_0319_R01_00000, 1, 4, VAR_SPECIAL_RESULT
-	ScrCmd_057 3
-	ScrCmd_058
-	ScrCmd_060 VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	DirectionSignpostEx 1, 4, msg_0319_R01_00000
 	End
 	.balign 4, 0

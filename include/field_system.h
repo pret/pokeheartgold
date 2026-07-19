@@ -88,12 +88,12 @@ typedef struct FieldEnvSubUnk18 {
     u32 direction;
 } FieldEnvSubUnk18;
 
-struct FieldSystemUnkSub68 {
-    Window unk0;
-    u16 unk10;
-    u8 unk12;
-    u8 unk13_0 : 7;
-    u8 unk13_7 : 1;
+struct FieldSignpostWindow {
+    Window window;
+    u16 map;
+    u8 type;
+    u8 cmd : 7;
+    u8 active : 1;
 };
 
 typedef struct FieldSystemUnkSub4 {
@@ -133,7 +133,7 @@ struct FieldSystem {
     TerrainAttributes *terrainAttributes;
     u32 unk60;
     int unk64;
-    struct FieldSystemUnkSub68 *unk68;
+    struct FieldSignpostWindow *signpostWindow;
     BOOL unk6C;
     int unk70;
     const struct UnkStruct_020FC5CC *unk74;

@@ -144,18 +144,10 @@ _01C0:
 	EndMovement
 
 scr_seq_R26_002:
-	ScrCmd_056 2, 0
-	ScrCmd_057 3
-	ScrCmd_058
-	TrainerTips msg_0365_R26_00000, VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	TrainerTipsEx 2, msg_0365_R26_00000
 	End
 
 scr_seq_R26_003:
-	DirectionSignpost msg_0365_R26_00001, 1, 6, VAR_SPECIAL_RESULT
-	ScrCmd_057 3
-	ScrCmd_058
-	ScrCmd_060 VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	DirectionSignpostEx 1, 6, msg_0365_R26_00001
 	End
 	.balign 4, 0

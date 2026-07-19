@@ -12,9 +12,9 @@ void DrawFrameAndWindow1(Window *window, BOOL dont_copy_to_vram, u16 baseTile, u
 void LoadUserFrameGfx2(BgConfig *bgConfig, GFBgLayer layer, u16 baseTile, u8 paletteNum, u8 frame, enum HeapID heapID);
 void DrawFrameAndWindow2(Window *window, BOOL dont_copy_to_vram, u16 baseTile, u8 palette_num);
 void ClearFrameAndWindow2(Window *window, BOOL dont_copy_to_vram);
-void DrawFrameAndWindow3(Window *window, int a1, u16 a2, int a3, u8 a4);
+void DrawFrameAndWindow3(Window *window, int a1, u16 baseTile, u8 dstPlttNum, u8 srcPlttNum);
 void sub_0200E5D4(Window *window, BOOL dont_copy_to_vram);
-void sub_0200EC0C(BgConfig *bgConfig, u8 bgId, u16 baseTile, u8 a3, u8 a4, u16 a5, u8 a6);
+void sub_0200EC0C(BgConfig *bgConfig, u8 bgId, u16 baseTile, u8 dstPlttNum, u8 srcPlttNum, u16 map, enum HeapID heapId);
 WaitingIcon *WaitingIcon_New(Window *window, u16 tileNum);
 void sub_0200F450(WaitingIcon *waitingIcon);
 struct PokepicManager *DrawPokemonPicFromSpecies(BgConfig *bgConfig, GFBgLayer layer, int x, int y, u8 paletteNum, u16 baseTile, u16 species, u8 gender, enum HeapID heapID);

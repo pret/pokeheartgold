@@ -57,11 +57,11 @@ BOOL ScrCmd_OpenMsg(ScriptContext *ctx);
 BOOL ScrCmd_CloseMsg(ScriptContext *ctx);
 BOOL ScrCmd_HoldMsg(ScriptContext *ctx);
 BOOL ScrCmd_DirectionSignpost(ScriptContext *ctx);
-BOOL ScrCmd_056(ScriptContext *ctx);
-BOOL ScrCmd_057(ScriptContext *ctx);
-BOOL ScrCmd_058(ScriptContext *ctx);
+BOOL ScrCmd_SetSignpostMap(ScriptContext *ctx);
+BOOL ScrCmd_SetSignpostAction(ScriptContext *ctx);
+BOOL ScrCmd_WaitSignpostAction(ScriptContext *ctx);
 BOOL ScrCmd_TrainerTips(ScriptContext *ctx);
-BOOL ScrCmd_060(ScriptContext *ctx);
+BOOL ScrCmd_WaitSignpost(ScriptContext *ctx);
 BOOL ScrCmd_061(ScriptContext *ctx);
 BOOL ScrCmd_062(ScriptContext *ctx);
 BOOL ScrCmd_YesNo(ScriptContext *ctx);
@@ -912,11 +912,11 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_CloseMsg,
     ScrCmd_HoldMsg,
     ScrCmd_DirectionSignpost,
-    ScrCmd_056,
-    ScrCmd_057,
-    ScrCmd_058,
+    ScrCmd_SetSignpostMap,
+    ScrCmd_SetSignpostAction,
+    ScrCmd_WaitSignpostAction,
     ScrCmd_TrainerTips,
-    ScrCmd_060,
+    ScrCmd_WaitSignpost,
     ScrCmd_061,
     ScrCmd_062,
     ScrCmd_YesNo,

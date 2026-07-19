@@ -4,93 +4,98 @@
 
 #include "text_0205B4EC.h"
 
-struct FieldSystemUnkSub68 *ov01_021F3D38(enum HeapID heapId) {
-    struct FieldSystemUnkSub68 *ret = Heap_Alloc(heapId, sizeof(struct FieldSystemUnkSub68));
-    memset(ret, 0, sizeof(struct FieldSystemUnkSub68));
+static void FieldSystem_SignpostWindowCommand_Show(FieldSystem *fieldSystem);
+static void FieldSystem_SignpostWindowCommand_Hide(FieldSystem *fieldSystem);
+static BOOL FieldSystem_SignpostWindowCommand_WipeIn(FieldSystem *fieldSystem);
+static BOOL FieldSystem_SignpostWindowCommand_WipeOut(FieldSystem *fieldSystem);
+
+struct FieldSignpostWindow *FieldSignpostWindow_New(enum HeapID heapId) {
+    struct FieldSignpostWindow *ret = Heap_Alloc(heapId, sizeof(struct FieldSignpostWindow));
+    memset(ret, 0, sizeof(struct FieldSignpostWindow));
     return ret;
 }
 
-void ov01_021F3D50(struct FieldSystemUnkSub68 *a0) {
-    if (a0->unk13_7) {
-        RemoveWindow(&a0->unk0);
+void FieldSignpostWindow_Delete(struct FieldSignpostWindow *signpostWindow) {
+    if (signpostWindow->active) {
+        RemoveWindow(&signpostWindow->window);
     }
-    Heap_Free(a0);
+    Heap_Free(signpostWindow);
 }
 
-void ov01_021F3D68(struct FieldSystemUnkSub68 *a0, u8 a1, u16 a2) {
-    a0->unk12 = a1;
-    a0->unk10 = a2;
+void FieldSignpostWindow_SetParam(struct FieldSignpostWindow *signpostWindow, u8 type, u16 map) {
+    signpostWindow->type = type;
+    signpostWindow->map = map;
 }
 
-void ov01_021F3D70(struct FieldSystemUnkSub68 *a0, u8 a1) {
-    a0->unk13_0 = a1;
+void FieldSignpostWindow_SetCommand(struct FieldSignpostWindow *signpostWindow, u8 cmd) {
+    signpostWindow->cmd = cmd;
 }
 
-Window *ov01_021F3D80(struct FieldSystemUnkSub68 *a0) {
-    return &a0->unk0;
+Window *FieldSignpostWindow_GetWindow(struct FieldSignpostWindow *signpostWindow) {
+    return &signpostWindow->window;
 }
 
-u8 ov01_021F3D84(struct FieldSystemUnkSub68 *a0) {
-    return a0->unk12;
+u8 FieldSignpostWindow_GetType(struct FieldSignpostWindow *signpostWindow) {
+    return signpostWindow->type;
 }
 
-BOOL ov01_021F3D88(struct FieldSystemUnkSub68 *a0) {
-    return a0->unk13_0 == 0;
+BOOL FieldSignpostWindow_CommandIsFinished(struct FieldSignpostWindow *signpostWindow) {
+    return signpostWindow->cmd == MAPSIGNCOMMAND_NOP;
 }
 
-void ov01_021F3D98(FieldSystem *fieldSystem) {
-    struct FieldSystemUnkSub68 *sub68 = fieldSystem->unk68;
+void FieldSystem_ExecuteSignpostWindowCommand(FieldSystem *fieldSystem) {
+    struct FieldSignpostWindow *signpostWindow = fieldSystem->signpostWindow;
 
-    switch (sub68->unk13_0) {
-    case 0:
+    switch (signpostWindow->cmd) {
+    case MAPSIGNCOMMAND_NOP:
         break;
-    case 1:
-        ov01_021F3E10(fieldSystem);
-        sub68->unk13_0 = 0;
+    case MAPSIGNCOMMAND_SHOW:
+        FieldSystem_SignpostWindowCommand_Show(fieldSystem);
+        signpostWindow->cmd = MAPSIGNCOMMAND_NOP;
         break;
-    case 2:
-        if (ov01_021F3EE0(fieldSystem) == TRUE) {
-            sub68->unk13_0 = 0;
+    case MAPSIGNCOMMAND_WIPE_OUT:
+        if (FieldSystem_SignpostWindowCommand_WipeOut(fieldSystem) == TRUE) {
+            signpostWindow->cmd = MAPSIGNCOMMAND_NOP;
         }
         break;
-    case 3:
-        if (ov01_021F3EA0(fieldSystem) == TRUE) {
-            sub68->unk13_0 = 0;
+    case MAPSIGNCOMMAND_WIPE_IN:
+        if (FieldSystem_SignpostWindowCommand_WipeIn(fieldSystem) == TRUE) {
+            signpostWindow->cmd = MAPSIGNCOMMAND_NOP;
         }
         break;
-    case 4:
-        ov01_021F3E4C(fieldSystem);
-        sub68->unk13_0 = 0;
+    case MAPSIGNCOMMAND_HIDE:
+        FieldSystem_SignpostWindowCommand_Hide(fieldSystem);
+        signpostWindow->cmd = MAPSIGNCOMMAND_NOP;
         break;
     }
 }
 
-void ov01_021F3DFC(FieldSystem *fieldSystem, u8 a1) {
-    ov01_021F3D70(fieldSystem->unk68, a1);
-    ov01_021F3D98(fieldSystem);
+void FieldSystem_SetAndExecuteSignpostWindowCommand(FieldSystem *fieldSystem, u8 cmd) {
+    FieldSignpostWindow_SetCommand(fieldSystem->signpostWindow, cmd);
+    FieldSystem_ExecuteSignpostWindowCommand(fieldSystem);
 }
 
-void ov01_021F3E10(FieldSystem *fieldSystem) {
+static void FieldSystem_SignpostWindowCommand_Show(FieldSystem *fieldSystem) {
     BgSetPosTextAndCommit(fieldSystem->bgConfig, GF_BG_LYR_MAIN_3, BG_POS_OP_SET_Y, -48);
 
-    if (!fieldSystem->unk68->unk13_7) {
-        sub_0205B63C(fieldSystem->bgConfig, &fieldSystem->unk68->unk0, fieldSystem->unk68->unk12, GF_BG_LYR_MAIN_3);
-        fieldSystem->unk68->unk13_7 = TRUE;
+    if (!fieldSystem->signpostWindow->active) {
+        sub_0205B63C(fieldSystem->bgConfig, &fieldSystem->signpostWindow->window, fieldSystem->signpostWindow->type, GF_BG_LYR_MAIN_3);
+        fieldSystem->signpostWindow->active = TRUE;
     }
-    sub_0205B6A0(&fieldSystem->unk68->unk0, fieldSystem->unk68->unk12, fieldSystem->unk68->unk10);
+    sub_0205B6A0(&fieldSystem->signpostWindow->window, fieldSystem->signpostWindow->type, fieldSystem->signpostWindow->map);
 }
 
-void ov01_021F3E4C(FieldSystem *fieldSystem) {
-    if (fieldSystem->unk68->unk13_7) {
-        RemoveWindow(&fieldSystem->unk68->unk0);
+static void FieldSystem_SignpostWindowCommand_Hide(FieldSystem *fieldSystem) {
+    if (fieldSystem->signpostWindow->active) {
+        RemoveWindow(&fieldSystem->signpostWindow->window);
         FillBgTilemapRect(fieldSystem->bgConfig, GF_BG_LYR_MAIN_3, 0, 0, 18, 32, 6, TILEMAP_FILL_KEEP_PAL);
         BgCommitTilemapBufferToVram(fieldSystem->bgConfig, GF_BG_LYR_MAIN_3);
         BgSetPosTextAndCommit(fieldSystem->bgConfig, GF_BG_LYR_MAIN_3, BG_POS_OP_SET_Y, 0);
-        fieldSystem->unk68->unk13_7 = FALSE;
+        fieldSystem->signpostWindow->active = FALSE;
     }
 }
 
-BOOL ov01_021F3EA0(FieldSystem *fieldSystem) {
+static BOOL FieldSystem_SignpostWindowCommand_WipeIn(FieldSystem *fieldSystem) {
     int bgYpos = Bg_GetYpos(fieldSystem->bgConfig, GF_BG_LYR_MAIN_3);
     if (bgYpos == 0) {
         return TRUE;
@@ -102,7 +107,7 @@ BOOL ov01_021F3EA0(FieldSystem *fieldSystem) {
     return FALSE;
 }
 
-BOOL ov01_021F3EE0(FieldSystem *fieldSystem) {
+static BOOL FieldSystem_SignpostWindowCommand_WipeOut(FieldSystem *fieldSystem) {
     int bgYpos = Bg_GetYpos(fieldSystem->bgConfig, GF_BG_LYR_MAIN_3);
     if (bgYpos == -48) {
         FillBgTilemapRect(fieldSystem->bgConfig, GF_BG_LYR_MAIN_3, 0, 0, 18, 32, 6, TILEMAP_FILL_KEEP_PAL);

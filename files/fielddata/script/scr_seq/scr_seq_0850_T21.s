@@ -843,19 +843,11 @@ _0ACC:
 	EndMovement
 
 scr_seq_T21_005:
-	ScrCmd_056 2, 0
-	ScrCmd_057 3
-	ScrCmd_058
-	TrainerTips msg_0550_T21_00024, VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	TrainerTipsEx 2, msg_0550_T21_00024
 	End
 
 scr_seq_T21_006:
-	DirectionSignpost msg_0550_T21_00023, 0, 12, VAR_SPECIAL_RESULT
-	ScrCmd_057 3
-	ScrCmd_058
-	ScrCmd_060 VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	DirectionSignpostEx 0, 12, msg_0550_T21_00023
 	End
 
 scr_seq_T21_007:

@@ -133,18 +133,10 @@ scr_seq_R45_003:
 	End
 
 scr_seq_R45_000:
-	DirectionSignpost msg_0405_R45_00001, 1, 4, VAR_SPECIAL_RESULT
-	ScrCmd_057 3
-	ScrCmd_058
-	ScrCmd_060 VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	DirectionSignpostEx 1, 4, msg_0405_R45_00001
 	End
 
 scr_seq_R45_004:
-	ScrCmd_056 2, 0
-	ScrCmd_057 3
-	ScrCmd_058
-	TrainerTips msg_0405_R45_00002, VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	TrainerTipsEx 2, msg_0405_R45_00002
 	End
 	.balign 4, 0

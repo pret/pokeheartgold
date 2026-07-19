@@ -537,7 +537,7 @@ _021E5D82:
 	add r0, #0x50
 	bl ov01_021EA284
 	ldr r0, [r4, #0x68]
-	bl ov01_021F3D50
+	bl FieldSignpostWindow_Delete
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #8]
 	bl FieldDrawMapNameInfo_Destroy
@@ -778,7 +778,7 @@ _021E5FD4:
 	ldr r0, [r5, #0x28]
 	bl ov01_021EAD8C
 	add r0, r5, #0
-	bl ov01_021F3D98
+	bl FieldSystem_ExecuteSignpostWindowCommand
 	mov r0, #1
 	tst r0, r4
 	beq _021E5FFE
@@ -1529,7 +1529,7 @@ _021E65D8:
 	ldr r1, [r4, #4]
 	str r0, [r1, #8]
 	mov r0, #4
-	bl ov01_021F3D38
+	bl FieldSignpostWindow_New
 	str r0, [r4, #0x68]
 	bl ov01_021EAFD4
 	ldr r1, [r4, #4]
