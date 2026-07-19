@@ -189,7 +189,7 @@ _021E5A50:
 	bl ov01_021E6058
 	mov r0, #0
 	mov r1, #1
-	bl sub_0205B4EC
+	bl DialogBox_LoadFontPals
 	add r0, r4, #0
 	mov r1, #4
 	bl TryStartMapScriptByType

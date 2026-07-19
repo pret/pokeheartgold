@@ -76,7 +76,7 @@
 .public sub_02055680
 .public sub_020556A8
 .public sub_02057FA4
-.public sub_0205B4EC
+.public DialogBox_LoadFontPals
 .public sub_0205C46C
 .public PlayerAvatar_GetFacingDirection
 .public PlayerAvatar_GetXCoord

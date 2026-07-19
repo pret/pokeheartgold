@@ -118,11 +118,11 @@
 .public sub_0205AB88
 .public sub_0205ABB0
 .public sub_0205ABBC
-.public sub_0205B514
-.public sub_0205B564
-.public sub_0205B5A8
-.public sub_0205B5B4
-.public IsPrintFinished
+.public DialogBox_AddWindowToLayer3
+.public DialogBox_LoadFrame
+.public DialogBox_Clear
+.public DialogBox_PrintMessage
+.public DialogBox_IsPrintFinished
 .public PlayerAvatar_GetMapObject
 .public sub_0205F55C
 .public MapObject_IsMovementPaused

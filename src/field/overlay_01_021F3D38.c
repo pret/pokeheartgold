@@ -2,7 +2,7 @@
 
 #include "global.h"
 
-#include "text_0205B4EC.h"
+#include "dialog_box.h"
 
 static void FieldSystem_SignpostWindowCommand_Show(FieldSystem *fieldSystem);
 static void FieldSystem_SignpostWindowCommand_Hide(FieldSystem *fieldSystem);
@@ -79,10 +79,10 @@ static void FieldSystem_SignpostWindowCommand_Show(FieldSystem *fieldSystem) {
     BgSetPosTextAndCommit(fieldSystem->bgConfig, GF_BG_LYR_MAIN_3, BG_POS_OP_SET_Y, -48);
 
     if (!fieldSystem->signpostWindow->active) {
-        sub_0205B63C(fieldSystem->bgConfig, &fieldSystem->signpostWindow->window, fieldSystem->signpostWindow->type, GF_BG_LYR_MAIN_3);
+        DialogBox_AddWindowToLayer3WithXOffset(fieldSystem->bgConfig, &fieldSystem->signpostWindow->window, fieldSystem->signpostWindow->type, GF_BG_LYR_MAIN_3);
         fieldSystem->signpostWindow->active = TRUE;
     }
-    sub_0205B6A0(&fieldSystem->signpostWindow->window, fieldSystem->signpostWindow->type, fieldSystem->signpostWindow->map);
+    DialogBox_DrawFrameWithWayfindingGraphic(&fieldSystem->signpostWindow->window, fieldSystem->signpostWindow->type, fieldSystem->signpostWindow->map);
 }
 
 static void FieldSystem_SignpostWindowCommand_Hide(FieldSystem *fieldSystem) {

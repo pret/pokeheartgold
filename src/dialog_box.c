@@ -1,4 +1,5 @@
 #include "dialog_box.h"
+
 #include "font.h"
 #include "render_text.h"
 #include "render_window.h"
