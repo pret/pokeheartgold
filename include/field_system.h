@@ -7,10 +7,11 @@
 #include "field/dynamic_terrain_height.h"
 #include "field/hblank_system.h"
 #include "field/overlay_01_021E66E4.h"
+#include "field/map_prop_animation.h"
 #include "field/model_attributes.h"
 #include "overlay_01_021EA824.h" // replace with field/fog.h
 #include "field/overlay_01_021EAFD4.h"
-#include "overlay_01_02204004.h"
+#include "field/overlay_01_02204004.h"
 #include "overlay_01_021F1348.h"
 #include "field/signpost.h"
 
@@ -112,14 +113,6 @@ typedef struct MapObjectsToPreload {
     int ids[MAX_MAP_OBJECTS_TO_PRELOAD];
 } MapObjectsToPreload;
 
-typedef struct FieldSystemUnkSub54 {
-    u8 unk0[0x13C];
-} FieldSystemUnkSub54;
-
-typedef struct FieldSystemUnkSub58 {
-    u8 unk0[0x380];
-} FieldSystemUnkSub58;
-
 typedef struct FieldSystemUnkSub108 {
     u32 personality;
     u16 species;
@@ -200,8 +193,8 @@ struct FieldSystem {
     ModelAttributes *modelAttributes;
     FogData *fog;
     AreaLightManager *areaLightManager;
-    FieldSystemUnkSub54 *unk54;
-    FieldSystemUnkSub58 *unk58;
+    MapPropAnimationManager *mapPropAnimationManager;
+    MapPropOneShotAnimationManager *mapPropOneShotAnimationManager;
     TerrainAttributes *terrainAttributes;
     u32 unk60;
     int unk64;

@@ -2,6 +2,7 @@
 #define POKEHEARTGOLD_OVERLAY_01_H
 
 #include "field_system.h"
+#include "field/map_prop_animation.h"
 #include "overlay_01_rock_smash_item.h"
 #include "script.h"
 #include "unk_0206793C.h"
@@ -116,7 +117,7 @@ struct UnkStruct_020FACDC {
     int filler_00[12 / sizeof(int)];
 };
 
-void ov01_021F3C0C(void *fieldSystem_unk9C, int a1, const VecFx32 *unk_FACDC, int a3, FieldSystemUnkSub54 *fieldSystem_unk54);
+void ov01_021F3C0C(void *fieldSystem_unk9C, int a1, const VecFx32 *unk_FACDC, int a3, MapPropAnimationManager *mapPropAnimationManager);
 BOOL ov01_022060B8(FieldSystem *fieldSystem, u8 a1, u8 a2);
 
 struct BankTransactionWorkSub {

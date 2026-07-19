@@ -5,6 +5,7 @@
 #include "field/hblank_system.h"
 #include "field/overlay_01_021E66E4.h"
 #include "field/map_load_manager.h"
+#include "field/map_prop_animation.h"
 #include "field/model_attributes.h"
 #include "field/overlay_01_021EAF00.h"
 #include "field/overlay_01_021EAFD4.h"
@@ -108,13 +109,6 @@ void *ov01_021F3638(enum HeapID heapID, void *unkC0); // MapPropManager_New
 void ov01_021F3660(void *unk9C);
 void ov01_021F3C9C(void *unk9C, AreaDataManager *areaDataManager);  // MapPropManager_Render2
 
-// overlay_01_021E8744 (map_prop_animation_manager?) (FieldSystemUnkSub54 == MapPropAnimationManager?) (FieldSystemUnkSub58 == MapPropOneShotAnimationManager?)
-FieldSystemUnkSub54 *ov01_021E87E4(NARC *narc, FieldSystemUnkSubC8 *unkSubC8); // FieldSystemUnkSub54_Init // narc == animeListNARC?
-void ov01_021E8A28(FieldSystemUnkSub54 *unkSub54); // MapPropAnimationManager_UnloadAllAnimations
-void ov01_021E8AEC(FieldSystemUnkSub54 *unkSub54); // MapPropAnimationManager_Free
-FieldSystemUnkSub58 *ov01_021E8DB4();
-void ov01_021E8DD4(FieldSystemUnkSub58 **unkSub58_ptr);
-
 // overlay_01_02204004
 void ov01_02204350(FieldSystemUnkSubC8 *unkSubC8); // MapPropAnimationManager_AdvanceAnimations??
 
@@ -208,7 +202,7 @@ BOOL FieldMap_Init(OverlayManager *man, int *state) {
         break;
     case FIELD_MAP_INIT_STATE_LOAD:
         InitGraphicsAndManagers(fieldSystem);
-        AreaDataManager_Load(fieldSystem->areaDataManager, fieldSystem->unkC0, fieldSystem->unk54, fieldSystem->unkCC, fieldSystem->unk104);
+        AreaDataManager_Load(fieldSystem->areaDataManager, fieldSystem->unkC0, fieldSystem->mapPropAnimationManager, fieldSystem->unkCC, fieldSystem->unk104);
         
         fieldSystem->unk9C = ov01_021F3638(HEAP_ID_FIELD1, fieldSystem->unkC0);
         
@@ -282,14 +276,14 @@ BOOL FieldMap_Exit(OverlayManager *man, int *state) {
         
         DynamicTerrainHeightManager_Free(fieldSystem->dynamicTerrainHeightManager);
 
-        GF_ASSERT(fieldSystem->unk54 != NULL); // mapPropAnimMan
+        GF_ASSERT(fieldSystem->mapPropAnimationManager != NULL);
         MapLoadManager_End(fieldSystem->mapLoadManager);
         
         offset += 0x18D * (DSProt_DetectNotFlashcart(&ov01_021E66DC) == FALSE);
 
-        ov01_021E8A28(fieldSystem->unk54);
-        ov01_021E8AEC(fieldSystem->unk54);
-        ov01_021E8DD4(&fieldSystem->unk58);
+        MapPropAnimationManager_UnloadAllAnimations(fieldSystem->mapPropAnimationManager);
+        MapPropAnimationManager_Free(fieldSystem->mapPropAnimationManager);
+        ov01_021E8DD4(&fieldSystem->mapPropOneShotAnimationManager);
         ov01_02204764(fieldSystem->unk104);
         ov01_02204634(fieldSystem->unkCC);
         ov01_02204278(fieldSystem->unkC8);
@@ -668,12 +662,12 @@ static void InitGraphicsAndManagers(FieldSystem* fieldSystem) {
     fieldSystem->unkC8 = ov01_022041C4(HEAP_ID_FIELD1);
     fieldSystem->unkCC = ov01_0220460C(fieldSystem->unkC8);
     fieldSystem->unk104 = ov01_02204744(HEAP_ID_FIELD1);
-    fieldSystem->unk54 = ov01_021E87E4(ov01_021FB904(fieldSystem->areaDataManager), fieldSystem->unkC8);
-    fieldSystem->unk58 = ov01_021E8DB4();
+    fieldSystem->mapPropAnimationManager = MapPropAnimationManager_Init(ov01_021FB904(fieldSystem->areaDataManager), fieldSystem->unkC8);
+    fieldSystem->mapPropOneShotAnimationManager = ov01_021E8DB4();
 }
 
 static void FieldSystem_InitMapLoadManager(FieldSystem* fieldSystem) {
-    fieldSystem->mapLoadManager = MapLoadManager_New(fieldSystem->mapMatrix, fieldSystem->areaDataManager, fieldSystem->unkC0, fieldSystem->unk54, fieldSystem->unkCC, fieldSystem->unk64, fieldSystem->saveData);
+    fieldSystem->mapLoadManager = MapLoadManager_New(fieldSystem->mapMatrix, fieldSystem->areaDataManager, fieldSystem->unkC0, fieldSystem->mapPropAnimationManager, fieldSystem->unkCC, fieldSystem->unk64, fieldSystem->saveData);
     fieldSystem->dynamicTerrainHeightManager = DynamicTerrainHeightManager_New(8, HEAP_ID_FIELD1);
     MapLoadManager_InitialLoad(fieldSystem->mapLoadManager, fieldSystem->location->x, fieldSystem->location->y);
 }
