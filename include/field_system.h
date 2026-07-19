@@ -1,12 +1,16 @@
 #ifndef POKEHEARTGOLD_FIELD_SYSTEM_H
 #define POKEHEARTGOLD_FIELD_SYSTEM_H
 
+#include "field/area_light.h"
 #include "field/draw_map_name.h"
+#include "field/hblank_system.h"
 #include "field/overlay_01_021E66E4.h"
 #include "field/model_attributes.h"
+#include "overlay_01_021EA824.h" // replace with field/fog.h
 #include "field/overlay_01_021EAFD4.h"
 #include "overlay_01_02204004.h"
 #include "overlay_01_021F1348.h"
+#include "field/signpost.h"
 
 #include "bag_cursor.h"
 #include "battle_regulation.h"
@@ -73,12 +77,12 @@ struct GearPhoneRingManager {
     } gearRing;
 }; // size: 0x48
 
-struct FieldSystemUnkSub0 {
-    OverlayManager *unk0;
-    OverlayManager *unk4;
+typedef struct FieldProcessManager {
+    OverlayManager *parent;
+    OverlayManager *child;
     BOOL isPaused;
-    BOOL unkC;
-};
+    BOOL isDone;
+} FieldProcessManager;
 
 typedef struct FieldEnvSubUnk18 {
     int state;
@@ -93,7 +97,7 @@ typedef struct FieldSystemUnkSub4 {
     FieldTextureManager *textureManager;
     u32 unk14;
     UnkStruct_020556FC *unk18;
-    void *unk1C;
+    HBlankSystem *hBlankSystem;
     void *unk20;
     void *legendCutsceneCamera;
 } FieldSystemUnkSub4;
@@ -113,14 +117,6 @@ typedef struct FieldSystemUnkSub54 {
 typedef struct FieldSystemUnkSub58 {
     u8 unk0[0x380];
 } FieldSystemUnkSub58;
-
-struct FieldSystemUnkSub68 {
-    Window unk0;
-    u16 unk10;
-    u8 unk12;
-    u8 unk13_0 : 7;
-    u8 unk13_7 : 1;
-};
 
 typedef struct FieldSystemUnkSub98 {
     u8 unk0[0x8];
@@ -185,7 +181,7 @@ typedef struct FieldSystemUnkSub120 {
 } FieldSystemUnkSub120;
 
 struct FieldSystem {
-    struct FieldSystemUnkSub0 *unk0;
+    FieldProcessManager *processManager;
     FieldSystemUnkSub4 *unk4;
     BgConfig *bgConfig;
     SaveData *saveData;
@@ -204,14 +200,14 @@ struct FieldSystem {
     PlayerAvatar *playerAvatar;
     FieldEffectManager *fieldEffectManager;
     ModelAttributes *modelAttributes;
-    void *unk4C;
-    void *unk50;
+    FogData *fog;
+    AreaLightManager *areaLightManager;
     FieldSystemUnkSub54 *unk54;
     FieldSystemUnkSub58 *unk58;
     TerrainAttributes *terrainAttributes;
     u32 unk60;
     int unk64;
-    struct FieldSystemUnkSub68 *unk68;
+    Signpost *signpost;
     BOOL unk6C;
     int unk70;
     const struct UnkStruct_020FC5CC *unk74;

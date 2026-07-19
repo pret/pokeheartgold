@@ -70,9 +70,9 @@
 .public ov01_021E9F78
 .public ov01_021E9FF8
 .public ov01_021EA128
-.public ov01_021EA220
-.public ov01_021EA284
-.public ov01_021EA2A4
+.public AreaLightManager_New
+.public AreaLightManager_Free
+.public AreaLightManager_UpdateActiveTemplate
 .public ov01_021EA3B0
 .public LoadAreaOrDungeonLightTxt
 .public ov01_021EAAB8

@@ -13,8 +13,8 @@
 #include "overlay_01.h"
 #include "overlay_01_021E90C0.h"
 #include "overlay_01_021F1AFC.h"
-#include "overlay_01_021F4704.h"
-#include "overlay_01_021FB4C0.h"
+#include "field/map_load_manager.h"
+#include "field/hblank_system.h"
 #include "overlay_01_022031C0.h"
 #include "overlay_01_022053EC.h"
 #include "player_avatar.h"
@@ -56,13 +56,13 @@ BOOL RoutineFieldFade(TaskManager *man) {
     FieldFadeEnvironment *fenv = TaskManager_GetEnvironment(man);
     switch (fenv->state) {
     case 0:
-        ov01_021FB514(fieldSystem->unk4->unk1C);
+        HBlankSystem_Stop(fieldSystem->unk4->hBlankSystem);
         BeginNormalPaletteFade(fenv->pattern, fenv->typeTop, fenv->typeBottom, fenv->colour, fenv->duration, fenv->framesPer, fenv->heapID);
         fenv->state++;
         break;
     case 1:
         if (IsPaletteFadeFinished()) {
-            ov01_021FB4F4(fieldSystem->unk4->unk1C);
+            HBlankSystem_Start(fieldSystem->unk4->hBlankSystem);
             Heap_Free(fenv);
             return TRUE;
         }

@@ -392,8 +392,8 @@
 .public ov01_021E8E70
 .public ov01_021E8ED0
 .public ov01_021E8F10
-.public ov01_021EA220
-.public ov01_021EA284
+.public AreaLightManager_New
+.public AreaLightManager_Free
 .public ov01_021F1448
 .public ov01_021F36DC
 .public ov01_021F3B0C

@@ -175,11 +175,11 @@ _02245CB0:
 	bl ov02_02245DB0
 	ldr r0, [r4, #4]
 	add r0, #0x50
-	bl ov01_021EA284
+	bl AreaLightManager_Free
 	ldr r0, [r4, #4]
 	mov r1, #4
 	ldr r0, [r0, #0x48]
-	bl ov01_021EA220
+	bl AreaLightManager_New
 	ldr r1, [r4, #4]
 	ldr r3, _02245D14 ; =0x00007FFF
 	str r0, [r1, #0x50]

@@ -3,6 +3,8 @@
 
 // GX_LIGHTS_COUNT == 4
 
+#include "global.h"
+
 typedef struct ModelAttributes {
     VecFx16 lightVectors[4];
     GXRgb lightColors[4];

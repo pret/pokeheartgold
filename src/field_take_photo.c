@@ -14,7 +14,7 @@
 #include "overlay_01_021F72DC.h"
 #include "overlay_01_021F8D80.h"
 #include "overlay_01_021F944C.h"
-#include "overlay_01_021FB4C0.h"
+#include "field/hblank_system.h"
 #include "overlay_01_022053EC.h"
 #include "photo_album.h"
 #include "script_pokemon_util.h"
@@ -725,7 +725,7 @@ static BOOL FieldTask_TakePhoto(TaskManager *taskManager) {
     case TAKE_PHOTO_STATE_SHUTTER:
         switch (takePhoto->shutterState) {
         case TAKE_PHOTO_SHUTTER_STATE_INIT:
-            ov01_021FB514(fieldSystem->unk4->unk1C);
+            HBlankSystem_Stop(fieldSystem->unk4->hBlankSystem);
             ++takePhoto->shutterState;
             // fallthrough
         case TAKE_PHOTO_SHUTTER_STATE_DELAY_BEFORE:
@@ -764,7 +764,7 @@ static BOOL FieldTask_TakePhoto(TaskManager *taskManager) {
             }
             break;
         case TAKE_PHOTO_SHUTTER_STATE_6:
-            ov01_021FB4F4(fieldSystem->unk4->unk1C);
+            HBlankSystem_Start(fieldSystem->unk4->hBlankSystem);
             ++takePhoto->shutterState;
             break;
         case TAKE_PHOTO_SHUTTER_STATE_DELAY_AFTER:

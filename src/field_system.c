@@ -7,8 +7,8 @@
 #include "map_events.h"
 #include "math_util.h"
 #include "field/field_control.h"
+#include "field/signpost.h"
 #include "overlay_01_021F1AFC.h"
-#include "overlay_01_021F3D38.h"
 #include "overlay_01_021F6830.h"
 #include "overlay_124.h"
 #include "overlay_35.h"
@@ -87,14 +87,14 @@ BOOL Field_AppExit(OverlayManager *man, int *unused) {
 extern OverlayManagerTemplate ov01_02206378;
 
 void FieldSystem_LoadFieldOverlayInternal(FieldSystem *fieldSystem) {
-    GF_ASSERT(fieldSystem->unk0->unk4 == NULL);
-    GF_ASSERT(fieldSystem->unk0->unk0 == NULL);
+    GF_ASSERT(fieldSystem->processManager->child == NULL);
+    GF_ASSERT(fieldSystem->processManager->parent == NULL);
 
     HandleLoadOverlay(FS_OVERLAY_ID(field), OVY_LOAD_ASYNC);
 
     fieldSystem->unk6C = FALSE;
-    fieldSystem->unk0->isPaused = FALSE;
-    fieldSystem->unk0->unk0 = OverlayManager_New(&ov01_02206378, fieldSystem, HEAP_ID_FIELD2);
+    fieldSystem->processManager->isPaused = FALSE;
+    fieldSystem->processManager->parent = OverlayManager_New(&ov01_02206378, fieldSystem, HEAP_ID_FIELD2);
 }
 
 void sub_0203DF34(FieldSystem *fieldSystem) {
@@ -113,23 +113,23 @@ void sub_0203DF64(FieldSystem *fieldSystem, int a1) {
 }
 
 BOOL sub_0203DF7C(FieldSystem *fieldSystem) {
-    return fieldSystem->unk0->unk0 != NULL;
+    return fieldSystem->processManager->parent != NULL;
 }
 
 BOOL sub_0203DF8C(FieldSystem *fieldSystem) {
-    return fieldSystem->unk0->unk0 != NULL && fieldSystem->unk6C;
+    return fieldSystem->processManager->parent != NULL && fieldSystem->unk6C;
 }
 
 BOOL sub_0203DFA4(FieldSystem *fieldSystem) {
-    return fieldSystem->unk0->unk4 != NULL;
+    return fieldSystem->processManager->child != NULL;
 }
 
 void FieldSystem_LaunchApplication(FieldSystem *fieldSystem, const OverlayManagerTemplate *template, void *parentWork) {
-    GF_ASSERT(fieldSystem->unk0->unk4 == NULL);
+    GF_ASSERT(fieldSystem->processManager->child == NULL);
 
     sub_0203DF34(fieldSystem);
 
-    fieldSystem->unk0->unk4 = OverlayManager_New(template, parentWork, HEAP_ID_FIELD2);
+    fieldSystem->processManager->child = OverlayManager_New(template, parentWork, HEAP_ID_FIELD2);
 }
 
 FieldSystem *FieldSystem_New(OverlayManager *man) {
@@ -138,12 +138,12 @@ FieldSystem *FieldSystem_New(OverlayManager *man) {
     Heap_Create(HEAP_ID_DEFAULT, HEAP_ID_89, 0x570);
     FieldSystem *fieldSystem = OverlayManager_CreateAndGetData(man, sizeof(FieldSystem), HEAP_ID_FIELD2);
     MI_CpuFill8(fieldSystem, 0, sizeof(FieldSystem));
-    fieldSystem->unk0 = Heap_Alloc(HEAP_ID_FIELD2, sizeof(struct FieldSystemUnkSub0));
+    fieldSystem->processManager = Heap_Alloc(HEAP_ID_FIELD2, sizeof(struct FieldProcessManager));
 
-    fieldSystem->unk0->unk0 = NULL;
-    fieldSystem->unk0->unk4 = NULL;
-    fieldSystem->unk0->isPaused = FALSE;
-    fieldSystem->unk0->unkC = FALSE;
+    fieldSystem->processManager->parent = NULL;
+    fieldSystem->processManager->child = NULL;
+    fieldSystem->processManager->isPaused = FALSE;
+    fieldSystem->processManager->isDone = FALSE;
 
     HandleLoadOverlay(FS_OVERLAY_ID(OVY_124), OVY_LOAD_ASYNC);
 
@@ -161,7 +161,7 @@ void FieldSystem_Delete(OverlayManager *man) {
     Heap_Free(fieldSystem->bagCursor);
     UnkStruct_02092BB8_Free(fieldSystem->unkA8);
     GearPhoneRingManager_Delete(fieldSystem->phoneRingManager);
-    Heap_Free(fieldSystem->unk0);
+    Heap_Free(fieldSystem->processManager);
     OverlayManager_FreeData(man);
     Heap_Destroy(HEAP_ID_89);
     Heap_Destroy(HEAP_ID_FIELD2);
@@ -182,22 +182,22 @@ static BOOL FieldSystem_Main(FieldSystem *fieldSystem) {
             ov01_021F6830(fieldSystem, 0, 0);
         }
     }
-    if (fieldSystem->unk0->unk0) {
-        ppOverlayManager_RunFrame_DeleteIfFinished(&fieldSystem->unk0->unk0);
-        if (!fieldSystem->unk0->unk0) {
+    if (fieldSystem->processManager->parent) {
+        ppOverlayManager_RunFrame_DeleteIfFinished(&fieldSystem->processManager->parent);
+        if (!fieldSystem->processManager->parent) {
             UnloadOverlayByID(FS_OVERLAY_ID(field));
         }
-    } else if (fieldSystem->unk0->unk4) {
-        ppOverlayManager_RunFrame_DeleteIfFinished(&fieldSystem->unk0->unk4);
+    } else if (fieldSystem->processManager->child) {
+        ppOverlayManager_RunFrame_DeleteIfFinished(&fieldSystem->processManager->child);
     }
-    if (fieldSystem->unk0->unkC && !fieldSystem->taskman && !fieldSystem->unk0->unk0 && !fieldSystem->unk0->unk4) {
+    if (fieldSystem->processManager->isDone && !fieldSystem->taskman && !fieldSystem->processManager->parent && !fieldSystem->processManager->child) {
         return TRUE;
     }
     return FALSE;
 }
 
 BOOL FieldSystem_IsPlayerMovementAllowed(FieldSystem *fieldSystem) {
-    return !fieldSystem->unk0->isPaused && fieldSystem->unk6C && !FieldSystem_TaskIsRunning(fieldSystem);
+    return !fieldSystem->processManager->isPaused && fieldSystem->unk6C && !FieldSystem_TaskIsRunning(fieldSystem);
 }
 
 void FieldSystem_Control(FieldSystem *fieldSystem) {
@@ -281,12 +281,12 @@ void FieldSystem_Control(FieldSystem *fieldSystem) {
 }
 
 void sub_0203E2F4() {
-    sFieldSysPtr->unk0->isPaused = TRUE;
+    sFieldSysPtr->processManager->isPaused = TRUE;
     sub_02037504();
 }
 
 void sub_0203E30C() {
-    sFieldSysPtr->unk0->isPaused = FALSE;
+    sFieldSysPtr->processManager->isPaused = FALSE;
     sub_020374E4();
 }
 

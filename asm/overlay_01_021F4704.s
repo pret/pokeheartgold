@@ -3735,8 +3735,8 @@ _021F62E2:
 	.balign 4, 0
 	thumb_func_end MapLoadManager_HasEnded
 
-	thumb_func_start ov01_021F62E8
-ov01_021F62E8: ; 0x021F62E8
+	thumb_func_start MapLoadManager_TrackTarget
+MapLoadManager_TrackTarget: ; 0x021F62E8
 	push {r4, r5}
 	add r5, r0, #0
 	add r4, r1, #0
@@ -3751,7 +3751,7 @@ ov01_021F62E8: ; 0x021F62E8
 	str r5, [r4]
 	pop {r4, r5}
 	bx lr
-	thumb_func_end ov01_021F62E8
+	thumb_func_end MapLoadManager_TrackTarget
 
 	thumb_func_start ov01_021F6304
 ov01_021F6304: ; 0x021F6304

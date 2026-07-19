@@ -9,13 +9,13 @@
 #include "msgdata/msg/msg_0096_D31R0201.h"
 #include "msgdata/msg/msg_0066_D23R0102.h"
 	.include "asm/macros.inc"
-	.include "overlay_01_021F3D38.inc"
+	.include "signpost.inc"
 	.include "global.inc"
 
 	.text
 
-	thumb_func_start ov01_021F3D38
-ov01_021F3D38: ; 0x021F3D38
+	thumb_func_start Signpost_Init
+Signpost_Init: ; 0x021F3D38
 	push {r3, lr}
 	mov r1, #0x14
 	bl Heap_Alloc
@@ -28,10 +28,10 @@ _021F3D46:
 	sub r2, r2, #1
 	bne _021F3D46
 	pop {r3, pc}
-	thumb_func_end ov01_021F3D38
+	thumb_func_end Signpost_Init
 
-	thumb_func_start ov01_021F3D50
-ov01_021F3D50: ; 0x021F3D50
+	thumb_func_start Signpost_Free
+Signpost_Free: ; 0x021F3D50
 	push {r4, lr}
 	add r4, r0, #0
 	ldrb r1, [r4, #0x13]
@@ -43,7 +43,7 @@ _021F3D60:
 	add r0, r4, #0
 	bl Heap_Free
 	pop {r4, pc}
-	thumb_func_end ov01_021F3D50
+	thumb_func_end Signpost_Free
 
 	thumb_func_start ov01_021F3D68
 ov01_021F3D68: ; 0x021F3D68
@@ -90,8 +90,8 @@ _021F3D94:
 	bx lr
 	thumb_func_end ov01_021F3D88
 
-	thumb_func_start ov01_021F3D98
-ov01_021F3D98: ; 0x021F3D98
+	thumb_func_start Signpost_DoCurrentCommand
+Signpost_DoCurrentCommand: ; 0x021F3D98
 	push {r4, lr}
 	ldr r4, [r0, #0x68]
 	ldrb r1, [r4, #0x13]
@@ -144,7 +144,7 @@ _021F3DEE:
 	strb r1, [r4, #0x13]
 _021F3DFA:
 	pop {r4, pc}
-	thumb_func_end ov01_021F3D98
+	thumb_func_end Signpost_DoCurrentCommand
 
 	thumb_func_start ov01_021F3DFC
 ov01_021F3DFC: ; 0x021F3DFC
@@ -153,7 +153,7 @@ ov01_021F3DFC: ; 0x021F3DFC
 	ldr r0, [r4, #0x68]
 	bl ov01_021F3D70
 	add r0, r4, #0
-	bl ov01_021F3D98
+	bl Signpost_DoCurrentCommand
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov01_021F3DFC

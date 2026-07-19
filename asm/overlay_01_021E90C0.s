@@ -2203,8 +2203,8 @@ _021EA21C:
 	pop {r4, pc}
 	thumb_func_end ov01_021EA1F4
 
-	thumb_func_start ov01_021EA220
-ov01_021EA220: ; 0x021EA220
+	thumb_func_start AreaLightManager_New
+AreaLightManager_New: ; 0x021EA220
 	push {r4, r5, r6, lr}
 	add r6, r1, #0
 	add r5, r0, #0
@@ -2254,10 +2254,10 @@ _021EA272:
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _021EA280: .word ov01_02206450
-	thumb_func_end ov01_021EA220
+	thumb_func_end AreaLightManager_New
 
-	thumb_func_start ov01_021EA284
-ov01_021EA284: ; 0x021EA284
+	thumb_func_start AreaLightManager_Free
+AreaLightManager_Free: ; 0x021EA284
 	push {r4, lr}
 	add r4, r0, #0
 	bne _021EA28E
@@ -2272,10 +2272,10 @@ _021EA28E:
 	mov r0, #0
 	str r0, [r4]
 	pop {r4, pc}
-	thumb_func_end ov01_021EA284
+	thumb_func_end AreaLightManager_Free
 
-	thumb_func_start ov01_021EA2A4
-ov01_021EA2A4: ; 0x021EA2A4
+	thumb_func_start AreaLightManager_UpdateActiveTemplate
+AreaLightManager_UpdateActiveTemplate: ; 0x021EA2A4
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	bne _021EA2AE
@@ -2325,7 +2325,7 @@ _021EA2F0:
 _021EA2FC:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov01_021EA2A4
+	thumb_func_end AreaLightManager_UpdateActiveTemplate
 
 	thumb_func_start ov01_021EA300
 ov01_021EA300: ; 0x021EA300

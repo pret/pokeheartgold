@@ -1,19 +1,23 @@
 #include "field/fieldmap.h"
 #include "field/field_control.h"
+#include "field/hblank_system.h"
 #include "field/overlay_01_021E66E4.h"
+#include "field/map_load_manager.h"
 #include "field/model_attributes.h"
 #include "field/overlay_01_021EAF00.h"
 #include "field/overlay_01_021EAFD4.h"
+#include "field/overlay_01_021FD1B8.h"
 #include "field/overlay_01_02204004.h"
+#include "field/signpost.h"
 #include "overlay_01.h"
 #include "overlay_01_021EA824.h"
 #include "overlay_01_021EB1E8.h" // replace with field/weather_manager
 #include "overlay_01_021F1348.h"
-#include "overlay_01_021F4704.h"
 #include "overlay_01_021F6830.h"
 #include "overlay_01_021F944C.h"
-#include "overlay_01_021FB4C0.h"
+#include "field/hblank_system.h"
 #include "overlay_01_021F8D80.h"
+#include "overlay_01_021FB5D4.h"
 #include "overlay_01_022053EC.h"
 #include "overlay_2/overlay_02_02248728.h"
 
@@ -46,10 +50,18 @@
 #include "unk_0200B150.h"
 #include "unk_0200FA24.h"
 #include "unk_02023694.h"
-#include "unk_02055418.h"
-#include "unk_020648EC.h"
 #include "unk_02026E30.h"
+#include "unk_02055418.h"
+#include "unk_02056D7C.h"
+#include "unk_020648EC.h"
 #include "vram_transfer_manager.h"
+
+enum FieldMapInitState {
+    FIELD_MAP_INIT_STATE_RESET = 0,
+    FIELD_MAP_INIT_STATE_LOAD,
+    FIELD_MAP_INIT_STATE_BOTTOM_SCREEN,
+    FIELD_MAP_INIT_STATE_DONE
+};
 
 FS_EXTERN_OVERLAY(ds_protect);
 FS_EXTERN_OVERLAY(OVY_2);
@@ -102,14 +114,6 @@ void *ov01_021F3638(enum HeapID heapID, void *unkC0); // MapPropManager_New
 void ov01_021F3660(void *unk9C);
 void ov01_021F3C9C(void *unk9C, void *unk34);  // MapPropManager_Render2
 
-// overlay_01_021FB4C0 (fieldSystem->unk4->unk1C == hBlankSystem?)
-void *ov01_021FB4C0(enum HeapID heapID); // HBlankSystem_New
-void ov01_021FB4D4(void *unk1C); // HBlankSystem_Delete
-
-// overlay_01_021FB5D4
-void *ov01_021FB5D4(enum HeapID heapID, void *unk1C);
-void ov01_021FB610(void *unk20);
-
 // overlay_01_021FB368 (FieldSystemUnkSub98 == DynamicTerrainHeightManager?)
 FieldSystemUnkSub98 *ov01_021FB3A4(const u8 platesCount, enum HeapID heapID); // DynamicTerrainHeightManager_New
 void ov01_021FB418(FieldSystemUnkSub98 *unkSub98); // DynamicTerrainHeightManager_Free
@@ -129,21 +133,6 @@ void ov01_021EABA8(const VecFx32 *_target, FieldSystem *fieldSystem, const u32 c
 void ov01_021EAC30(FieldSystem *fieldSystem); // FieldCamera_Delete
 void ov01_021EAD8C(void *unk28);
 
-// overlay_01_021E90C0 (area_light_manager?) (fieldSystem->unk50 == AreaLightManager?)
-void *ov01_021EA220(ModelAttributes *areaModelAttributes, const u32 archiveID); // AreaLightManager_New
-void ov01_021EA284(void **unk50); // AreaLightManager_Free
-void ov01_021EA2A4(void *unk50); // AreaLightManager_UpdateActiveTemplate
-
-// overlay_01_021F3D38 (signpost?) (FieldSystemUnkSub68 == Signpost?)
-struct FieldSystemUnkSub68 *ov01_021F3D38(enum HeapID heapID); // Signpost_Init
-void ov01_021F3D50(struct FieldSystemUnkSub68 *unkSub68); // Signpost_Free
-
-// overlay_01_021FD1B8
-void ov01_021FD3F8(FieldEffectManager *unkSub44); // FieldEffect_InitRenderObject
-
-// unk_02056D7C
-void sub_02057FA4(); // CommPlayerMan_ForcePos
-
 int CARD_SpiWaitGetStatus();
 
 void fieldmap(void *param0) {
@@ -162,7 +151,7 @@ BOOL FieldMap_Init(OverlayManager *man, int *state) {
     FieldSystem *fieldSystem = OverlayManager_GetArgs(man);
 
     switch (*state) { 
-    case 0: // FIELD_MAP_INIT_STATE_RESET
+    case FIELD_MAP_INIT_STATE_RESET:
         FS_LoadOverlay(MI_PROCESSOR_ARM9, FS_OVERLAY_ID(ds_protect));
 
         Main_SetVBlankIntrCB(NULL, NULL);
@@ -173,8 +162,8 @@ BOOL FieldMap_Init(OverlayManager *man, int *state) {
 
         offset += (0x4CF * DSProt_DetectDummy(&ov01_021E66A8));
 
-        sub_0200FBDC(0); // ResetVisibleHardwareWindows(DS_SCREEN_MAIN)
-        sub_0200FBDC(1); // DS_SCREEN_SUB
+        sub_0200FBDC(SCREEN_MAIN); // ResetVisibleHardwareWindows
+        sub_0200FBDC(SCREEN_SUB);
         ov01_021E6364(fieldSystem);
         
         offset += (0x6B * (DSProt_DetectNotEmulator(&ov01_021E66D8) == FALSE));
@@ -232,7 +221,7 @@ BOOL FieldMap_Init(OverlayManager *man, int *state) {
 
         fieldSystem->unk120 = ov02_0224F864(HEAP_ID_FIELD1);
         break;
-    case 1: // FIELD_MAP_INIT_STATE_LOAD
+    case FIELD_MAP_INIT_STATE_LOAD:
         InitGraphicsAndManagers(fieldSystem);
         ov01_021FBA3C(fieldSystem->unk34, fieldSystem->unkC0, fieldSystem->unk54, fieldSystem->unkCC, fieldSystem->unk104);
         
@@ -250,14 +239,14 @@ BOOL FieldMap_Init(OverlayManager *man, int *state) {
         
         TryStartMapScriptByType(fieldSystem, 3); // MAP_SCRIPT_ON_RESUME
         
-        fieldSystem->unk4->unk1C = ov01_021FB4C0(HEAP_ID_FIELD1);
-        ov01_021FB4F4(fieldSystem->unk4->unk1C); // HBlankSystem_Start
-        fieldSystem->unk4->unk20 = ov01_021FB5D4(HEAP_ID_FIELD1, fieldSystem->unk4->unk1C);
+        fieldSystem->unk4->hBlankSystem = HBlankSystem_New(HEAP_ID_FIELD1);
+        HBlankSystem_Start(fieldSystem->unk4->hBlankSystem);
+        fieldSystem->unk4->unk20 = ov01_021FB5D4(HEAP_ID_FIELD1, fieldSystem->unk4->hBlankSystem);
         break;
-    case 2: // FIELD_MAP_INIT_STATE_BOTTOM_SCREEN
+    case FIELD_MAP_INIT_STATE_BOTTOM_SCREEN:
         FieldSystem_InitBottomScreen(fieldSystem);
         break;
-    case 3: // FIELD_MAP_INIT_STATE_DONE
+    case FIELD_MAP_INIT_STATE_DONE:
         if (FieldSystem_IsBottomScreenRunningDummy(fieldSystem)) {
             ret = TRUE;
             fieldSystem->unk6C = TRUE; // runningFieldMap
@@ -358,14 +347,14 @@ BOOL FieldMap_Exit(OverlayManager *man, int *state) {
             ov01_021FB944(&fieldSystem->unk34);
             MapLoadManager_FreeNARCAndLoadedMapBuffers(fieldSystem->mapLoadManager);
             ov01_021EAC30(fieldSystem);
-            ov01_021EA284(&fieldSystem->unk50);
-            ov01_021F3D50(fieldSystem->unk68);
+            AreaLightManager_Free(&fieldSystem->areaLightManager);
+            Signpost_Free(fieldSystem->signpost);
             FieldDrawMapNameInfo_Destroy(fieldSystem->unk4->drawMapNameInfo);
             WeatherManager_Delete(fieldSystem->unk4->weatherManager);
             ov01_021FB610(fieldSystem->unk4->unk20);
-            ov01_021FB4D4(fieldSystem->unk4->unk1C);
+            HBlankSystem_Delete(fieldSystem->unk4->hBlankSystem);
             sub_020556A8(fieldSystem->unk4->unk18); // Some equivalent to BerryPatchManager_Free
-            FieldSystem_Unk4C_Free(&fieldSystem->unk4C); // FogManager_Free(&fieldSystem->fogMan);
+            Fog_Free(&fieldSystem->fog);
             ModelAttributes_Free(&fieldSystem->modelAttributes);
             Thunk_OamManager_Free();
             ov02_0224F8F4(fieldSystem->unk120);
@@ -454,10 +443,10 @@ static void ov01_021E5FC0(FieldSystem* fieldSystem, u8 flag) {
         FieldSystem_StartBugContestTimer(fieldSystem);
     }
 
-    ov01_021EA2A4(fieldSystem->unk50);
+    AreaLightManager_UpdateActiveTemplate(fieldSystem->areaLightManager);
     ov01_022047DC(fieldSystem->unk104);
     ov01_021EAD8C(fieldSystem->unk28);
-    ov01_021F3D98(fieldSystem); // Signpost_DoCurrentCommand
+    Signpost_DoCurrentCommand(fieldSystem);
 
     if (1 & flag) FieldTextureManager_Free(fieldSystem->unk4->textureManager);
     if (8 & flag) ov01_02204350(fieldSystem->unkC8);
@@ -752,7 +741,7 @@ static void ov01_021E64A4(FieldSystem* fieldSystem) {
     
     ov01_021F91F8(fieldSystem->mapObjectManager, 32, MapObjectsToPreload_GetCount(fieldSystem->mapObjectsToPreload) + 3, MapObjectsToPreload_GetIDs(fieldSystem->mapObjectsToPreload), v0);
     ov01_022057DC(fieldSystem->mapObjectManager);
-    ov01_021FD3F8(fieldSystem->fieldEffectManager);
+    FieldEffect_InitRenderObject(fieldSystem->fieldEffectManager);
     sub_0205C46C(fieldSystem->playerAvatar); // PlayerAvatar_InitMapFeatures
     
     if (fieldSystem->unkAC != 0) {
@@ -762,7 +751,7 @@ static void ov01_021E64A4(FieldSystem* fieldSystem) {
         ov01_022059AC(fieldSystem);
     }
     
-    sub_02057FA4();
+    CommPlayerManager_ForcePosition();
     
     if (fieldSystem->unkAC != 0) {
         MapObjectManager_ClearFlagsBits(fieldSystem->mapObjectManager, MAPOBJECTMANAGERFLAG_UNK1);
@@ -770,7 +759,7 @@ static void ov01_021E64A4(FieldSystem* fieldSystem) {
         sub_0205F568(fieldSystem->mapObjectManager);
     }
     
-    ov01_021F62E8(PlayerAvatar_GetPositionVector(fieldSystem->playerAvatar), fieldSystem->mapLoadManager); // MapLoadManager_TrackTarget
+    MapLoadManager_TrackTarget(PlayerAvatar_GetPositionVector(fieldSystem->playerAvatar), fieldSystem->mapLoadManager);
 }
 
 static void ov01_021E6580(FieldSystem *fieldSystem) {
@@ -778,7 +767,7 @@ static void ov01_021E6580(FieldSystem *fieldSystem) {
     GfGfx_BothDispOn();
     fieldSystem->modelAttributes = ModelAttributes_Init();
     FieldMap_InitModelAttributes(fieldSystem->modelAttributes);
-    fieldSystem->unk4C = ov01_021EA824(); // FogManager_New
+    fieldSystem->fog = Fog_New();
     
     int cameraType = LocalFieldData_GetCameraType(Save_LocalFieldData_Get(fieldSystem->saveData));
     ov01_021EABA8(PlayerAvatar_GetPositionVector(fieldSystem->playerAvatar), fieldSystem, cameraType, TRUE);
@@ -788,10 +777,10 @@ static void ov01_021E6580(FieldSystem *fieldSystem) {
         lightArchiveID = 4;
     }
     
-    fieldSystem->unk50 = ov01_021EA220(fieldSystem->modelAttributes, lightArchiveID);
+    fieldSystem->areaLightManager = AreaLightManager_New(fieldSystem->modelAttributes, lightArchiveID);
     fieldSystem->unk4->weatherManager = WeatherManager_New(fieldSystem);
     fieldSystem->unk4->drawMapNameInfo = FieldDrawMapNameInfo_Create(fieldSystem->bgConfig);
-    fieldSystem->unk68 = ov01_021F3D38(HEAP_ID_FIELD1);
+    fieldSystem->signpost = Signpost_Init(HEAP_ID_FIELD1);
     fieldSystem->unk4->textureManager = FieldTextureManager_Init();
     
     FieldTextureManager_LoadTexture(fieldSystem->unk4->textureManager, ov01_021FB9CC(fieldSystem->unk34));

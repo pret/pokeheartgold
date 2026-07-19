@@ -1394,7 +1394,7 @@ _0225494A:
 	ldr r0, [r5, #0x40]
 	bl PlayerAvatar_GetPositionVector
 	ldr r1, [r5, #0x2c]
-	bl ov01_021F62E8
+	bl MapLoadManager_TrackTarget
 _0225495E:
 	mov r0, #0
 	strb r0, [r4, #0x16]
