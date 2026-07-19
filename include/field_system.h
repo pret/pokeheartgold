@@ -179,7 +179,7 @@ struct FieldSystem {
     SaveData *saveData;
     TaskManager *taskman;
     MapEvents *mapEvents;
-    u32 unk18;
+    int bottomScreenType;
     int unk1C;
     Location *location;
     Camera *camera;
@@ -198,9 +198,9 @@ struct FieldSystem {
     MapPropOneShotAnimationManager *mapPropOneShotAnimationManager;
     TerrainAttributes *terrainAttributes;
     u32 unk60;
-    int unk64;
+    BOOL skipMapAttributes;
     Signpost *signpost;
-    BOOL unk6C;
+    BOOL runningFieldMap;
     int mapLoadType;
     const struct MapLoadMode *mapLoadMode;
     u16 unk78;

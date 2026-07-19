@@ -93,13 +93,13 @@ void FieldSystem_LoadFieldOverlayInternal(FieldSystem *fieldSystem) {
 
     HandleLoadOverlay(FS_OVERLAY_ID(field), OVY_LOAD_ASYNC);
 
-    fieldSystem->unk6C = FALSE;
+    fieldSystem->runningFieldMap = FALSE;
     fieldSystem->processManager->isPaused = FALSE;
     fieldSystem->processManager->parent = OverlayManager_New(&ov01_02206378, fieldSystem, HEAP_ID_FIELD2);
 }
 
 void sub_0203DF34(FieldSystem *fieldSystem) {
-    fieldSystem->unk6C = FALSE;
+    fieldSystem->runningFieldMap = FALSE;
 }
 
 u8 sub_0203DF3C(FieldSystem *fieldSystem) {
@@ -118,7 +118,7 @@ BOOL sub_0203DF7C(FieldSystem *fieldSystem) {
 }
 
 BOOL sub_0203DF8C(FieldSystem *fieldSystem) {
-    return fieldSystem->processManager->parent != NULL && fieldSystem->unk6C;
+    return fieldSystem->processManager->parent != NULL && fieldSystem->runningFieldMap;
 }
 
 BOOL sub_0203DFA4(FieldSystem *fieldSystem) {
@@ -198,7 +198,7 @@ static BOOL FieldSystem_Main(FieldSystem *fieldSystem) {
 }
 
 BOOL FieldSystem_IsPlayerMovementAllowed(FieldSystem *fieldSystem) {
-    return !fieldSystem->processManager->isPaused && fieldSystem->unk6C && !FieldSystem_TaskIsRunning(fieldSystem);
+    return !fieldSystem->processManager->isPaused && fieldSystem->runningFieldMap && !FieldSystem_TaskIsRunning(fieldSystem);
 }
 
 void FieldSystem_Control(FieldSystem *fieldSystem) {

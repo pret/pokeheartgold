@@ -323,7 +323,7 @@ static void sub_02053284(FieldSystem *fieldSystem) {
     SaveVarsFlags *varsFlags;
 
     sub_02052F30(fieldSystem);
-    
+
     GF_ASSERT(fieldSystem->unk60 == 0);
 
     MapMatrix_Load(fieldSystem->location->mapId, fieldSystem->mapMatrix);
@@ -337,8 +337,8 @@ static void sub_02053284(FieldSystem *fieldSystem) {
     GF_ASSERT(fieldSystem->mapLoadType < 6);
 
     fieldSystem->mapLoadMode = &sMapLoadModes[fieldSystem->mapLoadType];
-    fieldSystem->unk64 = fieldSystem->mapLoadMode->skipMapAttributes;
-    fieldSystem->unk18 = fieldSystem->mapLoadMode->fieldBottomScreen;
+    fieldSystem->skipMapAttributes = fieldSystem->mapLoadMode->skipMapAttributes;
+    fieldSystem->bottomScreenType = fieldSystem->mapLoadMode->fieldBottomScreen;
     sub_0205489C(&fieldSystem->unk60, fieldSystem->mapLoadMode->useSimpleTerrainCollisions);
     if (fieldSystem->mapLoadMode->useSeparateTerrainAttributes) {
         TerrainAttributes_New(fieldSystem, fieldSystem->mapLoadMode->separateTerrainAttributesBlockCount);
@@ -348,11 +348,11 @@ static void sub_02053284(FieldSystem *fieldSystem) {
 static void sub_02053324(FieldSystem *fieldSystem) {
     GF_ASSERT(fieldSystem->unk60 != 0);
     fieldSystem->unk60 = 0;
-    fieldSystem->unk18 = 7;
+    fieldSystem->bottomScreenType = 7;
     if (fieldSystem->mapLoadMode->useSeparateTerrainAttributes) {
         TerrainAttributes_Free(fieldSystem);
     }
-    fieldSystem->mapLoadMode = NULL;
+    fieldSystem->mapLoadMode = 0;
 }
 
 static void _CopyPlayerPosToLocationWorkFacingSouth(Location *location, FieldSystem *fieldSystem) {

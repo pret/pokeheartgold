@@ -221,7 +221,7 @@ BOOL FieldMap_Init(OverlayManager *man, int *state) {
     case FIELD_MAP_INIT_STATE_DONE:
         if (FieldSystem_IsBottomScreenRunningDummy(fieldSystem)) {
             ret = TRUE;
-            fieldSystem->unk6C = TRUE; // runningFieldMap
+            fieldSystem->runningFieldMap = TRUE;
         }
         if (ov01_021E662C() == FALSE) {
             SysTask_CreateOnMainQueue(Task_AntipiracyMath, NULL, 0x3E8);
@@ -243,7 +243,7 @@ BOOL FieldMap_Main(OverlayManager *man, int *state) {
 
     ov01_021E5FC0(fieldSystem, fieldSystem->unkBC);
 
-    if (fieldSystem->unk6C != FALSE) return FALSE;
+    if (fieldSystem->runningFieldMap) return FALSE;
     return TRUE;
 }
 
@@ -660,7 +660,7 @@ static void InitGraphicsAndManagers(FieldSystem* fieldSystem) {
 }
 
 static void FieldSystem_InitMapLoadManager(FieldSystem* fieldSystem) {
-    fieldSystem->mapLoadManager = MapLoadManager_New(fieldSystem->mapMatrix, fieldSystem->areaDataManager, fieldSystem->unkC0, fieldSystem->mapPropAnimationManager, fieldSystem->unkCC, fieldSystem->unk64, fieldSystem->saveData);
+    fieldSystem->mapLoadManager = MapLoadManager_New(fieldSystem->mapMatrix, fieldSystem->areaDataManager, fieldSystem->unkC0, fieldSystem->mapPropAnimationManager, fieldSystem->unkCC, fieldSystem->skipMapAttributes, fieldSystem->saveData);
     fieldSystem->dynamicTerrainHeightManager = DynamicTerrainHeightManager_New(8, HEAP_ID_FIELD1);
     MapLoadManager_InitialLoad(fieldSystem->mapLoadManager, fieldSystem->location->x, fieldSystem->location->y);
 }
