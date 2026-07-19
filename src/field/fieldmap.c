@@ -1,4 +1,5 @@
 #include "field/fieldmap.h"
+#include "field/dynamic_terrain_height.h"
 #include "field/field_control.h"
 #include "field/hblank_system.h"
 #include "field/overlay_01_021E66E4.h"
@@ -114,10 +115,6 @@ void ov01_021FBA3C(void *unk34, void *unkC0, FieldSystemUnkSub54 *unk54, void *u
 void *ov01_021F3638(enum HeapID heapID, void *unkC0); // MapPropManager_New
 void ov01_021F3660(void *unk9C);
 void ov01_021F3C9C(void *unk9C, void *unk34);  // MapPropManager_Render2
-
-// overlay_01_021FB368 (FieldSystemUnkSub98 == DynamicTerrainHeightManager?)
-FieldSystemUnkSub98 *ov01_021FB3A4(const u8 platesCount, enum HeapID heapID); // DynamicTerrainHeightManager_New
-void ov01_021FB418(FieldSystemUnkSub98 *unkSub98); // DynamicTerrainHeightManager_Free
 
 // overlay_01_021E8744 (map_prop_animation_manager?) (FieldSystemUnkSub54 == MapPropAnimationManager?) (FieldSystemUnkSub58 == MapPropOneShotAnimationManager?)
 FieldSystemUnkSub54 *ov01_021E87E4(NARC *narc, FieldSystemUnkSubC8 *unkSubC8); // FieldSystemUnkSub54_Init // narc == animeListNARC?
@@ -291,7 +288,7 @@ BOOL FieldMap_Exit(OverlayManager *man, int *state) {
         fieldSystem->location->y = PlayerAvatar_GetZCoord(fieldSystem->playerAvatar);
         fieldSystem->location->direction = PlayerAvatar_GetFacingDirection(fieldSystem->playerAvatar);
         
-        ov01_021FB418(fieldSystem->unk98);
+        DynamicTerrainHeightManager_Free(fieldSystem->dynamicTerrainHeightManager);
 
         GF_ASSERT(fieldSystem->unk54 != NULL); // mapPropAnimMan
         MapLoadManager_End(fieldSystem->mapLoadManager);
@@ -685,7 +682,7 @@ static void InitGraphicsAndManagers(FieldSystem* fieldSystem) {
 
 static void FieldSystem_InitMapLoadManager(FieldSystem* fieldSystem) {
     fieldSystem->mapLoadManager = MapLoadManager_New(fieldSystem->mapMatrix, fieldSystem->unk34, fieldSystem->unkC0, fieldSystem->unk54, fieldSystem->unkCC, fieldSystem->unk64, fieldSystem->saveData);
-    fieldSystem->unk98 = ov01_021FB3A4(8, HEAP_ID_FIELD1);
+    fieldSystem->dynamicTerrainHeightManager = DynamicTerrainHeightManager_New(8, HEAP_ID_FIELD1);
     MapLoadManager_InitialLoad(fieldSystem->mapLoadManager, fieldSystem->location->x, fieldSystem->location->y);
 }
 

@@ -3,6 +3,7 @@
 
 #include "field/area_light.h"
 #include "field/draw_map_name.h"
+#include "field/dynamic_terrain_height.h"
 #include "field/hblank_system.h"
 #include "field/overlay_01_021E66E4.h"
 #include "field/model_attributes.h"
@@ -118,10 +119,6 @@ typedef struct FieldSystemUnkSub58 {
     u8 unk0[0x380];
 } FieldSystemUnkSub58;
 
-typedef struct FieldSystemUnkSub98 {
-    u8 unk0[0x8];
-} FieldSystemUnkSub98;
-
 typedef struct FieldSystemUnkSub108 {
     u32 personality;
     u16 species;
@@ -220,7 +217,7 @@ struct FieldSystem {
     u8 filler_88[0x8];
     int unk90;
     BagCursor *bagCursor;
-    FieldSystemUnkSub98 *unk98;
+    DynamicTerrainHeightManager *dynamicTerrainHeightManager;
     void *unk9C;
     FrontierFieldSystem *frontierFsys;
     Save_LinkBattleRuleset *linkBattleRuleset;
