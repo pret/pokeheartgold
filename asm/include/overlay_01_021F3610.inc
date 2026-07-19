@@ -25,7 +25,7 @@
 .public ov01_021EA804
 .public ov01_021EA81C
 .public ov01_021EA9B0
-.public ov01_021F3638
+.public MapPropManager_New
 .public ov01_021F3660
 .public ov01_021F36AC
 .public ov01_021F36DC
@@ -44,7 +44,7 @@
 .public ov01_021F3B44
 .public ov01_021F3B4C
 .public ov01_021F3B60
-.public ov01_021F3C0C
+.public MapPropManager_LoadOne
 .public ov01_021F3C9C
 .public ov01_021FB9F4
 .public ov01_022040F8

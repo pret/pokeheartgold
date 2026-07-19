@@ -7,6 +7,7 @@
 #include "field/dynamic_terrain_height.h"
 #include "field/hblank_system.h"
 #include "field/overlay_01_021E66E4.h"
+#include "field/map_prop.h"
 #include "field/map_prop_animation.h"
 #include "field/model_attributes.h"
 #include "overlay_01_021EA824.h" // replace with field/fog.h
@@ -212,7 +213,7 @@ struct FieldSystem {
     int unk90;
     BagCursor *bagCursor;
     DynamicTerrainHeightManager *dynamicTerrainHeightManager;
-    void *unk9C;
+    MapPropManager *mapPropManager;
     FrontierFieldSystem *frontierFsys;
     Save_LinkBattleRuleset *linkBattleRuleset;
     UnkStruct_02092BB8 *unkA8;

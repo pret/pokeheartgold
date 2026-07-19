@@ -28,15 +28,14 @@ UnkStruct_FieldSysC0_SubC *Field3dObjectList_GetRenderObjectByID(UnkStruct_Field
 
 void ov01_02204084(void *unkC0);
 void *ov01_022041C4(enum HeapID heapID);
+void ov01_02204278(FieldSystemUnkSubC8 *unkSubC8);
+void ov01_02204350(FieldSystemUnkSubC8 *unkSubC8);
+void ov01_022043D8(FieldSystemUnkSubC8 *unkSubC8);
+void ov01_02204424(FieldSystemUnkSubC8 *unkSubC8);
+void *ov01_0220460C(FieldSystemUnkSubC8 *unkSubC8);
 void ov01_02204634(void *unkCC);
 void *ov01_02204744(enum HeapID heapID);
 void ov01_02204764(void *unk104);
 void ov01_022047DC(void *unk104);
-
-
-void ov01_02204278(FieldSystemUnkSubC8 *unkSubC8);
-void ov01_022043D8(FieldSystemUnkSubC8 *unkSubC8);
-void ov01_02204424(FieldSystemUnkSubC8 *unkSubC8);
-void *ov01_0220460C(FieldSystemUnkSubC8 *unkSubC8);
 
 #endif // POKEHEARTGOLD_FIELD_OVERLAY_01_02204004_H

@@ -92,7 +92,7 @@
 .public ov01_021F3B3C
 .public ov01_021F3B44
 .public ov01_021F3B4C
-.public ov01_021F3C0C
+.public MapPropManager_LoadOne
 .public MapLoadManager_TrackTarget
 .public ov01_021F6304
 .public ov01_021F72DC

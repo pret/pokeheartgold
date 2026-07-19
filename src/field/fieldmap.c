@@ -102,16 +102,7 @@ static void ov01_021E66D8(void);
 static void ov01_021E66DC(void);
 static void ov01_021E66E0(void);
 
-// TODO: Put in relevant headers
-
-// overlay_01_021F3610 (map_prop_manager?) (fieldSystem->unk9C == mapPropManager?)
-void *ov01_021F3638(enum HeapID heapID, void *unkC0); // MapPropManager_New
-void ov01_021F3660(void *unk9C);
-void ov01_021F3C9C(void *unk9C, AreaDataManager *areaDataManager);  // MapPropManager_Render2
-
-// overlay_01_02204004
-void ov01_02204350(FieldSystemUnkSubC8 *unkSubC8); // MapPropAnimationManager_AdvanceAnimations??
-
+// TODO: Put in relevant header
 int CARD_SpiWaitGetStatus();
 
 void fieldmap(void *param0) {
@@ -204,7 +195,7 @@ BOOL FieldMap_Init(OverlayManager *man, int *state) {
         InitGraphicsAndManagers(fieldSystem);
         AreaDataManager_Load(fieldSystem->areaDataManager, fieldSystem->unkC0, fieldSystem->mapPropAnimationManager, fieldSystem->unkCC, fieldSystem->unk104);
         
-        fieldSystem->unk9C = ov01_021F3638(HEAP_ID_FIELD1, fieldSystem->unkC0);
+        fieldSystem->mapPropManager = MapPropManager_New(HEAP_ID_FIELD1, fieldSystem->unkC0);
         
         FieldSystem_InitMapLoadManager(fieldSystem);
         ov01_021E64A4(fieldSystem);
@@ -317,7 +308,7 @@ BOOL FieldMap_Exit(OverlayManager *man, int *state) {
             SysTask_CreateOnMainQueue(sub_0203E348, NULL, 0x4DD);
         }
         
-        ov01_021F3660(fieldSystem->unk9C);
+        ov01_021F3660(fieldSystem->mapPropManager);
         (*state)++;
         break;
     case 1:
@@ -587,7 +578,7 @@ static void ov01_021E6220(FieldSystem* fieldSystem) {
 
     MapLoadManager_RenderLoadedMaps(fieldSystem->mapLoadManager, fieldSystem->modelAttributes);
 
-    ov01_021F3C9C(fieldSystem->unk9C, fieldSystem->areaDataManager);
+    ov01_021F3C9C(fieldSystem->mapPropManager, fieldSystem->areaDataManager);
 
     camAngle = Camera_GetAngle(fieldSystem->camera);
     fx64 temp_ret = (fieldSystem->unk11C << FX32_SHIFT) * (fx64)(FX_CosIdx((u16)(-camAngle.x)));

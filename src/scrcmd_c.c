@@ -7,6 +7,7 @@
 
 #include "field/legend_cutscene_camera.h"
 #include "field/map_load_manager.h"
+#include "field/map_prop.h"
 #include "field/signpost.h"
 #include "frontier/frontier.h"
 #include "msgdata/msg.naix"
@@ -4777,7 +4778,7 @@ BOOL ScrCmd_PlaceStarterBallsInElmsLab(ScriptContext *ctx) {
         n = 3;
     }
     for (i = 0; i < n; i++) {
-        ov01_021F3C0C(fieldSystem->unk9C, 0x8D, &ballCoords[i], 0, fieldSystem->mapPropAnimationManager);
+        MapPropManager_LoadOne(fieldSystem->mapPropManager, 0x8D, &ballCoords[i], 0, fieldSystem->mapPropAnimationManager);
     }
     return FALSE;
 }

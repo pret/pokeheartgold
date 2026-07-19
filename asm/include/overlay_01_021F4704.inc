@@ -39,7 +39,7 @@
 .public _s32_div_f
 .public _u32_div_f
 .public ov01_021EA3B0
-.public ov01_021F3638
+.public MapPropManager_New
 .public ov01_021F3660
 .public ov01_021F36AC
 .public ov01_021F3744

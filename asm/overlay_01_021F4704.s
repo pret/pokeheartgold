@@ -280,7 +280,7 @@ _021F4894:
 	add r1, #0xbc
 	ldr r1, [r1]
 	mov r0, #4
-	bl ov01_021F3638
+	bl MapPropManager_New
 	add r1, r5, r4
 	add r1, #0x90
 	ldr r2, [r1]
@@ -383,7 +383,7 @@ _021F4982:
 	add r1, #0xbc
 	ldr r1, [r1]
 	mov r0, #4
-	bl ov01_021F3638
+	bl MapPropManager_New
 	add r1, r5, r4
 	add r1, #0x90
 	ldr r2, [r1]
