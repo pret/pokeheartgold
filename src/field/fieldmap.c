@@ -25,6 +25,8 @@
 #include "overlay_01_022053EC.h"
 #include "overlay_2/overlay_02_02248728.h"
 
+#include "constants/field/map_load.h"
+
 #include "dsprot.h"
 #include "global.h"
 #include "system.h"
@@ -698,14 +700,14 @@ static void ov01_021E64A4(FieldSystem* fieldSystem) {
     ov01_021F1390(fieldSystem->fieldEffectManager, HEAP_ID_FIELD1, 32, 32, 32, 32, 0x500 * (32 / 2), 0x80 * (32 / 2), 0x800 * 32);
     
     fieldSystem->unk4->unk18 = sub_02055680(fieldSystem, HEAP_ID_FIELD1);
-    if (fieldSystem->unk70 == 2) { // fieldSystem->mapLoadType == MAP_LOAD_TYPE_UNION?
+    if (fieldSystem->mapLoadType == MAP_LOAD_TYPE_UNION) {
         sub_0205F5F8(fieldSystem->mapObjectManager, FALSE); //  MapObjectMan_SetEndMovement
     }
     
     FieldEffectManager_InitRenderers(fieldSystem->fieldEffectManager, ov01_02208BFC);
     
     int v0 = 10;
-    if (fieldSystem->unk70 == 2) { // MAP_LOAD_TYPE_UNION?
+    if (fieldSystem->mapLoadType == MAP_LOAD_TYPE_UNION) {
         v0 = 5;
     }
     

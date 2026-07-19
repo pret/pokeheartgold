@@ -201,7 +201,7 @@ struct FieldSystem {
     int unk64;
     Signpost *signpost;
     BOOL unk6C;
-    int unk70;
+    int mapLoadType;
     const struct UnkStruct_020FC5CC *unk74;
     u16 unk78;
     u16 lastFacingDirection;   // 0x7A, used to determine whether the following field should be incremented

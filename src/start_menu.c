@@ -2,6 +2,7 @@
 
 #include "global.h"
 
+#include "constants/field/map_load.h"
 #include "constants/map_sections.h"
 #include "constants/sndseq.h"
 #include "constants/start_menu_icons.h"
@@ -263,9 +264,9 @@ void sub_0203BD64(FieldSystem *fieldSystem) {
         startMenu->inhibitIconFlags = FieldSystem_GetStartMenuButtonInhibitFlags_PalPark(fieldSystem);
     } else if (FieldSystem_MapIsBattleTowerMultiPartnerSelectRoom(fieldSystem) == TRUE) {
         startMenu->inhibitIconFlags = FieldSystem_GetStartMenuButtonInhibitFlags_BattleTowerMultiPartnerSelectRoom(fieldSystem);
-    } else if (fieldSystem->unk70 == 3) {
+    } else if (fieldSystem->mapLoadType == MAP_LOAD_TYPE_COLOSSEUM) {
         startMenu->inhibitIconFlags = sub_0203BEE8(fieldSystem);
-    } else if (fieldSystem->unk70 == 2) {
+    } else if (fieldSystem->mapLoadType == MAP_LOAD_TYPE_UNION) {
         startMenu->inhibitIconFlags = sub_0203BEE0(fieldSystem);
         startMenu->unk_350 = TRUE;
     } else {

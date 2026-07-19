@@ -1,6 +1,7 @@
 #include "field_system.h"
 
 #include "constants/maps.h"
+#include "constants/field/map_load.h"
 
 #include "field_warp_tasks.h"
 #include "main.h"
@@ -210,7 +211,7 @@ void FieldSystem_Control(FieldSystem *fieldSystem) {
         FieldInput_Update(&fieldInput, fieldSystem, gSystem.newKeys, gSystem.heldKeys);
     }
 
-    int loadType = fieldSystem->unk70;
+    int loadType = fieldSystem->mapLoadType;
 
     if (fieldSystem->location->mapId == MAP_BATTLE_TOWER) {
         loadType = 0;

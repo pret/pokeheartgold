@@ -1,6 +1,7 @@
 #include "field_warp_tasks.h"
 
 #include "constants/maps.h"
+#include "constants/field/map_load.h"
 
 #include "field_bgm.h"
 #include "field_system_rtc_weather.h"
@@ -171,11 +172,11 @@ static const struct UnkStruct_020FC5CC _020FC5CC[] = {
 };
 
 static void sub_02052F30(FieldSystem *fieldSystem) {
-    BOOL r2 = FALSE;
+    BOOL battleTower = FALSE;
 
     switch (fieldSystem->location->mapId) {
     case MAP_SAFARI_ZONE_ENTRANCE_EXTERIOR:
-        fieldSystem->unk70 = 1;
+        fieldSystem->mapLoadType = MAP_LOAD_TYPE_SAFARI;
         return;
     case MAP_BATTLE_TOWER:
     case MAP_BATTLE_TOWER_ELEVATOR:
@@ -184,17 +185,17 @@ static void sub_02052F30(FieldSystem *fieldSystem) {
     case MAP_BATTLE_TOWER_UNUSED_3:
     case MAP_BATTLE_TOWER_UNUSED_4:
     case MAP_BATTLE_TOWER_PARTNER_ROOM:
-        r2 = TRUE;
+        battleTower = TRUE;
         break;
     }
-    if (fieldSystem->unk70 == 1) {
-        fieldSystem->unk70 = 0;
+    if (fieldSystem->mapLoadType == MAP_LOAD_TYPE_SAFARI) {
+        fieldSystem->mapLoadType = MAP_LOAD_TYPE_OVERWORLD;
     }
-    if (!r2 && fieldSystem->unk70 == 4) {
-        fieldSystem->unk70 = 0;
+    if (!battleTower && fieldSystem->mapLoadType == MAP_LOAD_TYPE_BATTLE_TOWER) {
+        fieldSystem->mapLoadType = MAP_LOAD_TYPE_OVERWORLD;
     }
-    if (r2) {
-        fieldSystem->unk70 = 4;
+    if (battleTower) {
+        fieldSystem->mapLoadType = MAP_LOAD_TYPE_BATTLE_TOWER;
     }
 }
 
@@ -218,7 +219,7 @@ static void sub_02052F94(FieldSystem *fieldSystem, Location *location) {
 }
 
 void sub_02053018(FieldSystem *fieldSystem) {
-    GF_ASSERT(fieldSystem->unk70 < 6);
+    GF_ASSERT(fieldSystem->mapLoadType < 6);
     gSystem.screensFlipped = fieldSystem->unk74->unk0_0C;
 }
 
@@ -330,8 +331,8 @@ static void sub_02053284(FieldSystem *fieldSystem) {
     }
     SetLakeOfRageWaterLevel(fieldSystem->mapMatrix, sub_02066C74(varsFlags, 1));
     PlaceSafariZoneAreas(fieldSystem->mapMatrix, fieldSystem->saveData);
-    GF_ASSERT(fieldSystem->unk70 < 6);
-    fieldSystem->unk74 = &_020FC5CC[fieldSystem->unk70];
+    GF_ASSERT(fieldSystem->mapLoadType < 6);
+    fieldSystem->unk74 = &_020FC5CC[fieldSystem->mapLoadType];
     fieldSystem->unk64 = fieldSystem->unk74->unk0_04;
     fieldSystem->unk18 = fieldSystem->unk74->unk0_00;
     sub_0205489C(&fieldSystem->unk60, fieldSystem->unk74->unk0_08);
@@ -407,7 +408,7 @@ static BOOL FieldTask_NewGame(TaskManager *taskManager) {
 }
 
 TaskManager *CallFieldTask_NewGame(FieldSystem *fieldSystem) {
-    fieldSystem->unk70 = 0;
+    fieldSystem->mapLoadType = 0;
     RunInitScript(fieldSystem);
     return FieldSystem_CreateTask(fieldSystem, FieldTask_NewGame, NULL);
 }
@@ -451,7 +452,7 @@ static BOOL FieldTask_ContinueGame_Normal(TaskManager *taskManager) {
 }
 
 TaskManager *CallFieldTask_ContinueGame_Normal(FieldSystem *fieldSystem) {
-    fieldSystem->unk70 = 0;
+    fieldSystem->mapLoadType = 0;
     return FieldSystem_CreateTask(fieldSystem, FieldTask_ContinueGame_Normal, NULL);
 }
 
@@ -513,7 +514,7 @@ TaskManager *CallFieldTask_ContinueGame_CommError(FieldSystem *fieldSystem) {
     env = Heap_AllocAtEnd(HEAP_ID_FIELD2, sizeof(struct ErrorContinueEnv));
     env->state = 0;
     InitLocation(&env->location, MAP_UNION, -1, 8, 14, DIR_NORTH);
-    fieldSystem->unk70 = 2;
+    fieldSystem->mapLoadType = MAP_LOAD_TYPE_UNION;
     return FieldSystem_CreateTask(fieldSystem, FieldTask_ContinueGame_CommError, env);
 }
 
@@ -1003,7 +1004,7 @@ void sub_02053F14(FieldSystem *fieldSystem) {
     env->location = *location;
     sub_02059E04(fieldSystem);
     sub_0205AD3C(fieldSystem->unk84);
-    fieldSystem->unk70 = 0;
+    fieldSystem->mapLoadType = 0;
     FieldSystem_CreateTask(fieldSystem, sub_02053E5C, env);
     fieldSystem->unk80 = NULL;
 }
@@ -1063,7 +1064,7 @@ void sub_02054030(TaskManager *taskManager) {
     InitLocation(&env->location, MAP_UNION, -1, 8, 14, DIR_NORTH);
     fieldSystem->unk80 = sub_02059DB0(fieldSystem);
     fieldSystem->unk84 = sub_0205AC88(fieldSystem->unk80);
-    fieldSystem->unk70 = 2;
+    fieldSystem->mapLoadType = MAP_LOAD_TYPE_UNION;
     TaskManager_Call(taskManager, sub_02053F70, env);
 }
 
@@ -1102,7 +1103,7 @@ void sub_0205412C(TaskManager *taskManager, u32 mapId, int warpId, int x, int y,
     struct UnkTaskEnv_02053688 *env;
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     _CopyPlayerPosToLocationWorkFacingSouth(LocalFieldData_GetDynamicWarp(Save_LocalFieldData_Get(fieldSystem->saveData)), fieldSystem);
-    fieldSystem->unk70 = 3;
+    fieldSystem->mapLoadType = MAP_LOAD_TYPE_COLOSSEUM;
     env = Heap_AllocAtEnd(HEAP_ID_FIELD2, sizeof(struct UnkTaskEnv_02053688));
     {
         Location location = {
@@ -1121,6 +1122,6 @@ void sub_0205412C(TaskManager *taskManager, u32 mapId, int warpId, int x, int y,
 void sub_02054190(TaskManager *taskManager) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     Location *location = LocalFieldData_GetDynamicWarp(Save_LocalFieldData_Get(fieldSystem->saveData));
-    fieldSystem->unk70 = 0;
+    fieldSystem->mapLoadType = 0;
     sub_02053710(fieldSystem->taskman, location);
 }

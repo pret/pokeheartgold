@@ -256,8 +256,8 @@ static int ViewPhotoFieldTask_LoadPhotoAndBeginRender(FieldSystem *fieldSystem, 
     viewPhoto->numMons = viewPhoto->pPhoto.subjectSpriteId != 0 ? 2 : viewPhoto->pPhoto.numMons;
     viewPhoto->input = VIEW_PHOTO_INPUT_NOTHING;
     taskData->parent = viewPhoto;
-    viewPhoto->fieldSystemUnk70Bak = fieldSystem->unk70;
-    fieldSystem->unk70 = 5;
+    viewPhoto->mapLoadType = fieldSystem->mapLoadType;
+    fieldSystem->mapLoadType = 5;
     fieldSystem->viewPhotoTask = viewPhoto;
     TaskManager_Call(fieldSystem->taskman, FieldTask_DoViewPhoto, taskData);
     return VIEW_PHOTO_STATE_FADE_IN;
@@ -277,7 +277,7 @@ static int ViewPhotoFieldTask_Cleanup(FieldSystem *fieldSystem, TaskManager *tas
         ++viewPhoto->substate;
         break;
     case 1:
-        fieldSystem->unk70 = viewPhoto->fieldSystemUnk70Bak;
+        fieldSystem->mapLoadType = viewPhoto->mapLoadType;
         fieldSystem->viewPhotoTask = NULL;
         viewPhoto->substate = 0;
         switch (viewPhoto->input) {
