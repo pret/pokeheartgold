@@ -140,10 +140,10 @@ BOOL FieldMap_Init(OverlayManager *man, int *state) {
         
         offset += (0x6B * (DSProt_DetectNotEmulator(&ov01_021E66D8) == FALSE));
 
-        sub_02053018(fieldSystem); // FieldMapChange_Set3DDisplay
+        FieldMapChange_Set3DDisplay(fieldSystem);
         fieldSystem->unk11C = 8;
 
-        if (fieldSystem->unk74->unk0_14) { // fieldSystem->mapLoadMode->loadExtOverlay
+        if (fieldSystem->mapLoadMode->loadExtOverlay) {
             HandleLoadOverlay(FS_OVERLAY_ID(OVY_2), OVY_LOAD_ASYNC);
 
             switch (FieldSystem_HasNoGymmick(fieldSystem)) { // Do we really want to continue calling this 'Gymmick'?
@@ -161,7 +161,7 @@ BOOL FieldMap_Init(OverlayManager *man, int *state) {
 
         offset += DSProt_DetectFlashcart(&ov01_021E66B8) * 0x3A1;
 
-        Heap_Create(HEAP_ID_3, HEAP_ID_FIELD1, fieldSystem->unk74->unk_4);
+        Heap_Create(HEAP_ID_3, HEAP_ID_FIELD1, fieldSystem->mapLoadMode->unk_4);
         GF_ASSERT(fieldSystem->unk4 == NULL);
 
         FS_UnloadOverlay(MI_PROCESSOR_ARM9, FS_OVERLAY_ID(ds_protect));
@@ -350,7 +350,7 @@ BOOL FieldMap_Exit(OverlayManager *man, int *state) {
 
             Heap_Destroy(HEAP_ID_FIELD1);
 
-            if (fieldSystem->unk74->unk0_14) {
+            if (fieldSystem->mapLoadMode->loadExtOverlay) {
                 UnloadOverlayByID(FS_OVERLAY_ID(OVY_2));
                 UnloadOverlayByID(FS_OVERLAY_ID(OVY_4));
                 UnloadOverlayByID(FS_OVERLAY_ID(OVY_3));

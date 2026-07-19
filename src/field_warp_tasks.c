@@ -102,69 +102,69 @@ static BOOL sub_02053E5C(TaskManager *taskManager);
 static BOOL sub_02053F70(TaskManager *taskManager);
 static BOOL sub_020540A4(TaskManager *taskManager);
 
-static const struct UnkStruct_020FC5CC _020FC5CC[] = {
-    {   .unk0_00 = 1,
-        .unk0_04 = 0,
-        .unk0_08 = 0,
-        .unk0_0C = 0,
-        .unk0_10 = 0,
-        .unk0_14 = 1,
-        .unk0_18 = 0,
+static const struct MapLoadMode sMapLoadModes[] = {
+    {   .fieldBottomScreen = 1,
+        .skipMapAttributes = FALSE,
+        .useSimpleTerrainCollisions = FALSE,
+        .switchScreens = FALSE,
+        .useSeparateTerrainAttributes = FALSE,
+        .loadExtOverlay = TRUE,
+        .separateTerrainAttributesBlockCount = 0,
         .unk4 = 0,
         .unk5 = 64,
         .unk6 = 12
     },
-    {   .unk0_00 = 1,
-        .unk0_04 = 2,
-        .unk0_08 = 0,
-        .unk0_0C = 0,
-        .unk0_10 = 0,
-        .unk0_14 = 1,
-        .unk0_18 = 0,
+    {   .fieldBottomScreen = 1,
+        .skipMapAttributes = 2,
+        .useSimpleTerrainCollisions = FALSE,
+        .switchScreens = FALSE,
+        .useSeparateTerrainAttributes = FALSE,
+        .loadExtOverlay = TRUE,
+        .separateTerrainAttributesBlockCount = 0,
         .unk4 = 0,
         .unk5 = 64,
         .unk6 = 12
     },
-    {   .unk0_00 = 3,
-        .unk0_04 = 0,
-        .unk0_08 = 0,
-        .unk0_0C = 0,
-        .unk0_10 = 0,
-        .unk0_14 = 1,
-        .unk0_18 = 0,
+    {   .fieldBottomScreen = 3,
+        .skipMapAttributes = FALSE,
+        .useSimpleTerrainCollisions = FALSE,
+        .switchScreens = FALSE,
+        .useSeparateTerrainAttributes = FALSE,
+        .loadExtOverlay = TRUE,
+        .separateTerrainAttributesBlockCount = 0,
         .unk4 = 0,
         .unk5 = 64,
         .unk6 = 12
     },
-    {   .unk0_00 = 1,
-        .unk0_04 = 1,
-        .unk0_08 = 1,
-        .unk0_0C = 0,
-        .unk0_10 = 1,
-        .unk0_14 = 1,
-        .unk0_18 = 1,
+    {   .fieldBottomScreen = 1,
+        .skipMapAttributes = TRUE,
+        .useSimpleTerrainCollisions = TRUE,
+        .switchScreens = FALSE,
+        .useSeparateTerrainAttributes = TRUE,
+        .loadExtOverlay = TRUE,
+        .separateTerrainAttributesBlockCount = 1,
         .unk4 = 0,
         .unk5 = 64,
         .unk6 = 12
     },
-    {   .unk0_00 = 1,
-        .unk0_04 = 1,
-        .unk0_08 = 1,
-        .unk0_0C = 0,
-        .unk0_10 = 1,
-        .unk0_14 = 1,
-        .unk0_18 = 1,
+    {   .fieldBottomScreen = 1,
+        .skipMapAttributes = TRUE,
+        .useSimpleTerrainCollisions = TRUE,
+        .switchScreens = FALSE,
+        .useSeparateTerrainAttributes = TRUE,
+        .loadExtOverlay = TRUE,
+        .separateTerrainAttributesBlockCount = 1,
         .unk4 = 0,
         .unk5 = 0,
         .unk6 = 10
     },
-    {   .unk0_00 = 6,
-        .unk0_04 = 0,
-        .unk0_08 = 0,
-        .unk0_0C = 0,
-        .unk0_10 = 0,
-        .unk0_14 = 1,
-        .unk0_18 = 0,
+    {   .fieldBottomScreen = 6,
+        .skipMapAttributes = FALSE,
+        .useSimpleTerrainCollisions = FALSE,
+        .switchScreens = FALSE,
+        .useSeparateTerrainAttributes = FALSE,
+        .loadExtOverlay = TRUE,
+        .separateTerrainAttributesBlockCount = 0,
         .unk4 = 0,
         .unk5 = 64,
         .unk6 = 12
@@ -218,9 +218,9 @@ static void sub_02052F94(FieldSystem *fieldSystem, Location *location) {
     }
 }
 
-void sub_02053018(FieldSystem *fieldSystem) {
-    GF_ASSERT(fieldSystem->mapLoadType < 6);
-    gSystem.screensFlipped = fieldSystem->unk74->unk0_0C;
+void FieldMapChange_Set3DDisplay(FieldSystem *fieldSystem) {
+    GF_ASSERT(fieldSystem->mapLoadType < MAP_LOAD_TYPE_MAX);
+    gSystem.screensFlipped = fieldSystem->mapLoadMode->switchScreens;
 }
 
 void sub_02053038(FieldSystem *fieldSystem, BOOL isConnection) {
@@ -323,7 +323,9 @@ static void sub_02053284(FieldSystem *fieldSystem) {
     SaveVarsFlags *varsFlags;
 
     sub_02052F30(fieldSystem);
+    
     GF_ASSERT(fieldSystem->unk60 == 0);
+
     MapMatrix_Load(fieldSystem->location->mapId, fieldSystem->mapMatrix);
     varsFlags = Save_VarsFlags_Get(fieldSystem->saveData);
     if (sub_02066C74(varsFlags, 0)) {
@@ -331,13 +333,15 @@ static void sub_02053284(FieldSystem *fieldSystem) {
     }
     SetLakeOfRageWaterLevel(fieldSystem->mapMatrix, sub_02066C74(varsFlags, 1));
     PlaceSafariZoneAreas(fieldSystem->mapMatrix, fieldSystem->saveData);
+
     GF_ASSERT(fieldSystem->mapLoadType < 6);
-    fieldSystem->unk74 = &_020FC5CC[fieldSystem->mapLoadType];
-    fieldSystem->unk64 = fieldSystem->unk74->unk0_04;
-    fieldSystem->unk18 = fieldSystem->unk74->unk0_00;
-    sub_0205489C(&fieldSystem->unk60, fieldSystem->unk74->unk0_08);
-    if (fieldSystem->unk74->unk0_10) {
-        TerrainAttributes_New(fieldSystem, fieldSystem->unk74->unk0_18);
+
+    fieldSystem->mapLoadMode = &sMapLoadModes[fieldSystem->mapLoadType];
+    fieldSystem->unk64 = fieldSystem->mapLoadMode->skipMapAttributes;
+    fieldSystem->unk18 = fieldSystem->mapLoadMode->fieldBottomScreen;
+    sub_0205489C(&fieldSystem->unk60, fieldSystem->mapLoadMode->useSimpleTerrainCollisions);
+    if (fieldSystem->mapLoadMode->useSeparateTerrainAttributes) {
+        TerrainAttributes_New(fieldSystem, fieldSystem->mapLoadMode->separateTerrainAttributesBlockCount);
     }
 }
 
@@ -345,10 +349,10 @@ static void sub_02053324(FieldSystem *fieldSystem) {
     GF_ASSERT(fieldSystem->unk60 != 0);
     fieldSystem->unk60 = 0;
     fieldSystem->unk18 = 7;
-    if (fieldSystem->unk74->unk0_10) {
+    if (fieldSystem->mapLoadMode->useSeparateTerrainAttributes) {
         TerrainAttributes_Free(fieldSystem);
     }
-    fieldSystem->unk74 = NULL;
+    fieldSystem->mapLoadMode = NULL;
 }
 
 static void _CopyPlayerPosToLocationWorkFacingSouth(Location *location, FieldSystem *fieldSystem) {

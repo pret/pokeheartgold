@@ -202,7 +202,7 @@ struct FieldSystem {
     Signpost *signpost;
     BOOL unk6C;
     int mapLoadType;
-    const struct UnkStruct_020FC5CC *unk74;
+    const struct MapLoadMode *mapLoadMode;
     u16 unk78;
     u16 lastFacingDirection;   // 0x7A, used to determine whether the following field should be incremented
     u16 reverseTurnFrameSteps; // 0x7C, turning back and forth in place will increase the effective encounter rate
