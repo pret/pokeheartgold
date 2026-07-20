@@ -3,6 +3,7 @@
 #include "constants/items.h"
 #include "constants/sndseq.h"
 
+#include "field/fieldmap.h"
 #include "fielddata/script/scr_seq/event_D24R0202.h"
 #include "fielddata/script/scr_seq/event_D24R0206.h"
 #include "msgdata/msg.naix"
@@ -827,7 +828,7 @@ static BOOL Task_RegisteredItem_GoToApp(TaskManager *taskManager) {
     switch (env->state) {
     case 0:
         MapObjectManager_PauseAllMovement(fieldSystem->mapObjectManager);
-        ov01_021E636C(0);
+        FieldMap_FadeScreen(0); // FADE_TYPE_BRIGHTNESS_OUT
         env->state = 1;
         break;
     case 1:
@@ -855,7 +856,7 @@ static BOOL Task_RegisteredItem_GoToApp(TaskManager *taskManager) {
     case 4:
         if (sub_020505C8(fieldSystem)) {
             MapObjectManager_PauseAllMovement(fieldSystem->mapObjectManager);
-            ov01_021E636C(1);
+            FieldMap_FadeScreen(1); // FADE_TYPE_BRIGHTNESS_IN
             env->state = 5;
         }
         break;

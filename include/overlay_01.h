@@ -34,7 +34,6 @@ typedef struct UnkStruct_field_021F4360 {
     // TODO: Fill this in
 } UnkStruct_field_021F4360;
 
-void ov01_021E636C(const u8 fadeType);
 void FieldSystem_DrawMapNameAnimation(FieldSystem *fieldSystem);
 void ov01_021F35C4(FieldSystem *fieldSystem, int a1, int *a2);
 u32 GetHoneySweetScentWorkSize(void);

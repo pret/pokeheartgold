@@ -297,7 +297,7 @@ BOOL FieldMap_Exit(OverlayManager *man, int *state) {
         sub_0205E4C8(fieldSystem->mapObjectManager);
         ov01_021F9250(fieldSystem->mapObjectManager);
 
-        sub_0205F55C(fieldSystem->mapObjectManager); // MapObjectManager_StopAllMovement
+        sub_0205F55C(fieldSystem->mapObjectManager);
         FieldEffectManager_Free(fieldSystem->fieldEffectManager);
 
         ov01_02205424(fieldSystem);
@@ -323,7 +323,7 @@ BOOL FieldMap_Exit(OverlayManager *man, int *state) {
             WeatherManager_Delete(fieldSystem->unk4->weatherManager);
             ov01_021FB610(fieldSystem->unk4->unk20);
             HBlankSystem_Delete(fieldSystem->unk4->hBlankSystem);
-            sub_020556A8(fieldSystem->unk4->unk18); // Some equivalent to BerryPatchManager_Free
+            sub_020556A8(fieldSystem->unk4->unk18);
             Fog_Free(&fieldSystem->fog);
             ModelAttributes_Free(&fieldSystem->modelAttributes);
             Thunk_OamManager_Free();
@@ -628,7 +628,7 @@ static void ov01_021E6364(FieldSystem* fieldSystem) {
     fieldSystem->unkBC = (8 | 1 | 2 | 4);
 }
 
-void ov01_021E636C(const u8 fadeType) { // FieldMap_FadeScreen
+void FieldMap_FadeScreen(const u8 fadeType) {
     if (fadeType == 1) { // FADE_TYPE_BRIGHTNESS_IN
         BeginNormalPaletteFade(0, 1, 1, 0, 6, 1, HEAP_ID_FIELD1); // FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_IN, FADE_TYPE_BRIGHTNESS_IN, COLOR_BLACK, 6, 1,
     } else if (fadeType == 0) { // FADE_TYPE_BRIGHTNESS_OUT

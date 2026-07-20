@@ -44,7 +44,7 @@
 .public FollowMon_IsActive
 .public NNSi_G3dModifyMatFlag
 .public MI_CpuFill8
-.public ov01_021E636C
+.public FieldMap_FadeScreen
 .public ov01_021E8BAC
 .public ov01_021E8DE8
 .public ov01_021E8E98

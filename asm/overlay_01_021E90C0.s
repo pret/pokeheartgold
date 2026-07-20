@@ -453,7 +453,7 @@ _021E941A:
 	add r7, r0, #0
 	bne _021E9442
 	mov r0, #1
-	bl ov01_021E636C
+	bl FieldMap_FadeScreen
 	mov r0, #6
 	str r0, [r6]
 	add sp, #0x58
@@ -484,7 +484,7 @@ _021E9442:
 	b _021E9486
 _021E9476:
 	mov r0, #1
-	bl ov01_021E636C
+	bl FieldMap_FadeScreen
 	mov r0, #6
 	str r0, [r6]
 	add sp, #0x58
@@ -950,7 +950,7 @@ _021E97FE:
 	b _021E98E0
 _021E9806:
 	mov r0, #1
-	bl ov01_021E636C
+	bl FieldMap_FadeScreen
 	ldr r0, [r6, #0x58]
 	ldr r3, _021E98EC ; =SEQ_SE_DP_ESUKA
 	mov r1, #2
@@ -1229,7 +1229,7 @@ _021E9A3C:
 	mov r1, #0x4a
 	bl MapObject_SetHeldMovement
 	mov r0, #0
-	bl ov01_021E636C
+	bl FieldMap_FadeScreen
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]

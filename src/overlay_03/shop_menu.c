@@ -23,6 +23,7 @@
 #include "unk_02091054.h"
 #include "unk_02092B04.h"
 
+#include "field/fieldmap.h"
 #include "field/map_prop_animation.h"
 #include "field/ov01_021E7FDC.h"
 #include "field/overlay_01_02204004.h"
@@ -62,7 +63,7 @@ static void ov03_02258560(MartData *data, BOOL arg1);
 static void ov03_022586BC(MartData *data, int flag);
 static u8 ov03_022586CC(MartData *data, u8 arg1, u8 arg2);
 static u8 ov03_022586E0(MartData *data);
-static void ov03_0225874C(FieldSystem *fieldSystem_unused, MartData *data);
+static void Mart_FadeOut(FieldSystem *fieldSystem_unused, MartData *data);
 static void ov03_02258764(TaskManager *taskManager);
 static u8 ov03_022587D4(FieldSystem *fieldSystem_unused, MartData *data_unused);
 static void MartData_RestoreBgPriorities(MartData *data);
@@ -384,7 +385,7 @@ BOOL Task_Mart(TaskManager *taskManager) {
         data->state = ov03_022586E0(data);
         break;
     case TASK_MART_22:
-        ov03_0225874C(fieldSystem, data); // Always sets state to 23.
+        Mart_FadeOut(fieldSystem, data); // Always sets state to 23.
         break;
     case TASK_MART_23:
         ov03_02258764(taskManager);
@@ -1524,8 +1525,8 @@ static u8 ov03_022586E0(MartData *data) {
     return TASK_MART_21;
 }
 
-static void ov03_0225874C(FieldSystem *fieldSystem_unused, MartData *data) {
-    ov01_021E636C(0);
+static void Mart_FadeOut(FieldSystem *fieldSystem_unused, MartData *data) {
+    FieldMap_FadeScreen(0); // FADE_TYPE_BRIGHTNESS_OUT
     data->state = TASK_MART_23;
 }
 
