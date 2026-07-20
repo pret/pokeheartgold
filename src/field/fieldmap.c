@@ -181,7 +181,7 @@ BOOL FieldMap_Init(OverlayManager *man, int *state) {
         OamManager_Init();
 
         GfGfx_SwapDisplay();
-        fieldSystem->bgConfig = BgConfig_Alloc(HEAP_ID_FIELD1); // Should probably BgConfig_New
+        fieldSystem->bgConfig = BgConfig_Alloc(HEAP_ID_FIELD1);
         BgConfig_Init(fieldSystem->bgConfig);
         FieldMessage_LoadTextPalettes(0, TRUE);
         TryStartMapScriptByType(fieldSystem, 4); // MAP_SCRIPT_ON_LOAD
@@ -234,7 +234,7 @@ BOOL FieldMap_Main(OverlayManager *man, int *state) {
     FieldSystem *fieldSystem = OverlayManager_GetArgs(man);
 
     if (FieldSystem_UpdateLocationToPlayerPosition(fieldSystem)) {
-        ov01_021F6830(fieldSystem, 1, 1); // Possibly equivalent to FieldSystem_SendPoketchEvent(fieldSystem, POKETCH_EVENT_PLAYER_MOVED, 1);
+        ov01_021F6830(fieldSystem, 1, 1);
         FieldMap_ChangeZone(fieldSystem);
     }
 
@@ -254,7 +254,7 @@ BOOL FieldMap_Exit(OverlayManager *man, int *state) {
     case 0:
         FS_LoadOverlay(MI_PROCESSOR_ARM9, FS_OVERLAY_ID(ds_protect));
 
-        sub_02064910(fieldSystem); // DynamicMapFeatures_Free
+        Gymmick_Free(fieldSystem);
 
         offset += 0x23B * DSProt_DetectDummy(&ov01_021E66C8);
 
@@ -753,7 +753,7 @@ static void ov01_021E6580(FieldSystem *fieldSystem) {
     fieldSystem->unk4->textureManager = FieldTextureManager_Init();
     
     FieldTextureManager_LoadTexture(fieldSystem->unk4->textureManager, AreaDataManager_GetMapTexture(fieldSystem->areaDataManager));
-    sub_020648EC(fieldSystem); // Probably DynamicMapFeatures_Init
+    Gymmick_Init(fieldSystem);
     Main_SetVBlankIntrCB(fieldmap, fieldSystem);
 }
 
