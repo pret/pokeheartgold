@@ -26,6 +26,7 @@
 #include "overlay_2/overlay_02_02248728.h"
 
 #include "constants/init_script_types.h"
+#include "constants/field/field_effect_renderer.h"
 #include "constants/field/map_load.h"
 
 #include "dsprot.h"
@@ -664,34 +665,34 @@ static void FieldSystem_InitMapLoadManager(FieldSystem* fieldSystem) {
 }
 
 extern int defaultFieldEffectRenderers[]; /* = {
-    20,
-    19,
-    17,
-    1,
-    16,
-    5,
-    22,
-    8,
-    9,
-    10,
-    11,
-    12,
-    13,
-    15,
-    18,
-    0,
-    2,
-    3,
-    4,
-    14,
-    6,
-    7,
-    21,
-    23
+    FIELD_EFFECT_RENDERER_20,
+    FIELD_EFFECT_RENDERER_19,
+    FIELD_EFFECT_RENDERER_17,
+    FIELD_EFFECT_RENDERER_1,
+    FIELD_EFFECT_RENDERER_16,
+    FIELD_EFFECT_RENDERER_5,
+    FIELD_EFFECT_RENDERER_22,
+    FIELD_EFFECT_RENDERER_8,
+    FIELD_EFFECT_RENDERER_9,
+    FIELD_EFFECT_RENDERER_10,
+    FIELD_EFFECT_RENDERER_11,
+    FIELD_EFFECT_RENDERER_12,
+    FIELD_EFFECT_RENDERER_13,
+    FIELD_EFFECT_RENDERER_15,
+    FIELD_EFFECT_RENDERER_18,
+    FIELD_EFFECT_RENDERER_0,
+    FIELD_EFFECT_RENDERER_2,
+    FIELD_EFFECT_RENDERER_3,
+    FIELD_EFFECT_RENDERER_4,
+    FIELD_EFFECT_RENDERER_14,
+    FIELD_EFFECT_RENDERER_6,
+    FIELD_EFFECT_RENDERER_7,
+    FIELD_EFFECT_RENDERER_21,
+    FIELD_EFFECT_RENDERER_INVALID
 };*/
 
 static void ov01_021E64A4(FieldSystem* fieldSystem) {
-    fieldSystem->fieldEffectManager = FieldEffectManager_New(fieldSystem, 23, HEAP_ID_FIELD1); // FIELD_EFFECT_RENDERER_COUNT?
+    fieldSystem->fieldEffectManager = FieldEffectManager_New(fieldSystem, FIELD_EFFECT_RENDERER_COUNT, HEAP_ID_FIELD1);
     
     FieldEffectManager_InitAnimManagerList(fieldSystem->fieldEffectManager, 80);
     
