@@ -104,9 +104,6 @@ static void ov01_021E66D8(void);
 static void ov01_021E66DC(void);
 static void ov01_021E66E0(void);
 
-// TODO: Put in relevant header
-int CARD_SpiWaitGetStatus();
-
 void fieldmap(void *param0) {
     FieldSystem *fieldSystem = param0;
 
