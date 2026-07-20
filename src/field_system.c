@@ -4,12 +4,12 @@
 
 #include "field/field_control.h"
 
+#include "field_signpost_window.h"
 #include "field_warp_tasks.h"
 #include "main.h"
 #include "map_events.h"
 #include "math_util.h"
 #include "overlay_01_021F1AFC.h"
-#include "overlay_01_021F3D38.h"
 #include "overlay_01_021F6830.h"
 #include "overlay_124.h"
 #include "overlay_35.h"
