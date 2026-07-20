@@ -93,7 +93,7 @@ static void FieldSystem_InitMapLoadManager(FieldSystem *fieldSystem);
 static void ov01_021E64A4(FieldSystem *fieldSystem);
 static void ov01_021E6580(FieldSystem *fieldSystem);
 static BOOL ov01_021E662C(void);
-static MapObjectsToPreload *ov01_021E6644(enum HeapID heapID, u16 modelBank);
+static MapObjectsToPreload *FetchMapObjectsToPreload(enum HeapID heapID, u16 modelBank);
 static const int *MapObjectsToPreload_GetIDs(const MapObjectsToPreload *mapObjectsToPreload);
 static int MapObjectsToPreload_GetCount(const MapObjectsToPreload *mapObjectsToPreload);
 static void MapObjectsToPreload_Free(MapObjectsToPreload *mapObjectsToPreload);
@@ -647,7 +647,7 @@ static void InitGraphicsAndManagers(FieldSystem* fieldSystem) {
     u16 moveModelBank = MapHeader_GetMoveModelBank(fieldSystem->location->mapId);
     
     GF_ASSERT(fieldSystem->mapObjectsToPreload == NULL);
-    fieldSystem->mapObjectsToPreload = ov01_021E6644(HEAP_ID_FIELD1, moveModelBank); // FetchMapObjectsToPreload
+    fieldSystem->mapObjectsToPreload = FetchMapObjectsToPreload(HEAP_ID_FIELD1, moveModelBank);
     
     fieldSystem->unkC8 = ov01_022041C4(HEAP_ID_FIELD1);
     fieldSystem->unkCC = ov01_0220460C(fieldSystem->unkC8);
@@ -711,7 +711,7 @@ static void ov01_021E64A4(FieldSystem* fieldSystem) {
     ov01_021F91F8(fieldSystem->mapObjectManager, 32, MapObjectsToPreload_GetCount(fieldSystem->mapObjectsToPreload) + 3, MapObjectsToPreload_GetIDs(fieldSystem->mapObjectsToPreload), v0);
     ov01_022057DC(fieldSystem->mapObjectManager);
     FieldEffect_InitRenderObject(fieldSystem->fieldEffectManager);
-    sub_0205C46C(fieldSystem->playerAvatar); // PlayerAvatar_InitMapFeatures
+    PlayerAvatar_InitMapFeatures(fieldSystem->playerAvatar);
     
     if (fieldSystem->unkAC != 0) {
         sub_0205E580(fieldSystem->mapObjectManager);
@@ -762,7 +762,7 @@ static BOOL ov01_021E662C(void) {
     return CARD_SpiWaitGetStatus() == 170;
 }
 
-static MapObjectsToPreload *ov01_021E6644(enum HeapID heapID, u16 modelBank) {
+static MapObjectsToPreload *FetchMapObjectsToPreload(enum HeapID heapID, u16 modelBank) {
     int i;
     MapObjectsToPreload *result = Heap_Alloc(heapID, sizeof(MapObjectsToPreload));
     u16 *mapObjectsToPreload = AllocAtEndAndReadWholeNarcMemberByIdPair(NARC_a_0_9_2, modelBank, heapID);
