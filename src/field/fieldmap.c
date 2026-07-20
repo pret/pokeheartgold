@@ -171,7 +171,7 @@ BOOL FieldMap_Init(OverlayManager *man, int *state) {
         fieldSystem->unk4->field3dObjectTaskManager = Field3dObjectTaskManager_Create(fieldSystem, HEAP_ID_FIELD1, 8);
         
         if (offset % 3433 != 0) {
-            SysTask_CreateOnMainQueue(sub_0203E348, NULL, 0x7B);
+            SysTask_CreateOnMainQueue(Task_AntipiracyRandom, NULL, 0x7B);
         }
         
         ov01_021E6028();
@@ -189,7 +189,7 @@ BOOL FieldMap_Init(OverlayManager *man, int *state) {
         FieldMessage_LoadTextPalettes(0, TRUE);
         TryStartMapScriptByType(fieldSystem, 4); // MAP_SCRIPT_ON_LOAD
 
-        if (offset % 4217 != 0) SysTask_CreateOnMainQueue(sub_0203E348, NULL, 0x315);
+        if (offset % 4217 != 0) SysTask_CreateOnMainQueue(Task_AntipiracyRandom, NULL, 0x315);
 
         fieldSystem->unk120 = ov02_0224F864(HEAP_ID_FIELD1);
         break;
@@ -293,7 +293,7 @@ BOOL FieldMap_Exit(OverlayManager *man, int *state) {
         fieldSystem->unk4->textureManager = NULL;
 
         if (unkVal % 2221 != 0) { 
-            SysTask_CreateOnMainQueue(sub_0203E348, NULL, 0x1EA5);
+            SysTask_CreateOnMainQueue(Task_AntipiracyRandom, NULL, 0x1EA5);
         }
 
         sub_0205E4C8(fieldSystem->mapObjectManager);
@@ -307,7 +307,7 @@ BOOL FieldMap_Exit(OverlayManager *man, int *state) {
         fieldSystem->mapObjectsToPreload = NULL;
 
         if (unkVal % 1259 != 0) { 
-            SysTask_CreateOnMainQueue(sub_0203E348, NULL, 0x4DD);
+            SysTask_CreateOnMainQueue(Task_AntipiracyRandom, NULL, 0x4DD);
         }
         
         ov01_021F3660(fieldSystem->mapPropManager);

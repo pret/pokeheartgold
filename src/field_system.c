@@ -310,7 +310,7 @@ SaveData *FieldSystem_GetSaveData(FieldSystem *fieldSystem) {
     return fieldSystem->saveData;
 }
 
-void sub_0203E348() {
+void Task_AntipiracyRandom() {
     LCRandom();
     LCRandom();
 }
