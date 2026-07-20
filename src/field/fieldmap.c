@@ -25,6 +25,7 @@
 #include "overlay_01_022053EC.h"
 #include "overlay_2/overlay_02_02248728.h"
 
+#include "constants/init_script_types.h"
 #include "constants/field/map_load.h"
 
 #include "dsprot.h"
@@ -184,7 +185,7 @@ BOOL FieldMap_Init(OverlayManager *man, int *state) {
         fieldSystem->bgConfig = BgConfig_Alloc(HEAP_ID_FIELD1);
         BgConfig_Init(fieldSystem->bgConfig);
         FieldMessage_LoadTextPalettes(0, TRUE);
-        TryStartMapScriptByType(fieldSystem, 4); // MAP_SCRIPT_ON_LOAD
+        TryStartMapScriptByType(fieldSystem, INIT_SCRIPT_ON_LOAD);
 
         if (offset % 4217 != 0) SysTask_CreateOnMainQueue(Task_AntipiracyRandom, NULL, 0x315);
 
@@ -206,7 +207,7 @@ BOOL FieldMap_Init(OverlayManager *man, int *state) {
             ov01_021E7F00(fieldSystem, FALSE);
         }
         
-        TryStartMapScriptByType(fieldSystem, 3); // MAP_SCRIPT_ON_RESUME
+        TryStartMapScriptByType(fieldSystem, INIT_SCRIPT_ON_RESUME);
         
         fieldSystem->unk4->hBlankSystem = HBlankSystem_New(HEAP_ID_FIELD1);
         HBlankSystem_Start(fieldSystem->unk4->hBlankSystem);

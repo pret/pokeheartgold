@@ -1,5 +1,6 @@
 #include "field_warp_tasks.h"
 
+#include "constants/init_script_types.h"
 #include "constants/maps.h"
 #include "constants/field/map_load.h"
 
@@ -269,7 +270,7 @@ void sub_02053038(FieldSystem *fieldSystem, BOOL isConnection) {
             LocalFieldData_SetBlackoutSpawn(localFieldData, spawnId);
         }
     }
-    TryStartMapScriptByType(fieldSystem, 2);
+    TryStartMapScriptByType(fieldSystem, INIT_SCRIPT_ON_TRANSITION);
     fieldSystem->encounterInhibitSteps = 0;
     fieldSystem->reverseTurnFrameSteps = 0;
     fieldSystem->unk78 = 0;

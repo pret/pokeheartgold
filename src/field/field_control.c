@@ -53,6 +53,7 @@
 #include "constants/field_poison.h"
 #include "constants/game_stats.h"
 #include "constants/global_fieldmap.h"
+#include "constants/init_script_types.h"
 #include "constants/maps.h"
 #include "constants/movements.h"
 #include "constants/moves.h"
@@ -188,7 +189,7 @@ void FieldInput_Update(FieldInput *fieldInput, FieldSystem *fieldSystem, u16 new
 }
 
 int FieldInput_Process(FieldInput *fieldInput, FieldSystem *fieldSystem) {
-    if (fieldInput->unk0_D == FALSE && TryStartMapScriptByType(fieldSystem, 1) == TRUE) { // 1 is INIT_SCRIPT_ON_FRAME_TABLE in pokeplatinum.
+    if (fieldInput->unk0_D == FALSE && TryStartMapScriptByType(fieldSystem, INIT_SCRIPT_ON_FRAME_TABLE) == TRUE) {
         return 1;
     }
     
@@ -412,7 +413,7 @@ BOOL FieldInput_Process_UnionRoom(FieldInput *input, FieldSystem *fieldSystem) {
 }
 
 int FieldInput_Process_BattleTower(FieldInput *fieldInput, FieldSystem *fieldSystem) {
-    if (fieldInput->unk0_D == FALSE && TryStartMapScriptByType(fieldSystem, 1) == TRUE) {
+    if (fieldInput->unk0_D == FALSE && TryStartMapScriptByType(fieldSystem, INIT_SCRIPT_ON_FRAME_TABLE) == TRUE) {
         return 1;
     }
 
