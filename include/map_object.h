@@ -119,7 +119,7 @@ typedef enum MapObjectFlagBits {
     MAPOBJECTFLAG_ACTIVE = (1 << 0),
     MAPOBJECTFLAG_SINGLE_MOVEMENT = (1 << 1),
     MAPOBJECTFLAG_UNK2 = (1 << 2),
-    MAPOBJECTFLAG_UNK3 = (1 << 3),
+    MAPOBJECTFLAG_END_MOVEMENT = (1 << 3),
     MAPOBJECTFLAG_UNK4 = (1 << 4),
     MAPOBJECTFLAG_UNK5 = (1 << 5),
     MAPOBJECTFLAG_MOVEMENT_PAUSED = (1 << 6),
@@ -281,14 +281,14 @@ void MapObjectManager_PauseAllMovement(MapObjectManager *manager);
 void MapObjectManager_UnpauseAllMovement(MapObjectManager *manager);
 BOOL sub_0205F5D4(MapObjectManager *manager);
 u32 sub_0205F5E8(LocalMapObject *object, MapObjectManagerFlagBits bits);
-void sub_0205F5F8(MapObjectManager *manager, BOOL clear);
+void MapObjectManager_SetEndMovement(MapObjectManager *manager, BOOL clear);
 BOOL sub_0205F610(MapObjectManager *manager);
 BOOL MapObject_CheckActive(LocalMapObject *object);
 void MapObject_SetSingleMovement(LocalMapObject *object);
 void MapObject_ClearSingleMovement(LocalMapObject *object);
 BOOL MapObject_CheckSingleMovement(LocalMapObject *object);
 void MapObject_SetFlag2(LocalMapObject *object);
-void MapObject_ClearFlag3(LocalMapObject *object);
+void MapObject_ClearEndMovement(LocalMapObject *object);
 BOOL MapObject_CheckFlag14(LocalMapObject *object);
 BOOL MapObject_CheckVisible(LocalMapObject *object);
 void MapObject_SetVisible(LocalMapObject *object, BOOL set);

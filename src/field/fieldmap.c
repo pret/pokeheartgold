@@ -698,7 +698,7 @@ static void ov01_021E64A4(FieldSystem* fieldSystem) {
     
     fieldSystem->unk4->unk18 = sub_02055680(fieldSystem, HEAP_ID_FIELD1);
     if (fieldSystem->mapLoadType == MAP_LOAD_TYPE_UNION) {
-        sub_0205F5F8(fieldSystem->mapObjectManager, FALSE); //  MapObjectMan_SetEndMovement
+        MapObjectManager_SetEndMovement(fieldSystem->mapObjectManager, FALSE);
     }
     
     FieldEffectManager_InitRenderers(fieldSystem->fieldEffectManager, ov01_02208BFC);

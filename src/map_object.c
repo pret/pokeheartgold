@@ -513,7 +513,7 @@ static void sub_0205E8EC(MapObjectManager *manager, LocalMapObject *object) {
 
 static void sub_0205E934(LocalMapObject *object) {
     MapObject_SetFlagsBits(object, (MapObjectFlagBits)(MAPOBJECTFLAG_UNK2 | MAPOBJECTFLAG_ACTIVE));
-    MapObject_ClearFlagsBits(object, (MapObjectFlagBits)(MAPOBJECTFLAG_IGNORE_HEIGHTS | MAPOBJECTFLAG_UNK22 | MAPOBJECTFLAG_UNK21 | MAPOBJECTFLAG_UNK19 | MAPOBJECTFLAG_UNK18 | MAPOBJECTFLAG_UNK17 | MAPOBJECTFLAG_UNK16 | MAPOBJECTFLAG_UNK14 | MAPOBJECTFLAG_VISIBLE | MAPOBJECTFLAG_MOVEMENT_PAUSED | MAPOBJECTFLAG_UNK3));
+    MapObject_ClearFlagsBits(object, (MapObjectFlagBits)(MAPOBJECTFLAG_IGNORE_HEIGHTS | MAPOBJECTFLAG_UNK22 | MAPOBJECTFLAG_UNK21 | MAPOBJECTFLAG_UNK19 | MAPOBJECTFLAG_UNK18 | MAPOBJECTFLAG_UNK17 | MAPOBJECTFLAG_UNK16 | MAPOBJECTFLAG_UNK14 | MAPOBJECTFLAG_VISIBLE | MAPOBJECTFLAG_MOVEMENT_PAUSED | MAPOBJECTFLAG_END_MOVEMENT));
     sub_0205EF5C(object);
 }
 
@@ -1424,16 +1424,16 @@ u32 sub_0205F5E8(LocalMapObject *object, MapObjectManagerFlagBits bits) {
     return MapObjectManager_GetFlagsBitsMask(MapObject_GetManager(object), bits);
 }
 
-void sub_0205F5F8(MapObjectManager *manager, BOOL clear) {
+void MapObjectManager_SetEndMovement(MapObjectManager *manager, BOOL clear) {
     if (clear == FALSE) {
-        MapObjectManager_SetFlagsBits(manager, MAPOBJECTMANAGERFLAG_UNK3);
+        MapObjectManager_SetFlagsBits(manager, MAPOBJECTFLAG_END_MOVEMENT);
     } else {
-        MapObjectManager_ClearFlagsBits(manager, MAPOBJECTMANAGERFLAG_UNK3);
+        MapObjectManager_ClearFlagsBits(manager, MAPOBJECTFLAG_END_MOVEMENT);
     }
 }
 
 BOOL sub_0205F610(MapObjectManager *manager) {
-    return MapObjectManager_GetFlagsBitsMask(manager, MAPOBJECTMANAGERFLAG_UNK3) == 0;
+    return MapObjectManager_GetFlagsBitsMask(manager, MAPOBJECTFLAG_END_MOVEMENT) == 0;
 }
 
 BOOL MapObject_CheckActive(LocalMapObject *object) {
@@ -1456,8 +1456,8 @@ void MapObject_SetFlag2(LocalMapObject *object) {
     MapObject_SetFlagsBits(object, MAPOBJECTFLAG_UNK2);
 }
 
-void MapObject_ClearFlag3(LocalMapObject *object) {
-    MapObject_ClearFlagsBits(object, MAPOBJECTFLAG_UNK3);
+void MapObject_ClearEndMovement(LocalMapObject *object) {
+    MapObject_ClearFlagsBits(object, MAPOBJECTFLAG_END_MOVEMENT);
 }
 
 static void MapObject_SetFlag14(LocalMapObject *object) {
@@ -1983,7 +1983,7 @@ void MapObject_SetPositionFromVectorAndDirection(LocalMapObject *object, VecFx32
     MapObject_SetFacingDirectionDirect(object, direction);
     MapObject_ClearHeldMovement(object);
     MapObject_SetFlagsBits(object, MAPOBJECTFLAG_UNK2);
-    MapObject_ClearFlagsBits(object, (MapObjectFlagBits)(MAPOBJECTFLAG_UNK3 | MAPOBJECTFLAG_SINGLE_MOVEMENT));
+    MapObject_ClearFlagsBits(object, (MapObjectFlagBits)(MAPOBJECTFLAG_END_MOVEMENT | MAPOBJECTFLAG_SINGLE_MOVEMENT));
 }
 
 void MapObject_SetPositionFromXYZAndDirection(LocalMapObject *object, u32 x, u32 y, u32 z, u32 direction) {
@@ -1999,7 +1999,7 @@ void MapObject_SetPositionFromXYZAndDirection(LocalMapObject *object, u32 x, u32
     sub_02060F78(object);
     MapObject_SetFacingDirectionDirect(object, direction);
     MapObject_SetFlagsBits(object, MAPOBJECTFLAG_UNK2);
-    MapObject_ClearFlagsBits(object, (MapObjectFlagBits)(MAPOBJECTFLAG_UNK3 | MAPOBJECTFLAG_SINGLE_MOVEMENT));
+    MapObject_ClearFlagsBits(object, (MapObjectFlagBits)(MAPOBJECTFLAG_END_MOVEMENT | MAPOBJECTFLAG_SINGLE_MOVEMENT));
     MapObject_ClearHeldMovement(object);
 }
 
