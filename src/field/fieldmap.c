@@ -663,7 +663,7 @@ static void FieldSystem_InitMapLoadManager(FieldSystem* fieldSystem) {
     MapLoadManager_InitialLoad(fieldSystem->mapLoadManager, fieldSystem->location->x, fieldSystem->location->y);
 }
 
-extern int ov01_02208BFC[]; /* = { // sDefaultFieldEffectRenderers?
+extern int defaultFieldEffectRenderers[]; /* = {
     20,
     19,
     17,
@@ -702,7 +702,7 @@ static void ov01_021E64A4(FieldSystem* fieldSystem) {
         MapObjectManager_SetEndMovement(fieldSystem->mapObjectManager, FALSE);
     }
     
-    FieldEffectManager_InitRenderers(fieldSystem->fieldEffectManager, ov01_02208BFC);
+    FieldEffectManager_InitRenderers(fieldSystem->fieldEffectManager, defaultFieldEffectRenderers);
     
     int v0 = 10;
     if (fieldSystem->mapLoadType == MAP_LOAD_TYPE_UNION) {
