@@ -144,10 +144,10 @@ BOOL FieldMap_Init(OverlayManager *man, int *state) {
             HandleLoadOverlay(FS_OVERLAY_ID(OVY_2), OVY_LOAD_ASYNC);
 
             switch (FieldSystem_HasNoGymmick(fieldSystem)) { // Do we really want to continue calling this 'Gymmick'?
-            case FALSE: // FIELD_EXTENSION_OVERLAY_GYM
+            case FALSE:
                 HandleLoadOverlay(FS_OVERLAY_ID(OVY_4), OVY_LOAD_ASYNC);
                 break;
-            case TRUE: // FIELD_EXTENSION_OVERLAY_GENERIC
+            case TRUE:
                 HandleLoadOverlay(FS_OVERLAY_ID(OVY_3), OVY_LOAD_ASYNC);
                 break;
             default: // Unreachable, but required for matching. Used to load Distortion World in Platinum.
@@ -258,7 +258,7 @@ BOOL FieldMap_Exit(OverlayManager *man, int *state) {
 
         offset += 0x23B * DSProt_DetectDummy(&ov01_021E66C8);
 
-        ov01_021F6304(fieldSystem->mapLoadManager); // MapLoadManager_ForgetTrackedTarget
+        MapLoadManager_ForgetTrackedTarget(fieldSystem->mapLoadManager);
 
         fieldSystem->location->x = PlayerAvatar_GetXCoord(fieldSystem->playerAvatar);
         fieldSystem->location->y = PlayerAvatar_GetZCoord(fieldSystem->playerAvatar);
@@ -723,7 +723,7 @@ static void ov01_021E64A4(FieldSystem* fieldSystem) {
     CommPlayerManager_ForcePosition();
     
     if (fieldSystem->unkAC != 0) {
-        MapObjectManager_ClearFlagsBits(fieldSystem->mapObjectManager, MAPOBJECTMANAGERFLAG_UNK1);
+        MapObjectManager_ClearFlagsBits(fieldSystem->mapObjectManager, MAPOBJECTFLAG_SINGLE_MOVEMENT);
     } else {
         sub_0205F568(fieldSystem->mapObjectManager);
     }
@@ -805,13 +805,10 @@ static GFIntrCB ov01_021E66C8(void) {
 }
 
 static void ov01_021E66D8(void) {
-    // Empty.
 }
 
 static void ov01_021E66DC(void) {
-    // Empty.
 }
 
 static void ov01_021E66E0(void) {
-    // Empty.
 }

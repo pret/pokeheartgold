@@ -94,7 +94,7 @@
 .public ov01_021F3B4C
 .public MapPropManager_LoadOne
 .public MapLoadManager_TrackTarget
-.public ov01_021F6304
+.public MapLoadManager_ForgetTrackedTarget
 .public ov01_021F72DC
 .public ov01_021FA2D4
 .public ov01_021FA930

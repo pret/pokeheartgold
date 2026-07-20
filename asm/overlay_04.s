@@ -1384,7 +1384,7 @@ _022548C6:
 	mov r0, #1
 	str r0, [r4, #0x1c]
 	ldr r0, [r5, #0x2c]
-	bl ov01_021F6304
+	bl MapLoadManager_ForgetTrackedTarget
 	b _0225495E
 _0225494A:
 	cmp r0, #1

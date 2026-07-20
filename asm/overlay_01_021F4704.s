@@ -3753,13 +3753,13 @@ MapLoadManager_TrackTarget: ; 0x021F62E8
 	bx lr
 	thumb_func_end MapLoadManager_TrackTarget
 
-	thumb_func_start ov01_021F6304
-ov01_021F6304: ; 0x021F6304
+	thumb_func_start MapLoadManager_ForgetTrackedTarget
+MapLoadManager_ForgetTrackedTarget: ; 0x021F6304
 	mov r1, #0
 	add r0, #0xdc
 	str r1, [r0]
 	bx lr
-	thumb_func_end ov01_021F6304
+	thumb_func_end MapLoadManager_ForgetTrackedTarget
 
 	thumb_func_start ov01_021F630C
 ov01_021F630C: ; 0x021F630C

@@ -391,7 +391,7 @@ BOOL sub_020562B0(TaskManager *man) {
         fenv18->state = 0;
         fenv18->direction = PlayerAvatar_GetFacingDirection(fieldSystem->playerAvatar);
         PlayerAvatar_ToggleAutomaticHeightUpdating(fieldSystem->playerAvatar, FALSE);
-        ov01_021F6304(fieldSystem->mapLoadManager);
+        MapLoadManager_ForgetTrackedTarget(fieldSystem->mapLoadManager);
         if (FollowMon_IsActive(fieldSystem)) {
             BOOL flag = TRUE;
             int var;

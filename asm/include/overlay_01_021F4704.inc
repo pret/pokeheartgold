@@ -53,7 +53,7 @@
 .public MapLoadManager_FreeNARCAndLoadedMapBuffers
 .public MapLoadManager_HasEnded
 .public MapLoadManager_TrackTarget
-.public ov01_021F6304
+.public MapLoadManager_ForgetTrackedTarget
 .public ov01_021F630C
 .public ov01_021F6320
 .public ov01_021F6328
