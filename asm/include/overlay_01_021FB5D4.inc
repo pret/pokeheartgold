@@ -19,4 +19,4 @@
 .public ov01_021FB554
 .public ov01_021FB5D4
 .public ov01_021FB610
-.public ov01_021FB630
+.public FieldSystem_DoPoisonEffect

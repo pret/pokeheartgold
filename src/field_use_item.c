@@ -332,7 +332,7 @@ static enum ItemUseError ItemCheckUseFunc_Bicycle(const struct ItemCheckUseData 
     if (PlayerAvatar_CheckBikeStateLocked(data->playerAvatar) == TRUE) {
         return ITEMUSEERROR_NODISMOUNT;
     }
-    if (sub_0205B6F4(data->standingTile) == TRUE || sub_0205B8AC(data->standingTile) == TRUE) {
+    if (MetatileBehavior_IsVeryTallGrass(data->standingTile) == TRUE || MetatileBehavior_IsMud(data->standingTile) == TRUE) {
         return ITEMUSEERROR_OAKSWORDS;
     }
     if (!MapHeader_IsBikeAllowed(data->mapId)) {
@@ -752,7 +752,7 @@ static BOOL KeyItemIdSpawnsSubprocess(FieldSystem *fieldSystem, u16 itemId) {
     return TRUE;
 }
 
-int UseRegisteredItemButtonInField(FieldSystem *fieldSystem, u8 slot) {
+int UseRegisteredItemButtonInField(FieldSystem *fieldSystem, u16 slot) {
     struct ItemFieldUseData *data;
     u16 itemId;
     u16 funcType;

@@ -172,8 +172,8 @@ s32 ListMenuGetTemplateField(struct ListMenu *list, enum ListMenuAttr attr) {
         return (s32)list->template.cursorKind;
     case LISTMENUATTR_WINDOW:
         return (s32)list->template.window;
-    case LISTMENUATTR_UNK_1C:
-        return (s32)list->template.unk_1C;
+    case LISTMENUATTR_DATA:
+        return (s32)list->template.data;
     }
 
     return -1;

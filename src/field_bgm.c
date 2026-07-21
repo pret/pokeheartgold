@@ -5,7 +5,7 @@
 
 #include "gf_rtc.h"
 #include "map_header.h"
-#include "overlay_01_021E6880.h"
+#include "field/field_control.h"
 #include "save_local_field_data.h"
 #include "save_vars_flags.h"
 #include "sound.h"

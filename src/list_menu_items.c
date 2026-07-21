@@ -2,12 +2,12 @@
 
 #include "global.h"
 
-void ListMenuItems_DestroyMenuStrings(LISTMENUITEM *items);
-LISTMENUITEM *ListMenuItems_SeekEnd(LISTMENUITEM *items, enum HeapID *heapId_p);
+void ListMenuItems_DestroyMenuStrings(ListMenuItem *items);
+ListMenuItem *ListMenuItems_SeekEnd(ListMenuItem *items, enum HeapID *heapId_p);
 
-LISTMENUITEM *ListMenuItems_New(u32 n, enum HeapID heapID) {
+ListMenuItem *ListMenuItems_New(u32 n, enum HeapID heapID) {
     int i;
-    LISTMENUITEM *ret = Heap_Alloc(heapID, (n + 1) * sizeof(LISTMENUITEM));
+    ListMenuItem *ret = Heap_Alloc(heapID, (n + 1) * sizeof(ListMenuItem));
     if (ret != NULL) {
         for (i = 0; i < n; i++) {
             ret[i].text = NULL;
@@ -19,12 +19,12 @@ LISTMENUITEM *ListMenuItems_New(u32 n, enum HeapID heapID) {
     return ret;
 }
 
-void ListMenuItems_Delete(LISTMENUITEM *items) {
+void ListMenuItems_Delete(ListMenuItem *items) {
     ListMenuItems_DestroyMenuStrings(items);
     Heap_Free(items);
 }
 
-void ListMenuItems_AppendFromMsgData(LISTMENUITEM *items, MsgData *msgData, int msgId, int value) {
+void ListMenuItems_AppendFromMsgData(ListMenuItem *items, MsgData *msgData, int msgId, int value) {
     enum HeapID dummy;
 
     items = ListMenuItems_SeekEnd(items, &dummy);
@@ -34,7 +34,7 @@ void ListMenuItems_AppendFromMsgData(LISTMENUITEM *items, MsgData *msgData, int 
     }
 }
 
-void ListMenuItems_AddItem(LISTMENUITEM *items, String *string, int value) {
+void ListMenuItems_AddItem(ListMenuItem *items, String *string, int value) {
     enum HeapID heapID;
 
     items = ListMenuItems_SeekEnd(items, &heapID);
@@ -44,8 +44,8 @@ void ListMenuItems_AddItem(LISTMENUITEM *items, String *string, int value) {
     }
 }
 
-LISTMENUITEM *ListMenuItems_SeekEnd(LISTMENUITEM *items, enum HeapID *heapId_p) {
-    LISTMENUITEM *out;
+ListMenuItem *ListMenuItems_SeekEnd(ListMenuItem *items, enum HeapID *heapId_p) {
+    ListMenuItem *out;
 
     for (; items->text != NULL; items++) {
         if (items->text == (String *)-1) {
@@ -59,7 +59,7 @@ LISTMENUITEM *ListMenuItems_SeekEnd(LISTMENUITEM *items, enum HeapID *heapId_p) 
     return out;
 }
 
-void ListMenuItems_DestroyMenuStrings(LISTMENUITEM *items) {
+void ListMenuItems_DestroyMenuStrings(ListMenuItem *items) {
     int i;
     for (i = 0; items[i].text != (String *)-1; i++) {
         if (items[i].text == NULL) {

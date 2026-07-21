@@ -1851,27 +1851,27 @@
       "args": []
     },
     {
-      "name": "ScrCmd_302",
+      "name": "CheckStepTakenFlag",
       "args": [
         2
       ]
     },
     {
-      "name": "ScrCmd_303",
+      "name": "SetStepTakenFlag",
       "args": []
     },
     {
-      "name": "ScrCmd_304",
+      "name": "GetStepTakenFlag",
       "args": []
     },
     {
-      "name": "ScrCmd_305",
+      "name": "ScrCmd_CheckGameClearFlag",
       "args": [
         2
       ]
     },
     {
-      "name": "ScrCmd_306",
+      "name": "ScrCmd_SetGameClearFlag",
       "args": []
     },
     {
@@ -3047,7 +3047,7 @@
       ]
     },
     {
-      "name": "ScrCmd_485",
+      "name": "StartBattleRegulationMenuTask",
       "args": [
         2
       ]
@@ -4971,14 +4971,14 @@
       ]
     },
     {
-      "name": "ScrCmd_791",
+      "name": "ScrCmd_CheckSafariZoneChallengeCompleted",
       "args": [
         1,
         "var"
       ]
     },
     {
-      "name": "ScrCmd_792",
+      "name": "ScrCmd_UpdateSafariZoneIGT",
       "args": []
     },
     {

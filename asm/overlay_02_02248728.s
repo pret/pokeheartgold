@@ -12591,7 +12591,7 @@ ov02_0224E4DC: ; 0x0224E4DC
 	mov r0, #0
 	pop {r3, pc}
 _0224E4E6:
-	bl sub_0205BAE4
+	bl MetatileBehavior_IsSurfableWater_thunk
 	pop {r3, pc}
 	thumb_func_end ov02_0224E4DC
 
@@ -15998,7 +15998,7 @@ _0224FE9E:
 	add r5, r0, #0
 	lsl r0, r5, #0x18
 	lsr r0, r0, #0x18
-	bl MetatileBehavior_IsEncounterGrass
+	bl MetatileBehavior_IsTallGrass
 	cmp r0, #1
 	bne _0224FEE0
 	mov r0, #1
@@ -16013,7 +16013,7 @@ _0224FE9E:
 _0224FEE0:
 	lsl r0, r5, #0x18
 	lsr r0, r0, #0x18
-	bl sub_0205B6F4
+	bl MetatileBehavior_IsVeryTallGrass
 	cmp r0, #1
 	bne _0224FEFC
 	mov r0, #1

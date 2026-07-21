@@ -3,6 +3,7 @@
 #include "global.h"
 
 #include "constants/global_fieldmap.h"
+#include "constants/player_avatar.h"
 #include "constants/sprites.h"
 
 #include "assert.h"
@@ -210,8 +211,8 @@ static PlayerAvatar *PlayerAvatar_Create(void) {
 
 static void PlayerAvatar_Setup(PlayerAvatar *avatar, s32 state, u32 gender, PlayerSaveData *playerSaveData) {
     PlayerAvatar_SetPlayerSaveData(avatar, playerSaveData);
-    PlayerAvatar_SetUnk10(avatar, 0);
-    PlayerAvatar_SetUnk14(avatar, 0);
+    PlayerAvatar_SetMoveState(avatar, AVATAR_MOVE_STATE_NONE);
+    PlayerAvatar_SetPlayerMoveState(avatar, PLAYER_MOVE_STATE_NONE);
     PlayerAvatar_SetState(avatar, state);
     PlayerAvatar_SetGender(avatar, gender);
     PlayerAvatar_SetTransitionFlags(avatar, 0);
@@ -293,20 +294,20 @@ VecFx32 *PlayerAvatar_GetPositionVector(PlayerAvatar *avatar) {
     return MapObject_GetPositionVector(PlayerAvatar_GetMapObjectConst(avatar));
 }
 
-void PlayerAvatar_SetUnk10(PlayerAvatar *avatar, u32 param1) {
-    avatar->unk10 = param1;
+void PlayerAvatar_SetMoveState(PlayerAvatar *avatar, u32 state) {
+    avatar->moveState = state;
 }
 
-u32 PlayerAvatar_GetUnk10(PlayerAvatar *avatar) {
-    return avatar->unk10;
+u32 PlayerAvatar_GetMoveState(PlayerAvatar *avatar) {
+    return avatar->moveState;
 }
 
-void PlayerAvatar_SetUnk14(PlayerAvatar *avatar, u32 param1) {
-    avatar->unk14 = param1;
+void PlayerAvatar_SetPlayerMoveState(PlayerAvatar *avatar, u32 state) {
+    avatar->playerMoveState = state;
 }
 
-u32 PlayerAvatar_GetUnk14(PlayerAvatar *avatar) {
-    return avatar->unk14;
+u32 PlayerAvatar_GetPlayerMoveState(PlayerAvatar *avatar) {
+    return avatar->playerMoveState;
 }
 
 void PlayerAvatar_SetMapObject(PlayerAvatar *avatar, LocalMapObject *mapObject) {
@@ -484,8 +485,8 @@ static void PlayerAvatar_SetPlayerSaveDataState(PlayerAvatar *avatar, s32 state)
 
 void sub_0205C810(PlayerAvatar *avatar, VecFx32 *position, u32 direction) {
     MapObject_SetPositionFromVectorAndDirection(PlayerAvatar_GetMapObject(avatar), position, direction);
-    PlayerAvatar_SetUnk10(avatar, 0);
-    PlayerAvatar_SetUnk14(avatar, 0);
+    PlayerAvatar_SetMoveState(avatar, AVATAR_MOVE_STATE_NONE);
+    PlayerAvatar_SetPlayerMoveState(avatar, PLAYER_MOVE_STATE_NONE);
 }
 
 void PlayerAvatar_SetMapObjectYPosition(PlayerAvatar *avatar, fx32 yVal) {
@@ -628,16 +629,16 @@ PlayerAvatar *FieldSystem_GetPlayerAvatar(FieldSystem *fieldSystem) {
     return fieldSystem->playerAvatar;
 }
 
-void PlayerAvatar_SetFlag0(PlayerAvatar *avatar, BOOL set) {
+void PlayerAvatar_SetForcedMovement(PlayerAvatar *avatar, BOOL set) {
     if (set == TRUE) {
-        PlayerAvatar_SetFlagsBits(avatar, AVATAR_FLAG_UNK0);
+        PlayerAvatar_SetFlagsBits(avatar, AVATAR_FLAG_FORCED_MOVEMENT);
     } else {
-        PlayerAvatar_ClearFlagsBits(avatar, AVATAR_FLAG_UNK0);
+        PlayerAvatar_ClearFlagsBits(avatar, AVATAR_FLAG_FORCED_MOVEMENT);
     }
 }
 
-BOOL PlayerAvatar_CheckFlag0(PlayerAvatar *avatar) {
-    if (PlayerAvatar_GetFlagsBitsMask(avatar, AVATAR_FLAG_UNK0)) {
+BOOL PlayerAvatar_CheckForcedMovement(PlayerAvatar *avatar) {
+    if (PlayerAvatar_GetFlagsBitsMask(avatar, AVATAR_FLAG_FORCED_MOVEMENT)) {
         return TRUE;
     }
     return FALSE;

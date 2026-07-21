@@ -24,7 +24,7 @@
 #include "map_object.h"
 #include "map_section.h"
 #include "math_util.h"
-#include "overlay_01_021E6880.h"
+#include "field/field_control.h"
 #include "overlay_01_021F72DC.h"
 #include "overlay_01_021F944C.h"
 #include "overlay_02.h"
@@ -75,7 +75,7 @@ typedef struct UnkStructScr_648 {
     struct ListMenuTemplate listMenuTemplate;
     struct ListMenu *listMenu_23C;
     u32 unk_240;
-    LISTMENUITEM items[120];
+    ListMenuItem items[120];
     u16 unk_604[120];
     u16 unk_6F4;
 } SCR_648_STRUCT;
@@ -290,7 +290,7 @@ static void ov01_02200F54(SCR_648_STRUCT *unkPtr) {
     unkPtr->listMenuTemplate.scrollMultiple = 1;
     unkPtr->listMenuTemplate.fontId = 0;
     unkPtr->listMenuTemplate.cursorKind = 0;
-    unkPtr->listMenuTemplate.unk_1C = (u32)unkPtr;
+    unkPtr->listMenuTemplate.data = unkPtr;
 }
 
 static void ov01_02201064(struct ListMenu *listMenu, s32 a1, u8 unused) {
@@ -303,7 +303,7 @@ static void ov01_02201064(struct ListMenu *listMenu, s32 a1, u8 unused) {
 
 static void ov01_02201088(struct ListMenu *listMenu, s32 unused1, u8 unused2) {
     u16 cursorPos = 0, itemsAbove = 0;
-    SCR_648_STRUCT *unkPtr = (SCR_648_STRUCT *)ListMenuGetTemplateField(listMenu, LISTMENUATTR_UNK_1C);
+    SCR_648_STRUCT *unkPtr = (SCR_648_STRUCT *)ListMenuGetTemplateField(listMenu, LISTMENUATTR_DATA);
     ListMenuGetScrollAndRow(listMenu, &cursorPos, &itemsAbove);
     if (unkPtr->cursorPos != 0 && unkPtr->itemsAbove != 0) {
         *unkPtr->cursorPos = cursorPos;

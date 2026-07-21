@@ -488,7 +488,7 @@ Overlay field
     After main
     Object asm/overlay_01_021E5900.o
     Object src/field/overlay_01_021E66E4.o
-    Object asm/overlay_01_021E6880.o
+    Object src/field/field_control.o
     Object asm/overlay_01_021E7FDC.o
     Object asm/overlay_01_021E8744.o
     Object asm/overlay_01_021E90C0.o
@@ -580,7 +580,12 @@ Overlay OVY_2
 Overlay OVY_3
 {
     After OVY_2
-    Object asm/overlay_03.o
+    Object src/overlay_03/communication_club.o
+    Object src/overlay_03/battle_regulation_menu.o
+    Object src/overlay_03/shop_menu.o
+    Object src/overlay_03/custom_safari_zone.o
+    Object src/overlay_03/overlay_03_scrcmds.o
+    Object src/overlay_03/pokeathlon_records.o
 }
 Overlay OVY_4
 {

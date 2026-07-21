@@ -25,8 +25,8 @@
 .public FieldBGM_TryFadeOut
 .public MetatileBehavior_IsSurfableWater
 .public sub_0205B78C
-.public sub_0205B834
-.public sub_0205B840
+.public MetatileBehavior_IsRockClimbNorthSouth
+.public MetatileBehavior_IsRockClimbEastWest
 .public MetatileBehavior_IsWaterfall
 .public MetatileBehavior_IsWhirlpool
 .public sub_0205BA24
@@ -45,7 +45,7 @@
 .public PlayerAvatar_SetUnk34
 .public PlayerAvatar_GetUnk34
 .public PlayerAvatar_GetSpriteByStateAndGender
-.public PlayerAvatar_CheckFlag0
+.public PlayerAvatar_CheckForcedMovement
 .public PlayerAvatar_SetFlag1
 .public sub_0205CBE4
 .public sub_0205DA34

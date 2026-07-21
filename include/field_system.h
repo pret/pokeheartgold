@@ -181,12 +181,30 @@ struct FieldSystem {
 }; // size: 0x128
 
 typedef struct FieldInput {
-    u8 unk0[6];
-    u16 unk6;
-    u16 unk8;
+    u16 interact:1;
+    u16 endMovement:1;
+    u16 menu:1;
+    u16 registeredItem:2;
+    u16 sign:1;
+    u16 mapTransition:1;
+    u16 movement:1;
+    u16 unk0_8:1;
+    u16 unk0_9:1;
+    u16 unk0_A:1;
+    u16 unk0_B:1;
+    u16 unk0_C:1;
+    u16 unk0_D:1;
+    u16 unk2;
+    u8 playerDir;
+    s8 transitionDir;
+    u16 newKeys;
+    u16 heldKeys;
     u16 unkA;
 } FieldInput;
 
+BOOL ov01_021E5924(OverlayManager *man, int *arg1);
+BOOL ov01_021E5BE4(OverlayManager *man, int *arg1);
+BOOL ov01_021E5C24(OverlayManager *man, int *arg1);
 BOOL Field_Continue_AppInit(OverlayManager *man, int *unused);
 BOOL Field_NewGame_AppInit(OverlayManager *man, int *unused);
 BOOL Field_AppExec(OverlayManager *man, int *unused);

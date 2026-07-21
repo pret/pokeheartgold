@@ -103,31 +103,31 @@ BOOL ScrCmd_RocketCostumeFlagAction(ScriptContext *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_302(ScriptContext *ctx) {
+BOOL ScrCmd_CheckStepTakenFlag(ScriptContext *ctx) {
     u16 *ret = ScriptGetVarPointer(ctx);
 
-    *ret = CheckFlag965(Save_VarsFlags_Get(ctx->fieldSystem->saveData));
+    *ret = Save_VarsFlags_CheckStepTakenFlag(Save_VarsFlags_Get(ctx->fieldSystem->saveData));
     return FALSE;
 }
 
-BOOL ScrCmd_303(ScriptContext *ctx) {
-    SetFlag965(Save_VarsFlags_Get(ctx->fieldSystem->saveData));
+BOOL ScrCmd_SetStepTakenFlag(ScriptContext *ctx) {
+    Save_VarsFlags_SetStepTakenFlag(Save_VarsFlags_Get(ctx->fieldSystem->saveData));
     return FALSE;
 }
 
-BOOL ScrCmd_304(ScriptContext *ctx) {
-    ClearFlag965(Save_VarsFlags_Get(ctx->fieldSystem->saveData));
+BOOL ScrCmd_GetStepTakenFlag(ScriptContext *ctx) {
+    Save_VarsFlags_ClearStepTakenFlag(Save_VarsFlags_Get(ctx->fieldSystem->saveData));
     return FALSE;
 }
 
-BOOL ScrCmd_305(ScriptContext *ctx) {
+BOOL ScrCmd_CheckGameClearFlag(ScriptContext *ctx) {
     u16 *ret = ScriptGetVarPointer(ctx);
 
     *ret = CheckGameClearFlag(Save_VarsFlags_Get(ctx->fieldSystem->saveData));
     return FALSE;
 }
 
-BOOL ScrCmd_306(ScriptContext *ctx) {
+BOOL ScrCmd_SetGameClearFlag(ScriptContext *ctx) {
     SetGameClearFlag(Save_VarsFlags_Get(ctx->fieldSystem->saveData));
     return FALSE;
 }

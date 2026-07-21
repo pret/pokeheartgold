@@ -2374,7 +2374,7 @@ _0225510A:
 	ldr r0, [sp]
 	add r1, r3, #0
 	bl GetMetatileBehavior
-	bl sub_0205BAC4
+	bl MetatileBehavior_IsMagma
 	cmp r0, #0
 	beq _0225513A
 	ldr r1, [sp, #0x18]
@@ -3501,7 +3501,7 @@ _02255938:
 	ldr r2, [r4, #4]
 	add r0, r5, #0
 	bl GetMetatileBehavior
-	bl sub_0205BAC4
+	bl MetatileBehavior_IsMagma
 	cmp r0, #0
 	bne _02255952
 	lsl r0, r6, #0x18
@@ -3544,7 +3544,7 @@ _02255978:
 	ldr r2, [r5, #4]
 	add r0, r6, #0
 	bl GetMetatileBehavior
-	bl sub_0205BAC4
+	bl MetatileBehavior_IsMagma
 	cmp r0, #0
 	bne _0225599C
 	mov r0, #1

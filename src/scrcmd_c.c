@@ -1490,20 +1490,20 @@ BOOL ScrCmd_FacePlayer(ScriptContext *ctx) {
             ov01_02205604(*p_lastInteracted, &x, &y);
             metatile = GetMetatileBehavior(fieldSystem, x, y);
             if (rvsDir == 2 || rvsDir == 3) {
-                if (MetatileBehavior_IsEncounterGrass(metatile) == TRUE) {
+                if (MetatileBehavior_IsTallGrass(metatile) == TRUE) {
                     ov01_021FF0E4(*p_lastInteracted, 0, x, y, 1);
-                } else if (sub_0205B6F4(metatile) == TRUE) {
+                } else if (MetatileBehavior_IsVeryTallGrass(metatile) == TRUE) {
                     ov01_021FF964(*p_lastInteracted, 0, x, y, 1);
                 }
             }
-            if (MetatileBehavior_IsEncounterGrass(metatile) == FALSE
-                && sub_0205B6F4(metatile) == FALSE
+            if (MetatileBehavior_IsTallGrass(metatile) == FALSE
+                && MetatileBehavior_IsVeryTallGrass(metatile) == FALSE
                 && sub_02060E54(*p_lastInteracted, metatile) == FALSE
-                && sub_0205B984(metatile) == FALSE
-                && sub_0205B7A4(metatile) == FALSE
+                && MetatileBehavior_IsPuddle(metatile) == FALSE
+                && MetatileBehavior_IsShallowWater(metatile) == FALSE
                 && sub_02060EBC(*p_lastInteracted, metatile) == FALSE
-                && sub_0205B8AC(metatile) == FALSE
-                && sub_0205BA70(metatile) == FALSE) {
+                && MetatileBehavior_IsMud(metatile) == FALSE
+                && MetatileBehavior_IsReflective(metatile) == FALSE) {
                 MapObject_ClearFlagsBits(*p_lastInteracted, MAPOBJECTFLAG_UNK20);
             }
         }
@@ -2417,11 +2417,11 @@ BOOL sub_02043A98(ScriptContext *ctx);
 
 BOOL ScrCmd_226(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
-    u16 r7 = ScriptGetVar(ctx);
+    u16 commType = ScriptGetVar(ctx);
     u16 sp0 = ScriptGetVar(ctx);
     u16 sp4 = ScriptGetVar(ctx);
     u16 r6 = ScriptReadHalfword(ctx);
-    ov03_02255BB0(fieldSystem, r7, sp0, sp4);
+    ov03_02255BB0(fieldSystem, commType, sp0, sp4);
     ctx->data[0] = r6;
     SetupNativeScript(ctx, sub_02043A98);
     return TRUE;
@@ -2442,11 +2442,11 @@ BOOL sub_02043B30(ScriptContext *ctx);
 
 BOOL ScrCmd_227(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
-    u16 r7 = ScriptGetVar(ctx);
+    u16 commType = ScriptGetVar(ctx);
     u16 sp0 = ScriptGetVar(ctx);
     u16 sp4 = ScriptGetVar(ctx);
     u16 r6 = ScriptReadHalfword(ctx);
-    ov03_02255C18(fieldSystem, r7, sp0, sp4);
+    ov03_02255C18(fieldSystem, commType, sp0, sp4);
     ctx->data[0] = r6;
     SetupNativeScript(ctx, sub_02043B30);
     return TRUE;
@@ -3552,9 +3552,9 @@ BOOL ScrCmd_GetWeekday(ScriptContext *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_485(ScriptContext *ctx) {
-    u16 *p_var = ScriptGetVarPointer(ctx);
-    ov03_022566B0(ctx->taskman, p_var);
+BOOL ScrCmd_StartBattleRegulationMenuTask(ScriptContext *ctx) {
+    u16 *result = ScriptGetVarPointer(ctx);
+    StartTask_BattleRegulationMenu(ctx->taskman, result);
     return TRUE;
 }
 

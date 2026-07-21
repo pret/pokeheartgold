@@ -206,7 +206,7 @@ typedef struct PokegearMapAppData {
     String *formatFlavorTextString;               // 0x0B4
     u8 unk_0B8;                                   // 0x0B8, set 2 but never used
     TouchscreenListMenuSpawner *listMenuSpawner;  // 0x0BC
-    LISTMENUITEM *listMenuItems;                  // 0x0C0
+    ListMenuItem *listMenuItems;                  // 0x0C0
     TouchscreenListMenu *listMenu;                // 0x0C4
     PokegearMapCursorState cursorSpriteState;     // 0x0C8
     u16 minXscroll;                               // 0x100

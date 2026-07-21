@@ -235,12 +235,12 @@
 .public sub_0205B564
 .public sub_0205B5B4
 .public IsPrintFinished
-.public MetatileBehavior_IsEncounterGrass
-.public sub_0205B6F4
+.public MetatileBehavior_IsTallGrass
+.public MetatileBehavior_IsVeryTallGrass
 .public MetatileBehavior_IsSurfableWater
 .public MetatileBehavior_CanGenerateWalkingEncounters
 .public sub_0205BAD0
-.public sub_0205BAE4
+.public MetatileBehavior_IsSurfableWater_thunk
 .public sub_0205BB04
 .public PlayerAvatar_GetFacingDirection
 .public PlayerAvatar_GetXCoord

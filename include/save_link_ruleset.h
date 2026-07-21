@@ -21,7 +21,7 @@ typedef enum LinkBattleRule {
     LINKBATTLERULE_UBERS_CLAUSE,
     LINKBATTLERULE_DRAGON_RAGE_CLAUSE,
     LINKBATTLERULE_SOUL_DEW_CLAUSE,
-} LinkBattleRule;
+}LinkBattleRule;
 
 #define FLAG_RULESET_BAN_SOUL_DEW (0x8000)
 
@@ -50,7 +50,7 @@ void LinkBattleRuleset_Copy(const LinkBattleRuleset *src, LinkBattleRuleset *dst
 void Save_LinkBattleRuleset_Init(Save_LinkBattleRuleset *ruleset);
 void LinkBattleRuleset_CopyNameToString(const LinkBattleRuleset *rule, String *dest);
 String *LinkBattleRuleset_CreateStringFromName(const LinkBattleRuleset *rule, enum HeapID heapID);
-int LinkBattleRuleset_GetRuleValue(const LinkBattleRuleset *ruleset, LinkBattleRule rule);
+int LinkBattleRuleset_GetRuleValue(const LinkBattleRuleset *ruleset, enum LinkBattleRule rule);
 LinkBattleRuleset *Save_LinkBattleRuleset_GetByIndex(SaveData *saveData, int a1);
 void Save_LinkBattleRuleset_Set(SaveData *saveData, const LinkBattleRuleset *rule);
 

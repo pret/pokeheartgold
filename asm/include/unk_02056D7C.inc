@@ -62,8 +62,8 @@
 .public PlayerAvatar_SetFacingDirection
 .public PlayerAvatar_GetXCoord
 .public PlayerAvatar_GetZCoord
-.public PlayerAvatar_GetUnk10
-.public PlayerAvatar_GetUnk14
+.public PlayerAvatar_GetMoveState
+.public PlayerAvatar_GetPlayerMoveState
 .public PlayerAvatar_GetMapObject
 .public FieldSystem_GetPlayerAvatar
 .public PlayerAvatar_CheckRunningShoesLock
