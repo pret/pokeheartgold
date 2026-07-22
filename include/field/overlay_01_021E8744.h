@@ -2,14 +2,9 @@
 #define POKEHEARTGOLD_FIELD_OVERLAY_01_021E8744_H
 
 #include <nnsys.h>
+#include "field/overlay_01_02204004.h"
 
 typedef struct UnkStruct_ov01_021E8B04 UnkStruct_ov01_021E8B04;
-
-typedef struct UnkStruct_FieldSysC0_SubC {
-    NNSG3dRenderObj renderObj;
-    NNSG3dResMdl *model;
-    NNSG3dResFileHeader *resFileHeader;
-} UnkStruct_FieldSysC0_SubC;
 
 void ov01_021E8970(int modelNum, int animNum, int a2, UnkStruct_FieldSysC0_SubC *renderObj, void *fsysUnk54);
 UnkStruct_ov01_021E8B04 *ov01_021E8B04(int modelNum, int animNum, void *fsysUnk54);

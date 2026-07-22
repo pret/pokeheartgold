@@ -55,3 +55,5 @@
 .public ov01_0220476C
 .public ov01_022047DC
 .public ov01_02204834
+.public ov01_022040C0
+.public ov01_022040E4

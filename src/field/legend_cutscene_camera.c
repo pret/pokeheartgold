@@ -4,6 +4,7 @@
 
 #include "demo/legend.naix"
 #include "field/overlay_01_021E66E4.h"
+#include "field/overlay_01_021E8744.h"
 #include "field/overlay_01_021FB878.h"
 #include "field/overlay_01_02204004.h"
 #include "fielddata/script/scr_seq/event_D17R0110.h"

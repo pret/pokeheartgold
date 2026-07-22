@@ -3,6 +3,7 @@
 
 #include "field/draw_map_name.h"
 #include "field/overlay_01_021E66E4.h"
+#include "field/overlay_01_02204004.h"
 
 #include "bag_cursor.h"
 #include "battle_regulation.h"
@@ -16,7 +17,6 @@
 #include "map_matrix.h"
 #include "menu_input_state.h"
 #include "overlay_01_021EB1E8.h"
-#include "overlay_01_02204004.h"
 #include "overlay_manager.h"
 #include "photo_types_def.h"
 #include "save_pokegear.h"
@@ -157,7 +157,7 @@ struct FieldSystem {
     u8 unkBC[4];
     void *unkC0;
     int unkC4;
-    FieldSystemUnkC8 *unk_C8;
+    FieldSystemUnkSubC8 *unk_C8;
     u8 filler_CC[0x4];
     u16 lastTouchMenuInput;
     u8 unkD2_0 : 6;
