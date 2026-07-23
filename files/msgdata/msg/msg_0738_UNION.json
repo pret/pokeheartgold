@@ -1,0 +1,1463 @@
+{
+  "key": 34812,
+  "messages": [
+    {
+      "id": "msg_0738_UNION_00000",
+      "garbage": 4
+    },
+    {
+      "id": "msg_0738_UNION_00001",
+      "garbage": 4
+    },
+    {
+      "id": "msg_0738_UNION_00002",
+      "garbage": 4
+    },
+    {
+      "id": "msg_0738_UNION_00003",
+      "garbage": 4
+    },
+    {
+      "id": "msg_0738_UNION_00004",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0738_UNION_00005",
+      "garbage": 4
+    },
+    {
+      "id": "msg_0738_UNION_00006",
+      "garbage": 4
+    },
+    {
+      "id": "msg_0738_UNION_00007",
+      "en_US": [
+        "{STRVAR_1 28, 2, 0}{PAUSE 15}\r",
+        "{STRVAR_1 3, 0, 0}\n",
+        "has contacted you."
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00008",
+      "en_US": "The chat has been dropped."
+    },
+    {
+      "id": "msg_0738_UNION_00009",
+      "en_US": [
+        "Awaiting a response from\n",
+        "{STRVAR_1 3, 0, 0}..."
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00010",
+      "en_US": "The chat was ended."
+    },
+    {
+      "id": "msg_0738_UNION_00011",
+      "en_US": [
+        "You have an offer to see\n",
+        "{STRVAR_1 3, 0, 0}’s Trainer Card.\r",
+        "Would you like to show your\n",
+        "Trainer Card? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00012",
+      "en_US": [
+        "This is the Trainer Card of\n",
+        "{STRVAR_1 3, 0, 0}, who lives in\f",
+        "{STRVAR_1 37, 4, 0},\f",
+        "{STRVAR_1 36, 3, 0}."
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00013",
+      "en_US": [
+        "This is the Trainer Card of\n",
+        "{STRVAR_1 3, 0, 0}, who lives in\f",
+        "{STRVAR_1 36, 3, 0}.\n"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00014",
+      "en_US": [
+        "This is the Trainer Card of\n",
+        "{STRVAR_1 3, 0, 0}, who lives in\f",
+        "{STRVAR_1 37, 4, 0}.\n"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00015",
+      "en_US": [
+        "This is {STRVAR_1 3, 0, 0}’s\n",
+        "Trainer Card."
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00016",
+      "en_US": "Waiting for the other player to finish."
+    },
+    {
+      "id": "msg_0738_UNION_00017",
+      "en_US": "You declined the offer."
+    },
+    {
+      "id": "msg_0738_UNION_00018",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} has invited you to draw\n",
+        "something.\r",
+        "Would you like to join the other\n",
+        "player and draw? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00019",
+      "en_US": "Let’s get drawing!"
+    },
+    {
+      "id": "msg_0738_UNION_00020",
+      "en_US": "You declined the invitation."
+    },
+    {
+      "id": "msg_0738_UNION_00021",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} challenges you to\n",
+        "a battle.\r",
+        "Will you accept the battle\n",
+        "challenge? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00022",
+      "en_US": "The battle will be started."
+    },
+    {
+      "id": "msg_0738_UNION_00023",
+      "en_US": "You declined to take part."
+    },
+    {
+      "id": "msg_0738_UNION_00024",
+      "en_US": [
+        "For a battle, you need two\n",
+        "Pokémon that are Lv. 30 or below."
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00025",
+      "en_US": "The battle has been canceled."
+    },
+    {
+      "id": "msg_0738_UNION_00026",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} has offered to\n",
+        "make a trade.\r",
+        "Will you accept this trade offer? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00027",
+      "en_US": "The trade will be started."
+    },
+    {
+      "id": "msg_0738_UNION_00028",
+      "en_US": "You declined the offer."
+    },
+    {
+      "id": "msg_0738_UNION_00029",
+      "en_US": [
+        "For trading, you must have at\n",
+        "least two Pokémon with you."
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00030",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} invites you to mix\n",
+        "records.\r",
+        "Would you like to mix records with\n",
+        "the other player? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00031",
+      "en_US": "Record mixing will be started."
+    },
+    {
+      "id": "msg_0738_UNION_00032",
+      "en_US": "You declined the invitation."
+    },
+    {
+      "id": "msg_0738_UNION_00033",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} has invited you to join\n",
+        "a Spin Trade session.\r",
+        "Would you like to take part in the\n",
+        "Spin Trade? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00034",
+      "en_US": "Starting the Spin Trade!"
+    },
+    {
+      "id": "msg_0738_UNION_00035",
+      "en_US": "You declined the invitation."
+    },
+    {
+      "id": "msg_0738_UNION_00036",
+      "en_US": [
+        "You don’t have an Egg.\n",
+        "The invitation was turned down."
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00037",
+      "en_US": [
+        "{STRVAR_1 28, 2, 0}{PAUSE 15}\r",
+        "This is {STRVAR_1 3, 0, 0}! Is there\n",
+        "something that you wanted to do?"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00038",
+      "en_US": [
+        "Whoops! Sorry, but I have to do\n",
+        "something else.\f",
+        "Another time, OK?"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00039",
+      "en_US": [
+        "Do you want to\n",
+        "do anything else?"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00040",
+      "en_US": [
+        "... ...\n",
+        "The Trainer appears to be busy..."
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00041",
+      "garbage": 23
+    },
+    {
+      "id": "msg_0738_UNION_00042",
+      "en_US": [
+        "Sure thing! In greeting, allow me to\n",
+        "show you my Trainer Card."
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00043",
+      "en_US": [
+        "Huh? My Trainer Card...\n",
+        "Where’d it go now?\r",
+        "Sorry! I’ll show you another time!"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00044",
+      "en_US": [
+        "I’m just showing my Trainer Card\n",
+        "as my way of a greeting."
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00045",
+      "en_US": "I hope I get to know you better!"
+    },
+    {
+      "id": "msg_0738_UNION_00046",
+      "en_US": [
+        "Oh, did you want to draw with me?\n",
+        "Sure thing, but hang on just a second."
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00047",
+      "en_US": [
+        "Thanks for waiting!\n",
+        "Let’s get drawing!"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00048",
+      "en_US": [
+        "Oh, sorry! I can’t now.\n",
+        "Let’s draw another time."
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00049",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}: We’re drawing right\n",
+        "now.\r",
+        "Oh, I know! {STRVAR_1 3, 1, 0}, would\n",
+        "you like to draw with us? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00050",
+      "en_US": [
+        "Oh, all right.\n",
+        "Come see me anytime, OK?"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00051",
+      "en_US": [
+        "OK! Let’s do some drawing\n",
+        "together!"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00052",
+      "garbage": 42
+    },
+    {
+      "id": "msg_0738_UNION_00053",
+      "en_US": [
+        "The last letter of what you draw has\n",
+        "to be the first letter of what I draw?"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00054",
+      "en_US": [
+        "Stop drawing funny faces!\n",
+        "It hurts to laugh so much!"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00055",
+      "en_US": [
+        "Wow, you’re good!\n",
+        "I’ll try to imitate you!"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00056",
+      "en_US": [
+        "...Uh-huh... What is that?\n",
+        "That’s supposed to be me?"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00057",
+      "en_US": [
+        "A battle? Of course, but I need\n",
+        "time to get ready."
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00058",
+      "en_US": [
+        "Thanks for waiting!\n",
+        "Let’s get our battle started!"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00059",
+      "en_US": [
+        "Sorry! My Pokémon don’t seem to\n",
+        "be feeling too well right now.\f",
+        "Let me battle you another time."
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00060",
+      "en_US": [
+        "If you want to battle, you need two\n",
+        "Pokémon that are Lv. 30 or lower.\r"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00061",
+      "en_US": [
+        "Whoa!\n",
+        "I can tell you’re pretty tough!"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00062",
+      "en_US": [
+        "You used that move?\n",
+        "That’s good strategy!"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00063",
+      "en_US": [
+        "Way to go!\n",
+        "That was an eye-opener!"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00064",
+      "en_US": [
+        "Oh! How could you use that\n",
+        "Pokémon in that situation?"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00065",
+      "en_US": [
+        "You want to trade, huh?\n",
+        "Sure, hold on just a second."
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00066",
+      "en_US": [
+        "All right!\n",
+        "Let’s trade!"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00067",
+      "en_US": [
+        "Sorry! I don’t have a Pokémon I\n",
+        "can trade right now.\r",
+        "Let’s trade some other time."
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00068",
+      "en_US": [
+        "Oh yeah!\n",
+        "I really wanted this Pokémon!"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00069",
+      "en_US": [
+        "Finally, I got that Pokémon\n",
+        "I’ve wanted for such a long time."
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00070",
+      "en_US": [
+        "You can’t trade if you have only one\n",
+        "Pokémon with you.\r"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00071",
+      "en_US": [
+        "If you want to do something with\n",
+        "me, just give me a shout!"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00072",
+      "en_US": [
+        "You want to mix records with me?\n",
+        "OK, I just need a little time."
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00073",
+      "en_US": [
+        "Thanks for waiting!\n",
+        "Let’s mix our records, then."
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00074",
+      "en_US": [
+        "Oh, I’m sorry.\n",
+        "I have too much to do right now.\f",
+        "Another time, OK?"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00075",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}: We’re going to mix our\n",
+        "records now.\r",
+        "I know! {STRVAR_1 3, 1, 0}, do you want\n",
+        "to mix your records with us, too? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00076",
+      "en_US": [
+        "Oh, all right.\n",
+        "Come see me anytime, OK?"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00077",
+      "en_US": "OK! Let’s mix our records!"
+    },
+    {
+      "id": "msg_0738_UNION_00078",
+      "garbage": 40
+    },
+    {
+      "id": "msg_0738_UNION_00079",
+      "en_US": "It’s fun mixing records!"
+    },
+    {
+      "id": "msg_0738_UNION_00080",
+      "en_US": [
+        "I’m going to mix records with\n",
+        "everyone!"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00081",
+      "en_US": "Mix it up! Keep mixing!"
+    },
+    {
+      "id": "msg_0738_UNION_00082",
+      "en_US": "You should mix records, too!"
+    },
+    {
+      "id": "msg_0738_UNION_00083",
+      "en_US": [
+        "Spin Trade? Sure!\n",
+        "OK, just hold on a second!"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00084",
+      "en_US": [
+        "OK, all set!\n",
+        "Let’s do a Spin Trade!"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00085",
+      "garbage": 40
+    },
+    {
+      "id": "msg_0738_UNION_00086",
+      "en_US": [
+        "You need an Egg if you want to take\n",
+        "part in a Spin Trade.\r"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00087",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}: We’re going to do a Spin\n",
+        "Trade now.\r",
+        "Hey, {STRVAR_1 3, 1, 0}! Do you want to join\n",
+        "us for a Spin Trade, too?"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00088",
+      "en_US": [
+        "Oh, OK.\n",
+        "Come see us anytime!"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00089",
+      "en_US": [
+        "OK!\n",
+        "Let’s do a Spin Trade together!"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00090",
+      "garbage": 41
+    },
+    {
+      "id": "msg_0738_UNION_00091",
+      "garbage": 40
+    },
+    {
+      "id": "msg_0738_UNION_00092",
+      "en_US": [
+        "There is an Egg that cannot be traded\n",
+        "in your party."
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00093",
+      "en_US": "Spin Trades are so much fun!"
+    },
+    {
+      "id": "msg_0738_UNION_00094",
+      "en_US": [
+        "There!\n",
+        "Stop there!"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00095",
+      "en_US": "My Egg’s awesome!"
+    },
+    {
+      "id": "msg_0738_UNION_00096",
+      "en_US": [
+        "Yes!\n",
+        "I got the Egg I wanted!"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00097",
+      "en_US": [
+        "{STRVAR_1 28, 2, 0}{PAUSE 15}\r",
+        "Hello, it’s {STRVAR_1 3, 0, 0}!\n",
+        "Would you like to do something?"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00098",
+      "en_US": [
+        "Whoops!\n",
+        "Sorry, but I have to do something else.\f",
+        "Another time, OK?"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00099",
+      "en_US": [
+        "Want to do\n",
+        "something else?"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00100",
+      "en_US": [
+        "... ...\n",
+        "The Trainer appears to be busy..."
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00101",
+      "garbage": 23
+    },
+    {
+      "id": "msg_0738_UNION_00102",
+      "en_US": [
+        "As my introduction, I’ll show you\n",
+        "my Trainer Card."
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00103",
+      "en_US": [
+        "Oh? Now where did I put my\n",
+        "Trainer Card...?\r",
+        "Sorry! I’ll show you later!"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00104",
+      "en_US": [
+        "We’re showing each other our\n",
+        "Trainer Cards to get acquainted."
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00105",
+      "en_US": [
+        "Glad to meet you.\n",
+        "Please don’t be a stranger!"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00106",
+      "en_US": [
+        "You want to draw with me?\n",
+        "Sure! Just give me a second..."
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00107",
+      "en_US": [
+        "Sorry I made you wait!\n",
+        "Let’s get started!"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00108",
+      "en_US": [
+        "Oh, I’m sorry!\n",
+        "Let’s draw another time!"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00109",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}: We are drawing right\n",
+        "now.\r",
+        "Oh, I know! {STRVAR_1 3, 1, 0}, would you\n",
+        "like to draw with us?"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00110",
+      "en_US": [
+        "Oh...\n",
+        "Please come by anytime."
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00111",
+      "en_US": [
+        "OK! Thanks for waiting!\n",
+        "Let’s get drawing!"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00112",
+      "garbage": 38
+    },
+    {
+      "id": "msg_0738_UNION_00113",
+      "en_US": [
+        "Wow!\n",
+        "You’re really good!"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00114",
+      "en_US": [
+        "Ahaha!\n",
+        "What is that?!"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00115",
+      "en_US": [
+        "I love drawing!\n",
+        "I can draw and draw!"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00116",
+      "en_US": [
+        "Oops!\n",
+        "I can’t stay inside the lines!"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00117",
+      "en_US": [
+        "A battle? Of course, but I need\n",
+        "time to get ready."
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00118",
+      "en_US": [
+        "Sorry I made you wait!\n",
+        "Let’s get started!"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00119",
+      "en_US": [
+        "I’m terribly sorry, but my Pokémon\n",
+        "aren’t feeling well...\r",
+        "Let’s battle another time."
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00120",
+      "en_US": [
+        "If you want to battle, you need two\n",
+        "Pokémon that are Lv. 30 or lower.\r"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00121",
+      "en_US": [
+        "That Pokémon...\n",
+        "It’s been raised really well!"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00122",
+      "en_US": [
+        "That’s it!\n",
+        "This is the right move now!"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00123",
+      "en_US": [
+        "That’s awesome!\n",
+        "You can battle that way?"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00124",
+      "en_US": [
+        "You have exquisite timing for\n",
+        "switching Pokémon!"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00125",
+      "en_US": [
+        "A trade? Of course, but I need\n",
+        "time to get ready."
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00126",
+      "en_US": [
+        "Sorry I made you wait!\n",
+        "Let’s get started!"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00127",
+      "en_US": [
+        "I’m sorry, but I don’t have any\n",
+        "Pokémon that I can trade now...\r",
+        "Let’s trade some other time!"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00128",
+      "en_US": "I’m trading Pokémon right now."
+    },
+    {
+      "id": "msg_0738_UNION_00129",
+      "en_US": [
+        "I finally got that Pokémon I\n",
+        "wanted in a trade!"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00130",
+      "en_US": [
+        "You can’t trade if you have only\n",
+        "one Pokémon with you.\r"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00131",
+      "en_US": [
+        "If you want to do something with\n",
+        "me, don’t be shy. Just ask!"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00132",
+      "en_US": [
+        "You want to mix records?\n",
+        "Sure! But I need a little time!"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00133",
+      "en_US": [
+        "Sorry I made you wait!\n",
+        "Let’s get started!"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00134",
+      "en_US": [
+        "Oh, sorry!\n",
+        "Let’s do this another time!"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00135",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}: We were just mixing\n",
+        "our records.\r",
+        "I know! {STRVAR_1 3, 1, 0}, would you like\n",
+        "to mix your records with us, too?"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00136",
+      "en_US": [
+        "Oh...\n",
+        "Please come by anytime."
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00137",
+      "en_US": [
+        "Thanks for waiting!\n",
+        "Let’s mix some records!"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00138",
+      "en_US": [
+        "Oh, sorry!\n",
+        "Let’s do this another time!"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00139",
+      "en_US": "It’s so fun to mix records!"
+    },
+    {
+      "id": "msg_0738_UNION_00140",
+      "en_US": "I’m going to keep mixing!"
+    },
+    {
+      "id": "msg_0738_UNION_00141",
+      "en_US": "Let’s mix it up!"
+    },
+    {
+      "id": "msg_0738_UNION_00142",
+      "en_US": "I wonder what’s going to happen?"
+    },
+    {
+      "id": "msg_0738_UNION_00143",
+      "en_US": [
+        "Spin Trade? Of course!\n",
+        "OK, can you just wait a moment?"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00144",
+      "en_US": [
+        "OK, all ready!\n",
+        "Let’s get this Spin Trade started!"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00145",
+      "garbage": 21
+    },
+    {
+      "id": "msg_0738_UNION_00146",
+      "en_US": [
+        "If you want to join a Spin Trade, you\n",
+        "need to bring an Egg, too.\r"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00147",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}: We were doing Spin Trades\n",
+        "just now.\r",
+        "{STRVAR_1 3, 1, 0}, do you want to join us\n",
+        "and do some Spin Trades, too?"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00148",
+      "en_US": [
+        "Oh, OK.\n",
+        "Come see us anytime!"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00149",
+      "en_US": [
+        "OK!\n",
+        "Let’s do a Spin Trade together!"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00150",
+      "garbage": 45
+    },
+    {
+      "id": "msg_0738_UNION_00151",
+      "garbage": 21
+    },
+    {
+      "id": "msg_0738_UNION_00152",
+      "en_US": [
+        "There is an Egg that cannot be traded\n",
+        "in your party."
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00153",
+      "en_US": "We’re doing Spin Trades!"
+    },
+    {
+      "id": "msg_0738_UNION_00154",
+      "en_US": [
+        "Wah!\n",
+        "It moved again!"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00155",
+      "en_US": "There goes the Egg I wanted..."
+    },
+    {
+      "id": "msg_0738_UNION_00156",
+      "en_US": [
+        "If it stopped there, I would’ve gotten\n",
+        "a Berry."
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00157",
+      "en_US": [
+        "Welcome to the Union Room.\r",
+        "If there is anything you need help\n",
+        "with, please let me know! {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00158",
+      "en_US": "How may I help you? {YESNO 0}"
+    },
+    {
+      "id": "msg_0738_UNION_00159",
+      "en_US": [
+        "Which topic would you\n",
+        "like me to explain? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00160",
+      "en_US": [
+        "In the Union Room, you may battle\n",
+        "with two Pokémon of your choice\f",
+        "that are Lv. 30 or lower.\r",
+        "When you visit here, we recommend\n",
+        "that you bring Pokémon that\f",
+        "meet this requirement.\r"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00161",
+      "en_US": [
+        "You may trade your Pokémon with\n",
+        "other players.\r",
+        "Meeting new people could be a\n",
+        "shortcut to meeting rare Pokémon!\r"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00162",
+      "en_US": [
+        "You may communicate with other\n",
+        "players and mix your records.\r",
+        "What will happen if you mix records,\n",
+        "you ask?\r",
+        "We recommend that you try it and\n",
+        "see!\r",
+        "Up to five players can take part,\n",
+        "so try it with your friends!\r"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00163",
+      "en_US": [
+        "In a Spin Trade, participants each bring\n",
+        "an Egg for trading with others.\r",
+        "Which Egg will you end up with?\n",
+        "What kind of Pokémon is in that Egg?\f",
+        "It’s quite exciting and fun!\r",
+        "Up to five players can take part, so\n",
+        "try it with your friends!\r"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00164",
+      "en_US": [
+        "You may get together with others\n",
+        "and draw.\r",
+        "You all get to work on one sheet\n",
+        "of paper at the same time.\r",
+        "I’m sure a drawing made by friends\n",
+        "will be a memorable masterpiece!\r",
+        "Up to five players can take part,\n",
+        "so try it with your friends!\r"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00165",
+      "en_US": [
+        "You can chat with other people\n",
+        "by selecting “CHAT” in the menu.\r",
+        "Go out and meet other players in\n",
+        "the Union Room!\r",
+        "Let people know what you’re like\n",
+        "and what you’d like to do.\r",
+        "Mingle, chat, and add to your\n",
+        "circle of friends!\r"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00166",
+      "en_US": [
+        "Oh!\n",
+        "Here comes someone now!\r",
+        "Instead of me, why not strike up\n",
+        "a chat with our newcomer?\r"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00167",
+      "garbage": 34
+    },
+    {
+      "id": "msg_0738_UNION_00168",
+      "en_US": [
+        "Do you sometimes get mistaken for\n",
+        "a real {STRVAR_1 14, 0, 0}?\r",
+        "I just seem to get that feeling\n",
+        "from you.\r"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00169",
+      "en_US": [
+        "Hello!\r",
+        "That’s right!\n",
+        "It’s important to say a greeting!\r",
+        "If someone arrives, let’s try to\n",
+        "be friendly!\r"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00170",
+      "en_US": [
+        "Greetings!\r",
+        "{STRVAR_1 28, 0, 0}?\n",
+        "It’s wonderful!\f",
+        "I really like it, too!\r",
+        "When you meet someone for the first\n",
+        "time, the proper etiquette is to\f",
+        "introduce yourself.\r",
+        "By introducing yourself, you’ll get to\n",
+        "know about the other person, too!\r"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00171",
+      "en_US": [
+        "{STRVAR_1 28, 0, 0} Trainer?\n",
+        "That’s what you are?\f",
+        "Isn’t that something!\r",
+        "But I’m sorry to say, I don’t have\n",
+        "any Pokémon...\r",
+        "I would rather watch than battle,\n",
+        "you see.\r"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00172",
+      "en_US": [
+        "Oh! Your {STRVAR_1 28, 0, 0}!\n",
+        "I would love to have it!\f",
+        "Please trade me!\r",
+        "...\r",
+        "I was actually joking.\r",
+        "I don’t have any Pokémon, so\n",
+        "I can’t trade with anyone...\r"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00173",
+      "en_US": [
+        "{STRVAR_1 28, 0, 0}?\n",
+        "I can understand you’d want one...\r",
+        "But you shouldn’t expect people to\n",
+        "make trades just for you.\r",
+        "You also have to consider what\n",
+        "Pokémon the other person wants.\r"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00174",
+      "en_US": [
+        "Welcome to the Union Room!\r",
+        "I’m the only one here now, but\n",
+        "please do bring your friends for\f",
+        "some fun and excitement!\r",
+        "If you have time on your hands,\n",
+        "I’m also here to chat.\r",
+        "You see, I have a lot of time on\n",
+        "my hands...\r"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00175",
+      "en_US": [
+        "I’m quite good at drawing!\r",
+        "If it’s {STRVAR_1 28, 0, 0},\n",
+        "leave it to me!\f",
+        "No one’s better than me at it!\r"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00176",
+      "en_US": [
+        "Oh, you’re leaving...\r",
+        "...\r",
+        "It makes me feel lonesome...\r",
+        "Please do come visit again!\r"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00177",
+      "en_US": [
+        "What’s wrong?\n",
+        "Are you feeling down about something?\r",
+        "If you’re feeling blue, it’s much\n",
+        "better to have fun with friends\f",
+        "than to be alone.\r"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00178",
+      "en_US": [
+        "{STRVAR_1 28, 0, 0}?\n",
+        "Yes, please!\r",
+        "...I do want to join in, but I’m\n",
+        "on duty here, so I can’t...\r",
+        "Sigh... {STRVAR_1 28, 0, 0}...\n",
+        "I wish I could...\r"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00179",
+      "en_US": [
+        "{STRVAR_1 28, 0, 0}?\n",
+        "Me, too, please!\r",
+        "But I need to stay here and attend\n",
+        "to our visitors...\r",
+        "Please enjoy it with your friends!\r"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00180",
+      "en_US": [
+        "{STRVAR_1 28, 0, 0}?\n",
+        "You’re inviting me?\r",
+        "Oh, but I have to stay here and\n",
+        "attend to our visitors.\r",
+        "I’m sorry. I’d love to accept,\n",
+        "but I really can’t.\r"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00181",
+      "en_US": [
+        "That’s right!\r",
+        "Sometimes, it might be better to\n",
+        "just go and invite other people.\r",
+        "But don’t get too selfish or pushy\n",
+        "because you want to {STRVAR_1 28, 0, 0}.\r"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00182",
+      "en_US": [
+        "Yes!\n",
+        "It’s OK!\r",
+        "Nothing is impossible.\r",
+        "Think positively and keep your\n",
+        "chin up!\r"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00183",
+      "en_US": [
+        "Everyone has at least one thing\n",
+        "they aren’t good at.\r",
+        "You should never try to make someone\n",
+        "do what they don’t want to do.\r",
+        "Incidentally, {STRVAR_1 28, 0, 0} is\n",
+        "something that I would like to do.\r"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00184",
+      "en_US": [
+        "Good luck! I hope you enjoy\n",
+        "serious battles.\r",
+        "You can’t experience ones like\n",
+        "this in the Union Room!\r"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00185",
+      "en_US": [
+        "You want to chat?\r",
+        "Well, you shouldn’t be wasting your\n",
+        "time chatting with me.\r",
+        "You need to be more active and talk\n",
+        "to other players.\r",
+        "After all, you can’t make friends\n",
+        "if you don’t talk to people.\r"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00186",
+      "en_US": [
+        "Where are you?\n",
+        "Um... Right before my eyes.\r",
+        "Oh!\n",
+        "Are you maybe an impostor?\r",
+        "The real player is somewhere else?\r",
+        "...That’s ridiculous!\n",
+        "Please, don’t be silly!\f",
+        "My word!\r"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00187",
+      "en_US": [
+        "{STRVAR_1 28, 0, 0} trade?\n",
+        "That sounds fun!\f",
+        "I would love to as well.\r",
+        "But telling me that won’t help.\n",
+        "I can’t trade with anyone.\r"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00188",
+      "en_US": [
+        "If you want to have a {STRVAR_1 28, 0, 0}\n",
+        "Battle, you need to be more\f",
+        "assertive and talk to other players.\r",
+        "If you can’t assert yourself, you\n",
+        "may never get a chance at a\f",
+        "{STRVAR_1 28, 0, 0} Battle!\r"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00189",
+      "en_US": "INFO"
+    },
+    {
+      "id": "msg_0738_UNION_00190",
+      "garbage": 6
+    },
+    {
+      "id": "msg_0738_UNION_00191",
+      "en_US": "EXIT"
+    },
+    {
+      "id": "msg_0738_UNION_00192",
+      "en_US": "BATTLE"
+    },
+    {
+      "id": "msg_0738_UNION_00193",
+      "en_US": "TRADE"
+    },
+    {
+      "id": "msg_0738_UNION_00194",
+      "en_US": "RECORDS"
+    },
+    {
+      "id": "msg_0738_UNION_00195",
+      "garbage": 4
+    },
+    {
+      "id": "msg_0738_UNION_00196",
+      "en_US": "DRAW"
+    },
+    {
+      "id": "msg_0738_UNION_00197",
+      "en_US": "CHAT"
+    },
+    {
+      "id": "msg_0738_UNION_00198",
+      "en_US": "CANCEL"
+    },
+    {
+      "id": "msg_0738_UNION_00199",
+      "en_US": "Talking to {STRVAR_1 3, 0, 0}..."
+    },
+    {
+      "id": "msg_0738_UNION_00200",
+      "garbage": 18
+    },
+    {
+      "id": "msg_0738_UNION_00201",
+      "en_US": [
+        "Whoops! Sorry, but I have to do\n",
+        "something else.\f",
+        "Another time, OK?"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00202",
+      "en_US": "Waiting for the other player’s choice."
+    },
+    {
+      "id": "msg_0738_UNION_00203",
+      "garbage": 10
+    },
+    {
+      "id": "msg_0738_UNION_00204",
+      "garbage": 11
+    },
+    {
+      "id": "msg_0738_UNION_00205",
+      "garbage": 33
+    },
+    {
+      "id": "msg_0738_UNION_00206",
+      "garbage": 16
+    },
+    {
+      "id": "msg_0738_UNION_00207",
+      "garbage": 17
+    },
+    {
+      "id": "msg_0738_UNION_00208",
+      "en_US": "{STRVAR_1 3, 0, 0}’s friend"
+    },
+    {
+      "id": "msg_0738_UNION_00209",
+      "en_US": "{STRVAR_1 3, 1, 0}’s friend"
+    },
+    {
+      "id": "msg_0738_UNION_00210",
+      "en_US": "{STRVAR_1 3, 2, 0}’s friend"
+    },
+    {
+      "id": "msg_0738_UNION_00211",
+      "en_US": "こんにちは！"
+    },
+    {
+      "id": "msg_0738_UNION_00212",
+      "en_US": "Hello!"
+    },
+    {
+      "id": "msg_0738_UNION_00213",
+      "en_US": "Bonjour!"
+    },
+    {
+      "id": "msg_0738_UNION_00214",
+      "en_US": "Ciao!"
+    },
+    {
+      "id": "msg_0738_UNION_00215",
+      "en_US": "Hallo!"
+    },
+    {
+      "id": "msg_0738_UNION_00216",
+      "en_US": "Hola!"
+    },
+    {
+      "id": "msg_0738_UNION_00217",
+      "en_US": "H-e-l-l-o-!"
+    },
+    {
+      "id": "msg_0738_UNION_00218",
+      "en_US": [
+        "Sorry, you can’t do a Spin Trade with\n",
+        "Pokémon Diamond or Pearl.\r"
+      ]
+    },
+    {
+      "id": "msg_0738_UNION_00219",
+      "en_US": "Menu"
+    }
+  ]
+}

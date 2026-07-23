@@ -1,0 +1,112 @@
+{
+  "key": 17506,
+  "messages": [
+    {
+      "id": "msg_0116_D37R0101_00000",
+      "en_US": [
+        "I was challenged to a battle\n",
+        "downstairs.\r",
+        "It’s rough down there. You’d better\n",
+        "be careful."
+      ]
+    },
+    {
+      "id": "msg_0116_D37R0101_00001",
+      "en_US": [
+        "You look like an earnest youth.\n",
+        "How come you ended up in\f",
+        "Team Rocket...?"
+      ]
+    },
+    {
+      "id": "msg_0116_D37R0101_00002",
+      "en_US": [
+        "Team Rocket never stops bothering\n",
+        "people, do they?"
+      ]
+    },
+    {
+      "id": "msg_0116_D37R0101_00003",
+      "en_US": [
+        "There are some shops downstairs...\r",
+        "But there are also Trainers.\n",
+        "I’m scared to go down there."
+      ]
+    },
+    {
+      "id": "msg_0116_D37R0101_00004",
+      "en_US": [
+        "Yes...\n",
+        "Team Rocket can use the tunnel, too."
+      ]
+    },
+    {
+      "id": "msg_0116_D37R0101_00005",
+      "en_US": [
+        "All the people working at the tunnel\n",
+        "left. No one wants Team Rocket to\f",
+        "give them a hard time."
+      ]
+    },
+    {
+      "id": "msg_0116_D37R0101_00006",
+      "en_US": [
+        "Lyra: Hi, {STRVAR_1 3, 0, 0}.\n",
+        "You are just in time!\r"
+      ]
+    },
+    {
+      "id": "msg_0116_D37R0101_00007",
+      "en_US": [
+        "Lyra: When you follow this tunnel,\n",
+        "you’ll see a Dress-Up Shop.\r",
+        "That’s where your Pokémon can put on\n",
+        "Accessories to dress up and\f",
+        "take pictures!\r",
+        "By the way, here is the Fashion Case!\r",
+        "Did you say you want it?\n",
+        "I knew it!\r",
+        "This is a present from me!\r"
+      ]
+    },
+    {
+      "id": "msg_0116_D37R0101_00008",
+      "en_US": [
+        "Lyra: Keep Accessories in the\n",
+        "Fashion Case, OK?\r",
+        "I should get going.\n",
+        "See you!\r"
+      ]
+    },
+    {
+      "id": "msg_0116_D37R0101_00009",
+      "en_US": [
+        "Ethan: Hi, {STRVAR_1 3, 0, 0}.\n",
+        "You are just in time!\r"
+      ]
+    },
+    {
+      "id": "msg_0116_D37R0101_00010",
+      "en_US": [
+        "Ethan: When you follow this tunnel,\n",
+        "you’ll see a Dress-Up Shop.\r",
+        "That’s where your Pokémon can put on\n",
+        "Accessories to dress up and\f",
+        "take pictures!\r",
+        "By the way, here is the Fashion Case!\r",
+        "Did you say you want it?\n",
+        "I knew it!\r",
+        "This is a present from me!\r"
+      ]
+    },
+    {
+      "id": "msg_0116_D37R0101_00011",
+      "en_US": [
+        "Ethan: Keep Accessories in the\n",
+        "Fashion Case, OK?\r",
+        "I should get going.\n",
+        "See you!\r"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1245 @@
+/* MSL
+ * Copyright © 1995-2006 Freescale Corporation.  All rights reserved.
+ *
+ * $Date: 2006/02/09 16:58:59 $
+ * $Revision: 1.17.2.3 $
+ */
+
+// msl_thread
+
+//  The Metrowerks::threads interface closely follows that of boost::threads version 1.30.
+//  Many thanks to William E. Kempf for his work on this boost library.  The implementation
+//  of Metrowerks::threads does not follow the implementation of boost::threads, but
+//  has been independently developed.
+
+/*  msl_thread synopsis
+
+#include <msl_time>
+#include <msl_mutex>
+#include <msl_condition>
+
+namespace Metrowerks
+{
+
+class  thread
+{
+public:
+	typedef std::tr1::function<void ()> func_type;
+
+	thread();
+	explicit thread(const func_type& f);
+	explicit thread(void (*f)());
+	~thread();
+
+	bool operator==(const thread& rhs) const;
+	bool operator!=(const thread& rhs) const;
+
+	void join();
+
+	static void sleep(const universal_time& unv_time);
+	static void sleep(const elapsed_time& elps_time);
+	static void yield();
+private:
+	thread(const thread&);
+	thread& operator=(const thread&);
+};
+
+class thread_group
+{
+public:
+	thread_group();
+	~thread_group();
+
+	const thread* create_thread(const thread::func_type& f);
+	void join_all();
+private:
+	thread_group(const thread_group&);
+	thread_group& operator=(const thread_group&);
+};
+
+#define _MSL_THREAD_ONCE_INIT *details*
+
+typedef *details* once_flag;
+
+void call_once(void (*func)(), once_flag& flag);
+
+template <typename T>
+class thread_specific_ptr
+{
+public:
+	thread_specific_ptr();
+	~thread_specific_ptr();
+
+	T* get() const;
+	T* operator->() const;
+	T& operator*() const;
+	T* release();
+	void reset(T* p = 0);
+
+private:
+	thread_specific_ptr(const thread_specific_ptr&);
+	thread_specific_ptr& operator=(const thread_specific_ptr&);
+};
+
+}  // Metrowerks
+
+*/
+
+#ifndef _MSL_THREAD
+#define _MSL_THREAD
+
+#include <mslconfig>
+#include <msl_mutex>
+#include <msl_condition>
+#include <algorithm>
+
+#ifndef _MSL_NO_THREAD
+
+#include <functional>
+#include <memory>
+
+#ifdef _MSL_USE_MPTASKS
+	#if defined(__MWERKS__) && __option(only_std_keywords)
+		#pragma only_std_keywords off
+	#endif
+	#include <DriverServices.h>
+	#if defined(__MWERKS__)
+		#pragma only_std_keywords reset
+	#endif
+#endif  // _MSL_USE_MPTASKS
+
+#ifndef RC_INVOKED
+
+#ifdef __MWERKS__
+#pragma options align=native
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#if _MSL_FORCE_ENUMS_ALWAYS_INT
+		#pragma enumsalwaysint on
+	#else
+		#pragma enumsalwaysint off
+	#endif
+#endif  // _MSL_FORCE_ENUMS_ALWAYS_INT
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#if _MSL_FORCE_ENABLE_BOOL_SUPPORT
+		#pragma bool on
+	#else
+		#pragma bool off
+	#endif
+#endif  // _MSL_FORCE_ENABLE_BOOL_SUPPORT
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	namespace Metrowerks {
+#else
+	#ifndef Metrowerks
+		#define Metrowerks
+	#endif
+#endif  // _MSL_NO_CPP_NAMESPACE
+
+class _MSL_IMP_EXP_CPP thread
+{
+public:
+#if __MWERKS__ >= 0x3200
+	typedef _STD_TR1::function<void ()> func_type;
+#else  // __MWERKS__ >= 0x3200
+	typedef void (*func_type)();
+#endif
+
+	thread();
+	explicit thread(const func_type& f);
+#if __MWERKS__ >= 0x3200
+	explicit thread(void (*f)());
+#endif
+#ifdef _MSL_MOVE
+	thread(thread&& t);
+	thread& operator=(thread&& t) {swap(t); return *this;}
+#endif  // _MSL_MOVE
+	~thread();
+
+	void swap(thread& t);
+
+	bool operator==(const thread& rhs) const;
+	bool operator!=(const thread& rhs) const;
+
+	void join();
+
+#ifndef _MSL_NO_TIME_SUPPORT
+	static void sleep(const universal_time& unv_time);
+	static void sleep(const elapsed_time& elps_time);
+#endif  // _MSL_NO_TIME_SUPPORT
+	static void yield();
+private:
+	thread(const thread&);
+	thread& operator=(const thread&);
+
+#ifdef _MSL_USE_PTHREADS
+	pthread_t id_;
+#endif
+#ifdef _MSL_USE_MPTASKS
+	MPTaskID id_;
+	MPQueueID join_queue_;
+#endif  // _MSL_USE_MPTASKS
+#ifdef _MSL_USE_WINTHREADS
+	HANDLE thread_;
+	DWORD id_;
+#endif  // _MSL_USE_WINTHREADS
+	bool joinable_;
+};
+
+#ifdef __MWERKS__
+#pragma warn_no_side_effect off
+#endif
+
+inline
+thread::thread()
+#ifdef _MSL_USE_PTHREADS
+	:	id_(pthread_self()),
+#endif
+#ifdef _MSL_USE_MPTASKS
+	:	id_((MPLibraryIsLoaded(), MPCurrentTaskID())),
+		join_queue_(kInvalidID),
+#endif  // _MSL_USE_MPTASKS
+#ifdef _MSL_USE_WINTHREADS
+	:	thread_(GetCurrentThread()),
+		id_(GetCurrentThreadId()),
+#endif  // _MSL_USE_WINTHREADS
+#ifdef _MSL_SINGLE_THREAD
+	:
+#endif
+		joinable_(false)
+{
+}
+
+#ifdef _MSL_MOVE
+
+inline
+thread::thread(thread&& t)
+#ifdef _MSL_USE_PTHREADS
+	: id_(t.id_),
+#endif
+#ifdef _MSL_USE_MPTASKS
+	: id_(t.id_),
+	  join_queue_(t.join_queue_),
+#endif  // _MSL_USE_MPTASKS
+#ifdef _MSL_USE_WINTHREADS
+	: thread_(t.thread_),
+	  id_(t.id_),
+#endif  // _MSL_USE_WINTHREADS
+#ifdef _MSL_SINGLE_THREAD
+	:
+#endif
+	  joinable_(t.joinable_)
+{
+#ifdef _MSL_USE_PTHREADS
+	t.id_ = pthread_self();
+#endif
+#ifdef _MSL_USE_MPTASKS
+	t.id_ = MPCurrentTaskID();
+	t.join_queue_ = kInvalidID;
+#endif  // _MSL_USE_MPTASKS
+#ifdef _MSL_USE_WINTHREADS
+	t.thread_ = GetCurrentThread();
+	t.id_ = GetCurrentThreadId();
+#endif  // _MSL_USE_WINTHREADS
+	t.joinable_ = false;
+}
+
+#endif  // _MSL_MOVE
+
+#ifdef __MWERKS__
+#pragma warn_no_side_effect reset
+#endif
+
+inline
+thread::~thread()
+{
+#ifdef _MSL_USE_PTHREADS
+	if (joinable_)
+		pthread_detach(id_);
+#endif  // _MSL_USE_PTHREADS
+#ifdef _MSL_USE_MPTASKS
+	if (joinable_)
+		MPDeleteQueue(join_queue_);
+#endif  // _MSL_USE_MPTASKS
+#ifdef _MSL_USE_WINTHREADS
+	if (joinable_)
+		CloseHandle(thread_);
+#endif  // _MSL_USE_WINTHREADS
+}
+
+inline
+void
+thread::swap(thread& t)
+{
+#ifdef _MSL_USE_PTHREADS
+	_STD::swap(id_, t.id_);
+#endif
+#ifdef _MSL_USE_MPTASKS
+	_STD::swap(id_, t.id_);
+	_STD::swap(join_queue_, t.join_queue_);
+#endif  // _MSL_USE_MPTASKS
+#ifdef _MSL_USE_WINTHREADS
+	_STD::swap(thread_, t.thread_);
+	_STD::swap(id_, t.id_);
+#endif  // _MSL_USE_WINTHREADS
+	_STD::swap(joinable_, t.joinable_);
+}
+
+inline void swap(thread& x, thread& y) {x.swap(y);}
+
+inline
+bool
+thread::operator==(const thread& other) const
+{
+#ifdef _MSL_USE_PTHREADS
+	return pthread_equal(id_, other.id_) != 0;
+#endif
+#ifdef _MSL_USE_MPTASKS
+	return id_ == other.id_;
+#endif
+#ifdef _MSL_USE_WINTHREADS
+	return id_ == other.id_;
+#endif
+#ifdef _MSL_SINGLE_THREAD
+	(void)other;
+	return true;
+#endif  // _MSL_SINGLE_THREAD
+}
+
+inline
+bool
+thread::operator!=(const thread& other) const
+{
+	return !operator==(other);
+}
+
+inline
+void
+thread::join()
+{
+#ifdef _MSL_USE_PTHREADS
+	pthread_join(id_, 0);
+#endif
+#ifdef _MSL_USE_MPTASKS
+	MPWaitOnQueue(join_queue_, 0, 0, 0, kDurationForever);
+	MPDeleteQueue(join_queue_);
+#endif  // _MSL_USE_MPTASKS
+#ifdef _MSL_USE_WINTHREADS
+	WaitForSingleObject(thread_, INFINITE);
+	CloseHandle(thread_);
+#endif  // _MSL_USE_WINTHREADS
+	joinable_ = false;
+}
+
+#ifndef _MSL_NO_TIME_SUPPORT
+
+inline
+void
+thread::sleep(const universal_time& unv_time)
+{
+#ifdef _MSL_USE_PTHREADS
+	sleep(unv_time - universal_time());
+#endif
+#ifdef _MSL_USE_MPTASKS
+	sleep(unv_time - universal_time());
+#endif
+#ifdef _MSL_USE_WINTHREADS
+	sleep(unv_time - universal_time());
+#endif
+#ifdef _MSL_SINGLE_THREAD
+	(void)unv_time;
+#endif
+}
+
+inline
+void
+thread::sleep(const elapsed_time& elps_time)
+{
+#ifdef _MSL_USE_PTHREADS
+	nanosleep((const timespec*)&elps_time, 0);
+#endif
+#ifdef _MSL_USE_MPTASKS
+	Duration d = 0;
+	if (elps_time.sec_ > 0)
+		d = elps_time.sec_ * 1000;
+	else if (elps_time.nsec_ > 0)
+		d = elps_time.nsec_ / 1000000;
+	AbsoluteTime t = AddDurationToAbsolute(kDurationMillisecond * d, UpTime());
+	MPDelayUntil(&t);
+#endif  // _MSL_USE_MPTASKS
+#ifdef _MSL_USE_WINTHREADS
+	DWORD dwMilliseconds = (DWORD)(elps_time.sec_ * 1000 + elps_time.nsec_ / 1000);
+	Sleep(dwMilliseconds);
+#endif  // _MSL_USE_WINTHREADS
+#ifdef _MSL_SINGLE_THREAD
+	(void)elps_time;
+#endif
+}
+
+#endif  // _MSL_NO_TIME_SUPPORT
+
+inline
+void
+thread::yield()
+{
+#ifdef _MSL_USE_PTHREADS
+	sched_yield();
+#endif
+#ifdef _MSL_USE_MPTASKS
+	MPYield();
+#endif
+#ifdef _MSL_USE_WINTHREADS
+	Sleep((DWORD)0);
+#endif
+}
+
+#ifdef __MWERKS__
+	#pragma warn_padding off
+#endif
+
+class _MSL_IMP_EXP_CPP thread_group
+{
+public:
+	thread_group();
+	~thread_group();
+
+	const thread* create_thread(const thread::func_type& f);
+	void join_all();
+private:
+
+	thread_group(const thread_group&);
+	thread_group& operator=(const thread_group&);
+#ifndef _MSL_DEBUG
+	struct impl
+	{
+		void* i[3];
+		impl() {i[0] = i[1] = i[2] = 0;}
+	};
+#else  // _MSL_DEBUG
+	struct impl
+	{
+		void* i[5];
+		impl() {i[0] = i[1] = i[2] = i[3] = i[4] = 0;}
+	};
+#endif  // _MSL_DEBUG
+
+	impl impl_;
+    mutex mutex_;
+};
+
+#ifdef __MWERKS__
+	#pragma warn_padding reset
+#endif
+
+#ifdef _MSL_USE_PTHREADS
+
+#define _MSL_THREAD_ONCE_INIT PTHREAD_ONCE_INIT
+
+typedef pthread_once_t once_flag;
+
+
+extern "C" {typedef void (*__cfunc)();}
+
+inline
+void
+call_once(void (*func)(), once_flag& flag)
+{
+	pthread_once(&flag, (__cfunc)func);
+}
+
+#endif  // _MSL_USE_PTHREADS
+
+#ifdef _MSL_USE_MPTASKS
+
+#define _MSL_THREAD_ONCE_INIT {0, 0}
+
+struct once_flag
+{
+	volatile SInt32 started_;
+	volatile SInt32 done_;
+};
+
+_MSL_IMP_EXP_CPP void call_once(void (*func)(), once_flag& flag);
+
+#endif  // _MSL_USE_MPTASKS
+
+#ifdef _MSL_USE_WINTHREADS
+
+#define _MSL_THREAD_ONCE_INIT {-1, -1}
+
+struct once_flag
+{
+	volatile long not_started_;
+	volatile long not_done_;
+};
+
+_MSL_IMP_EXP_CPP void call_once(void (*func)(), once_flag& flag);
+
+#endif  // _MSL_USE_WINTHREADS
+
+#ifdef _MSL_SINGLE_THREAD
+
+#define _MSL_THREAD_ONCE_INIT false
+
+typedef bool once_flag;
+
+inline
+void
+call_once(void (*func)(), once_flag& flag)
+{
+	if (!flag)
+		func();
+	flag = true;
+}
+
+#endif  // _MSL_SINGLE_THREAD
+
+#if defined(_MSL_USE_MPTASKS) || defined(_MSL_USE_WINTHREADS)
+
+class _MSL_IMP_EXP_CPP thread_specific_ptr_base
+{
+protected:
+	void set(void (*f)(void*), const volatile void*);
+#ifdef _MSL_USE_MPTASKS
+	TaskStorageIndex key_;
+#endif  // _MSL_USE_MPTASKS
+#ifdef _MSL_USE_WINTHREADS
+	DWORD key_;
+#endif  // _MSL_USE_WINTHREADS
+};
+
+#endif  // defined(_MSL_USE_MPTASKS) || defined(_MSL_USE_WINTHREADS)
+
+template <typename T>
+class thread_specific_ptr
+#if defined(_MSL_USE_MPTASKS) || defined(_MSL_USE_WINTHREADS)
+	:	thread_specific_ptr_base
+#endif
+{
+public:
+	thread_specific_ptr();
+	~thread_specific_ptr();
+
+	T* get() const;
+	T* operator->() const {return get();}
+	T& operator*() const  {return *get();}
+	T* release();
+	void reset(T* p = 0);
+
+private:
+	thread_specific_ptr(const thread_specific_ptr&);
+	thread_specific_ptr& operator=(const thread_specific_ptr&);
+
+#ifndef _MSL_SINGLE_THREAD
+	static void at_thread_end(void* p);
+#endif
+
+#ifdef _MSL_USE_PTHREADS
+	pthread_key_t key_;
+#endif
+
+#ifdef _MSL_SINGLE_THREAD
+	T* data_;
+#endif
+};
+
+template <typename T>
+class thread_specific_ptr<T[]>
+#if defined(_MSL_USE_MPTASKS) || defined(_MSL_USE_WINTHREADS)
+	:	thread_specific_ptr_base
+#endif
+{
+public:
+	thread_specific_ptr();
+	~thread_specific_ptr();
+
+	T* get() const;
+	T& operator[](_CSTD::size_t i) const {return *(get() + i);}
+	T* release();
+	void reset(T* p = 0);
+
+private:
+	thread_specific_ptr(const thread_specific_ptr&);
+	thread_specific_ptr& operator=(const thread_specific_ptr&);
+
+#ifndef _MSL_SINGLE_THREAD
+	static void at_thread_end(void* p);
+#endif
+
+#ifdef _MSL_USE_PTHREADS
+	pthread_key_t key_;
+#endif
+
+#ifdef _MSL_SINGLE_THREAD
+	T* data_;
+#endif
+};
+
+#ifdef _MSL_USE_PTHREADS
+
+template <typename T>
+inline
+thread_specific_ptr<T>::thread_specific_ptr()
+{
+	if (pthread_key_create(&key_, &thread_specific_ptr::at_thread_end))
+		detail::throw_thread_resource_error();
+}
+
+template <typename T>
+inline
+thread_specific_ptr<T>::~thread_specific_ptr()
+{
+	pthread_key_delete(key_);
+}
+
+template <typename T>
+inline
+T*
+thread_specific_ptr<T>::get() const
+{
+	return static_cast<T*>(pthread_getspecific(key_));
+}
+
+template <typename T>
+inline
+T*
+thread_specific_ptr<T>::release()
+{
+	T* tmp = get();
+	pthread_setspecific(key_, 0);
+	return tmp;
+}
+
+template <typename T>
+inline
+void
+thread_specific_ptr<T>::reset(T* p)
+{
+	T* tmp = get();
+	if (tmp != p)
+	{
+		delete tmp;
+		pthread_setspecific(key_, p);
+	}
+}
+
+template <typename T>
+inline
+thread_specific_ptr<T[]>::thread_specific_ptr()
+{
+	if (pthread_key_create(&key_, &thread_specific_ptr::at_thread_end))
+		detail::throw_thread_resource_error();
+}
+
+template <typename T>
+inline
+thread_specific_ptr<T[]>::~thread_specific_ptr()
+{
+	pthread_key_delete(key_);
+}
+
+template <typename T>
+inline
+T*
+thread_specific_ptr<T[]>::get() const
+{
+	return static_cast<T*>(pthread_getspecific(key_));
+}
+
+template <typename T>
+inline
+T*
+thread_specific_ptr<T[]>::release()
+{
+	T* tmp = get();
+	pthread_setspecific(key_, 0);
+	return tmp;
+}
+
+template <typename T>
+inline
+void
+thread_specific_ptr<T[]>::reset(T* p)
+{
+	T* tmp = get();
+	if (tmp != p)
+	{
+		delete [] tmp;
+		pthread_setspecific(key_, p);
+	}
+}
+
+#endif  // _MSL_USE_PTHREADS
+
+#ifdef _MSL_USE_MPTASKS
+
+template <typename T>
+inline
+thread_specific_ptr<T>::thread_specific_ptr()
+{
+	if (MPAllocateTaskStorageIndex(&key_))
+		detail::throw_thread_resource_error();
+}
+
+template <typename T>
+inline
+thread_specific_ptr<T>::~thread_specific_ptr()
+{
+	MPDeallocateTaskStorageIndex(key_);
+}
+
+template <typename T>
+inline
+T*
+thread_specific_ptr<T>::get() const
+{
+	return (T*)MPGetTaskStorageValue(key_);
+}
+
+template <typename T>
+inline
+T*
+thread_specific_ptr<T>::release()
+{
+	T* tmp = get();
+	set(&thread_specific_ptr::at_thread_end, 0);
+	return tmp;
+}
+
+template <typename T>
+inline
+void
+thread_specific_ptr<T>::reset(T* p)
+{
+	T* tmp = get();
+	if (tmp != p)
+	{
+		delete tmp;
+		set(&thread_specific_ptr::at_thread_end, p);
+	}
+}
+
+template <typename T>
+inline
+thread_specific_ptr<T[]>::thread_specific_ptr()
+{
+	if (MPAllocateTaskStorageIndex(&key_))
+		detail::throw_thread_resource_error();
+}
+
+template <typename T>
+inline
+thread_specific_ptr<T[]>::~thread_specific_ptr()
+{
+	MPDeallocateTaskStorageIndex(key_);
+}
+
+template <typename T>
+inline
+T*
+thread_specific_ptr<T[]>::get() const
+{
+	return (T*)MPGetTaskStorageValue(key_);
+}
+
+template <typename T>
+inline
+T*
+thread_specific_ptr<T[]>::release()
+{
+	T* tmp = get();
+	set(&thread_specific_ptr::at_thread_end, 0);
+	return tmp;
+}
+
+template <typename T>
+inline
+void
+thread_specific_ptr<T[]>::reset(T* p)
+{
+	T* tmp = get();
+	if (tmp != p)
+	{
+		delete [] tmp;
+		set(&thread_specific_ptr::at_thread_end, p);
+	}
+}
+
+#endif  // _MSL_USE_MPTASKS
+
+#ifdef _MSL_USE_WINTHREADS
+
+template <typename T>
+inline
+thread_specific_ptr<T>::thread_specific_ptr()
+{
+	key_ = TlsAlloc();
+	if (key_ == TLS_OUT_OF_INDEXES)
+		detail::throw_thread_resource_error();
+}
+
+template <typename T>
+inline
+thread_specific_ptr<T>::~thread_specific_ptr()
+{
+	TlsFree(key_);
+}
+
+template <typename T>
+inline
+T*
+thread_specific_ptr<T>::get() const
+{
+	return (T*)TlsGetValue(key_);
+}
+
+template <typename T>
+inline
+T*
+thread_specific_ptr<T>::release()
+{
+	T* tmp = get();
+	set(&thread_specific_ptr::at_thread_end, 0);
+	return tmp;
+}
+
+template <typename T>
+inline
+void
+thread_specific_ptr<T>::reset(T* p)
+{
+	T* tmp = get();
+	if (tmp != p)
+	{
+		delete tmp;
+		set(&thread_specific_ptr::at_thread_end, p);
+	}
+}
+
+template <typename T>
+inline
+thread_specific_ptr<T[]>::thread_specific_ptr()
+{
+	key_ = TlsAlloc();
+	if (key_ == TLS_OUT_OF_INDEXES)
+		detail::throw_thread_resource_error();
+}
+
+template <typename T>
+inline
+thread_specific_ptr<T[]>::~thread_specific_ptr()
+{
+	TlsFree(key_);
+}
+
+template <typename T>
+inline
+T*
+thread_specific_ptr<T[]>::get() const
+{
+	return (T*)TlsGetValue(key_);
+}
+
+template <typename T>
+inline
+T*
+thread_specific_ptr<T[]>::release()
+{
+	T* tmp = get();
+	set(&thread_specific_ptr::at_thread_end, 0);
+	return tmp;
+}
+
+template <typename T>
+inline
+void
+thread_specific_ptr<T[]>::reset(T* p)
+{
+	T* tmp = get();
+	if (tmp != p)
+	{
+		delete [] tmp;
+		set(&thread_specific_ptr::at_thread_end, p);
+	}
+}
+
+#endif  // _MSL_USE_WINTHREADS
+
+#ifdef _MSL_SINGLE_THREAD
+
+template <typename T>
+inline
+thread_specific_ptr<T>::thread_specific_ptr()
+	:	data_(0)
+{
+}
+
+template <typename T>
+inline
+thread_specific_ptr<T>::~thread_specific_ptr()
+{
+	delete data_;
+}
+
+template <typename T>
+inline
+T*
+thread_specific_ptr<T>::get() const
+{
+	return data_;
+}
+
+template <typename T>
+inline
+T*
+thread_specific_ptr<T>::release()
+{
+	T* tmp = get();
+	data_ = 0;
+	return tmp;
+}
+
+template <typename T>
+inline
+void
+thread_specific_ptr<T>::reset(T* p)
+{
+	T* tmp = get();
+	if (tmp != p)
+	{
+		delete tmp;
+		data_ = p;
+	}
+}
+
+template <typename T>
+inline
+thread_specific_ptr<T[]>::thread_specific_ptr()
+	:	data_(0)
+{
+}
+
+template <typename T>
+inline
+thread_specific_ptr<T[]>::~thread_specific_ptr()
+{
+	delete [] data_;
+}
+
+template <typename T>
+inline
+T*
+thread_specific_ptr<T[]>::get() const
+{
+	return data_;
+}
+
+template <typename T>
+inline
+T*
+thread_specific_ptr<T[]>::release()
+{
+	T* tmp = get();
+	data_ = 0;
+	return tmp;
+}
+
+template <typename T>
+inline
+void
+thread_specific_ptr<T[]>::reset(T* p)
+{
+	T* tmp = get();
+	if (tmp != p)
+	{
+		delete [] tmp;
+		data_ = p;
+	}
+}
+
+#endif  // _MSL_SINGLE_THREAD
+
+#ifndef _MSL_SINGLE_THREAD
+
+template <typename T>
+void
+thread_specific_ptr<T>::at_thread_end(void* p)
+{
+	delete static_cast<T*>(p);
+}
+
+template <typename T>
+void
+thread_specific_ptr<T[]>::at_thread_end(void* p)
+{
+	delete [] static_cast<T*>(p);
+}
+
+#endif  // _MSL_SINGLE_THREAD
+
+template <class TryLock1, class TryLock2>
+unsigned
+try_lock(TryLock1& l1, TryLock2& l2)
+{
+	if (l1.try_lock())
+	{
+		if (l2.try_lock())
+			return 0;
+		l1.unlock();
+		return 2;
+	}
+	return 1;
+}
+
+template <class TryLock1, class TryLock2, class TryLock3>
+unsigned
+try_lock(TryLock1& l1, TryLock2& l2, TryLock3& l3)
+{
+	unsigned r = 1;
+	if (l1.try_lock())
+	{
+		r = try_lock(l2, l3);
+		if (r != 0)
+		{
+			l1.unlock();
+			++r;
+		}
+	}
+	return r;
+}
+
+template <class TryLock1, class TryLock2, class TryLock3, class TryLock4>
+unsigned
+try_lock(TryLock1& l1, TryLock2& l2, TryLock3& l3, TryLock4& l4)
+{
+	unsigned r = 1;
+	if (l1.try_lock())
+	{
+		r = try_lock(l2, l3, l4);
+		if (r != 0)
+		{
+			l1.unlock();
+			++r;
+		}
+	}
+	return r;
+}
+
+template <class TryLock1, class TryLock2>
+void
+lock(TryLock1& l1, TryLock2& l2)
+{
+	while (true)
+	{
+		l1.lock();
+		if (l2.try_lock())
+			break;
+		l1.unlock();
+		thread::yield();
+		l2.lock();
+		if (l1.try_lock())
+			break;
+		l2.unlock();
+		thread::yield();
+	}
+}
+
+template <class TryLock1, class TryLock2, class TryLock3>
+void
+lock(TryLock1& l1, TryLock2& l2, TryLock3& l3)
+{
+	unsigned i = 1;
+	while (true)
+	{
+		switch (i)
+		{
+		case 1:
+			l1.lock();
+			i = try_lock(l2, l3);
+			if (i == 0)
+				return;
+			l1.unlock();
+			++i;
+			break;
+		case 2:
+			l2.lock();
+			i = try_lock(l1, l3);
+			if (i == 0)
+				return;
+			l2.unlock();
+			if (i > 1)
+				++i;
+			break;
+		case 3:
+			l3.lock();
+			i = try_lock(l1, l2);
+			if (i == 0)
+				return;
+			l3.unlock();
+			break;
+		}
+		thread::yield();
+	}
+}
+
+template <class TryLock1, class TryLock2, class TryLock3, class TryLock4>
+void
+lock(TryLock1& l1, TryLock2& l2, TryLock3& l3, TryLock4& l4)
+{
+	unsigned i = 1;
+	while (true)
+	{
+		switch (i)
+		{
+		case 1:
+			l1.lock();
+			i = try_lock(l2, l3, l4);
+			if (i == 0)
+				return;
+			l1.unlock();
+			++i;
+			break;
+		case 2:
+			l2.lock();
+			i = try_lock(l1, l3, l4);
+			if (i == 0)
+				return;
+			l2.unlock();
+			if (i > 1)
+				++i;
+			break;
+		case 3:
+			l3.lock();
+			i = try_lock(l1, l2, l4);
+			if (i == 0)
+				return;
+			l3.unlock();
+			if (i == 3)
+				i = 4;
+			break;
+		case 4:
+			l4.lock();
+			i = try_lock(l1, l2, l3);
+			if (i == 0)
+				return;
+			l4.unlock();
+			break;
+		}
+		thread::yield();
+	}
+}
+
+template <class TryLock1, class TryLock2>
+class lock_both
+{
+	struct bool_type {int dummy_;};
+public:
+
+	lock_both(TryLock1& m1, TryLock2& m2);
+	lock_both(TryLock1& m1, TryLock2& m2, detail::defer_lock_type);
+
+	~lock_both();
+
+	void lock();
+	bool try_lock();
+	void unlock();
+	bool locked() const {return locked_;}
+	operator int bool_type::* () const {return locked_ ? &bool_type::dummy_ : 0;}
+
+private:
+	lock_both(const lock_both&);
+	lock_both& operator=(const lock_both&);
+
+	static void* operator new(_CSTD::size_t);
+	static void operator delete(void*) {}
+
+	TryLock1& m1_;
+	TryLock2& m2_;
+	bool locked_;
+};
+
+template <class TryLock1, class TryLock2>
+inline
+lock_both<TryLock1, TryLock2>::lock_both(TryLock1& m1, TryLock2& m2)
+	:	m1_(m1),
+		m2_(m2),
+		locked_(true)
+{
+	Metrowerks::lock(m1_, m2_);
+}
+
+template <class TryLock1, class TryLock2>
+inline
+lock_both<TryLock1, TryLock2>::lock_both(TryLock1& m1, TryLock2& m2, detail::defer_lock_type)
+	:	m1_(m1),
+		m2_(m2),
+		locked_(false)
+{
+}
+
+template <class TryLock1, class TryLock2>
+lock_both<TryLock1, TryLock2>::~lock_both()
+{
+	if (locked_)
+		unlock();
+}
+
+template <class TryLock1, class TryLock2>
+void
+lock_both<TryLock1, TryLock2>::lock()
+{
+	if (locked_)
+		detail::throw_lock_error();
+	Metrowerks::lock(m1_, m2_);
+	locked_ = true;
+}
+
+template <class TryLock1, class TryLock2>
+bool
+lock_both<TryLock1, TryLock2>::try_lock()
+{
+	if (locked_)
+		detail::throw_lock_error();
+	locked_ = !Metrowerks::try_lock(m1_, m2_);
+	return locked_;
+}
+
+template <class TryLock1, class TryLock2>
+void
+lock_both<TryLock1, TryLock2>::unlock()
+{
+	if (!locked_)
+		detail::throw_lock_error();
+	m1_.unlock();
+	m2_.unlock();
+	locked_ = false;
+}
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	} // namespace Metrowerks
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#pragma enumsalwaysint reset
+#endif
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#pragma bool reset
+#endif
+
+#ifdef __MWERKS__
+#pragma options align=reset
+#endif
+
+#endif // RC_INVOKED
+
+#endif  // _MSL_NO_THREAD
+
+#endif  // _MSL_THREAD
+
+// hh 030616 Created
+// hh 030711 Protected against pad warning
+// hh 030711 Fixed up thread_group::impl bug under _MSL_DEBUG
+// hh 031202 Added lock_both

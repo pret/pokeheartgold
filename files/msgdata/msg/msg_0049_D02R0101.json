@@ -1,0 +1,37 @@
+{
+  "key": 5122,
+  "messages": [
+    {
+      "id": "msg_0049_D02R0101_00000",
+      "en_US": [
+        "{STRVAR_1 3, 1, 0}: Hey, {STRVAR_1 3, 0, 0}!\n",
+        "You’re here in Kanto, too?\r",
+        "Some of the Trainers here are tough,\n",
+        "which makes it easy to train\f",
+        "my Pokémon!\r",
+        "{STRVAR_1 3, 0, 0}!\n",
+        "I know that you are strong...\r",
+        "But...\n",
+        "I can’t help but challenge you!\r"
+      ]
+    },
+    {
+      "id": "msg_0049_D02R0101_00001",
+      "en_US": [
+        "{STRVAR_1 3, 1, 0}: My training’s still not\n",
+        "good enough...?\r",
+        "My Pokémon are so weak, it makes me\n",
+        "frustrated...\r",
+        "But I can feel that they are getting\n",
+        "better after each battle...\r",
+        "..................\n",
+        "Tch!\r",
+        "They’re still too weak!\n",
+        "I need to give them more training...\r",
+        "I know!\n",
+        "I should take them to Dragon’s Den!\f",
+        "See ya, {STRVAR_1 3, 0, 0}!\r"
+      ]
+    }
+  ]
+}

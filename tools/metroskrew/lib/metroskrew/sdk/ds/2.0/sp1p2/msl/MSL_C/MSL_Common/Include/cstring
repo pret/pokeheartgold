@@ -1,0 +1,177 @@
+/* MSL
+ * Copyright © 1995-2006 Freescale Corporation.  All rights reserved.
+ *
+ * $Date: 2006/02/08 20:32:44 $
+ * $Revision: 1.57.2.3 $
+ */
+
+#ifndef _MSL_CSTRING
+#define _MSL_CSTRING
+
+#include <ansi_parms.h>
+
+#if !_MSL_USING_MW_C_HEADERS
+	#include <string.h>
+	
+	#if _MSL_PUT_THIRD_PARTY_C_IN_STD
+		#include <msl_cpp_std_string.h>
+	#endif
+#elif defined(__PALMOS_TRAPS__)
+	#include <cstring_Palm_OS>
+#else
+
+#include <null.h>
+#include <size_t.h>
+#include <msl_secure.h>
+#include <msl_rsize_t.h>
+
+#if __dest_os == __mac_os_x
+	#include <cstring_mach.h>
+#endif
+
+#if _MSL_NEEDS_EXTRAS
+	#include <extras_string.h>
+#endif
+
+#ifndef RC_INVOKED
+
+#include <string_api.h>
+
+_MSL_BEGIN_NAMESPACE_STD
+_MSL_BEGIN_EXTERN_C
+
+_MSL_IMP_EXP_C void * _MSL_CDECL memset(void *, int, size_t) _MSL_CANT_THROW;
+_MSL_IMP_EXP_C int	  _MSL_CDECL memcmp(const void *, const void *, size_t) _MSL_CANT_THROW;
+_MSL_IMP_EXP_C void * _MSL_CDECL memcpy(void * _MSL_RESTRICT, const void * _MSL_RESTRICT, size_t) _MSL_CANT_THROW;  		/*- cc 010124 -*/
+_MSL_IMP_EXP_C void * _MSL_CDECL memmove(void *, const void *, size_t) _MSL_CANT_THROW;
+_MSL_IMP_EXP_C size_t _MSL_CDECL strlen(const char *) _MSL_CANT_THROW;
+_MSL_IMP_EXP_C char * _MSL_CDECL strcpy(char * _MSL_RESTRICT, const char * _MSL_RESTRICT) _MSL_CANT_THROW;
+_MSL_IMP_EXP_C char * _MSL_CDECL strncpy(char * _MSL_RESTRICT, const char * _MSL_RESTRICT, size_t) _MSL_CANT_THROW;
+_MSL_IMP_EXP_C char * _MSL_CDECL strcat(char * _MSL_RESTRICT, const char * _MSL_RESTRICT) _MSL_CANT_THROW;
+_MSL_IMP_EXP_C char * _MSL_CDECL strncat(char * _MSL_RESTRICT, const char * _MSL_RESTRICT, size_t) _MSL_CANT_THROW;
+_MSL_IMP_EXP_C int    _MSL_CDECL strcmp(const char *, const char *) _MSL_CANT_THROW;
+_MSL_IMP_EXP_C int    _MSL_CDECL strncmp(const char *, const char *, size_t) _MSL_CANT_THROW;
+_MSL_IMP_EXP_C int    _MSL_CDECL strcoll(const char *, const char *) _MSL_CANT_THROW;
+_MSL_IMP_EXP_C size_t _MSL_CDECL strxfrm(char * _MSL_RESTRICT, const char * _MSL_RESTRICT, size_t) _MSL_CANT_THROW;
+#if !defined(__cplusplus) || __embedded_cplusplus != 0	
+_MSL_IMP_EXP_C void * _MSL_CDECL memchr(const void *, int, size_t) _MSL_CANT_THROW;
+_MSL_IMP_EXP_C char * _MSL_CDECL strchr(const char *, int) _MSL_CANT_THROW;
+_MSL_IMP_EXP_C char * _MSL_CDECL strpbrk(const char *, const char *) _MSL_CANT_THROW;
+_MSL_IMP_EXP_C char * _MSL_CDECL strrchr(const char *, int) _MSL_CANT_THROW;
+_MSL_IMP_EXP_C char * _MSL_CDECL strstr(const char * , const char *) _MSL_CANT_THROW;
+#else
+_MSL_IMP_EXP_C const void * _MSL_CDECL memchr(const void *, int, size_t) _MSL_CANT_THROW;
+_MSL_IMP_EXP_C const char * _MSL_CDECL strchr(const char *, int) _MSL_CANT_THROW;
+_MSL_IMP_EXP_C const char * _MSL_CDECL strpbrk(const char *, const char *) _MSL_CANT_THROW;
+_MSL_IMP_EXP_C const char * _MSL_CDECL strrchr(const char *, int) _MSL_CANT_THROW;
+_MSL_IMP_EXP_C const char * _MSL_CDECL strstr(const char * , const char *) _MSL_CANT_THROW;
+#endif /* __cplusplus */
+_MSL_IMP_EXP_C size_t _MSL_CDECL strspn(const char *, const char *) _MSL_CANT_THROW;
+_MSL_IMP_EXP_C size_t _MSL_CDECL strcspn(const char *, const char *) _MSL_CANT_THROW;
+_MSL_IMP_EXP_C char * _MSL_CDECL strtok(char * _MSL_RESTRICT, const char * _MSL_RESTRICT) _MSL_CANT_THROW;
+_MSL_IMP_EXP_C char * _MSL_CDECL strerror(int) _MSL_CANT_THROW;
+
+#if defined(__STDC_WANT_SECURE_LIB__) && __STDC_WANT_SECURE_LIB__
+	_MSL_IMP_EXP_C errno_t _MSL_CDECL memcpy_s(void * _MSL_RESTRICT, rsize_t, const void * _MSL_RESTRICT, rsize_t) _MSL_CANT_THROW;
+	_MSL_IMP_EXP_C errno_t _MSL_CDECL memmove_s(void *, rsize_t, const void *, rsize_t) _MSL_CANT_THROW;
+	_MSL_IMP_EXP_C size_t _MSL_CDECL strnlen_s(const char *, size_t) _MSL_CANT_THROW;
+	_MSL_IMP_EXP_C errno_t _MSL_CDECL strcpy_s(char * _MSL_RESTRICT, rsize_t, const char * _MSL_RESTRICT) _MSL_CANT_THROW;
+	_MSL_IMP_EXP_C errno_t _MSL_CDECL strncpy_s(char * _MSL_RESTRICT, rsize_t, const char * _MSL_RESTRICT, rsize_t) _MSL_CANT_THROW;
+	_MSL_IMP_EXP_C errno_t _MSL_CDECL strcat_s(char * _MSL_RESTRICT, rsize_t, const char * _MSL_RESTRICT) _MSL_CANT_THROW;
+	_MSL_IMP_EXP_C errno_t _MSL_CDECL strncat_s(char * _MSL_RESTRICT, rsize_t, const char * _MSL_RESTRICT, rsize_t) _MSL_CANT_THROW;
+	_MSL_IMP_EXP_C errno_t _MSL_CDECL strerror_s(char *, rsize_t, errno_t) _MSL_CANT_THROW;
+	
+	_MSL_IMP_EXP_C char * _MSL_CDECL strtok_s(char * _MSL_RESTRICT, const char * _MSL_RESTRICT, char ** _MSL_RESTRICT) _MSL_CANT_THROW;
+#endif /* __STDC_WANT_SECURE_LIB__ */
+
+_MSL_END_EXTERN_C
+
+#if defined(__cplusplus) && __embedded_cplusplus == 0	
+
+	extern "C++" {	/*- ejs 040422 -*/
+
+	inline
+	char* _MSL_CDECL
+	strchr(char* s, int c) _MSL_CANT_THROW
+	{
+		return const_cast<char*>(strchr(static_cast<const char*>(s), c));
+	}
+
+	inline
+	char* _MSL_CDECL
+	strpbrk(char* s1, const char* s2) _MSL_CANT_THROW
+	{
+		return const_cast<char*>(strpbrk(static_cast<const char*>(s1), s2));
+	}
+
+	inline
+	char* _MSL_CDECL
+	strrchr(char* s, int c) _MSL_CANT_THROW
+	{
+		return const_cast<char*>(strrchr(static_cast<const char*>(s), c));
+	}
+
+	inline
+	char* _MSL_CDECL
+	strstr(char* s1, const char* s2) _MSL_CANT_THROW
+	{
+		return const_cast<char*>(strstr(static_cast<const char*>(s1), s2));
+	}
+
+	inline
+	void* _MSL_CDECL
+	memchr(void* s, int c, size_t n) _MSL_CANT_THROW
+	{
+		return const_cast<void*>(memchr(static_cast<const void*>(s), c, n));
+	}
+
+	} /* extern "C" */	/*- ejs 040422 -*/
+	
+#endif /* __cplusplus */
+
+_MSL_END_NAMESPACE_STD
+
+#if (defined(__MC68K__) && __embedded__)
+    #include <string.68k.h>    
+#endif
+
+#endif /* RC_INVOKED */
+
+#endif /* _MSL_USING_MW_C_HEADERS || __PALMOS_TRAPS__ */
+
+#endif /* _MSL_CSTRING */
+
+/* Change record:
+ * mm  960927 Inserted setting of __dest_os to __mac_os when not otherwise set.
+ * hh  971206 Changed file name to cstring (from string.h) and added namespace support.
+ * hh  971217 commented out inline definitions.  C++ must use C libs
+ * hh  971230 added RC_INVOKED wrapper
+ * hh  980122 added <cstddef> for wchar_t
+ * bs  990105 changed prototype for strncasecmp
+ * vss 990121 removed powerTV wrapper
+ * mm  990217 Deleted #include of cstddef and replaced by #include <wchar_t.h>
+ * blc 990312 removed wchar_t functions and reference (they are in wstring.h now)
+ * hh  990525 Fixed 68K C++ / namespace bug with strlen and strcpy
+ * hh  991112 Put inline definitions back in as extern "C++"
+ * hh  991112 Put non-const versions of str and mem functions in per C++ standard.
+ * cc  000515 Dest os the #include of extras.h 
+ * JWW 001208 Added case for targeting Mach-O
+ * cc  010124 made memcpy __cdecl
+ * cc  010125 made __cdecl memcpy only for win 
+ * cc  000326 removed dest_os to be_os 
+ * cc  010405 removed pragma options align native and reset	
+ * cc  010410 updated to new namespace macros 		
+ * mm  010509 changed __max_errstr to 40	
+ * blc 010914 made inclusion of string.68k.h contingent on __embedded__
+ * blc 010926 Added case for Palm OS
+ * cc  011023 Added check for _MSL_NEEDS_EXTRAS
+ * JWW 011027 Use _MSL_USING_MW_C_HEADERS as generic header test instead of specific Mach-O test
+ * cc  011029 Moved api's to string_api.h
+ * cc  011203 Added _MSL_CDECL for new name mangling 
+ * hh  020603 Added no throw spec to functions
+ * JWW 020917 Added _MSL_RESTRICT to get the restrict type specifier for certain C99 functions
+ * JWW 031030 Added the __STDC_WANT_SECURE_LIB__ secure library extensions
+ * JWW 040317 Updated the __STDC_WANT_SECURE_LIB__ secure library based on new secure specifications
+ * ejs 040422 Add extern "C++" wrapper for inline overloads
+ * JWW 050128 When using MSL C++ on top of a third party C (non-MSL), put C items into std namespace
+ */

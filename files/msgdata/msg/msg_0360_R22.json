@@ -1,0 +1,226 @@
+{
+  "key": 20247,
+  "messages": [
+    {
+      "id": "msg_0360_R22_00000",
+      "en_US": [
+        "Pokémon League\n",
+        "Victory Road Entrance"
+      ]
+    },
+    {
+      "id": "msg_0360_R22_00001",
+      "en_US": [
+        "It seems that CELEBI has made you\n",
+        "travel through time...\f",
+        "to the past!\r"
+      ]
+    },
+    {
+      "id": "msg_0360_R22_00002",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}: You told me...\n",
+        "you were the number one in the world!\r",
+        "Are you gonna quit?\r",
+        "What are you going to do now?\r"
+      ]
+    },
+    {
+      "id": "msg_0360_R22_00003",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}: What aspect of you was\n",
+        "number one?\r",
+        "Gathering so many only to be defeated\n",
+        "by a mere child!\r"
+      ]
+    },
+    {
+      "id": "msg_0360_R22_00004",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}: I don’t understand you!\r",
+        "You don’t make any sense!\r"
+      ]
+    },
+    {
+      "id": "msg_0360_R22_00005",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}: I don’t want to\n",
+        "understand you!\r",
+        "I will never become someone like you.\r",
+        "A coward when you’re alone and\n",
+        "acting like a tyrant when you’re in\f",
+        "front of other cowards!\r",
+        "I will become strong!\r",
+        "I will become a stronger man all\n",
+        "by myself!\r"
+      ]
+    },
+    {
+      "id": "msg_0360_R22_00006",
+      "en_US": "{SIZE 200}All by myself!{SIZE 100}\r"
+    },
+    {
+      "id": "msg_0360_R22_00007",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}: ...What are you\n",
+        "staring at?\r"
+      ]
+    },
+    {
+      "id": "msg_0360_R22_00008",
+      "en_US": [
+        "..................\r",
+        "One must acknowledge one’s defeat\n",
+        "before he can move on...\r",
+        "I will go solo...for now...\r",
+        "So that one day I will form\n",
+        "a stronger organization!\r"
+      ]
+    },
+    {
+      "id": "msg_0360_R22_00009",
+      "en_US": [
+        "Putting together the potential of many\n",
+        "is how you produce a huge power...\f",
+        "That’s what an organization is...\r",
+        "That’s the strength of\n",
+        "an organization!\r",
+        "I failed...to make the best use of\n",
+        "my subordinates’ potential...!\r",
+        "But you shall witness one day\n",
+        "the revival of me and my {COLOR 1}Team Rocket{COLOR 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0360_R22_00010",
+      "en_US": [
+        "..................\n",
+        "One day, you will understand.\r"
+      ]
+    },
+    {
+      "id": "msg_0360_R22_00011",
+      "en_US": "Ethan: Where are we...?\r"
+    },
+    {
+      "id": "msg_0360_R22_00012",
+      "en_US": "Lyra: Where are we...?\r"
+    },
+    {
+      "id": "msg_0360_R22_00013",
+      "en_US": [
+        "Ethan: Ilex Forest has disappeared!\r",
+        "...That’s not it.\n",
+        "It’s more like we have been\f",
+        "transported somewhere else...?\r"
+      ]
+    },
+    {
+      "id": "msg_0360_R22_00014",
+      "en_US": [
+        "Lyra: Ilex Forest has disappeared!\r",
+        "...That’s not it.\n",
+        "It’s more like we have been\f",
+        "transported somewhere else...?\r"
+      ]
+    },
+    {
+      "id": "msg_0360_R22_00015",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}, something is strange!\r",
+        "I heard the radio mentioning\n",
+        "the date from three years ago!\r"
+      ]
+    },
+    {
+      "id": "msg_0360_R22_00016",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}, something is strange!\r",
+        "I heard the radio mentioning\n",
+        "the date from three years ago!\r"
+      ]
+    },
+    {
+      "id": "msg_0360_R22_00017",
+      "en_US": [
+        "Is that...am I looking at...\n",
+        "CELEBI?\r",
+        "That explains it!\n",
+        "CELEBI must have caused all this!\r",
+        "My grandpa once told me that\n",
+        "CELEBI can travel through time using\f",
+        "its mystic power called {COLOR 1}Time Travel{COLOR 0}!\r",
+        "CELEBI must have taken us back in time!\n",
+        "Literally!\r"
+      ]
+    },
+    {
+      "id": "msg_0360_R22_00018",
+      "en_US": [
+        "Is that...am I looking at...\n",
+        "CELEBI?\r",
+        "That explains it!\n",
+        "CELEBI must have caused all this!\r",
+        "My grandpa once told me that\n",
+        "CELEBI can travel through time using\f",
+        "its mystic power called {COLOR 1}Time Travel{COLOR 0}!\r",
+        "CELEBI must have taken us back in time!\n",
+        "Literally!\r"
+      ]
+    },
+    {
+      "id": "msg_0360_R22_00019",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}, there is someone else\n",
+        "here besides us! Let’s go find out who!\r"
+      ]
+    },
+    {
+      "id": "msg_0360_R22_00020",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}, there is someone else\n",
+        "here besides us! Let’s go find out who!\r"
+      ]
+    },
+    {
+      "id": "msg_0360_R22_00021",
+      "en_US": [
+        "Ethan: Who does he think he is?\n",
+        "That was unnecessary!\r",
+        "But what were they talking about?\n",
+        "The revival of {COLOR 1}Team Rocket{COLOR 0}...?\r",
+        "They say that Team Rocket was\n",
+        "removed from the Kanto region\f",
+        "by a child three years ago.\r",
+        "So this really is three years ago!\r"
+      ]
+    },
+    {
+      "id": "msg_0360_R22_00022",
+      "en_US": [
+        "Lyra: Who does he think he is?\n",
+        "That was unnecessary!\r",
+        "But what were they talking about?\n",
+        "The revival of {COLOR 1}Team Rocket{COLOR 0}...?\r",
+        "They say that Team Rocket was\n",
+        "removed from the Kanto region\f",
+        "by a child three years ago.\r",
+        "So this really is three years ago!\r"
+      ]
+    },
+    {
+      "id": "msg_0360_R22_00023",
+      "en_US": [
+        "Oh no! It’s happening again...!\r",
+        "It’s CELEBI’s {COLOR 1}Time Travel{COLOR 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0360_R22_00024",
+      "en_US": [
+        "Oh no! It’s happening again...!\r",
+        "It’s CELEBI’s {COLOR 1}Time Travel{COLOR 0}!\r"
+      ]
+    }
+  ]
+}

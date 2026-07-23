@@ -1,0 +1,19 @@
+{
+  "key": 18239,
+  "messages": [
+    {
+      "id": "msg_0338_R08_00000",
+      "en_US": [
+        "It won’t open!\r",
+        "It’s locked..."
+      ]
+    },
+    {
+      "id": "msg_0338_R08_00001",
+      "en_US": [
+        "The notice is torn.\n",
+        "It’s impossible to read..."
+      ]
+    }
+  ]
+}

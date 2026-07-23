@@ -1,0 +1,390 @@
+{
+  "key": 62272,
+  "messages": [
+    {
+      "id": "msg_0024_00000",
+      "en_US": "{STRVAR_1 0, 0, 0}"
+    },
+    {
+      "id": "msg_0024_00001",
+      "en_US": "{STRVAR_1 1, 0, 0}"
+    },
+    {
+      "id": "msg_0024_00002",
+      "garbage": 4
+    },
+    {
+      "id": "msg_0024_00003",
+      "garbage": 4
+    },
+    {
+      "id": "msg_0024_00004",
+      "garbage": 4
+    },
+    {
+      "id": "msg_0024_00005",
+      "en_US": "{STRVAR_1 11, 0, 0}"
+    },
+    {
+      "id": "msg_0024_00006",
+      "en_US": "BOX 1"
+    },
+    {
+      "id": "msg_0024_00007",
+      "en_US": "BOX 2"
+    },
+    {
+      "id": "msg_0024_00008",
+      "en_US": "BOX 3"
+    },
+    {
+      "id": "msg_0024_00009",
+      "en_US": "BOX 4"
+    },
+    {
+      "id": "msg_0024_00010",
+      "en_US": "BOX 5"
+    },
+    {
+      "id": "msg_0024_00011",
+      "en_US": "BOX 6"
+    },
+    {
+      "id": "msg_0024_00012",
+      "en_US": "BOX 7"
+    },
+    {
+      "id": "msg_0024_00013",
+      "en_US": "BOX 8"
+    },
+    {
+      "id": "msg_0024_00014",
+      "en_US": "BOX 9"
+    },
+    {
+      "id": "msg_0024_00015",
+      "en_US": "BOX 10"
+    },
+    {
+      "id": "msg_0024_00016",
+      "en_US": "BOX 11"
+    },
+    {
+      "id": "msg_0024_00017",
+      "en_US": "BOX 12"
+    },
+    {
+      "id": "msg_0024_00018",
+      "en_US": "BOX 13"
+    },
+    {
+      "id": "msg_0024_00019",
+      "en_US": "BOX 14"
+    },
+    {
+      "id": "msg_0024_00020",
+      "en_US": "BOX 15"
+    },
+    {
+      "id": "msg_0024_00021",
+      "en_US": "BOX 16"
+    },
+    {
+      "id": "msg_0024_00022",
+      "en_US": "BOX 17"
+    },
+    {
+      "id": "msg_0024_00023",
+      "en_US": "BOX 18"
+    },
+    {
+      "id": "msg_0024_00024",
+      "en_US": "{STRVAR_1 51, 0, 0}/{STRVAR_1 51, 1, 0}"
+    },
+    {
+      "id": "msg_0024_00025",
+      "garbage": 4
+    },
+    {
+      "id": "msg_0024_00026",
+      "en_US": "WALLPAPER"
+    },
+    {
+      "id": "msg_0024_00027",
+      "en_US": "NAME"
+    },
+    {
+      "id": "msg_0024_00028",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0024_00029",
+      "garbage": 5
+    },
+    {
+      "id": "msg_0024_00030",
+      "garbage": 5
+    },
+    {
+      "id": "msg_0024_00031",
+      "garbage": 5
+    },
+    {
+      "id": "msg_0024_00032",
+      "garbage": 5
+    },
+    {
+      "id": "msg_0024_00033",
+      "garbage": 5
+    },
+    {
+      "id": "msg_0024_00034",
+      "garbage": 5
+    },
+    {
+      "id": "msg_0024_00035",
+      "en_US": "FOREST"
+    },
+    {
+      "id": "msg_0024_00036",
+      "en_US": "CITY"
+    },
+    {
+      "id": "msg_0024_00037",
+      "en_US": "DESERT"
+    },
+    {
+      "id": "msg_0024_00038",
+      "en_US": "SAVANNA"
+    },
+    {
+      "id": "msg_0024_00039",
+      "en_US": "CRAG"
+    },
+    {
+      "id": "msg_0024_00040",
+      "en_US": "VOLCANO"
+    },
+    {
+      "id": "msg_0024_00041",
+      "en_US": "SNOW"
+    },
+    {
+      "id": "msg_0024_00042",
+      "en_US": "CAVE"
+    },
+    {
+      "id": "msg_0024_00043",
+      "en_US": "BEACH"
+    },
+    {
+      "id": "msg_0024_00044",
+      "en_US": "SEAFLOOR"
+    },
+    {
+      "id": "msg_0024_00045",
+      "en_US": "RIVER"
+    },
+    {
+      "id": "msg_0024_00046",
+      "en_US": "SKY"
+    },
+    {
+      "id": "msg_0024_00047",
+      "en_US": "POKé CENTER"
+    },
+    {
+      "id": "msg_0024_00048",
+      "en_US": "MACHINE"
+    },
+    {
+      "id": "msg_0024_00049",
+      "en_US": "CHECKS"
+    },
+    {
+      "id": "msg_0024_00050",
+      "en_US": "SIMPLE"
+    },
+    {
+      "id": "msg_0024_00051",
+      "en_US": "HEART"
+    },
+    {
+      "id": "msg_0024_00052",
+      "en_US": "SOUL"
+    },
+    {
+      "id": "msg_0024_00053",
+      "en_US": "BIG BROTHER"
+    },
+    {
+      "id": "msg_0024_00054",
+      "en_US": "POKéATHLON"
+    },
+    {
+      "id": "msg_0024_00055",
+      "en_US": "TRIO"
+    },
+    {
+      "id": "msg_0024_00056",
+      "en_US": "SPIKY PIKA"
+    },
+    {
+      "id": "msg_0024_00057",
+      "en_US": "KIMONO GIRL"
+    },
+    {
+      "id": "msg_0024_00058",
+      "en_US": "REVIVAL"
+    },
+    {
+      "id": "msg_0024_00059",
+      "en_US": "－"
+    },
+    {
+      "id": "msg_0024_00060",
+      "en_US": "PARTY ₧₦"
+    },
+    {
+      "id": "msg_0024_00061",
+      "en_US": "MOVE"
+    },
+    {
+      "id": "msg_0024_00062",
+      "en_US": "RETURN"
+    },
+    {
+      "id": "msg_0024_00063",
+      "en_US": "CHANGE BOX"
+    },
+    {
+      "id": "msg_0024_00064",
+      "en_US": "SORT ITEMS"
+    },
+    {
+      "id": "msg_0024_00065",
+      "en_US": "SUMMARY"
+    },
+    {
+      "id": "msg_0024_00066",
+      "en_US": "HELD ITEMS"
+    },
+    {
+      "id": "msg_0024_00067",
+      "en_US": "MARKING"
+    },
+    {
+      "id": "msg_0024_00068",
+      "en_US": "RELEASE"
+    },
+    {
+      "id": "msg_0024_00069",
+      "en_US": "WITHDRAW"
+    },
+    {
+      "id": "msg_0024_00070",
+      "en_US": "DEPOSIT"
+    },
+    {
+      "id": "msg_0024_00071",
+      "en_US": "EXIT"
+    },
+    {
+      "id": "msg_0024_00072",
+      "en_US": "CONFIRM"
+    },
+    {
+      "id": "msg_0024_00073",
+      "en_US": "CANCEL"
+    },
+    {
+      "id": "msg_0024_00074",
+      "en_US": "SWITCH"
+    },
+    {
+      "id": "msg_0024_00075",
+      "en_US": "EXIT"
+    },
+    {
+      "id": "msg_0024_00076",
+      "en_US": "EXIT"
+    },
+    {
+      "id": "msg_0024_00077",
+      "en_US": [
+        "CHANGE\n",
+        "BOX"
+      ]
+    },
+    {
+      "id": "msg_0024_00078",
+      "en_US": [
+        "CHANGE\n",
+        "WALLPAPER"
+      ]
+    },
+    {
+      "id": "msg_0024_00079",
+      "en_US": [
+        "DEPOSIT\n",
+        "POKéMON"
+      ]
+    },
+    {
+      "id": "msg_0024_00080",
+      "en_US": "BAG"
+    },
+    {
+      "id": "msg_0024_00081",
+      "en_US": "GIVE"
+    },
+    {
+      "id": "msg_0024_00082",
+      "en_US": "㊚"
+    },
+    {
+      "id": "msg_0024_00083",
+      "en_US": "㊛"
+    },
+    {
+      "id": "msg_0024_00084",
+      "en_US": "{STRVAR_1 5, 0, 0}"
+    },
+    {
+      "id": "msg_0024_00085",
+      "en_US": "{STRVAR_1 7, 0, 0}"
+    },
+    {
+      "id": "msg_0024_00086",
+      "en_US": "{STRVAR_1 8, 0, 0}"
+    },
+    {
+      "id": "msg_0024_00087",
+      "en_US": "NATURE"
+    },
+    {
+      "id": "msg_0024_00088",
+      "en_US": "ABILITY"
+    },
+    {
+      "id": "msg_0024_00089",
+      "en_US": "ITEM"
+    },
+    {
+      "id": "msg_0024_00090",
+      "en_US": "{STRVAR_1 52, 0, 0}"
+    },
+    {
+      "id": "msg_0024_00091",
+      "en_US": "{STRVAR_1 52, 0, 0}"
+    },
+    {
+      "id": "msg_0024_00092",
+      "en_US": "None"
+    },
+    {
+      "id": "msg_0024_00093",
+      "en_US": "???"
+    }
+  ]
+}

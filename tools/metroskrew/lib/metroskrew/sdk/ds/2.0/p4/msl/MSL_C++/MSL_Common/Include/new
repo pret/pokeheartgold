@@ -1,0 +1,202 @@
+/* MSL
+ * Copyright © 1995-2006 Freescale Corporation.  All rights reserved.
+ *
+ * $Date: 2006/02/09 16:59:05 $
+ * $Revision: 1.29.2.2 $
+ */
+
+// new        hh 971206  filename used to be new.h
+
+#ifndef _NEW
+#define _NEW
+
+#ifdef __MWERKS__
+#pragma warn_undefmacro off
+#endif
+
+/*  new synopsis
+
+namespace std
+{
+
+class bad_alloc
+	: public exception
+{
+public:
+	bad_alloc() throw();
+	bad_alloc(const bad_alloc&) throw();
+	bad_alloc& operator=(const bad_alloc&) throw();
+	virtual ~bad_alloc() throw();
+	virtual const char* what() const throw();
+};
+
+struct nothrow_t {};
+extern const nothrow_t nothrow;
+
+typedef void (*new_handler)();
+new_handler set_new_handler(new_handler new_p) throw();
+
+}  // std
+
+void* operator new(std::size_t size) throw(std::bad_alloc);
+void* operator new(std::size_t size, const std::nothrow_t&) throw();
+
+void  operator delete(void* ptr) throw();
+void  operator delete(void* ptr, const std::nothrow_t&) throw();
+
+void* operator new[](std::size_t size) throw(std::bad_alloc);
+void* operator new[](std::size_t size, const std::nothrow_t&) throw();
+
+void  operator delete[](void* ptr) throw();
+void  operator delete[](void* ptr, const std::nothrow_t&) throw();
+
+void* operator new  (std::size_t size, void* ptr) throw();
+void* operator new[](std::size_t size, void* ptr) throw();
+
+void  operator delete  (void* ptr, void*) throw();
+void  operator delete[](void* ptr, void*) throw();
+
+*/
+
+#include <mslconfig>
+#include <cstddef>     // MW-mm 960723 // hh 971226 changed from <size_t.h>
+#include <exception>   //960902 bkoz
+
+#ifndef RC_INVOKED // hh 971230
+
+#ifdef __MWERKS__
+#pragma options align=native
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#if _MSL_FORCE_ENUMS_ALWAYS_INT
+		#pragma enumsalwaysint on
+	#else
+		#pragma enumsalwaysint off
+	#endif
+#endif  // _MSL_FORCE_ENUMS_ALWAYS_INT
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#if _MSL_FORCE_ENABLE_BOOL_SUPPORT
+		#pragma bool on
+	#else
+		#pragma bool off
+	#endif
+#endif  // _MSL_FORCE_ENABLE_BOOL_SUPPORT
+
+#ifndef _MSL_NO_CPP_NAMESPACE  // MW-mm 960213b
+	namespace std {
+#endif
+
+	class bad_alloc : public exception {  // hh 971226 rewrite
+	public:
+		bad_alloc () _MSL_NO_THROW {}
+		bad_alloc (const bad_alloc&) _MSL_NO_THROW {}
+		bad_alloc& operator= (const bad_alloc&) _MSL_NO_THROW {return *this;}
+		virtual ~bad_alloc () _MSL_NO_THROW {};
+		virtual const char* what () const _MSL_NO_THROW {return "bad_alloc";}
+	};
+
+	struct nothrow_t {};                           //970415 bkoz
+	extern _MSL_IMP_EXP_RUNTIME nothrow_t nothrow; //990405 blc
+
+	typedef void (*new_handler)();
+
+	_MSL_IMP_EXP_RUNTIME new_handler set_new_handler(new_handler new_p) _MSL_NO_THROW;
+
+#ifndef _MSL_NO_CPP_NAMESPACE // MW-mm 960213b
+	} // namespace std
+#endif
+
+#if __INTEL__ && __dest_os == __win32_os
+// EJS: the compiler generates calls to these functions directly;
+// we must ensure they can be found with any options
+#pragma calling_convention(__cdecl)
+#endif  // __INTEL__ && __dest_os == __win32_os
+
+#ifndef _MSL_NO_THROW_SPECS
+	_MSL_IMP_EXP_RUNTIME void* operator new(_CSTD::size_t size) throw(_STD::bad_alloc);
+#else
+	_MSL_IMP_EXP_RUNTIME void* operator new(_CSTD::size_t size);
+#endif
+_MSL_IMP_EXP_RUNTIME void* operator new(_CSTD::size_t size, const _STD::nothrow_t&) _MSL_NO_THROW;
+inline void* operator new(_CSTD::size_t, void* ptr) _MSL_NO_THROW {return ptr;}
+_MSL_IMP_EXP_RUNTIME void  operator delete(void* ptr) _MSL_NO_THROW;
+#if __MWERKS__ >= 0x2020 || defined (__GNUC__)
+	#if __MWERKS__ >= 0x2400
+	_MSL_IMP_EXP_RUNTIME void  operator delete(void* ptr, const _STD::nothrow_t&) _MSL_NO_THROW;
+	inline void  operator delete  (void*, void*) _MSL_NO_THROW {}
+	#endif  // __MWERKS__ >= 0x2400
+	#ifndef _MSL_NO_THROW_SPECS
+		_MSL_IMP_EXP_RUNTIME void* operator new[](_CSTD::size_t size) throw(_STD::bad_alloc);
+	#else
+		_MSL_IMP_EXP_RUNTIME void* operator new[](_CSTD::size_t size);
+	#endif
+	_MSL_IMP_EXP_RUNTIME void* operator new[](_CSTD::size_t size, const _STD::nothrow_t&) _MSL_NO_THROW;
+	inline void* operator new[](_CSTD::size_t, void* ptr) _MSL_NO_THROW {return ptr;}
+	_MSL_IMP_EXP_RUNTIME void  operator delete[](void* ptr) _MSL_NO_THROW;
+	#if __MWERKS__ >= 0x2400
+	_MSL_IMP_EXP_RUNTIME void  operator delete[](void* ptr, const _STD::nothrow_t&) _MSL_NO_THROW;
+	inline void  operator delete[](void*, void*) _MSL_NO_THROW {}
+	#endif  // __MWERKS__ >= 0x2400
+#endif  // __MWERKS__ >= 0x2020 || defined (__GNUC__)
+
+#if __INTEL__ && __dest_os == __win32_os
+#pragma calling_convention(reset)
+#endif
+
+#ifndef _MSL_NO_CPP_NAMESPACE   // hh 971206  put this stuff in std::
+	namespace std {
+#endif
+
+//	non-standard functions
+extern char __throws_bad_alloc;
+extern void __throw_bad_alloc();
+extern void _set_newpoolsize(size_t);       //  default: 0x00010000L
+extern void _set_newnonptrmax(size_t);      //  default: 0x00001000L
+extern char _prealloc_newpool(size_t);      //  preallocte a new buffer
+
+#ifndef _MSL_NO_CPP_NAMESPACE   // hh 971206
+	}
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#pragma enumsalwaysint reset
+#endif
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#pragma bool reset
+#endif
+
+#ifdef __MWERKS__
+#pragma options align=reset
+#endif
+
+#endif  // RC_INVOKED // hh 971230
+
+#ifdef __MWERKS__
+#pragma warn_undefmacro reset
+#endif
+
+#endif // _NEW
+
+// MW-mm 960213a  Deleted the definition of the bad_except class
+// MW-mm 960213b  Put Modena wrappers around namespace
+// MW-mm 960213c  Changed declaration to avoid syntax error in line with <new>
+// MW-mm 960307a  Changed declaration to avoid syntax error in line with delete
+// MW-mm 960723   Added include of size_t.h so that new.h can be compiled independently
+// mw-bk 960813   added andreas's changes for new throw bad_alloc()
+// mw-bk 960902   moved class exception into exception header, including excpt instead of stdexcept
+// mw-bk 961210   added alignment wrapper
+// mw-bk 961221   line 65 added moto wrapper (mmoss)
+// vss   971006   namespace std
+// vss   971010   Put in export of nothrow_t as per standards
+// hh    971206   Added namespace support
+//>>>HOMMEL 971204  Added support for operator new[]
+// hh 971226 rewrite bad_alloc
+// hh 971230   added RC_INVOKED wrapper
+// vss  980616  removed DebugNew lines
+// hh 990120 changed name of MSIPL flags
+// hh 990721 Fixed _MSL_NO_THROW_SPECS #ifdefs
+// hh 000130 Enabled the final forms of delete
+// hh 010402 Removed 68K CMF support

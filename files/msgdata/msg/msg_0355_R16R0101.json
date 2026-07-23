@@ -1,0 +1,51 @@
+{
+  "key": 5159,
+  "messages": [
+    {
+      "id": "msg_0355_R16R0101_00000",
+      "en_US": [
+        "If you cruise down the Cycling Road,\n",
+        "you will end up in Fuchsia City."
+      ]
+    },
+    {
+      "id": "msg_0355_R16R0101_00001",
+      "en_US": [
+        "Hello, hello. Would you like to hear\n",
+        "a trendy saying? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0355_R16R0101_00002",
+      "en_US": [
+        "Very well...\r",
+        "The trendy thing for you to say\n",
+        "would be...\r",
+        "{STRVAR_1 28, 0, 0}!\r",
+        "That’s a trendy sort of thing\n",
+        "to say."
+      ]
+    },
+    {
+      "id": "msg_0355_R16R0101_00003",
+      "en_US": [
+        "Oh, come on now! With an attitude\n",
+        "like that, you’ll fall behind the times!"
+      ]
+    },
+    {
+      "id": "msg_0355_R16R0101_00004",
+      "en_US": [
+        "I hope you’ll use trendy sayings\n",
+        "in trendy ways."
+      ]
+    },
+    {
+      "id": "msg_0355_R16R0101_00005",
+      "en_US": [
+        "Hello, hello. Are you using\n",
+        "trendy sayings?"
+      ]
+    }
+  ]
+}

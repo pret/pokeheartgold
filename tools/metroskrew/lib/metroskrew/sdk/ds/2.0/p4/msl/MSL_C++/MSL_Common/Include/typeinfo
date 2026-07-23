@@ -1,0 +1,296 @@
+/* MSL
+ * Copyright © 1995-2006 Freescale Corporation.  All rights reserved.
+ *
+ * $Date: 2006/02/09 16:59:39 $
+ * $Revision: 1.28.2.2 $
+ */
+
+// typeinfo
+
+#ifndef _TYPEINFO
+#define _TYPEINFO
+
+/*  typeinfo synopsis
+
+namespace std
+{
+class type_info
+{
+public:
+	bool operator== (const type_info& rhs) const;
+	bool operator!= (const type_info& rhs) const;
+	bool before (const type_info& rhs) const;
+	const char* name () const;
+
+private:
+	type_info (const type_info&);             //  not defined
+	type_info& operator= (const type_info&);  //  not defined
+};
+
+class bad_cast : public exception {
+public :
+	bad_cast() throw();
+	bad_cast(const bad_cast&) throw();
+	bad_cast& operator=(const bad_cast&) throw();
+	virtual ~bad_cast() throw();
+	virtual const char* what() const throw();
+};
+
+class bad_typeid : public exception {
+public:
+	bad_typeid() throw();
+	bad_typeid(const bad_typeid&) throw();
+	bad_typeid& operator=(const bad_typeid&) throw();
+	virtual ~bad_typeid() throw();
+	virtual const char* what() const throw();
+};
+
+}  // std
+*/
+
+#ifdef __MWERKS__
+#pragma warn_undefmacro off
+#endif
+
+#include <mslconfig>
+#include <exception>    //960828 bkoz so that __priv_throwbadcast defined in runtime
+#include <cstring>      // hh 980124 added
+
+#ifndef RC_INVOKED // hh 971230
+
+#ifdef __MWERKS__
+#pragma options align=native
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#if _MSL_FORCE_ENUMS_ALWAYS_INT
+		#pragma enumsalwaysint on
+	#else
+		#pragma enumsalwaysint off
+	#endif
+#endif  // _MSL_FORCE_ENUMS_ALWAYS_INT
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#if _MSL_FORCE_ENABLE_BOOL_SUPPORT
+		#pragma bool on
+	#else
+		#pragma bool off
+	#endif
+#endif  // _MSL_FORCE_ENABLE_BOOL_SUPPORT
+
+#ifndef _MSL_NO_CPP_NAMESPACE      // hh 971206
+	namespace std {
+#endif
+
+#if __MOTO__
+#pragma define_type_info
+#endif
+
+#ifdef __GNUC__
+
+// RTTI support for -*- C++ -*-
+// Copyright (C) 1994, 1995, 1996, 1997, 1998, 2000 Free Software Foundation
+
+// This file is part of GNU CC.
+//
+// GNU CC is free software; you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation; either version 2, or (at your option)
+// any later version.
+//
+// GNU CC is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with GNU CC; see the file COPYING.  If not, write to
+// the Free Software Foundation, 59 Temple Place - Suite 330,
+// Boston, MA 02111-1307, USA.
+
+// As a special exception, you may use this file as part of a free software
+// library without restriction.  Specifically, if other files instantiate
+// templates or use macros or inline functions from this file, or you compile
+// this file and link it with other files to produce an executable, this
+// file does not by itself cause the resulting executable to be covered by
+// the GNU General Public License.  This exception does not however
+// invalidate any other reasons why the executable file might be covered by
+// the GNU General Public License.
+
+// __GXX_ABI_VERSION distinguishes the ABI that is being used. Values <100
+// indicate the `old' abi, which grew as C++ was defined. Values >=100
+// indicate the `new' abi, which is a cross vendor C++ abi, documented at
+// `http://reality.sgi.com/dehnert_engr/cxx/'.
+
+#ifndef __TYPEINFO__
+#define __TYPEINFO__
+#endif
+
+#if defined(__GXX_ABI_VERSION) && __GXX_ABI_VERSION >= 100
+namespace __cxxabiv1
+{
+  class __class_type_info;
+} // namespace __cxxabiv1
+#endif  // defined(__GXX_ABI_VERSION) && __GXX_ABI_VERSION >= 100
+
+class type_info {
+public:
+  // Destructor. Being the first non-inline virtual function, this controls in
+  // which translation unit the vtable is emitted. The compiler makes use of
+  // that information to know where to emit the runtime-mandated type_info
+  // structures in the new-abi.
+  virtual ~type_info ();
+
+private:
+  // Assigning type_info is not supported.  made private.
+  type_info& operator= (const type_info&);
+  type_info (const type_info&);
+
+protected:
+  const char *__name;
+
+protected:
+  explicit type_info (const char *__n): __name (__n) { }
+
+public:
+  // the public interface
+#if !defined(__GXX_ABI_VERSION) || __GXX_ABI_VERSION < 100
+  // In old abi, there can be multiple instances of a type_info object for one
+  // type. Uniqueness must use the _name value, not object address.
+  bool before (const type_info& arg) const;
+  const char* name () const
+    { return __name; }
+  bool operator== (const type_info& __arg) const;
+  bool operator!= (const type_info& __arg) const
+    { return !operator== (__arg); }
+
+#else  // !defined(__GXX_ABI_VERSION) || __GXX_ABI_VERSION < 100
+  // In new abi we can rely on type_info's NTBS being unique,
+  // and therefore address comparisons are sufficient.
+  bool before (const type_info& __arg) const
+    { return __name < __arg.__name; }
+  const char* name () const
+    { return __name; }
+  bool operator== (const type_info& __arg) const
+    { return __name == __arg.__name; }
+  bool operator!= (const type_info& __arg) const
+    { return !operator== (__arg); }
+#endif  // !defined(__GXX_ABI_VERSION) || __GXX_ABI_VERSION < 100
+
+  // the internal interface
+#if defined(__GXX_ABI_VERSION) && __GXX_ABI_VERSION >= 100
+public:
+  // return true if this is a pointer type of some kind
+  virtual bool __is_pointer_p () const;
+  // return true if this is a function type
+  virtual bool __is_function_p () const;
+
+  // Try and catch a thrown type. Store an adjusted pointer to the caught type
+  // in THR_OBJ. If THR_TYPE is not a pointer type, then THR_OBJ points to the
+  // thrown object. If THR_TYPE is a pointer type, then THR_OBJ is the pointer
+  // itself. OUTER indicates the number of outer pointers, and whether they
+  // were const qualified.
+  virtual bool __do_catch (const type_info *__thr_type, void **__thr_obj,
+                         unsigned __outer) const;
+
+  // internally used during catch matching
+  virtual bool __do_upcast (const __cxxabiv1::__class_type_info *__target,
+                            void **__obj_ptr) const;
+#endif  // defined(__GXX_ABI_VERSION) && __GXX_ABI_VERSION >= 100
+};
+
+#elif __MWERKS__>=0x3100 && __IA64_CPP_ABI__
+
+class type_info
+{
+public:
+	virtual ~type_info();
+	bool operator==(const type_info &rhs) const;
+	bool operator!=(const type_info &rhs) const;
+	bool before(const type_info &rhs) const;
+	const char* name() const {return __type_name;}
+private:
+	type_info (const type_info& rhs);               //  not defined
+	type_info& operator= (const type_info& rhs);    //  not defined
+
+	const char* __type_name;
+};
+
+#else  // __MWERKS__>=0x3100 && __IA64_CPP_ABI__
+
+class type_info
+{
+		const char  *tname;
+		const void  *tbase;
+
+	public:
+		// hh 991008
+		bool operator== (const type_info& rhs) const {return static_cast<bool>(strcmp(tname, rhs.tname) == 0);}
+		bool operator!= (const type_info& rhs) const {return static_cast<bool>(strcmp(tname, rhs.tname) != 0);}
+		bool before (const type_info& rhs) const {return static_cast<bool>(strcmp(tname, rhs.tname) < 0);}
+		const char* name () const {return tname;}
+
+	private:
+		type_info (const type_info&);
+		type_info& operator= (const type_info&);
+};
+
+#endif  // __MWERKS__>=0x3100 && __IA64_CPP_ABI__
+
+class bad_cast : public exception {
+public :
+	bad_cast() _MSL_NO_THROW {}
+	bad_cast(const bad_cast&) _MSL_NO_THROW {}
+	bad_cast& operator=(const bad_cast&) _MSL_NO_THROW {return *this;}
+	virtual ~bad_cast() _MSL_NO_THROW {}
+	virtual const char* what() const _MSL_NO_THROW {return "bad_cast";}
+};
+
+class bad_typeid : public exception {
+public:
+	bad_typeid() _MSL_NO_THROW {}
+	bad_typeid(const bad_typeid&) _MSL_NO_THROW {}
+	bad_typeid& operator=(const bad_typeid&) _MSL_NO_THROW {return *this;}
+	virtual ~bad_typeid() _MSL_NO_THROW {}
+	virtual const char* what() const _MSL_NO_THROW {return "bad_typeid";}
+};
+
+#ifndef _MSL_NO_CPP_NAMESPACE      // hh 971206
+	}
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#pragma enumsalwaysint reset
+#endif
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#pragma bool reset
+#endif
+
+#ifdef __MWERKS__
+#pragma options align=reset
+#endif
+
+#endif  // RC_INVOKED // hh 971230
+
+#ifdef __MWERKS__
+#pragma warn_undefmacro reset
+#endif
+
+#endif  // _TYPEINFO
+
+// mm 960609a          Commented out to avoid duplicate declaration
+// mm 960509b          Moved from mexcept.h
+// bkoz960828          changes to move exception classes back into typeinfo
+//981210 bkoz added alignment wrapper
+//961221 bkoz line 23 added moto pragme (mmoss)
+//961229 bkoz removed bool_type and substituted bool
+//970211 bkoz added defs for bad_cast ctors, bad_typeid dtor
+// hh 971206  added namespace support
+// hh 971209 changed to ! __INTEL__ for Be.  Was dest_os != win32
+// hh 971227 upgradded bad_cast and bad_typeid
+// hh 971230 added RC_INVOKED wrapper
+// hh 990120 changed name of MSIPL flags
+// hh 991008 removed virtual destructor
+// hh 010402 Removed 68K CMF support
+// hh 030711 Added gcc __GXX_ABI_VERSION support

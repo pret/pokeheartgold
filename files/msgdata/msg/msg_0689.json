@@ -1,0 +1,117 @@
+{
+  "key": 51106,
+  "messages": [
+    {
+      "id": "msg_0689_00000",
+      "en_US": "Alan"
+    },
+    {
+      "id": "msg_0689_00001",
+      "en_US": [
+        "When I’m reading textbooks and walking,\n",
+        "I have to look down, so I notice items\f",
+        "on the ground.\r",
+        "Next time I find something, I’ll give it\n",
+        "to you.\r",
+        "May I have your phone number? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0689_00002",
+      "en_US": [
+        "I’ll call you as soon as I find\n",
+        "something. You can count on it!"
+      ]
+    },
+    {
+      "id": "msg_0689_00003",
+      "en_US": [
+        "Oh... I thought it would be a good\n",
+        "break to call you when I’m studying..."
+      ]
+    },
+    {
+      "id": "msg_0689_00004",
+      "en_US": [
+        "If I find something, it’s yours.\n",
+        "So may I have your phone number? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0689_00005",
+      "en_US": "This, this! This is yours! Ta-da!\r"
+    },
+    {
+      "id": "msg_0689_00006",
+      "en_US": [
+        "Huh?\n",
+        "Wait. Don’t tell me you’re nearby?\r",
+        "Did you not notice because you were\n",
+        "too busy looking at the ground, too?"
+      ]
+    },
+    {
+      "id": "msg_0689_00007",
+      "en_US": [
+        "My {STRVAR_1 0, 10, 0}’s getting stronger,\n",
+        "exactly as I calculated!\r",
+        "By the way, we knocked out a wild\n",
+        "{STRVAR_1 0, 11, 0} just the other day.\r",
+        "Studying up in advance worked!\r",
+        "See you later!"
+      ]
+    },
+    {
+      "id": "msg_0689_00008",
+      "en_US": [
+        "My {STRVAR_1 0, 10, 0}’s getting stronger,\n",
+        "exactly as I calculated!\r",
+        "By the way, a wild {STRVAR_1 0, 11, 0} escaped\n",
+        "on me yesterday.\r",
+        "A computational error on my part...\r",
+        "See you later!"
+      ]
+    },
+    {
+      "id": "msg_0689_00009",
+      "en_US": [
+        "I’ve studied quite a bit since then, and\n",
+        "I’ve gotten a lot better!\r",
+        "I’m hanging out on {STRVAR_1 4, 3, 0}.\n",
+        "Can you come down for a battle?"
+      ]
+    },
+    {
+      "id": "msg_0689_00010",
+      "en_US": [
+        "If we don’t battle soon, I’ll forget my\n",
+        "strategy!\r",
+        "I’m waiting on {STRVAR_1 4, 3, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0689_00011",
+      "en_US": [
+        "I haven’t picked up anything yet.\n",
+        "I’ll call you if I find something."
+      ]
+    },
+    {
+      "id": "msg_0689_00012",
+      "en_US": [
+        "Heh heh. I found something really\n",
+        "awesome earlier!\r",
+        "I’ll give it to you. Can you come to\n",
+        "{STRVAR_1 4, 3, 0} and pick it up?"
+      ]
+    },
+    {
+      "id": "msg_0689_00013",
+      "en_US": [
+        "I have to do my homework, so can you\n",
+        "come get your gift right away?\r",
+        "I’m waiting on {STRVAR_1 4, 3, 0}!"
+      ]
+    }
+  ]
+}

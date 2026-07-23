@@ -1,0 +1,57 @@
+{
+  "key": 54351,
+  "messages": [
+    {
+      "id": "msg_0091_D26R0102_00000",
+      "en_US": [
+        "Kurt: Way to go, {STRVAR_1 3, 0, 0}!\r",
+        "Team Rocket has taken off.\r",
+        "My back’s better, too.\n",
+        "Let’s get out of here.\r"
+      ]
+    },
+    {
+      "id": "msg_0091_D26R0102_00001",
+      "en_US": [
+        "Proton: What do we have here?\r",
+        "I am often labeled as the scariest and\n",
+        "cruelest guy in Team Rocket...\r",
+        "I strongly urge you not to interfere\n",
+        "with our business!\r"
+      ]
+    },
+    {
+      "id": "msg_0091_D26R0102_00002",
+      "en_US": [
+        "Proton: Humph...\n",
+        "Team Rocket was indeed broken up\f",
+        "three years ago. But we continued\f",
+        "our activities underground.\r",
+        "A small obstacle like you won’t\n",
+        "be much of a problem for our mission.\r",
+        "I advise you to be very afraid of what\n",
+        "is to come!\r"
+      ]
+    },
+    {
+      "id": "msg_0091_D26R0102_00003",
+      "en_US": [
+        "A SLOWPOKE with its tail cut off...\r",
+        "Huh? It has Mail. Read it? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0091_D26R0102_00004",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} read the Mail.\r",
+        "Be good and look after the house\n",
+        "with Grandpa and SLOWPOKE.\f",
+        "           Love, Dad"
+      ]
+    },
+    {
+      "id": "msg_0091_D26R0102_00005",
+      "en_US": "A SLOWPOKE with its tail cut off..."
+    }
+  ]
+}

@@ -1,0 +1,197 @@
+{
+  "key": 45362,
+  "messages": [
+    {
+      "id": "msg_0271_00000",
+      "en_US": "Call"
+    },
+    {
+      "id": "msg_0271_00001",
+      "en_US": "Sort"
+    },
+    {
+      "id": "msg_0271_00002",
+      "en_US": "Quit"
+    },
+    {
+      "id": "msg_0271_00003",
+      "en_US": "Title"
+    },
+    {
+      "id": "msg_0271_00004",
+      "en_US": "Alphabet"
+    },
+    {
+      "id": "msg_0271_00005",
+      "en_US": "Location"
+    },
+    {
+      "id": "msg_0271_00006",
+      "en_US": "Move"
+    },
+    {
+      "id": "msg_0271_00007",
+      "en_US": "Quit"
+    },
+    {
+      "id": "msg_0271_00008",
+      "en_US": "Save some money"
+    },
+    {
+      "id": "msg_0271_00009",
+      "en_US": "Don’t save money"
+    },
+    {
+      "id": "msg_0271_00010",
+      "en_US": "Evaluate Pokédex"
+    },
+    {
+      "id": "msg_0271_00011",
+      "en_US": "Quit"
+    },
+    {
+      "id": "msg_0271_00012",
+      "en_US": "Evaluate Johto Pokédex"
+    },
+    {
+      "id": "msg_0271_00013",
+      "en_US": "Evaluate National Pokédex"
+    },
+    {
+      "id": "msg_0271_00014",
+      "en_US": "Quit"
+    },
+    {
+      "id": "msg_0271_00015",
+      "en_US": "Evaluate National Pokédex"
+    },
+    {
+      "id": "msg_0271_00016",
+      "en_US": "Quit"
+    },
+    {
+      "id": "msg_0271_00017",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0271_00018",
+      "en_US": "Yes"
+    },
+    {
+      "id": "msg_0271_00019",
+      "en_US": "No"
+    },
+    {
+      "id": "msg_0271_00020",
+      "en_US": "Please select the next search."
+    },
+    {
+      "id": "msg_0271_00021",
+      "en_US": "Select where you wish to move."
+    },
+    {
+      "id": "msg_0271_00022",
+      "en_US": "What will you do?"
+    },
+    {
+      "id": "msg_0271_00023",
+      "en_US": "Sort by Trainer type"
+    },
+    {
+      "id": "msg_0271_00024",
+      "en_US": "Sort by alphabet"
+    },
+    {
+      "id": "msg_0271_00025",
+      "en_US": "Sort by location"
+    },
+    {
+      "id": "msg_0271_00026",
+      "en_US": "Manual sort"
+    },
+    {
+      "id": "msg_0271_00027",
+      "en_US": "Finish sorting"
+    },
+    {
+      "id": "msg_0271_00028",
+      "en_US": "{STRVAR_1 3, 0, 0}"
+    },
+    {
+      "id": "msg_0271_00029",
+      "en_US": "{STRVAR_1 14, 0, 0}"
+    },
+    {
+      "id": "msg_0271_00030",
+      "en_US": "......"
+    },
+    {
+      "id": "msg_0271_00031",
+      "en_US": "...... ......"
+    },
+    {
+      "id": "msg_0271_00032",
+      "en_US": "...... ...... ......"
+    },
+    {
+      "id": "msg_0271_00033",
+      "en_US": "Click!"
+    },
+    {
+      "id": "msg_0271_00034",
+      "en_US": [
+        "Click!\n",
+        "......"
+      ]
+    },
+    {
+      "id": "msg_0271_00035",
+      "en_US": [
+        "Click!\n",
+        "...... ......"
+      ]
+    },
+    {
+      "id": "msg_0271_00036",
+      "en_US": [
+        "Click!\n",
+        "...... ...... ......"
+      ]
+    },
+    {
+      "id": "msg_0271_00037",
+      "en_US": [
+        "That number is out\n",
+        "of the area."
+      ]
+    },
+    {
+      "id": "msg_0271_00038",
+      "en_US": "Pokémon Professor"
+    },
+    {
+      "id": "msg_0271_00039",
+      "en_US": "Childhood Friend"
+    },
+    {
+      "id": "msg_0271_00040",
+      "en_US": "Poké Ball Creator"
+    },
+    {
+      "id": "msg_0271_00041",
+      "en_US": "Day Care"
+    },
+    {
+      "id": "msg_0271_00042",
+      "en_US": "Radio Personality"
+    },
+    {
+      "id": "msg_0271_00043",
+      "en_US": "Poké Maniac"
+    },
+    {
+      "id": "msg_0271_00044",
+      "en_US": "Safari Warden"
+    }
+  ]
+}

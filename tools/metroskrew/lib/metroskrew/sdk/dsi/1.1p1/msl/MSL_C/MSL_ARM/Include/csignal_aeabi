@@ -1,0 +1,82 @@
+/* MSL
+ * Copyright © 1995-2007 Freescale Corporation.  All rights reserved.
+ *
+ * $Date: 2007/01/29 18:12:51 $
+ * $Revision: 1.2 $
+ */
+
+#ifndef _MSL_CSIGNAL_AEABI
+#define _MSL_CSIGNAL_AEABI
+
+#include <ansi_parms.h>
+
+#ifndef RC_INVOKED
+
+_MSL_BEGIN_NAMESPACE_STD
+_MSL_BEGIN_EXTERN_C
+	
+#ifndef SIG_DFL
+	extern void __aeabi_SIG_DFL(int);
+
+	#define SIG_DFL	(__aeabi_SIG_DFL)
+#endif
+
+#ifndef SIG_IGN
+	extern void __aeabi_SIG_IGN(int); 
+
+	#define SIG_IGN	(__aeabi_SIG_IGN)
+#endif
+
+#ifndef SIG_ERR
+	extern void __aeabi_SIG_ERR(int);
+
+	#define SIG_ERR	(__aeabi_SIG_ERR)
+#endif
+
+
+_MSL_END_EXTERN_C
+_MSL_END_NAMESPACE_STD
+
+#ifndef __aeabi_SIGABRT
+	extern const int __aeabi_SIGABRT;
+	#define SIGABRT __aeabi_SIGABRT
+#endif
+
+#ifndef __aeabi_SIGFPE
+	extern const int __aeabi_SIGFPE;
+	#define SIGFPE __aeabi_SIGFPE
+#endif
+
+#ifndef __aeabi_SIGILL
+	extern const int __aeabi_SIGILL;
+	#define SIGILL __aeabi_SIGILL
+#endif
+
+#ifndef __aeabi_SIGINT
+	extern const int __aeabi_SIGINT;
+	#define SIGINT __aeabi_SIGINT
+#endif
+
+#ifndef __aeabi_SIGSEGV
+	extern const int __aeabi_SIGSEGV;
+	#define SIGSEGV __aeabi_SIGSEGV
+#endif
+
+#ifndef __aeabi_SIGTERM
+	extern const int __aeabi_SIGTERM;
+	#define SIGTERM __aeabi_SIGTERM
+#endif
+
+#endif /* RC_INVOKED */
+
+#endif /* _MSL_CSIGNAL_AEABI */
+
+/* Change record:
+ * cc  060428 Integrated _AEABI_PORTABILITY_LEVEL work 
+ */
+ 
+/*Chipwerks Change Record
+ *6/4/2006 Refer Section 5.12 from "C Library ABI for the ARM architecture.pdf"
+ *sig_atomic_t,__aeabi_SIGABRT,__aeabi_SIGFPE,__aeabi_SIGILL,__aeabi_SIGINT,
+ * __aeabi_SIGSEGV,__aeabi_SIGTERM are declared for _AEABI_PORTABILITY_LEVEL macro
+ */

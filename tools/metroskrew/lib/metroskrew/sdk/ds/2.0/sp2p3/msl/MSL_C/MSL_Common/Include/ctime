@@ -1,0 +1,180 @@
+/* MSL
+ * Copyright © 1995-2006 Freescale Corporation.  All rights reserved.
+ *
+ * $Date: 2006/05/25 14:13:48 $
+ * $Revision: 1.74.2.5 $
+ */
+
+#ifndef _MSL_CTIME
+#define _MSL_CTIME
+
+#include <ansi_parms.h>
+
+#if !_MSL_USING_MW_C_HEADERS
+	#include <time.h>
+	
+	#if _MSL_PUT_THIRD_PARTY_C_IN_STD
+		#include <msl_cpp_std_time.h>
+	#endif
+#elif defined(__PALMOS_TRAPS__)
+	#include <ctime_Palm_OS>
+#else
+
+#include <null.h>
+#include <size_t.h>
+#include <msl_secure.h>
+#include <msl_rsize_t.h>
+
+#ifndef RC_INVOKED
+
+#if (__dest_os == __mac_os || __dest_os == __mac_os_x)
+	#include <time.mac.h>
+#elif (__dest_os == __win32_os || __dest_os == __wince_os)
+	#include <time.win32.h>
+#elif defined(__m56800__) || defined(__m56800E__)
+	#include <time.56800.h>
+#elif __dest_os == __ppc_eabi && _MSL_OS_TIME_SUPPORT
+	#include <time.PPCEABI.h>
+#elif (__dest_os == __n64_os)										/*- ad 990128 -*/
+	#include <time.n64.h>
+#elif (__dest_os == __dolphin_os)									/*- cc 010822 -*/
+	#include <time.dolphin.h>
+#endif
+
+#pragma options align=native
+
+_MSL_BEGIN_NAMESPACE_STD
+_MSL_BEGIN_EXTERN_C
+
+
+#if _MSL_CLOCK_T_AVAILABLE
+	#ifndef _MSL_CLOCKS_PER_SEC
+		#define _MSL_CLOCKS_PER_SEC 60
+	#endif
+	
+	#ifndef _MSL_CLOCK_T
+		#define _MSL_CLOCK_T unsigned long
+	#endif
+	
+	#define CLOCKS_PER_SEC _MSL_CLOCKS_PER_SEC
+	
+	#ifndef  _MSL_CLOCK_T_DEFINED
+		typedef _MSL_CLOCK_T clock_t;
+		#define _MSL_CLOCK_T_DEFINED
+	#endif
+#endif /* _MSL_CLOCK_T_AVAILABLE */
+
+#if _MSL_TIME_T_AVAILABLE	
+	#ifndef _MSL_TIME_T_DEFINED
+		typedef long time_t;										/*- mm 000127 -*/
+		#define _MSL_TIME_T_DEFINED
+		
+		/* The following macro is old and will disappear in a future version of MSL */
+		/* Switch to using _MSL_TIME_T_DEFINED instead */
+		#define _TIME_T_DEFINED
+	#endif
+#endif /* _MSL_TIME_T_AVAILABLE */
+	
+#if _MSL_TM_STRUCT_AVAILABLE	
+	struct tm
+	{
+		int	tm_sec;
+		int	tm_min;
+		int	tm_hour;
+		int	tm_mday;
+		int	tm_mon;
+		int	tm_year;
+		int	tm_wday;
+		int	tm_yday;
+		int	tm_isdst;
+	};
+#endif /* _MSL_TM_STRUCT_AVAILABLE */
+	
+#if _MSL_OS_TIME_SUPPORT
+
+_MSL_IMP_EXP_C clock_t _MSL_CDECL 		clock(void) _MSL_CANT_THROW;		
+_MSL_IMP_EXP_C time_t _MSL_CDECL		time(time_t *) _MSL_CANT_THROW;
+_MSL_IMP_EXP_C struct tm * _MSL_CDECL	gmtime(const time_t *) _MSL_CANT_THROW;
+_MSL_IMP_EXP_C time_t _MSL_CDECL		mktime(struct tm *) _MSL_CANT_THROW;
+_MSL_IMP_EXP_C char * _MSL_CDECL		asctime(const struct tm *) _MSL_CANT_THROW;	
+_MSL_IMP_EXP_C char * _MSL_CDECL		ctime(const time_t *) _MSL_CANT_THROW;
+_MSL_IMP_EXP_C struct tm * _MSL_CDECL	localtime(const time_t *) _MSL_CANT_THROW;		
+
+#if defined(__STDC_WANT_SECURE_LIB__) && __STDC_WANT_SECURE_LIB__
+	_MSL_IMP_EXP_C errno_t _MSL_CDECL		asctime_s(char *, rsize_t, const struct tm *) _MSL_CANT_THROW;
+	_MSL_IMP_EXP_C errno_t _MSL_CDECL		ctime_s(char *, rsize_t, const time_t *) _MSL_CANT_THROW;
+	_MSL_IMP_EXP_C struct tm * _MSL_CDECL	gmtime_s(const time_t * _MSL_RESTRICT, struct tm * _MSL_RESTRICT) _MSL_CANT_THROW;
+	_MSL_IMP_EXP_C struct tm * _MSL_CDECL	localtime_s(const time_t * _MSL_RESTRICT, struct tm * _MSL_RESTRICT) _MSL_CANT_THROW;
+#endif /* __STDC_WANT_SECURE_LIB__ */
+	
+_MSL_IMP_EXP_C size_t _MSL_CDECL		strftime(char * _MSL_RESTRICT, size_t, const char * _MSL_RESTRICT, const struct tm * _MSL_RESTRICT) _MSL_CANT_THROW;
+
+#endif /* _MSL_OS_TIME_SUPPORT */
+
+#if _MSL_FLOATING_POINT && _MSL_TIME_T_AVAILABLE
+	_MSL_IMP_EXP_C double _MSL_CDECL	difftime(time_t, time_t) _MSL_CANT_THROW;
+#endif /* _MSL_FLOATING_POINT */
+	
+_MSL_END_EXTERN_C	
+_MSL_END_NAMESPACE_STD	
+
+#pragma options align=reset
+
+#if _MSL_NEEDS_EXTRAS
+	#include <extras_time.h>
+#endif
+
+#if __dest_os == __mac_os_x
+	#include <ctime_mach.h>
+#endif
+
+#endif /* RC_INVOKED */
+
+#endif /* _MSL_USING_MW_C_HEADERS || __PALMOS_TRAPS__ */
+
+#endif /* _MSL_CTIME */
+
+/* Change record:
+ * mm  960927 Inserted setting of __dest_os to __mac_os when not otherwise set.
+ * mm  960927 Removed duplicate definition of time_t
+ * KO  960912 Made typedef for Win32 time_t in accord with Microsoft's definition
+ * KO  961011 Made typedef for Win32 clock_t in accord with Microsoft's definition
+ * FS  970620 Add line 65 for PPC 821 EABI
+ * SCM 970723 Disabled difftime when _No_Floating_Point defined.
+ * 			  Disabled OS-dependent functions when _No_Time_OS_Support defined.
+ * hh  971206 Changed file name from time.h to ctime and added namespace support.
+ * jz  971222 Increase clock resolution from a 60MHz clock to higher frequency supported
+ *            by O/S.
+ * hh  971230 added RC_INVOKED wrapper
+ * hh  980408 wrapped in #ifndef _No_Floating_Point
+ * mm  981015 added definitions for DSP56800
+ * mm  981029 changed __DSP568 to __m56800__
+ * mm  990127 Removed reference to power_tv
+ * ad  990128 added nintendo support
+ * cc  991220 added tzset
+ * mm  000127 Change to make Mac epoch 1970Jan27 to accord with POSIX and MSL on Windows.  MW07637
+ * cc  000512 Moved _strdate out to extras.h
+ * cc  000515 Made if posix for tzset and moved it out of namespace
+ * JWW 001208 Added case for targeting Mach-O
+ * cc  000326 removed dest_os to be_os
+ * cc  010409 updated defines to JWW new namespace macros
+ * mm  010420 Added prototype for __isdst
+ * cc  010822 Added __dolphin_os typedef for clock_t and define
+ * JWW 010918 Moved clock and time APIs out to a separate include file
+ * JWW 010918 Added _MSL_CLOCKS_PER_SEC and _MSL_CLOCK_T macros to promote platform independence
+ * blc 010926 Added case for Palm OS
+ * cc  010927 Moved Win32 specific defines and includes to time.win32.h
+ * JWW 011027 Use _MSL_USING_MW_C_HEADERS as generic header test instead of specific Mach-O test
+ * JWW 011101 Make time information platform independent
+ * cc  011203 Added _MSL_CDECL for new name mangling
+ * JWW 020129 Moved platform specific header includes before opening namespace std and extern "C"
+ * JWW 020130 Changed _TIME_T_DEFINED to _MSL_TIME_T_DEFINED for consistency's sake
+ * hh  020603 Added no throw spec to functions
+ * JWW 020917 Added _MSL_RESTRICT to get the restrict type specifier for certain C99 functions
+ * JWW 031030 Added the __STDC_WANT_SECURE_LIB__ secure library extensions
+ * cc  040217 Changed _No_Floating_Point to _MSL_FLOATING_POINT
+ * JWW 040317 Updated the __STDC_WANT_SECURE_LIB__ secure library based on new secure specifications
+ * cc  040928 Added _MSL_TM_STRUCT_AVAILABLE for platforms that are dependent on the struct but do 
+ *            not need full time os support
+ * JWW 050128 When using MSL C++ on top of a third party C (non-MSL), put C items into std namespace
+ */

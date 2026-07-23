@@ -1,0 +1,141 @@
+{
+  "key": 2871,
+  "messages": [
+    {
+      "id": "msg_0649_00000",
+      "en_US": "Clair"
+    },
+    {
+      "id": "msg_0649_00001",
+      "en_US": [
+        "Hello? Hello? Hello? Hello?\n",
+        "...I think we have a bad connection.\r",
+        "Could you try again from another spot?"
+      ]
+    },
+    {
+      "id": "msg_0649_00002",
+      "en_US": [
+        "Nice to hear from you.\n",
+        "How is everything with you?\f",
+        "I’m good.\r"
+      ]
+    },
+    {
+      "id": "msg_0649_00003",
+      "en_US": [
+        "There are a lot more stronger\n",
+        "Gym Leaders than me...\f",
+        "So get tough or go home!"
+      ]
+    },
+    {
+      "id": "msg_0649_00004",
+      "en_US": [
+        "What’s your point?\n",
+        "If you want to battle me again, fine.\f",
+        "Friday nights, take it or leave it.\r",
+        "Call me then... Maybe I’ll answer..."
+      ]
+    },
+    {
+      "id": "msg_0649_00005",
+      "en_US": [
+        "Well, well, you called at the right time!\n",
+        "You want to battle again?\r",
+        "I’m up for it.{YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0649_00006",
+      "en_US": [
+        "Ha ha ha.\n",
+        "It’s great that you’re stepping up.\r",
+        "I’ll be waiting for you at the\n",
+        "Fighting Dojo in Saffron City!"
+      ]
+    },
+    {
+      "id": "msg_0649_00007",
+      "en_US": [
+        "What in the world?\n",
+        "Are you trying to make fun of me?!"
+      ]
+    },
+    {
+      "id": "msg_0649_00008",
+      "en_US": [
+        "You figure you want to battle me?\r",
+        "I’m wondering if you have time enough\n",
+        "to do me justice.\r",
+        "I hear you made promises to meet some\n",
+        "other people. You should respect those\f",
+        "first, is what I think."
+      ]
+    },
+    {
+      "id": "msg_0649_00009",
+      "en_US": [
+        "I’m waiting for you at the Fighting Dojo\n",
+        "in Saffron City...\f",
+        "Don’t wuss out."
+      ]
+    },
+    {
+      "id": "msg_0649_00010",
+      "en_US": [
+        "Yes, it’s Clair here...\n",
+        "Oh, hi. How are you doing?\r"
+      ]
+    },
+    {
+      "id": "msg_0649_00011",
+      "en_US": [
+        "Keep in mind we’re meeting at the\n",
+        "Fighting Dojo in Saffron City.\f",
+        "It’s a promise I’m waiting to keep..."
+      ]
+    },
+    {
+      "id": "msg_0649_00012",
+      "en_US": [
+        "Lately some people from the\n",
+        "Radio Station came around, wanting to\f",
+        "do a piece on me, or something.\r",
+        "My fans definitely won’t want to\n",
+        "miss watching that!\r",
+        "Oh, no! I was confused! It’s radio!\n",
+        "All those people tuning in, and they\f",
+        "won’t be able to see my glorious face!\r",
+        "What about TV?\n",
+        "Why hasn’t a TV crew come to do a piece\f",
+        "on me?!"
+      ]
+    },
+    {
+      "id": "msg_0649_00013",
+      "en_US": [
+        "Lately there seems to be some gossip\n",
+        "running through town that I am the\f",
+        "latest name in fashion.\r",
+        "Well, if I’m that cool that people can’t\n",
+        "stop talking about me, I can totally\f",
+        "understand that sentiment."
+      ]
+    },
+    {
+      "id": "msg_0649_00014",
+      "en_US": [
+        "Wow, you seem like you’re a pretty busy\n",
+        "person, aren’t you? Even more than\f",
+        "I am, if that could possibly be.\r",
+        "I mean, I’ve got my Gym work, and I’ve\n",
+        "got to go see the Elder at the\f",
+        "Dragon Tamer’s shrine, too.\r",
+        "What do you think?\n",
+        "You’ve got talent--you could become\f",
+        "a Dragon Tamer, too. Think so?"
+      ]
+    }
+  ]
+}

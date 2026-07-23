@@ -1,0 +1,29 @@
+{
+  "key": 13407,
+  "messages": [
+    {
+      "id": "msg_0625_T28R0201_00000",
+      "en_US": [
+        "I heard that a red GYARADOS appeared\n",
+        "at the Lake of Rage.\r",
+        "That’s odd, since even ordinary\n",
+        "GYARADOS are rare in that lake..."
+      ]
+    },
+    {
+      "id": "msg_0625_T28R0201_00001",
+      "en_US": [
+        "My top radio show?\n",
+        "I’d say Pokémon Music."
+      ]
+    },
+    {
+      "id": "msg_0625_T28R0201_00002",
+      "en_US": [
+        "I’ve been hearing laughter on\n",
+        "the radio...\f",
+        "It’s creepy."
+      ]
+    }
+  ]
+}

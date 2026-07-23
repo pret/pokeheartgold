@@ -1,0 +1,945 @@
+{
+  "key": 2566,
+  "messages": [
+    {
+      "id": "msg_0279_00000",
+      "en_US": "Mystery Zone"
+    },
+    {
+      "id": "msg_0279_00001",
+      "en_US": "Twinleaf Town"
+    },
+    {
+      "id": "msg_0279_00002",
+      "en_US": "Sandgem Town"
+    },
+    {
+      "id": "msg_0279_00003",
+      "en_US": "Floaroma Town"
+    },
+    {
+      "id": "msg_0279_00004",
+      "en_US": "Solaceon Town"
+    },
+    {
+      "id": "msg_0279_00005",
+      "en_US": "Celestic Town"
+    },
+    {
+      "id": "msg_0279_00006",
+      "en_US": "Jubilife City"
+    },
+    {
+      "id": "msg_0279_00007",
+      "en_US": "Canalave City"
+    },
+    {
+      "id": "msg_0279_00008",
+      "en_US": "Oreburgh City"
+    },
+    {
+      "id": "msg_0279_00009",
+      "en_US": "Eterna City"
+    },
+    {
+      "id": "msg_0279_00010",
+      "en_US": "Hearthome City"
+    },
+    {
+      "id": "msg_0279_00011",
+      "en_US": "Pastoria City"
+    },
+    {
+      "id": "msg_0279_00012",
+      "en_US": "Veilstone City"
+    },
+    {
+      "id": "msg_0279_00013",
+      "en_US": "Sunyshore City"
+    },
+    {
+      "id": "msg_0279_00014",
+      "en_US": "Snowpoint City"
+    },
+    {
+      "id": "msg_0279_00015",
+      "en_US": "Pokémon League"
+    },
+    {
+      "id": "msg_0279_00016",
+      "en_US": "Route 201"
+    },
+    {
+      "id": "msg_0279_00017",
+      "en_US": "Route 202"
+    },
+    {
+      "id": "msg_0279_00018",
+      "en_US": "Route 203"
+    },
+    {
+      "id": "msg_0279_00019",
+      "en_US": "Route 204"
+    },
+    {
+      "id": "msg_0279_00020",
+      "en_US": "Route 205"
+    },
+    {
+      "id": "msg_0279_00021",
+      "en_US": "Route 206"
+    },
+    {
+      "id": "msg_0279_00022",
+      "en_US": "Route 207"
+    },
+    {
+      "id": "msg_0279_00023",
+      "en_US": "Route 208"
+    },
+    {
+      "id": "msg_0279_00024",
+      "en_US": "Route 209"
+    },
+    {
+      "id": "msg_0279_00025",
+      "en_US": "Route 210"
+    },
+    {
+      "id": "msg_0279_00026",
+      "en_US": "Route 211"
+    },
+    {
+      "id": "msg_0279_00027",
+      "en_US": "Route 212"
+    },
+    {
+      "id": "msg_0279_00028",
+      "en_US": "Route 213"
+    },
+    {
+      "id": "msg_0279_00029",
+      "en_US": "Route 214"
+    },
+    {
+      "id": "msg_0279_00030",
+      "en_US": "Route 215"
+    },
+    {
+      "id": "msg_0279_00031",
+      "en_US": "Route 216"
+    },
+    {
+      "id": "msg_0279_00032",
+      "en_US": "Route 217"
+    },
+    {
+      "id": "msg_0279_00033",
+      "en_US": "Route 218"
+    },
+    {
+      "id": "msg_0279_00034",
+      "en_US": "Route 219"
+    },
+    {
+      "id": "msg_0279_00035",
+      "en_US": "Route 220"
+    },
+    {
+      "id": "msg_0279_00036",
+      "en_US": "Route 221"
+    },
+    {
+      "id": "msg_0279_00037",
+      "en_US": "Route 222"
+    },
+    {
+      "id": "msg_0279_00038",
+      "en_US": "Route 223"
+    },
+    {
+      "id": "msg_0279_00039",
+      "en_US": "Route 224"
+    },
+    {
+      "id": "msg_0279_00040",
+      "en_US": "Route 225"
+    },
+    {
+      "id": "msg_0279_00041",
+      "en_US": "Route 226"
+    },
+    {
+      "id": "msg_0279_00042",
+      "en_US": "Route 227"
+    },
+    {
+      "id": "msg_0279_00043",
+      "en_US": "Route 228"
+    },
+    {
+      "id": "msg_0279_00044",
+      "en_US": "Route 229"
+    },
+    {
+      "id": "msg_0279_00045",
+      "en_US": "Route 230"
+    },
+    {
+      "id": "msg_0279_00046",
+      "en_US": "Oreburgh Mine"
+    },
+    {
+      "id": "msg_0279_00047",
+      "en_US": "Valley Windworks"
+    },
+    {
+      "id": "msg_0279_00048",
+      "en_US": "Eterna Forest"
+    },
+    {
+      "id": "msg_0279_00049",
+      "en_US": "Fuego Ironworks"
+    },
+    {
+      "id": "msg_0279_00050",
+      "en_US": "Mt. Coronet"
+    },
+    {
+      "id": "msg_0279_00051",
+      "en_US": "Spear Pillar"
+    },
+    {
+      "id": "msg_0279_00052",
+      "en_US": "Great Marsh"
+    },
+    {
+      "id": "msg_0279_00053",
+      "en_US": "Solaceon Ruins"
+    },
+    {
+      "id": "msg_0279_00054",
+      "en_US": "Victory Road"
+    },
+    {
+      "id": "msg_0279_00055",
+      "en_US": "Pal Park"
+    },
+    {
+      "id": "msg_0279_00056",
+      "en_US": "Amity Square"
+    },
+    {
+      "id": "msg_0279_00057",
+      "en_US": "Ravaged Path"
+    },
+    {
+      "id": "msg_0279_00058",
+      "en_US": "Floaroma Meadow"
+    },
+    {
+      "id": "msg_0279_00059",
+      "en_US": "Oreburgh Gate"
+    },
+    {
+      "id": "msg_0279_00060",
+      "en_US": "Fullmoon Island"
+    },
+    {
+      "id": "msg_0279_00061",
+      "en_US": "Sendoff Spring"
+    },
+    {
+      "id": "msg_0279_00062",
+      "en_US": "Turnback Cave"
+    },
+    {
+      "id": "msg_0279_00063",
+      "en_US": "Flower Paradise"
+    },
+    {
+      "id": "msg_0279_00064",
+      "en_US": "Snowpoint Temple"
+    },
+    {
+      "id": "msg_0279_00065",
+      "en_US": "Wayward Cave"
+    },
+    {
+      "id": "msg_0279_00066",
+      "en_US": "Ruin Maniac Cave"
+    },
+    {
+      "id": "msg_0279_00067",
+      "en_US": "Maniac Tunnel"
+    },
+    {
+      "id": "msg_0279_00068",
+      "en_US": "Trophy Garden"
+    },
+    {
+      "id": "msg_0279_00069",
+      "en_US": "Iron Island"
+    },
+    {
+      "id": "msg_0279_00070",
+      "en_US": "Old Chateau"
+    },
+    {
+      "id": "msg_0279_00071",
+      "en_US": "Galactic HQ"
+    },
+    {
+      "id": "msg_0279_00072",
+      "en_US": "Verity Lakefront"
+    },
+    {
+      "id": "msg_0279_00073",
+      "en_US": "Valor Lakefront"
+    },
+    {
+      "id": "msg_0279_00074",
+      "en_US": "Acuity Lakefront"
+    },
+    {
+      "id": "msg_0279_00075",
+      "en_US": "Spring Path"
+    },
+    {
+      "id": "msg_0279_00076",
+      "en_US": "Lake Verity"
+    },
+    {
+      "id": "msg_0279_00077",
+      "en_US": "Lake Valor"
+    },
+    {
+      "id": "msg_0279_00078",
+      "en_US": "Lake Acuity"
+    },
+    {
+      "id": "msg_0279_00079",
+      "en_US": "Newmoon Island"
+    },
+    {
+      "id": "msg_0279_00080",
+      "en_US": "Battle Tower"
+    },
+    {
+      "id": "msg_0279_00081",
+      "en_US": "Fight Area"
+    },
+    {
+      "id": "msg_0279_00082",
+      "en_US": "Survival Area"
+    },
+    {
+      "id": "msg_0279_00083",
+      "en_US": "Resort Area"
+    },
+    {
+      "id": "msg_0279_00084",
+      "en_US": "Stark Mountain"
+    },
+    {
+      "id": "msg_0279_00085",
+      "en_US": "Seabreak Path"
+    },
+    {
+      "id": "msg_0279_00086",
+      "en_US": "Hall of Origin"
+    },
+    {
+      "id": "msg_0279_00087",
+      "en_US": "Verity Cavern"
+    },
+    {
+      "id": "msg_0279_00088",
+      "en_US": "Valor Cavern"
+    },
+    {
+      "id": "msg_0279_00089",
+      "en_US": "Acuity Cavern"
+    },
+    {
+      "id": "msg_0279_00090",
+      "en_US": "Jubilife TV"
+    },
+    {
+      "id": "msg_0279_00091",
+      "en_US": "Pokétch Co."
+    },
+    {
+      "id": "msg_0279_00092",
+      "en_US": "GTS"
+    },
+    {
+      "id": "msg_0279_00093",
+      "en_US": "Trainers’ School"
+    },
+    {
+      "id": "msg_0279_00094",
+      "en_US": "Mining Museum"
+    },
+    {
+      "id": "msg_0279_00095",
+      "en_US": "Flower Shop"
+    },
+    {
+      "id": "msg_0279_00096",
+      "en_US": "Cycle Shop"
+    },
+    {
+      "id": "msg_0279_00097",
+      "en_US": "Contest Hall"
+    },
+    {
+      "id": "msg_0279_00098",
+      "en_US": "Poffin House"
+    },
+    {
+      "id": "msg_0279_00099",
+      "en_US": "Foreign Building"
+    },
+    {
+      "id": "msg_0279_00100",
+      "en_US": "Pokémon Day Care"
+    },
+    {
+      "id": "msg_0279_00101",
+      "en_US": "Veilstone Store"
+    },
+    {
+      "id": "msg_0279_00102",
+      "en_US": "Game Corner"
+    },
+    {
+      "id": "msg_0279_00103",
+      "en_US": "Canalave Library"
+    },
+    {
+      "id": "msg_0279_00104",
+      "en_US": "Vista Lighthouse"
+    },
+    {
+      "id": "msg_0279_00105",
+      "en_US": "Sunyshore Market"
+    },
+    {
+      "id": "msg_0279_00106",
+      "en_US": "Pokémon Mansion"
+    },
+    {
+      "id": "msg_0279_00107",
+      "en_US": "Footstep House"
+    },
+    {
+      "id": "msg_0279_00108",
+      "en_US": "Café"
+    },
+    {
+      "id": "msg_0279_00109",
+      "en_US": "Grand Lake"
+    },
+    {
+      "id": "msg_0279_00110",
+      "en_US": "Restaurant"
+    },
+    {
+      "id": "msg_0279_00111",
+      "en_US": "Battle Park"
+    },
+    {
+      "id": "msg_0279_00112",
+      "en_US": "Battle Frontier"
+    },
+    {
+      "id": "msg_0279_00113",
+      "en_US": "Battle Factory"
+    },
+    {
+      "id": "msg_0279_00114",
+      "en_US": "Battle Castle"
+    },
+    {
+      "id": "msg_0279_00115",
+      "en_US": "Battle Arcade"
+    },
+    {
+      "id": "msg_0279_00116",
+      "en_US": "Battle Hall"
+    },
+    {
+      "id": "msg_0279_00117",
+      "en_US": "Distortion World"
+    },
+    {
+      "id": "msg_0279_00118",
+      "en_US": "Global Terminal"
+    },
+    {
+      "id": "msg_0279_00119",
+      "en_US": "Villa"
+    },
+    {
+      "id": "msg_0279_00120",
+      "en_US": "Battleground"
+    },
+    {
+      "id": "msg_0279_00121",
+      "en_US": "ROTOM’s Room"
+    },
+    {
+      "id": "msg_0279_00122",
+      "en_US": "T.G. Eterna Bldg"
+    },
+    {
+      "id": "msg_0279_00123",
+      "en_US": "Iron Ruins"
+    },
+    {
+      "id": "msg_0279_00124",
+      "en_US": "Iceberg Ruins"
+    },
+    {
+      "id": "msg_0279_00125",
+      "en_US": "Rock Peak Ruins"
+    },
+    {
+      "id": "msg_0279_00126",
+      "en_US": "New Bark Town"
+    },
+    {
+      "id": "msg_0279_00127",
+      "en_US": "Cherrygrove City"
+    },
+    {
+      "id": "msg_0279_00128",
+      "en_US": "Violet City"
+    },
+    {
+      "id": "msg_0279_00129",
+      "en_US": "Azalea Town"
+    },
+    {
+      "id": "msg_0279_00130",
+      "en_US": "Cianwood City"
+    },
+    {
+      "id": "msg_0279_00131",
+      "en_US": "Goldenrod City"
+    },
+    {
+      "id": "msg_0279_00132",
+      "en_US": "Olivine City"
+    },
+    {
+      "id": "msg_0279_00133",
+      "en_US": "Ecruteak City"
+    },
+    {
+      "id": "msg_0279_00134",
+      "en_US": "Mahogany Town"
+    },
+    {
+      "id": "msg_0279_00135",
+      "en_US": "Lake of Rage"
+    },
+    {
+      "id": "msg_0279_00136",
+      "en_US": "Blackthorn City"
+    },
+    {
+      "id": "msg_0279_00137",
+      "en_US": "Mt. Silver"
+    },
+    {
+      "id": "msg_0279_00138",
+      "en_US": "Pallet Town"
+    },
+    {
+      "id": "msg_0279_00139",
+      "en_US": "Viridian City"
+    },
+    {
+      "id": "msg_0279_00140",
+      "en_US": "Pewter City"
+    },
+    {
+      "id": "msg_0279_00141",
+      "en_US": "Cerulean City"
+    },
+    {
+      "id": "msg_0279_00142",
+      "en_US": "Lavender Town"
+    },
+    {
+      "id": "msg_0279_00143",
+      "en_US": "Vermilion City"
+    },
+    {
+      "id": "msg_0279_00144",
+      "en_US": "Celadon City"
+    },
+    {
+      "id": "msg_0279_00145",
+      "en_US": "Fuchsia City"
+    },
+    {
+      "id": "msg_0279_00146",
+      "en_US": "Cinnabar Island"
+    },
+    {
+      "id": "msg_0279_00147",
+      "en_US": "Indigo Plateau"
+    },
+    {
+      "id": "msg_0279_00148",
+      "en_US": "Saffron City"
+    },
+    {
+      "id": "msg_0279_00149",
+      "en_US": "Route 1"
+    },
+    {
+      "id": "msg_0279_00150",
+      "en_US": "Route 2"
+    },
+    {
+      "id": "msg_0279_00151",
+      "en_US": "Route 3"
+    },
+    {
+      "id": "msg_0279_00152",
+      "en_US": "Route 4"
+    },
+    {
+      "id": "msg_0279_00153",
+      "en_US": "Route 5"
+    },
+    {
+      "id": "msg_0279_00154",
+      "en_US": "Route 6"
+    },
+    {
+      "id": "msg_0279_00155",
+      "en_US": "Route 7"
+    },
+    {
+      "id": "msg_0279_00156",
+      "en_US": "Route 8"
+    },
+    {
+      "id": "msg_0279_00157",
+      "en_US": "Route 9"
+    },
+    {
+      "id": "msg_0279_00158",
+      "en_US": "Route 10"
+    },
+    {
+      "id": "msg_0279_00159",
+      "en_US": "Route 11"
+    },
+    {
+      "id": "msg_0279_00160",
+      "en_US": "Route 12"
+    },
+    {
+      "id": "msg_0279_00161",
+      "en_US": "Route 13"
+    },
+    {
+      "id": "msg_0279_00162",
+      "en_US": "Route 14"
+    },
+    {
+      "id": "msg_0279_00163",
+      "en_US": "Route 15"
+    },
+    {
+      "id": "msg_0279_00164",
+      "en_US": "Route 16"
+    },
+    {
+      "id": "msg_0279_00165",
+      "en_US": "Route 17"
+    },
+    {
+      "id": "msg_0279_00166",
+      "en_US": "Route 18"
+    },
+    {
+      "id": "msg_0279_00167",
+      "en_US": "Route 19"
+    },
+    {
+      "id": "msg_0279_00168",
+      "en_US": "Route 20"
+    },
+    {
+      "id": "msg_0279_00169",
+      "en_US": "Route 21"
+    },
+    {
+      "id": "msg_0279_00170",
+      "en_US": "Route 22"
+    },
+    {
+      "id": "msg_0279_00171",
+      "en_US": "Route 23"
+    },
+    {
+      "id": "msg_0279_00172",
+      "en_US": "Route 24"
+    },
+    {
+      "id": "msg_0279_00173",
+      "en_US": "Route 25"
+    },
+    {
+      "id": "msg_0279_00174",
+      "en_US": "Route 26"
+    },
+    {
+      "id": "msg_0279_00175",
+      "en_US": "Route 27"
+    },
+    {
+      "id": "msg_0279_00176",
+      "en_US": "Route 28"
+    },
+    {
+      "id": "msg_0279_00177",
+      "en_US": "Route 29"
+    },
+    {
+      "id": "msg_0279_00178",
+      "en_US": "Route 30"
+    },
+    {
+      "id": "msg_0279_00179",
+      "en_US": "Route 31"
+    },
+    {
+      "id": "msg_0279_00180",
+      "en_US": "Route 32"
+    },
+    {
+      "id": "msg_0279_00181",
+      "en_US": "Route 33"
+    },
+    {
+      "id": "msg_0279_00182",
+      "en_US": "Route 34"
+    },
+    {
+      "id": "msg_0279_00183",
+      "en_US": "Route 35"
+    },
+    {
+      "id": "msg_0279_00184",
+      "en_US": "Route 36"
+    },
+    {
+      "id": "msg_0279_00185",
+      "en_US": "Route 37"
+    },
+    {
+      "id": "msg_0279_00186",
+      "en_US": "Route 38"
+    },
+    {
+      "id": "msg_0279_00187",
+      "en_US": "Route 39"
+    },
+    {
+      "id": "msg_0279_00188",
+      "en_US": "Route 40"
+    },
+    {
+      "id": "msg_0279_00189",
+      "en_US": "Route 41"
+    },
+    {
+      "id": "msg_0279_00190",
+      "en_US": "Route 42"
+    },
+    {
+      "id": "msg_0279_00191",
+      "en_US": "Route 43"
+    },
+    {
+      "id": "msg_0279_00192",
+      "en_US": "Route 44"
+    },
+    {
+      "id": "msg_0279_00193",
+      "en_US": "Route 45"
+    },
+    {
+      "id": "msg_0279_00194",
+      "en_US": "Route 46"
+    },
+    {
+      "id": "msg_0279_00195",
+      "en_US": "Route 47"
+    },
+    {
+      "id": "msg_0279_00196",
+      "en_US": "Route 48"
+    },
+    {
+      "id": "msg_0279_00197",
+      "en_US": "DIGLETT’s Cave"
+    },
+    {
+      "id": "msg_0279_00198",
+      "en_US": "Mt. Moon"
+    },
+    {
+      "id": "msg_0279_00199",
+      "en_US": "Cerulean Cave"
+    },
+    {
+      "id": "msg_0279_00200",
+      "en_US": "Rock Tunnel"
+    },
+    {
+      "id": "msg_0279_00201",
+      "en_US": "Power Plant"
+    },
+    {
+      "id": "msg_0279_00202",
+      "en_US": "Safari Zone"
+    },
+    {
+      "id": "msg_0279_00203",
+      "en_US": "Seafoam Islands"
+    },
+    {
+      "id": "msg_0279_00204",
+      "en_US": "Sprout Tower"
+    },
+    {
+      "id": "msg_0279_00205",
+      "en_US": "Bell Tower"
+    },
+    {
+      "id": "msg_0279_00206",
+      "en_US": "Burned Tower"
+    },
+    {
+      "id": "msg_0279_00207",
+      "en_US": "National Park"
+    },
+    {
+      "id": "msg_0279_00208",
+      "en_US": "Radio Tower"
+    },
+    {
+      "id": "msg_0279_00209",
+      "en_US": "Ruins of Alph"
+    },
+    {
+      "id": "msg_0279_00210",
+      "en_US": "Union Cave"
+    },
+    {
+      "id": "msg_0279_00211",
+      "en_US": "SLOWPOKE Well"
+    },
+    {
+      "id": "msg_0279_00212",
+      "en_US": "Lighthouse"
+    },
+    {
+      "id": "msg_0279_00213",
+      "en_US": "Team Rocket HQ"
+    },
+    {
+      "id": "msg_0279_00214",
+      "en_US": "Ilex Forest"
+    },
+    {
+      "id": "msg_0279_00215",
+      "en_US": "Goldenrod Tunnel"
+    },
+    {
+      "id": "msg_0279_00216",
+      "en_US": "Mt. Mortar"
+    },
+    {
+      "id": "msg_0279_00217",
+      "en_US": "Ice Path"
+    },
+    {
+      "id": "msg_0279_00218",
+      "en_US": "Whirl Islands"
+    },
+    {
+      "id": "msg_0279_00219",
+      "en_US": "Mt. Silver Cave"
+    },
+    {
+      "id": "msg_0279_00220",
+      "en_US": "Dark Cave"
+    },
+    {
+      "id": "msg_0279_00221",
+      "en_US": "Victory Road"
+    },
+    {
+      "id": "msg_0279_00222",
+      "en_US": "Dragon’s Den"
+    },
+    {
+      "id": "msg_0279_00223",
+      "en_US": "Tohjo Falls"
+    },
+    {
+      "id": "msg_0279_00224",
+      "en_US": "Viridian Forest"
+    },
+    {
+      "id": "msg_0279_00225",
+      "en_US": "Pokéathlon Dome"
+    },
+    {
+      "id": "msg_0279_00226",
+      "en_US": "S.S. Aqua"
+    },
+    {
+      "id": "msg_0279_00227",
+      "en_US": "Safari Zone Gate"
+    },
+    {
+      "id": "msg_0279_00228",
+      "en_US": "Cliff Cave"
+    },
+    {
+      "id": "msg_0279_00229",
+      "en_US": "Frontier Access"
+    },
+    {
+      "id": "msg_0279_00230",
+      "en_US": "Bellchime Trail"
+    },
+    {
+      "id": "msg_0279_00231",
+      "en_US": "Sinjoh Ruins"
+    },
+    {
+      "id": "msg_0279_00232",
+      "en_US": "Embedded Tower"
+    },
+    {
+      "id": "msg_0279_00233",
+      "en_US": "Pokéwalker"
+    },
+    {
+      "id": "msg_0279_00234",
+      "en_US": "Cliff Edge Gate"
+    }
+  ]
+}

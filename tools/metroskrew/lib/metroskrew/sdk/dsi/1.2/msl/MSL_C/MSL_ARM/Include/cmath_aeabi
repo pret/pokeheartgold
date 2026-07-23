@@ -1,0 +1,91 @@
+/* MSL
+ * Copyright © 1995-2007 Freescale Corporation.  All rights reserved.
+ *
+ * $Date: 2007/01/29 18:12:51 $
+ * $Revision: 1.3 $
+ */
+
+ /*
+  * This header file is a portable cmath header for all CodeWarrior compilers/targets - except
+  * for the traditional Mac OS.  The Mac OS is unique in that it is currently the only
+  * platform where CodeWarrior does not provide the math portion of the C standard library.
+  * We simply hook into the library provided by Apple as part of the Mac OS.
+  */
+
+#ifndef _MSL_CMATH_AEABI
+#define _MSL_CMATH_AEABI
+
+#include <ansi_parms.h>
+
+#if _MSL_FLOATING_POINT
+
+/************************/
+/*						*/
+/* 	 Standard Macros	*/
+/*						*/
+/************************/
+
+_MSL_BEGIN_EXTERN_C
+
+	extern const int __aeabi_EDOM;
+	extern const double __aeabi_HUGE_VAL;
+	#define HUGE_VAL 	__aeabi_HUGE_VAL
+
+
+_MSL_END_EXTERN_C
+
+#if _MSL_C99 || _MSL_C_HAS_CPP_EXTENSIONS
+
+_MSL_BEGIN_EXTERN_C
+
+		
+	extern const float __aeabi_HUGE_VALF;
+	extern const float __aeabi_INFINITY;
+	
+	#define HUGE_VALF	__aeabi_HUGE_VALF
+	#define INFINITY	__aeabi_INFINITY
+
+	
+
+_MSL_END_EXTERN_C
+			
+					/*- cc 040920 -*/					
+#endif /* _MSL_C99 || _MSL_C_HAS_CPP_EXTENSIONS */
+
+#if _MSL_C99 || _MSL_USES_SUN_MATH_LIB
+
+_MSL_BEGIN_EXTERN_C
+
+	extern const float __aeabi_NAN;
+	#define NAN	__aeabi_NAN
+	
+
+
+_MSL_END_EXTERN_C
+
+#endif /* _MSL_C99 || _MSL_USES_SUN_MATH_LIB */
+
+#if _MSL_C99
+
+_MSL_BEGIN_EXTERN_C
+
+	extern const long double __aeabi_HUGE_VALL;
+	#define HUGE_VALL	__aeabi_HUGE_VALL
+
+_MSL_END_EXTERN_C
+
+#endif /* _MSL_C99 */
+
+#endif /* !_MSL_FLOATING_POINT */
+
+#endif /* _MSL_CMATH_AEABI */
+
+/* Change record:
+ * cc  060428 Integrated _AEABI_PORTABILITY_LEVEL work 
+ */
+ 
+/*Chipwerks Change Record
+ *6/4/2006	Refer Section 5.10 of "C Library ABI for the ARM architecture.pdf"
+ *__aeabi_HUGE_VAL,__aeabi_HUGE_VALL,__aeabi_HUGE_VALF,__aeabi_INFINITY,
+ *__aeabi_NAN are decalred for _AEABI_PORTABILITY_LEVEL macro
+ */

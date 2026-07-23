@@ -1,0 +1,132 @@
+{
+  "key": 37039,
+  "messages": [
+    {
+      "id": "msg_0429_00000",
+      "en_US": "Do what with this Area?"
+    },
+    {
+      "id": "msg_0429_00001",
+      "en_US": "Which will you Switch?"
+    },
+    {
+      "id": "msg_0429_00002",
+      "en_US": "Where will you move it?"
+    },
+    {
+      "id": "msg_0429_00003",
+      "en_US": [
+        "All placed objects will be\n",
+        "removed. Is this OK?"
+      ]
+    },
+    {
+      "id": "msg_0429_00004",
+      "en_US": "Return"
+    },
+    {
+      "id": "msg_0429_00005",
+      "garbage": 4
+    },
+    {
+      "id": "msg_0429_00006",
+      "en_US": "Quit"
+    },
+    {
+      "id": "msg_0429_00007",
+      "en_US": "Switch"
+    },
+    {
+      "id": "msg_0429_00008",
+      "en_US": "Sort"
+    },
+    {
+      "id": "msg_0429_00009",
+      "en_US": "{STRVAR_1 50, 0, 0}/2"
+    },
+    {
+      "id": "msg_0429_00010",
+      "en_US": [
+        "Number of objects that seem to\n",
+        "be liked by Pokémon on Plains"
+      ]
+    },
+    {
+      "id": "msg_0429_00011",
+      "en_US": [
+        "Number of objects that seem to\n",
+        "be liked by Pokémon in Forest"
+      ]
+    },
+    {
+      "id": "msg_0429_00012",
+      "en_US": [
+        "Number of objects that seem to\n",
+        "be liked by Pokémon on Rocks"
+      ]
+    },
+    {
+      "id": "msg_0429_00013",
+      "en_US": [
+        "Number of objects that seem to\n",
+        "be liked by Pokémon by Water"
+      ]
+    },
+    {
+      "id": "msg_0429_00014",
+      "en_US": "Number of other objects"
+    },
+    {
+      "id": "msg_0429_00015",
+      "en_US": "{STRVAR_1 51, 0, 0}"
+    },
+    {
+      "id": "msg_0429_00016",
+      "en_US": "Plains"
+    },
+    {
+      "id": "msg_0429_00017",
+      "en_US": "Meadow"
+    },
+    {
+      "id": "msg_0429_00018",
+      "en_US": "Savannah"
+    },
+    {
+      "id": "msg_0429_00019",
+      "en_US": "Peak"
+    },
+    {
+      "id": "msg_0429_00020",
+      "en_US": "Rocky Beach"
+    },
+    {
+      "id": "msg_0429_00021",
+      "en_US": "Wetland"
+    },
+    {
+      "id": "msg_0429_00022",
+      "en_US": "Forest"
+    },
+    {
+      "id": "msg_0429_00023",
+      "en_US": "Swamp"
+    },
+    {
+      "id": "msg_0429_00024",
+      "en_US": "Marshland"
+    },
+    {
+      "id": "msg_0429_00025",
+      "en_US": "Wasteland"
+    },
+    {
+      "id": "msg_0429_00026",
+      "en_US": "Mountain"
+    },
+    {
+      "id": "msg_0429_00027",
+      "en_US": "Desert"
+    }
+  ]
+}

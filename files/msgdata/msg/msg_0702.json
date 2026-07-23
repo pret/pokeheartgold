@@ -1,0 +1,118 @@
+{
+  "key": 2269,
+  "messages": [
+    {
+      "id": "msg_0702_00000",
+      "en_US": "Tim & Sue"
+    },
+    {
+      "id": "msg_0702_00001",
+      "en_US": [
+        "So, how about we exchange phone\n",
+        "numbers?{YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0702_00002",
+      "en_US": "Give me a call if you think of anything!"
+    },
+    {
+      "id": "msg_0702_00003",
+      "en_US": "Uh, OK. That’s too bad..."
+    },
+    {
+      "id": "msg_0702_00004",
+      "en_US": [
+        "Did you decide you wanted to\n",
+        "exchange phone numbers? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0702_00005",
+      "en_US": [
+        "Uh-huh? Where are you calling from?\r",
+        "If you’re nearby, you might as well\n",
+        "come over and talk in person, you know?"
+      ]
+    },
+    {
+      "id": "msg_0702_00006",
+      "en_US": [
+        "This is Sue!\r",
+        "How have you been since we last talked?\f",
+        "Are you doing a good job training your\n",
+        "Pokémon? We’re doing great!\r",
+        "{STRVAR_1 0, 10, 0} is working hard.\r",
+        "You have a good Pokémon, too. After a\n",
+        "while, you’ll find it will become a\f",
+        "sensational partner! Hee hee!"
+      ]
+    },
+    {
+      "id": "msg_0702_00007",
+      "en_US": [
+        "This is Sue!\r",
+        "How have you been since we spoke last?\n",
+        "Are your Pokémon winning their battles?\r",
+        "We’re doing great!\n",
+        "We even beat a wild {STRVAR_1 0, 11, 0}.\r",
+        "You have a good Pokémon, also.\n",
+        "All you need now is a great partner...\f",
+        "Know what I mean? Hee hee!"
+      ]
+    },
+    {
+      "id": "msg_0702_00008",
+      "en_US": [
+        "This is Sue!\r",
+        "How have you been feeling since our\n",
+        "last talk? I’ve got many Pokémon... Ah!\r",
+        "Hello? This is Tim!\n",
+        "Let me talk on the phone... Wah!\r",
+        "Anyway, he let a wild {STRVAR_1 0, 11, 0}\n",
+        "get away recently!\r",
+        "He sometimes says the strangest\n",
+        "things. He said he couldn’t compare\f",
+        "Pokémon with me, but... Ah!\r",
+        "Hello! This is Tim!\n",
+        "She is really... Wah!\r",
+        "Yeah, that’s just how it is, isn’t it!\n",
+        "I’ll leave it at that. We’ll call you\f",
+        "again later. Bye-bye!"
+      ]
+    },
+    {
+      "id": "msg_0702_00009",
+      "en_US": [
+        "Hey, would you like to battle us again?\r",
+        "Sound good?\r",
+        "We’re waiting on {STRVAR_1 4, 3, 0}.\n",
+        "See you there!"
+      ]
+    },
+    {
+      "id": "msg_0702_00010",
+      "en_US": [
+        "Hey, did you forget our promise?\r",
+        "I’m here with Tim, so I’m not getting\n",
+        "too bored, but still...\r",
+        "We’re waiting on {STRVAR_1 4, 3, 0},\n",
+        "so please hurry."
+      ]
+    },
+    {
+      "id": "msg_0702_00011",
+      "en_US": [
+        "Hey, this is Sue!\n",
+        "I’m so, so, so bored right now.\r",
+        "Tim stepped out, but I expect\n",
+        "him to be back soon. That reminds me!\r",
+        "We recently saw a really amazing guy.\r",
+        "He was wearing a purple tuxedo and a\n",
+        "red bowtie. It looked great on him.\r",
+        "Oh--my boyfriend’s back!\n",
+        "Talk to you later!"
+      ]
+    }
+  ]
+}

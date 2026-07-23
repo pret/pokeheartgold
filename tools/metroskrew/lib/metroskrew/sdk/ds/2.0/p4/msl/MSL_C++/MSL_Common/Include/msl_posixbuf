@@ -1,0 +1,387 @@
+/* MSL
+ * Copyright © 1995-2006 Freescale Corporation.  All rights reserved.
+ *
+ * $Date: 2006/02/09 16:58:58 $
+ * $Revision: 1.10.2.2 $
+ */
+
+// msl_posixbuf
+
+#ifndef _MSL_POSIXBUF
+#define _MSL_POSIXBUF
+
+/*  msl_posixbuf synopsis
+
+namespace Metrowerks
+{
+
+template <class charT, class traits = _STD::char_traits<charT> >
+class posixbuf
+	: public bufferedbuf<charT, traits>
+{
+public:
+	typedef charT                     char_type;
+	typedef typename traits::int_type int_type;
+	typedef typename traits::pos_type pos_type;
+	typedef typename traits::off_type off_type;
+	typedef traits                    traits_type;
+
+	explicit posixbuf(int fd = -1);
+	virtual ~posixbuf();
+
+	posixbuf<charT,traits>* open(const char* s, std::ios_base::openmode mode);
+#ifdef _MSL_WIDE_FILENAME
+	posixbuf<charT,traits>* open(const wchar_t* s, _STD::ios_base::openmode mode);
+#endif
+	posixbuf<charT,traits>* close();
+
+private:
+
+	posixbuf(const posixbuf&);             // not defined
+	posixbuf& operator=(const posixbuf&);  // not defined
+};
+
+}  // Metrowerks
+*/
+
+#include <mslconfig>
+
+#if !(defined(_MSL_NO_FILE_IO))
+
+#include <msl_bufferedbuf>
+#include <codecvt_ext>
+#include <fcntl.h>
+#include <unistd.h>
+
+#ifndef O_BINARY
+	#define O_BINARY 0
+#endif
+
+#ifndef RC_INVOKED
+
+#ifdef __MWERKS__
+#pragma options align=native
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#if _MSL_FORCE_ENUMS_ALWAYS_INT
+		#pragma enumsalwaysint on
+	#else
+		#pragma enumsalwaysint off
+	#endif
+#endif  // _MSL_FORCE_ENUMS_ALWAYS_INT
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#if _MSL_FORCE_ENABLE_BOOL_SUPPORT
+		#pragma bool on
+	#else
+		#pragma bool off
+	#endif
+#endif  // _MSL_FORCE_ENABLE_BOOL_SUPPORT
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	namespace Metrowerks {
+#else
+	#ifndef Metrowerks
+		#define Metrowerks
+	#endif
+#endif  // _MSL_NO_CPP_NAMESPACE
+
+template <class charT, class traits = _STD::char_traits<charT> >
+class posixbuf
+	: public bufferedbuf<charT, traits>
+{
+	typedef bufferedbuf<charT, traits> base;
+public:
+	typedef charT                     char_type;
+	typedef typename traits::int_type int_type;
+	typedef typename traits::pos_type pos_type;
+	typedef typename traits::off_type off_type;
+	typedef traits                    traits_type;
+
+	explicit posixbuf(int fd = -1);
+	virtual ~posixbuf();
+
+#ifdef _MSL_MOVE
+	posixbuf(posixbuf&& rhs);
+	posixbuf& operator=(posixbuf&& rhs);
+	void swap(posixbuf&& rhs);
+#endif  // _MSL_MOVE
+
+	posixbuf<charT,traits>* open(const char* s, _STD::ios_base::openmode mode);
+#ifdef _MSL_WIDE_FILENAME
+	posixbuf<charT,traits>* open(const wchar_t* s, _STD::ios_base::openmode mode);
+#endif
+	posixbuf<charT,traits>* close();
+
+private:
+	int fd_;
+	static const _CSTD::size_t default_buffer_bytes = 4096;
+	static const int prot = 0664;
+
+	virtual _CSTD::ptrdiff_t write_chars(const char* buf, _CSTD::ptrdiff_t n);
+	virtual _CSTD::ptrdiff_t read_chars(char* buf, _CSTD::ptrdiff_t n);
+	virtual off_type seek_device(off_type off, int whence);
+
+	posixbuf(const posixbuf&);             // not defined
+	posixbuf& operator=(const posixbuf&);  // not defined
+};
+
+template <class charT, class traits>
+posixbuf<charT, traits>::posixbuf(int fd)
+	: base(default_buffer_bytes),
+	  fd_(fd)
+{
+	if (fd_ >= 0)
+		base::open(false);
+}
+
+template <class charT, class traits>
+posixbuf<charT, traits>::~posixbuf()
+{
+	close();
+}
+
+#ifdef _MSL_MOVE
+
+template <class charT, class traits>
+inline
+posixbuf<charT, traits>::posixbuf(posixbuf&& rhs)
+	: base(_STD::move(rhs)),
+	  fd_(rhs.fd_)
+{
+	rhs.fd_ = -1;
+}
+
+template <class charT, class traits>
+inline
+posixbuf<charT, traits>&
+posixbuf<charT, traits>::operator=(posixbuf&& rhs)
+{
+	swap(rhs);
+	return *this;
+}
+
+template <class charT, class traits>
+inline
+void
+posixbuf<charT, traits>::swap(posixbuf&& rhs)
+{
+	base::swap(rhs);
+	_STD::swap(fd_, rhs.fd_);
+}
+
+#endif  // _MSL_MOVE
+
+template <class charT, class traits>
+posixbuf<charT,traits>*
+posixbuf<charT, traits>::open(const char* s, _STD::ios_base::openmode mode)
+{
+	if (fd_ >= 0)
+		return 0;
+	int oflag;
+	bool init_put = false;
+	switch (mode & ~_STD::ios_base::ate)
+	{
+	case _STD::ios_base::out:
+	case (int)_STD::ios_base::out | (int)_STD::ios_base::trunc:
+		oflag = O_WRONLY | O_TRUNC | O_CREAT;
+		init_put = true;
+		break;
+	case (int)_STD::ios_base::out | (int)_STD::ios_base::app:
+		oflag = O_WRONLY | O_APPEND | O_CREAT;
+		init_put = true;
+		break;
+	case _STD::ios_base::in:
+		oflag = O_RDONLY;
+		break;
+	case (int)_STD::ios_base::in | (int)_STD::ios_base::out:
+		oflag = O_RDWR;
+		init_put = true;
+		break;
+	case (int)_STD::ios_base::in | (int)_STD::ios_base::out | (int)_STD::ios_base::trunc:
+		oflag = O_RDWR | O_TRUNC | O_CREAT;
+		init_put = true;
+		break;
+	case (int)_STD::ios_base::binary | (int)_STD::ios_base::out:
+	case (int)_STD::ios_base::binary | (int)_STD::ios_base::out | (int)_STD::ios_base::trunc:
+		oflag =  O_WRONLY | O_TRUNC | O_CREAT | O_BINARY;
+		init_put = true;
+		break;
+	case (int)_STD::ios_base::binary | (int)_STD::ios_base::out | (int)_STD::ios_base::app:
+		oflag = O_WRONLY | O_APPEND | O_CREAT | O_BINARY;
+		init_put = true;
+		break;
+	case (int)_STD::ios_base::binary | (int)_STD::ios_base::in:
+		oflag = O_RDONLY | O_BINARY;
+		break;
+	case (int)_STD::ios_base::binary | (int)_STD::ios_base::in | (int)_STD::ios_base::out:
+		oflag = O_RDWR | O_BINARY;
+		init_put = true;
+		break;
+	case (int)_STD::ios_base::binary | (int)_STD::ios_base::in | (int)_STD::ios_base::out | (int)_STD::ios_base::trunc:
+		oflag = O_RDWR | O_TRUNC | O_CREAT | O_BINARY;
+		init_put = true;
+		break;
+	default:
+		return 0;
+	}
+	fd_ = ::open(s, oflag, prot);
+	if (fd_ < 0)
+		return 0;
+	if (mode & _STD::ios_base::ate && ::lseek(fd_, 0, SEEK_END) < 0)
+	{
+		::close(fd_);
+		fd_ = -1;
+		return 0;
+	}
+	base::open(init_put, !(mode & _STD::ios_base::binary));
+	return this;
+}
+
+#ifdef _MSL_WIDE_FILENAME
+
+template <class charT, class traits>
+posixbuf<charT,traits>*
+posixbuf<charT, traits>::open(const wchar_t* s, _STD::ios_base::openmode mode)
+{
+#if defined(_MSL_FCNTL_H) && _MSL_WFILEIO_AVAILABLE
+	if (fd_ >= 0)
+		return 0;
+	int oflag;
+	bool init_put = false;
+	switch (mode & ~_STD::ios_base::ate)
+	{
+	case _STD::ios_base::out:
+	case (int)_STD::ios_base::out | (int)_STD::ios_base::trunc:
+		oflag = O_WRONLY | O_TRUNC | O_CREAT;
+		init_put = true;
+		break;
+	case (int)_STD::ios_base::out | (int)_STD::ios_base::app:
+		oflag = O_WRONLY | O_APPEND | O_CREAT;
+		init_put = true;
+		break;
+	case _STD::ios_base::in:
+		oflag = O_RDONLY;
+		break;
+	case (int)_STD::ios_base::in | (int)_STD::ios_base::out:
+		oflag = O_RDWR;
+		init_put = true;
+		break;
+	case (int)_STD::ios_base::in | (int)_STD::ios_base::out | (int)_STD::ios_base::trunc:
+		oflag = O_RDWR | O_TRUNC | O_CREAT;
+		init_put = true;
+		break;
+	case (int)_STD::ios_base::binary | (int)_STD::ios_base::out:
+	case (int)_STD::ios_base::binary | (int)_STD::ios_base::out | (int)_STD::ios_base::trunc:
+		oflag =  O_WRONLY | O_TRUNC | O_CREAT | O_BINARY;
+		init_put = true;
+		break;
+	case (int)_STD::ios_base::binary | (int)_STD::ios_base::out | (int)_STD::ios_base::app:
+		oflag = O_WRONLY | O_APPEND | O_CREAT | O_BINARY;
+		init_put = true;
+		break;
+	case (int)_STD::ios_base::binary | (int)_STD::ios_base::in:
+		oflag = O_RDONLY | O_BINARY;
+		break;
+	case (int)_STD::ios_base::binary | (int)_STD::ios_base::in | (int)_STD::ios_base::out:
+		oflag = O_RDWR | O_BINARY;
+		init_put = true;
+		break;
+	case (int)_STD::ios_base::binary | (int)_STD::ios_base::in | (int)_STD::ios_base::out | (int)_STD::ios_base::trunc:
+		oflag = O_RDWR | O_TRUNC | O_CREAT | O_BINARY;
+		init_put = true;
+		break;
+	default:
+		return 0;
+	}
+	fd_ = _wopen(s, oflag, prot);
+	if (fd_ < 0)
+		return 0;
+	if (mode & _STD::ios_base::ate && ::lseek(fd_, 0, SEEK_END) < 0)
+	{
+		::close(fd_);
+		fd_ = -1;
+		return 0;
+	}
+	base::open(init_put, !(mode & _STD::ios_base::binary));
+	return this;
+#elif __MACH__
+	_CSTD::size_t len = _STD::char_traits<wchar_t>::length(s);
+	_STD::vector<char> narrow(len*sizeof(wchar_t)*3/2+1);
+	_STD::__utf_8<wchar_t> cvt;
+	_CSTD::mbstate_t state;
+	const wchar_t* from_next;
+	char* to_next;
+	if (cvt.out(state, s, s+len, from_next, &narrow[0],
+	            &narrow[0] + narrow.size(), to_next) != _STD::codecvt_base::ok)
+		return 0;
+	*to_next = '\0';
+	narrow.resize(to_next - &narrow[0]);
+	return open(&narrow[0], mode);
+#else  // __MACH__
+	(void)s;
+	(void)mode;
+	return 0;
+#endif  // __MACH__
+}
+
+#endif // _MSL_WIDE_FILENAME
+
+template <class charT, class traits>
+posixbuf<charT, traits>*
+posixbuf<charT, traits>::close()
+{
+	if (fd_ < 0)
+		return 0;
+	posixbuf* result = (posixbuf*)base::close();
+	if (::close(fd_) != 0)
+		result = 0;
+	fd_ = -1;
+	return result;
+}
+
+template <class charT, class traits>
+_CSTD::ptrdiff_t
+posixbuf<charT, traits>::write_chars(const char* buf, _CSTD::ptrdiff_t n)
+{
+	return (_CSTD::ptrdiff_t)::write(fd_, buf, (_CSTD::size_t)n);
+}
+
+template <class charT, class traits>
+_CSTD::ptrdiff_t
+posixbuf<charT, traits>::read_chars(char* buf, _CSTD::ptrdiff_t n)
+{
+	return (_CSTD::ptrdiff_t)::read(fd_, buf, (_CSTD::size_t)n);
+}
+
+template <class charT, class traits>
+typename posixbuf<charT, traits>::off_type
+posixbuf<charT, traits>::seek_device(off_type off, int whence)
+{
+	return (off_type)::lseek(fd_, (off_t)off, whence);
+}
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	} // namespace Metrowerks
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#pragma enumsalwaysint reset
+#endif
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#pragma bool reset
+#endif
+
+#ifdef __MWERKS__
+#pragma options align=reset
+#endif
+
+#endif // RC_INVOKED
+
+#endif // !(defined(_MSL_NO_FILE_IO))
+
+#endif // _MSL_POSIXBUF
+
+// hh 020916 created

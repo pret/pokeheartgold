@@ -1,0 +1,1155 @@
+/* MSL
+ * Copyright © 1995-2006 Freescale Corporation.  All rights reserved.
+ *
+ * $Date: 2006/02/09 16:58:11 $
+ * $Revision: 1.10.2.2 $
+ */
+
+// codecvt_ext
+
+#ifndef _CODECVT_EXT
+#define _CODECVT_EXT
+
+#include <mslconfig>
+
+#ifndef _MSL_NO_IO
+
+#ifndef _MSL_NO_LOCALE
+
+#include <cstdlib>
+#include <codecvt>
+#include <cstring>
+#include <msl_int_limits>
+
+#ifndef RC_INVOKED
+
+#ifdef __MWERKS__
+#pragma options align=native
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#if _MSL_FORCE_ENUMS_ALWAYS_INT
+		#pragma enumsalwaysint on
+	#else
+		#pragma enumsalwaysint off
+	#endif
+#endif  // _MSL_FORCE_ENUMS_ALWAYS_INT
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#if _MSL_FORCE_ENABLE_BOOL_SUPPORT
+		#pragma bool on
+	#else
+		#pragma bool off
+	#endif
+#endif  // _MSL_FORCE_ENABLE_BOOL_SUPPORT
+
+#ifdef min
+#undef min
+#endif
+
+#ifdef max
+#undef max
+#endif
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	namespace std {
+#endif
+
+template <class internT, class externT, class stateT>
+class __codecvt_pub_destructor
+	: public codecvt<internT, externT, stateT>
+{
+public:
+	explicit __codecvt_pub_destructor(size_t refs = 0) : codecvt<internT, externT, stateT>(refs) {}
+};
+
+// UCS-2
+
+template <class internT>
+class __ucs_2
+	: public __codecvt_pub_destructor<internT, char, mbstate_t>
+{
+	typedef __codecvt_pub_destructor<internT, char, mbstate_t> base;
+public:
+	typedef internT   intern_type;
+	typedef char      extern_type;
+	typedef mbstate_t state_type;
+	typedef codecvt_base::result result;
+
+	explicit __ucs_2(size_t refs = 0)
+	             : __codecvt_pub_destructor<internT, char, mbstate_t>(refs) {}
+
+protected:
+	virtual result do_out(mbstate_t& state, const internT* from, const internT* from_end, const internT*& from_next, char* to, char* to_limit, char*& to_next) const;
+	virtual result do_in(mbstate_t& state, const char* from, const char* from_end, const char*& from_next, internT* to, internT* to_limit, internT*& to_next) const;
+	virtual result do_unshift(mbstate_t& state, char* to, char* to_limit, char*& to_next) const;
+	virtual int do_encoding() const _MSL_NO_THROW;
+	virtual bool do_always_noconv() const _MSL_NO_THROW;
+	virtual int do_length(mbstate_t& state, const char* from, const char* from_end, size_t max) const;
+	virtual int do_max_length() const _MSL_NO_THROW;
+};
+
+template <class internT>
+codecvt_base::result
+__ucs_2<internT>::do_out(mbstate_t&, const internT* from, const internT* from_end, const internT*& from_next, char* to, char* to_limit, char*& to_next) const
+{
+	for (from_next = from, to_next = to; from_next < from_end && to_next < to_limit - 1; ++from_next, ++to_next)
+	{
+		*to_next++ = static_cast<char>((*from_next >> 8) & 0xFF);
+		*to_next   = static_cast<char>(*from_next & 0xFF);
+	}
+	if (from_next < from_end)
+		return base::partial;
+	return base::ok;
+}
+
+template <class internT>
+codecvt_base::result
+__ucs_2<internT>::do_in(mbstate_t&, const char* from, const char* from_end, const char*& from_next, internT* to, internT* to_limit, internT*& to_next) const
+{
+	const unsigned char*& fn = (const unsigned char*&)from_next;
+	for (from_next = from, to_next = to; from_next < from_end - 1 && to_next < to_limit; from_next += 2, ++to_next)
+		*to_next = static_cast<internT>((fn[0] << 8) | fn[1]);
+	if (from_next < from_end)
+		return base::partial;
+	return base::ok;
+}
+
+template <class internT>
+codecvt_base::result
+__ucs_2<internT>::do_unshift(mbstate_t&, char* to, char*, char*& to_next) const
+{
+	to_next = to;
+	return base::noconv;
+}
+
+template <class internT>
+int
+__ucs_2<internT>::do_encoding() const _MSL_NO_THROW
+{
+	return 2;
+}
+
+template <class internT>
+bool
+__ucs_2<internT>::do_always_noconv() const _MSL_NO_THROW
+{
+	return false;
+}
+
+template <class internT>
+int
+__ucs_2<internT>::do_length(mbstate_t&, const char* from, const char* from_end, size_t max) const
+{
+	return 2*min((int)(from_end-from)/2, (int)max);
+}
+
+template <class internT>
+int
+__ucs_2<internT>::do_max_length() const _MSL_NO_THROW
+{
+	return 2;
+}
+
+// JIS
+
+template <class internT>
+class __jis
+	: public __codecvt_pub_destructor<internT, char, mbstate_t>
+{
+	typedef __codecvt_pub_destructor<internT, char, mbstate_t> base;
+public:
+	typedef internT   intern_type;
+	typedef char      extern_type;
+	typedef mbstate_t state_type;
+private:
+	static const size_t error_check =
+		sizeof(Metrowerks::compile_assert<(sizeof(state_type) >= sizeof(int))>);
+public:
+	typedef codecvt_base::result result;
+
+	explicit __jis(size_t refs = 0)
+	             : __codecvt_pub_destructor<internT, char, mbstate_t>(refs) {}
+
+protected:
+	virtual result do_out(mbstate_t& state, const internT* from, const internT* from_end, const internT*& from_next, char* to, char* to_limit, char*& to_next) const;
+	virtual result do_in(mbstate_t& state, const char* from, const char* from_end, const char*& from_next, internT* to, internT* to_limit, internT*& to_next) const;
+	virtual result do_unshift(mbstate_t& state, char* to, char* to_limit, char*& to_next) const;
+	virtual int do_encoding() const _MSL_NO_THROW;
+	virtual bool do_always_noconv() const _MSL_NO_THROW;
+	virtual int do_length(mbstate_t& state, const char* from, const char* from_end, size_t max) const;
+	virtual int do_max_length() const _MSL_NO_THROW;
+};
+
+template <class internT>
+codecvt_base::result
+__jis<internT>::do_out(mbstate_t& state, const internT* from, const internT* from_end, const internT*& from_next, char* to, char* to_limit, char*& to_next) const
+{
+	for (from_next = from, to_next = to; from_next < from_end && to_next < to_limit; ++from_next, ++to_next)
+	{
+		unsigned char highbyte = static_cast<unsigned char>((*from_next >> 8) & 0xFF);
+		unsigned char lowbyte = static_cast<unsigned char>(*from_next & 0xFF);
+		if (highbyte == '\0')
+		{
+			if ((int&)state != 0)
+			{
+				if (to_limit - to_next < 3)
+					return base::partial;
+				*to_next++ = '\x1B';
+				*to_next++ = '(';
+				*to_next++ = 'B';
+				(int&)state = 0;
+				if (to_next == to_limit)
+					return base::partial;
+			}
+			*to_next = static_cast<char>(lowbyte);
+		}
+		else if ('\x21' <= highbyte && highbyte <= '\x7E' && '\x21' <= lowbyte && lowbyte <= '\x7E')
+		{
+			if ((int&)state != 1)
+			{
+				if (to_limit - to_next < 3)
+					return base::partial;
+				*to_next++ = '\x1B';
+				*to_next++ = '$';
+				*to_next++ = 'B';
+				(int&)state = 1;
+			}
+			if (to_limit - to_next < 2)
+				return base::partial;
+			*to_next++ = static_cast<char>(highbyte);
+			*to_next = static_cast<char>(lowbyte);
+		}
+		else
+			return base::error;
+	}
+	if (from_next < from_end)
+		return base::partial;
+	return base::ok;
+}
+
+template <class internT>
+codecvt_base::result
+__jis<internT>::do_in(mbstate_t& state, const char* from, const char* from_end, const char*& f_next, internT* to, internT* to_limit, internT*& to_next) const
+{
+	const unsigned char*& from_next = reinterpret_cast<const unsigned char*&>(f_next);
+	for (f_next = from, to_next = to; f_next < from_end && to_next < to_limit;)
+	{
+		switch ((int&)state)
+		{
+		case 0:
+		case 1:
+			if (*from_next == '\x1B')
+			{
+				(int&)state = 2;
+				if (++f_next == from_end)
+					return base::partial;
+			}
+			else if ((int&)state == 0)
+				*to_next++ = static_cast<internT>(*from_next++);
+			else
+			{
+				if (from_end - f_next < 2)
+					return base::partial;
+				if (!('\x21' <= *from_next && *from_next <= '\x7E' && '\x21' <= from_next[1] && from_next[1] <= '\x7E'))
+					return base::error;
+				*to_next++ = static_cast<internT>((*from_next << 8) | from_next[1]);
+				from_next += 2;
+			}
+			break;
+		case 2:
+			if (*from_next == '(')
+				(int&)state = 3;
+			else if (*from_next == '$')
+				(int&)state = 4;
+			else
+				return base::error;
+			if (++f_next == from_end)
+				return base::partial;
+			break;
+		case 3:
+		case 4:
+			if (*from_next != 'B')
+				return base::error;
+			++from_next;
+			(int&)state -= 3;
+			break;
+		}
+	}
+	if (f_next < from_end)
+		return base::partial;
+	return base::ok;
+}
+
+template <class internT>
+codecvt_base::result
+__jis<internT>::do_unshift(mbstate_t& state, char* to, char* to_limit, char*& to_next) const
+{
+	to_next = to;
+	switch ((int&)state)
+	{
+	case 0:
+		return base::noconv;
+	case 1:
+		if (to_next == to_limit)
+			return base::partial;
+		*to_next++ = '\x1B';
+		if (to_next == to_limit)
+			return base::partial;
+		*to_next++ = '(';
+		if (to_next == to_limit)
+			return base::partial;
+		*to_next++ = 'B';
+		return base::ok;
+	}
+	return base::error;
+}
+
+template <class internT>
+int
+__jis<internT>::do_encoding() const _MSL_NO_THROW
+{
+	return -1;
+}
+
+template <class internT>
+bool
+__jis<internT>::do_always_noconv() const _MSL_NO_THROW
+{
+	return false;
+}
+
+template <class internT>
+int
+__jis<internT>::do_length(mbstate_t& state, const char* from, const char* from_end, size_t max) const
+{
+	const char* from_next = from;
+	for (size_t n = 0; from_next < from_end && n < max;)
+	{
+		switch ((int&)state)
+		{
+		case 0:
+		case 1:
+			if (*from_next == '\x1B')
+			{
+				if (from_end - from_next < 3)
+					goto done;
+				(int&)state = 2;
+				++from_next;
+			}
+			else if ((int&)state == 0)
+			{
+				++n;
+				++from_next;
+			}
+			else
+			{
+				if (from_end - from_next < 2)
+					goto done;
+				if (!('\x21' <= *from_next && *from_next <= '\x7E' && '\x21' <= from_next[1] && from_next[1] <= '\x7E'))
+					goto done;
+				++n;
+				from_next += 2;
+			}
+			break;
+		case 2:
+			if (*from_next == '(')
+				(int&)state = 3;
+			else if (*from_next == '$')
+				(int&)state = 4;
+			else
+			{
+				--from_next;
+				goto done;
+			}
+			++from_next;
+			break;
+		case 3:
+		case 4:
+			if (*from_next != 'B')
+			{
+				from_next -= 2;
+				goto done;
+			}
+			++from_next;
+			(int&)state -= 3;
+			break;
+		}
+	}
+done:
+	return int(from_next - from);
+}
+
+template <class internT>
+int
+__jis<internT>::do_max_length() const _MSL_NO_THROW
+{
+	return 5;
+}
+
+// Shift JIS
+
+template <class internT>
+class __shift_jis
+	: public __codecvt_pub_destructor<internT, char, mbstate_t>
+{
+	typedef __codecvt_pub_destructor<internT, char, mbstate_t> base;
+public:
+	typedef internT   intern_type;
+	typedef char      extern_type;
+	typedef mbstate_t state_type;
+	typedef codecvt_base::result result;
+
+	explicit __shift_jis(size_t refs = 0)
+	             : __codecvt_pub_destructor<internT, char, mbstate_t>(refs) {}
+
+protected:
+	virtual result do_out(mbstate_t& state, const internT* from, const internT* from_end, const internT*& from_next, char* to, char* to_limit, char*& to_next) const;
+	virtual result do_in(mbstate_t& state, const char* from, const char* from_end, const char*& from_next, internT* to, internT* to_limit, internT*& to_next) const;
+	virtual result do_unshift(mbstate_t& state, char* to, char* to_limit, char*& to_next) const;
+	virtual int do_encoding() const _MSL_NO_THROW;
+	virtual bool do_always_noconv() const _MSL_NO_THROW;
+	virtual int do_length(mbstate_t& state, const char* from, const char* from_end, size_t max) const;
+	virtual int do_max_length() const _MSL_NO_THROW;
+};
+
+template <class internT>
+codecvt_base::result
+__shift_jis<internT>::do_out(mbstate_t&, const internT* from, const internT* from_end, const internT*& from_next, char* to, char* to_limit, char*& to_next) const
+{
+	for (from_next = from, to_next = to; from_next < from_end && to_next < to_limit; ++from_next, ++to_next)
+	{
+		unsigned char highbyte = static_cast<unsigned char>((*from_next >> 8) & 0xFF);
+		unsigned char lowbyte = static_cast<unsigned char>(*from_next & 0xFF);
+		if (highbyte == '\0')
+		{
+			*to_next = static_cast<char>(lowbyte);
+		}
+		else if ((0x81 <= highbyte && highbyte <= 0x9F ||
+		          0xE0 <= highbyte && highbyte <= 0xFC) &&
+		          0x40 <= lowbyte  && lowbyte  <= 0xFC)
+		{
+			if (to_limit - to_next < 2)
+				return base::partial;
+			*to_next++ = static_cast<char>(highbyte);
+			*to_next = static_cast<char>(lowbyte);
+		}
+		else
+			return base::error;
+	}
+	if (from_next < from_end)
+		return base::partial;
+	return base::ok;
+}
+
+template <class internT>
+codecvt_base::result
+__shift_jis<internT>::do_in(mbstate_t&, const char* from, const char* from_end, const char*& from_next, internT* to, internT* to_limit, internT*& to_next) const
+{
+	for (from_next = from, to_next = to; from_next < from_end && to_next < to_limit;)
+	{
+		unsigned char firstbyte = static_cast<unsigned char>(*from_next);
+		if (0x81 <= firstbyte && firstbyte <= 0x9F || 0xE0 <= firstbyte && firstbyte <= 0xFC)
+		{
+			if (from_end - from_next < 2)
+				return base::partial;
+			unsigned char secondbyte = static_cast<unsigned char>(from_next[1]);
+			if (0x40 <= secondbyte  && secondbyte  <= 0xFC)
+			{
+				*to_next++ = static_cast<internT>((firstbyte << 8) | secondbyte);
+				from_next += 2;
+			}
+			else
+				return base::error;
+		}
+		else
+		{
+			*to_next++ = static_cast<internT>(firstbyte);
+			++from_next;
+		}
+	}
+	if (from_next < from_end)
+		return base::partial;
+	return base::ok;
+}
+
+template <class internT>
+codecvt_base::result
+__shift_jis<internT>::do_unshift(mbstate_t&, char* to, char*, char*& to_next) const
+{
+	to_next = to;
+	return base::noconv;
+}
+
+template <class internT>
+int
+__shift_jis<internT>::do_encoding() const _MSL_NO_THROW
+{
+	return 0;
+}
+
+template <class internT>
+bool
+__shift_jis<internT>::do_always_noconv() const _MSL_NO_THROW
+{
+	return false;
+}
+
+template <class internT>
+int
+__shift_jis<internT>::do_length(mbstate_t&, const char* from, const char* from_end, size_t max) const
+{
+	const char* from_next = from;
+	for (size_t n = 0; from_next < from_end && n < max;)
+	{
+		unsigned char firstbyte = static_cast<unsigned char>(*from_next);
+		if (0x81 <= firstbyte && firstbyte <= 0x9F || 0xE0 <= firstbyte && firstbyte <= 0xFC)
+		{
+			if (from_end - from_next < 2)
+				break;
+			unsigned char secondbyte = static_cast<unsigned char>(from_next[1]);
+			if (0x40 <= secondbyte  && secondbyte  <= 0xFC)
+			{
+				++n;
+				from_next += 2;
+			}
+			else
+				break;
+		}
+		else
+		{
+			++n;
+			++from_next;
+		}
+	}
+	return int(from_next - from);
+}
+
+template <class internT>
+int
+__shift_jis<internT>::do_max_length() const _MSL_NO_THROW
+{
+	return 2;
+}
+
+// EUC
+
+template <class internT>
+class __euc
+	: public __codecvt_pub_destructor<internT, char, mbstate_t>
+{
+	typedef __codecvt_pub_destructor<internT, char, mbstate_t> base;
+public:
+	typedef internT   intern_type;
+	typedef char      extern_type;
+	typedef mbstate_t state_type;
+	typedef codecvt_base::result result;
+
+	explicit __euc(size_t refs = 0)
+	             : __codecvt_pub_destructor<internT, char, mbstate_t>(refs) {}
+
+protected:
+	virtual result do_out(mbstate_t& state, const internT* from, const internT* from_end, const internT*& from_next, char* to, char* to_limit, char*& to_next) const;
+	virtual result do_in(mbstate_t& state, const char* from, const char* from_end, const char*& from_next, internT* to, internT* to_limit, internT*& to_next) const;
+	virtual result do_unshift(mbstate_t& state, char* to, char* to_limit, char*& to_next) const;
+	virtual int do_encoding() const _MSL_NO_THROW;
+	virtual bool do_always_noconv() const _MSL_NO_THROW;
+	virtual int do_length(mbstate_t& state, const char* from, const char* from_end, size_t max) const;
+	virtual int do_max_length() const _MSL_NO_THROW;
+};
+
+template <class internT>
+codecvt_base::result
+__euc<internT>::do_out(mbstate_t&, const internT* from, const internT* from_end, const internT*& from_next, char* to, char* to_limit, char*& to_next) const
+{
+	for (from_next = from, to_next = to; from_next < from_end && to_next < to_limit; ++from_next, ++to_next)
+	{
+		unsigned char highbyte = static_cast<unsigned char>((*from_next >> 8) & 0xFF);
+		unsigned char lowbyte = static_cast<unsigned char>(*from_next & 0xFF);
+		if (highbyte == '\0')
+		{
+			*to_next = static_cast<char>(lowbyte);
+		}
+		else if (0xA1 <= highbyte && highbyte <= 0xFE &&
+		         0x80 <= lowbyte  && lowbyte  <= 0xFF)
+		{
+			if (to_limit - to_next < 2)
+				return base::partial;
+			*to_next++ = static_cast<char>(highbyte);
+			*to_next = static_cast<char>(lowbyte);
+		}
+		else
+			return base::error;
+	}
+	if (from_next < from_end)
+		return base::partial;
+	return base::ok;
+}
+
+template <class internT>
+codecvt_base::result
+__euc<internT>::do_in(mbstate_t&, const char* from, const char* from_end, const char*& from_next, internT* to, internT* to_limit, internT*& to_next) const
+{
+	for (from_next = from, to_next = to; from_next < from_end && to_next < to_limit;)
+	{
+		unsigned char firstbyte = static_cast<unsigned char>(*from_next);
+		if (0xA1 <= firstbyte && firstbyte <= 0xFE)
+		{
+			if (from_end - from_next < 2)
+				return base::partial;
+			unsigned char secondbyte = static_cast<unsigned char>(from_next[1]);
+			if (0x80 <= secondbyte  && secondbyte  <= 0xFF)
+			{
+				*to_next++ = static_cast<internT>((firstbyte << 8) | secondbyte);
+				from_next += 2;
+			}
+			else
+				return base::error;
+		}
+		else
+		{
+			*to_next++ = static_cast<internT>(firstbyte);
+			++from_next;
+		}
+	}
+	if (from_next < from_end)
+		return base::partial;
+	return base::ok;
+}
+
+template <class internT>
+codecvt_base::result
+__euc<internT>::do_unshift(mbstate_t&, char* to, char*, char*& to_next) const
+{
+	to_next = to;
+	return base::noconv;
+}
+
+template <class internT>
+int
+__euc<internT>::do_encoding() const _MSL_NO_THROW
+{
+	return 0;
+}
+
+template <class internT>
+bool
+__euc<internT>::do_always_noconv() const _MSL_NO_THROW
+{
+	return false;
+}
+
+template <class internT>
+int
+__euc<internT>::do_length(mbstate_t&, const char* from, const char* from_end, size_t max) const
+{
+	const char* from_next = from;
+	for (size_t n = 0; from_next < from_end && n < max;)
+	{
+		unsigned char firstbyte = static_cast<unsigned char>(*from_next);
+		if (0xA1 <= firstbyte && firstbyte <= 0xFE)
+		{
+			if (from_end - from_next < 2)
+				break;
+			unsigned char secondbyte = static_cast<unsigned char>(from_next[1]);
+			if (0x80 <= secondbyte  && secondbyte  <= 0xFF)
+			{
+				++n;
+				from_next += 2;
+			}
+			else
+				break;
+		}
+		else
+		{
+			++n;
+			++from_next;
+		}
+	}
+	return int(from_next - from);
+}
+
+template <class internT>
+int
+__euc<internT>::do_max_length() const _MSL_NO_THROW
+{
+	return 2;
+}
+
+// UTF-8
+
+template <class internT, size_t size>
+class __utf_8_imp;
+
+// 16 bit
+
+template <class internT>
+class __utf_8_imp<internT, 16>
+	: public __codecvt_pub_destructor<internT, char, mbstate_t>
+{
+	typedef __codecvt_pub_destructor<internT, char, mbstate_t> base;
+public:
+	typedef internT   intern_type;
+	typedef char      extern_type;
+	typedef mbstate_t state_type;
+	typedef codecvt_base::result result;
+
+	explicit __utf_8_imp(size_t refs = 0)
+	             : base(refs) {}
+
+protected:
+	virtual result do_out(mbstate_t& state, const internT* from, const internT* from_end, const internT*& from_next, char* to, char* to_limit, char*& to_next) const;
+	virtual result do_in(mbstate_t& state, const char* from, const char* from_end, const char*& from_next, internT* to, internT* to_limit, internT*& to_next) const;
+	virtual int do_length(mbstate_t& state, const char* from, const char* from_end, size_t max) const;
+	virtual int do_max_length() const _MSL_NO_THROW;
+};
+
+template <class internT>
+codecvt_base::result
+__utf_8_imp<internT, 16>::do_out(mbstate_t&, const internT* from, const internT* from_end, const internT*& from_next, char* to, char* to_limit, char*& to_next) const
+{
+	for (from_next = from, to_next = to; from_next < from_end && to_next < to_limit; ++from_next)
+	{
+		if ((*from_next & 0xFF80) == 0x0000)       // 0000 0000 0xxx xxxx
+		{
+			*to_next++ = static_cast<char>(*from_next);
+			continue;
+		}
+		else if ((*from_next & 0xF800) == 0x0000)  // 0000 0xxx xxxx xxxx
+		{
+			if (to_limit - to_next < 2)
+				return base::partial;
+			*to_next++ = static_cast<char>(0xC0 | (*from_next >> 6));
+			goto byte0;
+		}
+		else
+		{
+			if (to_limit - to_next < 3)
+				return base::partial;
+			*to_next++ = static_cast<char>(0xE0 | (*from_next >> 12));
+//			goto byte1;
+		}
+//	byte1:
+		*to_next++ = static_cast<char>(0x80 | ((*from_next & 0x0FC0) >> 6));
+	byte0:
+		*to_next++ = static_cast<char>(0x80 | ( *from_next & 0x003F));
+	}
+	if (from_next < from_end)
+		return base::partial;
+	return base::ok;
+}
+
+template <class internT>
+codecvt_base::result
+__utf_8_imp<internT, 16>::do_in(mbstate_t&, const char* from, const char* from_end, const char*& f_next, internT* to, internT* to_limit, internT*& to_next) const
+{
+	const unsigned char*& from_next = reinterpret_cast<const unsigned char*&>(f_next);
+	for (f_next = from, to_next = to; f_next < from_end && to_next < to_limit; ++to_next)
+	{
+		if ((*from_next & 0x80) == 0x00)             // 0xxx xxxx
+		{
+			*to_next = static_cast<internT>(*from_next++);
+			continue;
+		}
+		else if ((*from_next & 0xE0) == 0xC0)        // 110x xxxx
+		{
+			if ((*from_next & 0xFE) == 0xC0)
+				return base::error;  // overlong
+			if (from_end - f_next < 2)
+				return base::partial;
+			if ((from_next[1] & 0xC0) != 0x80)
+				return base::error;
+			*to_next = static_cast<internT>((*from_next++ & 0x1F) << 6);
+			goto byte0;
+		}
+		else if ((*from_next & 0xF0) == 0xE0)        // 1110 xxxx
+		{
+			if (from_end - f_next < 3)
+				return base::partial;
+			if (from_next[0] == 0xE0 && (from_next[1] & 0xE0) == 0x80)
+				return base::error;  // overlong
+			if ((from_next[1] & 0xC0) != 0x80 || (from_next[2] & 0xC0) != 0x80)
+				return base::error;
+			*to_next = static_cast<internT>((*from_next++ & 0x0F) << 12);
+//			goto byte1;
+		}
+		else
+			return base::error;
+//	byte1:
+		*to_next |= static_cast<internT>((*from_next++ & 0x3F) << 6);
+	byte0:
+		*to_next |= static_cast<internT>( *from_next++ & 0x3F);
+	}
+	if (f_next < from_end)
+		return base::partial;
+	return base::ok;
+}
+
+template <class internT>
+int
+__utf_8_imp<internT, 16>::do_length(mbstate_t&, const char* from, const char* from_end, size_t max) const
+{
+	const char* f_next = from;
+	const unsigned char*& from_next = reinterpret_cast<const unsigned char*&>(f_next);
+	for (size_t n = 0; f_next < from_end && n < max; ++n)
+	{
+		if ((*from_next & 0x80) == 0x00)           // 0xxx xxxx
+			++from_next;
+		else if ((*from_next & 0xE0) == 0xC0)      // 110x xxxx
+		{
+			if ((*from_next & 0xFE) == 0xC0)
+				break;  // overlong
+			if (from_end - f_next < 2)
+				break;
+			if ((from_next[1] & 0xC0) != 0x80)
+				break;
+			from_next += 2;
+		}
+		else if ((*from_next & 0xF0) == 0xE0)      // 1110 xxxx
+		{
+			if (from_end - f_next < 3)
+				break;
+			if (from_next[0] == 0xE0u && (from_next[1] & 0xE0u) == 0x80u)
+				break;  // overlong
+			if ((from_next[1] & 0xC0) != 0x80 || (from_next[2] & 0xC0) != 0x80)
+				break;
+			from_next += 3;
+		}
+		else
+			break;
+	}
+	return int(f_next - from);
+}
+
+template <class internT>
+int
+__utf_8_imp<internT, 16>::do_max_length() const _MSL_NO_THROW
+{
+	return 3;
+}
+
+// 32 bit
+
+template <class internT>
+class __utf_8_imp<internT, 32>
+	: public __codecvt_pub_destructor<internT, char, mbstate_t>
+{
+	typedef __codecvt_pub_destructor<internT, char, mbstate_t> base;
+public:
+	typedef internT   intern_type;
+	typedef char      extern_type;
+	typedef mbstate_t state_type;
+	typedef codecvt_base::result result;
+
+	explicit __utf_8_imp(size_t refs = 0)
+	             : base(refs) {}
+
+protected:
+	virtual result do_out(mbstate_t& state, const internT* from, const internT* from_end, const internT*& from_next, char* to, char* to_limit, char*& to_next) const;
+	virtual result do_in(mbstate_t& state, const char* from, const char* from_end, const char*& from_next, internT* to, internT* to_limit, internT*& to_next) const;
+	virtual int do_length(mbstate_t& state, const char* from, const char* from_end, size_t max) const;
+	virtual int do_max_length() const _MSL_NO_THROW;
+};
+
+template <class internT>
+codecvt_base::result
+__utf_8_imp<internT, 32>::do_out(mbstate_t&, const internT* from, const internT* from_end, const internT*& from_next, char* to, char* to_limit, char*& to_next) const
+{
+	for (from_next = from, to_next = to; from_next < from_end && to_next < to_limit; ++from_next)
+	{
+		if ((*from_next & 0xFFFFFF80) == 0x00000000)       // 0000 0000 0000 0000 0000 0000 0xxx xxxx
+		{
+			*to_next++ = static_cast<char>(*from_next);
+			continue;
+		}
+		else if ((*from_next & 0xFFFFF800) == 0x00000000)  // 0000 0000 0000 0000 0000 0xxx xxxx xxxx
+		{
+			if (to_limit - to_next < 2)
+				return base::partial;
+			*to_next++ = static_cast<char>(0xC0 | (*from_next >> 6));
+			goto byte0;
+		}
+		else if ((*from_next & 0xFFFF0000) == 0x00000000)  // 0000 0000 0000 0000 xxxx xxxx xxxx xxxx
+		{
+			if (to_limit - to_next < 3)
+				return base::partial;
+			*to_next++ = static_cast<char>(0xE0 | (*from_next >> 12));
+			goto byte1;
+		}
+		else if ((*from_next & 0xFFE00000) == 0x00000000)  // 0000 0000 000x xxxx xxxx xxxx xxxx xxxx
+		{
+			if (to_limit - to_next < 4)
+				return base::partial;
+			*to_next++ = static_cast<char>(0xF0 | (*from_next >> 18));
+			goto byte2;
+		}
+		else if ((*from_next & 0xFC000000) == 0x00000000)  // 0000 00xx xxxx xxxx xxxx xxxx xxxx xxxx
+		{
+			if (to_limit - to_next < 5)
+				return base::partial;
+			*to_next++ = static_cast<char>(0xF8 | (*from_next >> 24));
+			goto byte3;
+		}
+		else if ((*from_next & 0x80000000) == 0x00000000)  // 0xxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+		{
+			if (to_limit - to_next < 6)
+				return base::partial;
+			*to_next++ = static_cast<char>(0xFC | (*from_next >> 30));
+//			goto byte4;
+		}
+		else
+			return base::error;
+//	byte4:
+		*to_next++ = static_cast<char>(0x80 | ((*from_next & 0x3F000000) >> 24));
+	byte3:
+		*to_next++ = static_cast<char>(0x80 | ((*from_next & 0x00FC0000) >> 18));
+	byte2:
+		*to_next++ = static_cast<char>(0x80 | ((*from_next & 0x0003F000) >> 12));
+	byte1:
+		*to_next++ = static_cast<char>(0x80 | ((*from_next & 0x00000FC0) >> 6));
+	byte0:
+		*to_next++ = static_cast<char>(0x80 | ( *from_next & 0x0000003F));
+	}
+	if (from_next < from_end)
+		return base::partial;
+	return base::ok;
+}
+
+template <class internT>
+codecvt_base::result
+__utf_8_imp<internT, 32>::do_in(mbstate_t&, const char* from, const char* from_end, const char*& f_next, internT* to, internT* to_limit, internT*& to_next) const
+{
+	const unsigned char*& from_next = reinterpret_cast<const unsigned char*&>(f_next);
+	for (f_next = from, to_next = to; f_next < from_end && to_next < to_limit; ++to_next)
+	{
+		if ((*from_next & 0x80) == 0x00)               // 0xxx xxxx
+		{
+			*to_next = static_cast<internT>(*from_next++);
+			continue;
+		}
+		else if ((*from_next & 0xE0) == 0xC0)          // 110x xxxx
+		{
+			if ((*from_next & 0xFE) == 0xC0)
+				return base::error;  // overlong
+			if (from_end - f_next < 2)
+				return base::partial;
+			if ((from_next[1] & 0xC0) != 0x80)
+				return base::error;
+			*to_next = static_cast<internT>((*from_next++ & 0x1F) << 6);
+			goto byte0;
+		}
+		else if ((*from_next & 0xF0) == 0xE0)          // 1110 xxxx
+		{
+			if (from_end - f_next < 3)
+				return base::partial;
+			if (from_next[0] == 0xE0 && (from_next[1] & 0xE0) == 0x80)
+				return base::error;  // overlong
+			if ((from_next[1] & 0xC0) != 0x80 || (from_next[2] & 0xC0) != 0x80)
+				return base::error;
+			*to_next = static_cast<internT>((*from_next++ & 0x0F) << 12);
+			goto byte1;
+		}
+		else if ((*from_next & 0xF8) == 0xF0)          // 1111 0xxx
+		{
+			if (from_end - f_next < 4)
+				return base::partial;
+			if (from_next[0] == 0xF0 && (from_next[1] & 0xF0) == 0x80)
+				return base::error;  // overlong
+			if ((from_next[1] & 0xC0) != 0x80 || (from_next[2] & 0xC0) != 0x80 ||
+			    (from_next[3] & 0xC0) != 0x80)
+				return base::error;
+			*to_next = static_cast<internT>((*from_next++ & 0x07) << 18);
+			goto byte2;
+		}
+		else if ((*from_next & 0xFC) == 0xF8)          // 1111 10xx
+		{
+			if (from_end - f_next < 5)
+				return base::partial;
+			if (from_next[0] == 0xF8 && (from_next[1] & 0xF8) == 0x80)
+				return base::error;  // overlong
+			if ((from_next[1] & 0xC0) != 0x80 || (from_next[2] & 0xC0) != 0x80 ||
+			    (from_next[3] & 0xC0) != 0x80 || (from_next[4] & 0xC0) != 0x80)
+				return base::error;
+			*to_next = static_cast<internT>((*from_next++ & 0x03) << 24);
+			goto byte3;
+		}
+		else if ((*from_next & 0xFE) == 0xFC)          // 1111 110x
+		{
+			if (from_end - f_next < 6)
+				return base::partial;
+			if (from_next[0] == 0xFC && (from_next[1] & 0xFC) == 0x80)
+				return base::error;  // overlong
+			if ((from_next[1] & 0xC0) != 0x80 || (from_next[2] & 0xC0) != 0x80 ||
+			    (from_next[3] & 0xC0) != 0x80 || (from_next[4] & 0xC0) != 0x80 ||
+			    (from_next[5] & 0xC0) != 0x80)
+				return base::error;
+			*to_next = static_cast<internT>((*from_next++ & 0x01) << 30);
+//			goto byte4;
+		}
+		else
+			return base::error;
+//	byte4:
+		*to_next |= static_cast<internT>((*from_next++ & 0x3F) << 24);
+	byte3:
+		*to_next |= static_cast<internT>((*from_next++ & 0x3F) << 18);
+	byte2:
+		*to_next |= static_cast<internT>((*from_next++ & 0x3F) << 12);
+	byte1:
+		*to_next |= static_cast<internT>((*from_next++ & 0x3F) <<  6);
+	byte0:
+		*to_next |= static_cast<internT>( *from_next++ & 0x3F);
+	}
+	if (f_next < from_end)
+		return base::partial;
+	return base::ok;
+}
+
+template <class internT>
+int
+__utf_8_imp<internT, 32>::do_length(mbstate_t&, const char* from, const char* from_end, size_t max) const
+{
+	const char* f_next = from;
+	const unsigned char*& from_next = reinterpret_cast<const unsigned char*&>(f_next);
+	for (size_t n = 0; f_next < from_end && n < max; ++n)
+	{
+		if ((*from_next & 0x80) == 0x00)               // 0xxx xxxx
+			++from_next;
+		else if ((*from_next & 0xE0) == 0xC0)          // 110x xxxx
+		{
+			if ((*from_next & 0xFE) == 0xC0)
+				break;  // overlong
+			if (from_end - f_next < 2)
+				break;
+			if ((from_next[1] & 0xC0) != 0x80)
+				break;
+			from_next += 2;
+		}
+		else if ((*from_next & 0xF0) == 0xE0)          // 1110 xxxx
+		{
+			if (from_end - f_next < 3)
+				break;
+			if (from_next[0] == 0xE0 && (from_next[1] & 0xE0) == 0x80)
+				break;  // overlong
+			if ((from_next[1] & 0xC0) != 0x80 || (from_next[2] & 0xC0) != 0x80)
+				break;
+			from_next += 3;
+		}
+		else if ((*from_next & 0xF8) == 0xF0)          // 1111 0xxx
+		{
+			if (from_end - f_next < 4)
+				break;
+			if (from_next[0] == 0xF0 && (from_next[1] & 0xF0) == 0x80)
+				break;  // overlong
+			if ((from_next[1] & 0xC0) != 0x80 || (from_next[2] & 0xC0) != 0x80 ||
+			    (from_next[3] & 0xC0) != 0x80)
+				break;
+			from_next += 4;
+		}
+		else if ((*from_next & 0xFC) == 0xF8)          // 1111 10xx
+		{
+			if (from_end - f_next < 5)
+				break;
+			if (from_next[0] == 0xF8 && (from_next[1] & 0xF8) == 0x80)
+				break;  // overlong
+			if ((from_next[1] & 0xC0) != 0x80 || (from_next[2] & 0xC0) != 0x80 ||
+			    (from_next[3] & 0xC0) != 0x80 || (from_next[4] & 0xC0) != 0x80)
+				break;
+			from_next += 5;
+		}
+		else if ((*from_next & 0xFE) == 0xFC)          // 1111 110x
+		{
+			if (from_end - f_next < 6)
+				break;
+			if (from_next[0] == 0xFC && (from_next[1] & 0xFC) == 0x80)
+				break;  // overlong
+			if ((from_next[1] & 0xC0) != 0x80 || (from_next[2] & 0xC0) != 0x80 ||
+			    (from_next[3] & 0xC0) != 0x80 || (from_next[4] & 0xC0) != 0x80 ||
+			    (from_next[5] & 0xC0) != 0x80)
+				break;
+			from_next += 6;
+		}
+		else
+			break;
+	}
+	return int(f_next - from);
+}
+
+template <class internT>
+int
+__utf_8_imp<internT, 32>::do_max_length() const _MSL_NO_THROW
+{
+	return 6;
+}
+
+// __utf_8
+
+template <class internT>
+class __utf_8
+	: public __utf_8_imp<internT, sizeof(internT) * __char<>::bits>
+{
+	typedef __utf_8_imp<internT, sizeof(internT) * __char<>::bits> base;
+public:
+	typedef internT   intern_type;
+	typedef char      extern_type;
+	typedef mbstate_t state_type;
+	typedef codecvt_base::result result;
+
+	explicit __utf_8(size_t refs = 0)
+	             : base(refs) {}
+
+protected:
+	virtual result do_unshift(mbstate_t& state, char* to, char* to_limit, char*& to_next) const;
+	virtual int do_encoding() const _MSL_NO_THROW;
+	virtual bool do_always_noconv() const _MSL_NO_THROW;
+};
+
+template <class internT>
+codecvt_base::result
+__utf_8<internT>::do_unshift(mbstate_t&, char* to, char*, char*& to_next) const
+{
+	to_next = to;
+	return base::noconv;
+}
+
+template <class internT>
+int
+__utf_8<internT>::do_encoding() const _MSL_NO_THROW
+{
+	return 0;
+}
+
+template <class internT>
+bool
+__utf_8<internT>::do_always_noconv() const _MSL_NO_THROW
+{
+	return false;
+}
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	} // namespace std
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#pragma enumsalwaysint reset
+#endif
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#pragma bool reset
+#endif
+
+#ifdef __MWERKS__
+#pragma options align=reset
+#endif
+
+#endif // RC_INVOKED
+
+#endif  // _MSL_NO_LOCALE
+
+#endif  // _MSL_NO_IO
+
+#endif  // _CODECVT_EXT
+
+// hh 010228 Created
+// hh 010402 Removed 68K CMF support
+// hh 021012 Separated into <codecvt_ext> and <codecvt_byname>
+// hh 030909 Added cast to protect against a signed internT in __ucs_2<internT>::do_in

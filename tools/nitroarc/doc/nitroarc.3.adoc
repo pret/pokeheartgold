@@ -1,0 +1,165 @@
+nitroarc (3)
+============
+
+:doctype: manpage
+:manmanual: Library Functions Manual
+:mansource: NitroARC Manual
+:man-linkstyle: pass:[blue R < >]
+:source-highlighter: rouge
+
+Name
+----
+
+nitroarc - implementation of Nintendo's Nitro Archive format
+
+Library
+-------
+
+nitroarc (_libnitroarc_, _-lnitroarc_)
+
+Synopsis
+--------
+
+[source,c]
+----
+#include <nitroarc.h>
+
+typedef struct nitroarc nitroarc_t;
+
+int nitroarc_read(const void *stream, size_t size, nitroarc_t *out_narc);
+
+int nitroarc_geti(const nitroarc_t *narc, uint16_t i,
+                  void **out_member, size_t *out_size);
+
+int nitroarc_gets(const nitroarc_t *narc, const char *s,
+                  void **out_member, size_t *out_size);
+
+int nitroarc_nameof(const nitroarc_t *narc, uint16_t i, char *buf, size_t size);
+
+typedef struct nitroarc_packer nitroarc_packer_t;
+struct nitroarc_packer {
+    void   *ctx;
+    void* (*malloc)(void *ctx, unsigned items, unsigned size);
+    void* (*realloc)(void *ctx, void *ptr, unsigned items, unsigned size);
+    void  (*free)(void *ctx, void *ptr, unsigned items, unsigned size);
+};
+
+int nitroarc_pinit(nitroarc_packer_t *p, uint16_t nfiles,
+                   unsigned named, unsigned stripped);
+
+int nitroarc_ppack(nitroarc_packer_t *p, void *data, uint32_t size, char *name);
+
+int nitroarc_pseal(nitroarc_packer_t *p, void **out_data, uint32_t *out_size);
+
+const char* nitroarc_errs(int errc);
+----
+
+Description
+-----------
+
+*nitroarc* is a C library implementing the Nitro Archive file format for the
+Nintendo DS handheld. The library provides routines for decoding an archive from
+an arbitrary stream of bytes, accessing members from a decoded archive, and
+constructing an archive with particular members.
+
+The archive-decoding and member-access routines are implemented as zero-copy
+functions. _nitroarc_read()_ writes a set of pointers and simple primitives as
+interpreted from the provided byte-stream; thus, any dynamic allocation for the
+byte-stream must maintain the same lifetime as the decoded structure. This rule
+also applies to the buffers written to by _nitroarc_geti()_, _nitroarc_gets()_,
+and _nitroarc_nameof()_.
+
+The archive-construction routines require access to a dynamic memory-allocation
+interface. This interface must be defined in the _nitroarc_packer_t_ structure
+before it is passed to _nitroarc_pinit()_. An example implementation of this
+interface using the standard *malloc(3)* routines is provided below.
+
+Return Value
+------------
+
+With the exception of _nitroarc_errs()_, all library functions return 0 on
+success, and >0 if an error occurs.
+
+_nitroarc_errs()_ returns a pointer to a statically-allocated, null-terminated
+string describing the input error code. If the error code is unrecognized, then
+a pointer to a default error message will be returned. Programmers should not
+attempt to pass any value returned by this function a any _free()_-like routine.
+
+Examples
+--------
+
+=== Decoding an Existing Archive ===
+
+[source,c]
+----
+#include <stdint.h>
+#include <nitroarc.h>
+
+extern int read_file(const char *filename, char **out_data, uint32_t *out_size);
+
+static nitroarc_t read_archive(const char *target) {
+    nitroarc_t archive;
+    char      *data = NULL;
+    uint32_t   size = 0;
+
+    read_file(target, &data, &size);
+    nitroarc_read(data, size, &archive);
+    return archive;
+}
+----
+
+=== Constructing a New Archive ===
+
+[source,c]
+----
+#include <stdint.h>
+#include <stdlib.h>
+#include <nitroarc.h>
+
+static void* libc_malloc(void *ctx, unsigned items, unsigned size) {
+    return malloc(items * size);
+}
+
+static void libc_free(void *ctx, void *ptr, unsigned items, unsigned size) {
+    free(ptr);
+}
+
+static void* libc_realloc(void *ctx, void *ptr, unsigned items, unsigned size) {
+    return realloc(ptr, items * size);
+}
+
+extern int read_file(const char *filename, char **out_data, uint32_t *out_size);
+extern int write_file(const char *filename, const char *data, uint32_t size);
+
+static void make_archive(const char *target, const char **members, int count) {
+    nitroarc_packer_t packer;
+    packer.malloc  = libc_malloc;
+    packer.realloc = libc_realloc;
+    packer.free    = libc_free;
+
+    char    *data = NULL;
+    uint32_t size = 0;
+
+    nitroarc_pinit(&packer, count, false, false);
+
+    for (int i = 0; i < count; i++) {
+        load_file(members[i], &data, &size);
+        nitroarc_ppack(&packer, data, size, members[i]);
+        free(data);
+    }
+
+    nitroarc_pseal(&packer, &data, &size);
+    write_file(target, data, size);
+    free(data);
+}
+----
+
+See Also
+--------
+
+*nitroarc(1)*, *malloc(3)*
+
+Contributions
+-------------
+
+Report bugs and submit patches to <rachel@lhea.me>.

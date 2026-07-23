@@ -1,0 +1,137 @@
+{
+  "key": 47028,
+  "messages": [
+    {
+      "id": "msg_0650_00000",
+      "en_US": "Misty"
+    },
+    {
+      "id": "msg_0650_00001",
+      "en_US": [
+        "Could you repeat that? I can’t hear\n",
+        "you at all. A bad connection, I guess.\r",
+        "Please move along and call again!"
+      ]
+    },
+    {
+      "id": "msg_0650_00002",
+      "en_US": [
+        "Hi...\n",
+        "Oh, hi there. What’s happening?\f",
+        "Everything’s good with me.\r"
+      ]
+    },
+    {
+      "id": "msg_0650_00003",
+      "en_US": [
+        "We both know there’s much stronger\n",
+        "Gym Leaders than me around, right?\f",
+        "You’d better be ready to work hard."
+      ]
+    },
+    {
+      "id": "msg_0650_00004",
+      "en_US": [
+        "I’m really sorry, but I’ve got a lot\n",
+        "going on... I’m pretty busy lately...\r",
+        "Well, Wednesday mornings I’ve got some\n",
+        "free time. Want to try calling then?"
+      ]
+    },
+    {
+      "id": "msg_0650_00005",
+      "en_US": [
+        "Oh hi, I’m free today!\n",
+        "Let’s battle again, OK?{YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0650_00006",
+      "en_US": [
+        "OK! So, I’ll see you at the\n",
+        "Fighting Dojo in Saffron City, then!"
+      ]
+    },
+    {
+      "id": "msg_0650_00007",
+      "en_US": [
+        "Aw...\n",
+        "That makes me sad..."
+      ]
+    },
+    {
+      "id": "msg_0650_00008",
+      "en_US": [
+        "I’m not sure... Are you making plans\n",
+        "just with me?\r",
+        "Didn’t you make some plans with\n",
+        "someone else already?"
+      ]
+    },
+    {
+      "id": "msg_0650_00009",
+      "en_US": [
+        "I’m waiting at the Fighting Dojo in\n",
+        "Saffron City.\f",
+        "If you stand me up, I’m going to be sad."
+      ]
+    },
+    {
+      "id": "msg_0650_00010",
+      "en_US": [
+        "Yes, this is Misty...\n",
+        "Hi, how are you?\r"
+      ]
+    },
+    {
+      "id": "msg_0650_00011",
+      "en_US": [
+        "We made plans to meet at the\n",
+        "Fighting Dojo in Saffron City.\r",
+        "You remembered you’re meeting me?\n",
+        "I’ve been so looking forward to this..."
+      ]
+    },
+    {
+      "id": "msg_0650_00012",
+      "en_US": [
+        "Hey, have you traveled through all of\n",
+        "the Kanto region yet? How is it,\f",
+        "compared to Johto? There’s a lot\f",
+        "of beautiful scenery here, right?\r",
+        "I especially love the Cape along\n",
+        "Route 25!\r",
+        "I’ve got so many memories of things\n",
+        "along that coast...\r",
+        "What kinds of memories? Pfft!\n",
+        "Like I’d tell you!"
+      ]
+    },
+    {
+      "id": "msg_0650_00013",
+      "en_US": [
+        "That reminds me...\n",
+        "That strange person who came to visit\f",
+        "my Gym recently...\r",
+        "That was you who defeated him and\n",
+        "sent him off, wasn’t it?\r",
+        "I forgot to thank you for that!\r",
+        "Everyone in my Gym is really\n",
+        "appreciative. Thanks so much!"
+      ]
+    },
+    {
+      "id": "msg_0650_00014",
+      "en_US": [
+        "Hey, did you hear?\n",
+        "If you beat all six people on Route 25,\f",
+        "not losing even once, you get to make\f",
+        "a true-love wish!\r",
+        "You didn’t hear about that?\n",
+        "Really?\r",
+        "Well, that would be because I just made\n",
+        "it up! Ha ha ha!"
+      ]
+    }
+  ]
+}

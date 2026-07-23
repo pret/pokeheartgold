@@ -1,0 +1,71 @@
+/* MSL
+ * Copyright © 1995-2006 Freescale Corporation.  All rights reserved.
+ *
+ * $Date: 2006/02/08 20:32:23 $
+ * $Revision: 1.41.2.3 $
+ */
+
+#ifdef __MWERKS__
+	#if __MWERKS__ >= 0x3000
+		#pragma notonce
+	#endif /* __MWERKS__ >= 0x3000 */
+#endif /* __MWERKS__ */
+
+#include <ansi_parms.h>
+
+#if !_MSL_USING_MW_C_HEADERS
+	#include <assert.h>
+#elif defined(__PALMOS_TRAPS__)
+	#include <cassert_Palm_OS>
+#else
+
+#ifdef assert		/*- hh 980901 -*/
+	#undef assert
+#endif
+
+#ifdef NDEBUG
+	#define assert(ignore) ((void) 0)
+#else
+	#include <assert_api.h>
+	
+	#if (__dest_os == __win32_os || __dest_os == __wince_os) && defined(UNICODE)
+		#define __T(x)      L ## x
+	#endif
+	
+	#if _MSL_ASSERT_DISPLAYS_FUNC
+		#if (__dest_os == __win32_os || __dest_os == __wince_os) && defined(UNICODE)
+			#define assert(condition) ((condition) ? ((void) 0) : __msl_wchar_assertion_failed(__T(#condition), __FILE__, __func__, __LINE__))
+		#else
+			#define assert(condition) ((condition) ? ((void) 0) : __msl_assertion_failed(#condition, __FILE__, __func__, __LINE__))
+		#endif /* UNICODE */
+	#else
+		#if (__dest_os == __win32_os || __dest_os == __wince_os) && defined(UNICODE)
+			#define assert(condition) ((condition) ? ((void) 0) : __msl_wchar_assertion_failed(__T(#condition), __FILE__, 0, __LINE__))
+		#else
+			#define assert(condition) ((condition) ? ((void) 0) : __msl_assertion_failed(#condition, __FILE__, 0, __LINE__))
+		#endif /* UNICODE */
+	#endif /* _MSL_ASSERT_DISPLAYS_FUNC */
+#endif /* def NDEBUG */
+
+#endif /* _MSL_USING_MW_C_HEADERS */
+
+/* Change record:
+ * hh  971206 Changed filename from assert.h to cassert and added namespace support
+ * hh  971230 added RC_INVOKED wrapper
+ * mm  980724 Moved defines of assert(condition) outside __cassert__ wrappers MW08171
+ * hh  980901 Indented, and added assert existence test before undef'ing
+ * mm  990415 Inserted const into prototype definitions to avoid warnings when #pragma const_strings on in force IL9903-1579	
+ * hh  991112 Removed namespace support
+ * JWW 001208 Added case for targeting Mach-O
+ * cc  010405 removed pragma options align native and reset			  
+ * cc  010409 updated defines to JWW new namespace macros
+ * JWW 010905 Moved to using platform specific implementations of __assertion_failed
+ * JWW 010910 Removed hacked-up RC_INVOKED macro
+ * JWW 011027 Use _MSL_USING_MW_C_HEADERS as generic header test instead of specific Mach-O test
+ * BLC 020110 Added Palm OS header inclusion
+ * JWW 020404 Use _MSL_ASSERT_DISPLAYS_FUNC macro to turn on and off using __func__
+ * JWW 020501 Default _MSL_ASSERT_DISPLAYS_FUNC to on only with C99 (C89 defaults to off)
+ * JWW 021218 Improve the check for Windows-specific UNICODE define
+ * ejs 030430 Change UNICODE version to correctly construct a wide literal
+ * cc  050518 Moving _MSL_ASSERT_DISPLAYS_FUNC configuration to assert_api.h
+ */

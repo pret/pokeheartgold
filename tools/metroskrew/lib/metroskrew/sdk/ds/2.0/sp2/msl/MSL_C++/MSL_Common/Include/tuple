@@ -1,0 +1,1841 @@
+/* MSL
+ * Copyright © 1995-2006 Freescale Corporation.  All rights reserved.
+ *
+ * $Date: 2006/02/09 16:59:35 $
+ * $Revision: 1.18.2.3 $
+ */
+
+// tuple
+
+#ifndef _TUPLE
+#define _TUPLE
+
+/*  tuple synopsis
+
+namespace std
+{
+namespace tr1
+{
+
+}  // tr1
+}  // std
+*/
+
+#include <mslconfig>
+
+#include <iosfwd>
+#include <stringfwd>
+#include <utility>
+#include <functional>
+#include <msl_utility>
+
+#ifndef RC_INVOKED
+
+#ifdef __MWERKS__
+#pragma options align=native
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#if _MSL_FORCE_ENUMS_ALWAYS_INT
+		#pragma enumsalwaysint on
+	#else
+		#pragma enumsalwaysint off
+	#endif
+#endif  // _MSL_FORCE_ENUMS_ALWAYS_INT
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#if _MSL_FORCE_ENABLE_BOOL_SUPPORT
+		#pragma bool on
+	#else
+		#pragma bool off
+	#endif
+#endif  // _MSL_FORCE_ENABLE_BOOL_SUPPORT
+
+_MSL_START_TR1_NAMESPACE
+
+namespace detail
+{
+
+template <class T>
+struct stored_type
+{
+	typedef typename Metrowerks::select
+	<
+		Metrowerks::is_function<T>::value,
+		nat,
+		typename Metrowerks::select
+		<
+			Metrowerks::is_void<T>::value,
+			nat,
+			T
+		>::type
+	>::type type;
+};
+
+template <class T>
+struct param
+{
+	typedef const T& type;
+};
+
+template <class T>
+struct param<T&>
+{
+	typedef T& type;
+};
+
+#ifdef _MSL_MOVE
+
+template <class T>
+struct param<T&&>
+{
+	typedef T&& type;
+};
+
+#endif  // _MSL_MOVE
+
+template <unsigned int N, class P>
+struct get_helper;
+
+}  // detail
+
+template <class T0, class T1, class T2, class T3, class T4,
+          class T5, class T6, class T7, class T8, class T9>
+class tuple
+{
+public:
+	tuple() {}
+#ifdef _MSL_MOVE
+	template <class U0, class U1, class U2, class U3, class U4,
+	          class U5, class U6, class U7, class U8, class U9>
+	tuple(U0&& u0, U1&& u1, U2&& u2, U3&& u3, U4&& u4, U5&& u5, U6&& u6, U7&& u7, U8&& u8, U9&& u9)
+		: data0_(_STD::forward<U0>(u0)), data1_(_STD::forward<U1>(u1)), data2_(_STD::forward<U2>(u2)),
+		  data3_(_STD::forward<U3>(u3)), data4_(_STD::forward<U4>(u4)), data5_(_STD::forward<U5>(u5)),
+		  data6_(_STD::forward<U6>(u6)), data7_(_STD::forward<U7>(u7)), data8_(_STD::forward<U8>(u8)),
+		  data9_(_STD::forward<U9>(u9)) {}
+#else  // _MSL_MOVE
+	tuple(typename detail::param<T0>::type t0,
+	      typename detail::param<T1>::type t1,
+	      typename detail::param<T2>::type t2,
+	      typename detail::param<T3>::type t3,
+	      typename detail::param<T4>::type t4,
+	      typename detail::param<T5>::type t5,
+	      typename detail::param<T6>::type t6,
+	      typename detail::param<T7>::type t7,
+	      typename detail::param<T8>::type t8,
+	      typename detail::param<T9>::type t9)
+	      : data0_(t0), data1_(t1), data2_(t2), data3_(t3), data4_(t4),
+	        data5_(t5), data6_(t6), data7_(t7), data8_(t8), data9_(t9) {}
+#endif  // _MSL_MOVE
+
+	template <class P>
+	tuple(const P& p, typename Metrowerks::restrict_to<__tuple_convertible<P, tuple>::value>::type* = 0);
+
+	template <class P>
+	tuple&
+	operator=(const P& p) {return assign(*this, p);}
+
+#ifdef _MSL_MOVE
+	template <class P>
+	tuple(P&& p, typename Metrowerks::restrict_to<__tuple_convertible<P, tuple>::value>::type* = 0);
+
+	template <class P>
+	tuple&
+	operator=(P&& p) {return move_assign(*this, _STD::move(p));}
+#endif  // _MSL_MOVE
+
+private:
+	typename detail::stored_type<T0>::type data0_;
+	typename detail::stored_type<T1>::type data1_;
+	typename detail::stored_type<T2>::type data2_;
+	typename detail::stored_type<T3>::type data3_;
+	typename detail::stored_type<T4>::type data4_;
+	typename detail::stored_type<T5>::type data5_;
+	typename detail::stored_type<T6>::type data6_;
+	typename detail::stored_type<T7>::type data7_;
+	typename detail::stored_type<T8>::type data8_;
+	typename detail::stored_type<T9>::type data9_;
+
+	friend struct detail::get_helper<0, tuple>;
+	friend struct detail::get_helper<1, tuple>;
+	friend struct detail::get_helper<2, tuple>;
+	friend struct detail::get_helper<3, tuple>;
+	friend struct detail::get_helper<4, tuple>;
+	friend struct detail::get_helper<5, tuple>;
+	friend struct detail::get_helper<6, tuple>;
+	friend struct detail::get_helper<7, tuple>;
+	friend struct detail::get_helper<8, tuple>;
+	friend struct detail::get_helper<9, tuple>;
+};
+
+template <>
+class tuple<nat, nat, nat, nat, nat, nat, nat, nat, nat, nat>
+{
+public:
+	template <class charT, class traits>
+	static const charT* open(basic_ios<charT, traits>& s);
+
+	template <class charT, class traits>
+	static const charT* close(basic_ios<charT, traits>& s);
+
+	template <class charT, class traits>
+	static const charT* delimiter(basic_ios<charT, traits>& s);
+
+	template <class charT>
+	static void set_open(ios_base& s, const charT* c);
+
+	template <class charT>
+	static void set_close(ios_base& s, const charT* c);
+
+	template <class charT>
+	static void set_delimiter(ios_base& s, const charT* c);
+private:
+
+	template <class charT>
+	static basic_string<charT>& open_storage(ios_base& s);
+
+	template <class charT>
+	static basic_string<charT>& close_storage(ios_base& s);
+
+	template <class charT>
+	static basic_string<charT>& delimiter_storage(ios_base& s);
+};
+
+template <class T0>
+class tuple<T0, nat, nat, nat, nat, nat, nat, nat, nat, nat>
+{
+public:
+	tuple() {}
+#ifdef _MSL_MOVE
+	template <class U0>
+	explicit tuple(U0&& u0, typename Metrowerks::restrict_to<Metrowerks::is_convertible<U0, T0>::value>::type* = 0)
+		: data0_(_STD::forward<U0>(u0)) {}
+#else  // _MSL_MOVE
+	explicit tuple(typename detail::param<T0>::type t0)
+	      : data0_(t0) {}
+#endif  // _MSL_MOVE
+
+	template <class P>
+	tuple(const P& p, typename Metrowerks::restrict_to<__tuple_convertible<P, tuple>::value>::type* = 0);
+
+	template <class P>
+	tuple&
+	operator=(const P& p) {return assign(*this, p);}
+
+#ifdef _MSL_MOVE
+	template <class P>
+	tuple(P&& p, typename Metrowerks::restrict_to<__tuple_convertible<P, tuple>::value>::type* = 0);
+
+	template <class P>
+	tuple&
+	operator=(P&& p) {return move_assign(*this, _STD::move(p));}
+#endif  // _MSL_MOVE
+
+private:
+	typename detail::stored_type<T0>::type data0_;
+
+	friend struct detail::get_helper<0, tuple>;
+};
+
+template <class T0, class T1>
+class tuple<T0, T1, nat, nat, nat, nat, nat, nat, nat, nat>
+{
+public:
+	tuple() {}
+#ifdef _MSL_MOVE
+	template <class U0, class U1>
+	tuple(U0&& u0, U1&& u1)
+		: data0_(_STD::forward<U0>(u0)), data1_(_STD::forward<U1>(u1)) {}
+#else  // _MSL_MOVE
+	tuple(typename detail::param<T0>::type t0,
+	      typename detail::param<T1>::type t1)
+	      : data0_(t0), data1_(t1) {}
+#endif  // _MSL_MOVE
+
+	template <class P>
+	tuple(const P& p, typename Metrowerks::restrict_to<__tuple_convertible<P, tuple>::value>::type* = 0);
+
+	template <class P>
+	tuple&
+	operator=(const P& p) {return assign(*this, p);}
+
+#ifdef _MSL_MOVE
+	template <class P>
+	tuple(P&& p, typename Metrowerks::restrict_to<__tuple_convertible<P, tuple>::value>::type* = 0);
+
+	template <class P>
+	tuple&
+	operator=(P&& p) {return move_assign(*this, _STD::move(p));}
+#endif  // _MSL_MOVE
+
+private:
+	typename detail::stored_type<T0>::type data0_;
+	typename detail::stored_type<T1>::type data1_;
+
+	friend struct detail::get_helper<0, tuple>;
+	friend struct detail::get_helper<1, tuple>;
+};
+
+template <class T0, class T1, class T2>
+class tuple<T0, T1, T2, nat, nat, nat, nat, nat, nat, nat>
+{
+public:
+	tuple() {}
+#ifdef _MSL_MOVE
+	template <class U0, class U1, class U2>
+	tuple(U0&& u0, U1&& u1, U2&& u2)
+		: data0_(_STD::forward<U0>(u0)), data1_(_STD::forward<U1>(u1)), data2_(_STD::forward<U2>(u2)) {}
+#else  // _MSL_MOVE
+	tuple(typename detail::param<T0>::type t0,
+	      typename detail::param<T1>::type t1,
+	      typename detail::param<T2>::type t2)
+	      : data0_(t0), data1_(t1), data2_(t2) {}
+#endif  // _MSL_MOVE
+
+	template <class P>
+	tuple(const P& p, typename Metrowerks::restrict_to<__tuple_convertible<P, tuple>::value>::type* = 0);
+
+	template <class P>
+	tuple&
+	operator=(const P& p) {return assign(*this, p);}
+
+#ifdef _MSL_MOVE
+	template <class P>
+	tuple(P&& p, typename Metrowerks::restrict_to<__tuple_convertible<P, tuple>::value>::type* = 0);
+
+	template <class P>
+	tuple&
+	operator=(P&& p) {return move_assign(*this, _STD::move(p));}
+#endif  // _MSL_MOVE
+
+private:
+	typename detail::stored_type<T0>::type data0_;
+	typename detail::stored_type<T1>::type data1_;
+	typename detail::stored_type<T2>::type data2_;
+
+	friend struct detail::get_helper<0, tuple>;
+	friend struct detail::get_helper<1, tuple>;
+	friend struct detail::get_helper<2, tuple>;
+};
+
+template <class T0, class T1, class T2, class T3>
+class tuple<T0, T1, T2, T3, nat, nat, nat, nat, nat, nat>
+{
+public:
+	tuple() {}
+#ifdef _MSL_MOVE
+	template <class U0, class U1, class U2, class U3>
+	tuple(U0&& u0, U1&& u1, U2&& u2, U3&& u3)
+		: data0_(_STD::forward<U0>(u0)), data1_(_STD::forward<U1>(u1)), data2_(_STD::forward<U2>(u2)),
+		  data3_(_STD::forward<U3>(u3)) {}
+#else  // _MSL_MOVE
+	tuple(typename detail::param<T0>::type t0,
+	      typename detail::param<T1>::type t1,
+	      typename detail::param<T2>::type t2,
+	      typename detail::param<T3>::type t3)
+	      : data0_(t0), data1_(t1), data2_(t2), data3_(t3) {}
+#endif  // _MSL_MOVE
+
+	template <class P>
+	tuple(const P& p, typename Metrowerks::restrict_to<__tuple_convertible<P, tuple>::value>::type* = 0);
+
+	template <class P>
+	tuple&
+	operator=(const P& p) {return assign(*this, p);}
+
+#ifdef _MSL_MOVE
+	template <class P>
+	tuple(P&& p, typename Metrowerks::restrict_to<__tuple_convertible<P, tuple>::value>::type* = 0);
+
+	template <class P>
+	tuple&
+	operator=(P&& p) {return move_assign(*this, _STD::move(p));}
+#endif  // _MSL_MOVE
+
+private:
+	typename detail::stored_type<T0>::type data0_;
+	typename detail::stored_type<T1>::type data1_;
+	typename detail::stored_type<T2>::type data2_;
+	typename detail::stored_type<T3>::type data3_;
+
+	friend struct detail::get_helper<0, tuple>;
+	friend struct detail::get_helper<1, tuple>;
+	friend struct detail::get_helper<2, tuple>;
+	friend struct detail::get_helper<3, tuple>;
+};
+
+template <class T0, class T1, class T2, class T3, class T4>
+class tuple<T0, T1, T2, T3, T4, nat, nat, nat, nat, nat>
+{
+public:
+	tuple() {}
+#ifdef _MSL_MOVE
+	template <class U0, class U1, class U2, class U3, class U4>
+	tuple(U0&& u0, U1&& u1, U2&& u2, U3&& u3, U4&& u4)
+		: data0_(_STD::forward<U0>(u0)), data1_(_STD::forward<U1>(u1)), data2_(_STD::forward<U2>(u2)),
+		  data3_(_STD::forward<U3>(u3)), data4_(_STD::forward<U4>(u4)) {}
+#else  // _MSL_MOVE
+	tuple(typename detail::param<T0>::type t0,
+	      typename detail::param<T1>::type t1,
+	      typename detail::param<T2>::type t2,
+	      typename detail::param<T3>::type t3,
+	      typename detail::param<T4>::type t4)
+	      : data0_(t0), data1_(t1), data2_(t2), data3_(t3), data4_(t4) {}
+#endif  // _MSL_MOVE
+
+	template <class P>
+	tuple(const P& p, typename Metrowerks::restrict_to<__tuple_convertible<P, tuple>::value>::type* = 0);
+
+	template <class P>
+	tuple&
+	operator=(const P& p) {return assign(*this, p);}
+
+#ifdef _MSL_MOVE
+	template <class P>
+	tuple(P&& p, typename Metrowerks::restrict_to<__tuple_convertible<P, tuple>::value>::type* = 0);
+
+	template <class P>
+	tuple&
+	operator=(P&& p) {return move_assign(*this, _STD::move(p));}
+#endif  // _MSL_MOVE
+
+private:
+	typename detail::stored_type<T0>::type data0_;
+	typename detail::stored_type<T1>::type data1_;
+	typename detail::stored_type<T2>::type data2_;
+	typename detail::stored_type<T3>::type data3_;
+	typename detail::stored_type<T4>::type data4_;
+
+	friend struct detail::get_helper<0, tuple>;
+	friend struct detail::get_helper<1, tuple>;
+	friend struct detail::get_helper<2, tuple>;
+	friend struct detail::get_helper<3, tuple>;
+	friend struct detail::get_helper<4, tuple>;
+};
+
+template <class T0, class T1, class T2, class T3, class T4,
+          class T5>
+class tuple<T0, T1, T2, T3, T4, T5, nat, nat, nat, nat>
+{
+public:
+	tuple() {}
+#ifdef _MSL_MOVE
+	template <class U0, class U1, class U2, class U3, class U4,
+	          class U5>
+	tuple(U0&& u0, U1&& u1, U2&& u2, U3&& u3, U4&& u4, U5&& u5)
+		: data0_(_STD::forward<U0>(u0)), data1_(_STD::forward<U1>(u1)), data2_(_STD::forward<U2>(u2)),
+		  data3_(_STD::forward<U3>(u3)), data4_(_STD::forward<U4>(u4)), data5_(_STD::forward<U5>(u5)) {}
+#else  // _MSL_MOVE
+	tuple(typename detail::param<T0>::type t0,
+	      typename detail::param<T1>::type t1,
+	      typename detail::param<T2>::type t2,
+	      typename detail::param<T3>::type t3,
+	      typename detail::param<T4>::type t4,
+	      typename detail::param<T5>::type t5)
+	      : data0_(t0), data1_(t1), data2_(t2), data3_(t3), data4_(t4),
+	        data5_(t5) {}
+#endif  // _MSL_MOVE
+
+	template <class P>
+	tuple(const P& p, typename Metrowerks::restrict_to<__tuple_convertible<P, tuple>::value>::type* = 0);
+
+	template <class P>
+	tuple&
+	operator=(const P& p) {return assign(*this, p);}
+
+#ifdef _MSL_MOVE
+	template <class P>
+	tuple(P&& p, typename Metrowerks::restrict_to<__tuple_convertible<P, tuple>::value>::type* = 0);
+
+	template <class P>
+	tuple&
+	operator=(P&& p) {return move_assign(*this, _STD::move(p));}
+#endif  // _MSL_MOVE
+
+private:
+	typename detail::stored_type<T0>::type data0_;
+	typename detail::stored_type<T1>::type data1_;
+	typename detail::stored_type<T2>::type data2_;
+	typename detail::stored_type<T3>::type data3_;
+	typename detail::stored_type<T4>::type data4_;
+	typename detail::stored_type<T5>::type data5_;
+
+	friend struct detail::get_helper<0, tuple>;
+	friend struct detail::get_helper<1, tuple>;
+	friend struct detail::get_helper<2, tuple>;
+	friend struct detail::get_helper<3, tuple>;
+	friend struct detail::get_helper<4, tuple>;
+	friend struct detail::get_helper<5, tuple>;
+};
+
+template <class T0, class T1, class T2, class T3, class T4,
+          class T5, class T6>
+class tuple<T0, T1, T2, T3, T4, T5, T6, nat, nat, nat>
+{
+public:
+	tuple() {}
+#ifdef _MSL_MOVE
+	template <class U0, class U1, class U2, class U3, class U4,
+	          class U5, class U6>
+	tuple(U0&& u0, U1&& u1, U2&& u2, U3&& u3, U4&& u4, U5&& u5, U6&& u6)
+		: data0_(_STD::forward<U0>(u0)), data1_(_STD::forward<U1>(u1)), data2_(_STD::forward<U2>(u2)),
+		  data3_(_STD::forward<U3>(u3)), data4_(_STD::forward<U4>(u4)), data5_(_STD::forward<U5>(u5)),
+		  data6_(_STD::forward<U6>(u6)) {}
+#else  // _MSL_MOVE
+	tuple(typename detail::param<T0>::type t0,
+	      typename detail::param<T1>::type t1,
+	      typename detail::param<T2>::type t2,
+	      typename detail::param<T3>::type t3,
+	      typename detail::param<T4>::type t4,
+	      typename detail::param<T5>::type t5,
+	      typename detail::param<T6>::type t6)
+	      : data0_(t0), data1_(t1), data2_(t2), data3_(t3), data4_(t4),
+	        data5_(t5), data6_(t6) {}
+#endif  // _MSL_MOVE
+
+	template <class P>
+	tuple(const P& p, typename Metrowerks::restrict_to<__tuple_convertible<P, tuple>::value>::type* = 0);
+
+	template <class P>
+	tuple&
+	operator=(const P& p) {return assign(*this, p);}
+
+#ifdef _MSL_MOVE
+	template <class P>
+	tuple(P&& p, typename Metrowerks::restrict_to<__tuple_convertible<P, tuple>::value>::type* = 0);
+
+	template <class P>
+	tuple&
+	operator=(P&& p) {return move_assign(*this, _STD::move(p));}
+#endif  // _MSL_MOVE
+
+private:
+	typename detail::stored_type<T0>::type data0_;
+	typename detail::stored_type<T1>::type data1_;
+	typename detail::stored_type<T2>::type data2_;
+	typename detail::stored_type<T3>::type data3_;
+	typename detail::stored_type<T4>::type data4_;
+	typename detail::stored_type<T5>::type data5_;
+	typename detail::stored_type<T6>::type data6_;
+
+	friend struct detail::get_helper<0, tuple>;
+	friend struct detail::get_helper<1, tuple>;
+	friend struct detail::get_helper<2, tuple>;
+	friend struct detail::get_helper<3, tuple>;
+	friend struct detail::get_helper<4, tuple>;
+	friend struct detail::get_helper<5, tuple>;
+	friend struct detail::get_helper<6, tuple>;
+};
+
+template <class T0, class T1, class T2, class T3, class T4,
+          class T5, class T6, class T7>
+class tuple<T0, T1, T2, T3, T4, T5, T6, T7, nat, nat>
+{
+public:
+	tuple() {}
+#ifdef _MSL_MOVE
+	template <class U0, class U1, class U2, class U3, class U4,
+	          class U5, class U6, class U7>
+	tuple(U0&& u0, U1&& u1, U2&& u2, U3&& u3, U4&& u4, U5&& u5, U6&& u6, U7&& u7)
+		: data0_(_STD::forward<U0>(u0)), data1_(_STD::forward<U1>(u1)), data2_(_STD::forward<U2>(u2)),
+		  data3_(_STD::forward<U3>(u3)), data4_(_STD::forward<U4>(u4)), data5_(_STD::forward<U5>(u5)),
+		  data6_(_STD::forward<U6>(u6)), data7_(_STD::forward<U7>(u7)) {}
+#else  // _MSL_MOVE
+	tuple(typename detail::param<T0>::type t0,
+	      typename detail::param<T1>::type t1,
+	      typename detail::param<T2>::type t2,
+	      typename detail::param<T3>::type t3,
+	      typename detail::param<T4>::type t4,
+	      typename detail::param<T5>::type t5,
+	      typename detail::param<T6>::type t6,
+	      typename detail::param<T7>::type t7)
+	      : data0_(t0), data1_(t1), data2_(t2), data3_(t3), data4_(t4),
+	        data5_(t5), data6_(t6), data7_(t7) {}
+#endif  // _MSL_MOVE
+
+	template <class P>
+	tuple(const P& p, typename Metrowerks::restrict_to<__tuple_convertible<P, tuple>::value>::type* = 0);
+
+	template <class P>
+	tuple&
+	operator=(const P& p) {return assign(*this, p);}
+
+#ifdef _MSL_MOVE
+	template <class P>
+	tuple(P&& p, typename Metrowerks::restrict_to<__tuple_convertible<P, tuple>::value>::type* = 0);
+
+	template <class P>
+	tuple&
+	operator=(P&& p) {return move_assign(*this, _STD::move(p));}
+#endif  // _MSL_MOVE
+
+private:
+	typename detail::stored_type<T0>::type data0_;
+	typename detail::stored_type<T1>::type data1_;
+	typename detail::stored_type<T2>::type data2_;
+	typename detail::stored_type<T3>::type data3_;
+	typename detail::stored_type<T4>::type data4_;
+	typename detail::stored_type<T5>::type data5_;
+	typename detail::stored_type<T6>::type data6_;
+	typename detail::stored_type<T7>::type data7_;
+
+	friend struct detail::get_helper<0, tuple>;
+	friend struct detail::get_helper<1, tuple>;
+	friend struct detail::get_helper<2, tuple>;
+	friend struct detail::get_helper<3, tuple>;
+	friend struct detail::get_helper<4, tuple>;
+	friend struct detail::get_helper<5, tuple>;
+	friend struct detail::get_helper<6, tuple>;
+	friend struct detail::get_helper<7, tuple>;
+};
+
+template <class T0, class T1, class T2, class T3, class T4,
+          class T5, class T6, class T7, class T8>
+class tuple<T0, T1, T2, T3, T4, T5, T6, T7, T8, nat>
+{
+public:
+	tuple() {}
+#ifdef _MSL_MOVE
+	template <class U0, class U1, class U2, class U3, class U4,
+	          class U5, class U6, class U7, class U8>
+	tuple(U0&& u0, U1&& u1, U2&& u2, U3&& u3, U4&& u4, U5&& u5, U6&& u6, U7&& u7, U8&& u8)
+		: data0_(_STD::forward<U0>(u0)), data1_(_STD::forward<U1>(u1)), data2_(_STD::forward<U2>(u2)),
+		  data3_(_STD::forward<U3>(u3)), data4_(_STD::forward<U4>(u4)), data5_(_STD::forward<U5>(u5)),
+		  data6_(_STD::forward<U6>(u6)), data7_(_STD::forward<U7>(u7)), data8_(_STD::forward<U8>(u8)) {}
+#else  // _MSL_MOVE
+	tuple(typename detail::param<T0>::type t0,
+	      typename detail::param<T1>::type t1,
+	      typename detail::param<T2>::type t2,
+	      typename detail::param<T3>::type t3,
+	      typename detail::param<T4>::type t4,
+	      typename detail::param<T5>::type t5,
+	      typename detail::param<T6>::type t6,
+	      typename detail::param<T7>::type t7,
+	      typename detail::param<T8>::type t8)
+	      : data0_(t0), data1_(t1), data2_(t2), data3_(t3), data4_(t4),
+	        data5_(t5), data6_(t6), data7_(t7), data8_(t8) {}
+#endif  // _MSL_MOVE
+
+	template <class P>
+	tuple(const P& p, typename Metrowerks::restrict_to<__tuple_convertible<P, tuple>::value>::type* = 0);
+
+	template <class P>
+	tuple&
+	operator=(const P& p) {return assign(*this, p);}
+
+#ifdef _MSL_MOVE
+	template <class P>
+	tuple(P&& p, typename Metrowerks::restrict_to<__tuple_convertible<P, tuple>::value>::type* = 0);
+
+	template <class P>
+	tuple&
+	operator=(P&& p) {return move_assign(*this, _STD::move(p));}
+#endif  // _MSL_MOVE
+
+private:
+	typename detail::stored_type<T0>::type data0_;
+	typename detail::stored_type<T1>::type data1_;
+	typename detail::stored_type<T2>::type data2_;
+	typename detail::stored_type<T3>::type data3_;
+	typename detail::stored_type<T4>::type data4_;
+	typename detail::stored_type<T5>::type data5_;
+	typename detail::stored_type<T6>::type data6_;
+	typename detail::stored_type<T7>::type data7_;
+	typename detail::stored_type<T8>::type data8_;
+
+	friend struct detail::get_helper<0, tuple>;
+	friend struct detail::get_helper<1, tuple>;
+	friend struct detail::get_helper<2, tuple>;
+	friend struct detail::get_helper<3, tuple>;
+	friend struct detail::get_helper<4, tuple>;
+	friend struct detail::get_helper<5, tuple>;
+	friend struct detail::get_helper<6, tuple>;
+	friend struct detail::get_helper<7, tuple>;
+	friend struct detail::get_helper<8, tuple>;
+};
+
+// get
+
+namespace detail
+{
+
+template <class P>
+struct get_helper<0, P>
+{
+	explicit get_helper(P& p) : p_(p) {}
+	typename Metrowerks::add_reference<typename tuple_element<0, P>::type>::type
+	operator()()
+	{
+		return p_.data0_;
+	}
+private:
+	P& p_;
+};
+
+template <class P>
+struct get_helper<1, P>
+{
+	explicit get_helper(P& p) : p_(p) {}
+	typename Metrowerks::add_reference<typename tuple_element<1, P>::type>::type
+	operator()()
+	{
+		return p_.data1_;
+	}
+private:
+	P& p_;
+};
+
+template <class P>
+struct get_helper<2, P>
+{
+	explicit get_helper(P& p) : p_(p) {}
+	typename Metrowerks::add_reference<typename tuple_element<2, P>::type>::type
+	operator()()
+	{
+		return p_.data2_;
+	}
+private:
+	P& p_;
+};
+
+template <class P>
+struct get_helper<3, P>
+{
+	explicit get_helper(P& p) : p_(p) {}
+	typename Metrowerks::add_reference<typename tuple_element<3, P>::type>::type
+	operator()()
+	{
+		return p_.data3_;
+	}
+private:
+	P& p_;
+};
+
+template <class P>
+struct get_helper<4, P>
+{
+	explicit get_helper(P& p) : p_(p) {}
+	typename Metrowerks::add_reference<typename tuple_element<4, P>::type>::type
+	operator()()
+	{
+		return p_.data4_;
+	}
+private:
+	P& p_;
+};
+
+template <class P>
+struct get_helper<5, P>
+{
+	explicit get_helper(P& p) : p_(p) {}
+	typename Metrowerks::add_reference<typename tuple_element<5, P>::type>::type
+	operator()()
+	{
+		return p_.data5_;
+	}
+private:
+	P& p_;
+};
+
+template <class P>
+struct get_helper<6, P>
+{
+	explicit get_helper(P& p) : p_(p) {}
+	typename Metrowerks::add_reference<typename tuple_element<6, P>::type>::type
+	operator()()
+	{
+		return p_.data6_;
+	}
+private:
+	P& p_;
+};
+
+template <class P>
+struct get_helper<7, P>
+{
+	explicit get_helper(P& p) : p_(p) {}
+	typename Metrowerks::add_reference<typename tuple_element<7, P>::type>::type
+	operator()()
+	{
+		return p_.data7_;
+	}
+private:
+	P& p_;
+};
+
+template <class P>
+struct get_helper<8, P>
+{
+	explicit get_helper(P& p) : p_(p) {}
+	typename Metrowerks::add_reference<typename tuple_element<8, P>::type>::type
+	operator()()
+	{
+		return p_.data8_;
+	}
+private:
+	P& p_;
+};
+
+template <class P>
+struct get_helper<9, P>
+{
+	explicit get_helper(P& p) : p_(p) {}
+	typename Metrowerks::add_reference<typename tuple_element<9, P>::type>::type
+	operator()()
+	{
+		return p_.data9_;
+	}
+private:
+	P& p_;
+};
+
+}  // detail
+
+template <unsigned int N, class P>
+inline
+typename Metrowerks::restrict_to
+<
+	is_tuple<P>::value,
+	typename Metrowerks::add_reference<typename tuple_element<N, P>::type>::type
+>::type
+get(P& p)
+{
+	return detail::get_helper<N, P>(p)();
+}
+
+template <unsigned int N, class P>
+inline
+typename Metrowerks::restrict_to
+<
+	is_tuple<P>::value,
+	typename Metrowerks::add_reference<const typename tuple_element<N, P>::type>::type
+>::type
+get(const P& p)
+{
+	return detail::get_helper<N, P>(const_cast<P&>(p))();
+}
+
+// tuple copy constructors
+
+template <class T0>
+template <class P>
+inline
+tuple<T0, nat, nat, nat>::tuple(const P& p,
+	                           typename Metrowerks::restrict_to
+	                           <
+	                               __tuple_convertible<P, tuple>::value
+	                           >::type*
+	                           )
+	: data0_(get<0>(p))
+{
+}
+
+template <class T0, class T1>
+template <class P>
+inline
+tuple<T0, T1, nat, nat>::tuple(const P& p,
+	                         typename Metrowerks::restrict_to
+	                         <
+	                             __tuple_convertible<P, tuple>::value
+	                         >::type*
+	                        )
+	: data0_(get<0>(p)),
+	  data1_(get<1>(p))
+{
+}
+
+template <class T0, class T1, class T2>
+template <class P>
+inline
+tuple<T0, T1, T2, nat>::tuple(const P& p,
+	                         typename Metrowerks::restrict_to
+	                         <
+	                             __tuple_convertible<P, tuple>::value
+	                         >::type*
+	                        )
+	: data0_(get<0>(p)),
+	  data1_(get<1>(p)),
+	  data2_(get<2>(p))
+{
+}
+
+template <class T0, class T1, class T2, class T3>
+template <class P>
+inline
+tuple<T0, T1, T2, T3>::tuple(const P& p,
+	                         typename Metrowerks::restrict_to
+	                         <
+	                             __tuple_convertible<P, tuple>::value
+	                         >::type*
+	                        )
+	: data0_(get<0>(p)),
+	  data1_(get<1>(p)),
+	  data2_(get<2>(p)),
+	  data3_(get<3>(p))
+{
+}
+
+template <class T0, class T1, class T2, class T3, class T4>
+template <class P>
+inline
+tuple<T0, T1, T2, T3, T4>::tuple(const P& p,
+	                         typename Metrowerks::restrict_to
+	                         <
+	                             __tuple_convertible<P, tuple>::value
+	                         >::type*
+	                        )
+	: data0_(get<0>(p)),
+	  data1_(get<1>(p)),
+	  data2_(get<2>(p)),
+	  data3_(get<3>(p)),
+	  data4_(get<4>(p))
+{
+}
+
+template <class T0, class T1, class T2, class T3, class T4,
+          class T5>
+template <class P>
+inline
+tuple<T0, T1, T2, T3, T4, T5>::tuple(const P& p,
+	                         typename Metrowerks::restrict_to
+	                         <
+	                             __tuple_convertible<P, tuple>::value
+	                         >::type*
+	                        )
+	: data0_(get<0>(p)),
+	  data1_(get<1>(p)),
+	  data2_(get<2>(p)),
+	  data3_(get<3>(p)),
+	  data4_(get<4>(p)),
+	  data5_(get<5>(p))
+{
+}
+
+template <class T0, class T1, class T2, class T3, class T4,
+          class T5, class T6>
+template <class P>
+inline
+tuple<T0, T1, T2, T3, T4, T5, T6>::tuple(const P& p,
+	                         typename Metrowerks::restrict_to
+	                         <
+	                             __tuple_convertible<P, tuple>::value
+	                         >::type*
+	                        )
+	: data0_(get<0>(p)),
+	  data1_(get<1>(p)),
+	  data2_(get<2>(p)),
+	  data3_(get<3>(p)),
+	  data4_(get<4>(p)),
+	  data5_(get<5>(p)),
+	  data6_(get<6>(p))
+{
+}
+
+template <class T0, class T1, class T2, class T3, class T4,
+          class T5, class T6, class T7>
+template <class P>
+inline
+tuple<T0, T1, T2, T3, T4, T5, T6, T7>::tuple(const P& p,
+	                         typename Metrowerks::restrict_to
+	                         <
+	                             __tuple_convertible<P, tuple>::value
+	                         >::type*
+	                        )
+	: data0_(get<0>(p)),
+	  data1_(get<1>(p)),
+	  data2_(get<2>(p)),
+	  data3_(get<3>(p)),
+	  data4_(get<4>(p)),
+	  data5_(get<5>(p)),
+	  data6_(get<6>(p)),
+	  data7_(get<7>(p))
+{
+}
+
+template <class T0, class T1, class T2, class T3, class T4,
+          class T5, class T6, class T7, class T8>
+template <class P>
+inline
+tuple<T0, T1, T2, T3, T4, T5, T6, T7, T8>::tuple(const P& p,
+	                         typename Metrowerks::restrict_to
+	                         <
+	                             __tuple_convertible<P, tuple>::value
+	                         >::type*
+	                        )
+	: data0_(get<0>(p)),
+	  data1_(get<1>(p)),
+	  data2_(get<2>(p)),
+	  data3_(get<3>(p)),
+	  data4_(get<4>(p)),
+	  data5_(get<5>(p)),
+	  data6_(get<6>(p)),
+	  data7_(get<7>(p)),
+	  data8_(get<8>(p))
+{
+}
+
+template <class T0, class T1, class T2, class T3, class T4,
+          class T5, class T6, class T7, class T8, class T9>
+template <class P>
+inline
+tuple<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9>::tuple(const P& p,
+	                         typename Metrowerks::restrict_to
+	                         <
+	                             __tuple_convertible<P, tuple>::value
+	                         >::type*
+	                        )
+	: data0_(get<0>(p)),
+	  data1_(get<1>(p)),
+	  data2_(get<2>(p)),
+	  data3_(get<3>(p)),
+	  data4_(get<4>(p)),
+	  data5_(get<5>(p)),
+	  data6_(get<6>(p)),
+	  data7_(get<7>(p)),
+	  data8_(get<8>(p)),
+	  data9_(get<9>(p))
+{
+}
+
+#ifdef _MSL_MOVE
+
+template <class T0>
+template <class P>
+inline
+tuple<T0>::tuple(P&& p,
+	                         typename Metrowerks::restrict_to
+	                         <
+	                             __tuple_convertible<P, tuple>::value
+	                         >::type*
+	                        )
+	: data0_(_STD::move(get<0>(p)))
+{
+}
+
+template <class T0, class T1>
+template <class P>
+inline
+tuple<T0, T1>::tuple(P&& p,
+	                         typename Metrowerks::restrict_to
+	                         <
+	                             __tuple_convertible<P, tuple>::value
+	                         >::type*
+	                        )
+	: data0_(_STD::move(get<0>(p))),
+	  data1_(_STD::move(get<1>(p)))
+{
+}
+
+template <class T0, class T1, class T2>
+template <class P>
+inline
+tuple<T0, T1, T2>::tuple(P&& p,
+	                         typename Metrowerks::restrict_to
+	                         <
+	                             __tuple_convertible<P, tuple>::value
+	                         >::type*
+	                        )
+	: data0_(_STD::move(get<0>(p))),
+	  data1_(_STD::move(get<1>(p))),
+	  data2_(_STD::move(get<2>(p)))
+{
+}
+
+template <class T0, class T1, class T2, class T3>
+template <class P>
+inline
+tuple<T0, T1, T2, T3>::tuple(P&& p,
+	                         typename Metrowerks::restrict_to
+	                         <
+	                             __tuple_convertible<P, tuple>::value
+	                         >::type*
+	                        )
+	: data0_(_STD::move(get<0>(p))),
+	  data1_(_STD::move(get<1>(p))),
+	  data2_(_STD::move(get<2>(p))),
+	  data3_(_STD::move(get<3>(p)))
+{
+}
+
+template <class T0, class T1, class T2, class T3, class T4>
+template <class P>
+inline
+tuple<T0, T1, T2, T3, T4>::tuple(P&& p,
+	                         typename Metrowerks::restrict_to
+	                         <
+	                             __tuple_convertible<P, tuple>::value
+	                         >::type*
+	                        )
+	: data0_(_STD::move(get<0>(p))),
+	  data1_(_STD::move(get<1>(p))),
+	  data2_(_STD::move(get<2>(p))),
+	  data3_(_STD::move(get<3>(p))),
+	  data4_(_STD::move(get<4>(p)))
+{
+}
+
+template <class T0, class T1, class T2, class T3, class T4,
+          class T5>
+template <class P>
+inline
+tuple<T0, T1, T2, T3, T4, T5>::tuple(P&& p,
+	                         typename Metrowerks::restrict_to
+	                         <
+	                             __tuple_convertible<P, tuple>::value
+	                         >::type*
+	                        )
+	: data0_(_STD::move(get<0>(p))),
+	  data1_(_STD::move(get<1>(p))),
+	  data2_(_STD::move(get<2>(p))),
+	  data3_(_STD::move(get<3>(p))),
+	  data4_(_STD::move(get<4>(p))),
+	  data5_(_STD::move(get<5>(p)))
+{
+}
+
+template <class T0, class T1, class T2, class T3, class T4,
+          class T5, class T6>
+template <class P>
+inline
+tuple<T0, T1, T2, T3, T4, T5, T6>::tuple(P&& p,
+	                         typename Metrowerks::restrict_to
+	                         <
+	                             __tuple_convertible<P, tuple>::value
+	                         >::type*
+	                        )
+	: data0_(_STD::move(get<0>(p))),
+	  data1_(_STD::move(get<1>(p))),
+	  data2_(_STD::move(get<2>(p))),
+	  data3_(_STD::move(get<3>(p))),
+	  data4_(_STD::move(get<4>(p))),
+	  data5_(_STD::move(get<5>(p))),
+	  data6_(_STD::move(get<6>(p)))
+{
+}
+
+template <class T0, class T1, class T2, class T3, class T4,
+          class T5, class T6, class T7>
+template <class P>
+inline
+tuple<T0, T1, T2, T3, T4, T5, T6, T7>::tuple(P&& p,
+	                         typename Metrowerks::restrict_to
+	                         <
+	                             __tuple_convertible<P, tuple>::value
+	                         >::type*
+	                        )
+	: data0_(_STD::move(get<0>(p))),
+	  data1_(_STD::move(get<1>(p))),
+	  data2_(_STD::move(get<2>(p))),
+	  data3_(_STD::move(get<3>(p))),
+	  data4_(_STD::move(get<4>(p))),
+	  data5_(_STD::move(get<5>(p))),
+	  data6_(_STD::move(get<6>(p))),
+	  data7_(_STD::move(get<7>(p)))
+{
+}
+
+template <class T0, class T1, class T2, class T3, class T4,
+          class T5, class T6, class T7, class T8>
+template <class P>
+inline
+tuple<T0, T1, T2, T3, T4, T5, T6, T7, T8>::tuple(P&& p,
+	                         typename Metrowerks::restrict_to
+	                         <
+	                             __tuple_convertible<P, tuple>::value
+	                         >::type*
+	                        )
+	: data0_(_STD::move(get<0>(p))),
+	  data1_(_STD::move(get<1>(p))),
+	  data2_(_STD::move(get<2>(p))),
+	  data3_(_STD::move(get<3>(p))),
+	  data4_(_STD::move(get<4>(p))),
+	  data5_(_STD::move(get<5>(p))),
+	  data6_(_STD::move(get<6>(p))),
+	  data7_(_STD::move(get<7>(p))),
+	  data8_(_STD::move(get<8>(p)))
+{
+}
+
+template <class T0, class T1, class T2, class T3, class T4,
+          class T5, class T6, class T7, class T8, class T9>
+template <class P>
+inline
+tuple<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9>::tuple(P&& p,
+	                         typename Metrowerks::restrict_to
+	                         <
+	                             __tuple_convertible<P, tuple>::value
+	                         >::type*
+	                        )
+	: data0_(_STD::move(get<0>(p))),
+	  data1_(_STD::move(get<1>(p))),
+	  data2_(_STD::move(get<2>(p))),
+	  data3_(_STD::move(get<3>(p))),
+	  data4_(_STD::move(get<4>(p))),
+	  data5_(_STD::move(get<5>(p))),
+	  data6_(_STD::move(get<6>(p))),
+	  data7_(_STD::move(get<7>(p))),
+	  data8_(_STD::move(get<8>(p))),
+	  data9_(_STD::move(get<9>(p)))
+{
+}
+
+#endif  // _MSL_MOVE
+
+// tuple assign
+
+namespace detail
+{
+
+template <class P1,
+          class P2,
+          unsigned int I = minus1<tuple_size<P1>::value>::value,
+          unsigned int S1 = tuple_size<P1>::value,
+          unsigned int S2 = tuple_size<P2>::value
+         >
+struct tuple_assign;
+
+template <class P1, class P2, unsigned int S>
+struct tuple_assign<P1, P2, 0, 0, 0>
+{
+	P1& operator()(P1& p1, const P2&) const
+		{return p1;}
+};
+
+template <class P1, class P2, unsigned int S>
+struct tuple_assign<P1, P2, 0, S, S>
+{
+	P1& operator()(P1& p1, const P2& p2) const
+		{
+			get<0>(p1) = get<0>(p2);
+			return p1;
+		}
+};
+
+template <class P1, class P2, unsigned int I, unsigned int S>
+struct tuple_assign<P1, P2, I, S, S>
+{
+	P1& operator()(P1& p1, const P2& p2) const
+		{
+			tuple_assign<P1, P2, I-1>()(p1, p2);
+			get<I>(p1) = get<I>(p2);
+			return p1;
+		}
+};
+
+}  // detail
+
+template <class P1, class P2>
+typename Metrowerks::restrict_to
+<
+	is_tuple_like<P1>::value && is_tuple_like<P2>::value,
+	P1&
+>::type
+assign(P1& x, const P2& y)
+{
+	detail::tuple_assign<P1, P2>()(x, y);
+	return x;
+}
+
+// tuple move assign
+
+namespace detail
+{
+
+template <class P1,
+          class P2,
+          unsigned int I = minus1<tuple_size<P1>::value>::value,
+          unsigned int S1 = tuple_size<P1>::value,
+          unsigned int S2 = tuple_size<P2>::value
+         >
+struct tuple_move_assign;
+
+template <class P1, class P2, unsigned int S>
+struct tuple_move_assign<P1, P2, 0, 0, 0>
+{
+	P1& operator()(P1& p1, P2&) const
+		{return p1;}
+};
+
+template <class P1, class P2, unsigned int S>
+struct tuple_move_assign<P1, P2, 0, S, S>
+{
+	P1& operator()(P1& p1, P2& p2) const
+		{
+			get<0>(p1) = _STD::move(get<0>(p2));
+			return p1;
+		}
+};
+
+template <class P1, class P2, unsigned int I, unsigned int S>
+struct tuple_move_assign<P1, P2, I, S, S>
+{
+	P1& operator()(P1& p1, P2& p2) const
+		{
+			tuple_move_assign<P1, P2, I-1>()(p1, p2);
+			get<I>(p1) = _STD::move(get<I>(p2));
+			return p1;
+		}
+};
+
+}  // detail
+
+#ifdef _MSL_MOVE
+
+template <class P1, class P2>
+typename Metrowerks::restrict_to
+<
+	is_tuple_like<P1>::value && is_tuple_like<P2>::value,
+	P1&
+>::type
+move_assign(P1& x, P2&& y)
+{
+	detail::tuple_move_assign<P1, P2>()(x, y);
+	return x;
+}
+
+#endif  // _MSL_MOVE
+
+// make_tuple
+
+template <class T>
+struct mt_map
+{
+	typedef T type;
+};
+
+template <class T>
+struct mt_map<reference_wrapper<T> >
+{
+	typedef T& type;
+};
+
+template<class V0>
+inline
+tuple<typename mt_map<V0>::type>
+make_tuple(const V0& v0)
+{
+	return tuple<typename mt_map<V0>::type>(v0);
+}
+
+template<class V0, class V1>
+inline
+tuple<typename mt_map<V0>::type,
+      typename mt_map<V1>::type
+     >
+make_tuple(const V0& v0, const V1& v1)
+{
+	return tuple<typename mt_map<V0>::type,
+	             typename mt_map<V1>::type
+	            >(v0, v1);
+}
+
+template<class V0, class V1, class V2>
+inline
+tuple<typename mt_map<V0>::type,
+      typename mt_map<V1>::type,
+      typename mt_map<V2>::type
+     >
+make_tuple(const V0& v0, const V1& v1, const V2& v2)
+{
+	return tuple<typename mt_map<V0>::type,
+	             typename mt_map<V1>::type,
+	             typename mt_map<V2>::type
+	            >(v0, v1, v2);
+}
+
+template<class V0, class V1, class V2, class V3>
+inline
+tuple<typename mt_map<V0>::type,
+      typename mt_map<V1>::type,
+      typename mt_map<V2>::type,
+      typename mt_map<V3>::type
+     >
+make_tuple(const V0& v0, const V1& v1, const V2& v2, const V3& v3)
+{
+	return tuple<typename mt_map<V0>::type,
+	             typename mt_map<V1>::type,
+	             typename mt_map<V2>::type,
+	             typename mt_map<V3>::type
+	            >(v0, v1, v2, v3);
+}
+
+template<class V0, class V1, class V2, class V3, class V4>
+inline
+tuple<typename mt_map<V0>::type,
+      typename mt_map<V1>::type,
+      typename mt_map<V2>::type,
+      typename mt_map<V3>::type,
+      typename mt_map<V4>::type
+     >
+make_tuple(const V0& v0, const V1& v1, const V2& v2, const V3& v3, const V4& v4)
+{
+	return tuple<typename mt_map<V0>::type,
+	             typename mt_map<V1>::type,
+	             typename mt_map<V2>::type,
+	             typename mt_map<V3>::type,
+	             typename mt_map<V4>::type
+	            >(v0, v1, v2, v3, v4);
+}
+
+template<class V0, class V1, class V2, class V3, class V4,
+         class V5>
+inline
+tuple<typename mt_map<V0>::type,
+      typename mt_map<V1>::type,
+      typename mt_map<V2>::type,
+      typename mt_map<V3>::type,
+      typename mt_map<V4>::type,
+      typename mt_map<V5>::type
+     >
+make_tuple(const V0& v0, const V1& v1, const V2& v2, const V3& v3, const V4& v4,
+           const V5& v5)
+{
+	return tuple<typename mt_map<V0>::type,
+	             typename mt_map<V1>::type,
+	             typename mt_map<V2>::type,
+	             typename mt_map<V3>::type,
+	             typename mt_map<V4>::type,
+	             typename mt_map<V5>::type
+	            >(v0, v1, v2, v3, v4, v5);
+}
+
+template<class V0, class V1, class V2, class V3, class V4,
+         class V5, class V6>
+inline
+tuple<typename mt_map<V0>::type,
+      typename mt_map<V1>::type,
+      typename mt_map<V2>::type,
+      typename mt_map<V3>::type,
+      typename mt_map<V4>::type,
+      typename mt_map<V5>::type,
+      typename mt_map<V6>::type
+     >
+make_tuple(const V0& v0, const V1& v1, const V2& v2, const V3& v3, const V4& v4,
+           const V5& v5, const V6& v6)
+{
+	return tuple<typename mt_map<V0>::type,
+	             typename mt_map<V1>::type,
+	             typename mt_map<V2>::type,
+	             typename mt_map<V3>::type,
+	             typename mt_map<V4>::type,
+	             typename mt_map<V5>::type,
+	             typename mt_map<V6>::type
+	            >(v0, v1, v2, v3, v4, v5, v6);
+}
+
+template<class V0, class V1, class V2, class V3, class V4,
+         class V5, class V6, class V7>
+inline
+tuple<typename mt_map<V0>::type,
+      typename mt_map<V1>::type,
+      typename mt_map<V2>::type,
+      typename mt_map<V3>::type,
+      typename mt_map<V4>::type,
+      typename mt_map<V5>::type,
+      typename mt_map<V6>::type,
+      typename mt_map<V7>::type
+     >
+make_tuple(const V0& v0, const V1& v1, const V2& v2, const V3& v3, const V4& v4,
+           const V5& v5, const V6& v6, const V7& v7)
+{
+	return tuple<typename mt_map<V0>::type,
+	             typename mt_map<V1>::type,
+	             typename mt_map<V2>::type,
+	             typename mt_map<V3>::type,
+	             typename mt_map<V4>::type,
+	             typename mt_map<V5>::type,
+	             typename mt_map<V6>::type,
+	             typename mt_map<V7>::type
+	            >(v0, v1, v2, v3, v4, v5, v6, v7);
+}
+
+template<class V0, class V1, class V2, class V3, class V4,
+         class V5, class V6, class V7, class V8>
+inline
+tuple<typename mt_map<V0>::type,
+      typename mt_map<V1>::type,
+      typename mt_map<V2>::type,
+      typename mt_map<V3>::type,
+      typename mt_map<V4>::type,
+      typename mt_map<V5>::type,
+      typename mt_map<V6>::type,
+      typename mt_map<V7>::type,
+      typename mt_map<V8>::type
+     >
+make_tuple(const V0& v0, const V1& v1, const V2& v2, const V3& v3, const V4& v4,
+           const V5& v5, const V6& v6, const V7& v7, const V8& v8)
+{
+	return tuple<typename mt_map<V0>::type,
+	             typename mt_map<V1>::type,
+	             typename mt_map<V2>::type,
+	             typename mt_map<V3>::type,
+	             typename mt_map<V4>::type,
+	             typename mt_map<V5>::type,
+	             typename mt_map<V6>::type,
+	             typename mt_map<V7>::type,
+	             typename mt_map<V8>::type
+	            >(v0, v1, v2, v3, v4, v5, v6, v7, v8);
+}
+
+template<class V0, class V1, class V2, class V3, class V4,
+         class V5, class V6, class V7, class V8, class V9>
+inline
+tuple<typename mt_map<V0>::type,
+      typename mt_map<V1>::type,
+      typename mt_map<V2>::type,
+      typename mt_map<V3>::type,
+      typename mt_map<V4>::type,
+      typename mt_map<V5>::type,
+      typename mt_map<V6>::type,
+      typename mt_map<V7>::type,
+      typename mt_map<V8>::type,
+      typename mt_map<V9>::type
+     >
+make_tuple(const V0& v0, const V1& v1, const V2& v2, const V3& v3, const V4& v4,
+           const V5& v5, const V6& v6, const V7& v7, const V8& v8, const V9& v9)
+{
+	return tuple<typename mt_map<V0>::type,
+	             typename mt_map<V1>::type,
+	             typename mt_map<V2>::type,
+	             typename mt_map<V3>::type,
+	             typename mt_map<V4>::type,
+	             typename mt_map<V5>::type,
+	             typename mt_map<V6>::type,
+	             typename mt_map<V7>::type,
+	             typename mt_map<V8>::type,
+	             typename mt_map<V9>::type
+	            >(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9);
+}
+
+// tie
+
+template<class T0>
+inline
+tuple<T0&>
+tie(T0& t0)
+{
+	return tuple<T0&>(t0);
+}
+
+template<class T0, class T1>
+inline
+tuple<T0&, T1&>
+tie(T0& t0, T1& t1)
+{
+	return tuple<T0&, T1&>(t0, t1);
+}
+
+template<class T0, class T1, class T2>
+inline
+tuple<T0&, T1&, T2&>
+tie(T0& t0, T1& t1, T2& t2)
+{
+	return tuple<T0&, T1&, T2&>(t0, t1, t2);
+}
+
+template<class T0, class T1, class T2, class T3>
+inline
+tuple<T0&, T1&, T2&, T3&>
+tie(T0& t0, T1& t1, T2& t2, T3& t3)
+{
+	return tuple<T0&, T1&, T2&, T3&>(t0, t1, t2, t3);
+}
+
+template<class T0, class T1, class T2, class T3, class T4>
+inline
+tuple<T0&, T1&, T2&, T3&, T4&>
+tie(T0& t0, T1& t1, T2& t2, T3& t3, T4& t4)
+{
+	return tuple<T0&, T1&, T2&, T3&, T4&>(t0, t1, t2, t3, t4);
+}
+
+template<class T0, class T1, class T2, class T3, class T4,
+         class T5>
+inline
+tuple<T0&, T1&, T2&, T3&, T4&, T5&>
+tie(T0& t0, T1& t1, T2& t2, T3& t3, T4& t4, T5& t5)
+{
+	return tuple<T0&, T1&, T2&, T3&, T4&, T5&>
+	            (t0, t1, t2, t3, t4, t5);
+}
+
+template<class T0, class T1, class T2, class T3, class T4,
+         class T5, class T6>
+inline
+tuple<T0&, T1&, T2&, T3&, T4&, T5&, T6&>
+tie(T0& t0, T1& t1, T2& t2, T3& t3, T4& t4, T5& t5, T6& t6)
+{
+	return tuple<T0&, T1&, T2&, T3&, T4&, T5&, T6&>
+	            (t0, t1, t2, t3, t4, t5, t6);
+}
+
+template<class T0, class T1, class T2, class T3, class T4,
+         class T5, class T6, class T7>
+inline
+tuple<T0&, T1&, T2&, T3&, T4&, T5&, T6&, T7&>
+tie(T0& t0, T1& t1, T2& t2, T3& t3, T4& t4, T5& t5, T6& t6, T7& t7)
+{
+	return tuple<T0&, T1&, T2&, T3&, T4&, T5&, T6&, T7&>
+	            (t0, t1, t2, t3, t4, t5, t6, t7);
+}
+
+template<class T0, class T1, class T2, class T3, class T4,
+         class T5, class T6, class T7, class T8>
+inline
+tuple<T0&, T1&, T2&, T3&, T4&, T5&, T6&, T7&, T8&>
+tie(T0& t0, T1& t1, T2& t2, T3& t3, T4& t4, T5& t5, T6& t6, T7& t7, T8& t8)
+{
+	return tuple<T0&, T1&, T2&, T3&, T4&, T5&, T6&, T7&, T8&>
+	            (t0, t1, t2, t3, t4, t5, t6, t7, t8);
+}
+
+template<class T0, class T1, class T2, class T3, class T4,
+         class T5, class T6, class T7, class T8, class T9>
+inline
+tuple<T0&, T1&, T2&, T3&, T4&, T5&, T6&, T7&, T8&, T9&>
+tie(T0& t0, T1& t1, T2& t2, T3& t3, T4& t4, T5& t5, T6& t6, T7& t7, T8& t8, T9& t9)
+{
+	return tuple<T0&, T1&, T2&, T3&, T4&, T5&, T6&, T7&, T8&, T9&>
+	            (t0, t1, t2, t3, t4, t5, t6, t7, t8, t9);
+}
+
+struct swallow_assign
+{
+	template <class T>
+	swallow_assign& operator=(const T&) { return *this; }
+};
+
+namespace {swallow_assign ignore;}
+
+// operator ==
+
+namespace detail
+{
+
+template <class P1,
+          class P2,
+          unsigned int I = 0,
+          bool S1 = I < tuple_size<P1>::value,
+          bool S2 = I < tuple_size<P2>::value
+         >
+struct tuple_equal
+{
+	bool operator()(const P1&, const P2&) const
+		{return true;}
+};
+
+template <class P1, class P2, unsigned int I>
+struct tuple_equal<P1, P2, I, true, true>
+{
+	bool operator()(const P1& p1, const P2& p2) const
+		{return get<I>(p1) == get<I>(p2) && tuple_equal<P1, P2, I+1>()(p1, p2);}
+};
+
+template <class P1, class P2, unsigned int I>
+struct tuple_equal<P1, P2, I, true, false>
+{
+	bool operator()(const P1&, const P2&) const
+		{return false;}
+};
+
+template <class P1, class P2, unsigned int I>
+struct tuple_equal<P1, P2, I, false, true>
+{
+	bool operator()(const P1&, const P2&) const
+		{return false;}
+};
+
+}  // detail
+
+template <class P1, class P2>
+inline
+typename Metrowerks::restrict_to
+<
+	is_tuple_like<P1>::value && is_tuple_like<P2>::value,
+	bool
+>::type
+operator==(const P1& x, const P2& y)
+{
+	return detail::tuple_equal<P1, P2>()(x, y);
+}
+
+// operator !=
+
+template <class P1, class P2>
+inline
+typename Metrowerks::restrict_to
+<
+	is_tuple_like<P1>::value && is_tuple_like<P2>::value,
+	bool
+>::type
+operator!=(const P1& x, const P2& y)
+{
+	return !(x == y);
+}
+
+// operator <
+
+namespace detail
+{
+
+template <class P1,
+          class P2,
+          unsigned int I = minus1<tuple_size<P1>::value < tuple_size<P2>::value ? tuple_size<P1>::value : tuple_size<P2>::value>::value,
+          unsigned int S = tuple_size<P1>::value < tuple_size<P2>::value ? tuple_size<P1>::value : tuple_size<P2>::value
+         >
+struct tuple_compare
+{
+	int operator()(const P1& p1, const P2& p2) const
+		{
+			const int i = tuple_compare<P1, P2, I-1>()(p1, p2);
+			return i != 0 ? i : (get<I>(p1) < get<I>(p2) ? -1 : (get<I>(p2) < get<I>(p1) ? 1 : 0));
+		}
+};
+
+template <class P1, class P2>
+struct tuple_compare<P1, P2, 0, 0>
+{
+	int operator()(const P1&, const P2&) const
+		{return 0;}
+};
+
+template <class P1, class P2, unsigned int S>
+struct tuple_compare<P1, P2, 0, S>
+{
+	int operator()(const P1& p1, const P2& p2) const
+		{return get<0>(p1) < get<0>(p2) ? -1 : (get<0>(p2) < get<0>(p1) ? 1 : 0);}
+};
+
+}  // detail
+
+template <class P1, class P2>
+inline
+typename Metrowerks::restrict_to
+<
+	is_tuple_like<P1>::value && is_tuple_like<P2>::value,
+	bool
+>::type
+operator<(const P1& x, const P2& y)
+{
+	const int i = detail::tuple_compare<P1, P2>()(x, y);
+	return i != 0 ? i == -1 : tuple_size<P1>::value < tuple_size<P2>::value;
+}
+
+// other relationals
+
+template <class P1, class P2>
+inline
+typename Metrowerks::restrict_to
+<
+	is_tuple_like<P1>::value && is_tuple_like<P2>::value,
+	bool
+>::type
+operator>(const P1& x, const P2& y)
+{
+	return y < x;
+}
+
+template <class P1, class P2>
+inline
+typename Metrowerks::restrict_to
+<
+	is_tuple_like<P1>::value && is_tuple_like<P2>::value,
+	bool
+>::type
+operator<=(const P1& x, const P2& y)
+{
+	return !(y < x);
+}
+
+template <class P1, class P2>
+inline
+typename Metrowerks::restrict_to
+<
+	is_tuple_like<P1>::value && is_tuple_like<P2>::value,
+	bool
+>::type
+operator>=(const P1& x, const P2& y)
+{
+	return !(x < y);
+}
+
+// swap
+
+namespace detail
+{
+
+template <class P,
+          unsigned int I = minus1<tuple_size<P>::value>::value,
+          unsigned int S = tuple_size<P>::value
+         >
+struct tuple_swap
+{
+	void operator()(P& x, P& y) const
+	{
+		tuple_swap<P, I-1>()(x, y);
+		using _STD::swap;
+		swap(get<I>(x), get<I>(y));
+	}
+};
+
+template <class P>
+struct tuple_swap<P, 0, 0>
+{
+	void operator()(P&, P&) const
+	{
+	}
+};
+
+template <class P, unsigned int S>
+struct tuple_swap<P, 0, S>
+{
+	void operator()(P& x, P& y) const
+	{
+		using _STD::swap;
+		swap(get<0>(x), get<0>(y));
+	}
+};
+
+}
+
+template <class T0, class T1, class T2, class T3, class T4,
+          class T5, class T6, class T7, class T8, class T9>
+inline
+void
+swap(tuple<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9>& x,
+     tuple<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9>& y)
+{
+	detail::tuple_swap<tuple<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9> >()(x, y);
+}
+
+_MSL_END_TR1_NAMESPACE
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	namespace std {
+#endif
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	} // std
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#pragma enumsalwaysint reset
+#endif
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#pragma bool reset
+#endif
+
+#ifdef __MWERKS__
+#pragma options align=reset
+#endif
+
+#endif // RC_INVOKED
+
+#if (defined(_ISTREAM) || defined(_OSTREAM)) && !defined(_TUPLEIO)
+	#include <tupleio>
+#endif
+
+#endif // _TUPLE
+
+// hh 030303 Created

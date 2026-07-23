@@ -1,0 +1,243 @@
+/* MSL
+ * Copyright © 1995-2006 Freescale Corporation.  All rights reserved.
+ *
+ * $Date: 2006/02/09 16:58:23 $
+ * $Revision: 1.20.2.2 $
+ */
+
+// hash_fun
+
+#ifndef _HASH_FUN
+#define _HASH_FUN
+
+/*
+	WARNING - WARNING - WARNING
+
+	This header is NON-STANDARD
+
+	The classes herein are offered as extensions to the C++ standard.
+	They are marked as such by the namespace Metrowerks.
+*/
+
+/*  hash_fun synopsis
+
+namespace Metrowerks
+{
+
+template <class T>
+struct hash
+	: std::unary_function<T, std::size_t>
+{
+	std::size_t operator()(const T& key) const;
+};
+
+template <class charT, class traits, class Allocator>
+struct hash<std::basic_string<charT, traits, Allocator> >
+	: std::unary_function<std::basic_string<charT, traits, Allocator>, std::size_t>
+{
+	typedef std::basic_string<charT, traits, Allocator> string_type;
+	std::size_t operator()(const string_type& key) const;
+};
+
+template <>
+struct hash<const char*>
+	: std::unary_function<const char*, std::size_t>
+{
+	typedef const char* string_type;
+	std::size_t operator()(string_type key) const;
+};
+
+}  // Metrowerks
+*/
+
+#include <mslconfig>
+#include <functional>
+#include <string>
+
+#ifndef RC_INVOKED
+
+#ifdef __MWERKS__
+#pragma options align=native
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#if _MSL_FORCE_ENUMS_ALWAYS_INT
+		#pragma enumsalwaysint on
+	#else
+		#pragma enumsalwaysint off
+	#endif
+#endif  // _MSL_FORCE_ENUMS_ALWAYS_INT
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#if _MSL_FORCE_ENABLE_BOOL_SUPPORT
+		#pragma bool on
+	#else
+		#pragma bool off
+	#endif
+#endif  // _MSL_FORCE_ENABLE_BOOL_SUPPORT
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	namespace Metrowerks {
+#else
+	#ifndef Metrowerks
+		#define Metrowerks
+	#endif
+#endif  // _MSL_NO_CPP_NAMESPACE
+
+template <class T>
+struct hash
+	: _STD::unary_function<T, _CSTD::size_t>
+{
+	_CSTD::size_t operator()(const T& key) const
+		{return static_cast<_CSTD::size_t>(key);}
+};
+
+// std::basic_string specialization
+
+template <class charT, class traits, class Allocator>
+struct hash<_STD::basic_string<charT, traits, Allocator> >
+	: _STD::unary_function<_STD::basic_string<charT, traits, Allocator>, _CSTD::size_t>
+{
+	typedef _STD::basic_string<charT, traits, Allocator> string_type;
+	_CSTD::size_t operator()(const string_type& key) const;
+};
+
+template <class charT, class traits, class Allocator>
+_CSTD::size_t
+hash<_STD::basic_string<charT, traits, Allocator> >::operator()(const string_type& str) const
+{
+	_CSTD::size_t h = 0;
+	const _CSTD::size_t sr = _STD::__char<>::bits * sizeof(_CSTD::size_t) - 8;
+	const _CSTD::size_t mask = 0xF << (sr + 4);
+	for(typename string_type::const_iterator p = str.begin(), e = str.end(); p != e; ++p)
+	{
+		h = (h << 4) + *p;
+		_CSTD::size_t g = h & mask;
+		h ^= g | (g >> sr);
+	}
+	return h;
+}
+
+// T* specialization
+
+template <class T>
+struct hash<T*>
+	: _STD::unary_function<T*, _CSTD::size_t>
+{
+	_CSTD::size_t operator()(T* key) const
+		{return reinterpret_cast<_CSTD::size_t>(key);}
+};
+
+template <class T>
+struct hash<move_ptr<T> >
+	: _STD::unary_function<move_ptr<T>, _CSTD::size_t>
+{
+	_CSTD::size_t operator()(const move_ptr<T>& key) const
+		{return reinterpret_cast<_CSTD::size_t>(key.get());}
+};
+
+// float specialization
+
+template <>
+struct hash<float>
+	: _STD::unary_function<float, _CSTD::size_t>
+{
+	_CSTD::size_t operator()(float key) const
+		{return *reinterpret_cast<_CSTD::size_t*>(&key);}
+};
+
+// double specialization
+
+template <>
+struct hash<double>
+	: _STD::unary_function<double, _CSTD::size_t>
+{
+	_CSTD::size_t operator()(double key) const
+		{
+			_CSTD::size_t result = 0;
+			_CSTD::size_t* p = reinterpret_cast<_CSTD::size_t*>(&key);
+			for (_CSTD::size_t i = 0; i < sizeof(double)/sizeof(_CSTD::size_t); ++i, ++p)
+				result ^= *p;
+			return result;
+		}
+};
+
+// long double specialization
+
+template <>
+struct hash<long double>
+	: _STD::unary_function<long double, _CSTD::size_t>
+{
+	_CSTD::size_t operator()(long double key) const
+		{
+			_CSTD::size_t result = 0;
+			_CSTD::size_t* p = reinterpret_cast<_CSTD::size_t*>(&key);
+			for (_CSTD::size_t i = 0; i < sizeof(long double)/sizeof(_CSTD::size_t); ++i, ++p)
+				result ^= *p;
+			return result;
+		}
+};
+
+#if _MSL_LONGLONG
+
+// long long specialization
+
+template <>
+struct hash<long long>
+	: _STD::unary_function<long long, _CSTD::size_t>
+{
+	_CSTD::size_t operator()(long long key) const
+		{
+			_CSTD::size_t result = 0;
+			_CSTD::size_t* p = reinterpret_cast<_CSTD::size_t*>(&key);
+			for (_CSTD::size_t i = 0; i < sizeof(long long)/sizeof(_CSTD::size_t); ++i, ++p)
+				result ^= *p;
+			return result;
+		}
+};
+
+// unsigned long long specialization
+
+template <>
+struct hash<unsigned long long>
+	: _STD::unary_function<unsigned long long, _CSTD::size_t>
+{
+	_CSTD::size_t operator()(unsigned long long key) const
+		{
+			_CSTD::size_t result = 0;
+			_CSTD::size_t* p = reinterpret_cast<_CSTD::size_t*>(&key);
+			for (_CSTD::size_t i = 0; i < sizeof(unsigned long long)/sizeof(_CSTD::size_t); ++i, ++p)
+				result ^= *p;
+			return result;
+		}
+};
+
+#endif  // _MSL_LONGLONG
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	} // namespace Metrowerks
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#pragma enumsalwaysint reset
+#endif
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#pragma bool reset
+#endif
+
+#ifdef __MWERKS__
+#pragma options align=reset
+#endif
+
+#endif // RC_INVOKED
+
+#endif  // _HASH_FUN
+
+// hh 991120 Recreated
+// hh 001011 ifdef'd out typename<> for gcc
+// hh 010402 Removed 68K CMF support
+// hh 020703 Changed const char* specialization to a T* specializaton
+// hh 020703 Added long long and floating point specializations
+// hh 020703 Generalized string specialization
+// JWW 030224 Changed __MSL_LONGLONG_SUPPORT__ flag into the new more configurable _MSL_LONGLONG

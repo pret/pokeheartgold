@@ -1,0 +1,60 @@
+{
+  "key": 25935,
+  "messages": [
+    {
+      "id": "msg_0765_00000",
+      "en_US": "Have you ever seen a Pokémon movie?"
+    },
+    {
+      "id": "msg_0765_00001",
+      "en_US": "Do you have any Pokémon plush dolls?"
+    },
+    {
+      "id": "msg_0765_00002",
+      "en_US": [
+        "What do you like most about your\n",
+        "favorite Pokémon?"
+      ]
+    },
+    {
+      "id": "msg_0765_00003",
+      "en_US": [
+        "Have you ever received a Pokémon as\n",
+        "a gift in an event?"
+      ]
+    },
+    {
+      "id": "msg_0765_00004",
+      "en_US": [
+        "How many Pokémon games have you played\n",
+        "before this?"
+      ]
+    },
+    {
+      "id": "msg_0765_00005",
+      "en_US": "When did you start playing Pokémon?"
+    },
+    {
+      "id": "msg_0765_00006",
+      "en_US": [
+        "If you were a Pokémon, which of these\n",
+        "types would you like to be?"
+      ]
+    },
+    {
+      "id": "msg_0765_00007",
+      "en_US": "What’s your strategy in battle?"
+    },
+    {
+      "id": "msg_0765_00008",
+      "en_US": [
+        "Whom would you recruit into playing\n",
+        "Pokémon as a beginner?"
+      ]
+    },
+    {
+      "id": "msg_0765_00009",
+      "en_US": "Have you ever been to a Pokémon event?"
+    }
+  ]
+}

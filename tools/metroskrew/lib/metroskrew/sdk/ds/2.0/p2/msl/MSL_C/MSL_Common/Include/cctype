@@ -1,0 +1,111 @@
+/* MSL
+ * Copyright © 1995-2006 Freescale Corporation.  All rights reserved.
+ *
+ * $Date: 2006/02/08 20:32:23 $
+ * $Revision: 1.52.2.3 $
+ */
+
+#ifndef _MSL_CCTYPE
+#define _MSL_CCTYPE		
+
+#include <ansi_parms.h>
+
+#if !_MSL_USING_MW_C_HEADERS
+	#include <ctype.h>
+	
+	#if _MSL_PUT_THIRD_PARTY_C_IN_STD
+		#include <msl_cpp_std_ctype.h>
+	#endif
+#else
+
+#include <eof.h>
+#include <ctype_api.h>
+#include <locale_api.h>
+#include <msl_thread_local_data.h>
+
+#ifndef RC_INVOKED
+
+_MSL_BEGIN_NAMESPACE_STD
+_MSL_BEGIN_EXTERN_C
+
+_MSL_IMP_EXP_C int _MSL_CDECL isalnum(int) _MSL_CANT_THROW;
+_MSL_IMP_EXP_C int _MSL_CDECL isalpha(int) _MSL_CANT_THROW;
+#if _MSL_C99						/*- mm 030226 -*/
+_MSL_IMP_EXP_C int _MSL_CDECL isblank(int) _MSL_CANT_THROW;
+#endif /* _MSL_C99 */				/*- mm 030226 -*/
+_MSL_IMP_EXP_C int _MSL_CDECL iscntrl(int) _MSL_CANT_THROW;
+_MSL_IMP_EXP_C int _MSL_CDECL isdigit(int) _MSL_CANT_THROW;
+_MSL_IMP_EXP_C int _MSL_CDECL isgraph(int) _MSL_CANT_THROW;
+_MSL_IMP_EXP_C int _MSL_CDECL islower(int) _MSL_CANT_THROW;
+_MSL_IMP_EXP_C int _MSL_CDECL isprint(int) _MSL_CANT_THROW;
+_MSL_IMP_EXP_C int _MSL_CDECL ispunct(int) _MSL_CANT_THROW;
+_MSL_IMP_EXP_C int _MSL_CDECL isspace(int) _MSL_CANT_THROW;
+_MSL_IMP_EXP_C int _MSL_CDECL isupper(int) _MSL_CANT_THROW;
+_MSL_IMP_EXP_C int _MSL_CDECL isxdigit(int) _MSL_CANT_THROW;
+_MSL_IMP_EXP_C int _MSL_CDECL tolower(int) _MSL_CANT_THROW;
+_MSL_IMP_EXP_C int _MSL_CDECL toupper(int) _MSL_CANT_THROW;
+
+_MSL_END_EXTERN_C
+
+#if _MSL_USE_INLINE
+
+	_MSL_INLINE int _MSL_CDECL isalnum(int c) _MSL_CANT_THROW	{ return ((c < 0) || (c >= __msl_cmap_size)) ? 0 : (int) (_MSL_CMAP_ACCESS[c] & __msl_alnum); }
+	_MSL_INLINE int _MSL_CDECL isalpha(int c) _MSL_CANT_THROW	{ return ((c < 0) || (c >= __msl_cmap_size)) ? 0 : (int) (_MSL_CMAP_ACCESS[c] & __msl_alpha); }
+#if _MSL_C99						/*- mm 030226 -*/
+	_MSL_INLINE int _MSL_CDECL isblank(int c) _MSL_CANT_THROW	{ return ((c < 0) || (c >= __msl_cmap_size)) ? 0 : (int) (_MSL_CMAP_ACCESS[c] & __msl_blank); }
+#endif /* _MSL_C99 */				/*- mm 030226 -*/
+	_MSL_INLINE int _MSL_CDECL iscntrl(int c) _MSL_CANT_THROW	{ return ((c < 0) || (c >= __msl_cmap_size)) ? 0 : (int) (_MSL_CMAP_ACCESS[c] & __msl_cntrl); }
+	_MSL_INLINE int _MSL_CDECL isdigit(int c) _MSL_CANT_THROW	{ return ((c < 0) || (c >= __msl_cmap_size)) ? 0 : (int) (_MSL_CMAP_ACCESS[c] & __msl_digit); }
+	_MSL_INLINE int _MSL_CDECL isgraph(int c) _MSL_CANT_THROW	{ return ((c < 0) || (c >= __msl_cmap_size)) ? 0 : (int) (_MSL_CMAP_ACCESS[c] & __msl_graph); }
+	_MSL_INLINE int _MSL_CDECL islower(int c) _MSL_CANT_THROW	{ return ((c < 0) || (c >= __msl_cmap_size)) ? 0 : (int) (_MSL_CMAP_ACCESS[c] & __msl_lower); }
+	_MSL_INLINE int _MSL_CDECL isprint(int c) _MSL_CANT_THROW	{ return ((c < 0) || (c >= __msl_cmap_size)) ? 0 : (int) (_MSL_CMAP_ACCESS[c] & __msl_print); }
+	_MSL_INLINE int _MSL_CDECL ispunct(int c) _MSL_CANT_THROW	{ return ((c < 0) || (c >= __msl_cmap_size)) ? 0 : (int) (_MSL_CMAP_ACCESS[c] & __msl_punct); }
+	_MSL_INLINE int _MSL_CDECL isspace(int c) _MSL_CANT_THROW	{ return ((c < 0) || (c >= __msl_cmap_size)) ? 0 : (int) (_MSL_CMAP_ACCESS[c] & __msl_space); }
+	_MSL_INLINE int _MSL_CDECL isupper(int c) _MSL_CANT_THROW	{ return ((c < 0) || (c >= __msl_cmap_size)) ? 0 : (int) (_MSL_CMAP_ACCESS[c] & __msl_upper); }
+	_MSL_INLINE int _MSL_CDECL isxdigit(int c) _MSL_CANT_THROW	{ return ((c < 0) || (c >= __msl_cmap_size)) ? 0 : (int) (_MSL_CMAP_ACCESS[c] & __msl_xdigit); }
+	_MSL_INLINE int _MSL_CDECL tolower(int c) _MSL_CANT_THROW	{ return ((c < 0) || (c >= __msl_cmap_size)) ? c : (int) (_MSL_CLOWER_ACCESS[c]); }
+	_MSL_INLINE int _MSL_CDECL toupper(int c) _MSL_CANT_THROW	{ return ((c < 0) || (c >= __msl_cmap_size)) ? c : (int) (_MSL_CUPPER_ACCESS[c]); }
+
+#endif /* _MSL_USE_INLINE */
+
+_MSL_END_NAMESPACE_STD
+
+#endif /* RC_INVOKED */
+
+#endif /* _MSL_USING_MW_C_HEADERS */
+
+#endif /* _MSL_CCTYPE */
+
+/* Change record:
+ * 961221 bkoz line 21-23 added extern keyword (mmoss)
+ * mm  970918 Change to ensure that toupper(EOF) and tolower(EOF) == EOF
+ * mm  970925 Deleted defines for toupper and tolower and inserted them into ctype.c
+ * hh  971206 Changed filename from ctype.h to cctype and added namespace support
+ * hh  971230 added RC_INVOKED wrapper
+ * rjk 980313 added _MSL_IMP_EXP_C
+ * mm  980626 added iswblank---see C9x 7.18.2.1.3
+ * mm  990730 Removed include of cstdio.
+ * blc 990825 added include of eof.h needed when included from C++ files
+ * cc  000320 added _MSL_IMP_EXP_C
+ * cc  020320 removed macros and changed inline to extern __inline
+ * JWW 001208 Added case for targeting Mach-O
+ * blc 010926 Added case for Palm OS
+ * JWW 011027 Use _MSL_USING_MW_C_HEADERS as generic header test instead of specific Mach-O test
+ * cc  011115 fixed the INLINE vs __inline and added missing extern c wrap
+ * mm  011130 Rewrite for implementation of locale
+ * cc  011203 Added _MSL_CDECL for new name mangling
+ * cc  011219 Broke out the win version
+ * mm  020129 Changed include of locale.h to include of clocale to avoid leak in C++ programs
+ * JWW 020130 Changed _MWMT to _MSL_THREADSAFE for consistency's sake
+ * cc  020220 Removed iswblank it belongs to wide character header
+ * JWW 020305 Changed table lookup masks to use new "wider is better" ctype classification tables
+ * JWW 020308 Make sure values are within lookup table limits before looking things up
+ * hh  020603 Added no throw spec to functions
+ * JWW 020604 Added _MSL_LOCALDATA macro to make multithread code easier to read
+ * mm  020803 Put back JWW's changes accidentally omitted
+ * BLC 020924 MSL for Palm OS now uses MSL implementation, fixed implicit conversion warnings
+ * cc  021004 Added support for _MSL_C_LOCALE_ONLY
+ * JWW 021031 Made thread local data available for Mach-O
+ * mm  030226 Addec _MSL_C99 wrappers for isblank()
+ * JWW 050128 When using MSL C++ on top of a third party C (non-MSL), put C items into std namespace
+ */

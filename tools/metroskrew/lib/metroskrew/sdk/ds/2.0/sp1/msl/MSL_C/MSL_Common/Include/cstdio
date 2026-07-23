@@ -1,0 +1,260 @@
+/* MSL
+ * Copyright © 1995-2006 Freescale Corporation.  All rights reserved.
+ *
+ * $Date: 2006/02/08 20:32:43 $
+ * $Revision: 1.70.2.3 $
+ */
+
+#ifndef _MSL_CSTDIO
+#define _MSL_CSTDIO
+
+#include <ansi_parms.h>
+
+#if !_MSL_USING_MW_C_HEADERS
+	#include <stdio.h>
+	
+	#if _MSL_PUT_THIRD_PARTY_C_IN_STD
+		#include <msl_cpp_std_stdio.h>
+	#endif
+#else
+
+#include <size_t.h>
+#include <null.h>
+#include <eof.h>
+#include <va_list.h>
+
+#if _MSL_WFILEIO_AVAILABLE
+	#include <wchar_t.h>
+#endif /* _MSL_WIDE_CHAR */
+
+#include <msl_secure.h>
+#include <msl_rsize_t.h>
+#include <file_struc.h>
+#include <stdio_api.h>
+
+#if _MSL_POSIX
+	#include <stdio.posix.h>
+#endif
+
+#if __dest_os == __mac_os_x
+	#include <cstdio_mach.h>
+#endif
+
+#if _MSL_NEEDS_EXTRAS && (__dest_os == __win32_os || __dest_os == __wince_os)
+	#include <extras_stdio_win32.h>
+#endif
+
+#ifndef RC_INVOKED
+
+#pragma options align=native
+
+_MSL_BEGIN_NAMESPACE_STD
+_MSL_BEGIN_EXTERN_C
+
+_MSL_IMP_EXP_C void _MSL_CDECL			setbuf(FILE * _MSL_RESTRICT, char * _MSL_RESTRICT) _MSL_CANT_THROW;	/*- mf 990715 -*/
+_MSL_IMP_EXP_C int _MSL_CDECL			setvbuf(FILE * _MSL_RESTRICT, char * _MSL_RESTRICT, int, size_t) _MSL_CANT_THROW; 			/*- mf 990715 -*/
+_MSL_IMP_EXP_C int _MSL_CDECL			fclose(FILE *) _MSL_CANT_THROW;  										/*- mf 990715 -*/
+_MSL_IMP_EXP_C int _MSL_CDECL			fflush(FILE *) _MSL_CANT_THROW;  										/*- mf 990715 -*/
+_MSL_IMP_EXP_C int _MSL_CDECL			fscanf(FILE * _MSL_RESTRICT, const char * _MSL_RESTRICT, ...) _MSL_CANT_THROW; 				/*- mf 990715 -*/
+_MSL_IMP_EXP_C int _MSL_CDECL			scanf(const char * _MSL_RESTRICT, ...) _MSL_CANT_THROW;
+_MSL_IMP_EXP_C int _MSL_CDECL			sprintf(char * _MSL_RESTRICT, const char * _MSL_RESTRICT, ...) _MSL_CANT_THROW;
+_MSL_IMP_EXP_C int _MSL_CDECL			snprintf(char * _MSL_RESTRICT, size_t, const char * _MSL_RESTRICT, ...) _MSL_CANT_THROW;
+_MSL_IMP_EXP_C int _MSL_CDECL			sscanf(const char * _MSL_RESTRICT, const char * _MSL_RESTRICT, ...) _MSL_CANT_THROW;
+_MSL_IMP_EXP_C int _MSL_CDECL			vfscanf(FILE * _MSL_RESTRICT, const char * _MSL_RESTRICT, va_list) _MSL_CANT_THROW;  		/*- mf 990715 -*/ /*- mm 990921 -*/
+_MSL_IMP_EXP_C int _MSL_CDECL			vsscanf(const char * _MSL_RESTRICT, const char * _MSL_RESTRICT, va_list) _MSL_CANT_THROW; 	/*- mm 990921 -*/
+_MSL_IMP_EXP_C int _MSL_CDECL			vscanf(const char * _MSL_RESTRICT, va_list) _MSL_CANT_THROW;					/*- mm 000831 -*/
+_MSL_IMP_EXP_C int _MSL_CDECL			vfprintf(FILE * _MSL_RESTRICT, const char * _MSL_RESTRICT, va_list) _MSL_CANT_THROW;  		/*- mf 990715 -*/
+_MSL_IMP_EXP_C int _MSL_CDECL			vprintf(const char * _MSL_RESTRICT, va_list) _MSL_CANT_THROW;
+_MSL_IMP_EXP_C int _MSL_CDECL			vsprintf(char * _MSL_RESTRICT, const char * _MSL_RESTRICT, va_list) _MSL_CANT_THROW;
+_MSL_IMP_EXP_C int _MSL_CDECL			vsnprintf(char * _MSL_RESTRICT, size_t, const char * _MSL_RESTRICT, va_list) _MSL_CANT_THROW;
+_MSL_IMP_EXP_C int _MSL_CDECL			fgetc(FILE *) _MSL_CANT_THROW;  					/*- mf 990715 -*/
+_MSL_IMP_EXP_C char * _MSL_CDECL	    fgets(char * _MSL_RESTRICT, int, FILE * _MSL_RESTRICT) _MSL_CANT_THROW;  	/*- mf 990715 -*/
+_MSL_IMP_EXP_C int _MSL_CDECL			fputc(int, FILE *) _MSL_CANT_THROW;  			/*- mf 990715 -*/
+_MSL_IMP_EXP_C int _MSL_CDECL			fputs(const char * _MSL_RESTRICT, FILE * _MSL_RESTRICT) _MSL_CANT_THROW;  	/*- mf 990715 -*/
+_MSL_IMP_EXP_C char * _MSL_CDECL	    gets(char *) _MSL_CANT_THROW;
+_MSL_IMP_EXP_C int _MSL_CDECL			puts(const char *) _MSL_CANT_THROW;
+_MSL_IMP_EXP_C int _MSL_CDECL			ungetc(int, FILE *) _MSL_CANT_THROW;  												/*- mf 990715 -*/
+_MSL_IMP_EXP_C size_t _MSL_CDECL	    fread(void * _MSL_RESTRICT, size_t, size_t, FILE * _MSL_RESTRICT) _MSL_CANT_THROW; 			/*- mf 990715 -*/
+_MSL_IMP_EXP_C size_t _MSL_CDECL	    fwrite(const void * _MSL_RESTRICT, size_t, size_t, FILE * _MSL_RESTRICT) _MSL_CANT_THROW;	/*- mf 990715 -*/
+_MSL_IMP_EXP_C int _MSL_CDECL			fgetpos(FILE * _MSL_RESTRICT, fpos_t * _MSL_RESTRICT) _MSL_CANT_THROW; 										/*- mf 990715 -*/
+_MSL_IMP_EXP_C long _MSL_CDECL			ftell(FILE *) _MSL_CANT_THROW; 														/*- mf 990715 -*/
+_MSL_IMP_EXP_C int _MSL_CDECL			fsetpos(FILE *, const fpos_t *) _MSL_CANT_THROW; 									/*- mf 990715 -*/
+_MSL_IMP_EXP_C int _MSL_CDECL			fseek(FILE *, long, int) _MSL_CANT_THROW; 										/*- mf 990715 -*/
+_MSL_IMP_EXP_C void	_MSL_CDECL			rewind(FILE *) _MSL_CANT_THROW; 														/*- mf 990715 -*/
+_MSL_IMP_EXP_C void	_MSL_CDECL  		clearerr(FILE *) _MSL_CANT_THROW; 	
+
+#if _MSL_OS_DISK_FILE_SUPPORT
+_MSL_IMP_EXP_C void	_MSL_CDECL  		perror(const char *) _MSL_CANT_THROW;
+#endif /* _MSL_OS_DISK_FILE_SUPPORT */
+
+#if defined(__STDC_WANT_SECURE_LIB__) && __STDC_WANT_SECURE_LIB__
+	_MSL_IMP_EXP_C int _MSL_CDECL		fscanf_s(FILE * _MSL_RESTRICT, const char * _MSL_RESTRICT, ...) _MSL_CANT_THROW;
+	_MSL_IMP_EXP_C int _MSL_CDECL		scanf_s(const char * _MSL_RESTRICT, ...) _MSL_CANT_THROW;
+	_MSL_IMP_EXP_C int _MSL_CDECL		sscanf_s(const char * _MSL_RESTRICT, const char * _MSL_RESTRICT, ...) _MSL_CANT_THROW;
+	_MSL_IMP_EXP_C int _MSL_CDECL		vfscanf_s(FILE * _MSL_RESTRICT, const char * _MSL_RESTRICT, va_list) _MSL_CANT_THROW;
+	_MSL_IMP_EXP_C int _MSL_CDECL		vsscanf_s(const char * _MSL_RESTRICT, const char * _MSL_RESTRICT, va_list) _MSL_CANT_THROW;
+	_MSL_IMP_EXP_C char * _MSL_CDECL	gets_s(char *, rsize_t) _MSL_CANT_THROW;
+#endif /* __STDC_WANT_SECURE_LIB__ */
+
+#if _MSL_OS_DISK_FILE_SUPPORT
+	_MSL_IMP_EXP_C int _MSL_CDECL		remove(const char *) _MSL_CANT_THROW;
+	_MSL_IMP_EXP_C int _MSL_CDECL		rename(const char *, const char *) _MSL_CANT_THROW;
+	_MSL_IMP_EXP_C char * _MSL_CDECL	tmpnam(char *) _MSL_CANT_THROW;
+	_MSL_IMP_EXP_C FILE * _MSL_CDECL	tmpfile(void) _MSL_CANT_THROW;
+	_MSL_IMP_EXP_C int _MSL_CDECL		fprintf(FILE * _MSL_RESTRICT, const char * _MSL_RESTRICT, ...) _MSL_CANT_THROW;
+	
+	_MSL_IMP_EXP_C FILE * _MSL_CDECL	fopen(const char * _MSL_RESTRICT, const char * _MSL_RESTRICT) _MSL_CANT_THROW;
+	_MSL_IMP_EXP_C FILE * _MSL_CDECL	freopen(const char * _MSL_RESTRICT, const char * _MSL_RESTRICT, FILE * _MSL_RESTRICT) _MSL_CANT_THROW; 					 /*- mf 990715 -*/
+#if defined(__STDC_WANT_SECURE_LIB__) && __STDC_WANT_SECURE_LIB__
+	_MSL_IMP_EXP_C errno_t _MSL_CDECL	fopen_s(FILE * _MSL_RESTRICT * _MSL_RESTRICT, const char * _MSL_RESTRICT, const char * _MSL_RESTRICT) _MSL_CANT_THROW;
+	_MSL_IMP_EXP_C errno_t _MSL_CDECL	freopen_s(FILE * _MSL_RESTRICT * _MSL_RESTRICT, const char * _MSL_RESTRICT, const char * _MSL_RESTRICT, FILE * _MSL_RESTRICT) _MSL_CANT_THROW;
+	_MSL_IMP_EXP_C errno_t _MSL_CDECL	tmpfile_s(FILE **) _MSL_CANT_THROW;
+	_MSL_IMP_EXP_C errno_t _MSL_CDECL	tmpnam_s(char *, rsize_t) _MSL_CANT_THROW;
+#endif /* __STDC_WANT_SECURE_LIB__ */
+#if _MSL_WFILEIO_AVAILABLE
+	_MSL_IMP_EXP_C int _MSL_CDECL		_wremove(const wchar_t *) _MSL_CANT_THROW;
+	_MSL_IMP_EXP_C int _MSL_CDECL		_wrename(const wchar_t *, const wchar_t *) _MSL_CANT_THROW;
+	_MSL_IMP_EXP_C wchar_t * _MSL_CDECL	_wtmpnam(wchar_t *) _MSL_CANT_THROW;
+	_MSL_IMP_EXP_C FILE * _MSL_CDECL	_wfopen(const wchar_t * _MSL_RESTRICT, const wchar_t * _MSL_RESTRICT) _MSL_CANT_THROW;
+	_MSL_IMP_EXP_C FILE * _MSL_CDECL	_wfreopen(const wchar_t * _MSL_RESTRICT, const wchar_t * _MSL_RESTRICT, FILE * _MSL_RESTRICT) _MSL_CANT_THROW;
+#if defined(__STDC_WANT_SECURE_LIB__) && __STDC_WANT_SECURE_LIB__
+	_MSL_IMP_EXP_C errno_t _MSL_CDECL	_wfopen_s(FILE * _MSL_RESTRICT * _MSL_RESTRICT, const wchar_t * _MSL_RESTRICT, const wchar_t * _MSL_RESTRICT) _MSL_CANT_THROW;
+	_MSL_IMP_EXP_C errno_t _MSL_CDECL	_wfreopen_s(FILE * _MSL_RESTRICT * _MSL_RESTRICT, const wchar_t * _MSL_RESTRICT, const wchar_t * _MSL_RESTRICT, FILE * _MSL_RESTRICT) _MSL_CANT_THROW;
+	_MSL_IMP_EXP_C errno_t _MSL_CDECL	_wtmpnam_s(wchar_t *, rsize_t) _MSL_CANT_THROW;
+#endif /* __STDC_WANT_SECURE_LIB__ */
+#endif /* _MSL_WFILEIO_AVAILABLE */
+#endif /* _MSL_OS_DISK_FILE_SUPPORT */
+
+
+#if _MSL_CONSOLE_SUPPORT
+#if __dest_os == __n64_os
+	extern void	_MSL_CDECL printf(const char * _MSL_RESTRICT, ...) _MSL_CANT_THROW;
+#else
+	_MSL_IMP_EXP_C int _MSL_CDECL printf(const char * _MSL_RESTRICT, ...) _MSL_CANT_THROW;
+#endif /* __dest_os == __n64_os */
+#endif /* _MSL_CONSOLE_SUPPORT */
+
+#ifdef __cplusplus
+	
+#if _MSL_THREADSAFE
+	_MSL_IMP_EXP_C int _MSL_CDECL		getc(FILE *);
+	_MSL_IMP_EXP_C int _MSL_CDECL		putc(int c, FILE *);
+	
+	_MSL_END_EXTERN_C
+#else
+	_MSL_END_EXTERN_C
+	
+	inline int _MSL_CDECL getc(FILE * file) _MSL_CANT_THROW
+		{ return __getc(file); }
+
+	inline int _MSL_CDECL putc(int c, FILE *file) _MSL_CANT_THROW
+		{ return __putc(c, file); }
+#endif /* _MSL_THREADSAFE */
+
+	inline int _MSL_CDECL getchar() _MSL_CANT_THROW
+		{ return getc(stdin); }
+
+	inline int _MSL_CDECL putchar(int c) _MSL_CANT_THROW
+		{ return putc(c, stdout); }
+
+	inline int _MSL_CDECL feof(FILE * file) _MSL_CANT_THROW
+		{ return file->state.eof; }
+
+	inline int _MSL_CDECL ferror(FILE * file) _MSL_CANT_THROW
+		{ return file->state.error; }
+
+#else
+
+	_MSL_IMP_EXP_C int _MSL_CDECL		getc(FILE *);         /*- mf 990715 -*/
+	_MSL_IMP_EXP_C int _MSL_CDECL		putc(int c, FILE *);  /*- mf 990715 -*/
+
+
+#if !_MSL_THREADSAFE
+	#define getc(file) __getc(file)
+	#define putc(c, file) __putc(c, file)
+#endif /* _MSL_THREADSAFE */
+
+	_MSL_IMP_EXP_C int _MSL_CDECL		getchar(void);
+	_MSL_IMP_EXP_C int _MSL_CDECL		putchar(int c);
+
+    #define getchar()					__std(getc)(stdin)
+    #define putchar(c)					__std(putc)(c, stdout)
+
+	_MSL_IMP_EXP_C int _MSL_CDECL		feof  (FILE *); /*- mf 990715 -*/
+	_MSL_IMP_EXP_C int _MSL_CDECL		ferror(FILE *); /*- mf 990715 -*/
+
+	#define feof(file)					((file)->state.eof)
+	#define ferror(file)				((file)->state.error)
+
+#endif /* __cplusplus */
+
+_MSL_END_NAMESPACE_STD
+
+#pragma options align=reset
+
+#endif /* RC_INVOKED */
+
+#endif /* _MSL_USING_MW_C_HEADERS */
+
+#endif /* _MSL_CSTDIO */
+
+/* Change record:
+ * mm  961031 Changes for Pascal
+ * mm  961203 Changed files to __files
+ * mm  970708 Inserted Be changes
+ * SM  970709 Added conditional support for embedded targets via the
+			  __no_os, _No_Console, and _Unbuffered_Console macros.
+ * MA  970720 Changed __no_os to _No_Disk_File_OS_Support.
+ * hh  971206 Changed file name from stdio.h to cstdio and added namespace support
+ * hh  971230 added RC_INVOKED wrapper
+ * hh  980121 added <cstddef> for wchar_t
+ * mm  980204 added fields in file structure for wide characters.
+ * blc 980301 added vsnprintf, snprintf from C9X draft
+ * rjk 980313 add DLLDATA for exporting data in dll
+ * hh  980627 changed include from wctype.h to cwctype
+ * mm  980708 Corrected space allotment for the values of __file_kinds in __file_modes
+ * vss 980817 Define EOF in its own file and include it here to avoid circular dep
+ * mm  980825 Removed variable names from prototype for fwide to avoid problems with PH tests
+ * mm  981007 Changes for dynamic allocation of file structures.
+ * ad 1.28.99 take out the printf() prototype for nintendo
+ * vss 990129 Get rid of warning message by casting to uchar
+ * mm  990202 Made similar changes as in vss 990129 in three other places
+ * mm  990217 Deleted #include cstddef as not needed and replaced by #include <wchar_t.h>
+ * mm  990325 Changes to permit separation of string format i/o functions from file i/o  
+ * hh  990507 Changed #include <wctype.h> to <cwctype>
+ * hh  990520 Fixed up the stdout, etc. macros to be namespace aware
+ * mm  990728 Corrected mm990202.
+ * mf  990715 Arg names in prototypes cause conflicts
+ * mm  990807 Moved file structure definitions to file_str.h
+ * mm  990921 __vfscanf and __vsscanf changed to vfscanf and vsscanf since they are in C9x
+ * cc  000209 Added prototype for fileno  and # define 
+ * cc  000210 Added prototype for _fdopen 
+ * cc  000215 Removed prototype for fdopne
+ * mf  000403 moved fdopen and fileno to extern "C" and got rid of posix macros for __inlines
+ * cc  000428 moved _tell to extras.win32.h 
+ * mm  000831 Added vscanf since it is now in C99 WB1-16280
+ * mm  001018 Added __fread and __fwrite as part of thread safety.
+ * JWW 001208 Added case for targeting Mach-O
+ * mm  010122 Changed second parameter to fdopen and _fdopen to const char* to match POSIX standard
+ * cc  000326 removed dest_os to be_os 
+ * cc  010410 updated to new namespace macros 		
+ * mm  010518 Eliminated #include of unistd.h for Windows since it is not needed there.
+ * cc  010521 moved fileno and fdopen to posix only header
+ * blc 010819 Updated to add casts for EOF (needed for systems where long != int)
+ * JWW 010926 Test _MSL_POSIX before getting POSIX functions from ANSI headers
+ * cc  010927 Moved the APIs to the api file
+ * cc  011022 Added check for _MSL_NEEDS_EXTRAS
+ * JWW 011027 Use _MSL_USING_MW_C_HEADERS as generic header test instead of specific Mach-O test
+ * cc  011203 Added _MSL_CDECL for new name mangling 
+ * cc  011204 Removed duplicate swprintf
+ * hh  020603 Added no throw spec to functions
+ * JWW 020917 Added _MSL_RESTRICT to get the restrict type specifier for certain C99 functions
+ * JWW 021010 Added wchar_t file I/O routines controlled by _MSL_WFILEIO_AVAILABLE
+ * JWW 030224 Changed __NO_WIDE_CHAR flag into the new more configurable _MSL_WIDE_CHAR
+ * mm  030314 Added _MSL_C99 wrappers.
+ * mm  030318 Added _MSL_C99 wrappers for fwide
+ * JWW 031030 Added the __STDC_WANT_SECURE_LIB__ secure library extensions
+ * cc  040217 Changed _No_Disk_File_OS_Support to _MSL_OS_DISK_FILE_SUPPORT
+ * JWW 040317 Updated the __STDC_WANT_SECURE_LIB__ secure library based on new secure specifications
+ * JWW 050128 When using MSL C++ on top of a third party C (non-MSL), put C items into std namespace
+ */

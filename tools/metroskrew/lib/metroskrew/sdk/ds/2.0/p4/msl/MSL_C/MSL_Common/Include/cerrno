@@ -1,0 +1,152 @@
+/* MSL
+ * Copyright © 1995-2006 Freescale Corporation.  All rights reserved.
+ *
+ * $Date: 2006/02/08 20:32:24 $
+ * $Revision: 1.45.2.2 $
+ */
+
+#ifndef _MSL_CERRNO
+#define _MSL_CERRNO
+
+#include <ansi_parms.h>
+
+#if !_MSL_USING_MW_C_HEADERS
+	#include <errno.h>
+#else
+
+#include <msl_secure.h>
+
+#if ((__dest_os == __mac_os) || (__dest_os == __mac_os_x))
+	#include <cerrno.mac.h>
+#endif
+
+#ifndef EAGAIN
+#define EAGAIN			11	/* Resource temporarily unavailable */
+#endif
+
+#ifndef EDEADLK
+#define EDEADLK			35	/* Resource deadlock avoided */
+#endif
+
+#ifndef ENAMETOOLONG
+#define ENAMETOOLONG	36	/* File name too long */
+#endif
+
+#ifndef ENOSYS
+#define ENOSYS			38	/* Function not implemented */
+#endif
+
+#ifndef ENOTEMPTY
+#define ENOTEMPTY		39	/* Directory not empty */
+#endif
+
+#if _MSL_C99										/*- mm 030325 -*/
+#ifndef EILSEQ
+#define EILSEQ     		88	/* Wide character encoding error */
+#endif
+#endif /* _MSL_C99 */								/*- mm 030325 -*/
+
+#define E2BIG			 7	/* Argument list too long */
+#define EACCES			13	/* Permission denied */
+#define EBADF			 9	/* Bad file descriptor */
+#define EBUSY			16	/* Device busy */
+#define ECHILD			10	/* No child processes */
+#define EDEADLOCK	EDEADLK	/* Resource deadlock avoided */
+#define EDOM			33	/* Numerical argument out of domain */
+#define EEXIST			17	/* File exists */
+#define EFAULT			14	/* Bad address */
+#define EFBIG			27	/* File too large */
+#define EFPOS			40	/* File Position Error */
+#define EINTR			 4	/* Interrupted system call */
+#define EINVAL			22	/* Invalid argument */
+#define EIO				 5	/* Input/output error */
+#define EISDIR			21	/* Is a directory */
+#define EMFILE			24	/* Too many open files */
+#define EMLINK			31	/* Too many links */
+#define ENFILE			23	/* Too many open files in system */
+#define ENODEV			19	/* Operation not supported by device */
+#define ENOENT			 2	/* No such file or directory */
+#define ENOERR			 0	/* No error detected */
+#define ENOEXEC			 8	/* Exec format error */
+#define ENOLCK			77	/* No locks available */
+#define ENOMEM			12	/* Cannot allocate memory */
+#define ENOSPC			28	/* No space left on device */
+#define ENOTDIR			20	/* Not a directory */
+#define ENOTTY			25	/* Inappropriate ioctl for device */
+#define ENXIO			 6	/* Device not configured */
+#define EPERM			 1	/* Operation not permitted */
+#define EPIPE			32	/* Broken pipe */
+#define ERANGE			34	/* Result too large */
+#define EROFS			30	/* Read-only file system */
+#define ESIGPARM		26	/* Signal error */
+#define ESPIPE			29	/* Illegal seek */
+#define ESRCH			 3	/* No such process */
+#define EUNKNOWN		99	/* Unknown error */
+#define EXDEV			18	/* Cross-device link */
+
+#if !defined(_MSL_ERRNO) && !defined(RC_INVOKED)
+
+	_MSL_BEGIN_EXTERN_C
+	
+		#if _MSL_THREADSAFE && _MSL_LOCALDATA_AVAILABLE
+			#include <msl_thread_local_data.h>
+			#define errno (_MSL_LOCALDATA(_errno))
+			
+			#ifdef __MWERKS__
+				#if __MWERKS__ >= 0x3200
+					#pragma errno_name ...	/* not accessible via global */
+				#endif /* __MWERKS >= 0x3200 */
+			#endif /* __MWERKS__ */
+		#else
+			_MSL_IMP_EXP_C extern int errno;	/*- cc 011128 -*/
+			
+			#ifdef __MWERKS__
+				#if __MWERKS__ >= 0x3200
+					#ifndef _ENTERPRISE_C_
+					#pragma errno_name errno
+					#endif
+				#endif /* __MWERKS__ >= 0x3200 */
+			#endif /* __MWERKS__ */
+		#endif /* _MSL_THREADSAFE */
+	
+	_MSL_END_EXTERN_C
+
+#endif /* _MSL_ERRNO */
+
+#endif /* _MSL_USING_MW_C_HEADERS */
+
+#endif /* _MSL_CERRNO */
+
+/* Change record:
+ * bkoz960829 added error info for x86, powerTV
+ * mm  960930 changed C++ comments to C comments for ANSI strict
+ * KO  961217 Added an extern C wrapper to errno. This is needed for the new CW11 x86
+ *			  name mangling.
+ * KO  961219 Added a Win32 ifdef so errno is part of the thread local data structure
+ *        	  rather than a global.
+ * mm  970416 Removed errors that no longer apply
+ * mm  970708 Inserted Be changes
+ * hh  971206 Changed filename from errno.h to cerrno and added namespace support
+ * hh  971230 added RC_INVOKED wrapper
+ * vss 990121 Remove powerTV wrappers
+ * mf  030199 removed errno from std, and also added guard for single threaded lib
+ * mm  991216 Added an error code for access().
+ * cc  000209 Added EEXIST and ENOTEMPTY
+ * cc  000218 Added if POSIX
+ * cc  000403 added EISDIR for use by open (needed to build CVS on windows)
+ * cc  000410 moved dest_os win32 #defines into POSIX
+ * JWW 001208 Added case for targeting Mach-O
+ * cc  000326 removed dest_os to be_os
+ * cc  010409 updated to JWW new namespace macros
+ * mm  010411 Changed error macros and added __MacOSErrNo
+ * cc  010531 Added _GetThreadLocalData's flag
+ * mm  010621 Change to omit non-standard #include <MacTypes.h>
+ * JWW 011027 Use _MSL_USING_MW_C_HEADERS as generic header test instead of specific Mach-O test
+ * cc  011128 Made __tls _MSL_TLS
+ * cc  011203 Added _MSL_CDECL for new name mangling
+ * cc  011219 Broke down to OS files
+ * JWW 020130 Changed _MWMT to _MSL_THREADSAFE for consistency's sake
+ * mm  030325 Added _MSL_C99 wrappers
+ * ejs 030625 Added #pragma errno_name
+ * JWW 040317 Updated the __STDC_WANT_SECURE_LIB__ secure library based on new secure specifications
+ */

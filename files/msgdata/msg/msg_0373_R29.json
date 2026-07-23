@@ -1,0 +1,139 @@
+{
+  "key": 20283,
+  "messages": [
+    {
+      "id": "msg_0373_R29_00000",
+      "en_US": [
+        "Lyra: {STRVAR_1 3, 0, 0}!\n",
+        "You can catch wild Pokémon\f",
+        "with Poké Balls.\r",
+        "Follow me!\r"
+      ]
+    },
+    {
+      "id": "msg_0373_R29_00001",
+      "en_US": [
+        "Ethan: {STRVAR_1 3, 0, 0}!\n",
+        "You can catch wild Pokémon\f",
+        "with Poké Balls.\r",
+        "Follow me!\r"
+      ]
+    },
+    {
+      "id": "msg_0373_R29_00002",
+      "en_US": [
+        "...Just like that!\r",
+        "...\n",
+        "Huh? Was I too fast?\r",
+        "I’ll try again. Come this way!\r"
+      ]
+    },
+    {
+      "id": "msg_0373_R29_00003",
+      "en_US": [
+        "See? Just like that!\r",
+        "It’s better to lower your\n",
+        "target’s HP more than I did,\f",
+        "or make it sleep or something.\r",
+        "You can try all kinds of things\n",
+        "to see what works.\r",
+        "I’ll give you these. Good luck!\r"
+      ]
+    },
+    {
+      "id": "msg_0373_R29_00004",
+      "en_US": [
+        "See? Just like that!\r",
+        "It’s better to lower your\n",
+        "target’s HP more than I did,\f",
+        "or make it sleep or something.\r",
+        "You can try all kinds of things\n",
+        "to see what works.\r",
+        "I’ll give you these. Good luck!\r"
+      ]
+    },
+    {
+      "id": "msg_0373_R29_00005",
+      "garbage": 22
+    },
+    {
+      "id": "msg_0373_R29_00006",
+      "garbage": 22
+    },
+    {
+      "id": "msg_0373_R29_00007",
+      "en_US": "Lyra: See you!\r"
+    },
+    {
+      "id": "msg_0373_R29_00008",
+      "en_US": "Ethan: See ya!\r"
+    },
+    {
+      "id": "msg_0373_R29_00009",
+      "en_US": [
+        "Hey, how are your Pokémon?\r",
+        "If they’re weak and not ready for\n",
+        "battle, keep out of the tall grass."
+      ]
+    },
+    {
+      "id": "msg_0373_R29_00010",
+      "en_US": [
+        "Do you see those ledges?\n",
+        "It’s scary to jump off them.\r",
+        "But you can go to New Bark Town\n",
+        "without walking through tall grass."
+      ]
+    },
+    {
+      "id": "msg_0373_R29_00011",
+      "en_US": [
+        "I wanted to take a break, so I\n",
+        "saved to record my progress."
+      ]
+    },
+    {
+      "id": "msg_0373_R29_00012",
+      "en_US": [
+        "I’m waiting for Pokémon that\n",
+        "appear only in the daytime."
+      ]
+    },
+    {
+      "id": "msg_0373_R29_00013",
+      "en_US": [
+        "I’m waiting for Pokémon that\n",
+        "appear only at night."
+      ]
+    },
+    {
+      "id": "msg_0373_R29_00014",
+      "en_US": [
+        "I’m waiting for Pokémon that\n",
+        "appear only in the morning."
+      ]
+    },
+    {
+      "id": "msg_0373_R29_00015",
+      "en_US": [
+        "Rt. 29\n",
+        "West to Cherrygrove City"
+      ]
+    },
+    {
+      "id": "msg_0373_R29_00016",
+      "en_US": [
+        "Rt. 29\n",
+        "East to New Bark Town"
+      ]
+    },
+    {
+      "id": "msg_0373_R29_00017",
+      "en_US": "Lyra: There you are!\r"
+    },
+    {
+      "id": "msg_0373_R29_00018",
+      "en_US": "Ethan: There you are!\r"
+    }
+  ]
+}

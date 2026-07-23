@@ -1,0 +1,881 @@
+/* MSL
+ * Copyright © 1995-2006 Freescale Corporation.  All rights reserved.
+ *
+ * $Date: 2006/02/09 16:58:52 $
+ * $Revision: 1.12.2.2 $
+ */
+
+// msl_bufferedbuf
+
+#ifndef _MSL_BUFFEREDBUF
+#define _MSL_BUFFEREDBUF
+
+/*  msl_bufferedbuf synopsis
+
+namespace Metrowerks
+{
+
+template <class charT, class traits = std::char_traits<charT> >
+class bufferedbuf
+	: public std::basic_streambuf<charT, traits>
+{
+	typedef std::basic_streambuf<charT, traits> base;
+public:
+	typedef charT                     char_type;
+	typedef typename traits::int_type int_type;
+	typedef typename traits::pos_type pos_type;
+	typedef typename traits::off_type off_type;
+	typedef traits                    traits_type;
+
+	virtual ~bufferedbuf();
+
+	bool is_open() const {return open_;}
+
+protected:
+
+	explicit bufferedbuf(std::size_t buffer_size_bytes);
+
+	void open(bool init_put);
+	bufferedbuf* close();
+
+	virtual std::streamsize showmanyc();
+	virtual int_type underflow();
+	virtual int_type pbackfail(int_type c = traits::eof());
+	virtual int_type overflow (int_type c = traits::eof());
+
+	virtual std::basic_streambuf<charT,traits_type>* setbuf(char_type* s, std::streamsize n);
+	virtual pos_type seekoff(off_type off, std::ios_base::seekdir way,
+	                                       std::ios_base::openmode which = std::ios_base::in | std::ios_base::out);
+	virtual pos_type seekpos(pos_type sp,  std::ios_base::openmode which = std::ios_base::in | std::ios_base::out);
+	virtual int      sync();
+	virtual void     imbue(const std::locale& loc);
+
+private:
+
+	bufferedbuf(const bufferedbuf&);             // not defined
+	bufferedbuf& operator=(const bufferedbuf&);  // not defined
+
+	virtual std::ptrdiff_t write_chars(const char* buf, std::ptrdiff_t n) = 0;
+	virtual std::ptrdiff_t read_chars(char* buf, std::ptrdiff_t n) = 0;
+	virtual off_type seek_device(off_type off, int whence) = 0;
+};
+
+}  // Metrowerks
+*/
+
+#include <mslconfig>
+
+#include <algorithm>
+#include <ios>
+#include <streambuf>
+#include <string>
+#include <cstring>
+#include <codecvt>
+
+#ifndef RC_INVOKED
+
+#ifdef __MWERKS__
+#pragma options align=native
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#if _MSL_FORCE_ENUMS_ALWAYS_INT
+		#pragma enumsalwaysint on
+	#else
+		#pragma enumsalwaysint off
+	#endif
+#endif  // _MSL_FORCE_ENUMS_ALWAYS_INT
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#if _MSL_FORCE_ENABLE_BOOL_SUPPORT
+		#pragma bool on
+	#else
+		#pragma bool off
+	#endif
+#endif  // _MSL_FORCE_ENABLE_BOOL_SUPPORT
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	namespace Metrowerks {
+#else
+	#ifndef Metrowerks
+		#define Metrowerks
+	#endif
+#endif  // _MSL_NO_CPP_NAMESPACE
+
+template <class charT, class traits = _STD::char_traits<charT> >
+class bufferedbuf
+	: public _STD::basic_streambuf<charT, traits>
+{
+	typedef _STD::basic_streambuf<charT, traits> base;
+public:
+	typedef charT                     char_type;
+	typedef typename traits::int_type int_type;
+	typedef typename traits::pos_type pos_type;
+	typedef typename traits::off_type off_type;
+	typedef traits                    traits_type;
+
+	virtual ~bufferedbuf();
+
+	bool is_open() const {return open_;}
+
+protected:
+
+	explicit bufferedbuf(_CSTD::size_t buffer_size_bytes);
+
+#ifdef _MSL_MOVE
+	bufferedbuf(bufferedbuf&& rhs);
+	bufferedbuf& operator=(bufferedbuf&& rhs);
+	void swap(bufferedbuf&& rhs);
+#endif  // _MSL_MOVE
+
+	void open(bool init_put, bool = false);
+	bufferedbuf* close();
+
+	virtual _STD::streamsize showmanyc();
+	virtual int_type underflow();
+	virtual int_type pbackfail(int_type c = traits::eof());
+	virtual int_type overflow (int_type c = traits::eof());
+
+	virtual _STD::basic_streambuf<charT,traits_type>* setbuf(char_type* s, _STD::streamsize n);
+	virtual pos_type seekoff(off_type off, _STD::ios_base::seekdir way,
+	                                       _STD::ios_base::openmode which = _STD::ios_base::in | _STD::ios_base::out);
+	virtual pos_type seekpos(pos_type sp,  _STD::ios_base::openmode which = _STD::ios_base::in | _STD::ios_base::out);
+	virtual int      sync();
+#ifndef _MSL_NO_LOCALE
+	virtual void     imbue(const _STD::locale& loc);
+#endif
+
+private:
+	typedef typename traits_type::state_type state_type;
+#ifndef _MSL_NO_LOCALE
+	typedef _STD::codecvt<char_type, char, state_type> Converter;
+#endif
+
+	_CSTD::size_t buffer_size_;
+	char_type* buffer_;
+	char* uncbeg_;
+	char* uncnxt_;
+	char* uncend_;
+#ifndef _MSL_NO_LOCALE
+	state_type state_;
+#endif
+	int max_length_;  // check 0 < max_length_ <= buffer_size_*sizeof(char_type)/2
+	int encoding_;
+#ifndef _MSL_NO_LOCALE
+	const Converter* a_codecvt_;
+	bool do_unshift_;
+	bool always_noconv_;
+#endif  // _MSL_NO_LOCALE
+	bool buffered_;
+	bool owns_buffer_;
+	bool open_;
+#if defined(_MSL_USING_MSL_C) && (__dest_os == __win32_os || __dest_os == __wince_os || __dest_os == __dolphin_os)
+	bool text_;
+#endif
+	static const unsigned minbufsize = 16;
+	static const int nunget = 4;
+
+#ifndef _MSL_NO_LOCALE
+	void update_codecvt(const _STD::locale& loc);
+#else
+	void update_codecvt();
+#endif
+
+	void partition_neutral();
+	void partition_put();
+	void partition_get();
+
+	bool put_active() const {return base::pptr() != 0;}
+	int flush_put();
+	int write_buf();
+
+	bool get_active() const {return base::gptr() != 0;}
+	_CSTD::ptrdiff_t fill_get();
+	int empty_get();
+
+	bufferedbuf(const bufferedbuf&);             // not defined
+	bufferedbuf& operator=(const bufferedbuf&);  // not defined
+
+	virtual _CSTD::ptrdiff_t write_chars(const char* buf, _CSTD::ptrdiff_t n) = 0;
+	virtual _CSTD::ptrdiff_t read_chars(char* buf, _CSTD::ptrdiff_t n) = 0;
+	virtual off_type seek_device(off_type off, int whence) = 0;
+};
+
+template <class charT, class traits>
+inline
+void
+#if defined(_MSL_USING_MSL_C) && (__dest_os == __win32_os || __dest_os == __wince_os || __dest_os == __dolphin_os)
+bufferedbuf<charT, traits>::open(bool init_put, bool text)
+#else
+bufferedbuf<charT, traits>::open(bool init_put, bool)
+#endif
+{
+#if defined(_MSL_USING_MSL_C) && (__dest_os == __win32_os || __dest_os == __wince_os || __dest_os == __dolphin_os)
+	text_ = text;
+#endif
+	open_ = true;
+	if (init_put)
+		partition_put();
+}
+
+template <class charT, class traits>
+bufferedbuf<charT, traits>*
+bufferedbuf<charT, traits>::close()
+{
+	bufferedbuf* result = this;
+	if (put_active())
+	{
+	#ifndef _MSL_NO_LOCALE
+		do_unshift_ = encoding_ < 0;
+	#endif
+		if (traits::eq_int_type(overflow(), traits::eof()))
+			result = 0;
+		partition_neutral();
+	}
+	open_ = false;
+	return result;
+}
+
+template <class charT, class traits>
+inline
+void
+bufferedbuf<charT, traits>::partition_neutral()
+{
+	base::setg(0, 0, 0);
+	base::setp(0, 0);
+	uncbeg_ = uncnxt_ = uncend_ = 0;
+}
+
+template <class charT, class traits>
+void
+bufferedbuf<charT, traits>::partition_put()
+{
+	base::setg(0, 0, 0);
+	char_type* p = buffer_;
+#ifndef _MSL_NO_LOCALE
+	if (!always_noconv_)
+	{
+		++p;
+		if ((int)sizeof(char_type) < max_length_)
+			p += buffer_size_ - buffer_size_*sizeof(char_type)/max_length_;
+	}
+#endif  // _MSL_NO_LOCALE
+	if (buffered_)
+		base::setp(p, buffer_ + buffer_size_ - 1);
+	else
+		base::setp(p, p);
+	uncbeg_ = uncnxt_ = (char*)buffer_;
+	uncend_ = (char*)(buffer_ + buffer_size_);
+}
+
+template <class charT, class traits>
+void
+bufferedbuf<charT, traits>::partition_get()
+{
+	base::setp(0, 0);
+	base::setg(buffer_, buffer_, buffer_);
+	uncbeg_ = uncnxt_ = uncend_ = (char*)(buffer_ + buffer_size_);
+#ifndef _MSL_NO_LOCALE
+	if (!always_noconv_)
+	{
+		int min_width = encoding_ <= 0 ?
+		                    1
+		                  : (encoding_ <= (int)sizeof(char_type) ?
+		                        encoding_
+		                      : (int)sizeof(char_type));
+		uncbeg_ -= (buffer_size_ - 1) * min_width;
+	}
+#endif  // _MSL_NO_LOCALE
+}
+
+template <class charT, class traits>
+int
+bufferedbuf<charT, traits>::write_buf()
+{
+	while (uncbeg_ < uncnxt_)
+	{
+		_CSTD::ptrdiff_t count = write_chars(uncbeg_, uncnxt_ - uncbeg_);
+		if (count <= 0)
+			return -1;
+		uncbeg_ += count;
+	}
+	return 0;
+}
+
+//  Assumes put buffer active
+template <class charT, class traits>
+int
+bufferedbuf<charT, traits>::flush_put()
+{
+#ifndef _MSL_NO_LOCALE
+	if (always_noconv_)
+	{
+#endif  // _MSL_NO_LOCALE
+		uncnxt_ = (char*)base::pptr();
+		if (write_buf() == -1)
+			return -1;
+#ifndef _MSL_NO_LOCALE
+	}
+	else
+	{
+		_STD::codecvt_base::result r;
+		for (const char_type* from_next = base::pbase(); from_next < base::pptr();)
+		{
+			const char_type* p;
+			r = a_codecvt_->out(state_,
+			                    from_next, base::pptr(), p,
+			                    uncbeg_, (char*)(base::pptr()-1), uncnxt_);
+			switch (r)
+			{
+			case _STD::codecvt_base::error:
+				return -1;
+			case _STD::codecvt_base::noconv:
+				uncbeg_ = (char*)from_next;
+				uncnxt_ = (char*)base::pptr();
+				p = base::pptr();
+				// drop through
+			case _STD::codecvt_base::ok:
+				if (do_unshift_ && uncnxt_ < uncend_)
+				{
+					r = a_codecvt_->unshift(state_, uncnxt_, uncend_, uncnxt_);
+					switch (r)
+					{
+					case _STD::codecvt_base::error:
+						return -1;
+						break;
+					case _STD::codecvt_base::noconv:
+					case _STD::codecvt_base::ok:
+						do_unshift_ = false;
+						break;
+					case _STD::codecvt_base::partial:
+						break;
+					}
+				}
+				// drop through
+			case _STD::codecvt_base::partial:
+				if (write_buf() == -1)
+					return -1;
+				uncbeg_ = uncnxt_ = (char*)buffer_;
+				break;
+			}
+			from_next = p;
+		}
+		if (do_unshift_)
+		{
+			do
+			{
+				r = a_codecvt_->unshift(state_, uncbeg_, uncend_, uncnxt_);
+				switch (r)
+				{
+				case _STD::codecvt_base::error:
+					return -1;
+					break;
+				case _STD::codecvt_base::noconv:
+					break;
+				case _STD::codecvt_base::ok:
+				case _STD::codecvt_base::partial:
+					if (write_buf() == -1)
+						return -1;
+					break;
+				}
+			} while (r == _STD::codecvt_base::partial);
+			do_unshift_ = false;
+		}
+	}
+#endif  // _MSL_NO_LOCALE
+	if (buffered_)
+		partition_put();
+	else
+		partition_neutral();
+	return 0;
+}
+
+//  Assumes get buffer active
+//  Assumes gptr() == egptr() -> no unread characters
+template <class charT, class traits>
+_CSTD::ptrdiff_t
+bufferedbuf<charT, traits>::fill_get()
+{
+	_CSTD::ptrdiff_t res = base::gptr()-base::eback();
+	if (res > nunget)
+	{
+		res = nunget;
+		_CSTD::memmove(base::eback(), base::gptr() - nunget, nunget*sizeof(char_type));
+		base::setg(base::eback(), base::eback() + nunget, base::eback() + nunget);
+	}
+	_CSTD::ptrdiff_t count;
+#ifndef _MSL_NO_LOCALE
+	if (always_noconv_)
+	{
+#endif  // _MSL_NO_LOCALE
+		count = read_chars((char*)base::gptr(), (_CSTD::ptrdiff_t)((buffer_size_ - res)*sizeof(char_type)));
+		if (count <= 0)
+			return count;
+		_CSTD::ptrdiff_t x = count % (_CSTD::ptrdiff_t)sizeof(char_type);
+		if (x != 0)
+		{
+			if (seek_device(-x, SEEK_CUR) < 0)
+				return -1;
+			count -= x;
+		}
+		base::setg(base::eback(), base::gptr(), base::gptr() + count/sizeof(char_type));
+#ifndef _MSL_NO_LOCALE
+	}
+	else
+	{
+		int min_width = encoding_ <= 0 ?
+		                    1
+		                  : (encoding_ <= (int)sizeof(char_type) ?
+		                        encoding_
+		                      : (int)sizeof(char_type));
+		uncbeg_ = (char*)(buffer_ + buffer_size_) - (buffer_size_ - (base::gptr()-base::eback()) - 1) * min_width;
+		count = 0;
+		if (uncnxt_ < uncend_)
+		{
+			count = uncend_ - uncnxt_;
+			_CSTD::memmove(uncbeg_, uncnxt_, (_CSTD::size_t)count);
+		}
+		uncnxt_ = uncbeg_ + count;
+		uncend_ = (char*)(buffer_ + buffer_size_);
+		count = read_chars(uncnxt_, uncend_ - uncnxt_);
+		uncend_ = uncnxt_;
+		uncnxt_ = uncbeg_;
+		if (count <= 0)
+			return count;
+		uncend_ += count;
+		char_type* p;
+		const char* c;
+		_STD::codecvt_base::result r = a_codecvt_->in(state_, uncbeg_, uncend_, c,
+		                                                base::gptr(), buffer_ + buffer_size_ - 1, p);
+		uncnxt_ = (char*)c;
+		switch (r)
+		{
+		case _STD::codecvt_base::error:
+			return -1;
+		case _STD::codecvt_base::noconv:
+			_CSTD::memmove(base::gptr(), uncbeg_, (_CSTD::size_t)(uncend_ - uncbeg_));
+			uncnxt_ = uncend_;
+			p = base::gptr() + (uncend_ - uncbeg_)/sizeof(char_type);
+			// drop through
+		case _STD::codecvt_base::ok:
+		case _STD::codecvt_base::partial:
+			base::setg(base::eback(), base::gptr(), p);
+			break;
+		}
+	}
+#endif  // _MSL_NO_LOCALE
+	return base::egptr() - base::gptr();
+}
+
+template <class charT, class traits>
+int
+bufferedbuf<charT, traits>::empty_get()
+{
+#ifdef _MSL_NO_LOCALE
+	_CSTD::ptrdiff_t count = (base::egptr() - base::gptr()) * encoding_;
+#else
+	if (encoding_ < 0 && base::gptr() < base::egptr())
+		return -1;
+	_CSTD::ptrdiff_t count = uncend_ - uncnxt_;
+	uncnxt_ = uncend_ = (char*)(buffer_ + buffer_size_);
+	if (base::gptr() < base::egptr())
+	{
+		if (encoding_ == 0)
+		{
+			_CSTD::ptrdiff_t x = base::egptr() - base::gptr();
+			const char_type* p2 = (char_type*)uncend_;
+			const char_type* p1 = p2 - x;
+			const char_type* pnext = p1;
+			char* c1 = (char*)base::gptr();
+			char* c2 = (char*)p1;
+			char* cnext;
+			_CSTD::memmove((char_type*)p1, base::gptr(), x*sizeof(char_type));
+			_STD::codecvt_base::result r;
+			do
+			{
+				r = a_codecvt_->out(state_, pnext, p2, pnext, c1, c2, cnext);
+				switch (r)
+				{
+				case _STD::codecvt_base::error:
+					return -1;
+				case _STD::codecvt_base::noconv:
+					count += (p2 - pnext) * sizeof(char_type);
+					break;
+				case _STD::codecvt_base::partial:
+					if (cnext == c1)
+						return -1;
+					c2 = (char*)pnext;
+					// drop through
+				case _STD::codecvt_base::ok:
+					count += cnext - c1;
+					break;
+				}
+			} while (r == _STD::codecvt_base::partial);
+		}
+		else
+			count += (base::egptr() - base::gptr()) * encoding_;
+	}
+#endif  // _MSL_NO_LOCALE
+	if (count > 0)
+	{
+#if defined(_MSL_USING_MSL_C) && (__dest_os == __win32_os || __dest_os == __wince_os || __dest_os == __dolphin_os)
+		if (text_)
+			for (char_type* p = base::gptr(); p < base::egptr(); ++p)
+				if (*p == char_type('\n'))
+					++count;
+#endif  // defined(_MSL_USING_MSL_C) && (__dest_os == __win32_os || __dest_os == __wince_os || __dest_os == __dolphin_os)
+		count = (_CSTD::ptrdiff_t)seek_device(-count, SEEK_CUR);
+	}
+	if (count < 0)
+		return -1;
+	base::setg(base::eback(), base::gptr(), base::gptr());
+	return 0;
+}
+
+template <class charT, class traits>
+void
+#ifndef _MSL_NO_LOCALE
+bufferedbuf<charT, traits>::update_codecvt(const _STD::locale& loc)
+#else
+bufferedbuf<charT, traits>::update_codecvt()
+#endif
+{
+#ifndef _MSL_NO_LOCALE
+	a_codecvt_ = &_STD::_USE_FACET(Converter, loc);
+	always_noconv_ = a_codecvt_->always_noconv();
+	encoding_ = a_codecvt_->encoding();
+	max_length_ = a_codecvt_->max_length();
+#else  // _MSL_NO_LOCALE
+	max_length_ = encoding_ = (int)sizeof(char_type);
+#endif
+}
+
+template <class charT, class traits>
+bufferedbuf<charT, traits>::bufferedbuf(_CSTD::size_t buffer_size_bytes)
+	: buffer_size_(0),
+	  buffer_(0),
+#ifndef _MSL_NO_LOCALE
+	  state_(state_type()),
+	  do_unshift_(false),
+#endif  // _MSL_NO_LOCALE
+	  buffered_(buffer_size_bytes != 0),
+	  owns_buffer_(false),
+	  open_(false)
+{
+	partition_neutral();
+#ifndef _MSL_NO_LOCALE
+	update_codecvt(base::getloc());
+#else
+	update_codecvt();
+#endif
+	setbuf(0, (_STD::streamsize)(buffer_size_bytes / sizeof(char_type)));
+}
+
+#ifdef _MSL_MOVE
+
+template <class charT, class traits>
+bufferedbuf<charT, traits>::bufferedbuf(bufferedbuf&& rhs)
+	: base(_STD::move(rhs)),
+	  buffer_size_(rhs.buffer_size_),
+	  buffer_(rhs.buffer_),
+	  uncbeg_(rhs.uncbeg_),
+	  uncnxt_(rhs.uncnxt_),
+	  uncend_(rhs.uncend_),
+#ifndef _MSL_NO_LOCALE
+	  state_(rhs.state_),
+#endif
+	  max_length_(rhs.max_length_),
+	  encoding_(rhs.encoding_),
+#ifndef _MSL_NO_LOCALE
+	  a_codecvt_(rhs.a_codecvt_),
+	  do_unshift_(rhs.do_unshift_),
+	  always_noconv_(rhs.always_noconv_),
+#endif  // _MSL_NO_LOCALE
+	  buffered_(rhs.buffered_),
+	  owns_buffer_(rhs.owns_buffer_),
+	  open_(rhs.open_)
+#if defined(_MSL_USING_MSL_C) && (__dest_os == __win32_os || __dest_os == __wince_os || __dest_os == __dolphin_os)
+	  , text_(rhs.text_)
+#endif
+{
+	rhs.buffer_size_ = 0;
+	rhs.buffer_ = 0;
+#ifndef _MSL_NO_LOCALE
+	rhs.state_ = state_type();
+	rhs.do_unshift_ = false;
+#endif  // _MSL_NO_LOCALE
+	rhs.buffered_ = false;
+	rhs.owns_buffer_ = false;
+	rhs.open_ = false;
+	rhs.partition_neutral();
+	try
+	{
+		rhs.setbuf(0, 0);
+	}
+	catch (...)
+	{
+		buffer_size_ = 0;
+	}
+}
+
+template <class charT, class traits>
+inline
+bufferedbuf<charT, traits>&
+bufferedbuf<charT, traits>::operator=(bufferedbuf&& rhs)
+{
+	swap(rhs);
+	return *this;
+}
+
+template <class charT, class traits>
+void
+bufferedbuf<charT, traits>::swap(bufferedbuf&& rhs)
+{
+	base::swap(rhs);
+	_STD::swap(buffer_size_, rhs.buffer_size_);
+	_STD::swap(buffer_, rhs.buffer_);
+	_STD::swap(uncbeg_, rhs.uncbeg_);
+	_STD::swap(uncnxt_, rhs.uncnxt_);
+	_STD::swap(uncend_, rhs.uncend_);
+#ifndef _MSL_NO_LOCALE
+	_STD::swap(state_, rhs.state_);
+#endif
+	_STD::swap(max_length_, rhs.max_length_);
+	_STD::swap(encoding_, rhs.encoding_);
+#ifndef _MSL_NO_LOCALE
+	_STD::swap(a_codecvt_, rhs.a_codecvt_);
+	_STD::swap(do_unshift_, rhs.do_unshift_);
+	_STD::swap(always_noconv_, rhs.always_noconv_);
+#endif  // _MSL_NO_LOCALE
+	_STD::swap(buffered_, rhs.buffered_);
+	_STD::swap(owns_buffer_, rhs.owns_buffer_);
+	_STD::swap(open_, rhs.open_);
+#if defined(_MSL_USING_MSL_C) && (__dest_os == __win32_os || __dest_os == __wince_os || __dest_os == __dolphin_os)
+	_STD::swap(text_, rhs.text_);
+#endif
+}
+
+#endif  // _MSL_MOVE
+
+template <class charT, class traits>
+bufferedbuf<charT, traits>::~bufferedbuf()
+{
+	if (owns_buffer_)
+		delete [] buffer_;
+}
+
+template <class charT, class traits>
+inline
+_STD::streamsize
+bufferedbuf<charT, traits>::showmanyc()
+{
+	return static_cast<_STD::streamsize>(base::egptr() - base::gptr());
+}
+
+template <class charT, class traits>
+typename bufferedbuf<charT, traits>::int_type
+bufferedbuf<charT, traits>::underflow()
+{
+	if (!is_open())
+		return traits::eof();
+	if (put_active())
+	{
+	#ifndef _MSL_NO_LOCALE
+		do_unshift_ = encoding_ < 0;
+	#endif
+		if (flush_put() < 0)
+			return traits::eof();
+		base::setp(0, 0);
+	}
+	if (!get_active())
+		partition_get();
+	if (base::gptr() >= base::egptr())
+	{
+		if (fill_get() <= 0)
+			return traits::eof();
+	}
+	return traits::to_int_type(*base::gptr());
+}
+
+template <class charT, class traits>
+typename bufferedbuf<charT, traits>::int_type
+bufferedbuf<charT, traits>::pbackfail(int_type c)
+{
+	if (!is_open())
+		return traits::eof();
+	if (base::gptr() <= base::eback())
+		return traits::eof();
+	base::gbump(-1);
+	if (!traits::eq_int_type(c, traits::eof()))
+		*base::gptr() = traits::to_char_type(c);
+	return traits::not_eof(c);
+}
+
+template <class charT, class traits>
+typename bufferedbuf<charT, traits>::int_type
+bufferedbuf<charT, traits>::overflow(int_type c)
+{
+	if (!is_open())
+		return traits::eof();
+	if (get_active())
+	{
+		if (empty_get() < 0)
+			return traits::eof();
+		base::setg(0, 0, 0);
+	}
+	if (!put_active())
+		partition_put();
+	if (!traits::eq_int_type(c, traits::eof()))
+	{
+		*base::pptr() = traits::to_char_type(c);
+		base::pbump(1);
+	}
+	if (flush_put() < 0)
+		return traits::eof();
+	return traits::not_eof(c);
+}
+
+template <class charT, class traits>
+_STD::basic_streambuf<charT,traits>*
+bufferedbuf<charT, traits>::setbuf(char_type* s, _STD::streamsize n)
+{
+	bool pa = put_active();
+	if (sync() < 0)
+		return 0;
+	partition_neutral();
+	if (s == 0)
+	{
+		if (owns_buffer_)
+			delete [] buffer_;
+		buffer_ = 0;
+		buffer_size_ = _STD::max(_STD::max(max_length_ * 2 / sizeof(char_type), (_CSTD::size_t)n), (_CSTD::size_t)minbufsize);
+		buffer_ = new char_type[buffer_size_];
+		owns_buffer_ = true;
+		buffered_ = n != 0;
+	}
+	else
+	{
+		if (n < max_length_ * 2 / (_STD::streamsize)sizeof(char_type))
+			return 0;
+		if (owns_buffer_)
+			delete [] buffer_;
+		buffer_ = s;
+		buffer_size_ = (_CSTD::size_t)n;
+		owns_buffer_ = false;
+		buffered_ = true;
+	}
+	if (buffered_ && pa)
+		partition_put();
+	return this;
+}
+
+template <class charT, class traits>
+typename bufferedbuf<charT, traits>::pos_type
+bufferedbuf<charT, traits>::seekoff(off_type off, _STD::ios_base::seekdir way, _STD::ios_base::openmode which)
+{
+	if (!is_open() || ((which & (_STD::ios_base::in | _STD::ios_base::out)) == 0) || (off != 0 && encoding_ <= 0))
+		return pos_type(-1);
+	if (sync() < 0)
+		return pos_type(-1);
+	int whence;
+	switch (way)
+	{
+	case _STD::ios_base::beg:
+		whence = SEEK_SET;
+		break;
+	case _STD::ios_base::cur:
+		whence = SEEK_CUR;
+		break;
+	case _STD::ios_base::end:
+		whence = SEEK_END;
+		break;
+	default:
+		return pos_type(-1);
+	}
+	int width = encoding_ > 0 ? encoding_ : 0;
+	off_type result = seek_device(width * off, whence);
+	if (result < 0)
+		return pos_type(-1);
+	return pos_type(result);
+}
+
+template <class charT, class traits>
+typename bufferedbuf<charT, traits>::pos_type
+bufferedbuf<charT, traits>::seekpos(pos_type sp, _STD::ios_base::openmode which)
+{
+	if (!is_open() || ((which & (_STD::ios_base::in | _STD::ios_base::out)) == 0))
+		return pos_type(-1);
+	if (sync() < 0)
+		return pos_type(-1);
+	if (seek_device((off_type)(_STD::streamoff)sp, SEEK_SET) < 0)
+		return pos_type(-1);
+	return sp;
+}
+
+template <class charT, class traits>
+int
+bufferedbuf<charT, traits>::sync()
+{
+	if (put_active())
+	{
+	#ifndef _MSL_NO_LOCALE
+		do_unshift_ = encoding_ < 0;
+	#endif
+		if (flush_put() < 0)
+			return -1;
+	}
+	else if (get_active())
+	{
+		if (empty_get() < 0)
+			return -1;
+	}
+	return 0;
+}
+
+#ifndef _MSL_NO_LOCALE
+
+	template <class charT, class traits>
+	void
+	bufferedbuf<charT, traits>::imbue(const _STD::locale& loc)
+	{
+		if (sync() < 0)
+			_MSL_ERROR(_STD::runtime_error, "bufferedbuf::imbue failed");
+		update_codecvt(loc);
+		if (!(0 < max_length_ && (_CSTD::size_t)max_length_ <= buffer_size_*sizeof(char_type)/2))
+		{
+			if (0 < max_length_ && owns_buffer_)
+				setbuf(0, buffered_);
+			else
+				_MSL_ERROR(_STD::runtime_error, "codecvt facet max_length is out of range");
+		}
+		if (put_active())
+			partition_put();
+		else if (get_active())
+			partition_get();
+	}
+
+#endif  // _MSL_NO_LOCALE
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	} // namespace Metrowerks
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#pragma enumsalwaysint reset
+#endif
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#pragma bool reset
+#endif
+
+#ifdef __MWERKS__
+#pragma options align=reset
+#endif
+
+#endif // RC_INVOKED
+
+#endif // _MSL_BUFFEREDBUF
+
+// hh 020916 created
+// hh 031202 Removed restriction from flush_put that source must be consumed
+// hh 040209 basic_streambuf::imbue() now does nothing.  Reacted here.

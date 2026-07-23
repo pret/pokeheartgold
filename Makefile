@@ -39,7 +39,7 @@ endif
 # Set up the compiler toolchain dependency
 SKREW_GET := tools/devtools/get_metroskrew.sh
 SKREW_VER := 0.1.3
-SKREW_DIR := $(SUBPROJ_DIR)/metroskrew
+SKREW_DIR := tools/metroskrew
 
 ifneq (,$(findstring Linux,$(UNAME_S)))
   ifeq (0,$(WSL_ACCESSING_WINDOWS))
@@ -80,17 +80,16 @@ target: $(BUILD)/build.ninja
 	@echo $(SKREW_EXE)
 	$(MESON) compile -C $(BUILD)
 
-$(BUILD)/build.ninja: $(ROOT_INI) | $(BUILD) $(SKREW_EXE) meson
+clean: $(BUILD)/build.ninja
+	$(MESON) compile -C $(BUILD) --clean
+
+$(BUILD)/build.ninja: $(BUILD) $(SKREW_EXE) meson
 	$(MESON) setup \
-		--native-file=$(ROOT_INI) \
+		--wrap-mode=nopromote \
+		--native-file=meson/$(NATIVE) \
 		--cross-file=meson/$(CROSS) \
-		--cross-file=$(ROOT_INI) \
 		-- $(BUILD)
 
-$(ROOT_INI): | $(BUILD)
-	echo "[constants]" > $@
-	echo "root = '$$PWD'" >> $@
-	
 $(BUILD):
 	mkdir -p -- $(BUILD)
 	

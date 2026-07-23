@@ -1,0 +1,88 @@
+{
+  "key": 53789,
+  "messages": [
+    {
+      "id": "msg_0011_00000",
+      "en_US": "EDIT"
+    },
+    {
+      "id": "msg_0011_00001",
+      "en_US": "QUIT"
+    },
+    {
+      "id": "msg_0011_00002",
+      "en_US": "SET"
+    },
+    {
+      "id": "msg_0011_00003",
+      "en_US": "REMOVE"
+    },
+    {
+      "id": "msg_0011_00004",
+      "en_US": "SHIFT"
+    },
+    {
+      "id": "msg_0011_00005",
+      "en_US": "OK"
+    },
+    {
+      "id": "msg_0011_00006",
+      "en_US": "CANCEL"
+    },
+    {
+      "id": "msg_0011_00007",
+      "en_US": "Choose a Capsule."
+    },
+    {
+      "id": "msg_0011_00008",
+      "en_US": "What would you like to do?"
+    },
+    {
+      "id": "msg_0011_00009",
+      "en_US": "The Capsule was removed."
+    },
+    {
+      "id": "msg_0011_00010",
+      "en_US": "Switch with which Capsule?"
+    },
+    {
+      "id": "msg_0011_00011",
+      "en_US": "The Capsules were switched."
+    },
+    {
+      "id": "msg_0011_00012",
+      "en_US": "Finished editing the Capsule."
+    },
+    {
+      "id": "msg_0011_00013",
+      "en_US": "Confirming..."
+    },
+    {
+      "id": "msg_0011_00014",
+      "en_US": [
+        "Quit without changing the\n",
+        "Capsule design?"
+      ]
+    },
+    {
+      "id": "msg_0011_00015",
+      "en_US": "There’s no more room!"
+    },
+    {
+      "id": "msg_0011_00016",
+      "en_US": "There are no Seals left."
+    },
+    {
+      "id": "msg_0011_00017",
+      "en_US": "Exit"
+    },
+    {
+      "id": "msg_0011_00018",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0011_00019",
+      "garbage": 5
+    }
+  ]
+}

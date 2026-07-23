@@ -1,0 +1,302 @@
+/* MSL
+ * Copyright © 1995-2006 Freescale Corporation.  All rights reserved.
+ *
+ * $Date: 2006/02/08 20:32:44 $
+ * $Revision: 1.75.2.3 $
+ */
+
+#ifndef _MSL_CSTDLIB
+#define _MSL_CSTDLIB
+
+#include <ansi_parms.h>
+
+#if !_MSL_USING_MW_C_HEADERS
+	#include <stdlib.h>
+	
+	#if _MSL_PUT_THIRD_PARTY_C_IN_STD
+		#include <msl_cpp_std_stdlib.h>
+	#endif
+#elif defined(__PALMOS_TRAPS__)
+	#include <cstdlib_Palm_OS>
+#else
+
+#if __dest_os == __mac_os_x
+	#include <cstdlib_mach.h>
+#endif
+
+#include <div_t.h>
+#include <null.h>
+#include <size_t.h>
+#include <msl_secure.h>
+#include <msl_rsize_t.h>
+
+#if _MSL_WIDE_CHAR
+	#include <wchar_t.h>
+#endif
+
+#if _MSL_NEEDS_EXTRAS
+	#include <extras_stdlib.h>
+#endif
+
+#ifndef RC_INVOKED
+
+#ifndef _MSL_MB_CUR_MAX
+	#define _MSL_MB_CUR_MAX 3
+#endif
+
+_MSL_BEGIN_NAMESPACE_STD
+_MSL_BEGIN_EXTERN_C
+
+#define RAND_MAX				32767
+
+#if defined(__STDC_WANT_SECURE_LIB__) && __STDC_WANT_SECURE_LIB__
+	#define RAND_MAX_S			32767
+#endif /* __STDC_WANT_SECURE_LIB__ */
+
+#define MB_CUR_MAX	    		_MSL_MB_CUR_MAX
+
+#define EXIT_SUCCESS			0
+#define EXIT_FAILURE			1
+
+#define _MAX_PATH				1024
+
+#if _MSL_FLOATING_POINT
+	_MSL_IMP_EXP_C double _MSL_CDECL				atof(const char *) _MSL_CANT_THROW;
+	_MSL_IMP_EXP_C double _MSL_CDECL				strtod(const char * _MSL_RESTRICT, char ** _MSL_RESTRICT) _MSL_CANT_THROW;
+	_MSL_IMP_EXP_C long double _MSL_CDECL			strtold(const char * _MSL_RESTRICT, char ** _MSL_RESTRICT) _MSL_CANT_THROW;					/*- mm 990930 -*/
+#if _MSL_C99
+	_MSL_IMP_EXP_C float _MSL_CDECL					strtof(const char * _MSL_RESTRICT, char ** _MSL_RESTRICT) _MSL_CANT_THROW;					/*- mm 021106 -*/
+#endif /* _MSL_C99 */
+#endif /* _MSL_FLOATING_POINT */
+
+_MSL_IMP_EXP_C int _MSL_CDECL						atoi(const char *) _MSL_CANT_THROW;
+_MSL_IMP_EXP_C long	_MSL_CDECL						atol(const char *) _MSL_CANT_THROW;
+
+#if _MSL_LONGLONG
+#if _MSL_C99															/*- mm 030708 -*/
+_MSL_IMP_EXP_C long	long _MSL_CDECL					atoll(const char *) _MSL_CANT_THROW;
+#endif /* _MSL_C99 */													/*- mm 030708 -*/
+#endif /* _MSL_LONGLONG */
+
+_MSL_IMP_EXP_C long	_MSL_CDECL						strtol(const char * _MSL_RESTRICT, char ** _MSL_RESTRICT, int) _MSL_CANT_THROW;
+_MSL_IMP_EXP_C unsigned long _MSL_CDECL				strtoul(const char * _MSL_RESTRICT, char ** _MSL_RESTRICT, int) _MSL_CANT_THROW;
+
+#if _MSL_LONGLONG														/*- mm 961219 -*/
+#if _MSL_C99		               										/*- mm 030708 -*/
+	_MSL_IMP_EXP_C long long _MSL_CDECL				strtoll(const char * _MSL_RESTRICT, char ** _MSL_RESTRICT, int) _MSL_CANT_THROW;			/*- mm 961219 -*/
+	_MSL_IMP_EXP_C unsigned long long _MSL_CDECL	strtoull(const char * _MSL_RESTRICT, char ** _MSL_RESTRICT, int) _MSL_CANT_THROW;			/*- mm 961219 -*/
+#endif  /* _MSL_C99 */													/*- mm 030708 -*/                   					
+#endif  /* _MSL_LONGLONG */												/*- mm 030708 -*/
+
+_MSL_IMP_EXP_C int _MSL_CDECL						rand(void) _MSL_CANT_THROW;
+_MSL_IMP_EXP_C void _MSL_CDECL						srand(unsigned int) _MSL_CANT_THROW;
+_MSL_IMP_EXP_C void * _MSL_CDECL					calloc(size_t , size_t) _MSL_CANT_THROW;						/*- mf 990715 -*/
+_MSL_IMP_EXP_C void _MSL_CDECL						free(void *) _MSL_CANT_THROW; 									/*- mf 990715 -*/
+_MSL_IMP_EXP_C void * _MSL_CDECL					malloc(size_t) _MSL_CANT_THROW;									/*- mf 990715 -*/
+_MSL_IMP_EXP_C void * _MSL_CDECL					realloc(void *, size_t) _MSL_CANT_THROW;						/*- mf 990715 -*/
+_MSL_IMP_EXP_C size_t _MSL_CDECL					__msize(void *) _MSL_CANT_THROW;								/*- mf 990715 -*/
+
+#if !(defined(_MSL_PRO4_MALLOC) || defined(_MSL_CLASSIC_MALLOC) || defined(_MSL_MALLOC_BACKUP))
+
+#ifndef _MSL_ALLOCATE_SIZE
+	#define _MSL_ALLOCATE_SIZE __allocate_size
+#endif
+
+#ifndef _MSL_ALLOCATE
+	#define _MSL_ALLOCATE __allocate
+#endif
+
+#ifndef _MSL_ALLOCATE_RESIZE
+	#define _MSL_ALLOCATE_RESIZE __allocate_resize
+#endif
+
+#ifndef _MSL_ALLOCATE_EXPAND
+	#define _MSL_ALLOCATE_EXPAND __allocate_expand
+#endif
+
+_MSL_IMP_EXP_C size_t _MSL_CDECL _MSL_ALLOCATE_SIZE(void*) _MSL_CANT_THROW;
+_MSL_IMP_EXP_C void* _MSL_CDECL _MSL_ALLOCATE(size_t, size_t*) _MSL_CANT_THROW;
+_MSL_IMP_EXP_C int _MSL_CDECL _MSL_ALLOCATE_RESIZE(void*, size_t, size_t*) _MSL_CANT_THROW;
+_MSL_IMP_EXP_C int _MSL_CDECL _MSL_ALLOCATE_EXPAND(void*, size_t, size_t, size_t*) _MSL_CANT_THROW;
+
+#endif /* !(_MSL_PRO4_MALLOC || _MSL_CLASSIC_MALLOC || _MSL_MALLOC_BACKUP) */
+
+#ifdef __VEC__
+	/* AltiVec memory-related routines which 16-byte align the blocks. */
+	_MSL_IMP_EXP_C void * _MSL_CDECL			 	vec_calloc(size_t, size_t) _MSL_CANT_THROW;						/*- mf 990715 -*/
+	_MSL_IMP_EXP_C void	_MSL_CDECL				 	vec_free(void *) _MSL_CANT_THROW;								/*- mf 990715 -*/
+	_MSL_IMP_EXP_C void *_MSL_CDECL				 	vec_malloc(size_t) _MSL_CANT_THROW;								/*- mf 990715 -*/
+	_MSL_IMP_EXP_C void *  _MSL_CDECL			 	vec_realloc(void *, size_t) _MSL_CANT_THROW;					/*- mf 990715 -*/
+	
+	#if _MSL_USE_INLINE && _MSL_MALLOC_IS_ALTIVEC_ALIGNED
+		_MSL_INLINE void * _MSL_CDECL	vec_calloc(size_t _nmemb, size_t _size) _MSL_CANT_THROW { return calloc(_nmemb, _size); }
+		_MSL_INLINE void _MSL_CDECL		vec_free(void* _ptr) _MSL_CANT_THROW { free(_ptr); }
+		_MSL_INLINE void * _MSL_CDECL 	vec_malloc(size_t _size) _MSL_CANT_THROW { return malloc(_size); }
+		_MSL_INLINE void * _MSL_CDECL 	vec_realloc(void* _ptr, size_t _size) _MSL_CANT_THROW { return realloc(_ptr, _size); }
+	#endif /* _MSL_USE_INLINE && _MSL_MALLOC_IS_ALTIVEC_ALIGNED */
+#endif /* __VEC__ */
+
+#if (__dest_os ==__win32_os)
+	void _MSL_CDECL									abort(void) _MSL_CANT_THROW;
+	int _MSL_CDECL									atexit(void (_MSL_CDECL *func)(void)) _MSL_CANT_THROW;
+	void _MSL_CDECL									exit(int);
+#if _MSL_C99														/*- mm 030708 -*/
+	void _MSL_CDECL									_Exit(int) _MSL_CANT_THROW;
+#endif /* _MSL_C99 */												/*- mm 030708 -*/
+#else 
+	_MSL_IMP_EXP_C void _MSL_CDECL					abort(void) _MSL_CANT_THROW;
+	_MSL_IMP_EXP_C int	_MSL_CDECL					atexit(void (_MSL_CDECL *func)(void)) _MSL_CANT_THROW;
+	_MSL_IMP_EXP_C void _MSL_CDECL					exit(int);
+#if _MSL_C99														/*- mm 030708 -*/
+	_MSL_IMP_EXP_C void _MSL_CDECL					_Exit(int) _MSL_CANT_THROW;
+#endif /* _MSL_C99 */												/*- mm 030708 -*/
+#endif /* __dest_os ==__win32_os */
+
+_MSL_IMP_EXP_C char * _MSL_CDECL					getenv(const char *) _MSL_CANT_THROW;
+_MSL_IMP_EXP_C int _MSL_CDECL						system(const char *) _MSL_CANT_THROW;
+
+typedef int (*_compare_function)(const void*, const void*);  /*- mm 961031 -*/ /*- cc 042400 -*/
+
+_MSL_IMP_EXP_C void * _MSL_CDECL					bsearch(const void *, const void *, size_t, size_t, _compare_function); /*- mm 961031 -*/
+_MSL_IMP_EXP_C void _MSL_CDECL 						qsort(void *, size_t, size_t, _compare_function);                      /*- mm 961031 -*/
+
+#if defined(__STDC_WANT_SECURE_LIB__) && __STDC_WANT_SECURE_LIB__
+	_MSL_IMP_EXP_C errno_t _MSL_CDECL				getenv_s(size_t * _MSL_RESTRICT, char * _MSL_RESTRICT, rsize_t, const char * _MSL_RESTRICT) _MSL_CANT_THROW;
+	
+	typedef int (*_compare_function_s)(const void*, const void*, void*);
+	
+	_MSL_IMP_EXP_C void * _MSL_CDECL				bsearch_s(const void *, const void *, rsize_t, rsize_t, _compare_function_s, void *);
+	_MSL_IMP_EXP_C void _MSL_CDECL 					qsort_s(void *, rsize_t, rsize_t, _compare_function_s, void *);
+	
+	#if _MSL_WIDE_CHAR
+		_MSL_IMP_EXP_C int _MSL_CDECL				wctomb_s(int * _MSL_RESTRICT, char * _MSL_RESTRICT, rsize_t, wchar_t) _MSL_CANT_THROW;
+	#endif /* _MSL_WIDE_CHAR */
+#endif /* __STDC_WANT_SECURE_LIB__ */
+
+_MSL_IMP_EXP_C int _MSL_CDECL						abs(int) _MSL_CANT_THROW;
+
+_MSL_IMP_EXP_C long	_MSL_CDECL						labs(long) _MSL_CANT_THROW;
+
+#if _MSL_LONGLONG
+#if (_MSL_C99 || defined( __cplusplus))					
+	_MSL_IMP_EXP_C long long _MSL_CDECL				llabs(long long) _MSL_CANT_THROW;
+#endif /* _MSL_C99 */																/*- mm 030708 -*/ 
+#endif /* _MSL_LONGLONG */
+
+#ifdef __POWERPC__
+
+	#ifndef __cplusplus
+		#if !__MOTO__ && !__MRC__
+			#define abs(n)	__abs(n)
+			#define labs(n)	__labs(n)
+		#endif
+	#endif
+
+#endif /* __POWERPC__ */
+
+_MSL_IMP_EXP_C div_t _MSL_CDECL						div(int,int) _MSL_CANT_THROW;
+_MSL_IMP_EXP_C ldiv_t _MSL_CDECL					ldiv(long,long) _MSL_CANT_THROW;
+
+#if _MSL_LONGLONG
+#if (_MSL_C99 || defined(__cplusplus))					
+	_MSL_IMP_EXP_C lldiv_t _MSL_CDECL				lldiv(long long,long long) _MSL_CANT_THROW;
+#endif /* _MSL_C99 */ 
+#endif /* _MSL_LONGLONG */
+
+#ifdef __cplusplus
+	_MSL_END_EXTERN_C
+
+	extern "C++" {	/*- ejs 040422 -*/
+
+		inline long _MSL_CDECL abs(long n) _MSL_CANT_THROW
+			{return labs(n);}
+		inline ldiv_t _MSL_CDECL div(long numerator, long denominator) _MSL_CANT_THROW
+			{return ldiv(numerator, denominator);}
+		
+		#if _MSL_LONGLONG              							/*- mm 990520 -*/
+			inline long long _MSL_CDECL abs(long long n) _MSL_CANT_THROW
+				{return llabs(n);}
+			inline lldiv_t _MSL_CDECL div(long long numerator, long long denominator) _MSL_CANT_THROW
+				{return lldiv(numerator, denominator);}
+		#endif /*_MSL_LONGLONG*/                      				/*- mm 990520 -*/
+	
+	} /* extern "C" */	/*- ejs 040422 -*/
+
+	_MSL_BEGIN_EXTERN_C	
+#endif /* __cplusplus */
+
+
+#if _MSL_WIDE_CHAR
+	_MSL_IMP_EXP_C int _MSL_CDECL					mblen(const char *, size_t) _MSL_CANT_THROW;
+ 	_MSL_IMP_EXP_C int _MSL_CDECL					mbtowc(wchar_t * _MSL_RESTRICT, const char * _MSL_RESTRICT, size_t) _MSL_CANT_THROW;
+	_MSL_IMP_EXP_C int _MSL_CDECL					wctomb(char *, wchar_t) _MSL_CANT_THROW;
+	_MSL_IMP_EXP_C size_t _MSL_CDECL	  			mbstowcs(wchar_t * _MSL_RESTRICT, const char * _MSL_RESTRICT, size_t) _MSL_CANT_THROW;
+	_MSL_IMP_EXP_C size_t _MSL_CDECL	   			wcstombs(char * _MSL_RESTRICT, const wchar_t * _MSL_RESTRICT, size_t) _MSL_CANT_THROW;
+#endif /* _MSL_WIDE_CHAR */
+
+_MSL_END_EXTERN_C
+_MSL_END_NAMESPACE_STD
+
+#endif /* RC_INVOKED */
+
+#endif /* _MSL_USING_MW_C_HEADERS || __PALMOS_TRAPS__ */
+
+#endif /* _MSL_CSTDLIB */
+
+/* Change record:
+ * mm  961031 Improved legibility with introduction of typedef
+ * mm  961220 line 44    Added headers for strtoll and strtoull for long long support
+ * sm  970723 Disabled all use of doubles when _No_Floating_Point defined.
+ * mm  970708 Inserted Be changes
+ * hh  971206 Changed file name from stdlib.h to cstdlib and added namespace support.
+ * hh  971230 added RC_INVOKED wrapper
+ * hh  980122 C++ must use C lib. commented out inlined abs and labs
+ * hh  980122 added long long support llabs, lldiv
+ * hh  980122 Added C++ inlines for abs and div
+ * hh  980206 these #defines (abs, labs) interfere with overloaded inlines in C++
+ * mf  980505 enabled win32 specific prototypes for wince 
+ * hh  980627 changed include from wctype.h to cwctype
+ * mm  981023 added wrappers round long long support
+ * blc 990209 added __msize prototype
+ * mm  990217 Deleted #include of cstddef and replaced by #include <wchar_t.h>
+ * mf  990404 turned off k6 calling convention for atof and strtod
+ * mm  990520 Added wrappers to some long long function definitions
+ * mf  990715 Arg names in prototypes cause conflicts
+ * vss 990624 guards for longlong and wide char
+ * mm  990930 Added prototype for strtold
+ * mm  000210 Added prototype for _itow defined in extras.c
+ * cc  000219 Added prototype for _putenv
+ * cc  000320 Added _MSL_IMP_EXP_C
+ * cc  000424 Removed _MSL_IMP_EXP_C from _compare_function
+ * cc  000515 Major movement of code to common and platform specific headers 
+ * cc  000515 Version before revision is 1.14.8.12
+ * cc  000515 Added #include of extras.h for win only 
+ * cc  000515 Moved _gcvt, _itoa, _itow, _ultoa, _strlwr, _splitpath,  _itoa to extras.h
+ * cc  000515 Moved _fullpath, _ltow, _doserrno, _putenv, and _ultow to extras.win32.h
+ * cc  000515 Moved _MAX_DRIVE, _MAX_DIR, _MAX_EXT, _MAX_FNAME, __max, and __min to extras.h 
+ * JWW 001208 Added case for targeting Mach-O
+ * cc  000326 removed dest_os to be_os 
+ * cc  010405 removed pragma options align native and reset	
+ * cc  010410 updated to new namespace macros 		
+ * mm  010523 UTF-8 implementation
+ * blc 010926 Added case for Palm OS
+ * cc  011017 File cleanup
+ * cc  011023 Added check for _MSL_NEEDS_EXTRAS
+ * JWW 011027 Use _MSL_USING_MW_C_HEADERS as generic header test instead of specific Mach-O test
+ * JWW 011126 Test _MSL_MALLOC_IS_ALTIVEC_ALIGNED to know if malloc automatically aligns its memory
+ * cc  011203 Added _MSL_CDECL for new name mangling 
+ * hh  020603 Added no throw spec to functions
+ * JWW 020917 Added _MSL_RESTRICT to get the restrict type specifier for certain C99 functions
+ * mm  021106 Add prototype for strtof()
+ * JWW 021209 Added _Exit for C99
+ * cc  021209 Added prototype for atoll() for C99
+ * JWW 030224 Changed __MSL_LONGLONG_SUPPORT__ flag into the new more configurable _MSL_LONGLONG
+ * JWW 030224 Changed __NO_WIDE_CHAR flag into the new more configurable _MSL_WIDE_CHAR
+ * mm  030625 Added a pair of _MSL_C99 wrappers
+ * mm  030708 Added C99 wrappers.
+ * JWW 031030 Added the __STDC_WANT_SECURE_LIB__ secure library extensions
+ * cc  040217 Changed _No_Floating_Point to _MSL_FLOATING_POINT
+ * JWW 040317 Updated the __STDC_WANT_SECURE_LIB__ secure library based on new secure specifications
+ * ejs 040422 Add extern "C++" for inline overloads
+ * JWW 050128 When using MSL C++ on top of a third party C (non-MSL), put C items into std namespace
+ */

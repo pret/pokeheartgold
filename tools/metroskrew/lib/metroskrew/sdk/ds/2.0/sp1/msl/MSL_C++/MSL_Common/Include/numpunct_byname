@@ -1,0 +1,218 @@
+/* MSL
+ * Copyright © 1995-2006 Freescale Corporation.  All rights reserved.
+ *
+ * $Date: 2006/02/09 16:59:09 $
+ * $Revision: 1.16.2.2 $
+ */
+
+// numpnct_byname
+
+#ifndef _NUMPUNCT_BYNAME
+#define _NUMPUNCT_BYNAME
+
+#include <mslconfig>
+
+#ifndef _MSL_NO_IO
+
+#include <numfacet>
+#include <cstring>
+#include <cstdlib>
+#include <fstream>
+#include <msl_int_limits>
+
+#ifndef RC_INVOKED
+
+#ifdef __MWERKS__
+#pragma options align=native
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#if _MSL_FORCE_ENUMS_ALWAYS_INT
+		#pragma enumsalwaysint on
+	#else
+		#pragma enumsalwaysint off
+	#endif
+#endif  // _MSL_FORCE_ENUMS_ALWAYS_INT
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#if _MSL_FORCE_ENABLE_BOOL_SUPPORT
+		#pragma bool on
+	#else
+		#pragma bool off
+	#endif
+#endif  // _MSL_FORCE_ENABLE_BOOL_SUPPORT
+
+#ifdef min
+#undef min
+#endif
+
+#ifdef max
+#undef max
+#endif
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	namespace std {
+#endif
+
+#ifndef _MSL_NO_LOCALE
+
+template <class charT>
+class numpunct_byname
+	: public numpunct<charT>
+{
+public:
+	typedef charT                char_type;
+	typedef basic_string<charT>  string_type;
+
+	explicit numpunct_byname(const char* std_name, size_t refs = 0);
+protected:
+	virtual ~numpunct_byname() {}
+};
+
+inline
+const string&
+__numeric_marker(char)
+{
+	static string numeric_marker("numeric_narrow");
+	return numeric_marker;
+}
+
+#ifndef _MSL_NO_WCHART_CPP_SUPPORT
+
+	inline
+	const string&
+	__numeric_marker(wchar_t)
+	{
+		static string numeric_marker("numeric_wide");
+		return numeric_marker;
+	}
+
+#endif  // _MSL_NO_WCHART_CPP_SUPPORT
+
+template <class charT>
+numpunct_byname<charT>::numpunct_byname(const char* std_name, size_t refs)
+	: numpunct<charT>(refs)
+{
+	typedef numpunct<charT> base;
+	if (std_name == 0)
+		#ifndef _MSL_NO_EXCEPTIONS
+			throw runtime_error("numpunct_byname constructed with null name");
+		#else
+			__msl_error("numpunct_byname constructed with null name");
+		#endif
+	if (strlen(std_name) == 0)
+		std_name = getenv("MSL_DEFAULT_LOCALE");
+	if (std_name != 0 && strcmp(std_name, "C") != 0)
+	{
+	#ifndef _MSL_NO_FILE_IO
+		ifstream infile(std_name, ios::binary);
+		if (!infile.is_open())
+		#ifndef _MSL_NO_EXCEPTIONS
+			throw runtime_error(string("numpunct_byname constructed with unsupported name: ") + std_name);
+		#else
+			__msl_error("numpunct_byname constructed with unsupported name");
+		#endif
+		string word;
+		const string numeric_marker(__numeric_marker(charT()));
+		bool success = true;
+		while (infile.good())
+		{
+			infile.ignore(numeric_limits<streamsize>::max(), '$');
+			infile >> word;
+			if (infile.fail())
+				break;
+			if (word == numeric_marker)
+			{
+				success = false;
+				string numpunct_names[5];
+				numpunct_names[0] = "decimal_point";
+				numpunct_names[1] = "thousands_sep";
+				numpunct_names[2] = "grouping";
+				numpunct_names[3] = "false_name";
+				numpunct_names[4] = "true_name";
+				const string (&cnumpunct_names)[5] = numpunct_names;
+				const ctype<char>& ct = _USE_FACET(ctype<char>, infile.getloc());
+				ios_base::iostate err = ios_base::goodbit;
+				istreambuf_iterator<char> in(infile), end;
+				while (true)
+				{
+					ws(infile);
+					const string* i = __parse_a_word(in, end, numpunct_names, numpunct_names+5, ct, err);
+					if (err)
+						infile.setstate(err);
+					if (i == numpunct_names+5)
+						break;
+					char syntax;
+					infile >> syntax;
+					if (infile.fail() || syntax != '=')
+					#ifndef _MSL_NO_EXCEPTIONS
+						throw runtime_error("syntax error reading numpunct data");
+					#else
+						__msl_error("syntax error reading numpunct data");
+					#endif
+					bool was_quoted;
+					switch (i-numpunct_names)
+					{
+					case 0:  // decimal_point
+						__read_formatted_char(infile, base::__decimal_point_, was_quoted);
+						break;
+					case 1:  // thousands_sep
+						__read_formatted_char(infile, base::__thousands_sep_, was_quoted);
+						break;
+					case 2:  // grouping
+						__read_grouping(infile, base::__grouping_);
+						break;
+					case 3:  // false_name
+						__read_formatted_string(infile, base::__falsename_);
+						break;
+					case 4:  // true_name
+						__read_formatted_string(infile, base::__truename_);
+						break;
+					}
+				}
+				success = static_cast<bool>(!infile.fail());
+				break;
+			}
+		}
+		if (!success)
+		#ifndef _MSL_NO_EXCEPTIONS
+			throw runtime_error(string("numpunct_byname file input error: ") + std_name);
+		#else
+			__msl_error("numpunct_byname file input error");
+		#endif
+	#else  // _MSL_NO_FILE_IO
+		#ifndef _MSL_NO_EXCEPTIONS
+			throw runtime_error(string("numpunct_byname constructed with unsupported name: ") + std_name);
+		#else
+			__msl_error("numpunct_byname constructed with unsupported name");
+		#endif
+	#endif  // _MSL_NO_FILE_IO
+	}
+}
+
+#endif  // _MSL_NO_LOCALE
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	} // namespace std
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#pragma enumsalwaysint reset
+#endif
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#pragma bool reset
+#endif
+
+#ifdef __MWERKS__
+#pragma options align=reset
+#endif
+
+#endif // RC_INVOKED
+
+#endif  // _MSL_NO_IO
+
+#endif  // _NUMPUNCT_BYNAME
+
+// hh 010228 Created
+// hh 010402 Removed 68K CMF support

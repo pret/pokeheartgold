@@ -1,0 +1,68 @@
+{
+  "key": 25686,
+  "messages": [
+    {
+      "id": "msg_0585_T25R0301_00000",
+      "en_US": [
+        "If you treat your Pokémon nicely,\n",
+        "they will love you in return.\r",
+        "Oh? Let me see your Pokémon...\r"
+      ]
+    },
+    {
+      "id": "msg_0585_T25R0301_00001",
+      "en_US": [
+        "It looks really happy!\n",
+        "It must love you a lot."
+      ]
+    },
+    {
+      "id": "msg_0585_T25R0301_00002",
+      "en_US": [
+        "I get the feeling that it really\n",
+        "trusts you."
+      ]
+    },
+    {
+      "id": "msg_0585_T25R0301_00003",
+      "en_US": [
+        "It’s friendly toward you.\n",
+        "It looks sort of happy."
+      ]
+    },
+    {
+      "id": "msg_0585_T25R0301_00004",
+      "en_US": "It’s quite cute."
+    },
+    {
+      "id": "msg_0585_T25R0301_00005",
+      "en_US": [
+        "You should treat it better.\n",
+        "It’s not used to you."
+      ]
+    },
+    {
+      "id": "msg_0585_T25R0301_00006",
+      "en_US": [
+        "It doesn’t seem to like you at all.\n",
+        "It looks mean."
+      ]
+    },
+    {
+      "id": "msg_0585_T25R0301_00007",
+      "en_US": [
+        "I keep losing in battles, and my\n",
+        "Pokémon end up fainting...\r",
+        "Maybe that’s why my Pokémon don’t\n",
+        "like me much..."
+      ]
+    },
+    {
+      "id": "msg_0585_T25R0301_00008",
+      "en_US": [
+        "When I use an item on my Pokémon,\n",
+        "it acts really glad!"
+      ]
+    }
+  ]
+}

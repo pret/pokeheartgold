@@ -1,0 +1,1970 @@
+/* MSL
+ * Copyright © 1995-2006 Freescale Corporation.  All rights reserved.
+ *
+ * $Date: 2006/02/09 16:59:33 $
+ * $Revision: 1.36.2.3 $
+ */
+
+// tree
+
+#ifndef _TREE
+#define _TREE
+
+// WARNING
+//
+// tree is a non-standard, non-portable header and container.
+//
+// WARNING
+//
+//	__tree serves as the implementation of map, multimap, set and multiset.  The
+//	node insertion and removal routines are based on algorithms presented in
+//	Cormen, Leiserson, and Rivest, Introduction to Algorithms (MIT Press, 1990).
+//	Modifications to these algorithms include:
+//
+//	1.  Sentinel nodes are not used.  The algorithm has been modified to have
+//	    Sentinel nodes modled by null pointers in the leaf nodes.  Nodes represented
+//	    in this fashion have a color of black, and are never explicitly referenced.
+//
+//	2.  Point 1 is especially important in the balancing portion of the node delete
+//	    routine.  Here a null node is required to know it's parent and whether it is
+//	    a left child or right child.  This is fixed up by storing the parent of the
+//	    null node (instead of the null node), and a bool representing whether it is
+//	    a left child or right child.
+//
+//	3.  The orignal node delete routine called for copying one node into another.
+//	    This would cause non-standard behavior, so instead pointers are fixed up
+//	    to achieve the same effect.
+//
+//	4.  The "RB-Delete" and "RB-Delete-Fixup" routines are implemented as one
+//	    routine here:  "balance_erase".
+
+/*  __tree synopsis
+
+This is normally not a client level header.  But in some circumstances,
+using __tree directly is more convenient than map/set.  Especially
+when you need to find/erase on a key that is only part of the value_type
+(see map for an example).
+
+namespace std
+{
+
+template <class T, class Compare, class Allocator>
+class __tree
+{
+public:
+	//  types:
+	typedef T                                     value_type;
+	typedef Compare                               value_compare;
+	typedef Allocator                             allocator_type;
+	typedef typename Allocator::reference         reference;
+	typedef typename Allocator::const_reference   const_reference;
+	typedef typename Allocator::size_type         size_type;
+	typedef typename Allocator::difference_type   difference_type;
+	typedef typename Allocator::pointer           pointer;
+	typedef typename Allocator::const_pointer     const_pointer;
+
+	class                                         iterator;        // bidirectional
+	class                                         const_iterator;  // bidirectional
+
+	typedef std::reverse_iterator<iterator>       reverse_iterator;
+	typedef std::reverse_iterator<const_iterator> const_reverse_iterator;
+
+	//  lib.set.cons construct/copy/destroy:
+	__tree();
+	__tree(const Compare& comp);
+	__tree(const Compare& comp, const Allocator& a);
+	template <class InputIterator>
+		__tree(InputIterator first, InputIterator last, bool multi,
+		       const Compare& comp, const Allocator& a);
+	__tree(const __tree& x);
+	~__tree();
+	__tree& operator=(const __tree& x);
+
+	allocator_type get_allocator() const;
+	size_type      max_size() const;
+
+	size_type     size() const;
+	bool          empty() const;
+
+	iterator               begin();
+	const_iterator         begin() const;
+	iterator               end();
+	const_iterator         end() const;
+
+	reverse_iterator       rbegin();
+	const_reverse_iterator rbegin() const;
+	reverse_iterator       rend();
+	const_reverse_iterator rend() const;
+
+	template <class Key, class V> value_type& find_or_insert(const Key& key);
+	pair<iterator,bool> insert_one(const value_type& x);
+	iterator            insert_multi(const value_type& x);
+	iterator            insert_one(iterator position, const value_type& x);
+	const_iterator      insert_one(const_iterator position, const value_type& x)
+	iterator            insert_multi(iterator position, const value_type& x);
+	const_iterator      insert_multi(const_iterator position, const value_type& x)
+	template <class InputIterator> void insert_one(InputIterator first, InputIterator last);
+	template <class InputIterator> void insert_multi(InputIterator first, InputIterator last);
+
+	void      erase(iterator position);
+	void      erase(const_iterator position)
+	template <class Key> size_type erase_one(const Key& x);
+	template <class Key> size_type erase_multi(const Key& x);
+	void      erase(iterator first, iterator last);
+	void      erase(const_iterator first, const_iterator last)
+	void clear();
+
+	void swap(__tree& x);
+
+	value_compare value_comp() const;
+
+	template <class Key> iterator       find(const Key& x);
+	template <class Key> const_iterator find(const Key& x) const;
+	template <class Key> size_type count_one(const Key& x) const;
+	template <class Key> size_type count_multi(const Key& x) const;
+
+	template <class Key> iterator       lower_bound(const Key& x);
+	template <class Key> const_iterator lower_bound(const Key& x) const;
+	template <class Key> iterator       upper_bound(const Key& x);
+	template <class Key> const_iterator upper_bound(const Key& x) const;
+	template <class Key> pair<iterator, iterator>             equal_range(const Key& x);
+	template <class Key> pair<const_iterator, const_iterator> equal_range(const Key& x) const;
+
+	bool invariants() const;
+};
+
+}  // std
+*/
+
+#include <mslconfig>
+#include <msl_utility>
+#include <memory>
+#include <stdexcept>
+#include <iterator>
+#include <algorithm>
+#include <msl_int_limits>
+
+#ifdef __MWERKS__
+#pragma options align=native
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#if _MSL_FORCE_ENUMS_ALWAYS_INT
+		#pragma enumsalwaysint on
+	#else
+		#pragma enumsalwaysint off
+	#endif
+#endif  // _MSL_FORCE_ENUMS_ALWAYS_INT
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#if _MSL_FORCE_ENABLE_BOOL_SUPPORT
+		#pragma bool on
+	#else
+		#pragma bool off
+	#endif
+#endif  // _MSL_FORCE_ENABLE_BOOL_SUPPORT
+
+#ifdef min
+#undef min
+#endif
+
+#ifdef max
+#undef max
+#endif
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	namespace std {
+#endif
+
+// hh 981203 **** WARNING ****  __pointer_plus_bit is not standard.
+// It is used in the implementation of __tree.  It compacts a bool
+// and a pointer into the space of a pointer.  The pointer must refer
+// to memory with an alignment of 2 or more bytes.
+// Use of this optimization can be turned off in <mslconfig> with the
+// _Inhibit_Optimize_RB_bit flag.
+
+#ifdef __MWERKS__
+#if (__option(structalignment)==3  || __option(structalignment) == 8) && !defined(_Inhibit_Optimize_RB_bit)
+	#define _Inhibit_Optimize_RB_bit
+#endif
+#endif  // __MWERKS__
+
+template <typename Pointer>
+class __pointer_plus_bit
+{
+public:
+	typedef Pointer pointer;
+
+	__pointer_plus_bit(pointer ptr = 0);
+	__pointer_plus_bit& operator = (const __pointer_plus_bit& x);
+	__pointer_plus_bit& operator = (pointer x);
+	operator pointer () const;
+	bool bit() const;
+	void bit(bool b);
+	pointer operator -> () const;
+private:
+	pointer ptr_;
+
+	__pointer_plus_bit(const __pointer_plus_bit&); // not defined
+};
+
+template <typename Pointer>
+inline
+__pointer_plus_bit<Pointer>::__pointer_plus_bit(pointer ptr)
+	: ptr_(ptr)
+{
+}
+
+template <typename Pointer>
+inline
+__pointer_plus_bit<Pointer>&
+__pointer_plus_bit<Pointer>::operator = (const __pointer_plus_bit& x)
+{
+	ptr_ = (pointer)(((size_t)x.ptr_ & ~1) | ((size_t)ptr_ & 1));
+	return *this;
+}
+
+template <typename Pointer>
+inline
+__pointer_plus_bit<Pointer>&
+__pointer_plus_bit<Pointer>::operator = (pointer x)
+{
+	ptr_ = (pointer)((size_t)x | ((size_t)ptr_ & 1));
+	return *this;
+}
+
+template <typename Pointer>
+inline
+__pointer_plus_bit<Pointer>::operator Pointer () const
+{
+	return (pointer)((size_t)ptr_ & ~1);
+}
+
+template <typename Pointer>
+inline
+bool
+__pointer_plus_bit<Pointer>::bit() const
+{
+	return bool((size_t)ptr_ & 1);
+}
+
+template <typename Pointer>
+inline
+void
+__pointer_plus_bit<Pointer>::bit(bool b)
+{
+	if (b)
+		ptr_ = (pointer)((size_t)ptr_ | 1);
+	else
+		ptr_ = (pointer)((size_t)ptr_ & ~1);
+}
+
+template <typename Pointer>
+inline
+Pointer
+__pointer_plus_bit<Pointer>::operator -> () const
+{
+	return (pointer)((size_t)ptr_ & ~1);
+}
+
+enum __tree_color {black, red};
+
+template <class Allocator>
+struct __tree_node_base;
+
+template <class Allocator>
+struct __tree_anchor
+{
+	typedef typename Allocator::rebind<__tree_node_base<Allocator> >::other::pointer pointer;
+
+	pointer left_;
+
+	__tree_anchor(pointer left = 0) : left_(left) {}
+};
+
+#ifndef _Inhibit_Optimize_RB_bit
+
+	template <class Allocator>
+	struct __tree_node_base
+		: public __tree_anchor<Allocator>
+	{
+		typedef __tree_anchor<Allocator> base;
+		typedef typename base::pointer pointer;
+
+		pointer right_;
+		__pointer_plus_bit<pointer> parent_;
+
+		__tree_node_base(pointer left = 0, pointer right = 0, pointer parent = 0) : base(left), right_(right), parent_(parent) {}
+		__tree_color color() const {return __tree_color(parent_.bit());}
+		void set_color(__tree_color c) {parent_.bit(bool(c));}
+	};
+
+#else  // _Inhibit_Optimize_RB_bit
+
+	template <class Allocator>
+	struct __tree_node_base
+		: public __tree_anchor<Allocator>
+	{
+		typedef __tree_anchor<Allocator> base;
+		typedef typename base::pointer pointer;
+
+		pointer right_;
+		pointer parent_;
+		__tree_color color_;
+
+		__tree_node_base(pointer left = 0, pointer right = 0, pointer parent = 0) : base(left), right_(right), parent_(parent) {}
+		__tree_color color() const {return color_;}
+		void set_color(__tree_color c) {color_ = c;}
+	};
+
+#endif  // _Inhibit_Optimize_RB_bit
+
+template <typename Pointer>
+class __red_black_tree
+{
+	typedef Pointer      pointer;
+protected:
+
+	static pointer leftmost(pointer x);
+	static pointer rightmost(pointer x);
+	static void increment(pointer& x);
+	static void decrement(pointer& x);
+	static void balance_insert(pointer x, pointer root);
+	static pointer balance_erase(pointer z, pointer root);
+private:
+	static void rotate_left(pointer x, pointer& root);
+	static void rotate_right(pointer x, pointer& root);
+};
+
+template <typename Pointer>
+inline
+typename __red_black_tree<Pointer>::pointer
+__red_black_tree<Pointer>::leftmost(pointer x)
+{
+	while (x->left_ != 0)
+		x = x->left_;
+	return x;
+}
+
+template <typename Pointer>
+inline
+typename __red_black_tree<Pointer>::pointer
+__red_black_tree<Pointer>::rightmost(pointer x)
+{
+	while (x->right_ != 0)
+		x = x->right_;
+	return x;
+}
+
+template <typename Pointer>
+void
+__red_black_tree<Pointer>::increment(pointer& x)
+{
+	if (x->right_ != 0)
+		x = leftmost(x->right_);
+	else
+	{
+		while (x != x->parent_->left_)
+			x = x->parent_;
+		x = x->parent_;
+	}
+}
+
+template <typename Pointer>
+void
+__red_black_tree<Pointer>::decrement(pointer& x)
+{
+	if (x->left_ != 0)
+		x = rightmost(x->left_);
+	else
+	{
+		while (x == x->parent_->left_)
+			x = x->parent_;
+		x = x->parent_;
+	}
+}
+
+template <typename Pointer>
+void
+__red_black_tree<Pointer>::balance_insert(pointer x, pointer root)
+{
+	x->set_color(red);
+	while (x != root && x->parent_->color() == red)
+	{
+		if (x->parent_ == x->parent_->parent_->left_)
+		{
+			pointer y = x->parent_->parent_->right_;
+			if (y != 0 && y->color() == red)
+			{
+				x->parent_->set_color(black);
+				y->set_color(black);
+				x = x->parent_->parent_;
+				x->set_color(red);
+			}
+			else
+			{
+				if (x == x->parent_->right_)
+				{
+					x = x->parent_;
+					rotate_left(x, root);
+				}
+				x->parent_->set_color(black);
+				x->parent_->parent_->set_color(red);
+				rotate_right(x->parent_->parent_, root);
+			}
+		}
+		else
+		{
+			pointer y = x->parent_->parent_->left_;
+			if (y != 0 && y->color() == red)
+			{
+				x->parent_->set_color(black);
+				y->set_color(black);
+				x = x->parent_->parent_;
+				x->set_color(red);
+			}
+			else
+			{
+				if (x == x->parent_->left_)
+				{
+					x = x->parent_;
+					rotate_right(x, root);
+				}
+				x->parent_->set_color(black);
+				x->parent_->parent_->set_color(red);
+				rotate_left(x->parent_->parent_, root);
+			}
+		}
+	}
+	root->set_color(black);
+}
+
+template <typename Pointer>
+typename __red_black_tree<Pointer>::pointer
+__red_black_tree<Pointer>::balance_erase(pointer z, pointer root)
+{
+	// Remove z from tree
+	pointer result = z;
+	increment(result);
+	pointer y = z;
+	if (z->left_ != 0 && z->right_ != 0)
+		y = result;
+	pointer x = y->left_ != 0 ? y->left_ : y->right_;
+	pointer x_parent = y->parent_;
+	if (x != 0)
+		x->parent_ = x_parent;
+	bool x_is_left_child;
+	if (y == y->parent_->left_)
+	{
+		y->parent_->left_ = x;
+		x_is_left_child = true;
+	}
+	else
+	{
+		y->parent_->right_ = x;
+		x_is_left_child = false;
+	}
+	bool removed_black = y->color() == black;
+	if (y != z)
+	{	// Replace z with y
+		y->parent_ = z->parent_;
+		if (z == y->parent_->left_)
+			y->parent_->left_ = y;
+		else
+			y->parent_->right_ = y;
+		y->left_ = z->left_;
+		if (y->left_ != 0)
+			y->left_->parent_ = y;
+		else
+			x_parent = y;
+		y->right_ = z->right_;
+		if (y->right_ != 0)
+			y->right_->parent_ = y;
+		else
+			x_parent = y;
+		y->set_color(z->color());
+		if (root == z)
+			root = y;
+	}
+	else if (x == 0 && z == root)
+		removed_black = false; // removing last node, don't balance
+	if (removed_black)
+	{	// Balance tree
+		while (x != root && (x == 0 || x->color() == black))
+		{
+			if (x_is_left_child)
+			{
+				pointer w = x_parent->right_;
+				if (w->color() == red)
+				{
+					w->set_color(black);
+					x_parent->set_color(red);
+					rotate_left(x_parent, root);
+					w = x_parent->right_;
+				}
+				if ((w->left_  == 0 || w->left_->color()  == black) &&
+					(w->right_ == 0 || w->right_->color() == black))
+				{
+					w->set_color(red);
+					x = x_parent;
+					x_parent = x->parent_;
+					x_is_left_child = x == x_parent->left_;
+				}
+				else
+				{
+					if (w->right_ == 0 || w->right_->color() == black)
+					{
+						w->left_->set_color(black);
+						w->set_color(red);
+						rotate_right(w, root);
+						w = x_parent->right_;
+					}
+					w->set_color(x_parent->color());
+					x_parent->set_color(black);
+					w->right_->set_color(black);
+					rotate_left(x_parent, root);
+					x = root;
+				}
+			}
+			else
+			{
+				pointer w = x_parent->left_;
+				if (w->color() == red)
+				{
+					w->set_color(black);
+					x_parent->set_color(red);
+					rotate_right(x_parent, root);
+					w = x_parent->left_;
+				}
+				if ((w->left_  == 0 || w->left_->color()  == black) &&
+					(w->right_ == 0 || w->right_->color() == black))
+				{
+					w->set_color(red);
+					x = x_parent;
+					x_parent = x->parent_;
+					x_is_left_child = x == x_parent->left_;
+				}
+				else
+				{
+					if (w->left_ == 0 || w->left_->color() == black)
+					{
+						w->right_->set_color(black);
+						w->set_color(red);
+						rotate_left(w, root);
+						w = x_parent->left_;
+					}
+					w->set_color(x_parent->color());
+					x_parent->set_color(black);
+					w->left_->set_color(black);
+					rotate_right(x_parent, root);
+					x = root;
+				}
+			}
+		}
+		if (x != 0)
+			x->set_color(black);
+	}
+	return result;
+}
+
+template <typename Pointer>
+void
+__red_black_tree<Pointer>::rotate_left(pointer x, pointer& root)
+{
+	pointer y = x->right_;
+	if (root == x)
+		root = y;
+	x->right_ = y->left_;
+	if (y->left_ != 0)
+		y->left_->parent_ = x;
+	y->parent_ = x->parent_;
+	if (x == x->parent_->left_)
+		x->parent_->left_ = y;
+	else
+		x->parent_->right_ = y;
+	y->left_ = x;
+	x->parent_ = y;
+}
+
+template <typename Pointer>
+void
+__red_black_tree<Pointer>::rotate_right(pointer x, pointer& root)
+{
+	pointer y = x->left_;
+	if (root == x)
+		root = y;
+	x->left_ = y->right_;
+	if (y->right_ != 0)
+		y->right_->parent_ = x;
+	y->parent_ = x->parent_;
+	if (x == x->parent_->left_)
+		x->parent_->left_ = y;
+	else
+		x->parent_->right_ = y;
+	y->right_ = x;
+	x->parent_ = y;
+}
+
+template <class T, class Compare, class Allocator>
+class __tree_deleter
+	: public __red_black_tree<typename Allocator::rebind<__tree_node_base<typename Allocator::rebind<void*>::other> >::other::pointer>
+{
+	typedef __red_black_tree<typename Allocator::rebind<__tree_node_base<typename Allocator::rebind<void*>::other> >::other::pointer> base;
+public:
+	//  types:
+	typedef T                                             value_type;
+	typedef typename Allocator::rebind<value_type>::other allocator_type;
+
+	typedef Compare                                    value_compare;
+	typedef typename allocator_type::reference         reference;
+	typedef typename allocator_type::const_reference   const_reference;
+	typedef typename allocator_type::size_type         size_type;
+	typedef typename allocator_type::difference_type   difference_type;
+	typedef typename allocator_type::pointer           pointer;
+	typedef typename allocator_type::const_pointer     const_pointer;
+
+	typedef          __tree_anchor<allocator_type>     anchor;
+	typedef          __tree_node_base<typename allocator_type::rebind<void*>::other>  node_base;
+
+	struct node
+		: public node_base
+	{
+		value_type data_;
+	};
+
+	typedef typename allocator_type::rebind<node>::other node_allocator_type;
+	typedef typename node_allocator_type::pointer        node_pointer;
+
+	typedef typename allocator_type::rebind<node_base>::other node_base_allocator_type;
+	typedef typename node_base_allocator_type::pointer        node_base_pointer;
+
+	template <bool is_const>
+	class __generic_iterator
+	{
+	public:
+		typedef typename __tree_deleter::value_type       value_type;
+		typedef typename __tree_deleter::difference_type  difference_type;
+		typedef typename Metrowerks::select<is_const, typename __tree_deleter::const_pointer,
+		                                              typename __tree_deleter::pointer>::type pointer;
+		typedef typename Metrowerks::select<is_const, typename __tree_deleter::const_reference,
+		                                              typename __tree_deleter::reference>::type reference;
+		typedef bidirectional_iterator_tag        iterator_category;
+
+		__generic_iterator() {}
+		__generic_iterator(const __generic_iterator<false>& i) : ptr_(i.ptr_) {}
+		reference operator * () const {return ptr_->data_;}
+		pointer operator -> () const  {return &ptr_->data_;}
+		__generic_iterator& operator ++ () {__tree_deleter::base::increment((node_base_pointer&)ptr_); return *this;}
+		__generic_iterator operator ++ (int) {__generic_iterator tmp(*this); ++(*this); return tmp;}
+		__generic_iterator& operator -- () {__tree_deleter::base::decrement((node_base_pointer&)ptr_); return *this;}
+		__generic_iterator operator -- (int) {__generic_iterator tmp(*this); --(*this); return tmp;}
+		friend bool operator ==(const __generic_iterator& x, const __generic_iterator& y) {return x.ptr_ == y.ptr_;}
+		friend bool operator !=(const __generic_iterator& x, const __generic_iterator& y) {return x.ptr_ != y.ptr_;}
+#ifndef __GNUC__
+	private:
+#endif
+
+		node_pointer ptr_;
+
+		explicit __generic_iterator(node_pointer n) : ptr_(n) {}
+
+#ifndef __GNUC__
+		friend class __generic_iterator<true>;
+		friend class __tree_deleter;
+#endif  // __GNUC__
+	};
+
+	friend class __generic_iterator<false>;
+	friend class __generic_iterator<true>;
+
+	typedef __generic_iterator<false> iterator;
+	typedef __generic_iterator<true>  const_iterator;
+
+	Metrowerks::compressed_pair<allocator_type, size_type>   alloc_;
+	Metrowerks::compressed_pair<node_allocator_type, anchor> node_alloc_;
+	Metrowerks::compressed_pair<value_compare, node_pointer> comp_;
+
+	      allocator_type& alloc()        {return alloc_.first();}
+	const allocator_type& alloc() const  {return alloc_.first();}
+	      size_type&      sz()           {return alloc_.second();}
+	const size_type&      sz() const     {return alloc_.second();}
+
+	      node_allocator_type& node_alloc()       {return node_alloc_.first();}
+	const node_allocator_type& node_alloc() const {return node_alloc_.first();}
+	      anchor&              tail()             {return node_alloc_.second();}
+	const anchor&              tail()       const {return node_alloc_.second();}
+
+	      value_compare& comp()        {return comp_.first();}
+	const value_compare& comp() const  {return comp_.first();}
+	node_pointer&        front()       {return comp_.second();}
+	node_pointer         front() const {return comp_.second();}
+
+	node_pointer  root() const {return (node_pointer )tail().left_;}
+	node_pointer& root()       {return (node_pointer&)tail().left_;}
+
+	__tree_deleter();
+	__tree_deleter(const value_compare& comp);
+	__tree_deleter(const value_compare& comp, const allocator_type& a);
+private:
+	__tree_deleter(const __tree_deleter& x);  // not defined
+public:
+	__tree_deleter& operator = (const __tree_deleter& x);
+	~__tree_deleter();
+
+#ifdef _MSL_MOVE
+	__tree_deleter(__tree_deleter&& x);
+#endif  // _MSL_MOVE
+
+	value_compare  value_comp() const    {return comp();}
+
+	size_type     size() const     {return sz();}
+	size_type     max_size() const {return numeric_limits<size_type>::max();}
+	bool          empty() const    {return sz() == 0;}
+
+	iterator       begin()       {return       iterator(front());}
+	const_iterator begin() const {return const_iterator(front());}
+	iterator       end()         {return       iterator((node_pointer)&tail());}
+	const_iterator end() const   {return const_iterator((node_pointer)&tail());}
+
+	template <class Key, class V> value_type& find_or_insert(const Key& key);
+#ifdef _MSL_MOVE
+	template <class Key, class V> value_type& find_or_insert(Key&& key);
+#endif
+#ifdef _MSL_MOVE
+	template <class V> pair<iterator,bool> insert_one(V&& x);
+#else
+	pair<iterator,bool> insert_one(const value_type& x);
+#endif
+	iterator            insert_multi(const value_type& x);
+#ifdef _MSL_MOVE
+	template <class V> iterator insert_multi(V&& x);
+#endif
+	iterator            insert_one(const_iterator position, const value_type& x);
+#ifdef _MSL_MOVE
+	template <class V>
+	typename Metrowerks::restrict_to
+	<
+		Metrowerks::is_convertible<V, value_type>::value,
+		iterator
+	>::type
+	insert_one(const_iterator position, V&& x);
+#endif
+	iterator            insert_multi(const_iterator position, const value_type& x);
+#ifdef _MSL_MOVE
+	template <class V>
+	typename Metrowerks::restrict_to
+	<
+		Metrowerks::is_convertible<V, value_type>::value,
+		iterator
+	>::type
+	insert_multi(const_iterator position, V&& x);
+#endif
+	template <class InputIterator>
+		void            insert_one(InputIterator first, InputIterator last);
+	template <class InputIterator>
+		void            insert_multi(InputIterator first, InputIterator last);
+
+	iterator erase(const_iterator position);
+	iterator erase(const_iterator first, const_iterator last);
+	template <class Key> size_type erase_one  (const Key& x);
+	template <class Key> size_type erase_multi(const Key& x);
+
+	void clear();
+
+	template <class Key> iterator       find(const Key& x) const;
+	template <class Key> size_type count_one(const Key& x) const;
+	template <class Key> size_type count_multi(const Key& x) const;
+
+	template <class Key> iterator                 lower_bound(const Key& x) const;
+	template <class Key> iterator                 upper_bound(const Key& x) const;
+	template <class Key> pair<iterator, iterator> equal_range(const Key& x) const;
+
+	void swap(__tree_deleter& x);
+
+	void copy(const __tree_deleter& x);
+	bool invariants() const;
+private:
+	void copy_children(node_pointer x, node_pointer y, bool left);
+
+	template <class Key> node_pointer find_leaf(const Key& x, node_pointer& prev, bool& leftchild, bool& is_leftmost);
+	template <class Key> node_pointer find_leaf_low(const Key& x, bool& leftchild, bool& is_leftmost);
+#ifdef _MSL_MOVE
+	template <class V> node_pointer insert_node_at(node_pointer p, bool leftchild, bool is_leftmost, V&& x);
+#else
+	node_pointer insert_node_at(node_pointer p, bool leftchild, bool is_leftmost, const value_type& x);
+#endif
+
+	void destroy(node_pointer p);
+
+	template <class Key> node_pointer do_lower_bound(const Key& x, node_pointer start, node_pointer dresult) const;
+	template <class Key> node_pointer do_upper_bound(const Key& x, node_pointer start, node_pointer dresult) const;
+
+	int count_black(node_base_pointer x) const;
+};
+
+template <class T, class Compare, class Allocator>
+inline
+__tree_deleter<T, Compare, Allocator>::__tree_deleter()
+	: alloc_(size_type(0))
+{
+	front() = (node_pointer)&tail();
+}
+
+template <class T, class Compare, class Allocator>
+inline
+__tree_deleter<T, Compare, Allocator>::__tree_deleter(const value_compare& comp)
+	: alloc_(size_type(0)),
+	  comp_(comp)
+{
+	front() = (node_pointer)&tail();
+}
+
+template <class T, class Compare, class Allocator>
+inline
+__tree_deleter<T, Compare, Allocator>::__tree_deleter(const value_compare& comp, const allocator_type& a)
+	: alloc_(a, size_type(0)),
+	  node_alloc_(a),
+	  comp_(comp)
+{
+	front() = (node_pointer)&tail();
+}
+
+template <class T, class Compare, class Allocator>
+__tree_deleter<T, Compare, Allocator>&
+__tree_deleter<T, Compare, Allocator>::operator = (const __tree_deleter& x)
+{
+	if (this != &x)
+	{
+		clear();
+		copy(x);
+	}
+	return *this;
+}
+
+template <class T, class Compare, class Allocator>
+__tree_deleter<T, Compare, Allocator>::~__tree_deleter()
+{
+	if (root() != 0)
+		destroy(root());
+}
+
+#ifdef _MSL_MOVE
+
+template <class T, class Compare, class Allocator>
+__tree_deleter<T, Compare, Allocator>::__tree_deleter(__tree_deleter&& x)
+	: alloc_(_STD::move(x.alloc_)),
+	  node_alloc_(_STD::move(x.node_alloc_)),
+	  comp_(_STD::move(x.comp_))
+{
+	if (root() != 0)
+		root()->parent_ = (node_base_pointer)&tail();
+	else
+		front() = (node_pointer)&tail();
+	x.sz() = 0;
+	x.root() = 0;
+	x.front() = (node_pointer)&x.tail();
+}
+
+#endif  // _MSL_MOVE
+
+template <class T, class Compare, class Allocator>
+void
+__tree_deleter<T, Compare, Allocator>::copy_children(node_pointer x, node_pointer y, bool left)
+{
+	Metrowerks::alloc_ptr<node, node_allocator_type&> ap(node_alloc().allocate(1), node_alloc());
+	ap->left_ = ap->right_ = 0;
+	ap->parent_ = x;
+	if (left)
+	{
+		alloc().construct(&ap->data_, ((node_pointer)(y->left_))->data_);
+		front() = ap.get();
+		x->left_ = ap.release();
+		x = (node_pointer)x->left_;
+		y = (node_pointer)y->left_;
+	}
+	else
+	{
+		alloc().construct(&ap->data_, ((node_pointer)(y->right_))->data_);
+		x->right_ = ap.release();
+		x = (node_pointer)x->right_;
+		y = (node_pointer)y->right_;
+	}
+	x->set_color(y->color());
+	++sz();
+	if (y->right_)
+		copy_children(x, y, false);
+	if (y->left_)
+		copy_children(x, y, true);
+}
+
+template <class T, class Compare, class Allocator>
+void
+__tree_deleter<T, Compare, Allocator>::copy(const __tree_deleter& x)
+{
+	if (x.root() != 0)
+	{
+		Metrowerks::alloc_ptr<node, node_allocator_type&> ap(node_alloc().allocate(1), node_alloc());
+		alloc().construct(&ap->data_, x.root()->data_);
+		__tree_deleter tmp(comp(), alloc());
+		ap->left_ = ap->right_ = 0;
+		ap->parent_ = (node_base_pointer)&tmp.tail();
+		ap->set_color(x.root()->color());
+		tmp.root() = ap.release();
+		tmp.sz() = 1;
+		tmp.front() = (node_pointer)tmp.root();
+		if (x.root()->right_)
+			tmp.copy_children(tmp.root(), x.root(), false);
+		if (x.root()->left_)
+			tmp.copy_children(tmp.root(), x.root(), true);
+		swap(tmp);
+	}
+}
+
+template <class T, class Compare, class Allocator>
+template <class Key>
+typename __tree_deleter<T, Compare, Allocator>::node_pointer
+__tree_deleter<T, Compare, Allocator>::find_leaf(const Key& x, node_pointer& prev, bool& leftchild, bool& is_leftmost)
+{
+	prev = 0;
+	node_pointer leaf = (node_pointer)&tail();
+	node_pointer n = root();
+	leftchild = true;
+	is_leftmost = true;
+	while (n != 0)
+	{
+		leaf = n;
+		if (comp()(x, n->data_))
+		{
+			n = (node_pointer)n->left_;
+			leftchild = true;
+		}
+		else
+		{
+			prev = leaf;
+			n = (node_pointer)n->right_;
+			leftchild = false;
+			is_leftmost = false;
+		}
+	}
+	return leaf;
+}
+
+template <class T, class Compare, class Allocator>
+template <class Key>
+typename __tree_deleter<T, Compare, Allocator>::node_pointer
+__tree_deleter<T, Compare, Allocator>::find_leaf_low(const Key& x, bool& leftchild, bool& is_leftmost)
+{
+	node_pointer leaf = (node_pointer)&tail();
+	node_pointer n = root();
+	leftchild = true;
+	is_leftmost = true;
+	while (n != 0)
+	{
+		leaf = n;
+		if (comp()(n->data_, x))
+		{
+			n = (node_pointer)n->right_;
+			leftchild = false;
+			is_leftmost = false;
+		}
+		else
+		{
+			n = (node_pointer)n->left_;
+			leftchild = true;
+		}
+	}
+	return leaf;
+}
+
+template <class T, class Compare, class Allocator>
+#ifdef _MSL_MOVE
+template <class V>
+#endif
+typename __tree_deleter<T, Compare, Allocator>::node_pointer
+#ifdef _MSL_MOVE
+__tree_deleter<T, Compare, Allocator>::insert_node_at(node_pointer p, bool leftchild, bool is_leftmost, V&& x)
+#else  // _MSL_MOVE
+__tree_deleter<T, Compare, Allocator>::insert_node_at(node_pointer p, bool leftchild, bool is_leftmost, const value_type& x)
+#endif  // _MSL_MOVE
+{
+	if (size() == max_size())
+		_MSL_ERROR(length_error, "tree::insert length error");
+	Metrowerks::alloc_ptr<node, node_allocator_type&> ap(node_alloc().allocate(1), node_alloc());
+#ifdef _MSL_MOVE
+	alloc().construct(&ap->data_, _STD::forward<V>(x));
+#else
+	alloc().construct(&ap->data_, x);
+#endif
+	node_pointer n = ap.release();
+	n->left_ = n->right_ = 0;
+#ifndef _Inhibit_Optimize_RB_bit
+	::new(&n->parent_) __pointer_plus_bit<node_pointer>(p);
+#else
+	n->parent_ = p;
+#endif
+	if (leftchild)
+		p->left_ = n;
+	else
+		p->right_ = n;
+	++sz();
+	base::balance_insert(n, root());
+	if (is_leftmost)
+		front() = n;
+	return n;
+}
+
+template <class T, class Compare, class Allocator>
+template <class Key, class V>
+typename __tree_deleter<T, Compare, Allocator>::value_type&
+__tree_deleter<T, Compare, Allocator>::find_or_insert(const Key& key)
+{
+	node_pointer prev;
+	bool leftchild;
+	bool is_leftmost;
+	node_pointer p = find_leaf(key, prev, leftchild, is_leftmost);
+	if (prev == 0 || comp()(prev->data_, key))
+		return insert_node_at(p, leftchild, is_leftmost, value_type(key, V()))->data_;
+	return prev->data_;
+}
+
+#ifdef _MSL_MOVE
+
+template <class T, class Compare, class Allocator>
+template <class Key, class V>
+typename __tree_deleter<T, Compare, Allocator>::value_type&
+__tree_deleter<T, Compare, Allocator>::find_or_insert(Key&& key)
+{
+	typedef _STD::pair<Key, V> pair;
+	node_pointer prev;
+	bool leftchild;
+	bool is_leftmost;
+	node_pointer p = find_leaf(key, prev, leftchild, is_leftmost);
+	if (prev == 0 || comp()(prev->data_, key))
+		return insert_node_at(p, leftchild, is_leftmost, pair(_STD::forward<Key>(key), V()))->data_;
+	return prev->data_;
+}
+
+#endif  // _MSL_MOVE
+
+template <class T, class Compare, class Allocator>
+#ifdef _MSL_MOVE
+template <class V>
+#endif
+pair<typename __tree_deleter<T, Compare, Allocator>::iterator, bool>
+#ifdef _MSL_MOVE
+__tree_deleter<T, Compare, Allocator>::insert_one(V&& x)
+#else
+__tree_deleter<T, Compare, Allocator>::insert_one(const value_type& x)
+#endif
+{
+	node_pointer prev;
+	bool leftchild;
+	bool is_leftmost;
+	node_pointer p = find_leaf(x, prev, leftchild, is_leftmost);
+	if (prev == 0 || comp()(prev->data_, x))
+	{
+#ifdef _MSL_MOVE
+		p = insert_node_at(p, leftchild, is_leftmost, _STD::forward<V>(x));
+#else
+		p = insert_node_at(p, leftchild, is_leftmost, x);
+#endif
+		return pair<iterator, bool>(iterator(p), true);
+	}
+	return pair<iterator, bool>(iterator(prev), false);
+}
+
+template <class T, class Compare, class Allocator>
+typename __tree_deleter<T, Compare, Allocator>::iterator
+__tree_deleter<T, Compare, Allocator>::insert_multi(const value_type& x)
+{
+	node_pointer prev;
+	bool leftchild;
+	bool is_leftmost;
+	node_pointer p = find_leaf(x, prev, leftchild, is_leftmost);
+	return iterator(insert_node_at(p, leftchild, is_leftmost, x));
+}
+
+#ifdef _MSL_MOVE
+
+template <class T, class Compare, class Allocator>
+template <class V>
+typename __tree_deleter<T, Compare, Allocator>::iterator
+__tree_deleter<T, Compare, Allocator>::insert_multi(V&& x)
+{
+	node_pointer prev;
+	bool leftchild;
+	bool is_leftmost;
+	node_pointer p = find_leaf(x, prev, leftchild, is_leftmost);
+	return iterator(insert_node_at(p, leftchild, is_leftmost, _STD::move(x)));
+}
+
+#endif  // _MSL_MOVE
+
+template <class T, class Compare, class Allocator>
+typename __tree_deleter<T, Compare, Allocator>::iterator
+__tree_deleter<T, Compare, Allocator>::insert_one(const_iterator position, const value_type& x)
+{
+	if (position == end() || comp()(x, *position))
+	{
+		const_iterator before = position;
+		if (before == begin() || comp()(*--before, x))
+		{
+			node_pointer p1 = before.ptr_;
+			node_pointer p2 = position.ptr_;
+			if (p2->left_ == 0)
+				return iterator(insert_node_at(p2, true, p2 == front(), x));
+			return iterator(insert_node_at(p1, false, false, x));
+		}
+	}
+	else if (comp()(*position, x))
+	{
+		const_iterator after = position;
+		++after;
+		if (after == end() || comp()(x, *after))
+		{
+			node_pointer p1 = position.ptr_;
+			node_pointer p2 = after.ptr_;
+			if (p1->right_ == 0)
+				return iterator(insert_node_at(p1, false, false, x));
+			return iterator(insert_node_at(p2, true, false, x));
+		}
+	}
+	else // x == *position
+		return iterator(position.ptr_);
+	return insert_one(x).first;
+}
+
+#ifdef _MSL_MOVE
+
+template <class T, class Compare, class Allocator>
+template <class V>
+typename Metrowerks::restrict_to
+<
+	Metrowerks::is_convertible<V, typename __tree_deleter<T, Compare, Allocator>::value_type>::value,
+	typename __tree_deleter<T, Compare, Allocator>::iterator
+>::type
+__tree_deleter<T, Compare, Allocator>::insert_one(const_iterator position, V&& x)
+{
+	if (position == end() || comp()(x, *position))
+	{
+		const_iterator before = position;
+		if (before == begin() || comp()(*--before, x))
+		{
+			node_pointer p1 = before.ptr_;
+			node_pointer p2 = position.ptr_;
+			if (p2->left_ == 0)
+				return iterator(insert_node_at(p2, true, p2 == front(), _STD::move(x)));
+			return iterator(insert_node_at(p1, false, false, _STD::move(x)));
+		}
+	}
+	else if (comp()(*position, x))
+	{
+		const_iterator after = position;
+		++after;
+		if (after == end() || comp()(x, *after))
+		{
+			node_pointer p1 = position.ptr_;
+			node_pointer p2 = after.ptr_;
+			if (p1->right_ == 0)
+				return iterator(insert_node_at(p1, false, false, _STD::move(x)));
+			return iterator(insert_node_at(p2, true, false, _STD::move(x)));
+		}
+	}
+	else // x == *position
+		return iterator(position.ptr_);
+	return insert_one(_STD::move(x)).first;
+}
+
+#endif  // _MSL_MOVE
+
+template <class T, class Compare, class Allocator>
+typename __tree_deleter<T, Compare, Allocator>::iterator
+__tree_deleter<T, Compare, Allocator>::insert_multi(const_iterator position, const value_type& x)
+{
+	node_pointer p;
+	bool leftchild = false;
+	bool is_leftmost = false;
+	if (position == end() || !comp()(*position, x))
+	{
+		const_iterator before = position;
+		is_leftmost = position == begin();
+		if (is_leftmost || !comp()(x, *--before))
+		{
+			if (position.ptr_->left_ == 0)
+			{
+				p = position.ptr_;
+				leftchild = true;
+			}
+			else
+				p = before.ptr_;
+		}
+		else
+		{
+			node_pointer prev;
+			p = find_leaf(x, prev, leftchild, is_leftmost);
+		}
+	}
+	else // position != end && x > *position && !empty()
+	{
+		const_iterator after = position;
+		++after;
+		if (after == end() || !comp()(*after, x))
+		{
+			if (after.ptr_->left_ == 0)
+			{
+				p = after.ptr_;
+				leftchild = true;
+			}
+			else
+				p = position.ptr_;
+		}
+		else
+			p = find_leaf_low(x, leftchild, is_leftmost);
+	}
+	return iterator(insert_node_at(p, leftchild, is_leftmost, x));
+}
+
+#ifdef _MSL_MOVE
+
+template <class T, class Compare, class Allocator>
+template <class V>
+typename Metrowerks::restrict_to
+<
+	Metrowerks::is_convertible<V, typename __tree_deleter<T, Compare, Allocator>::value_type>::value,
+	typename __tree_deleter<T, Compare, Allocator>::iterator
+>::type
+__tree_deleter<T, Compare, Allocator>::insert_multi(const_iterator position, V&& x)
+{
+	node_pointer p;
+	bool leftchild = false;
+	bool is_leftmost = false;
+	if (position == end() || !comp()(*position, x))
+	{
+		const_iterator before = position;
+		is_leftmost = position == begin();
+		if (is_leftmost || !comp()(x, *--before))
+		{
+			if (position.ptr_->left_ == 0)
+			{
+				p = position.ptr_;
+				leftchild = true;
+			}
+			else
+				p = before.ptr_;
+		}
+		else
+		{
+			node_pointer prev;
+			p = find_leaf(x, prev, leftchild, is_leftmost);
+		}
+	}
+	else // position != end && x > *position && !empty()
+	{
+		const_iterator after = position;
+		++after;
+		if (after == end() || !comp()(*after, x))
+		{
+			if (after.ptr_->left_ == 0)
+			{
+				p = after.ptr_;
+				leftchild = true;
+			}
+			else
+				p = position.ptr_;
+		}
+		else
+			p = find_leaf_low(x, leftchild, is_leftmost);
+	}
+	return iterator(insert_node_at(p, leftchild, is_leftmost, _STD::move(x)));
+}
+
+#endif  // _MSL_MOVE
+
+template <class T, class Compare, class Allocator>
+template <class InputIterator>
+void
+__tree_deleter<T, Compare, Allocator>::insert_one(InputIterator first, InputIterator last)
+{
+	for (iterator e = end(); first != last; ++first)
+		insert_one(e, *first);
+}
+
+template <class T, class Compare, class Allocator>
+template <class InputIterator>
+void
+__tree_deleter<T, Compare, Allocator>::insert_multi(InputIterator first, InputIterator last)
+{
+	for (iterator e = end(); first != last; ++first)
+		insert_multi(e, *first);
+}
+
+template <class T, class Compare, class Allocator>
+typename __tree_deleter<T, Compare, Allocator>::iterator
+__tree_deleter<T, Compare, Allocator>::erase(const_iterator position)
+{
+	node_pointer z = position.ptr_;
+	if (position == begin())
+		front() = (++position).ptr_;
+	iterator result((node_pointer)base::balance_erase(z, root()));
+	alloc().destroy(&z->data_);
+	node_alloc().deallocate(z, 1);
+	--sz();
+	return result;
+}
+
+template <class T, class Compare, class Allocator>
+typename __tree_deleter<T, Compare, Allocator>::iterator
+__tree_deleter<T, Compare, Allocator>::erase(const_iterator first, const_iterator last)
+{
+	while (first != last)
+		erase(first++);
+	return iterator(last.ptr_);
+}
+
+template <class T, class Compare, class Allocator>
+template <class Key>
+typename __tree_deleter<T, Compare, Allocator>::size_type
+__tree_deleter<T, Compare, Allocator>::erase_one(const Key& x)
+{
+	iterator i = find(x);
+	if (i == end())
+		return 0;
+	erase(i);
+	return 1;
+}
+
+template <class T, class Compare, class Allocator>
+template <class Key>
+typename __tree_deleter<T, Compare, Allocator>::size_type
+__tree_deleter<T, Compare, Allocator>::erase_multi(const Key& x)
+{
+	pair<iterator, iterator> i = equal_range(x);
+	size_type result = (size_type)_STD::distance(i.first, i.second);
+	erase(i.first, i.second);
+	return result;
+}
+
+template <class T, class Compare, class Allocator>
+void
+__tree_deleter<T, Compare, Allocator>::clear()
+{
+	if (root() != 0)
+	{
+		destroy(root());
+		sz() = 0;
+		root() = 0;
+		front() = (node_pointer)&tail();
+	}
+}
+
+template <class T, class Compare, class Allocator>
+void
+__tree_deleter<T, Compare, Allocator>::destroy(node_pointer p)
+{
+	if (p->left_ != 0)
+		destroy((node_pointer)(p->left_));
+	if (p->right_ != 0)
+		destroy((node_pointer)(p->right_));
+	alloc().destroy(&p->data_);
+	node_alloc().deallocate(p, 1);
+}
+
+template <class T, class Compare, class Allocator>
+template <class Key>
+typename __tree_deleter<T, Compare, Allocator>::iterator
+__tree_deleter<T, Compare, Allocator>::find(const Key& x) const
+{
+	node_pointer j = do_lower_bound(x, root(), (node_pointer)&tail());
+	if (j == (node_pointer)&tail() || comp()(x, j->data_))
+		return iterator((node_pointer)&tail());
+	return iterator(j);
+}
+
+template <class T, class Compare, class Allocator>
+template <class Key>
+inline
+typename __tree_deleter<T, Compare, Allocator>::size_type
+__tree_deleter<T, Compare, Allocator>::count_one(const Key& x) const
+{
+	return size_type(!(find(x) == end()));
+}
+
+template <class T, class Compare, class Allocator>
+template <class Key>
+inline
+typename __tree_deleter<T, Compare, Allocator>::size_type
+__tree_deleter<T, Compare, Allocator>::count_multi(const Key& x) const
+{
+	pair<const_iterator, const_iterator> i = equal_range(x);
+	return (size_type)_STD::distance(i.first, i.second);
+}
+
+template <class T, class Compare, class Allocator>
+template <class Key>
+inline
+typename __tree_deleter<T, Compare, Allocator>::iterator
+__tree_deleter<T, Compare, Allocator>::lower_bound(const Key& x) const
+{
+	return iterator(do_lower_bound(x, root(), (node_pointer)&tail()));
+}
+
+template <class T, class Compare, class Allocator>
+template <class Key>
+inline
+typename __tree_deleter<T, Compare, Allocator>::iterator
+__tree_deleter<T, Compare, Allocator>::upper_bound(const Key& x) const
+{
+	return iterator(do_upper_bound(x, root(), (node_pointer)&tail()));
+}
+
+template <class T, class Compare, class Allocator>
+template <class Key>
+pair<typename __tree_deleter<T, Compare, Allocator>::iterator,
+     typename __tree_deleter<T, Compare, Allocator>::iterator>
+__tree_deleter<T, Compare, Allocator>::equal_range(const Key& x) const
+{
+	node_pointer i_low = root();
+	node_pointer j_low = (node_pointer)&tail();
+	node_pointer i_up = i_low;
+	node_pointer j_up = j_low;
+	while (i_up != 0)
+	{
+		if (comp()(x, i_up->data_))
+		{
+			j_low = j_up = i_up;
+			i_low = i_up = (node_pointer)i_up->left_;
+		}
+		else if (comp()(i_up->data_, x))
+		{
+			i_low = i_up = (node_pointer)i_up->right_;
+		}
+		else
+		{
+			j_low = i_low;
+			i_low = (node_pointer)j_low->left_;
+			i_up  = (node_pointer)j_low->right_;
+			return pair<iterator, iterator>(iterator(do_lower_bound(x, i_low, j_low)),
+			                                iterator(do_upper_bound(x, i_up,  j_up)));
+		}
+	}
+	iterator j(j_up);
+	return pair<iterator, iterator>(j, j);
+}
+
+template <class T, class Compare, class Allocator>
+template <class Key>
+//inline
+typename __tree_deleter<T, Compare, Allocator>::node_pointer
+__tree_deleter<T, Compare, Allocator>::do_lower_bound(const Key& x, node_pointer start, node_pointer dresult) const
+{
+	while (start != 0)
+	{
+		if (!comp()(start->data_, x))
+		{
+			dresult = start;
+			start = (node_pointer)start->left_;
+		}
+		else
+			start = (node_pointer)start->right_;
+	}
+	return dresult;
+}
+
+template <class T, class Compare, class Allocator>
+template <class Key>
+//inline
+typename __tree_deleter<T, Compare, Allocator>::node_pointer
+__tree_deleter<T, Compare, Allocator>::do_upper_bound(const Key& x, node_pointer start, node_pointer dresult) const
+{
+	while (start != 0)
+	{
+		if (comp()(x, start->data_))
+		{
+			dresult = start;
+			start = (node_pointer)start->left_;
+		}
+		else
+			start = (node_pointer)start->right_;
+	}
+	return dresult;
+}
+
+template <class T, class Compare, class Allocator>
+void
+__tree_deleter<T, Compare, Allocator>::swap(__tree_deleter& x)
+{
+	if (this != &x)
+	{
+		Metrowerks::swap(alloc_, x.alloc_);
+		Metrowerks::swap(node_alloc_, x.node_alloc_);
+		Metrowerks::swap(comp_, x.comp_);
+		if (root() != 0)
+			root()->parent_ = (node_base_pointer)&tail();
+		else
+			front() = (node_pointer)&tail();
+		if (x.root() != 0)
+			x.root()->parent_ = (node_base_pointer)&x.tail();
+		else
+			x.front() = (node_pointer)&x.tail();
+	}
+}
+
+template <class T, class Compare, class Allocator>
+bool
+__tree_deleter<T, Compare, Allocator>::invariants() const
+{
+	if (sz() != static_cast<size_type>(distance(begin(), end())))
+		return false;
+#ifndef _Inhibit_Optimize_RB_bit
+	if ((size_t)&tail() & 1)
+		return false;
+#endif  // _Inhibit_Optimize_RB_bit
+	if (sz() == 0)
+	{
+		if (root() != 0)
+			return false;
+		if (front() != (node_pointer)&tail())
+			return false;
+	}
+	else
+	{
+		if (root() == 0)
+			return false;
+		if (root()->color() != black)
+			return false;
+		if (root()->parent_ != (node_base_pointer)&tail())
+			return false;
+		if (front() != (node_pointer)base::leftmost(root()))
+			return false;
+		if (count_black(root()) < 0)
+			return false;
+	}
+	return true;
+}
+
+template <class T, class Compare, class Allocator>
+int
+__tree_deleter<T, Compare, Allocator>::count_black(node_base_pointer x) const
+{
+	int cleft  = x->left_  == 0 ? 1 : count_black(x->left_);
+	if (cleft < 0)
+		return -1;
+	int cright = x->right_ == 0 ? 1 : count_black(x->right_);
+	if (cright < 0)
+		return -1;
+	if (cleft != cright)
+		return -1;
+	if (x->color() == black)
+		++cleft;
+	return cleft;
+}
+
+// __tree_constructor - untransformed
+
+template <class T, class Compare, class Allocator>
+class __tree_constructor
+	: public __tree_deleter<T, Compare, Allocator>
+{
+	typedef __tree_deleter<T, Compare, Allocator> base;
+public:
+	typedef typename base::allocator_type    allocator_type;
+	typedef typename base::value_compare     value_compare;
+
+	__tree_constructor() {}
+	explicit __tree_constructor(const value_compare& comp) : base(comp) {}
+	__tree_constructor(const value_compare& comp, const allocator_type& a) : base(comp, a) {}
+	__tree_constructor(const __tree_constructor& x) : base(x.comp(), x.alloc()) {base::copy(x);}
+
+#ifdef _MSL_MOVE
+	__tree_constructor(__tree_constructor&& x) : base(_STD::move(x)) {}
+#endif  // _MSL_MOVE
+};
+
+#if !defined(_Inhibit_Container_Optimization) && !defined(__GNUC__)
+
+// __tree_constructor - transformed
+
+template <class T, class Allocator>
+class __tree_constructor<T*, less<T*>, Allocator>
+	: public __tree_deleter<const void*, less<const void*>, typename Allocator::rebind<const void*>::other>
+{
+	typedef const void* base_type;
+	typedef __tree_deleter<base_type, less<base_type>, typename Allocator::rebind<base_type>::other> base;
+public:
+	// types:
+	typedef T*                                    value_type;
+	typedef typename Allocator::rebind<T*>::other allocator_type;
+
+	typedef less<T*>                                   value_compare;
+	typedef typename allocator_type::reference         reference;
+	typedef typename allocator_type::const_reference   const_reference;
+	typedef typename allocator_type::size_type         size_type;
+	typedef typename allocator_type::difference_type   difference_type;
+	typedef typename allocator_type::pointer           pointer;
+	typedef typename allocator_type::const_pointer     const_pointer;
+
+	template <bool is_const>
+	class __generic_iterator
+	{
+		typedef typename Metrowerks::select<is_const, typename base::const_iterator,
+		                                              typename base::iterator>::type base_iterator;
+	public:
+		typedef typename __tree_constructor::value_type       value_type;
+		typedef typename __tree_constructor::difference_type  difference_type;
+		typedef typename Metrowerks::select<is_const, typename __tree_constructor::const_pointer,
+		                                              typename __tree_constructor::pointer>::type pointer;
+		typedef typename Metrowerks::select<is_const, typename __tree_constructor::const_reference,
+		                                              typename __tree_constructor::reference>::type reference;
+		typedef bidirectional_iterator_tag        iterator_category;
+
+		__generic_iterator() {}
+		__generic_iterator(const __generic_iterator<false>& i) : i_(i.i_) {}
+		reference operator * () const {return reference(*i_);}
+		pointer operator -> () const  {return pointer(&*i_);}
+		__generic_iterator& operator ++ () {++i_; return *this;}
+		__generic_iterator operator ++ (int) {__generic_iterator tmp(*this); ++(*this); return tmp;}
+		__generic_iterator& operator -- () {--i_; return *this;}
+		__generic_iterator operator -- (int) {__generic_iterator tmp(*this); --(*this); return tmp;}
+		friend bool operator ==(const __generic_iterator& x, const __generic_iterator& y) {return x.i_ == y.i_;}
+		friend bool operator !=(const __generic_iterator& x, const __generic_iterator& y) {return x.i_ != y.i_;}
+	private:
+
+		base_iterator i_;
+
+		explicit __generic_iterator(const base_iterator& i) : i_(i) {}
+
+		friend class __generic_iterator<true>;
+		friend class __tree_constructor;
+	};
+
+	friend class __generic_iterator<false>;
+	friend class __generic_iterator<true>;
+
+	typedef __generic_iterator<false> iterator;
+	typedef __generic_iterator<true>  const_iterator;
+
+	__tree_constructor() {}
+	explicit __tree_constructor(const value_compare&) {}
+	__tree_constructor(const value_compare&, const allocator_type& a) : base(less<base_type>(), a) {}
+	__tree_constructor(const __tree_constructor& x) : base(less<base_type>(), x.alloc()) {base::copy(x);}
+
+#ifdef _MSL_MOVE
+	__tree_constructor(__tree_constructor&& x) : base(_STD::move(x)) {}
+#endif  // _MSL_MOVE
+
+	value_compare  value_comp() const    {return value_compare();}
+
+	iterator               begin()       {return       iterator(base::begin());}
+	const_iterator         begin() const {return const_iterator(base::begin());}
+	iterator               end()         {return       iterator(base::end());}
+	const_iterator         end() const   {return const_iterator(base::end());}
+
+	template <class Key, class V>
+		reference find_or_insert(const Key& key)
+	        {return reference(base::template find_or_insert<base_type, V>((base_type)(value_type)key));}
+	pair<iterator,bool> insert_one(const value_type& x)
+	                              {
+	                              pair<typename base::iterator, bool> p = base::insert_one((base_type)x);
+	                              return pair<iterator,bool>(iterator(p.first), p.second);}
+	iterator            insert_multi(const value_type& x)
+	                              {return iterator(base::insert_multi((base_type)x));}
+	iterator            insert_one(const_iterator position, const value_type& x)
+	                              {return iterator(base::insert_one(position.i_, (base_type)x));}
+	iterator            insert_multi(const_iterator position, const value_type& x)
+	                              {return iterator(base::insert_multi(position.i_, (base_type)x));}
+
+	template <class InputIterator>
+		void insert_one(InputIterator f, InputIterator l)
+		{
+			typedef typename iterator_traits<InputIterator>::value_type outside_value;
+			insert_one(f, l, Metrowerks::int2type<Metrowerks::is_same<outside_value, value_type>::value>(),
+			                 Metrowerks::int2type<Metrowerks::is_same<value_type, base_type>::value>());
+		}
+
+	template <class InputIterator>
+		void insert_multi(InputIterator f, InputIterator l)
+		{
+			typedef typename iterator_traits<InputIterator>::value_type outside_value;
+			insert_multi(f, l, Metrowerks::int2type<Metrowerks::is_same<outside_value, value_type>::value>(),
+			                   Metrowerks::int2type<Metrowerks::is_same<value_type, base_type>::value>());
+		}
+
+	iterator erase(const_iterator position) {return iterator(base::erase(position.i_));}
+	template <class Key> size_type erase_one(const Key& x)   {return base::erase_one((base_type)(value_type)x);}
+	template <class Key> size_type erase_multi(const Key& x) {return base::erase_multi((base_type)(value_type)x);}
+	iterator erase(const_iterator first, const_iterator last) {return iterator(base::erase(first.i_, last.i_));}
+
+	template <class Key> iterator find(const Key& x) const {return iterator(base::find((base_type)(value_type)x));}
+	template <class Key> size_type count_one(const Key& x) const   {return base::count_one((base_type)(value_type)x);}
+	template <class Key> size_type count_multi(const Key& x) const {return base::count_multi((base_type)(value_type)x);}
+
+	template <class Key> iterator lower_bound(const Key& x) const {return iterator(base::lower_bound((base_type)(value_type)x));}
+	template <class Key> iterator upper_bound(const Key& x) const {return iterator(base::upper_bound((base_type)(value_type)x));}
+	template <class Key> pair<iterator, iterator> equal_range(const Key& x) const
+	{
+		pair<typename base::iterator, typename base::iterator> p = base::equal_range((base_type)(value_type)x);
+		return pair<iterator, iterator>(iterator(p.first), iterator(p.second));
+	}
+
+private:
+	template <class InputIterator>
+		void insert_one(InputIterator f, InputIterator l, Metrowerks::int2type<true>, Metrowerks::int2type<true>)
+		{
+			base::insert_one(f, l);
+		}
+	template <class InputIterator>
+		void insert_one(InputIterator f, InputIterator l, Metrowerks::int2type<false>, Metrowerks::int2type<true>)
+		{
+			typedef __convert_iterator<__implicit_convert<pointer, InputIterator> > first_convert;
+			base::insert_one(first_convert(f), first_convert(l));
+		}
+	template <class InputIterator>
+		void insert_one(InputIterator f, InputIterator l, Metrowerks::int2type<true>, Metrowerks::int2type<false>)
+		{
+			typedef __convert_iterator<__reinterpret_convert<typename base::pointer, InputIterator> > second_convert;
+			base::insert_one(second_convert(f), second_convert(l));
+		}
+	template <class InputIterator>
+		void insert_one(InputIterator f, InputIterator l, Metrowerks::int2type<false>, Metrowerks::int2type<false>)
+		{
+			typedef __convert_iterator<__implicit_convert<pointer, InputIterator> > first_convert;
+			typedef __convert_iterator<__reinterpret_convert<typename base::pointer, first_convert> > second_convert;
+			base::insert_one(second_convert(first_convert(f)), second_convert(first_convert(l)));
+		}
+
+	template <class InputIterator>
+		void insert_multi(InputIterator f, InputIterator l, Metrowerks::int2type<true>, Metrowerks::int2type<true>)
+		{
+			base::insert_multi(f, l);
+		}
+	template <class InputIterator>
+		void insert_multi(InputIterator f, InputIterator l, Metrowerks::int2type<false>, Metrowerks::int2type<true>)
+		{
+			typedef __convert_iterator<__implicit_convert<pointer, InputIterator> > first_convert;
+			base::insert_multi(first_convert(f), first_convert(l));
+		}
+	template <class InputIterator>
+		void insert_multi(InputIterator f, InputIterator l, Metrowerks::int2type<true>, Metrowerks::int2type<false>)
+		{
+			typedef __convert_iterator<__reinterpret_convert<typename base::pointer, InputIterator> > second_convert;
+			base::insert_multi(second_convert(f), second_convert(l));
+		}
+	template <class InputIterator>
+		void insert_multi(InputIterator f, InputIterator l, Metrowerks::int2type<false>, Metrowerks::int2type<false>)
+		{
+			typedef __convert_iterator<__implicit_convert<pointer, InputIterator> > first_convert;
+			typedef __convert_iterator<__reinterpret_convert<typename base::pointer, first_convert> > second_convert;
+			base::insert_multi(second_convert(first_convert(f)), second_convert(first_convert(l)));
+		}
+};
+
+#endif  // !defined(_Inhibit_Container_Optimization) && !defined(__GNUC__)
+
+template <class T, class Compare = less<T>, class Allocator = allocator<T> >
+class __tree
+	: private __tree_constructor<T, Compare, Allocator>
+{
+	typedef __tree_constructor<T, Compare, Allocator> base;
+public:
+	// types:
+	typedef typename base::value_type        value_type;
+	typedef typename base::allocator_type    allocator_type;
+
+	typedef typename base::value_compare     value_compare;
+	typedef typename base::reference         reference;
+	typedef typename base::const_reference   const_reference;
+	typedef typename base::size_type         size_type;
+	typedef typename base::difference_type   difference_type;
+	typedef typename base::pointer           pointer;
+	typedef typename base::const_pointer     const_pointer;
+
+	typedef typename base::iterator       iterator;
+	typedef typename base::const_iterator const_iterator;
+
+	typedef _STD::reverse_iterator<iterator>       reverse_iterator;
+	typedef _STD::reverse_iterator<const_iterator> const_reverse_iterator;
+
+	__tree() {}
+	explicit __tree(const value_compare& comp) : base(comp) {}
+	__tree(const value_compare& comp, const allocator_type& a) : base(comp, a) {}
+	template <class InputIterator>
+		__tree(InputIterator first, InputIterator last, bool multi)
+		        {if (multi) insert_multi(first, last); else insert_one(first, last);}
+	template <class InputIterator>
+		__tree(InputIterator first, InputIterator last, bool multi, const value_compare& comp)
+		        : base(comp) {if (multi) insert_multi(first, last); else insert_one(first, last);}
+	template <class InputIterator>
+		__tree(InputIterator first, InputIterator last, bool multi, const value_compare& comp,
+		       const allocator_type& a)
+		           : base(comp, a) {if (multi) insert_multi(first, last); else insert_one(first, last);}
+
+#ifdef _MSL_MOVE
+	__tree(__tree&& x) : base(_STD::move(x)) {}
+	__tree& operator=(__tree&& x) {base::swap(x); return *this;}
+#endif  // _MSL_MOVE
+
+	value_compare  value_comp() const    {return base::value_comp();}
+	allocator_type get_allocator() const {return base::alloc();}
+
+	size_type     size() const     {return base::sz();}
+	size_type     max_size() const {return base::max_size();}
+	bool          empty() const    {return base::empty();}
+
+	iterator               begin()       {return base::begin();}
+	const_iterator         begin() const {return base::begin();}
+	iterator               end()         {return base::end();}
+	const_iterator         end() const   {return base::end();}
+
+	reverse_iterator       rbegin()       {return reverse_iterator(end());}
+	const_reverse_iterator rbegin() const {return const_reverse_iterator(end());}
+	reverse_iterator       rend()         {return reverse_iterator(begin());}
+	const_reverse_iterator rend() const   {return const_reverse_iterator(begin());}
+
+	template <class Key, class V> value_type& find_or_insert(const Key& key)
+	                                          {return base::template find_or_insert<Key, V>(key);}
+#ifdef _MSL_MOVE
+	template <class Key, class V> value_type& find_or_insert(Key&& key)
+	                                          {return base::template find_or_insert<Key, V>(_STD::move(key));}
+#endif  // _MSL_MOVE
+#ifdef _MSL_MOVE
+	template <class V> pair<iterator,bool> insert_one(V&& x)
+	                              {return base::insert_one(_STD::forward<V>(x));}
+#else  // _MSL_MOVE
+	pair<iterator,bool> insert_one(const value_type& x)
+	                              {return base::insert_one(x);}
+#endif  // _MSL_MOVE
+	iterator            insert_multi(const value_type& x)
+	                              {return base::insert_multi(x);}
+#ifdef _MSL_MOVE
+	template <class V> iterator insert_multi(V&& x)
+	                              {return base::insert_multi(_STD::move(x));}
+#endif  // _MSL_MOVE
+	iterator            insert_one(iterator position, const value_type& x)
+	                              {return base::insert_one(position, x);}
+#ifdef _MSL_MOVE
+	template <class V>
+	typename Metrowerks::restrict_to
+	<
+		Metrowerks::is_convertible<V, value_type>::value,
+		iterator
+	>::type
+	insert_one(iterator position, V&& x)
+	                              {return base::insert_one(position, _STD::move(x));}
+#endif  // _MSL_MOVE
+	const_iterator      insert_one(const_iterator position, const value_type& x)
+	                              {return base::insert_one(position, x);}
+#ifdef _MSL_MOVE
+	template <class V>
+	typename Metrowerks::restrict_to
+	<
+		Metrowerks::is_convertible<V, value_type>::value,
+		const_iterator
+	>::type
+	insert_one(const_iterator position, V&& x)
+	                              {return base::insert_one(position, _STD::move(x));}
+#endif  // _MSL_MOVE
+	iterator            insert_multi(iterator position, const value_type& x)
+	                              {return base::insert_multi(position, x);}
+#ifdef _MSL_MOVE
+	template <class V>
+	typename Metrowerks::restrict_to
+	<
+		Metrowerks::is_convertible<V, value_type>::value,
+		iterator
+	>::type
+	insert_multi(iterator position, V&& x)
+	                              {return base::insert_multi(position, _STD::move(x));}
+#endif  // _MSL_MOVE
+	const_iterator      insert_multi(const_iterator position, const value_type& x)
+	                              {return base::insert_multi(position, x);}
+#ifdef _MSL_MOVE
+	template <class V>
+	typename Metrowerks::restrict_to
+	<
+		Metrowerks::is_convertible<V, value_type>::value,
+		const_iterator
+	>::type
+	insert_multi(const_iterator position, V&& x)
+	                              {return base::insert_multi(position, _STD::move(x));}
+#endif  // _MSL_MOVE
+	template <class InputIterator>
+		void insert_one(InputIterator first, InputIterator last)
+		               {base::insert_one(first, last);}
+	template <class InputIterator>
+		void insert_multi(InputIterator first, InputIterator last)
+		               {base::insert_multi(first, last);}
+
+	iterator  erase(iterator position)       {return base::erase(position);}
+	iterator  erase(const_iterator position) {return base::erase(position);}
+	template <class Key> size_type erase_one(const Key& x)   {return base::erase_one(x);}
+	template <class Key> size_type erase_multi(const Key& x) {return base::erase_multi(x);}
+	iterator  erase(iterator first, iterator last)             {return base::erase(first, last);}
+	iterator  erase(const_iterator first, const_iterator last) {return base::erase(first, last);}
+	void clear() {base::clear();}
+
+	void swap(__tree& x) {base::swap(x);}
+
+	template <class Key> iterator       find(const Key& x)       {return base::find(x);}
+	template <class Key> const_iterator find(const Key& x) const {return base::find(x);}
+	template <class Key> size_type count_one(const Key& x) const   {return base::count_one(x);}
+	template <class Key> size_type count_multi(const Key& x) const {return base::count_multi(x);}
+
+	template <class Key> iterator       lower_bound(const Key& x)       {return base::lower_bound(x);}
+	template <class Key> const_iterator lower_bound(const Key& x) const {return base::lower_bound(x);}
+	template <class Key> iterator       upper_bound(const Key& x)       {return base::upper_bound(x);}
+	template <class Key> const_iterator upper_bound(const Key& x) const {return base::upper_bound(x);}
+	template <class Key> pair<iterator, iterator>             equal_range(const Key& x)       {return base::equal_range(x);}
+	template <class Key> pair<const_iterator, const_iterator> equal_range(const Key& x) const {return base::equal_range(x);}
+
+	bool invariants() const {return base::invariants();}
+};
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	} // namespace std
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#pragma enumsalwaysint reset
+#endif
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#pragma bool reset
+#endif
+
+#ifdef __MWERKS__
+#pragma options align=reset
+#endif
+
+#endif // _TREE
+
+// hh 971220 fixed MOD_INCLUDE
+// hh 971226 added alignment wrapper
+// hh 980105 changed pointer & reference to const versions in const_iterator base class
+// hh 980105 Added qualified name to iterator
+// hh 980111 <stdexcept> commented out.  Not needed
+// hh 980902 #ifdef'd out exception code when ndef MSIPL_EXCEPT
+// hh 981130 Rewrote.
+// hh 990720 Put debugging code under #ifdef _TREE_DEBUG
+// hh 990720 Fixed bug in swap when trees are empty
+// hh 990720 Made iterator comparison functions global friends
+// hh 990820 Modified insert_one(i, x) and insert_multi(i, x) so that you would get
+//           constant time performance if the correct insertion spot is before or after i.
+// hh 990820 Optimized methods operating with keys only.
+// hh 990820 Optimized operator []
+// hh 990826 To reduce dependence on T()
+// hh 990924 Added casts in const/iterator increment/decrement operators to comply with
+//           stricter compiler.
+// hh 991003 Changed find to find the first element in the tree.
+// hh 991003 Changed the const versions of find, lower_bound and upper_bound to be implemented
+//           in terms of the non-const versions.
+// hh 000129 Changed file name from tree.h to tree to avoid conflict with Java file name.
+// hh 000506 Eliminated compare from insert_multi and insert_one
+// hh 010125 Removed dependence on string
+// hh 010301 Protected min and max from macro abuse.
+// hh 010402 Removed 68K CMF support
+// hh 010404 Substituted compressed_pair for _EmptyMemberOpt
+// hh 010507 Implemented "insert closest" in insert_multi
+// hh 010821 Put casts back on allocators for 2.3 old_argmatch compatibility
+// hh 020723 Added void* optimization
+// hh 030711 Hid __option from non-__MWERKS__ compilers
+// hh 030804 Avoided use of allocator<void>

@@ -1,0 +1,71 @@
+/* MSL
+ * Copyright © 1995-2006 Freescale Corporation.  All rights reserved.
+ *
+ * $Date: 2006/02/08 20:32:43 $
+ * $Revision: 1.36.2.2 $
+ */
+
+#ifndef _MSL_CSTDDEF
+#define _MSL_CSTDDEF
+
+#include <ansi_parms.h>
+
+#if !_MSL_USING_MW_C_HEADERS
+	#include <stddef.h>
+	
+	#if _MSL_PUT_THIRD_PARTY_C_IN_STD
+		#include <msl_cpp_std_stddef.h>
+	#endif
+#else
+
+#ifndef RC_INVOKED
+
+#include <null.h>
+#include <size_t.h>
+#include <wchar_t.h>
+
+#ifndef _MSL_OFFSETOF
+	#define _MSL_OFFSETOF(type, member)	((__std(size_t)) &(((type *) 0)->member))
+#endif
+
+#ifndef offsetof
+	#define offsetof(type, member) _MSL_OFFSETOF(type, member)
+#endif
+
+_MSL_BEGIN_NAMESPACE_STD
+_MSL_BEGIN_EXTERN_C
+
+	#ifndef _MSL_PTRDIFF_T_TYPE
+		#define _MSL_PTRDIFF_T_TYPE __typeof__((char*)0-(char*)0)
+	#endif
+	
+	typedef _MSL_PTRDIFF_T_TYPE ptrdiff_t;
+
+_MSL_END_EXTERN_C
+_MSL_END_NAMESPACE_STD
+
+#endif /* RC_INVOKED */
+
+#endif /* _MSL_USING_MW_C_HEADERS */
+
+#endif /* _MSL_CSTDDEF */
+
+/* Change record:
+ * hh  971206 Changed filename from stddef.h to cstddef and added namespace support.
+ * hh  971230 added RC_INVOKED wrapper
+ * hh  980120 moved wchart_ typedef from wchar_t.h 
+ * hh  980727 Added __std() into the offsetof definition
+ * hh  990121 Fixed __std
+ * mm  990217 Moved definition of wchar_t to wchar_t.h
+ * vss 990309 wchar_t still has to be defined in stddef.h, however	
+ * JWW 001208 Added case for targeting Mach-O
+ * cc  010409 updated to new namespace macros 
+ * cc  010411 updated hh cute definition of ptrdiff_t
+ * JWW 011027 Use _MSL_USING_MW_C_HEADERS as generic header test instead of specific Mach-O test
+ * us  011112 special __offsetof() wrapper for Hawk2 offsetof().
+ * cc  011217 Added #ifndef _MSL_OFFSETOF
+ * ejs 030407 Added #ifndef _MSL_PTRDIFF_T_TYPE (for CodeTEST)
+ * ejs 030408 Oops, tested the wrong macro
+ * JWW 030701 Do not define offsetof macro if it was already defined (BSD C compatibility)
+ * JWW 050128 When using MSL C++ on top of a third party C (non-MSL), put C items into std namespace
+ */

@@ -1,0 +1,183 @@
+/* MSL
+ * Copyright © 1995-2006 Freescale Corporation.  All rights reserved.
+ *
+ * $Date: 2006/02/09 16:59:21 $
+ * $Revision: 1.23.2.2 $
+ */
+
+// stack
+
+#ifndef _STACK
+#define _STACK
+
+/*  stack synopsis
+
+	synopsis skipped.  Code self explanatory
+
+*/
+
+#include <mslconfig>
+#include <deque>
+
+#ifndef RC_INVOKED
+
+#ifdef __MWERKS__
+#pragma options align=native
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#if _MSL_FORCE_ENUMS_ALWAYS_INT
+		#pragma enumsalwaysint on
+	#else
+		#pragma enumsalwaysint off
+	#endif
+#endif  // _MSL_FORCE_ENUMS_ALWAYS_INT
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#if _MSL_FORCE_ENABLE_BOOL_SUPPORT
+		#pragma bool on
+	#else
+		#pragma bool off
+	#endif
+#endif  // _MSL_FORCE_ENABLE_BOOL_SUPPORT
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	namespace std {
+#endif
+
+template <class T, class Container = deque<T> >
+class stack
+{
+public:
+	typedef typename Container::value_type            value_type;
+	typedef typename Container::size_type             size_type;
+	typedef typename Container::reference             reference;
+	typedef typename Container::const_reference       const_reference;
+	typedef          Container                        container_type;
+
+	         stack() {}
+	explicit stack(const Container& x) : c(x) {}
+
+#ifdef _MSL_MOVE
+	explicit stack(Container&& x) : c(_STD::move(x)) {}
+	stack(stack&& s) : c(_STD::move(s.c)) {}
+	stack& operator=(stack&& s) {swap(s); return *this;}
+#endif  // _MSL_MOVE
+
+	bool      empty() const             { return c.empty(); }
+	size_type size()  const             { return c.size(); }
+	reference         top()             { return c.back(); }
+	const_reference   top() const       { return c.back(); }
+	void push(const value_type& x)      { c.push_back(x); }
+#ifdef _MSL_MOVE
+	void push(value_type&& x)           { c.push_back(_STD::move(x)); }
+#endif
+	void pop()                          { c.pop_back(); }
+#ifdef _MSL_MOVE
+	void swap(stack&& s) {using _STD::swap; swap(c, s.c);}
+#endif
+protected:
+	Container c;
+
+	friend bool operator== <T, Container>(const stack<T, Container>& x, const stack<T, Container>& y);
+	friend bool operator!= <T, Container>(const stack<T, Container>& x, const stack<T, Container>& y);
+	friend bool operator<  <T, Container>(const stack<T, Container>& x, const stack<T, Container>& y);
+	friend bool operator<= <T, Container>(const stack<T, Container>& x, const stack<T, Container>& y);
+	friend bool operator>  <T, Container>(const stack<T, Container>& x, const stack<T, Container>& y);
+	friend bool operator>= <T, Container>(const stack<T, Container>& x, const stack<T, Container>& y);
+};
+
+template <class T, class Container>
+inline
+bool
+operator==(const stack<T, Container>& x, const stack<T, Container>& y)
+{
+	return x.c == y.c;
+}
+
+template <class T, class Container>
+inline
+bool
+operator< (const stack<T, Container>& x, const stack<T, Container>& y)
+{
+	return x.c < y.c;
+}
+
+template <class T, class Container>
+inline
+bool
+operator!=(const stack<T, Container>& x, const stack<T, Container>& y)
+{
+	return x.c != y.c;
+}
+
+template <class T, class Container>
+inline
+bool
+operator> (const stack<T, Container>& x, const stack<T, Container>& y)
+{
+	return x.c > y.c;
+}
+
+template <class T, class Container>
+inline
+bool
+operator>=(const stack<T, Container>& x, const stack<T, Container>& y)
+{
+	return x.c >= y.c;
+}
+
+template <class T, class Container>
+inline
+bool
+operator<=(const stack<T, Container>& x, const stack<T, Container>& y)
+{
+	return x.c <= y.c;
+}
+
+#ifdef _MSL_MOVE
+
+template <class T, class Container>
+inline
+void swap(stack<T, Container>& x, stack<T, Container>& y) {x.swap(y);}
+
+template <class T, class Container>
+inline
+void swap(stack<T, Container>&& x, stack<T, Container>& y) {x.swap(y);}
+
+template <class T, class Container>
+inline
+void swap(stack<T, Container>& x, stack<T, Container>&& y) {x.swap(y);}
+
+#endif  // _MSL_MOVE
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	} // namespace std
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#pragma enumsalwaysint reset
+#endif
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#pragma bool reset
+#endif
+
+#ifdef __MWERKS__
+#pragma options align=reset
+#endif
+
+#endif // RC_INVOKED
+
+#endif // _STACK
+
+// hh 971220 fixed MOD_INCLUDE
+// hh 971223 Changed filename from stack.h to stack
+// hh 971223 added alignment wrapper
+// hh 971223 Made include guards standard
+// hh 971230 added RC_INVOKED wrapper
+// hh 980113 Updated friend syntax of global methods and moved out of template definition.
+// hh 981129 Rewrote
+// hh 990120 changed name of MSIPL flags
+// hh 010308 Added reference and const_reference to make proxy iterator friendly
+// hh 010402 Removed 68K CMF support

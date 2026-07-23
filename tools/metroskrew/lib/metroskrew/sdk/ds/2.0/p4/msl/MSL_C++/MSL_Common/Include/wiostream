@@ -1,0 +1,86 @@
+/* MSL
+ * Copyright © 1995-2006 Freescale Corporation.  All rights reserved.
+ *
+ * $Date: 2006/02/09 16:59:48 $
+ * $Revision: 1.13.2.2 $
+ */
+
+// wiostream
+
+#ifndef _WIOSTREAM
+#define _WIOSTREAM
+
+#include <mslconfig>
+
+#ifndef _MSL_NO_IO
+
+#include <istream>
+#include <ostream>
+
+#ifndef RC_INVOKED
+
+#ifdef __MWERKS__
+#pragma options align=native
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#if _MSL_FORCE_ENUMS_ALWAYS_INT
+		#pragma enumsalwaysint on
+	#else
+		#pragma enumsalwaysint off
+	#endif
+#endif  // _MSL_FORCE_ENUMS_ALWAYS_INT
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#if _MSL_FORCE_ENABLE_BOOL_SUPPORT
+		#pragma bool on
+	#else
+		#pragma bool off
+	#endif
+#endif  // _MSL_FORCE_ENABLE_BOOL_SUPPORT
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	namespace std {
+#endif
+
+#ifndef _MSL_NO_CONSOLE_IO
+
+#ifndef _MSL_NO_WCHART_CPP_SUPPORT
+
+#ifndef _MSL_NO_CONSOLE_INPUT
+	_MSL_IMP_EXP_CPP extern wistream wcin;
+#endif
+	_MSL_IMP_EXP_CPP extern wostream wcout;
+	_MSL_IMP_EXP_CPP extern wostream wclog;
+	_MSL_IMP_EXP_CPP extern wostream wcerr;
+
+#endif  // _MSL_NO_WCHART_CPP_SUPPORT
+
+static __wInit  __msl_ios_base_winit;
+
+#endif  // _MSL_NO_CONSOLE_IO
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	} // namespace std
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#pragma enumsalwaysint reset
+#endif
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#pragma bool reset
+#endif
+
+#ifdef __MWERKS__
+#pragma options align=reset
+#endif
+
+#endif // RC_INVOKED
+
+#endif // _MSL_NO_IO
+
+#endif  // _WIOSTREAM
+
+// hh 010228 Created
+// hh 010402 Removed 68K CMF support

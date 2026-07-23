@@ -1,0 +1,106 @@
+/* MSL
+ * Copyright © 1995-2006 Freescale Corporation.  All rights reserved.
+ *
+ * $Date: 2006/02/08 20:32:26 $
+ * $Revision: 1.40.2.2 $
+ */
+
+#ifndef _MSL_CLOCALE
+#define _MSL_CLOCALE
+
+#include <ansi_parms.h>
+
+#if !_MSL_USING_MW_C_HEADERS
+	#include <locale.h>
+	
+	#if _MSL_PUT_THIRD_PARTY_C_IN_STD
+		#include <msl_cpp_std_locale.h>
+	#endif
+#else
+
+#ifndef RC_INVOKED
+
+#include <null.h>
+
+_MSL_BEGIN_NAMESPACE_STD
+_MSL_BEGIN_EXTERN_C
+
+	#define LC_FIRST		0
+	#define LC_COLLATE		0x01
+	#define LC_CTYPE		0x02
+	#define LC_MONETARY		0x04
+	#define LC_NUMERIC		0x08
+	#define LC_TIME			0x10
+	#define LC_ALL			0x1F						/*- mm 020729 -*/
+	#define LC_LAST			LC_ALL
+	
+#if !_MSL_C_LOCALE_ONLY
+	#pragma options align=native
+	#pragma warn_padding off
+	struct lconv
+	{
+		char * 	decimal_point;
+		char * 	thousands_sep;
+		char * 	grouping;
+		char * 	mon_decimal_point;
+		char * 	mon_thousands_sep;
+		char * 	mon_grouping;
+		char * 	positive_sign;
+		char * 	negative_sign;
+		char * 	currency_symbol;
+		char   	frac_digits;
+		char   	p_cs_precedes;
+		char   	n_cs_precedes;
+		char   	p_sep_by_space;
+		char   	n_sep_by_space;
+		char   	p_sign_posn;
+		char   	n_sign_posn;
+		char * 	int_curr_symbol;
+		char	int_frac_digits;
+#if _MSL_C99												/*- mm 030521 -*/
+		char 	int_p_cs_precedes;
+		char 	int_n_cs_precedes;
+		char 	int_p_sep_by_space;
+		char 	int_n_sep_by_space;
+		char 	int_p_sign_posn;
+		char 	int_n_sign_posn;
+#endif /* _MSL_C99 */		  								/*- mm 030521 -*/
+	};
+	#pragma warn_padding reset
+	#pragma options align=reset
+	
+	_MSL_IMP_EXP_C struct lconv * _MSL_CDECL localeconv(void) _MSL_CANT_THROW;
+
+#endif /* _MSL_C_LOCALE_ONLY */
+	
+	_MSL_IMP_EXP_C char * _MSL_CDECL setlocale(int, const char *) _MSL_CANT_THROW;
+
+_MSL_END_EXTERN_C
+_MSL_END_NAMESPACE_STD 
+
+#endif /* RC_INVOKED */
+
+#endif /* _MSL_USING_MW_C_HEADERS */
+
+#endif /* _MSL_CLOCALE */
+
+/* Change record: 
+ * hh  971206 Changed filename from locale.h to clocale and added namespace support.
+ * hh  971230 added RC_INVOKED wrapper
+ * JWW 001208 Added case for targeting Mach-O
+ * cc  010409 updated defines to JWW new namespace macros 		  
+ * mm  010507 Reorganized the structure lconv to match C99 		  
+ * JWW 011027 Use _MSL_USING_MW_C_HEADERS as generic header test instead of specific Mach-O test
+ * mm  011130 Changes for implementation of locale
+ * cc  011203 Added _MSL_CDECL for new name mangling
+ * mm  011205 Changed _LOCALE to __locale 
+ * mm  020212 Added wrappers to allow choice of default locale
+ * JWW 020305 Changed to use new "wider is better" ctype classification tables
+ * JWW 020306 Split off the locale implementation section and also include <null.h>
+ * hh  020603 Added no throw spec to functions
+ * mm  020729 Deleted reference to LC_MESSAGES
+ * cc  021001 Added support for _MSL_C_LOCALE_ONLY
+ * mm  030521 Added C99 wrappers
+ * cc  040128 Added locale support needed by cplusplus
+ * JWW 050128 When using MSL C++ on top of a third party C (non-MSL), put C items into std namespace
+ */

@@ -1,0 +1,1314 @@
+/* MSL
+ * Copyright © 1995-2006 Freescale Corporation.  All rights reserved.
+ *
+ * $Date: 2006/02/09 16:58:42 $
+ * $Revision: 1.37.2.2 $
+ */
+
+// locale
+
+#ifndef _LOCALE
+#define _LOCALE
+
+/*  locale synopsis
+
+namespace std
+{
+
+class locale
+{
+public:
+	//  types:
+	class facet
+	{
+	protected:
+		explicit facet(size_t refs = 0);
+		virtual ~facet();
+	private:
+		facet(const facet&);                //  not defined
+		void operator=(const facet&);       //  not defined
+	};
+
+	class id
+	{
+	public:
+		id();
+		size_t get();   // Metrowerks extension
+	private:
+		void operator=(const id&);  //  not defined
+		id(const id&);              //  not defined
+	};
+
+	typedef int category;
+	static const category
+		none     = 0,
+		collate  = LC_COLLATE,
+		ctype    = LC_CTYPE,
+		monetary = LC_MONETARY,
+		numeric  = LC_NUMERIC,
+		time     = LC_TIME,
+		messages = LC_TIME << 1,
+		all = collate | ctype | monetary | numeric | time  | messages;
+
+	//  construct/copy/destroy:
+	locale() throw()
+	locale(const locale& other) throw()
+	explicit locale(const char* std_name);
+	locale(const locale& other, const char* std_name, category);
+	template <class Facet> locale(const locale& other, Facet* f);
+	locale(const locale& other, const locale& one, category);
+	~locale() throw();
+	const locale& operator=(const locale& other) throw();
+	template <class Facet> locale combine(const locale& other);
+
+	//  locale operations:
+	basic_string<char>                  name() const;
+	bool operator==(const locale& other) const;
+	bool operator!=(const locale& other) const;
+
+	template <class charT, class Traits, class Allocator>
+	bool
+	operator()(const basic_string<charT,Traits,Allocator>& s1,
+	           const basic_string<charT,Traits,Allocator>& s2) const;
+
+	//  global locale objects:
+	static       locale  global(const locale&);
+	static const locale& classic();
+};
+
+template <class Facet> const Facet& use_facet(const locale&);
+template <class Facet> bool         has_facet(const locale&) throw();
+
+template <class charT> bool isspace (charT c, const locale& loc);
+template <class charT> bool isblank (charT c, const locale& loc);  // Metrowerks extension
+template <class charT> bool isprint (charT c, const locale& loc);
+template <class charT> bool iscntrl (charT c, const locale& loc);
+template <class charT> bool isupper (charT c, const locale& loc);
+template <class charT> bool islower (charT c, const locale& loc);
+template <class charT> bool isalpha (charT c, const locale& loc);
+template <class charT> bool isdigit (charT c, const locale& loc);
+template <class charT> bool ispunct (charT c, const locale& loc);
+template <class charT> bool isxdigit(charT c, const locale& loc);
+template <class charT> bool isalnum (charT c, const locale& loc);
+template <class charT> bool isgraph (charT c, const locale& loc);
+template <class charT> charT toupper(charT c, const locale& loc);
+template <class charT> charT tolower(charT c, const locale& loc);
+
+	//  range_map
+
+//  range_map is a map of T -> U that takes advantage of linear
+//     relationships between values of T and U.  It is essentially
+//     a list of linear equations of the form  U = m * T + b
+
+}  // std
+
+namespace Metrowerks
+{
+
+template <class T, class U>
+class range_map
+{
+public:
+	U operator[](const T& x) const;
+	void insert(const T& x1, const T& x2, const U& y1, const U& y2);
+	void insert(const T& x1, const T& x2, const U& y1);
+	void insert(const T& x1, const U& y1);
+	void clear() {table_.clear();}
+};
+
+}  // Metrowerks
+
+namespace std
+{
+
+	//  ctype
+
+class ctype_base
+{
+public:
+	enum mask
+	{
+		alpha  = 0x0001,
+		blank  = 0x0002,         // Metrowerks extension
+		cntrl  = 0x0004,
+		digit  = 0x0008,
+		graph  = 0x0010,
+		lower  = 0x0020,
+		print  = 0x0040,
+		punct  = 0x0080,
+		space  = 0x0100,
+		upper  = 0x0200,
+		xdigit = 0x0400,
+		alnum  = alpha | digit
+	};
+};
+
+template <class charT>
+class ctype
+	: public locale::facet,
+	  public ctype_base
+{
+public:
+	typedef charT char_type;
+	explicit ctype(size_t refs = 0);
+
+	bool         is(mask m, charT c) const;
+	const charT* is(const charT* low, const charT* high, mask* vec) const;
+	const charT* scan_is (mask m, const charT* low, const charT* high) const;
+	const charT* scan_not(mask m, const charT* low, const charT* high) const;
+	charT        toupper(charT c) const;
+	const charT* toupper(charT* low, const charT* high) const;
+	charT        tolower(charT c) const;
+	const charT* tolower(charT* low, const charT* high) const;
+
+	charT        widen(char c) const;
+	const char*  widen(const char* low, const char* high, charT* to) const;
+	basic_string<charT> widen(const string& s) const;             // Metrowerks extension
+	char         narrow(charT c, char dfault) const;
+	const charT* narrow(const charT* low, const charT*, char dfault, char* to) const;
+
+    static locale::id id;
+
+protected:
+	~ctype();                    //  virtual
+	virtual bool         do_is(mask m, charT c) const;
+	virtual const charT* do_is(const charT* low, const charT* high, mask* vec) const;
+	virtual const charT* do_scan_is (mask m, const charT* low, const charT* high) const;
+	virtual const charT* do_scan_not(mask m, const charT* low, const charT* high) const;
+	virtual charT        do_toupper(charT) const;
+	virtual const charT* do_toupper(charT* low, const charT* high) const;
+	virtual charT        do_tolower(charT) const;
+	virtual const charT* do_tolower(charT* low, const charT* high) const;
+	virtual charT        do_widen(char) const;
+	virtual const char*  do_widen(const char* low, const char* high, charT* dest) const;
+	virtual char         do_narrow(charT, char dfault) const;
+	virtual const charT* do_narrow(const charT* low, const charT* high, char dfault, char* dest) const;
+
+	Metrowerks::range_map<charT, ctype_base::mask> __table_;    // Metrowerks extension
+	Metrowerks::range_map<charT, charT>          __lower_map_;  // Metrowerks extension
+	Metrowerks::range_map<charT, charT>          __upper_map_;  // Metrowerks extension
+};
+
+template <>
+class ctype<char>
+	: public locale::facet,
+	  public ctype_base
+{
+public:
+	typedef char char_type;
+
+	explicit ctype(const mask* tab = 0, bool del = false, size_t refs = 0);
+
+	bool is(mask m, char c) const;
+	const char* is(const char* low, const char* high, mask* vec) const;
+	const char* scan_is (mask m, const char* low, const char* high) const;
+	const char* scan_not(mask m, const char* low, const char* high) const;
+
+	char        toupper(char c) const;
+	const char* toupper(char* low, const char* high) const;
+	char        tolower(char c) const;
+	const char* tolower(char* low, const char* high) const;
+
+	char  widen(char c) const;
+	const char* widen(const char* low, const char* high, char* to) const;
+	string      widen(const string& s) const;           // Metrowerks extension
+	char  narrow(char c, char dfault) const;
+	const char* narrow(const char* low, const char* high, char dfault, char* to) const;
+
+	static locale::id id;
+	static const size_t table_size = 256;
+
+protected:
+	const mask* table() const throw();
+	static const mask* classic_table() throw();
+
+	~ctype();                    //  virtual
+	virtual char        do_toupper(char c) const;
+	virtual const char* do_toupper(char* low, const char* high) const;
+	virtual char        do_tolower(char c) const;
+	virtual const char* do_tolower(char* low, const char* high) const;
+
+	virtual char        do_widen(char c) const;
+	virtual const char* do_widen(const char* low, const char* high, char* to) const;
+	virtual char        do_narrow(char c, char dfault) const;
+	virtual const char* do_narrow(const char* low, const char* high,  char dfault, char* to) const;
+
+	const mask* __table_;                // Metrowerks extension
+	const unsigned char* __lower_map_;   // Metrowerks extension
+	const unsigned char* __upper_map_;   // Metrowerks extension
+	bool __owns_;                        // Metrowerks extension
+};
+
+template <class charT>
+class ctype_byname
+	: public ctype<charT>
+{
+public:
+	typedef typename ctype<charT>::mask mask;
+	explicit ctype_byname(const char* std_name, size_t refs = 0);
+protected:
+	virtual ~ctype_byname();
+};
+
+template <>
+class ctype_byname<char>
+	: public ctype<char>
+{
+public:
+	typedef ctype<char>::mask mask;
+	explicit ctype_byname(const char* std_name, size_t refs = 0);
+protected:
+	virtual ~ctype_byname();
+};
+
+	//  codecvt
+
+class codecvt_base
+{
+public:
+	enum result { ok, partial, error, noconv };
+};
+
+// codecvt is only defined for
+class codecvt<char,    char, mbstate_t>;
+class codecvt<wchar_t, char, mbstate_t>;
+
+template <class internT, class externT, class stateT>
+class codecvt
+	: public locale::facet,
+	  public codecvt_base
+{
+public:
+	  typedef internT  intern_type;
+	  typedef externT  extern_type;
+	  typedef stateT   state_type;
+
+	explicit codecvt(size_t refs = 0)
+
+	result out(stateT& state,
+	           const internT* from, const internT* from_end, const internT*& from_next,
+	           externT* to,         externT* to_limit,       externT*& to_next) const;
+	result unshift(stateT& state, externT* to, externT* to_limit, externT*& to_next) const;
+	result in(stateT& state,
+	          const externT* from, const externT* from_end, const externT*& from_next,
+	          internT* to,         internT* to_limit,       internT*& to_next) const;
+	int encoding() const throw();
+	bool always_noconv() const throw();
+	int length(stateT&, const externT* from, const externT* end, size_t max) const;
+	int max_length() const throw();
+
+	static locale::id id;
+
+protected:
+	~codecvt();                   //  virtual
+	virtual result do_out(stateT& state,
+	                      const internT* from, const internT* from_end, const internT*& from_next,
+	                      externT* to,         externT* to_limit,       externT*& to_next) const;
+	virtual result do_in(stateT& state,
+	                     const externT* from, const externT* from_end, const externT*& from_next,
+	                     internT* to,         internT* to_limit,       internT*& to_next) const;
+	virtual result do_unshift(stateT& state, externT* to, externT* to_limit, externT*& to_next) const;
+	virtual int do_encoding() const throw();
+	virtual bool do_always_noconv() const throw();
+	virtual int do_length(stateT&, const externT* from, const externT* end, size_t max) const;
+	virtual int do_max_length() const throw();
+};
+
+template <class internT, class externT, class stateT>
+class __codecvt_pub_destructor  // Metrowerks extension, provides public destructor
+	: public codecvt<internT, externT, stateT>
+{
+public:
+	explicit __codecvt_pub_destructor(size_t refs = 0) : codecvt<internT, externT, stateT>(refs) {}
+};
+
+template <class internT>
+class __ucs_2 : public __codecvt_pub_destructor<internT, char, mbstate_t> {...};
+
+template <class internT>
+class __jis : public __codecvt_pub_destructor<internT, char, mbstate_t> {...};
+
+template <class internT>
+class __shift_jis : public __codecvt_pub_destructor<internT, char, mbstate_t> {...};
+
+template <class internT>
+class __euc : public __codecvt_pub_destructor<internT, char, mbstate_t> {...};
+
+template <class internT>
+class __utf_8 : public __codecvt_pub_destructor<internT, char, mbstate_t> {...};
+
+template <class internT, class externT, class stateT>
+class codecvt_byname
+	: public codecvt<internT, externT, stateT>
+{
+public:
+	typedef codecvt_base::result result;
+	explicit codecvt_byname(const char* std_name, size_t refs = 0);
+protected:
+	virtual ~codecvt_byname();
+	virtual result do_out(stateT& state,
+	                      const internT* from, const internT* from_end, const internT*& from_next,
+	                      externT* to,         externT* to_limit,       externT*& to_next) const;
+	virtual result do_in(stateT& state,
+	                     const externT* from, const externT* from_end, const externT*& from_next,
+	                     internT* to,         internT* to_limit,       internT*& to_next) const;
+	virtual result do_unshift(stateT& state, externT* to, externT* to_limit, externT*& to_next) const;
+	virtual int do_encoding() const throw();
+	virtual bool do_always_noconv() const throw();
+	virtual int do_length(stateT& state, const externT* from, const externT* from_end, size_t max) const;
+	virtual int do_max_length() const throw();
+
+	__codecvt_pub_destructor<internT, externT, stateT>* __codecvt_;  // Metrowerks extension
+};
+
+	//  numeric:
+
+template <class charT, class InputIterator>
+class num_get
+	: public locale::facet
+{
+public:
+	typedef charT            char_type;
+	typedef InputIterator    iter_type;
+
+	explicit num_get(size_t refs = 0);
+
+	iter_type get(iter_type in, iter_type end, ios_base&, ios_base::iostate& err, bool& v) const;
+	iter_type get(iter_type in, iter_type end, ios_base&, ios_base::iostate& err, long& v) const;
+	iter_type get(iter_type in, iter_type end, ios_base&, ios_base::iostate& err, unsigned short& v) const;
+	iter_type get(iter_type in, iter_type end, ios_base&, ios_base::iostate& err, unsigned int& v) const;
+	iter_type get(iter_type in, iter_type end, ios_base&, ios_base::iostate& err, unsigned long& v) const;
+	iter_type get(iter_type in, iter_type end, ios_base&, ios_base::iostate& err, float& v) const;
+	iter_type get(iter_type in, iter_type end, ios_base&, ios_base::iostate& err, double& v) const;
+	iter_type get(iter_type in, iter_type end, ios_base&, ios_base::iostate& err, long double& v) const;
+	iter_type get(iter_type in, iter_type end, ios_base&, ios_base::iostate& err, void*& v) const;
+	iter_type get(iter_type in, iter_type end, ios_base&, ios_base::iostate& err, long long& v) const;
+	iter_type get(iter_type in, iter_type end, ios_base&, ios_base::iostate& err, unsigned long long& v) const;
+
+	static locale::id id;
+
+protected:
+	~num_get();                  //  virtual
+	virtual iter_type do_get(iter_type, iter_type, ios_base&, ios_base::iostate& err, bool& v) const;
+	virtual iter_type do_get(iter_type, iter_type, ios_base&, ios_base::iostate& err, long& v) const;
+	virtual iter_type do_get(iter_type, iter_type, ios_base&, ios_base::iostate& err, unsigned short& v) const;
+	virtual iter_type do_get(iter_type, iter_type, ios_base&, ios_base::iostate& err, unsigned int& v) const;
+	virtual iter_type do_get(iter_type, iter_type, ios_base&, ios_base::iostate& err, unsigned long& v) const;
+	virtual iter_type do_get(iter_type, iter_type, ios_base&, ios_base::iostate& err, float& v) const;
+	virtual iter_type do_get(iter_type, iter_type, ios_base&, ios_base::iostate& err, double& v) const;
+	virtual iter_type do_get(iter_type, iter_type, ios_base&, ios_base::iostate& err, long double& v) const;
+	virtual iter_type do_get(iter_type, iter_type, ios_base&, ios_base::iostate& err, void*& v) const;
+	virtual iter_type do_get(iter_type, iter_type, ios_base&, ios_base::iostate& err, long long& v) const;
+	virtual iter_type do_get(iter_type, iter_type, ios_base&, ios_base::iostate& err, unsigned long long& v) const;
+};
+
+template <class charT, class OutputIterator>
+class num_put
+	: public locale::facet
+{
+public:
+	typedef charT            char_type;
+	typedef OutputIterator   iter_type;
+
+	explicit num_put(size_t refs = 0);
+
+	iter_type put(iter_type s, ios_base& f, char_type fill, bool v) const;
+	iter_type put(iter_type s, ios_base& f, char_type fill, long v) const;
+	iter_type put(iter_type s, ios_base& f, char_type fill, unsigned long v) const;
+	iter_type put(iter_type s, ios_base& f, char_type fill, double v) const;
+	iter_type put(iter_type s, ios_base& f, char_type fill, long double v) const;
+	iter_type put(iter_type s, ios_base& f, char_type fill, const void* v) const;
+	iter_type put(iter_type s, ios_base& f, char_type fill, long long val) const;
+	iter_type put(iter_type s, ios_base& f, char_type fill, unsigned long long val) const;
+
+    static locale::id id;
+
+protected:
+	~num_put();                  //  virtual
+	virtual iter_type do_put(iter_type, ios_base&, char_type fill, bool v) const;
+	virtual iter_type do_put(iter_type, ios_base&, char_type fill, long v) const;
+	virtual iter_type do_put(iter_type, ios_base&, char_type fill, unsigned long) const;
+	virtual iter_type do_put(iter_type, ios_base&, char_type fill, double v) const;
+	virtual iter_type do_put(iter_type, ios_base&, char_type fill, long double v) const;
+	virtual iter_type do_put(iter_type, ios_base&, char_type fill, const void* v) const;
+	virtual iter_type do_put(iter_type, ios_base&, char_type fill, long long v) const;
+	virtual iter_type do_put(iter_type, ios_base&, char_type fill, unsigned long long v) const;
+};
+
+template <class charT>
+class numpunct
+	: public locale::facet
+{
+public:
+	typedef charT               char_type;
+	typedef basic_string<charT> string_type;
+
+	explicit numpunct(size_t refs = 0);
+
+	char_type    decimal_point()   const;
+	char_type    thousands_sep()   const;
+	string       grouping()        const;
+	string_type  truename()        const;
+	string_type  falsename()       const;
+
+	static locale::id id;
+
+protected:
+	~numpunct();                 //  virtual
+	virtual char_type    do_decimal_point() const;
+	virtual char_type    do_thousands_sep() const;
+	virtual string       do_grouping()      const;
+	virtual string_type  do_truename()      const;
+	virtual string_type  do_falsename()     const;
+
+	char_type __decimal_point_;    // Metrowerks extension
+	char_type __thousands_sep_;    // Metrowerks extension
+	string    __grouping_;         // Metrowerks extension
+	string_type __truename_;       // Metrowerks extension
+	string_type __falsename_;      // Metrowerks extension
+};
+
+template <class charT>
+class numpunct_byname
+	: public numpunct<charT>
+{
+public:
+	typedef charT                char_type;
+	typedef basic_string<charT>  string_type;
+
+	explicit numpunct_byname(const char* std_name, size_t refs = 0);
+protected:
+	virtual ~numpunct_byname();
+};
+
+	//  collation:
+
+template <class charT>
+class collate
+	: public locale::facet
+{
+public:
+	typedef charT               char_type;
+	typedef basic_string<charT> string_type;
+
+	explicit collate(size_t refs = 0);
+
+	int compare(const charT* low1, const charT* high1,
+	            const charT* low2, const charT* high2) const;
+	string_type transform(const charT* low, const charT* high) const;
+	long hash(const charT* low, const charT* high) const;
+
+    static locale::id id;
+
+protected:
+	~collate();                  //  virtual
+	virtual int do_compare(const charT* low1, const charT* high1,
+	                       const charT* low2, const charT* high2) const;
+	virtual string_type do_transform(const charT* low, const charT* high) const;
+	virtual long do_hash(const charT* low, const charT* high) const;
+};
+
+template <class charT>
+class __collation_rule
+{
+public:
+	struct entry
+		: value
+	{
+		unsigned char length;
+	};
+
+	__collation_rule();
+	explicit __collation_rule(const basic_string<charT>& rule);
+	void set_rule(const basic_string<charT>& rule);
+	entry operator()(const charT* low, const charT* high, int& state) const;
+	bool is_french() const;
+	bool empty() const;
+};
+
+template <class charT>
+class collate_byname
+	: public collate<charT>
+{
+public:
+	typedef basic_string<charT> string_type;
+	explicit collate_byname(const char* std_name, size_t refs = 0);
+protected:
+	virtual ~collate_byname();
+	virtual int do_compare(const charT* low1, const charT* high1,
+	                       const charT* low2, const charT* high2) const;
+	virtual string_type do_transform(const charT* low, const charT* high) const;
+
+	__collation_rule<charT> rule_;   // Metrowerks extension
+};
+
+	//  time:
+
+template <class charT>
+class timepunct                  // Metrowerks extension
+	: public locale::facet
+{
+public:
+	typedef charT               char_type;
+	typedef basic_string<charT> string_type;
+
+	explicit timepunct(size_t refs = 0);
+
+	const string_type& abrev_weekday(int wday)  const;
+	const string_type& weekday(int wday)        const;
+	const string_type& abrev_monthname(int mon) const;
+	const string_type& monthname(int mon)       const;
+	const string_type& date_time()              const;
+	const string_type& am_pm(int hour)          const;
+	const string_type& time_12hour()            const;
+	const string_type& date()                   const;
+	const string_type& time()                   const;
+	const string_type& time_zone(int isdst)     const;
+	const string_type& utc_offset(int isdst)    const;
+	int                default_century()        const;
+
+	static locale::id id;
+
+protected:
+	virtual ~timepunct() {}
+
+	string_type __weekday_names_[14];
+	string_type __month_names_[24];
+	string_type __am_pm_[2];
+	string_type __date_time_;
+	string_type __date_;
+	string_type __time_;
+	string_type __12hr_time_;
+	string_type __time_zone_[2];
+	string_type __utc_offset_[2];
+	int         __default_century_;
+};
+
+template <class charT>
+class timepunct_byname                  // Metrowerks extension
+	: public timepunct<charT>
+{
+public:
+	typedef charT               char_type;
+	typedef basic_string<charT> string_type;
+
+	explicit timepunct_byname(const char* std_name, size_t refs = 0);
+
+protected:
+	virtual ~timepunct_byname();
+};
+
+class time_base
+{
+public:
+	enum dateorder { no_order, dmy, mdy, ymd, ydm };
+};
+
+template <class charT, class InputIterator = istreambuf_iterator<charT> >
+class time_get
+	: public locale::facet,
+	  public time_base
+{
+public:
+	typedef charT            char_type;
+	typedef InputIterator    iter_type;
+
+	explicit time_get(size_t refs = 0);
+
+	dateorder date_order() const;
+	iter_type get_time(iter_type in, iter_type end, ios_base& str,
+	                   ios_base::iostate& err, tm* t) const;;
+	iter_type get_date(iter_type in, iter_type end, ios_base& str,
+	                   ios_base::iostate& err, tm* t) const;
+	iter_type get_weekday(iter_type in, iter_type end, ios_base& str,
+	                      ios_base::iostate& err, tm* t) const;
+	iter_type get_monthname(iter_type in, iter_type end, ios_base& str,
+	                        ios_base::iostate& err, tm* t) const;
+	iter_type get_year(iter_type in, iter_type end, ios_base& str,
+	                   ios_base::iostate& err, tm* t) const;
+
+	static locale::id id;
+
+protected:
+	virtual ~time_get();
+	virtual dateorder do_date_order() const;
+	virtual iter_type do_get_time(iter_type in, iter_type end, ios_base& str,
+	                              ios_base::iostate& err, tm* t) const;
+	virtual iter_type do_get_date(iter_type in, iter_type end, ios_base& str,
+	                              ios_base::iostate& err, tm* t) const;
+	virtual iter_type do_get_weekday(iter_type in, iter_type end, ios_base& str,
+	                                 ios_base::iostate& err, tm* t) const;
+	virtual iter_type do_get_monthname(iter_type in, iter_type end, ios_base& str,
+	                                   ios_base::iostate& err, tm* t) const;
+	virtual iter_type do_get_year(iter_type in, iter_type end, ios_base& str,
+	                              ios_base::iostate& err, tm* t) const;
+	iter_type __do_parse(iter_type in, iter_type end, ios_base& str, ios_base::iostate& err,
+	                     const basic_string<charT>& pattern, tm* t) const;  // Metrowerks extension
+
+	dateorder __date_order_;   // Metrowerks extension
+};
+
+template <class charT, class InputIterator = istreambuf_iterator<charT> >
+class time_get_byname
+	: public time_get<charT, InputIterator>
+{
+public:
+
+	typedef time_base::dateorder dateorder;
+	typedef InputIterator        iter_type;
+
+	explicit time_get_byname(const char* std_name, size_t refs = 0);
+
+protected:
+	virtual ~time_get_byname();
+};
+
+template <class charT, class OutputIterator = ostreambuf_iterator<charT> >
+class time_put
+	: public locale::facet
+{
+public:
+	typedef charT            char_type;
+	typedef OutputIterator   iter_type;
+
+	explicit time_put(size_t refs = 0);
+
+	iter_type put(iter_type out, ios_base& str, char_type fill, const tm* tmb,
+	              const charT* pattern, const charT* pat_end) const;
+	iter_type put(iter_type out, ios_base& str, char_type fill,
+	              const tm* tmb, char format, char modifier = 0) const;
+
+	static locale::id id;
+
+protected:
+	virtual ~time_put();
+	virtual iter_type do_put(iter_type out, ios_base& str, char_type fill, const tm* tmb,
+	                         char format, char modifier) const;
+};
+
+template <class charT, class OutputIterator = ostreambuf_iterator<charT> >
+class time_put_byname
+	: public time_put<charT, OutputIterator>
+{
+public:
+	typedef charT          char_type;
+	typedef OutputIterator iter_type;
+
+	explicit time_put_byname(const char* std_name, size_t refs = 0);
+protected:
+	virtual ~time_put_byname();
+};
+
+	//  money:
+
+class money_base
+{
+public:
+	enum part { none, space, symbol, sign, value };
+	struct pattern { char field[4]; };
+};
+
+template <class charT, class InputIterator = istreambuf_iterator<charT> >
+class money_get
+	: public locale::facet
+{
+public:
+	typedef charT               char_type;
+	typedef InputIterator       iter_type;
+	typedef basic_string<charT> string_type;
+
+	explicit money_get(size_t refs = 0);
+
+	iter_type get(iter_type in, iter_type end, bool intl, ios_base& str,
+	              ios_base::iostate& err, long double& units) const;
+
+	iter_type get(iter_type in, iter_type end, bool intl, ios_base& str,
+	              ios_base::iostate& err, string_type& digits) const;
+
+	static locale::id id;
+
+protected:
+	virtual ~money_get();
+
+	virtual iter_type do_get(iter_type in, iter_type end, bool intl, ios_base& str,
+	                         ios_base::iostate& err, long double& units) const;
+	virtual iter_type do_get(iter_type in, iter_type end, bool intl, ios_base& str,
+	                         ios_base::iostate& err, string_type& digits) const;
+};
+
+template <class charT, class OutputIterator = ostreambuf_iterator<charT> >
+class money_put
+	: public locale::facet
+{
+public:
+	typedef charT               char_type;
+	typedef OutputIterator      iter_type;
+	typedef basic_string<charT> string_type;
+
+	explicit money_put(size_t refs = 0);
+
+	iter_type put(iter_type out, bool intl, ios_base& str, char_type fill,
+	              long double units) const;
+	iter_type put(iter_type out, bool intl, ios_base& str, char_type fill,
+	              const string_type& digits) const;
+
+	static locale::id id;
+
+protected:
+	virtual ~money_put();
+	virtual iter_type do_put(iter_type out, bool intl, ios_base& str, char_type fill,
+	                         long double units) const;
+	virtual iter_type do_put(iter_type out, bool intl, ios_base& str, char_type fill,
+	                         const string_type& digits) const;
+};
+
+template <class charT, bool International = false>
+class moneypunct
+	: public locale::facet,
+	  public money_base
+{
+public:
+	typedef charT char_type;
+	typedef basic_string<charT> string_type;
+
+	explicit moneypunct(size_t refs = 0);
+
+	charT        decimal_point() const;
+	charT        thousands_sep() const;
+	string       grouping()      const;
+	string_type  curr_symbol()   const;
+	string_type  positive_sign() const;
+	string_type  negative_sign() const;
+	int          frac_digits()   const;
+	pattern      pos_format()    const;
+	pattern      neg_format()    const;
+
+	static locale::id id;
+	static const bool intl = International;
+
+protected:
+	virtual ~moneypunct();
+	virtual charT        do_decimal_point() const;
+	virtual charT        do_thousands_sep() const;
+	virtual string       do_grouping()      const;
+	virtual string_type  do_curr_symbol()   const;
+	virtual string_type  do_positive_sign() const;
+	virtual string_type  do_negative_sign() const;
+	virtual int          do_frac_digits()   const;
+	virtual pattern      do_pos_format()    const;
+	virtual pattern      do_neg_format()    const;
+
+	charT __decimal_point_;              // Metrowerks extension
+	charT __thousands_sep_;              // Metrowerks extension
+	string __grouping_;                  // Metrowerks extension
+	string_type __cur_symbol_;           // Metrowerks extension
+	string_type __positive_sign_;        // Metrowerks extension
+	string_type __negative_sign_;        // Metrowerks extension
+	int __frac_digits_;                  // Metrowerks extension
+	pattern __pos_format_;               // Metrowerks extension
+	pattern __neg_format_;               // Metrowerks extension
+};
+
+template <class charT, bool Intl = false>
+class moneypunct_byname
+	: public moneypunct<charT, Intl>
+{
+public:
+	typedef money_base::pattern pattern;
+	typedef basic_string<charT> string_type;
+
+	explicit moneypunct_byname(const char* std_name, size_t refs = 0);
+protected:
+	virtual ~moneypunct_byname();
+};
+
+	//  message retrieval:
+
+class messages_base
+{
+public:
+	typedef int catalog;
+};
+
+template <class charT>
+class messages
+	: public locale::facet,
+	  public messages_base
+{
+public:
+	typedef charT char_type;
+	typedef basic_string<charT> string_type;
+
+	explicit messages(size_t refs = 0);
+
+	catalog     open(const basic_string<char>& fn, const locale& loc) const;
+	string_type get(catalog c, int set, int msgid, const string_type& dfault) const;
+	void        close(catalog c) const;
+
+	static locale::id id;
+
+protected:
+	virtual ~messages();
+	virtual catalog     do_open(const basic_string<char>& fn, const locale& loc) const;
+	virtual string_type do_get(catalog c, int set, int msgid, const string_type& dfault) const;
+	virtual void        do_close(catalog c) const;
+
+	string_type&        __set(catalog c, int set, int msgid);
+};
+
+template <class charT>
+class messages_byname
+	: public messages<charT>
+{
+public:
+	typedef messages_base::catalog catalog;
+	typedef basic_string<charT>    string_type;
+
+	explicit messages_byname(const char*, size_t refs = 0);
+protected:
+	virtual ~messages_byname();
+};
+
+}  // std
+*/
+
+#include <mslconfig>
+
+#ifndef _MSL_NO_IO
+
+#include <localeimp>
+#include <ctype>
+#include <ctype_byname>
+#include <numfacet>
+#include <numpunct_byname>
+#include <collate>
+#include <codecvt>
+#include <codecvt_byname>
+#include <timefacet>
+#include <moneyfacet>
+#include <messagefacet>
+#include <msl_mutex>
+
+#ifndef RC_INVOKED
+
+#ifdef __MWERKS__
+#pragma options align=native
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#if _MSL_FORCE_ENUMS_ALWAYS_INT
+		#pragma enumsalwaysint on
+	#else
+		#pragma enumsalwaysint off
+	#endif
+#endif  // _MSL_FORCE_ENUMS_ALWAYS_INT
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#if _MSL_FORCE_ENABLE_BOOL_SUPPORT
+		#pragma bool on
+	#else
+		#pragma bool off
+	#endif
+#endif  // _MSL_FORCE_ENABLE_BOOL_SUPPORT
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	namespace std {
+#endif
+
+#ifndef _MSL_NO_LOCALE
+
+// __locale_imp Implementation
+
+_MSL_IMP_EXP_CPP Metrowerks::recursive_mutex& get_locale_mutex();
+
+template <bool b>
+void
+__locale_imp::init(const char*)
+{
+#ifndef _MSL_MINIMUM_NAMED_LOCALE
+	string facet_name = get_facet_name(name_, 0);
+#ifndef _MSL_DLL
+	if (facet_name != "C")
+	{
+#endif  // _MSL_DLL
+		replace<collate<char> >(*(new collate_byname<char>(facet_name.c_str())));
+	#ifndef _MSL_NO_WCHART_CPP_SUPPORT
+		replace<collate<wchar_t> >(*(new collate_byname<wchar_t>(facet_name.c_str())));
+	#endif
+#ifndef _MSL_DLL
+	}
+#endif
+	facet_name = get_facet_name(name_, 1);
+#ifndef _MSL_DLL
+	if (facet_name != "C")
+	{
+#endif  // _MSL_DLL
+		replace<ctype<char> >(*(new ctype_byname<char>(facet_name.c_str())));
+		replace<codecvt<char, char, mbstate_t> >(*(new codecvt_byname<char, char, mbstate_t>(facet_name.c_str())));
+	#ifndef _MSL_NO_WCHART_CPP_SUPPORT
+		replace<ctype<wchar_t> >(*(new ctype_byname<wchar_t>(facet_name.c_str())));
+		replace<codecvt<wchar_t, char, mbstate_t> >(*(new codecvt_byname<wchar_t, char, mbstate_t>(facet_name.c_str())));
+	#endif  // _MSL_NO_WCHART_CPP_SUPPORT
+#ifndef _MSL_DLL
+	}
+#endif
+	facet_name = get_facet_name(name_, 2);
+#ifndef _MSL_DLL
+	if (facet_name != "C")
+	{
+#endif  // _MSL_DLL
+		replace<moneypunct<char> >(*(new moneypunct_byname<char>(facet_name.c_str())));
+		replace<moneypunct<char, true> >(*(new moneypunct_byname<char, true>(facet_name.c_str())));
+	#ifdef _MSL_DLL
+		replace(*(new money_get<char>));
+		replace(*(new money_put<char>));
+	#endif  // _MSL_DLL
+	#ifndef _MSL_NO_WCHART_CPP_SUPPORT
+		replace<moneypunct<wchar_t> >(*(new moneypunct_byname<wchar_t>(facet_name.c_str())));
+		replace<moneypunct<wchar_t, true> >(*(new moneypunct_byname<wchar_t, true>(facet_name.c_str())));
+	#ifdef _MSL_DLL
+		replace(*(new money_get<wchar_t>));
+		replace(*(new money_put<wchar_t>));
+	#endif  // _MSL_DLL
+	#endif  // _MSL_NO_WCHART_CPP_SUPPORT
+#ifndef _MSL_DLL
+	}
+#endif
+	facet_name = get_facet_name(name_, 3);
+#ifndef _MSL_DLL
+	if (facet_name != "C")
+	{
+#endif  // _MSL_DLL
+		replace<numpunct<char> >(*(new numpunct_byname<char>(facet_name.c_str())));
+	#ifdef _MSL_DLL
+		replace(*(new num_get<char>));
+		replace(*(new num_put<char>));
+	#endif  // _MSL_DLL
+	#ifndef _MSL_NO_WCHART_CPP_SUPPORT
+		replace<numpunct<wchar_t> >(*(new numpunct_byname<wchar_t>(facet_name.c_str())));
+	#ifdef _MSL_DLL
+		replace(*(new num_get<wchar_t>));
+		replace(*(new num_put<wchar_t>));
+	#endif  // _MSL_DLL
+	#endif  // _MSL_NO_WCHART_CPP_SUPPORT
+#ifndef _MSL_DLL
+	}
+#endif
+	facet_name = get_facet_name(name_, 4);
+#ifndef _MSL_NO_TIME_SUPPORT
+#ifndef _MSL_DLL
+	if (facet_name != "C")
+	{
+#endif  // _MSL_DLL
+		replace<timepunct<char> >(*(new timepunct_byname<char>(facet_name.c_str())));
+		replace<time_get<char> >(*(new time_get_byname<char>(facet_name.c_str())));
+		replace<time_put<char> >(*(new time_put_byname<char>(facet_name.c_str())));
+	#ifndef _MSL_NO_WCHART_CPP_SUPPORT
+		replace<timepunct<wchar_t> >(*(new timepunct_byname<wchar_t>(facet_name.c_str())));
+		replace<time_get<wchar_t> >(*(new time_get_byname<wchar_t>(facet_name.c_str())));
+		replace<time_put<wchar_t> >(*(new time_put_byname<wchar_t>(facet_name.c_str())));
+	#endif  // _MSL_NO_WCHART_CPP_SUPPORT
+#ifndef _MSL_DLL
+	}
+#endif
+#endif  // _MSL_NO_TIME_SUPPORT
+	facet_name = get_facet_name(name_, 5);
+#ifndef _MSL_DLL
+	if (facet_name != "C")
+	{
+#endif  // _MSL_DLL
+		replace<messages<char> >(*(new messages_byname<char>(facet_name.c_str())));
+	#ifndef _MSL_NO_WCHART_CPP_SUPPORT
+		replace<messages<wchar_t> >(*(new messages_byname<wchar_t>(facet_name.c_str())));
+	#endif
+#ifndef _MSL_DLL
+	}
+#endif
+#endif  // _MSL_MINIMUM_NAMED_LOCALE
+}
+
+template <bool b>
+void
+__locale_imp::init(const locale& other, const locale& one, locale::category cat)
+{
+	Metrowerks::recursive_mutex::scoped_lock lock(get_locale_mutex());
+	*this = *other.imp_;
+	if (cat & locale::collate)
+	{
+		replace(_USE_FACET(_STD::collate<char>, one));
+		#ifndef _MSL_NO_WCHART_CPP_SUPPORT
+			replace(_USE_FACET(_STD::collate<wchar_t>, one));
+		#endif
+	}
+	if (cat & locale::ctype)
+	{
+		replace(_USE_FACET(_STD::ctype<char>, one));
+		#ifndef _MSL_NO_EXPLICIT_FUNC_TEMPLATE_ARG
+			replace(use_facet<_STD::codecvt<char, char, mbstate_t> >(one));
+		#else
+			replace(use_facet(one, (_STD::codecvt<char, char, mbstate_t>*)0));
+		#endif
+		#ifndef _MSL_NO_WCHART_CPP_SUPPORT
+			replace(_USE_FACET(_STD::ctype<wchar_t>, one));
+			#ifndef _MSL_NO_EXPLICIT_FUNC_TEMPLATE_ARG
+				replace(use_facet<_STD::codecvt<wchar_t, char, mbstate_t> >(one));
+			#else
+				replace(use_facet(one, (_STD::codecvt<wchar_t, char, mbstate_t>*)0));
+			#endif
+		#endif  // _MSL_NO_WCHART_CPP_SUPPORT
+	}
+	if (cat & locale::monetary)
+	{
+		replace(_USE_FACET(_STD::moneypunct<char>, one));
+		#ifndef _MSL_NO_EXPLICIT_FUNC_TEMPLATE_ARG
+			replace(use_facet<_STD::moneypunct<char, true> >(one));
+		#else
+			replace(use_facet(one, (_STD::moneypunct<char, true>*)0));
+		#endif
+		replace(_USE_FACET(_STD::money_get<char>, one));
+		replace(_USE_FACET(_STD::money_put<char>, one));
+		#ifndef _MSL_NO_WCHART_CPP_SUPPORT
+			replace(_USE_FACET(_STD::moneypunct<wchar_t>, one));
+			#ifndef _MSL_NO_EXPLICIT_FUNC_TEMPLATE_ARG
+				replace(use_facet<_STD::moneypunct<wchar_t, true> >(one));
+			#else
+				replace(use_facet(one, (_STD::moneypunct<wchar_t, true>*)0));
+			#endif
+			replace(_USE_FACET(_STD::money_get<wchar_t>, one));
+			replace(_USE_FACET(_STD::money_put<wchar_t>, one));
+		#endif  // _MSL_NO_WCHART_CPP_SUPPORT
+	}
+	if (cat & locale::numeric)
+	{
+		replace(_USE_FACET(_STD::numpunct<char>, one));
+		replace(_USE_FACET(_STD::num_get<char>, one));
+		replace(_USE_FACET(_STD::num_put<char>, one));
+		#ifndef _MSL_NO_WCHART_CPP_SUPPORT
+			replace(_USE_FACET(_STD::numpunct<wchar_t>, one));
+			replace(_USE_FACET(_STD::num_get<wchar_t>, one));
+			replace(_USE_FACET(_STD::num_put<wchar_t>, one));
+		#endif  // _MSL_NO_WCHART_CPP_SUPPORT
+	}
+#ifndef _MSL_NO_TIME_SUPPORT
+	if (cat & locale::time)
+	{
+		replace(_USE_FACET(_STD::timepunct<char>, one));
+		replace(_USE_FACET(_STD::time_get<char>, one));
+		replace(_USE_FACET(_STD::time_put<char>, one));
+		#ifndef _MSL_NO_WCHART_CPP_SUPPORT
+			replace(_USE_FACET(_STD::timepunct<wchar_t>, one));
+			replace(_USE_FACET(_STD::time_get<wchar_t>, one));
+			replace(_USE_FACET(_STD::time_put<wchar_t>, one));
+		#endif  // _MSL_NO_WCHART_CPP_SUPPORT
+	}
+#endif  // _MSL_NO_TIME_SUPPORT
+	if (cat & locale::messages)
+	{
+		replace(_USE_FACET(_STD::messages<char>, one));
+		#ifndef _MSL_NO_WCHART_CPP_SUPPORT
+			replace(_USE_FACET(_STD::messages<wchar_t>, one));
+		#endif
+	}
+	if (other.imp_->name() != "*" && one.imp_->name() != "*")
+		name() = combine_names(other.imp_->name(), one.imp_->name(), cat);
+	else
+		name() = "*";
+}
+
+// locale Implementation
+
+template <class Facet>
+locale
+locale::combine(const locale& other) const
+{
+	if (!_HAS_FACET(Facet, other))
+	#ifndef _MSL_NO_EXCEPTIONS
+		throw runtime_error("locale::combine domain error");
+	#else
+		__msl_error("locale::combine domain error");
+	#endif
+	Metrowerks::recursive_mutex::scoped_lock lock(get_locale_mutex());
+	locale result(imp_type(new __locale_imp(*imp_)));
+	result.imp_->replace(_USE_FACET(Facet, other));
+	result.imp_->name() = "*";
+	return result;
+}
+
+// _lib.locale.convenience_, convenience interfaces:
+
+template <class charT>
+inline
+bool
+isspace(charT c, const locale& loc)
+{
+	return _USE_FACET(ctype<charT>, loc).is(ctype_base::space, c);
+}
+
+template <class charT>
+inline
+bool
+isblank(charT c, const locale& loc)
+{
+	return _USE_FACET(ctype<charT>, loc).is(ctype_base::blank, c);
+}
+
+template <class charT>
+inline
+bool
+isprint(charT c, const locale& loc)
+{
+	return _USE_FACET(ctype<charT>, loc).is(ctype_base::print, c);
+}
+
+template <class charT>
+inline
+bool
+iscntrl(charT c, const locale& loc)
+{
+	return _USE_FACET(ctype<charT>, loc).is(ctype_base::cntrl, c);
+}
+
+template <class charT>
+inline
+bool
+isupper(charT c, const locale& loc)
+{
+	return _USE_FACET(ctype<charT>, loc).is(ctype_base::upper, c);
+}
+
+template <class charT>
+inline
+bool
+islower(charT c, const locale& loc)
+{
+	return _USE_FACET(ctype<charT>, loc).is(ctype_base::lower, c);
+}
+
+template <class charT>
+inline
+bool
+isalpha(charT c, const locale& loc)
+{
+	return _USE_FACET(ctype<charT>, loc).is(ctype_base::alpha, c);
+}
+
+template <class charT>
+inline
+bool
+isdigit(charT c, const locale& loc)
+{
+	return _USE_FACET(ctype<charT>, loc).is(ctype_base::digit, c);
+}
+
+template <class charT>
+inline
+bool
+ispunct(charT c, const locale& loc)
+{
+	return _USE_FACET(ctype<charT>, loc).is(ctype_base::punct, c);
+}
+
+template <class charT>
+inline
+bool
+isxdigit(charT c, const locale& loc)
+{
+	return _USE_FACET(ctype<charT>, loc).is(ctype_base::xdigit, c);
+}
+
+template <class charT>
+inline
+bool
+isalnum(charT c, const locale& loc)
+{
+	return _USE_FACET(ctype<charT>, loc).is(ctype_base::alnum, c);
+}
+
+template <class charT>
+inline
+bool
+isgraph(charT c, const locale& loc)
+{
+	return _USE_FACET(ctype<charT>, loc).is(ctype_base::graph, c);
+}
+
+template <class charT>
+inline
+charT
+toupper(charT c, const locale& loc)
+{
+	return _USE_FACET(ctype<charT>, loc).toupper(c);
+}
+
+template <class charT>
+inline
+charT
+tolower(charT c, const locale& loc)
+{
+	return _USE_FACET(ctype<charT>, loc).tolower(c);
+}
+
+#endif  // _MSL_NO_LOCALE
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	} // namespace std
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#pragma enumsalwaysint reset
+#endif
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#pragma bool reset
+#endif
+
+#ifdef __MWERKS__
+#pragma options align=reset
+#endif
+
+#endif // RC_INVOKED
+
+#endif // _MSL_NO_IO
+
+#endif // _LOCALE
+
+// hh 980702 Modified num_put and num_get for void* to respect implementation dependent
+//           historic formattting conventions.  This involved insuring that void* was printed
+//           out in the format 0xXXXXXXXX with leading 0's if necessary.
+// hh 980713 Temporarily moved member templates into class definition to support compiler
+// hh 980802 Rewrote fixed_digits and scientific digits for more accurate printing
+// hh 980803 added _STD:: to disambiguate the facet collate from the enum
+// hh 980803 last arg was missing in a call to time_put::do_put.
+// hh 980811 changed unsigned long to unsigned long long putdec
+// hh 980811 Applied for-scoping neutral code
+// hh 980812 Fixed bug in inserting thousands seperators into floating point output
+// hh 980824 moved codecvt_byname out from under #ifdef MSIPL_WCHART
+// hh 980902 #ifdef'd out exception code when ndef MSIPL_EXCEPT
+// hh 980915 Modified file so that it would work without MSIPL_EXPLICIT_FUNC_TEMPLATE_ARG
+// hh 981018 Modified _BCD helper class to not round if it uses sprintf
+// hh 981111 Removed dependence on compiler support for default template args in string declarations
+// hh 981126 Changed pend from an iterator to a position in money_put
+// hh 981220 Added base class qualifiers to several typedefs in derived classes
+// hh 981220 Added class modifier to several friend declarations
+// hh 981220 Added typename to appropriate return types
+// hh 990109 Created a C lib independent ctype_base (suggested by bc).
+// hh 990120 changed name of MSIPL flags
+// hh 990215 removed _OVERLOAD_MONPUNCT_OFF and _OVERLOAD_NUMPUNCT_OFF, no longer needed
+// hh 990328 Fixed bug in floating point output rounding
+// hh 990911 Added special case for when # of money digits is <= frac_digits
+// hh 991015 Added missing trailing zeroes in fixed_digits.
+// hh 991101 Fixed adjustment bug for when right should be used.
+// hh 991213 Changed codecvt<wchar_t, char,...>::do_encoding to return 2
+// hh 991230 Added missing toupper and tolower global methods
+// hh 000130 Installed _MSL_NO_IO
+// hh 000130 Installed _MSL_IMP_EXP_CPP
+// hh 000130 Installed _MSL_EXTENDED_PRECISION_OUTP
+// hh 001011 Moved forward dclaration of _BCD so that it is visible when _MSL_NO_LOCALE
+// hh 001011 Removed duplicate default template arguments from facet forward declarations
+// hh 001011 Uninlined locale constructor taking other locale and category, gcc only
+// hh 001011 ifdefed out template<> for gcc
+// hh 001011 Fixed bug several places:  base class missing template arguments
+// hh 001011 Fixed typename bug in __putnumber
+// hh 010125 Rewrote
+// hh 010402 Removed 68K CMF support
+// hh 011116 Changed init to work with combined names

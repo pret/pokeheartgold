@@ -1,0 +1,488 @@
+/* MSL
+ * Copyright © 1995-2006 Freescale Corporation.  All rights reserved.
+ *
+ * $Date: 2006/02/09 16:59:30 $
+ * $Revision: 1.24.2.2 $
+ */
+
+// strstream
+
+#ifndef _STRSTREAM
+#define _STRSTREAM
+
+/*  strstream synopsis
+
+namespace std
+{
+
+class strstreambuf
+	: public streambuf
+{
+public:
+	explicit strstreambuf(streamsize alsize_arg = 0);
+	strstreambuf(void* (*palloc_arg)(size_t), void (*pfree_arg)(void*));
+	strstreambuf(char* gnext_arg, streamsize n, char* pbeg_arg = 0);
+	strstreambuf(const char* gnext_arg, streamsize n);
+	strstreambuf(signed char* gnext_arg, streamsize n, signed char* pbeg_arg = 0);
+	strstreambuf(const signed char* gnext_arg, streamsize n);
+	strstreambuf(unsigned char* gnext_arg, streamsize n, unsigned char* pbeg_arg = 0);
+	strstreambuf(const unsigned char* gnext_arg, streamsize n);
+	virtual ~strstreambuf();
+	void  freeze(bool freezefl = true);
+	char* str();
+	int   pcount() const;
+protected:
+	virtual int_type overflow (int_type c = EOF);
+	virtual int_type pbackfail(int_type c = EOF);
+	virtual int_type underflow();
+	virtual pos_type seekoff(off_type off, ios_base::seekdir way,
+	                         ios_base::openmode which = ios_base::in | ios_base::out);
+	virtual pos_type seekpos(pos_type sp,
+	                         ios_base::openmode which = ios_base::in | ios_base::out);
+	virtual streambuf* setbuf(char* s, streamsize n);
+};
+
+class istrstream
+	: public basic_istream<char>
+{
+public:
+	explicit istrstream(const char* s);
+	explicit istrstream(char* s);
+	istrstream(const char* s, streamsize n);
+	istrstream(char* s, streamsize n);
+	virtual ~istrstream();
+	strstreambuf* rdbuf() const;
+	char* str();
+};
+
+class ostrstream
+	: public basic_ostream<char>
+{
+public:
+	ostrstream();
+	ostrstream(char* s, int n, ios_base::openmode mode = ios_base::out);
+	virtual ~ostrstream();
+	strstreambuf* rdbuf() const;
+	void freeze(bool freezefl = true);
+	char* str();
+	int pcount() const;
+};
+
+class strstream
+	: public basic_iostream<char>
+{
+public:
+	// Types
+	typedef char                                char_type;
+	typedef char_traits<char>::int_type         int_type;
+	typedef char_traits<char>::pos_type         pos_type;
+	typedef char_traits<char>::off_type         off_type;
+	// consturctors/destructor
+	strstream();
+	strstream(char* s, int n, ios_base::openmode mode = ios_base::in|ios_base::out);
+	virtual ~strstream();
+	// Members:
+	strstreambuf* rdbuf() const;
+	void freeze(bool freezefl = true);
+	int pcount() const;
+	char* str();
+};
+
+}  // std
+*/
+
+#include <mslconfig>
+
+#ifndef _MSL_NO_IO
+
+#include <istream>
+
+#ifndef RC_INVOKED
+
+#ifdef __MWERKS__
+#pragma options align=native
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#if _MSL_FORCE_ENUMS_ALWAYS_INT
+		#pragma enumsalwaysint on
+	#else
+		#pragma enumsalwaysint off
+	#endif
+#endif  // _MSL_FORCE_ENUMS_ALWAYS_INT
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#if _MSL_FORCE_ENABLE_BOOL_SUPPORT
+		#pragma bool on
+	#else
+		#pragma bool off
+	#endif
+#endif  // _MSL_FORCE_ENABLE_BOOL_SUPPORT
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	namespace std {
+#endif
+
+class _MSL_IMP_EXP_CPP strstreambuf
+	: public streambuf
+{
+public:
+	explicit strstreambuf(streamsize alsize_arg = 0);
+	strstreambuf(void* (*palloc_arg)(size_t), void (*pfree_arg)(void*));
+	strstreambuf(char* gnext_arg, streamsize n, char* pbeg_arg = 0);
+	strstreambuf(const char* gnext_arg, streamsize n);
+	strstreambuf(signed char* gnext_arg, streamsize n, signed char* pbeg_arg = 0);
+	strstreambuf(const signed char* gnext_arg, streamsize n);
+	strstreambuf(unsigned char* gnext_arg, streamsize n, unsigned char* pbeg_arg = 0);
+	strstreambuf(const unsigned char* gnext_arg, streamsize n);
+	virtual ~strstreambuf();
+	void  freeze(bool freezefl = true);
+	char* str();
+	int   pcount() const;
+protected:
+	virtual int_type overflow (int_type c = EOF);
+	virtual int_type pbackfail(int_type c = EOF);
+	virtual int_type underflow();
+	virtual pos_type seekoff(off_type off, ios_base::seekdir way,
+	                         ios_base::openmode which = ios_base::in | ios_base::out);
+	virtual pos_type seekpos(pos_type sp,
+	                         ios_base::openmode which = ios_base::in | ios_base::out);
+	virtual streambuf* setbuf(char* s, streamsize n);
+private:
+	typedef unsigned char strstate;
+	static const strstate allocated = 1 << 0;
+	static const strstate constant  = 1 << 1;
+	static const strstate dynamic   = 1 << 2;
+	static const strstate frozen    = 1 << 3;
+	static const streamsize default_alsize = 128;
+	streamsize alsize_;
+	void* (*palloc_)(size_t);
+	void (*pfree_)(void*);
+	strstate strmode_;
+
+	void init(char* gnext_arg, streamsize n, char* pbeg_arg = 0);
+};
+
+class istrstream
+	: public basic_istream<char>
+{
+public:
+	explicit istrstream(const char* s);
+	explicit istrstream(char* s);
+	istrstream(const char* s, streamsize n);
+	istrstream(char* s, streamsize n);
+	virtual ~istrstream();
+	strstreambuf* rdbuf() const;
+	char* str();
+private:
+	strstreambuf strbuf_;
+};
+
+class ostrstream
+	: public basic_ostream<char>
+{
+public:
+	ostrstream();
+	ostrstream(char* s, int n, ios_base::openmode mode = ios_base::out);
+	virtual ~ostrstream();
+	strstreambuf* rdbuf() const;
+	void freeze(bool freezefl = true);
+	char* str();
+	int pcount() const;
+private:
+	strstreambuf strbuf_;
+};
+
+class strstream
+	: public basic_iostream<char>
+{
+public:
+	// Types
+	typedef char                                char_type;
+	typedef char_traits<char>::int_type         int_type;
+	typedef char_traits<char>::pos_type         pos_type;
+	typedef char_traits<char>::off_type         off_type;
+	// consturctors/destructor
+	strstream();
+	strstream(char* s, int n, ios_base::openmode mode = ios_base::in|ios_base::out);
+	virtual ~strstream();
+	// Members:
+	strstreambuf* rdbuf() const;
+	void freeze(bool freezefl = true);
+	int pcount() const;
+	char* str();
+private:
+	strstreambuf strbuf_;
+};
+
+// Implementation
+
+// strstreambuf
+
+inline
+strstreambuf::strstreambuf(streamsize alsize_arg)
+	: alsize_(alsize_arg),
+	  palloc_(0),
+	  pfree_(0),
+	  strmode_(dynamic)
+{
+	if (alsize_ <= 0)
+		alsize_ = default_alsize;
+}
+
+inline
+strstreambuf::strstreambuf(void* (*palloc_arg)(size_t), void (*pfree_arg)(void*))
+	: alsize_(default_alsize),
+	  palloc_(palloc_arg),
+	  pfree_(pfree_arg),
+	  strmode_(dynamic)
+{
+}
+
+inline
+strstreambuf::strstreambuf(char* gnext_arg, streamsize n, char* pbeg_arg)
+	: alsize_(default_alsize),
+	  palloc_(0),
+	  pfree_(0),
+	  strmode_(0)
+{
+	init(gnext_arg, n, pbeg_arg);
+}
+
+inline
+strstreambuf::strstreambuf(const char* gnext_arg, streamsize n)
+	: alsize_(default_alsize),
+	  palloc_(0),
+	  pfree_(0),
+	  strmode_(constant)
+{
+	init((char*)gnext_arg, n);
+}
+
+inline
+strstreambuf::strstreambuf(signed char* gnext_arg, streamsize n, signed char* pbeg_arg)
+	: alsize_(default_alsize),
+	  palloc_(0),
+	  pfree_(0),
+	  strmode_(0)
+{
+	init((char*)gnext_arg, n, (char*)pbeg_arg);
+}
+
+inline
+strstreambuf::strstreambuf(const signed char* gnext_arg, streamsize n)
+	: alsize_(default_alsize),
+	  palloc_(0),
+	  pfree_(0),
+	  strmode_(constant)
+{
+	init((char*)gnext_arg, n);
+}
+
+inline
+strstreambuf::strstreambuf(unsigned char* gnext_arg, streamsize n, unsigned char* pbeg_arg)
+	: alsize_(default_alsize),
+	  palloc_(0),
+	  pfree_(0),
+	  strmode_(0)
+{
+	init((char*)gnext_arg, n, (char*)pbeg_arg);
+}
+
+inline
+strstreambuf::strstreambuf(const unsigned char* gnext_arg, streamsize n)
+	: alsize_(default_alsize),
+	  palloc_(0),
+	  pfree_(0),
+	  strmode_(constant)
+{
+	init((char*)gnext_arg, n);
+}
+
+inline
+char*
+strstreambuf::str()
+{
+	freeze();
+	return eback();
+}
+
+inline
+int
+strstreambuf::pcount() const
+{
+	return static_cast<int>(pptr() - pbase());
+}
+
+// istrstream
+
+inline
+istrstream::istrstream(const char* s)
+	: basic_istream<char>(&strbuf_),
+	  strbuf_(s, 0)
+{
+}
+
+inline
+istrstream::istrstream(char* s)
+	: basic_istream<char>(&strbuf_),
+	  strbuf_(s, 0)
+{
+}
+
+inline
+istrstream::istrstream(const char* s, streamsize n)
+	: basic_istream<char>(&strbuf_),
+	  strbuf_(s, n)
+{
+}
+
+inline
+istrstream::istrstream(char* s, streamsize n)
+	: basic_istream<char>(&strbuf_),
+	  strbuf_(s, n)
+{
+}
+
+inline
+istrstream::~istrstream()
+{
+}
+
+inline
+strstreambuf*
+istrstream::rdbuf() const
+{
+	return (strstreambuf*)&strbuf_;
+}
+
+inline
+char*
+istrstream::str()
+{
+	return rdbuf()->str();
+}
+
+// ostrstream
+
+inline
+ostrstream::ostrstream()
+	: basic_ostream<char>(&strbuf_)
+{
+}
+
+inline
+ostrstream::ostrstream(char* s, int n, ios_base::openmode mode)
+	: basic_ostream<char>(&strbuf_),
+	  strbuf_(mode & app ? strstreambuf(s, n, s + strlen(s)) : strstreambuf(s, n, s))
+{
+}
+
+inline
+ostrstream::~ostrstream()
+{
+}
+
+inline
+strstreambuf*
+ostrstream::rdbuf() const
+{
+	return (strstreambuf*)&strbuf_;
+}
+
+inline
+void
+ostrstream::freeze(bool freezefl)
+{
+	strbuf_.freeze(freezefl);
+}
+
+inline
+char*
+ostrstream::str()
+{
+	return rdbuf()->str();
+}
+
+inline
+int
+ostrstream::pcount() const
+{
+	return rdbuf()->pcount();
+}
+
+// strstream
+
+inline
+strstream::strstream()
+	: basic_iostream<char>(&strbuf_)
+{
+}
+
+inline
+strstream::strstream(char* s, int n, ios_base::openmode mode)
+	: basic_iostream<char>(&strbuf_),
+	  strbuf_(mode & app ? strstreambuf(s, n, s + strlen(s)) : strstreambuf(s, n, s))
+{
+}
+
+inline
+strstream::~strstream()
+{
+}
+
+inline
+strstreambuf*
+strstream::rdbuf() const
+{
+	return (strstreambuf*)&strbuf_;
+}
+
+inline
+void
+strstream::freeze(bool freezefl)
+{
+	strbuf_.freeze(freezefl);
+}
+
+inline
+int
+strstream::pcount() const
+{
+	return rdbuf()->pcount();
+}
+
+inline
+char*
+strstream::str()
+{
+	return rdbuf()->str();
+}
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	} // namespace std
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#pragma enumsalwaysint reset
+#endif
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#pragma bool reset
+#endif
+
+#ifdef __MWERKS__
+#pragma options align=reset
+#endif
+
+#endif // RC_INVOKED
+
+#endif // _MSL_NO_IO
+
+#endif // _STRSTREAM
+
+// hh 990126 Changed from MSIPL flags to _MSL flags
+// hh 000130 Installed _MSL_IMP_EXP_CPP
+// hh 001011 Fixed several typename bugs
+// hh 010402 Removed 68K CMF support
+// hh 010820 Added static_cast to pcount

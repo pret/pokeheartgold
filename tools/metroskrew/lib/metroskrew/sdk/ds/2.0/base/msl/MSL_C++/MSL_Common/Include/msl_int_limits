@@ -1,0 +1,892 @@
+/* MSL
+ * Copyright © 1995-2006 Freescale Corporation.  All rights reserved.
+ *
+ * $Date: 2006/02/09 16:58:55 $
+ * $Revision: 1.9.2.2 $
+ */
+
+// msl_int_limits
+
+#ifndef _MSL_INT_LIMITS
+#define _MSL_INT_LIMITS
+
+#include <mslconfig>
+
+#ifdef _MSL_CANT_DO_LIMITS
+	#include <climits>
+	#if !defined(_MSL_NO_WCHART_LANG_SUPPORT) && !defined(_MSL_NO_WCHART_CPP_SUPPORT) && !defined(_MSL_NO_WCHART_C_SUPPORT)
+		#include <cwchar>
+	#endif
+#endif  // _MSL_CANT_DO_LIMITS
+
+#ifndef RC_INVOKED
+
+#ifdef __MWERKS__
+#pragma options align=native
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#if _MSL_FORCE_ENUMS_ALWAYS_INT
+		#pragma enumsalwaysint on
+	#else
+		#pragma enumsalwaysint off
+	#endif
+#endif  // _MSL_FORCE_ENUMS_ALWAYS_INT
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#if _MSL_FORCE_ENABLE_BOOL_SUPPORT
+		#pragma bool on
+	#else
+		#pragma bool off
+	#endif
+#endif  // _MSL_FORCE_ENABLE_BOOL_SUPPORT
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	namespace std {
+#endif
+
+enum float_round_style
+{
+	round_indeterminate       = -1,
+	round_toward_zero         =  0,
+	round_to_nearest          =  1,
+	round_toward_infinity     =  2,
+	round_toward_neg_infinity =  3
+};
+
+enum float_denorm_style
+{    // hh 971227 added
+	denorm_indeterminate = -1,
+	denorm_absent        =  0,
+	denorm_present       =  1
+};
+
+#ifdef min
+#undef min
+#endif
+
+#ifdef max
+#undef max
+#endif
+
+#ifndef _MSL_CANT_DO_LIMITS
+
+template <unsigned char b = (unsigned char)(~0)>
+struct __char
+{
+	static const int bits = 1 + __char<(unsigned char)(b >> 1)>::bits;
+};
+
+template <>
+struct __char<0>
+{
+	static const int bits = 0;
+};
+
+template <class T, bool is_signed = T(-1) < T(0)> struct __two_complement;
+
+template <class T>
+struct __two_complement<T, false>
+{
+	static const bool is_signed = false;
+	static const int  digits    = sizeof(T) * __char<>::bits;
+	static const int  digits10  = digits * 3 / 10;
+	static const T    min       = T(0);
+	static const T    max       = T(~0);
+};
+
+template <class T>
+struct __two_complement<T, true>
+{
+	static const bool is_signed = true;
+	static const int  digits    = sizeof(T) * __char<>::bits - 1;
+	static const int  digits10  = digits * 3 / 10;
+	static const T    min       = T(T(1) << digits);
+	static const T    max       = T(T(~0) ^ min);
+};
+
+#endif  // _MSL_CANT_DO_LIMITS
+
+template <class T>
+class numeric_limits
+{
+public:
+	static const bool is_specialized = false;   // hh 971227 completed class definition
+	static T min() _MSL_NO_THROW {return T();}
+	static T max() _MSL_NO_THROW {return T();}
+	static const int  digits = 0;
+	static const int  digits10 = 0;
+	static const bool is_signed = false;
+	static const bool is_integer = false;
+	static const bool is_exact = false;
+	static const int  radix = 0;
+	static T epsilon() _MSL_NO_THROW {return T();}
+	static T round_error() _MSL_NO_THROW {return T();}
+
+	static const int  min_exponent = 0;
+	static const int  min_exponent10 = 0;
+	static const int  max_exponent = 0;
+	static const int  max_exponent10 = 0;
+
+	static const bool has_infinity = false;
+	static const bool has_quiet_NaN = false;
+	static const bool has_signaling_NaN = false;
+	static const float_denorm_style has_denorm = denorm_absent;
+	static const bool has_denorm_loss = false;
+	static T infinity() _MSL_NO_THROW {return T();}
+	static T quiet_NaN() _MSL_NO_THROW {return T();}
+	static T signaling_NaN() _MSL_NO_THROW {return T();}
+	static T denorm_min() _MSL_NO_THROW {return T();}
+
+	static const bool is_iec559 = false;
+	static const bool is_bounded = false;
+	static const bool is_modulo = false;
+
+	static const bool traps = false;
+	static const bool tinyness_before = false;
+	static const float_round_style round_style = round_toward_zero;
+};
+
+#ifndef _MSL_NO_BOOL
+
+	template <>
+	class numeric_limits <bool>
+	{
+	public:
+		static const bool is_specialized = true;
+		static bool min() _MSL_NO_THROW {return false;}
+		static bool max() _MSL_NO_THROW {return true;}
+		static const int  digits = 1;
+		static const int  digits10 = 0;
+		static const bool is_signed = false;
+		static const bool is_integer = true;
+		static const bool is_exact = true;
+		static const int  radix = 2;
+		static bool epsilon() _MSL_NO_THROW {return false;}
+		static bool round_error() _MSL_NO_THROW {return false;}
+
+		static const int  min_exponent = 0;
+		static const int  min_exponent10 = 0;
+		static const int  max_exponent = 0;
+		static const int  max_exponent10 = 0;
+
+		static const bool has_infinity = false;
+		static const bool has_quiet_NaN = false;
+		static const bool has_signaling_NaN = false;
+		static const float_denorm_style has_denorm = denorm_absent;
+		static const bool has_denorm_loss = false;
+		static bool infinity() _MSL_NO_THROW {return false;}
+		static bool quiet_NaN() _MSL_NO_THROW {return false;}
+		static bool signaling_NaN() _MSL_NO_THROW {return false;}
+		static bool denorm_min() _MSL_NO_THROW {return false;}
+
+		static const bool is_iec559 = false;
+		static const bool is_bounded = true;
+		static const bool is_modulo = false;
+
+		static const bool traps = false;
+		static const bool tinyness_before = false;
+		static const float_round_style round_style = round_toward_zero;
+	};
+
+#endif  // _MSL_NO_BOOL
+
+template <>
+class numeric_limits <char>
+#ifndef _MSL_CANT_DO_LIMITS
+	: private __two_complement<char>
+{
+private:
+	typedef __two_complement<char> base;
+#else  // _MSL_CANT_DO_LIMITS
+{
+#endif
+public:
+	static const bool is_specialized = true;
+#ifndef _MSL_CANT_DO_LIMITS
+	static char       min() _MSL_NO_THROW {return base::min;}
+	static char       max() _MSL_NO_THROW {return base::max;}
+	static const int  digits     = base::digits;
+	static const int  digits10   = base::digits10;
+	static const bool is_signed  = base::is_signed;
+#else  // _MSL_CANT_DO_LIMITS
+	static char       min() _MSL_NO_THROW {return CHAR_MIN;}
+	static char       max() _MSL_NO_THROW {return CHAR_MAX;}
+	static const int  digits     = 7;
+	static const int  digits10   = 2;
+	static const bool is_signed  = true;
+#endif  // _MSL_CANT_DO_LIMITS
+	static const bool is_integer = true;
+	static const bool is_exact   = true;
+	static const int  radix      = 2;
+	static char       epsilon() _MSL_NO_THROW {return 0;}
+	static char       round_error() _MSL_NO_THROW {return 0;}
+
+	static const int  min_exponent   = 0;
+	static const int  min_exponent10 = 0;
+	static const int  max_exponent   = 0;
+	static const int  max_exponent10 = 0;
+
+	static const bool has_infinity      = false;
+	static const bool has_quiet_NaN     = false;
+	static const bool has_signaling_NaN = false;
+	static const float_denorm_style has_denorm = denorm_absent;
+	static const bool has_denorm_loss   = false;
+	static char       infinity() _MSL_NO_THROW {return 0;}
+	static char       quiet_NaN() _MSL_NO_THROW {return 0;}
+	static char       signaling_NaN() _MSL_NO_THROW {return 0;}
+	static char       denorm_min() _MSL_NO_THROW {return 0;}
+
+	static const bool is_iec559  = false;
+	static const bool is_bounded = true;
+	static const bool is_modulo  = true;
+
+	static const bool traps = false;
+	static const bool tinyness_before = false;
+	static const float_round_style round_style = round_toward_zero;
+};
+
+template <>
+class numeric_limits <signed char>
+#ifndef _MSL_CANT_DO_LIMITS
+	: private __two_complement<signed char>
+{
+private:
+	typedef __two_complement<signed char> base;
+#else  // _MSL_CANT_DO_LIMITS
+{
+#endif
+public:
+	static const bool is_specialized = true;
+#ifndef _MSL_CANT_DO_LIMITS
+	static signed char min() _MSL_NO_THROW {return base::min;}
+	static signed char max() _MSL_NO_THROW {return base::max;}
+	static const int digits = base::digits;
+	static const int  digits10 = base::digits10;
+	static const bool is_signed = base::is_signed;
+#else  // _MSL_CANT_DO_LIMITS
+	static signed char min() _MSL_NO_THROW {return SCHAR_MIN;}
+	static signed char max() _MSL_NO_THROW {return SCHAR_MAX;}
+	static const int digits = 7;
+	static const int  digits10 = 2;
+	static const bool is_signed = true;
+#endif  // _MSL_CANT_DO_LIMITS
+	static const bool is_integer = true;
+	static const bool is_exact = true;
+	static const int  radix = 2;
+	static signed char epsilon() _MSL_NO_THROW {return 0;}
+	static signed char round_error() _MSL_NO_THROW {return 0;}
+
+	static const int  min_exponent = 0;
+	static const int  min_exponent10 = 0;
+	static const int  max_exponent = 0;
+	static const int  max_exponent10 = 0;
+
+	static const bool has_infinity = false;
+	static const bool has_quiet_NaN = false;
+	static const bool has_signaling_NaN = false;
+	static const float_denorm_style has_denorm = denorm_absent;
+	static const bool has_denorm_loss = false;
+	static signed char infinity() _MSL_NO_THROW {return 0;}
+	static signed char quiet_NaN() _MSL_NO_THROW {return 0;}
+	static signed char signaling_NaN() _MSL_NO_THROW {return 0;}
+	static signed char denorm_min() _MSL_NO_THROW {return 0;}
+
+	static const bool is_iec559 = false;
+	static const bool is_bounded = true;
+	static const bool is_modulo = true;
+
+	static const bool traps = false;
+	static const bool tinyness_before = false;
+	static const float_round_style round_style = round_toward_zero;
+};
+
+template <>
+class numeric_limits <unsigned char>
+#ifndef _MSL_CANT_DO_LIMITS
+	: private __two_complement<unsigned char>
+{
+private:
+	typedef __two_complement<unsigned char> base;
+#else  // _MSL_CANT_DO_LIMITS
+{
+#endif
+public:
+	static const bool is_specialized = true;
+#ifndef _MSL_CANT_DO_LIMITS
+	static unsigned char min() _MSL_NO_THROW {return base::min;}
+	static unsigned char max() _MSL_NO_THROW {return base::max;}
+	static const int digits = base::digits;
+	static const int  digits10 = base::digits10;
+	static const bool is_signed = base::is_signed;
+#else  // _MSL_CANT_DO_LIMITS
+	static unsigned char min() _MSL_NO_THROW {return 0;}
+	static unsigned char max() _MSL_NO_THROW {return UCHAR_MAX;}
+	static const int digits = 8;
+	static const int  digits10 = 2;
+	static const bool is_signed = false;
+#endif  // _MSL_CANT_DO_LIMITS
+	static const bool is_integer = true;
+	static const bool is_exact = true;
+	static const int  radix = 2;
+	static unsigned char epsilon() _MSL_NO_THROW {return 0;}
+	static unsigned char round_error() _MSL_NO_THROW {return 0;}
+
+	static const int  min_exponent = 0;
+	static const int  min_exponent10 = 0;
+	static const int  max_exponent = 0;
+	static const int  max_exponent10 = 0;
+
+	static const bool has_infinity = false;
+	static const bool has_quiet_NaN = false;
+	static const bool has_signaling_NaN = false;
+	static const float_denorm_style has_denorm = denorm_absent;
+	static const bool has_denorm_loss = false;
+	static unsigned char infinity() _MSL_NO_THROW {return 0;}
+	static unsigned char quiet_NaN() _MSL_NO_THROW {return 0;}
+	static unsigned char signaling_NaN() _MSL_NO_THROW {return 0;}
+	static unsigned char denorm_min() _MSL_NO_THROW {return 0;}
+
+	static const bool is_iec559 = false;
+	static const bool is_bounded = true;
+	static const bool is_modulo = true;
+
+	static const bool traps = false;
+	static const bool tinyness_before = false;
+	static const float_round_style round_style = round_toward_zero;
+};
+
+#if !defined(_MSL_NO_WCHART_LANG_SUPPORT) && !defined(_MSL_NO_WCHART_CPP_SUPPORT)
+
+	template <>
+	class numeric_limits <wchar_t>
+	#ifndef _MSL_CANT_DO_LIMITS
+		: private __two_complement<wchar_t>
+	{
+	private:
+		typedef __two_complement<wchar_t> base;
+	#else  // _MSL_CANT_DO_LIMITS
+	{
+	#endif
+	public:
+		static const bool is_specialized = true;
+	#ifndef _MSL_CANT_DO_LIMITS
+		static wchar_t min() _MSL_NO_THROW {return base::min;}
+		static wchar_t max() _MSL_NO_THROW {return base::max;}
+		static const int digits = base::digits;
+		static const int  digits10 = base::digits10;
+		static const bool is_signed = base::is_signed;
+	#else  // _MSL_CANT_DO_LIMITS
+		static wchar_t min() _MSL_NO_THROW {return WCHAR_MIN;}
+		static wchar_t max() _MSL_NO_THROW {return WCHAR_MAX;}
+		static const int digits = 16;
+		static const int  digits10 = 4;
+		static const bool is_signed = false;
+	#endif  // _MSL_CANT_DO_LIMITS
+		static const bool is_integer = true;
+		static const bool is_exact = true;
+		static const int  radix = 2;
+		static wchar_t epsilon() _MSL_NO_THROW {return 0;}
+		static wchar_t round_error() _MSL_NO_THROW {return 0;}
+
+		static const int  min_exponent = 0;
+		static const int  min_exponent10 = 0;
+		static const int  max_exponent = 0;
+		static const int  max_exponent10 = 0;
+
+		static const bool has_infinity = false;
+		static const bool has_quiet_NaN = false;
+		static const bool has_signaling_NaN = false;
+		static const float_denorm_style has_denorm = denorm_absent;
+		static const bool has_denorm_loss = false;
+		static wchar_t infinity() _MSL_NO_THROW {return 0;}
+		static wchar_t quiet_NaN() _MSL_NO_THROW {return 0;}
+		static wchar_t signaling_NaN() _MSL_NO_THROW {return 0;}
+		static wchar_t denorm_min() _MSL_NO_THROW {return 0;}
+
+		static const bool is_iec559 = false;
+		static const bool is_bounded = true;
+		static const bool is_modulo = true;
+
+		static const bool traps = false;
+		static const bool tinyness_before = false;
+		static const float_round_style round_style = round_toward_zero;
+	};
+
+#endif  // !defined(_MSL_NO_WCHART_LANG_SUPPORT) && !defined(_MSL_NO_WCHART_CPP_SUPPORT)
+
+template <>
+class numeric_limits <short>
+#ifndef _MSL_CANT_DO_LIMITS
+	: private __two_complement<short>
+{
+private:
+	typedef __two_complement<short> base;
+#else  // _MSL_CANT_DO_LIMITS
+{
+#endif
+public:
+	static const bool is_specialized = true;
+#ifndef _MSL_CANT_DO_LIMITS
+	static short min() _MSL_NO_THROW {return base::min;}
+	static short max() _MSL_NO_THROW {return base::max;}
+	static const int digits = base::digits;
+	static const int  digits10 = base::digits10;
+	static const bool is_signed = base::is_signed;
+#else  // _MSL_CANT_DO_LIMITS
+	static short min() _MSL_NO_THROW {return SHRT_MIN;}
+	static short max() _MSL_NO_THROW {return SHRT_MAX;}
+	static const int digits = 15;
+	static const int  digits10 = 4;
+	static const bool is_signed = true;
+#endif  // _MSL_CANT_DO_LIMITS
+	static const bool is_integer = true;
+	static const bool is_exact = true;
+	static const int  radix = 2;
+	static short epsilon() _MSL_NO_THROW {return 0;}
+	static short round_error() _MSL_NO_THROW {return 0;}
+
+	static const int  min_exponent = 0;
+	static const int  min_exponent10 = 0;
+	static const int  max_exponent = 0;
+	static const int  max_exponent10 = 0;
+
+	static const bool has_infinity = false;
+	static const bool has_quiet_NaN = false;
+	static const bool has_signaling_NaN = false;
+	static const float_denorm_style has_denorm = denorm_absent;
+	static const bool has_denorm_loss = false;
+	static short infinity() _MSL_NO_THROW {return 0;}
+	static short quiet_NaN() _MSL_NO_THROW {return 0;}
+	static short signaling_NaN() _MSL_NO_THROW {return 0;}
+	static short denorm_min() _MSL_NO_THROW {return 0;}
+
+	static const bool is_iec559 = false;
+	static const bool is_bounded = true;
+	static const bool is_modulo = true;
+
+	static const bool traps = false;
+	static const bool tinyness_before = false;
+	static const float_round_style round_style = round_toward_zero;
+};
+
+template <>
+class numeric_limits <unsigned short>
+#ifndef _MSL_CANT_DO_LIMITS
+	: private __two_complement<unsigned short>
+{
+private:
+	typedef __two_complement<unsigned short> base;
+#else  // _MSL_CANT_DO_LIMITS
+{
+#endif
+public:
+	static const bool is_specialized = true;
+#ifndef _MSL_CANT_DO_LIMITS
+	static unsigned short min() _MSL_NO_THROW {return base::min;}
+	static unsigned short max() _MSL_NO_THROW {return base::max;}
+	static const int digits = base::digits;
+	static const int  digits10 = base::digits10;
+	static const bool is_signed = base::is_signed;
+#else  // _MSL_CANT_DO_LIMITS
+	static unsigned short min() _MSL_NO_THROW {return 0;}
+	static unsigned short max() _MSL_NO_THROW {return USHRT_MAX;}
+	static const int digits = 16;
+	static const int  digits10 = 4;
+	static const bool is_signed = false;
+#endif  // _MSL_CANT_DO_LIMITS
+	static const bool is_integer = true;
+	static const bool is_exact = true;
+	static const int  radix = 2;
+	static unsigned short epsilon() _MSL_NO_THROW {return 0;}
+	static unsigned short round_error() _MSL_NO_THROW {return 0;}
+
+	static const int  min_exponent = 0;
+	static const int  min_exponent10 = 0;
+	static const int  max_exponent = 0;
+	static const int  max_exponent10 = 0;
+
+	static const bool has_infinity = false;
+	static const bool has_quiet_NaN = false;
+	static const bool has_signaling_NaN = false;
+	static const float_denorm_style has_denorm = denorm_absent;
+	static const bool has_denorm_loss = false;
+	static unsigned short infinity() _MSL_NO_THROW {return 0;}
+	static unsigned short quiet_NaN() _MSL_NO_THROW {return 0;}
+	static unsigned short signaling_NaN() _MSL_NO_THROW {return 0;}
+	static unsigned short denorm_min() _MSL_NO_THROW {return 0;}
+
+	static const bool is_iec559 = false;
+	static const bool is_bounded = true;
+	static const bool is_modulo = true;
+
+	static const bool traps = false;
+	static const bool tinyness_before = false;
+	static const float_round_style round_style = round_toward_zero;
+};
+
+template <>
+class numeric_limits <int>
+#ifndef _MSL_CANT_DO_LIMITS
+	: private __two_complement<int>
+{
+private:
+	typedef __two_complement<int> base;
+#else  // _MSL_CANT_DO_LIMITS
+{
+#endif
+public:
+	static const bool is_specialized = true;
+#ifndef _MSL_CANT_DO_LIMITS
+	static int min() _MSL_NO_THROW {return base::min;}
+	static int max() _MSL_NO_THROW {return base::max;}
+	static const int digits = base::digits;
+	static const int  digits10 = base::digits10;
+	static const bool is_signed = base::is_signed;
+#else  // _MSL_CANT_DO_LIMITS
+	static int min() _MSL_NO_THROW {return INT_MIN;}
+	static int max() _MSL_NO_THROW {return INT_MAX;}
+	static const int digits = 31;
+	static const int  digits10 = 9;
+	static const bool is_signed = true;
+#endif  // _MSL_CANT_DO_LIMITS
+	static const bool is_integer = true;
+	static const bool is_exact = true;
+	static const int  radix = 2;
+	static int epsilon() _MSL_NO_THROW {return 0;}
+	static int round_error() _MSL_NO_THROW {return 0;}
+
+	static const int  min_exponent = 0;
+	static const int  min_exponent10 = 0;
+	static const int  max_exponent = 0;
+	static const int  max_exponent10 = 0;
+
+	static const bool has_infinity = false;
+	static const bool has_quiet_NaN = false;
+	static const bool has_signaling_NaN = false;
+	static const float_denorm_style has_denorm = denorm_absent;
+	static const bool has_denorm_loss = false;
+	static int infinity() _MSL_NO_THROW {return 0;}
+	static int quiet_NaN() _MSL_NO_THROW {return 0;}
+	static int signaling_NaN() _MSL_NO_THROW {return 0;}
+	static int denorm_min() _MSL_NO_THROW {return 0;}
+
+	static const bool is_iec559 = false;
+	static const bool is_bounded = true;
+	static const bool is_modulo = true;
+
+	static const bool traps = false;
+	static const bool tinyness_before = false;
+	static const float_round_style round_style = round_toward_zero;
+};
+
+template <>
+class numeric_limits <unsigned int>
+#ifndef _MSL_CANT_DO_LIMITS
+	: private __two_complement<unsigned int>
+{
+private:
+	typedef __two_complement<unsigned int> base;
+#else  // _MSL_CANT_DO_LIMITS
+{
+#endif
+public:
+	static const bool is_specialized = true;
+#ifndef _MSL_CANT_DO_LIMITS
+	static unsigned int min() _MSL_NO_THROW {return base::min;}
+	static unsigned int max() _MSL_NO_THROW {return base::max;}
+	static const int digits = base::digits;
+	static const int  digits10 = base::digits10;
+	static const bool is_signed = base::is_signed;
+#else  // _MSL_CANT_DO_LIMITS
+	static unsigned int min() _MSL_NO_THROW {return 0;}
+	static unsigned int max() _MSL_NO_THROW {return UINT_MAX;}
+	static const int digits = 32;
+	static const int  digits10 = 9;
+	static const bool is_signed = false;
+#endif  // _MSL_CANT_DO_LIMITS
+	static const bool is_integer = true;
+	static const bool is_exact = true;
+	static const int  radix = 2;
+	static unsigned int epsilon() _MSL_NO_THROW {return 0;}
+	static unsigned int round_error() _MSL_NO_THROW {return 0;}
+
+	static const int  min_exponent = 0;
+	static const int  min_exponent10 = 0;
+	static const int  max_exponent = 0;
+	static const int  max_exponent10 = 0;
+
+	static const bool has_infinity = false;
+	static const bool has_quiet_NaN = false;
+	static const bool has_signaling_NaN = false;
+	static const float_denorm_style has_denorm = denorm_absent;
+	static const bool has_denorm_loss = false;
+	static unsigned int infinity() _MSL_NO_THROW {return 0;}
+	static unsigned int quiet_NaN() _MSL_NO_THROW {return 0;}
+	static unsigned int signaling_NaN() _MSL_NO_THROW {return 0;}
+	static unsigned int denorm_min() _MSL_NO_THROW {return 0;}
+
+	static const bool is_iec559 = false;
+	static const bool is_bounded = true;
+	static const bool is_modulo = true;
+
+	static const bool traps = false;
+	static const bool tinyness_before = false;
+	static const float_round_style round_style = round_toward_zero;
+};
+
+template <>
+class numeric_limits <long>
+#ifndef _MSL_CANT_DO_LIMITS
+	: private __two_complement<long>
+{
+private:
+	typedef __two_complement<long> base;
+#else  // _MSL_CANT_DO_LIMITS
+{
+#endif
+public:
+	static const bool is_specialized = true;
+#ifndef _MSL_CANT_DO_LIMITS
+	static long min() _MSL_NO_THROW {return base::min;}
+	static long max() _MSL_NO_THROW {return base::max;}
+	static const int digits = base::digits;
+	static const int  digits10 = base::digits10;
+	static const bool is_signed = base::is_signed;
+#else  // _MSL_CANT_DO_LIMITS
+	static long min() _MSL_NO_THROW {return LONG_MIN;}
+	static long max() _MSL_NO_THROW {return LONG_MAX;}
+	static const int digits = 31;
+	static const int  digits10 = 9;
+	static const bool is_signed = true;
+#endif  // _MSL_CANT_DO_LIMITS
+	static const bool is_integer = true;
+	static const bool is_exact = true;
+	static const int  radix = 2;
+	static long epsilon() _MSL_NO_THROW {return 0;}
+	static long round_error() _MSL_NO_THROW {return 0;}
+
+	static const int  min_exponent = 0;
+	static const int  min_exponent10 = 0;
+	static const int  max_exponent = 0;
+	static const int  max_exponent10 = 0;
+
+	static const bool has_infinity = false;
+	static const bool has_quiet_NaN = false;
+	static const bool has_signaling_NaN = false;
+	static const float_denorm_style has_denorm = denorm_absent;
+	static const bool has_denorm_loss = false;
+	static long infinity() _MSL_NO_THROW {return 0;}
+	static long quiet_NaN() _MSL_NO_THROW {return 0;}
+	static long signaling_NaN() _MSL_NO_THROW {return 0;}
+	static long denorm_min() _MSL_NO_THROW {return 0;}
+
+	static const bool is_iec559 = false;
+	static const bool is_bounded = true;
+	static const bool is_modulo = true;
+
+	static const bool traps = false;
+	static const bool tinyness_before = false;
+	static const float_round_style round_style = round_toward_zero;
+};
+
+template <>
+class numeric_limits <unsigned long>
+#ifndef _MSL_CANT_DO_LIMITS
+	: private __two_complement<unsigned long>
+{
+private:
+	typedef __two_complement<unsigned long> base;
+#else  // _MSL_CANT_DO_LIMITS
+{
+#endif
+public:
+	static const bool is_specialized = true;
+#ifndef _MSL_CANT_DO_LIMITS
+	static unsigned long min() _MSL_NO_THROW {return base::min;}
+	static unsigned long max() _MSL_NO_THROW {return base::max;}
+	static const int digits = base::digits;
+	static const int  digits10 = base::digits10;
+	static const bool is_signed = base::is_signed;
+#else  // _MSL_CANT_DO_LIMITS
+	static unsigned long min() _MSL_NO_THROW {return 0;}
+	static unsigned long max() _MSL_NO_THROW {return ULONG_MAX;}
+	static const int digits = 32;
+	static const int  digits10 = 9;
+	static const bool is_signed = false;
+#endif  // _MSL_CANT_DO_LIMITS
+	static const bool is_integer = true;
+	static const bool is_exact = true;
+	static const int  radix = 2;
+	static unsigned long epsilon() _MSL_NO_THROW {return 0;}
+	static unsigned long round_error() _MSL_NO_THROW {return 0;}
+
+	static const int  min_exponent = 0;
+	static const int  min_exponent10 = 0;
+	static const int  max_exponent = 0;
+	static const int  max_exponent10 = 0;
+
+	static const bool has_infinity = false;
+	static const bool has_quiet_NaN = false;
+	static const bool has_signaling_NaN = false;
+	static const float_denorm_style has_denorm = denorm_absent;
+	static const bool has_denorm_loss = false;
+	static unsigned long infinity() _MSL_NO_THROW {return 0;}
+	static unsigned long quiet_NaN() _MSL_NO_THROW {return 0;}
+	static unsigned long signaling_NaN() _MSL_NO_THROW {return 0;}
+	static unsigned long denorm_min() _MSL_NO_THROW {return 0;}
+
+	static const bool is_iec559 = false;
+	static const bool is_bounded = true;
+	static const bool is_modulo = true;
+
+	static const bool traps = false;
+	static const bool tinyness_before = false;
+	static const float_round_style round_style = round_toward_zero;
+};
+
+#if _MSL_LONGLONG  // hh 990118
+
+template <>
+class numeric_limits <long long>
+#ifndef _MSL_CANT_DO_LIMITS
+	: private __two_complement<long long>
+{
+private:
+	typedef __two_complement<long long> base;
+#else  // _MSL_CANT_DO_LIMITS
+{
+#endif
+public:
+	static const bool is_specialized = true;
+#ifndef _MSL_CANT_DO_LIMITS
+	static long long min() _MSL_NO_THROW {return base::min;}
+	static long long max() _MSL_NO_THROW {return base::max;}
+	static const int digits = base::digits;
+	static const int  digits10 = base::digits10;
+	static const bool is_signed = base::is_signed;
+#else  // _MSL_CANT_DO_LIMITS
+	static long long min() _MSL_NO_THROW {return LONGLONG_MIN;}
+	static long long max() _MSL_NO_THROW {return LONGLONG_MAX;}
+	static const int digits = 63;
+	static const int  digits10 = 18;
+	static const bool is_signed = true;
+#endif  // _MSL_CANT_DO_LIMITS
+	static const bool is_integer = true;
+	static const bool is_exact = true;
+	static const int  radix = 2;
+	static long long epsilon() _MSL_NO_THROW {return 0;}
+	static long long round_error() _MSL_NO_THROW {return 0;}
+
+	static const int  min_exponent = 0;
+	static const int  min_exponent10 = 0;
+	static const int  max_exponent = 0;
+	static const int  max_exponent10 = 0;
+
+	static const bool has_infinity = false;
+	static const bool has_quiet_NaN = false;
+	static const bool has_signaling_NaN = false;
+	static const float_denorm_style has_denorm = denorm_absent;
+	static const bool has_denorm_loss = false;
+	static long long infinity() _MSL_NO_THROW {return 0;}
+	static long long quiet_NaN() _MSL_NO_THROW {return 0;}
+	static long long signaling_NaN() _MSL_NO_THROW {return 0;}
+	static long long denorm_min() _MSL_NO_THROW {return 0;}
+
+	static const bool is_iec559 = false;
+	static const bool is_bounded = true;
+	static const bool is_modulo = true;
+
+	static const bool traps = false;
+	static const bool tinyness_before = false;
+	static const float_round_style round_style = round_toward_zero;
+};
+
+template <>
+class numeric_limits <unsigned long long>
+#ifndef _MSL_CANT_DO_LIMITS
+	: private __two_complement<unsigned long long>
+{
+private:
+	typedef __two_complement<unsigned long long> base;
+#else  // _MSL_CANT_DO_LIMITS
+{
+#endif
+public:
+	static const bool is_specialized = true;
+#ifndef _MSL_CANT_DO_LIMITS
+	static unsigned long long min() _MSL_NO_THROW {return base::min;}
+	static unsigned long long max() _MSL_NO_THROW {return base::max;}
+	static const int digits = base::digits;
+	static const int  digits10 = base::digits10;
+	static const bool is_signed = base::is_signed;
+#else  // _MSL_CANT_DO_LIMITS
+	static unsigned long long min() _MSL_NO_THROW {return 0;}
+	static unsigned long long max() _MSL_NO_THROW {return ULONGLONG_MAX;}
+	static const int digits = 64;
+	static const int  digits10 = 19;
+	static const bool is_signed = false;
+#endif  // _MSL_CANT_DO_LIMITS
+	static const bool is_integer = true;
+	static const bool is_exact = true;
+	static const int  radix = 2;
+	static unsigned long long epsilon() _MSL_NO_THROW {return 0;}
+	static unsigned long long round_error() _MSL_NO_THROW {return 0;}
+
+	static const int  min_exponent = 0;
+	static const int  min_exponent10 = 0;
+	static const int  max_exponent = 0;
+	static const int  max_exponent10 = 0;
+
+	static const bool has_infinity = false;
+	static const bool has_quiet_NaN = false;
+	static const bool has_signaling_NaN = false;
+	static const float_denorm_style has_denorm = denorm_absent;
+	static const bool has_denorm_loss = false;
+	static unsigned long long infinity() _MSL_NO_THROW {return 0;}
+	static unsigned long long quiet_NaN() _MSL_NO_THROW {return 0;}
+	static unsigned long long signaling_NaN() _MSL_NO_THROW {return 0;}
+	static unsigned long long denorm_min() _MSL_NO_THROW {return 0;}
+
+	static const bool is_iec559 = false;
+	static const bool is_bounded = true;
+	static const bool is_modulo = true;
+
+	static const bool traps = false;
+	static const bool tinyness_before = false;
+	static const float_round_style round_style = round_toward_zero;
+};
+
+#endif  // _MSL_LONGLONG  // hh 990118
+
+#ifndef _MSL_NO_FLOATING_POINT
+
+template <> class numeric_limits <float>;
+template <> class numeric_limits <double>;
+template <> class numeric_limits <long double>;
+
+#endif  // _MSL_NO_FLOATING_POINT
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	} // namespace std
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#pragma enumsalwaysint reset
+#endif
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#pragma bool reset
+#endif
+
+#ifdef __MWERKS__
+#pragma options align=reset
+#endif
+
+#endif // RC_INVOKED
+
+#endif  // _MSL_INT_LIMITS
+
+// hh 020529 Split limits into limits and msl_int_limits
+// JWW 030224 Changed __MSL_LONGLONG_SUPPORT__ flag into the new more configurable _MSL_LONGLONG
+// hh 040217 Changed _No_Floating_Point to _MSL_NO_FLOATING_POINT

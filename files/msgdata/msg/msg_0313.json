@@ -1,0 +1,125 @@
+{
+  "key": 36415,
+  "messages": [
+    {
+      "id": "msg_0313_00000",
+      "en_US": "Speed Course"
+    },
+    {
+      "id": "msg_0313_00001",
+      "en_US": "Power Course"
+    },
+    {
+      "id": "msg_0313_00002",
+      "en_US": "Skill Course"
+    },
+    {
+      "id": "msg_0313_00003",
+      "en_US": "Stamina Course"
+    },
+    {
+      "id": "msg_0313_00004",
+      "en_US": "Jump Course"
+    },
+    {
+      "id": "msg_0313_00005",
+      "en_US": "Speed & Jump Course"
+    },
+    {
+      "id": "msg_0313_00006",
+      "en_US": "Jump & Skill Course"
+    },
+    {
+      "id": "msg_0313_00007",
+      "en_US": "Skill & Power Course"
+    },
+    {
+      "id": "msg_0313_00008",
+      "en_US": "Power & Stamina Course"
+    },
+    {
+      "id": "msg_0313_00009",
+      "en_US": "Stamina & Speed Course"
+    },
+    {
+      "id": "msg_0313_00010",
+      "en_US": "Master Course"
+    },
+    {
+      "id": "msg_0313_00011",
+      "garbage": 2
+    },
+    {
+      "id": "msg_0313_00012",
+      "garbage": 2
+    },
+    {
+      "id": "msg_0313_00013",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0313_00014",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0313_00015",
+      "en_US": "Speed Medal"
+    },
+    {
+      "id": "msg_0313_00016",
+      "en_US": "Power Medal"
+    },
+    {
+      "id": "msg_0313_00017",
+      "en_US": "Skill Medal"
+    },
+    {
+      "id": "msg_0313_00018",
+      "en_US": "Stamina Medal"
+    },
+    {
+      "id": "msg_0313_00019",
+      "en_US": "Jump Medal"
+    },
+    {
+      "id": "msg_0313_00020",
+      "en_US": "Hurdle Dash"
+    },
+    {
+      "id": "msg_0313_00021",
+      "en_US": "Pennant Capture"
+    },
+    {
+      "id": "msg_0313_00022",
+      "en_US": "Circle Push"
+    },
+    {
+      "id": "msg_0313_00023",
+      "en_US": "Block Smash"
+    },
+    {
+      "id": "msg_0313_00024",
+      "en_US": "Disc Catch"
+    },
+    {
+      "id": "msg_0313_00025",
+      "en_US": "Lamp Jump"
+    },
+    {
+      "id": "msg_0313_00026",
+      "en_US": "Relay Run"
+    },
+    {
+      "id": "msg_0313_00027",
+      "en_US": "Ring Drop"
+    },
+    {
+      "id": "msg_0313_00028",
+      "en_US": "Snow Throw"
+    },
+    {
+      "id": "msg_0313_00029",
+      "en_US": "Goal Roll"
+    }
+  ]
+}

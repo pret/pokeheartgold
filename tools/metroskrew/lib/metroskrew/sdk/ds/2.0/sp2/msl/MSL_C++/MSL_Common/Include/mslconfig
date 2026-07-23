@@ -1,0 +1,568 @@
+/* MSL
+ * Copyright © 1995-2006 Freescale Corporation.  All rights reserved.
+ *
+ * $Date: 2006/08/22 20:15:31 $
+ * $Revision: 1.127.2.6 $
+ */
+
+// mslconfig
+
+#ifndef _MSLCONFIG
+#define _MSLCONFIG
+
+#ifdef __MWERKS__
+#pragma warn_undefmacro off
+#endif
+
+#define __MSL_CPP__ 0x00011000  //  MSL C++ version identifier
+
+#if defined(__MWERKS__) && defined(__PALMOS_TRAPS__)
+
+	// Palm OS MSL C++ library has a different configuration
+	#include <mslconfig_Palm_OS>
+
+#elif defined(__MWERKS__) && defined(__MIPS_PSX2__)
+
+	// PS2 MSL C++ library has a different configuration
+	#include <mslconfig_PS2>
+
+#elif defined(__MWERKS__) && defined(__MIPS_PSP__)
+
+	// PSP MSL C++ library has a different configuration
+	#include <mslconfig_PSP>
+
+#elif defined(__MWERKS__) && (defined(__MC68K__) || defined(__COLDFIRE__)) && defined(__embedded__)
+
+	// E68K MSL C++ library has a different configuration
+	#include <mslconfig_E68K>
+
+#elif defined(__MWERKS__) && defined (__arm)
+
+	// ARM MSL C++ library has a different configuration
+	#include <mslconfig_ARM>
+
+#elif defined(__MWERKS__) && defined (__PPC_EABI__)
+
+	#if defined (__linux__)
+		// using EPPC compiler to target linuxppc
+		#include <mslconfig_ppcgcc>
+	#else  // defined (__linux__)
+		// EPPC has special __msl_error with no fprintf
+		#if (__dest_os != __dolphin_os)
+		#include <mslconfig_EPPC>
+		#else
+			#include <mslconfig_GCN>
+		#endif
+	#endif  // defined (__linux__)
+
+#elif defined(__GNUC__)
+
+	#include <mslconfig_gcc>
+
+#elif defined(__MWERKS__)
+
+    #include <ansi_parms.h>
+
+//	#define _MSL_DEBUG
+
+	// define _MSL_USING_MSL_C if using MSL for the C lib
+	#if __MACH__
+		#if _MSL_USING_MW_C_HEADERS
+		    #define _MSL_USING_MSL_C
+		#else
+			#define _MSL_USING_GCC_C
+		#endif
+		#if _MSL_OS_X_VERSION <= 1
+			#define _MSL_NO_TIME_SUPPORT
+		#endif
+	#else  // __MACH__
+	    #define _MSL_USING_MSL_C
+	#endif
+
+//	#define _MSL_USING_NAMESPACE  // uncomment if C in std (defined in C lib for Pro)
+//	#define _MSL_NO_CPP_NAMESPACE // uncomment if C++ in global namespace
+//	#define _MSL_TR1_NAMESPACE 0  // uncomment if tr1 components should be in std
+
+	#define _MSL_FORCE_ENUMS_ALWAYS_INT       0
+	#define _MSL_FORCE_ENABLE_BOOL_SUPPORT    1
+
+		#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+			#if _MSL_FORCE_ENUMS_ALWAYS_INT
+				#pragma enumsalwaysint on
+			#else
+				#pragma enumsalwaysint off
+			#endif
+		#endif  // _MSL_FORCE_ENUMS_ALWAYS_INT
+
+		#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+			#if _MSL_FORCE_ENABLE_BOOL_SUPPORT
+				#pragma bool on
+			#else
+				#pragma bool off
+			#endif
+		#endif  // _MSL_FORCE_ENABLE_BOOL_SUPPORT
+
+	#if !__option(exceptions)
+		// Recompile the C++ lib when flipping this switch
+		#define _MSL_NO_EXCEPTIONS
+	#endif  // !__option(exceptions)
+	#if !__option(bool)
+		// Recompile the C++ lib when flipping this switch
+		#define _MSL_NO_BOOL
+	#endif  // !__option(bool)
+	#if !__option(wchar_type)
+		// Recompile the C++ lib when flipping this switch
+		#define _MSL_NO_WCHART_LANG_SUPPORT
+	#endif  // !__option(wchar_type)
+
+	#ifdef _MSL_USING_GCC_C
+		#include <AvailabilityMacros.h>
+		#if MAC_OS_X_VERSION_MAX_ALLOWED <= MAC_OS_X_VERSION_10_2
+			// wchar_t is available only on Mac OS X 10.3 and later
+			#define _MSL_NO_WCHART_C_SUPPORT
+		#endif  // MAC_OS_X_VERSION_MAX_ALLOWED <= MAC_OS_X_VERSION_10_2
+	#elif defined(_MSL_WIDE_CHAR) && !_MSL_WIDE_CHAR
+		#define _MSL_NO_WCHART_C_SUPPORT
+	#endif
+//	#define _MSL_NO_WCHART_CPP_SUPPORT
+
+	#ifdef _MSL_USING_MSL_C
+		#if !_MSL_C99
+			#define _MSL_CX_LIMITED_RANGE
+		#endif
+	#endif  // _MSL_USING_MSL_C
+	#ifndef _MSL_USING_MSL_C
+		// Recompile the C++ lib when flipping this switch
+		#define _MSL_LONGLONG 1
+		// Recompile the C++ lib when flipping this switch
+//		#define _MSL_CX_LIMITED_RANGE
+	#endif  // _MSL_USING_MSL_C
+
+	// _MSL_IMAGINARY
+	// When defined, std::imaginary<T> exists in <complex>
+//	#define _MSL_IMAGINARY
+
+	#ifndef _MSL_LITTLE_ENDIAN
+		#if __option(little_endian)
+			#define _MSL_LITTLE_ENDIAN 1
+		#else
+			#define _MSL_LITTLE_ENDIAN 0
+		#endif
+	#endif  // _MSL_LITTLE_ENDIAN
+
+	#if __INTEL__
+		#if __MWERKS__ < 0x3000
+			#if __option(ARM_conform)
+				#define _MSL_NO_EXPLICIT_FUNC_TEMPLATE_ARG
+			#endif
+		#else  // __MWERKS__ < 0x3000
+			#if __option(mangling_mscompatible)
+				#define _MSL_NO_EXPLICIT_FUNC_TEMPLATE_ARG
+			#endif
+		#endif  // __MWERKS__ < 0x3000
+	#endif  // __INTEL__
+	#if __dest_os == __win32_os
+		#ifndef NOMINMAX
+			#define NOMINMAX
+		#endif
+	#endif  // __dest_os == __win32_os
+
+	#if _MSL_THREADSAFE
+		// Recompile the C++ lib when flipping this switch
+		#ifndef _MSL_SINGLE_THREAD
+			#if __INTEL__
+				#ifndef _MSL_USE_WINTHREADS
+					#define _MSL_USE_WINTHREADS
+				#endif
+			#elif __MACH__
+				#ifndef _MSL_USE_PTHREADS
+					#define _MSL_USE_PTHREADS
+				#endif
+			#else  // __MACH__
+				#ifndef _MSL_USE_MPTASKS
+					#define _MSL_USE_MPTASKS
+				#endif
+			#endif  // __MACH__
+			#define _MSL_SHARED_PTR_HAS_MUTEX
+		#endif  // _MSL_SINGLE_THREAD
+	#endif  // _MSL_THREADSAFE
+
+	#if __INTEL__
+		#define _MSL_HAS_FTIME
+	#elif __MACH__
+		#define _MSL_HAS_GETTIMEOFDAY
+	#else
+		#define _MSL_HAS_GETDATETIME
+	#endif
+
+	// _MSL_SHARED_PTR_HAS_MUTEX
+	// When defined, std::tr1::shared_ptr has an internal mutex per shared count
+	// that will protect the count in a multi-threaded program.  This is not
+	// turned on by default even when in multi-threaded mode because it may be
+	// more effcient to protect the shared_ptr at a higher level, or not at all
+	// if it is not used across threads.  Recompile the C++ lib when flipping this
+	// switch.
+//	#define _MSL_SHARED_PTR_HAS_MUTEX
+
+	// _MSL_MINIMUM_NAMED_LOCALE when defined, turns off all of the named locale
+	// stuff except for "C" and "" (which will be the same as "C")
+//	#define _MSL_MINIMUM_NAMED_LOCALE
+
+	// _MSL_NO_LOCALE will create a C++ lib which does not have locale capability
+	// This will reduce the size of the lib for those apps not wishing to take
+	// advantage of this part of the C++ lib.  Code savings can be on the order of
+	// 50 to 80 Kb.  This switch should also be set when building the C++ lib as a
+	// shared lib.
+	// Recompile the C++ lib when flipping this switch
+//	#define _MSL_NO_LOCALE
+//	#define _MSL_TINY_IO
+
+	// _MSL_EXTENDED_PRECISION_OUTP allows the output of floating point output to
+	// be printed with precision greater than DECIMAL_DIG.  With this option, an
+	// exact binary to decimal conversion can be performed (by bumping precision
+	// high enough).  The cost is about 5-6Kb in code size.
+	// Recompile the C++ lib when flipping this switch
+//	#define _MSL_EXTENDED_PRECISION_OUTP
+
+	// _Inhibit_Container_Optimization, if uncommented will disable pointer
+	// specializations in the containers.  This may make debugging easier.
+	// Recompile the C++ lib when flipping this switch
+//	#define _Inhibit_Container_Optimization
+
+	// _MSL_NO_VECTOR_BOOL, if uncommented will disable the standard vector<bool>
+	// partial specialization.  You can still instantiate vector<bool>, but it will
+	// not have the space optimization of one bool per bit.  No need to recompile
+	// the C++ lib when flipping this switch, but do remake any precompiled headers
+	// you might be using.
+//	#define _MSL_NO_VECTOR_BOOL
+
+	// _Inhibit_Optimize_RB_bit is a space optimization that compacts the red/black
+	// flag with the parent pointer in each node.  By uncommenting this
+	// define, the optimization is turned off, and the red/black flag will
+	// be stored as an enum in each node.
+//	#define _Inhibit_Optimize_RB_bit
+
+//	#define _MSL_ARRAY_AUTO_PTR
+
+	// _MSL_USE_AUTO_PTR_96 will disable the standard auto_ptr and enable the
+	// version of auto_ptr that appeared in the Dec. '96 CD2.
+//	#define _MSL_USE_AUTO_PTR_96
+
+	// _MSL_EXTENDED_BINDERS adds defaulted template parameters to binder1st
+	// and binder2nd.  This allows client code to alter the type of the value
+	// that is stored.  This is especially useful when you want the binder to
+	// store the value by const reference instead of by value to save on an
+	// expensive copy construction.  This also allows for the use of polymorphic
+	// operators by specifying reference types for the operator.
+	#define _MSL_EXTENDED_BINDERS
+
+	// _MSL_RAW_ITERATORS if defined will cause string and vector to use pointers
+	// for their iterators, else nested classes are used.  The nested classes behave
+	// a little better with respect to Koenig lookup.
+//	#define _MSL_RAW_ITERATORS
+
+	#define _MSL_NO_TEMPLATE_FRIENDS
+//	#define _MSL_NO_THROW_SPECS
+//	#define _MSL_NO_EXPLICIT_FUNC_TEMPLATE_ARG
+//	#define _MSL_MUST_INLINE_MEMBER_TEMPLATE
+
+//	#define _MSL_NO_IO
+//	#define _MSL_NO_FILE_IO
+//	#define _MSL_NO_CONSOLE_IO
+//	#define _MSL_NO_CONSOLE_INPUT
+//	#define _MSL_POSIX_STREAM
+//	#define _MSL_CFILE_STREAM
+//	#define _MSL_WIDE_FILENAME
+
+	// Define _MSL_LL_FILE_SUPPORT to 0 to insist that streamoff be defined as a long
+	// Define _MSL_LL_FILE_SUPPORT to 1 to insist that streamoff be defined as a long long
+	// Leave _MSL_LL_FILE_SUPPORT undefined to let the library decide what it will be.  The
+	// library will make streamoff a long long if long long support is enabled.
+//	#define _MSL_LL_FILE_SUPPORT 0
+//	#define _MSL_LL_FILE_SUPPORT 1
+
+//	#define _MSL_NO_FLOATING_POINT
+
+		#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+			#pragma enumsalwaysint reset
+		#endif
+
+		#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+			#pragma bool reset
+		#endif
+
+#endif  // defined(__MWERKS__)
+
+//-----------------------------------------------------------------
+
+#ifndef _MSL_ENUM_ALWAYS_INT
+	#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+		#if _MSL_FORCE_ENUMS_ALWAYS_INT
+			#define _MSL_ENUM_ALWAYS_INT
+		#endif
+	#elif defined(__MWERKS__)
+		#if __option(enumsalwaysint)
+			#define _MSL_ENUM_ALWAYS_INT
+		#endif
+	#endif  // defined(__MWERKS__)
+#endif  // _MSL_ENUM_ALWAYS_INT
+
+#ifndef _MSL_NO_RTTI
+	#ifdef __MWERKS__
+		#if !__option(RTTI)
+			#define _MSL_NO_RTTI
+		#endif
+	#endif  // __MWERKS__
+#endif  // _MSL_NO_RTTI
+
+#ifndef _MSL_NO_RTTI
+#ifdef _MSL_NO_CPP_NAMESPACE
+#define _MSL_NO_RTTI
+#endif
+#endif  // _MSL_NO_RTTI
+
+#ifdef _MSL_DLL
+	#ifndef _MSL_NO_LOCALE
+	#ifdef _MSL_NO_RTTI
+		#error RTTI support must be on when using MSL C++ with locale support and as shared lib
+	#endif
+	#endif  // _MSL_NO_LOCALE
+#endif  // _MSL_DLL
+
+#ifdef _MSL_TINY_IO
+	#ifndef _MSL_NO_LOCALE
+	#define _MSL_NO_LOCALE
+	#endif
+#endif  // _MSL_TINY_IO
+
+#ifndef _MSL_CDECL
+#define _MSL_CDECL
+#endif
+
+#ifndef _MSL_USING_NAMESPACE
+	#define _CSTD
+#else
+	#define _CSTD ::std
+#endif
+
+#ifdef _MSL_NO_CPP_NAMESPACE
+	#define _STD
+#else
+	#define _STD ::std
+#endif
+
+// _MSL_TR1_NAMESPACE == 0  put in _STD
+// _MSL_TR1_NAMESPACE == 1  put in _STD::tr1
+
+#ifndef _MSL_TR1_NAMESPACE
+#ifdef _MSL_NO_CPP_NAMESPACE
+	#define _MSL_TR1_NAMESPACE 0
+#else
+	#define _MSL_TR1_NAMESPACE 1
+#endif
+#endif  // _MSL_TR1_NAMESPACE
+
+#if _MSL_TR1_NAMESPACE
+	#define _TR1 tr1
+	#define _STD_TR1 _STD::tr1
+#ifdef _MSL_NO_CPP_NAMESPACE
+	#define _MSL_START_TR1_NAMESPACE namespace tr1 {
+	#define _MSL_END_TR1_NAMESPACE }
+#else  // _MSL_NO_CPP_NAMESPACE
+	#define _MSL_START_TR1_NAMESPACE namespace std { namespace tr1 {
+	#define _MSL_END_TR1_NAMESPACE } }
+#endif  // _MSL_NO_CPP_NAMESPACE
+#else  // _MSL_TR1_NAMESPACE
+#ifdef _MSL_NO_CPP_NAMESPACE
+	#define _MSL_START_TR1_NAMESPACE
+	#define _MSL_END_TR1_NAMESPACE
+#else  // _MSL_NO_CPP_NAMESPACE
+	#define _MSL_START_TR1_NAMESPACE namespace std {
+	#define _MSL_END_TR1_NAMESPACE }
+#endif  // _MSL_NO_CPP_NAMESPACE
+	#define _TR1 _STD
+	#define _STD_TR1 _STD
+#endif  // _MSL_TR1_NAMESPACE
+
+#ifdef _MSL_NO_BOOL
+	#ifndef bool
+		typedef unsigned char bool;
+	#endif
+	#ifndef true
+		#define false static_cast<bool>(0)
+		#define true  static_cast<bool>(1)
+	#endif  // true
+#endif  // _MSL_NO_BOOL
+
+#if defined(_MSL_NO_WCHART_LANG_SUPPORT) && !defined(_MSL_NO_WCHART_CPP_SUPPORT)
+
+	#ifdef _MSL_USING_MSL_C
+		#include <wchar_t.h>
+	#elif defined(_MSL_USING_GCC_C)
+		#include <stddef.h>
+	#else
+		extern "C" {typedef unsigned short wchar_t;}
+	#endif
+
+#endif  // defined(_MSL_NO_WCHART_LANG_SUPPORT) && !defined(_MSL_NO_WCHART_CPP_SUPPORT)
+
+#ifdef _MSL_NO_THROW_SPECS
+	#define _MSL_THROW      // deprecated, use _MSL_NO_THROW
+	#ifndef _MSL_NO_THROW
+		#define _MSL_NO_THROW
+	#endif
+	#ifndef _MSL_CANT_THROW
+		#define _MSL_CANT_THROW
+	#endif
+#else  // _MSL_NO_THROW_SPECS
+	#define _MSL_THROW throw() // deprecated, use _MSL_NO_THROW
+	#ifndef _MSL_NO_THROW
+		#define _MSL_NO_THROW throw()
+	#endif
+	#ifndef _MSL_CANT_THROW
+		#define _MSL_CANT_THROW __attribute__((nothrow))
+	#endif
+#endif  // _MSL_NO_THROW_SPECS
+
+#ifndef _MSL_NO_MEMBER_TEMPLATE
+	#define _MSL_REBIND(type) typename Allocator::rebind<type>::other
+#else
+	#define _MSL_REBIND(type) allocator<type>
+#endif
+
+#ifdef _MSL_NO_EXCEPTIONS
+
+	#ifndef _MSL_ERROR_FUNC
+		#define _MSL_ERROR_FUNC 1
+	#endif
+
+	#ifndef _MSL_NO_CPP_NAMESPACE
+		namespace std {
+	#endif
+
+	void __msl_error(const char*);
+
+	#ifndef _MSL_NO_CPP_NAMESPACE
+		} // namespace std
+	#endif
+
+	// If you don't want MSL C++ to throw an exception, code your
+	// error handling code here as an inline method named _STD::__msl_error
+	// Two examples are below:
+	#if _MSL_ERROR_FUNC == 1
+		// Example 1 - bail
+		#include <cstdio>
+		#include <cstdlib>
+
+		inline
+		void
+		_STD::__msl_error(const char* str)
+		{
+			printf(str);
+			abort();
+		}
+	#endif  // _MSL_ERROR_FUNC == 1
+
+	#if _MSL_ERROR_FUNC == 2
+		// Example 2 - ignore
+		inline
+		void
+		_STD::__msl_error(const char*)
+		{
+		}
+	#endif  // _MSL_ERROR_FUNC == 2
+
+#endif  // _MSL_NO_EXCEPTIONS
+
+#ifndef _MSL_ERROR
+	#ifndef _MSL_NO_EXCEPTIONS
+		#define _MSL_ERROR(e, m) throw e(m)
+	#else
+		#define _MSL_ERROR(e, m) _STD::__msl_error(m)
+	#endif
+#endif  // _MSL_ERROR
+
+#ifndef _MSL_DEBUG_ERROR
+	#define _MSL_DEBUG_ERROR(e, m) _MSL_ERROR(e, m)
+#endif
+
+#ifndef _MSL_IMP_EXP
+	#define _MSL_IMP_EXP
+#endif
+
+#ifndef _MSL_IMP_EXP_CPP
+	#define _MSL_IMP_EXP_CPP _MSL_IMP_EXP
+#endif
+
+#ifndef _MSL_IMP_EXP_RUNTIME
+	#define _MSL_IMP_EXP_RUNTIME _MSL_IMP_EXP
+#endif
+
+#ifndef _MSL_LITTLE_ENDIAN
+	#error _MSL_LITTLE_ENDIAN must be defined to 0 or 1
+#endif
+
+#if !defined(_MSL_POSIX_STREAM) && !defined(_MSL_CFILE_STREAM)
+	#define _MSL_CFILE_STREAM
+#endif
+
+#if defined(_MSL_POSIX_STREAM) && defined(_MSL_CFILE_STREAM)
+	#error _MSL_POSIX_STREAM and _MSL_CFILE_STREAM defined
+#endif
+
+#ifndef _MSL_LL_FILE_SUPPORT
+	#if _MSL_LONGLONG
+		#define _MSL_LL_FILE_SUPPORT 1
+	#else
+		#define _MSL_LL_FILE_SUPPORT 0
+	#endif
+#endif  // _MSL_LL_FILE_SUPPORT
+
+#ifndef _MSL_NO_FLOATING_POINT
+	#ifdef _MSL_FLOATING_POINT
+		#if !_MSL_FLOATING_POINT
+			#define _MSL_NO_FLOATING_POINT
+		#endif
+	#endif  // _MSL_FLOATING_POINT
+#endif  // _MSL_NO_FLOATING_POINT
+
+#ifdef _MSL_NO_CONDITION
+	#define _MSL_NO_THREAD
+#endif
+
+#if !defined(_MSL_SINGLE_THREAD) && !defined(_MSL_USE_PTHREADS) && \
+    !defined(_MSL_USE_MPTASKS) && !defined(_MSL_USE_WINTHREADS) && \
+    !defined(_MSL_USE_NITROTHREADS)
+	#define _MSL_SINGLE_THREAD
+#endif  // !defined(_MSL_SINGLE_THREAD) && !defined(_MSL_USE_PTHREADS) && \
+
+#ifndef _MSL_NO_TIME_SUPPORT
+//	#ifdef _MSL_USING_MSL_C
+//		#if !_MSL_OS_TIME_SUPPORT || !_MSL_TIME_T_AVAILABLE
+			#define _MSL_NO_TIME_SUPPORT
+//		#endif
+//	#endif  // _MSL_USING_MSL_C
+#endif  // _MSL_NO_TIME_SUPPORT
+
+#ifdef __MWERKS__
+
+#if __option(rvalue_refs)
+	#define _MSL_MOVE
+#endif
+
+#pragma warn_undefmacro reset
+
+#endif  // __MWERKS__
+
+#endif  // _MSLCONFIG
+
+// hh  990120 Created
+// blc 010817 Added <mslconfig.PalmOS.h> include
+// JWW 020130 Changed _MWMT to _MSL_THREADSAFE for consistency's sake
+// cc  021031 Added <mslconfig_ARM> include
+// cc  030127 Added <mslconfig_E68K> include
+// JWW 030224 Changed __MSL_LONGLONG_SUPPORT__ flag into the new more configurable _MSL_LONGLONG
+// hh  040217 Changed _No_Floating_Point to _MSL_NO_FLOATING_POINT
+// cc  060822 Removing implicit activation of C++ time support via C 
+//            _MSL_OS_TIME_SUPPORT flag, changing to explicit activation via C++ 
+//            _MSL_NO_TIME_SUPPORT in platform mslconfig file.

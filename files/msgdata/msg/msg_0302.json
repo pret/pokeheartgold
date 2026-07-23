@@ -1,0 +1,932 @@
+{
+  "key": 45127,
+  "messages": [
+    {
+      "id": "msg_0302_00000",
+      "en_US": "{STRVAR_1 1, 0, 0}"
+    },
+    {
+      "id": "msg_0302_00001",
+      "en_US": "♂"
+    },
+    {
+      "id": "msg_0302_00002",
+      "en_US": "♀"
+    },
+    {
+      "id": "msg_0302_00003",
+      "en_US": "{STRVAR_1 52, 0, 0}"
+    },
+    {
+      "id": "msg_0302_00004",
+      "en_US": "Item"
+    },
+    {
+      "id": "msg_0302_00005",
+      "en_US": "{STRVAR_1 8, 0, 0}"
+    },
+    {
+      "id": "msg_0302_00006",
+      "en_US": "None"
+    },
+    {
+      "id": "msg_0302_00007",
+      "en_US": "INFO"
+    },
+    {
+      "id": "msg_0302_00008",
+      "en_US": "Dex No."
+    },
+    {
+      "id": "msg_0302_00009",
+      "en_US": "{STRVAR_1 52, 0, 0}"
+    },
+    {
+      "id": "msg_0302_00010",
+      "en_US": "Name"
+    },
+    {
+      "id": "msg_0302_00011",
+      "en_US": "{STRVAR_1 0, 0, 0}"
+    },
+    {
+      "id": "msg_0302_00012",
+      "en_US": "Type"
+    },
+    {
+      "id": "msg_0302_00013",
+      "en_US": "OT"
+    },
+    {
+      "id": "msg_0302_00014",
+      "en_US": "{STRVAR_1 3, 0, 0}"
+    },
+    {
+      "id": "msg_0302_00015",
+      "en_US": "ID No."
+    },
+    {
+      "id": "msg_0302_00016",
+      "en_US": "{STRVAR_1 54, 0, 0}"
+    },
+    {
+      "id": "msg_0302_00017",
+      "en_US": "Exp. Points"
+    },
+    {
+      "id": "msg_0302_00018",
+      "en_US": "{STRVAR_1 56, 0, 0}"
+    },
+    {
+      "id": "msg_0302_00019",
+      "en_US": "To Next Lv."
+    },
+    {
+      "id": "msg_0302_00020",
+      "garbage": 0
+    },
+    {
+      "id": "msg_0302_00021",
+      "en_US": "{STRVAR_1 55, 0, 0}"
+    },
+    {
+      "id": "msg_0302_00022",
+      "en_US": "???"
+    },
+    {
+      "id": "msg_0302_00023",
+      "en_US": "TRAINER MEMO"
+    },
+    {
+      "id": "msg_0302_00024",
+      "en_US": "{COLOR 2}Hardy{COLOR 0} nature."
+    },
+    {
+      "id": "msg_0302_00025",
+      "en_US": "{COLOR 2}Lonely{COLOR 0} nature."
+    },
+    {
+      "id": "msg_0302_00026",
+      "en_US": "{COLOR 2}Brave{COLOR 0} nature."
+    },
+    {
+      "id": "msg_0302_00027",
+      "en_US": "{COLOR 2}Adamant{COLOR 0} nature."
+    },
+    {
+      "id": "msg_0302_00028",
+      "en_US": "{COLOR 2}Naughty{COLOR 0} nature."
+    },
+    {
+      "id": "msg_0302_00029",
+      "en_US": "{COLOR 2}Bold{COLOR 0} nature."
+    },
+    {
+      "id": "msg_0302_00030",
+      "en_US": "{COLOR 2}Docile{COLOR 0} nature."
+    },
+    {
+      "id": "msg_0302_00031",
+      "en_US": "{COLOR 2}Relaxed{COLOR 0} nature."
+    },
+    {
+      "id": "msg_0302_00032",
+      "en_US": "{COLOR 2}Impish{COLOR 0} nature."
+    },
+    {
+      "id": "msg_0302_00033",
+      "en_US": "{COLOR 2}Lax{COLOR 0} nature."
+    },
+    {
+      "id": "msg_0302_00034",
+      "en_US": "{COLOR 2}Timid{COLOR 0} nature."
+    },
+    {
+      "id": "msg_0302_00035",
+      "en_US": "{COLOR 2}Hasty{COLOR 0} nature."
+    },
+    {
+      "id": "msg_0302_00036",
+      "en_US": "{COLOR 2}Serious{COLOR 0} nature."
+    },
+    {
+      "id": "msg_0302_00037",
+      "en_US": "{COLOR 2}Jolly{COLOR 0} nature."
+    },
+    {
+      "id": "msg_0302_00038",
+      "en_US": "{COLOR 2}Naive{COLOR 0} nature."
+    },
+    {
+      "id": "msg_0302_00039",
+      "en_US": "{COLOR 2}Modest{COLOR 0} nature."
+    },
+    {
+      "id": "msg_0302_00040",
+      "en_US": "{COLOR 2}Mild{COLOR 0} nature."
+    },
+    {
+      "id": "msg_0302_00041",
+      "en_US": "{COLOR 2}Quiet{COLOR 0} nature."
+    },
+    {
+      "id": "msg_0302_00042",
+      "en_US": "{COLOR 2}Bashful{COLOR 0} nature."
+    },
+    {
+      "id": "msg_0302_00043",
+      "en_US": "{COLOR 2}Rash{COLOR 0} nature."
+    },
+    {
+      "id": "msg_0302_00044",
+      "en_US": "{COLOR 2}Calm{COLOR 0} nature."
+    },
+    {
+      "id": "msg_0302_00045",
+      "en_US": "{COLOR 2}Gentle{COLOR 0} nature."
+    },
+    {
+      "id": "msg_0302_00046",
+      "en_US": "{COLOR 2}Sassy{COLOR 0} nature."
+    },
+    {
+      "id": "msg_0302_00047",
+      "en_US": "{COLOR 2}Careful{COLOR 0} nature."
+    },
+    {
+      "id": "msg_0302_00048",
+      "en_US": "{COLOR 2}Quirky{COLOR 0} nature."
+    },
+    {
+      "id": "msg_0302_00049",
+      "en_US": [
+        "{STRVAR_34 16, 1, 0} {STRVAR_1 51, 2, 0}, 20{STRVAR_1 51, 0, 0}\n",
+        "{COLOR 2}{STRVAR_1 4, 4, 0}{COLOR 0}\n",
+        "Met at Lv. {STRVAR_1 52, 3, 0}."
+      ]
+    },
+    {
+      "id": "msg_0302_00050",
+      "en_US": [
+        "{STRVAR_34 16, 1, 0} {STRVAR_1 51, 2, 0}, 20{STRVAR_1 51, 0, 0}\n",
+        "{COLOR 2}{STRVAR_1 4, 4, 0}{COLOR 0}\n",
+        "Apparently met at\n",
+        "Lv. {STRVAR_1 52, 3, 0}."
+      ]
+    },
+    {
+      "id": "msg_0302_00051",
+      "en_US": [
+        "{STRVAR_34 16, 1, 0} {STRVAR_1 51, 2, 0}, 20{STRVAR_1 51, 0, 0}\n",
+        "{COLOR 2}{STRVAR_1 4, 4, 0}{COLOR 0}\n",
+        "Arrived at Lv. {STRVAR_1 52, 3, 0}."
+      ]
+    },
+    {
+      "id": "msg_0302_00052",
+      "en_US": [
+        "{STRVAR_34 16, 6, 0} {STRVAR_1 51, 7, 0}, 20{STRVAR_1 51, 5, 0}\n",
+        "{COLOR 2}{STRVAR_1 4, 8, 0}{COLOR 0}\n",
+        "Egg obtained.\n",
+        "{STRVAR_34 16, 1, 0} {STRVAR_1 51, 2, 0}, 20{STRVAR_1 51, 0, 0}\n",
+        "{COLOR 2}{STRVAR_1 4, 4, 0}{COLOR 0}\n",
+        "Egg hatched."
+      ]
+    },
+    {
+      "id": "msg_0302_00053",
+      "en_US": [
+        "{STRVAR_34 16, 6, 0} {STRVAR_1 51, 7, 0}, 20{STRVAR_1 51, 5, 0}\n",
+        "{COLOR 2}{STRVAR_1 4, 8, 0}{COLOR 0}\n",
+        "Egg obtained.\n",
+        "{STRVAR_34 16, 1, 0} {STRVAR_1 51, 2, 0}, 20{STRVAR_1 51, 0, 0}\n",
+        "{COLOR 2}{STRVAR_1 4, 4, 0}{COLOR 0}\n",
+        "Egg apparently hatched."
+      ]
+    },
+    {
+      "id": "msg_0302_00054",
+      "en_US": [
+        "{STRVAR_34 16, 6, 0} {STRVAR_1 51, 7, 0}, 20{STRVAR_1 51, 5, 0}\n",
+        "{COLOR 2}{STRVAR_1 4, 8, 0}{COLOR 0}\n",
+        "Egg received.\n",
+        "{STRVAR_34 16, 1, 0} {STRVAR_1 51, 2, 0}, 20{STRVAR_1 51, 0, 0}\n",
+        "{COLOR 2}{STRVAR_1 4, 4, 0}{COLOR 0}\n",
+        "Egg hatched."
+      ]
+    },
+    {
+      "id": "msg_0302_00055",
+      "en_US": [
+        "{STRVAR_34 16, 6, 0} {STRVAR_1 51, 7, 0}, 20{STRVAR_1 51, 5, 0}\n",
+        "{COLOR 2}{STRVAR_1 4, 8, 0}{COLOR 0}\n",
+        "Egg received.\n",
+        "{STRVAR_34 16, 1, 0} {STRVAR_1 51, 2, 0}, 20{STRVAR_1 51, 0, 0}\n",
+        "{COLOR 2}{STRVAR_1 4, 4, 0}{COLOR 0}\n",
+        "Egg apparently hatched."
+      ]
+    },
+    {
+      "id": "msg_0302_00056",
+      "en_US": [
+        "{STRVAR_34 16, 1, 0} {STRVAR_1 51, 2, 0}, 20{STRVAR_1 51, 0, 0}\n",
+        "{COLOR 2}{STRVAR_1 4, 4, 0}{COLOR 0}\n",
+        "Had a fateful encounter\n",
+        "at Lv. {STRVAR_1 52, 3, 0}."
+      ]
+    },
+    {
+      "id": "msg_0302_00057",
+      "en_US": [
+        "{STRVAR_34 16, 1, 0} {STRVAR_1 51, 2, 0}, 20{STRVAR_1 51, 0, 0}\n",
+        "{COLOR 2}{STRVAR_1 4, 4, 0}{COLOR 0}\n",
+        "Apparently had a\n",
+        "fateful encounter at\n",
+        "Lv. {STRVAR_1 52, 3, 0}."
+      ]
+    },
+    {
+      "id": "msg_0302_00058",
+      "en_US": [
+        "{STRVAR_34 16, 6, 0} {STRVAR_1 51, 7, 0}, 20{STRVAR_1 51, 5, 0}\n",
+        "{COLOR 2}{STRVAR_1 4, 8, 0}{COLOR 0}\n",
+        "Egg obtained.\n",
+        "{STRVAR_34 16, 1, 0} {STRVAR_1 51, 2, 0}, 20{STRVAR_1 51, 0, 0}\n",
+        "{COLOR 2}{STRVAR_1 4, 4, 0}{COLOR 0}\n",
+        "Egg hatched.\n",
+        "Fateful encounter."
+      ]
+    },
+    {
+      "id": "msg_0302_00059",
+      "en_US": [
+        "{STRVAR_34 16, 6, 0} {STRVAR_1 51, 7, 0}, 20{STRVAR_1 51, 5, 0}\n",
+        "{COLOR 2}{STRVAR_1 4, 8, 0}{COLOR 0}\n",
+        "Egg obtained.\n",
+        "{STRVAR_34 16, 1, 0} {STRVAR_1 51, 2, 0}, 20{STRVAR_1 51, 0, 0}\n",
+        "{COLOR 2}{STRVAR_1 4, 4, 0}{COLOR 0}\n",
+        "Egg apparently hatched.\n",
+        "Fateful encounter."
+      ]
+    },
+    {
+      "id": "msg_0302_00060",
+      "en_US": [
+        "{STRVAR_34 16, 6, 0} {STRVAR_1 51, 7, 0}, 20{STRVAR_1 51, 5, 0}\n",
+        "{COLOR 2}{STRVAR_1 4, 8, 0}{COLOR 0}\n",
+        "Egg arrived.\n",
+        "{STRVAR_34 16, 1, 0} {STRVAR_1 51, 2, 0}, 20{STRVAR_1 51, 0, 0}\n",
+        "{COLOR 2}{STRVAR_1 4, 4, 0}{COLOR 0}\n",
+        "Egg hatched.\n",
+        "Fateful encounter."
+      ]
+    },
+    {
+      "id": "msg_0302_00061",
+      "en_US": [
+        "{STRVAR_34 16, 6, 0} {STRVAR_1 51, 7, 0}, 20{STRVAR_1 51, 5, 0}\n",
+        "{COLOR 2}{STRVAR_1 4, 8, 0}{COLOR 0}\n",
+        "Egg arrived.\n",
+        "{STRVAR_34 16, 1, 0} {STRVAR_1 51, 2, 0}, 20{STRVAR_1 51, 0, 0}\n",
+        "{COLOR 2}{STRVAR_1 4, 4, 0}{COLOR 0}\n",
+        "Egg apparently hatched.\n",
+        "Fateful encounter."
+      ]
+    },
+    {
+      "id": "msg_0302_00062",
+      "en_US": [
+        "{STRVAR_34 16, 6, 0} {STRVAR_1 51, 7, 0}, 20{STRVAR_1 51, 5, 0}\n",
+        "{COLOR 2}{STRVAR_1 4, 8, 0}{COLOR 0}\n",
+        "Egg obtained.\n",
+        "{STRVAR_34 16, 1, 0} {STRVAR_1 51, 2, 0}, 20{STRVAR_1 51, 0, 0}\n",
+        "{COLOR 2}{STRVAR_1 4, 4, 0}{COLOR 0}\n",
+        "Egg hatched.\n",
+        "Fateful encounter."
+      ]
+    },
+    {
+      "id": "msg_0302_00063",
+      "en_US": [
+        "{STRVAR_34 16, 6, 0} {STRVAR_1 51, 7, 0}, 20{STRVAR_1 51, 5, 0}\n",
+        "{COLOR 2}{STRVAR_1 4, 8, 0}{COLOR 0}\n",
+        "Egg obtained.\n",
+        "{STRVAR_34 16, 1, 0} {STRVAR_1 51, 2, 0}, 20{STRVAR_1 51, 0, 0}\n",
+        "{COLOR 2}{STRVAR_1 4, 4, 0}{COLOR 0}\n",
+        "Egg apparently hatched.\n",
+        "Fateful encounter."
+      ]
+    },
+    {
+      "id": "msg_0302_00064",
+      "en_US": [
+        "{STRVAR_34 16, 1, 0} {STRVAR_1 51, 2, 0}, 20{STRVAR_1 51, 0, 0}\n",
+        "{COLOR 2}{STRVAR_1 4, 4, 0}{COLOR 0}\n",
+        "Arrived at Lv. {STRVAR_1 52, 3, 0}."
+      ]
+    },
+    {
+      "id": "msg_0302_00065",
+      "en_US": "Likes {COLOR 2}spicy{COLOR 0} food."
+    },
+    {
+      "id": "msg_0302_00066",
+      "en_US": "Likes {COLOR 2}dry{COLOR 0} food."
+    },
+    {
+      "id": "msg_0302_00067",
+      "en_US": "Likes {COLOR 2}sweet{COLOR 0} food."
+    },
+    {
+      "id": "msg_0302_00068",
+      "en_US": "Likes {COLOR 2}bitter{COLOR 0} food."
+    },
+    {
+      "id": "msg_0302_00069",
+      "en_US": "Likes {COLOR 2}sour{COLOR 0} food."
+    },
+    {
+      "id": "msg_0302_00070",
+      "en_US": "Happily eats anything."
+    },
+    {
+      "id": "msg_0302_00071",
+      "en_US": "Loves to eat."
+    },
+    {
+      "id": "msg_0302_00072",
+      "en_US": "Often dozes off."
+    },
+    {
+      "id": "msg_0302_00073",
+      "en_US": "Often scatters things."
+    },
+    {
+      "id": "msg_0302_00074",
+      "en_US": "Scatters things often."
+    },
+    {
+      "id": "msg_0302_00075",
+      "en_US": "Likes to relax."
+    },
+    {
+      "id": "msg_0302_00076",
+      "en_US": "Proud of its power."
+    },
+    {
+      "id": "msg_0302_00077",
+      "en_US": "Likes to thrash about."
+    },
+    {
+      "id": "msg_0302_00078",
+      "en_US": "A little quick tempered."
+    },
+    {
+      "id": "msg_0302_00079",
+      "en_US": "Likes to fight."
+    },
+    {
+      "id": "msg_0302_00080",
+      "en_US": "Quick tempered."
+    },
+    {
+      "id": "msg_0302_00081",
+      "en_US": "Sturdy body."
+    },
+    {
+      "id": "msg_0302_00082",
+      "en_US": "Capable of taking hits."
+    },
+    {
+      "id": "msg_0302_00083",
+      "en_US": "Highly persistent."
+    },
+    {
+      "id": "msg_0302_00084",
+      "en_US": "Good endurance."
+    },
+    {
+      "id": "msg_0302_00085",
+      "en_US": "Good perseverance."
+    },
+    {
+      "id": "msg_0302_00086",
+      "en_US": "Likes to run."
+    },
+    {
+      "id": "msg_0302_00087",
+      "en_US": "Alert to sounds."
+    },
+    {
+      "id": "msg_0302_00088",
+      "en_US": "Impetuous and silly."
+    },
+    {
+      "id": "msg_0302_00089",
+      "en_US": "Somewhat of a clown."
+    },
+    {
+      "id": "msg_0302_00090",
+      "en_US": "Quick to flee."
+    },
+    {
+      "id": "msg_0302_00091",
+      "en_US": "Highly curious."
+    },
+    {
+      "id": "msg_0302_00092",
+      "en_US": "Mischievous."
+    },
+    {
+      "id": "msg_0302_00093",
+      "en_US": "Thoroughly cunning."
+    },
+    {
+      "id": "msg_0302_00094",
+      "en_US": "Often lost in thought."
+    },
+    {
+      "id": "msg_0302_00095",
+      "en_US": "Very finicky."
+    },
+    {
+      "id": "msg_0302_00096",
+      "en_US": "Strong willed."
+    },
+    {
+      "id": "msg_0302_00097",
+      "en_US": "Somewhat vain."
+    },
+    {
+      "id": "msg_0302_00098",
+      "en_US": "Strongly defiant."
+    },
+    {
+      "id": "msg_0302_00099",
+      "en_US": "Hates to lose."
+    },
+    {
+      "id": "msg_0302_00100",
+      "en_US": "Somewhat stubborn."
+    },
+    {
+      "id": "msg_0302_00101",
+      "en_US": [
+        "{STRVAR_34 16, 6, 0} {STRVAR_1 51, 7, 0}, 20{STRVAR_1 51, 5, 0}\n",
+        "A mysterious Pokémon\n",
+        "Egg received from\n",
+        "{COLOR 2}{STRVAR_1 4, 8, 0}{COLOR 0}.\n"
+      ]
+    },
+    {
+      "id": "msg_0302_00102",
+      "en_US": [
+        "{STRVAR_34 16, 6, 0} {STRVAR_1 51, 7, 0}, 20{STRVAR_1 51, 5, 0}\n",
+        "A mysterious Pokémon\n",
+        "Egg obtained in\n",
+        "{COLOR 2}{STRVAR_1 4, 8, 0}{COLOR 0}.\n"
+      ]
+    },
+    {
+      "id": "msg_0302_00103",
+      "en_US": [
+        "{STRVAR_34 16, 6, 0} {STRVAR_1 51, 7, 0}, 20{STRVAR_1 51, 5, 0}\n",
+        "A very mysterious\n",
+        "Pokémon Egg obtained\n",
+        "at {COLOR 1}{STRVAR_1 4, 8, 0}{COLOR 0}.\n"
+      ]
+    },
+    {
+      "id": "msg_0302_00104",
+      "en_US": [
+        "{STRVAR_34 16, 6, 0} {STRVAR_1 51, 7, 0}, 20{STRVAR_1 51, 5, 0}\n",
+        "A very mysterious\n",
+        "Pokémon Egg that came\n",
+        "from {COLOR 2}{STRVAR_1 4, 8, 0}{COLOR 0}.\n"
+      ]
+    },
+    {
+      "id": "msg_0302_00105",
+      "en_US": [
+        "“The Egg Watch”\n",
+        "Sounds can be heard\n",
+        "coming from inside!\n",
+        "It will hatch soon!"
+      ]
+    },
+    {
+      "id": "msg_0302_00106",
+      "en_US": [
+        "“The Egg Watch”\n",
+        "It appears to move\n",
+        "occasionally. It may\n",
+        "be close to hatching."
+      ]
+    },
+    {
+      "id": "msg_0302_00107",
+      "en_US": [
+        "“The Egg Watch”\n",
+        "What will hatch from\n",
+        "this? It doesn’t seem\n",
+        "close to hatching."
+      ]
+    },
+    {
+      "id": "msg_0302_00108",
+      "en_US": [
+        "“The Egg Watch”\n",
+        "It looks like this Egg\n",
+        "will take a long time to\n",
+        "hatch."
+      ]
+    },
+    {
+      "id": "msg_0302_00109",
+      "en_US": "SKILLS"
+    },
+    {
+      "id": "msg_0302_00110",
+      "en_US": "HP"
+    },
+    {
+      "id": "msg_0302_00111",
+      "en_US": "Attack"
+    },
+    {
+      "id": "msg_0302_00112",
+      "en_US": "Defense"
+    },
+    {
+      "id": "msg_0302_00113",
+      "en_US": "Sp. Atk"
+    },
+    {
+      "id": "msg_0302_00114",
+      "en_US": "Sp. Def"
+    },
+    {
+      "id": "msg_0302_00115",
+      "en_US": "Speed"
+    },
+    {
+      "id": "msg_0302_00116",
+      "en_US": "Ability"
+    },
+    {
+      "id": "msg_0302_00117",
+      "en_US": "/"
+    },
+    {
+      "id": "msg_0302_00118",
+      "en_US": "{STRVAR_1 52, 0, 0}"
+    },
+    {
+      "id": "msg_0302_00119",
+      "en_US": "{STRVAR_1 52, 0, 0}"
+    },
+    {
+      "id": "msg_0302_00120",
+      "en_US": "{STRVAR_1 52, 0, 0}"
+    },
+    {
+      "id": "msg_0302_00121",
+      "en_US": "{STRVAR_1 52, 0, 0}"
+    },
+    {
+      "id": "msg_0302_00122",
+      "en_US": "{STRVAR_1 52, 0, 0}"
+    },
+    {
+      "id": "msg_0302_00123",
+      "en_US": "{STRVAR_1 52, 0, 0}"
+    },
+    {
+      "id": "msg_0302_00124",
+      "en_US": "{STRVAR_1 52, 0, 0}"
+    },
+    {
+      "id": "msg_0302_00125",
+      "en_US": "{STRVAR_1 5, 0, 0}"
+    },
+    {
+      "id": "msg_0302_00126",
+      "garbage": 7
+    },
+    {
+      "id": "msg_0302_00127",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0302_00128",
+      "en_US": "BATTLE MOVES"
+    },
+    {
+      "id": "msg_0302_00129",
+      "garbage": 4
+    },
+    {
+      "id": "msg_0302_00130",
+      "en_US": "{STRVAR_1 6, 0, 0}"
+    },
+    {
+      "id": "msg_0302_00131",
+      "en_US": "{STRVAR_1 6, 0, 0}"
+    },
+    {
+      "id": "msg_0302_00132",
+      "en_US": "{STRVAR_1 6, 0, 0}"
+    },
+    {
+      "id": "msg_0302_00133",
+      "en_US": "{STRVAR_1 6, 0, 0}"
+    },
+    {
+      "id": "msg_0302_00134",
+      "en_US": "{STRVAR_1 6, 0, 0}"
+    },
+    {
+      "id": "msg_0302_00135",
+      "en_US": "PP"
+    },
+    {
+      "id": "msg_0302_00136",
+      "en_US": "{STRVAR_1 51, 0, 0}"
+    },
+    {
+      "id": "msg_0302_00137",
+      "en_US": "{STRVAR_1 51, 0, 0}"
+    },
+    {
+      "id": "msg_0302_00138",
+      "en_US": "{STRVAR_1 51, 0, 0}"
+    },
+    {
+      "id": "msg_0302_00139",
+      "en_US": "{STRVAR_1 51, 0, 0}"
+    },
+    {
+      "id": "msg_0302_00140",
+      "en_US": "{STRVAR_1 51, 0, 0}"
+    },
+    {
+      "id": "msg_0302_00141",
+      "en_US": "{STRVAR_1 51, 0, 0}"
+    },
+    {
+      "id": "msg_0302_00142",
+      "en_US": "{STRVAR_1 51, 0, 0}"
+    },
+    {
+      "id": "msg_0302_00143",
+      "en_US": "{STRVAR_1 51, 0, 0}"
+    },
+    {
+      "id": "msg_0302_00144",
+      "en_US": "{STRVAR_1 51, 0, 0}"
+    },
+    {
+      "id": "msg_0302_00145",
+      "en_US": "{STRVAR_1 51, 0, 0}"
+    },
+    {
+      "id": "msg_0302_00146",
+      "en_US": "{ALN_CENTER}Cancel"
+    },
+    {
+      "id": "msg_0302_00147",
+      "en_US": "POWER"
+    },
+    {
+      "id": "msg_0302_00148",
+      "en_US": "ACCURACY"
+    },
+    {
+      "id": "msg_0302_00149",
+      "en_US": "CATEGORY"
+    },
+    {
+      "id": "msg_0302_00150",
+      "en_US": "{STRVAR_1 52, 0, 0}"
+    },
+    {
+      "id": "msg_0302_00151",
+      "en_US": "{STRVAR_1 52, 0, 0}"
+    },
+    {
+      "id": "msg_0302_00152",
+      "en_US": "SWITCH"
+    },
+    {
+      "id": "msg_0302_00153",
+      "en_US": "--"
+    },
+    {
+      "id": "msg_0302_00154",
+      "en_US": "---"
+    },
+    {
+      "id": "msg_0302_00155",
+      "garbage": 4
+    },
+    {
+      "id": "msg_0302_00156",
+      "en_US": [
+        "HM moves can’t be\n",
+        "forgotten now."
+      ]
+    },
+    {
+      "id": "msg_0302_00157",
+      "en_US": "PERFORMANCE"
+    },
+    {
+      "id": "msg_0302_00158",
+      "garbage": 4
+    },
+    {
+      "id": "msg_0302_00159",
+      "garbage": 4
+    },
+    {
+      "id": "msg_0302_00160",
+      "garbage": 8
+    },
+    {
+      "id": "msg_0302_00161",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0302_00162",
+      "garbage": 5
+    },
+    {
+      "id": "msg_0302_00163",
+      "garbage": 4
+    },
+    {
+      "id": "msg_0302_00164",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0302_00165",
+      "garbage": 7
+    },
+    {
+      "id": "msg_0302_00166",
+      "garbage": 15
+    },
+    {
+      "id": "msg_0302_00167",
+      "garbage": 15
+    },
+    {
+      "id": "msg_0302_00168",
+      "garbage": 15
+    },
+    {
+      "id": "msg_0302_00169",
+      "garbage": 15
+    },
+    {
+      "id": "msg_0302_00170",
+      "garbage": 16
+    },
+    {
+      "id": "msg_0302_00171",
+      "garbage": 7
+    },
+    {
+      "id": "msg_0302_00172",
+      "garbage": 17
+    },
+    {
+      "id": "msg_0302_00173",
+      "garbage": 17
+    },
+    {
+      "id": "msg_0302_00174",
+      "garbage": 17
+    },
+    {
+      "id": "msg_0302_00175",
+      "garbage": 16
+    },
+    {
+      "id": "msg_0302_00176",
+      "garbage": 16
+    },
+    {
+      "id": "msg_0302_00177",
+      "garbage": 12
+    },
+    {
+      "id": "msg_0302_00178",
+      "garbage": 18
+    },
+    {
+      "id": "msg_0302_00179",
+      "en_US": "RIBBONS"
+    },
+    {
+      "id": "msg_0302_00180",
+      "garbage": 4
+    },
+    {
+      "id": "msg_0302_00181",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0302_00182",
+      "en_US": "No. of Ribbons:"
+    },
+    {
+      "id": "msg_0302_00183",
+      "en_US": "{STRVAR_1 52, 0, 0}"
+    },
+    {
+      "id": "msg_0302_00184",
+      "garbage": 5
+    },
+    {
+      "id": "msg_0302_00185",
+      "garbage": 1
+    },
+    {
+      "id": "msg_0302_00186",
+      "garbage": 5
+    },
+    {
+      "id": "msg_0302_00187",
+      "en_US": "Speed"
+    },
+    {
+      "id": "msg_0302_00188",
+      "en_US": "Power"
+    },
+    {
+      "id": "msg_0302_00189",
+      "en_US": "Skill"
+    },
+    {
+      "id": "msg_0302_00190",
+      "en_US": "Stamina"
+    },
+    {
+      "id": "msg_0302_00191",
+      "en_US": "Jump"
+    },
+    {
+      "id": "msg_0302_00192",
+      "en_US": "Shiny Leaf"
+    },
+    {
+      "id": "msg_0302_00193",
+      "en_US": "{ALN_CENTER}Forget!"
+    },
+    {
+      "id": "msg_0302_00194",
+      "en_US": "{ALN_CENTER}Switch"
+    }
+  ]
+}

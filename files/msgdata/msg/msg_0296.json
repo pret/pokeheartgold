@@ -1,0 +1,139 @@
+{
+  "key": 2295,
+  "messages": [
+    {
+      "id": "msg_0296_00000",
+      "en_US": [
+        "I win!\n",
+        "{STRVAR_1 28, 0, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0296_00001",
+      "en_US": [
+        "I won!\n",
+        "I won with {STRVAR_1 28, 0, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0296_00002",
+      "en_US": [
+        "{STRVAR_1 28, 0, 0} is strong,\n",
+        "isn’t it?"
+      ]
+    },
+    {
+      "id": "msg_0296_00003",
+      "en_US": [
+        "It’s {STRVAR_1 28, 0, 0}\n",
+        "{STRVAR_1 28, 1, 0} after all!"
+      ]
+    },
+    {
+      "id": "msg_0296_00004",
+      "en_US": "{STRVAR_1 28, 0, 0}, yay!"
+    },
+    {
+      "id": "msg_0296_00005",
+      "en_US": [
+        "Yay, {STRVAR_1 28, 0, 0}!\n",
+        "{STRVAR_1 28, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0296_00006",
+      "en_US": [
+        "Sorry, it’s {STRVAR_1 28, 0, 0}\n",
+        "{STRVAR_1 28, 1, 0}."
+      ]
+    },
+    {
+      "id": "msg_0296_00007",
+      "en_US": [
+        "{STRVAR_1 28, 0, 0}!\n",
+        "Thank you!"
+      ]
+    },
+    {
+      "id": "msg_0296_00008",
+      "en_US": [
+        "The way I feel now is\n",
+        "{STRVAR_1 28, 0, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0296_00009",
+      "en_US": [
+        "I wanted people to look at\n",
+        "my {STRVAR_1 28, 0, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0296_00010",
+      "en_US": [
+        "It’s all thanks to\n",
+        "{STRVAR_1 28, 0, 0}."
+      ]
+    },
+    {
+      "id": "msg_0296_00011",
+      "en_US": [
+        "I might have won with\n",
+        "{STRVAR_1 28, 0, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0296_00012",
+      "en_US": [
+        "I get the happiest with\n",
+        "{STRVAR_1 28, 0, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0296_00013",
+      "en_US": [
+        "{STRVAR_1 28, 0, 0} secured\n",
+        "the victory!"
+      ]
+    },
+    {
+      "id": "msg_0296_00014",
+      "en_US": [
+        "This {STRVAR_1 28, 0, 0}\n",
+        "was really good!"
+      ]
+    },
+    {
+      "id": "msg_0296_00015",
+      "en_US": [
+        "{STRVAR_1 28, 0, 0}\n",
+        "was fun, wasn’t it?"
+      ]
+    },
+    {
+      "id": "msg_0296_00016",
+      "en_US": [
+        "Huh?\n",
+        "{STRVAR_1 28, 0, 0}?!"
+      ]
+    },
+    {
+      "id": "msg_0296_00017",
+      "en_US": "{STRVAR_1 28, 0, 0} is the toughest!"
+    },
+    {
+      "id": "msg_0296_00018",
+      "en_US": [
+        "Happy!\n",
+        "{STRVAR_1 28, 0, 0} happy!"
+      ]
+    },
+    {
+      "id": "msg_0296_00019",
+      "en_US": [
+        "How’s that?!\n",
+        "{STRVAR_1 28, 0, 0}!"
+      ]
+    }
+  ]
+}

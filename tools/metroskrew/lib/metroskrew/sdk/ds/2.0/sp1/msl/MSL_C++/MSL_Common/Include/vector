@@ -1,0 +1,2940 @@
+/* MSL
+ * Copyright © 1995-2006 Freescale Corporation.  All rights reserved.
+ *
+ * $Date: 2006/02/09 16:59:46 $
+ * $Revision: 1.72.2.4 $
+ */
+
+// vector
+
+#ifndef _VECTOR
+#define _VECTOR
+
+/*  vector synopsis
+
+namespace std
+{
+
+template <class T, class Allocator = allocator<T> >
+class vector
+{
+public:
+	//  types:
+	typedef typename Allocator::reference         reference;
+	typedef typename Allocator::const_reference   const_reference;
+	typedef typename Allocator::size_type         size_type;
+	typedef typename Allocator::difference_type   difference_type;
+	typedef T                                     value_type;
+	typedef Allocator                             allocator_type;
+	typedef typename Allocator::pointer           pointer;
+	typedef typename Allocator::const_pointer     const_pointer
+
+	class                                         iterator;        // random access
+	class                                         const_iterator;  // random access
+	typedef std::reverse_iterator<iterator>       reverse_iterator;
+	typedef std::reverse_iterator<const_iterator> const_reverse_iterator;
+
+	//  lib.vector.cons construct/copy/destroy:
+	explicit vector(const Allocator& = Allocator());
+	explicit vector(size_type n, const T& value = T(), const Allocator& = Allocator());
+	template <class InputIterator>
+		vector(InputIterator first, InputIterator last, const Allocator& = Allocator());
+	vector(const vector& x);
+	vector& operator=(const vector& x);
+	~vector();
+
+	allocator_type get_allocator() const;
+	size_type max_size() const;
+
+	size_type size() const;
+	bool      empty() const;
+	size_type capacity() const;
+	void      reserve(size_type n);
+
+	template <class InputIterator>
+		void assign(InputIterator first, InputIterator last);
+	void assign(size_type n, const T& u);
+
+	iterator               begin();
+	const_iterator         begin() const;
+	iterator               end();
+	const_iterator         end() const;
+
+	reverse_iterator       rbegin();
+	const_reverse_iterator rbegin() const;
+	reverse_iterator       rend();
+	const_reverse_iterator rend() const;
+
+	reference       operator[](size_type n);
+	const_reference operator[](size_type n) const;
+
+	const_reference at(size_type n) const;
+	reference       at(size_type n);
+
+	void resize(size_type sz, const T& c = T());
+
+	reference       front();
+	const_reference front() const;
+	reference       back();
+	const_reference back() const;
+
+	void push_back(const T& x);
+	void pop_back();
+
+	iterator insert(iterator position, const T& x);
+	void     insert(iterator position, size_type n, const T& x);
+	template <class InputIterator>
+		void insert(iterator position, InputIterator first, InputIterator last);
+
+	iterator erase(iterator position);
+	iterator erase(iterator first, iterator last);
+	void     clear();
+
+	void     swap(vector&);
+
+	bool invariants() const;  // Metrowerks extension
+};
+
+template <class Allocator>
+class vector<bool, Allocator>
+{
+  public:
+    //  types:
+    typedef bool                                  const_reference;
+	typedef typename Allocator::size_type         size_type;
+	typedef typename Allocator::difference_type   difference_type;
+    typedef bool                                  value_type;
+    typedef Allocator                             allocator_type;
+    typedef typename Allocator<unsigned int>::pointer       pointer;
+    typedef typename Allocator<unsigned int>::const_pointer const_pointer
+
+	class                                         iterator;        // random access
+	class                                         const_iterator;  // random access
+    typedef std::reverse_iterator<iterator>       reverse_iterator;
+    typedef std::reverse_iterator<const_iterator> const_reverse_iterator;
+
+	class reference
+	{
+	public:
+		typedef vector container_type;   // Metrowerks extension
+		~reference();
+		operator bool() const;
+		reference& operator=(const bool x);
+		reference& operator=(const reference& x);
+		void flip();              //  flips the bit
+	};
+
+	//  construct/copy/destroy:
+	explicit vector(const Allocator& = Allocator());
+	explicit vector(size_type n, const bool& value = bool(), const Allocator& = Allocator());
+	template <class InputIterator>
+		vector(InputIterator first, InputIterator last, const Allocator& = Allocator());
+	vector(const vector& x);
+	vector& operator=(const vector& x);
+	~vector();
+
+	allocator_type get_allocator() const;
+	size_type max_size() const;
+
+	size_type size() const;
+	bool      empty() const;
+	size_type capacity() const;
+	void      reserve(size_type n);
+
+	template <class InputIterator>
+		void assign(InputIterator first, InputIterator last);
+	void assign(size_type n, bool t);
+
+	iterator               begin();
+	const_iterator         begin() const;
+	iterator               end();
+	const_iterator         end() const;
+
+	reverse_iterator       rbegin();
+	const_reverse_iterator rbegin() const;
+	reverse_iterator       rend();
+	const_reverse_iterator rend() const;
+
+	reference       operator[](size_type n);
+	const_reference operator[](size_type n) const;
+
+	const_reference at(size_type n) const;
+	reference       at(size_type n);
+
+	void resize(size_type sz, bool c = false);
+
+	reference       front();
+	const_reference front() const;
+	reference       back();
+	const_reference back() const;
+
+	void push_back(const bool& x);
+	void pop_back();
+
+	iterator insert(iterator position, const bool& x);
+	void     insert (iterator position, size_type n, const bool& x);
+	template <class InputIterator>
+		void insert(iterator position, InputIterator first, InputIterator last);
+
+	iterator erase(iterator position);
+	iterator erase(iterator first, iterator last);
+    void clear();
+
+	void swap(vector&);
+	static void swap(reference x, reference y);
+
+	void flip();                //  flips all bits
+
+	bool invariants() const;  // Metrowerks extension
+};
+
+template <class T, class A> bool operator==(const vector<T,A>& x, const vector<T,A>& y);
+template <class T, class A> bool operator< (const vector<T,A>& x, const vector<T,A>& y);
+template <class T, class A> bool operator!=(const vector<T,A>& x, const vector<T,A>& y);
+template <class T, class A> bool operator> (const vector<T,A>& x, const vector<T,A>& y);
+template <class T, class A> bool operator>=(const vector<T,A>& x, const vector<T,A>& y);
+template <class T, class A> bool operator<=(const vector<T,A>& x, const vector<T,A>& y);
+
+template <class T, class A> void swap(vector<T,A>& x, vector<T,A>& y);
+
+}  // std
+*/
+/** \file vector
+ * Contains the vector template class.
+ * This is a standard header which contains the container
+ * vector<T, Allocator> and the specialization vector<bool, Allocator>.
+*/
+
+/** \namespace std
+*/
+
+/** \class template <typename T, class Allocator = allocator<T> > class vector
+ * \brief A contiguous memory container.
+ *
+ * The elements of a container are stored in contiguous memory.  The vector
+ * holds elements of type T by value.
+*/
+
+#include <mslconfig>
+
+#include <cstring>
+#include <algorithm>
+#include <iterator>
+#include <msl_int_limits>
+#include <memory>
+#include <new>
+#include <stdexcept>
+#include <msl_utility>
+#if !defined(_MSL_NO_BOOL) && !defined(_MSL_NO_VECTOR_BOOL)
+#include <bitvector>
+#endif
+
+#ifndef RC_INVOKED
+
+#ifdef __MWERKS__
+#pragma options align=native
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#if _MSL_FORCE_ENUMS_ALWAYS_INT
+		#pragma enumsalwaysint on
+	#else
+		#pragma enumsalwaysint off
+	#endif
+#endif  // _MSL_FORCE_ENUMS_ALWAYS_INT
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#if _MSL_FORCE_ENABLE_BOOL_SUPPORT
+		#pragma bool on
+	#else
+		#pragma bool off
+	#endif
+#endif  // _MSL_FORCE_ENABLE_BOOL_SUPPORT
+
+#ifdef min
+#undef min
+#endif
+
+#ifdef max
+#undef max
+#endif
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	namespace std {
+#endif
+
+namespace detail
+{
+
+template <unsigned V>
+struct map_version
+{
+	static const unsigned value = 2;
+};
+
+template <>
+struct map_version<1>
+{
+	static const unsigned value = 1;
+};
+
+}
+
+template <bool>
+struct __vector_common
+{
+	static void throw_length_error();
+};
+
+template <bool b>
+void
+__vector_common<b>::throw_length_error()
+{
+	_MSL_ERROR(length_error, "vector length error");
+}
+
+template <typename T, class Allocator> class __vec_deleter_helper;
+
+// __vec_deleter
+
+template <typename T, class Allocator>
+class __vec_deleter
+	: public __vector_common<true>
+{
+	typedef __vector_common<true> base;
+public:
+	typedef T                                          value_type;
+	typedef Allocator                                  allocator_type;
+private:
+	typedef typename Metrowerks::remove_reference<allocator_type>::type allocator_rr_type;
+	typedef typename Metrowerks::call_traits<allocator_type>::param_type allocator_param_type;
+	typedef __vec_deleter_helper<T, typename Metrowerks::add_reference<Allocator>::type> helper;
+public:
+	typedef typename allocator_rr_type::reference         reference;
+	typedef typename allocator_rr_type::const_reference   const_reference;
+	typedef typename allocator_rr_type::pointer           iterator;
+	typedef typename allocator_rr_type::const_pointer     const_iterator;
+	typedef typename allocator_rr_type::size_type         size_type;
+	typedef typename allocator_rr_type::difference_type   difference_type;
+	typedef typename allocator_rr_type::pointer           pointer;
+	typedef typename allocator_rr_type::const_pointer     const_pointer;
+
+	pointer data_;
+	size_type size_;
+	Metrowerks::compressed_pair<size_type, allocator_type> capacity_;
+
+	typename Metrowerks::call_traits<allocator_type>::reference       alloc()       {return capacity_.second();}
+	typename Metrowerks::call_traits<allocator_type>::const_reference alloc() const {return capacity_.second();}
+	size_type&       cap()       {return capacity_.first();}
+	const size_type& cap() const {return capacity_.first();}
+
+	         __vec_deleter();
+	explicit __vec_deleter(allocator_param_type a);
+#ifdef _MSL_MOVE
+	__vec_deleter(__vec_deleter&& x)
+		: data_(x.data_),
+		  size_(x.size_),
+		  capacity_(_STD::move(x.capacity_))
+	{
+		x.cap() = 0;
+		x.size_ = 0;
+		x.data_ = 0;
+	}
+#endif  // _MSL_MOVE
+private:
+	__vec_deleter(const __vec_deleter& x);
+public:
+	__vec_deleter& operator=(const __vec_deleter& x);
+	~__vec_deleter();
+
+	void init(size_type n);
+	void init(size_type n, const value_type& value);
+	template <class InputIterator>
+		void init(InputIterator first, InputIterator last, input_iterator_tag);
+	template <class ForwardIterator>
+		void init(ForwardIterator first, ForwardIterator last, forward_iterator_tag);
+
+	size_type max_size() const;
+	size_type size() const         {return size_;}
+	bool      empty() const        {return size_ == 0;}
+	size_type capacity() const     {return cap();}
+	void      reserve(size_type n);
+
+	      iterator begin()       {return data_;}
+	const_iterator begin() const {return data_;}
+	      iterator end()         {return data_ + size_;}
+	const_iterator end() const   {return data_ + size_;}
+
+	      reference front()       {return *data_;}
+	const_reference front() const {return *data_;}
+	       reference back()        {return data_[size_ - 1];}
+	const_reference back() const  {return data_[size_ - 1];}
+
+	      reference operator[](size_type n)       {return data_[n];}
+	const_reference operator[](size_type n) const {return data_[n];}
+
+	      reference at(size_type n);
+	const_reference at(size_type n) const;
+
+	void assign(size_type n, const value_type& x)
+		{assign(n, x, Metrowerks::int2type<
+		        Metrowerks::has_trivial_copy_ctor<value_type>::value &&
+		        Metrowerks::has_trivial_assignment<value_type>::value &&
+		        Metrowerks::has_trivial_dtor<value_type>::value
+		                                  >());}
+	template <class InputIterator>
+		void assign(InputIterator first, InputIterator last, input_iterator_tag);
+	template <class ForwardIterator>
+		void assign(ForwardIterator first, ForwardIterator last, forward_iterator_tag)
+			{assign(first, last, Metrowerks::int2type<Metrowerks::is_scalar<value_type>::value>());}
+
+	void push_back(const value_type& x)
+		{push_back(x, Metrowerks::int2type<
+			Metrowerks::has_trivial_copy_ctor<value_type>::value &&
+			Metrowerks::has_trivial_assignment<value_type>::value
+			                                        >());}
+#ifdef _MSL_MOVE
+
+	void push_back(value_type&& x)
+		{push_back(_STD::move(x), Metrowerks::int2type<
+			Metrowerks::has_trivial_copy_ctor<value_type>::value &&
+			Metrowerks::has_trivial_assignment<value_type>::value
+			                                        >());}
+#endif  // _MSL_MOVE
+
+private:
+	struct optimize_insert
+	{
+		static const int value =
+		(
+			Metrowerks::has_trivial_copy_ctor<value_type>::value &&
+			Metrowerks::has_trivial_assignment<value_type>::value &&
+			Metrowerks::has_trivial_dtor<value_type>::value
+			?
+			3 :
+			(
+				Metrowerks::is_zero_default_contructible<value_type>::value &&
+				Metrowerks::has_trivial_move_ctor<value_type>::value
+				?
+				2 :
+				(
+					Metrowerks::move_with_swap<value_type>::value &&
+					Metrowerks::has_nothrow_constructor<value_type>::value
+					?
+					1 : 0
+				)
+			)
+		);
+	};
+
+public:
+
+	iterator insert(iterator position, const value_type& x)
+		{return insert(position, x, Metrowerks::int2type<optimize_insert::value>());}
+#ifdef _MSL_MOVE
+
+	iterator insert(iterator position, value_type&& x)
+		{return insert(position, _STD::move(x), Metrowerks::int2type<3*(
+			Metrowerks::has_trivial_copy_ctor<value_type>::value &&
+			Metrowerks::has_trivial_assignment<value_type>::value &&
+		    Metrowerks::has_trivial_dtor<value_type>::value
+			                                        )>());}
+#endif  // _MSL_MOVE
+
+	void insert(iterator position, size_type n, const value_type& x)
+		{insert(position, n, x, Metrowerks::int2type<
+			Metrowerks::has_trivial_copy_ctor<value_type>::value &&
+			Metrowerks::has_trivial_assignment<value_type>::value &&
+		    Metrowerks::has_trivial_dtor<value_type>::value
+			                                        >());}
+	template <class InputIterator>
+	void insert(iterator position, InputIterator first, InputIterator last, input_iterator_tag);
+	template <class ForwardIterator>
+	void insert(iterator position, ForwardIterator first, ForwardIterator last, forward_iterator_tag)
+		{insert(position, first, last, Metrowerks::int2type<
+			Metrowerks::has_trivial_copy_ctor<value_type>::value &&
+			Metrowerks::has_trivial_assignment<value_type>::value &&
+		    Metrowerks::has_trivial_dtor<value_type>::value
+			                                        >());}
+
+	void pop_back()
+		{pop_back(Metrowerks::int2type<Metrowerks::has_trivial_dtor<value_type>::value>());}
+
+	void clear() {erase_at_end(size_);}
+
+private:
+	struct optimize_erase
+	{
+		static const int value =
+		(
+			Metrowerks::has_trivial_assignment<value_type>::value &&
+			Metrowerks::has_trivial_dtor<value_type>::value
+			?
+			3 :
+			(
+				Metrowerks::has_trivial_move_ctor<value_type>::value &&
+				Metrowerks::has_trivial_dtor_after_move_ctor<value_type>::value
+				?
+				2 :
+				(
+					Metrowerks::move_with_swap<value_type>::value
+					?
+					1 : 0
+				)
+			)
+		);
+	};
+
+public:
+	iterator erase(iterator position)
+		{return erase(position, Metrowerks::int2type<optimize_erase::value>());}
+	iterator erase(iterator first, iterator last)
+		{return erase(first, last, Metrowerks::int2type<optimize_erase::value>());}
+
+	void resize(size_type sz);
+	void resize(size_type sz, const value_type& value);
+
+	void swap(__vec_deleter& x);
+	bool invariants() const;
+private:
+
+	void assign(size_type n, const value_type& x, Metrowerks::int2type<false>);
+	void assign(size_type n, const value_type& x, Metrowerks::int2type<true>);
+	template <class ForwardIterator>
+		void assign(ForwardIterator first, ForwardIterator last, Metrowerks::int2type<false>);
+	template <class ForwardIterator>
+		void assign(ForwardIterator first, ForwardIterator last, Metrowerks::int2type<true>);
+
+	void push_back(const value_type& x, Metrowerks::int2type<false>);
+#ifdef _MSL_MOVE
+	void push_back(value_type&& x, Metrowerks::int2type<false>);
+#endif
+	void push_back(const value_type& x, Metrowerks::int2type<true>);
+
+	iterator insert(iterator position, const value_type& x, Metrowerks::int2type<0>);
+	iterator insert(iterator position, const value_type& x, Metrowerks::int2type<1>);
+	iterator insert(iterator position, const value_type& x, Metrowerks::int2type<2>);
+	iterator insert(iterator position, const value_type& x, Metrowerks::int2type<3>);
+#ifdef _MSL_MOVE
+	iterator insert(iterator position, value_type&& x, Metrowerks::int2type<false>);
+#endif
+	void insert(iterator position, size_type n, const value_type& x, Metrowerks::int2type<false>);
+	void insert(iterator position, size_type n, const value_type& x, Metrowerks::int2type<true>);
+	template <class ForwardIterator>
+		void insert(iterator position, ForwardIterator first, ForwardIterator last, Metrowerks::int2type<false>);
+	template <class ForwardIterator>
+		void insert(iterator position, ForwardIterator first, ForwardIterator last, Metrowerks::int2type<true>);
+
+	void pop_back(Metrowerks::int2type<false>);
+	void pop_back(Metrowerks::int2type<true>);
+
+	iterator erase(iterator position, Metrowerks::int2type<0>);
+	iterator erase(iterator position, Metrowerks::int2type<1>);
+	iterator erase(iterator position, Metrowerks::int2type<2>);
+	iterator erase(iterator position, Metrowerks::int2type<3>);
+
+	iterator erase(iterator first, iterator last, Metrowerks::int2type<0>);
+	iterator erase(iterator first, iterator last, Metrowerks::int2type<1>);
+	iterator erase(iterator first, iterator last, Metrowerks::int2type<2>);
+	iterator erase(iterator first, iterator last, Metrowerks::int2type<3>);
+
+	// code consolidation
+protected:
+	void allocate(size_type n)
+		{allocate(n, Metrowerks::int2type<detail::map_version<Metrowerks::version<allocator_type>::value>::value>());}
+private:
+	void allocate(size_type n, Metrowerks::int2type<1>);
+	void allocate(size_type n, Metrowerks::int2type<2>);
+protected:
+	void allocate(size_type min, size_type max)
+		{allocate(min, max, Metrowerks::int2type<detail::map_version<Metrowerks::version<allocator_type>::value>::value>());}
+private:
+	void allocate(size_type, size_type max, Metrowerks::int2type<1> t)
+		{allocate(max, t);}
+	void allocate(size_type min, size_type max, Metrowerks::int2type<2>);
+
+	void reallocate_nocopy(size_type n, size_type max_cap);
+	size_type grow_by(size_type n);
+
+	struct optimize_reallocate
+	{
+		static const int value =
+		(
+			Metrowerks::has_trivial_copy_ctor<value_type>::value &&
+			Metrowerks::has_trivial_assignment<value_type>::value &&
+			Metrowerks::has_trivial_dtor<value_type>::value
+			?
+			3 :
+			(
+				Metrowerks::has_trivial_dtor_after_move_ctor<value_type>::value &&
+				Metrowerks::has_trivial_move_ctor<value_type>::value
+				?
+				2 :
+				(
+					Metrowerks::has_trivial_dtor_after_move_ctor<value_type>::value &&
+					Metrowerks::move_with_swap<value_type>::value &&
+					Metrowerks::has_nothrow_constructor<value_type>::value
+					?
+					1 : 0
+				)
+			)
+		);
+	};
+
+	void reallocate_copy(size_type n);
+
+	void append_realloc(size_type n);
+	void append_realloc(size_type n, const value_type& x);
+
+	void append(size_type n)
+		{append(n, Metrowerks::int2type<Metrowerks::is_zero_default_contructible<value_type>::value>());}
+
+	void append(size_type n, const value_type& x)
+		{append(n, x, Metrowerks::int2type<
+		              Metrowerks::has_trivial_copy_ctor<value_type>::value &&
+		              Metrowerks::has_trivial_assignment<value_type>::value
+		                                  >());}
+	void append(size_type n, const value_type& x, Metrowerks::int2type<false>);
+	void append(size_type n, const value_type& x, Metrowerks::int2type<true>);
+	void append(size_type n, Metrowerks::int2type<false>);
+	void append(size_type n, Metrowerks::int2type<true>);
+
+	void erase_at_end(size_type n)
+		{erase_at_end(n, Metrowerks::int2type<Metrowerks::has_trivial_dtor<value_type>::value>());}
+	void erase_at_end(size_type n, Metrowerks::int2type<false>);
+	void erase_at_end(size_type n, Metrowerks::int2type<true>);
+	void prefix_insert_realloc(helper& tmp, pointer p, size_type n);
+	pointer suffix_insert_realloc(helper& tmp, pointer p);
+	pointer suffix_insert_realloc(pointer tmp, difference_type pb, size_type n, size_type newcap);
+	size_type insert_loop_2_3(size_type pe, size_type n, pointer b)
+		{return insert_loop_2_3(pe, n, b, Metrowerks::int2type<optimize_insert::value>());}
+	size_type insert_loop_2_3(size_type pe, size_type n, pointer b, Metrowerks::int2type<0>);
+	size_type insert_loop_2_3(size_type pe, size_type n, pointer b, Metrowerks::int2type<1>);
+	size_type insert_loop_2_3(size_type pe, size_type n, pointer b, Metrowerks::int2type<2>);
+
+	bool expand_by(size_type n)
+		{size_type x; return expand_by(n, x, Metrowerks::int2type<detail::map_version<Metrowerks::version<allocator_type>::value>::value>());}
+	bool expand_by(size_type n, size_type& max_cap)
+		{return expand_by(n, max_cap, Metrowerks::int2type<detail::map_version<Metrowerks::version<allocator_type>::value>::value>());}
+
+	bool expand_by(size_type n, size_type& max_cap, Metrowerks::int2type<1>) {max_cap = grow_by(n); return false;}
+	bool expand_by(size_type n, size_type& max_cap, Metrowerks::int2type<2>);
+
+	void sub_push_back(const value_type& x)
+		{sub_push_back(x, Metrowerks::int2type<
+			Metrowerks::has_trivial_copy_ctor<value_type>::value &&
+			Metrowerks::has_trivial_assignment<value_type>::value
+			                                        >());}
+
+	void sub_push_back(const value_type& x, Metrowerks::int2type<false>);
+	void sub_push_back(const value_type& x, Metrowerks::int2type<true>);
+
+	void construct_at_end(size_type n)
+		{construct_at_end(n, Metrowerks::int2type<Metrowerks::is_zero_default_contructible<value_type>::value>());}
+	void construct_at_end(size_type n, Metrowerks::int2type<false>);
+	void construct_at_end(size_type n, Metrowerks::int2type<true>);
+	void construct_at_end(size_type n, const value_type& x)
+		{construct_at_end(n, x, Metrowerks::int2type<Metrowerks::has_trivial_copy_ctor<value_type>::value &&
+		                                             Metrowerks::has_trivial_assignment<value_type>::value
+		                                            >());}
+	void construct_at_end(size_type n, const value_type& x, Metrowerks::int2type<false>);
+	void construct_at_end(size_type n, const value_type& x, Metrowerks::int2type<true>);
+	template <class InputIterator> void construct_at_end(InputIterator first, InputIterator last)
+		{construct_at_end(first, last, Metrowerks::int2type<Metrowerks::is_scalar<value_type>::value &&
+		 Metrowerks::is_convertible<typename iterator_traits<InputIterator>::iterator_category, random_access_iterator_tag>::value>());}
+	template <class InputIterator>
+		void construct_at_end(InputIterator first, InputIterator last, Metrowerks::int2type<false>);
+	template <class InputIterator>
+		void construct_at_end(InputIterator first, InputIterator last, Metrowerks::int2type<true>);
+
+	struct optimize_move
+	{
+		static const int value =
+		(
+			Metrowerks::has_trivial_move_ctor<value_type>::value
+			?
+			2 :
+			(
+				Metrowerks::move_with_swap<value_type>::value &&
+				Metrowerks::has_nothrow_constructor<value_type>::value
+				?
+				1 : 0
+			)
+		);
+	};
+
+	void move_construct_to_end(pointer first, pointer last)
+		{move_construct_to_end(first, last, Metrowerks::int2type<optimize_move::value>());}
+	void move_construct_to_end(pointer first, pointer last, Metrowerks::int2type<0>);
+	void move_construct_to_end(pointer first, pointer last, Metrowerks::int2type<1>);
+	void move_construct_to_end(pointer first, pointer last, Metrowerks::int2type<2>);
+
+	void optimize_after_moved_from()
+		{optimize_after_moved_from(
+	#ifdef _MSL_MOVE
+			Metrowerks::int2type<Metrowerks::has_trivial_dtor_after_move_ctor<value_type>::value>()
+	#else
+			Metrowerks::int2type<Metrowerks::has_trivial_dtor<value_type>::value>()
+	#endif
+		);}
+	void optimize_after_moved_from(Metrowerks::int2type<false>) {}
+	void optimize_after_moved_from(Metrowerks::int2type<true>) {size_ = 0;}
+};
+
+// __vec_deleter_helper
+
+template <typename T, class Allocator>
+class __vec_deleter_helper
+	: public __vec_deleter<T, Allocator>
+{
+	typedef __vec_deleter<T, Allocator> base;
+	friend class __vec_deleter<T, typename Metrowerks::remove_reference<Allocator>::type>;
+public:
+	typedef typename base::value_type        value_type;
+	typedef typename base::allocator_type    allocator_type;
+
+	typedef typename base::reference         reference;
+	typedef typename base::const_reference   const_reference;
+	typedef typename base::pointer           iterator;
+	typedef typename base::const_pointer     const_iterator;
+	typedef typename base::size_type         size_type;
+	typedef typename base::difference_type   difference_type;
+	typedef typename base::pointer           pointer;
+	typedef typename base::const_pointer     const_pointer;
+
+	size_type start_;
+
+	__vec_deleter_helper(typename base::allocator_param_type a) : base(a), start_(0) {}
+	~__vec_deleter_helper();
+
+	void construct_at_end(size_type n)
+		{construct_at_end(n, Metrowerks::int2type<Metrowerks::is_zero_default_contructible<value_type>::value>());}
+	void construct_at_end(size_type n, Metrowerks::int2type<false>);
+	void construct_at_end(size_type n, Metrowerks::int2type<true>);
+	void construct_at_end(size_type n, const value_type& x)
+		{construct_at_end(n, x, Metrowerks::int2type<Metrowerks::has_trivial_copy_ctor<value_type>::value &&
+		                                             Metrowerks::has_trivial_assignment<value_type>::value
+		                                            >());}
+	void construct_at_end(size_type n, const value_type& x, Metrowerks::int2type<false>);
+	void construct_at_end(size_type n, const value_type& x, Metrowerks::int2type<true>);
+	template <class InputIterator> void construct_at_end(InputIterator first, InputIterator last)
+		{construct_at_end(first, last, Metrowerks::int2type<Metrowerks::is_scalar<value_type>::value &&
+		 Metrowerks::is_convertible<typename iterator_traits<InputIterator>::iterator_category, random_access_iterator_tag>::value>());}
+	template <class InputIterator>
+		void construct_at_end(InputIterator first, InputIterator last, Metrowerks::int2type<false>);
+	template <class InputIterator>
+		void construct_at_end(InputIterator first, InputIterator last, Metrowerks::int2type<true>);
+
+	void move_construct_to_end(pointer first, pointer last)
+		{move_construct_to_end(first, last, Metrowerks::int2type<base::optimize_move::value>());}
+	void move_construct_to_end(pointer first, pointer last, Metrowerks::int2type<0>);
+	void move_construct_to_end(pointer first, pointer last, Metrowerks::int2type<1>);
+	void move_construct_to_end(pointer first, pointer last, Metrowerks::int2type<2>);
+
+	void move_construct_to_begin(pointer first, pointer last)
+		{move_construct_to_begin(first, last, Metrowerks::int2type<base::optimize_move::value>());}
+	void move_construct_to_begin(pointer first, pointer last, Metrowerks::int2type<0>);
+	void move_construct_to_begin(pointer first, pointer last, Metrowerks::int2type<1>);
+	void move_construct_to_begin(pointer first, pointer last, Metrowerks::int2type<2>);
+private:
+	__vec_deleter_helper(const __vec_deleter_helper&);
+	__vec_deleter_helper& operator=(const __vec_deleter_helper&);
+};
+
+template <typename T, class Allocator>
+__vec_deleter_helper<T, Allocator>::~__vec_deleter_helper()
+{
+	pointer p = base::data_ + start_;
+	pointer e = p + base::size_;
+	while (e > p)
+		base::alloc().destroy(--e);
+	base::size_ = 0;
+}
+
+template <typename T, class Allocator>
+inline
+void
+__vec_deleter_helper<T, Allocator>::construct_at_end(size_type n, Metrowerks::int2type<false>)
+{
+	for (pointer p = base::data_ + start_ + base::size_; n; --n, ++p, ++base::size_)
+		base::alloc().construct(p, value_type());
+}
+
+template <typename T, class Allocator>
+inline
+void
+__vec_deleter_helper<T, Allocator>::construct_at_end(size_type n, Metrowerks::int2type<true>)
+{
+	_CSTD::memset(base::data_ + start_ + base::size_, 0, n*sizeof(value_type));
+	base::size_ += n;
+}
+
+template <typename T, class Allocator>
+inline
+void
+__vec_deleter_helper<T, Allocator>::construct_at_end(size_type n, const value_type& x, Metrowerks::int2type<false>)
+{
+	for (pointer p = base::data_ + start_ + base::size_; n; --n, ++p, ++base::size_)
+		base::alloc().construct(p, x);
+}
+
+template <typename T, class Allocator>
+inline
+void
+__vec_deleter_helper<T, Allocator>::construct_at_end(size_type n, const value_type& x, Metrowerks::int2type<true>)
+{
+	_STD::fill_n(base::data_ + start_ + base::size_, n, x);
+	base::size_ += n;
+}
+
+template <typename T, class Allocator>
+template <class InputIterator>
+inline
+void
+__vec_deleter_helper<T, Allocator>::construct_at_end(InputIterator first, InputIterator last, Metrowerks::int2type<false>)
+{
+	for (pointer p = base::data_ + start_ + base::size_; first != last; ++first, ++p, ++base::size_)
+		base::alloc().construct(p, *first);
+}
+
+template <typename T, class Allocator>
+template <class InputIterator>
+inline
+void
+__vec_deleter_helper<T, Allocator>::construct_at_end(InputIterator first, InputIterator last, Metrowerks::int2type<true>)
+{
+	_STD::copy(first, last, base::data_ + start_ + base::size_);
+	base::size_ += size_type(last-first);
+}
+
+template <typename T, class Allocator>
+inline
+void
+__vec_deleter_helper<T, Allocator>::move_construct_to_end(pointer first, pointer last, Metrowerks::int2type<0>)
+{
+	for (pointer to = base::data_ + start_ + base::size_; first < last; ++first, ++to, ++base::size_)
+		base::alloc().construct(to, _STD::move(*first));
+}
+
+template <typename T, class Allocator>
+inline
+void
+__vec_deleter_helper<T, Allocator>::move_construct_to_end(pointer first, pointer last, Metrowerks::int2type<1>)
+{
+	for (pointer to = base::data_ + start_ + base::size_; first < last; ++first, ++to, ++base::size_)
+	{
+		::new((void*)to) value_type;
+		to->swap(*first);
+	}
+}
+
+template <typename T, class Allocator>
+inline
+void
+__vec_deleter_helper<T, Allocator>::move_construct_to_end(pointer first, pointer last, Metrowerks::int2type<2>)
+{
+	size_type n = size_type(last - first);
+	_CSTD::memcpy(base::data_ + start_ + base::size_, first, n*sizeof(value_type));
+	_CSTD::memset(first, 0, n*sizeof(value_type));
+	base::size_ += n;
+}
+
+template <typename T, class Allocator>
+inline
+void
+__vec_deleter_helper<T, Allocator>::move_construct_to_begin(pointer first, pointer last, Metrowerks::int2type<0>)
+{
+	for (pointer j = base::data_ + start_; first < last; --start_, ++base::size_)
+		base::alloc().construct(--j, _STD::move(*--last));
+}
+
+template <typename T, class Allocator>
+inline
+void
+__vec_deleter_helper<T, Allocator>::move_construct_to_begin(pointer first, pointer last, Metrowerks::int2type<1>)
+{
+	for (pointer j = base::data_ + start_; first < last; --start_, ++base::size_)
+	{
+		::new(--j) typename base::value_type;
+		j->swap(*--last);
+	}
+}
+
+template <typename T, class Allocator>
+inline
+void
+__vec_deleter_helper<T, Allocator>::move_construct_to_begin(pointer first, pointer last, Metrowerks::int2type<2>)
+{
+	size_type n = size_type(last - first);
+	start_ -= n;
+	_CSTD::memcpy(base::data_ + start_, first, n*sizeof(value_type));
+	_CSTD::memset(first, 0, n*sizeof(value_type));
+	base::size_ += n;
+}
+
+// __vec_deleter implementation
+
+template <typename T, class Allocator>
+inline
+void
+__vec_deleter<T, Allocator>::construct_at_end(size_type n, Metrowerks::int2type<false>)
+{
+	for (pointer p = data_ + size_; n; --n, ++p, ++size_)
+		alloc().construct(p, value_type());
+}
+
+template <typename T, class Allocator>
+inline
+void
+__vec_deleter<T, Allocator>::construct_at_end(size_type n, Metrowerks::int2type<true>)
+{
+	_CSTD::memset(data_ + size_, 0, n*sizeof(value_type));
+	size_ += n;
+}
+
+template <typename T, class Allocator>
+inline
+void
+__vec_deleter<T, Allocator>::construct_at_end(size_type n, const value_type& x, Metrowerks::int2type<false>)
+{
+	for (pointer p = data_ + size_; n; --n, ++p, ++size_)
+		alloc().construct(p, x);
+}
+
+template <typename T, class Allocator>
+inline
+void
+__vec_deleter<T, Allocator>::construct_at_end(size_type n, const value_type& x, Metrowerks::int2type<true>)
+{
+	_STD::fill_n(data_ + size_, n, x);
+	size_ += n;
+}
+
+template <typename T, class Allocator>
+template <class InputIterator>
+inline
+void
+__vec_deleter<T, Allocator>::construct_at_end(InputIterator first, InputIterator last, Metrowerks::int2type<false>)
+{
+	for (pointer p = data_ + size_; first != last; ++first, ++p, ++size_)
+		alloc().construct(p, *first);
+}
+
+template <typename T, class Allocator>
+template <class InputIterator>
+inline
+void
+__vec_deleter<T, Allocator>::construct_at_end(InputIterator first, InputIterator last, Metrowerks::int2type<true>)
+{
+	_STD::copy(first, last, data_ + size_);
+	size_ += size_type(last-first);
+}
+
+template <typename T, class Allocator>
+inline
+void
+__vec_deleter<T, Allocator>::move_construct_to_end(pointer first, pointer last, Metrowerks::int2type<0>)
+{
+	for (pointer to = data_ + size_; first < last; ++first, ++to, ++size_)
+		alloc().construct(to, _STD::move(*first));
+}
+
+template <typename T, class Allocator>
+inline
+void
+__vec_deleter<T, Allocator>::move_construct_to_end(pointer first, pointer last, Metrowerks::int2type<1>)
+{
+	for (pointer to = data_ + size_; first < last; ++first, ++to, ++size_)
+	{
+		::new((void*)to) value_type;
+		to->swap(*first);
+	}
+}
+
+template <typename T, class Allocator>
+inline
+void
+__vec_deleter<T, Allocator>::move_construct_to_end(pointer first, pointer last, Metrowerks::int2type<2>)
+{
+	size_type n = size_type(last - first);
+	_CSTD::memcpy(data_ + size_, first, n*sizeof(value_type));
+	_CSTD::memset(first, 0, n*sizeof(value_type));
+	size_ += n;
+}
+
+template <typename T, class Allocator>
+inline
+__vec_deleter<T, Allocator>::__vec_deleter()
+	: data_(0),
+	  size_(0),
+	  capacity_(size_type(0))
+{
+}
+
+template <typename T, class Allocator>
+inline
+__vec_deleter<T, Allocator>::__vec_deleter(allocator_param_type a)
+	: data_(0),
+	  size_(0),
+	  capacity_(size_type(0), a)
+{
+}
+
+template <typename T, class Allocator>
+inline
+__vec_deleter<T, Allocator>&
+__vec_deleter<T, Allocator>::operator=(const __vec_deleter& x)
+{
+	if (this != &x)
+		assign(x.begin(), x.end(), random_access_iterator_tag());
+	return *this;
+}
+
+template <typename T, class Allocator>
+__vec_deleter<T, Allocator>::~__vec_deleter()
+{
+	if (data_)
+	{
+		clear();
+		alloc().deallocate(data_, cap());
+	}
+}
+
+template <typename T, class Allocator>
+void
+__vec_deleter<T, Allocator>::allocate(size_type n, Metrowerks::int2type<1>)
+{
+	if (n > max_size())
+		base::throw_length_error();
+	data_ = alloc().allocate(n);
+	cap() = n;
+}
+
+template <typename T, class Allocator>
+void
+__vec_deleter<T, Allocator>::allocate(size_type n, Metrowerks::int2type<2>)
+{
+	if (n > max_size())
+		base::throw_length_error();
+	data_ = alloc().allocate(n);
+	cap() = alloc().size(data_);
+}
+
+template <typename T, class Allocator>
+void
+__vec_deleter<T, Allocator>::allocate(size_type min, size_type max, Metrowerks::int2type<2>)
+{
+	if (_STD::max(min, max) > max_size())
+		base::throw_length_error();
+	size_t size_received = 0;
+	for (size_type size_requested = max; min <= size_requested; size_requested = (size_type)size_received)
+	{
+		data_ = alloc().request(size_requested, size_received);
+		if (data_)
+		{
+			cap() = (size_type)size_received;
+			return;
+		}
+	}
+	data_ = alloc().allocate(_STD::max(min, max));
+	cap() = alloc().size(data_);
+}
+
+template <typename T, class Allocator>
+void
+__vec_deleter<T, Allocator>::init(size_type n)
+{
+	if (n > 0)
+	{
+		allocate(n);
+		construct_at_end(n);
+	}
+}
+
+template <typename T, class Allocator>
+void
+__vec_deleter<T, Allocator>::init(size_type n, const value_type& value)
+{
+	if (n > 0)
+	{
+		allocate(n);
+		construct_at_end(n, value);
+	}
+}
+
+template <typename T, class Allocator>
+template <class InputIterator>
+void
+__vec_deleter<T, Allocator>::init(InputIterator first, InputIterator last, input_iterator_tag)
+{
+	for (; first != last; ++first)
+		push_back(*first);
+}
+
+template <typename T, class Allocator>
+template <class ForwardIterator>
+void
+__vec_deleter<T, Allocator>::init(ForwardIterator first, ForwardIterator last, forward_iterator_tag)
+{
+	size_type n = (size_type)_STD::distance(first, last);
+	if (n > 0)
+	{
+		allocate(n);
+		construct_at_end(first, last);
+	}
+}
+
+template <typename T, class Allocator>
+inline
+typename __vec_deleter<T, Allocator>::size_type
+__vec_deleter<T, Allocator>::max_size() const
+{
+	return alloc().max_size();
+}
+
+template <typename T, class Allocator>
+typename __vec_deleter<T, Allocator>::size_type
+__vec_deleter<T, Allocator>::grow_by(size_type n)
+{
+	const size_type m = max_size();
+	const size_type c = cap();
+	if (n > m - c)
+		base::throw_length_error();
+	const size_type m3 = m / 3;
+	if (c < m3)
+		return c + max(3*(c+1)/5, n);
+	if (c < m3*2)
+		return c + max((c+1)/2, n);
+	return m;
+}
+
+template <typename T, class Allocator>
+void
+__vec_deleter<T, Allocator>::reallocate_copy(size_type n)
+{
+	__vec_deleter<value_type, allocator_type> tmp(alloc());
+	tmp.allocate(n);
+	tmp.move_construct_to_end(begin(), end());
+	optimize_after_moved_from();
+	_STD::swap(cap(), tmp.cap());
+	_STD::swap(data_, tmp.data_);
+	_STD::swap(size_, tmp.size_);
+}
+
+template <class T, class Allocator>
+inline
+void
+__vec_deleter<T, Allocator>::reserve(size_type n)
+{
+	if (n > cap())
+		reallocate_copy(n);
+}
+
+template <typename T, class Allocator>
+typename __vec_deleter<T, Allocator>::reference
+__vec_deleter<T, Allocator>::at(size_type n)
+{
+	if (n >= size_)
+		_MSL_ERROR(_STD::out_of_range, "vector::at index out of range");
+	return (*this)[n];
+}
+
+template <typename T, class Allocator>
+typename __vec_deleter<T, Allocator>::const_reference
+__vec_deleter<T, Allocator>::at(size_type n) const
+{
+	if (n >= size_)
+		_MSL_ERROR(_STD::out_of_range, "vector::at index out of range");
+	return (*this)[n];
+}
+
+template <typename T, class Allocator>
+void
+__vec_deleter<T, Allocator>::reallocate_nocopy(size_type n, size_type max_cap)
+{
+	clear();
+	if (data_)
+	{
+		alloc().deallocate(data_, cap());
+		data_ = 0;
+		cap() = 0;
+	}
+	allocate(n, max_cap);
+}
+
+template <class T, class Allocator>
+void
+__vec_deleter<T, Allocator>::erase_at_end(size_type n, Metrowerks::int2type<false>)
+{
+	iterator i = end();
+	size_ -= n;
+	for (; n > 0; --n)
+		alloc().destroy(--i);
+}
+
+template <class T, class Allocator>
+inline
+void
+__vec_deleter<T, Allocator>::erase_at_end(size_type n, Metrowerks::int2type<true>)
+{
+	size_ -= n;
+}
+
+template <typename T, class Allocator>
+void
+__vec_deleter<T, Allocator>::assign(size_type n, const value_type& x, Metrowerks::int2type<false>)
+{
+	size_type max_cap;
+	if (n <= cap() || expand_by(n - cap(), max_cap))
+	{
+		_STD::fill_n(begin(), _STD::min(n, size_), x);
+		if (n < size_)
+			erase_at_end(size_ - n);
+		else
+			construct_at_end(n - size_, x);
+	}
+	else
+	{
+		reallocate_nocopy(n, max_cap);
+		construct_at_end(n, x);
+	}
+}
+
+template <typename T, class Allocator>
+void
+__vec_deleter<T, Allocator>::assign(size_type n, const value_type& x, Metrowerks::int2type<true>)
+{
+	size_type max_cap;
+	if (n > cap() && !expand_by(n - cap(), max_cap))
+		reallocate_nocopy(n, max_cap);
+	_STD::fill_n(data_, n, x);
+	size_ = n;
+}
+
+template <typename T, class Allocator>
+template <class InputIterator>
+void
+__vec_deleter<T, Allocator>::assign(InputIterator first, InputIterator last, input_iterator_tag)
+{
+	clear();
+	for (; first != last; ++first)
+		push_back(*first);
+}
+
+template <typename T, class Allocator>
+template <class ForwardIterator>
+void
+__vec_deleter<T, Allocator>::assign(ForwardIterator first, ForwardIterator last, Metrowerks::int2type<false>)
+{
+	size_type max_cap;
+	size_type n = (size_type)_STD::distance(first, last);
+	if (n <= cap() || expand_by(n - cap(), max_cap))
+	{
+		ForwardIterator mid = first;
+		_STD::advance(mid, (difference_type)min(n, size_));
+		_STD::copy(first, mid, data_);
+		if (n < size_)
+			erase_at_end(size_ - n);
+		else if (size_ < n)
+			construct_at_end(mid, last);
+	}
+	else
+	{
+		reallocate_nocopy(n, max_cap);
+		construct_at_end(first, last);
+	}
+}
+
+template <typename T, class Allocator>
+template <class ForwardIterator>
+void
+__vec_deleter<T, Allocator>::assign(ForwardIterator first, ForwardIterator last, Metrowerks::int2type<true>)
+{
+	size_type max_cap;
+	size_type n = (size_type)_STD::distance(first, last);
+	if (n > cap() && !expand_by(n - cap(), max_cap))
+		reallocate_nocopy(n, max_cap);
+	_STD::copy(first, last, data_);
+	size_ = n;
+}
+
+template <typename T, class Allocator>
+void
+__vec_deleter<T, Allocator>::append_realloc(size_type n, const value_type& x)
+{
+	__vec_deleter_helper<value_type, allocator_rr_type&> tmp(alloc());
+	tmp.allocate(size_ + n, grow_by(size_ + n - cap()));
+	tmp.start_ = size_;
+	tmp.construct_at_end(n, x);
+	tmp.move_construct_to_begin(begin(), end());
+	optimize_after_moved_from();
+	_STD::swap(cap(), tmp.cap());
+	_STD::swap(data_, tmp.data_);
+	_STD::swap(size_, tmp.size_);
+}
+
+template <typename T, class Allocator>
+void
+__vec_deleter<T, Allocator>::append_realloc(size_type n)
+{
+	__vec_deleter_helper<value_type, allocator_rr_type&> tmp(alloc());
+	tmp.allocate(size_ + n, grow_by(size_ + n - cap()));
+	tmp.start_ = size_;
+	tmp.construct_at_end(n);
+	tmp.move_construct_to_begin(begin(), end());
+	optimize_after_moved_from();
+	_STD::swap(cap(), tmp.cap());
+	_STD::swap(data_, tmp.data_);
+	_STD::swap(size_, tmp.size_);
+}
+
+template <typename T, class Allocator>
+bool
+__vec_deleter<T, Allocator>::expand_by(size_type n, size_type& max_cap, Metrowerks::int2type<2>)
+{
+	max_cap = grow_by(n);
+	int result = 0;
+	if (data_)
+	{
+		size_t size_received;
+		result = alloc().expand(data_, n + cap(), max_cap, size_received);
+		if (result)
+			cap() = (size_type)size_received;
+	}
+	return (bool)result;
+}
+
+template <typename T, class Allocator>
+void
+__vec_deleter<T, Allocator>::sub_push_back(const value_type& x, Metrowerks::int2type<false>)
+{
+	if (expand_by(1))
+	{
+		alloc().construct(end(), x);
+		++size_;
+	}
+	else
+		append_realloc(1, x);
+}
+
+template <typename T, class Allocator>
+inline
+void
+__vec_deleter<T, Allocator>::push_back(const value_type& x, Metrowerks::int2type<false>)
+{
+	if (size_ < cap())
+	{
+		alloc().construct(end(), x);
+		++size_;
+	}
+	else
+		sub_push_back(x);
+}
+
+#ifdef _MSL_MOVE
+
+template <typename T, class Allocator>
+void
+__vec_deleter<T, Allocator>::push_back(value_type&& x, Metrowerks::int2type<false>)
+{
+	if (size_ < cap() || expand_by(1))
+	{
+		alloc().construct(end(), _STD::move(x));
+		++size_;
+	}
+	else
+	{
+		__vec_deleter_helper<value_type, allocator_rr_type&> tmp(alloc());
+		tmp.allocate(cap() + 1, grow_by(1));
+		pointer j = tmp.data_ + size_;
+		tmp.start_ = size_;
+		tmp.alloc().construct(j, _STD::move(x));
+		++tmp.size_;
+		tmp.move_construct_to_begin(begin(), end());
+		_STD::swap(cap(), tmp.cap());
+		_STD::swap(data_, tmp.data_);
+		_STD::swap(size_, tmp.size_);
+	}
+}
+
+#endif  // _MSL_MOVE
+
+template <typename T, class Allocator>
+void
+__vec_deleter<T, Allocator>::sub_push_back(const value_type& x, Metrowerks::int2type<true>)
+{
+	if (expand_by(1))
+	{
+		++size_;
+		back() = x;
+	}
+	else
+		append_realloc(1, x);
+}
+
+template <typename T, class Allocator>
+inline
+void
+__vec_deleter<T, Allocator>::push_back(const value_type& x, Metrowerks::int2type<true>)
+{
+	if (size_ < cap())
+	{
+		++size_;
+		back() = x;
+	}
+	else
+		sub_push_back(x);
+}
+
+template <typename T, class Allocator>
+void
+__vec_deleter<T, Allocator>::prefix_insert_realloc(helper& tmp, pointer p, size_type n)
+{
+	tmp.allocate(size_ + n, grow_by(size_ + n - cap()));
+	tmp.start_ = size_type(p - begin());
+}
+
+template <typename T, class Allocator>
+typename __vec_deleter<T, Allocator>::pointer
+__vec_deleter<T, Allocator>::suffix_insert_realloc(helper& tmp, pointer p)
+{
+	size_type pb = size_type(p - begin());
+	tmp.move_construct_to_end(p, end());
+	tmp.move_construct_to_begin(begin(), p);
+	optimize_after_moved_from();
+	_STD::swap(cap(), tmp.cap());
+	_STD::swap(data_, tmp.data_);
+	_STD::swap(size_, tmp.size_);
+	return begin() + pb;
+}
+
+template <typename T, class Allocator>
+typename __vec_deleter<T, Allocator>::pointer
+__vec_deleter<T, Allocator>::suffix_insert_realloc(pointer tmp, difference_type pb, size_type n, size_type oldcap)
+{
+	if (tmp != 0)
+	{
+		pointer i = _STD::copy(tmp, tmp + pb, data_);
+		i += n;
+		_STD::copy(tmp + pb, tmp + size_, i);
+		alloc().deallocate(tmp, oldcap);
+	}
+	size_ += n;
+	return data_ + pb;
+}
+
+template <typename T, class Allocator>
+typename __vec_deleter<T, Allocator>::iterator
+__vec_deleter<T, Allocator>::insert(pointer position, const value_type& x, Metrowerks::int2type<0>)
+{
+	if (size_ < cap() || expand_by(1))
+	{
+		if (position == end())
+		{
+			alloc().construct(end(), x);
+			++size_;
+		}
+		else
+		{
+			iterator b = end();
+			alloc().construct(b, _STD::move(b[-1]));
+			++size_;
+			const_pointer xr = Metrowerks::address_of(x);
+			if (position <= xr && xr < b)
+				++xr;
+		#ifdef _MSL_MOVE
+			_STD::move_backward(position, b - 1, b);
+		#else
+			_STD::copy_backward(position, b - 1, b);
+		#endif
+			*position = *xr;
+		}
+	}
+	else
+	{
+		__vec_deleter_helper<value_type, allocator_rr_type&> tmp(alloc());
+		prefix_insert_realloc(tmp, position, 1);
+		tmp.alloc().construct(tmp.data_ + tmp.start_, x);
+		++tmp.size_;
+		position = suffix_insert_realloc(tmp, position);
+	}
+	return position;
+}
+
+template <typename T, class Allocator>
+typename __vec_deleter<T, Allocator>::iterator
+__vec_deleter<T, Allocator>::insert(pointer position, const value_type& x, Metrowerks::int2type<1>)
+{
+	if (size_ < cap() || expand_by(1))
+	{
+		if (position == end())
+		{
+			alloc().construct(end(), x);
+			++size_;
+		}
+		else
+		{
+			iterator b = end();
+			::new(b) value_type;
+			b->swap(b[-1]);
+			++size_;
+			const_pointer xr = Metrowerks::address_of(x);
+			if (position <= xr && xr < b)
+				++xr;
+			for (iterator j = b - 1; j > position;)
+			{
+				--j;
+				j->swap(*--b);
+			}
+			*position = *xr;
+		}
+	}
+	else
+	{
+		__vec_deleter_helper<value_type, allocator_rr_type&> tmp(alloc());
+		prefix_insert_realloc(tmp, position, 1);
+		tmp.alloc().construct(tmp.data_ + tmp.start_, x);
+		++tmp.size_;
+		position = suffix_insert_realloc(tmp, position);
+	}
+	return position;
+}
+
+template <typename T, class Allocator>
+typename __vec_deleter<T, Allocator>::iterator
+__vec_deleter<T, Allocator>::insert(pointer position, const value_type& x, Metrowerks::int2type<2>)
+{
+	if (size_ < cap() || expand_by(1))
+	{
+		if (position == end())
+		{
+			alloc().construct(end(), x);
+			++size_;
+		}
+		else
+		{
+			iterator b = end();
+			_CSTD::memmove(position+1, position, (b - position)*sizeof(value_type));
+			_CSTD::memset(position, 0, sizeof(value_type));
+			++size_;
+			const_pointer xr = Metrowerks::address_of(x);
+			if (position <= xr && xr < b)
+				++xr;
+			*position = *xr;
+		}
+	}
+	else
+	{
+		__vec_deleter_helper<value_type, allocator_rr_type&> tmp(alloc());
+		prefix_insert_realloc(tmp, position, 1);
+		tmp.alloc().construct(tmp.data_ + tmp.start_, x);
+		++tmp.size_;
+		position = suffix_insert_realloc(tmp, position);
+	}
+	return position;
+}
+
+template <typename T, class Allocator>
+typename __vec_deleter<T, Allocator>::iterator
+__vec_deleter<T, Allocator>::insert(pointer position, const value_type& x, Metrowerks::int2type<3>)
+{
+	if (size_ < cap() || expand_by(1))
+	{
+		iterator b = end();
+		const_pointer xr = Metrowerks::address_of(x);
+		if (position <= xr && xr < b)
+			++xr;
+		++b;
+		++size_;
+		_STD::copy_backward(position, b - 1, b);
+		*position = *xr;
+	}
+	else
+	{
+		pointer tmp = data_;
+		size_type oldcap = cap();
+		difference_type pb = position - data_;
+		allocate(size_ + 1, grow_by(1));
+		data_[pb] = x;
+		position = suffix_insert_realloc(tmp, pb, 1, oldcap);
+	}
+	return position;
+}
+
+#ifdef _MSL_MOVE
+
+template <typename T, class Allocator>
+typename __vec_deleter<T, Allocator>::iterator
+__vec_deleter<T, Allocator>::insert(pointer position, value_type&& x, Metrowerks::int2type<false>)
+{
+	if (size_ < cap() || expand_by(1))
+	{
+		if (position == end())
+		{
+			alloc().construct(end(), _STD::move(x));
+			++size_;
+		}
+		else
+		{
+			iterator b = end();
+			alloc().construct(b, _STD::move(b[-1]));
+			++size_;
+			_STD::move_backward(position, b - 1, b);
+			*position = _STD::move(x);
+		}
+	}
+	else
+	{
+		__vec_deleter_helper<value_type, allocator_rr_type&> tmp(alloc());
+		prefix_insert_realloc(tmp, position, 1);
+		tmp.alloc().construct(tmp.data_ + tmp.start_, _STD::move(x));
+		++tmp.size_;
+		position = suffix_insert_realloc(tmp, position);
+	}
+	return position;
+}
+
+#endif  // _MSL_MOVE
+
+template <typename T, class Allocator>
+typename __vec_deleter<T, Allocator>::size_type
+__vec_deleter<T, Allocator>::insert_loop_2_3(size_type pe, size_type n, pointer b, Metrowerks::int2type<0>)
+{
+	size_type e = _STD::min(pe, n);
+	for (size_type i = 0; i < e; ++i, ++b)
+	{
+		alloc().construct(b, _STD::move(b[-difference_type(n)]));
+		++size_;
+	}
+	b -= (difference_type)n;
+	if (pe > n)
+	#ifdef _MSL_MOVE
+		_STD::move_backward(b - difference_type(pe), b - difference_type(n), b);
+	#else
+		_STD::copy_backward(b - difference_type(pe), b - difference_type(n), b);
+	#endif
+	return e;
+}
+
+template <typename T, class Allocator>
+typename __vec_deleter<T, Allocator>::size_type
+__vec_deleter<T, Allocator>::insert_loop_2_3(size_type pe, size_type n, pointer b, Metrowerks::int2type<1>)
+{
+	size_type e = _STD::min(pe, n);
+	for (size_type i = 0; i < e; ++i, ++b)
+	{
+		::new(b) value_type;
+		b->swap(b[-difference_type(n)]);
+		++size_;
+	}
+	b -= (difference_type)n;
+	for (pointer j = b - difference_type(n), k = b - difference_type(pe); j > k;)
+	{
+		--j;
+		j->swap(*--b);
+	}
+	return e;
+}
+
+template <typename T, class Allocator>
+typename __vec_deleter<T, Allocator>::size_type
+__vec_deleter<T, Allocator>::insert_loop_2_3(size_type pe, size_type n, pointer b, Metrowerks::int2type<2>)
+{
+	size_type e;
+	size_type m;
+	if (pe < n)
+	{
+		e = pe;
+		m = n;
+	}
+	else
+	{
+		e = n;
+		m = pe;
+	}
+	_CSTD::memmove(b - (pe - e), b - m, pe*sizeof(value_type));
+	_CSTD::memset(b - m, 0, e*sizeof(value_type));
+	size_ += e;
+	return e;
+}
+
+template <typename T, class Allocator>
+void
+__vec_deleter<T, Allocator>::insert(pointer position, size_type n, const value_type& x, Metrowerks::int2type<false>)
+{
+	if (n == 0)
+		return;
+	if (n <= cap() && size_ <= cap() - n || expand_by(size_ + n - cap()))
+	{
+		size_type pe = size_type(end() - position);
+		if (pe < n)
+			construct_at_end(n - pe, x);
+		size_type e = insert_loop_2_3(pe, n, end());
+		if (e > 0)
+		{
+			const_pointer xr = Metrowerks::address_of(x);
+			if (position <= xr && xr < end())
+				xr += n;
+			_STD::fill_n(position, e, *xr);
+		}
+	}
+	else
+	{
+		__vec_deleter_helper<value_type, allocator_rr_type&> tmp(alloc());
+		prefix_insert_realloc(tmp, position, n);
+		tmp.construct_at_end(n, x);
+		suffix_insert_realloc(tmp, position);
+	}
+}
+
+template <typename T, class Allocator>
+void
+__vec_deleter<T, Allocator>::insert(pointer position, size_type n, const value_type& x, Metrowerks::int2type<true>)
+{
+	if (n == 0)
+		return;
+	if (n <= cap() && size_ <= cap() - n || expand_by(size_ + n - cap()))
+	{
+		size_type pe = size_type(end() - position);
+		iterator b = end();
+		const_pointer xr = Metrowerks::address_of(x);
+		if (position <= xr && xr < b)
+			xr += n;
+		b += n;
+		size_ += n;
+		if (pe > 0)
+			b = _STD::copy_backward(b - difference_type(n+pe), b - difference_type(n), b);
+		for (; n > 0; --n)
+			*--b = *xr;
+	}
+	else
+	{
+		pointer tmp = data_;
+		size_type oldcap = cap();
+		difference_type pb = position - data_;
+		allocate(size_ + n, grow_by(size_ + n - cap()));
+		_STD::fill_n(data_ + pb, n, x);
+		suffix_insert_realloc(tmp, pb, n, oldcap);
+	}
+}
+
+template <typename T, class Allocator>
+template <class InputIterator>
+void
+__vec_deleter<T, Allocator>::insert(pointer position, InputIterator first, InputIterator last, input_iterator_tag)
+{
+	if (first != last)
+	{
+		size_type c = capacity();
+		size_type s = size();
+		size_type os = s;
+		if (s < c)
+		{
+			do
+			{
+				push_back(*first);
+				++s;
+				if (++first == last)
+					break;
+			} while (s < c);
+			position = std::rotate(position, begin() + os, end());
+		}
+		if (first != last)
+		{
+			__vec_deleter temp(alloc());
+			temp.init(first, last, input_iterator_tag());
+			__move_iterator<iterator> b(temp.begin());
+			__move_iterator<iterator> e(temp.end());
+			insert(position, b, e, typename __move_iterator<iterator>::iterator_category());
+		}
+	}
+}
+
+template <typename T, class Allocator>
+template <class ForwardIterator>
+void
+__vec_deleter<T, Allocator>::insert(pointer position, ForwardIterator first, ForwardIterator last, Metrowerks::int2type<false>)
+{
+	size_type n = (size_type)_STD::distance(first, last);
+	if (n == 0)
+		return;
+	if (n <= cap() && size_ <= cap() - n || expand_by(size_ + n - cap()))
+	{
+		size_type pe = size_type(end() - position);
+		ForwardIterator it;
+		if (pe < n)
+		{
+			it = first;
+			_STD::advance(it, difference_type(pe));
+			construct_at_end(it, last);
+		}
+		else
+			it = last;
+		insert_loop_2_3(pe, n, end());
+		_STD::copy(first, it, position);
+	}
+	else
+	{
+		__vec_deleter_helper<value_type, allocator_rr_type&> tmp(alloc());
+		prefix_insert_realloc(tmp, position, n);
+		tmp.construct_at_end(first, last);
+		suffix_insert_realloc(tmp, position);
+	}
+}
+
+template <typename T, class Allocator>
+template <class ForwardIterator>
+void
+__vec_deleter<T, Allocator>::insert(pointer position, ForwardIterator first, ForwardIterator last, Metrowerks::int2type<true>)
+{
+	size_type n = (size_type)_STD::distance(first, last);
+	if (n == 0)
+		return;
+	if (n <= cap() && size_ <= cap() - n || expand_by(size_ + n - cap()))
+	{
+		size_type pe = size_type(end() - position);
+		iterator b = end();
+		b += n;
+		size_ += n;
+		if (pe > 0)
+			b = _STD::copy_backward(b - difference_type(n+pe), b - difference_type(n), b);
+		b -= n;
+		_STD::copy(first, last, b);
+	}
+	else
+	{
+		pointer tmp = data_;
+		size_type oldcap = cap();
+		difference_type pb = position - data_;
+		allocate(size_ + n, grow_by(size_ + n - cap()));
+		_STD::copy(first, last, data_ + pb);
+		suffix_insert_realloc(tmp, pb, n, oldcap);
+	}
+}
+
+template <typename T, class Allocator>
+inline
+void
+__vec_deleter<T, Allocator>::pop_back(Metrowerks::int2type<false>)
+{
+	alloc().destroy(data_ + --size_);
+}
+
+template <typename T, class Allocator>
+inline
+void
+__vec_deleter<T, Allocator>::pop_back(Metrowerks::int2type<true>)
+{
+	--size_;
+}
+
+template <class T, class Allocator>
+typename __vec_deleter<T, Allocator>::iterator
+__vec_deleter<T, Allocator>::erase(iterator position, Metrowerks::int2type<0>)
+{
+	iterator e = end();
+	size_type n = size_type(e - position - 1);
+	if (n > 0)
+	#ifdef _MSL_MOVE
+		_STD::move(position + 1, e, position);
+	#else
+		_STD::copy(position + 1, e, position);
+	#endif
+	pop_back();
+	return position;
+}
+
+template <class T, class Allocator>
+typename __vec_deleter<T, Allocator>::iterator
+__vec_deleter<T, Allocator>::erase(iterator position, Metrowerks::int2type<1>)
+{
+	iterator e = end();
+	for (iterator i = position, j = position+1; j < e; ++i, ++j)
+		i->swap(*j);
+	pop_back();
+	return position;
+}
+
+template <class T, class Allocator>
+typename __vec_deleter<T, Allocator>::iterator
+__vec_deleter<T, Allocator>::erase(iterator position, Metrowerks::int2type<2>)
+{
+	position->~value_type();
+	_CSTD::memmove(position, position+1, (end()-position-1)*sizeof(value_type));
+	--size_;
+	return position;
+}
+
+template <class T, class Allocator>
+typename __vec_deleter<T, Allocator>::iterator
+__vec_deleter<T, Allocator>::erase(iterator position, Metrowerks::int2type<3>)
+{
+	_CSTD::memmove(position, position+1, (end()-position-1)*sizeof(value_type));
+	--size_;
+	return position;
+}
+
+template <class T, class Allocator>
+typename __vec_deleter<T, Allocator>::iterator
+__vec_deleter<T, Allocator>::erase(iterator first, iterator last, Metrowerks::int2type<0>)
+{
+	if (first != last)
+	{
+		iterator e = end();
+		size_type n = size_type(e - last);
+		if (n > 0)
+		#ifdef _MSL_MOVE
+			_STD::move(last, e, first);
+		#else
+			_STD::copy(last, e, first);
+		#endif
+		erase_at_end(size_type(last-first));
+	}
+	return first;
+}
+
+template <class T, class Allocator>
+typename __vec_deleter<T, Allocator>::iterator
+__vec_deleter<T, Allocator>::erase(iterator first, iterator last, Metrowerks::int2type<1>)
+{
+	if (first != last)
+	{
+		iterator e = end();
+		for (iterator i = last, j = first; i < e; ++i, ++j)
+			i->swap(*j);
+		erase_at_end(size_type(last-first));
+	}
+	return first;
+}
+
+template <class T, class Allocator>
+typename __vec_deleter<T, Allocator>::iterator
+__vec_deleter<T, Allocator>::erase(iterator first, iterator last, Metrowerks::int2type<2>)
+{
+	if (first != last)
+	{
+		for (iterator i = first; i < last; ++i)
+			i->~value_type();
+		_CSTD::memmove(first, last, (end() - last)*sizeof(value_type));
+		size_ -= static_cast<size_type>(last - first);
+	}
+	return first;
+}
+
+template <class T, class Allocator>
+typename __vec_deleter<T, Allocator>::iterator
+__vec_deleter<T, Allocator>::erase(iterator first, iterator last, Metrowerks::int2type<3>)
+{
+	if (first != last)
+	{
+		_CSTD::memmove(first, last, (end() - last)*sizeof(value_type));
+		size_ -= static_cast<size_type>(last - first);
+	}
+	return first;
+}
+
+template <class T, class Allocator>
+void
+__vec_deleter<T, Allocator>::append(size_type n, const value_type& x, Metrowerks::int2type<false>)
+{
+	if (n <= cap() && size_ <= cap() - n || expand_by(size_ + n - cap()))
+		construct_at_end(n, x);
+	else
+		append_realloc(n, x);
+}
+
+template <class T, class Allocator>
+void
+__vec_deleter<T, Allocator>::append(size_type n, const value_type& x, Metrowerks::int2type<true>)
+{
+	if (n <= cap() && size_ <= cap() - n || expand_by(size_ + n - cap()))
+	{
+		_STD::fill_n(end(), n, x);
+		size_ += n;
+	}
+	else
+		append_realloc(n, x);
+}
+
+template <class T, class Allocator>
+void
+__vec_deleter<T, Allocator>::append(size_type n, Metrowerks::int2type<false>)
+{
+	if (n <= cap() && size_ <= cap() - n || expand_by(size_ + n - cap()))
+		construct_at_end(n);
+	else
+		append_realloc(n);
+}
+
+template <class T, class Allocator>
+void
+__vec_deleter<T, Allocator>::append(size_type n, Metrowerks::int2type<true>)
+{
+	if (n <= cap() && size_ <= cap() - n || expand_by(size_ + n - cap()))
+	{
+		_CSTD::memset(end(), 0, n*sizeof(value_type));
+		size_ += n;
+	}
+	else
+		append_realloc(n);
+}
+
+template <class T, class Allocator>
+inline
+void
+__vec_deleter<T, Allocator>::resize(size_type sz)
+{
+	if (sz > size_)
+		append(sz - size_);
+	else if (sz < size_)
+		erase_at_end(size_ - sz);
+}
+
+template <class T, class Allocator>
+inline
+void
+__vec_deleter<T, Allocator>::resize(size_type sz, const value_type& x)
+{
+	if (sz > size_)
+		append(sz - size_, x);
+	else if (sz < size_)
+		erase_at_end(size_ - sz);
+}
+
+template <typename T, class Allocator>
+inline
+void
+__vec_deleter<T, Allocator>::swap(__vec_deleter& x)
+{
+	Metrowerks::swap(capacity_, x.capacity_);
+	_STD::swap(data_, x.data_);
+	_STD::swap(size_, x.size_);
+}
+
+template <class T, class Allocator>
+bool
+__vec_deleter<T, Allocator>::invariants() const
+{
+	if (cap() == 0 && data_ != 0)
+		return false;
+	if (cap() != 0 && data_ == 0)
+		return false;
+	if (cap() < size_)
+		return false;
+	return true;
+}
+
+// __vec_constructor - untransformed
+
+template <typename T, class Allocator, bool transform = false>
+class __vec_constructor
+	: public __vec_deleter<T, Allocator>
+{
+	typedef __vec_deleter<T, Allocator> base;
+public:
+	typedef typename base::value_type        value_type;
+	typedef typename base::allocator_type    allocator_type;
+
+	typedef typename base::reference         reference;
+	typedef typename base::const_reference   const_reference;
+	typedef typename base::pointer           iterator;
+	typedef typename base::const_pointer     const_iterator;
+	typedef typename base::size_type         size_type;
+	typedef typename base::difference_type   difference_type;
+	typedef typename base::pointer           pointer;
+	typedef typename base::const_pointer     const_pointer;
+
+	         __vec_constructor() {}
+	explicit __vec_constructor(const allocator_type& a) : base(a) {}
+	explicit __vec_constructor(size_type n) {base::init(n);}
+	__vec_constructor(size_type n, const value_type& value) {base::init(n, value);}
+	__vec_constructor(size_type n, const value_type& value, const allocator_type& a) : base(a) {base::init(n, value);}
+	__vec_constructor(const __vec_constructor& x) : base(x.alloc()) {base::init(x.begin(), x.end(), random_access_iterator_tag());}
+#ifdef _MSL_MOVE
+	__vec_constructor(__vec_constructor&& x) : base(static_cast<base&&>(x)) {}
+#endif
+
+#ifndef _MSL_MOVE
+	void swap(__vec_constructor& x) {base::swap(x);}
+#else
+	void swap(__vec_constructor&& x) {base::swap(x);}
+#endif
+};
+
+// __vec_constructor - transformed
+
+template <typename T, class Allocator>
+class __vec_constructor<T, Allocator, true>
+	: public __vec_constructor<typename Metrowerks::store_as<T>::type,
+	                           typename Allocator::rebind<typename Metrowerks::store_as<T>::type>::other,
+	                           false>
+{
+	typedef __vec_constructor<typename Metrowerks::store_as<T>::type,
+	                          typename Allocator::rebind<typename Metrowerks::store_as<T>::type>::other,
+	                          false> base;
+
+	static const size_t error_check = sizeof(Metrowerks::compile_assert<bool(sizeof(T) == sizeof(typename Metrowerks::store_as<T>::type))>);
+public:
+	typedef T                                             value_type;
+	typedef typename Allocator::rebind<value_type>::other allocator_type;
+
+	typedef typename allocator_type::reference         reference;
+	typedef typename allocator_type::const_reference   const_reference;
+	typedef typename allocator_type::pointer           iterator;
+	typedef typename allocator_type::const_pointer     const_iterator;
+	typedef typename allocator_type::size_type         size_type;
+	typedef typename allocator_type::difference_type   difference_type;
+	typedef typename allocator_type::pointer           pointer;
+	typedef typename allocator_type::const_pointer     const_pointer;
+
+	         __vec_constructor() {}
+	explicit __vec_constructor(const allocator_type& a) : base(a) {}
+	explicit __vec_constructor(size_type n) : base(n) {}
+	         __vec_constructor(size_type n, const value_type& value) : base(n, (const typename base::value_type&)value) {}
+	         __vec_constructor(size_type n, const value_type& value, const allocator_type& a) : base(n, (const typename base::value_type&)value, a) {}
+#ifdef _MSL_MOVE
+	__vec_constructor(__vec_constructor&& x) : base(static_cast<base&&>(x)) {}
+
+	__vec_constructor(const __vec_constructor& x) : base(x) {}
+#endif  // _MSL_MOVE
+
+	template <class InputIterator>
+		void init(InputIterator first, InputIterator last, input_iterator_tag)
+			{typedef typename iterator_traits<InputIterator>::value_type outside_value;
+			 init(first, last,
+			      Metrowerks::int2type<Metrowerks::is_same<outside_value, value_type>::value>(),
+			      Metrowerks::int2type<Metrowerks::is_same<value_type, typename base::value_type>::value>());}
+
+	iterator               begin()       {return iterator(base::begin());}
+	const_iterator         begin() const {return const_iterator(base::begin());}
+	iterator               end()         {return iterator(base::end());}
+	const_iterator         end() const   {return const_iterator(base::end());}
+
+	reference       front()       {return       reference(base::front());}
+	const_reference front() const {return const_reference(base::front());}
+	reference       back()        {return       reference(base::back());}
+	const_reference back() const  {return const_reference(base::back());}
+
+	reference       operator[](size_type n)       {return       reference(base::operator[](n));}
+	const_reference operator[](size_type n) const {return const_reference(base::operator[](n));}
+
+	reference       at(size_type n)               {return       reference(base::at(n));}
+	const_reference at(size_type n) const         {return const_reference(base::at(n));}
+
+	void assign(size_type n, const value_type& x) {base::assign(n, (const typename base::value_type&)x);}
+
+	template <class InputIterator>
+		void assign(InputIterator first, InputIterator last, input_iterator_tag)
+			{typedef typename iterator_traits<InputIterator>::value_type outside_value;
+			 assign(first, last,
+			      Metrowerks::int2type<Metrowerks::is_same<outside_value, value_type>::value>(),
+			      Metrowerks::int2type<Metrowerks::is_same<value_type, typename base::value_type>::value>());}
+
+	void push_back(const value_type& x) {base::push_back((const typename base::value_type&)x);}
+
+	iterator insert(iterator position, const value_type& x)
+	               {return (iterator)base::insert((typename base::iterator)position, (const typename base::value_type&)x);}
+
+	void     insert(iterator position, size_type n, const value_type& x)
+	               {base::insert((typename base::iterator)position, n, (const typename base::value_type&)x);}
+
+	template <class InputIterator>
+		void insert(iterator p, InputIterator first, InputIterator last, input_iterator_tag)
+			{typedef typename iterator_traits<InputIterator>::value_type outside_value;
+			 insert(p, first, last,
+			      Metrowerks::int2type<Metrowerks::is_same<outside_value, value_type>::value>(),
+			      Metrowerks::int2type<Metrowerks::is_same<value_type, typename base::value_type>::value>());}
+
+	iterator erase(iterator position)             {return (iterator)base::erase((typename base::iterator)position);}
+	iterator erase(iterator first, iterator last) {return (iterator)base::erase((typename base::iterator)first, (typename base::iterator)last);}
+
+	void      resize(size_type sz)                      {base::resize(sz);}
+	void      resize(size_type sz, const value_type& x) {base::resize(sz, (const typename base::value_type&)x);}
+#ifndef _MSL_MOVE
+	void swap(__vec_constructor& x) {base::swap(x);}
+#else
+	void swap(__vec_constructor&& x) {base::swap(x);}
+#endif
+private:
+	template <class InputIterator>
+		void init(InputIterator first, InputIterator last, Metrowerks::int2type<true>, Metrowerks::int2type<true>)
+			{base::init(first, last, typename iterator_traits<InputIterator>::iterator_category());}
+	template <class InputIterator>
+		void init(InputIterator first, InputIterator last, Metrowerks::int2type<false>, Metrowerks::int2type<true>)
+			{typedef __convert_iterator<__implicit_convert<pointer, InputIterator> > first_convert;
+			 base::init(first_convert(first), first_convert(last),
+			            typename iterator_traits<InputIterator>::iterator_category());}
+	template <class InputIterator>
+		void init(InputIterator first, InputIterator last, Metrowerks::int2type<true>, Metrowerks::int2type<false>)
+			{typedef __convert_iterator<__reinterpret_convert<typename base::pointer, InputIterator> > second_convert;
+			 base::init(second_convert(first), second_convert(last),
+			            typename iterator_traits<InputIterator>::iterator_category());}
+	template <class InputIterator>
+		void init(InputIterator first, InputIterator last, Metrowerks::int2type<false>, Metrowerks::int2type<false>)
+			{typedef __convert_iterator<__implicit_convert<pointer, InputIterator> > first_convert;
+			 typedef __convert_iterator<__reinterpret_convert<typename base::pointer, first_convert> > second_convert;
+			 base::init(second_convert(first_convert(first)),
+			            second_convert(first_convert(last)),
+			            typename iterator_traits<InputIterator>::iterator_category());}
+
+	template <class InputIterator>
+		void assign(InputIterator first, InputIterator last, Metrowerks::int2type<true>, Metrowerks::int2type<true>)
+			{base::assign(first, last, typename iterator_traits<InputIterator>::iterator_category());}
+	template <class InputIterator>
+		void assign(InputIterator first, InputIterator last, Metrowerks::int2type<false>, Metrowerks::int2type<true>)
+			{typedef __convert_iterator<__implicit_convert<pointer, InputIterator> > first_convert;
+			 base::assign(first_convert(first), first_convert(last),
+			            typename iterator_traits<InputIterator>::iterator_category());}
+	template <class InputIterator>
+		void assign(InputIterator first, InputIterator last, Metrowerks::int2type<true>, Metrowerks::int2type<false>)
+			{typedef __convert_iterator<__reinterpret_convert<typename base::pointer, InputIterator> > second_convert;
+			 base::assign(second_convert(first), second_convert(last),
+			            typename iterator_traits<InputIterator>::iterator_category());}
+	template <class InputIterator>
+		void assign(InputIterator first, InputIterator last, Metrowerks::int2type<false>, Metrowerks::int2type<false>)
+			{typedef __convert_iterator<__implicit_convert<pointer, InputIterator> > first_convert;
+			 typedef __convert_iterator<__reinterpret_convert<typename base::pointer, first_convert> > second_convert;
+			 base::assign(second_convert(first_convert(first)),
+			            second_convert(first_convert(last)),
+			            typename iterator_traits<InputIterator>::iterator_category());}
+
+	template <class InputIterator>
+		void insert(iterator p, InputIterator first, InputIterator last, Metrowerks::int2type<true>, Metrowerks::int2type<true>)
+			{base::insert((typename base::iterator)p, first, last, typename iterator_traits<InputIterator>::iterator_category());}
+	template <class InputIterator>
+		void insert(iterator p, InputIterator first, InputIterator last, Metrowerks::int2type<false>, Metrowerks::int2type<true>)
+			{typedef __convert_iterator<__implicit_convert<pointer, InputIterator> > first_convert;
+			 base::insert((typename base::iterator)p, first_convert(first), first_convert(last),
+			              typename iterator_traits<InputIterator>::iterator_category());}
+	template <class InputIterator>
+		void insert(iterator p, InputIterator first, InputIterator last, Metrowerks::int2type<true>, Metrowerks::int2type<false>)
+			{typedef __convert_iterator<__reinterpret_convert<typename base::pointer, InputIterator> > second_convert;
+			 base::insert((typename base::iterator)p, second_convert(first), second_convert(last),
+			              typename iterator_traits<InputIterator>::iterator_category());}
+	template <class InputIterator>
+		void insert(iterator p, InputIterator first, InputIterator last, Metrowerks::int2type<false>, Metrowerks::int2type<false>)
+			{typedef __convert_iterator<__implicit_convert<pointer, InputIterator> > first_convert;
+			 typedef __convert_iterator<__reinterpret_convert<typename base::pointer, first_convert> > second_convert;
+			 base::insert((typename base::iterator)p, second_convert(first_convert(first)),
+			              second_convert(first_convert(last)),
+			              typename iterator_traits<InputIterator>::iterator_category());}
+};
+
+// vector
+
+template <typename T, class Allocator = allocator<T> >
+class vector
+	: private __vec_constructor<T, Allocator,
+	                       #ifndef _Inhibit_Container_Optimization
+	                            Metrowerks::is_scalar<T>::value>
+	                       #else
+	                            false>
+	                       #endif
+{
+	typedef __vec_constructor<T, Allocator,
+	                      #ifndef _Inhibit_Container_Optimization
+	                          Metrowerks::is_scalar<T>::value> base;
+	                      #else
+	                          false> base;
+	                      #endif
+public:
+	// types:
+	typedef vector                           __self;
+	typedef typename base::value_type        value_type;
+	typedef typename base::allocator_type    allocator_type;
+
+	typedef typename base::reference         reference;
+	typedef typename base::const_reference   const_reference;
+	typedef typename base::size_type         size_type;
+	typedef typename base::difference_type   difference_type;
+	typedef typename base::pointer           pointer;
+	typedef typename base::const_pointer     const_pointer;
+
+#ifdef _MSL_DEBUG
+	typedef pointer                                __uncheck_iterator;
+	typedef const_pointer                          __uncheck_const_iterator;
+	typedef __debug_iterator<vector, __uncheck_iterator>        iterator;
+	typedef __debug_iterator<vector, __uncheck_const_iterator>  const_iterator;
+private:
+	pointer __iterator2pointer(const iterator& i)
+		{
+			if (i.owner_ != this)
+				_MSL_DEBUG_ERROR(logic_error, "MSL DEBUG: invalid iterator given to vector");
+			return i.base();
+		}
+	const_pointer __iterator2pointer(const const_iterator& i) const
+		{
+			if (i.owner_ != this)
+				_MSL_DEBUG_ERROR(logic_error, "MSL DEBUG: invalid iterator given to vector");
+			return i.base();
+		}
+	iterator              __pointer2iterator(const pointer& p)             {return iterator(this, p);}
+	const_iterator        __pointer2iterator(const const_pointer& p) const {return const_iterator(this, p);}
+public:
+#elif defined(_MSL_RAW_ITERATORS)
+	typedef pointer                                iterator;
+	typedef const_pointer                          const_iterator;
+private:
+	static pointer        __iterator2pointer(const iterator& i)            {return i;}
+	static const_pointer  __iterator2pointer(const const_iterator& i)      {return i;}
+	static iterator       __pointer2iterator(const pointer& p)             {return p;}
+	static const_iterator __pointer2iterator(const const_pointer& p)       {return p;}
+public:
+#else  // defined(_MSL_RAW_ITERATORS)
+	typedef __wrap_iterator<vector, pointer>       iterator;
+	typedef __wrap_iterator<vector, const_pointer> const_iterator;
+private:
+	static pointer        __iterator2pointer(const iterator& i)            {return i.base();}
+	static const_pointer  __iterator2pointer(const const_iterator& i)      {return i.base();}
+	iterator              __pointer2iterator(const pointer& p)             {return iterator(p);}
+	const_iterator        __pointer2iterator(const const_pointer& p) const {return const_iterator(p);}
+public:
+#endif  // defined(_MSL_RAW_ITERATORS)
+
+	typedef _STD::reverse_iterator<iterator>       reverse_iterator;
+	typedef _STD::reverse_iterator<const_iterator> const_reverse_iterator;
+
+#ifdef _MSL_DEBUG
+private:
+	void __invalidate_all_iterators()
+	{
+		if (iterator_list<iterator>())
+			iterator_list<iterator>()->remove(__unary_true_value<__uncheck_iterator>());
+		if (iterator_list<const_iterator>())
+			iterator_list<const_iterator>()->remove(__unary_true_value<__uncheck_const_iterator>());
+	}
+
+	class __invalidate_on_reallocate
+	{
+	public:
+		__invalidate_on_reallocate(vector& v) : vec_(v), old_data_(v.data_) {}
+		~__invalidate_on_reallocate()
+		{
+			if (old_data_ != vec_.data_)
+				vec_.__invalidate_all_iterators();
+		}
+	private:
+		vector& vec_;
+		void* old_data_;
+
+		__invalidate_on_reallocate(const __invalidate_on_reallocate&);
+		__invalidate_on_reallocate& operator=(const __invalidate_on_reallocate&);
+	};
+	friend class __invalidate_on_reallocate;
+
+	void __invalidate_past_end_iterators()
+	{
+		if (iterator_list<iterator>())
+			iterator_list<iterator>()->remove(bind2nd(greater<__uncheck_iterator>(), __uncheck_end()));
+		if (iterator_list<const_iterator>())
+			iterator_list<const_iterator>()->remove(bind2nd(greater<__uncheck_const_iterator>(), __uncheck_end()));
+	}
+
+	class __invalidate_on_shrink
+	{
+	public:
+		__invalidate_on_shrink(vector& v) : vec_(v), old_size_(v.size()) {}
+		~__invalidate_on_shrink()
+		{
+			if (old_size_ < vec_.size())
+				vec_.__invalidate_past_end_iterators();
+		}
+	private:
+		vector& vec_;
+		size_type old_size_;
+
+		__invalidate_on_shrink(const __invalidate_on_shrink&);
+		__invalidate_on_shrink& operator=(const __invalidate_on_shrink&);
+	};
+	friend class __invalidate_on_shrink;
+
+	void __invalidate_iterators_past_pos(size_type pos)
+	{
+
+		if (iterator_list<iterator>())
+			iterator_list<iterator>()->remove(bind2nd(greater_equal<__uncheck_iterator>(), __uncheck_begin()+pos));
+		if (iterator_list<const_iterator>())
+			iterator_list<const_iterator>()->remove(bind2nd(greater_equal<__uncheck_const_iterator>(), __uncheck_begin()+pos));
+	}
+
+	class __invalidate_past_pos
+	{
+	public:
+		__invalidate_past_pos(vector& v, vector::iterator p) : vec_(v), old_size_(v.size()),
+			pos_(size_type(p - vec_.begin())) {}
+		~__invalidate_past_pos()
+		{
+			if (old_size_ != vec_.size())
+				vec_.__invalidate_iterators_past_pos(pos_);
+		}
+	private:
+		vector& vec_;
+		size_type old_size_;
+		size_type pos_;
+
+		__invalidate_past_pos(const __invalidate_past_pos&);
+		__invalidate_past_pos& operator=(const __invalidate_past_pos&);
+	};
+	friend class __invalidate_past_pos;
+
+public:
+#endif  // _MSL_DEBUG
+
+	// _lib.vector.cons_ construct/copy/destroy:
+	         vector() {}
+	explicit vector(const allocator_type& a) : base(a) {}
+	explicit vector(size_type n) : base(n) {}
+	         vector(size_type n, const value_type& value) : base(n, value) {}
+	         vector(size_type n, const value_type& value, const allocator_type& a) : base(n, value, a) {}
+#ifndef __GNUC__
+	template <class InputIterator>
+		vector(InputIterator first, InputIterator last, typename Metrowerks::restrict_to<__is_input_iterator<InputIterator>::value>::type* = 0)
+			{base::init(first, last, typename iterator_traits<InputIterator>::iterator_category());}
+	template <class InputIterator>
+		vector(InputIterator first, InputIterator last, const allocator_type& a, typename Metrowerks::restrict_to<__is_input_iterator<InputIterator>::value>::type* = 0)
+			: base(a) {base::init(first, last, typename iterator_traits<InputIterator>::iterator_category());}
+#else  // __GNUC__
+	template <class InputIterator>
+		vector(InputIterator first, InputIterator last, typename Metrowerks::restrict_to<Metrowerks::_not<Metrowerks::is_integral<InputIterator> >::value>::type* = 0)
+			{base::init(first, last, typename iterator_traits<InputIterator>::iterator_category());}
+	template <class InputIterator>
+		vector(InputIterator first, InputIterator last, const allocator_type& a, typename Metrowerks::restrict_to<Metrowerks::_not<Metrowerks::is_integral<InputIterator> >::value>::type* = 0)
+			: base(a) {base::init(first, last, typename iterator_traits<InputIterator>::iterator_category());}
+#endif  // __GNUC__
+#ifdef _MSL_DEBUG
+	vector(const vector& x) : base(x) {}
+	~vector() {__invalidate_all_iterators();}
+#endif  // _MSL_DEBUG
+#ifdef _MSL_MOVE
+	vector(vector&& x) : base(static_cast<base&&>(x)) {}
+	vector& operator=(vector&& x) {swap(x); return *this;}
+
+#ifndef _MSL_DEBUG
+	vector(const vector& x) : base(x) {}
+#endif
+	vector& operator=(const vector& x) {base::operator=(x); return *this;}
+#endif  // _MSL_MOVE
+
+	allocator_type get_allocator() const {return base::alloc();}
+
+	using base::max_size;
+	using base::size;
+	using base::empty;
+	using base::capacity;
+
+	void reserve(size_type n)
+		{
+		#ifdef _MSL_DEBUG
+			__invalidate_on_reallocate __c(*this);
+		#endif
+			base::reserve(n);
+		}
+
+	// iterators:
+	iterator               begin()       {return __pointer2iterator(base::begin());}
+	const_iterator         begin() const {return __pointer2iterator(base::begin());}
+	iterator               end()         {return __pointer2iterator(base::end());}
+	const_iterator         end() const   {return __pointer2iterator(base::end());}
+
+#ifdef _MSL_DEBUG
+	__uncheck_iterator       __uncheck_begin()       {return __uncheck_iterator(base::begin());}
+	__uncheck_const_iterator __uncheck_begin() const {return __uncheck_const_iterator(base::begin());}
+	__uncheck_iterator       __uncheck_end()         {return __uncheck_iterator(base::end());}
+	__uncheck_const_iterator __uncheck_end() const   {return __uncheck_const_iterator(base::end());}
+#endif  // _MSL_DEBUG
+
+	reverse_iterator       rbegin()       {return reverse_iterator(end());}
+	const_reverse_iterator rbegin() const {return const_reverse_iterator(end());}
+	reverse_iterator       rend()         {return reverse_iterator(begin());}
+	const_reverse_iterator rend() const   {return const_reverse_iterator(begin());}
+
+	using base::front;
+	using base::back;
+
+#ifndef _MSL_DEBUG
+	reference       operator[](size_type n)       {return base::operator[](n);}
+	const_reference operator[](size_type n) const {return base::operator[](n);}
+#else  // _MSL_DEBUG
+	reference       operator[](size_type n)       {return at(n);}
+	const_reference operator[](size_type n) const {return at(n);}
+#endif  // _MSL_DEBUG
+
+	using base::at;
+
+	void assign(size_type n, const value_type& x) {base::assign(n, x);}
+#ifndef __GNUC__
+	template <class InputIterator>
+		void assign(InputIterator first, InputIterator last, typename Metrowerks::restrict_to<__is_input_iterator<InputIterator>::value>::type* = 0)
+			{base::assign(first, last, typename iterator_traits<InputIterator>::iterator_category());}
+#else  // __GNUC__
+	template <class InputIterator>
+		void assign(InputIterator first, InputIterator last, typename Metrowerks::restrict_to<Metrowerks::_not<Metrowerks::is_integral<InputIterator> >::value>::type* = 0)
+			{base::assign(first, last, typename iterator_traits<InputIterator>::iterator_category());}
+#endif  // __GNUC__
+	void push_back(const value_type& x)
+		{
+		#ifdef _MSL_DEBUG
+			__invalidate_on_reallocate __c(*this);
+		#endif
+			base::push_back(x);
+		}
+
+#ifdef _MSL_MOVE
+
+	void push_back(value_type&& x)
+		{
+		#ifdef _MSL_DEBUG
+			__invalidate_on_reallocate __c(*this);
+		#endif
+			base::push_back(_STD::move(x));
+		}
+
+#endif  // _MSL_MOVE
+
+	iterator insert(iterator position, const value_type& x)
+		{
+		#ifndef _MSL_DEBUG
+			return __pointer2iterator(base::insert(__iterator2pointer(position), x));
+		#else
+			typename base::iterator result;
+			{
+			__invalidate_past_pos __s(*this, position);
+			__invalidate_on_reallocate __c(*this);
+			result = base::insert(__iterator2pointer(position), x);
+			}
+			return __pointer2iterator(result);
+		#endif  // _MSL_DEBUG
+		}
+
+#ifdef _MSL_MOVE
+
+	iterator insert(iterator position, value_type&& x)
+		{
+		#ifndef _MSL_DEBUG
+			return __pointer2iterator(base::insert(__iterator2pointer(position), _STD::move(x)));
+		#else
+			typename base::iterator result;
+			{
+			__invalidate_past_pos __s(*this, position);
+			__invalidate_on_reallocate __c(*this);
+			result = base::insert(__iterator2pointer(position), _STD::move(x));
+			}
+			return __pointer2iterator(result);
+		#endif  // _MSL_DEBUG
+		}
+
+#endif  // _MSL_MOVE
+
+	void     insert(iterator position, size_type n, const value_type& x)
+		{
+		#ifdef _MSL_DEBUG
+			__invalidate_past_pos __s(*this, position);
+			__invalidate_on_reallocate __c(*this);
+		#endif  // _MSL_DEBUG
+			base::insert(__iterator2pointer(position), n, x);
+		}
+
+	template <class InputIterator>
+#ifndef __GNUC__
+		void insert(iterator position, InputIterator first, InputIterator last, typename Metrowerks::restrict_to<__is_input_iterator<InputIterator>::value>::type* = 0)
+#else
+		void insert(iterator position, InputIterator first, InputIterator last, typename Metrowerks::restrict_to<Metrowerks::_not<Metrowerks::is_integral<InputIterator> >::value>::type* = 0)
+#endif
+			{
+			#ifdef _MSL_DEBUG
+				__invalidate_past_pos __s(*this, position);
+				__invalidate_on_reallocate __c(*this);
+			#endif  // _MSL_DEBUG
+				base::insert(__iterator2pointer(position), first, last, typename iterator_traits<InputIterator>::iterator_category());
+			}
+
+	void pop_back()
+		{
+		#ifdef _MSL_DEBUG
+			if (empty())
+				_MSL_DEBUG_ERROR(logic_error, "MSL DEBUG: pop_back called on empty vector");
+			__invalidate_on_shrink __c(*this);
+		#endif  // _MSL_DEBUG
+			base::pop_back();
+		}
+
+	void clear() {base::clear();}
+
+	iterator erase(iterator position)
+		{
+		#ifndef _MSL_DEBUG
+			return __pointer2iterator(base::erase(__iterator2pointer(position)));
+		#else
+			position.deref();
+			typename base::iterator result;
+			{
+			__invalidate_on_shrink __s(*this);
+			__invalidate_past_pos __c(*this, position);
+			result = base::erase(__iterator2pointer(position));
+			}
+			return __pointer2iterator(result);
+		#endif  // _MSL_DEBUG
+		}
+	iterator erase(iterator first, iterator last)
+		{
+		#ifndef _MSL_DEBUG
+			return __pointer2iterator(base::erase(__iterator2pointer(first), __iterator2pointer(last)));
+		#else
+			if (first > last)
+				_MSL_DEBUG_ERROR(logic_error, "MSL DEBUG: invalid iterator range given to vector::erase");
+			typename base::iterator result;
+			{
+			__invalidate_on_shrink __s(*this);
+			__invalidate_past_pos __c(*this, first);
+			result = base::erase(__iterator2pointer(first), __iterator2pointer(last));
+			}
+			return __pointer2iterator(result);
+		#endif  // _MSL_DEBUG
+		}
+
+	void resize(size_type sz)
+		{
+		#ifdef _MSL_DEBUG
+			__invalidate_on_shrink __s(*this);
+			__invalidate_on_reallocate __c(*this);
+		#endif  // _MSL_DEBUG
+			base::resize(sz);
+		}
+	void resize(size_type sz, const value_type& x)
+		{
+		#ifdef _MSL_DEBUG
+			__invalidate_on_shrink __s(*this);
+			__invalidate_on_reallocate __c(*this);
+		#endif  // _MSL_DEBUG
+			base::resize(sz, x);
+		}
+
+#ifdef _MSL_MOVE
+	void swap(vector&& x)
+#else
+	void swap(vector& x)
+#endif
+		{
+			base::swap(x);
+#ifdef _MSL_DEBUG
+			iterator::swap(this, &x);
+			const_iterator::swap(this, &x);
+#endif  // _MSL_DEBUG
+		}
+
+	using base::invariants;
+
+private:
+	#ifdef _MSL_DEBUG
+		pair<iterator*, const_iterator*> iterator_list_;
+
+		iterator*&       iterator_list(iterator*)       {return iterator_list_.first;}
+		const_iterator*& iterator_list(const_iterator*) {return iterator_list_.second;}
+		template <class Iterator>
+		Iterator*& iterator_list() {return iterator_list((Iterator*)0);}
+
+		friend class iterator;
+		friend class const_iterator;
+	#endif  // _MSL_DEBUG
+};
+
+#ifdef _MSL_MOVE
+
+template <class T, class Allocator>
+class vector<auto_ptr<T>, Allocator>;
+
+#endif  // _MSL_MOVE
+
+#if !defined(_MSL_NO_BOOL) && !defined(_MSL_NO_VECTOR_BOOL)
+
+template <class Allocator>
+class vector<bool, Allocator>
+{
+	typedef Metrowerks::bitvector<Allocator> base;
+public:
+    //  types:
+	typedef typename base::allocator_type  allocator_type;
+	typedef typename base::const_reference const_reference;
+	typedef typename base::reference       reference;
+	typedef typename base::size_type       size_type;
+	typedef typename base::difference_type difference_type;
+	typedef typename base::value_type      value_type;
+	typedef typename base::pointer         pointer;
+	typedef typename base::const_pointer   const_pointer;
+	typedef typename base::iterator        iterator;
+	typedef typename base::const_iterator  const_iterator;
+	typedef typename base::reverse_iterator       reverse_iterator;
+	typedef typename base::const_reverse_iterator const_reverse_iterator;
+
+	//  construct/copy/destroy:
+	         vector() {}
+	explicit vector(const allocator_type& a) : vec_(a) {}
+	explicit vector(size_type n, bool x = false) : vec_(n, x) {}
+	         vector(size_type n, bool x, const allocator_type& a) : vec_(n, x, a) {}
+#ifndef __GNUC__
+	template <class InputIterator>
+		vector(InputIterator first, InputIterator last, typename Metrowerks::restrict_to<__is_input_iterator<InputIterator>::value>::type* = 0)
+			: vec_(first, last) {}
+	template <class InputIterator>
+		vector(InputIterator first, InputIterator last, const allocator_type& a, typename Metrowerks::restrict_to<__is_input_iterator<InputIterator>::value>::type* = 0)
+			: vec_(first, last, a) {}
+#else  // __GNUC__
+	template <class InputIterator>
+		vector(InputIterator first, InputIterator last, typename Metrowerks::restrict_to<Metrowerks::_not<Metrowerks::is_integral<InputIterator> >::value>::type* = 0)
+			: vec_(first, last) {}
+	template <class InputIterator>
+		vector(InputIterator first, InputIterator last, const allocator_type& a, typename Metrowerks::restrict_to<Metrowerks::_not<Metrowerks::is_integral<InputIterator> >::value>::type* = 0)
+			: vec_(first, last, a) {}
+#endif  // __GNUC__
+
+#ifdef _MSL_MOVE
+	vector(vector&& x) : vec_(static_cast<base&&>(x.vec_)) {}
+	vector& operator=(vector&& x) {vec_.swap(x.vec_); return *this;}
+
+	vector(const vector& x) : vec_(x.vec_) {}
+	vector& operator=(const vector& x) {vec_ = x.vec_; return *this;}
+#endif  // _MSL_MOVE
+	allocator_type get_allocator() const {return vec_.get_allocator();}
+	size_type max_size() const {return vec_.max_size();}
+
+	size_type size() const {return vec_.size();}
+	bool      empty() const {return vec_.empty();}
+	size_type capacity() const {return vec_.capacity();}
+	void      reserve(size_type n) {vec_.reserve(n);}
+
+	template <class InputIterator>
+		void assign(InputIterator first, InputIterator last) {vec_.assign(first, last);}
+	void assign(size_type n, bool u) {vec_.assign(n, u);}
+
+	iterator               begin()       {return vec_.begin();}
+	const_iterator         begin() const {return vec_.begin();}
+	iterator               end()         {return vec_.end();}
+	const_iterator         end() const   {return vec_.end();}
+
+	reverse_iterator       rbegin()       {return vec_.rbegin();}
+	const_reverse_iterator rbegin() const {return vec_.rbegin();}
+	reverse_iterator       rend()         {return vec_.rend();}
+	const_reverse_iterator rend() const   {return vec_.rend();}
+
+	reference       operator[](size_type n)       {return vec_[n];}
+	const_reference operator[](size_type n) const {return vec_[n];}
+
+	const_reference at(size_type n) const {return vec_.at(n);}
+	reference       at(size_type n)       {return vec_.at(n);}
+
+	void resize(size_type sz, bool c = false) {vec_.resize(sz, c);}
+
+	reference       front()       {return vec_.front();}
+	const_reference front() const {return vec_.front();}
+	reference       back()        {return vec_.back();}
+	const_reference back() const  {return vec_.back();}
+
+	void push_back(bool x) {vec_.push_back(x);}
+	void pop_back()        {vec_.pop_back();}
+
+	iterator insert(iterator position, bool x) {return vec_.insert(position, x);}
+	void     insert(iterator position, size_type n, bool x) {vec_.insert(position, n, x);}
+	template <class InputIterator>
+		void insert(iterator position, InputIterator first, InputIterator last)
+			{vec_.insert(position, first, last);}
+
+	iterator erase(iterator position)             {return vec_.erase(position);}
+	iterator erase(iterator first, iterator last) {return vec_.erase(first, last);}
+
+	void     clear() {vec_.clear();}
+#ifndef _MSL_MOVE
+	void swap(vector& x) {vec_.swap(x.vec_);}
+#else
+	void swap(vector&& x) {vec_.swap(x.vec_);}
+#endif
+	static void swap(reference x, reference y) {_STD::swap<Metrowerks::__bitvec_deleter<allocator_type> >(x, y);}
+
+	void flip() {vec_.flip();}
+	bool invariants() const {return vec_.invariants();}
+private:
+	base vec_;
+};
+
+#endif // !defined(_MSL_NO_BOOL) && !defined(_MSL_NO_VECTOR_BOOL)
+
+template <class T, class Allocator>
+inline
+bool
+operator==(const vector<T,Allocator>& x, const vector<T,Allocator>& y)
+{
+	return x.size() == y.size() && _STD::equal(x.begin(), x.end(), y.begin());
+}
+
+template <class T, class Allocator>
+inline
+bool
+operator!=(const vector<T,Allocator>& x, const vector<T,Allocator>& y)
+{
+	return !(x == y);
+}
+
+template <class T, class Allocator>
+inline
+bool
+operator< (const vector<T,Allocator>& x, const vector<T,Allocator>& y)
+{
+	return _STD::lexicographical_compare(x.begin(), x.end(), y.begin(), y.end());
+}
+
+template <class T, class Allocator>
+inline
+bool
+operator> (const vector<T,Allocator>& x, const vector<T,Allocator>& y)
+{
+	return y < x;
+}
+
+template <class T, class Allocator>
+inline
+bool
+operator>=(const vector<T,Allocator>& x, const vector<T,Allocator>& y)
+{
+	return !(x < y);
+}
+
+template <class T, class Allocator>
+inline
+bool
+operator<=(const vector<T,Allocator>& x, const vector<T,Allocator>& y)
+{
+	return !(y < x);
+}
+
+#ifdef _MSL_MOVE
+
+template <class T, class Allocator>
+inline
+void
+swap(vector<T,Allocator>&& x, vector<T,Allocator>& y)
+{
+	x.swap(y);
+}
+
+template <class T, class Allocator>
+inline
+void
+swap(vector<T,Allocator>& x, vector<T,Allocator>&& y)
+{
+	x.swap(y);
+}
+
+#endif  // _MSL_MOVE
+
+template <class T, class Allocator>
+inline
+void
+swap(vector<T,Allocator>& x, vector<T,Allocator>& y)
+{
+	x.swap(y);
+}
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	} // namespace std
+#endif
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	namespace Metrowerks {
+#else
+	#ifndef Metrowerks
+		#define Metrowerks
+	#endif
+#endif  // _MSL_NO_CPP_NAMESPACE
+
+template<class T, class Allocator>
+struct is_zero_default_contructible<_STD::vector<T, Allocator> >
+{
+	static const bool value = is_zero_default_contructible<Allocator>::value;
+};
+
+#ifndef _MSL_DEBUG
+
+template<class T, class Allocator>
+struct has_trivial_dtor_after_move_ctor<_STD::vector<T, Allocator> >
+{
+	static const bool value = has_trivial_dtor<Allocator>::value;
+};
+
+template<class T, class Allocator>
+struct has_trivial_move_ctor<_STD::vector<T, Allocator> >
+{
+	static const bool value = has_trivial_copy_ctor<Allocator>::value;
+};
+
+#endif  // _MSL_DEBUG
+
+template<class T, class Allocator>
+struct move_with_swap<_STD::vector<T, Allocator> >
+{
+	static const bool value = has_trivial_copy_ctor<Allocator>::value &&
+	                          has_trivial_assignment<Allocator>::value;
+};
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	}  // namespace Metrowerks
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#pragma enumsalwaysint reset
+#endif
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#pragma bool reset
+#endif
+
+#ifdef __MWERKS__
+#pragma options align=reset
+#endif
+
+#endif // RC_INVOKED
+
+#endif // _VECTOR
+
+// hh 981005 rewrote
+// hh 981208 changed static_cast to reinterpret_cast on the value_type (pointer specialization only)
+// hh 981220 Added typename to appropriate return types
+// hh 981220 Modifed some method signitures to simplified syntax
+// hh 981221 changed static_cast to reinterpret_cast on the value_type (pointer specialization only)
+// hh 990120 changed name of MSIPL flags
+// hh 990217 Specialized push_back (used to call insert)
+// hh 990222 Removed init(ForwardIterator, ForwardIterator, forward_iterator_tag) from vector<bool>.
+//           It was both incorrect and unnecessary.
+// hh 990825 changed void* to const void*
+// hh 990826 Seperated out calls involving T()
+// hh 990913 Protected bool specialization under !defined(_MSL_NO_BOOL)
+// hh 991005 Provided explicit coersions from iterator to base::iterator in vector<T*>
+// hh 991116 Fixed pointer conversion bug in T* specialization by introducing __convert_iterator
+// hh 991228 War on const& default arguments
+// hh 000130 Rewrote all but vector<bool>
+// hh 001011 Added forward declaration of vector for vector_imp
+// hh 001011 Added bool cast to compile_assert statement (made gcc happy)
+// hh 001011 Fixed several typename bugs
+// hh 001011 Forward declared vector<bool, Allocator> (made gcc happy)
+// hh 001011 Played friend games in vector<bool> to make both gcc and cw happy
+// hh 010212 Added check for max_size violations
+// hh 010221 Fixed call to deallocate in __vector_pod::init(InpIt, InpIt)
+// hh 010301 Protected min and max from macro abuse.
+// hh 010314 Qualified internal calls with std::
+// hh 010314 Added container_type typedef to vector<bool>::reference
+// hh 010402 Removed 68K CMF support
+// hh 010509 Made vector<bool>::iterator relational and difference operator's friends
+// hh 010727 Removed dependence on CHAR_BIT
+// hh 011102 Put iterators into nested classes
+// hh 011119 Installed _MSL_DEBUG and _MSL_RAW_ITERATORS
+// hh 011212 Removed incorrect try-catch block in __vector_pod::init(InpIt, InpIt)
+// hh 020505 Removed std::swap overload on vector<bool>
+// hh 020529 Changed <limits> to <msl_int_limits>
+// hh 020629 Reorganized.
+// hh 030212 Added empty check for pop_back under _MSL_DEBUG
+// hh 030527 Made pseudo movable, and pseudo move aware
+// hh 030711 Worked around friend class T problem
+// hh 030711 Worked around weak restrict_to support in gcc
+// hh 030714 Qualifed calls to memcpy, memmove, memset
+// hh 031010 Fixed bug in append_realloc for zero constructible types with non-trivial destructor
+// hh 031107 Changed growth factor from 2 to 1.5
+// hh 031202 Added expand-in-place functionality
+// hh 031217 Changed restrict_to predicate from !integral to is_input_iterator

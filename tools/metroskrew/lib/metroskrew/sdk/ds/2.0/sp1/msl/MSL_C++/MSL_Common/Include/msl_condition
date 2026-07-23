@@ -1,0 +1,592 @@
+/* MSL
+ * Copyright © 1995-2006 Freescale Corporation.  All rights reserved.
+ *
+ * $Date: 2006/02/09 16:58:54 $
+ * $Revision: 1.12.2.2 $
+ */
+
+// msl_condition
+
+//  The Metrowerks::threads interface closely follows that of boost::threads version 1.30.
+//  Many thanks to William E. Kempf for his work on this boost library.  The implementation
+//  of Metrowerks::threads does not follow the implementation of boost::threads, but
+//  has been independently developed.
+
+/*  msl_condition synopsis
+
+#include <msl_time>
+#include <msl_mutex>
+
+namespace Metrowerks
+{
+
+class condition
+{
+public:
+	condition();
+	~condition();
+
+	void notify_one();
+	void notify_all();
+	template <typename ScopedLock>
+		void wait(ScopedLock& lock);
+	template <typename ScopedLock, typename Predicate>
+		void wait(ScopedLock& lock, Predicate pred);
+	template <typename ScopedLock>
+		bool timed_wait(ScopedLock& lock, const universal_time& unv_time);
+	template <typename ScopedLock, typename Predicate>
+		bool timed_wait(ScopedLock& lock, const universal_time& unv_time, Predicate pred);
+	template <typename ScopedLock, typename Predicate>
+		bool timed_wait(ScopedLock& lock, const elapsed_time& elps_time, Predicate pred);
+private:
+	condition(const condition&);
+	condition& operator=(const condition&);
+};
+
+}  // Metrowerks
+
+*/
+
+#ifndef _MSL_CONDITION
+#define _MSL_CONDITION
+
+#include <mslconfig>
+#include <msl_mutex>
+#include <msl_int_limits>
+
+#ifndef _MSL_NO_CONDITION
+
+#ifdef _MSL_USE_PTHREADS
+
+#include <pthread.h>
+
+#endif  // _MSL_USE_PTHREADS
+
+#ifndef RC_INVOKED
+
+#ifdef __MWERKS__
+#pragma options align=native
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#if _MSL_FORCE_ENUMS_ALWAYS_INT
+		#pragma enumsalwaysint on
+	#else
+		#pragma enumsalwaysint off
+	#endif
+#endif  // _MSL_FORCE_ENUMS_ALWAYS_INT
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#if _MSL_FORCE_ENABLE_BOOL_SUPPORT
+		#pragma bool on
+	#else
+		#pragma bool off
+	#endif
+#endif  // _MSL_FORCE_ENABLE_BOOL_SUPPORT
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	namespace Metrowerks {
+#else
+	#ifndef Metrowerks
+		#define Metrowerks
+	#endif
+#endif  // _MSL_NO_CPP_NAMESPACE
+
+class
+#if defined(_MSL_USE_MPTASKS) || defined(_MSL_USE_WINTHREADS)
+_MSL_IMP_EXP_CPP
+#endif
+condition
+{
+public:
+	condition();
+	~condition();
+
+	void notify_one();
+	void notify_all();
+	template <typename ScopedLock>
+		void wait(ScopedLock& lock);
+	template <typename ScopedLock, typename Predicate>
+		void wait(ScopedLock& lock, Predicate pred);
+#ifndef _MSL_NO_TIME_SUPPORT
+	template <typename ScopedLock>
+		bool timed_wait(ScopedLock& lock, const universal_time& unv_time);
+	template <typename ScopedLock, typename Predicate>
+		bool timed_wait(ScopedLock& lock, const universal_time& unv_time, Predicate pred);
+	template <typename ScopedLock, typename Predicate>
+		bool timed_wait(ScopedLock& lock, const elapsed_time& elps_time, Predicate pred);
+#endif  // _MSL_NO_TIME_SUPPORT
+private:
+
+	condition(const condition&);
+	condition& operator=(const condition&);
+
+#ifdef _MSL_USE_PTHREADS
+	pthread_cond_t c_;
+#endif
+#ifdef _MSL_USE_MPTASKS
+	MPSemaphoreID block_lock_;
+	MPSemaphoreID block_queue_;
+	MPCriticalRegionID unblock_lock_;
+	int n_waiters_gone_;
+	int n_waiters_blocked_;
+	int n_waiters_to_unblock_;
+
+	template <class Mutex> void do_wait(Mutex& mut);
+#ifndef _MSL_NO_TIME_SUPPORT
+	template <class Mutex> bool do_timed_wait(Mutex& mut, const universal_time& unv_time);
+#endif
+
+	void prepare_wait();
+	void execute_wait();
+#ifndef _MSL_NO_TIME_SUPPORT
+	int prepare_timed_wait(const universal_time& unv_time);
+	bool execute_timed_wait(int duration);
+#endif  // _MSL_NO_TIME_SUPPORT
+#endif  // _MSL_USE_MPTASKS
+#ifdef _MSL_USE_WINTHREADS
+	HANDLE block_lock_;
+	HANDLE block_queue_;
+	CRITICAL_SECTION unblock_lock_;
+	int n_waiters_gone_;
+	int n_waiters_blocked_;
+	int n_waiters_to_unblock_;
+
+	template <class Mutex> void do_wait(Mutex& mut);
+#ifndef _MSL_NO_TIME_SUPPORT
+	template <class Mutex> bool do_timed_wait(Mutex& mut, const universal_time& unv_time);
+#endif
+
+	void prepare_wait();
+	void execute_wait();
+#ifndef _MSL_NO_TIME_SUPPORT
+	DWORD prepare_timed_wait(const universal_time& unv_time);
+	bool execute_timed_wait(DWORD milliseconds);
+#endif  // _MSL_NO_TIME_SUPPORT
+#endif  // _MSL_USE_WINTHREADS
+};
+
+#ifdef _MSL_USE_PTHREADS
+
+inline
+condition::condition()
+{
+	if (pthread_cond_init(&c_, 0))
+		detail::throw_thread_resource_error();
+}
+
+inline
+condition::~condition()
+{
+	pthread_cond_destroy(&c_);
+}
+
+inline
+void
+condition::notify_one()
+{
+	pthread_cond_signal(&c_);
+}
+
+inline
+void
+condition::notify_all()
+{
+	pthread_cond_broadcast(&c_);
+}
+
+template <typename ScopedLock>
+void
+condition::wait(ScopedLock& lock)
+{
+	if (!lock.locked())
+		detail::throw_lock_error();
+	typename ScopedLock::mutex_type& mut = lock.expose();
+	typename ScopedLock::mutex_type::state state;
+	mut.wait_prefix(state);
+	pthread_cond_wait(&c_, &mut.expose());
+	mut.wait_suffix(state);
+}
+
+template <typename ScopedLock, typename Predicate>
+void
+condition::wait(ScopedLock& lock, Predicate pred)
+{
+	if (!lock.locked())
+		detail::throw_lock_error();
+	while (!pred())
+	{
+		typename ScopedLock::mutex_type& mut = lock.expose();
+		typename ScopedLock::mutex_type::state state;
+		mut.wait_prefix(state);
+		pthread_cond_wait(&c_, &mut.expose());
+		mut.wait_suffix(state);
+	}
+}
+
+#ifndef _MSL_NO_TIME_SUPPORT
+
+template <typename ScopedLock>
+bool
+condition::timed_wait(ScopedLock& lock, const universal_time& unv_time)
+{
+	if (!lock.locked())
+		detail::throw_lock_error();
+	typename ScopedLock::mutex_type& mut = lock.expose();
+	typename ScopedLock::mutex_type::state state;
+	mut.wait_prefix(state);
+	bool result = pthread_cond_timedwait(&c_, &mut.expose(), (const timespec*)&unv_time) != ETIMEDOUT;
+	mut.wait_suffix(state);
+	return result;
+}
+
+template <typename ScopedLock, typename Predicate>
+bool
+condition::timed_wait(ScopedLock& lock, const universal_time& unv_time, Predicate pred)
+{
+	if (!lock.locked())
+		detail::throw_lock_error();
+	while (!pred())
+	{
+		typename ScopedLock::mutex_type& mut = lock.expose();
+		typename ScopedLock::mutex_type::state state;
+		mut.wait_prefix(state);
+		bool timed_out = pthread_cond_timedwait(&c_, &mut.expose(), (const timespec*)&unv_time) == ETIMEDOUT;
+		mut.wait_suffix(state);
+		if (timed_out)
+			return false;
+	}
+	return true;
+}
+
+template <typename ScopedLock, typename Predicate>
+inline
+bool
+condition::timed_wait(ScopedLock& lock, const elapsed_time& elps_time, Predicate pred)
+{
+	return timed_wait(lock, universal_time() + elps_time, pred);
+}
+
+#endif  // _MSL_NO_TIME_SUPPORT
+
+#endif  // _MSL_USE_PTHREADS
+
+#ifdef _MSL_USE_MPTASKS
+
+template <typename ScopedLock>
+void
+condition::wait(ScopedLock& lock)
+{
+	if (!lock.locked())
+		detail::throw_lock_error();
+	do_wait(lock.expose());
+}
+
+template <typename ScopedLock, typename Predicate>
+void
+condition::wait(ScopedLock& lock, Predicate pred)
+{
+	if (!lock.locked())
+		detail::throw_lock_error();
+	while (!pred())
+		do_wait(lock.expose());
+}
+
+#ifndef _MSL_NO_TIME_SUPPORT
+
+template <typename ScopedLock>
+bool
+condition::timed_wait(ScopedLock& lock, const universal_time& unv_time)
+{
+	if (!lock.locked())
+		detail::throw_lock_error();
+	return do_timed_wait(lock.expose(), unv_time);
+}
+
+template <typename ScopedLock, typename Predicate>
+bool
+condition::timed_wait(ScopedLock& lock, const universal_time& unv_time, Predicate pred)
+{
+	if (!lock.locked())
+		detail::throw_lock_error();
+	while (!pred())
+	{
+		if (do_timed_wait(lock.expose(), unv_time))
+			return false;
+	}
+	return true;
+}
+
+template <typename ScopedLock, typename Predicate>
+inline
+bool
+condition::timed_wait(ScopedLock& lock, const elapsed_time& elps_time, Predicate pred)
+{
+	return timed_wait(lock, universal_time() + elps_time, pred);
+}
+
+template <class Mutex>
+void
+condition::do_wait(Mutex& mut)
+{
+	prepare_wait();
+	mut.unlock();
+	execute_wait();
+	mut.lock();
+}
+
+template <class Mutex>
+bool
+condition::do_timed_wait(Mutex& mut, const universal_time& unv_time)
+{
+	int duration = prepare_timed_wait(unv_time);
+	mut.unlock();
+	bool timed_out = execute_timed_wait(duration);
+	mut.lock();
+	return timed_out;
+}
+
+#endif  // _MSL_NO_TIME_SUPPORT
+
+#endif  // _MSL_USE_MPTASKS
+
+#ifdef _MSL_USE_WINTHREADS
+
+template <typename ScopedLock>
+void
+condition::wait(ScopedLock& lock)
+{
+	if (!lock.locked())
+		detail::throw_lock_error();
+	do_wait(lock.expose());
+}
+
+template <typename ScopedLock, typename Predicate>
+void
+condition::wait(ScopedLock& lock, Predicate pred)
+{
+	if (!lock.locked())
+		detail::throw_lock_error();
+	while (!pred())
+		do_wait(lock.expose());
+}
+
+#ifndef _MSL_NO_TIME_SUPPORT
+
+template <typename ScopedLock>
+bool
+condition::timed_wait(ScopedLock& lock, const universal_time& unv_time)
+{
+	if (!lock.locked())
+		detail::throw_lock_error();
+	return do_timed_wait(lock.expose(), unv_time);
+}
+
+template <typename ScopedLock, typename Predicate>
+bool
+condition::timed_wait(ScopedLock& lock, const universal_time& unv_time, Predicate pred)
+{
+	if (!lock.locked())
+		detail::throw_lock_error();
+	while (!pred())
+	{
+		if (do_timed_wait(lock.expose(), unv_time))
+			return false;
+	}
+	return true;
+}
+
+template <typename ScopedLock, typename Predicate>
+inline
+bool
+condition::timed_wait(ScopedLock& lock, const elapsed_time& elps_time, Predicate pred)
+{
+	return timed_wait(lock, universal_time() + elps_time, pred);
+}
+
+template <class Mutex>
+void
+condition::do_wait(Mutex& mut)
+{
+	prepare_wait();
+	mut.unlock();
+	execute_wait();
+	mut.lock();
+}
+
+template <class Mutex>
+bool
+condition::do_timed_wait(Mutex& mut, const universal_time& unv_time)
+{
+	DWORD milliseconds = prepare_timed_wait(unv_time);
+	mut.unlock();
+	bool timed_out = execute_timed_wait(milliseconds);
+	mut.lock();
+	return timed_out;
+}
+
+#endif  // _MSL_NO_TIME_SUPPORT
+
+#endif  // _MSL_USE_WINTHREADS
+
+#ifdef _MSL_SINGLE_THREAD
+
+inline
+condition::condition()
+{
+}
+
+inline
+condition::~condition()
+{
+}
+
+inline
+void
+condition::notify_one()
+{
+}
+
+inline
+void
+condition::notify_all()
+{
+}
+
+template <typename ScopedLock>
+inline
+void
+condition::wait(ScopedLock& lock)
+{
+	if (!lock.locked())
+		detail::throw_lock_error();
+}
+
+template <typename ScopedLock, typename Predicate>
+inline
+void
+condition::wait(ScopedLock& lock, Predicate pred)
+{
+	if (!lock.locked() || !pred())
+		detail::throw_lock_error();
+}
+
+#ifndef _MSL_NO_TIME_SUPPORT
+
+template <typename ScopedLock>
+inline
+bool
+condition::timed_wait(ScopedLock& lock, const universal_time&)
+{
+	if (!lock.locked())
+		detail::throw_lock_error();
+	return true;
+}
+
+template <typename ScopedLock, typename Predicate>
+inline
+bool
+condition::timed_wait(ScopedLock& lock, const universal_time&, Predicate pred)
+{
+	if (!lock.locked())
+		detail::throw_lock_error();
+	if (!pred())
+		return false;
+	return true;
+}
+
+template <typename ScopedLock, typename Predicate>
+inline
+bool
+condition::timed_wait(ScopedLock& lock, const elapsed_time&, Predicate pred)
+{
+	if (!lock.locked())
+		detail::throw_lock_error();
+	if (!pred())
+		return false;
+	return true;
+}
+
+#endif  // _MSL_NO_TIME_SUPPORT
+
+#endif  // _MSL_SINGLE_THREAD
+
+class rw_mutex
+{
+public:
+	typedef detail::sharable_lock<rw_mutex>  sharable_lock;
+	typedef detail::upgradable_lock<rw_mutex>  upgradable_lock;
+	typedef detail::scoped_lock<rw_mutex> scoped_lock;
+	typedef detail::sharable_lock<rw_mutex>  read_lock;
+	typedef detail::scoped_lock<rw_mutex> write_lock;
+
+	rw_mutex();
+	bool invariants() const;
+private:
+	rw_mutex(const rw_mutex&);
+	rw_mutex& operator=(const rw_mutex&);
+
+	friend class sharable_lock;
+	friend class upgradable_lock;
+	friend class scoped_lock;
+	typedef try_mutex::scoped_lock private_lock;
+public:
+	void lock_sharable();
+	bool try_lock_sharable();
+	void unlock_sharable();
+
+	void lock_upgradable();
+	bool try_lock_upgradable();
+	void unlock_upgradable();
+
+	void lock();
+	bool try_lock();
+	void unlock();
+
+	void unlock_and_lock_sharable();
+	void unlock_and_lock_upgradable();
+	void unlock_upgradable_and_lock_sharable();
+	void unlock_upgradable_and_lock();
+	bool try_unlock_upgradable_and_lock();
+
+	bool try_unlock_sharable_and_lock_upgradable();
+	bool try_unlock_sharable_and_lock();
+
+private:
+	condition entry_;
+	condition first_wait_;
+	try_mutex mut_;
+
+	unsigned activity_;
+	static const unsigned write_entered_ = 1U << (sizeof(unsigned)*_STD::__char<>::bits-1);
+	static const unsigned upgradable_entered_ = write_entered_ >> 1;
+	static const unsigned entry_sleeping_ = upgradable_entered_ >> 1;
+	static const unsigned fw_sleeping_ = entry_sleeping_ >> 1;
+	static const unsigned max_readers_ = ~(write_entered_ | upgradable_entered_ |
+	                                       entry_sleeping_ | fw_sleeping_);
+};
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	} // namespace Metrowerks
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#pragma enumsalwaysint reset
+#endif
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#pragma bool reset
+#endif
+
+#ifdef __MWERKS__
+#pragma options align=reset
+#endif
+
+#endif // RC_INVOKED
+
+#endif  // _MSL_NO_CONDITION
+
+#endif  // _MSL_CONDITION
+
+// hh 030616 Created
+// hh 031202 Added rw_mutex

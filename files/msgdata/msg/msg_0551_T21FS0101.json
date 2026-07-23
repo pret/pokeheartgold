@@ -1,0 +1,30 @@
+{
+  "key": 3953,
+  "messages": [
+    {
+      "id": "msg_0551_T21FS0101_00000",
+      "en_US": [
+        "They’re fresh out of Poké Balls!\n",
+        "When will they get more of them?"
+      ]
+    },
+    {
+      "id": "msg_0551_T21FS0101_00001",
+      "en_US": [
+        "Poké Balls are in stock!\n",
+        "Now I can catch Pokémon!"
+      ]
+    },
+    {
+      "id": "msg_0551_T21FS0101_00002",
+      "en_US": [
+        "When I was walking in the tall grass,\n",
+        "a Bug-type Pokémon poisoned\f",
+        "my Pokémon!\r",
+        "I just kept going, but my Pokémon\n",
+        "nearly fainted.\r",
+        "You should keep an Antidote with you."
+      ]
+    }
+  ]
+}

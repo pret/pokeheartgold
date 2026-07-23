@@ -1,0 +1,89 @@
+{
+  "key": 49191,
+  "messages": [
+    {
+      "id": "msg_0058_D17R0110_00000",
+      "en_US": [
+        "Zuki: Yes, this is where we welcome\n",
+        "HO-OH.\r",
+        "When the dance we practiced for many\n",
+        "days becomes one with the sound of the\f",
+        "Clear Bell we entrusted to you,\r",
+        "then HO-OH shall come down from the\n",
+        "great arch of the sky once again!\r"
+      ]
+    },
+    {
+      "id": "msg_0058_D17R0110_00001",
+      "en_US": [
+        "This is all we can do for you...\n",
+        "What you do now is entirely up to you..."
+      ]
+    },
+    {
+      "id": "msg_0058_D17R0110_00002",
+      "en_US": [
+        "That IS indeed HO-OH...\n",
+        "The guardian of the sky around here\f",
+        "from ancient times...\r",
+        "So many have tried and tried, only\n",
+        "to fail...\r",
+        "{STRVAR_1 3, 0, 0}, your heart and the Clear\n",
+        "Bell in harmony have finally made\f",
+        "it appear...\r"
+      ]
+    },
+    {
+      "id": "msg_0058_D17R0110_00003",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}, don’t you see?\r",
+        "HO-OH must have been waiting for\n",
+        "someone like you all this time.\f",
+        "Wouldn’t you agree...?\r"
+      ]
+    },
+    {
+      "id": "msg_0058_D17R0110_00004",
+      "en_US": "HO-OH: Shaoooh!\r"
+    },
+    {
+      "id": "msg_0058_D17R0110_00005",
+      "en_US": [
+        "You have done a great job.\n",
+        "Say hello to Professor Elm for us."
+      ]
+    },
+    {
+      "id": "msg_0058_D17R0110_00006",
+      "en_US": [
+        "You have not only made HO-OH appear,\n",
+        "but you have also caught it...\r",
+        "You are so wonderful.\n",
+        "There is nothing more for us to say.\r",
+        "Take good care of yourself in\n",
+        "your journey..."
+      ]
+    },
+    {
+      "id": "msg_0058_D17R0110_00007",
+      "en_US": [
+        "If that is what you believe, we will not\n",
+        "try to convince you otherwise.\r",
+        "Still, if you want to see HO-OH once\n",
+        "more, perhaps you can come back here\f",
+        "after everything has been settled..."
+      ]
+    },
+    {
+      "id": "msg_0058_D17R0110_00008",
+      "en_US": [
+        "I think when you turn your back to it,\n",
+        "HO-OH will not come back for\f",
+        "some time...\r",
+        "If you want to see HO-OH, perhaps you\n",
+        "can come back here after everything\f",
+        "has been settled..."
+      ]
+    }
+  ]
+}

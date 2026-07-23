@@ -1,0 +1,24 @@
+{
+  "key": 42696,
+  "messages": [
+    {
+      "id": "msg_0754_00000",
+      "en_US": "{STRVAR_1 3, 0, 0}"
+    },
+    {
+      "id": "msg_0754_00001",
+      "en_US": "EXIT"
+    },
+    {
+      "id": "msg_0754_00002",
+      "en_US": [
+        "Do you want to stop playing with the\n",
+        "Footprint Stamp?"
+      ]
+    },
+    {
+      "id": "msg_0754_00003",
+      "en_US": "The Footprint Stamp is now closed."
+    }
+  ]
+}

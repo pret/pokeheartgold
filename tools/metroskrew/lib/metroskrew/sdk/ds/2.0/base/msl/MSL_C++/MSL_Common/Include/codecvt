@@ -1,0 +1,443 @@
+/* MSL
+ * Copyright © 1995-2006 Freescale Corporation.  All rights reserved.
+ *
+ * $Date: 2006/02/09 16:58:09 $
+ * $Revision: 1.18.2.2 $
+ */
+
+// codecvt
+
+#ifndef _CODECVT
+#define _CODECVT
+
+#include <mslconfig>
+
+#ifndef _MSL_NO_IO
+
+#ifndef _MSL_NO_LOCALE
+
+#include <localeimp>
+
+#ifndef RC_INVOKED
+
+#ifdef __MWERKS__
+#pragma options align=native
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#if _MSL_FORCE_ENUMS_ALWAYS_INT
+		#pragma enumsalwaysint on
+	#else
+		#pragma enumsalwaysint off
+	#endif
+#endif  // _MSL_FORCE_ENUMS_ALWAYS_INT
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#if _MSL_FORCE_ENABLE_BOOL_SUPPORT
+		#pragma bool on
+	#else
+		#pragma bool off
+	#endif
+#endif  // _MSL_FORCE_ENABLE_BOOL_SUPPORT
+
+#ifdef min
+#undef min
+#endif
+
+#ifdef max
+#undef max
+#endif
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	namespace std {
+#endif
+
+#ifndef _MSL_NO_LOCALE
+
+class codecvt_base
+{
+public:
+	enum result { ok, partial, error, noconv };
+};
+
+// codecvt<char, char, mbstate_t>
+
+template <>
+class _MSL_IMP_EXP_CPP codecvt<char, char, mbstate_t>
+	: public locale::facet,
+	  public codecvt_base
+{
+public:
+	typedef char  intern_type;
+	typedef char  extern_type;
+	typedef mbstate_t state_type;
+
+	explicit codecvt(size_t refs = 0);
+
+	result out(mbstate_t& state, const char* from, const char* from_end, const char*& from_next, char* to, char* to_limit, char*& to_next) const
+	           {return do_out(state, from, from_end, from_next, to, to_limit, to_next);}
+	result unshift(mbstate_t& state, char* to, char* to_limit, char*& to_next) const
+	           {return do_unshift(state, to, to_limit, to_next);}
+	result in(mbstate_t& state, const char* from, const char* from_end, const char*& from_next, char* to, char* to_limit, char*& to_next) const
+	           {return do_in(state, from, from_end, from_next, to, to_limit, to_next);}
+	int encoding() const _MSL_NO_THROW
+	        {return do_encoding();}
+	bool always_noconv() const _MSL_NO_THROW
+	         {return do_always_noconv();}
+	int length(mbstate_t& state, const char* from, const char* end, size_t max) const
+	        {return do_length(state, from, end, max);}
+	int max_length() const _MSL_NO_THROW
+	        {return do_max_length();}
+
+	static locale::id id;
+
+protected:
+	virtual ~codecvt();
+	virtual result do_out(mbstate_t& state, const char* from, const char* from_end, const char*& from_next, char* to, char* to_limit, char*& to_next) const;
+	virtual result do_in(mbstate_t& state, const char* from, const char* from_end, const char*& from_next, char* to, char* to_limit, char*& to_next) const;
+	virtual result do_unshift(mbstate_t& state, char* to, char* to_limit, char*& to_next) const;
+	virtual int do_encoding() const _MSL_NO_THROW;
+	virtual bool do_always_noconv() const _MSL_NO_THROW;
+	virtual int do_length(mbstate_t& state, const char* from, const char* end, size_t max) const;
+	virtual int do_max_length() const _MSL_NO_THROW;
+};
+
+template <> struct __facet_traits<codecvt<char, char, mbstate_t> >
+	{static const bool is_standard = true;};
+
+#if defined(__MWERKS__) && __MWERKS__ < 0x4000
+	template<>
+#endif
+	inline
+	codecvt_base::result
+	codecvt<char, char, mbstate_t>::do_out(mbstate_t&,
+		const char* from, const char*, const char*& from_next,
+		char* to, char*, char*& to_next) const
+	{
+		from_next = from;
+		to_next = to;
+		return noconv;
+	}
+
+#if defined(__MWERKS__) && __MWERKS__ < 0x4000
+	template<>
+#endif
+	inline
+	codecvt_base::result
+	codecvt<char, char, mbstate_t>::do_in(mbstate_t&,
+		const char* from, const char*, const char*& from_next,
+		char* to, char*, char*& to_next) const
+	{
+		from_next = from;
+		to_next = to;
+		return noconv;
+	}
+
+#if defined(__MWERKS__) && __MWERKS__ < 0x4000
+	template<>
+#endif
+	inline
+	codecvt_base::result
+	codecvt<char, char, mbstate_t>::do_unshift(mbstate_t&, char* to, char*, char*& to_next) const
+	{
+		to_next = to;
+		return noconv;
+	}
+
+#if defined(__MWERKS__) && __MWERKS__ < 0x4000
+	template<>
+#endif
+	inline
+	int
+	codecvt<char, char, mbstate_t>::do_encoding() const _MSL_NO_THROW
+	{
+		return 1;
+	}
+
+#if defined(__MWERKS__) && __MWERKS__ < 0x4000
+	template<>
+#endif
+	inline
+	bool
+	codecvt<char, char, mbstate_t>::do_always_noconv() const _MSL_NO_THROW
+	{
+		return true;
+	}
+
+#if defined(__MWERKS__) && __MWERKS__ < 0x4000
+	template<>
+#endif
+	inline
+	int
+	codecvt<char, char, mbstate_t>::do_length(mbstate_t&, const char* from,
+		const char* from_end, size_t max) const
+	{
+		return min(int(from_end-from), int(max));
+	}
+
+#if defined(__MWERKS__) && __MWERKS__ < 0x4000
+	template<>
+#endif
+	inline
+	int
+	codecvt<char, char, mbstate_t>::do_max_length() const _MSL_NO_THROW
+	{
+		return 1;
+	}
+
+#ifndef _MSL_NO_WCHART_CPP_SUPPORT
+
+// codecvt<wchar_t, char, mbstate_t>
+
+	template <>
+	class _MSL_IMP_EXP_CPP codecvt<wchar_t, char, mbstate_t>
+		: public locale::facet,
+		  public codecvt_base
+	{
+	public:
+		typedef wchar_t  intern_type;
+		typedef char  extern_type;
+		typedef mbstate_t state_type;
+
+		explicit codecvt(size_t refs = 0);
+
+		result out(mbstate_t& state, const wchar_t* from, const wchar_t* from_end, const wchar_t*& from_next, char* to, char* to_limit, char*& to_next) const
+		           {return do_out(state, from, from_end, from_next, to, to_limit, to_next);}
+		result unshift(mbstate_t& state, char* to, char* to_limit, char*& to_next) const
+		           {return do_unshift(state, to, to_limit, to_next);}
+		result in(mbstate_t& state, const char* from, const char* from_end, const char*& from_next, wchar_t* to, wchar_t* to_limit, wchar_t*& to_next) const
+		           {return do_in(state, from, from_end, from_next, to, to_limit, to_next);}
+		int encoding() const _MSL_NO_THROW
+		        {return do_encoding();}
+		bool always_noconv() const _MSL_NO_THROW
+		         {return do_always_noconv();}
+		int length(mbstate_t& state, const char* from, const char* end, size_t max) const
+		        {return do_length(state, from, end, max);}
+		int max_length() const _MSL_NO_THROW
+		        {return do_max_length();}
+
+		static locale::id id;
+
+	protected:
+		virtual ~codecvt() {}
+		virtual result do_out(mbstate_t& state, const wchar_t* from, const wchar_t* from_end, const wchar_t*& from_next, char* to, char* to_limit, char*& to_next) const;
+		virtual result do_in(mbstate_t& state, const char* from, const char* from_end, const char*& from_next, wchar_t* to, wchar_t* to_limit, wchar_t*& to_next) const;
+		virtual result do_unshift(mbstate_t& state, char* to, char* to_limit, char*& to_next) const;
+		virtual int do_encoding() const _MSL_NO_THROW;
+		virtual bool do_always_noconv() const _MSL_NO_THROW;
+		virtual int do_length(mbstate_t& state, const char* from, const char* end, size_t max) const;
+		virtual int do_max_length() const _MSL_NO_THROW;
+	};
+
+	template <> struct __facet_traits<codecvt<wchar_t, char, mbstate_t> >
+		{static const bool is_standard = true;};
+
+#if defined(__MWERKS__) && __MWERKS__ < 0x4000
+	template<>
+#endif
+	inline
+	codecvt_base::result
+	codecvt<wchar_t, char, mbstate_t>::do_unshift(mbstate_t&, char* to, char*, char*& to_next) const
+	{
+		to_next = to;
+		return noconv;
+	}
+
+#if defined(__MWERKS__) && __MWERKS__ < 0x4000
+	template<>
+#endif
+	inline
+	int
+	codecvt<wchar_t, char, mbstate_t>::do_encoding() const _MSL_NO_THROW
+	{
+		return sizeof(wchar_t);
+	}
+
+#if defined(__MWERKS__) && __MWERKS__ < 0x4000
+	template<>
+#endif
+	inline
+	bool
+	codecvt<wchar_t, char, mbstate_t>::do_always_noconv() const _MSL_NO_THROW
+	{
+		return true;
+	}
+
+#if defined(__MWERKS__) && __MWERKS__ < 0x4000
+	template<>
+#endif
+	inline
+	int
+	codecvt<wchar_t, char, mbstate_t>::do_length(mbstate_t&, const char* from,
+		const char* from_end, size_t max) const
+	{
+		return (int)sizeof(wchar_t)*min(int((from_end-from)/sizeof(wchar_t)), int(max));
+	}
+
+#if defined(__MWERKS__) && __MWERKS__ < 0x4000
+	template<>
+#endif
+	inline
+	int
+	codecvt<wchar_t, char, mbstate_t>::do_max_length() const _MSL_NO_THROW
+	{
+		return sizeof(wchar_t);
+	}
+
+// codecvt<internT, char, mbstate_t>
+
+	template <class internT>
+	class codecvt<internT, char, mbstate_t>
+		: public locale::facet,
+		  public codecvt_base
+	{
+	public:
+		typedef internT  intern_type;
+		typedef char  extern_type;
+		typedef mbstate_t state_type;
+
+		explicit codecvt(size_t refs = 0)
+		             : locale::facet(refs) {}
+
+		result out(mbstate_t& state, const internT* from, const internT* from_end, const internT*& from_next, char* to, char* to_limit, char*& to_next) const
+		           {return do_out(state, from, from_end, from_next, to, to_limit, to_next);}
+		result unshift(mbstate_t& state, char* to, char* to_limit, char*& to_next) const
+		           {return do_unshift(state, to, to_limit, to_next);}
+		result in(mbstate_t& state, const char* from, const char* from_end, const char*& from_next, internT* to, internT* to_limit, internT*& to_next) const
+		           {return do_in(state, from, from_end, from_next, to, to_limit, to_next);}
+		int encoding() const _MSL_NO_THROW
+		        {return do_encoding();}
+		bool always_noconv() const _MSL_NO_THROW
+		         {return do_always_noconv();}
+		int length(mbstate_t& state, const char* from, const char* end, size_t max) const
+		        {return do_length(state, from, end, max);}
+		int max_length() const _MSL_NO_THROW
+		        {return do_max_length();}
+
+		static locale::id id;
+
+	protected:
+		virtual ~codecvt() {}
+		virtual result do_out(mbstate_t& state, const internT* from, const internT* from_end, const internT*& from_next, char* to, char* to_limit, char*& to_next) const;
+		virtual result do_in(mbstate_t& state, const char* from, const char* from_end, const char*& from_next, internT* to, internT* to_limit, internT*& to_next) const;
+		virtual result do_unshift(mbstate_t& state, char* to, char* to_limit, char*& to_next) const;
+		virtual int do_encoding() const _MSL_NO_THROW;
+		virtual bool do_always_noconv() const _MSL_NO_THROW;
+		virtual int do_length(mbstate_t& state, const char* from, const char* end, size_t max) const;
+		virtual int do_max_length() const _MSL_NO_THROW;
+	};
+
+	template <class internT>
+	locale::id codecvt<internT, char, mbstate_t>::id;
+
+	template <class internT> struct __facet_traits<codecvt<internT, char, mbstate_t> >
+		{static const bool is_standard = true;};
+
+	template <class internT>
+	codecvt_base::result
+	codecvt<internT, char, mbstate_t>::do_out(mbstate_t&,
+		const internT* from, const internT* from_end, const internT*& from_next,
+		char* to, char* to_limit, char*& to_next) const
+	{
+		for (from_next = from, to_next = to; from_next < from_end && to_next < to_limit - (sizeof(internT)-1); ++from_next, to_next += sizeof(internT))
+		{
+			const char* p = (const char*)from_next;
+			for (int i = 0; i < sizeof(internT); ++i, ++p)
+				to_next[i] = *p;
+		}
+		if (from_next < from_end)
+			return partial;
+		return ok;
+	}
+
+	template <class internT>
+	codecvt_base::result
+	codecvt<internT, char, mbstate_t>::do_in(mbstate_t&,
+		const char* from, const char* from_end, const char*& from_next,
+		internT* to, internT* to_limit, internT*& to_next) const
+	{
+		for (from_next = from, to_next = to; from_next < from_end - (sizeof(internT)-1) && to_next < to_limit; from_next += sizeof(internT), ++to_next)
+		{
+			char* p = (char*)to_next;
+			for (int i = 0; i < sizeof(internT); ++i, ++p)
+				*p = from_next[i];
+		}
+		if (from_next < from_end)
+			return partial;
+		return ok;
+	}
+
+	template<class internT>
+	inline
+	codecvt_base::result
+	codecvt<internT, char, mbstate_t>::do_unshift(mbstate_t&, char* to, char*, char*& to_next) const
+	{
+		to_next = to;
+		return noconv;
+	}
+
+	template<class internT>
+	inline
+	int
+	codecvt<internT, char, mbstate_t>::do_encoding() const _MSL_NO_THROW
+	{
+		return sizeof(internT);
+	}
+
+	template<class internT>
+	inline
+	bool
+	codecvt<internT, char, mbstate_t>::do_always_noconv() const _MSL_NO_THROW
+	{
+		return true;
+	}
+
+	template<class internT>
+	inline
+	int
+	codecvt<internT, char, mbstate_t>::do_length(mbstate_t&, const char* from,
+		const char* from_end, size_t max) const
+	{
+		return (int)sizeof(internT)*min(int((from_end-from)/sizeof(internT)), int(max));
+	}
+
+	template<class internT>
+	inline
+	int
+	codecvt<internT, char, mbstate_t>::do_max_length() const _MSL_NO_THROW
+	{
+		return sizeof(internT);
+	}
+
+#endif  // _MSL_NO_WCHART_CPP_SUPPORT
+
+#endif  // _MSL_NO_LOCALE
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	} // namespace std
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#pragma enumsalwaysint reset
+#endif
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#pragma bool reset
+#endif
+
+#ifdef __MWERKS__
+#pragma options align=reset
+#endif
+
+#endif // RC_INVOKED
+
+#endif  // _MSL_NO_LOCALE
+
+#endif  // _MSL_NO_IO
+
+#endif  // _CODECVT
+
+// hh 010228 Created
+// hh 010402 Removed 68K CMF support
+// hh 030416 Modified to put locale into shared libs
+// hh 030711 Protected template<> from gcc

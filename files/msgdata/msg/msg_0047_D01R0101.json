@@ -1,0 +1,165 @@
+{
+  "key": 9218,
+  "messages": [
+    {
+      "id": "msg_0047_D01R0101_00000",
+      "en_US": [
+        "A bunch of DIGLETT popped out of the\n",
+        "ground! That was surprising!"
+      ]
+    },
+    {
+      "id": "msg_0047_D01R0101_00001",
+      "en_US": [
+        "Brock: Small spaces surrounded by\n",
+        "rocks make you feel peaceful,\f",
+        "don’t you agree?\r",
+        "By the way, do you want to\n",
+        "exchange numbers? {YESNO 0}\n"
+      ]
+    },
+    {
+      "id": "msg_0047_D01R0101_00002",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} registered Brock\n",
+        "in the Pokégear!"
+      ]
+    },
+    {
+      "id": "msg_0047_D01R0101_00003",
+      "en_US": [
+        "Brock: I would love to have a Pokémon\n",
+        "battle against you!\f",
+        "Give me a call on Saturday nights!"
+      ]
+    },
+    {
+      "id": "msg_0047_D01R0101_00004",
+      "en_US": [
+        "Brock: I see... How disappointing.\n",
+        "I would love to have a Pokémon battle\f",
+        "against you..."
+      ]
+    },
+    {
+      "id": "msg_0047_D01R0101_00005",
+      "en_US": "Brock: Can we exchange numbers? {YESNO 0}"
+    },
+    {
+      "id": "msg_0047_D01R0101_00006",
+      "en_US": [
+        "Brock: Hey, you! Why don’t you\n",
+        "take a picture with me? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0047_D01R0101_00007",
+      "en_US": [
+        "Brock: All righty!\n",
+        "Stand next to me and relax!\r"
+      ]
+    },
+    {
+      "id": "msg_0047_D01R0101_00008",
+      "en_US": [
+        "Brock: Yes!\n",
+        "Another great memory!"
+      ]
+    },
+    {
+      "id": "msg_0047_D01R0101_00009",
+      "en_US": [
+        "Brock: Well...\n",
+        "That’s OK."
+      ]
+    },
+    {
+      "id": "msg_0047_D01R0101_00010",
+      "en_US": [
+        "Your Photo Album is full.\r",
+        "Access your PC and delete\n",
+        "some pictures."
+      ]
+    },
+    {
+      "id": "msg_0047_D01R0101_00011",
+      "en_US": [
+        "Brock: Hi, {STRVAR_1 3, 0, 0}!\n",
+        "Have you seen a Pokémon called BONSLY?\r",
+        "They say you have to get it from\n",
+        "an Egg...\r",
+        "I am having a hard time finding one.\n",
+        "If you happen to have a BONSLY,\f",
+        "could you trade it for my RHYHORN? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0047_D01R0101_00012",
+      "en_US": [
+        "Brock: Hi, {STRVAR_1 3, 0, 0}!\n",
+        "Have you seen a Pokémon called BONSLY?\r",
+        "They say you have to get it from an\n",
+        "Egg...\r",
+        "I am having a hard time finding one.\n",
+        "If you happen to have a BONSLY,\f",
+        "could you trade it for my RHYHORN? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0047_D01R0101_00013",
+      "en_US": [
+        "Brock: All right!\n",
+        "Let’s trade!\r"
+      ]
+    },
+    {
+      "id": "msg_0047_D01R0101_00014",
+      "en_US": [
+        "Brock: I thought you might have one,\n",
+        "but I guess it’s not that easy...\r",
+        "If you find one, remember to trade\n",
+        "with me, OK?"
+      ]
+    },
+    {
+      "id": "msg_0047_D01R0101_00015",
+      "en_US": [
+        "Brock: I am looking for BONSLY.\n",
+        "Are you saying you’ll trade\f",
+        "it for my RHYHORN? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0047_D01R0101_00016",
+      "en_US": [
+        "Brock: Thank you!\n",
+        "I have been looking for BONSLY!\r",
+        "The RHYHORN I gave you knows the move\n",
+        "Thunder Fang! I trained it from an Egg.\r",
+        "I’m so proud of it, because it can\n",
+        "take down Water-type Pokémon, which\f",
+        "usually are a tough matchup.\r",
+        "Take good care of it for me!"
+      ]
+    },
+    {
+      "id": "msg_0047_D01R0101_00017",
+      "en_US": [
+        "Brock: That RHYHORN I gave you knows\n",
+        "Thunder Fang! I trained it from an Egg.\r",
+        "I’m so proud of it, because it can\n",
+        "take down Water-type Pokémon, which\f",
+        "usually are a tough matchup.\r",
+        "Take good care of it for me!\n",
+        "\n"
+      ]
+    },
+    {
+      "id": "msg_0047_D01R0101_00018",
+      "en_US": [
+        "Brock: Hey, now!\n",
+        "That is not a BONSLY!"
+      ]
+    }
+  ]
+}

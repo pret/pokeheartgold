@@ -1,0 +1,764 @@
+/* MSL
+ * Copyright © 1995-2006 Freescale Corporation.  All rights reserved.
+ *
+ * $Date: 2006/02/09 16:58:18 $
+ * $Revision: 1.35.2.2 $
+ */
+
+// fstream
+
+#ifndef _FSTREAM
+#define _FSTREAM
+
+/*  fstream synopsis
+
+namespace std
+{
+
+template <class charT, class traits = char_traits<charT> >
+class basic_filebuf
+	: public basic_streambuf<charT,traits>
+{
+public:
+	typedef charT                     char_type;
+	typedef typename traits::int_type int_type;
+	typedef typename traits::pos_type pos_type;
+	typedef typename traits::off_type off_type;
+	typedef traits                    traits_type;
+
+	//  lib.filebuf.cons Constructors/destructor:
+	basic_filebuf();
+	virtual ~basic_filebuf();
+
+	//  lib.filebuf.members Members:
+	bool is_open() const;
+	basic_filebuf<charT,traits>* open(const char* s, ios_base::openmode mode);
+#ifdef _MSL_WIDE_FILENAME
+	basic_filebuf* open(const wchar_t* s, ios_base::openmode mode);
+#endif
+	basic_filebuf<charT,traits>* close();
+
+protected:
+	//  lib.filebuf.virtuals Overridden virtual functions:
+	virtual streamsize showmanyc();
+	virtual int_type underflow();
+	virtual int_type uflow();
+	virtual int_type pbackfail(int_type c = traits::eof());
+	virtual int_type overflow (int_type c = traits::eof());
+
+	virtual basic_streambuf<charT,traits>* setbuf(char_type* s, streamsize n);
+	virtual pos_type seekoff(off_type off, ios_base::seekdir way,
+	                                      ios_base::openmode which = ios_base::in | ios_base::out);
+	virtual pos_type seekpos(pos_type sp, ios_base::openmode which = ios_base::in | ios_base::out);
+	virtual int      sync();
+	virtual void     imbue(const locale& loc);
+};
+
+typedef basic_filebuf<char>    filebuf;
+typedef basic_filebuf<wchar_t> wfilebuf;
+
+template <class charT, class traits = char_traits<charT> >
+class basic_ifstream
+	: public basic_istream<charT,traits>
+{
+public:
+	typedef charT                     char_type;
+	typedef typename traits::int_type int_type;
+	typedef typename traits::pos_type pos_type;
+	typedef typename traits::off_type off_type;
+	typedef traits                    traits_type;
+
+	//  lib.ifstream.cons Constructors:
+	basic_ifstream();
+	explicit basic_ifstream(const char* s, ios_base::openmode mode = ios_base::in);
+
+	//  lib.ifstream.members Members:
+	basic_filebuf<charT,traits>* rdbuf() const;
+
+	bool is_open() const;
+	void open(const char* s, ios_base::openmode mode = ios_base::in);
+	void close();
+
+#ifdef _MSL_WIDE_FILENAME
+	explicit basic_ifstream(const wchar_t* s, ios_base::openmode mode = ios_base::in);
+	void open(const wchar_t* s, ios_base::openmode mode = ios_base::in);
+#endif  // _MSL_WIDE_FILENAME
+};
+
+typedef basic_ifstream<char>    ifstream;
+typedef basic_ifstream<wchar_t> wifstream;
+
+template <class charT, class traits = char_traits<charT> >
+class basic_ofstream
+	: public basic_ostream<charT,traits>
+{
+public:
+	typedef charT                     char_type;
+	typedef typename traits::int_type int_type;
+	typedef typename traits::pos_type pos_type;
+	typedef typename traits::off_type off_type;
+	typedef traits                    traits_type;
+
+	//  lib.ofstream.cons Constructors:
+	basic_ofstream();
+	explicit basic_ofstream(const char* s, ios_base::openmode mode = ios_base::out);
+
+	//  lib.ofstream.members Members:
+	basic_filebuf<charT,traits>* rdbuf() const;
+
+	bool is_open() const;
+	void open(const char* s, ios_base::openmode mode = ios_base::out);
+	void close();
+
+#ifdef _MSL_WIDE_FILENAME
+	explicit basic_ofstream(const wchar_t* s, ios_base::openmode mode = ios_base::out);
+	void open(const wchar_t* s, ios_base::openmode mode = ios_base::out);
+#endif  // _MSL_WIDE_FILENAME
+};
+
+typedef basic_ofstream<char>    ofstream;
+typedef basic_ofstream<wchar_t> wofstream;
+
+template <class charT, class traits = char_traits<charT> >
+class basic_fstream
+	: public basic_iostream<charT,traits>
+{
+public:
+	typedef charT                     char_type;
+	typedef typename traits::int_type int_type;
+	typedef typename traits::pos_type pos_type;
+	typedef typename traits::off_type off_type;
+	typedef traits                    traits_type;
+
+	//  constructors/destructor
+	basic_fstream();
+	explicit basic_fstream(const char* s, ios_base::openmode mode = ios_base::in|ios_base::out);
+
+	//  Members:
+	basic_filebuf<charT,traits>* rdbuf() const;
+	bool is_open() const;
+	void open(const char* s, ios_base::openmode mode = ios_base::in|ios_base::out);
+	void close();
+
+#ifdef _MSL_WIDE_FILENAME
+	explicit basic_fstream(const wchar_t* s, ios_base::openmode mode = ios_base::in | ios_base::out);
+	void open(const wchar_t* s, ios_base::openmode mode = ios_base::in | ios_base::out);
+#endif  // _MSL_WIDE_FILENAME
+};
+
+typedef basic_fstream<char>     fstream;
+typedef basic_fstream<wchar_t> wfstream;
+
+}  // std
+*/
+
+#include <mslconfig>
+
+#if !(defined(_MSL_NO_CONSOLE_IO) && defined(_MSL_NO_FILE_IO))
+
+#include <ostream>
+#include <istream>
+
+#ifdef _MSL_CFILE_STREAM
+	#include <msl_c_filebuf>
+#endif
+
+#ifdef _MSL_POSIX_STREAM
+	#include <msl_posixbuf>
+#endif
+
+#ifndef RC_INVOKED
+
+#ifdef __MWERKS__
+#pragma options align=native
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#if _MSL_FORCE_ENUMS_ALWAYS_INT
+		#pragma enumsalwaysint on
+	#else
+		#pragma enumsalwaysint off
+	#endif
+#endif  // _MSL_FORCE_ENUMS_ALWAYS_INT
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#if _MSL_FORCE_ENABLE_BOOL_SUPPORT
+		#pragma bool on
+	#else
+		#pragma bool off
+	#endif
+#endif  // _MSL_FORCE_ENABLE_BOOL_SUPPORT
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	namespace std {
+#endif
+
+#ifndef _MSL_NO_FILE_IO
+
+template <class charT, class traits>
+class basic_filebuf
+#ifdef _MSL_CFILE_STREAM
+	: public Metrowerks::c_filebuf<charT, traits>
+#endif
+#ifdef _MSL_POSIX_STREAM
+	: public Metrowerks::posixbuf<charT, traits>
+#endif
+{
+#ifdef _MSL_CFILE_STREAM
+	typedef Metrowerks::c_filebuf<charT, traits> base;
+#endif
+#ifdef _MSL_POSIX_STREAM
+	typedef Metrowerks::posixbuf<charT, traits> base;
+#endif
+public:
+	typedef charT                     char_type;
+	typedef typename traits::int_type int_type;
+	typedef typename traits::pos_type pos_type;
+	typedef typename traits::off_type off_type;
+	typedef traits                    traits_type;
+
+	explicit basic_filebuf() {}
+#ifdef _MSL_CFILE_STREAM
+	// Nonstandard
+	explicit basic_filebuf(FILE* file) : base(file) {}
+#endif  // _MSL_CFILE_STREAM
+#ifdef _MSL_MOVE
+	basic_filebuf(basic_filebuf&& rhs) : base(_STD::move(rhs)) {}
+	basic_filebuf& operator=(basic_filebuf&& rhs) {swap(rhs); return *this;}
+	void swap(basic_filebuf&& rhs) {base::swap(rhs);}
+#endif  // _MSL_MOVE
+
+
+	basic_filebuf* open(const char* s, ios_base::openmode mode)
+		{return (basic_filebuf*)base::open(s, mode);}
+#ifdef _MSL_WIDE_FILENAME
+	basic_filebuf* open(const wchar_t* s, ios_base::openmode mode)
+		{return (basic_filebuf*)base::open(s, mode);}
+#endif  // _MSL_WIDE_FILENAME
+	basic_filebuf* close() {return (basic_filebuf*)base::close();}
+};
+
+#ifdef _MSL_MOVE
+
+template <class charT, class traits>
+inline
+void
+swap(basic_filebuf<charT, traits>& x, basic_filebuf<charT, traits>& y)
+{x.swap(y);}
+
+template <class charT, class traits>
+inline
+void
+swap(basic_filebuf<charT, traits>&& x, basic_filebuf<charT, traits>& y)
+{x.swap(y);}
+
+template <class charT, class traits>
+inline
+void
+swap(basic_filebuf<charT, traits>& x, basic_filebuf<charT, traits>&& y)
+{x.swap(y);}
+
+#endif  // _MSL_MOVE
+
+template <class charT, class traits>
+class basic_ifstream
+	: public basic_istream<charT, traits>
+{
+	typedef basic_istream<charT, traits> base;
+public:
+	typedef charT                     char_type;
+	typedef typename traits::int_type int_type;
+	typedef typename traits::pos_type pos_type;
+	typedef typename traits::off_type off_type;
+	typedef traits                    traits_type;
+
+	//  lib.ifstream.cons Constructors:
+	basic_ifstream();
+	explicit basic_ifstream(const char* s, ios_base::openmode mode = ios_base::in);
+
+#ifdef _MSL_MOVE
+	basic_ifstream(basic_ifstream& rhs);
+	basic_ifstream& operator=(basic_ifstream& rhs);
+	void swap(basic_ifstream&& rhs);
+#endif  // _MSL_MOVE
+
+	//  lib.ifstream.members Members:
+	basic_filebuf<charT, traits>* rdbuf() const;
+
+	bool is_open() const;
+	void open(const char* s, ios_base::openmode mode = ios_base::in);
+	void close();
+
+#ifdef _MSL_WIDE_FILENAME
+	explicit basic_ifstream(const wchar_t* s, ios_base::openmode mode = ios_base::in);
+	void open(const wchar_t* s, ios_base::openmode mode = ios_base::in);
+#endif  // _MSL_WIDE_FILENAME
+private:
+	basic_filebuf<charT, traits> sb_;
+};
+
+template <class charT, class traits>
+basic_ifstream<charT, traits>::basic_ifstream()
+	: base(&sb_)
+{
+}
+
+template <class charT, class traits>
+basic_ifstream<charT, traits>::basic_ifstream(const char* s, ios_base::openmode mode)
+	: basic_istream<charT, traits>(&sb_)
+{
+	if (rdbuf()->open(s, ios_base::openmode(mode | ios_base::in)) == 0)
+		base::setstate(ios_base::failbit);
+}
+
+#ifdef _MSL_MOVE
+
+template <class charT, class traits>
+inline
+basic_ifstream<charT, traits>::basic_ifstream(basic_ifstream& rhs)
+	: basic_istream<charT, traits>(_STD::move(rhs)),
+	  sb_(_STD::move(rhs.sb_))
+{
+	basic_istream<charT,traits>::set_rdbuf(&sb_);
+}
+
+template <class charT, class traits>
+inline
+basic_ifstream<charT, traits>&
+basic_ifstream<charT, traits>::operator=(basic_ifstream& rhs)
+{
+	swap(rhs);
+	return *this;
+}
+
+template <class charT, class traits>
+inline
+void
+basic_ifstream<charT, traits>::swap(basic_ifstream&& rhs)
+{
+	basic_istream<charT,traits>::swap(rhs);
+	sb_.swap(rhs.sb_);
+}
+
+template <class charT, class traits>
+inline
+void
+swap(basic_ifstream<charT, traits>& x, basic_ifstream<charT, traits>& y)
+{x.swap(y);}
+
+template <class charT, class traits>
+inline
+void
+swap(basic_ifstream<charT, traits>&& x, basic_ifstream<charT, traits>& y)
+{x.swap(y);}
+
+template <class charT, class traits>
+inline
+void
+swap(basic_ifstream<charT, traits>& x, basic_ifstream<charT, traits>&& y)
+{x.swap(y);}
+
+#endif  // _MSL_MOVE
+
+template <class charT, class traits>
+inline
+basic_filebuf<charT, traits>*
+basic_ifstream<charT, traits>::rdbuf() const
+{
+	return const_cast<basic_filebuf<charT, traits>*>(&sb_);
+}
+
+template <class charT, class traits>
+inline
+bool
+basic_ifstream<charT, traits>::is_open() const
+{
+	return rdbuf()->is_open();
+}
+
+template <class charT, class traits>
+inline
+void
+basic_ifstream<charT, traits>::open(const char* s, ios_base::openmode mode)
+{
+	if (rdbuf()->open(s, ios_base::openmode(mode | ios_base::in)) == 0)
+		base::setstate(ios_base::failbit);
+	else
+		base::clear();
+}
+
+template <class charT, class traits>
+inline
+void
+basic_ifstream<charT, traits>::close()
+{
+	if (rdbuf()->close() == 0)
+		base::setstate(ios_base::failbit);
+}
+
+#ifdef _MSL_WIDE_FILENAME
+
+template <class charT, class traits>
+basic_ifstream<charT, traits>::basic_ifstream(const wchar_t* s, ios_base::openmode mode)
+	: basic_istream<charT, traits>(&sb_)
+{
+	if (rdbuf()->open(s, ios_base::openmode(mode | ios_base::in)) == 0)
+		base::setstate(ios_base::failbit);
+}
+
+template <class charT, class traits>
+inline
+void
+basic_ifstream<charT, traits>::open(const wchar_t* s, ios_base::openmode mode)
+{
+	if (rdbuf()->open(s, ios_base::openmode(mode | ios_base::in)) == 0)
+		base::setstate(ios_base::failbit);
+	else
+		base::clear();
+}
+
+#endif  // _MSL_WIDE_FILENAME
+
+template <class charT, class traits>
+class basic_ofstream
+	: public basic_ostream<charT, traits>
+{
+	typedef basic_ostream<charT, traits> base;
+public:
+	typedef charT                     char_type;
+	typedef typename traits::int_type int_type;
+	typedef typename traits::pos_type pos_type;
+	typedef typename traits::off_type off_type;
+	typedef traits                    traits_type;
+
+	//  lib.ofstream.cons Constructors:
+	basic_ofstream();
+	explicit basic_ofstream(const char* s, ios_base::openmode mode = ios_base::out);
+
+#ifdef _MSL_MOVE
+	basic_ofstream(basic_ofstream&& rhs);
+	basic_ofstream& operator=(basic_ofstream&& rhs);
+	void swap(basic_ofstream&& rhs);
+#endif  // _MSL_MOVE
+
+	//  lib.ofstream.members Members:
+	basic_filebuf<charT,traits>* rdbuf() const;
+
+	bool is_open() const;
+	void open(const char* s, ios_base::openmode mode = ios_base::out);
+	void close();
+
+#ifdef _MSL_WIDE_FILENAME
+	explicit basic_ofstream(const wchar_t* s, ios_base::openmode mode = ios_base::out);
+	void open(const wchar_t* s, ios_base::openmode mode = ios_base::out);
+#endif  // _MSL_WIDE_FILENAME
+private:
+	basic_filebuf<charT, traits> sb_;
+};
+
+template <class charT, class traits>
+basic_ofstream<charT, traits>::basic_ofstream()
+	: basic_ostream<charT, traits>(&sb_)
+{
+}
+
+template <class charT, class traits>
+basic_ofstream<charT, traits>::basic_ofstream(const char* s, ios_base::openmode mode)
+	: basic_ostream<charT, traits>(&sb_)
+{
+	if (rdbuf()->open(s, ios_base::openmode(mode | ios_base::out)) == 0)
+		base::setstate(ios_base::failbit);
+}
+
+#ifdef _MSL_MOVE
+
+template <class charT, class traits>
+inline
+basic_ofstream<charT, traits>::basic_ofstream(basic_ofstream&& rhs)
+	: basic_ostream<charT,traits>(_STD::move(rhs)),
+	  sb_(_STD::move(rhs.sb_))
+{
+	basic_ostream<charT,traits>::set_rdbuf(&sb_);
+}
+
+template <class charT, class traits>
+inline
+basic_ofstream<charT, traits>&
+basic_ofstream<charT, traits>::operator=(basic_ofstream&& rhs)
+{
+	swap(rhs);
+	return *this;
+}
+
+template <class charT, class traits>
+inline
+void
+basic_ofstream<charT, traits>::swap(basic_ofstream&& rhs)
+{
+	basic_ostream<charT,traits>::swap(rhs);
+	sb_.swap(rhs.sb_);
+}
+
+template <class charT, class traits>
+inline
+void
+swap(basic_ofstream<charT, traits>& x, basic_ofstream<charT, traits>& y) {x.swap(y);}
+
+template <class charT, class traits>
+inline
+void
+swap(basic_ofstream<charT, traits>&& x, basic_ofstream<charT, traits>& y) {x.swap(y);}
+
+template <class charT, class traits>
+inline
+void
+swap(basic_ofstream<charT, traits>& x, basic_ofstream<charT, traits>&& y) {x.swap(y);}
+
+#endif  // _MSL_MOVE
+
+template <class charT, class traits>
+inline
+basic_filebuf<charT,traits>*
+basic_ofstream<charT, traits>::rdbuf() const
+{
+	return const_cast<basic_filebuf<charT, traits>*>(&sb_);
+}
+
+template <class charT, class traits>
+inline
+bool
+basic_ofstream<charT, traits>::is_open() const
+{
+	return rdbuf()->is_open();
+}
+
+template <class charT, class traits>
+inline
+void
+basic_ofstream<charT, traits>::open(const char* s, ios_base::openmode mode)
+{
+	if (rdbuf()->open(s, ios_base::openmode(mode | ios_base::out)) == 0)
+		base::setstate(ios_base::failbit);
+	else
+		base::clear();
+}
+
+template <class charT, class traits>
+inline
+void
+basic_ofstream<charT, traits>::close()
+{
+	if (rdbuf()->close() == 0)
+		base::setstate(ios_base::failbit);
+}
+
+#ifdef _MSL_WIDE_FILENAME
+
+template <class charT, class traits>
+basic_ofstream<charT, traits>::basic_ofstream(const wchar_t* s, ios_base::openmode mode)
+	: basic_ostream<charT, traits>(&sb_)
+{
+	if (rdbuf()->open(s, ios_base::openmode(mode | ios_base::out)) == 0)
+		base::setstate(ios_base::failbit);
+}
+
+template <class charT, class traits>
+inline
+void
+basic_ofstream<charT, traits>::open(const wchar_t* s, ios_base::openmode mode)
+{
+	if (rdbuf()->open(s, ios_base::openmode(mode | ios_base::out)) == 0)
+		base::setstate(ios_base::failbit);
+	else
+		base::clear();
+}
+
+#endif  // _MSL_WIDE_FILENAME
+
+template <class charT, class traits>
+class basic_fstream
+	: public basic_iostream<charT, traits>
+{
+	typedef basic_iostream<charT, traits> base;
+public:
+	typedef charT                     char_type;
+	typedef typename traits::int_type int_type;
+	typedef typename traits::pos_type pos_type;
+	typedef typename traits::off_type off_type;
+	typedef traits                    traits_type;
+
+	//  constructors/destructor
+	basic_fstream();
+	explicit basic_fstream(const char* s, ios_base::openmode mode = ios_base::in | ios_base::out);
+
+#ifdef _MSL_MOVE
+	basic_fstream(basic_fstream&& rhs);
+	basic_fstream& operator=(basic_fstream&& rhs);
+	void swap(basic_fstream&& rhs);
+#endif  // _MSL_MOVE
+
+	//  Members:
+	basic_filebuf<charT,traits>* rdbuf() const;
+	bool is_open() const;
+	void open(const char* s, ios_base::openmode mode = ios_base::in | ios_base::out);
+	void close();
+
+#ifdef _MSL_WIDE_FILENAME
+	explicit basic_fstream(const wchar_t* s, ios_base::openmode mode = ios_base::in | ios_base::out);
+	void open(const wchar_t* s, ios_base::openmode mode = ios_base::in | ios_base::out);
+#endif  // _MSL_WIDE_FILENAME
+private:
+	basic_filebuf<charT, traits> sb_;
+};
+
+template <class charT, class traits>
+basic_fstream<charT, traits>::basic_fstream()
+	: basic_iostream<charT, traits>(&sb_)
+{
+}
+
+template <class charT, class traits>
+basic_fstream<charT, traits>::basic_fstream(const char* s, ios_base::openmode mode)
+	: basic_iostream<charT, traits>(&sb_)
+{
+	if (rdbuf()->open(s, mode) == 0)
+		base::setstate(ios_base::failbit);
+}
+
+#ifdef _MSL_MOVE
+
+template <class charT, class traits>
+inline
+basic_fstream<charT, traits>::basic_fstream(basic_fstream&& rhs)
+	: basic_iostream<charT,traits>(_STD::move(rhs)),
+	  sb_(_STD::move(rhs.sb_))
+{
+	basic_istream<charT,traits>::set_rdbuf(&sb_);
+}
+
+template <class charT, class traits>
+inline
+basic_fstream<charT, traits>&
+basic_fstream<charT, traits>::operator=(basic_fstream&& rhs)
+{
+	swap(rhs);
+	return *this;
+}
+
+template <class charT, class traits>
+inline
+void
+basic_fstream<charT, traits>::swap(basic_fstream&& rhs)
+{
+	basic_iostream<charT,traits>::swap(rhs);
+	sb_.swap(rhs.sb_);
+}
+
+#endif  // _MSL_MOVE
+
+template <class charT, class traits>
+inline
+basic_filebuf<charT,traits>*
+basic_fstream<charT, traits>::rdbuf() const
+{
+	return const_cast<basic_filebuf<charT, traits>*>(&sb_);
+}
+
+template <class charT, class traits>
+inline
+bool
+basic_fstream<charT, traits>::is_open() const
+{
+	return rdbuf()->is_open();
+}
+
+template <class charT, class traits>
+inline
+void
+basic_fstream<charT, traits>::open(const char* s, ios_base::openmode mode)
+{
+	if (rdbuf()->open(s, mode) == 0)
+		base::setstate(ios_base::failbit);
+	else
+		base::clear();
+}
+
+template <class charT, class traits>
+inline
+void
+basic_fstream<charT, traits>::close()
+{
+	if (rdbuf()->close() == 0)
+		base::setstate(ios_base::failbit);
+}
+
+#ifdef _MSL_WIDE_FILENAME
+
+template <class charT, class traits>
+basic_fstream<charT, traits>::basic_fstream(const wchar_t* s, ios_base::openmode mode)
+	: basic_iostream<charT, traits>(&sb_)
+{
+	if (rdbuf()->open(s, mode) == 0)
+		base::setstate(ios_base::failbit);
+}
+
+template <class charT, class traits>
+inline
+void
+basic_fstream<charT, traits>::open(const wchar_t* s, ios_base::openmode mode)
+{
+	if (rdbuf()->open(s, mode) == 0)
+		base::setstate(ios_base::failbit);
+	else
+		base::clear();
+}
+
+#endif  // _MSL_WIDE_FILENAME
+
+#endif  // _MSL_NO_FILE_IO
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	} // namespace std
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#pragma enumsalwaysint reset
+#endif
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#pragma bool reset
+#endif
+
+#ifdef __MWERKS__
+#pragma options align=reset
+#endif
+
+#endif // RC_INVOKED
+
+#endif // !(defined(_MSL_NO_CONSOLE_IO) && defined(_MSL_NO_FILE_IO))
+
+#endif // _FSTREAM
+
+// hh 971220 fixed MOD_INCLUDE
+// hh 971221 Changed filename from fstream.h to fstream
+// hh 971221 Made include guards standard
+// hh 971229 deleted unused arguments from setbuf
+// hh 971230 added RC_INVOKED wrapper
+// hh 980108 added explicit bool cast in case it is typedefed to int in is_open
+// hh 980129 changed to <istream> from <iostream>
+// hh 981220 Added typename to appropriate return types
+// hh 990104 Rewrote
+// hh 990929 Reset input buffer in basic_filebuf::close.
+// hh 991213 Fixed duplicated declaration of codecvt_base::result r in two places.
+// hh 000130 Installed _MSL_NO_LOCALE
+// hh 000604 Added buffering cabability to basic_filebuf.  Can be turned on/off with setbuf.
+// hh 000824 Added to_int_type() cast in uflow()
+// hh 001011 Fixed several typename bugs
+// hh 001011 Fixed bug several places:  base class missing template arguments
+// hh 010125 Fixed bug in processing state dependent codecvt
+// hh 010212 Installed _MSL_NO_FILE_IO
+// hh 010402 Removed 68K CMF support
+// hh 010820 Added cast to pbump calls
+// hh 011010 Optimized calls to putc and getc when using MSL C
+// hh 021028 Made is_open const
+// hh 040401 Implemented lwg 409

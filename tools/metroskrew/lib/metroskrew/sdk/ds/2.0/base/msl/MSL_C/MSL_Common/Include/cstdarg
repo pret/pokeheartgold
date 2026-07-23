@@ -1,0 +1,81 @@
+/* MSL
+ * Copyright © 1995-2006 Freescale Corporation.  All rights reserved.
+ *
+ * $Date: 2006/02/08 20:32:43 $
+ * $Revision: 1.47.2.2 $
+ */
+
+#ifndef _MSL_CSTDARG
+#define _MSL_CSTDARG
+
+#include <ansi_parms.h>
+
+#if !_MSL_USING_MW_C_HEADERS
+	#include <stdarg.h>
+	
+	#if _MSL_PUT_THIRD_PARTY_C_IN_STD
+		#include <msl_cpp_std_stdarg.h>
+	#endif
+#else
+
+#include <va_list.h>
+
+#if __dest_os == __mac_os || __dest_os == __mac_os_x
+	#include <stdarg.mac.h>
+#elif __dest_os == __win32_os || __dest_os == __wince_os
+	#include <stdarg.win32.h>
+#elif __dest_os == __ppc_eabi || __dest_os == __dolphin_os
+	#include <stdarg.EPPC.h>
+#elif __dest_os == __mips_bare
+	#include <stdarg.MIPS.h>
+#elif __dest_os == __n64_os
+	#include <stdarg.n64.h>
+#elif __dest_os == __sh_bare
+	#include <stdarg.sh.h>
+#elif __dest_os == __m56800_os
+	#include <stdarg.56800.h>
+#elif __dest_os == __m56800E_os
+	#include <stdarg.56800E.h>
+#elif __dest_os == __emb_68k || __dest_os == __mcore_bare
+	#include <stdarg.68k.h>
+#elif __dest_os == __palm_os
+	#include <stdarg_Palm_OS.h>
+#elif __dest_os == __arm_bare
+	#include <stdarg.ARM.h>
+#elif __dest_os == __starcore_bare
+	#include <stdarg_StarCore.h>
+#else
+	#error Unknown platform
+#endif
+
+#endif /* _MSL_USING_MW_C_HEADERS */
+
+#endif /* _MSL_CSTDARG */
+
+/* Change record:
+ * bkoz961015 bkoz change to va_arg according to BR ES56366 (J. Pratt)
+ * KO  061216 Fixed va_start for Intel.
+ * MEA 970623 Merged PPC EABI version.
+ * mm  970827 Fixed va_start to allow for unsigned char arguments.  BR7931
+ * hh  971206 Changed filename from stdarg.h to cstdarg and added namespace support.
+ * hh  971230 added RC_INVOKED wrapper
+ * mm  980824 added va_copy in accordance with C9x
+ * mm  981014 Added definitions for DSP568
+ * mm  981029 Changed __DSP568 to __m56800__
+ * vss 981116 Added MIPS changes
+ * mf  981123 fixed namespace bug(nothing in here should be in std) and also
+ *            wrapped typedefs with extern "C"
+ * mm  990414 Fix for CFM68k from Andreas
+ * vss 990803 Added n64 updates
+ * beb 990830 Added __STDABI__ test to fix varargs
+ * mm  991207 Changed va_arg for PPC so that it would work with the structure FSSpec and other MacOS structures. IR9912-0068
+ * JWW 001208 Added case for targeting Mach-O
+ * cc  010405 removed pragma options align native and reset
+ * cc  010409 updated defines to JWW new namespace macros
+ * mm  011006 Made definition of va_end(ap) to be uniformly ((void)0)
+ * us  011012 Change in va_arg() implementation for Hawk2 (__m56800E__)
+ * JWW 011027 Use _MSL_USING_MW_C_HEADERS as generic header test instead of specific Mach-O test
+ * JWW 011101 Make stdarg information platform independent
+ * lgo 040922 added StarCore
+ * JWW 050128 When using MSL C++ on top of a third party C (non-MSL), put C items into std namespace
+ */

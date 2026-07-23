@@ -1,0 +1,2433 @@
+/* MSL
+ * Copyright © 1995-2006 Freescale Corporation.  All rights reserved.
+ *
+ * $Date: 2006/02/09 16:58:02 $
+ * $Revision: 1.10.2.4 $
+ */
+
+// bind
+
+#ifndef _BIND
+#define _BIND
+
+/*  bind synopsis
+
+namespace std { namespace tr1 {
+
+// 0 argument functors
+
+template <class F>
+// details
+bind(F f);
+
+template <class R, class F>
+// details
+bind(F f);
+
+template <class R>
+// details
+bind(R (*f)());
+
+// 1 argument functors
+
+template <class F, class A1>
+// details
+bind(F f, A1 a1);
+
+template <class R, class F, class A1>
+// details
+bind(F f, A1 a1)
+
+template <class R, class B1, class A1>
+// details
+bind(R (*f)(B1), A1 a1);
+
+template <class R, class T, class A1>
+// details
+bind(R (T::*f)(), A1 a1);
+
+template <class R, class T, class A1>
+// details
+bind(R (T::*f)() const, A1 a1);
+
+template <class R, class T, class A1>
+// details
+bind(R T::*f, A1 a1);
+
+// 2 argument functors
+
+template <class F, class A1, class A2>
+// details
+bind(F f, A1 a1, A2 a2);
+
+template <class R, class F, class A1, class A2>
+// details
+bind(F f, A1 a1, A2 a2);
+
+template <class R, class B1, class B2, class A1, class A2>
+// details
+bind(R (*f)(B1, B2), A1 a1, A2 a2);
+
+template <class R, class T, class B1, class A1, class A2>
+// details
+bind(R (T::*f)(B1), A1 a1, A2 a2);
+
+template <class R, class T, class B1, class A1, class A2>
+// details
+bind(R (T::*f)(B1) const, A1 a1, A2 a2);
+
+...
+
+// 9 argument functors
+
+template <class F, class A1, class A2, class A3, class A4, class A5,
+                   class A6, class A7, class A8, class A9>
+// details
+bind(F f, A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9);
+
+template <class R, class F, class A1, class A2, class A3, class A4, class A5,
+                            class A6, class A7, class A8, class A9>
+// details
+bind(F f, A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9);
+
+template <class R, class B1, class B2, class B3, class B4, class B5,
+                   class B6, class B7, class B8, class B9,
+                   class A1, class A2, class A3, class A4, class A5,
+                   class A6, class A7, class A8, class A9>
+// details
+bind(R (*f)(B1, B2, B3, B4, B5, B6, B7, B8, B9), A1 a1, A2 a2, A3 a3, A4 a4, A5 a5,
+                                                 A6 a6, A7 a7, A8 a8, A9 a9);
+
+template <class R, class T, class B1, class B2, class B3, class B4, class B5,
+                            class B6, class B7, class B8,
+                            class A1, class A2, class A3, class A4, class A5,
+                            class A6, class A7, class A8, class A9>
+// details
+bind(R (T::*f)(B1, B2, B3, B4, B5, B6, B7, B8), A1 a1, A2 a2, A3 a3, A4 a4, A5 a5,
+                                                A6 a6, A7 a7, A8 a8, A9 a9);
+
+template <class R, class T, class B1, class B2, class B3, class B4, class B5,
+                            class B6, class B7, class B8,
+                            class A1, class A2, class A3, class A4, class A5,
+                            class A6, class A7, class A8, class A9>
+// details
+bind(R (T::*f)(B1, B2, B3, B4, B5, B6, B7, B8) const, A1 a1, A2 a2, A3 a3, A4 a4, A5 a5,
+                                                      A6 a6, A7 a7, A8 a8, A9 a9);
+
+} } // std::tr1
+*/
+
+#include <mslconfig>
+#include <tuple>
+#include <functional>
+
+#ifndef RC_INVOKED
+
+#ifdef __MWERKS__
+#pragma options align=native
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#if _MSL_FORCE_ENUMS_ALWAYS_INT
+		#pragma enumsalwaysint on
+	#else
+		#pragma enumsalwaysint off
+	#endif
+#endif  // _MSL_FORCE_ENUMS_ALWAYS_INT
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#if _MSL_FORCE_ENABLE_BOOL_SUPPORT
+		#pragma bool on
+	#else
+		#pragma bool off
+	#endif
+#endif  // _MSL_FORCE_ENABLE_BOOL_SUPPORT
+
+_MSL_START_TR1_NAMESPACE
+
+namespace placeholders
+{
+
+namespace detail
+{
+
+template <int I> struct ph {};
+
+}  // detail
+
+namespace {
+
+detail::ph<1> _1;
+detail::ph<2> _2;
+detail::ph<3> _3;
+detail::ph<4> _4;
+detail::ph<5> _5;
+detail::ph<6> _6;
+detail::ph<7> _7;
+detail::ph<8> _8;
+detail::ph<9> _9;
+
+}
+
+}  // placeholders
+
+template <class T>
+struct is_placeholder
+{
+	static const int value = 0;
+};
+
+template <int I>
+struct is_placeholder<placeholders::detail::ph<I> >
+{
+	static const int value = I;
+};
+
+template <class T>
+struct is_bind_expression
+{
+	static const bool value = false;
+};
+
+namespace detail
+{
+
+template <class R, class F, class LW>
+inline
+R
+mu_expand(F& f, LW&, Metrowerks::int2type<0>)
+{
+	return f();
+}
+
+template <class R, class F, class LW>
+inline
+R
+mu_expand(F& f, LW& lw, Metrowerks::int2type<1>)
+{
+	return f(get<0>(lw));
+}
+
+template <class R, class F, class LW>
+inline
+R
+mu_expand(F& f, LW& lw, Metrowerks::int2type<2>)
+{
+	return f(get<0>(lw), get<1>(lw));
+}
+
+template <class R, class F, class LW>
+inline
+R
+mu_expand(F& f, LW& lw, Metrowerks::int2type<3>)
+{
+	return f(get<0>(lw), get<1>(lw), get<2>(lw));
+}
+
+template <class R, class F, class LW>
+inline
+R
+mu_expand(F& f, LW& lw, Metrowerks::int2type<4>)
+{
+	return f(get<0>(lw), get<1>(lw), get<2>(lw), get<3>(lw));
+}
+
+template <class R, class F, class LW>
+inline
+R
+mu_expand(F& f, LW& lw, Metrowerks::int2type<5>)
+{
+	return f(get<0>(lw), get<1>(lw), get<2>(lw), get<3>(lw), get<4>(lw));
+}
+
+template <class R, class F, class LW>
+inline
+R
+mu_expand(F& f, LW& lw, Metrowerks::int2type<6>)
+{
+	return f(get<0>(lw), get<1>(lw), get<2>(lw), get<3>(lw), get<4>(lw), get<5>(lw));
+}
+
+template <class R, class F, class LW>
+inline
+R
+mu_expand(F& f, LW& lw, Metrowerks::int2type<7>)
+{
+	return f(get<0>(lw), get<1>(lw), get<2>(lw), get<3>(lw), get<4>(lw), get<5>(lw),
+	         get<6>(lw));
+}
+
+template <class R, class F, class LW>
+inline
+R
+mu_expand(F& f, LW& lw, Metrowerks::int2type<8>)
+{
+	return f(get<0>(lw), get<1>(lw), get<2>(lw), get<3>(lw), get<4>(lw), get<5>(lw),
+	         get<6>(lw), get<7>(lw));
+}
+
+template <class R, class F, class LW>
+inline
+R
+mu_expand(F& f, LW& lw, Metrowerks::int2type<9>)
+{
+	return f(get<0>(lw), get<1>(lw), get<2>(lw), get<3>(lw), get<4>(lw), get<5>(lw),
+	         get<6>(lw), get<7>(lw), get<8>(lw));
+}
+
+template <class A, class LW, int size = tuple_size<LW>::value,
+                             int ph = is_placeholder<A>::value,
+                             bool b = is_bind_expression<A>::value>
+struct mu_result;
+
+template <class A1, class LW>
+inline
+typename Metrowerks::restrict_to
+<
+	is_placeholder<A1>::value == 0 &&
+	!is_bind_expression<A1>::value,
+	A1&
+>::type
+mu(A1& a1, LW&)
+{
+	return a1;
+}
+
+template <class F, class LW>
+inline
+typename Metrowerks::restrict_to
+<
+	is_bind_expression<F>::value,
+	typename mu_result<F, LW>::type
+>::type
+mu(F& x, LW& lw)
+{
+	return mu_expand<typename mu_result<F, LW>::type>(x, lw, Metrowerks::int2type<tuple_size<LW>::value>());
+}
+
+template <class X, class LW>
+inline
+typename reference_wrapper<X>::type&
+mu(reference_wrapper<X>& x, LW&)
+{
+	return x.get();
+}
+
+template <class P, class LW>
+inline
+typename Metrowerks::restrict_to
+<
+	is_placeholder<P>::value != 0,
+	typename tuple_element<is_placeholder<P>::value ? (unsigned)(is_placeholder<P>::value-1) : 0, LW>::type
+>::type
+mu(P, LW& lw)
+{
+	return get<is_placeholder<P>::value-1>(lw);
+}
+
+template <class R, class F, class LA, class LW>
+inline
+R
+bind_eval(F& f, LA&, LW&, Metrowerks::int2type<0>)
+{
+	return f();
+}
+
+template <class R, class F, class LA, class LW>
+inline
+R
+bind_eval(F& f, LA& la, LW& lw, Metrowerks::int2type<1>)
+{
+	return f(mu(get<0>(la), lw));
+}
+
+template <class R, class F, class LA, class LW>
+inline
+R
+bind_eval(F& f, LA& la, LW& lw, Metrowerks::int2type<2>)
+{
+	return f(mu(get<0>(la), lw), mu(get<1>(la), lw));
+}
+
+template <class R, class F, class LA, class LW>
+inline
+R
+bind_eval(F& f, LA& la, LW& lw, Metrowerks::int2type<3>)
+{
+	return f(mu(get<0>(la), lw), mu(get<1>(la), lw), mu(get<2>(la), lw));
+}
+
+template <class R, class F, class LA, class LW>
+inline
+R
+bind_eval(F& f, LA& la, LW& lw, Metrowerks::int2type<4>)
+{
+	return f(mu(get<0>(la), lw), mu(get<1>(la), lw), mu(get<2>(la), lw),
+	         mu(get<3>(la), lw));
+}
+
+template <class R, class F, class LA, class LW>
+inline
+R
+bind_eval(F& f, LA& la, LW& lw, Metrowerks::int2type<5>)
+{
+	return f(mu(get<0>(la), lw), mu(get<1>(la), lw), mu(get<2>(la), lw),
+	         mu(get<3>(la), lw), mu(get<4>(la), lw));
+}
+
+template <class R, class F, class LA, class LW>
+inline
+R
+bind_eval(F& f, LA& la, LW& lw, Metrowerks::int2type<6>)
+{
+	return f(mu(get<0>(la), lw), mu(get<1>(la), lw), mu(get<2>(la), lw),
+	         mu(get<3>(la), lw), mu(get<4>(la), lw), mu(get<5>(la), lw));
+}
+
+template <class R, class F, class LA, class LW>
+inline
+R
+bind_eval(F& f, LA& la, LW& lw, Metrowerks::int2type<7>)
+{
+	return f(mu(get<0>(la), lw), mu(get<1>(la), lw), mu(get<2>(la), lw),
+	         mu(get<3>(la), lw), mu(get<4>(la), lw), mu(get<5>(la), lw),
+	         mu(get<6>(la), lw));
+}
+
+template <class R, class F, class LA, class LW>
+inline
+R
+bind_eval(F& f, LA& la, LW& lw, Metrowerks::int2type<8>)
+{
+	return f(mu(get<0>(la), lw), mu(get<1>(la), lw), mu(get<2>(la), lw),
+	         mu(get<3>(la), lw), mu(get<4>(la), lw), mu(get<5>(la), lw),
+	         mu(get<6>(la), lw), mu(get<7>(la), lw));
+}
+
+template <class R, class F, class LA, class LW>
+inline
+R
+bind_eval(F& f, LA& la, LW& lw, Metrowerks::int2type<9>)
+{
+	return f(mu(get<0>(la), lw), mu(get<1>(la), lw), mu(get<2>(la), lw),
+	         mu(get<3>(la), lw), mu(get<4>(la), lw), mu(get<5>(la), lw),
+	         mu(get<6>(la), lw), mu(get<7>(la), lw), mu(get<8>(la), lw));
+}
+
+template <class R, class F, class LA, class LW>
+inline
+R
+bind_eval(F& f, LA& la, LW& lw)
+{
+	return bind_eval<R>(f, la, lw, Metrowerks::int2type<tuple_size<LA>::value>());
+}
+
+template <class A, class LW, int size>
+struct mu_result<A, LW, size, 0, false>
+{
+	typedef A type;
+};
+
+template <class A, class LW>
+struct mu_result<A, LW, 0, 0, true>
+{
+	typedef typename result_of<A()>::type type;
+};
+
+template <class A, class LW>
+struct mu_result<A, LW, 1, 0, true>
+{
+	typedef typename result_of<A(typename tuple_element<0, LW>::type)>::type type;
+};
+
+template <class A, class LW>
+struct mu_result<A, LW, 2, 0, true>
+{
+	typedef typename result_of<A(typename tuple_element<0, LW>::type,
+	                             typename tuple_element<1, LW>::type)>::type type;
+};
+
+template <class A, class LW>
+struct mu_result<A, LW, 3, 0, true>
+{
+	typedef typename result_of<A(typename tuple_element<0, LW>::type,
+	                             typename tuple_element<1, LW>::type,
+	                             typename tuple_element<2, LW>::type)>::type type;
+};
+
+template <class A, class LW>
+struct mu_result<A, LW, 4, 0, true>
+{
+	typedef typename result_of<A(typename tuple_element<0, LW>::type,
+	                             typename tuple_element<1, LW>::type,
+	                             typename tuple_element<2, LW>::type,
+	                             typename tuple_element<3, LW>::type)>::type type;
+};
+
+template <class A, class LW>
+struct mu_result<A, LW, 5, 0, true>
+{
+	typedef typename result_of<A(typename tuple_element<0, LW>::type,
+	                             typename tuple_element<1, LW>::type,
+	                             typename tuple_element<2, LW>::type,
+	                             typename tuple_element<3, LW>::type,
+	                             typename tuple_element<4, LW>::type)>::type type;
+};
+
+template <class A, class LW>
+struct mu_result<A, LW, 6, 0, true>
+{
+	typedef typename result_of<A(typename tuple_element<0, LW>::type,
+	                             typename tuple_element<1, LW>::type,
+	                             typename tuple_element<2, LW>::type,
+	                             typename tuple_element<3, LW>::type,
+	                             typename tuple_element<4, LW>::type,
+	                             typename tuple_element<5, LW>::type)>::type type;
+};
+
+template <class A, class LW>
+struct mu_result<A, LW, 7, 0, true>
+{
+	typedef typename result_of<A(typename tuple_element<0, LW>::type,
+	                             typename tuple_element<1, LW>::type,
+	                             typename tuple_element<2, LW>::type,
+	                             typename tuple_element<3, LW>::type,
+	                             typename tuple_element<4, LW>::type,
+	                             typename tuple_element<5, LW>::type,
+	                             typename tuple_element<6, LW>::type)>::type type;
+};
+
+template <class A, class LW>
+struct mu_result<A, LW, 8, 0, true>
+{
+	typedef typename result_of<A(typename tuple_element<0, LW>::type,
+	                             typename tuple_element<1, LW>::type,
+	                             typename tuple_element<2, LW>::type,
+	                             typename tuple_element<3, LW>::type,
+	                             typename tuple_element<4, LW>::type,
+	                             typename tuple_element<5, LW>::type,
+	                             typename tuple_element<6, LW>::type,
+	                             typename tuple_element<7, LW>::type)>::type type;
+};
+
+template <class A, class LW>
+struct mu_result<A, LW, 9, 0, true>
+{
+	typedef typename result_of<A(typename tuple_element<0, LW>::type,
+	                             typename tuple_element<1, LW>::type,
+	                             typename tuple_element<2, LW>::type,
+	                             typename tuple_element<3, LW>::type,
+	                             typename tuple_element<4, LW>::type,
+	                             typename tuple_element<5, LW>::type,
+	                             typename tuple_element<6, LW>::type,
+	                             typename tuple_element<7, LW>::type,
+	                             typename tuple_element<8, LW>::type)>::type type;
+};
+
+template <class A, class LW, int size>
+struct mu_result<reference_wrapper<A>, LW, size, 0, false>
+{
+	typedef typename reference_wrapper<A>::type type;
+};
+
+template <class A, class LW, int size, int ph>
+struct mu_result<A, LW, size, ph, false>
+{
+	typedef typename tuple_element<(unsigned)(ph-1), LW>::type type;
+};
+
+template <class F, bool has_nat>
+struct bind_return_helper
+{
+	typedef int type;
+};
+
+template <class F>
+struct bind_return_helper<F, false>
+{
+	typedef typename result_of<F>::type type;
+};
+
+template <class F, class LA, class LW, int size = tuple_size<LA>::value> struct bind_return;
+
+template <class F, class LA, class LW>
+struct bind_return<F, LA, LW, 0>
+{
+	typedef typename result_of<F()>::type type;
+};
+
+template <class F, class LA, class LW>
+struct bind_return<F, LA, LW, 1>
+{
+private:
+	typedef typename mu_result<typename tuple_element<0, LA>::type, LW>::type W0;
+	static const bool has_nat = Metrowerks::is_same<W0, nat>::value;
+public:
+	typedef typename bind_return_helper<F(W0), has_nat>::type type;
+};
+
+template <class F, class LA, class LW>
+struct bind_return<F, LA, LW, 2>
+{
+private:
+	typedef typename mu_result<typename tuple_element<0, LA>::type, LW>::type W0;
+	typedef typename mu_result<typename tuple_element<1, LA>::type, LW>::type W1;
+	static const bool has_nat = Metrowerks::is_same<W0, nat>::value ||
+	                            Metrowerks::is_same<W1, nat>::value;
+public:
+	typedef typename bind_return_helper<F(W0, W1), has_nat>::type type;
+};
+
+template <class F, class LA, class LW>
+struct bind_return<F, LA, LW, 3>
+{
+private:
+	typedef typename mu_result<typename tuple_element<0, LA>::type, LW>::type W0;
+	typedef typename mu_result<typename tuple_element<1, LA>::type, LW>::type W1;
+	typedef typename mu_result<typename tuple_element<2, LA>::type, LW>::type W2;
+	static const bool has_nat = Metrowerks::is_same<W0, nat>::value ||
+	                            Metrowerks::is_same<W1, nat>::value ||
+	                            Metrowerks::is_same<W2, nat>::value;
+public:
+	typedef typename bind_return_helper<F(W0, W1, W2), has_nat>::type type;
+};
+
+template <class F, class LA, class LW>
+struct bind_return<F, LA, LW, 4>
+{
+private:
+	typedef typename mu_result<typename tuple_element<0, LA>::type, LW>::type W0;
+	typedef typename mu_result<typename tuple_element<1, LA>::type, LW>::type W1;
+	typedef typename mu_result<typename tuple_element<2, LA>::type, LW>::type W2;
+	typedef typename mu_result<typename tuple_element<3, LA>::type, LW>::type W3;
+	static const bool has_nat = Metrowerks::is_same<W0, nat>::value ||
+	                            Metrowerks::is_same<W1, nat>::value ||
+	                            Metrowerks::is_same<W2, nat>::value ||
+	                            Metrowerks::is_same<W3, nat>::value;
+public:
+	typedef typename bind_return_helper<F(W0, W1, W2, W3), has_nat>::type type;
+};
+
+template <class F, class LA, class LW>
+struct bind_return<F, LA, LW, 5>
+{
+private:
+	typedef typename mu_result<typename tuple_element<0, LA>::type, LW>::type W0;
+	typedef typename mu_result<typename tuple_element<1, LA>::type, LW>::type W1;
+	typedef typename mu_result<typename tuple_element<2, LA>::type, LW>::type W2;
+	typedef typename mu_result<typename tuple_element<3, LA>::type, LW>::type W3;
+	typedef typename mu_result<typename tuple_element<4, LA>::type, LW>::type W4;
+	static const bool has_nat = Metrowerks::is_same<W0, nat>::value ||
+	                            Metrowerks::is_same<W1, nat>::value ||
+	                            Metrowerks::is_same<W2, nat>::value ||
+	                            Metrowerks::is_same<W3, nat>::value ||
+	                            Metrowerks::is_same<W4, nat>::value;
+public:
+	typedef typename bind_return_helper<F(W0, W1, W2, W3, W4), has_nat>::type type;
+};
+
+template <class F, class LA, class LW>
+struct bind_return<F, LA, LW, 6>
+{
+private:
+	typedef typename mu_result<typename tuple_element<0, LA>::type, LW>::type W0;
+	typedef typename mu_result<typename tuple_element<1, LA>::type, LW>::type W1;
+	typedef typename mu_result<typename tuple_element<2, LA>::type, LW>::type W2;
+	typedef typename mu_result<typename tuple_element<3, LA>::type, LW>::type W3;
+	typedef typename mu_result<typename tuple_element<4, LA>::type, LW>::type W4;
+	typedef typename mu_result<typename tuple_element<5, LA>::type, LW>::type W5;
+	static const bool has_nat = Metrowerks::is_same<W0, nat>::value ||
+	                            Metrowerks::is_same<W1, nat>::value ||
+	                            Metrowerks::is_same<W2, nat>::value ||
+	                            Metrowerks::is_same<W3, nat>::value ||
+	                            Metrowerks::is_same<W4, nat>::value ||
+	                            Metrowerks::is_same<W5, nat>::value;
+public:
+	typedef typename bind_return_helper<F(W0, W1, W2, W3, W4, W5), has_nat>::type type;
+};
+
+template <class F, class LA, class LW>
+struct bind_return<F, LA, LW, 7>
+{
+private:
+	typedef typename mu_result<typename tuple_element<0, LA>::type, LW>::type W0;
+	typedef typename mu_result<typename tuple_element<1, LA>::type, LW>::type W1;
+	typedef typename mu_result<typename tuple_element<2, LA>::type, LW>::type W2;
+	typedef typename mu_result<typename tuple_element<3, LA>::type, LW>::type W3;
+	typedef typename mu_result<typename tuple_element<4, LA>::type, LW>::type W4;
+	typedef typename mu_result<typename tuple_element<5, LA>::type, LW>::type W5;
+	typedef typename mu_result<typename tuple_element<6, LA>::type, LW>::type W6;
+	static const bool has_nat = Metrowerks::is_same<W0, nat>::value ||
+	                            Metrowerks::is_same<W1, nat>::value ||
+	                            Metrowerks::is_same<W2, nat>::value ||
+	                            Metrowerks::is_same<W3, nat>::value ||
+	                            Metrowerks::is_same<W4, nat>::value ||
+	                            Metrowerks::is_same<W5, nat>::value ||
+	                            Metrowerks::is_same<W6, nat>::value;
+public:
+	typedef typename bind_return_helper<F(W0, W1, W2, W3, W4, W5, W6), has_nat>::type type;
+};
+
+template <class F, class LA, class LW>
+struct bind_return<F, LA, LW, 8>
+{
+private:
+	typedef typename mu_result<typename tuple_element<0, LA>::type, LW>::type W0;
+	typedef typename mu_result<typename tuple_element<1, LA>::type, LW>::type W1;
+	typedef typename mu_result<typename tuple_element<2, LA>::type, LW>::type W2;
+	typedef typename mu_result<typename tuple_element<3, LA>::type, LW>::type W3;
+	typedef typename mu_result<typename tuple_element<4, LA>::type, LW>::type W4;
+	typedef typename mu_result<typename tuple_element<5, LA>::type, LW>::type W5;
+	typedef typename mu_result<typename tuple_element<6, LA>::type, LW>::type W6;
+	typedef typename mu_result<typename tuple_element<7, LA>::type, LW>::type W7;
+	static const bool has_nat = Metrowerks::is_same<W0, nat>::value ||
+	                            Metrowerks::is_same<W1, nat>::value ||
+	                            Metrowerks::is_same<W2, nat>::value ||
+	                            Metrowerks::is_same<W3, nat>::value ||
+	                            Metrowerks::is_same<W4, nat>::value ||
+	                            Metrowerks::is_same<W5, nat>::value ||
+	                            Metrowerks::is_same<W6, nat>::value ||
+	                            Metrowerks::is_same<W7, nat>::value;
+public:
+	typedef typename bind_return_helper<F(W0, W1, W2, W3, W4, W5, W6, W7), has_nat>::type type;
+};
+
+template <class F, class LA, class LW>
+struct bind_return<F, LA, LW, 9>
+{
+private:
+	typedef typename mu_result<typename tuple_element<0, LA>::type, LW>::type W0;
+	typedef typename mu_result<typename tuple_element<1, LA>::type, LW>::type W1;
+	typedef typename mu_result<typename tuple_element<2, LA>::type, LW>::type W2;
+	typedef typename mu_result<typename tuple_element<3, LA>::type, LW>::type W3;
+	typedef typename mu_result<typename tuple_element<4, LA>::type, LW>::type W4;
+	typedef typename mu_result<typename tuple_element<5, LA>::type, LW>::type W5;
+	typedef typename mu_result<typename tuple_element<6, LA>::type, LW>::type W6;
+	typedef typename mu_result<typename tuple_element<7, LA>::type, LW>::type W7;
+	typedef typename mu_result<typename tuple_element<8, LA>::type, LW>::type W8;
+	static const bool has_nat = Metrowerks::is_same<W0, nat>::value ||
+	                            Metrowerks::is_same<W1, nat>::value ||
+	                            Metrowerks::is_same<W2, nat>::value ||
+	                            Metrowerks::is_same<W3, nat>::value ||
+	                            Metrowerks::is_same<W4, nat>::value ||
+	                            Metrowerks::is_same<W5, nat>::value ||
+	                            Metrowerks::is_same<W6, nat>::value ||
+	                            Metrowerks::is_same<W7, nat>::value ||
+	                            Metrowerks::is_same<W8, nat>::value;
+public:
+	typedef typename bind_return_helper<F(W0, W1, W2, W3, W4, W5, W6, W7, W8), has_nat>::type type;
+};
+
+template <class R, class F, class LA>
+class bound_func
+{
+public:
+	typedef R result_type;
+
+	bound_func() {}
+	bound_func(const F& f, const LA& la) : f_(f), la_(la) {}
+
+	result_type
+		operator()()
+			{tuple<> tw;
+			return bind_eval<result_type>(f_, la_, tw);}
+
+	template <class W1>
+		result_type
+	#ifdef _MSL_MOVE
+		operator()(W1&& w1)
+			{tuple<W1&&> tw(w1);
+	#else  // _MSL_MOVE
+		operator()(W1& w1)
+			{tuple<W1&> tw(w1);
+	#endif  // _MSL_MOVE
+			return bind_eval<result_type>(f_, la_, tw);}
+
+	template <class W1, class W2>
+		result_type
+	#ifdef _MSL_MOVE
+		operator()(W1&& w1, W2&& w2)
+			{tuple<W1&&, W2&&> tw(w1, w2);
+	#else  // _MSL_MOVE
+		operator()(W1& w1, W2& w2)
+			{tuple<W1&, W2&> tw(w1, w2);
+	#endif  // _MSL_MOVE
+			return bind_eval<result_type>(f_, la_, tw);}
+
+	template <class W1, class W2, class W3>
+		result_type
+	#ifdef _MSL_MOVE
+		operator()(W1&& w1, W2&& w2, W3&& w3)
+			{tuple<W1&&, W2&&, W3&&> tw(w1, w2, w3);
+	#else  // _MSL_MOVE
+		operator()(W1& w1, W2& w2, W3& w3)
+			{tuple<W1&, W2&, W3&> tw(w1, w2, w3);
+	#endif  // _MSL_MOVE
+			return bind_eval<result_type>(f_, la_, tw);}
+
+	template <class W1, class W2, class W3, class W4>
+		result_type
+	#ifdef _MSL_MOVE
+		operator()(W1&& w1, W2&& w2, W3&& w3, W4&& w4)
+			{tuple<W1&&, W2&&, W3&&, W4&&> tw(w1, w2, w3, w4);
+	#else  // _MSL_MOVE
+		operator()(W1& w1, W2& w2, W3& w3, W4& w4)
+			{tuple<W1&, W2&, W3&, W4&> tw(w1, w2, w3, w4);
+	#endif  // _MSL_MOVE
+			return bind_eval<result_type>(f_, la_, tw);}
+
+	template <class W1, class W2, class W3, class W4, class W5>
+		result_type
+	#ifdef _MSL_MOVE
+		operator()(W1&& w1, W2&& w2, W3&& w3, W4&& w4, W5&& w5)
+			{tuple<W1&&, W2&&, W3&&, W4&&, W5&&> tw(w1, w2, w3, w4, w5);
+	#else  // _MSL_MOVE
+		operator()(W1& w1, W2& w2, W3& w3, W4& w4, W5& w5)
+			{tuple<W1&, W2&, W3&, W4&, W5&> tw(w1, w2, w3, w4, w5);
+	#endif  // _MSL_MOVE
+			return bind_eval<result_type>(f_, la_, tw);}
+
+	template <class W1, class W2, class W3, class W4, class W5, class W6>
+		result_type
+	#ifdef _MSL_MOVE
+		operator()(W1&& w1, W2&& w2, W3&& w3, W4&& w4, W5&& w5, W6&& w6)
+			{tuple<W1&&, W2&&, W3&&, W4&&, W5&&, W6&&> tw(w1, w2, w3, w4, w5, w6);
+	#else  // _MSL_MOVE
+		operator()(W1& w1, W2& w2, W3& w3, W4& w4, W5& w5, W6& w6)
+			{tuple<W1&, W2&, W3&, W4&, W5&, W6&> tw(w1, w2, w3, w4, w5, w6);
+	#endif  // _MSL_MOVE
+			return bind_eval<result_type>(f_, la_, tw);}
+
+	template <class W1, class W2, class W3, class W4, class W5, class W6, class W7>
+		result_type
+	#ifdef _MSL_MOVE
+		operator()(W1&& w1, W2&& w2, W3&& w3, W4&& w4, W5&& w5, W6&& w6, W7&& w7)
+			{tuple<W1&&, W2&&, W3&&, W4&&, W5&&, W6&&, W7&&> tw(w1, w2, w3, w4, w5, w6, w7);
+	#else  // _MSL_MOVE
+		operator()(W1& w1, W2& w2, W3& w3, W4& w4, W5& w5, W6& w6, W7& w7)
+			{tuple<W1&, W2&, W3&, W4&, W5&, W6&, W7&> tw(w1, w2, w3, w4, w5, w6, w7);
+	#endif  // _MSL_MOVE
+			return bind_eval<result_type>(f_, la_, tw);}
+
+	template <class W1, class W2, class W3, class W4, class W5, class W6, class W7, class W8>
+		result_type
+	#ifdef _MSL_MOVE
+		operator()(W1&& w1, W2&& w2, W3&& w3, W4&& w4, W5&& w5, W6&& w6, W7&& w7, W8&& w8)
+			{tuple<W1&&, W2&&, W3&&, W4&&, W5&&, W6&&, W7&&, W8&&> tw(w1, w2, w3, w4, w5, w6, w7, w8);
+	#else  // _MSL_MOVE
+		operator()(W1& w1, W2& w2, W3& w3, W4& w4, W5& w5, W6& w6, W7& w7, W8& w8)
+			{tuple<W1&, W2&, W3&, W4&, W5&, W6&, W7&, W8&> tw(w1, w2, w3, w4, w5, w6, w7, w8);
+	#endif  // _MSL_MOVE
+			return bind_eval<result_type>(f_, la_, tw);}
+
+	template <class W1, class W2, class W3, class W4, class W5, class W6, class W7, class W8, class W9>
+		result_type
+	#ifdef _MSL_MOVE
+		operator()(W1&& w1, W2&& w2, W3&& w3, W4&& w4, W5&& w5, W6&& w6, W7&& w7, W8&& w8, W9&& w9)
+			{tuple<W1&&, W2&&, W3&&, W4&&, W5&&, W6&&, W7&&, W8&&, W9&&> tw(w1, w2, w3, w4, w5, w6, w7, w8, w9);
+	#else  // _MSL_MOVE
+		operator()(W1& w1, W2& w2, W3& w3, W4& w4, W5& w5, W6& w6, W7& w7, W8& w8, W9& w9)
+			{tuple<W1&, W2&, W3&, W4&, W5&, W6&, W7&, W8&, W9&> tw(w1, w2, w3, w4, w5, w6, w7, w8, w9);
+	#endif  // _MSL_MOVE
+			return bind_eval<result_type>(f_, la_, tw);}
+private:
+	F f_;
+	LA la_;
+};
+
+template <class F, bool = has_result_type<F>::value>
+struct bound_func_result_type
+{
+};
+
+template <class F>
+struct bound_func_result_type<F, true>
+{
+	typedef typename F::result_type result_type;
+};
+
+template <class F, class LA>
+class bound_func<nat, F, LA>
+	: public bound_func_result_type<F>
+{
+public:
+
+	bound_func() {}
+	bound_func(const F& f, const LA& la) : f_(f), la_(la) {}
+
+	typename bind_return<F, LA, tuple<> >::type
+		operator()()
+			{tuple<> tw;
+			return bind_eval<typename bind_return<F, LA, tuple<> >::type>(f_, la_, tw);}
+
+	template <class W1>
+	#ifdef _MSL_MOVE
+		typename bind_return<F, LA, tuple<W1&&> >::type
+		operator()(W1&& w1)
+			{tuple<W1&&> tw(w1);
+			return bind_eval<typename bind_return<F, LA, tuple<W1&&> >::type>(f_, la_, tw);}
+	#else  // _MSL_MOVE
+		typename bind_return<F, LA, tuple<W1&> >::type
+		operator()(W1& w1)
+			{tuple<W1&> tw(w1);
+			return bind_eval<typename bind_return<F, LA, tuple<W1&> >::type>(f_, la_, tw);}
+	#endif  // _MSL_MOVE
+
+	template <class W1, class W2>
+	#ifdef _MSL_MOVE
+		typename bind_return<F, LA, tuple<W1&&, W2&&> >::type
+		operator()(W1&& w1, W2&& w2)
+			{tuple<W1&&, W2&&> tw(w1, w2);
+			return bind_eval<typename bind_return<F, LA, tuple<W1&&, W2&&> >::type>(f_, la_, tw);}
+	#else  // _MSL_MOVE
+		typename bind_return<F, LA, tuple<W1&, W2&> >::type
+		operator()(W1& w1, W2& w2)
+			{tuple<W1&, W2&> tw(w1, w2);
+			return bind_eval<typename bind_return<F, LA, tuple<W1&, W2&> >::type>(f_, la_, tw);}
+	#endif  // _MSL_MOVE
+
+	template <class W1, class W2, class W3>
+	#ifdef _MSL_MOVE
+		typename bind_return<F, LA, tuple<W1&&, W2&&, W3&&> >::type
+		operator()(W1&& w1, W2&& w2, W3&& w3)
+			{tuple<W1&&, W2&&, W3&&> tw(w1, w2, w3);
+			return bind_eval<typename bind_return<F, LA, tuple<W1&&, W2&&, W3&&> >::type>(f_, la_, tw);}
+	#else  // _MSL_MOVE
+		typename bind_return<F, LA, tuple<W1&, W2&, W3&> >::type
+		operator()(W1& w1, W2& w2, W3& w3)
+			{tuple<W1&, W2&, W3&> tw(w1, w2, w3);
+			return bind_eval<typename bind_return<F, LA, tuple<W1&, W2&, W3&> >::type>(f_, la_, tw);}
+	#endif  // _MSL_MOVE
+
+	template <class W1, class W2, class W3, class W4>
+	#ifdef _MSL_MOVE
+		typename bind_return<F, LA, tuple<W1&&, W2&&, W3&&, W4&&> >::type
+		operator()(W1&& w1, W2&& w2, W3&& w3, W4&& w4)
+			{tuple<W1&&, W2&&, W3&&, W4&&> tw(w1, w2, w3, w4);
+			return bind_eval<typename bind_return<F, LA, tuple<W1&&, W2&&, W3&&, W4&&> >::type>(f_, la_, tw);}
+	#else  // _MSL_MOVE
+		typename bind_return<F, LA, tuple<W1&, W2&, W3&, W4&> >::type
+		operator()(W1& w1, W2& w2, W3& w3, W4& w4)
+			{tuple<W1&, W2&, W3&, W4&> tw(w1, w2, w3, w4);
+			return bind_eval<typename bind_return<F, LA, tuple<W1&, W2&, W3&, W4&> >::type>(f_, la_, tw);}
+	#endif  // _MSL_MOVE
+
+	template <class W1, class W2, class W3, class W4, class W5>
+	#ifdef _MSL_MOVE
+		typename bind_return<F, LA, tuple<W1&&, W2&&, W3&&, W4&&, W5&&> >::type
+		operator()(W1&& w1, W2&& w2, W3&& w3, W4&& w4, W5&& w5)
+			{tuple<W1&&, W2&&, W3&&, W4&&, W5&&> tw(w1, w2, w3, w4, w5);
+			return bind_eval<typename bind_return<F, LA, tuple<W1&&, W2&&, W3&&, W4&&, W5&&> >::type>(f_, la_, tw);}
+	#else  // _MSL_MOVE
+		typename bind_return<F, LA, tuple<W1&, W2&, W3&, W4&, W5&> >::type
+		operator()(W1& w1, W2& w2, W3& w3, W4& w4, W5& w5)
+			{tuple<W1&, W2&, W3&, W4&, W5&> tw(w1, w2, w3, w4, w5);
+			return bind_eval<typename bind_return<F, LA, tuple<W1&, W2&, W3&, W4&, W5&> >::type>(f_, la_, tw);}
+	#endif  // _MSL_MOVE
+
+	template <class W1, class W2, class W3, class W4, class W5, class W6>
+	#ifdef _MSL_MOVE
+		typename bind_return<F, LA, tuple<W1&&, W2&&, W3&&, W4&&, W5&&, W6&&> >::type
+		operator()(W1&& w1, W2&& w2, W3&& w3, W4&& w4, W5&& w5, W6&& w6)
+			{tuple<W1&&, W2&&, W3&&, W4&&, W5&&, W6&&> tw(w1, w2, w3, w4, w5, w6);
+			return bind_eval<typename bind_return<F, LA, tuple<W1&&, W2&&, W3&&, W4&&, W5&&, W6&&> >::type>(f_, la_, tw);}
+	#else  // _MSL_MOVE
+		typename bind_return<F, LA, tuple<W1&, W2&, W3&, W4&, W5&, W6&> >::type
+		operator()(W1& w1, W2& w2, W3& w3, W4& w4, W5& w5, W6& w6)
+			{tuple<W1&, W2&, W3&, W4&, W5&, W6&> tw(w1, w2, w3, w4, w5, w6);
+			return bind_eval<typename bind_return<F, LA, tuple<W1&, W2&, W3&, W4&, W5&, W6&> >::type>(f_, la_, tw);}
+	#endif  // _MSL_MOVE
+
+	template <class W1, class W2, class W3, class W4, class W5, class W6, class W7>
+	#ifdef _MSL_MOVE
+		typename bind_return<F, LA, tuple<W1&&, W2&&, W3&&, W4&&, W5&&, W6&&, W7&&> >::type
+		operator()(W1&& w1, W2&& w2, W3&& w3, W4&& w4, W5&& w5, W6&& w6, W7&& w7)
+			{tuple<W1&&, W2&&, W3&&, W4&&, W5&&, W6&&, W7&&> tw(w1, w2, w3, w4, w5, w6, w7);
+			return bind_eval<typename bind_return<F, LA, tuple<W1&&, W2&&, W3&&, W4&&, W5&&, W6&&, W7&&> >::type>(f_, la_, tw);}
+	#else  // _MSL_MOVE
+		typename bind_return<F, LA, tuple<W1&, W2&, W3&, W4&, W5&, W6&, W7&> >::type
+		operator()(W1& w1, W2& w2, W3& w3, W4& w4, W5& w5, W6& w6, W7& w7)
+			{tuple<W1&, W2&, W3&, W4&, W5&, W6&, W7&> tw(w1, w2, w3, w4, w5, w6, w7);
+			return bind_eval<typename bind_return<F, LA, tuple<W1&, W2&, W3&, W4&, W5&, W6&, W7&> >::type>(f_, la_, tw);}
+	#endif  // _MSL_MOVE
+
+	template <class W1, class W2, class W3, class W4, class W5, class W6, class W7, class W8>
+	#ifdef _MSL_MOVE
+		typename bind_return<F, LA, tuple<W1&&, W2&&, W3&&, W4&&, W5&&, W6&&, W7&&, W8&&> >::type
+		operator()(W1&& w1, W2&& w2, W3&& w3, W4&& w4, W5&& w5, W6&& w6, W7&& w7, W8&& w8)
+			{tuple<W1&&, W2&&, W3&&, W4&&, W5&&, W6&&, W7&&, W8&&> tw(w1, w2, w3, w4, w5, w6, w7, w8);
+			return bind_eval<typename bind_return<F, LA, tuple<W1&&, W2&&, W3&&, W4&&, W5&&, W6&&, W7&&, W8&&> >::type>(f_, la_, tw);}
+	#else  // _MSL_MOVE
+		typename bind_return<F, LA, tuple<W1&, W2&, W3&, W4&, W5&, W6&, W7&, W8&> >::type
+		operator()(W1& w1, W2& w2, W3& w3, W4& w4, W5& w5, W6& w6, W7& w7, W8& w8)
+			{tuple<W1&, W2&, W3&, W4&, W5&, W6&, W7&, W8&> tw(w1, w2, w3, w4, w5, w6, w7, w8);
+			return bind_eval<typename bind_return<F, LA, tuple<W1&, W2&, W3&, W4&, W5&, W6&, W7&, W8&> >::type>(f_, la_, tw);}
+	#endif  // _MSL_MOVE
+
+	template <class W1, class W2, class W3, class W4, class W5, class W6, class W7, class W8, class W9>
+	#ifdef _MSL_MOVE
+		typename bind_return<F, LA, tuple<W1&&, W2&&, W3&&, W4&&, W5&&, W6&&, W7&&, W8&&, W9&&> >::type
+		operator()(W1&& w1, W2&& w2, W3&& w3, W4&& w4, W5&& w5, W6&& w6, W7&& w7, W8&& w8, W9&& w9)
+			{tuple<W1&&, W2&&, W3&&, W4&&, W5&&, W6&&, W7&&, W8&&, W9&&> tw(w1, w2, w3, w4, w5, w6, w7, w8, w9);
+			return bind_eval<typename bind_return<F, LA, tuple<W1&&, W2&&, W3&&, W4&&, W5&&, W6&&, W7&&, W8&&, W9&&> >::type>(f_, la_, tw);}
+	#else  // _MSL_MOVE
+		typename bind_return<F, LA, tuple<W1&, W2&, W3&, W4&, W5&, W6&, W7&, W8&, W9&> >::type
+		operator()(W1& w1, W2& w2, W3& w3, W4& w4, W5& w5, W6& w6, W7& w7, W8& w8, W9& w9)
+			{tuple<W1&, W2&, W3&, W4&, W5&, W6&, W7&, W8&, W9&> tw(w1, w2, w3, w4, w5, w6, w7, w8, w9);
+			return bind_eval<typename bind_return<F, LA, tuple<W1&, W2&, W3&, W4&, W5&, W6&, W7&, W8&, W9&> >::type>(f_, la_, tw);}
+	#endif  // _MSL_MOVE
+private:
+	F f_;
+	LA la_;
+};
+
+// operator !
+
+struct __bind_not
+{
+	template <class T>
+	bool operator()(const T& t) {return !t;}
+};
+
+template <class R, class F, class LA>
+inline
+bound_func<bool, __bind_not, tuple<bound_func<R, F, LA> > >
+operator!(const bound_func<R, F, LA>& x)
+{
+	typedef bool result_type;
+	typedef tuple<bound_func<R, F, LA> > list;
+	return bound_func<result_type, __bind_not, list>(__bind_not(), list(x));
+}
+
+}  // detail
+
+namespace placeholders { namespace detail
+{
+
+template <class P>
+inline
+typename Metrowerks::restrict_to
+<
+	is_placeholder<P>::value != 0,
+	tr1::detail::bound_func<bool, tr1::detail::__bind_not, tuple<P> >
+>::type
+operator==(P x)
+{
+	typedef bool result_type;
+	typedef tuple<P> list;
+	return tr1::detail::bound_func<result_type, tr1::detail::__bind_not, list>(tr1::detail::__bind_not(), list(x));
+}
+
+} } // detail // placeholders
+
+namespace detail
+{
+
+// operator ==
+
+struct __bind_equal
+{
+	template <class T, class U>
+	bool operator()(const T& t, const U& u) {return t == u;}
+};
+
+template <class R1, class F1, class LA1, class R2, class F2, class LA2>
+inline
+bound_func<bool, __bind_equal, tuple<bound_func<R1, F1, LA1>, bound_func<R2, F2, LA2> > >
+operator==(const bound_func<R1, F1, LA1>& x, const bound_func<R2, F2, LA2>& y)
+{
+	typedef bool result_type;
+	typedef tuple<bound_func<R1, F1, LA1>, bound_func<R2, F2, LA2> > list;
+	return bound_func<result_type, __bind_equal, list>(__bind_equal(), list(x, y));
+}
+
+template <class R, class F, class LA, class T>
+inline
+bound_func<bool, __bind_equal, tuple<bound_func<R, F, LA>, typename Metrowerks::decay<const T>::type> >
+operator==(const bound_func<R, F, LA>& x, const T& y)
+{
+	typedef bool result_type;
+	typedef tuple<bound_func<R, F, LA>, typename Metrowerks::decay<const T>::type> list;
+	return bound_func<result_type, __bind_equal, list>(__bind_equal(), list(x, y));
+}
+
+template <class R, class F, class LA, class T>
+inline
+bound_func<bool, __bind_equal, tuple<typename Metrowerks::decay<const T>::type, bound_func<R, F, LA> > >
+operator==(const T& x, const bound_func<R, F, LA>& y)
+{
+	typedef bool result_type;
+	typedef tuple<typename Metrowerks::decay<const T>::type, bound_func<R, F, LA> > list;
+	return bound_func<result_type, __bind_equal, list>(__bind_equal(), list(x, y));
+}
+
+}  // detail
+
+namespace placeholders { namespace detail
+{
+
+template <class P1, class P2>
+inline
+typename Metrowerks::restrict_to
+<
+	is_placeholder<P1>::value != 0 && is_placeholder<P2>::value != 0,
+	tr1::detail::bound_func<bool, tr1::detail::__bind_equal, tuple<P1, P2> >
+>::type
+operator==(P1 x, P2 y)
+{
+	typedef bool result_type;
+	typedef tuple<P1, P2> list;
+	return tr1::detail::bound_func<result_type, tr1::detail::__bind_equal, list>(tr1::detail::__bind_equal(), list(x, y));
+}
+
+template <class P, class T>
+inline
+typename Metrowerks::restrict_to
+<
+	is_placeholder<P>::value != 0 && is_placeholder<T>::value == 0,
+	tr1::detail::bound_func<bool, tr1::detail::__bind_equal, tuple<P, typename Metrowerks::decay<const T>::type> >
+>::type
+operator==(P x, const T& y)
+{
+	typedef bool result_type;
+	typedef tuple<P, typename Metrowerks::decay<const T>::type> list;
+	return tr1::detail::bound_func<result_type, tr1::detail::__bind_equal, list>(tr1::detail::__bind_equal(), list(x, y));
+}
+
+template <class P, class T>
+inline
+typename Metrowerks::restrict_to
+<
+	is_placeholder<P>::value != 0 && is_placeholder<T>::value == 0,
+	tr1::detail::bound_func<bool, tr1::detail::__bind_equal, tuple<typename Metrowerks::decay<const T>::type, P> >
+>::type
+operator==(const T& x, P y)
+{
+	typedef bool result_type;
+	typedef tuple<typename Metrowerks::decay<const T>::type, P> list;
+	return tr1::detail::bound_func<result_type, tr1::detail::__bind_equal, list>(tr1::detail::__bind_equal(), list(x, y));
+}
+
+} } // detail // placeholders
+
+namespace detail
+{
+
+// operator !=
+
+struct __bind_not_equal
+{
+	template <class T, class U>
+	bool operator()(const T& t, const U& u) {return t != u;}
+};
+
+template <class R1, class F1, class LA1, class R2, class F2, class LA2>
+inline
+bound_func<bool, __bind_not_equal, tuple<bound_func<R1, F1, LA1>, bound_func<R2, F2, LA2> > >
+operator!=(const bound_func<R1, F1, LA1>& x, const bound_func<R2, F2, LA2>& y)
+{
+	typedef bool result_type;
+	typedef tuple<bound_func<R1, F1, LA1>, bound_func<R2, F2, LA2> > list;
+	return bound_func<result_type, __bind_not_equal, list>(__bind_not_equal(), list(x, y));
+}
+
+template <class R, class F, class LA, class T>
+inline
+bound_func<bool, __bind_not_equal, tuple<bound_func<R, F, LA>, typename Metrowerks::decay<const T>::type> >
+operator!=(const bound_func<R, F, LA>& x, const T& y)
+{
+	typedef bool result_type;
+	typedef tuple<bound_func<R, F, LA>, typename Metrowerks::decay<const T>::type> list;
+	return bound_func<result_type, __bind_not_equal, list>(__bind_not_equal(), list(x, y));
+}
+
+template <class R, class F, class LA, class T>
+inline
+bound_func<bool, __bind_not_equal, tuple<typename Metrowerks::decay<const T>::type, bound_func<R, F, LA> > >
+operator!=(const T& x, const bound_func<R, F, LA>& y)
+{
+	typedef bool result_type;
+	typedef tuple<typename Metrowerks::decay<const T>::type, bound_func<R, F, LA> > list;
+	return bound_func<result_type, __bind_not_equal, list>(__bind_not_equal(), list(x, y));
+}
+
+}  // detail
+
+namespace placeholders { namespace detail
+{
+
+template <class P1, class P2>
+inline
+typename Metrowerks::restrict_to
+<
+	is_placeholder<P1>::value != 0 && is_placeholder<P2>::value != 0,
+	tr1::detail::bound_func<bool, tr1::detail::__bind_not_equal, tuple<P1, P2> >
+>::type
+operator!=(P1 x, P2 y)
+{
+	typedef bool result_type;
+	typedef tuple<P1, P2> list;
+	return tr1::detail::bound_func<result_type, tr1::detail::__bind_not_equal, list>(tr1::detail::__bind_not_equal(), list(x, y));
+}
+
+template <class P, class T>
+inline
+typename Metrowerks::restrict_to
+<
+	is_placeholder<P>::value != 0 && is_placeholder<T>::value == 0,
+	tr1::detail::bound_func<bool, tr1::detail::__bind_not_equal, tuple<P, typename Metrowerks::decay<const T>::type> >
+>::type
+operator!=(P x, const T& y)
+{
+	typedef bool result_type;
+	typedef tuple<P, typename Metrowerks::decay<const T>::type> list;
+	return tr1::detail::bound_func<result_type, tr1::detail::__bind_not_equal, list>(tr1::detail::__bind_not_equal(), list(x, y));
+}
+
+template <class P, class T>
+inline
+typename Metrowerks::restrict_to
+<
+	is_placeholder<P>::value != 0 && is_placeholder<T>::value == 0,
+	tr1::detail::bound_func<bool, tr1::detail::__bind_not_equal, tuple<typename Metrowerks::decay<const T>::type, P> >
+>::type
+operator!=(const T& x, P y)
+{
+	typedef bool result_type;
+	typedef tuple<typename Metrowerks::decay<const T>::type, P> list;
+	return tr1::detail::bound_func<result_type, tr1::detail::__bind_not_equal, list>(tr1::detail::__bind_not_equal(), list(x, y));
+}
+
+} } // detail // placeholders
+
+namespace detail
+{
+
+// operator <
+
+struct __bind_less
+{
+	template <class T, class U>
+	bool operator()(const T& t, const U& u) {return t < u;}
+};
+
+template <class R1, class F1, class LA1, class R2, class F2, class LA2>
+inline
+bound_func<bool, __bind_less, tuple<bound_func<R1, F1, LA1>, bound_func<R2, F2, LA2> > >
+operator<(const bound_func<R1, F1, LA1>& x, const bound_func<R2, F2, LA2>& y)
+{
+	typedef bool result_type;
+	typedef tuple<bound_func<R1, F1, LA1>, bound_func<R2, F2, LA2> > list;
+	return bound_func<result_type, __bind_less, list>(__bind_less(), list(x, y));
+}
+
+template <class R, class F, class LA, class T>
+inline
+bound_func<bool, __bind_less, tuple<bound_func<R, F, LA>, typename Metrowerks::decay<const T>::type> >
+operator<(const bound_func<R, F, LA>& x, const T& y)
+{
+	typedef bool result_type;
+	typedef tuple<bound_func<R, F, LA>, typename Metrowerks::decay<const T>::type> list;
+	return bound_func<result_type, __bind_less, list>(__bind_less(), list(x, y));
+}
+
+template <class R, class F, class LA, class T>
+inline
+bound_func<bool, __bind_less, tuple<typename Metrowerks::decay<const T>::type, bound_func<R, F, LA> > >
+operator<(const T& x, const bound_func<R, F, LA>& y)
+{
+	typedef bool result_type;
+	typedef tuple<typename Metrowerks::decay<const T>::type, bound_func<R, F, LA> > list;
+	return bound_func<result_type, __bind_less, list>(__bind_less(), list(x, y));
+}
+
+}  // detail
+
+namespace placeholders { namespace detail
+{
+
+template <class P1, class P2>
+inline
+typename Metrowerks::restrict_to
+<
+	is_placeholder<P1>::value != 0 && is_placeholder<P2>::value != 0,
+	tr1::detail::bound_func<bool, tr1::detail::__bind_less, tuple<P1, P2> >
+>::type
+operator<(P1 x, P2 y)
+{
+	typedef bool result_type;
+	typedef tuple<P1, P2> list;
+	return tr1::detail::bound_func<result_type, tr1::detail::__bind_less, list>(tr1::detail::__bind_less(), list(x, y));
+}
+
+template <class P, class T>
+inline
+typename Metrowerks::restrict_to
+<
+	is_placeholder<P>::value != 0 && is_placeholder<T>::value == 0,
+	tr1::detail::bound_func<bool, tr1::detail::__bind_less, tuple<P, typename Metrowerks::decay<const T>::type> >
+>::type
+operator<(P x, const T& y)
+{
+	typedef bool result_type;
+	typedef tuple<P, typename Metrowerks::decay<const T>::type> list;
+	return tr1::detail::bound_func<result_type, tr1::detail::__bind_less, list>(tr1::detail::__bind_less(), list(x, y));
+}
+
+template <class P, class T>
+inline
+typename Metrowerks::restrict_to
+<
+	is_placeholder<P>::value != 0 && is_placeholder<T>::value == 0,
+	tr1::detail::bound_func<bool, tr1::detail::__bind_less, tuple<typename Metrowerks::decay<const T>::type, P> >
+>::type
+operator<(const T& x, P y)
+{
+	typedef bool result_type;
+	typedef tuple<typename Metrowerks::decay<const T>::type, P> list;
+	return tr1::detail::bound_func<result_type, tr1::detail::__bind_less, list>(tr1::detail::__bind_less(), list(x, y));
+}
+
+} } // detail // placeholders
+
+namespace detail
+{
+
+// operator <=
+
+struct __bind_less_equal
+{
+	template <class T, class U>
+	bool operator()(const T& t, const U& u) {return t <= u;}
+};
+
+template <class R1, class F1, class LA1, class R2, class F2, class LA2>
+inline
+bound_func<bool, __bind_less_equal, tuple<bound_func<R1, F1, LA1>, bound_func<R2, F2, LA2> > >
+operator<=(const bound_func<R1, F1, LA1>& x, const bound_func<R2, F2, LA2>& y)
+{
+	typedef bool result_type;
+	typedef tuple<bound_func<R1, F1, LA1>, bound_func<R2, F2, LA2> > list;
+	return bound_func<result_type, __bind_less_equal, list>(__bind_less_equal(), list(x, y));
+}
+
+template <class R, class F, class LA, class T>
+inline
+bound_func<bool, __bind_less_equal, tuple<bound_func<R, F, LA>, typename Metrowerks::decay<const T>::type> >
+operator<=(const bound_func<R, F, LA>& x, const T& y)
+{
+	typedef bool result_type;
+	typedef tuple<bound_func<R, F, LA>, typename Metrowerks::decay<const T>::type> list;
+	return bound_func<result_type, __bind_less_equal, list>(__bind_less_equal(), list(x, y));
+}
+
+template <class R, class F, class LA, class T>
+inline
+bound_func<bool, __bind_less_equal, tuple<typename Metrowerks::decay<const T>::type, bound_func<R, F, LA> > >
+operator<=(const T& x, const bound_func<R, F, LA>& y)
+{
+	typedef bool result_type;
+	typedef tuple<typename Metrowerks::decay<const T>::type, bound_func<R, F, LA> > list;
+	return bound_func<result_type, __bind_less_equal, list>(__bind_less_equal(), list(x, y));
+}
+
+}  // detail
+
+namespace placeholders { namespace detail
+{
+
+template <class P1, class P2>
+inline
+typename Metrowerks::restrict_to
+<
+	is_placeholder<P1>::value != 0 && is_placeholder<P2>::value != 0,
+	tr1::detail::bound_func<bool, tr1::detail::__bind_less_equal, tuple<P1, P2> >
+>::type
+operator<=(P1 x, P2 y)
+{
+	typedef bool result_type;
+	typedef tuple<P1, P2> list;
+	return tr1::detail::bound_func<result_type, tr1::detail::__bind_less_equal, list>(tr1::detail::__bind_less_equal(), list(x, y));
+}
+
+template <class P, class T>
+inline
+typename Metrowerks::restrict_to
+<
+	is_placeholder<P>::value != 0 && is_placeholder<T>::value == 0,
+	tr1::detail::bound_func<bool, tr1::detail::__bind_less_equal, tuple<P, typename Metrowerks::decay<const T>::type> >
+>::type
+operator<=(P x, const T& y)
+{
+	typedef bool result_type;
+	typedef tuple<P, typename Metrowerks::decay<const T>::type> list;
+	return tr1::detail::bound_func<result_type, tr1::detail::__bind_less_equal, list>(tr1::detail::__bind_less_equal(), list(x, y));
+}
+
+template <class P, class T>
+inline
+typename Metrowerks::restrict_to
+<
+	is_placeholder<P>::value != 0 && is_placeholder<T>::value == 0,
+	tr1::detail::bound_func<bool, tr1::detail::__bind_less_equal, tuple<typename Metrowerks::decay<const T>::type, P> >
+>::type
+operator<=(const T& x, P y)
+{
+	typedef bool result_type;
+	typedef tuple<typename Metrowerks::decay<const T>::type, P> list;
+	return tr1::detail::bound_func<result_type, tr1::detail::__bind_less_equal, list>(tr1::detail::__bind_less_equal(), list(x, y));
+}
+
+} } // detail // placeholders
+
+namespace detail
+{
+
+// operator >
+
+struct __bind_greater
+{
+	template <class T, class U>
+	bool operator()(const T& t, const U& u) {return t > u;}
+};
+
+template <class R1, class F1, class LA1, class R2, class F2, class LA2>
+inline
+bound_func<bool, __bind_greater, tuple<bound_func<R1, F1, LA1>, bound_func<R2, F2, LA2> > >
+operator>(const bound_func<R1, F1, LA1>& x, const bound_func<R2, F2, LA2>& y)
+{
+	typedef bool result_type;
+	typedef tuple<bound_func<R1, F1, LA1>, bound_func<R2, F2, LA2> > list;
+	return bound_func<result_type, __bind_greater, list>(__bind_greater(), list(x, y));
+}
+
+template <class R, class F, class LA, class T>
+inline
+bound_func<bool, __bind_greater, tuple<bound_func<R, F, LA>, typename Metrowerks::decay<const T>::type> >
+operator>(const bound_func<R, F, LA>& x, const T& y)
+{
+	typedef bool result_type;
+	typedef tuple<bound_func<R, F, LA>, typename Metrowerks::decay<const T>::type> list;
+	return bound_func<result_type, __bind_greater, list>(__bind_greater(), list(x, y));
+}
+
+template <class R, class F, class LA, class T>
+inline
+bound_func<bool, __bind_greater, tuple<typename Metrowerks::decay<const T>::type, bound_func<R, F, LA> > >
+operator>(const T& x, const bound_func<R, F, LA>& y)
+{
+	typedef bool result_type;
+	typedef tuple<typename Metrowerks::decay<const T>::type, bound_func<R, F, LA> > list;
+	return bound_func<result_type, __bind_greater, list>(__bind_greater(), list(x, y));
+}
+
+}  // detail
+
+namespace placeholders { namespace detail
+{
+
+template <class P1, class P2>
+inline
+typename Metrowerks::restrict_to
+<
+	is_placeholder<P1>::value != 0 && is_placeholder<P2>::value != 0,
+	tr1::detail::bound_func<bool, tr1::detail::__bind_greater, tuple<P1, P2> >
+>::type
+operator>(P1 x, P2 y)
+{
+	typedef bool result_type;
+	typedef tuple<P1, P2> list;
+	return tr1::detail::bound_func<result_type, tr1::detail::__bind_greater, list>(tr1::detail::__bind_greater(), list(x, y));
+}
+
+template <class P, class T>
+inline
+typename Metrowerks::restrict_to
+<
+	is_placeholder<P>::value != 0 && is_placeholder<T>::value == 0,
+	tr1::detail::bound_func<bool, tr1::detail::__bind_greater, tuple<P, typename Metrowerks::decay<const T>::type> >
+>::type
+operator>(P x, const T& y)
+{
+	typedef bool result_type;
+	typedef tuple<P, typename Metrowerks::decay<const T>::type> list;
+	return tr1::detail::bound_func<result_type, tr1::detail::__bind_greater, list>(tr1::detail::__bind_greater(), list(x, y));
+}
+
+template <class P, class T>
+inline
+typename Metrowerks::restrict_to
+<
+	is_placeholder<P>::value != 0 && is_placeholder<T>::value == 0,
+	tr1::detail::bound_func<bool, tr1::detail::__bind_greater, tuple<typename Metrowerks::decay<const T>::type, P> >
+>::type
+operator>(const T& x, P y)
+{
+	typedef bool result_type;
+	typedef tuple<typename Metrowerks::decay<const T>::type, P> list;
+	return tr1::detail::bound_func<result_type, tr1::detail::__bind_greater, list>(tr1::detail::__bind_greater(), list(x, y));
+}
+
+} } // detail // placeholders
+
+namespace detail
+{
+
+// operator >=
+
+struct __bind_greater_equal
+{
+	template <class T, class U>
+	bool operator()(const T& t, const U& u) {return t >= u;}
+};
+
+template <class R1, class F1, class LA1, class R2, class F2, class LA2>
+inline
+bound_func<bool, __bind_greater_equal, tuple<bound_func<R1, F1, LA1>, bound_func<R2, F2, LA2> > >
+operator>=(const bound_func<R1, F1, LA1>& x, const bound_func<R2, F2, LA2>& y)
+{
+	typedef bool result_type;
+	typedef tuple<bound_func<R1, F1, LA1>, bound_func<R2, F2, LA2> > list;
+	return bound_func<result_type, __bind_greater_equal, list>(__bind_greater_equal(), list(x, y));
+}
+
+template <class R, class F, class LA, class T>
+inline
+bound_func<bool, __bind_greater_equal, tuple<bound_func<R, F, LA>, typename Metrowerks::decay<const T>::type> >
+operator>=(const bound_func<R, F, LA>& x, const T& y)
+{
+	typedef bool result_type;
+	typedef tuple<bound_func<R, F, LA>, typename Metrowerks::decay<const T>::type> list;
+	return bound_func<result_type, __bind_greater_equal, list>(__bind_greater_equal(), list(x, y));
+}
+
+template <class R, class F, class LA, class T>
+inline
+bound_func<bool, __bind_greater_equal, tuple<typename Metrowerks::decay<const T>::type, bound_func<R, F, LA> > >
+operator>=(const T& x, const bound_func<R, F, LA>& y)
+{
+	typedef bool result_type;
+	typedef tuple<typename Metrowerks::decay<const T>::type, bound_func<R, F, LA> > list;
+	return bound_func<result_type, __bind_greater_equal, list>(__bind_greater_equal(), list(x, y));
+}
+
+}  // detail
+
+namespace placeholders { namespace detail
+{
+
+template <class P1, class P2>
+inline
+typename Metrowerks::restrict_to
+<
+	is_placeholder<P1>::value != 0 && is_placeholder<P2>::value != 0,
+	tr1::detail::bound_func<bool, tr1::detail::__bind_greater_equal, tuple<P1, P2> >
+>::type
+operator>=(P1 x, P2 y)
+{
+	typedef bool result_type;
+	typedef tuple<P1, P2> list;
+	return tr1::detail::bound_func<result_type, tr1::detail::__bind_greater_equal, list>(tr1::detail::__bind_greater_equal(), list(x, y));
+}
+
+template <class P, class T>
+inline
+typename Metrowerks::restrict_to
+<
+	is_placeholder<P>::value != 0 && is_placeholder<T>::value == 0,
+	tr1::detail::bound_func<bool, tr1::detail::__bind_greater_equal, tuple<P, typename Metrowerks::decay<const T>::type> >
+>::type
+operator>=(P x, const T& y)
+{
+	typedef bool result_type;
+	typedef tuple<P, typename Metrowerks::decay<const T>::type> list;
+	return tr1::detail::bound_func<result_type, tr1::detail::__bind_greater_equal, list>(tr1::detail::__bind_greater_equal(), list(x, y));
+}
+
+template <class P, class T>
+inline
+typename Metrowerks::restrict_to
+<
+	is_placeholder<P>::value != 0 && is_placeholder<T>::value == 0,
+	tr1::detail::bound_func<bool, tr1::detail::__bind_greater_equal, tuple<typename Metrowerks::decay<const T>::type, P> >
+>::type
+operator>=(const T& x, P y)
+{
+	typedef bool result_type;
+	typedef tuple<typename Metrowerks::decay<const T>::type, P> list;
+	return tr1::detail::bound_func<result_type, tr1::detail::__bind_greater_equal, list>(tr1::detail::__bind_greater_equal(), list(x, y));
+}
+
+} } // detail // placeholders
+
+namespace detail
+{
+
+#ifdef _MSL_MOVE
+
+// operator <<
+
+template <class T> T&& make();
+
+struct __bind_right_shift
+{
+	template <class T, class U>
+	__decltype__(make<T>() << make<U>()) operator()(T&& t, U&& u) {return t << u;}
+};
+
+template <class R1, class F1, class LA1, class R2, class F2, class LA2>
+inline
+bound_func<nat, __bind_right_shift, tuple<bound_func<R1, F1, LA1>, bound_func<R2, F2, LA2> > >
+operator<<(const bound_func<R1, F1, LA1>& x, const bound_func<R2, F2, LA2>& y)
+{
+	typedef tuple<bound_func<R1, F1, LA1>, bound_func<R2, F2, LA2> > list;
+	return bound_func<nat, __bind_right_shift, list>(__bind_right_shift(), list(x, y));
+}
+
+template <class R, class F, class LA, class T>
+inline
+bound_func<nat, __bind_right_shift, tuple<bound_func<R, F, LA>, T&> >
+operator<<(const bound_func<R, F, LA>& x, T&& y)
+{
+	typedef nat result_type;
+	typedef tuple<bound_func<R, F, LA>, T&> list;
+	return bound_func<result_type, __bind_right_shift, list>(__bind_right_shift(), list(x, y));
+}
+
+template <class R, class F, class LA, class T>
+inline
+bound_func<nat, __bind_right_shift, tuple<T&, bound_func<R, F, LA> > >
+operator<<(T&& x, const bound_func<R, F, LA>& y)
+{
+	typedef nat result_type;
+	typedef tuple<T&, bound_func<R, F, LA> > list;
+	return bound_func<result_type, __bind_right_shift, list>(__bind_right_shift(), list(x, y));
+}
+
+}  // detail
+
+namespace placeholders { namespace detail
+{
+
+template <class P1, class P2>
+inline
+typename Metrowerks::restrict_to
+<
+	is_placeholder<P1>::value != 0 && is_placeholder<P2>::value != 0,
+	tr1::detail::bound_func<nat, tr1::detail::__bind_right_shift, tuple<P1, P2> >
+>::type
+operator<<(P1 x, P2 y)
+{
+	typedef nat result_type;
+	typedef tuple<P1, P2> list;
+	return tr1::detail::bound_func<result_type, tr1::detail::__bind_right_shift, list>(tr1::detail::__bind_right_shift(), list(x, y));
+}
+
+template <class P, class T>
+inline
+typename Metrowerks::restrict_to
+<
+	is_placeholder<P>::value != 0 && is_placeholder<T>::value == 0,
+	tr1::detail::bound_func<nat, tr1::detail::__bind_right_shift, tuple<P, T&> >
+>::type
+operator<<(P x, T&& y)
+{
+	typedef nat result_type;
+	typedef tuple<P, T&> list;
+	return tr1::detail::bound_func<result_type, tr1::detail::__bind_right_shift, list>(tr1::detail::__bind_right_shift(), list(x, y));
+}
+
+template <class P, class T>
+inline
+typename Metrowerks::restrict_to
+<
+	is_placeholder<P>::value != 0 && is_placeholder<T>::value == 0,
+	tr1::detail::bound_func<nat, tr1::detail::__bind_right_shift, tuple<T&, P> >
+>::type
+operator<<(T&& x, P y)
+{
+	typedef nat result_type;
+	typedef tuple<T&, P> list;
+	return tr1::detail::bound_func<result_type, tr1::detail::__bind_right_shift, list>(tr1::detail::__bind_right_shift(), list(_STD::forward<T>(x), y));
+}
+
+} } // detail // placeholders
+
+namespace detail
+{
+
+#endif  // _MSL_MOVE
+
+}  // detail
+
+#if !(defined(__MWERKS__) && __MWERKS__ >= 0x4000)
+
+template<class R, class T, class P, class W0>
+struct result_of<detail::bound_func<nat, detail::mem_fn_data<R, T>, P>(W0)>
+{
+	typedef typename result_of<detail::mem_fn_data<R, T>(W0)>::type type;
+};
+
+#endif  // !(defined(__MWERKS__) && __MWERKS__ >= 0x4000)
+
+template <class R, class F, class LA>
+struct is_bind_expression<detail::bound_func<R, F, LA> >
+{
+	static const bool value = true;
+};
+
+template <class F>
+inline
+detail::bound_func<nat, F, tuple<> >
+bind(F f)
+{
+	typedef nat result_type;
+	typedef tuple<> list;
+	return detail::bound_func<result_type, F, list>(f, list());
+}
+
+template <class R, class F>
+inline
+detail::bound_func<R, F, tuple<> >
+bind(F f)
+{
+	typedef R result_type;
+	typedef tuple<> list;
+	return detail::bound_func<result_type, F, list>(f, list());
+}
+
+template <class R>
+inline
+detail::bound_func<R, R (*)(), tuple<> >
+bind(R (*f)())
+{
+	typedef R result_type;
+	typedef tuple<> list;
+	return detail::bound_func<result_type, R (*)(), list>(f, list());
+}
+
+template <class F, class A1>
+inline
+detail::bound_func<nat, F, tuple<A1> >
+bind(F f, A1 a1)
+{
+	typedef nat result_type;
+	typedef tuple<A1> list;
+	return detail::bound_func<result_type, F, list>(f, list(a1));
+}
+
+template <class R, class F, class A1>
+inline
+typename Metrowerks::restrict_to
+<
+	!Metrowerks::is_member_pointer<F>::value,
+	detail::bound_func<R, F, tuple<A1> >
+>::type
+bind(F f, A1 a1)
+{
+	typedef R result_type;
+	typedef tuple<A1> list;
+	return detail::bound_func<result_type, F, list>(f, list(a1));
+}
+
+template <class R, class B1, class A1>
+inline
+detail::bound_func<R, R (*)(B1), tuple<A1> >
+bind(R (*f)(B1), A1 a1)
+{
+	typedef R result_type;
+	typedef tuple<A1> list;
+	return detail::bound_func<result_type, R (*)(B1), list>(f, list(a1));
+}
+
+template <class R, class T, class A1>
+inline
+detail::bound_func<R, detail::mem_fn_0<R, T>, tuple<A1> >
+bind(R (T::*f)(), A1 a1)
+{
+	typedef R result_type;
+	typedef tuple<A1> list;
+	return detail::bound_func<result_type, detail::mem_fn_0<R, T>, list>(mem_fn(f), list(a1));
+}
+
+template <class R, class T, class A1>
+inline
+detail::bound_func<R, detail::mem_fn_0_c<R, T>, tuple<A1> >
+bind(R (T::*f)() const, A1 a1)
+{
+	typedef R result_type;
+	typedef tuple<A1> list;
+	return detail::bound_func<result_type, detail::mem_fn_0_c<R, T>, list>(mem_fn(f), list(a1));
+}
+
+template <class R, class T, class A1>
+inline
+detail::bound_func<nat, detail::mem_fn_data<R, T>, tuple<A1> >
+bind(R T::*f, A1 a1)
+{
+	typedef nat result_type;
+	typedef tuple<A1> list;
+	return detail::bound_func<result_type, detail::mem_fn_data<R, T>, list>(mem_fn(f), list(a1));
+}
+
+template <class R, class M, class T, class A1>
+inline
+typename Metrowerks::restrict_to
+<
+	!Metrowerks::is_function<M>::value,
+	detail::bound_func<R, detail::mem_fn_data<M, T>, tuple<A1> >
+>::type
+bind(M T::*f, A1 a1)
+{
+	typedef R result_type;
+	typedef tuple<A1> list;
+	return detail::bound_func<result_type, detail::mem_fn_data<M, T>, list>(mem_fn(f), list(a1));
+}
+
+template <class F, class A1, class A2>
+inline
+detail::bound_func<nat, F, tuple<A1, A2> >
+bind(F f, A1 a1, A2 a2)
+{
+	typedef nat result_type;
+	typedef tuple<A1, A2> list;
+	return detail::bound_func<result_type, F, list>(f, list(a1, a2));
+}
+
+template <class R, class F, class A1, class A2>
+inline
+detail::bound_func<R, F, tuple<A1, A2> >
+bind(F f, A1 a1, A2 a2)
+{
+	typedef R result_type;
+	typedef tuple<A1, A2> list;
+	return detail::bound_func<result_type, F, list>(f, list(a1, a2));
+}
+
+template <class R, class B1, class B2, class A1, class A2>
+inline
+detail::bound_func<R, R (*)(B1, B2), tuple<A1, A2> >
+bind(R (*f)(B1, B2), A1 a1, A2 a2)
+{
+	typedef R result_type;
+	typedef tuple<A1, A2> list;
+	return detail::bound_func<result_type, R (*)(B1, B2), list>(f, list(a1, a2));
+}
+
+template <class R, class T, class B1, class A1, class A2>
+inline
+detail::bound_func<R, detail::mem_fn_1<R, T, B1>, tuple<A1, A2> >
+bind(R (T::*f)(B1), A1 a1, A2 a2)
+{
+	typedef R result_type;
+	typedef tuple<A1, A2> list;
+	return detail::bound_func
+	<
+		result_type,
+		detail::mem_fn_1<R, T, B1>,
+		list
+	>(mem_fn(f), list(a1, a2));
+}
+
+template <class R, class T, class B1, class A1, class A2>
+inline
+detail::bound_func<R, detail::mem_fn_1_c<R, T, B1>, tuple<A1, A2> >
+bind(R (T::*f)(B1) const, A1 a1, A2 a2)
+{
+	typedef R result_type;
+	typedef tuple<A1, A2> list;
+	return detail::bound_func
+	<
+		result_type,
+		detail::mem_fn_1_c<R, T, B1>,
+		list
+	>(mem_fn(f), list(a1, a2));
+}
+
+template <class F, class A1, class A2, class A3>
+inline
+detail::bound_func<nat, F, tuple<A1, A2, A3> >
+bind(F f, A1 a1, A2 a2, A3 a3)
+{
+	typedef nat result_type;
+	typedef tuple<A1, A2, A3> list;
+	return detail::bound_func<result_type, F, list>(f, list(a1, a2, a3));
+}
+
+template <class R, class F, class A1, class A2, class A3>
+inline
+detail::bound_func<R, F, tuple<A1, A2, A3> >
+bind(F f, A1 a1, A2 a2, A3 a3)
+{
+	typedef R result_type;
+	typedef tuple<A1, A2, A3> list;
+	return detail::bound_func<result_type, F, list>(f, list(a1, a2, a3));
+}
+
+template <class R, class B1, class B2, class B3, class A1, class A2, class A3>
+inline
+detail::bound_func<R, R (*)(B1, B2, B3), tuple<A1, A2, A3> >
+bind(R (*f)(B1, B2, B3), A1 a1, A2 a2, A3 a3)
+{
+	typedef R result_type;
+	typedef tuple<A1, A2, A3> list;
+	return detail::bound_func
+	<
+		result_type,
+		R (*)(B1, B2, B3),
+		list
+	>(f, list(a1, a2, a3));
+}
+
+template <class R, class T, class B1, class B2, class A1, class A2, class A3>
+inline
+detail::bound_func<R, detail::mem_fn_2<R, T, B1, B2>, tuple<A1, A2, A3> >
+bind(R (T::*f)(B1, B2), A1 a1, A2 a2, A3 a3)
+{
+	typedef R result_type;
+	typedef tuple<A1, A2, A3> list;
+	return detail::bound_func
+	<
+		result_type,
+		detail::mem_fn_2<R, T, B1, B2>,
+		list
+	>(mem_fn(f), list(a1, a2, a3));
+}
+
+template <class R, class T, class B1, class B2, class A1, class A2, class A3>
+inline
+detail::bound_func<R, detail::mem_fn_2_c<R, T, B1, B2>, tuple<A1, A2, A3> >
+bind(R (T::*f)(B1, B2) const, A1 a1, A2 a2, A3 a3)
+{
+	typedef R result_type;
+	typedef tuple<A1, A2, A3> list;
+	return detail::bound_func
+	<
+		result_type,
+		detail::mem_fn_2_c<R, T, B1, B2>,
+		list
+	>(mem_fn(f), list(a1, a2, a3));
+}
+
+template <class F, class A1, class A2, class A3, class A4>
+inline
+detail::bound_func<nat, F, tuple<A1, A2, A3, A4> >
+bind(F f, A1 a1, A2 a2, A3 a3, A4 a4)
+{
+	typedef nat result_type;
+	typedef tuple<A1, A2, A3, A4> list;
+	return detail::bound_func<result_type, F, list>(f, list(a1, a2, a3, a4));
+}
+
+template <class R, class F, class A1, class A2, class A3, class A4>
+inline
+detail::bound_func<R, F, tuple<A1, A2, A3, A4> >
+bind(F f, A1 a1, A2 a2, A3 a3, A4 a4)
+{
+	typedef R result_type;
+	typedef tuple<A1, A2, A3, A4> list;
+	return detail::bound_func<result_type, F, list>(f, list(a1, a2, a3, a4));
+}
+
+template <class R, class B1, class B2, class B3, class B4,
+                   class A1, class A2, class A3, class A4>
+inline
+detail::bound_func<R, R (*)(B1, B2, B3, B4), tuple<A1, A2, A3, A4> >
+bind(R (*f)(B1, B2, B3, B4), A1 a1, A2 a2, A3 a3, A4 a4)
+{
+	typedef R result_type;
+	typedef tuple<A1, A2, A3, A4> list;
+	return detail::bound_func
+	<
+		result_type,
+		R (*)(B1, B2, B3, B4),
+		list
+	>(f, list(a1, a2, a3, a4));
+}
+
+template <class R, class T, class B1, class B2, class B3,
+                            class A1, class A2, class A3, class A4>
+inline
+detail::bound_func<R, detail::mem_fn_3<R, T, B1, B2, B3>, tuple<A1, A2, A3, A4> >
+bind(R (T::*f)(B1, B2, B3), A1 a1, A2 a2, A3 a3, A4 a4)
+{
+	typedef R result_type;
+	typedef tuple<A1, A2, A3, A4> list;
+	return detail::bound_func
+	<
+		result_type,
+		detail::mem_fn_3<R, T, B1, B2, B3>,
+		list
+	>(mem_fn(f), list(a1, a2, a3, a4));
+}
+
+template <class R, class T, class B1, class B2, class B3,
+                            class A1, class A2, class A3, class A4>
+inline
+detail::bound_func<R, detail::mem_fn_3_c<R, T, B1, B2, B3>, tuple<A1, A2, A3, A4> >
+bind(R (T::*f)(B1, B2, B3) const, A1 a1, A2 a2, A3 a3, A4 a4)
+{
+	typedef R result_type;
+	typedef tuple<A1, A2, A3, A4> list;
+	return detail::bound_func
+	<
+		result_type,
+		detail::mem_fn_3_c<R, T, B1, B2, B3>,
+		list
+	>(mem_fn(f), list(a1, a2, a3, a4));
+}
+
+template <class F, class A1, class A2, class A3, class A4, class A5>
+inline
+detail::bound_func<nat, F, tuple<A1, A2, A3, A4, A5> >
+bind(F f, A1 a1, A2 a2, A3 a3, A4 a4, A5 a5)
+{
+	typedef nat result_type;
+	typedef tuple<A1, A2, A3, A4, A5> list;
+	return detail::bound_func<result_type, F, list>(f, list(a1, a2, a3, a4, a5));
+}
+
+template <class R, class F, class A1, class A2, class A3, class A4, class A5>
+inline
+detail::bound_func<R, F, tuple<A1, A2, A3, A4, A5> >
+bind(F f, A1 a1, A2 a2, A3 a3, A4 a4, A5 a5)
+{
+	typedef R result_type;
+	typedef tuple<A1, A2, A3, A4, A5> list;
+	return detail::bound_func<result_type, F, list>(f, list(a1, a2, a3, a4, a5));
+}
+
+template <class R, class B1, class B2, class B3, class B4, class B5,
+                   class A1, class A2, class A3, class A4, class A5>
+inline
+detail::bound_func<R, R (*)(B1, B2, B3, B4, B5), tuple<A1, A2, A3, A4, A5> >
+bind(R (*f)(B1, B2, B3, B4, B5), A1 a1, A2 a2, A3 a3, A4 a4, A5 a5)
+{
+	typedef R result_type;
+	typedef tuple<A1, A2, A3, A4, A5> list;
+	return detail::bound_func
+	<
+		result_type,
+		R (*)(B1, B2, B3, B4, B5),
+		list
+	>(f, list(a1, a2, a3, a4, a5));
+}
+
+template <class R, class T, class B1, class B2, class B3, class B4,
+                            class A1, class A2, class A3, class A4, class A5>
+inline
+detail::bound_func<R, detail::mem_fn_4<R, T, B1, B2, B3, B4>, tuple<A1, A2, A3, A4, A5> >
+bind(R (T::*f)(B1, B2, B3, B4), A1 a1, A2 a2, A3 a3, A4 a4, A5 a5)
+{
+	typedef R result_type;
+	typedef tuple<A1, A2, A3, A4, A5> list;
+	return detail::bound_func
+	<
+		result_type,
+		detail::mem_fn_4<R, T, B1, B2, B3, B4>,
+		list
+	>(mem_fn(f), list(a1, a2, a3, a4, a5));
+}
+
+template <class R, class T, class B1, class B2, class B3, class B4,
+                            class A1, class A2, class A3, class A4, class A5>
+inline
+detail::bound_func<R, detail::mem_fn_4_c<R, T, B1, B2, B3, B4>, tuple<A1, A2, A3, A4, A5> >
+bind(R (T::*f)(B1, B2, B3, B4) const, A1 a1, A2 a2, A3 a3, A4 a4, A5 a5)
+{
+	typedef R result_type;
+	typedef tuple<A1, A2, A3, A4, A5> list;
+	return detail::bound_func
+	<
+		result_type,
+		detail::mem_fn_4_c<R, T, B1, B2, B3, B4>,
+		list
+	>(mem_fn(f), list(a1, a2, a3, a4, a5));
+}
+
+template <class F, class A1, class A2, class A3, class A4, class A5,
+                   class A6>
+inline
+detail::bound_func<nat, F, tuple<A1, A2, A3, A4, A5, A6> >
+bind(F f, A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6)
+{
+	typedef nat result_type;
+	typedef tuple<A1, A2, A3, A4, A5, A6> list;
+	return detail::bound_func<result_type, F, list>
+		(f, list(a1, a2, a3, a4, a5, a6));
+}
+
+template <class R, class F, class A1, class A2, class A3, class A4, class A5,
+                            class A6>
+inline
+detail::bound_func<R, F, tuple<A1, A2, A3, A4, A5, A6> >
+bind(F f, A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6)
+{
+	typedef R result_type;
+	typedef tuple<A1, A2, A3, A4, A5, A6> list;
+	return detail::bound_func<result_type, F, list>
+		(f, list(a1, a2, a3, a4, a5, a6));
+}
+
+template <class R, class B1, class B2, class B3, class B4, class B5, class B6,
+                   class A1, class A2, class A3, class A4, class A5, class A6>
+inline
+detail::bound_func<R, R (*)(B1, B2, B3, B4, B5, B6), tuple<A1, A2, A3, A4, A5, A6> >
+bind(R (*f)(B1, B2, B3, B4, B5, B6), A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6)
+{
+	typedef R result_type;
+	typedef tuple<A1, A2, A3, A4, A5, A6> list;
+	return detail::bound_func
+	<
+		result_type,
+		R (*)(B1, B2, B3, B4, B5, B6),
+		list
+	>(f, list(a1, a2, a3, a4, a5, a6));
+}
+
+template <class R, class T, class B1, class B2, class B3, class B4, class B5,
+                            class A1, class A2, class A3, class A4, class A5, class A6>
+inline
+detail::bound_func
+<
+	R,
+	detail::mem_fn_5<R, T, B1, B2, B3, B4, B5>,
+	tuple<A1, A2, A3, A4, A5, A6>
+>
+bind(R (T::*f)(B1, B2, B3, B4, B5), A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6)
+{
+	typedef R result_type;
+	typedef tuple<A1, A2, A3, A4, A5, A6> list;
+	return detail::bound_func
+	<
+		result_type,
+		detail::mem_fn_5<R, T, B1, B2, B3, B4, B5>,
+		list
+	>(mem_fn(f), list(a1, a2, a3, a4, a5, a6));
+}
+
+template <class R, class T, class B1, class B2, class B3, class B4, class B5,
+                            class A1, class A2, class A3, class A4, class A5, class A6>
+inline
+detail::bound_func
+<
+	R,
+	detail::mem_fn_5_c<R, T, B1, B2, B3, B4, B5>,
+	tuple<A1, A2, A3, A4, A5, A6>
+>
+bind(R (T::*f)(B1, B2, B3, B4, B5) const, A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6)
+{
+	typedef R result_type;
+	typedef tuple<A1, A2, A3, A4, A5, A6> list;
+	return detail::bound_func
+	<
+		result_type,
+		detail::mem_fn_5_c<R, T, B1, B2, B3, B4, B5>,
+		list
+	>(mem_fn(f), list(a1, a2, a3, a4, a5, a6));
+}
+
+template <class F, class A1, class A2, class A3, class A4, class A5,
+                   class A6, class A7>
+inline
+detail::bound_func<nat, F, tuple<A1, A2, A3, A4, A5, A6, A7> >
+bind(F f, A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7)
+{
+	typedef nat result_type;
+	typedef tuple<A1, A2, A3, A4, A5, A6, A7> list;
+	return detail::bound_func<result_type, F, list>
+		(f, list(a1, a2, a3, a4, a5, a6, a7));
+}
+
+template <class R, class F, class A1, class A2, class A3, class A4, class A5,
+                            class A6, class A7>
+inline
+detail::bound_func<R, F, tuple<A1, A2, A3, A4, A5, A6, A7> >
+bind(F f, A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7)
+{
+	typedef R result_type;
+	typedef tuple<A1, A2, A3, A4, A5, A6, A7> list;
+	return detail::bound_func<result_type, F, list>
+		(f, list(a1, a2, a3, a4, a5, a6, a7));
+}
+
+template <class R, class B1, class B2, class B3, class B4, class B5,
+                   class B6, class B7,
+                   class A1, class A2, class A3, class A4, class A5,
+                   class A6, class A7>
+inline
+detail::bound_func
+<
+	R, R (*)(B1, B2, B3, B4, B5, B6, B7),
+	tuple<A1, A2, A3, A4, A5, A6, A7>
+>
+bind(R (*f)(B1, B2, B3, B4, B5, B6, B7), A1 a1, A2 a2, A3 a3, A4 a4, A5 a5,
+                                         A6 a6, A7 a7)
+{
+	typedef R result_type;
+	typedef tuple<A1, A2, A3, A4, A5, A6, A7> list;
+	return detail::bound_func
+	<
+		result_type,
+		R (*)(B1, B2, B3, B4, B5, B6, B7),
+		list
+	>(f, list(a1, a2, a3, a4, a5, a6, a7));
+}
+
+template <class R, class T, class B1, class B2, class B3, class B4, class B5,
+                            class B6,
+                            class A1, class A2, class A3, class A4, class A5,
+                            class A6, class A7>
+inline
+detail::bound_func
+<
+	R,
+	detail::mem_fn_6<R, T, B1, B2, B3, B4, B5, B6>,
+	tuple<A1, A2, A3, A4, A5, A6, A7>
+>
+bind(R (T::*f)(B1, B2, B3, B4, B5, B6), A1 a1, A2 a2, A3 a3, A4 a4, A5 a5,
+                                        A6 a6, A7 a7)
+{
+	typedef R result_type;
+	typedef tuple<A1, A2, A3, A4, A5, A6, A7> list;
+	return detail::bound_func
+	<
+		result_type,
+		detail::mem_fn_6<R, T, B1, B2, B3, B4, B5, B6>,
+		list
+	>(mem_fn(f), list(a1, a2, a3, a4, a5, a6, a7));
+}
+
+template <class R, class T, class B1, class B2, class B3, class B4, class B5,
+                            class B6,
+                            class A1, class A2, class A3, class A4, class A5,
+                            class A6, class A7>
+inline
+detail::bound_func
+<
+	R,
+	detail::mem_fn_6_c<R, T, B1, B2, B3, B4, B5, B6>,
+	tuple<A1, A2, A3, A4, A5, A6, A7>
+>
+bind(R (T::*f)(B1, B2, B3, B4, B5, B6) const, A1 a1, A2 a2, A3 a3, A4 a4, A5 a5,
+                                              A6 a6, A7 a7)
+{
+	typedef R result_type;
+	typedef tuple<A1, A2, A3, A4, A5, A6, A7> list;
+	return detail::bound_func
+	<
+		result_type,
+		detail::mem_fn_6_c<R, T, B1, B2, B3, B4, B5, B6>,
+		list
+	>(mem_fn(f), list(a1, a2, a3, a4, a5, a6, a7));
+}
+
+template <class F, class A1, class A2, class A3, class A4, class A5,
+                   class A6, class A7, class A8>
+inline
+detail::bound_func<nat, F, tuple<A1, A2, A3, A4, A5, A6, A7, A8> >
+bind(F f, A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8)
+{
+	typedef nat result_type;
+	typedef tuple<A1, A2, A3, A4, A5, A6, A7, A8> list;
+	return detail::bound_func<result_type, F, list>
+		(f, list(a1, a2, a3, a4, a5, a6, a7, a8));
+}
+
+template <class R, class F, class A1, class A2, class A3, class A4, class A5,
+                            class A6, class A7, class A8>
+inline
+detail::bound_func<R, F, tuple<A1, A2, A3, A4, A5, A6, A7, A8> >
+bind(F f, A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8)
+{
+	typedef R result_type;
+	typedef tuple<A1, A2, A3, A4, A5, A6, A7, A8> list;
+	return detail::bound_func<result_type, F, list>
+		(f, list(a1, a2, a3, a4, a5, a6, a7, a8));
+}
+
+template <class R, class B1, class B2, class B3, class B4, class B5,
+                   class B6, class B7, class B8,
+                   class A1, class A2, class A3, class A4, class A5,
+                   class A6, class A7, class A8>
+inline
+detail::bound_func
+<
+	R, R (*)(B1, B2, B3, B4, B5, B6, B7, B8),
+	tuple<A1, A2, A3, A4, A5, A6, A7, A8>
+>
+bind(R (*f)(B1, B2, B3, B4, B5, B6, B7, B8), A1 a1, A2 a2, A3 a3, A4 a4, A5 a5,
+                                             A6 a6, A7 a7, A8 a8)
+{
+	typedef R result_type;
+	typedef tuple<A1, A2, A3, A4, A5, A6, A7, A8> list;
+	return detail::bound_func
+	<
+		result_type,
+		R (*)(B1, B2, B3, B4, B5, B6, B7, B8),
+		list
+	>(f, list(a1, a2, a3, a4, a5, a6, a7, a8));
+}
+
+template <class R, class T, class B1, class B2, class B3, class B4, class B5,
+                            class B6, class B7,
+                            class A1, class A2, class A3, class A4, class A5,
+                            class A6, class A7, class A8>
+inline
+detail::bound_func
+<
+	R,
+	detail::mem_fn_7<R, T, B1, B2, B3, B4, B5, B6, B7>,
+	tuple<A1, A2, A3, A4, A5, A6, A7, A8>
+>
+bind(R (T::*f)(B1, B2, B3, B4, B5, B6, B7), A1 a1, A2 a2, A3 a3, A4 a4, A5 a5,
+                                            A6 a6, A7 a7, A8 a8)
+{
+	typedef R result_type;
+	typedef tuple<A1, A2, A3, A4, A5, A6, A7, A8> list;
+	return detail::bound_func
+	<
+		result_type,
+		detail::mem_fn_7<R, T, B1, B2, B3, B4, B5, B6, B7>,
+		list
+	>(mem_fn(f), list(a1, a2, a3, a4, a5, a6, a7, a8));
+}
+
+template <class R, class T, class B1, class B2, class B3, class B4, class B5,
+                            class B6, class B7,
+                            class A1, class A2, class A3, class A4, class A5,
+                            class A6, class A7, class A8>
+inline
+detail::bound_func
+<
+	R,
+	detail::mem_fn_7_c<R, T, B1, B2, B3, B4, B5, B6, B7>,
+	tuple<A1, A2, A3, A4, A5, A6, A7, A8>
+>
+bind(R (T::*f)(B1, B2, B3, B4, B5, B6, B7) const, A1 a1, A2 a2, A3 a3, A4 a4, A5 a5,
+                                                  A6 a6, A7 a7, A8 a8)
+{
+	typedef R result_type;
+	typedef tuple<A1, A2, A3, A4, A5, A6, A7, A8> list;
+	return detail::bound_func
+	<
+		result_type,
+		detail::mem_fn_7_c<R, T, B1, B2, B3, B4, B5, B6, B7>,
+		list
+	>(mem_fn(f), list(a1, a2, a3, a4, a5, a6, a7, a8));
+}
+
+template <class F, class A1, class A2, class A3, class A4, class A5,
+                   class A6, class A7, class A8, class A9>
+inline
+detail::bound_func<nat, F, tuple<A1, A2, A3, A4, A5, A6, A7, A8, A9> >
+bind(F f, A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9)
+{
+	typedef nat result_type;
+	typedef tuple<A1, A2, A3, A4, A5, A6, A7, A8, A9> list;
+	return detail::bound_func<result_type, F, list>
+		(f, list(a1, a2, a3, a4, a5, a6, a7, a8, a9));
+}
+
+template <class R, class F, class A1, class A2, class A3, class A4, class A5,
+                            class A6, class A7, class A8, class A9>
+inline
+detail::bound_func<R, F, tuple<A1, A2, A3, A4, A5, A6, A7, A8, A9> >
+bind(F f, A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9)
+{
+	typedef R result_type;
+	typedef tuple<A1, A2, A3, A4, A5, A6, A7, A8, A9> list;
+	return detail::bound_func<result_type, F, list>
+		(f, list(a1, a2, a3, a4, a5, a6, a7, a8, a9));
+}
+
+template <class R, class B1, class B2, class B3, class B4, class B5,
+                   class B6, class B7, class B8, class B9,
+                   class A1, class A2, class A3, class A4, class A5,
+                   class A6, class A7, class A8, class A9>
+inline
+detail::bound_func
+<
+	R, R (*)(B1, B2, B3, B4, B5, B6, B7, B8, B9),
+	tuple<A1, A2, A3, A4, A5, A6, A7, A8, A9>
+>
+bind(R (*f)(B1, B2, B3, B4, B5, B6, B7, B8, B9), A1 a1, A2 a2, A3 a3, A4 a4, A5 a5,
+                                                 A6 a6, A7 a7, A8 a8, A9 a9)
+{
+	typedef R result_type;
+	typedef tuple<A1, A2, A3, A4, A5, A6, A7, A8, A9> list;
+	return detail::bound_func
+	<
+		result_type,
+		R (*)(B1, B2, B3, B4, B5, B6, B7, B8, B9),
+		list
+	>(f, list(a1, a2, a3, a4, a5, a6, a7, a8, a9));
+}
+
+template <class R, class T, class B1, class B2, class B3, class B4, class B5,
+                            class B6, class B7, class B8,
+                            class A1, class A2, class A3, class A4, class A5,
+                            class A6, class A7, class A8, class A9>
+inline
+detail::bound_func
+<
+	R,
+	detail::mem_fn_8<R, T, B1, B2, B3, B4, B5, B6, B7, B8>,
+	tuple<A1, A2, A3, A4, A5, A6, A7, A8, A9>
+>
+bind(R (T::*f)(B1, B2, B3, B4, B5, B6, B7, B8), A1 a1, A2 a2, A3 a3, A4 a4, A5 a5,
+                                                A6 a6, A7 a7, A8 a8, A9 a9)
+{
+	typedef R result_type;
+	typedef tuple<A1, A2, A3, A4, A5, A6, A7, A8, A9> list;
+	return detail::bound_func
+	<
+		result_type,
+		detail::mem_fn_8<R, T, B1, B2, B3, B4, B5, B6, B7, B8>,
+		list
+	>(mem_fn(f), list(a1, a2, a3, a4, a5, a6, a7, a8, a9));
+}
+
+template <class R, class T, class B1, class B2, class B3, class B4, class B5,
+                            class B6, class B7, class B8,
+                            class A1, class A2, class A3, class A4, class A5,
+                            class A6, class A7, class A8, class A9>
+inline
+detail::bound_func
+<
+	R,
+	detail::mem_fn_8_c<R, T, B1, B2, B3, B4, B5, B6, B7, B8>,
+	tuple<A1, A2, A3, A4, A5, A6, A7, A8, A9>
+>
+bind(R (T::*f)(B1, B2, B3, B4, B5, B6, B7, B8) const, A1 a1, A2 a2, A3 a3, A4 a4, A5 a5,
+                                                      A6 a6, A7 a7, A8 a8, A9 a9)
+{
+	typedef R result_type;
+	typedef tuple<A1, A2, A3, A4, A5, A6, A7, A8, A9> list;
+	return detail::bound_func
+	<
+		result_type,
+		detail::mem_fn_8_c<R, T, B1, B2, B3, B4, B5, B6, B7, B8>,
+		list
+	>(mem_fn(f), list(a1, a2, a3, a4, a5, a6, a7, a8, a9));
+}
+
+_MSL_END_TR1_NAMESPACE
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#pragma enumsalwaysint reset
+#endif
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#pragma bool reset
+#endif
+
+#ifdef __MWERKS__
+#pragma options align=reset
+#endif
+
+#endif // RC_INVOKED
+
+#endif  // _BIND
+
+// hh 030901 Created

@@ -1,0 +1,93 @@
+{
+  "key": 42082,
+  "messages": [
+    {
+      "id": "msg_0122_D39R0101_00000",
+      "en_US": [
+        "You see the item over there?\r",
+        "It was me who dropped it, but I cannot\n",
+        "get over there to pick it up.\r",
+        "Why?\r",
+        "Walking on ice makes your feet freeze!\r",
+        "My shoes are so worn that the soles\n",
+        "are gone!"
+      ]
+    },
+    {
+      "id": "msg_0122_D39R0101_00001",
+      "en_US": [
+        "You see the item over there?\r",
+        "It was me who dropped it, but I cannot\n",
+        "get over there to pick it up.\r",
+        "Why?\r",
+        "Walking on ice makes your feet freeze!\r",
+        "My shoes are so worn that the soles\n",
+        "are gone!\r"
+      ]
+    },
+    {
+      "id": "msg_0122_D39R0101_00002",
+      "en_US": [
+        "The item you picked up over there...\n",
+        "it was an HM, wasn’t it?\r",
+        "I am the one who dropped it...but I\n",
+        "want you to keep it.\f",
+        "You took the time to get it, right?\r",
+        "It contains Waterfall.\n",
+        "Have fun climbing waterfalls!\r",
+        "Me?\r",
+        "I still need a new pair of shoes\n",
+        "before I can enjoy waterfalls."
+      ]
+    },
+    {
+      "id": "msg_0122_D39R0101_00003",
+      "en_US": [
+        "Me oh my...\n",
+        "Is that you, {STRVAR_1 3, 0, 0}?\f",
+        "Fancy meeting you here!\r",
+        "To tell the truth...my sandals are\n",
+        "frozen on the ice, and I am stuck here.\r",
+        "In other words, my flip-flops are\n",
+        "quick-frozen to the ground.\r",
+        "Tee hee.\r",
+        "Well, it’s no laughing matter. Would you\n",
+        "come around and push my back?"
+      ]
+    },
+    {
+      "id": "msg_0122_D39R0101_00004",
+      "en_US": [
+        "Me oh my...\n",
+        "Is that you, {STRVAR_1 3, 0, 0}?\f",
+        "Fancy meeting you here!\r",
+        "To tell the truth...my sandals are\n",
+        "frozen on the ice, and I am stuck here.\r",
+        "In other words, my flip-flops are\n",
+        "quick-frozen with the ground.\r",
+        "Tee hee.\r",
+        "Well, it’s no laughing matter.\n",
+        "Would you push my back? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0122_D39R0101_00005",
+      "en_US": "{SIZE 200}SHOVE!{SIZE 100}\r"
+    },
+    {
+      "id": "msg_0122_D39R0101_00006",
+      "en_US": [
+        "Don’t be so cruel.\n",
+        "You will push my back,\f",
+        "won’t you? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0122_D39R0101_00007",
+      "en_US": [
+        "You really are kind.\r",
+        "Thank you so much!\r"
+      ]
+    }
+  ]
+}

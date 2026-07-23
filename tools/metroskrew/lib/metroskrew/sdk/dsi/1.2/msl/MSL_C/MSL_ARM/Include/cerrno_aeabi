@@ -1,0 +1,43 @@
+/* MSL
+ * Copyright © 1995-2007 Freescale Corporation.  All rights reserved.
+ *
+ * $Date: 2007/01/29 18:12:50 $
+ * $Revision: 1.3 $
+ */
+
+#ifndef _MSL_CERRNO_AEABI
+#define _MSL_CERRNO_AEABI
+
+_MSL_BEGIN_EXTERN_C
+
+#if !defined(_MSL_ERRNO) && !defined(RC_INVOKED)
+	_MSL_IMP_EXP_C extern int errno;
+#endif /* _MSL_ERRNO */
+
+
+#if _MSL_C99
+#define EILSEQ	__aeabi_EILSEQ
+#endif /*_MSL_C99 */
+#define EDOM __aeabi_EDOM
+#define ERANGE	__aeabi_ERANGE
+
+#define errno() __aeabi_errno_addr()
+#define _MSL_ERRNO errno
+
+_MSL_IMP_EXP_C  extern const int __aeabi_EDOM;
+_MSL_IMP_EXP_C	extern const int __aeabi_EILSEQ;
+_MSL_IMP_EXP_C	extern const int __aeabi_ERANGE;
+
+_MSL_END_EXTERN_C
+
+#endif /* _MSL_CERRNO_AEABI */
+
+/* Change record:
+ * cc  060428 Integrated _AEABI_PORTABILITY_LEVEL work 
+ */
+ 
+ /* Chipwerks Change Record
+  * 6/4/2006  (*__aeabi_errno_addr()),__aeabi_EDOM,__aeabi_ERANGE,__aeabi_EILSEQ declared
+  * for _AEABI_PORTABILITY_LEVEL macro. Refer Section 5.4 from "C Library ABI for the ARM 
+  * architecture.pdf"
+  */

@@ -1,0 +1,111 @@
+/* MSL
+ * Copyright © 1995-2006 Freescale Corporation.  All rights reserved.
+ *
+ * $Date: 2006/02/08 20:32:45 $
+ * $Revision: 1.51.2.2 $
+ */
+
+#ifndef _MSL_CWCHAR
+#define _MSL_CWCHAR
+
+#include <ansi_parms.h>
+
+#if !_MSL_USING_MW_C_HEADERS
+	#include <wchar.h>
+	
+	#if _MSL_PUT_THIRD_PARTY_C_IN_STD
+		#include <msl_cpp_std_wchar.h>
+	#endif
+#else
+
+#if _MSL_WIDE_CHAR
+
+#include <msl_secure.h>
+#include <msl_rsize_t.h>
+#include <wchar_io.h>
+#include <eof.h>
+#include <weof.h>
+#include <wstdio.h>					/*- mm 030102 -*/
+#include <wscanf.h>
+#include <wcstold.h>
+#include <wtime.h>					/*- mm 030710 -*/
+#include <wcstoul.h>
+#include <wstring.h>
+#include <wprintf.h>
+#include <wmem.h>
+
+#if _MSL_NEEDS_EXTRAS
+	#include <extras_wchar.h>
+#endif
+
+#ifndef RC_INVOKED
+
+_MSL_BEGIN_NAMESPACE_STD
+_MSL_BEGIN_EXTERN_C
+
+	#ifdef __cplusplus
+		_MSL_END_EXTERN_C
+		inline int _MSL_CDECL 				wctob(wint_t c) _MSL_CANT_THROW { return((c & 0xFF00) ? (int)EOF : (int)c);} /*- mm 980625 -*/
+		inline wint_t _MSL_CDECL 			btowc(int c) _MSL_CANT_THROW   { return((c & 0x8000) ? (wint_t)WEOF : (wint_t)c);} /*- mm 010529 -*/ /*- ejs 030417 -*/
+		_MSL_BEGIN_EXTERN_C
+	#else       /* !__cplusplus */
+		_MSL_IMP_EXP_C int _MSL_CDECL 		wctob(wint_t);              							/*- mm 980625 -*/
+		_MSL_IMP_EXP_C wint_t _MSL_CDECL 	btowc(int);           									/*- mm 010529 -*/ /*- ejs 030417 -*/
+	#endif /* __cplusplus */																		/*- mm 990401 -*/
+	
+	_MSL_IMP_EXP_C size_t _MSL_CDECL 		mbrlen(const char * _MSL_RESTRICT, size_t, mbstate_t * _MSL_RESTRICT) _MSL_CANT_THROW; /*- mm 010529 -*/
+	_MSL_IMP_EXP_C int _MSL_CDECL 			mbsinit(const mbstate_t * ) _MSL_CANT_THROW;			/*- mm 021210 -*/
+	
+	#if _MSL_WIDE_CHAR  																			/*- mm 010529 -*/
+		_MSL_IMP_EXP_C size_t _MSL_CDECL 	mbrtowc(wchar_t * _MSL_RESTRICT, const char * _MSL_RESTRICT, size_t, mbstate_t * _MSL_RESTRICT) _MSL_CANT_THROW; /*- mm 010529 -*/
+		_MSL_IMP_EXP_C size_t _MSL_CDECL 	wcrtomb(char * _MSL_RESTRICT, wchar_t, mbstate_t * _MSL_RESTRICT) _MSL_CANT_THROW; /*- mm 010529 -*/
+		_MSL_IMP_EXP_C size_t _MSL_CDECL 	mbsrtowcs(wchar_t * _MSL_RESTRICT, const char ** _MSL_RESTRICT, size_t, mbstate_t * _MSL_RESTRICT) _MSL_CANT_THROW;	/*- mm 010529 -*/
+		_MSL_IMP_EXP_C size_t _MSL_CDECL 	wcsrtombs(char * _MSL_RESTRICT, const wchar_t ** _MSL_RESTRICT, size_t, mbstate_t * _MSL_RESTRICT) _MSL_CANT_THROW;	/*- mm 010529 -*/
+	#endif /* _MSL_WIDE_CHAR */																		/*- mm 010529 -*/
+
+_MSL_END_EXTERN_C
+_MSL_END_NAMESPACE_STD
+
+#endif /* RC_INVOKED */
+
+#endif /* _MSL_WIDE_CHAR */
+
+#endif /* _MSL_USING_MW_C_HEADERS */
+
+#endif /* _MSL_CWCHAR */
+
+/* Change record:
+ * JCM 980121 First code release.
+ * BLC 980324 Added prototypes for addition Win32 wchar_t functions
+ * BLC 980325 Moved prototypes into extern "C" block
+ * mf  980518 added a couple of non-standard wchar prototypes need for ce
+ * mm  981020 added #if _MSL_WIDE_CHAR wrappers
+ * mm  990217 removed #include cstddef as not needed and moved definitions of
+ *            WCHAR_MIN and WCHAR_MAX to wchar_t.h
+ * BLC 990312 fixed up extras.c prototypes for new function, eliminated
+ *            wcsdup prototype, since its really called _wcsdup
+ * mm  990807 Deleted include of wtime.h and typedefs of wint_t and friends now in wchar_t.h
+ * mm  000201 Inserted definitions of wctob, moved from cwtype to accord with C Standard
+ * cc  000511 moved funtions dest_os to win to common header
+ * JWW 001208 Added case for targeting Mach-O
+ * cc  010405 removed pragma options align native and reset
+ * cc  010410 updated to new namespace macros
+ * mm  010417 Moved definition of EILSEQ to cerrno
+ * mm  010529 Added missing multibyte functions.
+ * blc 010819 Updated to add casts for EOF (needed for systems where long != int)
+ * cc  011023 Added check for _MSL_NEEDS_EXTRAS
+ * JWW 011027 Use _MSL_USING_MW_C_HEADERS as generic header test instead of specific Mach-O test
+ * cc  011203 Added _MSL_CDECL for new name mangling
+ * JWW 020130 Use _MSL_WEOF for platform independent definition of WEOF
+ * hh  020603 Added no throw spec to functions
+ * hh  020606 Moved WEOF out to its own header
+ * JWW 020917 Added _MSL_RESTRICT to get the restrict type specifier for certain C99 functions
+ * mm  021210 Added prototype for mbsinit()
+ * mm  030102 Moved the includes together for better readability.
+ * JWW 030224 Changed __NO_WIDE_CHAR flag into the new more configurable _MSL_WIDE_CHAR
+ * mm  030304 Added _MSL_C99 wrapper
+ * ejs 030523 btowc() uses int, not char type
+ * mm  030710 Added include of wtime.h
+ * JWW 040317 Updated the __STDC_WANT_SECURE_LIB__ secure library based on new secure specifications
+ * JWW 050128 When using MSL C++ on top of a third party C (non-MSL), put C items into std namespace
+ */

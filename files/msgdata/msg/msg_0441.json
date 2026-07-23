@@ -1,0 +1,255 @@
+{
+  "key": 42199,
+  "messages": [
+    {
+      "id": "msg_0441_00000",
+      "en_US": "Please wait a moment."
+    },
+    {
+      "id": "msg_0441_00001",
+      "garbage": 13
+    },
+    {
+      "id": "msg_0441_00002",
+      "en_US": [
+        "{STRVAR_1 0, 0, 0} will be fully\n",
+        "restored."
+      ]
+    },
+    {
+      "id": "msg_0441_00003",
+      "en_US": [
+        "Battle no. {STRVAR_1 53, 0, 0} is next!\n",
+        "Are you ready?"
+      ]
+    },
+    {
+      "id": "msg_0441_00004",
+      "en_US": [
+        "Would you like to save the last battle\n",
+        "as your Battle Video?"
+      ]
+    },
+    {
+      "id": "msg_0441_00005",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}’s battle has been saved\n",
+        "as a Battle Video.\r"
+      ]
+    },
+    {
+      "id": "msg_0441_00006",
+      "en_US": [
+        "There was an error.\n",
+        "The Battle Video couldn’t be saved."
+      ]
+    },
+    {
+      "id": "msg_0441_00007",
+      "en_US": [
+        "Delete your existing Battle Video and\n",
+        "save the last battle?"
+      ]
+    },
+    {
+      "id": "msg_0441_00008",
+      "en_US": [
+        "Saving...\n",
+        "Don’t turn off the power."
+      ]
+    },
+    {
+      "id": "msg_0441_00009",
+      "en_US": [
+        "Would you like to save and take a break\n",
+        "from playing?"
+      ]
+    },
+    {
+      "id": "msg_0441_00010",
+      "en_US": [
+        "Would you like to retire from this\n",
+        "Battle Hall challenge?"
+      ]
+    },
+    {
+      "id": "msg_0441_00011",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} is choosing.\n",
+        "Please wait."
+      ]
+    },
+    {
+      "id": "msg_0441_00012",
+      "garbage": 20
+    },
+    {
+      "id": "msg_0441_00013",
+      "en_US": "{STRVAR_1 3, 0, 0} chose to retire."
+    },
+    {
+      "id": "msg_0441_00014",
+      "en_US": [
+        "You have cleared your tenth Battle Hall\n",
+        "match! Congratulations!\r",
+        "For your stupendous win streak, you\n",
+        "and {STRVAR_1 0, 0, 0} are awarded BP!\r"
+      ]
+    },
+    {
+      "id": "msg_0441_00015",
+      "en_US": "{STRVAR_1 3, 0, 0} received {STRVAR_1 51, 1, 0} BP!\r"
+    },
+    {
+      "id": "msg_0441_00016",
+      "garbage": 33
+    },
+    {
+      "id": "msg_0441_00017",
+      "en_US": [
+        "Saving...\n",
+        "Don’t turn off the power."
+      ]
+    },
+    {
+      "id": "msg_0441_00018",
+      "garbage": 21
+    },
+    {
+      "id": "msg_0441_00019",
+      "en_US": "CONTINUE"
+    },
+    {
+      "id": "msg_0441_00020",
+      "en_US": "RECORD"
+    },
+    {
+      "id": "msg_0441_00021",
+      "en_US": "REST"
+    },
+    {
+      "id": "msg_0441_00022",
+      "en_US": "RETIRE"
+    },
+    {
+      "id": "msg_0441_00023",
+      "en_US": [
+        "Please choose the type of Pokémon\n",
+        "you will battle.\r"
+      ]
+    },
+    {
+      "id": "msg_0441_00024",
+      "en_US": [
+        "Will you battle the {STRVAR_1 15, 0, 0}-type,\n",
+        "Rank {STRVAR_1 51, 1, 0} Pokémon?"
+      ]
+    },
+    {
+      "id": "msg_0441_00025",
+      "garbage": 16
+    },
+    {
+      "id": "msg_0441_00026",
+      "garbage": 16
+    },
+    {
+      "id": "msg_0441_00027",
+      "garbage": 2
+    },
+    {
+      "id": "msg_0441_00028",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0441_00029",
+      "garbage": 1
+    },
+    {
+      "id": "msg_0441_00030",
+      "garbage": 1
+    },
+    {
+      "id": "msg_0441_00031",
+      "en_US": "Will you battle against the Hall Matron?"
+    },
+    {
+      "id": "msg_0441_00032",
+      "en_US": [
+        "Excuse me!\n",
+        "Please hold on a moment.\r",
+        "In recognition of your remarkable\n",
+        "winning streak, our Frontier Brain is\f",
+        "demanding a match with you.\r",
+        "Actually, you have no choice.\n",
+        "You must battle our Hall Matron!\r"
+      ]
+    },
+    {
+      "id": "msg_0441_00033",
+      "en_US": [
+        "Argenta: My Battle Hall allows Trainers\n",
+        "to mount challenges with their one\f",
+        "preferred Pokémon.\r",
+        "I imagine there were tense moments\n",
+        "getting here with your chosen one.\r",
+        "But understand that one shines the\n",
+        "brightest when a challenge is overcome.\r",
+        "I am Argenta, and I am your final and\n",
+        "most daunting challenge.\r",
+        "I dare you to overcome my challenge.\r"
+      ]
+    },
+    {
+      "id": "msg_0441_00034",
+      "en_US": [
+        "Argenta: Well!\n",
+        "My goodness, your Pokémon...\f",
+        "It’s got star power beyond belief.\r",
+        "Even from inside its Poké Ball, I can\n",
+        "feel its charismatic brilliance.\r",
+        "But I’m the Hall Matron.\n",
+        "I’ll be the judge of that.\r",
+        "I must battle it for myself and see if\n",
+        "that brilliance is genuine.\r",
+        "That is why we must battle now.\r"
+      ]
+    },
+    {
+      "id": "msg_0441_00035",
+      "en_US": [
+        "Argenta: A good Trainer doesn’t force\n",
+        "their preferred Pokémon on anyone.\r",
+        "A good one keeps with their favorite\n",
+        "without drama or fanfare.\r",
+        "That is how I see it, at least.\r",
+        "And, by the way I see it, you’re an\n",
+        "excellent Trainer!\r",
+        "Be sure to visit the Battle Hall again\n",
+        "with a favorite Pokémon.\r",
+        "Until then, bye-bye!\r"
+      ]
+    },
+    {
+      "id": "msg_0441_00036",
+      "en_US": [
+        "Argenta: You must never forget there\n",
+        "is a place where everyone can shine.\r",
+        "That goes for any and every kind of\n",
+        "Pokémon, too.\r",
+        "Spread that message in your own words.\n",
+        "It’s one everyone should hear.\r",
+        "And now, having lost, this lady has\n",
+        "nothing left to say at all, but...\r",
+        "Bye-bye!\r"
+      ]
+    },
+    {
+      "id": "msg_0441_00037",
+      "en_US": [
+        "Please select what type of Pokémon\n",
+        "you’d like to battle."
+      ]
+    }
+  ]
+}

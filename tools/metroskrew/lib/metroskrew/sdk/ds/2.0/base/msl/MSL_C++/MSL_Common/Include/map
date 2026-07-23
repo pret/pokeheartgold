@@ -1,0 +1,2176 @@
+/* MSL
+ * Copyright © 1995-2006 Freescale Corporation.  All rights reserved.
+ *
+ * $Date: 2006/02/09 16:58:46 $
+ * $Revision: 1.34.2.3 $
+ */
+
+// map
+
+#ifndef _MAP
+#define _MAP
+
+/*  map synopsis
+
+namespace std
+{
+
+template <class Key, class T, class Compare = less<Key>,
+          class Allocator = allocator<pair<const Key, T> > >
+class map
+{
+public:
+	//  types:
+	typedef Key                                   key_type;
+	typedef T                                     mapped_type;
+	typedef pair<const Key, T>                    value_type;
+	typedef Compare                               key_compare;
+	typedef Allocator                             allocator_type;
+	typedef typename Allocator::reference         reference;
+	typedef typename Allocator::const_reference   const_reference;
+	typedef typename Allocator::size_type         size_type;
+	typedef typename Allocator::difference_type   difference_type;
+	typedef typename Allocator::pointer           pointer;
+	typedef typename Allocator::const_pointer     const_pointer;
+
+	class                                         iterator;        // bidirectional
+	class                                         const_iterator;  // bidirectional
+	typedef std::reverse_iterator<iterator>       reverse_iterator;
+	typedef std::reverse_iterator<const_iterator> const_reverse_iterator;
+
+	class value_compare
+		: public binary_function<value_type, value_type, bool>
+	{
+		friend class map;
+	protected:
+		Compare comp;
+		value_compare(Compare c);
+	public:
+		bool operator()(const value_type& x, const value_type& y) const;
+	};
+
+	explicit map(const Compare& comp = Compare(), const Allocator& = Allocator());
+	template <class InputIterator>
+		map(InputIterator first, InputIterator last,
+		    const Compare& comp = Compare(), const Allocator& = Allocator());
+	map(const map& x);
+	map& operator=(const map& x);
+	~map();
+
+	allocator_type get_allocator() const;
+	size_type max_size() const;
+
+	size_type size() const;
+	bool      empty() const;
+
+	iterator               begin();
+	const_iterator         begin() const;
+	iterator               end();
+	const_iterator         end() const;
+
+	reverse_iterator       rbegin();
+	const_reverse_iterator rbegin() const;
+	reverse_iterator       rend();
+	const_reverse_iterator rend() const;
+
+	T& operator[](const key_type& x);
+
+	pair<iterator, bool> insert(const value_type& x);
+	iterator             insert(iterator position, const value_type& x);
+	template <class InputIterator>
+		void             insert(InputIterator first, InputIterator last);
+
+	iterator  erase(iterator position);
+	size_type erase(const key_type& x);
+	iterator  erase(iterator first, iterator last);
+	void clear();
+
+	void swap(map&);
+
+	key_compare   key_comp() const;
+	value_compare value_comp() const;
+
+	iterator       find(const key_type& x);
+	const_iterator find(const key_type& x) const;
+	size_type      count(const key_type& x) const;
+
+	iterator       lower_bound(const key_type& x);
+	const_iterator lower_bound(const key_type& x) const;
+	iterator       upper_bound(const key_type& x);
+	const_iterator upper_bound(const key_type& x) const;
+
+	pair<iterator,iterator>             equal_range(const key_type& x);
+	pair<const_iterator,const_iterator> equal_range(const key_type& x) const;
+
+	bool invariants() const;   // Metrowerks extension
+};
+
+template <class Key, class T, class Compare, class Allocator>
+bool
+operator==(const map<Key,T,Compare,Allocator>& x, const map<Key,T,Compare,Allocator>& y);
+
+template <class Key, class T, class Compare, class Allocator>
+bool
+operator< (const map<Key,T,Compare,Allocator>& x, const map<Key,T,Compare,Allocator>& y);
+
+template <class Key, class T, class Compare, class Allocator>
+bool
+operator!=(const map<Key,T,Compare,Allocator>& x, const map<Key,T,Compare,Allocator>& y);
+
+template <class Key, class T, class Compare, class Allocator>
+bool
+operator> (const map<Key,T,Compare,Allocator>& x, const map<Key,T,Compare,Allocator>& y);
+
+template <class Key, class T, class Compare, class Allocator>
+bool
+operator>=(const map<Key,T,Compare,Allocator>& x, const map<Key,T,Compare,Allocator>& y);
+
+template <class Key, class T, class Compare, class Allocator>
+bool
+operator<=(const map<Key,T,Compare,Allocator>& x, const map<Key,T,Compare,Allocator>& y);
+
+template <class Key, class T, class Compare, class Allocator>
+void
+swap(map<Key,T,Compare,Allocator>& x, map<Key,T,Compare,Allocator>& y);
+
+template <class Key, class T, class Compare = less<Key>,
+          class Allocator = allocator<pair<const Key, T> > >
+class multimap
+public:
+	//  types:
+	typedef Key                                   key_type;
+	typedef T                                     mapped_type;
+	typedef pair<const Key,T>                     value_type;
+	typedef Compare                               key_compare;
+	typedef Allocator                             allocator_type;
+	typedef typename Allocator::reference         reference;
+	typedef typename Allocator::const_reference   const_reference;
+	typedef typename Allocator::size_type         size_type;
+	typedef typename Allocator::difference_type   difference_type;
+	typedef typename Allocator::pointer           pointer;
+	typedef typename Allocator::const_pointer     const_pointer;
+
+	class                                         iterator;        // bidirectional
+	class                                         const_iterator;  // bidirectional
+	typedef std::reverse_iterator<iterator>       reverse_iterator;
+	typedef std::reverse_iterator<const_iterator> const_reverse_iterator;
+
+	class value_compare
+		: public binary_function<value_type,value_type,bool>
+	{
+		friend class multimap;
+	protected:
+		Compare comp;
+		value_compare(Compare c);
+	public:
+		bool operator()(const value_type& x, const value_type& y) const;
+	};
+
+    explicit multimap(const Compare& comp = Compare(), const Allocator& = Allocator());
+	template <class InputIterator>
+		multimap(InputIterator first, InputIterator last,
+		         const Compare& comp = Compare(), const Allocator& = Allocator());
+	multimap(const multimap& x);
+	multimap& operator=(const multimap& x);
+	~multimap();
+
+	allocator_type get_allocator() const;
+	size_type      max_size() const;
+
+	size_type size() const;
+	bool      empty() const;
+
+	iterator               begin();
+	const_iterator         begin() const;
+	iterator               end();
+	const_iterator         end() const;
+
+	reverse_iterator       rbegin();
+	const_reverse_iterator rbegin() const;
+	reverse_iterator       rend();
+	const_reverse_iterator rend() const;
+
+	iterator insert(const value_type& x);
+	iterator insert(iterator position, const value_type& x);
+	template <class InputIterator>
+		void insert(InputIterator first, InputIterator last);
+
+	iterator  erase(iterator position);
+	size_type erase(const key_type& x);
+	iterator  erase(iterator first, iterator last);
+	void clear();
+
+	void swap(multimap&);
+
+	key_compare    key_comp() const;
+	value_compare  value_comp() const;
+
+	iterator       find(const key_type& x);
+	const_iterator find(const key_type& x) const;
+	size_type      count(const key_type& x) const;
+
+	iterator       lower_bound(const key_type& x);
+	const_iterator lower_bound(const key_type& x) const;
+	iterator       upper_bound(const key_type& x);
+	const_iterator upper_bound(const key_type& x) const;
+
+	pair<iterator,iterator>             equal_range(const key_type& x);
+	pair<const_iterator,const_iterator> equal_range(const key_type& x) const;
+
+	bool invariants() const;   // Metrowerks extension
+};
+
+template <class Key, class T, class Compare, class Allocator>
+bool
+operator==(const multimap<Key,T,Compare,Allocator>& x, const multimap<Key,T,Compare,Allocator>& y);
+
+template <class Key, class T, class Compare, class Allocator>
+bool
+operator< (const multimap<Key,T,Compare,Allocator>& x, const multimap<Key,T,Compare,Allocator>& y);
+
+template <class Key, class T, class Compare, class Allocator>
+bool
+operator!=(const multimap<Key,T,Compare,Allocator>& x, const multimap<Key,T,Compare,Allocator>& y);
+
+template <class Key, class T, class Compare, class Allocator>
+bool
+operator> (const multimap<Key,T,Compare,Allocator>& x, const multimap<Key,T,Compare,Allocator>& y);
+
+template <class Key, class T, class Compare, class Allocator>
+bool
+operator>=(const multimap<Key,T,Compare,Allocator>& x, const multimap<Key,T,Compare,Allocator>& y);
+
+template <class Key, class T, class Compare, class Allocator>
+bool
+operator<=(const multimap<Key,T,Compare,Allocator>& x, const multimap<Key,T,Compare,Allocator>& y);
+
+template <class Key, class T, class Compare, class Allocator>
+void
+swap(multimap<Key,T,Compare,Allocator>& x, multimap<Key,T,Compare,Allocator>& y);
+
+}  // std
+*/
+
+#include <mslconfig>
+#include <tree>
+#include <functional>
+
+#ifndef RC_INVOKED
+
+#ifdef __MWERKS__
+#pragma options align=native
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#if _MSL_FORCE_ENUMS_ALWAYS_INT
+		#pragma enumsalwaysint on
+	#else
+		#pragma enumsalwaysint off
+	#endif
+#endif  // _MSL_FORCE_ENUMS_ALWAYS_INT
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#if _MSL_FORCE_ENABLE_BOOL_SUPPORT
+		#pragma bool on
+	#else
+		#pragma bool off
+	#endif
+#endif  // _MSL_FORCE_ENABLE_BOOL_SUPPORT
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	namespace std {
+#endif
+
+// __map_transform
+
+template <class Key, class T, class Compare, bool is_scalar>
+struct __map_transform_imp
+{
+	static const bool transformed = false;
+	typedef Key                                         base_key_type;
+	typedef T                                           base_mapped_type;
+	typedef pair<base_key_type, base_mapped_type>       non_const_base_value_type;
+	typedef pair<const base_key_type, base_mapped_type> base_value_type;
+	typedef Compare                                     base_key_compare;
+};
+
+#ifndef _Inhibit_Container_Optimization
+
+template <class Key, class T>
+struct __map_transform_imp<Key, T, less<Key>, true>
+{
+	static const bool transformed = true;
+	typedef Key                                         base_key_type;
+	typedef typename Metrowerks::store_as<T>::type      base_mapped_type;
+	typedef pair<base_key_type, base_mapped_type>       non_const_base_value_type;
+	typedef pair<const base_key_type, base_mapped_type> base_value_type;
+	typedef less<Key>                                   base_key_compare;
+};
+
+template <class Key, class T>
+struct __map_transform_imp<Key*, T, less<Key*>, false>
+{
+	static const bool transformed = true;
+	typedef const void*                                 base_key_type;
+	typedef T                                           base_mapped_type;
+	typedef pair<base_key_type, base_mapped_type>       non_const_base_value_type;
+	typedef pair<const base_key_type, base_mapped_type> base_value_type;
+	typedef less<const void*>                           base_key_compare;
+};
+
+template <class Key, class T>
+struct __map_transform_imp<Key*, T, less<Key*>, true>
+{
+	static const bool transformed = true;
+	typedef const void*                                 base_key_type;
+	typedef typename Metrowerks::store_as<T>::type      base_mapped_type;
+	typedef pair<base_key_type, base_mapped_type>       non_const_base_value_type;
+	typedef pair<const base_key_type, base_mapped_type> base_value_type;
+	typedef less<const void*>                           base_key_compare;
+};
+
+template <class Key, class T>
+struct __map_transform_imp<Key, T, greater<Key>, true>
+{
+	static const bool transformed = true;
+	typedef Key                                         base_key_type;
+	typedef typename Metrowerks::store_as<T>::type      base_mapped_type;
+	typedef pair<base_key_type, base_mapped_type>       non_const_base_value_type;
+	typedef pair<const base_key_type, base_mapped_type> base_value_type;
+	typedef greater<Key>                                   base_key_compare;
+};
+
+template <class Key, class T>
+struct __map_transform_imp<Key*, T, greater<Key*>, false>
+{
+	static const bool transformed = true;
+	typedef const void*                                 base_key_type;
+	typedef T                                           base_mapped_type;
+	typedef pair<base_key_type, base_mapped_type>       non_const_base_value_type;
+	typedef pair<const base_key_type, base_mapped_type> base_value_type;
+	typedef greater<const void*>                           base_key_compare;
+};
+
+template <class Key, class T>
+struct __map_transform_imp<Key*, T, greater<Key*>, true>
+{
+	static const bool transformed = true;
+	typedef const void*                                 base_key_type;
+	typedef typename Metrowerks::store_as<T>::type      base_mapped_type;
+	typedef pair<base_key_type, base_mapped_type>       non_const_base_value_type;
+	typedef pair<const base_key_type, base_mapped_type> base_value_type;
+	typedef greater<const void*>                           base_key_compare;
+};
+
+#endif // _Inhibit_Container_Optimization
+
+template <class Key, class T, class Compare>
+struct __map_transform
+	: private __map_transform_imp<Key, T, Compare, Metrowerks::is_scalar<T>::value>
+{
+	typedef __map_transform_imp<Key, T, Compare, Metrowerks::is_scalar<T>::value> base;
+	static const bool transformed = base::transformed;
+	typedef typename base::base_value_type  base_value_type;
+	typedef typename base::base_key_type    base_key_type;
+	typedef typename base::base_mapped_type base_mapped_type;
+	typedef typename base::base_key_compare base_key_compare;
+};
+
+// __map_do_transform  -  not transformed
+
+template <class Key, class T, class Compare, class Allocator, bool is_transformed>
+class __map_do_transform
+{
+public:
+//  types:
+	typedef Key                                   key_type;
+	typedef T                                     mapped_type;
+	typedef pair<const key_type, mapped_type>     value_type;
+	typedef Compare                               key_compare;
+private:
+	typedef pair<key_type, mapped_type>           non_const_value_type;
+public:
+
+	class value_compare
+		: public binary_function<value_type, value_type, bool>
+	{
+	public:
+		bool operator()(const value_type& x, const value_type& y) const
+		{
+			return comp(x.first, y.first);
+		}
+		bool operator()(const non_const_value_type& x, const value_type& y) const
+		{
+			return comp(x.first, y.first);
+		}
+		bool operator()(const value_type& x, const non_const_value_type& y) const
+		{
+			return comp(x.first, y.first);
+		}
+		bool operator()(const key_type& x, const value_type& y) const
+		{
+			return comp(x, y.first);
+		}
+		bool operator()(const value_type& x, const key_type& y) const
+		{
+			return comp(x.first, y);
+		}
+
+		value_compare() {}
+	protected:
+		key_compare comp;
+
+		value_compare(key_compare c) : comp(c) {}
+
+		friend class __map_do_transform;
+	};
+
+private:
+
+	typedef __tree<value_type, value_compare, Allocator> tree_type;
+public:
+	typedef typename tree_type::allocator_type    allocator_type;
+	typedef typename allocator_type::reference         reference;
+	typedef typename allocator_type::const_reference   const_reference;
+	typedef typename allocator_type::size_type         size_type;
+	typedef typename allocator_type::difference_type   difference_type;
+	typedef typename allocator_type::pointer           pointer;
+	typedef typename allocator_type::const_pointer     const_pointer;
+
+	typedef typename tree_type::iterator       iterator;
+	typedef typename tree_type::const_iterator const_iterator;
+
+	typedef _STD::reverse_iterator<iterator>       reverse_iterator;
+	typedef _STD::reverse_iterator<const_iterator> const_reverse_iterator;
+
+	//  lib.map.cons construct/copy/destroy:
+	         __map_do_transform() {}
+	explicit __map_do_transform(const key_compare& comp) : tree_(value_compare(comp)) {}
+	         __map_do_transform(const key_compare& comp, const allocator_type& a)
+	             : tree_(value_compare(comp), a) {}
+	template <class InputIterator>
+		__map_do_transform(InputIterator first, InputIterator last) : tree_(first, last, false) {}
+	template <class InputIterator>
+		__map_do_transform(InputIterator first, InputIterator last, const key_compare& comp)
+			: tree_(first, last, false, value_compare(comp)) {}
+	template <class InputIterator>
+		__map_do_transform(InputIterator first, InputIterator last, const key_compare& comp, const allocator_type& a)
+			: tree_(first, last, false, value_compare(comp), a) {}
+
+#ifdef _MSL_MOVE
+	__map_do_transform(__map_do_transform&& x) : tree_(_STD::move(x.tree_)) {}
+#endif
+
+	allocator_type get_allocator() const {return tree_.get_allocator();}
+
+	//  iterators:
+	iterator               begin()       {return tree_.begin();}
+	const_iterator         begin() const {return tree_.begin();}
+	iterator               end()         {return tree_.end();}
+	const_iterator         end() const   {return tree_.end();}
+
+	reverse_iterator       rbegin()       {return reverse_iterator(end());}
+	const_reverse_iterator rbegin() const {return const_reverse_iterator(end());}
+	reverse_iterator       rend()         {return reverse_iterator(begin());}
+	const_reverse_iterator rend() const   {return const_reverse_iterator(begin());}
+
+	//  capacity:
+	bool      empty() const    {return tree_.empty();}
+	size_type size() const     {return tree_.size();}
+	size_type max_size() const {return tree_.max_size();}
+
+	//  lib.map.access element access:
+	mapped_type& operator[](const key_type& x)
+		{return tree_.template find_or_insert<key_type, mapped_type>(x).second;}
+
+#ifdef _MSL_MOVE
+	mapped_type& operator[](key_type&& x)
+		{return tree_.template find_or_insert<key_type, mapped_type>(_STD::move(x)).second;}
+#endif  // _MSL_MOVE
+
+	//  modifiers:
+	pair<iterator, bool> insert(const value_type& x)                    {return tree_.insert_one(x);}
+	iterator             insert(iterator position, const value_type& x) {return tree_.insert_one(position, x);}
+#ifdef _MSL_MOVE
+	pair<iterator, bool> insert(const pair<key_type, mapped_type>& x)               {return tree_.insert_one(x);}
+	pair<iterator, bool> insert(pair<key_type, mapped_type>&& x)                    {return tree_.insert_one(_STD::move(x));}
+	iterator             insert(iterator position, pair<key_type, mapped_type>&& x) {return tree_.insert_one(position, _STD::move(x));}
+	iterator             insert(iterator position, const pair<key_type, mapped_type>& x) {return tree_.insert_one(position, x);}
+#endif  // _MSL_MOVE
+
+	template <class InputIterator>
+		void insert(InputIterator first, InputIterator last)
+			{tree_.insert_one(first, last);}
+
+	iterator  erase(iterator position)             {return tree_.erase(position);}
+	size_type erase(const key_type& x)             {return tree_.erase_one(x);}
+	iterator  erase(iterator first, iterator last) {return tree_.erase(first, last);}
+	void swap(__map_do_transform& x) {tree_.swap(x.tree_);}
+	void clear()                     {tree_.clear();}
+
+	//  observers:
+	key_compare   key_comp() const   {return tree_.value_comp().comp;}
+	value_compare value_comp() const {return tree_.value_comp();}
+
+	//  lib.map.ops map operations:
+	iterator       find(const key_type& x)        {return tree_.find(x);}
+	const_iterator find(const key_type& x) const  {return tree_.find(x);}
+	size_type      count(const key_type& x) const {return tree_.count_one(x);}
+
+	iterator       lower_bound(const key_type& x)       {return tree_.lower_bound(x);}
+	const_iterator lower_bound(const key_type& x) const {return tree_.lower_bound(x);}
+	iterator       upper_bound(const key_type& x)       {return tree_.upper_bound(x);}
+	const_iterator upper_bound(const key_type& x) const {return tree_.upper_bound(x);}
+
+	pair<iterator,iterator> equal_range(const key_type& x)
+		{return tree_.equal_range(x);}
+	pair<const_iterator,const_iterator> equal_range(const key_type& x) const
+		{return tree_.equal_range(x);}
+
+	bool invariants() const;
+private:
+	tree_type tree_;
+};
+
+template <class Key, class T, class Compare, class Allocator, bool is_transformed>
+bool
+__map_do_transform<Key, T, Compare, Allocator, is_transformed>::invariants() const
+{
+	if (size() >= 2)
+	{
+		const_iterator p = begin();
+		const_iterator i = p;
+		value_compare c = value_comp();
+		for (++i; i != end(); ++p, ++i)
+		{
+			if (!c(*p, *i))
+				return false;
+		}
+	}
+	return tree_.invariants();
+}
+
+// __map_do_transform  -  transformed
+
+#ifndef _Inhibit_Container_Optimization
+
+template <class Key, class T,  class Compare>
+struct __base_value_compare
+	: public binary_function<pair<const Key, T>, pair<const Key, T>, bool>
+{
+public:
+	typedef pair<const Key, T> value_type;
+	typedef Key key_type;
+	typedef Compare key_compare;
+
+	bool operator()(const value_type& x, const value_type& y) const
+	{
+		return key_compare()(x.first, y.first);
+	}
+	template <class P>
+	bool operator()(const P& x, const value_type& y) const
+	{
+		return key_compare()(x.first, y.first);
+	}
+	template <class P>
+	bool operator()(const value_type& x, const P& y) const
+	{
+		return key_compare()(x.first, y.first);
+	}
+	bool operator()(const key_type& x, const value_type& y) const
+	{
+		return key_compare()(x, y.first);
+	}
+	bool operator()(const value_type& x, const key_type& y) const
+	{
+		return key_compare()(x.first, y);
+	}
+};
+
+template <class Key, class T, class Compare, class Allocator>
+class __map_do_transform<Key, T, Compare, Allocator, true>
+{
+	typedef __map_transform<Key, T, Compare> transform;
+	typedef typename transform::base_value_type  base_value_type;
+	typedef typename transform::non_const_base_value_type  non_const_base_value_type;
+	typedef typename transform::base_key_type    base_key_type;
+	typedef typename transform::base_key_compare base_key_compare;
+public:
+//  types:
+	typedef Key                                   key_type;
+	typedef T                                     mapped_type;
+	typedef pair<const key_type, mapped_type>     value_type;
+	typedef Compare                               key_compare;
+private:
+	typedef pair<key_type, mapped_type>           non_const_value_type;
+public:
+
+	class value_compare
+		: public binary_function<value_type, value_type, bool>
+	{
+	public:
+		bool operator()(const value_type& x, const value_type& y) const
+		{
+			return comp(x.first, y.first);
+		}
+		template <class P>
+		bool operator()(const P& x, const value_type& y) const
+		{
+			return comp(x.first, y.first);
+		}
+		template <class P>
+		bool operator()(const value_type& x, const P& y) const
+		{
+			return comp(x.first, y.first);
+		}
+		bool operator()(const key_type& x, const value_type& y) const
+		{
+			return comp(x, y.first);
+		}
+		bool operator()(const value_type& x, const key_type& y) const
+		{
+			return comp(x.first, y);
+		}
+
+		value_compare() {}
+	protected:
+		key_compare comp;
+
+		value_compare(key_compare c) : comp(c) {}
+
+		friend class __map_do_transform;
+	};
+
+private:
+	typedef typename transform::base_key_type    base_key_type;
+	typedef typename transform::base_mapped_type base_mapped_type;
+	typedef __base_value_compare<base_key_type, base_mapped_type, base_key_compare> base_value_compare;
+
+	typedef __tree<base_value_type, base_value_compare, typename Allocator::rebind<base_value_type>::other> tree_type;
+
+public:
+	typedef typename Allocator::rebind<value_type>::other allocator_type;
+	typedef typename allocator_type::reference         reference;
+	typedef typename allocator_type::const_reference   const_reference;
+	typedef typename allocator_type::size_type         size_type;
+	typedef typename allocator_type::difference_type   difference_type;
+	typedef typename allocator_type::pointer           pointer;
+	typedef typename allocator_type::const_pointer     const_pointer;
+
+	template <bool is_const>
+	class __generic_iterator
+	{
+		typedef typename Metrowerks::select<is_const, typename tree_type::const_iterator,
+		                                              typename tree_type::iterator>::type base_iterator;
+	public:
+		typedef typename __map_do_transform::value_type       value_type;
+		typedef typename __map_do_transform::difference_type  difference_type;
+		typedef typename Metrowerks::select<is_const, typename __map_do_transform::const_pointer,
+		                                              typename __map_do_transform::pointer>::type pointer;
+		typedef typename Metrowerks::select<is_const, typename __map_do_transform::const_reference,
+		                                              typename __map_do_transform::reference>::type reference;
+		typedef bidirectional_iterator_tag        iterator_category;
+
+		__generic_iterator() {}
+		__generic_iterator(const __generic_iterator<false>& i) : i_(i.i_) {}
+		reference operator * () const {return reference(*i_);}
+		pointer operator -> () const  {return pointer(&*i_);}
+		__generic_iterator& operator ++ () {++i_; return *this;}
+		__generic_iterator operator ++ (int) {__generic_iterator tmp(*this); ++(*this); return tmp;}
+		__generic_iterator& operator -- () {--i_; return *this;}
+		__generic_iterator operator -- (int) {__generic_iterator tmp(*this); --(*this); return tmp;}
+		friend bool operator ==(const __generic_iterator& x, const __generic_iterator& y) {return x.i_ == y.i_;}
+		friend bool operator !=(const __generic_iterator& x, const __generic_iterator& y) {return x.i_ != y.i_;}
+#ifndef __GNUC__
+	private:
+#endif
+
+		base_iterator i_;
+
+		explicit __generic_iterator(const base_iterator& i) : i_(i) {}
+
+#ifndef __GNUC__
+		friend class __generic_iterator<true>;
+		friend class __map_do_transform;
+#endif  // __GNUC__
+	};
+
+	friend class __generic_iterator<false>;
+	friend class __generic_iterator<true>;
+
+	typedef __generic_iterator<false> iterator;
+	typedef __generic_iterator<true>  const_iterator;
+
+	typedef _STD::reverse_iterator<iterator>       reverse_iterator;
+	typedef _STD::reverse_iterator<const_iterator> const_reverse_iterator;
+
+	//  lib.map.cons construct/copy/destroy:
+	         __map_do_transform() {}
+	explicit __map_do_transform(const key_compare&) : tree_() {}
+	         __map_do_transform(const key_compare&, const allocator_type& a)
+	              : tree_(base_value_compare(), a) {}
+	template <class InputIterator>
+		__map_do_transform(InputIterator first, InputIterator last) {insert(first, last);}
+	template <class InputIterator>
+		__map_do_transform(InputIterator first, InputIterator last, const key_compare&)
+			{insert(first, last);}
+	template <class InputIterator>
+		__map_do_transform(InputIterator first, InputIterator last, const key_compare&, const allocator_type& a)
+			: tree_(base_value_compare(), a) {insert(first, last);}
+
+#ifdef _MSL_MOVE
+	__map_do_transform(__map_do_transform&& x) : tree_(_STD::move(x.tree_)) {}
+#endif
+
+	allocator_type get_allocator() const {return tree_.get_allocator();}
+
+	//  iterators:
+	iterator               begin()       {return       iterator(tree_.begin());}
+	const_iterator         begin() const {return const_iterator(tree_.begin());}
+	iterator               end()         {return       iterator(tree_.end());}
+	const_iterator         end() const   {return const_iterator(tree_.end());}
+
+	reverse_iterator       rbegin()       {return reverse_iterator(end());}
+	const_reverse_iterator rbegin() const {return const_reverse_iterator(end());}
+	reverse_iterator       rend()         {return reverse_iterator(begin());}
+	const_reverse_iterator rend() const   {return const_reverse_iterator(begin());}
+
+	//  capacity:
+	bool      empty() const    {return tree_.empty();}
+	size_type size() const     {return tree_.size();}
+	size_type max_size() const {return tree_.max_size();}
+
+	//  lib.map.access element access:
+	mapped_type& operator[](const key_type& x)
+		{return (mapped_type&)tree_.template find_or_insert<base_key_type, base_mapped_type>((const base_key_type&)x).second;}
+
+#ifdef _MSL_MOVE
+	mapped_type& operator[](key_type&& x)
+		{return (mapped_type&)tree_.template find_or_insert<base_key_type, base_mapped_type>((base_key_type&&)x).second;}
+#endif  // _MSL_MOVE
+	//  modifiers:
+	pair<iterator, bool> insert(const value_type& x)
+	{
+		pair<typename tree_type::iterator, bool> p = tree_.insert_one((const base_value_type&)x);
+		return pair<iterator, bool>(iterator(p.first), p.second);
+	}
+	iterator insert(iterator position, const value_type& x) {return iterator(tree_.insert_one(position.i_, (const base_value_type&)x));}
+#ifdef _MSL_MOVE
+	pair<iterator, bool> insert(const pair<key_type,mapped_type>& x)
+	{
+		pair<typename tree_type::iterator, bool> p = tree_.insert_one((const non_const_base_value_type&)x);
+		return pair<iterator, bool>(iterator(p.first), p.second);
+	}
+	iterator insert(iterator position, const pair<key_type,mapped_type>& x) {return iterator(tree_.insert_one(position.i_, (const non_const_base_value_type&)x));}
+	pair<iterator, bool> insert(pair<key_type,mapped_type>&& x)
+	{
+		pair<typename tree_type::iterator, bool> p = tree_.insert_one((non_const_base_value_type&&)x);
+		return pair<iterator, bool>(iterator(p.first), p.second);
+	}
+	iterator insert(iterator position, pair<key_type,mapped_type>&& x) {return iterator(tree_.insert_one(position.i_, (non_const_base_value_type&&)x));}
+#endif  // _MSL_MOVE
+	template <class InputIterator>
+		void insert(InputIterator first, InputIterator last)
+			{
+				typedef typename iterator_traits<InputIterator>::value_type outside_value;
+				insert_one(first, last, Metrowerks::int2type<Metrowerks::is_same<outside_value, value_type>::value>(),
+			                            Metrowerks::int2type<Metrowerks::is_same<value_type, base_value_type>::value>());
+			}
+
+	iterator  erase(iterator position)             {return iterator(tree_.erase(position.i_));}
+	size_type erase(const key_type& x)             {return tree_.erase_one((const base_key_type&)x);}
+	iterator  erase(iterator first, iterator last) {return iterator(tree_.erase(first.i_, last.i_));}
+	void swap(__map_do_transform& x) {tree_.swap(x.tree_);}
+	void clear()                     {tree_.clear();}
+
+	//  observers:
+	key_compare   key_comp() const   {return key_compare();}
+	value_compare value_comp() const {return value_compare();}
+
+	//  lib.map.ops map operations:
+	iterator       find(const key_type& x)        {return iterator(tree_.find((const base_key_type&)x));}
+	const_iterator find(const key_type& x) const  {return const_iterator(tree_.find((const base_key_type&)x));}
+	size_type      count(const key_type& x) const {return tree_.count_one((const base_key_type&)x);}
+
+	iterator       lower_bound(const key_type& x)       {return iterator(tree_.lower_bound((const base_key_type&)x));}
+	const_iterator lower_bound(const key_type& x) const {return const_iterator(tree_.lower_bound((const base_key_type&)x));}
+	iterator       upper_bound(const key_type& x)       {return iterator(tree_.upper_bound((const base_key_type&)x));}
+	const_iterator upper_bound(const key_type& x) const {return const_iterator(tree_.upper_bound((const base_key_type&)x));}
+
+	pair<iterator,iterator> equal_range(const key_type& x)
+		{
+			typedef typename tree_type::iterator base_iter;
+			pair<base_iter, base_iter> p = tree_.equal_range((const base_key_type&)x);
+			return pair<iterator,iterator>(iterator(p.first), iterator(p.second));
+		}
+	pair<const_iterator,const_iterator> equal_range(const key_type& x) const
+		{
+			typedef typename tree_type::const_iterator base_iter;
+			pair<base_iter, base_iter> p = tree_.equal_range((const base_key_type&)x);
+			return pair<const_iterator,const_iterator>(const_iterator(p.first), const_iterator(p.second));
+		}
+
+	bool invariants() const;
+private:
+	tree_type tree_;
+
+	template <class InputIterator>
+		void insert_one(InputIterator f, InputIterator l, Metrowerks::int2type<true>, Metrowerks::int2type<true>)
+		{
+			tree_.insert_one(f, l);
+		}
+	template <class InputIterator>
+		void insert_one(InputIterator f, InputIterator l, Metrowerks::int2type<false>, Metrowerks::int2type<true>)
+		{
+			typedef __convert_iterator<__implicit_convert<pointer, InputIterator> > first_convert;
+			tree_.insert_one(first_convert(f), first_convert(l));
+		}
+	template <class InputIterator>
+		void insert_one(InputIterator f, InputIterator l, Metrowerks::int2type<true>, Metrowerks::int2type<false>)
+		{
+			typedef __convert_iterator<__reinterpret_convert<typename tree_type::pointer, InputIterator> > second_convert;
+			tree_.insert_one(second_convert(f), second_convert(l));
+		}
+	template <class InputIterator>
+		void insert_one(InputIterator f, InputIterator l, Metrowerks::int2type<false>, Metrowerks::int2type<false>)
+		{
+			typedef __convert_iterator<__implicit_convert<pointer, InputIterator> > first_convert;
+			typedef __convert_iterator<__reinterpret_convert<typename tree_type::pointer, first_convert> > second_convert;
+			tree_.insert_one(second_convert(first_convert(f)), second_convert(first_convert(l)));
+		}
+};
+
+template <class Key, class T, class Compare, class Allocator>
+bool
+__map_do_transform<Key, T, Compare, Allocator, true>::invariants() const
+{
+	if (size() >= 2)
+	{
+		const_iterator p = begin();
+		const_iterator i = p;
+		value_compare c = value_comp();
+		for (++i; i != end(); ++p, ++i)
+		{
+			if (!c(*p, *i))
+				return false;
+		}
+	}
+	return tree_.invariants();
+}
+
+#endif  // _Inhibit_Container_Optimization
+
+// map
+
+template <class Key, class T, class Compare = less<Key>,
+          class Allocator = allocator<pair<const Key, T> > >
+class map
+	: private __map_do_transform<Key, T, Compare, Allocator, __map_transform<Key, T, Compare>::transformed>
+{
+	typedef __map_do_transform<Key, T, Compare, Allocator, __map_transform<Key, T, Compare>::transformed> base;
+public:
+	typedef map                            __self;
+	typedef typename base::key_type        key_type;
+	typedef typename base::mapped_type     mapped_type;
+	typedef typename base::value_type      value_type;
+	typedef typename base::key_compare     key_compare;
+	typedef typename base::value_compare   value_compare;
+	typedef typename base::allocator_type  allocator_type;
+	typedef typename base::reference       reference;
+	typedef typename base::const_reference const_reference;
+	typedef typename base::size_type       size_type;
+	typedef typename base::difference_type difference_type;
+	typedef typename base::pointer         pointer;
+	typedef typename base::const_pointer   const_pointer;
+
+#ifndef _MSL_DEBUG
+
+	typedef typename base::iterator       iterator;
+	typedef typename base::const_iterator const_iterator;
+
+	typedef typename base::reverse_iterator       reverse_iterator;
+	typedef typename base::const_reverse_iterator const_reverse_iterator;
+
+#else  // _MSL_DEBUG
+private:
+	typedef typename base::iterator       __uncheck_iterator;
+	typedef typename base::const_iterator __uncheck_const_iterator;
+public:
+	typedef __debug_iterator<map, __uncheck_iterator>        iterator;
+	typedef __debug_iterator<map, __uncheck_const_iterator>  const_iterator;
+private:
+	void __invalidate_iterator(const iterator& i)
+	{
+		if (iterator_list<iterator>())
+			iterator_list<iterator>()->remove(bind2nd(equal_to<__uncheck_iterator>(), i.base()));
+		if (iterator_list<const_iterator>())
+			iterator_list<const_iterator>()->remove(bind2nd(equal_to<__uncheck_const_iterator>(), i.base()));
+	}
+
+	void __invalidate_iterator(iterator first, iterator last)
+	{
+		while (first != last)
+			__invalidate_iterator(first++);
+	}
+
+	void __invalidate_all_iterators()
+	{
+		if (iterator_list<iterator>())
+			iterator_list<iterator>()->remove(__unary_true_value<__uncheck_iterator>());
+		if (iterator_list<const_iterator>())
+			iterator_list<const_iterator>()->remove(__unary_true_value<__uncheck_const_iterator>());
+	}
+
+	__uncheck_iterator __iterator2base_iterator(iterator& i)
+	{
+		if (i.owner_ != this)
+			_MSL_DEBUG_ERROR(logic_error, "MSL DEBUG: invalid iterator given to map");
+		return i.base();
+	}
+
+	__uncheck_const_iterator __iterator2base_iterator(const_iterator& i)
+	{
+		if (i.owner_ != this)
+			_MSL_DEBUG_ERROR(logic_error, "MSL DEBUG: invalid iterator given to map");
+		return i.base();
+	}
+	iterator __iterator_base2iterator(__uncheck_iterator p) {return iterator(this, p);}
+	const_iterator __iterator_base2iterator(__uncheck_const_iterator p) const {return const_iterator(this, p);}
+public:
+	typedef _STD::reverse_iterator<iterator>       reverse_iterator;
+	typedef _STD::reverse_iterator<const_iterator> const_reverse_iterator;
+#endif  // _MSL_DEBUG
+
+	         map() {}
+	explicit map(const key_compare& comp) : base(comp) {}
+	         map(const key_compare& comp, const allocator_type& a) : base(comp, a) {}
+	template <class InputIterator>
+		map(InputIterator first, InputIterator last) : base(first, last) {}
+	template <class InputIterator>
+		map(InputIterator first, InputIterator last, const Compare& comp)
+			: base(first, last, comp) {}
+	template <class InputIterator>
+		map(InputIterator first, InputIterator last, const Compare& comp, const allocator_type& a)
+			: base(first, last, comp, a) {}
+#ifdef _MSL_DEBUG
+	map(const map& x) : base(x) {}
+	map& operator=(const map& x) {__invalidate_all_iterators(); base::operator=(x); return *this;}
+	~map() {__invalidate_all_iterators();}
+#endif  // _MSL_DEBUG
+
+#ifdef _MSL_MOVE
+	map(map&& x) : base(_STD::move(x)) {}
+	map& operator=(map&& x) {swap(x); return *this;}
+#endif  // _MSL_MOVE
+
+	using base::get_allocator;
+
+	using base::empty;
+	using base::size;
+	using base::max_size;
+
+	using base::operator[];
+
+	using base::key_comp;
+	using base::value_comp;
+
+	using base::count;
+
+	using base::invariants;
+
+#ifndef _MSL_DEBUG
+
+	using base::begin;
+	using base::end;
+
+	using base::rbegin;
+	using base::rend;
+
+//	using base::insert;
+	pair<iterator, bool> insert(const value_type& x)
+		{return base::insert(x);}
+	iterator insert(iterator position, const value_type& x)
+		{return base::insert(position, x);}
+#ifdef _MSL_MOVE
+	template <class P>
+	typename Metrowerks::restrict_to
+	<
+		Metrowerks::is_convertible<P, pair<key_type, mapped_type> >::value &&
+		!Metrowerks::is_same<typename Metrowerks::remove_reference<P>::type, pair<key_type, mapped_type> >::value &&
+		!Metrowerks::is_same<typename Metrowerks::remove_reference<P>::type, value_type>::value,
+		pair<iterator, bool>
+	>::type
+	insert(P&& p) {return insert(pair<key_type, mapped_type>(std::forward<P>(p)));}
+
+	pair<iterator, bool> insert(const pair<key_type, mapped_type>& x)
+		{return base::insert(x);}
+	pair<iterator, bool> insert(pair<key_type, mapped_type>&& x)
+		{return base::insert(_STD::move(x));}
+
+	template <class P>
+	typename Metrowerks::restrict_to
+	<
+		Metrowerks::is_convertible<P, pair<key_type, mapped_type> >::value &&
+		!Metrowerks::is_same<typename Metrowerks::remove_reference<P>::type, pair<key_type, mapped_type> >::value &&
+		!Metrowerks::is_same<typename Metrowerks::remove_reference<P>::type, value_type>::value,
+		iterator
+	>::type
+	insert(iterator position, P&& p) {return insert(position, pair<key_type, mapped_type>(std::forward<P>(p)));}
+
+	iterator insert(iterator position, const pair<key_type, mapped_type>& x)
+		{return base::insert(position, x);}
+	iterator insert(iterator position, pair<key_type, mapped_type>&& x)
+		{return base::insert(position, _STD::move(x));}
+#endif  // _MSL_MOVE
+	template <class InputIterator>
+		void insert(InputIterator first, InputIterator last)
+			{base::insert(first, last);}
+
+	using base::erase;
+	using base::clear;
+#ifdef _MSL_MOVE
+	void swap(map&& x) {base::swap(x);}
+#else
+	void swap(map& x) {base::swap(x);}
+#endif
+
+	using base::find;
+
+	using base::lower_bound;
+	using base::upper_bound;
+	using base::equal_range;
+
+#else   // _MSL_DEBUG
+
+private:
+	__uncheck_iterator       __uncheck_begin()       {return base::begin();}
+	__uncheck_const_iterator __uncheck_begin() const {return base::begin();}
+	__uncheck_iterator       __uncheck_end()         {return base::end();}
+	__uncheck_const_iterator __uncheck_end() const   {return base::end();}
+public:
+	iterator       begin()       {return __iterator_base2iterator(__uncheck_begin());}
+	const_iterator begin() const {return __iterator_base2iterator(__uncheck_begin());}
+	iterator       end()         {return __iterator_base2iterator(__uncheck_end());}
+	const_iterator end() const   {return __iterator_base2iterator(__uncheck_end());}
+
+	      reverse_iterator rbegin()       {return       reverse_iterator(end());}
+	const_reverse_iterator rbegin() const {return const_reverse_iterator(end());}
+	      reverse_iterator rend()         {return       reverse_iterator(begin());}
+	const_reverse_iterator rend() const   {return const_reverse_iterator(begin());}
+
+	pair<iterator, bool> insert(const value_type& x)
+	{
+		pair<__uncheck_iterator, bool> p = base::insert(x);
+		return pair<iterator, bool>(__iterator_base2iterator(p.first), p.second);
+	}
+
+	iterator insert(iterator position, const value_type& x)
+	{
+		return __iterator_base2iterator(base::insert(__iterator2base_iterator(position), x));
+	}
+
+#ifdef _MSL_MOVE
+
+	template <class P>
+	typename Metrowerks::restrict_to
+	<
+		Metrowerks::is_convertible<P, pair<key_type, mapped_type> >::value &&
+		!Metrowerks::is_same<typename Metrowerks::remove_reference<P>::type, pair<key_type, mapped_type> >::value &&
+		!Metrowerks::is_same<typename Metrowerks::remove_reference<P>::type, value_type>::value,
+		pair<iterator, bool>
+	>::type
+	insert(P&& p) {return insert(pair<key_type, mapped_type>(std::forward<P>(p)));}
+
+	pair<iterator, bool> insert(const pair<key_type, mapped_type>& x)
+	{
+		pair<__uncheck_iterator, bool> p = base::insert(x);
+		return pair<iterator, bool>(__iterator_base2iterator(p.first), p.second);
+	}
+
+	pair<iterator, bool> insert(pair<key_type, mapped_type>&& x)
+	{
+		pair<__uncheck_iterator, bool> p = base::insert(_STD::move(x));
+		return pair<iterator, bool>(__iterator_base2iterator(p.first), p.second);
+	}
+
+	template <class P>
+	typename Metrowerks::restrict_to
+	<
+		Metrowerks::is_convertible<P, pair<key_type, mapped_type> >::value &&
+		!Metrowerks::is_same<typename Metrowerks::remove_reference<P>::type, pair<key_type, mapped_type> >::value &&
+		!Metrowerks::is_same<typename Metrowerks::remove_reference<P>::type, value_type>::value,
+		iterator
+	>::type
+	insert(iterator position, P&& p) {return insert(position, pair<key_type, mapped_type>(std::forward<P>(p)));}
+
+	iterator insert(iterator position, const pair<key_type, mapped_type>& x)
+	{
+		return __iterator_base2iterator(base::insert(__iterator2base_iterator(position), x));
+	}
+
+	iterator insert(iterator position, pair<key_type, mapped_type>&& x)
+	{
+		return __iterator_base2iterator(base::insert(__iterator2base_iterator(position), _STD::move(x)));
+	}
+
+#endif  // _MSL_MOVE
+
+	template <class InputIterator>
+		void insert(InputIterator first, InputIterator last)
+			{base::insert(first, last);}
+
+	iterator erase(iterator position)
+	{
+		__uncheck_iterator p = __iterator2base_iterator(position);
+		__invalidate_iterator(position);
+		return __iterator_base2iterator(base::erase(p));
+	}
+
+	size_type erase(const key_type& x)
+	{
+		pair<iterator, iterator> p = equal_range(x);
+		__invalidate_iterator(p.first, p.second);
+		return base::erase(x);
+	}
+
+	iterator erase(iterator first, iterator last)
+	{
+		__uncheck_iterator f = __iterator2base_iterator(first);
+		__uncheck_iterator l = __iterator2base_iterator(last);
+		__invalidate_iterator(first, last);
+		return __iterator_base2iterator(base::erase(f, l));
+	}
+
+	void clear() {__invalidate_all_iterators(); base::clear();}
+
+#ifdef _MSL_MOVE
+	void swap(map&& x)
+#else
+	void swap(map& x)
+#endif
+	{
+		base::swap(x);
+		iterator::swap(this, &x);
+		const_iterator::swap(this, &x);
+	}
+
+	iterator       find(const key_type& x)        {return __iterator_base2iterator(base::find(x));}
+	const_iterator find(const key_type& x) const  {return __iterator_base2iterator(base::find(x));}
+
+	iterator       lower_bound(const key_type& x)       {return __iterator_base2iterator(base::lower_bound(x));}
+	const_iterator lower_bound(const key_type& x) const {return __iterator_base2iterator(base::lower_bound(x));}
+
+	iterator       upper_bound(const key_type& x)       {return __iterator_base2iterator(base::upper_bound(x));}
+	const_iterator upper_bound(const key_type& x) const {return __iterator_base2iterator(base::upper_bound(x));}
+
+	pair<iterator,iterator> equal_range(const key_type& x)
+	{
+		pair<__uncheck_iterator, __uncheck_iterator> p = base::equal_range(x);
+		return pair<iterator,iterator>(__iterator_base2iterator(p.first), __iterator_base2iterator(p.second));
+	}
+
+	pair<const_iterator,const_iterator> equal_range(const key_type& x) const
+	{
+		pair<__uncheck_const_iterator, __uncheck_const_iterator> p = base::equal_range(x);
+		return pair<const_iterator,const_iterator>(__iterator_base2iterator(p.first), __iterator_base2iterator(p.second));
+	}
+
+private:
+	pair<iterator*, const_iterator*> iterator_list_;
+
+	iterator*&       iterator_list(iterator*)       {return iterator_list_.first;}
+	const_iterator*& iterator_list(const_iterator*) {return iterator_list_.second;}
+	template <class Iterator>
+	Iterator*& iterator_list() {return iterator_list((Iterator*)0);}
+
+	friend class iterator;
+	friend class const_iterator;
+#endif  // _MSL_DEBUG
+};
+
+template <class Key, class T, class Compare, class Allocator>
+inline
+bool
+operator==(const map<Key, T, Compare, Allocator>& x, const map<Key, T, Compare, Allocator>& y)
+{
+	return x.size() == y.size() && equal(x.begin(), x.end(), y.begin());
+}
+
+template <class Key, class T, class Compare, class Allocator>
+inline
+bool
+operator!=(const map<Key, T, Compare, Allocator>& x, const map<Key, T, Compare, Allocator>& y)
+{
+	return !(x == y);
+}
+
+template <class Key, class T, class Compare, class Allocator>
+inline
+bool
+operator< (const map<Key, T, Compare, Allocator>& x, const map<Key, T, Compare, Allocator>& y)
+{
+	return lexicographical_compare(x.begin(), x.end(), y.begin(), y.end());
+}
+
+template <class Key, class T, class Compare, class Allocator>
+inline
+bool
+operator> (const map<Key, T, Compare, Allocator>& x, const map<Key, T, Compare, Allocator>& y)
+{
+	return y < x;
+}
+
+template <class Key, class T, class Compare, class Allocator>
+inline
+bool
+operator>=(const map<Key, T, Compare, Allocator>& x, const map<Key, T, Compare, Allocator>& y)
+{
+	return !(x < y);
+}
+
+template <class Key, class T, class Compare, class Allocator>
+inline
+bool
+operator<=(const map<Key, T, Compare, Allocator>& x, const map<Key, T, Compare, Allocator>& y)
+{
+	return !(y < x);
+}
+
+template <class Key, class T, class Compare, class Allocator>
+inline
+void
+swap(map<Key, T, Compare, Allocator>& x, map<Key, T, Compare, Allocator>& y)
+{
+	x.swap(y);
+}
+
+#ifdef _MSL_MOVE
+
+template <class Key, class T, class Compare, class Allocator>
+inline
+void
+swap(map<Key, T, Compare, Allocator>&& x, map<Key, T, Compare, Allocator>& y)
+{
+	x.swap(y);
+}
+
+template <class Key, class T, class Compare, class Allocator>
+inline
+void
+swap(map<Key, T, Compare, Allocator>& x, map<Key, T, Compare, Allocator>&& y)
+{
+	x.swap(y);
+}
+
+#endif  // _MSL_MOVE
+
+// __multimap_do_transform  -  not transformed
+
+template <class Key, class T, class Compare, class Allocator, bool is_transformed>
+class __multimap_do_transform
+{
+public:
+//  types:
+	typedef Key                                   key_type;
+	typedef T                                     mapped_type;
+	typedef pair<const key_type, mapped_type>     value_type;
+	typedef Compare                               key_compare;
+private:
+	typedef pair<key_type, mapped_type>           non_const_value_type;
+public:
+
+	class value_compare
+		: public binary_function<value_type, value_type, bool>
+	{
+	public:
+		bool operator()(const value_type& x, const value_type& y) const
+		{
+			return comp(x.first, y.first);
+		}
+		bool operator()(const non_const_value_type& x, const value_type& y) const
+		{
+			return comp(x.first, y.first);
+		}
+		bool operator()(const value_type& x, const non_const_value_type& y) const
+		{
+			return comp(x.first, y.first);
+		}
+		bool operator()(const key_type& x, const value_type& y) const
+		{
+			return comp(x, y.first);
+		}
+		bool operator()(const value_type& x, const key_type& y) const
+		{
+			return comp(x.first, y);
+		}
+
+		value_compare() {}
+	protected:
+		key_compare comp;
+
+		value_compare(key_compare c) : comp(c) {}
+
+		friend class __multimap_do_transform;
+	};
+
+private:
+
+	typedef __tree<value_type, value_compare, Allocator> tree_type;
+public:
+	typedef typename tree_type::allocator_type    allocator_type;
+	typedef typename allocator_type::reference         reference;
+	typedef typename allocator_type::const_reference   const_reference;
+	typedef typename allocator_type::size_type         size_type;
+	typedef typename allocator_type::difference_type   difference_type;
+	typedef typename allocator_type::pointer           pointer;
+	typedef typename allocator_type::const_pointer     const_pointer;
+
+	typedef typename tree_type::iterator       iterator;
+	typedef typename tree_type::const_iterator const_iterator;
+
+	typedef _STD::reverse_iterator<iterator>       reverse_iterator;
+	typedef _STD::reverse_iterator<const_iterator> const_reverse_iterator;
+
+	//  lib.map.cons construct/copy/destroy:
+	         __multimap_do_transform() {}
+	explicit __multimap_do_transform(const key_compare& comp) : tree_(value_compare(comp)) {}
+	         __multimap_do_transform(const key_compare& comp, const allocator_type& a)
+	              : tree_(value_compare(comp), a) {}
+	template <class InputIterator>
+		__multimap_do_transform(InputIterator first, InputIterator last) : tree_(first, last, true) {}
+	template <class InputIterator>
+		__multimap_do_transform(InputIterator first, InputIterator last, const key_compare& comp)
+			: tree_(first, last, true, value_compare(comp)) {}
+	template <class InputIterator>
+		__multimap_do_transform(InputIterator first, InputIterator last, const key_compare& comp, const allocator_type& a)
+			: tree_(first, last, true, value_compare(comp), a) {}
+
+#ifdef _MSL_MOVE
+	__multimap_do_transform(__multimap_do_transform&& x) : tree_(_STD::move(x.tree_)) {}
+#endif
+
+	allocator_type get_allocator() const {return tree_.get_allocator();}
+
+	//  iterators:
+	iterator               begin()       {return tree_.begin();}
+	const_iterator         begin() const {return tree_.begin();}
+	iterator               end()         {return tree_.end();}
+	const_iterator         end() const   {return tree_.end();}
+
+	reverse_iterator       rbegin()       {return reverse_iterator(end());}
+	const_reverse_iterator rbegin() const {return const_reverse_iterator(end());}
+	reverse_iterator       rend()         {return reverse_iterator(begin());}
+	const_reverse_iterator rend() const   {return const_reverse_iterator(begin());}
+
+	//  capacity:
+	bool      empty() const    {return tree_.empty();}
+	size_type size() const     {return tree_.size();}
+	size_type max_size() const {return tree_.max_size();}
+
+	//  modifiers:
+	iterator insert(const value_type& x)                    {return tree_.insert_multi(x);}
+	iterator insert(iterator position, const value_type& x) {return tree_.insert_multi(position, x);}
+#ifdef _MSL_MOVE
+	iterator insert(const pair<key_type, mapped_type>& x)                    {return tree_.insert_multi(x);}
+	iterator insert(pair<key_type, mapped_type>&& x)                         {return tree_.insert_multi(_STD::move(x));}
+	iterator insert(iterator position, pair<key_type, mapped_type>&& x)      {return tree_.insert_multi(position, _STD::move(x));}
+	iterator insert(iterator position, const pair<key_type, mapped_type>& x) {return tree_.insert_multi(position, x);}
+#endif  // _MSL_MOVE
+	template <class InputIterator>
+		void insert(InputIterator first, InputIterator last)
+			{tree_.insert_multi(first, last);}
+
+	iterator  erase(iterator position)             {return tree_.erase(position);}
+	size_type erase(const key_type& x)             {return tree_.erase_multi(x);}
+	iterator  erase(iterator first, iterator last) {return tree_.erase(first, last);}
+	void swap(__multimap_do_transform& x) {tree_.swap(x.tree_);}
+	void clear()                     {tree_.clear();}
+
+	//  observers:
+	key_compare   key_comp() const   {return tree_.value_comp().comp;}
+	value_compare value_comp() const {return tree_.value_comp();}
+
+	//  lib.map.ops map operations:
+	iterator       find(const key_type& x)        {return tree_.find(x);}
+	const_iterator find(const key_type& x) const  {return tree_.find(x);}
+	size_type      count(const key_type& x) const {return tree_.count_multi(x);}
+
+	iterator       lower_bound(const key_type& x)       {return tree_.lower_bound(x);}
+	const_iterator lower_bound(const key_type& x) const {return tree_.lower_bound(x);}
+	iterator       upper_bound(const key_type& x)       {return tree_.upper_bound(x);}
+	const_iterator upper_bound(const key_type& x) const {return tree_.upper_bound(x);}
+
+	pair<iterator,iterator> equal_range(const key_type& x)
+		{return tree_.equal_range(x);}
+	pair<const_iterator,const_iterator> equal_range(const key_type& x) const
+		{return tree_.equal_range(x);}
+
+	bool invariants() const;
+private:
+	tree_type tree_;
+};
+
+template <class Key, class T, class Compare, class Allocator, bool is_transformed>
+bool
+__multimap_do_transform<Key, T, Compare, Allocator, is_transformed>::invariants() const
+{
+	if (size() >= 2)
+	{
+		const_iterator p = begin();
+		const_iterator i = p;
+		value_compare c = value_comp();
+		for (++i; i != end(); ++p, ++i)
+		{
+			if (c(*i, *p))
+				return false;
+		}
+	}
+	return tree_.invariants();
+}
+
+#ifndef _Inhibit_Container_Optimization
+
+// __multimap_do_transform  -  transformed
+
+template <class Key, class T, class Compare, class Allocator>
+class __multimap_do_transform<Key, T, Compare, Allocator, true>
+{
+	typedef __map_transform<Key, T, Compare> transform;
+	typedef typename transform::base_value_type  base_value_type;
+	typedef typename transform::non_const_base_value_type  non_const_base_value_type;
+	typedef typename transform::base_key_type    base_key_type;
+	typedef typename transform::base_key_compare base_key_compare;
+public:
+//  types:
+	typedef Key                                   key_type;
+	typedef T                                     mapped_type;
+	typedef pair<const key_type, mapped_type>     value_type;
+	typedef Compare                               key_compare;
+
+	class value_compare
+		: public binary_function<value_type, value_type, bool>
+	{
+	public:
+		bool operator()(const value_type& x, const value_type& y) const
+		{
+			return comp(x.first, y.first);
+		}
+		template <class P>
+		bool operator()(const P& x, const value_type& y) const
+		{
+			return comp(x.first, y.first);
+		}
+		template <class P>
+		bool operator()(const value_type& x, const P& y) const
+		{
+			return comp(x.first, y.first);
+		}
+		bool operator()(const key_type& x, const value_type& y) const
+		{
+			return comp(x, y.first);
+		}
+		bool operator()(const value_type& x, const key_type& y) const
+		{
+			return comp(x.first, y);
+		}
+
+		value_compare() {}
+	protected:
+		key_compare comp;
+
+		value_compare(key_compare c) : comp(c) {}
+
+		friend class __multimap_do_transform;
+	};
+
+private:
+	typedef typename transform::base_key_type    base_key_type;
+	typedef typename transform::base_mapped_type base_mapped_type;
+	typedef __base_value_compare<base_key_type, base_mapped_type, base_key_compare> base_value_compare;
+
+	typedef __tree<base_value_type, base_value_compare, typename Allocator::rebind<base_value_type>::other> tree_type;
+
+public:
+	typedef typename Allocator::rebind<value_type>::other allocator_type;
+	typedef typename allocator_type::reference         reference;
+	typedef typename allocator_type::const_reference   const_reference;
+	typedef typename allocator_type::size_type         size_type;
+	typedef typename allocator_type::difference_type   difference_type;
+	typedef typename allocator_type::pointer           pointer;
+	typedef typename allocator_type::const_pointer     const_pointer;
+
+	template <bool is_const>
+	class __generic_iterator
+	{
+		typedef typename Metrowerks::select<is_const, typename tree_type::const_iterator,
+		                                              typename tree_type::iterator>::type base_iterator;
+	public:
+		typedef typename __multimap_do_transform::value_type       value_type;
+		typedef typename __multimap_do_transform::difference_type  difference_type;
+		typedef typename Metrowerks::select<is_const, typename __multimap_do_transform::const_pointer,
+		                                              typename __multimap_do_transform::pointer>::type pointer;
+		typedef typename Metrowerks::select<is_const, typename __multimap_do_transform::const_reference,
+		                                              typename __multimap_do_transform::reference>::type reference;
+		typedef bidirectional_iterator_tag        iterator_category;
+
+		__generic_iterator() {}
+		__generic_iterator(const __generic_iterator<false>& i) : i_(i.i_) {}
+		reference operator * () const {return reference(*i_);}
+		pointer operator -> () const  {return pointer(&*i_);}
+		__generic_iterator& operator ++ () {++i_; return *this;}
+		__generic_iterator operator ++ (int) {__generic_iterator tmp(*this); ++(*this); return tmp;}
+		__generic_iterator& operator -- () {--i_; return *this;}
+		__generic_iterator operator -- (int) {__generic_iterator tmp(*this); --(*this); return tmp;}
+		friend bool operator ==(const __generic_iterator& x, const __generic_iterator& y) {return x.i_ == y.i_;}
+		friend bool operator !=(const __generic_iterator& x, const __generic_iterator& y) {return x.i_ != y.i_;}
+#ifndef __GNUC__
+	private:
+#endif
+
+		base_iterator i_;
+
+		explicit __generic_iterator(const base_iterator& i) : i_(i) {}
+
+#ifndef __GNUC__
+		friend class __generic_iterator<true>;
+		friend class __multimap_do_transform;
+#endif  // __GNUC__
+	};
+
+	friend class __generic_iterator<false>;
+	friend class __generic_iterator<true>;
+
+	typedef __generic_iterator<false> iterator;
+	typedef __generic_iterator<true>  const_iterator;
+
+	typedef _STD::reverse_iterator<iterator>       reverse_iterator;
+	typedef _STD::reverse_iterator<const_iterator> const_reverse_iterator;
+
+	//  lib.map.cons construct/copy/destroy:
+	         __multimap_do_transform() {}
+	explicit __multimap_do_transform(const key_compare&) : tree_() {}
+	         __multimap_do_transform(const key_compare&, const allocator_type& a)
+	             : tree_(base_value_compare(), a) {}
+	template <class InputIterator>
+		__multimap_do_transform(InputIterator first, InputIterator last) {insert(first, last);}
+	template <class InputIterator>
+		__multimap_do_transform(InputIterator first, InputIterator last, const key_compare&)
+			{insert(first, last);}
+	template <class InputIterator>
+		__multimap_do_transform(InputIterator first, InputIterator last, const key_compare&, const allocator_type& a)
+			: tree_(base_value_compare(), a) {insert(first, last);}
+
+#ifdef _MSL_MOVE
+	__multimap_do_transform(__multimap_do_transform&& x) : tree_(_STD::move(x.tree_)) {}
+#endif
+
+	allocator_type get_allocator() const {return tree_.get_allocator();}
+
+	//  iterators:
+	iterator               begin()       {return       iterator(tree_.begin());}
+	const_iterator         begin() const {return const_iterator(tree_.begin());}
+	iterator               end()         {return       iterator(tree_.end());}
+	const_iterator         end() const   {return const_iterator(tree_.end());}
+
+	reverse_iterator       rbegin()       {return reverse_iterator(end());}
+	const_reverse_iterator rbegin() const {return const_reverse_iterator(end());}
+	reverse_iterator       rend()         {return reverse_iterator(begin());}
+	const_reverse_iterator rend() const   {return const_reverse_iterator(begin());}
+
+	//  capacity:
+	bool      empty() const    {return tree_.empty();}
+	size_type size() const     {return tree_.size();}
+	size_type max_size() const {return tree_.max_size();}
+
+	//  modifiers:
+	iterator insert(const value_type& x)                    {return iterator(tree_.insert_multi((const base_value_type&)x));}
+	iterator insert(iterator position, const value_type& x) {return iterator(tree_.insert_multi(position.i_, (const base_value_type&)x));}
+#ifdef _MSL_MOVE
+	iterator insert(const pair<key_type,mapped_type>& x)                    {return iterator(tree_.insert_multi((const non_const_base_value_type&)x));}
+	iterator insert(iterator position, const pair<key_type,mapped_type>& x) {return iterator(tree_.insert_multi(position.i_, (const non_const_base_value_type&)x));}
+	iterator insert(pair<key_type,mapped_type>&& x)                         {return iterator(tree_.insert_multi((non_const_base_value_type&&)x));}
+	iterator insert(iterator position, pair<key_type,mapped_type>&& x)      {return iterator(tree_.insert_multi(position.i_, (non_const_base_value_type&&)x));}
+#endif  // _MSL_MOVE
+	template <class InputIterator>
+		void insert(InputIterator first, InputIterator last)
+			{
+				typedef typename iterator_traits<InputIterator>::value_type outside_value;
+				insert_multi(first, last, Metrowerks::int2type<Metrowerks::is_same<outside_value, value_type>::value>(),
+			                              Metrowerks::int2type<Metrowerks::is_same<value_type, base_value_type>::value>());
+			}
+
+	iterator  erase(iterator position)             {return iterator(tree_.erase(position.i_));}
+	size_type erase(const key_type& x)             {return tree_.erase_multi((const base_key_type&)x);}
+	iterator  erase(iterator first, iterator last) {return iterator(tree_.erase(first.i_, last.i_));}
+	void swap(__multimap_do_transform& x) {tree_.swap(x.tree_);}
+	void clear()                          {tree_.clear();}
+
+	//  observers:
+	key_compare   key_comp() const   {return key_compare();}
+	value_compare value_comp() const {return value_compare();}
+
+	//  lib.map.ops map operations:
+	iterator       find(const key_type& x)        {return iterator(tree_.find((const base_key_type&)x));}
+	const_iterator find(const key_type& x) const  {return const_iterator(tree_.find((const base_key_type&)x));}
+	size_type      count(const key_type& x) const {return tree_.count_multi((const base_key_type&)x);}
+
+	iterator       lower_bound(const key_type& x)       {return iterator(tree_.lower_bound((const base_key_type&)x));}
+	const_iterator lower_bound(const key_type& x) const {return const_iterator(tree_.lower_bound((const base_key_type&)x));}
+	iterator       upper_bound(const key_type& x)       {return iterator(tree_.upper_bound((const base_key_type&)x));}
+	const_iterator upper_bound(const key_type& x) const {return const_iterator(tree_.upper_bound((const base_key_type&)x));}
+
+	pair<iterator,iterator> equal_range(const key_type& x)
+		{
+			typedef typename tree_type::iterator base_iter;
+			pair<base_iter, base_iter> p = tree_.equal_range((const base_key_type&)x);
+			return pair<iterator,iterator>(iterator(p.first), iterator(p.second));
+		}
+	pair<const_iterator,const_iterator> equal_range(const key_type& x) const
+		{
+			typedef typename tree_type::const_iterator base_iter;
+			pair<base_iter, base_iter> p = tree_.equal_range((const base_key_type&)x);
+			return pair<const_iterator,const_iterator>(const_iterator(p.first), const_iterator(p.second));
+		}
+
+	bool invariants() const;
+private:
+	tree_type tree_;
+
+	template <class InputIterator>
+		void insert_multi(InputIterator f, InputIterator l, Metrowerks::int2type<true>, Metrowerks::int2type<true>)
+		{
+			tree_.insert_multi(f, l);
+		}
+	template <class InputIterator>
+		void insert_multi(InputIterator f, InputIterator l, Metrowerks::int2type<false>, Metrowerks::int2type<true>)
+		{
+			typedef __convert_iterator<__implicit_convert<pointer, InputIterator> > first_convert;
+			tree_.insert_multi(first_convert(f), first_convert(l));
+		}
+	template <class InputIterator>
+		void insert_multi(InputIterator f, InputIterator l, Metrowerks::int2type<true>, Metrowerks::int2type<false>)
+		{
+			typedef __convert_iterator<__reinterpret_convert<typename tree_type::pointer, InputIterator> > second_convert;
+			tree_.insert_multi(second_convert(f), second_convert(l));
+		}
+	template <class InputIterator>
+		void insert_multi(InputIterator f, InputIterator l, Metrowerks::int2type<false>, Metrowerks::int2type<false>)
+		{
+			typedef __convert_iterator<__implicit_convert<pointer, InputIterator> > first_convert;
+			typedef __convert_iterator<__reinterpret_convert<typename tree_type::pointer, first_convert> > second_convert;
+			tree_.insert_multi(second_convert(first_convert(f)), second_convert(first_convert(l)));
+		}
+};
+
+template <class Key, class T, class Compare, class Allocator>
+bool
+__multimap_do_transform<Key, T, Compare, Allocator, true>::invariants() const
+{
+	if (size() >= 2)
+	{
+		const_iterator p = begin();
+		const_iterator i = p;
+		value_compare c = value_comp();
+		for (++i; i != end(); ++p, ++i)
+		{
+			if (c(*i, *p))
+				return false;
+		}
+	}
+	return tree_.invariants();
+}
+
+#endif  // _Inhibit_Container_Optimization
+
+// multimap
+
+template <class Key, class T, class Compare = less<Key>,
+          class Allocator = allocator<pair<const Key, T> > >
+class multimap
+	: private __multimap_do_transform<Key, T, Compare, Allocator, __map_transform<Key, T, Compare>::transformed>
+{
+	typedef __multimap_do_transform<Key, T, Compare, Allocator, __map_transform<Key, T, Compare>::transformed> base;
+public:
+	typedef multimap                       __self;
+	typedef typename base::key_type        key_type;
+	typedef typename base::mapped_type     mapped_type;
+	typedef typename base::value_type      value_type;
+	typedef typename base::key_compare     key_compare;
+	typedef typename base::value_compare   value_compare;
+	typedef typename base::allocator_type  allocator_type;
+	typedef typename base::reference       reference;
+	typedef typename base::const_reference const_reference;
+	typedef typename base::size_type       size_type;
+	typedef typename base::difference_type difference_type;
+	typedef typename base::pointer         pointer;
+	typedef typename base::const_pointer   const_pointer;
+
+#ifndef _MSL_DEBUG
+
+	typedef typename base::iterator       iterator;
+	typedef typename base::const_iterator const_iterator;
+
+	typedef typename base::reverse_iterator       reverse_iterator;
+	typedef typename base::const_reverse_iterator const_reverse_iterator;
+
+#else  // _MSL_DEBUG
+private:
+	typedef typename base::iterator       __uncheck_iterator;
+	typedef typename base::const_iterator __uncheck_const_iterator;
+public:
+	typedef __debug_iterator<multimap, __uncheck_iterator>        iterator;
+	typedef __debug_iterator<multimap, __uncheck_const_iterator>  const_iterator;
+private:
+	void __invalidate_iterator(const iterator& i)
+	{
+		if (iterator_list<iterator>())
+			iterator_list<iterator>()->remove(bind2nd(equal_to<__uncheck_iterator>(), i.base()));
+		if (iterator_list<const_iterator>())
+			iterator_list<const_iterator>()->remove(bind2nd(equal_to<__uncheck_const_iterator>(), i.base()));
+	}
+
+	void __invalidate_iterator(iterator first, iterator last)
+	{
+		while (first != last)
+			__invalidate_iterator(first++);
+	}
+
+	void __invalidate_all_iterators()
+	{
+		if (iterator_list<iterator>())
+			iterator_list<iterator>()->remove(__unary_true_value<__uncheck_iterator>());
+		if (iterator_list<const_iterator>())
+			iterator_list<const_iterator>()->remove(__unary_true_value<__uncheck_const_iterator>());
+	}
+
+	__uncheck_iterator __iterator2base_iterator(iterator& i)
+	{
+		if (i.owner_ != this)
+			_MSL_DEBUG_ERROR(logic_error, "MSL DEBUG: invalid iterator given to multimap");
+		return i.base();
+	}
+
+	__uncheck_const_iterator __iterator2base_iterator(const_iterator& i)
+	{
+		if (i.owner_ != this)
+			_MSL_DEBUG_ERROR(logic_error, "MSL DEBUG: invalid iterator given to multimap");
+		return i.base();
+	}
+	iterator __iterator_base2iterator(__uncheck_iterator p) {return iterator(this, p);}
+	const_iterator __iterator_base2iterator(__uncheck_const_iterator p) const {return const_iterator(this, p);}
+public:
+	typedef _STD::reverse_iterator<iterator>       reverse_iterator;
+	typedef _STD::reverse_iterator<const_iterator> const_reverse_iterator;
+#endif  // _MSL_DEBUG
+
+	         multimap() {}
+	explicit multimap(const key_compare& comp) : base(comp) {}
+	         multimap(const key_compare& comp, const allocator_type& a) : base(comp, a) {}
+	template <class InputIterator>
+		multimap(InputIterator first, InputIterator last) : base(first, last) {}
+	template <class InputIterator>
+		multimap(InputIterator first, InputIterator last, const Compare& comp)
+			: base(first, last, comp) {}
+	template <class InputIterator>
+		multimap(InputIterator first, InputIterator last, const Compare& comp, const allocator_type& a)
+			: base(first, last, comp, a) {}
+
+#ifdef _MSL_DEBUG
+	multimap(const multimap& x) : base(x) {}
+	multimap& operator=(const multimap& x) {__invalidate_all_iterators(); base::operator=(x); return *this;}
+	~multimap() {__invalidate_all_iterators();}
+#endif  // _MSL_DEBUG
+
+#ifdef _MSL_MOVE
+	multimap(multimap&& x) : base(_STD::move(x)) {}
+	multimap& operator=(multimap&& x) {swap(x); return *this;}
+#endif  // _MSL_MOVE
+
+	using base::get_allocator;
+
+	using base::empty;
+	using base::size;
+	using base::max_size;
+
+	using base::key_comp;
+	using base::value_comp;
+
+	using base::count;
+
+	using base::invariants;
+
+#ifndef _MSL_DEBUG
+
+	using base::begin;
+	using base::end;
+
+	using base::rbegin;
+	using base::rend;
+
+//	using base::insert;
+	iterator insert(const value_type& x)                    {return base::insert(x);}
+	iterator insert(iterator position, const value_type& x) {return base::insert(position, x);}
+#ifdef _MSL_MOVE
+	template <class P>
+	typename Metrowerks::restrict_to
+	<
+		Metrowerks::is_convertible<P, pair<key_type, mapped_type> >::value &&
+		!Metrowerks::is_same<typename Metrowerks::remove_reference<P>::type, pair<key_type, mapped_type> >::value &&
+		!Metrowerks::is_same<typename Metrowerks::remove_reference<P>::type, value_type>::value,
+		iterator
+	>::type
+	insert(P&& p) {return insert(pair<key_type, mapped_type>(std::forward<P>(p)));}
+
+	iterator insert(const pair<key_type, mapped_type>& x) {return base::insert(x);}
+	iterator insert(pair<key_type, mapped_type>&& x)      {return base::insert(_STD::move(x));}
+
+	template <class P>
+	typename Metrowerks::restrict_to
+	<
+		Metrowerks::is_convertible<P, pair<key_type, mapped_type> >::value &&
+		!Metrowerks::is_same<typename Metrowerks::remove_reference<P>::type, pair<key_type, mapped_type> >::value &&
+		!Metrowerks::is_same<typename Metrowerks::remove_reference<P>::type, value_type>::value,
+		iterator
+	>::type
+	insert(iterator position, P&& p) {return insert(position, pair<key_type, mapped_type>(std::forward<P>(p)));}
+
+	iterator insert(iterator position, const pair<key_type, mapped_type>& x) {return base::insert(position, x);}
+	iterator insert(iterator position, pair<key_type, mapped_type>&& x)      {return base::insert(position, _STD::move(x));}
+#endif  // _MSL_MOVE
+	template <class InputIterator>
+		void insert(InputIterator first, InputIterator last)
+			{base::insert(first, last);}
+
+	using base::erase;
+	using base::clear;
+
+#ifdef _MSL_MOVE
+	void swap(multimap&& x) {base::swap(x);}
+#else
+	void swap(multimap& x) {base::swap(x);}
+#endif
+
+	using base::find;
+
+	using base::lower_bound;
+	using base::upper_bound;
+	using base::equal_range;
+
+#else   // _MSL_DEBUG
+
+private:
+	__uncheck_iterator       __uncheck_begin()       {return base::begin();}
+	__uncheck_const_iterator __uncheck_begin() const {return base::begin();}
+	__uncheck_iterator       __uncheck_end()         {return base::end();}
+	__uncheck_const_iterator __uncheck_end() const   {return base::end();}
+public:
+	iterator       begin()       {return __iterator_base2iterator(__uncheck_begin());}
+	const_iterator begin() const {return __iterator_base2iterator(__uncheck_begin());}
+	iterator       end()         {return __iterator_base2iterator(__uncheck_end());}
+	const_iterator end() const   {return __iterator_base2iterator(__uncheck_end());}
+
+	      reverse_iterator rbegin()       {return       reverse_iterator(end());}
+	const_reverse_iterator rbegin() const {return const_reverse_iterator(end());}
+	      reverse_iterator rend()         {return       reverse_iterator(begin());}
+	const_reverse_iterator rend() const   {return const_reverse_iterator(begin());}
+
+	iterator insert(const value_type& x)
+	{
+		return __iterator_base2iterator(base::insert(x));
+	}
+
+	iterator insert(iterator position, const value_type& x)
+	{
+		return __iterator_base2iterator(base::insert(__iterator2base_iterator(position), x));
+	}
+
+#ifdef _MSL_MOVE
+
+	template <class P>
+	typename Metrowerks::restrict_to
+	<
+		Metrowerks::is_convertible<P, pair<key_type, mapped_type> >::value &&
+		!Metrowerks::is_same<typename Metrowerks::remove_reference<P>::type, pair<key_type, mapped_type> >::value &&
+		!Metrowerks::is_same<typename Metrowerks::remove_reference<P>::type, value_type>::value,
+		iterator
+	>::type
+	insert(P&& p) {return insert(pair<key_type, mapped_type>(std::forward<P>(p)));}
+
+	iterator insert(const pair<key_type, mapped_type>& x)
+	{
+		return __iterator_base2iterator(base::insert(x));
+	}
+
+	iterator insert(pair<key_type, mapped_type>&& x)
+	{
+		return __iterator_base2iterator(base::insert(_STD::move(x)));
+	}
+
+	template <class P>
+	typename Metrowerks::restrict_to
+	<
+		Metrowerks::is_convertible<P, pair<key_type, mapped_type> >::value &&
+		!Metrowerks::is_same<typename Metrowerks::remove_reference<P>::type, pair<key_type, mapped_type> >::value &&
+		!Metrowerks::is_same<typename Metrowerks::remove_reference<P>::type, value_type>::value,
+		iterator
+	>::type
+	insert(iterator position, P&& p) {return insert(position, pair<key_type, mapped_type>(std::forward<P>(p)));}
+
+	iterator insert(iterator position, const pair<key_type, mapped_type>& x)
+	{
+		return __iterator_base2iterator(base::insert(__iterator2base_iterator(position), x));
+	}
+
+	iterator insert(iterator position, pair<key_type, mapped_type>&& x)
+	{
+		return __iterator_base2iterator(base::insert(__iterator2base_iterator(position), _STD::move(x)));
+	}
+
+#endif  // _MSL_MOVE
+
+	template <class InputIterator>
+		void insert(InputIterator first, InputIterator last)
+			{base::insert(first, last);}
+
+	iterator erase(iterator position)
+	{
+		__uncheck_iterator p = __iterator2base_iterator(position);
+		__invalidate_iterator(position);
+		return __iterator_base2iterator(base::erase(p));
+	}
+
+	size_type erase(const key_type& x)
+	{
+		pair<iterator, iterator> p = equal_range(x);
+		__invalidate_iterator(p.first, p.second);
+		return base::erase(x);
+	}
+
+	iterator erase(iterator first, iterator last)
+	{
+		__uncheck_iterator f = __iterator2base_iterator(first);
+		__uncheck_iterator l = __iterator2base_iterator(last);
+		__invalidate_iterator(first, last);
+		return __iterator_base2iterator(base::erase(f, l));
+	}
+
+	void clear() {__invalidate_all_iterators(); base::clear();}
+
+#ifdef _MSL_MOVE
+	void swap(multimap&& x)
+#else
+	void swap(multimap& x)
+#endif
+	{
+		base::swap(x);
+		iterator::swap(this, &x);
+		const_iterator::swap(this, &x);
+	}
+
+	iterator       find(const key_type& x)        {return __iterator_base2iterator(base::find(x));}
+	const_iterator find(const key_type& x) const  {return __iterator_base2iterator(base::find(x));}
+
+	iterator       lower_bound(const key_type& x)       {return __iterator_base2iterator(base::lower_bound(x));}
+	const_iterator lower_bound(const key_type& x) const {return __iterator_base2iterator(base::lower_bound(x));}
+
+	iterator       upper_bound(const key_type& x)       {return __iterator_base2iterator(base::upper_bound(x));}
+	const_iterator upper_bound(const key_type& x) const {return __iterator_base2iterator(base::upper_bound(x));}
+
+	pair<iterator,iterator> equal_range(const key_type& x)
+	{
+		pair<__uncheck_iterator, __uncheck_iterator> p = base::equal_range(x);
+		return pair<iterator,iterator>(__iterator_base2iterator(p.first), __iterator_base2iterator(p.second));
+	}
+
+	pair<const_iterator,const_iterator> equal_range(const key_type& x) const
+	{
+		pair<__uncheck_const_iterator, __uncheck_const_iterator> p = base::equal_range(x);
+		return pair<const_iterator,const_iterator>(__iterator_base2iterator(p.first), __iterator_base2iterator(p.second));
+	}
+
+private:
+	pair<iterator*, const_iterator*> iterator_list_;
+
+	iterator*&       iterator_list(iterator*)       {return iterator_list_.first;}
+	const_iterator*& iterator_list(const_iterator*) {return iterator_list_.second;}
+	template <class Iterator>
+	Iterator*& iterator_list() {return iterator_list((Iterator*)0);}
+
+	friend class iterator;
+	friend class const_iterator;
+#endif  // _MSL_DEBUG
+};
+
+template <class Key, class T, class Compare, class Allocator>
+inline
+bool
+operator==(const multimap<Key, T, Compare, Allocator>& x, const multimap<Key, T, Compare, Allocator>& y)
+{
+	return x.size() == y.size() && equal(x.begin(), x.end(), y.begin());
+}
+
+template <class Key, class T, class Compare, class Allocator>
+inline
+bool
+operator!=(const multimap<Key, T, Compare, Allocator>& x, const multimap<Key, T, Compare, Allocator>& y)
+{
+	return !(x == y);
+}
+
+template <class Key, class T, class Compare, class Allocator>
+inline
+bool
+operator< (const multimap<Key, T, Compare, Allocator>& x, const multimap<Key, T, Compare, Allocator>& y)
+{
+	return lexicographical_compare(x.begin(), x.end(), y.begin(), y.end());
+}
+
+template <class Key, class T, class Compare, class Allocator>
+inline
+bool
+operator> (const multimap<Key, T, Compare, Allocator>& x, const multimap<Key, T, Compare, Allocator>& y)
+{
+	return y < x;
+}
+
+template <class Key, class T, class Compare, class Allocator>
+inline
+bool
+operator>=(const multimap<Key, T, Compare, Allocator>& x, const multimap<Key, T, Compare, Allocator>& y)
+{
+	return !(x < y);
+}
+
+template <class Key, class T, class Compare, class Allocator>
+inline
+bool
+operator<=(const multimap<Key, T, Compare, Allocator>& x, const multimap<Key, T, Compare, Allocator>& y)
+{
+	return !(y < x);
+}
+
+template <class Key, class T, class Compare, class Allocator>
+inline
+void
+swap(multimap<Key, T, Compare, Allocator>& x, multimap<Key, T, Compare, Allocator>& y)
+{
+	x.swap(y);
+}
+
+#ifdef _MSL_MOVE
+
+template <class Key, class T, class Compare, class Allocator>
+inline
+void
+swap(multimap<Key, T, Compare, Allocator>&& x, multimap<Key, T, Compare, Allocator>& y)
+{
+	x.swap(y);
+}
+
+template <class Key, class T, class Compare, class Allocator>
+inline
+void
+swap(multimap<Key, T, Compare, Allocator>& x, multimap<Key, T, Compare, Allocator>&& y)
+{
+	x.swap(y);
+}
+
+#endif  // _MSL_MOVE
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	} // namespace std
+#endif
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	namespace Metrowerks {
+#else
+	#ifndef Metrowerks
+		#define Metrowerks
+	#endif
+#endif  // _MSL_NO_CPP_NAMESPACE
+
+#ifndef _MSL_DEBUG
+
+template <class Key, class T, class Compare, class Allocator>
+struct has_trivial_dtor_after_move_ctor<_STD::map<Key, T, Compare, Allocator> >
+{
+	static const bool value = has_trivial_dtor<Allocator>::value &&
+	                          has_trivial_dtor<Compare>::value;
+};
+
+template <class Key, class T, class Compare, class Allocator>
+struct has_trivial_dtor_after_move_ctor<_STD::multimap<Key, T, Compare, Allocator> >
+{
+	static const bool value = has_trivial_dtor<Allocator>::value &&
+	                          has_trivial_dtor<Compare>::value;
+};
+
+#endif  // _MSL_DEBUG
+
+template <class Key, class T, class Compare, class Allocator>
+struct move_with_swap<_STD::map<Key, T, Compare, Allocator> >
+{
+	static const bool value = has_trivial_copy_ctor<Allocator>::value &&
+	                          has_trivial_assignment<Allocator>::value &&
+	                          has_trivial_copy_ctor<Compare>::value &&
+	                          has_trivial_assignment<Compare>::value;
+};
+
+template <class Key, class T, class Compare, class Allocator>
+struct move_with_swap<_STD::multimap<Key, T, Compare, Allocator> >
+{
+	static const bool value = has_trivial_copy_ctor<Allocator>::value &&
+	                          has_trivial_assignment<Allocator>::value &&
+	                          has_trivial_copy_ctor<Compare>::value &&
+	                          has_trivial_assignment<Compare>::value;
+};
+
+template <class Key, class T, class Compare, class Allocator>
+struct has_nothrow_constructor<_STD::map<Key, T, Compare, Allocator> >
+{
+	static const bool value = has_nothrow_constructor<Allocator>::value &&
+	                          has_nothrow_constructor<Compare>::value;
+};
+
+template <class Key, class T, class Compare, class Allocator>
+struct has_nothrow_constructor<_STD::multimap<Key, T, Compare, Allocator> >
+{
+	static const bool value = has_nothrow_constructor<Allocator>::value &&
+	                          has_nothrow_constructor<Compare>::value;
+};
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	}  // namespace Metrowerks
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#pragma enumsalwaysint reset
+#endif
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#pragma bool reset
+#endif
+
+#ifdef __MWERKS__
+#pragma options align=reset
+#endif
+
+#endif // RC_INVOKED
+
+#endif // _MAP
+
+// hh 971220 fixed MOD_INCLUDE
+// hh 971222 added alignment wrapper
+// hh 971222 Changed filename from map.h to map
+// hh 971222 Made include guards standard
+// hh 971230 added RC_INVOKED wrapper
+// hh 980805 changed default allocator
+// hh 981130 rewrote
+// hh 990820 Optimized methods operating with keys only.
+// hh 990820 Optimized operator []
+// hh 000130 Renamed from tree.h to tree
+// hh 000130 Got rid of default arguments involving references
+// hh 010402 Removed 68K CMF support
+// hh 020723 Added void* optimization
+// hh 030527 Made pseudo movable
+// hh 030711 Worked around friend class T problem

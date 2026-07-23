@@ -1,0 +1,554 @@
+{
+  "key": 7509,
+  "messages": [
+    {
+      "id": "msg_0640_00000",
+      "en_US": [
+        "Hello. This is {STRVAR_1 3, 1, 0}...\r",
+        "Good morning, {STRVAR_1 3, 0, 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0640_00001",
+      "en_US": [
+        "Hello. This is {STRVAR_1 3, 1, 0}...\r",
+        "Good morning, {STRVAR_1 3, 0, 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0640_00002",
+      "en_US": [
+        "Hello. This is {STRVAR_1 3, 1, 0}...\r",
+        "How’s it going, {STRVAR_1 3, 0, 0}?\r"
+      ]
+    },
+    {
+      "id": "msg_0640_00003",
+      "en_US": [
+        "Hello. This is {STRVAR_1 3, 1, 0}...\r",
+        "How’s it going, {STRVAR_1 3, 0, 0}?\r"
+      ]
+    },
+    {
+      "id": "msg_0640_00004",
+      "en_US": [
+        "Hello. This is {STRVAR_1 3, 1, 0}...\r",
+        "Good evening, {STRVAR_1 3, 0, 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0640_00005",
+      "en_US": [
+        "Hello. This is {STRVAR_1 3, 1, 0}...\r",
+        "Good evening, {STRVAR_1 3, 0, 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0640_00006",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}, good morning!\r",
+        "It’s {STRVAR_1 3, 1, 0}. Are you sleeping in?\r"
+      ]
+    },
+    {
+      "id": "msg_0640_00007",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}, good morning!\r",
+        "It’s {STRVAR_1 3, 1, 0}. Are you sleeping in?\r"
+      ]
+    },
+    {
+      "id": "msg_0640_00008",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}, howdy!\r",
+        "It’s {STRVAR_1 3, 1, 0}. How are you?\r"
+      ]
+    },
+    {
+      "id": "msg_0640_00009",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}, howdy!\r",
+        "It’s {STRVAR_1 3, 1, 0}. How are you?\r"
+      ]
+    },
+    {
+      "id": "msg_0640_00010",
+      "en_US": [
+        "Good evening, {STRVAR_1 3, 0, 0}!\r",
+        "It’s me, {STRVAR_1 3, 1, 0}. Were you awake?\r"
+      ]
+    },
+    {
+      "id": "msg_0640_00011",
+      "en_US": [
+        "Good evening, {STRVAR_1 3, 0, 0}!\r",
+        "It’s me, {STRVAR_1 3, 1, 0}. Were you awake?\r"
+      ]
+    },
+    {
+      "id": "msg_0640_00012",
+      "en_US": [
+        "Hello? This is {STRVAR_1 3, 1, 0} speaking.\r",
+        "Oh. Hi, {STRVAR_1 3, 0, 0}! Good morning!\r"
+      ]
+    },
+    {
+      "id": "msg_0640_00013",
+      "en_US": [
+        "Hello? This is {STRVAR_1 3, 1, 0} speaking.\r",
+        "Oh. Hi, {STRVAR_1 3, 0, 0}! Good morning!\r"
+      ]
+    },
+    {
+      "id": "msg_0640_00014",
+      "en_US": [
+        "Hello? This is {STRVAR_1 3, 1, 0} speaking.\r",
+        "Oh, hi, {STRVAR_1 3, 0, 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0640_00015",
+      "en_US": [
+        "Hello? This is {STRVAR_1 3, 1, 0} speaking.\r",
+        "Oh, hi, {STRVAR_1 3, 0, 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0640_00016",
+      "en_US": [
+        "Hello? This is {STRVAR_1 3, 1, 0} speaking.\r",
+        "Oh, hi, {STRVAR_1 3, 0, 0}! Good evening!\r"
+      ]
+    },
+    {
+      "id": "msg_0640_00017",
+      "en_US": [
+        "Hello? This is {STRVAR_1 3, 1, 0} speaking.\r",
+        "Oh, hi, {STRVAR_1 3, 0, 0}! Good evening!\r"
+      ]
+    },
+    {
+      "id": "msg_0640_00018",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}, good morning!\r",
+        "It’s {STRVAR_1 3, 1, 0}. How are you?\r"
+      ]
+    },
+    {
+      "id": "msg_0640_00019",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}, good morning!\r",
+        "It’s {STRVAR_1 3, 1, 0}. Isn’t it nice out?\r"
+      ]
+    },
+    {
+      "id": "msg_0640_00020",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}, howdy!\r",
+        "It’s {STRVAR_1 3, 1, 0}. What are you doing?\r"
+      ]
+    },
+    {
+      "id": "msg_0640_00021",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}, howdy!\r",
+        "It’s {STRVAR_1 3, 1, 0}. What are you doing?\r"
+      ]
+    },
+    {
+      "id": "msg_0640_00022",
+      "en_US": [
+        "Good evening, {STRVAR_1 3, 0, 0}!\r",
+        "It’s me, {STRVAR_1 3, 1, 0}. Were you awake?\r"
+      ]
+    },
+    {
+      "id": "msg_0640_00023",
+      "en_US": [
+        "Good evening, {STRVAR_1 3, 0, 0}!\r",
+        "It’s me, {STRVAR_1 3, 1, 0}. Were you awake?\r"
+      ]
+    },
+    {
+      "id": "msg_0640_00024",
+      "en_US": [
+        "This is {STRVAR_1 3, 1, 0}!\r",
+        "Morning, {STRVAR_1 3, 0, 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0640_00025",
+      "en_US": [
+        "This is {STRVAR_1 3, 1, 0}!\r",
+        "Morning, {STRVAR_1 3, 0, 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0640_00026",
+      "en_US": [
+        "This is {STRVAR_1 3, 1, 0}!\r",
+        "Afternoon, {STRVAR_1 3, 0, 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0640_00027",
+      "en_US": [
+        "This is {STRVAR_1 3, 1, 0}!\r",
+        "Afternoon, {STRVAR_1 3, 0, 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0640_00028",
+      "en_US": [
+        "This is {STRVAR_1 3, 1, 0}!\r",
+        "Evening, {STRVAR_1 3, 0, 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0640_00029",
+      "en_US": [
+        "This is {STRVAR_1 3, 1, 0}!\r",
+        "Evening, {STRVAR_1 3, 0, 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0640_00030",
+      "en_US": [
+        "’Sup!\r",
+        "This is {STRVAR_1 3, 1, 0}, how are ya?\r"
+      ]
+    },
+    {
+      "id": "msg_0640_00031",
+      "en_US": [
+        "’Sup!\r",
+        "This is {STRVAR_1 3, 1, 0}, how are ya?\r"
+      ]
+    },
+    {
+      "id": "msg_0640_00032",
+      "en_US": [
+        "’Sup!\r",
+        "This is {STRVAR_1 3, 1, 0}, how are ya?\r"
+      ]
+    },
+    {
+      "id": "msg_0640_00033",
+      "en_US": [
+        "’Sup!\r",
+        "This is {STRVAR_1 3, 1, 0}, how are ya?\r"
+      ]
+    },
+    {
+      "id": "msg_0640_00034",
+      "en_US": [
+        "’Sup!\r",
+        "This is {STRVAR_1 3, 1, 0}, how are ya?\r"
+      ]
+    },
+    {
+      "id": "msg_0640_00035",
+      "en_US": [
+        "’Sup!\r",
+        "This is {STRVAR_1 3, 1, 0}, how are ya?\r"
+      ]
+    },
+    {
+      "id": "msg_0640_00036",
+      "en_US": [
+        "Yes? This is {STRVAR_1 3, 1, 0}.\r",
+        "Oh, {STRVAR_1 3, 0, 0}. Good morning.\r"
+      ]
+    },
+    {
+      "id": "msg_0640_00037",
+      "en_US": [
+        "Yes? This is {STRVAR_1 3, 1, 0}.\r",
+        "Oh, {STRVAR_1 3, 0, 0}. Good morning.\r"
+      ]
+    },
+    {
+      "id": "msg_0640_00038",
+      "en_US": [
+        "Yes? This is {STRVAR_1 3, 1, 0}.\r",
+        "Oh, {STRVAR_1 3, 0, 0}. Hello.\r"
+      ]
+    },
+    {
+      "id": "msg_0640_00039",
+      "en_US": [
+        "Yes? This is {STRVAR_1 3, 1, 0}.\r",
+        "Oh, {STRVAR_1 3, 0, 0}. Hello.\r"
+      ]
+    },
+    {
+      "id": "msg_0640_00040",
+      "en_US": [
+        "Yes? This is {STRVAR_1 3, 1, 0}.\r",
+        "Oh, {STRVAR_1 3, 0, 0}, good evening.\r"
+      ]
+    },
+    {
+      "id": "msg_0640_00041",
+      "en_US": [
+        "Yes? This is {STRVAR_1 3, 1, 0}.\r",
+        "Oh, {STRVAR_1 3, 0, 0}, good evening.\r"
+      ]
+    },
+    {
+      "id": "msg_0640_00042",
+      "en_US": [
+        "Hello, {STRVAR_1 3, 0, 0}. Good morning.\r",
+        "This is {STRVAR_1 3, 1, 0}. Were you asleep?\r"
+      ]
+    },
+    {
+      "id": "msg_0640_00043",
+      "en_US": [
+        "Hello, {STRVAR_1 3, 0, 0}. Good morning.\r",
+        "This is {STRVAR_1 3, 1, 0}. Were you asleep?\r"
+      ]
+    },
+    {
+      "id": "msg_0640_00044",
+      "en_US": [
+        "Hi, {STRVAR_1 3, 0, 0}.\r",
+        "This is {STRVAR_1 3, 1, 0}. How are you doing?\r"
+      ]
+    },
+    {
+      "id": "msg_0640_00045",
+      "en_US": [
+        "Hi, {STRVAR_1 3, 0, 0}.\r",
+        "This is {STRVAR_1 3, 1, 0}. How are you doing?\r"
+      ]
+    },
+    {
+      "id": "msg_0640_00046",
+      "en_US": [
+        "Hi, {STRVAR_1 3, 0, 0}.\r",
+        "This is {STRVAR_1 3, 1, 0}. Were you awake?\r"
+      ]
+    },
+    {
+      "id": "msg_0640_00047",
+      "en_US": [
+        "Hi, {STRVAR_1 3, 0, 0}.\r",
+        "This is {STRVAR_1 3, 1, 0}. Were you awake?\r"
+      ]
+    },
+    {
+      "id": "msg_0640_00048",
+      "en_US": [
+        "This is {STRVAR_1 3, 1, 0}...\r",
+        "Oh, hey, good morning.\r"
+      ]
+    },
+    {
+      "id": "msg_0640_00049",
+      "en_US": [
+        "This is {STRVAR_1 3, 1, 0}...\r",
+        "Oh, hey, good morning.\r"
+      ]
+    },
+    {
+      "id": "msg_0640_00050",
+      "en_US": [
+        "This is {STRVAR_1 3, 1, 0}...\r",
+        "Oh, hey, good afternoon.\r"
+      ]
+    },
+    {
+      "id": "msg_0640_00051",
+      "en_US": [
+        "This is {STRVAR_1 3, 1, 0}...\r",
+        "Oh, hey, good afternoon.\r"
+      ]
+    },
+    {
+      "id": "msg_0640_00052",
+      "en_US": [
+        "This is {STRVAR_1 3, 1, 0}...\r",
+        "Evening, how are you doing?\r"
+      ]
+    },
+    {
+      "id": "msg_0640_00053",
+      "en_US": [
+        "This is {STRVAR_1 3, 1, 0}...\r",
+        "Evening, how are you doing?\r"
+      ]
+    },
+    {
+      "id": "msg_0640_00054",
+      "en_US": [
+        "This is {STRVAR_1 3, 1, 0}.\r",
+        "Oh, hey! Good morning!\r"
+      ]
+    },
+    {
+      "id": "msg_0640_00055",
+      "en_US": [
+        "This is {STRVAR_1 3, 1, 0}.\r",
+        "Oh, hey! Good morning!\r"
+      ]
+    },
+    {
+      "id": "msg_0640_00056",
+      "en_US": [
+        "This is {STRVAR_1 3, 1, 0}.\r",
+        "Oh, hey! Good afternoon, what’s up?\r"
+      ]
+    },
+    {
+      "id": "msg_0640_00057",
+      "en_US": [
+        "This is {STRVAR_1 3, 1, 0}.\r",
+        "Oh, hey! Good afternoon, what’s up?\r"
+      ]
+    },
+    {
+      "id": "msg_0640_00058",
+      "en_US": [
+        "This is {STRVAR_1 3, 1, 0}.\r",
+        "Evening! How are you doing?\r"
+      ]
+    },
+    {
+      "id": "msg_0640_00059",
+      "en_US": [
+        "This is {STRVAR_1 3, 1, 0}.\r",
+        "Evening! How are you doing?\r"
+      ]
+    },
+    {
+      "id": "msg_0640_00060",
+      "en_US": [
+        "This is {STRVAR_1 3, 1, 0}!\r",
+        "Good morning!\r"
+      ]
+    },
+    {
+      "id": "msg_0640_00061",
+      "en_US": [
+        "This is {STRVAR_1 3, 1, 0}!\r",
+        "Good morning!\r"
+      ]
+    },
+    {
+      "id": "msg_0640_00062",
+      "en_US": [
+        "This is {STRVAR_1 3, 1, 0}!\r",
+        "Good afternoon!\r"
+      ]
+    },
+    {
+      "id": "msg_0640_00063",
+      "en_US": [
+        "This is {STRVAR_1 3, 1, 0}!\r",
+        "Good afternoon!\r"
+      ]
+    },
+    {
+      "id": "msg_0640_00064",
+      "en_US": [
+        "This is {STRVAR_1 3, 1, 0}!\r",
+        "Good evening!\r"
+      ]
+    },
+    {
+      "id": "msg_0640_00065",
+      "en_US": [
+        "This is {STRVAR_1 3, 1, 0}!\r",
+        "Good evening!\r"
+      ]
+    },
+    {
+      "id": "msg_0640_00066",
+      "en_US": [
+        "Oh, hey! Good morning!\r",
+        "This is {STRVAR_1 3, 1, 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0640_00067",
+      "en_US": [
+        "Oh, hey! Good morning!\r",
+        "This is {STRVAR_1 3, 1, 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0640_00068",
+      "en_US": [
+        "Oh, hey! Good afternoon, what’s up?\r",
+        "This is {STRVAR_1 3, 1, 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0640_00069",
+      "en_US": [
+        "Oh, hey! Good afternoon, what’s up?\r",
+        "This is {STRVAR_1 3, 1, 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0640_00070",
+      "en_US": [
+        "Evening! How are you doing?\r",
+        "This is {STRVAR_1 3, 1, 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0640_00071",
+      "en_US": [
+        "Evening! How are you doing?\r",
+        "This is {STRVAR_1 3, 1, 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0640_00072",
+      "en_US": [
+        "Good morning!\r",
+        "This is the Pokémon Storage System\n",
+        "Administration Service.\r"
+      ]
+    },
+    {
+      "id": "msg_0640_00073",
+      "en_US": [
+        "Good day!\r",
+        "This is the Pokémon Storage System\n",
+        "Administration Service.\r"
+      ]
+    },
+    {
+      "id": "msg_0640_00074",
+      "en_US": [
+        "Good evening!\r",
+        "This is the Pokémon Storage System\n",
+        "Administration Service.\r"
+      ]
+    },
+    {
+      "id": "msg_0640_00075",
+      "en_US": [
+        "{STRVAR_1 3, 1, 0} here...\r",
+        "{STRVAR_1 3, 0, 0}! Beautiful morning, hey?\r"
+      ]
+    },
+    {
+      "id": "msg_0640_00076",
+      "en_US": [
+        "{STRVAR_1 3, 1, 0} here...\r",
+        "{STRVAR_1 3, 0, 0}! Beautiful weather, hey?\r"
+      ]
+    },
+    {
+      "id": "msg_0640_00077",
+      "en_US": [
+        "{STRVAR_1 3, 1, 0} here...\r",
+        "{STRVAR_1 3, 0, 0}! Beautiful moonlight, hey?\r"
+      ]
+    }
+  ]
+}

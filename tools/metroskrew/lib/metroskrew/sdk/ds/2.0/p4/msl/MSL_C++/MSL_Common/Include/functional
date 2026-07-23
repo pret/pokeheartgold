@@ -1,0 +1,3838 @@
+/* MSL
+ * Copyright © 1995-2006 Freescale Corporation.  All rights reserved.
+ *
+ * $Date: 2006/02/09 16:58:20 $
+ * $Revision: 1.43.2.4 $
+ */
+
+// functional
+
+#ifndef _FUNCTIONAL
+#define _FUNCTIONAL
+
+/*  functional synopsis
+
+namespace std
+{
+
+//  lib.base, base:
+
+template <class Arg, class Result>              struct unary_function;
+template <class Arg1, class Arg2, class Result> struct binary_function;
+
+//  lib.arithmetic.operations, arithmetic operations:
+
+template <class T> struct plus;
+template <class T> struct minus;
+template <class T> struct multiplies;
+template <class T> struct divides;
+template <class T> struct modulus;
+template <class T> struct negate;
+
+//  lib.comparisons, comparisons:
+
+template <class T> struct equal_to;
+template <class T> struct not_equal_to;
+template <class T> struct greater;
+template <class T> struct less;
+template <class T> struct greater_equal;
+template <class T> struct less_equal;
+
+//  lib.logical.operations, logical operations:
+
+template <class T> struct logical_and;
+template <class T> struct logical_or;
+template <class T> struct logical_not;
+
+//  lib.negators, negators:
+
+template <class Predicate> struct unary_negate;
+template <class Predicate> unary_negate<Predicate>  not1(const Predicate&);
+template <class Predicate> struct binary_negate;
+template <class Predicate> binary_negate<Predicate> not2(const Predicate&);
+
+//  lib.binders, binders:
+
+template <class Operation>  class binder1st;
+template <class Operation, class T> binder1st<Operation> bind1st(const Operation&, const T&);
+template <class Operation> class binder2nd;
+template <class Operation, class T> binder2nd<Operation> bind2nd(const Operation&, const T&);
+
+//  lib.function.pointer.adaptors, adaptors:
+
+template <class Arg, class Result> class pointer_to_unary_function;
+
+template <class Arg, class Result>
+pointer_to_unary_function<Arg,Result>
+ptr_fun(Result (*)(Arg));
+
+template <class Arg1, class Arg2, class Result> class pointer_to_binary_function;
+
+template <class Arg1, class Arg2, class Result>
+pointer_to_binary_function<Arg1,Arg2,Result>
+ptr_fun(Result (*)(Arg1,Arg2));
+
+//  lib.member.pointer.adaptors, adaptors:
+
+template<class S, class T>          class mem_fun_t;
+template<class S, class T, class A> class mem_fun1_t;
+
+template<class S, class T>
+mem_fun_t<S,T>
+mem_fun(S (T::*f)());
+
+template<class S, class T, class A>
+mem_fun1_t<S,T,A>
+mem_fun(S (T::*f)(A));
+
+template<class S, class T>          class mem_fun_ref_t;
+template<class S, class T, class A> class mem_fun1_ref_t;
+
+template<class S, class T>
+mem_fun_ref_t<S,T>
+mem_fun_ref(S (T::*f)());
+
+template<class S, class T, class A>
+mem_fun1_ref_t<S,T,A>
+mem_fun_ref(S (T::*f)(A));
+
+template <class S, class T>          class const_mem_fun_t;
+template <class S, class T, class A> class const_mem_fun1_t;
+
+template <class S, class T>
+const_mem_fun_t<S,T>
+mem_fun(S (T::*f)() const);
+
+template <class S, class T, class A>
+const_mem_fun1_t<S,T,A>
+mem_fun(S (T::*f)(A) const);
+
+template <class S, class T>          class const_mem_fun_ref_t;
+template <class S, class T, class A> class const_mem_fun1_ref_t;
+
+template <class S, class T>
+const_mem_fun_ref_t<S,T>
+mem_fun_ref(S (T::*f)() const);
+
+template <class S, class T, class A>
+const_mem_fun1_ref_t<S,T,A>
+mem_fun_ref(S (T::*f)(A) const);
+
+namespace tr1 {
+
+template <class Sig>
+class result_of
+{
+public:
+	typedef implementation-details type;
+};
+
+template <class T>
+class reference_wrapper
+{
+public:
+	typedef T type;
+
+	explicit reference_wrapper(T& t);
+
+	operator T&() const;
+	T& get()      const;
+
+	implementation-details
+	operator()() const;
+
+	template <class T1>
+	typename result_of<T(T1)>::type
+	operator()(T1& t1) const;
+
+	template <class T1, class T2>
+	typename result_of<T(T1, T2)>::type
+	operator()(T1& t1, T2& t2) const;
+
+	...
+
+	template <class T1, class T2, class T3, class T4, class T5,
+	          class T6, class T7, class T8, class T9, class T10>
+	typename result_of<T(T1, T2, T3, T4, T5, T6, T7, T8, T9, T10)>::type
+	operator()(T1& t1, T2& t2, T3& t3, T4& t4, T5& t5, T6& t6, T7& t7, T8& t8, T9& t9, T10& t10) const;
+};
+
+template <class T> reference_wrapper<T>       ref(T& t);
+template <class T> reference_wrapper<const T> cref(const T& t);
+
+class bad_function_call
+	: public exception
+{
+public:
+	bad_function_call();
+	virtual const char* what() const throw();
+};
+
+template <class Signature>
+class function
+	: public unary_function<R, T1> // iff N == 1
+	: public binary_function<R, T1, T2> // iff N == 2
+{
+public:
+	typedef R  result_type;
+
+	function();
+	explicit function(null pointer constant);
+	function(const function& f);
+	template <class F> function(F);
+	template <class F> function(reference_wrapper<F>);
+	function& operator=(const function& f);
+	template <class S> function& operator=(const function<S>& f);
+	template <class F> function& operator=(F);
+	template <class F> function& operator=(reference_wrapper<F>);
+	function& operator=(null pointer constant);
+	~function();
+
+	void swap(function& f);
+	operator bool_type() const;
+
+	result_type operator()() const;
+	result_type operator()(param1) const;
+	result_type operator()(param1, param2) const;
+	result_type operator()(param1, param2, param3) const;
+	result_type operator()(param1, param2, param3, param4) const;
+	result_type operator()(param1, param2, param3, param4, param5) const;
+	result_type operator()(param1, param2, param3, param4, param5,
+	                       param6) const;
+	result_type operator()(param1, param2, param3, param4, param5,
+	                       param6, param7) const;
+	result_type operator()(param1, param2, param3, param4, param5,
+	                       param6, param7, param8) const;
+	result_type operator()(param1, param2, param3, param4, param5,
+	                       param6, param7, param8, param9) const;
+	result_type operator()(param1, param2, param3, param4, param5,
+	                       param6, param7, param8, param9, param10) const;
+};
+
+template <class F> void swap(function<F>& x, function<F>& y);
+
+template<class R, class T>
+// details
+mem_fn(R T::* pm);
+
+template<class R, class T>
+// details
+mem_fn(R (T::*pmf)());
+
+template<class R, class T>
+// details
+mem_fn(R (T::*pmf)() const);
+
+template<class R, class T, class A1>
+// details
+mem_fn(R (T::*pmf)(A1));
+
+template<class R, class T, class A1>
+// details
+mem_fn(R (T::*pmf)(A1) const);
+
+template<class R, class T, class A1, class A2>
+// details
+mem_fn(R (T::*pmf)(A1, A2));
+
+template<class R, class T, class A1, class A2>
+// details
+mem_fn(R (T::*pmf)(A1, A2) const);
+
+...
+
+template<class R, class T, class A1, class A2, class A3, class A4, class A5,
+                           class A6, class A7, class A8, class A9, class A10>
+// details
+mem_fn(R (T::*pmf)(A1, A2, A3, A4, A5, A6, A7, A8, A9, A10));
+
+template<class R, class T, class A1, class A2, class A3, class A4, class A5,
+                           class A6, class A7, class A8, class A9, class A10>
+// details
+mem_fn(R (T::*pmf)(A1, A2, A3, A4, A5, A6, A7, A8, A9, A10) const);
+
+}  // tr1
+
+}  // std
+*/
+
+#include <mslconfig>
+#include <utility>
+#include <exception>
+
+#ifdef _MSL_EXTENDED_BINDERS
+
+#include <msl_utility>
+
+#endif  // _MSL_EXTENDED_BINDERS
+
+#ifndef RC_INVOKED
+
+#ifdef __MWERKS__
+#pragma options align=native
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#if _MSL_FORCE_ENUMS_ALWAYS_INT
+		#pragma enumsalwaysint on
+	#else
+		#pragma enumsalwaysint off
+	#endif
+#endif  // _MSL_FORCE_ENUMS_ALWAYS_INT
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#if _MSL_FORCE_ENABLE_BOOL_SUPPORT
+		#pragma bool on
+	#else
+		#pragma bool off
+	#endif
+#endif  // _MSL_FORCE_ENABLE_BOOL_SUPPORT
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	namespace std {
+#endif
+
+//  lib.base, base:
+
+template <class Arg, class Result>
+struct unary_function
+{
+	typedef Arg    argument_type;
+	typedef Result result_type;
+};
+
+template <class Arg1, class Arg2, class Result>
+struct binary_function
+{
+	typedef Arg1   first_argument_type;
+	typedef Arg2   second_argument_type;
+	typedef Result result_type;
+};
+
+//  lib.arithmetic.operations, arithmetic operations:
+
+// plus
+
+template <class T>
+struct plus
+	: binary_function<T, T, T>
+{
+	T operator()(const T& x, const T& y) const {return x + y;}
+};
+
+// minus
+
+template <class T>
+struct minus
+	: binary_function<T, T, T>
+{
+	T operator()(const T& x, const T& y) const {return x - y;}
+};
+
+// multiplies
+
+template <class T>
+struct multiplies
+	: binary_function<T, T, T>
+{
+	T operator()(const T& x, const T& y) const {return x * y;}
+};
+
+// divides
+
+template <class T>
+struct divides
+	: binary_function<T, T, T>
+{
+	T operator()(const T& x, const T& y) const {return x / y;}
+};
+
+// modulus
+
+template <class T>
+struct modulus
+	: binary_function<T, T, T>
+{
+	T operator()(const T& x, const T& y) const {return x % y;}
+};
+
+// negate
+
+template <class T>
+struct negate
+	: unary_function<T, T>
+{
+	T operator()(const T& x) const {return -x;}
+};
+
+//  lib.comparisons, comparisons:
+
+// equal_to
+
+template <class T>
+struct equal_to
+	: binary_function<T, T, bool>
+{
+	bool operator()(const T& x, const T& y) const {return static_cast<bool>(x == y);}
+};
+
+namespace detail
+{
+
+template <class T, class U = T>
+struct equal_to
+{
+	bool operator()(const T& x, const T& y) const {return static_cast<bool>(x == y);}
+	bool operator()(const T& x, const U& y) const {return static_cast<bool>(x == y);}
+	bool operator()(const U& x, const T& y) const {return static_cast<bool>(x == y);}
+	bool operator()(const U& x, const U& y) const {return static_cast<bool>(x == y);}
+};
+
+template <class T>
+struct equal_to<T, T>
+{
+	bool operator()(const T& x, const T& y) const {return static_cast<bool>(x == y);}
+};
+
+}  // detail
+
+// not_equal_to
+
+template <class T>
+struct not_equal_to
+	: binary_function<T, T, bool>
+{
+	bool operator()(const T& x, const T& y) const {return static_cast<bool>(!(x == y));}
+};
+
+// greater
+
+template <class T>
+struct greater
+	: binary_function<T, T, bool>
+{
+	bool operator()(const T& x, const T& y) const {return static_cast<bool>(y < x);}
+};
+
+// less
+
+template <class T>
+struct less
+	: binary_function<T, T, bool>
+{
+	bool operator()(const T& x, const T& y) const {return static_cast<bool>(x < y);}
+};
+
+namespace detail
+{
+
+template <class T, class U = T>
+struct less
+{
+	bool operator()(const T& x, const T& y) const {return static_cast<bool>(x < y);}
+	bool operator()(const T& x, const U& y) const {return static_cast<bool>(x < y);}
+	bool operator()(const U& x, const T& y) const {return static_cast<bool>(x < y);}
+	bool operator()(const U& x, const U& y) const {return static_cast<bool>(x < y);}
+};
+
+template <class T>
+struct less<T, T>
+{
+	bool operator()(const T& x, const T& y) const {return static_cast<bool>(x < y);}
+};
+
+}  // detail
+
+// greater_equal
+
+template <class T>
+struct greater_equal
+	: binary_function<T, T, bool>
+{
+	bool operator()(const T& x, const T& y) const {return static_cast<bool>(!(x < y));}
+};
+
+// less_equal
+
+template <class T>
+struct less_equal
+	: binary_function<T, T, bool>
+{
+	bool operator()(const T& x, const T& y) const {return static_cast<bool>(!(y < x));}
+};
+
+//  lib.logical.operations, logical operations:
+
+// logical_and
+
+template <class T>
+struct logical_and
+	: binary_function<T, T, bool>
+{
+	bool operator()(const T& x, const T& y) const {return static_cast<bool>(x && y);}
+};
+
+// logical_or
+
+template <class T>
+struct logical_or
+	: binary_function<T, T, bool>
+{
+	bool operator()(const T& x, const T& y) const {return static_cast<bool>(x || y);}
+};
+
+// logical_not
+
+template <class T>
+struct logical_not
+	: unary_function<T, bool>
+{
+	bool operator()(const T& x) const {return static_cast<bool>(!x);}
+};
+
+//  lib.negators, negators:
+
+// unary_negate
+
+template <class Predicate>
+class unary_negate
+	: public unary_function<typename Predicate::argument_type, bool>
+{
+public:
+	explicit unary_negate(const Predicate& pred) : pred_(pred) {}
+	bool operator()(const typename Predicate::argument_type& x) const
+		{return static_cast<bool>(!pred_(x));}
+private:
+	Predicate pred_;
+};
+
+template <class Predicate>
+inline
+unary_negate<Predicate>
+not1(const Predicate& pred)
+{
+	return unary_negate<Predicate>(pred);
+}
+
+// binary_negate
+
+template <class Predicate>
+class binary_negate
+	: public binary_function<typename Predicate::first_argument_type,
+	                         typename Predicate::second_argument_type, bool>
+{
+public:
+	explicit binary_negate(const Predicate& pred) : pred_(pred) {}
+	bool operator()(const typename Predicate::first_argument_type&  x,
+	                const typename Predicate::second_argument_type& y) const
+		{return static_cast<bool>(!pred_(x, y));}
+private:
+	Predicate pred_;
+};
+
+template <class Predicate>
+inline
+binary_negate<Predicate>
+not2(const Predicate& pred)
+{
+	return binary_negate<Predicate>(pred);
+}
+
+template <class T>
+struct __unary_true_value
+	: unary_function<T, bool>
+{
+	bool operator()(const T&) const {return true;}
+};
+
+//  lib.binders, binders:
+
+// binder1st
+
+#ifdef _MSL_EXTENDED_BINDERS
+
+template <class Operation, class T = typename Metrowerks::remove_reference<Operation>::type::first_argument_type>
+class binder1st
+	: public unary_function<typename Metrowerks::remove_reference<Operation>::type::second_argument_type,
+	                        typename Metrowerks::remove_reference<Operation>::type::result_type>
+{
+	typedef unary_function<
+		typename Metrowerks::remove_reference<Operation>::type::second_argument_type,
+		typename Metrowerks::remove_reference<Operation>::type::result_type> base;
+public:
+	typedef Operation operation_type;
+	typedef T first_argument_type;
+	typedef typename base::argument_type argument_type;
+	typedef typename base::result_type result_type;
+
+	binder1st(typename Metrowerks::call_traits<Operation>::param_type x,
+	          typename Metrowerks::call_traits<T>::param_type y)
+		: op(x), value(y) {}
+	result_type
+		operator()(typename Metrowerks::call_traits<argument_type>::const_reference x) const
+		{return op(value, x);}
+	result_type
+		operator()(typename Metrowerks::call_traits<argument_type>::reference x)
+		{return op(value, x);}
+protected:
+	operation_type op;
+	first_argument_type value;
+};
+
+#else  // _MSL_EXTENDED_BINDERS
+
+template <class Operation>
+class binder1st
+	: public unary_function<typename Operation::second_argument_type,
+	                        typename Operation::result_type>
+{
+public:
+	binder1st(const Operation& x, const typename Operation::first_argument_type& y)
+		: op(x), value(y) {}
+	typename Operation::result_type
+		operator()(const typename Operation::second_argument_type& x) const {return op(value, x);}
+	typename Operation::result_type  // experimental
+		operator()(typename Operation::second_argument_type& x) const {return op(value, x);}
+protected:
+	Operation op;
+	typename Operation::first_argument_type value;
+};
+
+#endif  // _MSL_EXTENDED_BINDERS
+
+template <class Operation, class T>
+inline
+binder1st<Operation>
+bind1st(const Operation& op, const T& x)
+{
+	return binder1st<Operation>(op, typename Operation::first_argument_type(x));
+}
+
+// __binder1st_const_ref
+
+template <class Operation>
+class __binder1st_const_ref
+	: public unary_function<typename Operation::second_argument_type,
+	                        typename Operation::result_type>
+{
+public:
+	__binder1st_const_ref(const Operation& x, const typename Operation::first_argument_type& y);
+	typename Operation::result_type
+		operator()(const typename Operation::second_argument_type& x) const;
+protected:
+	Operation op;
+	const typename Operation::first_argument_type* value;
+};
+
+template <class Operation>
+inline
+__binder1st_const_ref<Operation>::__binder1st_const_ref(const Operation& x,
+                                const typename Operation::first_argument_type& y)
+	: op(x),
+	  value(&y)
+{
+}
+
+template <class Operation>
+inline
+typename Operation::result_type
+__binder1st_const_ref<Operation>::operator()(const typename Operation::second_argument_type& x) const
+{
+	return op(*value, x);
+}
+
+// binder2nd
+
+#ifdef _MSL_EXTENDED_BINDERS
+
+template <class Operation, class T = typename Metrowerks::remove_reference<Operation>::type::second_argument_type>
+class binder2nd
+	: public unary_function<typename Metrowerks::remove_reference<Operation>::type::first_argument_type,
+	                        typename Metrowerks::remove_reference<Operation>::type::result_type>
+{
+	typedef unary_function<
+		typename Metrowerks::remove_reference<Operation>::type::first_argument_type,
+		typename Metrowerks::remove_reference<Operation>::type::result_type> base;
+public:
+	typedef Operation operation_type;
+	typedef T second_argument_type;
+	typedef typename base::argument_type argument_type;
+	typedef typename base::result_type result_type;
+
+	binder2nd(typename Metrowerks::call_traits<Operation>::param_type x,
+	          typename Metrowerks::call_traits<T>::param_type y)
+		: op(x), value(y) {}
+	result_type
+		operator()(typename Metrowerks::call_traits<argument_type>::const_reference x) const
+		{return op(x, value);}
+	result_type
+		operator()(typename Metrowerks::call_traits<argument_type>::reference x)
+		{return op(x, value);}
+protected:
+	operation_type op;
+	second_argument_type value;
+};
+
+#else // _MSL_EXTENDED_BINDERS
+
+template <class Operation>
+class binder2nd
+	: public unary_function<typename Operation::first_argument_type,
+	                        typename Operation::result_type>
+{
+public:
+	binder2nd(const Operation& x, const typename Operation::second_argument_type& y)
+		: op(x), value(y) {}
+	typename Operation::result_type
+		operator()(const typename Operation::first_argument_type& x) const
+			{return op(x, value);}
+	typename Operation::result_type  // experimental
+		operator()(typename Operation::first_argument_type& x) const
+			{return op(x, value);}
+protected:
+	Operation op;
+	typename Operation::second_argument_type value;
+};
+
+#endif  // _MSL_EXTENDED_BINDERS
+
+template <class Operation, class T>
+inline
+binder2nd<Operation>
+bind2nd(const Operation& op, const T& x)
+{
+	return binder2nd<Operation>(op, typename Operation::second_argument_type(x));
+}
+
+// __binder2nd_const_ref
+
+template <class Operation>
+class __binder2nd_const_ref
+	: public unary_function<typename Operation::first_argument_type,
+	                        typename Operation::result_type>
+{
+public:
+	__binder2nd_const_ref(const Operation& x, const typename Operation::second_argument_type& y);
+	typename Operation::result_type
+		operator()(const typename Operation::first_argument_type& x) const;
+protected:
+	Operation op;
+	const typename Operation::second_argument_type* value;
+};
+
+template <class Operation>
+inline
+__binder2nd_const_ref<Operation>::__binder2nd_const_ref(const Operation& x,
+                                const typename Operation::second_argument_type& y)
+	: op(x),
+	  value(&y)
+{
+}
+
+template <class Operation>
+inline
+typename Operation::result_type
+__binder2nd_const_ref<Operation>::operator()(const typename Operation::first_argument_type& x) const
+{
+	return op(x, *value);
+}
+
+//  lib.function.pointer.adaptors, adaptors:
+
+// pointer_to_unary_function
+
+template <class Arg, class Result>
+class pointer_to_unary_function
+	: public unary_function<Arg, Result>
+{
+public:
+	explicit pointer_to_unary_function(Result (*f)(Arg)) : f_(f) {}
+	Result operator()(Arg x) const {return f_(x);}
+private:
+	Result (*f_)(Arg);
+};
+
+template <class Arg, class Result>
+inline
+pointer_to_unary_function<Arg, Result>
+ptr_fun(Result (*f)(Arg))
+{
+	return pointer_to_unary_function<Arg, Result>(f);
+}
+
+// pointer_to_binary_function
+
+template <class Arg1, class Arg2, class Result>
+class pointer_to_binary_function
+	: public binary_function<Arg1, Arg2, Result>
+{
+public:
+	explicit pointer_to_binary_function(Result (*f)(Arg1, Arg2)) : f_(f) {}
+	Result operator()(Arg1 x, Arg2 y) const {return f_(x, y);}
+private:
+	Result (*f_)(Arg1, Arg2);
+};
+
+template <class Arg1, class Arg2, class Result>
+inline
+pointer_to_binary_function<Arg1, Arg2, Result>
+ptr_fun(Result (*f)(Arg1, Arg2))
+{
+	return pointer_to_binary_function<Arg1, Arg2, Result>(f);
+}
+
+//  lib.member.pointer.adaptors, adaptors:
+
+// mem_fun_t
+
+template <class S, class T>
+class mem_fun_t
+	: public unary_function<T*, S>
+{
+public:
+	explicit mem_fun_t(S (T::*mf)()) : mf_(mf) {}
+	S operator()(T* p) const {return (p->*mf_)();}
+private:
+	S (T::*mf_)();
+};
+
+// mem_fun1_t
+
+template <class S, class T, class A>
+class mem_fun1_t
+	: public binary_function<T*, A, S>
+{
+public:
+	explicit mem_fun1_t(S (T::*mf)(A)) : mf_(mf) {}
+	S operator()(T* p, A x) const {return (p->*mf_)(x);}
+private:
+	S (T::*mf_)(A);
+};
+
+// mem_fun
+
+template<class S, class T>
+inline
+mem_fun_t<S, T>
+mem_fun(S (T::*f)())
+{
+	return mem_fun_t<S, T>(f);
+}
+
+template<class S, class T, class A>
+inline
+mem_fun1_t<S, T, A>
+mem_fun(S (T::*f)(A))
+{
+	return mem_fun1_t<S, T, A>(f);
+}
+
+// mem_fun_ref_t
+
+template <class S, class T>
+class mem_fun_ref_t
+	: public unary_function<T, S>
+{
+public:
+	explicit mem_fun_ref_t(S (T::*mf)()) : mf_(mf) {}
+	S operator()(T& p) const {return (p.*mf_)();}
+private:
+	S (T::*mf_)();
+};
+
+// mem_fun1_ref_t
+
+template <class S, class T, class A>
+class mem_fun1_ref_t
+	: public binary_function<T, A, S>
+{
+public:
+	explicit mem_fun1_ref_t(S (T::*mf)(A)) : mf_(mf) {}
+	S operator()(T& p, A x) const {return (p.*mf_)(x);}
+private:
+	S (T::*mf_)(A);
+};
+
+// mem_fun_ref
+
+template<class S, class T>
+inline
+mem_fun_ref_t<S, T>
+mem_fun_ref(S (T::*f)())
+{
+	return mem_fun_ref_t<S, T>(f);
+}
+
+template<class S, class T, class A>
+inline
+mem_fun1_ref_t<S, T, A>
+mem_fun_ref(S (T::*f)(A))
+{
+	return mem_fun1_ref_t<S, T, A>(f);
+}
+
+// const_mem_fun_t
+
+template <class S, class T>
+class const_mem_fun_t
+	: public unary_function<const T*, S>
+{
+public:
+	explicit const_mem_fun_t(S (T::*mf)() const) : mf_(mf) {}
+	S operator()(const T* p) const {return (p->*mf_)();}
+private:
+	S (T::*mf_)() const;
+};
+
+// const_mem_fun1_t
+
+template <class S, class T, class A>
+class const_mem_fun1_t
+	: public binary_function<const T*, A, S>
+{
+public:
+	explicit const_mem_fun1_t(S (T::*mf)(A) const) : mf_(mf) {}
+	S operator()(const T* p, A x) const {return (p->*mf_)(x);}
+private:
+	S (T::*mf_)(A) const;
+};
+
+// mem_fun
+
+template <class S, class T>
+inline
+const_mem_fun_t<S, T>
+mem_fun(S (T::*f)() const)
+{
+	return const_mem_fun_t<S, T>(f);
+}
+
+template <class S, class T, class A>
+inline
+const_mem_fun1_t<S, T, A>
+mem_fun(S (T::*f)(A) const)
+{
+	return const_mem_fun1_t<S, T, A>(f);
+}
+
+// const_mem_fun_ref_t
+
+template <class S, class T>
+class const_mem_fun_ref_t
+	: public unary_function<T, S>
+{
+public:
+	explicit const_mem_fun_ref_t(S (T::*mf)() const) : mf_(mf) {}
+	S operator()(const T& p) const {return (p.*mf_)();}
+private:
+	S (T::*mf_)() const;
+};
+
+// const_mem_fun1_ref_t
+
+template <class S, class T, class A>
+class const_mem_fun1_ref_t
+	: public binary_function<T, A, S>
+{
+public:
+	explicit const_mem_fun1_ref_t(S (T::*mf)(A) const) : mf_(mf) {}
+	S operator()(const T& p, A x) const {return (p.*mf_)(x);}
+private:
+	S (T::*mf_)(A) const;
+};
+
+// mem_fun_ref
+
+template <class S, class T>
+inline
+const_mem_fun_ref_t<S, T>
+mem_fun_ref(S (T::*f)() const)
+{
+	return const_mem_fun_ref_t<S, T>(f);
+}
+
+template <class S, class T, class A>
+inline
+const_mem_fun1_ref_t<S, T, A>
+mem_fun_ref(S (T::*f)(A) const)
+{
+	return const_mem_fun1_ref_t<S, T, A>(f);
+}
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	} // namespace std
+#endif
+
+#if __MWERKS__ >= 0x3200
+
+_MSL_START_TR1_NAMESPACE
+
+namespace detail
+{
+
+struct default_parms
+{
+	typedef nat param1;
+	typedef nat param2;
+	typedef nat param3;
+	typedef nat param4;
+	typedef nat param5;
+	typedef nat param6;
+	typedef nat param7;
+	typedef nat param8;
+	typedef nat param9;
+	typedef nat param10;
+};
+
+template<class Sig> struct signature;
+
+// signature for function pointers
+
+template<class R>
+struct signature<R (*)()>
+	: public default_parms
+{
+public:
+	typedef R result_type;
+};
+
+template<class R, class T1>
+struct signature<R (*)(T1)>
+	: public unary_function<T1, R>,
+	  public default_parms
+{
+public:
+	typedef R result_type;
+	typedef T1 param1;
+};
+
+template<class R, class T1, class T2>
+struct signature<R (*)(T1, T2)>
+	: public binary_function<T1, T2, R>,
+	  public default_parms
+{
+public:
+	typedef R result_type;
+	typedef T1 param1;
+	typedef T2 param2;
+};
+
+template<class R, class T1, class T2, class T3>
+struct signature<R (*)(T1, T2, T3)>
+	: public default_parms
+{
+public:
+	typedef R result_type;
+	typedef T1 param1;
+	typedef T2 param2;
+	typedef T3 param3;
+};
+
+template<class R, class T1, class T2, class T3, class T4>
+struct signature<R (*)(T1, T2, T3, T4)>
+	: public default_parms
+{
+public:
+	typedef R result_type;
+	typedef T1 param1;
+	typedef T2 param2;
+	typedef T3 param3;
+	typedef T4 param4;
+};
+
+template<class R, class T1, class T2, class T3, class T4, class T5>
+struct signature<R (*)(T1, T2, T3, T4, T5)>
+	: public default_parms
+{
+public:
+	typedef R result_type;
+	typedef T1 param1;
+	typedef T2 param2;
+	typedef T3 param3;
+	typedef T4 param4;
+	typedef T5 param5;
+};
+
+template<class R, class T1, class T2, class T3, class T4, class T5,
+                  class T6>
+struct signature<R (*)(T1, T2, T3, T4, T5, T6)>
+	: public default_parms
+{
+public:
+	typedef R result_type;
+	typedef T1 param1;
+	typedef T2 param2;
+	typedef T3 param3;
+	typedef T4 param4;
+	typedef T5 param5;
+	typedef T6 param6;
+};
+
+template<class R, class T1, class T2, class T3, class T4, class T5,
+                  class T6, class T7>
+struct signature<R (*)(T1, T2, T3, T4, T5, T6, T7)>
+	: public default_parms
+{
+public:
+	typedef R result_type;
+	typedef T1 param1;
+	typedef T2 param2;
+	typedef T3 param3;
+	typedef T4 param4;
+	typedef T5 param5;
+	typedef T6 param6;
+	typedef T7 param7;
+};
+
+template<class R, class T1, class T2, class T3, class T4, class T5,
+                  class T6, class T7, class T8>
+struct signature<R (*)(T1, T2, T3, T4, T5, T6, T7, T8)>
+	: public default_parms
+{
+public:
+	typedef R result_type;
+	typedef T1 param1;
+	typedef T2 param2;
+	typedef T3 param3;
+	typedef T4 param4;
+	typedef T5 param5;
+	typedef T6 param6;
+	typedef T7 param7;
+	typedef T8 param8;
+};
+
+template<class R, class T1, class T2, class T3, class T4, class T5,
+                  class T6, class T7, class T8, class T9>
+struct signature<R (*)(T1, T2, T3, T4, T5, T6, T7, T8, T9)>
+	: public default_parms
+{
+public:
+	typedef R result_type;
+	typedef T1 param1;
+	typedef T2 param2;
+	typedef T3 param3;
+	typedef T4 param4;
+	typedef T5 param5;
+	typedef T6 param6;
+	typedef T7 param7;
+	typedef T8 param8;
+	typedef T9 param9;
+};
+
+template<class R, class T1, class T2, class T3, class T4, class T5,
+                  class T6, class T7, class T8, class T9, class T10>
+struct signature<R (*)(T1, T2, T3, T4, T5, T6, T7, T8, T9, T10)>
+	: public default_parms
+{
+public:
+	typedef R result_type;
+	typedef T1 param1;
+	typedef T2 param2;
+	typedef T3 param3;
+	typedef T4 param4;
+	typedef T5 param5;
+	typedef T6 param6;
+	typedef T7 param7;
+	typedef T8 param8;
+	typedef T9 param9;
+	typedef T10 param10;
+};
+
+// signature for member function pointers
+
+template<class R, class C>
+struct signature<R (C::*)()>
+	: public default_parms
+{
+public:
+	typedef R result_type;
+	typedef C class_type;
+};
+
+template<class R, class C, class T1>
+struct signature<R (C::*)(T1)>
+	: public default_parms
+{
+public:
+	typedef R result_type;
+	typedef C class_type;
+	typedef T1 param1;
+};
+
+template<class R, class C, class T1, class T2>
+struct signature<R (C::*)(T1, T2)>
+	: public default_parms
+{
+public:
+	typedef R result_type;
+	typedef C class_type;
+	typedef T1 param1;
+	typedef T2 param2;
+};
+
+template<class R, class C, class T1, class T2, class T3>
+struct signature<R (C::*)(T1, T2, T3)>
+	: public default_parms
+{
+public:
+	typedef R result_type;
+	typedef C class_type;
+	typedef T1 param1;
+	typedef T2 param2;
+	typedef T3 param3;
+};
+
+template<class R, class C, class T1, class T2, class T3, class T4>
+struct signature<R (C::*)(T1, T2, T3, T4)>
+	: public default_parms
+{
+public:
+	typedef R result_type;
+	typedef C class_type;
+	typedef T1 param1;
+	typedef T2 param2;
+	typedef T3 param3;
+	typedef T4 param4;
+};
+
+template<class R, class C, class T1, class T2, class T3, class T4, class T5>
+struct signature<R (C::*)(T1, T2, T3, T4, T5)>
+	: public default_parms
+{
+public:
+	typedef R result_type;
+	typedef C class_type;
+	typedef T1 param1;
+	typedef T2 param2;
+	typedef T3 param3;
+	typedef T4 param4;
+	typedef T5 param5;
+};
+
+template<class R, class C, class T1, class T2, class T3, class T4, class T5,
+                           class T6>
+struct signature<R (C::*)(T1, T2, T3, T4, T5, T6)>
+	: public default_parms
+{
+public:
+	typedef R result_type;
+	typedef C class_type;
+	typedef T1 param1;
+	typedef T2 param2;
+	typedef T3 param3;
+	typedef T4 param4;
+	typedef T5 param5;
+	typedef T6 param6;
+};
+
+template<class R, class C, class T1, class T2, class T3, class T4, class T5,
+                           class T6, class T7>
+struct signature<R (C::*)(T1, T2, T3, T4, T5, T6, T7)>
+	: public default_parms
+{
+public:
+	typedef R result_type;
+	typedef C class_type;
+	typedef T1 param1;
+	typedef T2 param2;
+	typedef T3 param3;
+	typedef T4 param4;
+	typedef T5 param5;
+	typedef T6 param6;
+	typedef T7 param7;
+};
+
+template<class R, class C, class T1, class T2, class T3, class T4, class T5,
+                           class T6, class T7, class T8>
+struct signature<R (C::*)(T1, T2, T3, T4, T5, T6, T7, T8)>
+	: public default_parms
+{
+public:
+	typedef R result_type;
+	typedef C class_type;
+	typedef T1 param1;
+	typedef T2 param2;
+	typedef T3 param3;
+	typedef T4 param4;
+	typedef T5 param5;
+	typedef T6 param6;
+	typedef T7 param7;
+	typedef T8 param8;
+};
+
+template<class R, class C, class T1, class T2, class T3, class T4, class T5,
+                           class T6, class T7, class T8, class T9>
+struct signature<R (C::*)(T1, T2, T3, T4, T5, T6, T7, T8, T9)>
+	: public default_parms
+{
+public:
+	typedef R result_type;
+	typedef C class_type;
+	typedef T1 param1;
+	typedef T2 param2;
+	typedef T3 param3;
+	typedef T4 param4;
+	typedef T5 param5;
+	typedef T6 param6;
+	typedef T7 param7;
+	typedef T8 param8;
+	typedef T9 param9;
+};
+
+template<class R, class C, class T1, class T2, class T3, class T4, class T5,
+                           class T6, class T7, class T8, class T9, class T10>
+struct signature<R (C::*)(T1, T2, T3, T4, T5, T6, T7, T8, T9, T10)>
+	: public default_parms
+{
+public:
+	typedef R result_type;
+	typedef C class_type;
+	typedef T1 param1;
+	typedef T2 param2;
+	typedef T3 param3;
+	typedef T4 param4;
+	typedef T5 param5;
+	typedef T6 param6;
+	typedef T7 param7;
+	typedef T8 param8;
+	typedef T9 param9;
+	typedef T10 param10;
+};
+
+// signature for const member function pointers
+
+template<class R, class C>
+struct signature<R (C::*)() const>
+	: public default_parms
+{
+public:
+	typedef R result_type;
+	typedef C class_type;
+};
+
+template<class R, class C, class T1>
+struct signature<R (C::*)(T1) const>
+	: public default_parms
+{
+public:
+	typedef R result_type;
+	typedef C class_type;
+	typedef T1 param1;
+};
+
+template<class R, class C, class T1, class T2>
+struct signature<R (C::*)(T1, T2) const>
+	: public default_parms
+{
+public:
+	typedef R result_type;
+	typedef C class_type;
+	typedef T1 param1;
+	typedef T2 param2;
+};
+
+template<class R, class C, class T1, class T2, class T3>
+struct signature<R (C::*)(T1, T2, T3) const>
+	: public default_parms
+{
+public:
+	typedef R result_type;
+	typedef C class_type;
+	typedef T1 param1;
+	typedef T2 param2;
+	typedef T3 param3;
+};
+
+template<class R, class C, class T1, class T2, class T3, class T4>
+struct signature<R (C::*)(T1, T2, T3, T4) const>
+	: public default_parms
+{
+public:
+	typedef R result_type;
+	typedef C class_type;
+	typedef T1 param1;
+	typedef T2 param2;
+	typedef T3 param3;
+	typedef T4 param4;
+};
+
+template<class R, class C, class T1, class T2, class T3, class T4, class T5>
+struct signature<R (C::*)(T1, T2, T3, T4, T5) const>
+	: public default_parms
+{
+public:
+	typedef R result_type;
+	typedef C class_type;
+	typedef T1 param1;
+	typedef T2 param2;
+	typedef T3 param3;
+	typedef T4 param4;
+	typedef T5 param5;
+};
+
+template<class R, class C, class T1, class T2, class T3, class T4, class T5,
+                           class T6>
+struct signature<R (C::*)(T1, T2, T3, T4, T5, T6) const>
+	: public default_parms
+{
+public:
+	typedef R result_type;
+	typedef C class_type;
+	typedef T1 param1;
+	typedef T2 param2;
+	typedef T3 param3;
+	typedef T4 param4;
+	typedef T5 param5;
+	typedef T6 param6;
+};
+
+template<class R, class C, class T1, class T2, class T3, class T4, class T5,
+                           class T6, class T7>
+struct signature<R (C::*)(T1, T2, T3, T4, T5, T6, T7) const>
+	: public default_parms
+{
+public:
+	typedef R result_type;
+	typedef C class_type;
+	typedef T1 param1;
+	typedef T2 param2;
+	typedef T3 param3;
+	typedef T4 param4;
+	typedef T5 param5;
+	typedef T6 param6;
+	typedef T7 param7;
+};
+
+template<class R, class C, class T1, class T2, class T3, class T4, class T5,
+                           class T6, class T7, class T8>
+struct signature<R (C::*)(T1, T2, T3, T4, T5, T6, T7, T8) const>
+	: public default_parms
+{
+public:
+	typedef R result_type;
+	typedef C class_type;
+	typedef T1 param1;
+	typedef T2 param2;
+	typedef T3 param3;
+	typedef T4 param4;
+	typedef T5 param5;
+	typedef T6 param6;
+	typedef T7 param7;
+	typedef T8 param8;
+};
+
+template<class R, class C, class T1, class T2, class T3, class T4, class T5,
+                           class T6, class T7, class T8, class T9>
+struct signature<R (C::*)(T1, T2, T3, T4, T5, T6, T7, T8, T9) const>
+	: public default_parms
+{
+public:
+	typedef R result_type;
+	typedef C class_type;
+	typedef T1 param1;
+	typedef T2 param2;
+	typedef T3 param3;
+	typedef T4 param4;
+	typedef T5 param5;
+	typedef T6 param6;
+	typedef T7 param7;
+	typedef T8 param8;
+	typedef T9 param9;
+};
+
+template<class R, class C, class T1, class T2, class T3, class T4, class T5,
+                           class T6, class T7, class T8, class T9, class T10>
+struct signature<R (C::*)(T1, T2, T3, T4, T5, T6, T7, T8, T9, T10) const>
+	: public default_parms
+{
+public:
+	typedef R result_type;
+	typedef C class_type;
+	typedef T1 param1;
+	typedef T2 param2;
+	typedef T3 param3;
+	typedef T4 param4;
+	typedef T5 param5;
+	typedef T6 param6;
+	typedef T7 param7;
+	typedef T8 param8;
+	typedef T9 param9;
+	typedef T10 param10;
+};
+
+// has_result_type
+
+template <class T, bool = Metrowerks::is_class<T>::value>
+struct has_result_type
+{
+private:
+	struct two {char x; char y;};
+	template <class U> static two  test(...);
+	template <class U> static char test(typename Metrowerks::remove_reference<typename U::result_type>::type*);
+public:
+	static const bool value = sizeof(test<T>(0)) == 1;
+};
+
+template <class T>
+struct has_result_type<T, false>
+{
+	static const bool value = false;
+};
+
+// result_of_switch
+
+template <class F>
+struct result_of_switch
+{
+#if defined(__MWERKS__) && __MWERKS__ >= 0x4000
+	static const int value = 4;
+#else  // defined(__MWERKS__) && __MWERKS__ >= 0x4000
+	static const int value =
+		Metrowerks::is_pointer<F>::value &&
+		Metrowerks::is_function<typename Metrowerks::remove_pointer<F>::type>::value ? 1 :
+		Metrowerks::is_member_pointer<F>::value ? 2 :
+		has_result_type<F>::value ? 3 : 4;
+#endif  // defined(__MWERKS__) && __MWERKS__ >= 0x4000
+};
+
+// get_result_type
+
+#if defined(__MWERKS__) && __MWERKS__ >= 0x4000
+
+template <class F>
+class get_result_typeof
+{
+	static F f;
+public:
+	typedef __decltype__(f()) type;
+};
+
+template <class F>
+class get_result_typeof<F()>
+{
+	static F f;
+public:
+	typedef __decltype__(f()) type;
+};
+
+template <class F, class T1>
+class get_result_typeof<F(T1)>
+{
+	static F f;
+	static T1 t1;
+public:
+#ifdef _MSL_MOVE
+	typedef __decltype__(f(_STD::forward<T1>(t1))) type;
+#else  // _MSL_MOVE
+	typedef __decltype__(f(t1)) type;
+#endif  // _MSL_MOVE
+};
+
+template <class F, class T1, class T2>
+class get_result_typeof<F(T1, T2)>
+{
+	static F f;
+	static T1 t1;
+	static T2 t2;
+public:
+#ifdef _MSL_MOVE
+	typedef __decltype__(f(_STD::forward<T1>(t1), _STD::forward<T2>(t2))) type;
+#else  // _MSL_MOVE
+	typedef __decltype__(f(t1, t2)) type;
+#endif  // _MSL_MOVE
+};
+
+template <class F, class T1, class T2, class T3>
+class get_result_typeof<F(T1, T2, T3)>
+{
+	static F f;
+	static T1 t1;
+	static T2 t2;
+	static T3 t3;
+public:
+#ifdef _MSL_MOVE
+	typedef __decltype__(f(_STD::forward<T1>(t1), _STD::forward<T2>(t2), _STD::forward<T3>(t3))) type;
+#else  // _MSL_MOVE
+	typedef __decltype__(f(t1, t2, t3)) type;
+#endif  // _MSL_MOVE
+};
+
+template <class F, class T1, class T2, class T3, class T4>
+class get_result_typeof<F(T1, T2, T3, T4)>
+{
+	static F f;
+	static T1 t1;
+	static T2 t2;
+	static T3 t3;
+	static T4 t4;
+public:
+#ifdef _MSL_MOVE
+	typedef __decltype__(f(_STD::forward<T1>(t1), _STD::forward<T2>(t2), _STD::forward<T3>(t3),
+	                       _STD::forward<T4>(t4))) type;
+#else  // _MSL_MOVE
+	typedef __decltype__(f(t1, t2, t3, t4)) type;
+#endif  // _MSL_MOVE
+};
+
+template <class F, class T1, class T2, class T3, class T4, class T5>
+class get_result_typeof<F(T1, T2, T3, T4, T5)>
+{
+	static F f;
+	static T1 t1;
+	static T2 t2;
+	static T3 t3;
+	static T4 t4;
+	static T5 t5;
+public:
+#ifdef _MSL_MOVE
+	typedef __decltype__(f(_STD::forward<T1>(t1), _STD::forward<T2>(t2), _STD::forward<T3>(t3),
+	                       _STD::forward<T4>(t4), _STD::forward<T5>(t5))) type;
+#else  // _MSL_MOVE
+	typedef __decltype__(f(t1, t2, t3, t4, t5)) type;
+#endif  // _MSL_MOVE
+};
+
+template <class F, class T1, class T2, class T3, class T4, class T5,
+                   class T6>
+class get_result_typeof<F(T1, T2, T3, T4, T5, T6)>
+{
+	static F f;
+	static T1 t1;
+	static T2 t2;
+	static T3 t3;
+	static T4 t4;
+	static T5 t5;
+	static T6 t6;
+public:
+#ifdef _MSL_MOVE
+	typedef __decltype__(f(_STD::forward<T1>(t1), _STD::forward<T2>(t2), _STD::forward<T3>(t3),
+	                       _STD::forward<T4>(t4), _STD::forward<T5>(t5), _STD::forward<T6>(t6))) type;
+#else  // _MSL_MOVE
+	typedef __decltype__(f(t1, t2, t3, t4, t5, t6)) type;
+#endif  // _MSL_MOVE
+};
+
+template <class F, class T1, class T2, class T3, class T4, class T5,
+                   class T6, class T7>
+class get_result_typeof<F(T1, T2, T3, T4, T5, T6, T7)>
+{
+	static F f;
+	static T1 t1;
+	static T2 t2;
+	static T3 t3;
+	static T4 t4;
+	static T5 t5;
+	static T6 t6;
+	static T7 t7;
+public:
+#ifdef _MSL_MOVE
+	typedef __decltype__(f(_STD::forward<T1>(t1), _STD::forward<T2>(t2), _STD::forward<T3>(t3),
+	                       _STD::forward<T4>(t4), _STD::forward<T5>(t5), _STD::forward<T6>(t6),
+	                       _STD::forward<T7>(t7))) type;
+#else  // _MSL_MOVE
+	typedef __decltype__(f(t1, t2, t3, t4, t5, t6, t7)) type;
+#endif  // _MSL_MOVE
+};
+
+template <class F, class T1, class T2, class T3, class T4, class T5,
+                   class T6, class T7, class T8>
+class get_result_typeof<F(T1, T2, T3, T4, T5, T6, T7, T8)>
+{
+	static F f;
+	static T1 t1;
+	static T2 t2;
+	static T3 t3;
+	static T4 t4;
+	static T5 t5;
+	static T6 t6;
+	static T7 t7;
+	static T8 t8;
+public:
+#ifdef _MSL_MOVE
+	typedef __decltype__(f(_STD::forward<T1>(t1), _STD::forward<T2>(t2), _STD::forward<T3>(t3),
+	                       _STD::forward<T4>(t4), _STD::forward<T5>(t5), _STD::forward<T6>(t6),
+	                       _STD::forward<T7>(t7), _STD::forward<T8>(t8))) type;
+#else  // _MSL_MOVE
+	typedef __decltype__(f(t1, t2, t3, t4, t5, t6, t7, t8)) type;
+#endif  // _MSL_MOVE
+};
+
+template <class F, class T1, class T2, class T3, class T4, class T5,
+                   class T6, class T7, class T8, class T9>
+class get_result_typeof<F(T1, T2, T3, T4, T5, T6, T7, T8, T9)>
+{
+	static F f;
+	static T1 t1;
+	static T2 t2;
+	static T3 t3;
+	static T4 t4;
+	static T5 t5;
+	static T6 t6;
+	static T7 t7;
+	static T8 t8;
+	static T9 t9;
+public:
+#ifdef _MSL_MOVE
+	typedef __decltype__(f(_STD::forward<T1>(t1), _STD::forward<T2>(t2), _STD::forward<T3>(t3),
+	                       _STD::forward<T4>(t4), _STD::forward<T5>(t5), _STD::forward<T6>(t6),
+	                       _STD::forward<T7>(t7), _STD::forward<T8>(t8), _STD::forward<T9>(t9))) type;
+#else  // _MSL_MOVE
+	typedef __decltype__(f(t1, t2, t3, t4, t5, t6, t7, t8, t9)) type;
+#endif  // _MSL_MOVE
+};
+
+template <class F, class T1, class T2, class T3, class T4, class T5,
+                   class T6, class T7, class T8, class T9, class T10>
+class get_result_typeof<F(T1, T2, T3, T4, T5, T6, T7, T8, T9, T10)>
+{
+	static F f;
+	static T1 t1;
+	static T2 t2;
+	static T3 t3;
+	static T4 t4;
+	static T5 t5;
+	static T6 t6;
+	static T7 t7;
+	static T8 t8;
+	static T9 t9;
+	static T10 t10;
+public:
+#ifdef _MSL_MOVE
+	typedef __decltype__(f(_STD::forward<T1>(t1), _STD::forward<T2>(t2), _STD::forward<T3>(t3),
+	                       _STD::forward<T4>(t4), _STD::forward<T5>(t5), _STD::forward<T6>(t6),
+	                       _STD::forward<T7>(t7), _STD::forward<T8>(t8), _STD::forward<T9>(t9),
+	                       _STD::forward<T10>(t10))) type;
+#else  // _MSL_MOVE
+	typedef __decltype__(f(t1, t2, t3, t4, t5, t6, t7, t8, t9, t10)) type;
+#endif  // _MSL_MOVE
+};
+
+#else  // defined(__MWERKS__) && __MWERKS__ >= 0x4000
+
+template <class F>
+class get_result_typeof
+{
+	static F f;
+public:
+	typedef __typeof__(f()) type;
+};
+
+template <class F>
+class get_result_typeof<F()>
+{
+	static F f;
+public:
+	typedef __typeof__(f()) type;
+};
+
+template <class F, class T1>
+class get_result_typeof<F(T1)>
+{
+	static F f;
+	static T1 t1;
+public:
+	typedef __typeof__(f(t1)) type;
+};
+
+template <class F, class T1, class T2>
+class get_result_typeof<F(T1, T2)>
+{
+	static F f;
+	static T1 t1;
+	static T2 t2;
+public:
+	typedef __typeof__(f(t1, t2)) type;
+};
+
+template <class F, class T1, class T2, class T3>
+class get_result_typeof<F(T1, T2, T3)>
+{
+	static F f;
+	static T1 t1;
+	static T2 t2;
+	static T3 t3;
+public:
+	typedef __typeof__(f(t1, t2, t3)) type;
+};
+
+template <class F, class T1, class T2, class T3, class T4>
+class get_result_typeof<F(T1, T2, T3, T4)>
+{
+	static F f;
+	static T1 t1;
+	static T2 t2;
+	static T3 t3;
+	static T4 t4;
+public:
+	typedef __typeof__(f(t1, t2, t3, t4)) type;
+};
+
+template <class F, class T1, class T2, class T3, class T4, class T5>
+class get_result_typeof<F(T1, T2, T3, T4, T5)>
+{
+	static F f;
+	static T1 t1;
+	static T2 t2;
+	static T3 t3;
+	static T4 t4;
+	static T5 t5;
+public:
+	typedef __typeof__(f(t1, t2, t3, t4, t5)) type;
+};
+
+template <class F, class T1, class T2, class T3, class T4, class T5,
+                   class T6>
+class get_result_typeof<F(T1, T2, T3, T4, T5, T6)>
+{
+	static F f;
+	static T1 t1;
+	static T2 t2;
+	static T3 t3;
+	static T4 t4;
+	static T5 t5;
+	static T6 t6;
+public:
+	typedef __typeof__(f(t1, t2, t3, t4, t5, t6)) type;
+};
+
+template <class F, class T1, class T2, class T3, class T4, class T5,
+                   class T6, class T7>
+class get_result_typeof<F(T1, T2, T3, T4, T5, T6, T7)>
+{
+	static F f;
+	static T1 t1;
+	static T2 t2;
+	static T3 t3;
+	static T4 t4;
+	static T5 t5;
+	static T6 t6;
+	static T7 t7;
+public:
+	typedef __typeof__(f(t1, t2, t3, t4, t5, t6, t7)) type;
+};
+
+template <class F, class T1, class T2, class T3, class T4, class T5,
+                   class T6, class T7, class T8>
+class get_result_typeof<F(T1, T2, T3, T4, T5, T6, T7, T8)>
+{
+	static F f;
+	static T1 t1;
+	static T2 t2;
+	static T3 t3;
+	static T4 t4;
+	static T5 t5;
+	static T6 t6;
+	static T7 t7;
+	static T8 t8;
+public:
+	typedef __typeof__(f(t1, t2, t3, t4, t5, t6, t7, t8)) type;
+};
+
+template <class F, class T1, class T2, class T3, class T4, class T5,
+                   class T6, class T7, class T8, class T9>
+class get_result_typeof<F(T1, T2, T3, T4, T5, T6, T7, T8, T9)>
+{
+	static F f;
+	static T1 t1;
+	static T2 t2;
+	static T3 t3;
+	static T4 t4;
+	static T5 t5;
+	static T6 t6;
+	static T7 t7;
+	static T8 t8;
+	static T9 t9;
+public:
+	typedef __typeof__(f(t1, t2, t3, t4, t5, t6, t7, t8, t9)) type;
+};
+
+template <class F, class T1, class T2, class T3, class T4, class T5,
+                   class T6, class T7, class T8, class T9, class T10>
+class get_result_typeof<F(T1, T2, T3, T4, T5, T6, T7, T8, T9, T10)>
+{
+	static F f;
+	static T1 t1;
+	static T2 t2;
+	static T3 t3;
+	static T4 t4;
+	static T5 t5;
+	static T6 t6;
+	static T7 t7;
+	static T8 t8;
+	static T9 t9;
+	static T10 t10;
+public:
+	typedef __typeof__(f(t1, t2, t3, t4, t5, t6, t7, t8, t9, t10)) type;
+};
+
+#endif  // defined(__MWERKS__) && __MWERKS__ >= 0x4000
+
+template <class Sig, class F, int I = result_of_switch<F>::value> struct get_result_type;
+
+template <class Sig, class F>
+struct get_result_type<Sig, F, 1>
+{
+	typedef typename signature<F>::result_type type;
+};
+
+template <class Sig, class F>
+struct get_result_type<Sig, F, 2>
+{
+	typedef typename signature<F>::result_type type;
+};
+
+template <class Sig, class F>
+struct get_result_type<Sig, F, 3>
+{
+	typedef typename F::result_type type;
+};
+
+template <class Sig, class F>
+struct get_result_type<Sig, F, 4>
+{
+	typedef typename get_result_typeof<Sig>::type type;
+};
+
+//template <class Sig, class F>
+//struct get_result_type<Sig, F, 4>
+//{
+//	typedef typename F::result<Sig>::type type;
+//};
+
+//template <class F>
+//struct get_result_type<F(), F, 4>
+//{
+//	typedef void type;
+//};
+
+}  // detail
+
+// result_of
+
+template <class Sig>
+class result_of
+{
+public:
+	typedef typename detail::get_result_type<Sig, Sig>::type type;
+};
+
+template<class F>
+class result_of<F()>
+{
+public:
+	typedef typename detail::get_result_type<F(), F>::type type;
+};
+
+template<class F, class T1>
+class result_of<F(T1)>
+{
+public:
+	typedef typename detail::get_result_type<F(T1), F>::type type;
+};
+
+template<class F, class T1, class T2>
+class result_of<F(T1, T2)>
+{
+public:
+	typedef typename detail::get_result_type<F(T1, T2), F>::type type;
+};
+
+template<class F, class T1, class T2, class T3>
+class result_of<F(T1, T2, T3)>
+{
+public:
+	typedef typename detail::get_result_type<F(T1, T2, T3), F>::type type;
+};
+
+template<class F, class T1, class T2, class T3, class T4>
+class result_of<F(T1, T2, T3, T4)>
+{
+public:
+	typedef typename detail::get_result_type<F(T1, T2, T3, T4), F>::type type;
+};
+
+template<class F, class T1, class T2, class T3, class T4, class T5>
+class result_of<F(T1, T2, T3, T4, T5)>
+{
+public:
+	typedef typename detail::get_result_type<F(T1, T2, T3, T4, T5), F>::type type;
+};
+
+template<class F, class T1, class T2, class T3, class T4, class T5,
+                  class T6>
+class result_of<F(T1, T2, T3, T4, T5, T6)>
+{
+public:
+	typedef typename detail::get_result_type<F(T1, T2, T3, T4, T5, T6), F>::type type;
+};
+
+template<class F, class T1, class T2, class T3, class T4, class T5,
+                  class T6, class T7>
+class result_of<F(T1, T2, T3, T4, T5, T6, T7)>
+{
+public:
+	typedef typename detail::get_result_type<F(T1, T2, T3, T4, T5, T6, T7), F>::type type;
+};
+
+template<class F, class T1, class T2, class T3, class T4, class T5,
+                  class T6, class T7, class T8>
+class result_of<F(T1, T2, T3, T4, T5, T6, T7, T8)>
+{
+public:
+	typedef typename detail::get_result_type<F(T1, T2, T3, T4, T5, T6, T7, T8), F>::type type;
+};
+
+template<class F, class T1, class T2, class T3, class T4, class T5,
+                  class T6, class T7, class T8, class T9>
+class result_of<F(T1, T2, T3, T4, T5, T6, T7, T8, T9)>
+{
+public:
+	typedef typename detail::get_result_type<F(T1, T2, T3, T4, T5, T6, T7, T8, T9), F>::type type;
+};
+
+template<class F, class T1, class T2, class T3, class T4, class T5,
+                  class T6, class T7, class T8, class T9, class T10>
+class result_of<F(T1, T2, T3, T4, T5, T6, T7, T8, T9, T10)>
+{
+public:
+	typedef typename detail::get_result_type<F(T1, T2, T3, T4, T5, T6, T7, T8, T9, T10), F>::type type;
+};
+
+namespace detail
+{
+
+// reference_base
+
+template <class T, int I = result_of_switch<T>::value>
+struct reference_base
+{
+};
+
+template <class T>
+struct reference_base<T, 1>
+{
+	typedef typename signature<T>::result_type result_type;
+};
+
+template <class T>
+struct reference_base<T, 3>
+{
+	typedef typename T::result_type result_type;
+};
+
+template <class F, bool = Metrowerks::is_function<F>::value>
+struct reference_wrapper_return
+{
+	typedef F type;
+};
+
+template <class F>
+struct reference_wrapper_return<F, true>
+{
+	typedef typename result_of<F()>::type type;
+};
+
+}  // detail
+
+// reference_wrapper
+
+template <class T>
+class reference_wrapper
+	: public detail::reference_base<T>
+{
+public:
+	typedef T type;
+
+	explicit reference_wrapper(T& t) : data_(Metrowerks::addressof(t)) {}
+
+	operator T&() const {return *data_;}
+	T& get()      const {return *data_;}
+
+	typename detail::reference_wrapper_return<T>::type
+	operator()() const {return (*data_)();}
+
+	template <class T1>
+	typename result_of<T(T1)>::type
+#ifdef _MSL_MOVE
+	operator()(T1&& t1) const {return (*data_)(_STD::forward<T1>(t1));}
+#else
+	operator()(T1& t1) const {return (*data_)(t1);}
+#endif
+
+	template <class T1, class T2>
+	typename result_of<T(T1, T2)>::type
+#ifdef _MSL_MOVE
+	operator()(T1&& t1, T2&& t2) const
+		{return (*data_)(_STD::forward<T1>(t1), _STD::forward<T2>(t2));}
+#else  // _MSL_MOVE
+	operator()(T1& t1, T2& t2) const {return (*data_)(t1, t2);}
+#endif
+
+	template <class T1, class T2, class T3>
+	typename result_of<T(T1, T2, T3)>::type
+#ifdef _MSL_MOVE
+	operator()(T1&& t1, T2&& t2, T3&& t3) const
+		{return (*data_)(_STD::forward<T1>(t1), _STD::forward<T2>(t2), _STD::forward<T3>(t3));}
+#else  // _MSL_MOVE
+	operator()(T1& t1, T2& t2, T3& t3) const {return (*data_)(t1, t2, t3);}
+#endif
+
+	template <class T1, class T2, class T3, class T4>
+	typename result_of<T(T1, T2, T3, T4)>::type
+#ifdef _MSL_MOVE
+	operator()(T1&& t1, T2&& t2, T3&& t3, T4&& t4) const
+		{return (*data_)(_STD::forward<T1>(t1), _STD::forward<T2>(t2),
+		                 _STD::forward<T3>(t3), _STD::forward<T4>(t4));}
+#else  // _MSL_MOVE
+	operator()(T1& t1, T2& t2, T3& t3, T4& t4) const {return (*data_)(t1, t2, t3, t4);}
+#endif
+
+	template <class T1, class T2, class T3, class T4, class T5>
+	typename result_of<T(T1, T2, T3, T4, T5)>::type
+#ifdef _MSL_MOVE
+	operator()(T1&& t1, T2&& t2, T3&& t3, T4&& t4, T5&& t5) const
+		{return (*data_)(_STD::forward<T1>(t1), _STD::forward<T2>(t2), _STD::forward<T3>(t3),
+		                 _STD::forward<T4>(t4), _STD::forward<T5>(t5));}
+#else  // _MSL_MOVE
+	operator()(T1& t1, T2& t2, T3& t3, T4& t4, T5& t5) const {return (*data_)(t1, t2, t3, t4, t5);}
+#endif
+
+	template <class T1, class T2, class T3, class T4, class T5,
+	          class T6>
+	typename result_of<T(T1, T2, T3, T4, T5, T6)>::type
+#ifdef _MSL_MOVE
+	operator()(T1&& t1, T2&& t2, T3&& t3, T4&& t4, T5&& t5, T6&& t6) const
+		{return (*data_)(_STD::forward<T1>(t1), _STD::forward<T2>(t2), _STD::forward<T3>(t3),
+		                 _STD::forward<T4>(t4), _STD::forward<T5>(t5), _STD::forward<T6>(t6));}
+#else  // _MSL_MOVE
+	operator()(T1& t1, T2& t2, T3& t3, T4& t4, T5& t5, T6& t6) const
+		{return (*data_)(t1, t2, t3, t4, t5, t6);}
+#endif  // _MSL_MOVE
+
+	template <class T1, class T2, class T3, class T4, class T5,
+	          class T6, class T7>
+	typename result_of<T(T1, T2, T3, T4, T5, T6, T7)>::type
+#ifdef _MSL_MOVE
+	operator()(T1&& t1, T2&& t2, T3&& t3, T4&& t4, T5&& t5, T6&& t6, T7&& t7) const
+		{return (*data_)(_STD::forward<T1>(t1), _STD::forward<T2>(t2), _STD::forward<T3>(t3),
+		                 _STD::forward<T4>(t4), _STD::forward<T5>(t5), _STD::forward<T6>(t6),
+		                 _STD::forward<T7>(t7));}
+#else  // _MSL_MOVE
+	operator()(T1& t1, T2& t2, T3& t3, T4& t4, T5& t5, T6& t6, T7& t7) const
+		{return (*data_)(t1, t2, t3, t4, t5, t6, t7);}
+#endif  // _MSL_MOVE
+
+	template <class T1, class T2, class T3, class T4, class T5,
+	          class T6, class T7, class T8>
+	typename result_of<T(T1, T2, T3, T4, T5, T6, T7, T8)>::type
+#ifdef _MSL_MOVE
+	operator()(T1&& t1, T2&& t2, T3&& t3, T4&& t4, T5&& t5, T6&& t6, T7&& t7, T8&& t8) const
+		{return (*data_)(_STD::forward<T1>(t1), _STD::forward<T2>(t2), _STD::forward<T3>(t3),
+		                 _STD::forward<T4>(t4), _STD::forward<T5>(t5), _STD::forward<T6>(t6),
+		                 _STD::forward<T7>(t7), _STD::forward<T8>(t8));}
+#else  // _MSL_MOVE
+	operator()(T1& t1, T2& t2, T3& t3, T4& t4, T5& t5, T6& t6, T7& t7, T8& t8) const
+		{return (*data_)(t1, t2, t3, t4, t5, t6, t7, t8);}
+#endif  // _MSL_MOVE
+
+	template <class T1, class T2, class T3, class T4, class T5,
+	          class T6, class T7, class T8, class T9>
+	typename result_of<T(T1, T2, T3, T4, T5, T6, T7, T8, T9)>::type
+#ifdef _MSL_MOVE
+	operator()(T1&& t1, T2&& t2, T3&& t3, T4&& t4, T5&& t5, T6&& t6, T7&& t7, T8&& t8, T9&& t9) const
+		{return (*data_)(_STD::forward<T1>(t1), _STD::forward<T2>(t2), _STD::forward<T3>(t3),
+		                 _STD::forward<T4>(t4), _STD::forward<T5>(t5), _STD::forward<T6>(t6),
+		                 _STD::forward<T7>(t7), _STD::forward<T8>(t8), _STD::forward<T9>(t9));}
+#else  // _MSL_MOVE
+	operator()(T1& t1, T2& t2, T3& t3, T4& t4, T5& t5, T6& t6, T7& t7, T8& t8, T9& t9) const
+		{return (*data_)(t1, t2, t3, t4, t5, t6, t7, t8, t9);}
+#endif  // _MSL_MOVE
+
+	template <class T1, class T2, class T3, class T4, class T5,
+	          class T6, class T7, class T8, class T9, class T10>
+	typename result_of<T(T1, T2, T3, T4, T5, T6, T7, T8, T9, T10)>::type
+#ifdef _MSL_MOVE
+	operator()(T1&& t1, T2&& t2, T3&& t3, T4&& t4, T5&& t5, T6&& t6, T7&& t7, T8&& t8, T9&& t9, T10&& t10) const
+		{return (*data_)(_STD::forward<T1>(t1), _STD::forward<T2>(t2), _STD::forward<T3>(t3),
+		                 _STD::forward<T4>(t4), _STD::forward<T5>(t5), _STD::forward<T6>(t6),
+		                 _STD::forward<T7>(t7), _STD::forward<T8>(t8), _STD::forward<T9>(t9),
+		                 _STD::forward<T10>(t10));}
+#else  // _MSL_MOVE
+	operator()(T1& t1, T2& t2, T3& t3, T4& t4, T5& t5, T6& t6, T7& t7, T8& t8, T9& t9, T10& t10) const
+		{return (*data_)(t1, t2, t3, t4, t5, t6, t7, t8, t9, t10);}
+#endif  // _MSL_MOVE
+
+private:
+	T* data_;
+};
+
+// ref
+
+template <class T>
+inline
+reference_wrapper<T>
+ref(T& t)
+{
+	return reference_wrapper<T>(t);
+}
+
+// cref
+
+template <class T>
+inline
+reference_wrapper<const T>
+cref(const T& t)
+{
+	return reference_wrapper<const T>(t);
+}
+
+class bad_function_call
+	: public exception
+{
+public:
+	bad_function_call() {}
+	virtual const char* what() const throw()
+		{return "bad_function_call";}
+
+};
+
+namespace detail
+{
+
+template <bool>
+void throw_bad_function_call()
+{
+#ifndef _MSL_NO_EXCEPTIONS
+	throw bad_function_call();
+#else
+	__msl_error("bad_function_call");
+#endif
+}
+
+// function_base
+
+template <class F>
+class function_base;
+
+template <class R>
+class function_base<R (*)()>
+{
+public:
+	virtual ~function_base() {}
+	virtual function_base* clone() const = 0;
+	virtual function_base* clone(void*) const = 0;
+	virtual R operator()() = 0;
+};
+
+template <class R, class T1>
+class function_base<R (*)(T1)>
+{
+public:
+	virtual ~function_base() {}
+	virtual function_base* clone() const = 0;
+	virtual function_base* clone(void*) const = 0;
+	virtual R operator()(T1) = 0;
+};
+
+template <class R, class T1, class T2>
+class function_base<R (*)(T1, T2)>
+{
+public:
+	virtual ~function_base() {}
+	virtual function_base* clone() const = 0;
+	virtual function_base* clone(void*) const = 0;
+	virtual R operator()(T1, T2) = 0;
+};
+
+template <class R, class T1, class T2, class T3>
+class function_base<R (*)(T1, T2, T3)>
+{
+public:
+	virtual ~function_base() {}
+	virtual function_base* clone() const = 0;
+	virtual function_base* clone(void*) const = 0;
+	virtual R operator()(T1, T2, T3) = 0;
+};
+
+template <class R, class T1, class T2, class T3, class T4>
+class function_base<R (*)(T1, T2, T3, T4)>
+{
+public:
+	virtual ~function_base() {}
+	virtual function_base* clone() const = 0;
+	virtual function_base* clone(void*) const = 0;
+	virtual R operator()(T1, T2, T3, T4) = 0;
+};
+
+template <class R, class T1, class T2, class T3, class T4, class T5>
+class function_base<R (*)(T1, T2, T3, T4, T5)>
+{
+public:
+	virtual ~function_base() {}
+	virtual function_base* clone() const = 0;
+	virtual function_base* clone(void*) const = 0;
+	virtual R operator()(T1, T2, T3, T4, T5) = 0;
+};
+
+template <class R, class T1, class T2, class T3, class T4, class T5,
+                   class T6>
+class function_base<R (*)(T1, T2, T3, T4, T5, T6)>
+{
+public:
+	virtual ~function_base() {}
+	virtual function_base* clone() const = 0;
+	virtual function_base* clone(void*) const = 0;
+	virtual R operator()(T1, T2, T3, T4, T5, T6) = 0;
+};
+
+template <class R, class T1, class T2, class T3, class T4, class T5,
+                   class T6, class T7>
+class function_base<R (*)(T1, T2, T3, T4, T5, T6, T7)>
+{
+public:
+	virtual ~function_base() {}
+	virtual function_base* clone() const = 0;
+	virtual function_base* clone(void*) const = 0;
+	virtual R operator()(T1, T2, T3, T4, T5, T6, T7) = 0;
+};
+
+template <class R, class T1, class T2, class T3, class T4, class T5,
+                   class T6, class T7, class T8>
+class function_base<R (*)(T1, T2, T3, T4, T5, T6, T7, T8)>
+{
+public:
+	virtual ~function_base() {}
+	virtual function_base* clone() const = 0;
+	virtual function_base* clone(void*) const = 0;
+	virtual R operator()(T1, T2, T3, T4, T5, T6, T7, T8) = 0;
+};
+
+template <class R, class T1, class T2, class T3, class T4, class T5,
+                   class T6, class T7, class T8, class T9>
+class function_base<R (*)(T1, T2, T3, T4, T5, T6, T7, T8, T9)>
+{
+public:
+	virtual ~function_base() {}
+	virtual function_base* clone() const = 0;
+	virtual function_base* clone(void*) const = 0;
+	virtual R operator()(T1, T2, T3, T4, T5, T6, T7, T8, T9) = 0;
+};
+
+template <class R, class T1, class T2, class T3, class T4, class T5,
+                   class T6, class T7, class T8, class T9, class T10>
+class function_base<R (*)(T1, T2, T3, T4, T5, T6, T7, T8, T9, T10)>
+{
+public:
+	virtual ~function_base() {}
+	virtual function_base* clone() const = 0;
+	virtual function_base* clone(void*) const = 0;
+	virtual R operator()(T1, T2, T3, T4, T5, T6, T7, T8, T9, T10) = 0;
+};
+
+// function_imp
+
+template <class Signature, class F,
+          bool IsMember = Metrowerks::is_member_pointer<F>::value,
+          bool IsParm1Pointer = Metrowerks::is_pointer<typename signature<Signature>::param1>::value
+         >
+class function_imp  // is not member function pointer, don't care about param1
+	: public function_base<Signature>
+{
+private:
+	typedef signature<Signature> types;
+
+	typedef typename types::result_type result_type;
+
+	typedef typename types::param1      param1;
+	typedef typename types::param2      param2;
+	typedef typename types::param3      param3;
+	typedef typename types::param4      param4;
+	typedef typename types::param5      param5;
+	typedef typename types::param6      param6;
+	typedef typename types::param7      param7;
+	typedef typename types::param8      param8;
+	typedef typename types::param9      param9;
+	typedef typename types::param10     param10;
+public:
+#ifdef _MSL_MOVE
+	function_imp(F& f) : fp_(f) {}
+#else
+	function_imp(F f) : fp_(f) {}
+#endif
+	virtual function_imp* clone() const {return new function_imp(*this);}
+	virtual function_imp* clone(void* p) const {return ::new(p) function_imp(*this);}
+
+	result_type
+	operator()()
+		{return static_cast<result_type>(fp_());}
+
+	result_type
+	operator()(param1 t1)
+		{return static_cast<result_type>(fp_(t1));}
+
+	result_type
+	operator()(param1 t1, param2 t2)
+		{return static_cast<result_type>(fp_(t1, t2));}
+
+	result_type
+	operator()(param1 t1, param2 t2, param3 t3)
+		{return static_cast<result_type>(fp_(t1, t2, t3));}
+
+	result_type
+	operator()(param1 t1, param2 t2, param3 t3, param4 t4)
+		{return static_cast<result_type>(fp_(t1, t2, t3, t4));}
+
+	result_type
+	operator()(param1 t1, param2 t2, param3 t3, param4 t4, param5 t5)
+		{return static_cast<result_type>(fp_(t1, t2, t3, t4, t5));}
+
+	result_type
+	operator()(param1 t1, param2 t2, param3 t3, param4 t4, param5 t5,
+	           param6 t6)
+		{return static_cast<result_type>(fp_(t1, t2, t3, t4, t5, t6));}
+
+	result_type
+	operator()(param1 t1, param2 t2, param3 t3, param4 t4, param5 t5,
+	           param6 t6, param7 t7)
+		{return static_cast<result_type>(fp_(t1, t2, t3, t4, t5, t6, t7));}
+
+	result_type
+	operator()(param1 t1, param2 t2, param3 t3, param4 t4, param5 t5,
+	           param6 t6, param7 t7, param7 t8)
+		{return static_cast<result_type>(fp_(t1, t2, t3, t4, t5, t6, t7, t8));}
+
+	result_type
+	operator()(param1 t1, param2 t2, param3 t3, param4 t4, param5 t5,
+	           param6 t6, param7 t7, param8 t8, param9 t9)
+		{return static_cast<result_type>(fp_(t1, t2, t3, t4, t5, t6, t7, t8, t9));}
+
+	result_type
+	operator()(param1 t1, param2 t2, param3 t3, param4 t4, param5 t5,
+	           param6 t6, param7 t7, param8 t8, param9 t9, param9 t10)
+		{return static_cast<result_type>(fp_(t1, t2, t3, t4, t5, t6, t7, t8, t9, t10));}
+
+private:
+	F fp_;
+};
+
+template <class Signature, class F>
+class function_imp<Signature, F, true, true>  // member function pointer, param1 is a pointer
+	: public function_base<Signature>
+{
+private:
+	typedef signature<Signature> types;
+
+	typedef typename types::result_type result_type;
+
+	typedef typename types::param1      param1;
+	typedef typename types::param2      param2;
+	typedef typename types::param3      param3;
+	typedef typename types::param4      param4;
+	typedef typename types::param5      param5;
+	typedef typename types::param6      param6;
+	typedef typename types::param7      param7;
+	typedef typename types::param8      param8;
+	typedef typename types::param9      param9;
+	typedef typename types::param10     param10;
+public:
+#ifdef _MSL_MOVE
+	function_imp(F& f) : fp_(f) {}
+#else
+	function_imp(F f) : fp_(f) {}
+#endif
+	virtual function_imp* clone() const {return new function_imp(*this);}
+	virtual function_imp* clone(void* p) const {return ::new(p) function_imp(*this);}
+
+	result_type
+	operator()(param1 t1)
+		{return static_cast<result_type>(((*t1).*fp_)());}
+
+	result_type
+	operator()(param1 t1, param2 t2)
+		{return static_cast<result_type>(((*t1).*fp_)(t2));}
+
+	result_type
+	operator()(param1 t1, param2 t2, param3 t3)
+		{return static_cast<result_type>(((*t1).*fp_)(t2, t3));}
+
+	result_type
+	operator()(param1 t1, param2 t2, param3 t3, param4 t4)
+		{return static_cast<result_type>(((*t1).*fp_)(t2, t3, t4));}
+
+	result_type
+	operator()(param1 t1, param2 t2, param3 t3, param4 t4, param5 t5)
+		{return static_cast<result_type>(((*t1).*fp_)(t2, t3, t4, t5));}
+
+	result_type
+	operator()(param1 t1, param2 t2, param3 t3, param4 t4, param5 t5,
+	           param6 t6)
+		{return static_cast<result_type>(((*t1).*fp_)(t2, t3, t4, t5, t6));}
+
+	result_type
+	operator()(param1 t1, param2 t2, param3 t3, param4 t4, param5 t5,
+	           param6 t6, param7 t7)
+		{return static_cast<result_type>(((*t1).*fp_)(t2, t3, t4, t5, t6, t7));}
+
+	result_type
+	operator()(param1 t1, param2 t2, param3 t3, param4 t4, param5 t5,
+	           param6 t6, param7 t7, param7 t8)
+		{return static_cast<result_type>(((*t1).*fp_)(t2, t3, t4, t5, t6, t7, t8));}
+
+	result_type
+	operator()(param1 t1, param2 t2, param3 t3, param4 t4, param5 t5,
+	           param6 t6, param7 t7, param8 t8, param9 t9)
+		{return static_cast<result_type>(((*t1).*fp_)(t2, t3, t4, t5, t6, t7, t8, t9));}
+
+	result_type
+	operator()(param1 t1, param2 t2, param3 t3, param4 t4, param5 t5,
+	           param6 t6, param7 t7, param8 t8, param9 t9, param9 t10)
+		{return static_cast<result_type>(((*t1).*fp_)(t2, t3, t4, t5, t6, t7, t8, t9, t10));}
+
+private:
+	F fp_;
+};
+
+template <class Signature, class F>
+class function_imp<Signature, F, true, false>  // member function pointer, param1 is not a pointer
+	: public function_base<Signature>
+{
+private:
+	typedef signature<Signature> types;
+
+	typedef typename types::result_type result_type;
+
+	typedef typename types::param1      param1;
+	typedef typename types::param2      param2;
+	typedef typename types::param3      param3;
+	typedef typename types::param4      param4;
+	typedef typename types::param5      param5;
+	typedef typename types::param6      param6;
+	typedef typename types::param7      param7;
+	typedef typename types::param8      param8;
+	typedef typename types::param9      param9;
+	typedef typename types::param10     param10;
+public:
+#ifdef _MSL_MOVE
+	function_imp(F& f) : fp_(f) {}
+#else
+	function_imp(F f) : fp_(f) {}
+#endif
+	virtual function_imp* clone() const {return new function_imp(*this);}
+	virtual function_imp* clone(void* p) const {return ::new(p) function_imp(*this);}
+
+	result_type
+	operator()(param1 t1)
+		{return static_cast<result_type>((t1.*fp_)());}
+
+	result_type
+	operator()(param1 t1, param2 t2)
+		{return static_cast<result_type>((t1.*fp_)(t2));}
+
+	result_type
+	operator()(param1 t1, param2 t2, param3 t3)
+		{return static_cast<result_type>((t1.*fp_)(t2, t3));}
+
+	result_type
+	operator()(param1 t1, param2 t2, param3 t3, param4 t4)
+		{return static_cast<result_type>((t1.*fp_)(t2, t3, t4));}
+
+	result_type
+	operator()(param1 t1, param2 t2, param3 t3, param4 t4, param5 t5)
+		{return static_cast<result_type>((t1.*fp_)(t2, t3, t4, t5));}
+
+	result_type
+	operator()(param1 t1, param2 t2, param3 t3, param4 t4, param5 t5,
+	           param6 t6)
+		{return static_cast<result_type>((t1.*fp_)(t2, t3, t4, t5, t6));}
+
+	result_type
+	operator()(param1 t1, param2 t2, param3 t3, param4 t4, param5 t5,
+	           param6 t6, param7 t7)
+		{return static_cast<result_type>((t1.*fp_)(t2, t3, t4, t5, t6, t7));}
+
+	result_type
+	operator()(param1 t1, param2 t2, param3 t3, param4 t4, param5 t5,
+	           param6 t6, param7 t7, param7 t8)
+		{return static_cast<result_type>((t1.*fp_)(t2, t3, t4, t5, t6, t7, t8));}
+
+	result_type
+	operator()(param1 t1, param2 t2, param3 t3, param4 t4, param5 t5,
+	           param6 t6, param7 t7, param8 t8, param9 t9)
+		{return static_cast<result_type>((t1.*fp_)(t2, t3, t4, t5, t6, t7, t8, t9));}
+
+	result_type
+	operator()(param1 t1, param2 t2, param3 t3, param4 t4, param5 t5,
+	           param6 t6, param7 t7, param8 t8, param9 t9, param9 t10)
+		{return static_cast<result_type>((t1.*fp_)(t2, t3, t4, t5, t6, t7, t8, t9, t10));}
+
+private:
+	F fp_;
+};
+
+}  // detail
+
+// function
+
+template <class Signature>
+class function
+	: public detail::signature
+	<
+		typename Metrowerks::select
+		<
+			Metrowerks::is_function<Signature>::value,
+			Signature*,
+			Signature
+		>::type
+	>
+{
+private:
+	typedef typename Metrowerks::select
+	<
+		Metrowerks::is_function<Signature>::value,
+		Signature*,
+		Signature
+	>::type sig_type;
+	typedef detail::signature<sig_type> types;
+	struct bool_type_helper {int dummy_;};
+	typedef int bool_type_helper::* bool_type;
+public:
+	typedef typename types::result_type result_type;
+
+	typedef typename types::param1      param1;
+	typedef typename types::param2      param2;
+	typedef typename types::param3      param3;
+	typedef typename types::param4      param4;
+	typedef typename types::param5      param5;
+	typedef typename types::param6      param6;
+	typedef typename types::param7      param7;
+	typedef typename types::param8      param8;
+	typedef typename types::param9      param9;
+	typedef typename types::param10     param10;
+
+	explicit function(bool_type = 0);
+	function(const function& f);
+#ifdef _MSL_MOVE
+	function(function&& f);
+#endif
+	template <class F> function(F,
+	          typename Metrowerks::restrict_to<
+	                                           !Metrowerks::is_integral<F>::value &&
+	                                           !Metrowerks::is_same<F, function>::value
+	                                          >::type* = 0);
+	template <class F> function(reference_wrapper<F>);
+	function& operator=(const function& f);
+#ifdef _MSL_MOVE
+	function& operator=(function&& f);
+#endif
+	template <class S> function& operator=(const function<S>& f);
+	template <class F>
+		typename Metrowerks::restrict_to<!Metrowerks::is_integral<F>::value,
+		                                 function&>::type
+		operator=(F);
+	template <class F> function& operator=(reference_wrapper<F>);
+	function& operator=(bool_type);
+	~function();
+	void swap(function& f);
+	operator bool_type() const {return fp_ ? &bool_type_helper::dummy_ : 0;}
+	result_type operator()() const;
+	result_type operator()(param1) const;
+	result_type operator()(param1, param2) const;
+	result_type operator()(param1, param2, param3) const;
+	result_type operator()(param1, param2, param3, param4) const;
+	result_type operator()(param1, param2, param3, param4, param5) const;
+	result_type operator()(param1, param2, param3, param4, param5,
+	                       param6) const;
+	result_type operator()(param1, param2, param3, param4, param5,
+	                       param6, param7) const;
+	result_type operator()(param1, param2, param3, param4, param5,
+	                       param6, param7, param8) const;
+	result_type operator()(param1, param2, param3, param4, param5,
+	                       param6, param7, param8, param9) const;
+	result_type operator()(param1, param2, param3, param4, param5,
+	                       param6, param7, param8, param9, param10) const;
+private:
+	typedef detail::function_base<sig_type> func_type;
+	func_type* fp_;
+	size_t buf_[2];
+
+	template <class S> friend class function;
+
+	static bool is_empty(...) {return false;}
+	template <class F> static
+	typename Metrowerks::restrict_to
+	<
+		Metrowerks::is_pointer<F>::value ||
+		Metrowerks::is_member_pointer<F>::value,
+		bool
+	>::type is_empty(F f) {return f == 0;}
+	template <class S> static bool is_empty(const function<S>& f) {return f.fp_ == 0;}
+};
+
+template <class Signature>
+inline
+function<Signature>::function(bool_type)
+	: fp_(0)
+{
+}
+
+template <class Signature>
+function<Signature>::function(const function& f)
+	: fp_(0)
+{
+	if (f.fp_)
+	{
+		if (f.fp_ == (void*)f.buf_)
+			fp_ = f.fp_->clone(buf_);
+		else
+			fp_ = f.fp_->clone();
+	}
+}
+
+#ifdef _MSL_MOVE
+
+template <class Signature>
+inline
+function<Signature>::function(function&& f)
+	: fp_(0)
+{
+	swap(f);
+}
+
+#endif  // _MSL_MOVE
+
+template <class Signature>
+template <class F>
+function<Signature>::function(F f,
+	typename Metrowerks::restrict_to<
+	                                 !Metrowerks::is_integral<F>::value &&
+	                                 !Metrowerks::is_same<F, function>::value
+	                                >::type*)
+	: fp_(0)
+{
+	if (!is_empty(f))
+	{
+		if (Metrowerks::is_pointer<F>::value || Metrowerks::is_empty<F>::value)
+			fp_ = ::new (buf_) detail::function_imp<sig_type, F>(f);
+		else
+			fp_ = new detail::function_imp<sig_type, F>(f);
+	}
+}
+
+template <class Signature>
+template <class F>
+function<Signature>::function(reference_wrapper<F> f)
+	: fp_(0)
+{
+	if (!is_empty(f))
+		fp_ = ::new (buf_) detail::function_imp<sig_type, F&>(f);
+}
+
+template <class Signature>
+function<Signature>&
+function<Signature>::operator=(const function& f)
+{
+	function(f).swap(*this);
+	return *this;
+}
+
+#ifdef _MSL_MOVE
+
+template <class Signature>
+function<Signature>&
+function<Signature>::operator=(function&& f)
+{
+	swap(f);
+	return *this;
+}
+
+#endif  // _MSL_MOVE
+
+template <class Signature>
+template <class S>
+function<Signature>&
+function<Signature>::operator=(const function<S>& f)
+{
+	function(f).swap(*this);
+	return *this;
+}
+
+template <class Signature>
+template <class F>
+typename Metrowerks::restrict_to<
+	!Metrowerks::is_integral<F>::value,
+	function<Signature>&
+>::type
+function<Signature>::operator=(F f)
+{
+	function(f).swap(*this);
+	return *this;
+}
+
+template <class Signature>
+template <class F>
+function<Signature>&
+function<Signature>::operator=(reference_wrapper<F> f)
+{
+	function(f).swap(*this);
+	return *this;
+}
+
+template <class Signature>
+function<Signature>&
+function<Signature>::operator=(bool_type)
+{
+	if (fp_ == (void*)buf_)
+		fp_->~func_type();
+	else if (fp_)
+		delete fp_;
+	fp_ = 0;
+	return *this;
+}
+
+template <class Signature>
+function<Signature>::~function()
+{
+	if (fp_ == (void*)buf_)
+		fp_->~func_type();
+	else if (fp_)
+		delete fp_;
+}
+
+template <class Signature>
+void
+function<Signature>::swap(function& f)
+{
+	detail::function_base<sig_type>* tmp = f.fp_;
+	f.fp_ = fp_;
+	fp_ = tmp;
+	size_t st = f.buf_[0];
+	f.buf_[0] = buf_[0];
+	buf_[0] = st;
+	st = f.buf_[1];
+	f.buf_[1] = buf_[1];
+	buf_[1] = st;
+	if (fp_ == (void*)f.buf_)
+		fp_ = (detail::function_base<sig_type>*)buf_;
+	if (f.fp_ == (void*)buf_)
+		f.fp_ = (detail::function_base<sig_type>*)f.buf_;
+}
+
+template <class Signature>
+typename function<Signature>::result_type
+function<Signature>::operator()() const
+{
+	if (fp_ == 0)
+		detail::throw_bad_function_call<true>();
+	return (*fp_)();
+}
+
+template <class Signature>
+typename function<Signature>::result_type
+function<Signature>::operator()(param1 t1) const
+{
+	if (fp_ == 0)
+		detail::throw_bad_function_call<true>();
+	return (*fp_)(t1);
+}
+
+template <class Signature>
+typename function<Signature>::result_type
+function<Signature>::operator()(param1 t1, param2 t2) const
+{
+	if (fp_ == 0)
+		detail::throw_bad_function_call<true>();
+	return (*fp_)(t1, t2);
+}
+
+template <class Signature>
+typename function<Signature>::result_type
+function<Signature>::operator()(param1 t1, param2 t2, param3 t3) const
+{
+	if (fp_ == 0)
+		detail::throw_bad_function_call<true>();
+	return (*fp_)(t1, t2, t3);
+}
+
+template <class Signature>
+typename function<Signature>::result_type
+function<Signature>::operator()(param1 t1, param2 t2, param3 t3, param4 t4) const
+{
+	if (fp_ == 0)
+		detail::throw_bad_function_call<true>();
+	return (*fp_)(t1, t2, t3, t4);
+}
+
+template <class Signature>
+typename function<Signature>::result_type
+function<Signature>::operator()(param1 t1, param2 t2, param3 t3, param4 t4, param5 t5) const
+{
+	if (fp_ == 0)
+		detail::throw_bad_function_call<true>();
+	return (*fp_)(t1, t2, t3, t4, t5);
+}
+
+template <class Signature>
+typename function<Signature>::result_type
+function<Signature>::operator()(param1 t1, param2 t2, param3 t3, param4 t4, param5 t5,
+                                param6 t6) const
+{
+	if (fp_ == 0)
+		detail::throw_bad_function_call<true>();
+	return (*fp_)(t1, t2, t3, t4, t5, t6);
+}
+
+template <class Signature>
+typename function<Signature>::result_type
+function<Signature>::operator()(param1 t1, param2 t2, param3 t3, param4 t4, param5 t5,
+                                param6 t6, param7 t7) const
+{
+	if (fp_ == 0)
+		detail::throw_bad_function_call<true>();
+	return (*fp_)(t1, t2, t3, t4, t5, t6, t7);
+}
+
+template <class Signature>
+typename function<Signature>::result_type
+function<Signature>::operator()(param1 t1, param2 t2, param3 t3, param4 t4, param5 t5,
+                                param6 t6, param7 t7, param8 t8) const
+{
+	if (fp_ == 0)
+		detail::throw_bad_function_call<true>();
+	return (*fp_)(t1, t2, t3, t4, t5, t6, t7, t8);
+}
+
+template <class Signature>
+typename function<Signature>::result_type
+function<Signature>::operator()(param1 t1, param2 t2, param3 t3, param4 t4, param5 t5,
+                                param6 t6, param7 t7, param8 t8, param9 t9) const
+{
+	if (fp_ == 0)
+		detail::throw_bad_function_call<true>();
+	return (*fp_)(t1, t2, t3, t4, t5, t6, t7, t8, t9);
+}
+
+template <class Signature>
+typename function<Signature>::result_type
+function<Signature>::operator()(param1 t1, param2 t2, param3 t3, param4 t4, param5 t5,
+                                param6 t6, param7 t7, param8 t8, param9 t9, param10 t10) const
+{
+	if (fp_ == 0)
+		detail::throw_bad_function_call<true>();
+	return (*fp_)(t1, t2, t3, t4, t5, t6, t7, t8, t9, t10);
+}
+
+// general function
+
+template <class F>
+inline
+void
+swap(function<F>& x, function<F>& y)
+	{return x.swap(y);}
+
+template <class Signature1, class Signature2>
+void
+operator == (const function<Signature1>&, const function<Signature2>&);
+
+template <class Signature1, class Signature2>
+void
+operator != (const function<Signature1>& x, const function<Signature2>& y);
+
+namespace detail
+{
+
+template<class R, class T, bool IsConst = Metrowerks::is_const<T>::value>
+class mem_fn_data
+{
+public:
+	typedef typename Metrowerks::select
+		<
+			Metrowerks::is_reference<R>::value,
+			R,
+			R&
+		>::type non_const_result_type;
+	typedef typename Metrowerks::select
+		<
+			Metrowerks::is_reference<R>::value,
+			R,
+			const R&
+		>::type result_type;
+
+	explicit mem_fn_data(R T::* pm) : pm_(pm) {}
+
+	non_const_result_type operator()(      T& t) const {return t.*pm_;}
+	result_type           operator()(const T& t) const {return t.*pm_;}
+	non_const_result_type operator()(      T* t) const {return t->*pm_;}
+	result_type           operator()(const T* t) const {return t->*pm_;}
+
+	template <class X>
+	typename Metrowerks::restrict_to
+	<
+		!Metrowerks::is_convertible<X, T>::value &&
+		!Metrowerks::is_convertible<X, const T*>::value,
+		typename Metrowerks::select
+		<
+			Metrowerks::is_const<typename X::element_type>::value,
+			result_type,
+			non_const_result_type
+		>::type
+	>::type
+	operator()(const X& t) const {return (*t).*pm_;}
+private:
+	R T::* pm_;
+};
+
+template<class R, class T>
+class mem_fn_data<R, T, true>
+{
+public:
+	typedef typename Metrowerks::select
+		<
+			Metrowerks::is_reference<R>::value,
+			R,
+			const R&
+		>::type result_type;
+
+	explicit mem_fn_data(R T::* pm) : pm_(pm) {}
+
+	result_type           operator()(const T& t) const {return t.*pm_;}
+	result_type           operator()(const T* t) const {return t->*pm_;}
+
+	template <class X>
+	typename Metrowerks::restrict_to
+	<
+		!Metrowerks::is_convertible<X, T>::value &&
+		!Metrowerks::is_convertible<X, T*>::value,
+		result_type
+	>::type
+	operator()(const X& t) const {return (*t).*pm_;}
+private:
+	R T::* pm_;
+};
+
+// R (T::*pmf)()
+
+template<class R, class T>
+class mem_fn_0
+{
+public:
+	typedef R result_type;
+
+	explicit mem_fn_0(R (T::*pmf)()) : pmf_(pmf) {}
+
+	result_type operator()(T& t) const {return (t.*pmf_)();}
+
+	template <class X>
+	typename Metrowerks::restrict_to
+	<
+		!Metrowerks::is_convertible<X, T>::value,
+		result_type
+	>::type
+	operator()(const X& t) const {return ((*t).*pmf_)();}
+private:
+	R (T::*pmf_)();
+};
+
+// R (T::*pmf)() const
+
+template<class R, class T>
+class mem_fn_0_c
+{
+public:
+	typedef R result_type;
+
+	explicit mem_fn_0_c(R (T::*pmf)() const) : pmf_(pmf) {}
+
+	result_type operator()(const T& t) const {return (t.*pmf_)();}
+
+	template <class X>
+	typename Metrowerks::restrict_to
+	<
+		!Metrowerks::is_convertible<X, T>::value,
+		result_type
+	>::type
+	operator()(const X& t) const {return ((*t).*pmf_)();}
+private:
+	R (T::*pmf_)() const;
+};
+
+// R (T::*pmf)(A1)
+
+template<class R, class T, class A1>
+class mem_fn_1
+{
+public:
+	typedef R result_type;
+
+	explicit mem_fn_1(R (T::*pmf)(A1)) : pmf_(pmf) {}
+
+	result_type operator()(T& t, A1 a1) const {return (t.*pmf_)(a1);}
+
+	template <class X>
+	typename Metrowerks::restrict_to
+	<
+		!Metrowerks::is_convertible<X, T>::value,
+		result_type
+	>::type
+	operator()(const X& t, A1 a1) const {return ((*t).*pmf_)(a1);}
+private:
+	R (T::*pmf_)(A1);
+};
+
+// R (T::*pmf)(A1) const
+
+template<class R, class T, class A1>
+class mem_fn_1_c
+{
+public:
+	typedef R result_type;
+
+	explicit mem_fn_1_c(R (T::*pmf)(A1) const) : pmf_(pmf) {}
+
+	result_type operator()(const T& t, A1 a1) const {return (t.*pmf_)(a1);}
+	template <class X>
+	typename Metrowerks::restrict_to
+	<
+		!Metrowerks::is_convertible<X, T>::value,
+		result_type
+	>::type
+	operator()(const X& t, A1 a1) const {return ((*t).*pmf_)(a1);}
+private:
+	R (T::*pmf_)(A1) const;
+};
+
+// R (T::*pmf)(A1, A2)
+
+template<class R, class T, class A1, class A2>
+class mem_fn_2
+{
+public:
+	typedef R result_type;
+
+	explicit mem_fn_2(R (T::*pmf)(A1, A2)) : pmf_(pmf) {}
+
+	result_type operator()(T& t, A1 a1, A2 a2) const {return (t.*pmf_)(a1, a2);}
+
+	template <class X>
+	typename Metrowerks::restrict_to
+	<
+		!Metrowerks::is_convertible<X, T>::value,
+		result_type
+	>::type
+	operator()(const X& t, A1 a1, A2 a2) const {return ((*t).*pmf_)(a1, a2);}
+private:
+	R (T::*pmf_)(A1, A2);
+};
+
+// R (T::*pmf)(A1, A2) const
+
+template<class R, class T, class A1, class A2>
+class mem_fn_2_c
+{
+public:
+	typedef R result_type;
+
+	explicit mem_fn_2_c(R (T::*pmf)(A1, A2) const) : pmf_(pmf) {}
+
+	result_type operator()(const T& t, A1 a1, A2 a2) const {return (t.*pmf_)(a1, a2);}
+
+	template <class X>
+	typename Metrowerks::restrict_to
+	<
+		!Metrowerks::is_convertible<X, T>::value,
+		result_type
+	>::type
+	operator()(const X& t, A1 a1, A2 a2) const {return ((*t).*pmf_)(a1, a2);}
+private:
+	R (T::*pmf_)(A1, A2) const;
+};
+
+// R (T::*pmf)(A1, A2, A3)
+
+template<class R, class T, class A1, class A2, class A3>
+class mem_fn_3
+{
+public:
+	typedef R result_type;
+
+	explicit mem_fn_3(R (T::*pmf)(A1, A2, A3)) : pmf_(pmf) {}
+
+	result_type operator()(T& t, A1 a1, A2 a2, A3 a3) const {return (t.*pmf_)(a1, a2, a3);}
+
+	template <class X>
+	typename Metrowerks::restrict_to
+	<
+		!Metrowerks::is_convertible<X, T>::value,
+		result_type
+	>::type
+	operator()(const X& t, A1 a1, A2 a2, A3 a3) const {return ((*t).*pmf_)(a1, a2, a3);}
+private:
+	R (T::*pmf_)(A1, A2, A3);
+};
+
+// R (T::*pmf)(A1, A2, A3) const
+
+template<class R, class T, class A1, class A2, class A3>
+class mem_fn_3_c
+{
+public:
+	typedef R result_type;
+
+	explicit mem_fn_3_c(R (T::*pmf)(A1, A2, A3) const) : pmf_(pmf) {}
+
+	result_type operator()(const T& t, A1 a1, A2 a2, A3 a3) const {return (t.*pmf_)(a1, a2, a3);}
+
+	template <class X>
+	typename Metrowerks::restrict_to
+	<
+		!Metrowerks::is_convertible<X, T>::value,
+		result_type
+	>::type
+	operator()(const X& t, A1 a1, A2 a2, A3 a3) const {return ((*t).*pmf_)(a1, a2, a3);}
+private:
+	R (T::*pmf_)(A1, A2, A3) const;
+};
+
+// R (T::*pmf)(A1, A2, A3, A4)
+
+template<class R, class T, class A1, class A2, class A3, class A4>
+class mem_fn_4
+{
+public:
+	typedef R result_type;
+
+	explicit mem_fn_4(R (T::*pmf)(A1, A2, A3, A4)) : pmf_(pmf) {}
+
+	result_type operator()(T& t, A1 a1, A2 a2, A3 a3, A4 a4) const
+		{return (t.*pmf_)(a1, a2, a3, a4);}
+
+	template <class X>
+	typename Metrowerks::restrict_to
+	<
+		!Metrowerks::is_convertible<X, T>::value,
+		result_type
+	>::type
+	operator()(const X& t, A1 a1, A2 a2, A3 a3, A4 a4) const
+		{return ((*t).*pmf_)(a1, a2, a3, a4);}
+private:
+	R (T::*pmf_)(A1, A2, A3, A4);
+};
+
+// R (T::*pmf)(A1, A2, A3, A4) const
+
+template<class R, class T, class A1, class A2, class A3, class A4>
+class mem_fn_4_c
+{
+public:
+	typedef R result_type;
+
+	explicit mem_fn_4_c(R (T::*pmf)(A1, A2, A3, A4) const) : pmf_(pmf) {}
+
+	result_type operator()(const T& t, A1 a1, A2 a2, A3 a3, A4 a4) const
+		{return (t.*pmf_)(a1, a2, a3, a4);}
+
+	template <class X>
+	typename Metrowerks::restrict_to
+	<
+		!Metrowerks::is_convertible<X, T>::value,
+		result_type
+	>::type
+	operator()(const X& t, A1 a1, A2 a2, A3 a3, A4 a4) const
+		{return ((*t).*pmf_)(a1, a2, a3, a4);}
+private:
+	R (T::*pmf_)(A1, A2, A3, A4) const;
+};
+
+// R (T::*pmf)(A1, A2, A3, A4, A5)
+
+template<class R, class T, class A1, class A2, class A3, class A4, class A5>
+class mem_fn_5
+{
+public:
+	typedef R result_type;
+
+	explicit mem_fn_5(R (T::*pmf)(A1, A2, A3, A4, A5)) : pmf_(pmf) {}
+
+	result_type operator()(T& t, A1 a1, A2 a2, A3 a3, A4 a4, A5 a5) const
+		{return (t.*pmf_)(a1, a2, a3, a4, a5);}
+
+	template <class X>
+	typename Metrowerks::restrict_to
+	<
+		!Metrowerks::is_convertible<X, T>::value,
+		result_type
+	>::type
+	operator()(const X& t, A1 a1, A2 a2, A3 a3, A4 a4, A5 a5) const
+		{return ((*t).*pmf_)(a1, a2, a3, a4, a5);}
+private:
+	R (T::*pmf_)(A1, A2, A3, A4, A5);
+};
+
+// R (T::*pmf)(A1, A2, A3, A4, A5) const
+
+template<class R, class T, class A1, class A2, class A3, class A4, class A5>
+class mem_fn_5_c
+{
+public:
+	typedef R result_type;
+
+	explicit mem_fn_5_c(R (T::*pmf)(A1, A2, A3, A4, A5) const) : pmf_(pmf) {}
+
+	result_type operator()(const T& t, A1 a1, A2 a2, A3 a3, A4 a4, A5 a5) const
+		{return (t.*pmf_)(a1, a2, a3, a4, a5);}
+
+	template <class X>
+	typename Metrowerks::restrict_to
+	<
+		!Metrowerks::is_convertible<X, T>::value,
+		result_type
+	>::type
+	operator()(const X& t, A1 a1, A2 a2, A3 a3, A4 a4, A5 a5) const
+		{return ((*t).*pmf_)(a1, a2, a3, a4, a5);}
+private:
+	R (T::*pmf_)(A1, A2, A3, A4, A5) const;
+};
+
+// R (T::*pmf)(A1, A2, A3, A4, A5, A6)
+
+template<class R, class T, class A1, class A2, class A3, class A4, class A5,
+                           class A6>
+class mem_fn_6
+{
+public:
+	typedef R result_type;
+
+	explicit mem_fn_6(R (T::*pmf)(A1, A2, A3, A4, A5, A6)) : pmf_(pmf) {}
+
+	result_type operator()(T& t, A1 a1, A2 a2, A3 a3, A4 a4, A5 a5,
+	                             A6 a6) const
+		{return (t.*pmf_)(a1, a2, a3, a4, a5, a6);}
+
+	template <class X>
+	typename Metrowerks::restrict_to
+	<
+		!Metrowerks::is_convertible<X, T>::value,
+		result_type
+	>::type
+	operator()(const X& t, A1 a1, A2 a2, A3 a3, A4 a4, A5 a5,
+	                       A6 a6) const
+		{return ((*t).*pmf_)(a1, a2, a3, a4, a5, a6);}
+private:
+	R (T::*pmf_)(A1, A2, A3, A4, A5, A6);
+};
+
+// R (T::*pmf)(A1, A2, A3, A4, A5, A6) const
+
+template<class R, class T, class A1, class A2, class A3, class A4, class A5,
+                           class A6>
+class mem_fn_6_c
+{
+public:
+	typedef R result_type;
+
+	explicit mem_fn_6_c(R (T::*pmf)(A1, A2, A3, A4, A5, A6) const) : pmf_(pmf) {}
+
+	result_type operator()(const T& t, A1 a1, A2 a2, A3 a3, A4 a4, A5 a5,
+	                                   A6 a6) const
+		{return (t.*pmf_)(a1, a2, a3, a4, a5, a6);}
+
+	template <class X>
+	typename Metrowerks::restrict_to
+	<
+		!Metrowerks::is_convertible<X, T>::value,
+		result_type
+	>::type
+	operator()(const X& t, A1 a1, A2 a2, A3 a3, A4 a4, A5 a5,
+	                       A6 a6) const
+		{return ((*t).*pmf_)(a1, a2, a3, a4, a5, a6);}
+private:
+	R (T::*pmf_)(A1, A2, A3, A4, A5, A6) const;
+};
+
+// R (T::*pmf)(A1, A2, A3, A4, A5, A6, A7)
+
+template<class R, class T, class A1, class A2, class A3, class A4, class A5,
+                           class A6, class A7>
+class mem_fn_7
+{
+public:
+	typedef R result_type;
+
+	explicit mem_fn_7(R (T::*pmf)(A1, A2, A3, A4, A5, A6, A7)) : pmf_(pmf) {}
+
+	result_type operator()(T& t, A1 a1, A2 a2, A3 a3, A4 a4, A5 a5,
+	                             A6 a6, A7 a7) const
+		{return (t.*pmf_)(a1, a2, a3, a4, a5, a6, a7);}
+
+	template <class X>
+	typename Metrowerks::restrict_to
+	<
+		!Metrowerks::is_convertible<X, T>::value,
+		result_type
+	>::type
+	operator()(const X& t, A1 a1, A2 a2, A3 a3, A4 a4, A5 a5,
+	                       A6 a6, A7 a7) const
+		{return ((*t).*pmf_)(a1, a2, a3, a4, a5, a6, a7);}
+private:
+	R (T::*pmf_)(A1, A2, A3, A4, A5, A6, A7);
+};
+
+// R (T::*pmf)(A1, A2, A3, A4, A5, A6, A7) const
+
+template<class R, class T, class A1, class A2, class A3, class A4, class A5,
+                           class A6, class A7>
+class mem_fn_7_c
+{
+public:
+	typedef R result_type;
+
+	explicit mem_fn_7_c(R (T::*pmf)(A1, A2, A3, A4, A5, A6, A7) const) : pmf_(pmf) {}
+
+	result_type operator()(const T& t, A1 a1, A2 a2, A3 a3, A4 a4, A5 a5,
+	                                   A6 a6, A7 a7) const
+		{return (t.*pmf_)(a1, a2, a3, a4, a5, a6, a7);}
+
+	template <class X>
+	typename Metrowerks::restrict_to
+	<
+		!Metrowerks::is_convertible<X, T>::value,
+		result_type
+	>::type
+	operator()(const X& t, A1 a1, A2 a2, A3 a3, A4 a4, A5 a5,
+	                       A6 a6, A7 a7) const
+		{return ((*t).*pmf_)(a1, a2, a3, a4, a5, a6, a7);}
+private:
+	R (T::*pmf_)(A1, A2, A3, A4, A5, A6, A7) const;
+};
+
+// R (T::*pmf)(A1, A2, A3, A4, A5, A6, A7, A8)
+
+template<class R, class T, class A1, class A2, class A3, class A4, class A5,
+                           class A6, class A7, class A8>
+class mem_fn_8
+{
+public:
+	typedef R result_type;
+
+	explicit mem_fn_8(R (T::*pmf)(A1, A2, A3, A4, A5, A6, A7, A8)) : pmf_(pmf) {}
+
+	result_type operator()(T& t, A1 a1, A2 a2, A3 a3, A4 a4, A5 a5,
+	                             A6 a6, A7 a7, A8 a8) const
+		{return (t.*pmf_)(a1, a2, a3, a4, a5, a6, a7, a8);}
+
+	template <class X>
+	typename Metrowerks::restrict_to
+	<
+		!Metrowerks::is_convertible<X, T>::value,
+		result_type
+	>::type
+	operator()(const X& t, A1 a1, A2 a2, A3 a3, A4 a4, A5 a5,
+	                       A6 a6, A7 a7, A8 a8) const
+		{return ((*t).*pmf_)(a1, a2, a3, a4, a5, a6, a7, a8);}
+private:
+	R (T::*pmf_)(A1, A2, A3, A4, A5, A6, A7, A8);
+};
+
+// R (T::*pmf)(A1, A2, A3, A4, A5, A6, A7, A8) const
+
+template<class R, class T, class A1, class A2, class A3, class A4, class A5,
+                           class A6, class A7, class A8>
+class mem_fn_8_c
+{
+public:
+	typedef R result_type;
+
+	explicit mem_fn_8_c(R (T::*pmf)(A1, A2, A3, A4, A5, A6, A7, A8) const) : pmf_(pmf) {}
+
+	result_type operator()(const T& t, A1 a1, A2 a2, A3 a3, A4 a4, A5 a5,
+	                                   A6 a6, A7 a7, A8 a8) const
+		{return (t.*pmf_)(a1, a2, a3, a4, a5, a6, a7, a8);}
+
+	template <class X>
+	typename Metrowerks::restrict_to
+	<
+		!Metrowerks::is_convertible<X, T>::value,
+		result_type
+	>::type
+	operator()(const X& t, A1 a1, A2 a2, A3 a3, A4 a4, A5 a5,
+	                       A6 a6, A7 a7, A8 a8) const
+		{return ((*t).*pmf_)(a1, a2, a3, a4, a5, a6, a7, a8);}
+private:
+	R (T::*pmf_)(A1, A2, A3, A4, A5, A6, A7, A8) const;
+};
+
+// R (T::*pmf)(A1, A2, A3, A4, A5, A6, A7, A8, A9)
+
+template<class R, class T, class A1, class A2, class A3, class A4, class A5,
+                           class A6, class A7, class A8, class A9>
+class mem_fn_9
+{
+public:
+	typedef R result_type;
+
+	explicit mem_fn_9(R (T::*pmf)(A1, A2, A3, A4, A5, A6, A7, A8, A9)) : pmf_(pmf) {}
+
+	result_type operator()(T& t, A1 a1, A2 a2, A3 a3, A4 a4, A5 a5,
+	                             A6 a6, A7 a7, A8 a8, A9 a9) const
+		{return (t.*pmf_)(a1, a2, a3, a4, a5, a6, a7, a8, a9);}
+
+	template <class X>
+	typename Metrowerks::restrict_to
+	<
+		!Metrowerks::is_convertible<X, T>::value,
+		result_type
+	>::type
+	operator()(const X& t, A1 a1, A2 a2, A3 a3, A4 a4, A5 a5,
+	                       A6 a6, A7 a7, A8 a8, A9 a9) const
+		{return ((*t).*pmf_)(a1, a2, a3, a4, a5, a6, a7, a8, a9);}
+private:
+	R (T::*pmf_)(A1, A2, A3, A4, A5, A6, A7, A8, A9);
+};
+
+// R (T::*pmf)(A1, A2, A3, A4, A5, A6, A7, A8, A9) const
+
+template<class R, class T, class A1, class A2, class A3, class A4, class A5,
+                           class A6, class A7, class A8, class A9>
+class mem_fn_9_c
+{
+public:
+	typedef R result_type;
+
+	explicit mem_fn_9_c(R (T::*pmf)(A1, A2, A3, A4, A5, A6, A7, A8, A9) const) : pmf_(pmf) {}
+
+	result_type operator()(const T& t, A1 a1, A2 a2, A3 a3, A4 a4, A5 a5,
+	                                   A6 a6, A7 a7, A8 a8, A9 a9) const
+		{return (t.*pmf_)(a1, a2, a3, a4, a5, a6, a7, a8, a9);}
+
+	template <class X>
+	typename Metrowerks::restrict_to
+	<
+		!Metrowerks::is_convertible<X, T>::value,
+		result_type
+	>::type
+	operator()(const X& t, A1 a1, A2 a2, A3 a3, A4 a4, A5 a5,
+	                       A6 a6, A7 a7, A8 a8, A9 a9) const
+		{return ((*t).*pmf_)(a1, a2, a3, a4, a5, a6, a7, a8, a9);}
+private:
+	R (T::*pmf_)(A1, A2, A3, A4, A5, A6, A7, A8, A9) const;
+};
+
+// R (T::*pmf)(A1, A2, A3, A4, A5, A6, A7, A8, A9, A10)
+
+template<class R, class T, class A1, class A2, class A3, class A4, class A5,
+                           class A6, class A7, class A8, class A9, class A10>
+class mem_fn_10
+{
+public:
+	typedef R result_type;
+
+	explicit mem_fn_10(R (T::*pmf)(A1, A2, A3, A4, A5, A6, A7, A8, A9, A10)) : pmf_(pmf) {}
+
+	result_type operator()(T& t, A1 a1, A2 a2, A3 a3, A4 a4, A5 a5,
+	                             A6 a6, A7 a7, A8 a8, A9 a9, A10 a10) const
+		{return (t.*pmf_)(a1, a2, a3, a4, a5, a6, a7, a8, a9, a10);}
+
+	template <class X>
+	typename Metrowerks::restrict_to
+	<
+		!Metrowerks::is_convertible<X, T>::value,
+		result_type
+	>::type
+	operator()(const X& t, A1 a1, A2 a2, A3 a3, A4 a4, A5 a5,
+	                       A6 a6, A7 a7, A8 a8, A9 a9, A10 a10) const
+		{return ((*t).*pmf_)(a1, a2, a3, a4, a5, a6, a7, a8, a9, a10);}
+private:
+	R (T::*pmf_)(A1, A2, A3, A4, A5, A6, A7, A8, A9, A10);
+};
+
+// R (T::*pmf)(A1, A2, A3, A4, A5, A6, A7, A8, A9, A10) const
+
+template<class R, class T, class A1, class A2, class A3, class A4, class A5,
+                           class A6, class A7, class A8, class A9, class A10>
+class mem_fn_10_c
+{
+public:
+	typedef R result_type;
+
+	explicit mem_fn_10_c(R (T::*pmf)(A1, A2, A3, A4, A5, A6, A7, A8, A9, A10) const) : pmf_(pmf) {}
+
+	result_type operator()(const T& t, A1 a1, A2 a2, A3 a3, A4 a4, A5 a5,
+	                                   A6 a6, A7 a7, A8 a8, A9 a9, A10 a10) const
+		{return (t.*pmf_)(a1, a2, a3, a4, a5, a6, a7, a8, a9, a10);}
+
+	template <class X>
+	typename Metrowerks::restrict_to
+	<
+		!Metrowerks::is_convertible<X, T>::value,
+		result_type
+	>::type
+	operator()(const X& t, A1 a1, A2 a2, A3 a3, A4 a4, A5 a5,
+	                       A6 a6, A7 a7, A8 a8, A9 a9, A10 a10) const
+		{return ((*t).*pmf_)(a1, a2, a3, a4, a5, a6, a7, a8, a9, a10);}
+private:
+	R (T::*pmf_)(A1, A2, A3, A4, A5, A6, A7, A8, A9, A10) const;
+};
+
+}  // detail
+
+#if !(defined(__MWERKS__) && __MWERKS__ >= 0x4000)
+
+template<class R, class T, class W0>
+struct result_of<detail::mem_fn_data<R, T>(W0)>
+{
+private:
+	struct two {char x; char y;};
+	static char test(typename detail::mem_fn_data<R, T>::non_const_result_type);
+	static two test(typename detail::mem_fn_data<R, T>::result_type);
+	static detail::mem_fn_data<R, T> f;
+	static W0 w;
+public:
+	typedef typename Metrowerks::select
+	<
+		sizeof(test(f(w))) != 1,
+		typename detail::mem_fn_data<R, T>::result_type,
+		typename detail::mem_fn_data<R, T>::non_const_result_type
+	>::type type;
+};
+
+#endif  // !(defined(__MWERKS__) && __MWERKS__ >= 0x4000)
+
+template<class R, class T>
+inline
+detail::mem_fn_data<R, T>
+mem_fn(R T::* pm)
+{
+	return detail::mem_fn_data<R, T>(pm);
+}
+
+template<class R, class T>
+inline
+detail::mem_fn_0<R, T>
+mem_fn(R (T::*pmf)())
+{
+	return detail::mem_fn_0<R, T>(pmf);
+}
+
+template<class R, class T>
+inline
+detail::mem_fn_0_c<R, T>
+mem_fn(R (T::*pmf)() const)
+{
+	return detail::mem_fn_0_c<R, T>(pmf);
+}
+
+template<class R, class T, class A1>
+inline
+detail::mem_fn_1<R, T, A1>
+mem_fn(R (T::*pmf)(A1))
+{
+	return detail::mem_fn_1<R, T, A1>(pmf);
+}
+
+template<class R, class T, class A1>
+inline
+detail::mem_fn_1_c<R, T, A1>
+mem_fn(R (T::*pmf)(A1) const)
+{
+	return detail::mem_fn_1_c<R, T, A1>(pmf);
+}
+
+template<class R, class T, class A1, class A2>
+inline
+detail::mem_fn_2<R, T, A1, A2>
+mem_fn(R (T::*pmf)(A1, A2))
+{
+	return detail::mem_fn_2<R, T, A1, A2>(pmf);
+}
+
+template<class R, class T, class A1, class A2>
+inline
+detail::mem_fn_2_c<R, T, A1, A2>
+mem_fn(R (T::*pmf)(A1, A2) const)
+{
+	return detail::mem_fn_2_c<R, T, A1, A2>(pmf);
+}
+
+template<class R, class T, class A1, class A2, class A3>
+inline
+detail::mem_fn_3<R, T, A1, A2, A3>
+mem_fn(R (T::*pmf)(A1, A2, A3))
+{
+	return detail::mem_fn_3<R, T, A1, A2, A3>(pmf);
+}
+
+template<class R, class T, class A1, class A2, class A3>
+inline
+detail::mem_fn_3_c<R, T, A1, A2, A3>
+mem_fn(R (T::*pmf)(A1, A2, A3) const)
+{
+	return detail::mem_fn_3_c<R, T, A1, A2, A3>(pmf);
+}
+
+template<class R, class T, class A1, class A2, class A3, class A4>
+inline
+detail::mem_fn_4<R, T, A1, A2, A3, A4>
+mem_fn(R (T::*pmf)(A1, A2, A3, A4))
+{
+	return detail::mem_fn_4<R, T, A1, A2, A3, A4>(pmf);
+}
+
+template<class R, class T, class A1, class A2, class A3, class A4>
+inline
+detail::mem_fn_4_c<R, T, A1, A2, A3, A4>
+mem_fn(R (T::*pmf)(A1, A2, A3, A4) const)
+{
+	return detail::mem_fn_4_c<R, T, A1, A2, A3, A4>(pmf);
+}
+
+template<class R, class T, class A1, class A2, class A3, class A4, class A5>
+inline
+detail::mem_fn_5<R, T, A1, A2, A3, A4, A5>
+mem_fn(R (T::*pmf)(A1, A2, A3, A4, A5))
+{
+	return detail::mem_fn_5<R, T, A1, A2, A3, A4, A5>(pmf);
+}
+
+template<class R, class T, class A1, class A2, class A3, class A4, class A5>
+inline
+detail::mem_fn_5_c<R, T, A1, A2, A3, A4, A5>
+mem_fn(R (T::*pmf)(A1, A2, A3, A4, A5) const)
+{
+	return detail::mem_fn_5_c<R, T, A1, A2, A3, A4, A5>(pmf);
+}
+
+template<class R, class T, class A1, class A2, class A3, class A4, class A5,
+                           class A6>
+inline
+detail::mem_fn_6<R, T, A1, A2, A3, A4, A5, A6>
+mem_fn(R (T::*pmf)(A1, A2, A3, A4, A5, A6))
+{
+	return detail::mem_fn_6<R, T, A1, A2, A3, A4, A5, A6>(pmf);
+}
+
+template<class R, class T, class A1, class A2, class A3, class A4, class A5,
+                           class A6>
+inline
+detail::mem_fn_6_c<R, T, A1, A2, A3, A4, A5, A6>
+mem_fn(R (T::*pmf)(A1, A2, A3, A4, A5, A6) const)
+{
+	return detail::mem_fn_6_c<R, T, A1, A2, A3, A4, A5, A6>(pmf);
+}
+
+template<class R, class T, class A1, class A2, class A3, class A4, class A5,
+                           class A6, class A7>
+inline
+detail::mem_fn_7<R, T, A1, A2, A3, A4, A5, A6, A7>
+mem_fn(R (T::*pmf)(A1, A2, A3, A4, A5, A6, A7))
+{
+	return detail::mem_fn_7<R, T, A1, A2, A3, A4, A5, A6, A7>(pmf);
+}
+
+template<class R, class T, class A1, class A2, class A3, class A4, class A5,
+                           class A6, class A7>
+inline
+detail::mem_fn_7_c<R, T, A1, A2, A3, A4, A5, A6, A7>
+mem_fn(R (T::*pmf)(A1, A2, A3, A4, A5, A6, A7) const)
+{
+	return detail::mem_fn_7_c<R, T, A1, A2, A3, A4, A5, A6, A7>(pmf);
+}
+
+template<class R, class T, class A1, class A2, class A3, class A4, class A5,
+                           class A6, class A7, class A8>
+inline
+detail::mem_fn_8<R, T, A1, A2, A3, A4, A5, A6, A7, A8>
+mem_fn(R (T::*pmf)(A1, A2, A3, A4, A5, A6, A7, A8))
+{
+	return detail::mem_fn_8<R, T, A1, A2, A3, A4, A5, A6, A7, A8>(pmf);
+}
+
+template<class R, class T, class A1, class A2, class A3, class A4, class A5,
+                           class A6, class A7, class A8>
+inline
+detail::mem_fn_8_c<R, T, A1, A2, A3, A4, A5, A6, A7, A8>
+mem_fn(R (T::*pmf)(A1, A2, A3, A4, A5, A6, A7, A8) const)
+{
+	return detail::mem_fn_8_c<R, T, A1, A2, A3, A4, A5, A6, A7, A8>(pmf);
+}
+
+template<class R, class T, class A1, class A2, class A3, class A4, class A5,
+                           class A6, class A7, class A8, class A9>
+inline
+detail::mem_fn_9<R, T, A1, A2, A3, A4, A5, A6, A7, A8, A9>
+mem_fn(R (T::*pmf)(A1, A2, A3, A4, A5, A6, A7, A8, A9))
+{
+	return detail::mem_fn_9<R, T, A1, A2, A3, A4, A5, A6, A7, A8, A9>(pmf);
+}
+
+template<class R, class T, class A1, class A2, class A3, class A4, class A5,
+                           class A6, class A7, class A8, class A9>
+inline
+detail::mem_fn_9_c<R, T, A1, A2, A3, A4, A5, A6, A7, A8, A9>
+mem_fn(R (T::*pmf)(A1, A2, A3, A4, A5, A6, A7, A8, A9) const)
+{
+	return detail::mem_fn_9_c<R, T, A1, A2, A3, A4, A5, A6, A7, A8, A9>(pmf);
+}
+
+template<class R, class T, class A1, class A2, class A3, class A4, class A5,
+                           class A6, class A7, class A8, class A9, class A10>
+inline
+detail::mem_fn_10<R, T, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10>
+mem_fn(R (T::*pmf)(A1, A2, A3, A4, A5, A6, A7, A8, A9, A10))
+{
+	return detail::mem_fn_10<R, T, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10>(pmf);
+}
+
+template<class R, class T, class A1, class A2, class A3, class A4, class A5,
+                           class A6, class A7, class A8, class A9, class A10>
+inline
+detail::mem_fn_10_c<R, T, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10>
+mem_fn(R (T::*pmf)(A1, A2, A3, A4, A5, A6, A7, A8, A9, A10) const)
+{
+	return detail::mem_fn_10_c<R, T, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10>(pmf);
+}
+
+_MSL_END_TR1_NAMESPACE
+
+#endif  // __MWERKS__ >= 0x3200
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#pragma enumsalwaysint reset
+#endif
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#pragma bool reset
+#endif
+
+#ifdef __MWERKS__
+#pragma options align=reset
+#endif
+
+#endif // RC_INVOKED
+
+#endif // _FUNCTIONAL
+
+// hh 971221 Changed filename from functional.h to functional
+// hh 971221 Made include guards standard
+// hh 971230 added RC_INVOKED wrapper
+// hh 980401 rewrote all mem_fun stuff
+// hh 980731 added select2nd per customer request
+// hh 980923 Put in a few typename fixes
+// hh 990505 Rewrote
+// hh 990807 Added pointer_to_binary_function_with_const_args
+//           and pointer_to_unary_function_with_const_args.
+// hh 991015 const_mem_fun1_ref_t was missing data member
+// hh 991118 Added experimental operators to binder1st and binder2nd that take
+//           non-const args.
+// hh 000402 Extended functionality to binder1st and binder2nd.
+// hh 010225 Changed relational and equality functionals to only use == and <
+// hh 010402 Removed 68K CMF support
+// hh 011018 Changed arg_type of const_mem_fun_t and const_mem_fun1_t from T* to const T*
+// hh 011210 Removed pointer_to_binary_function_with_const_args
+//           and pointer_to_unary_function_with_const_args.
+// hh 030421 Added std::tr1::result_of
+// hh 030421 Added std::tr1::reference_wrapper, ref, cref
+// hh 030421 Added std::tr1::function
+// hh 030826 Added std::tr1::mem_fn
+// hh 030930 Added missing const member function specialization to signature
+// hh 030930 Fixed has_result_type to work with reference types
+// hh 030930 Fixed reference_wrapper return to work with function types
+// hh 031101 Removed some extraneous typenames

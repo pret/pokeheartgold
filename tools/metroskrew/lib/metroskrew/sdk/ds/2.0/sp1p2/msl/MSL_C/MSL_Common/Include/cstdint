@@ -1,0 +1,305 @@
+/* MSL
+ * Copyright © 1995-2006 Freescale Corporation.  All rights reserved.
+ *
+ * $Date: 2006/02/08 20:32:43 $
+ * $Revision: 1.37.2.3 $
+ */
+
+#ifndef _MSL_CSTDINT
+#define _MSL_CSTDINT
+
+#include <ansi_parms.h>
+
+#if !_MSL_USING_MW_C_HEADERS
+	#include <stdint.h>
+	
+	#if _MSL_PUT_THIRD_PARTY_C_IN_STD
+		#include <msl_cpp_std_stdint.h>
+	#endif
+#elif __dest_os == __mac_os_x
+	#include <cstdint_mach.h>
+#else
+
+#include <limits_api.h>
+#include <msl_secure.h>
+
+#ifndef RC_INVOKED
+
+_MSL_BEGIN_NAMESPACE_STD
+_MSL_BEGIN_EXTERN_C
+
+/*
+ * 7.18 Integer types <stdint.h>
+ * 
+ * 7.18.1 Integer types
+ *
+ */
+ 
+typedef signed char int8_t;
+typedef short int   int16_t;
+typedef long int    int32_t;
+
+#if _MSL_LONGLONG
+	typedef long long   int64_t;
+#endif /* _MSL_LONGLONG */
+ 
+typedef unsigned char		uint8_t;
+typedef unsigned short int  uint16_t;
+typedef unsigned long int   uint32_t;
+
+#if _MSL_LONGLONG
+	typedef unsigned long long  uint64_t;
+#endif /* _MSL_LONGLONG */
+
+#if (_MSL_C99  || defined(__cplusplus))
+/*
+ * 7.18.1.2 Minimum-width integer types
+ * 
+ */
+
+typedef signed char 		int_least8_t;
+typedef short int   		int_least16_t;
+typedef long int    		int_least32_t;
+
+#if _MSL_LONGLONG
+	typedef long long   		int_least64_t;
+#endif /* _MSL_LONGLONG */
+
+typedef unsigned char		uint_least8_t;
+typedef unsigned short int  uint_least16_t;
+typedef unsigned long int   uint_least32_t;
+
+#if _MSL_LONGLONG
+	typedef unsigned long long  uint_least64_t;
+#endif /* _MSL_LONGLONG */
+
+/*
+ * 7.18.1.3 Fastest minimum-width integer types
+ *
+ */
+
+typedef signed char 		int_fast8_t;
+typedef short int   		int_fast16_t;
+typedef long int    		int_fast32_t;
+
+#if _MSL_LONGLONG
+	typedef long long   		int_fast64_t;
+#endif /* _MSL_LONGLONG */
+
+typedef unsigned char		uint_fast8_t;
+typedef unsigned short int  uint_fast16_t;
+typedef unsigned long int   uint_fast32_t;
+
+#if _MSL_LONGLONG
+	typedef unsigned long long  uint_fast64_t;
+#endif /* _MSL_LONGLONG */
+
+/*
+ * 7.18.1.4 Integer types capable of holding object pointers
+ *
+ */
+
+typedef int32_t intptr_t;
+typedef uint32_t uintptr_t;
+
+/*
+ * 7.18.1.5 Greatest-width integer types
+ * 
+ */
+
+#if _MSL_LONGLONG
+	typedef int64_t intmax_t;
+#else											
+	typedef int32_t intmax_t;				
+#endif /* _MSL_LONGLONG */
+ 
+#if _MSL_LONGLONG
+	typedef uint64_t uintmax_t;
+#else											
+	typedef uint32_t uintmax_t;
+#endif /* _MSL_LONGLONG */
+
+#endif /* _MSL_C99 */
+
+_MSL_END_EXTERN_C
+_MSL_END_NAMESPACE_STD
+
+#endif /* RC_INVOKED */
+#endif /* !_MSL_USING_MW_C_HEADERS */
+
+#endif /* _MSL_CSTDINT */
+
+#if _MSL_USING_MW_C_HEADERS && __dest_os != __mac_os_x
+
+/*
+ * 7.18.2 Limits of specified-width integer types
+ * 
+ * 7.18.2.1 Limits of exact-width integer types
+ */
+
+#if (!defined(__cplusplus)) || defined(__STDC_LIMIT_MACROS)
+#ifndef INT8_MIN
+
+#define INT8_MIN		_MSL_SCHAR_MIN
+#define INT16_MIN		_MSL_SHRT_MIN
+#define INT32_MIN		_MSL_LONG_MIN
+#if _MSL_LONGLONG 
+#define INT64_MIN		_MSL_LLONG_MIN
+#endif /* _MSL_LONGLONG */
+
+#define INT8_MAX		_MSL_SCHAR_MAX
+#define INT16_MAX		_MSL_SHRT_MAX
+#define INT32_MAX		_MSL_LONG_MAX
+#if _MSL_LONGLONG 
+#define INT64_MAX		_MSL_LLONG_MAX
+#endif /* _MSL_LONGLONG */
+
+#define UINT8_MAX		_MSL_UCHAR_MAX
+#define UINT16_MAX		_MSL_USHRT_MAX
+#define UINT32_MAX		_MSL_ULONG_MAX
+#if _MSL_LONGLONG 
+#define UINT64_MAX		_MSL_ULLONG_MAX
+#endif /* _MSL_LONGLONG */
+/*
+ * 7.18.2.2 Limits of minimum-width integer types
+ */
+
+#define INT_LEAST8_MIN		_MSL_SCHAR_MIN
+#define INT_LEAST16_MIN		_MSL_SHRT_MIN
+#define INT_LEAST32_MIN		_MSL_LONG_MIN
+#if _MSL_LONGLONG 
+#define INT_LEAST64_MIN		_MSL_LLONG_MIN
+#endif /* _MSL_LONGLONG */
+
+#define INT_LEAST8_MAX		_MSL_SCHAR_MAX
+#define INT_LEAST16_MAX		_MSL_SHRT_MAX
+#define INT_LEAST32_MAX		_MSL_LONG_MAX
+#if _MSL_LONGLONG 
+#define INT_LEAST64_MAX		_MSL_LLONG_MAX
+#endif /* _MSL_LONGLONG */
+#define UINT_LEAST8_MAX		_MSL_UCHAR_MAX
+#define UINT_LEAST16_MAX	_MSL_USHRT_MAX
+#define UINT_LEAST32_MAX	_MSL_ULONG_MAX
+#if _MSL_LONGLONG 
+#define UINT_LEAST64_MAX	_MSL_ULLONG_MAX
+#endif /* _MSL_LONGLONG */
+
+/*
+ * 7.18.2.3 Limits of fastest minimum-width integer types
+ */
+
+#define INT_FAST8_MIN		_MSL_SCHAR_MIN
+#define INT_FAST16_MIN		_MSL_SHRT_MIN
+#define INT_FAST32_MIN		_MSL_LONG_MIN
+#if _MSL_LONGLONG 
+#define INT_FAST64_MIN		_MSL_LLONG_MIN
+#endif /* _MSL_LONGLONG */
+
+#define INT_FAST8_MAX		_MSL_SCHAR_MAX
+#define INT_FAST16_MAX		_MSL_SHRT_MAX
+#define INT_FAST32_MAX		_MSL_LONG_MAX
+#if _MSL_LONGLONG 
+#define INT_FAST64_MAX		_MSL_LLONG_MAX
+#endif /* _MSL_LONGLONG */
+
+#define UINT_FAST8_MAX		_MSL_UCHAR_MAX
+#define UINT_FAST16_MAX		_MSL_USHRT_MAX
+#define UINT_FAST32_MAX		_MSL_ULONG_MAX
+#if _MSL_LONGLONG 
+#define UINT_FAST64_MAX		_MSL_ULLONG_MAX
+#endif /* _MSL_LONGLONG */
+
+/*
+ * 7.18.2.4 Limits of integer types capable of holding object pointers
+ */
+
+#define INTPTR_MIN			_MSL_LONG_MIN
+#define INTPTR_MAX			_MSL_LONG_MAX
+#define UINTPTR_MAX			_MSL_ULONG_MAX
+
+/*
+ * 7.18.2.5 Limits of greatest-width integer types
+ */
+
+#if _MSL_LONGLONG 
+	#define INTMAX_MIN			_MSL_LLONG_MIN
+	#define INTMAX_MAX			_MSL_LLONG_MAX
+	#define UINTMAX_MAX			_MSL_ULLONG_MAX
+#endif /* _MSL_LONGLONG */
+
+/*					
+ * 7.18.3 Limits of other integer types
+ */
+
+#define PTRDIFF_MIN			_MSL_LONG_MIN
+#define PTRDIFF_MAX			_MSL_LONG_MAX
+#define SIG_ATOMIC_MIN		_MSL_INT_MIN
+#define SIG_ATOMIC_MAX		_MSL_INT_MAX
+
+#if (__dest_os == __win32_os || defined(__MOTO__)  || __dest_os == __wince_os)
+	#define SIZE_MAX     		_MSL_UINT_MAX
+#else
+	#define SIZE_MAX     		_MSL_ULONG_MAX
+#endif
+
+#if defined(__STDC_WANT_SECURE_LIB__) && __STDC_WANT_SECURE_LIB__
+	#ifndef _MSL_RSIZE_MAX
+		#define _MSL_RSIZE_MAX	(SIZE_MAX >> 1)
+	#endif
+	
+	#define RSIZE_MAX			_MSL_RSIZE_MAX
+#endif /* __STDC_WANT_SECURE_LIB__ */
+
+#if _MSL_WIDE_CHAR
+	#include <wchar_t.h>   /* do define WCHAR_MIN and WCHAR_MAX */		
+	#define WINT_MIN			WCHAR_MIN
+	#define WINT_MAX			WCHAR_MAX
+#endif /* _MSL_WIDE_CHAR */
+
+#endif /* INT8_MIN */
+#endif /* (!defined(__cplusplus)) || defined(__STDC_LIMIT_MACROS) */
+
+/*
+ * 7.18.4 Macros for integer constants
+ */
+
+#if (!defined(__cplusplus)) || defined(__STDC_CONSTANT_MACROS)
+#ifndef INT8_C
+
+#define INT8_C(value) 	value
+#define INT16_C(value) 	value
+#define INT32_C(value) 	value ## L
+#define INT64_C(value) 	value ## LL
+#define UINT8_C(value) 	value ## U
+#define UINT16_C(value) value ## U
+#define UINT32_C(value) value ## UL
+#define UINT64_C(value) value ## ULL
+
+/*
+ * 7.18.4.2 Macros for greatest-width integer constants
+ */
+
+#if _MSL_LONGLONG
+	#define INTMAX_C(value)  value ## LL
+	#define UINTMAX_C(value) value ## ULL
+#endif /* _MSL_LONGLONG */
+
+#endif /* INT8_C */
+#endif /* (!defined(__cplusplus)) || defined(__STDC_CONSTANT_MACROS) */
+#endif /* _MSL_USING_MW_C_HEADERS */
+
+/* Change record:
+ * mm  000511 Created.
+ * mm  000602 Corrected a pair of guards
+ * JWW 001208 Added case for targeting Mach-O
+ * cc  010409 updated defines to JWW new namespace macros
+ * JWW 011027 Use _MSL_USING_MW_C_HEADERS as generic header test instead of specific Mach-O test
+ * mm  020318 Changes to make more useful for C++
+ * mm  020321 Removed some comments for reason of copyright
+ * JWW 030224 Changed __MSL_LONGLONG_SUPPORT__ flag into the new more configurable _MSL_LONGLONG
+ * JWW 030224 Changed __NO_WIDE_CHAR flag into the new more configurable _MSL_WIDE_CHAR
+ * mm  o30303 Added _MSL_C99 wrappers for header
+ * hh  040416 Moved defines outside of include guards
+ * JWW 041224 Added RSIZE_MAX for secure library
+ * JWW 050128 When using MSL C++ on top of a third party C (non-MSL), put C items into std namespace
+ */

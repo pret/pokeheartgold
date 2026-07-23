@@ -1,0 +1,110 @@
+{
+  "key": 29183,
+  "messages": [
+    {
+      "id": "msg_0696_00000",
+      "en_US": "Vance"
+    },
+    {
+      "id": "msg_0696_00001",
+      "en_US": [
+        "You are sure strong. But I don’t\n",
+        "want to just slink away...\r",
+        "I know! Could I get your number?\n",
+        "Let’s meet up for more battles!{YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0696_00002",
+      "en_US": [
+        "Don’t forget to come and see me\n",
+        "when I challenge you!"
+      ]
+    },
+    {
+      "id": "msg_0696_00003",
+      "en_US": [
+        "A Bird Keeper friend isn’t a bad thing to\n",
+        "have, I’d say...\r",
+        "Won’t you reconsider?"
+      ]
+    },
+    {
+      "id": "msg_0696_00004",
+      "en_US": [
+        "I want to battle tough Trainers as\n",
+        "often as I can!\r",
+        "Could I get your number?\n",
+        "Let’s meet up for more battles!{YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0696_00005",
+      "en_US": [
+        "You are really, really strong!\r",
+        "Thanks for taking me on so often--\n",
+        "I learned a whole lot from you.\r",
+        "I know! This will do as my thanks!\r"
+      ]
+    },
+    {
+      "id": "msg_0696_00006",
+      "en_US": [
+        "You’re nearby, aren’t you?\r",
+        "Why not come and talk in person?"
+      ]
+    },
+    {
+      "id": "msg_0696_00007",
+      "en_US": [
+        "My {STRVAR_1 0, 10, 0}’s become tougher.\n",
+        "We’ve achieved liftoff!\r",
+        "We can easily beat {STRVAR_1 0, 11, 0}!\r",
+        "...Huh? You, too? Isn’t that great?\n",
+        "Let’s talk later!"
+      ]
+    },
+    {
+      "id": "msg_0696_00008",
+      "en_US": [
+        "My {STRVAR_1 0, 10, 0}’s become tougher.\n",
+        "We’ve achieved liftoff!\r",
+        "But get this, a wild {STRVAR_1 0, 11, 0} just\n",
+        "barely eluded us.\f",
+        "I wanted to Fly after it...\r",
+        "Let’s talk later!"
+      ]
+    },
+    {
+      "id": "msg_0696_00009",
+      "en_US": [
+        "Right now, I’m on {STRVAR_1 4, 3, 0}.\n",
+        "You know--where I first met you?\r",
+        "Want to battle? I’ll wait here."
+      ]
+    },
+    {
+      "id": "msg_0696_00010",
+      "en_US": [
+        "Oh, {STRVAR_1 3, 0, 0}!\n",
+        "Hurry, hurry!\r",
+        "{STRVAR_1 4, 3, 0}! Fly over now!"
+      ]
+    },
+    {
+      "id": "msg_0696_00011",
+      "en_US": [
+        "Oh, {STRVAR_1 3, 0, 0}!\n",
+        "Hurry, hurry!\r",
+        "{STRVAR_1 4, 3, 0}! Fly over now!"
+      ]
+    },
+    {
+      "id": "msg_0696_00012",
+      "en_US": [
+        "I’ll be looking forward to our\n",
+        "next battle!"
+      ]
+    }
+  ]
+}

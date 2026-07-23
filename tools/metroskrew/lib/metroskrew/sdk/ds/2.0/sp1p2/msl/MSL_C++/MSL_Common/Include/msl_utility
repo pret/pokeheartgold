@@ -1,0 +1,2114 @@
+/* MSL
+ * Copyright © 1995-2006 Freescale Corporation.  All rights reserved.
+ *
+ * $Date: 2006/02/09 16:59:01 $
+ * $Revision: 1.57.2.6 $
+ */
+
+// msl_utility
+
+/*
+	WARNING - WARNING - WARNING
+
+	This header is NON-STANDARD
+
+	The classes herein are offered as extensions to the C++ standard.
+	They are marked as such by the namespace Metrowerks.
+*/
+
+/*
+ *  Concepts and ideas co-developed on Boost (http://www.boost.org/)
+ *  with help from Steve Cleary, Beman Dawes & John Maddock.  Similar
+ *  "open source" software appears on the Boost site.
+ *  This version of these utilities branched from the Boost development
+ *  mid stream in order to meet the needs of MSL C++.  To the extent that
+ *  this software shares its roots with the software on Boost, the Boost
+ *  copyright also appears here:
+
+//  (C) Copyright Steve Cleary, Beman Dawes, Howard Hinnant & John Maddock 2000.
+//  Permission to copy, use, modify, sell and
+//  distribute this software is granted provided this copyright notice appears
+//  in all copies. This software is provided "as is" without express or implied
+//  warranty, and with no claim as to its suitability for any purpose.
+
+ *  The Boost copyright applies only to those parts of the interface and implementation
+ *  that are common to the software on the Boost site.
+ *
+ *  Finally, a big thanks to Steve Cleary, Beman Dawes & John Maddock.
+*/
+
+/**************************************************************************
+
+CONTENTS
+~~~~~~~~
++--------------- basic transformations -------------------+
+| Usage: "remove_const<T>::type" is the transformed type. |
++---------------------------------------------------------+
+remove_const         - remove top level const qualifier
+remove_volatile      - remove top level volatile qualifier
+remove_cv            - remove top level const and volatile qualifiers
+remove_pointer       - remove top level pointer if present
+remove_reference     - remove top level reference if present
+remove_bounds        - remove top level array bound if present
+remove_all           - remove cv, references, arrays, and pointers until you are
+                       left with a fundamental, enum, union, class or member pointer.
+
+is_same      is_same<T, U>::value - true if T and U are the same type
+
++------------------------- cv query --------------------------+
+| Usage: "is_const<T>::value" is a bool indicating the reuslt.|
++-------------------------------------------------------------+
+is_const     true if type has top level const
+is_volatile  true if type has top level volatile
+
++----------------------- sign query ---------------------------+
+| Usage: "is_signed<T>::value" is a bool indicating the reuslt.|
+|        Will cause a compile-time error on types that have no |
+|        signedness.  T must be constructable from an int, and |
+|        less than comparable.                                 |
++--------------------------------------------------------------+
+is_signed     true if type is signed
+is_unsigned   true if type is not signed
+
++----------------- type classification --------------------------+
+| Usage: "is_integral<T>::value" is a bool indicating the reuslt.|
+|         Answers are independent of any cv qualifiers           |
+|         All types will match one and only one of the 10        |
+|         classifications below.                                 |
++----------------------------------------------------------------+
+is_integral
+is_floating
+is_void
+is_pointer
+is_reference
+is_member_pointer
+is_array
+is_enum      - requires compiler support or user supplied specialization.
+is_union     - requires compiler support or user supplied specialization.
+is_class     - without above support, enums and unions are classified as class type.
+
+is_arithmetic   - true if type is integral or floating.
+is_fundamental  - true if type is arithemetic or void.
+is_scalar       - true if type is arithmetic, pointer, member pointer or enum.
+is_compound     - true if type is not a fundamental type.
+is_object       - true for all types except void and reference.
+
+is_extension   - is_extension<T>::value is true if type is non-standard (e.g. long long)
+has_extension  - has_extension<T>::value is true if type is non-standard or if type is a pointer to,
+                 reference to, or array of a non-standard type.
+
++---------------------- POD classification ----------------------------+
+| Usage: "has_trivial_default_ctor<T>::value" is a bool indicating     |
+|          the reuslt.  For class types the result will be false       |
+|          unless there is compiler support, or client code explicitly |
+|          specializes the appropriate hook.                           |
++----------------------------------------------------------------------+
+has_trivial_default_ctor
+has_trivial_copy_ctor
+has_trivial_assignment
+has_trivial_dtor
+is_POD
+
++---------------------- Miscellaneous ----------------------------+
+array_size       - returns the size of an array.  Not valid on non-array types.
+call_traits      - A collection of typedef's helpful when dealing with different types.
+can_derive_from  - can_derive_from<T>::value is true for classes
+is_empty         - is_empty<T>::value is true for zero-sized classes and unions, else false.
+store_as         - Used by containers to specify what types can be stored as alternative
+                   types to reduce template code bloat.
+compressed_pair  - Attempts to optimize away zero-sized members of the pair.
+alloc_ptr        - auto_ptr on steroids
+***************************************************************************/
+
+#ifndef  _MSL_UTILITY
+#define  _MSL_UTILITY
+
+#include <mslconfig>
+#include <cstddef>
+#include <climits>
+#ifndef _MSL_NO_FLOATING_POINT
+	#include <cfloat>
+#endif
+#if !defined(_MSL_NO_WCHART_LANG_SUPPORT) && !defined(_MSL_NO_WCHART_CPP_SUPPORT) && !defined(_MSL_NO_WCHART_C_SUPPORT)
+	#ifdef _MSL_USING_MSL_C
+		#include <wchar_t.h>
+	#else
+		#include <cwchar>
+	#endif
+#endif  // !defined(_MSL_NO_WCHART_LANG_SUPPORT) && !defined(_MSL_NO_WCHART_CPP_SUPPORT) && !defined(_MSL_NO_WCHART_C_SUPPORT)
+
+#ifndef RC_INVOKED
+
+#ifdef __MWERKS__
+#pragma options align=native
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#if _MSL_FORCE_ENUMS_ALWAYS_INT
+		#pragma enumsalwaysint on
+	#else
+		#pragma enumsalwaysint off
+	#endif
+#endif  // _MSL_FORCE_ENUMS_ALWAYS_INT
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#if _MSL_FORCE_ENABLE_BOOL_SUPPORT
+		#pragma bool on
+	#else
+		#pragma bool off
+	#endif
+#endif  // _MSL_FORCE_ENABLE_BOOL_SUPPORT
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+
+	namespace std {
+		template <class T> void swap(T&, T&);
+	}
+
+	namespace Metrowerks {
+#else  // _MSL_NO_CPP_NAMESPACE
+	template <class T> void swap(T&, T&);
+	#ifndef Metrowerks
+		#define Metrowerks
+	#endif
+#endif  // _MSL_NO_CPP_NAMESPACE
+
+template <bool b, class T = void> struct restrict_to          {};
+template <class T>                struct restrict_to<true, T> {typedef T type;};
+
+template <bool b>
+struct compile_assert;
+
+template <>
+struct compile_assert<true>
+{
+};
+
+namespace detail
+{
+
+template <bool C1, class T2>
+struct _and
+{
+	static const bool value = false;
+};
+
+template <class T2>
+struct _and<true, T2>
+{
+	static const bool value = T2::value;
+};
+
+template <bool C1, class T2>
+struct _or
+{
+	static const bool value = T2::value;
+};
+
+template <class T2>
+struct _or<true, T2>
+{
+	static const bool value = true;
+};
+
+}
+
+template <class T1, class T2>
+struct _and
+{
+	static const bool value = detail::_and<T1::value, T2>::value;
+};
+
+template <class T1, class T2>
+struct _or
+{
+	static const bool value = detail::_or<T1::value, T2>::value;
+};
+
+template <class T>
+struct _not
+{
+	static const bool value = !T::value;
+};
+
+#ifdef __GNUC__
+
+template <class T1, class T2>
+struct friend_helper
+{
+	typedef T1 type;
+};
+
+template <class T>
+struct friend_helper<T, T>
+{
+	typedef friend_helper type;
+};
+
+#endif  // __GNUC__
+
+template <class T>
+inline
+T*
+address_of(T& x)
+{
+	return (T*)&(char&)x;
+}
+
+// remove_const
+
+template <class T> struct remove_const          {typedef T type;};
+template <class T> struct remove_const<T const> {typedef T type;};
+
+// remove_volatile
+
+template <class T> struct remove_volatile             {typedef T type;};
+template <class T> struct remove_volatile<T volatile> {typedef T type;};
+
+// remove_cv
+
+template <class T> struct remove_cv
+	{typedef typename remove_const<typename remove_volatile<T>::type>::type type;};
+
+// remove_pointer
+
+template <class T> struct remove_pointer                   {typedef T type;};
+template <class T> struct remove_pointer<T*>               {typedef T type;};
+template <class T> struct remove_pointer<T*const>          {typedef T type;};
+template <class T> struct remove_pointer<T*volatile>       {typedef T type;};
+template <class T> struct remove_pointer<T*const volatile> {typedef T type;};
+
+// remove_reference
+
+template <class T> struct remove_reference     {typedef T type;};
+template <class T> struct remove_reference<T&> {typedef T type;};
+#ifdef _MSL_MOVE
+template <class T> struct remove_reference<T&&> {typedef T type;};
+#endif
+
+#ifdef _MSL_MOVE
+
+template <class T> struct is_lvalue_reference {static const bool value = false;};
+template <class T> struct is_lvalue_reference<T&> {static const bool value = true;};
+
+template <class T> struct is_rvalue_reference {static const bool value = false;};
+template <class T> struct is_rvalue_reference<T&&> {static const bool value = true;};
+
+
+#endif  // _MSL_MOVE
+
+// add_reference
+
+template <class T> struct add_reference     {typedef T& type;};
+template <class T> struct add_reference<T&> {typedef T& type;};
+#ifdef _MSL_MOVE
+template <class T> struct add_reference<T&&> {typedef T&& type;};
+#endif
+template <>        struct add_reference<void>                {typedef void type;};
+template <>        struct add_reference<const void>          {typedef void type;};
+template <>        struct add_reference<volatile void>       {typedef void type;};
+template <>        struct add_reference<const volatile void> {typedef void type;};
+
+// remove_bounds
+
+template <class T>                  struct remove_bounds       {typedef T type;};
+template <class T, _CSTD::size_t N> struct remove_bounds<T[N]> {typedef T type;};
+template <class T>                  struct remove_bounds<T[]>  {typedef T type;};
+
+// remove_all_bounds
+
+template <class T>                  struct remove_all_bounds       {typedef T type;};
+template <class T, _CSTD::size_t N> struct remove_all_bounds<T[N]>
+	{typedef typename remove_all_bounds<T>::type type;};
+template <class T>                  struct remove_all_bounds<T[]>
+	{typedef typename remove_all_bounds<T>::type type;};
+
+namespace details
+{
+
+	template <class T>
+	struct strip
+	{
+		typedef typename remove_cv<
+			typename remove_pointer<
+				typename remove_reference<
+					typename remove_bounds<T>::type
+				>::type
+			>::type
+		>::type type;
+	};
+
+	template <class T, class U>
+	struct strip_aux
+	{
+		typedef typename strip_aux<typename strip<T>::type, typename strip<U>::type>::type type;
+	};
+
+	template <class T>
+	struct strip_aux<T, T>
+	{
+		typedef T type;
+	};
+
+}
+
+template <class T>
+struct remove_all
+{
+	typedef typename details::strip_aux<T, typename details::strip<T>::type>::type type;
+};
+
+// is_same
+
+template <class T, class U> struct is_same       {static const bool value = false;};
+template <class T>          struct is_same<T, T> {static const bool value = true;};
+
+// is_const/volatile
+
+template <class T> struct is_const
+	{static const bool value = !is_same<T, typename remove_const<T>::type>::value;};
+template <class T> struct is_volatile
+	{static const bool value = !is_same<T, typename remove_volatile<T>::type>::value;};
+
+// is_signed/unsigned
+
+template <class T> struct is_signed
+	{static const bool value = T(-1) < T(0);};
+
+template <class T> struct is_unsigned
+	{static const bool value = !is_signed<T>::value;};
+
+template <class T> struct to_unsigned
+	{typedef T type;};
+template <> struct to_unsigned<char>
+	{typedef unsigned char type;};
+template <> struct to_unsigned<signed char>
+	{typedef unsigned char type;};
+template <> struct to_unsigned<short>
+	{typedef unsigned short type;};
+template <> struct to_unsigned<int>
+	{typedef unsigned int type;};
+template <> struct to_unsigned<long>
+	{typedef unsigned long type;};
+#if _MSL_LONGLONG
+	template <> struct to_unsigned<long long>
+		{typedef unsigned long long type;};
+#endif  // _MSL_LONGLONG
+
+template <class T> struct to_signed
+	{typedef T type;};
+template <> struct to_signed<char>
+	{typedef signed char type;};
+template <> struct to_signed<unsigned char>
+	{typedef signed char type;};
+template <> struct to_signed<unsigned short>
+	{typedef short type;};
+template <> struct to_signed<unsigned int>
+	{typedef int type;};
+template <> struct to_signed<unsigned long>
+	{typedef long type;};
+#if _MSL_LONGLONG
+	template <> struct to_signed<unsigned long long>
+		{typedef long long type;};
+#endif  // _MSL_LONGLONG
+
+namespace details
+{
+	template <class T> struct is_integral_imp              {static const bool value = false;};
+
+#ifndef _MSL_NO_BOOL
+	template <> struct is_integral_imp<bool>               {static const bool value = true;};
+#endif
+	template <> struct is_integral_imp<char>               {static const bool value = true;};
+	template <> struct is_integral_imp<signed char>        {static const bool value = true;};
+	template <> struct is_integral_imp<unsigned char>      {static const bool value = true;};
+#if !defined(_MSL_NO_WCHART_LANG_SUPPORT) && !defined(_MSL_NO_WCHART_CPP_SUPPORT)
+	template <> struct is_integral_imp<wchar_t>            {static const bool value = true;};
+#endif
+	template <> struct is_integral_imp<short>              {static const bool value = true;};
+	template <> struct is_integral_imp<unsigned short>     {static const bool value = true;};
+	template <> struct is_integral_imp<int>                {static const bool value = true;};
+	template <> struct is_integral_imp<unsigned int>       {static const bool value = true;};
+	template <> struct is_integral_imp<long>               {static const bool value = true;};
+	template <> struct is_integral_imp<unsigned long>      {static const bool value = true;};
+#if _MSL_LONGLONG
+	template <> struct is_integral_imp<long long>          {static const bool value = true;};
+	template <> struct is_integral_imp<unsigned long long> {static const bool value = true;};
+#endif  // _MSL_LONGLONG
+	template <class T> struct is_floating_imp       {static const bool value = false;};
+
+	template <> struct is_floating_imp<float>       {static const bool value = true;};
+	template <> struct is_floating_imp<double>      {static const bool value = true;};
+	template <> struct is_floating_imp<long double> {static const bool value = true;};
+
+	template <class T> struct is_void_imp       {static const bool value = false;};
+	template <>        struct is_void_imp<void> {static const bool value = true;};
+
+	template <class T> struct is_pointer_imp
+		{static const bool value = !is_same<T, typename remove_pointer<T>::type>::value;};
+	template <class T> struct is_reference_imp
+		{static const bool value = !is_same<T, typename remove_reference<T>::type>::value;};
+	template <class T> struct is_array_imp
+		{static const bool value = !is_same<T, typename remove_bounds<T>::type>::value;};
+
+	template <class T>          struct is_member_pointer_imp         {static const bool value = false;};
+	template <class T, class U> struct is_member_pointer_imp<U T::*> {static const bool value = true;};
+#if defined(__MWERKS__) && __MWERKS__ >= 0x2500
+	template <class T> struct is_enum_imp     {static const bool value = (__builtin_type(T)&0xff00)==0x0400;};
+	template <class T> struct is_union_imp    {static const bool value = __builtin_type(T) == 0x2001;};
+	template <class T> struct is_function_imp {static const bool value = __builtin_type(T) == 0x8000;};
+#else  // defined(__MWERKS__) && __MWERKS__ >= 0x2500
+	template <class T> struct is_enum_imp     {static const bool value = false;};  // hook
+	template <class T> struct is_union_imp    {static const bool value = false;};  // hook
+	template <class T> struct is_function_imp {static const bool value = false;};  // hook
+#endif  // defined(__MWERKS__) && __MWERKS__ >= 0x2500
+
+	template <class T> struct is_class_imp
+	{
+		static const bool value =
+			!( is_integral_imp<T>::value
+			|| is_floating_imp<T>::value
+			|| is_void_imp<T>::value
+			|| is_pointer_imp<T>::value
+			|| is_reference_imp<T>::value
+			|| is_member_pointer_imp<T>::value
+			|| is_array_imp<T>::value
+			|| is_enum_imp<T>::value
+			|| is_union_imp<T>::value
+			|| is_function_imp<T>::value );
+	};
+
+	template <class T> struct is_extension_imp              {static const bool value = false;};
+#if _MSL_LONGLONG
+	template <> struct is_extension_imp<long long>          {static const bool value = true;};
+	template <> struct is_extension_imp<unsigned long long> {static const bool value = true;};
+#endif  // _MSL_LONGLONG
+}
+
+template <class T> struct is_integral
+	{static const bool value = details::is_integral_imp<typename remove_cv<T>::type>::value;};
+template <class T> struct is_floating
+	{static const bool value = details::is_floating_imp<typename remove_cv<T>::type>::value;};
+template <class T> struct is_void
+	{static const bool value = details::is_void_imp<typename remove_cv<T>::type>::value;};
+template <class T> struct is_pointer
+	{static const bool value = details::is_pointer_imp<T>::value;};
+template <class T> struct is_reference
+	{static const bool value = details::is_reference_imp<T>::value;};
+template <class T> struct is_member_pointer
+	{static const bool value = details::is_member_pointer_imp<typename remove_cv<T>::type>::value;};
+template <class T> struct is_array
+	{static const bool value = details::is_array_imp<T>::value;};
+template <class T> struct is_enum
+	{static const bool value = details::is_enum_imp<typename remove_cv<T>::type>::value;};
+template <class T> struct is_union
+	{static const bool value = details::is_union_imp<typename remove_cv<T>::type>::value;};
+template <class T> struct is_function
+	{static const bool value = details::is_function_imp<typename remove_cv<T>::type>::value;};
+template <class T> struct is_class
+	{static const bool value = details::is_class_imp<typename remove_cv<T>::type>::value;};
+
+template <class T> struct is_arithmetic
+	{static const bool value = is_integral<T>::value || is_floating<T>::value;};
+template <class T> struct is_fundamental
+	{static const bool value = is_arithmetic<T>::value || is_void<T>::value;};
+template <class T> struct is_scalar
+	{static const bool value = is_arithmetic<T>::value     || is_pointer<T>::value
+	                        || is_member_pointer<T>::value || is_enum<T>::value;};
+template <class T> struct is_compound
+	{static const bool value = !is_fundamental<T>::value;};
+template <class T> struct is_object
+	{static const bool value = !(is_void<T>::value || is_reference<T>::value || is_function<T>::value);};
+
+template <class T> struct is_extension
+{
+	static const bool value = details::is_extension_imp<typename remove_cv<T>::type>::value;
+};
+
+template <class T> struct has_extension
+{
+	static const bool value = details::is_extension_imp<typename remove_all<T>::type>::value;
+};
+
+template <bool Condition, class If, class Then>
+struct select
+{
+	typedef If type;
+};
+
+template <class If, class Then>
+struct select<false, If, Then>
+{
+	typedef Then type;
+};
+
+template <int I>
+struct int2type
+{
+	static int const value = I;
+};
+
+template<typename T> T make();
+
+#ifndef __GNUC__
+
+namespace is_convertible_detail
+{
+
+struct two {char x; char y;};
+
+template <class T>
+two
+test(...);
+
+template <class T>
+char
+test(const T&);
+
+#ifdef _MSL_MOVE
+
+template <class T>
+char
+test(T&&);
+
+#endif  // _MSL_MOVE
+
+}
+
+template <typename T, typename U>
+struct is_convertible
+{
+private:
+	static T t;
+public:
+#ifdef _MSL_MOVE
+	static const bool value = sizeof(is_convertible_detail::test<U>(static_cast<T&&>(t))) == 1;
+#else
+	static const bool value = sizeof(is_convertible_detail::test<U>(t)) == 1;
+#endif
+};
+
+#else  // __GNUC__
+
+// is_convertible implementation for gcc taken from boost:
+
+// Copyright (C) 2000 John Maddock (john@johnmaddock.co.uk)
+// Copyright (C) 2000 Jeremy Siek (jsiek@lsc.nd.edu)
+// Copyright (C) 1999, 2000 Jaakko J„rvi (jaakko.jarvi@cs.utu.fi)
+//
+//  Use, modification and distribution are subject to the Boost Software License,
+//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
+//  http://www.boost.org/LICENSE_1_0.txt).
+//
+//  See http://www.boost.org/libs/type_traits for most recent version including documentation.
+
+namespace detail
+{
+
+struct two {char x; char y;};
+
+struct any_conversion
+{
+    template <typename T> any_conversion(const volatile T&);
+    template <typename T> any_conversion(T&);
+};
+
+template <typename T> struct checker
+{
+    static two _m_check(any_conversion ...);
+    static char _m_check(T, int);
+};
+
+template <typename From, typename To>
+struct is_convertible_basic_impl
+{
+    static From _m_from;
+    static bool const value = sizeof( detail::checker<To>::_m_check(_m_from, 0) ) == 1;
+};
+
+template <typename From, typename To>
+struct is_convertible_impl
+{
+    typedef typename add_reference<From>::type ref_type;
+    static const  bool value =
+        _and<
+            detail::is_convertible_basic_impl<ref_type,To>,
+            _not<
+               is_array<To>
+            >
+        >::value;
+};
+
+}  // detail
+
+template <class From, class To>
+struct is_convertible
+{
+	static const bool value = detail::is_convertible_impl<From, To>::value;
+};
+
+#endif  // __GNUC__
+
+// To reduce template code bloat, specify here what Container<a_type> can be implemented in
+// terms of Container<type>.  The only requirement between a_type and type is that they be
+// the same size.
+
+template <class T> struct store_as                  {typedef T type;};
+#ifndef _Inhibit_Container_Optimization
+	#ifdef __MIPS__
+		template <class T> struct store_as<T*>          {typedef unsigned int type;};
+	#else
+		template <class T> struct store_as<T*>          {typedef unsigned long type;};
+	#endif
+	#if _MSL_LONGLONG
+		#if __POWERPC__
+			template <> struct store_as<unsigned long long> {typedef double type;};
+			template <> struct store_as<long long>          {typedef double type;};
+		#else  // __POWERPC__
+			template <> struct store_as<long long>          {typedef unsigned long long type;};
+		#endif
+	#endif  // _MSL_LONGLONG
+#ifndef _MSL_NO_FLOATING_POINT
+	#if DBL_MANT_DIG == LDBL_MANT_DIG
+		template <> struct store_as<long double>        {typedef double type;};
+	#endif
+	#ifdef __MIPS__
+		template <> struct store_as<float>              {typedef unsigned int type;};
+	#else
+		template <> struct store_as<float>              {typedef unsigned long type;};
+	#endif
+#endif  // _MSL_NO_FLOATING_POINT
+		template <> struct store_as<long>               {typedef unsigned long type;};
+	#if UINT_MAX == ULONG_MAX
+		template <> struct store_as<unsigned int>       {typedef unsigned long type;};
+		template <> struct store_as<int>                {typedef unsigned long type;};
+	#elif UINT_MAX == USHRT_MAX
+		template <> struct store_as<unsigned int>       {typedef unsigned short type;};
+		template <> struct store_as<int>                {typedef unsigned short type;};
+	#else  // UINT_MAX == USHRT_MAX
+		template <> struct store_as<int>                {typedef unsigned int type;};
+	#endif
+		template <> struct store_as<short>              {typedef unsigned short type;};
+#if !defined(_MSL_NO_WCHART_LANG_SUPPORT) && !defined(_MSL_NO_WCHART_CPP_SUPPORT) && !defined(_MSL_NO_WCHART_C_SUPPORT)
+	#if WCHAR_MAX == USHRT_MAX || WCHAR_MAX == SHRT_MAX
+		template <> struct store_as<wchar_t>            {typedef unsigned short type;};
+	#elif WCHAR_MAX == ULONG_MAX || WCHAR_MAX == LONG_MAX
+		template <> struct store_as<wchar_t>            {typedef unsigned long type;};
+	#endif
+#endif  // !defined(_MSL_NO_WCHART_LANG_SUPPORT) && !defined(_MSL_NO_WCHART_CPP_SUPPORT) && !defined(_MSL_NO_WCHART_C_SUPPORT)
+		template <> struct store_as<signed char>        {typedef char type;};
+		template <> struct store_as<unsigned char>      {typedef char type;};
+	#ifndef _MSL_NO_BOOL
+		template <_CSTD::size_t sizeofbool> struct store_as_bool_decision
+			{typedef bool type;};
+		template <> struct store_as_bool_decision<1>
+			{typedef char type;};
+		template <> struct store_as_bool_decision<sizeof(unsigned long)>
+			{typedef unsigned long type;};
+
+		template <> struct store_as<bool>               {typedef store_as_bool_decision<sizeof(bool)>::type type;};
+	#endif  // _MSL_NO_BOOL
+
+		template <class R, class C>
+		struct store_as<R C::*>                         {typedef int store_as<int>::*type;};
+		template <class R, class C>
+		struct store_as<R (C::*)()>                     {typedef void (store_as<int>::*type)() const;};
+		template <class R, class C, class T1>
+		struct store_as<R (C::*)(T1)>                   {typedef void (store_as<int>::*type)() const;};
+		template <class R, class C, class T1, class T2>
+		struct store_as<R (C::*)(T1, T2)>               {typedef void (store_as<int>::*type)() const;};
+		template <class R, class C, class T1, class T2, class T3>
+		struct store_as<R (C::*)(T1, T2, T3)>           {typedef void (store_as<int>::*type)() const;};
+		template <class R, class C, class T1, class T2, class T3, class T4>
+		struct store_as<R (C::*)(T1, T2, T3, T4)>       {typedef void (store_as<int>::*type)() const;};
+		template <class R, class C, class T1, class T2, class T3, class T4, class T5>
+		struct store_as<R (C::*)(T1, T2, T3, T4, T5)>   {typedef void (store_as<int>::*type)() const;};
+		template <class R, class C, class T1, class T2, class T3, class T4, class T5,
+		                            class T6>
+		struct store_as<R (C::*)(T1, T2, T3, T4, T5,
+		                         T6)>                   {typedef void (store_as<int>::*type)() const;};
+		template <class R, class C, class T1, class T2, class T3, class T4, class T5,
+		                            class T6, class T7>
+		struct store_as<R (C::*)(T1, T2, T3, T4, T5,
+		                         T6, T7)>               {typedef void (store_as<int>::*type)() const;};
+		template <class R, class C, class T1, class T2, class T3, class T4, class T5,
+		                            class T6, class T7, class T8>
+		struct store_as<R (C::*)(T1, T2, T3, T4, T5,
+		                         T6, T7, T8)>           {typedef void (store_as<int>::*type)() const;};
+		template <class R, class C, class T1, class T2, class T3, class T4, class T5,
+		                            class T6, class T7, class T8, class T9>
+		struct store_as<R (C::*)(T1, T2, T3, T4, T5,
+		                         T6, T7, T8, T9)>       {typedef void (store_as<int>::*type)() const;};
+		template <class R, class C, class T1, class T2, class T3, class T4, class T5,
+		                            class T6, class T7, class T8, class T9, class T10>
+		struct store_as<R (C::*)(T1, T2, T3, T4, T5,
+		                         T6, T7, T8, T9, T10)>  {typedef void (store_as<int>::*type)() const;};
+
+		template <class R, class C>
+		struct store_as<R (C::*)() const>                    {typedef void (store_as<int>::*type)() const;};
+		template <class R, class C, class T1>
+		struct store_as<R (C::*)(T1) const>                  {typedef void (store_as<int>::*type)() const;};
+		template <class R, class C, class T1, class T2>
+		struct store_as<R (C::*)(T1, T2) const>              {typedef void (store_as<int>::*type)() const;};
+		template <class R, class C, class T1, class T2, class T3>
+		struct store_as<R (C::*)(T1, T2, T3) const>          {typedef void (store_as<int>::*type)() const;};
+		template <class R, class C, class T1, class T2, class T3, class T4>
+		struct store_as<R (C::*)(T1, T2, T3, T4) const>      {typedef void (store_as<int>::*type)() const;};
+		template <class R, class C, class T1, class T2, class T3, class T4, class T5>
+		struct store_as<R (C::*)(T1, T2, T3, T4, T5) const>  {typedef void (store_as<int>::*type)() const;};
+		template <class R, class C, class T1, class T2, class T3, class T4, class T5,
+		                            class T6>
+		struct store_as<R (C::*)(T1, T2, T3, T4, T5,
+		                         T6) const>                  {typedef void (store_as<int>::*type)() const;};
+		template <class R, class C, class T1, class T2, class T3, class T4, class T5,
+		                            class T6, class T7>
+		struct store_as<R (C::*)(T1, T2, T3, T4, T5,
+		                         T6, T7) const>              {typedef void (store_as<int>::*type)() const;};
+		template <class R, class C, class T1, class T2, class T3, class T4, class T5,
+		                            class T6, class T7, class T8>
+		struct store_as<R (C::*)(T1, T2, T3, T4, T5,
+		                         T6, T7, T8) const>          {typedef void (store_as<int>::*type)() const;};
+		template <class R, class C, class T1, class T2, class T3, class T4, class T5,
+		                            class T6, class T7, class T8, class T9>
+		struct store_as<R (C::*)(T1, T2, T3, T4, T5,
+		                         T6, T7, T8, T9) const>      {typedef void (store_as<int>::*type)() const;};
+		template <class R, class C, class T1, class T2, class T3, class T4, class T5,
+		                            class T6, class T7, class T8, class T9, class T10>
+		struct store_as<R (C::*)(T1, T2, T3, T4, T5,
+		                         T6, T7, T8, T9, T10) const> {typedef void (store_as<int>::*type)() const;};
+#endif  // _Inhibit_Container_Optimization
+
+namespace details
+{
+	template <class T>
+	struct class_has_trivial_default_ctor
+	{
+		static const bool value = false;  // hook
+	};
+
+	template <class T>
+	struct class_has_trivial_copy_ctor
+	{
+	#if __MWERKS__ >= 0x3100
+		static const bool value = __builtin_trivial_members(T) & 0x4;
+	#else
+		static const bool value = false;  // hook
+	#endif
+	};
+
+	template <class T>
+	struct class_has_trivial_assignment
+	{
+	#if __MWERKS__ >= 0x3100
+		static const bool value = __builtin_trivial_members(T) & 0x2;
+	#else
+		static const bool value = false;  // hook
+	#endif
+	};
+
+	template <class T>
+	struct class_has_trivial_dtor
+	{
+	#if __MWERKS__ >= 0x3100
+		static const bool value = __builtin_trivial_members(T) & 0x1;
+	#else
+		static const bool value = false;  // hook
+	#endif
+	};
+}
+
+template <class T>
+struct has_trivial_default_ctor
+{
+	typedef typename remove_all_bounds<T>::type RB;
+	static const bool value = is_scalar<RB>::value
+	                       || is_union<RB>::value
+	                       || (is_class<RB>::value
+	                          && details::class_has_trivial_default_ctor<RB>::value);
+};
+
+template <class T>
+struct has_trivial_copy_ctor
+{
+	static const bool value = is_scalar<T>::value
+	                       || is_union<T>::value
+	                       || (is_class<T>::value
+	                          && details::class_has_trivial_copy_ctor<T>::value);
+};
+
+template <class T>
+struct has_trivial_assignment
+{
+	static const bool value = !is_const<T>::value
+	                       && (is_scalar<T>::value
+	                       || is_union<T>::value
+	                       || (is_class<T>::value
+	                          && details::class_has_trivial_assignment<T>::value));
+};
+
+template <class T>
+struct has_trivial_dtor
+{
+	typedef typename remove_all_bounds<T>::type RB;
+	static const bool value = is_scalar<RB>::value
+	                       || is_union<RB>::value
+	                       || is_reference<RB>::value
+	                       || (is_class<RB>::value
+	                          && details::class_has_trivial_dtor<RB>::value);
+};
+
+template <class T>
+struct is_POD
+{
+	static const bool value = has_trivial_default_ctor<T>::value
+	                       && has_trivial_copy_ctor<T>::value
+	                       && has_trivial_assignment<T>::value
+	                       && has_trivial_dtor<T>::value;
+};
+
+// can_derive_from
+
+template <class T>
+struct can_derive_from
+{
+	static const bool value = is_class<T>::value;
+};
+
+// is_empty
+
+namespace details {
+
+	template <class T, bool b = is_class<T>::value>
+	struct is_empty1
+		: T
+	{
+		double d_;
+		is_empty1();
+	};
+
+	template <class T>
+	struct is_empty1<T, false>
+	{
+		T      t_;
+		double d_;
+		is_empty1();
+	};
+
+	struct is_empty2
+	{
+		double d_;
+	};
+
+} // details
+
+template <class T>
+struct is_empty
+{
+	static const bool value = sizeof(details::is_empty1<T>) == sizeof(details::is_empty2);
+};
+
+template <class T>
+struct is_zero_default_contructible
+{
+private:
+	typedef typename remove_all_bounds<T>::type tmp;
+public:
+	static const bool value = is_scalar<tmp>::value || is_empty<tmp>::value;
+};
+
+template <class T>
+struct has_trivial_dtor_after_move_ctor
+{
+	static const bool value = has_trivial_dtor<T>::value;
+};
+
+template <class T>
+struct has_trivial_move_ctor
+{
+	static const bool value = is_scalar<typename remove_all_bounds<T>::type>::value;
+};
+
+template <class T>
+struct move_with_swap
+{
+	static const bool value = false;
+};
+
+template <class T>
+struct has_nothrow_constructor
+{
+	static const bool value = is_zero_default_contructible<T>::value;
+};
+
+// array_size
+
+template <class T> struct array_size;
+
+template <class T, _CSTD::size_t N>
+struct array_size<T[N]>
+{
+	static const _CSTD::size_t value = N;
+};
+
+namespace details
+{
+	template <class T, bool PassByValue, bool IsReference, bool IsArray>
+	struct ct_imp
+	{
+		typedef T               value_type;
+		typedef T&              reference;
+		typedef const T&        const_reference;
+		typedef const_reference param_type;
+	};
+
+	template <class T>
+	struct ct_imp<T, true, false, false>
+	{
+		typedef T          value_type;
+		typedef T&         reference;
+		typedef const T&   const_reference;
+		typedef T const    param_type;
+	};
+
+	template <class T>
+	struct ct_imp<T, false, true, false>
+	{
+		typedef typename remove_reference<T>::type value_type;
+		typedef T                                  reference;
+		typedef const T                            const_reference;
+		typedef reference                          param_type;
+	};
+
+	template <class T>
+	struct ct_imp<T, false, false, true>
+	{
+		typedef typename remove_bounds<T>::type const* value_type;
+		typedef T&                                     reference;
+		typedef const T&                               const_reference;
+		typedef const value_type                       param_type;
+	};
+}
+
+template <class T>
+struct call_traits
+{
+private:
+	static const bool PassByValue = has_trivial_copy_ctor<T>::value
+	                             && sizeof(T) <= sizeof(void*) && !is_array<T>::value
+		                         || is_arithmetic<T>::value;
+	static const bool IsReference = is_reference<T>::value;
+	static const bool IsArray     = is_array<T>::value;
+	typedef typename details::ct_imp<T, PassByValue, IsReference, IsArray> imp;
+public:
+	typedef typename imp::value_type      value_type;
+	typedef typename imp::reference       reference;
+	typedef typename imp::const_reference const_reference;
+	typedef typename imp::param_type      param_type;
+};
+
+// compressed_pair
+
+#ifdef _MSL_MOVE
+
+namespace details
+{
+
+	template <class T1, class T2,
+	          bool IsSame      = is_same<typename remove_cv<T1>::type,
+	                                     typename remove_cv<T2>::type>::value,
+	          bool FirstEmpty  = is_empty<T1>::value,
+	          bool SecondEmpty = is_empty<T2>::value>
+	struct compressed_pair_switch;
+
+	template <class T1, class T2>
+	struct compressed_pair_switch<T1, T2, false, true, true>
+		{static const int value = 3;};
+
+	template <class T1, class T2>
+	struct compressed_pair_switch<T1, T2, true, true, true>
+		{static const int value = 1;};
+
+	template <class T1, class T2, bool IsSame>
+	struct compressed_pair_switch<T1, T2, IsSame, true, false>
+		{static const int value = 1;};
+
+	template <class T1, class T2, bool IsSame>
+	struct compressed_pair_switch<T1, T2, IsSame, false, true>
+		{static const int value = 2;};
+
+	template <class T1, class T2, bool IsSame>
+	struct compressed_pair_switch<T1, T2, IsSame, false, false>
+		{static const int value = 0;};
+
+	template <class T1, class T2, int Version> class compressed_pair_imp;
+
+	// 0    derive from neither
+
+	template <class T1, class T2>
+	class compressed_pair_imp<T1, T2, 0>
+	{
+	public:
+		typedef T1                                                 first_type;
+		typedef T2                                                 second_type;
+
+		compressed_pair_imp() {}
+
+		template<class U, class V>
+			compressed_pair_imp(U&& x, V&& y)
+				: first_(static_cast<U&&>(x)), second_(static_cast<V&&>(y)) {}
+
+		explicit compressed_pair_imp(const first_type& x)
+			: first_(x) {}
+		explicit compressed_pair_imp(first_type&& x)
+			: first_(static_cast<first_type&&>(x)) {}
+
+		explicit compressed_pair_imp(const second_type& y)
+			: second_(y) {}
+		explicit compressed_pair_imp(second_type&& y)
+			: second_(static_cast<second_type&&>(y)) {}
+
+		template<class U, class V>
+			compressed_pair_imp(const compressed_pair_imp<U, V, 0>& p) : first_(p.first()), second_(p.second()) {}
+		template<class U, class V>
+			compressed_pair_imp(compressed_pair_imp<U, V, 0>&& p)
+				: first_(static_cast<first_type&&>(p.first())),
+				  second_(static_cast<second_type&&>(p.second())) {}
+
+		compressed_pair_imp(compressed_pair_imp&& p)
+			: first_(static_cast<first_type&&>(p.first())), second_(static_cast<second_type&&>(p.second())) {}
+
+		compressed_pair_imp(const compressed_pair_imp& p) : first_(p.first()), second_(p.second()) {}
+
+		compressed_pair_imp& operator=(compressed_pair_imp&& p)
+			{first_ = static_cast<first_type&&>(p.first());
+			 second_ = static_cast<second_type&&>(p.second());
+			 return *this;}
+
+		first_type&       first()       {return first_;}
+		const first_type& first() const {return first_;}
+
+		second_type&       second()       {return second_;}
+		const second_type& second() const {return second_;}
+
+		void swap(compressed_pair_imp& y)
+		{
+			using _STD::swap;
+			swap(first_, y.first_);
+			swap(second_, y.second_);
+		}
+	private:
+		first_type first_;
+		second_type second_;
+	};
+
+	// 1    derive from T1
+
+	template <class T1, class T2>
+	class compressed_pair_imp<T1, T2, 1>
+		: private T1
+	{
+	public:
+		typedef T1                                                 first_type;
+		typedef T2                                                 second_type;
+
+		compressed_pair_imp() {}
+
+		template<class U, class V>
+			compressed_pair_imp(U&& x, V&& y)
+				: first_type(static_cast<U&&>(x)), second_(static_cast<V&&>(y)) {}
+
+		explicit compressed_pair_imp(const first_type& x)
+			: first_type(x) {}
+		explicit compressed_pair_imp(first_type&& x)
+			: first_type(static_cast<first_type&&>(x)) {}
+
+		explicit compressed_pair_imp(const second_type& y)
+			: second_(y) {}
+		explicit compressed_pair_imp(second_type&& y)
+			: second_(static_cast<second_type&&>(y)) {}
+
+		template<class U, class V>
+			compressed_pair_imp(const compressed_pair_imp<U, V, 1>& p) : first_type(p.first()), second_(p.second()) {}
+		template<class U, class V>
+			compressed_pair_imp(compressed_pair_imp<U, V, 1>&& p)
+				: first_type(static_cast<first_type&&>(p.first())),
+				  second_(static_cast<second_type&&>(p.second())) {}
+
+		compressed_pair_imp(compressed_pair_imp&& p)
+			: first_type(static_cast<first_type&&>(p.first())), second_(static_cast<second_type&&>(p.second())) {}
+
+		compressed_pair_imp(const compressed_pair_imp& p) : first_type(p.first()), second_(p.second()) {}
+
+		compressed_pair_imp& operator=(compressed_pair_imp&& p)
+			{first_type::operator=(static_cast<first_type&&>(p.first()));
+			 second_ = static_cast<second_type&&>(p.second());
+			 return *this;}
+
+		first_type&       first()       {return *this;}
+		const first_type& first() const {return *this;}
+
+		second_type&       second()       {return second_;}
+		const second_type& second() const {return second_;}
+
+		void swap(compressed_pair_imp& y)
+		{
+			using _STD::swap;
+			swap(second_, y.second_);
+		}
+	private:
+		second_type second_;
+	};
+
+	// 2    derive from T2
+
+	template <class T1, class T2>
+	class compressed_pair_imp<T1, T2, 2>
+		: private T2
+	{
+	public:
+		typedef T1                                                 first_type;
+		typedef T2                                                 second_type;
+
+		compressed_pair_imp() {}
+
+		template<class U, class V>
+			compressed_pair_imp(U&& x, V&& y)
+				: second_type(static_cast<V&&>(y)), first_(static_cast<U&&>(x)) {}
+
+		explicit compressed_pair_imp(const first_type& x)
+			: first_(x) {}
+		explicit compressed_pair_imp(first_type&& x)
+			: first_(static_cast<first_type&&>(x)) {}
+
+		explicit compressed_pair_imp(const second_type& y)
+			: second_type(y) {}
+		explicit compressed_pair_imp(second_type&& y)
+			: second_type(static_cast<second_type&&>(y)) {}
+
+		template<class U, class V>
+			compressed_pair_imp(const compressed_pair_imp<U, V, 2>& p) : second_type(p.second()), first_(p.first()) {}
+		template<class U, class V>
+			compressed_pair_imp(compressed_pair_imp<U, V, 2>&& p)
+				: second_type(static_cast<second_type&&>(p.second())),
+				  first_(static_cast<first_type&&>(p.first())) {}
+
+		compressed_pair_imp(compressed_pair_imp&& p)
+			: second_type(static_cast<second_type&&>(p.second())),
+			  first_(static_cast<first_type&&>(p.first())) {}
+
+		compressed_pair_imp(const compressed_pair_imp& p) : second_type(p.second()), first_(p.first()) {}
+
+		compressed_pair_imp& operator=(compressed_pair_imp&& p)
+			{second_type::operator=(static_cast<second_type&&>(p.second()));
+			 first_ = static_cast<first_type&&>(p.first());
+			 return *this;}
+
+		first_type&       first()       {return first_;}
+		const first_type& first() const {return first_;}
+
+		second_type&       second()       {return *this;}
+		const second_type& second() const {return *this;}
+
+		void swap(compressed_pair_imp& y)
+		{
+			using _STD::swap;
+			swap(first_, y.first_);
+		}
+	private:
+		first_type first_;
+	};
+
+	// 3    derive from T1 and T2
+
+	template <class T1, class T2>
+	class compressed_pair_imp<T1, T2, 3>
+		: private T1,
+		  private T2
+	{
+	public:
+		typedef T1                                                 first_type;
+		typedef T2                                                 second_type;
+		compressed_pair_imp() {}
+
+		template<class U, class V>
+			compressed_pair_imp(U&& x, V&& y)
+				: first_type(static_cast<U&&>(x)), second_type(static_cast<V&&>(y)) {}
+
+		explicit compressed_pair_imp(const first_type& x)
+			: first_type(x) {}
+		explicit compressed_pair_imp(first_type&& x)
+			: first_type(static_cast<first_type&&>(x)) {}
+
+		explicit compressed_pair_imp(const second_type& y)
+			: second_type(y) {}
+		explicit compressed_pair_imp(second_type&& y)
+			: second_type(static_cast<second_type&&>(y)) {}
+
+		template<class U, class V>
+			compressed_pair_imp(const compressed_pair_imp<U, V, 3>& p) : first_type(p.first()), second_type(p.second()) {}
+		template<class U, class V>
+			compressed_pair_imp(compressed_pair_imp<U, V, 3>&& p)
+				: first_type(static_cast<first_type&&>(p.first())),
+				  second_type(static_cast<second_type&&>(p.second())) {}
+
+		compressed_pair_imp(compressed_pair_imp&& p)
+			: first_type(static_cast<first_type&&>(p.first())), second_type(static_cast<second_type&&>(p.second())) {}
+
+		compressed_pair_imp(const compressed_pair_imp& p) : first_type(p.first()), second_type(p.second()) {}
+
+		compressed_pair_imp& operator=(compressed_pair_imp&& p)
+			{first_type::operator = (static_cast<first_type&&>(p.first()));
+			 second_type::operator = (static_cast<second_type&&>(p.second()));
+			 return *this;}
+
+		first_type&       first()       {return *this;}
+		const first_type& first() const {return *this;}
+
+		second_type&       second()       {return *this;}
+		const second_type& second() const {return *this;}
+
+		void swap(compressed_pair_imp&) {}
+	};
+
+}  // details
+
+template <class T1, class T2>
+class compressed_pair
+	: private details::compressed_pair_imp<T1, T2,
+	          details::compressed_pair_switch<T1, T2>::value>
+{
+private:
+	typedef details::compressed_pair_imp<T1, T2,
+	        details::compressed_pair_switch<T1, T2>::value> base;
+public:
+	typedef T1                                                 first_type;
+	typedef T2                                                 second_type;
+
+	         compressed_pair() {}
+	template<class U, class V>
+		compressed_pair(U&& x, V&& y)
+			: base(static_cast<U&&>(x), static_cast<V&&>(y)) {}
+	explicit compressed_pair(const first_type& x) : base(x) {}
+	explicit compressed_pair(first_type&& x) : base(static_cast<first_type&&>(x)) {}
+	explicit compressed_pair(const second_type& y) : base(y) {}
+	explicit compressed_pair(second_type&& y) : base(static_cast<second_type&&>(y)) {}
+
+	template<class U, class V>
+		compressed_pair(const compressed_pair<U, V>& p) : base(p.first(), p.second()) {}
+	template<class U, class V>
+		compressed_pair(compressed_pair<U, V>&& p)
+			: base(static_cast<first_type&&>(p.first()), static_cast<second_type&&>(p.second())) {}
+
+	compressed_pair(compressed_pair&& p) : base(static_cast<base&&>(p)) {}
+	compressed_pair(const compressed_pair& p) : base(p) {}
+
+	compressed_pair& operator=(compressed_pair&& p)
+		{base::operator=(static_cast<base&&>(p)); return *this;}
+
+	using base::first;
+	using base::second;
+
+	void swap(compressed_pair&& x) {base::swap(x);}
+};
+
+#else  // _MSL_MOVE
+
+namespace details
+{
+
+	template <class T1, class T2,
+	          bool IsSame      = is_same<typename remove_cv<T1>::type,
+	                                     typename remove_cv<T2>::type>::value,
+	          bool FirstEmpty  = is_empty<T1>::value,
+	          bool SecondEmpty = is_empty<T2>::value>
+	struct compressed_pair_switch;
+
+	template <class T1, class T2>
+	struct compressed_pair_switch<T1, T2, false, true, true>
+		{static const int value = 3;};
+
+	template <class T1, class T2>
+	struct compressed_pair_switch<T1, T2, true, true, true>
+		{static const int value = 1;};
+
+	template <class T1, class T2, bool IsSame>
+	struct compressed_pair_switch<T1, T2, IsSame, true, false>
+		{static const int value = 1;};
+
+	template <class T1, class T2, bool IsSame>
+	struct compressed_pair_switch<T1, T2, IsSame, false, true>
+		{static const int value = 2;};
+
+	template <class T1, class T2, bool IsSame>
+	struct compressed_pair_switch<T1, T2, IsSame, false, false>
+		{static const int value = 0;};
+
+	template <class T1, class T2, int Version> class compressed_pair_imp;
+
+	// 0    derive from neither
+
+	template <class T1, class T2>
+	class compressed_pair_imp<T1, T2, 0>
+	{
+	public:
+		typedef T1                                                 first_type;
+		typedef T2                                                 second_type;
+		typedef typename call_traits<first_type>::param_type       first_param_type;
+		typedef typename call_traits<second_type>::param_type      second_param_type;
+		typedef typename call_traits<first_type>::reference        first_reference;
+		typedef typename call_traits<second_type>::reference       second_reference;
+		typedef typename call_traits<first_type>::const_reference  first_const_reference;
+		typedef typename call_traits<second_type>::const_reference second_const_reference;
+
+		compressed_pair_imp() {}
+
+		compressed_pair_imp(first_param_type x, second_param_type y)
+			: first_(x), second_(y) {}
+
+		explicit compressed_pair_imp(first_param_type x)
+			: first_(x) {}
+
+		explicit compressed_pair_imp(second_param_type y)
+			: second_(y) {}
+
+		first_reference       first()       {return first_;}
+		first_const_reference first() const {return first_;}
+
+		second_reference       second()       {return second_;}
+		second_const_reference second() const {return second_;}
+
+		void swap(compressed_pair_imp& y)
+		{
+			using _STD::swap;
+			swap(first_, y.first_);
+			swap(second_, y.second_);
+		}
+	private:
+		first_type first_;
+		second_type second_;
+	};
+
+	// 1    derive from T1
+
+	template <class T1, class T2>
+	class compressed_pair_imp<T1, T2, 1>
+		: private T1
+	{
+	public:
+		typedef T1                                                 first_type;
+		typedef T2                                                 second_type;
+		typedef typename call_traits<first_type>::param_type       first_param_type;
+		typedef typename call_traits<second_type>::param_type      second_param_type;
+		typedef typename call_traits<first_type>::reference        first_reference;
+		typedef typename call_traits<second_type>::reference       second_reference;
+		typedef typename call_traits<first_type>::const_reference  first_const_reference;
+		typedef typename call_traits<second_type>::const_reference second_const_reference;
+
+		compressed_pair_imp() {}
+
+		compressed_pair_imp(first_param_type x, second_param_type y)
+			: first_type(x), second_(y) {}
+
+		explicit compressed_pair_imp(first_param_type x)
+			: first_type(x) {}
+
+		explicit compressed_pair_imp(second_param_type y)
+			: second_(y) {}
+
+		first_reference       first()       {return *this;}
+		first_const_reference first() const {return *this;}
+
+		second_reference       second()       {return second_;}
+		second_const_reference second() const {return second_;}
+
+		void swap(compressed_pair_imp& y)
+		{
+			using _STD::swap;
+			swap(second_, y.second_);
+		}
+	private:
+		second_type second_;
+	};
+
+	// 2    derive from T2
+
+	template <class T1, class T2>
+	class compressed_pair_imp<T1, T2, 2>
+		: private T2
+	{
+	public:
+		typedef T1                                                 first_type;
+		typedef T2                                                 second_type;
+		typedef typename call_traits<first_type>::param_type       first_param_type;
+		typedef typename call_traits<second_type>::param_type      second_param_type;
+		typedef typename call_traits<first_type>::reference        first_reference;
+		typedef typename call_traits<second_type>::reference       second_reference;
+		typedef typename call_traits<first_type>::const_reference  first_const_reference;
+		typedef typename call_traits<second_type>::const_reference second_const_reference;
+
+		compressed_pair_imp() {}
+
+		compressed_pair_imp(first_param_type x, second_param_type y)
+			: second_type(y), first_(x) {}
+
+		explicit compressed_pair_imp(first_param_type x)
+			: first_(x) {}
+
+		explicit compressed_pair_imp(second_param_type y)
+			: second_type(y) {}
+
+		first_reference       first()       {return first_;}
+		first_const_reference first() const {return first_;}
+
+		second_reference       second()       {return *this;}
+		second_const_reference second() const {return *this;}
+
+		void swap(compressed_pair_imp& y)
+		{
+			using _STD::swap;
+			swap(first_, y.first_);
+		}
+	private:
+		first_type first_;
+	};
+
+	// 3    derive from T1 and T2
+
+	template <class T1, class T2>
+	class compressed_pair_imp<T1, T2, 3>
+		: private T1,
+		  private T2
+	{
+	public:
+		typedef T1                                                 first_type;
+		typedef T2                                                 second_type;
+		typedef typename call_traits<first_type>::param_type       first_param_type;
+		typedef typename call_traits<second_type>::param_type      second_param_type;
+		typedef typename call_traits<first_type>::reference        first_reference;
+		typedef typename call_traits<second_type>::reference       second_reference;
+		typedef typename call_traits<first_type>::const_reference  first_const_reference;
+		typedef typename call_traits<second_type>::const_reference second_const_reference;
+
+		compressed_pair_imp() {}
+
+		compressed_pair_imp(first_param_type x, second_param_type y)
+			: first_type(x), second_type(y) {}
+
+		explicit compressed_pair_imp(first_param_type x)
+			: first_type(x) {}
+
+		explicit compressed_pair_imp(second_param_type y)
+			: second_type(y) {}
+
+		first_reference       first()       {return *this;}
+		first_const_reference first() const {return *this;}
+
+		second_reference       second()       {return *this;}
+		second_const_reference second() const {return *this;}
+
+		void swap(compressed_pair_imp&) {}
+	};
+
+}  // details
+
+template <class T1, class T2>
+class compressed_pair
+	: private details::compressed_pair_imp<T1, T2,
+	          details::compressed_pair_switch<T1, T2>::value>
+{
+private:
+	typedef details::compressed_pair_imp<T1, T2,
+	        details::compressed_pair_switch<T1, T2>::value> base;
+public:
+	typedef T1                                                 first_type;
+	typedef T2                                                 second_type;
+	typedef typename call_traits<first_type>::param_type       first_param_type;
+	typedef typename call_traits<second_type>::param_type      second_param_type;
+	typedef typename call_traits<first_type>::reference        first_reference;
+	typedef typename call_traits<second_type>::reference       second_reference;
+	typedef typename call_traits<first_type>::const_reference  first_const_reference;
+	typedef typename call_traits<second_type>::const_reference second_const_reference;
+
+	         compressed_pair() {}
+	         compressed_pair(first_param_type x, second_param_type y) : base(x, y) {}
+	explicit compressed_pair(first_param_type x) : base(x) {}
+	explicit compressed_pair(second_param_type y) : base(y) {}
+	template<class U, class V>
+		compressed_pair(const compressed_pair<U, V>& p) : base(p.first(), p.second()) {}
+
+	using base::first;
+	using base::second;
+
+	void swap(compressed_pair& x) {base::swap(x);}
+};
+
+#endif  // _MSL_MOVE
+
+template <class T1, class T2>
+inline
+void
+swap(compressed_pair<T1, T2>& x, compressed_pair<T1, T2>& y)
+{
+	x.swap(y);
+}
+
+// number
+
+template <class Size, Size sz>
+struct number
+{
+	operator Size() const {return sz;}
+};
+
+// deleter's
+
+template <class T>
+struct single_deleter
+{
+	typedef _CSTD::size_t    size_type;
+	typedef _CSTD::ptrdiff_t difference_type;
+	typedef T*               pointer;
+	typedef const T*         const_pointer;
+	typedef T&               reference;
+	typedef const T&         const_reference;
+
+	template <class U> struct rebind { typedef single_deleter<U> other; };
+
+	single_deleter() {}
+	template <class U> single_deleter(const single_deleter<U>&) {}
+	void deallocate(pointer p, size_type) {delete p;}
+};
+
+template <class T>
+struct array_deleter
+{
+	typedef _CSTD::size_t    size_type;
+	typedef _CSTD::ptrdiff_t difference_type;
+	typedef T*               pointer;
+	typedef const T*         const_pointer;
+	typedef T&               reference;
+	typedef const T&         const_reference;
+
+	template <class U> struct rebind { typedef array_deleter<T> other; };
+
+	void deallocate(pointer p, size_type) {delete [] p;}
+};
+
+// alloc_ptr
+
+template<class T, class Allocator = single_deleter<T>,
+	class Size = number<typename call_traits<Allocator>::value_type::size_type, 1> >
+	class alloc_ptr;
+
+template <class T, class Allocator, class Size>
+struct alloc_ptr_ref
+{
+	typedef typename call_traits<Allocator>::value_type      allocator_type;
+	typedef typename call_traits<Allocator>::param_type      allocator_param_type;
+	typedef typename call_traits<Allocator>::reference       allocator_reference;
+	typedef typename call_traits<Allocator>::const_reference allocator_const_reference;
+	typedef typename allocator_type::size_type               size_type;
+	typedef typename allocator_type::difference_type         difference_type;
+	typedef typename allocator_type::pointer                 pointer;
+	typedef typename allocator_type::const_pointer           const_pointer;
+	typedef typename allocator_type::reference               reference;
+	typedef typename allocator_type::const_reference         const_reference;
+private:
+	typedef compressed_pair<Size, pointer> inner_pair;
+public:
+	alloc_ptr_ref(pointer p, allocator_param_type alloc, Size sz)
+		: ptr_(alloc, inner_pair(sz, p)) {}
+
+	pointer             release()   {return ptr_.second().second();}
+	allocator_reference allocator() {return ptr_.first();}
+	Size&               get_size()  {return ptr_.second().first();}
+private:
+	compressed_pair<Allocator, compressed_pair<Size, pointer> > ptr_;
+};
+
+template<class T, class Allocator, class Size>
+class alloc_ptr
+{
+public:
+	typedef T element_type;
+
+	typedef typename call_traits<Allocator>::value_type      allocator_type;
+	typedef typename call_traits<Allocator>::param_type      allocator_param_type;
+	typedef typename call_traits<Allocator>::reference       allocator_reference;
+	typedef typename call_traits<Allocator>::const_reference allocator_const_reference;
+	typedef typename allocator_type::size_type               size_type;
+	typedef typename allocator_type::difference_type         difference_type;
+	typedef typename allocator_type::pointer                 pointer;
+	typedef typename allocator_type::const_pointer           const_pointer;
+	typedef typename allocator_type::reference               reference;
+	typedef typename allocator_type::const_reference         const_reference;
+private:
+	typedef compressed_pair<Size, pointer> inner_pair;
+public:
+
+	explicit alloc_ptr(pointer p = 0)
+		: ptr_(allocator_type(), inner_pair(Size(), p)) {}
+	alloc_ptr(pointer p, allocator_param_type alloc, Size sz = Size())
+		: ptr_(alloc, inner_pair(sz, p)) {}
+	alloc_ptr(alloc_ptr& x) : ptr_(x.ptr_) {x.release();}
+	template<class U>
+		alloc_ptr(alloc_ptr<U, typename allocator_type::rebind<U>::other, Size>& x)
+			: ptr_(allocator_type(x.allocator()), inner_pair(x.get_size(), x.release())) {}
+
+	~alloc_ptr() {if (get() != 0) allocator().deallocate(get(), capacity());}
+	alloc_ptr& operator =(alloc_ptr& x) {reset(x.release(), x.get_size()); return *this;}
+	template<class U>
+		alloc_ptr& operator=(alloc_ptr<U, typename allocator_type::rebind<U>::other, Size>& x)
+			{reset(x.release(), x.get_size()); return *this;}
+
+	reference operator*() const {return *get();}
+	pointer operator->() const {return get();}
+	reference operator[](size_type n) {return *(get() + n);}
+	const_reference operator[](size_type n) const {return *(get() + n);}
+	pointer get() const {return ptr_.second().second();}
+	pointer release() {pointer p = get(); ptr_.second().second() = 0; return p;}
+
+	void reset(pointer p = 0)
+	{
+		if (get() != p)
+		{
+			if (get())
+				allocator().deallocate(get(), capacity());
+			ptr_.second().second() = p;
+		}
+	}
+
+	void reset(pointer p, Size size)
+	{
+		if (get() != p)
+		{
+			if (get())
+				allocator().deallocate(get(), capacity());
+			ptr_.second().second() = p;
+			ptr_.second().first() = size;
+		}
+	}
+
+	alloc_ptr(alloc_ptr_ref<T, Allocator, Size> r)
+		: ptr_(r.allocator(), inner_pair(r.get_size(), r.release())) {}
+	alloc_ptr& operator=(alloc_ptr_ref<T, Allocator, Size> r)
+		{reset(r.release(), r.get_size()); return *this;}
+#if !defined(__MWERKS__) || __MWERKS__ >= 0x2400
+	template<class U> operator alloc_ptr_ref<U, typename allocator_type::rebind<U>::other, Size>()
+		{return alloc_ptr_ref<U, typename allocator_type::rebind<U>::other, Size>(release(),
+		                                                            allocator(),
+		                                                            get_size());}
+	template<class U> operator alloc_ptr<U, typename allocator_type::rebind<U>::other, Size>()
+		{return alloc_ptr<U, typename allocator_type::rebind<U>::other, Size>(release(),
+			allocator(), get_size());}
+#endif  // !defined(__MWERKS__) || __MWERKS__ >= 0x2400
+	allocator_reference       allocator()       {return ptr_.first();}
+	allocator_const_reference allocator() const {return ptr_.first();}
+
+	Size&      get_size()       {return ptr_.second().first();}
+	size_type  capacity() const {return static_cast<size_type>(ptr_.second().first());}
+
+	void swap(alloc_ptr& y) {ptr_.swap(y.ptr_);}
+private:
+	compressed_pair<Allocator, compressed_pair<Size, pointer> > ptr_;
+};
+
+template<class T, class Allocator, class Size>
+inline
+void
+swap(alloc_ptr<T, Allocator, Size>& x, alloc_ptr<T, Allocator, Size>& y)
+{
+	x.swap(y);
+}
+
+// Needed because of the destructive copy constructor
+template<class T, class Allocator, class Size>
+struct call_traits<alloc_ptr<T, Allocator, Size> >
+{
+	typedef alloc_ptr<T, Allocator, Size>        value_type;
+	typedef alloc_ptr<T, Allocator, Size>&       reference;
+	typedef const alloc_ptr<T, Allocator, Size>& const_reference;
+	typedef value_type                           param_type;
+};
+
+template <class Allocator>
+class scoped_obj
+{
+public:
+	typedef Allocator allocator_type;
+	typedef typename allocator_type::value_type value_type;
+	typedef typename allocator_type::pointer pointer;
+#ifdef _MSL_MOVE
+	template <class V>
+	scoped_obj(allocator_type& a, pointer ptr, V&& x)
+		: a_(a), ptr_(ptr), owns_(true) { a_.construct(ptr, static_cast<V&&>(x)); }
+#else  // _MSL_MOVE
+	scoped_obj(allocator_type& a, pointer ptr, const value_type& x)
+		: a_(a), ptr_(ptr), owns_(true) { a_.construct(ptr, x); }
+#endif  // _MSL_MOVE
+	~scoped_obj()
+		{ if (owns_) a_.destroy(ptr_); }
+	void release() throw()
+		{ owns_ = false; }
+private:
+	allocator_type& a_;
+	pointer ptr_;
+	bool owns_;
+
+	scoped_obj(const scoped_obj&);
+	scoped_obj& operator=(const scoped_obj&);
+};
+
+template <class T>
+inline
+T*
+addressof(T& v)
+{
+	return (T*)(&(char&)(v));
+}
+
+template <class T, unsigned V>
+struct version_type
+{
+    typedef T type;
+    static const unsigned value = V;
+
+    version_type(const version_type<T, 0>&);
+};
+
+#ifndef __GNUC__
+
+template <class T>
+struct has_version
+{
+private:
+    struct two {char x; char y;};
+    template <class U> static two  test(...);
+    template <class U> static char test(typename U::version*);
+public:
+    static const bool value = sizeof(test<T>(0)) == 1;
+};
+
+#else  // __GNUC__
+
+template <class T>
+struct has_version
+{
+    static const bool value = false;
+};
+
+#endif  // __GNUC__
+
+// version extraction
+
+namespace detail
+{
+
+template <class T, bool isConvertible = is_convertible
+                                        <
+                                            version_type<T, 0>,
+                                            typename T::version
+                                        >::value>
+struct version_helper
+{
+    static const unsigned value = T::version::value;
+};
+
+template <class T>
+struct version_helper<T, false>
+{
+    static const unsigned value = 1;
+};
+
+template <class T, bool HasVersion = has_version<T>::value>
+struct version
+{
+    static const unsigned value = version_helper<T>::value;
+};
+
+template <class T>
+struct version<T, false>
+{
+    static const unsigned value = 1;
+};
+
+}  // detail
+
+template <class T>
+struct version
+{
+    static const unsigned value = detail::version<typename remove_reference<T>::type>::value;
+};
+
+template <class T>
+struct decay
+{
+private:
+	typedef typename remove_reference<T>::type rT;
+public:
+	typedef typename select
+	<
+		is_array<rT>::value,
+		typename remove_all_bounds<rT>::type*,
+		typename select
+		<
+			is_function<rT>::value,
+			rT*,
+			typename remove_cv<rT>::type
+		>::type
+	>::type type;
+};
+
+class msl_settings;
+
+_MSL_IMP_EXP_CPP bool operator==(const msl_settings& x, const msl_settings& y);
+
+class msl_settings
+{
+public:
+	msl_settings()
+	{
+	#ifdef _MSL_NO_LOCALE
+		data_[0] = 1;
+	#else
+		data_[0] = 0;
+	#endif
+
+	#ifdef _MSL_SINGLE_THREAD
+		data_[1] = 1;
+	#else
+		data_[1] = 0;
+	#endif
+
+	#ifdef _MSL_NO_EXCEPTIONS
+		data_[2] = 1;
+	#else
+		data_[2] = 0;
+	#endif
+
+	#ifdef _MSL_NO_WCHART_CPP_SUPPORT
+		data_[3] = 1;
+	#else
+		data_[3] = 0;
+	#endif
+
+	#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+		data_[4] = 1;
+	#else
+		data_[4] = 0;
+	#endif
+
+	#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+		data_[5] = 1;
+	#else
+		data_[5] = 0;
+	#endif
+
+	#ifdef _MSL_DEBUG
+		data_[6] = 1;
+	#else
+		data_[6] = 0;
+	#endif
+
+	#ifdef _MSL_USING_MSL_C
+		data_[7] = 1;
+	#else
+		data_[7] = 0;
+	#endif
+
+	#ifdef _MSL_EXTENDED_PRECISION_OUTP
+		data_[8] = 1;
+	#else
+		data_[8] = 0;
+	#endif
+
+	#ifdef _Inhibit_Container_Optimization
+		data_[9] = 1;
+	#else
+		data_[9] = 0;
+	#endif
+
+	#ifdef _MSL_RAW_ITERATORS
+		data_[10] = 1;
+	#else
+		data_[10] = 0;
+	#endif
+
+	#ifdef _MSL_NO_IO
+		data_[11] = 1;
+	#else
+		data_[11] = 0;
+	#endif
+
+	#ifdef _MSL_NO_CONSOLE_IO
+		data_[12] = 1;
+	#else
+		data_[12] = 0;
+	#endif
+
+	data_[13] = _MSL_LL_FILE_SUPPORT;
+
+	#ifdef _MSL_NO_FLOATING_POINT
+		data_[14] = 1;
+	#else
+		data_[14] = 0;
+	#endif
+
+	#ifdef _MSL_SHARED_PTR_HAS_MUTEX
+		data_[15] = 1;
+	#else
+		data_[15] = 0;
+	#endif
+
+	#ifdef _MSL_NO_RTTI
+		data_[16] = 1;
+	#else
+		data_[16] = 0;
+	#endif
+
+	}
+private:
+	signed char data_[17];
+
+	friend bool operator==(const msl_settings& x, const msl_settings& y);
+};
+
+_MSL_IMP_EXP_CPP bool (check)(const msl_settings& t);
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	} // namespace Metrowerks
+#endif
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+namespace std {
+#endif
+
+template <class T>
+struct identity
+{
+	typedef T type;
+	const T& operator()( const T& x ) const { return x; }
+};
+
+#ifdef _MSL_MOVE
+
+template <class T>
+inline
+typename Metrowerks::remove_reference<T>::type&&
+move(T&& p)
+{
+	return p;
+}
+
+template <class T>
+inline
+T&&
+forward(typename identity<T>::type&& p)
+{
+	return p;
+}
+
+#else  // _MSL_MOVE
+
+template <class T, class U, class R = void>
+struct enable_if_same {};
+
+template <class T, class R>
+struct enable_if_same<T, T, R> {typedef R type;};
+
+template <class T>
+struct rvalue_ref
+{
+	explicit rvalue_ref(T& ptr) : p(&ptr) {}
+	T* p;
+};
+
+template <class T> struct is_rvalue_ref {static const bool value = false;};
+template <class T>
+struct is_rvalue_ref<rvalue_ref<T> > {static const bool value = true;};
+
+
+template <class T>
+inline
+typename Metrowerks::restrict_to
+<
+	Metrowerks::is_convertible<T, rvalue_ref<T> >::value &&
+	!is_rvalue_ref<T>::value,
+	rvalue_ref<T>
+>::type
+move(T& r)
+{
+	return rvalue_ref<T>(r);
+}
+
+template <class T>
+inline
+typename Metrowerks::restrict_to
+<
+	!Metrowerks::is_convertible<T, rvalue_ref<T> >::value &&
+	!is_rvalue_ref<T>::value,
+	typename Metrowerks::remove_reference<T>::type&
+>::type
+move(T& p)
+{
+	return p;
+}
+
+template <class T>
+inline
+typename Metrowerks::restrict_to
+<
+	!Metrowerks::is_convertible<T, rvalue_ref<T> >::value &&
+	!is_rvalue_ref<T>::value,
+	const typename Metrowerks::remove_reference<T>::type&
+>::type
+move(const T& p)
+{
+	return p;
+}
+
+template <class T>
+inline
+T&
+forward(typename identity<T>::type& p)
+{
+	return p;
+}
+
+#endif  // _MSL_MOVE
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	} // namespace std
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#pragma enumsalwaysint reset
+#endif
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#pragma bool reset
+#endif
+
+#ifdef __MWERKS__
+#pragma options align=reset
+#endif
+
+#endif // RC_INVOKED
+
+#endif // _MSL_UTILITY
+
+// hh 991201 Created
+// hh 001011 forward declared std::swap (for compressed_pair)
+// hh 001011 alternative (better?) implementation of call_traits for gcc
+// hh 001011 Fixed several typename bugs in alloc_ptr
+// hh 010402 Removed 68K CMF support
+// hh 010727 Installed _No_Floating_Point
+// hh 030213 Installed check(const msl_settings& t), 0x8603
+// JWW 030224 Changed __MSL_LONGLONG_SUPPORT__ flag into the new more configurable _MSL_LONGLONG
+// hh 030527 Added traits for pseudo move semantics
+// hh 030617 Remaped bool in the store_as map based on sizeof(bool)
+// hh 030711 Added _not to workaround weak restric_to support in gcc
+// hh 030909 Added void specializations to add_reference (can't form a reference to void)
+// hh 031202 Added Metrowerks::version utility
+// hh 031204 Added _MSL_NO_RTTI to msl_settings
+// hh 040217 Changed _No_Floating_Point to _MSL_NO_FLOATING_POINT

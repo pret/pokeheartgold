@@ -1,0 +1,282 @@
+{
+  "key": 19215,
+  "messages": [
+    {
+      "id": "msg_0384_R34_00000",
+      "garbage": 26
+    },
+    {
+      "id": "msg_0384_R34_00001",
+      "garbage": 4
+    },
+    {
+      "id": "msg_0384_R34_00002",
+      "garbage": 48
+    },
+    {
+      "id": "msg_0384_R34_00003",
+      "garbage": 25
+    },
+    {
+      "id": "msg_0384_R34_00004",
+      "garbage": 21
+    },
+    {
+      "id": "msg_0384_R34_00005",
+      "garbage": 29
+    },
+    {
+      "id": "msg_0384_R34_00006",
+      "garbage": 34
+    },
+    {
+      "id": "msg_0384_R34_00007",
+      "garbage": 13
+    },
+    {
+      "id": "msg_0384_R34_00008",
+      "garbage": 29
+    },
+    {
+      "id": "msg_0384_R34_00009",
+      "garbage": 36
+    },
+    {
+      "id": "msg_0384_R34_00010",
+      "garbage": 15
+    },
+    {
+      "id": "msg_0384_R34_00011",
+      "garbage": 26
+    },
+    {
+      "id": "msg_0384_R34_00012",
+      "garbage": 42
+    },
+    {
+      "id": "msg_0384_R34_00013",
+      "garbage": 11
+    },
+    {
+      "id": "msg_0384_R34_00014",
+      "garbage": 43
+    },
+    {
+      "id": "msg_0384_R34_00015",
+      "garbage": 19
+    },
+    {
+      "id": "msg_0384_R34_00016",
+      "garbage": 32
+    },
+    {
+      "id": "msg_0384_R34_00017",
+      "garbage": 46
+    },
+    {
+      "id": "msg_0384_R34_00018",
+      "en_US": "I’m on patrol for suspicious individuals."
+    },
+    {
+      "id": "msg_0384_R34_00019",
+      "en_US": "Irene: Who are you?!\r"
+    },
+    {
+      "id": "msg_0384_R34_00020",
+      "garbage": 15
+    },
+    {
+      "id": "msg_0384_R34_00021",
+      "en_US": "Irene: I’ll tell my sister about you!\r"
+    },
+    {
+      "id": "msg_0384_R34_00022",
+      "en_US": "Irene: I’ll tell my sister about you!"
+    },
+    {
+      "id": "msg_0384_R34_00023",
+      "en_US": [
+        "Irene: How did you find this place?\f",
+        "This is our hideout!"
+      ]
+    },
+    {
+      "id": "msg_0384_R34_00024",
+      "en_US": [
+        "Jenn: What the...?\n",
+        "What are you doing?\r"
+      ]
+    },
+    {
+      "id": "msg_0384_R34_00025",
+      "garbage": 21
+    },
+    {
+      "id": "msg_0384_R34_00026",
+      "en_US": [
+        "Jenn: Better not laugh yet.\n",
+        "My sister is really strong!"
+      ]
+    },
+    {
+      "id": "msg_0384_R34_00027",
+      "en_US": [
+        "Jenn: You and us... We might as well\n",
+        "become friends!"
+      ]
+    },
+    {
+      "id": "msg_0384_R34_00028",
+      "en_US": [
+        "Kate: I must pay you back for taking\n",
+        "care of my sisters!\r"
+      ]
+    },
+    {
+      "id": "msg_0384_R34_00029",
+      "garbage": 18
+    },
+    {
+      "id": "msg_0384_R34_00030",
+      "en_US": [
+        "Kate: You are so strong.\n",
+        "We lost with no excuses...\r",
+        "Here, take this!\r"
+      ]
+    },
+    {
+      "id": "msg_0384_R34_00031",
+      "garbage": 27
+    },
+    {
+      "id": "msg_0384_R34_00032",
+      "en_US": [
+        "Kate: I’m sorry we jumped you.\r",
+        "We never expected anyone to find \n",
+        "us here.\f",
+        "You sure startled us."
+      ]
+    },
+    {
+      "id": "msg_0384_R34_00033",
+      "en_US": [
+        "Rt. 34\n",
+        "South to Azalea Town"
+      ]
+    },
+    {
+      "id": "msg_0384_R34_00034",
+      "en_US": [
+        "Trainer Tips\r",
+        "North to Goldenrod City\n",
+        "The Radio Tower at Goldenrod is giving\f",
+        "away Radio Cards.\r",
+        "Answer their questions and receive a\n",
+        "Radio Card!"
+      ]
+    },
+    {
+      "id": "msg_0384_R34_00035",
+      "en_US": [
+        "Pokémon Day Care\n",
+        "Let us raise your Pokémon for you!"
+      ]
+    },
+    {
+      "id": "msg_0384_R34_00036",
+      "en_US": "Lyra: Grandpa!\r"
+    },
+    {
+      "id": "msg_0384_R34_00037",
+      "en_US": [
+        "Lyra: Good work, Grandpa!\n",
+        "The Pokémon you raised for me has\f",
+        "been as healthy as can be!\r",
+        "You look fit, too!\r"
+      ]
+    },
+    {
+      "id": "msg_0384_R34_00038",
+      "en_US": "Lyra: Hi, {STRVAR_1 3, 0, 0}!\r"
+    },
+    {
+      "id": "msg_0384_R34_00039",
+      "en_US": [
+        "Let me introduce you.\n",
+        "This is {STRVAR_1 3, 0, 0}. He’s a Trainer.\r",
+        "He seems to be getting better at\n",
+        "raising Pokémon.\r",
+        "Well, not as good as you, Grandpa,\n",
+        "of course!\r"
+      ]
+    },
+    {
+      "id": "msg_0384_R34_00040",
+      "en_US": "Follow me, {STRVAR_1 3, 0, 0}!\r"
+    },
+    {
+      "id": "msg_0384_R34_00041",
+      "en_US": "Ethan: Grandpa!\r"
+    },
+    {
+      "id": "msg_0384_R34_00042",
+      "en_US": [
+        "Ethan: Good work, Grandpa!\n",
+        "The Pokémon you raised for me has\f",
+        "been as healthy as can be!\r",
+        "You look fit, too!\r"
+      ]
+    },
+    {
+      "id": "msg_0384_R34_00043",
+      "en_US": "Ethan: Hey, {STRVAR_1 3, 0, 0}!\r"
+    },
+    {
+      "id": "msg_0384_R34_00044",
+      "en_US": [
+        "Let me introduce you.\n",
+        "This is {STRVAR_1 3, 0, 0}. She’s a Trainer.\r",
+        "She seems to be getting better at\n",
+        "raising Pokémon.\r",
+        "Well, not as good as you, Grandpa,\n",
+        "of course!\r"
+      ]
+    },
+    {
+      "id": "msg_0384_R34_00045",
+      "en_US": "Follow me, {STRVAR_1 3, 0, 0}!\r"
+    },
+    {
+      "id": "msg_0384_R34_00046",
+      "en_US": [
+        "I have an idea!\n",
+        "I’ll give you our numbers.\r",
+        "Then you can check on the Pokémon\n",
+        "we raise for you.\r"
+      ]
+    },
+    {
+      "id": "msg_0384_R34_00047",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} registered the\n",
+        "Day-Care Man in the Pokégear!"
+      ]
+    },
+    {
+      "id": "msg_0384_R34_00048",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} registered the\n",
+        "Day-Care Lady in the Pokégear!"
+      ]
+    },
+    {
+      "id": "msg_0384_R34_00049",
+      "en_US": [
+        "Call us from time to time when you\n",
+        "give us your Pokémon to raise.\r",
+        "I’ll be happy to have a use for this\n",
+        "Pokégear my grandchild gave me.\r"
+      ]
+    }
+  ]
+}

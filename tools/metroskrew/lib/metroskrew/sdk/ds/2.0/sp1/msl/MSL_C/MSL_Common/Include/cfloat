@@ -1,0 +1,249 @@
+/* MSL
+ * Copyright © 1995-2006 Freescale Corporation.  All rights reserved.
+ *
+ * $Date: 2006/02/08 20:32:24 $
+ * $Revision: 1.47.2.2 $
+ */
+
+#ifndef _MSL_CFLOAT
+#define _MSL_CFLOAT
+
+#include <ansi_parms.h>
+
+#if !_MSL_USING_MW_C_HEADERS
+	#include <float.h>
+#else
+
+#include <msl_t.h>
+
+#if _MSL_FLOATING_POINT
+
+#ifndef RC_INVOKED
+
+#define DECIMAL_DIG 17
+
+/* 	FLT_EVAL_METHOD represents the internal precision and range of
+	operations using the float and double types.  For method 0,
+	operations are performed just to the precision/range of the 
+	given floating point type.  For method 1, float and double
+	operations are performed in double precision/range, and long
+	double operations are performed in long double precision/range.  
+	For method 2, all floating operations are performed in long
+	double precision/range.  Method -1 is indeterminable, which I take
+	to mean inconsistent, given the specific code compiled. */	
+
+#ifndef _MSL_FLT_EVAL_METHOD
+	#error _MSL_FLT_EVAL_METHOD must be defined in the ansi_prefix.xxx.h
+#else
+	#define FLT_EVAL_METHOD _MSL_FLT_EVAL_METHOD
+#endif
+
+/*** Defaults ***/
+
+#ifndef _MSL_FLOAT_SIZE
+	#define _MSL_FLOAT_SIZE 32
+#endif
+
+#ifndef _MSL_DOUBLE_SIZE
+	#define _MSL_DOUBLE_SIZE 64
+#endif
+
+#ifndef _MSL_LONG_DOUBLE_SIZE
+	#define _MSL_LONG_DOUBLE_SIZE 64
+#endif
+
+/*** end Defaults ***/
+
+#if !_MSL_FLOAT_HEX
+
+_MSL_BEGIN_EXTERN_C	
+
+	extern _MSL_IMP_EXP_C _INT32 __float_min[], __float_max[], __float_epsilon[]; 
+	extern _MSL_IMP_EXP_C _INT32 __double_min[], __double_max[], __double_epsilon[]; 
+	extern _MSL_IMP_EXP_C _INT32 __extended_min[],__extended_max[],__extended_epsilon[];
+
+_MSL_END_EXTERN_C
+
+#endif
+
+#define FLT_ROUNDS					1  /* see fenv.h for changing rounding modes intel/mac only */
+#define FLT_RADIX					2
+
+#if _MSL_FLOAT_SIZE == 32
+
+	#define FLT_MANT_DIG         24
+	#define FLT_DIG               6
+	#define FLT_MIN_EXP      (-125)
+	#define FLT_MIN_10_EXP    (-37)
+	#define FLT_MAX_EXP         128
+	#define FLT_MAX_10_EXP       38
+#if _MSL_FLOAT_HEX
+	#define FLT_MAX       0x1.fffffeP127F
+	#define FLT_EPSILON   0x1.000000P-23F
+	#define FLT_MIN       0x1.000000P-126F
+#endif
+
+#else
+
+	#error unsupported size for float in <cfloat>
+
+#endif
+
+#if !_MSL_FLOAT_HEX
+
+	#define FLT_MAX             (* (float *) __float_max)
+	#define FLT_EPSILON         (* (float *) __float_epsilon)
+	#define FLT_MIN             (* (float *) __float_min)
+
+#endif
+
+#if _MSL_DOUBLE_SIZE == 32
+
+	#define DBL_MANT_DIG          24
+	#define DBL_DIG                6
+	#define DBL_MIN_EXP       (-125)
+	#define DBL_MIN_10_EXP     (-37)
+	#define DBL_MAX_EXP          128
+	#define DBL_MAX_10_EXP        38
+#if _MSL_FLOAT_HEX
+	#define DBL_MAX       0x1.fffffeP127
+	#define DBL_EPSILON   0x1.000000P-23
+	#define DBL_MIN       0x1.000000P-126
+#endif
+
+#elif _MSL_DOUBLE_SIZE == 64
+
+	#define DBL_MANT_DIG          53
+	#define DBL_DIG               15
+	#define DBL_MIN_EXP      (-1021)
+	#define DBL_MIN_10_EXP    (-308)
+	#define DBL_MAX_EXP         1024
+	#define DBL_MAX_10_EXP       308
+#if _MSL_FLOAT_HEX
+	#define DBL_MAX       0x1.fffffffffffffP1023
+	#define DBL_EPSILON   0x1.0000000000000P-52
+	#define DBL_MIN       0x1.0000000000000P-1022
+#endif
+
+#elif _MSL_DOUBLE_SIZE == 80 || _MSL_DOUBLE_SIZE == 96
+
+	#define DBL_MANT_DIG          64
+	#define DBL_DIG               18
+	#define DBL_MIN_EXP     (-16381)
+	#define DBL_MIN_10_EXP   (-4931)
+	#define DBL_MAX_EXP        16384
+	#define DBL_MAX_10_EXP      4932
+#if _MSL_FLOAT_HEX
+	#define DBL_MAX       0x1.fffffffffffffffeP16383
+	#define DBL_EPSILON   0x1.0000000000000000P-63
+	#define DBL_MIN       0x1.0000000000000000P-16382
+#endif
+
+#else
+
+	#error unsupported size for double in <cfloat>
+
+#endif
+
+#if !_MSL_FLOAT_HEX
+
+	#define DBL_MAX                (* (double *) __double_max)
+	#define DBL_EPSILON            (* (double *) __double_epsilon)
+	#define DBL_MIN                (* (double *) __double_min)
+
+#endif
+
+#if _MSL_LONG_DOUBLE_SIZE == 32
+
+	#define LDBL_MANT_DIG          24
+	#define LDBL_DIG                6
+	#define LDBL_MIN_EXP       (-125)
+	#define LDBL_MIN_10_EXP     (-37)
+	#define LDBL_MAX_EXP          128
+	#define LDBL_MAX_10_EXP        38
+#if _MSL_FLOAT_HEX
+	#define LDBL_MAX       0x1.fffffeP127L
+	#define LDBL_EPSILON   0x1.000000P-23L
+	#define LDBL_MIN       0x1.000000P-126L
+#endif
+
+#elif _MSL_LONG_DOUBLE_SIZE == 64
+
+	#define LDBL_MANT_DIG          53
+	#define LDBL_DIG               15
+	#define LDBL_MIN_EXP      (-1021)
+	#define LDBL_MIN_10_EXP    (-308)
+	#define LDBL_MAX_EXP         1024
+	#define LDBL_MAX_10_EXP       308
+#if _MSL_FLOAT_HEX
+	#define LDBL_MAX       0x1.fffffffffffffP1023L
+	#define LDBL_EPSILON   0x1.0000000000000P-52L
+	#define LDBL_MIN       0x1.0000000000000P-1022L
+#endif
+
+#elif _MSL_LONG_DOUBLE_SIZE == 80 || _MSL_LONG_DOUBLE_SIZE == 96
+
+	#define LDBL_MANT_DIG          64
+	#define LDBL_DIG               18
+	#define LDBL_MIN_EXP     (-16381)
+	#define LDBL_MIN_10_EXP   (-4931)
+	#define LDBL_MAX_EXP        16384
+	#define LDBL_MAX_10_EXP      4932
+#if _MSL_FLOAT_HEX
+	#define LDBL_MAX       0x1.fffffffffffffffeP16383L
+	#define LDBL_EPSILON   0x1.0000000000000000P-63L
+	#define LDBL_MIN       0x1.0000000000000000P-16382L
+#endif
+
+#else
+
+	#error unsupported size for long double in <cfloat>
+
+#endif
+
+#if !_MSL_FLOAT_HEX
+
+	#define LDBL_MAX              (* (long double *) __extended_max)
+	#define LDBL_EPSILON          (* (long double *) __extended_epsilon)
+	#define LDBL_MIN              (* (long double *) __extended_min)
+
+#endif
+
+#endif /* RC_INVOKED */
+
+#if (defined(__INTEL__) && __dest_os == __win32_os)
+	#include <float.win32.h>
+#elif defined(__arm)
+    #include <float.ARM.h>
+#endif
+
+#endif /* _MSL_FLOATING_POINT */
+
+#endif /* _MSL_USING_MW_C_HEADERS */
+
+#endif /* _MSL_CFLOAT */
+
+/* Change record:
+ * KO  961212 Added __extern_c wrapper to accomodate new x86 name mangling.
+ * SCM 970723 Wrapped entire file in #ifndef _No_Floating_Point
+ * mf  970801 this header is now as platform independent as possible, for
+ *            details on the platform dependent macros __double_max, etc... 
+ *            see the source file float.c in the MSL C common sources.
+ * hh  971206 minor namespace fixups.
+ * hh  971230 added RC_INVOKED wrapper
+ * rjk 980313 added_MSL_IMP_EXP macro
+ * mm  981014 Added target specific settings for DSP56800 and wrapper for _No_Floating_Point
+ * mm  981028 Changed __DSP568 wrappers to __m56800__ wrappers
+ * vss 990218 Added extern to incomplete types for MRC and gcc
+ * vss 990727 changed <cmath> to <msl_t.h>
+ * hh  000126 Added FLT_RADIX to __m56800__.
+ * JWW 001208 Added case for targeting Mach-O
+ * cc  010405 removed pragma options align native and reset			  
+ * cc  010409 updated to JWW new namespace macros 	
+ * hh  011015 Rewrite
+ * JWW 011027 Use _MSL_USING_MW_C_HEADERS as generic header test instead of specific Mach-O test
+ * cc  011211 Moved platform configurations to prefix files
+ * bn  030425 Include ARM-specific header <float.ARM.h>
+ * cc  030808 Changed _MSL_NO_FLOAT_HEX to _MSL_FLOAT_HEX and turned it on
+ * cc  040217 Changed _No_Floating_Point to _MSL_FLOATING_POINT
+ */

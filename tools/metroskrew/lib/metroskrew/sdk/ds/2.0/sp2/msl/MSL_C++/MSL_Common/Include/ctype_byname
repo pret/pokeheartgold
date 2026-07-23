@@ -1,0 +1,445 @@
+/* MSL
+ * Copyright © 1995-2006 Freescale Corporation.  All rights reserved.
+ *
+ * $Date: 2006/02/09 16:58:14 $
+ * $Revision: 1.23.2.2 $
+ */
+
+// ctype_byname
+
+#ifndef _CTYPE_BYNAME
+#define _CTYPE_BYNAME
+
+#include <mslconfig>
+
+#ifndef _MSL_NO_IO
+
+#include <ctype>
+#include <cstdlib>
+#include <cstring>
+#include <fstream>
+#include <msl_int_limits>
+
+#ifndef RC_INVOKED
+
+#ifdef __MWERKS__
+#pragma options align=native
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#if _MSL_FORCE_ENUMS_ALWAYS_INT
+		#pragma enumsalwaysint on
+	#else
+		#pragma enumsalwaysint off
+	#endif
+#endif  // _MSL_FORCE_ENUMS_ALWAYS_INT
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#if _MSL_FORCE_ENABLE_BOOL_SUPPORT
+		#pragma bool on
+	#else
+		#pragma bool off
+	#endif
+#endif  // _MSL_FORCE_ENABLE_BOOL_SUPPORT
+
+#ifdef min
+#undef min
+#endif
+
+#ifdef max
+#undef max
+#endif
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	namespace std {
+#endif
+
+#ifndef _MSL_NO_LOCALE
+
+template <class charT, class traits, class T, class U>
+void
+__read_ctype_entry(basic_istream<charT, traits>& infile, Metrowerks::range_map<T, U>& ctype_table, const string* code_names, const ctype<char>& ct)
+{
+	charT syntax;
+	infile >> syntax;
+	if (infile.fail() || syntax != '[')
+	#ifndef _MSL_NO_EXCEPTIONS
+		throw runtime_error("syntax error reading ctype table");
+	#else
+		__msl_error("syntax error reading ctype table");
+	#endif
+	T x1, x2;
+	bool was_quoted;
+	__read_formatted_char(infile, x1, was_quoted);
+	infile >> syntax;
+	if (syntax == ']')
+		x2 = x1;
+	else if (syntax != '-')
+	#ifndef _MSL_NO_EXCEPTIONS
+		throw runtime_error("syntax error reading ctype table");
+	#else
+		__msl_error("syntax error reading ctype table");
+	#endif
+	else
+	{
+		__read_formatted_char(infile, x2, was_quoted);
+		infile >> syntax;
+		if (syntax != ']')
+		#ifndef _MSL_NO_EXCEPTIONS
+			throw runtime_error("syntax error reading ctype table");
+		#else
+			__msl_error("syntax error reading ctype table");
+		#endif
+	}
+	infile >> syntax;
+	if (syntax != '=')
+	#ifndef _MSL_NO_EXCEPTIONS
+		throw runtime_error("syntax error reading ctype table");
+	#else
+		__msl_error("syntax error reading ctype table");
+	#endif
+	ios_base::iostate err = ios_base::goodbit;
+	istreambuf_iterator<char> in(infile), end;
+	U y = U();
+	while (true)
+	{
+		ws(infile);
+		const string* i = __parse_a_word(in, end, code_names, code_names+11, ct, err);
+		if (err)
+			infile.setstate(err);
+		if (infile.fail() || i == code_names+11)
+		#ifndef _MSL_NO_EXCEPTIONS
+			throw runtime_error("syntax error reading ctype table");
+		#else
+			__msl_error("syntax error reading ctype table");
+		#endif
+		y |= static_cast<U>(U(1) << (i-code_names));
+		ws(infile);
+		if (infile.peek() != '|')
+			break;
+		infile >> syntax;
+	}
+	ctype_table.insert(x1, x2, y);
+}
+
+template <class charT, class traits, class T, class U>
+void
+__read_case_entry(basic_istream<charT, traits>& infile, Metrowerks::range_map<T, U>& case_table)
+{
+	charT syntax;
+	infile >> syntax;
+	if (infile.fail() || syntax != '[')
+	#ifndef _MSL_NO_EXCEPTIONS
+		throw runtime_error("syntax error reading case table");
+	#else
+		__msl_error("syntax error reading case table");
+	#endif
+	T x1, x2;
+	bool was_quoted;
+	__read_formatted_char(infile, x1, was_quoted);
+	infile >> syntax;
+	if (syntax == ']')
+		x2 = x1;
+	else if (syntax != '-')
+	#ifndef _MSL_NO_EXCEPTIONS
+		throw runtime_error("syntax error reading case table");
+	#else
+		__msl_error("syntax error reading case table");
+	#endif
+	else
+	{
+		__read_formatted_char(infile, x2, was_quoted);
+		infile >> syntax;
+		if (syntax != ']')
+		#ifndef _MSL_NO_EXCEPTIONS
+			throw runtime_error("syntax error reading case table");
+		#else
+			__msl_error("syntax error reading case table");
+		#endif
+	}
+	infile >> syntax;
+	if (syntax != '=')
+	#ifndef _MSL_NO_EXCEPTIONS
+		throw runtime_error("syntax error reading case table");
+	#else
+		__msl_error("syntax error reading case table");
+	#endif
+	U y1, y2;
+	__read_formatted_char(infile, y1, was_quoted);
+	if (infile.fail())
+	#ifndef _MSL_NO_EXCEPTIONS
+		throw runtime_error("syntax error reading case table");
+	#else
+		__msl_error("syntax error reading case table");
+	#endif
+	ws(infile);
+	if (infile.peek() == '-')
+	{
+		infile >> syntax;
+		__read_formatted_char(infile, y2, was_quoted);
+		if (infile.fail())
+		#ifndef _MSL_NO_EXCEPTIONS
+			throw runtime_error("syntax error reading case table");
+		#else
+			__msl_error("syntax error reading case table");
+		#endif
+	}
+	else
+		y2 = y1;
+	case_table.insert(x1, x2, y1, y2);
+}
+
+template <class charT>
+void
+__ctype_byname_init(const char* std_name, const string& ctype_marker,
+	Metrowerks::range_map<charT, ctype_base::mask>& ctype_table,
+	Metrowerks::range_map<charT, charT>& lower_table,
+	Metrowerks::range_map<charT, charT>& upper_table)
+{
+	if (std_name == 0)
+	#ifndef _MSL_NO_EXCEPTIONS
+		throw runtime_error("ctype_byname constructed with null name");
+	#else
+		__msl_error("ctype_byname constructed with null name");
+	#endif
+	if (strlen(std_name) == 0)
+		std_name = getenv("MSL_DEFAULT_LOCALE");
+	if (std_name != 0 && strcmp(std_name, "C") != 0)
+	{
+	#ifndef _MSL_NO_FILE_IO
+		ifstream infile(std_name, ios::binary);
+		if (!infile.is_open())
+		#ifndef _MSL_NO_EXCEPTIONS
+			throw runtime_error(string("ctype_byname constructed with unsupported name: ") + std_name);
+		#else
+			__msl_error("ctype_byname constructed with unsupported name");
+		#endif
+		string word;
+		bool success = true;
+		while (infile.good())
+		{
+			infile.ignore(numeric_limits<streamsize>::max(), '$');
+			infile >> word;
+			if (infile.fail())
+				break;
+			if (word == ctype_marker)
+			{
+				bool ctype_first_entry = true;
+				bool lower_first_entry = true;
+				bool upper_first_entry = true;
+				success = false;
+				string table_names[3];
+				table_names[0] = "ctype";
+				table_names[1] = "lower";
+				table_names[2] = "upper";
+				const string (&ctable_names)[3] = table_names;
+				string code_names[11];
+				code_names[0]  = "alpha";
+				code_names[1]  = "blank";
+				code_names[2]  = "cntrl";
+				code_names[3]  = "digit";
+				code_names[4]  = "graph";
+				code_names[5]  = "lower";
+				code_names[6]  = "print";
+				code_names[7]  = "punct";
+				code_names[8]  = "space";
+				code_names[9]  = "upper";
+				code_names[10] = "xdigit";
+				const ctype<char>& ct = _USE_FACET(ctype<char>, infile.getloc());
+				ios_base::iostate err = ios_base::goodbit;
+				istreambuf_iterator<char> in(infile), end;
+				while (true)
+				{
+					ws(infile);
+					const string* i = __parse_a_word(in, end, ctable_names, ctable_names+3, ct, err);
+					if (err)
+						infile.setstate(err);
+					if (i == ctable_names+3)
+						break;
+					switch (i-ctable_names)
+					{
+					case 0:  // ctype
+						if (ctype_first_entry)
+						{
+							ctype_first_entry = false;
+							ctype_table.clear();
+						}
+						__read_ctype_entry(infile, ctype_table, code_names, ct);
+						break;
+					case 1:  // lower
+						if (lower_first_entry)
+						{
+							lower_first_entry = false;
+							lower_table.clear();
+						}
+						__read_case_entry(infile, lower_table);
+						break;
+					case 2:  // upper
+						if (upper_first_entry)
+						{
+							upper_first_entry = false;
+							upper_table.clear();
+						}
+						__read_case_entry(infile, upper_table);
+						break;
+					}
+				}
+				success = true;
+				break;
+			}
+		}
+		if (!success)
+		#ifndef _MSL_NO_EXCEPTIONS
+			throw runtime_error(string("ctype_byname file input error: ") + std_name);
+		#else
+			__msl_error("ctype_byname file input error");
+		#endif
+	#else  // _MSL_NO_FILE_IO
+		#ifndef _MSL_NO_EXCEPTIONS
+			throw runtime_error(string("ctype_byname constructed with unsupported name: ") + std_name);
+		#else
+			__msl_error("ctype_byname constructed with unsupported name");
+		#endif
+		ctype_marker;
+		ctype_table;
+		lower_table;
+		upper_table;
+	#endif  // _MSL_NO_FILE_IO
+	}
+}
+
+template <class charT>
+class ctype_byname
+	: public ctype<charT>
+{
+public:
+	typedef typename ctype<charT>::mask mask;
+	explicit ctype_byname(const char* std_name, size_t refs = 0);
+protected:
+	virtual ~ctype_byname() {}
+};
+
+template <class charT>
+inline
+ctype_byname<charT>::ctype_byname(const char* std_name, size_t refs)
+	: ctype<charT>(refs)
+{
+	typedef ctype<charT> base;
+	__ctype_byname_init(std_name, "ctype_wide", base::__table_, base::__lower_map_,
+	                                            base::__upper_map_);
+}
+
+template <>
+class ctype_byname<char>
+	: public ctype<char>
+{
+public:
+	typedef ctype<char>::mask mask;
+	explicit ctype_byname(const char* std_name, size_t refs = 0);
+protected:
+	virtual ~ctype_byname();
+};
+
+template <bool b>
+void
+__ctype_byname_char_init(const char* std_name, const ctype_base::mask*& __table_,
+	const unsigned char*& __lower_map_, const unsigned char*& __upper_map_, bool& __owns_)
+{
+	Metrowerks::range_map<unsigned char, ctype_base::mask> ctype_table;
+	ctype_table.insert('\x00', '\x08', ctype_base::cntrl);
+	ctype_table.insert('\x09',          ctype_base::cntrl | ctype_base::space | ctype_base::blank);
+	ctype_table.insert('\x0A', '\x0D', ctype_base::cntrl | ctype_base::space);
+	ctype_table.insert('\x0E', '\x1F', ctype_base::cntrl);
+	ctype_table.insert('\x20',          ctype_base::space | ctype_base::blank | ctype_base::print);
+	ctype_table.insert('\x21', '\x2F', ctype_base::punct | ctype_base::graph | ctype_base::print);
+	ctype_table.insert('\x30', '\x39', ctype_base::digit | ctype_base::xdigit | ctype_base::graph | ctype_base::print);
+	ctype_table.insert('\x3A', '\x40', ctype_base::punct | ctype_base::graph | ctype_base::print);
+	ctype_table.insert('\x41', '\x46', ctype_base::xdigit | ctype_base::upper | ctype_base::alpha | ctype_base::graph | ctype_base::print);
+	ctype_table.insert('\x47', '\x5A', ctype_base::upper | ctype_base::alpha | ctype_base::graph | ctype_base::print);
+	ctype_table.insert('\x5B', '\x60', ctype_base::punct | ctype_base::graph | ctype_base::print);
+	ctype_table.insert('\x61', '\x66', ctype_base::xdigit | ctype_base::lower | ctype_base::alpha | ctype_base::graph | ctype_base::print);
+	ctype_table.insert('\x67', '\x7A', ctype_base::lower | ctype_base::alpha | ctype_base::graph | ctype_base::print);
+	ctype_table.insert('\x7B', '\x7E', ctype_base::punct | ctype_base::graph | ctype_base::print);
+	ctype_table.insert('\x7F',          ctype_base::cntrl);
+	Metrowerks::range_map<unsigned char, unsigned char> lower_table;
+	lower_table.insert('\x00', (unsigned char)'\xFF', '\x00', (unsigned char)'\xFF');
+	lower_table.insert('A', 'Z', 'a', 'z');
+	Metrowerks::range_map<unsigned char, unsigned char> upper_table;
+	upper_table.insert('\x00', (unsigned char)'\xFF', '\x00', (unsigned char)'\xFF');
+	upper_table.insert('a', 'z', 'A', 'Z');
+	__ctype_byname_init(std_name, "ctype_narrow", ctype_table, lower_table, upper_table);
+	typedef Metrowerks::alloc_ptr<ctype_base::mask, Metrowerks::array_deleter<ctype_base::mask> > auto_ptr_m;
+	typedef Metrowerks::alloc_ptr<unsigned char, Metrowerks::array_deleter<unsigned char> > auto_ptr_c;
+	auto_ptr_m p1(new ctype_base::mask[__ctype_table_size]);
+	auto_ptr_c p2(new unsigned char[__ctype_table_size]);
+	auto_ptr_c p3(new unsigned char[__ctype_table_size]);
+	__table_ = p1.release();
+	__lower_map_ = p2.release();
+	__upper_map_ = p3.release();
+	__owns_ = true;
+	{
+	for (int i = 0; i < __ctype_table_size; ++i)
+		const_cast<ctype_base::mask&>(__table_[i]) = ctype_table[(unsigned char)i];
+	}
+	{
+	for (int i = 0; i < __ctype_table_size; ++i)
+		const_cast<unsigned char&>(__lower_map_[i]) = lower_table[(unsigned char)i];
+	}
+	{
+	for (int i = 0; i < __ctype_table_size; ++i)
+		const_cast<unsigned char&>(__upper_map_[i]) = upper_table[(unsigned char)i];
+	}
+}
+
+#if defined(__MWERKS__) && __MWERKS__ < 0x4000
+template<>
+#endif
+inline
+ctype_byname<char>::ctype_byname(const char* std_name, size_t refs)
+	: ctype<char>(0, false, refs)
+{
+	__ctype_byname_char_init<true>(std_name, __table_, __lower_map_, __upper_map_, __owns_);
+}
+
+#if defined(__MWERKS__) && __MWERKS__ < 0x4000
+template<>
+#endif
+inline
+ctype_byname<char>::~ctype_byname()
+{
+	if (__owns_)
+	{
+		delete [] __lower_map_;
+		delete [] __upper_map_;
+	}
+}
+
+#endif  // _MSL_NO_LOCALE
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	} // namespace std
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#pragma enumsalwaysint reset
+#endif
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#pragma bool reset
+#endif
+
+#ifdef __MWERKS__
+#pragma options align=reset
+#endif
+
+#endif // RC_INVOKED
+
+#endif  // _MSL_NO_IO
+
+#endif  // _CTYPE_BYNAME
+
+// hh 010228 Created
+// hh 010402 Removed 68K CMF support
+// hh 011006 Fixed initialization of ctype_byname<char>
+// hh 020305 Moved to a 16 bit ctype_base::mask
+// hh 030711 Protected template<> from gcc

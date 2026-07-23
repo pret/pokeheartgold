@@ -1,0 +1,2667 @@
+/* Metrowerks Standard Library
+ * Copyright © 1995-2004 Metrowerks Corporation.  All rights reserved.
+ *
+ * $Date: 2004/04/12 17:04:53 $
+ * $Revision: 1.48.2.5 $
+ */
+
+// deque
+
+#ifndef _DEQUE
+#define _DEQUE
+
+/*  deque synopsis
+
+namespace std
+{
+
+template <class T, class Allocator = allocator<T> >
+class deque
+{
+public:
+	//  types:
+	typedef typename Allocator::reference         reference;
+	typedef typename Allocator::const_reference   const_reference;
+	typedef typename Allocator::size_type         size_type;
+	typedef typename Allocator::difference_type   difference_type;
+	typedef T                                     value_type;
+	typedef Allocator                             allocator_type;
+	typedef typename Allocator::pointer           pointer;
+	typedef typename Allocator::const_pointer     const_pointer;
+
+	class                                         iterator;        // random access
+	class                                         const_iterator;  // random access
+	typedef std::reverse_iterator<iterator>       reverse_iterator;
+	typedef std::reverse_iterator<const_iterator> const_reverse_iterator;
+
+	explicit deque(const Allocator& = Allocator());
+	explicit deque(size_type n, const T& value = T(), const Allocator& = Allocator());
+	template <class InputIterator>
+		deque(InputIterator first, InputIterator last, const Allocator& = Allocator());
+	deque(const deque& x);
+	~deque();
+	deque& operator=(const deque& x);
+
+	allocator_type get_allocator() const;
+	size_type max_size() const;
+
+	size_type size() const;
+	bool      empty() const;
+
+	template <class InputIterator>
+		void assign(InputIterator first, InputIterator last);
+	void assign(size_type n, const T& t);
+
+	iterator               begin();
+	const_iterator         begin() const;
+	iterator               end();
+	const_iterator         end() const;
+
+	reverse_iterator       rbegin();
+	const_reverse_iterator rbegin() const;
+	reverse_iterator       rend();
+	const_reverse_iterator rend() const;
+
+	reference       operator[](size_type n);
+	const_reference operator[](size_type n) const;
+
+	reference       at(size_type n);
+	const_reference at(size_type n) const;
+
+	void resize(size_type sz, const T& c = T());
+
+	reference       front();
+	const_reference front() const;
+	reference       back();
+	const_reference back() const;
+
+	void push_front(const T& x);
+	void push_back(const T& x);
+	void pop_front();
+	void pop_back();
+
+	iterator insert(iterator position, const T& x);
+	void     insert(iterator position, size_type n, const T& x);
+	template <class InputIterator>
+		void insert (iterator position, InputIterator first, InputIterator last);
+
+	iterator erase(iterator position);
+	iterator erase(iterator first, iterator last);
+	void     clear();
+
+	void swap(deque&);
+
+	bool invariants() const;  // Metrowerks extension
+};
+
+template <class T, class A> bool operator==(const deque<T, A>& x, const deque<T, A>& y);
+template <class T, class A> bool operator!=(const deque<T, A>& x, const deque<T, A>& y);
+template <class T, class A> bool operator< (const deque<T, A>& x, const deque<T, A>& y);
+template <class T, class A> bool operator<=(const deque<T, A>& x, const deque<T, A>& y);
+template <class T, class A> bool operator> (const deque<T, A>& x, const deque<T, A>& y);
+template <class T, class A> bool operator>=(const deque<T, A>& x, const deque<T, A>& y);
+
+template <class T, class A> void swap(deque<T, A>& x, deque<T, A>& y);
+
+}  // std
+*/
+
+#include <mslconfig>
+
+#include <iterator>
+#include <new>
+#include <memory>
+#include <algorithm>
+#include <msl_int_limits>
+#include <cdeque>
+#include <msl_utility>
+
+#ifndef RC_INVOKED
+
+#ifdef __MWERKS__
+#pragma options align=native
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#if _MSL_FORCE_ENUMS_ALWAYS_INT
+		#pragma enumsalwaysint on
+	#else
+		#pragma enumsalwaysint off
+	#endif
+#endif
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#if _MSL_FORCE_ENABLE_BOOL_SUPPORT
+		#pragma bool on
+	#else
+		#pragma bool off
+	#endif
+#endif
+
+#ifdef min
+#undef min
+#endif
+
+#ifdef max
+#undef max
+#endif
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	namespace std {
+#endif
+
+template <class T, class Allocator, bool IsPOD> class __deque_deleter;
+
+template <class T, class size_type = _CSTD::size_t>
+struct __deque_buf
+{
+	typedef T                                     value_type;
+
+	static const size_type min_buf_size_ = 8;
+	static const size_type min_foot_print_ = 512;
+	static const size_type sizeof_ = sizeof(value_type);
+	static const size_type trial_buf_size_ = sizeof_ == 0 ? min_foot_print_ / sizeof(int)
+	                                                      : min_foot_print_ / sizeof(value_type);
+	static const size_type bufsize_ = trial_buf_size_ < min_buf_size_ ? min_buf_size_ : trial_buf_size_;
+};
+
+template <class T, class Allocator>
+class __deque_deleter_common
+	: private __deque_buf<T, typename Allocator::size_type>
+{
+public:
+	// types:
+	typedef typename Allocator::reference         reference;
+	typedef typename Allocator::const_reference   const_reference;
+	typedef typename Allocator::size_type         size_type;
+	typedef typename Allocator::difference_type   difference_type;
+	typedef T                                     value_type;
+	typedef Allocator                             allocator_type;
+	typedef typename Allocator::pointer           pointer;
+	typedef typename Allocator::const_pointer     const_pointer;
+
+	typedef typename allocator_type::rebind<pointer>::other buf_allocator;
+	typedef Metrowerks::cdeque<pointer, buf_allocator> buf_type;
+
+	static const size_type bufsize_ = __deque_buf<T, size_type>::bufsize_;
+
+	template <bool is_const>
+	class generic_iterator
+	{
+		typedef typename Metrowerks::select<is_const, typename buf_type::const_iterator,
+		                                              typename buf_type::iterator>::type base_iterator;
+	public:
+		typedef typename __deque_deleter_common::value_type       value_type;
+		typedef typename __deque_deleter_common::difference_type  difference_type;
+		typedef typename Metrowerks::select<is_const, typename __deque_deleter_common::const_pointer,
+		                                              typename __deque_deleter_common::pointer>::type pointer;
+		typedef typename Metrowerks::select<is_const, typename __deque_deleter_common::const_reference,
+		                                              typename __deque_deleter_common::reference>::type reference;
+		typedef random_access_iterator_tag iterator_category;
+
+		generic_iterator() {}
+		generic_iterator(const generic_iterator<false>& i)
+			: beg_(i.beg_), cur_(i.cur_), end_(i.end_) {}
+		reference operator * () const {return *cur_;}
+		pointer operator -> () const  {return cur_;}
+		generic_iterator& operator ++ ()
+			{
+				if (++cur_ == end_)
+				{
+					cur_ = *++beg_;
+					end_ = cur_ + bufsize_;
+				}
+				return *this;
+			}
+		generic_iterator operator ++ (int) {generic_iterator tmp(*this); ++(*this); return tmp;}
+		generic_iterator& operator -- ()
+			{
+				if (static_cast<size_type>(end_ - cur_) == bufsize_)
+					cur_ = end_ = *--beg_ + bufsize_;
+				--cur_;
+				return *this;
+			}
+		generic_iterator operator -- (int) {generic_iterator tmp(*this); --(*this); return tmp;}
+		generic_iterator& operator += (difference_type n)
+			{
+				if (n != 0)
+				{
+					difference_type off = n + (cur_ - *beg_);
+					difference_type del = off >= 0 ?
+						off / (difference_type)bufsize_ :
+						-((difference_type)bufsize_ - off - 1) / (difference_type)bufsize_;
+					if (del)
+					{
+						beg_ += del;
+						cur_ = *beg_;
+						end_ = cur_ + bufsize_;
+						cur_ += off - del * bufsize_;
+					}
+					else
+						cur_ += n;
+				}
+				return *this;
+			}
+		generic_iterator operator + (difference_type n) const {return generic_iterator(*this) += n;}
+		friend generic_iterator operator + (difference_type n, const generic_iterator& rhs)
+			{return generic_iterator(rhs) += n;}
+		generic_iterator& operator -= (difference_type n) {return *this += -n;}
+		generic_iterator operator - (difference_type n) const {return generic_iterator(*this) -= n;}
+		friend difference_type operator - (const generic_iterator& x, const generic_iterator& y)
+			{return (difference_type)bufsize_ * (x.beg_ - y.beg_) - (x.end_ - x.cur_) + (y.end_ - y.cur_);}
+		reference operator [] (difference_type i) const {return *(generic_iterator(*this) += i);}
+		friend bool operator ==(const generic_iterator& x, const generic_iterator& y)
+			{return x.cur_ == y.cur_;}
+		friend bool operator !=(const generic_iterator& x, const generic_iterator& y)
+			{return x.cur_ != y.cur_;}
+		friend bool operator < (const generic_iterator& x, const generic_iterator& y)
+			{return x.beg_ == y.beg_ ? x.cur_ < y.cur_ : x.beg_ < y.beg_;}
+		friend bool operator <=(const generic_iterator& x, const generic_iterator& y)
+			{return !(y < x);}
+		friend bool operator > (const generic_iterator& x, const generic_iterator& y)
+			{return y < x;}
+		friend bool operator >=(const generic_iterator& x, const generic_iterator& y)
+			{return !(x < y);}
+
+	#ifdef _MSL_DEBUG
+		bool is_invalidated() const {return beg_.is_invalidated();}
+	#endif
+	private:
+
+#ifdef __GNUC__
+		typedef typename Metrowerks::friend_helper<generic_iterator<true>,generic_iterator>::type friend_type;
+		friend class generic_iterator::friend_type;
+#else
+		friend class generic_iterator<true>;
+#endif
+		friend class __deque_deleter_common;
+		friend class __deque_deleter<value_type, allocator_type, false>;
+		friend class __deque_deleter<value_type, allocator_type, true>;
+
+		base_iterator beg_;
+		pointer cur_;
+		pointer end_;
+
+		generic_iterator(const base_iterator& beg, pointer cur, pointer end)
+			: beg_(beg), cur_(cur), end_(end) {}
+	};
+
+	typedef generic_iterator<false> iterator;
+	typedef generic_iterator<true>  const_iterator;
+
+	__deque_deleter_common()
+		: start_(0), size_(0) {}
+	explicit __deque_deleter_common(const allocator_type& a)
+		: buf_(a, buf_type(a)), start_(0), size_(0) {}
+	~__deque_deleter_common();
+
+	allocator_type get_allocator() const {return alloc();}
+
+	iterator       make_iterator(size_type pos);
+	const_iterator make_iterator(size_type pos) const;
+
+	iterator               begin()       {return make_iterator(0);}
+	const_iterator         begin() const {return make_iterator(0);}
+	iterator               end()         {return make_iterator(size_);}
+	const_iterator         end() const   {return make_iterator(size_);}
+
+	reference       operator[](size_type n)       {n += start_; return *(buf()[n / bufsize_] + n % bufsize_);}
+	const_reference operator[](size_type n) const {n += start_; return *(buf()[n / bufsize_] + n % bufsize_);}
+	reference       at(size_type n);
+	const_reference at(size_type n) const;
+
+	size_type max_size() const
+		{static size_type const ms = (numeric_limits<size_type>::max() / bufsize_ - 1) * bufsize_;
+		return ms;}
+	size_type size() const {return size_;}
+	bool      empty() const {return size_ == 0;}
+	void swap(__deque_deleter_common& x);
+
+	reference       front()       {return *(buf()[start_ / bufsize_] + start_ % bufsize_);}
+	const_reference front() const {return *(buf()[start_ / bufsize_] + start_ % bufsize_);}
+	reference       back()        {size_type i = start_ + size_ - 1;
+	                               return *(buf()[i / bufsize_] + i % bufsize_);}
+	const_reference back() const  {size_type i = start_ + size_ - 1;
+	                               return *(buf()[i / bufsize_] + i % bufsize_);}
+
+	Metrowerks::compressed_pair<allocator_type, buf_type> buf_;
+	size_type start_;
+	size_type size_;
+
+	allocator_type&       alloc()       {return buf_.first();}
+	const allocator_type& alloc() const {return buf_.first();}
+	buf_type&             buf()         {return buf_.second();}
+	const buf_type&       buf() const   {return buf_.second();}
+
+	bool invariants(bool picky = false) const;
+
+	size_type capacity() const;
+	size_type front_spare_cap() const;
+	size_type back_spare_cap() const;
+
+	void grow_buf_front(size_type n);
+	void grow_buf_back(size_type n);
+	void init_buf();
+private:
+	__deque_deleter_common(const __deque_deleter_common&);             // not defined
+	__deque_deleter_common& operator=(const __deque_deleter_common&);  // not defined
+};
+
+template <class T, class Allocator>
+typename __deque_deleter_common<T, Allocator>::iterator
+__deque_deleter_common<T, Allocator>::make_iterator(size_type pos)
+{
+	pos += start_;
+	typename buf_type::iterator b = buf().begin() + difference_type(pos / bufsize_);
+	pointer p = buf().empty() ? 0 : *b;
+	return iterator(b, p + pos % bufsize_, p + bufsize_);
+}
+
+template <class T, class Allocator>
+typename __deque_deleter_common<T, Allocator>::const_iterator
+__deque_deleter_common<T, Allocator>::make_iterator(size_type pos) const
+{
+	pos += start_;
+	typename buf_type::const_iterator b = buf().begin() + difference_type(pos / bufsize_);
+	const_pointer p = buf().empty() ? 0 : *b;
+	return const_iterator(b, p + pos % bufsize_, p + bufsize_);
+}
+
+template <class T, class Allocator>
+inline
+void
+__deque_deleter_common<T, Allocator>::init_buf()
+{
+	buf().reserve(2);
+	buf().resize(1);
+}
+
+template <class T, class Allocator>
+__deque_deleter_common<T, Allocator>::~__deque_deleter_common()
+{
+	buf_type& b = buf();
+	if (!b.empty())
+	{
+		allocator_type& a = alloc();
+		typename buf_type::iterator e = b.end();
+		for (typename buf_type::iterator i = b.begin(); i != e; ++i)
+			if (*i)
+				a.deallocate(*i, bufsize_);
+	}
+}
+
+template <class T, class Allocator>
+typename __deque_deleter_common<T, Allocator>::reference
+__deque_deleter_common<T, Allocator>::at(size_type n)
+{
+	if (n >= size_)
+		_MSL_ERROR(out_of_range, "deque::at index out of range");
+	return (*this)[n];
+}
+
+template <class T, class Allocator>
+typename __deque_deleter_common<T, Allocator>::const_reference
+__deque_deleter_common<T, Allocator>::at(size_type n) const
+{
+	if (n >= size_)
+		_MSL_ERROR(out_of_range, "deque::at index out of range");
+	return (*this)[n];
+}
+
+template <class T, class Allocator>
+void
+__deque_deleter_common<T, Allocator>::swap(__deque_deleter_common& x)
+{
+	if (this != &x)
+	{
+		Metrowerks::swap(buf_, x.buf_);
+		_STD::swap(start_, x.start_);
+		_STD::swap(size_, x.size_);
+	}
+}
+
+template <class T, class Allocator>
+bool
+__deque_deleter_common<T, Allocator>::invariants(bool picky) const
+{
+	if (!buf().invariants())
+		return false;
+	if (!buf().empty())
+	{
+		if (buf().back() != 0)
+			return false;
+		typename buf_type::const_iterator e = buf().end();
+		--e;
+		for (typename buf_type::const_iterator i = buf().begin(); i != e; ++i)
+			if (*i == 0)
+				return false;
+	}
+	if (capacity() > 0)
+	{
+		if (start_ >= capacity())
+			return false;
+	}
+	else if (start_ != 0)
+		return false;
+	if (start_ + size_ > capacity())
+		return false;
+	if (picky)
+	{
+		if (front_spare_cap() > 2*bufsize_)
+			return false;
+		if (back_spare_cap() > 2*bufsize_)
+			return false;
+	}
+	return true;
+}
+
+template <class T, class Allocator>
+inline
+typename __deque_deleter_common<T, Allocator>::size_type
+__deque_deleter_common<T, Allocator>::capacity() const
+{
+	return buf().empty() ? 0 : (buf().size() - 1) * bufsize_;
+}
+
+template <class T, class Allocator>
+inline
+typename __deque_deleter_common<T, Allocator>::size_type
+__deque_deleter_common<T, Allocator>::front_spare_cap() const
+{
+	return start_;
+}
+
+template <class T, class Allocator>
+inline
+typename __deque_deleter_common<T, Allocator>::size_type
+__deque_deleter_common<T, Allocator>::back_spare_cap() const
+{
+	return capacity() - (start_ + size_);
+}
+
+template <class T, class Allocator>
+void
+__deque_deleter_common<T, Allocator>::grow_buf_front(size_type dn)
+{
+	buf_type& b = buf();
+	allocator_type& a = alloc();
+	size_type db = dn / bufsize_ + (dn % bufsize_ != 0);
+	//
+	//  Don't invalidate iterators unless you are sure you can get the whole job done.
+	//  Calling code must enforce strong exception safety.  Increased capacity is not
+	//  observable, but invalidated iterators are.
+	//  Iterators are invalidated when buf() reallocates.
+	//
+	while (db && back_spare_cap() >= bufsize_)
+	{
+		b.pop_back();
+		typename buf_type::value_type t = b.back();
+		b.pop_back();
+		b.push_front(t);
+		b.push_back(0);
+		start_ += bufsize_;
+		--db;
+	}
+	if (b.size() + db <= b.capacity())
+	{
+		while (db)
+		{
+			b.push_front(a.allocate(bufsize_));
+			start_ += bufsize_;
+			--db;
+		}
+	}
+	else
+	{
+		__deque_deleter_common tmp(a);
+		buf_type& tmp_buf = tmp.buf();
+		allocator_type& tmp_alloc = tmp.alloc();
+		tmp_buf.reserve(max(2*b.capacity(), b.size() + db + 1));
+		tmp_buf.push_back(0);
+		while (db)
+		{
+			tmp_buf.push_front(tmp_alloc.allocate(bufsize_));
+			--db;
+		}
+		db = tmp_buf.size() - 1;
+		if (!b.empty())
+			tmp_buf.insert(tmp_buf.end() - 1, b.begin(), b.end() - 1);
+		b.swap(tmp_buf);  // invalidates iterators
+		tmp_buf.clear();
+		start_ += db * bufsize_;
+	}
+}
+
+template <class T, class Allocator>
+void
+__deque_deleter_common<T, Allocator>::grow_buf_back(size_type dn)
+{
+	buf_type& b = buf();
+	allocator_type& a = alloc();
+	size_type db = dn / bufsize_ + (dn % bufsize_ != 0);
+	//
+	//  Don't invalidate iterators unless you are sure you can get the whole job done.
+	//  Calling code must enforce strong exception safety.  Increased capacity is not
+	//  observable, but invalidated iterators are.
+	//  Iterators are invalidated when buf() reallocates.
+	//
+	while (db && front_spare_cap() >= bufsize_)
+	{
+		typename buf_type::value_type t = b.front();
+		b.pop_front();
+		b.back() = t;
+		b.push_back(0);
+		start_ -= bufsize_;
+		--db;
+	}
+	if (b.size() + db <= b.capacity())
+	{
+		while (db)
+		{
+			b.back() = a.allocate(bufsize_);
+			b.push_back(0);
+			--db;
+		}
+	}
+	else
+	{
+		__deque_deleter_common tmp(a);
+		buf_type& tmp_buf = tmp.buf();
+		allocator_type& tmp_alloc = tmp.alloc();
+		tmp_buf.reserve(max(2*b.capacity(), b.size() + db + 1));
+		tmp_buf.push_back(0);
+		while (db)
+		{
+			tmp_buf.back() = tmp_alloc.allocate(bufsize_);
+			tmp_buf.push_back(0);
+			--db;
+		}
+		if (!b.empty())
+			tmp_buf.insert(tmp_buf.begin(), b.begin(), b.end()-1);
+		b.swap(tmp_buf);  // invalidates iterators
+		tmp_buf.clear();
+	}
+}
+
+template <class T, class Allocator, bool IsPOD> class __deque_imp;
+
+// __deque_deleter for non-PODs
+
+template <class T, class Allocator>
+class __deque_deleter<T, Allocator, false>
+	: public __deque_deleter_common<T, Allocator>
+{
+	typedef __deque_deleter_common<T, Allocator> base;
+public:
+	// types:
+	typedef typename base::reference         reference;
+	typedef typename base::const_reference   const_reference;
+	typedef typename base::size_type         size_type;
+	typedef typename base::difference_type   difference_type;
+	typedef typename base::value_type        value_type;
+	typedef typename base::allocator_type    allocator_type;
+	typedef typename base::pointer           pointer;
+	typedef typename base::const_pointer     const_pointer;
+	typedef typename base::iterator          iterator;
+	typedef typename base::const_iterator    const_iterator;
+
+	__deque_deleter() {}
+	explicit __deque_deleter(const allocator_type& a) : base(a) {}
+	~__deque_deleter();
+	void destroy(iterator first, iterator last);
+	__deque_deleter& operator=(const __deque_deleter& x)
+		{
+			if (this != &x)
+				do_assign(x.begin(), x.end(), random_access_iterator_tag());
+			return *this;
+		}
+
+	template <class InputIterator> void assign(InputIterator first, InputIterator last)
+		{choose_assign(first, last, typename Metrowerks::int2type<Metrowerks::is_integral<InputIterator>::value>());}
+	void assign(size_type n, const value_type& u);
+
+	template <class InputIterator>
+		void choose_assign(InputIterator first, InputIterator last, Metrowerks::int2type<true>)
+			{assign(static_cast<size_type>(first), static_cast<value_type>(last));}
+
+	template <class InputIterator>
+		void choose_assign(InputIterator first, InputIterator last, Metrowerks::int2type<false>)
+			{do_assign(first, last, iterator_traits<InputIterator>::iterator_category());}
+
+	void push_front(const value_type& x);
+	void push_back(const value_type& x);
+	void pop_front();
+	void pop_back();
+	void clear();
+
+	iterator insert(iterator position, const value_type& x);
+	void insert(iterator position, size_type n, const value_type& x);
+	template <class InputIterator>
+		void choose_insert(iterator position, InputIterator first, InputIterator last, Metrowerks::int2type<true>)
+			{insert(position, static_cast<size_type>(first), static_cast<value_type>(last));}
+	template <class InputIterator>
+		void choose_insert(iterator position, InputIterator first, InputIterator last, Metrowerks::int2type<false>)
+			{do_insert(position, first, last, iterator_traits<InputIterator>::iterator_category());}
+
+	iterator erase(iterator position);
+	iterator erase(iterator first, iterator last);
+
+	void resize(size_type sz);
+	void resize(size_type sz, const value_type& x);
+
+private:
+
+	__deque_deleter(const __deque_deleter&);  // not defined
+	template <class InputIterator>
+		void do_assign(InputIterator first, InputIterator last, input_iterator_tag);
+	template <class ForwardIterator>
+		void do_assign(ForwardIterator first, ForwardIterator last, forward_iterator_tag);
+
+	template <class InputIterator>
+		void do_insert(iterator position, InputIterator first, InputIterator last, input_iterator_tag);
+	template <class BidirectionalIterator>
+		void do_insert(iterator position, BidirectionalIterator first, BidirectionalIterator last, bidirectional_iterator_tag);
+};
+
+// ES: no throw
+// invalidates all iterators.
+template <class T, class Allocator>
+__deque_deleter<T, Allocator, false>::~__deque_deleter()
+{
+	destroy(base::begin(), base::end());
+}
+
+template <class T, class Allocator>
+void
+__deque_deleter<T, Allocator, false>::destroy(iterator first, iterator last)
+{
+	if (first != last)
+	{
+		size_type diff = size_type(last - first);
+		typename base::buf_type::iterator bi = first.beg_;
+		pointer p1 = first.cur_;
+		pointer p2 = p1 + min((difference_type)diff, difference_type(first.end_ - first.cur_));
+		while (true)
+		{
+			diff -= (size_type)(p2 - p1);
+			for (; p1 < p2; ++p1)
+				base::alloc().destroy(p1);
+			if (diff == 0)
+				break;
+			p1 = *++bi;
+			p2 = p1 + (difference_type)min(diff, (size_type)base::bufsize_);
+		}
+	}
+}
+
+template <class T, class Allocator>
+void
+__deque_deleter<T, Allocator, false>::assign(size_type n, const value_type& u)
+{
+	if (n > base::max_size())
+		_MSL_ERROR(length_error, "deque::assign length error");
+	destroy(base::begin(), base::end());
+	base::size_ = 0;
+	if (n > 0 && base::buf().size() == 0)
+		base::init_buf();
+	while (base::capacity() < n)
+	{
+		if (base::buf().size() == base::buf().capacity())
+			base::buf().reserve(2*base::buf().size());
+		base::buf().back() = base::alloc().allocate(base::bufsize_);
+		base::buf().push_back(0);
+	}
+	base::start_ = (base::capacity() - n) / 2;
+	while (base::front_spare_cap() >= base::bufsize_)
+	{
+		base::buf().pop_back();
+		pointer& p = base::buf().back();
+		base::alloc().deallocate(p, base::bufsize_);
+		p = 0;
+		base::start_ = (base::capacity() - n) / 2;
+	}
+	for (iterator i = base::begin(); base::size_ < n; ++i, ++base::size_)
+		base::alloc().construct(&*i, u);
+}
+
+template <class T, class Allocator>
+template <class InputIterator>
+void
+__deque_deleter<T, Allocator, false>::do_assign(InputIterator first, InputIterator last, _STD::input_iterator_tag)
+{
+	destroy(base::begin(), base::end());
+	base::start_ = 0;
+	base::size_ = 0;
+	for (; first != last; ++first)
+		push_back(*first);
+	while (base::back_spare_cap() > base::bufsize_)
+	{
+		base::buf().pop_back();
+		pointer& p = base::buf().back();
+		base::alloc().deallocate(p, base::bufsize_);
+		p = 0;
+	}
+}
+
+template <class T, class Allocator>
+template <class ForwardIterator>
+void
+__deque_deleter<T, Allocator, false>::do_assign(ForwardIterator first, ForwardIterator last, _STD::forward_iterator_tag)
+{
+	size_type n = (size_type)_STD::distance(first, last);
+	if (n > base::max_size())
+		_MSL_ERROR(length_error, "deque::assign length error");
+	destroy(base::begin(), base::end());
+	base::size_ = 0;
+	if (n > 0 && base::buf().size() == 0)
+		base::init_buf();
+	while (base::capacity() < n)
+	{
+		if (base::buf().size() == base::buf().capacity())
+			base::buf().reserve(2*base::buf().size());
+		base::buf().back() = base::alloc().allocate(base::bufsize_);
+		base::buf().push_back(0);
+	}
+	base::start_ = (base::capacity() - n) / 2;
+	while (base::front_spare_cap() >= base::bufsize_)
+	{
+		base::buf().pop_back();
+		pointer& p = base::buf().back();
+		base::alloc().deallocate(p, base::bufsize_);
+		p = 0;
+		base::start_ = (base::capacity() - n) / 2;
+	}
+	for (iterator i = base::begin(); base::size_ < n; ++i, ++base::size_, ++first)
+		base::alloc().construct(&*i, *first);
+}
+
+template <class T, class Allocator>
+void
+__deque_deleter<T, Allocator, false>::push_front(const value_type& x)
+{
+	if (base::start_ == 0)
+	{
+		if (base::size_ == base::max_size())
+			_MSL_ERROR(length_error, "deque::push_front length error");
+		base::grow_buf_front(1);
+		if (base::size_ == 0)
+			base::start_ = base::bufsize_ / 2;
+	}
+	size_type pos = base::start_ - 1;
+	base::alloc().construct(base::buf()[pos / base::bufsize_] + pos % base::bufsize_, x);
+	--base::start_;
+	++base::size_;
+}
+
+template <class T, class Allocator>
+void
+__deque_deleter<T, Allocator, false>::push_back(const value_type& x)
+{
+	size_type pos = base::start_ + base::size_;
+	if (pos == base::capacity())
+	{
+		if (base::size_ == base::max_size())
+			_MSL_ERROR(length_error, "deque::push_back length error");
+		base::grow_buf_back(1);
+		if (base::size_ == 0)
+			base::start_ = base::bufsize_ / 2;
+		pos = base::start_ + base::size_;
+	}
+	base::alloc().construct(base::buf()[pos / base::bufsize_] + pos % base::bufsize_, x);
+	++base::size_;
+}
+
+template <class T, class Allocator>
+void
+__deque_deleter<T, Allocator, false>::pop_front()
+{
+	if (base::size_ == 1)
+		clear();
+	else
+	{
+		base::alloc().destroy(&base::front());
+		--base::size_;
+		++base::start_;
+		while (base::front_spare_cap() >= 2*base::bufsize_)
+		{
+			base::alloc().deallocate(base::buf().front(), base::bufsize_);
+			base::buf().pop_front();
+			base::start_ -= base::bufsize_;
+		}
+	}
+}
+
+template <class T, class Allocator>
+void
+__deque_deleter<T, Allocator, false>::pop_back()
+{
+	if (base::size_ == 1)
+		clear();
+	else
+	{
+		base::alloc().destroy(&base::back());
+		--base::size_;
+		while (base::back_spare_cap() >= 2*base::bufsize_)
+		{
+			base::buf().pop_back();
+			pointer& p = base::buf().back();
+			base::alloc().deallocate(p, base::bufsize_);
+			p = 0;
+		}
+	}
+}
+
+template <class T, class Allocator>
+typename __deque_deleter<T, Allocator, false>::iterator
+__deque_deleter<T, Allocator, false>::insert(iterator position, const value_type& x)
+{
+	iterator b = base::begin();
+	if (position == b)
+	{
+		push_front(x);
+		return base::make_iterator(0);
+	}
+	if (position == base::end())
+	{
+		push_back(x);
+		return base::make_iterator(base::size_ - 1);
+	}
+	allocator_type& alloc = base::alloc();
+	if (base::size_ == base::max_size())
+		_MSL_ERROR(length_error, "deque::insert length error");
+	size_type pb = size_type(position - b);
+	size_type pe = base::size_ - pb;
+	const_pointer xr = &x;
+	if (pb < pe)
+	{
+		if (base::front_spare_cap() == 0)
+			base::grow_buf_front(1);
+		b = base::begin();
+		alloc.construct(&b[-1], *b);
+		--base::start_;
+		++base::size_;
+		if (pb > 1)
+		{
+			iterator first = b;
+			iterator last = b + difference_type(pb);
+			for (++first; first != last; ++first, ++b)
+			{
+				if (xr == &*b)
+					xr = &b[-1];
+				*b = *first;
+			}
+		}
+		*b = *xr;
+	}
+	else
+	{
+		if (base::back_spare_cap() == 0)
+			base::grow_buf_back(1);
+		b = base::end();
+		alloc.construct(&*b, b[-1]);
+		++base::size_;
+		if (pe > 1)
+		{
+			iterator first = b - difference_type(pe);
+			iterator last = b;
+			for (--last; first != last;)
+			{
+				--b;
+				if (xr == &*b)
+					xr = &b[1];
+				*b = *--last;
+			}
+		}
+		*--b = *xr;
+	}
+	return b;
+}
+
+template <class T, class Allocator>
+void
+__deque_deleter<T, Allocator, false>::insert(iterator position, size_type n, const value_type& x)
+{
+	switch (n)
+	{
+	case 0:
+		return;
+	case 1:
+		insert(position, x);
+		return;
+	}
+	allocator_type& alloc = base::alloc();
+	if (n > base::max_size() || base::size_ > base::max_size() - n)
+		_MSL_ERROR(length_error, "deque::insert length error");
+	iterator b = base::begin();
+	size_type pb = size_type(position - b);
+	size_type pe = base::size_ - pb;
+	const_pointer xr = &x;
+	if (pb < pe)
+	{
+		if (n > base::front_spare_cap())
+			base::grow_buf_front(n - base::front_spare_cap());
+		b = base::begin();
+		{
+		for (size_type i = pb; i < n; ++i)
+		{
+			--b;
+			alloc.construct(&*b, x);
+			--base::start_;
+			++base::size_;
+		}
+		}
+		size_type e = min(pb, n);
+		{
+		for (size_type i = 0; i < e; ++i)
+		{
+			--b;
+			alloc.construct(&*b, b[(difference_type)n]);
+			--base::start_;
+			++base::size_;
+		}
+		}
+		b += (difference_type)n;
+		if (pb > n)
+		{
+			iterator first = b + (difference_type)n;
+			iterator last = first + difference_type(pb - n);
+			for (; first != last; ++first, ++b)
+			{
+				if (xr == &*b)
+					xr = &b[-difference_type(n)];
+				*b = *first;
+			}
+		}
+		_STD::fill_n(b, e, *xr);
+	}
+	else
+	{
+		size_type back_cap = base::back_spare_cap();
+		if (n > back_cap)
+			base::grow_buf_back(n - back_cap);
+		b = base::end();
+		{
+		for (size_type i = pe; i < n; ++i, ++b)
+		{
+			alloc.construct(&*b, x);
+			++base::size_;
+		}
+		}
+		size_type e = min(pe, n);
+		{
+		for (size_type i = 0; i < e; ++i, ++b)
+		{
+			alloc.construct(&*b, b[-difference_type(n)]);
+			++base::size_;
+		}
+		}
+		b -= (difference_type)n;
+		if (pe > n)
+		{
+			iterator last = b - difference_type(n);
+			iterator first = last - difference_type(pe-n);
+			while (first != last)
+			{
+				--b;
+				if (xr == &*b)
+					xr = &b[(difference_type)n];
+				*b = *--last;
+			}
+		}
+		for (; e > 0; --e)
+			*--b = *xr;
+	}
+}
+
+template <class T, class Allocator>
+template <class InputIterator>
+void
+__deque_deleter<T, Allocator, false>::do_insert(iterator position, InputIterator first, InputIterator last, input_iterator_tag)
+{
+	__deque_deleter tmp(base::get_allocator());
+	tmp.assign(first, last);
+	do_insert(position, tmp.begin(), tmp.end(), _STD::random_access_iterator_tag());
+}
+
+template <class T, class Allocator>
+template <class BidirectionalIterator>
+void
+__deque_deleter<T, Allocator, false>::do_insert(iterator position, BidirectionalIterator first, BidirectionalIterator last, bidirectional_iterator_tag)
+{
+	size_type n = (size_type)_STD::distance(first, last);
+	switch (n)
+	{
+	case 0:
+		return;
+	case 1:
+		insert(position, *first);
+		return;
+	}
+	allocator_type& alloc = base::alloc();
+	if (n > base::max_size() || base::size_ > base::max_size() - n)
+		_MSL_ERROR(length_error, "deque::insert length error");
+	iterator b = base::begin();
+	size_type pb = size_type(position - b);
+	size_type pe = base::size_ - pb;
+	if (pb < pe)
+	{
+		if (n > base::front_spare_cap())
+			base::grow_buf_front(n - base::front_spare_cap());
+		b = base::begin();
+		if (n > pb)
+		{
+			_STD::advance(first, difference_type(n-pb));
+			BidirectionalIterator it = first;
+			for (size_type i = pb; i < n; ++i)
+			{
+				--b;
+				alloc.construct(&*b, *--it);
+				--base::start_;
+				++base::size_;
+			}
+		}
+		size_type e = min(pb, n);
+		for (size_type i = 0; i < e; ++i)
+		{
+			--b;
+			alloc.construct(&*b, b[(difference_type)n]);
+			--base::start_;
+			++base::size_;
+		}
+		b += (difference_type)n;
+		if (pb > n)
+			b = _STD::copy(b + difference_type(n), b + difference_type(pb), b);
+		_STD::copy(first, last, b);
+	}
+	else
+	{
+		size_type back_cap = base::back_spare_cap();
+		if (n > back_cap)
+			base::grow_buf_back(n - back_cap);
+		b = base::end();
+		if (pe < n)
+		{
+			BidirectionalIterator it = first;
+			_STD::advance(it, difference_type(pe));
+			last = it;
+			for (size_type i = pe; i < n; ++i, ++b, ++it)
+			{
+				alloc.construct(&*b, *it);
+				++base::size_;
+			}
+		}
+		size_type e = min(pe, n);
+		for (size_type i = 0; i < e; ++i, ++b)
+		{
+			alloc.construct(&*b, b[-difference_type(n)]);
+			++base::size_;
+		}
+		b -= (difference_type)n;
+		if (pe > n)
+			b = _STD::copy_backward(b - difference_type(pe), b - difference_type(n), b);
+		_STD::copy_backward(first, last, b);
+	}
+}
+
+template <class T, class Allocator>
+inline
+typename __deque_deleter<T, Allocator, false>::iterator
+__deque_deleter<T, Allocator, false>::erase(iterator position)
+{
+	iterator p1 = position;
+	return erase(position, ++p1);
+}
+
+template <class T, class Allocator>
+typename __deque_deleter<T, Allocator, false>::iterator
+__deque_deleter<T, Allocator, false>::erase(iterator first, iterator last)
+{
+	if (first == last)
+		return first;
+	iterator beg = base::begin();
+	iterator e = base::end();
+	size_type pb = size_type(first - beg);
+	size_type pe = size_type(e - last);
+	size_type diff = size_type(last - first);
+	if (diff == base::size_)
+		clear();
+	else if (pb < pe)   // erase from begin
+	{
+		e = _STD::copy_backward(beg, first, last);
+		base::start_ += diff;
+		for (; beg != e; ++beg)
+			base::alloc().destroy(&*beg);
+		base::size_ -= diff;
+		while (base::front_spare_cap() >= 2*base::bufsize_)
+		{
+			base::alloc().deallocate(base::buf().front(), base::bufsize_);
+			base::buf().pop_front();
+			base::start_ -= base::bufsize_;
+		}
+	}
+	else  // pb >= pe - erase from end
+	{
+		beg = _STD::copy(last, e, first);
+		for (; beg != e; ++beg)
+			base::alloc().destroy(&*beg);
+		base::size_ -= diff;
+		while (base::back_spare_cap() >= 2*base::bufsize_)
+		{
+			base::buf().pop_back();
+			pointer& p = base::buf().back();
+			base::alloc().deallocate(p, base::bufsize_);
+			p = 0;
+		}
+	}
+	return base::begin() + difference_type(pb);
+}
+
+template <class T, class Allocator>
+void
+__deque_deleter<T, Allocator, false>::clear()
+{
+	destroy(base::begin(), base::end());
+	base::size_ = 0;
+	if (base::buf().size() > 1)
+	{
+		while (base::buf().size() > 2)
+		{
+			base::alloc().deallocate(base::buf().front(), base::bufsize_);
+			base::buf().pop_front();
+		}
+		base::start_ = base::bufsize_ / 2;
+	}
+	else
+		base::start_ = 0;
+}
+
+template <class T, class Allocator>
+void
+__deque_deleter<T, Allocator, false>::resize(size_type sz)
+{
+	if (sz > base::size_)
+		insert(base::end(), sz-base::size_, value_type());
+	else if (sz < base::size_)
+	{
+		if (sz)
+			erase(base::begin() + difference_type(sz), base::end());
+		else
+			clear();
+	}
+}
+
+template <class T, class Allocator>
+void
+__deque_deleter<T, Allocator, false>::resize(size_type sz, const value_type& x)
+{
+	if (sz > base::size_)
+		insert(base::end(), sz-base::size_, x);
+	else if (sz < base::size_)
+	{
+		if (sz)
+			erase(base::begin() + difference_type(sz), base::end());
+		else
+			clear();
+	}
+}
+
+// __deque_imp for non-PODS
+
+template <class T, class Allocator>
+class __deque_imp<T, Allocator, false>
+	: public __deque_deleter<T, Allocator, false>
+{
+	typedef __deque_deleter<T, Allocator, false> base;
+public:
+	// types:
+	typedef typename base::reference         reference;
+	typedef typename base::const_reference   const_reference;
+	typedef typename base::size_type         size_type;
+	typedef typename base::difference_type   difference_type;
+	typedef typename base::value_type        value_type;
+	typedef typename base::allocator_type    allocator_type;
+	typedef typename base::pointer           pointer;
+	typedef typename base::const_pointer     const_pointer;
+	typedef typename base::iterator          iterator;
+	typedef typename base::const_iterator    const_iterator;
+
+	__deque_imp() {}
+	explicit __deque_imp(const allocator_type& a) : base(a) {}
+	explicit __deque_imp(size_type n) {init(n, value_type());}
+	__deque_imp(size_type n, const value_type& value) {init(n, value);}
+	__deque_imp(size_type n, const value_type& value, const allocator_type& a)
+		: base(a) {init(n, value);}
+	__deque_imp(const __deque_imp& x) : base(x.alloc())
+		{init(x.begin(), x.end(), random_access_iterator_tag());}
+
+	template <class InputIterator>
+		void choose_init(InputIterator first, InputIterator last, Metrowerks::int2type<true>)
+			{init(static_cast<size_type>(first), static_cast<value_type>(last));}
+
+	template <class InputIterator>
+		void choose_init(InputIterator first, InputIterator last, Metrowerks::int2type<false>)
+			{init(first, last, iterator_traits<InputIterator>::iterator_category());}
+
+private:
+	void init(size_type n, const value_type& value);
+	template <class InputIterator>
+		void init(InputIterator first, InputIterator last, input_iterator_tag);
+	template <class ForwardIterator>
+		void init(ForwardIterator first, ForwardIterator last, forward_iterator_tag);
+};
+
+template <class T, class Allocator>
+void
+__deque_imp<T, Allocator, false>::init(size_type n, const value_type& value)
+{
+	if (n > 0)
+	{
+		if (n > base::max_size())
+			_MSL_ERROR(length_error, "deque::construction length error");
+		base::init_buf();
+		do
+		{
+			if (base::buf().size() == base::buf().capacity())
+				base::buf().reserve(2*base::buf().size());
+			base::buf().back() = base::alloc().allocate(base::bufsize_);
+			base::buf().push_back(0);
+		} while (base::capacity() < n);
+		base::start_ = (base::capacity() - n) / 2;
+		for (iterator i = base::begin(); base::size_ < n; ++i, ++base::size_)
+			base::alloc().construct(&*i, value);
+	}
+}
+
+template <class T, class Allocator>
+template <class InputIterator>
+void
+__deque_imp<T, Allocator, false>::init(InputIterator first, InputIterator last, input_iterator_tag)
+{
+	for (; first != last; ++first)
+		base::push_back(*first);
+}
+
+template <class T, class Allocator>
+template <class ForwardIterator>
+void
+__deque_imp<T, Allocator, false>::init(ForwardIterator first, ForwardIterator last, forward_iterator_tag)
+{
+	size_type n = (size_type)_STD::distance(first, last);
+	if (n > 0)
+	{
+		if (n > base::max_size())
+			_MSL_ERROR(length_error, "deque::construction length error");
+		base::init_buf();
+		do
+		{
+			if (base::buf().size() == base::buf().capacity())
+				base::buf().reserve(2*base::buf().size());
+			base::buf().back() = base::alloc().allocate(base::bufsize_);
+			base::buf().push_back(0);
+		} while (base::capacity() < n);
+		base::start_ = (base::capacity() - n) / 2;
+		for (iterator i = base::begin(); base::size_ < n; ++i, ++base::size_, ++first)
+			base::alloc().construct(&*i, *first);
+	}
+}
+
+// __deque_deleter for PODs
+
+#ifndef _Inhibit_Container_Optimization
+
+template <class T, class Allocator>
+class __deque_deleter<T, Allocator, true>
+	: public __deque_deleter_common<T, Allocator>
+{
+	typedef __deque_deleter_common<T, Allocator> base;
+public:
+	// types:
+	typedef typename base::reference         reference;
+	typedef typename base::const_reference   const_reference;
+	typedef typename base::size_type         size_type;
+	typedef typename base::difference_type   difference_type;
+	typedef typename base::value_type        value_type;
+	typedef typename base::allocator_type    allocator_type;
+	typedef typename base::pointer           pointer;
+	typedef typename base::const_pointer     const_pointer;
+	typedef typename base::iterator          iterator;
+	typedef typename base::const_iterator    const_iterator;
+
+	__deque_deleter() {}
+	explicit __deque_deleter(const allocator_type& a) : base(a) {}
+
+	__deque_deleter& operator=(const __deque_deleter& x)
+		{
+			if (this != &x)
+				do_assign(x.begin(), x.end(), random_access_iterator_tag());
+			return *this;
+		}
+
+	void init(size_type n, const value_type& value);
+	template <class ForwardIterator>
+		void init(ForwardIterator first, ForwardIterator last);
+
+	void assign(size_type n, const value_type& u);
+
+	template <class InputIterator>
+		void choose_assign(InputIterator first, InputIterator last)
+			{do_assign(first, last, iterator_traits<InputIterator>::iterator_category());}
+
+	void push_front(const value_type& x);
+	void push_back(const value_type& x);
+	void pop_front();
+	void pop_back();
+	void clear();
+
+	iterator insert(iterator position, const value_type& x);
+	void insert(iterator position, size_type n, const value_type& x);
+	template <class InputIterator>
+		void choose_insert(iterator position, InputIterator first, InputIterator last)
+			{do_insert(position, first, last, iterator_traits<InputIterator>::iterator_category());}
+
+	iterator erase(iterator position);
+	iterator erase(iterator first, iterator last);
+
+	void resize(size_type sz);
+	void resize(size_type sz, const value_type& x);
+
+private:
+
+	__deque_deleter(const __deque_deleter&);  // not defined
+	template <class InputIterator>
+		void do_assign(InputIterator first, InputIterator last, input_iterator_tag);
+	template <class ForwardIterator>
+		void do_assign(ForwardIterator first, ForwardIterator last, forward_iterator_tag);
+
+	template <class InputIterator>
+		void do_insert(iterator position, InputIterator first, InputIterator last, input_iterator_tag);
+	template <class ForwardIterator>
+		void do_insert(iterator position, ForwardIterator first, ForwardIterator last, forward_iterator_tag);
+};
+
+// ES: no throw
+// invalidates all iterators.
+template <class T, class Allocator>
+void
+__deque_deleter<T, Allocator, true>::init(size_type n, const value_type& value)
+{
+	if (n > 0)
+	{
+		if (n > base::max_size())
+			_MSL_ERROR(length_error, "deque::construction length error");
+		base::init_buf();
+		do
+		{
+			if (base::buf().size() == base::buf().capacity())
+				base::buf().reserve(2*base::buf().size());
+			base::buf().back() = base::alloc().allocate(base::bufsize_);
+			base::buf().push_back(0);
+		} while (base::capacity() < n);
+		base::start_ = (base::capacity() - n) / 2;
+		base::size_ = n;
+		_STD::fill_n(base::begin(), base::size_, value);
+	}
+}
+
+// ES: no throw
+// invalidates all iterators.
+template <class T, class Allocator>
+template <class ForwardIterator>
+void
+__deque_deleter<T, Allocator, true>::init(ForwardIterator first, ForwardIterator last)
+{
+	size_type n = (size_type)_STD::distance(first, last);
+	if (n > 0)
+	{
+		if (n > base::max_size())
+			_MSL_ERROR(length_error, "deque::construction length error");
+		base::init_buf();
+		do
+		{
+			if (base::buf().size() == base::buf().capacity())
+				base::buf().reserve(2*base::buf().size());
+			base::buf().back() = base::alloc().allocate(base::bufsize_);
+			base::buf().push_back(0);
+		} while (base::capacity() < n);
+		base::start_ = (base::capacity() - n) / 2;
+		base::size_ = n;
+		_STD::copy(first, last, base::begin());
+	}
+}
+
+template <class T, class Allocator>
+void
+__deque_deleter<T, Allocator, true>::assign(size_type n, const value_type& u)
+{
+	if (n > base::max_size())
+		_MSL_ERROR(length_error, "deque::assign length error");
+	base::size_ = 0;
+	if (n > 0 && base::buf().size() == 0)
+		base::init_buf();
+	while (base::capacity() < n)
+	{
+		if (base::buf().size() == base::buf().capacity())
+			base::buf().reserve(2*base::buf().size());
+		base::buf().back() = base::alloc().allocate(base::bufsize_);
+		base::buf().push_back(0);
+	}
+	base::start_ = (base::capacity() - n) / 2;
+	while (base::front_spare_cap() >= base::bufsize_)
+	{
+		base::buf().pop_back();
+		pointer& p = base::buf().back();
+		base::alloc().deallocate(p, base::bufsize_);
+		p = 0;
+		base::start_ = (base::capacity() - n) / 2;
+	}
+	base::size_ = n;
+	_STD::fill_n(base::begin(), n, u);
+}
+
+template <class T, class Allocator>
+template <class InputIterator>
+void
+__deque_deleter<T, Allocator, true>::do_assign(InputIterator first, InputIterator last, _STD::input_iterator_tag)
+{
+	base::start_ = 0;
+	base::size_ = 0;
+	for (; first != last; ++first)
+		push_back(*first);
+	while (base::back_spare_cap() > base::bufsize_)
+	{
+		base::buf().pop_back();
+		pointer& p = base::buf().back();
+		base::alloc().deallocate(p, base::bufsize_);
+		p = 0;
+	}
+}
+
+template <class T, class Allocator>
+template <class ForwardIterator>
+void
+__deque_deleter<T, Allocator, true>::do_assign(ForwardIterator first, ForwardIterator last, _STD::forward_iterator_tag)
+{
+	size_type n = (size_type)_STD::distance(first, last);
+	if (n > base::max_size())
+		_MSL_ERROR(length_error, "deque::assign length error");
+	base::size_ = 0;
+	if (n > 0 && base::buf().size() == 0)
+		base::init_buf();
+	while (base::capacity() < n)
+	{
+		if (base::buf().size() == base::buf().capacity())
+			base::buf().reserve(2*base::buf().size());
+		base::buf().back() = base::alloc().allocate(base::bufsize_);
+		base::buf().push_back(0);
+	}
+	base::start_ = (base::capacity() - n) / 2;
+	while (base::front_spare_cap() >= base::bufsize_)
+	{
+		base::buf().pop_back();
+		pointer& p = base::buf().back();
+		base::alloc().deallocate(p, base::bufsize_);
+		p = 0;
+		base::start_ = (base::capacity() - n) / 2;
+	}
+	base::size_ = n;
+	_STD::copy(first, last, base::begin());
+}
+
+template <class T, class Allocator>
+void
+__deque_deleter<T, Allocator, true>::push_front(const value_type& x)
+{
+	if (base::start_ == 0)
+	{
+		if (base::size_ == base::max_size())
+			_MSL_ERROR(length_error, "deque::push_front length error");
+		base::grow_buf_front(1);
+		if (base::size_ == 0)
+			base::start_ = base::bufsize_ / 2;
+	}
+	--base::start_;
+	*(base::buf()[base::start_ / base::bufsize_] + base::start_ % base::bufsize_) = x;
+	++base::size_;
+}
+
+template <class T, class Allocator>
+void
+__deque_deleter<T, Allocator, true>::push_back(const value_type& x)
+{
+	size_type pos = base::start_ + base::size_;
+	if (pos == base::capacity())
+	{
+		if (base::size_ == base::max_size())
+			_MSL_ERROR(length_error, "deque::push_back length error");
+		base::grow_buf_back(1);
+		if (base::size_ == 0)
+			base::start_ = base::bufsize_ / 2;
+		pos = base::start_ + base::size_;
+	}
+	*(base::buf()[pos / base::bufsize_] + pos % base::bufsize_) = x;
+	++base::size_;
+}
+
+template <class T, class Allocator>
+void
+__deque_deleter<T, Allocator, true>::pop_front()
+{
+	if (base::size_ == 1)
+		clear();
+	else
+	{
+		--base::size_;
+		++base::start_;
+		while (base::front_spare_cap() >= 2*base::bufsize_)
+		{
+			base::alloc().deallocate(base::buf().front(), base::bufsize_);
+			base::buf().pop_front();
+			base::start_ -= base::bufsize_;
+		}
+	}
+}
+
+template <class T, class Allocator>
+void
+__deque_deleter<T, Allocator, true>::pop_back()
+{
+	if (base::size_ == 1)
+		clear();
+	else
+	{
+		--base::size_;
+		while (base::back_spare_cap() >= 2*base::bufsize_)
+		{
+			base::buf().pop_back();
+			pointer& p = base::buf().back();
+			base::alloc().deallocate(p, base::bufsize_);
+			p = 0;
+		}
+	}
+}
+
+template <class T, class Allocator>
+typename __deque_deleter<T, Allocator, true>::iterator
+__deque_deleter<T, Allocator, true>::insert(iterator position, const value_type& x)
+{
+	iterator b = base::begin();
+	if (position == b)
+	{
+		push_front(x);
+		return base::make_iterator(0);
+	}
+	if (position == base::end())
+	{
+		push_back(x);
+		return base::make_iterator(base::size_ - 1);
+	}
+	typename base::buf_type& buf = base::buf();
+	allocator_type& alloc = base::alloc();
+	if (base::size_ == base::max_size())
+		_MSL_ERROR(length_error, "deque::insert length error");
+	size_type pb = size_type(position - b);
+	size_type pe = base::size_ - pb;
+	const_pointer xr = &x;
+	if (pb < pe)
+	{
+		if (base::front_spare_cap() == 0)
+			base::grow_buf_front(1);
+		--base::start_;
+		++base::size_;
+		b = base::begin();
+		iterator first = b;
+		++first;
+		iterator last = first + difference_type(pb);
+		for (; first != last; ++first, ++b)
+		{
+			if (xr == &*b)
+				xr = &b[-1];
+			*b = *first;
+		}
+		*b = *xr;
+	}
+	else
+	{
+		if (base::back_spare_cap() == 0)
+			base::grow_buf_back(1);
+		++base::size_;
+		b = base::end();
+		iterator first = b - difference_type(pe+1);
+		iterator last = b;
+		for (--last; first != last;)
+		{
+			--b;
+			if (xr == &*b)
+				xr = &b[1];
+			*b = *--last;
+		}
+		*--b = *xr;
+	}
+	return b;
+}
+
+template <class T, class Allocator>
+void
+__deque_deleter<T, Allocator, true>::insert(iterator position, size_type n, const value_type& x)
+{
+	switch (n)
+	{
+	case 0:
+		return;
+	case 1:
+		insert(position, x);
+		return;
+	}
+	if (n > base::max_size() || base::size_ > base::max_size() - n)
+		_MSL_ERROR(length_error, "deque::insert length error");
+	iterator b = base::begin();
+	size_type pb = size_type(position - b);
+	size_type pe = base::size_ - pb;
+	const_pointer xr = &x;
+	if (pb < pe)
+	{
+		if (n > base::front_spare_cap())
+			base::grow_buf_front(n - base::front_spare_cap());
+		base::start_ -= n;
+		base::size_ += n;
+		b = base::begin();
+		iterator first = b + (difference_type)n;
+		iterator last = first + (difference_type)pb;
+		for (; first != last; ++first, ++b)
+		{
+			if (xr == &*b)
+				xr = &b[-difference_type(n)];
+			*b = *first;
+		}
+		_STD::fill_n(b, n, *xr);
+	}
+	else
+	{
+		size_type back_cap = base::back_spare_cap();
+		if (n > back_cap)
+			base::grow_buf_back(n - back_cap);
+		base::size_ += n;
+		b = base::end();
+		iterator last = b - (difference_type)n;
+		iterator first = last - (difference_type)pe;
+		while (first != last)
+		{
+			--b;
+			if (xr == &*b)
+				xr = &b[(difference_type)n];
+			*b = *--last;
+		}
+		for (; n > 0; --n)
+			*--b = *xr;
+	}
+}
+
+template <class T, class Allocator>
+template <class InputIterator>
+void
+__deque_deleter<T, Allocator, true>::do_insert(iterator position, InputIterator first, InputIterator last, input_iterator_tag)
+{
+	__deque_deleter tmp(base::get_allocator());
+	tmp.choose_assign(first, last);
+	do_insert(position, tmp.begin(), tmp.end(), random_access_iterator_tag());
+}
+
+template <class T, class Allocator>
+template <class ForwardIterator>
+void
+__deque_deleter<T, Allocator, true>::do_insert(iterator position, ForwardIterator first, ForwardIterator last, forward_iterator_tag)
+{
+	size_type n = (size_type)_STD::distance(first, last);
+	switch (n)
+	{
+	case 0:
+		return;
+	case 1:
+		insert(position, *first);
+		return;
+	}
+	if (n > base::max_size() || base::size_ > base::max_size() - n)
+		_MSL_ERROR(length_error, "deque::insert length error");
+	iterator b = base::begin();
+	size_type pb = size_type(position - b);
+	size_type pe = base::size_ - pb;
+	if (pb < pe)
+	{
+		if (n > base::front_spare_cap())
+			base::grow_buf_front(n - base::front_spare_cap());
+		base::start_ -= n;
+		base::size_ += n;
+		b = base::begin();
+		b = _STD::copy(b + difference_type(n), b + difference_type(n + pb), b);
+	}
+	else
+	{
+		size_type back_cap = base::back_spare_cap();
+		if (n > back_cap)
+			base::grow_buf_back(n - back_cap);
+		base::size_ += n;
+		b = base::end();
+		b = _STD::copy_backward(b - difference_type(n + pe), b - difference_type(n), b);
+		b -= difference_type(n);
+	}
+	_STD::copy(first, last, b);
+}
+
+template <class T, class Allocator>
+inline
+typename __deque_deleter<T, Allocator, true>::iterator
+__deque_deleter<T, Allocator, true>::erase(iterator position)
+{
+	iterator p1 = position;
+	return erase(position, ++p1);
+}
+
+template <class T, class Allocator>
+typename __deque_deleter<T, Allocator, true>::iterator
+__deque_deleter<T, Allocator, true>::erase(iterator first, iterator last)
+{
+	if (first == last)
+		return first;
+	iterator beg = base::begin();
+	iterator e = base::end();
+	size_type pb = size_type(first - beg);
+	size_type pe = size_type(e - last);
+	size_type diff = size_type(last - first);
+	if (diff == base::size_)
+		clear();
+	else if (pb < pe)   // erase from begin
+	{
+		_STD::copy_backward(beg, first, last);
+		base::start_ += diff;
+		base::size_ -= diff;
+		while (base::front_spare_cap() >= 2*base::bufsize_)
+		{
+			base::alloc().deallocate(base::buf().front(), base::bufsize_);
+			base::buf().pop_front();
+			base::start_ -= base::bufsize_;
+		}
+	}
+	else  // pb >= pe - erase from end
+	{
+		_STD::copy(last, e, first);
+		base::size_ -= diff;
+		while (base::back_spare_cap() >= 2*base::bufsize_)
+		{
+			base::buf().pop_back();
+			pointer& p = base::buf().back();
+			base::alloc().deallocate(p, base::bufsize_);
+			p = 0;
+		}
+	}
+	return base::begin() + difference_type(pb);
+}
+
+template <class T, class Allocator>
+void
+__deque_deleter<T, Allocator, true>::clear()
+{
+	base::size_ = 0;
+	if (base::buf().size() > 1)
+	{
+		while (base::buf().size() > 2)
+		{
+			base::alloc().deallocate(base::buf().front(), base::bufsize_);
+			base::buf().pop_front();
+		}
+		base::start_ = base::bufsize_ / 2;
+	}
+	else
+		base::start_ = 0;
+}
+
+template <class T, class Allocator>
+void
+__deque_deleter<T, Allocator, true>::resize(size_type sz)
+{
+	if (sz > base::size_)
+		insert(base::end(), sz-base::size_, value_type());
+	else if (sz < base::size_)
+	{
+		if (sz)
+			erase(base::begin() + difference_type(sz), base::end());
+		else
+			clear();
+	}
+}
+
+template <class T, class Allocator>
+void
+__deque_deleter<T, Allocator, true>::resize(size_type sz, const value_type& x)
+{
+	if (sz > base::size_)
+		insert(base::end(), sz-base::size_, x);
+	else if (sz < base::size_)
+	{
+		if (sz)
+			erase(base::begin() + difference_type(sz), base::end());
+		else
+			clear();
+	}
+}
+
+// __deque_imp for PODS
+
+template <class T, class Allocator>
+class __deque_imp<T, Allocator, true>
+	: public __deque_deleter<typename Metrowerks::store_as<T>::type,
+	                         typename Allocator::rebind<typename Metrowerks::store_as<T>::type>::other, true>,
+	  private Metrowerks::compile_assert<bool(sizeof(T) == sizeof(typename Metrowerks::store_as<T>::type))>
+{
+	typedef __deque_deleter<typename Metrowerks::store_as<T>::type,
+	                        typename Allocator::rebind<typename Metrowerks::store_as<T>::type>::other, true> base;
+	typedef typename base::allocator_type base_allocator;
+public:
+	// types:
+	typedef typename Allocator::reference         reference;
+	typedef typename Allocator::const_reference   const_reference;
+	typedef typename Allocator::size_type         size_type;
+	typedef typename Allocator::difference_type   difference_type;
+	typedef          T                            value_type;
+	typedef          Allocator                    allocator_type;
+	typedef typename Allocator::pointer           pointer;
+	typedef typename Allocator::const_pointer     const_pointer;
+
+	template <bool is_const>
+	class generic_iterator
+	{
+		typedef typename Metrowerks::select<is_const, typename __deque_imp::base::const_iterator,
+		                                              typename __deque_imp::base::iterator>::type base_iterator;
+	public:
+		typedef typename __deque_imp::value_type       value_type;
+		typedef typename __deque_imp::difference_type  difference_type;
+		typedef typename Metrowerks::select<is_const, typename __deque_imp::const_pointer,
+		                                              typename __deque_imp::pointer>::type pointer;
+		typedef typename Metrowerks::select<is_const, typename __deque_imp::const_reference,
+		                                              typename __deque_imp::reference>::type reference;
+		typedef random_access_iterator_tag iterator_category;
+
+		generic_iterator() {}
+		generic_iterator(const generic_iterator<false>& i) : i_(i.i_) {}
+		reference operator * () const {return reference(*i_);}
+		pointer operator -> () const  {return pointer(i_.operator->());}
+		generic_iterator& operator ++ () {++i_; return *this;}
+		generic_iterator operator ++ (int) {generic_iterator tmp(*this); ++(*this); return tmp;}
+		generic_iterator& operator -- () {--i_; return *this;}
+		generic_iterator operator -- (int) {generic_iterator tmp(*this); --(*this); return tmp;}
+		generic_iterator& operator += (difference_type n) {i_ += n; return *this;}
+		generic_iterator operator + (difference_type n) const {return generic_iterator(*this) += n;}
+		friend generic_iterator operator + (difference_type n, const generic_iterator& rhs)
+			{return generic_iterator(rhs) += n;}
+		generic_iterator& operator -= (difference_type n) {return *this += -n;}
+		generic_iterator operator - (difference_type n) const {return generic_iterator(*this) -= n;}
+		friend difference_type operator - (const generic_iterator& x, const generic_iterator& y) {return difference_type(x.i_ - y.i_);}
+		reference operator [] (difference_type i) const {return reference(i_[i]);}
+		friend bool operator ==(const generic_iterator& x, const generic_iterator& y) {return x.i_ == y.i_;}
+		friend bool operator !=(const generic_iterator& x, const generic_iterator& y) {return x.i_ != y.i_;}
+		friend bool operator < (const generic_iterator& x, const generic_iterator& y) {return x.i_ <  y.i_;}
+		friend bool operator <=(const generic_iterator& x, const generic_iterator& y) {return x.i_ <= y.i_;}
+		friend bool operator > (const generic_iterator& x, const generic_iterator& y) {return x.i_ >  y.i_;}
+		friend bool operator >=(const generic_iterator& x, const generic_iterator& y) {return x.i_ >= y.i_;}
+
+	#ifdef _MSL_DEBUG
+		bool is_invalidated() const {return i_.is_invalidated();}
+	#endif
+	private:
+
+		friend class generic_iterator<true>;
+		friend class __deque_imp;
+
+		base_iterator i_;
+
+		generic_iterator(const base_iterator& i) : i_(i) {}
+		operator base_iterator () const {return i_;}
+	};
+
+	typedef generic_iterator<false> iterator;
+	typedef generic_iterator<true>  const_iterator;
+
+	__deque_imp() {}
+	explicit __deque_imp(const allocator_type& a) : base(a) {}
+	explicit __deque_imp(size_type n) {init(n, value_type());}
+	__deque_imp(size_type n, const value_type& value) {init(n, value);}
+	__deque_imp(size_type n, const value_type& value, const allocator_type& a)
+		: base(a) {init(n, value);}
+	__deque_imp(const __deque_imp& x) : base(x.alloc())
+		{init(x.begin(), x.end(), random_access_iterator_tag());}
+
+	template <class Integral>
+		void choose_init(Integral first, Integral last, Metrowerks::int2type<true>)
+			{init(static_cast<size_type>(first), (value_type)(last));}
+
+	template <class InputIterator>
+		void choose_init(InputIterator first, InputIterator last, Metrowerks::int2type<false>)
+			{init(first, last, iterator_traits<InputIterator>::iterator_category());}
+
+	template <class InputIterator>
+		void choose_assign(InputIterator first, InputIterator last, Metrowerks::int2type<true>)
+			{assign(static_cast<size_type>(first), (value_type)last);}
+	template <class InputIterator>
+		void choose_assign(InputIterator first, InputIterator last, Metrowerks::int2type<false>)
+			{
+				typedef iterator_traits<InputIterator>::value_type outside_value;
+				choose_assign(first, last, Metrowerks::int2type<Metrowerks::is_same<outside_value, value_type>::value>(),
+				                           Metrowerks::int2type<Metrowerks::is_same<value_type, base::value_type>::value>());
+			}
+	void assign(size_type n, const value_type& u) {base::assign(n, (const typename base::value_type&)u);}
+
+	allocator_type get_allocator() const {return base::alloc();}
+
+	iterator       begin()       {return       iterator(base::begin());}
+	const_iterator begin() const {return const_iterator(base::begin());}
+	iterator       end()         {return       iterator(base::end());}
+	const_iterator end() const   {return const_iterator(base::end());}
+
+	reference       operator[](size_type n)       {return       reference(base::operator[](n));}
+	const_reference operator[](size_type n) const {return const_reference(base::operator[](n));}
+	reference       at(size_type n)               {return       reference(base::at(n));}
+	const_reference at(size_type n) const         {return const_reference(base::at(n));}
+
+	reference       front()       {return       reference(base::front());}
+	const_reference front() const {return const_reference(base::front());}
+	reference       back()        {return       reference(base::back());}
+	const_reference back() const  {return const_reference(base::back());}
+
+ 	void push_front(const value_type& value) {base::push_front((const typename base::value_type&)value);}
+	void push_back( const value_type& value) {base::push_back( (const typename base::value_type&)value);}
+
+	iterator insert(iterator position, const value_type& x)
+		{return base::insert(position, (const typename base::value_type&)x);}
+	void insert(iterator position, size_type n, const value_type& x)
+		{base::insert(position, n, (const typename base::value_type&)x);}
+	template <class InputIterator>
+		void choose_insert(iterator position, InputIterator first, InputIterator last, Metrowerks::int2type<true>)
+			{insert(position, static_cast<size_type>(first), (value_type)last);}
+	template <class InputIterator>
+		void choose_insert(iterator position, InputIterator first, InputIterator last, Metrowerks::int2type<false>)
+			{
+				typedef iterator_traits<InputIterator>::value_type outside_value;
+				choose_insert(position, first, last, Metrowerks::int2type<Metrowerks::is_same<outside_value, value_type>::value>(),
+				                                     Metrowerks::int2type<Metrowerks::is_same<value_type, base::value_type>::value>());
+			}
+
+	iterator erase(iterator position)             {return base::erase(position);}
+	iterator erase(iterator first, iterator last) {return base::erase(first, last);}
+
+	void resize(size_type sz)                      {base::resize(sz);}
+	void resize(size_type sz, const value_type& x) {base::resize(sz, (const typename base::value_type&)x);}
+
+private:
+	template <class ForwardIterator>
+		void choose_init(ForwardIterator first, ForwardIterator last, Metrowerks::int2type<true>, Metrowerks::int2type<true>)
+			{base::init(first, last);}
+	template <class ForwardIterator>
+		void choose_init(ForwardIterator first, ForwardIterator last, Metrowerks::int2type<false>, Metrowerks::int2type<true>)
+			{
+				typedef __convert_iterator<__implicit_convert<pointer, ForwardIterator> > first_convert;
+				base::init(first_convert(first), first_convert(last));
+			}
+	template <class ForwardIterator>
+		void choose_init(ForwardIterator first, ForwardIterator last, Metrowerks::int2type<true>, Metrowerks::int2type<false>)
+			{
+				typedef __convert_iterator<__reinterpret_convert<base::pointer, ForwardIterator> > second_convert;
+				base::init(second_convert(first), second_convert(last));
+			}
+	template <class ForwardIterator>
+		void choose_init(ForwardIterator first, ForwardIterator last, Metrowerks::int2type<false>, Metrowerks::int2type<false>)
+			{
+				typedef __convert_iterator<__implicit_convert<pointer, ForwardIterator> > first_convert;
+				typedef __convert_iterator<__reinterpret_convert<base::pointer, first_convert> > second_convert;
+				base::init(second_convert(first_convert(first)), second_convert(first_convert(last)));
+			}
+
+	void init(size_type n, const value_type& value) {base::init(n, (const typename base::value_type&)value);}
+	template <class InputIterator>
+		void init(InputIterator first, InputIterator last, input_iterator_tag);
+	template <class ForwardIterator>
+		void init(ForwardIterator first, ForwardIterator last, forward_iterator_tag)
+			{
+				typedef iterator_traits<ForwardIterator>::value_type outside_value;
+				choose_init(first, last, Metrowerks::int2type<Metrowerks::is_same<outside_value, value_type>::value>(),
+				                         Metrowerks::int2type<Metrowerks::is_same<value_type, base::value_type>::value>());
+			}
+
+	template <class InputIterator>
+		void choose_assign(InputIterator first, InputIterator last, Metrowerks::int2type<true>, Metrowerks::int2type<true>)
+			{base::choose_assign(first, last);}
+	template <class InputIterator>
+		void choose_assign(InputIterator first, InputIterator last, Metrowerks::int2type<false>, Metrowerks::int2type<true>)
+			{
+				typedef __convert_iterator<__implicit_convert<pointer, InputIterator> > first_convert;
+				base::choose_assign(first_convert(first), first_convert(last));
+			}
+	template <class InputIterator>
+		void choose_assign(InputIterator first, InputIterator last, Metrowerks::int2type<true>, Metrowerks::int2type<false>)
+			{
+				typedef __convert_iterator<__reinterpret_convert<base::pointer, InputIterator> > second_convert;
+				base::choose_assign(second_convert(first), second_convert(last));
+			}
+	template <class InputIterator>
+		void choose_assign(InputIterator first, InputIterator last, Metrowerks::int2type<false>, Metrowerks::int2type<false>)
+			{
+				typedef __convert_iterator<__implicit_convert<pointer, InputIterator> > first_convert;
+				typedef __convert_iterator<__reinterpret_convert<base::pointer, first_convert> > second_convert;
+				base::choose_assign(second_convert(first_convert(first)), second_convert(first_convert(last)));
+			}
+
+	template <class InputIterator>
+		void choose_insert(iterator position, InputIterator first, InputIterator last, Metrowerks::int2type<true>, Metrowerks::int2type<true>)
+			{base::choose_insert(position, first, last);}
+	template <class InputIterator>
+		void choose_insert(iterator position, InputIterator first, InputIterator last, Metrowerks::int2type<false>, Metrowerks::int2type<true>)
+			{
+				typedef __convert_iterator<__implicit_convert<pointer, InputIterator> > first_convert;
+				base::choose_insert(position, first_convert(first), first_convert(last));
+			}
+	template <class InputIterator>
+		void choose_insert(iterator position, InputIterator first, InputIterator last, Metrowerks::int2type<true>, Metrowerks::int2type<false>)
+			{
+				typedef __convert_iterator<__reinterpret_convert<base::pointer, InputIterator> > second_convert;
+				base::choose_insert(position, second_convert(first), second_convert(last));
+			}
+	template <class InputIterator>
+		void choose_insert(iterator position, InputIterator first, InputIterator last, Metrowerks::int2type<false>, Metrowerks::int2type<false>)
+			{
+				typedef __convert_iterator<__implicit_convert<pointer, InputIterator> > first_convert;
+				typedef __convert_iterator<__reinterpret_convert<base::pointer, first_convert> > second_convert;
+				base::choose_insert(position, second_convert(first_convert(first)), second_convert(first_convert(last)));
+			}
+};
+
+// ES: basic
+// invalidates all iterators.
+template <class T, class Allocator>
+template <class InputIterator>
+void
+__deque_imp<T, Allocator, true>::init(InputIterator first, InputIterator last, input_iterator_tag)
+{
+	for (; first != last; ++first)
+		push_back(*first);
+}
+
+#endif  // _Inhibit_Container_Optimization
+
+#ifdef _MSL_DEBUG
+
+	template <class Iterator>
+	struct __test_past_end
+	{
+		__test_past_end(Iterator start, Iterator end) : start_(start), end_(end) {}
+
+		Iterator start_;
+		Iterator end_;
+
+		template <class Iter>
+		bool operator()(const Iter& x) const
+		{
+			if (x.is_invalidated())
+				return true;
+			return x < start_ || x > end_;
+		}
+	};
+
+#endif
+
+// deque
+
+template <class T, class Allocator = allocator<T> >
+class deque
+#ifndef _Inhibit_Container_Optimization
+	: private __deque_imp<T, Allocator, Metrowerks::is_POD<T>::value>
+#else
+	: private __deque_imp<T, Allocator, false>
+#endif
+{
+#ifndef _Inhibit_Container_Optimization
+	typedef __deque_imp<T, Allocator, Metrowerks::is_POD<T>::value> base;
+#else
+	typedef __deque_imp<T, Allocator, false>                        base;
+#endif
+public:
+	// types:
+	typedef deque                                  __self;
+	typedef typename base::reference               reference;
+	typedef typename base::const_reference         const_reference;
+	typedef typename base::size_type               size_type;
+	typedef typename base::difference_type         difference_type;
+	typedef typename base::value_type              value_type;
+	typedef typename base::allocator_type          allocator_type;
+	typedef typename base::pointer                 pointer;
+	typedef typename base::const_pointer           const_pointer;
+
+#ifdef _MSL_DEBUG
+	typedef typename base::iterator                   __uncheck_iterator;
+	typedef typename base::const_iterator             __uncheck_const_iterator;
+	typedef __debug_iterator<deque, __uncheck_iterator>        iterator;
+	typedef __debug_iterator<deque, __uncheck_const_iterator>  const_iterator;
+private:
+	__uncheck_iterator __iterator2base(const iterator& i)
+		{
+			if (i.owner_ != this)
+				_MSL_DEBUG_ERROR(logic_error, "MSL DEBUG: invalid iterator given to deque");
+			return i.base();
+		}
+	__uncheck_const_iterator __iterator2base(const const_iterator& i) const
+		{
+			if (i.owner_ != this)
+				_MSL_DEBUG_ERROR(logic_error, "MSL DEBUG: invalid iterator given to deque");
+			return i.base();
+		}
+	iterator       __base2iterator(const __uncheck_iterator& p)             {return iterator(this, p);}
+	const_iterator __base2iterator(const __uncheck_const_iterator& p) const {return const_iterator(this, p);}
+public:
+#else
+	typedef typename base::iterator                iterator;
+	typedef typename base::const_iterator          const_iterator;
+#endif
+
+	typedef _STD::reverse_iterator<iterator>       reverse_iterator;
+	typedef _STD::reverse_iterator<const_iterator> const_reverse_iterator;
+
+#ifdef _MSL_DEBUG
+private:
+	void __invalidate_all_iterators()
+	{
+		if (iterator_list<iterator>())
+			iterator_list<iterator>()->remove(__unary_true_value<__uncheck_iterator>());
+		if (iterator_list<const_iterator>())
+			iterator_list<const_iterator>()->remove(__unary_true_value<__uncheck_const_iterator>());
+	}
+
+	class __invalidate_on_grow
+	{
+	public:
+		__invalidate_on_grow(deque& v) : vec_(v), old_size_(v.size()) {}
+		~__invalidate_on_grow()
+		{
+			if (old_size_ < vec_.size())
+				vec_.__invalidate_all_iterators();
+		}
+	private:
+		deque& vec_;
+		size_type old_size_;
+
+		__invalidate_on_grow(const __invalidate_on_grow&);
+		__invalidate_on_grow& operator=(const __invalidate_on_grow&);
+	};
+	friend class __invalidate_on_grow;
+
+	class __invalidate_on_mid_insert
+	{
+	public:
+		__invalidate_on_mid_insert(deque& v, deque::iterator p) : vec_(v), old_size_(v.size()),
+			on_end_(p == vec_.begin() || p == vec_.end()) {}
+		~__invalidate_on_mid_insert()
+		{
+			if (old_size_ != vec_.size() && !on_end_)
+				vec_.__invalidate_all_iterators();
+		}
+	private:
+		deque& vec_;
+		size_type old_size_;
+		bool on_end_;
+
+		__invalidate_on_mid_insert(const __invalidate_on_mid_insert&);
+		__invalidate_on_mid_insert& operator=(const __invalidate_on_mid_insert&);
+	};
+	friend class __invalidate_on_mid_insert;
+
+	class __invalidate_on_mid_erase
+	{
+	public:
+		__invalidate_on_mid_erase(deque& v, deque::iterator p) : vec_(v), old_size_(v.size()),
+			on_end_(p == vec_.begin() || p == vec_.end() - 1) {}
+		__invalidate_on_mid_erase(deque& v, deque::iterator f, deque::iterator l)
+			: vec_(v), old_size_(v.size()),
+			on_end_(f == vec_.begin() || l == vec_.end()) {}
+		~__invalidate_on_mid_erase()
+		{
+			if (old_size_ != vec_.size() && !on_end_)
+				vec_.__invalidate_all_iterators();
+		}
+	private:
+		deque& vec_;
+		size_type old_size_;
+		bool on_end_;
+
+		__invalidate_on_mid_erase(const __invalidate_on_mid_erase&);
+		__invalidate_on_mid_erase& operator=(const __invalidate_on_mid_erase&);
+	};
+	friend class __invalidate_on_mid_erase;
+
+	void __invalidate_past_end_iterators()
+	{
+		if (iterator_list<iterator>())
+			iterator_list<iterator>()->remove(__test_past_end<typename base::iterator>(base::begin(), base::end()));
+		if (iterator_list<const_iterator>())
+			iterator_list<const_iterator>()->remove(__test_past_end<typename base::const_iterator>(base::begin(), base::end()));
+	}
+
+	class __invalidate_on_shrink
+	{
+	public:
+		__invalidate_on_shrink(deque& v) : vec_(v), old_size_(v.size()) {}
+		~__invalidate_on_shrink()
+		{
+			if (old_size_ < vec_.size())
+				vec_.__invalidate_past_end_iterators();
+		}
+	private:
+		deque& vec_;
+		size_type old_size_;
+
+		__invalidate_on_shrink(const __invalidate_on_shrink&);
+		__invalidate_on_shrink& operator=(const __invalidate_on_shrink&);
+	};
+	friend class __invalidate_on_shrink;
+public:
+#endif
+
+	deque() {}
+	explicit deque(const allocator_type& a) : base(a) {}
+	explicit deque(size_type n) : base(n) {}
+	deque(size_type n, const value_type& value) : base(n, value) {}
+	deque(size_type n, const value_type& value, const allocator_type& a) : base(n, value, a) {}
+	template <class InputIterator>
+		deque(InputIterator first, InputIterator last)
+			{base::choose_init(first, last, typename Metrowerks::int2type<Metrowerks::is_integral<InputIterator>::value>());}
+	template <class InputIterator>
+		deque(InputIterator first, InputIterator last, const Allocator& a)
+			: base(a)
+			{base::choose_init(first, last, typename Metrowerks::int2type<Metrowerks::is_integral<InputIterator>::value>());}
+
+#ifdef _MSL_DEBUG
+	deque(const deque& x) : base(x) {}
+	deque& operator=(const deque& x)
+	{
+		if (this != &x)
+		{
+			__invalidate_all_iterators();
+			base::operator=(x);
+		}
+		return *this;
+	}
+
+	~deque()
+		{
+			__invalidate_all_iterators();
+		}
+#endif
+
+	using base::get_allocator;
+//	allocator_type get_allocator() const;
+
+	reverse_iterator       rbegin()       {return       reverse_iterator(end());}
+	const_reverse_iterator rbegin() const {return const_reverse_iterator(end());}
+	reverse_iterator       rend()         {return       reverse_iterator(begin());}
+	const_reverse_iterator rend() const   {return const_reverse_iterator(begin());}
+
+	using base::max_size;
+//	size_type max_size() const;
+	using base::size;
+//	size_type size() const;
+
+	using base::empty;
+//	bool      empty() const;
+	using base::at;
+//	reference       at(size_type n);
+//	const_reference at(size_type n) const;
+
+	using base::front;
+//	reference       front();
+//	const_reference front() const;
+	using base::back;
+//	reference       back();
+//	const_reference back() const;
+
+	using base::invariants;
+//	bool invariants() const;
+
+#ifndef _MSL_DEBUG
+	void assign(size_type n, const value_type& u)
+		{base::assign(n, u);}
+	template <class InputIterator>
+		void assign(InputIterator first, InputIterator last)
+			{base::choose_assign(first, last, typename Metrowerks::int2type<Metrowerks::is_integral<InputIterator>::value>());}
+
+	using base::begin;
+//	iterator               begin();
+//	const_iterator         begin() const;
+	using base::end;
+//	iterator               end();
+//	const_iterator         end() const;
+
+	using base::resize;
+//	void resize(size_type sz);
+//	void resize(size_type sz, const value_type& x);
+
+	reference       operator[](size_type n)       {return base::operator[](n);}
+	const_reference operator[](size_type n) const {return base::operator[](n);}
+
+	using base::push_front;
+//	void push_front(const value_type& x);
+	using base::push_back;
+//	void push_back(const value_type& x);
+	using base::pop_front;
+//	void pop_front();
+	using base::pop_back;
+//	void pop_back();
+
+	iterator insert(iterator position, const value_type& x)
+		{return base::insert(position, x);}
+	void insert(iterator position, size_type n, const value_type& x)
+		{base::insert(position, n, x);}
+	template <class InputIterator>
+		void insert(iterator position, InputIterator first, InputIterator last)
+			{base::choose_insert(position, first, last, Metrowerks::int2type<Metrowerks::is_integral<InputIterator>::value>());}
+	using base::erase;
+//	iterator erase(iterator position);
+//	iterator erase(iterator first, iterator last);
+	using base::clear;
+//	void clear();
+	void swap(deque& x) {base::swap(x);}
+
+#else
+	void assign(size_type n, const value_type& u)
+		{
+			__invalidate_all_iterators();
+			base::assign(n, u);
+		}
+	template <class InputIterator>
+		void assign(InputIterator first, InputIterator last)
+			{__invalidate_all_iterators();
+			base::choose_assign(first, last, typename Metrowerks::int2type<Metrowerks::is_integral<InputIterator>::value>());}
+
+	// iterators:
+	__uncheck_iterator       __uncheck_begin()       {return base::begin();}
+	__uncheck_const_iterator __uncheck_begin() const {return base::begin();}
+	__uncheck_iterator       __uncheck_end()         {return base::end();}
+	__uncheck_const_iterator __uncheck_end() const   {return base::end();}
+
+	iterator               begin()       {return __base2iterator(base::begin());}
+	const_iterator         begin() const {return __base2iterator(base::begin());}
+	iterator               end()         {return __base2iterator(base::end());}
+	const_iterator         end() const   {return __base2iterator(base::end());}
+
+	void resize(size_type sz)
+		{
+			__invalidate_on_shrink __s(*this);
+			__invalidate_on_grow __c(*this);
+			base::resize(sz);
+		}
+
+	void resize(size_type sz, const value_type& x)
+		{
+			__invalidate_on_shrink __s(*this);
+			__invalidate_on_grow __c(*this);
+			base::resize(sz, (const typename base::value_type&)x);
+		}
+
+	reference       operator[](size_type n)       {return at(n);}
+	const_reference operator[](size_type n) const {return at(n);}
+
+	void push_front(const value_type& x)
+		{
+			__invalidate_on_grow __c(*this);
+			base::push_front(x);
+		}
+
+	void push_back(const value_type& x)
+		{
+			__invalidate_on_grow __c(*this);
+			base::push_back(x);
+		}
+
+	void pop_front()
+		{
+			if (empty())
+				_MSL_DEBUG_ERROR(logic_error, "MSL DEBUG: pop_front called on empty deque");
+			__invalidate_on_shrink __s(*this);
+			base::pop_front();
+		}
+
+	void pop_back()
+		{
+			if (empty())
+				_MSL_DEBUG_ERROR(logic_error, "MSL DEBUG: pop_back called on empty deque");
+			__invalidate_on_shrink __s(*this);
+			base::pop_back();
+		}
+
+	iterator insert(iterator position, const value_type& x)
+		{
+			typename base::iterator result;
+			{
+			__invalidate_on_mid_insert __s(*this, position);
+			result = base::insert(__iterator2base(position), x);
+			}
+			return __base2iterator(result);
+		}
+	void insert(iterator position, size_type n, const value_type& x)
+		{
+			__invalidate_on_mid_insert __s(*this, position);
+			base::insert(__iterator2base(position), n, x);
+		}
+	template <class InputIterator>
+		void insert(iterator position, InputIterator first, InputIterator last)
+			{
+				__invalidate_on_mid_insert __s(*this, position);
+				base::choose_insert(__iterator2base(position), first, last, Metrowerks::int2type<Metrowerks::is_integral<InputIterator>::value>());
+			}
+
+	iterator erase(iterator position)
+		{
+			position.deref();
+			typename base::iterator result;
+			{
+			__invalidate_on_shrink __c(*this);
+			__invalidate_on_mid_erase __s(*this, position);
+			result = base::erase(__iterator2base(position));
+			}
+			return __base2iterator(result);
+		}
+	iterator erase(iterator first, iterator last)
+		{
+			if (first > last)
+				_MSL_DEBUG_ERROR(logic_error, "MSL DEBUG: invalid iterator range given to deque::erase");
+			typename base::iterator result;
+			{
+			__invalidate_on_shrink __c(*this);
+			__invalidate_on_mid_erase __s(*this, first, last);
+			result = base::erase(__iterator2base(first), __iterator2base(last));
+			}
+			return __base2iterator(result);
+		}
+
+	void clear() {__invalidate_all_iterators(); base::clear();}
+
+	void swap(deque& x)
+		{
+			base::swap(x);
+			iterator::swap(this, &x);
+			const_iterator::swap(this, &x);
+		}
+#endif
+
+#ifdef _MSL_DEBUG
+private:
+	pair<iterator*, const_iterator*> iterator_list_;
+
+	iterator*&       iterator_list(iterator*)       {return iterator_list_.first;}
+	const_iterator*& iterator_list(const_iterator*) {return iterator_list_.second;}
+	template <class Iterator>
+	Iterator*& iterator_list() {return iterator_list((Iterator*)0);}
+
+	friend class iterator;
+	friend class const_iterator;
+#endif
+};
+
+template <class T, class Allocator>
+inline
+bool
+operator==(const deque<T,Allocator>& x, const deque<T,Allocator>& y)
+{
+	return x.size() == y.size() && _STD::equal(x.begin(), x.end(), y.begin());
+}
+
+template <class T, class Allocator>
+inline
+bool
+operator!=(const deque<T,Allocator>& x, const deque<T,Allocator>& y)
+{
+	return !(x == y);
+}
+
+template <class T, class Allocator>
+inline
+bool
+operator< (const deque<T,Allocator>& x, const deque<T,Allocator>& y)
+{
+	return _STD::lexicographical_compare(x.begin(), x.end(), y.begin(), y.end());
+}
+
+template <class T, class Allocator>
+inline
+bool
+operator> (const deque<T,Allocator>& x, const deque<T,Allocator>& y)
+{
+	return y < x;
+}
+
+template <class T, class Allocator>
+inline
+bool
+operator>=(const deque<T,Allocator>& x, const deque<T,Allocator>& y)
+{
+	return !(x < y);
+}
+
+template <class T, class Allocator>
+inline
+bool
+operator<=(const deque<T,Allocator>& x, const deque<T,Allocator>& y)
+{
+	return !(y < x);
+}
+
+template <class T, class Allocator>
+inline
+void
+swap(deque<T,Allocator>& x, deque<T,Allocator>& y)
+{
+	x.swap(y);
+}
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	} // namespace std
+#endif
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	namespace Metrowerks {
+#else
+	#ifndef Metrowerks
+		#define Metrowerks
+	#endif
+#endif
+
+template<class T, class Allocator>
+struct is_zero_default_contructible<_STD::deque<T, Allocator> >
+{
+	static const bool value = is_zero_default_contructible<Allocator>::value;
+};
+
+#ifndef _MSL_DEBUG
+
+template<class T, class Allocator>
+struct has_trivial_dtor_after_move_ctor<_STD::deque<T, Allocator> >
+{
+	static const bool value = has_trivial_dtor<Allocator>::value;
+};
+
+template<class T, class Allocator>
+struct has_trivial_move_ctor<_STD::deque<T, Allocator> >
+{
+	static const bool value = has_trivial_copy_ctor<Allocator>::value;
+};
+
+#endif
+
+template<class T, class Allocator>
+struct move_with_swap<_STD::deque<T, Allocator> >
+{
+	static const bool value = has_trivial_copy_ctor<Allocator>::value &&
+	                          has_trivial_assignment<Allocator>::value;
+};
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	}  // namespace Metrowerks
+#endif
+
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#pragma enumsalwaysint reset
+#endif
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#pragma bool reset
+#endif
+
+#ifdef __MWERKS__
+#pragma options align=reset
+#endif
+
+#endif // RC_INVOKED
+
+#endif // _DEQUE
+
+// hh 971220 fixed MOD_INCLUDE
+// hh 971221 Changed filename from deque.h to deque
+// hh 971221 Made include guards standard
+// hh 971221 Added qualified name to const_iterator
+// hh 971221 Added qualified name to iterator
+// hh 971230 added RC_INVOKED wrapper
+// hh 980105 changed pointer & reference to const versions in const_iterator base class
+// hh 980105 rewrote some constructors to get rid of unused arg dq warning
+// hh 980111 <string> added so deque could throw a stdexcept
+// hh 980111 made at and operator[] standard compliant
+// hh 980713 Temporarily moved member templates into class definition to support compiler
+// hh 980902 #ifdef'd out exception code when ndef MSIPL_EXCEPT
+// hh 981027 rewrote
+// hh 981208 changed static_cast to reinterpret_cast on the value_type (pointer specialization only)
+// hh 981209 Protected clear() from an empty buf_
+// hh 981210 Modified insertion into front half to preserve outstanding iterators under exceptions
+//           and made it more efficient when the initial size is zero.
+// hh 981210 Added forgotten for loop in insert
+// hh 981220 Rewrote iterators to gain higher performance
+// hh 981220 Added typename to appropriate return types
+// hh 981220 Modifed some method signitures to simplified syntax
+// hh 981220 Added class modifier to several friend declarations
+// hh 990120 changed name of MSIPL flags
+// hh 990720 Made iterator comparison methods global friends.
+// hh 990825 changed void* to const void*
+// hh 990826 Seperated out calls involving T()
+// hh 991005 Fixed type-o in deque<void*>::erase
+// hh 991116 Fixed pointer conversion bug in T* specialization by introducing __convert_iterator
+// hh 991208 #ifdef'd out oldstart argument name in grow_buf_front for when exceptions are turned off.
+// hh 000130 Added :: to placement new.
+// hh 000130 Silenced some conversion warnings in the iterators.
+// hh 000130 Changed name of std::__cdeque to Metrowerks::cdeque
+// hh 001011 Fixed several typename bugs
+// hh 001011 Disabled friends of iterators for gcc
+// hh 010301 Protected min and max from macro abuse.
+// hh 010314 Qualified internal calls with std::
+// hh 010402 Removed 68K CMF support
+// hh 010509 Made iterator difference a global friend
+// hh 011210 Rewrote.
+// hh 020529 Changed <limits> to <msl_int_limits>
+// hh 030212 Added empty check for pop_front and pop_back under _MSL_DEBUG
+// hh 030416 Fixed begin()+0 bug on empty deque
+// hh 030527 Made pseudo movable
+// hh 030711 Worked around friend class T problem
+// hh 030725 Silenced implicit conversion warnings in destroy
+// hh 031022 Removed some extraneous typenames

@@ -1,0 +1,193 @@
+{
+  "key": 60099,
+  "messages": [
+    {
+      "id": "msg_0151_00000",
+      "en_US": "Moves’ secondary effects OFF"
+    },
+    {
+      "id": "msg_0151_00001",
+      "en_US": "Moves’ secondary effects ON"
+    },
+    {
+      "id": "msg_0151_00002",
+      "en_US": "Activate ability OFF"
+    },
+    {
+      "id": "msg_0151_00003",
+      "en_US": "Activate ability ON"
+    },
+    {
+      "id": "msg_0151_00004",
+      "en_US": "Held item’s effects OFF"
+    },
+    {
+      "id": "msg_0151_00005",
+      "en_US": "Held item’s effects ON"
+    },
+    {
+      "id": "msg_0151_00006",
+      "en_US": "No random damage OFF"
+    },
+    {
+      "id": "msg_0151_00007",
+      "en_US": "No random damage ON"
+    },
+    {
+      "id": "msg_0151_00008",
+      "en_US": "Switch Pokémon OFF"
+    },
+    {
+      "id": "msg_0151_00009",
+      "en_US": "Switch Pokémon ON"
+    },
+    {
+      "id": "msg_0151_00010",
+      "en_US": "Chatter Rank Fix OFF"
+    },
+    {
+      "id": "msg_0151_00011",
+      "en_US": "Chatter Rank Fix 1"
+    },
+    {
+      "id": "msg_0151_00012",
+      "en_US": "Chatter Rank Fix 2"
+    },
+    {
+      "id": "msg_0151_00013",
+      "en_US": "Chatter Rank Fix 3"
+    },
+    {
+      "id": "msg_0151_00014",
+      "en_US": "Critical hit OFF"
+    },
+    {
+      "id": "msg_0151_00015",
+      "en_US": "Critical hit ON"
+    },
+    {
+      "id": "msg_0151_00016",
+      "en_US": "Metronome OFF"
+    },
+    {
+      "id": "msg_0151_00017",
+      "en_US": "Set Metronome"
+    },
+    {
+      "id": "msg_0151_00018",
+      "en_US": "Set Metronome range"
+    },
+    {
+      "id": "msg_0151_00019",
+      "en_US": "Memory left"
+    },
+    {
+      "id": "msg_0151_00020",
+      "en_US": "→"
+    },
+    {
+      "id": "msg_0151_00021",
+      "en_US": "A"
+    },
+    {
+      "id": "msg_0151_00022",
+      "en_US": "B"
+    },
+    {
+      "id": "msg_0151_00023",
+      "en_US": "A"
+    },
+    {
+      "id": "msg_0151_00024",
+      "en_US": "B"
+    },
+    {
+      "id": "msg_0151_00025",
+      "en_US": "C"
+    },
+    {
+      "id": "msg_0151_00026",
+      "en_US": "D"
+    },
+    {
+      "id": "msg_0151_00027",
+      "en_US": "Attack"
+    },
+    {
+      "id": "msg_0151_00028",
+      "en_US": "Defense"
+    },
+    {
+      "id": "msg_0151_00029",
+      "en_US": "Speed"
+    },
+    {
+      "id": "msg_0151_00030",
+      "en_US": "Sp. Attack"
+    },
+    {
+      "id": "msg_0151_00031",
+      "en_US": "Sp. Defense"
+    },
+    {
+      "id": "msg_0151_00032",
+      "en_US": "Accuracy"
+    },
+    {
+      "id": "msg_0151_00033",
+      "en_US": "Evasiveness"
+    },
+    {
+      "id": "msg_0151_00034",
+      "en_US": "Command"
+    },
+    {
+      "id": "msg_0151_00035",
+      "en_US": "Fight"
+    },
+    {
+      "id": "msg_0151_00036",
+      "en_US": "Bag"
+    },
+    {
+      "id": "msg_0151_00037",
+      "en_US": "Pokémon"
+    },
+    {
+      "id": "msg_0151_00038",
+      "en_US": "Run"
+    },
+    {
+      "id": "msg_0151_00039",
+      "en_US": "Move"
+    },
+    {
+      "id": "msg_0151_00040",
+      "en_US": "Foe"
+    },
+    {
+      "id": "msg_0151_00041",
+      "en_US": "Item"
+    },
+    {
+      "id": "msg_0151_00042",
+      "en_US": "Pokémon"
+    },
+    {
+      "id": "msg_0151_00043",
+      "en_US": "Random Seeds"
+    },
+    {
+      "id": "msg_0151_00044",
+      "en_US": "Check Booted AI"
+    },
+    {
+      "id": "msg_0151_00045",
+      "en_US": "Check Safari Critical Throw OFF"
+    },
+    {
+      "id": "msg_0151_00046",
+      "en_US": "Check Safari Critical Throw ON"
+    }
+  ]
+}

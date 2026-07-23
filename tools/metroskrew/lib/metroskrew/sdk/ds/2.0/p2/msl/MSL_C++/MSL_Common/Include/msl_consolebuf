@@ -1,0 +1,595 @@
+/* MSL
+ * Copyright © 1995-2006 Freescale Corporation.  All rights reserved.
+ *
+ * $Date: 2006/02/09 16:58:55 $
+ * $Revision: 1.10.2.2 $
+ */
+
+// msl_consolebuf
+
+#ifndef _MSL_CONSOLEBUF
+#define _MSL_CONSOLEBUF
+
+/*  msl_consolebuf synopsis
+
+namespace Metrowerks
+{
+
+template <class charT, class traits = std::char_traits<charT> >
+class console_inputbuf
+	: public std::basic_streambuf<charT, traits>
+{
+	typedef std::basic_streambuf<charT, traits> base;
+public:
+	typedef charT                     char_type;
+	typedef typename traits::int_type int_type;
+	typedef typename traits::pos_type pos_type;
+	typedef typename traits::off_type off_type;
+	typedef traits                    traits_type;
+
+	explicit console_inputbuf(std::FILE* file);
+protected:
+	virtual std::streamsize showmanyc();
+	virtual int_type underflow();
+	virtual int_type uflow();
+	virtual int_type pbackfail(int_type c = traits_type::eof());
+
+	virtual std::basic_streambuf<charT, traits_type>* setbuf(char_type* s, std::streamsize n);
+	virtual int      sync();
+	virtual void     imbue(const std::locale& loc);
+
+private:
+
+	console_inputbuf(const console_inputbuf&);            // not defined
+	console_inputbuf& operator=(const console_inputbuf&); // not defined
+};
+
+template <class charT, class traits = std::char_traits<charT> >
+class console_outputbuf
+	: public bufferedbuf<charT, traits>
+{
+	typedef bufferedbuf<charT, traits> base;
+public:
+	typedef charT                     char_type;
+	typedef typename traits::int_type int_type;
+	typedef typename traits::pos_type pos_type;
+	typedef typename traits::off_type off_type;
+	typedef traits                    traits_type;
+
+	explicit console_outputbuf(std::FILE* file);
+
+private:
+
+	console_outputbuf(const console_outputbuf&);             // not defined
+	console_outputbuf& operator=(const console_outputbuf&);  // not defined
+};
+
+}  // Metrowerks
+*/
+
+#include <mslconfig>
+
+#if !defined(_MSL_NO_CONSOLE_IO) || !defined(_MSL_NO_FILE_IO)
+
+#include <algorithm>
+#include <ios>
+#include <streambuf>
+#include <string>
+#include <cstring>
+#include <codecvt>
+#include <cstdio>
+#ifndef _MSL_TINY_IO
+	#include <msl_bufferedbuf>
+#endif
+
+#ifndef RC_INVOKED
+
+#ifdef __MWERKS__
+#pragma options align=native
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#if _MSL_FORCE_ENUMS_ALWAYS_INT
+		#pragma enumsalwaysint on
+	#else
+		#pragma enumsalwaysint off
+	#endif
+#endif  // _MSL_FORCE_ENUMS_ALWAYS_INT
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#if _MSL_FORCE_ENABLE_BOOL_SUPPORT
+		#pragma bool on
+	#else
+		#pragma bool off
+	#endif
+#endif  // _MSL_FORCE_ENABLE_BOOL_SUPPORT
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	namespace Metrowerks {
+#else
+	#ifndef Metrowerks
+		#define Metrowerks
+	#endif
+#endif  // _MSL_NO_CPP_NAMESPACE
+
+#ifndef _MSL_NO_CONSOLE_INPUT
+
+template <class charT, class traits = _STD::char_traits<charT> >
+class console_inputbuf
+	: public _STD::basic_streambuf<charT, traits>
+{
+	typedef _STD::basic_streambuf<charT, traits> base;
+public:
+	typedef charT                     char_type;
+	typedef typename traits::int_type int_type;
+	typedef typename traits::pos_type pos_type;
+	typedef typename traits::off_type off_type;
+	typedef traits                    traits_type;
+
+	explicit console_inputbuf(_CSTD::FILE* file);
+protected:
+	virtual _STD::streamsize showmanyc();
+	virtual int_type underflow();
+	virtual int_type uflow();
+	virtual int_type pbackfail(int_type c = traits_type::eof());
+
+	virtual _STD::basic_streambuf<charT, traits_type>* setbuf(char_type* s, _STD::streamsize n);
+	virtual int      sync();
+#ifndef _MSL_NO_LOCALE
+	virtual void     imbue(const _STD::locale& loc);
+#endif
+
+private:
+
+#ifndef _MSL_NO_LOCALE
+	typedef typename traits_type::state_type state_type;
+	typedef _STD::codecvt<charT, char, state_type> Converter;
+#endif  // _MSL_NO_LOCALE
+
+	_CSTD::FILE* file_;
+#ifndef _MSL_NO_LOCALE
+	state_type state_;
+	const Converter* a_codecvt_;
+#endif  // _MSL_NO_LOCALE
+	int encoding_;
+	char_type buffer_;
+#ifndef _MSL_NO_LOCALE
+	bool always_noconv_;
+#endif
+	bool buffered_;
+	bool buffer_full_;
+	bool buffer_warm_;
+
+#ifndef _MSL_NO_LOCALE
+	void update_codecvt(const _STD::locale& loc);
+#else
+	void update_codecvt();
+#endif
+	int_type read_one(bool consume);
+	int unread(char_type c);
+
+	static const _CSTD::size_t char_limit = 12;
+
+	int get_a_char()
+	{
+	#ifdef _MSL_USING_MSL_C
+		return file_->buffer_len-- ? *file_->buffer_ptr++ : __get_char(file_);
+	#else
+		return getc(file_);
+	#endif
+	}
+
+	console_inputbuf(const console_inputbuf&);            // not defined
+	console_inputbuf& operator=(const console_inputbuf&); // not defined
+};
+
+template <class charT, class traits>
+console_inputbuf<charT, traits>::console_inputbuf(_CSTD::FILE* file)
+	: file_(file),
+#ifndef _MSL_NO_LOCALE
+	  state_(state_type()),
+#endif
+	  buffered_(false),
+	  buffer_full_(false),
+	  buffer_warm_(false)
+{
+	if (file_ == 0)
+		_MSL_ERROR(_STD::runtime_error, "console_inputbuf constructor given null FILE*");
+#ifndef _MSL_NO_LOCALE
+	update_codecvt(base::getloc());
+#else
+	update_codecvt();
+#endif
+}
+
+template <class charT, class traits>
+_STD::streamsize
+console_inputbuf<charT, traits>::showmanyc()
+{
+	_STD::streamsize result = buffer_full_;
+#ifdef _MSL_USING_MSL_C
+	if (encoding_ > 0)
+		result += (_STD::streamsize)file_->buffer_len / encoding_;
+#endif  // _MSL_USING_MSL_C
+	return result;
+}
+
+template <class charT, class traits>
+typename console_inputbuf<charT, traits>::int_type
+console_inputbuf<charT, traits>::underflow()
+{
+	if (buffer_full_)
+		return traits_type::to_int_type(buffer_);
+	int_type ci = read_one(buffered_);
+	if (buffered_ && !traits_type::eq_int_type(ci, traits_type::eof()))
+	{
+		buffer_ = traits_type::to_char_type(ci);
+		buffer_warm_ = buffer_full_ = true;
+	}
+	return ci;
+}
+
+template <class charT, class traits>
+typename console_inputbuf<charT, traits>::int_type
+console_inputbuf<charT, traits>::uflow()
+{
+	if (buffer_full_)
+	{
+		buffer_full_ = false;
+		return traits_type::to_int_type(buffer_);
+	}
+	int_type ci = read_one(true);
+	if (buffered_ && !traits_type::eq_int_type(ci, traits_type::eof()))
+	{
+		buffer_ = traits_type::to_char_type(ci);
+		buffer_warm_ = true;
+	}
+	return ci;
+}
+
+template <class charT, class traits>
+typename console_inputbuf<charT, traits>::int_type
+console_inputbuf<charT, traits>::pbackfail(int_type c)
+{
+	if (buffered_ )
+	{
+		if (buffer_full_)
+		{
+			if (traits_type::eq_int_type(c, traits_type::eof()))
+				return c;
+			if (unread(buffer_) < 0)
+				return traits_type::eof();
+			buffer_ = traits_type::to_char_type(c);
+			buffer_warm_ = true;
+		}
+		else
+		{
+			if (!traits_type::eq_int_type(c, traits_type::eof()))
+			{
+				buffer_ = traits_type::to_char_type(c);
+				buffer_warm_ = true;
+			}
+			else if (!buffer_warm_)
+				return traits_type::eof();
+			buffer_full_ = true;
+		}
+	}
+	else
+	{
+		if (traits_type::eq_int_type(c, traits_type::eof()))
+			return c;
+		if (unread(traits_type::to_char_type(c)) < 0)
+			return traits_type::eof();
+	}
+	return traits_type::not_eof(c);
+}
+
+template <class charT, class traits>
+_STD::basic_streambuf<charT, traits>*
+console_inputbuf<charT, traits>::setbuf(char_type* s, _STD::streamsize n)
+{
+	if (sync() < 0)
+		return 0;
+	buffered_ = !(s == 0 && n == 0);
+	if (!buffered_)
+		buffer_warm_ = false;
+	return this;
+}
+
+template <class charT, class traits>
+int
+console_inputbuf<charT, traits>::sync()
+{
+	if (buffered_)
+	{
+		if (buffer_full_)
+			if (unread(buffer_) < 0)
+				return -1;
+		buffer_full_ = false;
+	}
+	return 0;
+}
+
+#ifndef _MSL_NO_LOCALE
+
+	template <class charT, class traits>
+	void
+	console_inputbuf<charT, traits>::imbue(const _STD::locale& loc)
+	{
+		if (sync() < 0)
+			_MSL_ERROR(_STD::runtime_error, "console_inputbuf::imbue failed");
+		update_codecvt(loc);
+	}
+
+#endif  // _MSL_NO_LOCALE
+
+template <class charT, class traits>
+void
+#ifndef _MSL_NO_LOCALE
+console_inputbuf<charT, traits>::update_codecvt(const _STD::locale& loc)
+#else
+console_inputbuf<charT, traits>::update_codecvt()
+#endif
+{
+#ifndef _MSL_NO_LOCALE
+	a_codecvt_ = &_STD::_USE_FACET(Converter, loc);
+	always_noconv_ = a_codecvt_->always_noconv();
+	encoding_ = a_codecvt_->encoding();
+	if ((_CSTD::size_t)encoding_ > char_limit || (always_noconv_ && (_CSTD::size_t)encoding_ != sizeof(char_type)))
+		_MSL_ERROR(_STD::runtime_error, "console_inputbuf: bad encoding");
+#else  // _MSL_NO_LOCALE
+	encoding_ = (int)sizeof(char_type);
+	compile_assert<sizeof(char_type) <= char_limit> console_inputbuf_bad_char_limit; (void)console_inputbuf_bad_char_limit;
+#endif  // _MSL_NO_LOCALE
+}
+
+template <class charT, class traits>
+typename console_inputbuf<charT, traits>::int_type
+console_inputbuf<charT, traits>::read_one(bool consume)
+{
+	int ci;
+	char extern_buf[char_limit];
+	int n = _STD::max(1, encoding_);
+	for (int i = 0; i < n; ++i)
+	{
+		ci = get_a_char();
+		if (ci == EOF)
+			return traits_type::eof();
+		extern_buf[i] = static_cast<char>(ci);
+	}
+	char_type intern_buf;
+#ifndef _MSL_NO_LOCALE
+	if (always_noconv_)
+#endif
+		intern_buf = *(char_type*)extern_buf;
+#ifndef _MSL_NO_LOCALE
+	else
+	{
+		const char* extern_end;
+		char_type* intern_end;
+		_STD::codecvt_base::result r;
+		_CSTD::ptrdiff_t offset = 0;
+		do
+		{
+			r = a_codecvt_->in(state_, extern_buf + offset, extern_buf + n, extern_end,
+			                           &intern_buf, &intern_buf + 1, intern_end);
+			switch (r)
+			{
+			case _STD::codecvt_base::error:
+				return traits_type::eof();
+			case _STD::codecvt_base::partial:
+				offset = extern_end - extern_buf;
+				if (n == (int)char_limit)
+					return traits_type::eof();
+				ci = get_a_char();
+				if (ci == EOF)
+					return traits_type::eof();
+				extern_buf[n++] = static_cast<char>(ci);
+				break;
+			case _STD::codecvt_base::ok:
+				break;
+			case _STD::codecvt_base::noconv:
+				intern_buf = *(char_type*)extern_buf;
+				break;
+			}
+		} while (r == _STD::codecvt_base::partial);
+	}
+#endif  // _MSL_NO_LOCALE
+	if (!consume)
+	{
+		for (int i = n; i > 0;)
+		{
+			if (ungetc(extern_buf[--i], file_) == EOF)
+				return traits_type::eof();
+		}
+	}
+	return traits_type::to_int_type(intern_buf);
+}
+
+template <class charT, class traits>
+int
+console_inputbuf<charT, traits>::unread(char_type c)
+{
+	char extern_buf[char_limit];
+#ifndef _MSL_NO_LOCALE
+	char* extern_end;
+	const char_type* intern_end;
+	_CSTD::size_t n;
+	_STD::codecvt_base::result r = a_codecvt_->out(state_, &c, &c + 1, intern_end,
+	                                         extern_buf, extern_buf + char_limit, extern_end);
+	switch (r)
+	{
+	case _STD::codecvt_base::error:
+	case _STD::codecvt_base::partial:
+		return -1;
+	case _STD::codecvt_base::noconv:
+		n = sizeof(char_type);
+		_CSTD::memcpy(extern_buf, &c, n);
+		break;
+	case _STD::codecvt_base::ok:
+		n = static_cast<_CSTD::size_t>(extern_end - extern_buf);
+		break;
+	}
+#else  // _MSL_NO_LOCALE
+	_CSTD::size_t n = sizeof(char_type);
+	_CSTD::memcpy(extern_buf, &c, n);
+#endif  // _MSL_NO_LOCALE
+	for (unsigned i = 0; i < n; ++i)
+		if (ungetc(extern_buf[i], file_) == EOF)
+			return -1;
+	return 0;
+}
+
+#endif  // _MSL_NO_CONSOLE_INPUT
+
+#ifndef _MSL_TINY_IO
+
+template <class charT, class traits = _STD::char_traits<charT> >
+class console_outputbuf
+	: public bufferedbuf<charT, traits>
+{
+	typedef bufferedbuf<charT, traits> base;
+public:
+	typedef charT                     char_type;
+	typedef typename traits::int_type int_type;
+	typedef typename traits::pos_type pos_type;
+	typedef typename traits::off_type off_type;
+	typedef traits                    traits_type;
+
+	explicit console_outputbuf(_CSTD::FILE* file);
+
+protected:
+
+	virtual int sync();
+
+private:
+	_CSTD::FILE* file_;
+
+	virtual _CSTD::ptrdiff_t write_chars(const char* buf, _CSTD::ptrdiff_t n);
+	virtual _CSTD::ptrdiff_t read_chars(char* buf, _CSTD::ptrdiff_t n);
+	virtual off_type seek_device(off_type off, int whence);
+
+	console_outputbuf(const console_outputbuf&);             // not defined
+	console_outputbuf& operator=(const console_outputbuf&);  // not defined
+};
+
+template <class charT, class traits>
+int
+console_outputbuf<charT, traits>::sync()
+{
+	int result = base::sync();
+	if (result >= 0)
+		result = _CSTD::fflush(file_);
+	return result;
+}
+
+template <class charT, class traits>
+console_outputbuf<charT, traits>::console_outputbuf(_CSTD::FILE* file)
+	: base(0),
+	  file_(file)
+{
+	base::open(false);
+}
+
+template <class charT, class traits>
+_CSTD::ptrdiff_t
+console_outputbuf<charT, traits>::write_chars(const char* buf, _CSTD::ptrdiff_t n)
+{
+	return (_CSTD::ptrdiff_t)_CSTD::fwrite(buf, 1, (_CSTD::size_t)n, file_);
+}
+
+template <class charT, class traits>
+_CSTD::ptrdiff_t
+console_outputbuf<charT, traits>::read_chars(char*, _CSTD::ptrdiff_t)
+{
+	return -1;
+}
+
+template <class charT, class traits>
+typename console_outputbuf<charT, traits>::off_type
+console_outputbuf<charT, traits>::seek_device(off_type, int)
+{
+	return (off_type)(-1);
+}
+
+#else  // _MSL_TINY_IO
+
+template <class charT, class traits = _STD::char_traits<charT> >
+class console_outputbuf
+	: public _STD::basic_streambuf<charT, traits>
+{
+	typedef _STD::basic_streambuf<charT, traits> base;
+public:
+	typedef charT                     char_type;
+	typedef typename traits::int_type int_type;
+	typedef typename traits::pos_type pos_type;
+	typedef typename traits::off_type off_type;
+	typedef traits                    traits_type;
+
+	explicit console_outputbuf(_CSTD::FILE* file);
+
+protected:
+
+	virtual int_type overflow (int_type c = traits::eof());
+	virtual int sync();
+
+private:
+	_CSTD::FILE* file_;
+
+	console_outputbuf(const console_outputbuf&);             // not defined
+	console_outputbuf& operator=(const console_outputbuf&);  // not defined
+};
+
+template <class charT, class traits>
+console_outputbuf<charT, traits>::console_outputbuf(_CSTD::FILE* file)
+	: file_(file)
+{
+}
+
+template <class charT, class traits>
+typename console_outputbuf<charT, traits>::int_type
+console_outputbuf<charT, traits>::overflow(int_type c)
+{
+	if (!traits::eq_int_type(c, traits::eof()))
+	{
+		charT ch = traits::to_char_type(c);
+		if (!_CSTD::fwrite(&ch, sizeof(charT), 1, file_))
+			return traits::eof();
+	}
+	return traits::not_eof(c);
+}
+
+template <class charT, class traits>
+int
+console_outputbuf<charT, traits>::sync()
+{
+	return _CSTD::fflush(file_);
+}
+
+#endif  // _MSL_TINY_IO
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	} // namespace Metrowerks
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#pragma enumsalwaysint reset
+#endif
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#pragma bool reset
+#endif
+
+#ifdef __MWERKS__
+#pragma options align=reset
+#endif
+
+#endif // RC_INVOKED
+
+#endif  // !defined(_MSL_NO_CONSOLE_IO) || !defined(_MSL_NO_FILE_IO)
+
+#endif // _MSL_CONSOLEBUF
+
+// hh 020923 created
+// hh 031201 Added sync override
+// hh 040209 basic_streambuf::imbue() now does nothing.  Reacted here.

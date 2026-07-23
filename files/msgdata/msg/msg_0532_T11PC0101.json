@@ -1,0 +1,42 @@
+{
+  "key": 36466,
+  "messages": [
+    {
+      "id": "msg_0532_T11PC0101_00000",
+      "en_US": [
+        "What are Johto’s Pokémon Centers like?\r",
+        "...Oh, I see. So they’re not much\n",
+        "different from the ones in Kanto.\r",
+        "Then I’ll get my friend in Johto to\n",
+        "catch a MARILL and trade it to me!"
+      ]
+    },
+    {
+      "id": "msg_0532_T11PC0101_00001",
+      "en_US": [
+        "I just happened to come through the\n",
+        "Rock Tunnel. There was some commotion\f",
+        "at the Power Plant."
+      ]
+    },
+    {
+      "id": "msg_0532_T11PC0101_00002",
+      "en_US": [
+        "Adventures are not always full of\n",
+        "oceans and mountains!\r",
+        "Daily life can be quite adventurous!\r",
+        "...By the way, I’ve heard people\n",
+        "talking about a cave in Cerulean.\r",
+        "Do you know anything?"
+      ]
+    },
+    {
+      "id": "msg_0532_T11PC0101_00003",
+      "en_US": [
+        "Silph Co.’s head office and the\n",
+        "Magnet Train station--\f",
+        "they’re the places to see in Saffron."
+      ]
+    }
+  ]
+}

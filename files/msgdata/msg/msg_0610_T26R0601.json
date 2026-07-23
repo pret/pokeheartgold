@@ -1,0 +1,49 @@
+{
+  "key": 21630,
+  "messages": [
+    {
+      "id": "msg_0610_T26R0601_00000",
+      "en_US": [
+        "Olivine is on the sea!\r",
+        "And if it’s on the sea, there is bound\n",
+        "to be something to catch!\r",
+        "I’ve fished here for 30 years.\r",
+        "Would you like to face the sea\n",
+        "and fish? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0610_T26R0601_00001",
+      "en_US": [
+        "Ah, hahah!\n",
+        "We have ourselves a new angler!"
+      ]
+    },
+    {
+      "id": "msg_0610_T26R0601_00002",
+      "garbage": 20
+    },
+    {
+      "id": "msg_0610_T26R0601_00003",
+      "en_US": [
+        "Water-type Pokémon aren’t found\n",
+        "in the sea alone.\f",
+        "They go wherever there is water."
+      ]
+    },
+    {
+      "id": "msg_0610_T26R0601_00004",
+      "en_US": [
+        "Whaaat? You don’t like to fish!?\f",
+        "Incomprehensible!"
+      ]
+    },
+    {
+      "id": "msg_0610_T26R0601_00005",
+      "en_US": [
+        "How are things?\n",
+        "Land the big one?"
+      ]
+    }
+  ]
+}

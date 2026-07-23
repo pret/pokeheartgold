@@ -1,0 +1,107 @@
+/* MSL
+ * Copyright © 1995-2006 Freescale Corporation.  All rights reserved.
+ *
+ * $Date: 2006/02/08 20:32:42 $
+ * $Revision: 1.49.2.2 $
+ */
+
+#ifndef _MSL_CSETJMP
+#define _MSL_CSETJMP
+
+#include <ansi_parms.h>
+
+#if !_MSL_USING_MW_C_HEADERS
+	#include <setjmp.h>
+	
+	#if _MSL_PUT_THIRD_PARTY_C_IN_STD
+		#include <msl_cpp_std_setjmp.h>
+	#endif
+#else
+
+#ifndef RC_INVOKED
+
+#if __dest_os == __mac_os || __dest_os == __mac_os_x
+	#include <setjmp.mac.h>
+#elif __dest_os == __win32_os || __dest_os == __wince_os
+	#include <setjmp.win32.h>
+#elif __dest_os == __ppc_eabi || __dest_os == __dolphin_os
+	#include <setjmp.EPPC.h>
+#elif __dest_os == __mips_bare || __dest_os == __n64_os
+	#include <setjmp.MIPS.h>
+#elif __dest_os == __sh_bare
+	#include <setjmp.sh.h>
+#elif __dest_os == __m56800_os || __dest_os == __m56800E_os
+	#include <setjmp.56800.h>
+#elif __dest_os == __emb_68k || __dest_os == __mcore_bare
+	#include <setjmp.68k.h>
+#elif __dest_os == __palm_os
+	#include <setjmp_Palm_OS.h>
+#elif __dest_os == __arm_bare
+	#include <setjmp.ARM.h>
+#elif __dest_os == __starcore_bare
+	#include <setjmp_StarCore.h>
+#else
+	#error Unknown platform
+#endif
+
+
+#ifndef _MSL_SETJMP_LONGJMP_DEFINED
+#define _MSL_SETJMP_LONGJMP_DEFINED
+
+		_MSL_BEGIN_EXTERN_C
+		
+			_MSL_IMP_EXP_C int _MSL_CDECL setjmp(__std(jmp_buf)) /*_MSL_CANT_THROW*/;
+		
+		_MSL_END_EXTERN_C
+
+		
+		_MSL_BEGIN_NAMESPACE_STD
+		_MSL_BEGIN_EXTERN_C
+		
+			_MSL_IMP_EXP_C void _MSL_CDECL longjmp(jmp_buf,int) _MSL_CANT_THROW;
+		
+		_MSL_END_EXTERN_C
+		_MSL_END_NAMESPACE_STD
+
+#endif /* _MSL_SETJMP_LONGJMP_DEFINED */
+
+_MSL_BEGIN_NAMESPACE_STD
+_MSL_BEGIN_EXTERN_C
+
+	_MSL_IMP_EXP_C void _MSL_CDECL __longjmp_ldestr(jmp_buf,int) _MSL_CANT_THROW;
+
+_MSL_END_EXTERN_C
+_MSL_END_NAMESPACE_STD
+
+#endif /* RC_INVOKED */
+
+#endif /* _MSL_USING_MW_C_HEADERS */
+
+#endif /* _MSL_CSETJMP */
+
+/* Change record:
+ * bkos960829 added l.you's changes for powerTV
+ * KO  960917 Moved the __extern_c block up here so it now encloses
+ *             the Intel function declaration.
+ * mm  970708 Inserted Be changes
+ * hh  971206 Changed filename from setjmp.h to csetjmp and added namespace support.
+ * hh  971230 added RC_INVOKED wrapper
+ * vss 980807 remove pragma  - no longer supported by compiler
+ * vss 990115 removed powerTV wrappers
+ * bdd 000203 Add AltiVec changes (contributed)
+ * hh  990521 added __std() qualifier to setjmp macro, 4 places
+ * as  990824 added SH specific sections
+ * hh  006012 Removed setjmp from namespace std where it is a function.
+ * hh  000712 Wrapped jmp_buf in __std() in the two places where setjmp was moved to global namespace
+ * as  001030 *happy halloween* added MCORE specific sections
+ * JWW 001208 Added case for targeting Mach-O
+ * cc  000326 removed dest_os to be_os  
+ * cc  010410 updated to new namespace macros 		
+ * sw  011005 needed larger setjmp space for Gekko.
+ * JWW 011027 Use _MSL_USING_MW_C_HEADERS as generic header test instead of specific Mach-O test
+ * JWW 011101 Make setjmp information platform independent
+ * cc  011203 Added _MSL_CDECL for new name mangling 
+ * hh  020603 Added no throw spec to functions
+ * lgo 041109 added StarCore
+ * JWW 050128 When using MSL C++ on top of a third party C (non-MSL), put C items into std namespace
+ */

@@ -1,6 +1,6 @@
 project('pokeheartgold', ['c', 'cpp', 'nasm'],
     version: '1.0',
-    meson_version: '>=1.5.0',
+    meson_version: '>=1.10.0',
     default_options : [
         'buildtype=plain',
         'warning_level=0'
@@ -13,6 +13,7 @@ fs = import('fs')
 ###                    INCLUDE PATHS                     ###
 ############################################################
 public_includes = include_directories('include', 'asm/include')
+toplevel_includes = include_directories('.')
 
 ############################################################
 ###                    COMPILER FLAGS                    ###
@@ -130,6 +131,7 @@ pokeheartgold_nds = custom_target('pokeheartgold.us.nds',
     input : [
         main,
         rom_header_template,
+        nitrofs_files,
     ],
     command : [
         nitrorom_exe,
@@ -137,3 +139,8 @@ pokeheartgold_nds = custom_target('pokeheartgold.us.nds',
         '-DHEADER_TEMPLATE=@INPUT1@', #rom_header_template
     ]
 )
+
+############################################################
+###                       POSTCONF                       ###
+############################################################
+meson.add_postconf_script(postconf_py)

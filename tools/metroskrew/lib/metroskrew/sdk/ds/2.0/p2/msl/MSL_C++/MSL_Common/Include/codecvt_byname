@@ -1,0 +1,282 @@
+/* MSL
+ * Copyright © 1995-2006 Freescale Corporation.  All rights reserved.
+ *
+ * $Date: 2006/02/09 16:58:10 $
+ * $Revision: 1.19.2.2 $
+ */
+
+// codecvt_byname
+
+#ifndef _CODECVT_BYNAME
+#define _CODECVT_BYNAME
+
+#include <mslconfig>
+
+#ifndef _MSL_NO_IO
+
+#ifndef _MSL_NO_LOCALE
+
+#include <codecvt_ext>
+#include <fstream>
+
+#ifndef RC_INVOKED
+
+#ifdef __MWERKS__
+#pragma options align=native
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#if _MSL_FORCE_ENUMS_ALWAYS_INT
+		#pragma enumsalwaysint on
+	#else
+		#pragma enumsalwaysint off
+	#endif
+#endif  // _MSL_FORCE_ENUMS_ALWAYS_INT
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#if _MSL_FORCE_ENABLE_BOOL_SUPPORT
+		#pragma bool on
+	#else
+		#pragma bool off
+	#endif
+#endif  // _MSL_FORCE_ENABLE_BOOL_SUPPORT
+
+#ifdef min
+#undef min
+#endif
+
+#ifdef max
+#undef max
+#endif
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	namespace std {
+#endif
+
+#ifndef _MSL_NO_LOCALE
+
+// codecvt_byname
+
+template <class internT, class externT, class stateT>
+class codecvt_byname
+	: public codecvt<internT, externT, stateT>
+{
+public:
+	typedef codecvt_base::result result;
+	explicit codecvt_byname(const char* std_name, size_t refs = 0);
+protected:
+	virtual ~codecvt_byname();
+	virtual result do_out(stateT& state, const internT* from, const internT* from_end, const internT*& from_next, externT* to, externT* to_limit, externT*& to_next) const;
+	virtual result do_in(stateT& state, const externT* from, const externT* from_end, const externT*& from_next, internT* to, internT* to_limit, internT*& to_next) const;
+	virtual result do_unshift(stateT& state, externT* to, externT* to_limit, externT*& to_next) const;
+	virtual int do_encoding() const _MSL_NO_THROW;
+	virtual bool do_always_noconv() const _MSL_NO_THROW;
+	virtual int do_length(stateT& state, const externT* from, const externT* from_end, size_t max) const;
+	virtual int do_max_length() const _MSL_NO_THROW;
+
+	__codecvt_pub_destructor<internT, externT, stateT>* __codecvt_;
+};
+
+template <class internT, class externT, class stateT>
+codecvt_byname<internT, externT, stateT>::codecvt_byname(const char* std_name, size_t refs)
+	: codecvt<internT, externT, stateT>(refs),
+	  __codecvt_(0)
+{
+	if (std_name == 0)
+		#ifndef _MSL_NO_EXCEPTIONS
+			throw runtime_error("codecvt_byname constructed with null name");
+		#else
+			__msl_error("codecvt_byname constructed with null name");
+		#endif
+	if (strlen(std_name) == 0)
+		std_name = getenv("MSL_DEFAULT_LOCALE");
+	if (std_name != 0 && strcmp(std_name, "C") != 0)
+	{
+	#ifndef _MSL_NO_FILE_IO
+		ifstream infile(std_name, ios::binary);
+		if (!infile.is_open())
+		#ifndef _MSL_NO_EXCEPTIONS
+			throw runtime_error(string("codecvt_byname constructed with unsupported name: ") + std_name);
+		#else
+			__msl_error("codecvt_byname constructed with unsupported name");
+		#endif
+		string word;
+		const string codecvt_marker("codecvt_wide");
+		bool success = true;
+		while (infile.good())
+		{
+			infile.ignore(numeric_limits<streamsize>::max(), '$');
+			infile >> word;
+			if (infile.fail())
+				break;
+			if (word == codecvt_marker)
+			{
+				success = false;
+				string codecvt_names[6];
+				codecvt_names[0] = "noconv";
+				codecvt_names[1] = "UCS-2";
+				codecvt_names[2] = "JIS";
+				codecvt_names[3] = "Shift-JIS";
+				codecvt_names[4] = "EUC";
+				codecvt_names[5] = "UTF-8";
+				const string (&const_codecvt_names)[6] = codecvt_names;
+				const ctype<char>& ct = _USE_FACET(ctype<char>, infile.getloc());
+				ios_base::iostate err = ios_base::goodbit;
+				istreambuf_iterator<char> in(infile), end;
+				ws(infile);
+				const string* i = __parse_a_word(in, end, const_codecvt_names, const_codecvt_names+6, ct, err);
+				if (err)
+					infile.setstate(err);
+				switch (i-const_codecvt_names)
+				{
+				case 0:  // noconv
+					break;
+				case 1:  // UCS-2
+					__codecvt_ = new __ucs_2<internT>;
+					break;
+				case 2:  // JIS
+					__codecvt_ = new __jis<internT>;
+					break;
+				case 3:  // Shift-JIS
+					__codecvt_ = new __shift_jis<internT>;
+					break;
+				case 4:  // EUC
+					__codecvt_ = new __euc<internT>;
+					break;
+				case 5:  // UTF-8
+					__codecvt_ = new __utf_8<internT>;
+					break;
+				default:
+					goto skip_success;
+				}
+				success = true;
+			skip_success:
+				;
+			}
+		}
+		if (!success)
+		#ifndef _MSL_NO_EXCEPTIONS
+			throw runtime_error(string("codecvt_byname file input error: ") + std_name);
+		#else
+			__msl_error("codecvt_byname file input error");
+		#endif
+	#else  // _MSL_NO_FILE_IO
+		#ifndef _MSL_NO_EXCEPTIONS
+			throw runtime_error(string("codecvt_byname constructed with unsupported name: ") + std_name);
+		#else
+			__msl_error("codecvt_byname constructed with unsupported name");
+		#endif
+	#endif  // _MSL_NO_FILE_IO
+	}
+}
+
+template <class internT, class externT, class stateT>
+codecvt_byname<internT, externT, stateT>::~codecvt_byname()
+{
+	delete __codecvt_;
+}
+
+template <class internT, class externT, class stateT>
+codecvt_base::result
+codecvt_byname<internT, externT, stateT>::do_out(stateT& state,
+	const internT* from, const internT* from_end, const internT*& from_next,
+	      externT* to,         externT* to_limit,       externT*& to_next) const
+{
+	return __codecvt_ ?
+		__codecvt_->out(state, from, from_end, from_next, to, to_limit, to_next) :
+		codecvt<internT, externT, stateT>::do_out(state, from, from_end, from_next, to, to_limit, to_next);
+}
+
+template <class internT, class externT, class stateT>
+codecvt_base::result
+codecvt_byname<internT, externT, stateT>::do_in(stateT& state,
+	const externT* from, const externT* from_end, const externT*& from_next,
+	      internT* to,         internT* to_limit,       internT*& to_next) const
+{
+	return __codecvt_ ?
+		__codecvt_->in(state, from, from_end, from_next, to, to_limit, to_next) :
+		codecvt<internT, externT, stateT>::do_in(state, from, from_end, from_next, to, to_limit, to_next);
+}
+
+template <class internT, class externT, class stateT>
+codecvt_base::result
+codecvt_byname<internT, externT, stateT>::do_unshift(stateT& state,
+	externT* to, externT* to_limit, externT*& to_next) const
+{
+	return __codecvt_ ?
+		__codecvt_->unshift(state, to, to_limit, to_next) :
+		codecvt<internT, externT, stateT>::do_unshift(state, to, to_limit, to_next);
+}
+
+template <class internT, class externT, class stateT>
+int
+codecvt_byname<internT, externT, stateT>::do_encoding() const _MSL_NO_THROW
+{
+	return __codecvt_ ? __codecvt_->encoding() : codecvt<internT, externT, stateT>::do_encoding();
+}
+
+template <class internT, class externT, class stateT>
+bool
+codecvt_byname<internT, externT, stateT>::do_always_noconv() const _MSL_NO_THROW
+{
+	return __codecvt_ ? __codecvt_->always_noconv() : codecvt<internT, externT, stateT>::do_always_noconv();
+}
+
+template <class internT, class externT, class stateT>
+int
+codecvt_byname<internT, externT, stateT>::do_length(stateT& state,
+	const externT* from, const externT* from_end, size_t max) const
+{
+	return __codecvt_ ?
+		__codecvt_->length(state, from, from_end, max) :
+		codecvt<internT, externT, stateT>::do_length(state, from, from_end, max);
+}
+
+template <class internT, class externT, class stateT>
+int
+codecvt_byname<internT, externT, stateT>::do_max_length() const _MSL_NO_THROW
+{
+	return __codecvt_ ?
+		__codecvt_->max_length() : codecvt<internT, externT, stateT>::do_max_length();
+}
+
+template <>
+class codecvt_byname<char, char, mbstate_t>
+	: public codecvt<char, char, mbstate_t>
+{
+public:
+	explicit codecvt_byname(const char*, size_t refs = 0)
+		: codecvt<char, char, mbstate_t>(refs) {}
+protected:
+	virtual ~codecvt_byname() {}
+};
+
+#endif  // _MSL_NO_LOCALE
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	} // namespace std
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#pragma enumsalwaysint reset
+#endif
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#pragma bool reset
+#endif
+
+#ifdef __MWERKS__
+#pragma options align=reset
+#endif
+
+#endif // RC_INVOKED
+
+#endif  // _MSL_NO_LOCALE
+
+#endif  // _MSL_NO_IO
+
+#endif  // _CODECVT_BYNAME
+
+// hh 010228 Created
+// hh 010402 Removed 68K CMF support
+// hh 021012 Separated into <codecvt_ext> and <codecvt_byname>

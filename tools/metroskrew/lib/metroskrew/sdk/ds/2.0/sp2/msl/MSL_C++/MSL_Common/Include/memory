@@ -1,0 +1,1086 @@
+/* MSL
+ * Copyright © 1995-2006 Freescale Corporation.  All rights reserved.
+ *
+ * $Date: 2006/02/09 16:58:50 $
+ * $Revision: 1.54.2.5 $
+ */
+
+// memory
+
+#ifndef _MEMORY
+#define _MEMORY
+
+/*  memory synopsis
+
+namespace std {
+
+//  the default allocator:
+
+template <class T> class allocator
+{
+public:
+	typedef size_t    size_type;
+	typedef ptrdiff_t difference_type;
+	typedef T*        pointer;
+	typedef const T*  const_pointer;
+	typedef T&        reference;
+	typedef const T&  const_reference;
+	typedef T         value_type;
+	template <class U> struct rebind { typedef allocator<U> other; };
+
+	allocator() throw();
+	allocator(const allocator&) throw();
+	template <class U> allocator(const allocator<U>&) throw();
+	~allocator() throw();
+
+	pointer address(reference x) const;
+	const_pointer address(const_reference x) const;
+
+	pointer allocate(size_type, allocator<void>::const_pointer hint = 0);
+	void deallocate(pointer p, size_type n);
+	size_type max_size() const throw();
+
+	void construct(pointer p, const T& val);
+	void destroy(pointer p);
+};
+
+//  specialize for  void:
+template <> class allocator<void>
+{
+public:
+	typedef void*       pointer;
+	typedef const void* const_pointer;
+	// reference-to-void  members are impossible.
+	typedef void  value_type;
+	template <class U> struct rebind { typedef allocator<U> other; };
+};
+
+template <class T, class U>
+bool
+operator==(const allocator<T>&, const allocator<U>&) throw();
+
+template <class T, class U>
+bool
+operator!=(const allocator<T>&, const allocator<U>&) throw();
+
+//  raw storage iterator:
+template <class OutputIterator, class T>
+class raw_storage_iterator
+	: public iterator<output_iterator_tag,void,void,void,void>
+{
+public:
+	explicit raw_storage_iterator(OutputIterator x);
+
+	raw_storage_iterator& operator*();
+	raw_storage_iterator& operator=(const T& element);
+	raw_storage_iterator& operator++();
+	raw_storage_iterator  operator++(int);
+};
+
+//  temporary buffers:
+template <class T>
+pair<T*,ptrdiff_t>
+get_temporary_buffer(ptrdiff_t n);
+
+template <class T>
+void
+return_temporary_buffer(T* p);
+
+//  specialized algorithms:
+template <class InputIterator, class ForwardIterator>
+ForwardIterator
+uninitialized_copy(InputIterator first, InputIterator last, ForwardIterator result);
+
+template <class ForwardIterator, class T>
+void
+uninitialized_fill(ForwardIterator first, ForwardIterator last, const T& x);
+
+template <class ForwardIterator, class Size, class T>
+void
+uninitialized_fill_n(ForwardIterator first, Size n, const T& x);
+
+	//  auto_ptr
+
+template <class Y> struct auto_ptr_ref {...};
+
+template<class X>
+class auto_ptr
+{
+public:
+	typedef X element_type;
+	typedef single_ptr_tag category;
+
+	//  lib.auto.ptr.cons construct/copy/destroy:
+	explicit auto_ptr(X* p = 0) throw();
+	auto_ptr(auto_ptr& a) throw();
+	template<class Y> auto_ptr(auto_ptr<Y>& a) throw();
+	auto_ptr& operator=(auto_ptr& a) throw();
+	template<class Y> auto_ptr& operator=(auto_ptr<Y>& a) throw();
+	~auto_ptr() throw();
+
+	//  lib.auto.ptr.members members:
+	X& operator*() const throw();
+	X* operator->() const throw();
+	X* get() const throw();
+	X* release() throw();
+	void reset(X* p = 0) throw();
+
+	//  lib.auto.ptr.conv conversions:
+	auto_ptr(auto_ptr_ref<X> r) throw();
+	auto_ptr& operator=(auto_ptr_ref<X> r) throw();
+	template<class Y> operator auto_ptr_ref<Y>() throw();
+	template<class Y> operator auto_ptr<Y>() throw();
+};
+
+}  // std
+*/
+
+#include <mslconfig>
+
+#include <cstddef>
+#include <cstdlib>
+#include <cstring>
+#ifndef _MSL_NO_WCHART_C_SUPPORT
+	#ifdef _MSL_USING_MSL_C
+		#include <wmem.h>
+	#else
+		#include <cwchar>
+	#endif
+#endif  // _MSL_NO_WCHART_C_SUPPORT
+#include <new>
+#include <msl_int_limits>
+#include <utility>
+#include <iterator>
+#include <msl_utility>
+#include <typeinfo>
+#include <msl_smart_pointers>
+#ifdef _MSL_DEBUG
+	#include <stdexcept>
+#endif
+
+#ifndef RC_INVOKED
+
+#ifdef __MWERKS__
+#pragma options align=native
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#if _MSL_FORCE_ENUMS_ALWAYS_INT
+		#pragma enumsalwaysint on
+	#else
+		#pragma enumsalwaysint off
+	#endif
+#endif  // _MSL_FORCE_ENUMS_ALWAYS_INT
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#if _MSL_FORCE_ENABLE_BOOL_SUPPORT
+		#pragma bool on
+	#else
+		#pragma bool off
+	#endif
+#endif  // _MSL_FORCE_ENABLE_BOOL_SUPPORT
+
+#ifdef min
+#undef min
+#endif
+
+#ifdef max
+#undef max
+#endif
+
+#if defined(_MSL_ALLOCATE_SIZE)   && \
+    defined(_MSL_ALLOCATE)        && \
+    defined(_MSL_ALLOCATE_RESIZE) && \
+    defined(_MSL_ALLOCATE_EXPAND) && \
+    !defined(_MSL_HAS_EXPAND_IN_PLACE)
+
+#define _MSL_HAS_EXPAND_IN_PLACE
+
+#endif  // defined(_MSL_ALLOCATE_SIZE)   && \
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	namespace std {
+#endif
+
+// Warning, __destroy is non-standard
+
+template <class T>
+inline
+void
+__destroy(T* pointer)
+{
+	pointer->~T ();
+}
+
+template <class ForwardIterator>
+inline
+void
+__destroy(ForwardIterator first, ForwardIterator last, forward_iterator_tag)
+{
+	for(; first != last; ++first)
+		__destroy(&*first);
+}
+
+template <class RandomAccessIterator>
+inline
+void
+__destroy(RandomAccessIterator first, RandomAccessIterator last, random_access_iterator_tag)
+{
+	for(; first < last; ++first)
+		__destroy(&*first);
+}
+
+template <class ForwardIterator>
+inline
+void
+__destroy(ForwardIterator first, ForwardIterator last)
+{
+	__destroy(first, last, typename iterator_traits<ForwardIterator>::iterator_category());
+}
+
+//  lib.default.allocator, the default allocator:
+
+template <class T> class allocator;
+
+//  specialize for  void:
+
+template <>
+class allocator<void>
+{
+public:
+	typedef size_t      size_type;
+	typedef ptrdiff_t   difference_type;
+	typedef void*       pointer;
+	typedef const void* const_pointer;
+	typedef void        value_type;
+#ifndef _MSL_NO_MEMBER_TEMPLATE
+	template <class U> struct rebind { typedef allocator<U> other; };
+#endif
+};
+
+template <class T>
+class allocator
+{
+public:
+	typedef size_t    size_type;
+	typedef ptrdiff_t difference_type;
+	typedef T*        pointer;
+	typedef const T*  const_pointer;
+	typedef T&        reference;
+	typedef const T&  const_reference;
+	typedef T         value_type;
+#ifndef _MSL_NO_MEMBER_TEMPLATE
+	template <class U> struct rebind { typedef allocator<U> other; };
+#endif
+
+	allocator() _MSL_NO_THROW;
+#ifndef _MSL_NO_MEMBER_TEMPLATE
+#ifndef _MSL_MUST_INLINE_MEMBER_TEMPLATE
+	template <class U> allocator(const allocator<U>&) _MSL_NO_THROW;
+#else
+	template <class U>
+	inline
+	allocator(const allocator<U>&) _MSL_NO_THROW
+	{
+	}
+#endif  // _MSL_MUST_INLINE_MEMBER_TEMPLATE
+#endif  // _MSL_NO_MEMBER_TEMPLATE
+
+	pointer address(reference x) const;
+	const_pointer address(const_reference x) const;
+
+	pointer allocate(size_type n, allocator<void>::const_pointer hint = 0);
+	void deallocate(pointer p, size_type n);
+	size_type max_size() const _MSL_NO_THROW;
+
+	void construct(pointer p, const T& val);
+	void destroy(pointer p);
+
+#ifdef _MSL_MOVE
+	template <class U> void construct(pointer p, U&& val)
+		{::new((void*)p) T(_STD::forward<U>(val));}
+#endif  // _MSL_MOVE
+};
+
+template <class T>
+inline
+allocator<T>::allocator() _MSL_NO_THROW
+{
+}
+
+#ifndef _MSL_NO_MEMBER_TEMPLATE
+#ifndef _MSL_MUST_INLINE_MEMBER_TEMPLATE
+	template <class T>
+	template <class U>
+	inline
+	allocator<T>::allocator(const allocator<U>&) _MSL_NO_THROW
+	{
+	}
+#endif  // _MSL_MUST_INLINE_MEMBER_TEMPLATE
+#endif  // _MSL_NO_MEMBER_TEMPLATE
+
+template <class T>
+inline
+typename allocator<T>::pointer
+allocator<T>::address(reference x) const
+{
+	return &x;
+}
+
+template <class T>
+inline
+typename allocator<T>::const_pointer
+allocator<T>::address(const_reference x) const
+{
+	return &x;
+}
+
+template <class T>
+inline
+typename allocator<T>::pointer
+allocator<T>::allocate(size_type n, allocator<void>::const_pointer)
+{
+#ifndef _MSL_NO_EXCEPTIONS
+	return static_cast<pointer>(::operator new(n * sizeof(T)));
+#else
+	pointer p = static_cast<pointer>(::operator new(n * sizeof(T)));
+	if (p == 0)
+		__msl_error("Memory allocation failure");
+	return p;
+#endif  // _MSL_NO_EXCEPTIONS
+}
+
+template <class T>
+inline
+void
+allocator<T>::deallocate(pointer p, size_type)
+{
+#ifdef _MSL_DEBUG
+	if (p == 0)
+		_MSL_DEBUG_ERROR(logic_error, "MSL DEBUG: NULL pointer passed to allocator::deallocate");
+#endif  // _MSL_DEBUG
+	::operator delete((void*)p);
+}
+
+template <class T>
+inline
+typename allocator<T>::size_type
+allocator<T>::max_size() const _MSL_NO_THROW
+{
+	return numeric_limits<size_type>::max() / sizeof(T);
+}
+
+template <class T>
+inline
+void
+allocator<T>::construct(pointer p, const T& val)
+{
+	::new((void*)p) T(val);
+}
+
+template <class T>
+inline
+void
+allocator<T>::destroy(pointer p)
+{
+	p->~T();
+}
+
+template <class T, class U>
+inline
+bool
+operator==(const allocator<T>&, const allocator<U>&) _MSL_NO_THROW
+{
+	return true;
+}
+
+template <class T, class U>
+inline
+bool
+operator!=(const allocator<T>&, const allocator<U>&) _MSL_NO_THROW
+{
+	return false;
+}
+
+template <class T>
+inline
+bool
+operator!=(const allocator<T>&, const allocator<T>&) _MSL_NO_THROW
+{
+	return false;
+}
+
+//  lib.storage.iterator, raw storage iterator:
+
+template <class OutputIterator, class T>
+class raw_storage_iterator
+	: public iterator<output_iterator_tag, void, void, void, void>
+{
+public:
+	explicit raw_storage_iterator(OutputIterator x);
+
+	raw_storage_iterator& operator*();
+	raw_storage_iterator& operator=(const T& element);
+	raw_storage_iterator& operator++();
+	raw_storage_iterator  operator++(int);
+private:
+	OutputIterator x_;
+};
+
+template <class OutputIterator, class T>
+inline
+raw_storage_iterator<OutputIterator, T>::raw_storage_iterator(OutputIterator x)
+	: x_(x)
+{
+}
+
+template <class OutputIterator, class T>
+inline
+raw_storage_iterator<OutputIterator, T>&
+raw_storage_iterator<OutputIterator, T>::operator*()
+{
+	return *this;
+}
+
+template <class OutputIterator, class T>
+inline
+raw_storage_iterator<OutputIterator, T>&
+raw_storage_iterator<OutputIterator, T>::operator=(const T& element)
+{
+	::new(&*x_) T(element);
+	return *this;
+}
+
+template <class OutputIterator, class T>
+inline
+raw_storage_iterator<OutputIterator, T>&
+raw_storage_iterator<OutputIterator, T>::operator++()
+{
+	++x_;
+	return *this;
+}
+
+template <class OutputIterator, class T>
+inline
+raw_storage_iterator<OutputIterator, T>
+raw_storage_iterator<OutputIterator, T>::operator++(int)
+{
+	raw_storage_iterator tmp(*this);
+	++x_;
+	return tmp;
+}
+
+//  lib.temporary.buffer, temporary buffers:
+template <class T>
+pair<T*, ptrdiff_t>
+get_temporary_buffer(ptrdiff_t n)
+{
+	pair<T*, ptrdiff_t> result((T*)0, 0);
+	while (n > 0)
+	{
+		result.first = reinterpret_cast<T*>(new(nothrow) char [sizeof(T)*n]);
+		if (result.first != 0)
+		{
+			result.second = n;
+			break;
+		}
+		else
+			n /= 2;
+	}
+	return result;
+}
+
+template <class T>
+inline
+void
+return_temporary_buffer(T* p)
+{
+	delete [] reinterpret_cast<char*>(p);
+}
+
+// hh 980601  Added non-standard class.  This facilitates use of
+//            get_temporary_buffer in a exception-safe manner.
+//            Used in <algorithm>
+template <class T>
+class _TempVec
+{
+public:
+	// types:
+	typedef T&                                     reference;
+//	typedef const T&                               const_reference;
+	class                                          iterator;
+//	class                                          const_iterator;
+	typedef size_t                                 size_type;
+	typedef ptrdiff_t                              difference_type;
+	typedef T                                      value_type;
+	typedef T*                                     pointer;
+//	typedef const T*                               const_pointer;
+//	typedef _STD::reverse_iterator<iterator>       reverse_iterator;
+//	typedef _STD::reverse_iterator<const_iterator> const_reverse_iterator;
+
+	class proxy
+	{
+	public:
+		reference operator = (const T& rhs) const
+		{
+			if (cur_ - vec_->data_ < vec_->size_)
+				*cur_ = rhs;
+			else
+			{
+				::new (cur_) T(rhs);
+				++vec_->size_;
+			}
+			return *cur_;
+		}
+
+		reference operator = (const proxy& rhs) const
+		{
+			return *this = static_cast<const T&>(rhs);
+		}
+
+		operator const T& () const {return *cur_;}
+
+#ifdef _MSL_MOVE
+		reference operator = (T&& rhs) const
+		{
+			if (cur_ - vec_->data_ < vec_->size_)
+				*cur_ = _STD::move(rhs);
+			else
+			{
+				::new (cur_) T(_STD::move(rhs));
+				++vec_->size_;
+			}
+			return *cur_;
+		}
+
+		reference operator = (proxy&& rhs) const
+		{
+			return *this = static_cast<T&&>(rhs);
+		}
+
+		operator T&& () {return *cur_;}
+
+#endif  // _MSL_MOVE
+
+	private:
+		T* cur_;
+		_TempVec<T>* vec_;
+
+		proxy(T* cur, _TempVec<T>* vec) : cur_(cur), vec_(vec) {}
+
+		friend class iterator;
+	};
+	friend class proxy;
+
+	class iterator
+	{
+	public:
+		typedef T                          value_type;
+		typedef ptrdiff_t                  difference_type;
+		typedef T*                         pointer;
+		typedef T&                         reference;
+		typedef random_access_iterator_tag iterator_category;
+
+		iterator() {}
+		proxy operator * () const {return proxy(cur_, vec_);}
+		pointer operator -> () const {return cur_;}
+		iterator& operator ++ () {++cur_; return *this;}
+		iterator operator ++ (int) {iterator tmp(*this); ++(*this); return tmp;}
+		iterator& operator -- () {--cur_; return *this;}
+		iterator operator -- (int) {iterator tmp(*this); --(*this); return tmp;}
+		iterator& operator += (difference_type n) {cur_ += n; return *this;}
+		iterator operator + (difference_type n) const {return iterator(*this) += n;}
+		iterator& operator -= (difference_type n) {cur_ -= n; return *this;}
+		iterator operator - (difference_type n) const {return iterator(*this) -= n;}
+		difference_type operator - (const iterator& rhs) const {return difference_type(cur_ - rhs.cur_);}
+		proxy operator [] (size_type i) const {iterator tmp(*this); tmp += difference_type(i); return *tmp;}
+		friend bool operator ==(const iterator& x, const iterator& y) {return x.cur_ == y.cur_;}
+		friend bool operator !=(const iterator& x, const iterator& y) {return x.cur_ != y.cur_;}
+		friend bool operator < (const iterator& x, const iterator& y) {return x.cur_ < y.cur_;}
+		friend bool operator <=(const iterator& x, const iterator& y) {return x.cur_ <= y.cur_;}
+		friend bool operator > (const iterator& x, const iterator& y) {return x.cur_ >  y.cur_;}
+		friend bool operator >=(const iterator& x, const iterator& y) {return x.cur_ >= y.cur_;}
+		friend iterator operator + (difference_type n, const iterator& rhs)
+			{return iterator(rhs) += n;}
+	private:
+		pointer cur_;
+		_TempVec<T>* vec_;
+
+		iterator(T* cur, _TempVec<T>* vec) : cur_(cur), vec_(vec) {}
+
+		friend class _TempVec<T>;
+	};
+
+	_TempVec(ptrdiff_t cap);
+	~_TempVec();
+	iterator begin();
+	iterator end();
+	ptrdiff_t size() const;
+	ptrdiff_t capacity() const;
+private:
+	ptrdiff_t cap_;
+	ptrdiff_t size_;
+	T* data_;
+
+	_TempVec(const _TempVec&);             // Not defined
+	_TempVec& operator=(const _TempVec&);  // Not defined
+};
+
+template <class T>
+inline
+_TempVec<T>::_TempVec(ptrdiff_t cap)
+{
+	pair<T*, ptrdiff_t> buf = get_temporary_buffer<T>(cap);
+	data_ = buf.first;
+	cap_ = buf.second;
+	size_ = 0;
+}
+
+template <class T>
+inline
+_TempVec<T>::~_TempVec()
+{
+	__destroy(data_, data_ + size_);
+	_STD::return_temporary_buffer(data_);
+}
+
+template <class T>
+inline
+typename _TempVec<T>::iterator
+_TempVec<T>::begin()
+{
+	return iterator(data_, this);
+}
+
+template <class T>
+inline
+typename _TempVec<T>::iterator
+_TempVec<T>::end()
+{
+	return iterator(data_ + cap_, this);
+}
+
+template <class T>
+inline
+ptrdiff_t
+_TempVec<T>::size() const
+{
+	return size_;
+}
+
+template <class T>
+inline
+ptrdiff_t
+_TempVec<T>::capacity() const
+{
+	return cap_;
+}
+
+//  lib.specialized.algorithms, specialized algorithms:
+
+// uninitialized_copy
+
+template <class InputIterator, class ForwardIterator>
+inline
+ForwardIterator
+__uninitialized_copy(InputIterator first, InputIterator last, ForwardIterator result)
+{
+	ForwardIterator __save = result;
+#ifndef _MSL_NO_EXCEPTIONS
+	try
+	{
+#endif  // _MSL_NO_EXCEPTIONS
+		for (; first != last; ++result, ++first)
+			::new (&*result) typename iterator_traits<ForwardIterator>::value_type(*first);
+#ifndef _MSL_NO_EXCEPTIONS
+	}
+	catch (...)
+	{
+		__destroy(__save, result);
+		throw;
+	}
+#endif  // _MSL_NO_EXCEPTIONS
+	return result;
+}
+
+template <class InputIterator, class ForwardIterator>
+inline
+ForwardIterator
+uninitialized_copy(InputIterator first, InputIterator last, ForwardIterator result)
+{
+	return __uninitialized_copy(first, last, result);
+}
+
+#ifndef __GNUC__
+
+template <class T, bool IsPOD = Metrowerks::is_POD<T>::value, bool IsSmall = sizeof(T) < sizeof(int)>
+struct __uninitialized_copy_helper
+{
+	static T* uninitialized_copy(T* first, T* last, T* result)
+	{
+		return __uninitialized_copy(first, last, result);
+	}
+};
+
+template <class T>
+struct __uninitialized_copy_helper<T, true, true>
+{
+	static T* uninitialized_copy(T* first, T* last, T* result)
+	{
+		size_t n = static_cast<size_t>(last - first);
+		_CSTD::memcpy(result, first, n*sizeof(T));
+		return result + n;
+	}
+};
+
+template <class T>
+struct __uninitialized_copy_helper<T, true, false>
+{
+	static T* uninitialized_copy(T* first, T* last, T* result)
+	{
+		for (; first < last; ++result, ++first)
+			*result = *first;
+		return result;
+	}
+};
+
+template <class T>
+inline
+T*
+uninitialized_copy(T* first, T* last, T* result)
+{
+	return __uninitialized_copy_helper<T>::uninitialized_copy(first, last, result);
+}
+
+template <class T>
+inline
+T*
+uninitialized_copy(const T* first, const T* last, T* result)
+{
+	return __uninitialized_copy_helper<T>::uninitialized_copy(const_cast<T*>(first), const_cast<T*>(last), result);
+}
+
+#endif  // __GNUC__
+
+// uninitialized_fill
+
+template <class ForwardIterator, class T>
+inline
+void
+uninitialized_fill(ForwardIterator first, ForwardIterator last, const T& x)
+{
+	ForwardIterator __save = first;
+#ifndef _MSL_NO_EXCEPTIONS
+	try
+	{
+#endif  // _MSL_NO_EXCEPTIONS
+		for (; first != last; ++first)
+			::new (&*first) typename iterator_traits<ForwardIterator>::value_type(x);
+#ifndef _MSL_NO_EXCEPTIONS
+	}
+	catch (...)
+	{
+		__destroy(__save, first);
+		throw;
+	}
+#endif  // _MSL_NO_EXCEPTIONS
+}
+
+template <>
+inline
+void
+uninitialized_fill(char* first, char* last, const char& x)
+{
+	memset(first, x, static_cast<size_t>(last - first));
+}
+
+#ifndef _MSL_NO_WCHART_CPP_SUPPORT
+
+	template <>
+	inline
+	void
+	uninitialized_fill(wchar_t* first, wchar_t* last, const wchar_t& x)
+	{
+	#ifndef _MSL_NO_WCHART_C_SUPPORT
+		wmemset(first, x, static_cast<size_t>(last - first));
+	#else
+		for (; first < last; ++first)
+			*first = x;
+	#endif  // _MSL_NO_WCHART_C_SUPPORT
+	}
+
+#endif  // _MSL_NO_WCHART_CPP_SUPPORT
+
+// uninitialized_fill_n
+
+template <class ForwardIterator, class Size, class T>
+inline
+void
+uninitialized_fill_n(ForwardIterator first, Size n, const T& x)
+{
+	ForwardIterator __save = first;
+#ifndef _MSL_NO_EXCEPTIONS
+	try
+	{
+#endif  // _MSL_NO_EXCEPTIONS
+		for (; n--; ++first)
+			::new ((&*first)) typename iterator_traits<ForwardIterator>::value_type(x);
+#ifndef _MSL_NO_EXCEPTIONS
+	}
+	catch (...)
+	{
+		__destroy(__save, first);
+		throw;
+	}
+#endif  // _MSL_NO_EXCEPTIONS
+}
+
+template <>
+inline
+void
+uninitialized_fill_n(char* first, size_t n, const char& x)
+{
+	memset(first, x, n);
+}
+
+#ifndef _MSL_NO_WCHART_CPP_SUPPORT
+
+	template <>
+	inline
+	void
+	uninitialized_fill_n(wchar_t* first, size_t n, const wchar_t& x)
+	{
+	#ifndef _MSL_NO_WCHART_C_SUPPORT
+		wmemset(first, x, n);
+	#else
+		for (; n; ++first, --n)
+			*first = x;
+	#endif  // _MSL_NO_WCHART_C_SUPPORT
+	}
+
+#endif  // _MSL_NO_WCHART_CPP_SUPPORT
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	} // namespace std
+#endif
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	namespace Metrowerks {
+#else
+	#ifndef Metrowerks
+		#define Metrowerks
+	#endif
+#endif  // _MSL_NO_CPP_NAMESPACE
+
+template <class T> class malloc_alloc;
+
+template <>
+class malloc_alloc<void>
+{
+public:
+	typedef _CSTD::size_t      size_type;
+	typedef _CSTD::ptrdiff_t   difference_type;
+	typedef void*              pointer;
+	typedef const void*        const_pointer;
+	typedef void               value_type;
+
+	template <class U> struct rebind { typedef malloc_alloc<U> other; };
+};
+
+template <class T> class malloc_alloc
+{
+public:
+#ifdef _MSL_HAS_EXPAND_IN_PLACE
+	typedef version_type<malloc_alloc, 2> version;
+#endif
+
+	typedef _CSTD::size_t    size_type;
+	typedef _CSTD::ptrdiff_t difference_type;
+	typedef T*        pointer;
+	typedef const T*  const_pointer;
+	typedef T&        reference;
+	typedef const T&  const_reference;
+	typedef T         value_type;
+	template <class U> struct rebind { typedef malloc_alloc<U> other; };
+
+	malloc_alloc() throw() {}
+	template <class U> malloc_alloc(const malloc_alloc<U>&) throw() {}
+
+	pointer address(reference x) const {return Metrowerks::addressof(x);}
+	const_pointer address(const_reference x) const {return Metrowerks::addressof(x);}
+
+	pointer allocate(size_type n, malloc_alloc<void>::const_pointer = 0);
+	void deallocate(pointer p, size_type n);
+	size_type max_size() const throw() {return _STD::numeric_limits<size_type>::max() / sizeof(T);}
+
+	void construct(pointer p, const T& val) {::new((void*)p) T(val);}
+#ifdef _MSL_MOVE
+	template <class U> void construct(pointer p, U&& val)
+		{::new((void*)p) T(_STD::forward<U>(val));}
+#endif  // _MSL_MOVE
+	void destroy(pointer p)                 {p->~T();}
+
+#ifdef _MSL_HAS_EXPAND_IN_PLACE
+
+//	version 2
+
+	size_type size(pointer p) const throw() {return _CSTD::_MSL_ALLOCATE_SIZE(p) / sizeof(T);}
+
+	pointer allocate(size_type n, size_type& size_received);
+
+	pointer request(size_type size_requested, size_type& size_received) throw()
+	{
+		pointer result = (pointer)_CSTD::_MSL_ALLOCATE(size_requested*sizeof(T), &size_received);
+		size_received /= sizeof(T);
+		return result;
+	}
+
+	int resize(pointer p, size_type size_requested, size_type& size_received) throw()
+	{
+		int result = _CSTD::_MSL_ALLOCATE_RESIZE(p, size_requested*sizeof(T), &size_received);
+		size_received /= sizeof(T);
+		return result;
+	}
+
+	int expand(pointer p, size_type min_size, size_type preferred_size, size_type& size_received) throw()
+	{
+		int result = _CSTD::_MSL_ALLOCATE_EXPAND(p, min_size*sizeof(T), preferred_size*sizeof(T), &size_received);
+		size_received /= sizeof(T);
+		return result;
+	}
+
+#endif  // _MSL_HAS_EXPAND_IN_PLACE
+};
+
+template <class T>
+typename malloc_alloc<T>::pointer
+malloc_alloc<T>::allocate(size_type n, malloc_alloc<void>::const_pointer)
+{
+	pointer p = (pointer)_CSTD::malloc(n*sizeof(T));
+	if (p == 0)
+	#ifndef _MSL_NO_EXCEPTIONS
+		throw _STD::bad_alloc();
+	#else
+		_STD::__msl_error("bad_alloc");
+	#endif
+	return p;
+}
+
+#ifdef _MSL_HAS_EXPAND_IN_PLACE
+
+template <class T>
+typename malloc_alloc<T>::pointer
+malloc_alloc<T>::allocate(size_type n, size_type& size_received)
+{
+	pointer p = (pointer)_CSTD::_MSL_ALLOCATE(n*sizeof(T), &size_received);
+	if (p == 0)
+	#ifndef _MSL_NO_EXCEPTIONS
+		throw _STD::bad_alloc();
+	#else
+		_STD::__msl_error("bad_alloc");
+	#endif
+	size_received /= sizeof(T);
+	return p;
+}
+
+#endif  // _MSL_HAS_EXPAND_IN_PLACE
+
+template <class T>
+inline
+void
+malloc_alloc<T>::deallocate(pointer p, size_type)
+{
+#ifdef _MSL_DEBUG
+	if (p == 0)
+		_MSL_DEBUG_ERROR(_STD::logic_error, "MSL DEBUG: NULL pointer passed to malloc_alloc::deallocate");
+#endif  // _MSL_DEBUG
+	_CSTD::free(p);
+}
+
+template <class T, class U>
+inline
+bool
+operator==(const malloc_alloc<T>&, const malloc_alloc<U>&) _MSL_NO_THROW
+{
+	return true;
+}
+
+template <class T, class U>
+inline
+bool
+operator!=(const malloc_alloc<T>&, const malloc_alloc<U>&) _MSL_NO_THROW
+{
+	return false;
+}
+
+template <class T>
+inline
+bool
+operator!=(const malloc_alloc<T>&, const malloc_alloc<T>&) _MSL_NO_THROW
+{
+	return false;
+}
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	} // namespace Metrowerks
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#pragma enumsalwaysint reset
+#endif
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#pragma bool reset
+#endif
+
+#ifdef __MWERKS__
+#pragma options align=reset
+#endif
+
+#endif // RC_INVOKED
+
+#endif // _MEMORY
+
+// hh 971220 fixed MOD_INCLUDE and MOD_C_INCLUDE
+// hh 971222 made include guards standard
+// hh 971222 added alignment wrapper
+// hh 971227 silence unused warning
+// hh 971227 removed unused argument from deallocate
+// hh 971230 added RC_INVOKED wrapper
+// hh 980103 fixed Dec. '96 version of auto_ptr
+// hh 980103 added Nov. '97 version of auto_ptr
+// hh 980106 removed #include <stdexcept>
+//           <memory> can not throw a stdexecpt because it can not process strings.
+// hh 980106 removed null pointer checks from allocate::construct and destroy
+// hh 980522  Rewrote get/return_temporary_buffer because of concerns about
+//            multi-threading.
+// hh 980730 added (char*) cast to return_temporary_buffer
+// hh 980805 member template operators not supported yet.
+//           modified auto_ptr '97 to pre-member template functionality
+// hh 980902 #ifdef'd out exception code when ndef MSIPL_EXCEPT
+// hh 980923 fixed bug in the '96 auto_ptr::op=
+// hh 981220 Added typename to appropriate return types
+// hh 990315 Split destroy(first, last) into two methods to help compiler optimize
+//           away empty loops.
+// hh 990503 Rewrote.
+// hh 990828 Added extra template parameter to auto_ptr, defalting to _Single<X>.
+//           A standard conforming extension to allow auto_ptr to work with array new.
+//           Declare like auto_ptr<char, _Array<char> > ap(new char [255]);
+//           Non-Extended auto_ptr available by commenting out _MSL_ARRAY_AUTO_PTR in mslconfig.
+// hh 991208 Added :: qualifier to new/delete in allocator::allocate/deallocate.
+// hh 000130 Fixed up some bugs involving the member template conversion operators of auto_ptr
+// hh 000926 Fixed double return in raw_storage_iterator::operator++(int)
+// hh 000930 Fixed aliasing problem in auto_ptr::reset
+// hh 001128 Added (void*) cast to allocator::construct and deallocate
+// hh 010301 Protected min and max from macro abuse.
+// hh 010302 Added return *this to raw_storage_iterator operator =
+// hh 010314 Qualified internal calls with std::
+// hh 010402 Removed 68K CMF support
+// hh 010725 Added != specialization for allocator to avoid ambiguity conflict with rel_ops
+// hh 020529 Changed <limits> to <msl_int_limits>
+// hh 020529 Changed <cwchar> to <wmem.h> for _MSL_USING_MSL_C
+// hh 030417 Added move_ptr and shared_ptr
+// hh 030527 Made move_ptr pseudo movable
+// hh 030711 Fixed lookup bug in _TempVec::iterator
+// hh 030714 Qualifed calls to memcpy
+// hh 031202 Added Metrowerks::malloc_alloc

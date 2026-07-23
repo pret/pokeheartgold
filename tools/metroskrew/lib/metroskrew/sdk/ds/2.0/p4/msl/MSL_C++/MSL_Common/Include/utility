@@ -1,0 +1,765 @@
+/* MSL
+ * Copyright © 1995-2006 Freescale Corporation.  All rights reserved.
+ *
+ * $Date: 2006/02/09 16:59:42 $
+ * $Revision: 1.33.2.4 $
+ */
+
+// utility
+
+#ifndef  _UTILITY
+#define  _UTILITY
+
+/*  utility synopsis
+
+namespace std
+{
+namespace rel_ops
+{
+	template<class T> bool operator!=(const T&, const T&);
+	template<class T> bool operator> (const T&, const T&);
+	template<class T> bool operator<=(const T&, const T&);
+	template<class T> bool operator>=(const T&, const T&);
+}  // rel_ops
+
+	//  pair:
+
+template <class T1, class T2>
+struct pair
+{
+	typedef T1 first_type;
+	typedef T2 second_type;
+
+	T1 first;
+	T2 second;
+	pair();
+	pair(const T1& x, const T2& y);
+	template<class U, class V> pair(const pair<U, V>& p);
+};
+
+template <class T1, class T2> bool operator==(const pair<T1,T2>&, const pair<T1,T2>&);
+template <class T1, class T2> bool operator< (const pair<T1,T2>&, const pair<T1,T2>&);
+template <class T1, class T2> bool operator!=(const pair<T1,T2>&, const pair<T1,T2>&);
+template <class T1, class T2> bool operator> (const pair<T1,T2>&, const pair<T1,T2>&);
+template <class T1, class T2> bool operator>=(const pair<T1,T2>&, const pair<T1,T2>&);
+template <class T1, class T2> bool operator<=(const pair<T1,T2>&, const pair<T1,T2>&);
+
+template <class T1, class T2> pair<T1,T2> make_pair(const T1&, const T2&);
+
+}  // std
+*/
+
+#include <mslconfig>
+
+#include <msl_utility>
+
+#ifndef RC_INVOKED
+
+#ifdef __MWERKS__
+#pragma options align=native
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#if _MSL_FORCE_ENUMS_ALWAYS_INT
+		#pragma enumsalwaysint on
+	#else
+		#pragma enumsalwaysint off
+	#endif
+#endif  // _MSL_FORCE_ENUMS_ALWAYS_INT
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#if _MSL_FORCE_ENABLE_BOOL_SUPPORT
+		#pragma bool on
+	#else
+		#pragma bool off
+	#endif
+#endif  // _MSL_FORCE_ENABLE_BOOL_SUPPORT
+
+_MSL_START_TR1_NAMESPACE
+
+class nat {nat();};
+
+template <class T0 = nat, class T1 = nat, class T2 = nat, class T3 = nat, class T4 = nat,
+          class T5 = nat, class T6 = nat, class T7 = nat, class T8 = nat, class T9 = nat>
+class tuple;
+
+// is_tuple
+
+template <class T>
+struct is_tuple
+{
+	static const bool value = false;
+};
+
+template <class T0, class T1, class T2, class T3, class T4,
+          class T5, class T6, class T7, class T8, class T9>
+struct is_tuple<tuple<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9> >
+{
+	static const bool value = true;
+};
+
+// is_tuple_like
+
+template <class T>
+struct is_tuple_like
+{
+	static const bool value = is_tuple<T>::value;
+};
+
+// tuple_size
+
+template <class T>
+struct tuple_size
+{
+	static const int value = 1;
+};
+
+template <>
+struct tuple_size<tuple<> >
+{
+	static const int value = 0;
+};
+
+template <class T0>
+struct tuple_size<tuple<T0> >
+{
+	static const int value = 1;
+};
+
+template <class T0, class T1>
+struct tuple_size<tuple<T0, T1> >
+{
+	static const int value = 2;
+};
+
+template <class T0, class T1, class T2>
+struct tuple_size<tuple<T0, T1, T2> >
+{
+	static const int value = 3;
+};
+
+template <class T0, class T1, class T2, class T3>
+struct tuple_size<tuple<T0, T1, T2, T3> >
+{
+	static const int value = 4;
+};
+
+template <class T0, class T1, class T2, class T3, class T4>
+struct tuple_size<tuple<T0, T1, T2, T3, T4> >
+{
+	static const int value = 5;
+};
+
+template <class T0, class T1, class T2, class T3, class T4,
+          class T5>
+struct tuple_size<tuple<T0, T1, T2, T3, T4, T5> >
+{
+	static const int value = 6;
+};
+
+template <class T0, class T1, class T2, class T3, class T4,
+          class T5, class T6>
+struct tuple_size<tuple<T0, T1, T2, T3, T4, T5, T6> >
+{
+	static const int value = 7;
+};
+
+template <class T0, class T1, class T2, class T3, class T4,
+          class T5, class T6, class T7>
+struct tuple_size<tuple<T0, T1, T2, T3, T4, T5, T6, T7> >
+{
+	static const int value = 8;
+};
+
+template <class T0, class T1, class T2, class T3, class T4,
+          class T5, class T6, class T7, class T8>
+struct tuple_size<tuple<T0, T1, T2, T3, T4, T5, T6, T7, T8> >
+{
+	static const int value = 9;
+};
+
+template <class T0, class T1, class T2, class T3, class T4,
+          class T5, class T6, class T7, class T8, class T9>
+struct tuple_size<tuple<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9> >
+{
+	static const int value = 10;
+};
+
+// tuple_element
+
+template <unsigned int N, class T> struct tuple_element;
+
+template <class T>
+struct tuple_element<0, T>
+{
+	typedef T type;
+};
+
+template <class T0, class T1, class T2, class T3, class T4,
+          class T5, class T6, class T7, class T8, class T9>
+struct tuple_element<0, tuple<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9> >
+{
+	typedef T0 type;
+};
+
+template <class T0, class T1, class T2, class T3, class T4,
+          class T5, class T6, class T7, class T8, class T9>
+struct tuple_element<1, tuple<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9> >
+{
+	typedef T1 type;
+};
+
+template <class T0, class T1, class T2, class T3, class T4,
+          class T5, class T6, class T7, class T8, class T9>
+struct tuple_element<2, tuple<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9> >
+{
+	typedef T2 type;
+};
+
+template <class T0, class T1, class T2, class T3, class T4,
+          class T5, class T6, class T7, class T8, class T9>
+struct tuple_element<3, tuple<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9> >
+{
+	typedef T3 type;
+};
+
+template <class T0, class T1, class T2, class T3, class T4,
+          class T5, class T6, class T7, class T8, class T9>
+struct tuple_element<4, tuple<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9> >
+{
+	typedef T4 type;
+};
+
+template <class T0, class T1, class T2, class T3, class T4,
+          class T5, class T6, class T7, class T8, class T9>
+struct tuple_element<5, tuple<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9> >
+{
+	typedef T5 type;
+};
+
+template <class T0, class T1, class T2, class T3, class T4,
+          class T5, class T6, class T7, class T8, class T9>
+struct tuple_element<6, tuple<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9> >
+{
+	typedef T6 type;
+};
+
+template <class T0, class T1, class T2, class T3, class T4,
+          class T5, class T6, class T7, class T8, class T9>
+struct tuple_element<7, tuple<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9> >
+{
+	typedef T7 type;
+};
+
+template <class T0, class T1, class T2, class T3, class T4,
+          class T5, class T6, class T7, class T8, class T9>
+struct tuple_element<8, tuple<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9> >
+{
+	typedef T8 type;
+};
+
+template <class T0, class T1, class T2, class T3, class T4,
+          class T5, class T6, class T7, class T8, class T9>
+struct tuple_element<9, tuple<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9> >
+{
+	typedef T9 type;
+};
+
+namespace detail
+{
+
+template <unsigned int I>
+struct minus1
+{
+	static const unsigned int value = I > 0 ? I-1 : 0;
+};
+
+template <class P1, class P2, bool maybe, unsigned I = minus1<tuple_size<P1>::value>::value,
+                                          unsigned S = tuple_size<P1>::value>
+struct __tuple_convertible
+{
+	static const bool value = false;
+};
+
+template <class P1, class P2>
+struct __tuple_convertible<P1, P2, true, 0, 0>
+{
+	static const bool value = true;
+};
+
+template <class P1, class P2, unsigned S>
+struct __tuple_convertible<P1, P2, true, 0, S>
+{
+	static const bool value = Metrowerks::is_convertible
+		<
+			typename tuple_element<0, P1>::type,
+			typename tuple_element<0, P2>::type
+		>::value;
+};
+
+template <class P1, class P2, unsigned I, unsigned S>
+struct __tuple_convertible<P1, P2, true, I, S>
+{
+	static const bool value = Metrowerks::_and
+	<
+		__tuple_convertible<P1, P2, true, I-1, S>,
+		Metrowerks::is_convertible
+		<
+			typename tuple_element<I, P1>::type,
+			typename tuple_element<I, P2>::type
+		>
+	>::value;
+};
+
+}  // detail
+
+template <class P1, class P2>
+struct __tuple_convertible
+{
+	static const bool value = detail::__tuple_convertible
+		<
+			P1, P2,
+			is_tuple_like<P1>::value &&
+			is_tuple_like<P2>::value &&
+			tuple_size<P1>::value == tuple_size<P2>::value
+		>::value;
+};
+
+template <unsigned int N, class P>
+typename Metrowerks::restrict_to
+<
+	is_tuple<P>::value,
+	typename Metrowerks::add_reference<typename tuple_element<N, P>::type>::type
+>::type
+get(P& p);
+
+template <unsigned int N, class P>
+typename Metrowerks::restrict_to
+<
+	is_tuple<P>::value,
+	typename Metrowerks::add_reference<const typename tuple_element<N, P>::type>::type
+>::type
+get(const P& p);
+
+_MSL_END_TR1_NAMESPACE
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	namespace std {
+#endif
+
+//  lib.operators, operators:
+#ifndef _MSL_NO_CPP_NAMESPACE
+	namespace rel_ops {
+#endif
+
+	template<class T>
+	inline
+	bool
+	operator!=(const T& x, const T& y)
+	{
+		return static_cast<bool>(!(x == y));
+	}
+
+	template<class T>
+	inline
+	bool operator> (const T& x, const T& y)
+	{
+		return static_cast<bool>(y < x);
+	}
+
+	template<class T>
+	inline
+	bool
+	operator<=(const T& x, const T& y)
+	{
+		return static_cast<bool>(!(y < x));
+	}
+
+	template<class T>
+	inline
+	bool
+	operator>=(const T& x, const T& y)
+	{
+		return static_cast<bool>(!(x < y));
+	}
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	}  // std::rel_ops
+#endif
+
+//  lib.pairs, pairs:
+template <class T1, class T2>
+struct pair
+{
+	typedef T1 first_type;
+	typedef T2 second_type;
+
+	T1 first;
+	T2 second;
+	pair();
+
+	pair(const T1& x, const T2& y) : first(x), second(y) {}
+#ifdef _MSL_MOVE
+	template <class U, class V> pair(U&& x, V&& y)
+		: first(forward<U>(x)), second(forward<V>(y)) {}
+
+	pair(pair&& p)
+		: first(_STD::move(p.first)), second(_STD::move(p.second)) {}
+
+	pair& operator=(pair&& p)
+	{
+		first = move(p.first);
+		second = move(p.second);
+		return *this;
+	}
+
+	template <class P>
+	pair
+	(
+		P&& p,
+		typename Metrowerks::restrict_to
+		<
+			_TR1::__tuple_convertible<P, pair>::value
+		>::type* = 0
+	);
+
+	template <class P> pair& operator=(P&& p);
+
+#endif  // _MSL_MOVE
+
+#ifdef _MSL_MOVE
+	void swap(pair&& p) {_STD::swap(*this, p);}
+#else
+	void swap(pair& p) {_STD::swap(*this, p);}
+#endif
+
+#if !defined(__MWERKS__) || (defined(__MWERKS__) && __MWERKS__ >= 0x3200)
+	template <class P>
+	pair
+	(
+		const P& p,
+		typename Metrowerks::restrict_to
+		<
+			_TR1::__tuple_convertible<P, pair>::value
+		>::type* = 0
+	);
+
+#endif  // !defined(__MWERKS__) || (defined(__MWERKS__) && __MWERKS__ >= 0x3200)
+	template <class P> pair& operator=(const P& p);
+
+};
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	} // std
+#endif
+
+_MSL_START_TR1_NAMESPACE
+
+namespace detail
+{
+
+template <unsigned int N, class T1, class T2> struct get_pair;
+
+template <class T1, class T2>
+struct get_pair<0, T1, T2>
+{
+	T1& operator()(const _STD::pair<T1, T2>& p) const
+		{return const_cast<T1&>(p.first);}
+};
+
+template <class T1, class T2>
+struct get_pair<1, T1, T2>
+{
+	T2& operator()(const _STD::pair<T1, T2>& p) const
+		{return const_cast<T2&>(p.second);}
+};
+
+}  // detail
+
+template <unsigned int N, class T1, class T2>
+inline
+typename _TR1::tuple_element<N, _STD::pair<T1, T2> >::type&
+get(pair<T1, T2>& p)
+{
+	return detail::get_pair<N, T1, T2>()(p);
+}
+
+template <unsigned int N, class T1, class T2>
+inline
+const typename _TR1::tuple_element<N, _STD::pair<T1, T2> >::type&
+get(const _STD::pair<T1, T2>& p)
+{
+	return detail::get_pair<N, T1, T2>()(p);
+}
+
+_MSL_END_TR1_NAMESPACE
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	namespace std {
+#endif
+
+template <class T1, class T2>
+inline
+pair<T1, T2>::pair()
+	: first(),
+	  second()
+{
+}
+
+#if !defined(__MWERKS__) || (defined(__MWERKS__) && __MWERKS__ >= 0x3200)
+
+template <class T1, class T2>
+template <class P>
+inline
+pair<T1, T2>::pair(const P& p,
+                       typename Metrowerks::restrict_to
+                       <
+                           _TR1::__tuple_convertible<P, pair>::value
+                       >::type*
+                   )
+	:	first (_TR1::get<0>(p)),
+		second(_TR1::get<1>(p))
+{
+}
+
+#ifdef _MSL_MOVE
+
+template <class T1, class T2>
+template <class P>
+inline
+pair<T1, T2>::pair(P&& p, typename Metrowerks::restrict_to
+                          <
+                              _TR1::__tuple_convertible<P, pair>::value
+                          >::type*
+                  )
+	:	first(move(_TR1::get<0>(p))),
+		second(move(_TR1::get<1>(p)))
+{
+}
+
+#endif  // _MSL_MOVE
+
+#endif  // !defined(__MWERKS__) || (defined(__MWERKS__) && __MWERKS__ >= 0x3200)
+
+template <class T1, class T2>
+template <class P>
+inline
+pair<T1, T2>&
+pair<T1, T2>::operator=(const P& p)
+{
+	first = _TR1::get<0>(p);
+	second = _TR1::get<1>(p);
+	return *this;
+}
+
+#ifdef _MSL_MOVE
+
+template <class T1, class T2>
+template <class P>
+inline
+pair<T1, T2>&
+pair<T1, T2>::operator=(P&& p)
+{
+	first = move(_TR1::get<0>(p));
+	second = move(_TR1::get<1>(p));
+	return *this;
+}
+
+#endif  // _MSL_MOVE
+
+template <class T1, class T2>
+inline
+bool
+operator==(const pair<T1,T2>& x, const pair<T1,T2>& y)
+{
+	return static_cast<bool>(x.first == y.first && x.second == y.second);
+}
+
+template <class T1, class T2>
+inline
+bool
+operator< (const pair<T1,T2>& x, const pair<T1,T2>& y)
+{
+	return static_cast<bool>(x.first < y.first ||
+	                      (!(y.first < x.first) && x.second < y.second));
+}
+
+template <class T1, class T2>
+inline
+bool
+operator!=(const pair<T1,T2>& x, const pair<T1,T2>& y)
+{
+	return static_cast<bool>(!(x == y));
+}
+
+template <class T1, class T2>
+inline
+bool
+operator> (const pair<T1,T2>& x, const pair<T1,T2>& y)
+{
+	return y < x;
+}
+
+template <class T1, class T2>
+inline
+bool
+operator>=(const pair<T1,T2>& x, const pair<T1,T2>& y)
+{
+	return static_cast<bool>(!(x < y));
+}
+
+template <class T1, class T2>
+inline
+bool
+operator<=(const pair<T1,T2>& x, const pair<T1,T2>& y)
+{
+	return static_cast<bool>(!(y < x));
+}
+
+template <class T1, class T2>
+inline
+pair<T1, T2>
+make_pair(T1 x, T2 y)
+{
+	return pair<T1, T2>(x, y);
+}
+
+#ifdef _MSL_MOVE
+
+template <class T1, class T2>
+inline
+void
+swap(pair<T1, T2>&& x, pair<T1, T2>& y)
+{
+	swap(x.first, y.first);
+	swap(x.second, y.second);
+}
+
+template <class T1, class T2>
+inline
+void
+swap(pair<T1, T2>& x, pair<T1, T2>&& y)
+{
+	swap(x.first, y.first);
+	swap(x.second, y.second);
+}
+
+#endif  // _MSL_MOVE
+
+template <class T1, class T2>
+inline
+void
+swap(pair<T1, T2>& x, pair<T1, T2>& y)
+{
+	swap(x.first, y.first);
+	swap(x.second, y.second);
+}
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	} // namespace std
+#endif
+
+_MSL_START_TR1_NAMESPACE
+
+template <class T1, class T2>
+struct is_tuple_like<pair<T1, T2> >
+{
+	static const bool value = true;
+};
+
+template <class T0, class T1>
+struct tuple_element<0, pair<T0, T1> >
+{
+	typedef typename pair<T0, T1>::first_type type;
+};
+
+template <class T0, class T1>
+struct tuple_element<1, pair<T0, T1> >
+{
+	typedef typename pair<T0, T1>::second_type type;
+};
+
+template <class T0, class T1>
+struct tuple_size<pair<T0, T1> >
+{
+	static const int value = 2;
+};
+
+_MSL_END_TR1_NAMESPACE
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	namespace Metrowerks {
+#else
+	#ifndef Metrowerks
+		#define Metrowerks
+	#endif
+#endif  // _MSL_NO_CPP_NAMESPACE
+
+template<class T1, class T2>
+struct is_zero_default_contructible<_STD::pair<T1, T2> >
+{
+	static const bool value = is_zero_default_contructible<T1>::value &&
+	                          is_zero_default_contructible<T2>::value;
+};
+
+template<class T1, class T2>
+struct has_trivial_dtor_after_move_ctor<_STD::pair<T1, T2> >
+{
+	static const bool value = has_trivial_dtor_after_move_ctor<T1>::value &&
+	                          has_trivial_dtor_after_move_ctor<T2>::value;
+};
+
+template<class T1, class T2>
+struct has_trivial_move_ctor<_STD::pair<T1, T2> >
+{
+	static const bool value = has_trivial_move_ctor<T1>::value &&
+	                          has_trivial_move_ctor<T2>::value;
+};
+
+template<class T1, class T2>
+struct move_with_swap<_STD::pair<T1, T2> >
+{
+	static const bool value = move_with_swap<T1>::value &&
+	                          move_with_swap<T2>::value;
+};
+
+template<class T1, class T2>
+struct has_nothrow_constructor<_STD::pair<T1, T2> >
+{
+	static const bool value = has_nothrow_constructor<T1>::value &&
+	                          has_nothrow_constructor<T2>::value;
+};
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	}  // namespace Metrowerks
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#pragma enumsalwaysint reset
+#endif
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#pragma bool reset
+#endif
+
+#ifdef __MWERKS__
+#pragma options align=reset
+#endif
+
+#endif // RC_INVOKED
+
+#endif // _UTILITY
+
+// hh 971220 fixed MOD_INCLUDE
+// hh 971226 Changed filename from utility.h to utility
+// hh 971226 Made include guards standard
+// hh 971226 added alignment wrapper
+// hh 971230 added RC_INVOKED wrapper
+// hh 980130 commented out <iosfwd>
+// hh 990426 Rewrote.
+// hh 000130 Patched make_pair to work better with string literals
+// hh 010402 Removed 68K CMF support
+// hh 010508 Reworked default pair constructor per issue 265
+// hh 030421 Added std::tr1::nat (not official)
+// hh 030527 Made pair pseudo movable
+// hh 031204 Made pair swap-aware

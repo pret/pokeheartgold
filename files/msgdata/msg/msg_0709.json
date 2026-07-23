@@ -1,0 +1,141 @@
+{
+  "key": 10685,
+  "messages": [
+    {
+      "id": "msg_0709_00000",
+      "en_US": "Aiden"
+    },
+    {
+      "id": "msg_0709_00001",
+      "en_US": [
+        "Hey!\n",
+        "Trade phone numbers with\f",
+        "me, old buddy! {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0709_00002",
+      "en_US": [
+        "Call me sometime!\n",
+        "I’ll call you sometimes, too!\n"
+      ]
+    },
+    {
+      "id": "msg_0709_00003",
+      "en_US": "No way!"
+    },
+    {
+      "id": "msg_0709_00004",
+      "en_US": [
+        "Hey, hey!\n",
+        "This time, let’s get our phone\f",
+        "numbers traded, old buddy! {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0709_00005",
+      "en_US": [
+        "Wah ha ha! {STRVAR_1 3, 0, 0}!\n",
+        "Here’s that Dawn Stone you wanted.\r",
+        "Here you go.\r",
+        "...And now that you’ve got what you\n",
+        "came here for, SCRAM!\r"
+      ]
+    },
+    {
+      "id": "msg_0709_00006",
+      "en_US": [
+        "It’s dangerous to talk on the phone\n",
+        "while riding on Cycling Road, but\f",
+        "sometimes I’ve got no choice!\r",
+        "If you’re nearby, let’s talk in person!"
+      ]
+    },
+    {
+      "id": "msg_0709_00007",
+      "en_US": [
+        "My {STRVAR_1 0, 10, 0} has gotten way strong!\r",
+        "It knocked out a wild {STRVAR_1 0, 11, 0} in,\n",
+        "like, two seconds!\f",
+        "Wahahahahahahaha!\r",
+        "...What?\n",
+        "You think I’m exaggerating?\r",
+        "Put a lid on it! Nothing but truth!"
+      ]
+    },
+    {
+      "id": "msg_0709_00008",
+      "en_US": [
+        "My {STRVAR_1 0, 10, 0} has gotten\n",
+        "awesomely strong!\r",
+        "We can go catch {STRVAR_1 0, 11, 0} now!"
+      ]
+    },
+    {
+      "id": "msg_0709_00009",
+      "en_US": [
+        "Recently, I came across a wild\n",
+        "{STRVAR_1 0, 11, 0} on the road.\r",
+        "Suddenly, out it jumps! I fell off\n",
+        "my Bike trying not to hit it!\r",
+        "But it’s all good, even though I got a\n",
+        "little scraped up.\r",
+        "It’s all good ’cause I like to be nice to\n",
+        "wild Pokémon!"
+      ]
+    },
+    {
+      "id": "msg_0709_00010",
+      "en_US": [
+        "Hey! Right now, I’m\n",
+        "on {STRVAR_1 4, 3, 0}!\r",
+        "Don’t run, don’t hide, just get over\n",
+        "here and fight me!"
+      ]
+    },
+    {
+      "id": "msg_0709_00011",
+      "en_US": [
+        "Listen! Here I wait on good old\n",
+        "{STRVAR_1 4, 3, 0}!\r",
+        "Time for us to have another battle,\n",
+        "fair and square, so come alone!\r",
+        "Wait...\n",
+        "Bring your Pokémon with you!\f",
+        "Without a Pokémon, we can’t battle!"
+      ]
+    },
+    {
+      "id": "msg_0709_00012",
+      "en_US": [
+        "You...\n",
+        "You’ve got a Pokémon with you, right?\r",
+        "That’s...\n",
+        "That’s pretty sweet, isn’t it?\r",
+        "If you were blazing up and down the\n",
+        "road as fast as you could, like me, you\f",
+        "wouldn’t be able to have your Pokémon\f",
+        "alongside you.\r",
+        "Makes me a bit jealous of you, to tell\n",
+        "the truth."
+      ]
+    },
+    {
+      "id": "msg_0709_00013",
+      "en_US": [
+        "Hey! I picked up something great!\r",
+        "I checked it with someone who knows\n",
+        "this stuff. They said it’s a Dawn Stone.\r",
+        "If you want it, I’m on\n",
+        "{STRVAR_1 4, 3, 0}, so come and get it!"
+      ]
+    },
+    {
+      "id": "msg_0709_00014",
+      "en_US": [
+        "Listen! Pick up the pace and pick up\n",
+        "this Dawn Stone! On {STRVAR_1 4, 3, 0}!"
+      ]
+    }
+  ]
+}

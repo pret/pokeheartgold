@@ -1,0 +1,143 @@
+/* MSL
+ * Copyright © 1995-2007 Freescale Corporation.  All rights reserved.
+ *
+ * $Date: 2007/02/02 13:50:22 $
+ * $Revision: 1.4 $
+ */
+
+#ifndef _MSL_CCTYPE_AEABI
+#define _MSL_CCTYPE_AEABI		
+
+#include <eof.h>
+#include <ctype_api.h>
+#include <locale_api.h>
+#include <msl_thread_local_data.h>
+
+#define __aeabi_cmap_size 257
+
+#define __S 1				/* whitespace           */
+#define __P 2				/* punctuation          */
+#define __B 4				/* blank                */
+#define __L 8				/* lower case letter    */
+#define __U 0x10			/* upper case letter    */
+#define __N 0x20			/* (decimal) digit      */
+#define __C 0x40			/* control chars        */
+#define __X 0x80			/* A-F and a-f          */
+#define __A (__N+__X)		/* alphabetic           */
+#define UPPCX	0x90		/*__U|__X				*/
+#define LOWCX	0x88		/*__L|__X				*/
+#define DIGIX	0xA0		/*__N|__X				*/
+#define CTSP	__C|__S
+#define BSP		__B|__S
+
+extern unsigned char const __aeabi_ctype_table[__aeabi_cmap_size];
+
+#ifndef RC_INVOKED
+
+_MSL_BEGIN_NAMESPACE_STD
+_MSL_BEGIN_EXTERN_C
+
+	extern	_MSL_IMP_EXP_C int _MSL_CDECL isalnum(int) _MSL_CANT_THROW;
+	extern	_MSL_IMP_EXP_C int _MSL_CDECL isalpha(int) _MSL_CANT_THROW;
+	#if _MSL_C99
+	extern	_MSL_IMP_EXP_C int _MSL_CDECL isblank(int) _MSL_CANT_THROW;
+	#endif /* _MSL_C99 */
+	extern	_MSL_IMP_EXP_C int _MSL_CDECL iscntrl(int) _MSL_CANT_THROW;
+	extern	_MSL_IMP_EXP_C int _MSL_CDECL isdigit(int) _MSL_CANT_THROW;
+	extern	_MSL_IMP_EXP_C int _MSL_CDECL isgraph(int) _MSL_CANT_THROW;
+	extern	_MSL_IMP_EXP_C int _MSL_CDECL islower(int) _MSL_CANT_THROW;
+	extern	_MSL_IMP_EXP_C int _MSL_CDECL isprint(int) _MSL_CANT_THROW;
+	extern	_MSL_IMP_EXP_C int _MSL_CDECL ispunct(int) _MSL_CANT_THROW;
+	extern	_MSL_IMP_EXP_C int _MSL_CDECL isspace(int) _MSL_CANT_THROW;
+	extern	_MSL_IMP_EXP_C int _MSL_CDECL isupper(int) _MSL_CANT_THROW;
+	extern	_MSL_IMP_EXP_C int _MSL_CDECL isxdigit(int) _MSL_CANT_THROW;
+	extern	_MSL_IMP_EXP_C int _MSL_CDECL tolower(int) _MSL_CANT_THROW;
+	extern	_MSL_IMP_EXP_C int _MSL_CDECL toupper(int) _MSL_CANT_THROW;
+
+
+_MSL_END_EXTERN_C
+
+#if _MSL_USE_INLINE
+	_MSL_INLINE int _MSL_CDECL isalnum(int c) _MSL_CANT_THROW 
+	{
+		return ((c < 0) || (c >= __aeabi_cmap_size)) ? 0:(__aeabi_ctype_table[c] & (__U+__L+__N));	
+	}
+	_MSL_INLINE int _MSL_CDECL isalpha(int c)  _MSL_CANT_THROW 
+	{
+		return ((c < 0) || (c >= __aeabi_cmap_size)) ? 0:(__aeabi_ctype_table[c] & (__U+__L));	
+	}
+	_MSL_INLINE int _MSL_CDECL iscntrl(int c) _MSL_CANT_THROW  
+	{
+		return ((c < 0) || (c >= __aeabi_cmap_size)) ? 0:(__aeabi_ctype_table[c] & __C);	
+	}
+	_MSL_INLINE int _MSL_CDECL isdigit(int c) _MSL_CANT_THROW  
+	{
+		return ((c < 0) || (c >= __aeabi_cmap_size)) ? 0:(__aeabi_ctype_table[c] & __N);	
+	}
+    
+	_MSL_INLINE int _MSL_CDECL isgraph(int c) _MSL_CANT_THROW 
+	{
+		return ((c < 0) || (c >= __aeabi_cmap_size)) ? 0:(__aeabi_ctype_table[c]&(__L+__U+__N+__X+__P));	
+	}
+    
+	_MSL_INLINE int _MSL_CDECL islower(int c) _MSL_CANT_THROW  
+	{
+		return ((c < 0) || (c >= __aeabi_cmap_size)) ? 0:(__aeabi_ctype_table[c] & __L);	
+	}
+    
+    _MSL_INLINE  int _MSL_CDECL isprint(int c) _MSL_CANT_THROW 
+    {
+    	return ((c < 0) || (c >= __aeabi_cmap_size)) ? 0:(__aeabi_ctype_table[c] & (__L+__U+__N+__P+__B));
+    }
+    
+    _MSL_INLINE int _MSL_CDECL ispunct(int c) _MSL_CANT_THROW 
+    {
+    	return ((c < 0) || (c >= __aeabi_cmap_size)) ? 0:(__aeabi_ctype_table[c] & __P);	
+    }     
+    
+    _MSL_INLINE int _MSL_CDECL isspace(int c) _MSL_CANT_THROW 
+    {
+    	return ((c < 0) || (c >= __aeabi_cmap_size)) ? 0:(__aeabi_ctype_table[c] & __S) ;	
+    }
+     
+    _MSL_INLINE int _MSL_CDECL isupper(int c)  _MSL_CANT_THROW 
+    {
+    	return ((c < 0) || (c >= __aeabi_cmap_size)) ? 0:(__aeabi_ctype_table[c] & __U);	
+    }   
+    
+    _MSL_INLINE int _MSL_CDECL isxdigit(int c) _MSL_CANT_THROW  
+    {
+    	return ((c < 0) || (c >= __aeabi_cmap_size)) ? 0:((__aeabi_ctype_table[c]) & __X); 
+    }
+    
+    _MSL_INLINE int _MSL_CDECL isblank(int c) _MSL_CANT_THROW  
+    {
+
+		return ((c < 0) || (c >= __aeabi_cmap_size)) ? 0:((c == 0x9) || (__aeabi_ctype_table[c] & __B));
+    }
+    
+    _MSL_INLINE int _MSL_CDECL toupper(int c) _MSL_CANT_THROW  
+    {
+    	return (((c < 0x61) || (c >= 0x7B)) ? c : (int) (c - 0x20));
+    }
+    
+	_MSL_INLINE int _MSL_CDECL tolower(int c)  _MSL_CANT_THROW 
+	{
+		return (((c < 0x41) || (c >= 0x5B)) ? c : (int) (c + 0x20));
+	}
+#endif /* _MSL_USE_INLINE */
+
+_MSL_END_NAMESPACE_STD
+
+#endif /* RC_INVOKED */
+
+#endif /* _MSL_CCTYPE_AEABI */
+
+/* Change record:
+ * cc  060428 Integrated _AEABI_PORTABILITY_LEVEL work 
+ */
+ 
+/* Chipwerks Change Record
+ * 6/4/2006	Macro definitions and inline functions defined for _AEABI_PORTABILITY_LEVEL macro 
+ * Refer Section 5.3.1.1 from "C Library ABI for the ARM architecture.pdf"
+ */

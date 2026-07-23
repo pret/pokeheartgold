@@ -1,19 +1,25 @@
+charmap_txt = fs.copyfile('charmap.txt')
+
 msgenc_exe = executable('msgenc',
-    sources : [
+    sources: [
         'msgenc.cpp',
         'Options.cpp',
         'MessagesConverter.cpp',
         'MessagesDecoder.cpp',
         'MessagesEncoder.cpp',
         'Gmm.cpp',
-        'pugixml.cpp',
+        'Json.cpp',
+        'pugixml.cpp'
     ],
-    cpp_args : [
+    cpp_args: [
+        '-DNDEBUG',
+        '-g',
         '-std=c++17',
-        '-O2',
         '-Wall',
-        '-Wno-switch',
-        '-Wno-unused-but-set-variable',
+        '-Wextra',
+        '-Wpedantic',
+        '-Wno-unused-parameter',
     ],
-    native : true
+    native: true,
+    dependencies: dataproc_dep,
 )

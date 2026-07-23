@@ -1,0 +1,284 @@
+/* MSL
+ * Copyright © 1995-2007 Freescale Corporation.  All rights reserved.
+ *
+ * $Date:
+ * $Revision:
+ */
+
+#ifndef _CHAR_TRAITS
+#define _CHAR_TRAITS
+
+#include <mslconfig>
+#ifndef _MSL_NO_WCHART_C_SUPPORT
+	#include <cwchar>
+#endif
+#include <cstring>
+#include <eof.h>
+
+#ifndef RC_INVOKED
+
+#ifdef __MWERKS__
+#pragma options align=native
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#if _MSL_FORCE_ENUMS_ALWAYS_INT
+		#pragma enumsalwaysint on
+	#else
+		#pragma enumsalwaysint off
+	#endif
+#endif  // _MSL_FORCE_ENUMS_ALWAYS_INT
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#if _MSL_FORCE_ENABLE_BOOL_SUPPORT
+		#pragma bool on
+	#else
+		#pragma bool off
+	#endif
+#endif  // _MSL_FORCE_ENABLE_BOOL_SUPPORT
+
+#ifdef __MWERKS__
+#pragma reverse_bitfields off
+#endif
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	namespace std {
+#endif
+
+#ifdef __MWERKS__
+#pragma mark -
+#pragma mark char_traits
+#pragma mark -
+#endif  // __MWERKS__
+
+// _lib.char.traits_, character traits:
+
+template<class charT>
+struct char_traits
+{
+	typedef charT       char_type;
+	typedef int         int_type;
+	typedef streamoff   off_type;
+	typedef streampos   pos_type;
+	typedef mbstate_t   state_type;
+
+	static void assign(char_type& c1, const char_type& c2)   {c1 = c2;}
+	static bool eq(const char_type& c1, const char_type& c2) {return static_cast<bool>(c1 == c2);}
+	static bool lt(const char_type& c1, const char_type& c2) {return static_cast<bool>(c1 < c2);}
+
+	static int compare(const char_type* s1, const char_type* s2, size_t n);
+	static size_t length(const char_type* s);
+	static const char_type* find(const char_type* s, size_t n, const char_type& a);
+	static char_type* move(char_type* s1, const char_type* s2, size_t n);
+	static char_type* copy(char_type* s1, const char_type* s2, size_t n);
+	static char_type* assign(char_type* s, size_t n, char_type a);
+
+	static int_type not_eof(const int_type& c)          {return eq_int_type(c, eof()) ? ~eof() : c;}
+	static char_type to_char_type(const int_type& c)                {return charT(c);}
+	static int_type to_int_type(const char_type& c)                 {return int_type(c);}
+	static bool eq_int_type(const int_type& c1, const int_type& c2) {return static_cast<bool>(c1 == c2);}
+	static int_type eof()                                           {return EOF;}
+};
+
+// Implementation: char_traits<charT>
+
+template <class charT>
+int
+char_traits<charT>::compare(const char_type* s1, const char_type* s2, size_t n)
+{
+	for (size_t i = 0; i < n; ++i, ++s1, ++s2)
+	{
+		if (lt(*s1, *s2))
+			return -1;
+		if (lt(*s2, *s1))
+			return 1;
+	}
+	return 0;
+}
+
+template <class charT>
+size_t
+char_traits<charT>::length(const char_type* s)
+{
+	size_t len = 0;
+	while (!eq(*s, charT()))
+	{
+		++s;
+		++len;
+	}
+	return len;
+}
+
+template <class charT>
+const typename char_traits<charT>::char_type*
+char_traits<charT>::find(const char_type* s, size_t n, const char_type& a)
+{
+	if (n == 0)
+		return 0;
+	const char_type* p = s;
+	size_t i = 0;
+	while (!eq(*p, a))
+	{
+		++i;
+		if (i == n)
+			return 0;
+		++p;
+	}
+	return p;
+}
+
+template <class charT>
+typename char_traits<charT>::char_type*
+char_traits<charT>::move(char_type* s1, const char_type* s2, size_t n)
+{
+	char_type* r = s1;
+	if (s1 < s2)
+	{
+		for (size_t i = 0; i < n; ++i)
+			assign(*s1++, *s2++);
+	}
+	else if (s2 < s1)
+	{
+		s1 += n;
+		s2 += n;
+		for (; n > 0; --n)
+			assign(*--s1, *--s2);
+	}
+	return r;
+}
+
+template <class charT>
+inline
+typename char_traits<charT>::char_type*
+char_traits<charT>::copy(char_type* s1, const char_type* s2, size_t n)
+{
+	char_type* r = s1;
+	for (size_t i = 0; i < n; ++i)
+		assign(*s1++, *s2++);
+	return r;
+}
+
+template <class charT>
+inline
+typename char_traits<charT>::char_type*
+char_traits<charT>::assign(char_type* s, size_t n, char_type a)
+{
+	char_type* r = s;
+	for (size_t i = 0; i < n; ++i)
+		assign(*s++, a);
+	return r;
+}
+
+// char_traits<char>
+
+template <>
+struct char_traits<char>
+{
+	typedef char        char_type;
+	typedef int         int_type;
+	typedef streamoff   off_type;
+	typedef streampos   pos_type;
+	typedef mbstate_t   state_type;
+
+	static void assign(char_type& c1, const char_type& c2)
+		{c1 = c2;}
+	static bool eq(const char_type& c1, const char_type& c2)
+		{return static_cast<bool>(c1 == c2);}
+	static bool lt(const char_type& c1, const char_type& c2)
+		{return static_cast<bool>(c1 < c2);}
+
+	static int compare(const char_type* s1, const char_type* s2, size_t n)
+		{return memcmp(s1, s2, n);}
+	static size_t length(const char_type* s)
+		{return strlen(s);}
+	static const char_type* find(const char_type* s, size_t n, const char_type& a)
+		{return (const char*)memchr(s, to_int_type(a), n);}
+	static char_type* move(char_type* s1, const char_type* s2, size_t n)
+		{return (char*)memmove(s1, s2, n);}
+	static char_type* copy(char_type* s1, const char_type* s2, size_t n)
+		{return (char*)memcpy(s1, s2, n);}
+	static char_type* assign(char_type* s, size_t n, char_type a)
+		{return (char*)memset(s, to_int_type(a), n);}
+
+	static int_type not_eof(const int_type& c)
+		{return c == eof() ? ~eof() : c;}
+	static char_type to_char_type(const int_type& c)
+		{return (char)c;}
+	static int_type to_int_type(const char_type& c)
+		{return int_type((unsigned char)c);}
+	static bool eq_int_type(const int_type& c1, const int_type& c2)
+		{return static_cast<bool>(c1 == c2);}
+	static int_type eof()
+		{return EOF;}
+};
+
+#if !defined(_MSL_NO_WCHART_CPP_SUPPORT) && !defined(_MSL_NO_WCHART_C_SUPPORT)
+
+	// char_traits<wchar_t>
+
+	template <>
+	struct char_traits<wchar_t>
+	{
+		typedef wchar_t      char_type;
+		typedef wint_t       int_type;
+		typedef streamoff    off_type;
+		typedef wstreampos   pos_type;
+		typedef mbstate_t    state_type;
+
+		static void assign(char_type& c1, const char_type& c2)
+			{c1 = c2;}
+		static bool eq(const char_type& c1, const char_type& c2)
+			{return c1 == c2;}
+		static bool lt(const char_type& c1, const char_type& c2)
+			{return c1 < c2;}
+
+		static int compare(const char_type* s1, const char_type* s2, size_t n)
+			{return wmemcmp(s1, s2, n);}
+		static size_t length(const char_type* s)
+			{return wcslen(s);}
+		static const char_type* find(const char_type* s, size_t n, const char_type& a)
+			{return (const wchar_t*)wmemchr(s, a, n);}
+		static char_type* move(char_type* s1, const char_type* s2, size_t n)
+			{return (wchar_t*)wmemmove(s1, s2, n);}
+		static char_type* copy(char_type* s1, const char_type* s2, size_t n)
+			{return (wchar_t*)wmemcpy(s1, s2, n);}
+		static char_type* assign(char_type* s, size_t n, char_type a)
+			{return (wchar_t*)wmemset(s, a, n);}
+
+		static int_type not_eof(const int_type& c)
+			{return int_type(c == eof() ? ~eof() : c);}
+		static char_type to_char_type(const int_type& c)
+			{return (wchar_t)c;}
+		static int_type to_int_type(const char_type& c)
+			{return c;}
+		static bool eq_int_type(const int_type& c1, const int_type& c2)
+			{return c1 == c2;}
+		static int_type eof()
+			{return WEOF;}
+	};
+
+#endif // !defined(_MSL_NO_WCHART_CPP_SUPPORT) && !defined(_MSL_NO_WCHART_C_SUPPORT)
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	}  // namespace Metrowerks
+#endif
+
+#ifdef __MWERKS__
+#pragma reverse_bitfields reset
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#pragma enumsalwaysint reset
+#endif
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#pragma bool reset
+#endif
+
+#ifdef __MWERKS__
+#pragma options align=reset
+#endif
+
+#endif  // RC_INVOKED
+
+#endif // _CHAR_TRAITS

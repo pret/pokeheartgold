@@ -1,0 +1,386 @@
+/* MSL
+ * Copyright © 1995-2006 Freescale Corporation.  All rights reserved.
+ *
+ * $Date: 2006/02/09 16:58:53 $
+ * $Revision: 1.11.2.2 $
+ */
+
+// msl_c_filebuf
+
+#ifndef _MSL_C_FILEBUF
+#define _MSL_C_FILEBUF
+
+/*  msl_c_filebuf synopsis
+
+namespace Metrowerks
+{
+
+template <class charT, class traits = std::char_traits<charT> >
+class c_filebuf
+	: public bufferedbuf<charT, traits>
+{
+	typedef bufferedbuf<charT, traits> base;
+public:
+	typedef charT                     char_type;
+	typedef typename traits::int_type int_type;
+	typedef typename traits::pos_type pos_type;
+	typedef typename traits::off_type off_type;
+	typedef traits                    traits_type;
+
+	explicit c_filebuf(_CSTD::FILE* file = 0);
+	virtual ~c_filebuf();
+
+	c_filebuf<charT,traits>* open(const char* s, std::ios_base::openmode mode);
+#ifdef _MSL_WIDE_FILENAME
+	c_filebuf<charT,traits>* open(const wchar_t* s, _STD::ios_base::openmode mode);
+#endif
+	c_filebuf<charT,traits>* close();
+
+private:
+
+	c_filebuf(const c_filebuf&);             // not defined
+	c_filebuf& operator=(const c_filebuf&);  // not defined
+};
+
+}  // Metrowerks
+*/
+
+#include <mslconfig>
+
+#if !(defined(_MSL_NO_FILE_IO))
+
+#include <msl_bufferedbuf>
+
+#ifndef RC_INVOKED
+
+#ifdef __MWERKS__
+#pragma options align=native
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#if _MSL_FORCE_ENUMS_ALWAYS_INT
+		#pragma enumsalwaysint on
+	#else
+		#pragma enumsalwaysint off
+	#endif
+#endif  // _MSL_FORCE_ENUMS_ALWAYS_INT
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#if _MSL_FORCE_ENABLE_BOOL_SUPPORT
+		#pragma bool on
+	#else
+		#pragma bool off
+	#endif
+#endif  // _MSL_FORCE_ENABLE_BOOL_SUPPORT
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	namespace Metrowerks {
+#else
+	#ifndef Metrowerks
+		#define Metrowerks
+	#endif
+#endif  // _MSL_NO_CPP_NAMESPACE
+
+template <class charT, class traits = _STD::char_traits<charT> >
+class c_filebuf
+	: public bufferedbuf<charT, traits>
+{
+	typedef bufferedbuf<charT, traits> base;
+public:
+	typedef charT                     char_type;
+	typedef typename traits::int_type int_type;
+	typedef typename traits::pos_type pos_type;
+	typedef typename traits::off_type off_type;
+	typedef traits                    traits_type;
+
+	explicit c_filebuf(_CSTD::FILE* file = 0);
+	virtual ~c_filebuf();
+
+#ifdef _MSL_MOVE
+	c_filebuf(c_filebuf&& rhs);
+	c_filebuf& operator=(c_filebuf&& rhs);
+	void swap(c_filebuf&& rhs);
+#endif  // _MSL_MOVE
+
+	c_filebuf<charT,traits>* open(const char* s, _STD::ios_base::openmode mode);
+#ifdef _MSL_WIDE_FILENAME
+	c_filebuf<charT,traits>* open(const wchar_t* s, _STD::ios_base::openmode mode);
+#endif
+	c_filebuf<charT,traits>* close();
+
+protected:
+
+	virtual int sync();
+
+private:
+
+	_CSTD::FILE* file_;
+	static const _CSTD::size_t default_buffer_bytes = 128;
+
+	virtual _CSTD::ptrdiff_t write_chars(const char* buf, _CSTD::ptrdiff_t n);
+	virtual _CSTD::ptrdiff_t read_chars(char* buf, _CSTD::ptrdiff_t n);
+	virtual off_type seek_device(off_type off, int whence);
+
+	c_filebuf(const c_filebuf&);             // not defined
+	c_filebuf& operator=(const c_filebuf&);  // not defined
+};
+
+template <class charT, class traits>
+c_filebuf<charT, traits>::c_filebuf(_CSTD::FILE* file)
+	: base(default_buffer_bytes),
+	  file_(file)
+{
+	if (file_ != 0)
+		base::open(false);
+}
+
+template <class charT, class traits>
+c_filebuf<charT, traits>::~c_filebuf()
+{
+	close();
+}
+
+#ifdef _MSL_MOVE
+
+template <class charT, class traits>
+inline
+c_filebuf<charT, traits>::c_filebuf(c_filebuf&& rhs)
+	: base(_STD::move(rhs)),
+	  file_(rhs.file_)
+{
+	rhs.file_ = 0;
+}
+
+template <class charT, class traits>
+inline
+c_filebuf<charT, traits>&
+c_filebuf<charT, traits>::operator=(c_filebuf&& rhs)
+{
+	swap(rhs);
+	return *this;
+}
+
+template <class charT, class traits>
+inline
+void
+c_filebuf<charT, traits>::swap(c_filebuf&& rhs)
+{
+	base::swap(rhs);
+	_STD::swap(file_, rhs.file_);
+}
+
+#endif  // _MSL_MOVE
+
+template <class charT, class traits>
+c_filebuf<charT,traits>*
+c_filebuf<charT, traits>::open(const char* s, _STD::ios_base::openmode mode)
+{
+	if (file_ != 0)
+		return 0;
+	const char* modstr;
+	bool init_put = false;
+	switch (mode & ~_STD::ios_base::ate)
+	{
+	case _STD::ios_base::out:
+	case (int)_STD::ios_base::out | (int)_STD::ios_base::trunc:
+		modstr = "w";
+		init_put = true;
+		break;
+	case (int)_STD::ios_base::out | (int)_STD::ios_base::app:
+		modstr = "a";
+		init_put = true;
+		break;
+	case _STD::ios_base::in:
+		modstr = "r";
+		break;
+	case (int)_STD::ios_base::in | (int)_STD::ios_base::out:
+		modstr = "r+";
+		init_put = true;
+		break;
+	case (int)_STD::ios_base::in | (int)_STD::ios_base::out | (int)_STD::ios_base::trunc:
+		modstr = "w+";
+		init_put = true;
+		break;
+	case (int)_STD::ios_base::binary | (int)_STD::ios_base::out:
+	case (int)_STD::ios_base::binary | (int)_STD::ios_base::out | (int)_STD::ios_base::trunc:
+		modstr = "wb";
+		init_put = true;
+		break;
+	case (int)_STD::ios_base::binary | (int)_STD::ios_base::out | (int)_STD::ios_base::app:
+		modstr = "ab";
+		init_put = true;
+		break;
+	case (int)_STD::ios_base::binary | (int)_STD::ios_base::in:
+		modstr = "rb";
+		break;
+	case (int)_STD::ios_base::binary | (int)_STD::ios_base::in | (int)_STD::ios_base::out:
+		modstr = "r+b";
+		init_put = true;
+		break;
+	case (int)_STD::ios_base::binary | (int)_STD::ios_base::in | (int)_STD::ios_base::out | (int)_STD::ios_base::trunc:
+		modstr = "w+b";
+		init_put = true;
+		break;
+	default:
+		return 0;
+	}
+	file_ = _CSTD::fopen(s, modstr);
+	if (file_ == 0)
+		return 0;
+	if (mode & _STD::ios_base::ate && _CSTD::fseek(file_, 0, SEEK_END) != 0)
+	{
+		_CSTD::fclose(file_);
+		file_ = 0;
+		return 0;
+	}
+	base::open(init_put, !(mode & _STD::ios_base::binary));
+	return this;
+}
+
+#ifdef _MSL_WIDE_FILENAME
+
+template <class charT, class traits>
+c_filebuf<charT,traits>*
+c_filebuf<charT, traits>::open(const wchar_t* s, _STD::ios_base::openmode mode)
+{
+#if _MSL_USING_MW_C_HEADERS && _MSL_WFILEIO_AVAILABLE
+	if (file_ != 0)
+		return 0;
+	const wchar_t* modstr;
+	bool init_put = false;
+	switch (mode & ~_STD::ios_base::ate)
+	{
+	case _STD::ios_base::out:
+	case (int)_STD::ios_base::out | (int)_STD::ios_base::trunc:
+		modstr = L"w";
+		init_put = true;
+		break;
+	case (int)_STD::ios_base::out | (int)_STD::ios_base::app:
+		modstr = L"a";
+		init_put = true;
+		break;
+	case _STD::ios_base::in:
+		modstr = L"r";
+		break;
+	case (int)_STD::ios_base::in | (int)_STD::ios_base::out:
+		modstr = L"r+";
+		init_put = true;
+		break;
+	case (int)_STD::ios_base::in | (int)_STD::ios_base::out | (int)_STD::ios_base::trunc:
+		modstr = L"w+";
+		init_put = true;
+		break;
+	case (int)_STD::ios_base::binary | (int)_STD::ios_base::out:
+	case (int)_STD::ios_base::binary | (int)_STD::ios_base::out | (int)_STD::ios_base::trunc:
+		modstr = L"wb";
+		init_put = true;
+		break;
+	case (int)_STD::ios_base::binary | (int)_STD::ios_base::out | (int)_STD::ios_base::app:
+		modstr = L"ab";
+		init_put = true;
+		break;
+	case (int)_STD::ios_base::binary | (int)_STD::ios_base::in:
+		modstr = L"rb";
+		break;
+	case (int)_STD::ios_base::binary | (int)_STD::ios_base::in | (int)_STD::ios_base::out:
+		modstr = L"r+b";
+		init_put = true;
+		break;
+	case (int)_STD::ios_base::binary | (int)_STD::ios_base::in | (int)_STD::ios_base::out | (int)_STD::ios_base::trunc:
+		modstr = L"w+b";
+		init_put = true;
+		break;
+	default:
+		return 0;
+	}
+	file_ = _CSTD::_wfopen(s, modstr);
+	if (file_ == 0)
+		return 0;
+	if (mode & _STD::ios_base::ate && _CSTD::fseek(file_, 0, SEEK_END) != 0)
+	{
+		_CSTD::fclose(file_);
+		file_ = 0;
+		return 0;
+	}
+	base::open(init_put, !(mode & _STD::ios_base::binary));
+	return this;
+#else  // _MSL_USING_MW_C_HEADERS && _MSL_WFILEIO_AVAILABLE
+	(void)s;
+	(void)mode;
+	return 0;
+#endif  // _MSL_USING_MW_C_HEADERS && _MSL_WFILEIO_AVAILABLE
+}
+
+#endif  // _MSL_WIDE_FILENAME
+
+template <class charT, class traits>
+c_filebuf<charT, traits>*
+c_filebuf<charT, traits>::close()
+{
+	if (file_ == 0)
+		return 0;
+	c_filebuf* result = (c_filebuf*)base::close();
+	if (_CSTD::fclose(file_) != 0)
+		result = 0;
+	file_ = 0;
+	return result;
+}
+
+template <class charT, class traits>
+int
+c_filebuf<charT, traits>::sync()
+{
+	bool f = base::pptr() != 0;
+	int result = base::sync();
+	if (f && result >= 0)
+		result = _CSTD::fflush(file_);
+	return result;
+}
+
+template <class charT, class traits>
+_CSTD::ptrdiff_t
+c_filebuf<charT, traits>::write_chars(const char* buf, _CSTD::ptrdiff_t n)
+{
+	return (_CSTD::ptrdiff_t)_CSTD::fwrite(buf, 1, (_CSTD::size_t)n, file_);
+}
+
+template <class charT, class traits>
+_CSTD::ptrdiff_t
+c_filebuf<charT, traits>::read_chars(char* buf, _CSTD::ptrdiff_t n)
+{
+	return (_CSTD::ptrdiff_t)_CSTD::fread(buf, 1, (_CSTD::size_t)n, file_);
+}
+
+template <class charT, class traits>
+typename c_filebuf<charT, traits>::off_type
+c_filebuf<charT, traits>::seek_device(off_type off, int whence)
+{
+	if (_CSTD::fseek(file_, (long)off, whence) != 0)
+		return off_type(-1);
+	return (off_type)_CSTD::ftell(file_);
+}
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	} // namespace Metrowerks
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#pragma enumsalwaysint reset
+#endif
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#pragma bool reset
+#endif
+
+#ifdef __MWERKS__
+#pragma options align=reset
+#endif
+
+#endif // RC_INVOKED
+
+#endif // !(defined(_MSL_NO_FILE_IO))
+
+#endif // _MSL_C_FILEBUF
+
+// hh 020923 created
+// hh 031201 Added sync override

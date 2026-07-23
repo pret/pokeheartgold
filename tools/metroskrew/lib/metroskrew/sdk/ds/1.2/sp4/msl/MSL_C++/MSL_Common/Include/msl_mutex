@@ -1,0 +1,2245 @@
+/* Metrowerks Standard Library
+ * Copyright © 1995-2004 Metrowerks Corporation.  All rights reserved.
+ *
+ * $Date: 2004/04/16 01:16:59 $
+ * $Revision: 1.17.2.6 $
+ */
+
+// msl_mutex
+
+//  The Metrowerks::threads interface closely follows that of boost::threads version 1.30.
+//  Many thanks to William E. Kempf for his work on this boost library.  The implementation
+//  of Metrowerks::threads does not follow the implementation of boost::threads, but
+//  has been independently developed.
+
+/*  msl_mutex synopsis
+
+#include <msl_time>
+
+namespace Metrowerks
+{
+
+class thread_resource_error
+	: public std::exception
+{
+public:
+	virtual const char* what () const throw() {return "thread_resource_error";}
+};
+
+class lock_error
+	: public std::exception
+{
+public:
+	virtual const char* what () const throw() {return "lock_error";}
+};
+
+class mutex
+{
+public:
+	typedef *detail 1* scoped_lock;
+
+	mutex();
+	~mutex();
+
+private:
+	mutex(const mutex&);
+	mutex& operator=(const mutex&);
+};
+
+class try_mutex
+{
+public:
+	typedef *detail 1*     scoped_lock;
+	typedef *detail 2*     scoped_try_lock;
+
+	try_mutex();
+	~try_mutex();
+
+private:
+	try_mutex(const try_mutex&);
+	try_mutex& operator=(const try_mutex&);
+};
+
+class timed_mutex
+{
+public:
+	typedef *detail 1*     scoped_lock;
+	typedef *detail 2*     scoped_try_lock;
+	typedef *detail 3*     scoped_timed_lock;
+
+	timed_mutex();
+	~timed_mutex();
+
+private:
+	timed_mutex(const timed_mutex&);
+	timed_mutex& operator=(const timed_mutex&);
+};
+
+class recursive_mutex
+{
+public:
+	typedef *detail 1* scoped_lock;
+
+	recursive_mutex();
+	~recursive_mutex();
+
+private:
+	recursive_mutex(const recursive_mutex&);
+	recursive_mutex& operator=(const recursive_mutex&);
+};
+
+class recursive_try_mutex
+{
+public:
+	typedef *detail 1*     scoped_lock;
+	typedef *detail 2*     scoped_try_lock;
+
+	recursive_try_mutex();
+	~recursive_try_mutex();
+
+private:
+	recursive_try_mutex(const recursive_try_mutex&);
+	recursive_try_mutex& operator=(const recursive_try_mutex&);
+};
+
+class recursive_timed_mutex
+{
+public:
+	typedef *detail 1*     scoped_lock;
+	typedef *detail 2*     scoped_try_lock;
+	typedef *detail 3*     scoped_timed_lock;
+
+	recursive_timed_mutex();
+	~recursive_timed_mutex();
+
+private:
+	recursive_timed_mutex(const recursive_timed_mutex&);
+	recursive_timed_mutex& operator=(const recursive_timed_mutex&);
+};
+
+class rw_mutex
+{
+public:
+	typedef *detail 4*  read_lock;
+	typedef *detail 5*  write_lock;
+
+	rw_mutex();
+	~rw_mutex();
+private:
+	rw_mutex(const rw_mutex&);
+	rw_mutex& operator=(const rw_mutex&);
+};
+
+template <class TryLock1, class TryLock2>
+class lock_both
+{
+public:
+
+	lock_both(TryLock1& m1, TryLock2& m2);
+	lock_both(TryLock1& m1, TryLock2& m2, bool lock_it);
+
+	~lock_both();
+
+	void lock();
+	bool try_lock();
+	void unlock();
+	bool locked() const;
+	operator int bool_type::* () const;
+
+private:
+	lock_both(const lock_both&);
+	lock_both& operator=(const lock_both&);
+
+	static void* operator new(_CSTD::size_t);
+	static void operator delete(void*) {}
+};
+
+}  // Metrowerks
+
+*detail 1* is only accessible as a nested type of a mutex class.  It looks like:
+
+template <typename Mutex>
+class scoped_lock
+{
+public:
+	typedef Mutex mutex_type;
+
+	explicit scoped_lock(mutex_type& m);
+	scoped_lock(mutex_type& m, bool lock_it);
+
+	~scoped_lock();
+
+	void lock();
+	void unlock();
+    bool locked() const;
+	operator int bool_type::* () const;
+
+private:
+	scoped_lock(const scoped_lock&);
+	scoped_lock& operator=(const scoped_lock&);
+
+	static void* operator new(std::size_t);
+	static void operator delete(void*);
+};
+
+*detail 2* is only accessible as a nested type of a mutex class.  It looks like:
+
+template <class TryMutex>
+class scoped_try_lock
+{
+public:
+	typedef TryMutex mutex_type;
+
+	explicit scoped_try_lock(mutex_type& m);
+	scoped_try_lock(mutex_type& m, bool lock_it);
+
+	~scoped_try_lock();
+			
+	void lock();
+	bool try_lock();
+	void unlock();
+	bool locked() const;
+	operator int bool_type::* () const;
+
+private:
+	scoped_try_lock(const scoped_try_lock&);
+	scoped_try_lock& operator=(const scoped_try_lock&);
+
+	static void* operator new(std::size_t);
+	static void operator delete(void*) {}
+};
+
+*detail 3* is only accessible as a nested type of a mutex class.  It looks like:
+
+template <class TimedMutex>
+class scoped_timed_lock
+{
+public:
+	typedef TimedMutex mutex_type;
+
+	scoped_timed_lock(mutex_type& m, const universal_time& unv_time);
+	scoped_timed_lock(mutex_type& m, const elapsed_time& elps_time);
+	scoped_timed_lock(mutex_type& m, bool lock_it);
+
+	~scoped_timed_lock();
+
+	void lock();
+	bool timed_lock(const universal_time& unv_time);
+	bool timed_lock(const elapsed_time& elps_time);
+	void unlock();
+	bool locked() const;
+	operator int bool_type::* () const;
+
+private:
+	scoped_timed_lock(const scoped_timed_lock&);
+	scoped_timed_lock& operator=(const scoped_timed_lock&);
+
+	static void* operator new(std::size_t);
+	static void operator delete(void*) {}
+};
+
+*detail 4* is only accessible as a nested type of a mutex class.  It looks like:
+
+template <class RW_Mutex>
+class read_lock
+{
+public:
+	typedef RW_Mutex mutex_type;
+
+	explicit read_lock(mutex_type& m);
+	read_lock(mutex_type& m, bool lock_it);
+
+	~read_lock();
+
+	void lock();
+	bool try_lock();
+	void unlock();
+	bool locked() const;
+	operator int bool_type::* () const;
+
+private:
+	read_lock(const read_lock&);
+	read_lock& operator=(const read_lock&);
+
+	static void* operator new(_CSTD::size_t);
+	static void operator delete(void*) {}
+};
+
+*detail 5* is only accessible as a nested type of a mutex class.  It looks like:
+
+template <class RW_Mutex>
+class write_lock
+{
+public:
+	typedef RW_Mutex mutex_type;
+
+	explicit write_lock(mutex_type& m);
+	write_lock(mutex_type& m, bool lock_it);
+
+	~write_lock();
+
+	void lock();
+	bool try_lock();
+	void unlock();
+	bool locked() const;
+	operator int bool_type::* () const;
+
+private:
+	write_lock(const write_lock&);
+	write_lock& operator=(const write_lock&);
+
+	static void* operator new(_CSTD::size_t);
+	static void operator delete(void*) {}
+};
+
+*/
+
+#ifndef _MSL_MUTEX
+#define _MSL_MUTEX
+
+#include <mslconfig>
+
+#include <exception>
+#include <cstddef>
+#include <msl_time>
+
+#ifdef _MSL_USE_PTHREADS
+	#include <pthread.h>
+	#ifndef EBUSY
+		#include <errno.h>
+	#endif
+#endif
+
+#ifdef _MSL_USE_MPTASKS
+	#if defined(__MWERKS__) && __option(only_std_keywords)
+		#pragma only_std_keywords off
+	#endif
+	#include <MacErrors.h>
+	#include <Multiprocessing.h>
+	#if defined(__MWERKS__)
+		#pragma only_std_keywords reset
+	#endif
+#endif
+
+#ifdef _MSL_USE_WINTHREADS
+	#define WIN32_LEAN_AND_MEAN
+	#if defined(__MWERKS__)
+	#pragma ANSI_strict off
+	#endif
+	#include <windows.h>
+	#if defined(__MWERKS__)
+	#pragma ANSI_strict reset
+	#endif
+	#undef WIN32_LEAN_AND_MEAN
+#endif
+
+#ifdef _MSL_USE_NITROTHREADS
+	#include <nitro/os.h>
+#endif
+
+#ifndef RC_INVOKED
+
+#ifdef __MWERKS__
+	#pragma warn_padding off
+#endif
+
+#ifdef __MWERKS__
+#pragma options align=native
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#if _MSL_FORCE_ENUMS_ALWAYS_INT
+		#pragma enumsalwaysint on
+	#else
+		#pragma enumsalwaysint off
+	#endif
+#endif
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#if _MSL_FORCE_ENABLE_BOOL_SUPPORT
+		#pragma bool on
+	#else
+		#pragma bool off
+	#endif
+#endif
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	namespace Metrowerks {
+#else
+	#ifndef Metrowerks
+		#define Metrowerks
+	#endif
+#endif
+
+class thread_resource_error
+	: public _STD::exception
+{
+public:
+	virtual const char* what () const _MSL_NO_THROW {return "thread_resource_error";}
+};
+
+class lock_error
+	: public _STD::exception
+{
+public:
+	virtual const char* what () const _MSL_NO_THROW {return "lock_error";}
+};
+
+class condition;
+
+namespace detail
+{
+
+void throw_thread_resource_error();
+void throw_lock_error();
+
+template <typename Mutex>
+class scoped_lock
+{
+	struct bool_type {int dummy_;};
+public:
+	typedef Mutex mutex_type;
+
+	explicit scoped_lock(mutex_type& m);
+	scoped_lock(mutex_type& m, bool lock_it);
+
+	~scoped_lock();
+
+	void lock();
+	void unlock();
+	bool locked() const {return locked_;}
+	operator int bool_type::* () const {return locked_ ? &bool_type::dummy_ : 0;}
+
+private:
+	scoped_lock(const scoped_lock&);
+	scoped_lock& operator=(const scoped_lock&);
+
+	static void* operator new(_CSTD::size_t);
+	static void operator delete(void*) {}
+
+#ifndef _MSL_SINGLE_THREAD
+	mutex_type& expose() {return m_;}
+#endif
+
+	mutex_type& m_;
+	bool locked_;
+
+	friend class condition;
+};
+
+template <typename Mutex>
+inline
+scoped_lock<Mutex>::scoped_lock(mutex_type& m)
+	:	m_(m),
+		locked_(true)
+{
+	m_.lock();
+}
+
+template <typename Mutex>
+#ifdef _MSL_SINGLE_THREAD
+inline
+#endif
+scoped_lock<Mutex>::scoped_lock(mutex_type& m, bool lock_it)
+	:	m_(m),
+		locked_(false)
+{
+	if (lock_it)
+	{
+		m_.lock();
+		locked_ = true;
+	}
+}
+
+template <typename Mutex>
+inline
+scoped_lock<Mutex>::~scoped_lock()
+{
+	if (locked_)
+		m_.unlock();
+}
+
+template <typename Mutex>
+void
+scoped_lock<Mutex>::lock()
+{
+	if (locked_)
+		detail::throw_lock_error();
+	m_.lock();
+	locked_ = true;
+}
+
+template <typename Mutex>
+void
+scoped_lock<Mutex>::unlock()
+{
+	if (!locked_)
+		detail::throw_lock_error();
+	m_.unlock();
+	locked_ = false;
+}
+
+template <class TryMutex>
+class scoped_try_lock
+{
+	struct bool_type {int dummy_;};
+public:
+	typedef TryMutex mutex_type;
+
+	explicit scoped_try_lock(mutex_type& m);
+	scoped_try_lock(mutex_type& m, bool lock_it);
+
+	~scoped_try_lock();
+			
+	void lock();
+	bool try_lock();
+	void unlock();
+	bool locked() const {return locked_;}
+	operator int bool_type::* () const {return locked_ ? &bool_type::dummy_ : 0;}
+
+private:
+	scoped_try_lock(const scoped_try_lock&);
+	scoped_try_lock& operator=(const scoped_try_lock&);
+
+	static void* operator new(_CSTD::size_t);
+	static void operator delete(void*) {}
+
+#ifndef _MSL_SINGLE_THREAD
+	mutex_type& expose() {return m_;}
+#endif
+
+	mutex_type& m_;
+    bool locked_;
+
+	friend class condition;
+};
+
+template <class TryMutex>
+inline
+scoped_try_lock<TryMutex>::scoped_try_lock(mutex_type& m)
+	:	m_(m),
+		locked_(m.try_lock())
+{
+}
+
+template <class TryMutex>
+scoped_try_lock<TryMutex>::scoped_try_lock(mutex_type& m, bool lock_it)
+	:	m_(m),
+		locked_(false)
+{
+	if (lock_it)
+	{
+		m_.lock();
+		locked_ = true;
+	}
+}
+
+template <typename TryMutex>
+inline
+scoped_try_lock<TryMutex>::~scoped_try_lock()
+{
+	if (locked_)
+		m_.unlock();
+}
+
+template <typename TryMutex>
+void
+scoped_try_lock<TryMutex>::lock()
+{
+	if (locked_)
+		detail::throw_lock_error();
+	m_.lock();
+	locked_ = true;
+}
+
+template <typename TryMutex>
+bool
+scoped_try_lock<TryMutex>::try_lock()
+{
+	if (locked_)
+		detail::throw_lock_error();
+	locked_ = m_.try_lock();
+	return locked_;
+}
+
+template <typename TryMutex>
+void
+scoped_try_lock<TryMutex>::unlock()
+{
+	if (!locked_)
+		detail::throw_lock_error();
+	m_.unlock();
+	locked_ = false;
+}
+
+#ifndef _MSL_NO_TIME_SUPPORT
+
+template <class TimedMutex>
+class scoped_timed_lock
+{
+	struct bool_type {int dummy_;};
+public:
+	typedef TimedMutex mutex_type;
+
+	scoped_timed_lock(mutex_type& m, const universal_time& unv_time);
+	scoped_timed_lock(mutex_type& m, const elapsed_time& elps_time);
+	scoped_timed_lock(mutex_type& m, bool lock_it);
+
+	~scoped_timed_lock();
+
+	void lock();
+	bool timed_lock(const universal_time& unv_time);
+	bool timed_lock(const elapsed_time& elps_time);
+	void unlock();
+	bool locked() const {return locked_;}
+	operator int bool_type::* () const {return locked_ ? &bool_type::dummy_ : 0;}
+
+private:
+	scoped_timed_lock(const scoped_timed_lock&);
+	scoped_timed_lock& operator=(const scoped_timed_lock&);
+
+	static void* operator new(_CSTD::size_t);
+	static void operator delete(void*) {}
+
+#ifndef _MSL_SINGLE_THREAD
+	mutex_type& expose() {return m_;}
+#endif
+
+	mutex_type& m_;
+    bool locked_;
+
+	friend class condition;
+};
+
+template <class TimedMutex>
+inline
+scoped_timed_lock<TimedMutex>::scoped_timed_lock(mutex_type& m, const universal_time& unv_time)
+	:	m_(m),
+		locked_(m.timed_lock(unv_time))
+{
+}
+
+template <class TimedMutex>
+inline
+scoped_timed_lock<TimedMutex>::scoped_timed_lock(mutex_type& m, const elapsed_time& elps_time)
+	:	m_(m),
+		locked_(m.timed_lock(elps_time))
+{
+}
+
+template <class TimedMutex>
+scoped_timed_lock<TimedMutex>::scoped_timed_lock(mutex_type& m, bool lock_it)
+	:	m_(m),
+		locked_(false)
+{
+	if (lock_it)
+	{
+		m_.lock();
+		locked_ = true;
+	}
+}
+
+template <typename TimedMutex>
+inline
+scoped_timed_lock<TimedMutex>::~scoped_timed_lock()
+{
+	if (locked_)
+		m_.unlock();
+}
+
+template <typename TimedMutex>
+void
+scoped_timed_lock<TimedMutex>::lock()
+{
+	if (locked_)
+		detail::throw_lock_error();
+	m_.lock();
+	locked_ = true;
+}
+
+template <typename TimedMutex>
+bool
+scoped_timed_lock<TimedMutex>::timed_lock(const universal_time& unv_time)
+{
+	if (locked_)
+		detail::throw_lock_error();
+	locked_ = m_.timed_lock(unv_time);
+	return locked_;
+}
+
+template <typename TimedMutex>
+bool
+scoped_timed_lock<TimedMutex>::timed_lock(const elapsed_time& elps_time)
+{
+	if (locked_)
+		detail::throw_lock_error();
+	locked_ = m_.timed_lock(elps_time);
+	return locked_;
+}
+
+template <typename TimedMutex>
+void
+scoped_timed_lock<TimedMutex>::unlock()
+{
+	if (!locked_)
+		detail::throw_lock_error();
+	m_.unlock();
+	locked_ = false;
+}
+
+#endif  // _MSL_NO_TIME_SUPPORT
+
+#ifndef _MSL_NO_CONDITION
+
+template <class RW_Mutex>
+class read_lock
+{
+	struct bool_type {int dummy_;};
+public:
+	typedef RW_Mutex mutex_type;
+
+	explicit read_lock(mutex_type& m);
+	read_lock(mutex_type& m, bool lock_it);
+
+	~read_lock();
+
+	void lock();
+	bool try_lock();
+	void unlock();
+	bool locked() const {return locked_;}
+	operator int bool_type::* () const {return locked_ ? &bool_type::dummy_ : 0;}
+
+private:
+	read_lock(const read_lock&);
+	read_lock& operator=(const read_lock&);
+
+	static void* operator new(_CSTD::size_t);
+	static void operator delete(void*) {}
+
+	mutex_type& m_;
+	bool locked_;
+};
+
+template <class RW_Mutex>
+inline
+read_lock<RW_Mutex>::read_lock(mutex_type& m)
+	:	m_(m),
+		locked_(true)
+{
+	m_.lock_read();
+}
+
+template <class RW_Mutex>
+read_lock<RW_Mutex>::read_lock(mutex_type& m, bool lock_it)
+	:	m_(m),
+		locked_(false)
+{
+	if (lock_it)
+	{
+		m_.lock_read();
+		locked_ = true;
+	}
+}
+
+template <class RW_Mutex>
+inline
+read_lock<RW_Mutex>::~read_lock()
+{
+	if (locked_)
+		m_.unlock_read();
+}
+
+template <class RW_Mutex>
+void
+read_lock<RW_Mutex>::lock()
+{
+	if (locked_)
+		throw_lock_error();
+	m_.lock_read();
+	locked_ = true;
+}
+
+template <class RW_Mutex>
+bool
+read_lock<RW_Mutex>::try_lock()
+{
+	if (locked_)
+		throw_lock_error();
+	locked_ = m_.try_lock_read();
+	return locked_;
+}
+
+template <class RW_Mutex>
+void
+read_lock<RW_Mutex>::unlock()
+{
+	if (!locked_)
+		throw_lock_error();
+	m_.unlock_read();
+	locked_ = false;
+}
+
+template <class RW_Mutex>
+class write_lock
+{
+	struct bool_type {int dummy_;};
+public:
+	typedef RW_Mutex mutex_type;
+
+	explicit write_lock(mutex_type& m);
+	write_lock(mutex_type& m, bool lock_it);
+
+	~write_lock();
+
+	void lock();
+	bool try_lock();
+	void unlock();
+	bool locked() const {return locked_;}
+	operator int bool_type::* () const {return locked_ ? &bool_type::dummy_ : 0;}
+
+private:
+	write_lock(const write_lock&);
+	write_lock& operator=(const write_lock&);
+
+	static void* operator new(_CSTD::size_t);
+	static void operator delete(void*) {}
+
+	mutex_type& m_;
+	bool locked_;
+};
+
+template <class RW_Mutex>
+inline
+write_lock<RW_Mutex>::write_lock(mutex_type& m)
+	:	m_(m),
+		locked_(true)
+{
+	m_.lock_write();
+}
+
+template <class RW_Mutex>
+write_lock<RW_Mutex>::write_lock(mutex_type& m, bool lock_it)
+	:	m_(m),
+		locked_(false)
+{
+	if (lock_it)
+	{
+		m_.lock_write();
+		locked_ = true;
+	}
+}
+
+template <class RW_Mutex>
+inline
+write_lock<RW_Mutex>::~write_lock()
+{
+	if (locked_)
+		m_.unlock_write();
+}
+
+template <class RW_Mutex>
+void
+write_lock<RW_Mutex>::lock()
+{
+	if (locked_)
+		throw_lock_error();
+	m_.lock_write();
+	locked_ = true;
+}
+
+template <class RW_Mutex>
+bool
+write_lock<RW_Mutex>::try_lock()
+{
+	if (locked_)
+		throw_lock_error();
+	locked_ = m_.try_lock_write();
+	return locked_;
+}
+
+template <class RW_Mutex>
+void
+write_lock<RW_Mutex>::unlock()
+{
+	if (!locked_)
+		throw_lock_error();
+	m_.unlock_write();
+	locked_ = false;
+}
+
+#endif  // _MSL_NO_CONDITION
+
+}  // detail
+
+class mutex
+{
+public:
+
+	typedef detail::scoped_lock<mutex> scoped_lock;
+
+	mutex();
+	~mutex();
+
+private:
+	friend class scoped_lock;
+	friend class condition;
+
+	mutex(const mutex&);
+	mutex& operator=(const mutex&);
+
+	void lock();
+	void unlock();
+
+#ifdef _MSL_USE_PTHREADS
+	typedef pthread_mutex_t mutex_type;
+	mutex_type m_;
+	mutex_type& expose() {return m_;}
+	struct state {};
+	void wait_prefix(state&) {}
+	void wait_suffix(const state&) {}
+#endif
+#ifdef _MSL_USE_MPTASKS
+	typedef MPCriticalRegionID mutex_type;
+	mutex_type m_;
+	mutex_type& expose() {return m_;}
+#endif
+#ifdef _MSL_USE_WINTHREADS
+	typedef CRITICAL_SECTION mutex_type;
+	mutex_type m_;
+	mutex_type& expose() {return m_;}
+#endif
+#ifdef _MSL_USE_NITROTHREADS
+	typedef OSMutex mutex_type;
+	mutex_type m_;
+#endif
+};
+
+#ifdef _MSL_USE_PTHREADS
+
+inline
+mutex::mutex()
+{
+	if (pthread_mutex_init(&m_, 0))
+		detail::throw_thread_resource_error();
+}
+
+inline
+mutex::~mutex()
+{
+	pthread_mutex_destroy(&m_);
+}
+
+inline
+void
+mutex::lock()
+{
+	if (pthread_mutex_lock(&m_))
+		detail::throw_lock_error();
+}
+
+inline
+void
+mutex::unlock()
+{
+	if (pthread_mutex_unlock(&m_))
+		detail::throw_lock_error();
+}
+
+#endif  // _MSL_USE_PTHREADS
+
+#ifdef _MSL_USE_MPTASKS
+
+inline
+mutex::mutex()
+{
+	if (!MPLibraryIsLoaded() || MPCreateCriticalRegion(&m_))
+		detail::throw_thread_resource_error();
+}
+
+inline
+mutex::~mutex()
+{
+	MPDeleteCriticalRegion(m_);
+}
+
+inline
+void
+mutex::lock()
+{
+	if (MPEnterCriticalRegion(m_, kDurationForever))
+		detail::throw_lock_error();
+}
+
+inline
+void
+mutex::unlock()
+{
+	if (MPExitCriticalRegion(m_))
+		detail::throw_lock_error();
+}
+
+#endif  // _MSL_USE_MPTASKS
+
+#ifdef _MSL_USE_WINTHREADS
+
+inline
+mutex::mutex()
+{
+	InitializeCriticalSection(&m_);
+}
+
+inline
+mutex::~mutex()
+{
+	DeleteCriticalSection(&m_);
+}
+
+inline
+void
+mutex::lock()
+{
+	EnterCriticalSection(&m_);
+}
+
+inline
+void
+mutex::unlock()
+{
+	LeaveCriticalSection(&m_);
+}
+
+#endif // _MSL_USE_WINTHREADS
+
+#ifdef _MSL_USE_NITROTHREADS
+
+inline
+mutex::mutex()
+{
+	OS_InitMutex(&m_);
+}
+
+inline
+mutex::~mutex()
+{
+}
+
+inline
+void
+mutex::lock()
+{
+	OS_LockMutex(&m_);
+}
+
+inline
+void
+mutex::unlock()
+{
+	OS_UnlockMutex(&m_);
+}
+
+#endif // _MSL_USE_NITROTHREADS
+
+#ifdef _MSL_SINGLE_THREAD
+
+inline
+mutex::mutex()
+{
+}
+
+inline
+mutex::~mutex()
+{
+}
+
+inline
+void
+mutex::lock()
+{
+}
+
+inline
+void
+mutex::unlock()
+{
+}
+
+#endif  // _MSL_SINGLE_THREAD
+
+class try_mutex
+{
+public:
+
+	typedef detail::scoped_lock<try_mutex>     scoped_lock;
+	typedef detail::scoped_try_lock<try_mutex> scoped_try_lock;
+
+	try_mutex();
+	~try_mutex();
+
+private:
+	friend class scoped_lock;
+	friend class scoped_try_lock;
+	friend class condition;
+
+	try_mutex(const try_mutex&);
+	try_mutex& operator=(const try_mutex&);
+
+	void lock();
+	bool try_lock();
+	void unlock();
+
+#ifdef _MSL_USE_PTHREADS
+	typedef pthread_mutex_t mutex_type;
+	mutex_type m_;
+	mutex_type& expose() {return m_;}
+	struct state {};
+	void wait_prefix(state&) {}
+	void wait_suffix(const state&) {}
+#endif
+#ifdef _MSL_USE_MPTASKS
+	typedef MPCriticalRegionID mutex_type;
+	mutex_type m_;
+	mutex_type& expose() {return m_;}
+#endif
+#ifdef _MSL_USE_WINTHREADS
+	typedef HANDLE mutex_type;
+	mutex_type m_;
+	mutex_type& expose() {return m_;}
+#endif
+#ifdef _MSL_USE_NITROTHREADS
+	typedef OSMutex mutex_type;
+	mutex_type m_;
+#endif
+};
+
+#ifdef _MSL_USE_PTHREADS
+
+inline
+try_mutex::try_mutex()
+{
+	if (pthread_mutex_init(&m_, 0))
+		detail::throw_thread_resource_error();
+}
+
+inline
+try_mutex::~try_mutex()
+{
+	pthread_mutex_destroy(&m_);
+}
+
+inline
+void
+try_mutex::lock()
+{
+	if (pthread_mutex_lock(&m_))
+		detail::throw_lock_error();
+}
+
+inline
+bool
+try_mutex::try_lock()
+{
+	int result = pthread_mutex_trylock(&m_);
+	if (result != 0 && result != EBUSY)
+		detail::throw_lock_error();
+	return result == 0;
+}
+
+inline
+void
+try_mutex::unlock()
+{
+	if (pthread_mutex_unlock(&m_))
+		detail::throw_lock_error();
+}
+
+#endif  // _MSL_USE_PTHREADS
+
+#ifdef _MSL_USE_MPTASKS
+
+inline
+try_mutex::try_mutex()
+{
+	if (!MPLibraryIsLoaded() || MPCreateCriticalRegion(&m_))
+		detail::throw_thread_resource_error();
+}
+
+inline
+try_mutex::~try_mutex()
+{
+	MPDeleteCriticalRegion(m_);
+}
+
+inline
+void
+try_mutex::lock()
+{
+	if (MPEnterCriticalRegion(m_, kDurationForever))
+		detail::throw_lock_error();
+}
+
+inline
+bool
+try_mutex::try_lock()
+{
+	int result = MPEnterCriticalRegion(m_, kDurationImmediate);
+	if (result != 0 && result != kMPTimeoutErr)
+		detail::throw_lock_error();
+	return result == 0;
+}
+
+inline
+void
+try_mutex::unlock()
+{
+	if (MPExitCriticalRegion(m_))
+		detail::throw_lock_error();
+}
+
+#endif  // _MSL_USE_MPTASKS
+
+#ifdef _MSL_USE_WINTHREADS
+
+inline
+try_mutex::try_mutex()
+	:	m_(CreateMutex(0, 0, 0))
+{
+	if (m_ == 0)
+		detail::throw_thread_resource_error();
+}
+
+inline
+try_mutex::~try_mutex()
+{
+	CloseHandle(m_);
+}
+
+inline
+void
+try_mutex::lock()
+{
+	if (WaitForSingleObject(m_, INFINITE) != WAIT_OBJECT_0)
+		detail::throw_lock_error();
+}
+
+inline
+bool
+try_mutex::try_lock()
+{
+	DWORD result = WaitForSingleObject(m_, 0);
+	if (result != WAIT_OBJECT_0 && result != WAIT_TIMEOUT)
+		detail::throw_lock_error();
+	return result == WAIT_OBJECT_0;
+}
+
+inline
+void
+try_mutex::unlock()
+{
+	if (!ReleaseMutex(m_))
+		detail::throw_lock_error();
+}
+
+#endif // _MSL_USE_WINTHREADS
+
+#ifdef _MSL_USE_NITROTHREADS
+
+inline
+try_mutex::try_mutex()
+{
+	OS_InitMutex(&m_);
+}
+
+inline
+try_mutex::~try_mutex()
+{
+}
+
+inline
+void
+try_mutex::lock()
+{
+	OS_LockMutex(&m_);
+}
+
+inline
+bool
+try_mutex::try_lock()
+{
+	return static_cast<bool>(OS_TryLockMutex(&m_));
+}
+
+inline
+void
+try_mutex::unlock()
+{
+	OS_UnlockMutex(&m_);
+}
+
+#endif // _MSL_USE_NITROTHREADS
+
+#ifdef _MSL_SINGLE_THREAD
+
+inline
+try_mutex::try_mutex()
+{
+}
+
+inline
+try_mutex::~try_mutex()
+{
+}
+
+inline
+void
+try_mutex::lock()
+{
+}
+
+inline
+bool
+try_mutex::try_lock()
+{
+	return true;
+}
+
+inline
+void
+try_mutex::unlock()
+{
+}
+
+#endif  // _MSL_SINGLE_THREAD
+
+#ifndef _MSL_NO_TIME_SUPPORT
+
+class
+#ifndef _MSL_SINGLE_THREAD
+_MSL_IMP_EXP_CPP
+#endif
+timed_mutex
+{
+public:
+
+	typedef detail::scoped_lock<timed_mutex>       scoped_lock;
+	typedef detail::scoped_try_lock<timed_mutex>   scoped_try_lock;
+	typedef detail::scoped_timed_lock<timed_mutex> scoped_timed_lock;
+
+	timed_mutex();
+	~timed_mutex();
+
+private:
+	friend class scoped_lock;
+	friend class scoped_try_lock;
+	friend class scoped_timed_lock;
+	friend class condition;
+
+	timed_mutex(const timed_mutex&);
+	timed_mutex& operator=(const timed_mutex&);
+
+	void lock();
+	bool try_lock();
+	bool timed_lock(const universal_time& unv_time);
+	bool timed_lock(const elapsed_time& elps_time);
+	void unlock();
+
+#ifdef _MSL_USE_PTHREADS
+	typedef pthread_mutex_t mutex_type;
+	mutex_type m_;
+	pthread_cond_t c_;
+	volatile bool locked_;
+	mutex_type& expose() {return m_;}
+	struct state {};
+	void wait_prefix(state&);
+	void wait_suffix(const state&);
+#endif
+#ifdef _MSL_USE_MPTASKS
+	typedef MPCriticalRegionID mutex_type;
+	mutex_type m_;
+	mutex_type& expose() {return m_;}
+#endif
+#ifdef _MSL_USE_WINTHREADS
+	typedef HANDLE mutex_type;
+	mutex_type m_;
+	mutex_type& expose() {return m_;}
+#endif
+};
+
+#ifdef _MSL_USE_PTHREADS
+
+inline
+bool
+timed_mutex::timed_lock(const elapsed_time& elps_time)
+{
+	return timed_lock(universal_time() + elps_time);
+}
+
+#endif  // _MSL_USE_PTHREADS
+
+#ifdef _MSL_USE_MPTASKS
+
+inline
+timed_mutex::timed_mutex()
+{
+	if (!MPLibraryIsLoaded() || MPCreateCriticalRegion(&m_))
+		detail::throw_thread_resource_error();
+}
+
+inline
+timed_mutex::~timed_mutex()
+{
+	MPDeleteCriticalRegion(m_);
+}
+
+inline
+void
+timed_mutex::lock()
+{
+	if (MPEnterCriticalRegion(m_, kDurationForever))
+		detail::throw_lock_error();
+}
+
+inline
+bool
+timed_mutex::try_lock()
+{
+	int result = MPEnterCriticalRegion(m_, kDurationImmediate);
+	if (result != 0 && result != kMPTimeoutErr)
+		detail::throw_lock_error();
+	return result == 0;
+}
+
+inline
+bool
+timed_mutex::timed_lock(const universal_time& unv_time)
+{
+	return timed_lock(unv_time - universal_time());
+}
+
+inline
+void
+timed_mutex::unlock()
+{
+	if (MPExitCriticalRegion(m_))
+		detail::throw_lock_error();
+}
+
+#endif  // _MSL_USE_MPTASKS
+
+#ifdef _MSL_USE_WINTHREADS
+
+inline
+timed_mutex::timed_mutex()
+	:	m_(CreateMutex(0, 0, 0))
+{
+	if (m_ == 0)
+		detail::throw_thread_resource_error();
+}
+
+inline
+timed_mutex::~timed_mutex()
+{
+	CloseHandle(m_);
+}
+
+inline
+void
+timed_mutex::lock()
+{
+	if (WaitForSingleObject(m_, INFINITE) != WAIT_OBJECT_0)
+		detail::throw_lock_error();
+}
+
+inline
+bool
+timed_mutex::try_lock()
+{
+	DWORD result = WaitForSingleObject(m_, 0);
+	if (result != WAIT_OBJECT_0 && result != WAIT_TIMEOUT)
+		detail::throw_lock_error();
+	return result == WAIT_OBJECT_0;
+}
+
+inline
+bool
+timed_mutex::timed_lock(const universal_time& unv_time)
+{
+	return timed_lock(unv_time - universal_time());
+}
+
+inline
+void
+timed_mutex::unlock()
+{
+	if (!ReleaseMutex(m_))
+		detail::throw_lock_error();
+}
+
+#endif // _MSL_USE_WINTHREADS
+
+#ifdef _MSL_SINGLE_THREAD
+
+inline
+timed_mutex::timed_mutex()
+{
+}
+
+inline
+timed_mutex::~timed_mutex()
+{
+}
+
+inline
+void
+timed_mutex::lock()
+{
+}
+
+inline
+bool
+timed_mutex::try_lock()
+{
+	return true;
+}
+
+inline
+bool
+timed_mutex::timed_lock(const universal_time&)
+{
+	return true;
+}
+
+inline
+bool
+timed_mutex::timed_lock(const elapsed_time&)
+{
+	return true;
+}
+
+inline
+void
+timed_mutex::unlock()
+{
+}
+
+#endif  // _MSL_SINGLE_THREAD
+
+#endif  // _MSL_NO_TIME_SUPPORT
+
+class
+#ifdef _MSL_USE_PTHREADS
+_MSL_IMP_EXP_CPP
+#endif
+recursive_mutex
+{
+public:
+
+	typedef detail::scoped_lock<recursive_mutex> scoped_lock;
+
+	recursive_mutex();
+	~recursive_mutex();
+
+private:
+	friend class scoped_lock;
+	friend class condition;
+
+	recursive_mutex(const recursive_mutex&);
+	recursive_mutex& operator=(const recursive_mutex&);
+
+	void lock();
+	void unlock();
+
+#ifdef _MSL_USE_PTHREADS
+	typedef pthread_mutex_t mutex_type;
+	mutex_type m_;
+	mutex_type& expose() {return m_;}
+#ifdef PTHREAD_MUTEX_RECURSIVE
+	struct state {};
+	void wait_prefix(state&) {}
+	void wait_suffix(const state&) {}
+#else
+	pthread_cond_t c_;
+	pthread_t owner_;
+	volatile unsigned count_;
+
+	struct state
+	{
+		pthread_t owner_;
+		unsigned count_;
+	};
+
+	void wait_prefix(state&);
+	void wait_suffix(const state&);
+#endif  // PTHREAD_MUTEX_RECURSIVE
+#endif  // _MSL_USE_PTHREADS
+#ifdef _MSL_USE_MPTASKS
+	typedef MPCriticalRegionID mutex_type;
+	mutex_type m_;
+	mutex_type& expose() {return m_;}
+#endif
+#ifdef _MSL_USE_WINTHREADS
+	typedef CRITICAL_SECTION mutex_type;
+	mutex_type m_;
+	mutex_type& expose() {return m_;}
+#endif
+#ifdef _MSL_USE_NITROTHREADS
+	typedef OSMutex mutex_type;
+	mutex_type m_;
+#endif
+};
+
+#ifdef _MSL_USE_PTHREADS
+
+#ifdef PTHREAD_MUTEX_RECURSIVE
+
+inline
+recursive_mutex::~recursive_mutex()
+{
+	pthread_mutex_destroy(&m_);
+}
+
+inline
+void
+recursive_mutex::lock()
+{
+	if (pthread_mutex_lock(&m_))
+		detail::throw_lock_error();
+}
+
+inline
+void
+recursive_mutex::unlock()
+{
+	if (pthread_mutex_unlock(&m_))
+		detail::throw_lock_error();
+}
+
+#endif  // PTHREAD_MUTEX_RECURSIVE
+
+#endif  // _MSL_USE_PTHREADS
+
+#ifdef _MSL_USE_MPTASKS
+
+inline
+recursive_mutex::recursive_mutex()
+{
+	if (!MPLibraryIsLoaded() || MPCreateCriticalRegion(&m_))
+		detail::throw_thread_resource_error();
+}
+
+inline
+recursive_mutex::~recursive_mutex()
+{
+	MPDeleteCriticalRegion(m_);
+}
+
+inline
+void
+recursive_mutex::lock()
+{
+	if (MPEnterCriticalRegion(m_, kDurationForever))
+		detail::throw_lock_error();
+}
+
+inline
+void
+recursive_mutex::unlock()
+{
+	if (MPExitCriticalRegion(m_))
+		detail::throw_lock_error();
+}
+
+#endif  // _MSL_USE_MPTASKS
+
+#ifdef _MSL_USE_WINTHREADS
+
+inline
+recursive_mutex::recursive_mutex()
+{
+	InitializeCriticalSection(&m_);
+}
+
+inline
+recursive_mutex::~recursive_mutex()
+{
+	DeleteCriticalSection(&m_);
+}
+
+inline
+void
+recursive_mutex::lock()
+{
+	EnterCriticalSection(&m_);
+}
+
+inline
+void
+recursive_mutex::unlock()
+{
+	LeaveCriticalSection(&m_);
+}
+
+#endif // _MSL_USE_WINTHREADS
+
+#ifdef _MSL_USE_NITROTHREADS
+
+inline
+recursive_mutex::recursive_mutex()
+{
+	OS_InitMutex(&m_);
+}
+
+inline
+recursive_mutex::~recursive_mutex()
+{
+}
+
+inline
+void
+recursive_mutex::lock()
+{
+	OS_LockMutex(&m_);
+}
+
+inline
+void
+recursive_mutex::unlock()
+{
+	OS_UnlockMutex(&m_);
+}
+
+#endif // _MSL_USE_NITROTHREADS
+
+#ifdef _MSL_SINGLE_THREAD
+
+inline
+recursive_mutex::recursive_mutex()
+{
+}
+
+inline
+recursive_mutex::~recursive_mutex()
+{
+}
+
+inline
+void
+recursive_mutex::lock()
+{
+}
+
+inline
+void
+recursive_mutex::unlock()
+{
+}
+
+#endif  // _MSL_SINGLE_THREAD
+
+class
+#ifdef _MSL_USE_PTHREADS
+_MSL_IMP_EXP_CPP
+#endif
+recursive_try_mutex
+{
+public:
+
+	typedef detail::scoped_lock<recursive_try_mutex>     scoped_lock;
+	typedef detail::scoped_try_lock<recursive_try_mutex> scoped_try_lock;
+
+	recursive_try_mutex();
+	~recursive_try_mutex();
+
+private:
+	friend class scoped_lock;
+	friend class scoped_try_lock;
+	friend class condition;
+
+	recursive_try_mutex(const recursive_try_mutex&);
+	recursive_try_mutex& operator=(const recursive_try_mutex&);
+
+	void lock();
+	bool try_lock();
+	void unlock();
+
+#ifdef _MSL_USE_PTHREADS
+	typedef pthread_mutex_t mutex_type;
+	mutex_type m_;
+	mutex_type& expose() {return m_;}
+#ifdef PTHREAD_MUTEX_RECURSIVE
+	struct state {};
+	void wait_prefix(state&) {}
+	void wait_suffix(const state&) {}
+#else  // PTHREAD_MUTEX_RECURSIVE
+	pthread_cond_t c_;
+	pthread_t owner_;
+	volatile unsigned count_;
+
+	struct state
+	{
+		pthread_t owner_;
+		unsigned count_;
+	};
+
+	void wait_prefix(state&);
+	void wait_suffix(const state&);
+#endif  // PTHREAD_MUTEX_RECURSIVE
+#endif  // _MSL_USE_PTHREADS
+#ifdef _MSL_USE_MPTASKS
+	typedef MPCriticalRegionID mutex_type;
+	mutex_type m_;
+	mutex_type& expose() {return m_;}
+#endif
+#ifdef _MSL_USE_WINTHREADS
+	typedef HANDLE mutex_type;
+	mutex_type m_;
+	mutex_type& expose() {return m_;}
+#endif
+#ifdef _MSL_USE_NITROTHREADS
+	typedef OSMutex mutex_type;
+	mutex_type m_;
+#endif
+};
+
+#ifdef _MSL_USE_PTHREADS
+#ifdef PTHREAD_MUTEX_RECURSIVE
+
+inline
+recursive_try_mutex::~recursive_try_mutex()
+{
+	pthread_mutex_destroy(&m_);
+}
+
+inline
+void
+recursive_try_mutex::lock()
+{
+	if (pthread_mutex_lock(&m_))
+		detail::throw_lock_error();
+}
+
+inline
+bool
+recursive_try_mutex::try_lock()
+{
+	int result = pthread_mutex_trylock(&m_);
+	if (result != 0 && result != EBUSY)
+		detail::throw_lock_error();
+	return result == 0;
+}
+
+inline
+void
+recursive_try_mutex::unlock()
+{
+	if (pthread_mutex_unlock(&m_))
+		detail::throw_lock_error();
+}
+
+#endif  // PTHREAD_MUTEX_RECURSIVE
+#endif  // _MSL_USE_PTHREADS
+
+#ifdef _MSL_USE_MPTASKS
+
+inline
+recursive_try_mutex::recursive_try_mutex()
+{
+	if (!MPLibraryIsLoaded() || MPCreateCriticalRegion(&m_))
+		detail::throw_thread_resource_error();
+}
+
+inline
+recursive_try_mutex::~recursive_try_mutex()
+{
+	MPDeleteCriticalRegion(m_);
+}
+
+inline
+void
+recursive_try_mutex::lock()
+{
+	if (MPEnterCriticalRegion(m_, kDurationForever))
+		detail::throw_lock_error();
+}
+
+inline
+bool
+recursive_try_mutex::try_lock()
+{
+	int result = MPEnterCriticalRegion(m_, kDurationImmediate);
+	if (result != 0 && result != kMPTimeoutErr)
+		detail::throw_lock_error();
+	return result == 0;
+}
+
+inline
+void
+recursive_try_mutex::unlock()
+{
+	if (MPExitCriticalRegion(m_))
+		detail::throw_lock_error();
+}
+
+#endif  // _MSL_USE_MPTASKS
+
+#ifdef _MSL_USE_WINTHREADS
+
+inline
+recursive_try_mutex::recursive_try_mutex()
+	:	m_(CreateMutex(0, 0, 0))
+{
+	if (m_ == 0)
+		detail::throw_thread_resource_error();
+}
+
+inline
+recursive_try_mutex::~recursive_try_mutex()
+{
+	CloseHandle(m_);
+}
+
+inline
+void
+recursive_try_mutex::lock()
+{
+	if (WaitForSingleObject(m_, INFINITE) != WAIT_OBJECT_0)
+		detail::throw_lock_error();
+}
+
+inline
+bool
+recursive_try_mutex::try_lock()
+{
+	DWORD result = WaitForSingleObject(m_, 0);
+	if (result != WAIT_OBJECT_0 && result != WAIT_TIMEOUT)
+		detail::throw_lock_error();
+	return result == WAIT_OBJECT_0;
+}
+
+inline
+void
+recursive_try_mutex::unlock()
+{
+	if (!ReleaseMutex(m_))
+		detail::throw_lock_error();
+}
+
+#endif // _MSL_USE_WINTHREADS
+
+#ifdef _MSL_USE_NITROTHREADS
+
+inline
+recursive_try_mutex::recursive_try_mutex()
+{
+	OS_InitMutex(&m_);
+}
+
+inline
+recursive_try_mutex::~recursive_try_mutex()
+{
+}
+
+inline
+void
+recursive_try_mutex::lock()
+{
+	OS_LockMutex(&m_);
+}
+
+inline
+bool
+recursive_try_mutex::try_lock()
+{
+	return static_cast<bool>(OS_TryLockMutex(&m_));
+}
+
+inline
+void
+recursive_try_mutex::unlock()
+{
+	OS_UnlockMutex(&m_);
+}
+
+#endif // _MSL_USE_NITROTHREADS
+
+#ifdef _MSL_SINGLE_THREAD
+
+inline
+recursive_try_mutex::recursive_try_mutex()
+{
+}
+
+inline
+recursive_try_mutex::~recursive_try_mutex()
+{
+}
+
+inline
+void
+recursive_try_mutex::lock()
+{
+}
+
+inline
+bool
+recursive_try_mutex::try_lock()
+{
+	return true;
+}
+
+inline
+void
+recursive_try_mutex::unlock()
+{
+}
+
+#endif  // _MSL_SINGLE_THREAD
+
+#ifndef _MSL_NO_TIME_SUPPORT
+
+class
+#ifndef _MSL_SINGLE_THREAD
+_MSL_IMP_EXP_CPP
+#endif
+recursive_timed_mutex
+{
+public:
+
+	typedef detail::scoped_lock<recursive_timed_mutex>       scoped_lock;
+	typedef detail::scoped_try_lock<recursive_timed_mutex>   scoped_try_lock;
+	typedef detail::scoped_timed_lock<recursive_timed_mutex> scoped_timed_lock;
+
+	recursive_timed_mutex();
+	~recursive_timed_mutex();
+
+private:
+	friend class scoped_lock;
+	friend class scoped_try_lock;
+	friend class scoped_timed_lock;
+	friend class condition;
+
+	recursive_timed_mutex(const recursive_timed_mutex&);
+	recursive_timed_mutex& operator=(const recursive_timed_mutex&);
+
+	void lock();
+	bool try_lock();
+	bool timed_lock(const universal_time& unv_time);
+	bool timed_lock(const elapsed_time& elps_time);
+	void unlock();
+
+#ifdef _MSL_USE_PTHREADS
+	typedef pthread_mutex_t mutex_type;
+	mutex_type m_;
+	pthread_cond_t c_;
+	pthread_t owner_;
+	volatile unsigned count_;
+	mutex_type& expose() {return m_;}
+
+	struct state
+	{
+		pthread_t owner_;
+		unsigned count_;
+	};
+
+	void wait_prefix(state&);
+	void wait_suffix(const state&);
+#endif
+#ifdef _MSL_USE_MPTASKS
+	typedef MPCriticalRegionID mutex_type;
+	mutex_type m_;
+	mutex_type& expose() {return m_;}
+#endif
+#ifdef _MSL_USE_WINTHREADS
+	typedef HANDLE mutex_type;
+	mutex_type m_;
+	mutex_type& expose() {return m_;}
+#endif
+};
+
+#ifdef _MSL_USE_PTHREADS
+
+inline
+bool
+recursive_timed_mutex::timed_lock(const elapsed_time& elps_time)
+{
+	return timed_lock(universal_time() + elps_time);
+}
+
+#endif  // _MSL_USE_PTHREADS
+
+#ifdef _MSL_USE_MPTASKS
+
+inline
+recursive_timed_mutex::recursive_timed_mutex()
+{
+	if (!MPLibraryIsLoaded() || MPCreateCriticalRegion(&m_))
+		detail::throw_thread_resource_error();
+}
+
+inline
+recursive_timed_mutex::~recursive_timed_mutex()
+{
+	MPDeleteCriticalRegion(m_);
+}
+
+inline
+void
+recursive_timed_mutex::lock()
+{
+	if (MPEnterCriticalRegion(m_, kDurationForever))
+		detail::throw_lock_error();
+}
+
+inline
+bool
+recursive_timed_mutex::try_lock()
+{
+	int result = MPEnterCriticalRegion(m_, kDurationImmediate);
+	if (result != 0 && result != kMPTimeoutErr)
+		detail::throw_lock_error();
+	return result == 0;
+}
+
+inline
+bool
+recursive_timed_mutex::timed_lock(const universal_time& unv_time)
+{
+	return timed_lock(unv_time - universal_time());
+}
+
+inline
+void
+recursive_timed_mutex::unlock()
+{
+	if (MPExitCriticalRegion(m_))
+		detail::throw_lock_error();
+}
+
+#endif  // _MSL_USE_MPTASKS
+
+#ifdef _MSL_USE_WINTHREADS
+
+inline
+recursive_timed_mutex::recursive_timed_mutex()
+	:	m_(CreateMutex(0, 0, 0))
+{
+	if (m_ == 0)
+		detail::throw_thread_resource_error();
+}
+
+inline
+recursive_timed_mutex::~recursive_timed_mutex()
+{
+	CloseHandle(m_);
+}
+
+inline
+void
+recursive_timed_mutex::lock()
+{
+	if (WaitForSingleObject(m_, INFINITE) != WAIT_OBJECT_0)
+		detail::throw_lock_error();
+}
+
+inline
+bool
+recursive_timed_mutex::try_lock()
+{
+	DWORD result = WaitForSingleObject(m_, 0);
+	if (result != WAIT_OBJECT_0 && result != WAIT_TIMEOUT)
+		detail::throw_lock_error();
+	return result == WAIT_OBJECT_0;
+}
+
+inline
+bool
+recursive_timed_mutex::timed_lock(const universal_time& unv_time)
+{
+	return timed_lock(unv_time - universal_time());
+}
+
+inline
+void
+recursive_timed_mutex::unlock()
+{
+	if (!ReleaseMutex(m_))
+		detail::throw_lock_error();
+}
+
+#endif // _MSL_USE_WINTHREADS
+
+#ifdef _MSL_SINGLE_THREAD
+
+inline
+recursive_timed_mutex::recursive_timed_mutex()
+{
+}
+
+inline
+recursive_timed_mutex::~recursive_timed_mutex()
+{
+}
+
+inline
+void
+recursive_timed_mutex::lock()
+{
+}
+
+inline
+bool
+recursive_timed_mutex::try_lock()
+{
+	return true;
+}
+
+inline
+bool
+recursive_timed_mutex::timed_lock(const universal_time&)
+{
+	return true;
+}
+
+inline
+bool
+recursive_timed_mutex::timed_lock(const elapsed_time&)
+{
+	return true;
+}
+
+inline
+void
+recursive_timed_mutex::unlock()
+{
+}
+
+#endif // _MSL_SINGLE_THREAD
+
+#endif  // _MSL_NO_TIME_SUPPORT
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	} // namespace Metrowerks
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#pragma enumsalwaysint reset
+#endif
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#pragma bool reset
+#endif
+
+#ifdef __MWERKS__
+#pragma options align=reset
+#endif
+
+#ifdef __MWERKS__
+	#pragma warn_padding reset
+#endif
+
+#endif // RC_INVOKED
+
+#endif  // _MSL_MUTEX
+
+// hh 030616 Created
+// hh 030711 Protected against pad warning
+// hh 031202 Added rw_mutex, read_lock and write_lock

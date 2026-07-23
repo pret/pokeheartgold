@@ -1,0 +1,517 @@
+/* MSL
+ * Copyright © 1995-2006 Freescale Corporation.  All rights reserved.
+ *
+ * $Date: 2006/02/09 16:59:36 $
+ * $Revision: 1.11.2.2 $
+ */
+
+// tupleio
+
+#ifndef _TUPLEIO
+#define _TUPLEIO
+
+/*  tupleio synopsis
+
+namespace std
+{
+namespace tr1
+{
+
+}  // tr1
+}  // std
+*/
+
+#include <mslconfig>
+
+#ifndef _MSL_NO_IO
+
+#include <msl_utility>
+#include <tuple>
+#include <istream>
+#include <ostream>
+#include <sstream>
+
+#ifndef RC_INVOKED
+
+#ifdef __MWERKS__
+#pragma options align=native
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#if _MSL_FORCE_ENUMS_ALWAYS_INT
+		#pragma enumsalwaysint on
+	#else
+		#pragma enumsalwaysint off
+	#endif
+#endif  // _MSL_FORCE_ENUMS_ALWAYS_INT
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#if _MSL_FORCE_ENABLE_BOOL_SUPPORT
+		#pragma bool on
+	#else
+		#pragma bool off
+	#endif
+#endif  // _MSL_FORCE_ENABLE_BOOL_SUPPORT
+
+_MSL_START_TR1_NAMESPACE
+
+namespace detail
+{
+
+template <class charT>
+void
+tuple_event(ios_base::event e, ios_base& s, int index)
+{
+	basic_string<charT>* p = (basic_string<charT>*)s.pword(index);
+	switch (e)
+	{
+	case ios_base::erase_event:
+		delete p;
+		break;
+	case ios_base::copyfmt_event:
+		p = new basic_string<charT>(*p);
+		break;
+	case ios_base::imbue_event:
+		break;
+	}
+}
+
+}  // detail
+
+// tuple_open
+
+#if defined(__MWERKS__) && __MWERKS__ < 0x4000
+template<>
+#endif
+template <class charT>
+basic_string<charT>&
+tuple<nat, nat, nat, nat>::open_storage(ios_base& s)
+{
+	static const int n = _STD::ios_base::xalloc();
+	if (s.pword(n) == 0)
+	{
+		s.pword(n) = new basic_string<charT>(1, charT('('));
+		s.register_callback(detail::tuple_event<charT>, n);
+	}
+	return *(basic_string<charT>*)s.pword(n);
+}
+
+#if defined(__MWERKS__) && __MWERKS__ < 0x4000
+template<>
+#endif
+template <class charT>
+inline
+void
+tuple<nat, nat, nat, nat>::set_open(ios_base& s, const charT* c)
+{
+	open_storage<charT>(s) = c;
+}
+
+#if defined(__MWERKS__) && __MWERKS__ < 0x4000
+template<>
+#endif
+template <class charT, class traits>
+inline
+const charT*
+tuple<nat, nat, nat, nat>::open(basic_ios<charT, traits>& s)
+{
+	return open_storage<charT>(s).c_str();
+}
+
+namespace detail
+{
+
+template <class charT>
+class tuple_open_manip
+{
+public:
+	explicit tuple_open_manip(const charT* c) : s_(c) {}
+	explicit tuple_open_manip(charT c) : s_(&c_), c_(c), z_(charT()) {}
+	void set_open(ios_base& s) const {tuple<>::set_open(s, s_);}
+private:
+	const charT* s_;
+	charT        c_;
+	charT        z_;
+};
+
+}
+
+template <class charT>
+inline
+detail::tuple_open_manip<charT>
+tuple_open(const charT* c)
+{
+	return detail::tuple_open_manip<charT>(c);
+}
+
+template <class charT>
+inline
+detail::tuple_open_manip<charT>
+tuple_open(charT c)
+{
+	return detail::tuple_open_manip<charT>(c);
+}
+
+namespace detail
+{
+
+template<class charT, class traits>
+basic_ostream<charT, traits>&
+operator<< (basic_ostream<charT, traits>& out, const detail::tuple_open_manip<charT>& m)
+{
+	m.set_open(out);
+	return out;
+}
+
+template<class charT, class traits>
+basic_istream<charT, traits>&
+operator>> (basic_istream<charT, traits>& in, const detail::tuple_open_manip<charT>& m)
+{
+	m.set_open(in);
+	return in;
+}
+
+}  // detail
+
+// tuple_close
+
+#if defined(__MWERKS__) && __MWERKS__ < 0x4000
+template<>
+#endif
+template <class charT>
+basic_string<charT>&
+tuple<nat, nat, nat, nat>::close_storage(ios_base& s)
+{
+	static const int n = _STD::ios_base::xalloc();
+	if (s.pword(n) == 0)
+	{
+		s.pword(n) = new basic_string<charT>(1, charT(')'));
+		s.register_callback(detail::tuple_event<charT>, n);
+	}
+	return *(basic_string<charT>*)s.pword(n);
+}
+
+#if defined(__MWERKS__) && __MWERKS__ < 0x4000
+template<>
+#endif
+template <class charT>
+inline
+void
+tuple<nat, nat, nat, nat>::set_close(ios_base& s, const charT* c)
+{
+	close_storage<charT>(s) = c;
+}
+
+#if defined(__MWERKS__) && __MWERKS__ < 0x4000
+template<>
+#endif
+template <class charT, class traits>
+inline
+const charT*
+tuple<nat, nat, nat, nat>::close(basic_ios<charT, traits>& s)
+{
+	return close_storage<charT>(s).c_str();
+}
+
+namespace detail
+{
+
+template <class charT>
+class tuple_close_manip
+{
+public:
+	explicit tuple_close_manip(const charT* c) : s_(c) {}
+	explicit tuple_close_manip(charT c) : s_(&c_), c_(c), z_(charT()) {}
+	void set_close(ios_base& s) const {tuple<>::set_close(s, s_);}
+private:
+	const charT* s_;
+	charT        c_;
+	charT        z_;
+};
+
+}
+
+template <class charT>
+inline
+detail::tuple_close_manip<charT>
+tuple_close(const charT* c)
+{
+	return detail::tuple_close_manip<charT>(c);
+}
+
+template <class charT>
+inline
+detail::tuple_close_manip<charT>
+tuple_close(charT c)
+{
+	return detail::tuple_close_manip<charT>(c);
+}
+
+namespace detail
+{
+
+template<class charT, class traits>
+basic_ostream<charT, traits>&
+operator<< (basic_ostream<charT, traits>& out, const detail::tuple_close_manip<charT>& m)
+{
+	m.set_close(out);
+	return out;
+}
+
+template<class charT, class traits>
+basic_istream<charT, traits>&
+operator>> (basic_istream<charT, traits>& in, const detail::tuple_close_manip<charT>& m)
+{
+	m.set_close(in);
+	return in;
+}
+
+}  // detail
+
+// tuple_delimiter
+
+#if defined(__MWERKS__) && __MWERKS__ < 0x4000
+template<>
+#endif
+template <class charT>
+basic_string<charT>&
+tuple<nat, nat, nat, nat>::delimiter_storage(ios_base& s)
+{
+	static const int n = _STD::ios_base::xalloc();
+	if (s.pword(n) == 0)
+	{
+		s.pword(n) = new basic_string<charT>(1, charT(' '));
+		s.register_callback(detail::tuple_event<charT>, n);
+	}
+	return *(basic_string<charT>*)s.pword(n);
+}
+
+#if defined(__MWERKS__) && __MWERKS__ < 0x4000
+template<>
+#endif
+template <class charT>
+inline
+void
+tuple<nat, nat, nat, nat>::set_delimiter(ios_base& s, const charT* c)
+{
+	delimiter_storage<charT>(s) = c;
+}
+
+#if defined(__MWERKS__) && __MWERKS__ < 0x4000
+template<>
+#endif
+template <class charT, class traits>
+inline
+const charT*
+tuple<nat, nat, nat, nat>::delimiter(basic_ios<charT, traits>& s)
+{
+	return delimiter_storage<charT>(s).c_str();
+}
+
+namespace detail
+{
+
+template <class charT>
+class tuple_delimiter_manip
+{
+public:
+	explicit tuple_delimiter_manip(const charT* c) : s_(c) {}
+	explicit tuple_delimiter_manip(charT c) : s_(&c_), c_(c), z_(charT()) {}
+	void set_delimiter(ios_base& s) const {tuple<>::set_delimiter(s, s_);}
+private:
+	const charT* s_;
+	charT        c_;
+	charT        z_;
+};
+
+}  // detail
+
+template <class charT>
+inline
+detail::tuple_delimiter_manip<charT>
+tuple_delimiter(const charT* c)
+{
+	return detail::tuple_delimiter_manip<charT>(c);
+}
+
+template <class charT>
+inline
+detail::tuple_delimiter_manip<charT>
+tuple_delimiter(charT c)
+{
+	return detail::tuple_delimiter_manip<charT>(c);
+}
+
+namespace detail
+{
+
+template<class charT, class traits>
+basic_ostream<charT, traits>&
+operator<< (basic_ostream<charT, traits>& out, const detail::tuple_delimiter_manip<charT>& m)
+{
+	m.set_delimiter(out);
+	return out;
+}
+
+template<class charT, class traits>
+basic_istream<charT, traits>&
+operator>> (basic_istream<charT, traits>& in, const detail::tuple_delimiter_manip<charT>& m)
+{
+	m.set_delimiter(in);
+	return in;
+}
+
+}  // detail
+
+// stream_inserter
+
+namespace detail
+{
+
+template<class charT, class traits, class P,
+         unsigned int I = minus1<tuple_size<P>::value>::value,
+         unsigned int S = tuple_size<P>::value
+        >
+struct stream_inserter
+{
+	void operator()(basic_ostream<charT, traits>& os, const P& p, const charT* delim)
+	{
+		detail::stream_inserter<charT, traits, P, I-1>()(os, p, delim);
+		os << delim << get<I>(p);
+	}
+};
+
+template<class charT, class traits, class P, unsigned int S>
+struct stream_inserter<charT, traits, P, 0, S>
+{
+	void operator()(basic_ostream<charT, traits>& os, const P& p, const charT*)
+	{
+		os << get<0>(p);
+	}
+};
+
+template<class charT, class traits, class P>
+struct stream_inserter<charT, traits, P, 0, 0>
+{
+	void operator()(basic_ostream<charT, traits>&, const P&, const charT*)
+	{
+	}
+};
+
+}  // detail
+
+template<class charT, class traits, class P>
+typename Metrowerks::restrict_to
+<
+	is_tuple_like<P>::value,
+	basic_ostream<charT, traits>&
+>::type
+operator<< (basic_ostream<charT, traits>& os, const P& p)
+{
+	basic_ostringstream<charT, traits> s;
+	s.flags(os.flags());
+#ifndef _MSL_NO_LOCALE
+	s.imbue(os.getloc());
+#endif
+	s.precision(os.precision());
+	s << tuple<>::open(os);
+	detail::stream_inserter<charT, traits, P>()(s, p, tuple<>::delimiter(os));
+	s << tuple<>::close(os);
+	return os << s.str();
+}
+
+// stream extractor
+
+namespace detail
+{
+
+template<class charT, class traits>
+void
+eat_delim(basic_istream<charT, traits>& is, const charT* delim)
+{
+	const charT* d = delim;
+	for (; *d; ++d)
+	{
+		charT c;
+		is.get(c);
+		if (is.fail() || c != *d)
+			is.setstate(ios_base::failbit);
+	}
+}
+
+template<class charT, class traits, class P,
+         unsigned int I = minus1<tuple_size<P>::value>::value,
+         unsigned int S = tuple_size<P>::value
+        >
+struct stream_extractor
+{
+	void operator()(basic_istream<charT, traits>& is, P& p, const charT* delim)
+	{
+		detail::stream_extractor<charT, traits, P, I-1>()(is, p, delim);
+		eat_delim(is, delim);
+		is >> get<I>(p);
+	}
+};
+
+template<class charT, class traits, class P, unsigned int S>
+struct stream_extractor<charT, traits, P, 0, S>
+{
+	void operator()(basic_istream<charT, traits>& is, P& p, const charT*)
+	{
+		is >> get<0>(p);
+	}
+};
+
+template<class charT, class traits, class P>
+struct stream_extractor<charT, traits, P, 0, 0>
+{
+	void operator()(basic_istream<charT, traits>&, P&, const charT*)
+	{
+	}
+};
+
+}  // detail
+
+template<class charT, class traits, class P>
+typename Metrowerks::restrict_to
+<
+	is_tuple_like<P>::value,
+	basic_istream<charT, traits>&
+>::type
+operator>>(basic_istream<charT, traits>& is, P& p)
+{
+	typename basic_istream<charT,traits>::sentry ok(is);
+	if (ok)
+	{
+		P tmp(p);
+		detail::eat_delim(is, tuple<>::open(is));
+		detail::stream_extractor<charT, traits, P>()(is, tmp, tuple<>::delimiter(is));
+		detail::eat_delim(is, tuple<>::close(is));
+		if (!is.fail())
+			p = tmp;
+	}
+	return is;
+}
+
+_MSL_END_TR1_NAMESPACE
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#pragma enumsalwaysint reset
+#endif
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#pragma bool reset
+#endif
+
+#ifdef __MWERKS__
+#pragma options align=reset
+#endif
+
+#endif // RC_INVOKED
+
+#endif  // _MSL_NO_IO
+
+#endif // _TUPLEIO
+
+// hh 030306 Created
+// hh 030711 Protected template<> from gcc

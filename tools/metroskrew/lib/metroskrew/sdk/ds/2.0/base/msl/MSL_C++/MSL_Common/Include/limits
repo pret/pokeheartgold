@@ -1,0 +1,349 @@
+/* MSL
+ * Copyright © 1995-2006 Freescale Corporation.  All rights reserved.
+ *
+ * $Date: 2006/02/09 16:58:39 $
+ * $Revision: 1.33.2.2 $
+ */
+
+// limits       // hh 971227 changed file name from mlimits.h to limits
+
+#ifndef _LIMITS    // hh 971227 made include guards standard
+#define _LIMITS
+
+/*  limits synopsis
+
+namespace std {
+
+template<class T>
+class numeric_limits
+{
+public:
+	static const bool is_specialized = false;
+	static T min() throw();
+	static T max() throw();
+
+	static const int  digits = 0;
+	static const int  digits10 = 0;
+	static const bool is_signed = false;
+	static const bool is_integer = false;
+	static const bool is_exact = false;
+	static const int  radix = 0;
+	static T epsilon() throw();
+	static T round_error() throw();
+
+	static const int  min_exponent = 0;
+	static const int  min_exponent10 = 0;
+	static const int  max_exponent = 0;
+	static const int  max_exponent10 = 0;
+
+	static const bool has_infinity = false;
+	static const bool has_quiet_NaN = false;
+	static const bool has_signaling_NaN = false;
+	static const float_denorm_style has_denorm = denorm_absent;
+	static const bool has_denorm_loss = false;
+	static T infinity() throw();
+	static T quiet_NaN() throw();
+	static T signaling_NaN() throw();
+	static T denorm_min() throw();
+
+	static const bool is_iec559 = false;
+	static const bool is_bounded = false;
+	static const bool is_modulo = false;
+
+	static const bool traps = false;
+	static const bool tinyness_before = false;
+	static const float_round_style round_style = round_toward_zero;
+};
+
+enum float_round_style;
+enum float_denorm_style;
+
+template<> class numeric_limits<bool>;
+
+template<> class numeric_limits<char>;
+template<> class numeric_limits<signed char>;
+template<> class numeric_limits<unsigned char>;
+template<> class numeric_limits<wchar_t>;
+
+template<> class numeric_limits<short>;
+template<> class numeric_limits<int>;
+template<> class numeric_limits<long>;
+template<> class numeric_limits<long long>;          // Metrowerks extension
+template<> class numeric_limits<unsigned short>;
+template<> class numeric_limits<unsigned int>;
+template<> class numeric_limits<unsigned long>;
+template<> class numeric_limits<unsigned long long>; // Metrowerks extension
+
+template<> class numeric_limits<float>;
+template<> class numeric_limits<double>;
+template<> class numeric_limits<long double>;
+
+}  // std
+*/
+
+#include <mslconfig>
+#include <msl_int_limits>
+
+#ifndef _MSL_NO_FLOATING_POINT
+	#include <cfloat>
+	#include <cmath>
+	#include <cstdint>
+#endif  // _MSL_NO_FLOATING_POINT
+
+#ifndef RC_INVOKED // hh 971230
+
+#ifdef __MWERKS__
+#pragma options align=native
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#if _MSL_FORCE_ENUMS_ALWAYS_INT
+		#pragma enumsalwaysint on
+	#else
+		#pragma enumsalwaysint off
+	#endif
+#endif  // _MSL_FORCE_ENUMS_ALWAYS_INT
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#if _MSL_FORCE_ENABLE_BOOL_SUPPORT
+		#pragma bool on
+	#else
+		#pragma bool off
+	#endif
+#endif  // _MSL_FORCE_ENABLE_BOOL_SUPPORT
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	namespace std {
+#endif
+
+#ifdef min
+#undef min
+#endif
+
+#ifdef max
+#undef max
+#endif
+
+#ifndef _MSL_NO_FLOATING_POINT
+
+#if _MSL_LITTLE_ENDIAN
+	#define _MSL_SNAN {0xFFFFFFFF, 0x7FF7FFFF}
+#else
+	#define _MSL_SNAN {0x7FF7FFFF, 0xFFFFFFFF}
+#endif
+
+template <>
+class numeric_limits <float>
+{
+public:
+	static const bool is_specialized = true;
+	static float min() _MSL_NO_THROW {return FLT_MIN;}
+	static float max() _MSL_NO_THROW {return FLT_MAX;}
+	static const int  digits = FLT_MANT_DIG;
+	static const int  digits10 = FLT_DIG;
+	static const bool is_signed = true;
+	static const bool is_integer = false;
+	static const bool is_exact = false;
+	static const int  radix = FLT_RADIX;
+	static float epsilon() _MSL_NO_THROW {return FLT_EPSILON;}
+	static float round_error() _MSL_NO_THROW {return 0.5F;}
+
+	static const int  min_exponent = FLT_MIN_EXP;
+	static const int  min_exponent10 = FLT_MIN_10_EXP;
+	static const int  max_exponent = FLT_MAX_EXP;
+	static const int  max_exponent10 = FLT_MAX_10_EXP;
+
+	#ifdef _MSL_NO_MATH_LIB
+		static const bool is_iec559 = false;
+		static const bool has_infinity = false;
+		static const bool has_quiet_NaN = false;
+		static const bool has_signaling_NaN = false;
+	#else  // _MSL_NO_MATH_LIB
+		static const bool is_iec559 = true;
+		static const bool has_infinity = true;
+		static const bool has_quiet_NaN = true;
+		static const bool has_signaling_NaN = true;
+	#endif  // _MSL_NO_MATH_LIB
+	static const float_denorm_style has_denorm = denorm_absent;
+	static const bool has_denorm_loss = false;
+	#ifdef _MSL_NO_MATH_LIB
+		static float infinity() _MSL_NO_THROW {return 0.0F;}
+		static float quiet_NaN() _MSL_NO_THROW {return 0.0F;}
+		static float signaling_NaN() _MSL_NO_THROW {return 0.0F;}
+	#else  // _MSL_NO_MATH_LIB
+		static float infinity() _MSL_NO_THROW {return HUGE_VALF;}
+		static float quiet_NaN() _MSL_NO_THROW {return static_cast<float>(NAN);}
+		static float signaling_NaN() _MSL_NO_THROW
+			{static const uint32_t x = 0x7FBFFFFF; return *(float*)&x;}
+	#endif  // _MSL_NO_MATH_LIB
+	static float denorm_min() _MSL_NO_THROW {return min();}
+
+	static const bool is_bounded = true;
+	static const bool is_modulo = false;
+
+	static const bool traps = true;
+	static const bool tinyness_before = true;
+	static const float_round_style round_style = round_to_nearest;
+};
+
+template <>
+class numeric_limits <double>
+{
+public:
+	static const bool is_specialized = true;
+	static double min() _MSL_NO_THROW {return DBL_MIN;}
+	static double max() _MSL_NO_THROW {return DBL_MAX;}
+	static const int  digits = DBL_MANT_DIG;
+	static const int  digits10 = DBL_DIG;
+	static const bool is_signed = true;
+	static const bool is_integer = false;
+	static const bool is_exact = false;
+	static const int  radix = FLT_RADIX;
+	static double epsilon() _MSL_NO_THROW {return DBL_EPSILON;}
+	static double round_error() _MSL_NO_THROW {return 0.5;}
+
+	static const int  min_exponent = DBL_MIN_EXP;
+	static const int  min_exponent10 = DBL_MIN_10_EXP;
+	static const int  max_exponent = DBL_MAX_EXP;
+	static const int  max_exponent10 = DBL_MAX_10_EXP;
+
+	#ifdef _MSL_NO_MATH_LIB
+		static const bool is_iec559 = false;
+		static const bool has_infinity = false;
+		static const bool has_quiet_NaN = false;
+		static const bool has_signaling_NaN = false;
+	#else  // _MSL_NO_MATH_LIB
+		static const bool is_iec559 = true;
+		static const bool has_infinity = true;
+		static const bool has_quiet_NaN = true;
+		static const bool has_signaling_NaN = true;
+	#endif  // _MSL_NO_MATH_LIB
+	static const float_denorm_style has_denorm = denorm_absent;
+	static const bool has_denorm_loss = false;
+	#ifdef _MSL_NO_MATH_LIB
+		static double infinity() _MSL_NO_THROW {return 0.0;}
+		static double quiet_NaN() _MSL_NO_THROW {return 0.0;}
+		static double signaling_NaN() _MSL_NO_THROW {return 0.0;}
+	#else  // _MSL_NO_MATH_LIB
+		static double infinity() _MSL_NO_THROW {return HUGE_VAL;}
+		static double quiet_NaN() _MSL_NO_THROW {return static_cast<double>(NAN);}
+		static double signaling_NaN() _MSL_NO_THROW
+			{static const uint32_t x[2] = _MSL_SNAN; return *(double*)&x;}
+	#endif  // _MSL_NO_MATH_LIB
+	static double denorm_min() _MSL_NO_THROW {return min();}
+
+	static const bool is_bounded = true;
+	static const bool is_modulo = false;
+
+	static const bool traps = true;
+	static const bool tinyness_before = true;
+	static const float_round_style round_style = round_to_nearest;
+};
+
+template <>
+class numeric_limits <long double>
+{
+public:
+	static const bool is_specialized = true;
+	static long double min() _MSL_NO_THROW {return LDBL_MIN;}
+	static long double max() _MSL_NO_THROW {return LDBL_MAX;}
+	static const int  digits = LDBL_MANT_DIG;
+	static const int  digits10 = LDBL_DIG;
+	static const bool is_signed = true;
+	static const bool is_integer = false;
+	static const bool is_exact = false;
+	static const int  radix = FLT_RADIX;
+	static long double epsilon() _MSL_NO_THROW {return LDBL_EPSILON;}
+	static long double round_error() _MSL_NO_THROW {return 0.5L;}
+
+	static const int  min_exponent = LDBL_MIN_EXP;
+	static const int  min_exponent10 = LDBL_MIN_10_EXP;
+	static const int  max_exponent = LDBL_MAX_EXP;
+	static const int  max_exponent10 = LDBL_MAX_10_EXP;
+
+	#ifdef _MSL_NO_MATH_LIB
+		static const bool is_iec559 = false;
+		static const bool has_infinity = false;
+		static const bool has_quiet_NaN = false;
+		static const bool has_signaling_NaN = false;
+	#else  // _MSL_NO_MATH_LIB
+		static const bool is_iec559 = true;
+		static const bool has_infinity = true;
+		static const bool has_quiet_NaN = true;
+		static const bool has_signaling_NaN = true;
+	#endif  // _MSL_NO_MATH_LIB
+	static const float_denorm_style has_denorm = denorm_absent;
+	static const bool has_denorm_loss = false;
+	#ifdef _MSL_NO_MATH_LIB
+		static long double infinity() _MSL_NO_THROW {return 0.0L;}
+		static long double quiet_NaN() _MSL_NO_THROW {return 0.0L;}
+		static long double signaling_NaN() _MSL_NO_THROW {return 0.0L;}
+	#else  // _MSL_NO_MATH_LIB
+	#ifdef HUGE_VALL
+		static long double infinity() _MSL_NO_THROW {return HUGE_VALL;}
+	#else
+		static long double infinity() _MSL_NO_THROW {return INFINITY;}
+	#endif
+		static long double quiet_NaN() _MSL_NO_THROW {return static_cast<long double>(NAN);}
+		static long double signaling_NaN() _MSL_NO_THROW
+			{static const uint32_t x[2] = _MSL_SNAN; return *(long double*)&x;}
+	#endif  // _MSL_NO_MATH_LIB
+	static long double denorm_min() _MSL_NO_THROW {return min();}
+
+	static const bool is_bounded = true;
+	static const bool is_modulo = false;
+
+	static const bool traps = true;
+	static const bool tinyness_before = true;
+	static const float_round_style round_style = round_to_nearest;
+};
+
+#endif // _MSL_NO_FLOATING_POINT
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	} // namespace std
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#pragma enumsalwaysint reset
+#endif
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#pragma bool reset
+#endif
+
+#ifdef __MWERKS__
+#pragma options align=reset
+#endif
+
+#endif  // RC_INVOKED // hh 971230
+
+#endif  // _LIMITS    // hh 971227 made include guards standard
+
+// hh  971220 fixed MOD_C_INCLUDE
+// hh  971222 added alignment wrapper
+// hh  971227 added float_denorm_style
+// hh  971227 completed class numeric_limits definition
+// hh  971227 changed file name from mlimits.h to limits
+// hh  971227 made include guards standard
+// hh  971227 corrected spelling of signaling in many places
+// hh  971230 added RC_INVOKED wrapper
+// hh  980107 Rewrite
+// hh  980408 wrapped in #ifndef _No_Floating_Point
+// hh  990118 wrapped long long in __MSL_LONGLONG_SUPPORT__
+// hh  990120 changed name of MSIPL flags
+// hh  990617 Changed digits10 for integral types
+// hh  991118 Changed integral versions of denorm_min to return 0.
+// hh  000127 Made integral types independent of <climits>
+//            Assumes a two's complement machine.
+// hh  001011 Undid 000127 change for gcc only
+// hh  010220 Added definitions to methods in unspecialized case
+// hh  010402 Removed 68K CMF support
+// hh  010727 Protected floating point includes for the case that floating point is being used
+// hh  010820 Added static_cast to NAN in case it is not a float.
+// blc 011211 If _MSL_NO_MATH_LIB, no NANs or INFs are defined
+// blc 020110 Fixed earlier _MSL_NO_MATH_LIB patch to not leave members undefined.
+// hh  020529 Split limits into limits and int_limits
+// hh  020701 Added better signaling_NaN support
+// hh  030777 Added workaround for no HUGE_VALL
+// hh 040217 Changed _No_Floating_Point to _MSL_NO_FLOATING_POINT

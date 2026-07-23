@@ -1,0 +1,1266 @@
+/* MSL
+ * Copyright © 1995-2006 Freescale Corporation.  All rights reserved.
+ *
+ * $Date: 2006/02/09 16:59:32 $
+ * $Revision: 1.23.2.2 $
+ */
+
+// timefacet
+
+#ifndef _TIMEFACET
+#define _TIMEFACET
+
+#include <mslconfig>
+
+#ifndef _MSL_NO_IO
+
+#ifndef _MSL_NO_TIME_SUPPORT
+
+#include <localeimp>
+#include <ctype>
+#include <numfacet>
+#include <ios>
+#include <iterator>
+#include <ctime>
+#include <cstdlib>
+#include <cstring>
+#include <fstream>
+#include <msl_int_limits>
+
+#ifndef RC_INVOKED
+
+#ifdef __MWERKS__
+#pragma options align=native
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#if _MSL_FORCE_ENUMS_ALWAYS_INT
+		#pragma enumsalwaysint on
+	#else
+		#pragma enumsalwaysint off
+	#endif
+#endif  // _MSL_FORCE_ENUMS_ALWAYS_INT
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#if _MSL_FORCE_ENABLE_BOOL_SUPPORT
+		#pragma bool on
+	#else
+		#pragma bool off
+	#endif
+#endif  // _MSL_FORCE_ENABLE_BOOL_SUPPORT
+
+#ifdef min
+#undef min
+#endif
+
+#ifdef max
+#undef max
+#endif
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	namespace std {
+#endif
+
+#ifndef _MSL_NO_LOCALE
+
+template <class charT>
+class timepunct
+	: public locale::facet
+{
+public:
+	typedef charT               char_type;
+	typedef basic_string<charT> string_type;
+
+	explicit timepunct(size_t refs = 0);
+
+	const string_type& abbrev_weekday(int wday)  const {return __weekday_names_[7+wday];}
+	const string_type& weekday(int wday)         const {return __weekday_names_[wday];}
+	const string_type& abbrev_monthname(int mon) const {return __month_names_[12+mon];}
+	const string_type& monthname(int mon)        const {return __month_names_[mon];}
+	const string_type& date_time()               const {return __date_time_;}
+	const string_type& am_pm(int hour)           const {return __am_pm_[hour/12];}
+	const string_type& time_12hour()             const {return __12hr_time_;}
+	const string_type& date()                    const {return __date_;}
+	const string_type& time()                    const {return __time_;}
+	const string_type& time_zone(int isdst)      const {return __time_zone_[bool(isdst)];}
+	const string_type& utc_offset(int isdst)     const {return __utc_offset_[bool(isdst)];}
+	int                default_century()         const {return __default_century_;}
+
+	static locale::id id;
+
+protected:
+	virtual ~timepunct() {}
+
+	string_type __weekday_names_[14];
+	string_type __month_names_[24];
+	string_type __am_pm_[2];
+	string_type __date_time_;
+	string_type __date_;
+	string_type __time_;
+	string_type __12hr_time_;
+	string_type __time_zone_[2];
+	string_type __utc_offset_[2];
+	int         __default_century_;
+};
+
+template <class charT>
+locale::id timepunct<charT>::id;
+
+template <class charT> struct __facet_traits<timepunct<charT> >
+	{static const bool is_standard = true;};
+
+template <class charT>
+void
+__weekday_names(basic_string<charT>* v)
+{
+	v[0] = __literal("Sunday", charT());
+	v[1] = __literal("Monday", charT());
+	v[2] = __literal("Tuesday", charT());
+	v[3] = __literal("Wednesday", charT());
+	v[4] = __literal("Thursday", charT());
+	v[5] = __literal("Friday", charT());
+	v[6] = __literal("Saturday", charT());
+	for (int i = 0; i < 7; ++i)
+		v[i+7] = v[i].substr(0, 3);
+}
+
+template <class charT>
+void
+__month_names(basic_string<charT>* v)
+{
+	v[0]  = __literal("January", charT());
+	v[1]  = __literal("February", charT());
+	v[2]  = __literal("March", charT());
+	v[3]  = __literal("April", charT());
+	v[4]  = __literal("May", charT());
+	v[5]  = __literal("June", charT());
+	v[6]  = __literal("July", charT());
+	v[7]  = __literal("August", charT());
+	v[8]  = __literal("September", charT());
+	v[9]  = __literal("October", charT());
+	v[10] = __literal("November", charT());
+	v[11] = __literal("December", charT());
+	for (int i = 0; i < 12; ++i)
+		v[i+12] = v[i].substr(0, 3);
+}
+
+template <class charT>
+void
+__am_pm(basic_string<charT>* s)
+{
+	s[0] = __literal("AM", charT());
+	s[1] = __literal("PM", charT());
+}
+
+template <class charT>
+inline
+void
+__date_time(basic_string<charT>& s)
+{
+	s = __literal("%a %b %e %T %Y", charT());
+}
+
+template <class charT>
+inline
+void
+__date(basic_string<charT>& s)
+{
+	s = __literal("%m/%d/%y", charT());
+}
+
+template <class charT>
+inline
+void
+__time(basic_string<charT>& s)
+{
+	s = __literal("%H:%M:%S", charT());
+}
+
+template <class charT>
+inline
+void
+__12hr_time(basic_string<charT>& s)
+{
+	s = __literal("%I:%M:%S %p", charT());
+}
+
+template <class charT>
+timepunct<charT>::timepunct(size_t refs)
+	: locale::facet(refs),
+	  __default_century_(20)
+{
+	__weekday_names(__weekday_names_);
+	__month_names(__month_names_);
+	__am_pm(__am_pm_);
+	__date_time(__date_time_);
+	__date(__date_);
+	__time(__time_);
+	__12hr_time(__12hr_time_);
+}
+
+class time_base
+{
+public:
+	enum dateorder { no_order, dmy, mdy, ymd, ydm };
+};
+
+template <class charT, class InputIterator = istreambuf_iterator<charT> >
+class time_get
+	: public locale::facet,
+	  public time_base
+{
+public:
+	typedef charT            char_type;
+	typedef InputIterator    iter_type;
+
+	explicit time_get(size_t refs = 0)
+		: locale::facet(refs), __date_order_(no_order) {}
+
+	dateorder date_order() const
+	              {return do_date_order();}
+	iter_type get_time(iter_type in, iter_type end, ios_base& str,
+	                   ios_base::iostate& err, tm* t) const
+	              {return do_get_time(in, end, str, err, t);}
+	iter_type get_date(iter_type in, iter_type end, ios_base& str,
+	                   ios_base::iostate& err, tm* t) const
+	              {return do_get_date(in, end, str, err, t);}
+	iter_type get_weekday(iter_type in, iter_type end, ios_base& str,
+	                      ios_base::iostate& err, tm* t) const
+	              {return do_get_weekday(in, end, str, err, t);}
+	iter_type get_monthname(iter_type in, iter_type end, ios_base& str,
+	                        ios_base::iostate& err, tm* t) const
+	              {return do_get_monthname(in, end, str, err, t);}
+	iter_type get_year(iter_type in, iter_type end, ios_base& str,
+	                   ios_base::iostate& err, tm* t) const
+	              {return do_get_year(in, end, str, err, t);}
+	static locale::id id;
+protected:
+	virtual ~time_get() {}
+	virtual dateorder do_date_order() const;
+	virtual iter_type do_get_time(iter_type in, iter_type end, ios_base& str,
+	                              ios_base::iostate& err, tm* t) const;
+	virtual iter_type do_get_date(iter_type in, iter_type end, ios_base& str,
+	                              ios_base::iostate& err, tm* t) const;
+	virtual iter_type do_get_weekday(iter_type in, iter_type end, ios_base& str,
+	                                 ios_base::iostate& err, tm* t) const;
+	virtual iter_type do_get_monthname(iter_type in, iter_type end, ios_base& str,
+	                                   ios_base::iostate& err, tm* t) const;
+	virtual iter_type do_get_year(iter_type in, iter_type end, ios_base& str,
+	                              ios_base::iostate& err, tm* t) const;
+	iter_type __do_parse(iter_type in, iter_type end, ios_base& str, ios_base::iostate& err,
+	                     const basic_string<charT>& pattern, tm* t) const;
+
+	dateorder __date_order_;
+private:
+};
+
+template <class charT, class InputIterator> struct __facet_traits<time_get<charT, InputIterator> >
+	{static const bool is_standard = true;};
+
+template <class charT, class InputIterator>
+locale::id time_get<charT, InputIterator>::id;
+
+template <class charT, class InputIterator>
+inline
+time_base::dateorder
+time_get<charT, InputIterator>::do_date_order() const
+{
+	return __date_order_;
+}
+
+template <class charT, class InputIterator>
+typename time_get<charT, InputIterator>::iter_type
+time_get<charT, InputIterator>::__do_parse(iter_type in, iter_type end, ios_base& str,
+	ios_base::iostate& err, const basic_string<charT>& pattern, tm* t) const
+{
+	if (in == end)
+	{
+		err = ios_base::eofbit | ios_base::failbit;
+		return in;
+	}
+	err = ios_base::goodbit;
+	locale loc = str.getloc();
+	const ctype<charT>& ct = _USE_FACET(ctype<charT>, loc);
+	const timepunct<charT>& tp = _USE_FACET(timepunct<charT>, loc);
+	_SaveFlags save_str(str);
+	dec(str);
+	typedef typename timepunct<charT>::string_type string_type;
+	string_type patternc(pattern);
+	const long ignore = numeric_limits<long>::min();
+	long second = ignore;
+	long minute = ignore;
+	long hour = ignore;
+	long day = ignore;
+	long month = ignore;
+	long year = ignore;
+	long weekday = ignore;
+	long isdst = ignore;
+	bool hour12 = false;
+	bool is_pm = false;
+	bool increment = true;
+	typename string_type::iterator i = patternc.begin();
+	typename string_type::iterator e = patternc.end();
+	while (i < e && err == ios_base::goodbit)
+	{
+		charT formatw = *i;
+		char format = ct.narrow(formatw, char());
+		if (format == '%')
+		{
+			int m = 0;
+			do
+			{
+				if (++i == e)
+				#ifndef _MSL_NO_EXCEPTIONS
+					throw runtime_error("Bad format in time_get");
+				#else
+					__msl_error("Bad format in time_get");
+				#endif
+				++m;
+			} while (*i == charT('E') || *i == charT('O'));
+			formatw = *i;
+			format = ct.narrow(formatw, char());
+			switch (format)
+			{
+			case 'a':
+			case 'A':
+				{
+				const string_type* p1 = &tp.weekday(0);
+				const string_type* p2 = __parse_a_word(in, end, p1, p1+14, ct, err);
+				if (p2 == p1+14)
+					err |= ios_base::failbit;
+				else
+					weekday = (p2 - p1) % 7;
+				}
+				break;
+			case 'b':
+			case 'h':
+			case 'B':
+				{
+				const string_type* p1 = &tp.monthname(0);
+				const string_type* p2 = __parse_a_word(in, end, p1, p1+24, ct, err);
+				if (p2 == p1+24)
+					err |= ios_base::failbit;
+				else
+					month = (p2 - p1) % 12;
+				}
+				break;
+			case 'c':
+				{
+				size_t p = static_cast<size_t>(i - patternc.begin() - m);
+				patternc.replace(p, size_t(1+m), tp.date_time());
+				i = patternc.begin() + typename string_type::difference_type(p);
+				e = patternc.end();
+				increment = false;
+				}
+				break;
+			case 'd':
+			case 'e':
+				in = __get_integral(in, end, str, err, day, true);
+				if (day < 1 || 31 < day)
+					err |= ios_base::failbit;
+				break;
+			case 'D':
+				{
+				size_t p = static_cast<size_t>(i - patternc.begin() - m);
+				patternc.replace(p, size_t(1+m), ct.widen("%m/%d/%y"));
+				i = patternc.begin() + typename string_type::difference_type(p);
+				e = patternc.end();
+				increment = false;
+				}
+				break;
+			case 'F':
+				{
+				size_t p = static_cast<size_t>(i - patternc.begin() - m);
+				patternc.replace(p, size_t(1+m), ct.widen("%Y-%m-%d"));
+				i = patternc.begin() + typename string_type::difference_type(p);
+				e = patternc.end();
+				increment = false;
+				}
+				break;
+			case 'H':
+			case 'I':
+				in = __get_integral(in, end, str, err, hour, true);
+				hour12 = format == 'I';
+				if (!hour12 && (hour < 0 || 23 < hour) ||
+				     hour12 && (hour < 1 || 12 < hour))
+					err |= ios_base::failbit;
+				break;
+			case 'm':
+				in = __get_integral(in, end, str, err, month, true);
+				if (month < 1 || 12 < month)
+					err |= ios_base::failbit;
+				--month;
+				break;
+			case 'M':
+				in = __get_integral(in, end, str, err, minute, true);
+				if (minute < 0 || 59 < minute)
+					err |= ios_base::failbit;
+				break;
+			case 'n':
+				if (ct.narrow(*in, char()) != '\n')
+					err |= ios_base::failbit;
+				else if (++in == end)
+					err |= ios_base::eofbit;
+				break;
+			case 'p':
+				{
+				const string_type* p1 = &tp.am_pm(0);
+				const string_type* p2 = __parse_a_word(in, end, p1, p1+2, ct, err);
+				if (p2 == p1+2)
+					err |= ios_base::failbit;
+				else
+					is_pm = static_cast<bool>(p2 == p1+1);
+				}
+				break;
+			case 'r':
+				{
+				size_t p = static_cast<size_t>(i - patternc.begin() - m);
+				patternc.replace(p, size_t(1+m), tp.time_12hour());
+				i = patternc.begin() + typename string_type::difference_type(p);
+				e = patternc.end();
+				increment = false;
+				}
+				break;
+			case 'R':
+				{
+				size_t p = static_cast<size_t>(i - patternc.begin() - m);
+				patternc.replace(p, size_t(1+m), ct.widen("%H:%M"));
+				i = patternc.begin() + typename string_type::difference_type(p);
+				e = patternc.end();
+				increment = false;
+				}
+				break;
+			case 'S':
+				in = __get_integral(in, end, str, err, second, true);
+				if (second < 0 || 60 < second)
+					err |= ios_base::failbit;
+				break;
+			case 't':
+				if (ct.narrow(*in, char()) != '\t')
+					err |= ios_base::failbit;
+				else if (++in == end)
+					err |= ios_base::eofbit;
+				break;
+			case 'T':
+				{
+				size_t p = static_cast<size_t>(i - patternc.begin() - m);
+				patternc.replace(p, size_t(1+m), ct.widen("%H:%M:%S"));
+				i = patternc.begin() + typename string_type::difference_type(p);
+				e = patternc.end();
+				increment = false;
+				}
+				break;
+			case 'u':
+				in = __get_integral(in, end, str, err, weekday, true);
+				if (weekday < 1 || 7 < weekday)
+					err |= ios_base::failbit;
+				else if (weekday == 7)
+					weekday = 0;
+				break;
+			case 'w':
+				in = __get_integral(in, end, str, err, weekday, true);
+				if (weekday < 0 || 6 < weekday)
+					err |= ios_base::failbit;
+				break;
+			case 'x':
+				{
+				size_t p = static_cast<size_t>(i - patternc.begin() - m);
+				patternc.replace(p, size_t(1+m), tp.date());
+				i = patternc.begin() + typename  string_type::difference_type(p);
+				e = patternc.end();
+				increment = false;
+				}
+				break;
+			case 'X':
+				{
+				size_t p = static_cast<size_t>(i - patternc.begin() - m);
+				patternc.replace(p, size_t(1+m), tp.time());
+				i = patternc.begin() + typename string_type::difference_type(p);
+				e = patternc.end();
+				increment = false;
+				}
+				break;
+			case 'y':
+				in = __get_integral(in, end, str, err, year, true);
+				year += tp.default_century() * 100;
+				year -= 1900;
+				break;
+			case 'Y':
+				in = __get_integral(in, end, str, err, year, true);
+				year -= 1900;
+				break;
+			case 'z':
+				{
+				const string_type* p1 = &tp.utc_offset(0);
+				if (p1[0].empty() || p1[1].empty())
+					isdst = -1;
+				else
+				{
+					const string_type* p2 = __parse_a_word(in, end, p1, p1+2, ct, err);
+					if (p2 == p1+2)
+						err |= ios_base::failbit;
+					else
+						isdst = (p2 - p1) % 2;
+				}
+				}
+				break;
+			case 'Z':
+				{
+				const string_type* p1 = &tp.time_zone(0);
+				if (p1[0].empty() || p1[1].empty())
+					isdst = -1;
+				else
+				{
+					const string_type* p2 = __parse_a_word(in, end, p1, p1+2, ct, err);
+					if (p2 == p1+2)
+						err |= ios_base::failbit;
+					else
+						isdst = (p2 - p1) % 2;
+				}
+				}
+				break;
+			case '%':
+				if (ct.narrow(*in, char()) != '%')
+					err |= ios_base::failbit;
+				else if (++in == end)
+					err |= ios_base::eofbit;
+				break;
+			case ' ':
+				if (!ct.is(ct.space, *in))
+					err |= ios_base::failbit;
+				while (ct.is(ct.space, *in))
+				{
+					if (++in == end)
+					{
+						err |= ios_base::eofbit;
+						break;
+					}
+				}
+				break;
+			default:
+			#ifndef _MSL_NO_EXCEPTIONS
+				throw runtime_error("Bad format in time_get");
+			#else
+				__msl_error("Bad format in time_get");
+			#endif
+			}
+		}
+		else if (*in != formatw)
+		{
+			break;
+		}
+		else if (++in == end)
+		{
+			err |= ios_base::eofbit;
+			break;
+		}
+		if (increment)
+			++i;
+		else
+			increment = true;
+	}
+	if (i != e)
+		err |= ios_base::failbit;
+	if (!(err & ios_base::failbit))
+	{
+		if (second != ignore)
+			t->tm_sec = int(second);
+		if (minute != ignore)
+			t->tm_min = int(minute);
+		if (hour != ignore)
+		{
+			if (hour12)
+			{
+				if (is_pm)
+				{
+					if (hour < 12)
+						hour += 12;
+				}
+				else
+				{
+					if (hour == 12)
+						hour = 0;
+				}
+			}
+			t->tm_hour = int(hour);
+		}
+		if (day != ignore)
+			t->tm_mday = int(day);
+		if (month != ignore)
+			t->tm_mon = int(month);
+		if (year != ignore)
+			t->tm_year = int(year);
+		if (weekday != ignore)
+			t->tm_wday = int(weekday);
+		if (isdst != ignore)
+			t->tm_isdst = int(isdst);
+	}
+	return in;
+}
+
+template <class charT, class InputIterator>
+inline
+typename time_get<charT, InputIterator>::iter_type
+time_get<charT, InputIterator>::do_get_time(iter_type in, iter_type end, ios_base& str,
+	ios_base::iostate& err, tm* t) const
+{
+	const timepunct<charT>& tp = _USE_FACET(timepunct<charT>, str.getloc());
+	return __do_parse(in, end, str, err, tp.time(), t);
+}
+
+template <class charT, class InputIterator>
+inline
+typename time_get<charT, InputIterator>::iter_type
+time_get<charT, InputIterator>::do_get_date(iter_type in, iter_type end, ios_base& str,
+	ios_base::iostate& err, tm* t) const
+{
+	const timepunct<charT>& tp = _USE_FACET(timepunct<charT>, str.getloc());
+	return __do_parse(in, end, str, err, tp.date(), t);
+}
+
+template <class charT, class InputIterator>
+inline
+typename time_get<charT, InputIterator>::iter_type
+time_get<charT, InputIterator>::do_get_weekday(iter_type in, iter_type end, ios_base& str,
+	ios_base::iostate& err, tm* t) const
+{
+	const ctype<charT>& ct = _USE_FACET(ctype<charT>, str.getloc());
+	return __do_parse(in, end, str, err, ct.widen("%A"), t);
+}
+
+template <class charT, class InputIterator>
+inline
+typename time_get<charT, InputIterator>::iter_type
+time_get<charT, InputIterator>::do_get_monthname(iter_type in, iter_type end, ios_base& str,
+	ios_base::iostate& err, tm* t) const
+{
+	const ctype<charT>& ct = _USE_FACET(ctype<charT>, str.getloc());
+	return __do_parse(in, end, str, err, ct.widen("%B"), t);
+}
+
+template <class charT, class InputIterator>
+inline
+typename time_get<charT, InputIterator>::iter_type
+time_get<charT, InputIterator>::do_get_year(iter_type in, iter_type end, ios_base& str,
+	ios_base::iostate& err, tm* t) const
+{
+	const ctype<charT>& ct = _USE_FACET(ctype<charT>, str.getloc());
+	return __do_parse(in, end, str, err, ct.widen("%Y"), t);
+}
+
+template <class charT, class OutputIterator = ostreambuf_iterator<charT> >
+class time_put
+	: public locale::facet
+{
+public:
+	typedef charT            char_type;
+	typedef OutputIterator   iter_type;
+
+	explicit time_put(size_t refs = 0)
+	             : locale::facet(refs) {}
+
+	iter_type put(iter_type out, ios_base& str, char_type fill, const tm* tmb,
+	              const charT* pattern, const charT* pat_end) const;
+	iter_type put(iter_type out, ios_base& str, char_type fill,
+	              const tm* tmb, char format, char modifier = 0) const
+	              {return do_put(out, str, fill, tmb, format, modifier);}
+	static locale::id id;
+protected:
+	virtual ~time_put() {}
+	virtual iter_type do_put(iter_type out, ios_base& str, char_type fill, const tm* tmb,
+	                         char format, char modifier) const;
+private:
+	iter_type __put_lower(iter_type out, ios_base& str, charT fill, const tm* tmb, char format,
+		char modifier, const timepunct<charT>& tp) const;
+	iter_type __put_upper(iter_type out, ios_base& str, charT fill, const tm* tmb, char format,
+		char modifier, const timepunct<charT>& tp, const ctype<charT>& ct) const;
+};
+
+template <class charT, class OutputIterator> struct __facet_traits<time_put<charT, OutputIterator> >
+	{static const bool is_standard = true;};
+
+template <class charT, class OutputIterator>
+locale::id time_put<charT, OutputIterator>::id;
+
+template <class charT, class OutputIterator>
+typename time_put<charT, OutputIterator>::iter_type
+time_put<charT, OutputIterator>::put(iter_type out, ios_base& str, char_type fill, const tm* tmb,
+	const charT* pattern, const charT* pat_end) const
+{
+	const ctype<charT>& ct = _USE_FACET(ctype<charT>, str.getloc());
+	while (pattern != pat_end)
+	{
+		charT formatw = *pattern;
+		char format = ct.narrow(formatw, char());
+		if (format == '%')
+		{
+			if (++pattern == pat_end)
+			{
+				*out++ = formatw;
+				break;
+			}
+			char modifier = 0;
+			formatw = *pattern;
+			format = ct.narrow(formatw, char());
+			if (format == 'O' || format == 'E')
+			{
+				modifier = format;
+				if (++pattern == pat_end)
+				{
+					*out++ = formatw;
+					break;
+				}
+				formatw = *pattern;
+				format = ct.narrow(formatw, char());
+			}
+			out = do_put(out, str, fill, tmb, format, modifier);
+		} else
+			*out++ = formatw;
+		++pattern;
+	}
+	return out;
+}
+
+template <class charT, class OutputIterator>
+inline
+OutputIterator
+__put_2digits(OutputIterator out, int num, char modifier)
+{
+	if (modifier != 'O' || num >= 10)
+		*out++ = charT(num / 10 + '0');
+	*out++ = charT(num % 10 + '0');
+	return out;
+}
+
+template <bool>
+inline
+bool
+__is_leap(int year)
+{
+	if (year % 4 != 0)
+		return false;
+	if (year % 100 != 0)
+		return true;
+	if (year % 400 != 0)
+		return false;
+	return true;
+}
+
+template <bool b>
+int
+__iso_week(int yday, int wday, int& year)
+{
+	if (wday == 0)
+		wday = 7;
+	--wday;
+	int leap = __is_leap<b>(year);
+	if (yday < wday - 3)
+		yday += 365 + __is_leap<b>(--year);
+	else if (yday - leap - wday > 361 )
+	{
+		yday -= 364 + leap;
+		++year;
+	}
+	yday += 3 - (yday - wday + 3) % 7;
+	return yday / 7 + 1;
+}
+
+template <class charT, class OutputIterator>
+typename time_put<charT, OutputIterator>::iter_type
+time_put<charT, OutputIterator>::__put_lower(iter_type out, ios_base& str, charT fill, const tm* tmb,
+	char format, char modifier, const timepunct<charT>& tp) const
+{
+	typedef typename timepunct<charT>::string_type string_type;
+	switch (format)
+	{
+	case 'a':
+		{
+		const string_type& s = tp.abbrev_weekday(tmb->tm_wday);
+		out = _STD::copy(s.begin(), s.end(), out);
+		}
+		break;
+	case 'b':
+	case 'h':
+		{
+		const string_type& s = tp.abbrev_monthname(tmb->tm_mon);
+		out = _STD::copy(s.begin(), s.end(), out);
+		}
+		break;
+	case 'c':
+		{
+		const string_type& s = tp.date_time();
+		out = put(out, str, fill, tmb, s.data(), s.data()+s.size());
+		}
+		break;
+	case 'd':
+		out = __put_2digits<charT>(out, tmb->tm_mday, modifier);
+		break;
+	case 'e':
+		if (tmb->tm_mday < 10)
+			*out++ = charT(' ');
+		else
+			*out++ = charT(tmb->tm_mday / 10 + '0');
+		*out++ = charT(tmb->tm_mday % 10 + '0');
+		break;
+	case 'g':
+		{
+		int y = tmb->tm_year + 1900;
+		__iso_week<true>(tmb->tm_yday, tmb->tm_wday, y);
+		out = __put_2digits<charT>(out, y % 100, modifier);
+		}
+		break;
+	case 'j':
+		{
+		int d = tmb->tm_yday + 1;
+		if (modifier != 'O' || d >= 100)
+			*out++ = charT(d / 100 + '0');
+		d %= 100;
+		out = __put_2digits<charT>(out, d, modifier);
+		}
+		break;
+	case 'm':
+		out = __put_2digits<charT>(out, tmb->tm_mon+1, modifier);
+		break;
+	case 'n':
+		*out++ = charT('\n');
+		break;
+	case 'p':
+		{
+		const string_type& s = tp.am_pm(tmb->tm_hour);
+		out = _STD::copy(s.begin(), s.end(), out);
+		}
+		break;
+	case 'r':
+		{
+		const string_type& s = tp.time_12hour();
+		out = put(out, str, fill, tmb, s.data(), s.data()+s.size());
+		}
+		break;
+	case 't':
+		*out++ = charT('\t');
+		break;
+	case 'u':
+		{
+		int wd = tmb->tm_wday;
+		if (wd == 0)
+			wd = 7;
+		*out++ = charT(wd + '0');
+		}
+		break;
+	case 'w':
+		*out++ = charT(tmb->tm_wday + '0');
+		break;
+	case 'x':
+		{
+		const string_type& s = tp.date();
+		out = put(out, str, fill, tmb, s.data(), s.data()+s.size());
+		}
+		break;
+	case 'y':
+		out = __put_2digits<charT>(out, (tmb->tm_year + 1900) % 100, modifier);
+		break;
+	case 'z':
+		if (tmb->tm_isdst >= 0)
+		{
+			const string_type& s = tp.utc_offset(tmb->tm_isdst);
+			out = _STD::copy(s.begin(), s.end(), out);
+		}
+		break;
+	}
+	return out;
+}
+
+template <class charT, class OutputIterator>
+typename time_put<charT, OutputIterator>::iter_type
+time_put<charT, OutputIterator>::__put_upper(iter_type out, ios_base& str, charT fill, const tm* tmb,
+	char format, char modifier, const timepunct<charT>& tp, const ctype<charT>& ct) const
+{
+	typedef typename timepunct<charT>::string_type string_type;
+	switch (format)
+	{
+	case 'A':
+		{
+		const string_type& s = tp.weekday(tmb->tm_wday);
+		out = _STD::copy(s.begin(), s.end(), out);
+		}
+		break;
+	case 'B':
+		{
+		const string_type& s = tp.monthname(tmb->tm_mon);
+		out = _STD::copy(s.begin(), s.end(), out);
+		}
+		break;
+	case 'C':
+		out = __put_2digits<charT>(out, (tmb->tm_year + 1900) / 100, modifier);
+		break;
+	case 'D':
+		{
+		const string_type s = modifier == 'O' ? ct.widen("%Om/%Od/%y") : ct.widen("%m/%d/%y");
+		out = put(out, str, fill, tmb, s.data(), s.data()+s.size());
+		}
+		break;
+	case 'F':
+		{
+		const string_type s = modifier == 'O' ? ct.widen("%Y-%Om-%Od") : ct.widen("%Y-%m-%d");
+		out = put(out, str, fill, tmb, s.data(), s.data()+s.size());
+		}
+		break;
+	case 'G':
+		{
+		int y = tmb->tm_year + 1900;
+		__iso_week<true>(tmb->tm_yday, tmb->tm_wday, y);
+		out = __putdec(out, str, fill, long(y), true);
+		}
+		break;
+	case 'H':
+		out = __put_2digits<charT>(out, tmb->tm_hour, modifier);
+		break;
+	case 'I':
+		{
+		int h = tmb->tm_hour % 12;
+		if (h == 0)
+			h = 12;
+		out = __put_2digits<charT>(out, h, modifier);
+		}
+		break;
+	case 'M':
+		out = __put_2digits<charT>(out, tmb->tm_min, modifier);
+		break;
+	case 'R':
+		{
+		const string_type s = modifier == 'O' ? ct.widen("%OH:%M") : ct.widen("%H:%M");
+		out = put(out, str, fill, tmb, s.data(), s.data()+s.size());
+		}
+		break;
+	case 'S':
+		out = __put_2digits<charT>(out, tmb->tm_sec, modifier);
+		break;
+	case 'T':
+		{
+		const string_type s = modifier == 'O' ? ct.widen("%OH:%M:%S") : ct.widen("%H:%M:%S");
+		out = put(out, str, fill, tmb, s.data(), s.data()+s.size());
+		}
+		break;
+	case 'X':
+		{
+		const string_type& s = tp.time();
+		out = put(out, str, fill, tmb, s.data(), s.data()+s.size());
+		}
+		break;
+	case 'U':
+		{
+		int w = tmb->tm_yday - tmb->tm_wday;
+		if (w >= 0)
+			w = w / 7 + 1;
+		else
+			w = 0;
+		out = __put_2digits<charT>(out, w, modifier);
+		}
+		break;
+	case 'V':
+		{
+		int y = tmb->tm_year + 1900;
+		out = __put_2digits<charT>(out, __iso_week<true>(tmb->tm_yday, tmb->tm_wday, y), modifier);
+		}
+		break;
+	case 'W':
+		{
+		int w = tmb->tm_wday;
+		if (w == 0)
+			w = 7;
+		--w;
+		w = tmb->tm_yday - w;
+		if (w >= 0)
+			w = w / 7 + 1;
+		else
+			w = 0;
+		out = __put_2digits<charT>(out, w, modifier);
+		}
+		break;
+	case 'Y':
+		out = __putdec(out, str, fill, long(tmb->tm_year + 1900), true);
+		break;
+	case 'Z':
+		if (tmb->tm_isdst >= 0)
+		{
+			const string_type& s = tp.time_zone(tmb->tm_isdst);
+			out = _STD::copy(s.begin(), s.end(), out);
+		}
+		break;
+	case '%':
+		*out++ = charT('%');
+		break;
+	case ' ':
+		*out++ = charT(' ');
+		break;
+	}
+	return out;
+}
+
+template <class charT, class OutputIterator>
+typename time_put<charT, OutputIterator>::iter_type
+time_put<charT, OutputIterator>::do_put(iter_type out, ios_base& str, char_type fill, const tm* tmb,
+	char format, char modifier) const
+{
+	locale loc = str.getloc();
+	const timepunct<charT>& tp = _USE_FACET(timepunct<charT>, loc);
+	_SaveFlags save_str(str);
+	dec(str);
+	noshowpos(str);
+	str.width(0);
+	if (_CSTD::islower(format))
+		return __put_lower(out, str, fill, tmb, format, modifier, tp);
+	const ctype<charT>& ct = _USE_FACET(ctype<charT>, str.getloc());
+	return __put_upper(out, str, fill, tmb, format, modifier, tp, ct);
+}
+
+template <class charT>
+class timepunct_byname
+	: public timepunct<charT>
+{
+public:
+	typedef charT               char_type;
+	typedef basic_string<charT> string_type;
+
+	explicit timepunct_byname(const char* std_name, size_t refs = 0);
+
+protected:
+	virtual ~timepunct_byname() {}
+};
+
+inline
+const string&
+__time_marker(char)
+{
+	static string time_marker("time_narrow");
+	return time_marker;
+}
+
+#ifndef _MSL_NO_WCHART_CPP_SUPPORT
+
+	inline
+	const string&
+	__time_marker(wchar_t)
+	{
+		static string time_marker("time_wide");
+		return time_marker;
+	}
+
+#endif  // _MSL_NO_WCHART_CPP_SUPPORT
+
+template <class charT>
+timepunct_byname<charT>::timepunct_byname(const char* std_name, size_t refs)
+	: timepunct<charT>(refs)
+{
+	typedef timepunct<charT> base;
+	if (std_name == 0)
+	#ifndef _MSL_NO_EXCEPTIONS
+		throw runtime_error("timepunct_byname constructed with null name");
+	#else
+		__msl_error("timepunct_byname constructed with null name");
+	#endif
+	if (strlen(std_name) == 0)
+		std_name = getenv("MSL_DEFAULT_LOCALE");
+	if (std_name != 0 && strcmp(std_name, "C") != 0)
+	{
+	#ifndef _MSL_NO_FILE_IO
+		ifstream infile(std_name, ios::binary);
+		if (!infile.is_open())
+		#ifndef _MSL_NO_EXCEPTIONS
+			throw runtime_error(string("timepunct_byname constructed with unsupported name: ") + std_name);
+		#else
+			__msl_error("timepunct_byname constructed with unsupported name");
+		#endif
+		string word;
+		const string time_marker(__time_marker(charT()));
+		bool success = true;
+		while (infile.good())
+		{
+			infile.ignore(numeric_limits<streamsize>::max(), '$');
+			infile >> word;
+			if (infile.fail())
+				break;
+			if (word == time_marker)
+			{
+				success = false;
+				string time_names[12];
+				time_names[0] = "abbrev_weekday";
+				time_names[1] = "weekday";
+				time_names[2] = "abbrev_monthname";
+				time_names[3] = "monthname";
+				time_names[4] = "date_time";
+				time_names[5] = "am_pm";
+				time_names[6] = "time_12hour";
+				time_names[7] = "date";
+				time_names[8] = "time";
+				time_names[9] = "time_zone";
+				time_names[10] = "utc_offset";
+				time_names[11] = "default_century";
+				const string (&ctime_names)[12] = time_names;
+				const ctype<char>& ct = _USE_FACET(ctype<char>, infile.getloc());
+				ios_base::iostate err = ios_base::goodbit;
+				istreambuf_iterator<char> in(infile), end;
+				while (true)
+				{
+					ws(infile);
+					const string* i = __parse_a_word(in, end, ctime_names, ctime_names+12, ct, err);
+					if (err)
+						infile.setstate(err);
+					if (i == ctime_names+12)
+						break;
+					char syntax;
+					infile >> syntax;
+					if (infile.fail() || syntax != '=')
+					#ifndef _MSL_NO_EXCEPTIONS
+						throw runtime_error("syntax error reading time data");
+					#else
+						__msl_error("syntax error reading time data");
+					#endif
+					switch (i-ctime_names)
+					{
+					case 0:  // abbrev_weekday
+						{
+						for (int j = 0; j < 7; ++j)
+							__read_formatted_string(infile, base::__weekday_names_[j+7]);
+						}
+						break;
+					case 1:  // weekday
+						{
+						for (int j = 0; j < 7; ++j)
+							__read_formatted_string(infile, base::__weekday_names_[j]);
+						}
+						break;
+					case 2:  // abbrev_monthname
+						{
+						for (int j = 0; j < 12; ++j)
+							__read_formatted_string(infile, base::__month_names_[j+12]);
+						}
+						break;
+					case 3:  // monthname
+						{
+						for (int j = 0; j < 12; ++j)
+							__read_formatted_string(infile, base::__month_names_[j]);
+						}
+						break;
+					case 4:  // date_time
+						__read_formatted_string(infile, base::__date_time_);
+						break;
+					case 5:  // am_pm
+						__read_formatted_string(infile, base::__am_pm_[0]);
+						__read_formatted_string(infile, base::__am_pm_[1]);
+						break;
+					case 6:  // time_12hour
+						__read_formatted_string(infile, base::__12hr_time_);
+						break;
+					case 7:  // date
+						__read_formatted_string(infile, base::__date_);
+						break;
+					case 8:  // time
+						__read_formatted_string(infile, base::__time_);
+						break;
+					case 9:  // time_zone
+						__read_formatted_string(infile, base::__time_zone_[0]);
+						__read_formatted_string(infile, base::__time_zone_[1]);
+						break;
+					case 10:  // utc_offset
+						__read_formatted_string(infile, base::__utc_offset_[0]);
+						__read_formatted_string(infile, base::__utc_offset_[1]);
+						break;
+					case 11:  // default century
+						infile >> base::__default_century_;
+						break;
+					}
+				}
+				success = static_cast<bool>(!infile.fail());
+				break;
+			}
+		}
+		if (!success)
+		#ifndef _MSL_NO_EXCEPTIONS
+			throw runtime_error(string("timepunct_byname file input error: ") + std_name);
+		#else
+			__msl_error("timepunct_byname file input error");
+		#endif
+	#else  // _MSL_NO_FILE_IO
+		#ifndef _MSL_NO_EXCEPTIONS
+			throw runtime_error(string("timepunct_byname constructed with unsupported name: ") + std_name);
+		#else
+			__msl_error("timepunct_byname constructed with unsupported name");
+		#endif
+	#endif  // _MSL_NO_FILE_IO
+	}
+}
+
+template <class charT, class InputIterator = istreambuf_iterator<charT> >
+class time_get_byname
+	: public time_get<charT, InputIterator>
+{
+public:
+
+typedef time_base::dateorder dateorder;
+typedef InputIterator        iter_type;
+
+explicit time_get_byname(const char* std_name, size_t refs = 0);
+
+protected:
+	virtual ~time_get_byname() {}
+};
+
+template <class charT, class InputIterator>
+time_get_byname<charT, InputIterator>::time_get_byname(const char*, size_t refs)
+	: time_get<charT, InputIterator>(refs)
+{
+}
+
+template <class charT, class OutputIterator = ostreambuf_iterator<charT> >
+class time_put_byname
+	: public time_put<charT, OutputIterator>
+{
+public:
+	typedef charT          char_type;
+	typedef OutputIterator iter_type;
+
+	explicit time_put_byname(const char* std_name, size_t refs = 0);
+protected:
+	virtual ~time_put_byname() {}
+};
+
+template <class charT, class OutputIterator>
+time_put_byname<charT, OutputIterator>::time_put_byname(const char*, size_t refs)
+	: time_put<charT, OutputIterator>(refs)
+{
+}
+
+#endif  // _MSL_NO_LOCALE
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	} // namespace std
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#pragma enumsalwaysint reset
+#endif
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#pragma bool reset
+#endif
+
+#ifdef __MWERKS__
+#pragma options align=reset
+#endif
+
+#endif // RC_INVOKED
+
+#endif  // _MSL_NO_TIME_SUPPORT
+
+#endif  // _MSL_NO_IO
+
+#endif  // _TIMEFACET
+
+// hh 010228 Created
+// hh 010402 Removed 68K CMF support
+// hh 020129 Fixed a few typename bugs
+// hh 021203 Changed the following default formats to be consistent with C99 defect report 203:
+//              date & time format from "%A %B %d %T %Y" to "%a %b %e %T %Y"
+//              __am_pm from "am"/"pm" to "AM"/"PM"
+//              date format from "%A %B %d %Y" to "%m/%d/%y"

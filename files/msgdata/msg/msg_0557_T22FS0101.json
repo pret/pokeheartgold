@@ -1,0 +1,127 @@
+{
+  "key": 3857,
+  "messages": [
+    {
+      "id": "msg_0557_T22FS0101_00000",
+      "en_US": [
+        "When you first catch a Pokémon,\n",
+        "it may be weak.\r",
+        "But it will eventually grow to\n",
+        "be strong.\r",
+        "It’s important to treat Pokémon\n",
+        "with love."
+      ]
+    },
+    {
+      "id": "msg_0557_T22FS0101_00001",
+      "en_US": [
+        "Pokémon can hold items like a Potion\n",
+        "or an Antidote.\r",
+        "But they don’t appear to know how\n",
+        "to use man-made items."
+      ]
+    },
+    {
+      "id": "msg_0557_T22FS0101_00002",
+      "en_US": [
+        "Long time no see, {STRVAR_1 3, 0, 0}.\n",
+        "I’ve been waiting for you.\f",
+        "This is from Professor Elm.\r",
+        "The thing is...we would like you to\n",
+        "take care of an Egg! {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0557_T22FS0101_00003",
+      "en_US": [
+        "Long time no see, {STRVAR_1 3, 0, 0}.\n",
+        "I’ve been waiting for you.\f",
+        "This is from Professor Elm.\r",
+        "The thing is...we would like you to\n",
+        "take care of an Egg! {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0557_T22FS0101_00004",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} received\n",
+        "the Egg from the assistant!"
+      ]
+    },
+    {
+      "id": "msg_0557_T22FS0101_00005",
+      "en_US": [
+        "After you left, Professor Elm received\n",
+        "a phone call. I have no idea what they\f",
+        "were talking about.\r",
+        "But, after a while, Professor Elm\n",
+        "suddenly cried out, “I can’t think of\f",
+        "anyone more suited than {STRVAR_1 3, 0, 0}!”\r",
+        "Then he insisted that I hand this Egg\n",
+        "to you.\r",
+        "That’s how I came here to deliver the\n",
+        "Egg to you.\r",
+        "It seems that a Pokémon will hatch from\n",
+        "it only when you keep it in your party\f",
+        "of Pokémon.\r",
+        "That’s another reason we’ve\n",
+        "chosen you, {STRVAR_1 3, 0, 0}.\r",
+        "Please take care of it!\r"
+      ]
+    },
+    {
+      "id": "msg_0557_T22FS0101_00006",
+      "en_US": [
+        "After you left, Professor Elm received\n",
+        "a phone call. I have no idea what they\f",
+        "were talking about, but after a while,\f",
+        "Professor Elm suddenly cried out,\f",
+        "“I can’t think of anyone more suited\f",
+        "for that than {STRVAR_1 3, 0, 0}!”\r",
+        "Then he insisted that I hand this Egg\n",
+        "to you.\r",
+        "That’s how I came here to deliver the\n",
+        "Egg to you.\r",
+        "It seems that a Pokémon will hatch from\n",
+        "it only when you keep it in your party\f",
+        "of Pokémon.\r",
+        "That’s another reason we’ve\n",
+        "chosen you, {STRVAR_1 3, 0, 0}.\r",
+        "Please take care of it!\r"
+      ]
+    },
+    {
+      "id": "msg_0557_T22FS0101_00007",
+      "en_US": [
+        "Your party is full.\n",
+        "You cannot take the Egg yet.\f",
+        "I’ll wait here for you."
+      ]
+    },
+    {
+      "id": "msg_0557_T22FS0101_00008",
+      "en_US": [
+        "What?\n",
+        "I never expected you’d say no!\f",
+        "You must be kidding, right?\r",
+        "Professor Elm really wants you to\n",
+        "take care of it...\n",
+        "\n"
+      ]
+    },
+    {
+      "id": "msg_0557_T22FS0101_00009",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0},\n",
+        "will you take this Egg? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0557_T22FS0101_00010",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0},\n",
+        "will you take this Egg? {YESNO 0}"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "key": 18215,
+  "messages": [
+    {
+      "id": "msg_0452_T02_00000",
+      "en_US": [
+        "Hey, kid! I just had a double shot\n",
+        "of espresso, and I am wired!\r",
+        "I need to talk to someone, so you’ll\n",
+        "have to do!\r",
+        "I might not look like much now, but\n",
+        "I was an expert at catching Pokémon.\r",
+        "Do you believe me? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0452_T02_00001",
+      "en_US": [
+        "Good, good. Yes, I was something out\n",
+        "of the ordinary, let me tell you!"
+      ]
+    },
+    {
+      "id": "msg_0452_T02_00002",
+      "en_US": [
+        "What? You little whelp!\r",
+        "If I were just a bit younger, I’d\n",
+        "show you a thing or two. Humph!"
+      ]
+    },
+    {
+      "id": "msg_0452_T02_00003",
+      "en_US": [
+        "This Gym didn’t have a Leader...\r",
+        "A young man from Pallet Town became the\n",
+        "Leader, but he’s often away."
+      ]
+    },
+    {
+      "id": "msg_0452_T02_00004",
+      "en_US": [
+        "How was it?\n",
+        "Were you able to battle the Leader?"
+      ]
+    },
+    {
+      "id": "msg_0452_T02_00005",
+      "en_US": [
+        "Yawn!\n",
+        "I must have dozed off in the sun.\r",
+        "...I had this dream about a DROWZEE\n",
+        "eating my dream.\r",
+        "Weird, huh?\f",
+        "Huh?\f",
+        "What’s this?\r",
+        "Where did this TM come from?\n",
+        "This is spooky!\f",
+        "Here, you can have this TM.\r"
+      ]
+    },
+    {
+      "id": "msg_0452_T02_00006",
+      "en_US": [
+        "TM85 contains Dream Eater...\n",
+        "...Zzzzz..."
+      ]
+    },
+    {
+      "id": "msg_0452_T02_00007",
+      "en_US": [
+        "I heard that there are many items on\n",
+        "the ground in Viridian Forest."
+      ]
+    },
+    {
+      "id": "msg_0452_T02_00008",
+      "en_US": [
+        "Viridian City\n",
+        "The City of Evergreen"
+      ]
+    },
+    {
+      "id": "msg_0452_T02_00009",
+      "en_US": [
+        "Viridian City Pokémon Gym\n",
+        "Leader: ...\f",
+        "The rest of the text is illegible..."
+      ]
+    },
+    {
+      "id": "msg_0452_T02_00010",
+      "en_US": [
+        "Welcome to Viridian City,\n",
+        "the Gateway to Indigo Plateau!"
+      ]
+    },
+    {
+      "id": "msg_0452_T02_00011",
+      "en_US": [
+        "Trainer House\n",
+        "The Club for Top Trainer Battles"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "key": 58411,
+  "messages": [
+    {
+      "id": "msg_0056_D15R0103_00000",
+      "en_US": [
+        "Elder: You showed us what you’ve got,\n",
+        "and it is indeed good...\r",
+        "Take this Technical Machine.\r",
+        "However, you should care more about\n",
+        "your Pokémon.\r",
+        "The way you treat your Pokémon can\n",
+        "be too harsh...\r",
+        "Remember, Pokémon are not tools\n",
+        "of war...\r"
+      ]
+    },
+    {
+      "id": "msg_0056_D15R0103_00001",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}: ...\r",
+        "...Humph!\n",
+        "He calls himself the Elder, but he was\f",
+        "no match for me.\r",
+        "Sure enough, those who lecture how\n",
+        "you should be “nice” to Pokémon...\f",
+        "They cannot defeat me.\r",
+        "All I care about are strong Pokémon\n",
+        "that win every time.\r",
+        "The rest of them don’t mean anything\n",
+        "to me.\r"
+      ]
+    },
+    {
+      "id": "msg_0056_D15R0103_00002",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} used\n",
+        "an Escape Rope!"
+      ]
+    },
+    {
+      "id": "msg_0056_D15R0103_00003",
+      "en_US": [
+        "So good of you to come here!\r",
+        "Sprout Tower is a place of training.\n",
+        "People and Pokémon test their bonds\f",
+        "to build a bright future together.\f",
+        "I am the final test.\r",
+        "Allow me to check the ties between\n",
+        "you and your Pokémon!\r"
+      ]
+    },
+    {
+      "id": "msg_0056_D15R0103_00004",
+      "en_US": [
+        "Hmmm...\n",
+        "The way you battle is quite elegant.\r",
+        "You should be able to stand up\n",
+        "to Falkner.\r",
+        "And you should be able to make good use\n",
+        "of this...\r",
+        "It is a Technical Machine called Flash.\n",
+        "Take it with you!\r"
+      ]
+    },
+    {
+      "id": "msg_0056_D15R0103_00005",
+      "en_US": [
+        "When a Pokémon learns Flash, you can\n",
+        "illuminate caves no matter how dark\f",
+        "they may be.\r",
+        "You can try it on BELLSPROUT,\n",
+        "for example..."
+      ]
+    },
+    {
+      "id": "msg_0056_D15R0103_00006",
+      "en_US": [
+        "I hope you learn and grow from\n",
+        "your journey."
+      ]
+    },
+    {
+      "id": "msg_0056_D15R0103_00007",
+      "en_US": [
+        "It’s a powerful painting of a\n",
+        "BELLSPROUT."
+      ]
+    },
+    {
+      "id": "msg_0056_D15R0103_00008",
+      "en_US": [
+        "A Pokémon statue...\n",
+        "It looks very distinguished."
+      ]
+    }
+  ]
+}

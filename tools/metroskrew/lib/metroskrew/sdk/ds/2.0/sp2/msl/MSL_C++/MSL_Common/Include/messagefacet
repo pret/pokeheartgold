@@ -1,0 +1,242 @@
+/* MSL
+ * Copyright © 1995-2006 Freescale Corporation.  All rights reserved.
+ *
+ * $Date: 2006/02/09 16:58:51 $
+ * $Revision: 1.16.2.2 $
+ */
+
+// messagefacet
+
+#ifndef _MESSAGEFACET
+#define _MESSAGEFACET
+
+#include <mslconfig>
+
+#ifndef _MSL_NO_IO
+
+#include <localeimp>
+#include <string>
+#include <map>
+#include <fstream>
+#include <msl_int_limits>
+
+#ifndef RC_INVOKED
+
+#ifdef __MWERKS__
+#pragma options align=native
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#if _MSL_FORCE_ENUMS_ALWAYS_INT
+		#pragma enumsalwaysint on
+	#else
+		#pragma enumsalwaysint off
+	#endif
+#endif  // _MSL_FORCE_ENUMS_ALWAYS_INT
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#if _MSL_FORCE_ENABLE_BOOL_SUPPORT
+		#pragma bool on
+	#else
+		#pragma bool off
+	#endif
+#endif  // _MSL_FORCE_ENABLE_BOOL_SUPPORT
+
+#ifdef min
+#undef min
+#endif
+
+#ifdef max
+#undef max
+#endif
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	namespace std {
+#endif
+
+#ifndef _MSL_NO_LOCALE
+
+class messages_base
+{
+public:
+	typedef int catalog;
+};
+
+template <class charT>
+class messages
+	: public locale::facet,
+	  public messages_base
+{
+public:
+	typedef charT char_type;
+	typedef basic_string<charT> string_type;
+
+	explicit messages(size_t refs = 0)
+	             : locale::facet(refs) {}
+
+	catalog     open(const basic_string<char>& fn, const locale& loc) const
+	                {return do_open(fn, loc);}
+	string_type get(catalog c, int set, int msgid, const string_type& dfault) const
+	                {return do_get(c, set, msgid, dfault);}
+	void        close(catalog c) const
+	                {do_close(c);}
+
+	static locale::id id;
+
+protected:
+	virtual ~messages() {}
+	virtual catalog     do_open(const basic_string<char>& fn, const locale& loc) const;
+	virtual string_type do_get(catalog c, int set, int msgid, const string_type& dfault) const;
+	virtual void        do_close(catalog c) const;
+
+	string_type&        __set(catalog c, int set, int msgid);
+private:
+	typedef map<int, string_type> _Set;
+	typedef map<int, _Set> _Catalog;
+	typedef map<catalog, _Catalog> _Registry;
+
+	_Registry __cats_;
+	static catalog __next_cat_;
+};
+
+template <class charT>
+locale::id messages<charT>::id;
+
+template <class charT>
+messages_base::catalog messages<charT>::__next_cat_ = 0;
+
+template <class charT>
+struct __facet_traits<messages<charT> >
+	{static const bool is_standard = true;};
+
+template <class charT>
+messages_base::catalog
+messages<charT>::do_open(const basic_string<char>& fn, const locale& loc) const
+{
+	catalog result = -1;
+#ifndef _MSL_NO_FILE_IO
+	basic_ifstream<charT> in;
+	in.imbue(loc);
+	in.open(fn.c_str(), ios::binary);
+	if (in.is_open())
+	{
+		result = __next_cat_++;
+		_Registry& cats = const_cast<_Registry&>(__cats_);
+		typename _Registry::iterator ci = cats.insert(typename _Registry::value_type(result, _Catalog())).first;
+		basic_string<charT> word;
+		const basic_string<charT> set_marker(__literal("set", charT()));
+		typename _Catalog::iterator si;
+		while (in.good())
+		{
+			in.ignore(numeric_limits<streamsize>::max(), '$');
+			in >> word;
+			if (in.fail())
+				break;
+			if (word == set_marker)
+			{
+				int set;
+				in >> set;
+				if (in.fail())
+					break;
+				si = ci->second.insert(typename _Catalog::value_type(set, _Set())).first;
+				while (in.good())
+				{
+					ws(in);
+					typename basic_ifstream<charT>::int_type pk = in.peek();
+					if (pk == basic_ifstream<charT>::traits_type::eof() || pk == '$')
+						break;
+					int msgid;
+					in >> msgid;
+					__read_formatted_string(in, word);
+					if (in.fail())
+						break;
+					(si->second)[msgid] = word;
+				}
+			}
+		}
+	}
+#else  // _MSL_NO_FILE_IO
+	fn;
+	loc;
+#endif  // _MSL_NO_FILE_IO
+	return result;
+}
+
+template <class charT>
+typename messages<charT>::string_type
+messages<charT>::do_get(catalog c, int set, int msgid, const string_type& dfault) const
+{
+	string_type result = dfault;
+	typename _Registry::const_iterator ci = __cats_.find(c);
+	if (ci != __cats_.end())
+	{
+		typename _Catalog::const_iterator seti = ci->second.find(set);
+		if (seti != ci->second.end())
+		{
+			typename _Set::const_iterator msgi = seti->second.find(msgid);
+			if (msgi != seti->second.end())
+				result = msgi->second;
+		}
+	}
+	return result;
+}
+
+template <class charT>
+void
+messages<charT>::do_close(catalog c) const
+{
+	const_cast<_Registry&>(__cats_).erase(c);
+}
+
+template <class charT>
+inline
+typename messages<charT>::string_type&
+messages<charT>::__set(catalog c, int set, int msgid)
+{
+	return __cats_[c][set][msgid];
+}
+
+template <class charT>
+class messages_byname
+	: public messages<charT>
+{
+public:
+	typedef messages_base::catalog catalog;
+	typedef basic_string<charT>    string_type;
+
+	explicit messages_byname(const char*, size_t refs = 0)
+	             : messages<charT>(refs) {}
+protected:
+	virtual ~messages_byname() {}
+};
+
+#endif  // _MSL_NO_LOCALE
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	} // namespace std
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#pragma enumsalwaysint reset
+#endif
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#pragma bool reset
+#endif
+
+#ifdef __MWERKS__
+#pragma options align=reset
+#endif
+
+#endif // RC_INVOKED
+
+#endif  // _MSL_NO_IO
+
+#endif  // _MESSAGEFACET
+
+// hh 010228 Created
+// hh 010402 Removed 68K CMF support
+// hh 010727 Removed include <cstring>
+// hh 010727 Fixed typename bug
+// hh 010727 Installed __literal
+// hh 020529 Changed <limits> to <msl_int_limits>

@@ -1,0 +1,249 @@
+{
+  "key": 10503,
+  "messages": [
+    {
+      "id": "msg_0025_00000",
+      "en_US": "{STRVAR_1 1, 0, 0} is selected."
+    },
+    {
+      "id": "msg_0025_00001",
+      "garbage": 12
+    },
+    {
+      "id": "msg_0025_00002",
+      "en_US": "Release this Pokémon?"
+    },
+    {
+      "id": "msg_0025_00003",
+      "en_US": "{STRVAR_1 1, 0, 0} was released."
+    },
+    {
+      "id": "msg_0025_00004",
+      "en_US": "Bye-bye, {STRVAR_1 1, 0, 0}!"
+    },
+    {
+      "id": "msg_0025_00005",
+      "en_US": "Your party’s full!"
+    },
+    {
+      "id": "msg_0025_00006",
+      "en_US": "That’s your last Pokémon!"
+    },
+    {
+      "id": "msg_0025_00007",
+      "en_US": "What do you want to do?"
+    },
+    {
+      "id": "msg_0025_00008",
+      "garbage": 17
+    },
+    {
+      "id": "msg_0025_00009",
+      "garbage": 12
+    },
+    {
+      "id": "msg_0025_00010",
+      "en_US": "Pick the wallpaper."
+    },
+    {
+      "id": "msg_0025_00011",
+      "en_US": "Exit the Box?"
+    },
+    {
+      "id": "msg_0025_00012",
+      "en_US": "Continue Box operations?"
+    },
+    {
+      "id": "msg_0025_00013",
+      "en_US": "The Box is full."
+    },
+    {
+      "id": "msg_0025_00014",
+      "en_US": "The Bag is full."
+    },
+    {
+      "id": "msg_0025_00015",
+      "en_US": "Took the {STRVAR_1 8, 0, 0}."
+    },
+    {
+      "id": "msg_0025_00016",
+      "en_US": "{STRVAR_1 8, 0, 0} is now being held."
+    },
+    {
+      "id": "msg_0025_00017",
+      "garbage": 16
+    },
+    {
+      "id": "msg_0025_00018",
+      "en_US": "Which one will you take?"
+    },
+    {
+      "id": "msg_0025_00019",
+      "en_US": "Deposit where?"
+    },
+    {
+      "id": "msg_0025_00020",
+      "garbage": 6
+    },
+    {
+      "id": "msg_0025_00021",
+      "garbage": 1
+    },
+    {
+      "id": "msg_0025_00022",
+      "garbage": 1
+    },
+    {
+      "id": "msg_0025_00023",
+      "en_US": "Take this {STRVAR_1 8, 0, 0}?"
+    },
+    {
+      "id": "msg_0025_00024",
+      "en_US": "Mail can’t be taken away."
+    },
+    {
+      "id": "msg_0025_00025",
+      "garbage": 14
+    },
+    {
+      "id": "msg_0025_00026",
+      "en_US": "Put away {STRVAR_1 8, 0, 0}?"
+    },
+    {
+      "id": "msg_0025_00027",
+      "en_US": "Placed {STRVAR_1 8, 0, 0} in the Bag."
+    },
+    {
+      "id": "msg_0025_00028",
+      "garbage": 10
+    },
+    {
+      "id": "msg_0025_00029",
+      "en_US": "Please detach the Ball Capsule."
+    },
+    {
+      "id": "msg_0025_00030",
+      "en_US": "Please remove the Mail."
+    },
+    {
+      "id": "msg_0025_00031",
+      "en_US": "You can’t release an Egg."
+    },
+    {
+      "id": "msg_0025_00032",
+      "en_US": "{STRVAR_1 1, 0, 0} came back!"
+    },
+    {
+      "id": "msg_0025_00033",
+      "en_US": "Was it worried about you?"
+    },
+    {
+      "id": "msg_0025_00034",
+      "en_US": "An Egg can’t hold an item."
+    },
+    {
+      "id": "msg_0025_00035",
+      "en_US": "Touch the Mark!"
+    },
+    {
+      "id": "msg_0025_00036",
+      "en_US": "Place it in the Box!"
+    },
+    {
+      "id": "msg_0025_00037",
+      "en_US": "You can add it to your party!"
+    },
+    {
+      "id": "msg_0025_00038",
+      "en_US": "This Box is full!"
+    },
+    {
+      "id": "msg_0025_00039",
+      "en_US": "Your party is full!"
+    },
+    {
+      "id": "msg_0025_00040",
+      "garbage": 4
+    },
+    {
+      "id": "msg_0025_00041",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0025_00042",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0025_00043",
+      "garbage": 4
+    },
+    {
+      "id": "msg_0025_00044",
+      "garbage": 4
+    },
+    {
+      "id": "msg_0025_00045",
+      "garbage": 4
+    },
+    {
+      "id": "msg_0025_00046",
+      "garbage": 4
+    },
+    {
+      "id": "msg_0025_00047",
+      "garbage": 4
+    },
+    {
+      "id": "msg_0025_00048",
+      "garbage": 2
+    },
+    {
+      "id": "msg_0025_00049",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0025_00050",
+      "en_US": "Deposit Pokémon"
+    },
+    {
+      "id": "msg_0025_00051",
+      "en_US": "Withdraw Pokémon"
+    },
+    {
+      "id": "msg_0025_00052",
+      "en_US": "Move Pokémon"
+    },
+    {
+      "id": "msg_0025_00053",
+      "en_US": "Move Items"
+    },
+    {
+      "id": "msg_0025_00054",
+      "en_US": "Mail cannot be moved!"
+    },
+    {
+      "id": "msg_0025_00055",
+      "en_US": "Cannot hold {STRVAR_1 8, 0, 0}!"
+    },
+    {
+      "id": "msg_0025_00056",
+      "en_US": "It has Mail!"
+    },
+    {
+      "id": "msg_0025_00057",
+      "en_US": "It has a Ball Capsule!"
+    },
+    {
+      "id": "msg_0025_00058",
+      "en_US": "You’re out of Pokémon that can fight!"
+    },
+    {
+      "id": "msg_0025_00059",
+      "en_US": "Mail cannot be moved!"
+    },
+    {
+      "id": "msg_0025_00060",
+      "en_US": "You can give this to a Pokémon to hold."
+    }
+  ]
+}

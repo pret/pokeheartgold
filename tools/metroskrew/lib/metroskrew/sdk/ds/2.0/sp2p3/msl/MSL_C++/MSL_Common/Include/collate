@@ -1,0 +1,509 @@
+/* MSL
+ * Copyright © 1995-2006 Freescale Corporation.  All rights reserved.
+ *
+ * $Date: 2006/02/09 16:58:11 $
+ * $Revision: 1.19.2.2 $
+ */
+
+// collate
+
+#ifndef _COLLATE
+#define _COLLATE
+
+#include <mslconfig>
+
+#ifndef _MSL_NO_IO
+
+#ifndef _MSL_NO_LOCALE
+
+#include <string>
+#include <localeimp>
+#include <cstdlib>
+#include <cstring>
+#include <msl_int_limits>
+#include <fstream>
+#include <hash_map>
+#include <sstream>
+
+#ifndef RC_INVOKED
+
+#ifdef __MWERKS__
+#pragma options align=native
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#if _MSL_FORCE_ENUMS_ALWAYS_INT
+		#pragma enumsalwaysint on
+	#else
+		#pragma enumsalwaysint off
+	#endif
+#endif  // _MSL_FORCE_ENUMS_ALWAYS_INT
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#if _MSL_FORCE_ENABLE_BOOL_SUPPORT
+		#pragma bool on
+	#else
+		#pragma bool off
+	#endif
+#endif  // _MSL_FORCE_ENABLE_BOOL_SUPPORT
+
+#ifdef min
+#undef min
+#endif
+
+#ifdef max
+#undef max
+#endif
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	namespace std {
+#endif
+
+#ifndef _MSL_NO_LOCALE
+
+template <class charT>
+class collate
+	: public locale::facet
+{
+public:
+	typedef charT               char_type;
+	typedef basic_string<charT> string_type;
+	explicit collate(size_t refs = 0)
+	             : locale::facet(refs) {}
+	int compare(const charT* low1, const charT* high1,
+	            const charT* low2, const charT* high2) const
+	        {return do_compare(low1, high1, low2, high2);}
+	string_type transform(const charT* low, const charT* high) const
+	                {return do_transform(low, high);}
+	long hash(const charT* low, const charT* high) const
+	         {return do_hash(low, high);}
+	static locale::id id;
+protected:
+	virtual ~collate() {}
+	virtual int do_compare(const charT* low1, const charT* high1,
+	                       const charT* low2, const charT* high2) const;
+	virtual string_type do_transform(const charT* low, const charT* high) const;
+	virtual long do_hash(const charT* low, const charT* high) const;
+};
+
+template <class charT> struct __facet_traits<collate<charT> >
+	{static const bool is_standard = true;};
+
+template <class charT>
+locale::id collate<charT>::id;
+
+template <class charT>
+int
+collate<charT>::do_compare(const charT* low1, const charT* high1,
+	const charT* low2, const charT* high2) const
+{
+	for (; low1 != high1 && low2 != high2; ++low1, ++low2)
+	{
+		if (*low1 < *low2)
+			return -1;
+		if (*low2 < *low1)
+			return 1;
+	}
+	if (low1 == high1 && low2 == high2)
+		return 0;
+	if (low1 == high1)
+		return -1;
+	return 1;
+}
+
+template <class charT>
+inline
+typename collate<charT>::string_type
+collate<charT>::do_transform(const charT* low, const charT* high) const
+{
+	return string_type(low, high);
+}
+
+template <class charT>
+long
+collate<charT>::do_hash(const charT* low, const charT* high) const
+{
+	static const unsigned long m = 4294967291u;
+	unsigned long result = 0;
+	for (; low < high; ++low)
+		result = ((result << numeric_limits<charT>::digits) + *low) % m;
+	return long(result);
+}
+
+template <class charT>
+class __collation_rule
+{
+	struct value
+	{
+		charT primary;
+		charT secondary;
+		charT tertiary;
+	};
+
+public:
+	struct entry
+		: value
+	{
+		unsigned char length;
+	};
+
+	__collation_rule() : is_french_(false) {}
+	explicit __collation_rule(const basic_string<charT>& rule)
+		: is_french_(false) {set_rule(rule);}
+	void set_rule(const basic_string<charT>& rule);
+	entry operator()(const charT* low, const charT* high, int& state) const;
+	bool is_french() const {return is_french_;}
+	bool empty() const {return table_.empty();}
+private:
+	typedef Metrowerks::hash_multimap<basic_string<charT>, value> _Map;
+
+	_Map table_;
+	bool is_french_;
+
+	void do_command(charT c, value& v, int& state);
+};
+
+template <class charT>
+void
+__collation_rule<charT>::do_command(charT c, value& v, int& state)
+{
+	if (c == charT('@'))
+	{
+		is_french_ = true;
+		state = 0;
+	}
+	else
+	{
+		switch (c)
+		{
+		case charT('<'):
+			v.primary++;
+			v.secondary = numeric_limits<charT>::min();
+		case charT(';'):
+			v.secondary++;
+			v.tertiary = numeric_limits<charT>::min();
+		case charT(','):
+			v.tertiary++;
+		case charT('='):
+			state = 1;
+			break;
+		case charT('&'):
+			state = 1;
+			break;
+		default:
+		#ifndef _MSL_NO_EXCEPTIONS
+			throw runtime_error("invalid collation rule");
+		#else
+			__msl_error("invalid collation rule");
+		#endif
+		}
+	}
+}
+
+template <class charT>
+void
+__collation_rule<charT>::set_rule(const basic_string<charT>& rule)
+{
+	value v;
+	v.primary = v.secondary = v.tertiary = numeric_limits<charT>::min();
+	basic_istringstream<charT> in(rule);
+	basic_string<charT> word;
+	int state = 0;
+	// state == 0  Must read a modifier, relation or reset
+	charT last_command = 0;
+	while (in.good())
+	{
+		charT c;
+		bool was_quoted;
+		__read_formatted_char(in, c, was_quoted);
+		if (!in.fail())
+		{
+			switch (state)
+			{
+			case 0:  // must be command
+				if (was_quoted)
+				#ifndef _MSL_NO_EXCEPTIONS
+					throw runtime_error("invalid collation rule");
+				#else
+					__msl_error("invalid collation rule");
+				#endif
+				last_command = c;
+				do_command(c, v, state);
+				break;
+			case 1:  // must be text after relation
+				word += c;
+				state = 2;
+				break;
+			case 2:  // might be command or text
+				if (was_quoted)
+					word += c;
+				else
+				{
+					switch (c)
+					{
+					case charT('@'):
+					case charT('<'):
+					case charT(';'):
+					case charT(','):
+					case charT('='):
+					case charT('&'):
+						switch (last_command)
+						{
+						case charT('<'):
+						case charT(';'):
+						case charT(','):
+						case charT('='):
+							table_.insert(typename _Map::value_type(word, v));
+							word.clear();
+							break;
+						case charT('&'):
+							{
+							typename _Map::iterator i = table_.find(word);
+							if (i == table_.end())
+							#ifndef _MSL_NO_EXCEPTIONS
+								throw runtime_error("invalid collation rule");
+							#else
+								__msl_error("invalid collation rule");
+							#endif
+							v = i->second;
+							word.clear();
+							}
+							break;
+						}
+						last_command = c;
+						do_command(c, v, state);
+						break;
+					default:
+						word += c;
+						break;
+					}
+				}
+			}
+		}
+	}
+}
+
+template <class charT>
+typename __collation_rule<charT>::entry
+__collation_rule<charT>::operator()(const charT* low, const charT* high, int& state) const
+{
+	entry result;
+	basic_string<charT> word(1, *low);
+	typedef typename _Map::const_iterator ci;
+	typedef pair<ci, ci> Pair;
+	Pair i;
+	while (true)
+	{
+		Pair j = table_.equal_range(word);
+		if (j.first == j.second)
+		{
+			word.pop_back();
+			break;
+		}
+		i = j;
+		if (++low == high)
+			break;
+		word.push_back(*low);
+	}
+	if (word.empty())
+	{
+		result.primary = numeric_limits<charT>::max();
+		result.secondary = result.tertiary = numeric_limits<charT>::min();
+		result.length = 1;
+	}
+	else
+	{
+		typename iterator_traits<ci>::difference_type n = _STD::distance(i.first, i.second);
+		if (n == 1)
+			state = 0;
+		else if (state == 0)
+			state = n - 1;
+		else
+			--state;
+		_STD::advance(i.first, n-state-1);
+		result.primary = i.first->second.primary;
+		result.secondary = i.first->second.secondary;
+		result.tertiary = i.first->second.tertiary;
+		if (state == 0)
+			result.length = static_cast<unsigned char>(word.size());
+		else
+			result.length = 0;
+	}
+	return result;
+}
+
+template <class charT>
+class collate_byname
+	: public collate<charT>
+{
+	typedef collate<charT> base;
+public:
+	typedef basic_string<charT> string_type;
+	explicit collate_byname(const char* std_name, size_t refs = 0);
+protected:
+	virtual ~collate_byname() {}
+	virtual int do_compare(const charT* low1, const charT* high1,
+	                       const charT* low2, const charT* high2) const;
+	virtual string_type do_transform(const charT* low, const charT* high) const;
+
+	__collation_rule<charT> rule_;
+};
+
+inline
+const string&
+__collate_marker(char)
+{
+	static string collate_marker("collate_narrow");
+	return collate_marker;
+}
+
+#ifndef _MSL_NO_WCHART_CPP_SUPPORT
+
+	inline
+	const string&
+	__collate_marker(wchar_t)
+	{
+		static string collate_marker("collate_wide");
+		return collate_marker;
+	}
+
+#endif  // _MSL_NO_WCHART_CPP_SUPPORT
+
+template <class charT>
+collate_byname<charT>::collate_byname(const char* std_name, size_t refs)
+	: collate<charT>(refs)
+{
+	if (std_name == 0)
+		#ifndef _MSL_NO_EXCEPTIONS
+			throw runtime_error("collate_byname constructed with null name");
+		#else
+			__msl_error("collate_byname constructed with null name");
+		#endif
+	if (strlen(std_name) == 0)
+		std_name = getenv("MSL_DEFAULT_LOCALE");
+	if (std_name != 0 && strcmp(std_name, "C") != 0)
+	{
+	#ifndef _MSL_NO_FILE_IO
+		ifstream infile(std_name, ios::binary);
+		if (!infile.is_open())
+		#ifndef _MSL_NO_EXCEPTIONS
+			throw runtime_error(string("collate_byname constructed with unsupported name: ") + std_name);
+		#else
+			__msl_error("collate_byname constructed with unsupported name");
+		#endif
+		string word;
+		bool success = true;
+		while (infile.good())
+		{
+			infile.ignore(numeric_limits<streamsize>::max(), '$');
+			infile >> word;
+			if (infile.fail())
+				break;
+			if (word == __collate_marker(charT()))
+			{
+				success = false;
+				basic_string<charT> rule;
+				__read_formatted_string(infile, rule);
+				if (infile.fail())
+				#ifndef _MSL_NO_EXCEPTIONS
+					throw runtime_error(string("collate_byname file input error: ") + std_name);
+				#else
+					__msl_error("collate_byname file input error");
+				#endif
+				rule_.set_rule(rule);
+				success = true;
+				break;
+			}
+		}
+		if (!success)
+		#ifndef _MSL_NO_EXCEPTIONS
+			throw runtime_error(string("collate_byname file input error: ") + std_name);
+		#else
+			__msl_error("collate_byname file input error");
+		#endif
+	#else  // _MSL_NO_FILE_IO
+		#ifndef _MSL_NO_EXCEPTIONS
+			throw runtime_error(string("collate_byname constructed with unsupported name: ") + std_name);
+		#else
+			__msl_error("collate_byname constructed with unsupported name");
+		#endif
+	#endif  // _MSL_NO_FILE_IO
+	}
+}
+
+template <class charT>
+int
+collate_byname<charT>::do_compare(const charT* low1, const charT* high1,
+                                  const charT* low2, const charT* high2) const
+{
+	if (rule_.empty())
+		return collate<charT>::do_compare(low1, high1, low2, high2);
+	const string_type s1(base::transform(low1, high1));
+	const string_type s2(base::transform(low2, high2));
+	return collate<charT>::do_compare(s1.data(), s1.data()+s1.size(), s2.data(), s2.data()+s2.size());
+}
+
+template <class charT>
+typename collate_byname<charT>::string_type
+collate_byname<charT>::do_transform(const charT* low, const charT* high) const
+{
+	if (rule_.empty())
+		return collate<charT>::do_transform(low, high);
+	string_type primary;
+	string_type secondary;
+	string_type tertiary;
+	const charT ignore = numeric_limits<charT>::min();
+	int state = 0;
+	while (low < high)
+	{
+		typedef typename __collation_rule<charT>::entry Weights;
+		const Weights w = rule_(low, high, state);
+		if (w.primary != ignore)
+			primary += w.primary;
+		if (w.secondary != ignore)
+			secondary += w.secondary;
+		if (w.tertiary != ignore)
+			tertiary += w.tertiary;
+		low += w.length;
+	}
+	const typename string_type::size_type n = primary.size() + secondary.size() + tertiary.size() + 2;
+	if (n > primary.capacity())
+		primary.reserve(n);
+	if (rule_.is_french())
+		_STD::reverse(secondary.begin(), secondary.end());
+	primary += ignore;
+	primary += secondary;
+	primary += ignore;
+	primary += tertiary;
+	return primary;
+}
+
+#endif  // _MSL_NO_LOCALE
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	} // namespace std
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#pragma enumsalwaysint reset
+#endif
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#pragma bool reset
+#endif
+
+#ifdef __MWERKS__
+#pragma options align=reset
+#endif
+
+#endif // RC_INVOKED
+
+#endif  // _MSL_NO_LOCALE
+
+#endif  // _MSL_NO_IO
+
+#endif  // _COLLATE
+
+// hh 010228 Created
+// hh 010402 Removed 68K CMF support
+// hh 020529 Changed <limits> to <msl_int_limits>

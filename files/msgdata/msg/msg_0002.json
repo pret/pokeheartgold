@@ -1,0 +1,45 @@
+{
+  "key": 50315,
+  "messages": [
+    {
+      "id": "msg_0002_00000",
+      "en_US": "Quit"
+    },
+    {
+      "id": "msg_0002_00001",
+      "en_US": [
+        "This Pokémon hides on the\n",
+        "seafloor and watches the\n",
+        "shore with eyes on its back."
+      ]
+    },
+    {
+      "id": "msg_0002_00002",
+      "en_US": [
+        "This Pokémon knew no fear\n",
+        "and flew as it pleased\n",
+        "through the skies long ago."
+      ]
+    },
+    {
+      "id": "msg_0002_00003",
+      "en_US": [
+        "A ten-legged Pokémon that\n",
+        "swims on the bottom of the\n",
+        "sea and eats plankton."
+      ]
+    },
+    {
+      "id": "msg_0002_00004",
+      "en_US": [
+        "This Pokémon, with feathers\n",
+        "of seven colors, flies through\n",
+        "the sky, according to legend."
+      ]
+    },
+    {
+      "id": "msg_0002_00005",
+      "en_US": "Are you sure you would like to quit?"
+    }
+  ]
+}

@@ -1,0 +1,101 @@
+/* MSL
+ * Copyright © 1995-2006 Freescale Corporation.  All rights reserved.
+ *
+ * $Date: 2006/02/08 20:32:43 $
+ * $Revision: 1.38.2.2 $
+ */
+
+#ifndef _MSL_CSIGNAL
+#define _MSL_CSIGNAL
+
+#include <ansi_parms.h>
+
+#if !_MSL_USING_MW_C_HEADERS
+	#include <signal.h>
+	
+	#if _MSL_PUT_THIRD_PARTY_C_IN_STD
+		#include <msl_cpp_std_signal.h>
+	#endif
+#else
+
+#ifndef RC_INVOKED
+
+#if __dest_os == __mac_os_x
+	#include <csignal_mach.h>
+#endif
+
+_MSL_BEGIN_NAMESPACE_STD
+_MSL_BEGIN_EXTERN_C
+
+	typedef int sig_atomic_t;
+	typedef void (*__signal_func_ptr)(int);
+	
+	_MSL_IMP_EXP_C __signal_func_ptr _MSL_CDECL	signal(int, __signal_func_ptr) _MSL_CANT_THROW;
+	_MSL_IMP_EXP_C int _MSL_CDECL raise(int) _MSL_CANT_THROW;
+	
+	#ifndef SIG_DFL
+		#define SIG_DFL	((__std(__signal_func_ptr)) 0)
+	#endif
+	
+	#ifndef SIG_IGN
+		#define SIG_IGN	((__std(__signal_func_ptr)) 1)
+	#endif
+	
+	#ifndef SIG_ERR
+		#define SIG_ERR	((__std(__signal_func_ptr)) -1)
+	#endif
+
+_MSL_END_EXTERN_C
+_MSL_END_NAMESPACE_STD
+
+#ifndef SIGABRT
+#define SIGABRT		1
+#endif
+
+#ifndef SIGFPE
+#define SIGFPE		2
+#endif
+
+#ifndef SIGILL
+#define SIGILL		3
+#endif
+
+#ifndef SIGINT
+#define SIGINT		4
+#endif
+
+#ifndef SIGSEGV
+#define SIGSEGV		5
+#endif
+
+#ifndef SIGTERM
+#define SIGTERM		6
+#endif
+
+#ifndef SIGBREAK
+#define SIGBREAK	7		/*- cc 010910 -*/
+#endif
+	
+#define __msl_signal_max 7
+
+#endif /* RC_INVOKED */
+
+#endif /* _MSL_USING_MW_C_HEADERS */
+
+#endif /* _MSL_CSIGNAL */
+
+/* Change record:
+ * hh  971206 Changed filename from signal.h to csignal and added namespace support.
+ * hh  971230 Added RC_INVOKED wrapper
+ * JWW 001208 Added case for targeting Mach-O
+ * cc  000326 Removed dest_os to be_os
+ * cc  010405 Removed pragma options align native and reset
+ * cc  010409 Updated defines to JWW new namespace macros
+ * cc  010910 Added SIGBREAK
+ * JWW 011027 Use _MSL_USING_MW_C_HEADERS as generic header test instead of specific Mach-O test
+ * cc  011203 Added _MSL_CDECL for new name mangling
+ * hh  020603 Added no throw spec to functions
+ * JWW 020711 When compiling for Mach-O, define a sigset_t type to be compatible with the system
+ * JWW 021010 When compiling for Mach-O, use the BSD values for the SIGxxx macros
+ * JWW 050128 When using MSL C++ on top of a third party C (non-MSL), put C items into std namespace
+ */

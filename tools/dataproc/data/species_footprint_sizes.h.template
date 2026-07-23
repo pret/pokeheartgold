@@ -1,0 +1,12 @@
+#ifndef POKEPLATINUM_GENERATED_SPECIES_FOOTPRINT_SIZES_H
+#define POKEPLATINUM_GENERATED_SPECIES_FOOTPRINT_SIZES_H
+
+#include "constants/species.h"
+#include "generated/footprint_sizes.h"
+#include "overlay113/footprint_data.h"
+
+static const FootprintData sSpeciesFootprints[NATIONAL_DEX_COUNT + 1] = {
+/* =========== MAGIC CONTENT MARKER =========== */
+};
+
+#endif // POKEPLATINUM_GENERATED_SPECIES_FOOTPRINT_SIZES_H

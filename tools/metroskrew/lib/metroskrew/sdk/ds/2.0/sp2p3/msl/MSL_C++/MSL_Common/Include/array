@@ -1,0 +1,432 @@
+/* MSL
+ * Copyright © 1995-2006 Freescale Corporation.  All rights reserved.
+ *
+ * $Date: 2006/02/09 16:58:01 $
+ * $Revision: 1.8.2.2 $
+ */
+
+// array
+
+#ifndef _ARRAY
+#define _ARRAY
+
+/*  array synopsis
+
+namespace std
+{
+
+namespace tr1
+{
+
+template <class T, size_t N>
+class array
+{
+public:
+	// types:
+	typedef T& reference;
+	typedef const T& const_reference;
+	typedef implementation defined iterator;
+	typedef implementation defined const_iterator;
+	typedef size_t size_type;
+	typedef ptrdiff_t difference_type;
+	typedef T value_type;
+	typedef reverse_iterator<iterator> reverse_iterator;
+	typedef reverse_iterator<const_iterator> const_reverse_iterator;
+
+	void assign(const T& u);
+	void swap(array& a);
+
+	iterator       begin();
+	const_iterator begin() const;
+	iterator       end();
+	const_iterator end() const;
+
+	reverse_iterator       rbegin();
+	const_reverse_iterator rbegin() const;
+	reverse_iterator       rend();
+	const_reverse_iterator rend() const;
+
+	size_type size() const;
+	size_type max_size() const;
+	bool empty() const;
+
+	reference       operator[](size_type n);
+	const_reference operator[](size_type n) const;
+
+	reference       at(size_type n);
+	const_reference at(size_type n) const;
+
+	reference       front();
+	const_reference front() const;
+	reference       back();
+	const_reference back() const;
+
+	T*       data();
+	const T* data() const;
+private:
+	T data_[N];
+};
+
+template <class T, size_t N >
+bool
+operator== (const array<T,N>& x, const array<T,N>& y);
+
+template <class T, size_t N >
+bool
+operator< (const array<T,N>& x, const array<T,N>& y);
+
+template <class T, size_t N >
+bool
+operator!= (const array<T,N>& x, const array<T,N>& y);
+
+template <class T, size_t N >
+bool
+operator> (const array<T,N>& x, const array<T,N>& y);
+
+template <class T, size_t N >
+bool
+operator>= (const array<T,N>& x, const array<T,N>& y);
+
+template <class T, size_t N >
+bool
+operator<= (const array<T,N>& x, const array<T,N>& y);
+
+template <class T, size_t N >
+void
+swap(array<T,N>& x, array<T,N>& y);
+
+Expressions:
+
+is_tuple_like<array<T, N> >::value == true
+
+tuple_element<I, array<T, N> >::type is T for 0 <= I < N
+
+tuple_size<array<T, N> >::value == N
+
+array<T, N> a;
+array<T, N> const ac;
+get<I>(a) returns a[I] for 0 <= I < N
+get<I>(ac) returns ac[I] for 0 <= I < N
+
+}  // tr1
+
+}  // std
+
+*/
+
+#include <mslconfig>
+
+#include <cstddef>
+#include <iterator>
+#include <algorithm>
+#include <stdexcept>
+#include <utility>
+
+_MSL_START_TR1_NAMESPACE
+
+template <class T, size_t N>
+class array
+{
+public:
+	typedef array    __self;
+	// types:
+	typedef T&       reference;
+	typedef const T& const_reference;
+	typedef T*       pointer;
+	typedef const T* const_pointer;
+#ifdef _MSL_RAW_ITERATORS
+	typedef pointer       iterator;
+	typedef const_pointer const_iterator;
+#else  // _MSL_RAW_ITERATORS
+	typedef __wrap_iterator<array, pointer>       iterator;
+	typedef __wrap_iterator<array, const_pointer> const_iterator;
+#endif  // _MSL_RAW_ITERATORS
+	typedef size_t    size_type;
+	typedef ptrdiff_t difference_type;
+	typedef T value_type;
+	typedef _STD::reverse_iterator<iterator> reverse_iterator;
+	typedef _STD::reverse_iterator<const_iterator> const_reverse_iterator;
+
+	void assign(const T& u) {_STD::fill_n(__data_, N, u);}
+	void swap(array& a) {_STD::swap_ranges(__data_, __data_ + N, a.__data_);}
+
+	iterator       begin()       {return       iterator(__data_);}
+	const_iterator begin() const {return const_iterator(__data_);}
+	iterator       end()         {return       iterator(__data_ + N);}
+	const_iterator end() const   {return const_iterator(__data_ + N);}
+
+	reverse_iterator       rbegin()       {return       reverse_iterator(end());}
+	const_reverse_iterator rbegin() const {return const_reverse_iterator(end());}
+	reverse_iterator       rend()         {return       reverse_iterator(begin());}
+	const_reverse_iterator rend() const   {return const_reverse_iterator(begin());}
+
+	size_type     size() const {return N;}
+	size_type max_size() const {return N;}
+	bool         empty() const {return false;}
+
+#ifndef _MSL_DEBUG
+	reference       operator[](size_type n)       {return __data_[n];}
+	const_reference operator[](size_type n) const {return __data_[n];}
+#else  // _MSL_DEBUG
+	reference       operator[](size_type n);
+	const_reference operator[](size_type n) const;
+#endif  // _MSL_DEBUG
+
+	reference       at(size_type n);
+	const_reference at(size_type n) const;
+
+	reference       front()       {return __data_[0];}
+	const_reference front() const {return __data_[0];}
+	reference       back()        {return __data_[N-1];}
+	const_reference back() const  {return __data_[N-1];}
+
+	T*       data()       {return __data_;}
+	const T* data() const {return __data_;}
+
+//private:
+	T __data_[N];
+};
+
+#ifdef _MSL_DEBUG
+
+template <class T, size_t N>
+typename array<T, N>::reference
+array<T, N>::operator[](size_type n)
+{
+	if (n >= N)
+		_MSL_DEBUG_ERROR(_STD::out_of_range, "array::[] index out of range");
+	return __data_[n];
+}
+
+template <class T, size_t N>
+typename array<T, N>::const_reference
+array<T, N>::operator[](size_type n) const
+{
+	if (n >= N)
+		_MSL_DEBUG_ERROR(_STD::out_of_range, "array::[] index out of range");
+	return __data_[n];
+}
+
+#endif  // _MSL_DEBUG
+
+template <class T, size_t N>
+typename array<T, N>::reference
+array<T, N>::at(size_type n)
+{
+	if (n >= N)
+		_MSL_ERROR(_STD::out_of_range, "array::at index out of range");
+	return __data_[n];
+}
+
+template <class T, size_t N>
+typename array<T, N>::const_reference
+array<T, N>::at(size_type n) const
+{
+	if (n >= N)
+		_MSL_ERROR(_STD::out_of_range, "array::at index out of range");
+	return __data_[n];
+}
+
+template <class T>
+class array<T, 0>
+{
+public:
+	typedef array    __self;
+	// types:
+	typedef T&       reference;
+	typedef const T& const_reference;
+	typedef T*       pointer;
+	typedef const T* const_pointer;
+#ifdef _MSL_RAW_ITERATORS
+	typedef pointer       iterator;
+	typedef const_pointer const_iterator;
+#else  // _MSL_RAW_ITERATORS
+	typedef __wrap_iterator<array, pointer>       iterator;
+	typedef __wrap_iterator<array, const_pointer> const_iterator;
+#endif  // _MSL_RAW_ITERATORS
+	typedef size_t    size_type;
+	typedef ptrdiff_t difference_type;
+	typedef T value_type;
+	typedef _STD::reverse_iterator<iterator> reverse_iterator;
+	typedef _STD::reverse_iterator<const_iterator> const_reverse_iterator;
+
+	void assign(const T&) {}
+	void swap(array&) {}
+
+	iterator       begin()       {return       iterator((pointer)this);}
+	const_iterator begin() const {return const_iterator((const_pointer)this);}
+	iterator       end()         {return       iterator((pointer)this);}
+	const_iterator end() const   {return const_iterator((const_pointer)this);}
+
+	reverse_iterator       rbegin()       {return       reverse_iterator(end());}
+	const_reverse_iterator rbegin() const {return const_reverse_iterator(end());}
+	reverse_iterator       rend()         {return       reverse_iterator(begin());}
+	const_reverse_iterator rend() const   {return const_reverse_iterator(begin());}
+
+	size_type     size() const {return 0;}
+	size_type max_size() const {return 0;}
+	bool         empty() const {return true;}
+
+#ifndef _MSL_DEBUG
+	reference       operator[](size_type)       {return *pointer(0);}
+	const_reference operator[](size_type) const {return *const_pointer(0);}
+#else  // _MSL_DEBUG
+	reference       operator[](size_type);
+	const_reference operator[](size_type) const;
+#endif  // _MSL_DEBUG
+
+	reference       at(size_type n);
+	const_reference at(size_type n) const;
+
+	reference       front()       {return (*this)[0];}
+	const_reference front() const {return (*this)[0];}
+	reference       back()        {return (*this)[0];}
+	const_reference back() const  {return (*this)[0];}
+
+	T*       data()       {return 0;}
+	const T* data() const {return 0;}
+};
+
+#ifdef _MSL_DEBUG
+
+template <class T>
+typename array<T, 0>::reference
+array<T, 0>::operator[](size_type)
+{
+	_MSL_DEBUG_ERROR(_STD::out_of_range, "array::[] index out of range");
+	return *pointer(0);
+}
+
+template <class T>
+typename array<T, 0>::const_reference
+array<T, 0>::operator[](size_type) const
+{
+	_MSL_DEBUG_ERROR(_STD::out_of_range, "array::[] index out of range");
+	return *const_pointer(0);
+}
+
+#endif  // _MSL_DEBUG
+
+template <class T>
+typename array<T, 0>::reference
+array<T, 0>::at(size_type)
+{
+	_MSL_ERROR(_STD::out_of_range, "array::at index out of range");
+	return *pointer(0);
+}
+
+template <class T>
+typename array<T, 0>::const_reference
+array<T, 0>::at(size_type) const
+{
+	_MSL_ERROR(_STD::out_of_range, "array::at index out of range");
+	return *const_pointer(0);
+}
+
+template <class T, size_t N >
+inline
+bool
+operator== (const array<T, N>& x, const array<T, N>& y)
+{
+	return _STD::equal(x.begin(), x.end(), y.begin());
+}
+
+template <class T, size_t N >
+inline
+bool
+operator< (const array<T, N>& x, const array<T, N>& y)
+{
+	return _STD::lexicographical_compare(x.begin(), x.end(), y.begin(), y.end());
+}
+
+template <class T, size_t N >
+inline
+bool
+operator!= (const array<T, N>& x, const array<T, N>& y)
+{
+	return !(x == y);
+}
+
+template <class T, size_t N >
+inline
+bool
+operator> (const array<T, N>& x, const array<T, N>& y)
+{
+	return y < x;
+}
+
+template <class T, size_t N >
+inline
+bool
+operator>= (const array<T, N>& x, const array<T, N>& y)
+{
+	return !(x < y);
+}
+
+template <class T, size_t N >
+inline
+bool
+operator<= (const array<T, N>& x, const array<T, N>& y)
+{
+	return !(y < x);
+}
+
+template <class T, size_t N >
+inline
+void
+swap(array<T, N>& x, array<T, N>& y)
+{
+	x.swap(y);
+}
+
+template <class T, size_t N>
+struct is_tuple_like<array<T, N> >
+{
+	static const bool value = true;
+};
+
+template <class T, size_t N>
+struct tuple_size<array<T, N> >
+{
+	static const int value = (int)N;
+};
+
+template <class T, size_t N>
+struct tuple_element<0, array<T, N> >
+{
+private:
+	static const size_t range_error = sizeof(Metrowerks::compile_assert<0 < N>);
+public:
+	typedef T type;
+};
+
+template <unsigned I, class T, size_t N>
+struct tuple_element<I, array<T, N> >
+{
+private:
+	static const size_t range_error = sizeof(Metrowerks::compile_assert<I < N>);
+public:
+	typedef T type;
+};
+
+template <unsigned int I, class T, size_t N>
+inline
+typename tuple_element<I, array<T, N> >::type&
+get(array<T, N>& p)
+{
+	return p.__data_[I];
+}
+
+template <unsigned int I, class T, size_t N>
+inline
+const typename tuple_element<I, array<T, N> >::type&
+get(const array<T, N>& p)
+{
+	return p.__data_[I];
+}
+
+_MSL_END_TR1_NAMESPACE
+
+#endif  // _ARRAY
+
+// hh 040412 Created

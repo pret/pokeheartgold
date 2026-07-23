@@ -1,0 +1,1047 @@
+{
+  "key": 54625,
+  "messages": [
+    {
+      "id": "msg_0775_00000",
+      "garbage": 10
+    },
+    {
+      "id": "msg_0775_00001",
+      "garbage": 29
+    },
+    {
+      "id": "msg_0775_00002",
+      "en_US": "{STRVAR_1 1, 0, 0} was not traded.\r"
+    },
+    {
+      "id": "msg_0775_00003",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} appears to have\n",
+        "fled...\r"
+      ]
+    },
+    {
+      "id": "msg_0775_00004",
+      "en_US": "Are you seeking or offering a Pokémon?"
+    },
+    {
+      "id": "msg_0775_00005",
+      "en_US": "Do what with this {STRVAR_1 1, 0, 0}?"
+    },
+    {
+      "id": "msg_0775_00006",
+      "en_US": "Will you take this {STRVAR_1 1, 0, 0}?"
+    },
+    {
+      "id": "msg_0775_00007",
+      "en_US": [
+        "Is it OK to disconnect from\n",
+        "Nintendo Wi-Fi Connection?"
+      ]
+    },
+    {
+      "id": "msg_0775_00008",
+      "en_US": "What kind of Pokémon are you seeking?"
+    },
+    {
+      "id": "msg_0775_00009",
+      "en_US": "Please choose the Pokémon you want."
+    },
+    {
+      "id": "msg_0775_00010",
+      "en_US": "Please choose its gender."
+    },
+    {
+      "id": "msg_0775_00011",
+      "en_US": "Please choose the level."
+    },
+    {
+      "id": "msg_0775_00012",
+      "en_US": "Please choose the Pokémon you want!"
+    },
+    {
+      "id": "msg_0775_00013",
+      "en_US": "Searching for the Pokémon you want..."
+    },
+    {
+      "id": "msg_0775_00014",
+      "en_US": "None were found!"
+    },
+    {
+      "id": "msg_0775_00015",
+      "en_US": "Stop searching?"
+    },
+    {
+      "id": "msg_0775_00016",
+      "en_US": "Trade Pokémon with this Trainer?"
+    },
+    {
+      "id": "msg_0775_00017",
+      "en_US": "Choose the Pokémon you are trading."
+    },
+    {
+      "id": "msg_0775_00018",
+      "en_US": "Do what with this {STRVAR_1 1, 0, 0}?"
+    },
+    {
+      "id": "msg_0775_00019",
+      "garbage": 17
+    },
+    {
+      "id": "msg_0775_00020",
+      "garbage": 17
+    },
+    {
+      "id": "msg_0775_00021",
+      "en_US": "Choose the Pokémon you want to offer."
+    },
+    {
+      "id": "msg_0775_00022",
+      "en_US": "Offer {STRVAR_1 1, 0, 0}?"
+    },
+    {
+      "id": "msg_0775_00023",
+      "en_US": "Are these conditions OK?"
+    },
+    {
+      "id": "msg_0775_00024",
+      "en_US": "Checking GTS’s status..."
+    },
+    {
+      "id": "msg_0775_00025",
+      "en_US": [
+        "The Ball Capsule will be detached.\n",
+        "Is that OK?"
+      ]
+    },
+    {
+      "id": "msg_0775_00026",
+      "en_US": [
+        "That Pokémon may not be offered\n",
+        "for trade!\r"
+      ]
+    },
+    {
+      "id": "msg_0775_00027",
+      "en_US": [
+        "An Egg may not be offered\n",
+        "for trade!\r"
+      ]
+    },
+    {
+      "id": "msg_0775_00028",
+      "en_US": [
+        "Your party is full.\n",
+        "You can’t receive a Pokémon!\r"
+      ]
+    },
+    {
+      "id": "msg_0775_00029",
+      "en_US": [
+        "Your Storage Boxes are full.\n",
+        "You can’t receive a Pokémon!\r"
+      ]
+    },
+    {
+      "id": "msg_0775_00030",
+      "en_US": "A trade partner has been found!"
+    },
+    {
+      "id": "msg_0775_00031",
+      "en_US": "Nintendo Wi-Fi Connection"
+    },
+    {
+      "id": "msg_0775_00032",
+      "en_US": "Touch “SELECT” to set trade partner."
+    },
+    {
+      "id": "msg_0775_00033",
+      "en_US": "Please change your conditions."
+    },
+    {
+      "id": "msg_0775_00034",
+      "en_US": "Please wait a while."
+    },
+    {
+      "id": "msg_0775_00035",
+      "en_US": [
+        "Your party is full.\r",
+        "You can’t receive a Pokémon that\n",
+        "is holding Mail.\r"
+      ]
+    },
+    {
+      "id": "msg_0775_00036",
+      "en_US": "There is no room in your party."
+    },
+    {
+      "id": "msg_0775_00037",
+      "en_US": [
+        "It has a special Ribbon.\n",
+        "It can’t be offered for a trade.\r"
+      ]
+    },
+    {
+      "id": "msg_0775_00038",
+      "en_US": "GTS check failed."
+    },
+    {
+      "id": "msg_0775_00039",
+      "en_US": "{ALN_CENTER}GLOBAL TRADE SYSTEM"
+    },
+    {
+      "id": "msg_0775_00040",
+      "en_US": "{ALN_CENTER}SUMMARY"
+    },
+    {
+      "id": "msg_0775_00041",
+      "en_US": "{ALN_CENTER}DEPOSIT POKéMON"
+    },
+    {
+      "id": "msg_0775_00042",
+      "en_US": "{ALN_CENTER}SEEK POKéMON"
+    },
+    {
+      "id": "msg_0775_00043",
+      "en_US": "{ALN_CENTER}EXIT"
+    },
+    {
+      "id": "msg_0775_00044",
+      "garbage": 5
+    },
+    {
+      "id": "msg_0775_00045",
+      "garbage": 5
+    },
+    {
+      "id": "msg_0775_00046",
+      "garbage": 8
+    },
+    {
+      "id": "msg_0775_00047",
+      "garbage": 4
+    },
+    {
+      "id": "msg_0775_00048",
+      "garbage": 5
+    },
+    {
+      "id": "msg_0775_00049",
+      "en_US": "OFFERER"
+    },
+    {
+      "id": "msg_0775_00050",
+      "garbage": 5
+    },
+    {
+      "id": "msg_0775_00051",
+      "garbage": 7
+    },
+    {
+      "id": "msg_0775_00052",
+      "garbage": 5
+    },
+    {
+      "id": "msg_0775_00053",
+      "garbage": 12
+    },
+    {
+      "id": "msg_0775_00054",
+      "garbage": 8
+    },
+    {
+      "id": "msg_0775_00055",
+      "en_US": "TAKE BACK"
+    },
+    {
+      "id": "msg_0775_00056",
+      "en_US": "LEAVE AS IS"
+    },
+    {
+      "id": "msg_0775_00057",
+      "garbage": 2
+    },
+    {
+      "id": "msg_0775_00058",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0775_00059",
+      "en_US": "NAME"
+    },
+    {
+      "id": "msg_0775_00060",
+      "garbage": 9
+    },
+    {
+      "id": "msg_0775_00061",
+      "en_US": "POKéMON"
+    },
+    {
+      "id": "msg_0775_00062",
+      "garbage": 5
+    },
+    {
+      "id": "msg_0775_00063",
+      "en_US": "GENDER"
+    },
+    {
+      "id": "msg_0775_00064",
+      "garbage": 5
+    },
+    {
+      "id": "msg_0775_00065",
+      "en_US": "LEVEL"
+    },
+    {
+      "id": "msg_0775_00066",
+      "garbage": 5
+    },
+    {
+      "id": "msg_0775_00067",
+      "en_US": "SEARCH"
+    },
+    {
+      "id": "msg_0775_00068",
+      "en_US": "{ALN_CENTER}BACK"
+    },
+    {
+      "id": "msg_0775_00069",
+      "en_US": "SELECT"
+    },
+    {
+      "id": "msg_0775_00070",
+      "garbage": 5
+    },
+    {
+      "id": "msg_0775_00071",
+      "garbage": 5
+    },
+    {
+      "id": "msg_0775_00072",
+      "garbage": 8
+    },
+    {
+      "id": "msg_0775_00073",
+      "en_US": "ITEM"
+    },
+    {
+      "id": "msg_0775_00074",
+      "garbage": 5
+    },
+    {
+      "id": "msg_0775_00075",
+      "garbage": 6
+    },
+    {
+      "id": "msg_0775_00076",
+      "garbage": 5
+    },
+    {
+      "id": "msg_0775_00077",
+      "en_US": "WANTED"
+    },
+    {
+      "id": "msg_0775_00078",
+      "garbage": 5
+    },
+    {
+      "id": "msg_0775_00079",
+      "garbage": 5
+    },
+    {
+      "id": "msg_0775_00080",
+      "garbage": 5
+    },
+    {
+      "id": "msg_0775_00081",
+      "en_US": "OT’S LOCATION"
+    },
+    {
+      "id": "msg_0775_00082",
+      "en_US": "{STRVAR_1 36, 8, 0}"
+    },
+    {
+      "id": "msg_0775_00083",
+      "en_US": "{STRVAR_1 37, 9, 0}"
+    },
+    {
+      "id": "msg_0775_00084",
+      "garbage": 8
+    },
+    {
+      "id": "msg_0775_00085",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0775_00086",
+      "garbage": 5
+    },
+    {
+      "id": "msg_0775_00087",
+      "en_US": "SUMMARY"
+    },
+    {
+      "id": "msg_0775_00088",
+      "en_US": "TRADE"
+    },
+    {
+      "id": "msg_0775_00089",
+      "en_US": "CANCEL"
+    },
+    {
+      "id": "msg_0775_00090",
+      "garbage": 2
+    },
+    {
+      "id": "msg_0775_00091",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0775_00092",
+      "en_US": "IN PARTY"
+    },
+    {
+      "id": "msg_0775_00093",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0775_00094",
+      "garbage": 10
+    },
+    {
+      "id": "msg_0775_00095",
+      "garbage": 5
+    },
+    {
+      "id": "msg_0775_00096",
+      "garbage": 8
+    },
+    {
+      "id": "msg_0775_00097",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0775_00098",
+      "en_US": "SUMMARY"
+    },
+    {
+      "id": "msg_0775_00099",
+      "en_US": "OFFER"
+    },
+    {
+      "id": "msg_0775_00100",
+      "en_US": "CANCEL"
+    },
+    {
+      "id": "msg_0775_00101",
+      "en_US": "WANTED"
+    },
+    {
+      "id": "msg_0775_00102",
+      "garbage": 5
+    },
+    {
+      "id": "msg_0775_00103",
+      "garbage": 5
+    },
+    {
+      "id": "msg_0775_00104",
+      "en_US": "OFFER POKéMON"
+    },
+    {
+      "id": "msg_0775_00105",
+      "garbage": 5
+    },
+    {
+      "id": "msg_0775_00106",
+      "en_US": "Lv."
+    },
+    {
+      "id": "msg_0775_00107",
+      "en_US": "{STRVAR_1 52, 3, 0}"
+    },
+    {
+      "id": "msg_0775_00108",
+      "en_US": "Lv. {STRVAR_1 52, 3, 0}"
+    },
+    {
+      "id": "msg_0775_00109",
+      "en_US": "CANCEL"
+    },
+    {
+      "id": "msg_0775_00110",
+      "en_US": "ABC"
+    },
+    {
+      "id": "msg_0775_00111",
+      "en_US": "DEF"
+    },
+    {
+      "id": "msg_0775_00112",
+      "en_US": "GHI"
+    },
+    {
+      "id": "msg_0775_00113",
+      "en_US": "JKL"
+    },
+    {
+      "id": "msg_0775_00114",
+      "en_US": "MNO"
+    },
+    {
+      "id": "msg_0775_00115",
+      "en_US": "PQR"
+    },
+    {
+      "id": "msg_0775_00116",
+      "en_US": "STU"
+    },
+    {
+      "id": "msg_0775_00117",
+      "en_US": "VWX"
+    },
+    {
+      "id": "msg_0775_00118",
+      "en_US": "YZ"
+    },
+    {
+      "id": "msg_0775_00119",
+      "garbage": 0
+    },
+    {
+      "id": "msg_0775_00120",
+      "garbage": 0
+    },
+    {
+      "id": "msg_0775_00121",
+      "garbage": 0
+    },
+    {
+      "id": "msg_0775_00122",
+      "garbage": 0
+    },
+    {
+      "id": "msg_0775_00123",
+      "garbage": 0
+    },
+    {
+      "id": "msg_0775_00124",
+      "en_US": "EITHER"
+    },
+    {
+      "id": "msg_0775_00125",
+      "en_US": "♂"
+    },
+    {
+      "id": "msg_0775_00126",
+      "en_US": "♀"
+    },
+    {
+      "id": "msg_0775_00127",
+      "garbage": 6
+    },
+    {
+      "id": "msg_0775_00128",
+      "en_US": "ANY"
+    },
+    {
+      "id": "msg_0775_00129",
+      "en_US": "Lv. 9 and under"
+    },
+    {
+      "id": "msg_0775_00130",
+      "en_US": "Lv. 10 and up"
+    },
+    {
+      "id": "msg_0775_00131",
+      "en_US": "Lv. 20 and up"
+    },
+    {
+      "id": "msg_0775_00132",
+      "en_US": "Lv. 30 and up"
+    },
+    {
+      "id": "msg_0775_00133",
+      "en_US": "Lv. 40 and up"
+    },
+    {
+      "id": "msg_0775_00134",
+      "en_US": "Lv. 50 and up"
+    },
+    {
+      "id": "msg_0775_00135",
+      "en_US": "Lv. 60 and up"
+    },
+    {
+      "id": "msg_0775_00136",
+      "en_US": "Lv. 70 and up"
+    },
+    {
+      "id": "msg_0775_00137",
+      "en_US": "Lv. 80 and up"
+    },
+    {
+      "id": "msg_0775_00138",
+      "en_US": "Lv. 90 and up"
+    },
+    {
+      "id": "msg_0775_00139",
+      "en_US": "Lv. 100"
+    },
+    {
+      "id": "msg_0775_00140",
+      "garbage": 6
+    },
+    {
+      "id": "msg_0775_00141",
+      "garbage": 21
+    },
+    {
+      "id": "msg_0775_00142",
+      "garbage": 22
+    },
+    {
+      "id": "msg_0775_00143",
+      "garbage": 21
+    },
+    {
+      "id": "msg_0775_00144",
+      "garbage": 21
+    },
+    {
+      "id": "msg_0775_00145",
+      "garbage": 22
+    },
+    {
+      "id": "msg_0775_00146",
+      "garbage": 23
+    },
+    {
+      "id": "msg_0775_00147",
+      "en_US": [
+        "Unfortunately, it was traded to\n",
+        "another Trainer.\r"
+      ]
+    },
+    {
+      "id": "msg_0775_00148",
+      "en_US": [
+        "Saving...\n",
+        "Do not turn off the power."
+      ]
+    },
+    {
+      "id": "msg_0775_00149",
+      "garbage": 26
+    },
+    {
+      "id": "msg_0775_00150",
+      "en_US": [
+        "The GTS is currently\n",
+        "undergoing maintenance.\r",
+        "Please try again later.\r"
+      ]
+    },
+    {
+      "id": "msg_0775_00151",
+      "en_US": [
+        "The GTS is very crowded now.\n",
+        "Please try again later.\r"
+      ]
+    },
+    {
+      "id": "msg_0775_00152",
+      "en_US": "The search failed..."
+    },
+    {
+      "id": "msg_0775_00153",
+      "en_US": "Communication error..."
+    },
+    {
+      "id": "msg_0775_00154",
+      "en_US": "Communication error...\r"
+    },
+    {
+      "id": "msg_0775_00155",
+      "en_US": [
+        "Unable to connect to the GTS.\n",
+        "Returning to the reception counter.\r"
+      ]
+    },
+    {
+      "id": "msg_0775_00156",
+      "en_US": [
+        "You were disconnected from the GTS.\n",
+        "Returning to the reception counter.\r"
+      ]
+    },
+    {
+      "id": "msg_0775_00157",
+      "garbage": 22
+    },
+    {
+      "id": "msg_0775_00158",
+      "en_US": "Returning to the reception counter."
+    },
+    {
+      "id": "msg_0775_00159",
+      "en_US": "ANY"
+    },
+    {
+      "id": "msg_0775_00160",
+      "en_US": "Lv. 1 to 10"
+    },
+    {
+      "id": "msg_0775_00161",
+      "en_US": "Lv. 11 to 20"
+    },
+    {
+      "id": "msg_0775_00162",
+      "en_US": "Lv. 21 to 30"
+    },
+    {
+      "id": "msg_0775_00163",
+      "en_US": "Lv. 31 to 40"
+    },
+    {
+      "id": "msg_0775_00164",
+      "en_US": "Lv. 41 to 50"
+    },
+    {
+      "id": "msg_0775_00165",
+      "en_US": "Lv. 51 to 60"
+    },
+    {
+      "id": "msg_0775_00166",
+      "en_US": "Lv. 61 to 70"
+    },
+    {
+      "id": "msg_0775_00167",
+      "en_US": "Lv. 71 to 80"
+    },
+    {
+      "id": "msg_0775_00168",
+      "en_US": "Lv. 81 to 90"
+    },
+    {
+      "id": "msg_0775_00169",
+      "en_US": "Lv. 91 to 100"
+    },
+    {
+      "id": "msg_0775_00170",
+      "garbage": 6
+    },
+    {
+      "id": "msg_0775_00171",
+      "en_US": "LOCATION"
+    },
+    {
+      "id": "msg_0775_00172",
+      "garbage": 5
+    },
+    {
+      "id": "msg_0775_00173",
+      "en_US": "ANY"
+    },
+    {
+      "id": "msg_0775_00174",
+      "en_US": " ANY"
+    },
+    {
+      "id": "msg_0775_00175",
+      "garbage": 6
+    },
+    {
+      "id": "msg_0775_00176",
+      "en_US": "Please choose a Pokémon location."
+    },
+    {
+      "id": "msg_0775_00177",
+      "en_US": [
+        "This Pokémon cannot be traded in this\n",
+        "Forme!\r"
+      ]
+    },
+    {
+      "id": "msg_0775_00178",
+      "en_US": [
+        "Spiky-eared PICHU cannot be offered\n",
+        "in trade. \r"
+      ]
+    },
+    {
+      "id": "msg_0775_00179",
+      "en_US": [
+        "This Pokémon cannot be traded while\n",
+        "holding that item!\r"
+      ]
+    },
+    {
+      "id": "msg_0775_00180",
+      "en_US": "O.T."
+    },
+    {
+      "id": "msg_0775_00181",
+      "en_US": [
+        "There was an error while attempting to\n",
+        "send an authentication Wii message.\r"
+      ]
+    },
+    {
+      "id": "msg_0775_00182",
+      "en_US": "There was a communication error.\r"
+    },
+    {
+      "id": "msg_0775_00183",
+      "en_US": [
+        "The data was corrupted.\n",
+        "It could not be sent.\r"
+      ]
+    },
+    {
+      "id": "msg_0775_00184",
+      "en_US": [
+        "The server is undergoing maintenance.\n",
+        "Please connect again later.\r"
+      ]
+    },
+    {
+      "id": "msg_0775_00185",
+      "en_US": [
+        "There was a Wii message\n",
+        "authentication error.\r"
+      ]
+    },
+    {
+      "id": "msg_0775_00186",
+      "en_US": [
+        "Disconnecting from Nintendo Wi-Fi\n",
+        "Connection..."
+      ]
+    },
+    {
+      "id": "msg_0775_00187",
+      "en_US": [
+        "You have disconnected from Nintendo\n",
+        "Wi-Fi Connection."
+      ]
+    },
+    {
+      "id": "msg_0775_00188",
+      "en_US": "A"
+    },
+    {
+      "id": "msg_0775_00189",
+      "en_US": "B"
+    },
+    {
+      "id": "msg_0775_00190",
+      "en_US": "C"
+    },
+    {
+      "id": "msg_0775_00191",
+      "en_US": "D"
+    },
+    {
+      "id": "msg_0775_00192",
+      "en_US": "E"
+    },
+    {
+      "id": "msg_0775_00193",
+      "en_US": "F"
+    },
+    {
+      "id": "msg_0775_00194",
+      "en_US": "G"
+    },
+    {
+      "id": "msg_0775_00195",
+      "en_US": "H"
+    },
+    {
+      "id": "msg_0775_00196",
+      "en_US": "I"
+    },
+    {
+      "id": "msg_0775_00197",
+      "en_US": "J"
+    },
+    {
+      "id": "msg_0775_00198",
+      "en_US": "K"
+    },
+    {
+      "id": "msg_0775_00199",
+      "en_US": "L"
+    },
+    {
+      "id": "msg_0775_00200",
+      "en_US": "M"
+    },
+    {
+      "id": "msg_0775_00201",
+      "en_US": "N"
+    },
+    {
+      "id": "msg_0775_00202",
+      "en_US": "O"
+    },
+    {
+      "id": "msg_0775_00203",
+      "en_US": "P"
+    },
+    {
+      "id": "msg_0775_00204",
+      "en_US": "Q"
+    },
+    {
+      "id": "msg_0775_00205",
+      "en_US": "R"
+    },
+    {
+      "id": "msg_0775_00206",
+      "en_US": "S"
+    },
+    {
+      "id": "msg_0775_00207",
+      "en_US": "T"
+    },
+    {
+      "id": "msg_0775_00208",
+      "en_US": "U"
+    },
+    {
+      "id": "msg_0775_00209",
+      "en_US": "V"
+    },
+    {
+      "id": "msg_0775_00210",
+      "en_US": "W"
+    },
+    {
+      "id": "msg_0775_00211",
+      "en_US": "X"
+    },
+    {
+      "id": "msg_0775_00212",
+      "en_US": "Y"
+    },
+    {
+      "id": "msg_0775_00213",
+      "en_US": "Z"
+    },
+    {
+      "id": "msg_0775_00214",
+      "garbage": 0
+    },
+    {
+      "id": "msg_0775_00215",
+      "garbage": 0
+    },
+    {
+      "id": "msg_0775_00216",
+      "garbage": 0
+    },
+    {
+      "id": "msg_0775_00217",
+      "garbage": 0
+    },
+    {
+      "id": "msg_0775_00218",
+      "garbage": 0
+    },
+    {
+      "id": "msg_0775_00219",
+      "garbage": 0
+    },
+    {
+      "id": "msg_0775_00220",
+      "garbage": 0
+    },
+    {
+      "id": "msg_0775_00221",
+      "garbage": 0
+    },
+    {
+      "id": "msg_0775_00222",
+      "garbage": 0
+    },
+    {
+      "id": "msg_0775_00223",
+      "garbage": 0
+    },
+    {
+      "id": "msg_0775_00224",
+      "garbage": 0
+    },
+    {
+      "id": "msg_0775_00225",
+      "garbage": 0
+    },
+    {
+      "id": "msg_0775_00226",
+      "garbage": 0
+    },
+    {
+      "id": "msg_0775_00227",
+      "garbage": 0
+    },
+    {
+      "id": "msg_0775_00228",
+      "garbage": 0
+    },
+    {
+      "id": "msg_0775_00229",
+      "garbage": 0
+    },
+    {
+      "id": "msg_0775_00230",
+      "garbage": 0
+    },
+    {
+      "id": "msg_0775_00231",
+      "garbage": 0
+    },
+    {
+      "id": "msg_0775_00232",
+      "en_US": "　"
+    },
+    {
+      "id": "msg_0775_00233",
+      "en_US": "GTS"
+    },
+    {
+      "id": "msg_0775_00234",
+      "en_US": [
+        "GTS\n",
+        "TRADE POKéMON"
+      ]
+    },
+    {
+      "id": "msg_0775_00235",
+      "en_US": [
+        "GTS\n",
+        "SUMMARY"
+      ]
+    },
+    {
+      "id": "msg_0775_00236",
+      "en_US": [
+        "GTS\n",
+        "DEPOSIT POKéMON"
+      ]
+    },
+    {
+      "id": "msg_0775_00237",
+      "en_US": [
+        "GTS\n",
+        "SEEK POKéMON"
+      ]
+    },
+    {
+      "id": "msg_0775_00238",
+      "en_US": "CANCEL"
+    }
+  ]
+}

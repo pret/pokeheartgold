@@ -1,0 +1,1633 @@
+/* MSL
+ * Copyright © 1995-2006 Freescale Corporation.  All rights reserved.
+ *
+ * $Date: 2006/02/09 16:58:05 $
+ * $Revision: 1.24.2.2 $
+ */
+
+// bitvector
+
+#ifndef _BITVECTOR
+#define _BITVECTOR
+
+/*  bitvector synopsis
+
+namespace Metrowerks
+{
+
+template <class Allocator>
+class bitvector<Allocator = std::allocator<bool> >
+{
+  public:
+    //  types:
+    typedef bool                                  const_reference;
+	typedef typename Allocator::size_type         size_type;
+	typedef typename Allocator::difference_type   difference_type;
+    typedef bool                                  value_type;
+    typedef Allocator                             allocator_type;
+    typedef typename Allocator<unsigned int>::pointer       pointer;
+    typedef typename Allocator<unsigned int>::const_pointer const_pointer
+
+	class                                         iterator;        // random access
+	class                                         const_iterator;  // random access
+    typedef std::reverse_iterator<iterator>       reverse_iterator;
+    typedef std::reverse_iterator<const_iterator> const_reverse_iterator;
+
+	class reference
+	{
+	public:
+		typedef bitvector container_type;
+		~reference();
+		operator bool() const;
+		reference& operator=(const bool x);
+		reference& operator=(const reference& x);
+		void flip();              //  flips the bit
+	};
+
+	//  construct/copy/destroy:
+	explicit bitvector(const Allocator& a = Allocator());
+	explicit bitvector(size_type n, bool value = false, const Allocator& a = Allocator());
+	template <class InputIterator>
+		bitvector(InputIterator first, InputIterator last, const Allocator& a = Allocator());
+	bitvector(const bitvector& x);
+	bitvector& operator=(const bitvector& x);
+	~bitvector();
+
+	allocator_type get_allocator() const;
+	size_type max_size() const;
+
+	size_type size() const;
+	bool      empty() const;
+	size_type capacity() const;
+	void      reserve(size_type n);
+
+	void assign(size_type n, bool x);
+	template <class InputIterator>
+		void assign(InputIterator first, InputIterator last);
+
+	iterator               begin();
+	const_iterator         begin() const;
+	iterator               end();
+	const_iterator         end() const;
+
+	reverse_iterator       rbegin();
+	const_reverse_iterator rbegin() const;
+	reverse_iterator       rend();
+	const_reverse_iterator rend() const;
+
+	reference       operator[](size_type n);
+	const_reference operator[](size_type n) const;
+
+	const_reference at(size_type n) const;
+	reference       at(size_type n);
+
+	void resize(size_type sz, bool c = false);
+
+	reference       front();
+	const_reference front() const;
+	reference       back();
+	const_reference back() const;
+
+	void push_back(bool x);
+	void pop_back();
+
+	iterator insert(iterator position, bool x);
+	void     insert (iterator position, size_type n, bool x);
+	template <class InputIterator>
+		void insert(iterator position, InputIterator first, InputIterator last);
+
+	iterator erase(iterator position);
+	iterator erase(iterator first, iterator last);
+    void clear();
+
+	void swap(bitvector&);
+
+	void flip();
+
+	bool invariants() const;
+};
+
+template <class A> bool operator==(const bitvector<A>& x, const bitvector<A>& y);
+template <class A> bool operator< (const bitvector<A>& x, const bitvector<A>& y);
+template <class A> bool operator!=(const bitvector<A>& x, const bitvector<A>& y);
+template <class A> bool operator> (const bitvector<A>& x, const bitvector<A>& y);
+template <class A> bool operator>=(const bitvector<A>& x, const bitvector<A>& y);
+template <class A> bool operator<=(const bitvector<A>& x, const bitvector<A>& y);
+
+template <class A> void swap(bitvector<A>& x, bitvector<A>& y);
+
+}  // Metrowerks
+*/
+
+#include <mslconfig>
+
+#include <algorithm>
+#include <iterator>
+#include <msl_int_limits>
+#include <memory>
+#include <new>
+#include <stdexcept>
+#include <msl_utility>
+
+#ifndef RC_INVOKED
+
+#ifdef __MWERKS__
+#pragma options align=native
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#if _MSL_FORCE_ENUMS_ALWAYS_INT
+		#pragma enumsalwaysint on
+	#else
+		#pragma enumsalwaysint off
+	#endif
+#endif  // _MSL_FORCE_ENUMS_ALWAYS_INT
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#if _MSL_FORCE_ENABLE_BOOL_SUPPORT
+		#pragma bool on
+	#else
+		#pragma bool off
+	#endif
+#endif  // _MSL_FORCE_ENABLE_BOOL_SUPPORT
+
+#ifdef min
+#undef min
+#endif
+
+#ifdef max
+#undef max
+#endif
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	namespace std {
+#endif
+
+template <class Container, bool is_const> class __bit_iterator;
+template <class Container> class __bit_const_reference;
+
+template <class Container>
+class __bit_reference
+{
+public:
+	operator bool() const {return static_cast<bool>(*word_ & mask_);}
+	__bit_reference& operator=(bool x)
+	{
+		if (x)
+			*word_ |= mask_;
+		else
+			*word_ &= ~mask_;
+		return *this;
+	}
+	__bit_reference& operator=(const __bit_reference& x) {return *this = bool(x);}
+	__bit_iterator<Container, false> operator&() const
+		{return __bit_iterator<Container, false>(word_, mask_);}
+	void flip() {*word_ ^= mask_;}
+private:
+	typedef Container container_type;
+	typedef typename container_type::base_pointer base_pointer;
+	typedef typename container_type::base_type    base_type;
+
+	base_pointer word_;
+	base_type mask_;
+
+	__bit_reference(base_pointer w, base_type m) : word_(w), mask_(m) {}
+
+	friend class container_type::__self;
+	friend class __bit_const_reference<Container>;
+	friend class __bit_iterator<Container, false>;
+};
+
+template <class Container>
+class __bit_const_reference
+{
+public:
+	__bit_const_reference(const __bit_reference<Container>& x) : word_(x.word_), mask_(x.mask_) {}
+	operator bool() const {return static_cast<bool>(*word_ & mask_);}
+	__bit_iterator<Container, true> operator&() const
+		{return __bit_iterator<Container, true>(word_, mask_);}
+private:
+	typedef Container container_type;
+	typedef typename container_type::base_pointer base_pointer;
+	typedef typename container_type::base_type    base_type;
+
+	base_pointer word_;
+	base_type mask_;
+
+	__bit_const_reference(base_pointer w, base_type m) : word_(w), mask_(m) {}
+
+	__bit_const_reference& operator=(const __bit_const_reference& x);  // not implemented
+
+	friend class container_type::__self;
+	friend class __bit_iterator<Container, true>;
+};
+
+template <class Container, bool is_const>
+class __bit_iterator
+{
+	static const unsigned int n_bits = Container::n_bits;
+public:
+	typedef typename Container::value_type  value_type;
+	typedef typename Container::difference_type  difference_type;
+	typedef typename Metrowerks::select<is_const, typename Container::const_pointer,
+	                                              typename Container::pointer>::type pointer;
+	typedef typename Metrowerks::select<is_const, typename Container::const_reference,
+	                                              typename Container::reference>::type reference;
+	typedef _STD::random_access_iterator_tag iterator_category;
+
+	__bit_iterator() {}
+	__bit_iterator(const __bit_iterator<Container, false>& i) : word_(i.word_), mask_(i.mask_) {}
+	reference operator * () const {return reference(word_, mask_);}
+	__bit_iterator& operator ++ ()
+		{
+			if ((mask_ = Metrowerks::rotate_left(mask_)) == 1)
+				++word_;
+			return *this;
+		}
+	__bit_iterator operator ++ (int) {__bit_iterator tmp(*this); ++(*this); return tmp;}
+	__bit_iterator& operator -- ()
+		{
+			if ((mask_ = Metrowerks::rotate_right(mask_)) == __two_complement<base_type, true>::min)
+				--word_;
+			return *this;
+		}
+	__bit_iterator operator -- (int) {__bit_iterator tmp(*this); --(*this); return tmp;}
+	__bit_iterator& operator += (difference_type n)
+		{
+			if (n >= 0)
+				word_ += (n + Metrowerks::count_trailing_zero(mask_)) / n_bits;
+			else
+				word_ -= (-n + Metrowerks::count_leading_zero(mask_)) / n_bits;
+			mask_ = Metrowerks::rotate_left(mask_, n);
+			return *this;
+		}
+	__bit_iterator operator + (difference_type n) const {return __bit_iterator(*this) += n;}
+	friend __bit_iterator operator + (difference_type n, const __bit_iterator& rhs)
+		{return __bit_iterator(rhs) += n;}
+	__bit_iterator& operator -= (difference_type n) {return *this += -n;}
+	__bit_iterator operator - (difference_type n) const {return __bit_iterator(*this) -= n;}
+	friend difference_type operator - (const __bit_iterator& x, const __bit_iterator& y)
+		{
+			difference_type result = (x.word_ - y.word_) * static_cast<difference_type>(n_bits);
+			result += Metrowerks::count_trailing_zero(x.mask_) - Metrowerks::count_trailing_zero(y.mask_);
+			return result;
+		}
+	reference operator [] (difference_type i) const {return *(__bit_iterator(*this) += i);}
+	friend bool operator ==(const __bit_iterator& x, const __bit_iterator& y)
+		{return x.word_ == y.word_ && x.mask_ == y.mask_;}
+	friend bool operator !=(const __bit_iterator& x, const __bit_iterator& y) {return !(x == y);}
+	friend bool operator < (const __bit_iterator& x, const __bit_iterator& y)
+		{return x.word_ < y.word_ || x.word_ == y.word_ && x.mask_ < y.mask_;}
+	friend bool operator <=(const __bit_iterator& x, const __bit_iterator& y)
+		{return !(y < x);}
+	friend bool operator > (const __bit_iterator& x, const __bit_iterator& y)
+		{return y < x;}
+	friend bool operator >=(const __bit_iterator& x, const __bit_iterator& y)
+		{return !(x < y);}
+
+private:
+
+	typedef typename Container::base_pointer base_pointer;
+	typedef typename Container::base_type    base_type;
+
+	base_pointer word_;
+	base_type mask_;
+
+	__bit_iterator(base_pointer w, base_type m) : word_(w), mask_(m) {}
+
+#ifdef __GNUC__
+	typedef typename Metrowerks::friend_helper<__bit_iterator<Container, true>, __bit_iterator>::type friend_type;
+	friend class __bit_iterator::friend_type;
+#else  // __GNUC__
+	friend class __bit_iterator<Container, true>;
+#endif
+	friend class __bit_reference<Container>;
+	friend class __bit_const_reference<Container>;
+	friend class Container::__self;
+
+	friend
+	__bit_iterator<Container, false>
+	copy<Container, true>(__bit_iterator<Container, true>, __bit_iterator<Container, true>, __bit_iterator<Container, false>);
+
+	friend
+	__bit_iterator<Container, false>
+	copy<Container, false>(__bit_iterator<Container, false>, __bit_iterator<Container, false>, __bit_iterator<Container, false>);
+
+	friend
+	__bit_iterator<Container, false>
+	copy_backward<Container, true>(__bit_iterator<Container, true>, __bit_iterator<Container, true>, __bit_iterator<Container, false>);
+
+	friend
+	__bit_iterator<Container, false>
+	copy_backward<Container, false>(__bit_iterator<Container, false>, __bit_iterator<Container, false>, __bit_iterator<Container, false>);
+
+	friend
+	void
+	fill_n<Container>(__bit_iterator<Container, false>, typename Container::size_type n, const bool& value);
+
+	friend
+	bool
+	equal<Container, false, false>(__bit_iterator<Container, false>, __bit_iterator<Container, false>, __bit_iterator<Container, false>);
+
+	friend
+	bool
+	equal<Container, false, true>(__bit_iterator<Container, false>, __bit_iterator<Container, false>, __bit_iterator<Container, true>);
+
+	friend
+	bool
+	equal<Container, true, false>(__bit_iterator<Container, true>, __bit_iterator<Container, true>, __bit_iterator<Container, false>);
+
+	friend
+	bool
+	equal<Container, true, true>(__bit_iterator<Container, true>, __bit_iterator<Container, true>, __bit_iterator<Container, true>);
+};
+
+// specialized algorithms
+
+template <class Container, bool is_const>
+__bit_iterator<Container, false>
+copy(__bit_iterator<Container, is_const> first, __bit_iterator<Container, is_const> last, __bit_iterator<Container, false> result)
+{
+	typedef __bit_iterator<Container, is_const> iter_type;
+	typedef typename iter_type::base_type base_type;
+	typedef typename iter_type::difference_type difference_type;
+	unsigned int tzf = Metrowerks::count_trailing_zero(first.mask_);
+	unsigned int tzr = Metrowerks::count_trailing_zero(result.mask_);
+	difference_type total_len = (last.word_ - first.word_) * (difference_type)iter_type::n_bits +
+	                             (difference_type)(Metrowerks::count_trailing_zero(last.mask_) - tzf);
+	if (total_len != 0)
+	{
+		while (true)
+		{
+			unsigned int t = iter_type::n_bits - tzf;
+			difference_type len = min(min((difference_type)t, (difference_type)(iter_type::n_bits - tzr)), total_len);
+			base_type mask = (base_type(~0) << (base_type)(tzf)) & (base_type(~0) >> (base_type)(t - len));
+			base_type bits = *first.word_ & mask;
+			t = tzr - tzf;
+			mask = Metrowerks::rotate_left(mask, (int)t);
+			bits = Metrowerks::rotate_left(bits, (int)t);
+			*result.word_ &= ~mask;
+			*result.word_ |= bits;
+			tzr += len;
+			result.word_ += tzr / iter_type::n_bits;
+			result.mask_ = Metrowerks::rotate_left(result.mask_, len);
+			total_len -= len;
+			if (total_len == 0)
+				break;
+			tzf += len;
+			first.word_ += tzf / iter_type::n_bits;
+//			first.mask_ = Metrowerks::rotate_left(first.mask_, len);  // not needed
+			tzf &= iter_type::n_bits - 1;
+			tzr &= iter_type::n_bits - 1;
+		}
+	}
+	return result;
+}
+
+template <class Container, bool is_const>
+__bit_iterator<Container, false>
+copy_backward(__bit_iterator<Container, is_const> first, __bit_iterator<Container, is_const> last, __bit_iterator<Container, false> result)
+{
+	typedef __bit_iterator<Container, is_const> iter_type;
+	typedef typename iter_type::base_type base_type;
+	typedef typename iter_type::difference_type difference_type;
+	unsigned int tzl = Metrowerks::count_trailing_zero(last.mask_);
+	unsigned int tzr = Metrowerks::count_trailing_zero(result.mask_);
+	difference_type total_len = (last.word_ - first.word_) * (difference_type)iter_type::n_bits +
+	                             (difference_type)(tzl - Metrowerks::count_trailing_zero(first.mask_));
+	while (total_len > 0)
+	{
+		difference_type len = min(min((difference_type)((tzl - 1) & (iter_type::n_bits - 1)) + 1,
+		                              (difference_type)((tzr - 1) & (iter_type::n_bits - 1)) + 1),
+		                              total_len);
+		tzr -= len;
+		result.word_ -= (iter_type::n_bits - 1 - tzr) / iter_type::n_bits;
+		result.mask_ = Metrowerks::rotate_right(result.mask_, len);
+		tzr &= iter_type::n_bits - 1;
+		tzl -= len;
+		last.word_ -= (iter_type::n_bits - 1 - tzl) / iter_type::n_bits;
+//		last.mask_ = Metrowerks::rotate_right(last.mask_, len);  // not needed
+		tzl &= iter_type::n_bits - 1;
+		base_type mask = (base_type(~0) << (base_type)(tzl)) & (base_type(~0) >> (base_type)(iter_type::n_bits - tzl - len));
+		base_type bits = *last.word_ & mask;
+		unsigned int t = tzr - tzl;
+		mask = Metrowerks::rotate_left(mask, (int)t);
+		bits = Metrowerks::rotate_left(bits, (int)t);
+		*result.word_ &= ~mask;
+		*result.word_ |= bits;
+		total_len -= len;
+	}
+	return result;
+}
+
+template <class Container, bool is_const>
+inline
+__bit_iterator<Container, false>
+move(__bit_iterator<Container, is_const> first, __bit_iterator<Container, is_const> last, __bit_iterator<Container, false> result)
+{
+	return _STD::copy(first, last, result);
+}
+
+template <class Container, bool is_const>
+inline
+__bit_iterator<Container, false>
+move_backward(__bit_iterator<Container, is_const> first, __bit_iterator<Container, is_const> last, __bit_iterator<Container, false> result)
+{
+	return _STD::copy_backward(first, last, result);
+}
+
+template <class Container>
+void
+fill_n(__bit_iterator<Container, false> first, typename Container::size_type n, const bool& value)
+{
+	typedef __bit_iterator<Container, false> iter_type;
+	typedef typename iter_type::base_type base_type;
+	typedef typename iter_type::difference_type difference_type;
+	typedef typename Container::size_type size_type;
+	if (n > 0)
+	{
+		base_type x = base_type(-1*value);
+		unsigned int lzf = Metrowerks::count_leading_zero(first.mask_);
+		while (true)
+		{
+			difference_type len = (difference_type)min<size_type>(lzf + 1, n);
+			base_type mask = (base_type(~0) << (base_type)(iter_type::n_bits - 1 - lzf)) & (base_type(~0) >> (base_type)(lzf + 1 - len));
+			*first.word_ &= ~mask;
+			*first.word_ |= x & mask;
+			n -= len;
+			if (n == 0)
+				break;
+			++first.word_;
+			lzf = iter_type::n_bits - 1;
+		}
+	}
+}
+
+template <class Container, class Size, class T>
+inline
+void
+fill_n(__bit_iterator<Container, false> first, Size n, const T& value)
+{
+	fill_n(first, (typename Container::size_type)n, (bool)value);
+}
+
+template <class Container, class T>
+inline
+void
+fill(__bit_iterator<Container, false> first, __bit_iterator<Container, false> last, const T& value)
+{
+	fill_n(first, (typename Container::size_type)(last - first), (bool)value);
+}
+
+template <class Container, bool C1, bool C2>
+bool
+equal(__bit_iterator<Container, C1> first1, __bit_iterator<Container, C1> last1, __bit_iterator<Container, C2> first2)
+{
+	typedef __bit_iterator<Container, C1> iter_type;
+	typedef typename iter_type::base_type base_type;
+	typedef typename iter_type::difference_type difference_type;
+	unsigned int tzf = Metrowerks::count_trailing_zero(first1.mask_);
+	unsigned int tzr = Metrowerks::count_trailing_zero(first2.mask_);
+	difference_type total_len = (last1.word_ - first1.word_) * (difference_type)iter_type::n_bits +
+	                             (difference_type)(Metrowerks::count_trailing_zero(last1.mask_) - tzf);
+	if (total_len != 0)
+	{
+		while (true)
+		{
+			unsigned int t = iter_type::n_bits - tzf;
+			difference_type len = min(min((difference_type)t, (difference_type)(iter_type::n_bits - tzr)), total_len);
+			base_type mask = (base_type(~0) << (base_type)(tzf)) & (base_type(~0) >> (base_type)(t - len));
+			base_type bits1 = *first1.word_ & mask;
+			t = tzr - tzf;
+			mask = Metrowerks::rotate_left(mask, (int)t);
+			bits1 = Metrowerks::rotate_left(bits1, (int)t);
+			base_type bits2 = *first2.word_ & mask;
+			if (bits1 != bits2)
+				return false;
+			total_len -= len;
+			if (total_len == 0)
+				break;
+			tzf += len;
+			tzr += len;
+			first1.word_ += tzf / iter_type::n_bits;
+			first2.word_ += tzr / iter_type::n_bits;
+			tzf &= iter_type::n_bits - 1;
+			tzr &= iter_type::n_bits - 1;
+		}
+	}
+	return true;
+}
+
+template <class T>
+struct __has___self
+{
+	void quiet_gcc();
+private:
+    struct two {char x; char y;};
+    template <class U> static two  test(...);
+    template <class U> static char test(typename U::__self*);
+public:
+    static const bool value = sizeof(test<T>(0)) == 1;
+};
+
+template <class Container>
+typename Metrowerks::restrict_to
+<
+	__has___self<Container>::value,
+	void
+>::type
+swap(__bit_reference<Container> x, __bit_reference<Container> y)
+{
+	bool tmp = x;
+	x = y;
+	y = tmp;
+	return (void)0;
+}
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	}  // std
+#endif
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	namespace Metrowerks {
+#endif
+
+template <bool>
+struct __bitvec_common
+{
+	static void throw_length_error();
+};
+
+template <bool b>
+void
+__bitvec_common<b>::throw_length_error()
+{
+	_MSL_ERROR(_STD::length_error, "bitvector length error");
+}
+
+// __bitvec_deleter
+
+template <class Allocator>
+class __bitvec_deleter
+	: public __bitvec_common<true>
+{
+	typedef __bitvec_common<true> base;
+public:
+	typedef __bitvec_deleter                              __self;
+	typedef bool                                          value_type;
+	typedef typename Allocator::rebind<value_type>::other allocator_type;
+
+	typedef typename allocator_type::size_type                base_type;
+	typedef typename allocator_type::rebind<base_type>::other base_allocator;
+	typedef typename base_allocator::pointer                  base_pointer;
+	static const unsigned int n_bits = sizeof(base_type)*_STD::__char<>::bits;
+
+	typedef typename allocator_type::size_type       size_type;
+	typedef typename allocator_type::difference_type difference_type;
+
+	typedef _STD::__bit_iterator<__bitvec_deleter, false> pointer;
+	typedef _STD::__bit_iterator<__bitvec_deleter, true>  const_pointer;
+
+	typedef _STD::__bit_reference<__bitvec_deleter>       reference;
+	typedef _STD::__bit_const_reference<__bitvec_deleter> const_reference;
+
+	typedef _STD::__bit_iterator<__bitvec_deleter, false> iterator;
+	typedef _STD::__bit_iterator<__bitvec_deleter, true>  const_iterator;
+
+	friend class iterator;
+	friend class const_iterator;
+
+	         __bitvec_deleter();
+	explicit __bitvec_deleter(const allocator_type& a);
+	__bitvec_deleter(const __bitvec_deleter& x);
+	__bitvec_deleter& operator=(const __bitvec_deleter& x);
+#ifdef _MSL_MOVE
+	__bitvec_deleter(__bitvec_deleter&& x);
+	__bitvec_deleter& operator=(__bitvec_deleter&& x);
+#endif  // _MSL_MOVE
+	~__bitvec_deleter();
+
+	void init(size_type n, bool x);
+	template <class InputIterator>
+		void init(InputIterator first, InputIterator last)
+			{init(first, last, typename _STD::iterator_traits<InputIterator>::iterator_category());}
+
+	size_type size() const {return size_;}
+	size_type max_size() const;
+	size_type capacity() const {return cap() * n_bits;}
+	void      reserve(size_type n);
+
+	      iterator begin()       {return       iterator(data_, 1U);}
+	const_iterator begin() const {return const_iterator(data_, 1U);}
+	      iterator end()         {return       iterator(data_ + size_ / n_bits, 1U << size_ % n_bits);}
+	const_iterator end() const   {return const_iterator(data_ + size_ / n_bits, 1U << size_ % n_bits);}
+
+	      reference front()       {return       reference(data_, 1U);}
+	const_reference front() const {return const_reference(data_, 1U);}
+	      reference back()        {return       reference(data_ + (size_ - 1) / n_bits, 1U << (size_ - 1) % n_bits);}
+	const_reference back() const  {return const_reference(data_ + (size_ - 1) / n_bits, 1U << (size_ - 1) % n_bits);}
+
+	      reference operator[](size_type n)       {return       reference(data_ + n / n_bits, 1U << n % n_bits);}
+	const_reference operator[](size_type n) const {return const_reference(data_ + n / n_bits, 1U << n % n_bits);}
+
+	      reference at(size_type n);
+	const_reference at(size_type n) const;
+
+	void assign(size_type n, bool x);
+	template <class InputIterator>
+		void assign(InputIterator first, InputIterator last)
+			{assign(first, last, typename _STD::iterator_traits<InputIterator>::iterator_category());}
+
+	void push_back(bool x);
+
+	iterator insert(iterator position, bool x);
+	void     insert(iterator position, size_type n, bool x);
+	template <class InputIterator>
+		void insert(iterator position, InputIterator first, InputIterator last)
+			{insert(position, first, last, typename _STD::iterator_traits<InputIterator>::iterator_category());}
+
+	void pop_back();
+	void clear() {size_ = 0;}
+
+	iterator erase(iterator position);
+	iterator erase(iterator first, iterator last);
+
+	void resize(size_type sz, bool c = false);
+#ifdef _MSL_MOVE
+	void swap(__bitvec_deleter&& x);
+#else
+	void swap(__bitvec_deleter& x);
+#endif
+	void flip();
+	bool invariants() const;
+
+	const base_allocator& alloc() const {return capacity_.second();}
+private:
+	base_pointer data_;
+	size_type size_;
+	Metrowerks::compressed_pair<size_type, base_allocator> capacity_;
+
+	base_allocator&  alloc()     {return capacity_.second();}
+	      size_type& cap()       {return capacity_.first();}
+	const size_type& cap() const {return capacity_.first();}
+
+	template <class InputIterator>
+		void init(InputIterator first, InputIterator last, _STD::input_iterator_tag);
+	template <class ForwardIterator>
+		void init(ForwardIterator first, ForwardIterator last, _STD::forward_iterator_tag);
+
+	template <class InputIterator>
+		void assign(InputIterator first, InputIterator last, _STD::input_iterator_tag);
+	template <class ForwardIterator>
+		void assign(ForwardIterator first, ForwardIterator last, _STD::forward_iterator_tag);
+
+	template <class InputIterator>
+		void insert(iterator position, InputIterator first, InputIterator last, _STD::input_iterator_tag);
+	template <class ForwardIterator>
+		void insert(iterator position, ForwardIterator first, ForwardIterator last, _STD::forward_iterator_tag);
+
+	// code consolidation
+
+	void allocate(size_type n);
+	void reallocate_nocopy(size_type n);
+	void reallocate_copy(size_type n);
+	void reallocate_copy(size_type n, iterator p, size_type delta);
+	size_type grow_by(size_type n);
+	iterator split(iterator position, size_type n);
+	iterator do_insert(iterator position, size_type n, bool x);
+};
+
+template <class Allocator>
+inline
+typename __bitvec_deleter<Allocator>::size_type
+__bitvec_deleter<Allocator>::max_size() const
+{
+	size_type ms = alloc().max_size();
+	size_type mx = _STD::numeric_limits<size_type>::max();
+	if (ms > mx / n_bits)
+		return mx;
+	return ms * n_bits;
+}
+
+template <class Allocator>
+void
+__bitvec_deleter<Allocator>::allocate(size_type n)
+{
+	if (n > max_size())
+		base::throw_length_error();
+	size_type c = (n - 1) / n_bits + 1;
+	data_ = alloc().allocate(c);
+	cap() = c;
+	size_ = n;
+}
+
+template <class Allocator>
+void
+__bitvec_deleter<Allocator>::reallocate_nocopy(size_type n)
+{
+	if (n > max_size())
+		base::throw_length_error();
+	clear();
+	if (data_)
+	{
+		alloc().deallocate(data_, cap());
+		data_ = 0;
+		cap() = 0;
+	}
+	size_type newcap = (n - 1) / n_bits + 1;
+	data_ = alloc().allocate(newcap);
+	cap() = newcap;
+}
+
+template <class Allocator>
+void
+__bitvec_deleter<Allocator>::reallocate_copy(size_type n)
+{
+	if (n > max_size())
+		base::throw_length_error();
+	size_type newcap = (n - 1) / n_bits + 1;
+	base_pointer newdata = alloc().allocate(newcap);
+	if (data_)
+	{
+		if (size_)
+			_STD::copy(data_, data_ + (size_ - 1) / n_bits + 1, newdata);
+		alloc().deallocate(data_, cap());
+	}
+	data_ = newdata;
+	cap() = newcap;
+}
+
+template <class Allocator>
+inline
+void
+__bitvec_deleter<Allocator>::reallocate_copy(size_type n, iterator p, size_type delta)
+{
+	if (n > max_size())
+		base::throw_length_error();
+	size_type newcap = (n - 1) / n_bits + 1;
+	base_pointer newdata = alloc().allocate(newcap);
+	if (data_)
+	{
+		iterator tmp = _STD::copy(begin(), p, iterator(newdata, 1U));
+		tmp += (difference_type)delta;
+		_STD::copy(p, end(), tmp);
+		alloc().deallocate(data_, cap());
+	}
+	data_ = newdata;
+	cap() = newcap;
+}
+
+template <class Allocator>
+typename __bitvec_deleter<Allocator>::size_type
+__bitvec_deleter<Allocator>::grow_by(size_type n)
+{
+	const size_type m = max_size();
+	const size_type c = capacity();
+	if (n > m - c)
+		base::throw_length_error();
+	return c + _STD::max(c, n);
+}
+
+template <class Allocator>
+typename __bitvec_deleter<Allocator>::iterator
+__bitvec_deleter<Allocator>::split(iterator position, size_type n)
+{
+	size_type c = capacity();
+	if (n <= c && size_ <= c - n)
+	{
+		iterator b = end();
+		size_ += n;
+		if (position != b)
+			_STD::copy_backward(position, b, end());
+	}
+	else
+	{
+		size_type pb = (size_type)(position - begin());
+		reallocate_copy(grow_by(n), position, n);
+		size_ += n;
+		position.word_ = data_ + pb / n_bits;
+		position.mask_ = 1U << pb % n_bits;
+	}
+	return position;
+}
+
+template <class Allocator>
+typename __bitvec_deleter<Allocator>::iterator
+__bitvec_deleter<Allocator>::do_insert(iterator position, size_type n, bool x)
+{
+	position = split(position, n);
+	_STD::fill_n(position, n, x);
+	return position;
+}
+
+template <class Allocator>
+inline
+__bitvec_deleter<Allocator>::__bitvec_deleter()
+	: data_(0),
+	  size_(0),
+	  capacity_(size_type(0))
+{
+}
+
+template <class Allocator>
+inline
+__bitvec_deleter<Allocator>::__bitvec_deleter(const allocator_type& a)
+	: data_(0),
+	  size_(0),
+	  capacity_(size_type(0), a)
+{
+}
+
+template <class Allocator>
+__bitvec_deleter<Allocator>::__bitvec_deleter(const __bitvec_deleter& x)
+	: data_(0),
+	  size_(0),
+	  capacity_(size_type(0), x.alloc())
+{
+	init(x.begin(), x.end());
+}
+
+template <class Allocator>
+__bitvec_deleter<Allocator>&
+__bitvec_deleter<Allocator>::operator=(const __bitvec_deleter& x)
+{
+	if (this != &x)
+	{
+		if (x.size() != 0)
+		{
+			if (x.size() > capacity())
+				reallocate_nocopy(x.size());
+			_STD::copy(x.data_, x.data_ + (x.size() - 1) / n_bits + 1, data_);
+		}
+		size_ = x.size();
+	}
+	return *this;
+}
+
+#ifdef _MSL_MOVE
+
+template <class Allocator>
+inline
+__bitvec_deleter<Allocator>::__bitvec_deleter(__bitvec_deleter&& x)
+	: data_(x.data_),
+	  size_(x.size_),
+	  capacity_(static_cast<Metrowerks::compressed_pair<base_allocator, size_type>&&>(x.capacity_))
+{
+	x.cap() = 0;
+	x.size_ = 0;
+	x.data_ = 0;
+}
+
+template <class Allocator>
+inline
+__bitvec_deleter<Allocator>&
+__bitvec_deleter<Allocator>::operator=(__bitvec_deleter&& x)
+{
+	swap(x);
+	return *this;
+}
+
+#endif  // _MSL_MOVE
+
+template <class Allocator>
+__bitvec_deleter<Allocator>::~__bitvec_deleter()
+{
+	if (data_)
+		alloc().deallocate(data_, cap());
+}
+
+template <class Allocator>
+void
+__bitvec_deleter<Allocator>::init(size_type n, bool x)
+{
+	if (n > 0)
+	{
+		allocate(n);
+		_STD::fill_n(begin(), n, x);
+	}
+}
+
+template <class Allocator>
+template <class InputIterator>
+void
+__bitvec_deleter<Allocator>::init(InputIterator first, InputIterator last, _STD::input_iterator_tag)
+{
+	for (; first != last; ++first)
+		push_back(*first);
+}
+
+template <class Allocator>
+template <class ForwardIterator>
+void
+__bitvec_deleter<Allocator>::init(ForwardIterator first, ForwardIterator last, _STD::forward_iterator_tag)
+{
+	size_type n = (size_type)_STD::distance(first, last);
+	if (n > 0)
+	{
+		allocate(n);
+		_STD::copy(first, last, begin());
+	}
+}
+
+template <class Allocator>
+inline
+void
+__bitvec_deleter<Allocator>::reserve(size_type n)
+{
+	if (n > capacity())
+		reallocate_copy(n);
+}
+
+template <class Allocator>
+typename __bitvec_deleter<Allocator>::reference
+__bitvec_deleter<Allocator>::at(size_type n)
+{
+	if (n >= size_)
+		_MSL_ERROR(_STD::out_of_range, "bitvector::at index out of range");
+	return operator[](n);
+}
+
+template <class Allocator>
+typename __bitvec_deleter<Allocator>::const_reference
+__bitvec_deleter<Allocator>::at(size_type n) const
+{
+	if (n >= size_)
+		_MSL_ERROR(_STD::out_of_range, "bitvector::at index out of range");
+	return operator[](n);
+}
+
+template <class Allocator>
+void
+__bitvec_deleter<Allocator>::assign(size_type n, bool x)
+{
+	if (n > capacity())
+		reallocate_nocopy(n);
+	size_ = n;
+	_STD::fill_n(begin(), n, x);
+}
+
+template <class Allocator>
+template <class InputIterator>
+void
+__bitvec_deleter<Allocator>::assign(InputIterator first, InputIterator last, _STD::input_iterator_tag)
+{
+	clear();
+	for (; first != last; ++first)
+		push_back(*first);
+}
+
+template <class Allocator>
+template <class ForwardIterator>
+void
+__bitvec_deleter<Allocator>::assign(ForwardIterator first, ForwardIterator last, _STD::forward_iterator_tag)
+{
+	size_type n = (size_type)_STD::distance(first, last);
+	if (n > capacity())
+		reallocate_nocopy(n);
+	size_ = n;
+	_STD::copy(first, last, begin());
+}
+
+template <class Allocator>
+void
+__bitvec_deleter<Allocator>::push_back(bool x)
+{
+	if (size_ == capacity())
+		reallocate_copy(grow_by(1));
+	++size_;
+	back() = x;
+}
+
+template <class Allocator>
+inline
+typename __bitvec_deleter<Allocator>::iterator
+__bitvec_deleter<Allocator>::insert(iterator position, bool x)
+{
+	return do_insert(position, 1, x);
+}
+
+template <class Allocator>
+inline
+void
+__bitvec_deleter<Allocator>::insert(iterator position, size_type n, bool x)
+{
+	do_insert(position, n, x);
+}
+
+template <class Allocator>
+template <class InputIterator>
+void
+__bitvec_deleter<Allocator>::insert(iterator position, InputIterator first, InputIterator last, _STD::input_iterator_tag)
+{
+	__bitvec_deleter tmp;(alloc());
+	tmp.init(first, last);
+	insert(position, tmp.begin(), tmp.end());
+}
+
+template <class Allocator>
+template <class ForwardIterator>
+void
+__bitvec_deleter<Allocator>::insert(iterator position, ForwardIterator first, ForwardIterator last, _STD::forward_iterator_tag)
+{
+	_STD::copy(first, last, split(position, (size_type)_STD::distance(first, last)));
+}
+
+template <class Allocator>
+inline
+void
+__bitvec_deleter<Allocator>::pop_back()
+{
+	--size_;
+}
+
+template <class Allocator>
+typename __bitvec_deleter<Allocator>::iterator
+__bitvec_deleter<Allocator>::erase(iterator position)
+{
+	iterator pp1 = position;
+	_STD::copy(++pp1, end(), position);
+	--size_;
+	return position;
+}
+
+template <class Allocator>
+typename __bitvec_deleter<Allocator>::iterator
+__bitvec_deleter<Allocator>::erase(iterator first, iterator last)
+{
+	if (first != last)
+	{
+		_STD::copy(last, end(), first);
+		size_ -= size_type(last - first);
+	}
+	return first;
+}
+
+template <class Allocator>
+void
+__bitvec_deleter<Allocator>::resize(size_type sz, bool x)
+{
+	if (sz > size_)
+	{
+		if (sz > capacity())
+			reallocate_copy(grow_by(sz-capacity()));
+		iterator t = end();
+		size_type delta = sz - size_;
+		size_ = sz;
+		_STD::fill_n(t, delta, x);
+	}
+	else
+		size_ = sz;
+}
+
+template <class Allocator>
+inline
+void
+#ifdef _MSL_MOVE
+__bitvec_deleter<Allocator>::swap(__bitvec_deleter&& x)
+#else
+__bitvec_deleter<Allocator>::swap(__bitvec_deleter& x)
+#endif
+{
+	capacity_.swap(x.capacity_);
+	_STD::swap(size_, x.size_);
+	_STD::swap(data_, x.data_);
+}
+
+template <class Allocator>
+inline
+void
+__bitvec_deleter<Allocator>::flip()
+{
+	base_pointer e = data_ + cap();
+	for (base_pointer i = data_; i < e; ++i)
+		*i = ~*i;
+}
+
+template <class Allocator>
+bool
+__bitvec_deleter<Allocator>::invariants() const
+{
+	if (cap() == 0 && data_ != 0)
+		return false;
+	if (cap() != 0 && data_ == 0)
+		return false;
+	if (capacity() < size_)
+		return false;
+	return true;
+}
+
+// bitvector
+
+template <class Allocator = _STD::allocator<bool> >
+class bitvector
+	: private __bitvec_deleter<Allocator>
+{
+	typedef __bitvec_deleter<Allocator> base;
+public:
+	//  types:
+	typedef bitvector                      __self;
+	typedef typename base::allocator_type  allocator_type;
+	typedef typename base::const_reference const_reference;
+	typedef typename base::reference       reference;
+	typedef typename base::size_type       size_type;
+	typedef typename base::difference_type difference_type;
+	typedef typename base::value_type      value_type;
+	typedef typename base::pointer         pointer;
+	typedef typename base::const_pointer   const_pointer;
+#ifndef _MSL_DEBUG
+	typedef typename base::iterator        iterator;
+	typedef typename base::const_iterator  const_iterator;
+#else  // _MSL_DEBUG
+	typedef typename base::iterator        __uncheck_iterator;
+	typedef typename base::const_iterator  __uncheck_const_iterator;
+	typedef _STD::__debug_iterator<bitvector, __uncheck_iterator>       iterator;
+	typedef _STD::__debug_iterator<bitvector, __uncheck_const_iterator> const_iterator;
+
+private:
+	void __invalidate_all_iterators()
+	{
+		if (iterator_list<iterator>())
+			iterator_list<iterator>()->remove(_STD::__unary_true_value<__uncheck_iterator>());
+		if (iterator_list<const_iterator>())
+			iterator_list<const_iterator>()->remove(_STD::__unary_true_value<__uncheck_const_iterator>());
+	}
+
+	class __invalidate_on_reallocate
+	{
+	public:
+		__invalidate_on_reallocate(bitvector& v) : vec_(v), old_cap_(v.capacity()) {}
+		~__invalidate_on_reallocate()
+		{
+			if (old_cap_ != vec_.capacity())
+				vec_.__invalidate_all_iterators();
+		}
+	private:
+		bitvector& vec_;
+		size_type old_cap_;
+
+		__invalidate_on_reallocate(const __invalidate_on_reallocate&);
+		__invalidate_on_reallocate& operator=(const __invalidate_on_reallocate&);
+	};
+	friend class __invalidate_on_reallocate;
+
+	void __invalidate_past_end_iterators()
+	{
+		if (iterator_list<iterator>())
+			iterator_list<iterator>()->remove(_STD::bind2nd(_STD::greater<__uncheck_iterator>(), __uncheck_end()));
+		if (iterator_list<const_iterator>())
+			iterator_list<const_iterator>()->remove(_STD::bind2nd(_STD::greater<__uncheck_const_iterator>(), __uncheck_end()));
+	}
+
+	class __invalidate_on_shrink
+	{
+	public:
+		__invalidate_on_shrink(bitvector& v) : vec_(v), old_size_(v.size()) {}
+		~__invalidate_on_shrink()
+		{
+			if (old_size_ < vec_.size())
+				vec_.__invalidate_past_end_iterators();
+		}
+	private:
+		bitvector& vec_;
+		size_type old_size_;
+
+		__invalidate_on_shrink(const __invalidate_on_shrink&);
+		__invalidate_on_shrink& operator=(const __invalidate_on_shrink&);
+	};
+	friend class __invalidate_on_shrink;
+
+	void __invalidate_iterators_past_pos(size_type pos)
+	{
+
+		if (iterator_list<iterator>())
+			iterator_list<iterator>()->remove(_STD::bind2nd(_STD::greater_equal<__uncheck_iterator>(), __uncheck_begin()+(difference_type)pos));
+		if (iterator_list<const_iterator>())
+			iterator_list<const_iterator>()->remove(_STD::bind2nd(_STD::greater_equal<__uncheck_const_iterator>(), __uncheck_begin()+(difference_type)pos));
+	}
+
+	class __invalidate_past_pos
+	{
+	public:
+		__invalidate_past_pos(bitvector& v, typename bitvector::iterator p) : vec_(v), old_size_(v.size()),
+			pos_(size_type(p - vec_.begin())) {}
+		~__invalidate_past_pos()
+		{
+			if (old_size_ != vec_.size())
+				vec_.__invalidate_iterators_past_pos(pos_);
+		}
+	private:
+		bitvector& vec_;
+		size_type old_size_;
+		size_type pos_;
+
+		__invalidate_past_pos(const __invalidate_past_pos&);
+		__invalidate_past_pos& operator=(const __invalidate_past_pos&);
+	};
+	friend class __invalidate_past_pos;
+
+public:
+
+#endif  // _MSL_DEBUG
+	typedef _STD::reverse_iterator<iterator>       reverse_iterator;
+	typedef _STD::reverse_iterator<const_iterator> const_reverse_iterator;
+
+	bitvector() {}
+	explicit bitvector(const allocator_type& a) : base(a) {}
+	explicit bitvector(size_type n, bool x = false) {base::init(n, x);}
+	explicit bitvector(size_type n, bool x, const allocator_type& a) : base(a) {base::init(n, x);}
+#ifndef __GNUC__
+	template <class InputIterator>
+		bitvector(InputIterator first, InputIterator last, typename restrict_to<_STD::__is_input_iterator<InputIterator>::value>::type* = 0)
+			{base::init(first, last);}
+	template <class InputIterator>
+		bitvector(InputIterator first, InputIterator last, const allocator_type& a, typename restrict_to<_STD::__is_input_iterator<InputIterator>::value>::type* = 0)
+			: base(a)
+			{base::init(first, last);}
+#else  // __GNUC__
+	template <class InputIterator>
+		bitvector(InputIterator first, InputIterator last, typename restrict_to<_not<is_integral<InputIterator> >::value>::type* = 0)
+			{base::init(first, last);}
+	template <class InputIterator>
+		bitvector(InputIterator first, InputIterator last, const allocator_type& a, typename restrict_to<_not<is_integral<InputIterator> >::value>::type* = 0)
+			: base(a)
+			{base::init(first, last);}
+#endif  // __GNUC__
+
+#ifdef _MSL_DEBUG
+	bitvector(const bitvector& x) : base(x) {}
+	bitvector& operator=(const bitvector& x)
+	{
+		if (this != &x)
+		{
+			__invalidate_all_iterators();
+			base::operator=(x);
+		}
+		return *this;
+	}
+
+#ifdef _MSL_MOVE
+	bitvector(bitvector&& x) : base(static_cast<base&&>(x))
+		{iterator::swap(this, &x); const_iterator::swap(this, &x);}
+	bitvector& operator=(bitvector&& x) {swap(x); return *this;}
+#endif  // _MSL_MOVE
+
+	~bitvector()
+		{__invalidate_all_iterators();}
+#else  // _MSL_DEBUG
+#ifdef _MSL_MOVE
+	bitvector(bitvector&& x) : base(static_cast<base&&>(x)) {}
+	bitvector& operator=(bitvector&& x) {base::swap(x); return *this;}
+
+	bitvector(const bitvector& x) : base(x) {}
+	bitvector& operator=(const bitvector& x) {base::operator=(x); return *this;}
+#endif  // _MSL_MOVE
+#endif  // _MSL_DEBUG
+
+	using base::size;
+	bool empty() const {return size() == 0;}
+	using base::max_size;
+	using base::capacity;
+#ifndef _MSL_DEBUG
+	using base::reserve;
+#else
+	void reserve(size_type n)
+	{
+		__invalidate_on_reallocate __c(*this);
+		base::reserve(n);
+	}
+#endif  // _MSL_DEBUG
+	allocator_type get_allocator() const {return base::alloc();}
+
+#ifndef _MSL_DEBUG
+	using base::begin;
+	using base::end;
+#else  // _MSL_DEBUG
+	__uncheck_iterator       __uncheck_begin()       {return base::begin();}
+	__uncheck_const_iterator __uncheck_begin() const {return base::begin();}
+	__uncheck_iterator       __uncheck_end()         {return base::end();}
+	__uncheck_const_iterator __uncheck_end() const   {return base::end();}
+	iterator       begin()       {return       iterator(this, __uncheck_begin());}
+	const_iterator begin() const {return const_iterator(this, __uncheck_begin());}
+	iterator       end()         {return       iterator(this, __uncheck_end());}
+	const_iterator end()   const {return const_iterator(this, __uncheck_end());}
+#endif  // _MSL_DEBUG
+
+	reverse_iterator       rbegin()       {return reverse_iterator(end());}
+	const_reverse_iterator rbegin() const {return const_reverse_iterator(end());}
+	reverse_iterator       rend()         {return reverse_iterator(begin());}
+	const_reverse_iterator rend() const   {return const_reverse_iterator(begin());}
+
+	using base::front;
+	using base::back;
+
+#ifndef _MSL_DEBUG
+	using base::operator[];
+#else
+	      reference operator[](size_type n)       {return base::at(n);}
+	const_reference operator[](size_type n) const {return base::at(n);}
+#endif  // _MSL_DEBUG
+
+	using base::at;
+
+	void assign(size_type n, bool x)
+	{
+	#ifdef _MSL_DEBUG
+		__invalidate_all_iterators();
+	#endif
+		base::assign(n, x);
+	}
+#ifndef __GNUC__
+	template <class InputIterator>
+		void assign(InputIterator first, InputIterator last, typename restrict_to<_STD::__is_input_iterator<InputIterator>::value>::type* = 0)
+		{
+		#ifdef _MSL_DEBUG
+			__invalidate_all_iterators();
+		#endif
+			base::assign(first, last);
+		}
+#else  // __GNUC__
+	template <class InputIterator>
+		void assign(InputIterator first, InputIterator last, typename restrict_to<_not<is_integral<InputIterator> >::value>::type* = 0)
+		{
+		#ifdef _MSL_DEBUG
+			__invalidate_all_iterators();
+		#endif
+			base::assign(first, last);
+		}
+#endif  // __GNUC__
+
+#ifndef _MSL_DEBUG
+	using base::push_back;
+#else
+	void push_back(bool x)
+	{
+		__invalidate_on_reallocate __c(*this);
+		base::push_back(x);
+	}
+#endif  // _MSL_DEBUG
+
+#ifndef _MSL_DEBUG
+	iterator insert(iterator position, bool x)              {return base::insert(position, x);}
+	void     insert(iterator position, size_type n, bool x) {       base::insert(position, n, x);}
+#ifndef __GNUC__
+	template <class InputIterator>
+		void insert(iterator position, InputIterator first, InputIterator last, typename restrict_to<_STD::__is_input_iterator<InputIterator>::value>::type* = 0)
+			{base::insert(position, first, last);}
+#else  // __GNUC__
+	template <class InputIterator>
+		void insert(iterator position, InputIterator first, InputIterator last, typename restrict_to<_not<is_integral<InputIterator> >::value>::type* = 0)
+			{base::insert(position, first, last);}
+#endif  // __GNUC__
+#else  // _MSL_DEBUG
+	iterator insert(iterator position, bool x)
+	{
+		typename base::iterator result;
+		{
+		__invalidate_past_pos __s(*this, position);
+		__invalidate_on_reallocate __c(*this);
+		result = base::insert(position.base(), x);
+		}
+		return iterator(this, result);
+	}
+	void insert(iterator position, size_type n, bool x)
+	{
+		__invalidate_past_pos __s(*this, position);
+		__invalidate_on_reallocate __c(*this);
+		base::insert(position.base(), n, x);
+	}
+#ifndef __GNUC__
+	template <class InputIterator>
+		void insert(iterator position, InputIterator first, InputIterator last, typename restrict_to<_STD::__is_input_iterator<InputIterator>::value>::type* = 0)
+		{
+			__invalidate_past_pos __s(*this, position);
+			__invalidate_on_reallocate __c(*this);
+			base::insert(position.base(), first, last);
+		}
+#else  // __GNUC__
+	template <class InputIterator>
+		void insert(iterator position, InputIterator first, InputIterator last, typename restrict_to<_not<is_integral<InputIterator> >::value>::type* = 0)
+		{
+			__invalidate_past_pos __s(*this, position);
+			__invalidate_on_reallocate __c(*this);
+			base::insert(position.base(), first, last);
+		}
+#endif  // __GNUC__
+#endif  // _MSL_DEBUG
+
+#ifndef _MSL_DEBUG
+	using base::pop_back;
+	using base::clear;
+	using base::erase;
+
+	using base::resize;
+#else  // _MSL_DEBUG
+	void pop_back()
+	{
+		if (empty())
+			_MSL_DEBUG_ERROR(_STD::logic_error, "MSL DEBUG: pop_back called on empty bitvector");
+		__invalidate_on_shrink __c(*this);
+		base::pop_back();
+	}
+	void clear()
+	{
+		__invalidate_all_iterators();
+		base::clear();
+	}
+	iterator erase(iterator position)
+	{
+		position.deref();
+		typename base::iterator result;
+		{
+		__invalidate_past_pos __c(*this, position);
+		result = base::erase(position.base());
+		}
+		return iterator(this, result);
+	}
+	iterator erase(iterator first, iterator last)
+	{
+		if (first > last)
+			_MSL_DEBUG_ERROR(_STD::logic_error, "MSL DEBUG: invalid iterator range given to bitvector::erase");
+		typename base::iterator result;
+		{
+		__invalidate_past_pos __c(*this, first);
+		result = base::erase(first.base(), last.base());
+		}
+		return iterator(this, result);
+	}
+
+	void resize(size_type sz, bool c = false)
+	{
+		__invalidate_on_shrink __c(*this);
+		__invalidate_on_reallocate __s(*this);
+		base::resize(sz, c);
+	}
+
+#endif  // _MSL_DEBUG
+
+#ifndef _MSL_DEBUG
+	#ifdef _MSL_MOVE
+		void swap(bitvector&& x) {base::swap(x);}
+	#else
+		void swap(bitvector& x) {base::swap(x);}
+	#endif
+#else  // _MSL_DEBUG
+	#ifdef _MSL_MOVE
+		void swap(bitvector&& x)
+	#else
+		void swap(bitvector& x)
+	#endif
+		{
+			base::swap(x);
+			iterator::swap(this, &x);
+			const_iterator::swap(this, &x);
+		}
+#endif  // _MSL_DEBUG
+
+	using base::flip;
+	using base::invariants;
+
+private:
+#ifdef _MSL_DEBUG
+	_STD::pair<iterator*, const_iterator*> iterator_list_;
+
+	iterator*&       iterator_list(iterator*)       {return iterator_list_.first;}
+	const_iterator*& iterator_list(const_iterator*) {return iterator_list_.second;}
+	template <class Iterator>
+	Iterator*& iterator_list() {return iterator_list((Iterator*)0);}
+
+	friend class iterator;
+	friend class const_iterator;
+#endif  // _MSL_DEBUG
+};
+
+template <class Allocator>
+inline
+bool
+operator==(const bitvector<Allocator>& x, const bitvector<Allocator>& y)
+{
+	return x.size() == y.size() && _STD::equal(x.begin(), x.end(), y.begin());
+}
+
+template <class Allocator>
+inline
+bool
+operator!=(const bitvector<Allocator>& x, const bitvector<Allocator>& y)
+{
+	return !(x == y);
+}
+
+template <class Allocator>
+inline
+bool
+operator< (const bitvector<Allocator>& x, const bitvector<Allocator>& y)
+{
+	return _STD::lexicographical_compare(x.begin(), x.end(), y.begin(), y.end());
+}
+
+template <class Allocator>
+inline
+bool
+operator> (const bitvector<Allocator>& x, const bitvector<Allocator>& y)
+{
+	return y < x;
+}
+
+template <class Allocator>
+inline
+bool
+operator>=(const bitvector<Allocator>& x, const bitvector<Allocator>& y)
+{
+	return !(x < y);
+}
+
+template <class Allocator>
+inline
+bool
+operator<=(const bitvector<Allocator>& x, const bitvector<Allocator>& y)
+{
+	return !(y < x);
+}
+
+template <class Allocator>
+inline
+void
+swap(bitvector<Allocator>& x, bitvector<Allocator>& y)
+{
+	x.swap(y);
+}
+
+#ifdef _MSL_MOVE
+
+template <class Allocator>
+inline
+void
+swap(bitvector<Allocator>&& x, bitvector<Allocator>& y)
+{
+	x.swap(y);
+}
+
+template <class Allocator>
+inline
+void
+swap(bitvector<Allocator>& x, bitvector<Allocator>&& y)
+{
+	x.swap(y);
+}
+
+#endif  // _MSL_MOVE
+
+template <class Allocator>
+struct is_zero_default_contructible<bitvector<Allocator> >
+{
+	static const bool value = is_zero_default_contructible<Allocator>::value;
+};
+
+#ifndef _MSL_DEBUG
+
+template <class Allocator>
+struct has_trivial_dtor_after_move_ctor<bitvector<Allocator> >
+{
+	static const bool value = has_trivial_dtor<Allocator>::value;
+};
+
+template <class Allocator>
+struct has_trivial_move_ctor<bitvector<Allocator> >
+{
+	static const bool value = has_trivial_copy_ctor<Allocator>::value;
+};
+
+#endif  // _MSL_DEBUG
+
+template <class Allocator>
+struct move_with_swap<bitvector<Allocator> >
+{
+	static const bool value = has_trivial_copy_ctor<Allocator>::value &&
+	                          has_trivial_assignment<Allocator>::value;
+};
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	} // namespace Metrowerks
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#pragma enumsalwaysint reset
+#endif
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#pragma bool reset
+#endif
+
+#ifdef __MWERKS__
+#pragma options align=reset
+#endif
+
+#endif // RC_INVOKED
+
+#endif // _BITVECTOR
+
+// hh 020616 Created
+// hh 030212 Added empty check for pop_back under _MSL_DEBUG
+// hh 030711 Worked around friend class T problem
+// hh 031125 Restricted swap / bitreference
+// hh 031228 Added operator& to __bit_reference and __bit_const_reference
+// hh 040429 Fixed reallocate_copy bug

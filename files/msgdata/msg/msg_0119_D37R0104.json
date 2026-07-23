@@ -1,0 +1,36 @@
+{
+  "key": 17526,
+  "messages": [
+    {
+      "id": "msg_0119_D37R0104_00000",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}: Hold it!\r",
+        "What I told you before was to deceive\n",
+        "you. I thought it would let me tail you,\f",
+        "and it would lead me to Lance.\r",
+        "Well, he never showed up.\f",
+        "...No matter.\r",
+        "I was planning to beat you after Lance,\n",
+        "but since you are here, I will repay\f",
+        "my debts!\r"
+      ]
+    },
+    {
+      "id": "msg_0119_D37R0104_00001",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}: ...I don’t understand.\r",
+        "Is what that Lance guy said true?\n",
+        "That I don’t treat Pokémon properly?\r",
+        "Love...\r",
+        "Trust...\r",
+        "Are they really what I lack?\n",
+        "Are they keeping me from winning?\r",
+        "I... I just don’t understand. But it’s\n",
+        "not going to end here. Not now.\f",
+        "Not because of this.\r",
+        "I won’t give up my dream of becoming\n",
+        "the world’s best Pokémon Trainer!\r"
+      ]
+    }
+  ]
+}

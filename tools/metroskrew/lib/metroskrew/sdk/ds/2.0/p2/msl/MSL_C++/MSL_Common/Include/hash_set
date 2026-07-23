@@ -1,0 +1,750 @@
+/* MSL
+ * Copyright © 1995-2006 Freescale Corporation.  All rights reserved.
+ *
+ * $Date: 2006/02/09 16:58:26 $
+ * $Revision: 1.18.2.2 $
+ */
+
+// hash_set
+
+#ifndef _HASH_SET
+#define _HASH_SET
+
+/*
+	WARNING - WARNING - WARNING
+
+	This header is NON-STANDARD
+
+	The classes herein are offered as extensions to the C++ standard.
+	They are marked as such by the namespace Metrowerks.
+*/
+/*  hash_map synopsis
+
+namespace Metrowerks
+{
+
+template <class T, class Hash = hash<T>, class Compare = std::equal_to<T>,
+          class Allocator = std::allocator<T> >
+class hash_set
+{
+public:
+	//  types:
+	typedef T                                     key_type;
+	typedef T                                     value_type;
+	typedef Hash                                  key_hasher;
+	typedef Hash                                  value_hasher;
+	typedef Allocator                             allocator_type;
+	typedef typename Allocator::reference         reference;
+	typedef typename Allocator::const_reference   const_reference;
+	typedef typename Allocator::size_type         size_type;
+	typedef typename Allocator::difference_type   difference_type;
+	typedef typename Allocator::pointer           pointer;
+	typedef typename Allocator::const_pointer     const_pointer;
+	typedef Compare                               key_compare;
+	typedef Compare                               value_compare;
+
+	class                                         iterator;        // forward
+	class                                         const_iterator;  // forward
+
+	//  lib.set.cons construct/copy/destroy:
+	explicit hash_set(size_type num_buckets = 0
+	                  const key_hasher& hash =  key_hasher(),
+	                  const key_compare& comp = key_compare(),
+	                  float load_factor_limit = 2,
+	                  float growth_factor = 4,
+	                  const allocator_type& a = allocator_type());
+
+	template <class InputIterator>
+	hash_set(InputIterator first, InputIterator last,
+	         size_type num_buckets = 0,
+	         const key_hasher& hash = key_hasher(),
+	         const key_compare& comp = key_compare(),
+	         float load_factor_limit = 2,
+	         float growth_factor = 4,
+	         const allocator_type& a = allocator_type());
+
+	hash_set(const hash_set&);
+	hash_set& operator=(const hash_set&);
+	~hash_set();
+
+	allocator_type get_allocator() const;
+	size_type max_size() const;
+
+	size_type size() const;
+	bool      empty() const;
+	size_type bucket_count() const;
+	size_type bucket_count(size_type num_buckets);
+	float     load_factor() const;
+	void      load_factor_limit(float lf);
+	float     load_factor_limit() const;
+	void      growth_factor(float gf);
+	float     growth_factor() const;
+	size_type collision(const_iterator i) const;
+
+	iterator       begin();
+	const_iterator begin() const;
+	iterator       end();
+	const_iterator end() const;
+
+	std::pair<iterator, bool> insert(const value_type& x);
+	iterator                  insert(iterator, const value_type& x);
+	template <class InputIterator>
+		void                  insert(InputIterator first, InputIterator last);
+
+	void      erase(iterator position);
+	size_type erase(const key_type& x);
+	void      erase(iterator first, iterator last);
+	void clear();
+
+	void        swap(hash_set& y);
+	friend void swap(hash_set& x, hash_set& y);
+
+	key_compare   key_comp() const;
+	value_compare value_comp() const;
+	key_hasher    key_hash() const;
+	value_hasher  value_hash() const;
+
+	iterator  find(const key_type& x) const;
+	size_type count(const key_type& x) const;
+
+	std::pair<iterator,iterator> equal_range(const key_type& x) const;
+
+	bool invariants() const;
+};
+
+template <class T, class Hash, class Compare, class Allocator>
+bool
+operator==(const hash_set<T, Hash, Compare, Allocator>& x,
+           const hash_set<T, Hash, Compare, Allocator>& y);
+
+template <class T, class Hash, class Compare, class Allocator>
+bool
+operator!=(const hash_set<T, Hash, Compare, Allocator>& x,
+           const hash_set<T, Hash, Compare, Allocator>& y);
+
+template <class T, class Hash = hash<T>, class Compare = std::equal_to<T>,
+          class Allocator = std::allocator<T> >
+class hash_multiset
+{
+public:
+	//  types:
+	typedef T                                     key_type;
+	typedef T                                     value_type;
+	typedef Hash                                  key_hasher;
+	typedef Hash                                  value_hasher;
+	typedef Allocator                             allocator_type;
+	typedef typename Allocator::reference         reference;
+	typedef typename Allocator::const_reference   const_reference;
+	typedef typename Allocator::size_type         size_type;
+	typedef typename Allocator::difference_type   difference_type;
+	typedef typename Allocator::pointer           pointer;
+	typedef typename Allocator::const_pointer     const_pointer;
+	typedef Compare                               key_compare;
+	typedef Compare                               value_compare;
+
+	class                                         iterator;        // forward
+	class                                         const_iterator;  // forward
+
+	explicit hash_multiset(size_type num_buckets = 0
+	                       const key_hasher& hash =  key_hasher(),
+	                       const key_compare& comp = key_compare(),
+	                       float load_factor_limit = 2,
+	                       float growth_factor = 4,
+	                       const allocator_type& a = allocator_type());
+
+	template <class InputIterator>
+	hash_multiset(InputIterator first, InputIterator last,
+	              size_type num_buckets = 0,
+	              const key_hasher& hash = key_hasher(),
+	              const key_compare& comp = key_compare(),
+	              float load_factor_limit = 2,
+	              float growth_factor = 4,
+	              const allocator_type& a = allocator_type());
+
+	hash_multiset(const hash_multiset&);
+	hash_multiset& operator=(const hash_multiset&);
+	~hash_multiset();
+
+	allocator_type get_allocator() const;
+	size_type max_size() const;
+
+	size_type size() const;
+	bool      empty() const;
+	size_type bucket_count() const;
+	size_type bucket_count(size_type num_buckets);
+	float     load_factor() const;
+	void      load_factor_limit(float lf);
+	float     load_factor_limit() const;
+	void      growth_factor(float gf);
+	float     growth_factor() const;
+	size_type collision(const_iterator i) const;
+
+	iterator       begin();
+	const_iterator begin() const;
+	iterator       end();
+	const_iterator end() const;
+
+	iterator insert(const value_type& x);
+	iterator insert(iterator p, const value_type& x);
+	template <class InputIterator>
+		void insert(InputIterator first, InputIterator last);
+
+	void      erase(iterator position);
+	size_type erase(const key_type& x);
+	void      erase(iterator first, iterator last);
+	void clear();
+
+	void        swap(hash_multiset& y);
+	friend void swap(hash_multiset& x, hash_multiset& y);
+
+	key_compare   key_comp() const;
+	value_compare value_comp() const;
+	key_hasher    key_hash() const;
+	value_hasher  value_hash() const;
+
+	iterator  find(const key_type& x) const;
+	size_type count(const key_type& x) const;
+
+	std::pair<iterator,iterator> equal_range(const key_type& x) const;
+
+	bool invariants() const;
+};
+
+template <class T, class Hash, class Compare, class Allocator>
+bool
+operator==(const hash_multiset<T, Hash, Compare, Allocator>& x,
+           const hash_multiset<T, Hash, Compare, Allocator>& y);
+
+template <class T, class Hash, class Compare, class Allocator>
+bool
+operator!=(const hash_multiset<T, Hash, Compare, Allocator>& x,
+           const hash_multiset<T, Hash, Compare, Allocator>& y);
+
+}  // Metrowerks
+*/
+
+#include <mslconfig>
+#include <hash_table>
+
+#ifndef RC_INVOKED
+
+#ifdef __MWERKS__
+#pragma options align=native
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#if _MSL_FORCE_ENUMS_ALWAYS_INT
+		#pragma enumsalwaysint on
+	#else
+		#pragma enumsalwaysint off
+	#endif
+#endif  // _MSL_FORCE_ENUMS_ALWAYS_INT
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#if _MSL_FORCE_ENABLE_BOOL_SUPPORT
+		#pragma bool on
+	#else
+		#pragma bool off
+	#endif
+#endif  // _MSL_FORCE_ENABLE_BOOL_SUPPORT
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	namespace Metrowerks {
+#else
+	#ifndef Metrowerks
+		#define Metrowerks
+	#endif
+#endif  // _MSL_NO_CPP_NAMESPACE
+
+template <class T, class Hash = hash<T>, class Compare = _STD::equal_to<T>,
+          class Allocator = _STD::allocator<T> >
+class hash_set
+{
+public:
+	//  types:
+	typedef T                                     key_type;
+	typedef T                                     value_type;
+	typedef Hash                                  key_hasher;
+	typedef Hash                                  value_hasher;
+	typedef Allocator                             allocator_type;
+	typedef typename Allocator::reference         reference;
+	typedef typename Allocator::const_reference   const_reference;
+	typedef typename Allocator::size_type         size_type;
+	typedef typename Allocator::difference_type   difference_type;
+	typedef typename Allocator::pointer           pointer;
+	typedef typename Allocator::const_pointer     const_pointer;
+	typedef Compare                               key_compare;
+	typedef Compare                               value_compare;
+private:
+	typedef hash_table<value_type, value_hasher, value_compare, Allocator> hash_type;
+public:
+	typedef typename hash_type::const_iterator    iterator;
+	typedef typename hash_type::const_iterator    const_iterator;
+
+	//  lib.set.cons construct/copy/destroy:
+	explicit hash_set(size_type num_buckets = 0)
+		: table_(num_buckets, key_hasher(), key_compare(), 2.F, 4.F, allocator_type()) {}
+	hash_set(size_type num_buckets, const key_hasher& hash)
+		: table_(num_buckets, hash, key_compare(), 2.F, 4.F, allocator_type()) {}
+	hash_set(size_type num_buckets, const key_hasher& hash, const key_compare& comp,
+		float load_factor_limit = 2.F, float growth_factor = 4.F)
+		: table_(num_buckets, hash, comp, load_factor_limit, growth_factor, allocator_type()) {}
+	hash_set(size_type num_buckets, const key_hasher& hash, const key_compare& comp,
+		float load_factor_limit, float growth_factor, const allocator_type& a)
+		: table_(num_buckets, hash, comp, load_factor_limit, growth_factor, a) {}
+
+	template <class InputIterator>
+		hash_set(InputIterator first, InputIterator last, size_type num_buckets = 0)
+			: table_(first, last, false, num_buckets, key_hasher(), key_compare(),
+			  2.F, 4.F, allocator_type()) {}
+	template <class InputIterator>
+		hash_set(InputIterator first, InputIterator last, size_type num_buckets,
+			const key_hasher& hash)
+			: table_(first, last, false, num_buckets, hash, key_compare(),
+			  2.F, 4.F, allocator_type()) {}
+	template <class InputIterator>
+		hash_set(InputIterator first, InputIterator last, size_type num_buckets,
+			const key_hasher& hash, const key_compare& comp,
+			float load_factor_limit = 2.F, float growth_factor = 4.F)
+			: table_(first, last, false, num_buckets, hash, comp,
+			  load_factor_limit, growth_factor, allocator_type()) {}
+	template <class InputIterator>
+		hash_set(InputIterator first, InputIterator last, size_type num_buckets,
+			const key_hasher& hash, const key_compare& comp,
+			float load_factor_limit, float growth_factor, const allocator_type& a)
+			: table_(first, last, false, num_buckets, hash, comp,
+			  load_factor_limit, growth_factor, a) {}
+
+#ifdef _MSL_MOVE
+	hash_set(hash_set&& hm) : table_(_STD::move(hm.table_)) {}
+	hash_set& operator=(hash_set&& hm) {swap(hm); return *this;}
+#endif  // _MSL_MOVE
+
+	allocator_type get_allocator() const {return table_.get_allocator();}
+
+	//  iterators:
+	iterator       begin()       {return table_.begin();}
+	const_iterator begin() const {return table_.begin();}
+	iterator       end()         {return table_.end();}
+	const_iterator end() const   {return table_.end();}
+
+	//  capacity:
+	bool      empty() const                       {return table_.empty();}
+	size_type size() const                        {return table_.size();}
+	size_type max_size() const                    {return table_.max_size();}
+	size_type bucket_count() const                {return table_.bucket_count();}
+	size_type bucket_count(size_type num_buckets) {return table_.bucket_count(num_buckets);}
+	float     load_factor() const                 {return table_.load_factor();}
+	void      load_factor_limit(float lf)         {table_.load_factor_limit(lf);}
+	float     load_factor_limit() const           {return table_.load_factor_limit();}
+	void      growth_factor(float gf)             {table_.growth_factor(gf);}
+	float     growth_factor() const               {return table_.growth_factor();}
+	size_type collision(const_iterator i) const   {return table_.collision(i);}
+
+	//  modifiers:
+	_STD::pair<iterator, bool> insert(const value_type& x)   {return table_.insert_one(x);}
+	iterator insert(iterator, const value_type& x)           {return table_.insert_one(x).first;}
+#ifdef _MSL_MOVE
+	_STD::pair<iterator, bool> insert(value_type&& x)
+		{return table_.insert_one(_STD::move(x));}
+	iterator insert(iterator, value_type&& x)
+		{return table_.insert_one(_STD::move(x)).first;}
+#endif  // _MSL_MOVE
+	template <class InputIterator>
+		void insert(InputIterator first, InputIterator last) {table_.insert_one(first, last);}
+
+	void      erase(iterator position)             {table_.erase(position);}
+	size_type erase(const key_type& x)             {return table_.erase_one(x);}
+	void      erase(iterator first, iterator last) {table_.erase(first, last);}
+
+#ifdef _MSL_MOVE
+	void        swap(hash_set&& y)             {Metrowerks::swap(table_, y.table_);}
+#else
+	void        swap(hash_set& y)              {Metrowerks::swap(table_, y.table_);}
+#endif
+
+	void clear() {table_.clear();}
+
+	//  observers:
+	key_compare   key_comp() const   {return table_.value_comp();}
+	value_compare value_comp() const {return table_.value_comp();}
+	key_hasher    key_hash() const   {return table_.value_hash();}
+	value_hasher  value_hash() const {return table_.value_hash();}
+
+	//  set operations:
+	iterator  find(const key_type& x) const  {return table_.find(x);}
+	size_type count(const key_type& x) const {return table_.count_one(x);}
+
+	_STD::pair<iterator,iterator> equal_range(const key_type& x) const {return table_.equal_range(x);}
+
+	bool invariants() const {return table_.invariants();}
+private:
+	hash_type table_;
+};
+
+template <class T, class Hash, class Allocator>
+bool
+operator==(const hash_set<T, Hash, _STD::equal_to<T>, Allocator>& x,
+           const hash_set<T, Hash, _STD::equal_to<T>, Allocator>& y)
+{
+	if (x.size() != y.size())
+		return false;
+	typedef typename hash_set<T, Hash, _STD::equal_to<T>, Allocator>::const_iterator const_iterator;
+	for (const_iterator i = x.begin(), e = x.end(); i != e; ++i)
+		if (y.count(*i) != 1)
+			return false;
+	return true;
+}
+
+template <class T, class Hash, class Compare, class Allocator>
+bool
+operator==(const hash_set<T, Hash, Compare, Allocator>& x,
+           const hash_set<T, Hash, Compare, Allocator>& y)
+{
+	if (x.size() != y.size())
+		return false;
+	typedef typename hash_set<T, Hash, Compare, Allocator>::const_iterator const_iterator;
+	for (const_iterator i = x.begin(), ex = x.end(), ey = y.end(); i != ex; ++i)
+	{
+		const_iterator j = y.find(*i);
+		if (j == ey)
+			return false;
+		if (!(*i == *j))
+			return false;
+	}
+	return true;
+}
+
+template <class T, class Hash, class Compare, class Allocator>
+inline
+bool
+operator!=(const hash_set<T, Hash, Compare, Allocator>& x,
+           const hash_set<T, Hash, Compare, Allocator>& y)
+{
+	return !(x == y);
+}
+
+template <class T, class Hash, class Compare, class Allocator>
+inline
+void
+swap(hash_set<T, Hash, Compare, Allocator>& x, hash_set<T, Hash, Compare, Allocator>& y)
+{
+	x.swap(y);
+}
+
+#ifdef _MSL_MOVE
+
+template <class T, class Hash, class Compare, class Allocator>
+inline
+void
+swap(hash_set<T, Hash, Compare, Allocator>&& x, hash_set<T, Hash, Compare, Allocator>& y)
+{
+	x.swap(y);
+}
+
+template <class T, class Hash, class Compare, class Allocator>
+inline
+void
+swap(hash_set<T, Hash, Compare, Allocator>& x, hash_set<T, Hash, Compare, Allocator>&& y)
+{
+	x.swap(y);
+}
+
+#endif  // _MSL_MOVE
+
+template <class T, class Hash = hash<T>, class Compare = _STD::equal_to<T>,
+          class Allocator = _STD::allocator<T> >
+class hash_multiset
+{
+public:
+	//  types:
+	typedef T                                     key_type;
+	typedef T                                     value_type;
+	typedef Hash                                  key_hasher;
+	typedef Hash                                  value_hasher;
+	typedef Allocator                             allocator_type;
+	typedef typename Allocator::reference         reference;
+	typedef typename Allocator::const_reference   const_reference;
+	typedef typename Allocator::size_type         size_type;
+	typedef typename Allocator::difference_type   difference_type;
+	typedef typename Allocator::pointer           pointer;
+	typedef typename Allocator::const_pointer     const_pointer;
+	typedef Compare                               key_compare;
+	typedef Compare                               value_compare;
+private:
+	typedef hash_table<value_type, value_hasher, value_compare, Allocator> hash_type;
+public:
+	typedef typename hash_type::const_iterator    iterator;
+	typedef typename hash_type::const_iterator    const_iterator;
+
+	//  lib.set.cons construct/copy/destroy:
+	explicit hash_multiset(size_type num_buckets = 0)
+		: table_(num_buckets, key_hasher(), key_compare(), 2.F, 4.F, allocator_type()) {}
+	hash_multiset(size_type num_buckets, const key_hasher& hash)
+		: table_(num_buckets, hash,  key_compare(), 2.F, 4.F, allocator_type()) {}
+	hash_multiset(size_type num_buckets, const key_hasher& hash, const key_compare& comp,
+		float load_factor_limit = 2.F, float growth_factor = 4.F)
+		: table_(num_buckets, hash, comp, load_factor_limit, growth_factor, allocator_type()) {}
+	hash_multiset(size_type num_buckets, const key_hasher& hash, const key_compare& comp,
+		float load_factor_limit, float growth_factor, const allocator_type& a)
+		: table_(num_buckets, hash, comp, load_factor_limit, growth_factor, a) {}
+
+	template <class InputIterator>
+		hash_multiset(InputIterator first, InputIterator last, size_type num_buckets = 0)
+			: table_(first, last, true, num_buckets, key_hasher(), key_compare(),
+				2.F, 4.F, allocator_type()) {}
+	template <class InputIterator>
+		hash_multiset(InputIterator first, InputIterator last, size_type num_buckets,
+			const key_hasher& hash)
+			: table_(first, last, true, num_buckets, hash, key_compare(),
+				2.F, 4.F, allocator_type()) {}
+	template <class InputIterator>
+		hash_multiset(InputIterator first, InputIterator last, size_type num_buckets,
+			const key_hasher& hash, const key_compare& comp,
+			float load_factor_limit = 2.F, float growth_factor = 4.F)
+			: table_(first, last, true, num_buckets, hash, comp,
+			  load_factor_limit, growth_factor, allocator_type()) {}
+	template <class InputIterator>
+		hash_multiset(InputIterator first, InputIterator last, size_type num_buckets,
+			const key_hasher& hash, const key_compare& comp,
+			float load_factor_limit, float growth_factor, const allocator_type& a)
+			: table_(first, last, true, num_buckets, hash, comp,
+				load_factor_limit, growth_factor, a) {}
+
+#ifdef _MSL_MOVE
+	hash_multiset(hash_multiset&& hm) : table_(_STD::move(hm.table_)) {}
+	hash_multiset& operator=(hash_multiset&& hm) {swap(hm); return *this;}
+#endif  // _MSL_MOVE
+
+	allocator_type get_allocator() const {return table_.get_allocator();}
+
+	//  iterators:
+	iterator       begin()       {return table_.begin();}
+	const_iterator begin() const {return table_.begin();}
+	iterator       end()         {return table_.end();}
+	const_iterator end() const   {return table_.end();}
+
+	//  capacity:
+	bool      empty() const                       {return table_.empty();}
+	size_type size() const                        {return table_.size();}
+	size_type max_size() const                    {return table_.max_size();}
+	size_type bucket_count() const                {return table_.bucket_count();}
+	size_type bucket_count(size_type num_buckets) {return table_.bucket_count(num_buckets);}
+	float     load_factor() const                 {return table_.load_factor();}
+	void      load_factor_limit(float lf)         {table_.load_factor_limit(lf);}
+	float     load_factor_limit() const           {return table_.load_factor_limit();}
+	void      growth_factor(float gf)             {table_.growth_factor(gf);}
+	float     growth_factor() const               {return table_.growth_factor();}
+	size_type collision(const_iterator i) const   {return table_.collision(i);}
+
+	//  modifiers:
+	iterator insert(const value_type& x)             {return table_.insert_multi(x);}
+	iterator insert(iterator p, const value_type& x) {return table_.insert_multi(p, x);}
+#ifdef _MSL_MOVE
+	iterator insert(value_type&& x)
+		{return table_.insert_multi(_STD::move(x));}
+	iterator insert(iterator p, value_type&& x)
+		{return table_.insert_multi(p, _STD::move(x));}
+#endif  // _MSL_MOVE
+	template <class InputIterator>
+		void insert(InputIterator first, InputIterator last) {table_.insert_multi(first, last);}
+
+	void      erase(iterator position)             {table_.erase(position);}
+	size_type erase(const key_type& x)             {return table_.erase_multi(x);}
+	void      erase(iterator first, iterator last) {table_.erase(first, last);}
+
+#ifdef _MSL_MOVE
+	void        swap(hash_multiset&& y)             {Metrowerks::swap(table_, y.table_);}
+#else
+	void        swap(hash_multiset& y)              {Metrowerks::swap(table_, y.table_);}
+#endif
+
+	void clear() {table_.clear();}
+
+	//  observers:
+	key_compare   key_comp() const   {return table_.value_comp();}
+	value_compare value_comp() const {return table_.value_comp();}
+	key_hasher    key_hash() const   {return table_.value_hash();}
+	value_hasher  value_hash() const {return table_.value_hash();}
+
+	//  set operations:
+	iterator  find(const key_type& x) const  {return table_.find(x);}
+	size_type count(const key_type& x) const {return table_.count_multi(x);}
+
+	_STD::pair<iterator,iterator> equal_range(const key_type& x) const {return table_.equal_range(x);}
+
+	bool invariants() const {return table_.invariants();}
+private:
+	hash_type table_;
+};
+
+template <class T, class Hash, class Allocator>
+bool
+operator==(const hash_multiset<T, Hash, _STD::equal_to<T>, Allocator>& x,
+           const hash_multiset<T, Hash, _STD::equal_to<T>, Allocator>& y)
+{
+	if (x.size() != y.size())
+		return false;
+	typedef typename hash_multiset<T, Hash, _STD::equal_to<T>, Allocator>::const_iterator const_iterator;
+	typedef typename hash_multiset<T, Hash, _STD::equal_to<T>, Allocator>::size_type size_type;
+	typedef typename hash_multiset<T, Hash, _STD::equal_to<T>, Allocator>::value_compare value_compare;
+	value_compare c = x.value_comp();
+	for (const_iterator i = x.begin(), e = x.end(); i != e;)
+	{
+		size_type count = 1;
+		const_iterator j = i;
+		for (++j; j != e && c(*i, *j); ++count)
+			++j;
+		if (y.count(*i) != count)
+			return false;
+		i = j;
+	}
+	return true;
+}
+
+template <class T, class Hash, class Compare, class Allocator>
+bool
+operator==(const hash_multiset<T, Hash, Compare, Allocator>& x,
+           const hash_multiset<T, Hash, Compare, Allocator>& y)
+{
+	if (x.size() != y.size())
+		return false;
+	typedef typename hash_multiset<T, Hash, Compare, Allocator>::const_iterator const_iterator;
+	typedef typename hash_multiset<T, Hash, Compare, Allocator>::size_type size_type;
+	typedef typename hash_multiset<T, Hash, Compare, Allocator>::value_compare value_compare;
+	value_compare c = x.value_comp();
+	for (const_iterator i = x.begin(), ex = x.end(); i != ex;)
+	{
+		size_type count = 1;
+		const_iterator j = i;
+		for (++j; j != ex && c(*i, *j); ++count)
+			++j;
+		_STD::pair<const_iterator, const_iterator> p = y.equal_range(*i);
+		if (count != static_cast<size_type>(_STD::distance(p.first, p.second)))
+			return false;
+		if (!_STD::equal(i, j, p.first))
+			return false;
+		i = j;
+	}
+	return true;
+}
+
+template <class T, class Hash, class Compare, class Allocator>
+inline
+bool
+operator!=(const hash_multiset<T, Hash, Compare, Allocator>& x,
+           const hash_multiset<T, Hash, Compare, Allocator>& y)
+{
+	return !(x == y);
+}
+
+template <class T, class Hash, class Compare, class Allocator>
+inline
+void
+swap(hash_multiset<T, Hash, Compare, Allocator>& x, hash_multiset<T, Hash, Compare, Allocator>& y)
+{
+	x.swap(y);
+}
+
+#ifdef _MSL_MOVE
+
+template <class T, class Hash, class Compare, class Allocator>
+inline
+void
+swap(hash_multiset<T, Hash, Compare, Allocator>&& x, hash_multiset<T, Hash, Compare, Allocator>& y)
+{
+	x.swap(y);
+}
+
+template <class T, class Hash, class Compare, class Allocator>
+inline
+void
+swap(hash_multiset<T, Hash, Compare, Allocator>& x, hash_multiset<T, Hash, Compare, Allocator>&& y)
+{
+	x.swap(y);
+}
+
+#endif  // _MSL_MOVE
+
+#ifndef _MSL_DEBUG
+
+template <class T, class Hash, class Compare, class Allocator>
+struct has_trivial_dtor_after_move_ctor<hash_set<T, Hash, Compare, Allocator> >
+{
+	static const bool value = has_trivial_dtor<Allocator>::value &&
+	                          has_trivial_dtor<Compare>::value &&
+	                          has_trivial_dtor<Hash>::value;
+};
+
+template <class T, class Hash, class Compare, class Allocator>
+struct has_trivial_dtor_after_move_ctor<hash_multiset<T, Hash, Compare, Allocator> >
+{
+	static const bool value = has_trivial_dtor<Allocator>::value &&
+	                          has_trivial_dtor<Compare>::value &&
+	                          has_trivial_dtor<Hash>::value;
+};
+
+#endif  // _MSL_DEBUG
+
+template <class T, class Hash, class Compare, class Allocator>
+struct move_with_swap<hash_set<T, Hash, Compare, Allocator> >
+{
+	static const bool value = has_trivial_copy_ctor<Allocator>::value &&
+	                          has_trivial_assignment<Allocator>::value &&
+	                          has_trivial_copy_ctor<Compare>::value &&
+	                          has_trivial_assignment<Compare>::value &&
+	                          has_trivial_copy_ctor<Hash>::value &&
+	                          has_trivial_assignment<Hash>::value;
+};
+
+template <class T, class Hash, class Compare, class Allocator>
+struct move_with_swap<hash_multiset<T, Hash, Compare, Allocator> >
+{
+	static const bool value = has_trivial_copy_ctor<Allocator>::value &&
+	                          has_trivial_assignment<Allocator>::value &&
+	                          has_trivial_copy_ctor<Compare>::value &&
+	                          has_trivial_assignment<Compare>::value &&
+	                          has_trivial_copy_ctor<Hash>::value &&
+	                          has_trivial_assignment<Hash>::value;
+};
+
+template <class T, class Hash, class Compare, class Allocator>
+struct has_nothrow_constructor<hash_set<T, Hash, Compare, Allocator> >
+{
+	static const bool value = has_nothrow_constructor<Allocator>::value &&
+	                          has_nothrow_constructor<Compare>::value &&
+	                          has_nothrow_constructor<Hash>::value;
+};
+
+template <class T, class Hash, class Compare, class Allocator>
+struct has_nothrow_constructor<hash_multiset<T, Hash, Compare, Allocator> >
+{
+	static const bool value = has_nothrow_constructor<Allocator>::value &&
+	                          has_nothrow_constructor<Compare>::value &&
+	                          has_nothrow_constructor<Hash>::value;
+};
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	} // namespace Metrowerks
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#pragma enumsalwaysint reset
+#endif
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#pragma bool reset
+#endif
+
+#ifdef __MWERKS__
+#pragma options align=reset
+#endif
+
+#endif // RC_INVOKED
+
+#endif  // _HASH_SET
+
+// hh 991213 Created
+// hh 010402 Removed 68K CMF support
+// hh 020702 Improved operator == to be order independent
+// hh 030527 Made pseudo movable

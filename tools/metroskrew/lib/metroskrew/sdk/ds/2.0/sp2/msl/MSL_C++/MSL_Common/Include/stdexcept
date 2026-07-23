@@ -1,0 +1,146 @@
+/* MSL
+ * Copyright © 1995-2006 Freescale Corporation.  All rights reserved.
+ *
+ * $Date: 2006/02/09 16:59:23 $
+ * $Revision: 1.25.2.2 $
+ */
+
+// stdexcept
+
+#ifndef _STDEXCEPT
+#define _STDEXCEPT
+
+/*  stdexcept synopsis
+
+namespace std
+{
+	class logic_error     : public exception {...};
+		class domain_error     : public logic_error {...};
+		class invalid_argument : public logic_error {...};
+		class length_error     : public logic_error {...};
+		class out_of_range     : public logic_error {...};
+	class runtime_error   : public exception {...};
+		class range_error      : public runtime_error {...};
+		class overflow_error   : public runtime_error {...};
+		class underflow_error  : public runtime_error {...};
+}  // std
+*/
+
+#include <mslconfig>
+#include <exception>
+#include <MSLstring.h>
+#include <stringfwd>
+
+#ifndef RC_INVOKED // hh 971230
+
+#ifdef __MWERKS__
+#pragma options align=native
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#if _MSL_FORCE_ENUMS_ALWAYS_INT
+		#pragma enumsalwaysint on
+	#else
+		#pragma enumsalwaysint off
+	#endif
+#endif  // _MSL_FORCE_ENUMS_ALWAYS_INT
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#if _MSL_FORCE_ENABLE_BOOL_SUPPORT
+		#pragma bool on
+	#else
+		#pragma bool off
+	#endif
+#endif  // _MSL_FORCE_ENABLE_BOOL_SUPPORT
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	namespace std {
+#endif
+
+	class logic_error : public exception {
+	public:
+		explicit logic_error(const char* what_arg) : what_(what_arg) {}
+		explicit logic_error(const string& what_arg) : what_(what_arg) {}
+		virtual const char* what() const _MSL_NO_THROW {return what_.c_str();}
+	private:
+		_MSLstring what_;
+	};
+
+	class domain_error : public logic_error {
+	public:
+		explicit domain_error(const char* what_arg) : logic_error(what_arg) {}
+		explicit domain_error(const string& what_arg) : logic_error(what_arg) {}
+	};
+
+	class invalid_argument : public logic_error {
+	public:
+		explicit invalid_argument(const char* what_arg) : logic_error(what_arg) {}
+		explicit invalid_argument(const string& what_arg) : logic_error(what_arg) {}
+	};
+
+	class length_error : public logic_error {
+	public:
+		explicit length_error(const char* what_arg) : logic_error(what_arg) {}
+		explicit length_error(const string& what_arg) : logic_error(what_arg) {}
+	};
+
+	class out_of_range : public logic_error {
+	public:
+		explicit out_of_range(const char* what_arg) : logic_error(what_arg) {}
+		explicit out_of_range(const string& what_arg) : logic_error(what_arg) {}
+	};
+
+	class runtime_error : public exception {
+	public:
+		explicit runtime_error(const char* what_arg) : what_(what_arg) {}
+		explicit runtime_error(const string& what_arg) : what_(what_arg) {}
+		virtual const char* what() const _MSL_NO_THROW {return what_.c_str();}
+	private:
+		_MSLstring what_;
+	};
+
+	class range_error : public runtime_error {
+	public:
+		explicit range_error(const char* what_arg) : runtime_error(what_arg) {}
+		explicit range_error(const string& what_arg) : runtime_error(what_arg) {}
+	};
+
+	class overflow_error : public runtime_error {
+	public:
+		explicit overflow_error(const char* what_arg) : runtime_error(what_arg) {}
+		explicit overflow_error(const string& what_arg) : runtime_error(what_arg) {}
+	};
+
+	class underflow_error : public runtime_error {
+	public:
+		explicit underflow_error(const char* what_arg) : runtime_error(what_arg) {}
+		explicit underflow_error(const string& what_arg) : runtime_error(what_arg) {}
+	};
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	} // namespace std
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#pragma enumsalwaysint reset
+#endif
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#pragma bool reset
+#endif
+
+#ifdef __MWERKS__
+#pragma options align=reset
+#endif
+
+#endif  // RC_INVOKED // hh 971230
+
+#endif // _STDEXCEPT
+
+// hh 971226 complete rewrite to break dependence on <string>
+// hh 971230 added RC_INVOKED wrapper
+// hh 990120 changed name of MSIPL flags
+// hh 990314 Added nonstandard const char* constructors to all of the standard exceptions.
+//           This is both a cpu and memory optimization.  This helps avoid instantiating
+//           basic_string unless client code explicitly uses basic_string.
+// hh 010402 Removed 68K CMF support

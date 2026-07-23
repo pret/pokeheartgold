@@ -1,0 +1,239 @@
+{
+  "key": 15457,
+  "messages": [
+    {
+      "id": "msg_0776_00000",
+      "en_US": [
+        "Would you like to play\n",
+        "{STRVAR_3 0, 0, 0}?"
+      ]
+    },
+    {
+      "id": "msg_0776_00001",
+      "en_US": "JOIN"
+    },
+    {
+      "id": "msg_0776_00002",
+      "en_US": "RULES"
+    },
+    {
+      "id": "msg_0776_00003",
+      "en_US": "CANCEL"
+    },
+    {
+      "id": "msg_0776_00004",
+      "en_US": [
+        "You could not join the group playing\n",
+        "{STRVAR_3 0, 0, 0}.\r"
+      ]
+    },
+    {
+      "id": "msg_0776_00005",
+      "en_US": [
+        "A game is in session.\n",
+        "You can’t join until it’s over.\r"
+      ]
+    },
+    {
+      "id": "msg_0776_00006",
+      "en_US": [
+        "Registration for {STRVAR_3 0, 0, 0} \n",
+        "is now closed.\r"
+      ]
+    },
+    {
+      "id": "msg_0776_00007",
+      "en_US": [
+        "Readying the registration system.\n",
+        "Please wait.\r"
+      ]
+    },
+    {
+      "id": "msg_0776_00008",
+      "en_US": [
+        "A member had to drop out.\r",
+        "Your game of {STRVAR_3 0, 0, 0} has\n",
+        "been canceled.\r"
+      ]
+    },
+    {
+      "id": "msg_0776_00009",
+      "garbage": 25
+    },
+    {
+      "id": "msg_0776_00010",
+      "en_US": [
+        "Awaiting other members...\n",
+        "B Button: Cancel"
+      ]
+    },
+    {
+      "id": "msg_0776_00011",
+      "en_US": [
+        "The game will start soon!\n",
+        "Please wait."
+      ]
+    },
+    {
+      "id": "msg_0776_00012",
+      "garbage": 5
+    },
+    {
+      "id": "msg_0776_00013",
+      "garbage": 11
+    },
+    {
+      "id": "msg_0776_00014",
+      "garbage": 11
+    },
+    {
+      "id": "msg_0776_00015",
+      "en_US": "{STRVAR_1 51, 0, 0} seconds to go"
+    },
+    {
+      "id": "msg_0776_00016",
+      "en_US": [
+        "Enough players have gathered.\n",
+        "Let the game begin!"
+      ]
+    },
+    {
+      "id": "msg_0776_00017",
+      "en_US": [
+        "A member had to drop out.\n",
+        "Please register from the start again.\r"
+      ]
+    },
+    {
+      "id": "msg_0776_00018",
+      "en_US": [
+        "The waiting time is up.\n",
+        "Let the game begin!"
+      ]
+    },
+    {
+      "id": "msg_0776_00019",
+      "en_US": [
+        "No members joined during the\n",
+        "registration period.\r",
+        "Please register from the start again.\r"
+      ]
+    },
+    {
+      "id": "msg_0776_00020",
+      "en_US": [
+        "Sorry, this service is too busy.\n",
+        "You may not participate now.\r"
+      ]
+    },
+    {
+      "id": "msg_0776_00021",
+      "en_US": [
+        "The time limit is up.\n",
+        "The {STRVAR_3 0, 0, 0} will be closed.\r"
+      ]
+    },
+    {
+      "id": "msg_0776_00022",
+      "en_US": "The {STRVAR_3 0, 0, 0} is now closed.\r"
+    },
+    {
+      "id": "msg_0776_00023",
+      "garbage": 13
+    },
+    {
+      "id": "msg_0776_00024",
+      "en_US": "YES"
+    },
+    {
+      "id": "msg_0776_00025",
+      "en_US": "NO"
+    },
+    {
+      "id": "msg_0776_00026",
+      "en_US": [
+        "You were the first player to join.\r",
+        "If you drop out, the group will be\n",
+        "disbanded. Is that OK?"
+      ]
+    },
+    {
+      "id": "msg_0776_00027",
+      "en_US": "YES"
+    },
+    {
+      "id": "msg_0776_00028",
+      "en_US": "NO"
+    },
+    {
+      "id": "msg_0776_00029",
+      "en_US": "You chose to drop out.\r"
+    },
+    {
+      "id": "msg_0776_00030",
+      "en_US": [
+        "The Parade will be on later.\n",
+        "Please wait for it!\r"
+      ]
+    },
+    {
+      "id": "msg_0776_00031",
+      "en_US": [
+        "Waiting for the Parade to come by...\n",
+        "B Button: Cancel"
+      ]
+    },
+    {
+      "id": "msg_0776_00032",
+      "en_US": "There’s no more room on the Floats...\r"
+    },
+    {
+      "id": "msg_0776_00033",
+      "en_US": "The Parade is over.\r"
+    },
+    {
+      "id": "msg_0776_00034",
+      "en_US": [
+        "{STRVAR_3 0, 0, 0}\r",
+        "Flick Berries into the mouth of a\n",
+        "rotating SWALOT.\r",
+        "Score bonus points for getting Berries\n",
+        "in consecutively.\r",
+        "Score even more during Fever Time.\r",
+        "Take deliberate aim or fire randomly--\n",
+        "the choice is yours!\r"
+      ]
+    },
+    {
+      "id": "msg_0776_00035",
+      "en_US": [
+        "{STRVAR_3 0, 0, 0}\r",
+        "Roll a ball while keeping a MIME JR.\n",
+        "balanced on top.\r",
+        "If the MIME JR. manages to stay on,\n",
+        "lights flash and the applause begins.\r",
+        "If everyone manages to keep going,\n",
+        "the curtains will rise.\r",
+        "Try to keep your MIME JR. balanced\n",
+        "and on the ball!\r"
+      ]
+    },
+    {
+      "id": "msg_0776_00036",
+      "en_US": [
+        "{STRVAR_3 0, 0, 0}\r",
+        "Press down on the pump from\n",
+        "directly above to pump maximum\f",
+        "air into a balloon until it pops.\r",
+        "Pop balloons until time runs out.\r",
+        "Pressing the pump hard will make it\n",
+        "turn red, increasing its capacity.\r",
+        "The circling WYNAUT can also help.\r",
+        "Line a WYNAUT up with the pump to\n",
+        "boost the air volume, but beware:\r",
+        "lining up the pump with a skinny\n",
+        "WYNAUT reduces the air volume.\r"
+      ]
+    }
+  ]
+}

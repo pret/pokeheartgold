@@ -1,0 +1,623 @@
+{
+  "key": 9233,
+  "messages": [
+    {
+      "id": "msg_0021_00000",
+      "en_US": "Apricorn Box"
+    },
+    {
+      "id": "msg_0021_00001",
+      "en_US": "CLOSE"
+    },
+    {
+      "id": "msg_0021_00002",
+      "en_US": "USE"
+    },
+    {
+      "id": "msg_0021_00003",
+      "en_US": "TASTE"
+    },
+    {
+      "id": "msg_0021_00004",
+      "en_US": "CANCEL"
+    },
+    {
+      "id": "msg_0021_00005",
+      "en_US": "OK"
+    },
+    {
+      "id": "msg_0021_00006",
+      "en_US": "CLOSE"
+    },
+    {
+      "id": "msg_0021_00007",
+      "en_US": "Red Apricorn"
+    },
+    {
+      "id": "msg_0021_00008",
+      "en_US": "Ylw Apricorn"
+    },
+    {
+      "id": "msg_0021_00009",
+      "en_US": "Blu Apricorn"
+    },
+    {
+      "id": "msg_0021_00010",
+      "en_US": "Grn Apricorn"
+    },
+    {
+      "id": "msg_0021_00011",
+      "en_US": "Pnk Apricorn"
+    },
+    {
+      "id": "msg_0021_00012",
+      "en_US": "Wht Apricorn"
+    },
+    {
+      "id": "msg_0021_00013",
+      "en_US": "Blk Apricorn"
+    },
+    {
+      "id": "msg_0021_00014",
+      "en_US": "Holden"
+    },
+    {
+      "id": "msg_0021_00015",
+      "en_US": "Elaine"
+    },
+    {
+      "id": "msg_0021_00016",
+      "en_US": "Gilmore"
+    },
+    {
+      "id": "msg_0021_00017",
+      "en_US": "Krise"
+    },
+    {
+      "id": "msg_0021_00018",
+      "en_US": "Victor"
+    },
+    {
+      "id": "msg_0021_00019",
+      "en_US": "NoFlav Juice"
+    },
+    {
+      "id": "msg_0021_00020",
+      "en_US": "Power Juice"
+    },
+    {
+      "id": "msg_0021_00021",
+      "en_US": "Stam. Juice"
+    },
+    {
+      "id": "msg_0021_00022",
+      "en_US": "Skill Juice"
+    },
+    {
+      "id": "msg_0021_00023",
+      "en_US": "Jump Juice"
+    },
+    {
+      "id": "msg_0021_00024",
+      "en_US": "Speed Juice"
+    },
+    {
+      "id": "msg_0021_00025",
+      "en_US": "{STRVAR_1 51, 0, 0}"
+    },
+    {
+      "id": "msg_0021_00026",
+      "garbage": 0
+    },
+    {
+      "id": "msg_0021_00027",
+      "en_US": "Collected Apricorns are inside."
+    },
+    {
+      "id": "msg_0021_00028",
+      "en_US": "Put the Apricorn in the Apriblender."
+    },
+    {
+      "id": "msg_0021_00029",
+      "en_US": "Haven’t blended enough yet..."
+    },
+    {
+      "id": "msg_0021_00030",
+      "en_US": "Juice is almost done..."
+    },
+    {
+      "id": "msg_0021_00031",
+      "en_US": "Just a bit longer for juice to be ready."
+    },
+    {
+      "id": "msg_0021_00032",
+      "en_US": "The Aprijuice is ready!"
+    },
+    {
+      "id": "msg_0021_00033",
+      "en_US": "Can still put in {STRVAR_1 50, 0, 0} Apricorns."
+    },
+    {
+      "id": "msg_0021_00034",
+      "en_US": "Cannot put in any more Apricorns."
+    },
+    {
+      "id": "msg_0021_00035",
+      "en_US": "What will you do with the Aprijuice?"
+    },
+    {
+      "id": "msg_0021_00036",
+      "en_US": "Tasted the Aprijuice!"
+    },
+    {
+      "id": "msg_0021_00037",
+      "en_US": "Select which Apricorns to give."
+    },
+    {
+      "id": "msg_0021_00038",
+      "en_US": "Give how many?"
+    },
+    {
+      "id": "msg_0021_00039",
+      "en_US": "Give {STRVAR_1 51, 1, 0} {STRVAR_1 8, 0, 0}?"
+    },
+    {
+      "id": "msg_0021_00040",
+      "en_US": [
+        "Red Apricorn\n",
+        "A red Apricorn.\n",
+        "It assails your nostrils."
+      ]
+    },
+    {
+      "id": "msg_0021_00041",
+      "en_US": [
+        "Ylw Apricorn\n",
+        "A yellow Apricorn.\n",
+        "It has an invigorating scent."
+      ]
+    },
+    {
+      "id": "msg_0021_00042",
+      "en_US": [
+        "Blu Apricorn\n",
+        "A blue Apricorn.\n",
+        "It smells a bit like grass."
+      ]
+    },
+    {
+      "id": "msg_0021_00043",
+      "en_US": [
+        "Grn Apricorn\n",
+        "A green Apricorn.\n",
+        "It has a mysterious, aromatic scent."
+      ]
+    },
+    {
+      "id": "msg_0021_00044",
+      "en_US": [
+        "Pnk Apricorn\n",
+        "A pink Apricorn.\n",
+        "It has a nice, sweet scent."
+      ]
+    },
+    {
+      "id": "msg_0021_00045",
+      "en_US": [
+        "Wht Apricorn\n",
+        "A white Apricorn.\n",
+        "It doesn’t smell like anything."
+      ]
+    },
+    {
+      "id": "msg_0021_00046",
+      "en_US": [
+        "Blk Apricorn\n",
+        "A black Apricorn.\n",
+        "It has an indescribable scent."
+      ]
+    },
+    {
+      "id": "msg_0021_00047",
+      "en_US": "Apriblender"
+    },
+    {
+      "id": "msg_0021_00048",
+      "en_US": [
+        "{STRVAR_1 8, 0, 0}\n",
+        "Flavor {STRVAR_1 52, 1, 0} Mildness {STRVAR_1 52, 2, 0}\n",
+        "Can still put in {STRVAR_1 50, 3, 0}"
+      ]
+    },
+    {
+      "id": "msg_0021_00049",
+      "en_US": [
+        "~How to Make Aprijuice~\n",
+        "Collect Apricorns and put them\n",
+        "in the Apriblender!\r",
+        "You can make a drink with one,\n",
+        "but the more Apricorns,\n",
+        "the better the taste!\r",
+        "Put the Apricorns in and blend\n",
+        "by running to the next town!"
+      ]
+    },
+    {
+      "id": "msg_0021_00050",
+      "en_US": "Made Aprijuice!"
+    },
+    {
+      "id": "msg_0021_00051",
+      "en_US": [
+        "The Aprijuice’s flavor\n",
+        "has changed!"
+      ]
+    },
+    {
+      "id": "msg_0021_00052",
+      "en_US": [
+        "The Aprijuice is not done!\n",
+        "Put Apricorns in the Apriblender\n",
+        "and blend by walking!"
+      ]
+    },
+    {
+      "id": "msg_0021_00053",
+      "en_US": [
+        "Can’t put in any more!\n",
+        "Run and shake the Apriblender!"
+      ]
+    },
+    {
+      "id": "msg_0021_00054",
+      "en_US": [
+        "Aprijuice is being made!\n",
+        "Shake by walking!"
+      ]
+    },
+    {
+      "id": "msg_0021_00055",
+      "en_US": [
+        "Improving the Aprijuice!\n",
+        "Shake by walking!"
+      ]
+    },
+    {
+      "id": "msg_0021_00056",
+      "en_US": "It’s a spicy flavor."
+    },
+    {
+      "id": "msg_0021_00057",
+      "en_US": "A pungent flavor!"
+    },
+    {
+      "id": "msg_0021_00058",
+      "en_US": "So spicy, you’ll sweat!"
+    },
+    {
+      "id": "msg_0021_00059",
+      "en_US": "So spicy, it causes coughing!"
+    },
+    {
+      "id": "msg_0021_00060",
+      "en_US": "A resounding spiciness!"
+    },
+    {
+      "id": "msg_0021_00061",
+      "en_US": "The ultimate spiciness!"
+    },
+    {
+      "id": "msg_0021_00062",
+      "en_US": "A little sour."
+    },
+    {
+      "id": "msg_0021_00063",
+      "en_US": "An invigorating flavor."
+    },
+    {
+      "id": "msg_0021_00064",
+      "en_US": "Mmmmmph! Sour!"
+    },
+    {
+      "id": "msg_0021_00065",
+      "en_US": "Unbearably sour!"
+    },
+    {
+      "id": "msg_0021_00066",
+      "en_US": "A deep sourness!"
+    },
+    {
+      "id": "msg_0021_00067",
+      "en_US": "An extremely sour taste!"
+    },
+    {
+      "id": "msg_0021_00068",
+      "en_US": "A refined, dry taste."
+    },
+    {
+      "id": "msg_0021_00069",
+      "en_US": "A strong, dry taste!"
+    },
+    {
+      "id": "msg_0021_00070",
+      "en_US": "Incredibly dry!"
+    },
+    {
+      "id": "msg_0021_00071",
+      "en_US": "A pervadingly dry taste!"
+    },
+    {
+      "id": "msg_0021_00072",
+      "en_US": "A deep-seated, dry taste!"
+    },
+    {
+      "id": "msg_0021_00073",
+      "en_US": "An extremely dry taste!"
+    },
+    {
+      "id": "msg_0021_00074",
+      "en_US": "A somewhat bitter taste."
+    },
+    {
+      "id": "msg_0021_00075",
+      "en_US": "A slightly bitter flavor."
+    },
+    {
+      "id": "msg_0021_00076",
+      "en_US": "An intense bitterness!"
+    },
+    {
+      "id": "msg_0021_00077",
+      "en_US": "A massively bitter taste!"
+    },
+    {
+      "id": "msg_0021_00078",
+      "en_US": "A sinking bitterness!"
+    },
+    {
+      "id": "msg_0021_00079",
+      "en_US": "The peak of bitterness!"
+    },
+    {
+      "id": "msg_0021_00080",
+      "en_US": "A sweet taste."
+    },
+    {
+      "id": "msg_0021_00081",
+      "en_US": "A nice, sweet taste."
+    },
+    {
+      "id": "msg_0021_00082",
+      "en_US": "Very sweet!"
+    },
+    {
+      "id": "msg_0021_00083",
+      "en_US": "A sickly-sweet flavor!"
+    },
+    {
+      "id": "msg_0021_00084",
+      "en_US": "A melt-in-your-mouth sweetness."
+    },
+    {
+      "id": "msg_0021_00085",
+      "en_US": "So incredibly sweet!"
+    },
+    {
+      "id": "msg_0021_00086",
+      "en_US": "A hint of spicy taste..."
+    },
+    {
+      "id": "msg_0021_00087",
+      "en_US": "A little salty..."
+    },
+    {
+      "id": "msg_0021_00088",
+      "en_US": "Quite spicy..."
+    },
+    {
+      "id": "msg_0021_00089",
+      "en_US": "A strong spiciness..."
+    },
+    {
+      "id": "msg_0021_00090",
+      "en_US": "A hint of sourness..."
+    },
+    {
+      "id": "msg_0021_00091",
+      "en_US": "A little sour..."
+    },
+    {
+      "id": "msg_0021_00092",
+      "en_US": "Quite sour..."
+    },
+    {
+      "id": "msg_0021_00093",
+      "en_US": "Intensely sour..."
+    },
+    {
+      "id": "msg_0021_00094",
+      "en_US": "A slight dry taste..."
+    },
+    {
+      "id": "msg_0021_00095",
+      "en_US": "A light dry taste..."
+    },
+    {
+      "id": "msg_0021_00096",
+      "en_US": "A quite dry taste..."
+    },
+    {
+      "id": "msg_0021_00097",
+      "en_US": "An intensely dry taste..."
+    },
+    {
+      "id": "msg_0021_00098",
+      "en_US": "Barely a hint of bitterness..."
+    },
+    {
+      "id": "msg_0021_00099",
+      "en_US": "Just a little bitter..."
+    },
+    {
+      "id": "msg_0021_00100",
+      "en_US": "A strongly bitter taste..."
+    },
+    {
+      "id": "msg_0021_00101",
+      "en_US": "Intensely bitter..."
+    },
+    {
+      "id": "msg_0021_00102",
+      "en_US": "Barely a hint of sweetness..."
+    },
+    {
+      "id": "msg_0021_00103",
+      "en_US": "Just a little sweet..."
+    },
+    {
+      "id": "msg_0021_00104",
+      "en_US": "A strongly sweet taste..."
+    },
+    {
+      "id": "msg_0021_00105",
+      "en_US": "An intensely sweet taste..."
+    },
+    {
+      "id": "msg_0021_00106",
+      "en_US": "A very faint spiciness."
+    },
+    {
+      "id": "msg_0021_00107",
+      "en_US": "Merely a hint of spiciness."
+    },
+    {
+      "id": "msg_0021_00108",
+      "en_US": "The spiciness comes through."
+    },
+    {
+      "id": "msg_0021_00109",
+      "en_US": "A very faint sourness."
+    },
+    {
+      "id": "msg_0021_00110",
+      "en_US": "Merely a hint of sourness."
+    },
+    {
+      "id": "msg_0021_00111",
+      "en_US": "The sourness comes through."
+    },
+    {
+      "id": "msg_0021_00112",
+      "en_US": "A very faint dry taste."
+    },
+    {
+      "id": "msg_0021_00113",
+      "en_US": "A hint of dry taste."
+    },
+    {
+      "id": "msg_0021_00114",
+      "en_US": "The dryness comes through."
+    },
+    {
+      "id": "msg_0021_00115",
+      "en_US": "A very faint bitterness."
+    },
+    {
+      "id": "msg_0021_00116",
+      "en_US": "Merely a hint of bitterness."
+    },
+    {
+      "id": "msg_0021_00117",
+      "en_US": "The bitterness comes through."
+    },
+    {
+      "id": "msg_0021_00118",
+      "en_US": "A very faint sweetness."
+    },
+    {
+      "id": "msg_0021_00119",
+      "en_US": "Merely a hint of sweetness."
+    },
+    {
+      "id": "msg_0021_00120",
+      "en_US": "The sweetness comes through."
+    },
+    {
+      "id": "msg_0021_00121",
+      "en_US": "A disgusting aftertaste."
+    },
+    {
+      "id": "msg_0021_00122",
+      "en_US": "A refreshing aftertaste!"
+    },
+    {
+      "id": "msg_0021_00123",
+      "en_US": "Eliminating spiciness..."
+    },
+    {
+      "id": "msg_0021_00124",
+      "en_US": "Eliminating sourness..."
+    },
+    {
+      "id": "msg_0021_00125",
+      "en_US": "Eliminating dry flavor..."
+    },
+    {
+      "id": "msg_0021_00126",
+      "en_US": "Eliminating bitterness..."
+    },
+    {
+      "id": "msg_0021_00127",
+      "en_US": "Eliminating sweetness..."
+    },
+    {
+      "id": "msg_0021_00128",
+      "en_US": [
+        "The flavor is still quite weak. It\n",
+        "would be good to put in some\n",
+        "Apricorns with color..."
+      ]
+    },
+    {
+      "id": "msg_0021_00129",
+      "en_US": [
+        "Unspeakably incredible flavor!\n",
+        "Its tastes are evenly balanced.\n",
+        "I can’t tell what kind of flavor!"
+      ]
+    },
+    {
+      "id": "msg_0021_00130",
+      "en_US": [
+        "Incredibly unspeakable flavor!\n",
+        "Its tastes are all competing.\n",
+        "I can’t tell what kind of flavor!"
+      ]
+    },
+    {
+      "id": "msg_0021_00131",
+      "en_US": [
+        "There’s absolutely no flavor!\n",
+        "It seems like you need to put in\n",
+        "a colored Apricorn."
+      ]
+    },
+    {
+      "id": "msg_0021_00132",
+      "en_US": [
+        "Spicy {STRVAR_1 51, 0, 0} Sour {STRVAR_1 51, 1, 0} Dry {STRVAR_1 51, 2, 0}\n",
+        "Bitter {STRVAR_1 51, 3, 0} Sweet {STRVAR_1 51, 4, 0}\n",
+        "Mild {STRVAR_1 51, 5, 0} Flavor {STRVAR_1 51, 6, 0}"
+      ]
+    },
+    {
+      "id": "msg_0021_00133",
+      "en_US": [
+        "Now {STRVAR_1 59, 0, 0} Steps Stock {STRVAR_1 50, 1, 0}\n",
+        "1: {STRVAR_1 50, 2, 0} 2: {STRVAR_1 50, 3, 0} 3: {STRVAR_1 50, 4, 0} 4: {STRVAR_1 50, 5, 0} 5: {STRVAR_1 50, 6, 0}\n",
+        "Juice START {STRVAR_1 59, 7, 0} Steps  Left: {STRVAR_1 52, 8, 0}\n",
+        "Mild START {STRVAR_1 59, 9, 0} Steps Left: {STRVAR_1 52, 10, 0}"
+      ]
+    }
+  ]
+}

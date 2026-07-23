@@ -1,0 +1,139 @@
+/* MSL
+ * Copyright © 1995-2006 Freescale Corporation.  All rights reserved.
+ *
+ * $Date: 2006/02/08 20:32:45 $
+ * $Revision: 1.58.2.2 $
+ */
+
+#ifndef _MSL_CWCTYPE
+#define _MSL_CWCTYPE
+
+#include <ansi_parms.h>
+
+#if !_MSL_USING_MW_C_HEADERS
+	#include <wctype.h>
+	
+	#if _MSL_PUT_THIRD_PARTY_C_IN_STD
+		#include <msl_cpp_std_wctype.h>
+	#endif
+#else
+
+#if _MSL_WIDE_CHAR
+
+#include <clocale>								/*- mm 011130 -*/
+#include <eof.h>
+#include <weof.h>
+#include <wchar_t.h>
+#include <wctrans.h>
+#include <wctype_api.h>
+#include <locale_api.h>
+#include <msl_thread_local_data.h>
+
+#ifndef RC_INVOKED
+
+_MSL_BEGIN_NAMESPACE_STD
+_MSL_BEGIN_EXTERN_C
+
+_MSL_IMP_EXP_C wctype_t _MSL_CDECL wctype(const char *) _MSL_CANT_THROW;
+_MSL_IMP_EXP_C int 		_MSL_CDECL iswctype(wint_t, wctype_t) _MSL_CANT_THROW;
+_MSL_IMP_EXP_C int      _MSL_CDECL iswalnum(wint_t) _MSL_CANT_THROW;
+_MSL_IMP_EXP_C int      _MSL_CDECL iswalpha(wint_t) _MSL_CANT_THROW;
+#if _MSL_C99
+_MSL_IMP_EXP_C int 		_MSL_CDECL iswblank(wint_t) _MSL_CANT_THROW;
+#endif /* _MSL_C99 */
+_MSL_IMP_EXP_C int 		_MSL_CDECL iswcntrl(wint_t) _MSL_CANT_THROW;
+_MSL_IMP_EXP_C int 		_MSL_CDECL iswdigit(wint_t) _MSL_CANT_THROW;
+_MSL_IMP_EXP_C int 		_MSL_CDECL iswgraph(wint_t) _MSL_CANT_THROW;
+_MSL_IMP_EXP_C int 		_MSL_CDECL iswlower(wint_t) _MSL_CANT_THROW;
+_MSL_IMP_EXP_C int 		_MSL_CDECL iswprint(wint_t) _MSL_CANT_THROW;
+_MSL_IMP_EXP_C int 		_MSL_CDECL iswpunct(wint_t) _MSL_CANT_THROW;
+_MSL_IMP_EXP_C int 		_MSL_CDECL iswspace(wint_t) _MSL_CANT_THROW;
+_MSL_IMP_EXP_C int 		_MSL_CDECL iswupper(wint_t) _MSL_CANT_THROW;
+_MSL_IMP_EXP_C int 		_MSL_CDECL iswxdigit(wint_t) _MSL_CANT_THROW;
+_MSL_IMP_EXP_C wint_t 	_MSL_CDECL towlower(wint_t) _MSL_CANT_THROW;
+_MSL_IMP_EXP_C wint_t 	_MSL_CDECL towupper(wint_t) _MSL_CANT_THROW;
+
+_MSL_END_EXTERN_C
+
+#if _MSL_USE_INLINE
+
+#if _MSL_C_LOCALE_ONLY || !_MSL_C99
+	#define _MSL_CWMAP_ACCESS __wctype_mapC
+	#define _MSL_CWLOWER_ACCESS __wlower_mapC
+	#define _MSL_CWUPPER_ACCESS __wupper_mapC
+#else
+	#define _MSL_CWMAP_ACCESS _MSL_LOCALDATA(_current_locale).ctype_cmpt_ptr->wctype_map_ptr
+	#define _MSL_CWLOWER_ACCESS _MSL_LOCALDATA(_current_locale).ctype_cmpt_ptr->wlower_map_ptr
+	#define _MSL_CWUPPER_ACCESS _MSL_LOCALDATA(_current_locale).ctype_cmpt_ptr->wupper_map_ptr
+#endif /* _MSL_C_LOCALE_ONLY || !_MSL_C99 */
+
+	_MSL_INLINE int _MSL_CDECL iswalnum(wint_t c) _MSL_CANT_THROW	{return ((c < 0) || (c >= __msl_wcmap_size)) ? 0 : (int)(_MSL_CWMAP_ACCESS[c] & __msl_walnum);}
+	_MSL_INLINE int _MSL_CDECL iswalpha(wint_t c) _MSL_CANT_THROW	{return ((c < 0) || (c >= __msl_wcmap_size)) ? 0 : (int)(_MSL_CWMAP_ACCESS[c] & __msl_walpha);}
+#if _MSL_C99
+	_MSL_INLINE int _MSL_CDECL iswblank(wint_t c) _MSL_CANT_THROW	{return ((c < 0) || (c >= __msl_wcmap_size)) ? 0 : (int)(_MSL_CWMAP_ACCESS[c] & __msl_wblank);}
+#endif /* _MSL_C99 */
+	_MSL_INLINE int _MSL_CDECL iswcntrl(wint_t c) _MSL_CANT_THROW	{return ((c < 0) || (c >= __msl_wcmap_size)) ? 0 : (int)(_MSL_CWMAP_ACCESS[c] & __msl_wcntrl);}
+	_MSL_INLINE int _MSL_CDECL iswdigit(wint_t c) _MSL_CANT_THROW	{return ((c < 0) || (c >= __msl_wcmap_size)) ? 0 : (int)(_MSL_CWMAP_ACCESS[c] & __msl_wdigit);}
+	_MSL_INLINE int _MSL_CDECL iswgraph(wint_t c) _MSL_CANT_THROW	{return ((c < 0) || (c >= __msl_wcmap_size)) ? 0 : (int)(_MSL_CWMAP_ACCESS[c] & __msl_wgraph);}
+	_MSL_INLINE int _MSL_CDECL iswlower(wint_t c) _MSL_CANT_THROW	{return ((c < 0) || (c >= __msl_wcmap_size)) ? 0 : (int)(_MSL_CWMAP_ACCESS[c] & __msl_wlower);}
+	_MSL_INLINE int _MSL_CDECL iswprint(wint_t c) _MSL_CANT_THROW	{return ((c < 0) || (c >= __msl_wcmap_size)) ? 0 : (int)(_MSL_CWMAP_ACCESS[c] & __msl_wprint);}
+	_MSL_INLINE int _MSL_CDECL iswpunct(wint_t c) _MSL_CANT_THROW	{return ((c < 0) || (c >= __msl_wcmap_size)) ? 0 : (int)(_MSL_CWMAP_ACCESS[c] & __msl_wpunct);}
+	_MSL_INLINE int _MSL_CDECL iswspace(wint_t c) _MSL_CANT_THROW	{return ((c < 0) || (c >= __msl_wcmap_size)) ? 0 : (int)(_MSL_CWMAP_ACCESS[c] & __msl_wspace);}
+	_MSL_INLINE int _MSL_CDECL iswupper(wint_t c) _MSL_CANT_THROW	{return ((c < 0) || (c >= __msl_wcmap_size)) ? 0 : (int)(_MSL_CWMAP_ACCESS[c] & __msl_wupper);}
+	_MSL_INLINE int _MSL_CDECL iswxdigit(wint_t c) _MSL_CANT_THROW	{return ((c < 0) || (c >= __msl_wcmap_size)) ? 0 : (int)(_MSL_CWMAP_ACCESS[c] & __msl_wxdigit);}
+	_MSL_INLINE wint_t _MSL_CDECL towlower(wint_t c) _MSL_CANT_THROW{return ((c < 0) || (c >= __msl_wcmap_size)) ? c : (int)(_MSL_CWLOWER_ACCESS[c]);}
+	_MSL_INLINE wint_t _MSL_CDECL towupper(wint_t c) _MSL_CANT_THROW{return ((c < 0) || (c >= __msl_wcmap_size)) ? c : (int)(_MSL_CWUPPER_ACCESS[c]);}
+
+#endif /* _MSL_USE_INLINE */
+
+_MSL_END_NAMESPACE_STD
+
+#endif /* RC_INVOKED */
+
+#endif /* _MSL_WIDE_CHAR */
+
+#endif /* _MSL_USING_MW_C_HEADERS */
+
+#endif /* _MSL_CWCTYPE */
+
+/* Change record:
+ * JCM 980121 First code release.
+ * rjk 980313 added _MSL_IMP_EXP_C
+ * mm  980625 Added declarations for wctob.
+ * mm  980626 Considerable rewrite of the wc classification functions, towlower and towupper to
+ *            match C9x
+ * mm  980627 Inserted missing typedefs for mbstate_t and Wint_t
+ * mm  980629 Added prototypes for wctype() and iswctype().
+ * vss 980817 Added eof.h to get EOF defined, removed <cstdio> because of circular dependency
+ * mm  981020 Added #if _MSL_WIDE_CHAR wrappers
+ * hh  981221 Made __inline methods extern "C++"
+ * mm  990217 Replaced include of cstddef with one of  wchar_t.h
+ * mm  990401 Moved #endif to include defines of iswalnum()... inside !__cplusplus
+ * mm  990807 Deleted definitions of wchar types
+ * mm  000201 Removed declarations for wctob to put them in cwchar in accord with C Standard.
+ * mm  000412 Added #include for wctrans.h
+ * JWW 001208 Added case for targeting Mach-O
+ * cc  010405 removed pragma options align native and reset
+ * cc  010409 updated to JWW new namespace macros
+ * mm  011011 Inserted missing extern C wrappers.
+ * cc  011017 Moved API's
+ * JWW 011027 Use _MSL_USING_MW_C_HEADERS as generic header test instead of specific Mach-O test
+ * mm  011130 Rewrite for implementation of locale
+ * mm  011130a definition of iswblank() moved from cctype, there was an error in the 1997 draft of C9X that put it in ctype.h
+ * cc  011203 Added _MSL_CDECL for new name mangling
+ * cc  011220 Broke down to OS headers
+ * JWW 020130 Changed _MWMT to _MSL_THREADSAFE for consistency's sake
+ * JWW 020305 Changed table lookup masks to use new "wider is better" ctype classification tables
+ * JWW 020308 Make sure values are within lookup table limits before looking things up
+ * hh  020603 Added no throw spec to functions
+ * JWW 020604 Added _MSL_LOCALDATA macro to make multithread code easier to read
+ * hh  020606 Moved WEOF out to its own header
+ * BLC 020924 Fixed implicit conversion warnings
+ * cc  021004 Added support for _MSL_C_LOCALE_ONLY
+ * JWW 021031 Made thread local data available for Mach-O
+ * JWW 030224 Changed __NO_WIDE_CHAR flag into the new more configurable _MSL_WIDE_CHAR
+ * mm  030304 Added _MSL_C99 wrapper
+ * JWW 041108 Allow C89 to use functions from this header
+ * cc  041115 Added _MSL_C99 wrapper to iswblank
+ * JWW 050128 When using MSL C++ on top of a third party C (non-MSL), put C items into std namespace
+ */

@@ -1,0 +1,211 @@
+{
+  "key": 14821,
+  "messages": [
+    {
+      "id": "msg_0606_T26GYM0101_00000",
+      "en_US": [
+        "Jasmine: Thank you for your help\n",
+        "at the Lighthouse...\r",
+        "But this is different. Please allow me to\n",
+        "introduce myself.\r",
+        "I am Jasmine, a Gym Leader.\n",
+        "I use the...clang!\f",
+        "Steel type!\r",
+        "...Do you know about the Steel type?\r",
+        "They are very hard, cold, sharp,\n",
+        "and really strong!\f",
+        "Um... I’m not lying.\r"
+      ]
+    },
+    {
+      "id": "msg_0606_T26GYM0101_00001",
+      "en_US": [
+        "Jasmine: ...You are a better Trainer\n",
+        "than me, in both skill and kindness.\r",
+        "In accordance with League rules,\n",
+        "I confer upon you this Badge.\r"
+      ]
+    },
+    {
+      "id": "msg_0606_T26GYM0101_00002",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} received\n",
+        "the Mineral Badge from Jasmine!"
+      ]
+    },
+    {
+      "id": "msg_0606_T26GYM0101_00003",
+      "en_US": [
+        "Jasmine: With that Badge,\n",
+        "all Pokémon, including traded\f",
+        "Pokémon up to Lv. 70, will obey\f",
+        "you without question.\f",
+        "Um... Please take this, too...\r"
+      ]
+    },
+    {
+      "id": "msg_0606_T26GYM0101_00004",
+      "garbage": 27
+    },
+    {
+      "id": "msg_0606_T26GYM0101_00005",
+      "en_US": [
+        "Jasmine: It is called Iron Tail...\r",
+        "Your Pokémon will hit the target\n",
+        "with its hard tail, occasionally\f",
+        "lowering the target’s Defense..."
+      ]
+    },
+    {
+      "id": "msg_0606_T26GYM0101_00006",
+      "en_US": [
+        "Jasmine: Um...\r",
+        "I don’t know how to say this, but\n",
+        "good luck..."
+      ]
+    },
+    {
+      "id": "msg_0606_T26GYM0101_00007",
+      "en_US": [
+        "Jasmine: Long time, no see.\r",
+        "Um... I’m fine, thank you.\r",
+        "I don’t know how to say this,\n",
+        "but...nothing..."
+      ]
+    },
+    {
+      "id": "msg_0606_T26GYM0101_00008",
+      "en_US": [
+        "Jasmine: Um... Er...\r",
+        "Will you trade your Pokémon\n",
+        "for mine? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0606_T26GYM0101_00009",
+      "en_US": [
+        "Jasmine: Really? Thank you very much!\r",
+        "I’ll be happy with any Pokémon!\r"
+      ]
+    },
+    {
+      "id": "msg_0606_T26GYM0101_00010",
+      "en_US": [
+        "Jasmine: Oh, uh-huh, I see.\n",
+        "That’s disappointing, but I understand."
+      ]
+    },
+    {
+      "id": "msg_0606_T26GYM0101_00011",
+      "en_US": [
+        "Jasmine: Thank you so much.\n",
+        "I’ll take good care of it."
+      ]
+    },
+    {
+      "id": "msg_0606_T26GYM0101_00012",
+      "en_US": [
+        "Jasmine: Don’t you sometimes feel like\n",
+        "scrubbing Steel-type Pokémon?\f",
+        "Don’t you?"
+      ]
+    },
+    {
+      "id": "msg_0606_T26GYM0101_00013",
+      "en_US": "Will you trade {STRVAR_1 1, 1, 0}? {YESNO 0}"
+    },
+    {
+      "id": "msg_0606_T26GYM0101_00014",
+      "en_US": [
+        "Jasmine: I like Eggs, too, but\n",
+        "I’d like a Pokémon, {STRVAR_1 3, 0, 0}.\f",
+        "One that might have a little training..."
+      ]
+    },
+    {
+      "id": "msg_0606_T26GYM0101_00015",
+      "en_US": [
+        "Jasmine: I’d appreciate it so much...\n",
+        "Except that I cannot accept such\f",
+        "a precious Pokémon."
+      ]
+    },
+    {
+      "id": "msg_0606_T26GYM0101_00016",
+      "en_US": [
+        "Jasmine, the Gym Leader?\n",
+        "She’s at the Lighthouse.\r",
+        "She’s been tending to a sick Pokémon.\r",
+        "A strong Trainer is compassionate\n",
+        "at the same time..."
+      ]
+    },
+    {
+      "id": "msg_0606_T26GYM0101_00017",
+      "en_US": [
+        "Jasmine uses Steel-type Pokémon.\r",
+        "She’s trying to hide her tenderness\n",
+        "behind her steely coldness."
+      ]
+    },
+    {
+      "id": "msg_0606_T26GYM0101_00018",
+      "en_US": [
+        "That was awesome.\f",
+        "The Steel type, huh?\f",
+        "That was one heated battle you had!"
+      ]
+    },
+    {
+      "id": "msg_0606_T26GYM0101_00019",
+      "en_US": [
+        "I knew you’d come here.\r",
+        "Thank you for helping the Gym Leader,\n",
+        "but battle is a separate matter.\r",
+        "Go for it!"
+      ]
+    },
+    {
+      "id": "msg_0606_T26GYM0101_00020",
+      "en_US": [
+        "Impressive!\r",
+        "You should continue your journey to\n",
+        "different places.\r",
+        "Since you can use Surf, why don’t you\n",
+        "try it on the Lake of Rage?"
+      ]
+    },
+    {
+      "id": "msg_0606_T26GYM0101_00021",
+      "en_US": [
+        "Giggle...\r",
+        "I know how capable you are\n",
+        "from the Lighthouse.\r",
+        "It’s time you showed that side of\n",
+        "yourself to Jasmine! Good luck!"
+      ]
+    },
+    {
+      "id": "msg_0606_T26GYM0101_00022",
+      "en_US": [
+        "You are amazing...\r",
+        "You should aim even higher, since\n",
+        "you have such potential.\r",
+        "Have you been to Mahogany Town?"
+      ]
+    },
+    {
+      "id": "msg_0606_T26GYM0101_00023",
+      "en_US": "Olivine City Pokémon Gym"
+    },
+    {
+      "id": "msg_0606_T26GYM0101_00024",
+      "en_US": [
+        "Olivine City Pokémon Gym\r",
+        "Leader: Jasmine\n",
+        "Certified Trainer!\f",
+        "{STRVAR_1 3, 0, 0}"
+      ]
+    }
+  ]
+}

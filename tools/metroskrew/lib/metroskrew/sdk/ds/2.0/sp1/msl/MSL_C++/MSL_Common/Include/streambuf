@@ -1,0 +1,659 @@
+/* MSL
+ * Copyright © 1995-2006 Freescale Corporation.  All rights reserved.
+ *
+ * $Date: 2006/02/09 16:59:25 $
+ * $Revision: 1.23.2.2 $
+ */
+
+// streambuf
+
+#ifndef _STREAMBUF
+#define _STREAMBUF
+
+/*  streambuf synopsis
+
+namespace std
+{
+
+template <class charT, class traits = char_traits<charT> >
+class basic_streambuf
+{
+public:
+	//  Types:
+	typedef charT                     char_type;
+	typedef typename traits::int_type int_type;
+	typedef typename traits::pos_type pos_type;
+	typedef typename traits::off_type off_type;
+	typedef traits                    traits_type;
+
+	virtual ~basic_streambuf();
+
+	//  lib.streambuf.locales locales:
+	locale   pubimbue(const locale &loc);
+	locale   getloc() const;
+
+	//  lib.streambuf.buffer buffer and positioning:
+	basic_streambuf<char_type,traits>* pubsetbuf(char_type* s, streamsize n);
+	pos_type pubseekoff(off_type off, ios_base::seekdir way,
+	                                 ios_base::openmode which = ios_base::in | ios_base::out);
+	pos_type pubseekpos(pos_type sp, ios_base::openmode which = ios_base::in | ios_base::out);
+	int      pubsync();
+
+	//  Get and put areas:
+	//  lib.streambuf.pub.get Get area:
+	streamsize in_avail();
+	int_type snextc();
+	int_type sbumpc();
+	int_type sgetc();
+	streamsize sgetn(char_type* s, streamsize  n);
+
+	//  lib.streambuf.pub.pback Putback:
+	int_type sputbackc(char_type c);
+	int_type sungetc();
+
+	//  lib.streambuf.pub.put Put area:
+	int_type   sputc(char_type c);
+	streamsize sputn(const char_type* s, streamsize  n);
+
+protected:
+	basic_streambuf();
+
+	//  lib.streambuf.get.area Get area:
+	char_type* eback() const;
+	char_type* gptr()  const;
+	char_type* egptr() const;
+	void       gbump(int n);
+	void       setg(char_type* gbeg, char_type* gnext, char_type* gend);
+
+	//  lib.streambuf.put.area Put area:
+	char_type* pbase() const;
+	char_type* pptr() const;
+	char_type* epptr() const;
+	void       pbump(int n);
+	void       setp(char_type* pbeg, char_type* pend);
+
+	//  lib.streambuf.virtuals virtual functions:
+	//  lib.streambuf.virt.locales Locales:
+	virtual void imbue(const locale &loc);
+
+	//  lib.streambuf.virt.buffer Buffer management and positioning:
+	virtual basic_streambuf<char_type,traits>* setbuf(char_type* s, streamsize n);
+	virtual pos_type seekoff(off_type off, ios_base::seekdir way,
+	                                      ios_base::openmode which = ios_base::in | ios_base::out);
+	virtual pos_type seekpos(pos_type sp, ios_base::openmode which = ios_base::in | ios_base::out);
+	virtual int      sync();
+
+	//  lib.streambuf.virt.get Get area:
+	virtual int        showmanyc();
+	virtual streamsize xsgetn(char_type* s, streamsize n);
+	virtual int_type   underflow();
+	virtual int_type   uflow();
+
+	//  lib.streambuf.virt.pback Putback:
+	virtual int_type   pbackfail(int_type c = traits::eof());
+
+	//  lib.streambuf.virt.put Put area:
+	virtual streamsize xsputn(const char_type* s, streamsize n);
+	virtual int_type   overflow (int_type c = traits::eof());
+};
+
+typedef basic_streambuf<char>     streambuf;
+typedef basic_streambuf<wchar_t> wstreambuf;
+
+}  // std
+*/
+
+#include <mslconfig>
+
+#ifndef _MSL_NO_IO
+
+#include <iosfwd>
+#include <algorithm>
+#include <string>
+#include <ios>
+#include <localeimp>
+
+#ifndef RC_INVOKED
+
+#ifdef __MWERKS__
+#pragma options align=native
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#if _MSL_FORCE_ENUMS_ALWAYS_INT
+		#pragma enumsalwaysint on
+	#else
+		#pragma enumsalwaysint off
+	#endif
+#endif  // _MSL_FORCE_ENUMS_ALWAYS_INT
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#if _MSL_FORCE_ENABLE_BOOL_SUPPORT
+		#pragma bool on
+	#else
+		#pragma bool off
+	#endif
+#endif  // _MSL_FORCE_ENABLE_BOOL_SUPPORT
+
+#ifdef min
+#undef min
+#endif
+
+#ifdef max
+#undef max
+#endif
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	namespace std {
+#endif
+
+template <class charT, class traits>
+class basic_streambuf
+{
+public:
+
+	//  Types:
+	typedef charT                     char_type;
+	typedef typename traits::int_type int_type;
+	typedef typename traits::pos_type pos_type;
+	typedef typename traits::off_type off_type;
+	typedef traits                    traits_type;
+
+	virtual ~basic_streambuf();
+
+#ifndef _MSL_NO_LOCALE
+	//  lib.streambuf.locales locales:
+	locale pubimbue(const locale &loc);
+	locale getloc() const;
+#endif  // _MSL_NO_LOCALE
+
+	//  lib.streambuf.buffer buffer and positioning:
+	basic_streambuf* pubsetbuf(char_type* s, streamsize n);
+	pos_type pubseekoff(off_type off, ios_base::seekdir way,
+	                                 ios_base::openmode which = ios_base::in | ios_base::out);
+	pos_type pubseekpos(pos_type sp, ios_base::openmode which = ios_base::in | ios_base::out);
+	int      pubsync();
+
+	//  Get and put areas:
+	//  lib.streambuf.pub.get Get area:
+	streamsize in_avail();
+	int_type snextc();
+	int_type sbumpc();
+	int_type sgetc();
+	streamsize sgetn(char_type* s, streamsize  n);
+
+	//  lib.streambuf.pub.pback Putback:
+	int_type sputbackc(char_type c);
+	int_type sungetc();
+
+	//  lib.streambuf.pub.put Put area:
+	int_type   sputc(char_type c);
+	streamsize sputn(const char_type* s, streamsize  n);
+
+protected:
+	basic_streambuf();
+
+#ifdef _MSL_MOVE
+	void swap(basic_streambuf&& rhs);
+#endif
+
+	//  lib.streambuf.get.area Get area:
+	char_type* eback() const;
+	char_type* gptr()  const;
+	char_type* egptr() const;
+	void       gbump(int n);
+	void       setg(char_type* gbeg, char_type* gnext, char_type* gend);
+
+	//  lib.streambuf.put.area Put area:
+	char_type* pbase() const;
+	char_type* pptr() const;
+	char_type* epptr() const;
+	void       pbump(int n);
+	void       setp(char_type* pbeg, char_type* pend);
+
+#ifndef _MSL_NO_LOCALE
+	//  lib.streambuf.virtuals virtual functions:
+	//  lib.streambuf.virt.locales Locales:
+	virtual void imbue(const locale &loc);
+#endif  // _MSL_NO_LOCALE
+
+	//  lib.streambuf.virt.buffer Buffer management and positioning:
+	virtual basic_streambuf* setbuf(char_type* s, streamsize n);
+	virtual pos_type seekoff(off_type off, ios_base::seekdir way,
+	                                      ios_base::openmode which = ios_base::in | ios_base::out);
+	virtual pos_type seekpos(pos_type sp, ios_base::openmode which = ios_base::in | ios_base::out);
+	virtual int      sync();
+
+	//  lib.streambuf.virt.get Get area:
+	virtual streamsize showmanyc();
+	virtual streamsize xsgetn(char_type* s, streamsize n);
+	virtual int_type   underflow();
+	virtual int_type   uflow();
+
+	//  lib.streambuf.virt.pback Putback:
+	virtual int_type   pbackfail(int_type c = traits::eof());
+
+	//  lib.streambuf.virt.put Put area:
+	virtual streamsize xsputn(const char_type* s, streamsize n);
+	virtual int_type   overflow (int_type c = traits::eof());
+private:
+	char_type* gbeg_;
+	char_type* gnext_;
+	char_type* gend_;
+	char_type* pbeg_;
+	char_type* pnext_;
+	char_type* pend_;
+#ifndef _MSL_NO_LOCALE
+	locale loc_;
+#endif
+};
+
+// basic_streambuf Implementation
+
+template <class charT, class traits>
+inline
+basic_streambuf<charT, traits>::~basic_streambuf()
+{
+}
+
+#ifndef _MSL_NO_LOCALE
+
+	template <class charT, class traits>
+	locale
+	basic_streambuf<charT, traits>::pubimbue(const locale &loc)
+	{
+		imbue(loc);
+		locale result = loc_;
+		loc_ = loc;
+		return result;
+	}
+
+	template <class charT, class traits>
+	inline
+	locale
+	basic_streambuf<charT, traits>::getloc() const
+	{
+		return loc_;
+	}
+
+#endif  // _MSL_NO_LOCALE
+
+template <class charT, class traits>
+inline
+basic_streambuf<charT, traits>*
+basic_streambuf<charT, traits>::pubsetbuf(char_type* s, streamsize n)
+{
+	return setbuf(s, n);
+}
+
+template <class charT, class traits>
+inline
+typename basic_streambuf<charT, traits>::pos_type
+basic_streambuf<charT, traits>::pubseekoff(off_type off, ios_base::seekdir way,
+                                           ios_base::openmode which)
+{
+	return seekoff(off, way, which);
+}
+
+template <class charT, class traits>
+inline
+typename basic_streambuf<charT, traits>::pos_type
+basic_streambuf<charT, traits>::pubseekpos(pos_type sp, ios_base::openmode which)
+{
+	return seekpos(sp, which);
+}
+
+template <class charT, class traits>
+inline
+int
+basic_streambuf<charT, traits>::pubsync()
+{
+	return sync();
+}
+
+template <class charT, class traits>
+inline
+streamsize
+basic_streambuf<charT, traits>::in_avail()
+{
+	return gnext_ < gend_ ? static_cast<streamsize>(gend_ - gnext_) : showmanyc();
+}
+
+template <class charT, class traits>
+inline
+typename basic_streambuf<charT, traits>::int_type
+basic_streambuf<charT, traits>::sbumpc()
+{
+	return gnext_ < gend_ ? traits::to_int_type(*gnext_++) : uflow();
+}
+
+template <class charT, class traits>
+inline
+typename basic_streambuf<charT, traits>::int_type
+basic_streambuf<charT, traits>::sgetc()
+{
+	return gnext_ < gend_ ? traits::to_int_type(*gnext_) : underflow();
+}
+
+template <class charT, class traits>
+inline
+typename basic_streambuf<charT, traits>::int_type
+basic_streambuf<charT, traits>::snextc()
+{
+	return traits::eq_int_type(sbumpc(), traits::eof()) ? traits::eof() : sgetc();
+}
+
+template <class charT, class traits>
+inline
+streamsize
+basic_streambuf<charT, traits>::sgetn(char_type* s, streamsize  n)
+{
+	return xsgetn(s, n);
+}
+
+template <class charT, class traits>
+inline
+typename basic_streambuf<charT, traits>::int_type
+basic_streambuf<charT, traits>::sputbackc(char_type c)
+{
+	return gbeg_ < gnext_ && traits::eq(c, gnext_[-1]) ? traits::to_int_type(*--gnext_)
+	                                                   : pbackfail(traits::to_int_type(c));
+}
+
+template <class charT, class traits>
+inline
+typename basic_streambuf<charT, traits>::int_type
+basic_streambuf<charT, traits>::sungetc()
+{
+	return gbeg_ < gnext_ ? traits::to_int_type(*--gnext_) : pbackfail();
+}
+
+template <class charT, class traits>
+inline
+typename basic_streambuf<charT, traits>::int_type
+basic_streambuf<charT, traits>::sputc(char_type c)
+{
+	return pnext_ < pend_ ? traits::to_int_type(*pnext_++ = c)
+	                      : overflow(traits::to_int_type(c));
+}
+
+template <class charT, class traits>
+inline
+streamsize
+basic_streambuf<charT, traits>::sputn(const char_type* s, streamsize  n)
+{
+	return xsputn(s, n);
+}
+
+template <class charT, class traits>
+inline
+basic_streambuf<charT, traits>::basic_streambuf()
+	: gbeg_(0),
+	  gnext_(0),
+	  gend_(0),
+	  pbeg_(0),
+	  pnext_(0),
+	  pend_(0)
+{
+}
+
+#ifdef _MSL_MOVE
+
+template <class charT, class traits>
+void
+basic_streambuf<charT, traits>::swap(basic_streambuf&& rhs)
+{
+#ifndef _MSL_NO_LOCALE
+	_STD::swap(loc_, rhs.loc_);
+#endif
+	_STD::swap(gbeg_, rhs.gbeg_);
+	_STD::swap(gnext_, rhs.gnext_);
+	_STD::swap(gend_, rhs.gend_);
+	_STD::swap(pbeg_, rhs.pbeg_);
+	_STD::swap(pnext_, rhs.pnext_);
+	_STD::swap(pend_, rhs.pend_);
+}
+
+#endif  // _MSL_MOVE
+
+template <class charT, class traits>
+inline
+typename basic_streambuf<charT, traits>::char_type*
+basic_streambuf<charT, traits>::eback() const
+{
+	return gbeg_;
+}
+
+template <class charT, class traits>
+inline
+typename basic_streambuf<charT, traits>::char_type*
+basic_streambuf<charT, traits>::gptr() const
+{
+	return gnext_;
+}
+
+template <class charT, class traits>
+inline
+typename basic_streambuf<charT, traits>::char_type*
+basic_streambuf<charT, traits>::egptr() const
+{
+	return gend_;
+}
+
+template <class charT, class traits>
+inline
+void
+basic_streambuf<charT, traits>::gbump(int n)
+{
+	gnext_ += n;
+}
+
+template <class charT, class traits>
+inline
+void
+basic_streambuf<charT, traits>::setg(char_type* gbeg, char_type* gnext, char_type* gend)
+{
+	gbeg_ = gbeg;
+	gnext_ = gnext;
+	gend_ = gend;
+}
+
+template <class charT, class traits>
+inline
+typename basic_streambuf<charT, traits>::char_type*
+basic_streambuf<charT, traits>::pbase() const
+{
+	return pbeg_;
+}
+
+template <class charT, class traits>
+inline
+typename basic_streambuf<charT, traits>::char_type*
+basic_streambuf<charT, traits>::pptr() const
+{
+	return pnext_;
+}
+
+template <class charT, class traits>
+inline
+typename basic_streambuf<charT, traits>::char_type*
+basic_streambuf<charT, traits>::epptr() const
+{
+	return pend_;
+}
+
+template <class charT, class traits>
+inline
+void
+basic_streambuf<charT, traits>::pbump(int n)
+{
+	pnext_ += n;
+}
+
+template <class charT, class traits>
+inline
+void
+basic_streambuf<charT, traits>::setp(char_type* pbeg, char_type* pend)
+{
+	pbeg_ = pnext_ = pbeg;
+	pend_ = pend;
+}
+
+#ifndef _MSL_NO_LOCALE
+
+	template <class charT, class traits>
+	inline
+	void
+	basic_streambuf<charT, traits>::imbue(const locale&)
+	{
+	}
+
+#endif  // _MSL_NO_LOCALE
+
+template <class charT, class traits>
+inline
+basic_streambuf<charT, traits>*
+basic_streambuf<charT, traits>::setbuf(char_type*, streamsize)
+{
+	return this;
+}
+
+template <class charT, class traits>
+inline
+typename basic_streambuf<charT, traits>::pos_type
+basic_streambuf<charT, traits>::seekoff(off_type, ios_base::seekdir, ios_base::openmode)
+{
+	return pos_type(-1);
+}
+
+template <class charT, class traits>
+inline
+typename basic_streambuf<charT, traits>::pos_type
+basic_streambuf<charT, traits>::seekpos(pos_type, ios_base::openmode)
+{
+	return pos_type(-1);
+}
+
+template <class charT, class traits>
+inline
+int
+basic_streambuf<charT, traits>::sync()
+{
+	return 0;
+}
+
+template <class charT, class traits>
+inline
+streamsize
+basic_streambuf<charT, traits>::showmanyc()
+{
+	return 0;
+}
+
+template <class charT, class traits>
+streamsize
+basic_streambuf<charT, traits>::xsgetn(char_type* s, streamsize n)
+{
+	streamsize i = min(n, static_cast<streamsize>(gend_ - gnext_));
+	if (i > 0)
+	{
+		traits::copy(s, gnext_, static_cast<size_t>(i));
+		s += i;
+		gnext_ += i;
+		n -= i;
+	}
+	for (; n > 0; --n, ++i)
+	{
+		int_type c = sbumpc();
+		if (traits::eq_int_type(c, traits::eof()))
+			break;
+		traits::assign(*s++, traits::to_char_type(c));
+	}
+	return i;
+}
+
+template <class charT, class traits>
+inline
+typename basic_streambuf<charT, traits>::int_type
+basic_streambuf<charT, traits>::underflow()
+{
+	return traits::eof();
+}
+
+template <class charT, class traits>
+inline
+typename basic_streambuf<charT, traits>::int_type
+basic_streambuf<charT, traits>::uflow()
+{
+	return traits::eq_int_type(underflow(), traits::eof()) ? traits::eof()
+	                                                       : traits::to_int_type(*gnext_++);
+}
+
+template <class charT, class traits>
+inline
+typename basic_streambuf<charT, traits>::int_type
+basic_streambuf<charT, traits>::pbackfail(int_type)
+{
+	return traits::eof();
+}
+
+template <class charT, class traits>
+streamsize
+basic_streambuf<charT, traits>::xsputn(const char_type* s, streamsize n)
+{
+	streamsize i = min(n, static_cast<streamsize>(pend_ - pnext_));
+	if (i > 0)
+	{
+		traits::copy(pnext_, s, static_cast<size_t>(i));
+		pnext_ += i;
+		s += i;
+		n -= i;
+	}
+	for (; n > 0; --n, ++i)
+		if (traits::eq_int_type(sputc(*s++), traits::eof()))
+			break;
+	return i;
+}
+
+template <class charT, class traits>
+typename basic_streambuf<charT, traits>::int_type
+basic_streambuf<charT, traits>::overflow(int_type)
+{
+	return traits::eof();
+}
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	} // namespace std
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#pragma enumsalwaysint reset
+#endif
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#pragma bool reset
+#endif
+
+#ifdef __MWERKS__
+#pragma options align=reset
+#endif
+
+#endif // RC_INVOKED
+
+#endif // _MSL_NO_IO
+
+#endif // _STREAMBUF
+
+// hh 971220 fixed MOD_INCLUDE
+// hh 971226 Made include guards standard
+// hh 971226 bkoz added alignment wrapper
+// hh 971226 Changed filename from streambuf.h to streambuf
+// hh 971230 added RC_INVOKED wrapper
+// hh 980129 comment out sleep cycle from basic_streambuf constructor
+// hh 981220 Added typename to appropriate return types
+// hh 990618 Rewrote
+// hh 000130 Installed _MSL_NO_LOCALE
+// hh 010125 Included <localeimp>
+// hh 010301 Protected min and max from macro abuse.
+// hh 010402 Removed 68K CMF support
+// hh 040209 Changed imbue() to do nothing.  locale assignment is now done in pubimbue.

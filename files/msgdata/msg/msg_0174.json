@@ -1,0 +1,113 @@
+{
+  "key": 59823,
+  "messages": [
+    {
+      "id": "msg_0174_00000",
+      "en_US": "Start debug"
+    },
+    {
+      "id": "msg_0174_00001",
+      "en_US": "Select Name"
+    },
+    {
+      "id": "msg_0174_00002",
+      "en_US": "Continue"
+    },
+    {
+      "id": "msg_0174_00003",
+      "en_US": "Opening"
+    },
+    {
+      "id": "msg_0174_00004",
+      "en_US": "Sound test"
+    },
+    {
+      "id": "msg_0174_00005",
+      "en_US": "Pokémon graphics"
+    },
+    {
+      "id": "msg_0174_00006",
+      "en_US": "Back"
+    },
+    {
+      "id": "msg_0174_00007",
+      "en_US": "Debug Fight"
+    },
+    {
+      "id": "msg_0174_00008",
+      "en_US": "Wi-Fi settings"
+    },
+    {
+      "id": "msg_0174_00009",
+      "en_US": "Wi-Fi Test"
+    },
+    {
+      "id": "msg_0174_00010",
+      "en_US": "Trainer graphics"
+    },
+    {
+      "id": "msg_0174_00011",
+      "en_US": "Save data corrupted"
+    },
+    {
+      "id": "msg_0174_00012",
+      "en_US": "Modify RTC"
+    },
+    {
+      "id": "msg_0174_00013",
+      "en_US": "{STRVAR_34 16, 0, 0} {STRVAR_1 51, 1, 0} Time: {STRVAR_1 51, 2, 0}:{STRVAR_1 51, 3, 0}"
+    },
+    {
+      "id": "msg_0174_00014",
+      "en_US": "ダンジョンカットイン"
+    },
+    {
+      "id": "msg_0174_00015",
+      "en_US": "ＰＨＣつうしんテスト"
+    },
+    {
+      "id": "msg_0174_00016",
+      "en_US": "Destroy the outside saved file"
+    },
+    {
+      "id": "msg_0174_00017",
+      "en_US": "ＮＰＴコンティニュ－"
+    },
+    {
+      "id": "msg_0174_00018",
+      "en_US": "Font Viewer"
+    },
+    {
+      "id": "msg_0174_00019",
+      "en_US": "SYSTEM (CARD)"
+    },
+    {
+      "id": "msg_0174_00020",
+      "en_US": "TALK (CARD)"
+    },
+    {
+      "id": "msg_0174_00021",
+      "en_US": "BUTTON (CARD)"
+    },
+    {
+      "id": "msg_0174_00022",
+      "en_US": "TOUCH (CARD)"
+    },
+    {
+      "id": "msg_0174_00023",
+      "en_US": "PHC (CARD)"
+    },
+    {
+      "id": "msg_0174_00024",
+      "en_US": "SYSTEM (MEMORY)"
+    },
+    {
+      "id": "msg_0174_00025",
+      "en_US": "TALK (MEMORY)"
+    },
+    {
+      "id": "msg_0174_00026",
+      "en_US": "Specify ID"
+    }
+  ]
+}

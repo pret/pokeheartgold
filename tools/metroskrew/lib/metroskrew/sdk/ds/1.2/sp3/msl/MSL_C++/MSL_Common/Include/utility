@@ -1,0 +1,354 @@
+/* Metrowerks Standard Library
+ * Copyright © 1995-2004 Metrowerks Corporation.  All rights reserved.
+ *
+ * $Date: 2004/04/05 01:33:46 $
+ * $Revision: 1.22.4.3 $
+ */
+
+// utility
+
+#ifndef  _UTILITY
+#define  _UTILITY
+
+/*  utility synopsis
+
+namespace std
+{
+namespace rel_ops
+{
+	template<class T> bool operator!=(const T&, const T&);
+	template<class T> bool operator> (const T&, const T&);
+	template<class T> bool operator<=(const T&, const T&);
+	template<class T> bool operator>=(const T&, const T&);
+}  // rel_ops
+
+	//  pair:
+
+template <class T1, class T2>
+struct pair
+{
+	typedef T1 first_type;
+	typedef T2 second_type;
+
+	T1 first;
+	T2 second;
+	pair();
+	pair(const T1& x, const T2& y);
+	template<class U, class V> pair(const pair<U, V>& p);
+};
+
+template <class T1, class T2> bool operator==(const pair<T1,T2>&, const pair<T1,T2>&);
+template <class T1, class T2> bool operator< (const pair<T1,T2>&, const pair<T1,T2>&);
+template <class T1, class T2> bool operator!=(const pair<T1,T2>&, const pair<T1,T2>&);
+template <class T1, class T2> bool operator> (const pair<T1,T2>&, const pair<T1,T2>&);
+template <class T1, class T2> bool operator>=(const pair<T1,T2>&, const pair<T1,T2>&);
+template <class T1, class T2> bool operator<=(const pair<T1,T2>&, const pair<T1,T2>&);
+
+template <class T1, class T2> pair<T1,T2> make_pair(const T1&, const T2&);
+
+}  // std
+*/
+
+#include <mslconfig>
+
+#include <msl_utility>
+
+#ifndef RC_INVOKED
+
+#ifdef __MWERKS__
+#pragma options align=native
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#if _MSL_FORCE_ENUMS_ALWAYS_INT
+		#pragma enumsalwaysint on
+	#else
+		#pragma enumsalwaysint off
+	#endif
+#endif
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#if _MSL_FORCE_ENABLE_BOOL_SUPPORT
+		#pragma bool on
+	#else
+		#pragma bool off
+	#endif
+#endif
+
+_MSL_START_TR1_NAMESPACE
+
+class nat {nat();};
+
+template <class T0 = nat, class T1 = nat, class T2 = nat, class T3 = nat, class T4 = nat,
+          class T5 = nat, class T6 = nat, class T7 = nat, class T8 = nat, class T9 = nat>
+class tuple;
+
+_MSL_END_TR1_NAMESPACE
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	namespace std {
+#endif
+
+//  lib.operators, operators:
+#ifndef _MSL_NO_CPP_NAMESPACE
+	namespace rel_ops {
+#endif
+
+	template<class T>
+	inline
+	bool
+	operator!=(const T& x, const T& y)
+	{
+		return static_cast<bool>(!(x == y));
+	}
+
+	template<class T>
+	inline
+	bool operator> (const T& x, const T& y)
+	{
+		return static_cast<bool>(y < x);
+	}
+
+	template<class T>
+	inline
+	bool
+	operator<=(const T& x, const T& y)
+	{
+		return static_cast<bool>(!(y < x));
+	}
+
+	template<class T>
+	inline
+	bool
+	operator>=(const T& x, const T& y)
+	{
+		return static_cast<bool>(!(x < y));
+	}
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	}  // std::rel_ops
+#endif
+
+//  lib.pairs, pairs:
+template <class T1, class T2>
+struct pair
+{
+	typedef T1 first_type;
+	typedef T2 second_type;
+
+	T1 first;
+	T2 second;
+	pair();
+	pair(const T1& x, const T2& y);
+#ifndef _MSL_NO_MEMBER_TEMPLATE
+#ifndef _MSL_MUST_INLINE_MEMBER_TEMPLATE
+	template<class U, class V> pair(const pair<U, V>& p);
+#else
+	template<class U, class V>
+	inline
+	pair(const pair<U, V>& p)
+		: first(p.first),
+		  second(p.second)
+	{
+	}
+#endif
+#endif
+
+	void swap(pair& p) {_STD::swap(*this, p);}
+
+	template<class U, class V> pair(const _TR1::tuple<U, V>& p);
+	template<class U, class V> pair& operator=(const _TR1::tuple<U, V>& p);
+};
+
+template <class T1, class T2>
+inline
+pair<T1, T2>::pair()
+	: first(),
+	  second()
+{
+}
+
+template <class T1, class T2>
+inline
+pair<T1, T2>::pair(const T1& x, const T2& y)
+	: first(x),
+	  second(y)
+{
+}
+
+#ifndef _MSL_NO_MEMBER_TEMPLATE
+#ifndef _MSL_MUST_INLINE_MEMBER_TEMPLATE
+
+	template <class T1, class T2>
+	template<class U, class V>
+	inline
+	pair<T1, T2>::pair(const pair<U, V>& p)
+		: first(p.first),
+		  second(p.second)
+	{
+	}
+
+#endif
+#endif
+
+template <class T1, class T2>
+inline
+bool
+operator==(const pair<T1,T2>& x, const pair<T1,T2>& y)
+{
+	return static_cast<bool>(x.first == y.first && x.second == y.second);
+}
+
+template <class T1, class T2>
+inline
+bool
+operator< (const pair<T1,T2>& x, const pair<T1,T2>& y)
+{
+	return static_cast<bool>(x.first < y.first ||
+	                      (!(y.first < x.first) && x.second < y.second));
+}
+
+template <class T1, class T2>
+inline
+bool
+operator!=(const pair<T1,T2>& x, const pair<T1,T2>& y)
+{
+	return static_cast<bool>(!(x == y));
+}
+
+template <class T1, class T2>
+inline
+bool
+operator> (const pair<T1,T2>& x, const pair<T1,T2>& y)
+{
+	return y < x;
+}
+
+template <class T1, class T2>
+inline
+bool
+operator>=(const pair<T1,T2>& x, const pair<T1,T2>& y)
+{
+	return static_cast<bool>(!(x < y));
+}
+
+template <class T1, class T2>
+inline
+bool
+operator<=(const pair<T1,T2>& x, const pair<T1,T2>& y)
+{
+	return static_cast<bool>(!(y < x));
+}
+
+// make_pair is in flux right now.  The standard version does not work with
+// built-in c-strings.  There are two possible solutions in front of the C++
+// committee.  The std, but broken version is commented out, and the most
+// likely solution is commented in.
+// hh 000419
+
+//template <class T1, class T2>
+//inline
+//pair<T1, T2>
+//make_pair(const T1& x, const T2& y)
+//{
+//	return pair<T1, T2>(x, y);
+//}
+
+template <class T1, class T2>
+inline
+pair<T1, T2>
+make_pair(T1 x, T2 y)
+{
+	return pair<T1, T2>(x, y);
+}
+
+template <class T1, class T2>
+inline
+void
+swap(pair<T1, T2>& x, pair<T1, T2>& y)
+{
+	swap(x.first, y.first);
+	swap(x.second, y.second);
+}
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	} // namespace std
+#endif
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	namespace Metrowerks {
+#else
+	#ifndef Metrowerks
+		#define Metrowerks
+	#endif
+#endif
+
+template<class T1, class T2>
+struct is_zero_default_contructible<_STD::pair<T1, T2> >
+{
+	static const bool value = is_zero_default_contructible<T1>::value &&
+	                          is_zero_default_contructible<T2>::value;
+};
+
+template<class T1, class T2>
+struct has_trivial_dtor_after_move_ctor<_STD::pair<T1, T2> >
+{
+	static const bool value = has_trivial_dtor_after_move_ctor<T1>::value &&
+	                          has_trivial_dtor_after_move_ctor<T2>::value;
+};
+
+template<class T1, class T2>
+struct has_trivial_move_ctor<_STD::pair<T1, T2> >
+{
+	static const bool value = has_trivial_move_ctor<T1>::value &&
+	                          has_trivial_move_ctor<T2>::value;
+};
+
+template<class T1, class T2>
+struct move_with_swap<_STD::pair<T1, T2> >
+{
+	static const bool value = move_with_swap<T1>::value &&
+	                          move_with_swap<T2>::value;
+};
+
+template<class T1, class T2>
+struct has_nothrow_constructor<_STD::pair<T1, T2> >
+{
+	static const bool value = has_nothrow_constructor<T1>::value &&
+	                          has_nothrow_constructor<T2>::value;
+};
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	}  // namespace Metrowerks
+#endif
+
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#pragma enumsalwaysint reset
+#endif
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#pragma bool reset
+#endif
+
+#ifdef __MWERKS__
+#pragma options align=reset
+#endif
+
+#endif // RC_INVOKED
+
+#endif // _UTILITY
+
+// hh 971220 fixed MOD_INCLUDE
+// hh 971226 Changed filename from utility.h to utility
+// hh 971226 Made include guards standard
+// hh 971226 added alignment wrapper
+// hh 971230 added RC_INVOKED wrapper
+// hh 980130 commented out <iosfwd>
+// hh 990426 Rewrote.
+// hh 000130 Patched make_pair to work better with string literals
+// hh 010402 Removed 68K CMF support
+// hh 010508 Reworked default pair constructor per issue 265
+// hh 030421 Added std::tr1::nat (not official)
+// hh 030527 Made pair pseudo movable
+// hh 031204 Made pair swap-aware

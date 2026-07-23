@@ -1,0 +1,443 @@
+/* MSL
+ * Copyright © 1995-2006 Freescale Corporation.  All rights reserved.
+ *
+ * $Date: 2006/02/08 20:32:24 $
+ * $Revision: 1.41.2.2 $
+ */
+
+#ifndef _MSL_CINTTYPES
+#define _MSL_CINTTYPES
+
+#include <ansi_parms.h>
+
+#if _MSL_C99			/*- mm 030301 -*/
+
+#if !_MSL_USING_MW_C_HEADERS
+	#include <inttypes.h>
+	
+	#if _MSL_PUT_THIRD_PARTY_C_IN_STD
+		#include <msl_cpp_std_inttypes.h>
+	#endif
+#else
+
+/*
+ *  Based on the C99 Standard for inttypes.h
+ */
+
+/*
+ * 7.8 Format conversion of integer types <inttypes.h>
+ *
+ * 1 The header <inttypes.h> includes the header <stdint.h> and extends it with
+ *   additional facilities provided by hosted implementations.
+ */
+
+#include <cstdint>
+#include <cstdlib>
+#if _MSL_WIDE_CHAR
+	#include <wcstoul.h>
+#endif /* _MSL_WIDE_CHAR */
+
+/*
+ * 2 It declares functions for manipulating greatest-width integers and converting numeric
+ *   character strings to greatest-width integers, and it declares the type imaxdiv_t
+ *   which is a structure type that is the type of the value returned by the imaxdiv function.
+ *   For each type declared in <stdint.h>, it defines corresponding macros for conversion
+ *   specifiers for use with the formatted input/output functions.181)
+ *   Forward references: integer types <stdint.h> (7.18), formatted input/output
+ *   functions (7.19.6), formatted wide character input/output functions (7.24.2).
+ *   __________________
+ *   181) See ‘‘future library directions’’ (7.26.4).
+ */
+
+#include <div_t.h>
+
+#ifndef RC_INVOKED
+
+_MSL_BEGIN_NAMESPACE_STD
+_MSL_BEGIN_EXTERN_C
+
+#if _MSL_LONGLONG
+	typedef lldiv_t imaxdiv_t;
+#else
+	typedef ldiv_t imaxdiv_t;
+#endif /* _MSL_LONGLONG */
+
+/*
+ * 7.8.1 Macros for format specifiers
+ * 
+ * 1 Each of the following object-like macros 182) expands to a character string literal
+ *   containing a conversion specifier, possibly modified by a length modifier, suitable for use
+ *   within the format argument of a formatted input/output function when converting the
+ *   corresponding integer type. These macro names have the general form of PRI (character
+ *   string literals for the fprintf and fwprintf family) or SCN (character string literals
+ *   for the fscanf and fwscanf family),183) followed by the conversion specifier,
+ *   followed by a name corresponding to a similar type name in 7.18.1. In these names, N
+ *   represents the width of the type as described in 7.18.1. For example, PRIdFAST32 can
+ *   be used in a format string to print the value of an integer of type int_fast32_t.
+ *   __________________
+ *   182) C++ implementations should define these macros only when _ _STDC_FORMAT_MACROS is defined
+ *   before <inttypes.h> is included.
+ *   183) Separate macros are given for use with fprintf and fscanf functions because, in the general case,
+ *   different format specifiers may be required for fprintf and fscanf, even when the type is the
+ *   same.
+ *
+ * 2 The fprintf macros for signed integers are:
+ *	 PRIdN 		PRIdLEASTN 		PRIdFASTN 		PRIdMAX 		PRIdPTR
+ *	 PRIiN 		PRIiLEASTN 		PRIiFASTN 		PRIiMAX 		PRIiPTR
+ */
+
+#if (!defined(__cplusplus)) || defined(__STDC_FORMAT_MACROS)
+	#define PRId8   	"d"
+	#define PRId16		"hd"
+	#define PRId32		"ld"
+	#define PRId64		"lld"
+	#define PRIdLEAST8  "d"
+	#define PRIdLEAST16	"hd"
+	#define PRIdLEAST32	"ld"
+	#define PRIdLEAST64	"lld"
+	#define PRIdFAST8   "d"
+	#define PRIdFAST16	"hd"
+	#define PRIdFAST32	"ld"
+	#define PRIdFAST64	"lld"
+	#define PRIdMAX		"lld"
+	#define PRIdPTR		"ld"
+	#define PRIi8		"i"
+	#define PRIi16		"hi"
+	#define PRIi32		"li"
+	#define PRIi64		"lli"
+	#define PRIiLEAST8	"i"
+	#define PRIiLEAST16	"hi"
+	#define PRIiLEAST32	"li"
+	#define PRIiLEAST64	"lli"
+	#define PRIiFAST8	"i"
+	#define PRIiFAST16	"hi"
+	#define PRIiFAST32	"li"
+	#define PRIiFAST64	"lli"
+	#define PRIiMAX		"lli"
+	#define PRIiPTR		"li"
+#endif /*(!defined(__cplusplus)) || defined(__STDC_FORMAT_MACROS)*/
+
+/*	
+ * 3 The fprintf macros for unsigned integers are:
+ *   PRIoN 		PRIoLEASTN 		PRIoFASTN 		PRIoMAX 		PRIoPTR
+ * 	 PRIuN 		PRIuLEASTN 		PRIuFASTN 		PRIuMAX 		PRIuPTR
+ *   PRIxN 		PRIxLEASTN 		PRIxFASTN 		PRIxMAX 		PRIxPTR
+ * 	 PRIXN 		PRIXLEASTN 		PRIXFASTN 		PRIXMAX 		PRIXPTR
+ */
+
+#if (!defined(__cplusplus)) || defined(__STDC_FORMAT_MACROS)
+	#define PRIo8   	"o"
+	#define PRIo16		"ho"
+	#define PRIo32		"lo"
+	#define PRIo64		"llo"
+	#define PRIoLEAST8  "o"
+	#define PRIoLEAST16	"ho"
+	#define PRIoLEAST32	"lo"
+	#define PRIoLEAST64	"llo"
+	#define PRIoFAST8   "o"
+	#define PRIoFAST16	"ho"
+	#define PRIoFAST32	"lo"
+	#define PRIoFAST64	"llo"
+	#define PRIoMAX		"llo"
+	#define PRIoPTR		"lo"
+	#define PRIu8		"u"
+	#define PRIu16		"hu"
+	#define PRIu32		"lu"
+	#define PRIu64		"llu"
+	#define PRIuLEAST8	"u"
+	#define PRIuLEAST16	"hu"
+	#define PRIuLEAST32	"lu"
+	#define PRIuLEAST64	"llu"
+	#define PRIuFAST8	"u"
+	#define PRIuFAST16	"hu"
+	#define PRIuFAST32	"lu"
+	#define PRIuFAST64	"llu"
+	#define PRIuMAX		"llu"
+	#define PRIuPTR		"lu"
+	#define PRIx8		"x"
+	#define PRIx16		"hx"
+	#define PRIx32		"lx"
+	#define PRIx64		"llx"
+	#define PRIxLEAST8	"x"
+	#define PRIxLEAST16	"hx"
+	#define PRIxLEAST32	"lx"
+	#define PRIxLEAST64	"llx"
+	#define PRIxFAST8	"x"
+	#define PRIxFAST16	"hx"
+	#define PRIxFAST32	"lx"
+	#define PRIxFAST64	"llx"
+	#define PRIxMAX		"llx"
+	#define PRIxPTR		"lx"
+	#define PRIX8		"X"
+	#define PRIX16		"hX"
+	#define PRIX32		"lX"
+	#define PRIX64		"llX"
+	#define PRIXLEAST8	"X"
+	#define PRIXLEAST16	"hX"
+	#define PRIXLEAST32	"lX"
+	#define PRIXLEAST64	"llX"
+	#define PRIXFAST8	"X"
+	#define PRIXFAST16	"hX"
+	#define PRIXFAST32	"lX"
+	#define PRIXFAST64	"llX"
+	#define PRIXMAX		"llX"
+	#define PRIXPTR		"lX"
+#endif /*(!defined(__cplusplus)) || defined(__STDC_FORMAT_MACROS)*/
+
+/*	
+ * 4 The fscanf macros for signed integers are:
+ *	 SCNdN 		SCNdLEASTN 		SCNdFASTN 		SCNdMAX 		SCNdPTR
+ * 	 SCNiN 		SCNiLEASTN 		SCNiFASTN 		SCNiMAX 		SCNiPTR
+ */
+
+#if (!defined(__cplusplus)) || defined(__STDC_FORMAT_MACROS)
+	#define SCNd8   	"hhd"
+	#define SCNd16		"hd"
+	#define SCNd32		"ld"
+	#define SCNd64		"lld"
+	#define SCNdLEAST8  "hhd"
+	#define SCNdLEAST16	"hd"
+	#define SCNdLEAST32	"ld"
+	#define SCNdLEAST64	"lld"
+	#define SCNdFAST8   "hhd"
+	#define SCNdFAST16	"hd"
+	#define SCNdFAST32	"ld"
+	#define SCNdFAST64	"lld"
+	#define SCNdMAX		"lld"
+	#define SCNdPTR		"ld"
+	#define SCNi8		"hhi"
+	#define SCNi16		"hi"
+	#define SCNi32		"li"
+	#define SCNi64		"lli"
+	#define SCNiLEAST8	"hhi"
+	#define SCNiLEAST16	"hi"
+	#define SCNiLEAST32	"li"
+	#define SCNiLEAST64	"lli"
+	#define SCNiFAST8	"hhi"
+	#define SCNiFAST16	"hi"
+	#define SCNiFAST32	"li"
+	#define SCNiFAST64	"lli"
+	#define SCNiMAX		"lli"
+	#define SCNiPTR		"li"
+#endif /*(!defined(__cplusplus)) || defined(__STDC_FORMAT_MACROS)*/
+
+/*	
+ * 5 The fscanf macros for unsigned integers are:
+ * 	 SCNoN 		SCNoLEASTN 		SCNoFASTN 		SCNoMAX 		SCNoPTR
+ * 	 SCNuN 		SCNuLEASTN 		SCNuFASTN 		SCNuMAX 		SCNuPTR
+ * 	 SCNxN 		SCNxLEASTN 		SCNxFASTN 		SCNxMAX 		SCNxPTR
+ */
+
+#if (!defined(__cplusplus)) || defined(__STDC_FORMAT_MACROS)
+	#define SCNo8   	"hho"
+	#define SCNo16		"ho"
+	#define SCNo32		"lo"
+	#define SCNo64		"llo"
+	#define SCNoLEAST8  "hho"
+	#define SCNoLEAST16	"ho"
+	#define SCNoLEAST32	"lo"
+	#define SCNoLEAST64	"llo"
+	#define SCNoFAST8   "hho"
+	#define SCNoFAST16	"ho"
+	#define SCNoFAST32	"lo"
+	#define SCNoFAST64	"llo"
+	#define SCNoMAX		"llo"
+	#define SCNoPTR		"lo"
+	#define SCNu8		"hhu"
+	#define SCNu16		"hu"
+	#define SCNu32		"lu"
+	#define SCNu64		"llu"
+	#define SCNuLEAST8	"hhu"
+	#define SCNuLEAST16	"hu"
+	#define SCNuLEAST32	"lu"
+	#define SCNuLEAST64	"llu"
+	#define SCNuFAST8	"hhu"
+	#define SCNuFAST16	"hu"
+	#define SCNuFAST32	"lu"
+	#define SCNuFAST64	"llu"
+	#define SCNuMAX		"llu"
+	#define SCNuPTR		"lu"
+	#define SCNx8		"hhx"
+	#define SCNx16		"hx"
+	#define SCNx32		"lx"
+	#define SCNx64		"llx"
+	#define SCNxLEAST8	"hhx"
+	#define SCNxLEAST16	"hx"
+	#define SCNxLEAST32	"lx"
+	#define SCNxLEAST64	"llx"
+	#define SCNxFAST8	"hhx"
+	#define SCNxFAST16	"hx"
+	#define SCNxFAST32	"lx"
+	#define SCNxFAST64	"llx"
+	#define SCNxMAX		"llx"
+	#define SCNxPTR		"lx"
+#endif /*(!defined(__cplusplus)) || defined(__STDC_FORMAT_MACROS)*/
+
+/*	
+ * 6 For each type that the implementation provides in <stdint.h>, the corresponding
+ *   fprintf macros shall be defined and the corresponding fscanf macros shall be
+ *   defined unless the implementation does not have a suitable fscanf length modifier for
+ *   the type.
+ *
+ * 7 EXAMPLE
+ *		#include <inttypes.h>
+ *		#include <wchar.h>
+ *		int main(void)
+ *		{
+ *			uintmax_t i = UINTMAX_MAX; // this type always exists
+ *			wprintf(L"The largest integer value is %020" PRIxMAX "\n", i);
+ *			return 0;
+ *		}
+ *		
+ * 7.8.2 Functions for greatest-width integer types
+ *
+ * 7.8.2.1 The imaxabs function
+ * Synopsis
+ * 1 #include <inttypes.h>
+ *	 intmax_t imaxabs(intmax_t j);
+ *	 Description
+ * 2 The imaxabs function computes the absolute value of an integer j. If the result cannot
+ * 	 be represented, the behavior is undefined.184)
+ *	 __________________
+ *	 184) The absolute value of the most negative number cannot be represented in two’s complement.
+ *
+ *	 Returns
+ * 3 The imaxabs function returns the absolute value.
+ */
+
+#if _MSL_LONGLONG
+	intmax_t _MSL_CDECL imaxabs(intmax_t j) _MSL_CANT_THROW;
+	_MSL_INLINE intmax_t _MSL_CDECL imaxabs(intmax_t j) _MSL_CANT_THROW
+       {return(llabs(j));}
+#else
+	intmax_t _MSL_CDECL imaxabs(intmax_t j) _MSL_CANT_THROW;
+	_MSL_INLINE intmax_t _MSL_CDECL imaxabs(intmax_t j) _MSL_CANT_THROW
+       {return(labs(j));}
+#endif /* _MSL_LONGLONG */
+
+/*
+ * 7.8.2.2 The imaxdiv function
+ * Synopsis
+ * 1 #include <inttypes.h>
+ *   imaxdiv_t imaxdiv(intmax_t numer, intmax_t denom);
+ * Description
+ * 2 The imaxdiv function computes numer / denom and numer % denom in a single
+ *   operation.
+ * Returns
+ * 3 The imaxdiv function returns a structure of type imaxdiv_t comprising both the
+ *   quotient and the remainder. The structure shall contain (in either order) the members
+ *   quot (the quotient) and rem (the remainder), each of which has type intmax_t.If
+ *   either part of the result cannot be represented, the behavior is undefined.
+ */
+
+#if _MSL_LONGLONG
+	imaxdiv_t _MSL_CDECL imaxdiv(intmax_t numer, intmax_t denom) _MSL_CANT_THROW;
+	_MSL_INLINE imaxdiv_t _MSL_CDECL imaxdiv(intmax_t numer, intmax_t denom) _MSL_CANT_THROW
+      	 {return(lldiv(numer, denom));}
+#else
+	imaxdiv_t _MSL_CDECL imaxdiv(intmax_t numer, intmax_t denom) _MSL_CANT_THROW;
+	_MSL_INLINE imaxdiv_t _MSL_CDECL imaxdiv(intmax_t numer, intmax_t denom) _MSL_CANT_THROW
+       	{return(ldiv(numer, denom));}
+#endif /* _MSL_LONGLONG */
+
+/*
+ * 7.8.2.3 The strtoimax and strtoumax functions
+ * Synopsis
+ * 1 #include <inttypes.h>
+ *   intmax_t strtoimax(const char * restrict nptr, char ** restrict endptr, int base);
+ *   uintmax_t strtoumax(const char * restrict nptr, char ** restrict endptr, int base);
+ * Description
+ * 2 The strtoimax and strtoumax functions are equivalent to the strtol, strtoll,
+ *   strtoul, and strtoull functions, except that the initial portion of the string is
+ *   converted to intmax_t and uintmax_t representation, respectively.
+ *   Returns
+ * 3 The strtoimax and strtoumax functions return the converted value, if any. If no
+ *   conversion could be performed, zero is returned. If the correct value is outside the range
+ *   of representable values, INTMAX_MAX, INTMAX_MIN,orUINTMAX_MAX is returned
+ *   (according to the return type and sign of the value, if any), and the value of the macro
+ *   ERANGE is stored in errno.
+ *   Forward references: the strtol, strtoll, strtoul, and strtoull functions
+ *   (7.20.1.4).
+ */
+
+#if _MSL_LONGLONG												
+	intmax_t _MSL_CDECL strtoimax(const char * _MSL_RESTRICT nptr, char ** _MSL_RESTRICT endptr, int base) _MSL_CANT_THROW;
+	_MSL_INLINE intmax_t _MSL_CDECL strtoimax(const char * _MSL_RESTRICT nptr, char ** _MSL_RESTRICT endptr, int base) _MSL_CANT_THROW
+           {return(strtoll(nptr, endptr, base));}
+    uintmax_t _MSL_CDECL strtoumax(const char * _MSL_RESTRICT nptr, char ** _MSL_RESTRICT endptr, int base) _MSL_CANT_THROW;
+    _MSL_INLINE uintmax_t _MSL_CDECL strtoumax(const char * _MSL_RESTRICT nptr, char ** _MSL_RESTRICT endptr, int base) _MSL_CANT_THROW
+           {return(strtoull(nptr, endptr, base));}
+#else
+	intmax_t _MSL_CDECL strtoimax(const char * _MSL_RESTRICT nptr, char ** _MSL_RESTRICT endptr, int base) _MSL_CANT_THROW;
+	_MSL_INLINE intmax_t _MSL_CDECL strtoimax(const char * _MSL_RESTRICT nptr, char ** _MSL_RESTRICT endptr, int base) _MSL_CANT_THROW
+           {return(strtol(nptr, endptr, base));}
+    uintmax_t _MSL_CDECL strtoumax(const char * _MSL_RESTRICT nptr, char ** _MSL_RESTRICT endptr, int base) _MSL_CANT_THROW;
+    _MSL_INLINE uintmax_t _MSL_CDECL strtoumax(const char * _MSL_RESTRICT nptr, char ** _MSL_RESTRICT endptr, int base) _MSL_CANT_THROW
+           {return(strtoul(nptr, endptr, base));}
+#endif /* _MSL_LONGLONG */
+
+/*
+ * 7.8.2.4 The wcstoimax and wcstoumax functions
+ * Synopsis
+ * 1 #include <stddef.h> // for wchar_t
+ * 	 #include <inttypes.h>
+ *   intmax_t wcstoimax(const wchar_t * restrict nptr, wchar_t ** restrict endptr, int base);
+ *   uintmax_t wcstoumax(const wchar_t * restrict nptr, wchar_t ** restrict endptr, int base);
+ *	
+ * Description
+ * 2 The wcstoimax and wcstoumax functions are equivalent to the wcstol, wcstoll,
+ *   wcstoul, and wcstoull functions except that the initial portion of the wide string is
+ *   converted to intmax_t and uintmax_t representation, respectively.
+ * Returns
+ * 3 The wcstoimax function returns the converted value, if any. If no conversion could be
+ *   performed, zero is returned. If the correct value is outside the range of representable
+ *   values, INTMAX_MAX, INTMAX_MIN,orUINTMAX_MAX is returned (according to the
+ *   return type and sign of the value, if any), and the value of the macro ERANGE is stored in
+ *   errno.
+ *   Forward references: the wcstol, wcstoll, wcstoul, and wcstoull functions
+ *   (7.24.4.1.2).
+ */
+
+#if _MSL_WIDE_CHAR
+	#if _MSL_LONGLONG
+		intmax_t _MSL_CDECL wcstoimax(const wchar_t * _MSL_RESTRICT nptr, wchar_t ** _MSL_RESTRICT endptr, int base) _MSL_CANT_THROW;
+		_MSL_INLINE intmax_t _MSL_CDECL wcstoimax(const wchar_t * _MSL_RESTRICT nptr, wchar_t ** _MSL_RESTRICT endptr, int base) _MSL_CANT_THROW
+	           {return(wcstoll(nptr, endptr, base));}
+	 	uintmax_t _MSL_CDECL wcstoumax(const wchar_t * _MSL_RESTRICT nptr, wchar_t ** _MSL_RESTRICT endptr, int base) _MSL_CANT_THROW;
+	 	_MSL_INLINE uintmax_t _MSL_CDECL wcstoumax(const wchar_t * _MSL_RESTRICT nptr, wchar_t ** _MSL_RESTRICT endptr, int base) _MSL_CANT_THROW
+	           {return(wcstoull(nptr, endptr, base));}
+	#else
+	 	intmax_t _MSL_CDECL wcstoimax(const wchar_t * _MSL_RESTRICT nptr, wchar_t ** _MSL_RESTRICT endptr, int base) _MSL_CANT_THROW;
+	 	_MSL_INLINE intmax_t _MSL_CDECL wcstoimax(const wchar_t * _MSL_RESTRICT nptr, wchar_t ** _MSL_RESTRICT endptr, int base) _MSL_CANT_THROW
+	           {return(wcstol(nptr, endptr, base));}
+	 	uintmax_t _MSL_CDECL wcstoumax(const wchar_t * _MSL_RESTRICT nptr, wchar_t ** _MSL_RESTRICT endptr, int base) _MSL_CANT_THROW;
+	 	_MSL_INLINE uintmax_t _MSL_CDECL wcstoumax(const wchar_t * _MSL_RESTRICT nptr, wchar_t ** _MSL_RESTRICT endptr, int base) _MSL_CANT_THROW
+	           {return(wcstoul(nptr, endptr, base));}
+	#endif /* _MSL_LONGLONG */
+#endif /* _MSL_WIDE_CHAR */
+
+_MSL_END_EXTERN_C		
+_MSL_END_NAMESPACE_STD	
+
+#endif /* RC_INVOKED */
+
+#endif /* _MSL_USING_MW_C_HEADERS */
+#endif /* _MSL_C99 */				/*- mm 030226 -*/
+#endif /* _MSL_CINTTYPES */
+
+/* Change record:
+ * mm  000512 Created.
+ * JWW 001208 Added case for targeting Mach-O
+ * cc  010409 updated to JWW new namespace macros
+ * JWW 011027 Use _MSL_USING_MW_C_HEADERS as generic header test instead of specific Mach-O test
+ * cc  011203 Added _MSL_CDECL for new name mangling
+ * JWW 011220 Added missing prototypes for __inline functions
+ * hh  020603 Added no throw spec to functions
+ * JWW 020712 Use the _MSL_INLINE mechanism instead of coding __inline
+ * JWW 020917 Added _MSL_RESTRICT to get the restrict type specifier for certain C99 functions
+ * JWW 030224 Changed __MSL_LONGLONG_SUPPORT__ flag into the new more configurable _MSL_LONGLONG
+ * JWW 030224 Changed __NO_WIDE_CHAR flag into the new more configurable _MSL_WIDE_CHAR
+ * JWW 030224 Changed __NO_WIDE_CHAR flag into the new more configurable _MSL_WIDE_CHAR
+ * mm  030303 Added _MSL_C99 wrappers---this header doesn't exist in C1990
+ * JWW 050128 When using MSL C++ on top of a third party C (non-MSL), put C items into std namespace
+ */

@@ -1,0 +1,141 @@
+{
+  "key": 47853,
+  "messages": [
+    {
+      "id": "msg_0155_00000",
+      "en_US": "Bag ON"
+    },
+    {
+      "id": "msg_0155_00001",
+      "en_US": "Bag OFF"
+    },
+    {
+      "id": "msg_0155_00002",
+      "en_US": "Game clear ON"
+    },
+    {
+      "id": "msg_0155_00003",
+      "en_US": "Game clear OFF"
+    },
+    {
+      "id": "msg_0155_00004",
+      "en_US": "Journal ON"
+    },
+    {
+      "id": "msg_0155_00005",
+      "en_US": "Journal OFF"
+    },
+    {
+      "id": "msg_0155_00006",
+      "en_US": "Special Saving Process ON"
+    },
+    {
+      "id": "msg_0155_00007",
+      "en_US": "Special Saving Process OFF"
+    },
+    {
+      "id": "msg_0155_00008",
+      "en_US": "Strength ON"
+    },
+    {
+      "id": "msg_0155_00009",
+      "en_US": "Strength OFF"
+    },
+    {
+      "id": "msg_0155_00010",
+      "en_US": "Safari ON"
+    },
+    {
+      "id": "msg_0155_00011",
+      "en_US": "Safari OFF"
+    },
+    {
+      "id": "msg_0155_00012",
+      "en_US": "Dash ON/OFF"
+    },
+    {
+      "id": "msg_0155_00013",
+      "en_US": "T29 Rage ON"
+    },
+    {
+      "id": "msg_0155_00014",
+      "en_US": "T29 Rage OFF"
+    },
+    {
+      "id": "msg_0155_00015",
+      "en_US": "T28 Mahogany ON"
+    },
+    {
+      "id": "msg_0155_00016",
+      "en_US": "T28 Mahogany OFF"
+    },
+    {
+      "id": "msg_0155_00017",
+      "en_US": "Show L04"
+    },
+    {
+      "id": "msg_0155_00018",
+      "en_US": "Hide L04"
+    },
+    {
+      "id": "msg_0155_00019",
+      "en_US": "Show D18"
+    },
+    {
+      "id": "msg_0155_00020",
+      "en_US": "Hide D18"
+    },
+    {
+      "id": "msg_0155_00021",
+      "en_US": "Dist. flag 1 ON"
+    },
+    {
+      "id": "msg_0155_00022",
+      "en_US": "Dist. flag 1 OFF"
+    },
+    {
+      "id": "msg_0155_00023",
+      "en_US": "Dist. flag 2 ON"
+    },
+    {
+      "id": "msg_0155_00024",
+      "en_US": "Dist. flag 2 OFF"
+    },
+    {
+      "id": "msg_0155_00025",
+      "en_US": "Dist. flag 3 ON"
+    },
+    {
+      "id": "msg_0155_00026",
+      "en_US": "Dist. flag 3 OFF"
+    },
+    {
+      "id": "msg_0155_00027",
+      "en_US": "T25 Radio 01"
+    },
+    {
+      "id": "msg_0155_00028",
+      "en_US": "T25 Radio 02"
+    },
+    {
+      "id": "msg_0155_00029",
+      "en_US": "HO-OH Event A ON"
+    },
+    {
+      "id": "msg_0155_00030",
+      "en_US": "LUGIA Event A ON"
+    },
+    {
+      "id": "msg_0155_00031",
+      "en_US": "5 Maiko Battle"
+    },
+    {
+      "id": "msg_0155_00032",
+      "en_US": "Pkth RecWin All"
+    },
+    {
+      "id": "msg_0155_00033",
+      "en_US": "Pkth RecWin Clear"
+    }
+  ]
+}

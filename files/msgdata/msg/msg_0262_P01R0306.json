@@ -1,0 +1,76 @@
+{
+  "key": 41994,
+  "messages": [
+    {
+      "id": "msg_0262_P01R0306_00000",
+      "en_US": [
+        "I see.\r",
+        "So you are playing hide-and-seek\n",
+        "wih my granddaughter.\r",
+        "I guess there is no need to worry\n",
+        "as long as she’s on the ship!"
+      ]
+    },
+    {
+      "id": "msg_0262_P01R0306_00001",
+      "en_US": [
+        "Oh, hello...\r",
+        "My granddaughter is still missing.\n",
+        "If she’s on the ship, that’s OK.\r",
+        "She’s an energetic child, so she may be\n",
+        "bothering someone. That worries me..."
+      ]
+    },
+    {
+      "id": "msg_0262_P01R0306_00002",
+      "en_US": [
+        "Grandpa, here I am!\r",
+        "I was playing hide-and-seek\n",
+        "with this guy!\r"
+      ]
+    },
+    {
+      "id": "msg_0262_P01R0306_00003",
+      "en_US": [
+        "Grandpa, here I am!\r",
+        "I was playing hide-and-seek\n",
+        "with this girl!\r"
+      ]
+    },
+    {
+      "id": "msg_0262_P01R0306_00004",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}, was it?\n",
+        "I heard you entertained my\f",
+        "granddaughter.\r",
+        "I want to thank you for that.\n",
+        "Take this.\r"
+      ]
+    },
+    {
+      "id": "msg_0262_P01R0306_00005",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}, was it?\n",
+        "I heard you entertained my\f",
+        "granddaughter.\r",
+        "I want to thank you for that.\n",
+        "Take this.\r"
+      ]
+    },
+    {
+      "id": "msg_0262_P01R0306_00006",
+      "en_US": [
+        "Fast Ship S.S. Aqua\n",
+        "has arrived in Vermilion City."
+      ]
+    },
+    {
+      "id": "msg_0262_P01R0306_00007",
+      "en_US": "We’re traveling around the world."
+    },
+    {
+      "id": "msg_0262_P01R0306_00008",
+      "en_US": "I had lots of fun!"
+    }
+  ]
+}

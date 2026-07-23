@@ -1,0 +1,327 @@
+{
+  "key": 8761,
+  "messages": [
+    {
+      "id": "msg_0195_00000",
+      "en_US": [
+        "First, we will hold your Pokémon in\n",
+        "exchange for you renting our Pokémon.\r",
+        "May I suggest choosing Pokémon after\n",
+        "appropriate deliberation?\r"
+      ]
+    },
+    {
+      "id": "msg_0195_00001",
+      "en_US": "Please wait a moment."
+    },
+    {
+      "id": "msg_0195_00002",
+      "en_US": "Please go in."
+    },
+    {
+      "id": "msg_0195_00003",
+      "en_US": [
+        "Well done!\n",
+        "Your party Pokémon will be healed now."
+      ]
+    },
+    {
+      "id": "msg_0195_00004",
+      "en_US": [
+        "Next up, battle no. {STRVAR_1 53, 0, 0}!\n",
+        "Are you ready?"
+      ]
+    },
+    {
+      "id": "msg_0195_00005",
+      "en_US": [
+        "Would you like to trade Pokémon before\n",
+        "your battle?"
+      ]
+    },
+    {
+      "id": "msg_0195_00006",
+      "en_US": [
+        "Would you like to save the last battle\n",
+        "as your Battle Video?"
+      ]
+    },
+    {
+      "id": "msg_0195_00007",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}’s battle has been saved\n",
+        "as a Battle Video.\r"
+      ]
+    },
+    {
+      "id": "msg_0195_00008",
+      "en_US": [
+        "There was an error.\n",
+        "The Battle Video couldn’t be saved.\r"
+      ]
+    },
+    {
+      "id": "msg_0195_00009",
+      "en_US": [
+        "Delete your existing Battle Video and\n",
+        "save the last battle?"
+      ]
+    },
+    {
+      "id": "msg_0195_00010",
+      "en_US": [
+        "Saving...\n",
+        "Don’t turn off the power."
+      ]
+    },
+    {
+      "id": "msg_0195_00011",
+      "en_US": [
+        "Would you like to save and take a break\n",
+        "from playing?"
+      ]
+    },
+    {
+      "id": "msg_0195_00012",
+      "en_US": [
+        "Would you like to retire from this\n",
+        "Battle Factory challenge?"
+      ]
+    },
+    {
+      "id": "msg_0195_00013",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} is choosing.\n",
+        "Please wait."
+      ]
+    },
+    {
+      "id": "msg_0195_00014",
+      "garbage": 21
+    },
+    {
+      "id": "msg_0195_00015",
+      "en_US": "{STRVAR_1 3, 0, 0} chose to retire."
+    },
+    {
+      "id": "msg_0195_00016",
+      "en_US": [
+        "You have cleared your seventh Battle\n",
+        "Factory match! Congratulations!\r",
+        "In recognition of your deep knowledge\n",
+        "in matters pertaining to Pokémon,\f",
+        "we present you with BP!\r"
+      ]
+    },
+    {
+      "id": "msg_0195_00017",
+      "en_US": "{STRVAR_1 3, 0, 0} received {STRVAR_1 51, 1, 0} BP!\r"
+    },
+    {
+      "id": "msg_0195_00018",
+      "en_US": [
+        "Let’s trade back your Pokémon that\n",
+        "we’ve been holding for the rentals.\r"
+      ]
+    },
+    {
+      "id": "msg_0195_00019",
+      "en_US": [
+        "Saving...\n",
+        "Don’t turn off the power."
+      ]
+    },
+    {
+      "id": "msg_0195_00020",
+      "garbage": 48
+    },
+    {
+      "id": "msg_0195_00021",
+      "en_US": [
+        "I’ve done a bit of research into your\n",
+        "next opponent.\r",
+        "You can expect to see {STRVAR_1 0, 1, 0},\n",
+        "{STRVAR_1 0, 3, 0}, and {STRVAR_1 0, 5, 0}.\r"
+      ]
+    },
+    {
+      "id": "msg_0195_00022",
+      "en_US": [
+        "I’ve done a bit of research into your\n",
+        "next opponent.\r",
+        "You can expect to see {STRVAR_1 0, 1, 0}\n",
+        "and {STRVAR_1 0, 3, 0}.\r"
+      ]
+    },
+    {
+      "id": "msg_0195_00023",
+      "en_US": [
+        "I’ve done a bit of research into your\n",
+        "next opponent.\r",
+        "First out will be a tough,\n",
+        "{STRVAR_1 6, 0, 0}-using {STRVAR_1 0, 1, 0}.\r"
+      ]
+    },
+    {
+      "id": "msg_0195_00024",
+      "en_US": [
+        "I’ve done a bit of research into your\n",
+        "next opponent.\r",
+        "First out will be a Pokémon that has\n",
+        "the move {STRVAR_1 6, 0, 0}.\r"
+      ]
+    },
+    {
+      "id": "msg_0195_00025",
+      "en_US": [
+        "I’ve done a bit of research into your\n",
+        "next opponent.\r",
+        "The opponent seems to be good with\n",
+        "the {STRVAR_1 15, 0, 0} type.\r"
+      ]
+    },
+    {
+      "id": "msg_0195_00026",
+      "en_US": [
+        "I’ve done a bit of research into your\n",
+        "next opponent.\r",
+        "The opponent doesn’t seem to be\n",
+        "concerned about the types of Pokémon.\r"
+      ]
+    },
+    {
+      "id": "msg_0195_00027",
+      "en_US": [
+        "I’ve done a bit of research into your\n",
+        "next opponent.\r",
+        "You can expect to see {STRVAR_1 0, 1, 0},\n",
+        "{STRVAR_1 0, 2, 0}, {STRVAR_1 0, 3, 0}, and\f",
+        "{STRVAR_1 0, 4, 0}.\r"
+      ]
+    },
+    {
+      "id": "msg_0195_00028",
+      "en_US": [
+        "I’ve done a bit of research into your\n",
+        "next opponent.\r",
+        "You can expect to see {STRVAR_1 0, 1, 0}\n",
+        "and {STRVAR_1 0, 2, 0} first.\r"
+      ]
+    },
+    {
+      "id": "msg_0195_00029",
+      "en_US": [
+        "I’ve done a bit of research into your\n",
+        "next opponent.\r",
+        "First out will be Pokémon with the moves\n",
+        "{STRVAR_1 6, 0, 0} and {STRVAR_1 6, 1, 0}.\r"
+      ]
+    },
+    {
+      "id": "msg_0195_00030",
+      "en_US": [
+        "I’ve done a bit of research into your\n",
+        "next opponent.\r",
+        "First out will be a Pokémon that has\n",
+        "the move {STRVAR_1 6, 0, 0}.\r"
+      ]
+    },
+    {
+      "id": "msg_0195_00031",
+      "en_US": "CONTINUE"
+    },
+    {
+      "id": "msg_0195_00032",
+      "en_US": "RECORD"
+    },
+    {
+      "id": "msg_0195_00033",
+      "en_US": "REST"
+    },
+    {
+      "id": "msg_0195_00034",
+      "en_US": "RETIRE"
+    },
+    {
+      "id": "msg_0195_00035",
+      "en_US": [
+        "Congratulations to you, Trainer!\r",
+        "In recognition of your outstanding\n",
+        "winning streak, our Frontier Brain is\f",
+        "demanding a match with you.\r",
+        "So, your next match is against the\n",
+        "Factory Head with no right of refusal!\r",
+        "Are you prepared?\r"
+      ]
+    },
+    {
+      "id": "msg_0195_00036",
+      "en_US": [
+        "Thorton: Bzweeeeep!\r",
+        "Sorry, don’t mind me.\r",
+        "What I’m using is an invention of mine.\n",
+        "It’s my data-interpreting machine.\r",
+        "It’s telling me what you’ve rented\n",
+        "for this match.\r",
+        "I see! You’ve rented {STRVAR_1 0, 0, 0},\n",
+        "{STRVAR_1 0, 1, 0}, and {STRVAR_1 0, 2, 0}.\r",
+        "I have to say, that’s a good setup.\n",
+        "Like, say, {STRVAR_1 51, 3, 0} percent?\f",
+        "Oh, don’t let that number concern you!\r",
+        "All righty, let’s get going!\r"
+      ]
+    },
+    {
+      "id": "msg_0195_00037",
+      "en_US": [
+        "Thorton: Bzweeeeep!\r",
+        "Let’s see what I can see about you\n",
+        "through my data-interpreting machine.\r",
+        "So, what have you rented for this\n",
+        "match...?\r",
+        "I see! You’ve rented {STRVAR_1 0, 0, 0},\n",
+        "{STRVAR_1 0, 1, 0}, and {STRVAR_1 0, 2, 0}.\r",
+        "I have to admit, that’s a good setup.\r",
+        "It’s a combination of friendship with\n",
+        "cooperation all around.\r",
+        "I’d say it’s like {STRVAR_1 51, 3, 0} percent?\f",
+        "Oh, don’t let that number concern you!\r",
+        "All righty, let’s get going!\n",
+        "No losing for me this time!\r"
+      ]
+    },
+    {
+      "id": "msg_0195_00038",
+      "en_US": [
+        "Thorton: Hmm...\n",
+        "I got handed the loss here.\r",
+        "It’s not making me happy at all, losing.\n",
+        "Even though I’m not happy, I did glean\f",
+        "some useful data, I suppose.\r",
+        "That makes me glad I battled you.\r",
+        "So, did you get to like those Pokémon\n",
+        "you rented?\r",
+        "As the Factory Head, it would sure make\n",
+        "me happy if you did.\r",
+        "Next time, come back with different\n",
+        "rental Pokémon.\r"
+      ]
+    },
+    {
+      "id": "msg_0195_00039",
+      "en_US": [
+        "Thorton: Hmm...\n",
+        "I got handed another loss.\r",
+        "It’s not making me happy at all, this.\n",
+        "In fact, I’m stewing here.\r",
+        "I thought I learned a lot about\n",
+        "Pokémon since I lost to you.\r",
+        "But that’s all right.\n",
+        "Some things you learn from winning.\f",
+        "But some things you learn by losing.\r",
+        "I hope you’ll keep renting our Pokémon\n",
+        "and give me a chance to redeem myself!\r"
+      ]
+    }
+  ]
+}

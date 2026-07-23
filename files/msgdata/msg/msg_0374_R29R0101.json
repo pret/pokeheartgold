@@ -1,0 +1,22 @@
+{
+  "key": 58439,
+  "messages": [
+    {
+      "id": "msg_0374_R29R0101_00000",
+      "en_US": [
+        "You can’t climb ledges.\r",
+        "But you can jump down from them to\n",
+        "take a shortcut."
+      ]
+    },
+    {
+      "id": "msg_0374_R29R0101_00001",
+      "en_US": [
+        "Different kinds of Pokémon appear\n",
+        "past here.\r",
+        "If you want to catch them all,\n",
+        "you have to look everywhere."
+      ]
+    }
+  ]
+}

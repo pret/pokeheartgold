@@ -1,0 +1,102 @@
+/* MSL
+ * Copyright © 1995-2006 Freescale Corporation.  All rights reserved.
+ *
+ * $Date: 2006/02/08 20:32:25 $
+ * $Revision: 1.46.2.2 $
+ */
+
+#ifndef _MSL_CLIMITS
+#define _MSL_CLIMITS
+
+#include <ansi_parms.h>
+
+#if !_MSL_USING_MW_C_HEADERS
+	#include <limits.h>
+#else
+
+#ifndef RC_INVOKED  						/*- hh 971230 -*/
+
+#include <limits_api.h>
+
+#if __dest_os == __mac_os_x
+	#include <machine/limits.h>
+	
+	#undef CHAR_BIT
+	#undef MB_LEN_MAX
+	#undef SCHAR_MAX
+	#undef SCHAR_MIN
+	#undef UCHAR_MAX
+	#undef CHAR_MAX
+	#undef CHAR_MIN
+	#undef USHRT_MAX
+	#undef SHRT_MAX
+	#undef SHRT_MIN
+	#undef UINT_MAX
+	#undef INT_MAX
+	#undef INT_MIN
+	#undef ULONG_MAX
+	#undef LONG_MAX
+	#undef LONG_MIN
+	#undef ULLONG_MAX
+	#undef LLONG_MAX
+	#undef LLONG_MIN
+#endif /* __dest_os == __mac_os_x */
+
+/* Build macros based  on platform configuration */
+
+#define MB_LEN_MAX					_MSL_MB_LEN_MAX
+#define CHAR_BIT					_MSL_CHAR_BIT
+
+#define SCHAR_MAX					_MSL_SCHAR_MAX
+#define UCHAR_MAX					_MSL_UCHAR_MAX
+#define SCHAR_MIN					_MSL_SCHAR_MIN
+
+#define CHAR_MIN					_MSL_CHAR_MIN
+#define CHAR_MAX					_MSL_CHAR_MAX
+
+#define SHRT_MAX					_MSL_SHRT_MAX
+#define USHRT_MAX					_MSL_USHRT_MAX
+#define SHRT_MIN					_MSL_SHRT_MIN
+
+#define INT_MAX						_MSL_INT_MAX
+#define UINT_MAX					_MSL_UINT_MAX
+#define INT_MIN						_MSL_INT_MIN
+
+#define LONG_MAX					_MSL_LONG_MAX
+#define ULONG_MAX					_MSL_ULONG_MAX
+#define LONG_MIN					_MSL_LONG_MIN
+
+#if _MSL_LONGLONG && _MSL_C99
+	#define LLONG_MAX				_MSL_LLONG_MAX
+	#define ULLONG_MAX				_MSL_ULLONG_MAX
+	#define LLONG_MIN				_MSL_LLONG_MIN
+#endif /* _MSL_LONGLONG && _MSL_C99 */
+
+#endif /* RC_INVOKED */
+
+#endif /* _MSL_USING_MW_C_HEADERS */
+
+#endif /* _MSL_CLIMITS */
+
+/* Change record: 
+ * bkoz961216 line 49 added long long typedefs
+ * bkoz970214 added default __dest_os __mac_os
+ * mm  970804 Added include of ansi_parms.h to ensure __mac_os, __be_os, etc are defined.
+ * hh  971206 Changed filename from limits.h to climits and added namespace support
+ * hh  971230 added RC_INVOKED wrapper
+ * hh  980107 changed names of long long macros to support standard
+ * mm  981014 Added specifications for DSP568
+ * mm  981029 Changed __DSP568 to __m56800__
+ * mm  981104 Added definition of ints for mc568000
+ * mm  000201 Corrected CHAR_MAX and CHAR_MIN to allow for "use unsigned char" option
+ * JWW 001208 Added case for targeting Mach-O
+ * mm  010303 Added missing integer suffixes WB1-20337
+ * cc  000326 removed dest_os to be_os 
+ * hh  010402 Rewrite
+ * mm  010523 UTF-8 implementation
+ * JWW 011027 Use _MSL_USING_MW_C_HEADERS as generic header test instead of specific Mach-O test
+ * hh  021014 Removed U suffix from CHAR_MIN, UCHAR_MAX and USHRT_MAX
+ * JWW 030224 Changed __MSL_LONGLONG_SUPPORT__ flag into the new more configurable _MSL_LONGLONG
+ * mm  030225 Added _MSL_C99 wrappers for LLONG_MAX, ULLONG_MAX and LLONG_MIN
+ * cc  030414 Added check for __MWERKS__
+ */

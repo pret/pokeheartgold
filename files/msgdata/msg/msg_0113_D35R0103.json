@@ -1,0 +1,268 @@
+{
+  "key": 25706,
+  "messages": [
+    {
+      "id": "msg_0113_D35R0103_00000",
+      "en_US": [
+        "Lance: Are you all right?\r",
+        "Your Pokémon are hurt and tired.\n",
+        "Here, give them some of my medicine.\r"
+      ]
+    },
+    {
+      "id": "msg_0113_D35R0103_00001",
+      "en_US": [
+        "Lance: {STRVAR_1 3, 0, 0}, let’s give our\n",
+        "best for Pokémon.\r"
+      ]
+    },
+    {
+      "id": "msg_0113_D35R0103_00002",
+      "en_US": [
+        "Lance: {STRVAR_1 3, 0, 0}, let’s give our\n",
+        "best for Pokémon.\r"
+      ]
+    },
+    {
+      "id": "msg_0113_D35R0103_00003",
+      "en_US": "Ariana: Hold it right there!"
+    },
+    {
+      "id": "msg_0113_D35R0103_00004",
+      "en_US": [
+        "Ariana: We can’t let a brat like you\n",
+        "do as you please forever.\r",
+        "It’ll hurt Team Rocket’s pride over and\n",
+        "over again. Making it lessen, you see.\r",
+        "...So, it’s time to finish you. However\n",
+        "strong you may be, if the two of us\f",
+        "fight at the same time, you’ll have no\f",
+        "chance of winning. Don’t you agree?\r",
+        "Hee hee hee! Sorry, baby. Now, get\n",
+        "ready to be thrashed.\r"
+      ]
+    },
+    {
+      "id": "msg_0113_D35R0103_00005",
+      "en_US": [
+        "Lance: Hold it!\r",
+        "A two-on-one battle?\n",
+        "That is so unfair!\r",
+        "Typical of Team Rocket to be so sneaky.\n",
+        "Allow me to join the battle!\r"
+      ]
+    },
+    {
+      "id": "msg_0113_D35R0103_00006",
+      "en_US": [
+        "Ariana: What? You had an accomplice?\n",
+        "Where is your sense of dignity?\r",
+        "As interim boss in place of Giovanni,\n",
+        "I’ll show you how wrong it is to meddle\f",
+        "with Team Rocket!\r"
+      ]
+    },
+    {
+      "id": "msg_0113_D35R0103_00007",
+      "en_US": [
+        "Tch, you really are strong.\n",
+        "It’s too bad.\r",
+        "If you were to join Team Rocket, you\n",
+        "could become an Executive.\r"
+      ]
+    },
+    {
+      "id": "msg_0113_D35R0103_00008",
+      "en_US": [
+        "Ariana: But that’s fine. The broadcast\n",
+        "experiment was a total success.\r",
+        "It doesn’t matter what happens to this\n",
+        "hideout now.\r",
+        "We have much bigger plans.\n",
+        "You’ll come to appreciate Team\f",
+        "Rocket’s true power soon enough.\r",
+        "Enjoy yourself while you can...\n",
+        "Hee hee hee...\r"
+      ]
+    },
+    {
+      "id": "msg_0113_D35R0103_00009",
+      "en_US": [
+        "Lance: That did it. We defeated all the\n",
+        "members of Team Rocket here.\r",
+        "But I’m concerned about the young guy\n",
+        "with red hair I battled in the\f",
+        "process...\r"
+      ]
+    },
+    {
+      "id": "msg_0113_D35R0103_00010",
+      "en_US": [
+        "Sorry, {STRVAR_1 3, 0, 0}. I saw how well you\n",
+        "were doing, so I just hung back.\r",
+        "Now all there is left to do is to turn\n",
+        "off that odd radio signal.\r"
+      ]
+    },
+    {
+      "id": "msg_0113_D35R0103_00011",
+      "en_US": [
+        "Sorry, {STRVAR_1 3, 0, 0}. I saw how well you\n",
+        "were doing, so I just hung back.\r",
+        "Now all there is left to do is to turn\n",
+        "off that odd radio signal.\r"
+      ]
+    },
+    {
+      "id": "msg_0113_D35R0103_00012",
+      "en_US": [
+        "It’s this machine that’s causing all the\n",
+        "problems. I don’t see a switch on it...\r",
+        "We have no choice. We have to make all\n",
+        "the ELECTRODE faint.\r",
+        "That should stop this machine from\n",
+        "transmitting that strange signal.\r",
+        "It’s no fault of the ELECTRODE, so it\n",
+        "makes me feel sad.\r",
+        "{STRVAR_1 3, 0, 0}, let’s split the job.\r"
+      ]
+    },
+    {
+      "id": "msg_0113_D35R0103_00013",
+      "en_US": [
+        "It’s this machine that’s causing all the\n",
+        "problems. I don’t see a switch on it...\r",
+        "We have no choice. We have to make all\n",
+        "the ELECTRODE faint.\r",
+        "That should stop this machine from\n",
+        "transmitting that strange signal.\r",
+        "It’s no fault of the ELECTRODE, so it\n",
+        "makes me feel sad.\r",
+        "{STRVAR_1 3, 0, 0}, let’s split the job.\r"
+      ]
+    },
+    {
+      "id": "msg_0113_D35R0103_00014",
+      "en_US": "Lance: Leave this side to me.\r"
+    },
+    {
+      "id": "msg_0113_D35R0103_00015",
+      "en_US": [
+        "Lance: That odd signal has finally\n",
+        "stopped. The lake should be back to\f",
+        "normal. You’re the best!\r",
+        "Let me thank you on behalf of all the\n",
+        "Pokémon. Oh, yes. You should take this.\r",
+        "I found it here, but I don’t have any\n",
+        "need for it.\r"
+      ]
+    },
+    {
+      "id": "msg_0113_D35R0103_00016",
+      "en_US": "{STRVAR_1 3, 0, 0} received HM05 from Lance!"
+    },
+    {
+      "id": "msg_0113_D35R0103_00017",
+      "en_US": [
+        "Lance: That’s Whirlpool.\r",
+        "Teach it to a Pokémon to get across wild\n",
+        "water. But keep this in mind.\r",
+        "You can use that out of battle only with\n",
+        "the Badge from Mahogany Gym.\r"
+      ]
+    },
+    {
+      "id": "msg_0113_D35R0103_00018",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}...\r",
+        "The journey to becoming the Pokémon\n",
+        "Champion is long and difficult.\r",
+        "Knowing that, will you keep going?\r",
+        "..................\r",
+        "I see. No, you’re right.\r",
+        "If you would give up that easily,\n",
+        "you would have never chased that\f",
+        "dream in the first place.\r",
+        "I look forward to seeing you again!\r"
+      ]
+    },
+    {
+      "id": "msg_0113_D35R0103_00019",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}...\r",
+        "The journey to becoming the Pokémon\n",
+        "Champion is long and difficult.\r",
+        "Knowing that, will you keep going?\r",
+        "..................\r",
+        "I see. No, you’re right.\r",
+        "If you would give up that easily,\n",
+        "you would have never chased that\f",
+        "dream in the first place.\r",
+        "I look forward to seeing you again!\r"
+      ]
+    },
+    {
+      "id": "msg_0113_D35R0103_00020",
+      "en_US": [
+        "“The Radio Transmitter”\r",
+        "It seems that this door checks the\n",
+        "voice of the person saying the password\f",
+        "before it opens..."
+      ]
+    },
+    {
+      "id": "msg_0113_D35R0103_00021",
+      "en_US": [
+        "The door’s closed...\r",
+        "{STRVAR_1 3, 0, 0} entered the password.\r",
+        "The door opened!\r"
+      ]
+    },
+    {
+      "id": "msg_0113_D35R0103_00022",
+      "en_US": [
+        "It’s the radio transmitter that’s\n",
+        "sending the sinister signal.\r",
+        "It’s working at full capacity."
+      ]
+    },
+    {
+      "id": "msg_0113_D35R0103_00023",
+      "en_US": [
+        "The radio transmitter has finally\n",
+        "stopped its evil broadcast."
+      ]
+    },
+    {
+      "id": "msg_0113_D35R0103_00024",
+      "en_US": [
+        "MURKROW: The password is...\f",
+        "Hail Giovanni.\r"
+      ]
+    },
+    {
+      "id": "msg_0113_D35R0103_00025",
+      "en_US": [
+        "MURKROW: The password is...\f",
+        "Hail Giovanni.\r"
+      ]
+    },
+    {
+      "id": "msg_0113_D35R0103_00026",
+      "en_US": [
+        "MURKROW: The password is...\f",
+        "Hail Giovanni.\r"
+      ]
+    },
+    {
+      "id": "msg_0113_D35R0103_00027",
+      "en_US": [
+        "MURKROW screamed the password,\n",
+        "mimicking the voice of Petrel.\r",
+        "..................\r",
+        "The voice-recognition system unlocked\n",
+        "the door!\r"
+      ]
+    }
+  ]
+}

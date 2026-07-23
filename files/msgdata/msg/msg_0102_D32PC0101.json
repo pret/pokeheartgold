@@ -1,0 +1,35 @@
+{
+  "key": 18963,
+  "messages": [
+    {
+      "id": "msg_0102_D32PC0101_00000",
+      "en_US": [
+        "The karate uniform is the uniform\n",
+        "of fighters!\r",
+        "There is nothing better suited for\n",
+        "going to the Battle Frontier than this!"
+      ]
+    },
+    {
+      "id": "msg_0102_D32PC0101_00001",
+      "en_US": [
+        "Some people are surprised to see a\n",
+        "small girl like me at the Battle Frontier\f",
+        "all by herself.\r",
+        "It’s not like I have to battle myself,\n",
+        "you know?\n"
+      ]
+    },
+    {
+      "id": "msg_0102_D32PC0101_00002",
+      "en_US": [
+        "My lifelong hobby has been\n",
+        "battling using Pokémon.\r",
+        "A battle after breakfast,\n",
+        "a battle after lunch,\f",
+        "and after dinner...\f",
+        "I just take a bath and go to bed."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,236 @@
+{
+  "key": 25379,
+  "messages": [
+    {
+      "id": "msg_0183_00000",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0183_00001",
+      "en_US": "{STRVAR_1 3, 0, 0}"
+    },
+    {
+      "id": "msg_0183_00002",
+      "en_US": "{STRVAR_1 3, 1, 0}"
+    },
+    {
+      "id": "msg_0183_00003",
+      "en_US": "{STRVAR_1 1, 2, 0}"
+    },
+    {
+      "id": "msg_0183_00004",
+      "en_US": "{STRVAR_1 1, 3, 0}"
+    },
+    {
+      "id": "msg_0183_00005",
+      "en_US": "{STRVAR_1 1, 4, 0}"
+    },
+    {
+      "id": "msg_0183_00006",
+      "en_US": "{STRVAR_1 1, 5, 0}"
+    },
+    {
+      "id": "msg_0183_00007",
+      "en_US": "{STRVAR_1 1, 6, 0}"
+    },
+    {
+      "id": "msg_0183_00008",
+      "en_US": "{STRVAR_1 1, 7, 0}"
+    },
+    {
+      "id": "msg_0183_00009",
+      "en_US": "{STRVAR_1 1, 8, 0}"
+    },
+    {
+      "id": "msg_0183_00010",
+      "en_US": "{STRVAR_1 1, 9, 0}"
+    },
+    {
+      "id": "msg_0183_00011",
+      "en_US": "{STRVAR_1 1, 10, 0}"
+    },
+    {
+      "id": "msg_0183_00012",
+      "en_US": "{STRVAR_1 1, 11, 0}"
+    },
+    {
+      "id": "msg_0183_00013",
+      "en_US": "{STRVAR_1 1, 12, 0}"
+    },
+    {
+      "id": "msg_0183_00014",
+      "en_US": "{STRVAR_1 1, 13, 0}"
+    },
+    {
+      "id": "msg_0183_00015",
+      "en_US": "Choose a Pokémon."
+    },
+    {
+      "id": "msg_0183_00016",
+      "en_US": "{STRVAR_1 1, 0, 0} is selected."
+    },
+    {
+      "id": "msg_0183_00017",
+      "en_US": "SUMMARY"
+    },
+    {
+      "id": "msg_0183_00018",
+      "en_US": "TRADE"
+    },
+    {
+      "id": "msg_0183_00019",
+      "en_US": "CANCEL"
+    },
+    {
+      "id": "msg_0183_00020",
+      "en_US": "Communicating. Please stand by..."
+    },
+    {
+      "id": "msg_0183_00021",
+      "en_US": [
+        "Trade {STRVAR_1 1, 0, 0} in return for\n",
+        "{STRVAR_1 1, 1, 0}?"
+      ]
+    },
+    {
+      "id": "msg_0183_00022",
+      "garbage": 2
+    },
+    {
+      "id": "msg_0183_00023",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0183_00024",
+      "en_US": [
+        "The trade has\n",
+        "been canceled."
+      ]
+    },
+    {
+      "id": "msg_0183_00025",
+      "en_US": "Cancel trading?"
+    },
+    {
+      "id": "msg_0183_00026",
+      "garbage": 2
+    },
+    {
+      "id": "msg_0183_00027",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0183_00028",
+      "en_US": "Waiting for your friend to finish..."
+    },
+    {
+      "id": "msg_0183_00029",
+      "en_US": [
+        "Your friend apparently wants to\n",
+        "trade a Pokémon with you."
+      ]
+    },
+    {
+      "id": "msg_0183_00030",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} will be sent to\n",
+        "{STRVAR_1 3, 1, 0}."
+      ]
+    },
+    {
+      "id": "msg_0183_00031",
+      "en_US": "Take care, {STRVAR_1 1, 0, 0}!"
+    },
+    {
+      "id": "msg_0183_00032",
+      "en_US": [
+        "{STRVAR_1 3, 1, 0} sent over\n",
+        "{STRVAR_1 1, 0, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0183_00033",
+      "en_US": "Take good care of {STRVAR_1 1, 0, 0}!"
+    },
+    {
+      "id": "msg_0183_00034",
+      "en_US": [
+        "If you trade that Pokémon, you’ll\n",
+        "get stuck in your adventure!"
+      ]
+    },
+    {
+      "id": "msg_0183_00035",
+      "garbage": 25
+    },
+    {
+      "id": "msg_0183_00036",
+      "en_US": [
+        "The Ball Capsule will become detached.\n",
+        "Is that OK?"
+      ]
+    },
+    {
+      "id": "msg_0183_00037",
+      "en_US": [
+        "There is a Pokémon that cannot be\n",
+        "traded in your party."
+      ]
+    },
+    {
+      "id": "msg_0183_00038",
+      "en_US": [
+        "There is a Pokémon that cannot be\n",
+        "traded in the other Trainer’s party."
+      ]
+    },
+    {
+      "id": "msg_0183_00039",
+      "en_US": "♂"
+    },
+    {
+      "id": "msg_0183_00040",
+      "en_US": "♀"
+    },
+    {
+      "id": "msg_0183_00041",
+      "en_US": "Lv."
+    },
+    {
+      "id": "msg_0183_00042",
+      "en_US": "ITEM"
+    },
+    {
+      "id": "msg_0183_00043",
+      "en_US": "{STRVAR_1 1, 0, 0}"
+    },
+    {
+      "id": "msg_0183_00044",
+      "en_US": "{STRVAR_1 52, 1, 0}"
+    },
+    {
+      "id": "msg_0183_00045",
+      "en_US": "{STRVAR_1 8, 2, 0}"
+    },
+    {
+      "id": "msg_0183_00046",
+      "en_US": "{STRVAR_1 1, 3, 0}"
+    },
+    {
+      "id": "msg_0183_00047",
+      "en_US": "{STRVAR_1 52, 4, 0}"
+    },
+    {
+      "id": "msg_0183_00048",
+      "en_US": "{STRVAR_1 8, 5, 0}"
+    },
+    {
+      "id": "msg_0183_00049",
+      "en_US": "None"
+    },
+    {
+      "id": "msg_0183_00050",
+      "en_US": "Quit"
+    }
+  ]
+}

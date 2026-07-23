@@ -1,0 +1,1598 @@
+/* MSL
+ * Copyright © 1995-2006 Freescale Corporation.  All rights reserved.
+ *
+ * $Date: 2006/02/09 16:58:30 $
+ * $Revision: 1.32.2.2 $
+ */
+
+// ios
+
+#ifndef _IOS
+#define _IOS
+
+/*  ios synopsis
+
+namespace std
+{
+
+typedef OFF_T streamoff;
+typedef SZ_T  streamsize;
+
+template <class stateT> class fpos;
+
+class ios_base
+{
+public:
+
+	class failure
+		: public exception
+	{
+	public:
+		explicit failure(const string& msg);
+		virtual ~failure();
+		virtual const char* what() const throw();
+	};
+
+	enum fmtflags;
+	static const fmtflags boolalpha;
+	static const fmtflags dec;
+	static const fmtflags fixed;
+	static const fmtflags hex;
+	static const fmtflags internal;
+	static const fmtflags left;
+	static const fmtflags oct;
+	static const fmtflags right;
+	static const fmtflags scientific;
+	static const fmtflags showbase;
+	static const fmtflags showpoint;
+	static const fmtflags showpos;
+	static const fmtflags skipws;
+	static const fmtflags unitbuf;
+	static const fmtflags uppercase;
+	static const fmtflags adjustfield;
+	static const fmtflags basefield;
+	static const fmtflags floatfield;
+
+	enum iostate;
+	static const iostate badbit;
+	static const iostate eofbit;
+	static const iostate failbit;
+	static const iostate goodbit;
+
+	enum openmode;
+	static const openmode app;
+	static const openmode ate;
+	static const openmode binary;
+	static const openmode in;
+	static const openmode out;
+	static const openmode trunc;
+
+	enum seekdir;
+	static const seekdir beg;
+	static const seekdir cur;
+	static const seekdir end;
+
+	class Init;
+
+	//  lib.fmtflags.state fmtflags state:
+	fmtflags flags() const;
+	fmtflags flags(fmtflags fmtfl);
+	fmtflags setf(fmtflags fmtfl);
+	fmtflags setf(fmtflags fmtfl, fmtflags mask);
+	void unsetf(fmtflags mask);
+
+	streamsize precision() const;
+	streamsize precision(streamsize prec);
+	streamsize width() const;
+	streamsize width(streamsize wide);
+
+	locale imbue(const locale& loc);
+	locale getloc() const;
+
+	static int xalloc();
+	long&  iword(int index);
+	void*& pword(int index);
+
+	void* rdbuf() const;                      // Metrowerks extension
+	void* rdbuf(void* sb);                    // Metrowerks extension
+
+	operator void*() const;                   // Metrowerks extension
+	bool operator!() const;                   // Metrowerks extension
+	iostate rdstate() const;                  // Metrowerks extension
+	void clear(iostate state = goodbit);      // Metrowerks extension
+	void setstate(iostate state);             // Metrowerks extension
+	bool good() const;                        // Metrowerks extension
+	bool eof()  const;                        // Metrowerks extension
+	bool fail() const;                        // Metrowerks extension
+	bool bad()  const;                        // Metrowerks extension
+
+	iostate exceptions() const;               // Metrowerks extension
+	void exceptions(iostate except);          // Metrowerks extension
+
+	ios_base(const ios_base& rhs);            // Metrowerks extension
+	ios_base& operator=(const ios_base& rhs); // Metrowerks extension
+	virtual ~ios_base();
+
+	enum event { erase_event, imbue_event, copyfmt_event };
+	typedef void (*event_callback)(event, ios_base&, int index);
+	void register_callback(event_callback fn, int index);
+
+	static bool sync_with_stdio(bool sync = true);
+
+protected:
+	ios_base();
+	void init(void* sb);             // Metrowerks extension
+	iostate& state();                // Metrowerks extension
+	void do_callbacks(event evnt);   // Metrowerks extension
+};
+
+template <class charT, class traits = char_traits<charT> >
+class basic_ios
+	: public ios_base
+{
+public:
+	//  Types:
+	typedef charT                     char_type;
+	typedef typename traits::int_type int_type;
+	typedef typename traits::pos_type pos_type;
+	typedef typename traits::off_type off_type;
+	typedef traits                    traits_type;
+
+	operator void*() const
+	bool operator!() const
+	iostate rdstate() const;
+	void clear(iostate state = goodbit);
+	void setstate(iostate state);
+	bool good() const;
+	bool eof()  const;
+	bool fail() const;
+	bool bad()  const;
+
+	iostate exceptions() const;
+	void exceptions(iostate except);
+
+	//  lib.basic.ios.cons Constructor/destructor:
+	explicit basic_ios(basic_streambuf<charT,traits>* sb);
+	virtual ~basic_ios();
+
+	//  lib.basic.ios.members Members:
+	basic_ostream<charT,traits>* tie() const;
+	basic_ostream<charT,traits>* tie(basic_ostream<charT,traits>* tiestr);
+
+	basic_streambuf<charT,traits>* rdbuf() const;
+	basic_streambuf<charT,traits>* rdbuf(basic_streambuf<charT,traits>* sb);
+
+	basic_ios& copyfmt(const basic_ios& rhs);
+
+	char_type fill() const;
+	char_type fill(char_type ch);
+
+	//  lib.ios.base.locales locales:
+	locale imbue(const locale& loc);
+
+	char      narrow(char_type c, char dfault) const;
+	char_type widen(char c) const;
+
+protected:
+	basic_ios();
+	void init(basic_streambuf<charT,traits>* sb);
+
+private:
+	basic_ios(const basic_ios& );             //  not defined
+	basic_ios& operator=(const basic_ios&);   //  not defined
+};
+
+ios_base& boolalpha  (ios_base& str);
+ios_base& noboolalpha(ios_base& str);
+
+ios_base& showbase   (ios_base& str);
+ios_base& noshowbase (ios_base& str);
+
+ios_base& showpoint  (ios_base& str);
+ios_base& noshowpoint(ios_base& str);
+
+ios_base& showpos    (ios_base& str);
+ios_base& noshowpos  (ios_base& str);
+
+ios_base& skipws     (ios_base& str);
+ios_base& noskipws   (ios_base& str);
+
+ios_base& uppercase  (ios_base& str);
+ios_base& nouppercase(ios_base& str);
+
+ios_base& unitbuf    (ios_base& str);
+ios_base& nounitbuf  (ios_base& str);
+
+ios_base& internal   (ios_base& str);
+ios_base& left       (ios_base& str);
+ios_base& right      (ios_base& str);
+
+ios_base& dec        (ios_base& str);
+ios_base& hex        (ios_base& str);
+ios_base& oct        (ios_base& str);
+
+ios_base& fixed      (ios_base& str);
+ios_base& scientific (ios_base& str);
+
+}  // std
+*/
+
+#include <mslconfig>
+
+#ifndef _MSL_NO_IO
+
+#include <iosfwd>
+#include <exception>
+#include <MSLstring.h>
+#include <utility>
+#include <algorithm>
+#include <string>
+#include <localeimp>
+#include <ctype>
+
+#ifndef RC_INVOKED
+
+#ifdef __MWERKS__
+#pragma options align=native
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#if _MSL_FORCE_ENUMS_ALWAYS_INT
+		#pragma enumsalwaysint on
+	#else
+		#pragma enumsalwaysint off
+	#endif
+#endif  // _MSL_FORCE_ENUMS_ALWAYS_INT
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#if _MSL_FORCE_ENABLE_BOOL_SUPPORT
+		#pragma bool on
+	#else
+		#pragma bool off
+	#endif
+#endif  // _MSL_FORCE_ENABLE_BOOL_SUPPORT
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	namespace std {
+#endif
+
+// typedef  OFF_T   streamoff;  in <iosfwd> so that <string> can see it
+typedef ptrdiff_t streamsize;
+
+// ios_base
+
+class _MSL_IMP_EXP_CPP ios_base
+{
+public:
+	class failure;
+
+	enum fmtflags
+	{
+		boolalpha   = 1 <<  0,
+		dec         = 1 <<  1,
+		fixed       = 1 <<  2,
+		hex         = 1 <<  3,
+		internal    = 1 <<  4,
+		left        = 1 <<  5,
+		oct         = 1 <<  6,
+		right       = 1 <<  7,
+		scientific  = 1 <<  8,
+		showbase    = 1 <<  9,
+		showpoint   = 1 << 10,
+		showpos     = 1 << 11,
+		skipws      = 1 << 12,
+		unitbuf     = 1 << 13,
+		uppercase   = 1 << 14,
+		adjustfield = left | right | internal,
+		basefield   = dec | oct | hex,
+		floatfield  = scientific | fixed
+	};
+
+	enum iostate
+	{
+		goodbit = 0,
+		badbit  = 1 <<  0,
+		eofbit  = 1 <<  1,
+		failbit = 1 <<  2
+	};
+
+	enum openmode
+	{
+		app    = 1 <<  0,
+		ate    = 1 <<  1,
+		binary = 1 <<  2,
+		in     = 1 <<  3,
+		out    = 1 <<  4,
+		trunc  = 1 <<  5
+	};
+
+	enum seekdir
+	{
+		beg = 1 << 0,
+		cur = 1 << 1,
+		end = 1 << 2
+	};
+
+	class Init;
+
+	//  lib.fmtflags.state fmtflags state:
+	fmtflags flags() const;
+	fmtflags flags(fmtflags fmtfl);
+	fmtflags setf(fmtflags fmtfl);
+	fmtflags setf(fmtflags fmtfl, fmtflags mask);
+	void unsetf(fmtflags mask);
+
+	streamsize precision() const;
+	streamsize precision(streamsize prec);
+	streamsize width() const;
+	streamsize width(streamsize wide);
+
+	void* rdbuf() const;
+	void* rdbuf(void* sb);
+
+	bool good() const;
+	bool eof()  const;
+	bool fail() const;
+	bool bad()  const;
+
+	iostate exceptions() const;
+	void exceptions(iostate except);
+
+	operator void*() const;
+	bool operator!() const;
+	iostate rdstate() const;
+	void clear(iostate state = goodbit);
+	void setstate(iostate state);
+
+#ifndef _MSL_NO_LOCALE
+	//  lib.ios.base.locales locales:
+	locale imbue(const locale& loc);
+	locale getloc() const;
+#endif  // _MSL_NO_LOCALE
+
+	//  lib.ios.base.storage storage:
+	static int xalloc();
+	long&  iword(int index);
+	void*& pword(int index);
+
+	// copy and assginment
+	ios_base(const ios_base& rhs);
+	ios_base& operator=(const ios_base& rhs);
+
+	//  destructor
+	virtual ~ios_base();
+
+	//  lib.ios.base.callback callbacks;
+#ifndef _MSL_TINY_IO
+	enum event { erase_event, imbue_event, copyfmt_event };
+	typedef void (*event_callback)(event, ios_base&, int index);
+	void register_callback(event_callback fn, int index);
+#endif  // _MSL_TINY_IO
+
+	static bool sync_with_stdio(bool sync = true);
+
+protected:
+	ios_base();
+
+#ifdef _MSL_MOVE
+	void swap(ios_base&& rhs);
+	void move(ios_base&& rhs);
+#endif  // _MSL_MOVE
+
+	void init(void* sb);
+#ifdef __GNUC__
+public:
+#endif
+	iostate& state();
+#ifdef __GNUC__
+protected:
+#endif
+#ifndef _MSL_TINY_IO
+	void do_callbacks(event evnt);
+#endif
+
+	void set_rdbuf(void* sb) {rdbuf_ = sb;}
+
+private:
+
+#ifndef _MSL_TINY_IO
+	typedef pair<event_callback, int> event_data;
+#endif
+
+#ifndef _MSL_TINY_IO
+	static int index_;
+	event_data* cb_vec_;
+	size_t cb_siz_;
+	size_t cb_cap_;
+	long* iarray_;
+	size_t isize_;
+	void** parray_;
+	size_t psize_;
+#endif  // _MSL_TINY_IO
+#ifndef _MSL_NO_LOCALE
+	locale* loc_;
+#endif
+	void* rdbuf_;
+	streamsize precision_;
+	streamsize width_;
+	fmtflags fmtflags_;
+	iostate iostate_;
+	iostate exceptions_;
+
+	void throw_failure(const char* msg);
+	void copy_ios_base(const ios_base& rhs);
+};
+
+// failure
+
+class ios_base::failure
+	: public exception
+{
+public:
+	explicit failure(const char* msg);
+	explicit failure(const string& msg);
+	virtual const char* what() const _MSL_NO_THROW;
+private:
+	_MSLstring what_;
+};
+
+inline
+ios_base::failure::failure(const char* msg)
+	: what_(msg)
+{
+}
+
+inline
+ios_base::failure::failure(const string& msg)
+	: what_(msg)
+{
+}
+
+inline
+const char*
+ios_base::failure::what() const _MSL_NO_THROW
+{
+	return what_.c_str();
+}
+
+// Init - implemented in iostream.cpp
+
+class _MSL_IMP_EXP_CPP __nInit
+{
+public:
+	__nInit();
+	~__nInit();
+private:
+	static int ninit_cnt_s;
+};
+
+class _MSL_IMP_EXP_CPP __wInit
+{
+public:
+	__wInit();
+	~__wInit();
+private:
+	static int winit_cnt_s;
+};
+
+class _MSL_IMP_EXP_CPP ios_base::Init
+{
+public:
+	Init();
+};
+
+// fmtflags
+
+inline
+ios_base::fmtflags
+operator & (ios_base::fmtflags x, ios_base::fmtflags y)
+{
+	return static_cast<ios_base::fmtflags>(static_cast<int>(x) & static_cast<int>(y));
+}
+
+inline
+ios_base::fmtflags
+operator | (ios_base::fmtflags x, ios_base::fmtflags y)
+{
+	return static_cast<ios_base::fmtflags>(static_cast<int>(x) | static_cast<int>(y));
+}
+
+inline
+ios_base::fmtflags
+operator ^ (ios_base::fmtflags x, ios_base::fmtflags y)
+{
+	return static_cast<ios_base::fmtflags>(static_cast<int>(x) ^ static_cast<int>(y));
+}
+
+inline
+ios_base::fmtflags
+operator ~ (ios_base::fmtflags x)
+{
+	return static_cast<ios_base::fmtflags>(~static_cast<int>(x));
+}
+
+inline
+ios_base::fmtflags&
+operator &= (ios_base::fmtflags& x, ios_base::fmtflags y)
+{
+	return x = x & y;
+}
+
+inline
+ios_base::fmtflags&
+operator |= (ios_base::fmtflags& x, ios_base::fmtflags y)
+{
+	return x = x | y;
+}
+
+inline
+ios_base::fmtflags&
+operator ^= (ios_base::fmtflags& x, ios_base::fmtflags y)
+{
+	return x = x ^ y;
+}
+
+// iostate
+
+inline
+ios_base::iostate
+operator & (ios_base::iostate x, ios_base::iostate y)
+{
+	return static_cast<ios_base::iostate>(static_cast<int>(x) & static_cast<int>(y));
+}
+
+inline
+ios_base::iostate
+operator | (ios_base::iostate x, ios_base::iostate y)
+{
+	return static_cast<ios_base::iostate>(static_cast<int>(x) | static_cast<int>(y));
+}
+
+inline
+ios_base::iostate
+operator ^ (ios_base::iostate x, ios_base::iostate y)
+{
+	return static_cast<ios_base::iostate>(static_cast<int>(x) ^ static_cast<int>(y));
+}
+
+inline
+ios_base::iostate
+operator ~ (ios_base::iostate x)
+{
+	return static_cast<ios_base::iostate>(~static_cast<int>(x));
+}
+
+inline
+ios_base::iostate&
+operator &= (ios_base::iostate& x, ios_base::iostate y)
+{
+	return x = x & y;
+}
+
+inline
+ios_base::iostate&
+operator |= (ios_base::iostate& x, ios_base::iostate y)
+{
+	return x = x | y;
+}
+
+inline
+ios_base::iostate&
+operator ^= (ios_base::iostate& x, ios_base::iostate y)
+{
+	return x = x ^ y;
+}
+
+// openmode
+
+inline
+ios_base::openmode
+operator & (ios_base::openmode x, ios_base::openmode y)
+{
+	return static_cast<ios_base::openmode>(static_cast<int>(x) & static_cast<int>(y));
+}
+
+inline
+ios_base::openmode
+operator | (ios_base::openmode x, ios_base::openmode y)
+{
+	return static_cast<ios_base::openmode>(static_cast<int>(x) | static_cast<int>(y));
+}
+
+inline
+ios_base::openmode
+operator ^ (ios_base::openmode x, ios_base::openmode y)
+{
+	return static_cast<ios_base::openmode>(static_cast<int>(x) ^ static_cast<int>(y));
+}
+
+inline
+ios_base::openmode
+operator ~ (ios_base::openmode x)
+{
+	return static_cast<ios_base::openmode>(~static_cast<int>(x));
+}
+
+inline
+ios_base::openmode&
+operator &= (ios_base::openmode& x, ios_base::openmode y)
+{
+	return x = x & y;
+}
+
+inline
+ios_base::openmode&
+operator |= (ios_base::openmode& x, ios_base::openmode y)
+{
+	return x = x | y;
+}
+
+inline
+ios_base::openmode&
+operator ^= (ios_base::openmode& x, ios_base::openmode y)
+{
+	return x = x ^ y;
+}
+
+// ios_base inline Implementation
+
+inline
+ios_base::fmtflags
+ios_base::flags() const
+{
+	return fmtflags_;
+}
+
+inline
+ios_base::fmtflags
+ios_base::flags(fmtflags fmtfl)
+{
+	fmtflags result = fmtflags_;
+	fmtflags_ = fmtfl;
+	return result;
+}
+
+inline
+ios_base::fmtflags
+ios_base::setf(fmtflags fmtfl)
+{
+	fmtflags result = fmtflags_;
+	fmtflags_ |= fmtfl;
+	return result;
+}
+
+inline
+ios_base::fmtflags
+ios_base::setf(fmtflags fmtfl, fmtflags mask)
+{
+	fmtflags result = fmtflags_;
+	fmtflags_ &= ~mask;
+	fmtflags_ |= fmtfl & mask;
+	return result;
+}
+
+inline
+void
+ios_base::unsetf(fmtflags mask)
+{
+	fmtflags_ &= ~mask;
+}
+
+inline
+streamsize
+ios_base::precision() const
+{
+	return precision_;
+}
+
+inline
+streamsize
+ios_base::precision(streamsize prec)
+{
+	streamsize result = precision_;
+	precision_ = prec;
+	return result;
+}
+
+inline
+streamsize
+ios_base::width() const
+{
+	return width_;
+}
+
+inline
+streamsize
+ios_base::width(streamsize wide)
+{
+	streamsize result = width_;
+	width_ = wide;
+	return result;
+}
+
+inline
+void*
+ios_base::rdbuf() const
+{
+	return rdbuf_;
+}
+
+inline
+void
+ios_base::clear(iostate state)
+{
+	iostate_ = state;
+	if (rdbuf_ == 0)
+		iostate_ |= badbit;
+	if (iostate_ & exceptions_)
+		throw_failure("ios_base failure in clear");
+}
+
+inline
+void*
+ios_base::rdbuf(void* sb)
+{
+	void* result = rdbuf_;
+	rdbuf_ = sb;
+	clear();
+	return result;
+}
+
+inline
+bool
+ios_base::good() const
+{
+	return static_cast<bool>(iostate_ == goodbit);
+}
+
+inline
+bool
+ios_base::eof() const
+{
+	return static_cast<bool>(iostate_ & eofbit);
+}
+
+inline
+bool
+ios_base::fail() const
+{
+	return static_cast<bool>(iostate_ & (failbit | badbit));
+}
+
+inline
+bool
+ios_base::bad() const
+{
+	return static_cast<bool>(iostate_ & badbit);
+}
+
+inline
+ios_base::iostate
+ios_base::exceptions() const
+{
+	return exceptions_;
+}
+
+inline
+void
+ios_base::exceptions(iostate except)
+{
+	exceptions_ = except;
+	if (rdbuf_ == 0)
+		iostate_ |= badbit;
+	if (iostate_ & exceptions_)
+		throw_failure("ios_base failure in exceptions");
+}
+
+inline
+ios_base::operator void*() const
+{
+	return fail() ? 0 : rdbuf_;
+}
+
+inline
+bool
+ios_base::operator!() const
+{
+	return fail();
+}
+
+inline
+ios_base::iostate
+ios_base::rdstate() const
+{
+	return iostate_;
+}
+
+inline
+void
+ios_base::setstate(iostate state)
+{
+	clear(rdstate() | state);
+}
+
+#ifndef _MSL_NO_LOCALE
+
+	inline
+	locale
+	ios_base::getloc() const
+	{
+		return *loc_;
+	}
+
+#endif  // _MSL_NO_LOCALE
+
+#ifndef _MSL_TINY_IO
+
+inline
+int
+ios_base::xalloc()
+{
+	return index_++;
+}
+
+#endif  // _MSL_TINY_IO
+
+inline
+ios_base::ios_base(const ios_base& rhs)
+	:
+#ifndef _MSL_TINY_IO
+	  cb_vec_(0),
+	  cb_siz_(0),
+	  cb_cap_(0),
+	  iarray_(0),
+	  isize_(0),
+	  parray_(0),
+	  psize_(0),
+#endif  // _MSL_TINY_IO
+#ifndef _MSL_NO_LOCALE
+	  loc_(0),
+#endif
+	  rdbuf_(0)
+{
+	copy_ios_base(rhs);
+}
+
+inline
+ios_base&
+ios_base::operator=(const ios_base& rhs)
+{
+	if (this != &rhs)
+		copy_ios_base(rhs);
+	return *this;
+}
+
+#ifdef _MSL_MOVE
+
+inline
+void
+ios_base::move(ios_base&& rhs)
+{
+#ifndef _MSL_TINY_IO
+	cb_vec_ = rhs.cb_vec_;
+	cb_siz_ = rhs.cb_siz_;
+	cb_cap_ = rhs.cb_cap_;
+	iarray_ = rhs.iarray_;
+	isize_ = rhs.isize_;
+	parray_ = rhs.parray_;
+	psize_ = rhs.psize_;
+#endif  // _MSL_TINY_IO
+#ifndef _MSL_NO_LOCALE
+	loc_ = rhs.loc_;
+#endif
+	rdbuf_ = 0;
+	precision_ = rhs.precision_;
+	width_ = rhs.width_;
+	fmtflags_ = rhs.fmtflags_;
+	iostate_ = rhs.iostate_;
+	exceptions_ = rhs.exceptions_;
+	rhs.init(rhs.rdbuf_);
+}
+
+inline
+void
+ios_base::swap(ios_base&& rhs)
+{
+#ifndef _MSL_TINY_IO
+	_STD::swap(cb_vec_, rhs.cb_vec_);
+	_STD::swap(cb_siz_, rhs.cb_siz_);
+	_STD::swap(cb_cap_, rhs.cb_cap_);
+	_STD::swap(iarray_, rhs.iarray_);
+	_STD::swap(isize_, rhs.isize_);
+	_STD::swap(parray_, rhs.parray_);
+	_STD::swap(psize_, rhs.psize_);
+#endif  // _MSL_TINY_IO
+#ifndef _MSL_NO_LOCALE
+	_STD::swap(loc_, rhs.loc_);
+#endif
+	_STD::swap(precision_, rhs.precision_);
+	_STD::swap(width_, rhs.width_);
+	_STD::swap(fmtflags_, rhs.fmtflags_);
+	_STD::swap(iostate_, rhs.iostate_);
+	_STD::swap(exceptions_, rhs.exceptions_);
+}
+
+#endif  // _MSL_MOVE
+
+inline
+ios_base::ios_base()
+{
+}
+
+inline
+ios_base::iostate&
+ios_base::state()
+{
+	return iostate_;
+}
+
+#ifndef _MSL_TINY_IO
+
+inline
+void
+ios_base::do_callbacks(event evnt)
+{
+	for (size_t i = cb_siz_; i > 0;)
+	{
+		event_data& ev = cb_vec_[--i];
+		ev.first(evnt, *this, ev.second);
+	}
+}
+
+#endif  // _MSL_TINY_IO
+
+// basic_ios
+
+template <class charT, class traits>
+class basic_ios
+	: public ios_base
+{
+public:
+	//  Types:
+	typedef charT                     char_type;
+	typedef typename traits::int_type int_type;
+	typedef typename traits::pos_type pos_type;
+	typedef typename traits::off_type off_type;
+	typedef traits                    traits_type;
+
+	//  lib.basic.ios.cons Constructor/destructor:
+	explicit basic_ios(basic_streambuf<charT, traits>* sb);
+
+	//  lib.basic.ios.members Members:
+	basic_ostream<charT, traits>* tie() const;
+	basic_ostream<charT, traits>* tie(basic_ostream<charT, traits>* tiestr);
+
+	basic_streambuf<charT, traits>* rdbuf() const;
+	basic_streambuf<charT, traits>* rdbuf(basic_streambuf<charT, traits>* sb);
+
+	basic_ios& copyfmt(const basic_ios& rhs);
+
+	char_type fill() const;
+	char_type fill(char_type ch);
+
+#ifndef _MSL_NO_LOCALE
+	//  lib.ios.base.locales locales:
+	locale imbue(const locale& loc);
+#endif  // _MSL_NO_LOCALE
+
+	char     narrow(char_type c, char dfault) const;
+	char_type widen(char c) const;
+#ifdef _MSL_NO_LOCALE
+	basic_string<charT, traits> widen(const string& s) const;
+#endif
+
+protected:
+	basic_ios();
+	void init(basic_streambuf<charT, traits>* sb);
+
+#ifdef _MSL_MOVE
+	void swap(basic_ios&& rhs);
+	void move(basic_ios&& rhs);
+#endif  // _MSL_MOVE
+
+
+private:
+	basic_ostream<charT, traits>* tiestr_;
+	char_type fill_;
+
+	basic_ios(const basic_ios& );              //  not defined
+	basic_ios& operator=(const basic_ios&);    //  not defined
+};
+
+// basic_ios Implementation
+
+template <class charT, class traits>
+inline
+basic_ios<charT, traits>::basic_ios(basic_streambuf<charT, traits>* sb)
+{
+	init(sb);
+}
+
+#ifdef _MSL_MOVE
+
+template <class charT, class traits>
+void
+basic_ios<charT, traits>::swap(basic_ios&& rhs)
+{
+	ios_base::swap(rhs);
+	_STD::swap(tiestr_, rhs.tiestr_);
+	_STD::swap(fill_, rhs.fill_);
+}
+
+template <class charT, class traits>
+void
+basic_ios<charT, traits>::move(basic_ios&& rhs)
+{
+	ios_base::move(rhs);
+	tiestr_ = rhs.tiestr_;
+	rhs.tiestr_ = 0;
+	fill_ = rhs.fill_;
+}
+
+#endif  // _MSL_MOVE
+
+template <class charT, class traits>
+inline
+basic_ios<charT, traits>::basic_ios()
+{
+}
+
+template <class charT, class traits>
+inline
+basic_ostream<charT, traits>*
+basic_ios<charT, traits>::tie() const
+{
+	return tiestr_;
+}
+
+template <class charT, class traits>
+inline
+basic_ostream<charT, traits>*
+basic_ios<charT, traits>::tie(basic_ostream<charT, traits>* tiestr)
+{
+	basic_ostream<charT, traits>* result = tiestr_;
+	tiestr_ = tiestr;
+	return result;
+}
+
+template <class charT, class traits>
+inline
+basic_streambuf<charT, traits>*
+basic_ios<charT, traits>::rdbuf() const
+{
+	return static_cast<basic_streambuf<charT, traits>*>(ios_base::rdbuf());
+}
+
+template <class charT, class traits>
+inline
+basic_streambuf<charT, traits>*
+basic_ios<charT, traits>::rdbuf(basic_streambuf<charT, traits>* sb)
+{
+	return static_cast<basic_streambuf<charT, traits>*>(ios_base::rdbuf(sb));
+}
+
+template <class charT, class traits>
+basic_ios<charT, traits>&
+basic_ios<charT, traits>::copyfmt(const basic_ios& rhs)
+{
+	if (this != &rhs)
+	{
+#ifndef _MSL_TINY_IO
+		do_callbacks(erase_event);
+#endif
+		ios_base::operator = (rhs);
+		tiestr_ = rhs.tiestr_;
+		fill_ = rhs.fill_;
+#ifndef _MSL_TINY_IO
+		do_callbacks(copyfmt_event);
+#endif
+		exceptions(rhs.exceptions());
+	}
+	return *this;
+}
+
+template <class charT, class traits>
+inline
+typename basic_ios<charT, traits>::char_type
+basic_ios<charT, traits>::fill() const
+{
+	return fill_;
+}
+
+template <class charT, class traits>
+inline
+typename basic_ios<charT, traits>::char_type
+basic_ios<charT, traits>::fill(char_type ch)
+{
+	char_type result = fill_;
+	fill_ = ch;
+	return result;
+}
+
+#ifndef _MSL_NO_LOCALE
+
+	template <class charT, class traits>
+	inline
+	locale
+	basic_ios<charT, traits>::imbue(const locale& loc)
+	{
+		locale result = ios_base::imbue(loc);
+		if (rdbuf())
+			rdbuf()->pubimbue(loc);
+		return result;
+	}
+
+	template <class charT, class traits>
+	inline
+	char
+	basic_ios<charT, traits>::narrow(char_type c, char dfault) const
+	{
+		return _USE_FACET(ctype<char_type>, getloc()).narrow(c, dfault);
+	}
+
+	template <class charT, class traits>
+	inline
+	typename basic_ios<charT, traits>::char_type
+	basic_ios<charT, traits>::widen(char c) const
+	{
+		return _USE_FACET(ctype<char_type>, getloc()).widen(c);
+	}
+
+#else  // _MSL_NO_LOCALE
+
+	template <class charT, class traits>
+	inline
+	char
+	basic_ios<charT, traits>::narrow(char_type c, char) const
+	{
+		return char(c);
+	}
+
+	template <class charT, class traits>
+	inline
+	typename basic_ios<charT, traits>::char_type
+	basic_ios<charT, traits>::widen(char c) const
+	{
+		return char_type(c);
+	}
+
+	template <class charT, class traits>
+	basic_string<charT, traits>
+	basic_ios<charT, traits>::widen(const string& s) const
+	{
+		return basic_string<charT, traits>(s.begin(), s.end());
+	}
+
+#endif  // _MSL_NO_LOCALE
+
+template <class charT, class traits>
+inline
+void
+basic_ios<charT, traits>::init(basic_streambuf<charT, traits>* sb)
+{
+	ios_base::init(sb);
+	tiestr_ = 0;
+	fill_ = widen(' ');
+}
+
+//  lib.std.ios.manip, manipulators:
+
+inline
+ios_base&
+boolalpha(ios_base& str)
+{
+	str.setf(ios_base::boolalpha);
+	return str;
+}
+
+inline
+ios_base&
+noboolalpha(ios_base& str)
+{
+	str.unsetf(ios_base::boolalpha);
+	return str;
+}
+
+inline
+ios_base&
+showbase(ios_base& str)
+{
+	str.setf(ios_base::showbase);
+	return str;
+}
+
+inline
+ios_base&
+noshowbase(ios_base& str)
+{
+	str.unsetf(ios_base::showbase);
+	return str;
+}
+
+inline
+ios_base&
+showpoint(ios_base& str)
+{
+	str.setf(ios_base::showpoint);
+	return str;
+}
+
+inline
+ios_base&
+noshowpoint(ios_base& str)
+{
+	str.unsetf(ios_base::showpoint);
+	return str;
+}
+
+inline
+ios_base&
+showpos(ios_base& str)
+{
+	str.setf(ios_base::showpos);
+	return str;
+}
+
+inline
+ios_base&
+noshowpos(ios_base& str)
+{
+	str.unsetf(ios_base::showpos);
+	return str;
+}
+
+inline
+ios_base&
+skipws(ios_base& str)
+{
+	str.setf(ios_base::skipws);
+	return str;
+}
+
+inline
+ios_base&
+noskipws(ios_base& str)
+{
+	str.unsetf(ios_base::skipws);
+	return str;
+}
+
+inline
+ios_base&
+uppercase(ios_base& str)
+{
+	str.setf(ios_base::uppercase);
+	return str;
+}
+
+inline
+ios_base&
+nouppercase(ios_base& str)
+{
+	str.unsetf(ios_base::uppercase);
+	return str;
+}
+
+inline
+ios_base&
+unitbuf(ios_base& str)
+{
+	str.setf(ios_base::unitbuf);
+	return str;
+}
+
+inline
+ios_base&
+nounitbuf(ios_base& str)
+{
+	str.unsetf(ios_base::unitbuf);
+	return str;
+}
+
+//  lib.adjustfield.manip adjustfield:
+
+inline
+ios_base&
+internal(ios_base& str)
+{
+	str.setf(ios_base::internal, ios_base::adjustfield);
+	return str;
+}
+
+inline
+ios_base&
+left(ios_base& str)
+{
+	str.setf(ios_base::left, ios_base::adjustfield);
+	return str;
+}
+
+inline
+ios_base&
+right(ios_base& str)
+{
+	str.setf(ios_base::right, ios_base::adjustfield);
+	return str;
+}
+
+//  lib.basefield.manip basefield:
+
+inline
+ios_base&
+dec(ios_base& str)
+{
+	str.setf(ios_base::dec, ios_base::basefield);
+	return str;
+}
+
+inline
+ios_base&
+hex(ios_base& str)
+{
+	str.setf(ios_base::hex, ios_base::basefield);
+	return str;
+}
+
+inline
+ios_base&
+oct(ios_base& str)
+{
+	str.setf(ios_base::oct, ios_base::basefield);
+	return str;
+}
+
+//  lib.floatfield.manip floatfield:
+
+inline
+ios_base&
+fixed(ios_base& str)
+{
+	str.setf(ios_base::fixed, ios_base::floatfield);
+	return str;
+}
+
+inline
+ios_base&
+scientific(ios_base& str)
+{
+	str.setf(ios_base::scientific, ios_base::floatfield);
+	return str;
+}
+
+// Auxillary helper class to that saves and restores ios_base::fmtflags on the stack
+
+#ifdef __MWERKS__
+	#pragma warn_padding off
+#endif
+
+class _SaveFlags
+{
+public:
+	_SaveFlags(ios_base& str);
+	~_SaveFlags();
+private:
+	ios_base& str_;
+	streamsize width_;
+	streamsize prec_;
+	ios_base::fmtflags flags_;
+	ios_base::iostate exceptions_;
+
+	_SaveFlags(const _SaveFlags&);              // Not defined
+	_SaveFlags& operator= (const _SaveFlags&);  // Not defined
+};
+
+#ifdef __MWERKS__
+	#pragma warn_padding reset
+#endif
+
+inline
+_SaveFlags::_SaveFlags(ios_base& str)
+	: str_(str),
+	  width_(str_.width()),
+	  prec_(str_.precision()),
+	  flags_(str_.flags()),
+	  exceptions_(str.exceptions())
+{
+}
+
+inline
+_SaveFlags::~_SaveFlags()
+{
+	str_.flags(flags_);
+	str_.width(width_);
+	str_.precision(prec_);
+	str_.exceptions(exceptions_);
+}
+
+template <class charT, class OutputIterator>
+OutputIterator
+__put_fill(OutputIterator out, charT fill, int pad)
+{
+	for (int i = 0; i < pad; ++i)
+		*out++ = fill;
+	return out;
+}
+
+template <class charT, class OutputIterator>
+OutputIterator
+__put_character(OutputIterator out, const charT* data, int len)
+{
+	for (int i = 0; i < len; ++i)
+		*out++ = *data++;
+	return out;
+}
+
+template <class charT, class OutputIterator>
+OutputIterator
+__putnumber(OutputIterator out, ios_base& str, charT fill,
+	const charT* prefix, int plen, const charT* digits, int count)
+{
+	// Determine amount of padding
+	int pad = 0;
+	if (str.width() > plen + count)
+		pad = int(str.width() - (plen + count));
+	// Write prefix and digits, inserting padding in the correct place
+	typename basic_ios<charT>::fmtflags adjust = str.flags() & ios_base::adjustfield;
+	if (adjust != ios_base::left && adjust != ios_base::internal)
+		out = __put_fill(out, fill, pad);
+	out = __put_character(out, prefix, plen);
+	if (adjust == ios_base::internal)
+		out = __put_fill(out, fill, pad);
+	out = __put_character(out, digits, count);
+	if (adjust == ios_base::left)
+		out = __put_fill(out, fill, pad);
+	// Set width to 0 (standard)
+	str.width(0);
+	return out;
+}
+
+// __parse_a_word
+// ConstStringIterator is a forward iterator to [const] basic_string<charT>
+// where charT is InputIterator's value_type.
+#ifndef _MSL_NO_LOCALE
+template <class InputIterator, class ConstStringIterator, class Ctype>
+#else
+template <class InputIterator, class ConstStringIterator>
+#endif
+ConstStringIterator
+__parse_a_word(InputIterator& first, InputIterator last,
+               ConstStringIterator names, ConstStringIterator names_end,
+		#ifndef _MSL_NO_LOCALE
+             const Ctype& ct,
+        #endif
+             ios_base::iostate& err, bool force_lower = false)
+{
+	if (first == last)
+		err |= ios_base::eofbit;
+	typedef typename iterator_traits<InputIterator>::value_type charT;
+	const int definitely_not = 0;
+	const int maybe = 1;
+	const int got_it = 2;
+	vector<int> status(static_cast<size_t>(_STD::distance(names, names_end)), maybe);
+	size_t num_maybes = status.size();
+	size_t num_got_it = 0;
+	size_t j = 0;
+	for (ConstStringIterator s = names; s != names_end; ++s, ++j)
+	{
+		if (s->size() == 0)
+		{
+			status[j] = got_it;
+			++num_got_it;
+			--num_maybes;
+		}
+	}
+	for (size_t i = 0; first != last && num_maybes > 0; ++i)
+	{
+		charT c = *first;
+		bool consume = false;
+		if (force_lower)
+		#ifndef _MSL_NO_LOCALE
+			c = ct.tolower(c);
+		#else
+			c = charT(tolower(c));
+		#endif
+		{
+		j = 0;
+		for (ConstStringIterator s = names; s != names_end; ++s, ++j)
+		{
+			if (status[j] == maybe)
+			{
+				if ((*s)[i] != c)
+				{
+					status[j] = definitely_not;
+					--num_maybes;
+				}
+				else
+				{
+					consume = true;
+					if (i+1 == s->size())
+					{
+						status[j] = got_it;
+						++num_got_it;
+						--num_maybes;
+					}
+				}
+			}
+		}
+		}
+		{
+		j = 0;
+		for (ConstStringIterator s = names; s != names_end; ++s, ++j)
+		{
+			if (status[j] == got_it && i+1 != s->size())
+			{
+				if (num_maybes > 0)
+				{
+					status[j] = definitely_not;
+					--num_got_it;
+					consume = true;
+				}
+			}
+		}
+		}
+		if (consume && ++first == last)
+			err |= ios_base::eofbit;
+	}
+	ConstStringIterator result = names_end;
+	if (num_got_it)
+	{
+		for (j = 0; j < status.size(); ++j)
+		{
+			if (status[j] == got_it)
+			{
+				result = names;
+				_STD::advance(result, j);
+				break;
+			}
+		}
+	}
+	return result;
+}
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	} // namespace std
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#pragma enumsalwaysint reset
+#endif
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#pragma bool reset
+#endif
+
+#ifdef __MWERKS__
+#pragma options align=reset
+#endif
+
+#endif // RC_INVOKED
+
+#endif // _MSL_NO_IO
+
+#endif // _IOS
+
+// hh 971220 fixed MOD_INCLUDE
+// hh 971222 added wrapper for alignment
+// hh 971222 Changed filename from ios.h to ios
+// hh 971222 Made include guards standard
+// hh 971230 added RC_INVOKED wrapper
+// hh 980202 moved streamoff from <iosfwd> per standard
+// hh 980909 fpos added
+// hh 981111 made throwfailure() public
+// hh 981220 Added typename to appropriate return types
+// hh 981226 Added mutex accessor to help encapsulate future changes
+// hh 990524 Rewrote
+// hh 000130 Installed _MSL_NO_LOCALE
+// hh 000130 Installed _MSL_IMP_EXP_CPP
+// hh 000604 Rewrote sync_with_stdio
+// hh 001011 Made state() public for gcc because of friend difficulties
+// hh 000108 Protected copyfmt with if (this != &rhs)
+// hh 010125 Installed new locale by including <localeimp> instead of <locale>
+// hh 010125 Split ios_base::Init into 2 classes, one for narrow and one for wide streams
+// hh 010125 Expanded _SaveFlags to save/restore more data in ios_base
+// hh 010125 Relocated __putnumber here from <locale>
+// hh 010402 Removed 68K CMF support
+// hh 010727 Removed dependence on <cstdlib>
+// hh 011002 Moved fpos to <string> from here
+// hh 011005 Made dependent on <ctype> and moved __parse_a_word from ctype to here
+// hh 030711 Protected against pad warning

@@ -1,0 +1,299 @@
+{
+  "key": 20888,
+  "messages": [
+    {
+      "id": "msg_0301_00000",
+      "en_US": [
+        "Make Pokémon migrate from\n",
+        "{STRVAR_1 3, 1, 0}’s Ruby Game Pak?"
+      ]
+    },
+    {
+      "id": "msg_0301_00001",
+      "en_US": [
+        "Make Pokémon migrate from\n",
+        "{STRVAR_1 3, 1, 0}’s Sapphire Game Pak?"
+      ]
+    },
+    {
+      "id": "msg_0301_00002",
+      "en_US": [
+        "Make Pokémon migrate from\n",
+        "{STRVAR_1 3, 1, 0}’s Emerald Game Pak?"
+      ]
+    },
+    {
+      "id": "msg_0301_00003",
+      "en_US": [
+        "Make Pokémon migrate from\n",
+        "{STRVAR_1 3, 1, 0}’s FireRed Game Pak?"
+      ]
+    },
+    {
+      "id": "msg_0301_00004",
+      "en_US": [
+        "Make Pokémon migrate from\n",
+        "{STRVAR_1 3, 1, 0}’s LeafGreen Game Pak?"
+      ]
+    },
+    {
+      "id": "msg_0301_00005",
+      "en_US": [
+        "There aren’t six Pokémon in\n",
+        "the PC Boxes."
+      ]
+    },
+    {
+      "id": "msg_0301_00006",
+      "en_US": [
+        "Please choose the six Pokémon\n",
+        "that will migrate."
+      ]
+    },
+    {
+      "id": "msg_0301_00007",
+      "en_US": [
+        "This Game Card has already been\n",
+        "stocked with six migrated Pokémon.\r",
+        "Please participate in a Catching\n",
+        "Show at Pal Park."
+      ]
+    },
+    {
+      "id": "msg_0301_00008",
+      "en_US": "An Egg cannot migrate!"
+    },
+    {
+      "id": "msg_0301_00009",
+      "en_US": [
+        "This Pokémon knows a hidden move.\n",
+        "It cannot migrate."
+      ]
+    },
+    {
+      "id": "msg_0301_00010",
+      "en_US": "The six chosen Pokémon will migrate."
+    },
+    {
+      "id": "msg_0301_00011",
+      "en_US": [
+        "Pokémon CANNOT be returned to the\n",
+        "Game Boy Advance Game Pak. OK?"
+      ]
+    },
+    {
+      "id": "msg_0301_00012",
+      "garbage": 29
+    },
+    {
+      "id": "msg_0301_00013",
+      "garbage": 29
+    },
+    {
+      "id": "msg_0301_00014",
+      "garbage": 29
+    },
+    {
+      "id": "msg_0301_00015",
+      "garbage": 29
+    },
+    {
+      "id": "msg_0301_00016",
+      "garbage": 46
+    },
+    {
+      "id": "msg_0301_00017",
+      "garbage": 23
+    },
+    {
+      "id": "msg_0301_00018",
+      "en_US": [
+        "Saving data on Pokémon Ruby and\n",
+        "Pokémon HeartGold..."
+      ]
+    },
+    {
+      "id": "msg_0301_00019",
+      "en_US": [
+        "Saving data on Pokémon Ruby and\n",
+        "Pokémon SoulSilver..."
+      ]
+    },
+    {
+      "id": "msg_0301_00020",
+      "en_US": [
+        "Saving data on Pokémon Sapphire and\n",
+        "Pokémon HeartGold..."
+      ]
+    },
+    {
+      "id": "msg_0301_00021",
+      "en_US": [
+        "Saving data on Pokémon Sapphire and\n",
+        "Pokémon SoulSilver..."
+      ]
+    },
+    {
+      "id": "msg_0301_00022",
+      "en_US": [
+        "Saving data on Pokémon Emerald and\n",
+        "Pokémon HeartGold..."
+      ]
+    },
+    {
+      "id": "msg_0301_00023",
+      "en_US": [
+        "Saving data on Pokémon Emerald and\n",
+        "Pokémon SoulSilver..."
+      ]
+    },
+    {
+      "id": "msg_0301_00024",
+      "en_US": [
+        "Saving data on Pokémon FireRed and\n",
+        "Pokémon HeartGold..."
+      ]
+    },
+    {
+      "id": "msg_0301_00025",
+      "en_US": [
+        "Saving data on Pokémon FireRed and\n",
+        "Pokémon SoulSilver..."
+      ]
+    },
+    {
+      "id": "msg_0301_00026",
+      "en_US": [
+        "Saving data on Pokémon LeafGreen and\n",
+        "Pokémon HeartGold..."
+      ]
+    },
+    {
+      "id": "msg_0301_00027",
+      "en_US": [
+        "Saving data on Pokémon LeafGreen\n",
+        "and Pokémon SoulSilver..."
+      ]
+    },
+    {
+      "id": "msg_0301_00028",
+      "garbage": 21
+    },
+    {
+      "id": "msg_0301_00029",
+      "en_US": [
+        "Six Pokémon safely migrated to\n",
+        "the Pokémon HeartGold Game Card."
+      ]
+    },
+    {
+      "id": "msg_0301_00030",
+      "en_US": [
+        "Six Pokémon safely migrated to\n",
+        "the Pokémon SoulSilver Game Card."
+      ]
+    },
+    {
+      "id": "msg_0301_00031",
+      "en_US": [
+        "Pokémon may migrate from a Game Boy\n",
+        "Advance Game Pak only once a day.\r",
+        "A full day hasn’t passed since\n",
+        "Pokémon migrated from this Game Pak."
+      ]
+    },
+    {
+      "id": "msg_0301_00032",
+      "en_US": [
+        "You are using a different Nintendo DS,\n",
+        "or its internal clock has been altered.\r",
+        "If the game’s time setting is changed,\n",
+        "you will not be able to migrate\f",
+        "Pokémon for another 24 hours.\r",
+        "Would you like to change your game’s\n",
+        "time setting to match the Nintendo DS?"
+      ]
+    },
+    {
+      "id": "msg_0301_00033",
+      "en_US": [
+        "The game clock has been adjusted.\r",
+        "Pokémon cannot be made to migrate\n",
+        "for 24 hours."
+      ]
+    },
+    {
+      "id": "msg_0301_00034",
+      "en_US": [
+        "Pokémon CANNOT be returned to the\n",
+        "Game Boy Advance Game Pak.\r",
+        "Make Pokémon migrate to the\n",
+        "Pokémon HeartGold Game Card?"
+      ]
+    },
+    {
+      "id": "msg_0301_00035",
+      "en_US": [
+        "Pokémon CANNOT be returned to the\n",
+        "Game Boy Advance Game Pak.\r",
+        "Make Pokémon migrate to the\n",
+        "Pokémon SoulSilver Game Card?"
+      ]
+    },
+    {
+      "id": "msg_0301_00036",
+      "en_US": "Save failed..."
+    },
+    {
+      "id": "msg_0301_00037",
+      "en_US": [
+        "Error reading the Game Boy Advance\n",
+        "Game Pak’s save file.\r",
+        "There may not be a file saved,\n",
+        "or the save file may be corrupted."
+      ]
+    },
+    {
+      "id": "msg_0301_00038",
+      "en_US": [
+        "This Pokémon is not permitted to\n",
+        "migrate."
+      ]
+    },
+    {
+      "id": "msg_0301_00039",
+      "garbage": 24
+    },
+    {
+      "id": "msg_0301_00040",
+      "en_US": [
+        "Making adjustments...\n",
+        "Do not turn off the power."
+      ]
+    },
+    {
+      "id": "msg_0301_00041",
+      "garbage": 2
+    },
+    {
+      "id": "msg_0301_00042",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0301_00043",
+      "en_US": "Lv."
+    },
+    {
+      "id": "msg_0301_00044",
+      "en_US": "Item"
+    },
+    {
+      "id": "msg_0301_00045",
+      "garbage": 5
+    },
+    {
+      "id": "msg_0301_00046",
+      "garbage": 28
+    }
+  ]
+}

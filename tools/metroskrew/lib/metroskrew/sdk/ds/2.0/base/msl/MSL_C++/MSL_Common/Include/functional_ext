@@ -1,0 +1,169 @@
+/* MSL
+ * Copyright © 1995-2006 Freescale Corporation.  All rights reserved.
+ *
+ * $Date: 2006/02/09 16:58:22 $
+ * $Revision: 1.14.2.2 $
+ */
+
+// functional_ext
+
+/*
+ *
+ * Copyright (c) 1994
+ * Hewlett-Packard Company
+ *
+ * Permission to use, copy, modify, distribute and sell this software
+ * and its documentation for any purpose is hereby granted without fee,
+ * provided that the above copyright notice appear in all copies and
+ * that both that copyright notice and this permission notice appear
+ * in supporting documentation.  Hewlett-Packard Company makes no
+ * representations about the suitability of this software for any
+ * purpose.  It is provided "as is" without express or implied warranty.
+ *
+ *
+ * Copyright (c) 1996,1997
+ * Silicon Graphics Computer Systems, Inc.
+ *
+ * Permission to use, copy, modify, distribute and sell this software
+ * and its documentation for any purpose is hereby granted without fee,
+ * provided that the above copyright notice appear in all copies and
+ * that both that copyright notice and this permission notice appear
+ * in supporting documentation.  Silicon Graphics makes no
+ * representations about the suitability of this software for any
+ * purpose.  It is provided "as is" without express or implied warranty.
+ */
+
+#ifndef _FUNCTIONAL_EXT
+#define _FUNCTIONAL_EXT
+
+#include <mslconfig>
+#include <functional>
+
+#ifndef RC_INVOKED
+
+#ifdef __MWERKS__
+#pragma options align=native
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#if _MSL_FORCE_ENUMS_ALWAYS_INT
+		#pragma enumsalwaysint on
+	#else
+		#pragma enumsalwaysint off
+	#endif
+#endif  // _MSL_FORCE_ENUMS_ALWAYS_INT
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#if _MSL_FORCE_ENABLE_BOOL_SUPPORT
+		#pragma bool on
+	#else
+		#pragma bool off
+	#endif
+#endif  // _MSL_FORCE_ENABLE_BOOL_SUPPORT
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	namespace std {
+#endif
+/*
+// identity is an extensions: it is not part of the standard.
+template <class _Tp>
+struct _Identity : public unary_function<_Tp,_Tp> {
+  const _Tp& operator()(const _Tp& __x) const { return __x; }
+};
+
+template <class _Tp> struct identity : public _Identity<_Tp> {};
+*/
+// select1st and select2nd are extensions: they are not part of the standard.
+template <class _Pair>
+struct _Select1st : public unary_function<_Pair, typename _Pair::first_type> {
+  const typename _Pair::first_type& operator()(const _Pair& __x) const {
+    return __x.first;
+  }
+};
+
+template <class _Pair>
+struct _Select2nd : public unary_function<_Pair, typename _Pair::second_type>
+{
+  const typename _Pair::second_type& operator()(const _Pair& __x) const {
+    return __x.second;
+  }
+};
+
+template <class _Pair> struct select1st : public _Select1st<_Pair> {};
+template <class _Pair> struct select2nd : public _Select2nd<_Pair> {};
+
+// unary_compose and binary_compose (extensions, not part of the standard).
+
+template <class _Operation1, class _Operation2>
+class unary_compose
+  : public unary_function<typename _Operation2::argument_type,
+                          typename _Operation1::result_type>
+{
+protected:
+  _Operation1 _M_fn1;
+  _Operation2 _M_fn2;
+public:
+  unary_compose(const _Operation1& __x, const _Operation2& __y)
+    : _M_fn1(__x), _M_fn2(__y) {}
+  typename _Operation1::result_type
+  operator()(const typename _Operation2::argument_type& __x) const {
+    return _M_fn1(_M_fn2(__x));
+  }
+};
+
+template <class _Operation1, class _Operation2>
+inline unary_compose<_Operation1,_Operation2>
+compose1(const _Operation1& __fn1, const _Operation2& __fn2)
+{
+  return unary_compose<_Operation1,_Operation2>(__fn1, __fn2);
+}
+
+template <class _Operation1, class _Operation2, class _Operation3>
+class binary_compose
+  : public unary_function<typename _Operation2::argument_type,
+                          typename _Operation1::result_type> {
+protected:
+  _Operation1 _M_fn1;
+  _Operation2 _M_fn2;
+  _Operation3 _M_fn3;
+public:
+  binary_compose(const _Operation1& __x, const _Operation2& __y,
+                 const _Operation3& __z)
+    : _M_fn1(__x), _M_fn2(__y), _M_fn3(__z) { }
+  typename _Operation1::result_type
+  operator()(const typename _Operation2::argument_type& __x) const {
+    return _M_fn1(_M_fn2(__x), _M_fn3(__x));
+  }
+};
+
+template <class _Operation1, class _Operation2, class _Operation3>
+inline binary_compose<_Operation1, _Operation2, _Operation3>
+compose2(const _Operation1& __fn1, const _Operation2& __fn2,
+         const _Operation3& __fn3)
+{
+  return binary_compose<_Operation1,_Operation2,_Operation3>
+    (__fn1, __fn2, __fn3);
+}
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	} // namespace std
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#pragma enumsalwaysint reset
+#endif
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#pragma bool reset
+#endif
+
+#ifdef __MWERKS__
+#pragma options align=reset
+#endif
+
+#endif // RC_INVOKED
+
+#endif // _FUNCTIONAL_EXT
+
+// hh 990723 Created
+// hh 010402 Removed 68K CMF support

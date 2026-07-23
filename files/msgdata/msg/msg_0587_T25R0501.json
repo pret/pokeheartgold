@@ -1,0 +1,86 @@
+{
+  "key": 25702,
+  "messages": [
+    {
+      "id": "msg_0587_T25R0501_00000",
+      "en_US": [
+        "The train hasn’t come in...\r",
+        "I know! I’ll carry the passengers on\n",
+        "my back!\r",
+        "That won’t work."
+      ]
+    },
+    {
+      "id": "msg_0587_T25R0501_00001",
+      "en_US": [
+        "The Magnet Train is back in service!\r",
+        "Passengers need to go through the\n",
+        "gate for the automatic ticket check...\r"
+      ]
+    },
+    {
+      "id": "msg_0587_T25R0501_00002",
+      "en_US": [
+        "...Beep!\r",
+        "I am so sorry, but you need a\n",
+        "Magnet Train Pass to get on\f",
+        "the Magnet Train...\r"
+      ]
+    },
+    {
+      "id": "msg_0587_T25R0501_00003",
+      "en_US": [
+        "Passengers need to go through the\n",
+        "gate for the automatic ticket check...\r"
+      ]
+    },
+    {
+      "id": "msg_0587_T25R0501_00004",
+      "en_US": [
+        "Ping...fwip!\n",
+        "Here is your Pass back.\r",
+        "This train is about to leave\n",
+        "for Saffron City."
+      ]
+    },
+    {
+      "id": "msg_0587_T25R0501_00005",
+      "en_US": [
+        "Enjoy the attractive and magnetic\n",
+        "journey!"
+      ]
+    },
+    {
+      "id": "msg_0587_T25R0501_00006",
+      "en_US": [
+        "We are arriving at Goldenrod!\n",
+        "Goldenrod! The accent is on the “o”!"
+      ]
+    },
+    {
+      "id": "msg_0587_T25R0501_00007",
+      "en_US": [
+        "Enjoy the attractive and magnetic\n",
+        "journey!\r"
+      ]
+    },
+    {
+      "id": "msg_0587_T25R0501_00008",
+      "en_US": [
+        "I’m the President.\r",
+        "My dream was to build a train that\n",
+        "is faster than any Pokémon.\r",
+        "It really brings Johto much closer\n",
+        "to Kanto."
+      ]
+    },
+    {
+      "id": "msg_0587_T25R0501_00009",
+      "en_US": [
+        "We request that you make sure you\n",
+        "refrain from keeping large Pokémon out\f",
+        "at the station."
+      ]
+    }
+  ]
+}

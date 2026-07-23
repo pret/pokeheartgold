@@ -1,0 +1,386 @@
+/* MSL
+ * Copyright © 1995-2006 Freescale Corporation.  All rights reserved.
+ *
+ * $Date: 2006/02/09 16:59:13 $
+ * $Revision: 1.24.2.2 $
+ */
+
+// queue
+
+#ifndef _QUEUE
+#define _QUEUE
+
+/*  queue synopsis
+
+namespace std
+{
+
+template <class T, class Container = deque<T> >
+class queue
+{
+public:
+	typedef typename Container::value_type            value_type;
+	typedef typename Container::reference             reference;
+	typedef typename Container::const_reference       const_reference;
+	typedef typename Container::size_type             size_type;
+	typedef          Container                        container_type;
+
+	explicit queue(const Container& x = Container());
+
+	bool      empty() const;
+	size_type size()  const;
+	reference         front();
+	const_reference   front() const;
+	reference         back();
+	const_reference   back() const;
+	void push(const value_type& x);
+	void pop();
+
+protected:
+	Container c;
+};
+
+template <class T, class C> bool operator==(const queue<T, C>& x, const queue<T, C>& y);
+template <class T, class C> bool operator< (const queue<T, C>& x, const queue<T, C>& y);
+template <class T, class C> bool operator!=(const queue<T, C>& x, const queue<T, C>& y);
+template <class T, class C> bool operator> (const queue<T, C>& x, const queue<T, C>& y);
+template <class T, class C> bool operator>=(const queue<T, C>& x, const queue<T, C>& y);
+template <class T, class C> bool operator<=(const queue<T, C>& x, const queue<T, C>& y);
+
+template <class T, class Container = vector<T>,
+          class Compare = less<typename Container::value_type> >
+class priority_queue
+{
+public:
+	typedef typename Container::value_type            value_type;
+	typedef typename Container::reference             reference;
+	typedef typename Container::const_reference       const_reference;
+	typedef typename Container::size_type             size_type;
+	typedef          Container                        container_type;
+
+	explicit priority_queue(const Compare& x = Compare(), const Container& = Container());
+	template <class InputIterator>
+		priority_queue(InputIterator first, InputIterator last,
+		               const Compare& x = Compare(), const Container& y = Container());
+
+	bool      empty() const;
+	size_type size()  const;
+	const_reference   top() const;
+	void push(const value_type& x);
+	void pop();
+protected:
+	Container c;
+	Compare comp;
+};
+
+}  // std
+*/
+
+#include <mslconfig>
+#include <deque>
+#include <vector>
+#include <algorithm>
+#include <functional>
+
+#ifndef RC_INVOKED
+
+#ifdef __MWERKS__
+#pragma options align=native
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#if _MSL_FORCE_ENUMS_ALWAYS_INT
+		#pragma enumsalwaysint on
+	#else
+		#pragma enumsalwaysint off
+	#endif
+#endif  // _MSL_FORCE_ENUMS_ALWAYS_INT
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#if _MSL_FORCE_ENABLE_BOOL_SUPPORT
+		#pragma bool on
+	#else
+		#pragma bool off
+	#endif
+#endif  // _MSL_FORCE_ENABLE_BOOL_SUPPORT
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	namespace std {
+#endif
+
+template <class T, class Container = deque<T> >
+class queue
+{
+public:
+	typedef typename Container::value_type            value_type;
+	typedef typename Container::reference             reference;
+	typedef typename Container::const_reference       const_reference;
+	typedef typename Container::size_type             size_type;
+	typedef          Container                        container_type;
+
+	         queue() {}
+	explicit queue(const Container& x) : c(x) {}
+#ifdef _MSL_MOVE
+	explicit queue(Container&& x) : c(_STD::move(x)) {}
+	queue(queue&& q) : c(_STD::move(q.c)) {}
+	queue& operator=(queue&& q) {swap(q); return *this;}
+	void swap(queue&& q) {using _STD::swap; swap(c, q.c);}
+	void push(value_type&& x)      { c.push_back(_STD::move(x)); }
+#endif
+
+	bool      empty() const             { return c.empty(); }
+	size_type size()  const             { return c.size(); }
+	reference         front()           { return c.front(); }
+	const_reference   front() const     { return c.front(); }
+	reference         back()            { return c.back(); }
+	const_reference   back() const      { return c.back(); }
+	void push(const value_type& x)      { c.push_back(x); }
+	void pop()                          { c.pop_front(); }
+
+protected:
+	Container c;
+
+	friend bool operator== <T, Container>(const queue<T, Container>& x, const queue<T, Container>& y);
+	friend bool operator!= <T, Container>(const queue<T, Container>& x, const queue<T, Container>& y);
+	friend bool operator<  <T, Container>(const queue<T, Container>& x, const queue<T, Container>& y);
+	friend bool operator<= <T, Container>(const queue<T, Container>& x, const queue<T, Container>& y);
+	friend bool operator>  <T, Container>(const queue<T, Container>& x, const queue<T, Container>& y);
+	friend bool operator>= <T, Container>(const queue<T, Container>& x, const queue<T, Container>& y);
+};
+
+template <class T, class Container>
+inline
+bool
+operator==(const queue<T, Container>& x, const queue<T, Container>& y)
+{
+	return x.c == y.c;
+}
+
+template <class T, class Container>
+inline
+bool
+operator< (const queue<T, Container>& x, const queue<T, Container>& y)
+{
+	return x.c < y.c;
+}
+
+template <class T, class Container>
+inline
+bool
+operator!=(const queue<T, Container>& x, const queue<T, Container>& y)
+{
+	return x.c != y.c;
+}
+
+template <class T, class Container>
+inline
+bool
+operator> (const queue<T, Container>& x, const queue<T, Container>& y)
+{
+	return x.c > y.c;
+}
+
+template <class T, class Container>
+inline
+bool
+operator>=(const queue<T, Container>& x, const queue<T, Container>& y)
+{
+	return x.c >= y.c;
+}
+
+template <class T, class Container>
+inline
+bool
+operator<=(const queue<T, Container>& x, const queue<T, Container>& y)
+{
+	return x.c <= y.c;
+}
+
+#ifdef _MSL_MOVE
+
+template <class T, class Container>
+inline
+void swap(queue<T, Container>& x, queue<T, Container>& y) {x.swap(y);}
+
+template <class T, class Container>
+inline
+void swap(queue<T, Container>&& x, queue<T, Container>& y) {x.swap(y);}
+
+template <class T, class Container>
+inline
+void swap(queue<T, Container>& x, queue<T, Container>&& y) {x.swap(y);}
+
+#endif  // _MSL_MOVE
+
+template <class T, class Container = vector<T>,
+          class Compare = less<typename Container::value_type> >
+class priority_queue
+{
+public:
+	typedef typename Container::value_type            value_type;
+	typedef typename Container::reference             reference;
+	typedef typename Container::const_reference       const_reference;
+	typedef typename Container::size_type             size_type;
+	typedef          Container                        container_type;
+
+	         priority_queue() {};
+	explicit priority_queue(const Compare& x) : comp(x) {}
+	         priority_queue(const Compare& x, const Container& y);
+#ifdef _MSL_MOVE
+         priority_queue(const Compare& x, Container&& y);
+#endif
+
+	template <class InputIterator>
+		priority_queue(InputIterator first, InputIterator last,
+			const Compare& x, const Container& y);
+
+#ifdef _MSL_MOVE
+	template <class InputIterator>
+		priority_queue(InputIterator first, InputIterator last,
+			const Compare& x = Compare(), Container&& y = Container());
+
+	priority_queue(priority_queue&& pq) : c(_STD::move(pq.c)), comp(_STD::move(pq.comp)) {}
+	priority_queue& operator=(priority_queue&& pq) {swap(pq); return *this;}
+	void swap(priority_queue&& pq) {using _STD::swap; swap(c, pq.c); swap(comp, pq.comp);}
+#endif  // _MSL_MOVE
+
+	bool      empty() const       { return c.empty(); }
+	size_type size()  const       { return c.size(); }
+	const_reference   top() const { return c.front(); }
+	void push(const value_type& x);
+#ifdef _MSL_MOVE
+	void push(value_type&& x);
+#endif  // _MSL_MOVE
+	void pop();
+protected:
+	Container c;
+	Compare comp;
+};
+
+template <class T, class Container, class Compare>
+priority_queue<T, Container, Compare>::priority_queue(const Compare& x, const Container& y)
+	: c(y),
+	  comp(x)
+{
+	_STD::make_heap(c.begin(), c.end(), comp);
+}
+
+#ifdef _MSL_MOVE
+
+template <class T, class Container, class Compare>
+priority_queue<T, Container, Compare>::priority_queue(const Compare& x, Container&& y)
+	: c(_STD::move(y)),
+	  comp(x)
+{
+	_STD::make_heap(c.begin(), c.end(), comp);
+}
+
+#endif  // _MSL_MOVE
+
+template <class T, class Container, class Compare>
+template <class InputIterator>
+priority_queue<T, Container, Compare>::priority_queue(InputIterator first, InputIterator last,
+                                                      const Compare& x, const Container& y)
+	: c(y),
+	  comp(x)
+{
+	c.insert(c.end(), first, last);
+	_STD::make_heap(c.begin(), c.end(), comp);
+}
+
+#ifdef _MSL_MOVE
+
+template <class T, class Container, class Compare>
+template <class InputIterator>
+priority_queue<T, Container, Compare>::priority_queue(InputIterator first, InputIterator last,
+                                                      const Compare& x, Container&& y)
+	: c(_STD::move(y)),
+	  comp(x)
+{
+	c.insert(c.end(), first, last);
+	_STD::make_heap(c.begin(), c.end(), comp);
+}
+
+#endif  // _MSL_MOVE
+
+template <class T, class Container, class Compare>
+void
+priority_queue<T, Container, Compare>::push(const value_type& x)
+{
+	c.push_back(x);
+	_STD::push_heap(c.begin(), c.end(), comp);
+}
+
+#ifdef _MSL_MOVE
+
+template <class T, class Container, class Compare>
+void
+priority_queue<T, Container, Compare>::push(value_type&& x)
+{
+	c.push_back(_STD::move(x));
+	_STD::push_heap(c.begin(), c.end(), comp);
+}
+
+#endif  // _MSL_MOVE
+
+template <class T, class Container, class Compare>
+void
+priority_queue<T, Container, Compare>::pop()
+{
+	_STD::pop_heap(c.begin(), c.end(), comp);
+	c.pop_back();
+}
+
+#ifdef _MSL_MOVE
+template <class T, class Container, class Compare>
+inline
+void swap(priority_queue<T,Container,Compare>& x, priority_queue<T,Container,Compare>&& y)
+	{x.swap(y);}
+
+template <class T, class Container, class Compare>
+inline
+void swap(priority_queue<T,Container,Compare>&& x, priority_queue<T,Container,Compare>& y)
+	{x.swap(y);}
+
+template <class T, class Container, class Compare>
+inline
+void swap(priority_queue<T,Container,Compare>& x, priority_queue<T,Container,Compare>& y)
+	{x.swap(y);}
+
+#endif  // _MSL_MOVE
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	} // namespace std
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#pragma enumsalwaysint reset
+#endif
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#pragma bool reset
+#endif
+
+#ifdef __MWERKS__
+#pragma options align=reset
+#endif
+
+#endif // RC_INVOKED
+
+#endif // _QUEUE
+
+// hh 971220 fixed MOD_INCLUDE
+// hh 971223 Changed filename from queue.h to queue
+// hh 971223 Made include guards standard
+// hh 971223 added alignment wrapper
+// hh 971229 added <deque>
+// hh 971229 added <vector>
+// hh 971230 added RC_INVOKED wrapper
+// hh 980111 removed <functional>.  Not needed.
+// hh 980113 Updated friend syntax of global methods and moved out of template definition.
+// hh 980902 #ifdef'd out exception code when ndef MSIPL_EXCEPT
+// hh 981129 Rewrote
+// hh 990120 changed name of MSIPL flags
+// hh 010308 Added reference and const_reference to make proxy iterator friendly
+// hh 010314 Qualified internal calls with std::
+// hh 010402 Removed 68K CMF support

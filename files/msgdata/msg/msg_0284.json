@@ -1,0 +1,17 @@
+{
+  "key": 15822,
+  "messages": [
+    {
+      "id": "msg_0284_00000",
+      "en_US": "CONFIRM"
+    },
+    {
+      "id": "msg_0284_00001",
+      "en_US": "CANCEL"
+    },
+    {
+      "id": "msg_0284_00002",
+      "en_US": "QUIT"
+    }
+  ]
+}

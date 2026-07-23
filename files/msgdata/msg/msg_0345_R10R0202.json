@@ -1,0 +1,174 @@
+{
+  "key": 29747,
+  "messages": [
+    {
+      "id": "msg_0345_R10R0202_00000",
+      "en_US": [
+        "A thief broke into the Power Plant...\n",
+        "What is the world coming to?"
+      ]
+    },
+    {
+      "id": "msg_0345_R10R0202_00001",
+      "en_US": [
+        "I just got word from Cerulean.\n",
+        "It appears that a shady character has\f",
+        "been loitering around.\r"
+      ]
+    },
+    {
+      "id": "msg_0345_R10R0202_00002",
+      "en_US": [
+        "Could I ask for your cooperation?\r",
+        "The shady character was hanging around\n",
+        "the Cerulean Gym...\r"
+      ]
+    },
+    {
+      "id": "msg_0345_R10R0202_00003",
+      "en_US": [
+        "Could I ask for your cooperation?\r",
+        "The shady character was hanging around\n",
+        "the Cerulean Gym..."
+      ]
+    },
+    {
+      "id": "msg_0345_R10R0202_00004",
+      "en_US": [
+        "Someone made off with a part that’s\n",
+        "essential for the generator.\r",
+        "Without it, the new generator’s\n",
+        "useless!"
+      ]
+    },
+    {
+      "id": "msg_0345_R10R0202_00005",
+      "en_US": [
+        "This Power Plant had been abandoned in\n",
+        "the past.\r",
+        "We got it back up and running to provide\n",
+        "power to the Magnet Train."
+      ]
+    },
+    {
+      "id": "msg_0345_R10R0202_00006",
+      "en_US": [
+        "The Power Plant’s Manager is up ahead.\r",
+        "But since someone wrecked the\n",
+        "generator, he’s been both sad and,\f",
+        "at times, furious...\r",
+        "Sometimes he would burst out laughing\n",
+        "out of desperation.\f",
+        "We’ve had to go through so much..."
+      ]
+    },
+    {
+      "id": "msg_0345_R10R0202_00007",
+      "en_US": [
+        "The Magnet Train consumes a lot\n",
+        "of electricity.\r",
+        "It can’t move if the new generator\n",
+        "isn’t operating."
+      ]
+    },
+    {
+      "id": "msg_0345_R10R0202_00008",
+      "en_US": [
+        "I collect Pokémon.\n",
+        "Do you have a DUGTRIO?\r",
+        "Want to trade it for my MAGNETON? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0345_R10R0202_00009",
+      "en_US": [
+        "Yay! I got myself a DUGTRIO!\n",
+        "Thanks!"
+      ]
+    },
+    {
+      "id": "msg_0345_R10R0202_00010",
+      "en_US": [
+        "Huh? That’s not DUGTRIO.\n",
+        "What a letdown..."
+      ]
+    },
+    {
+      "id": "msg_0345_R10R0202_00011",
+      "en_US": "You don’t want to trade? Aww..."
+    },
+    {
+      "id": "msg_0345_R10R0202_00012",
+      "en_US": "Hi, how’s my old MAGNETON doing?"
+    },
+    {
+      "id": "msg_0345_R10R0202_00013",
+      "en_US": [
+        "Manager: I-I-I’m ready to blast\n",
+        "something!\r",
+        "Who would dare steal a part from the\n",
+        "generator?\r",
+        "I spent so much time fixing it!\n",
+        "If I catch him, he’s going to see\f",
+        "what I can do with my Charge Beam!"
+      ]
+    },
+    {
+      "id": "msg_0345_R10R0202_00014",
+      "en_US": [
+        "Manager: Ah! Yeah!\n",
+        "The thing you have...\r",
+        "Is that the part that was stolen from\n",
+        "my beloved generator?\r",
+        "You found it?\n",
+        "Thank you so much!\r",
+        "Now, all I have to do is...\n",
+        "attach this part here...\r"
+      ]
+    },
+    {
+      "id": "msg_0345_R10R0202_00015",
+      "en_US": [
+        "Manager: Whirrrrrr!\r",
+        "Yes, it’s running!\n",
+        "Whirrr, whirrr!\r"
+      ]
+    },
+    {
+      "id": "msg_0345_R10R0202_00016",
+      "en_US": [
+        "Manager: Wahah! Thanks!\r",
+        "Here! Go ahead and take this TM\n",
+        "as a reward!\r"
+      ]
+    },
+    {
+      "id": "msg_0345_R10R0202_00017",
+      "en_US": [
+        "Manager: TM57 is my Charge Beam!\r",
+        "It will shoot beams, and it can also\n",
+        "sometimes raise Special Attack!"
+      ]
+    },
+    {
+      "id": "msg_0345_R10R0202_00018",
+      "en_US": [
+        "Staff Mottos:\r",
+        "1. Electricity is not infinite.\n",
+        "2. Conserve wherever possible.\f",
+        "3. Watch out for each other.\f",
+        "4. Idle hands are not allowed.\f",
+        "5. Wear shoes with rubber soles.\f",
+        "6. The Manager is awesome."
+      ]
+    },
+    {
+      "id": "msg_0345_R10R0202_00019",
+      "en_US": [
+        "Use electricity wisely\n",
+        "for a bright and pleasant life.\f",
+        "           Kanto Power Plant"
+      ]
+    }
+  ]
+}

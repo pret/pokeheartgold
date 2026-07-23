@@ -1,0 +1,400 @@
+/* MSL
+ * Copyright © 1995-2006 Freescale Corporation.  All rights reserved.
+ *
+ * $Date: 2006/02/09 16:58:29 $
+ * $Revision: 1.22.2.2 $
+ */
+
+// iomanip
+
+#ifndef _IOMANIP
+#define _IOMANIP
+
+/*  iomanip synopsis
+
+namespace std
+{
+
+//  Types  T1,  T2, ... are unspecified implementation types
+T1 resetiosflags(ios_base::fmtflags mask);
+T2 setiosflags  (ios_base::fmtflags mask);
+T3 setbase(int base);
+template<charT> T4 setfill(charT c);
+T5 setprecision(int n);
+T6 setw(int n);
+
+}  // std
+
+*/
+
+#include <mslconfig>
+
+#ifndef _MSL_NO_IO
+
+#include <istream>
+#include <ostream>
+
+#ifndef RC_INVOKED
+
+#ifdef __MWERKS__
+#pragma options align=native
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#if _MSL_FORCE_ENUMS_ALWAYS_INT
+		#pragma enumsalwaysint on
+	#else
+		#pragma enumsalwaysint off
+	#endif
+#endif  // _MSL_FORCE_ENUMS_ALWAYS_INT
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#if _MSL_FORCE_ENABLE_BOOL_SUPPORT
+		#pragma bool on
+	#else
+		#pragma bool off
+	#endif
+#endif  // _MSL_FORCE_ENABLE_BOOL_SUPPORT
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	namespace std {
+#endif
+
+class __smanip1;
+class __smanip2;
+class __smanip3;
+template <class charT> class __smanip4;
+class __smanip5;
+class __smanip6;
+
+__smanip1 resetiosflags(ios_base::fmtflags mask);
+__smanip2 setiosflags  (ios_base::fmtflags mask);
+__smanip3 setbase(int base);
+template<class charT> __smanip4<charT> setfill(charT c);
+__smanip5 setprecision(int n);
+__smanip6 setw(int n);
+
+// resetiosflags Implementation
+
+class __smanip1
+{
+public:
+	__smanip1(ios_base::fmtflags mask);
+	ios_base& resetiosflags(ios_base& str) const;
+private:
+	ios_base::fmtflags mask_;
+};
+
+inline
+__smanip1::__smanip1(ios_base::fmtflags mask)
+	: mask_(mask)
+{
+}
+
+inline
+ios_base&
+__smanip1::resetiosflags(ios_base& str) const
+{
+	str.setf(ios_base::fmtflags(0), mask_);
+	return str;
+}
+
+template<class charT, class traits>
+basic_ostream<charT, traits>&
+operator<< (basic_ostream<charT, traits>& out, const __smanip1& s)
+{
+	s.resetiosflags(out);
+	return out;
+}
+
+template<class charT, class traits>
+basic_istream<charT, traits>&
+operator>> (basic_istream<charT, traits>& in, const __smanip1& s)
+{
+	s.resetiosflags(in);
+	return in;
+}
+
+inline
+__smanip1
+resetiosflags(ios_base::fmtflags mask)
+{
+	return __smanip1(mask);
+}
+
+// setiosflags Implementation
+
+class __smanip2
+{
+public:
+	__smanip2(ios_base::fmtflags mask);
+	ios_base& setiosflags(ios_base& str) const;
+private:
+	ios_base::fmtflags mask_;
+};
+
+inline
+__smanip2::__smanip2(ios_base::fmtflags mask)
+	: mask_(mask)
+{
+}
+
+inline
+ios_base&
+__smanip2::setiosflags(ios_base& str) const
+{
+	str.setf(mask_);
+	return str;
+}
+
+template<class charT, class traits>
+basic_ostream<charT, traits>&
+operator<< (basic_ostream<charT, traits>& out, const __smanip2& s)
+{
+	s.setiosflags(out);
+	return out;
+}
+
+template<class charT, class traits>
+basic_istream<charT, traits>&
+operator>> (basic_istream<charT, traits>& in, const __smanip2& s)
+{
+	s.setiosflags(in);
+	return in;
+}
+
+inline
+__smanip2
+setiosflags(ios_base::fmtflags mask)
+{
+	return __smanip2(mask);
+}
+
+// setiosflags Implementation
+
+class __smanip3
+{
+public:
+	explicit __smanip3(int base);
+	ios_base& setbase(ios_base& str) const;
+private:
+	int base_;
+};
+
+inline
+__smanip3::__smanip3(int base)
+	: base_(base)
+{
+}
+
+inline
+ios_base&
+__smanip3::setbase(ios_base& str) const
+{
+	str.setf(base_ ==  8 ? ios_base::oct :
+	         base_ == 10 ? ios_base::dec :
+	         base_ == 16 ? ios_base::hex :
+	                       ios_base::fmtflags(0), ios_base::basefield);
+	return str;
+}
+
+template<class charT, class traits>
+basic_ostream<charT, traits>&
+operator<< (basic_ostream<charT, traits>& out, const __smanip3& s)
+{
+	s.setbase(out);
+	return out;
+}
+
+template<class charT, class traits>
+basic_istream<charT, traits>&
+operator>> (basic_istream<charT, traits>& in, const __smanip3& s)
+{
+	s.setbase(in);
+	return in;
+}
+
+inline
+__smanip3
+setbase(int base)
+{
+	return __smanip3(base);
+}
+
+// setfill Implementation
+
+template <class charT>
+class __smanip4
+{
+public:
+	__smanip4(charT c);
+	#ifndef _MSL_NO_MEMBER_TEMPLATE
+		template <class traits>
+			inline
+			basic_ios<charT, traits>&
+			setfill(basic_ios<charT, traits>& str) const
+			{
+				str.fill(c_);
+				return str;
+			}
+	#else  // _MSL_NO_MEMBER_TEMPLATE
+		basic_ios<charT>&
+		setfill(basic_ios<charT>& str) const
+		{
+			str.fill(c_);
+			return str;
+		}
+	#endif  // _MSL_NO_MEMBER_TEMPLATE
+private:
+	charT c_;
+};
+
+template <class charT>
+inline
+__smanip4<charT>::__smanip4(charT c)
+	: c_(c)
+{
+}
+
+template<class charT, class traits>
+basic_ostream<charT, traits>&
+operator<< (basic_ostream<charT, traits>& out, const __smanip4<charT>& s)
+{
+	s.setfill(out);
+	return out;
+}
+
+template<class charT>
+inline
+__smanip4<charT>
+setfill(charT c)
+{
+	return __smanip4<charT>(c);
+}
+
+// setprecision Implementation
+
+class __smanip5
+{
+public:
+	explicit __smanip5(int n);
+	ios_base& setprecision(ios_base& str) const;
+private:
+	int n_;
+};
+
+inline
+__smanip5::__smanip5(int n)
+	: n_(n)
+{
+}
+
+inline
+ios_base&
+__smanip5::setprecision(ios_base& str) const
+{
+	str.precision(n_);
+	return str;
+}
+
+template<class charT, class traits>
+basic_ostream<charT, traits>&
+operator<< (basic_ostream<charT, traits>& out, const __smanip5& s)
+{
+	s.setprecision(out);
+	return out;
+}
+
+template<class charT, class traits>
+basic_istream<charT, traits>&
+operator>> (basic_istream<charT, traits>& in, const __smanip5& s)
+{
+	s.setprecision(in);
+	return in;
+}
+
+inline
+__smanip5
+setprecision(int n)
+{
+	return __smanip5(n);
+}
+
+// setw Implementation
+
+class __smanip6
+{
+public:
+	explicit __smanip6(int n);
+	ios_base& setw(ios_base& str) const;
+private:
+	int n_;
+};
+
+inline
+__smanip6::__smanip6(int n)
+	: n_(n)
+{
+}
+
+inline
+ios_base&
+__smanip6::setw(ios_base& str) const
+{
+	str.width(n_);
+	return str;
+}
+
+template<class charT, class traits>
+basic_ostream<charT, traits>&
+operator<< (basic_ostream<charT, traits>& out, const __smanip6& s)
+{
+	s.setw(out);
+	return out;
+}
+
+template<class charT, class traits>
+basic_istream<charT, traits>&
+operator>> (basic_istream<charT, traits>& in, const __smanip6& s)
+{
+	s.setw(in);
+	return in;
+}
+
+inline
+__smanip6
+setw(int n)
+{
+	return __smanip6(n);
+}
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	} // namespace std
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#pragma enumsalwaysint reset
+#endif
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#pragma bool reset
+#endif
+
+#ifdef __MWERKS__
+#pragma options align=reset
+#endif
+
+#endif // RC_INVOKED
+
+#endif // _MSL_NO_IO
+
+#endif // _IOMANIP
+
+// hh 971220 fixed MOD_INCLUDE
+// hh 971222 added alignment wrapper
+// hh 971222 Changed filename from iomanip.h to iomanip
+// hh 971222 Made include guards standard
+// hh 971229 redid friend to not need member templates in several places
+// hh 971230 added RC_INVOKED wrapper
+// hh 990111 Rewrote
+// hh 010402 Removed 68K CMF support

@@ -1,0 +1,5099 @@
+/* MSL
+ * Copyright © 1995-2006 Freescale Corporation.  All rights reserved.
+ *
+ * $Date: 2006/02/08 20:32:06 $
+ * $Revision: 1.63.2.3 $
+ */
+
+// algorithm
+
+#ifndef _ALGORITHM
+#define _ALGORITHM
+
+/*  algorithm synopsis
+
+namespace std
+{
+
+	//  non-modifying sequence operations:
+
+template<class InputIterator, class Function>
+Function
+for_each(InputIterator first, InputIterator last, Function f);
+
+	//  find
+
+template<class InputIterator, class T>
+InputIterator
+find(InputIterator first, InputIterator last, const T& value);
+
+template<class InputIterator, class Predicate>
+InputIterator
+find_if(InputIterator first, InputIterator last, Predicate pred);
+
+template<class ForwardIterator1, class ForwardIterator2>
+ForwardIterator1
+find_end(ForwardIterator1 first1, ForwardIterator1 last1,
+         ForwardIterator2 first2, ForwardIterator2 last2);
+
+template<class ForwardIterator1, class ForwardIterator2, class BinaryPredicate>
+ForwardIterator1
+find_end(ForwardIterator1 first1, ForwardIterator1 last1,
+         ForwardIterator2 first2, ForwardIterator2 last2, BinaryPredicate pred);
+
+template<class ForwardIterator1, class ForwardIterator2>
+ForwardIterator1
+find_first_of(ForwardIterator1 first1, ForwardIterator1 last1,
+              ForwardIterator2 first2, ForwardIterator2 last2);
+
+template<class ForwardIterator1, class ForwardIterator2, class BinaryPredicate>
+ForwardIterator1
+find_first_of(ForwardIterator1 first1, ForwardIterator1 last1,
+              ForwardIterator2 first2, ForwardIterator2 last2, BinaryPredicate pred);
+
+template<class ForwardIterator>
+ForwardIterator
+adjacent_find(ForwardIterator first, ForwardIterator last);
+
+template<class ForwardIterator, class BinaryPredicate>
+ForwardIterator
+adjacent_find(ForwardIterator first, ForwardIterator last, BinaryPredicate pred);
+
+	//  count
+
+template<class InputIterator, class T>
+typename iterator_traits<InputIterator>::difference_type
+count(InputIterator first, InputIterator last, const T& value);
+
+template<class InputIterator, class Predicate>
+typename iterator_traits<InputIterator>::difference_type
+count_if(InputIterator first, InputIterator last, Predicate pred);
+
+	//  equals
+
+template<class InputIterator1, class InputIterator2>
+pair<InputIterator1, InputIterator2>
+mismatch(InputIterator1 first1, InputIterator1 last1, InputIterator2 first2);
+
+template<class InputIterator1, class InputIterator2, class BinaryPredicate>
+pair<InputIterator1, InputIterator2>
+mismatch(InputIterator1 first1, InputIterator1 last1, InputIterator2 first2, BinaryPredicate pred);
+
+template<class InputIterator1, class InputIterator2>
+bool
+equal(InputIterator1 first1, InputIterator1 last1, InputIterator2 first2);
+
+template<class InputIterator1, class InputIterator2, class BinaryPredicate>
+bool
+equal(InputIterator1 first1, InputIterator1 last1, InputIterator2 first2, BinaryPredicate pred);
+
+	//  search
+
+template<class ForwardIterator1, class ForwardIterator2>
+ForwardIterator1
+search(ForwardIterator1 first1, ForwardIterator1 last1,
+       ForwardIterator2 first2, ForwardIterator2 last2);
+
+template<class ForwardIterator1, class ForwardIterator2, class BinaryPredicate>
+ForwardIterator1
+search(ForwardIterator1 first1, ForwardIterator1 last1,
+       ForwardIterator2 first2, ForwardIterator2 last2, BinaryPredicate pred);
+
+template<class ForwardIterator, class Size, class T>
+ForwardIterator
+search_n(ForwardIterator first, ForwardIterator last, Size count, const T& value);
+
+template<class ForwardIterator, class Size, class T, class BinaryPredicate>
+ForwardIterator1
+search_n(ForwardIterator first, ForwardIterator last, Size count, const T& value, BinaryPredicate pred);
+
+	//  modifying sequence operations:
+	//  copy:
+
+template<class InputIterator, class OutputIterator>
+OutputIterator
+copy(InputIterator first, InputIterator last, OutputIterator result);
+
+template<class BidirectionalIterator1, class BidirectionalIterator2>
+BidirectionalIterator2
+copy_backward(BidirectionalIterator1 first, BidirectionalIterator1 last, BidirectionalIterator2 result);
+
+	//  swap:
+
+template<class T>
+void
+swap(T& a, T& b);
+
+template<class ForwardIterator1, class ForwardIterator2>
+ForwardIterator2
+swap_ranges(ForwardIterator1 first1, ForwardIterator1 last1, ForwardIterator2 first2);
+
+template<class ForwardIterator1, class ForwardIterator2>
+void
+iter_swap(ForwardIterator1 a, ForwardIterator2 b);
+
+	//  transform:
+
+template<class InputIterator, class OutputIterator, class UnaryOperation>
+OutputIterator
+transform(InputIterator first, InputIterator last, OutputIterator result, UnaryOperation op);
+
+template<class InputIterator1, class InputIterator2, class OutputIterator, class BinaryOperation>
+OutputIterator
+transform(InputIterator1 first1, InputIterator1 last1,
+          InputIterator2 first2, OutputIterator result, BinaryOperation binary_op);
+
+	//  replace:
+
+template<class ForwardIterator, class T>
+void
+replace(ForwardIterator first, ForwardIterator last, const T& old_value, const T& new_value);
+
+template<class ForwardIterator, class Predicate, class T>
+void
+replace_if(ForwardIterator first, ForwardIterator last, Predicate pred, const T& new_value);
+
+template<class InputIterator, class OutputIterator, class T>
+OutputIterator
+replace_copy(InputIterator first, InputIterator last, OutputIterator result,
+             const T& old_value, const T& new_value);
+
+template<class InputIterator, class OutputIterator, class Predicate, class T>
+OutputIterator
+replace_copy_if(InputIterator first, InputIterator last, OutputIterator result,
+                Predicate pred, const T& new_value);
+
+	//  fill:
+
+template<class ForwardIterator, class T>
+void
+fill(ForwardIterator first, ForwardIterator last, const T& value);
+
+template<class OutputIterator, class Size, class T>
+void
+fill_n(OutputIterator first, Size n, const T& value);
+
+	//  generate:
+
+template<class ForwardIterator, class Generator>
+void
+generate(ForwardIterator first, ForwardIterator last, Generator gen);
+
+template<class OutputIterator, class Size, class Generator>
+void
+generate_n(OutputIterator first, Size n, Generator gen);
+
+	//  remove:
+
+template<class ForwardIterator, class T>
+ForwardIterator
+remove(ForwardIterator first, ForwardIterator last, const T& value);
+
+template<class ForwardIterator, class Predicate>
+ForwardIterator
+remove_if(ForwardIterator first, ForwardIterator last, Predicate pred);
+
+template<class InputIterator, class OutputIterator, class T>
+OutputIterator
+remove_copy(InputIterator first, InputIterator last, OutputIterator result, const T& value);
+
+template<class InputIterator, class OutputIterator, class Predicate>
+OutputIterator
+remove_copy_if(InputIterator first, InputIterator last, OutputIterator result, Predicate pred);
+
+	//  unique:
+
+template<class ForwardIterator>
+ForwardIterator
+unique(ForwardIterator first, ForwardIterator last);
+
+template<class ForwardIterator, class BinaryPredicate>
+ForwardIterator
+unique(ForwardIterator first, ForwardIterator last, BinaryPredicate pred);
+
+template<class InputIterator, class OutputIterator>
+OutputIterator
+unique_copy(InputIterator first, InputIterator last, OutputIterator result);
+
+template<class InputIterator, class OutputIterator, class BinaryPredicate>
+OutputIterator
+unique_copy(InputIterator first, InputIterator last, OutputIterator result, BinaryPredicate pred);
+
+	//  reverse:
+
+template<class BidirectionalIterator>
+void
+reverse(BidirectionalIterator first, BidirectionalIterator last);
+
+template<class BidirectionalIterator, class OutputIterator>
+OutputIterator
+reverse_copy(BidirectionalIterator first, BidirectionalIterator last, OutputIterator result);
+
+	//  rotate:
+
+template<class ForwardIterator>
+void
+rotate(ForwardIterator first, ForwardIterator middle, ForwardIterator last);
+
+template<class ForwardIterator, class OutputIterator>
+OutputIterator
+rotate_copy(ForwardIterator first, ForwardIterator middle, ForwardIterator last, OutputIterator result);
+
+	//  random_shuffle:
+
+template<class RandomAccessIterator>
+void
+random_shuffle(RandomAccessIterator first, RandomAccessIterator last);
+
+template<class RandomAccessIterator, class RandomNumberGenerator>
+void
+random_shuffle(RandomAccessIterator first, RandomAccessIterator last, RandomNumberGenerator& rand);
+
+	//  partitions:
+
+template<class BidirectionalIterator, class Predicate>
+BidirectionalIterator
+partition(BidirectionalIterator first, BidirectionalIterator last, Predicate pred);
+
+template<class BidirectionalIterator, class Predicate>
+BidirectionalIterator
+stable_partition(BidirectionalIterator first, BidirectionalIterator last, Predicate pred);
+
+	//  sorting and related operations:
+
+template<class RandomAccessIterator>
+void
+sort(RandomAccessIterator first, RandomAccessIterator last);
+
+template<class RandomAccessIterator, class Compare>
+void
+sort(RandomAccessIterator first, RandomAccessIterator last, Compare comp);
+
+template<class RandomAccessIterator>
+void
+stable_sort(RandomAccessIterator first, RandomAccessIterator last);
+
+template<class RandomAccessIterator, class Compare>
+void
+stable_sort(RandomAccessIterator first, RandomAccessIterator last, Compare comp);
+
+template<class RandomAccessIterator>
+void
+partial_sort(RandomAccessIterator first, RandomAccessIterator middle, RandomAccessIterator last);
+
+template<class RandomAccessIterator, class Compare>
+void
+partial_sort(RandomAccessIterator first, RandomAccessIterator middle, RandomAccessIterator last,
+             Compare comp);
+
+template<class InputIterator, class RandomAccessIterator>
+RandomAccessIterator
+partial_sort_copy(InputIterator first, InputIterator last,
+                  RandomAccessIterator result_first, RandomAccessIterator result_last);
+
+template<class InputIterator, class RandomAccessIterator, class Compare>
+RandomAccessIterator
+partial_sort_copy(InputIterator first, InputIterator last,
+                  RandomAccessIterator result_first, RandomAccessIterator result_last, Compare comp);
+
+template<class RandomAccessIterator>
+void
+nth_element(RandomAccessIterator first, RandomAccessIterator nth, RandomAccessIterator last);
+
+template<class RandomAccessIterator, class Compare>
+void
+nth_element(RandomAccessIterator first, RandomAccessIterator nth, RandomAccessIterator last,
+            Compare comp);
+
+	//  binary search:
+
+template<class ForwardIterator, class T>
+ForwardIterator
+lower_bound(ForwardIterator first, ForwardIterator last, const T& value);
+
+template<class ForwardIterator, class T, class Compare>
+ForwardIterator
+lower_bound(ForwardIterator first, ForwardIterator last, const T& value, Compare comp);
+
+template<class ForwardIterator, class T>
+ForwardIterator
+upper_bound(ForwardIterator first, ForwardIterator last, const T& value);
+
+template<class ForwardIterator, class T, class Compare>
+ForwardIterator
+upper_bound(ForwardIterator first, ForwardIterator last, const T& value, Compare comp);
+
+template<class ForwardIterator, class T>
+pair<ForwardIterator, ForwardIterator>
+equal_range(ForwardIterator first, ForwardIterator last, const T& value);
+
+template<class ForwardIterator, class T, class Compare>
+pair<ForwardIterator, ForwardIterator>
+equal_range(ForwardIterator first, ForwardIterator last, const T& value, Compare comp);
+
+template<class ForwardIterator, class T>
+bool
+binary_search(ForwardIterator first, ForwardIterator last, const T& value);
+
+template<class ForwardIterator, class T, class Compare>
+bool
+binary_search(ForwardIterator first, ForwardIterator last, const T& value, Compare comp);
+
+	//  merge:
+
+template<class InputIterator1, class InputIterator2, class OutputIterator>
+OutputIterator
+merge(InputIterator1 first1, InputIterator1 last1, InputIterator2 first2, InputIterator2 last2,
+      OutputIterator result);
+
+template<class InputIterator1, class InputIterator2, class OutputIterator, class Compare>
+OutputIterator
+merge(InputIterator1 first1, InputIterator1 last1, InputIterator2 first2, InputIterator2 last2,
+      OutputIterator result, Compare comp);
+
+template<class BidirectionalIterator>
+void
+inplace_merge(BidirectionalIterator first, BidirectionalIterator middle, BidirectionalIterator last);
+
+template<class BidirectionalIterator, class Compare>
+void
+inplace_merge(BidirectionalIterator first, BidirectionalIterator middle, BidirectionalIterator last,
+              Compare comp);
+
+	//  set operations:
+
+template<class InputIterator1, class InputIterator2>
+bool
+includes(InputIterator1 first1, InputIterator1 last1,
+         InputIterator2 first2, InputIterator2 last2);
+
+template<class InputIterator1, class InputIterator2, class Compare>
+bool
+includes(InputIterator1 first1, InputIterator1 last1,
+         InputIterator2 first2, InputIterator2 last2, Compare comp);
+
+template<class InputIterator1, class InputIterator2, class OutputIterator>
+OutputIterator
+set_union(InputIterator1 first1, InputIterator1 last1,
+          InputIterator2 first2, InputIterator2 last2, OutputIterator result);
+
+template<class InputIterator1, class InputIterator2, class OutputIterator, class Compare>
+OutputIterator
+set_union(InputIterator1 first1, InputIterator1 last1,
+          InputIterator2 first2, InputIterator2 last2, OutputIterator result, Compare comp);
+
+template<class InputIterator1, class InputIterator2, class OutputIterator>
+OutputIterator
+set_intersection(InputIterator1 first1, InputIterator1 last1,
+                 InputIterator2 first2, InputIterator2 last2, OutputIterator result);
+
+template<class InputIterator1, class InputIterator2, class OutputIterator, class Compare>
+OutputIterator
+set_intersection(InputIterator1 first1, InputIterator1 last1,
+                 InputIterator2 first2, InputIterator2 last2, OutputIterator result, Compare comp);
+
+template<class InputIterator1, class InputIterator2, class OutputIterator>
+OutputIterator
+set_difference(InputIterator1 first1, InputIterator1 last1,
+               InputIterator2 first2, InputIterator2 last2, OutputIterator result);
+
+template<class InputIterator1, class InputIterator2, class OutputIterator, class Compare>
+OutputIterator
+set_difference(InputIterator1 first1, InputIterator1 last1,
+               InputIterator2 first2, InputIterator2 last2, OutputIterator result, Compare comp);
+
+template<class InputIterator1, class InputIterator2, class OutputIterator>
+OutputIterator
+set_symmetric_difference(InputIterator1 first1, InputIterator1 last1,
+                         InputIterator2 first2, InputIterator2 last2, OutputIterator result);
+
+template<class InputIterator1, class InputIterator2, class OutputIterator, class Compare>
+OutputIterator
+set_symmetric_difference(InputIterator1 first1, InputIterator1 last1,
+                         InputIterator2 first2, InputIterator2 last2,
+                         OutputIterator result, Compare comp);
+
+	//  heap operations:
+
+template<class RandomAccessIterator>
+void
+push_heap(RandomAccessIterator first, RandomAccessIterator last);
+
+template<class RandomAccessIterator, class Compare>
+void
+push_heap(RandomAccessIterator first, RandomAccessIterator last, Compare comp);
+
+template<class RandomAccessIterator>
+void
+pop_heap(RandomAccessIterator first, RandomAccessIterator last);
+
+template<class RandomAccessIterator, class Compare>
+void
+pop_heap(RandomAccessIterator first, RandomAccessIterator last, Compare comp);
+
+template<class RandomAccessIterator>
+void
+make_heap(RandomAccessIterator first, RandomAccessIterator last);
+
+template<class RandomAccessIterator, class Compare>
+void
+make_heap(RandomAccessIterator first, RandomAccessIterator last, Compare comp);
+
+template<class RandomAccessIterator>
+void
+sort_heap(RandomAccessIterator first, RandomAccessIterator last);
+
+template<class RandomAccessIterator, class Compare>
+void
+sort_heap(RandomAccessIterator first, RandomAccessIterator last, Compare comp);
+
+	//  minimum and maximum:
+
+template<class T>
+const T&
+min(const T& a, const T& b);
+
+template<class T, class Compare>
+const T&
+min(const T& a, const T& b, Compare comp);
+
+template<class T>
+const T&
+max(const T& a, const T& b);
+
+template<class T, class Compare>
+const T&
+max(const T& a, const T& b, Compare comp);
+
+template<class ForwardIterator>
+ForwardIterator
+min_element(ForwardIterator first, ForwardIterator last);
+
+template<class ForwardIterator, class Compare>
+ForwardIterator
+min_element(ForwardIterator first, ForwardIterator last, Compare comp);
+
+template<class ForwardIterator>
+ForwardIterator
+max_element(ForwardIterator first, ForwardIterator last);
+
+template<class ForwardIterator, class Compare>
+ForwardIterator
+max_element(ForwardIterator first, ForwardIterator last, Compare comp);
+
+template<class InputIterator1, class InputIterator2>
+bool
+lexicographical_compare(InputIterator1 first1, InputIterator1 last1,
+                        InputIterator2 first2, InputIterator2 last2);
+
+template<class InputIterator1, class InputIterator2, class Compare>
+bool
+lexicographical_compare(InputIterator1 first1, InputIterator1 last1,
+                        InputIterator2 first2, InputIterator2 last2, Compare comp);
+
+	//  permutations
+
+template<class BidirectionalIterator>
+bool
+next_permutation(BidirectionalIterator first, BidirectionalIterator last);
+
+template<class BidirectionalIterator, class Compare>
+bool
+next_permutation(BidirectionalIterator first, BidirectionalIterator last, Compare comp);
+
+template<class BidirectionalIterator>
+bool
+prev_permutation(BidirectionalIterator first, BidirectionalIterator last);
+
+template<class BidirectionalIterator, class Compare>
+bool
+prev_permutation(BidirectionalIterator first, BidirectionalIterator last, Compare comp);
+
+}  // std
+*/
+
+#include <mslconfig>
+
+#include <cstdlib>
+#include <msl_int_limits>
+#include <cstring>
+#include <iterator>
+#include <utility>
+#include <functional>
+#include <memory>
+#include <msl_utility>
+
+#ifndef RC_INVOKED
+
+#ifdef __MWERKS__
+#pragma options align=native
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#if _MSL_FORCE_ENUMS_ALWAYS_INT
+		#pragma enumsalwaysint on
+	#else
+		#pragma enumsalwaysint off
+	#endif
+#endif  // _MSL_FORCE_ENUMS_ALWAYS_INT
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#if _MSL_FORCE_ENABLE_BOOL_SUPPORT
+		#pragma bool on
+	#else
+		#pragma bool off
+	#endif
+#endif  // _MSL_FORCE_ENABLE_BOOL_SUPPORT
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	namespace std {
+#endif
+
+//  lib.alg.nonmodifying, non-modifying sequence operations:
+
+// for_each
+
+template<class InputIterator, class Function>
+inline
+Function
+for_each(InputIterator first, InputIterator last, Function f)
+{
+	for (; first != last; ++first)
+		f(*first);
+	return f;
+}
+
+// find
+
+template <class InputIterator, class T>
+inline
+InputIterator
+find(InputIterator first, InputIterator last, const T& value)
+{
+	while (first != last && !(*first == value))
+		++first;
+	return first;
+}
+
+template <class InputIterator, class Predicate>
+inline
+InputIterator
+find_if(InputIterator first, InputIterator last, Predicate pred)
+{
+	while (first != last && !pred(*first))
+		++first;
+	return first;
+}
+
+// equal
+
+template <class InputIterator1, class InputIterator2, class BinaryPredicate>
+inline
+bool
+equal(InputIterator1 first1, InputIterator1 last1,
+      InputIterator2 first2, BinaryPredicate pred)
+{
+	for (; first1 != last1; ++first1, ++first2)
+		if (!pred(*first1, *first2))
+			return false;
+	return true;
+}
+
+template <class InputIterator1, class InputIterator2>
+inline
+bool
+equal(InputIterator1 first1, InputIterator1 last1, InputIterator2 first2)
+{
+	typedef typename iterator_traits<InputIterator1>::value_type value_type1;
+	typedef typename iterator_traits<InputIterator2>::value_type value_type2;
+	return _STD::equal(first1, last1, first2, detail::equal_to<value_type1, value_type2>());
+}
+
+// search
+
+template <class ForwardIterator1, class ForwardIterator2, class BinaryPredicate>
+ForwardIterator1
+search(ForwardIterator1 first1, ForwardIterator1 last1,
+       ForwardIterator2 first2, ForwardIterator2 last2, BinaryPredicate pred)
+{
+	typename iterator_traits<ForwardIterator2>::difference_type d2 = _STD::distance(first2, last2);
+	if (d2 == 0)
+		return first1;
+	typename iterator_traits<ForwardIterator1>::difference_type d1 = _STD::distance(first1, last1);
+	if (d1 < d2)
+		return last1;
+	ForwardIterator1 m = first1;
+	_STD::advance(m, d2-1);
+	for (; d1 >= d2; ++first1, --d1)
+		if (_STD::equal
+				<ForwardIterator1, ForwardIterator2,
+					typename Metrowerks::add_reference<BinaryPredicate>::type>
+				(first1, ++m, first2, pred))
+			return first1;
+	return last1;
+}
+
+template <class ForwardIterator1, class ForwardIterator2>
+inline
+ForwardIterator1
+search(ForwardIterator1 first1, ForwardIterator1 last1,
+       ForwardIterator2 first2, ForwardIterator2 last2)
+{
+	typedef typename iterator_traits<ForwardIterator1>::value_type value_type1;
+	typedef typename iterator_traits<ForwardIterator2>::value_type value_type2;
+	return _STD::search(first1, last1, first2, last2, detail::equal_to<value_type1, value_type2>());
+}
+
+// find_end
+
+template <class ForwardIterator1, class ForwardIterator2, class BinaryPredicate>
+ForwardIterator1
+__find_end(ForwardIterator1 first1, ForwardIterator1 last1,
+           ForwardIterator2 first2, ForwardIterator2 last2, BinaryPredicate pred,
+           forward_iterator_tag)
+{
+	first1 = _STD::search<ForwardIterator1, ForwardIterator2,
+		typename Metrowerks::add_reference<BinaryPredicate>::type>
+			(first1, last1, first2, last2, pred);
+	ForwardIterator1 result = first1;
+	if (first1 != last1)
+	{
+		while (true)
+		{
+			++first1;
+			first1 = _STD::search<ForwardIterator1, ForwardIterator2,
+				typename Metrowerks::add_reference<BinaryPredicate>::type>
+					(first1, last1, first2, last2, pred);
+			if (first1 == last1)
+				break;
+			result = first1;
+		}
+	}
+	return result;
+}
+
+template <class BidirectionalIterator1, class ForwardIterator2, class BinaryPredicate>
+BidirectionalIterator1
+__find_end(BidirectionalIterator1 first1, BidirectionalIterator1 last1,
+           ForwardIterator2 first2, ForwardIterator2 last2, BinaryPredicate pred,
+           bidirectional_iterator_tag)
+{
+	typename iterator_traits<BidirectionalIterator1>::difference_type d1 = _STD::distance(first1, last1);
+	typename iterator_traits<ForwardIterator2>::difference_type d2 = _STD::distance(first2, last2);
+	if (d1 < d2 || d2 == 0)
+		return last1;
+	BidirectionalIterator1 result = last1;
+	for (_STD::advance(result, -d2); result != first1; --result)
+		if (_STD::equal<ForwardIterator2, BidirectionalIterator1,
+				typename Metrowerks::add_reference<BinaryPredicate>::type>
+					(first2, last2, result, pred))
+			return result;
+	if (_STD::equal<ForwardIterator2, BidirectionalIterator1,
+			typename Metrowerks::add_reference<BinaryPredicate>::type>(first2, last2, first1, pred))
+		return first1;
+	return last1;
+}
+
+template <class ForwardIterator1, class ForwardIterator2, class BinaryPredicate>
+inline
+ForwardIterator1
+find_end(ForwardIterator1 first1, ForwardIterator1 last1,
+         ForwardIterator2 first2, ForwardIterator2 last2, BinaryPredicate pred)
+{
+	typedef typename iterator_traits<ForwardIterator1>::iterator_category Category;
+	return __find_end<ForwardIterator1, ForwardIterator2, typename Metrowerks::add_reference<BinaryPredicate>::type>
+		(first1, last1, first2, last2, pred, Category());
+}
+
+template <class ForwardIterator1, class ForwardIterator2>
+inline
+ForwardIterator1
+find_end(ForwardIterator1 first1, ForwardIterator1 last1,
+         ForwardIterator2 first2, ForwardIterator2 last2)
+{
+	typedef typename iterator_traits<ForwardIterator1>::value_type value_type1;
+	typedef typename iterator_traits<ForwardIterator2>::value_type value_type2;
+	return _STD::find_end(first1, last1, first2, last2, detail::equal_to<value_type1, value_type2>());
+}
+
+// find_first_of
+
+template <class ForwardIterator1, class ForwardIterator2,
+class BinaryPredicate>
+ForwardIterator1
+find_first_of(ForwardIterator1 first1, ForwardIterator1 last1,
+              ForwardIterator2 first2, ForwardIterator2 last2, BinaryPredicate pred)
+{
+	for (; first1 != last1; ++first1)
+	{
+		for (ForwardIterator2 i = first2; i != last2; ++i)
+			if (pred(*first1, *i))
+				return first1;
+	}
+	return last1;
+}
+
+template <class ForwardIterator1, class ForwardIterator2>
+inline
+ForwardIterator1
+find_first_of(ForwardIterator1 first1, ForwardIterator1 last1,
+              ForwardIterator2 first2, ForwardIterator2 last2)
+{
+	typedef typename iterator_traits<ForwardIterator1>::value_type value_type1;
+	typedef typename iterator_traits<ForwardIterator2>::value_type value_type2;
+	return _STD::find_first_of(first1, last1, first2, last2, detail::equal_to<value_type1, value_type2>());
+}
+
+// adjacent_find
+
+template <class ForwardIterator, class BinaryPredicate>
+inline
+ForwardIterator
+adjacent_find(ForwardIterator first, ForwardIterator last, BinaryPredicate pred)
+{
+	if (first != last)
+	{
+		ForwardIterator i = first;
+		for (++i; i != last; ++i)
+		{
+			if (pred(*first, *i))
+				return first;
+			first = i;
+		}
+	}
+	return last;
+}
+
+template <class ForwardIterator>
+inline
+ForwardIterator
+adjacent_find(ForwardIterator first, ForwardIterator last)
+{
+	typedef typename iterator_traits<ForwardIterator>::value_type value_type;
+	return _STD::adjacent_find(first, last, detail::equal_to<value_type>());
+}
+
+// count
+
+template <class InputIterator, class T>
+inline
+typename iterator_traits<InputIterator>::difference_type
+count(InputIterator first, InputIterator last, const T& value)
+{
+	typename iterator_traits<InputIterator>::difference_type result = 0;
+	for (; first != last; ++first)
+		if (*first == value)
+			++result;
+	return result;
+}
+
+template <class InputIterator, class Predicate>
+inline
+typename iterator_traits<InputIterator>::difference_type
+count_if(InputIterator first, InputIterator last, Predicate pred)
+{
+	typename iterator_traits<InputIterator>::difference_type result = 0;
+	for (; first != last; ++first)
+		if (pred(*first))
+			++result;
+	return result;
+}
+
+// mismatch
+
+template <class InputIterator1, class InputIterator2, class BinaryPredicate>
+inline
+pair<InputIterator1, InputIterator2>
+mismatch(InputIterator1 first1, InputIterator1 last1,
+         InputIterator2 first2, BinaryPredicate pred)
+{
+	for (; first1 != last1; ++first1, ++first2)
+		if (!pred(*first1, *first2))
+			break;
+	return pair<InputIterator1, InputIterator2>(first1, first2);
+}
+
+template <class InputIterator1, class InputIterator2>
+inline
+pair<InputIterator1, InputIterator2>
+mismatch(InputIterator1 first1, InputIterator1 last1, InputIterator2 first2)
+{
+	typedef typename iterator_traits<InputIterator1>::value_type value_type1;
+	typedef typename iterator_traits<InputIterator2>::value_type value_type2;
+	return _STD::mismatch(first1, last1, first2, detail::equal_to<value_type1, value_type2>());
+}
+
+// search_n
+
+template <class ForwardIterator, class Size, class T, class BinaryPredicate>
+ForwardIterator
+search_n(ForwardIterator first, ForwardIterator last,
+         Size count, const T& value, BinaryPredicate pred)
+{
+	if (count <= 0)
+		return first;
+	Size d1 = static_cast<Size>(_STD::distance(first, last));
+	if (d1 < count)
+		return last;
+	for (; d1 >= count; ++first, --d1)
+	{
+		ForwardIterator i = first;
+		for (Size n = 0; n < count; ++n, ++i, --d1)
+			if (!pred(*i, value))
+				goto not_found;
+		return first;
+	not_found:
+		first = i;
+	}
+	return last;
+}
+
+template <class ForwardIterator, class Size, class T>
+inline
+ForwardIterator
+search_n(ForwardIterator first, ForwardIterator last, Size count, const T& value)
+{
+	typedef typename iterator_traits<ForwardIterator>::value_type value_type;
+	return _STD::search_n(first, last, count, value, detail::equal_to<value_type, T>());
+}
+
+//  lib.alg.min.max, minimum and maximum:
+
+#ifdef min
+#undef min
+#endif
+
+template <class T>
+inline
+const T&
+min(const T& a, const T& b)
+{
+	return b < a ? b : a;
+}
+
+template <class T, class Compare>
+inline
+const T&
+min(const T& a, const T& b, Compare comp)
+{
+	return comp(b, a) ? b : a;
+}
+
+#ifdef max
+#undef max
+#endif
+
+template <class T>
+inline
+const T&
+max(const T& a, const T& b)
+{
+	return a < b ? b : a;
+}
+
+template <class T, class Compare>
+inline
+const T&
+max(const T& a, const T& b, Compare comp)
+{
+	return comp(a, b) ? b : a;
+}
+
+template <class ForwardIterator, class Compare>
+inline
+ForwardIterator
+min_element(ForwardIterator first, ForwardIterator last, Compare comp)
+{
+	ForwardIterator i = first;
+	if (first != last)
+		for (++first; first != last; ++first)
+			if (comp(*first, *i))
+				i = first;
+	return i;
+}
+
+template <class ForwardIterator>
+inline
+ForwardIterator
+min_element(ForwardIterator first, ForwardIterator last)
+{
+	typedef typename iterator_traits<ForwardIterator>::value_type value_type;
+	return _STD::min_element(first, last, detail::less<value_type>());
+}
+
+template <class ForwardIterator, class Compare>
+inline
+ForwardIterator
+max_element(ForwardIterator first, ForwardIterator last, Compare comp)
+{
+	ForwardIterator i = first;
+	if (first != last)
+		for (++first; first != last; ++first)
+			if (comp(*i, *first))
+				i = first;
+	return i;
+}
+
+template <class ForwardIterator>
+inline
+ForwardIterator
+max_element(ForwardIterator first, ForwardIterator last)
+{
+	typedef typename iterator_traits<ForwardIterator>::value_type value_type;
+	return _STD::max_element(first, last, detail::less<value_type>());
+}
+
+template <class InputIterator1, class InputIterator2, class Compare>
+bool
+lexicographical_compare(InputIterator1 first1, InputIterator1 last1,
+                        InputIterator2 first2, InputIterator2 last2, Compare comp)
+{
+	for (; first1 != last1 && first2 != last2; ++first1, ++first2)
+	{
+		if (comp(*first1, *first2))
+			return true;
+		if (comp(*first2, *first1))
+			return false;
+	}
+	return static_cast<bool>(first2 != last2);
+}
+
+template <class InputIterator1, class InputIterator2>
+inline
+bool
+lexicographical_compare(InputIterator1 first1, InputIterator1 last1,
+                        InputIterator2 first2, InputIterator2 last2)
+{
+	typedef typename iterator_traits<InputIterator1>::value_type value_type1;
+	typedef typename iterator_traits<InputIterator2>::value_type value_type2;
+	return _STD::lexicographical_compare(first1, last1, first2, last2, detail::less<value_type1, value_type2>());
+}
+
+//  lib.alg.modifying.operations, modifying sequence operations:
+
+//  lib.alg.copy, copy:
+
+template <class InputIterator, class OutputIterator>
+inline
+typename Metrowerks::restrict_to
+<
+	!__is_segmented<InputIterator>::value &&
+	!__is_segmented<OutputIterator>::value ||
+	!__is_segmented<InputIterator>::value &&
+	!__is_random_access_iterator<InputIterator>::value &&
+	__is_segmented<OutputIterator>::value,
+	OutputIterator
+>::type
+copy(InputIterator first, InputIterator last, OutputIterator result)
+{
+	for (; first != last; ++first, ++result)
+		*result = *first;
+	return result;
+}
+
+#ifndef __GNUC__
+
+template <class T, bool IsPOD = Metrowerks::is_POD<T>::value>
+struct __msl_copy
+{
+	static T* copy(T* first, T* last, T* result)
+	{
+		for (; first < last; ++first, ++result)
+			*result = *first;
+		return result;
+	}
+};
+
+template <class T>
+struct __msl_copy<T, true>
+{
+	static T* copy(T* first, T* last, T* result)
+	{
+		size_t n = static_cast<size_t>(last - first);
+		_CSTD::memmove(result, first, n*sizeof(T));
+		return result + n;
+	}
+};
+
+template <class T>
+inline
+T*
+copy(T* first, T* last, T* result)
+{
+	return __msl_copy<T>::copy(first, last, result);
+}
+
+template <class T>
+inline
+T*
+copy(const T* first, const T* last, T* result)
+{
+	return __msl_copy<T>::copy(const_cast<T*>(first), const_cast<T*>(last), result);
+}
+
+template <class Container, class Iterator1, class Iterator2>
+inline
+__wrap_iterator<Container, Iterator2>
+copy(__wrap_iterator<Container, Iterator1> first, __wrap_iterator<Container, Iterator1> last,
+     __wrap_iterator<Container, Iterator2> result)
+{
+	return __wrap_iterator<Container, Iterator2>(copy(first.base(), last.base(), result.base()));
+}
+
+template <class Container, class Iterator1, class T>
+inline
+T*
+copy(__wrap_iterator<Container, Iterator1> first, __wrap_iterator<Container, Iterator1> last,
+     T* result)
+{
+	return copy(first.base(), last.base(), result);
+}
+
+template <class Container, class T, class Iterator2>
+inline
+__wrap_iterator<Container, Iterator2>
+copy(T* first, T* last, __wrap_iterator<Container, Iterator2> result)
+{
+	return __wrap_iterator<Container, Iterator2>(copy(first, last, result.base()));
+}
+
+// specialized algorithms
+
+template <class SegmentedIterator1, class SegmentedIterator2>
+typename Metrowerks::restrict_to
+<
+	__is_segmented<SegmentedIterator1>::value &&
+	__is_segmented<SegmentedIterator2>::value,
+	SegmentedIterator2
+>::type
+copy(SegmentedIterator1 first, SegmentedIterator1 last, SegmentedIterator2 result)
+{
+	typedef typename iterator_traits<SegmentedIterator1>::difference_type difference_type;
+	while (first != last)
+	{
+		difference_type rlen = result.__end() - result.__cur();
+		difference_type m;
+		if (first.__same_segment(last))
+			m = _STD::min(last.__cur() - first.__cur(), rlen);
+		else
+			m = _STD::min(first.__end() - first.__cur(), rlen);
+		_STD::copy(first.__cur(), first.__cur() + m, result.__cur());
+		--m;
+		first.__ref() += m;
+		++first;
+		result.__ref() += m;
+		++result;
+	}
+	return result;
+}
+
+template <class SegmentedIterator, class OutputIterator>
+typename Metrowerks::restrict_to
+<
+	 __is_segmented<SegmentedIterator>::value &&
+	!__is_segmented<OutputIterator>::value,
+	OutputIterator
+>::type
+copy(SegmentedIterator first, SegmentedIterator last, OutputIterator result)
+{
+	typedef typename iterator_traits<SegmentedIterator>::difference_type difference_type;
+	while (first != last)
+	{
+		difference_type m;
+		if (first.__same_segment(last))
+			m = last.__cur() - first.__cur();
+		else
+			m = first.__end() - first.__cur();
+		result = _STD::copy(first.__cur(), first.__cur() + m, result);
+		--m;
+		first.__ref() += m;
+		++first;
+	}
+	return result;
+}
+
+template <class RandomAccessIterator, class SegmentedIterator>
+typename Metrowerks::restrict_to
+<
+	!__is_segmented<RandomAccessIterator>::value &&
+	 __is_random_access_iterator<RandomAccessIterator>::value &&
+	 __is_segmented<SegmentedIterator>::value,
+	SegmentedIterator
+>::type
+copy(RandomAccessIterator first, RandomAccessIterator last, SegmentedIterator result)
+{
+	if (first != last)
+	{
+		typedef typename iterator_traits<RandomAccessIterator>::difference_type difference_type;
+		difference_type n = last - first;
+		while (true)
+		{
+			difference_type m = _STD::min(n, difference_type(result.__end()-result.__cur()));
+			RandomAccessIterator i = first + m;
+			_STD::copy(first, i, result.__cur());
+			n -= m;
+			--m;
+			result.__ref() += m;
+			++result;
+			if (n == 0)
+				break;
+			first = i;
+		}
+	}
+	return result;
+}
+
+#endif  // __GNUC__
+
+// copy_backward
+
+template <class BidirectionalIterator1, class BidirectionalIterator2>
+typename Metrowerks::restrict_to
+<
+	!__is_segmented<BidirectionalIterator1>::value &&
+	!__is_segmented<BidirectionalIterator2>::value ||
+	!__is_segmented<BidirectionalIterator1>::value &&
+	!__is_random_access_iterator<BidirectionalIterator1>::value &&
+	__is_segmented<BidirectionalIterator2>::value,
+	BidirectionalIterator2
+>::type
+copy_backward(BidirectionalIterator1 first, BidirectionalIterator1 last,
+              BidirectionalIterator2 result)
+{
+	while (last != first)
+		*--result = *--last;
+	return result;
+}
+
+#ifndef __GNUC__
+
+template <class T, bool IsPOD = Metrowerks::is_POD<T>::value>
+struct __copy_backward
+{
+	static T* copy_backward(T* first, T* last, T* result)
+	{
+		while (last > first)
+			*--result = *--last;
+		return result;
+	}
+};
+
+template <class T>
+struct __copy_backward<T, true>
+{
+	static T* copy_backward(T* first, T* last, T* result)
+	{
+		size_t n = static_cast<size_t>(last - first);
+		result -= n;
+		_CSTD::memmove(result, first, n*sizeof(T));
+		return result;
+	}
+};
+
+template <class T>
+inline
+T*
+copy_backward(T* first, T* last, T* result)
+{
+	return __copy_backward<T>::copy_backward(first, last, result);
+}
+
+template <class T>
+inline
+T*
+copy_backward(const T* first, const T* last, T* result)
+{
+	return __copy_backward<T>::copy_backward(const_cast<T*>(first), const_cast<T*>(last), result);
+}
+
+template <class Container, class Iterator1, class Iterator2>
+inline
+__wrap_iterator<Container, Iterator2>
+copy_backward(__wrap_iterator<Container, Iterator1> first, __wrap_iterator<Container, Iterator1> last,
+              __wrap_iterator<Container, Iterator2> result)
+{
+	return __wrap_iterator<Container, Iterator2>(copy_backward(first.base(), last.base(), result.base()));
+}
+
+template <class Container, class Iterator1, class T>
+inline
+T*
+copy_backward(__wrap_iterator<Container, Iterator1> first, __wrap_iterator<Container, Iterator1> last,
+     T* result)
+{
+	return copy_backward(first.base(), last.base(), result);
+}
+
+template <class Container, class T, class Iterator2>
+inline
+__wrap_iterator<Container, Iterator2>
+copy_backward(T* first, T* last, __wrap_iterator<Container, Iterator2> result)
+{
+	return __wrap_iterator<Container, Iterator2>(copy_backward(first, last, result.base()));
+}
+
+template <class SegmentedIterator1, class SegmentedIterator2>
+typename Metrowerks::restrict_to
+<
+	__is_segmented<SegmentedIterator1>::value &&
+	__is_segmented<SegmentedIterator2>::value,
+	SegmentedIterator2
+>::type
+copy_backward(SegmentedIterator1 first, SegmentedIterator1 last, SegmentedIterator2 result)
+{
+	typedef typename iterator_traits<SegmentedIterator1>::difference_type difference_type;
+	while (first != last)
+	{
+		--last;
+		--result;
+		difference_type rlen = result.__cur() - result.__begin();
+		difference_type m;
+		if (first.__same_segment(last))
+			m = _STD::min(last.__cur() - first.__cur(), rlen);
+		else
+			m = _STD::min(last.__cur() - last.__begin(), rlen);
+		last.__ref() -= m;
+		_STD::copy_backward(last.__cur(), last.__cur() + (m+1), result.__cur() + 1);
+		result.__ref() -= m;
+	}
+	return result;
+}
+
+template <class SegmentedIterator, class OutputIterator>
+typename Metrowerks::restrict_to
+<
+	 __is_segmented<SegmentedIterator>::value &&
+	!__is_segmented<OutputIterator>::value,
+	OutputIterator
+>::type
+copy_backward(SegmentedIterator first, SegmentedIterator last, OutputIterator result)
+{
+	typedef typename iterator_traits<SegmentedIterator>::difference_type difference_type;
+	while (first != last)
+	{
+		--last;
+		difference_type m;
+		if (first.__same_segment(last))
+			m = last.__cur() - first.__cur();
+		else
+			m = last.__cur() - last.__begin();
+		last.__ref() -= m;
+		result = _STD::copy_backward(last.__cur(), last.__cur() + (m+1), result);
+	}
+	return result;
+}
+
+template <class RandomAccessIterator, class SegmentedIterator>
+typename Metrowerks::restrict_to
+<
+	!__is_segmented<RandomAccessIterator>::value &&
+	 __is_random_access_iterator<RandomAccessIterator>::value &&
+	 __is_segmented<SegmentedIterator>::value,
+	SegmentedIterator
+>::type
+copy_backward(RandomAccessIterator first, RandomAccessIterator last, SegmentedIterator result)
+{
+	if (first != last)
+	{
+		typedef typename iterator_traits<RandomAccessIterator>::difference_type difference_type;
+		difference_type n = last - first;
+		while (true)
+		{
+			--result;
+			difference_type m = _STD::min(n, difference_type(result.__cur()-result.__begin()+1));
+			RandomAccessIterator i = last - m;
+			_STD::copy_backward(i, last, result.__cur()+1);
+			n -= m;
+			result.__ref() -= static_cast<typename SegmentedIterator::difference_type>(m-1);
+			if (n == 0)
+				break;
+			last = i;
+		}
+	}
+	return result;
+}
+
+#endif  // __GNUC__
+
+// move
+
+template <class InputIterator, class OutputIterator>
+inline
+typename Metrowerks::restrict_to
+<
+	!__is_segmented<InputIterator>::value &&
+	!__is_segmented<OutputIterator>::value ||
+	!__is_segmented<InputIterator>::value &&
+	!__is_random_access_iterator<InputIterator>::value &&
+	__is_segmented<OutputIterator>::value,
+	OutputIterator
+>::type
+move(InputIterator first, InputIterator last, OutputIterator result)
+{
+	typedef typename iterator_traits<InputIterator>::value_type value_type;
+	for (; first != last; ++first, ++result)
+		*result = _STD::move(*first);
+	return result;
+}
+
+#ifndef __GNUC__
+
+template <class T, bool IsPOD = Metrowerks::is_POD<T>::value>
+struct __move
+{
+	static T* move(T* first, T* last, T* result)
+	{
+		for (; first < last; ++first, ++result)
+			*result = _STD::move(*first);
+		return result;
+	}
+};
+
+template <class T>
+struct __move<T, true>
+{
+	static T* move(T* first, T* last, T* result)
+	{
+		size_t n = static_cast<size_t>(last - first);
+		_CSTD::memmove(result, first, n*sizeof(T));
+		return result + n;
+	}
+};
+
+template <class T>
+inline
+T*
+move(T* first, T* last, T* result)
+{
+	return __move<T>::move(first, last, result);
+}
+
+template <class T>
+inline
+T*
+move(const T* first, const T* last, T* result)
+{
+	return __move<T>::move(const_cast<T*>(first), const_cast<T*>(last), result);
+}
+
+template <class Container, class Iterator1, class Iterator2>
+inline
+__wrap_iterator<Container, Iterator2>
+move(__wrap_iterator<Container, Iterator1> first, __wrap_iterator<Container, Iterator1> last,
+     __wrap_iterator<Container, Iterator2> result)
+{
+	return __wrap_iterator<Container, Iterator2>(move(first.base(), last.base(), result.base()));
+}
+
+template <class Container, class Iterator1, class T>
+inline
+T*
+move(__wrap_iterator<Container, Iterator1> first, __wrap_iterator<Container, Iterator1> last,
+     T* result)
+{
+	return _STD::move(first.base(), last.base(), result);
+}
+
+template <class Container, class T, class Iterator2>
+inline
+__wrap_iterator<Container, Iterator2>
+move(T* first, T* last, __wrap_iterator<Container, Iterator2> result)
+{
+	return __wrap_iterator<Container, Iterator2>(_STD::move(first, last, result.base()));
+}
+
+template <class SegmentedIterator1, class SegmentedIterator2>
+typename Metrowerks::restrict_to
+<
+	__is_segmented<SegmentedIterator1>::value &&
+	__is_segmented<SegmentedIterator2>::value,
+	SegmentedIterator2
+>::type
+move(SegmentedIterator1 first, SegmentedIterator1 last, SegmentedIterator2 result)
+{
+	typedef typename iterator_traits<SegmentedIterator1>::difference_type difference_type;
+	while (first != last)
+	{
+		difference_type rlen = result.__end() - result.__cur();
+		difference_type m;
+		if (first.__same_segment(last))
+			m = _STD::min(last.__cur() - first.__cur(), rlen);
+		else
+			m = _STD::min(first.__end() - first.__cur(), rlen);
+		_STD::move(first.__cur(), first.__cur() + m, result.__cur());
+		--m;
+		first.__ref() += m;
+		++first;
+		result.__ref() += m;
+		++result;
+	}
+	return result;
+}
+
+template <class SegmentedIterator, class OutputIterator>
+typename Metrowerks::restrict_to
+<
+	 __is_segmented<SegmentedIterator>::value &&
+	!__is_segmented<OutputIterator>::value,
+	OutputIterator
+>::type
+move(SegmentedIterator first, SegmentedIterator last, OutputIterator result)
+{
+	typedef typename iterator_traits<SegmentedIterator>::difference_type difference_type;
+	while (first != last)
+	{
+		difference_type m;
+		if (first.__same_segment(last))
+			m = last.__cur() - first.__cur();
+		else
+			m = first.__end() - first.__cur();
+		result = _STD::move(first.__cur(), first.__cur() + m, result);
+		--m;
+		first.__ref() += m;
+		++first;
+	}
+	return result;
+}
+
+template <class RandomAccessIterator, class SegmentedIterator>
+typename Metrowerks::restrict_to
+<
+	!__is_segmented<RandomAccessIterator>::value &&
+	 __is_random_access_iterator<RandomAccessIterator>::value &&
+	 __is_segmented<SegmentedIterator>::value,
+	SegmentedIterator
+>::type
+move(RandomAccessIterator first, RandomAccessIterator last, SegmentedIterator result)
+{
+	if (first != last)
+	{
+		typedef typename iterator_traits<RandomAccessIterator>::difference_type difference_type;
+		difference_type n = last - first;
+		while (true)
+		{
+			difference_type m = _STD::min(n, difference_type(result.__end()-result.__cur()));
+			RandomAccessIterator i = first + m;
+			_STD::move(first, i, result.__cur());
+			n -= m;
+			--m;
+			result.__ref() += m;
+			++result;
+			if (n == 0)
+				break;
+			first = i;
+		}
+	}
+	return result;
+}
+
+#endif  // __GNUC__
+
+// move_backward
+
+template <class BidirectionalIterator1, class BidirectionalIterator2>
+inline
+typename Metrowerks::restrict_to
+<
+	!__is_segmented<BidirectionalIterator1>::value &&
+	!__is_segmented<BidirectionalIterator2>::value ||
+	!__is_segmented<BidirectionalIterator1>::value &&
+	!__is_random_access_iterator<BidirectionalIterator1>::value &&
+	__is_segmented<BidirectionalIterator2>::value,
+	BidirectionalIterator2
+>::type
+move_backward(BidirectionalIterator1 first, BidirectionalIterator1 last,
+              BidirectionalIterator2 result)
+{
+	typedef typename iterator_traits<BidirectionalIterator1>::value_type value_type;
+	while (last != first)
+		*--result = _STD::move(*--last);
+	return result;
+}
+
+#ifndef __GNUC__
+
+template <class T, bool IsPOD = Metrowerks::is_POD<T>::value>
+struct __move_backward
+{
+	static T* move_backward(T* first, T* last, T* result)
+	{
+		while (last > first)
+			*--result = _STD::move(*--last);
+		return result;
+	}
+};
+
+template <class T>
+struct __move_backward<T, true>
+{
+	static T* move_backward(T* first, T* last, T* result)
+	{
+		size_t n = static_cast<size_t>(last - first);
+		result -= n;
+		_CSTD::memmove(result, first, n*sizeof(T));
+		return result;
+	}
+};
+
+template <class T>
+inline
+T*
+move_backward(T* first, T* last, T* result)
+{
+	return __move_backward<T>::move_backward(first, last, result);
+}
+
+template <class T>
+inline
+T*
+move_backward(const T* first, const T* last, T* result)
+{
+	return __move_backward<T>::move_backward(const_cast<T*>(first), const_cast<T*>(last), result);
+}
+
+template <class Container, class Iterator1, class Iterator2>
+inline
+__wrap_iterator<Container, Iterator2>
+move_backward(__wrap_iterator<Container, Iterator1> first, __wrap_iterator<Container, Iterator1> last,
+     __wrap_iterator<Container, Iterator2> result)
+{
+	return __wrap_iterator<Container, Iterator2>(move_backward(first.base(), last.base(), result.base()));
+}
+
+template <class Container, class Iterator1, class T>
+inline
+T*
+move_backward(__wrap_iterator<Container, Iterator1> first, __wrap_iterator<Container, Iterator1> last,
+     T* result)
+{
+	return move_backward(first.base(), last.base(), result);
+}
+
+template <class Container, class T, class Iterator2>
+inline
+__wrap_iterator<Container, Iterator2>
+move_backward(T* first, T* last, __wrap_iterator<Container, Iterator2> result)
+{
+	return __wrap_iterator<Container, Iterator2>(move_backward(first, last, result.base()));
+}
+
+template <class SegmentedIterator1, class SegmentedIterator2>
+typename Metrowerks::restrict_to
+<
+	__is_segmented<SegmentedIterator1>::value &&
+	__is_segmented<SegmentedIterator2>::value,
+	SegmentedIterator2
+>::type
+move_backward(SegmentedIterator1 first, SegmentedIterator1 last, SegmentedIterator2 result)
+{
+	typedef typename iterator_traits<SegmentedIterator1>::difference_type difference_type;
+	while (first != last)
+	{
+		--last;
+		--result;
+		difference_type rlen = result.__cur() - result.__begin();
+		difference_type m;
+		if (first.__same_segment(last))
+			m = _STD::min(last.__cur() - first.__cur(), rlen);
+		else
+			m = _STD::min(last.__cur() - last.__begin(), rlen);
+		last.__ref() -= m;
+		_STD::move_backward(last.__cur(), last.__cur() + (m+1), result.__cur() + 1);
+		result.__ref() -= m;
+	}
+	return result;
+}
+
+template <class SegmentedIterator, class OutputIterator>
+typename Metrowerks::restrict_to
+<
+	 __is_segmented<SegmentedIterator>::value &&
+	!__is_segmented<OutputIterator>::value,
+	OutputIterator
+>::type
+move_backward(SegmentedIterator first, SegmentedIterator last, OutputIterator result)
+{
+	typedef typename iterator_traits<SegmentedIterator>::difference_type difference_type;
+	while (first != last)
+	{
+		--last;
+		difference_type m;
+		if (first.__same_segment(last))
+			m = last.__cur() - first.__cur();
+		else
+			m = last.__cur() - last.__begin();
+		last.__ref() -= m;
+		result = _STD::move_backward(last.__cur(), last.__cur() + (m+1), result);
+	}
+	return result;
+}
+
+template <class RandomAccessIterator, class SegmentedIterator>
+typename Metrowerks::restrict_to
+<
+	!__is_segmented<RandomAccessIterator>::value &&
+	 __is_random_access_iterator<RandomAccessIterator>::value &&
+	 __is_segmented<SegmentedIterator>::value,
+	SegmentedIterator
+>::type
+move_backward(RandomAccessIterator first, RandomAccessIterator last, SegmentedIterator result)
+{
+	if (first != last)
+	{
+		typedef typename iterator_traits<RandomAccessIterator>::difference_type difference_type;
+		difference_type n = last - first;
+		while (true)
+		{
+			--result;
+			difference_type m = _STD::min(n, difference_type(result.__cur()-result.__begin()+1));
+			RandomAccessIterator i = last - m;
+			_STD::move_backward(i, last, result.__cur()+1);
+			n -= m;
+			result.__ref() -= static_cast<typename SegmentedIterator::difference_type>(m-1);
+			if (n == 0)
+				break;
+			last = i;
+		}
+	}
+	return result;
+}
+
+#endif  // __GNUC__
+
+// fill
+
+template <class OutputIterator, class Size, class T>
+inline
+typename Metrowerks::restrict_to
+<
+	!__is_segmented<OutputIterator>::value,
+	void
+>::type
+fill_n(OutputIterator first, Size n, const T& value)
+{
+	for (; n > 0; ++first, --n)
+		*first = value;
+	return (void)0;
+}
+
+template <class T, class Size, bool optimize = Metrowerks::is_POD<T>::value && sizeof(T) == 1>
+struct __fill_n
+{
+	static void fill_n(T* first, Size n, const T& value)
+	{
+		for (; n > 0; ++first, --n)
+			*first = value;
+	}
+};
+
+template <class T, class Size>
+struct __fill_n<T, Size, true>
+{
+	static void fill_n(T* first, Size n, const T& value)
+	{
+		_CSTD::memset(first, (unsigned char)value, (size_t)(n >= 0 ? n : 0));
+	}
+};
+
+template <class V, class Size, class T>
+inline
+void
+fill_n(V* first, Size n, const T& value)
+{
+	__fill_n<V, Size>::fill_n(first, n, value);
+}
+
+template <class Container, class Iterator, class Size, class T>
+inline
+void
+fill_n(__wrap_iterator<Container, Iterator> first, Size n, const T& value)
+{
+	fill_n(first.base(), n, value);
+}
+
+template <class SegmentedIterator, class Size, class T>
+typename Metrowerks::restrict_to
+<
+	 __is_segmented<SegmentedIterator>::value,
+	void
+>::type
+fill_n(SegmentedIterator first, Size n, const T& value)
+{
+	if (n > 0)
+	{
+		typedef typename SegmentedIterator::difference_type difference_type;
+		while (true)
+		{
+			difference_type m = _STD::min(difference_type(n), difference_type(first.__end()-first.__cur()));
+			_STD::fill_n(first.__cur(), m, value);
+			n -= m;
+			if (n == 0)
+				break;
+			first += m;
+		}
+	}
+	return (void)0;
+}
+
+template <class ForwardIterator, class T>
+inline
+void
+__fill(ForwardIterator first, ForwardIterator last, const T& value, forward_iterator_tag)
+{
+	for (; first != last; ++first)
+		*first = value;
+}
+
+template <class ForwardIterator, class T>
+inline
+void
+__fill(ForwardIterator first, ForwardIterator last, const T& value, random_access_iterator_tag)
+{
+	_STD::fill_n(first, last-first, value);
+}
+
+template <class ForwardIterator, class T>
+inline
+void
+fill(ForwardIterator first, ForwardIterator last, const T& value)
+{
+	typedef typename iterator_traits<ForwardIterator>::iterator_category category;
+	__fill(first, last, value, category());
+}
+
+// __contains
+
+template <class RandomAccessIterator, class ConstRandomAccessIterator>
+inline
+typename Metrowerks::restrict_to
+<
+	!__is_segmented<RandomAccessIterator>::value &&
+	 __is_random_access_iterator<RandomAccessIterator>::value,
+	bool
+>::type
+__contains(RandomAccessIterator first, RandomAccessIterator last,
+           const typename iterator_traits<RandomAccessIterator>::value_type& x,
+           ConstRandomAccessIterator& where)
+{
+	bool found = first <= Metrowerks::address_of(x) && Metrowerks::address_of(x) < last;
+	if (found)
+		where = Metrowerks::address_of(x); 
+	return found;
+}
+
+template <class RandomAccessIterator, class ConstRandomAccessIterator>
+typename Metrowerks::restrict_to
+<
+	__is_segmented<RandomAccessIterator>::value,
+	bool
+>::type
+__contains(RandomAccessIterator first, RandomAccessIterator last,
+           const typename iterator_traits<RandomAccessIterator>::value_type& x,
+           ConstRandomAccessIterator& where)
+{
+	typedef typename iterator_traits<ConstRandomAccessIterator>::pointer pointer;
+	while (first != last)
+	{
+		if (first.__same_segment(last))
+		{
+			pointer p;
+			bool r = __contains(first.__cur(), last.__cur(), x, p);
+			if (r)
+			{
+				where = first;
+				where.__ref() = p;
+			}
+			return r;
+		}
+		else
+		{
+			pointer p;
+			if (__contains(first.__cur(), first.__end(), x, p))
+			{
+				where = first;
+				where.__ref() = p;
+				return true;
+			}
+			first.__ref() = first.__end() - 1;
+			++first;
+		}
+	}
+	return false;
+}
+
+// __construct_value default
+
+template <class ForwardIterator, class size_type, class allocator_type>
+inline
+typename Metrowerks::restrict_to
+<
+	!__is_segmented<ForwardIterator>::value &&
+	!(Metrowerks::is_pointer<ForwardIterator>::value &&
+	Metrowerks::is_zero_default_contructible<typename allocator_type::value_type>::value),
+	ForwardIterator
+>::type
+__construct_value(size_type n, ForwardIterator target, allocator_type& a, size_type& size)
+{
+	typedef typename allocator_type::value_type value_type;
+	for (; n; --n, ++size, ++target)
+		a.construct(&*target, value_type());
+	return target;
+}
+
+template <class ForwardIterator, class size_type, class allocator_type>
+inline
+typename Metrowerks::restrict_to
+<
+	!__is_segmented<ForwardIterator>::value &&
+	Metrowerks::is_pointer<ForwardIterator>::value &&
+	Metrowerks::is_zero_default_contructible<typename allocator_type::value_type>::value,
+	ForwardIterator
+>::type
+__construct_value(size_type n, ForwardIterator target, allocator_type&, size_type& size)
+{
+	typedef typename allocator_type::value_type value_type;
+	_CSTD::memset(target, 0, n*sizeof(value_type));
+	size += n;
+	return target + n;
+}
+
+template <class ForwardIterator, class size_type, class allocator_type>
+typename Metrowerks::restrict_to
+<
+	__is_segmented<ForwardIterator>::value,
+	ForwardIterator
+>::type
+__construct_value(size_type n, ForwardIterator target, allocator_type& a, size_type& size)
+{
+	typedef typename iterator_traits<ForwardIterator>::difference_type difference_type;
+	while (n)
+	{
+		size_type m = _STD::min(n, size_type(target.__end()-target.__cur()));
+		__construct_value(m, target.__cur(), a, size);
+		target.__ref() += static_cast<typename ForwardIterator::difference_type>(m-1);
+		++target;
+		n -= m;
+	}
+	return target;
+}
+
+// __construct_value copy
+
+template <class ForwardIterator, class size_type, class value_type, class allocator_type>
+inline
+typename Metrowerks::restrict_to
+<
+	!__is_segmented<ForwardIterator>::value &&
+	!(Metrowerks::is_pointer<ForwardIterator>::value &&
+	Metrowerks::has_trivial_copy_ctor<value_type>::value &&
+	Metrowerks::has_trivial_assignment<value_type>::value),
+	ForwardIterator
+>::type
+__construct_value(size_type n, const value_type& x, ForwardIterator target,
+                           allocator_type& a, size_type& size)
+{
+	for (; n; --n, ++size, ++target)
+		a.construct(&*target, x);
+	return target;
+}
+
+template <class ForwardIterator, class size_type, class value_type, class allocator_type>
+inline
+typename Metrowerks::restrict_to
+<
+	!__is_segmented<ForwardIterator>::value &&
+	Metrowerks::is_pointer<ForwardIterator>::value &&
+	Metrowerks::has_trivial_copy_ctor<value_type>::value &&
+	Metrowerks::has_trivial_assignment<value_type>::value,
+	ForwardIterator
+>::type
+__construct_value(size_type n, const value_type& x, ForwardIterator target,
+                           allocator_type&, size_type& size)
+{
+	_STD::fill_n(target, n, x);
+	size += n;
+	return target + n;
+}
+
+template <class ForwardIterator, class size_type, class value_type, class allocator_type>
+typename Metrowerks::restrict_to
+<
+	__is_segmented<ForwardIterator>::value,
+	ForwardIterator
+>::type
+__construct_value(size_type n, const value_type& x, ForwardIterator target,
+                           allocator_type& a, size_type& size)
+{
+	typedef typename iterator_traits<ForwardIterator>::difference_type difference_type;
+	while (n)
+	{
+		size_type m = _STD::min(n, size_type(target.__end()-target.__cur()));
+		__construct_value(m, x, target.__cur(), a, size);
+		target.__ref() += static_cast<typename ForwardIterator::difference_type>(m-1);
+		++target;
+		n -= m;
+	}
+	return target;
+}
+
+// __construct_backward_value
+
+template <class BidirectionalIterator, class size_type, class value_type, class allocator_type>
+inline
+typename Metrowerks::restrict_to
+<
+	!__is_segmented<BidirectionalIterator>::value &&
+	!(Metrowerks::is_pointer<BidirectionalIterator>::value &&
+	Metrowerks::has_trivial_copy_ctor<value_type>::value &&
+	Metrowerks::has_trivial_assignment<value_type>::value),
+	BidirectionalIterator
+>::type
+__construct_backward_value(size_type n, const value_type& x, BidirectionalIterator target,
+                           allocator_type& a, size_type& start, size_type& size)
+{
+	for (; n; --n, --start, ++size)
+		a.construct(&*--target, x);
+	return target;
+}
+
+template <class BidirectionalIterator, class size_type, class value_type, class allocator_type>
+inline
+typename Metrowerks::restrict_to
+<
+	!__is_segmented<BidirectionalIterator>::value &&
+	Metrowerks::is_pointer<BidirectionalIterator>::value &&
+	Metrowerks::has_trivial_copy_ctor<value_type>::value &&
+	Metrowerks::has_trivial_assignment<value_type>::value,
+	BidirectionalIterator
+>::type
+__construct_backward_value(size_type n, const value_type& x, BidirectionalIterator target,
+                           allocator_type&, size_type& start, size_type& size)
+{
+	target -= (ptrdiff_t)n;
+	_STD::fill_n(target, n, x);
+	start -= n;
+	size += n;
+	return target;
+}
+
+template <class BidirectionalIterator, class size_type, class value_type, class allocator_type>
+typename Metrowerks::restrict_to
+<
+	__is_segmented<BidirectionalIterator>::value,
+	BidirectionalIterator
+>::type
+__construct_backward_value(size_type n, const value_type& x, BidirectionalIterator target,
+                           allocator_type& a, size_type& start, size_type& size)
+{
+	typedef typename iterator_traits<BidirectionalIterator>::difference_type difference_type;
+	while (n)
+	{
+		--target;
+		size_type m = _STD::min(n, size_type(target.__cur()-target.__begin()+1));
+		__construct_backward_value(m, x, target.__cur() + 1, a, start, size);
+		target.__ref() -= static_cast<typename BidirectionalIterator::difference_type>(m-1);
+		n -= m;
+	}
+	return target;
+}
+
+// __construct_range
+
+template <class ForwardIterator1, class ForwardIterator2, class size_type,
+          class allocator_type>
+inline
+typename Metrowerks::restrict_to
+<
+	!__is_segmented<ForwardIterator1>::value &&
+	!__is_segmented<ForwardIterator2>::value ||
+	!__is_segmented<ForwardIterator1>::value &&
+	!__is_random_access_iterator<ForwardIterator1>::value &&
+	__is_segmented<ForwardIterator2>::value,
+	ForwardIterator2
+>::type
+__construct_range(ForwardIterator1 first, ForwardIterator1 last,
+                           ForwardIterator2 target,
+                           allocator_type& a, size_type& size)
+{
+	for (; first != last; ++size, ++target, ++first)
+		a.construct(&*target, *first);
+	return target;
+}
+
+template <class ForwardIterator1, class ForwardIterator2, class size_type,
+          class allocator_type>
+typename Metrowerks::restrict_to
+<
+	__is_segmented<ForwardIterator1>::value &&
+	__is_segmented<ForwardIterator2>::value,
+	ForwardIterator2
+>::type
+__construct_range(ForwardIterator1 first, ForwardIterator1 last,
+                           ForwardIterator2 target,
+                           allocator_type& a, size_type& size)
+{
+	typedef typename iterator_traits<ForwardIterator2>::difference_type difference_type;
+	while (first != last)
+	{
+		difference_type rlen = target.__end() - target.__cur();
+		difference_type m;
+		if (first.__same_segment(last))
+			m = _STD::min(last.__cur() - first.__cur(), rlen);
+		else
+			m = _STD::min(first.__end() - first.__cur(), rlen);
+		__construct_range(first.__cur(), first.__cur() + m, target.__cur(),
+		                  a, size);
+		--m;
+		first.__ref() += m;
+		++first;
+		target.__ref() += m;
+		++target;
+	}
+	return target;
+}
+
+template <class ForwardIterator1, class ForwardIterator2, class size_type,
+          class allocator_type>
+typename Metrowerks::restrict_to
+<
+	 __is_segmented<ForwardIterator1>::value &&
+	!__is_segmented<ForwardIterator2>::value,
+	ForwardIterator2
+>::type
+__construct_range(ForwardIterator1 first, ForwardIterator1 last,
+                           ForwardIterator2 target,
+                           allocator_type& a, size_type& size)
+{
+	typedef typename iterator_traits<ForwardIterator2>::difference_type difference_type;
+	while (first != last)
+	{
+		difference_type m;
+		if (first.__same_segment(last))
+			m = last.__cur() - first.__cur();
+		else
+			m = first.__end() - first.__cur();
+		target = __construct_range(first.__cur(), first.__cur() + m, target, a, size);
+		--m;
+		first.__ref() += m;
+		++first;
+	}
+	return target;
+}
+
+template <class RandomAccessIterator, class ForwardIterator2, class size_type,
+          class allocator_type>
+typename Metrowerks::restrict_to
+<
+	!__is_segmented<RandomAccessIterator>::value &&
+	 __is_random_access_iterator<RandomAccessIterator>::value &&
+	 __is_segmented<ForwardIterator2>::value,
+	ForwardIterator2
+>::type
+__construct_range(RandomAccessIterator first, RandomAccessIterator last,
+                           ForwardIterator2 target,
+                           allocator_type& a, size_type& size)
+{
+	typedef typename iterator_traits<ForwardIterator2>::difference_type difference_type;
+	if (first != last)
+	{
+		difference_type n = last - first;
+		while (true)
+		{
+			difference_type m = _STD::min(n, difference_type(target.__end()-target.__cur()));
+			RandomAccessIterator i = first + m;
+			__construct_range(first, i, target.__cur(), a, size);
+			n -= m;
+			--m;
+			target.__ref() += m;
+			++target;
+			if (n == 0)
+				break;
+			first = i;
+		}
+	}
+	return target;
+}
+
+// __construct_backward_range
+
+template <class BidirectionalIterator1, class BidirectionalIterator2, class size_type,
+          class allocator_type>
+inline
+typename Metrowerks::restrict_to
+<
+	!__is_segmented<BidirectionalIterator1>::value &&
+	!__is_segmented<BidirectionalIterator2>::value ||
+	!__is_segmented<BidirectionalIterator1>::value &&
+	!__is_random_access_iterator<BidirectionalIterator1>::value &&
+	__is_segmented<BidirectionalIterator2>::value,
+	BidirectionalIterator2
+>::type
+__construct_backward_range(BidirectionalIterator1 first, BidirectionalIterator1 last,
+                           BidirectionalIterator2 target,
+                           allocator_type& a, size_type& start, size_type& size)
+{
+	for (; first != last; --start, ++size)
+		a.construct(&*--target, *--last);
+	return target;
+}
+
+template <class BidirectionalIterator1, class BidirectionalIterator2, class size_type,
+          class allocator_type>
+typename Metrowerks::restrict_to
+<
+	__is_segmented<BidirectionalIterator1>::value &&
+	__is_segmented<BidirectionalIterator2>::value,
+	BidirectionalIterator2
+>::type
+__construct_backward_range(BidirectionalIterator1 first, BidirectionalIterator1 last,
+                           BidirectionalIterator2 target,
+                           allocator_type& a, size_type& start, size_type& size)
+{
+	typedef typename iterator_traits<BidirectionalIterator2>::difference_type difference_type;
+	while (first != last)
+	{
+		--last;
+		--target;
+		difference_type rlen = target.__cur() - target.__begin();
+		difference_type m;
+		if (first.__same_segment(last))
+			m = _STD::min(last.__cur() - first.__cur(), rlen);
+		else
+			m = _STD::min(last.__cur() - last.__begin(), rlen);
+		last.__ref() -= m;
+		__construct_backward_range(last.__cur(), last.__cur() + (m+1), target.__cur() + 1,
+		                           a, start, size);
+		target.__ref() -= m;
+	}
+	return target;
+}
+
+template <class BidirectionalIterator1, class BidirectionalIterator2, class size_type,
+          class allocator_type>
+typename Metrowerks::restrict_to
+<
+	 __is_segmented<BidirectionalIterator1>::value &&
+	!__is_segmented<BidirectionalIterator2>::value,
+	BidirectionalIterator2
+>::type
+__construct_backward_range(BidirectionalIterator1 first, BidirectionalIterator1 last,
+                           BidirectionalIterator2 target,
+                           allocator_type& a, size_type& start, size_type& size)
+{
+	typedef typename iterator_traits<BidirectionalIterator1>::difference_type difference_type;
+	while (first != last)
+	{
+		--last;
+		difference_type m;
+		if (first.__same_segment(last))
+			m = last.__cur() - first.__cur();
+		else
+			m = last.__cur() - last.__begin();
+		last.__ref() -= m;
+		target = __construct_backward_range(last.__cur(), last.__cur() + (m+1), target,
+		                                    a, start, size);
+	}
+	return target;
+}
+
+template <class RandomAccessIterator, class BidirectionalIterator2, class size_type,
+          class allocator_type>
+typename Metrowerks::restrict_to
+<
+	!__is_segmented<RandomAccessIterator>::value &&
+	 __is_random_access_iterator<RandomAccessIterator>::value &&
+	 __is_segmented<BidirectionalIterator2>::value,
+	BidirectionalIterator2
+>::type
+__construct_backward_range(RandomAccessIterator first, RandomAccessIterator last,
+                           BidirectionalIterator2 target,
+                           allocator_type& a, size_type& start, size_type& size)
+{
+	if (first != last)
+	{
+		typedef typename iterator_traits<BidirectionalIterator2>::difference_type difference_type;
+		difference_type n = last - first;
+		while (true)
+		{
+			--target;
+			difference_type m = _STD::min(n, difference_type(target.__cur()-target.__begin()+1));
+			RandomAccessIterator i = last - m;
+			__construct_backward_range(i, last, target.__cur() + 1, a, start, size);
+			n -= m;
+			target.__ref() -= m-1;
+			if (n == 0)
+				break;
+			last = i;
+		}
+	}
+	return target;
+}
+
+//  lib.alg.swap, swap:
+
+template <class T>
+inline
+void
+swap(T& a, T& b)
+{
+	T tmp(_STD::move(a));
+	a = _STD::move(b);
+	b = _STD::move(tmp);
+}
+
+// iter_swap
+
+// hh 990817
+template <class ForwardIterator1, class ForwardIterator2>
+inline
+void
+iter_swap(ForwardIterator1 a, ForwardIterator2 b)
+{
+	swap(*a, *b);
+}
+
+// swap_ranges
+
+template <class ForwardIterator1, class ForwardIterator2>
+inline
+ForwardIterator2
+swap_ranges(ForwardIterator1 first1, ForwardIterator1 last1, ForwardIterator2 first2)
+{
+	for (; first1 != last1; ++first1, ++first2)
+		swap(*first1, *first2);
+	return first2;
+}
+
+// transform
+
+template <class InputIterator, class OutputIterator, class UnaryOperation>
+inline
+OutputIterator
+transform(InputIterator first, InputIterator last, OutputIterator result, UnaryOperation op)
+{
+	for (; first != last; ++first, ++result)
+		*result = op(*first);
+	return result;
+}
+
+template <class InputIterator1, class InputIterator2, class OutputIterator,
+         class BinaryOperation>
+inline
+OutputIterator
+transform(InputIterator1 first1, InputIterator1 last1,
+          InputIterator2 first2, OutputIterator result, BinaryOperation binary_op)
+{
+	for (; first1 != last1; ++first1, ++first2, ++result)
+		*result = binary_op(*first1, *first2);
+	return result;
+}
+
+// replace
+
+template <class ForwardIterator, class T>
+inline
+void
+replace(ForwardIterator first, ForwardIterator last, const T& old_value, const T& new_value)
+{
+	for (; first != last; ++first)
+		if (*first == old_value)
+			*first = new_value;
+}
+
+template <class ForwardIterator, class Predicate, class T>
+inline
+void
+replace_if(ForwardIterator first, ForwardIterator last, Predicate pred, const T& new_value)
+{
+	for (; first != last; ++first)
+		if (pred(*first))
+			*first = new_value;
+}
+
+// replace_copy
+
+template <class InputIterator, class OutputIterator, class T>
+inline
+OutputIterator
+replace_copy(InputIterator first, InputIterator last,
+             OutputIterator result, const T& old_value, const T& new_value)
+{
+	for (; first != last; ++first, ++result)
+		if (*first == old_value)
+			*result = new_value;
+		else
+			*result = *first;
+	return result;
+}
+
+template <class InputIterator, class OutputIterator, class Predicate, class T>
+inline
+OutputIterator
+replace_copy_if(InputIterator first, InputIterator last,
+                OutputIterator result, Predicate pred, const T& new_value)
+{
+	for (; first != last; ++first, ++result)
+	if (pred(*first))
+		*result = new_value;
+	else
+		*result = *first;
+	return result;
+}
+
+// generate
+
+template <class ForwardIterator, class Generator>
+inline
+void
+generate(ForwardIterator first, ForwardIterator last, Generator gen)
+{
+	for (; first != last; ++first)
+		*first = gen();
+}
+
+template <class OutputIterator, class Size, class Generator>
+inline
+void
+generate_n(OutputIterator first, Size n, Generator gen)
+{
+	for (; n > 0; ++first, --n)
+		*first = gen();
+}
+
+// remove_copy
+
+template <class InputIterator, class OutputIterator, class T>
+OutputIterator
+remove_copy(InputIterator first, InputIterator last, OutputIterator result, const T& value)
+{
+	for (; first != last; ++first)
+	{
+		if (!(*first == value))
+		{
+			*result = *first;
+			++result;
+		}
+	}
+	return result;
+}
+
+template <class InputIterator, class OutputIterator, class Predicate>
+OutputIterator
+remove_copy_if(InputIterator first, InputIterator last, OutputIterator result, Predicate pred)
+{
+	for (; first != last; ++first)
+	{
+		if (!pred(*first))
+		{
+			*result = *first;
+			++result;
+		}
+	}
+	return result;
+}
+
+// remove
+
+template <class ForwardIterator, class T>
+inline
+ForwardIterator
+remove(ForwardIterator first, ForwardIterator last, const T& value)
+{
+	if ((first = _STD::find(first, last, value)) != last)
+	{
+		ForwardIterator i = first;
+		for (++i; i != last; ++i)
+		{
+			if (!(*i == value))
+			{
+				*first = _STD::move(*i);
+				++first;
+			}
+		}
+	}
+	return first;
+}
+
+template <class ForwardIterator, class Predicate>
+ForwardIterator
+remove_if(ForwardIterator first, ForwardIterator last, Predicate pred)
+{
+	typedef typename Metrowerks::add_reference<Predicate>::type PredRef;
+	if ((first = _STD::find_if<ForwardIterator, PredRef>(first, last, pred)) != last)
+	{
+		ForwardIterator i = first;
+		for (++i; i != last; ++i)
+		{
+			if (!pred(*i))
+			{
+				*first = _STD::move(*i);
+				++first;
+			}
+		}
+	}
+	return first;
+}
+
+// unique_copy
+
+template <class InputIterator, class OutputIterator, class BinaryPredicate>
+OutputIterator
+__unique_copy_aux(InputIterator first, InputIterator last, OutputIterator result,
+              BinaryPredicate pred, input_iterator_tag)
+{
+	if (first != last)
+	{
+		typename iterator_traits<InputIterator>::value_type tmp(*first);
+		*result = tmp;
+		for (++first; first != last; ++first)
+		{
+			if (!pred(tmp, *first))
+			{
+				tmp = *first;
+				*++result = tmp;
+			}
+		}
+		++result;
+	}
+	return result;
+}
+
+template <class ForwardIterator, class OutputIterator, class BinaryPredicate>
+OutputIterator
+__unique_copy_aux(ForwardIterator first, ForwardIterator last, OutputIterator result,
+              BinaryPredicate pred, forward_iterator_tag)
+{
+	if (first != last)
+	{
+		ForwardIterator tmp = first;
+		*result = *first;
+		for (++first; first != last; ++first)
+		{
+			if (!pred(*tmp, *first))
+			{
+				tmp = first;
+				*++result = *first;
+			}
+		}
+		++result;
+	}
+	return result;
+}
+
+template <class InputIterator, class OutputIterator, class BinaryPredicate>
+inline
+OutputIterator
+__unique_copy(InputIterator first, InputIterator last, OutputIterator result,
+              BinaryPredicate pred, output_iterator_tag)
+{
+	typedef typename iterator_traits<InputIterator>::iterator_category Category;
+	typedef typename Metrowerks::add_reference<BinaryPredicate>::type BinPredRef;
+	return __unique_copy_aux<InputIterator, OutputIterator, BinPredRef>(first, last, result, pred, Category());
+}
+
+template <class InputIterator, class ForwardIterator, class BinaryPredicate>
+ForwardIterator
+__unique_copy(InputIterator first, InputIterator last, ForwardIterator result,
+              BinaryPredicate pred, forward_iterator_tag)
+{
+	if (first != last)
+	{
+		*result = *first;
+		for (++first; first != last; ++first)
+			if (!pred(*result, *first))
+				*++result = *first;
+		++result;
+	}
+	return result;
+}
+
+template <class InputIterator, class OutputIterator, class BinaryPredicate>
+inline
+OutputIterator
+unique_copy(InputIterator first, InputIterator last,
+            OutputIterator result, BinaryPredicate pred)
+{
+	typedef typename iterator_traits<OutputIterator>::iterator_category Category;
+	typedef typename Metrowerks::add_reference<BinaryPredicate>::type BinPredRef;
+	return __unique_copy<InputIterator, OutputIterator, BinPredRef>(first, last, result, pred, Category());
+}
+
+template <class InputIterator, class OutputIterator>
+inline
+OutputIterator
+unique_copy(InputIterator first, InputIterator last, OutputIterator result)
+{
+	typedef typename iterator_traits<InputIterator>::value_type value_type;
+	return _STD::unique_copy(first, last, result, detail::equal_to<value_type>());
+}
+
+// unique
+
+template <class ForwardIterator, class BinaryPredicate>
+ForwardIterator
+unique(ForwardIterator first, ForwardIterator last, BinaryPredicate pred)
+{
+	typedef typename Metrowerks::add_reference<BinaryPredicate>::type PredRef;
+	if ((first = _STD::adjacent_find<ForwardIterator, PredRef>(first, last, pred)) != last)
+	{
+		// first < last-1 (adjacent_find won't return first == last-1)
+		ForwardIterator next = first;
+		for (_STD::advance(next, 2u); next != last; ++next)
+		{
+			if (!pred(*first, *next))
+				*++first = _STD::move(*next);
+		}
+		++first;
+	}
+	return first;
+}
+
+template <class ForwardIterator>
+inline
+ForwardIterator
+unique(ForwardIterator first, ForwardIterator last)
+{
+	typedef typename iterator_traits<ForwardIterator>::value_type value_type;
+	return _STD::unique(first, last, detail::equal_to<value_type>());
+}
+
+// reverse
+
+template <class BidirectionalIterator>
+inline
+void
+__reverse(BidirectionalIterator first, BidirectionalIterator last, bidirectional_iterator_tag)
+{
+	while (first != last)
+	{
+		--last;
+		if (first == last)
+			break;
+		swap(*first, *last);
+		++first;
+	}
+}
+
+template <class RandomAccessIterator>
+inline
+void
+__reverse(RandomAccessIterator first, RandomAccessIterator last, random_access_iterator_tag)
+{
+	if (first != last)
+		for (; first < --last; ++first)
+			swap(*first, *last);
+}
+
+template <class BidirectionalIterator>
+inline
+void
+reverse(BidirectionalIterator first, BidirectionalIterator last)
+{
+	typedef typename iterator_traits<BidirectionalIterator>::iterator_category Category;
+	__reverse(first, last, Category());
+}
+
+template <class BidirectionalIterator, class OutputIterator>
+inline
+OutputIterator
+reverse_copy(BidirectionalIterator first, BidirectionalIterator last, OutputIterator result)
+{
+	for (; first != last; ++result)
+		*result = *--last;
+	return result;
+}
+
+template <class BidirectionalIterator, class OutputIterator>
+inline
+OutputIterator
+__reverse_move(BidirectionalIterator first, BidirectionalIterator last, OutputIterator result)
+{
+	for (; first != last; ++result)
+		*result = _STD::move(*--last);
+	return result;
+}
+
+// rotate
+
+template <class ForwardIterator>
+ForwardIterator
+rotate(ForwardIterator first, ForwardIterator middle, ForwardIterator last)
+{
+	if (first == middle)
+		return last;
+	if (middle == last)
+		return first;
+	ForwardIterator i = middle;
+	while (true)
+	{
+		swap(*first, *i);
+		++first;
+		if (++i == last)
+			break;
+		if (first == middle)
+			middle = i;
+	}
+	ForwardIterator result = first;
+	if (first != middle)
+	{
+		i = middle;
+		while (true)
+		{
+			swap(*first, *i);
+			++first;
+			if (++i == last)
+			{
+				if (first == middle)
+					break;
+				i = middle;
+			}
+			else if (first == middle)
+				middle = i;
+		}
+	}
+	return result;
+}
+
+template <class ForwardIterator, class OutputIterator>
+inline
+OutputIterator
+rotate_copy(ForwardIterator first, ForwardIterator middle, ForwardIterator last,
+            OutputIterator result)
+{
+	return _STD::copy(first, middle, _STD::copy(middle, last, result));
+}
+
+// random_shuffle
+
+template <unsigned int _Bits>
+struct __num_bits
+{
+	static const int __value = 1 + __num_bits<(_Bits >> 1)>::__value;
+};
+
+template <>
+struct __num_bits<0>
+{
+	static const int __value = 0;
+};
+
+const int __rbits = __num_bits<RAND_MAX>::__value;
+const int __lbits = sizeof(unsigned long) * __char<>::bits;
+
+template <int _NBits, bool b = _NBits <= __rbits>
+struct __random_bits
+{
+	operator unsigned long () const
+		{return static_cast<unsigned long>(rand()) >> (__rbits - _NBits);}
+};
+
+template <int _NBits>
+struct __random_bits<_NBits, false>
+{
+	operator unsigned long () const
+		{return static_cast<unsigned long>(rand()) << (_NBits - __rbits) |
+		                                 __random_bits<_NBits - __rbits>();}
+};
+
+template <int _NBits>
+inline
+unsigned long
+__slab_size(unsigned long __n)
+{
+	return (1UL << _NBits) / __n;
+}
+
+template <>
+inline
+unsigned long
+__slab_size<__lbits>(unsigned long __n)
+{
+	if (__n & 1)
+		return (unsigned long)(~0) / __n;
+	return (1UL << (__lbits-1)) / (__n >> 1);
+}
+
+template <int _NBits>
+inline
+unsigned long
+__scaled_random_number(unsigned long __n)
+{
+	unsigned long __slab = __slab_size<_NBits>(__n);
+	unsigned long __usable = __slab * __n;
+	unsigned long __raw;
+	do
+		__raw = __random_bits<_NBits>();
+	while (__raw >= __usable);
+	return __raw / __slab;
+}
+
+template <bool __b, unsigned long Nslab = __lbits/__rbits> struct __rs_default;
+
+template <bool __b>
+struct __rs_default<__b, 1>
+{
+	unsigned long operator()(unsigned long __n = 0) const;
+};
+
+template <bool __b>
+unsigned long
+__rs_default<__b, 1>::operator()(unsigned long __n) const
+{
+	switch (__n)
+	{
+	case 0:
+		return __random_bits<__lbits>();
+	case 1:
+		return 0;
+	}
+	if (__n <= (1UL << __rbits))
+		return __scaled_random_number<__rbits>(__n);
+	return __scaled_random_number<__lbits>(__n);
+}
+
+template <bool __b>
+struct __rs_default<__b, 2>
+{
+	unsigned long operator()(unsigned long __n = 0) const;
+};
+
+template <bool __b>
+unsigned long
+__rs_default<__b, 2>::operator()(unsigned long __n) const
+{
+	switch (__n)
+	{
+	case 0:
+		return __random_bits<__lbits>();
+	case 1:
+		return 0;
+	}
+	int __nb = __rbits;
+	while (__nb < __lbits && __n > (1UL << __nb))
+		__nb += min(__rbits, __lbits - __nb);
+	switch (__nb)
+	{
+	case __rbits:
+		return __scaled_random_number<__rbits>(__n);
+	case 2*__rbits:
+		return __scaled_random_number<2*__rbits>(__n);
+	}
+	return __scaled_random_number<__lbits>(__n);
+}
+
+template <class RandomAccessIterator>
+inline
+void
+random_shuffle(RandomAccessIterator first, RandomAccessIterator last)
+{
+	typedef typename iterator_traits<RandomAccessIterator>::difference_type difference_type;
+	difference_type d = last - first;
+	if (d > 1)
+	{
+		for (--last; first < last; ++first, --d)
+			swap(*first, *(first
+				+ static_cast<difference_type>(__rs_default<true>()(static_cast<unsigned long>(d)))));
+	}
+}
+
+template <class RandomAccessIterator, class RandomNumberGenerator>
+inline
+void
+random_shuffle(RandomAccessIterator first, RandomAccessIterator last,
+#ifdef _MSL_MOVE
+               RandomNumberGenerator&& rand)
+#else
+               RandomNumberGenerator& rand)
+#endif
+{
+	typedef typename iterator_traits<RandomAccessIterator>::difference_type difference_type;
+	difference_type d = last - first;
+	if (d > 1)
+	{
+		for (--last; first < last; ++first, --d)
+			swap(*first, *(first + rand(d)));
+	}
+}
+
+//  lib.alg.partitions
+
+// partition
+
+template <class BidirectionalIterator, class Predicate>
+BidirectionalIterator
+partition(BidirectionalIterator first, BidirectionalIterator last, Predicate pred)
+{
+	while (true)
+	{
+		while (true)
+		{
+			if (first == last)
+				return first;
+			if (!pred(*first))
+				break;
+			++first;
+		}
+		--last;
+		while (true)
+		{
+			if (first == last)
+				return first;
+			if (pred(*last))
+				break;
+			--last;
+		}
+		swap(*first, *last);
+		++first;
+	}
+}
+
+// stable_partition
+
+const unsigned __stable_partition_limit = 4;
+
+template <class Predicate, class BidirectionalIterator, class Distance, class RandomAccessIterator>
+BidirectionalIterator
+__stable_partition(BidirectionalIterator first, BidirectionalIterator last, Predicate pred,
+                            Distance len, RandomAccessIterator buf_begin, RandomAccessIterator buf_end)
+{
+	// precondition:  pred(*first) is false and pred(*last) is true, len >= 2
+	// last points to last element instead of beyond it
+	typedef typename iterator_traits<BidirectionalIterator>::value_type value_type;
+	typedef typename Metrowerks::add_reference<Predicate>::type PredRef;
+	if (len <= __stable_partition_limit)
+	{
+		if (len == 2)
+		{
+			swap(*first, *last);
+			return last;
+		}
+		BidirectionalIterator iter[__stable_partition_limit];
+		iter[len-1] = last;
+		Distance mask = 2;
+		Distance k = 1;
+		for (Distance i = len - 1; i > 1; mask <<= 1)
+		{
+			--i;
+			iter[i] = iter[i+1];
+			if (pred(*--iter[i]))
+				k |= mask;
+		}
+		iter[0] = first;
+		switch (len)
+		{
+		case 3:
+			switch (k)
+			{
+			case 1:
+				swap(*iter[1], *iter[2]);
+				swap(*iter[0], *iter[1]);
+				return iter[1];
+			case 3:
+				swap(*iter[0], *iter[1]);
+				swap(*iter[1], *iter[2]);
+				return iter[2];
+			}
+		case 4:
+			switch (k)
+			{
+			case 1:
+				swap(*iter[2], *iter[3]);
+				swap(*iter[1], *iter[2]);
+				swap(*iter[0], *iter[1]);
+				return iter[1];
+			case 3:
+				swap(*iter[0], *iter[2]);
+				swap(*iter[1], *iter[3]);
+				return iter[2];
+			case 5:
+				swap(*iter[0], *iter[1]);
+				swap(*iter[2], *iter[3]);
+				swap(*iter[1], *iter[2]);
+				return iter[2];
+			case 7:
+				swap(*iter[0], *iter[1]);
+				swap(*iter[1], *iter[2]);
+				swap(*iter[2], *iter[3]);
+				return iter[3];
+			}
+		}
+	}
+	if (len <= buf_end - buf_begin)
+	{
+		// Put falses in temporary buffer, move trues towards first
+		RandomAccessIterator j = buf_begin;
+		*j = _STD::move(*first);
+		++j;
+		BidirectionalIterator i = first;
+		for (++i; i != last; ++i)
+		{
+			if (pred(*i))
+			{
+				*first = _STD::move(*i);
+				++first;
+			}
+			else
+			{
+				*j = _STD::move(*i);
+				++j;
+			}
+		}
+		*first = _STD::move(*last);
+		++first;
+		// Now move falses back to first
+		_STD::move(buf_begin, j, first);
+		return first;
+	}
+	// else len > buf_end - buf_begin
+	Distance l2 = len / 2;  // len >= 5 so l2 >= 2
+	BidirectionalIterator mid = first;
+	_STD::advance(mid, l2);
+	// pred(*first) is false, need to make pred(*mid1) true
+	BidirectionalIterator mid1 = mid;
+	--mid1;
+	BidirectionalIterator first_false = first;
+	Distance l1 = l2;
+	while (!pred(*mid1))
+	{
+		--l1;
+		if (--mid1 == first)
+			goto first_half_done;
+	}
+	first_false = __stable_partition<PredRef>(first, mid1, pred, l1, buf_begin, buf_end);
+first_half_done:
+	// pred(*last) is true, need to make pred(*mid1) false
+	mid1 = mid;
+	BidirectionalIterator second_false = last;
+	++second_false;
+	l1 = len - l2;
+	while (pred(*mid1))
+	{
+		--l1;
+		if (++mid1 == last)
+			goto second_half_done;
+	}
+	second_false = __stable_partition<PredRef>(mid1, last, pred, l1, buf_begin, buf_end);
+second_half_done:
+	return _STD::rotate(first_false, mid, second_false);
+}
+
+template <class BidirectionalIterator, class Predicate>
+BidirectionalIterator
+stable_partition(BidirectionalIterator first, BidirectionalIterator last, Predicate pred)
+{
+	typedef typename iterator_traits<BidirectionalIterator>::value_type value_type;
+	typedef typename iterator_traits<BidirectionalIterator>::difference_type difference_type;
+	typedef typename Metrowerks::add_reference<Predicate>::type PredRef;
+	typedef pair<value_type*, ptrdiff_t> pair;
+	if (first == last)
+		return last;
+	while (pred(*first))
+	{
+		if (++first == last)
+			return last;
+	}
+	// pred(*first) is false
+	if (--last == first)
+		return last;
+	while (!pred(*last))
+	{
+		if (--last == first)
+			return last;
+	}
+	// pred(*last) is true
+	difference_type len = _STD::distance(first, last) + 1;
+	_TempVec<value_type> buf(len <= __stable_partition_limit ? 0 : len);
+	return __stable_partition<PredRef>(first, last, pred, len, buf.begin(), buf.end());
+}
+
+//  lib.alg.binary.search, binary search:
+
+// lower_bound
+
+template <class ForwardIterator, class T, class Compare>
+ForwardIterator
+lower_bound(ForwardIterator first, ForwardIterator last, const T& value, Compare comp)
+{
+	typedef typename iterator_traits<ForwardIterator>::difference_type difference_type;
+	difference_type len = _STD::distance(first, last);
+	while (len > 0)
+	{
+		ForwardIterator i = first;
+		difference_type len2 = len / 2;
+		_STD::advance(i, len2);
+		if (comp(*i, value))
+		{
+			first = ++i;
+			len -= len2 + 1;
+		}
+		else
+			len = len2;
+	}
+	return first;
+}
+
+template <class ForwardIterator, class T>
+inline
+ForwardIterator
+lower_bound(ForwardIterator first, ForwardIterator last, const T& value)
+{
+	typedef typename iterator_traits<ForwardIterator>::value_type value_type;
+	return _STD::lower_bound(first, last, value, detail::less<value_type, T>());
+}
+
+// upper_bound
+
+template <class ForwardIterator, class T, class Compare>
+ForwardIterator
+upper_bound(ForwardIterator first, ForwardIterator last, const T& value, Compare comp)
+{
+	typedef typename iterator_traits<ForwardIterator>::difference_type difference_type;
+	difference_type len = _STD::distance(first, last);
+	while (len > 0)
+	{
+		ForwardIterator i = first;
+		difference_type len2 = len / 2;
+		_STD::advance(i, len2);
+		if (!comp(value, *i))
+		{
+			first = ++i;
+			len -= len2 + 1;
+		}
+		else
+			len = len2;
+	}
+	return first;
+}
+
+template <class ForwardIterator, class T>
+inline
+ForwardIterator
+upper_bound(ForwardIterator first, ForwardIterator last, const T& value)
+{
+	typedef typename iterator_traits<ForwardIterator>::value_type value_type;
+	return _STD::upper_bound(first, last, value, detail::less<T, value_type>());
+}
+
+// equal_range
+
+template <class ForwardIterator, class T, class Compare>
+pair<ForwardIterator, ForwardIterator>
+equal_range(ForwardIterator first, ForwardIterator last, const T& value, Compare comp)
+{
+	typedef pair<ForwardIterator, ForwardIterator> Result;
+	typedef typename iterator_traits<ForwardIterator>::difference_type difference_type;
+	typedef typename Metrowerks::add_reference<Compare>::type CompRef;
+	difference_type len = _STD::distance(first, last);
+	while (len > 0)
+	{
+		ForwardIterator i = first;
+		difference_type len2 = len / 2;
+		_STD::advance(i, len2);
+		if (comp(*i, value))
+		{
+			first = ++i;
+			len -= len2 + 1;
+		}
+		else if (comp(value, *i))
+		{
+			len = len2;
+			last = i;
+		}
+		else
+		{
+			ForwardIterator j = i;
+			return Result(_STD::lower_bound<ForwardIterator, T, CompRef>(first, i, value, comp),
+			              _STD::upper_bound<ForwardIterator, T, CompRef>(++j, last, value, comp));
+		}
+	}
+	return Result(first, first);
+}
+
+template <class ForwardIterator, class T>
+inline
+pair<ForwardIterator, ForwardIterator>
+equal_range(ForwardIterator first, ForwardIterator last, const T& value)
+{
+	typedef typename iterator_traits<ForwardIterator>::value_type value_type;
+	return _STD::equal_range(first, last, value, detail::less<value_type, T>());
+}
+
+template <class ForwardIterator, class T, class Compare>
+inline
+bool
+binary_search(ForwardIterator first, ForwardIterator last, const T& value, Compare comp)
+{
+	typedef typename Metrowerks::add_reference<Compare>::type CompRef;
+	ForwardIterator i = _STD::lower_bound<ForwardIterator, T, CompRef>(first, last, value, comp);
+	return static_cast<bool>(i != last && !comp(value, *i));
+}
+
+template <class ForwardIterator, class T>
+inline
+bool
+binary_search(ForwardIterator first, ForwardIterator last, const T& value)
+{
+	typedef typename iterator_traits<ForwardIterator>::value_type value_type;
+	return _STD::binary_search(first, last, value, detail::less<value_type, T>());
+}
+
+// merge
+
+template <class InputIterator1, class InputIterator2, class OutputIterator, class Compare>
+OutputIterator
+merge(InputIterator1 first1, InputIterator1 last1,
+      InputIterator2 first2, InputIterator2 last2, OutputIterator result, Compare comp)
+{
+	for (; first1 != last1 && first2 != last2; ++result)
+	{
+		if (comp(*first2, *first1))
+		{
+			*result = *first2;
+			++first2;
+		}
+		else
+		{
+			*result = *first1;
+			++first1;
+		}
+	}
+	if (first1 == last1)
+		return _STD::copy(first2, last2, result);
+	return _STD::copy(first1, last1, result);
+}
+
+template <class InputIterator1, class InputIterator2, class OutputIterator>
+inline
+OutputIterator
+merge(InputIterator1 first1, InputIterator1 last1,
+      InputIterator2 first2, InputIterator2 last2, OutputIterator result)
+{
+	typedef typename iterator_traits<InputIterator1>::value_type value_type1;
+	typedef typename iterator_traits<InputIterator2>::value_type value_type2;
+	return _STD::merge(first1, last1, first2, last2, result, detail::less<value_type2, value_type1>());
+}
+
+// __merge_move
+
+template <class Compare, class InputIterator1, class InputIterator2, class OutputIterator>
+OutputIterator
+__merge_move(InputIterator1 first1, InputIterator1 last1,
+             InputIterator2 first2, InputIterator2 last2, OutputIterator result, Compare comp)
+{
+	for (; first1 != last1 && first2 != last2; ++result)
+	{
+		if (comp(*first2, *first1))
+		{
+			*result = _STD::move(*first2);
+			++first2;
+		}
+		else
+		{
+			*result = _STD::move(*first1);
+			++first1;
+		}
+	}
+	if (first1 == last1)
+		return _STD::move(first2, last2, result);
+	return _STD::move(first1, last1, result);
+}
+
+// __merge_backward_move
+
+template <class Compare, class BidirectionalIterator1, class BidirectionalIterator2,
+                         class BidirectionalIterator3>
+BidirectionalIterator3
+__merge_backward_move(BidirectionalIterator1 first1, BidirectionalIterator1 last1,
+                 BidirectionalIterator2 first2, BidirectionalIterator2 last2,
+                 BidirectionalIterator3 result, Compare comp)
+{
+	if (first1 == last1)
+		return _STD::move_backward(first2, last2, result);
+	if (first2 == last2)
+		return _STD::move_backward(first1, last1, result);
+	--last1;
+	--last2;
+	while (true)
+	{
+		if (comp(*last2, *last1))
+		{
+			*--result = _STD::move(*last1);
+			if (first1 == last1)
+				return _STD::move_backward(first2, ++last2, result);
+			--last1;
+		} else
+		{
+			*--result = _STD::move(*last2);
+			if (first2 == last2)
+				return _STD::move_backward(first1, ++last1, result);
+			--last2;
+		}
+	}
+}
+
+// inplace_merge
+
+template <class Compare, class BidirectionalIterator, class Distance, class RandomAccessIterator>
+void
+__inplace_merge(BidirectionalIterator first, BidirectionalIterator middle,
+                BidirectionalIterator last, Compare comp, Distance len1, Distance len2,
+                RandomAccessIterator buf_beg, RandomAccessIterator buf_end)
+{
+	typedef typename Metrowerks::add_reference<Compare>::type CompRef;
+	typedef typename iterator_traits<BidirectionalIterator>::value_type value_type;
+	if (len1 == 0 || len2 == 0)
+		return;
+	if (len1 + len2 == 2)
+	{
+		if (comp(*middle, *first))
+			swap(*first, *middle);
+		return;
+	}
+	Distance buffer_size = static_cast<Distance>(buf_end - buf_beg);
+	if (len1 <= len2 && len1 <= buffer_size)
+		__merge_move<CompRef>(buf_beg, _STD::move(first, middle, buf_beg), middle, last, first, comp);
+	else if (len2 <= buffer_size)
+		__merge_backward_move<CompRef>(first, middle, buf_beg, _STD::move(middle, last, buf_beg), last, comp);
+	else
+	{
+		BidirectionalIterator mid1, mid2;
+		Distance len12, len22;
+		if (len1 <= len2)
+		{
+			len22 = len2 / 2;
+			mid2 = middle;
+			_STD::advance(mid2, len22);
+			mid1 = _STD::upper_bound<BidirectionalIterator, value_type, CompRef>(first, middle, *mid2, comp);
+			len12 = _STD::distance(first, mid1);
+		}
+		else
+		{
+			len12 = len1 / 2;
+			mid1 = first;
+			_STD::advance(mid1, len12);
+			mid2 = _STD::lower_bound<BidirectionalIterator, value_type, CompRef>(middle, last, *mid1, comp);
+			len22 = _STD::distance(middle, mid2);
+		}
+		middle = _STD::rotate(mid1, middle, mid2);
+		__inplace_merge<CompRef>(first, mid1, middle, comp, len12, len22, buf_beg, buf_end);
+		__inplace_merge<CompRef>(middle, mid2, last, comp, len1-len12, len2-len22, buf_beg, buf_end);
+	}
+}
+
+template <class BidirectionalIterator, class Compare>
+void
+inplace_merge(BidirectionalIterator first, BidirectionalIterator middle,
+              BidirectionalIterator last, Compare comp)
+{
+	typedef typename iterator_traits<BidirectionalIterator>::difference_type difference_type;
+	typedef typename iterator_traits<BidirectionalIterator>::value_type value_type;
+	typedef typename Metrowerks::add_reference<Compare>::type CompRef;
+	typedef pair<value_type*, ptrdiff_t> pair;
+	difference_type len1 = _STD::distance(first, middle);
+	if (len1 == 0)
+		return;
+	difference_type len2 = _STD::distance(middle, last);
+	if (len2 == 0)
+		return;
+	_TempVec<value_type> temp_buf(len1 + len2 == 2 ? 0 : _STD::min(len1, len2));
+	__inplace_merge<CompRef>(first, middle, last, comp, len1, len2, temp_buf.begin(), temp_buf.end());
+}
+
+template <class BidirectionalIterator>
+inline
+void
+inplace_merge(BidirectionalIterator first, BidirectionalIterator middle,
+              BidirectionalIterator last)
+{
+	typedef typename iterator_traits<BidirectionalIterator>::value_type value_type;
+	_STD::inplace_merge(first, middle, last, detail::less<value_type>());
+}
+
+//  lib.alg.heap.operations, heap operations:
+
+// push_heap
+
+template <class RandomAccessIterator, class Compare>
+void
+push_heap(RandomAccessIterator first, RandomAccessIterator last, Compare comp)
+{
+	typedef typename iterator_traits<RandomAccessIterator>::difference_type difference_type;
+	typedef typename iterator_traits<RandomAccessIterator>::value_type value_type;
+	difference_type hole = last - first;
+	if (hole > 1)
+	{
+		--hole;
+		difference_type parent = (hole - 1) / 2;
+		RandomAccessIterator parent_ptr = first + parent;
+		RandomAccessIterator hole_ptr = first + hole;
+		if (comp(*parent_ptr, *hole_ptr))
+		{
+			value_type tmp(_STD::move(*hole_ptr));
+			do
+			{
+				*hole_ptr = _STD::move(*parent_ptr);
+				hole_ptr = parent_ptr;
+				if (hole_ptr == first)
+					break;
+				--parent;
+				parent /= 2;
+				parent_ptr = first + parent;
+			} while (comp(*parent_ptr, tmp));
+			*hole_ptr = _STD::move(tmp);
+		}
+	}
+}
+
+template <class RandomAccessIterator>
+inline
+void
+push_heap(RandomAccessIterator first, RandomAccessIterator last)
+{
+	typedef typename iterator_traits<RandomAccessIterator>::value_type value_type;
+	_STD::push_heap(first, last, detail::less<value_type>());
+}
+
+// __insert_heap_down
+
+template <class Compare, class RandomAccessIterator, class Distance, class T>
+void
+#ifdef _MSL_MOVE
+__insert_heap_down(RandomAccessIterator first, Distance len, Distance hole, T&& temp, Compare comp)
+#else
+__insert_heap_down(RandomAccessIterator first, Distance len, Distance hole, T& temp, Compare comp)
+#endif
+{
+	RandomAccessIterator hole_ptr = first + hole;
+	Distance child = (hole + 1) * 2;
+	while (child <= len)
+	{
+		RandomAccessIterator child_ptr = first + child;
+		if (child == len || comp(*child_ptr, *(child_ptr - 1)))
+		{
+			--child;
+			--child_ptr;
+		}
+		if (!comp(temp, *child_ptr))
+			break;
+		*hole_ptr = _STD::move(*child_ptr);
+		hole_ptr = child_ptr;
+		++child;
+		child *= 2;
+	}
+	*hole_ptr = _STD::forward<T>(temp);
+}
+
+// pop_heap
+
+template <class RandomAccessIterator, class Compare>
+void
+pop_heap(RandomAccessIterator first, RandomAccessIterator last, Compare comp)
+{
+	typedef typename iterator_traits<RandomAccessIterator>::difference_type difference_type;
+	typedef typename iterator_traits<RandomAccessIterator>::value_type value_type;
+	typedef typename Metrowerks::add_reference<Compare>::type CompRef;
+	difference_type len = last - first;
+	if (len > 1)
+	{
+		--last;
+		if (len == 2)
+		{
+			swap(*first, *last);
+			return;
+		}
+		--len;
+		value_type temp(_STD::move(*last));
+		*last = _STD::move(*first);
+		__insert_heap_down<CompRef>(first, len, difference_type(0), _STD::move(temp), comp);
+	}
+}
+
+template <class RandomAccessIterator>
+inline
+void
+pop_heap(RandomAccessIterator first, RandomAccessIterator last)
+{
+	typedef typename iterator_traits<RandomAccessIterator>::value_type value_type;
+	_STD::pop_heap(first, last, detail::less<value_type>());
+}
+
+// make_heap
+
+template <class RandomAccessIterator, class Compare>
+void
+make_heap(RandomAccessIterator first, RandomAccessIterator last, Compare comp)
+{
+	typedef typename iterator_traits<RandomAccessIterator>::difference_type difference_type;
+	typedef typename iterator_traits<RandomAccessIterator>::value_type value_type;
+	typedef typename Metrowerks::add_reference<Compare>::type CompRef;
+	const difference_type len = last - first;
+	if (len > 1)
+	{
+		difference_type parent = (len - 2)/2;
+		RandomAccessIterator parent_ptr = first + parent;
+		difference_type child2 = (parent + 1) * 2;
+		RandomAccessIterator child2_ptr = first + child2;
+		RandomAccessIterator child1_ptr = child2_ptr - 1;
+		difference_type max_child = child2;
+		RandomAccessIterator max_child_ptr = child2_ptr;
+		if (child2 == len || comp(*child2_ptr, *child1_ptr))
+		{
+			--max_child;
+			max_child_ptr = child1_ptr;
+		}
+		while (true)
+		{
+			if (comp(*parent_ptr, *max_child_ptr))
+			{
+				value_type temp(_STD::move(*parent_ptr));
+				*parent_ptr = _STD::move(*max_child_ptr);
+				__insert_heap_down<CompRef>(first, len, max_child, _STD::move(temp), comp);
+			}
+			if (parent == 0)
+				break;
+			--parent;
+			--parent_ptr;
+			child2 -= 2;
+			child2_ptr -= 2;
+			child1_ptr -= 2;
+			max_child = child2;
+			max_child_ptr = child2_ptr;
+			if (comp(*child2_ptr, *child1_ptr))
+			{
+				--max_child;
+				max_child_ptr = child1_ptr;
+			}
+		}
+	}
+}
+
+template <class RandomAccessIterator>
+inline
+void
+make_heap(RandomAccessIterator first, RandomAccessIterator last)
+{
+	typedef typename iterator_traits<RandomAccessIterator>::value_type value_type;
+	_STD::make_heap(first, last, detail::less<value_type>());
+}
+
+//  sort_heap
+
+template <class RandomAccessIterator, class Compare>
+inline
+void
+sort_heap(RandomAccessIterator first, RandomAccessIterator last, Compare comp)
+{
+	typedef typename Metrowerks::add_reference<Compare>::type CompRef;
+	for (; first != last; --last)
+		_STD::pop_heap<RandomAccessIterator, CompRef>(first, last, comp);
+}
+
+template <class RandomAccessIterator>
+inline
+void
+sort_heap(RandomAccessIterator first, RandomAccessIterator last)
+{
+	typedef typename iterator_traits<RandomAccessIterator>::value_type value_type;
+	_STD::sort_heap(first, last, detail::less<value_type>());
+}
+
+//  sort
+
+template<class Compare, class ForwardIterator>
+void
+__sort3(ForwardIterator a1, ForwardIterator a2, ForwardIterator a3, Compare comp)
+{
+	bool b1 = !comp(*a2, *a1);
+	bool b2 = !comp(*a3, *a2);
+	if (b1 && b2)
+		return;
+	if (!b1 && !b2)
+	{
+		swap(*a1, *a3);
+		return;
+	}
+	bool b3 = !comp(*a3, *a1);
+	if (b1)
+	{
+		swap(*a2, *a3);
+		if (!b3)
+			swap(*a1, *a2);
+	}
+	else
+	{
+		swap(*a1, *a2);
+		if (!b3)
+			swap(*a2, *a3);
+	}
+}
+
+template<class ForwardIterator>
+inline
+void
+__sort3(ForwardIterator a1, ForwardIterator a2, ForwardIterator a3)
+{
+	typedef typename iterator_traits<ForwardIterator>::value_type value_type;
+	_STD::__sort3(a1, a2, a3, detail::less<value_type>());
+}
+
+template<class Compare, class ForwardIterator>
+void
+__sort132(ForwardIterator a1, ForwardIterator a2, ForwardIterator a3, Compare comp)
+{
+	bool b1 = !comp(*a3, *a1);
+	bool b2 = !comp(*a2, *a3);
+	if (b1 && b2)
+		return;
+	if (!b1 && !b2)
+	{
+		swap(*a1, *a2);
+		return;
+	}
+	if (comp(*a2, *a1))
+		swap(*a1, *a2);
+	if (b1)
+		swap(*a2, *a3);
+	else
+		swap(*a1, *a3);
+}
+
+template<class ForwardIterator>
+inline
+void
+__sort132(ForwardIterator a1, ForwardIterator a2, ForwardIterator a3)
+{
+	typedef typename iterator_traits<ForwardIterator>::value_type value_type;
+	_STD::__sort132(a1, a2, a3, detail::less<value_type>());
+}
+
+template<class Compare, class BidirectionalIterator>
+void
+__selection_sort(BidirectionalIterator first, BidirectionalIterator last, Compare comp)
+{
+	typedef typename Metrowerks::add_reference<Compare>::type CompRef;
+	if (first != last)
+	{
+		BidirectionalIterator j = last;
+		for (--j; first != j; ++first)
+		{
+			BidirectionalIterator i = _STD::min_element<BidirectionalIterator, CompRef>(first, last, comp);
+			if (i != first)
+				swap(*i, *first);
+		}
+	}
+}
+
+template<class BidirectionalIterator>
+inline
+void
+__selection_sort(BidirectionalIterator first, BidirectionalIterator last)
+{
+	typedef typename iterator_traits<BidirectionalIterator>::value_type value_type;
+	_STD::__selection_sort(first, last, detail::less<value_type>());
+}
+
+template<class Compare, class BidirectionalIterator1, class BidirectionalIterator2>
+BidirectionalIterator2
+__selection_sort_move(BidirectionalIterator1 first, BidirectionalIterator1 last,
+                      BidirectionalIterator2 result, Compare comp)
+{
+	typedef typename Metrowerks::add_reference<Compare>::type CompRef;
+	for (; first != last; ++result, --last)
+	{
+		BidirectionalIterator1 i = _STD::min_element<BidirectionalIterator1, CompRef>(first, last, comp);
+		*result = _STD::move(*i);
+		BidirectionalIterator1 j = i;
+		_STD::move(++j, last, i);
+	}
+	return result;
+}
+
+template<class BidirectionalIterator1, class BidirectionalIterator2>
+inline
+BidirectionalIterator2
+__selection_sort_move(BidirectionalIterator1 first, BidirectionalIterator1 last,
+                      BidirectionalIterator2 result)
+{
+	typedef typename iterator_traits<BidirectionalIterator1>::value_type value_type;
+	return _STD::__selection_sort_move(first, last, result, detail::less<value_type>());
+}
+
+template<class Compare, class BidirectionalIterator>
+void
+__insertion_sort(BidirectionalIterator first, BidirectionalIterator last, Compare comp)
+{
+	typedef typename iterator_traits<BidirectionalIterator>::value_type value_type;
+	if (first != last)
+	{
+		BidirectionalIterator i = first;
+		for (++i; i != last; ++i)
+		{
+			BidirectionalIterator j = i;
+			BidirectionalIterator k = i;
+			if (comp(*j, *--k))
+			{
+				value_type tmp(_STD::move(*j));
+				*j = _STD::move(*k);
+				for (--j; k != first && comp(tmp, *--k); --j)
+					*j = _STD::move(*k);
+				*j = _STD::move(tmp);
+			}
+		}
+	}
+}
+
+template<class BidirectionalIterator>
+inline
+void
+__insertion_sort(BidirectionalIterator first, BidirectionalIterator last)
+{
+	typedef typename iterator_traits<BidirectionalIterator>::value_type value_type;
+	_STD::__insertion_sort(first, last, detail::less<value_type>());
+}
+
+template<class Compare, class BidirectionalIterator1, class BidirectionalIterator2>
+BidirectionalIterator2
+__insertion_sort_move(BidirectionalIterator1 first, BidirectionalIterator1 last,
+                      BidirectionalIterator2 result, Compare comp)
+{
+	if (first != last)
+	{
+		BidirectionalIterator2 first2 = result;
+		*result = _STD::move(*first);
+		for (++first, ++result; first != last; ++first, ++result)
+		{
+			BidirectionalIterator2 j = result;
+			for (BidirectionalIterator2 k = result; k != first2 && comp(*first, *--k); --j)
+				*j = _STD::move(*k);
+			*j = _STD::move(*first);
+		}
+	}
+	return result;
+}
+
+template<class BidirectionalIterator1, class BidirectionalIterator2>
+inline
+BidirectionalIterator2
+__insertion_sort_move(BidirectionalIterator1 first, BidirectionalIterator1 last,
+                      BidirectionalIterator2 result)
+{
+	typedef typename iterator_traits<BidirectionalIterator1>::value_type value_type1;
+	typedef typename iterator_traits<BidirectionalIterator2>::value_type value_type2;
+	return _STD::__insertion_sort_move(first, last, result, detail::less<value_type1, value_type2>());
+}
+
+// hh 990817
+const int __sort_switch = 20;
+
+// hh 990817
+template<class RandomAccessIterator, class Compare>
+void
+sort(RandomAccessIterator first, RandomAccessIterator last, Compare comp)
+{
+	typedef typename iterator_traits<RandomAccessIterator>::difference_type Difference;
+	typedef typename Metrowerks::add_reference<Compare>::type CompRef;
+	while (true)
+	{
+		Difference len = last - first;
+		if (len <= 1)
+			break;
+		if (len <= __sort_switch)
+		{
+			__selection_sort<CompRef>(first, last, comp);
+			break;
+		}
+		// find median of *(last-1) and two pseudo-randomly picked elements
+		static const int shuffle_range = __sort_switch / 4;
+		static int shuffle = -shuffle_range + 1;
+		RandomAccessIterator m = first + (len / 4 + shuffle % shuffle_range);
+		if (++shuffle >= shuffle_range)
+			shuffle = -shuffle_range + 1;
+		RandomAccessIterator i1 = first + (3*len / 4 + shuffle % shuffle_range);
+		if (++shuffle >= shuffle_range)
+			shuffle = -shuffle_range + 1;
+		RandomAccessIterator j = last - 1;
+		// partition about median, hold median at end
+		__sort132<CompRef>(m, i1, j, comp);
+		// less than *j goes in first partition, greater than or equal to *j goes in second
+		// *j guards upward moving m
+		m = first;
+		i1 = j;
+		while (comp(*m, *j))
+			++m;
+		// must manually guard downward moving i1 from crossing m
+		while (m != --i1 && !comp(*i1, *j))
+			{}
+		if (m < i1)
+		{
+			// m and i1 did not cross
+			// swap and continue with unguarded loops
+			swap(*m, *i1);
+			++m;
+			while (true)
+			{
+				while (comp(*m, *j))
+					++m;
+				while (!comp(*--i1, *j))
+					{}
+				if (m >= i1)
+					break;
+				swap(*m, *i1);
+				++m;
+			}
+		}
+		// m points to first element of 2nd partition
+		if (m == first)
+		{
+			// At least two elements in the range are equivalent, maybe more
+			// Put partition element at start of range,
+			swap(*m, *j);
+			// [first, last) is now known to be greater than or equal to *first (*first is now in correct position)
+			// Partition into equivalent to *first and greater than *first
+			++m;
+			i1 = last;
+			// *--i1 is known to be >= *first
+			if (!comp(*first, *--i1))  // if *--i1 is not > *first (then it is equal)
+			{
+				// find first element (*m) that is greater than partition using guarded loop
+				while(m != last && !comp(*first, *m))
+					++m;
+				if (m < i1)
+					swap(*m, *i1);
+			}
+			if (m < i1)
+			{
+				// *i1 (same as *(last-1)) is now known to be greater than partition element
+				// so rest of partition can take place with unguarded loops
+				while (true)
+				{
+					while (!comp(*first, *m))
+						++m;
+					while (comp(*first, *--i1))
+						{}
+					if (m >= i1)
+						break;
+					swap(*m, *i1);
+					++m;
+				}
+			}
+			// [first, m) are equivalent to *first, and thus now sorted
+			// [m, last) are greater than *first
+			// sort [m, last) using tail recursion elimination
+			// std::sort(m, last, comp);
+			first = m;
+		}
+		else
+		{
+			// [first, m) are less than *(last-1)
+			// [m, last) are greater than or equal to *(last-1)
+			// Sort smaller range with recursive call, and larger range with tail recursion elimination
+			if (m - first < last - m)
+			{
+				_STD::sort<RandomAccessIterator, CompRef>(first, m, comp);
+				// std::sort(m, last, comp);
+				first = m;
+			}
+			else
+			{
+				_STD::sort<RandomAccessIterator, CompRef>(m, last, comp);
+				// std::sort(first, m, comp);
+				last = m;
+			}
+		}
+	}
+}
+
+template<class RandomAccessIterator>
+inline
+void
+sort(RandomAccessIterator first, RandomAccessIterator last)
+{
+	typedef typename iterator_traits<RandomAccessIterator>::value_type value_type;
+	detail::less<value_type> l;
+	sort<RandomAccessIterator, detail::less<value_type>&>(first, last, l);
+}
+
+// stable_sort
+
+template <class Compare, class RandomAccessIterator1, class RandomAccessIterator2>
+void
+__stable_sort(RandomAccessIterator1 first, RandomAccessIterator1 last,
+              RandomAccessIterator2 buf_beg, RandomAccessIterator2 buf_end, Compare comp);
+
+template <class Compare, class RandomAccessIterator1, class RandomAccessIterator2>
+void
+__stable_sort_move(RandomAccessIterator1 first1, RandomAccessIterator1 last1,
+                   RandomAccessIterator2 first2, Compare comp)
+{
+	typedef typename iterator_traits<RandomAccessIterator1>::difference_type Difference;
+	typedef typename Metrowerks::add_reference<Compare>::type CompRef;
+	Difference len = last1 - first1;
+	if (len <= 0)
+		return;
+	if (len == 1)
+	{
+		*first2 = _STD::move(*first1);
+		return;
+	}
+	if (len == 2)
+	{
+		if (comp(*(last1-1), *first1))
+			_STD::__reverse_move(first1, last1, first2);
+		else
+			_STD::move(first1, last1, first2);
+		return;
+	}
+	if (len <= __sort_switch)
+	{
+		__insertion_sort_move<CompRef>(first1, last1, first2, comp);
+		return;
+	}
+	Difference len2 = len - len / 2;
+	RandomAccessIterator1 middle = first1 + len2;
+	__stable_sort<CompRef>(first1, middle, first2, first2+len2, comp);
+	__stable_sort<CompRef>(middle, last1, first2+len2, first2+len, comp);
+	__merge_move<CompRef>(first1, first1+len2, first1+len2, first1+len, first2, comp);
+}
+
+template <class Compare, class RandomAccessIterator1, class RandomAccessIterator2>
+void
+__stable_sort(RandomAccessIterator1 first, RandomAccessIterator1 last,
+              RandomAccessIterator2 buf_beg, RandomAccessIterator2 buf_end, Compare comp)
+{
+	typedef typename iterator_traits<RandomAccessIterator1>::difference_type Difference;
+	typedef typename Metrowerks::add_reference<Compare>::type CompRef;
+	Difference len = last - first;
+	if (len <= 1)
+		return;
+	if (len == 2)
+	{
+		--last;
+		if (comp(*last, *first))
+			swap(*first, *last);
+		return;
+	}
+	if (len <= __sort_switch)
+	{
+		__insertion_sort<CompRef>(first, last, comp);
+		return;
+	}
+	Difference len2 = len - len / 2;
+	RandomAccessIterator1 middle = first + len2;
+	if (len <= buf_end - buf_beg)
+	{
+		__stable_sort_move<CompRef>(first, middle, buf_beg, comp);
+		__stable_sort_move<CompRef>(middle, last, buf_beg+len2, comp);
+		__merge_move<CompRef>(buf_beg, buf_beg+len2, buf_beg+len2, buf_beg+len, first, comp);
+		return;
+	}
+	__stable_sort<CompRef>(first, middle, buf_beg, buf_end, comp);
+	__stable_sort<CompRef>(middle, last, buf_beg, buf_end, comp);
+	__inplace_merge<CompRef>(first, middle, last, comp, middle - first, last - middle, buf_beg, buf_end);
+}
+
+template <class RandomAccessIterator, class Compare>
+void
+stable_sort(RandomAccessIterator first, RandomAccessIterator last, Compare comp)
+{
+	typedef typename iterator_traits<RandomAccessIterator>::difference_type difference_type;
+	typedef typename Metrowerks::add_reference<Compare>::type CompRef;
+	typedef typename iterator_traits<RandomAccessIterator>::value_type value_type;
+	difference_type len = last - first;
+	_TempVec<value_type> buf(len <= __sort_switch ? 0 : len);
+	__stable_sort<CompRef>(first, last, buf.begin(), buf.end(), comp);
+}
+
+template <class RandomAccessIterator>
+inline
+void
+stable_sort(RandomAccessIterator first, RandomAccessIterator last)
+{
+	typedef typename iterator_traits<RandomAccessIterator>::value_type value_type;
+	_STD::stable_sort(first, last, detail::less<value_type>());
+}
+
+// partial_sort
+
+template <class RandomAccessIterator, class Compare>
+void
+partial_sort(RandomAccessIterator first, RandomAccessIterator middle,
+             RandomAccessIterator last, Compare comp)
+{
+	typedef typename iterator_traits<RandomAccessIterator>::value_type value_type;
+	typedef typename iterator_traits<RandomAccessIterator>::difference_type difference_type;
+	typedef typename Metrowerks::add_reference<Compare>::type CompRef;
+	difference_type midlen = middle - first;
+	switch (midlen)
+	{
+	case 0:
+		return;
+	case 1:
+		{
+		RandomAccessIterator i = _STD::min_element<RandomAccessIterator, CompRef>(first, last, comp);
+		if (first != i)
+			swap(*first, *i);
+		return;
+		}
+	}
+	_STD::make_heap<RandomAccessIterator, CompRef>(first, middle, comp);
+	for (RandomAccessIterator i = middle; i != last; ++i)
+	{
+		if (comp(*i, *first))
+		{
+			value_type tmp(_STD::move(*i));
+			*i = _STD::move(*first);
+			__insert_heap_down<CompRef>(first, midlen, difference_type(0), _STD::move(tmp), comp);
+		}
+	}
+	_STD::sort_heap<RandomAccessIterator, CompRef>(first, middle, comp);
+}
+
+template <class RandomAccessIterator>
+inline
+void
+partial_sort(RandomAccessIterator first, RandomAccessIterator middle,
+             RandomAccessIterator last)
+{
+	typedef typename iterator_traits<RandomAccessIterator>::value_type value_type;
+	_STD::partial_sort(first, middle, last, detail::less<value_type>());
+}
+
+// partial_sort_copy
+
+template <class InputIterator, class RandomAccessIterator, class Compare>
+RandomAccessIterator
+partial_sort_copy(InputIterator first, InputIterator last,
+                  RandomAccessIterator result_first, RandomAccessIterator result_last,
+                  Compare comp)
+{
+	typedef typename iterator_traits<RandomAccessIterator>::difference_type difference_type;
+	typedef typename iterator_traits<RandomAccessIterator>::value_type value_type;
+	typedef typename Metrowerks::add_reference<Compare>::type CompRef;
+	RandomAccessIterator result = result_first;
+	for (; first != last && result != result_last; ++first, ++result)
+		*result = *first;
+	difference_type len = result - result_first;
+	if (len == 0)
+		return result;
+	_STD::make_heap<RandomAccessIterator, CompRef>(result_first, result, comp);
+	for (; first != last; ++first)
+		if (comp(*first, *result_first))
+			__insert_heap_down<CompRef>(result_first, len, difference_type(0), *first, comp);
+	_STD::sort_heap<RandomAccessIterator, CompRef>(result_first, result, comp);
+	return result;
+}
+
+template <class InputIterator, class RandomAccessIterator>
+inline
+RandomAccessIterator
+partial_sort_copy(InputIterator first, InputIterator last,
+                  RandomAccessIterator result_first, RandomAccessIterator result_last)
+{
+	typedef typename iterator_traits<InputIterator>::value_type value_type1;
+	typedef typename iterator_traits<RandomAccessIterator>::value_type value_type2;
+	return _STD::partial_sort_copy(first, last, result_first, result_last, detail::less<value_type1, value_type2>());
+}
+
+// nth_element
+
+template <class RandomAccessIterator, class Compare>
+void
+nth_element(RandomAccessIterator first, RandomAccessIterator nth, RandomAccessIterator last,
+            Compare comp)
+{
+	typedef typename iterator_traits<RandomAccessIterator>::difference_type difference_type;
+	typedef typename iterator_traits<RandomAccessIterator>::value_type value_type;
+	typedef typename Metrowerks::add_reference<Compare>::type CompRef;
+	difference_type len = last - first;
+	while (len > 3)
+	{
+		if (nth == first)
+		{
+			RandomAccessIterator i = _STD::min_element<RandomAccessIterator, CompRef>(first, last, comp);
+			if (i != first)
+				swap(*first, *i);
+			return;
+		}
+		RandomAccessIterator j = last - 1;
+		if (nth == j)
+		{
+			RandomAccessIterator i = _STD::max_element<RandomAccessIterator, CompRef>(first, last, comp);
+			if (i != j)
+				swap(*j, *i);
+			return;
+		}
+		RandomAccessIterator m = first + len / 2;
+		__sort132<CompRef>(first, m, j, comp);
+		RandomAccessIterator i = first;
+		m = j;
+		while (i < j)
+		{
+			while (comp(*i, *m))
+				++i;
+			--j;
+			while (i < j && !comp(*j, *m))
+				--j;
+			if (i >= j)
+				break;
+			swap(*i, *j);
+			++i;
+		}
+		if (nth < i)
+			last = i;
+		else
+		{
+			first = i;
+			swap(*i, *m);
+		}
+		len = last - first;
+	}
+	switch (len)
+	{
+	case 2:
+		{
+		RandomAccessIterator i = first;
+		++i;
+		if (comp(*i, *first))
+			swap(*first, *i);
+		}
+		break;
+	case 3:
+		__sort3<CompRef>(first, first+1, first+2, comp);
+		break;
+	}
+}
+
+template <class RandomAccessIterator>
+inline
+void
+nth_element(RandomAccessIterator first, RandomAccessIterator nth, RandomAccessIterator last)
+{
+	typedef typename iterator_traits<RandomAccessIterator>::value_type value_type;
+	_STD::nth_element(first, nth, last, detail::less<value_type>());
+}
+
+//  lib.alg.set.operations, set operations:
+
+template <class InputIterator1, class InputIterator2, class Compare>
+inline
+bool
+includes(InputIterator1 first1, InputIterator1 last1,
+         InputIterator2 first2, InputIterator2 last2, Compare comp)
+{
+	for (; first1 != last1 && first2 != last2; ++first1)
+	{
+		if (comp(*first2, *first1))
+			return false;
+		else if (!comp(*first1, *first2))  // else if (*first1 == *first2)
+			++first2;
+	}
+	return static_cast<bool>(first2 == last2);
+}
+
+template <class InputIterator1, class InputIterator2>
+inline
+bool
+includes(InputIterator1 first1, InputIterator1 last1,
+         InputIterator2 first2, InputIterator2 last2)
+{
+	typedef typename iterator_traits<InputIterator1>::value_type value_type1;
+	typedef typename iterator_traits<InputIterator2>::value_type value_type2;
+	return _STD::includes(first1, last1, first2, last2, detail::less<value_type1, value_type2>());
+}
+
+template <class InputIterator1, class InputIterator2, class OutputIterator, class Compare>
+OutputIterator
+set_union(InputIterator1 first1, InputIterator1 last1,
+          InputIterator2 first2, InputIterator2 last2, OutputIterator result, Compare comp)
+{
+	for (; first1 != last1 && first2 != last2; ++result)
+	{
+		if (comp(*first2, *first1))
+		{
+			*result = *first2;
+			++first2;
+		}
+		else if (comp(*first1, *first2))
+		{
+			*result = *first1;
+			++first1;
+		}
+		else
+		{
+			*result = *first1;
+			++first1;
+			++first2;
+		}
+	}
+	if (first2 == last2)
+		return _STD::copy(first1, last1, result);
+	return _STD::copy(first2, last2, result);
+}
+
+template <class InputIterator1, class InputIterator2, class OutputIterator>
+inline
+OutputIterator
+set_union(InputIterator1 first1, InputIterator1 last1,
+          InputIterator2 first2, InputIterator2 last2, OutputIterator result)
+{
+	typedef typename iterator_traits<InputIterator1>::value_type value_type1;
+	typedef typename iterator_traits<InputIterator2>::value_type value_type2;
+	return _STD::set_union(first1, last1, first2, last2, result, detail::less<value_type1, value_type2>());
+}
+
+template <class InputIterator1, class InputIterator2, class OutputIterator, class Compare>
+OutputIterator
+set_intersection(InputIterator1 first1, InputIterator1 last1,
+                 InputIterator2 first2, InputIterator2 last2, OutputIterator result,
+                 Compare comp)
+{
+	while (first1 != last1 && first2 != last2)
+	{
+		if (comp(*first2, *first1))
+			++first2;
+		else if (comp(*first1, *first2))
+			++first1;
+		else
+		{
+			*result = *first1;
+			++result;
+			++first1;
+			++first2;
+		}
+	}
+	return result;
+}
+
+template <class InputIterator1, class InputIterator2, class OutputIterator>
+inline
+OutputIterator
+set_intersection(InputIterator1 first1, InputIterator1 last1,
+                 InputIterator2 first2, InputIterator2 last2, OutputIterator result)
+{
+	typedef typename iterator_traits<InputIterator1>::value_type value_type1;
+	typedef typename iterator_traits<InputIterator2>::value_type value_type2;
+	return _STD::set_intersection(first1, last1, first2, last2, result, detail::less<value_type1, value_type2>());
+}
+
+template <class InputIterator1, class InputIterator2, class OutputIterator, class Compare>
+OutputIterator
+set_difference(InputIterator1 first1, InputIterator1 last1,
+               InputIterator2 first2, InputIterator2 last2, OutputIterator result,
+               Compare comp)
+{
+	while (first1 != last1 && first2 != last2)
+	{
+		if (comp(*first1, *first2))
+		{
+			*result = *first1;
+			++result;
+			++first1;
+		}
+		else if (comp(*first2, *first1))
+			++first2;
+		else
+		{
+			++first1;
+			++first2;
+		}
+	}
+	return _STD::copy(first1, last1, result);
+}
+
+template <class InputIterator1, class InputIterator2, class OutputIterator>
+inline
+OutputIterator
+set_difference(InputIterator1 first1, InputIterator1 last1,
+               InputIterator2 first2, InputIterator2 last2, OutputIterator result)
+{
+	typedef typename iterator_traits<InputIterator1>::value_type value_type1;
+	typedef typename iterator_traits<InputIterator2>::value_type value_type2;
+	return _STD::set_difference(first1, last1, first2, last2, result, detail::less<value_type1, value_type2>());
+}
+
+template <class InputIterator1, class InputIterator2, class OutputIterator, class Compare>
+OutputIterator
+set_symmetric_difference(InputIterator1 first1, InputIterator1 last1,
+                         InputIterator2 first2, InputIterator2 last2,
+                         OutputIterator result, Compare comp)
+{
+	while (first1 != last1 && first2 != last2)
+	{
+		if (comp(*first1, *first2))
+		{
+			*result = *first1;
+			++result;
+			++first1;
+		}
+		else if (comp(*first2, *first1))
+		{
+			*result = *first2;
+			++result;
+			++first2;
+		}
+		else
+		{
+			++first1;
+			++first2;
+		}
+	}
+	if (first2 == last2)
+		return _STD::copy(first1, last1, result);
+	return _STD::copy(first2, last2, result);
+}
+
+template <class InputIterator1, class InputIterator2, class OutputIterator>
+inline
+OutputIterator
+set_symmetric_difference(InputIterator1 first1, InputIterator1 last1,
+                         InputIterator2 first2, InputIterator2 last2, OutputIterator result)
+{
+	typedef typename iterator_traits<InputIterator1>::value_type value_type1;
+	typedef typename iterator_traits<InputIterator2>::value_type value_type2;
+	return _STD::set_symmetric_difference(first1, last1, first2, last2, result, detail::less<value_type1, value_type2>());
+}
+
+//  lib.alg.permutation.generators, permutations
+
+template <class BidirectionalIterator, class Compare>
+bool
+next_permutation(BidirectionalIterator first, BidirectionalIterator last, Compare comp)
+{
+	BidirectionalIterator i = last;
+	if (first == last || first == --i)
+		return false;
+	while (true)
+	{
+		BidirectionalIterator ip1 = i;
+		--i;
+		if (comp(*i, *ip1))
+		{
+			BidirectionalIterator j = last;
+			--j;
+			while (!comp(*i, *j))
+				--j;
+			swap(*i, *j);
+			_STD::reverse(ip1, last);
+			return true;
+		}
+		if (i == first)
+		{
+			_STD::reverse(first, last);
+			return false;
+		}
+	}
+}
+
+template <class BidirectionalIterator>
+inline
+bool
+next_permutation(BidirectionalIterator first, BidirectionalIterator last)
+{
+	typedef typename iterator_traits<BidirectionalIterator>::value_type value_type;
+	return _STD::next_permutation(first, last, detail::less<value_type>());
+}
+
+template <class BidirectionalIterator, class Compare>
+bool
+prev_permutation(BidirectionalIterator first, BidirectionalIterator last, Compare comp)
+{
+	BidirectionalIterator i = last;
+	if (first == last || first == --i)
+		return false;
+	while (true)
+	{
+		BidirectionalIterator ip1 = i;
+		--i;
+		if (comp(*ip1, *i))
+		{
+			BidirectionalIterator j = last;
+			--j;
+			while (!comp(*j, *i))
+				--j;
+			swap(*i, *j);
+			_STD::reverse(ip1, last);
+			return true;
+		}
+		if (i == first)
+		{
+			_STD::reverse(first, last);
+			return false;
+		}
+	}
+}
+
+template <class BidirectionalIterator>
+inline
+bool
+prev_permutation(BidirectionalIterator first, BidirectionalIterator last)
+{
+	typedef typename iterator_traits<BidirectionalIterator>::value_type value_type;
+	return _STD::prev_permutation(first, last, detail::less<value_type>());
+}
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	} // namespace std
+#endif
+
+#include <cstdint>
+
+#ifdef _MSL_USING_MSL_C
+	#include <math_api.h>
+#else
+
+#ifndef __has_intrinsic
+#define __has_intrinsic(x) 0
+#endif
+
+inline
+unsigned
+__msl_count_bits32(_CSTD::uint32_t x)
+{
+#if __has_intrinsic(__builtin___count_bits32)
+	return __builtin___count_bits32(x);
+#else
+	x -= (x >> 1) & 0x55555555;
+	x = (x & 0x33333333) + ((x >> 2) & 0x33333333);
+	x = (x + (x >> 4)) & 0x0F0F0F0F;
+	x += x >> 8;
+	x += x >> 16;
+	return (unsigned)x & 0xFF;
+#endif  // __has_intrinsic(__builtin___count_bits32)
+}
+
+inline
+unsigned
+__msl_count_leading_zero32(_CSTD::uint32_t x)
+{
+#if __has_intrinsic(__builtin___count_leading_zero32)
+	return __builtin___count_leading_zero32(x);
+#else
+	x |= (x >> 1);
+	x |= (x >> 2);
+	x |= (x >> 4);
+	x |= (x >> 8);
+	x |= (x >> 16);
+	return 32U - __msl_count_bits32(x);
+#endif  // __has_intrinsic(__builtin___count_leading_zero32)
+}
+
+inline
+unsigned
+__msl_count_trailing_zero32(_CSTD::uint32_t x)
+{
+#if __has_intrinsic(__builtin___count_trailing_zero32)
+	return __builtin___count_trailing_zero32(x);
+#else
+	return __msl_count_bits32((x & -x) - 1);
+#endif
+}
+
+inline
+unsigned
+__msl_count_leading_one32(_CSTD::uint32_t x)
+{
+#if __has_intrinsic(__builtin___count_leading_one32)
+	return __builtin___count_leading_one32(x);
+#else
+	return __msl_count_leading_zero32(~x);
+#endif
+}
+
+inline
+unsigned
+__msl_count_trailing_one32(_CSTD::uint32_t x)
+{
+#if __has_intrinsic(__builtin___count_trailing_one32)
+	return __builtin___count_trailing_one32(x);
+#else
+	return __msl_count_trailing_zero32(~x);
+#endif
+}
+
+inline
+_CSTD::uint32_t
+__msl_rotate_left32(_CSTD::uint32_t x, int n)
+{
+#if __has_intrinsic(__builtin___rotate_left32)
+	return __builtin___rotate_left32(x, n);
+#else
+	n &= 0x1F;
+	return (x << n) | (x >> (32-n));
+#endif  // __has_intrinsic(__builtin___rotate_left32)
+}
+
+inline
+_CSTD::uint32_t
+__msl_rotate_right32(_CSTD::uint32_t x, int n)
+{
+#if __has_intrinsic(__builtin___rotate_right32)
+	return __builtin___rotate_right32(x, n);
+#else
+	n &= 0x1F;
+	return (x << (32-n)) | (x >> n);
+#endif  // __has_intrinsic(__builtin___rotate_right32)
+}
+
+#if _MSL_LONGLONG
+
+inline
+unsigned
+__msl_count_bits64(_CSTD::uint64_t x)
+{
+#if __has_intrinsic(__builtin___count_bits64)
+	return __builtin___count_bits64(x);
+#else
+	x -= (x >> 1) & 0x5555555555555555;
+	x = (x & 0x3333333333333333) + ((x >> 2) & 0x3333333333333333);
+	x = (x + (x >> 4)) & 0x0F0F0F0F0F0F0F0F;
+	x += x >> 8;
+	x += x >> 16;
+	x += x >> 32;
+	return (unsigned)x & 0xFF;
+#endif  // __has_intrinsic(__builtin___count_bits64)
+}
+
+inline
+unsigned
+__msl_count_leading_zero64(_CSTD::uint64_t x)
+{
+#if __has_intrinsic(__builtin___count_leading_zero64)
+	return __builtin___count_leading_zero64(x);
+#else
+	x |= (x >> 1);
+	x |= (x >> 2);
+	x |= (x >> 4);
+	x |= (x >> 8);
+	x |= (x >> 16);
+	x |= (x >> 32);
+	return 64U - __msl_count_bits64(x);
+#endif  // __has_intrinsic(__builtin___count_leading_zero64)
+}
+
+inline
+unsigned
+__msl_count_trailing_zero64(_CSTD::uint64_t x)
+{
+#if __has_intrinsic(__builtin___count_trailing_zero64)
+	return __builtin___count_trailing_zero64(x);
+#else
+	return __msl_count_bits64((x & -x) - 1);
+#endif
+}
+
+inline
+unsigned
+__msl_count_leading_one64(_CSTD::uint64_t x)
+{
+#if __has_intrinsic(__builtin___count_leading_one64)
+	return __builtin___count_leading_one64(x);
+#else
+	return __msl_count_leading_zero64(~x);
+#endif
+}
+
+inline
+unsigned
+__msl_count_trailing_one64(_CSTD::uint64_t x)
+{
+#if __has_intrinsic(__builtin___count_trailing_one64)
+	return __builtin___count_trailing_one64(x);
+#else
+	return __msl_count_trailing_zero64(~x);
+#endif
+}
+
+inline
+_CSTD::uint64_t
+__msl_rotate_left64(_CSTD::uint64_t x, int n)
+{
+#if __has_intrinsic(__builtin___rotate_left64)
+	return __builtin___rotate_left64(x, n);
+#else
+	n &= 0x3F;
+	return (x << n) | (x >> (64-n));
+#endif  // __has_intrinsic(__builtin___rotate_left64)
+}
+
+inline
+_CSTD::uint64_t
+__msl_rotate_right64(_CSTD::uint64_t x, int n)
+{
+#if __has_intrinsic(__builtin___rotate_right64)
+	return __builtin___rotate_right64(x, n);
+#else
+	n &= 0x3F;
+	return (x << (64-n)) | (x >> n);
+#endif  // __has_intrinsic(__builtin___rotate_right64)
+}
+
+#endif  // _MSL_LONGLONG
+
+#endif  // _MSL_USING_MSL_C
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	namespace Metrowerks {
+#else
+	#ifndef Metrowerks
+		#define Metrowerks
+	#endif
+#endif  // _MSL_NO_CPP_NAMESPACE
+
+// Metrowerks extensions
+
+namespace details
+{
+
+enum type_size {smaller_32, equal_32, greater_32, equal_64, greater_64};
+
+template <class T>
+struct size_type
+{
+private:
+	static const unsigned nbits = sizeof(T)*_STD::__char<>::bits;
+public:
+	static const type_size value = nbits < 32 ? smaller_32 :
+		(
+			nbits == 32 ? equal_32 :
+			(
+				nbits < 64 ? greater_32 :
+				(
+					nbits == 64 ? equal_64 : greater_64
+				)
+			)
+		);
+};
+
+// count_bits
+
+template <class T, type_size = size_type<T>::value> struct __count_bits;
+
+template <class T>
+struct __count_bits<T, smaller_32>
+{
+	unsigned operator()(T x) const
+	{
+		return __msl_count_bits32((_CSTD::uint32_t)(typename to_unsigned<T>::type)x);
+	}
+};
+
+template <class T>
+struct __count_bits<T, equal_32>
+{
+	unsigned operator()(T x) const
+	{
+		return __msl_count_bits32((_CSTD::uint32_t)x);
+	}
+};
+
+template <class T>
+struct __count_bits<T, greater_32>
+{
+	unsigned operator()(T x) const
+	{
+		return __msl_count_bits64((_CSTD::uint64_t)(typename to_unsigned<T>::type)x);
+	}
+};
+
+template <class T>
+struct __count_bits<T, equal_64>
+{
+	unsigned operator()(T x) const
+	{
+		return __msl_count_bits64((_CSTD::uint64_t)x);
+	}
+};
+
+}  // details
+
+template <class T>
+inline
+typename restrict_to
+<
+	is_integral<T>::value,
+	unsigned
+>::type
+count_bits(T x)
+{
+	return details::__count_bits<T>()(x);
+}
+
+// count_leading_zero
+
+namespace details
+{
+
+template <class T, type_size = size_type<T>::value> struct __count_leading_zero;
+
+template <class T>
+struct __count_leading_zero<T, smaller_32>
+{
+	template <class T>
+	unsigned operator()(T x) const
+	{
+		return __msl_count_leading_zero32((_CSTD::uint32_t)(typename to_unsigned<T>::type)x) -
+		       (32-sizeof(T)*_STD::__char<>::bits);
+	}
+};
+
+template <class T>
+struct __count_leading_zero<T, equal_32>
+{
+	template <class T>
+	unsigned operator()(T x) const
+	{
+		return __msl_count_leading_zero32((_CSTD::uint32_t)x);
+	}
+};
+
+template <class T>
+struct __count_leading_zero<T, greater_32>
+{
+	template <class T>
+	unsigned operator()(T x) const
+	{
+		return __msl_count_leading_zero64((_CSTD::uint64_t)(typename to_unsigned<T>::type)x) -
+		       (64-sizeof(T)*_STD::__char<>::bits);
+	}
+};
+
+template <class T>
+struct __count_leading_zero<T, equal_64>
+{
+	template <class T>
+	unsigned operator()(T x) const
+	{
+		return __msl_count_leading_zero64((_CSTD::uint64_t)x);
+	}
+};
+
+}  // details
+
+template <class T>
+inline
+typename restrict_to
+<
+	is_integral<T>::value,
+	unsigned
+>::type
+count_leading_zero(T x)
+{
+	return details::__count_leading_zero<T>()(x);
+}
+
+// count_trailing_zero
+
+namespace details
+{
+
+template <class T, type_size = size_type<T>::value> struct __count_trailing_zero;
+
+template <class T>
+struct __count_trailing_zero<T, smaller_32>
+{
+	template <class T>
+	unsigned operator()(T x) const
+	{
+		if (x == T(0))
+			return static_cast<unsigned>(_STD::__char<>::bits * sizeof(T));
+		return __msl_count_trailing_zero32((_CSTD::uint32_t)(typename to_unsigned<T>::type)x);
+	}
+};
+
+template <class T>
+struct __count_trailing_zero<T, equal_32>
+{
+	template <class T>
+	unsigned operator()(T x) const
+	{
+		return __msl_count_trailing_zero32((_CSTD::uint32_t)x);
+	}
+};
+
+template <class T>
+struct __count_trailing_zero<T, greater_32>
+{
+	template <class T>
+	unsigned operator()(T x) const
+	{
+		if (x == T(0))
+			return static_cast<unsigned>(_STD::__char<>::bits * sizeof(T));
+		return __msl_count_trailing_zero64((_CSTD::uint64_t)(typename to_unsigned<T>::type)x);
+	}
+};
+
+template <class T>
+struct __count_trailing_zero<T, equal_64>
+{
+	template <class T>
+	unsigned operator()(T x) const
+	{
+		return __msl_count_trailing_zero64((_CSTD::uint64_t)x);
+	}
+};
+
+}  // details
+
+template <class T>
+inline
+typename restrict_to
+<
+	is_integral<T>::value,
+	unsigned
+>::type
+count_trailing_zero(T x)
+{
+	return details::__count_trailing_zero<T>()(x);
+}
+
+// count_leading_one
+
+namespace details
+{
+
+template <class T, type_size = size_type<T>::value, _CSTD::size_t = sizeof(T)*_STD::__char<>::bits> struct __count_leading_one;
+
+template <class T>
+struct __count_leading_one<T, smaller_32, 8>
+{
+	template <class T>
+	unsigned operator()(T x) const
+	{
+		unsigned t = __msl_count_leading_one32((_CSTD::uint32_t)(typename to_signed<T>::type)x);
+		return (t & 0x20) >> 2 | t & 0x07;
+	}
+};
+
+template <class T>
+struct __count_leading_one<T, smaller_32, 16>
+{
+	template <class T>
+	unsigned operator()(T x) const
+	{
+		unsigned t = __msl_count_leading_one32((_CSTD::uint32_t)(typename to_signed<T>::type)x);
+		return (t & 0x20) >> 1 | t & 0x0F;
+	}
+};
+
+template <class T, _CSTD::size_t N>
+struct __count_leading_one<T, smaller_32, N>
+{
+	template <class T>
+	unsigned operator()(T x) const
+	{
+		typename to_signed<T>::type t = (typename to_signed<T>::type)x;
+		return t >= 0 ? 0 : __msl_count_leading_one32((_CSTD::uint32_t)t) - (32-N);
+	}
+};
+
+template <class T>
+struct __count_leading_one<T, equal_32, 32>
+{
+	template <class T>
+	unsigned operator()(T x) const
+	{
+		return __msl_count_leading_one32((_CSTD::uint32_t)x);
+	}
+};
+
+template <class T, _CSTD::size_t N>
+struct __count_leading_one<T, greater_32, N>
+{
+	template <class T>
+	unsigned operator()(T x) const
+	{
+		typename to_signed<T>::type t = (typename to_signed<T>::type)x;
+		return t >= 0 ? 0 : __msl_count_leading_one64((_CSTD::uint64_t)t) - (64-N);
+	}
+};
+
+template <class T>
+struct __count_leading_one<T, equal_64, 64>
+{
+	template <class T>
+	unsigned operator()(T x) const
+	{
+		return __msl_count_leading_one64((_CSTD::uint64_t)x);
+	}
+};
+
+}  // details
+
+template <class T>
+inline
+typename restrict_to
+<
+	is_integral<T>::value,
+	unsigned
+>::type
+count_leading_one(T x)
+{
+	return details::__count_leading_one<T>()(x);
+}
+
+// count_trailing_one
+
+namespace details
+{
+
+template <class T, type_size = size_type<T>::value> struct __count_trailing_one;
+
+template <class T>
+struct __count_trailing_one<T, smaller_32>
+{
+	template <class T>
+	unsigned operator()(T x) const
+	{
+		return __msl_count_trailing_one32((_CSTD::uint32_t)(typename to_unsigned<T>::type)x);
+	}
+};
+
+template <class T>
+struct __count_trailing_one<T, equal_32>
+{
+	template <class T>
+	unsigned operator()(T x) const
+	{
+		return __msl_count_trailing_one32((_CSTD::uint32_t)x);
+	}
+};
+
+template <class T>
+struct __count_trailing_one<T, greater_32>
+{
+	template <class T>
+	unsigned operator()(T x) const
+	{
+		return __msl_count_trailing_one64((_CSTD::uint64_t)(typename to_unsigned<T>::type)x);
+	}
+};
+
+template <class T>
+struct __count_trailing_one<T, equal_64>
+{
+	template <class T>
+	unsigned operator()(T x) const
+	{
+		return __msl_count_trailing_one64((_CSTD::uint64_t)x);
+	}
+};
+
+}  // details
+
+template <class T>
+inline
+typename restrict_to
+<
+	is_integral<T>::value,
+	unsigned
+>::type
+count_trailing_one(T x)
+{
+	return details::__count_trailing_one<T>()(x);
+}
+
+// rotate_left
+
+namespace details
+{
+
+template <_CSTD::size_t N> struct __rotate_left;
+
+template <>
+struct __rotate_left<8>
+{
+	template <class T>
+	T operator()(T x, int n) const
+	{
+		n &= 0x7;
+		return (T)((x << n) | ((typename to_unsigned<T>::type)x >> (8-n)));
+	}
+};
+
+template <>
+struct __rotate_left<16>
+{
+	template <class T>
+	T operator()(T x, int n) const
+	{
+		n &= 0xF;
+		return (T)((x << n) | ((typename to_unsigned<T>::type)x >> (16-n)));
+	}
+};
+
+template <>
+struct __rotate_left<32>
+{
+	template <class T>
+	T operator()(T x, int n) const
+	{
+		return (T)__msl_rotate_left32((_CSTD::uint32_t)x, n);
+	}
+};
+
+template <>
+struct __rotate_left<64>
+{
+	template <class T>
+	T operator()(T x, int n) const
+	{
+		return (T)__msl_rotate_left64((_CSTD::uint64_t)x, n);
+	}
+};
+
+}  // details
+
+template <class T>
+inline
+typename restrict_to
+<
+	is_integral<T>::value,
+	T
+>::type
+rotate_left(T x, int n = 1)
+{
+	return details::__rotate_left<sizeof(T)*_STD::__char<>::bits>()(x, n);
+}
+
+// rotate_right
+
+namespace details
+{
+
+template <_CSTD::size_t N> struct __rotate_right;
+
+template <>
+struct __rotate_right<8>
+{
+	template <class T>
+	T operator()(T x, int n) const
+	{
+		n &= 0x7;
+		return (T)((x << (8-n)) | ((typename to_unsigned<T>::type)x >> n));
+	}
+};
+
+template <>
+struct __rotate_right<16>
+{
+	template <class T>
+	T operator()(T x, int n) const
+	{
+		n &= 0xF;
+		return (T)((x << (16-n)) | ((typename to_unsigned<T>::type)x >> n));
+	}
+};
+
+template <>
+struct __rotate_right<32>
+{
+	template <class T>
+	T operator()(T x, int n) const
+	{
+		return (T)__msl_rotate_right32((_CSTD::uint32_t)x, n);
+	}
+};
+
+template <>
+struct __rotate_right<64>
+{
+	template <class T>
+	T operator()(T x, int n) const
+	{
+		return (T)__msl_rotate_right64((_CSTD::uint64_t)x, n);
+	}
+};
+
+}  // details
+
+template <class T>
+inline
+typename restrict_to
+<
+	is_integral<T>::value,
+	T
+>::type
+rotate_right(T x, int n = 1)
+{
+	return details::__rotate_right<sizeof(T)*_STD::__char<>::bits>()(x, n);
+}
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	} // namespace Metrowerks
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#pragma enumsalwaysint reset
+#endif
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#pragma bool reset
+#endif
+
+#ifdef __MWERKS__
+#pragma options align=reset
+#endif
+
+#endif // RC_INVOKED
+
+#endif // _ALGORITHM
+
+// hh 971220 fixed MOD_INCLUDE
+// hh 971221  filename changed from algorithm.h
+// hh 971221  include guards given standard compliant name
+// hh 971221 added align and import pragmas
+// hh 971221 expanded namespace macro
+// hh 971221 added using namespace std::rel_ops;
+// hh 971230 added RC_INVOKED wrapper
+// hh 980520 Changed return on generate_n from OutputIterator to void
+// hh 980520 Simplified unique_copy (but kept same basic algorithm)
+// hh 980520 Rewrote reverse (used example from standard)
+// hh 980520  Did analysis of the 3 rotate algorithms (forward, bidirect, and random)
+//            The forward and rand access iterator versions have the same efficiency.
+//            The bidirectional version is more expensive.
+//            Simplifying the whole thing down to forward iterators.
+// hh 980902 #ifdef'd out exception code when ndef MSIPL_EXCEPT
+// hh 980911 unique_copy did not work for output iterators
+// hh 990106 Changed __sort3 to work with iterators instead of references to relax the
+//           requirement that *i returns a T&.
+// hh 990306 fixed bug in __partition when called with an empty range.
+// hh 990510 Rewrote.
+// hh 990817 Made several optimizations to iter_swap and sort routines to increase the
+//           efficiency of sorting heavy weight objects.  If this breaks your code
+//           because you are using proxies with your iterators, write a custom swap
+//           for your proxy.  See vector<bool> for an example.  Assistance provided by
+//           Darin Adler.
+// hh 990818 __insertion_sort was decrementing iterator beyond first.
+// hh 991102 Wrapped __insertion_sort in if (first != last) {...}
+// hh 991210 Protected min and max from macro abuse.
+// hh 000129 Recoded remove_if per Josuttis' recommendation.  Also modified the following
+//           algorithms with the same logic:  search, find_end, unique
+// hh 000207 Optimized copy and copy_backward
+// hh 000916 Modified search to return first1 if the second range is empty
+// hh 001011 Turned off copy and copy_backward optimizations for gcc
+// hh 001029 Fixed bug in __rs_default:  final call to __scaled_random_number had 0 as template
+//           parameter, changed to __lbits.  Also rewrote __random_bits and __slab_size.
+// hh 001209 Fixed bug in specialization of copy_backward
+// hh 010125 Fixed up for gcc compatibility
+// hh 010207 Reversed comparison order in search
+// hh 010314 Qualified internal calls with std::
+// hh 010314 Added swap overload to handle proxied iterators
+// hh 010323 Fixed up nth_element to take function pointer
+// hh 010402 Removed 68K CMF support
+// hh 010412 Removed return statement from reverse
+// hh 010727 Removed dependence on <climits>
+// hh 011004 search_n now returns first instead of last for 0 count
+// hh 011004 Corrected complexity in partition and stable_partition
+// hh 011017 Relaxed unique_copy to create a temp only if both the input iterator is really just
+//           an input iterator AND the output iterator is really just an output iterator
+// hh 011115 Fixed bug in search that incremented m past end
+// hh 020109 Optimized fill and fill_n
+// hh 020211 Reworked __rs_default to more gracefully handle RAND_MAX = 0x7FFFFFFF
+// hh 020504 Fixed stable_sort crasher found by maarten
+// hh 020529 Changed <limits> to <msl_int_limits>
+// hh 020618 Changed __copy to __msl_copy to avoid conflict with runtime
+// hh 020618 Removed swap overload for proxied references.  Overload swap on your proxy type.
+// hh 030527 Changed optimization settings on copy, copybackward, and changed copy to use memmove
+// hh 030711 Restricted bit helper functions which use assembly to __MWERKS__ compiler.
+// hh 030714 Qualifed calls to memmove, memset
+// hh 040331 Implemented lwg 426

@@ -1,0 +1,764 @@
+{
+  "key": 55507,
+  "messages": [
+    {
+      "id": "msg_0040_00000",
+      "en_US": [
+        "Hello, and welcome to\n",
+        "the Pokémon Center.\r",
+        "We restore your tired Pokémon\n",
+        "to full health.\r",
+        "Would you like to rest your\n",
+        "Pokémon?{YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0040_00001",
+      "en_US": [
+        "OK, I’ll take your Pokémon for a few\n",
+        "seconds."
+      ]
+    },
+    {
+      "id": "msg_0040_00002",
+      "en_US": [
+        "Thank you for waiting.\r",
+        "We’ve restored your Pokémon to full\n",
+        "health.\r"
+      ]
+    },
+    {
+      "id": "msg_0040_00003",
+      "en_US": "Please, come back again any time!"
+    },
+    {
+      "id": "msg_0040_00004",
+      "en_US": [
+        "Hello, and welcome to\n",
+        "the Pokémon Center.\r",
+        "We restore your tired Pokémon\n",
+        "to full health.\r",
+        "Would you like to...\r"
+      ]
+    },
+    {
+      "id": "msg_0040_00005",
+      "en_US": [
+        "Th-that Trainer Card!\r",
+        "That wonderful shade!\n",
+        "And all those stars!\r",
+        "I’ve seen several Trainers with\n",
+        "Violet Trainer Cards up to now...\r",
+        "But you’re the first to top them\n",
+        "with that impressive Trainer Card.\r",
+        "Please, {STRVAR_1 3, 0, 0}, may I please\n",
+        "heal your Pokémon? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0040_00006",
+      "en_US": [
+        "Great to see you, {STRVAR_1 3, 0, 0}!\n",
+        "You want the usual, right? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0040_00007",
+      "en_US": [
+        "I will be pleased to take your\n",
+        "Pokémon for a few seconds."
+      ]
+    },
+    {
+      "id": "msg_0040_00008",
+      "en_US": "Thank you for waiting."
+    },
+    {
+      "id": "msg_0040_00009",
+      "en_US": "We hope to see you again!"
+    },
+    {
+      "id": "msg_0040_00010",
+      "en_US": [
+        "Your Pokémon may be infected with\n",
+        "the Pokérus.\r",
+        "Little is known about the Pokérus\n",
+        "except that they are microscopic\f",
+        "life-forms that attach to Pokémon.\r",
+        "While infected, Pokémon are said to\n",
+        "grow exceptionally well."
+      ]
+    },
+    {
+      "id": "msg_0040_00011",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} is out of battle-ready\n",
+        "Pokémon!\r",
+        "{STRVAR_1 3, 0, 0}’s vision dimmed!"
+      ]
+    },
+    {
+      "id": "msg_0040_00012",
+      "garbage": 13
+    },
+    {
+      "id": "msg_0040_00013",
+      "en_US": "Would you like to save the game? {YESNO 0}"
+    },
+    {
+      "id": "msg_0040_00014",
+      "en_US": [
+        "There is already a saved file.\n",
+        "Is it OK to overwrite it? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0040_00015",
+      "en_US": [
+        "Saving...\n",
+        "Don’t turn off the power."
+      ]
+    },
+    {
+      "id": "msg_0040_00016",
+      "en_US": "{STRVAR_1 3, 0, 0} saved the game."
+    },
+    {
+      "id": "msg_0040_00017",
+      "garbage": 116
+    },
+    {
+      "id": "msg_0040_00018",
+      "en_US": "Save error."
+    },
+    {
+      "id": "msg_0040_00019",
+      "garbage": 35
+    },
+    {
+      "id": "msg_0040_00020",
+      "en_US": [
+        "There is already a saved game file.\n",
+        "It is impossible to save.\r",
+        "Please refer to the Instruction\n",
+        "Booklet for details.\r",
+        "Press Up + SELECT + B Button on\n",
+        "the title screen if you want to erase\f",
+        "the current saved game file."
+      ]
+    },
+    {
+      "id": "msg_0040_00021",
+      "en_US": [
+        "Saving a lot of data...\n",
+        "Don’t turn off the power."
+      ]
+    },
+    {
+      "id": "msg_0040_00022",
+      "garbage": 21
+    },
+    {
+      "id": "msg_0040_00023",
+      "garbage": 19
+    },
+    {
+      "id": "msg_0040_00024",
+      "garbage": 30
+    },
+    {
+      "id": "msg_0040_00025",
+      "en_US": "Obtained the {STRVAR_1 8, 0, 0}!"
+    },
+    {
+      "id": "msg_0040_00026",
+      "garbage": 25
+    },
+    {
+      "id": "msg_0040_00027",
+      "en_US": [
+        "Too bad!\n",
+        "The Bag is full..."
+      ]
+    },
+    {
+      "id": "msg_0040_00028",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} obtained\n",
+        "the {COLOR 2}{STRVAR_1 8, 1, 0}{COLOR 0}!"
+      ]
+    },
+    {
+      "id": "msg_0040_00029",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} obtained\n",
+        "the {COLOR 1}{STRVAR_1 8, 1, 0}{COLOR 0}!"
+      ]
+    },
+    {
+      "id": "msg_0040_00030",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} put the {STRVAR_1 8, 1, 0}\n",
+        "in the {COLOR 2}{STRVAR_1 31, 2, 0}{COLOR 0} Pocket."
+      ]
+    },
+    {
+      "id": "msg_0040_00031",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} put the {STRVAR_1 8, 1, 0}\n",
+        "in the {COLOR 2}{STRVAR_1 31, 2, 0}{COLOR 0} Pocket."
+      ]
+    },
+    {
+      "id": "msg_0040_00032",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} put away the\n",
+        "{STRVAR_1 31, 1, 0} in the Fashion Case."
+      ]
+    },
+    {
+      "id": "msg_0040_00033",
+      "en_US": "{STRVAR_1 3, 0, 0} booted up the PC.\r"
+    },
+    {
+      "id": "msg_0040_00034",
+      "en_US": "Which PC should be accessed? {YESNO 0}"
+    },
+    {
+      "id": "msg_0040_00035",
+      "en_US": [
+        "The Pokémon Storage System\n",
+        "was accessed.\r"
+      ]
+    },
+    {
+      "id": "msg_0040_00036",
+      "en_US": "Accessed {STRVAR_1 3, 0, 0}’s PC.\r"
+    },
+    {
+      "id": "msg_0040_00037",
+      "en_US": [
+        "Oak’s words echoed...\n",
+        "{STRVAR_1 3, 0, 0}! There’s a time and\f",
+        "place for everything! But not now."
+      ]
+    },
+    {
+      "id": "msg_0040_00038",
+      "en_US": [
+        "Welcome!\n",
+        "What do you need?"
+      ]
+    },
+    {
+      "id": "msg_0040_00039",
+      "garbage": 21
+    },
+    {
+      "id": "msg_0040_00040",
+      "en_US": [
+        "There! All happy and healthy!\n",
+        "Good luck and take care!"
+      ]
+    },
+    {
+      "id": "msg_0040_00041",
+      "en_US": [
+        "Mom: {STRVAR_1 3, 0, 0}!\n",
+        "Welcome home.\r",
+        "It sounds like you had quite the\n",
+        "experience out there.\r",
+        "Maybe you should take a quick\n",
+        "rest so you can relax.\r",
+        "...\n",
+        "..."
+      ]
+    },
+    {
+      "id": "msg_0040_00042",
+      "en_US": [
+        "Mom: Oh, good! You and your\n",
+        "Pokémon are looking great.\r",
+        "Oh, yes, I heard from Professor Elm.\r",
+        "He said that a Pokémon’s energy is\n",
+        "measured in HP (Hit Points).\r",
+        "If your Pokémon lose their HP,\n",
+        "you can restore it at any\f",
+        "Pokémon Center.\r",
+        "If you’re going to travel far away,\n",
+        "the smart Trainer stocks up on\f",
+        "Potions at the Pokémon Mart.\r",
+        "Make me proud, honey!\n",
+        "Take care!"
+      ]
+    },
+    {
+      "id": "msg_0040_00043",
+      "en_US": [
+        "Mom: Oh, good! You and your\n",
+        "Pokémon are looking great.\r",
+        "Oh yes, {STRVAR_1 3, 0, 0}, your Pokémon\n",
+        "will faint if it runs out of HP.\r",
+        "If your Pokémon loses its HP, come\n",
+        "home before it faints.\r",
+        "It will be healed to full health by\n",
+        "taking a rest.\r",
+        "Well, honey, make me proud!\n",
+        "Take care!"
+      ]
+    },
+    {
+      "id": "msg_0040_00044",
+      "en_US": [
+        "First, let’s restore your Pokémon\n",
+        "to full health."
+      ]
+    },
+    {
+      "id": "msg_0040_00045",
+      "en_US": [
+        "Your Pokémon have been healed\n",
+        "to perfect health."
+      ]
+    },
+    {
+      "id": "msg_0040_00046",
+      "en_US": [
+        "Please visit a Pokémon Center when\n",
+        "your Pokémon’s HP goes down.\r",
+        "If you’re planning to travel any\n",
+        "distance, you should stock up on\f",
+        "Potions at a Pokémon Mart.\r",
+        "Good luck, Trainer!"
+      ]
+    },
+    {
+      "id": "msg_0040_00047",
+      "en_US": "There’s no Mail in the Mailbox.\r"
+    },
+    {
+      "id": "msg_0040_00048",
+      "garbage": 20
+    },
+    {
+      "id": "msg_0040_00049",
+      "en_US": "Not even a nibble..."
+    },
+    {
+      "id": "msg_0040_00050",
+      "en_US": "The Pokémon got away..."
+    },
+    {
+      "id": "msg_0040_00051",
+      "en_US": "Reeled it in too quickly..."
+    },
+    {
+      "id": "msg_0040_00052",
+      "en_US": "Landed a Pokémon!"
+    },
+    {
+      "id": "msg_0040_00053",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} survived the poisoning.\n",
+        "The poison faded away!\r"
+      ]
+    },
+    {
+      "id": "msg_0040_00054",
+      "garbage": 28
+    },
+    {
+      "id": "msg_0040_00055",
+      "en_US": "♂"
+    },
+    {
+      "id": "msg_0040_00056",
+      "en_US": "♀"
+    },
+    {
+      "id": "msg_0040_00057",
+      "en_US": "There appears to be nothing here..."
+    },
+    {
+      "id": "msg_0040_00058",
+      "en_US": [
+        "The sweet scent faded for some\n",
+        "reason..."
+      ]
+    },
+    {
+      "id": "msg_0040_00059",
+      "en_US": "Ride your Bike? {YESNO 0}"
+    },
+    {
+      "id": "msg_0040_00060",
+      "en_US": "Get off your Bike? {YESNO 0}"
+    },
+    {
+      "id": "msg_0040_00061",
+      "en_US": "You can’t dismount your Bike here!"
+    },
+    {
+      "id": "msg_0040_00062",
+      "en_US": "Oh?"
+    },
+    {
+      "id": "msg_0040_00063",
+      "en_US": "{STRVAR_1 0, 0, 0} hatched from the Egg!"
+    },
+    {
+      "id": "msg_0040_00064",
+      "en_US": [
+        "Would you like to give a nickname to the\n",
+        "newly hatched {STRVAR_1 0, 0, 0}?"
+      ]
+    },
+    {
+      "id": "msg_0040_00065",
+      "en_US": "Repel’s effect wore off..."
+    },
+    {
+      "id": "msg_0040_00066",
+      "garbage": 13
+    },
+    {
+      "id": "msg_0040_00067",
+      "garbage": 19
+    },
+    {
+      "id": "msg_0040_00068",
+      "en_US": [
+        "I’m very sorry.\r",
+        "We are working underground right now.\n",
+        "It’s off-limits to the public.\r",
+        "Please try later on."
+      ]
+    },
+    {
+      "id": "msg_0040_00069",
+      "garbage": 94
+    },
+    {
+      "id": "msg_0040_00070",
+      "garbage": 90
+    },
+    {
+      "id": "msg_0040_00071",
+      "en_US": [
+        "There is text engraved in the back\n",
+        "of the obtained Plate...\r",
+        "“When the universe was created,\n",
+        "its shards became this Plate.”\r"
+      ]
+    },
+    {
+      "id": "msg_0040_00072",
+      "en_US": [
+        "There is text engraved in the back\n",
+        "of the obtained Plate...\r",
+        "“The power of defeated giants\n",
+        "infuses this Plate.”\r"
+      ]
+    },
+    {
+      "id": "msg_0040_00073",
+      "en_US": [
+        "There is text engraved in the back\n",
+        "of the obtained Plate...\r",
+        "“Two beings of time and space set\n",
+        "free from the Original One.”\r"
+      ]
+    },
+    {
+      "id": "msg_0040_00074",
+      "en_US": [
+        "There is text engraved in the back\n",
+        "of the obtained Plate...\r",
+        "“Three beings were born to bind\n",
+        "time and space.”\r"
+      ]
+    },
+    {
+      "id": "msg_0040_00075",
+      "en_US": [
+        "There is text engraved in the back\n",
+        "of the obtained Plate...\r",
+        "“Two make matter, and three make\n",
+        "spirit, shaping the world.”\r"
+      ]
+    },
+    {
+      "id": "msg_0040_00076",
+      "en_US": [
+        "There is text engraved in the back\n",
+        "of the obtained Plate...\r",
+        "“The Original One breathed alone\n",
+        "before the universe came.”\r"
+      ]
+    },
+    {
+      "id": "msg_0040_00077",
+      "en_US": [
+        "There is text engraved in the back\n",
+        "of the obtained Plate...\r",
+        "“The powers of Plates are shared\n",
+        "among Pokémon.”\r"
+      ]
+    },
+    {
+      "id": "msg_0040_00078",
+      "en_US": [
+        "There is text engraved in the back\n",
+        "of the obtained Plate...\r",
+        "“The rightful bearer of a Plate\n",
+        "draws from the Plate it holds.”\r"
+      ]
+    },
+    {
+      "id": "msg_0040_00079",
+      "en_US": [
+        "Ball Capsules can’t be used because\n",
+        "you don’t have any Seals.\r"
+      ]
+    },
+    {
+      "id": "msg_0040_00080",
+      "garbage": 41
+    },
+    {
+      "id": "msg_0040_00081",
+      "en_US": "Would you like to save the game?"
+    },
+    {
+      "id": "msg_0040_00082",
+      "en_US": [
+        "There is already a saved file.\n",
+        "Is it OK to overwrite it?"
+      ]
+    },
+    {
+      "id": "msg_0040_00083",
+      "en_US": [
+        "Good morning!\n",
+        "Welcome to the Pokémon Center.\r",
+        "We restore your tired Pokémon\n",
+        "to full health.\r",
+        "Would you like to rest your\n",
+        "Pokémon? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0040_00084",
+      "en_US": [
+        "Hello, and welcome to\n",
+        "the Pokémon Center.\r",
+        "We restore your tired Pokémon\n",
+        "to full health.\r",
+        "Would you like to rest your\n",
+        "Pokémon? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0040_00085",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}’s Azure Flute is making\n",
+        "a sound!\r",
+        "Would you like to blow into the\n",
+        "Azure Flute? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0040_00086",
+      "en_US": "{STRVAR_1 3, 0, 0} blew the Azure Flute.\r"
+    },
+    {
+      "id": "msg_0040_00087",
+      "en_US": "A glowing stairway appeared!"
+    },
+    {
+      "id": "msg_0040_00088",
+      "en_US": [
+        "The Azure Flute echoed hollowly...\r",
+        "It appears to be meaningless using\n",
+        "the Azure Flute here..."
+      ]
+    },
+    {
+      "id": "msg_0040_00089",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} put the {STRVAR_1 8, 1, 0}\n",
+        "in the {COLOR 2}{STRVAR_1 27, 2, 0}{COLOR 0} Pocket.\r"
+      ]
+    },
+    {
+      "id": "msg_0040_00090",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} put away the\n",
+        "{STRVAR_1 31, 1, 0} in the Fashion Case.\r"
+      ]
+    },
+    {
+      "id": "msg_0040_00091",
+      "garbage": 24
+    },
+    {
+      "id": "msg_0040_00092",
+      "garbage": 33
+    },
+    {
+      "id": "msg_0040_00093",
+      "en_US": [
+        "Your Bag is full.\r",
+        "The Griseous Orb could not be removed,\n",
+        "so you cannot enter."
+      ]
+    },
+    {
+      "id": "msg_0040_00094",
+      "en_US": [
+        "Your Hall of Fame data is corrupted.\r",
+        "It will be fixed if you enter the\n",
+        "Hall of Fame again.\r"
+      ]
+    },
+    {
+      "id": "msg_0040_00095",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} received\n",
+        "{STRVAR_1 31, 1, 0}!\r",
+        "But the Fashion Case is already full!"
+      ]
+    },
+    {
+      "id": "msg_0040_00096",
+      "garbage": 28
+    },
+    {
+      "id": "msg_0040_00097",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} found a Shiny Leaf!\r",
+        "{STRVAR_1 3, 0, 0} put the Shiny Leaf on\n",
+        "{STRVAR_1 1, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0040_00098",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} found a Shiny Leaf!\r",
+        "But {STRVAR_1 1, 1, 0} already has a\n",
+        "Shiny Leaf!"
+      ]
+    },
+    {
+      "id": "msg_0040_00099",
+      "en_US": [
+        "Oh?\n",
+        "{STRVAR_1 1, 0, 0}’s state...\r"
+      ]
+    },
+    {
+      "id": "msg_0040_00100",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} changed into its\n",
+        "Land Forme!"
+      ]
+    },
+    {
+      "id": "msg_0040_00101",
+      "en_US": [
+        "Registered the phone number in the\n",
+        "Pokégear!\r"
+      ]
+    },
+    {
+      "id": "msg_0040_00102",
+      "en_US": [
+        "{STRVAR_1 0, 0, 0} is feeling better, so you\n",
+        "decided to take {STRVAR_1 0, 0, 0} with you!\r"
+      ]
+    },
+    {
+      "id": "msg_0040_00103",
+      "en_US": [
+        "Hey!\r",
+        "Can you tell me how you feel right\n",
+        "before a match? How you feel when you\f",
+        "win or lose? What it would be\f",
+        "like to be number one? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0040_00104",
+      "en_US": [
+        "All right, tell me how you feel\n",
+        "before battle!\r"
+      ]
+    },
+    {
+      "id": "msg_0040_00105",
+      "en_US": [
+        "All right, tell me how you feel after\n",
+        "you win!\r"
+      ]
+    },
+    {
+      "id": "msg_0040_00106",
+      "en_US": [
+        "All right, tell me how you feel after\n",
+        "you lose!\r"
+      ]
+    },
+    {
+      "id": "msg_0040_00107",
+      "en_US": [
+        "All right, tell me how it would feel to be\n",
+        "number one!\r"
+      ]
+    },
+    {
+      "id": "msg_0040_00108",
+      "en_US": [
+        "Excuse me? You won’t say?\n",
+        "That’s too bad..."
+      ]
+    },
+    {
+      "id": "msg_0040_00109",
+      "en_US": [
+        "Thank you! Will you tell me about\n",
+        "anything else? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0040_00110",
+      "en_US": "Got it! Thanks!"
+    },
+    {
+      "id": "msg_0040_00111",
+      "en_US": [
+        "Got it! Thanks!\n",
+        "{STRVAR_1 28, 0, 0}, huh..."
+      ]
+    },
+    {
+      "id": "msg_0040_00112",
+      "en_US": "BEFORE BATTLE"
+    },
+    {
+      "id": "msg_0040_00113",
+      "en_US": "WHEN YOU WIN"
+    },
+    {
+      "id": "msg_0040_00114",
+      "en_US": "WHEN YOU LOSE"
+    },
+    {
+      "id": "msg_0040_00115",
+      "en_US": "WHEN YOU’RE #1"
+    },
+    {
+      "id": "msg_0040_00116",
+      "en_US": "NOT TELLING"
+    }
+  ]
+}

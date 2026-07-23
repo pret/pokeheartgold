@@ -1,0 +1,154 @@
+{
+  "key": 55063,
+  "messages": [
+    {
+      "id": "msg_0659_00000",
+      "en_US": "Pryce"
+    },
+    {
+      "id": "msg_0659_00001",
+      "en_US": [
+        "What? I can’t hear you very well.\n",
+        "I think we’ve got a bad connection.\r",
+        "Well, if you have something you want to\n",
+        "talk to me about, go somewhere else and\f",
+        "try calling again."
+      ]
+    },
+    {
+      "id": "msg_0659_00002",
+      "en_US": [
+        "Hello...\n",
+        "Oh, hi, how are you?\f",
+        "I’m doing fine, thanks.\r"
+      ]
+    },
+    {
+      "id": "msg_0659_00003",
+      "en_US": [
+        "You know, there are Gym Leaders out\n",
+        "there who are stronger than me.\f",
+        "You should try battling them.\f",
+        "I don’t think you’d lose."
+      ]
+    },
+    {
+      "id": "msg_0659_00004",
+      "en_US": [
+        "I usually get up pretty early...\n",
+        "If we’re going to battle, I’m at my best\f",
+        "in the morning... How about you give me\f",
+        "a call on Monday morning!"
+      ]
+    },
+    {
+      "id": "msg_0659_00005",
+      "en_US": [
+        "Oh, perfect timing!\n",
+        "I was starting to get bored...\f",
+        "Do you want to battle again? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0659_00006",
+      "en_US": [
+        "Honesty is good.\r",
+        "So, I’ll meet you at the Fighting Dojo in\n",
+        "Saffron City, then?"
+      ]
+    },
+    {
+      "id": "msg_0659_00007",
+      "en_US": [
+        "I see. Well, that’s how it’s got\n",
+        "to be...\r",
+        "If you ever change your mind, give me\n",
+        "a call.\r",
+        "Remember, I’m free on Monday mornings."
+      ]
+    },
+    {
+      "id": "msg_0659_00008",
+      "en_US": [
+        "Hmm. Do you really have the time to\n",
+        "battle me right now?\r",
+        "If you’ve got plans with other people,\n",
+        "you should take care of those first,\f",
+        "don’t you think?"
+      ]
+    },
+    {
+      "id": "msg_0659_00009",
+      "en_US": [
+        "All right, I will see you at the\n",
+        "Fighting Dojo in Saffron City.\f",
+        "I won’t be late. Don’t worry!"
+      ]
+    },
+    {
+      "id": "msg_0659_00010",
+      "en_US": [
+        "Yes, this is Pryce.\n",
+        "How are you doing?\r"
+      ]
+    },
+    {
+      "id": "msg_0659_00011",
+      "en_US": [
+        "We made plans to battle at the Fighting\n",
+        "Dojo in Saffron City.\f",
+        "You didn’t forget, did you?\f",
+        "I’m waiting there for you."
+      ]
+    },
+    {
+      "id": "msg_0659_00012",
+      "en_US": [
+        "Just like one of my children...\r",
+        "No.\r",
+        "You’re more like one of my\n",
+        "grandchildren...\r",
+        "There’s such an age difference between\n",
+        "myself and the Trainers who defeat me\f",
+        "nowadays...\r",
+        "But you know, the strange thing is that\n",
+        "when I lose, I don’t feel disappointed.\r",
+        "I just feel happy.\r",
+        "Just happy that such talented Trainers\n",
+        "have come to see me.\r",
+        "...I just wanted to talk to someone\n",
+        "about that, so I called you.\r",
+        "That’s all."
+      ]
+    },
+    {
+      "id": "msg_0659_00013",
+      "en_US": [
+        "Do you know why they call me the winter\n",
+        "Trainer? Do you recall that my middle\f",
+        "name is “Willow”?\r",
+        "The willow tree looks like it withers in\n",
+        "winter’s cold. But really, it sprouts\f",
+        "dozens of new buds.\r",
+        "My fighting style is also strong just\n",
+        "like that...\r",
+        "It’s written in old books, you know.\n",
+        "You should look it up sometime."
+      ]
+    },
+    {
+      "id": "msg_0659_00014",
+      "en_US": [
+        "That reminds me, you kept Team\n",
+        "Rocket’s treachery in check, right?\r",
+        "Humph...\n",
+        "That’s a praiseworthy deed and an\f",
+        "appropriate responsibility for a Trainer\f",
+        "who could defeat me.\r",
+        "I think there’s still several things I\n",
+        "could stand to learn from you.\r",
+        "I’m looking forward to it."
+      ]
+    }
+  ]
+}

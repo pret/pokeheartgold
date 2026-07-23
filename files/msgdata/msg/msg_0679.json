@@ -1,0 +1,139 @@
+{
+  "key": 17420,
+  "messages": [
+    {
+      "id": "msg_0679_00000",
+      "en_US": "Kay & Tia"
+    },
+    {
+      "id": "msg_0679_00001",
+      "en_US": [
+        "You had fun battling us, right?\r",
+        "So how about we exchange phone\n",
+        "numbers, and that way if we want to\f",
+        "battle again, we can just give each\f",
+        "other a call? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0679_00002",
+      "en_US": [
+        "All right, now you’ve got our number\n",
+        "and we have yours."
+      ]
+    },
+    {
+      "id": "msg_0679_00003",
+      "en_US": "Oh? But... Oh well."
+    },
+    {
+      "id": "msg_0679_00004",
+      "en_US": [
+        "Did you decide you wanted to trade\n",
+        "numbers after all? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0679_00005",
+      "en_US": [
+        "All right, here you go!\n",
+        "It’s an Oval Stone.\r"
+      ]
+    },
+    {
+      "id": "msg_0679_00006",
+      "en_US": [
+        "Huh?\n",
+        "Wait, aren’t you nearby?\r",
+        "Do you just really like talking on the\n",
+        "phone or something? What an odd hobby."
+      ]
+    },
+    {
+      "id": "msg_0679_00007",
+      "en_US": [
+        "Our {STRVAR_1 0, 10, 0} is much stronger now!\r",
+        "We were battling a {STRVAR_1 0, 11, 0}\n",
+        "recently and it was over before we\f",
+        "knew it!\r",
+        "Oh yeah, by the way, this is Tia."
+      ]
+    },
+    {
+      "id": "msg_0679_00008",
+      "en_US": [
+        "Our {STRVAR_1 0, 10, 0} is much stronger now!\r",
+        "We were battling a {STRVAR_1 0, 11, 0}\n",
+        "recently and it was over before we\f",
+        "knew it!\r",
+        "Oh yeah, by the way, this is Kay."
+      ]
+    },
+    {
+      "id": "msg_0679_00009",
+      "en_US": [
+        "Earlier we saw a {STRVAR_1 0, 11, 0} on\n",
+        "Route 15. Didn’t we, Tia?\r",
+        "Yeah, then suddenly a {STRVAR_1 0, 11, 0}\n",
+        "came out of nowhere. Didn’t it, Kay?\r",
+        "Yeah, and we were so surprised we just\n",
+        "ran away. Didn’t we, Tia?\r",
+        "I keep thinking about it, Kay, and\n",
+        "I think that since we have Pokémon,\f",
+        "we should have just battled, right?\r",
+        "Is it hard to tell who’s who when you’re\n",
+        "talking to both of us on the phone?"
+      ]
+    },
+    {
+      "id": "msg_0679_00010",
+      "en_US": [
+        "We should have another battle, just\n",
+        "the three of us.\r",
+        "We’re on {STRVAR_1 4, 3, 0}, so come on\n",
+        "over when you get the chance."
+      ]
+    },
+    {
+      "id": "msg_0679_00011",
+      "en_US": [
+        "Didn’t we make plans to have\n",
+        "another battle?\r",
+        "We’re waiting on {STRVAR_1 4, 3, 0}, so\n",
+        "don’t forget, OK?"
+      ]
+    },
+    {
+      "id": "msg_0679_00012",
+      "en_US": [
+        "Well, since we’re on the phone, how\n",
+        "about we give you a quiz?\r",
+        "...\r",
+        "So, who’s speaking right now? Kay or\n",
+        "Tia?\r",
+        "...\n",
+        "...\f",
+        "...\f",
+        "...\f",
+        "The correct answer is...\r",
+        "Eleanor from the Pokémon Fan club,\n",
+        "who’s standing next to the twins!"
+      ]
+    },
+    {
+      "id": "msg_0679_00013",
+      "en_US": [
+        "Hey, Tia found an Oval Stone.\r",
+        "We’ll give it to you if you come find us\n",
+        "on {STRVAR_1 4, 3, 0}. Got it?"
+      ]
+    },
+    {
+      "id": "msg_0679_00014",
+      "en_US": [
+        "We’re waiting on {STRVAR_1 4, 3, 0}.\n",
+        "We’ll give you an Oval Stone..."
+      ]
+    }
+  ]
+}

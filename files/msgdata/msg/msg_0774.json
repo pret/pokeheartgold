@@ -1,0 +1,144 @@
+{
+  "key": 33236,
+  "messages": [
+    {
+      "id": "msg_0774_00000",
+      "en_US": [
+        "Enter Battle Room Number (01-{STRVAR_1 51, 0, 0})\n",
+        "...B Button: Cancel {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0774_00001",
+      "en_US": [
+        "Receiving data for Rank {STRVAR_1 51, 1, 0},\n",
+        "Room {STRVAR_1 52, 0, 0}..."
+      ]
+    },
+    {
+      "id": "msg_0774_00002",
+      "en_US": [
+        "You may not challenge that Battle\n",
+        "Room until the next update.\r"
+      ]
+    },
+    {
+      "id": "msg_0774_00003",
+      "en_US": "Data has been received.\r"
+    },
+    {
+      "id": "msg_0774_00004",
+      "en_US": "Cancel your challenge?"
+    },
+    {
+      "id": "msg_0774_00005",
+      "en_US": [
+        "Enter the Rank of the Battle Room\n",
+        "(01-10) to check your records.{YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0774_00006",
+      "en_US": [
+        "Enter the Battle Room\n",
+        "Number. ...(01-{STRVAR_1 51, 0, 0}) {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0774_00007",
+      "en_US": "Sending your record data..."
+    },
+    {
+      "id": "msg_0774_00008",
+      "en_US": "Your data has been sent.\r"
+    },
+    {
+      "id": "msg_0774_00009",
+      "en_US": [
+        "Would you like to cancel your data\n",
+        "download?"
+      ]
+    },
+    {
+      "id": "msg_0774_00010",
+      "en_US": [
+        "Enter the Battle Room\n",
+        "Number. ...(001-{STRVAR_1 52, 0, 0}) {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0774_00011",
+      "en_US": [
+        "Enter the Battle Room\n",
+        "Number. ...(001-{STRVAR_1 52, 0, 0}) {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0774_00012",
+      "en_US": "Nintendo Wi-Fi Connection"
+    },
+    {
+      "id": "msg_0774_00013",
+      "en_US": [
+        "The Wi-Fi Battle Tower is currently in\n",
+        "maintenance. Please try again later.\r"
+      ]
+    },
+    {
+      "id": "msg_0774_00014",
+      "en_US": [
+        "The Wi-Fi Battle Tower is very crowded.\n",
+        "Please try again later.\r"
+      ]
+    },
+    {
+      "id": "msg_0774_00015",
+      "en_US": [
+        "Unable to connect to the Wi-Fi\n",
+        "Battle Tower.\r",
+        "Returning to the reception counter.\r"
+      ]
+    },
+    {
+      "id": "msg_0774_00016",
+      "en_US": [
+        "You were disconnected from\n",
+        "the Wi-Fi Battle Tower.\r",
+        "Returning to the reception counter.\r"
+      ]
+    },
+    {
+      "id": "msg_0774_00017",
+      "en_US": [
+        "That number cannot be specified for\n",
+        "the Wi-Fi Battle Tower.\r"
+      ]
+    },
+    {
+      "id": "msg_0774_00018",
+      "en_US": [
+        "Disconnecting from Nintendo Wi-Fi\n",
+        "Connection..."
+      ]
+    },
+    {
+      "id": "msg_0774_00019",
+      "en_US": [
+        "You are now disconnected from Nintendo\n",
+        "Wi-Fi Connection."
+      ]
+    },
+    {
+      "id": "msg_0774_00020",
+      "en_US": "{ALN_CENTER}Return"
+    },
+    {
+      "id": "msg_0774_00021",
+      "en_US": "{ALN_CENTER}Confirm"
+    },
+    {
+      "id": "msg_0774_00022",
+      "en_US": "{ALN_CENTER}Quit"
+    }
+  ]
+}

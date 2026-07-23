@@ -1,0 +1,595 @@
+{
+  "key": 63690,
+  "messages": [
+    {
+      "id": "msg_0667_00000",
+      "en_US": "Baoba"
+    },
+    {
+      "id": "msg_0667_00001",
+      "en_US": [
+        "This has to be the first time I’ve done\n",
+        "something like this from so close!\r",
+        "I mean talking on the phone!"
+      ]
+    },
+    {
+      "id": "msg_0667_00002",
+      "en_US": [
+        "Oh hi, {STRVAR_1 3, 0, 0}!\n",
+        "This is Warden Baoba.\r",
+        "Sorry to have kept you waiting!\n",
+        "We’ve finally opened the Safari Zone!\r",
+        "Do you know where it is?\r",
+        "You know the Gate inside the cavern in\n",
+        "Cianwood City?\r",
+        "If you go through there and walk for a\n",
+        "short while, you should soon see the\f",
+        "Safari Zone!\r",
+        "We’re a little out of the way, but\n",
+        "please come visit!"
+      ]
+    },
+    {
+      "id": "msg_0667_00003",
+      "en_US": [
+        "Oh hi, {STRVAR_1 3, 0, 0}!\n",
+        "This is Warden Baoba.\r",
+        "Sorry to have kept you waiting!\n",
+        "We’ve finally opened the Safari Zone!\r",
+        "Do you know where it is?\r",
+        "You know the Gate inside the cavern in\n",
+        "Cianwood City?\r",
+        "If you go through there and walk for a\n",
+        "short while, you should soon see the\f",
+        "Safari Zone!\r",
+        "We’re a little out of the way, but\n",
+        "please come visit!"
+      ]
+    },
+    {
+      "id": "msg_0667_00004",
+      "en_US": [
+        "Oh hi, {STRVAR_1 3, 0, 0}!\n",
+        "This is Warden Baoba.\r",
+        "Sorry to have kept you waiting!\n",
+        "I’ve finally come up with the next test.\r",
+        "I’ll give you more details at the Safari\n",
+        "Zone. See you there!"
+      ]
+    },
+    {
+      "id": "msg_0667_00005",
+      "en_US": [
+        "Oh hi, {STRVAR_1 3, 0, 0}!\n",
+        "This is Warden Baoba.\r",
+        "Sorry to have kept you waiting!\n",
+        "I’ve finally come up with the next test.\r",
+        "I’ll give you more details at the Safari\n",
+        "Zone. See you there!"
+      ]
+    },
+    {
+      "id": "msg_0667_00006",
+      "en_US": [
+        "Oh hi, {STRVAR_1 3, 0, 0}!\n",
+        "This is Warden Baoba.\r",
+        "Sorry to have kept you waiting!\n",
+        "I thought of a new way to play!\r",
+        "It’s called Object Arrangement!\r",
+        "I’ll give you more details at the\n",
+        "Safari Zone. See you there!"
+      ]
+    },
+    {
+      "id": "msg_0667_00007",
+      "en_US": [
+        "Oh hi, {STRVAR_1 3, 0, 0}!\n",
+        "This is Warden Baoba.\r",
+        "Sorry to have kept you waiting!\n",
+        "I thought of a new way to play!\r",
+        "It’s called Object Arrangement!\r",
+        "I’ll give you more details at the\n",
+        "Safari Zone. See you there!"
+      ]
+    },
+    {
+      "id": "msg_0667_00008",
+      "en_US": [
+        "Oh hi, {STRVAR_1 3, 0, 0}!\n",
+        "This is Warden Baoba.\r",
+        "We’ve come up with new objects.\r",
+        "With these, you should be able to meet\n",
+        "lots of different Pokémon.\r",
+        "Do your best!"
+      ]
+    },
+    {
+      "id": "msg_0667_00009",
+      "en_US": [
+        "Oh hi, {STRVAR_1 3, 0, 0}!\n",
+        "This is Warden Baoba.\r",
+        "We’ve come up with new objects.\r",
+        "With these, you should be able to meet\n",
+        "lots of different Pokémon.\r",
+        "Do your best!"
+      ]
+    },
+    {
+      "id": "msg_0667_00010",
+      "en_US": [
+        "Oh hi, {STRVAR_1 3, 0, 0}!\n",
+        "This is Warden Baoba.\r",
+        "We’ve come up with new objects!\n",
+        "There’re so many now!\r",
+        "With these new additions, that should be\n",
+        "plenty I think!\r",
+        "You should try placing a bunch of\n",
+        "different objects to see what different\f",
+        "Pokémon you can meet."
+      ]
+    },
+    {
+      "id": "msg_0667_00011",
+      "en_US": [
+        "Oh hi, {STRVAR_1 3, 0, 0}!\n",
+        "This is Warden Baoba.\r",
+        "We’ve come up with new objects!\n",
+        "There’re so many now!\r",
+        "With these new additions, that should be\n",
+        "plenty I think!\r",
+        "You should try placing a bunch of\n",
+        "different objects to see what different\f",
+        "Pokémon you can meet."
+      ]
+    },
+    {
+      "id": "msg_0667_00012",
+      "en_US": [
+        "Oh hi, {STRVAR_1 3, 0, 0}!\n",
+        "This is Warden Baoba.\r",
+        "I thought of a new way to play!\n",
+        "It’s called Object Arrangement!\r",
+        "...Wait...\n",
+        "Did I already tell you about this?\r",
+        "Well, we’ve got new objects for\n",
+        "Object Arrangement...\r",
+        "...I already told you about that,\n",
+        "too...\r",
+        "Well, that’s all right!\n",
+        "If you come to the Safari Zone, you’ll\f",
+        "see exactly what I’m talking about!\r",
+        "Well, see you there!"
+      ]
+    },
+    {
+      "id": "msg_0667_00013",
+      "en_US": [
+        "Oh hi, {STRVAR_1 3, 0, 0}!\n",
+        "This is Warden Baoba.\r",
+        "I thought of a new way to play!\n",
+        "It’s called Object Arrangement!\r",
+        "...Wait...\n",
+        "Did I already tell you about this?\r",
+        "Well, we’ve got new objects for\n",
+        "Object Arrangement...\r",
+        "...I already told you about that,\n",
+        "too...\r",
+        "Well, that’s all right!\n",
+        "If you come to the Safari Zone, you’ll\f",
+        "see exactly what I’m talking about!\r",
+        "Well, see you there!"
+      ]
+    },
+    {
+      "id": "msg_0667_00014",
+      "en_US": [
+        "Oh hi, {STRVAR_1 3, 0, 0}!\n",
+        "This is Warden Baoba.\r",
+        "There’s been a change in the Pokémon in\n",
+        "the {STRVAR_1 4, 10, 0}, it seems...\r",
+        "After some time with the same objects\n",
+        "in the same Area, the kinds of Pokémon\f",
+        "that settle there change.\r",
+        "We’ve found that if you completely\n",
+        "remove the Area and then restore it\f",
+        "with the same objects, the original\f",
+        "Pokémon come back.\f",
+        "No need to worry!"
+      ]
+    },
+    {
+      "id": "msg_0667_00015",
+      "en_US": [
+        "Oh hi, {STRVAR_1 3, 0, 0}!\n",
+        "This is Warden Baoba.\r",
+        "There’s been a change in the Pokémon in\n",
+        "the {STRVAR_1 4, 10, 0}, it seems...\r",
+        "After some time with the same objects\n",
+        "in the same Area, the kinds of Pokémon\f",
+        "that settle there change.\r",
+        "We’ve found that if you completely\n",
+        "remove the Area and then restore it\f",
+        "with the same objects, the original\f",
+        "Pokémon come back.\f",
+        "No need to worry!"
+      ]
+    },
+    {
+      "id": "msg_0667_00016",
+      "en_US": [
+        "Oh hi, {STRVAR_1 3, 0, 0}!\n",
+        "This is Warden Baoba.\r",
+        "It seems there’s been a slight change\n",
+        "in the Pokémon at the Safari Zone!\r",
+        "It’s in the {STRVAR_1 4, 10, 0} and the\n",
+        "{STRVAR_1 4, 11, 0}.\r",
+        "If you place a few objects that match\n",
+        "the Area, the types of Pokémon that\f",
+        "settle there change.\r",
+        "We’ve found that if you completely\n",
+        "remove the Area and then restore it\f",
+        "with the same objects, the original\f",
+        "Pokémon come back.\f",
+        "No need to worry!"
+      ]
+    },
+    {
+      "id": "msg_0667_00017",
+      "en_US": [
+        "Oh hi, {STRVAR_1 3, 0, 0}!\n",
+        "This is Warden Baoba.\r",
+        "It seems there’s been a slight change\n",
+        "in the Pokémon at the Safari Zone!\r",
+        "It’s in the {STRVAR_1 4, 10, 0} and the\n",
+        "{STRVAR_1 4, 11, 0}.\r",
+        "If you place a few objects that match\n",
+        "the Area, the types of Pokémon that\f",
+        "settle there change.\r",
+        "We’ve found that if you completely\n",
+        "remove the Area and then restore it\f",
+        "with the same objects, the original\f",
+        "Pokémon come back.\f",
+        "No need to worry!"
+      ]
+    },
+    {
+      "id": "msg_0667_00018",
+      "en_US": [
+        "Oh hi, {STRVAR_1 3, 0, 0}!\n",
+        "This is Warden Baoba.\r",
+        "It seems there’s been a slight change\n",
+        "in the Pokémon at the Safari Zone!\r",
+        "It’s in the {STRVAR_1 4, 10, 0},\n",
+        "the {STRVAR_1 4, 11, 0}, and\f",
+        "the {STRVAR_1 4, 12, 0}.\r",
+        "If you place a few objects that match\n",
+        "the Area, the types of Pokémon that\f",
+        "settle there change.\r",
+        "We’ve found that if you completely\n",
+        "remove the Area and then restore it\f",
+        "with the same objects, the original\f",
+        "Pokémon come back.\f",
+        "No need to worry!"
+      ]
+    },
+    {
+      "id": "msg_0667_00019",
+      "en_US": [
+        "Oh hi, {STRVAR_1 3, 0, 0}!\n",
+        "This is Warden Baoba.\r",
+        "It seems there’s been a slight change\n",
+        "in the Pokémon at the Safari Zone!\r",
+        "It’s in the {STRVAR_1 4, 10, 0},\n",
+        "the {STRVAR_1 4, 11, 0}, and\f",
+        "the {STRVAR_1 4, 12, 0}.\r",
+        "If you place a few objects that match\n",
+        "the Area, the types of Pokémon that\f",
+        "settle there change.\r",
+        "We’ve found that if you completely\n",
+        "remove the Area and then restore it\f",
+        "with the same objects, the original\f",
+        "Pokémon come back.\f",
+        "No need to worry!"
+      ]
+    },
+    {
+      "id": "msg_0667_00020",
+      "en_US": [
+        "Oh hi, {STRVAR_1 3, 0, 0}!\n",
+        "This is Warden Baoba.\r",
+        "It seems there’s been a slight change\n",
+        "in the Pokémon at the Safari Zone!\r",
+        "It’s in the {STRVAR_1 4, 10, 0},\n",
+        "the {STRVAR_1 4, 11, 0},\f",
+        "the {STRVAR_1 4, 12, 0},\f",
+        "and the {STRVAR_1 4, 13, 0}.\r",
+        "After some time with the same objects\n",
+        "in the same Area, the types of Pokémon\f",
+        "that settle there change.\r",
+        "We’ve found that if you completely\n",
+        "remove the Area and then restore it\f",
+        "with the same objects, the original\f",
+        "Pokémon come back.\f",
+        "No need to worry!"
+      ]
+    },
+    {
+      "id": "msg_0667_00021",
+      "en_US": [
+        "Oh hi, {STRVAR_1 3, 0, 0}!\n",
+        "This is Warden Baoba.\r",
+        "It seems there’s been a slight change\n",
+        "in the Pokémon at the Safari Zone!\r",
+        "It’s in the {STRVAR_1 4, 10, 0},\n",
+        "the {STRVAR_1 4, 11, 0},\f",
+        "the {STRVAR_1 4, 12, 0},\f",
+        "and the {STRVAR_1 4, 13, 0}.\r",
+        "After some time with the same objects\n",
+        "in the same Area, the types of Pokémon\f",
+        "that settle there change.\r",
+        "We’ve found that if you completely\n",
+        "remove the Area and then restore it\f",
+        "with the same objects, the original\f",
+        "Pokémon come back.\f",
+        "No need to worry!"
+      ]
+    },
+    {
+      "id": "msg_0667_00022",
+      "en_US": [
+        "Oh hi, {STRVAR_1 3, 0, 0}!\n",
+        "This is Warden Baoba.\r",
+        "It seems there’s been a slight change\n",
+        "in the Pokémon at the Safari Zone!\r",
+        "It’s in the {STRVAR_1 4, 10, 0},\n",
+        "the {STRVAR_1 4, 11, 0},\f",
+        "the {STRVAR_1 4, 12, 0},\f",
+        "the {STRVAR_1 4, 13, 0}, and\f",
+        "the {STRVAR_1 4, 14, 0}.\r",
+        "After some time with the same objects\n",
+        "in the same Area, the types of Pokémon\f",
+        "that settle there change.\r",
+        "We’ve found that if you completely\n",
+        "remove the Area and then restore it\f",
+        "with the same objects, the original\f",
+        "Pokémon come back.\f",
+        "No need to worry!"
+      ]
+    },
+    {
+      "id": "msg_0667_00023",
+      "en_US": [
+        "Oh hi, {STRVAR_1 3, 0, 0}!\n",
+        "This is Warden Baoba.\r",
+        "It seems there’s been a slight change\n",
+        "in the Pokémon at the Safari Zone!\r",
+        "It’s in the {STRVAR_1 4, 10, 0},\n",
+        "the {STRVAR_1 4, 11, 0},\f",
+        "the {STRVAR_1 4, 12, 0},\f",
+        "the {STRVAR_1 4, 13, 0}, and\f",
+        "the {STRVAR_1 4, 14, 0}.\r",
+        "After some time with the same objects\n",
+        "in the same Area, the types of Pokémon\f",
+        "that settle there change.\r",
+        "We’ve found that if you completely\n",
+        "remove the Area and then restore it\f",
+        "with the same objects, the original\f",
+        "Pokémon come back.\f",
+        "No need to worry!"
+      ]
+    },
+    {
+      "id": "msg_0667_00024",
+      "en_US": [
+        "Oh hi, {STRVAR_1 3, 0, 0}!\n",
+        "This is Warden Baoba.\r",
+        "It seems there’s been a slight change\n",
+        "in the Pokémon at the Safari Zone!\r",
+        "After some time with the same objects\n",
+        "in the same Area, the types of Pokémon\f",
+        "that settle there change.\r",
+        "We’ve found that if you completely\n",
+        "remove the Area and then restore it\f",
+        "with the same objects, the original\f",
+        "Pokémon come back.\f",
+        "No need to worry!"
+      ]
+    },
+    {
+      "id": "msg_0667_00025",
+      "en_US": [
+        "Oh hi, {STRVAR_1 3, 0, 0}!\n",
+        "This is Warden Baoba.\r",
+        "It seems there’s been a slight change\n",
+        "in the Pokémon at the Safari Zone!\r",
+        "After some time with the same objects\n",
+        "in the same Area, the types of Pokémon\f",
+        "that settle there change.\r",
+        "We’ve found that if you completely\n",
+        "remove the Area and then restore it\f",
+        "with the same objects, the original\f",
+        "Pokémon come back.\f",
+        "No need to worry!"
+      ]
+    },
+    {
+      "id": "msg_0667_00026",
+      "en_US": [
+        "Hello?\n",
+        "Oh hi, {STRVAR_1 3, 0, 0}!\r",
+        "My apologies. The Safari Zone isn’t\n",
+        "quite ready yet. I’m sorry for the\f",
+        "inconvenience, but if you could be\f",
+        "patient just a little longer.\r",
+        "I’ll call you later."
+      ]
+    },
+    {
+      "id": "msg_0667_00027",
+      "en_US": [
+        "Hello?\n",
+        "Oh hi, {STRVAR_1 3, 0, 0}!\r",
+        "My apologies. The Safari Zone isn’t\n",
+        "quite ready yet. I’m sorry for the\f",
+        "inconvenience, but if you could be\f",
+        "patient just a little longer.\r",
+        "I’ll call you later."
+      ]
+    },
+    {
+      "id": "msg_0667_00028",
+      "en_US": [
+        "Hello?\n",
+        "Oh hi, {STRVAR_1 3, 0, 0}!\r",
+        "The Safari Zone is now open!\n",
+        "Come visit anytime!\r",
+        "Do you know where it is?\r",
+        "You know the Gate inside the cavern in\n",
+        "Cianwood City?\r",
+        "If you go through there and walk for a\n",
+        "little ways, you should soon see the\f",
+        "Safari Zone!\r",
+        "Well, see you then!"
+      ]
+    },
+    {
+      "id": "msg_0667_00029",
+      "en_US": [
+        "Hello?\n",
+        "Oh hi, {STRVAR_1 3, 0, 0}!\r",
+        "The Safari Zone is now open!\n",
+        "Come visit anytime!\r",
+        "Do you know where it is?\r",
+        "You know the Gate inside the cavern in\n",
+        "Cianwood City?\r",
+        "If you go through there and walk for a\n",
+        "little ways, you should soon see the\f",
+        "Safari Zone!\r",
+        "Well, see you then!"
+      ]
+    },
+    {
+      "id": "msg_0667_00030",
+      "en_US": [
+        "Hello?\n",
+        "Oh hi, {STRVAR_1 3, 0, 0}!\r",
+        "Do you think you can catch a GEODUDE in\n",
+        "the Safari Zone?\r",
+        "Give it your best shot!"
+      ]
+    },
+    {
+      "id": "msg_0667_00031",
+      "en_US": [
+        "Hello?\n",
+        "Oh hi, {STRVAR_1 3, 0, 0}!\r",
+        "Do you think you can catch a GEODUDE in\n",
+        "the Safari Zone?\r",
+        "Give it your best shot!"
+      ]
+    },
+    {
+      "id": "msg_0667_00032",
+      "en_US": [
+        "Hello?\n",
+        "Oh hi, {STRVAR_1 3, 0, 0}!\r",
+        "Sorry, I’m still thinking about the next\n",
+        "challenge. Could you give me a bit\f",
+        "more time?"
+      ]
+    },
+    {
+      "id": "msg_0667_00033",
+      "en_US": [
+        "Hello?\n",
+        "Oh hi, {STRVAR_1 3, 0, 0}!\r",
+        "Sorry, I’m still thinking about the next\n",
+        "challenge. Could you give me a bit\f",
+        "more time?"
+      ]
+    },
+    {
+      "id": "msg_0667_00034",
+      "en_US": [
+        "Oh hi, {STRVAR_1 3, 0, 0}!\n",
+        "I’ve finally come up with the next\f",
+        "challenge.\r",
+        "I’ll give you more details at the\n",
+        "Safari Zone. See you there!"
+      ]
+    },
+    {
+      "id": "msg_0667_00035",
+      "en_US": [
+        "Oh hi, {STRVAR_1 3, 0, 0}!\n",
+        "I’ve finally come up with the next\f",
+        "challenge.\r",
+        "I’ll give you more details at the\n",
+        "Safari Zone. See you there!"
+      ]
+    },
+    {
+      "id": "msg_0667_00036",
+      "en_US": [
+        "Hello?\n",
+        "Oh hi, {STRVAR_1 3, 0, 0}!\r",
+        "Do you think you can catch a SANDSHREW\n",
+        "in the Desert Area?\r",
+        "Give it your best shot!"
+      ]
+    },
+    {
+      "id": "msg_0667_00037",
+      "en_US": [
+        "Hello?\n",
+        "Oh hi, {STRVAR_1 3, 0, 0}!\r",
+        "Do you think you can catch a SANDSHREW\n",
+        "in the Desert Area?\r",
+        "Give it your best shot!"
+      ]
+    },
+    {
+      "id": "msg_0667_00038",
+      "en_US": [
+        "Hello?\n",
+        "Oh hi, {STRVAR_1 3, 0, 0}!\r",
+        "I’m trying to come up with a new way to\n",
+        "play in the Safari Zone.\r",
+        "If I come up with something, I’ll be\n",
+        "sure to give you a call!"
+      ]
+    },
+    {
+      "id": "msg_0667_00039",
+      "en_US": [
+        "Hello?\n",
+        "Oh hi, {STRVAR_1 3, 0, 0}!\r",
+        "I’m trying to come up with a new way to\n",
+        "play in the Safari Zone.\r",
+        "If I come up with something, I’ll be\n",
+        "sure to give you a call!"
+      ]
+    },
+    {
+      "id": "msg_0667_00040",
+      "en_US": [
+        "Hello?\n",
+        "Oh hi, {STRVAR_1 3, 0, 0}!\r",
+        "How are you doing? Enjoying\n",
+        "the Safari Zone, are you?\r",
+        "Later, I will talk to you..."
+      ]
+    },
+    {
+      "id": "msg_0667_00041",
+      "en_US": [
+        "Hello?\n",
+        "Oh hi, {STRVAR_1 3, 0, 0}!\r",
+        "How are you doing? Enjoying\n",
+        "the Safari Zone, are you?\r",
+        "Later, I will talk to you..."
+      ]
+    }
+  ]
+}

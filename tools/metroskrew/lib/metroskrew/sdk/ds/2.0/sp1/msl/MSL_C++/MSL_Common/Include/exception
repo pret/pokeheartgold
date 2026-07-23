@@ -1,0 +1,162 @@
+/* MSL
+ * Copyright © 1995-2006 Freescale Corporation.  All rights reserved.
+ *
+ * $Date: 2006/02/09 16:58:17 $
+ * $Revision: 1.32.2.2 $
+ */
+
+// exception
+
+#ifndef _EXCEPTION
+#define _EXCEPTION
+
+/*  exception synopsis
+
+namespace std
+{
+
+class exception;
+{
+public:
+	exception() throw();
+	exception(const exception&) throw();
+	exception& operator=(const exception&) throw();
+	virtual ~exception() throw();
+	virtual const char* what() const throw();
+};
+
+class bad_exception
+	: public exception
+{
+public:
+	bad_exception() throw();
+	bad_exception(const bad_exception&) throw();
+	bad_exception& operator=(const bad_exception&) throw();
+	virtual ~bad_exception() throw();
+	virtual const char* what() const throw();
+};
+
+typedef void (*unexpected_handler)();
+unexpected_handler set_unexpected(unexpected_handler f) throw();
+void unexpected();
+
+typedef void (*terminate_handler)();
+terminate_handler set_terminate(terminate_handler f) throw();
+void terminate();
+
+bool uncaught_exception();
+
+}  // std
+*/
+
+#include <mslconfig>
+
+#ifndef RC_INVOKED // hh 971230
+
+#ifdef __MWERKS__
+#pragma options align=native
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#if _MSL_FORCE_ENUMS_ALWAYS_INT
+		#pragma enumsalwaysint on
+	#else
+		#pragma enumsalwaysint off
+	#endif
+#endif  // _MSL_FORCE_ENUMS_ALWAYS_INT
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#if _MSL_FORCE_ENABLE_BOOL_SUPPORT
+		#pragma bool on
+	#else
+		#pragma bool off
+	#endif
+#endif  // _MSL_FORCE_ENABLE_BOOL_SUPPORT
+
+#ifndef _MSL_NO_CPP_NAMESPACE           // hh 971206 moved this up in the file
+	namespace std {
+#endif
+
+	// hh 971226
+	// Removed string and bool from this class.  This data is moved into
+	// derived classes if and when needed.
+	class exception {       // hh 971226 moved from mexcept.h
+	public :
+	    exception () _MSL_NO_THROW {}
+	    exception (const exception&) _MSL_NO_THROW {}
+	    exception& operator= (const exception&) _MSL_NO_THROW {return *this;}
+	    virtual ~exception () _MSL_NO_THROW {}
+	    virtual const char* what () const _MSL_NO_THROW {return "exception";}
+	};
+
+	class bad_exception : public exception {
+	public:
+		bad_exception() _MSL_NO_THROW {}
+		bad_exception(const bad_exception&) _MSL_NO_THROW {}
+		bad_exception& operator=(const bad_exception&) _MSL_NO_THROW { return *this; }
+		virtual ~bad_exception() _MSL_NO_THROW {};
+		virtual const char* what() const _MSL_NO_THROW { return "bad_exception"; }
+	};
+
+	typedef void (_MSL_CDECL *unexpected_handler)();
+	_MSL_IMP_EXP_RUNTIME unexpected_handler _MSL_CDECL set_unexpected(unexpected_handler f) _MSL_NO_THROW;
+	_MSL_IMP_EXP_RUNTIME void _MSL_CDECL unexpected();
+
+#ifndef _MSL_NO_UNCAUGHT_EXCEPTION
+#ifndef _MSL_NO_CPP_NAMESPACE
+	}
+#endif
+	extern "C" _MSL_IMP_EXP_RUNTIME bool _MSL_CDECL __uncaught_exception(void);
+#ifndef _MSL_NO_CPP_NAMESPACE
+	namespace std {
+#endif
+
+	inline
+	bool _MSL_CDECL
+	uncaught_exception()
+	{
+		return __uncaught_exception();
+	}
+#endif // _MSL_NO_UNCAUGHT_EXCEPTION
+
+	typedef void (_MSL_CDECL *terminate_handler)();
+	_MSL_IMP_EXP_RUNTIME terminate_handler _MSL_CDECL set_terminate(terminate_handler f) _MSL_NO_THROW;
+	_MSL_IMP_EXP_RUNTIME void _MSL_CDECL terminate();
+
+#ifndef _MSL_NO_CPP_NAMESPACE
+	}
+#endif
+
+#ifdef _MSL_FORCE_ENUMS_ALWAYS_INT
+	#pragma enumsalwaysint reset
+#endif
+
+#ifdef _MSL_FORCE_ENABLE_BOOL_SUPPORT
+	#pragma bool reset
+#endif
+
+#ifdef __MWERKS__
+#pragma options align=reset
+#endif
+
+#endif  // RC_INVOKED // hh 971230
+
+#endif  // _EXCEPTION
+
+// 960828 bkoz try a forward declaration to cut the exception->string dependencies
+// 960828 bkoz add exception::exception(const char*) ctor for string literals
+// 961210 bkoz added wrapper for alignment
+// 961217 KO   Changed char_traits from a struct to a class. Needed for the new x86
+//             compiler.
+// 970211 bkoz line 73 added bad_exception::what from stdexcept.cp
+// 970408 bkoz line 22, include bstring, inlined exception class
+// hh 971206   Moved #ifdef MSIPL_USING_NAMESPACE around
+// hh 971226 moved exception from mexcept.h
+// hh 971226 cleaned up & checked against standard
+// hh 971226 Removed string and bool from this class.  This data is moved into
+//           derived classes if and when needed.
+// hh 971230 added RC_INVOKED wrapper
+// hh 970102 __priv_throwbadcast no longer needed
+// hh 990120 changed name of MSIPL flags
+// hh 010402 Removed 68K CMF support
+// ejs 020320 Add _MSL_CDECL

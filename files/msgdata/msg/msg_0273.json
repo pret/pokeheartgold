@@ -1,0 +1,780 @@
+{
+  "key": 9043,
+  "messages": [
+    {
+      "id": "msg_0273_00000",
+      "en_US": "Kanto"
+    },
+    {
+      "id": "msg_0273_00001",
+      "en_US": "Johto"
+    },
+    {
+      "id": "msg_0273_00002",
+      "en_US": "{STRVAR_1 4, 0, 0}"
+    },
+    {
+      "id": "msg_0273_00003",
+      "en_US": "{STRVAR_1 28, 0, 0}"
+    },
+    {
+      "id": "msg_0273_00004",
+      "en_US": "Choose your destination."
+    },
+    {
+      "id": "msg_0273_00005",
+      "en_US": "Fly to {STRVAR_1 4, 0, 0}?"
+    },
+    {
+      "id": "msg_0273_00006",
+      "en_US": "Close"
+    },
+    {
+      "id": "msg_0273_00007",
+      "en_US": "Fly"
+    },
+    {
+      "id": "msg_0273_00008",
+      "en_US": "Quit"
+    },
+    {
+      "id": "msg_0273_00009",
+      "garbage": 23
+    },
+    {
+      "id": "msg_0273_00010",
+      "en_US": [
+        "A fairly new and quiet town.\n",
+        "It’s a small and pretty place."
+      ]
+    },
+    {
+      "id": "msg_0273_00011",
+      "en_US": [
+        "A beautiful city that is enveloped\n",
+        "in green year-round."
+      ]
+    },
+    {
+      "id": "msg_0273_00012",
+      "en_US": [
+        "A quiet city nestled between\n",
+        "rugged mountains and rocks."
+      ]
+    },
+    {
+      "id": "msg_0273_00013",
+      "en_US": [
+        "A beautiful city with flowing\n",
+        "water and blooming flowers."
+      ]
+    },
+    {
+      "id": "msg_0273_00014",
+      "en_US": [
+        "A small town covered in a\n",
+        "beautiful hue of purple."
+      ]
+    },
+    {
+      "id": "msg_0273_00015",
+      "en_US": [
+        "A southern city that is bathed\n",
+        "in orange by the setting sun."
+      ]
+    },
+    {
+      "id": "msg_0273_00016",
+      "en_US": [
+        "A rich, rainbow-colored city where\n",
+        "people and Pokémon gather."
+      ]
+    },
+    {
+      "id": "msg_0273_00017",
+      "en_US": [
+        "A historic village that has\n",
+        "become new."
+      ]
+    },
+    {
+      "id": "msg_0273_00018",
+      "en_US": [
+        "A town used to be here until it\n",
+        "was swept away by an eruption."
+      ]
+    },
+    {
+      "id": "msg_0273_00019",
+      "en_US": [
+        "The fate of many Trainers aiming for\n",
+        "the top rests here."
+      ]
+    },
+    {
+      "id": "msg_0273_00020",
+      "en_US": [
+        "The biggest city in Kanto, shining\n",
+        "with a golden light."
+      ]
+    },
+    {
+      "id": "msg_0273_00021",
+      "en_US": [
+        "A town where the wind blows and\n",
+        "tells of impending change."
+      ]
+    },
+    {
+      "id": "msg_0273_00022",
+      "en_US": [
+        "A city where you can smell small\n",
+        "flowers and a sea breeze."
+      ]
+    },
+    {
+      "id": "msg_0273_00023",
+      "en_US": [
+        "This old village is still surrounded\n",
+        "by trees and other scenery."
+      ]
+    },
+    {
+      "id": "msg_0273_00024",
+      "en_US": [
+        "A town where people and Pokémon\n",
+        "live together in simple harmony."
+      ]
+    },
+    {
+      "id": "msg_0273_00025",
+      "en_US": [
+        "A beachside city that has\n",
+        "benefitted greatly from the sea."
+      ]
+    },
+    {
+      "id": "msg_0273_00026",
+      "en_US": [
+        "A developing city where people and\n",
+        "Pokémon come and go as they like."
+      ]
+    },
+    {
+      "id": "msg_0273_00027",
+      "en_US": [
+        "A city where you can hear the\n",
+        "melody of the sea."
+      ]
+    },
+    {
+      "id": "msg_0273_00028",
+      "en_US": [
+        "A city that even now bears the\n",
+        "marks of its history."
+      ]
+    },
+    {
+      "id": "msg_0273_00029",
+      "en_US": [
+        "A town with a suspicious air to it.\n",
+        "It’s a hiding place for ninjas."
+      ]
+    },
+    {
+      "id": "msg_0273_00030",
+      "en_US": "A huge lake full of clear, blue water."
+    },
+    {
+      "id": "msg_0273_00031",
+      "en_US": [
+        "A mysterious mountain village cut\n",
+        "into a rock face."
+      ]
+    },
+    {
+      "id": "msg_0273_00032",
+      "en_US": [
+        "A mountain where something mysterious\n",
+        "awaits you underfoot."
+      ]
+    },
+    {
+      "id": "msg_0273_00033",
+      "en_US": [
+        "A tunnel dug by DIGLETT connecting\n",
+        "Vermilion City to Pewter City."
+      ]
+    },
+    {
+      "id": "msg_0273_00034",
+      "en_US": [
+        "A mountain where a star fell.\n",
+        "It now holds a mysterious power."
+      ]
+    },
+    {
+      "id": "msg_0273_00035",
+      "en_US": [
+        "A cave that had collapsed once.\n",
+        "It has been reconstructed."
+      ]
+    },
+    {
+      "id": "msg_0273_00036",
+      "en_US": [
+        "A dark tunnel that begins in Lavender\n",
+        "Town and comes out in Cerulean City."
+      ]
+    },
+    {
+      "id": "msg_0273_00037",
+      "en_US": [
+        "This used to be the location of the\n",
+        "Safari Zone, but is now the Pal Park."
+      ]
+    },
+    {
+      "id": "msg_0273_00038",
+      "en_US": [
+        "Two small islands lightly floating in\n",
+        "the ocean."
+      ]
+    },
+    {
+      "id": "msg_0273_00039",
+      "en_US": [
+        "A tower where they study diligently\n",
+        "to learn to live with Pokémon."
+      ]
+    },
+    {
+      "id": "msg_0273_00040",
+      "en_US": [
+        "A tower that’s said to have a\n",
+        "legendary Pokémon that lands there."
+      ]
+    },
+    {
+      "id": "msg_0273_00041",
+      "en_US": [
+        "A path said to always be bathed in\n",
+        "sunset, no matter what the season."
+      ]
+    },
+    {
+      "id": "msg_0273_00042",
+      "en_US": [
+        "A tower that was hit by lightning, and\n",
+        "subsequently caught fire and burned."
+      ]
+    },
+    {
+      "id": "msg_0273_00043",
+      "en_US": [
+        "A spacious and beautiful park. It’s\n",
+        "connected to the Pokéathlon Dome."
+      ]
+    },
+    {
+      "id": "msg_0273_00044",
+      "en_US": [
+        "An old building that has been reused\n",
+        "as a radio broadcasting tower."
+      ]
+    },
+    {
+      "id": "msg_0273_00045",
+      "en_US": [
+        "A place where you can find a\n",
+        "former adventure."
+      ]
+    },
+    {
+      "id": "msg_0273_00046",
+      "en_US": [
+        "Deep underground, it’s connected to\n",
+        "the ocean. The water flows here."
+      ]
+    },
+    {
+      "id": "msg_0273_00047",
+      "en_US": [
+        "When SLOWPOKE are thirsty, they come\n",
+        "here to drink."
+      ]
+    },
+    {
+      "id": "msg_0273_00048",
+      "en_US": [
+        "It shines brightly over the ocean with\n",
+        "the power of AMPHAROS."
+      ]
+    },
+    {
+      "id": "msg_0273_00049",
+      "en_US": [
+        "A Battle Stadium with five different\n",
+        "sets of rules to enjoy."
+      ]
+    },
+    {
+      "id": "msg_0273_00050",
+      "en_US": [
+        "A place where people from all over\n",
+        "come to show off their strength."
+      ]
+    },
+    {
+      "id": "msg_0273_00051",
+      "garbage": 22
+    },
+    {
+      "id": "msg_0273_00052",
+      "en_US": [
+        "A large forest full of trees that are\n",
+        "used to make charcoal."
+      ]
+    },
+    {
+      "id": "msg_0273_00053",
+      "garbage": 21
+    },
+    {
+      "id": "msg_0273_00054",
+      "en_US": [
+        "A naturally large cavern that is\n",
+        "incredibly spacious."
+      ]
+    },
+    {
+      "id": "msg_0273_00055",
+      "en_US": [
+        "A cave that connects Route 44 to\n",
+        "Blackthorn City."
+      ]
+    },
+    {
+      "id": "msg_0273_00056",
+      "en_US": [
+        "Four islands that are protected by\n",
+        "whirlpools and are difficult to reach."
+      ]
+    },
+    {
+      "id": "msg_0273_00057",
+      "en_US": [
+        "A hallowed mountain that rises\n",
+        "between the Johto and Kanto regions."
+      ]
+    },
+    {
+      "id": "msg_0273_00058",
+      "en_US": [
+        "A dark, difficult-to-navigate tunnel\n",
+        "that runs beneath the Johto region."
+      ]
+    },
+    {
+      "id": "msg_0273_00059",
+      "en_US": [
+        "A road that tests Trainers\n",
+        "aiming at the Pokémon League."
+      ]
+    },
+    {
+      "id": "msg_0273_00060",
+      "garbage": 19
+    },
+    {
+      "id": "msg_0273_00061",
+      "en_US": [
+        "The Tohjo waterfall that links the\n",
+        "Kanto and Johto regions."
+      ]
+    },
+    {
+      "id": "msg_0273_00062",
+      "en_US": [
+        "A forest filled with nature and\n",
+        "Bug-type Pokémon."
+      ]
+    },
+    {
+      "id": "msg_0273_00063",
+      "en_US": [
+        "A place where Pokémon can compete\n",
+        "against each other’s strengths."
+      ]
+    },
+    {
+      "id": "msg_0273_00064",
+      "garbage": 22
+    },
+    {
+      "id": "msg_0273_00065",
+      "en_US": [
+        "A snow-covered area of old legends,\n",
+        "surrounded by a wall of snow."
+      ]
+    },
+    {
+      "id": "msg_0273_00066",
+      "garbage": 19
+    },
+    {
+      "id": "msg_0273_00067",
+      "en_US": [
+        "The plant that generates all the\n",
+        "energy for the Kanto region."
+      ]
+    },
+    {
+      "id": "msg_0273_00068",
+      "en_US": [
+        "A place where you can experience\n",
+        "wild thrills safely."
+      ]
+    },
+    {
+      "id": "msg_0273_00069",
+      "en_US": [
+        "A boat that traverses ocean paths\n",
+        "using hydraulic power."
+      ]
+    },
+    {
+      "id": "msg_0273_00070",
+      "en_US": [
+        "A country road full of greenery and\n",
+        "rough paths."
+      ]
+    },
+    {
+      "id": "msg_0273_00071",
+      "en_US": [
+        "A path that winds and bends from the\n",
+        "forest’s entrance."
+      ]
+    },
+    {
+      "id": "msg_0273_00072",
+      "en_US": [
+        "A road where many rocks have fallen\n",
+        "from the sky to create craters."
+      ]
+    },
+    {
+      "id": "msg_0273_00073",
+      "en_US": [
+        "A one-way road down a hill that has\n",
+        "a gentle slope and is fun to traverse."
+      ]
+    },
+    {
+      "id": "msg_0273_00074",
+      "en_US": [
+        "A road running north of Saffron City\n",
+        "connecting to the Underground Path."
+      ]
+    },
+    {
+      "id": "msg_0273_00075",
+      "en_US": [
+        "A road running south of Saffron City\n",
+        "connecting to the Underground Path."
+      ]
+    },
+    {
+      "id": "msg_0273_00076",
+      "en_US": [
+        "A short road that leads to the\n",
+        "blocked-off Underground Path."
+      ]
+    },
+    {
+      "id": "msg_0273_00077",
+      "en_US": [
+        "A short road that leads to the\n",
+        "blocked-off Underground Path."
+      ]
+    },
+    {
+      "id": "msg_0273_00078",
+      "en_US": [
+        "A road that forms a maze crossing a\n",
+        "small, rocky mountain."
+      ]
+    },
+    {
+      "id": "msg_0273_00079",
+      "en_US": [
+        "A road that passes along the canal\n",
+        "and comes out at the Power Plant."
+      ]
+    },
+    {
+      "id": "msg_0273_00080",
+      "en_US": [
+        "A grassy path with a gentle,\n",
+        "refreshing breeze."
+      ]
+    },
+    {
+      "id": "msg_0273_00081",
+      "en_US": [
+        "A bridge known for its fishing.\n",
+        "It’s also called “Silence Bridge.”"
+      ]
+    },
+    {
+      "id": "msg_0273_00082",
+      "en_US": [
+        "A difficult, narrow path where many\n",
+        "Trainers await you."
+      ]
+    },
+    {
+      "id": "msg_0273_00083",
+      "en_US": [
+        "A pleasant coastal road where the\n",
+        "breeze blows and waves roar."
+      ]
+    },
+    {
+      "id": "msg_0273_00084",
+      "en_US": [
+        "A path that cuts through the row of\n",
+        "trees to come out on the coastline."
+      ]
+    },
+    {
+      "id": "msg_0273_00085",
+      "en_US": [
+        "The northern starting point of\n",
+        "Cycling Road."
+      ]
+    },
+    {
+      "id": "msg_0273_00086",
+      "en_US": [
+        "An easy path of Cycling Road running\n",
+        "above the sea."
+      ]
+    },
+    {
+      "id": "msg_0273_00087",
+      "en_US": [
+        "The southern ending point of\n",
+        "Cycling Road."
+      ]
+    },
+    {
+      "id": "msg_0273_00088",
+      "en_US": [
+        "A coastal road littered with rocks due\n",
+        "to Cinnabar Island’s volcano eruption."
+      ]
+    },
+    {
+      "id": "msg_0273_00089",
+      "en_US": [
+        "A popular path with swimmers.\n",
+        "The Seafoam Islands are also here."
+      ]
+    },
+    {
+      "id": "msg_0273_00090",
+      "en_US": [
+        "A coastal road where the only threat\n",
+        "might be the volcano on the horizon."
+      ]
+    },
+    {
+      "id": "msg_0273_00091",
+      "en_US": [
+        "A path to Victory Road that\n",
+        "eventually becomes impassable."
+      ]
+    },
+    {
+      "id": "msg_0273_00092",
+      "garbage": 20
+    },
+    {
+      "id": "msg_0273_00093",
+      "en_US": [
+        "A beautiful bridge that stretches\n",
+        "across a river."
+      ]
+    },
+    {
+      "id": "msg_0273_00094",
+      "en_US": [
+        "A path that winds through the forest\n",
+        "and comes out overlooking the sea."
+      ]
+    },
+    {
+      "id": "msg_0273_00095",
+      "en_US": [
+        "An unimaginably difficult mountain road\n",
+        "that gives the impression of a test."
+      ]
+    },
+    {
+      "id": "msg_0273_00096",
+      "en_US": [
+        "A road that crosses from Johto to\n",
+        "the Kanto region, like a new journey."
+      ]
+    },
+    {
+      "id": "msg_0273_00097",
+      "en_US": [
+        "A vacant and hidden mountain road\n",
+        "that continues to Mt. Silver."
+      ]
+    },
+    {
+      "id": "msg_0273_00098",
+      "en_US": [
+        "A road that begins a journey. The\n",
+        "road smells like freshly cut grass."
+      ]
+    },
+    {
+      "id": "msg_0273_00099",
+      "en_US": [
+        "A grassy path where you can battle\n",
+        "other young Trainers."
+      ]
+    },
+    {
+      "id": "msg_0273_00100",
+      "en_US": [
+        "A short, nostalgic path winding\n",
+        "through nature."
+      ]
+    },
+    {
+      "id": "msg_0273_00101",
+      "en_US": [
+        "A path crossed by the Magnet Train\n",
+        "bridge--nature meets technology."
+      ]
+    },
+    {
+      "id": "msg_0273_00102",
+      "en_US": [
+        "A difficult and always rainy path\n",
+        "that comes out in a cave."
+      ]
+    },
+    {
+      "id": "msg_0273_00103",
+      "en_US": [
+        "A lush, green path, even though it’s\n",
+        "right next to a city."
+      ]
+    },
+    {
+      "id": "msg_0273_00104",
+      "en_US": [
+        "A bright path with a lake that’s easy\n",
+        "on the eyes and easy to traverse."
+      ]
+    },
+    {
+      "id": "msg_0273_00105",
+      "en_US": [
+        "A green and densely overgrown path\n",
+        "that forks in two directions."
+      ]
+    },
+    {
+      "id": "msg_0273_00106",
+      "en_US": [
+        "A popular route for Trainers, marked\n",
+        "by three Apricorn trees."
+      ]
+    },
+    {
+      "id": "msg_0273_00107",
+      "en_US": [
+        "A path that weaves through trees\n",
+        "and comes out at a farm."
+      ]
+    },
+    {
+      "id": "msg_0273_00108",
+      "en_US": [
+        "A downhill path that passes through a\n",
+        "grassy and breezy plain."
+      ]
+    },
+    {
+      "id": "msg_0273_00109",
+      "en_US": [
+        "You can hear the waves on this path\n",
+        "from west Olivine City to the sea."
+      ]
+    },
+    {
+      "id": "msg_0273_00110",
+      "en_US": [
+        "A rough spot in the sea where\n",
+        "whirlpools block your path."
+      ]
+    },
+    {
+      "id": "msg_0273_00111",
+      "en_US": [
+        "A small path opened at the base of\n",
+        "challenging Mt. Mortar."
+      ]
+    },
+    {
+      "id": "msg_0273_00112",
+      "en_US": [
+        "A woodland path that comes out at a\n",
+        "lake. Beware the greedy gate."
+      ]
+    },
+    {
+      "id": "msg_0273_00113",
+      "en_US": [
+        "A wonderful path with a few pleasant\n",
+        "springs and abundant greenery."
+      ]
+    },
+    {
+      "id": "msg_0273_00114",
+      "en_US": [
+        "A winding road by a river, but called\n",
+        "“Mountain Road.”"
+      ]
+    },
+    {
+      "id": "msg_0273_00115",
+      "en_US": [
+        "A way home that runs from the base of\n",
+        "the mountain to the plains."
+      ]
+    },
+    {
+      "id": "msg_0273_00116",
+      "en_US": [
+        "A road on a cliff that strikes fear in\n",
+        "the hearts of those who dare to pass."
+      ]
+    },
+    {
+      "id": "msg_0273_00117",
+      "en_US": [
+        "A pleasant path from the base of the\n",
+        "mountain to the Safari Zone."
+      ]
+    }
+  ]
+}

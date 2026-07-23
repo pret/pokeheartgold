@@ -1,0 +1,126 @@
+{
+  "key": 35639,
+  "messages": [
+    {
+      "id": "msg_0646_00000",
+      "en_US": "Erika"
+    },
+    {
+      "id": "msg_0646_00001",
+      "en_US": [
+        "Pardon? I can’t hear you very well...\n",
+        "We must have a bad connection.\r",
+        "Try calling again from somewhere else!"
+      ]
+    },
+    {
+      "id": "msg_0646_00002",
+      "en_US": [
+        "Hello...\n",
+        "Oh, hiya, what’s up?\f",
+        "Things are sweet over here!\r"
+      ]
+    },
+    {
+      "id": "msg_0646_00003",
+      "en_US": [
+        "There’s a lot of Gym Leaders who are\n",
+        "way stronger than me.\f",
+        "We’ve both got to work harder!"
+      ]
+    },
+    {
+      "id": "msg_0646_00004",
+      "en_US": [
+        "My schedule’s fairly open on Sunday\n",
+        "mornings.\r",
+        "Try calling me then, OK?"
+      ]
+    },
+    {
+      "id": "msg_0646_00005",
+      "en_US": [
+        "I’ve got some free time right now.\n",
+        "Would you like to meet for a\f",
+        "battle or something? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0646_00006",
+      "en_US": [
+        "Yay, I’m happy! I’ve got another thing\n",
+        "to look forward to now.\r",
+        "I’ll be waiting at the Fighting Dojo in\n",
+        "Saffron City."
+      ]
+    },
+    {
+      "id": "msg_0646_00007",
+      "en_US": "Oh, I see..."
+    },
+    {
+      "id": "msg_0646_00008",
+      "en_US": [
+        "Huh?\n",
+        "Wait, didn’t you already make enough\f",
+        "other appointments before you called?"
+      ]
+    },
+    {
+      "id": "msg_0646_00009",
+      "en_US": [
+        "I’ll be waiting at the Fighting Dojo in\n",
+        "Saffron City. Please don’t forget!"
+      ]
+    },
+    {
+      "id": "msg_0646_00010",
+      "en_US": [
+        "This is Erika.\n",
+        "How are you?\r"
+      ]
+    },
+    {
+      "id": "msg_0646_00011",
+      "en_US": [
+        "I’m waiting at the Fighting Dojo in\n",
+        "Saffron City...\f",
+        "You haven’t forgotten, have you?"
+      ]
+    },
+    {
+      "id": "msg_0646_00012",
+      "en_US": [
+        "Do you like plants?\n",
+        "Plants are such delicate things.\r",
+        "The amount of water,\n",
+        "the condition of the soil,\f",
+        "the temperature differences,\f",
+        "the changing weather...\f",
+        "All those little things we don’t think\f",
+        "about can have such a huge effect."
+      ]
+    },
+    {
+      "id": "msg_0646_00013",
+      "en_US": [
+        "Do you like telling fortunes?\r",
+        "Me...\n",
+        "I don’t really like the kind where you\f",
+        "pull off flower petals...\r",
+        "Oh, but it’s not that I dislike the\n",
+        "fortune-teller in Lavender Town."
+      ]
+    },
+    {
+      "id": "msg_0646_00014",
+      "en_US": [
+        "What do you do on your days off?\r",
+        "I like to tend to the plants in my Gym,\n",
+        "transplanting them and dusting\f",
+        "off the flowers and leaves with a brush.\f",
+        "It keeps me pretty busy..."
+      ]
+    }
+  ]
+}

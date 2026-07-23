@@ -80,4 +80,7 @@ EXTFMT_LZ_FLAGS = ['-nopad', '-extfmt']
 subdir('application')
 subdir('arc')
 subdir('graphic')
+subdir('poketool')
+
+#Msgdata must come after poketool for trainer name file
 subdir('msgdata')

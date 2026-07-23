@@ -1,0 +1,161 @@
+{
+  "key": 25718,
+  "messages": [
+    {
+      "id": "msg_0114_D35R0104_00000",
+      "en_US": [
+        "Lance: {STRVAR_1 3, 0, 0}!\n",
+        "In order to unlock the door to the\f",
+        "radio transmitter, you need the voice\f",
+        "of a certain person.\r",
+        "The name of the person is Petrel,\n",
+        "the Team Rocket Executive!\r",
+        "I have found out he is hiding in their\n",
+        "leader’s office!\r",
+        "Unfortunately though, that room is\n",
+        "also protected with a password...\r",
+        "{STRVAR_1 3, 0, 0}!\n",
+        "We need the password to their leader’s\f",
+        "office first!\r"
+      ]
+    },
+    {
+      "id": "msg_0114_D35R0104_00001",
+      "en_US": [
+        "Lance: {STRVAR_1 3, 0, 0}!\n",
+        "In order to unlock the door to the\f",
+        "radio transmitter, you need the voice\f",
+        "of a certain person.\r",
+        "The name of the person is Petrel,\n",
+        "the Team Rocket Executive!\r",
+        "I have found out he is hiding in their\n",
+        "leader’s office!\r",
+        "Unfortunately though, that room is\n",
+        "also protected with a password...\r",
+        "{STRVAR_1 3, 0, 0}!\n",
+        "We need the password to their leader’s\f",
+        "office first!\r"
+      ]
+    },
+    {
+      "id": "msg_0114_D35R0104_00002",
+      "en_US": [
+        "Urrggh...\n",
+        "The guy in the cape is incredibly\f",
+        "tough...and I had no choice\f",
+        "but to tell him all the secrets about\f",
+        "this hideout...\r",
+        "Except that our leader’s office is\n",
+        "protected with two passwords!\n"
+      ]
+    },
+    {
+      "id": "msg_0114_D35R0104_00003",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}: ...\r",
+        "So you are messing with them again.\r",
+        "Humph, you must really like Team Rocket\n",
+        "so much.\r",
+        "...Tell me, who was the guy in the cape\n",
+        "who used Dragon-type Pokémon?\r",
+        "My Pokémon were no match at all.\r",
+        "I don’t care that I lost. I can beat\n",
+        "him by getting stronger Pokémon.\r",
+        "It’s what he said that bothers me...\n",
+        "He told me that I don’t love and\f",
+        "trust my Pokémon enough.\r",
+        "I’m furious that I lost to a bleeding\n",
+        "heart like him.\r",
+        "...Humph! I don’t have the time for the\n",
+        "likes of you!\r"
+      ]
+    },
+    {
+      "id": "msg_0114_D35R0104_00004",
+      "en_US": [
+        "Muhahaha, we’ve been waiting for you.\n",
+        "So, you are {STRVAR_1 3, 0, 0}...\r",
+        "Me?\n",
+        "You don’t know who I am?\r",
+        "It is me, Giovanni.\n",
+        "The majestic Giovanni himself!\f",
+        "Wahahaha!\r"
+      ]
+    },
+    {
+      "id": "msg_0114_D35R0104_00005",
+      "en_US": [
+        "...Huh?\n",
+        "I don’t sound anything like Giovanni?\r",
+        "I don’t even look like Giovanni?\n",
+        "How come? I’ve worked so hard\f",
+        "to mimic him!\r"
+      ]
+    },
+    {
+      "id": "msg_0114_D35R0104_00006",
+      "en_US": [
+        "Petrel: I am a Team Rocket Executive!\r",
+        "You must be trying to sneak into the\n",
+        "radio-transmitter room.\f",
+        "Well, that’s not going to happen.\r",
+        "That room is protected with a special\n",
+        "password. The password is\f",
+        "“Hail Giovanni.”\f",
+        "Surprised to hear it from me?\r",
+        "Knowing the password won’t help\n",
+        "you though.\r",
+        "The door won’t open unless I say the\n",
+        "password. It only reacts to my voice.\r"
+      ]
+    },
+    {
+      "id": "msg_0114_D35R0104_00007",
+      "en_US": [
+        "Petrel: Since disbanding Team Rocket\n",
+        "three years ago, our Giovanni has\f",
+        "been missing.\r",
+        "But we’re certain he’s been waiting\n",
+        "for the right time for our revival...\r",
+        "Wahahaha!\r",
+        "Losing to you won’t change the fact\n",
+        "that you are unable to get in the\f",
+        "radio-transmitter room!\r",
+        "You need my voice to unlock it!\r"
+      ]
+    },
+    {
+      "id": "msg_0114_D35R0104_00008",
+      "en_US": "MURKROW: Hail Giovanni.\r"
+    },
+    {
+      "id": "msg_0114_D35R0104_00009",
+      "en_US": [
+        "MURKROW is mimicking\n",
+        "the voice of Petrel!\r",
+        "You may be able to...!?\r"
+      ]
+    },
+    {
+      "id": "msg_0114_D35R0104_00010",
+      "en_US": "MURKROW: Hail Giovanni.\r"
+    },
+    {
+      "id": "msg_0114_D35R0104_00011",
+      "en_US": [
+        "The door’s closed...\r",
+        "It needs two passwords\n",
+        "to open it."
+      ]
+    },
+    {
+      "id": "msg_0114_D35R0104_00012",
+      "en_US": [
+        "The door’s closed...\r",
+        "{STRVAR_1 3, 0, 0} entered the\n",
+        "two passwords.\r",
+        "The door opened!\r"
+      ]
+    }
+  ]
+}

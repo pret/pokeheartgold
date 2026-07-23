@@ -1,0 +1,48 @@
+/* MSL
+ * Copyright © 1995-2006 Freescale Corporation.  All rights reserved.
+ *
+ * $Date: 2006/02/09 16:58:34 $
+ * $Revision: 1.19.2.2 $
+ */
+
+// iostream
+
+#ifndef _IOSTREAM
+#define _IOSTREAM
+
+/*  iostream synopsys
+
+namespace std
+{
+extern istream cin;
+extern ostream cout;
+extern ostream cerr;
+extern ostream clog;
+
+extern wistream wcin;
+extern wostream wcout;
+extern wostream wcerr;
+extern wostream wclog;
+}  // std
+*/
+
+#include <mslconfig>
+
+#ifndef _MSL_NO_IO
+
+#include <niostream>
+#include <wiostream>
+
+#endif // _MSL_NO_IO
+
+#endif  // _IOSTREAM
+
+// hh 971220 fixed MOD_INCLUDE
+// hh 971222 added alignment wrapper
+// hh 971222 Changed filename from iostream.h to iostream
+// hh 971222 Made include guards standard
+// hh 971230 added RC_INVOKED wrapper
+// hh 990109 Added support for wide standard streams
+// hh 990120 Rewritten
+// hh 000130 Installed _MSL_IMP_EXP_CPP
+// hh 010125 Split into 2 headers, one for narrow and one for wide streams

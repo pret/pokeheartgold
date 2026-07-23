@@ -1,0 +1,206 @@
+{
+  "key": 24832,
+  "messages": [
+    {
+      "id": "msg_0018_00000",
+      "en_US": [
+        "Which facility would you\n",
+        "like to challenge? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0018_00001",
+      "en_US": "{STRVAR_1 3, 0, 0} has dropped out.\r"
+    },
+    {
+      "id": "msg_0018_00002",
+      "en_US": [
+        "Please choose the Pokémon you wish to\n",
+        "enter with.\r"
+      ]
+    },
+    {
+      "id": "msg_0018_00003",
+      "en_US": [
+        "You have chosen a different facility\n",
+        "and/or level setting from your friend.\f",
+        "Please choose again.\r"
+      ]
+    },
+    {
+      "id": "msg_0018_00004",
+      "en_US": "Please wait a moment."
+    },
+    {
+      "id": "msg_0018_00005",
+      "en_US": [
+        "Your win-streak record does not match\n",
+        "your friend’s record.\r",
+        "Your challenge will start from the\n",
+        "beginning.\r"
+      ]
+    },
+    {
+      "id": "msg_0018_00006",
+      "en_US": [
+        "Both you and your friend have chosen\n",
+        "{STRVAR_1 0, 0, 0}.\r",
+        "Please confer with your friend and\n",
+        "choose different Pokémon.\r"
+      ]
+    },
+    {
+      "id": "msg_0018_00007",
+      "en_US": [
+        "Both you and your friend have chosen\n",
+        "{STRVAR_1 0, 0, 0} and {STRVAR_1 0, 1, 0}.\r",
+        "Please confer with your friend and\n",
+        "choose different Pokémon.\r"
+      ]
+    },
+    {
+      "id": "msg_0018_00008",
+      "garbage": 50
+    },
+    {
+      "id": "msg_0018_00009",
+      "en_US": [
+        "Both you and your friend have chosen\n",
+        "{STRVAR_1 0, 0, 0}.\r",
+        "Please confer with your friend and\n",
+        "choose different Pokémon.\r"
+      ]
+    },
+    {
+      "id": "msg_0018_00010",
+      "en_US": [
+        "Both you and your friend have chosen\n",
+        "{STRVAR_1 0, 0, 0} and {STRVAR_1 0, 1, 0}.\r",
+        "Please confer with your friend and\n",
+        "choose different Pokémon.\r"
+      ]
+    },
+    {
+      "id": "msg_0018_00011",
+      "en_US": [
+        "You and your friend must choose the\n",
+        "same kind of Pokémon to battle.\r"
+      ]
+    },
+    {
+      "id": "msg_0018_00012",
+      "garbage": 54
+    },
+    {
+      "id": "msg_0018_00013",
+      "garbage": 60
+    },
+    {
+      "id": "msg_0018_00014",
+      "en_US": [
+        "Which would you like to challenge,\n",
+        "Level 50 cap or Open Level? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0018_00015",
+      "en_US": [
+        "There is already an ongoing winning\n",
+        "streak by {STRVAR_1 0, 0, 0}.\r",
+        "Would you like to delete that record\n",
+        "and start a new challenge\f",
+        "with {STRVAR_1 0, 1, 0}? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0018_00016",
+      "en_US": "YES"
+    },
+    {
+      "id": "msg_0018_00017",
+      "en_US": "NO"
+    },
+    {
+      "id": "msg_0018_00018",
+      "en_US": "Please make your selection again.\r"
+    },
+    {
+      "id": "msg_0018_00019",
+      "en_US": [
+        "Saving...\n",
+        "Don’t turn off the power."
+      ]
+    },
+    {
+      "id": "msg_0018_00020",
+      "en_US": "Good luck!"
+    },
+    {
+      "id": "msg_0018_00021",
+      "en_US": [
+        "Would you like to play with\n",
+        "{STRVAR_1 3, 0, 0} again? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0018_00022",
+      "garbage": 2
+    },
+    {
+      "id": "msg_0018_00023",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0018_00024",
+      "en_US": [
+        "Awaiting your friend’s selection.\n",
+        "Please wait a moment."
+      ]
+    },
+    {
+      "id": "msg_0018_00025",
+      "en_US": "{STRVAR_1 3, 0, 0} has dropped out.\r"
+    },
+    {
+      "id": "msg_0018_00026",
+      "en_US": "BATTLE TOWER"
+    },
+    {
+      "id": "msg_0018_00027",
+      "en_US": "BATTLE FACTORY"
+    },
+    {
+      "id": "msg_0018_00028",
+      "en_US": "BATTLE CASTLE"
+    },
+    {
+      "id": "msg_0018_00029",
+      "en_US": "BATTLE HALL"
+    },
+    {
+      "id": "msg_0018_00030",
+      "en_US": "BATTLE ARCADE"
+    },
+    {
+      "id": "msg_0018_00031",
+      "en_US": "CANCEL"
+    },
+    {
+      "id": "msg_0018_00032",
+      "en_US": "LEVEL 50"
+    },
+    {
+      "id": "msg_0018_00033",
+      "en_US": "OPEN LEVEL"
+    },
+    {
+      "id": "msg_0018_00034",
+      "en_US": [
+        "You and your friend have chosen\n",
+        "different challenges.\r",
+        "Please turn off the power, select new\n",
+        "Pokémon, and enter again!"
+      ]
+    }
+  ]
+}

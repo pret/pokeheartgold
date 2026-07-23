@@ -1,0 +1,746 @@
+{
+  "key": 9347,
+  "messages": [
+    {
+      "id": "msg_0138_D49R0101_00000",
+      "garbage": 50
+    },
+    {
+      "id": "msg_0138_D49R0101_00001",
+      "garbage": 68
+    },
+    {
+      "id": "msg_0138_D49R0101_00002",
+      "garbage": 15
+    },
+    {
+      "id": "msg_0138_D49R0101_00003",
+      "garbage": 21
+    },
+    {
+      "id": "msg_0138_D49R0101_00004",
+      "garbage": 15
+    },
+    {
+      "id": "msg_0138_D49R0101_00005",
+      "garbage": 14
+    },
+    {
+      "id": "msg_0138_D49R0101_00006",
+      "garbage": 49
+    },
+    {
+      "id": "msg_0138_D49R0101_00007",
+      "garbage": 32
+    },
+    {
+      "id": "msg_0138_D49R0101_00008",
+      "garbage": 20
+    },
+    {
+      "id": "msg_0138_D49R0101_00009",
+      "garbage": 27
+    },
+    {
+      "id": "msg_0138_D49R0101_00010",
+      "garbage": 19
+    },
+    {
+      "id": "msg_0138_D49R0101_00011",
+      "garbage": 15
+    },
+    {
+      "id": "msg_0138_D49R0101_00012",
+      "garbage": 143
+    },
+    {
+      "id": "msg_0138_D49R0101_00013",
+      "garbage": 147
+    },
+    {
+      "id": "msg_0138_D49R0101_00014",
+      "garbage": 208
+    },
+    {
+      "id": "msg_0138_D49R0101_00015",
+      "garbage": 206
+    },
+    {
+      "id": "msg_0138_D49R0101_00016",
+      "garbage": 217
+    },
+    {
+      "id": "msg_0138_D49R0101_00017",
+      "garbage": 220
+    },
+    {
+      "id": "msg_0138_D49R0101_00018",
+      "garbage": 211
+    },
+    {
+      "id": "msg_0138_D49R0101_00019",
+      "garbage": 56
+    },
+    {
+      "id": "msg_0138_D49R0101_00020",
+      "garbage": 23
+    },
+    {
+      "id": "msg_0138_D49R0101_00021",
+      "garbage": 17
+    },
+    {
+      "id": "msg_0138_D49R0101_00022",
+      "garbage": 39
+    },
+    {
+      "id": "msg_0138_D49R0101_00023",
+      "garbage": 79
+    },
+    {
+      "id": "msg_0138_D49R0101_00024",
+      "garbage": 80
+    },
+    {
+      "id": "msg_0138_D49R0101_00025",
+      "garbage": 80
+    },
+    {
+      "id": "msg_0138_D49R0101_00026",
+      "garbage": 94
+    },
+    {
+      "id": "msg_0138_D49R0101_00027",
+      "garbage": 21
+    },
+    {
+      "id": "msg_0138_D49R0101_00028",
+      "garbage": 33
+    },
+    {
+      "id": "msg_0138_D49R0101_00029",
+      "garbage": 66
+    },
+    {
+      "id": "msg_0138_D49R0101_00030",
+      "garbage": 42
+    },
+    {
+      "id": "msg_0138_D49R0101_00031",
+      "garbage": 42
+    },
+    {
+      "id": "msg_0138_D49R0101_00032",
+      "garbage": 43
+    },
+    {
+      "id": "msg_0138_D49R0101_00033",
+      "garbage": 43
+    },
+    {
+      "id": "msg_0138_D49R0101_00034",
+      "garbage": 32
+    },
+    {
+      "id": "msg_0138_D49R0101_00035",
+      "garbage": 20
+    },
+    {
+      "id": "msg_0138_D49R0101_00036",
+      "garbage": 27
+    },
+    {
+      "id": "msg_0138_D49R0101_00037",
+      "garbage": 19
+    },
+    {
+      "id": "msg_0138_D49R0101_00038",
+      "garbage": 18
+    },
+    {
+      "id": "msg_0138_D49R0101_00039",
+      "garbage": 184
+    },
+    {
+      "id": "msg_0138_D49R0101_00040",
+      "garbage": 258
+    },
+    {
+      "id": "msg_0138_D49R0101_00041",
+      "garbage": 278
+    },
+    {
+      "id": "msg_0138_D49R0101_00042",
+      "garbage": 259
+    },
+    {
+      "id": "msg_0138_D49R0101_00043",
+      "garbage": 274
+    },
+    {
+      "id": "msg_0138_D49R0101_00044",
+      "garbage": 267
+    },
+    {
+      "id": "msg_0138_D49R0101_00045",
+      "garbage": 56
+    },
+    {
+      "id": "msg_0138_D49R0101_00046",
+      "garbage": 23
+    },
+    {
+      "id": "msg_0138_D49R0101_00047",
+      "garbage": 19
+    },
+    {
+      "id": "msg_0138_D49R0101_00048",
+      "en_US": [
+        "Hello. Oh, you must be new here.\n",
+        "Welcome to the Athlete Shop!\r",
+        "Have you and your Pokémon\n",
+        "been exercising?\r",
+        "Flying sweat!\n",
+        "Breathing in unison!\f",
+        "Newborn friendship!\r",
+        "We support your Pokéathlete lifestyle.\n",
+        "The Athlete Points you have earned\f",
+        "can be used here for prizes.\r",
+        "Let me say this again.\n",
+        "Welcome to the Athlete Shop! {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0138_D49R0101_00049",
+      "en_US": "Welcome to the Athlete Shop! {YESNO 0}"
+    },
+    {
+      "id": "msg_0138_D49R0101_00050",
+      "en_US": [
+        "We are closed for the day.\n",
+        "Please come back tomorrow for\f",
+        "a whole new set of prizes!"
+      ]
+    },
+    {
+      "id": "msg_0138_D49R0101_00051",
+      "en_US": "Thank you, please come again."
+    },
+    {
+      "id": "msg_0138_D49R0101_00052",
+      "en_US": [
+        "The scores in the Pokéathlon...\n",
+        "The proof of your friendship with your\f",
+        "Pokémon, so to speak, give you\f",
+        "Athlete Points.\r",
+        "You can trade them here for\n",
+        "various prizes.\r",
+        "Score as much as possible and come back\n",
+        "here for prizes!\r",
+        "Is there anything else I can do\n",
+        "for you? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0138_D49R0101_00053",
+      "en_US": [
+        "Welcome!\r",
+        "This is the place we keep the Pokéathlon\n",
+        "database.\r",
+        "Using the Data Card at the monitor\n",
+        "next to me will allow you to check your\f",
+        "records.\r",
+        "Some are cool, and some are...\n",
+        "embarrassing!\r",
+        "Please make good use of it.\r",
+        "Would you like to buy a Data Card\n",
+        "that contains Pokéathlon\f",
+        "records? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0138_D49R0101_00054",
+      "en_US": [
+        "Welcome!\r",
+        "The Data Card, which contains\n",
+        "Pokéathlon records, is sold here.\r",
+        "Would you like to buy a Data Card? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0138_D49R0101_00055",
+      "en_US": [
+        "Giggle!\n",
+        "The truth is, I know a lot about you!\f",
+        "Let me see...\r"
+      ]
+    },
+    {
+      "id": "msg_0138_D49R0101_00056",
+      "en_US": [
+        "You’ve participated in\n",
+        "the Pokéathlon...\f",
+        "{STRVAR_1 51, 0, 0} times!\f",
+        "Giggle!\r"
+      ]
+    },
+    {
+      "id": "msg_0138_D49R0101_00057",
+      "en_US": [
+        "You’ve participated in\n",
+        "the Pokéathlon...\f",
+        "Wow, over 100 times!\r",
+        "Bravo!\r"
+      ]
+    },
+    {
+      "id": "msg_0138_D49R0101_00058",
+      "en_US": [
+        "As I just demonstrated, the Pokéathlon\n",
+        "database seems to know everything.\f",
+        "Doesn’t that interest you?\r",
+        "You can exchange your Athlete Points\n",
+        "for a Data Card and check your\f",
+        "records using the monitor next to me.\r",
+        "Please make good use of it.\n",
+        "Is there anything else I can\f",
+        "do for you? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0138_D49R0101_00059",
+      "en_US": "Thank you. Please come again!"
+    },
+    {
+      "id": "msg_0138_D49R0101_00060",
+      "en_US": [
+        "Hello, Pokéathlete {STRVAR_1 3, 0, 0}!\r",
+        "Are you working on breaking your own\n",
+        "records? You can check your records\f",
+        "at the monitor next to me.\r",
+        "Check it out from time to time!"
+      ]
+    },
+    {
+      "id": "msg_0138_D49R0101_00061",
+      "en_US": [
+        "We have run out of Data Cards.\n",
+        "But don’t be disappointed.\r",
+        "There are more Data Cards to come!\n",
+        "I will make sure to get them for you.\f",
+        "Please come back later."
+      ]
+    },
+    {
+      "id": "msg_0138_D49R0101_00062",
+      "en_US": [
+        "We have run out of Data Cards.\n",
+        "But don’t be disappointed.\r",
+        "There are more Data Cards to come...\n",
+        "Or not!\r",
+        "You have collected all the Data Cards!\n",
+        "Wonderful!\r",
+        "You are a true Pokéathlete,\n",
+        "{STRVAR_1 3, 0, 0}!\r",
+        "Please continue to work on breaking\n",
+        "your own records!\r",
+        "Thank you for coming!"
+      ]
+    },
+    {
+      "id": "msg_0138_D49R0101_00063",
+      "en_US": [
+        "So they have ten events?\n",
+        "...Which Pokémon should I choose?"
+      ]
+    },
+    {
+      "id": "msg_0138_D49R0101_00064",
+      "en_US": [
+        "There are five Pokéathlon courses!\r",
+        "They are divided into Speed, Power,\n",
+        "Stamina, Jump, and Skill.\r",
+        "You have to choose your Pokémon\n",
+        "carefully according to the course."
+      ]
+    },
+    {
+      "id": "msg_0138_D49R0101_00065",
+      "en_US": [
+        "Some Pokémon are good at Speed events.\n",
+        "Some are not. You need to form a team\f",
+        "whose members can help one another."
+      ]
+    },
+    {
+      "id": "msg_0138_D49R0101_00066",
+      "en_US": [
+        "If you go on, you’ll see the\n",
+        "Museum of Pokéathlete Records.\r",
+        "I will someday be a Pokéathlete holding\n",
+        "a record there!"
+      ]
+    },
+    {
+      "id": "msg_0138_D49R0101_00067",
+      "en_US": [
+        "The score you achieve in the Pokéathlon\n",
+        "will become Athlete Points, and you can\f",
+        "exchange them for prizes.\r",
+        "You may be the last team to finish, but\n",
+        "your score will still count!"
+      ]
+    },
+    {
+      "id": "msg_0138_D49R0101_00068",
+      "en_US": [
+        "“Hurdle Dash”\r",
+        "Many Hurdles await your Pokémon!\n",
+        "Be faster and more precise than\f",
+        "everyone else! Jump over the Hurdles\f",
+        "and aim for number one!"
+      ]
+    },
+    {
+      "id": "msg_0138_D49R0101_00069",
+      "en_US": [
+        "“Pennant Capture”\r",
+        "Pennants are hidden on the beach.\n",
+        "Fight over them and come back with as\f",
+        "many Pennants as you can!"
+      ]
+    },
+    {
+      "id": "msg_0138_D49R0101_00070",
+      "en_US": [
+        "“Circle Push”\r",
+        "The time has come to show off your\n",
+        "Pokémon’s Power!\f",
+        "Push them away and stay in the Circle!"
+      ]
+    },
+    {
+      "id": "msg_0138_D49R0101_00071",
+      "en_US": [
+        "“Block Smash”\r",
+        "A mountain of Blocks awaits\n",
+        "your Pokémon!\f",
+        "Use its Power to smash them all!"
+      ]
+    },
+    {
+      "id": "msg_0138_D49R0101_00072",
+      "en_US": [
+        "“Disc Catch”\r",
+        "Discs are thrown at you. Jump and\n",
+        "catch them in the air!\r",
+        "Don’t get cornered by others.\n",
+        "Catch as many as you can!"
+      ]
+    },
+    {
+      "id": "msg_0138_D49R0101_00073",
+      "en_US": [
+        "“Lamp Jump”\r",
+        "You never know how high you’re going\n",
+        "to bounce! Use your Pokémon’s Jump\f",
+        "and Skill to score!"
+      ]
+    },
+    {
+      "id": "msg_0138_D49R0101_00074",
+      "en_US": [
+        "“Relay Run”\r",
+        "Keep running until you can’t run\n",
+        "any more! Three Pokémon work together\f",
+        "to achieve victory!"
+      ]
+    },
+    {
+      "id": "msg_0138_D49R0101_00075",
+      "en_US": [
+        "“Ring Drop”\r",
+        "Pokémon tackle! Go beyond your Stamina\n",
+        "limit and stay in the Ring!"
+      ]
+    },
+    {
+      "id": "msg_0138_D49R0101_00076",
+      "en_US": [
+        "“Snow Throw”\r",
+        "On an incredibly cold playfield,\n",
+        "millions of balls of Snow await!\r",
+        "Aim and throw!\n",
+        "Time it right to show your skill!"
+      ]
+    },
+    {
+      "id": "msg_0138_D49R0101_00077",
+      "en_US": [
+        "“Goal Roll”\r",
+        "Put your heart into hitting the ball!\n",
+        "Attack! Defend your Goal!\r",
+        "Aim for the other Goals!\n",
+        "Who gets the victory?"
+      ]
+    },
+    {
+      "id": "msg_0138_D49R0101_00078",
+      "en_US": [
+        "Work with your Pokémon. Believe in them,\n",
+        "and help them believe in you! Believe in\f",
+        "their potential. Let the friendship lead\f",
+        "your team to victory!\r",
+        "The Pokéathlon is always with you!"
+      ]
+    },
+    {
+      "id": "msg_0138_D49R0101_00079",
+      "en_US": [
+        "Charge your energy with friendship!\n",
+        "Give Aprijuice to your Pokémon!"
+      ]
+    },
+    {
+      "id": "msg_0138_D49R0101_00080",
+      "en_US": [
+        "Whitney: Hi, {STRVAR_1 3, 0, 0}! Are you here\n",
+        "for the Pokéathlon? Me, too!\r",
+        "I have been so excited since its\n",
+        "construction. It is close to Goldenrod\f",
+        "City, you know?\r"
+      ]
+    },
+    {
+      "id": "msg_0138_D49R0101_00081",
+      "en_US": [
+        "Huh?\r",
+        "Were you going to participate in\n",
+        "the Pokéathlon looking like that?\r",
+        "You’re not prepared at all, are you?\r",
+        "So...\n",
+        "Are you a medium or a small?\f",
+        "You look more like a medium...\r",
+        "OK!\n",
+        "I’ll get you a jersey that suits you!\r",
+        "You want to look your best if you’re\n",
+        "going to participate in the Pokéathlon,\f",
+        "don’t you?\r",
+        "Wait right there!\r"
+      ]
+    },
+    {
+      "id": "msg_0138_D49R0101_00082",
+      "en_US": "This is just right for you!\r"
+    },
+    {
+      "id": "msg_0138_D49R0101_00083",
+      "en_US": "{STRVAR_1 3, 0, 0} received a jersey!"
+    },
+    {
+      "id": "msg_0138_D49R0101_00084",
+      "en_US": [
+        "You look perfect.\n",
+        "Now that you are ready, I will...\r",
+        "Oh, no!\n",
+        "Where are my Pokémon?\r",
+        "I have to go back.\n",
+        "See ya!\r"
+      ]
+    },
+    {
+      "id": "msg_0138_D49R0101_00085",
+      "en_US": [
+        "The vending machine is for participants!\n",
+        "You can even use your\f",
+        "Athlete Points. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0138_D49R0101_00086",
+      "en_US": "Which drink would you like? {YESNO 0}"
+    },
+    {
+      "id": "msg_0138_D49R0101_00087",
+      "en_US": [
+        "Clang!\r",
+        "A can of {STRVAR_1 8, 0, 0} dropped down.\r"
+      ]
+    },
+    {
+      "id": "msg_0138_D49R0101_00088",
+      "en_US": [
+        "Clang!\r",
+        "Bonus! Another can of {STRVAR_1 8, 0, 0}\n",
+        "dropped down.\r"
+      ]
+    },
+    {
+      "id": "msg_0138_D49R0101_00089",
+      "en_US": "Not enough money..."
+    },
+    {
+      "id": "msg_0138_D49R0101_00090",
+      "en_US": "Not enough points..."
+    },
+    {
+      "id": "msg_0138_D49R0101_00091",
+      "en_US": "Decided not to buy a drink."
+    },
+    {
+      "id": "msg_0138_D49R0101_00092",
+      "en_US": "Opening the Pokéathlon Data...\r"
+    },
+    {
+      "id": "msg_0138_D49R0101_00093",
+      "en_US": "Which data would you like to see? {YESNO 0}"
+    },
+    {
+      "id": "msg_0138_D49R0101_00094",
+      "en_US": "OVERALL DATA {ALN_CENTER}"
+    },
+    {
+      "id": "msg_0138_D49R0101_00095",
+      "en_US": "EVENT DATA {ALN_CENTER}"
+    },
+    {
+      "id": "msg_0138_D49R0101_00096",
+      "en_US": "ACTION DATA {ALN_CENTER}"
+    },
+    {
+      "id": "msg_0138_D49R0101_00097",
+      "en_US": "EXIT {ALN_CENTER}"
+    },
+    {
+      "id": "msg_0138_D49R0101_00098",
+      "en_US": "Accessing......"
+    },
+    {
+      "id": "msg_0138_D49R0101_00099",
+      "en_US": "Accessing............"
+    },
+    {
+      "id": "msg_0138_D49R0101_00100",
+      "en_US": "Accessing.................."
+    },
+    {
+      "id": "msg_0138_D49R0101_00101",
+      "en_US": "Thank you for accessing!"
+    },
+    {
+      "id": "msg_0138_D49R0101_00102",
+      "en_US": "Welcome to the Museum Shop!\r"
+    },
+    {
+      "id": "msg_0138_D49R0101_00103",
+      "en_US": [
+        "Wow, you have such good eyes! Can\n",
+        "I tell you about my last dream? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0138_D49R0101_00104",
+      "en_US": [
+        "Hmmm... My discerning eyes must have\n",
+        "become weak..."
+      ]
+    },
+    {
+      "id": "msg_0138_D49R0101_00105",
+      "en_US": [
+        "I used to love Jump events.\r",
+        "The record I have from when I was fully\n",
+        "active as a Pokéathlete is 998 jumps!\r",
+        "Just two more!\n",
+        "All I had to make was two more!\r",
+        "I had to retire due to my age...\n",
+        "Could I ask you to jump 1,000 times\f",
+        "for me?\r"
+      ]
+    },
+    {
+      "id": "msg_0138_D49R0101_00106",
+      "en_US": [
+        "Well, the record may make you dizzy.\n",
+        "But you’re still young.\f",
+        "You can do it!\r",
+        "I’ll just sit and wait."
+      ]
+    },
+    {
+      "id": "msg_0138_D49R0101_00107",
+      "en_US": [
+        "Oh! You!\n",
+        "It is so wonderful of you!\f",
+        "You have jumped 1,000 times.\r",
+        "Thank you so much!\n",
+        "This is just a token of my appreciation.\r"
+      ]
+    },
+    {
+      "id": "msg_0138_D49R0101_00108",
+      "en_US": [
+        "I’m now your fan. I’m old as you see,\n",
+        "but I will support you no matter what."
+      ]
+    },
+    {
+      "id": "msg_0138_D49R0101_00109",
+      "en_US": [
+        "You know what?\n",
+        "I have tackled over 500 times finally!\r"
+      ]
+    },
+    {
+      "id": "msg_0138_D49R0101_00110",
+      "en_US": [
+        "Haha!\n",
+        "You’re doing fine, but not as good\f",
+        "as me. I wonder if any Pokéathlete\f",
+        "could be better at tackling than me.\f",
+        "Sigh..."
+      ]
+    },
+    {
+      "id": "msg_0138_D49R0101_00111",
+      "en_US": [
+        "You know what?\n",
+        "I have tackled over 1,000 times!\f",
+        "Finally!\r"
+      ]
+    },
+    {
+      "id": "msg_0138_D49R0101_00112",
+      "en_US": [
+        "You know what? I’ve finally tackled\n",
+        "over 2,000 times! I bet no one can\f",
+        "break this record easily!\r"
+      ]
+    },
+    {
+      "id": "msg_0138_D49R0101_00113",
+      "en_US": [
+        "......!\n",
+        "No! That’s not right!\f",
+        "Your record beats mine?\r",
+        "Nooooo!\n",
+        "...OK. You win.\r",
+        "I admit complete defeat.\n",
+        "Please take this.\r"
+      ]
+    },
+    {
+      "id": "msg_0138_D49R0101_00114",
+      "en_US": [
+        "Whew!\n",
+        "It’s strange, but I feel great.\r",
+        "I do regret that I lost, but it made\n",
+        "me know where I am.\r",
+        "I understand that there are many\n",
+        "Pokéathletes better than me.\r",
+        "This is where I begin to grow again!\n",
+        "Keep up the good work!"
+      ]
+    }
+  ]
+}

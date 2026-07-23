@@ -14,6 +14,12 @@ enum ConvertMode : uint8_t {
     CONV_INVALID = 0xFF,
 };
 
+enum TextFormat : uint8_t {
+    FMT_PLAIN_TEXT = 0,
+    FMT_GAMEFREAK_GMM,
+    FMT_JSON,
+};
+
 struct Options {
     ConvertMode mode = CONV_INVALID;
     int key = 0;
@@ -24,10 +30,7 @@ struct Options {
     bool printVersion = false;
     string dumpBinary;
     string gmm_header = "";
-    typedef int txtfmt;
-    static const txtfmt PlainText = 0;
-    static const txtfmt GamefreakGMM = 1;
-    txtfmt textFormat = PlainText;
+    TextFormat textFormat = FMT_PLAIN_TEXT;
     Options(int argc, char ** argv);
 };
 

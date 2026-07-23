@@ -1,0 +1,95 @@
+{
+  "key": 37911,
+  "messages": [
+    {
+      "id": "msg_0457_T02R0301_00000",
+      "en_US": [
+        "Welcome to Trainer House, the newest\n",
+        "and most happening place in Viridian.\f",
+        "We’re open to Trainers only.\r",
+        "You can battle against the best\n",
+        "of the best right downstairs."
+      ]
+    },
+    {
+      "id": "msg_0457_T02R0301_00001",
+      "en_US": [
+        "Viridian is the town closest to\n",
+        "Indigo Plateau.\r",
+        "They built this place because so\n",
+        "many Trainers pass through on their\f",
+        "way up to Indigo Plateau."
+      ]
+    },
+    {
+      "id": "msg_0457_T02R0301_00002",
+      "en_US": [
+        "They hold practice battles\n",
+        "downstairs here.\r",
+        "I would love to see how well a\n",
+        "Trainer from Johto battles."
+      ]
+    },
+    {
+      "id": "msg_0457_T02R0301_00003",
+      "en_US": [
+        "You go all over the place and battle\n",
+        "all kinds of Trainers.\r",
+        "This is not just to train your Pokémon.\n",
+        "This is also a chance to experience\f",
+        "many things yourself.\r",
+        "I bet the Champion from\n",
+        "Pallet Town went to all the\f",
+        "cities and towns in Kanto."
+      ]
+    },
+    {
+      "id": "msg_0457_T02R0301_00004",
+      "en_US": [
+        "Whew...\r",
+        "I’m taking a rest from\n",
+        "Pokémon battles."
+      ]
+    },
+    {
+      "id": "msg_0457_T02R0301_00005",
+      "en_US": [
+        "Practice battles are held in the\n",
+        "Training Hall downstairs.\r",
+        "Skilled Trainers are invited to\n",
+        "participate.\r",
+        "Communicate with your friends through\n",
+        "the Pokéwalker to bring them here!\r",
+        "Be aware that you cannot bring them\n",
+        "here once you are downstairs!"
+      ]
+    },
+    {
+      "id": "msg_0457_T02R0301_00006",
+      "en_US": [
+        "Trainer House Rules\r",
+        "1. You can challenge various Trainers\n",
+        "    once a day.\r",
+        "2. All Pokémon over Level 50 become\n",
+        "    Level 50 for the battle.\r",
+        "3. You cannot use items from your Bag.\r",
+        "4. Afterward, your Pokémon will recover\n",
+        "    and the held item will be restored.\r",
+        "5. You cannot earn experience from\n",
+        "    the battle.\r",
+        "6. You earn Battle Points instead!\r",
+        "Skilled Trainers are invited to\n",
+        "participate."
+      ]
+    },
+    {
+      "id": "msg_0457_T02R0301_00007",
+      "en_US": [
+        "...What’s this?\n",
+        "A strategy memo?\r",
+        "This writing looks like ONIX tracks...\f",
+        "It’s completely illegible..."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,949 @@
+{
+  "key": 30802,
+  "messages": [
+    {
+      "id": "msg_0154_00000",
+      "en_US": "Player’s side 1"
+    },
+    {
+      "id": "msg_0154_00001",
+      "en_US": "Player’s side 2"
+    },
+    {
+      "id": "msg_0154_00002",
+      "en_US": "Opponent 1"
+    },
+    {
+      "id": "msg_0154_00003",
+      "en_US": "Opponent 2"
+    },
+    {
+      "id": "msg_0154_00004",
+      "en_US": "Class"
+    },
+    {
+      "id": "msg_0154_00005",
+      "en_US": "Level"
+    },
+    {
+      "id": "msg_0154_00006",
+      "en_US": "Exp. Points"
+    },
+    {
+      "id": "msg_0154_00007",
+      "en_US": "ID No."
+    },
+    {
+      "id": "msg_0154_00008",
+      "en_US": "Random value"
+    },
+    {
+      "id": "msg_0154_00009",
+      "en_US": "Gender"
+    },
+    {
+      "id": "msg_0154_00010",
+      "en_US": "Nature"
+    },
+    {
+      "id": "msg_0154_00011",
+      "en_US": "Normal"
+    },
+    {
+      "id": "msg_0154_00012",
+      "en_US": "Rare"
+    },
+    {
+      "id": "msg_0154_00013",
+      "en_US": "Status"
+    },
+    {
+      "id": "msg_0154_00014",
+      "en_US": "Friendliness"
+    },
+    {
+      "id": "msg_0154_00015",
+      "en_US": "Pokérus"
+    },
+    {
+      "id": "msg_0154_00016",
+      "en_US": "Move 1"
+    },
+    {
+      "id": "msg_0154_00017",
+      "en_US": "Move 2"
+    },
+    {
+      "id": "msg_0154_00018",
+      "en_US": "Move 3"
+    },
+    {
+      "id": "msg_0154_00019",
+      "en_US": "Move 4"
+    },
+    {
+      "id": "msg_0154_00020",
+      "en_US": "Item"
+    },
+    {
+      "id": "msg_0154_00021",
+      "en_US": "Attribute"
+    },
+    {
+      "id": "msg_0154_00022",
+      "en_US": "Set"
+    },
+    {
+      "id": "msg_0154_00023",
+      "en_US": "Default HP"
+    },
+    {
+      "id": "msg_0154_00024",
+      "en_US": "HPrnd"
+    },
+    {
+      "id": "msg_0154_00025",
+      "en_US": "HPexp"
+    },
+    {
+      "id": "msg_0154_00026",
+      "en_US": "POWrnd"
+    },
+    {
+      "id": "msg_0154_00027",
+      "en_US": "POWexp"
+    },
+    {
+      "id": "msg_0154_00028",
+      "en_US": "DEFrnd"
+    },
+    {
+      "id": "msg_0154_00029",
+      "en_US": "DEFexp"
+    },
+    {
+      "id": "msg_0154_00030",
+      "en_US": "AGIrnd"
+    },
+    {
+      "id": "msg_0154_00031",
+      "en_US": "AGIexp"
+    },
+    {
+      "id": "msg_0154_00032",
+      "en_US": "SPWrnd"
+    },
+    {
+      "id": "msg_0154_00033",
+      "en_US": "SPWexp"
+    },
+    {
+      "id": "msg_0154_00034",
+      "en_US": "SDFrnd"
+    },
+    {
+      "id": "msg_0154_00035",
+      "en_US": "SDFexp"
+    },
+    {
+      "id": "msg_0154_00036",
+      "en_US": "POW"
+    },
+    {
+      "id": "msg_0154_00037",
+      "en_US": "DEF"
+    },
+    {
+      "id": "msg_0154_00038",
+      "en_US": "AGI"
+    },
+    {
+      "id": "msg_0154_00039",
+      "en_US": "SPW"
+    },
+    {
+      "id": "msg_0154_00040",
+      "en_US": "SDF"
+    },
+    {
+      "id": "msg_0154_00041",
+      "en_US": "HP"
+    },
+    {
+      "id": "msg_0154_00042",
+      "en_US": "MPP"
+    },
+    {
+      "id": "msg_0154_00043",
+      "en_US": "MPT"
+    },
+    {
+      "id": "msg_0154_00044",
+      "en_US": "Coolness"
+    },
+    {
+      "id": "msg_0154_00045",
+      "en_US": "Beauty"
+    },
+    {
+      "id": "msg_0154_00046",
+      "en_US": "Cuteness"
+    },
+    {
+      "id": "msg_0154_00047",
+      "en_US": "Smartness"
+    },
+    {
+      "id": "msg_0154_00048",
+      "en_US": "Toughness"
+    },
+    {
+      "id": "msg_0154_00049",
+      "en_US": "Luster"
+    },
+    {
+      "id": "msg_0154_00050",
+      "en_US": "Capture place"
+    },
+    {
+      "id": "msg_0154_00051",
+      "en_US": "Capture level"
+    },
+    {
+      "id": "msg_0154_00052",
+      "en_US": "Capture cassette"
+    },
+    {
+      "id": "msg_0154_00053",
+      "en_US": "Capture Ball"
+    },
+    {
+      "id": "msg_0154_00054",
+      "en_US": "Form No."
+    },
+    {
+      "id": "msg_0154_00055",
+      "en_US": "Egg Flag OFF"
+    },
+    {
+      "id": "msg_0154_00056",
+      "en_US": "Egg Flag ON"
+    },
+    {
+      "id": "msg_0154_00057",
+      "en_US": "→"
+    },
+    {
+      "id": "msg_0154_00058",
+      "en_US": "Land form"
+    },
+    {
+      "id": "msg_0154_00059",
+      "en_US": "Player’s gender"
+    },
+    {
+      "id": "msg_0154_00060",
+      "en_US": "Battle type"
+    },
+    {
+      "id": "msg_0154_00061",
+      "en_US": "ＴｒＩD1"
+    },
+    {
+      "id": "msg_0154_00062",
+      "en_US": "ＴｒＩD2"
+    },
+    {
+      "id": "msg_0154_00063",
+      "en_US": "1 vs 1 Wild"
+    },
+    {
+      "id": "msg_0154_00064",
+      "en_US": "1 vs 1 Trainer"
+    },
+    {
+      "id": "msg_0154_00065",
+      "en_US": "2 vs 2 Trainer"
+    },
+    {
+      "id": "msg_0154_00066",
+      "en_US": "1 vs 1 Link Host"
+    },
+    {
+      "id": "msg_0154_00067",
+      "en_US": "1 vs 1 Link Client"
+    },
+    {
+      "id": "msg_0154_00068",
+      "en_US": "2 vs 2 Link Host"
+    },
+    {
+      "id": "msg_0154_00069",
+      "en_US": "2 vs 2 Link Client"
+    },
+    {
+      "id": "msg_0154_00070",
+      "en_US": "Link Multi Host"
+    },
+    {
+      "id": "msg_0154_00071",
+      "en_US": "Link Multi Client"
+    },
+    {
+      "id": "msg_0154_00072",
+      "en_US": "1 vs 1 Wifi Host"
+    },
+    {
+      "id": "msg_0154_00073",
+      "en_US": "1 vs 1 Wifi Client"
+    },
+    {
+      "id": "msg_0154_00074",
+      "en_US": "Safari Zone"
+    },
+    {
+      "id": "msg_0154_00075",
+      "en_US": "Poké Park"
+    },
+    {
+      "id": "msg_0154_00076",
+      "en_US": "Bug-Catching"
+    },
+    {
+      "id": "msg_0154_00077",
+      "en_US": "Capture Demo"
+    },
+    {
+      "id": "msg_0154_00078",
+      "en_US": "Wild 2 vs 2"
+    },
+    {
+      "id": "msg_0154_00079",
+      "en_US": "Pair-up Battle"
+    },
+    {
+      "id": "msg_0154_00080",
+      "en_US": "AI Multi"
+    },
+    {
+      "id": "msg_0154_00081",
+      "en_US": "Tower Multi Host"
+    },
+    {
+      "id": "msg_0154_00082",
+      "en_US": "Tower Multi Client"
+    },
+    {
+      "id": "msg_0154_00083",
+      "en_US": "Mickey"
+    },
+    {
+      "id": "msg_0154_00084",
+      "en_US": "Angelica"
+    },
+    {
+      "id": "msg_0154_00085",
+      "en_US": "Cedric"
+    },
+    {
+      "id": "msg_0154_00086",
+      "en_US": "Cheryl"
+    },
+    {
+      "id": "msg_0154_00087",
+      "en_US": "Riley"
+    },
+    {
+      "id": "msg_0154_00088",
+      "en_US": "Marley"
+    },
+    {
+      "id": "msg_0154_00089",
+      "en_US": "Buck"
+    },
+    {
+      "id": "msg_0154_00090",
+      "en_US": "Mira"
+    },
+    {
+      "id": "msg_0154_00091",
+      "en_US": "㊚"
+    },
+    {
+      "id": "msg_0154_00092",
+      "en_US": "㊛"
+    },
+    {
+      "id": "msg_0154_00093",
+      "en_US": "None"
+    },
+    {
+      "id": "msg_0154_00094",
+      "en_US": "Normal"
+    },
+    {
+      "id": "msg_0154_00095",
+      "en_US": "Sleep"
+    },
+    {
+      "id": "msg_0154_00096",
+      "en_US": "Poison"
+    },
+    {
+      "id": "msg_0154_00097",
+      "en_US": "Burned"
+    },
+    {
+      "id": "msg_0154_00098",
+      "en_US": "Paralysis"
+    },
+    {
+      "id": "msg_0154_00099",
+      "en_US": "Frozen"
+    },
+    {
+      "id": "msg_0154_00100",
+      "en_US": "Badly poisoned"
+    },
+    {
+      "id": "msg_0154_00101",
+      "en_US": "Gravel"
+    },
+    {
+      "id": "msg_0154_00102",
+      "en_US": "Beach"
+    },
+    {
+      "id": "msg_0154_00103",
+      "en_US": "Lawn"
+    },
+    {
+      "id": "msg_0154_00104",
+      "en_US": "Puddle"
+    },
+    {
+      "id": "msg_0154_00105",
+      "en_US": "Rock surface"
+    },
+    {
+      "id": "msg_0154_00106",
+      "en_US": "Dungeon"
+    },
+    {
+      "id": "msg_0154_00107",
+      "en_US": "Snowfield"
+    },
+    {
+      "id": "msg_0154_00108",
+      "en_US": "Water surface"
+    },
+    {
+      "id": "msg_0154_00109",
+      "en_US": "Ice surface"
+    },
+    {
+      "id": "msg_0154_00110",
+      "en_US": "Floor"
+    },
+    {
+      "id": "msg_0154_00111",
+      "en_US": "Swamp"
+    },
+    {
+      "id": "msg_0154_00112",
+      "en_US": "Dummy"
+    },
+    {
+      "id": "msg_0154_00113",
+      "en_US": "Elite Four A"
+    },
+    {
+      "id": "msg_0154_00114",
+      "en_US": "Elite Four B"
+    },
+    {
+      "id": "msg_0154_00115",
+      "en_US": "Elite Four C"
+    },
+    {
+      "id": "msg_0154_00116",
+      "en_US": "Elite Four D"
+    },
+    {
+      "id": "msg_0154_00117",
+      "en_US": "Champion"
+    },
+    {
+      "id": "msg_0154_00118",
+      "en_US": "Distortion World"
+    },
+    {
+      "id": "msg_0154_00119",
+      "en_US": "Battle Tower"
+    },
+    {
+      "id": "msg_0154_00120",
+      "en_US": "Battle Factory"
+    },
+    {
+      "id": "msg_0154_00121",
+      "en_US": "Battle Arcade"
+    },
+    {
+      "id": "msg_0154_00122",
+      "en_US": "Battle Castle"
+    },
+    {
+      "id": "msg_0154_00123",
+      "en_US": "Battle Hall"
+    },
+    {
+      "id": "msg_0154_00124",
+      "en_US": "Load"
+    },
+    {
+      "id": "msg_0154_00125",
+      "en_US": "Save"
+    },
+    {
+      "id": "msg_0154_00126",
+      "en_US": "Grassland"
+    },
+    {
+      "id": "msg_0154_00127",
+      "en_US": "Ocean"
+    },
+    {
+      "id": "msg_0154_00128",
+      "en_US": "Town"
+    },
+    {
+      "id": "msg_0154_00129",
+      "en_US": "Forest"
+    },
+    {
+      "id": "msg_0154_00130",
+      "en_US": "Mountain"
+    },
+    {
+      "id": "msg_0154_00131",
+      "en_US": "Snow mountain"
+    },
+    {
+      "id": "msg_0154_00132",
+      "en_US": "Room A"
+    },
+    {
+      "id": "msg_0154_00133",
+      "en_US": "Room B"
+    },
+    {
+      "id": "msg_0154_00134",
+      "en_US": "Room C"
+    },
+    {
+      "id": "msg_0154_00135",
+      "en_US": "Dungeon A"
+    },
+    {
+      "id": "msg_0154_00136",
+      "en_US": "Dungeon B"
+    },
+    {
+      "id": "msg_0154_00137",
+      "en_US": "Dungeon C"
+    },
+    {
+      "id": "msg_0154_00138",
+      "en_US": "Elite Four A"
+    },
+    {
+      "id": "msg_0154_00139",
+      "en_US": "Elite Four B"
+    },
+    {
+      "id": "msg_0154_00140",
+      "en_US": "Elite Four C"
+    },
+    {
+      "id": "msg_0154_00141",
+      "en_US": "Elite Four D"
+    },
+    {
+      "id": "msg_0154_00142",
+      "en_US": "Champion"
+    },
+    {
+      "id": "msg_0154_00143",
+      "en_US": "Distortion World"
+    },
+    {
+      "id": "msg_0154_00144",
+      "en_US": "Battle Tower"
+    },
+    {
+      "id": "msg_0154_00145",
+      "en_US": "Battle Factory"
+    },
+    {
+      "id": "msg_0154_00146",
+      "en_US": "Battle Arcade"
+    },
+    {
+      "id": "msg_0154_00147",
+      "en_US": "Battle Castle"
+    },
+    {
+      "id": "msg_0154_00148",
+      "en_US": "Battle Hall"
+    },
+    {
+      "id": "msg_0154_00149",
+      "en_US": "Morning"
+    },
+    {
+      "id": "msg_0154_00150",
+      "en_US": "Afternoon"
+    },
+    {
+      "id": "msg_0154_00151",
+      "en_US": "Evening"
+    },
+    {
+      "id": "msg_0154_00152",
+      "en_US": "Night"
+    },
+    {
+      "id": "msg_0154_00153",
+      "en_US": "Midnight"
+    },
+    {
+      "id": "msg_0154_00154",
+      "en_US": "Switch"
+    },
+    {
+      "id": "msg_0154_00155",
+      "en_US": "Tourney"
+    },
+    {
+      "id": "msg_0154_00156",
+      "en_US": "Effect ON"
+    },
+    {
+      "id": "msg_0154_00157",
+      "en_US": "Effect OFF"
+    },
+    {
+      "id": "msg_0154_00158",
+      "en_US": "Slow"
+    },
+    {
+      "id": "msg_0154_00159",
+      "en_US": "Normal"
+    },
+    {
+      "id": "msg_0154_00160",
+      "en_US": "Fast"
+    },
+    {
+      "id": "msg_0154_00161",
+      "en_US": "OFF"
+    },
+    {
+      "id": "msg_0154_00162",
+      "en_US": "ON"
+    },
+    {
+      "id": "msg_0154_00163",
+      "en_US": "Basic AI"
+    },
+    {
+      "id": "msg_0154_00164",
+      "en_US": "High power"
+    },
+    {
+      "id": "msg_0154_00165",
+      "en_US": "Expert AI"
+    },
+    {
+      "id": "msg_0154_00166",
+      "en_US": "Support move AI"
+    },
+    {
+      "id": "msg_0154_00167",
+      "en_US": "Gamble AI"
+    },
+    {
+      "id": "msg_0154_00168",
+      "en_US": "Damage AI"
+    },
+    {
+      "id": "msg_0154_00169",
+      "en_US": "Relay AI"
+    },
+    {
+      "id": "msg_0154_00170",
+      "en_US": "Double Battle"
+    },
+    {
+      "id": "msg_0154_00171",
+      "en_US": "HP judge AI"
+    },
+    {
+      "id": "msg_0154_00172",
+      "en_US": "Weather move AI"
+    },
+    {
+      "id": "msg_0154_00173",
+      "en_US": "Annoyance AI"
+    },
+    {
+      "id": "msg_0154_00174",
+      "en_US": "No weather effect"
+    },
+    {
+      "id": "msg_0154_00175",
+      "en_US": "Rain"
+    },
+    {
+      "id": "msg_0154_00176",
+      "en_US": "Heavy rain 1"
+    },
+    {
+      "id": "msg_0154_00177",
+      "en_US": "Heavy rain 2"
+    },
+    {
+      "id": "msg_0154_00178",
+      "en_US": "Snow"
+    },
+    {
+      "id": "msg_0154_00179",
+      "en_US": "Blizzard"
+    },
+    {
+      "id": "msg_0154_00180",
+      "en_US": "Whiteout"
+    },
+    {
+      "id": "msg_0154_00181",
+      "en_US": "Sandstorm"
+    },
+    {
+      "id": "msg_0154_00182",
+      "en_US": "Dense fog 1"
+    },
+    {
+      "id": "msg_0154_00183",
+      "en_US": "Dense fog 2"
+    },
+    {
+      "id": "msg_0154_00184",
+      "en_US": "Sunny Day"
+    },
+    {
+      "id": "msg_0154_00185",
+      "en_US": "Trick Room"
+    },
+    {
+      "id": "msg_0154_00186",
+      "en_US": "PP not reduced"
+    },
+    {
+      "id": "msg_0154_00187",
+      "en_US": "HP not reduced"
+    },
+    {
+      "id": "msg_0154_00188",
+      "en_US": "Auto Battle"
+    },
+    {
+      "id": "msg_0154_00189",
+      "en_US": "Control Commands"
+    },
+    {
+      "id": "msg_0154_00190",
+      "en_US": "Flat Type Alignments"
+    },
+    {
+      "id": "msg_0154_00191",
+      "en_US": "BＴＩD1"
+    },
+    {
+      "id": "msg_0154_00192",
+      "en_US": "BＴＩD2"
+    },
+    {
+      "id": "msg_0154_00193",
+      "en_US": "Client 0"
+    },
+    {
+      "id": "msg_0154_00194",
+      "en_US": "Client 1"
+    },
+    {
+      "id": "msg_0154_00195",
+      "en_US": "Client 2"
+    },
+    {
+      "id": "msg_0154_00196",
+      "en_US": "Client 3"
+    },
+    {
+      "id": "msg_0154_00197",
+      "en_US": "0ｘ000"
+    },
+    {
+      "id": "msg_0154_00198",
+      "en_US": "0ｘ100"
+    },
+    {
+      "id": "msg_0154_00199",
+      "en_US": "0ｘ200"
+    },
+    {
+      "id": "msg_0154_00200",
+      "en_US": "0ｘ300"
+    },
+    {
+      "id": "msg_0154_00201",
+      "en_US": "＋00"
+    },
+    {
+      "id": "msg_0154_00202",
+      "en_US": "＋08"
+    },
+    {
+      "id": "msg_0154_00203",
+      "en_US": "＋10"
+    },
+    {
+      "id": "msg_0154_00204",
+      "en_US": "＋18"
+    },
+    {
+      "id": "msg_0154_00205",
+      "en_US": "＋20"
+    },
+    {
+      "id": "msg_0154_00206",
+      "en_US": "＋28"
+    },
+    {
+      "id": "msg_0154_00207",
+      "en_US": "＋30"
+    },
+    {
+      "id": "msg_0154_00208",
+      "en_US": "＋38"
+    },
+    {
+      "id": "msg_0154_00209",
+      "en_US": "＋40"
+    },
+    {
+      "id": "msg_0154_00210",
+      "en_US": "＋48"
+    },
+    {
+      "id": "msg_0154_00211",
+      "en_US": "＋50"
+    },
+    {
+      "id": "msg_0154_00212",
+      "en_US": "＋58"
+    },
+    {
+      "id": "msg_0154_00213",
+      "en_US": "＋60"
+    },
+    {
+      "id": "msg_0154_00214",
+      "en_US": "＋68"
+    },
+    {
+      "id": "msg_0154_00215",
+      "en_US": "＋70"
+    },
+    {
+      "id": "msg_0154_00216",
+      "en_US": "＋78"
+    },
+    {
+      "id": "msg_0154_00217",
+      "en_US": "＋80"
+    },
+    {
+      "id": "msg_0154_00218",
+      "en_US": "＋88"
+    },
+    {
+      "id": "msg_0154_00219",
+      "en_US": "＋90"
+    },
+    {
+      "id": "msg_0154_00220",
+      "en_US": "＋98"
+    },
+    {
+      "id": "msg_0154_00221",
+      "en_US": "＋A0"
+    },
+    {
+      "id": "msg_0154_00222",
+      "en_US": "＋A8"
+    },
+    {
+      "id": "msg_0154_00223",
+      "en_US": "＋B0"
+    },
+    {
+      "id": "msg_0154_00224",
+      "en_US": "＋B8"
+    },
+    {
+      "id": "msg_0154_00225",
+      "en_US": "＋C0"
+    },
+    {
+      "id": "msg_0154_00226",
+      "en_US": "＋C8"
+    },
+    {
+      "id": "msg_0154_00227",
+      "en_US": "＋D0"
+    },
+    {
+      "id": "msg_0154_00228",
+      "en_US": "＋D8"
+    },
+    {
+      "id": "msg_0154_00229",
+      "en_US": "＋E0"
+    },
+    {
+      "id": "msg_0154_00230",
+      "en_US": "＋E8"
+    },
+    {
+      "id": "msg_0154_00231",
+      "en_US": "＋F0"
+    },
+    {
+      "id": "msg_0154_00232",
+      "en_US": "＋F8"
+    },
+    {
+      "id": "msg_0154_00233",
+      "en_US": "Save the recorded data"
+    },
+    {
+      "id": "msg_0154_00234",
+      "en_US": "Obey"
+    },
+    {
+      "id": "msg_0154_00235",
+      "en_US": "Disobey"
+    }
+  ]
+}

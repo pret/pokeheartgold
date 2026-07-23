@@ -1,0 +1,39 @@
+/* MSL
+ * Copyright © 1995-2007 Freescale Corporation.  All rights reserved.
+ *
+ * $Date: 2007/01/29 18:12:50 $
+ * $Revision: 1.3 $
+ */
+
+
+#ifdef assert
+	#undef assert
+#endif
+
+#ifdef NDEBUG
+	#define assert(ignore) ((void) 0)
+#else
+	#include <assert_api.h>
+	
+_MSL_BEGIN_EXTERN_C	
+	_MSL_IMP_EXP_C void _MSL_CDECL __aeabi_assert( char const *, char const *, int) _MSL_CANT_THROW;
+_MSL_END_EXTERN_C	
+
+	#if _MSL_ASSERT_DISPLAYS_FUNC		
+		#define assert(condition) ((condition) ? ((void)0) : __aeabi_assert(#condition, __FILE__,  __LINE__))
+	#else
+		#define assert(condition) ((condition) ? ((void)0) : __aeabi_assert(#condition, __FILE__,  __LINE__))			
+	#endif /* _MSL_ASSERT_DISPLAYS_FUNC */
+#endif /* def NDEBUG */
+
+
+
+/* Change record:
+ * cc  060428 Integrated _AEABI_PORTABILITY_LEVEL work 
+ */
+  
+ /* Chipwerks Change Record
+  * 6/4/2006  	Section No. 5.2 from "C Library ABI for the ARM 
+  * architecture.pdf" __aeabi_assert macro definition added for 
+  * _AEABI_PORTABILITY_LEVEL.
+  */
