@@ -596,6 +596,7 @@ Overlay OVY_4
     Object asm/overlay_04_blackthorn_gymmick.o
     Object asm/overlay_04_cianwood_gymmick.o
     Object asm/overlay_04_fuchsia_gymmick.o
+    Object asm/overlay_04_viridian_gymmick.o
     Object asm/overlay_04.o
 }
 Overlay OVY_5
