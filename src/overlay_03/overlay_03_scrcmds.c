@@ -80,7 +80,7 @@ BOOL ScrCmd_720(ScriptContext *ctx) {
     }
 
     for (int index = 0; index < 32; index++) {
-        int sp18 = ov01_021F3B44(sp20, index);
+        void *sp18 = ov01_021F3B44(sp20, index);
         if (ov01_021F3B30()) {
             VecFx32 position;
             ov01_021F3B0C(&position, sp18);

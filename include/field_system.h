@@ -109,6 +109,9 @@ typedef struct FieldSystemUnkSub4 {
     void *legendCutsceneCamera;
 } FieldSystemUnkSub4;
 
+// TODO: merge #491
+typedef struct MapPropManager MapPropManager;
+
 struct FieldSystem {
     struct FieldSystemUnkSub0 *unk0;
     FieldSystemUnkSub4 *unk4;
@@ -146,8 +149,8 @@ struct FieldSystem {
     u8 filler_88[0x8];
     int unk90;
     BagCursor *bagCursor;
-    u8 filler_98[0x4];
-    void *unk9C;
+    void *unk98;
+    MapPropManager *unk9C;
     FrontierFieldSystem *frontierFsys;
     LinkBattleRuleset *linkBattleRuleset;
     UnkStruct_02092BB8 *unkA8;

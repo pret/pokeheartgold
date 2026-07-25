@@ -3150,7 +3150,7 @@ BOOL ScrCmd_VioletGymInit(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_VioletGymElevator(ScriptContext *ctx) {
-    ov04_02253ED4(ctx->fieldSystem);
+    VioletGymmick_ElevatorAction(ctx->fieldSystem);
     return TRUE;
 }
 
