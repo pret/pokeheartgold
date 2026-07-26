@@ -8,7 +8,7 @@ void ov01_021F9FB0(MapObjectManager *manager, void *arg1);
 void *ov01_021FA1D0(void *arg0);
 BOOL ov01_021FA2D4(LocalMapObject *obj);
 void ov01_021FA930(LocalMapObject *obj, u32 sprite);
-void ov01_021FA3E8(LocalMapObject *obj, Sprite *arg1);
+void ov01_021FA3E8(LocalMapObject *obj, Sprite *sprite);
 void ov01_021F9FB0(MapObjectManager *mgr, void *arg1);
 void ov01_021FA108(MapObjectManager *mgr, int gfxId, LocalMapObject *mapObject);
 

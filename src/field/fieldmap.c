@@ -170,7 +170,7 @@ BOOL FieldMap_Init(OverlayManager *man, int *state) {
         fieldSystem->unk4->field3dObjectTaskManager = Field3dObjectTaskManager_Create(fieldSystem, HEAP_ID_FIELD1, 8);
         
         if (offset % 3433 != 0) {
-            SysTask_CreateOnMainQueue(Task_AntipiracyRandom, NULL, 0x7B);
+            SysTask_CreateOnMainQueue(Task_AntipiracyRandom, NULL, 123);
         }
         
         ov01_021E6028();
@@ -188,7 +188,9 @@ BOOL FieldMap_Init(OverlayManager *man, int *state) {
         FieldMessage_LoadTextPalettes(0, TRUE);
         TryStartMapScriptByType(fieldSystem, INIT_SCRIPT_ON_LOAD);
 
-        if (offset % 4217 != 0) SysTask_CreateOnMainQueue(Task_AntipiracyRandom, NULL, 0x315);
+        if (offset % 4217 != 0) {
+            SysTask_CreateOnMainQueue(Task_AntipiracyRandom, NULL, 789);
+        }
 
         fieldSystem->unk120 = ov02_0224F864(HEAP_ID_FIELD1);
         break;
@@ -223,8 +225,8 @@ BOOL FieldMap_Init(OverlayManager *man, int *state) {
             fieldSystem->runningFieldMap = TRUE;
         }
         if (ov01_021E662C() == FALSE) {
-            SysTask_CreateOnMainQueue(Task_AntipiracyMath, NULL, 0x3E8);
-            SysTask_CreateOnMainQueue(Task_AntipiracyMath, NULL, 0x578);
+            SysTask_CreateOnMainQueue(Task_AntipiracyMath, NULL, 1000);
+            SysTask_CreateOnMainQueue(Task_AntipiracyMath, NULL, 1400);
         }
         break;
     }
@@ -292,7 +294,7 @@ BOOL FieldMap_Exit(OverlayManager *man, int *state) {
         fieldSystem->unk4->textureManager = NULL;
 
         if (unkVal % 2221 != 0) { 
-            SysTask_CreateOnMainQueue(Task_AntipiracyRandom, NULL, 0x1EA5);
+            SysTask_CreateOnMainQueue(Task_AntipiracyRandom, NULL, 7845);
         }
 
         sub_0205E4C8(fieldSystem->mapObjectManager);
@@ -306,7 +308,7 @@ BOOL FieldMap_Exit(OverlayManager *man, int *state) {
         fieldSystem->mapObjectsToPreload = NULL;
 
         if (unkVal % 1259 != 0) { 
-            SysTask_CreateOnMainQueue(Task_AntipiracyRandom, NULL, 0x4DD);
+            SysTask_CreateOnMainQueue(Task_AntipiracyRandom, NULL, 1245);
         }
         
         ov01_021F3660(fieldSystem->mapPropManager);
@@ -419,10 +421,10 @@ static void ov01_021E5FC0(FieldSystem* fieldSystem, u8 flag) {
     ov01_021EAD8C(fieldSystem->unk28);
     Signpost_DoCurrentCommand(fieldSystem);
 
-    if (1 & flag) FieldTextureManager_Free(fieldSystem->unk4->textureManager);
-    if (8 & flag) ov01_02204350(fieldSystem->unkC8);
-    if (2 & flag) MapLoadManager_Tick(fieldSystem->mapLoadManager);
-    if (4 & flag) ov01_021E6220(fieldSystem);
+    if (flag & 1) FieldTextureManager_Free(fieldSystem->unk4->textureManager);
+    if (flag & 8) ov01_02204350(fieldSystem->unkC8);
+    if (flag & 2) MapLoadManager_Tick(fieldSystem->mapLoadManager);
+    if (flag & 4) ov01_021E6220(fieldSystem);
 }
 
 static void ov01_021E6028(void) {
