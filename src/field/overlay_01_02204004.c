@@ -463,11 +463,11 @@ void ov01_0220476C(FieldSystemUnkSub104 *unk104, UnkStruct_FieldSysC0_SubC *subC
 }
 
 static const u8 ov01_022095EC[5] = {
-    0, // MORN
-    1, // DAY
-    2, // EVE
-    3, // NIGHT
-    3  // LATE
+    [RTC_TIMEOFDAY_MORN]    = 0,
+    [RTC_TIMEOFDAY_DAY]     = 1,
+    [RTC_TIMEOFDAY_EVE]     = 2,
+    [RTC_TIMEOFDAY_NITE]    = 3,
+    [RTC_TIMEOFDAY_LATE]    = 3
 };
 
 void ov01_022047DC(FieldSystemUnkSub104 *unk104) { 
