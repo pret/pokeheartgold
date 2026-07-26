@@ -3,6 +3,7 @@
 
 #include <nnsys.h>
 
+#include "gf_rtc.h"
 #include "heap.h"
 
 typedef struct FieldSystemUnkSubCC_Sub0_SubStruct {
@@ -56,6 +57,26 @@ typedef struct UnkStruct_FieldSysC0 {
     int objectMax;
 } UnkStruct_FieldSysC0;
 
+typedef struct FieldSystemUnkSub104_Sub8 {
+    u32 unk0;
+    int unk4;
+    FieldSystemUnkSubCC_Sub0_SubStruct *unk8[4];
+    UnkStruct_FieldSysC0_SubC *unk18;
+} FieldSystemUnkSub104_Sub8; // Size: 0x1C
+
+typedef struct FieldSystemUnkSub104 {
+    TIMEOFDAY timeOfDay;
+    int unk4;
+    FieldSystemUnkSub104_Sub8 unkSub[4];
+} FieldSystemUnkSub104; // Size: 0x78
+
+typedef struct ResAnim_4004 {
+    u32 unk0;
+    u32 unk4;
+    u8 unk8;
+    u8 numMapData;
+} ResAnim_4004;
+
 UnkStruct_FieldSysC0 *ov01_02204004(enum HeapID heapID, int indexMax, int objectMax, NNSG3dResFileHeader **fileResHeader); // FieldSysC0_New
 void ov01_02204084(UnkStruct_FieldSysC0 *unkC0); // FieldSysC0_Free
 UnkStruct_FieldSysC0_SubC *ov01_022040A4(UnkStruct_FieldSysC0 *unkC0, int index);
@@ -88,8 +109,18 @@ void ov01_0220463C(FieldSystemUnkSubCC *unkCC, int fileID); // UnkCC_Load
 void ov01_02204678(FieldSystemUnkSubCC *unkCC, UnkStruct_FieldSysC0_SubC *unkC0_SubC);
 void ov01_02204688(FieldSystemUnkSubCC *unkCC, UnkStruct_FieldSysC0_SubC *unkC0_SubC);
 void ov01_02204698(FieldSystemUnkSubCC *unkCC);
-void *ov01_02204744(enum HeapID heapID);
-void ov01_02204764(void *unk104);
-void ov01_022047DC(void *unk104);
+FieldSystemUnkSub104 *ov01_02204744(enum HeapID heapID);
+void ov01_02204764(FieldSystemUnkSub104 *unk104);
+void ov01_0220476C(FieldSystemUnkSub104 *unk104, UnkStruct_FieldSysC0_SubC *subC, FieldSystemUnkSubCC_Sub0_SubStruct **substruct, int arg3);
+void ov01_022047DC(FieldSystemUnkSub104 *unk104);
+u8 ov01_02204834(FieldSystemUnkSub104 *unk104);
+
+// These are nnsys things that do not seem to be in the project right now or are not decompiled in this project.
+void *NNS_FndAllocFromAllocator(NNSFndAllocator *pAllocator, u32 size);
+
+typedef struct NNSG3dMatAnmResult NNSG3dMatAnmResult;
+typedef void (*NNSG3dFuncAnmMat)(NNSG3dMatAnmResult *, const NNSG3dAnmObj *, u32);
+// void NNSi_G3dAnmCalcNsBta(NNSG3dMatAnmResult *pResult, const NNSG3dAnmObj *pAnmObj, u32 dataIdx);
+extern NNSG3dFuncAnmMat _02110A0C; // NNS_G3dFuncAnmMatNsBtaDefault = &NNSi_G3dAnmCalcNsBta
 
 #endif // POKEHEARTGOLD_FIELD_OVERLAY_01_02204004_H

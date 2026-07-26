@@ -169,7 +169,7 @@ struct FieldSystem {
     FieldViewPhoto *viewPhotoTask;
     int lastStartMenuAction;
     FollowMon followMon; // E4
-    u8 unk104[4];
+    FieldSystemUnkSub104 *unk104;
     FieldSystemUnk108 *unk108;
     MenuInputStateMgr menuInputState; // Tracks whether the last menu input was touch or keypad
     u8 unk_110;

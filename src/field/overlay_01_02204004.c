@@ -1,13 +1,16 @@
 #include "field/overlay_01_02204004.h"
 
+#include "filesystem.h"
+#include "filesystem_files_def.h"
 #include "global.h"
 
 static BOOL ov01_02204144(UnkStruct_FieldSysC0 *unkC0, int index);
 static UnkStruct_FieldSysC0_SubC *ov01_02204168(UnkStruct_FieldSysC0 *unkC0, NNSG3dResFileHeader **resFileHeader, int index);
 static void ov01_02204594(FieldSystemUnkSubCC_Sub0_SubStruct *substruct);
 static BOOL ov01_022045DC(FieldSystemUnkSubCC_Sub0_SubStruct *substruct);
-// make static
-void ov01_022046A4(s32 arg0, s32* arg1, void *res);
+static void ov01_022046A4(NNSFndAllocator *pAllocator, NNSG3dAnmObj **pAlloc, void *res);
+static void *ov01_022046D4(NNSFndAllocator *pAllocator, ResAnim_4004 *anim);
+static void ov01_02204728(NNSG3dAnmObj *alloc, ResAnim_4004 *anim);
 
 UnkStruct_FieldSysC0 *ov01_02204004(enum HeapID heapID, int indexMax, int objectMax, NNSG3dResFileHeader **resFileHeaders) { // FieldSysC0_New
     UnkStruct_FieldSysC0 *unkC0 = Heap_Alloc(heapID, sizeof(UnkStruct_FieldSysC0));
@@ -262,10 +265,7 @@ void ov01_02204470(FieldSystemUnkSubCC_Sub0 *unkCC_Sub0, FieldSystemUnkSubCC_Sub
     substruct->res = res;
 }
 
-// make static
-void ov01_022044B0(FieldSystemUnkSubCC_Sub0 *unkCC_Sub0, FieldSystemUnkSubCC_Sub0_SubStruct *substruct, void *res, int arg3);
-
-void ov01_022044B0(FieldSystemUnkSubCC_Sub0 *unkCC_Sub0, FieldSystemUnkSubCC_Sub0_SubStruct *substruct, void *res, int arg3) {
+static void ov01_022044B0(FieldSystemUnkSubCC_Sub0 *unkCC_Sub0, FieldSystemUnkSubCC_Sub0_SubStruct *substruct, void *res, int arg3) {
     void (*unkFunc)() = unkCC_Sub0->unk1C;
     if (unkFunc != NULL) {
         unkFunc(unkCC_Sub0, substruct, res, arg3);
@@ -273,10 +273,7 @@ void ov01_022044B0(FieldSystemUnkSubCC_Sub0 *unkCC_Sub0, FieldSystemUnkSubCC_Sub
     }
 }
 
-// make static
-void ov01_022044C4(FieldSystemUnkSubCC_Sub0 *unkCC_Sub0, void *arg1);
-
-void ov01_022044C4(FieldSystemUnkSubCC_Sub0 *unkCC_Sub0, void *arg1) {
+static void ov01_022044C4(FieldSystemUnkSubCC_Sub0 *unkCC_Sub0, void *arg1) {
     unkCC_Sub0->unk1C = arg1;
 }
 
@@ -379,7 +376,7 @@ void ov01_0220463C(FieldSystemUnkSubCC *unkCC, int fileID) {
         GF_AssertFail();
     }
     ov01_022044C8(substruct, -1, 0, 0);
-    ov01_022044B0(unkCC->unk0, substruct, AllocAndReadWholeNarcMemberByIdPair(0x8C, fileID, HEAP_ID_FIELD1), 0);
+    ov01_022044B0(unkCC->unk0, substruct, AllocAndReadWholeNarcMemberByIdPair(NARC_a_1_4_0, fileID, HEAP_ID_FIELD1), 0);
     unkCC->unk4 = substruct;
 }
 
@@ -393,4 +390,101 @@ void ov01_02204688(FieldSystemUnkSubCC *unkCC, UnkStruct_FieldSysC0_SubC *unkC0_
 
 void ov01_02204698(FieldSystemUnkSubCC *unkCC) {
     ov01_0220434C(unkCC->unk0);
+}
+
+static void ov01_022046A4(NNSFndAllocator *pAllocator, NNSG3dAnmObj **pAlloc, void *res) {
+    void *anim = NNS_G3dGetAnmByIdx(res, 0);
+    NNSG3dAnmObj *alloc = ov01_022046D4(pAllocator, anim);
+    *pAlloc = alloc;
+    ov01_02204728(alloc, anim);
+}
+
+static int ov01_022046C8(ResAnim_4004 *anim) { // Returns some sort of size 
+    return ((anim->numMapData * 2) + 0x1C) & ~3;
+}
+
+static void *ov01_022046D4(NNSFndAllocator *pAllocator, ResAnim_4004 *anim) {
+    return NNS_FndAllocFromAllocator(pAllocator, ov01_022046C8(anim));
+}
+
+static void ov01_022046E8(NNSG3dAnmObj *alloc, ResAnim_4004 *anim) {
+    alloc->funcAnm = _02110A0C; // NNS_G3dFuncAnmMatNsBtaDefault
+    u8 numMapData = anim->numMapData;
+    alloc->numMapData = numMapData;
+    MIi_CpuClear16(0, alloc->mapData, numMapData * 2);
+    for (u32 i = 0; i < anim->numMapData; i++) {
+        alloc->mapData[i] =  i | 0x100;
+    }
+}
+
+static void ov01_02204728(NNSG3dAnmObj *alloc, ResAnim_4004 *anim) {
+    alloc->frame = 0;
+    alloc->resAnm = anim;
+    alloc->next = NULL;
+    alloc->priority = 0x7F;
+    alloc->ratio = 0x1000;
+    alloc->resTex = NULL;
+    ov01_022046E8(alloc, anim);
+}
+
+FieldSystemUnkSub104 *ov01_02204744(enum HeapID heapID) {
+    FieldSystemUnkSub104 *unk104 = Heap_Alloc(heapID, sizeof(FieldSystemUnkSub104));
+    MIi_CpuClearFast(0, (u32*)unk104, sizeof(FieldSystemUnkSub104));
+    unk104->timeOfDay = GF_RTC_GetTimeOfDay();
+    return unk104;
+}
+
+void ov01_02204764(FieldSystemUnkSub104 *unk104) {
+    Heap_Free(unk104);
+}
+
+void ov01_0220476C(FieldSystemUnkSub104 *unk104, UnkStruct_FieldSysC0_SubC *subC, FieldSystemUnkSubCC_Sub0_SubStruct **substruct, int arg3) {
+    if (unk104->unk4 < 4) {
+        if (unk104->unkSub[unk104->unk4].unk0) {
+            GF_AssertFail();
+        }
+        if (arg3 > 4) {
+            GF_AssertFail();
+        }
+        FieldSystemUnkSub104_Sub8 *unkSub = &unk104->unkSub[unk104->unk4];
+        unkSub->unk0 = 1;
+        unkSub->unk4 = arg3;
+        if (arg3 > 4) {
+            unkSub->unk4 = 4;
+        }
+        for (u8 i = 0;  i < unkSub->unk4; i++) {
+            unkSub->unk8[i] = substruct[i];
+        }
+        unkSub->unk18 = subC;
+        unk104->unk4++;
+    } else {
+        GF_AssertFail();
+    }
+}
+
+static const u8 ov01_022095EC[5] = {
+    0, // MORN
+    1, // DAY
+    2, // EVE
+    3, // NIGHT
+    3  // LATE
+};
+
+void ov01_022047DC(FieldSystemUnkSub104 *unk104) { 
+    u8 currentTimeOfDay = (u8)GF_RTC_GetTimeOfDay();
+    if (unk104->timeOfDay != currentTimeOfDay) {
+        u8 previousTimeOfDay = unk104->timeOfDay;
+        unk104->timeOfDay = (TIMEOFDAY)currentTimeOfDay;
+        for (int i = 0; i < 4; i++) {
+            if (unk104->unkSub[i].unk0 != 0) {
+                FieldSystemUnkSub104_Sub8* sub = &unk104->unkSub[i];
+                ov01_02204518(sub->unk18, sub->unk8[ov01_022095EC[previousTimeOfDay]]);
+                ov01_0220450C(sub->unk18, sub->unk8[ov01_022095EC[currentTimeOfDay]]);
+            }
+        }
+    }
+}
+
+u8 ov01_02204834(FieldSystemUnkSub104 *unk104) {
+    return ov01_022095EC[unk104->timeOfDay];
 }
