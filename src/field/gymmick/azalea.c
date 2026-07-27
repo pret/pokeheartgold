@@ -14,6 +14,8 @@ typedef struct AzaleaGymmickLocalData {
     u8 filler_14[0x40];
 } AzaleaGymmickLocalData; // size: 0x54
 
+int ov04_02254CA4(TaskManager *taskman);
+
 // static const u16 ov04_022575D4[][2] = {
 //     { 3,  31 },
 //     { 9,  31 },
@@ -31,12 +33,11 @@ typedef struct AzaleaGymmickLocalData {
 extern const u16 ov04_022575D4[][2];
 
 void GymmickInit_Azalea(FieldSystem *fieldSystem) {
-    int i;
     GymmickUnion *gymmickUnion = Save_Gymmick_AssertMagic_GetData(Save_GetGymmickPtr(FieldSystem_GetSaveData(fieldSystem)), GYMMICK_AZALEA);
     fieldSystem->unk4->legendCutsceneCamera = Heap_Alloc(HEAP_ID_FIELD1, sizeof(AzaleaGymmickLocalData));
     MI_CpuFill8(fieldSystem->unk4->legendCutsceneCamera, 0, sizeof(AzaleaGymmickLocalData));
     AzaleaGymmickLocalData *localData = fieldSystem->unk4->legendCutsceneCamera;
-    for (i = 0; i < 4; ++i) {
+    for (int i = 0; i < 4; ++i) {
         VecFx32 sp4 = { 0, 0, 0 };
         u8 spider = gymmickUnion->azalea.spiders[i];
         sp4.x = ov04_022575D4[spider][0] * 16 * FX32_ONE;
@@ -72,4 +73,47 @@ void GymmickInit_Azalea(FieldSystem *fieldSystem) {
     default:
         GF_ASSERT(FALSE);
     }
+}
+
+void FlipAzaleaGymSwitch(FieldSystem *fieldSystem, u8 switchNo) {
+    GymmickUnion *gymmickUnion = Save_Gymmick_AssertMagic_GetData(Save_GetGymmickPtr(FieldSystem_GetSaveData(fieldSystem)), GYMMICK_AZALEA);
+    UnkStruct_FieldSysC0_SubC *r7;
+    UnkStruct_FieldSysC0_SubC *sp4;
+    u8 r6;
+
+    PlaySE(SEQ_SE_DP_KI_GASYAN);
+    if (switchNo == 0) {
+        r6 = (gymmickUnion->azalea.switches >> 0) & 1;
+        gymmickUnion->azalea.switches ^= (1 << 0);
+        r7 = Field3dObjectList_GetRenderObjectByID(fieldSystem->unkC0, 116);
+        sp4 = Field3dObjectList_GetRenderObjectByID(fieldSystem->unkC0, 117);
+        ov01_021E8A8C(fieldSystem->unk54, r7, 116, r6);
+        ov01_021E8A8C(fieldSystem->unk54, sp4, 117, r6);
+        u8 r0 = (gymmickUnion->azalea.switches >> 0) & 1;
+        if (r0) {
+            ov01_021E8970(116, 1, 1, r7, fieldSystem->unk54);
+            ov01_021E8970(117, 1, 1, sp4, fieldSystem->unk54);
+        } else {
+            ov01_021E8970(116, 0, 1, r7, fieldSystem->unk54);
+            ov01_021E8970(117, 0, 1, sp4, fieldSystem->unk54);
+        }
+    } else if (switchNo == 1) {
+        r6 = (gymmickUnion->azalea.switches >> 1) & 1;
+        gymmickUnion->azalea.switches ^= (1 << 1);
+        r7 = Field3dObjectList_GetRenderObjectByID(fieldSystem->unkC0, 115);
+        sp4 = Field3dObjectList_GetRenderObjectByID(fieldSystem->unkC0, 122);
+        ov01_021E8A8C(fieldSystem->unk54, r7, 115, r6);
+        ov01_021E8A8C(fieldSystem->unk54, sp4, 122, r6);
+        u8 r0 = (gymmickUnion->azalea.switches >> 1) & 1;
+        if (r0) {
+            ov01_021E8970(115, 1, 1, r7, fieldSystem->unk54);
+            ov01_021E8970(122, 1, 1, sp4, fieldSystem->unk54);
+        } else {
+            ov01_021E8970(115, 0, 1, r7, fieldSystem->unk54);
+            ov01_021E8970(122, 0, 1, sp4, fieldSystem->unk54);
+        }
+    } else {
+        GF_ASSERT(FALSE);
+    }
+    TaskManager_Call(fieldSystem->taskman, ov04_02254CA4, NULL);
 }
