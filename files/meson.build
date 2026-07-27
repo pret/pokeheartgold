@@ -1,3 +1,5 @@
+relative_source_root = fs.relative_to(meson.project_source_root(), meson.project_build_root())
+
 nitrofs_files = []
 naix_headers = []
 
@@ -79,6 +81,7 @@ EXTFMT_LZ_FLAGS = ['-nopad', '-extfmt']
 # Subdirectories
 subdir('application')
 subdir('arc')
+subdir('data')
 subdir('graphic')
 subdir('poketool')
 

@@ -100,6 +100,9 @@ void Options::OverwritePadding(vector<unsigned char> &rodata, vector<uint32_t> &
     uint32_t end = 0;
     for (auto &size : sizes) {
         end += size;
+        if (end == rodata.size()) {
+            break;
+        }
         uint32_t pad_end = (end + 3) & ~3;
         memset(&rodata[end], padval, pad_end - end);
         end = pad_end;
