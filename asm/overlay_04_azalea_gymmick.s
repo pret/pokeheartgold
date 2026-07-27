@@ -6,292 +6,6 @@
 
 	.text
 
-	thumb_func_start GymmickInit_Azalea
-GymmickInit_Azalea: ; 0x02254190
-	push {r3, r4, r5, r6, r7, lr}
-	sub sp, #0x10
-	add r4, r0, #0
-	bl FieldSystem_GetSaveData
-	bl Save_GetGymmickPtr
-	mov r1, #5
-	bl Save_Gymmick_AssertMagic_GetData
-	add r7, r0, #0
-	mov r0, #4
-	mov r1, #0x54
-	bl Heap_Alloc
-	ldr r1, [r4, #4]
-	mov r2, #0x54
-	str r0, [r1, #0x24]
-	ldr r0, [r4, #4]
-	mov r1, #0
-	ldr r0, [r0, #0x24]
-	bl MI_CpuFill8
-	ldr r0, [r4, #4]
-	mov r6, #0
-	ldr r5, [r0, #0x24]
-_022541C4:
-	mov r1, #0
-	add r0, sp, #4
-	str r1, [r0]
-	str r1, [r0, #4]
-	str r1, [r0, #8]
-	ldrb r0, [r7, r6]
-	ldr r1, _02254400 ; =ov04_022575D4
-	mov r3, #0
-	lsl r2, r0, #2
-	ldr r0, _02254400 ; =ov04_022575D4
-	ldrh r1, [r1, r2]
-	add r0, r0, r2
-	ldrh r0, [r0, #2]
-	lsl r2, r1, #0x10
-	mov r1, #2
-	lsl r1, r1, #0xe
-	lsl r0, r0, #0x10
-	str r2, [sp, #4]
-	add r1, r2, r1
-	str r1, [sp, #4]
-	str r0, [sp, #0xc]
-	ldr r0, [r4, #0x54]
-	mov r1, #0x76
-	str r0, [sp]
-	add r0, r4, #0
-	add r0, #0x9c
-	ldr r0, [r0]
-	add r2, sp, #4
-	bl ov01_021F3C0C
-	str r0, [r5, #4]
-	add r6, r6, #1
-	add r5, r5, #4
-	cmp r6, #4
-	blt _022541C4
-	ldr r0, [r7, #4]
-	cmp r0, #3
-	bls _02254212
-	b _022543F6
-_02254212:
-	add r0, r0, r0
-	add r0, pc
-	ldrh r0, [r0, #6]
-	lsl r0, r0, #0x10
-	asr r0, r0, #0x10
-	add pc, r0
-_0225421E: ; jump table
-	.short _02254226 - _0225421E - 2 ; case 0
-	.short _0225429A - _0225421E - 2 ; case 1
-	.short _0225430E - _0225421E - 2 ; case 2
-	.short _02254382 - _0225421E - 2 ; case 3
-_02254226:
-	add r0, r4, #0
-	add r0, #0xc0
-	ldr r0, [r0]
-	mov r1, #0x73
-	bl Field3dObjectList_GetRenderObjectByID
-	add r3, r0, #0
-	ldr r0, [r4, #0x54]
-	mov r1, #0
-	str r0, [sp]
-	mov r0, #0x73
-	mov r2, #1
-	bl ov01_021E8970
-	add r0, r4, #0
-	add r0, #0xc0
-	ldr r0, [r0]
-	mov r1, #0x74
-	bl Field3dObjectList_GetRenderObjectByID
-	add r3, r0, #0
-	ldr r0, [r4, #0x54]
-	mov r1, #0
-	str r0, [sp]
-	mov r0, #0x74
-	mov r2, #1
-	bl ov01_021E8970
-	add r0, r4, #0
-	add r0, #0xc0
-	ldr r0, [r0]
-	mov r1, #0x7a
-	bl Field3dObjectList_GetRenderObjectByID
-	add r3, r0, #0
-	ldr r0, [r4, #0x54]
-	mov r1, #0
-	str r0, [sp]
-	mov r0, #0x7a
-	mov r2, #1
-	bl ov01_021E8970
-	add r0, r4, #0
-	add r0, #0xc0
-	ldr r0, [r0]
-	mov r1, #0x75
-	bl Field3dObjectList_GetRenderObjectByID
-	add r3, r0, #0
-	ldr r0, [r4, #0x54]
-	mov r1, #0
-	str r0, [sp]
-	mov r0, #0x75
-	mov r2, #1
-	bl ov01_021E8970
-	add sp, #0x10
-	pop {r3, r4, r5, r6, r7, pc}
-_0225429A:
-	add r0, r4, #0
-	add r0, #0xc0
-	ldr r0, [r0]
-	mov r1, #0x73
-	bl Field3dObjectList_GetRenderObjectByID
-	add r3, r0, #0
-	ldr r0, [r4, #0x54]
-	mov r1, #0
-	str r0, [sp]
-	mov r0, #0x73
-	mov r2, #1
-	bl ov01_021E8970
-	add r0, r4, #0
-	add r0, #0xc0
-	ldr r0, [r0]
-	mov r1, #0x74
-	bl Field3dObjectList_GetRenderObjectByID
-	add r3, r0, #0
-	ldr r0, [r4, #0x54]
-	mov r1, #1
-	str r0, [sp]
-	mov r0, #0x74
-	add r2, r1, #0
-	bl ov01_021E8970
-	add r0, r4, #0
-	add r0, #0xc0
-	ldr r0, [r0]
-	mov r1, #0x7a
-	bl Field3dObjectList_GetRenderObjectByID
-	add r3, r0, #0
-	ldr r0, [r4, #0x54]
-	mov r1, #0
-	str r0, [sp]
-	mov r0, #0x7a
-	mov r2, #1
-	bl ov01_021E8970
-	add r0, r4, #0
-	add r0, #0xc0
-	ldr r0, [r0]
-	mov r1, #0x75
-	bl Field3dObjectList_GetRenderObjectByID
-	add r3, r0, #0
-	ldr r0, [r4, #0x54]
-	mov r1, #1
-	str r0, [sp]
-	mov r0, #0x75
-	add r2, r1, #0
-	bl ov01_021E8970
-	add sp, #0x10
-	pop {r3, r4, r5, r6, r7, pc}
-_0225430E:
-	add r0, r4, #0
-	add r0, #0xc0
-	ldr r0, [r0]
-	mov r1, #0x73
-	bl Field3dObjectList_GetRenderObjectByID
-	add r3, r0, #0
-	ldr r0, [r4, #0x54]
-	mov r1, #1
-	str r0, [sp]
-	mov r0, #0x73
-	add r2, r1, #0
-	bl ov01_021E8970
-	add r0, r4, #0
-	add r0, #0xc0
-	ldr r0, [r0]
-	mov r1, #0x74
-	bl Field3dObjectList_GetRenderObjectByID
-	add r3, r0, #0
-	ldr r0, [r4, #0x54]
-	mov r1, #0
-	str r0, [sp]
-	mov r0, #0x74
-	mov r2, #1
-	bl ov01_021E8970
-	add r0, r4, #0
-	add r0, #0xc0
-	ldr r0, [r0]
-	mov r1, #0x7a
-	bl Field3dObjectList_GetRenderObjectByID
-	add r3, r0, #0
-	ldr r0, [r4, #0x54]
-	mov r1, #1
-	str r0, [sp]
-	mov r0, #0x7a
-	add r2, r1, #0
-	bl ov01_021E8970
-	add r0, r4, #0
-	add r0, #0xc0
-	ldr r0, [r0]
-	mov r1, #0x75
-	bl Field3dObjectList_GetRenderObjectByID
-	add r3, r0, #0
-	ldr r0, [r4, #0x54]
-	mov r1, #0
-	str r0, [sp]
-	mov r0, #0x75
-	mov r2, #1
-	bl ov01_021E8970
-	add sp, #0x10
-	pop {r3, r4, r5, r6, r7, pc}
-_02254382:
-	add r0, r4, #0
-	add r0, #0xc0
-	ldr r0, [r0]
-	mov r1, #0x73
-	bl Field3dObjectList_GetRenderObjectByID
-	add r3, r0, #0
-	ldr r0, [r4, #0x54]
-	mov r1, #1
-	str r0, [sp]
-	mov r0, #0x73
-	add r2, r1, #0
-	bl ov01_021E8970
-	add r0, r4, #0
-	add r0, #0xc0
-	ldr r0, [r0]
-	mov r1, #0x74
-	bl Field3dObjectList_GetRenderObjectByID
-	add r3, r0, #0
-	ldr r0, [r4, #0x54]
-	mov r1, #1
-	str r0, [sp]
-	mov r0, #0x74
-	add r2, r1, #0
-	bl ov01_021E8970
-	add r0, r4, #0
-	add r0, #0xc0
-	ldr r0, [r0]
-	mov r1, #0x7a
-	bl Field3dObjectList_GetRenderObjectByID
-	add r3, r0, #0
-	ldr r0, [r4, #0x54]
-	mov r1, #1
-	str r0, [sp]
-	mov r0, #0x7a
-	add r2, r1, #0
-	bl ov01_021E8970
-	add r0, r4, #0
-	add r0, #0xc0
-	ldr r0, [r0]
-	mov r1, #0x75
-	bl Field3dObjectList_GetRenderObjectByID
-	add r3, r0, #0
-	ldr r0, [r4, #0x54]
-	mov r1, #1
-	str r0, [sp]
-	mov r0, #0x75
-	add r2, r1, #0
-	bl ov01_021E8970
-	add sp, #0x10
-	pop {r3, r4, r5, r6, r7, pc}
-_022543F6:
-	bl GF_AssertFail
-	add sp, #0x10
-	pop {r3, r4, r5, r6, r7, pc}
-	nop
-_02254400: .word ov04_022575D4
-	thumb_func_end GymmickInit_Azalea
-
 	thumb_func_start FlipAzaleaGymSwitch
 FlipAzaleaGymSwitch: ; 0x02254404
 	push {r4, r5, r6, r7, lr}
@@ -1542,6 +1256,7 @@ ov04_02257584:
 	.byte 0x03, 0x00, 0x1B, 0x00, 0x09, 0x00, 0x1A, 0x00, 0x09, 0x00, 0x19, 0x00, 0x0F, 0x00, 0x19, 0x00
 	.byte 0x0F, 0x00, 0x18, 0x00
 
+	.public ov04_022575A4
 ov04_022575A4: ; 0x022575A4
 	.word ov04_02257484
 	.word ov04_02257464
@@ -1556,8 +1271,17 @@ ov04_022575A4: ; 0x022575A4
 	.word ov04_022574E4
 	.word ov04_02257564
 
+	.public ov04_022575D4
 ov04_022575D4: ; 0x022575D4
-	.byte 0x03, 0x00, 0x1F, 0x00, 0x09, 0x00, 0x1F, 0x00, 0x0F, 0x00, 0x1F, 0x00
-	.byte 0x03, 0x00, 0x18, 0x00, 0x09, 0x00, 0x18, 0x00, 0x0F, 0x00, 0x18, 0x00, 0x03, 0x00, 0x10, 0x00
-	.byte 0x09, 0x00, 0x10, 0x00, 0x0F, 0x00, 0x10, 0x00, 0x03, 0x00, 0x09, 0x00, 0x09, 0x00, 0x09, 0x00
-	.byte 0x0F, 0x00, 0x09, 0x00
+	.short 0x0003, 0x001F
+	.short 0x0009, 0x001F
+	.short 0x000F, 0x001F
+	.short 0x0003, 0x0018
+	.short 0x0009, 0x0018
+	.short 0x000F, 0x0018
+	.short 0x0003, 0x0010
+	.short 0x0009, 0x0010
+	.short 0x000F, 0x0010
+	.short 0x0003, 0x0009
+	.short 0x0009, 0x0009
+	.short 0x000F, 0x0009
