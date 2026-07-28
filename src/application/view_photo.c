@@ -41,7 +41,7 @@ typedef struct ViewPhotoSysTaskData {
     String *exitMsg;
     String *photoDescStringTemplates[2];
     Window windows[2];
-    FieldSpriteManager spriteRender;
+    FieldSpriteManager fieldSpriteManager;
     Sprite *sprites[VIEW_PHOTO_NUM_SPRITES];
     u8 animSpriteNo;
     PhotoAlbumScroll scrollData;
@@ -187,7 +187,7 @@ static void SysTask_ViewPhoto(SysTask *task, void *taskData) {
         }
         break;
     }
-    SpriteList_RenderAndAnimateSprites(viewPhoto->spriteRender.spriteList);
+    SpriteList_RenderAndAnimateSprites(viewPhoto->fieldSpriteManager.spriteList);
 }
 
 static void ViewPhotoSysTask_Setup(ViewPhotoSysTaskData *viewPhoto) {
@@ -396,9 +396,9 @@ static void ViewPhotoSysTask_ReleaseWindows(ViewPhotoSysTaskData *viewPhoto) {
 }
 
 static void ViewPhotoSysTask_CreateSprites(ViewPhotoSysTaskData *viewPhoto) {
-    FieldSpriteManager_InitWithResDat(&viewPhoto->spriteRender, &sResDatIdxs, VIEW_PHOTO_NUM_SPRITES, viewPhoto->heapID);
+    FieldSpriteManager_InitWithResDat(&viewPhoto->fieldSpriteManager, &sResDatIdxs, VIEW_PHOTO_NUM_SPRITES, viewPhoto->heapID);
     for (int i = 0; i < VIEW_PHOTO_NUM_SPRITES; ++i) {
-        viewPhoto->sprites[i] = FieldSpriteManager_CreateSprite(&viewPhoto->spriteRender, &sSpriteTemplates[i]);
+        viewPhoto->sprites[i] = FieldSpriteManager_CreateSprite(&viewPhoto->fieldSpriteManager, &sSpriteTemplates[i]);
         Sprite_SetDrawFlag(viewPhoto->sprites[i], TRUE);
         Sprite_SetAnimActiveFlag(viewPhoto->sprites[i], TRUE);
     }
@@ -419,7 +419,7 @@ static void ViewPhotoSysTask_DeleteSprites(ViewPhotoSysTaskData *viewPhoto) {
     for (int i = 0; i < VIEW_PHOTO_NUM_SPRITES; ++i) {
         Sprite_Delete(viewPhoto->sprites[i]);
     }
-    FieldSpriteManager_ReleaseWithResDat(&viewPhoto->spriteRender);
+    FieldSpriteManager_ReleaseWithResDat(&viewPhoto->fieldSpriteManager);
     GfGfx_EngineBTogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_OFF);
 }
 
