@@ -4115,7 +4115,7 @@
 	.short \arg1
 	.endm
 
-	.macro ScrCmd_726
+	.macro ProcessSoundplate
 	.short 726
 	.endm
 

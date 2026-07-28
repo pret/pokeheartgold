@@ -1041,7 +1041,7 @@ _021F22C2:
 _021F2312:
 	ldr r0, [r4, #0x1c]
 	mov r1, #0
-	bl ov01_021E7F00
+	bl FieldSystem_ProcessSoundplate
 	add r0, r4, #0
 	bl ov01_021F30F4
 	mov r0, #1
@@ -1184,7 +1184,7 @@ _021F2412:
 	bl PlayerAvatar_SetState
 	ldr r0, [r4, #8]
 	mov r1, #0
-	bl ov01_021E7F00
+	bl FieldSystem_ProcessSoundplate
 	ldr r0, [r4, #8]
 	bl FollowMon_IsActive
 	cmp r0, #0
@@ -1241,7 +1241,7 @@ _021F24B8:
 	bne _021F24D2
 	ldr r0, [r4, #8]
 	mov r1, #1
-	bl ov01_021E7F00
+	bl FieldSystem_ProcessSoundplate
 	add r0, r4, #0
 	bl ov01_021F30F4
 	mov r0, #1
@@ -1255,7 +1255,7 @@ _021F24D2:
 	bne _021F24F0
 	ldr r0, [r4, #8]
 	mov r1, #1
-	bl ov01_021E7F00
+	bl FieldSystem_ProcessSoundplate
 	add r0, r4, #0
 	bl ov01_021F30F4
 	mov r0, #1

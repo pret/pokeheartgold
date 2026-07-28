@@ -542,7 +542,7 @@ static BOOL sub_02053688(TaskManager *taskManager) {
         if (GF_SndGetFadeTimer() != 0) {
             break;
         }
-        FieldBGM_PlayForMapHeader(fieldSystem, env->location.mapId, 0);
+        FieldBGM_PlayForMapHeader(fieldSystem, env->location.mapId, FALSE);
         sub_02055408(taskManager);
         env->unk0++;
         break;
@@ -628,7 +628,7 @@ static BOOL Task_ScriptWarp(TaskManager *taskManager) {
         if (GF_SndGetFadeTimer() != 0) {
             break;
         }
-        FieldBGM_PlayForMapHeader(fieldSystem, env->location.mapId, 0);
+        FieldBGM_PlayForMapHeader(fieldSystem, env->location.mapId, FALSE);
         CallTask_RestoreOverworld(taskManager);
         env->state++;
         break;
@@ -742,8 +742,8 @@ static BOOL sub_02053A2C(TaskManager *taskManager) {
     case 1:
         sub_0200615C(5, 10);
         GF_SndHandleMoveVolume(0, 128, 15);
-        fieldSystem->unkC4 = -1;
-        FieldBGM_PlayForMapHeader(fieldSystem, fieldSystem->location->mapId, 1);
+        fieldSystem->environmentSoundState = ENVIRONMENT_SOUND_NONE;
+        FieldBGM_PlayForMapHeader(fieldSystem, fieldSystem->location->mapId, TRUE);
         FieldSystem_DrawMapNameAnimation(fieldSystem);
         sub_02053AA0(taskManager);
         (*state_p)++;
@@ -805,7 +805,7 @@ static BOOL sub_02053B3C(TaskManager *taskManager) {
         if (GF_SndGetFadeTimer() != 0) {
             break;
         }
-        FieldBGM_PlayForMapHeader(fieldSystem, location->mapId, 0);
+        FieldBGM_PlayForMapHeader(fieldSystem, location->mapId, FALSE);
         if (env->unk4 == 2) {
             sub_02067BA4(fieldSystem);
         } else if (env->unk4 == 0 || env->unk4 == 1) {
@@ -918,7 +918,7 @@ static BOOL sub_02053CCC(TaskManager *taskManager) {
         if (GF_SndGetFadeTimer() != 0) {
             break;
         }
-        FieldBGM_PlayForMapHeader(fieldSystem, location->mapId, 0);
+        FieldBGM_PlayForMapHeader(fieldSystem, location->mapId, FALSE);
         CallTask_RestoreOverworld(taskManager);
         env->unk0++;
         break;
@@ -986,7 +986,7 @@ static BOOL sub_02053E5C(TaskManager *taskManager) {
         if (GF_SndGetFadeTimer() != 0) {
             break;
         }
-        FieldBGM_PlayForMapHeader(fieldSystem, location->mapId, 0);
+        FieldBGM_PlayForMapHeader(fieldSystem, location->mapId, FALSE);
         CallTask_RestoreOverworld(taskManager);
         (*state_p)++;
         break;
@@ -1038,7 +1038,7 @@ static BOOL sub_02053F70(TaskManager *taskManager) {
         if (GF_SndGetFadeTimer() != 0) {
             break;
         }
-        FieldBGM_PlayForMapHeader(fieldSystem, location->mapId, 0);
+        FieldBGM_PlayForMapHeader(fieldSystem, location->mapId, FALSE);
         CallTask_RestoreOverworld(taskManager);
         (*state_p)++;
         break;
@@ -1092,7 +1092,7 @@ static BOOL sub_020540A4(TaskManager *taskManager) {
         if (GF_SndGetFadeTimer() != 0) {
             break;
         }
-        FieldBGM_PlayForMapHeader(fieldSystem, env->location.mapId, 0);
+        FieldBGM_PlayForMapHeader(fieldSystem, env->location.mapId, FALSE);
         CallTask_RestoreOverworld(taskManager);
         env->unk0++;
         break;

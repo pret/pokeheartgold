@@ -222,7 +222,7 @@ struct FieldSystem {
     s64 unkB4;
     int unkBC; // flags?
     void *unkC0; // UnkStruct_FieldSysC0
-    int unkC4;
+    int environmentSoundState; // Used to keep track of the active weather/soundplate sound and their associated loading status.
     FieldSystemUnkSubC8 *unkC8;
     void *unkCC;
     u16 lastTouchMenuInput;
@@ -295,7 +295,7 @@ void sub_0203E33C(FieldSystem *fieldSystem, int a1);
 BgConfig *FieldSystem_GetBgConfigPtr(FieldSystem *fieldSystem);
 SaveData *FieldSystem_GetSaveData(FieldSystem *fieldSystem);
 void Task_AntipiracyRandom();
-void sub_0203E354();
+void Field_SetEnvironmentSoundState_None_Unk2();
 
 extern const OverlayManagerTemplate gApplication_NewGameFieldsys;
 extern const OverlayManagerTemplate gApplication_ContinueFieldsys;

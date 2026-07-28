@@ -828,8 +828,8 @@ BOOL ScrCmd_725(ScriptContext *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_726(ScriptContext *ctx) {
-    ov01_021E7F00(ctx->fieldSystem, TRUE);
+BOOL ScrCmd_ProcessSoundplate(ScriptContext *ctx) {
+    FieldSystem_ProcessSoundplate(ctx->fieldSystem, TRUE);
     return FALSE;
 }
 

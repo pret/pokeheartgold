@@ -26,6 +26,7 @@
 #include "overlay_2/overlay_02_02248728.h"
 
 #include "constants/init_script_types.h"
+#include "constants/sndseq.h"
 #include "constants/field/field_effect_renderer.h"
 #include "constants/field/map_load.h"
 
@@ -206,8 +207,8 @@ BOOL FieldMap_Init(OverlayManager *man, int *state) {
 
         WeatherManager_SetWeather(fieldSystem->unk4->weatherManager, LocalFieldData_GetWeatherType(Save_LocalFieldData_Get(fieldSystem->saveData)));
         
-        if (FieldBGM_PlayEffectiveForMapHeader(fieldSystem, fieldSystem->location->mapId) || fieldSystem->unkC4 == -2) {
-            ov01_021E7F00(fieldSystem, FALSE);
+        if (FieldBGM_PlayEffectiveForMapHeader(fieldSystem, fieldSystem->location->mapId) || fieldSystem->environmentSoundState == ENVIRONMENT_SOUND_NONE_UNK2) {
+            FieldSystem_ProcessSoundplate(fieldSystem, FALSE);
         }
         
         TryStartMapScriptByType(fieldSystem, INIT_SCRIPT_ON_RESUME);

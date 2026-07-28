@@ -1,6 +1,7 @@
 #include "field_system.h"
 
 #include "constants/maps.h"
+#include "constants/sndseq.h"
 #include "constants/field/map_load.h"
 
 #include "field_warp_tasks.h"
@@ -315,6 +316,6 @@ void Task_AntipiracyRandom() {
     LCRandom();
 }
 
-void sub_0203E354() {
-    sFieldSysPtr->unkC4 = -2;
+void Field_SetEnvironmentSoundState_None_Unk2() {
+    sFieldSysPtr->environmentSoundState = ENVIRONMENT_SOUND_NONE_UNK2;
 }

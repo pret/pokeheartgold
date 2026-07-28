@@ -87,7 +87,7 @@ static u8 ov01_021E7B70(FieldSystem *fieldSystem);
 static BOOL FieldSystem_MapConnection(FieldSystem *fieldSystem, int x, int z, Location *location);
 static void FieldSystem_SetMapConnection(FieldSystem *fieldSystem, int x, int z, int facingDirection);
 static void FieldSystem_TrySetMapConnection(FieldSystem *fieldSystem);
-static void ov01_021E7DFC(FieldSystem *fieldSystem, int x, int z);
+static void FieldSystem_ProcessSoundplateAtCoords(FieldSystem *fieldSystem, int x, int z);
 static u16 GetInteractedHeadbuttTreeScript(FieldSystem *fieldSystem);
 
 static void FieldInput_Clear(FieldInput *fieldInput) {
@@ -638,7 +638,7 @@ static BOOL FieldSystem_ProcessStep(FieldSystem *fieldSystem) {
     int x = PlayerAvatar_GetXCoord(fieldSystem->playerAvatar);
     int z = PlayerAvatar_GetZCoord(fieldSystem->playerAvatar);
 
-    ov01_021E7DFC(fieldSystem, x, z);
+    FieldSystem_ProcessSoundplateAtCoords(fieldSystem, x, z);
 
     u8 metatileBehavior = GetMetatileBehavior(fieldSystem, x, z);
     
@@ -1033,7 +1033,7 @@ static int GetLocalSoundplateID(const SoundplateStruct *soundplateStruct, int gl
     return ret;
 }
 
-static BOOL ov01_021E7D58(FieldSystem *fieldSystem, SoundplateStruct *soundplateStruct, int soundplateID) {
+static BOOL FieldSystem_SoundplateIsActive(FieldSystem *fieldSystem, SoundplateStruct *soundplateStruct, int soundplateID) {
     SaveVarsFlags *state = Save_VarsFlags_Get(fieldSystem->saveData);
     u16 sndSeq = sSoundplateSounds[soundplateStruct->soundplates[soundplateID].soundplateSoundID][0];
     Location *location = LocalFieldData_GetCurrentPosition(Save_LocalFieldData_Get(fieldSystem->saveData));
@@ -1050,28 +1050,28 @@ static BOOL ov01_021E7D58(FieldSystem *fieldSystem, SoundplateStruct *soundplate
     return TRUE;
 }
 
-static void ov01_021E7DFC(FieldSystem *fieldSystem, int x, int z) {
+static void FieldSystem_ProcessSoundplateAtCoords(FieldSystem *fieldSystem, int x, int z) {
     SoundplateStruct *soundplateStruct = sub_02054874(fieldSystem, x, z);
     
-    if (fieldSystem->unkC4 == -2) {
-        fieldSystem->unkC4 = -1;
-    } else if (fieldSystem->unkC4 == -3) {
-        fieldSystem->unkC4 = -1;
+    if (fieldSystem->environmentSoundState == ENVIRONMENT_SOUND_NONE_UNK2) {
+        fieldSystem->environmentSoundState = ENVIRONMENT_SOUND_NONE;
+    } else if (fieldSystem->environmentSoundState == ENVIRONMENT_SOUND_NONE_UNK3) {
+        fieldSystem->environmentSoundState = ENVIRONMENT_SOUND_NONE;
     }
     
     z = GetLocalSoundplateID(soundplateStruct, x, z);
     if (z != -1) {
-        if (ov01_021E7D58(fieldSystem, soundplateStruct, z)) {
+        if (FieldSystem_SoundplateIsActive(fieldSystem, soundplateStruct, z)) {
             u8 soundplateSoundID = soundplateStruct->soundplates[z].soundplateSoundID;
             if (soundplateSoundID < 16) {
-                if (fieldSystem->unkC4 != sSoundplateSounds[soundplateSoundID][SOUNDPLATE_SOUND_SEQ]) {
+                if (fieldSystem->environmentSoundState != sSoundplateSounds[soundplateSoundID][SOUNDPLATE_SOUND_SEQ]) {
                     if (sSoundplateSounds[soundplateSoundID][SOUNDPLATE_SOUND_UNK_BOOL] == TRUE) {
                         sub_02006088(sSoundplateSounds[soundplateSoundID][SOUNDPLATE_SOUND_SEQ]);
                     } else {
                         PlaySE(sSoundplateSounds[soundplateSoundID][SOUNDPLATE_SOUND_SEQ]);
                     }
                 }
-                fieldSystem->unkC4 = sSoundplateSounds[soundplateStruct->soundplates[z].soundplateSoundID][SOUNDPLATE_SOUND_SEQ];
+                fieldSystem->environmentSoundState = sSoundplateSounds[soundplateStruct->soundplates[z].soundplateSoundID][SOUNDPLATE_SOUND_SEQ];
                 u8 volumeIndex = soundplateStruct->soundplates[z].volumeIndex;
                 if (volumeIndex < 3) {
                     GF_SndHandleMoveVolume(0, sBGMVolume[volumeIndex], 15);
@@ -1082,22 +1082,22 @@ static void ov01_021E7DFC(FieldSystem *fieldSystem, int x, int z) {
             }
         }
     } else {
-        if (fieldSystem->unkC4 != -1) {
-            StopSE(fieldSystem->unkC4, 10);
+        if (fieldSystem->environmentSoundState != ENVIRONMENT_SOUND_NONE) {
+            StopSE(fieldSystem->environmentSoundState, 10);
             GF_SndHandleMoveVolume(0, 128, 15);
-            fieldSystem->unkC4 = -1;
+            fieldSystem->environmentSoundState = ENVIRONMENT_SOUND_NONE;
         }
     }
 }
 
-void ov01_021E7F00(FieldSystem *fieldSystem, BOOL arg1) {
+void FieldSystem_ProcessSoundplate(FieldSystem *fieldSystem, BOOL wipeEnvironmentSound) {
     if (fieldSystem->unkAC == 0) {
         int x = PlayerAvatar_GetXCoord(fieldSystem->playerAvatar);
         int z = PlayerAvatar_GetZCoord(fieldSystem->playerAvatar);
-        if (arg1) {
-            fieldSystem->unkC4 = -1;
+        if (wipeEnvironmentSound) {
+            fieldSystem->environmentSoundState = ENVIRONMENT_SOUND_NONE;
         }
-        ov01_021E7DFC(fieldSystem, x, z);
+        FieldSystem_ProcessSoundplateAtCoords(fieldSystem, x, z);
     }
 }
 

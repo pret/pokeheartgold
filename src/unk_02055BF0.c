@@ -192,7 +192,7 @@ BOOL sub_02055DBC(TaskManager *man) {
         break;
     case 7:
         if (GF_SndGetFadeTimer() == 0) {
-            FieldBGM_PlayForMapHeader(fieldSystem, env->location.mapId, 1);
+            FieldBGM_PlayForMapHeader(fieldSystem, env->location.mapId, TRUE);
             if (!MapHeader_IsCave(env->destinationMapID)) {                  // this has gotta be for the pre-entering images right?
                 int index = MapPreviewGraphic_GetIndex(env->location.mapId); // this gets the index of the location in the list of maps that have map icons
                 if (index != 255) {
