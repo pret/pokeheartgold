@@ -325,7 +325,7 @@ static void sub_02053284(FieldSystem *fieldSystem) {
 
     sub_02052F30(fieldSystem);
 
-    GF_ASSERT(fieldSystem->unk60 == 0);
+    GF_ASSERT(fieldSystem->unk60 == NULL);
 
     MapMatrix_Load(fieldSystem->location->mapId, fieldSystem->mapMatrix);
     varsFlags = Save_VarsFlags_Get(fieldSystem->saveData);
@@ -347,8 +347,8 @@ static void sub_02053284(FieldSystem *fieldSystem) {
 }
 
 static void sub_02053324(FieldSystem *fieldSystem) {
-    GF_ASSERT(fieldSystem->unk60 != 0);
-    fieldSystem->unk60 = 0;
+    GF_ASSERT(fieldSystem->unk60 != NULL);
+    fieldSystem->unk60 = NULL;
     fieldSystem->bottomScreenType = 7;
     if (fieldSystem->mapLoadMode->useSeparateTerrainAttributes) {
         TerrainAttributes_Free(fieldSystem);
