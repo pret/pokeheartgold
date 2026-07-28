@@ -9,6 +9,7 @@
 #include "overlay_2/overlay_02_02251E74.h"
 #include "overlay_2/overlay_02_gear_phone.h"
 
+#include "field_bgm.h"
 #include "field_system.h"
 #include "map_header.h"
 #include "overlay_02.h"
@@ -18,7 +19,6 @@
 #include "scrcmd.h"
 #include "sys_vars.h"
 #include "unk_02005D10.h"
-#include "field_bgm.h"
 #include "unk_0206D494.h"
 
 static void FieldSystem_InitPokegearArgs(FieldSystem *sys, PokegearArgs *ptr, BOOL isMap);

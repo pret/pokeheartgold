@@ -424,19 +424,19 @@ BOOL ScrCmd_BufferBattleHallStreak(ScriptContext *ctx) {
         Heap_Free(unk0);
     }
     BufferIntegerAsString(*messageFormat, strIdxWinStreak, winStreak, CountDigits(winStreak), PRINTING_MODE_RIGHT_ALIGN, TRUE);
-    u16 bp = 0;
+    u16 battlePoints = 0;
     u32 currWinStreakLevel = 0;
     u16 prevWinStreakLevel = *winStreakLevel;
     for (i = *winStreakLevel; i < NELEMS(battleHallWinStreakBP); i++) {
         if (battleHallWinStreakBP[i].winStreakTarget <= winStreak) {
-            bp += battleHallWinStreakBP[i].bp;
+            battlePoints += battleHallWinStreakBP[i].bp;
             (*winStreakLevel)++;
             currWinStreakLevel = i;
         }
     }
-    GameStats_Add(Save_GameStats_Get(ctx->fieldSystem->saveData), GAME_STAT_BATTLE_POINTS, bp);
-    if (bp != 0) {
-        FrontierData_BattlePointAction(Save_FrontierData_Get(ctx->fieldSystem->saveData), bp, 5);
+    GameStats_Add(Save_GameStats_Get(ctx->fieldSystem->saveData), GAME_STAT_BATTLE_POINTS_RECEIVED, battlePoints);
+    if (battlePoints) {
+        FrontierData_BattlePointAction(Save_FrontierData_Get(ctx->fieldSystem->saveData), battlePoints, 5);
     }
     if (winStreak == 0) {
         *result = 0;
@@ -454,7 +454,7 @@ BOOL ScrCmd_BufferBattleHallStreak(ScriptContext *ctx) {
     u32 currWinStreakTarget = battleHallWinStreakBP[currWinStreakLevel].winStreakTarget;
     BufferIntegerAsString(*messageFormat, strIdxCurrWinStreakTarget, currWinStreakTarget, CountDigits(currWinStreakTarget), PRINTING_MODE_RIGHT_ALIGN, TRUE);
     BufferIntegerAsString(*messageFormat, strIdxNextWinStreakTarget, battleHallWinStreakBP[*winStreakLevel].winStreakTarget, CountDigits(battleHallWinStreakBP[*winStreakLevel].winStreakTarget), PRINTING_MODE_RIGHT_ALIGN, TRUE);
-    BufferIntegerAsString(*messageFormat, strIdxBP, bp, CountDigits(bp), PRINTING_MODE_RIGHT_ALIGN, TRUE);
+    BufferIntegerAsString(*messageFormat, strIdxBP, battlePoints, CountDigits(battlePoints), PRINTING_MODE_RIGHT_ALIGN, TRUE);
     return FALSE;
 }
 

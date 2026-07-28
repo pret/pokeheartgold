@@ -489,22 +489,22 @@ static const Terrain _020FC4C0[] = {
 static Terrain FieldSystem_GetTerrainFromStandingTile(FieldSystem *fieldSystem, BattleBg battleBg) {
     u8 behavior = GetMetatileBehavior(fieldSystem, fieldSystem->location->x, fieldSystem->location->y);
 
-    if (sub_0205B828(behavior)) {
+    if (MetatileBehavior_IsIce(behavior)) {
         return TERRAIN_ICE;
     }
-    if (MetatileBehavior_IsEncounterGrass(behavior) || sub_0205B6F4(behavior)) {
+    if (MetatileBehavior_IsTallGrass(behavior) || MetatileBehavior_IsVeryTallGrass(behavior)) {
         return TERRAIN_GRASS;
     }
-    if (sub_0205B798(behavior)) {
+    if (MetatileBehavior_IsSand(behavior)) {
         return TERRAIN_SAND;
     }
-    if (sub_0205B8B8(behavior)) {
+    if (MetatileBehavior_IsSnow(behavior)) {
         return TERRAIN_SNOW;
     }
-    if (sub_0205B8AC(behavior)) {
+    if (MetatileBehavior_IsMud(behavior)) {
         return TERRAIN_GREAT_MARSH;
     }
-    if (sub_0205B8D0(behavior)) {
+    if (MetatileBehavior_IsCaveFloor(behavior)) {
         return TERRAIN_CAVE;
     }
     if (MetatileBehavior_IsSurfableWater(behavior)) {

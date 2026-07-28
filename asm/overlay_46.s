@@ -315,7 +315,7 @@ _02258A80:
 	bl ov46_02259474
 	ldr r0, [r5]
 	bl Save_GameStats_Get
-	mov r1, #0x21
+	mov r1, #0x21 ; SCORE_EVENT_WIFI_PLAZA_ACCESSED
 	bl GameStats_AddScore
 	bl GF_RTC_DateTimeToSec
 	ldr r2, [r6, #0xc]

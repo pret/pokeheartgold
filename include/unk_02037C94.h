@@ -3,9 +3,12 @@
 
 #include "save.h"
 #include "unk_0202C034.h"
+#include "overlay_44_02232E9C.h"
 
 BOOL sub_02037D78(void);
+void sub_02037EC0(u32 arg0);
 void sub_02037FF0(void);
+void sub_020380B0(void);
 void sub_020380CC(void);
 u32 *sub_020392D8(void);
 BOOL sub_020393C8(void);
@@ -26,8 +29,18 @@ BOOL sub_020390C4(void);
 void sub_020378E4(int a0);
 void sub_02039B18(void);
 void sub_02039AF8(void);
-s32 sub_02039080(void);
+s32 sub_02039080(s32);
 s32 sub_02039264(void);
-u8 *sub_020398C8(void);
+UnkStruct_ov44_0223197C *sub_020398C8(void);
+void sub_020393B4(void);
+BOOL sub_02039274(void);
+void sub_02039330(void);
+void sub_0203A1C4(SaveData* saveData, void* a1, enum HeapID heapID);
+void sub_02039B7C(void);
+BOOL sub_020392A0(void);
+UnkStruct_ov44_0223197C* sub_020396FC(SaveData*, int);
+void sub_02039378(void);
+void sub_02039FD8(enum HeapID heapID);
+void sub_02039E9C(void);
 
 #endif // POKEHEARTGOLD_UNK_02037C94_H

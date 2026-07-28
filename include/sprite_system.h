@@ -3,9 +3,21 @@
 
 #include "filesystem.h"
 #include "palette.h"
-#include "save.h"
 #include "sprite.h"
 #include "unk_02009D48.h"
+
+typedef union ResdatIdList {
+    u16 raw[GF_GFX_RES_TYPE_MAX + 1];
+    struct {
+        u16 charRes;
+        u16 plttRes;
+        u16 cellRes;
+        u16 animRes;
+        u16 mcelRes;
+        u16 manmRes;
+        u16 headerId;
+    };
+} ResdatIdList;
 
 typedef struct UnmanagedSpriteTemplate {
     int resourceSet;
@@ -95,8 +107,8 @@ void SpriteSystem_TransferOam(void);
 void SpriteSystem_UpdateTransfer(void);
 void SpriteSystem_DestroySpriteManager(SpriteSystem *spriteSystem, SpriteManager *spriteManager);
 void SpriteSystem_Free(SpriteSystem *spriteSystem);
-BOOL sub_0200D294(SpriteSystem *spriteSystem, SpriteManager *spriteManager, const u16 *fileIdList);
-BOOL sub_0200D2A4(SpriteSystem *spriteSystem, SpriteManager *spriteManager, const u16 *fileIdList, int loadCharMode, int loadPlttMode);
+BOOL sub_0200D294(SpriteSystem *spriteSystem, SpriteManager *spriteManager, const ResdatIdList *fileIdList);
+BOOL sub_0200D2A4(SpriteSystem *spriteSystem, SpriteManager *spriteManager, const ResdatIdList *fileIdList, int loadCharMode, int loadPlttMode);
 Sprite *SpriteSystem_CreateSpriteFromResourceHeader(SpriteSystem *spriteSystem, SpriteManager *spriteManager, const UnmanagedSpriteTemplate *template);
 BOOL SpriteSystem_InitManagerWithCapacities(SpriteSystem *spriteSystem, SpriteManager *spriteManager, SpriteResourceCountsListUnion *countsArray);
 BOOL SpriteSystem_LoadCharResObj(SpriteSystem *spriteSystem, SpriteManager *spriteManager, NarcId narcId, int fileId, BOOL compressed, int vram, int resId);
@@ -152,8 +164,8 @@ int ManagedSprite_GetPriority(ManagedSprite *managedSprite);
 void ManagedSprite_SetPriority(ManagedSprite *managedSprite, int priority);
 void thunk_Sprite_SetDrawPriority(Sprite *sprite, u16 priority);
 void ManagedSprite_SetDrawPriority(ManagedSprite *managedSprite, u16 priority);
-u16 thunk_Sprite_GetDrawPriority(Sprite *sprite);
-u16 ManagedSprite_GetDrawPriority(ManagedSprite *managedSprite);
+u32 thunk_Sprite_GetDrawPriority(Sprite *sprite);
+u32 ManagedSprite_GetDrawPriority(ManagedSprite *managedSprite);
 void Sprite_SetPositionXY(Sprite *sprite, s16 x, s16 y);
 void ManagedSprite_SetPositionXY(ManagedSprite *managedSprite, s16 x, s16 y);
 void Sprite_SetPositionXYWithSubscreenOffset(Sprite *sprite, s16 x, s16 y, fx32 yOffset);

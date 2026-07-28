@@ -13,6 +13,7 @@
 #include "item.h"
 #include "move.h"
 #include "msgdata.h"
+#include "obj_char_transfer.h"
 #include "options.h"
 #include "palette.h"
 #include "player_data.h"
@@ -25,6 +26,7 @@
 #include "sys_task_api.h"
 #include "trainer_data.h"
 #include "unk_0200CE7C.h"
+#include "unk_02013534.h"
 
 typedef struct BattleMessage {
     u8 unk0;
@@ -36,11 +38,9 @@ typedef struct BattleMessage {
 } BattleMessage;
 
 typedef struct BattleMessageData {
-    u8 unk0;
-    u8 unk1;
-    u16 unk2;
-    int unk4[6];
-    int unk1C;
+    u32 id;
+    int tag;
+    int params[6];
 } BattleMessageData;
 
 typedef struct GetterWork GetterWork;
@@ -125,9 +125,9 @@ typedef struct TrainerAIData {
     u8 unk13;
     u8 *unk14;
     u8 unk18[4];
-    u16 unk1C[4][4];
-    u8 unk5C[4];
-    u16 unk60[4];
+    u16 moves[BATTLER_MAX][MOVES_MAX];
+    u8 abilities[BATTLER_MAX];
+    u16 heldItems[BATTLER_MAX];
     u16 unk68[2][4];
     u32 unk78[8];
     u8 unk98;
@@ -419,7 +419,7 @@ typedef struct BattleContext {
     u16 unk_310C[4];
     int flingData;
     int flingScript;
-    u8 unk_311C;
+    u8 safariCatchRateStage;
     u8 safariRunAttempts;
     u8 runAttempts;
     u8 battleEndFlag;
@@ -474,17 +474,21 @@ typedef struct BattleHpBar {
     u16 unk54;
 } BattleHpBar;
 
+typedef struct UnkBallData UnkBallData;
+
 typedef struct OpponentData {
     u32 unk0[6];
-    u32 unk18;
+    ManagedSprite *managedSprite;
     u32 *unk1C;
     Pokepic *pokepic;
     u32 *unk24;
     BattleHpBar hpBar;
     void *unk80;
-    u8 unk84[0x110];
+    u8 unk84[0x4];
+    UnkBallData *ballData;
+    u8 unk8C[0x108];
     u8 unk194;
-    u8 unk195;
+    u8 battlerType;
     u8 unk196;
     u8 unk197;
     SysTask *unk198;
@@ -543,7 +547,7 @@ struct BattleSystem {
     PCStorage *storage;
     Party *trainerParty[4];
     SOUND_CHATOT *chatotVoice[4];
-    u32 *unk88;
+    PokepicManager *pokepicManager;
     u32 *unk8C;
     SpriteSystem *spriteRenderer;
     SpriteManager *gfxHandler;
@@ -604,7 +608,7 @@ struct BattleSystem {
     int unk2424;
     int unk2428;
     int weather;
-    int unk2430;
+    BOOL metBill;
     u32 unk2434;
     int unk2438;
     int unk243C;
@@ -621,7 +625,7 @@ struct BattleSystem {
     u32 isRecordingPaused : 1;
     u32 unk2474_1 : 1;
     u32 unk2474_2 : 1;
-    u32 unk2474_3 : 1;
+    u32 isFishing : 1;
     u32 unk2474_4 : 28;
     u32 unk2478;
     SysTask *unk247C;
@@ -633,15 +637,15 @@ struct BattleSystem {
 struct GetterWork {
     BattleSystem *battleSystem;
     BattleContext *ctx;
-    u32 unk8;
-    u32 unkC[2];
-    u32 unk14;
-    u32 unk18[3];
-    int unk24;
+    UnkBallData *ballData;
+    ManagedSprite *unkC[2];
+    TextOBJ *unk14;
+    UnkStruct_02021AC8 unk18;
+    int captureType;
     int state;
-    int unk2C;
-    int unk30[8];
-    void *unk50[2];
+    int ballID;
+    int tempData[8];
+    void *tempPointers[2];
 }; // size: 0x58
 
 typedef BOOL (*BtlCmdFunc)(BattleSystem *, BattleContext *);
@@ -676,5 +680,56 @@ typedef struct BattleItem {
 } BattleItem;
 
 typedef struct BattleCursorPosition BattleCursorPosition;
+
+typedef struct UnkStruct_134 {
+    s32 unk0;
+    enum HeapID heapID;
+    s32 unk8;
+    s32 unkC;
+    int ball;
+    s32 unk14;
+    s32 unk18;
+    SpriteSystem *spriteSystem;
+    PaletteData *paletteData;
+    BattleSystem *battleSystem;
+} UnkStruct_134;
+
+typedef struct UnkStruct_50C {
+    BgConfig *bgConfig;
+    PaletteData *paletteData;
+    PokepicManager *pokepicManager;
+    Pokemon *mon;
+    BOOL natDexEnabled;
+    enum HeapID heapID;
+} UnkStruct_50C;
+
+struct UnkBallData { // TODO: Give a better name.
+    int unk0;
+    int unk4;
+    int unk8;
+    int unkC;
+    int unk10;
+    int unk14;
+    int unk18;
+    int unk1C;
+    u8 unk20;
+    u8 unk21;
+    s8 unk22;
+    u8 unk23;
+    BOOL unk24;
+    int unk28;
+    SpriteManager *spriteManager;
+    ManagedSprite *managedSprite;
+    u8 unk34[0x5C];
+    UnkStruct_134 unk90;
+    u8 unkB8[0xC];
+    int unkC4;
+    int unkC8;
+    SysTask *unkCC;
+    int unkD0;
+    int unkD4;
+    int unkD8;
+    int unkDC;
+}; // Size: 0xe0
 
 #endif

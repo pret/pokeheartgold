@@ -4,7 +4,8 @@
 // Value and data limits
 #define MAX_LEVEL         100
 #define MAX_MON_MOVES     4
-#define MAX_EV            100
+#define MAX_EV_VITAMINS   100
+#define MAX_EV_PER_STAT   255
 #define MAX_EV_SUM        510
 #define MAX_LEARNED_MOVES 22
 
@@ -168,6 +169,7 @@
 #define MON_DATA_OT_ID                      7
 #define MON_DATA_EXPERIENCE                 8
 #define MON_DATA_FRIENDSHIP                 9
+#define MON_DATA_EGG_CYCLES                 9   // Eggs track their remaining cycles in the same place that Pokemon track friendship.
 #define MON_DATA_ABILITY                    10
 #define MON_DATA_MARKINGS                   11
 #define MON_DATA_LANGUAGE                   12

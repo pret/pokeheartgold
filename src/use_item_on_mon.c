@@ -107,7 +107,7 @@ BOOL CanUseItemOnPokemon(Pokemon *mon, u16 itemID, s32 moveIdx, enum HeapID heap
     if (GetMonData(mon, MON_DATA_SPECIES, NULL) != SPECIES_SHEDINJA && GetItemAttr_PreloadedItemData(itemData, ITEMATTR_HP_EV_UP)) {
         int dHpEv = GetItemAttr_PreloadedItemData(itemData, ITEMATTR_HP_EV_UP_PARAM);
         if (dHpEv > 0) {
-            if (hpEv < MAX_EV && (hpEv + atkEv + defEv + speedEv + spAtkEv + spDefEv) < MAX_EV_SUM) {
+            if (hpEv < MAX_EV_VITAMINS && (hpEv + atkEv + defEv + speedEv + spAtkEv + spDefEv) < MAX_EV_SUM) {
                 Heap_Free(itemData);
                 return TRUE;
             }
@@ -125,7 +125,7 @@ BOOL CanUseItemOnPokemon(Pokemon *mon, u16 itemID, s32 moveIdx, enum HeapID heap
     if (GetItemAttr_PreloadedItemData(itemData, ITEMATTR_ATK_EV_UP)) {
         int dAtkEv = GetItemAttr_PreloadedItemData(itemData, ITEMATTR_ATK_EV_UP_PARAM);
         if (dAtkEv > 0) {
-            if (atkEv < MAX_EV && (hpEv + atkEv + defEv + speedEv + spAtkEv + spDefEv) < MAX_EV_SUM) {
+            if (atkEv < MAX_EV_VITAMINS && (hpEv + atkEv + defEv + speedEv + spAtkEv + spDefEv) < MAX_EV_SUM) {
                 Heap_Free(itemData);
                 return TRUE;
             }
@@ -143,7 +143,7 @@ BOOL CanUseItemOnPokemon(Pokemon *mon, u16 itemID, s32 moveIdx, enum HeapID heap
     if (GetItemAttr_PreloadedItemData(itemData, ITEMATTR_DEF_EV_UP)) {
         int dDefEv = GetItemAttr_PreloadedItemData(itemData, ITEMATTR_DEF_EV_UP_PARAM);
         if (dDefEv > 0) {
-            if (defEv < MAX_EV && (hpEv + atkEv + defEv + speedEv + spAtkEv + spDefEv) < MAX_EV_SUM) {
+            if (defEv < MAX_EV_VITAMINS && (hpEv + atkEv + defEv + speedEv + spAtkEv + spDefEv) < MAX_EV_SUM) {
                 Heap_Free(itemData);
                 return TRUE;
             }
@@ -161,7 +161,7 @@ BOOL CanUseItemOnPokemon(Pokemon *mon, u16 itemID, s32 moveIdx, enum HeapID heap
     if (GetItemAttr_PreloadedItemData(itemData, ITEMATTR_SPEED_EV_UP)) {
         int dSpeedEv = GetItemAttr_PreloadedItemData(itemData, ITEMATTR_SPEED_EV_UP_PARAM);
         if (dSpeedEv > 0) {
-            if (speedEv < MAX_EV && (hpEv + atkEv + defEv + speedEv + spAtkEv + spDefEv) < MAX_EV_SUM) {
+            if (speedEv < MAX_EV_VITAMINS && (hpEv + atkEv + defEv + speedEv + spAtkEv + spDefEv) < MAX_EV_SUM) {
                 Heap_Free(itemData);
                 return TRUE;
             }
@@ -179,7 +179,7 @@ BOOL CanUseItemOnPokemon(Pokemon *mon, u16 itemID, s32 moveIdx, enum HeapID heap
     if (GetItemAttr_PreloadedItemData(itemData, ITEMATTR_SPATK_EV_UP)) {
         int dSpAtkEv = GetItemAttr_PreloadedItemData(itemData, ITEMATTR_SPATK_EV_UP_PARAM);
         if (dSpAtkEv > 0) {
-            if (spAtkEv < MAX_EV && (hpEv + atkEv + defEv + speedEv + spAtkEv + spDefEv) < MAX_EV_SUM) {
+            if (spAtkEv < MAX_EV_VITAMINS && (hpEv + atkEv + defEv + speedEv + spAtkEv + spDefEv) < MAX_EV_SUM) {
                 Heap_Free(itemData);
                 return TRUE;
             }
@@ -197,7 +197,7 @@ BOOL CanUseItemOnPokemon(Pokemon *mon, u16 itemID, s32 moveIdx, enum HeapID heap
     if (GetItemAttr_PreloadedItemData(itemData, ITEMATTR_SPDEF_EV_UP)) {
         int dSpDefEv = GetItemAttr_PreloadedItemData(itemData, ITEMATTR_SPDEF_EV_UP_PARAM);
         if (dSpDefEv > 0) {
-            if (spDefEv < MAX_EV && (hpEv + atkEv + defEv + speedEv + spAtkEv + spDefEv) < MAX_EV_SUM) {
+            if (spDefEv < MAX_EV_VITAMINS && (hpEv + atkEv + defEv + speedEv + spAtkEv + spDefEv) < MAX_EV_SUM) {
                 Heap_Free(itemData);
                 return TRUE;
             }
@@ -570,7 +570,7 @@ s32 TryModEV(s32 ev, s32 evSum, s32 by) {
         return -1;
     }
 
-    if (ev >= MAX_EV && by > 0) {
+    if (ev >= MAX_EV_VITAMINS && by > 0) {
         return -1;
     }
 
@@ -579,8 +579,8 @@ s32 TryModEV(s32 ev, s32 evSum, s32 by) {
     }
 
     ev += by;
-    if (ev > MAX_EV) {
-        ev = MAX_EV;
+    if (ev > MAX_EV_VITAMINS) {
+        ev = MAX_EV_VITAMINS;
     } else if (ev < 0) {
         ev = 0;
     }

@@ -7,9 +7,9 @@
 #include "math_util.h"
 #include "obj_char_transfer.h"
 #include "obj_pltt_transfer.h"
+#include "sprite_transfer.h"
 #include "sys_task_api.h"
 #include "system.h"
-#include "unk_0200ACF0.h"
 #include "unk_0200B150.h"
 #include "unk_0200FA24.h"
 #include "unk_02026E30.h"
@@ -416,8 +416,8 @@ static void IntroMovie_Scene4_LoadSpriteGfx(IntroMovieOverlayData *data, IntroMo
     }
 
     for (i = 0; i < 4; ++i) {
-        sub_0200ACF0(sceneData->spriteResObjs[i][GF_GFX_RES_TYPE_CHAR]);
-        sub_0200AF94(sceneData->spriteResObjs[i][GF_GFX_RES_TYPE_PLTT]);
+        SpriteTransfer_CreateCharTransferTask(sceneData->spriteResObjs[i][GF_GFX_RES_TYPE_CHAR]);
+        SpriteTransfer_CreateExtPlttTransferTask(sceneData->spriteResObjs[i][GF_GFX_RES_TYPE_PLTT]);
     }
 
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
@@ -432,8 +432,8 @@ static void IntroMovie_Scene4_DestroySprites(IntroMovieOverlayData *data, IntroM
         Sprite_Delete(sceneData->starterSprites[i]);
     }
     for (u8 i = 0; i < 4; ++i) {
-        sub_0200AEB0(sceneData->spriteResObjs[i][GF_GFX_RES_TYPE_CHAR]);
-        sub_0200B0A8(sceneData->spriteResObjs[i][GF_GFX_RES_TYPE_PLTT]);
+        SpriteTransfer_DeleteCharTransferTask(sceneData->spriteResObjs[i][GF_GFX_RES_TYPE_CHAR]);
+        SpriteTransfer_DeletePlttTransferTask(sceneData->spriteResObjs[i][GF_GFX_RES_TYPE_PLTT]);
     }
     IntroMovie_DestroySpriteResourceManagers(data);
 }

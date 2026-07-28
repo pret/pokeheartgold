@@ -2,6 +2,7 @@
 
 #include "constants/maps.h"
 
+#include "field_bgm.h"
 #include "field_system_rtc_weather.h"
 #include "follow_mon.h"
 #include "map_events.h"
@@ -24,7 +25,6 @@
 #include "unk_0200FA24.h"
 #include "unk_0203BA5C.h"
 #include "unk_02054648.h"
-#include "field_bgm.h"
 #include "unk_02055244.h"
 #include "unk_020552A4.h"
 #include "unk_02055418.h"

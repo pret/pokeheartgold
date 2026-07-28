@@ -63,9 +63,9 @@ typedef enum PokeathlonCourseMainState {
 // This struct maps to a u32 array view for code generation compatibility
 typedef struct PokeathlonCourseState {
     PokeathlonStateInfo *argsPtr; // [0] 0x3B4 - Pointer to state data pointer
-    u32 transitionType; // [1] 0x3B8 - Transition type (0x10 = exit)
-    u32 mainState;      // [2] 0x3BC - Main state machine state
-    u32 exitFlag;       // [3] 0x3C0 - Exit flag
+    u32 transitionType;           // [1] 0x3B8 - Transition type (0x10 = exit)
+    u32 mainState;                // [2] 0x3BC - Main state machine state
+    u32 exitFlag;                 // [3] 0x3C0 - Exit flag
 } PokeathlonCourseState;
 
 // Unknown sub-structure at offset 0x974 (0x74 bytes)
@@ -106,7 +106,7 @@ struct PokeathlonCourseData {
     u32 field_3D8[4];                          // 0x3D8 - Array of 4 u32s (16 bytes)
     u32 field_3E8;                             // 0x3E8
     PokeathlonParticipantData participants[4]; // 0x3EC - 4 participant data elements (0x7C each = 0x1F0 bytes)
-    PlayerProfile* playerProfiles;             // 0x5DC - Player profiles pointer (heap allocated, 4 profiles)
+    PlayerProfile *playerProfiles;             // 0x5DC - Player profiles pointer (heap allocated, 4 profiles)
     u16 field_5E0[4][2];                       // 0x5E0
     u16 field_5F0[4][2];                       // 0x5F0
     u8 filler_600[0x14];                       // 0x600

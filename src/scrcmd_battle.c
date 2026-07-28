@@ -2,6 +2,7 @@
 
 #include "blackout.h"
 #include "encounter.h"
+#include "field_bgm.h"
 #include "map_header.h"
 #include "map_object.h"
 #include "save_vars_flags.h"
@@ -10,7 +11,6 @@
 #include "sound_02004A44.h"
 #include "sys_flags.h"
 #include "sys_vars.h"
-#include "field_bgm.h"
 #include "unk_020632B0.h"
 
 BOOL ScrCmd_GetTrainerPathToPlayer(ScriptContext *ctx) {

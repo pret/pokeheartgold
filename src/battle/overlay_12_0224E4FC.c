@@ -10,6 +10,7 @@
 #include "constants/message_tags.h"
 #include "constants/move_effects.h"
 #include "constants/moves.h"
+#include "constants/game_stats.h"
 #include "constants/species.h"
 #include "constants/trainers.h"
 
@@ -949,14 +950,14 @@ void BattleMon_AddVar(BattleMon *mon, u32 varId, int data) {
 }
 
 static const u8 sSpeedHalvingItemEffects[] = {
-    HOLD_EFFECT_EXP_UP_SPEED_DOWN,
-    HOLD_EFFECT_SPEED_DOWN_GROUNDED,
-    HOLD_EFFECT_LVLUP_HP_EV_UP,
-    HOLD_EFFECT_LVLUP_ATK_EV_UP,
-    HOLD_EFFECT_LVLUP_DEF_EV_UP,
-    HOLD_EFFECT_LVLUP_SPEED_EV_UP,
-    HOLD_EFFECT_LVLUP_SPATK_EV_UP,
-    HOLD_EFFECT_LVLUP_SPDEF_EV_UP
+    HOLD_EFFECT_EVS_UP_SPEED_DOWN,   // Macho Brace
+    HOLD_EFFECT_SPEED_DOWN_GROUNDED, // Iron Ball
+    HOLD_EFFECT_LVLUP_HP_EV_UP,      // Power Weight
+    HOLD_EFFECT_LVLUP_ATK_EV_UP,     // Power Bracer
+    HOLD_EFFECT_LVLUP_DEF_EV_UP,     // Power Belt
+    HOLD_EFFECT_LVLUP_SPEED_EV_UP,   // Power Anklet
+    HOLD_EFFECT_LVLUP_SPATK_EV_UP,   // Power Lens
+    HOLD_EFFECT_LVLUP_SPDEF_EV_UP    // Power Band
 };
 
 u8 CheckSortSpeed(BattleSystem *battleSystem, BattleContext *ctx, int battlerId1, int battlerId2, int flag) {
@@ -1766,7 +1767,7 @@ void ov12_02251038(BattleSystem *battleSystem, BattleContext *ctx) {
         ctx->switchInFlag |= MaskOfFlagNo(3);
     }
 
-    ctx->unk_311C = 6;
+    ctx->safariCatchRateStage = 6;
     ctx->safariRunAttempts = 6;
 }
 
@@ -2818,7 +2819,7 @@ BOOL BattleTryRun(BattleSystem *battleSystem, BattleContext *ctx, int battlerId)
             ret = TRUE;
         }
         if (!ret) {
-            BattleController_EmitIncrementGameStat(battleSystem, battlerId, 0, 99);
+            BattleController_EmitIncrementGameStat(battleSystem, battlerId, 0, GAME_STAT_RUN_FAILURES);
         }
         ctx->runAttempts++;
     }
@@ -6570,16 +6571,16 @@ static u8 Battler_GetType(BattleContext *ctx, int battlerId, int var) {
 
 static void ov12_02258584(BattleContext *ctx, u8 battlerId) {
     for (int i = 0; i < MAX_MON_MOVES; i++) {
-        ctx->trainerAIData.unk1C[battlerId][i] = 0;
+        ctx->trainerAIData.moves[battlerId][i] = MOVE_NONE;
     }
 }
 
 static void ov12_0225859C(BattleContext *ctx, u8 battlerId) {
-    ctx->trainerAIData.unk5C[battlerId] = 0;
+    ctx->trainerAIData.abilities[battlerId] = ABILITY_NONE;
 }
 
 static void ov12_022585A8(BattleContext *ctx, u8 battlerId) {
-    ctx->trainerAIData.unk60[battlerId] = 0;
+    ctx->trainerAIData.heldItems[battlerId] = ITEM_NONE;
 }
 
 static int ov12_022585B8(BattleSystem *battleSystem, BattleContext *ctx, int battlerIdTarget1, int battlerIdTarget2) {

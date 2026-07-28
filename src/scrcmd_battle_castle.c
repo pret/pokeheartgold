@@ -72,7 +72,7 @@ BOOL ScrCmd_637(ScriptContext *ctx) {
     void *unk1 = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
     switch (arg0) {
     case 0:
-        *result = sub_0204A5B0(arg1, ctx->fieldSystem->saveData, 0);
+        *result = PartyIsValidForFrontier(arg1, ctx->fieldSystem->saveData, 0);
         break;
     case 1: // Unused
         if (arg1 == 3) {

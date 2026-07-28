@@ -147,7 +147,7 @@ scr_seq_T07R0203_000:
 	ShowCertificate 0
 	RestoreOverworld
 	SetFlag FLAG_SAW_JOHTO_DEX_CERTIFICATE
-	AddSpecialGameStat SCORE_EVENT_25
+	AddSpecialGameStat SCORE_EVENT_REGIONAL_DEX_COMPLETE
 	FadeScreen 6, 1, 1, RGB_BLACK
 	WaitFade
 _01ED:
@@ -164,7 +164,7 @@ _01ED:
 	ShowCertificate 1
 	RestoreOverworld
 	SetFlag FLAG_SAW_NATIONAL_DEX_CERTIFICATE
-	AddSpecialGameStat SCORE_EVENT_26
+	AddSpecialGameStat SCORE_EVENT_NATIONAL_DEX_COMPLETE
 	FadeScreen 6, 1, 1, RGB_BLACK
 	WaitFade
 _023A:

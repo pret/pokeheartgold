@@ -91,7 +91,7 @@ _021FC6E2:
 	bl GearPhoneRingManager_ResetIfActive
 	ldr r0, [r4, #0xc]
 	bl Save_GameStats_Get
-	mov r1, #0xb
+	mov r1, #0xb ; GAME_STAT_FISH_LANDED
 	bl GameStats_Inc
 	ldr r2, [r5, #0x10]
 	add r0, r4, #0
@@ -487,7 +487,7 @@ ov01_021FC9AC: ; 0x021FC9AC
 	ldr r0, [r4, #0x20]
 	ldr r0, [r0, #0xc]
 	bl Save_GameStats_Get
-	mov r1, #0x65
+	mov r1, #0x65 ; GAME_STAT_UNK101
 	bl GameStats_Inc
 	mov r0, #1
 	pop {r4, pc}

@@ -378,7 +378,7 @@ _05CA:
 	NPCMsg msg_0312_00020
 	PlayFanfare SEQ_ME_ITEM
 	WaitFanfare
-	AddSpecialGameStat SCORE_EVENT_13
+	AddSpecialGameStat SCORE_EVENT_POKEATHLON_WON
 	Return
 
 _05ED:
@@ -1004,7 +1004,7 @@ _0F43:
 	SetVar VAR_TEMP_x4009, 500
 	BufferInt 2, VAR_TEMP_x4009
 	NPCMsg msg_0312_00022
-	AddSpecialGameStat SCORE_EVENT_18
+	AddSpecialGameStat SCORE_EVENT_POKEATHLON_WON_LINK
 	GoTo _0F76
 
 _0F68:

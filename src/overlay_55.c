@@ -106,8 +106,8 @@ BOOL ov55_UnkApp_Main(OverlayManager *manager, int *state) {
         if (args->unk0 == 1) {
             if (overlayData->unk10->unk0 == 3) {
                 ov55_021E5BC4(args->mail, overlayData->unk10);
-                GameStats_AddScore(Save_GameStats_Get(args->saveData), GAME_STAT_SCORE);
-                GameStats_Inc(Save_GameStats_Get(args->saveData), GAME_STAT_UNK46);
+                GameStats_AddScore(Save_GameStats_Get(args->saveData), SCORE_EVENT_WROTE_MAIL);
+                GameStats_Inc(Save_GameStats_Get(args->saveData), GAME_STAT_MAIL_WRITTEN);
                 args->unk4 = 1;
             } else {
                 args->unk4 = 0;

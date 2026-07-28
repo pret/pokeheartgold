@@ -81,6 +81,9 @@ void ov02_022469B4(TaskManager *man, LocalMapObject *obj1, LocalMapObject *obj2)
 void OpenAlphHiddenRoom(TaskManager *man, u32 a1);
 int ov02_0224E340(FieldSystem *fieldSystem);
 
+u16 ov02_0224E698(FieldSystem *fieldSystem);
+u16 ov02_0224E754(FieldSystem *fieldSystem, u16 *varPointer);
+
 SafariDecorationArgs *SafariDecoration_CreateArgs(FieldSystem *fieldSystem, enum HeapID heapID);
 
 #endif // POKEHEARTGOLD_OVERLAY_02_H

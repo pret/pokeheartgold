@@ -2670,25 +2670,25 @@ ov45_0222B0E8: ; 0x0222B0E8
 _0222B0F4: .word ov45_0222BD94
 	thumb_func_end ov45_0222B0E8
 
-	thumb_func_start ov45_0222B0F8
-ov45_0222B0F8: ; 0x0222B0F8
+	thumb_func_start IncrementGameStat47
+IncrementGameStat47: ; 0x0222B0F8
 	push {r3, lr}
 	ldr r0, [r0]
 	bl Save_GameStats_Get
-	mov r1, #0x2f
+	mov r1, #0x2f ; GAME_STAT_UNK47
 	bl GameStats_Inc
 	pop {r3, pc}
-	thumb_func_end ov45_0222B0F8
+	thumb_func_end IncrementGameStat47
 
-	thumb_func_start ov45_0222B108
-ov45_0222B108: ; 0x0222B108
+	thumb_func_start IncrementGameStat119
+IncrementGameStat119: ; 0x0222B108
 	push {r3, lr}
 	ldr r0, [r0]
 	bl Save_GameStats_Get
-	mov r1, #0x77
+	mov r1, #0x77 ; GAME_STAT_UNK119
 	bl GameStats_Inc
 	pop {r3, pc}
-	thumb_func_end ov45_0222B108
+	thumb_func_end IncrementGameStat119
 
 	thumb_func_start ov45_0222B118
 ov45_0222B118: ; 0x0222B118

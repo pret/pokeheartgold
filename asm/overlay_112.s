@@ -21456,11 +21456,11 @@ _021F057E:
 	mov r0, #0x52
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
-	bl sub_0200AEB0
+	bl SpriteTransfer_DeleteCharTransferTask
 	mov r0, #0x53
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
-	bl sub_0200B0A8
+	bl SpriteTransfer_DeletePlttTransferTask
 	add r0, r4, #1
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18
@@ -22048,11 +22048,11 @@ _021F09E6:
 	str r0, [r5, r1]
 	sub r1, #0xc
 	ldr r0, [r5, r1]
-	bl sub_0200ADA4
+	bl SpriteTransfer_CreateCharTransferTask_AllocAtEnd
 	mov r0, #0x53
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_0200AF94
+	bl SpriteTransfer_CreateExtPlttTransferTask
 	mov r0, #2
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -22115,11 +22115,11 @@ _021F09E6:
 	str r0, [r5, r1]
 	sub r1, #0xc
 	ldr r0, [r5, r1]
-	bl sub_0200ADA4
+	bl SpriteTransfer_CreateCharTransferTask_AllocAtEnd
 	mov r0, #0x59
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_0200AF94
+	bl SpriteTransfer_CreateExtPlttTransferTask
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -22284,7 +22284,7 @@ ov112_021F0C50: ; 0x021F0C50
 	ldr r4, [r5, r0]
 	sub r0, r0, #4
 	ldr r0, [r5, r0]
-	bl sub_0200AF00
+	bl SpriteTransfer_GetCharProxy
 	add r6, r0, #0
 	add r0, r4, #0
 	add r1, r6, #0

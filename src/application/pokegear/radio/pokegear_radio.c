@@ -167,7 +167,7 @@ u8 Radio_GetAvailableChannels(PokegearRadioAppData *radioApp) {
             return RADIO_STATION_SELECTION_KANTO;
         }
     }
-    if (Radio_IsInSpecialMap(mapID, RADIO_SPECIAL_MAP_TYPE_MAHOGANY) && !Save_VarsFlags_CheckFlagInArray(radioApp->pokegear->saveVarsFlags, FLAG_RED_GYARADOS_MEET)) {
+    if (Radio_IsInSpecialMap(mapID, RADIO_SPECIAL_MAP_TYPE_MAHOGANY) && !Save_VarsFlags_CheckFlagInArray(radioApp->pokegear->saveVarsFlags, FLAG_ROCKET_HIDEOUT_CLEARED)) {
         return RADIO_STATION_SELECTION_MAHOGANY;
     }
     if (Save_VarsFlags_IsInRocketTakeover(radioApp->pokegear->saveVarsFlags)) {

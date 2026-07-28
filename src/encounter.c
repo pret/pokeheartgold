@@ -211,7 +211,7 @@ static BOOL Task_020508B8(TaskManager *taskManager) {
     case 3:
         sub_0205087C(encounter->setup->winFlag, fieldSystem);
         sub_02052444(encounter->setup, fieldSystem);
-        GameStats_AddScore(Save_GameStats_Get(fieldSystem->saveData), SCORE_EVENT_20);
+        GameStats_AddScore(Save_GameStats_Get(fieldSystem->saveData), SCORE_EVENT_LINK_BATTLE);
         Encounter_GetResult(encounter, fieldSystem);
         CallTask_RestoreOverworld(taskManager);
         (*state)++;
@@ -239,7 +239,7 @@ static BOOL Task_02050960(TaskManager *taskManager) {
     case 1:
         sub_0205087C(encounter->setup->winFlag, fieldSystem);
         sub_02052444(encounter->setup, fieldSystem);
-        GameStats_AddScore(Save_GameStats_Get(fieldSystem->saveData), SCORE_EVENT_20);
+        GameStats_AddScore(Save_GameStats_Get(fieldSystem->saveData), SCORE_EVENT_LINK_BATTLE);
         Encounter_GetResult(encounter, fieldSystem);
         (*state)++;
         break;
@@ -271,7 +271,7 @@ static BOOL Task_020509F0(TaskManager *taskManager) {
         break;
     case 3:
         sub_02052444(encounter->setup, fieldSystem);
-        if (fieldSystem->unkA0 != NULL) {
+        if (fieldSystem->frontierFsys != NULL) {
             sub_02067484(fieldSystem, &encounter->setup->unk138);
         }
         Encounter_GetResult(encounter, fieldSystem);
@@ -353,7 +353,7 @@ static BOOL Task_WildEncounter(TaskManager *taskManager) {
     switch (encounter->state) {
     case 0:
         MapObjectManager_PauseAllMovement(fieldSystem->mapObjectManager);
-        GameStats_Inc(Save_GameStats_Get(fieldSystem->saveData), GAME_STAT_UNK8);
+        GameStats_Inc(Save_GameStats_Get(fieldSystem->saveData), GAME_STAT_WILD_ENCOUNTERS);
         sub_02055218(taskManager, encounter->effect, encounter->bgm);
         encounter->state++;
         break;
@@ -407,7 +407,7 @@ static BOOL Task_SafariEncounter(TaskManager *taskManager) {
     switch (*state) {
     case 0:
         MapObjectManager_PauseAllMovement(fieldSystem->mapObjectManager);
-        GameStats_Inc(Save_GameStats_Get(fieldSystem->saveData), GAME_STAT_UNK8);
+        GameStats_Inc(Save_GameStats_Get(fieldSystem->saveData), GAME_STAT_WILD_ENCOUNTERS);
         sub_02055218(taskManager, encounter->effect, encounter->bgm);
         (*state)++;
         break;
@@ -484,7 +484,7 @@ static BOOL Task_BugContestEncounter(TaskManager *taskManager) {
     switch (*state) {
     case 0:
         MapObjectManager_PauseAllMovement(fieldSystem->mapObjectManager);
-        GameStats_Inc(Save_GameStats_Get(fieldSystem->saveData), GAME_STAT_UNK8);
+        GameStats_Inc(Save_GameStats_Get(fieldSystem->saveData), GAME_STAT_WILD_ENCOUNTERS);
         sub_02055218(taskManager, encounter->effect, encounter->bgm);
         (*state)++;
         break;
@@ -550,7 +550,7 @@ void SetupAndStartWildBattle(TaskManager *taskManager, u16 species, u8 level, u3
         setup->battleSpecial |= 8;
     }
 
-    GameStats_Inc(Save_GameStats_Get(fieldSystem->saveData), GAME_STAT_UNK8);
+    GameStats_Inc(Save_GameStats_Get(fieldSystem->saveData), GAME_STAT_WILD_ENCOUNTERS);
 
     CallTask_StartEncounter(taskManager, setup, BattleSetup_GetWildTransitionEffect(setup), BattleSetup_GetWildBattleMusic(setup), winFlag);
 }
@@ -570,7 +570,7 @@ void SetupAndStartFatefulWildBattle(TaskManager *taskManager, u16 species, u8 le
         setup->battleSpecial |= 8;
     }
 
-    GameStats_Inc(Save_GameStats_Get(fieldSystem->saveData), GAME_STAT_UNK8);
+    GameStats_Inc(Save_GameStats_Get(fieldSystem->saveData), GAME_STAT_WILD_ENCOUNTERS);
 
     CallTask_StartEncounter(taskManager, setup, BattleSetup_GetWildTransitionEffect(setup), BattleSetup_GetWildBattleMusic(setup), winFlag);
 }
@@ -583,7 +583,7 @@ static BOOL Task_PalParkEncounter(TaskManager *taskManager) {
     switch (*state) {
     case 0:
         MapObjectManager_PauseAllMovement(fieldSystem->mapObjectManager);
-        GameStats_Inc(Save_GameStats_Get(fieldSystem->saveData), GAME_STAT_UNK8);
+        GameStats_Inc(Save_GameStats_Get(fieldSystem->saveData), GAME_STAT_WILD_ENCOUNTERS);
         sub_02055218(taskManager, encounter->effect, encounter->bgm);
         (*state)++;
         break;
@@ -639,7 +639,7 @@ void SetupAndStartFirstBattle(TaskManager *taskManager, u16 species, u8 level) {
 
     setup->battleSpecial = BATTLE_SPECIAL_FIRST_RIVAL;
 
-    GameStats_Inc(Save_GameStats_Get(fieldSystem->saveData), GAME_STAT_UNK8);
+    GameStats_Inc(Save_GameStats_Get(fieldSystem->saveData), GAME_STAT_WILD_ENCOUNTERS);
 
     CallTask_StartEncounter(taskManager, setup, BattleSetup_GetWildTransitionEffect(setup), BattleSetup_GetWildBattleMusic(setup), NULL);
 }
@@ -722,7 +722,7 @@ void SetupAndStartTrainerBattle(TaskManager *taskManager, u32 opponentTrainer1, 
 
     EnemyTrainerSet_Init(setup, fieldSystem->saveData, heapID);
 
-    GameStats_Inc(Save_GameStats_Get(fieldSystem->saveData), GAME_STAT_UNK9);
+    GameStats_Inc(Save_GameStats_Get(fieldSystem->saveData), GAME_STAT_TRAINER_BATTLES);
 
     if (a5) {
         if (battleType & BATTLE_TYPE_MULTI) {
@@ -863,25 +863,25 @@ static void sub_02051660(FieldSystem *fieldSystem, BattleSetup *setup) {
 
     if (battleType == BATTLE_TYPE_NONE || battleType == BATTLE_TYPE_ROAMER || battleType == (BATTLE_TYPE_DOUBLES | BATTLE_TYPE_MULTI | BATTLE_TYPE_AI)) {
         if (winFlag == BATTLE_OUTCOME_WIN) {
-            GameStats_AddScore(Save_GameStats_Get(fieldSystem->saveData), SCORE_EVENT_9);
+            GameStats_AddScore(Save_GameStats_Get(fieldSystem->saveData), SCORE_EVENT_WILD_MON_DEFEATED);
         } else if (winFlag == BATTLE_OUTCOME_MON_CAUGHT) {
             mon = Party_GetMonByIndex(setup->party[BATTLER_ENEMY], 0);
             if (Pokedex_ConvertToCurrentDexNo(FALSE, GetMonData(mon, MON_DATA_SPECIES, NULL)) != 0) {
-                GameStats_AddScore(Save_GameStats_Get(fieldSystem->saveData), SCORE_EVENT_10);
+                GameStats_AddScore(Save_GameStats_Get(fieldSystem->saveData), SCORE_EVENT_MON_CAUGHT_REGIONAL);
             } else {
-                GameStats_AddScore(Save_GameStats_Get(fieldSystem->saveData), SCORE_EVENT_11);
+                GameStats_AddScore(Save_GameStats_Get(fieldSystem->saveData), SCORE_EVENT_MON_CAUGHT_NATIONAL);
             }
         }
     } else if ((battleType & BATTLE_TYPE_TRAINER) || (battleType & BATTLE_TYPE_TAG)) {
         if (winFlag == BATTLE_OUTCOME_WIN) {
-            GameStats_AddScore(Save_GameStats_Get(fieldSystem->saveData), SCORE_EVENT_12);
+            GameStats_AddScore(Save_GameStats_Get(fieldSystem->saveData), SCORE_EVENT_TRAINER_DEFEATED);
         }
     } else if ((battleType & BATTLE_TYPE_SAFARI || battleType & BATTLE_TYPE_PAL_PARK) && winFlag == BATTLE_OUTCOME_MON_CAUGHT) {
         mon = Party_GetMonByIndex(setup->party[BATTLER_ENEMY], 0);
         if (Pokedex_ConvertToCurrentDexNo(FALSE, GetMonData(mon, MON_DATA_SPECIES, NULL)) != 0) {
-            GameStats_AddScore(Save_GameStats_Get(fieldSystem->saveData), SCORE_EVENT_10);
+            GameStats_AddScore(Save_GameStats_Get(fieldSystem->saveData), SCORE_EVENT_MON_CAUGHT_REGIONAL);
         } else {
-            GameStats_AddScore(Save_GameStats_Get(fieldSystem->saveData), SCORE_EVENT_11);
+            GameStats_AddScore(Save_GameStats_Get(fieldSystem->saveData), SCORE_EVENT_MON_CAUGHT_NATIONAL);
         }
     }
 }

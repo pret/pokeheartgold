@@ -19,10 +19,10 @@ static void VoltorbFlipInputHandler_SetFocus(VoltorbFlipInputHandler *inputHandl
 static void VoltorbFlipInputHandler_SetMemoCursorSpritePos(VoltorbFlipInputHandler *inputHandler);
 static void VoltorbFlipInputHandler_UpdateBoardCursorAnim(VoltorbFlipInputHandler *inputHandler, int newFocus);
 static void VoltorbFlipInputHandler_HandleChangeFocus(VoltorbFlipInputHandler *inputHandler, int newFocus, int oldFocus, MenuInputState inputMode);
-static void VoltorbFlipInputCB_OnButtonPress(void *data, int new, int prev);
-static void VoltorbFlipInputCB_OnTouchSwitch(void *data, int new, int prev);
-static void VoltorbFlipInputCB_OnKeyMove(void *data, int new, int prev);
-static void VoltorbFlipInputCB_OnTouch(void *data, int new, int prev);
+static void VoltorbFlipInputCB_OnButtonPress(void *data, int nextInput, int prevInput);
+static void VoltorbFlipInputCB_OnTouchSwitch(void *data, int nextInput, int prevInput);
+static void VoltorbFlipInputCB_OnKeyMove(void *data, int nextInput, int prevInput);
+static void VoltorbFlipInputCB_OnTouch(void *data, int nextInput, int prevInput);
 
 const GridCallbacks sInputCallbacks = {
     VoltorbFlipInputCB_OnButtonPress,
@@ -387,39 +387,39 @@ static void VoltorbFlipInputHandler_HandleChangeFocus(VoltorbFlipInputHandler *i
 
 // DpadGridCallbacks
 
-static void VoltorbFlipInputCB_OnButtonPress(void *data, int new, int prev) {
+static void VoltorbFlipInputCB_OnButtonPress(void *data, int nextInput, int prevInput_unused) {
     VoltorbFlipInputHandler *inputHandler = data;
 
-    GridInputHandler_SetNextInput(inputHandler->gridInputHandler, (u8)new);
-    VoltorbFlipInputHandler_SetFocus(inputHandler, new);
+    GridInputHandler_SetNextInput(inputHandler->gridInputHandler, (u8) nextInput);
+    VoltorbFlipInputHandler_SetFocus(inputHandler, nextInput);
     PlaySE(SEQ_SE_DP_SELECT);
 }
 
-static void VoltorbFlipInputCB_OnTouchSwitch(void *data, int new, int prev) {
+static void VoltorbFlipInputCB_OnTouchSwitch(void *data, int nextInput, int prevInput_unused) {
     // no-op
 }
 
-static void VoltorbFlipInputCB_OnKeyMove(void *data, int new, int prev) {
+static void VoltorbFlipInputCB_OnKeyMove(void *data, int nextInput, int prevInput) {
     VoltorbFlipInputHandler *inputHandler = data;
 
-    if (new == VOLTORB_FLIP_COL4_ROWLAST) { // wrap around left
-        new = inputHandler->selectedRow * 5 + 4;
-        GF_ASSERT(new < VOLTORB_FLIP_INPUT_GRID_NUM);
-        GridInputHandler_SetNextInput(inputHandler->gridInputHandler, (u8)new);
-    } else if (new == VOLTORB_FLIP_COL0_ROWLAST) { // wrap around right
-        new = inputHandler->selectedRow * 5;
-        GF_ASSERT(new < VOLTORB_FLIP_INPUT_GRID_NUM);
-        GridInputHandler_SetNextInput(inputHandler->gridInputHandler, (u8)new);
+    if (nextInput == VOLTORB_FLIP_COL4_ROWLAST) { // wrap around left
+        nextInput = inputHandler->selectedRow * 5 + 4;
+        GF_ASSERT(nextInput < VOLTORB_FLIP_INPUT_GRID_NUM);
+        GridInputHandler_SetNextInput(inputHandler->gridInputHandler, (u8) nextInput);
+    } else if (nextInput == VOLTORB_FLIP_COL0_ROWLAST) { // wrap around right
+        nextInput = inputHandler->selectedRow * 5;
+        GF_ASSERT(nextInput < VOLTORB_FLIP_INPUT_GRID_NUM);
+        GridInputHandler_SetNextInput(inputHandler->gridInputHandler, (u8) nextInput);
     }
 
-    if (new != VOLTORB_FLIP_INPUT_MEMO && new != VOLTORB_FLIP_INPUT_QUIT) {
-        inputHandler->selectedRow = new / 5;
+    if (nextInput != VOLTORB_FLIP_INPUT_MEMO && nextInput != VOLTORB_FLIP_INPUT_QUIT) {
+        inputHandler->selectedRow = nextInput / 5;
     }
-    VoltorbFlipInputHandler_HandleChangeFocus(inputHandler, new, prev, MENU_INPUT_STATE_BUTTONS);
+    VoltorbFlipInputHandler_HandleChangeFocus(inputHandler, nextInput, prevInput, MENU_INPUT_STATE_BUTTONS);
 }
 
-static void VoltorbFlipInputCB_OnTouch(void *data, int new, int prev) {
+static void VoltorbFlipInputCB_OnTouch(void *data, int nextInput, int prevInput) {
     VoltorbFlipInputHandler *inputHandler = data;
 
-    VoltorbFlipInputHandler_HandleChangeFocus(inputHandler, new, prev, MENU_INPUT_STATE_TOUCH);
+    VoltorbFlipInputHandler_HandleChangeFocus(inputHandler, nextInput, prevInput, MENU_INPUT_STATE_TOUCH);
 }

@@ -676,7 +676,7 @@ scr_seq_D32R0401_003:
 	End
 
 _0960:
-	AddSpecialGameStat2 29
+	AddSpecialGameStat2 SCORE_EVENT_BATTLE_HALL_SET_WON
 	Return
 
 _0966:

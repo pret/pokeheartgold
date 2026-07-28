@@ -208,7 +208,7 @@
 .public ov07_02232A44
 .public ov07_02232A54
 .public ov07_02232AB8
-.public ov07_02232F58
+.public UnkBallData_SetBallAnimation
 .public ov07_02232F60
 .public ov07_02233DB8
 .public ov07_02233E88

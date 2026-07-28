@@ -10,6 +10,10 @@ ifeq ($(OS),Windows_NT)
 EXE := .exe
 else
 EXE :=
+UNAME_S = $(shell uname -s)
+ifeq ($(UNAME_S),Darwin)
+CXXFLAGS += "-I$(shell brew --prefix)/include"
+endif
 endif
 
 CXXSRCS := calcrom.cpp BuildAnalyzer.cpp ElfFile.cpp Glob.cpp MwerksXmapFile.cpp

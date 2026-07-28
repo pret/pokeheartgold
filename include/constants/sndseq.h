@@ -797,7 +797,7 @@
 #define SEQ_SE_DP_BOWA3               1799
 #define SEQ_SE_DP_BOWA4               1800
 #define SEQ_SE_DP_GETTING             1801
-#define SEQ_SE_DP_NAGERU              1802
+#define SEQ_SE_DP_THROW               1802
 #define SEQ_SE_DP_EXP                 1803
 #define SEQ_SE_DP_EXPMAX              1804
 #define SEQ_SE_DP_EXPMAX2             1805

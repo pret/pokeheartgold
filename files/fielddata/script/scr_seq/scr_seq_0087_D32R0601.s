@@ -544,7 +544,7 @@ scr_seq_D32R0601_003:
 	End
 
 _0798:
-	AddSpecialGameStat2 30
+	AddSpecialGameStat2 SCORE_EVENT_BATTLE_ARCADE_SET_WON
 	Return
 
 _079E:

@@ -22,11 +22,11 @@
 #include "obj_pltt_transfer.h"
 #include "pokemon_icon_idx.h"
 #include "sound_02004A44.h"
+#include "sprite_transfer.h"
 #include "systask_environment.h"
 #include "system.h"
 #include "text.h"
 #include "unk_02005D10.h"
-#include "unk_0200ACF0.h"
 #include "unk_0200B150.h"
 #include "unk_0200FA24.h"
 #include "unk_02013534.h"
@@ -715,10 +715,10 @@ BOOL NamingScreenApp_Exit(OverlayManager *ovyMan, int *pState) {
     for (int i = 0; i < 7; ++i) {
         DestroySysTaskAndEnvironment(data->tasks[i]);
     }
-    sub_0200AEB0(data->gfxResObjs[PM_LCD_TOP][GF_GFX_RES_TYPE_CHAR]);
-    sub_0200AEB0(data->gfxResObjs[PM_LCD_BOTTOM][GF_GFX_RES_TYPE_CHAR]);
-    sub_0200B0A8(data->gfxResObjs[PM_LCD_TOP][GF_GFX_RES_TYPE_PLTT]);
-    sub_0200B0A8(data->gfxResObjs[PM_LCD_BOTTOM][GF_GFX_RES_TYPE_PLTT]);
+    SpriteTransfer_DeleteCharTransferTask(data->gfxResObjs[PM_LCD_TOP][GF_GFX_RES_TYPE_CHAR]);
+    SpriteTransfer_DeleteCharTransferTask(data->gfxResObjs[PM_LCD_BOTTOM][GF_GFX_RES_TYPE_CHAR]);
+    SpriteTransfer_DeletePlttTransferTask(data->gfxResObjs[PM_LCD_TOP][GF_GFX_RES_TYPE_PLTT]);
+    SpriteTransfer_DeletePlttTransferTask(data->gfxResObjs[PM_LCD_BOTTOM][GF_GFX_RES_TYPE_PLTT]);
     for (int i = 0; i < 4; ++i) {
         Destroy2DGfxResObjMan(data->gfxResMen[i]);
     }
@@ -1077,10 +1077,10 @@ static void NamingScreen_LoadObjGfx(NamingScreenAppData *data, NARC *narc) {
     data->gfxResObjs[PM_LCD_BOTTOM][GF_GFX_RES_TYPE_CELL] = AddCellOrAnimResObjFromOpenNarc(data->gfxResMen[GF_GFX_RES_TYPE_CELL], narc, NARC_namein_namein_00000013_NCER_lz, TRUE, 1, GF_GFX_RES_TYPE_CELL, HEAP_ID_NAMING_SCREEN);
     data->gfxResObjs[PM_LCD_BOTTOM][GF_GFX_RES_TYPE_ANIM] = AddCellOrAnimResObjFromOpenNarc(data->gfxResMen[GF_GFX_RES_TYPE_ANIM], narc, NARC_namein_namein_00000015_NANR_lz, TRUE, 1, GF_GFX_RES_TYPE_ANIM, HEAP_ID_NAMING_SCREEN);
 
-    sub_0200ACF0(data->gfxResObjs[PM_LCD_TOP][GF_GFX_RES_TYPE_CHAR]);
-    sub_0200ACF0(data->gfxResObjs[PM_LCD_BOTTOM][GF_GFX_RES_TYPE_CHAR]);
-    sub_0200AF94(data->gfxResObjs[PM_LCD_TOP][GF_GFX_RES_TYPE_PLTT]);
-    sub_0200AF94(data->gfxResObjs[PM_LCD_BOTTOM][GF_GFX_RES_TYPE_PLTT]);
+    SpriteTransfer_CreateCharTransferTask(data->gfxResObjs[PM_LCD_TOP][GF_GFX_RES_TYPE_CHAR]);
+    SpriteTransfer_CreateCharTransferTask(data->gfxResObjs[PM_LCD_BOTTOM][GF_GFX_RES_TYPE_CHAR]);
+    SpriteTransfer_CreateExtPlttTransferTask(data->gfxResObjs[PM_LCD_TOP][GF_GFX_RES_TYPE_PLTT]);
+    SpriteTransfer_CreateExtPlttTransferTask(data->gfxResObjs[PM_LCD_BOTTOM][GF_GFX_RES_TYPE_PLTT]);
 }
 
 typedef struct SubspritePosControllerTaskData {

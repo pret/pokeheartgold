@@ -65,6 +65,7 @@ void BattleSystem_ReloadMonData(BattleSystem *battleSystem, BattleContext *ctx, 
 
 void ov12_022645C8(BattleSystem *battleSystem, BattleContext *ctx, u8 a2);
 void ov12_02262B80(BattleSystem *battleSystem, BattleContext *ctx, int battlerId, int index);
+void ov12_022628A0(BattleSystem *battleSystem, s32 battlerId, s32);
 void ov12_022639B8(BattleSystem *battleSystem, int battlerId, BattleMessage msg);
 void ov12_02263CCC(BattleSystem *battleSystem, int battlerId);
 void ov12_02262F40(BattleSystem *battleSystem, BattleContext *ctx, int battlerId);

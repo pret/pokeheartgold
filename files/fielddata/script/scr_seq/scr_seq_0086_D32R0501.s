@@ -541,7 +541,7 @@ scr_seq_D32R0501_003:
 	End
 
 _0788:
-	AddSpecialGameStat2 28
+	AddSpecialGameStat2 SCORE_EVENT_BATTLE_CASTLE_SET_WON
 	Return
 
 _078E:

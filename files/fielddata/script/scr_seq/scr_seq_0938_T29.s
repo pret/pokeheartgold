@@ -399,7 +399,7 @@ scr_seq_T29_004:
 	PlaySE SEQ_SE_DP_SELECT
 	LockAll
 	FacePlayer
-	GoToIfSet FLAG_RED_GYARADOS_MEET, _056A
+	GoToIfSet FLAG_ROCKET_HIDEOUT_CLEARED, _056A
 	NPCMsg msg_0626_T29_00009
 	WaitButton
 	CloseMsg

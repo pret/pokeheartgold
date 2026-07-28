@@ -1,9 +1,9 @@
 #ifndef POKEHEARTGOLD_FIELD_BGM_H
 #define POKEHEARTGOLD_FIELD_BGM_H
 
-#include "script.h"
 #include "field_system.h"
 #include "field_types_def.h"
+#include "script.h"
 
 const static u16 sTrainerEncounterMusicParam[][3];
 

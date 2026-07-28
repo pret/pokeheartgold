@@ -17,7 +17,10 @@ typedef struct Pokeathlon_UnkSubStruct_B00 {
     u32 unk28;
     u32 unk2C;
     u32 unk30;
-    u8 unk34[0x10];
+    u32 unk34;
+    u32 unk38;
+    u32 unk3C;
+    u32 unk40;
     u32 unk44[10];
     u32 unk6C;
     u32 unk70;
@@ -40,14 +43,14 @@ typedef struct Pokeathlon_RecordsLink {
 
 typedef struct PokeathlonSave {
     u8 unk_0[0xDC];
-    u8 unk_DC[0x1F0]; // sub-struct pointed to by PokeathlonSave_GetUnkDC; byte[slot-1] holds per-pokemon course bits
+    u8 unk_DC[0x1F0];                       // sub-struct pointed to by PokeathlonSave_GetUnkDC; byte[slot-1] holds per-pokemon course bits
     Pokeathlon_RecordsSolo recordsSolo[10]; // 0x2CC
     Pokeathlon_RecordsLink recordsLink[10]; // 0x484
-    u8 unk_AEC[0x14]; // pointed to by PokeathlonSave_GetUnkAEC
-    Pokeathlon_UnkSubStruct_B00 unk_B00; // pointed to by PokeathlonSave_GetUnkB00 / PokeathlonSave_GetAgainUnkB00
-    int athletePoints; // 0xB74 - capped at 99999
-    u32 unk_B78;       // bitfield, bits 0-26 (PokeathlonSave_GetUnkB78_AtIndex / PokeathlonSave_SetUnkB78_AtIndex)
-    u16 unk_B7C;       // bitfield (PokeathlonSave_GetUnkB7C_AtIndex / PokeathlonSave_SetUnkB7C_AtIndex / PokeathlonSave_ResetUnkB7C)
+    u8 unk_AEC[0x14];                       // pointed to by PokeathlonSave_GetUnkAEC
+    Pokeathlon_UnkSubStruct_B00 unk_B00;    // pointed to by PokeathlonSave_GetUnkB00 / PokeathlonSave_GetAgainUnkB00
+    int athletePoints;                      // 0xB74 - capped at 99999
+    u32 unk_B78;                            // bitfield, bits 0-26 (PokeathlonSave_GetUnkB78_AtIndex / PokeathlonSave_SetUnkB78_AtIndex)
+    u16 unk_B7C;                            // bitfield (PokeathlonSave_GetUnkB7C_AtIndex / PokeathlonSave_SetUnkB7C_AtIndex / PokeathlonSave_ResetUnkB7C)
     u16 unk_B7E;
 } PokeathlonSave; // size: 0xB80
 

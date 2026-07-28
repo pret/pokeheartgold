@@ -285,8 +285,8 @@
 .public ov45_0222B0BC
 .public ov45_0222B0D8
 .public ov45_0222B0E8
-.public ov45_0222B0F8
-.public ov45_0222B108
+.public IncrementGameStat47
+.public IncrementGameStat119
 .public ov45_0222B118
 .public ov45_0222B134
 .public ov45_0222B1B4

@@ -197,8 +197,8 @@ typedef struct Mail {
  *  Rather than recalculating stats after each battle, they're stored here.
  */
 typedef struct PartyPokemon {
-    /* 0x088 */ u32 status; // slp:3, psn:1, brn:1, frz:1, prz:1, tox:1, ...
-    /* 0x08C */ u8 level;   //!< The Pokemon's current level, as computed from its total EXP value and its species' level curve.
+    /* 0x088 */ u32 status;       // slp:3, psn:1, brn:1, frz:1, prz:1, tox:1, ...
+    /* 0x08C */ u8 level;         //!< The Pokemon's current level, as computed from its total EXP value and its species' level curve.
     /* 0x08D */ u8 ballCapsuleID; //!< The ID of the ball capsule attached to the Pokemon.
     /* 0x08E */ u16 hp;           //!< The Pokemon's current HP.
     /* 0x090 */ u16 maxHP;        //!< The Pokemon's maximum HP.

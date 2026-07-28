@@ -129,35 +129,35 @@ static const u16 sTypeIconPositions[][2] = {
 
 ALIGN(4)
 static const u16 sMovePPTextPositions[4][2] = {
-    { 59, 61 },
-    { 187, 60 },
-    { 59, 124 },
+    { 59,  61  },
+    { 187, 60  },
+    { 59,  124 },
     { 187, 123 }
 };
 
 ALIGN(4)
 static const u16 sMovePPMaxTextPositions[4][2] = {
-    { 76, 61 },
-    { 204, 60 },
-    { 76, 124 },
+    { 76,  61  },
+    { 204, 60  },
+    { 76,  124 },
     { 204, 123 }
 };
 
 ALIGN(4)
 static const u16 sTargetPokemonMenuPositions[][2] = {
-    { 60, 116 },
-    { 196, 32 },
+    { 60,  116 },
+    { 196, 32  },
     { 196, 116 },
-    { 60, 32 },
+    { 60,  32  },
     { 128, 175 }
 };
 
 ALIGN(4)
 static const u16 sPokemonIconPositions[][2] = {
-    { 60, 116 },
-    { 196, 56 },
+    { 60,  116 },
+    { 196, 56  },
     { 196, 116 },
-    { 60, 56 }
+    { 60,  56  }
 };
 
 static const BgTemplate sBattleMenuBackgroundTemplates[] = {
@@ -1139,7 +1139,7 @@ static const TouchscreenHitbox ov12_0226E2F8[] = {
 
 ALIGN(4)
 static const s16 ov12_0226E286[][3] = {
-    { 0, 5,    10    },
+    { 0, 5,   10  },
     { 0, 192, 384 }
 };
 
@@ -1164,10 +1164,10 @@ static const TouchscreenHitbox ov12_0226E20C[] = {
 };
 
 static const ALIGN(4) S16Pos ov12_0226E2D8[] = {
-    { 128, 76 },
-    { 40, 0xA4 },
+    { 128,  76   },
+    { 40,   0xA4 },
     { 0xD8, 0xA4 },
-    { 128, 168 }
+    { 128,  168  }
 };
 
 ALIGN(4)
@@ -1193,14 +1193,14 @@ typedef struct NCLRIndex {
 
 static const NCLRIndex sBackgroundPaletteIds[] = {
     { 0xF7,  0x10F },
-    { 248,  0x110 },
+    { 248,   0x110 },
     { 0xF9,  0x111 },
     { 0xFA,  0x112 },
     { 0xFB,  0x113 },
     { 0xFC,  0x114 },
     { 0xFD,  0x115 },
     { 0xFE,  0x116 },
-    { 255,  0x117 },
+    { 255,   0x117 },
     { 0x100, 0x118 },
     { 0x101, 0x119 },
     { 0x102, 0x11A },

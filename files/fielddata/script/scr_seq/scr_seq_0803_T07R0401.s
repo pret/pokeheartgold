@@ -322,7 +322,7 @@ _048B:
 	Compare VAR_SPECIAL_RESULT, 0
 	GoToIfEq _052E
 	CheckGiveCoins VAR_SPECIAL_RESULT, 50
-	.short 0 ; Nop
+	Noop
 	Compare VAR_SPECIAL_RESULT, 0
 	GoToIfEq _0523
 	SubMoneyImmediate 1000
@@ -340,7 +340,7 @@ _04D7:
 	Compare VAR_SPECIAL_RESULT, 0
 	GoToIfEq _052E
 	CheckGiveCoins VAR_SPECIAL_RESULT, 500
-	.short 0 ; Nop
+	Noop
 	Compare VAR_SPECIAL_RESULT, 0
 	GoToIfEq _0523
 	SubMoneyImmediate 10000
@@ -381,7 +381,7 @@ scr_seq_T07R0401_005:
 	Compare VAR_SPECIAL_RESULT, 0
 	GoToIfEq _05AA
 	CheckGiveCoins VAR_SPECIAL_RESULT, 18
-	.short 0 ; Nop
+	Noop
 	Compare VAR_SPECIAL_RESULT, 0
 	GoToIfEq _05B9
 	GiveCoins 18

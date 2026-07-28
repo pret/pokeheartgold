@@ -57,12 +57,12 @@ BOOL Battle_Run(OverlayManager *man, int *state) {
         ov12_022399D4(man, setup);
         sub_02039F68(setup->wifiHistory);
         if (!sub_02039998()) {
-            GameStats_Inc(setup->gameStats, GAME_STAT_UNK21);
+            GameStats_Inc(setup->gameStats, GAME_STAT_LOCAL_LINK_BATTLES);
             if (setup->battleType != 0x8F) {
                 sub_02005BEC(1);
             }
         } else {
-            GameStats_Inc(setup->gameStats, GAME_STAT_UNK26);
+            GameStats_Inc(setup->gameStats, GAME_STAT_WIFI_BATTLES);
         }
         *state = BSTATE_LINK_MAIN;
         break;

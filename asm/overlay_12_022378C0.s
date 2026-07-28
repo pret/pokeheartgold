@@ -4724,14 +4724,14 @@ _0223A464:
 	mov r0, #0x51
 	lsl r0, r0, #2
 	ldr r0, [r7, r0]
-	mov r1, #0x16
+	mov r1, #0x16 ; GAME_STAT_LOCAL_LINK_BATTLE_WINS
 	bl GameStats_Inc
 	b _0223A4CE
 _0223A47A:
 	mov r0, #0x51
 	lsl r0, r0, #2
 	ldr r0, [r7, r0]
-	mov r1, #0x1b
+	mov r1, #0x1b ; GAME_STAT_WIFI_BATTLE_WINS
 	bl GameStats_Inc
 	b _0223A4CE
 _0223A488:
@@ -4741,14 +4741,14 @@ _0223A488:
 	mov r0, #0x51
 	lsl r0, r0, #2
 	ldr r0, [r7, r0]
-	mov r1, #0x17
+	mov r1, #0x17 ; GAME_STAT_LOCAL_LINK_BATTLE_LOSSES
 	bl GameStats_Inc
 	b _0223A4CE
 _0223A49E:
 	mov r0, #0x51
 	lsl r0, r0, #2
 	ldr r0, [r7, r0]
-	mov r1, #0x1c
+	mov r1, #0x1c ; GAME_STAT_WIFI_BATTLE_LOSSES
 	bl GameStats_Inc
 	b _0223A4CE
 _0223A4AC:
@@ -4758,14 +4758,14 @@ _0223A4AC:
 	mov r0, #0x51
 	lsl r0, r0, #2
 	ldr r0, [r7, r0]
-	mov r1, #0x18
+	mov r1, #0x18 ; GAME_STAT_LOCAL_LINK_BATTLE_DRAWS
 	bl GameStats_Inc
 	b _0223A4CE
 _0223A4C2:
 	mov r0, #0x51
 	lsl r0, r0, #2
 	ldr r0, [r7, r0]
-	mov r1, #0x1d
+	mov r1, #0x1d ; GAME_STAT_WIFI_BATTLE_DRAWS
 	bl GameStats_Inc
 _0223A4CE:
 	ldr r1, [r7]

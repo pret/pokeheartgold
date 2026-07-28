@@ -3,6 +3,7 @@
 #include "constants/sndseq.h"
 
 #include "camera.h"
+#include "field_bgm.h"
 #include "field_warp_tasks.h"
 #include "follow_mon.h"
 #include "heap.h"
@@ -23,7 +24,6 @@
 #include "unk_02005D10.h"
 #include "unk_0200FA24.h"
 #include "unk_02054648.h"
-#include "field_bgm.h"
 #include "unk_02055244.h"
 #include "unk_020552A4.h"
 #include "unk_02056680.h"
@@ -512,7 +512,7 @@ BOOL sub_02056530(TaskManager *man) {
     switch (fenv->transitionState) {
     case 0:
         obj = PlayerAvatar_GetMapObject(fieldSystem->playerAvatar);
-        if (sub_0205B70C(GetMetatileBehavior(fieldSystem, PlayerAvatar_GetXCoord(fieldSystem->playerAvatar), PlayerAvatar_GetZCoord(fieldSystem->playerAvatar)))) {
+        if (MetatileBehavior_IsDoor(GetMetatileBehavior(fieldSystem, PlayerAvatar_GetXCoord(fieldSystem->playerAvatar), PlayerAvatar_GetZCoord(fieldSystem->playerAvatar)))) {
             MapObject_SetVisible(obj, TRUE);
             fenv->transitionState = 1;
             break;
@@ -546,7 +546,7 @@ BOOL sub_020565FC(TaskManager *man) {
     switch (fenv->transitionState) {
     case 0: {
         LocalMapObject *mapObj = PlayerAvatar_GetMapObject(fieldSystem->playerAvatar);
-        if (sub_0205B70C(GetMetatileBehavior(fieldSystem, PlayerAvatar_GetXCoord(fieldSystem->playerAvatar), PlayerAvatar_GetZCoord(fieldSystem->playerAvatar)))) {
+        if (MetatileBehavior_IsDoor(GetMetatileBehavior(fieldSystem, PlayerAvatar_GetXCoord(fieldSystem->playerAvatar), PlayerAvatar_GetZCoord(fieldSystem->playerAvatar)))) {
             MapObject_SetVisible(mapObj, TRUE);
             fenv->transitionState = 1;
             TaskManager_Jump(man, sub_02056530, fenv);

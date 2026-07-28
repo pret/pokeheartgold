@@ -2323,7 +2323,7 @@ static void ov122_021E8094(OverlayManager *man) {
     TextFlags_SetCanTouchSpeedUpPrint(TRUE);
 
     Main_SetVBlankIntrCB(VoltorbFlip_VBlankIntr, work);
-    GameStats_AddScore(Save_GameStats_Get(args->saveData), SCORE_EVENT_6);
+    GameStats_AddScore(Save_GameStats_Get(args->saveData), SCORE_EVENT_VOLTORB_FLIP);
 }
 
 static void FreeOverlayData(OverlayManager *man) {

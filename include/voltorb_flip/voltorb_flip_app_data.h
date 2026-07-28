@@ -40,7 +40,7 @@ typedef struct VoltorbFlipAppData {
     void *listMenuSpawner;
     TouchscreenListMenu *menu;
     Window windows[17];
-    LISTMENUITEM *menuItems[2];
+    ListMenuItem *menuItems[2];
     YesNoPrompt *yesNoPrompt;
     String *string;
     SpriteSystem *spriteRenderer;

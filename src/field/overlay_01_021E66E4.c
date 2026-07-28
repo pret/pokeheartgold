@@ -7,6 +7,13 @@
 static void Task_Field3dObject_Update(SysTask *task, void *taskdata);
 static void Task_Field3dObject_Render(SysTask *task, void *taskData);
 
+const OverlayManagerTemplate ov01_02206378 = {
+    .init = ov01_021E5924,
+    .exec = ov01_021E5BE4,
+    .exit = ov01_021E5C24,
+    .ovy_id = FS_OVERLAY_ID_NONE
+};
+
 Field3dObjectTaskManager *Field3dObjectTaskManager_Create(struct FieldSystem *fieldSystem, enum HeapID heapID, int num) {
     Field3dObjectTaskManager *ret = Heap_Alloc(heapID, sizeof(Field3dObjectTaskManager));
     ret->fieldSystem = fieldSystem;

@@ -234,12 +234,5 @@ BOOL BtlCmd_222(BattleSystem *battleSystem, BattleContext *ctx);
 BOOL BtlCmd_223(BattleSystem *battleSystem, BattleContext *ctx);
 BOOL BtlCmd_EndScript(BattleSystem *battleSystem, BattleContext *ctx);
 int BattleScriptReadWord(BattleContext *ctx);
-void InitBattleMsgData(BattleContext *ctx, BattleMessageData *msgdata);
-void InitBattleMsg(BattleSystem *battleSystem, BattleContext *ctx, BattleMessageData *msgdata, BattleMessage *msg);
-void UpdateFrienshipFainted(BattleSystem *battleSystem, BattleContext *ctx, int battlerId);
-int GetMoveMessageNo(BattleContext *ctx, int move);
-void BattleScript_CalcEffortValues(Party *party, int slot, u32 species, u32 form);
-void ov12_02248228(BattleSystem *battleSystem, GetterWork *data, Pokemon *mon);
-void ov12_022484D4(BattleSystem *battleSystem, GetterWork *data);
 
 #endif

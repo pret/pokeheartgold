@@ -30,7 +30,7 @@ scr_seq_0150_000:
 	NPCMsg msg_0023_00003
 	WaitFanfare
 	GiveApricornFromTree VAR_SPECIAL_x8000, 1, VAR_SPECIAL_RESULT
-	AddSpecialGameStat SCORE_EVENT_1
+	AddSpecialGameStat SCORE_EVENT_APRICORN_HARVESTED
 	Compare VAR_SPECIAL_RESULT, 0
 	GoToIfEq _007D
 	NPCMsg msg_0023_00004

@@ -26,10 +26,10 @@
 .public AddPlttResObjFromNarc
 .public AddCellOrAnimResObjFromNarc
 .public sub_0200A740
-.public sub_0200ADA4
-.public sub_0200AEB0
-.public sub_0200B00C
-.public sub_0200B0A8
+.public SpriteTransfer_CreateCharTransferTask_AllocAtEnd
+.public SpriteTransfer_DeleteCharTransferTask
+.public SpriteTransfer_CreatePlttTransferTask
+.public SpriteTransfer_DeletePlttTransferTask
 .public NewMsgDataFromNarc
 .public DestroyMsgData
 .public NewString_ReadMsgData
@@ -107,7 +107,7 @@
 .public sub_02058258
 .public sub_02058740
 .public sub_02058AA0
-.public PlayerAvatar_GetUnk14
+.public PlayerAvatar_GetPlayerMoveState
 .public PlayerAvatar_GetMapObject
 .public PlayerAvatar_GetState
 .public PlayerSaveData_CheckRunningShoes

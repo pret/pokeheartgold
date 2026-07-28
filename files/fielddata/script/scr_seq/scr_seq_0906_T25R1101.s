@@ -501,7 +501,7 @@ _06FE:
 	Compare VAR_SPECIAL_RESULT, 0
 	GoToIfEq _07A1
 	CheckGiveCoins VAR_SPECIAL_RESULT, 50
-	.short 0 ; Nop
+	Noop
 	Compare VAR_SPECIAL_RESULT, 0
 	GoToIfEq _0796
 	SubMoneyImmediate 1000
@@ -519,7 +519,7 @@ _074A:
 	Compare VAR_SPECIAL_RESULT, 0
 	GoToIfEq _07A1
 	CheckGiveCoins VAR_SPECIAL_RESULT, 500
-	.short 0 ; Nop
+	Noop
 	Compare VAR_SPECIAL_RESULT, 0
 	GoToIfEq _0796
 	SubMoneyImmediate 10000

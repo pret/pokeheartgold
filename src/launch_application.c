@@ -14,6 +14,7 @@
 #include "certificates_app.h"
 #include "choose_starter_app.h"
 #include "fashion_case.h"
+#include "field_bgm.h"
 #include "field_system.h"
 #include "friend_group.h"
 #include "frontier_data.h"
@@ -73,7 +74,6 @@
 #include "unk_0202D230.h"
 #include "unk_0202DB34.h"
 #include "unk_02037C94.h"
-#include "field_bgm.h"
 #include "unk_02055244.h"
 #include "unk_020552A4.h"
 #include "unk_02055418.h"
@@ -627,7 +627,7 @@ ApricornBoxArgs *ApricornBox_LaunchApp(FieldSystem *fieldSystem, int a1) {
     MI_CpuFill8(args, 0, sizeof(ApricornBoxArgs));
     args->saveData = FieldSystem_GetSaveData(fieldSystem);
     args->menuInputStatePtr = &fieldSystem->menuInputState;
-    args->unk10 = GameStats_GetCapped(Save_GameStats_Get(args->saveData), GAME_STAT_UNK0);
+    args->steps = GameStats_GetCapped(Save_GameStats_Get(args->saveData), GAME_STAT_STEPS_WALKED);
     if (a1 == 1 && !CheckFlag997(Save_VarsFlags_Get(fieldSystem->saveData))) {
         args->unk0 = 0;
     } else {
@@ -642,7 +642,7 @@ ApricornBoxArgs *sub_0203ED80(FieldSystem *fieldSystem, u32 a1, u16 *a2) {
     MI_CpuFill8(args, 0, sizeof(ApricornBoxArgs));
     args->saveData = FieldSystem_GetSaveData(fieldSystem);
     args->menuInputStatePtr = &fieldSystem->menuInputState;
-    args->unk10 = GameStats_GetCapped(Save_GameStats_Get(args->saveData), GAME_STAT_UNK0);
+    args->steps = GameStats_GetCapped(Save_GameStats_Get(args->saveData), GAME_STAT_STEPS_WALKED);
     args->unk0 = 3;
     args->unkC = a1;
     args->unk8 = a2;
@@ -976,7 +976,7 @@ static BOOL Task_WirelessTrade(TaskManager *taskman) {
         data->wirelessTradeSelectMon.unk30++;
         data->state = 2;
         GameStats *gameStats = Save_GameStats_Get(fieldSystem->saveData);
-        GameStats_AddScore(gameStats, SCORE_EVENT_16);
+        GameStats_AddScore(gameStats, SCORE_EVENT_LINK_TRADE);
         if (sub_02039998()) {
             GameStats_Inc(gameStats, GAME_STAT_UNK114);
         }
@@ -1253,7 +1253,7 @@ void MoveRelearner_LaunchApp(FieldSystem *menuInputStatePtr, MoveRelearnerArgs *
 void HatchEggInParty(FieldSystem *fieldSystem) {
     UnkStruct_02091240 data;
 
-    Pokemon *mon = sub_0206CE44(SaveArray_Party_Get(fieldSystem->saveData));
+    Pokemon *mon = Party_GetMonToHatch(SaveArray_Party_Get(fieldSystem->saveData));
     GF_ASSERT(mon != NULL);
 
     data.mon = mon;

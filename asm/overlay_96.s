@@ -5694,11 +5694,11 @@ _021E8ABC:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	ldr r0, [r0, r6]
-	bl sub_0200AEB0
+	bl SpriteTransfer_DeleteCharTransferTask
 	ldr r0, [r5, r7]
 	add r0, r0, r6
 	ldr r0, [r0, #4]
-	bl sub_0200B0A8
+	bl SpriteTransfer_DeletePlttTransferTask
 	add r0, r4, #1
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18
@@ -5891,7 +5891,7 @@ _021E8C14:
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
 	ldr r0, [r0, r5]
-	bl sub_0200AF00
+	bl SpriteTransfer_GetCharProxy
 	add r1, r0, #0
 	mov r0, #0x55
 	lsl r0, r0, #2
@@ -6028,14 +6028,14 @@ _021E8CC2:
 	bl AddCellOrAnimResObjFromNarc
 	str r0, [r4, #0xc]
 	ldr r0, [r4]
-	bl sub_0200ADA4
+	bl SpriteTransfer_CreateCharTransferTask_AllocAtEnd
 	ldr r0, [r4, #4]
-	bl sub_0200AF94
+	bl SpriteTransfer_CreateExtPlttTransferTask
 	mov r0, #0
 	str r0, [sp, #0x1c]
 	str r0, [sp, #0x18]
 	ldr r0, [r4]
-	bl sub_0200AF00
+	bl SpriteTransfer_GetCharProxy
 	str r0, [sp, #0x24]
 	ldr r0, [r4, #4]
 	ldr r1, [sp, #0x24]
@@ -8085,56 +8085,56 @@ ov96_021E9C0C: ; 0x021E9C0C
 	tst r0, r1
 	beq _021E9C1E
 	ldr r0, [r5, #0x1c]
-	bl sub_0200AEB0
+	bl SpriteTransfer_DeleteCharTransferTask
 _021E9C1E:
 	ldr r1, [r5, #4]
 	mov r0, #4
 	tst r0, r1
 	beq _021E9C2C
 	ldr r0, [r5, #0x20]
-	bl sub_0200AEB0
+	bl SpriteTransfer_DeleteCharTransferTask
 _021E9C2C:
 	ldr r1, [r5, #4]
 	mov r0, #2
 	tst r0, r1
 	beq _021E9C3A
 	ldr r0, [r5, #0x24]
-	bl sub_0200AEB0
+	bl SpriteTransfer_DeleteCharTransferTask
 _021E9C3A:
 	ldr r1, [r5, #4]
 	mov r0, #8
 	tst r0, r1
 	beq _021E9C48
 	ldr r0, [r5, #0x28]
-	bl sub_0200AEB0
+	bl SpriteTransfer_DeleteCharTransferTask
 _021E9C48:
 	ldr r1, [r5, #4]
 	mov r0, #0x10
 	tst r0, r1
 	beq _021E9C56
 	ldr r0, [r5, #0x2c]
-	bl sub_0200AEB0
+	bl SpriteTransfer_DeleteCharTransferTask
 _021E9C56:
 	ldr r1, [r5, #4]
 	mov r0, #0x20
 	tst r0, r1
 	beq _021E9C64
 	ldr r0, [r5, #0x30]
-	bl sub_0200AEB0
+	bl SpriteTransfer_DeleteCharTransferTask
 _021E9C64:
 	ldr r1, [r5, #4]
 	mov r0, #0x40
 	tst r0, r1
 	beq _021E9C72
 	ldr r0, [r5, #0x34]
-	bl sub_0200AEB0
+	bl SpriteTransfer_DeleteCharTransferTask
 _021E9C72:
 	ldr r1, [r5, #4]
 	mov r0, #0x80
 	tst r0, r1
 	beq _021E9C80
 	ldr r0, [r5, #0x38]
-	bl sub_0200AEB0
+	bl SpriteTransfer_DeleteCharTransferTask
 _021E9C80:
 	mov r0, #1
 	ldr r1, [r5, #4]
@@ -8142,7 +8142,7 @@ _021E9C80:
 	tst r0, r1
 	beq _021E9C90
 	ldr r0, [r5, #0x3c]
-	bl sub_0200AEB0
+	bl SpriteTransfer_DeleteCharTransferTask
 _021E9C90:
 	mov r0, #2
 	ldr r1, [r5, #4]
@@ -8150,7 +8150,7 @@ _021E9C90:
 	tst r0, r1
 	beq _021E9CA0
 	ldr r0, [r5, #0x40]
-	bl sub_0200AEB0
+	bl SpriteTransfer_DeleteCharTransferTask
 _021E9CA0:
 	mov r0, #1
 	ldr r1, [r5, #4]
@@ -8158,7 +8158,7 @@ _021E9CA0:
 	tst r0, r1
 	beq _021E9CB0
 	ldr r0, [r5, #0x44]
-	bl sub_0200AEB0
+	bl SpriteTransfer_DeleteCharTransferTask
 _021E9CB0:
 	mov r0, #2
 	ldr r1, [r5, #4]
@@ -8166,18 +8166,18 @@ _021E9CB0:
 	tst r0, r1
 	beq _021E9CC0
 	ldr r0, [r5, #0x48]
-	bl sub_0200AEB0
+	bl SpriteTransfer_DeleteCharTransferTask
 _021E9CC0:
 	add r0, r5, #0
 	add r0, #0xac
 	ldr r0, [r0]
-	bl sub_0200B0A8
+	bl SpriteTransfer_DeletePlttTransferTask
 	add r0, r5, #0
 	add r0, #0xb0
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _021E9CD8
-	bl sub_0200B0A8
+	bl SpriteTransfer_DeletePlttTransferTask
 _021E9CD8:
 	mov r6, #0
 	add r4, r5, #0
@@ -8261,7 +8261,7 @@ ov96_021E9D10: ; 0x021E9D10
 	bl AddCellOrAnimResObjFromNarc
 	str r0, [r4, #0x7c]
 	ldr r0, [r4, #0x1c]
-	bl sub_0200ADA4
+	bl SpriteTransfer_CreateCharTransferTask_AllocAtEnd
 _021E9D6E:
 	ldr r1, [r4, #4]
 	mov r0, #4
@@ -8306,7 +8306,7 @@ _021E9D6E:
 	add r1, #0x80
 	str r0, [r1]
 	ldr r0, [r4, #0x20]
-	bl sub_0200ADA4
+	bl SpriteTransfer_CreateCharTransferTask_AllocAtEnd
 _021E9DCE:
 	ldr r1, [r4, #4]
 	mov r0, #2
@@ -8351,7 +8351,7 @@ _021E9DCE:
 	add r1, #0x84
 	str r0, [r1]
 	ldr r0, [r4, #0x24]
-	bl sub_0200ADA4
+	bl SpriteTransfer_CreateCharTransferTask_AllocAtEnd
 _021E9E2E:
 	ldr r0, [r4, #4]
 	mov r2, #0x10
@@ -8395,7 +8395,7 @@ _021E9E2E:
 	add r1, #0x8c
 	str r0, [r1]
 	ldr r0, [r4, #0x2c]
-	bl sub_0200ADA4
+	bl SpriteTransfer_CreateCharTransferTask_AllocAtEnd
 _021E9E8C:
 	ldr r1, [r4, #4]
 	mov r0, #0x20
@@ -8440,7 +8440,7 @@ _021E9E8C:
 	add r1, #0x90
 	str r0, [r1]
 	ldr r0, [r4, #0x30]
-	bl sub_0200ADA4
+	bl SpriteTransfer_CreateCharTransferTask_AllocAtEnd
 _021E9EEC:
 	ldr r1, [r4, #4]
 	mov r0, #8
@@ -8485,7 +8485,7 @@ _021E9EEC:
 	add r1, #0x88
 	str r0, [r1]
 	ldr r0, [r4, #0x28]
-	bl sub_0200ADA4
+	bl SpriteTransfer_CreateCharTransferTask_AllocAtEnd
 _021E9F4C:
 	ldr r1, [r4, #4]
 	mov r0, #0x40
@@ -8530,7 +8530,7 @@ _021E9F4C:
 	add r1, #0x94
 	str r0, [r1]
 	ldr r0, [r4, #0x34]
-	bl sub_0200ADA4
+	bl SpriteTransfer_CreateCharTransferTask_AllocAtEnd
 _021E9FAC:
 	ldr r1, [r4, #4]
 	mov r0, #0x80
@@ -8575,7 +8575,7 @@ _021E9FAC:
 	add r1, #0x98
 	str r0, [r1]
 	ldr r0, [r4, #0x38]
-	bl sub_0200ADA4
+	bl SpriteTransfer_CreateCharTransferTask_AllocAtEnd
 _021EA00C:
 	mov r0, #1
 	ldr r1, [r4, #4]
@@ -8621,7 +8621,7 @@ _021EA00C:
 	add r1, #0x9c
 	str r0, [r1]
 	ldr r0, [r4, #0x3c]
-	bl sub_0200ADA4
+	bl SpriteTransfer_CreateCharTransferTask_AllocAtEnd
 _021EA06E:
 	mov r0, #2
 	ldr r1, [r4, #4]
@@ -8666,7 +8666,7 @@ _021EA06E:
 	add r1, #0xa0
 	str r0, [r1]
 	ldr r0, [r4, #0x40]
-	bl sub_0200ADA4
+	bl SpriteTransfer_CreateCharTransferTask_AllocAtEnd
 _021EA0CE:
 	mov r0, #1
 	ldr r1, [r4, #4]
@@ -8712,7 +8712,7 @@ _021EA0CE:
 	add r1, #0xa4
 	str r0, [r1]
 	ldr r0, [r4, #0x44]
-	bl sub_0200ADA4
+	bl SpriteTransfer_CreateCharTransferTask_AllocAtEnd
 _021EA130:
 	mov r0, #2
 	ldr r1, [r4, #4]
@@ -8758,7 +8758,7 @@ _021EA130:
 	add r1, #0xa8
 	str r0, [r1]
 	ldr r0, [r4, #0x48]
-	bl sub_0200ADA4
+	bl SpriteTransfer_CreateCharTransferTask_AllocAtEnd
 _021EA192:
 	ldr r1, [r4, #8]
 	cmp r1, #2
@@ -8783,7 +8783,7 @@ _021EA19A:
 	add r0, r4, #0
 	add r0, #0xac
 	ldr r0, [r0]
-	bl sub_0200AF94
+	bl SpriteTransfer_CreateExtPlttTransferTask
 	add r0, r4, #0
 	mov r1, #0
 	add r0, #0xb0
@@ -8819,7 +8819,7 @@ _021EA1E4:
 	add r4, #0xb0
 	str r0, [r1]
 	ldr r0, [r4]
-	bl sub_0200AF94
+	bl SpriteTransfer_CreateExtPlttTransferTask
 _021EA20E:
 	add sp, #0x10
 	pop {r4, pc}
@@ -10994,7 +10994,7 @@ _021EB22C:
 	ldr r0, [r0, #4]
 	cmp r0, #0
 	beq _021EB240
-	bl sub_0200AEB0
+	bl SpriteTransfer_DeleteCharTransferTask
 _021EB240:
 	mov r0, #0x15
 	lsl r0, r0, #4
@@ -11003,7 +11003,7 @@ _021EB240:
 	ldr r0, [r0, #8]
 	cmp r0, #0
 	beq _021EB252
-	bl sub_0200B0A8
+	bl SpriteTransfer_DeletePlttTransferTask
 _021EB252:
 	add r0, r4, #1
 	lsl r0, r0, #0x18
@@ -11202,7 +11202,7 @@ _021EB3B6:
 	ldr r0, [r0, #4]
 	cmp r0, #0
 	beq _021EB3C4
-	bl sub_0200ADA4
+	bl SpriteTransfer_CreateCharTransferTask_AllocAtEnd
 _021EB3C4:
 	mov r0, #0x15
 	lsl r0, r0, #4
@@ -11211,7 +11211,7 @@ _021EB3C4:
 	ldr r0, [r0, #8]
 	cmp r0, #0
 	beq _021EB3D6
-	bl sub_0200AF94
+	bl SpriteTransfer_CreateExtPlttTransferTask
 _021EB3D6:
 	ldr r0, [r5, #0xc]
 	add r6, r6, #1
@@ -29696,7 +29696,7 @@ _021F4420:
 	ldr r0, [r0]
 	str r0, [sp, #4]
 	ldr r0, [sp, #8]
-	bl sub_0200AF00
+	bl SpriteTransfer_GetCharProxy
 	add r7, r0, #0
 	ldr r0, [sp, #4]
 	add r1, r7, #0
@@ -38148,12 +38148,12 @@ _021F8772:
 	ldr r0, [sp]
 	lsl r1, r1, #6
 	ldr r0, [r0, r1]
-	bl sub_0200AEB0
+	bl SpriteTransfer_DeleteCharTransferTask
 	mov r1, #0xb1
 	ldr r0, [sp]
 	lsl r1, r1, #2
 	ldr r0, [r0, r1]
-	bl sub_0200B0A8
+	bl SpriteTransfer_DeletePlttTransferTask
 	mov r6, #0xaa
 	ldr r4, [sp]
 	mov r5, #0
@@ -38503,11 +38503,11 @@ _021F89A2:
 	str r0, [r5, r1]
 	sub r1, #0xc
 	ldr r0, [r5, r1]
-	bl sub_0200ADA4
+	bl SpriteTransfer_CreateCharTransferTask_AllocAtEnd
 	mov r0, #0xb1
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_0200AF94
+	bl SpriteTransfer_CreateExtPlttTransferTask
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov96_021F8980
@@ -45435,12 +45435,12 @@ _021FC1B6:
 	ldr r0, [sp]
 	lsl r1, r1, #2
 	ldr r0, [r0, r1]
-	bl sub_0200AEB0
+	bl SpriteTransfer_DeleteCharTransferTask
 	mov r1, #0x53
 	ldr r0, [sp]
 	lsl r1, r1, #2
 	ldr r0, [r0, r1]
-	bl sub_0200B0A8
+	bl SpriteTransfer_DeletePlttTransferTask
 	mov r6, #0x13
 	ldr r4, [sp]
 	mov r5, #0
@@ -45695,11 +45695,11 @@ _021FC33C:
 	str r0, [r5, r1]
 	sub r1, #0xc
 	ldr r0, [r5, r1]
-	bl sub_0200ADA4
+	bl SpriteTransfer_CreateCharTransferTask_AllocAtEnd
 	mov r0, #0x53
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_0200AF94
+	bl SpriteTransfer_CreateExtPlttTransferTask
 	bl sub_02074490
 	add r1, r0, #0
 	mov r0, #0
@@ -54936,7 +54936,7 @@ _02200D90:
 	bl ov96_021EB5EC
 	ldr r5, [r0]
 	add r0, r6, #0
-	bl sub_0200AF00
+	bl SpriteTransfer_GetCharProxy
 	add r6, r0, #0
 	add r0, r5, #0
 	add r1, r6, #0
@@ -61107,7 +61107,7 @@ ov96_02203F50: ; 0x02203F50
 	bl ov96_021EB5EC
 	ldr r5, [r0]
 	add r0, r4, #0
-	bl sub_0200AF00
+	bl SpriteTransfer_GetCharProxy
 	add r7, r0, #0
 	add r0, r5, #0
 	add r1, r7, #0
@@ -70435,7 +70435,7 @@ _022089E4:
 	bl ov96_021EB5EC
 	ldr r5, [r0]
 	add r0, r6, #0
-	bl sub_0200AF00
+	bl SpriteTransfer_GetCharProxy
 	add r6, r0, #0
 	add r0, r5, #0
 	add r1, r6, #0

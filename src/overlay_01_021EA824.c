@@ -2,26 +2,26 @@
 
 #include "global.h"
 
-UnkStruct_Ov01_021EA824* ov01_021EA824() {
-    UnkStruct_Ov01_021EA824* dst = Heap_Alloc(HEAP_ID_FIELD1, sizeof(UnkStruct_Ov01_021EA824));
-    MIi_CpuClear32(0, (void*)dst, sizeof(UnkStruct_Ov01_021EA824));
+UnkStruct_Ov01_021EA824 *ov01_021EA824() {
+    UnkStruct_Ov01_021EA824 *dst = Heap_Alloc(HEAP_ID_FIELD1, sizeof(UnkStruct_Ov01_021EA824));
+    MIi_CpuClear32(0, (void *)dst, sizeof(UnkStruct_Ov01_021EA824));
     return dst;
 }
 
-void ov01_021EA840(s32* arg0) {
-    Heap_FreeExplicit(HEAP_ID_FIELD1, (void*)*arg0);
+void ov01_021EA840(s32 *arg0) {
+    Heap_FreeExplicit(HEAP_ID_FIELD1, (void *)*arg0);
     *arg0 = 0;
 }
 
-BOOL ov01_021EA854(UnkStruct_Ov01_021EA824* arg0) {
+BOOL ov01_021EA854(UnkStruct_Ov01_021EA824 *arg0) {
     return arg0->enable;
 }
 
-GXFogSlope ov01_021EA858(UnkStruct_Ov01_021EA824* arg0) {
+GXFogSlope ov01_021EA858(UnkStruct_Ov01_021EA824 *arg0) {
     return arg0->fogSlope;
 }
 
-int ov01_021EA85C(UnkStruct_Ov01_021EA824* arg0) {
+int ov01_021EA85C(UnkStruct_Ov01_021EA824 *arg0) {
     return arg0->fogOffset;
 }
 
@@ -29,7 +29,7 @@ u16 ov01_021EA860(UnkStruct_Ov01_021EA824 *arg0) {
     return arg0->unk10;
 }
 
-void ov01_021EA864(UnkStruct_Ov01_021EA824* arg0, s32 arg1, BOOL enable, GXFogBlend fogMode, GXFogSlope fogSlope, int fogOffset) {
+void ov01_021EA864(UnkStruct_Ov01_021EA824 *arg0, s32 arg1, BOOL enable, GXFogBlend fogMode, GXFogSlope fogSlope, int fogOffset) {
     if (arg1 & 1 << 0) {
         arg0->enable = enable;
     }
@@ -45,7 +45,7 @@ void ov01_021EA864(UnkStruct_Ov01_021EA824* arg0, s32 arg1, BOOL enable, GXFogBl
     G3X_SetFog(arg0->enable, arg0->fogMode, arg0->fogSlope, arg0->fogOffset);
 }
 
-void ov01_021EA89C(UnkStruct_Ov01_021EA824* arg0, u32 arg1, u16 arg2, u32 arg3) {
+void ov01_021EA89C(UnkStruct_Ov01_021EA824 *arg0, u32 arg1, u16 arg2, u32 arg3) {
     if (arg1 & 1 << 4) {
         arg0->unk10 = arg2;
     }

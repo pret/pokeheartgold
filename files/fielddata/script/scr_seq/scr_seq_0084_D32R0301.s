@@ -484,7 +484,7 @@ scr_seq_D32R0301_003:
 	End
 
 _067A:
-	AddSpecialGameStat2 27
+	AddSpecialGameStat2 SCORE_EVENT_BATTLE_FACTORY_SET_WON
 	Return
 
 _0680:

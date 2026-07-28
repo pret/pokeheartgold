@@ -3,24 +3,24 @@
 #include "constants/sndseq.h"
 #include "constants/trainer_class.h"
 
+#include "field/field_control.h"
+
 #include "gf_rtc.h"
 #include "map_header.h"
 #include "save_local_field_data.h"
 #include "save_vars_flags.h"
-#include "sys_flags.h"
 #include "sound.h"
 #include "sound_02004A44.h"
+#include "sys_flags.h"
 #include "trainer_data.h"
-
-#include "overlay_01_021E6880.h"
 
 // functions still in asm:
 void Sound_Stop();
 void Sound_ClearBGMPauseFlags();
 void Sound_SetScene(int);
 BOOL GF_SND_BGM_DisableCheck();
-void GF_FadeStartMusicId(int, int, int, int, int, void*);
-void GF_NowStartMusicId(int, int, int, int, void*);
+void GF_FadeStartMusicId(int, int, int, int, int, void *);
+void GF_NowStartMusicId(int, int, int, int, void *);
 void Sound_SetFieldBGM(u16);
 void sub_02005CF4(BOOL);
 BOOL sub_02004EB4(u16);

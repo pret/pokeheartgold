@@ -47,6 +47,7 @@ void Sound_SetSceneAndPlayBGM(u8 scene, u16 seqNo, int unused);
 void GF_SetVolumeBySeqNo(u16 a0, u16 a1);
 void GF_SndHandleSetPlayerVolume(u32 a0, u32 a1);
 void GF_SndHandleSetInitialVolume(s32 a0, s32 a1);
+u16 GF_GetVolumeBySeqNo();
 
 void sub_02005448(void);
 void Sound_SetScene(int a0);

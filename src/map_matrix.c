@@ -166,8 +166,8 @@ BOOL ShouldUseAlternateLakeOfRage(SaveData *saveData, u32 map_no) {
 
     GF_RTC_CopyDate(&date);
 
-    if (Save_VarsFlags_CheckFlagInArray(state, FLAG_RED_GYARADOS_MEET) == FALSE) {
-        // The player hasn't battled the Red Gyarados yet.
+    if (Save_VarsFlags_CheckFlagInArray(state, FLAG_ROCKET_HIDEOUT_CLEARED) == FALSE) {
+        // The player hasn't cleared the Rocket Hideout in Mahogany Town yet.
         sub_02066C4C(state, 1);
         return FALSE;
     }

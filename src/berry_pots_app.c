@@ -118,14 +118,14 @@ static const TouchscreenListMenuTemplate sMenuTemplate = {
     31,
     84,
 };
-static const u16 ov17_02203D78[7] = {
-    NARC_resdat_resdat_00000030_bin,
-    NARC_resdat_resdat_00000031_bin,
-    NARC_resdat_resdat_00000029_bin,
-    NARC_resdat_resdat_00000028_bin,
-    0xFFFF,
-    0xFFFF,
-    NARC_resdat_resdat_00000079_bin,
+static const ResdatIdList ov17_02203D78 = {
+    .charRes = NARC_resdat_resdat_00000030_bin,
+    .plttRes = NARC_resdat_resdat_00000031_bin,
+    .cellRes = NARC_resdat_resdat_00000029_bin,
+    .animRes = NARC_resdat_resdat_00000028_bin,
+    .mcelRes = 0xFFFF,
+    .manmRes = 0xFFFF,
+    .headerId = NARC_resdat_resdat_00000079_bin,
 };
 static const GraphicsModes ov17_02203D88 = {
     GX_DISPMODE_GRAPHICS,
@@ -719,7 +719,7 @@ static void ov17_022023B0(BerryPotsAppData *data) {
         }
 
         ov16_02201610(data->berryPots, data->unk7C, data->berryGrowthProperties, ItemIdToBerryId(data->args->itemId));
-        GameStats_Inc(data->stats, GAME_STAT_UNK5);
+        GameStats_Inc(data->stats, GAME_STAT_BERRIES_PLANTED);
         data->unk7B = 2;
     }
 
@@ -1042,7 +1042,7 @@ static void ov17_02202B98(BerryPotsAppData *data) {
     Sprite_Delete(unk->soilSpriteMaybe);
     unk->soilSpriteMaybe = NULL;
     Sprite_SetAnimationFrame(data->sprites[data->unk7C + 3], 2);
-    GameStats_AddScore(data->stats, SCORE_EVENT_0);
+    GameStats_AddScore(data->stats, SCORE_EVENT_BERRY_PICKED);
 }
 
 static void ov17_02202BF8(BerryPotsAppData *data) {
@@ -1198,7 +1198,7 @@ static void BerryPotsApp_SetupSpriteRendererAndGfxHandler(BerryPotsAppData *data
 
     data->spriteGfxHandler1 = SpriteManager_New(data->spriteRenderer);
     SpriteSystem_InitSprites(data->spriteRenderer, data->spriteGfxHandler1, 25);
-    sub_0200D2A4(data->spriteRenderer, data->spriteGfxHandler1, ov17_02203D78, 0, 0);
+    sub_0200D2A4(data->spriteRenderer, data->spriteGfxHandler1, &ov17_02203D78, 0, 0);
 
     data->itemIconNarc = NARC_New(NARC_itemtool_itemdata_item_icon, data->heapID);
 

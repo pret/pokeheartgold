@@ -31,7 +31,7 @@
 .public TaskManager_GetStatePtr
 .public sub_020548C0
 .public GetMetatileBehavior
-.public sub_0205BAC4
+.public MetatileBehavior_IsMagma
 .public PlayerAvatar_GetFacingDirection
 .public PlayerAvatar_GetXCoord
 .public PlayerAvatar_GetZCoord

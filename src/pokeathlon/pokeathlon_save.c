@@ -6,7 +6,7 @@ u32 PokeathlonSave_sizeof() {
 
 void PokeathlonSave_Init(PokeathlonSave *dest) {
     MI_CpuFill8(dest, 0, sizeof(PokeathlonSave));
-    
+
     for (u8 i = 0; i < 10; i++) {
         for (u8 j = 0; j < 5; j++) {
             dest->recordsSolo[i].entries[j].unk_0 = 0xFFFF;

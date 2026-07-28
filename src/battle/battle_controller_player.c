@@ -1833,8 +1833,8 @@ static void BattleControllerPlayer_SafariThrowMud(BattleSystem *battleSystem, Ba
     }
     if (ctx->tempData != 0) {
         ctx->msgTemp = 1;
-        if (ctx->unk_311C > 0) {
-            ctx->unk_311C--;
+        if (ctx->safariCatchRateStage > 0) {
+            ctx->safariCatchRateStage--;
         }
     }
 }
@@ -1846,8 +1846,8 @@ static void BattleControllerPlayer_SafariRun(BattleSystem *battleSystem, BattleC
     ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
     ctx->commandNext = CONTROLLER_COMMAND_40;
     ctx->tempData = BattleSystem_Random(battleSystem) % 10;
-    if (ctx->unk_311C < 12) {
-        ctx->unk_311C++;
+    if (ctx->safariCatchRateStage < 12) {
+        ctx->safariCatchRateStage++;
     }
     if (ctx->tempData != 0 && ctx->safariRunAttempts < 12) {
         ctx->safariRunAttempts++;
@@ -2813,7 +2813,7 @@ static void BattleControllerPlayer_HpCalc(BattleSystem *battleSystem, BattleCont
         GF_ASSERT(ctx->damage < 0);
 
         if (BattleSystem_GetFieldSide(battleSystem, ctx->battlerIdAttacker) == BattleSystem_GetFieldSide(battleSystem, ctx->battlerIdTarget)) {
-            BattleController_EmitIncrementGameStat(battleSystem, ctx->battlerIdAttacker, 0, GAME_STAT_UNK98);
+            BattleController_EmitIncrementGameStat(battleSystem, ctx->battlerIdAttacker, 0, GAME_STAT_ALLIES_DAMAGED);
         }
 
         ctx->unk_30F4[ctx->battlerIdTarget] = ctx->battlerIdAttacker;

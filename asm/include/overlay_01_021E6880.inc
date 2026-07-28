@@ -116,7 +116,7 @@
 .public PlayerAvatar_GetMapObject
 .public PlayerAvatar_GetState
 .public FieldSystem_GetPlayerAvatar
-.public PlayerAvatar_CheckFlag0
+.public PlayerAvatar_CheckForcedMovement
 .public PlayerAvatar_CheckRunningShoesLock
 .public sub_0205CF44
 .public sub_0205CF60
@@ -186,3 +186,15 @@
 .public ov02_02252334
 .public ov04_02255090
 .public ov04_02256BE4
+.public ov01_021E6880
+.public ov01_021E690C
+.public ov01_021F6B64_thunk
+.public ov01_021E6ED8
+.public PlayerAvatar_GetStandingTileCoords
+.public PlayerAvatar_GetFacingTileCoords
+.public ShiftFieldCoordsByCompassDirection
+.public ov01_021E7B90
+.public ov01_021E7C28
+.public ov01_021E7D00
+.public ov01_021E7D58
+.public ov01_021E7DFC

@@ -585,7 +585,7 @@ sub_020601BC: ; 0x020601BC
 	bl MapObject_GetID
 	add r4, r0, #0
 	add r0, r6, #0
-	bl MetatileBehavior_IsEncounterGrass
+	bl MetatileBehavior_IsTallGrass
 	cmp r0, #1
 	bne _020601EE
 	cmp r4, #0xfd
@@ -632,7 +632,7 @@ _020601EE:
 	add r4, r0, #0
 	lsl r0, r4, #0x18
 	lsr r0, r0, #0x18
-	bl MetatileBehavior_IsEncounterGrass
+	bl MetatileBehavior_IsTallGrass
 	cmp r0, #1
 	bne _02060254
 	mov r0, #1
@@ -647,7 +647,7 @@ _020601EE:
 _02060254:
 	lsl r0, r4, #0x18
 	lsr r0, r0, #0x18
-	bl sub_0205B6F4
+	bl MetatileBehavior_IsVeryTallGrass
 	cmp r0, #1
 	bne _02060270
 	mov r0, #1
@@ -671,7 +671,7 @@ sub_02060274: ; 0x02060274
 	bl MapObject_GetID
 	add r4, r0, #0
 	add r0, r6, #0
-	bl MetatileBehavior_IsEncounterGrass
+	bl MetatileBehavior_IsTallGrass
 	cmp r0, #1
 	bne _020602A6
 	cmp r4, #0xfd
@@ -718,7 +718,7 @@ _020602A6:
 	add r4, r0, #0
 	lsl r0, r4, #0x18
 	lsr r0, r0, #0x18
-	bl MetatileBehavior_IsEncounterGrass
+	bl MetatileBehavior_IsTallGrass
 	cmp r0, #1
 	bne _0206030A
 	mov r1, #1
@@ -732,7 +732,7 @@ _020602A6:
 _0206030A:
 	lsl r0, r4, #0x18
 	lsr r0, r0, #0x18
-	bl sub_0205B6F4
+	bl MetatileBehavior_IsVeryTallGrass
 	cmp r0, #1
 	bne _02060324
 	mov r1, #1
@@ -810,7 +810,7 @@ sub_0206039C: ; 0x0206039C
 	push {r4, lr}
 	add r4, r0, #0
 	add r0, r1, #0
-	bl sub_0205B7A4
+	bl MetatileBehavior_IsShallowWater
 	cmp r0, #1
 	bne _020603C6
 	add r0, r4, #0
@@ -878,19 +878,19 @@ _02060418:
 	cmp r0, #2
 	bne _020604B0
 	add r0, r4, #0
-	bl MetatileBehavior_IsEncounterGrass
+	bl MetatileBehavior_IsTallGrass
 	cmp r0, #1
 	beq _02060484
 	add r0, r4, #0
-	bl sub_0205B6F4
+	bl MetatileBehavior_IsVeryTallGrass
 	cmp r0, #1
 	beq _02060484
 	add r0, r6, #0
-	bl MetatileBehavior_IsEncounterGrass
+	bl MetatileBehavior_IsTallGrass
 	cmp r0, #1
 	beq _02060484
 	add r0, r6, #0
-	bl sub_0205B6F4
+	bl MetatileBehavior_IsVeryTallGrass
 	cmp r0, #1
 	beq _02060484
 	add r0, r5, #0
@@ -899,11 +899,11 @@ _02060418:
 	cmp r0, #1
 	beq _02060484
 	add r0, r4, #0
-	bl sub_0205B984
+	bl MetatileBehavior_IsPuddle
 	cmp r0, #1
 	beq _02060484
 	add r0, r4, #0
-	bl sub_0205B7A4
+	bl MetatileBehavior_IsShallowWater
 	cmp r0, #1
 	beq _02060484
 	add r0, r5, #0
@@ -912,11 +912,11 @@ _02060418:
 	cmp r0, #1
 	beq _02060484
 	add r0, r4, #0
-	bl sub_0205B8AC
+	bl MetatileBehavior_IsMud
 	cmp r0, #1
 	beq _02060484
 	add r0, r4, #0
-	bl sub_0205BA70
+	bl MetatileBehavior_IsReflective
 	cmp r0, #0
 	beq _02060490
 _02060484:
@@ -941,11 +941,11 @@ _02060490:
 	pop {r3, r4, r5, r6, r7, pc}
 _020604B0:
 	add r0, r4, #0
-	bl MetatileBehavior_IsEncounterGrass
+	bl MetatileBehavior_IsTallGrass
 	cmp r0, #1
 	beq _02060504
 	add r0, r4, #0
-	bl sub_0205B6F4
+	bl MetatileBehavior_IsVeryTallGrass
 	cmp r0, #1
 	beq _02060504
 	add r0, r5, #0
@@ -954,11 +954,11 @@ _020604B0:
 	cmp r0, #1
 	beq _02060504
 	add r0, r4, #0
-	bl sub_0205B984
+	bl MetatileBehavior_IsPuddle
 	cmp r0, #1
 	beq _02060504
 	add r0, r4, #0
-	bl sub_0205B7A4
+	bl MetatileBehavior_IsShallowWater
 	cmp r0, #1
 	beq _02060504
 	add r0, r5, #0
@@ -967,11 +967,11 @@ _020604B0:
 	cmp r0, #1
 	beq _02060504
 	add r0, r4, #0
-	bl sub_0205B8AC
+	bl MetatileBehavior_IsMud
 	cmp r0, #1
 	beq _02060504
 	add r0, r4, #0
-	bl sub_0205BA70
+	bl MetatileBehavior_IsReflective
 	cmp r0, #0
 	beq _02060510
 _02060504:
@@ -1020,21 +1020,21 @@ _02060546:
 	lsl r0, r0, #0x10
 	lsr r6, r0, #0x10
 	add r0, r4, #0
-	bl MetatileBehavior_IsEncounterGrass
+	bl MetatileBehavior_IsTallGrass
 	cmp r0, #1
 	beq _020605C8
 	add r0, r4, #0
-	bl sub_0205B6F4
+	bl MetatileBehavior_IsVeryTallGrass
 	cmp r0, #1
 	beq _020605C8
 	lsl r0, r6, #0x18
 	lsr r0, r0, #0x18
-	bl MetatileBehavior_IsEncounterGrass
+	bl MetatileBehavior_IsTallGrass
 	cmp r0, #1
 	beq _020605C8
 	lsl r0, r6, #0x18
 	lsr r0, r0, #0x18
-	bl sub_0205B6F4
+	bl MetatileBehavior_IsVeryTallGrass
 	cmp r0, #1
 	beq _020605C8
 	add r0, r5, #0
@@ -1043,11 +1043,11 @@ _02060546:
 	cmp r0, #1
 	beq _020605C8
 	add r0, r4, #0
-	bl sub_0205B984
+	bl MetatileBehavior_IsPuddle
 	cmp r0, #1
 	beq _020605C8
 	add r0, r4, #0
-	bl sub_0205B7A4
+	bl MetatileBehavior_IsShallowWater
 	cmp r0, #1
 	beq _020605C8
 	add r0, r5, #0
@@ -1056,11 +1056,11 @@ _02060546:
 	cmp r0, #1
 	beq _020605C8
 	add r0, r4, #0
-	bl sub_0205B8AC
+	bl MetatileBehavior_IsMud
 	cmp r0, #1
 	beq _020605C8
 	add r0, r4, #0
-	bl sub_0205BA70
+	bl MetatileBehavior_IsReflective
 	cmp r0, #0
 	beq _020605D4
 _020605C8:
@@ -1077,11 +1077,11 @@ _020605D4:
 	pop {r4, r5, r6, pc}
 _020605E0:
 	add r0, r4, #0
-	bl MetatileBehavior_IsEncounterGrass
+	bl MetatileBehavior_IsTallGrass
 	cmp r0, #1
 	beq _02060634
 	add r0, r4, #0
-	bl sub_0205B6F4
+	bl MetatileBehavior_IsVeryTallGrass
 	cmp r0, #1
 	beq _02060634
 	add r0, r5, #0
@@ -1090,11 +1090,11 @@ _020605E0:
 	cmp r0, #1
 	beq _02060634
 	add r0, r4, #0
-	bl sub_0205B984
+	bl MetatileBehavior_IsPuddle
 	cmp r0, #1
 	beq _02060634
 	add r0, r4, #0
-	bl sub_0205B7A4
+	bl MetatileBehavior_IsShallowWater
 	cmp r0, #1
 	beq _02060634
 	add r0, r5, #0
@@ -1103,11 +1103,11 @@ _020605E0:
 	cmp r0, #1
 	beq _02060634
 	add r0, r4, #0
-	bl sub_0205B8AC
+	bl MetatileBehavior_IsMud
 	cmp r0, #1
 	beq _02060634
 	add r0, r4, #0
-	bl sub_0205BA70
+	bl MetatileBehavior_IsReflective
 	cmp r0, #0
 	beq _02060640
 _02060634:
@@ -1134,15 +1134,15 @@ sub_0206064C: ; 0x0206064C
 	cmp r0, #1
 	beq _02060694
 	add r0, r4, #0
-	bl sub_0205B7A4
+	bl MetatileBehavior_IsShallowWater
 	cmp r0, #1
 	beq _02060694
 	add r0, r4, #0
-	bl sub_0205B828
+	bl MetatileBehavior_IsIce
 	cmp r0, #1
 	beq _02060694
 	add r0, r4, #0
-	bl sub_0205B8AC
+	bl MetatileBehavior_IsMud
 	cmp r0, #1
 	beq _02060694
 	add r0, r5, #0
@@ -1169,7 +1169,7 @@ sub_02060698: ; 0x02060698
 	bl MapObject_GetID
 	add r4, r0, #0
 	add r0, r6, #0
-	bl sub_0205B6F4
+	bl MetatileBehavior_IsVeryTallGrass
 	cmp r0, #1
 	bne _020606C8
 	cmp r4, #0xfd
@@ -1197,7 +1197,7 @@ sub_020606CC: ; 0x020606CC
 	bl MapObject_GetID
 	add r4, r0, #0
 	add r0, r6, #0
-	bl sub_0205B6F4
+	bl MetatileBehavior_IsVeryTallGrass
 	cmp r0, #1
 	bne _020606FC
 	cmp r4, #0xfd
@@ -1234,7 +1234,7 @@ sub_02060708: ; 0x02060708
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r0, r2, #0
-	bl sub_0205B984
+	bl MetatileBehavior_IsPuddle
 	cmp r0, #1
 	bne _02060738
 	add r0, r5, #0
@@ -1260,7 +1260,7 @@ sub_0206073C: ; 0x0206073C
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r0, r1, #0
-	bl sub_0205B984
+	bl MetatileBehavior_IsPuddle
 	cmp r0, #1
 	bne _0206076C
 	add r0, r5, #0
@@ -1286,7 +1286,7 @@ sub_02060770: ; 0x02060770
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r0, r2, #0
-	bl sub_0205B8AC
+	bl MetatileBehavior_IsMud
 	cmp r0, #1
 	bne _020607A0
 	add r0, r5, #0
@@ -1312,7 +1312,7 @@ sub_020607A4: ; 0x020607A4
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r0, r1, #0
-	bl sub_0205B8AC
+	bl MetatileBehavior_IsMud
 	cmp r0, #1
 	bne _020607D4
 	add r0, r5, #0
@@ -1349,7 +1349,7 @@ sub_020607D8: ; 0x020607D8
 _020607F0:
 	b _020609CE
 _020607F2:
-	bl sub_0205BA6C
+	bl GetMetatileBehavior_None
 	add r4, r0, #0
 	add r0, r5, #0
 	bl MapObject_GetID
@@ -1368,7 +1368,7 @@ _02060804:
 	b _020609CE
 _0206081A:
 	add r0, r6, #0
-	bl sub_0205B9B8
+	bl MetatileBehavior_HasReflectiveSurface
 	cmp r0, #1
 	bne _02060828
 	add r4, r6, #0
@@ -1405,7 +1405,7 @@ _02060828:
 	lsr r7, r0, #0x18
 	ldr r0, [sp, #0xc]
 	mov r6, #0
-	bl sub_0205B9B8
+	bl MetatileBehavior_HasReflectiveSurface
 	cmp r0, #1
 	bne _02060880
 	ldr r0, [sp, #0xc]
@@ -1414,7 +1414,7 @@ _02060828:
 	b _020608C4
 _02060880:
 	ldr r0, [sp, #8]
-	bl sub_0205B9B8
+	bl MetatileBehavior_HasReflectiveSurface
 	cmp r0, #1
 	bne _02060892
 	ldr r0, [sp, #8]
@@ -1423,7 +1423,7 @@ _02060880:
 	b _020608C4
 _02060892:
 	ldr r0, [sp, #4]
-	bl sub_0205B9B8
+	bl MetatileBehavior_HasReflectiveSurface
 	cmp r0, #1
 	bne _020608A4
 	ldr r0, [sp, #4]
@@ -1432,7 +1432,7 @@ _02060892:
 	b _020608C4
 _020608A4:
 	ldr r0, [sp]
-	bl sub_0205B9B8
+	bl MetatileBehavior_HasReflectiveSurface
 	cmp r0, #1
 	bne _020608B6
 	ldr r0, [sp]
@@ -1441,7 +1441,7 @@ _020608A4:
 	b _020608C4
 _020608B6:
 	add r0, r7, #0
-	bl sub_0205B9B8
+	bl MetatileBehavior_HasReflectiveSurface
 	cmp r0, #1
 	bne _020608C4
 	str r7, [sp, #0x10]
@@ -1451,21 +1451,21 @@ _020608C4:
 	bne _020608CA
 	ldr r4, [sp, #0x10]
 _020608CA:
-	bl sub_0205BA6C
+	bl GetMetatileBehavior_None
 	cmp r4, r0
 	beq _020609CE
 	add r0, r5, #0
 	mov r1, #1
 	bl MapObject_SetFlag24
 	add r0, r4, #0
-	bl sub_0205BA70
+	bl MetatileBehavior_IsReflective
 	cmp r0, #1
 	bne _020608E8
 	mov r1, #5
 	b _020608F8
 _020608E8:
 	add r0, r4, #0
-	bl sub_0205B984
+	bl MetatileBehavior_IsPuddle
 	cmp r0, #1
 	bne _020608F6
 	mov r1, #3
@@ -1483,7 +1483,7 @@ _02060902:
 	cmp r0, #0
 	bne _020609CE
 	add r0, r6, #0
-	bl sub_0205B9B8
+	bl MetatileBehavior_HasReflectiveSurface
 	cmp r0, #1
 	bne _0206091A
 	add r4, r6, #0
@@ -1495,26 +1495,26 @@ _0206091A:
 	lsl r0, r0, #0x18
 	lsr r6, r0, #0x18
 	add r0, r6, #0
-	bl sub_0205B9B8
+	bl MetatileBehavior_HasReflectiveSurface
 	cmp r0, #1
 	bne _02060932
 	add r4, r6, #0
 _02060932:
-	bl sub_0205BA6C
+	bl GetMetatileBehavior_None
 	cmp r4, r0
 	beq _020609CE
 	add r0, r5, #0
 	mov r1, #1
 	bl MapObject_SetFlag24
 	add r0, r4, #0
-	bl sub_0205BA70
+	bl MetatileBehavior_IsReflective
 	cmp r0, #1
 	bne _02060950
 	mov r1, #2
 	b _02060960
 _02060950:
 	add r0, r4, #0
-	bl sub_0205B984
+	bl MetatileBehavior_IsPuddle
 	cmp r0, #1
 	bne _0206095E
 	mov r1, #0
@@ -1532,7 +1532,7 @@ _0206096A:
 	cmp r0, #0
 	bne _020609CE
 	add r0, r6, #0
-	bl sub_0205B9B8
+	bl MetatileBehavior_HasReflectiveSurface
 	cmp r0, #1
 	bne _02060982
 	add r4, r6, #0
@@ -1544,26 +1544,26 @@ _02060982:
 	lsl r0, r0, #0x18
 	lsr r6, r0, #0x18
 	add r0, r6, #0
-	bl sub_0205B9B8
+	bl MetatileBehavior_HasReflectiveSurface
 	cmp r0, #1
 	bne _0206099A
 	add r4, r6, #0
 _0206099A:
-	bl sub_0205BA6C
+	bl GetMetatileBehavior_None
 	cmp r4, r0
 	beq _020609CE
 	add r0, r5, #0
 	mov r1, #1
 	bl MapObject_SetFlag24
 	add r0, r4, #0
-	bl sub_0205BA70
+	bl MetatileBehavior_IsReflective
 	cmp r0, #1
 	bne _020609B8
 	mov r1, #2
 	b _020609C8
 _020609B8:
 	add r0, r4, #0
-	bl sub_0205B984
+	bl MetatileBehavior_IsPuddle
 	cmp r0, #1
 	bne _020609C6
 	mov r1, #0
@@ -1629,35 +1629,35 @@ sub_020609D4: ; 0x020609D4
 	lsr r6, r0, #0x18
 	ldr r0, [sp, #8]
 	mov r4, #0
-	bl sub_0205B9B8
+	bl MetatileBehavior_HasReflectiveSurface
 	cmp r0, #1
 	bne _02060A50
 	mov r4, #1
 	b _02060A86
 _02060A50:
 	ldr r0, [sp, #4]
-	bl sub_0205B9B8
+	bl MetatileBehavior_HasReflectiveSurface
 	cmp r0, #1
 	bne _02060A5E
 	mov r4, #1
 	b _02060A86
 _02060A5E:
 	ldr r0, [sp]
-	bl sub_0205B9B8
+	bl MetatileBehavior_HasReflectiveSurface
 	cmp r0, #1
 	bne _02060A6C
 	mov r4, #1
 	b _02060A86
 _02060A6C:
 	add r0, r7, #0
-	bl sub_0205B9B8
+	bl MetatileBehavior_HasReflectiveSurface
 	cmp r0, #1
 	bne _02060A7A
 	mov r4, #1
 	b _02060A86
 _02060A7A:
 	add r0, r6, #0
-	bl sub_0205B9B8
+	bl MetatileBehavior_HasReflectiveSurface
 	cmp r0, #1
 	bne _02060A86
 	mov r4, #1
@@ -1675,7 +1675,7 @@ _02060A96:
 	bl sub_02060FA8
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_0205B9B8
+	bl MetatileBehavior_HasReflectiveSurface
 	cmp r0, #0
 	bne _02060AB2
 	add r0, r5, #0
@@ -2121,7 +2121,7 @@ sub_02060DEC: ; 0x02060DEC
 	add r2, r7, #0
 	bl GetMetatileBehavior
 	add r6, r0, #0
-	bl sub_0205BA6C
+	bl GetMetatileBehavior_None
 	cmp r6, r0
 	bne _02060E28
 	mov r0, #1
@@ -2198,7 +2198,7 @@ sub_02060EA4: ; 0x02060EA4
 	push {r3, lr}
 	lsl r0, r1, #0x18
 	lsr r0, r0, #0x18
-	bl sub_0205B798
+	bl MetatileBehavior_IsSand
 	cmp r0, #0
 	beq _02060EB6
 	mov r0, #1
@@ -2214,7 +2214,7 @@ sub_02060EBC: ; 0x02060EBC
 	push {r3, lr}
 	lsl r0, r1, #0x18
 	lsr r0, r0, #0x18
-	bl sub_0205B8B8
+	bl MetatileBehavior_IsSnow
 	cmp r0, #0
 	beq _02060ECE
 	mov r0, #1
@@ -2516,7 +2516,7 @@ _02061100:
 sub_02061108: ; 0x02061108
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
-	bl sub_0205BA6C
+	bl GetMetatileBehavior_None
 	add r6, r0, #0
 	add r0, r5, #0
 	add r4, r6, #0

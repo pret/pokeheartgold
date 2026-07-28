@@ -2666,7 +2666,7 @@ FrtCmd_130: ; 0x0222D168
 	add r5, r0, #0
 	ldr r0, [r4, #8]
 	bl Save_GameStats_Get
-	mov r1, #0x45
+	mov r1, #0x45 ; GAME_STAT_BATTLE_POINTS
 	add r2, r5, #0
 	bl GameStats_Add
 	ldr r0, [r4, #8]
@@ -2692,7 +2692,7 @@ FrtCmd_131: ; 0x0222D1A0
 	add r5, r0, #0
 	ldr r0, [r4, #8]
 	bl Save_GameStats_Get
-	mov r1, #0x46
+	mov r1, #0x46 ; GAME_STAT_BATTLE_POINTS_SPENT
 	add r2, r5, #0
 	bl GameStats_Add
 	ldr r0, [r4, #8]
