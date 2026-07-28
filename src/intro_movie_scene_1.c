@@ -6,8 +6,8 @@
 #include "intro_movie_internal.h"
 #include "obj_char_transfer.h"
 #include "obj_pltt_transfer.h"
+#include "sprite_transfer.h"
 #include "system.h"
-#include "unk_0200ACF0.h"
 #include "unk_0200B150.h"
 #include "unk_0200FA24.h"
 
@@ -317,16 +317,16 @@ static void IntroMovie_Scene1_LoadSpriteGfx(IntroMovieOverlayData *data, IntroMo
     sceneData->plttResObj = AddPlttResObjFromNarc(ppMgr[GF_GFX_RES_TYPE_PLTT], NARC_demo_opening_gs_opening, INTRO_MOVIE_SCENE1_BIRD_PLTTRES, FALSE, 1, NNS_G2D_VRAM_TYPE_2DMAIN, 2, HEAP_ID_INTRO_MOVIE);
     sceneData->cellResObj = AddCellOrAnimResObjFromNarc(ppMgr[GF_GFX_RES_TYPE_CELL], NARC_demo_opening_gs_opening, INTRO_MOVIE_SCENE1_BIRD_CELLRES, TRUE, 1, GF_GFX_RES_TYPE_CELL, HEAP_ID_INTRO_MOVIE);
     sceneData->animResObj = AddCellOrAnimResObjFromNarc(ppMgr[GF_GFX_RES_TYPE_ANIM], NARC_demo_opening_gs_opening, INTRO_MOVIE_SCENE1_BIRD_ANIMRES, TRUE, 1, GF_GFX_RES_TYPE_ANIM, HEAP_ID_INTRO_MOVIE);
-    sub_0200ACF0(sceneData->charResObj);
-    sub_0200AF94(sceneData->plttResObj);
+    SpriteTransfer_CreateCharTransferTask(sceneData->charResObj);
+    SpriteTransfer_CreateExtPlttTransferTask(sceneData->plttResObj);
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
 }
 
 static void IntroMovie_Scene1_DestroySpritesAndObjectGfx(IntroMovieOverlayData *data, IntroMovieScene1Data *sceneData) {
     Sprite_Delete(sceneData->sunSprite);
     Sprite_Delete(sceneData->birdSprite);
-    sub_0200AEB0(sceneData->charResObj);
-    sub_0200B0A8(sceneData->plttResObj);
+    SpriteTransfer_DeleteCharTransferTask(sceneData->charResObj);
+    SpriteTransfer_DeletePlttTransferTask(sceneData->plttResObj);
     IntroMovie_DestroySpriteResourceManagers(data);
 }
 

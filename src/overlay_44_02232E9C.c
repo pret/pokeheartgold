@@ -15,8 +15,8 @@
 #include "overlay_00_thumb.h"
 #include "overlay_42.h"
 #include "overlay_manager.h"
+#include "sprite_transfer.h"
 #include "unk_0200A090.h"
-#include "unk_0200ACF0.h"
 #include "unk_020379A0.h"
 #include "unk_02037C94.h"
 #include "unk_020971F8.h"
@@ -474,16 +474,16 @@ void ov44_0223237C(UnkStruct_ov44_02231A7C *arg0, enum HeapID heapID, NARC *narc
     arg0->unk13C[1] = AddPlttResObjFromOpenNarc(arg0->unk12C[1], narc, NARC_fielddata_encountdata_g_enc_data, FALSE, 50, NNS_G2D_VRAM_TYPE_2DMAIN, 1, heapID);
     arg0->unk13C[2] = AddCellOrAnimResObjFromOpenNarc(arg0->unk12C[2], narc, NARC_a_0_3_9, FALSE, 50, GF_GFX_RES_TYPE_CELL, heapID);
     arg0->unk13C[3] = AddCellOrAnimResObjFromOpenNarc(arg0->unk12C[3], narc, NARC_a_0_4_0, FALSE, 50, GF_GFX_RES_TYPE_ANIM, heapID);
-    GF_ASSERT(sub_0200ADA4(arg0->unk13C[0]) == TRUE);
-    GF_ASSERT(sub_0200B00C(arg0->unk13C[1]) == TRUE);
+    GF_ASSERT(SpriteTransfer_CreateCharTransferTask_AllocAtEnd(arg0->unk13C[0]) == TRUE);
+    GF_ASSERT(SpriteTransfer_CreatePlttTransferTask(arg0->unk13C[1]) == TRUE);
     sub_0200A740(arg0->unk13C[0]);
     sub_0200A740(arg0->unk13C[1]);
     CreateSpriteResourcesHeader(&arg0->unk14C, 50, 50, 50, 50, -1, -1, 0, 2, arg0->unk12C[0], arg0->unk12C[1], arg0->unk12C[2], arg0->unk12C[3], 0, 0);
 }
 
 void ov44_0223247C(UnkStruct_ov44_02231A7C *arg0) {
-    sub_0200AEB0(arg0->unk13C[0]);
-    sub_0200B0A8(arg0->unk13C[1]);
+    SpriteTransfer_DeleteCharTransferTask(arg0->unk13C[0]);
+    SpriteTransfer_DeletePlttTransferTask(arg0->unk13C[1]);
     for (s32 i = 0; i < 4; i++) {
         DestroySingle2DGfxResObj(arg0->unk12C[i], arg0->unk13C[i]);
     }

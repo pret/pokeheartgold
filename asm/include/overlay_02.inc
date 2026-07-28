@@ -36,11 +36,11 @@
 .public sub_0200A740
 .public DestroySingle2DGfxResObj
 .public SpriteResourceCollection_Find
-.public sub_0200ADA4
-.public sub_0200AEB0
-.public sub_0200AF00
-.public sub_0200B00C
-.public sub_0200B0A8
+.public SpriteTransfer_CreateCharTransferTask_AllocAtEnd
+.public SpriteTransfer_DeleteCharTransferTask
+.public SpriteTransfer_GetCharProxy
+.public SpriteTransfer_CreatePlttTransferTask
+.public SpriteTransfer_DeletePlttTransferTask
 .public SpriteTransfer_GetPaletteProxy
 .public NewMsgDataFromNarc
 .public DestroyMsgData

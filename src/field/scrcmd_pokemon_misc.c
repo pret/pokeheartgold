@@ -4,6 +4,7 @@
 #include "constants/map_sections.h"
 #include "constants/moves.h"
 
+#include "field/field_control.h"
 #include "msgdata/msg.naix"
 #include "msgdata/msg/msg_0066_D23R0102.h"
 #include "msgdata/msg/msg_0096_D31R0201.h"
@@ -24,7 +25,6 @@
 #include "map_object.h"
 #include "map_section.h"
 #include "math_util.h"
-#include "field/field_control.h"
 #include "overlay_01_021F72DC.h"
 #include "overlay_01_021F944C.h"
 #include "overlay_02.h"

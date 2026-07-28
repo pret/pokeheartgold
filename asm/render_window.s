@@ -9,8 +9,7 @@ _020F5C40:
 _020F5C50:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0A, 0x00, 0x00, 0x00, 0x0A, 0x00, 0x00, 0x00
 _020F5C60:
-	.byte 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.word 1, 1, 1, 1, 0, 0
 _020F5C78:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0xD5, 0x5C, 0x01, 0x00
@@ -2262,7 +2261,7 @@ _0200F564:
 	ldr r0, [r4, r0]
 	bl Sprite_DeleteAndFreeResources
 	add r0, r4, #0
-	bl ov01_021E86F4
+	bl FieldSpriteManager_ReleaseWithoutResDat
 	add r0, r5, #0
 	bl DestroySysTaskAndEnvironment
 	pop {r3, r4, r5, pc}
@@ -2349,7 +2348,7 @@ sub_0200F600: ; 0x0200F600
 	add r1, r2, #0
 	add r0, r6, #0
 	mov r2, #1
-	bl ov01_021E8298
+	bl FieldSpriteManager_InitEmptyResLists
 	add sp, #0x18
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -2369,21 +2368,21 @@ sub_0200F62C: ; 0x0200F62C
 	mov r1, #0x26
 	mov r3, #0
 	add r4, r0, #0
-	bl ov01_021E8378
+	bl FieldSpriteManager_AddPlttRes
 	ldr r0, _0200F680 ; =0x00015CD5
 	mov r1, #0x26
 	str r0, [sp]
 	add r0, r4, #0
 	mov r2, #0x30
 	mov r3, #0
-	bl ov01_021E83F0
+	bl FieldSpriteManager_AddCellRes
 	ldr r0, _0200F680 ; =0x00015CD5
 	mov r1, #0x26
 	str r0, [sp]
 	add r0, r4, #0
 	mov r2, #0x2f
 	mov r3, #0
-	bl ov01_021E8404
+	bl FieldSpriteManager_AddAnimRes
 	mov r0, #1
 	str r0, [sp]
 	ldr r0, _0200F680 ; =0x00015CD5
@@ -2392,7 +2391,7 @@ sub_0200F62C: ; 0x0200F62C
 	add r0, r4, #0
 	mov r2, #0x31
 	mov r3, #0
-	bl ov01_021E8418
+	bl FieldSpriteManager_AddCharRes
 	add sp, #0xc
 	pop {r3, r4, pc}
 	nop
@@ -2425,7 +2424,7 @@ _0200F694:
 	strh r1, [r0, #2]
 	add r0, r4, #0
 	add r1, sp, #0
-	bl ov01_021E851C
+	bl FieldSpriteManager_CreateManagedSprite
 	mov r1, #0x59
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -2544,7 +2543,7 @@ sub_0200F748: ; 0x0200F748
 	ldr r0, [r5, r0]
 	ldr r1, _0200F828 ; =0x00015CD5
 	bl SpriteResourceCollection_Find
-	bl sub_0200AF00
+	bl SpriteTransfer_GetCharProxy
 	mov r1, #1
 	str r0, [sp, #4]
 	bl NNS_G2dGetImageLocation

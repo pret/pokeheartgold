@@ -20,13 +20,13 @@
 #include "save_wifi_history.h"
 #include "sound.h"
 #include "sound_02004A44.h"
+#include "sprite_transfer.h"
 #include "sys_flags.h"
 #include "system.h"
 #include "text.h"
 #include "touch_hitbox_controller.h"
 #include "unk_02005D10.h"
 #include "unk_0200A090.h"
-#include "unk_0200ACF0.h"
 #include "unk_0200B150.h"
 #include "unk_0200FA24.h"
 #include "unk_02013534.h"
@@ -1059,7 +1059,7 @@ void ov44_0222ABB8(UnkStruct_ov44_0222AB24 *arg0) {
 }
 
 void ov44_0222ABDC(BgConfig *arg0, UnkStruct_ov44_0222AB24 *arg1, s32 arg2, u8 arg3, u8 arg4, s32 arg5, s32 arg6) {
-    CopyToBgTilemapRect(arg0, arg2, arg3, arg4, 2, 2, arg1->unk4->rawData, (arg5 * 2), 0, arg1->unk4->screenWidth / 8, arg1->unk4->screenHeight / 8);
+    CopyToBgTilemapRect(arg0, arg2, arg3, arg4, 2, 2, arg1->unk4->rawData, arg5 * 2, 0, arg1->unk4->screenWidth / 8, arg1->unk4->screenHeight / 8);
     s32 r0 = ov44_0222ADC4(arg2);
     BgTilemapRectChangePalette(arg0, arg2, arg3, arg4, 2, 2, r0 + arg6);
     ScheduleBgTilemapBufferTransfer(arg0, arg2);
@@ -2785,7 +2785,7 @@ s32 ov44_0222D8B0(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
         RemoveWindow(&arg0->unk320);
     }
     u32 temp_r0 = listLen * 2;
-    AddWindowParameterized(arg0->unk15C, &arg0->unk320, 2, 16, 9, 15, temp_r0, 13, (59 - temp_r0));
+    AddWindowParameterized(arg0->unk15C, &arg0->unk320, 2, 16, 9, 15, temp_r0, 13, 59 - temp_r0);
     DrawFrameAndWindow1(&arg0->unk320, 1, 473, 11);
     listMenuTemplate.items = arg0->unk154;
     listMenuTemplate.window = &arg0->unk320;
@@ -2977,7 +2977,7 @@ s32 ov44_0222DD64(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
             ListMenuItems_AppendFromMsgData(arg0->unk154, arg0->unk168, listMenuItems[i].strno, listMenuItems[i].value);
         }
     }
-    AddWindowParameterized(arg0->unk15C, &arg0->unk320, 2, 16, (((3 - sp1C) * 2) + 11), 15, (sp1C * 2), 13, 59);
+    AddWindowParameterized(arg0->unk15C, &arg0->unk320, 2, 16, ((3 - sp1C) * 2) + 11, 15, sp1C * 2, 13, 59);
     DrawFrameAndWindow1(&arg0->unk320, 1, 473, 11);
     listMenuTemplate.items = arg0->unk154; // itemPrintFunc
     listMenuTemplate.window = &arg0->unk320;
@@ -4275,7 +4275,7 @@ void ov44_022300C8(UnkStruct_ov44_022319EC *arg0) {
             var_r1 = 0;
         }
         if (sp18 == 1 || var_r1 == 1) {
-            ov44_02231148(arg0, r2 << 4, (6 * temp_ip), sp1C, var_r5);
+            ov44_02231148(arg0, r2 << 4, 6 * temp_ip, sp1C, var_r5);
             if (sp1C != 2) {
                 ov44_022312B8(arg0, &arg0->unkB1C.unk7C[i], temp_r4, var_r5, i);
                 ov44_02231344(arg0, &arg0->unkB1C.unkFC[i][0], temp_r4, var_r5, i);
@@ -4731,8 +4731,8 @@ void ov44_02231420(UnkStruct_ov44_022319EC *arg0, NARC *arg1, enum HeapID arg2) 
     arg0->unkB1C.unk20C[1] = AddPlttResObjFromOpenNarc(arg0->unk2BC[1], arg1, NARC_a_0_4_4, FALSE, 30, NNS_G2D_VRAM_TYPE_2DSUB, 8, arg2);
     arg0->unkB1C.unk20C[2] = AddCellOrAnimResObjFromOpenNarc(arg0->unk2BC[2], arg1, NARC_fielddata_mapmatrix_map_matrix, FALSE, 30, GF_GFX_RES_TYPE_CELL, arg2);
     arg0->unkB1C.unk20C[3] = AddCellOrAnimResObjFromOpenNarc(arg0->unk2BC[3], arg1, NARC_a_0_4_2, FALSE, 30, GF_GFX_RES_TYPE_ANIM, arg2);
-    GF_ASSERT(sub_0200AE18(arg0->unkB1C.unk20C[0]) != 0);
-    GF_ASSERT(sub_0200B00C(arg0->unkB1C.unk20C[1]) != 0);
+    GF_ASSERT(SpriteTransfer_CreateCharTransferTask_UpdateMappingTypeFromHW_AllocAtEnd(arg0->unkB1C.unk20C[0]) != 0);
+    GF_ASSERT(SpriteTransfer_CreatePlttTransferTask(arg0->unkB1C.unk20C[1]) != 0);
     sub_0200A740(arg0->unkB1C.unk20C[0]);
     sub_0200A740(arg0->unkB1C.unk20C[1]);
 
@@ -4785,8 +4785,8 @@ void ov44_022316B0(UnkStruct_ov44_022319EC *arg0) {
     for (s32 i = 0; i < 3; i++) {
         Sprite_Delete(arg0->unkB1C.unk21C[i]);
     }
-    sub_0200AEB0(arg0->unkB1C.unk20C[0]);
-    sub_0200B0A8(arg0->unkB1C.unk20C[1]);
+    SpriteTransfer_DeleteCharTransferTask(arg0->unkB1C.unk20C[0]);
+    SpriteTransfer_DeletePlttTransferTask(arg0->unkB1C.unk20C[1]);
 
     for (s32 i = 0; i < 4; i++) {
         DestroySingle2DGfxResObj(arg0->unk2BC[i], arg0->unkB1C.unk20C[i]);

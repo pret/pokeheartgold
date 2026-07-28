@@ -1527,11 +1527,11 @@ ov01_021F0614: ; 0x021F0614
 	bl AddCellOrAnimResObjFromOpenNarc
 	str r0, [r4, #0xc]
 	ldr r0, [r4]
-	bl sub_0200ADA4
+	bl SpriteTransfer_CreateCharTransferTask_AllocAtEnd
 	ldr r0, [r4]
 	bl sub_0200A740
 	ldr r0, [r4, #4]
-	bl sub_0200B00C
+	bl SpriteTransfer_CreatePlttTransferTask
 	mov r0, #0
 	mov r2, #0x4b
 	str r6, [sp]
@@ -1572,9 +1572,9 @@ ov01_021F06EC: ; 0x021F06EC
 	add r4, r1, #0
 	add r5, r0, #0
 	ldr r0, [r4]
-	bl sub_0200AEB0
+	bl SpriteTransfer_DeleteCharTransferTask
 	ldr r0, [r4, #4]
-	bl sub_0200B0A8
+	bl SpriteTransfer_DeletePlttTransferTask
 	mov r7, #0x4b
 	mov r6, #0
 	lsl r7, r7, #2
