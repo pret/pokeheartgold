@@ -26,11 +26,14 @@ typedef struct AzaleaGymmickLocalData {
     u8 unk_1A;
     u8 unk_1B;
     int unk_1C;
-    u8 filler_20[0xC];
+    int unk_20[2];
+    const u16 *unk_28;
     int unk_2C;
     int unk_30;
     int unk_34;
-    u8 filler_38[0x1C];
+    VecFx32 unk_38;
+    u8 filler_44[0xC];
+    int unk_50;
 } AzaleaGymmickLocalData; // size: 0x54
 
 typedef struct AzaleaGymmickSpinarakRideData {
@@ -39,7 +42,11 @@ typedef struct AzaleaGymmickSpinarakRideData {
 } AzaleaGymmickSpinarakRideData; // size: 0x08
 
 BOOL ov04_0225463C(TaskManager *taskman);
-int ov04_02254CA4(TaskManager *taskman);
+void ov04_02254724(SysTask *sysTask, void *taskData);
+VecFx32 ov04_02254698(const u16 *a0, const u16 *a1);
+void ov04_022546C8(const VecFx32 *a0, BOOL *a1);
+int ov04_022546E8(int a0, int a1, int a2, int a3);
+BOOL ov04_02254CA4(TaskManager *taskman);
 
 // static const u16 ov04_022575D4[][2] = {
 //     { 3,  31 },
@@ -190,4 +197,65 @@ void BeginAzaleaGymSpinarakRide(FieldSystem *fieldSystem, u8 spinarakNo) {
     localData->unk_2C = ptr[0] * FX32_ONE * 16;
     localData->unk_34 = ptr[1] * FX32_ONE * 16;
     TaskManager_Call(fieldSystem->taskman, ov04_0225463C, rideData);
+}
+
+BOOL ov04_0225463C(TaskManager *taskman) {
+    FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskman);
+    AzaleaGymmickSpinarakRideData *rideData = TaskManager_GetEnvironment(taskman);
+
+    switch (rideData->state) {
+    case 0:
+        TaskManager_Call(fieldSystem->taskman, ov01_02205A60, NULL);
+        ++rideData->state;
+        break;
+    case 1:
+        SysTask_CreateOnMainQueue(ov04_02254724, rideData, 0);
+        ++rideData->state;
+        break;
+    case 10:
+        Heap_Free(rideData);
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
+VecFx32 ov04_02254698(const u16 *a0, const u16 *a1) {
+    VecFx32 ret;
+
+    ret.x = (a1[0] - a0[0]) * FX32_ONE;
+    ret.z = (a1[1] - a0[1]) * FX32_ONE;
+    ret.y = 0;
+    return ret;
+}
+
+void ov04_022546C8(const VecFx32 *a0, BOOL *a1) {
+    if (a0->x >= 0) {
+        a1[0] = TRUE;
+    } else {
+        a1[0] = FALSE;
+    }
+    if (a0->z >= 0) {
+        a1[1] = TRUE;
+    } else {
+        a1[1] = FALSE;
+    }
+}
+
+int ov04_022546E8(int a0, int a1, int a2, int a3) {
+    int ret = 0;
+    a3 <<= 16;
+    a1 += a2;
+    if (a3 == a1) {
+        ret = 1;
+    } else if (a0) {
+        if (a1 > a3) {
+            ret = 2;
+        }
+    } else {
+        if (a1 < a3) {
+            ret = 2;
+        }
+    }
+    return ret;
 }
