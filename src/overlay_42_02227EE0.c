@@ -1,5 +1,5 @@
 #include "overlay_42.h"
-#include "unk_0200ACF0.h"
+#include "sprite_transfer.h"
 
 const UnkStruct_ov42_02227FA4 ov42_02229E04 = { 0xFFFFFFFF };
 
@@ -96,10 +96,10 @@ void ov42_02227E78(UnkStruct_ov42_02227060 *arg0, SpriteResource *arg1, s32 arg2
     s32 temp_r7 = SpriteTransfer_GetPlttOffset(arg1, NNS_G2D_VRAM_TYPE_2DMAIN);
     s32 temp_r6 = SpriteTransfer_GetPlttOffset(arg1, NNS_G2D_VRAM_TYPE_2DSUB);
     if (temp_r7 != -1) {
-        PaletteData_LoadPalette(arg0->unk4, sp4->pRawData, PLTTBUF_MAIN_OBJ, (temp_r7 * 16), (arg2 << 5));
+        PaletteData_LoadPalette(arg0->unk4, sp4->pRawData, PLTTBUF_MAIN_OBJ, temp_r7 * 16, arg2 << 5);
     }
     if (temp_r6 != -1) {
-        PaletteData_LoadPalette(arg0->unk4, sp4->pRawData, PLTTBUF_SUB_OBJ, (temp_r6 * 16), (arg2 << 5));
+        PaletteData_LoadPalette(arg0->unk4, sp4->pRawData, PLTTBUF_SUB_OBJ, temp_r6 * 16, arg2 << 5);
     }
 }
 

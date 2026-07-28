@@ -118,14 +118,14 @@ static const TouchscreenListMenuTemplate sMenuTemplate = {
     31,
     84,
 };
-static const u16 ov17_02203D78[7] = {
-    NARC_resdat_resdat_00000030_bin,
-    NARC_resdat_resdat_00000031_bin,
-    NARC_resdat_resdat_00000029_bin,
-    NARC_resdat_resdat_00000028_bin,
-    0xFFFF,
-    0xFFFF,
-    NARC_resdat_resdat_00000079_bin,
+static const ResdatIdList ov17_02203D78 = {
+    .charRes = NARC_resdat_resdat_00000030_bin,
+    .plttRes = NARC_resdat_resdat_00000031_bin,
+    .cellRes = NARC_resdat_resdat_00000029_bin,
+    .animRes = NARC_resdat_resdat_00000028_bin,
+    .mcelRes = 0xFFFF,
+    .manmRes = 0xFFFF,
+    .headerId = NARC_resdat_resdat_00000079_bin,
 };
 static const GraphicsModes ov17_02203D88 = {
     GX_DISPMODE_GRAPHICS,
@@ -1198,7 +1198,7 @@ static void BerryPotsApp_SetupSpriteRendererAndGfxHandler(BerryPotsAppData *data
 
     data->spriteGfxHandler1 = SpriteManager_New(data->spriteRenderer);
     SpriteSystem_InitSprites(data->spriteRenderer, data->spriteGfxHandler1, 25);
-    sub_0200D2A4(data->spriteRenderer, data->spriteGfxHandler1, ov17_02203D78, 0, 0);
+    sub_0200D2A4(data->spriteRenderer, data->spriteGfxHandler1, &ov17_02203D78, 0, 0);
 
     data->itemIconNarc = NARC_New(NARC_itemtool_itemdata_item_icon, data->heapID);
 

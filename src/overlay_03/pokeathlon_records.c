@@ -1,15 +1,15 @@
-#include "overlay_03.h"
+#include "global.h"
+
+#include "msgdata/msg.naix"
+#include "msgdata/msg/msg_0277.h"
 
 #include "field_system.h"
 #include "font.h"
-#include "global.h"
+#include "overlay_03.h"
 #include "task.h"
 #include "text.h"
 #include "touchscreen.h"
 #include "unk_02005D10.h"
-
-#include "msgdata/msg.naix"
-#include "msgdata/msg/msg_0277.h"
 
 typedef struct UnkStruct_02258CFC {
     int state;
@@ -123,7 +123,7 @@ static u8 ov03_02259880[] = { // 32?
     8,
     9,
     17,
-	6,
+    6,
     16,
     10,
     24,
@@ -165,7 +165,7 @@ static void ov03_02258EE8(UnkStruct_02258CFC *data, enum PokeathlonData dataType
             ov03_02258F48(data, k);
         }
     }
-    
+
     ScheduleWindowCopyToVram(&data->window);
     ScheduleBgTilemapBufferTransfer(data->bgConfig, 3);
 }
@@ -204,7 +204,7 @@ static u32 ov03_02259070(Pokeathlon_UnkSubStruct_B00 *pokeathlonStruct, int strn
         strno -= 10;
         return pokeathlonStruct->unk44[strno];
     }
-    
+
     switch (strno) {
     case 0:
         return pokeathlonStruct->unk4;

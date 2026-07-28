@@ -18,8 +18,8 @@
 .public ReplaceCharResObjFromNarc
 .public ReplacePlttResObjFromNarc
 .public SpriteResourceCollection_Find
-.public sub_0200AE8C
-.public sub_0200B084
+.public SpriteTransfer_ReplaceCharData
+.public SpriteTransfer_ReplacePlttData
 .public NewMsgDataFromNarc
 .public DestroyMsgData
 .public ReadMsgDataIntoString
@@ -222,9 +222,9 @@
 .public _u32_div_f
 .public gSystem
 .public ov01_021E636C
-.public UnkFieldSpriteRenderer_ov01_021E7FDC_Init
-.public UnkFieldSpriteRenderer_ov01_021E7FDC_Release
-.public ov01_021E81F0
+.public FieldSpriteManager_InitWithResDat
+.public FieldSpriteManager_ReleaseWithResDat
+.public FieldSpriteManager_CreateSprite
 .public ov01_021E8970
 .public ov01_021F3B0C
 .public ov01_021F3B2C

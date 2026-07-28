@@ -1,11 +1,11 @@
-#include "unk_0200ACF0.h"
+#include "sprite_transfer.h"
 
 #include "global.h"
 
 #include "obj_char_transfer.h"
 #include "obj_pltt_transfer.h"
 
-BOOL sub_0200ACF0(SpriteResource *obj) {
+BOOL SpriteTransfer_CreateCharTransferTask(SpriteResource *obj) {
     GF_ASSERT(obj != NULL);
     GF_ASSERT(GF2DGfxResObj_GetResType(obj) == GF_GFX_RES_TYPE_CHAR);
 
@@ -17,16 +17,16 @@ BOOL sub_0200ACF0(SpriteResource *obj) {
     return ObjCharTransfer_CreateTaskAndDoTransferFromTemplate(&template);
 }
 
-void sub_0200AD30(GF_2DGfxResObjList *charResObjList) {
+void SpriteTransfer_CreateAllCharTransferTasks(GF_2DGfxResObjList *charResObjList) {
     GF_ASSERT(charResObjList != NULL);
     for (int i = 0; i < charResObjList->max; ++i) {
         if (charResObjList->obj[i] != NULL) {
-            GF_ASSERT(sub_0200ACF0(charResObjList->obj[i]));
+            GF_ASSERT(SpriteTransfer_CreateCharTransferTask(charResObjList->obj[i]));
         }
     }
 }
 
-BOOL sub_0200AD64(SpriteResource *obj) {
+BOOL SpriteTransfer_CreateCharTransferTask_UpdateMappingTypeFromHW(SpriteResource *obj) {
     GF_ASSERT(obj != NULL);
     GF_ASSERT(GF2DGfxResObj_GetResType(obj) == GF_GFX_RES_TYPE_CHAR);
 
@@ -38,7 +38,7 @@ BOOL sub_0200AD64(SpriteResource *obj) {
     return ObjCharTransfer_CreateTaskAndDoTransferFromTemplate_UpdateMappingTypeFromHW(&template);
 }
 
-BOOL sub_0200ADA4(SpriteResource *obj) {
+BOOL SpriteTransfer_CreateCharTransferTask_AllocAtEnd(SpriteResource *obj) {
     GF_ASSERT(obj != NULL);
     GF_ASSERT(GF2DGfxResObj_GetResType(obj) == GF_GFX_RES_TYPE_CHAR);
 
@@ -50,16 +50,16 @@ BOOL sub_0200ADA4(SpriteResource *obj) {
     return ObjCharTransfer_CreateTaskAndDoTransferFromTemplate(&template);
 }
 
-void sub_0200ADE4(GF_2DGfxResObjList *charResObjList) {
+void SpriteTransfer_CreateAllCharTransferTasks_AllocAtEnd(GF_2DGfxResObjList *charResObjList) {
     GF_ASSERT(charResObjList != NULL);
     for (int i = 0; i < charResObjList->max; ++i) {
         if (charResObjList->obj[i] != NULL) {
-            GF_ASSERT(sub_0200ADA4(charResObjList->obj[i]));
+            GF_ASSERT(SpriteTransfer_CreateCharTransferTask_AllocAtEnd(charResObjList->obj[i]));
         }
     }
 }
 
-BOOL sub_0200AE18(SpriteResource *obj) {
+BOOL SpriteTransfer_CreateCharTransferTask_UpdateMappingTypeFromHW_AllocAtEnd(SpriteResource *obj) {
     GF_ASSERT(obj != NULL);
     GF_ASSERT(GF2DGfxResObj_GetResType(obj) == GF_GFX_RES_TYPE_CHAR);
 
@@ -71,16 +71,16 @@ BOOL sub_0200AE18(SpriteResource *obj) {
     return ObjCharTransfer_CreateTaskAndDoTransferFromTemplate_UpdateMappingTypeFromHW(&template);
 }
 
-void sub_0200AE58(GF_2DGfxResObjList *charResObjList) {
+void SpriteTransfer_SpriteTransfer_CreateAllCharTransferTasks_UpdateMappingTypeFromHW_AllocAtEnd(GF_2DGfxResObjList *charResObjList) {
     GF_ASSERT(charResObjList != NULL);
     for (int i = 0; i < charResObjList->max; ++i) {
         if (charResObjList->obj[i] != NULL) {
-            GF_ASSERT(sub_0200AE18(charResObjList->obj[i]));
+            GF_ASSERT(SpriteTransfer_CreateCharTransferTask_UpdateMappingTypeFromHW_AllocAtEnd(charResObjList->obj[i]));
         }
     }
 }
 
-void sub_0200AE8C(SpriteResource *obj) {
+void SpriteTransfer_ReplaceCharData(SpriteResource *obj) {
     GF_ASSERT(obj != NULL);
 
     int id = GF2DGfxResObj_GetResID(obj);
@@ -88,30 +88,30 @@ void sub_0200AE8C(SpriteResource *obj) {
     ObjCharTransfer_ReplaceGraphicsFromChardataByResID(id, charData);
 }
 
-void sub_0200AEB0(SpriteResource *obj) {
+void SpriteTransfer_DeleteCharTransferTask(SpriteResource *obj) {
     GF_ASSERT(obj != NULL);
     GF_ASSERT(GF2DGfxResObj_GetResType(obj) == GF_GFX_RES_TYPE_CHAR);
 
     ObjCharTransfer_ResetTransferTasksByResID(GF2DGfxResObj_GetResID(obj));
 }
 
-void sub_0200AED4(GF_2DGfxResObjList *charResObjList) {
+void SpriteTransfer_DeleteAllCharTransferTasks(GF_2DGfxResObjList *charResObjList) {
     GF_ASSERT(charResObjList != NULL);
     for (int i = 0; i < charResObjList->max; ++i) {
         if (charResObjList->obj[i] != NULL) {
-            sub_0200AEB0(charResObjList->obj[i]);
+            SpriteTransfer_DeleteCharTransferTask(charResObjList->obj[i]);
         }
     }
 }
 
-NNSG2dImageProxy *sub_0200AF00(SpriteResource *obj) {
+NNSG2dImageProxy *SpriteTransfer_GetCharProxy(SpriteResource *obj) {
     GF_ASSERT(obj != NULL);
     GF_ASSERT(GF2DGfxResObj_GetResType(obj) == GF_GFX_RES_TYPE_CHAR);
 
     return ObjCharTransfer_GetProxyPtrByResID(GF2DGfxResObj_GetResID(obj));
 }
 
-NNSG2dImageProxy *sub_0200AF24(SpriteResource *charResObj, SpriteResource *cellResObj) {
+NNSG2dImageProxy *SpriteTransfer_GetCharProxyWithCell(SpriteResource *charResObj, SpriteResource *cellResObj) {
     NNSG2dImageProxy *ret;
 
     GF_ASSERT(charResObj != NULL);
@@ -128,12 +128,12 @@ NNSG2dImageProxy *sub_0200AF24(SpriteResource *charResObj, SpriteResource *cellR
     return ret;
 }
 
-void sub_0200AF80(const NNSG2dImageProxy *imgProxy) {
+void SpriteTransfer_DeleteCharTransferTaskByProxy(const NNSG2dImageProxy *imgProxy) {
     GF_ASSERT(imgProxy != NULL);
     ObjCharTransfer_DeleteTaskCopyByProxyPtr(imgProxy);
 }
 
-BOOL sub_0200AF94(SpriteResource *plttResObj) {
+BOOL SpriteTransfer_CreateExtPlttTransferTask(SpriteResource *plttResObj) {
     GF_ASSERT(plttResObj != NULL);
     GF_ASSERT(GF2DGfxResObj_GetResType(plttResObj) == GF_GFX_RES_TYPE_PLTT);
 
@@ -145,16 +145,16 @@ BOOL sub_0200AF94(SpriteResource *plttResObj) {
     return ObjPlttTransfer_CreateTaskAndDoTransferFromTemplate_HandleExtPltt(&template);
 }
 
-void sub_0200AFD8(GF_2DGfxResObjList *plttResObjList) {
+void SpriteTransfer_CreateAllExtPlttTransferTasks(GF_2DGfxResObjList *plttResObjList) {
     GF_ASSERT(plttResObjList != NULL);
     for (int i = 0; i < plttResObjList->max; ++i) {
         if (plttResObjList->obj[i] != NULL) {
-            GF_ASSERT(sub_0200AF94(plttResObjList->obj[i]));
+            GF_ASSERT(SpriteTransfer_CreateExtPlttTransferTask(plttResObjList->obj[i]));
         }
     }
 }
 
-BOOL sub_0200B00C(SpriteResource *plttResObj) {
+BOOL SpriteTransfer_CreatePlttTransferTask(SpriteResource *plttResObj) {
     GF_ASSERT(plttResObj != NULL);
     GF_ASSERT(GF2DGfxResObj_GetResType(plttResObj) == GF_GFX_RES_TYPE_PLTT);
 
@@ -166,34 +166,34 @@ BOOL sub_0200B00C(SpriteResource *plttResObj) {
     return ObjPlttTransfer_CreateTaskAndDoTransferFromTemplate_ExtPlttBanned(&template);
 }
 
-void sub_0200B050(GF_2DGfxResObjList *plttResObjList) {
+void SpriteTransfer_CreateAllPlttTransferTasks(GF_2DGfxResObjList *plttResObjList) {
     GF_ASSERT(plttResObjList != NULL);
     for (int i = 0; i < plttResObjList->max; ++i) {
         if (plttResObjList->obj[i] != NULL) {
-            GF_ASSERT(sub_0200B00C(plttResObjList->obj[i]));
+            GF_ASSERT(SpriteTransfer_CreatePlttTransferTask(plttResObjList->obj[i]));
         }
     }
 }
 
-void sub_0200B084(SpriteResource *plttResObj) {
+void SpriteTransfer_ReplacePlttData(SpriteResource *plttResObj) {
     GF_ASSERT(plttResObj != NULL);
     int resID = GF2DGfxResObj_GetResID(plttResObj);
     NNSG2dPaletteData *plttData = GF2DGfxResObj_GetPlttDataPtr(plttResObj);
     ObjPlttTransfer_CreateTransferTask(resID, plttData);
 }
 
-void sub_0200B0A8(SpriteResource *plttResObj) {
+void SpriteTransfer_DeletePlttTransferTask(SpriteResource *plttResObj) {
     GF_ASSERT(plttResObj != NULL);
     GF_ASSERT(GF2DGfxResObj_GetResType(plttResObj) == GF_GFX_RES_TYPE_PLTT);
 
     ObjPlttTransfer_FreeTaskByID(GF2DGfxResObj_GetResID(plttResObj));
 }
 
-void sub_0200B0CC(GF_2DGfxResObjList *plttResObjList) {
+void SpriteTransfer_DeleteAllPlttTransferTasks(GF_2DGfxResObjList *plttResObjList) {
     GF_ASSERT(plttResObjList != NULL);
     for (int i = 0; i < plttResObjList->max; ++i) {
         if (plttResObjList->obj[i] != NULL) {
-            sub_0200B0A8(plttResObjList->obj[i]);
+            SpriteTransfer_DeletePlttTransferTask(plttResObjList->obj[i]);
         }
     }
 }

@@ -30,7 +30,7 @@ Static main
     Object src/pokepic.o
     Object src/unk_02009D48.o
     Object src/unk_0200A090.o
-    Object src/unk_0200ACF0.o
+    Object src/sprite_transfer.o
     Object asm/unk_0200B150.o
     Object src/brightness.o
     Object src/msgdata.o
@@ -489,7 +489,7 @@ Overlay field
     Object asm/overlay_01_021E5900.o
     Object src/field/overlay_01_021E66E4.o
     Object src/field/field_control.o
-    Object asm/overlay_01_021E7FDC.o
+    Object src/field/field_sprite_manager.o
     Object asm/overlay_01_021E8744.o
     Object asm/overlay_01_021E90C0.o
     Object asm/overlay_01_021EA6C4.o
@@ -1323,23 +1323,23 @@ Overlay voltorb_flip
 Overlay ds_protect
 {
     After OVY_31
-	Object lib/dsprot/dsprot_main_encrypted.o        
+	Object lib/dsprot/dsprot_main_encrypted.o
 	Object lib/dsprot/dsprot_main_decrypter_encoded.o
 	Object lib/dsprot/dsprot_main_decrypter_decoder.o
-	Object lib/dsprot/extra.o                        
-	Object lib/dsprot/integrity_encrypted.o          
-	Object lib/dsprot/integrity_decrypter_encoded.o  
-	Object lib/dsprot/integrity_decrypter_decoder.o  
-	Object lib/dsprot/encryptor_encoded.o            
-	Object lib/dsprot/encryptor_decoder.o            
-	Object lib/dsprot/mac_owner_encrypted.o          
-	Object lib/dsprot/mac_owner_decrypter_encoded.o  
-	Object lib/dsprot/rom_util_encrypted.o           
-	Object lib/dsprot/rom_util_decrypter_encoded.o   
-	Object lib/dsprot/rom_test_encrypted.o           
-	Object lib/dsprot/rom_test_decrypter_encoded.o   
-	Object lib/dsprot/coretests_decrypter_decoder.o  
-	Object lib/dsprot/rc4_encoded.o                  
+	Object lib/dsprot/extra.o
+	Object lib/dsprot/integrity_encrypted.o
+	Object lib/dsprot/integrity_decrypter_encoded.o
+	Object lib/dsprot/integrity_decrypter_decoder.o
+	Object lib/dsprot/encryptor_encoded.o
+	Object lib/dsprot/encryptor_decoder.o
+	Object lib/dsprot/mac_owner_encrypted.o
+	Object lib/dsprot/mac_owner_decrypter_encoded.o
+	Object lib/dsprot/rom_util_encrypted.o
+	Object lib/dsprot/rom_util_decrypter_encoded.o
+	Object lib/dsprot/rom_test_encrypted.o
+	Object lib/dsprot/rom_test_decrypter_encoded.o
+	Object lib/dsprot/coretests_decrypter_decoder.o
+	Object lib/dsprot/rc4_encoded.o
 	Object lib/dsprot/rc4_decoder.o
 }
 Overlay OVY_124

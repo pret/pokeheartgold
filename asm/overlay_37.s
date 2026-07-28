@@ -328,19 +328,19 @@ _021E5BC4:
 	mov r0, #0x17
 	lsl r0, r0, #4
 	ldr r0, [r6, r0]
-	bl sub_0200AEB0
+	bl SpriteTransfer_DeleteCharTransferTask
 	mov r0, #6
 	lsl r0, r0, #6
 	ldr r0, [r6, r0]
-	bl sub_0200AEB0
+	bl SpriteTransfer_DeleteCharTransferTask
 	mov r0, #0x5d
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
-	bl sub_0200B0A8
+	bl SpriteTransfer_DeletePlttTransferTask
 	mov r0, #0x61
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
-	bl sub_0200B0A8
+	bl SpriteTransfer_DeletePlttTransferTask
 	mov r4, #0
 	add r5, r6, #0
 _021E5BF8:
@@ -1072,19 +1072,19 @@ _021E6104:
 	str r0, [r5, r1]
 	sub r1, #0x1c
 	ldr r0, [r5, r1]
-	bl sub_0200ACF0
+	bl SpriteTransfer_CreateCharTransferTask
 	mov r0, #6
 	lsl r0, r0, #6
 	ldr r0, [r5, r0]
-	bl sub_0200ACF0
+	bl SpriteTransfer_CreateCharTransferTask
 	mov r0, #0x5d
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_0200AF94
+	bl SpriteTransfer_CreateExtPlttTransferTask
 	mov r0, #0x61
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_0200AF94
+	bl SpriteTransfer_CreateExtPlttTransferTask
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	thumb_func_end ov37_021E60C0

@@ -1,33 +1,33 @@
-#include "overlay_01.h"
-#include "overlay_03.h"
+#include "global.h"
+
+#include "data/resdat.naix"
+#include "field/field_sprite_manager.h"
+#include "field/overlay_01_021E8744.h"
+#include "field/overlay_01_02204004.h"
+#include "msgdata/msg.naix"
 
 #include "bag.h"
 #include "bag_types_def.h"
 #include "bag_view.h"
 #include "field_system.h"
 #include "gf_gfx_loader.h"
-#include "global.h"
 #include "launch_application.h"
 #include "mart.h"
+#include "overlay_01.h"
+#include "overlay_03.h"
 #include "render_text.h"
 #include "render_window.h"
 #include "scrcmd.h"
+#include "sprite_transfer.h"
 #include "sys_flags.h"
 #include "sys_vars.h"
 #include "task.h"
 #include "text.h"
 #include "unk_02005D10.h"
-#include "unk_0200ACF0.h"
 #include "unk_0200FA24.h"
 #include "unk_02058034.h"
 #include "unk_02091054.h"
 #include "unk_02092B04.h"
-
-#include "field/overlay_01_021E8744.h"
-#include "field/ov01_021E7FDC.h"
-#include "field/overlay_01_02204004.h"
-
-#include "msgdata/msg.naix"
 
 static void ov03_02256BA8(FieldSystem *fieldSystem, u8 index);
 static void MartTask_InitMartMessageData(MartData *data);
@@ -81,59 +81,59 @@ static const u16 ov03_0225945C[4] = {
 
 static const WindowTemplate ov03_022594C6[6] = {
     {
-        .bgId = GF_BG_LYR_MAIN_2,
-        .left = 13,
-        .top = 2,
-        .width = 18,
-        .height = 14,
-        .palette = 13,
-        .baseTile = 1,
-    },
+     .bgId = GF_BG_LYR_MAIN_2,
+     .left = 13,
+     .top = 2,
+     .width = 18,
+     .height = 14,
+     .palette = 13,
+     .baseTile = 1,
+     },
     {
-        .bgId = GF_BG_LYR_MAIN_2,
-        .left = 5,
-        .top = 18,
-        .width = 27,
-        .height = 6,
-        .palette = 13,
-        .baseTile = 253,
-    },
+     .bgId = GF_BG_LYR_MAIN_2,
+     .left = 5,
+     .top = 18,
+     .width = 27,
+     .height = 6,
+     .palette = 13,
+     .baseTile = 253,
+     },
     {
-        .bgId = GF_BG_LYR_MAIN_3,
-        .left = 1,
-        .top = 1,
-        .width = 10,
-        .height = 4,
-        .palette = 13,
-        .baseTile = 40,
-    },
+     .bgId = GF_BG_LYR_MAIN_3,
+     .left = 1,
+     .top = 1,
+     .width = 10,
+     .height = 4,
+     .palette = 13,
+     .baseTile = 40,
+     },
     {
-        .bgId = GF_BG_LYR_MAIN_3,
-        .left = 19,
-        .top = 13,
-        .width = 12,
-        .height = 4,
-        .palette = 13,
-        .baseTile = 80,
-    },
+     .bgId = GF_BG_LYR_MAIN_3,
+     .left = 19,
+     .top = 13,
+     .width = 12,
+     .height = 4,
+     .palette = 13,
+     .baseTile = 80,
+     },
     {
-        .bgId = GF_BG_LYR_MAIN_3,
-        .left = 1,
-        .top = 15,
-        .width = 14,
-        .height = 2,
-        .palette = 13,
-        .baseTile = 128,
-    },
+     .bgId = GF_BG_LYR_MAIN_3,
+     .left = 1,
+     .top = 15,
+     .width = 14,
+     .height = 2,
+     .palette = 13,
+     .baseTile = 128,
+     },
     {
-        .bgId = GF_BG_LYR_MAIN_3,
-        .left = 2,
-        .top = 19,
-        .width = 27,
-        .height = 4,
-        .palette = 12,
-        .baseTile = 156,
-    }
+     .bgId = GF_BG_LYR_MAIN_3,
+     .left = 2,
+     .top = 19,
+     .width = 27,
+     .height = 4,
+     .palette = 12,
+     .baseTile = 156,
+     }
 };
 
 static const WindowTemplate ov03_02259464 = {
@@ -159,7 +159,7 @@ static void ov03_02256BA8(FieldSystem *fieldSystem, u8 index) {
     if (renderObject == NULL) {
         GF_AssertFail();
     } else {
-        ov01_021E8970(modelID, sub_020669B4(Save_VarsFlags_Get(fieldSystem->saveData), index), 1, renderObject, fieldSystem->unk54); 
+        ov01_021E8970(modelID, sub_020669B4(Save_VarsFlags_Get(fieldSystem->saveData), index), 1, renderObject, fieldSystem->unk54);
     }
 }
 
@@ -191,7 +191,7 @@ static void ov03_02256C2C(MartData *data, const u16 *items, BOOL flag09A) {
     int k = 0;
     for (i = 0; i < max; i++) {
         if (flag09A == FALSE) {
-            if(items[i] == 4) {
+            if (items[i] == 4) {
                 data->unk270--;
             } else {
                 data->unk268[k] = items[i];
@@ -291,7 +291,7 @@ enum MartTaskStates {
 BOOL Task_Mart(TaskManager *taskManager) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     MartData *data = TaskManager_GetEnvironment(taskManager);
-    
+
     switch (data->state) {
     case TASK_MART_START:
         MartTask_InitMartMessageData(data);
@@ -309,7 +309,7 @@ BOOL Task_Mart(TaskManager *taskManager) {
     case TASK_MART_2:
         data->state = ov03_02257334(fieldSystem, data); // Returns 2 or 3.
         break;
-    case TASK_MART_3: 
+    case TASK_MART_3:
         if (data->unk294 == -1) {
             data->state = ov03_02257510(data);
         } else {
@@ -401,8 +401,8 @@ BOOL Task_Mart(TaskManager *taskManager) {
             Sprite_UpdateAnim(data->sprites[i], 0x1000);
         }
     }
-    if (data->unk_ov01_021E7FDC.spriteList) {
-        SpriteList_RenderAndAnimateSprites(data->unk_ov01_021E7FDC.spriteList);
+    if (data->fieldSpriteManager.spriteList) {
+        SpriteList_RenderAndAnimateSprites(data->fieldSpriteManager.spriteList);
     }
     return FALSE;
 }
@@ -502,16 +502,16 @@ static u8 ov03_02257334(FieldSystem *fieldSystem, MartData *data) {
 }
 
 static const u8 ov03_0225949E[10][4] = {
-    {48, 56, 0, 7},
-    {176, 56, 0, 7},
-    {48, 96, 0, 7},
-    {176, 96, 0, 7},
-    {48, 136, 0, 7},
-    {176, 136, 0, 7},
-    {24, 176, 4, 7},
-    {64, 176, 4, 7},
-    {224, 176, 7, 7},
-    {160, 176, 7, 7}
+    { 48,  56,  0, 7 },
+    { 176, 56,  0, 7 },
+    { 48,  96,  0, 7 },
+    { 176, 96,  0, 7 },
+    { 48,  136, 0, 7 },
+    { 176, 136, 0, 7 },
+    { 24,  176, 4, 7 },
+    { 64,  176, 4, 7 },
+    { 224, 176, 7, 7 },
+    { 160, 176, 7, 7 }
 };
 
 static void ov03_02257378(MartData *data, int index, int arg2) {
@@ -531,54 +531,54 @@ static void ov03_022573D4(MartData *data, u32 arg1) {
     String *string;
     u16 itemID = data->unk268[data->unk290 + data->unk271];
     switch (arg1) {
-        case 0:
-        case 1:
-        case 2:
-        case 3:
-        case 4:
-        case 5:
-            FillWindowPixelBuffer(&data->windows[1], 0);
-            if (data->unk290 + data->unk271 < data->unk270) {
-                if (data->martType == MART_TYPE_NORMAL || data->martType == MART_TYPE_3 || data->martType == MART_TYPE_4) {
-                    string = String_New(130, HEAP_ID_FIELD2);
-                    GetItemDescIntoString(string, itemID, HEAP_ID_FIELD2);
-                } else if (data->martType == MART_TYPE_1) {
-                    msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0737_bin, HEAP_ID_FIELD2);
-                    string = NewString_ReadMsgData(msgData, itemID + 138);
-                    DestroyMsgData(msgData);
-                } else {
-                    msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0434_bin, HEAP_ID_FIELD2);
-                    string = NewString_ReadMsgData(msgData, sub_020910B8((u8)itemID));
-                    DestroyMsgData(msgData);
-                }
-                AddTextPrinterParameterizedWithColor(&data->windows[1], 0, string, 0, 0, 0xFF, 0xF0E00, 0);
-                String_Delete(string);
-                ov03_022585A4(data, itemID);
+    case 0:
+    case 1:
+    case 2:
+    case 3:
+    case 4:
+    case 5:
+        FillWindowPixelBuffer(&data->windows[1], 0);
+        if (data->unk290 + data->unk271 < data->unk270) {
+            if (data->martType == MART_TYPE_NORMAL || data->martType == MART_TYPE_3 || data->martType == MART_TYPE_4) {
+                string = String_New(130, HEAP_ID_FIELD2);
+                GetItemDescIntoString(string, itemID, HEAP_ID_FIELD2);
+            } else if (data->martType == MART_TYPE_1) {
+                msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0737_bin, HEAP_ID_FIELD2);
+                string = NewString_ReadMsgData(msgData, itemID + 138);
+                DestroyMsgData(msgData);
             } else {
-                Sprite_SetDrawFlag(data->sprites[3], 0);
+                msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0434_bin, HEAP_ID_FIELD2);
+                string = NewString_ReadMsgData(msgData, sub_020910B8((u8)itemID));
+                DestroyMsgData(msgData);
             }
-            ScheduleWindowCopyToVram(&data->windows[1]);
-            break;
-        case 8:
-            FillWindowPixelBuffer(&data->windows[1], 0);
-            ov03_022585A4(data, 0xFFFF);
-            ScheduleWindowCopyToVram(&data->windows[1]);
-        case 6:
-        case 7:
-            break;
+            AddTextPrinterParameterizedWithColor(&data->windows[1], 0, string, 0, 0, 0xFF, 0xF0E00, 0);
+            String_Delete(string);
+            ov03_022585A4(data, itemID);
+        } else {
+            Sprite_SetDrawFlag(data->sprites[3], 0);
+        }
+        ScheduleWindowCopyToVram(&data->windows[1]);
+        break;
+    case 8:
+        FillWindowPixelBuffer(&data->windows[1], 0);
+        ov03_022585A4(data, 0xFFFF);
+        ScheduleWindowCopyToVram(&data->windows[1]);
+    case 6:
+    case 7:
+        break;
     }
 }
 
 static const u8 ov03_0225947A[9][4] = {
-    {4, 2, 6, 1},
-    {8, 3, 0, 7},
-    {0, 4, 6, 3},
-    {1, 5, 2, 7},
-    {2, 0, 6, 5},
-    {3, 8, 4, 7},
-    {4, 0, 8, 8},
-    {4, 0, 8, 8},
-    {5, 1, 8, 8}
+    { 4, 2, 6, 1 },
+    { 8, 3, 0, 7 },
+    { 0, 4, 6, 3 },
+    { 1, 5, 2, 7 },
+    { 2, 0, 6, 5 },
+    { 3, 8, 4, 7 },
+    { 4, 0, 8, 8 },
+    { 4, 0, 8, 8 },
+    { 5, 1, 8, 8 }
 };
 
 static int ov03_02257510(MartData *data) {
@@ -588,13 +588,11 @@ static int ov03_02257510(MartData *data) {
         data->unk290 = ov03_0225947A[data->unk290][0];
         PlaySE(SEQ_SE_DP_SELECT);
         unkBool++;
-    }
-    else if (gSystem.newKeys & PAD_KEY_DOWN) {
+    } else if (gSystem.newKeys & PAD_KEY_DOWN) {
         data->unk290 = ov03_0225947A[data->unk290][1];
         PlaySE(SEQ_SE_DP_SELECT);
         unkBool++;
-    }
-    else if (gSystem.newKeys & PAD_KEY_LEFT) {
+    } else if (gSystem.newKeys & PAD_KEY_LEFT) {
         unkExternVal = ov03_0225947A[data->unk290][2];
         if (unkExternVal == 6) {
             return ov03_0225761C(data, 6);
@@ -604,8 +602,7 @@ static int ov03_02257510(MartData *data) {
             PlaySE(SEQ_SE_DP_SELECT);
             unkBool++;
         }
-    }
-    else if (gSystem.newKeys & PAD_KEY_RIGHT) {
+    } else if (gSystem.newKeys & PAD_KEY_RIGHT) {
         unkExternVal = ov03_0225947A[data->unk290][3];
         if (unkExternVal == 7) {
             return ov03_0225761C(data, 7);
@@ -633,39 +630,39 @@ static int ov03_02257510(MartData *data) {
 
 static u8 ov03_0225761C(MartData *data, u32 arg1) {
     switch (arg1) {
-        case 0:
-        case 1:
-        case 2:
-        case 3:
-        case 4:
-        case 5:
-            if (arg1 + data->unk271 < data->unk270) {
-                data->unk290 = arg1;
-                ov03_02257378(data, data->unk290, 0);
-                Sprite_SetAnimCtrlSeq(data->sprites[10], 19);
-                PlaySE(SEQ_SE_DP_SELECT);
-                ov03_022573D4(data, data->unk290);
-                return TASK_MART_6;
-            }
-            break;
-        case 6:
-            if (data->unk271) {
-                PlaySE(SEQ_SE_DP_SELECT);
-                return ov03_022586CC(data, 11, 19);
-            }
-            break;
-        case 7:
-            if (data->unk271 + 6 < data->unk270) {
-                PlaySE(SEQ_SE_DP_SELECT);
-                return ov03_022586CC(data, 12, 20);
-            }
-            break;
-        case 8:
-            ov03_02257378(data, arg1, 0);
-            Sprite_SetAnimCtrlSeq(data->sprites[10], 7);
-            PlaySE(SEQ_SE_GS_GEARCANCEL);
-            ov03_022573D4(data, 8);
-            return ov03_022586CC(data, 13, 16);
+    case 0:
+    case 1:
+    case 2:
+    case 3:
+    case 4:
+    case 5:
+        if (arg1 + data->unk271 < data->unk270) {
+            data->unk290 = arg1;
+            ov03_02257378(data, data->unk290, 0);
+            Sprite_SetAnimCtrlSeq(data->sprites[10], 19);
+            PlaySE(SEQ_SE_DP_SELECT);
+            ov03_022573D4(data, data->unk290);
+            return TASK_MART_6;
+        }
+        break;
+    case 6:
+        if (data->unk271) {
+            PlaySE(SEQ_SE_DP_SELECT);
+            return ov03_022586CC(data, 11, 19);
+        }
+        break;
+    case 7:
+        if (data->unk271 + 6 < data->unk270) {
+            PlaySE(SEQ_SE_DP_SELECT);
+            return ov03_022586CC(data, 12, 20);
+        }
+        break;
+    case 8:
+        ov03_02257378(data, arg1, 0);
+        Sprite_SetAnimCtrlSeq(data->sprites[10], 7);
+        PlaySE(SEQ_SE_GS_GEARCANCEL);
+        ov03_022573D4(data, 8);
+        return ov03_022586CC(data, 13, 16);
     }
     return TASK_MART_3;
 }
@@ -696,7 +693,7 @@ static void ov03_02257758(MartData *data, int arg1, u8 arg2) {
         } else {
             temp = arg2 - arg1;
         }
-        
+
         if (i < temp) {
             ov03_02258648(data, i + 3, i + 2, data->unk268[i + arg1]);
             Sprite_SetDrawFlag(data->sprites[i + 4], TRUE);
@@ -727,11 +724,10 @@ int ov03_02257814(MartData *data, u32 unkAmount) {
         if (PokeathlonSave_GetUnkB7C_AtIndex(data->pokeathlonSave, data->unk290 + data->unk271)) {
             return 2;
         }
-    }
-    else if (data->martType == MART_TYPE_4 && PokeathlonSave_GetUnkB78_AtIndex(data->pokeathlonSave, data->item - 505)) {
+    } else if (data->martType == MART_TYPE_4 && PokeathlonSave_GetUnkB78_AtIndex(data->pokeathlonSave, data->item - 505)) {
         return 3;
     }
-    
+
     return unkAmount < data->cost;
 }
 
@@ -900,7 +896,7 @@ static u8 ov03_02257CA0(MartData *data) {
     } else {
         quantity = SealCase_CheckSealQuantity(data->inventory, data->item, data->quantity);
     }
-    
+
     if (quantity == 0) {
         data->quantity = 0;
         data->unk298 = 11;
@@ -1067,252 +1063,233 @@ static u8 ov03_02258170(FieldSystem *fieldSystem, MartData *data) {
     return TASK_MART_27;
 }
 
-static const u16 ov03_0225946C[7] = {
-    66,
-    67,
-    65,
-    64,
-    0xFFFF,
-    0xFFFF,
-    88
+static const ResdatIdList ov03_0225946C = {
+    .charRes = NARC_resdat_resdat_00000066_bin,
+    .plttRes = NARC_resdat_resdat_00000067_bin,
+    .cellRes = NARC_resdat_resdat_00000065_bin,
+    .animRes = NARC_resdat_resdat_00000064_bin,
+    .mcelRes = 0xFFFF,
+    .manmRes = 0xFFFF,
+    .headerId = NARC_resdat_resdat_00000088_bin
 };
 
-static const SpriteTemplate_ov01_021E81F0 ov03_022594F8[19] = {
+static const UnmanagedSpriteTemplate ov03_022594F8[19] = {
     {
-        .unk_0 = 0, 
-        .unk_4 = 177,
-        .unk_6 = 8,
-        .unk_8 = 0,
-        .unk_A = 0,
-        .unk_C = 0,
-        .unk_10 = 0,
-        .unk_14 = 1,
-        .unk_18 = 0,
-        .filler_1C = 0,
-    },
+     .resourceSet = 0,
+     .x = 177,
+     .y = 8,
+     .z = 0,
+     .animation = 0,
+     .drawPriority = 0,
+     .pal = 0,
+     .vram = NNS_G2D_VRAM_TYPE_2DMAIN,
+     .paletteMode = 0,
+     },
     {
-        .unk_0 = 0,
-        .unk_4 = 177,
-        .unk_6 = 132,
-        .unk_8 = 0,
-        .unk_A = 1,
-        .unk_C = 0,
-        .unk_10 = 0,
-        .unk_14 = 1,
-        .unk_18 = 0,
-        .filler_1C = 0,
-    },
-   
+     .resourceSet = 0,
+     .x = 177,
+     .y = 132,
+     .z = 0,
+     .animation = 1,
+     .drawPriority = 0,
+     .pal = 0,
+     .vram = NNS_G2D_VRAM_TYPE_2DMAIN,
+     .paletteMode = 0,
+     },
+
     {
-        .unk_0 = 1,
-        .unk_4 = 176,
-        .unk_6 = 24,
-        .unk_8 = 0,
-        .unk_A = 0,
-        .unk_C = 0,
-        .unk_10 = 0,
-        .unk_14 = 1,
-        .unk_18 = 0,
-        .filler_1C = 0,
-    },
+     .resourceSet = 1,
+     .x = 176,
+     .y = 24,
+     .z = 0,
+     .animation = 0,
+     .drawPriority = 0,
+     .pal = 0,
+     .vram = NNS_G2D_VRAM_TYPE_2DMAIN,
+     .paletteMode = 0,
+     },
     {
-        .unk_0 = 2,
-        .unk_4 = 22,
-        .unk_6 = 172,
-        .unk_8 = 0,
-        .unk_A = 0,
-        .unk_C = 0,
-        .unk_10 = 0,
-        .unk_14 = 1,
-        .unk_18 = 0,
-        .filler_1C = 0,
-    },
+     .resourceSet = 2,
+     .x = 22,
+     .y = 172,
+     .z = 0,
+     .animation = 0,
+     .drawPriority = 0,
+     .pal = 0,
+     .vram = NNS_G2D_VRAM_TYPE_2DMAIN,
+     .paletteMode = 0,
+     },
     {
-        .unk_0 = 3,
-        .unk_4 = 22,
-        .unk_6 = 59,
-        .unk_8 = 0,
-        .unk_A = 0,
-        .unk_C = 0,
-        .unk_10 = 0,
-        .unk_14 = 2,
-        .unk_18 = 0,
-        .filler_1C = 0,
-    },
+     .resourceSet = 3,
+     .x = 22,
+     .y = 59,
+     .z = 0,
+     .animation = 0,
+     .drawPriority = 0,
+     .pal = 0,
+     .vram = NNS_G2D_VRAM_TYPE_2DSUB,
+     .paletteMode = 0,
+     },
     {
-        .unk_0 = 4,
-        .unk_4 = 152,
-        .unk_6 = 59,
-        .unk_8 = 0,
-        .unk_A = 0,
-        .unk_C = 0,
-        .unk_10 = 0,
-        .unk_14 = 2,
-        .unk_18 = 0,
-        .filler_1C = 0,
-    },
+     .resourceSet = 4,
+     .x = 152,
+     .y = 59,
+     .z = 0,
+     .animation = 0,
+     .drawPriority = 0,
+     .pal = 0,
+     .vram = NNS_G2D_VRAM_TYPE_2DSUB,
+     .paletteMode = 0,
+     },
     {
-        .unk_0 = 5,
-        .unk_4 = 22,
-        .unk_6 = 100,
-        .unk_8 = 0,
-        .unk_A = 0,
-        .unk_C = 0,
-        .unk_10 = 0,
-        .unk_14 = 2,
-        .unk_18 = 0,
-        .filler_1C = 0,
-    },
+     .resourceSet = 5,
+     .x = 22,
+     .y = 100,
+     .z = 0,
+     .animation = 0,
+     .drawPriority = 0,
+     .pal = 0,
+     .vram = NNS_G2D_VRAM_TYPE_2DSUB,
+     .paletteMode = 0,
+     },
     {
-        .unk_0 = 6,
-        .unk_4 = 152,
-        .unk_6 = 100,
-        .unk_8 = 0,
-        .unk_A = 0,
-        .unk_C = 0,
-        .unk_10 = 0,
-        .unk_14 = 2,
-        .unk_18 = 0,
-        .filler_1C = 0,
-    },
+     .resourceSet = 6,
+     .x = 152,
+     .y = 100,
+     .z = 0,
+     .animation = 0,
+     .drawPriority = 0,
+     .pal = 0,
+     .vram = NNS_G2D_VRAM_TYPE_2DSUB,
+     .paletteMode = 0,
+     },
     {
-        .unk_0 = 7,
-        .unk_4 = 22,
-        .unk_6 = 139,
-        .unk_8 = 0,
-        .unk_A = 0,
-        .unk_C = 0,
-        .unk_10 = 0,
-        .unk_14 = 2,
-        .unk_18 = 0,
-        .filler_1C = 0,
-    },
+     .resourceSet = 7,
+     .x = 22,
+     .y = 139,
+     .z = 0,
+     .animation = 0,
+     .drawPriority = 0,
+     .pal = 0,
+     .vram = NNS_G2D_VRAM_TYPE_2DSUB,
+     .paletteMode = 0,
+     },
     {
-        .unk_0 = 8,
-        .unk_4 = 152,
-        .unk_6 = 139,
-        .unk_8 = 0,
-        .unk_A = 0,
-        .unk_C = 0,
-        .unk_10 = 0,
-        .unk_14 = 2,
-        .unk_18 = 0,
-        .filler_1C = 0,
-    },
+     .resourceSet = 8,
+     .x = 152,
+     .y = 139,
+     .z = 0,
+     .animation = 0,
+     .drawPriority = 0,
+     .pal = 0,
+     .vram = NNS_G2D_VRAM_TYPE_2DSUB,
+     .paletteMode = 0,
+     },
     {
-        .unk_0 = 9,
-        .unk_4 = 0,
-        .unk_6 = 0,
-        .unk_8 = 0,
-        .unk_A = 0,
-        .unk_C = 0,
-        .unk_10 = 0,
-        .unk_14 = 2,
-        .unk_18 = 0,
-        .filler_1C = 0,
-    },
+     .resourceSet = 9,
+     .x = 0,
+     .y = 0,
+     .z = 0,
+     .animation = 0,
+     .drawPriority = 0,
+     .pal = 0,
+     .vram = NNS_G2D_VRAM_TYPE_2DSUB,
+     .paletteMode = 0,
+     },
     {
-        .unk_0 = 9,
-        .unk_4 = 24,
-        .unk_6 = 176,
-        .unk_8 = 0,
-        .unk_A = 2,
-        .unk_C = 0,
-        .unk_10 = 0,
-        .unk_14 = 2,
-        .unk_18 = 0,
-        .filler_1C = 0,
-    },
+     .resourceSet = 9,
+     .x = 24,
+     .y = 176,
+     .z = 0,
+     .animation = 2,
+     .drawPriority = 0,
+     .pal = 0,
+     .vram = NNS_G2D_VRAM_TYPE_2DSUB,
+     .paletteMode = 0,
+     },
     {
-        .unk_0 = 9,
-        .unk_4 = 64,
-        .unk_6 = 176,
-        .unk_8 = 0,
-        .unk_A = 3,
-        .unk_C = 0,
-        .unk_10 = 0,
-        .unk_14 = 2,
-        .unk_18 = 0,
-        .filler_1C = 0,
-    },
+     .resourceSet = 9,
+     .x = 64,
+     .y = 176,
+     .z = 0,
+     .animation = 3,
+     .drawPriority = 0,
+     .pal = 0,
+     .vram = NNS_G2D_VRAM_TYPE_2DSUB,
+     .paletteMode = 0,
+     },
     {
-        .unk_0 = 9,
-        .unk_4 = 224,
-        .unk_6 = 176,
-        .unk_8 = 0,
-        .unk_A = 6,
-        .unk_C = 0,
-        .unk_10 = 0,
-        .unk_14 = 2,
-        .unk_18 = 0,
-        .filler_1C = 0,
-    },
+     .resourceSet = 9,
+     .x = 224,
+     .y = 176,
+     .z = 0,
+     .animation = 6,
+     .drawPriority = 0,
+     .pal = 0,
+     .vram = NNS_G2D_VRAM_TYPE_2DSUB,
+     .paletteMode = 0,
+     },
     {
-        .unk_0 = 9,
-        .unk_4 = 136,
-        .unk_6 = 104,
-        .unk_8 = 0,
-        .unk_A = 12,
-        .unk_C = 0,
-        .unk_10 = 0,
-        .unk_14 = 2,
-        .unk_18 = 0,
-        .filler_1C = 0,
-    },
+     .resourceSet = 9,
+     .x = 136,
+     .y = 104,
+     .z = 0,
+     .animation = 12,
+     .drawPriority = 0,
+     .pal = 0,
+     .vram = NNS_G2D_VRAM_TYPE_2DSUB,
+     .paletteMode = 0,
+     },
     {
-        .unk_0 = 9,
-        .unk_4 = 168,
-        .unk_6 = 104,
-        .unk_8 = 0,
-        .unk_A = 12,
-        .unk_C = 0,
-        .unk_10 = 0,
-        .unk_14 = 2,
-        .unk_18 = 0,
-        .filler_1C = 0,
-    },
+     .resourceSet = 9,
+     .x = 168,
+     .y = 104,
+     .z = 0,
+     .animation = 12,
+     .drawPriority = 0,
+     .pal = 0,
+     .vram = NNS_G2D_VRAM_TYPE_2DSUB,
+     .paletteMode = 0,
+     },
     {
-        .unk_0 = 9,
-        .unk_4 = 136,
-        .unk_6 = 152,
-        .unk_8 = 0,
-        .unk_A = 14,
-        .unk_C = 0,
-        .unk_10 = 0,
-        .unk_14 = 2,
-        .unk_18 = 0,
-        .filler_1C = 0,
-    },
+     .resourceSet = 9,
+     .x = 136,
+     .y = 152,
+     .z = 0,
+     .animation = 14,
+     .drawPriority = 0,
+     .pal = 0,
+     .vram = NNS_G2D_VRAM_TYPE_2DSUB,
+     .paletteMode = 0,
+     },
     {
-        .unk_0 = 9,
-        .unk_4 = 168,
-        .unk_6 = 152,
-        .unk_8 = 0,
-        .unk_A = 14,
-        .unk_C = 0,
-        .unk_10 = 0,
-        .unk_14 = 2,
-        .unk_18 = 0,
-        .filler_1C = 0,
-    },
+     .resourceSet = 9,
+     .x = 168,
+     .y = 152,
+     .z = 0,
+     .animation = 14,
+     .drawPriority = 0,
+     .pal = 0,
+     .vram = NNS_G2D_VRAM_TYPE_2DSUB,
+     .paletteMode = 0,
+     },
     {
-        .unk_0 = 9,
-        .unk_4 = 136,
-        .unk_6 = 176,
-        .unk_8 = 0,
-        .unk_A = 24,
-        .unk_C = 0,
-        .unk_10 = 0,
-        .unk_14 = 2,
-        .unk_18 = 0,
-        .filler_1C = 0,
-    }
+     .resourceSet = 9,
+     .x = 136,
+     .y = 176,
+     .z = 0,
+     .animation = 24,
+     .drawPriority = 0,
+     .pal = 0,
+     .vram = NNS_G2D_VRAM_TYPE_2DSUB,
+     .paletteMode = 0,
+     }
 };
 
 void ov03_022581BC(MartData *data) {
-    UnkFieldSpriteRenderer_ov01_021E7FDC_Init(&data->unk_ov01_021E7FDC, ov03_0225946C, 19, HEAP_ID_FIELD2);
+    FieldSpriteManager_InitWithResDat(&data->fieldSpriteManager, &ov03_0225946C, 19, HEAP_ID_FIELD2);
     for (u32 i = 0; i < 19; i++) {
-        data->sprites[i] = ov01_021E81F0(&data->unk_ov01_021E7FDC, &ov03_022594F8[i]);
+        data->sprites[i] = FieldSpriteManager_CreateSprite(&data->fieldSpriteManager, &ov03_022594F8[i]);
     }
     Sprite_SetPriority(data->sprites[13], 1);
     Sprite_SetPriority(data->sprites[18], 1);
@@ -1333,8 +1310,8 @@ static void ov03_02258288(MartData *data) {
         Sprite_Delete(data->sprites[i]);
         data->sprites[i] = NULL;
     }
-    UnkFieldSpriteRenderer_ov01_021E7FDC_Release(&data->unk_ov01_021E7FDC);
-    data->unk_ov01_021E7FDC.spriteList = NULL;
+    FieldSpriteManager_ReleaseWithResDat(&data->fieldSpriteManager);
+    data->fieldSpriteManager.spriteList = NULL;
 }
 
 enum OV03_02259850_Data {
@@ -1345,21 +1322,21 @@ enum OV03_02259850_Data {
 };
 
 static u8 ov03_02259850[15][OV03_02259850_MAX] = {
-    {4, 5, 2},
-    {5, 5, 2},
-    {6, 5, 2},
-    {7, 5, 2},
-    {8, 5, 2},
-    {9, 5, 2},
-    {10, 1, 0},
-    {11, 3, 0},
-    {12, 4, 0},
-    {13, 1, 1},
-    {14, 0, 1},
-    {15, 0, 1},
-    {16, 0, 1},
-    {17, 0, 1},
-    {18, 0, 1}
+    { 4,  5, 2 },
+    { 5,  5, 2 },
+    { 6,  5, 2 },
+    { 7,  5, 2 },
+    { 8,  5, 2 },
+    { 9,  5, 2 },
+    { 10, 1, 0 },
+    { 11, 3, 0 },
+    { 12, 4, 0 },
+    { 13, 1, 1 },
+    { 14, 0, 1 },
+    { 15, 0, 1 },
+    { 16, 0, 1 },
+    { 17, 0, 1 },
+    { 18, 0, 1 }
 };
 
 static void ov03_022582C0(MartData *data, int arg1) {
@@ -1369,9 +1346,9 @@ static void ov03_022582C0(MartData *data, int arg1) {
     case 0:
         for (j = 0; j < 6; j++) {
             VecFx32 vec;
-            vec.x = ov03_022594F8[j + 4].unk_4 << 12;
-            vec.y = (ov03_022594F8[j + 4].unk_6 << 12) + 0xC0000;
-            vec.z = ov03_022594F8[j + 4].unk_8 << 12;
+            vec.x = ov03_022594F8[j + 4].x * FX32_ONE;
+            vec.y = ov03_022594F8[j + 4].y * FX32_ONE + 0xC0000;
+            vec.z = ov03_022594F8[j + 4].z * FX32_ONE;
             Sprite_SetMatrix(data->sprites[j + 4], &vec);
         }
         for (i = 0; i < NELEMS(ov03_02259850); i++) {
@@ -1381,7 +1358,7 @@ static void ov03_022582C0(MartData *data, int arg1) {
                 } else {
                     Sprite_SetDrawFlag(data->sprites[ov03_02259850[i][OV03_02259850_SPRITE_INDEX]], FALSE);
                 }
-            } else if (ov03_02259850[i][OV03_02259850_DATA_1] == 3){
+            } else if (ov03_02259850[i][OV03_02259850_DATA_1] == 3) {
                 if (data->unk271 == 0) {
                     Sprite_SetDrawFlag(data->sprites[ov03_02259850[i][OV03_02259850_SPRITE_INDEX]], FALSE);
                 } else {
@@ -1448,7 +1425,6 @@ static void ov03_022582C0(MartData *data, int arg1) {
             }
         }
         break;
-    
     }
 }
 
@@ -1467,23 +1443,23 @@ static void ov03_022585A4(MartData *data, u16 itemID) {
     if (data->martType != 0 && data->martType != 3 && data->martType != 4) {
         Sprite_SetDrawFlag(data->sprites[3], FALSE);
     } else {
-        spriteResource = SpriteResourceCollection_Find(data->unk_ov01_021E7FDC.spriteResManagers[0], 2);
-        ReplaceCharResObjFromNarc(data->unk_ov01_021E7FDC.spriteResManagers[0], spriteResource, NARC_itemtool_itemdata_item_icon, GetItemIndexMapping(itemID, 1), FALSE, HEAP_ID_FIELD2);
-        sub_0200AE8C(spriteResource);
-        spriteResource = SpriteResourceCollection_Find(data->unk_ov01_021E7FDC.spriteResManagers[1], 1);
-        ReplacePlttResObjFromNarc(data->unk_ov01_021E7FDC.spriteResManagers[1], spriteResource, NARC_itemtool_itemdata_item_icon, GetItemIndexMapping(itemID, 2), FALSE, HEAP_ID_FIELD2);
-        sub_0200B084(spriteResource);
+        spriteResource = SpriteResourceCollection_Find(data->fieldSpriteManager.spriteResManagers[0], 2);
+        ReplaceCharResObjFromNarc(data->fieldSpriteManager.spriteResManagers[0], spriteResource, NARC_itemtool_itemdata_item_icon, GetItemIndexMapping(itemID, 1), FALSE, HEAP_ID_FIELD2);
+        SpriteTransfer_ReplaceCharData(spriteResource);
+        spriteResource = SpriteResourceCollection_Find(data->fieldSpriteManager.spriteResManagers[1], 1);
+        ReplacePlttResObjFromNarc(data->fieldSpriteManager.spriteResManagers[1], spriteResource, NARC_itemtool_itemdata_item_icon, GetItemIndexMapping(itemID, 2), FALSE, HEAP_ID_FIELD2);
+        SpriteTransfer_ReplacePlttData(spriteResource);
         Sprite_SetDrawFlag(data->sprites[3], TRUE);
     }
 }
 
 static void ov03_02258648(MartData *data, int charID, int paletteID, u16 item) {
-    SpriteResource *charResObj = SpriteResourceCollection_Find(data->unk_ov01_021E7FDC.spriteResManagers[0], charID);
-    ReplaceCharResObjFromNarc(data->unk_ov01_021E7FDC.spriteResManagers[0], charResObj, NARC_itemtool_itemdata_item_icon, GetItemIndexMapping(item, 1), FALSE, HEAP_ID_FIELD2);
-    sub_0200AE8C(charResObj);
-    SpriteResource *plttResObj = SpriteResourceCollection_Find(data->unk_ov01_021E7FDC.spriteResManagers[1], paletteID);
-    ReplacePlttResObjFromNarc(data->unk_ov01_021E7FDC.spriteResManagers[1], plttResObj, NARC_itemtool_itemdata_item_icon, GetItemIndexMapping(item, 2), FALSE, HEAP_ID_FIELD2);
-    sub_0200B084(plttResObj);
+    SpriteResource *charResObj = SpriteResourceCollection_Find(data->fieldSpriteManager.spriteResManagers[0], charID);
+    ReplaceCharResObjFromNarc(data->fieldSpriteManager.spriteResManagers[0], charResObj, NARC_itemtool_itemdata_item_icon, GetItemIndexMapping(item, 1), FALSE, HEAP_ID_FIELD2);
+    SpriteTransfer_ReplaceCharData(charResObj);
+    SpriteResource *plttResObj = SpriteResourceCollection_Find(data->fieldSpriteManager.spriteResManagers[1], paletteID);
+    ReplacePlttResObjFromNarc(data->fieldSpriteManager.spriteResManagers[1], plttResObj, NARC_itemtool_itemdata_item_icon, GetItemIndexMapping(item, 2), FALSE, HEAP_ID_FIELD2);
+    SpriteTransfer_ReplacePlttData(plttResObj);
 }
 
 static void ov03_022586BC(MartData *data, int flag) {
