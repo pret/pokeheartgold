@@ -4,8 +4,6 @@
 #include "field/fieldmap.h"
 #include "field/field_sprite_manager.h"
 #include "field/map_prop_animation.h"
-#include "field/ov01_021E7FDC.h"
-#include "field/overlay_01_021E8744.h"
 #include "field/overlay_01_02204004.h"
 #include "msgdata/msg.naix"
 

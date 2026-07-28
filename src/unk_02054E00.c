@@ -3,7 +3,6 @@
 #include "field/map_load_manager.h"
 
 #include "overlay_01_021F3610.h"
-#include "overlay_01_021F4704.h"
 
 BOOL MapModel_IsHeadbuttTree(u32 mapModelNo) {
     if (mapModelNo == 0xd0) {
