@@ -8,12 +8,37 @@
 #include "task.h"
 #include "unk_02005D10.h"
 
+typedef struct AzaleaGymmickSpinarakRoute {
+    u16 unk_0;
+    u16 unk_2;
+    const u16 (*unk_4)[2];
+} AzaleaGymmickSpinarakRoute;
+
 typedef struct AzaleaGymmickLocalData {
     u8 filler_00[4];
     void *unk_04[4];
-    u8 filler_14[0x40];
+    u8 unk_14;
+    u8 unk_15;
+    u8 unk_16;
+    u8 unk_17;
+    u8 unk_18;
+    u8 unk_19;
+    u8 unk_1A;
+    u8 unk_1B;
+    int unk_1C;
+    u8 filler_20[0xC];
+    int unk_2C;
+    int unk_30;
+    int unk_34;
+    u8 filler_38[0x1C];
 } AzaleaGymmickLocalData; // size: 0x54
 
+typedef struct AzaleaGymmickSpinarakRideData {
+    int state;
+    FieldSystem *fieldSystem;
+} AzaleaGymmickSpinarakRideData; // size: 0x08
+
+BOOL ov04_0225463C(TaskManager *taskman);
 int ov04_02254CA4(TaskManager *taskman);
 
 // static const u16 ov04_022575D4[][2] = {
@@ -32,11 +57,13 @@ int ov04_02254CA4(TaskManager *taskman);
 // };
 extern const u16 ov04_022575D4[][2];
 
+extern const AzaleaGymmickSpinarakRoute *const ov04_022575A4[];
+
 void GymmickInit_Azalea(FieldSystem *fieldSystem) {
     GymmickUnion *gymmickUnion = Save_Gymmick_AssertMagic_GetData(Save_GetGymmickPtr(FieldSystem_GetSaveData(fieldSystem)), GYMMICK_AZALEA);
-    fieldSystem->unk4->legendCutsceneCamera = Heap_Alloc(HEAP_ID_FIELD1, sizeof(AzaleaGymmickLocalData));
-    MI_CpuFill8(fieldSystem->unk4->legendCutsceneCamera, 0, sizeof(AzaleaGymmickLocalData));
-    AzaleaGymmickLocalData *localData = fieldSystem->unk4->legendCutsceneCamera;
+    fieldSystem->unk4->unk24 = Heap_Alloc(HEAP_ID_FIELD1, sizeof(AzaleaGymmickLocalData));
+    MI_CpuFill8(fieldSystem->unk4->unk24, 0, sizeof(AzaleaGymmickLocalData));
+    AzaleaGymmickLocalData *localData = fieldSystem->unk4->unk24;
     for (int i = 0; i < 4; ++i) {
         VecFx32 sp4 = { 0, 0, 0 };
         u8 spider = gymmickUnion->azalea.spiders[i];
@@ -116,4 +143,51 @@ void FlipAzaleaGymSwitch(FieldSystem *fieldSystem, u8 switchNo) {
         GF_ASSERT(FALSE);
     }
     TaskManager_Call(fieldSystem->taskman, ov04_02254CA4, NULL);
+}
+
+void BeginAzaleaGymSpinarakRide(FieldSystem *fieldSystem, u8 spinarakNo) {
+    AzaleaGymmickLocalData *localData = fieldSystem->unk4->unk24;
+    AzaleaGymmickSpinarakRideData *rideData = Heap_AllocAtEnd(HEAP_ID_FIELD2, sizeof(AzaleaGymmickSpinarakRideData));
+    rideData->state = 0;
+    rideData->fieldSystem = fieldSystem;
+    localData->unk_18 = spinarakNo;
+    localData->unk_30 = 0;
+    localData->unk_14 = 0;
+    localData->unk_16 = 1;
+    localData->unk_1C = 0;
+
+    int spiderIdx;
+    GymmickUnion *gymmickUnion = Save_Gymmick_AssertMagic_GetData(Save_GetGymmickPtr(FieldSystem_GetSaveData(fieldSystem)), GYMMICK_AZALEA);
+    localData->unk_15 = gymmickUnion->azalea.switches;
+    for (spiderIdx = 0; spiderIdx < 4; ++spiderIdx) {
+        if (spinarakNo == gymmickUnion->azalea.spiders[spiderIdx]) {
+            localData->unk_17 = spiderIdx;
+            break;
+        }
+    }
+    if (spiderIdx == 4) {
+        GF_ASSERT(FALSE);
+        return;
+    }
+    switch (spinarakNo) {
+    case 3:
+    case 4:
+    case 5:
+    case 9:
+    case 10:
+    case 11:
+        localData->unk_19 = 1;
+        localData->unk_1A = ov04_022575A4[spinarakNo][localData->unk_15].unk_0 - 1;
+        localData->unk_1B = 1;
+        break;
+    default:
+        localData->unk_19 = 0;
+        localData->unk_1A = 0;
+        localData->unk_1B = 0;
+        break;
+    }
+    const u16 *ptr = ov04_022575A4[spinarakNo][localData->unk_15].unk_4[localData->unk_1A];
+    localData->unk_2C = ptr[0] * FX32_ONE * 16;
+    localData->unk_34 = ptr[1] * FX32_ONE * 16;
+    TaskManager_Call(fieldSystem->taskman, ov04_0225463C, rideData);
 }

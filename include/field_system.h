@@ -106,7 +106,7 @@ typedef struct FieldSystemUnkSub4 {
     u32 unk18;
     u32 unk1c;
     u32 unk20;
-    void *legendCutsceneCamera;
+    void *unk24;
 } FieldSystemUnkSub4;
 
 // TODO: merge #491
