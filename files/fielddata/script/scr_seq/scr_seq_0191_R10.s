@@ -201,7 +201,7 @@ _02B9:
 	Return
 
 scr_seq_R10_005:
-	ScrCmd_055 2, 0
+	ScrCmd_056 2, 0
 	ScrCmd_057 3
 	ScrCmd_058
 	TrainerTips msg_0341_R10_00008, VAR_SPECIAL_RESULT
@@ -209,7 +209,7 @@ scr_seq_R10_005:
 	End
 
 scr_seq_R10_006:
-	ScrCmd_055 2, 0
+	ScrCmd_056 2, 0
 	ScrCmd_057 3
 	ScrCmd_058
 	TrainerTips msg_0341_R10_00009, VAR_SPECIAL_RESULT

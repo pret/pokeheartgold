@@ -93,7 +93,7 @@
 //        4: gift item, param1=itemSetId
 //        5: random word, param0=numChoices, param1=baseMsgId
 const PhoneCallScriptDef gPhoneCallScriptDef[] = {
-    {}, // empty
+    { }, // empty
 
     // Prof. Elm
     // PHONE_SCRIPT_001

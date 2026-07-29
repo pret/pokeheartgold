@@ -1,6 +1,7 @@
 #include "application/pokegear/map/pokegear_map_internal.h"
 
 #include "phonebook_dat.h"
+#include "poke_overlay.h"
 #include "pokegear_apps.h"
 #include "sys_flags.h"
 #include "unk_0200FA24.h"

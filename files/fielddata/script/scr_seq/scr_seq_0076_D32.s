@@ -866,7 +866,7 @@ scr_seq_D32_023:
 	End
 
 scr_seq_D32_025:
-	ScrCmd_055 3, 0
+	ScrCmd_056 3, 0
 	ScrCmd_057 3
 	ScrCmd_058
 	TrainerTips msg_0100_D32_00034, VAR_SPECIAL_RESULT
@@ -874,7 +874,7 @@ scr_seq_D32_025:
 	End
 
 scr_seq_D32_026:
-	ScrCmd_055 3, 0
+	ScrCmd_056 3, 0
 	ScrCmd_057 3
 	ScrCmd_058
 	TrainerTips msg_0100_D32_00035, VAR_SPECIAL_RESULT
@@ -882,7 +882,7 @@ scr_seq_D32_026:
 	End
 
 scr_seq_D32_027:
-	ScrCmd_055 3, 0
+	ScrCmd_056 3, 0
 	ScrCmd_057 3
 	ScrCmd_058
 	TrainerTips msg_0100_D32_00036, VAR_SPECIAL_RESULT
@@ -890,7 +890,7 @@ scr_seq_D32_027:
 	End
 
 scr_seq_D32_028:
-	ScrCmd_055 3, 0
+	ScrCmd_056 3, 0
 	ScrCmd_057 3
 	ScrCmd_058
 	TrainerTips msg_0100_D32_00037, VAR_SPECIAL_RESULT
@@ -898,7 +898,7 @@ scr_seq_D32_028:
 	End
 
 scr_seq_D32_029:
-	ScrCmd_055 3, 0
+	ScrCmd_056 3, 0
 	ScrCmd_057 3
 	ScrCmd_058
 	TrainerTips msg_0100_D32_00038, VAR_SPECIAL_RESULT

@@ -460,7 +460,7 @@ scr_seq_R36_003:
 	End
 
 scr_seq_R36_004:
-	ScrCmd_055 2, 0
+	ScrCmd_056 2, 0
 	ScrCmd_057 3
 	ScrCmd_058
 	TrainerTips msg_0390_R36_00010, VAR_SPECIAL_RESULT
@@ -468,7 +468,7 @@ scr_seq_R36_004:
 	End
 
 scr_seq_R36_005:
-	ScrCmd_055 3, 0
+	ScrCmd_056 3, 0
 	ScrCmd_057 3
 	ScrCmd_058
 	TrainerTips msg_0390_R36_00011, VAR_SPECIAL_RESULT
@@ -476,7 +476,7 @@ scr_seq_R36_005:
 	End
 
 scr_seq_R36_006:
-	ScrCmd_055 3, 0
+	ScrCmd_056 3, 0
 	ScrCmd_057 3
 	ScrCmd_058
 	TrainerTips msg_0390_R36_00012, VAR_SPECIAL_RESULT

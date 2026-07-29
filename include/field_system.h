@@ -149,7 +149,7 @@ struct FieldSystem {
     u8 filler_98[0x4];
     void *unk9C;
     FrontierFieldSystem *frontierFsys;
-    Save_LinkBattleRuleset *linkBattleRuleset;
+    LinkBattleRuleset *linkBattleRuleset;
     UnkStruct_02092BB8 *unkA8;
     u32 unkAC;
     void *unkB0;

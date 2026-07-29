@@ -158,7 +158,7 @@ _01F4:
 	EndMovement
 
 scr_seq_T31_002:
-	ScrCmd_055 2, 0
+	ScrCmd_056 2, 0
 	ScrCmd_057 3
 	ScrCmd_058
 	TrainerTips msg_0636_T31_00000, VAR_SPECIAL_RESULT

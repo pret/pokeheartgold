@@ -1163,7 +1163,7 @@ _0EC4:
 	EndMovement
 
 scr_seq_D49_023:
-	ScrCmd_055 2, 0
+	ScrCmd_056 2, 0
 	ScrCmd_057 3
 	ScrCmd_058
 	TrainerTips msg_0137_D49_00049, VAR_SPECIAL_RESULT

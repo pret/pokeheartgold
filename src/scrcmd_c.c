@@ -1,6 +1,6 @@
+#include "poke_overlay.h"
 #define _IN_SCRCMD_C
 
-#include "constants/accessories.h"
 #include "constants/events.h"
 #include "constants/phone_contacts.h"
 #include "constants/trainers.h"
@@ -803,7 +803,7 @@ BOOL ScrCmd_DirectionSignpost(ScriptContext *ctx) {
     return TRUE;
 }
 
-BOOL ScrCmd_055(ScriptContext *ctx) {
+BOOL ScrCmd_056(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
     u8 unk1 = ScriptReadByte(ctx);
     u16 unk2 = ScriptReadHalfword(ctx);

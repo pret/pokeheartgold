@@ -168,6 +168,7 @@ static LinkBattleRuleset sAlternateRulesets[] = {
                               .dragonRageClause = FALSE,
                               },
 };
+
 LinkBattleRuleset *sub_020291E8(SaveData *saveData, int index) {
     if (index == 5) {
         Save_LinkBattleRuleset *linkBattleRuleset = SaveArray_Get(saveData, SAVE_LINK_BATTLE_RULESET);

@@ -6,11 +6,11 @@
 #include "constants/battle.h"
 #include "constants/battle_menu.h"
 #include "constants/battle_subscript.h"
+#include "constants/game_stats.h"
 #include "constants/items.h"
 #include "constants/message_tags.h"
 #include "constants/move_effects.h"
 #include "constants/moves.h"
-#include "constants/game_stats.h"
 #include "constants/species.h"
 #include "constants/trainers.h"
 

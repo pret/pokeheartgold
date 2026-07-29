@@ -172,7 +172,7 @@ UnkStruct_ov42_0222903C *ov42_0222903C(UnkStruct_ov42_02228EDC *arg0, UnkStruct_
     temp_r4->unkE = 0;
     temp_r4->unk10 = 0;
 
-    u16 sp4[4];
+    s16 sp4[4];
     sp4[0] = ov42_02228188(arg1, 0);
     sp4[1] = ov42_02228188(arg1, 1);
     sp4[2] = ov42_0222922C(sp4[1], temp_r4->unk12);
@@ -184,7 +184,7 @@ UnkStruct_ov42_0222903C *ov42_0222903C(UnkStruct_ov42_02228EDC *arg0, UnkStruct_
 
 void ov42_022290C4(UnkStruct_ov42_0222903C *arg0) {
     ov42_0222740C(arg0->unk4);
-    __builtin__clear(arg0, sizeof(UnkStruct_ov42_0222903C));
+    memset(arg0, 0, sizeof(UnkStruct_ov42_0222903C));
 }
 
 void ov42_022290DC(UnkStruct_ov42_02228EDC *arg0) {
@@ -321,7 +321,7 @@ void ov42_02229358(UnkStruct_ov44_02232914 *arg0, UnkStruct_ov42_02228110 *arg1)
 }
 
 void ov42_02229394(UnkStruct_ov44_02232914 *arg0) {
-    __builtin__clear(arg0, 4);
+    memset(arg0, 0, 4);
 }
 
 void ov42_022293A0(UnkStruct_ov44_02232914 *arg0, s16 arg1, s16 arg2) {
@@ -337,16 +337,15 @@ s16 ov42_022293B0(UnkStruct_ov44_02232914 *arg0) {
     return arg0->unk2;
 }
 
-UnkStruct_ov42_022293B8 *ov42_022293B8(G2dRenderer *g2dRenderer, BgConfig *bgConfig, u8 *arg2, enum HeapID heapID) {
+UnkStruct_ov42_022293B8 *ov42_022293B8(G2dRenderer *g2dRenderer, BgConfig *bgConfig, const UnkTemplate_ov42_022293B8 *arg2, enum HeapID heapID) {
     UnkStruct_ov42_022293B8 *temp_r0 = Heap_Alloc(heapID, sizeof(UnkStruct_ov42_022293B8));
-    __builtin__clear(temp_r0, sizeof(UnkStruct_ov42_022293B8));
+    memset(temp_r0, 0, sizeof(UnkStruct_ov42_022293B8));
     temp_r0->g2dRenderer = g2dRenderer;
     temp_r0->bgConfig = bgConfig;
-    temp_r0->unk10 = arg2[0];
-    u8 temp_r1 = arg2[1];
-    temp_r0->unk14 = temp_r1;
-    ov42_02229514(temp_r0->bgConfig, temp_r1, arg2);
-    temp_r0->unk8 = GfGfxLoader_GetScrnData((NarcId)arg2[8], arg2[9], arg2[10], &temp_r0->nnsg2dScreenData, heapID);
+    temp_r0->unk10 = arg2->unk_0;
+    temp_r0->unk14 = arg2->unk_1;
+    ov42_02229514(temp_r0->bgConfig, temp_r0->unk14, arg2);
+    temp_r0->unk8 = GfGfxLoader_GetScrnData((NarcId)arg2->narcId, arg2->fileId, arg2->compressed, &temp_r0->nnsg2dScreenData, heapID);
     return temp_r0;
 }
 
@@ -392,17 +391,17 @@ void ov42_02229420(UnkStruct_ov42_022293B8 *arg0, UnkStruct_ov44_02232914 *arg1)
     ov42_02229570(arg0, temp_r4, temp_r5);
 }
 
-void ov42_02229514(BgConfig *bgConfig, s32 arg1, u8 *arg2) {
+void ov42_02229514(BgConfig *bgConfig, s32 arg1, const UnkTemplate_ov42_022293B8 *arg2) {
     BgTemplate bgTemplate = ov42_02229EBC;
-    bgTemplate.colorMode = arg2[2];
-    bgTemplate.screenBase = arg2[3];
-    bgTemplate.charBase = arg2[4];
-    bgTemplate.bgExtPltt = arg2[5];
-    bgTemplate.priority = arg2[6];
+    bgTemplate.colorMode = arg2->colorMode;
+    bgTemplate.screenBase = arg2->screenBase;
+    bgTemplate.charBase = arg2->charBase;
+    bgTemplate.bgExtPltt = arg2->bgExtPltt;
+    bgTemplate.priority = arg2->priority;
     bgTemplate.areaOver = 0;
-    bgTemplate.mosaic = arg2[7];
+    bgTemplate.mosaic = arg2->mosaic;
     FreeBgTilemapBuffer(bgConfig, arg1);
-    InitBgFromTemplate(bgConfig, arg1, &bgTemplate, 0);
+    InitBgFromTemplate(bgConfig, arg1, &bgTemplate, GF_BG_TYPE_TEXT);
 }
 
 void ov42_02229570(UnkStruct_ov42_022293B8 *arg0, s16 arg1, s16 arg2) {

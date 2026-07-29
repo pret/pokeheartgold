@@ -50,7 +50,7 @@ struct CommClubManager {
     u8 unk98;
     u8 unk99;
     u16 unk9A;
-    void *unk9C;
+    const u32 *unk9C;
     u8 unkA0;
     u8 unkA1;
     u16 unkA2;
@@ -141,7 +141,7 @@ static const ListMenuTemplate ov03_02259164 = {
     .fillValue = 15,
     .cursorShadowPal = 2,
     .lettersSpacing = 0,
-    .itemVerticalPadding = 16,
+    .itemVerticalPadding = 0,
     .scrollMultiple = 1,
     .fontId = 0,
     .cursorKind = 0,
@@ -163,7 +163,7 @@ static const ListMenuTemplate ov03_02259144 = {
     .fillValue = 15,
     .cursorShadowPal = 2,
     .lettersSpacing = 0,
-    .itemVerticalPadding = 16,
+    .itemVerticalPadding = 0,
     .scrollMultiple = 1,
     .fontId = 0,
     .cursorKind = 1,
@@ -387,7 +387,7 @@ static void ov03_02254420() {
 
         ov03_02253ED0(ov03_02259164, 1, 2, 20, 10, 1);
 
-        sCommClubManager->unk9C = &ov03_02259134;
+        sCommClubManager->unk9C = ov03_02259134;
         sCommClubManager->unkA0 = 2;
         sCommClubManager->unkA2 = 0xFFFF;
         sCommClubManager->unkA1 = 0;
@@ -684,13 +684,13 @@ static void ov03_02254BEC() {
         GF_AssertFail();
     }
 
-    if (sCommClubManager->commType == 8) {
+    if (sCommClubManager->commType == COMM_TYPE_8) {
         if (sub_020347A0() > 1) {
             ov03_02253E20(sCommClubManager->unk92 + 127, FALSE);
         } else {
             ov03_02253E20(sCommClubManager->unk92 + 117, FALSE);
         }
-    } else if (sCommClubManager->commType == 40) {
+    } else if (sCommClubManager->commType == COMM_TYPE_POKEATHLON) {
         if (sub_020347A0() > 1) {
             ov03_02253E20(sCommClubManager->unk92 + 154, FALSE);
         } else {
@@ -793,7 +793,7 @@ static void ov03_02254D78(s32 arg0_unused, CommClubManager *commClubManager) {
         ov03_02253ED0(ov03_02259144, 1, 2, 17, 12, 1);
         ov03_02254B4C(&ov03_02254E70);
         if (ov03_02255B84() > 2) {
-            sCommClubManager->unk9C = &ov03_0225913C;
+            sCommClubManager->unk9C = ov03_0225913C;
             sCommClubManager->unkA0 = 2;
         } else {
             sCommClubManager->unk9C = &ov03_02259130;
@@ -1020,7 +1020,7 @@ static void ov03_0225530C(void *arg0_unused, CommClubManager *commClubManager) {
     if (IsPrintFinished(sCommClubManager->printerID)) {
         ov03_02254B4C(&ov03_02254E70);
         if (ov03_02255B84() > 2) {
-            sCommClubManager->unk9C = &ov03_0225913C;
+            sCommClubManager->unk9C = ov03_0225913C;
             sCommClubManager->unkA0 = 2;
         } else {
             sCommClubManager->unk9C = &ov03_02259130;
@@ -1500,7 +1500,7 @@ static int ov03_02255B98() {
 void ov03_02255BB0(FieldSystem *fieldSystem, u32 commType, u16 arg2, u16 arg3) {
     ov03_02253F74(fieldSystem);
     sCommClubManager->commType = commType;
-    if (commType - 3 <= 1) {
+    if (commType == COMM_TYPE_MIX_BATTLE || commType == COMM_TYPE_MULTI_BATTLE_1) {
         fieldSystem->linkBattleRuleset = NULL;
     }
     sCommClubManager->unk92 = arg2;
@@ -1523,7 +1523,7 @@ u32 ov03_02255BFC() {
 void ov03_02255C18(FieldSystem *fieldSystem, u32 commType, u16 arg2, u16 arg3) {
     ov03_02253F74(fieldSystem);
     sCommClubManager->commType = commType;
-    if (commType - 3 <= 1) {
+    if (commType == COMM_TYPE_MIX_BATTLE || commType == COMM_TYPE_MULTI_BATTLE_1) {
         fieldSystem->linkBattleRuleset = NULL;
     }
     sCommClubManager->unk92 = arg2;

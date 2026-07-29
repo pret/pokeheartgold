@@ -825,7 +825,7 @@ scr_seq_R34_008:
 	End
 
 scr_seq_R34_009:
-	ScrCmd_055 3, 0
+	ScrCmd_056 3, 0
 	ScrCmd_057 3
 	ScrCmd_058
 	TrainerTips msg_0384_R34_00034, VAR_SPECIAL_RESULT
@@ -833,7 +833,7 @@ scr_seq_R34_009:
 	End
 
 scr_seq_R34_010:
-	ScrCmd_055 2, 0
+	ScrCmd_056 2, 0
 	ScrCmd_057 3
 	ScrCmd_058
 	TrainerTips msg_0384_R34_00035, VAR_SPECIAL_RESULT

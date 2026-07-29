@@ -37,7 +37,7 @@ scr_seq_R46_001:
 	End
 
 scr_seq_R46_002:
-	ScrCmd_055 2, 0
+	ScrCmd_056 2, 0
 	ScrCmd_057 3
 	ScrCmd_058
 	TrainerTips msg_0406_R46_00001, VAR_SPECIAL_RESULT

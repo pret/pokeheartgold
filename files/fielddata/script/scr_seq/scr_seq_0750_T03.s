@@ -216,7 +216,7 @@ scr_seq_T03_003:
 	End
 
 scr_seq_T03_004:
-	ScrCmd_055 2, 0
+	ScrCmd_056 2, 0
 	ScrCmd_057 3
 	ScrCmd_058
 	TrainerTips msg_0460_T03_00021, VAR_SPECIAL_RESULT
@@ -224,7 +224,7 @@ scr_seq_T03_004:
 	End
 
 scr_seq_T03_005:
-	ScrCmd_055 2, 0
+	ScrCmd_056 2, 0
 	ScrCmd_057 3
 	ScrCmd_058
 	TrainerTips msg_0460_T03_00022, VAR_SPECIAL_RESULT

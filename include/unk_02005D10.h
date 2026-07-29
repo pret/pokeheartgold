@@ -1,6 +1,8 @@
 #ifndef POKEHEARTGOLD_UNK_02005D10_H
 #define POKEHEARTGOLD_UNK_02005D10_H
 
+#include "global.h"
+
 #include "constants/sndseq.h"
 
 void PlaySE(u16 sndseq);

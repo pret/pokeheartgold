@@ -242,7 +242,7 @@ scr_seq_T28_006:
 	End
 
 scr_seq_T28_007:
-	ScrCmd_055 2, 0
+	ScrCmd_056 2, 0
 	ScrCmd_057 3
 	ScrCmd_058
 	TrainerTips msg_0620_T28_00018, VAR_SPECIAL_RESULT
@@ -250,7 +250,7 @@ scr_seq_T28_007:
 	End
 
 scr_seq_T28_008:
-	ScrCmd_055 2, 0
+	ScrCmd_056 2, 0
 	ScrCmd_057 3
 	ScrCmd_058
 	TrainerTips msg_0620_T28_00019, VAR_SPECIAL_RESULT

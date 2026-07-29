@@ -1175,7 +1175,7 @@ _0EC0:
 
 scr_seq_T20_007:
 	BufferPlayersName 0
-	ScrCmd_055 2, 0
+	ScrCmd_056 2, 0
 	ScrCmd_057 3
 	ScrCmd_058
 	TrainerTips msg_0542_T20_00035, VAR_SPECIAL_RESULT
@@ -1324,7 +1324,7 @@ _10B4:
 
 scr_seq_T20_016:
 	BufferFriendsName 0
-	ScrCmd_055 2, 0
+	ScrCmd_056 2, 0
 	ScrCmd_057 3
 	ScrCmd_058
 	TrainerTips msg_0542_T20_00035, VAR_SPECIAL_RESULT
@@ -1843,7 +1843,7 @@ _1700:
 	EndMovement
 
 scr_seq_T20_013:
-	ScrCmd_055 2, 0
+	ScrCmd_056 2, 0
 	ScrCmd_057 3
 	ScrCmd_058
 	TrainerTips msg_0542_T20_00036, VAR_SPECIAL_RESULT

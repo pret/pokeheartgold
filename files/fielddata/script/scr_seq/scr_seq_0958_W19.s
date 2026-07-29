@@ -38,7 +38,7 @@ scr_seq_W19_004:
 	End
 
 scr_seq_W19_005:
-	ScrCmd_055 3, 0
+	ScrCmd_056 3, 0
 	ScrCmd_057 3
 	ScrCmd_058
 	TrainerTips msg_0740_W19_00005, VAR_SPECIAL_RESULT

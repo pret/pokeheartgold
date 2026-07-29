@@ -23,7 +23,7 @@ scr_seq_R43_001:
 	End
 
 scr_seq_R43_002:
-	ScrCmd_055 3, 0
+	ScrCmd_056 3, 0
 	ScrCmd_057 3
 	ScrCmd_058
 	TrainerTips msg_0401_R43_00019, VAR_SPECIAL_RESULT
