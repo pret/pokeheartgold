@@ -11,9 +11,9 @@
 #include "obj_pltt_transfer.h"
 #include "pokemon.h"
 #include "save_arrays.h"
+#include "sprite_transfer.h"
 #include "system.h"
 #include "text.h"
-#include "unk_0200ACF0.h"
 #include "unk_0200B150.h"
 #include "unk_0200FA24.h"
 #include "unk_0203A3B0.h"
@@ -466,8 +466,8 @@ void PokeathlonBox_ReleaseGraphics(PokeathlonBox_Graphics* graphics) {
     PokeathlonBox_SubGraphics* sub = &graphics->sub;
     ov97_0221F0E0(sub);
     for (i = 0; i < 3; i++) {
-        sub_0200AEB0(sub->unk1C0[i].charResObj);
-        sub_0200B0A8(sub->unk1C0[i].plttResObj);
+        SpriteTransfer_DeleteCharTransferTask(sub->unk1C0[i].charResObj);
+        SpriteTransfer_DeletePlttTransferTask(sub->unk1C0[i].plttResObj);
     }
     for (i = 0; i < 6; i++) {
         Destroy2DGfxResObjMan(sub->mgrs[i]);
