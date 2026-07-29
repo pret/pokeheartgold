@@ -684,13 +684,13 @@ static void ov03_02254BEC() {
         GF_AssertFail();
     }
 
-    if (sCommClubManager->commType == 8) {
+    if (sCommClubManager->commType == COMM_TYPE_8) {
         if (sub_020347A0() > 1) {
             ov03_02253E20(sCommClubManager->unk92 + 127, FALSE);
         } else {
             ov03_02253E20(sCommClubManager->unk92 + 117, FALSE);
         }
-    } else if (sCommClubManager->commType == 40) {
+    } else if (sCommClubManager->commType == COMM_TYPE_POKEATHLON) {
         if (sub_020347A0() > 1) {
             ov03_02253E20(sCommClubManager->unk92 + 154, FALSE);
         } else {
@@ -1500,7 +1500,7 @@ static int ov03_02255B98() {
 void ov03_02255BB0(FieldSystem *fieldSystem, u32 commType, u16 arg2, u16 arg3) {
     ov03_02253F74(fieldSystem);
     sCommClubManager->commType = commType;
-    if (commType == 3 || commType == 4) {
+    if (commType == COMM_TYPE_MIX_BATTLE || commType == COMM_TYPE_MULTI_BATTLE_1) {
         fieldSystem->linkBattleRuleset = NULL;
     }
     sCommClubManager->unk92 = arg2;
@@ -1523,7 +1523,7 @@ u32 ov03_02255BFC() {
 void ov03_02255C18(FieldSystem *fieldSystem, u32 commType, u16 arg2, u16 arg3) {
     ov03_02253F74(fieldSystem);
     sCommClubManager->commType = commType;
-    if (commType == 3 || commType == 4) {
+    if (commType == COMM_TYPE_MIX_BATTLE || commType == COMM_TYPE_MULTI_BATTLE_1) {
         fieldSystem->linkBattleRuleset = NULL;
     }
     sCommClubManager->unk92 = arg2;
