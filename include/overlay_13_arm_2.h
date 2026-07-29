@@ -2,5 +2,6 @@
 #define POKEHEARTGOLD_OVERLAY_13_ARM_2_H
 
 BOOL ov13_0222B430(void *, s32, s32);
+s32 WM_GetLinkLevel(void);
 
 #endif // POKEHEARTGOLD_OVERLAY_13_ARM_2_H
