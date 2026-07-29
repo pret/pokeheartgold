@@ -1,6 +1,8 @@
 #ifndef POKEHEARTGOLD_UNK_02032844_H
 #define POKEHEARTGOLD_UNK_02032844_H
 
+#include "global.h"
+
 u16 sub_02033250(void);
 
 #endif // POKEHEARTGOLD_UNK_02032844_H

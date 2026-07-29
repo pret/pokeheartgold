@@ -381,7 +381,7 @@ scr_seq_T08_009:
 	End
 
 scr_seq_T08_003:
-	ScrCmd_055 2, 0
+	ScrCmd_056 2, 0
 	ScrCmd_057 3
 	ScrCmd_058
 	TrainerTips msg_0512_T08_00004, VAR_SPECIAL_RESULT
@@ -389,7 +389,7 @@ scr_seq_T08_003:
 	End
 
 scr_seq_T08_004:
-	ScrCmd_055 2, 0
+	ScrCmd_056 2, 0
 	ScrCmd_057 3
 	ScrCmd_058
 	TrainerTips msg_0512_T08_00005, VAR_SPECIAL_RESULT
@@ -397,7 +397,7 @@ scr_seq_T08_004:
 	End
 
 scr_seq_T08_005:
-	ScrCmd_055 2, 0
+	ScrCmd_056 2, 0
 	ScrCmd_057 3
 	ScrCmd_058
 	TrainerTips msg_0512_T08_00006, VAR_SPECIAL_RESULT

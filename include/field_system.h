@@ -215,7 +215,7 @@ struct FieldSystem {
     DynamicTerrainHeightManager *dynamicTerrainHeightManager;
     MapPropManager *mapPropManager;
     FrontierFieldSystem *frontierFsys;
-    Save_LinkBattleRuleset *linkBattleRuleset;
+    LinkBattleRuleset *linkBattleRuleset;
     UnkStruct_02092BB8 *unkA8;
     u32 unkAC;
     void *unkB0;

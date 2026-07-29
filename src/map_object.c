@@ -491,7 +491,7 @@ static void LocalMapObject_InitFromSavedMapObject(LocalMapObject *localObject, S
     MapObject_SetCurrentY(localObject, savedObject->currentY);
     MapObject_SetCurrentZ(localObject, savedObject->currentZ);
 
-    VecFx32 coords = {};
+    VecFx32 coords = { };
     coords.y = savedObject->vecY;
     MapObject_SetPositionVector(localObject, &coords);
 

@@ -693,7 +693,7 @@ _07E0:
 	EndMovement
 
 scr_seq_T25_019:
-	ScrCmd_055 2, 0
+	ScrCmd_056 2, 0
 	ScrCmd_057 3
 	ScrCmd_058
 	TrainerTips msg_0581_T25_00036, VAR_SPECIAL_RESULT
@@ -701,7 +701,7 @@ scr_seq_T25_019:
 	End
 
 scr_seq_T25_020:
-	ScrCmd_055 2, 0
+	ScrCmd_056 2, 0
 	ScrCmd_057 3
 	ScrCmd_058
 	TrainerTips msg_0581_T25_00037, VAR_SPECIAL_RESULT
@@ -709,7 +709,7 @@ scr_seq_T25_020:
 	End
 
 scr_seq_T25_021:
-	ScrCmd_055 2, 0
+	ScrCmd_056 2, 0
 	ScrCmd_057 3
 	ScrCmd_058
 	TrainerTips msg_0581_T25_00038, VAR_SPECIAL_RESULT
@@ -725,7 +725,7 @@ scr_seq_T25_022:
 	End
 
 scr_seq_T25_023:
-	ScrCmd_055 2, 0
+	ScrCmd_056 2, 0
 	ScrCmd_057 3
 	ScrCmd_058
 	TrainerTips msg_0581_T25_00040, VAR_SPECIAL_RESULT
@@ -733,7 +733,7 @@ scr_seq_T25_023:
 	End
 
 scr_seq_T25_024:
-	ScrCmd_055 2, 0
+	ScrCmd_056 2, 0
 	ScrCmd_057 3
 	ScrCmd_058
 	TrainerTips msg_0581_T25_00041, VAR_SPECIAL_RESULT
@@ -741,7 +741,7 @@ scr_seq_T25_024:
 	End
 
 scr_seq_T25_025:
-	ScrCmd_055 2, 0
+	ScrCmd_056 2, 0
 	ScrCmd_057 3
 	ScrCmd_058
 	TrainerTips msg_0581_T25_00042, VAR_SPECIAL_RESULT
@@ -749,7 +749,7 @@ scr_seq_T25_025:
 	End
 
 scr_seq_T25_026:
-	ScrCmd_055 3, 0
+	ScrCmd_056 3, 0
 	ScrCmd_057 3
 	ScrCmd_058
 	TrainerTips msg_0581_T25_00043, VAR_SPECIAL_RESULT
@@ -757,7 +757,7 @@ scr_seq_T25_026:
 	End
 
 scr_seq_T25_027:
-	ScrCmd_055 3, 0
+	ScrCmd_056 3, 0
 	ScrCmd_057 3
 	ScrCmd_058
 	TrainerTips msg_0581_T25_00044, VAR_SPECIAL_RESULT
@@ -765,7 +765,7 @@ scr_seq_T25_027:
 	End
 
 scr_seq_T25_028:
-	ScrCmd_055 2, 0
+	ScrCmd_056 2, 0
 	ScrCmd_057 3
 	ScrCmd_058
 	TrainerTips msg_0581_T25_00045, VAR_SPECIAL_RESULT
@@ -773,7 +773,7 @@ scr_seq_T25_028:
 	End
 
 scr_seq_T25_029:
-	ScrCmd_055 2, 0
+	ScrCmd_056 2, 0
 	ScrCmd_057 3
 	ScrCmd_058
 	TrainerTips msg_0581_T25_00046, VAR_SPECIAL_RESULT

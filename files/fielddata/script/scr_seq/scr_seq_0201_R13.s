@@ -11,7 +11,7 @@
 	ScrDefEnd
 
 scr_seq_R13_000:
-	ScrCmd_055 3, 0
+	ScrCmd_056 3, 0
 	ScrCmd_057 3
 	ScrCmd_058
 	TrainerTips msg_0350_R13_00000, VAR_SPECIAL_RESULT

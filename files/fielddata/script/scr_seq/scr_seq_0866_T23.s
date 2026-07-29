@@ -286,7 +286,7 @@ _03C3:
 	GoTo _039F
 
 scr_seq_T23_008:
-	ScrCmd_055 2, 0
+	ScrCmd_056 2, 0
 	ScrCmd_057 3
 	ScrCmd_058
 	TrainerTips msg_0564_T23_00012, VAR_SPECIAL_RESULT
@@ -294,7 +294,7 @@ scr_seq_T23_008:
 	End
 
 scr_seq_T23_009:
-	ScrCmd_055 2, 0
+	ScrCmd_056 2, 0
 	ScrCmd_057 3
 	ScrCmd_058
 	TrainerTips msg_0564_T23_00013, VAR_SPECIAL_RESULT
@@ -302,7 +302,7 @@ scr_seq_T23_009:
 	End
 
 scr_seq_T23_010:
-	ScrCmd_055 2, 0
+	ScrCmd_056 2, 0
 	ScrCmd_057 3
 	ScrCmd_058
 	TrainerTips msg_0564_T23_00015, VAR_SPECIAL_RESULT
@@ -318,7 +318,7 @@ scr_seq_T23_011:
 	End
 
 scr_seq_T23_012:
-	ScrCmd_055 2, 0
+	ScrCmd_056 2, 0
 	ScrCmd_057 3
 	ScrCmd_058
 	TrainerTips msg_0564_T23_00014, VAR_SPECIAL_RESULT

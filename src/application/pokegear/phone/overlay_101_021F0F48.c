@@ -235,7 +235,7 @@ int PhoneContactListUI_HandleKeyInput(PhoneContactListUI *ui) {
         PlaySE(SEQ_SE_GS_GEARDECIDE);
         return ui->selectedIndex;
     }
-    if (gSystem.newKeys & PAD_BUTTON_B) {}
+    if (gSystem.newKeys & PAD_BUTTON_B) { }
     if (gSystem.newAndRepeatedKeys & PAD_KEY_UP) {
         if (selectedIndex == 0) { // no wraparound
             return -1;

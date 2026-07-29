@@ -129,7 +129,7 @@ u16 ov42_02227F44(UnkStruct_ov42_02227F68 *arg0) {
     return arg0->unk2;
 }
 
-void ov42_02227F48(UnkStruct_ov42_02227F68 *arg0, void *arg1) {
+void ov42_02227F48(UnkStruct_ov42_02227F68 *arg0, const void *arg1) {
     GF_ASSERT(arg0);
     memcpy(arg0->unk4, arg1, arg0->unk0 * arg0->unk2 * 4);
 }

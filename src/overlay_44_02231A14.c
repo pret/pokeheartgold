@@ -1,106 +1,34 @@
-#include "overlay_44_02232E9C.h"
-
 #include "global.h"
-
-#include "constants/sndseq.h"
-
-#include "msgdata/msg.naix"
 
 #include "bg_window.h"
 #include "filesystem.h"
 #include "gf_gfx_loader.h"
 #include "math_util.h"
-#include "obj_char_transfer.h"
-#include "obj_pltt_transfer.h"
-#include "overlay_00_thumb.h"
 #include "overlay_42.h"
-#include "overlay_manager.h"
+#include "overlay_44_02232E9C.h"
 #include "sprite_transfer.h"
 #include "unk_0200A090.h"
-#include "unk_020379A0.h"
-#include "unk_02037C94.h"
-#include "unk_020971F8.h"
 #include "vram_transfer_manager.h"
 
+typedef struct UnkStruct_ov44_0223560F {
+    u8 unk_0;
+    u8 unk_1;
+    u8 unk_2;
+    u8 unk_3;
+} UnkStruct_ov44_0223560F;
+
+const UnkStruct_ov44_0223560F ov44_0223560F[8] = {
+    { 0, 0, 0, 1 },
+    { 1, 2, 1, 0 },
+    { 1, 4, 1, 1 },
+    { 1, 2, 1, 0 },
+    { 0, 0, 0, 1 },
+    { 1, 2, 1, 1 },
+    { 1, 4, 1, 0 },
+    { 1, 3, 1, 1 },
+};
+
 const u16 ov44_02235600[2] = { 3, 2 };
-// const u8 ov44_02235604[11] = {0, 0, 0, 28, 0, 0, 3, 0, 88, 33, 0};
-// const u8 ov44_0223560F[1] = {0};
-// const u8 ov44_02235610[1] = {0};
-// const u8 ov44_02235611[1] = {0};
-// const u8 ov44_02235612[30] = {1, 1, 2, 1, 0, 1, 4, 1, 1, 1, 2, 1, 0, 0, 0, 0, 1, 1, 2, 1, 1, 1, 4, 1, 0, 1, 3, 1, 1, 0};
-// const u32 ov44_02235630[4] = {0xB0010, 0xB0010, 0xB0016, 0xB001C};
-
-// const u32 ov44_02235640[176] = {3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,
-//     3, 3, 3, 3, 3, 3, 3, 3, 3, 5, 3, 3, 3, 3, 3, 3, 3, 3, 3, 0,
-//     0, 0, 0, 14, 0, 0, 0, 22, 0, 0, 0, 0, 3, 3, 0, 0, 0, 0, 0,
-//     6, 6, 6, 6, 6, 0, 0, 0, 0, 0, 3, 3, 0, 0, 0, 0, 16, 0, 0,
-//     0, 24, 0, 0, 0, 0, 3, 3, 3, 0, 0, 0, 0, 6, 6, 6, 6, 6, 0,
-//     0, 0, 0, 3, 3, 3, 0, 0, 0, 0, 18, 0, 0, 0, 26, 0, 0, 0, 0,
-//     3, 3, 3, 0, 0, 0, 0, 6, 6, 6, 6, 6, 0, 0, 0, 0, 3, 3, 3,
-//     0, 0, 0, 0, 20, 0, 0, 0, 28, 0, 0, 0, 0, 3, 3, 0, 0, 0, 0,
-//     0, 6, 6, 6, 6, 6, 0, 0, 0, 0, 0, 3, 3, 0, 0, 0, 0, 0, 0,
-//     30, 0, 0, 0, 0, 0, 0, 3, 3
-// };
-// const u32 ov44_02235900[176] = {3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,
-//     3, 3, 3, 3, 3, 3, 3, 3, 5, 3, 3, 3, 3, 3, 5, 3,
-//     3, 3, 3, 3, 3, 0, 14, 0, 0, 0, 22, 0, 14, 0, 0, 0,
-//     22, 0, 3, 3, 0, 0, 6, 6, 6, 6, 6, 0, 8, 8, 8, 8,
-//     8, 0, 0, 3, 3, 0, 16, 0, 0, 0, 24, 0, 16, 0, 0, 0,
-//     24, 0, 3, 3, 3, 0, 6, 6, 6, 6, 6, 0, 8, 8, 8, 8,
-//     8, 0, 3, 3, 3, 0, 18, 0, 0, 0, 26, 0, 18, 0, 0, 0,
-//     26, 0, 3, 3, 3, 0, 6, 6, 6, 6, 6, 0, 8, 8, 8, 8,
-//     8, 0, 3, 3, 3, 0, 20, 0, 0, 0, 28, 0, 20, 0, 0, 0,
-//     28, 0, 3, 3, 0, 0, 6, 6, 6, 6, 6, 0, 8, 8, 8, 8,
-//     8, 0, 0, 3, 3, 0, 0, 0, 0, 0, 0, 30, 0, 0, 0, 0,
-//     0, 0, 3, 3};
-
-// const u32 ov44_02235BC0[242] = {3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,
-//     3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 5,
-//     3, 3, 3, 3, 3, 5, 3, 3, 3, 3, 3, 5, 3, 3, 3, 3,
-//     3, 3, 0, 14, 0, 0, 0, 22, 0, 14, 0, 0, 0, 22, 0, 14,
-//     0, 0, 0, 22, 0, 3, 3, 0, 0, 10, 10, 10, 10, 10, 0, 6,
-//     6, 6, 6, 6, 0, 8, 8, 8, 8, 8, 0, 0, 3, 3, 0, 16,
-//     0, 0, 0, 24, 0, 16, 0, 0, 0, 24, 0, 16, 0, 0, 0, 24,
-//     0, 3, 3, 3, 0, 10, 10, 10, 10, 10, 0, 6, 6, 6, 6, 6,
-//     0, 8, 8, 8, 8, 8, 0, 3, 3, 3, 0, 18, 0, 0, 0, 26,
-//     0, 18, 0, 0, 0, 26, 0, 18, 0, 0, 0, 26, 0, 3, 3, 3,
-//     0, 10, 10, 10, 10, 10, 0, 6, 6, 6, 6, 6, 0, 8, 8, 8,
-//     8, 8, 0, 3, 3, 3, 0, 20, 0, 0, 0, 28, 0, 20, 0, 0,
-//     0, 28, 0, 20, 0, 0, 0, 28, 0, 3, 3, 0, 0, 10, 10, 10,
-//     10, 10, 0, 6, 6, 6, 6, 6, 0, 8, 8, 8, 8, 8, 0, 0,
-//     3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 30, 0, 0, 0, 0,
-//     0, 0, 0, 0, 0, 3, 3};
-
-// const u32 ov44_02235F88[308] = {3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,
-//     3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,
-//     3, 3, 5, 3, 3, 3, 3, 3, 5, 3, 3, 3,  3, 3, 5, 3, 3, 3,
-//     3, 3, 5, 3, 3, 3, 3, 3, 3, 0, 14, 0, 0, 0, 22, 0, 14, 0,
-//     0, 0, 22, 0, 14, 0, 0, 0, 22, 0, 14, 0, 0, 0, 22, 0, 3, 3,
-//     0, 0, 10, 10, 10, 10, 10, 0, 6, 6, 6, 6, 6, 0, 8, 8, 8, 8,
-//     8, 0, 12, 12, 12, 12, 12, 0, 0, 3, 3, 0, 16, 0, 0, 0, 24, 0,
-//     16, 0, 0, 0, 24, 0, 16, 0, 0, 0, 24, 0, 16, 0, 0, 0, 24, 0,
-//     3, 3, 3, 0, 10, 10, 10, 10, 10, 0, 6, 6, 6, 6, 6, 0, 8, 8,
-//     8, 8, 8, 0, 12, 12, 12, 12, 12, 0, 3, 3, 3, 0, 18, 0, 0, 0,
-//     26, 0, 18, 0, 0, 0, 26, 0, 18, 0, 0, 0, 26, 0, 18, 0, 0, 0,
-//     26, 0, 3, 3, 3, 0, 10, 10, 10, 10, 10, 0, 6, 6, 6, 6, 6, 0,
-//     8, 8, 8, 8, 8, 0, 12, 12, 12, 12, 12, 0, 3, 3, 3, 0, 20, 0,
-//     0, 0, 28, 0, 20, 0, 0, 0, 28, 0, 20, 0, 0, 0, 28, 0, 20, 0,
-//     0, 0, 28, 0, 3, 3, 0, 0, 10, 10, 10, 10, 10, 0, 6, 6, 6, 6,
-//     6, 0, 8, 8, 8, 8, 8, 0, 12, 12, 12, 12, 12, 0, 0, 3, 3, 0,
-//     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 30, 0, 0, 0, 0, 0, 0,
-//     0, 0, 0, 0, 0, 0, 3, 3};
-
-// const u32* ov44_0223688C[4] = {ov44_02235640, ov44_02235900, ov44_02235BC0, ov44_02235F88};
-
-// extern u16 ov44_02235600[2];
-extern u8 ov44_02235604[11];
-extern u8 ov44_0223560F[1];
-extern u8 ov44_02235610[1];
-extern u8 ov44_02235611[1];
-extern u8 ov44_02235612[30];
-extern UnkStruct_ov44_02232914 ov44_02235630[4];
-
-extern u32 *ov44_0223688C[4];
 
 YesNoPrompt *ov44_02231A14(BgConfig *arg0, const WindowTemplate *arg1, u32 arg2) {
     YesNoPrompt *yesNoPrompt = ov44_02231A28(arg0, arg1, arg2);
@@ -204,13 +132,13 @@ u8 ov44_02231C70(UnkStruct_ov44_02232DA0 *arg0) {
 s32 ov44_02231C8C(UnkStruct_ov44_02232DA0 *arg0) {
     GF_ASSERT(arg0->unk6CC != NULL);
     UnkStruct_ov44_02232914 temp_r0 = ov42_022282DC(arg0->unk6CC->unk0);
-    ov42_02227FDC(arg0->unk6E4, temp_r0.unk0 / 16, temp_r0.unk2 / 16);
+    return ov42_02227FDC(arg0->unk6E4, temp_r0.unk0 / 16, temp_r0.unk2 / 16);
 }
 
 s32 ov44_02231CE8(UnkStruct_ov44_02232DA0 *arg0) {
     GF_ASSERT(arg0->unk6CC != NULL);
     UnkStruct_ov44_02232914 sp0 = ov42_022282DC(arg0->unk6CC->unk0);
-    ov42_02227FDC(arg0->unk6E4, sp0.unk0 / 16, (sp0.unk2 / 16) + 1);
+    return ov42_02227FDC(arg0->unk6E4, sp0.unk0 / 16, (sp0.unk2 / 16) + 1);
 }
 
 void ov44_02231D48(UnkStruct_ov44_02232DA0 *arg0, UnkStruct_ov44_02232B74 *arg1) {
@@ -273,7 +201,7 @@ void ov44_02231E94(UnkStruct_ov44_02232DA0 *arg0, UnkStruct_ov44_02232B74 *arg1)
 void ov44_02231ED4(UnkStruct_ov44_02232B74 *arg0) {
     ov42_022290C4(arg0->unk4);
     ov42_02228100(arg0->unk0);
-    __builtin__clear(arg0, sizeof(UnkStruct_ov44_02232B74));
+    memset(arg0, 0, sizeof(UnkStruct_ov44_02232B74));
 }
 
 u8 ov44_02231EF4(UnkStruct_ov44_02232B74 *arg0) {
@@ -411,11 +339,22 @@ void ov44_02232238(UnkStruct_ov44_02232DA0 *arg0) {
 }
 
 void ov44_02232248(UnkStruct_ov44_02232DA0 *arg0, enum HeapID arg1, NARC *arg2, s32 arg3) {
-    u8 sp0[11];
-    sp0 = ov44_02235604;
+    UnkTemplate_ov42_022293B8 sp0 = {
+        .unk_0 = 0,
+        .unk_1 = 0,
+        .colorMode = GX_BG_COLORMODE_16,
+        .screenBase = GX_BG_SCRBASE_0xe000,
+        .charBase = GX_BG_CHARBASE_0x00000,
+        .bgExtPltt = GX_BG_EXTPLTT_01,
+        .priority = 3,
+        .mosaic = 0,
+        .narcId = NARC_a_0_8_8,
+        .fileId = 33,
+        .compressed = FALSE,
+    };
 
-    sp0[9] += arg3;
-    arg0->unk6F4 = ov42_022293B8(&arg0->unk14.unk4, arg0->unk10, sp0, arg1);
+    sp0.fileId += arg3;
+    arg0->unk6F4 = ov42_022293B8(&arg0->unk14.unk4, arg0->unk10, &sp0, arg1);
 }
 
 void ov44_02232288(UnkStruct_ov44_02232DA0 *arg0) {
@@ -490,7 +429,7 @@ void ov44_0223247C(UnkStruct_ov44_02231A7C *arg0) {
 }
 
 void ov44_022324B0(UnkStruct_ov44_02231A7C *arg0, enum HeapID heapID) {
-    SpriteTemplate spriteTemplate = {};
+    SpriteTemplate spriteTemplate = { };
     spriteTemplate.spriteList = arg0->unk0;
     spriteTemplate.header = &arg0->unk14C;
 
@@ -534,8 +473,8 @@ void ov44_02232594(UnkStruct_ov44_02232DA0 *arg0) {
 
 void ov44_022325A4(UnkStruct_ov44_02232DA0 *arg0, UnkStruct_ov44_02232914 arg1, s32 arg2) {
     VecFx32 vec;
-    vec.x = (s16)arg1.unk0 + 8 << 16 >> 4;
-    vec.y = (s16)(arg1.unk2) * 4096;
+    vec.x = (s16)(arg1.unk0 + 8) * FX32_ONE;
+    vec.y = arg1.unk2 * FX32_ONE;
     Sprite_SetMatrix(arg0->unk14.unk174, &vec);
     Sprite_SetDrawPriority(arg0->unk14.unk174, arg2);
     Sprite_SetDrawFlag(arg0->unk14.unk174, 1);
@@ -557,7 +496,7 @@ s32 ov44_02232604(UnkStruct_ov44_02232DA0 *arg0) {
     return 0;
 }
 
-void ov44_02232680(UnkStruct_ov44_02232DA0 *arg0, u16 *arg1, u32 arg2) {
+void ov44_02232680(UnkStruct_ov44_02232DA0 *arg0, s16 *arg1, u32 arg2) {
     u32 r7 = arg2 / 8;
     u32 r4 = arg2 % 8;
     u16 r6 = ov42_02227F40(arg0->unk6E4);
@@ -848,7 +787,7 @@ void ov44_02232CA8(UnkStruct_ov44_02232DA0 *arg0, UnkStruct_ov44_02232B74 *arg1,
 }
 
 void ov44_02232CCC(UnkStruct_ov44_02232DA0 *arg0, UnkStruct_ov44_02232E80 *arg1, NARC *arg2) {
-    __builtin__clear(arg1, sizeof(UnkStruct_ov44_02232E80));
+    memset(arg1, 0, sizeof(UnkStruct_ov44_02232E80));
     arg1->unk0 = GfGfxLoader_GetPlttDataFromOpenNarc(arg2, 32, &arg1->unk4, arg0->unk4);
     arg1->unk8 = 15;
     arg1->unk9 = 0;
@@ -857,7 +796,7 @@ void ov44_02232CCC(UnkStruct_ov44_02232DA0 *arg0, UnkStruct_ov44_02232E80 *arg1,
 
 void ov44_02232D08(UnkStruct_ov44_02232DA0 *arg0, UnkStruct_ov44_02232E80 *arg1) {
     Heap_Free(arg1->unk0);
-    __builtin__clear(arg1, sizeof(UnkStruct_ov44_02232E80));
+    memset(arg1, 0, sizeof(UnkStruct_ov44_02232E80));
 }
 
 void ov44_02232D20(UnkStruct_ov44_02232DA0 *arg0, UnkStruct_ov44_02232E80 *arg1) {
@@ -889,7 +828,7 @@ void ov44_02232DA0(UnkStruct_ov44_02232E80 *arg0) {
     u32 r0 = 0;
     u32 r1 = 0;
     u32 r2 = 0;
-    if (ov44_0223560F[arg0->unkD << 2] == 1) {
+    if (ov44_0223560F[arg0->unkD].unk_0 == 1) {
         arg0->unkE--;
         if (arg0->unkE <= 0) {
             r2 = 1;
@@ -904,9 +843,9 @@ void ov44_02232DA0(UnkStruct_ov44_02232E80 *arg0) {
             ov44_02232E38(arg0);
             return;
         }
-        arg0->unkE = ov44_02235610[arg0->unkD << 2];
-        r0 = ov44_02235611[arg0->unkD << 2];
-        r1 = ov44_02235612[arg0->unkD << 2];
+        arg0->unkE = ov44_0223560F[arg0->unkD].unk_1;
+        r0 = ov44_0223560F[arg0->unkD].unk_2;
+        r1 = ov44_0223560F[arg0->unkD].unk_3;
     }
     if (r0 != 0) {
         GF_CreateNewVramTransferTask(NNS_GFD_DST_2D_BG_PLTT_MAIN, ((arg0->unkC + 1) * 2) + 224, ov44_02232E2C(arg0, r1), 2);
@@ -942,12 +881,4 @@ void ov44_02232E80(UnkStruct_ov44_02232E80 *arg0) {
     if (arg0->unkD != 0) {
         ov44_02232E54(arg0);
     }
-}
-
-UnkStruct_ov44_02232914 ov44_02232E90(s32 arg0) {
-    return ov44_02235630[arg0];
-}
-
-u32 *ov44_02232E9C(u32 arg0) {
-    return ov44_0223688C[arg0];
 }

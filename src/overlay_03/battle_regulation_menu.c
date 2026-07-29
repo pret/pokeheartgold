@@ -176,7 +176,7 @@ static int BattleRegulationMenu_ProcessListMenuInputRegulations(BattleRegulation
         return -1;
     default:
         PlaySE(SEQ_SE_DP_SELECT);
-        &menu->fieldSystem->linkBattleRuleset->rules[0] = sub_020291E8(menu->fieldSystem->saveData, input);
+        menu->fieldSystem->linkBattleRuleset = sub_020291E8(menu->fieldSystem->saveData, input);
         return 1;
     }
 }
@@ -300,7 +300,7 @@ static void BattleRegulationMenu_ShowRules(BattleRegulationMenu *menu) {
     };
 
     for (i = 0; i < RULES_COUNT; i++) {
-        ruleValue = LinkBattleRuleset_GetRuleValue(&menu->fieldSystem->linkBattleRuleset->rules[0], (LinkBattleRule)sLinkBattleRules[i]);
+        ruleValue = LinkBattleRuleset_GetRuleValue(&menu->fieldSystem->linkBattleRuleset[0], (LinkBattleRule)sLinkBattleRules[i]);
         valueMessage = sLinkBattleRuleValueMessages[i];
 
         switch (sLinkBattleRules[i]) {
@@ -339,7 +339,7 @@ static void BattleRegulationMenu_ShowRules(BattleRegulationMenu *menu) {
             }
             break;
         case LINKBATTLERULE_UBERS_CLAUSE:
-            if (LinkBattleRuleset_GetRuleValue(&menu->fieldSystem->linkBattleRuleset->rules[0], LINKBATTLERULE_SOUL_DEW_CLAUSE) == FLAG_RULESET_BAN_SOUL_DEW) {
+            if (LinkBattleRuleset_GetRuleValue(&menu->fieldSystem->linkBattleRuleset[0], LINKBATTLERULE_SOUL_DEW_CLAUSE) == FLAG_RULESET_BAN_SOUL_DEW) {
                 valueMessage = CommunicationClub_Text_Limit2; // Limit 2
             } else if (ruleValue == 0) {
                 valueMessage++;
@@ -375,21 +375,21 @@ static void BattleRegulationMenu_RemoveRulesWindow(BattleRegulationMenu *menu) {
 }
 
 static BOOL BattleRegulationMenu_HandleValidationResult(BattleRegulationMenu *menu) {
-    int result = sub_02074CD0(&menu->fieldSystem->linkBattleRuleset->rules[0], SaveArray_Party_Get(menu->fieldSystem->saveData), menu->pokedexData);
+    int result = sub_02074CD0(&menu->fieldSystem->linkBattleRuleset[0], SaveArray_Party_Get(menu->fieldSystem->saveData), menu->pokedexData);
     switch (result) {
     case BATTLE_REGULATION_VALIDATION_RESULT_SUCCESS:
         return TRUE;
     case BATTLE_REGULATION_VALIDATION_RESULT_INVALID_TEAM_SIZE:
         PlaySE(SEQ_SE_DP_BOX03);
         BattleRegulationMenu_GetRegulationName(menu, menu->itemsAbove[REGULATION_MENU_REGULATIONS] - 1);
-        BufferIntegerAsString(menu->messageFormat, 1, LinkBattleRuleset_GetRuleValue(&menu->fieldSystem->linkBattleRuleset->rules[0], LINKBATTLERULE_PARTY_COUNT), 1, PRINTING_MODE_RIGHT_ALIGN, TRUE);
+        BufferIntegerAsString(menu->messageFormat, 1, LinkBattleRuleset_GetRuleValue(&menu->fieldSystem->linkBattleRuleset[0], LINKBATTLERULE_PARTY_COUNT), 1, PRINTING_MODE_RIGHT_ALIGN, TRUE);
         BattleRegulationMenu_PrintMessage(menu, msg_0046_NeedXPokemonForCup); // You need at least {STRVAR_1 50, 1, 0} Pokémon\nthat qualify under the\f{STRVAR_1 26, 0, 0} Cup rules.
         break;
     default:
     case BATTLE_REGULATION_VALIDATION_RESULT_TOTAL_LEVEL_EXCEEDED:
         PlaySE(SEQ_SE_DP_BOX03);
         BattleRegulationMenu_GetRegulationName(menu, menu->itemsAbove[REGULATION_MENU_REGULATIONS] - 1);
-        BufferIntegerAsString(menu->messageFormat, 1, LinkBattleRuleset_GetRuleValue(&menu->fieldSystem->linkBattleRuleset->rules[0], LINKBATTLERULE_MAX_TOTAL_LEVEL), 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
+        BufferIntegerAsString(menu->messageFormat, 1, LinkBattleRuleset_GetRuleValue(&menu->fieldSystem->linkBattleRuleset[0], LINKBATTLERULE_MAX_TOTAL_LEVEL), 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
         BattleRegulationMenu_PrintMessage(menu, msg_0046_CantFormTeamWithLevelLimit); // It’s impossible to form a team of\nPokémon that qualify under the\f{STRVAR_1 26, 0, 0} Cup rules with a\ftotal level limit of {STRVAR_1 52, 1, 0}.
         break;
     }
@@ -534,9 +534,9 @@ void ov03_022566D0(FieldSystem *fieldSystem, MessageFormat *messageFormat, u32 r
 
 void ov03_02256710(FieldSystem *fieldSystem, u16 arg1) {
     if (arg1 == 12 || arg1 == 6) {
-        &fieldSystem->linkBattleRuleset->rules[0] = NULL;
+        fieldSystem->linkBattleRuleset = NULL;
     } else {
-        &fieldSystem->linkBattleRuleset->rules[0] = sub_020291E8(fieldSystem->saveData, arg1);
+        fieldSystem->linkBattleRuleset = sub_020291E8(fieldSystem->saveData, arg1);
     }
 }
 
@@ -564,7 +564,7 @@ void ov03_02256730(FieldSystem *fieldSystem, Window *window, u32 ruleset) {
     for (int i = 0; i < RULES_COUNT; i++) {
         ReadMsgDataIntoString(msgData, i + CommunicationClub_Text_RuleNoOfPokemon, fmtString); // // Prints rule names.
         AddTextPrinterParameterized(window, 0, fmtString, xOffset, yOffset + lineHeight * i, TEXT_SPEED_NOTRANSFER, NULL);
-        ruleValue = LinkBattleRuleset_GetRuleValue(&fieldSystem->linkBattleRuleset->rules[0], (LinkBattleRule)sLinkBattleRules[i]);
+        ruleValue = LinkBattleRuleset_GetRuleValue(&fieldSystem->linkBattleRuleset[0], (LinkBattleRule)sLinkBattleRules[i]);
         valueMessage = sLinkBattleRuleValueMessages[i];
         switch (sLinkBattleRules[i]) {
         case LINKBATTLERULE_PARTY_COUNT:
@@ -600,7 +600,7 @@ void ov03_02256730(FieldSystem *fieldSystem, Window *window, u32 ruleset) {
             }
             break;
         case LINKBATTLERULE_UBERS_CLAUSE:
-            if (LinkBattleRuleset_GetRuleValue(&fieldSystem->linkBattleRuleset->rules[0], LINKBATTLERULE_SOUL_DEW_CLAUSE) == FLAG_RULESET_BAN_SOUL_DEW) {
+            if (LinkBattleRuleset_GetRuleValue(&fieldSystem->linkBattleRuleset[0], LINKBATTLERULE_SOUL_DEW_CLAUSE) == FLAG_RULESET_BAN_SOUL_DEW) {
                 valueMessage = CommunicationClub_Text_Limit2; // Limit 2
             } else if (ruleValue == 0) {
                 valueMessage++;
@@ -642,7 +642,7 @@ u16 ov03_02256A2C(FieldSystem *fieldSystem, MessageFormat *messageFormat, u32 ru
         }
         unkValue = validMons < 2 ? 7 : 0;
     } else {
-        unkValue = sub_02074CD0(&fieldSystem->linkBattleRuleset->rules[0], party, pokedexData);
+        unkValue = sub_02074CD0(&fieldSystem->linkBattleRuleset[0], party, pokedexData);
     }
     PokedexData_UnloadAndDelete(pokedexData);
     int ruleValue;
@@ -651,7 +651,7 @@ u16 ov03_02256A2C(FieldSystem *fieldSystem, MessageFormat *messageFormat, u32 ru
         return 0;
     case 4:
         ov03_022566D0(fieldSystem, messageFormat, ruleset);
-        ruleValue = LinkBattleRuleset_GetRuleValue(&fieldSystem->linkBattleRuleset->rules[0], LINKBATTLERULE_PARTY_COUNT);
+        ruleValue = LinkBattleRuleset_GetRuleValue(&fieldSystem->linkBattleRuleset[0], LINKBATTLERULE_PARTY_COUNT);
         BufferIntegerAsString(messageFormat, 1, ruleValue, 1, PRINTING_MODE_RIGHT_ALIGN, TRUE);
         return 1;
     case 7:
@@ -665,7 +665,7 @@ u16 ov03_02256A2C(FieldSystem *fieldSystem, MessageFormat *messageFormat, u32 ru
     case 6:
     default:
         ov03_022566D0(fieldSystem, messageFormat, ruleset);
-        ruleValue = LinkBattleRuleset_GetRuleValue(&fieldSystem->linkBattleRuleset->rules[0], LINKBATTLERULE_MAX_TOTAL_LEVEL);
+        ruleValue = LinkBattleRuleset_GetRuleValue(&fieldSystem->linkBattleRuleset[0], LINKBATTLERULE_MAX_TOTAL_LEVEL);
         BufferIntegerAsString(messageFormat, 1, ruleValue, 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
         return 2;
     }

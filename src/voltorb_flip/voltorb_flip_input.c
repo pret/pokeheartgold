@@ -390,7 +390,7 @@ static void VoltorbFlipInputHandler_HandleChangeFocus(VoltorbFlipInputHandler *i
 static void VoltorbFlipInputCB_OnButtonPress(void *data, int nextInput, int prevInput_unused) {
     VoltorbFlipInputHandler *inputHandler = data;
 
-    GridInputHandler_SetNextInput(inputHandler->gridInputHandler, (u8) nextInput);
+    GridInputHandler_SetNextInput(inputHandler->gridInputHandler, (u8)nextInput);
     VoltorbFlipInputHandler_SetFocus(inputHandler, nextInput);
     PlaySE(SEQ_SE_DP_SELECT);
 }
@@ -405,11 +405,11 @@ static void VoltorbFlipInputCB_OnKeyMove(void *data, int nextInput, int prevInpu
     if (nextInput == VOLTORB_FLIP_COL4_ROWLAST) { // wrap around left
         nextInput = inputHandler->selectedRow * 5 + 4;
         GF_ASSERT(nextInput < VOLTORB_FLIP_INPUT_GRID_NUM);
-        GridInputHandler_SetNextInput(inputHandler->gridInputHandler, (u8) nextInput);
+        GridInputHandler_SetNextInput(inputHandler->gridInputHandler, (u8)nextInput);
     } else if (nextInput == VOLTORB_FLIP_COL0_ROWLAST) { // wrap around right
         nextInput = inputHandler->selectedRow * 5;
         GF_ASSERT(nextInput < VOLTORB_FLIP_INPUT_GRID_NUM);
-        GridInputHandler_SetNextInput(inputHandler->gridInputHandler, (u8) nextInput);
+        GridInputHandler_SetNextInput(inputHandler->gridInputHandler, (u8)nextInput);
     }
 
     if (nextInput != VOLTORB_FLIP_INPUT_MEMO && nextInput != VOLTORB_FLIP_INPUT_QUIT) {

@@ -1,6 +1,7 @@
 #ifndef POKEHEARTGOLD_TEXT_0205B4EC_H
 #define POKEHEARTGOLD_TEXT_0205B4EC_H
 
+#include "bg_window.h"
 #include "font_types_def.h"
 #include "options.h"
 

@@ -1,6 +1,8 @@
 #ifndef POKEHEARTGOLD_OVERLAY_01_021FB5D4_H
 #define POKEHEARTGOLD_OVERLAY_01_021FB5D4_H
 
+#include "global.h"
+
 #include "heap.h"
 #include "field/hblank_system.h"
 
