@@ -50,7 +50,9 @@ def main():
 
     # For WSL accessing Windows, paths to PCH input files must be relative
     if is_wsl_accessing_windows():
+        build_ninja_string = relativize_json2bin_paths(build_ninja_string)
         build_ninja_string = relativize_pch_paths(build_ninja_string)
+        compile_commands_string = relativize_json2bin_paths(compile_commands_string)
         compile_commands_string = relativize_pch_paths(compile_commands_string)
 
     with open(BUILD_NINJA, 'w') as build_ninja_out, open(COMPILE_COMMANDS, 'w') as compile_commands_out:
@@ -65,6 +67,8 @@ def relativize_pch_paths(fileString: str) -> str:
     '''Make paths to headers to be precompiled relative (for WSL)'''
     return re.sub(r'c_PCH [\w/\-.]+?subprojects', r'c_PCH ../subprojects', fileString)
 
+def relativize_json2bin_paths(fileString: str) -> str:
+    return re.sub(r'out-dir [\w/\-.]+?build', r'out-dir ../build', fileString)
 
 if __name__ == '__main__':
     main()

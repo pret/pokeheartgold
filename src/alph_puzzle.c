@@ -554,13 +554,13 @@ static const OamManagerParam ov110_021E6EA4 = { 0, 128, 0, 32, 0, 128, 0, 32 };
 static const OamCharTransferParam ov110_021E6DD0 = { 5, 0, 0, GX_OBJVRAMMODE_CHAR_1D_32K, GX_OBJVRAMMODE_CHAR_1D_32K };
 
 static const u16 sResdatInfo[7] = {
-    NARC_resdat_resdat_00000010_bin, // GF_GFX_RES_TYPE_CHAR
-    NARC_resdat_resdat_00000011_bin, // GF_GFX_RES_TYPE_PLTT
-    NARC_resdat_resdat_00000009_bin, // GF_GFX_RES_TYPE_CELL
-    NARC_resdat_resdat_00000008_bin, // GF_GFX_RES_TYPE_ANIM
+    resdat_00000010_bin, // GF_GFX_RES_TYPE_CHAR
+    resdat_00000011_bin, // GF_GFX_RES_TYPE_PLTT
+    resdat_00000009_bin, // GF_GFX_RES_TYPE_CELL
+    resdat_00000008_bin, // GF_GFX_RES_TYPE_ANIM
     0xFFFF,                          // GF_GFX_RES_TYPE_MCEL
     0xFFFF,                          // GF_GFX_RES_TYPE_MANM
-    NARC_resdat_resdat_00000074_bin,
+    resdat_00000074_bin,
 };
 
 static const UnmanagedSpriteTemplate sSpriteTemplates[3] = {
@@ -1159,7 +1159,7 @@ static void AlphPuzzle_FreeBackgroundGraphics(AlphPuzzleData *data) {
 static void AlphPuzzle_InitText(AlphPuzzleData *data) {
     FontID_Alloc(4, data->heapID);
 
-    data->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0002_bin, data->heapID);
+    data->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msg_0002, data->heapID);
     data->messageFormat = MessageFormat_New_Custom(6, 16, data->heapID);
     data->unk30 = String_New(0x80, data->heapID);
 

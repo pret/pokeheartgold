@@ -93,7 +93,7 @@ static void Blackout_DrawMessage(FieldSystem *fieldSystem, TaskManager *taskMana
     sub_0200FBDC(0); // PM_LCD_TOP?
     sub_0200FBDC(1); // PM_LCD_TOP?
     Blackout_InitDisplays(env->bgConfig);
-    env->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0203_bin, HEAP_ID_FIELD2);
+    env->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, msg_0203, HEAP_ID_FIELD2);
     env->msgFmt = MessageFormat_New(HEAP_ID_FIELD2);
 
     AddWindow(env->bgConfig, &env->window, &sBlackoutWindowTemplate);

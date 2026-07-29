@@ -3,16 +3,34 @@ build_dir = meson.current_build_dir()
 ############################################################
 ###                         PPARK                        ###
 ############################################################
+ppark_json = files('ppark.json')
+ppark_template = files('ppark.json.txt')
 
-ppark_c = custom_target('ppark.c',
-    command : [
-        jsonproc_exe,
-        'ppark.json',
-        'ppark.json.txt',
-        build_dir + '/ppark.c'
+ppark_narc = custom_target('ppark.narc',
+    input : ppark_json,
+    output: [ 
+        'ppark.narc', 
+        'ppark.naix' 
     ],
-    output : [
-        'ppark.c'
-    ]
+    command : [
+        json2bin_sh,
+        '--jsonproc', jsonproc_exe.full_path(),
+        '--template', ppark_template[0].full_path(),
+        '--o2narc', o2narc_exe.full_path(),
+        '--out-dir', build_dir,
+        '-i', relative_source_root,
+        '-i', relative_source_root / 'include',
+        '-i', relative_source_root / 'subprojects' / 'NitroSDK-4.2.30001' / 'include',
+        '--language', 'c',
+        '-N',
+        '@INPUT@'
+    ],
+    depends : [
+        jsonproc_exe,
+        o2narc_exe,
+    ],
+    build_by_default:true
 )
 
+nitrofs_files += ppark_narc
+naix_headers += ppark_narc[1]

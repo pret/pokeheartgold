@@ -82,6 +82,7 @@ EXTFMT_LZ_FLAGS = ['-nopad', '-extfmt']
 subdir('application')
 subdir('arc')
 subdir('data')
+subdir('demo')
 subdir('graphic')
 subdir('poketool')
 

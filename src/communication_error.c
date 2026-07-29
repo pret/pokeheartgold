@@ -162,7 +162,7 @@ void ShowCommunicationError(enum HeapID heapID, u32 error, u32 errorCode) {
     BG_SetMaskColor(GF_BG_LYR_MAIN_0, GX_RGB(1, 1, 27));
     BG_SetMaskColor(GF_BG_LYR_SUB_0, GX_RGB(1, 1, 27));
 
-    MsgData *errorMessageData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0041_bin, heapID);
+    MsgData *errorMessageData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, msg_0041, heapID);
     String *errorMessageStr = String_New(384, heapID);
     String *tmpStr = String_New(384, heapID);
     ResetAllTextPrinters();

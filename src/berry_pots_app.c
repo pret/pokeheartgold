@@ -119,13 +119,13 @@ static const TouchscreenListMenuTemplate sMenuTemplate = {
     84,
 };
 static const u16 ov17_02203D78[7] = {
-    NARC_resdat_resdat_00000030_bin,
-    NARC_resdat_resdat_00000031_bin,
-    NARC_resdat_resdat_00000029_bin,
-    NARC_resdat_resdat_00000028_bin,
+    resdat_00000030,
+    resdat_00000031,
+    resdat_00000029,
+    resdat_00000028,
     0xFFFF,
     0xFFFF,
-    NARC_resdat_resdat_00000079_bin,
+    resdat_00000079,
 };
 static const GraphicsModes ov17_02203D88 = {
     GX_DISPMODE_GRAPHICS,
@@ -1129,7 +1129,7 @@ void BerryPotsApp_FreeNarc(BerryPotsAppData *data) {
 static void BerryPotsApp_SetupText(BerryPotsAppData *data) {
     FontID_Alloc(4, data->heapID);
 
-    data->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0248_bin, data->heapID);
+    data->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msg_0248, data->heapID);
     data->msgFmt = MessageFormat_New_Custom(16, 16, data->heapID);
     data->currentStatusString = String_New(128, data->heapID);
     data->cancelString = NewString_ReadMsgData(data->msgData, msg_0248_00000);

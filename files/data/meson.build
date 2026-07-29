@@ -8,7 +8,6 @@ resdat_template = files('resdat.json.txt')
 
 resdat_bin_gen = generator(json2bin_sh,
     arguments : [
-        #'--compiler', relative_source_root / 'tools' / 'metroskrew' / 'bin' / 'mwccarm.exe',
         '--jsonproc', jsonproc_exe.full_path(),
         '--template', resdat_template[0].full_path(),
         '--o2narc', o2narc_exe.full_path(),
@@ -22,7 +21,7 @@ resdat_bin_gen = generator(json2bin_sh,
         jsonproc_exe,
         o2narc_exe,
     ],
-    output : '@BASENAME@'
+    output : '@BASENAME@.bin'
 )
 
 resdat_narc = custom_target('resdat.narc',
