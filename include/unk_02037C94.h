@@ -38,7 +38,7 @@ void sub_02039330(void);
 void sub_0203A1C4(SaveData *saveData, void *a1, enum HeapID heapID);
 void sub_02039B7C(void);
 BOOL sub_020392A0(void);
-UnkStruct_ov44_0223197C *sub_020396FC(SaveData *, int);
+UnkStruct_ov44_0223197C *sub_020396FC(SaveData *saveData, int a1);
 void sub_02039378(void);
 void sub_02039FD8(enum HeapID heapID);
 void sub_02039E9C(void);
