@@ -5153,9 +5153,9 @@ ov49_0225AD20: ; 0x0225AD20
 	add r0, r6, #0
 	bl NARC_Delete
 	ldr r0, [r7, #0x40]
-	bl sub_0200ADA4
+	bl SpriteTransfer_CreateCharTransferTask_AllocAtEnd
 	ldr r0, [r7, #0x44]
-	bl sub_0200B00C
+	bl SpriteTransfer_CreatePlttTransferTask
 	ldr r1, _0225AE44 ; =0x00001388
 	mov r0, #0
 	str r1, [sp]
@@ -5258,9 +5258,9 @@ _0225AE70:
 	cmp r7, #2
 	blt _0225AE70
 	ldr r0, [r5, #0x40]
-	bl sub_0200AEB0
+	bl SpriteTransfer_DeleteCharTransferTask
 	ldr r0, [r5, #0x44]
-	bl sub_0200B0A8
+	bl SpriteTransfer_DeletePlttTransferTask
 	mov r7, #0x13
 	mov r4, #0
 	lsl r7, r7, #4
@@ -7671,7 +7671,7 @@ _0225C010:
 	mov r3, #0
 	bl AddCharResObjFromOpenNarc
 	str r0, [r5, #0x58]
-	bl sub_0200ADA4
+	bl SpriteTransfer_CreateCharTransferTask_AllocAtEnd
 	cmp r0, #0
 	bne _0225C052
 	bl GF_AssertFail
@@ -7692,7 +7692,7 @@ _0225C052:
 	mov r3, #0
 	bl AddPlttResObjFromOpenNarc
 	str r0, [r5, #0x5c]
-	bl sub_0200B00C
+	bl SpriteTransfer_CreatePlttTransferTask
 	cmp r0, #0
 	bne _0225C082
 	bl GF_AssertFail
@@ -7801,9 +7801,9 @@ ov49_0225C148: ; 0x0225C148
 	mov r0, #0
 	str r0, [r5, #0x54]
 	ldr r0, [r5, #0x58]
-	bl sub_0200AEB0
+	bl SpriteTransfer_DeleteCharTransferTask
 	ldr r0, [r5, #0x5c]
-	bl sub_0200B0A8
+	bl SpriteTransfer_DeletePlttTransferTask
 	mov r7, #0x13
 	mov r6, #0
 	lsl r7, r7, #4
@@ -7866,7 +7866,7 @@ _0225C1AA:
 	mov r3, #0
 	bl AddCharResObjFromNarc
 	str r0, [r6, #0x6c]
-	bl sub_0200ADA4
+	bl SpriteTransfer_CreateCharTransferTask_AllocAtEnd
 	cmp r0, #0
 	bne _0225C1E4
 	bl GF_AssertFail
@@ -7889,7 +7889,7 @@ _0225C1E4:
 	bl GF2DGfxResObj_GetPlttDataPtr
 	bl ov49_0225C368
 	ldr r0, [r6, #0x70]
-	bl sub_0200B00C
+	bl SpriteTransfer_CreatePlttTransferTask
 	cmp r0, #0
 	bne _0225C21A
 	bl GF_AssertFail
@@ -8033,9 +8033,9 @@ ov49_0225C328: ; 0x0225C328
 	mov r0, #0
 	str r0, [r5, #0x68]
 	ldr r0, [r5, #0x6c]
-	bl sub_0200AEB0
+	bl SpriteTransfer_DeleteCharTransferTask
 	ldr r0, [r5, #0x70]
-	bl sub_0200B0A8
+	bl SpriteTransfer_DeletePlttTransferTask
 	mov r7, #0x13
 	mov r6, #0
 	lsl r7, r7, #4
@@ -8351,7 +8351,7 @@ _0225C558:
 	add r0, r4, #0
 	add r0, #0xac
 	ldr r0, [r0]
-	bl sub_0200B00C
+	bl SpriteTransfer_CreatePlttTransferTask
 	cmp r0, #0
 	bne _0225C596
 	bl GF_AssertFail
@@ -8465,7 +8465,7 @@ _0225C64A:
 	add r0, r7, #0
 	add r0, #0xbc
 	ldr r0, [r0]
-	bl sub_0200ADA4
+	bl SpriteTransfer_CreateCharTransferTask_AllocAtEnd
 	cmp r0, #0
 	bne _0225C67E
 	bl GF_AssertFail
@@ -8614,7 +8614,7 @@ _0225C796:
 	add r0, r4, #0
 	add r0, #0xbc
 	ldr r0, [r0]
-	bl sub_0200AEB0
+	bl SpriteTransfer_DeleteCharTransferTask
 	mov r0, #0x13
 	add r1, r4, #0
 	lsl r0, r0, #4
@@ -8639,7 +8639,7 @@ _0225C7D8:
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _0225C81C
-	bl sub_0200B0A8
+	bl SpriteTransfer_DeletePlttTransferTask
 	mov r0, #0x4d
 	add r1, r5, #0
 	lsl r0, r0, #2

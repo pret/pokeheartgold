@@ -19,12 +19,12 @@
 #include "render_window.h"
 #include "save_rankings.h"
 #include "sprite.h"
+#include "sprite_transfer.h"
 #include "system.h"
 #include "text.h"
 #include "unk_02005D10.h"
 #include "unk_02009D48.h"
 #include "unk_0200A090.h"
-#include "unk_0200ACF0.h"
 #include "unk_0200B150.h"
 #include "unk_0200FA24.h"
 #include "unk_02097D3C.h"
@@ -353,8 +353,8 @@ BOOL ViewRankingsApp_Exit(OverlayManager *man, int *pState) {
     FreeBgTilemapBuffer(appData->bgConfig, GF_BG_LYR_MAIN_3);
     FreeBgTilemapBuffer(appData->bgConfig, GF_BG_LYR_SUB_0);
     ViewRankings_DestroySprites(appData);
-    sub_0200AEB0(appData->gf2dGfxResObjects[GF_GFX_RES_TYPE_CHAR]);
-    sub_0200B0A8(appData->gf2dGfxResObjects[GF_GFX_RES_TYPE_PLTT]);
+    SpriteTransfer_DeleteCharTransferTask(appData->gf2dGfxResObjects[GF_GFX_RES_TYPE_CHAR]);
+    SpriteTransfer_DeletePlttTransferTask(appData->gf2dGfxResObjects[GF_GFX_RES_TYPE_PLTT]);
     for (int i = 0; i < 6; ++i) {
         Destroy2DGfxResObjMan(appData->gf2dGfxResManagers[i]);
     }
@@ -616,8 +616,8 @@ static void ViewRankings_LoadSpriteGraphics(ViewRankingsAppData *appData, enum H
     appData->gf2dGfxResObjects[GF_GFX_RES_TYPE_PLTT] = AddPlttResObjFromNarc(appData->gf2dGfxResManagers[GF_GFX_RES_TYPE_PLTT], NARC_application_guinness, NARC_guinness_guinness_00000006_NCLR, FALSE, 0, NNS_G2D_VRAM_TYPE_2DMAIN, 4, heapID);
     appData->gf2dGfxResObjects[GF_GFX_RES_TYPE_CELL] = AddCellOrAnimResObjFromNarc(appData->gf2dGfxResManagers[GF_GFX_RES_TYPE_CELL], NARC_application_guinness, NARC_guinness_guinness_00000008_NCER_lz, TRUE, 0, GF_GFX_RES_TYPE_CELL, heapID);
     appData->gf2dGfxResObjects[GF_GFX_RES_TYPE_ANIM] = AddCellOrAnimResObjFromNarc(appData->gf2dGfxResManagers[GF_GFX_RES_TYPE_ANIM], NARC_application_guinness, NARC_guinness_guinness_00000007_NANR_lz, TRUE, 0, GF_GFX_RES_TYPE_ANIM, heapID);
-    sub_0200ADA4(appData->gf2dGfxResObjects[GF_GFX_RES_TYPE_CHAR]);
-    sub_0200AF94(appData->gf2dGfxResObjects[GF_GFX_RES_TYPE_PLTT]);
+    SpriteTransfer_CreateCharTransferTask_AllocAtEnd(appData->gf2dGfxResObjects[GF_GFX_RES_TYPE_CHAR]);
+    SpriteTransfer_CreateExtPlttTransferTask(appData->gf2dGfxResObjects[GF_GFX_RES_TYPE_PLTT]);
 }
 
 static void ViewRankings_CreateSpriteResourcesHeader(ViewRankingsAppData *appData) {

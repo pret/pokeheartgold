@@ -1,8 +1,9 @@
 #ifndef POKEHEARTGOLD_UNK_02054648_H
 #define POKEHEARTGOLD_UNK_02054648_H
 
-#include "script.h"
 #include "field/field_control.h"
+
+#include "script.h"
 
 SoundplateStruct *sub_02054874(FieldSystem *fieldSystem, int x, int z);
 void sub_0205489C(u32 *a0, int a1);

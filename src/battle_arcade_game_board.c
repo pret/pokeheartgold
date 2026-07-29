@@ -20,12 +20,12 @@
 #include "party_menu.h"
 #include "pokemon.h"
 #include "pokemon_icon_idx.h"
+#include "sprite_transfer.h"
 #include "system.h"
 #include "touchscreen.h"
 #include "unk_02005D10.h"
 #include "unk_02009D48.h"
 #include "unk_0200A090.h"
-#include "unk_0200ACF0.h"
 #include "unk_0200B150.h"
 #include "unk_0200FA24.h"
 #include "unk_02030A98.h"
@@ -1231,11 +1231,11 @@ static void ov84_0223F2B4(GAME_BOARD_SUB_3E8 *work, Party *playerParty, Party *o
     ov84_0223F5E4(work, playerParty, opponentParty, type);
 
     for (i = 0; i < 11; i++) {
-        sub_0200ACF0(work->resourceObj[i][GF_GFX_RES_TYPE_CHAR]);
+        SpriteTransfer_CreateCharTransferTask(work->resourceObj[i][GF_GFX_RES_TYPE_CHAR]);
     }
 
     for (i = 0; i < 4; i++) {
-        sub_0200AF94(work->resourceObj[i][GF_GFX_RES_TYPE_PLTT]);
+        SpriteTransfer_CreateExtPlttTransferTask(work->resourceObj[i][GF_GFX_RES_TYPE_PLTT]);
     }
 
     GfGfx_EngineBTogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
@@ -1282,11 +1282,11 @@ static void ov84_0223F418(GAME_BOARD_SUB_3E8 *work) {
     u8 i;
 
     for (i = 0; i < 11; i++) {
-        sub_0200AEB0(work->resourceObj[i][GF_GFX_RES_TYPE_CHAR]);
+        SpriteTransfer_DeleteCharTransferTask(work->resourceObj[i][GF_GFX_RES_TYPE_CHAR]);
     }
 
     for (i = 0; i < 4; i++) {
-        sub_0200B0A8(work->resourceObj[i][GF_GFX_RES_TYPE_PLTT]);
+        SpriteTransfer_DeletePlttTransferTask(work->resourceObj[i][GF_GFX_RES_TYPE_PLTT]);
     }
 
     for (i = 0; i < 4; i++) {

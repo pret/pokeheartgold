@@ -10,7 +10,7 @@
 .public PokepicManager_Create
 .public PokepicManager_Delete
 .public SpriteResourceCollection_Find
-.public sub_0200AF00
+.public SpriteTransfer_GetCharProxy
 .public SpriteTransfer_GetPaletteProxy
 .public Sprite_DeleteAndFreeResources
 .public SysTask_CreateOnVBlankQueue
@@ -71,10 +71,10 @@
 .public GX_LoadOBJ
 .public DC_FlushRange
 .public memcpy
-.public ov01_021E8298
-.public ov01_021E8378
-.public ov01_021E83F0
-.public ov01_021E8404
-.public ov01_021E8418
-.public ov01_021E851C
-.public ov01_021E86F4
+.public FieldSpriteManager_InitEmptyResLists
+.public FieldSpriteManager_AddPlttRes
+.public FieldSpriteManager_AddCellRes
+.public FieldSpriteManager_AddAnimRes
+.public FieldSpriteManager_AddCharRes
+.public FieldSpriteManager_CreateManagedSprite
+.public FieldSpriteManager_ReleaseWithoutResDat

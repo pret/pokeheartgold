@@ -19,12 +19,12 @@
 #include "render_window.h"
 #include "sound.h"
 #include "sprite.h"
+#include "sprite_transfer.h"
 #include "system.h"
 #include "text.h"
 #include "touchscreen.h"
 #include "unk_02005D10.h"
 #include "unk_02009D48.h"
-#include "unk_0200ACF0.h"
 #include "unk_0200B150.h"
 #include "unk_0200FA24.h"
 #include "unk_02013FDC.h"
@@ -575,8 +575,8 @@ static void freeAllMonSprite2dResObj(struct StarterChooseMonSpriteData *a0) {
     int i;
 
     for (i = 0; i < 3; i++) {
-        sub_0200AEB0(a0->objs[i].charResObj);
-        sub_0200B0A8(a0->objs[i].plttResObj);
+        SpriteTransfer_DeleteCharTransferTask(a0->objs[i].charResObj);
+        SpriteTransfer_DeletePlttTransferTask(a0->objs[i].plttResObj);
         DestroySingle2DGfxResObj(a0->charResMan, a0->objs[i].charResObj);
         DestroySingle2DGfxResObj(a0->plttResMan, a0->objs[i].plttResObj);
         DestroySingle2DGfxResObj(a0->cellResMan, a0->objs[i].cellResObj);
@@ -1198,9 +1198,9 @@ static void loadOneMonObj(GF_2DGfxResMan *charResMan, GF_2DGfxResMan *plttResMan
     u32 imageloc;
     u32 plttloc;
 
-    sub_0200ADA4(charResObj);
-    sub_0200B00C(plttResObj);
-    charProxy = sub_0200AF00(charResObj);
+    SpriteTransfer_CreateCharTransferTask_AllocAtEnd(charResObj);
+    SpriteTransfer_CreatePlttTransferTask(plttResObj);
+    charProxy = SpriteTransfer_GetCharProxy(charResObj);
     plttProxy = SpriteTransfer_GetPaletteProxy(plttResObj, charProxy);
     imageloc = NNS_G2dGetImageLocation(charProxy, NNS_G2D_VRAM_TYPE_2DSUB);
     plttloc = NNS_G2dGetImagePaletteLocation(plttProxy, NNS_G2D_VRAM_TYPE_2DSUB);

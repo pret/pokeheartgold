@@ -28,10 +28,10 @@
 #include "save_vars_flags.h"
 #include "sound.h"
 #include "sound_02004A44.h"
+#include "sprite_transfer.h"
 #include "sys_flags.h"
 #include "system.h"
 #include "unk_02005D10.h"
-#include "unk_0200ACF0.h"
 #include "unk_0200FA24.h"
 #include "unk_02034B0C.h"
 #include "unk_02037C94.h"
@@ -669,8 +669,8 @@ static void StartMenu_CreateCursor(StartMenuTaskData *startMenu, u8 *a1, u32 a2,
     startMenu->gfxResObj[GF_GFX_RES_TYPE_PLTT] = AddPlttResObjFromNarc(startMenu->gfxResMan[GF_GFX_RES_TYPE_PLTT], NARC_a_0_1_4, 61, FALSE, 0, NNS_G2D_VRAM_TYPE_2DMAIN, 1, HEAP_ID_FIELD2);
     startMenu->gfxResObj[GF_GFX_RES_TYPE_CELL] = AddCellOrAnimResObjFromNarc(startMenu->gfxResMan[GF_GFX_RES_TYPE_CELL], NARC_a_0_1_4, 62, TRUE, 0, GF_GFX_RES_TYPE_CELL, HEAP_ID_FIELD2);
     startMenu->gfxResObj[GF_GFX_RES_TYPE_ANIM] = AddCellOrAnimResObjFromNarc(startMenu->gfxResMan[GF_GFX_RES_TYPE_ANIM], NARC_a_0_1_4, 63, TRUE, 0, GF_GFX_RES_TYPE_ANIM, HEAP_ID_FIELD2);
-    sub_0200ADA4(startMenu->gfxResObj[GF_GFX_RES_TYPE_CHAR]);
-    sub_0200B00C(startMenu->gfxResObj[GF_GFX_RES_TYPE_PLTT]);
+    SpriteTransfer_CreateCharTransferTask_AllocAtEnd(startMenu->gfxResObj[GF_GFX_RES_TYPE_CHAR]);
+    SpriteTransfer_CreatePlttTransferTask(startMenu->gfxResObj[GF_GFX_RES_TYPE_PLTT]);
     sub_0200A740(startMenu->gfxResObj[GF_GFX_RES_TYPE_PLTT]);
     CreateSpriteResourcesHeader(&startMenu->spriteResourcesHeader, 0, 0, 0, 0, -1, -1, 0, 0, startMenu->gfxResMan[GF_GFX_RES_TYPE_CHAR], startMenu->gfxResMan[GF_GFX_RES_TYPE_PLTT], startMenu->gfxResMan[GF_GFX_RES_TYPE_CELL], startMenu->gfxResMan[GF_GFX_RES_TYPE_ANIM], NULL, NULL);
 
@@ -694,8 +694,8 @@ static void StartMenu_CreateCursor(StartMenuTaskData *startMenu, u8 *a1, u32 a2,
 }
 
 static void StartMenu_DestroyCursor(StartMenuTaskData *startMenu) {
-    sub_0200AEB0(startMenu->gfxResObj[GF_GFX_RES_TYPE_CHAR]);
-    sub_0200B0A8(startMenu->gfxResObj[GF_GFX_RES_TYPE_PLTT]);
+    SpriteTransfer_DeleteCharTransferTask(startMenu->gfxResObj[GF_GFX_RES_TYPE_CHAR]);
+    SpriteTransfer_DeletePlttTransferTask(startMenu->gfxResObj[GF_GFX_RES_TYPE_PLTT]);
     for (u16 i = 0; i < 4; ++i) {
         Destroy2DGfxResObjMan(startMenu->gfxResMan[i]);
     }

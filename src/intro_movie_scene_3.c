@@ -7,8 +7,8 @@
 #include "intro_movie_internal.h"
 #include "obj_char_transfer.h"
 #include "obj_pltt_transfer.h"
+#include "sprite_transfer.h"
 #include "system.h"
-#include "unk_0200ACF0.h"
 #include "unk_0200B150.h"
 #include "unk_0200FA24.h"
 #include "unk_02026E30.h"
@@ -576,8 +576,8 @@ static void IntroMovie_Scene3_LoadOBJGraphics(IntroMovieOverlayData *data, Intro
     sceneData->spriteResObjs[1][GF_GFX_RES_TYPE_ANIM] = AddCellOrAnimResObjFromNarc(resMen[GF_GFX_RES_TYPE_ANIM], NARC_demo_opening_gs_opening, NARC_gs_opening_gs_opening_00000071_NANR_lz, TRUE, 3, GF_GFX_RES_TYPE_ANIM, HEAP_ID_INTRO_MOVIE);
 
     for (u8 i = 0; i < 2; ++i) {
-        sub_0200ACF0(sceneData->spriteResObjs[i][GF_GFX_RES_TYPE_CHAR]);
-        sub_0200AF94(sceneData->spriteResObjs[i][GF_GFX_RES_TYPE_PLTT]);
+        SpriteTransfer_CreateCharTransferTask(sceneData->spriteResObjs[i][GF_GFX_RES_TYPE_CHAR]);
+        SpriteTransfer_CreateExtPlttTransferTask(sceneData->spriteResObjs[i][GF_GFX_RES_TYPE_PLTT]);
     }
 
     GfGfx_EngineBTogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
@@ -591,8 +591,8 @@ static void IntroMovie_Scene3_UnloadOBJGraphics(IntroMovieOverlayData *data, Int
     Sprite_Delete(sceneData->unownSprites[2]);
 
     for (u8 i = 0; i < 2; ++i) {
-        sub_0200AEB0(sceneData->spriteResObjs[i][GF_GFX_RES_TYPE_CHAR]);
-        sub_0200B0A8(sceneData->spriteResObjs[i][GF_GFX_RES_TYPE_PLTT]);
+        SpriteTransfer_DeleteCharTransferTask(sceneData->spriteResObjs[i][GF_GFX_RES_TYPE_CHAR]);
+        SpriteTransfer_DeletePlttTransferTask(sceneData->spriteResObjs[i][GF_GFX_RES_TYPE_PLTT]);
     }
     IntroMovie_DestroySpriteResourceManagers(data);
 }
