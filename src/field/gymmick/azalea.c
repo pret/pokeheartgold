@@ -9,9 +9,9 @@
 #include "unk_02005D10.h"
 
 typedef struct AzaleaGymmickSpinarakRoute {
-    u16 unk_0;
-    u16 unk_2;
-    const u16 (*unk_4)[2];
+    u16 length;
+    u16 destination;
+    const u16 (*route)[2];
 } AzaleaGymmickSpinarakRoute;
 
 typedef struct AzaleaGymmickLocalData {
@@ -48,23 +48,201 @@ void ov04_022546C8(const VecFx32 *a0, BOOL *a1);
 int ov04_022546E8(int a0, int a1, int a2, int a3);
 BOOL ov04_02254CA4(TaskManager *taskman);
 
-// static const u16 ov04_022575D4[][2] = {
-//     { 3,  31 },
-//     { 9,  31 },
-//     { 15, 31 },
-//     { 3,  24 },
-//     { 9,  24 },
-//     { 15, 24 },
-//     { 3,  16 },
-//     { 9,  16 },
-//     { 15, 16 },
-//     { 3,  9  },
-//     { 9,  9  },
-//     { 15, 9  },
-// };
-extern const u16 ov04_022575D4[][2];
+static const u16 ov04_02257404[][2] = {
+    { 3,  31 },
+    { 3,  29 },
+    { 9,  29 },
+    { 9,  27 },
+    { 15, 28 },
+    { 15, 25 },
+    { 9,  25 },
+    { 9,  24 },
+};
 
-extern const AzaleaGymmickSpinarakRoute *const ov04_022575A4[];
+static const u16 ov04_02257584[][2] = {
+    { 9,  31 },
+    { 9,  29 },
+    { 3,  29 },
+    { 3,  27 },
+    { 9,  26 },
+    { 9,  25 },
+    { 15, 25 },
+    { 15, 24 },
+};
+
+static const u16 ov04_0225737C[][2] = {
+    { 15, 31 },
+    { 15, 28 },
+    { 9,  27 },
+    { 9,  26 },
+    { 3,  27 },
+    { 3,  24 },
+};
+
+static const u16 ov04_02257394[][2] = {
+    { 3, 16 },
+    { 3, 12 },
+    { 9, 13 },
+    { 9, 10 },
+    { 3, 10 },
+    { 3, 9  },
+};
+
+static const u16 ov04_0225736C[][2] = {
+    { 3, 16 },
+    { 3, 12 },
+    { 9, 13 },
+    { 9, 9  },
+};
+
+static const u16 ov04_02257504[][2] = {
+    { 9,  16 },
+    { 9,  14 },
+    { 15, 14 },
+    { 15, 11 },
+    { 9,  12 },
+    { 9,  10 },
+    { 3,  10 },
+    { 3,  9  },
+};
+
+static const u16 ov04_0225735C[][2] = {
+    { 9,  16 },
+    { 9,  14 },
+    { 15, 14 },
+    { 15, 9  },
+};
+
+static const u16 ov04_022573AC[][2] = {
+    { 9,  16 },
+    { 9,  14 },
+    { 15, 14 },
+    { 15, 11 },
+    { 9,  12 },
+    { 9,  9  },
+};
+
+static const u16 ov04_022575D4[][2] = {
+    { 3,  31 },
+    { 9,  31 },
+    { 15, 31 },
+    { 3,  24 },
+    { 9,  24 },
+    { 15, 24 },
+    { 3,  16 },
+    { 9,  16 },
+    { 15, 16 },
+    { 3,  9  },
+    { 9,  9  },
+    { 15, 9  },
+};
+
+static const AzaleaGymmickSpinarakRoute ov04_02257484[] = {
+    { NELEMS(ov04_02257404), 4, ov04_02257404 },
+    { NELEMS(ov04_02257404), 4, ov04_02257404 },
+    { NELEMS(ov04_02257404), 4, ov04_02257404 },
+    { NELEMS(ov04_02257404), 4, ov04_02257404 },
+};
+
+static const AzaleaGymmickSpinarakRoute ov04_02257464[] = {
+    { NELEMS(ov04_02257584), 5, ov04_02257584 },
+    { NELEMS(ov04_02257584), 5, ov04_02257584 },
+    { NELEMS(ov04_02257584), 5, ov04_02257584 },
+    { NELEMS(ov04_02257584), 5, ov04_02257584 },
+};
+
+static const AzaleaGymmickSpinarakRoute ov04_02257444[] = {
+    { NELEMS(ov04_0225737C), 3, ov04_0225737C },
+    { NELEMS(ov04_0225737C), 3, ov04_0225737C },
+    { NELEMS(ov04_0225737C), 3, ov04_0225737C },
+    { NELEMS(ov04_0225737C), 3, ov04_0225737C },
+};
+
+static const AzaleaGymmickSpinarakRoute ov04_02257424[] = {
+    { NELEMS(ov04_0225737C), 2, ov04_0225737C },
+    { NELEMS(ov04_0225737C), 2, ov04_0225737C },
+    { NELEMS(ov04_0225737C), 2, ov04_0225737C },
+    { NELEMS(ov04_0225737C), 2, ov04_0225737C },
+};
+
+static const AzaleaGymmickSpinarakRoute ov04_022574A4[] = {
+    { NELEMS(ov04_02257404), 0, ov04_02257404 },
+    { NELEMS(ov04_02257404), 0, ov04_02257404 },
+    { NELEMS(ov04_02257404), 0, ov04_02257404 },
+    { NELEMS(ov04_02257404), 0, ov04_02257404 },
+};
+
+static const AzaleaGymmickSpinarakRoute ov04_022574C4[] = {
+    { NELEMS(ov04_02257584), 1, ov04_02257584 },
+    { NELEMS(ov04_02257584), 1, ov04_02257584 },
+    { NELEMS(ov04_02257584), 1, ov04_02257584 },
+    { NELEMS(ov04_02257584), 1, ov04_02257584 },
+};
+
+static const AzaleaGymmickSpinarakRoute ov04_02257524[] = {
+    { },
+    { NELEMS(ov04_02257394), 9, ov04_02257394 },
+    { },
+    { NELEMS(ov04_0225736C), 10, ov04_0225736C },
+};
+
+static const AzaleaGymmickSpinarakRoute ov04_02257544[] = {
+    { NELEMS(ov04_02257504), 9,  ov04_02257504 },
+    { NELEMS(ov04_0225735C), 11, ov04_0225735C },
+    { NELEMS(ov04_022573AC), 10, ov04_022573AC },
+    { NELEMS(ov04_0225735C), 11, ov04_0225735C },
+};
+
+static const AzaleaGymmickSpinarakRoute ov04_022573C4[] = {
+    { },
+    { },
+    { },
+    { },
+};
+
+static const AzaleaGymmickSpinarakRoute ov04_022573E4[] = {
+    { NELEMS(ov04_02257504), 7, ov04_02257504 },
+    { NELEMS(ov04_02257394), 6, ov04_02257394 },
+    { },
+    { },
+};
+
+static const AzaleaGymmickSpinarakRoute ov04_022574E4[] = {
+    { },
+    { },
+    { NELEMS(ov04_022573AC), 7, ov04_022573AC },
+    { NELEMS(ov04_0225736C), 6, ov04_0225736C },
+};
+
+static const AzaleaGymmickSpinarakRoute ov04_02257564[] = {
+    { },
+    { NELEMS(ov04_0225735C), 7, ov04_0225735C },
+    { },
+    { NELEMS(ov04_0225735C), 7, ov04_0225735C },
+};
+
+const AzaleaGymmickSpinarakRoute *const ov04_022575A4[] = {
+    ov04_02257484,
+    ov04_02257464,
+    ov04_02257444,
+    ov04_02257424,
+    ov04_022574A4,
+    ov04_022574C4,
+    ov04_02257524,
+    ov04_02257544,
+    ov04_022573C4,
+    ov04_022573E4,
+    ov04_022574E4,
+    ov04_02257564,
+};
+
+const VecFx32 ov04_02257350 = {
+    FX32_ONE, 0, 0
+};
+
+const VecFx32 ov04_02257344 = {
+    8 * FX32_ONE, 0, 8 * FX32_ONE
+};
 
 void GymmickInit_Azalea(FieldSystem *fieldSystem) {
     GymmickUnion *gymmickUnion = Save_Gymmick_AssertMagic_GetData(Save_GetGymmickPtr(FieldSystem_GetSaveData(fieldSystem)), GYMMICK_AZALEA);
@@ -184,7 +362,7 @@ void BeginAzaleaGymSpinarakRide(FieldSystem *fieldSystem, u8 spinarakNo) {
     case 10:
     case 11:
         localData->unk_19 = 1;
-        localData->unk_1A = ov04_022575A4[spinarakNo][localData->unk_15].unk_0 - 1;
+        localData->unk_1A = ov04_022575A4[spinarakNo][localData->unk_15].length - 1;
         localData->unk_1B = 1;
         break;
     default:
@@ -193,7 +371,7 @@ void BeginAzaleaGymSpinarakRide(FieldSystem *fieldSystem, u8 spinarakNo) {
         localData->unk_1B = 0;
         break;
     }
-    const u16 *ptr = ov04_022575A4[spinarakNo][localData->unk_15].unk_4[localData->unk_1A];
+    const u16 *ptr = ov04_022575A4[spinarakNo][localData->unk_15].route[localData->unk_1A];
     localData->unk_2C = ptr[0] * FX32_ONE * 16;
     localData->unk_34 = ptr[1] * FX32_ONE * 16;
     TaskManager_Call(fieldSystem->taskman, ov04_0225463C, rideData);
