@@ -342,10 +342,10 @@ static const GraphicsBanks ov44_02235548 = {
     .texpltt = GX_VRAM_TEXPLTT_NONE,
 };
 
-UnkStruct_ov44_0222DD64 ov44_02236668 = { .strno = 0x22, .value = 0x1D };
-UnkStruct_ov44_0222DD64 ov44_02236670 = { .strno = 0x29, .value = LIST_CANCEL };
-UnkStruct_ov44_0222DD64 ov44_02236678 = { .strno = 0x20, .value = 0x15 };
-UnkStruct_ov44_0222DD64 ov44_02236660 = { .strno = 0x1E, .value = 0x13 };
+UnkStruct_ov44_0222DD64 ov44_02236668 = { .strno = msg_0778_00034, .value = 29 };
+UnkStruct_ov44_0222DD64 ov44_02236670 = { .strno = msg_0778_00041, .value = LIST_CANCEL };
+UnkStruct_ov44_0222DD64 ov44_02236678 = { .strno = msg_0778_00032, .value = 21 };
+UnkStruct_ov44_0222DD64 ov44_02236660 = { .strno = msg_0778_00030, .value = 19 };
 
 func_type_02236680 ov44_02236680[7] = {
     ov44_02230300,
@@ -380,37 +380,37 @@ ListMenuTemplate ov44_022366FC = {
 };
 
 UnkStruct_ov44_0222DD64 ov44_0223669C[4] = {
-    { .strno = 0x47, .value = 0x17        },
-    { .strno = 0x47, .value = 0x19        },
-    { .strno = 0x47, .value = 0x1B        },
-    { .strno = 0x29, .value = LIST_CANCEL }
+    { .strno = msg_0778_00071, .value = 23          },
+    { .strno = msg_0778_00071, .value = 25          },
+    { .strno = msg_0778_00071, .value = 27          },
+    { .strno = msg_0778_00041, .value = LIST_CANCEL }
 };
 
 UnkStruct_ov44_0222DD64 ov44_022366BC[4] = {
-    { .strno = 0x5F, .value = 0x0B        },
-    { .strno = 0x60, .value = 0x09        },
-    { .strno = 0x61, .value = 0x0A        },
-    { .strno = 0x29, .value = LIST_CANCEL }
+    { .strno = msg_0778_00095, .value = 11          },
+    { .strno = msg_0778_00096, .value = 9           },
+    { .strno = msg_0778_00097, .value = 10          },
+    { .strno = msg_0778_00041, .value = LIST_CANCEL }
 };
 
 UnkStruct_ov44_0222DD64 ov44_022366DC[4] = {
-    { .strno = 0x62, .value = 0x0E        },
-    { .strno = 0x63, .value = 0x0C        },
-    { .strno = 0x64, .value = 0x0D        },
-    { .strno = 0x29, .value = LIST_CANCEL }
+    { .strno = msg_0778_00098, .value = 14          },
+    { .strno = msg_0778_00099, .value = 12          },
+    { .strno = msg_0778_00100, .value = 13          },
+    { .strno = msg_0778_00041, .value = LIST_CANCEL }
 };
 
 UnkStruct_ov44_0222DD64 ov44_0223671C[10] = {
-    { .strno = 0x5D, .value = 0  },
-    { .strno = 0x5E, .value = 1  },
-    { .strno = 0x1C, .value = 15 },
-    { .strno = 0x00, .value = 0  },
-    { .strno = 0x00, .value = 0  },
-    { .strno = 0x00, .value = 0  },
-    { .strno = 0x00, .value = 0  },
-    { .strno = 0x00, .value = 0  },
-    { .strno = 0x00, .value = 0  },
-    { .strno = 0x00, .value = 0  }
+    { .strno = msg_0778_00093, .value = 0  },
+    { .strno = msg_0778_00094, .value = 1  },
+    { .strno = msg_0778_00028, .value = 15 },
+    { .strno = 0,              .value = 0  },
+    { .strno = 0,              .value = 0  },
+    { .strno = 0,              .value = 0  },
+    { .strno = 0,              .value = 0  },
+    { .strno = 0,              .value = 0  },
+    { .strno = 0,              .value = 0  },
+    { .strno = 0,              .value = 0  }
 };
 
 func_type_0222A60C ov44_0223676C[72] = {
@@ -1362,7 +1362,7 @@ void ov44_0222B0B0(UnkStruct_ov44_022319EC *arg0) {
     FillWindowPixelBuffer(&arg0->unk2F0, 0);
 
     // Nintendo Wi-Fi Connection
-    ReadMsgDataIntoString(arg0->unk168, 21, arg0->unk178);
+    ReadMsgDataIntoString(arg0->unk168, msg_0778_00021, arg0->unk178);
     AddTextPrinterParameterizedWithColor(&arg0->unk2F0, 1, arg0->unk178, FontID_String_GetCenterAlignmentX(0, arg0->unk178, 0, 176), 0, 255, 0xF0E00, NULL);
     ScheduleWindowCopyToVram(&arg0->unk2F0);
 }
@@ -2841,7 +2841,7 @@ s32 ov44_0222D8B0(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
     }
     arg0->unk154 = ListMenuItems_New(listLen, HEAP_ID_53);
     for (s32 i = 0; i < listLen; i++) {
-        if (listMenuItems[i].strno != 71) {
+        if (listMenuItems[i].strno != msg_0778_00071) {
             ListMenuItems_AppendFromMsgData(arg0->unk154, arg0->unk168, listMenuItems[i].strno, listMenuItems[i].value);
         } else {
             BufferWiFiPlazaActivityName(arg0->unk164, 0, i);
@@ -3034,7 +3034,7 @@ s32 ov44_0222DD64(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
                 sp1C -= 1;
             } else if (temp_r4 == 16) {
                 if (val == 2) {
-                    ListMenuItems_AppendFromMsgData(arg0->unk154, arg0->unk168, 36, listMenuItems[i].value);
+                    ListMenuItems_AppendFromMsgData(arg0->unk154, arg0->unk168, msg_0778_00036, listMenuItems[i].value);
                 } else {
                     listMenuTemplate.maxShowed--;
                     listMenuTemplate.totalItems--;
@@ -4486,11 +4486,11 @@ void ov44_022307E0(UnkStruct_ov44_022319EC *arg0, enum HeapID heapID) {
     AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, 0, arg0->unk178, 8, 0, 255, MAKE_TEXT_COLOR(15, 14, 0), 0);
     ov44_02231084(arg0, arg0->unk178, 0, temp_r4);
     AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, 0, arg0->unk178, 8, 24, 255, MAKE_TEXT_COLOR(1, 2, 0), 0);
-    ov44_02231054(arg0, 65, 113, temp_r4, 120, 24);
+    ov44_02231054(arg0, msg_0778_00065, 113, temp_r4, 120, 24);
     // RECORD
     ReadMsgDataIntoString(arg0->unk168, msg_0778_00059, arg0->unk178);
     AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, 0, arg0->unk178, 8, 48, 255, MAKE_TEXT_COLOR(1, 2, 0), 0);
-    ov44_02231054(arg0, 65, 112, temp_r4, 120, 48);
+    ov44_02231054(arg0, msg_0778_00065, 112, temp_r4, 120, 48);
 }
 
 void ov44_022308B0(UnkStruct_ov44_022319EC *arg0, enum HeapID heapID) {
@@ -4508,13 +4508,13 @@ void ov44_022308B0(UnkStruct_ov44_022319EC *arg0, enum HeapID heapID) {
     AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, 0, arg0->unk178, width, 24, 255, MAKE_TEXT_COLOR(1, 2, 0), 0);
     ov44_02231084(arg0, arg0->unk178, 1, temp_r4);
     AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, 0, arg0->unk178, 8, 48, 255, MAKE_TEXT_COLOR(1, 2, 0), 0);
-    ov44_02231054(arg0, 65, 115, temp_r4, 104, 48);
-    ov44_02231054(arg0, 66, 117, temp_r4, 212, 48);
+    ov44_02231054(arg0, msg_0778_00065, 115, temp_r4, 104, 48);
+    ov44_02231054(arg0, msg_0778_00066, 117, temp_r4, 212, 48);
     // RECORD
     ReadMsgDataIntoString(arg0->unk168, msg_0778_00059, arg0->unk178);
     AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, 0, arg0->unk178, 8, 64, 255, MAKE_TEXT_COLOR(1, 2, 0), 0);
-    ov44_02231054(arg0, 65, 114, temp_r4, 104, 64);
-    ov44_02231054(arg0, 66, 116, temp_r4, 212, 64);
+    ov44_02231054(arg0, msg_0778_00065, 114, temp_r4, 104, 64);
+    ov44_02231054(arg0, msg_0778_00066, 116, temp_r4, 212, 64);
     // OPEN LEVEL
     ReadMsgDataIntoString(arg0->unk168, msg_0778_00061, arg0->unk178);
     AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, 0, arg0->unk178, 8, 88, 255, MAKE_TEXT_COLOR(1, 2, 0), 0);
@@ -4525,13 +4525,13 @@ void ov44_022308B0(UnkStruct_ov44_022319EC *arg0, enum HeapID heapID) {
     AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, 0, arg0->unk178, width, 88, 255, MAKE_TEXT_COLOR(1, 2, 0), 0);
     ov44_02231084(arg0, arg0->unk178, 2, temp_r4);
     AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, 0, arg0->unk178, 8, 112, 255, MAKE_TEXT_COLOR(1, 2, 0), 0);
-    ov44_02231054(arg0, 65, 119, temp_r4, 104, 112);
-    ov44_02231054(arg0, 66, 121, temp_r4, 212, 112);
+    ov44_02231054(arg0, msg_0778_00065, 119, temp_r4, 104, 112);
+    ov44_02231054(arg0, msg_0778_00066, 121, temp_r4, 212, 112);
     // RECORD
     ReadMsgDataIntoString(arg0->unk168, msg_0778_00059, arg0->unk178);
     AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, 0, arg0->unk178, 8, 128, 255, MAKE_TEXT_COLOR(1, 2, 0), 0);
-    ov44_02231054(arg0, 65, 118, temp_r4, 104, 128);
-    ov44_02231054(arg0, 66, 120, temp_r4, 212, 128);
+    ov44_02231054(arg0, msg_0778_00065, 118, temp_r4, 104, 128);
+    ov44_02231054(arg0, msg_0778_00066, 120, temp_r4, 212, 128);
 }
 
 void ov44_02230B2C(UnkStruct_ov44_022319EC *arg0, enum HeapID heapID) {
@@ -4546,13 +4546,13 @@ void ov44_02230B2C(UnkStruct_ov44_022319EC *arg0, enum HeapID heapID) {
     AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, 0, arg0->unk178, width, 24, 255, MAKE_TEXT_COLOR(1, 2, 0), 0);
     ov44_02231084(arg0, arg0->unk178, 3, temp_r4);
     AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, 0, arg0->unk178, 8, 48, 255, MAKE_TEXT_COLOR(1, 2, 0), 0);
-    ov44_02231054(arg0, 68, 135, temp_r4, 104, 48);
-    ov44_02231054(arg0, 67, 136, temp_r4, 212, 48);
+    ov44_02231054(arg0, msg_0778_00068, 135, temp_r4, 104, 48);
+    ov44_02231054(arg0, msg_0778_00067, 136, temp_r4, 212, 48);
     // RECORD
     ReadMsgDataIntoString(arg0->unk168, msg_0778_00059, arg0->unk178);
     AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, 0, arg0->unk178, 8, 80, 255, MAKE_TEXT_COLOR(1, 2, 0), 0);
-    ov44_02231054(arg0, 68, 134, temp_r4, 104, 80);
-    ov44_02231054(arg0, 67, 138, temp_r4, 212, 80);
+    ov44_02231054(arg0, msg_0778_00068, 134, temp_r4, 104, 80);
+    ov44_02231054(arg0, msg_0778_00067, 138, temp_r4, 212, 80);
 }
 
 void ov44_02230C68(UnkStruct_ov44_022319EC *arg0, enum HeapID arg1) {
@@ -4567,11 +4567,11 @@ void ov44_02230C68(UnkStruct_ov44_022319EC *arg0, enum HeapID arg1) {
     String_Delete(temp_r0);
     ov44_02231084(arg0, arg0->unk178, 4, temp_r4);
     AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, 0, arg0->unk178, 8, 48, 255, MAKE_TEXT_COLOR(1, 2, 0), 0);
-    ov44_02231054(arg0, 65, 123, temp_r4, 108, 48);
+    ov44_02231054(arg0, msg_0778_00065, 123, temp_r4, 108, 48);
     // RECORD
     ReadMsgDataIntoString(arg0->unk168, msg_0778_00059, arg0->unk178);
     AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, 0, arg0->unk178, 8, 80, 255, MAKE_TEXT_COLOR(1, 2, 0), 0);
-    ov44_02231054(arg0, 65, 122, temp_r4, 108, 80);
+    ov44_02231054(arg0, msg_0778_00065, 122, temp_r4, 108, 80);
 }
 
 void ov44_02230D8C(UnkStruct_ov44_022319EC *arg0, enum HeapID heapID) {
@@ -4581,11 +4581,11 @@ void ov44_02230D8C(UnkStruct_ov44_022319EC *arg0, enum HeapID heapID) {
     AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, 0, arg0->unk178, 8, 0, 255, MAKE_TEXT_COLOR(15, 14, 0), 0);
     ov44_02231084(arg0, arg0->unk178, 5, temp_r4);
     AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, 0, arg0->unk178, 8, 24, 255, MAKE_TEXT_COLOR(1, 2, 0), 0);
-    ov44_02231054(arg0, 69, 143, temp_r4, 112, 24);
+    ov44_02231054(arg0, msg_0778_00069, 143, temp_r4, 112, 24);
     // RECORD
     ReadMsgDataIntoString(arg0->unk168, msg_0778_00059, arg0->unk178);
     AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, 0, arg0->unk178, 8, 48, 255, MAKE_TEXT_COLOR(1, 2, 0), 0);
-    ov44_02231054(arg0, 69, 142, temp_r4, 112, 48);
+    ov44_02231054(arg0, msg_0778_00069, 142, temp_r4, 112, 48);
 }
 
 void ov44_02230E5C(UnkStruct_ov44_022319EC *arg0, enum HeapID heapID) {
@@ -4669,7 +4669,7 @@ s32 ov44_0223120C(u32 arg0, u32 *color) {
     s32 ret = 0;
     switch (arg0) {
     case 1:
-        ret = 36;
+        ret = msg_0778_00036;
         *color = MAKE_TEXT_COLOR(2, 14, 0);
         break;
     case 2:
@@ -4678,61 +4678,61 @@ s32 ov44_0223120C(u32 arg0, u32 *color) {
     case 5:
     case 6:
     case 7:
-        ret = 27;
+        ret = msg_0778_00027;
         *color = MAKE_TEXT_COLOR(2, 14, 0);
         break;
     case 9:
-        ret = 96;
+        ret = msg_0778_00096;
         break;
     case 10:
-        ret = 97;
+        ret = msg_0778_00097;
         break;
     case 11:
-        ret = 95;
+        ret = msg_0778_00095;
         break;
     case 12:
-        ret = 99;
+        ret = msg_0778_00099;
         break;
     case 13:
-        ret = 100;
+        ret = msg_0778_00100;
         break;
     case 14:
-        ret = 98;
+        ret = msg_0778_00098;
         break;
     case 8:
-        ret = 29;
+        ret = msg_0778_00029;
         *color = MAKE_TEXT_COLOR(2, 14, 0);
         break;
     case 15:
-        ret = 28;
+        ret = msg_0778_00028;
         break;
     case 18:
     case 19:
-        ret = 92;
+        ret = msg_0778_00092;
         break;
     case 20:
-        ret = 33;
+        ret = msg_0778_00033;
         *color = MAKE_TEXT_COLOR(2, 14, 0);
         break;
     case 21:
-        ret = 32;
+        ret = msg_0778_00032;
         break;
     case 22:
     case 24:
     case 26:
-        ret = 35;
+        ret = msg_0778_00035;
         *color = MAKE_TEXT_COLOR(2, 14, 0);
         break;
     case 23:
     case 25:
     case 27:
-        ret = 34;
+        ret = msg_0778_00034;
         break;
     case 16:
-        ret = 79;
+        ret = msg_0778_00079;
         break;
     default:
-        ret = 92;
+        ret = msg_0778_00092;
     }
     return ret;
 }

@@ -748,8 +748,8 @@ void CallTask_020508B8(TaskManager *taskManager, void *param1, u32 battleType) {
     TaskManager_Call(taskManager, Task_020508B8, encounter);
 }
 
-static u32 sub_02051474(LinkBattleRuleset *param0, u32 battleType) {
-    int var = sub_02029264(param0);
+static u32 sub_02051474(LinkBattleRuleset *ruleset, u32 battleType) {
+    int var = sub_02029264(ruleset);
     u32 mode;
 
     if (battleType & BATTLE_TYPE_MULTI) {

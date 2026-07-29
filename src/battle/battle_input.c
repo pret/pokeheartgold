@@ -1175,16 +1175,16 @@ ALIGN(4)
 static const TouchscreenHitbox ov12_0226E24C[] = {
     {
      .rect = {
-            .top = 0xd,
-            .bottom = 0x14,
+            .top = 13,
+            .bottom = 20,
             .left = 0,
             .right = 31,
         },
      },
     {
      .rect = {
-            .top = 0x4,
-            .bottom = 0xb,
+            .top = 4,
+            .bottom = 11,
             .left = 0,
             .right = 31,
         },
