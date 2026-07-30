@@ -107,7 +107,7 @@ static void ov01_021E66D8(void);
 static void ov01_021E66DC(void);
 static void ov01_021E66E0(void);
 
-static void fieldmap(void *fsys) {
+static void FieldMap_VBlankCallback(void *fsys) {
     FieldSystem *fieldSystem = fsys;
     DoScheduledBgGpuUpdates(fieldSystem->bgConfig);
     GF_RunVramTransferTasks();
@@ -758,7 +758,7 @@ static void ov01_021E6580(FieldSystem *fieldSystem) {
     
     FieldTextureManager_LoadTexture(fieldSystem->unk4->textureManager, AreaDataManager_GetMapTexture(fieldSystem->areaDataManager));
     Gymmick_Init(fieldSystem);
-    Main_SetVBlankIntrCB(fieldmap, fieldSystem);
+    Main_SetVBlankIntrCB(FieldMap_VBlankCallback, fieldSystem);
 }
 
 static BOOL ov01_021E662C(void) {
