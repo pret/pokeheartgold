@@ -97,7 +97,7 @@ static void stepCamera(Camera *camera, struct CameraTranslationPathTemplate *fir
 }
 
 static void stepAngleX(Camera *camera, const u16 *first, const u16 *last, u8 step, u8 duration) {
-    CameraAngle cameraAngle = {};
+    CameraAngle cameraAngle = { };
     u16 diff;
     int scaled;
     if (*last >= *first) {

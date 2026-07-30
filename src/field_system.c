@@ -2,11 +2,12 @@
 
 #include "constants/maps.h"
 
+#include "field/field_control.h"
+
 #include "field_warp_tasks.h"
 #include "main.h"
 #include "map_events.h"
 #include "math_util.h"
-#include "field/field_control.h"
 #include "overlay_01_021F1AFC.h"
 #include "overlay_01_021F3D38.h"
 #include "overlay_01_021F6830.h"

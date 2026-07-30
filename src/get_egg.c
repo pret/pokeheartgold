@@ -304,7 +304,7 @@ static void InheritIVs(Pokemon *egg, Daycare *dayCare) {
     for (i = STAT_HP; i < NUM_STATS; i++) {
         statList[i] = i;
     }
-    
+
     if (Daycare_TryGetForcedInheritedIV(dayCare, &powerItemStat, &daycareSlot)) {
         statsToInherit[0] = powerItemStat;
         startNum = 1;

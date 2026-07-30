@@ -1,3 +1,5 @@
+#include "script.h"
+
 #ifdef _IN_SCRCMD_C
 BOOL ScrCmd_Nop(ScriptContext *ctx);
 BOOL ScrCmd_Dummy(ScriptContext *ctx);
@@ -55,7 +57,7 @@ BOOL ScrCmd_OpenMsg(ScriptContext *ctx);
 BOOL ScrCmd_CloseMsg(ScriptContext *ctx);
 BOOL ScrCmd_HoldMsg(ScriptContext *ctx);
 BOOL ScrCmd_DirectionSignpost(ScriptContext *ctx);
-BOOL ScrCmd_055(ScriptContext *ctx);
+BOOL ScrCmd_056(ScriptContext *ctx);
 BOOL ScrCmd_057(ScriptContext *ctx);
 BOOL ScrCmd_058(ScriptContext *ctx);
 BOOL ScrCmd_TrainerTips(ScriptContext *ctx);
@@ -910,7 +912,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_CloseMsg,
     ScrCmd_HoldMsg,
     ScrCmd_DirectionSignpost,
-    ScrCmd_055,
+    ScrCmd_056,
     ScrCmd_057,
     ScrCmd_058,
     ScrCmd_TrainerTips,

@@ -1,5 +1,5 @@
 #include "overlay_42.h"
-#include "unk_0200ACF0.h"
+#include "sprite_transfer.h"
 
 const u8 _02229AF8[4] = { 0, 0, 1, 1 };
 const u8 ov42_02229AFC[8] = { 0, 1, 149, 150, 151, 152, 0, 0 };
@@ -25,7 +25,7 @@ UnkStruct_ov42_02227060 *ov42_02227060(SpriteList *arg0, PaletteData *arg1, s32 
         temp_r0->unk22F0[i] = Create2DGfxResObjMan(154, (GfGfxResType)i, heapID);
     }
     for (i = 0; i < 2; i++) {
-        temp_r0->unk22F8[i] = Create2DGfxResObjMan(23, (GfGfxResType)(i + 2), heapID);
+        temp_r0->unk22F0[i + 2] = Create2DGfxResObjMan(23, (GfGfxResType)(i + 2), heapID);
     }
     for (i = 0; i < 3; i++) {
         ov42_02227570(temp_r0, i, heapID);
@@ -140,8 +140,8 @@ UnkStruct_ov42_02227114 *ov42_022272BC(UnkStruct_ov42_02227060 *arg0, s16 *arg1,
     temp_r4->unk14 = 0;
     temp_r4->unk10 = 1;
     temp_r4->unk0 = &arg0->unk10[r0].unk0;
-    if (ov42_02227B5C(&arg0->unk22B8) != 0) {
-        __builtin__clear(&spriteTemplate, sizeof(SpriteTemplate));
+    if (ov42_02227B5C(arg0->unk22B8) != 0) {
+        memset(&spriteTemplate, 0, sizeof(SpriteTemplate));
         spriteTemplate.spriteList = arg0->unk0;
         spriteTemplate.header = &arg0->unk22C8;
         spriteTemplate.position.x = arg1[0] << FX32_SHIFT;
@@ -172,7 +172,7 @@ void ov42_0222740C(UnkStruct_ov42_02227114 *arg0) {
         Sprite_Delete(arg0->unk8);
     }
     Sprite_Delete(arg0->unk4);
-    __builtin__clear(arg0, sizeof(UnkStruct_ov42_02227114));
+    memset(arg0, 0, sizeof(UnkStruct_ov42_02227114));
 }
 
 Sprite *ov42_02227430(UnkStruct_ov42_02227114 *arg0) {
@@ -342,10 +342,10 @@ void ov42_02227720(UnkStruct_ov42_02227060 *arg0, s32 arg1, s32 arg2, s32 arg3, 
             charData->szByte = 6144;
         }
     }
-    if (sub_0200AE18(arg0->unk10[arg1].unk4) == 0) {
+    if (SpriteTransfer_CreateCharTransferTask_UpdateMappingTypeFromHW_AllocAtEnd(arg0->unk10[arg1].unk4) == 0) {
         GF_ASSERT(FALSE);
     }
-    if (sub_0200B00C(arg0->unk10[arg1].unk8) == 0) {
+    if (SpriteTransfer_CreatePlttTransferTask(arg0->unk10[arg1].unk8) == 0) {
         GF_ASSERT(FALSE);
     }
     if (arg0->unk4 != 0) {
@@ -368,7 +368,7 @@ void ov42_02227874(UnkStruct_ov42_02227060 *arg0, s32 arg1, s32 arg2, s32 arg3, 
     } else if (arg3 == 1) {
         GF2DGfxResObj_GetCharDataPtr(arg0->unk10[arg1].unk4)->szByte = 5120;
     }
-    GF_ASSERT(sub_0200AE18(arg0->unk10[arg1].unk4));
+    GF_ASSERT(SpriteTransfer_CreateCharTransferTask_UpdateMappingTypeFromHW_AllocAtEnd(arg0->unk10[arg1].unk4));
     sub_0200A740(arg0->unk10[arg1].unk4);
     arg0->unk10[arg1].unk8 = NULL;
     arg0->unk10[arg1].unkC = arg2;
@@ -387,8 +387,8 @@ void ov42_02227948(UnkStruct_ov42_02227060 *arg0, s32 arg1) {
 }
 
 void ov42_0222797C(UnkStruct_ov42_02227060 *arg0, s32 arg1) {
-    sub_0200AEB0(arg0->unk10[arg1].unk4);
-    sub_0200B0A8(arg0->unk10[arg1].unk8);
+    SpriteTransfer_DeleteCharTransferTask(arg0->unk10[arg1].unk4);
+    SpriteTransfer_DeletePlttTransferTask(arg0->unk10[arg1].unk8);
     DestroySingle2DGfxResObj(arg0->unk22F0[0], arg0->unk10[arg1].unk4);
     DestroySingle2DGfxResObj(arg0->unk22F0[1], arg0->unk10[arg1].unk8);
     arg0->unk10[arg1].unk4 = NULL;
@@ -396,7 +396,7 @@ void ov42_0222797C(UnkStruct_ov42_02227060 *arg0, s32 arg1) {
 }
 
 void ov42_022279C0(UnkStruct_ov42_02227060 *arg0, s32 arg1) {
-    sub_0200AEB0(arg0->unk10[arg1].unk4);
+    SpriteTransfer_DeleteCharTransferTask(arg0->unk10[arg1].unk4);
     DestroySingle2DGfxResObj(arg0->unk22F0[0], arg0->unk10[arg1].unk4);
     arg0->unk10[arg1].unk4 = NULL;
 }
@@ -409,7 +409,7 @@ BOOL ov42_022279E8(UnkStruct_ov42_02227060 *arg0, s32 arg1) {
 }
 
 void ov42_022279FC(UnkStruct_ov42_02227060 *arg0, s32 arg1, enum HeapID heapID) {
-    GF_ASSERT(!arg0->unk22B8);
+    GF_ASSERT(arg0->unk22B8[0] == NULL);
     int i = 0;
     s32 sp34 = 0;
     s32 sp30;
@@ -422,39 +422,36 @@ void ov42_022279FC(UnkStruct_ov42_02227060 *arg0, s32 arg1, enum HeapID heapID) 
     }
     GF_ASSERT(sp34 == 1);
     for (i = 0; i < 2; i++) {
-        arg0->unk22C0[i] = AddCellOrAnimResObjFromOpenNarc(arg0->unk22F8[i], arg0->unk2304, i, 0, 288, (GfGfxResType)(i + 2), heapID);
+        arg0->unk22B8[i + 2] = AddCellOrAnimResObjFromOpenNarc(arg0->unk22F0[i + 2], arg0->unk2304, i, 0, 288, (GfGfxResType)(i + 2), heapID);
     }
-    arg0->unk22B8 = AddCharResObjFromOpenNarc(arg0->unk22F0[0], arg0->unk2304, 2, 0, 288, arg1, heapID);
-    if (sub_0200AE18(arg0->unk22B8) == 0) {
+    arg0->unk22B8[0] = AddCharResObjFromOpenNarc(arg0->unk22F0[0], arg0->unk2304, 2, 0, 288, arg1, heapID);
+    if (SpriteTransfer_CreateCharTransferTask_UpdateMappingTypeFromHW_AllocAtEnd(arg0->unk22B8[0]) == 0) {
         GF_ASSERT(FALSE);
     }
-    sub_0200A740(arg0->unk22B8);
+    sub_0200A740(arg0->unk22B8[0]);
     CreateSpriteResourcesHeader(&arg0->unk22C8, 288, sp30 + 512, 288, 288, -1, -1, 0, 0, arg0->unk22F0[0], arg0->unk22F0[1], arg0->unk22F0[2], arg0->unk22F0[3], 0, 0);
 }
 
 void ov42_02227B04(UnkStruct_ov42_02227060 *arg0) {
-    if (ov42_02227B5C(&arg0->unk22B8) == 1) {
-        sub_0200AEB0(arg0->unk22B8);
-        DestroySingle2DGfxResObj(arg0->unk22F0[0], arg0->unk22B8);
-        arg0->unk22B8 = NULL;
+    if (ov42_02227B5C(arg0->unk22B8) == 1) {
+        SpriteTransfer_DeleteCharTransferTask(arg0->unk22B8[0]);
+        DestroySingle2DGfxResObj(arg0->unk22F0[0], arg0->unk22B8[0]);
+        arg0->unk22B8[0] = NULL;
         for (int i = 0; i < 2; i++) {
-            DestroySingle2DGfxResObj(arg0->unk22F8[i], arg0->unk22C0[i]);
-            arg0->unk22C0[i] = NULL;
+            DestroySingle2DGfxResObj(arg0->unk22F0[i + 2], arg0->unk22B8[i + 2]);
+            arg0->unk22B8[i + 2] = NULL;
         }
     }
 }
 
-s32 ov42_02227B5C(SpriteResource **arg0) {
-    if (*arg0 != 0) {
-        return 1;
-    }
-    return 0;
+BOOL ov42_02227B5C(SpriteResource **arg0) {
+    return arg0[0] != NULL;
 }
 
 void ov42_02227B6C(UnkStruct_ov42_02227060 *arg0, s32 arg1, enum HeapID heapID) {
     GF_ASSERT(!arg0->unk2300);
     arg0->unk2300 = AddPlttResObjFromOpenNarc(arg0->unk22F0[1], arg0->unk2308, 0, 0, 1026, arg1, 8, heapID);
-    GF_ASSERT(sub_0200B00C(arg0->unk2300));
+    GF_ASSERT(SpriteTransfer_CreatePlttTransferTask(arg0->unk2300));
     if (arg0->unk4 != 0) {
         ov42_02227E78(arg0, arg0->unk2300, 8);
     }
@@ -463,7 +460,7 @@ void ov42_02227B6C(UnkStruct_ov42_02227060 *arg0, s32 arg1, enum HeapID heapID) 
 
 void ov42_02227BE0(UnkStruct_ov42_02227060 *arg0) {
     GF_ASSERT(arg0->unk2300);
-    sub_0200B0A8(arg0->unk2300);
+    SpriteTransfer_DeletePlttTransferTask(arg0->unk2300);
     DestroySingle2DGfxResObj(arg0->unk22F0[1], arg0->unk2300);
     arg0->unk2300 = NULL;
 }
@@ -471,16 +468,16 @@ void ov42_02227BE0(UnkStruct_ov42_02227060 *arg0) {
 void ov42_02227C18(UnkStruct_ov42_02227060 *arg0, enum HeapID heapID) {
     GF_ASSERT(!arg0->unk21B8[0].unk0);
     for (int i = 0; i < 16; i++) {
-        arg0->unk21B8[i].unk0 = AddCellOrAnimResObjFromOpenNarc(arg0->unk22F8[0], arg0->unk2308, 17 + (i * 2), 0, i + 384, GF_GFX_RES_TYPE_CELL, heapID);
-        arg0->unk21B8[i].unk4 = AddCellOrAnimResObjFromOpenNarc(arg0->unk22F8[1], arg0->unk2308, 18 + (i * 2), 0, i + 384, GF_GFX_RES_TYPE_ANIM, heapID);
+        arg0->unk21B8[i].unk0 = AddCellOrAnimResObjFromOpenNarc(arg0->unk22F0[2], arg0->unk2308, 17 + (i * 2), 0, i + 384, GF_GFX_RES_TYPE_CELL, heapID);
+        arg0->unk21B8[i].unk4 = AddCellOrAnimResObjFromOpenNarc(arg0->unk22F0[3], arg0->unk2308, 18 + (i * 2), 0, i + 384, GF_GFX_RES_TYPE_ANIM, heapID);
     }
 }
 
 void ov42_02227CA8(UnkStruct_ov42_02227060 *arg0) {
     GF_ASSERT(arg0->unk21B8[0].unk0);
     for (int i = 0; i < 16; i++) {
-        DestroySingle2DGfxResObj(arg0->unk22F8[0], arg0->unk21B8[i].unk0);
-        DestroySingle2DGfxResObj(arg0->unk22F8[1], arg0->unk21B8[i].unk4);
+        DestroySingle2DGfxResObj(arg0->unk22F0[2], arg0->unk21B8[i].unk0);
+        DestroySingle2DGfxResObj(arg0->unk22F0[3], arg0->unk21B8[i].unk4);
         arg0->unk21B8[i].unk0 = NULL;
         arg0->unk21B8[i].unk4 = NULL;
     }

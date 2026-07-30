@@ -1,4 +1,3 @@
-#include "global.h"
 
 #include "constants/sndseq.h"
 
@@ -16,6 +15,7 @@
 #include "overlay_42.h"
 #include "overlay_44.h"
 #include "overlay_manager.h"
+#include "poke_overlay.h"
 #include "sound_02004A44.h"
 #include "sprite.h"
 #include "text.h"
@@ -31,78 +31,164 @@
 #include "unk_020971F8.h"
 #include "vram_transfer_manager.h"
 
-// const u8 ov44_02236458[4] = {0x08, 0x00, 0x04, 0x0C};
-// const WindowTemplate ov44_0223645C = {2, 25, 13, 5, 4, 1, 57};
-// const func_type_022341C0 ov44_02236464[4] = {ov44_02234324, ov44_02234328, ov44_0223435C, ov44_02234388};
-// const GraphicsModes ov44_02236474 = {
-//     GX_DISPMODE_GRAPHICS,
-//     GX_BGMODE_0,
-//     GX_BGMODE_0,
-//     GX_BG0_AS_2D
-// };
-// const ObjCharTransferTemplate ov44_02236484 = {
-//     4,
-//     0x20000,
-//     0x4000,
-//     HEAP_ID_DEFAULT
-// };
-// const BgTemplate ov44_02236494 = {0, 0, 2048, 0, 1, 0, 26, 4, 0, 1, 0, 0, 0};
-// const BgTemplate ov44_022364B0 = {0, 0, 2048, 0, 1, 0, 28, 0, 0, 2, 0, 0, 0};
-// const BgTemplate ov44_022364CC = {0, 0, 2048, 0, 1, 0, 27, 2, 1, 0, 0, 0, 0};
+const u8 ov44_02236458[4] = { 0x08, 0x00, 0x04, 0x0C };
 
-// const GraphicsBanks ov44_022364E8 = {
-//     GX_VRAM_BG_128_A, GX_VRAM_BGEXTPLTT_NONE, GX_VRAM_SUB_BG_128_C,
-//     GX_VRAM_SUB_BGEXTPLTT_NONE, GX_VRAM_OBJ_128_B, GX_VRAM_OBJEXTPLTT_NONE,
-//     GX_VRAM_SUB_OBJ_16_I, GX_VRAM_SUB_OBJEXTPLTT_NONE, GX_VRAM_TEX_NONE, GX_VRAM_TEXPLTT_NONE};
+const WindowTemplate ov44_0223645C = {
+    .bgId = 2,
+    .left = 25,
+    .top = 13,
+    .width = 5,
+    .height = 4,
+    .palette = 1,
+    .baseTile = 57,
+};
 
-// const u16 ov44_02236510[4][6] = {
-//     { 208, 48, 0, 0, 1, 0 },
-//     { 232, 72, 1, 0, 2, 0 },
-//     { 208, 96, 2, 0, 0, 0 },
-//     { 184, 72, 3, 0, 3, 0 },
-// };
-// const func_type_02232F64 ov44_02236540[30] =
-//     {ov44_02234BF0, ov44_02234C10, Wifi_PromptAwaitingResponse, ov44_02234C88, ov44_02234CE8,
-//     ov44_02234D28, ov44_02234D4C, ov44_02234D88, Wifi_PromptAwaitingMembers,
-//     ov44_02234DE4, ov44_02234E08, ov44_02234EA4, ov44_02234EF4,
-//     ov44_02234F44, ov44_02234F60, ov44_02234F88, Wifi_PromptMemberDrop,
-//     ov44_02234FDC, Wifi_PromptToggleVoiceChat_, ov44_02235038, ov44_02235090,
-//     ov44_02235100, ov44_02235158, ov44_0223518C, ov44_022351BC,
-//     ov44_022351DC, ov44_02235218, ov44_02235268, ov44_0223532C,
-//     ov44_02235340};
+const func_type_022341C0 ov44_02236464[4] = { ov44_02234324, ov44_02234328, ov44_0223435C, ov44_02234388 };
 
-// const func_type_02232F64 ov44_022365B8[33] =
-//     {ov44_02234474, Wifi_PromptReadyMessage, ov44_022344C4, Wifi_PromptUserJoinRequest,
-//     ov44_022345C8, ov44_022345FC, Wifi_PromptInsufficientMembers, ov44_022346B4,
-//     Wifi_PromptConfirmMembers, ov44_022346E8, ov44_0223471C, ov44_02234764,
-//     ov44_0223479C, ov44_022347D4, ov44_022347FC, ov44_02234828,
-//     ov44_02234858, ov44_022348A8, ov44_022348C4, Wifi_PromptStopFindingMembers,
-//     ov44_02234904, ov44_02234944, Wifi_PromptDropAsLeader, ov44_022349B4,
-//     ov44_022349F4, Wifi_PromptCancelInvites, ov44_02234A68, ov44_02234AA8,
-//     Wifi_PromptMemberDropped, ov44_02234B18, Wifi_PromptToggleVoiceChat, ov44_02234B80,
-//     ov44_02234BB4};
+const ObjCharTransferTemplate ov44_02236484 = {
+    4,
+    0x20000,
+    0x4000,
+    HEAP_ID_DEFAULT
+};
+const GraphicsModes ov44_02236474 = {
+    GX_DISPMODE_GRAPHICS,
+    GX_BGMODE_0,
+    GX_BGMODE_0,
+    GX_BG0_AS_2D
+};
 
-// const u8 ov44_0223663C[20] = {5, 4, 3, 2, 1, 0, 0, 0, 0, 0, 1, 2, 3, 4, 5, 5, 5, 5, 0, 0};
+const BgTemplate ov44_022364B0 = {
+    .x = 0,
+    .y = 0,
+    .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
+    .baseTile = 0,
+    .size = GF_BG_SCR_SIZE_256x256,
+    .colorMode = GX_BG_COLORMODE_16,
+    .screenBase = GX_BG_SCRBASE_0xe000,
+    .charBase = GX_BG_CHARBASE_0x00000,
+    .bgExtPltt = GX_BG_EXTPLTT_01,
+    .priority = 2,
+    .areaOver = GX_BG_AREAOVER_XLU,
+    .dummy = 0,
+    .mosaic = 0,
+};
 
-// u8 ov44_0223689C[4] = {126, 127, 127, 127};
+const BgTemplate ov44_022364CC = {
+    .x = 0,
+    .y = 0,
+    .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
+    .baseTile = 0,
+    .size = GF_BG_SCR_SIZE_256x256,
+    .colorMode = GX_BG_COLORMODE_16,
+    .screenBase = GX_BG_SCRBASE_0xd800,
+    .charBase = GX_BG_CHARBASE_0x08000,
+    .bgExtPltt = GX_BG_EXTPLTT_23,
+    .priority = 0,
+    .areaOver = GX_BG_AREAOVER_XLU,
+    .dummy = 0,
+    .mosaic = 0,
+};
 
-extern const u8 ov44_02236458[];
-extern const WindowTemplate ov44_0223645C;
+const BgTemplate ov44_02236494 = {
+    .x = 0,
+    .y = 0,
+    .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
+    .baseTile = 0,
+    .size = GF_BG_SCR_SIZE_256x256,
+    .colorMode = GX_BG_COLORMODE_16,
+    .screenBase = GX_BG_SCRBASE_0xd000,
+    .charBase = GX_BG_CHARBASE_0x10000,
+    .bgExtPltt = GX_BG_EXTPLTT_01,
+    .priority = 1,
+    .areaOver = GX_BG_AREAOVER_XLU,
+    .dummy = 0,
+    .mosaic = 0,
+};
 
-extern const func_type_022341C0 ov44_02236464[];
-extern const GraphicsModes ov44_02236474;
-extern const ObjCharTransferTemplate ov44_02236484;
-extern const BgTemplate ov44_02236494;
-extern const BgTemplate ov44_022364B0;
-extern const BgTemplate ov44_022364CC;
-extern const GraphicsBanks ov44_022364E8;
-extern const UnkStruct_ov42_02122667 ov44_02236510[4];
+const GraphicsBanks ov44_022364E8 = {
+    GX_VRAM_BG_128_A, GX_VRAM_BGEXTPLTT_NONE, GX_VRAM_SUB_BG_128_C, GX_VRAM_SUB_BGEXTPLTT_NONE, GX_VRAM_OBJ_128_B, GX_VRAM_OBJEXTPLTT_NONE, GX_VRAM_SUB_OBJ_16_I, GX_VRAM_SUB_OBJEXTPLTT_NONE, GX_VRAM_TEX_NONE, GX_VRAM_TEXPLTT_NONE
+};
 
-extern const func_type_02232F64 ov44_02236540[];
-extern const func_type_02232F64 ov44_022365B8[];
-extern const u8 ov44_0223663C[];
+const UnkStruct_ov42_02122667 ov44_02236510[4] = {
+    { 208, 48, 0, 0, 1, 0 },
+    { 232, 72, 1, 0, 2, 0 },
+    { 208, 96, 2, 0, 0, 0 },
+    { 184, 72, 3, 0, 3, 0 },
+};
 
-extern u8 ov44_0223689C[];
+const func_type_02232F64 ov44_02236540[30] = {
+    ov44_02234BF0,
+    ov44_02234C10,
+    Wifi_PromptAwaitingResponse,
+    ov44_02234C88,
+    ov44_02234CE8,
+    ov44_02234D28,
+    ov44_02234D4C,
+    ov44_02234D88,
+    Wifi_PromptAwaitingMembers,
+    ov44_02234DE4,
+    ov44_02234E08,
+    ov44_02234EA4,
+    ov44_02234EF4,
+    ov44_02234F44,
+    ov44_02234F60,
+    ov44_02234F88,
+    Wifi_PromptMemberDrop,
+    ov44_02234FDC,
+    Wifi_PromptToggleVoiceChat_,
+    ov44_02235038,
+    ov44_02235090,
+    ov44_02235100,
+    ov44_02235158,
+    ov44_0223518C,
+    ov44_022351BC,
+    ov44_022351DC,
+    ov44_02235218,
+    ov44_02235268,
+    ov44_0223532C,
+    ov44_02235340,
+};
+
+const func_type_02232F64 ov44_022365B8[33] = {
+    ov44_02234474,
+    Wifi_PromptReadyMessage,
+    ov44_022344C4,
+    Wifi_PromptUserJoinRequest,
+    ov44_022345C8,
+    ov44_022345FC,
+    Wifi_PromptInsufficientMembers,
+    ov44_022346B4,
+    Wifi_PromptConfirmMembers,
+    ov44_022346E8,
+    ov44_0223471C,
+    ov44_02234764,
+    ov44_0223479C,
+    ov44_022347D4,
+    ov44_022347FC,
+    ov44_02234828,
+    ov44_02234858,
+    ov44_022348A8,
+    ov44_022348C4,
+    Wifi_PromptStopFindingMembers,
+    ov44_02234904,
+    ov44_02234944,
+    Wifi_PromptDropAsLeader,
+    ov44_022349B4,
+    ov44_022349F4,
+    Wifi_PromptCancelInvites,
+    ov44_02234A68,
+    ov44_02234AA8,
+    Wifi_PromptMemberDropped,
+    ov44_02234B18,
+    Wifi_PromptToggleVoiceChat,
+    ov44_02234B80,
+    ov44_02234BB4,
+};
+
+const u8 ov44_0223663C[20] = { 5, 4, 3, 2, 1, 0, 0, 0, 0, 0, 1, 2, 3, 4, 5, 5, 5, 5, 0, 0 };
+
+u8 ov44_0223689C[4] = { 126, 127, 127, 127 };
 
 FS_EXTERN_OVERLAY(OVY_42);
 
@@ -250,7 +336,7 @@ void ov44_02233160(UnkStruct_ov44_02235340 *arg0) {
 
 void ov44_0223317C(UnkStruct_ov44_02235340 *arg0, String *arg1) {
     if (arg0->unk4 != 1) {
-        __memcpy(arg0->unk20, arg1, 4);
+        memcpy(arg0->unk20, arg1, 4);
     }
 }
 
@@ -976,7 +1062,7 @@ void ov44_0223438C(UnkStruct_ov44_02235340 *arg0) {
         }
         if (sp0 == 1) {
             u8 sp4[4];
-            __memcpy(&sp4, arg0->unk20, 4);
+            memcpy(&sp4, arg0->unk20, 4);
             sub_02037030(24, &sp4, 4);
         }
     }

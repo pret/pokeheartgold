@@ -138,7 +138,7 @@ static const ManagedSpriteTemplate ov78_021E6880 = {
     .drawPriority = 0,
     .pal = 0xFFFF,
     .vram = NNS_G2D_VRAM_TYPE_2DBOTH,
-    .resIdList = {},
+    .resIdList = { },
     .bgPriority = 0,
     .vramTransfer = 0,
 };

@@ -449,7 +449,7 @@ _0678:
 	EndMovement
 
 scr_seq_D22R0101_001:
-	ScrCmd_055 2, 0
+	ScrCmd_056 2, 0
 	ScrCmd_057 3
 	ScrCmd_058
 	TrainerTips msg_0062_D22R0101_00022, VAR_SPECIAL_RESULT
@@ -457,7 +457,7 @@ scr_seq_D22R0101_001:
 	End
 
 scr_seq_D22R0101_002:
-	ScrCmd_055 3, 0
+	ScrCmd_056 3, 0
 	ScrCmd_057 3
 	ScrCmd_058
 	TrainerTips msg_0062_D22R0101_00023, VAR_SPECIAL_RESULT
@@ -465,7 +465,7 @@ scr_seq_D22R0101_002:
 	End
 
 scr_seq_D22R0101_003:
-	ScrCmd_055 3, 0
+	ScrCmd_056 3, 0
 	ScrCmd_057 3
 	ScrCmd_058
 	TrainerTips msg_0062_D22R0101_00024, VAR_SPECIAL_RESULT

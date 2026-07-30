@@ -141,7 +141,7 @@ scr_seq_R45_000:
 	End
 
 scr_seq_R45_004:
-	ScrCmd_055 2, 0
+	ScrCmd_056 2, 0
 	ScrCmd_057 3
 	ScrCmd_058
 	TrainerTips msg_0405_R45_00002, VAR_SPECIAL_RESULT

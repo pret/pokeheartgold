@@ -280,7 +280,7 @@ scr_seq_R42_002:
 	End
 
 scr_seq_R42_003:
-	ScrCmd_055 2, 0
+	ScrCmd_056 2, 0
 	ScrCmd_057 3
 	ScrCmd_058
 	TrainerTips msg_0399_R42_00001, VAR_SPECIAL_RESULT
@@ -288,7 +288,7 @@ scr_seq_R42_003:
 	End
 
 scr_seq_R42_004:
-	ScrCmd_055 2, 0
+	ScrCmd_056 2, 0
 	ScrCmd_057 3
 	ScrCmd_058
 	TrainerTips msg_0399_R42_00002, VAR_SPECIAL_RESULT

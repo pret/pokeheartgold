@@ -2,6 +2,7 @@
 #define POKEHEARTGOLD_UNK_02035900_H
 
 #include "global.h"
+
 #include "safari_zone.h"
 
 BOOL sub_02036144(void);

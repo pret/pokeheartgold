@@ -7,6 +7,7 @@
 
 #include "filesystem_files_def.h"
 #include "gf_gfx_planes.h"
+#include "poke_overlay.h"
 #include "render_text.h"
 #include "sound_02004A44.h"
 #include "system.h"

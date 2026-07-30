@@ -72,7 +72,7 @@ BOOL ScrCmd_OpenMsg(ScriptContext *ctx);
 BOOL ScrCmd_CloseMsg(ScriptContext *ctx);
 BOOL ScrCmd_HoldMsg(ScriptContext *ctx);
 BOOL ScrCmd_DirectionSignpost(ScriptContext *ctx);
-BOOL ScrCmd_055(ScriptContext *ctx);
+BOOL ScrCmd_056(ScriptContext *ctx);
 BOOL ScrCmd_057(ScriptContext *ctx);
 BOOL ScrCmd_058(ScriptContext *ctx);
 BOOL ScrCmd_TrainerTips(ScriptContext *ctx);

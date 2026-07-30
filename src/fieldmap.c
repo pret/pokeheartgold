@@ -579,7 +579,7 @@ void RunInitScript(FieldSystem *fieldSystem) {
 
 void StartMapLoadScript(FieldSystem *fieldSystem, u16 script) {
     ScriptContext *ctx = CreateScriptContext(fieldSystem, script);
-    while (RunScriptCommand(ctx) == TRUE) {}
+    while (RunScriptCommand(ctx) == TRUE) { }
     DestroyScriptContext(ctx);
 }
 

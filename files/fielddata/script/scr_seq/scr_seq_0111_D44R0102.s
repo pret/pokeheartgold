@@ -600,7 +600,7 @@ _0780:
 	EndMovement
 
 scr_seq_D44R0102_005:
-	ScrCmd_055 2, 0
+	ScrCmd_056 2, 0
 	ScrCmd_057 3
 	ScrCmd_058
 	TrainerTips msg_0129_D44R0102_00006, VAR_SPECIAL_RESULT

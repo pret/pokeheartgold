@@ -313,7 +313,7 @@ void sub_020520B0(BattleSetup *setup, FieldSystem *fieldSystem, Party *party, u8
     Pokedex *pokedex;
     SOUND_CHATOT *chatot;
     Options *options;
-    void *ruleset;
+    LinkBattleRuleset *ruleset;
 
     profile = Save_PlayerData_GetProfile(fieldSystem->saveData);
     bag = Save_Bag_Get(fieldSystem->saveData);

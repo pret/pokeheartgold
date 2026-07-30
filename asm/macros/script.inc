@@ -381,7 +381,7 @@
 	.short \arg3
 	.endm
 
-	.macro ScrCmd_055 message, arg1
+	.macro ScrCmd_056 message, arg1
 	.short 56
 	.byte \message
 	.short \arg1

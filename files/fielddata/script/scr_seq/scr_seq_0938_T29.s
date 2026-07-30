@@ -416,7 +416,7 @@ _056A:
 
 scr_seq_T29_006:
 	GoToIfSet FLAG_UNK_139, _0597
-	ScrCmd_055 2, 0
+	ScrCmd_056 2, 0
 	ScrCmd_057 3
 	ScrCmd_058
 	TrainerTips msg_0626_T29_00031, VAR_SPECIAL_RESULT
@@ -431,7 +431,7 @@ _0597:
 	BufferRecordSize 0, 1, SPECIES_MAGIKARP
 	ScriptOverlayCmd 0, 1
 	BufferPlayersName 2
-	ScrCmd_055 2, 0
+	ScrCmd_056 2, 0
 	ScrCmd_057 3
 	ScrCmd_058
 	TrainerTips msg_0626_T29_00032, VAR_SPECIAL_RESULT
@@ -530,7 +530,7 @@ scr_seq_T29_018:
 	End
 
 scr_seq_T29_007:
-	ScrCmd_055 2, 0
+	ScrCmd_056 2, 0
 	ScrCmd_057 3
 	ScrCmd_058
 	TrainerTips msg_0626_T29_00030, VAR_SPECIAL_RESULT

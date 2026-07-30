@@ -125,19 +125,19 @@ void SetScreenModeAndDisable(const struct GraphicsModes *gfxModes, enum GFScreen
 }
 
 void InitBgFromTemplateEx(BgConfig *bgConfig, u8 bgId, const BgTemplate *template, u8 bgType, u8 enable) {
-    u8 screenSize = TranslateGFBgModePairToGXScreenSize((enum GFBgScreenSize) template->size, (enum GFBgType)bgType);
+    u8 screenSize = TranslateGFBgModePairToGXScreenSize((enum GFBgScreenSize)template->size, (enum GFBgType)bgType);
 
     switch (bgId) {
     case GF_BG_LYR_MAIN_0:
         GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG0, enable);
-        G2_SetBG0Control((GXBGScrSizeText)screenSize, (GXBGColorMode) template->colorMode, (GXBGScrBase) template->screenBase, (GXBGCharBase) template->charBase, (GXBGExtPltt) template->bgExtPltt);
+        G2_SetBG0Control((GXBGScrSizeText)screenSize, (GXBGColorMode)template->colorMode, (GXBGScrBase)template->screenBase, (GXBGCharBase)template->charBase, (GXBGExtPltt)template->bgExtPltt);
         G2_SetBG0Priority(template->priority);
         G2_BG0Mosaic(template->mosaic);
         break;
 
     case GF_BG_LYR_MAIN_1:
         GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG1, enable);
-        G2_SetBG1Control((GXBGScrSizeText)screenSize, (GXBGColorMode) template->colorMode, (GXBGScrBase) template->screenBase, (GXBGCharBase) template->charBase, (GXBGExtPltt) template->bgExtPltt);
+        G2_SetBG1Control((GXBGScrSizeText)screenSize, (GXBGColorMode)template->colorMode, (GXBGScrBase)template->screenBase, (GXBGCharBase)template->charBase, (GXBGExtPltt)template->bgExtPltt);
         G2_SetBG1Priority(template->priority);
         G2_BG1Mosaic(template->mosaic);
         break;
@@ -147,13 +147,13 @@ void InitBgFromTemplateEx(BgConfig *bgConfig, u8 bgId, const BgTemplate *templat
         switch (bgType) {
         default:
         case GF_BG_TYPE_TEXT:
-            G2_SetBG2ControlText((GXBGScrSizeText)screenSize, (GXBGColorMode) template->colorMode, (GXBGScrBase) template->screenBase, (GXBGCharBase) template->charBase);
+            G2_SetBG2ControlText((GXBGScrSizeText)screenSize, (GXBGColorMode)template->colorMode, (GXBGScrBase)template->screenBase, (GXBGCharBase)template->charBase);
             break;
         case GF_BG_TYPE_AFFINE:
-            G2_SetBG2ControlAffine((GXBGScrSizeAffine)screenSize, (GXBGAreaOver) template->areaOver, (GXBGScrBase) template->screenBase, (GXBGCharBase) template->charBase);
+            G2_SetBG2ControlAffine((GXBGScrSizeAffine)screenSize, (GXBGAreaOver)template->areaOver, (GXBGScrBase)template->screenBase, (GXBGCharBase)template->charBase);
             break;
         case GF_BG_TYPE_256x16PLTT:
-            G2_SetBG2Control256x16Pltt((GXBGScrSize256x16Pltt)screenSize, (GXBGAreaOver) template->areaOver, (GXBGScrBase) template->screenBase, (GXBGCharBase) template->charBase);
+            G2_SetBG2Control256x16Pltt((GXBGScrSize256x16Pltt)screenSize, (GXBGAreaOver)template->areaOver, (GXBGScrBase)template->screenBase, (GXBGCharBase)template->charBase);
             break;
         }
         G2_SetBG2Priority(template->priority);
@@ -165,13 +165,13 @@ void InitBgFromTemplateEx(BgConfig *bgConfig, u8 bgId, const BgTemplate *templat
         switch (bgType) {
         default:
         case GF_BG_TYPE_TEXT:
-            G2_SetBG3ControlText((GXBGScrSizeText)screenSize, (GXBGColorMode) template->colorMode, (GXBGScrBase) template->screenBase, (GXBGCharBase) template->charBase);
+            G2_SetBG3ControlText((GXBGScrSizeText)screenSize, (GXBGColorMode)template->colorMode, (GXBGScrBase)template->screenBase, (GXBGCharBase)template->charBase);
             break;
         case GF_BG_TYPE_AFFINE:
-            G2_SetBG3ControlAffine((GXBGScrSizeAffine)screenSize, (GXBGAreaOver) template->areaOver, (GXBGScrBase) template->screenBase, (GXBGCharBase) template->charBase);
+            G2_SetBG3ControlAffine((GXBGScrSizeAffine)screenSize, (GXBGAreaOver)template->areaOver, (GXBGScrBase)template->screenBase, (GXBGCharBase)template->charBase);
             break;
         case GF_BG_TYPE_256x16PLTT:
-            G2_SetBG3Control256x16Pltt((GXBGScrSize256x16Pltt)screenSize, (GXBGAreaOver) template->areaOver, (GXBGScrBase) template->screenBase, (GXBGCharBase) template->charBase);
+            G2_SetBG3Control256x16Pltt((GXBGScrSize256x16Pltt)screenSize, (GXBGAreaOver)template->areaOver, (GXBGScrBase)template->screenBase, (GXBGCharBase)template->charBase);
             break;
         }
         G2_SetBG3Priority(template->priority);
@@ -180,14 +180,14 @@ void InitBgFromTemplateEx(BgConfig *bgConfig, u8 bgId, const BgTemplate *templat
 
     case GF_BG_LYR_SUB_0:
         GfGfx_EngineBTogglePlanes(GX_PLANEMASK_BG0, enable);
-        G2S_SetBG0Control((GXBGScrSizeText)screenSize, (GXBGColorMode) template->colorMode, (GXBGScrBase) template->screenBase, (GXBGCharBase) template->charBase, (GXBGExtPltt) template->bgExtPltt);
+        G2S_SetBG0Control((GXBGScrSizeText)screenSize, (GXBGColorMode)template->colorMode, (GXBGScrBase)template->screenBase, (GXBGCharBase)template->charBase, (GXBGExtPltt)template->bgExtPltt);
         G2S_SetBG0Priority(template->priority);
         G2S_BG0Mosaic(template->mosaic);
         break;
 
     case GF_BG_LYR_SUB_1:
         GfGfx_EngineBTogglePlanes(GX_PLANEMASK_BG1, enable);
-        G2S_SetBG1Control((GXBGScrSizeText)screenSize, (GXBGColorMode) template->colorMode, (GXBGScrBase) template->screenBase, (GXBGCharBase) template->charBase, (GXBGExtPltt) template->bgExtPltt);
+        G2S_SetBG1Control((GXBGScrSizeText)screenSize, (GXBGColorMode)template->colorMode, (GXBGScrBase)template->screenBase, (GXBGCharBase)template->charBase, (GXBGExtPltt)template->bgExtPltt);
         G2S_SetBG1Priority(template->priority);
         G2S_BG1Mosaic(template->mosaic);
         break;
@@ -197,13 +197,13 @@ void InitBgFromTemplateEx(BgConfig *bgConfig, u8 bgId, const BgTemplate *templat
         switch (bgType) {
         default:
         case GF_BG_TYPE_TEXT:
-            G2S_SetBG2ControlText((GXBGScrSizeText)screenSize, (GXBGColorMode) template->colorMode, (GXBGScrBase) template->screenBase, (GXBGCharBase) template->charBase);
+            G2S_SetBG2ControlText((GXBGScrSizeText)screenSize, (GXBGColorMode)template->colorMode, (GXBGScrBase)template->screenBase, (GXBGCharBase)template->charBase);
             break;
         case GF_BG_TYPE_AFFINE:
-            G2S_SetBG2ControlAffine((GXBGScrSizeAffine)screenSize, (GXBGAreaOver) template->areaOver, (GXBGScrBase) template->screenBase, (GXBGCharBase) template->charBase);
+            G2S_SetBG2ControlAffine((GXBGScrSizeAffine)screenSize, (GXBGAreaOver)template->areaOver, (GXBGScrBase)template->screenBase, (GXBGCharBase)template->charBase);
             break;
         case GF_BG_TYPE_256x16PLTT:
-            G2S_SetBG2Control256x16Pltt((GXBGScrSize256x16Pltt)screenSize, (GXBGAreaOver) template->areaOver, (GXBGScrBase) template->screenBase, (GXBGCharBase) template->charBase);
+            G2S_SetBG2Control256x16Pltt((GXBGScrSize256x16Pltt)screenSize, (GXBGAreaOver)template->areaOver, (GXBGScrBase)template->screenBase, (GXBGCharBase)template->charBase);
             break;
         }
         G2S_SetBG2Priority(template->priority);
@@ -215,13 +215,13 @@ void InitBgFromTemplateEx(BgConfig *bgConfig, u8 bgId, const BgTemplate *templat
         switch (bgType) {
         default:
         case GF_BG_TYPE_TEXT:
-            G2S_SetBG3ControlText((GXBGScrSizeText)screenSize, (GXBGColorMode) template->colorMode, (GXBGScrBase) template->screenBase, (GXBGCharBase) template->charBase);
+            G2S_SetBG3ControlText((GXBGScrSizeText)screenSize, (GXBGColorMode)template->colorMode, (GXBGScrBase)template->screenBase, (GXBGCharBase)template->charBase);
             break;
         case GF_BG_TYPE_AFFINE:
-            G2S_SetBG3ControlAffine((GXBGScrSizeAffine)screenSize, (GXBGAreaOver) template->areaOver, (GXBGScrBase) template->screenBase, (GXBGCharBase) template->charBase);
+            G2S_SetBG3ControlAffine((GXBGScrSizeAffine)screenSize, (GXBGAreaOver)template->areaOver, (GXBGScrBase)template->screenBase, (GXBGCharBase)template->charBase);
             break;
         case GF_BG_TYPE_256x16PLTT:
-            G2S_SetBG3Control256x16Pltt((GXBGScrSize256x16Pltt)screenSize, (GXBGAreaOver) template->areaOver, (GXBGScrBase) template->screenBase, (GXBGCharBase) template->charBase);
+            G2S_SetBG3Control256x16Pltt((GXBGScrSize256x16Pltt)screenSize, (GXBGAreaOver)template->areaOver, (GXBGScrBase)template->screenBase, (GXBGCharBase)template->charBase);
             break;
         }
         G2S_SetBG3Priority(template->priority);

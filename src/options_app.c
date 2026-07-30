@@ -1010,16 +1010,16 @@ static void OptionsApp_SetupSpriteRenderer(OptionsApp_Data *data) {
     SpriteSystem_Init(data->spriteRenderer, &unk1, &unk2, 32);
     SpriteSystem_InitSprites(data->spriteRenderer, data->spriteGfxHandler, 9);
 
-    u16 fileIdList[7] = {
-        NARC_resdat_resdat_00000022_bin,
-        NARC_resdat_resdat_00000023_bin,
-        NARC_resdat_resdat_00000021_bin,
-        NARC_resdat_resdat_00000020_bin,
-        0xFFFF,
-        0xFFFF,
-        NARC_resdat_resdat_00000077_bin,
+    ResdatIdList fileIdList = {
+        .charRes = NARC_resdat_resdat_00000022_bin,
+        .plttRes = NARC_resdat_resdat_00000023_bin,
+        .cellRes = NARC_resdat_resdat_00000021_bin,
+        .animRes = NARC_resdat_resdat_00000020_bin,
+        .mcelRes = 0xFFFF,
+        .manmRes = 0xFFFF,
+        .headerId = NARC_resdat_resdat_00000077_bin,
     };
-    sub_0200D294(data->spriteRenderer, data->spriteGfxHandler, fileIdList);
+    sub_0200D294(data->spriteRenderer, data->spriteGfxHandler, &fileIdList);
 
     G2dRenderer_SetSubSurfaceCoords(SpriteSystem_GetRenderer(data->spriteRenderer), FX32_CONST(0), FX32_CONST(256));
 }

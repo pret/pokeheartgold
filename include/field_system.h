@@ -149,7 +149,7 @@ struct FieldSystem {
     u8 filler_98[0x4];
     void *unk9C;
     FrontierFieldSystem *frontierFsys;
-    Save_LinkBattleRuleset *linkBattleRuleset;
+    LinkBattleRuleset *linkBattleRuleset;
     UnkStruct_02092BB8 *unkA8;
     u32 unkAC;
     void *unkB0;
@@ -181,19 +181,19 @@ struct FieldSystem {
 }; // size: 0x128
 
 typedef struct FieldInput {
-    u16 interact:1;
-    u16 endMovement:1;
-    u16 menu:1;
-    u16 registeredItem:2;
-    u16 sign:1;
-    u16 mapTransition:1;
-    u16 movement:1;
-    u16 unk0_8:1;
-    u16 unk0_9:1;
-    u16 unk0_A:1;
-    u16 unk0_B:1;
-    u16 unk0_C:1;
-    u16 unk0_D:1;
+    u16 interact : 1;
+    u16 endMovement : 1;
+    u16 menu : 1;
+    u16 registeredItem : 2;
+    u16 sign : 1;
+    u16 mapTransition : 1;
+    u16 movement : 1;
+    u16 unk0_8 : 1;
+    u16 unk0_9 : 1;
+    u16 unk0_A : 1;
+    u16 unk0_B : 1;
+    u16 unk0_C : 1;
+    u16 unk0_D : 1;
     u16 unk2;
     u8 playerDir;
     s8 transitionDir;

@@ -206,7 +206,7 @@ scr_seq_R30_006:
 	End
 
 scr_seq_R30_007:
-	ScrCmd_055 3, 0
+	ScrCmd_056 3, 0
 	ScrCmd_057 3
 	ScrCmd_058
 	TrainerTips msg_0375_R30_00012, VAR_SPECIAL_RESULT
@@ -214,7 +214,7 @@ scr_seq_R30_007:
 	End
 
 scr_seq_R30_008:
-	ScrCmd_055 2, 0
+	ScrCmd_056 2, 0
 	ScrCmd_057 3
 	ScrCmd_058
 	TrainerTips msg_0375_R30_00011, VAR_SPECIAL_RESULT

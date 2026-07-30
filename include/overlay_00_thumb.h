@@ -19,7 +19,7 @@ s32 ov00_021E6D68(s32 arg0);
 s32 ov00_021E709C(void);
 BOOL ov00_021E7078(void);
 BOOL ov00_021E7080(void);
-void ov00_021E5CBC(void *arg0);
+void ov00_021E5CBC(BOOL (*arg0)(s32));
 void ov00_021E7328(void);
 BOOL ov00_021E7314(void);
 void ov00_021E6CCC(UnkStruct_ov44_02231958 *arg0, s32 arg1);

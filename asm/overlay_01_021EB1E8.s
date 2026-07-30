@@ -1033,12 +1033,12 @@ ov01_021EB968: ; 0x021EB968
 	ldr r0, [r4]
 	cmp r0, #0
 	beq _021EB97E
-	bl sub_0200AEB0
+	bl SpriteTransfer_DeleteCharTransferTask
 _021EB97E:
 	ldr r0, [r4, #4]
 	cmp r0, #0
 	beq _021EB988
-	bl sub_0200B0A8
+	bl SpriteTransfer_DeletePlttTransferTask
 _021EB988:
 	mov r6, #0
 _021EB98A:
@@ -1844,7 +1844,7 @@ ov01_021EBF58: ; 0x021EBF58
 	mov r1, #0
 	bl ov01_021EB898
 	str r0, [r4]
-	bl sub_0200ADA4
+	bl SpriteTransfer_CreateCharTransferTask_AllocAtEnd
 	ldr r0, [r4]
 	bl sub_0200A740
 _021EBF8C:
@@ -1875,7 +1875,7 @@ ov01_021EBF94: ; 0x021EBF94
 	ldr r3, [r5, #0xc]
 	bl ov01_021EB898
 	str r0, [r4, #4]
-	bl sub_0200B00C
+	bl SpriteTransfer_CreatePlttTransferTask
 	ldr r0, [r4, #4]
 	bl sub_0200A740
 _021EBFC6:

@@ -229,7 +229,7 @@ scr_seq_R12_002:
 	End
 
 scr_seq_R12_003:
-	ScrCmd_055 2, 0
+	ScrCmd_056 2, 0
 	ScrCmd_057 3
 	ScrCmd_058
 	TrainerTips msg_0348_R12_00001, VAR_SPECIAL_RESULT

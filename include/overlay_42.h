@@ -137,13 +137,10 @@ typedef struct UnkStruct_ov42_02227060 {
     SpriteResource *unk2188[4];
     u8 unk2198[0x20];
     UnkStruct_ov42_02227C18 unk21B8[0x10];
-    SpriteResource *unk22B8;
-    u8 unk22BC[4];
-    SpriteResource *unk22C0[2];
+    SpriteResource *unk22B8[4];
     SpriteResourcesHeader unk22C8;
     u32 unk22EC;
-    GF_2DGfxResMan *unk22F0[2];
-    GF_2DGfxResMan *unk22F8[2];
+    GF_2DGfxResMan *unk22F0[4];
     SpriteResource *unk2300;
     NARC *unk2304;
     NARC *unk2308;
@@ -160,6 +157,20 @@ typedef struct UnkStruct_ov42_02228EDC {
 typedef struct UnkStruct_ov42_02227FA4 {
     u32 unk0;
 } UnkStruct_ov42_02227FA4;
+
+typedef struct UnkTemplate_ov42_022293B8 {
+    u8 unk_0;
+    u8 unk_1;
+    u8 colorMode;
+    u8 screenBase;
+    u8 charBase;
+    u8 bgExtPltt;
+    u8 priority;
+    u8 mosaic;
+    u8 narcId;
+    u8 fileId;
+    u8 compressed;
+} UnkTemplate_ov42_022293B8;
 
 typedef s32 (*func_type_02229E74)(UnkStruct_ov42_02228110 *arg0, UnkStruct_ov42_02227F68 *arg1, UnkStruct_ov42_022280A8 *arg2, UnkStruct_ov42_02228CDC *arg3, UnkStruct_ov42_02228EB0 *arg4);
 typedef void (*func_type_022285A4)(UnkStruct_ov42_02228110 *arg0, UnkStruct_ov44_02232914 arg2, u32 arg3);
@@ -206,7 +217,7 @@ void ov42_022279C0(UnkStruct_ov42_02227060 *arg0, s32 arg1);
 BOOL ov42_022279E8(UnkStruct_ov42_02227060 *arg0, s32 arg1);
 void ov42_022279FC(UnkStruct_ov42_02227060 *arg0, s32 arg1, enum HeapID heapID);
 void ov42_02227B04(UnkStruct_ov42_02227060 *arg0);
-s32 ov42_02227B5C(SpriteResource **arg0);
+BOOL ov42_02227B5C(SpriteResource **arg0);
 void ov42_02227B6C(UnkStruct_ov42_02227060 *arg0, s32 arg1, enum HeapID heapID);
 void ov42_02227BE0(UnkStruct_ov42_02227060 *arg0);
 void ov42_02227C18(UnkStruct_ov42_02227060 *arg0, enum HeapID heapID);
@@ -237,7 +248,7 @@ void *ov42_02227EE0(u16 arg0, u16 arg1, enum HeapID heapID);
 void ov42_02227F28(UnkStruct_ov42_02227F68 *arg0);
 u16 ov42_02227F40(UnkStruct_ov42_02227F68 *arg0);
 u16 ov42_02227F44(UnkStruct_ov42_02227F68 *arg0);
-void ov42_02227F48(UnkStruct_ov42_02227F68 *arg0, void *arg1);
+void ov42_02227F48(UnkStruct_ov42_02227F68 *arg0, const void *arg1);
 
 UnkStruct_ov42_02227FA4 ov42_02227F68(UnkStruct_ov42_02227F68 *arg0, u32 arg1, u32 arg2);
 s32 ov42_02227FA4(UnkStruct_ov42_02227F68 *arg0, u16 arg1, u16 arg2);
@@ -336,10 +347,10 @@ void ov42_02229394(UnkStruct_ov44_02232914 *arg0);
 void ov42_022293A0(UnkStruct_ov44_02232914 *arg0, s16 arg1, s16 arg2);
 s16 ov42_022293A8(UnkStruct_ov44_02232914 *arg0);
 s16 ov42_022293B0(UnkStruct_ov44_02232914 *arg0);
-UnkStruct_ov42_022293B8 *ov42_022293B8(G2dRenderer *g2dRenderer, BgConfig *bgConfig, u8 *arg2, enum HeapID heapID);
+UnkStruct_ov42_022293B8 *ov42_022293B8(G2dRenderer *g2dRenderer, BgConfig *bgConfig, const UnkTemplate_ov42_022293B8 *arg2, enum HeapID heapID);
 void ov42_0222940C(UnkStruct_ov42_022293B8 *arg0);
 void ov42_02229420(UnkStruct_ov42_022293B8 *arg0, UnkStruct_ov44_02232914 *arg1);
-void ov42_02229514(BgConfig *bgConfig, s32 arg1, u8 *arg2);
+void ov42_02229514(BgConfig *bgConfig, s32 arg1, const UnkTemplate_ov42_022293B8 *arg2);
 void ov42_02229570(UnkStruct_ov42_022293B8 *arg0, s16 arg1, s16 arg2);
 void ov42_02229600(BgConfig *bgConfig, s32 arg1, NNSG2dScreenData *nnsg2dScreenData, s16 arg3, s16 arg4);
 void ov42_022296F0(BgConfig *bgConfig, u8 arg1, u8 arg2, u8 arg3, u8 arg4, u8 arg5, void *arg6, u8 arg7, u8 arg8, u8 arg9, u8 argA);

@@ -119,7 +119,7 @@ typedef struct BattleInputFeedback {
         } move;
         struct {
             const s16 *screenOffsets;
-            void *unk8;
+            const TouchscreenHitbox *unk8;
             int ret;
             u8 unk10;
             u8 textObjId;

@@ -1,6 +1,7 @@
+#include "unk_02054E00.h"
+
 #include "overlay_01_021F3610.h"
 #include "overlay_01_021F4704.h"
-#include "unk_02054E00.h"
 
 BOOL MapModel_IsHeadbuttTree(u32 mapModelNo) {
     if (mapModelNo == 0xd0) {

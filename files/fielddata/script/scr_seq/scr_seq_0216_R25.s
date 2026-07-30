@@ -636,7 +636,7 @@ _0800:
 	EndMovement
 
 scr_seq_R25_002:
-	ScrCmd_055 2, 0
+	ScrCmd_056 2, 0
 	ScrCmd_057 3
 	ScrCmd_058
 	TrainerTips msg_0363_R25_00015, VAR_SPECIAL_RESULT

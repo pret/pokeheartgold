@@ -553,14 +553,14 @@ static const OamManagerParam ov110_021E6EA4 = { 0, 128, 0, 32, 0, 128, 0, 32 };
 
 static const OamCharTransferParam ov110_021E6DD0 = { 5, 0, 0, GX_OBJVRAMMODE_CHAR_1D_32K, GX_OBJVRAMMODE_CHAR_1D_32K };
 
-static const u16 sResdatInfo[7] = {
-    NARC_resdat_resdat_00000010_bin, // GF_GFX_RES_TYPE_CHAR
-    NARC_resdat_resdat_00000011_bin, // GF_GFX_RES_TYPE_PLTT
-    NARC_resdat_resdat_00000009_bin, // GF_GFX_RES_TYPE_CELL
-    NARC_resdat_resdat_00000008_bin, // GF_GFX_RES_TYPE_ANIM
-    0xFFFF,                          // GF_GFX_RES_TYPE_MCEL
-    0xFFFF,                          // GF_GFX_RES_TYPE_MANM
-    NARC_resdat_resdat_00000074_bin,
+static const ResdatIdList sResdatInfo = {
+    .charRes = NARC_resdat_resdat_00000010_bin,
+    .plttRes = NARC_resdat_resdat_00000011_bin,
+    .cellRes = NARC_resdat_resdat_00000009_bin,
+    .animRes = NARC_resdat_resdat_00000008_bin,
+    .mcelRes = 0xFFFF,
+    .manmRes = 0xFFFF,
+    .headerId = NARC_resdat_resdat_00000074_bin,
 };
 
 static const UnmanagedSpriteTemplate sSpriteTemplates[3] = {
@@ -1208,7 +1208,7 @@ static void AlphPuzzle_InitSpriteGraphics(AlphPuzzleData *data) {
     thunk_ClearSubOAM(data->heapID);
     data->spriteGfxHandler = SpriteManager_New(data->spriteRenderer);
     SpriteSystem_InitSprites(data->spriteRenderer, data->spriteGfxHandler, ALPH_SPRITE_INDEX_MAX);
-    sub_0200D2A4(data->spriteRenderer, data->spriteGfxHandler, sResdatInfo, 2, 1);
+    sub_0200D2A4(data->spriteRenderer, data->spriteGfxHandler, &sResdatInfo, 2, 1);
 }
 
 static void AlphPuzzle_DestroySpriteGraphicsEngine(AlphPuzzleData *data) {

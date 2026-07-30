@@ -1,13 +1,12 @@
+#include "global.h"
+
 #include "overlay_01.h"
 #include "overlay_03.h"
-
-#include "global.h"
 #include "safari_zone.h"
 #include "task.h"
 #include "unk_02033AE0.h"
 #include "unk_02034354.h"
 #include "unk_02035900.h"
-#include "unk_020379A0.h"
 #include "unk_020379A0.h"
 
 typedef struct UnkCommStruct {
@@ -17,14 +16,14 @@ typedef struct UnkCommStruct {
 } UnkCommStruct; // Size: 0x5D8
 
 typedef struct UnkFuncs {
-    void (*unk0)(BOOL, u32, SafariZoneAreaSet*, UnkCommStruct*);
+    void (*unk0)(BOOL, u32, SafariZoneAreaSet *, UnkCommStruct *);
     u32 (*unk4)();
     u32 (*unk8)(int, int);
 } UnkFuncs;
 
 static u32 ov03_02258828();
 static u32 ov03_02258830(int mult, int arg1);
-static void ov03_0225884C(BOOL unkBool, u32 arg1_unused, SafariZoneAreaSet *areaSetSrc, UnkCommStruct* unkCommStruct);
+static void ov03_0225884C(BOOL unkBool, u32 arg1_unused, SafariZoneAreaSet *areaSetSrc, UnkCommStruct *unkCommStruct);
 
 static void ov03_02258810(void *ptr, UnkCommStruct *unkCommStruct) {
     unkCommStruct->func = ptr;
@@ -51,7 +50,7 @@ static u32 ov03_02258830(int mult, int arg1) {
     return arg1 + 8 + (744 * mult);
 }
 
-static void ov03_0225884C(BOOL unkBool, u32 arg1_unused, SafariZoneAreaSet *areaSetSrc, UnkCommStruct* unkCommStruct) {
+static void ov03_0225884C(BOOL unkBool, u32 arg1_unused, SafariZoneAreaSet *areaSetSrc, UnkCommStruct *unkCommStruct) {
     if (unkBool != sub_0203769C()) {
         SafariZone_SetAreaSet(unkCommStruct->safariZone, 1, areaSetSrc);
         SafariZone_SetLinkLeaderFromProfile(unkCommStruct->safariZone, sub_02034818(unkBool), HEAP_ID_FIELD2);
