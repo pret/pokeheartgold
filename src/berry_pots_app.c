@@ -119,13 +119,13 @@ static const TouchscreenListMenuTemplate sMenuTemplate = {
     84,
 };
 static const u16 ov17_02203D78[7] = {
-    resdat_00000030,
-    resdat_00000031,
-    resdat_00000029,
-    resdat_00000028,
+    resdat_00000030_bin,
+    resdat_00000031_bin,
+    resdat_00000029_bin,
+    resdat_00000028_bin,
     0xFFFF,
     0xFFFF,
-    resdat_00000079,
+    resdat_00000079_bin,
 };
 static const GraphicsModes ov17_02203D88 = {
     GX_DISPMODE_GRAPHICS,

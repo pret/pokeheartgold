@@ -84,6 +84,7 @@ subdir('arc')
 subdir('data')
 subdir('demo')
 subdir('graphic')
+subdir('itemtool')
 subdir('poketool')
 
 #Msgdata must come after poketool for trainer name file

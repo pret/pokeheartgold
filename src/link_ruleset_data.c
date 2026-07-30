@@ -186,7 +186,7 @@ void sub_0202921C(SaveData *saveData, int index, String *string, enum HeapID hea
         LinkBattleRuleset *ruleset = Save_LinkBattleRuleset_GetByIndex(saveData, 0);
         LinkBattleRuleset_CopyNameToString(ruleset, string);
     } else if (index < NELEMS(sRulesetIndexes)) {
-        MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0182_bin, heapID);
+        MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msg_0182, heapID);
         ReadMsgDataIntoString(msgData, msg_0182_00083 + sRulesetIndexes[index], string);
         DestroyMsgData(msgData);
     }

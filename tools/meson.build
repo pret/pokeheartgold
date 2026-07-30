@@ -4,6 +4,7 @@ subdir('nitroarc') # libnitroarc
 subdir('enumproc') # libenum
 subdir('dataproc') # Requires libnitroarc and libenum
 
+subdir('csv2bin')
 subdir('knarc')
 subdir('jsonproc')
 subdir('msgenc')

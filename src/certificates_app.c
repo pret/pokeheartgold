@@ -418,7 +418,7 @@ static void CertificatesApp_SetupWindowsAndText(CertificatesApp_Data *data) {
 
     ResetAllTextPrinters();
 
-    data->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0004_bin, data->heapID);
+    data->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, msg_0004, data->heapID);
     data->msgFmt = MessageFormat_New(data->heapID);
 
     template.bgId = GF_BG_LYR_MAIN_0;

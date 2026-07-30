@@ -56,3 +56,6 @@ plist_gra_narc = custom_target('plist_gra.narc',
     ],
     build_by_default:true
 )
+
+nitrofs_files += plist_gra_narc
+naix_headers += plist_gra_narc[1]
