@@ -4,10 +4,10 @@
 #include "application/pokegear/pokegear_internal.h"
 
 #include "map_header.h"
+#include "screen_fade.h"
 #include "system.h"
 #include "touch_hitbox_controller.h"
 #include "unk_02005D10.h"
-#include "unk_0200FA24.h"
 #include "unk_020210A0.h"
 #include "unk_0208805C.h"
 

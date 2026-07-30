@@ -61,6 +61,7 @@
 #include "save_link_ruleset.h"
 #include "save_local_field_data.h"
 #include "scrcmd.h"
+#include "screen_fade.h"
 #include "script_pokemon_util.h"
 #include "sound_02004A44.h"
 #include "sys_flags.h"
@@ -69,7 +70,6 @@
 #include "task.h"
 #include "text.h"
 #include "trainer_memo.h"
-#include "unk_0200FA24.h"
 #include "unk_0202C034.h"
 #include "unk_02034B0C.h"
 #include "unk_02035900.h"
@@ -2188,7 +2188,7 @@ BOOL ScrCmd_FadeScreen(ScriptContext *ctx) {
     u16 speed = ScriptReadHalfword(ctx);
     u16 type = ScriptReadHalfword(ctx);
     u16 color = ScriptReadHalfword(ctx);
-    BeginNormalPaletteFade(0, type, type, color, duration, speed, HEAP_ID_FIELD1);
+    BeginNormalPaletteFade(FADE_BOTH_SCREENS, (enum FadeType)type, (enum FadeType)type, color, duration, speed, HEAP_ID_FIELD1);
     ResetVisibleHardwareWindows(PM_LCD_TOP);
     ResetVisibleHardwareWindows(PM_LCD_BOTTOM);
     return FALSE;

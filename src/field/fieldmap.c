@@ -52,13 +52,13 @@
 #include "poke_overlay.h"
 #include "player_avatar.h"
 #include "save_local_field_data.h"
+#include "screen_fade.h"
 #include "sound_02004A44.h"
 #include "sys_flags.h"
 #include "task.h"
 #include "terrain_attributes.h"
 #include "text_0205B4EC.h"
 #include "unk_0200B150.h"
-#include "unk_0200FA24.h"
 #include "unk_02023694.h"
 #include "unk_02026E30.h"
 #include "unk_02055418.h"
@@ -78,7 +78,6 @@ FS_EXTERN_OVERLAY(OVY_2);
 FS_EXTERN_OVERLAY(OVY_3);
 FS_EXTERN_OVERLAY(OVY_4);
 
-static void fieldmap(void *param0);
 static BOOL FieldSystem_HasNoGymmick(FieldSystem *fieldSystem);
 static BOOL FieldSystem_UpdateLocationToPlayerPosition(FieldSystem *fieldSystem);
 static BOOL FieldMap_ChangeZone(FieldSystem *fieldSystem);
@@ -108,9 +107,8 @@ static void ov01_021E66D8(void);
 static void ov01_021E66DC(void);
 static void ov01_021E66E0(void);
 
-void fieldmap(void *param0) {
-    FieldSystem *fieldSystem = param0;
-
+static void fieldmap(void *fsys) {
+    FieldSystem *fieldSystem = fsys;
     DoScheduledBgGpuUpdates(fieldSystem->bgConfig);
     GF_RunVramTransferTasks();
     OamManager_ApplyAndResetBuffers();
@@ -423,10 +421,10 @@ static void ov01_021E5FC0(FieldSystem* fieldSystem, u8 flag) {
     ov01_021EAD8C(fieldSystem->unk28);
     Signpost_DoCurrentCommand(fieldSystem);
 
-    if (flag & 1) FieldTextureManager_Free(fieldSystem->unk4->textureManager);
-    if (flag & 8) ov01_02204350(fieldSystem->unkC8);
-    if (flag & 2) MapLoadManager_Tick(fieldSystem->mapLoadManager);
-    if (flag & 4) ov01_021E6220(fieldSystem);
+    if (flag & (1 << 0)) FieldTextureManager_Free(fieldSystem->unk4->textureManager);
+    if (flag & (1 << 3)) ov01_02204350(fieldSystem->unkC8);
+    if (flag & (1 << 1)) MapLoadManager_Tick(fieldSystem->mapLoadManager);
+    if (flag & (1 << 2)) ov01_021E6220(fieldSystem);
 }
 
 static void ov01_021E6028(void) {
@@ -528,13 +526,13 @@ static void BgConfig_Init(BgConfig* bgConfig) {
 }
 
 static void ov01_021E6138(BgConfig* bgConfig) {
-    GfGfx_EngineATogglePlanes(1, FALSE);
-    GfGfx_EngineATogglePlanes(2, FALSE);
-    GfGfx_EngineATogglePlanes(4, FALSE);
-    GfGfx_EngineATogglePlanes(8, FALSE);
-    FreeBgTilemapBuffer(bgConfig, 1);
-    FreeBgTilemapBuffer(bgConfig, 2);
-    FreeBgTilemapBuffer(bgConfig, 3);
+    GfGfx_EngineATogglePlanes((1 << 0), FALSE);
+    GfGfx_EngineATogglePlanes((1 << 1), FALSE);
+    GfGfx_EngineATogglePlanes((1 << 2), FALSE);
+    GfGfx_EngineATogglePlanes((1 << 3), FALSE);
+    FreeBgTilemapBuffer(bgConfig, GF_BG_LYR_MAIN_1);
+    FreeBgTilemapBuffer(bgConfig, GF_BG_LYR_MAIN_2);
+    FreeBgTilemapBuffer(bgConfig, GF_BG_LYR_MAIN_3);
 }
 
 static void OamManager_Init(void) {
@@ -615,31 +613,31 @@ static void ov01_021E6220(FieldSystem* fieldSystem) {
 
 void ov01_021E631C(FieldSystem *fieldSystem, BOOL setFlag) {
     if (setFlag == TRUE) {
-        fieldSystem->unkBC |= 4;
+        fieldSystem->unkBC |= (1 << 2);
     } else {
-        fieldSystem->unkBC &= ~4;
+        fieldSystem->unkBC &= ~(1 << 2);
     }
 }
 
 void ov01_021E6340(FieldSystem* fieldSystem, BOOL setFlag) {
     if (setFlag == TRUE) {
-        fieldSystem->unkBC |= 1;
+        fieldSystem->unkBC |= (1 << 0);
     } else {
-        fieldSystem->unkBC &= ~1;
+        fieldSystem->unkBC &= ~(1 << 0);
     }
 }
 
 static void ov01_021E6364(FieldSystem* fieldSystem) {
-    fieldSystem->unkBC = (8 | 1 | 2 | 4);
+    fieldSystem->unkBC = ((1 << 3) | (1 << 0) | (1 << 1) | (1 << 2));
 }
 
-void FieldMap_FadeScreen(const u8 fadeType) {
-    if (fadeType == 1) { // FADE_TYPE_BRIGHTNESS_IN
-        BeginNormalPaletteFade(0, 1, 1, 0, 6, 1, HEAP_ID_FIELD1); // FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_IN, FADE_TYPE_BRIGHTNESS_IN, COLOR_BLACK, 6, 1,
-    } else if (fadeType == 0) { // FADE_TYPE_BRIGHTNESS_OUT
-        BeginNormalPaletteFade(0, 0, 0, 0, 6, 1, HEAP_ID_FIELD1); // FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, COLOR_BLACK, 6, 1,
+void FieldMap_FadeScreen(const u8 fadeType) { // TODO: Convert passthrough in other files
+    if (fadeType == FADE_TYPE_BRIGHTNESS_IN) { 
+        BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_IN, FADE_TYPE_BRIGHTNESS_IN, RGB_BLACK, 6, 1, HEAP_ID_FIELD1);
+    } else if (fadeType == FADE_TYPE_BRIGHTNESS_OUT) {
+        BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, RGB_BLACK, 6, 1, HEAP_ID_FIELD1);
     } else {
-        GF_AssertFail();
+        GF_ASSERT(FALSE);
     }
 }
 
@@ -799,15 +797,15 @@ static void MapObjectsToPreload_Free(MapObjectsToPreload *mapObjectsToPreload) {
 }
 
 static GFIntrCB ov01_021E66A8(void) {
-    return Heap_AllocAtEnd(HEAP_ID_3, 0x3E8);
+    return Heap_AllocAtEnd(HEAP_ID_3, 1000);
 }
 
 static GFIntrCB ov01_021E66B8(void) {
-    return Heap_AllocAtEnd(HEAP_ID_3, 0x3E8);
+    return Heap_AllocAtEnd(HEAP_ID_3, 1000);
 }
 
 static GFIntrCB ov01_021E66C8(void) {
-    return Heap_AllocAtEnd(HEAP_ID_3, 0x3E8);
+    return Heap_AllocAtEnd(HEAP_ID_3, 1000);
 }
 
 static void ov01_021E66D8(void) {

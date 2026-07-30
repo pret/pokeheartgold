@@ -7,10 +7,10 @@
 #include "intro_movie_internal.h"
 #include "obj_char_transfer.h"
 #include "obj_pltt_transfer.h"
+#include "screen_fade.h"
 #include "sprite_transfer.h"
 #include "system.h"
 #include "unk_0200B150.h"
-#include "unk_0200FA24.h"
 #include "unk_02026E30.h"
 
 enum IntroScene3State {

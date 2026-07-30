@@ -8,8 +8,8 @@
 #include "launch_application.h"
 #include "map_header.h"
 #include "pokedex.h"
+#include "screen_fade.h"
 #include "task.h"
-#include "unk_0200FA24.h"
 #include "update_dex_received.h"
 
 struct ChooseStarterTaskData {
@@ -34,7 +34,7 @@ static BOOL CreateStarter(TaskManager *taskManager) {
 
     switch (env->state) {
     case 0:
-        BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, HEAP_ID_FIELD1);
+        BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, RGB_BLACK, 6, 1, HEAP_ID_FIELD1);
         env->state = 1;
         break;
     case 1:
@@ -90,7 +90,7 @@ static BOOL CreateStarter(TaskManager *taskManager) {
         if (!sub_020505C8(fieldSystem)) {
             break;
         }
-        BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 1, HEAP_ID_FIELD1);
+        BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_IN, FADE_TYPE_BRIGHTNESS_IN, RGB_BLACK, 6, 1, HEAP_ID_FIELD1);
         env->state = 5;
         break;
     case 5:

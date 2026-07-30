@@ -7,11 +7,11 @@
 #include "math_util.h"
 #include "obj_char_transfer.h"
 #include "obj_pltt_transfer.h"
+#include "screen_fade.h"
 #include "sprite_transfer.h"
 #include "sys_task_api.h"
 #include "system.h"
 #include "unk_0200B150.h"
-#include "unk_0200FA24.h"
 #include "unk_02026E30.h"
 
 enum IntroScene4State {
@@ -129,7 +129,7 @@ static BOOL IntroMovie_Scene4_Main(IntroMovieOverlayData *data, IntroMovieScene4
     u8 stepTimer = IntroMovie_GetSceneStepTimer(data);
     switch (IntroMovie_GetSceneStep(data)) {
     case INTRO_SCENE4_FADE_IN:
-        BeginNormalPaletteFade(0, 9, 9, RGB_BLACK, 10, 1, HEAP_ID_INTRO_MOVIE);
+        BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_UNK_9, FADE_TYPE_UNK_9, RGB_BLACK, 10, 1, HEAP_ID_INTRO_MOVIE);
         IntroMovie_AdvanceSceneStep(data);
         break;
     case INTRO_SCENE4_WAIT_FADE_IN:
@@ -238,7 +238,7 @@ static BOOL IntroMovie_Scene4_Main(IntroMovieOverlayData *data, IntroMovieScene4
         break;
     case INTRO_SCENE4_RUN_WATER_PARTICLES:
         if (!sub_020154B0(sceneData->particleSystem)) {
-            BeginNormalPaletteFade(0, 8, 8, RGB_BLACK, 26, 1, HEAP_ID_INTRO_MOVIE);
+            BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_UNK_8, FADE_TYPE_UNK_8, RGB_BLACK, 26, 1, HEAP_ID_INTRO_MOVIE);
             IntroMovie_AdvanceSceneStep(data);
         }
         break;

@@ -20,10 +20,10 @@
 #include "overlay_01_022053EC.h"
 #include "player_avatar.h"
 #include "save_follow_mon.h"
+#include "screen_fade.h"
 #include "script.h"
 #include "sound.h"
 #include "unk_02005D10.h"
-#include "unk_0200FA24.h"
 #include "unk_02054648.h"
 #include "unk_02055244.h"
 #include "unk_020552A4.h"
@@ -58,7 +58,7 @@ BOOL RoutineFieldFade(TaskManager *man) {
     switch (fenv->state) {
     case 0:
         HBlankSystem_Stop(fieldSystem->unk4->hBlankSystem);
-        BeginNormalPaletteFade(fenv->pattern, fenv->typeTop, fenv->typeBottom, fenv->colour, fenv->duration, fenv->framesPer, fenv->heapID);
+        BeginNormalPaletteFade((enum FadeMode)fenv->pattern, (enum FadeType)fenv->typeTop, (enum FadeType)fenv->typeBottom, fenv->colour, fenv->duration, fenv->framesPer, fenv->heapID);
         fenv->state++;
         break;
     case 1:

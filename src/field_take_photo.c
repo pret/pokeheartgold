@@ -17,10 +17,10 @@
 #include "field/hblank_system.h"
 #include "overlay_01_022053EC.h"
 #include "photo_album.h"
+#include "screen_fade.h"
 #include "script_pokemon_util.h"
 #include "task.h"
 #include "unk_02005D10.h"
-#include "unk_0200FA24.h"
 #include "unk_02054E00.h"
 #include "unk_02055244.h"
 #include "unk_020552A4.h"
@@ -306,7 +306,7 @@ static int ViewPhotoFieldTask_WaitInput(FieldSystem *fieldSystem, TaskManager *t
 static int ViewPhotoFieldTask_FadeInToPhoto(FieldSystem *fieldSystem, TaskManager *taskManager, FieldViewPhoto *photo) {
     switch (photo->substate) {
     case 0:
-        BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 1, HEAP_ID_FIELD2);
+        BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_IN, FADE_TYPE_BRIGHTNESS_IN, RGB_BLACK, 6, 1, HEAP_ID_FIELD2);
         ++photo->substate;
         break;
     case 1:
@@ -323,7 +323,7 @@ static int ViewPhotoFieldTask_FadeInToPhoto(FieldSystem *fieldSystem, TaskManage
 static int ViewPhotoFieldTask_FadeOutFromPhoto(FieldSystem *fieldSystem, TaskManager *taskManager, FieldViewPhoto *photo) {
     switch (photo->substate) {
     case 0:
-        BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, HEAP_ID_FIELD2);
+        BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, RGB_BLACK, 6, 1, HEAP_ID_FIELD2);
         ++photo->substate;
         break;
     case 1:
@@ -736,7 +736,7 @@ static BOOL FieldTask_TakePhoto(TaskManager *taskManager) {
             break;
         case TAKE_PHOTO_SHUTTER_STATE_FADE_OUT:
             PlaySE(SEQ_SE_GS_SHUTTER);
-            BeginNormalPaletteFade(3, 8, 0, RGB_BLACK, 6, 1, HEAP_ID_FIELD1);
+            BeginNormalPaletteFade(FADE_MAIN_ONLY, FADE_TYPE_UNK_8, FADE_TYPE_BRIGHTNESS_OUT, RGB_BLACK, 6, 1, HEAP_ID_FIELD1);
             ++takePhoto->shutterState;
             break;
         case TAKE_PHOTO_SHUTTER_STATE_EXPOSURE:
@@ -755,7 +755,7 @@ static BOOL FieldTask_TakePhoto(TaskManager *taskManager) {
             }
             break;
         case TAKE_PHOTO_SHUTTER_STATE_FADE_IN:
-            BeginNormalPaletteFade(3, 9, 0, RGB_BLACK, 6, 1, HEAP_ID_FIELD1);
+            BeginNormalPaletteFade(FADE_MAIN_ONLY, FADE_TYPE_UNK_9, FADE_TYPE_BRIGHTNESS_OUT, RGB_BLACK, 6, 1, HEAP_ID_FIELD1);
             ++takePhoto->shutterState;
             break;
         case TAKE_PHOTO_SHUTTER_STATE_WAIT_FADE_IN:

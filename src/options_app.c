@@ -16,13 +16,13 @@
 #include "options.h"
 #include "render_text.h"
 #include "render_window.h"
+#include "screen_fade.h"
 #include "sound.h"
 #include "sprite.h"
 #include "sprite_system.h"
 #include "system.h"
 #include "touchscreen.h"
 #include "unk_02005D10.h"
-#include "unk_0200FA24.h"
 #include "unk_0203A3B0.h"
 #include "vram_transfer_manager.h"
 
@@ -399,7 +399,7 @@ BOOL OptionsMenu_Main(OverlayManager *manager, int *state) {
         }
 
         data->fadeUnused = 0;
-        BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 1, data->heapID);
+        BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_IN, FADE_TYPE_BRIGHTNESS_IN, RGB_BLACK, 6, 1, data->heapID);
         OptionsApp_SetActiveButtonsXPosition(data);
         SpriteSystem_DrawSprites(data->spriteGfxHandler);
         break;
@@ -421,7 +421,7 @@ BOOL OptionsMenu_Main(OverlayManager *manager, int *state) {
         SpriteSystem_DrawSprites(data->spriteGfxHandler);
         if (!OptionsApp_ConfirmAndQuitButtonsAreDoneAnimating(data)) {
             data->fadeUnused = 0;
-            BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, data->heapID);
+            BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, RGB_BLACK, 6, 1, data->heapID);
             break;
         }
         return FALSE;

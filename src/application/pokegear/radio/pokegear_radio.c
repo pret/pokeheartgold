@@ -7,11 +7,11 @@
 #include "brightness.h"
 #include "map_header.h"
 #include "pokegear_apps.h"
+#include "screen_fade.h"
 #include "sound_02004A44.h"
 #include "sys_vars.h"
 #include "touchscreen.h"
 #include "unk_02005D10.h"
-#include "unk_0200FA24.h"
 
 void Radio_Load(PokegearRadioAppData *radioApp);
 void Radio_Unload(PokegearRadioAppData *radioApp);
@@ -225,7 +225,7 @@ int PokegearRadio_MainTask_Unload(PokegearRadioAppData *radioApp) {
 int PokegearRadio_MainTask_FadeIn(PokegearRadioAppData *radioApp) {
     switch (radioApp->state) {
     case 0:
-        BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 1, radioApp->heapID);
+        BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_IN, FADE_TYPE_BRIGHTNESS_IN, RGB_BLACK, 6, 1, radioApp->heapID);
         for (int i = 0; i < 8; ++i) {
             ToggleBgLayer(i, TRUE);
         }
@@ -254,7 +254,7 @@ int PokegearRadio_MainTask_FadeIn(PokegearRadioAppData *radioApp) {
 int PokegearRadio_MainTask_FadeOut(PokegearRadioAppData *radioApp) {
     switch (radioApp->state) {
     case 0:
-        BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, radioApp->heapID);
+        BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, RGB_BLACK, 6, 1, radioApp->heapID);
         ++radioApp->state;
         break;
     case 1:
