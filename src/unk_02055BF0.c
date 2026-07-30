@@ -20,7 +20,6 @@
 #include "overlay_01_022053EC.h"
 #include "player_avatar.h"
 #include "save_follow_mon.h"
-#include "screen_fade.h"
 #include "script.h"
 #include "sound.h"
 #include "unk_02005D10.h"
@@ -39,9 +38,9 @@ extern TaskFunc sMapEnterRoutines[9];
 extern TaskFunc sMapExitRoutines[9];
 extern FieldSystemFunc _020FC76C[9];
 
-void NewFieldFadeEnvironment(TaskManager *man, int pattern, int typeTop, int typeBottom, u16 colour, int duration, int framesPer, enum HeapID heapID) {
+void NewFieldFadeEnvironment(TaskManager *man, enum FadeMode fadeMode, enum FadeType typeTop, enum FadeType typeBottom, u16 colour, int duration, int framesPer, enum HeapID heapID) {
     FieldFadeEnvironment *sfenv = Heap_Alloc(heapID, sizeof(FieldFadeEnvironment));
-    sfenv->pattern = pattern;
+    sfenv->fadeMode = fadeMode;
     sfenv->typeTop = typeTop;
     sfenv->typeBottom = typeBottom;
     sfenv->colour = colour;
@@ -58,7 +57,7 @@ BOOL RoutineFieldFade(TaskManager *man) {
     switch (fenv->state) {
     case 0:
         HBlankSystem_Stop(fieldSystem->unk4->hBlankSystem);
-        BeginNormalPaletteFade((enum FadeMode)fenv->pattern, (enum FadeType)fenv->typeTop, (enum FadeType)fenv->typeBottom, fenv->colour, fenv->duration, fenv->framesPer, fenv->heapID);
+        BeginNormalPaletteFade(fenv->fadeMode, fenv->typeTop, fenv->typeBottom, fenv->colour, fenv->duration, fenv->framesPer, fenv->heapID);
         fenv->state++;
         break;
     case 1:
