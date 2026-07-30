@@ -64,9 +64,9 @@ BOOL ScrCmd_720(ScriptContext *ctx) {
     u32 temp_r0 = ov01_021F6320(fieldSystem->mapLoadManager);
 
     s32 sp20;
-    ov01_021F630C((u8)temp_r0, fieldSystem->unk2C, &sp20);
-    sp8 = ov01_021F65E4(fieldSystem->unk2C, (u8)temp_r0);
-    sp4 = ov01_021F65F0(fieldSystem->unk2C, (u8)temp_r0);
+    ov01_021F630C((u8)temp_r0, fieldSystem->mapLoadManager, &sp20);
+    sp8 = ov01_021F65E4(fieldSystem->mapLoadManager, (u8)temp_r0);
+    sp4 = ov01_021F65F0(fieldSystem->mapLoadManager, (u8)temp_r0);
 
     SAFARIZONE_OBJECT *safariObject = &areaSet->areas[areaID].objects[safariObjectID];
 

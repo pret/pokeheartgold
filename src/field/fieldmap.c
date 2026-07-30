@@ -49,6 +49,7 @@
 #include "math_util.h"
 #include "obj_char_transfer.h"
 #include "obj_pltt_transfer.h"
+#include "poke_overlay.h"
 #include "player_avatar.h"
 #include "save_local_field_data.h"
 #include "sound_02004A44.h"
