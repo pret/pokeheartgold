@@ -1499,7 +1499,7 @@ static u8 ov03_022586E0(MartData *data) {
 }
 
 static void Mart_FadeOut(FieldSystem *fieldSystem_unused, MartData *data) {
-    FieldMap_FadeScreen(0); // FADE_TYPE_BRIGHTNESS_OUT
+    FieldMap_FadeScreen(FADE_TYPE_BRIGHTNESS_OUT);
     data->state = TASK_MART_23;
 }
 

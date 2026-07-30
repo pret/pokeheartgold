@@ -333,7 +333,7 @@ BOOL sub_0205613C(TaskManager *man) {
     }
     case 3:
         PlaySE(SEQ_SE_DP_KAIDAN2);
-        FieldMap_FadeScreen(0); // FADE_TYPE_BRIGHTNESS_OUT
+        FieldMap_FadeScreen(FADE_TYPE_BRIGHTNESS_OUT);
         fenv->transitionState++;
         break;
     case 4:
@@ -439,7 +439,7 @@ BOOL sub_020562B0(TaskManager *man) {
         break;
     case 2:
         PlaySE(SEQ_SE_DP_KAIDAN2);
-        FieldMap_FadeScreen(0); // FADE_TYPE_BRIGHTNESS_OUT
+        FieldMap_FadeScreen(FADE_TYPE_BRIGHTNESS_OUT);
         fenv->transitionState++;
         break;
     case 3:
@@ -492,7 +492,7 @@ BOOL sub_02056424(TaskManager *man) {
         break;
     case 3:
         PlaySE(SEQ_SE_DP_KAIDAN2);
-        FieldMap_FadeScreen(0); // FADE_TYPE_BRIGHTNESS_OUT
+        FieldMap_FadeScreen(FADE_TYPE_BRIGHTNESS_OUT);
         fenv->transitionState++;
         break;
     case 4:

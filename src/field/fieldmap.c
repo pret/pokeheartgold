@@ -631,7 +631,7 @@ static void ov01_021E6364(FieldSystem* fieldSystem) {
     fieldSystem->unkBC = ((1 << 3) | (1 << 0) | (1 << 1) | (1 << 2));
 }
 
-void FieldMap_FadeScreen(const u8 fadeType) { // TODO: Convert passthrough in other files
+void FieldMap_FadeScreen(const u8 fadeType) {
     if (fadeType == FADE_TYPE_BRIGHTNESS_IN) { 
         BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_IN, FADE_TYPE_BRIGHTNESS_IN, RGB_BLACK, 6, 1, HEAP_ID_FIELD1);
     } else if (fadeType == FADE_TYPE_BRIGHTNESS_OUT) {

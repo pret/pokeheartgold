@@ -828,7 +828,7 @@ static BOOL Task_RegisteredItem_GoToApp(TaskManager *taskManager) {
     switch (env->state) {
     case 0:
         MapObjectManager_PauseAllMovement(fieldSystem->mapObjectManager);
-        FieldMap_FadeScreen(0); // FADE_TYPE_BRIGHTNESS_OUT
+        FieldMap_FadeScreen(FADE_TYPE_BRIGHTNESS_OUT);
         env->state = 1;
         break;
     case 1:
@@ -856,7 +856,7 @@ static BOOL Task_RegisteredItem_GoToApp(TaskManager *taskManager) {
     case 4:
         if (sub_020505C8(fieldSystem)) {
             MapObjectManager_PauseAllMovement(fieldSystem->mapObjectManager);
-            FieldMap_FadeScreen(1); // FADE_TYPE_BRIGHTNESS_IN
+            FieldMap_FadeScreen(FADE_TYPE_BRIGHTNESS_IN);
             env->state = 5;
         }
         break;
