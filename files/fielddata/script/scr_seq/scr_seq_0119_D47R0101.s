@@ -389,7 +389,7 @@ _0494:
 	GoTo _0587
 
 _049D:
-	ScrCmd_CheckSafariZoneChallengeCompleted 0, VAR_SPECIAL_RESULT
+	CheckSafariZoneChallengeCompleted 0, VAR_SPECIAL_RESULT
 	Compare VAR_SPECIAL_RESULT, 0
 	GoToIfNe _04B8
 	NPCMsg msg_0135_D47R0101_00033
@@ -398,13 +398,13 @@ _049D:
 _04B8:
 	NPCMsg msg_0135_D47R0101_00032
 	SetVar VAR_UNK_4057, 3
-	ScrCmd_UpdateSafariZoneIGT
+	UpdateSafariZoneIGT
 _04C3:
 	GoTo _0587
 	End
 
 _04CB:
-	ScrCmd_CheckSafariZoneChallengeCompleted 1, VAR_SPECIAL_RESULT
+	CheckSafariZoneChallengeCompleted 1, VAR_SPECIAL_RESULT
 	Compare VAR_SPECIAL_RESULT, 0
 	GoToIfEq _057E
 	NPCMsg msg_0135_D47R0101_00037
@@ -443,7 +443,7 @@ _054C:
 	FollowingPokemonMovement 48
 	NPCMsg msg_0135_D47R0101_00039
 	SetVar VAR_UNK_4057, 6
-	ScrCmd_UpdateSafariZoneIGT
+	UpdateSafariZoneIGT
 	GoTo _0587
 
 _057E:
