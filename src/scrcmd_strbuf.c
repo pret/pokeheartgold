@@ -363,11 +363,11 @@ BOOL ScrCmd_BufferPartyMonMoveName(ScriptContext *ctx) {
 
 BOOL ScrCmd_BufferRibbonName(ScriptContext *ctx) {
     MessageFormat **msg_fmt = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
-    u8 idx = ScriptReadByte(ctx);
-    u8 unk = ScriptGetVar(ctx);
+    u8 fieldNo = ScriptReadByte(ctx);
+    u8 ribbonID = ScriptGetVar(ctx);
 
-    u16 ribbon_id = GetRibbonAttr(unk, RIBBONDAT_NAMEGMM);
-    BufferRibbonNameOrDesc(*msg_fmt, idx, ribbon_id);
+    u16 ribbonNameGmm = GetRibbonAttr(ribbonID, RIBBONDAT_NAMEGMM);
+    BufferRibbonNameOrDesc(*msg_fmt, fieldNo, ribbonNameGmm);
 
     return FALSE;
 }
