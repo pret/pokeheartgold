@@ -14,19 +14,6 @@
 	.extern ov04_022546C8
 	.extern ov04_022546E8
 
-	thumb_func_start GymmickFree_Azalea
-GymmickFree_Azalea: ; 0x02254710
-	push {r4, lr}
-	add r4, r0, #0
-	ldr r0, [r4, #4]
-	ldr r0, [r0, #0x24]
-	bl Heap_Free
-	ldr r0, [r4, #4]
-	mov r1, #0
-	str r1, [r0, #0x24]
-	pop {r4, pc}
-	thumb_func_end GymmickFree_Azalea
-
 	thumb_func_start ov04_02254724
 ov04_02254724: ; 0x02254724
 	push {r3, r4, r5, r6, r7, lr}

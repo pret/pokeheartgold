@@ -48,6 +48,8 @@ void ov04_022546C8(const VecFx32 *a0, BOOL *a1);
 int ov04_022546E8(int a0, int a1, int a2, int a3);
 BOOL ov04_02254CA4(TaskManager *taskman);
 
+// FIXME: clang-format is misbehaving on these data
+// clang-format off
 static const u16 ov04_02257404[][2] = {
     { 3,  31 },
     { 3,  29 },
@@ -180,9 +182,9 @@ static const AzaleaGymmickSpinarakRoute ov04_022574C4[] = {
 };
 
 static const AzaleaGymmickSpinarakRoute ov04_02257524[] = {
-    { },
+    {},
     { NELEMS(ov04_02257394), 9, ov04_02257394 },
-    { },
+    {},
     { NELEMS(ov04_0225736C), 10, ov04_0225736C },
 };
 
@@ -194,30 +196,30 @@ static const AzaleaGymmickSpinarakRoute ov04_02257544[] = {
 };
 
 static const AzaleaGymmickSpinarakRoute ov04_022573C4[] = {
-    { },
-    { },
-    { },
-    { },
+    {},
+    {},
+    {},
+    {},
 };
 
 static const AzaleaGymmickSpinarakRoute ov04_022573E4[] = {
     { NELEMS(ov04_02257504), 7, ov04_02257504 },
     { NELEMS(ov04_02257394), 6, ov04_02257394 },
-    { },
-    { },
+    {},
+    {},
 };
 
 static const AzaleaGymmickSpinarakRoute ov04_022574E4[] = {
-    { },
-    { },
+    {},
+    {},
     { NELEMS(ov04_022573AC), 7, ov04_022573AC },
     { NELEMS(ov04_0225736C), 6, ov04_0225736C },
 };
 
 static const AzaleaGymmickSpinarakRoute ov04_02257564[] = {
-    { },
+    {},
     { NELEMS(ov04_0225735C), 7, ov04_0225735C },
-    { },
+    {},
     { NELEMS(ov04_0225735C), 7, ov04_0225735C },
 };
 
@@ -243,6 +245,7 @@ const VecFx32 ov04_02257350 = {
 const VecFx32 ov04_02257344 = {
     8 * FX32_ONE, 0, 8 * FX32_ONE
 };
+// clang-format on
 
 void GymmickInit_Azalea(FieldSystem *fieldSystem) {
     GymmickUnion *gymmickUnion = Save_Gymmick_AssertMagic_GetData(Save_GetGymmickPtr(FieldSystem_GetSaveData(fieldSystem)), GYMMICK_AZALEA);
@@ -436,4 +439,9 @@ int ov04_022546E8(int a0, int a1, int a2, int a3) {
         }
     }
     return ret;
+}
+
+void GymmickFree_Azalea(FieldSystem *fieldSystem) {
+    Heap_Free(fieldSystem->unk4->unk24);
+    fieldSystem->unk4->unk24 = NULL;
 }
