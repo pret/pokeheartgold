@@ -32,7 +32,7 @@ void sub_02054EB0(FieldSystem *fieldSystem, int a1, BOOL a2) {
         ov01_021F630C(i, fieldSystem->unk2C, &val);
         if (val != 0) {
             for (u8 j = 0; j < 32; j++) {
-                int res = ov01_021F3B44(val, j);
+                MapPropManager *res = ov01_021F3B44(val, j);
                 if (ov01_021F3B30() != 0) {
                     int res2 = ov01_021F3B34(res);
                     if (res2 == a1) {

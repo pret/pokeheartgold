@@ -174,51 +174,27 @@ scr_seq_T07_008:
 	End
 
 scr_seq_T07_009:
-	DirectionSignpost msg_0491_T07_00030, 0, 7, VAR_SPECIAL_RESULT
-	ScrCmd_057 3
-	ScrCmd_058
-	ScrCmd_060 VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	DirectionSignpostEx 0, 7, msg_0491_T07_00030
 	End
 
 scr_seq_T07_010:
-	ScrCmd_056 2, 0
-	ScrCmd_057 3
-	ScrCmd_058
-	TrainerTips msg_0491_T07_00031, VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	TrainerTipsEx 2, msg_0491_T07_00031
 	End
 
 scr_seq_T07_011:
-	ScrCmd_056 2, 0
-	ScrCmd_057 3
-	ScrCmd_058
-	TrainerTips msg_0491_T07_00032, VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	TrainerTipsEx 2, msg_0491_T07_00032
 	End
 
 scr_seq_T07_012:
-	ScrCmd_056 2, 0
-	ScrCmd_057 3
-	ScrCmd_058
-	TrainerTips msg_0491_T07_00033, VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	TrainerTipsEx 2, msg_0491_T07_00033
 	End
 
 scr_seq_T07_013:
-	ScrCmd_056 2, 0
-	ScrCmd_057 3
-	ScrCmd_058
-	TrainerTips msg_0491_T07_00034, VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	TrainerTipsEx 2, msg_0491_T07_00034
 	End
 
 scr_seq_T07_014:
-	ScrCmd_056 3, 0
-	ScrCmd_057 3
-	ScrCmd_058
-	TrainerTips msg_0491_T07_00035, VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	TrainerTipsEx 3, msg_0491_T07_00035
 	End
 
 scr_seq_T07_016:

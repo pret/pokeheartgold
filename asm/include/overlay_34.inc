@@ -77,7 +77,7 @@
 .public sub_02035798
 .public FieldSystem_TaskIsRunning
 .public sub_0205AA84
-.public sub_0205B4EC
+.public DialogBox_LoadFontPals
 .public DC_FlushRange
 .public _fadd
 .public _ffix

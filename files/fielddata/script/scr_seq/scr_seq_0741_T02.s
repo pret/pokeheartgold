@@ -236,34 +236,18 @@ scr_seq_T02_003:
 	End
 
 scr_seq_T02_004:
-	DirectionSignpost msg_0452_T02_00008, 0, 2, VAR_SPECIAL_RESULT
-	ScrCmd_057 3
-	ScrCmd_058
-	ScrCmd_060 VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	DirectionSignpostEx 0, 2, msg_0452_T02_00008
 	End
 
 scr_seq_T02_005:
-	ScrCmd_056 2, 0
-	ScrCmd_057 3
-	ScrCmd_058
-	TrainerTips msg_0452_T02_00009, VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	TrainerTipsEx 2, msg_0452_T02_00009
 	End
 
 scr_seq_T02_006:
-	ScrCmd_056 2, 0
-	ScrCmd_057 3
-	ScrCmd_058
-	TrainerTips msg_0452_T02_00010, VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	TrainerTipsEx 2, msg_0452_T02_00010
 	End
 
 scr_seq_T02_007:
-	ScrCmd_056 2, 0
-	ScrCmd_057 3
-	ScrCmd_058
-	TrainerTips msg_0452_T02_00011, VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	TrainerTipsEx 2, msg_0452_T02_00011
 	End
 	.balign 4, 0

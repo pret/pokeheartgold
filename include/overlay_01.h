@@ -56,12 +56,6 @@ BOOL Task_UseSweetScentInField(TaskManager *taskManager);
 BOOL ov01_021EF348(ScriptContext *ctx);
 void ov01_021EF4C4(struct UnkStruct_Ov01_021EF4C4 *, ScriptContext *ctx);
 void ov01_021EF4DC(ScriptContext *ctx, MsgData *msg_data, u16 msg_no, u8 can_ab_speed_up, struct UnkStruct_Ov01_021EF4C4 *);
-void ov01_021F3D68(struct FieldSystemUnkSub68 *, u8, u16);
-void ov01_021F3D70(struct FieldSystemUnkSub68 *, u8);
-Window *ov01_021F3D80(struct FieldSystemUnkSub68 *);
-u8 ov01_021F3D84(struct FieldSystemUnkSub68 *);
-BOOL ov01_021F3D88(struct FieldSystemUnkSub68 *);
-void ov01_021F3D98(FieldSystem *fieldSystem);
 struct UnkStruct_ov01_021EDC28 *ov01_021EDF78(FieldSystem *fieldSystem, u8 x, u8 y, u8 initCursorPos, u8 cancellable, u16 *ret_p, MessageFormat *msgFmt, Window *window, MsgData *msgData);
 struct UnkStruct_ov01_021EDC28 **ov01_021F6B20(FieldSystem *fieldSystem);
 void ov01_021EDC7C(struct UnkStruct_ov01_021EDC28 *menu, u32 msgId, u32 value);
@@ -123,7 +117,7 @@ struct UnkStruct_020FACDC {
     int filler_00[12 / sizeof(int)];
 };
 
-void ov01_021F3C0C(void *fieldSystem_unk9C, int a1, const VecFx32 *unk_FACDC, int a3, void *fieldSystem_unk54);
+void *ov01_021F3C0C(void *fieldSystem_unk9C, int a1, const VecFx32 *unk_FACDC, int a3, void *fieldSystem_unk54);
 BOOL ov01_022060B8(FieldSystem *fieldSystem, u8 a1, u8 a2);
 
 struct BankTransactionWorkSub {

@@ -110,18 +110,10 @@ _016D:
 	End
 
 scr_seq_R37_002:
-	DirectionSignpost msg_0393_R37_00000, 1, 3, VAR_SPECIAL_RESULT
-	ScrCmd_057 3
-	ScrCmd_058
-	ScrCmd_060 VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	DirectionSignpostEx 1, 3, msg_0393_R37_00000
 	End
 
 scr_seq_R37_003:
-	ScrCmd_056 3, 0
-	ScrCmd_057 3
-	ScrCmd_058
-	TrainerTips msg_0393_R37_00001, VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	TrainerTipsEx 3, msg_0393_R37_00001
 	End
 	.balign 4, 0

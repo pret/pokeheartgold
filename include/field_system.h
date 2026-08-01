@@ -88,12 +88,12 @@ typedef struct FieldEnvSubUnk18 {
     u32 direction;
 } FieldEnvSubUnk18;
 
-struct FieldSystemUnkSub68 {
-    Window unk0;
-    u16 unk10;
-    u8 unk12;
-    u8 unk13_0 : 7;
-    u8 unk13_7 : 1;
+struct FieldSignpostWindow {
+    Window window;
+    u16 map;
+    u8 type;
+    u8 cmd : 7;
+    u8 active : 1;
 };
 
 typedef struct FieldSystemUnkSub4 {
@@ -106,8 +106,11 @@ typedef struct FieldSystemUnkSub4 {
     u32 unk18;
     u32 unk1c;
     u32 unk20;
-    void *legendCutsceneCamera;
+    void *unk24;
 } FieldSystemUnkSub4;
+
+// TODO: merge #491
+typedef struct MapPropManager MapPropManager;
 
 struct FieldSystem {
     struct FieldSystemUnkSub0 *unk0;
@@ -133,7 +136,7 @@ struct FieldSystem {
     TerrainAttributes *terrainAttributes;
     u32 unk60;
     int unk64;
-    struct FieldSystemUnkSub68 *unk68;
+    struct FieldSignpostWindow *signpostWindow;
     BOOL unk6C;
     int unk70;
     const struct UnkStruct_020FC5CC *unk74;
@@ -146,8 +149,8 @@ struct FieldSystem {
     u8 filler_88[0x8];
     int unk90;
     BagCursor *bagCursor;
-    u8 filler_98[0x4];
-    void *unk9C;
+    void *unk98;
+    MapPropManager *unk9C;
     FrontierFieldSystem *frontierFsys;
     LinkBattleRuleset *linkBattleRuleset;
     UnkStruct_02092BB8 *unkA8;
@@ -161,7 +164,7 @@ struct FieldSystem {
     u8 filler_CC[0x4];
     u16 lastTouchMenuInput;
     u8 unkD2_0 : 6;
-    u8 unkD2_6 : 1;
+    u8 textbox_open : 1;
     u8 unkD2_7 : 1;
     u8 unkD3;
     u8 filler_D4[0x4];
