@@ -71,11 +71,25 @@ jobs:
           GAME_REVISION: 0
         run: make -j4 2> >(sed -r 's/^/::error::/')
 
+      - name: Calcrom
+        id: calcrom
+        if: ${{ github.event_name == 'push' }}
+        uses: ./.github/actions/calcrom/action.yml
+        with:
+          romnames: heartgold.us soulsilver.us
+
       - name: Webhook
         if: ${{ github.event_name == 'push' }}
-        run: |
-          sudo chmod 755 $GITHUB_WORKSPACE/.github/calcrom/webhook.sh
-          $GITHUB_WORKSPACE/.github/calcrom/webhook.sh pokeheartgold "$CALCROM_WEBHOOK_URL"
+        uses: tsickert/discord-webhook@b217a69502f52803de774ded2b1ab7c282e99645 # v7.0.0
+        with:
+          webhook-url: ${{ secrets.WEBHOOKURL }}
+          content: |
+            pokeheartgold progress:
+            ```
+            ${{ steps.calcrom.outputs.calcrom_output }}
+            ```
+          username: OK
+          avatar-url: https://i.imgur.com/38BQHdd.png
         continue-on-error: true
 
       - name: Post error archive
