@@ -250,7 +250,7 @@ static void DeleteSavedataApp_FreeBgConfig(DeleteSavedataApp_Data *data) {
 }
 
 static void DeleteSavedataApp_SetupTextAndWindow(DeleteSavedataApp_Data *data) {
-    data->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0007_bin, data->heapID);
+    data->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, msg_0007, data->heapID);
     ResetAllTextPrinters();
 
     data->printState = PRINTSTATE_PRINT_TEXT;

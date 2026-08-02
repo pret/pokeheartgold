@@ -151,7 +151,7 @@ void Options::WriteNaix(vector<uint32_t> &sizes, vector<string> &names) {
         char num_buf[9] = "00000000";
         for (int i = 0; i < sizes.size(); i++) {
             naixfile << "    NARC_" << stem << "_";
-            if (naix_names) {
+            if (naix_names && i < names.size()) {
                 naixfile << names[i];
             } else {
                 naixfile << stem << "_" << num_buf;

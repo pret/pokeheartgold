@@ -380,13 +380,13 @@ void sub_0207EB24(PartyMenu *partyMenu) {
     G2dRenderer_SetSubSurfaceCoords(SpriteSystem_GetRenderer(partyMenu->spriteRenderer), 0, FX32_CONST(256));
 
     u16 _021018B4[7] = {
-        NARC_resdat_resdat_00000050_bin,
-        NARC_resdat_resdat_00000051_bin,
-        NARC_resdat_resdat_00000049_bin,
-        NARC_resdat_resdat_00000048_bin,
+        resdat_00000050_bin,
+        resdat_00000051_bin,
+        resdat_00000049_bin,
+        resdat_00000048_bin,
         0xFFFF,
         0xFFFF,
-        NARC_resdat_resdat_00000084_bin,
+        resdat_00000084_bin,
     };
     sub_0200D294(partyMenu->spriteRenderer, partyMenu->spriteGfxHandler, _021018B4);
 }

@@ -38,40 +38,40 @@ static const OamCharTransferParam sOamCharTransferParam = {
 };
 
 static const u16 sResList_Map[] = {
-    NARC_resdat_resdat_00000034_bin,
-    NARC_resdat_resdat_00000035_bin,
-    NARC_resdat_resdat_00000033_bin,
-    NARC_resdat_resdat_00000032_bin,
+    resdat_00000034_bin,
+    resdat_00000035_bin,
+    resdat_00000033_bin,
+    resdat_00000032_bin,
     0xFFFF,
     0xFFFF,
-    NARC_resdat_resdat_00000080_bin,
+    resdat_00000080_bin,
 };
 static const u16 sResList_Configure[] = {
-    NARC_resdat_resdat_00000042_bin,
-    NARC_resdat_resdat_00000043_bin,
-    NARC_resdat_resdat_00000041_bin,
-    NARC_resdat_resdat_00000040_bin,
+    resdat_00000042_bin,
+    resdat_00000043_bin,
+    resdat_00000041_bin,
+    resdat_00000040_bin,
     0xFFFF,
     0xFFFF,
-    NARC_resdat_resdat_00000082_bin,
+    resdat_00000082_bin,
 };
 static const u16 sResList_Phone[] = {
-    NARC_resdat_resdat_00000046_bin,
-    NARC_resdat_resdat_00000047_bin,
-    NARC_resdat_resdat_00000045_bin,
-    NARC_resdat_resdat_00000044_bin,
+    resdat_00000046_bin,
+    resdat_00000047_bin,
+    resdat_00000045_bin,
+    resdat_00000044_bin,
     0xFFFF,
     0xFFFF,
-    NARC_resdat_resdat_00000083_bin,
+    resdat_00000083_bin,
 };
 static const u16 sResList_Radio[] = {
-    NARC_resdat_resdat_00000038_bin,
-    NARC_resdat_resdat_00000039_bin,
-    NARC_resdat_resdat_00000037_bin,
-    NARC_resdat_resdat_00000036_bin,
+    resdat_00000038_bin,
+    resdat_00000039_bin,
+    resdat_00000037_bin,
+    resdat_00000036_bin,
     0xFFFF,
     0xFFFF,
-    NARC_resdat_resdat_00000081_bin,
+    resdat_00000081_bin,
 };
 
 // clang-format off

@@ -734,7 +734,7 @@ static void ov62_021E60D4(MicTestSub_B8 *a0) {
 }
 
 static void ov62_021E60E4(MicTestSub_B8 *a0, enum HeapID heapID) {
-    a0->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0234_bin, heapID);
+    a0->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, msg_0234, heapID);
 
     for (int i = 0; i < 3; i++) {
         AddWindowParameterized(a0->bgConfig, &a0->window[i], sMicTestTextBoxes[i].bgId, sMicTestTextBoxes[i].x, sMicTestTextBoxes[i].y, sMicTestTextBoxes[i].width, sMicTestTextBoxes[i].height, sMicTestTextBoxes[i].palNum, sMicTestTextBoxes[i].baseTile);

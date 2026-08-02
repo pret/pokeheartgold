@@ -490,9 +490,9 @@ BOOL NamingScreenApp_Init(OverlayManager *ovyMan, int *pState) {
         data->bgConfig = BgConfig_Alloc(HEAP_ID_NAMING_SCREEN);
         narc = NARC_New(NARC_data_namein, HEAP_ID_NAMING_SCREEN);
         data->msgFormat = MessageFormat_New(HEAP_ID_NAMING_SCREEN);
-        data->msgData_249 = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0249_bin, HEAP_ID_NAMING_SCREEN);
-        data->msgData_254 = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0254_bin, HEAP_ID_NAMING_SCREEN);
-        data->msgData_197 = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0197_bin, HEAP_ID_NAMING_SCREEN);
+        data->msgData_249 = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msg_0249, HEAP_ID_NAMING_SCREEN);
+        data->msgData_254 = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, msg_0254, HEAP_ID_NAMING_SCREEN);
+        data->msgData_197 = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, msg_0197, HEAP_ID_NAMING_SCREEN);
         SetKeyRepeatTimers(4, 8);
         NamingScreen_SetGraphicsBanks();
         NamingScreen_SetBgModesAndInitBuffers(data->bgConfig);

@@ -130,7 +130,7 @@ MessageFormat *sub_0204B538(SaveData *saveData, u16 numEligiblePokemon, u16 a2, 
     speciesName = String_New(14, HEAP_ID_FIELD1);
     unused = String_New(2, HEAP_ID_FIELD1);
     pokedex = Save_Pokedex_Get(saveData);
-    messageData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0237_bin, HEAP_ID_FIELD1);
+    messageData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, msg_0237, HEAP_ID_FIELD1);
     messageFormat = MessageFormat_New_Custom(19, 14, HEAP_ID_FIELD1);
     BufferIntegerAsString(messageFormat, 0, numEligiblePokemon, 1, PRINTING_MODE_LEFT_ALIGN, TRUE);
     for (u8 i = 0; i < NUM_BANNED_BATTLE_FRONTIER; i++) {
@@ -229,7 +229,7 @@ u16 sub_0204B73C(UnkStruct_Fsys_A0 *a0, u8 a1, u8 a2, u32 a3) {
 }
 
 static u16 *sub_0204B7D0(UnkStruct_0204B7D0 *a0, u32 frontierTrainerIndex, enum HeapID heapID) {
-    MsgData *messageData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0027_bin, heapID);
+    MsgData *messageData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, msg_0027, heapID);
     MI_CpuClear8(a0, sizeof(UnkStruct_0204B7D0));
     u16 *unk = sub_0204BC7C(frontierTrainerIndex, heapID);
     a0->unk00 = frontierTrainerIndex;

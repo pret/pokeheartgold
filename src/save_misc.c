@@ -38,7 +38,7 @@ void Save_Misc_Init(SAVE_MISC_DATA *saveMiscData) {
     MI_CpuFill8(saveMiscData->unk_0280, 0xFF, 8);
     MailMsg_Init_WithBank(&saveMiscData->battleGreetingEC, MAILMSG_BANK_0295_GMM);
     saveMiscData->battleGreetingEC.msg_no = msg_0295_00000;
-    saveMiscData->battleGreetingEC.fields[0] = GetECWordIndexByPair(NARC_msg_msg_0287_bin, msg_0287_regards);
+    saveMiscData->battleGreetingEC.fields[0] = GetECWordIndexByPair(msg_0287, msg_0287_regards);
     saveMiscData->battleGreetingEC.fields[1] = EC_WORD_NULL;
     for (i = 0; i < 5; i++) {
         saveMiscData->unk_02A8[0][i] = -1;

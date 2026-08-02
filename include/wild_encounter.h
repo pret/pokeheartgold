@@ -5,7 +5,7 @@
 extern "C" {
 #endif
 
-#include <nitro.h>
+#include <nitro/types.h>
 
 #define NUM_ENCOUNTERS_LAND      12
 #define NUM_ENCOUNTERS_SOUNDS    2

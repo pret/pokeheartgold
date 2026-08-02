@@ -491,7 +491,7 @@ static BOOL ov54_021E5CE4(OptionsApp_Data *data) {
 
     case 1:
         OptionsApp_SetupGraphicsData(data);
-        data->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0045_bin, data->heapID);
+        data->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, msg_0045, data->heapID);
         OptionsApp_LoadMenuEntriesData(data);
         break;
 
@@ -1011,13 +1011,13 @@ static void OptionsApp_SetupSpriteRenderer(OptionsApp_Data *data) {
     SpriteSystem_InitSprites(data->spriteRenderer, data->spriteGfxHandler, 9);
 
     u16 fileIdList[7] = {
-        NARC_resdat_resdat_00000022_bin,
-        NARC_resdat_resdat_00000023_bin,
-        NARC_resdat_resdat_00000021_bin,
-        NARC_resdat_resdat_00000020_bin,
+        resdat_00000022_bin,
+        resdat_00000023_bin,
+        resdat_00000021_bin,
+        resdat_00000020_bin,
         0xFFFF,
         0xFFFF,
-        NARC_resdat_resdat_00000077_bin,
+        resdat_00000077_bin,
     };
     sub_0200D294(data->spriteRenderer, data->spriteGfxHandler, fileIdList);
 

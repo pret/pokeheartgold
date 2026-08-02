@@ -971,7 +971,7 @@ static void ViewRankingsApp_GetRankingsFromSave(ViewRankingsAppData *appData, Sa
 }
 
 static void ViewRankings_CreateStrings(ViewRankingsAppData *appData) {
-    appData->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0421_bin, HEAP_ID_RANKINGS_APP);
+    appData->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msg_0421, HEAP_ID_RANKINGS_APP);
     appData->msgFormat = MessageFormat_New_Custom(2, 76, HEAP_ID_RANKINGS_APP);
     appData->formatedStrBuf = String_New(76, HEAP_ID_RANKINGS_APP);
     appData->playerNameString = NewString_ReadMsgData(appData->msgData, msg_0421_00043);

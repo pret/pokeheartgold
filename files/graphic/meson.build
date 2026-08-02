@@ -59,3 +59,34 @@ plist_gra_narc = custom_target('plist_gra.narc',
 
 nitrofs_files += plist_gra_narc
 naix_headers += plist_gra_narc[1]
+
+############################################################
+###                      ZUKAN_GRA                       ###
+############################################################
+subdir('zukan_gra')
+
+zukan_gra_narc = custom_target('zukan_gra.narc',
+    command : [
+        narc_exe,
+        '-p', build_dir + '/zukan_gra.narc',
+        '-d', build_dir + '/zukan_gra.narc.p',
+        '-i'
+    ],
+    input : [
+        zukan_gra_ncgr_lz_clobber,
+        zukan_gra_ncgr_lz_sopc,
+        zukan_gra_nclr,
+        zukan_gra_nscr_lz,
+        zukan_gra_ncer_lz,
+        zukan_gra_nanr_lz,
+    ],
+    output : [
+        'zukan_gra.narc',
+        'zukan_gra.naix'
+    ],
+    build_by_default:true
+)
+
+nitrofs_files += zukan_gra_narc
+naix_headers += zukan_gra_narc[1]
+

@@ -5,17 +5,19 @@ set -euo pipefail
 help() {
     echo "Syntax: ./json2narc.sh [OPTIONS] FILE..."
     echo "options:"
-    echo " -c | --compiler      path to the compiler executable"
-    echo " -h | --help          print this message and exit"
-    echo " -i | --include       append an indclude directory for the assembler"
-    echo " -J | --jsonproc      path to the jsonproc program"
-    echo " -T | --template      path to the jsonproc template"
-    echo " -O | --o2narc        path to the o2narc program"
-    echo " -d | --out-dir       directory for output files"
-    echo " -l | --language      language of the intermediate file (default: c)"
-    echo " -p | --post-script   postscript to append to the output file names"
-    echo " -D | --define        defines to be used by the compiler"
-    echo " -N | --narc         outputs the narc directly. For use when everything is contained in a single json file."
+    echo " -c | --compiler          path to the compiler executable"
+    echo " -h | --help              print this message and exit"
+    echo " -i | --include           append an indclude directory for the assembler"
+    echo " -J | --jsonproc          path to the jsonproc program"
+    echo " -T | --template          path to the jsonproc template"
+    echo " -O | --o2narc            path to the o2narc program."
+    echo " -d | --out-dir           directory for output files"
+    echo " -l | --language          language of the intermediate file (default: c)"
+    echo " -p | --post-script       postscript to append to the output file names"
+    echo " -D | --define            defines to be used by the compiler"
+    echo " -N | --narc              outputs the narc directly. For use when everything is contained in a single json file."
+    echo " -w | --overwrite-name    name to use for the output files instead of the original name"
+    echo " -y | --obj-copy          use object copy instead of o2narc"
 }
 
 JSON_FILES=()
@@ -29,6 +31,10 @@ OUTDIR="."
 LANG="c"
 POSTSCRIPT=""
 BUILD_NARC=false
+OW_NAME=""
+OW_NAME_FLAG=false
+OBJ_COPY="arm-none-eabi-objcopy"
+OBJ_COPY_FLAG=false
 
 while [[ $# -gt 0 ]] ; do
     case $1 in
@@ -85,6 +91,16 @@ while [[ $# -gt 0 ]] ; do
             BUILD_NARC=true
             shift
             ;;
+        -w|--overwrite-name)
+            OW_NAME="$2"
+            OW_NAME_FLAG=true
+            shift
+            shift
+            ;;
+        -y|--obj-copy)
+            OBJ_COPY_FLAG=true
+            shift;
+            ;;
         *)
             JSON_FILES+=("$1")
             shift
@@ -101,18 +117,30 @@ for json_file in "${JSON_FILES[@]}" ; do
     
     
     # Output files
-    json_intr="$OUTDIR/$json_noext.c"
-    if [ "$LANG" = asm ] ; then
-        json_intr="$OUTDIR/$json_noext.s"
+    if [ "$OW_NAME_FLAG" = true ]; then        
+        json_intr="$OUTDIR/$OW_NAME.c"
+        if [ "$LANG" = asm ] ; then
+            json_intr="$OUTDIR/$OW_NAME.s"
+        fi
+        json_obj="$OUTDIR/$OW_NAME.o"
+        json_bin="$OUTDIR/$OW_NAME.bin"
+        narc="$OUTDIR/$OW_NAME.narc"
+    else 
+        json_intr="$OUTDIR/$json_noext.c"
+        if [ "$LANG" = asm ] ; then
+            json_intr="$OUTDIR/$json_noext.s"
+        fi
+        json_obj="$OUTDIR/$json_noext.o"
+        json_bin="$OUTDIR/$json_noext.bin"
+        narc="$OUTDIR/$json_noext.narc"
     fi
-    json_obj="$OUTDIR/$json_noext.o"
-    json_bin="$OUTDIR/$json_noext.bin"
-    
     # Convert
     $JSONPROC "$json_file" $TEMPLATE "$json_intr"
     $CC "${INCLUDES[@]}" "${DEFINES[@]}" -c "$json_intr" -o "$json_obj" 
-    if [ "$BUILD_NARC" = true ] ; then
-        $O2NARC "$json_obj" "$OUTDIR/$json_noext.narc" -N -p 0xFF
+    if [ "$OBJ_COPY_FLAG" = true ] ; then
+        $OBJ_COPY -O binary "$json_obj" "$json_bin"
+    elif [ "$BUILD_NARC" = true ] ; then
+        $O2NARC "$json_obj" "$narc" -N -p 0xFF
     else
         $O2NARC "$json_obj" "$json_bin" -f
     fi

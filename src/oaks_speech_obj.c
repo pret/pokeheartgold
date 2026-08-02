@@ -127,13 +127,13 @@ void OakSpeech_InitSpriteEngine(OakSpeechData *data) {
 
     {
         u16 fileIdList[7] = {
-            NARC_resdat_resdat_00000026_bin,
-            NARC_resdat_resdat_00000027_bin,
-            NARC_resdat_resdat_00000025_bin,
-            NARC_resdat_resdat_00000024_bin,
+            resdat_00000026_bin,
+            resdat_00000027_bin,
+            resdat_00000025_bin,
+            resdat_00000024_bin,
             0xFFFF,
             0xFFFF,
-            NARC_resdat_resdat_00000078_bin,
+            resdat_00000078_bin,
         };
         sub_0200D294(data->spriteRenderer, data->spriteGfxHandler, fileIdList);
     }

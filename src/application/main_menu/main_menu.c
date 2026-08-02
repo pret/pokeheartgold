@@ -492,7 +492,7 @@ static BOOL ov74_02227584(MainMenuAppData *data) {
          .y = 5,
          .width = 22,
          .height = 14,
-         .gmmId = NARC_msg_msg_0800_bin,
+         .gmmId = msg_0800,
          // clang-format off
          .msgId = msg_0800_00016, // "Your Nintendo Wi-Fi Connection User Information may have been erased. [...]"
          .unused18 = 0,
@@ -659,7 +659,7 @@ static BOOL ov74_0222779C(MainMenuAppData *data) {
         break;
     case 17: {
         UnkStruct_ov74_02235414 unk;
-        ov74_02235414(&unk, &data->unk154, 0, NARC_msg_msg_0017_bin, 0x3F7, 2);
+        ov74_02235414(&unk, &data->unk154, 0, msg_0017, 0x3F7, 2);
         UnkStruct_ov74_0223BC30 *unk2;
         u32 unk3 = data->unk40 & ~data->unk44;
         if (unk3 & (1 << 0)) {
@@ -686,7 +686,7 @@ static BOOL ov74_0222779C(MainMenuAppData *data) {
         if ((unk3 & (1 << 7)) && !(unk3 & (1 << 1 | 1 << 0))) {
             for (int i = 0; i < (int)NELEMS(data->unk164); i++) {
                 Window *window = &data->unk164[i];
-                ov74_02235414(&unk, window, 0, NARC_msg_msg_0017_bin, 0x3F7, 2);
+                ov74_02235414(&unk, window, 0, msg_0017, 0x3F7, 2);
                 UnkStruct_ov74_0223BC30 *unk3 = &ov74_0223BC30[i + 5];
                 unk.textY = 4;
                 ov74_02235464(&unk, unk3->width, unk3->height, (i * 72) + 1);
@@ -917,7 +917,7 @@ static BOOL MainMenu_PrintContinueButton(MainMenuAppData *data, u32 a1, UnkStruc
     MessageFormat *messageFormat;
     MsgData *msgData;
 
-    msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0442_bin, HEAP_ID_MAIN_MENU);
+    msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, msg_0442, HEAP_ID_MAIN_MENU);
     messageFormat = MessageFormat_New(HEAP_ID_MAIN_MENU);
     u32 textColor = (PlayerProfile_GetTrainerGender(data->profile) == PLAYER_GENDER_FEMALE) ? MAKE_TEXT_COLOR(3, 4, 15) : MAKE_TEXT_COLOR(7, 8, 15);
 
@@ -1094,7 +1094,7 @@ static BOOL ov74_022282CC(MainMenuAppData *data) {
     for (i = 0, y = 1; i < APPOPTION_COUNT; i++) {
         const MainMenuButton *button = &sMainMenuButtons[i];
         UnkStruct_ov74_02235414 unk;
-        ov74_02235414(&unk, &data->unk5C[i], 1, NARC_msg_msg_0442_bin, 0x3F7, 2);
+        ov74_02235414(&unk, &data->unk5C[i], 1, msg_0442, 0x3F7, 2);
         ov74_02235464(&unk, 23, button->height, data->unk20);
         if (button->printFunction != NULL) {
             if (data->unkEC[i] != 0) {

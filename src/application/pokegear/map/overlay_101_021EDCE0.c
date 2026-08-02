@@ -551,7 +551,7 @@ static void FlyMap_RemoveWindows(PokegearMapAppData *mapApp) {
 }
 
 static void FlyMap_LoadStrings(PokegearMapAppData *mapApp) {
-    mapApp->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0273_bin, mapApp->heapID);
+    mapApp->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msg_0273, mapApp->heapID);
     mapApp->msgFormat = MessageFormat_New_Custom(2, 91, mapApp->heapID);
     mapApp->flavorTextString = String_New(91, mapApp->heapID);
     mapApp->regionNameStrings[0] = NewString_ReadMsgData(mapApp->msgData, msg_0273_00001);

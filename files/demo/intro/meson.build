@@ -1,0 +1,30 @@
+build_dir = meson.current_build_dir()
+
+############################################################
+###                         INTRO                        ###
+############################################################
+subdir('intro')
+
+intro_narc = custom_target('intro.narc',
+    command : [
+        narc_exe,
+        '-p', build_dir + '/intro.narc',
+        '-d', build_dir + '/intro.narc.p',
+        '-i'
+    ],
+    input : [
+        intro_ncgr,
+        intro_nclr,
+        intro_nscr,
+        intro_nanr,
+        intro_ncer
+    ],
+    output : [
+        'intro.narc',
+        'intro.naix'
+    ],
+    build_by_default:true
+)
+
+nitrofs_files += intro_narc
+naix_headers += intro_narc[1]

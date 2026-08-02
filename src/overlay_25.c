@@ -214,7 +214,7 @@ void TrainerHouse_StartBattle(FieldSystem *fieldSystem, u32 trainerNum) {
 
 static void TrainerHouse_SetNames(TrainerHouseSet *set) {
     MI_CpuCopy16(&ov25_02259D9C, set, sizeof(TrainerHouseSet));
-    MsgData *messageData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0726_bin, HEAP_ID_FIELD2);
+    MsgData *messageData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, msg_0726, HEAP_ID_FIELD2);
     GF_ASSERT(messageData);
     if (messageData) {
         String *otName = NewString_ReadMsgData(messageData, msg_0726_00003);
