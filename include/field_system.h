@@ -6,14 +6,12 @@
 #include "field/draw_map_name.h"
 #include "field/dynamic_terrain_height.h"
 #include "field/hblank_system.h"
-#include "field/overlay_01_021E66E4.h"
 #include "field/map_prop.h"
 #include "field/map_prop_animation.h"
 #include "field/model_attributes.h"
-#include "overlay_01_021EA824.h" // replace with field/fog.h
+#include "field/overlay_01_021E66E4.h"
 #include "field/overlay_01_021EAFD4.h"
 #include "field/overlay_01_02204004.h"
-#include "overlay_01_021F1348.h"
 #include "field/signpost.h"
 
 #include "bag_cursor.h"
@@ -27,7 +25,9 @@
 #include "map_events_internal.h"
 #include "map_matrix.h"
 #include "menu_input_state.h"
+#include "overlay_01_021EA824.h" // replace with field/fog.h
 #include "overlay_01_021EB1E8.h"
+#include "overlay_01_021F1348.h"
 #include "overlay_manager.h"
 #include "photo_types_def.h"
 #include "save_pokegear.h"
@@ -142,7 +142,7 @@ typedef struct FieldSystemUnkSub120_Sub818 {
 
 typedef struct FieldSystemUnkSub120 {
     Window window;
-    String* string;
+    String *string;
     NarcId narcId;
     u8 unk18[596];
     NarcId unk26C;
@@ -160,8 +160,8 @@ typedef struct FieldSystemUnkSub120 {
     u8 unk869;
     u8 unk86A;
     u8 unk86B;
-    u8 unk86C_3:4;
-    u8 unk86C_4:4;
+    u8 unk86C_3 : 4;
+    u8 unk86C_4 : 4;
     u8 unk86D;
     u16 unk86E;
     VecFx32 unk870;
@@ -220,8 +220,8 @@ struct FieldSystem {
     u32 unkAC;
     void *unkB0;
     s64 unkB4;
-    int unkBC; // flags?
-    void *unkC0; // UnkStruct_FieldSysC0
+    int unkBC;                 // flags?
+    void *unkC0;               // UnkStruct_FieldSysC0
     int environmentSoundState; // Used to keep track of the active weather/soundplate sound and their associated loading status.
     FieldSystemUnkSubC8 *unkC8;
     void *unkCC;

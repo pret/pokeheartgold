@@ -1,10 +1,10 @@
 #ifndef POKEHEARTGOLD_MAP_EVENTS_H
 #define POKEHEARTGOLD_MAP_EVENTS_H
 
-#include "script_manager.h"
 #include "heap.h"
 #include "map_events_internal.h"
 #include "map_header.h"
+#include "script_manager.h"
 
 void Field_AllocateMapEvents(FieldSystem *work, enum HeapID heapID);
 void Field_FreeMapEvents(FieldSystem *work);

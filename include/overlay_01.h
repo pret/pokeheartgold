@@ -1,8 +1,9 @@
 #ifndef POKEHEARTGOLD_OVERLAY_01_H
 #define POKEHEARTGOLD_OVERLAY_01_H
 
-#include "field_system.h"
 #include "field/map_prop_animation.h"
+
+#include "field_system.h"
 #include "overlay_01_rock_smash_item.h"
 #include "script.h"
 #include "unk_0206793C.h"

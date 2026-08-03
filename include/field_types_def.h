@@ -27,5 +27,6 @@ typedef struct ObjectEvent ObjectEvent;
 typedef struct WarpEvent WarpEvent;
 typedef struct CoordEvent CoordEvent;
 typedef struct GearPhoneRingManager GearPhoneRingManager;
+typedef struct FieldTextureManager FieldTextureManager;
 
 #endif // POKEHEARTGOLD_FIELD_TYPES_DEF_H

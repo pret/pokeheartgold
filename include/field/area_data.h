@@ -1,8 +1,9 @@
 #ifndef POKEHEARTGOLD_FIELD_AREA_DATA_H
 #define POKEHEARTGOLD_FIELD_AREA_DATA_H
 
-#include "filesystem.h"
 #include "field/map_prop_animation.h"
+
+#include "filesystem.h"
 
 typedef struct AreaDataManager AreaDataManager;
 
