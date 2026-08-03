@@ -11,7 +11,7 @@ typedef struct FieldEffectManager {
 } FieldEffectManager;
 
 // (field_effect_manager?)
-FieldEffectManager* FieldEffectManager_New(FieldSystem *fieldSystem, u32 rendererCount, enum HeapID heapID);
+FieldEffectManager *FieldEffectManager_New(FieldSystem *fieldSystem, u32 rendererCount, enum HeapID heapID);
 void FieldEffectManager_InitAnimManagerList(FieldEffectManager *fieldEffectManager, u32 animManagerCount);
 void ov01_021F1390(FieldEffectManager *fieldEffectManager, enum HeapID heapID, int, int, int, int, int, int, int);
 void FieldEffectManager_InitRenderers(FieldEffectManager *fieldEffectManager, const u32 *arg1);

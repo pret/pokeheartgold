@@ -1,7 +1,7 @@
 #ifndef POKEHEARTGOLD_FIELD_OVERLAY_01_021EAFD4_H
 #define POKEHEARTGOLD_FIELD_OVERLAY_01_021EAFD4_H
 
-#include "field_system.h"
+#include "field_types_def.h"
 
 #define MAX_TEXTURE_KEYS 16
 
@@ -25,12 +25,12 @@ typedef struct {
     TextureAnimationData animationData[0];
 } TextureDataHeader;
 
-typedef struct FieldTextureManager {
+struct FieldTextureManager {
     void *dataBuffer;
     TextureDataHeader *dataHeader;
     TextureSlot textureSlots[MAX_TEXTURE_KEYS];
     u32 unk188;
-} FieldTextureManager;
+};
 
 FieldTextureManager *FieldTextureManager_Init();
 void FieldTextureManager_LoadTexture(FieldTextureManager *textureManager, NNSG3dResTex *textureResource);

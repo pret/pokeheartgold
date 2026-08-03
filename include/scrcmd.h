@@ -3,9 +3,9 @@
 
 #include "constants/scrcmd.h"
 
-#include "script_manager.h"
 #include "save_special_ribbons.h"
 #include "script.h"
+#include "script_manager.h"
 
 static inline u16 ScriptGetVar(ScriptContext *ctx) {
     return FieldSystem_VarGet(ctx->fieldSystem, ScriptReadHalfword(ctx));

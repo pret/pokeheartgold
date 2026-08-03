@@ -1,8 +1,9 @@
 #ifndef POKEHEARTGOLD_FIELD_MAP_LOAD_MANAGER_H
 #define POKEHEARTGOLD_FIELD_MAP_LOAD_MANAGER_H
 
-#include "field_system.h"
 #include "field/map_prop_animation.h"
+
+#include "field_system.h"
 
 void MapLoadManager_Tick(MapLoadManager *mapLoadManager);
 MapLoadManager *MapLoadManager_New(MapMatrix *mapMatrix, void *unk34, void *unkC0, MapPropAnimationManager *mapPropAnimationManager, void *unkCC, int unk64, SaveData *saveData);

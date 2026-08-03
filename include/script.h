@@ -149,9 +149,9 @@ struct MapLoadMode {
     union {
         u32 unk_4;
         struct {
-        u8 unk4;
-        u8 unk5;
-        u8 unk6;
+            u8 unk4;
+            u8 unk5;
+            u8 unk6;
         };
     };
 };

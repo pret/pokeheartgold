@@ -1,8 +1,9 @@
 #ifndef POKEHEARTGOLD_FIELD_MAP_PROP_ANIMATION_H
 #define POKEHEARTGOLD_FIELD_MAP_PROP_ANIMATION_H
 
-#include "filesystem.h"
 #include "field/overlay_01_02204004.h"
+
+#include "filesystem.h"
 
 typedef struct MapPropAnimationManager {
     u8 unk0[0x13C];

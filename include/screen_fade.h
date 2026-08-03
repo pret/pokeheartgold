@@ -20,8 +20,8 @@ enum FadeType {
     FADE_TYPE_UNK_5, // Used in intro movie scene 5.
     FADE_TYPE_UNK_6,
     FADE_TYPE_UNK_7,
-    FADE_TYPE_UNK_8, // Used for camera shutter out.
-    FADE_TYPE_UNK_9, // Used for camera shutter in.
+    FADE_TYPE_UNK_8,       // Used for camera shutter out.
+    FADE_TYPE_UNK_9,       // Used for camera shutter in.
     FADE_TYPE_UNK_20 = 20, // Used in Voltorb Flip.
     FADE_TYPE_UNK_21,
     FADE_TYPE_UNK_43 = 43,

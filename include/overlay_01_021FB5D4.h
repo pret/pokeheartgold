@@ -3,8 +3,9 @@
 
 #include "global.h"
 
-#include "heap.h"
 #include "field/hblank_system.h"
+
+#include "heap.h"
 
 void *ov01_021FB5D4(enum HeapID heapID, HBlankSystem *hBlankSystem);
 void ov01_021FB610(void *unk20);
