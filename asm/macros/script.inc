@@ -340,9 +340,9 @@
 	.short \msg_id
 	.endm
 
-	.macro ScrCmd_048 arg0
+	.macro ScrCmd_048 msgID
 	.short 48
-	.byte \arg0
+	.byte \msgID
 	.endm
 
 	; Waits for A or B button
