@@ -26,7 +26,7 @@
 .public ov01_021EA81C
 .public ov01_021EA9B0
 .public MapPropManager_New
-.public ov01_021F3660
+.public MapPropManager_Free
 .public ov01_021F36AC
 .public ov01_021F36DC
 .public ov01_021F3744

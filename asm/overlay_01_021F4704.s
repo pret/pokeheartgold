@@ -3654,7 +3654,7 @@ _021F6226:
 	ldr r1, [r0]
 	ldr r0, _021F62AC ; =0x00000868
 	ldr r0, [r1, r0]
-	bl ov01_021F3660
+	bl MapPropManager_Free
 	add r0, r5, r4
 	add r0, #0x90
 	ldr r1, [r0]

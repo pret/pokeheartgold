@@ -12,97 +12,9 @@
 	.include "overlay_01_021F3610.inc"
 	.include "global.inc"
 
+	.extern MapProp_Init
+
 	.text
-
-	thumb_func_start ov01_021F3610
-ov01_021F3610: ; 0x021F3610
-	push {r3, r4, r5, r6, r7, lr}
-	add r6, r0, #0
-	mov r0, #7
-	lsl r0, r0, #8
-	mov r4, #0
-	str r1, [r6, r0]
-	add r7, r4, #0
-_021F361E:
-	mov r0, #0x38
-	mul r0, r4
-	add r5, r6, r0
-	add r0, r5, #0
-	bl ov01_021F3668
-	add r0, r4, #1
-	lsl r0, r0, #0x18
-	lsr r4, r0, #0x18
-	str r7, [r5, #0x10]
-	cmp r4, #0x20
-	blo _021F361E
-	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ov01_021F3610
-
-	thumb_func_start MapPropManager_New
-MapPropManager_New: ; 0x021F3638
-	push {r3, r4, r5, lr}
-	add r5, r1, #0
-	ldr r1, _021F365C ; =0x00000704
-	bl Heap_Alloc
-	add r4, r0, #0
-	ldr r2, _021F365C ; =0x00000704
-	mov r0, #0
-	add r1, r4, #0
-	bl MIi_CpuClearFast
-	add r0, r4, #0
-	add r1, r5, #0
-	bl ov01_021F3610
-	add r0, r4, #0
-	pop {r3, r4, r5, pc}
-	nop
-_021F365C: .word 0x00000704
-	thumb_func_end MapPropManager_New
-
-	thumb_func_start ov01_021F3660
-ov01_021F3660: ; 0x021F3660
-	ldr r3, _021F3664 ; =Heap_Free
-	bx r3
-	.balign 4, 0
-_021F3664: .word Heap_Free
-	thumb_func_end ov01_021F3660
-
-	thumb_func_start ov01_021F3668
-ov01_021F3668: ; 0x021F3668
-	push {r3, r4, r5}
-	sub sp, #0xc
-	add r3, r0, #0
-	add r2, sp, #0
-	mov r0, #0
-	str r0, [r2]
-	str r0, [r2, #4]
-	str r0, [r2, #8]
-	str r0, [r3]
-	str r0, [r3, #4]
-	str r0, [r3, #8]
-	add r4, r3, #0
-	add r5, r2, #0
-	str r0, [r3, #0xc]
-	ldmia r5!, {r0, r1}
-	add r4, #0x14
-	stmia r4!, {r0, r1}
-	ldr r0, [r5]
-	add r5, r2, #0
-	str r0, [r4]
-	add r4, r3, #0
-	ldmia r5!, {r0, r1}
-	add r4, #0x20
-	stmia r4!, {r0, r1}
-	ldr r0, [r5]
-	add r3, #0x2c
-	str r0, [r4]
-	ldmia r2!, {r0, r1}
-	stmia r3!, {r0, r1}
-	ldr r0, [r2]
-	str r0, [r3]
-	add sp, #0xc
-	pop {r3, r4, r5}
-	bx lr
-	thumb_func_end ov01_021F3668
 
 	thumb_func_start ov01_021F36AC
 ov01_021F36AC: ; 0x021F36AC
@@ -115,7 +27,7 @@ _021F36B4:
 	mul r0, r4
 	add r5, r6, r0
 	add r0, r5, #0
-	bl ov01_021F3668
+	bl MapProp_Init
 	mov r0, #7
 	lsl r0, r0, #8
 	ldr r0, [r6, r0]
