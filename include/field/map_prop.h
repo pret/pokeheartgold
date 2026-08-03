@@ -6,8 +6,11 @@
 typedef struct MapPropManager MapPropManager;
 typedef struct MapProp MapProp;
 
-MapPropManager *MapPropManager_New(enum HeapID heapID, void *unkC0);
+MapPropManager *MapPropManager_New(enum HeapID heapID, UnkStruct_FieldSysC0 *unkC0);
 void MapPropManager_Free(MapPropManager *mapPropManager);
+void ov01_021F36AC(MapPropManager *mapPropManager);
+void ov01_021F36DC(int modelID, MapPropManager *mapPropManager);
+void ov01_021F3744(NARC *narc, u32 size, MapPropManager *mapPropManager);
 void MapPropManager_LoadOne(MapPropManager *mapPropManager, int modelID, const VecFx32 *position, const VecFx32 *rotation, MapPropAnimationManager *mapPropAnimationManager);
 void ov01_021F3C9C(MapPropManager *mapPropManager, AreaDataManager *areaDataManager);
 void ov01_021F3B0C(VecFx32 *vec, int);
