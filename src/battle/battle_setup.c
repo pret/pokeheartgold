@@ -108,7 +108,7 @@ BattleSetup *BattleSetup_New_Tutorial(enum HeapID heapID, FieldSystem *fieldSyst
     BattleSetup *setup = BattleSetup_New(heapID, BATTLE_TYPE_TUTORIAL);
     setup->saveData = fieldSystem->saveData;
     {
-        MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0445_bin, heapID);
+        MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, msg_0445, heapID);
         {
             String *name = String_New(PLAYER_NAME_LENGTH + 1, heapID);
             ReadMsgDataIntoString(msgData, PlayerProfile_GetTrainerGender(profile) ^ 1, name);

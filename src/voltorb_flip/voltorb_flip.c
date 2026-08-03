@@ -2293,7 +2293,7 @@ static void ov122_021E8094(OverlayManager *man) {
     work->unk22A = Options_GetTextFrameDelay(work->options);
 
     work->narc = NARC_New(NARC_application_voltorb_flip, work->heapID);
-    work->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0039_bin, work->heapID);
+    work->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msg_0039, work->heapID);
     work->msgFmt = MessageFormat_New(work->heapID);
     work->yesNoPrompt = YesNoPrompt_Create(work->heapID);
 

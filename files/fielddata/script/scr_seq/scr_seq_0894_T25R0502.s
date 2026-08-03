@@ -1,7 +1,7 @@
 #include "constants/scrcmd.h"
 #include "fielddata/script/scr_seq/event_T25R0502.h"
 #include "msgdata/msg/msg_0588_T25R0502.h"
-	.include "asm/macros/script.inc"
+	.include "macros/script.inc"
 
 	.rodata
 

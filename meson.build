@@ -12,7 +12,7 @@ fs = import('fs')
 ############################################################
 ###                    INCLUDE PATHS                     ###
 ############################################################
-public_includes = include_directories('include', 'asm/include', 'lib/include', 'build/files')
+public_includes = include_directories('include', 'asm/include', 'lib/include', 'build/files', 'files')
 toplevel_includes = include_directories('.')
 
 ############################################################

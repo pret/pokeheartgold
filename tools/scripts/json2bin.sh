@@ -13,11 +13,12 @@ help() {
     echo " -O | --o2narc            path to the o2narc program."
     echo " -d | --out-dir           directory for output files"
     echo " -l | --language          language of the intermediate file (default: c)"
-    echo " -p | --post-script       postscript to append to the output file names"
     echo " -D | --define            defines to be used by the compiler"
     echo " -N | --narc              outputs the narc directly. For use when everything is contained in a single json file."
     echo " -w | --overwrite-name    name to use for the output files instead of the original name"
     echo " -y | --obj-copy          use object copy instead of o2narc"
+    echo " -p | --padding           use the specified padding. Default: 0xFF"
+    echo " -a | --version-agnostic  removes the final prefix of the output naix file to normalize the hg and ss constants. Needs the shortname as an arg to take out"
 }
 
 JSON_FILES=()
@@ -29,12 +30,15 @@ O2NARC=""
 CC="arm-none-eabi-gcc"
 OUTDIR="."
 LANG="c"
-POSTSCRIPT=""
+PADDING="0xFF"
 BUILD_NARC=false
 OW_NAME=""
 OW_NAME_FLAG=false
 OBJ_COPY="arm-none-eabi-objcopy"
 OBJ_COPY_FLAG=false
+SED="sed"
+VER_AGNO=false
+SHORTNAME=""
 
 while [[ $# -gt 0 ]] ; do
     case $1 in
@@ -83,7 +87,7 @@ while [[ $# -gt 0 ]] ; do
             shift
             ;;
         -p|--post-script)
-            POSTSCRIPT="_$2"
+            PADDING="$2"
             shift
             shift
             ;;
@@ -99,7 +103,13 @@ while [[ $# -gt 0 ]] ; do
             ;;
         -y|--obj-copy)
             OBJ_COPY_FLAG=true
-            shift;
+            shift
+            ;;
+        -a|--version-agnostic)
+            VER_AGNO=true
+            SHORTNAME="$2"
+            shift
+            shift
             ;;
         *)
             JSON_FILES+=("$1")
@@ -113,7 +123,7 @@ mkdir -p "$OUTDIR"
 for json_file in "${JSON_FILES[@]}" ; do
     json_fname=${json_file##*/}
     json_noext=${json_fname%.*}
-    json_noext="${json_noext}${POSTSCRIPT}"
+    json_noext="${json_noext}"
     
     
     # Output files
@@ -125,6 +135,7 @@ for json_file in "${JSON_FILES[@]}" ; do
         json_obj="$OUTDIR/$OW_NAME.o"
         json_bin="$OUTDIR/$OW_NAME.bin"
         narc="$OUTDIR/$OW_NAME.narc"
+        naix="$OUTDIR/$OW_NAME.naix"
     else 
         json_intr="$OUTDIR/$json_noext.c"
         if [ "$LANG" = asm ] ; then
@@ -133,6 +144,7 @@ for json_file in "${JSON_FILES[@]}" ; do
         json_obj="$OUTDIR/$json_noext.o"
         json_bin="$OUTDIR/$json_noext.bin"
         narc="$OUTDIR/$json_noext.narc"
+        naix="$OUTDIR/$json_noext.naix"
     fi
     # Convert
     $JSONPROC "$json_file" $TEMPLATE "$json_intr"
@@ -140,7 +152,12 @@ for json_file in "${JSON_FILES[@]}" ; do
     if [ "$OBJ_COPY_FLAG" = true ] ; then
         $OBJ_COPY -O binary "$json_obj" "$json_bin"
     elif [ "$BUILD_NARC" = true ] ; then
-        $O2NARC "$json_obj" "$narc" -N -p 0xFF
+        $O2NARC "$json_obj" "$narc" -N -p $PADDING
+        if [ "$VER_AGNO" = true ]; then
+            agnoname="${naix%_*.naix}.naix"
+            $SED -r s/_"$SHORTNAME"//g "$naix" > "$agnoname"
+            rm "$naix"
+        fi
     else
         $O2NARC "$json_obj" "$json_bin" -f
     fi

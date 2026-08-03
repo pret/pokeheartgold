@@ -1,0 +1,1 @@
+option('version', type : 'string', value : 'heartgold')

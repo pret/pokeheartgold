@@ -197,7 +197,7 @@ BOOL RadioShow_PokemonMusic_Print(RadioShow *radioShow) {
 }
 
 void RadioShow_PokemonMusic_Init(RadioShow *radioShow) {
-    radioShow->showMsgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0416_bin, radioShow->heapID);
+    radioShow->showMsgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msg_0416, radioShow->heapID);
     ReadMsgDataIntoString(radioShow->showMsgData, msg_0416_00000, radioShow->showTitle);
     ReadMsgDataIntoString(radioShow->showMsgData, msg_0416_00001, radioShow->showHost);
 }

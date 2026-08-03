@@ -1,12 +1,12 @@
 #ifndef POKEHEARTGOLD_CONSTANTS_SCRCMD_H
 #define POKEHEARTGOLD_CONSTANTS_SCRCMD_H
 
-#include <nitro/types.h>
+//#include <nitro/types.h>
 
 #include "constants/badge.h"
 #include "constants/flags.h"
 #include "constants/game_stats.h"
-#include "constants/global.h"
+//#include "constants/global.h"
 #include "constants/global_fieldmap.h"
 #include "constants/items.h"
 #include "constants/maps.h"

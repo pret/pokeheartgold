@@ -2,7 +2,7 @@
 #include "fielddata/script/scr_seq/event_D36R0101.h"
 #include "fielddata/script/scr_seq/event_T23.h"
 #include "msgdata/msg/msg_0564_T23.h"
-	.include "asm/macros/script.inc"
+	.include "macros/script.inc"
 
 	.rodata
 

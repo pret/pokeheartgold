@@ -165,7 +165,7 @@ BOOL ScrCmd_648(ScriptContext *ctx) {
         Heap_Free(unkG);
     }
 
-    msgdata2 = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0191_bin, HEAP_ID_FIELD3);
+    msgdata2 = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, msg_0191, HEAP_ID_FIELD3);
 
     ov01_02200CB4(unkPtr, msgdata2);
     ov01_02200DF8(unkPtr, 0xd, 0xff, 0xfffe);

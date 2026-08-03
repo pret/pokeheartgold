@@ -36,10 +36,10 @@ static void ov01_021EF758(MessageBox *messageBox, FontID fontId, u32 textFrameDe
 static void ovFieldMain_AddTextPrinterParameterized(MessageBox *messageBox, FontID fontId);
 
 const u16 ov01_022067C8[] = {
-    NARC_msg_msg_0752_bin, // day of the week siblings
-    NARC_msg_msg_0211_bin, // field moves
-    NARC_msg_msg_0030_bin, // cameron the photographer
-    NARC_msg_msg_0435_bin, // pokemart and various shops
+    msg_0752, // day of the week siblings
+    msg_0211, // field moves
+    msg_0030, // cameron the photographer
+    msg_0435, // pokemart and various shops
 };
 
 BOOL ScrCmd_NonNPCMsg(ScriptContext *ctx) {

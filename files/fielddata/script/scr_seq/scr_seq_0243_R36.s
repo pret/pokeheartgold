@@ -2,7 +2,7 @@
 #include "fielddata/script/scr_seq/event_R36.h"
 #include "msgdata/msg/msg_0390_R36.h"
 #include "constants/battle.h"
-	.include "asm/macros/script.inc"
+	.include "macros/script.inc"
 
 	.rodata
 

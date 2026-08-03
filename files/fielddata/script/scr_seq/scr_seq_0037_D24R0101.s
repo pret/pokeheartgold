@@ -2,7 +2,7 @@
 #include "constants/scrcmd.h"
 #include "fielddata/script/scr_seq/event_D24R0101.h"
 #include "msgdata/msg/msg_0072_D24R0101.h"
-	.include "asm/macros/script.inc"
+	.include "macros/script.inc"
 
 	.rodata
 

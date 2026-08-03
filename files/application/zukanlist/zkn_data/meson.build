@@ -55,7 +55,7 @@ zukan_gira_narc = custom_target('zukan_data_gira.narc',
         '--language', 'asm',
         '-N',
         '-D', 'GIRA',
-        '-p', 'gira',
+        '--overwrite-name', 'zukan_data_gira',
         '@INPUT@'
     ],
     depends : [
@@ -67,3 +67,107 @@ zukan_gira_narc = custom_target('zukan_data_gira.narc',
 
 nitrofs_files += zukan_gira_narc
 naix_headers += zukan_gira_narc[1]
+
+############################################################
+###                       ZUKAN_ENC                      ###
+############################################################
+zukan_enc_json = files('zukan_enc.json')
+zukan_enc_template = files('zukan_enc.json.txt')
+
+if get_option('version') == 'heartgold'
+    zukan_enc_gold_narc = custom_target('zukan_enc_gold.narc',
+        input : zukan_enc_json,
+        output: [ 
+            'zukan_enc_gold.narc', 
+            'zukan_enc_gold.naix',
+            'zukan_enc.naix' 
+        ],
+        command : [
+            json2bin_sh,
+            '--compiler', relative_source_root / 'tools' / 'metroskrew' / 'bin' / 'mwasmarm.exe',
+            '--jsonproc', jsonproc_exe.full_path(),
+            '--template', zukan_enc_template[0].full_path(),
+            '--o2narc', o2narc_exe.full_path(),
+            '--out-dir', build_dir,
+            '-i', relative_source_root,
+            '-i', relative_source_root / 'include',
+            '-i', relative_source_root / 'subprojects' / 'NitroSDK-4.2.30001' / 'include',
+            '--language', 'asm',
+            '-N',
+            '-D', 'HEARTGOLD',
+            '-p', '0x00',
+            '--overwrite-name', 'zukan_enc_gold',
+            '-a', 'gold',
+            '@INPUT@'
+        ],
+        depends : [
+            jsonproc_exe,
+            o2narc_exe,
+        ],
+        build_by_default:true
+    )
+
+    nitrofs_files += zukan_enc_gold_narc
+    naix_headers += zukan_enc_gold_narc[1]
+elif get_option('version') == 'soulsilver'
+    zukan_enc_silver_narc = custom_target('zukan_enc_silver.narc',
+        input : zukan_enc_json,
+        output: [ 
+            'zukan_enc_silver.narc', 
+            'zukan_enc_silver.naix',
+            'zukan_enc.naix' 
+        ],
+        command : [
+            json2bin_sh,
+            '--compiler', relative_source_root / 'tools' / 'metroskrew' / 'bin' / 'mwasmarm.exe',
+            '--jsonproc', jsonproc_exe.full_path(),
+            '--template', zukan_enc_template[0].full_path(),
+            '--o2narc', o2narc_exe.full_path(),
+            '--out-dir', build_dir,
+            '-i', relative_source_root,
+            '-i', relative_source_root / 'include',
+            '-i', relative_source_root / 'subprojects' / 'NitroSDK-4.2.30001' / 'include',
+            '--language', 'asm',
+            '-N',
+            '-D', 'SOULSILVER',
+            '-p', '0x00',
+            '--overwrite-name', 'zukan_enc_silver',
+            '-a', 'silver',
+            '@INPUT@'
+        ],
+        depends : [
+            jsonproc_exe,
+            o2narc_exe,
+        ],
+        build_by_default:true
+    )
+        
+    nitrofs_files += zukan_enc_silver_narc
+    naix_headers += zukan_enc_silver_narc[1]
+endif
+
+############################################################
+###                     ZUKAN_HW_DATA                    ###
+############################################################
+subdir('zukan_hw_data')
+
+zukan_hw_narc = custom_target('zukan_hw.narc',
+    input : [
+        zukan_hw_files
+    ],
+    command : [
+        nitroarc_exe,
+        '--create',
+        '--index',
+        '--files-from', zukan_hw_order[0],
+        '--file', '@OUTPUT0@',
+        '@PRIVATE_DIR@',
+    ],
+    output : [
+        'zukan_hw.narc',
+        'zukan_hw.naix'
+    ]
+)
+
+nitrofs_files += zukan_hw_narc
+naix_headers += zukan_hw_narc[1]

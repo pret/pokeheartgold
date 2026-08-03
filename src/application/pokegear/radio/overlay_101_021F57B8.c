@@ -66,7 +66,7 @@ RadioShow *RadioShow_Create(SaveData *saveData, u16 mapID, u16 mapHeader, BOOL i
     ret->shadowColor = ret->textColor >> 8;
     ret->bgColor = ret->textColor;
     ret->heapID = heapID;
-    ret->msgData_269 = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0269_bin, ret->heapID);
+    ret->msgData_269 = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msg_0269, ret->heapID);
     ret->msgFormat = MessageFormat_New_Custom(8, 51, ret->heapID);
     ret->curLineStr = String_New(51, ret->heapID);
     ret->showTitle = String_New(51, ret->heapID);
