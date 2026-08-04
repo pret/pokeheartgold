@@ -159,7 +159,7 @@ _01E5:
 	NPCMsg msg_0589_T25R0601_00003
 	NPCMsg msg_0589_T25R0601_00008
 	TouchscreenMenuHide
-	ShowMoneyBox 20, 2
+	ShowMoneyWindow 20, 2
 	MenuInitStdGmm 1, 1, 0, 1, VAR_SPECIAL_RESULT
 	MenuItemAdd 213, 470, 0
 	MenuItemAdd 214, 472, 1
@@ -198,7 +198,7 @@ _0276:
 	CallIfEq _03A5
 	Compare VAR_SPECIAL_x8000, 3
 	CallIfEq _03AD
-	UpdateMoneyBox
+	UpdateMoneyWindow
 	PlaySE SEQ_SE_DP_REGI
 	GiveItem VAR_SPECIAL_x8001, 1, VAR_SPECIAL_RESULT
 	BufferItemName 0, VAR_SPECIAL_x8001
@@ -210,7 +210,7 @@ _031F:
 	WaitButton
 	CloseMsg
 	TouchscreenMenuShow
-	HideMoneyBox
+	HideMoneyWindow
 	ReleaseAll
 	End
 

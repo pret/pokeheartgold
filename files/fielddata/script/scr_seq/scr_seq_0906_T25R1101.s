@@ -482,7 +482,7 @@ _069B:
 	NPCMsg msg_0599_T25R1101_00002
 	TouchscreenMenuHide
 	ScrCmd_116 0, 20, 2
-	ShowMoneyBox 20, 7
+	ShowMoneyWindow 20, 7
 _06B1:
 	MenuInitStdGmm 1, 1, 0, 1, VAR_SPECIAL_RESULT
 	MenuItemAdd 127, 255, 0
@@ -507,7 +507,7 @@ _06FE:
 	SubMoneyImmediate 1000
 	GiveCoins 50
 	ScrCmd_118 0
-	UpdateMoneyBox
+	UpdateMoneyWindow
 	PlaySE SEQ_SE_DP_REGI
 	WaitSE SEQ_SE_DP_REGI
 	NPCMsg msg_0599_T25R1101_00003
@@ -525,7 +525,7 @@ _074A:
 	SubMoneyImmediate 10000
 	GiveCoins 500
 	ScrCmd_118 0
-	UpdateMoneyBox
+	UpdateMoneyWindow
 	PlaySE SEQ_SE_DP_REGI
 	WaitSE SEQ_SE_DP_REGI
 	NPCMsg msg_0599_T25R1101_00003
@@ -544,7 +544,7 @@ _07A4:
 	CloseMsg
 	TouchscreenMenuShow
 	ScrCmd_117
-	HideMoneyBox
+	HideMoneyWindow
 	ScriptOverlayCmd 3, 1
 	ReleaseAll
 	End

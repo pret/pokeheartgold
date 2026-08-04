@@ -380,7 +380,7 @@
       ]
     },
     {
-      "name": "ScrCmd_061",
+      "name": "ShowStartMenu",
       "args": []
     },
     {
@@ -701,18 +701,18 @@
       ]
     },
     {
-      "name": "ShowMoneyBox",
+      "name": "ShowMoneyWindow",
       "args": [
         2,
         2
       ]
     },
     {
-      "name": "HideMoneyBox",
+      "name": "HideMoneyWindow",
       "args": []
     },
     {
-      "name": "UpdateMoneyBox",
+      "name": "UpdateMoneyWindow",
       "args": []
     },
     {

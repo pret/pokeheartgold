@@ -32,7 +32,7 @@ scr_seq_T07R0106_003:
 	PlaySE SEQ_SE_DP_SELECT
 	LockAll
 	NPCMsg msg_0499_T07R0106_00003
-	ShowMoneyBox 20, 2
+	ShowMoneyWindow 20, 2
 	GoTo _005E
 
 _005E:
@@ -105,7 +105,7 @@ _011C:
 	CallIfEq _010C
 	Compare VAR_SPECIAL_x8000, 2
 	CallIfEq _0114
-	UpdateMoneyBox
+	UpdateMoneyWindow
 	BufferItemName 0, VAR_SPECIAL_x8001
 	PlaySE SEQ_SE_DP_JIHANKI
 	BufferItemName 0, VAR_SPECIAL_x8001
@@ -132,14 +132,14 @@ _01F0:
 _01F9:
 	CallStd std_bag_is_full
 	CloseMsg
-	HideMoneyBox
+	HideMoneyWindow
 	ReleaseAll
 	End
 
 _0205:
 	WaitButton
 	CloseMsg
-	HideMoneyBox
+	HideMoneyWindow
 	ReleaseAll
 	End
 	.balign 4, 0

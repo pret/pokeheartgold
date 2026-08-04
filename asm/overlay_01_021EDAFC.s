@@ -613,8 +613,8 @@ ov01_021EDF38: ; 0x021EDF38
 _021EDF74: .word SEQ_SE_DP_SELECT
 	thumb_func_end ov01_021EDF38
 
-	thumb_func_start ov01_021EDF78
-ov01_021EDF78: ; 0x021EDF78
+	thumb_func_start FieldMenuManager_New
+FieldMenuManager_New: ; 0x021EDF78
 	push {r3, r4, lr}
 	sub sp, #0x14
 	add r4, sp, #0x10
@@ -632,7 +632,7 @@ ov01_021EDF78: ; 0x021EDF78
 	add sp, #0x14
 	pop {r3, r4, pc}
 	.balign 4, 0
-	thumb_func_end ov01_021EDF78
+	thumb_func_end FieldMenuManager_New
 
 	thumb_func_start MoveTutorMenu_SetListItem
 MoveTutorMenu_SetListItem: ; 0x021EDF9C
@@ -2091,8 +2091,8 @@ ov01_021EEA44: ; 0x021EEA44
 	bx lr
 	thumb_func_end ov01_021EEA44
 
-	thumb_func_start FieldSystem_ShowMoneyBox
-FieldSystem_ShowMoneyBox: ; 0x021EEA90
+	thumb_func_start FieldSystem_ShowMoneyWindow
+FieldSystem_ShowMoneyWindow: ; 0x021EEA90
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x14
 	add r5, r0, #0
@@ -2164,7 +2164,7 @@ FieldSystem_ShowMoneyBox: ; 0x021EEA90
 	nop
 _021EEB30: .word 0x000003D9
 _021EEB34: .word 0x000001B3
-	thumb_func_end FieldSystem_ShowMoneyBox
+	thumb_func_end FieldSystem_ShowMoneyWindow
 
 	thumb_func_start MoneyBoxSys_Delete
 MoneyBoxSys_Delete: ; 0x021EEB38

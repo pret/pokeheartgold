@@ -91,7 +91,7 @@ scr_seq_T25R1006_004:
 	PlaySE SEQ_SE_DP_SELECT
 	LockAll
 	FacePlayer
-	ShowMoneyBox 20, 2
+	ShowMoneyWindow 20, 2
 	NPCMsg msg_0597_T25R1006_00010
 	TouchscreenMenuHide
 	GetMenuChoice VAR_SPECIAL_RESULT
@@ -105,7 +105,7 @@ _0156:
 	Compare VAR_SPECIAL_RESULT, 0
 	GoToIfEq _04D2
 	SubMoneyImmediate 300
-	UpdateMoneyBox
+	UpdateMoneyWindow
 	PlaySE SEQ_SE_DP_REGI
 	WaitSE SEQ_SE_DP_REGI
 	NPCMsg msg_0597_T25R1006_00011
@@ -178,7 +178,7 @@ _0294:
 	GoToIfEq _04B0
 	CallStd std_obtain_item_verbose
 	CloseMsg
-	HideMoneyBox
+	HideMoneyWindow
 	ReleaseAll
 	End
 
@@ -237,7 +237,7 @@ _038B:
 	GoToIfEq _04B0
 	CallStd std_obtain_item_verbose
 	CloseMsg
-	HideMoneyBox
+	HideMoneyWindow
 	ReleaseAll
 	End
 
@@ -296,7 +296,7 @@ _0482:
 	GoToIfEq _04B0
 	CallStd std_obtain_item_verbose
 	CloseMsg
-	HideMoneyBox
+	HideMoneyWindow
 	ReleaseAll
 	End
 
@@ -304,7 +304,7 @@ _04A3:
 	NPCMsg msg_0597_T25R1006_00014
 	WaitButton
 	CloseMsg
-	HideMoneyBox
+	HideMoneyWindow
 	ReleaseAll
 	End
 
@@ -312,13 +312,13 @@ _04B0:
 	NPCMsg msg_0597_T25R1006_00015
 	CloseMsg
 	AddMoney 300
-	UpdateMoneyBox
+	UpdateMoneyWindow
 	PlaySE SEQ_SE_DP_REGI
 	WaitSE SEQ_SE_DP_REGI
 	NPCMsg msg_0597_T25R1006_00017
 	WaitButton
 	CloseMsg
-	HideMoneyBox
+	HideMoneyWindow
 	ReleaseAll
 	End
 
@@ -326,7 +326,7 @@ _04D2:
 	NPCMsg msg_0597_T25R1006_00016
 	WaitButton
 	CloseMsg
-	HideMoneyBox
+	HideMoneyWindow
 	ReleaseAll
 	End
 
@@ -519,7 +519,7 @@ scr_seq_T25R1006_003:
 	PlaySE SEQ_SE_DP_SELECT
 	LockAll
 	NPCMsg msg_0597_T25R1006_00005
-	ShowMoneyBox 20, 2
+	ShowMoneyWindow 20, 2
 	GoTo _0717
 
 _0717:
@@ -592,7 +592,7 @@ _07D5:
 	CallIfEq _07C5
 	Compare VAR_SPECIAL_x8000, 2
 	CallIfEq _07CD
-	UpdateMoneyBox
+	UpdateMoneyWindow
 	BufferItemName 0, VAR_SPECIAL_x8001
 	PlaySE SEQ_SE_DP_JIHANKI
 	BufferItemName 0, VAR_SPECIAL_x8001
@@ -619,14 +619,14 @@ _08A9:
 _08B2:
 	CallStd std_bag_is_full
 	CloseMsg
-	HideMoneyBox
+	HideMoneyWindow
 	ReleaseAll
 	End
 
 _08BE:
 	WaitButton
 	CloseMsg
-	HideMoneyBox
+	HideMoneyWindow
 	ReleaseAll
 	End
 	.balign 4, 0

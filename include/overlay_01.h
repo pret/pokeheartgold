@@ -19,8 +19,6 @@ struct ErrorContinueEnv {
 
 struct FishingRodWork;
 
-struct UnkStruct_ov01_021EDC28;
-
 typedef struct UnkStruct_field_021F4360 {
     // TODO: Fill this in
 } UnkStruct_field_021F4360;
@@ -47,19 +45,6 @@ BOOL MetatileBehavior_IsRockClimbInDirection(int facingTile, int facingDirection
 BOOL FieldSystem_FacingModelIsHeadbuttTree(FieldSystem *fieldSystem);
 BOOL Task_UseSweetScentInField(TaskManager *taskManager);
 BOOL ScriptContext_WaitForFinishedPrinting(ScriptContext *ctx);
-struct UnkStruct_ov01_021EDC28 *ov01_021EDF78(FieldSystem *fieldSystem, u8 x, u8 y, u8 initCursorPos, u8 cancellable, u16 *ret_p, MessageFormat *msgFmt, Window *window, MsgData *msgData);
-struct UnkStruct_ov01_021EDC28 **ov01_021F6B20(FieldSystem *fieldSystem);
-void ov01_021EDC7C(struct UnkStruct_ov01_021EDC28 *menu, u32 msgId, u32 value);
-void ov01_021EDC84(struct UnkStruct_ov01_021EDC28 *menu);
-void ov01_021EDF00(struct UnkStruct_ov01_021EDC28 *menu);
-void ov01_021EDF38(struct UnkStruct_ov01_021EDC28 *menu);
-void ov01_021EE014(struct UnkStruct_ov01_021EDC28 *menu, u16 a1);
-void ov01_021EE0EC(struct UnkStruct_ov01_021EDC28 *menu, u16 *a1, u16 *a2);
-void ov01_021EDFA4(struct UnkStruct_ov01_021EDC28 *menu);
-void ov01_021EE974(struct UnkStruct_ov01_021EDC28 *menu, u8 a1);
-void ov01_021EF018(struct UnkStruct_ov01_021EDC28 *menu, u8 a1);
-void ov01_021EF034(struct UnkStruct_ov01_021EDC28 *menu, u8 a1);
-void MoveTutorMenu_SetListItem(struct UnkStruct_ov01_021EDC28 *menu, int a1, int a2, int a3);
 void ov01_021F7704(LocalMapObject *object);
 void ov01_021F62E8(VecFx32 *vec, FieldSystemUnkSub2C *a1);
 void ov01_021F9408(LocalMapObject *object, u32 dir);
@@ -99,10 +84,7 @@ void ov01_02205720(LocalMapObject *playerObj, LocalMapObject *tsurePokeObj, int 
 void ov01_021EACBC(void *fieldSystemUnk28, u8 a1);
 void ov01_021F6ABC(FieldSystem *fieldSystem, int a1, int a2, void *a3);
 
-typedef BOOL (*UnkCallback_021F6B34)(struct UnkStruct_ov01_021EDC28 *menu, int idx);
 
-void ov01_021F6B34(FieldSystem *fieldSystem, UnkCallback_021F6B34 cb, struct UnkStruct_ov01_021EDC28 *menu);
-void ov01_021EEF9C(struct UnkStruct_ov01_021EDC28 *menu, int idx);
 
 struct UnkStruct_020FACDC {
     int filler_00[12 / sizeof(int)];

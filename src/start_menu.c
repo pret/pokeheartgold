@@ -224,7 +224,7 @@ void StartMenu_Init(FieldSystem *fieldSystem) {
     } else {
         startMenu->inhibitIconFlags = FieldSystem_GetStartMenuButtonInhibitFlags_Normal(fieldSystem);
     }
-    startMenu->unk_350 = FALSE;
+    startMenu->inUnionRoom = FALSE;
     if (sub_0205CF60(fieldSystem->playerAvatar) == TRUE) {
         sub_0205CFBC(fieldSystem->playerAvatar, PlayerAvatar_GetFacingDirection(fieldSystem->playerAvatar));
     }
@@ -234,7 +234,7 @@ void StartMenu_Init(FieldSystem *fieldSystem) {
 void sub_0203BCDC(FieldSystem *fieldSystem) {
     StartMenuTaskData *startMenu = StartMenu_Create();
     startMenu->inhibitIconFlags = sub_0203BEE0(fieldSystem);
-    startMenu->unk_350 = TRUE;
+    startMenu->inUnionRoom = TRUE;
     if (sub_0205CF60(fieldSystem->playerAvatar) == TRUE) {
         sub_0205CFBC(fieldSystem->playerAvatar, PlayerAvatar_GetFacingDirection(fieldSystem->playerAvatar));
     }
@@ -244,17 +244,19 @@ void sub_0203BCDC(FieldSystem *fieldSystem) {
 void sub_0203BD20(FieldSystem *fieldSystem) {
     StartMenuTaskData *startMenu = StartMenu_Create();
     startMenu->inhibitIconFlags = sub_0203BEE8(fieldSystem);
-    startMenu->unk_350 = FALSE;
+    startMenu->inUnionRoom = FALSE;
     if (sub_0205CF60(fieldSystem->playerAvatar) == TRUE) {
         sub_0205CFBC(fieldSystem->playerAvatar, PlayerAvatar_GetFacingDirection(fieldSystem->playerAvatar));
     }
     FieldSystem_CreateTask(fieldSystem, Task_StartMenu, startMenu);
 }
 
-void sub_0203BD64(FieldSystem *fieldSystem) {
+void StartMenu_OpenFromScript(FieldSystem *fieldSystem) {
     PlaySE(SEQ_SE_DP_WIN_OPEN);
     StartMenuTaskData *startMenu = StartMenu_Create();
-    startMenu->unk_350 = FALSE;
+
+    startMenu->inUnionRoom = FALSE;
+
     if (Save_VarsFlags_CheckSafariSysFlag(Save_VarsFlags_Get(fieldSystem->saveData)) == TRUE) {
         startMenu->inhibitIconFlags = FieldSystem_GetStartMenuButtonInhibitFlags_Safari(fieldSystem);
     } else if (Save_VarsFlags_CheckBugContestFlag(Save_VarsFlags_Get(fieldSystem->saveData)) == TRUE) {
@@ -263,14 +265,15 @@ void sub_0203BD64(FieldSystem *fieldSystem) {
         startMenu->inhibitIconFlags = FieldSystem_GetStartMenuButtonInhibitFlags_PalPark(fieldSystem);
     } else if (FieldSystem_MapIsBattleTowerMultiPartnerSelectRoom(fieldSystem) == TRUE) {
         startMenu->inhibitIconFlags = FieldSystem_GetStartMenuButtonInhibitFlags_BattleTowerMultiPartnerSelectRoom(fieldSystem);
-    } else if (fieldSystem->unk70 == 3) {
+    } else if (fieldSystem->unk70 == 3) { // MAP_LOAD_TYPE_COLOSSEUM
         startMenu->inhibitIconFlags = sub_0203BEE8(fieldSystem);
-    } else if (fieldSystem->unk70 == 2) {
+    } else if (fieldSystem->unk70 == 2) { // MAP_LOAD_TYPE_UNION
         startMenu->inhibitIconFlags = sub_0203BEE0(fieldSystem);
-        startMenu->unk_350 = TRUE;
+        startMenu->inUnionRoom = TRUE;
     } else {
         startMenu->inhibitIconFlags = FieldSystem_GetStartMenuButtonInhibitFlags_Normal(fieldSystem);
     }
+
     TaskManager_Jump(fieldSystem->taskman, Task_StartMenu, startMenu);
 }
 
@@ -497,7 +500,7 @@ static u32 StartMenu_BuildActionLists(StartMenuTaskData *startMenu, u8 *insertio
         StartMenuButton_Insert(insertionOrderDest, displayOrderDest, &numIcons, START_MENU_ACTION_BAG, -1u);
     }
     if (!(startMenu->inhibitIconFlags & (1 << START_MENU_ACTION_DISABLE_POKEGEAR))) {
-        if (startMenu->unk_350) {
+        if (startMenu->inUnionRoom) {
             StartMenuButton_Insert(insertionOrderDest, displayOrderDest, &numIcons, START_MENU_ACTION_12, -1u);
         } else {
             StartMenuButton_Insert(insertionOrderDest, displayOrderDest, &numIcons, START_MENU_ACTION_POKEGEAR, -1u);
@@ -653,7 +656,7 @@ static BOOL StartMenu_HandleTouchInput(TaskManager *taskManager, FieldSystem *fi
 }
 
 static void sub_0203C69C(StartMenuTaskData *startMenu, FieldSystem *fieldSystem) {
-    if (sub_02035650() && startMenu->unk_350) {
+    if (sub_02035650() && startMenu->inUnionRoom) {
         sub_0205AD0C(fieldSystem->unk84);
         sub_02037FF0();
         sub_0205A904(0);

@@ -832,7 +832,7 @@ scr_seq_D49_019:
 	SetVar VAR_TEMP_x4007, 0
 	GoToIfUnset FLAG_UNK_997, _095F
 _0A1D:
-	ShowMoneyBox 21, 1
+	ShowMoneyWindow 21, 1
 	ScrCmd_741 VAR_TEMP_x4007, VAR_SPECIAL_x8000, VAR_SPECIAL_x8001, VAR_SPECIAL_x8002
 	ApplyMovement obj_D49_shopm1_2, _0BEC
 	WaitMovement
@@ -856,10 +856,10 @@ _0A3A:
 	CloseMsg
 	FadeScreen 6, 1, 0, RGB_BLACK
 	WaitFade
-	HideMoneyBox
+	HideMoneyWindow
 	ScrCmd_740 VAR_SPECIAL_x8000, VAR_SPECIAL_x8003
 	RestoreOverworld
-	ShowMoneyBox 21, 1
+	ShowMoneyWindow 21, 1
 	FadeScreen 6, 1, 1, RGB_BLACK
 	WaitFade
 	Compare VAR_SPECIAL_x8003, 0
@@ -869,12 +869,12 @@ _0A3A:
 
 _0AD0:
 	SubMoneyVar VAR_SPECIAL_x8001
-	UpdateMoneyBox
+	UpdateMoneyWindow
 _0AD6:
 	NPCMsg msg_0137_D49_00035
 _0AD9:
 	CloseMsg
-	HideMoneyBox
+	HideMoneyWindow
 	ApplyMovement obj_D49_shopm1_2, _0BF4
 	WaitMovement
 	ReleaseAll

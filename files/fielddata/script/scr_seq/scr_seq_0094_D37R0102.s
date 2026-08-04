@@ -133,7 +133,7 @@ scr_seq_D37R0102_001:
 	LockAll
 	FacePlayer
 	GoToIfSet FLAG_DAILY_GOT_HAIRCUT, _0331
-	ShowMoneyBox 20, 2
+	ShowMoneyWindow 20, 2
 	NPCMsg msg_0117_D37R0102_00010
 	TouchscreenMenuHide
 	GetMenuChoice VAR_SPECIAL_RESULT
@@ -150,7 +150,7 @@ _01F5:
 	NPCMsg msg_0117_D37R0102_00011
 	WaitABPress
 	CloseMsg
-	HideMoneyBox
+	HideMoneyWindow
 	FadeScreen 6, 1, 0, RGB_BLACK
 	WaitFade
 	PartySelectUI
@@ -164,9 +164,9 @@ _01F5:
 	GetPartyMonSpecies VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
 	Compare VAR_SPECIAL_RESULT, 0
 	GoToIfEq _0319
-	ShowMoneyBox 20, 2
+	ShowMoneyWindow 20, 2
 	SubMoneyImmediate 500
-	UpdateMoneyBox
+	UpdateMoneyWindow
 	NPCMsg msg_0117_D37R0102_00012
 	WaitABPress
 	CloseMsg
@@ -174,7 +174,7 @@ _01F5:
 	WaitFade
 	PlayFanfare SEQ_ME_ASA
 	WaitFanfare
-	HideMoneyBox
+	HideMoneyWindow
 	FadeScreen 6, 1, 1, RGB_WHITE
 	WaitFade
 	NPCMsg msg_0117_D37R0102_00013
@@ -219,7 +219,7 @@ _030C:
 	NPCMsg msg_0117_D37R0102_00014
 	WaitButton
 	CloseMsg
-	HideMoneyBox
+	HideMoneyWindow
 	ReleaseAll
 	End
 
@@ -234,7 +234,7 @@ _0324:
 	NPCMsg msg_0117_D37R0102_00015
 	WaitButton
 	CloseMsg
-	HideMoneyBox
+	HideMoneyWindow
 	ReleaseAll
 	End
 
@@ -250,7 +250,7 @@ scr_seq_D37R0102_002:
 	LockAll
 	FacePlayer
 	GoToIfSet FLAG_DAILY_GOT_HAIRCUT, _04BD
-	ShowMoneyBox 20, 2
+	ShowMoneyWindow 20, 2
 	NPCMsg msg_0117_D37R0102_00017
 	TouchscreenMenuHide
 	GetMenuChoice VAR_SPECIAL_RESULT
@@ -267,7 +267,7 @@ _0375:
 	NPCMsg msg_0117_D37R0102_00018
 	WaitABPress
 	CloseMsg
-	HideMoneyBox
+	HideMoneyWindow
 	FadeScreen 6, 1, 0, RGB_BLACK
 	WaitFade
 	PartySelectUI
@@ -281,9 +281,9 @@ _0375:
 	GetPartyMonSpecies VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
 	Compare VAR_SPECIAL_RESULT, 0
 	GoToIfEq _04A5
-	ShowMoneyBox 20, 2
+	ShowMoneyWindow 20, 2
 	SubMoneyImmediate 300
-	UpdateMoneyBox
+	UpdateMoneyWindow
 	NPCMsg msg_0117_D37R0102_00019
 	WaitABPress
 	CloseMsg
@@ -291,7 +291,7 @@ _0375:
 	WaitFade
 	PlayFanfare SEQ_ME_ASA
 	WaitFanfare
-	HideMoneyBox
+	HideMoneyWindow
 	FadeScreen 6, 1, 1, RGB_WHITE
 	WaitFade
 	NPCMsg msg_0117_D37R0102_00020
@@ -338,7 +338,7 @@ _0498:
 	NPCMsg msg_0117_D37R0102_00021
 	WaitButton
 	CloseMsg
-	HideMoneyBox
+	HideMoneyWindow
 	ReleaseAll
 	End
 
@@ -353,7 +353,7 @@ _04B0:
 	NPCMsg msg_0117_D37R0102_00022
 	WaitButton
 	CloseMsg
-	HideMoneyBox
+	HideMoneyWindow
 	ReleaseAll
 	End
 
@@ -379,7 +379,7 @@ scr_seq_D37R0102_003:
 	LockAll
 	FacePlayer
 	GoToIfSet FLAG_UNK_AB7, _0895
-	ShowMoneyBox 20, 2
+	ShowMoneyWindow 20, 2
 	NPCMsg msg_0117_D37R0102_00001
 	SetVar VAR_TEMP_x4003, 0
 	SetVar VAR_TEMP_x4004, 0
@@ -511,7 +511,7 @@ _0796:
 	GoToIfEq _087D
 	SubMoneyImmediate 4600
 _07C6:
-	UpdateMoneyBox
+	UpdateMoneyWindow
 	PlaySE SEQ_SE_DP_REGI
 	BufferItemName 0, VAR_SPECIAL_x8004
 	GetItemPocket VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
@@ -564,7 +564,7 @@ _087D:
 
 _0886:
 	TouchscreenMenuShow
-	HideMoneyBox
+	HideMoneyWindow
 	NPCMsg msg_0117_D37R0102_00009
 	WaitButton
 	CloseMsg

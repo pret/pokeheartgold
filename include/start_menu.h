@@ -59,7 +59,7 @@ typedef struct StartMenuTaskData {
     Sprite *cursorSprite;
     u8 filler_348[0x4];
     u32 inhibitIconFlags;
-    BOOL unk_350;
+    BOOL inUnionRoom;
     TaskFunc exitTaskFunc; // 354
     ItemCheckUseData itemCheckUseData;
     FieldMoveCheckData fieldMoveCheckData;
@@ -78,7 +78,7 @@ BOOL FieldSystem_MapIsNotMysteryZone(FieldSystem *fieldSystem);
 void StartMenu_Init(FieldSystem *fieldSystem);
 void sub_0203BCDC(FieldSystem *fieldSystem);
 void sub_0203BD20(FieldSystem *fieldSystem);
-void sub_0203BD64(FieldSystem *fieldSystem);
+void StartMenu_OpenFromScript(FieldSystem *fieldSystem);
 BOOL FieldSystem_ShouldDrawStartMenuIcon(FieldSystem *fieldSystem, StartMenuIcon icon);
 void StartMenu_SetExitTaskFunc(StartMenuTaskData *env, TaskFunc func);
 BOOL Task_StartMenu_HandleReturn_Pokemon(TaskManager *taskManager);

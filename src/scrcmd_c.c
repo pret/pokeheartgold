@@ -40,7 +40,9 @@
 #include "metatile_behavior.h"
 #include "npc_trade.h"
 #include "overlay_01.h"
+#include "overlay_01_021EDAFC.h"
 #include "overlay_01_021F1AFC.h"
+#include "overlay_01_021F6830.h"
 #include "overlay_01_02204ED8.h"
 #include "overlay_03.h"
 #include "overlay_04.h"
@@ -131,6 +133,11 @@ static BOOL NativeScript_WaitForYesNoResult(ScriptContext *ctx);
 static BOOL NativeScript_ResumeOnMenuSelection(ScriptContext *ctx);
 
 static BOOL sub_02042C78(ScriptContext *ctx);
+static BOOL sub_020476E8(ScriptContext *ctx);
+static BOOL sub_02047744(ScriptContext *ctx);
+static BOOL sub_020477C0(ScriptContext *ctx);
+static BOOL sub_020478D0(ScriptContext *ctx);
+static BOOL sub_02047908(FieldMenuManager *menu, int idx);
 
 BOOL ScrNative_WaitApplication(ScriptContext *ctx); // something's fucky
 static LocalMapObject *sub_02041C70(FieldSystem *fieldSystem, u16 person);
@@ -942,8 +949,8 @@ static BOOL NativeScript_WaitSignpost(ScriptContext *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_061(ScriptContext *ctx) { // ScrCmd_ShowStartMenu?
-    sub_0204031C(ctx->fieldSystem); // FieldSystem_ShowStartMenu?
+BOOL ScrCmd_ShowStartMenu(ScriptContext *ctx) {
+    FieldSystem_ShowStartMenu(ctx->fieldSystem);
     return FALSE;
 }
 
@@ -980,7 +987,7 @@ static BOOL NativeScript_WaitForYesNoResult(ScriptContext *ctx) {
 BOOL ScrCmd_AddWaitingIcon(ScriptContext *ctx) {
     Window *window = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_WINDOW);
     WaitingIcon **waitingIcon = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_WAITING_ICON);
-    *waitingIcon = WaitingIcon_New(window, 0x3E2);
+    *waitingIcon = WaitingIcon_New(window, 1024 - (18 + 12));
     return FALSE;
 }
 
@@ -990,7 +997,7 @@ BOOL ScrCmd_RemoveWaitingIcon(ScriptContext *ctx) {
     return FALSE;
 }
 
-static void TextMenu_Init(ScriptContext *ctx, struct UnkStruct_ov01_021EDC28 **a1, MsgData *msgData) {
+static void TextMenu_Init(ScriptContext *ctx, FieldMenuManager **menu, MsgData *msgData) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
     MessageFormat **msgFmt = FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
     u8 anchorX = ScriptReadByte(ctx);
@@ -999,9 +1006,7 @@ static void TextMenu_Init(ScriptContext *ctx, struct UnkStruct_ov01_021EDC28 **a
     u8 cancellable = ScriptReadByte(ctx);
     u16 var = ScriptReadHalfword(ctx);
     
-    // UnkStruct_ov01_021EDC28 == FieldMenuManager?
-    // ov01_021EDF78 == FieldMenuManager_New?
-    *a1 = ov01_021EDF78(fieldSystem, anchorX, anchorY, initCursorPos, cancellable, GetVarPointer(fieldSystem, var), *msgFmt, FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_WINDOW), msgData);
+    *menu = FieldMenuManager_New(fieldSystem, anchorX, anchorY, initCursorPos, cancellable, GetVarPointer(fieldSystem, var), *msgFmt, FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_WINDOW), msgData);
     ctx->data[0] = var;
 }
 
@@ -1019,31 +1024,31 @@ BOOL ScrCmd_065(ScriptContext *ctx) {
 
 // ScrCmd_AddMenuEntryImm?
 BOOL ScrCmd_066(ScriptContext *ctx) {
-    struct UnkStruct_ov01_021EDC28 **pp_menu = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MENU_WINDOW);
+    FieldMenuManager **menu = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MENU_WINDOW);
     
     u8 msgID = ScriptReadByte(ctx);
     u8 value = ScriptReadByte(ctx);
     
-    ov01_021EDC7C(*pp_menu, msgID, value); // FieldMenuManager_AddMenuEntry
+    ov01_021EDC7C(*menu, msgID, value); // FieldMenuManager_AddMenuEntry
     return FALSE;
 }
 
 // ScrCmd_AddMenuEntry?
 BOOL ScrCmd_559(ScriptContext *ctx) {
-    struct UnkStruct_ov01_021EDC28 **pp_menu = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MENU_WINDOW);
+    FieldMenuManager **menu = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MENU_WINDOW);
     
     u16 msgID = ScriptGetVar(ctx);
     u16 value = ScriptGetVar(ctx);
 
-    ov01_021EDC7C(*pp_menu, msgID, value);
+    ov01_021EDC7C(*menu, msgID, value);
     return FALSE;
 }
 
 // ScrCmd_ShowMenu?
 BOOL ScrCmd_067(ScriptContext *ctx) {
-    struct UnkStruct_ov01_021EDC28 **pp_menu = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MENU_WINDOW);
+    FieldMenuManager **menu = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MENU_WINDOW);
     
-    ov01_021EDC84(*pp_menu); // FieldMenuManager_ShowSingleColumnMenu
+    ov01_021EDC84(*menu); // FieldMenuManager_ShowSingleColumnMenu
     SetupNativeScript(ctx, NativeScript_ResumeOnMenuSelection);
     
     return TRUE;
@@ -1056,8 +1061,8 @@ static BOOL NativeScript_ResumeOnMenuSelection(ScriptContext *ctx) {
 BOOL sub_02041900(ScriptContext *ctx);
 
 BOOL ScrCmd_585(ScriptContext *ctx) {
-    struct UnkStruct_ov01_021EDC28 **pp_menu = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MENU_WINDOW);
-    ov01_021EDC84(*pp_menu);
+    FieldMenuManager **menu = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MENU_WINDOW);
+    ov01_021EDC84(*menu);
     SetupNativeScript(ctx, sub_02041900);
     return TRUE;
 }
@@ -1065,11 +1070,11 @@ BOOL ScrCmd_585(ScriptContext *ctx) {
 BOOL sub_02041900(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
     u16 *p_var = GetVarPointer(fieldSystem, ctx->data[0]);
-    struct UnkStruct_ov01_021EDC28 **pp_menu = FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_MENU_WINDOW);
+    FieldMenuManager **menu = FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_MENU_WINDOW);
     if (*p_var == 0xEEEE) {
         if (sub_0205A478(fieldSystem->unk80)) {
             *p_var = 8;
-            ov01_021EDF38(*pp_menu);
+            ov01_021EDF38(*menu);
             return TRUE;
         } else {
             return FALSE;
@@ -1092,57 +1097,57 @@ BOOL ScrCmd_069(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_070(ScriptContext *ctx) {
-    struct UnkStruct_ov01_021EDC28 **pp_menu = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MENU_WINDOW);
+    FieldMenuManager **menu = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MENU_WINDOW);
     u16 r6 = ScriptGetVar(ctx);
     u16 r7 = ScriptGetVar(ctx);
     u16 r3 = ScriptGetVar(ctx);
-    MoveTutorMenu_SetListItem(*pp_menu, (u8)r6, (u8)r7, (u8)r3);
+    MoveTutorMenu_SetListItem(*menu, (u8)r6, (u8)r7, (u8)r3);
     return FALSE;
 }
 
 BOOL ScrCmd_071(ScriptContext *ctx) {
-    struct UnkStruct_ov01_021EDC28 **pp_menu = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MENU_WINDOW);
-    ov01_021EDFA4(*pp_menu);
+    FieldMenuManager **menu = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MENU_WINDOW);
+    ov01_021EDFA4(*menu);
     SetupNativeScript(ctx, NativeScript_ResumeOnMenuSelection);
     return TRUE;
 }
 
 BOOL ScrCmd_695(ScriptContext *ctx) {
-    struct UnkStruct_ov01_021EDC28 **pp_menu = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MENU_WINDOW);
+    FieldMenuManager **menu = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MENU_WINDOW);
     u16 var = ScriptGetVar(ctx);
-    ov01_021EE014(*pp_menu, var);
+    ov01_021EE014(*menu, var);
     SetupNativeScript(ctx, NativeScript_ResumeOnMenuSelection);
     return TRUE;
 }
 
 BOOL ScrCmd_677(ScriptContext *ctx) {
-    struct UnkStruct_ov01_021EDC28 **pp_menu = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MENU_WINDOW);
+    FieldMenuManager **menu = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MENU_WINDOW);
     u16 *var1 = ScriptGetVarPointer(ctx);
     u16 *var2 = ScriptGetVarPointer(ctx);
-    ov01_021EE0EC(*pp_menu, var1, var2);
+    ov01_021EE0EC(*menu, var1, var2);
     SetupNativeScript(ctx, NativeScript_ResumeOnMenuSelection);
     return TRUE;
 }
 
 BOOL ScrCmd_072(ScriptContext *ctx) {
-    struct UnkStruct_ov01_021EDC28 **pp_menu = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MENU_WINDOW);
+    FieldMenuManager **menu = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MENU_WINDOW);
     u8 val = ScriptReadByte(ctx);
-    ov01_021EE974(*pp_menu, val);
+    ov01_021EE974(*menu, val);
     SetupNativeScript(ctx, NativeScript_ResumeOnMenuSelection);
     return TRUE;
 }
 
 BOOL ScrCmd_841(ScriptContext *ctx) {
-    struct UnkStruct_ov01_021EDC28 **pp_menu = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MENU_WINDOW);
+    FieldMenuManager **menu = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MENU_WINDOW);
     u8 val = ScriptReadByte(ctx);
-    ov01_021EF018(*pp_menu, val);
+    ov01_021EF018(*menu, val);
     return TRUE;
 }
 
 BOOL ScrCmd_842(ScriptContext *ctx) {
-    struct UnkStruct_ov01_021EDC28 **pp_menu = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MENU_WINDOW);
+    FieldMenuManager **menu = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MENU_WINDOW);
     u8 val = ScriptReadByte(ctx);
-    ov01_021EF034(*pp_menu, val);
+    ov01_021EF034(*menu, val);
     return TRUE;
 }
 
@@ -4941,8 +4946,6 @@ BOOL ScrCmd_734(ScriptContext *ctx) {
     return TRUE;
 }
 
-BOOL sub_020476E8(ScriptContext *ctx);
-
 BOOL ScrCmd_TouchscreenMenuHide(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
     if (ov01_021F6B00(fieldSystem) == 3) {
@@ -4954,7 +4957,7 @@ BOOL ScrCmd_TouchscreenMenuHide(ScriptContext *ctx) {
     return TRUE;
 }
 
-BOOL sub_020476E8(ScriptContext *ctx) {
+static BOOL sub_020476E8(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
     u16 *p_ret = GetVarPointer(fieldSystem, ctx->data[0]);
     int r5 = ov01_021F6B00(fieldSystem);
@@ -4966,8 +4969,6 @@ BOOL sub_020476E8(ScriptContext *ctx) {
     }
 }
 
-BOOL sub_02047744(ScriptContext *ctx);
-
 BOOL ScrCmd_TouchscreenMenuShow(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
     ov01_021F6A9C(fieldSystem, 0, 0);
@@ -4976,7 +4977,7 @@ BOOL ScrCmd_TouchscreenMenuShow(ScriptContext *ctx) {
     return TRUE;
 }
 
-BOOL sub_02047744(ScriptContext *ctx) {
+static BOOL sub_02047744(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
     u16 *p_ret = GetVarPointer(fieldSystem, ctx->data[0]);
     int r5 = ov01_021F6B00(fieldSystem);
@@ -4995,8 +4996,6 @@ BOOL ScrCmd_815(ScriptContext *ctx) {
     return FALSE;
 }
 
-BOOL sub_020477C0(ScriptContext *ctx);
-
 BOOL ScrCmd_GetMenuChoice(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
     u16 var_ret = ScriptReadHalfword(ctx);
@@ -5006,7 +5005,7 @@ BOOL ScrCmd_GetMenuChoice(ScriptContext *ctx) {
     return TRUE;
 }
 
-BOOL sub_020477C0(ScriptContext *ctx) {
+static BOOL sub_020477C0(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
     u16 *p_ret = GetVarPointer(fieldSystem, ctx->data[0]);
     int r7 = ov01_021F6B00(fieldSystem);
@@ -5030,40 +5029,37 @@ BOOL ScrCmd_MenuInit(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_MenuItemAdd(ScriptContext *ctx) {
-    struct UnkStruct_ov01_021EDC28 **p_menu = ov01_021F6B20(ctx->fieldSystem);
+    FieldMenuManager **menu = ov01_021F6B20(ctx->fieldSystem);
     u16 msgId = ScriptGetVar(ctx);
     u16 where = ScriptGetVar(ctx);
     u16 value = ScriptGetVar(ctx);
-    MoveTutorMenu_SetListItem(*p_menu, msgId, where, value);
+    MoveTutorMenu_SetListItem(*menu, msgId, where, value);
     return FALSE;
 }
 
-BOOL sub_020478D0(ScriptContext *ctx);
-BOOL sub_02047908(struct UnkStruct_ov01_021EDC28 *menu, int idx);
-
 BOOL ScrCmd_MenuExec(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
-    struct UnkStruct_ov01_021EDC28 **p_menu = ov01_021F6B20(fieldSystem);
+    FieldMenuManager **menu = ov01_021F6B20(fieldSystem);
     u16 *p_ret = GetVarPointer(fieldSystem, ctx->data[0]);
     ov01_021F6ABC(fieldSystem, 3, 7, p_ret);
-    ov01_021F6B34(fieldSystem, sub_02047908, *p_menu);
+    ov01_021F6B34(fieldSystem, sub_02047908, *menu);
     SetupNativeScript(ctx, sub_020478D0);
     return TRUE;
 }
 
-BOOL sub_020478D0(ScriptContext *ctx) {
+static BOOL sub_020478D0(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
-    struct UnkStruct_ov01_021EDC28 **p_menu = ov01_021F6B20(fieldSystem);
+    FieldMenuManager **menu = ov01_021F6B20(fieldSystem);
     u16 *p_ret = GetVarPointer(fieldSystem, ctx->data[0]);
     if (*p_ret == 0xEEEE) {
         return FALSE;
     } else {
-        ov01_021EDF00(*p_menu);
+        ov01_021EDF00(*menu);
         return TRUE;
     }
 }
 
-BOOL sub_02047908(struct UnkStruct_ov01_021EDC28 *menu, int idx) {
+static BOOL sub_02047908(FieldMenuManager *menu, int idx) {
     ov01_021EEF9C(menu, idx);
     return FALSE;
 }
@@ -5197,7 +5193,7 @@ BOOL ScrCmd_LegendCutsceneLugiaEyeGlimmerEffect(ScriptContext *ctx) {
     return TRUE;
 }
 
-// Unreferenced
+// Unused
 BOOL ScrCmd_760(ScriptContext *ctx) {
     ov02_02250B30(ctx->fieldSystem);
     return TRUE;
@@ -5313,15 +5309,15 @@ BOOL ScrCmd_800(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_801(ScriptContext *ctx) {
-    Window **p_moneyBox = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MONEY_BOX);
+    Window **p_moneyWindow = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MONEY_WINDOW);
     u16 *p_var = ScriptGetVarPointer(ctx);
-    *p_moneyBox = ov01_021EEF68(ctx->fieldSystem, *p_var);
+    *p_moneyWindow = ov01_021EEF68(ctx->fieldSystem, *p_var);
     return FALSE;
 }
 
 BOOL ScrCmd_802(ScriptContext *ctx) {
-    Window **p_moneyBox = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MONEY_BOX);
-    ov01_021EEF88(*p_moneyBox);
+    Window **p_moneyWindow = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MONEY_WINDOW);
+    ov01_021EEF88(*p_moneyWindow);
     return FALSE;
 }
 

@@ -67,15 +67,13 @@ typedef struct ScriptEnvironment {
     WaitingIcon *waitingIcon;
     EngagedTrainer engagedTrainers[2];
     u16 specialVars[NUM_SPECIAL_VARS];
-    void (*scrctx_end_cb)(FieldSystem *fieldSystem);
+    void (*function)(FieldSystem *fieldSystem); // FieldSysFunc?
     void *runningAppData;
     void *miscDataPtr;
-    void *unk_B4;
+    void *unk_B4; // OverworldAnimManager?
     void *unk_B8; // PlayerMovementState
-    Window *pointsBox;
-    u8 padding[0xC]; // FIXME: ugly hack
-    Window *moneyBox;
-    u8 padding2[0xC]; // FIXME: ugly hack 2
+    Window specialCurrencyWindow;
+    Window moneyWindow;
     struct SaveStatsPrinter *saveStatsPrinter;
 } ScriptEnvironment;
 
@@ -119,8 +117,8 @@ typedef enum ScriptEnvField {
     SCRIPTENV_ENGAGED_TRAINER_1_ENCOUNTER_TYPE,
     SCRIPTENV_ENGAGED_TRAINER_1_EVENT,
     SCRIPTENV_ENGAGED_TRAINER_1_FIELD_18,
-    SCRIPTENV_POINTS_BOX, // differs from diamond due to athlete points
-    SCRIPTENV_MONEY_BOX,
+    SCRIPTENV_SPECIAL_CURRENCY_WINDOW, // differs from diamond due to athlete points
+    SCRIPTENV_MONEY_WINDOW,
     SCRIPTENV_SAVE_STATS_PRINTER,
     SCRIPTENV_SPECIAL_VAR_8000,
     SCRIPTENV_SPECIAL_VAR_8001,

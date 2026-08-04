@@ -59,7 +59,7 @@
 .public ov01_021EDC84
 .public ov01_021EDF00
 .public ov01_021EDF38
-.public ov01_021EDF78
+.public FieldMenuManager_New
 .public MoveTutorMenu_SetListItem
 .public ov01_021EDFA4
 .public ov01_021EE014
@@ -67,7 +67,7 @@
 .public PrintCurFloorInNewWindow
 .public MapNumToFloorNo
 .public ov01_021EE974
-.public FieldSystem_ShowMoneyBox
+.public FieldSystem_ShowMoneyWindow
 .public MoneyBoxSys_Delete
 .public MoneyBoxSys_Update
 .public ov01_021EEC00

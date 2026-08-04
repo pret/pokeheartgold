@@ -207,7 +207,7 @@ scr_seq_0265_001:
 	PlaySE SEQ_SE_DP_SELECT
 	LockAll
 	FacePlayer
-	ShowMoneyBox 20, 2
+	ShowMoneyWindow 20, 2
 	GetDaycareState VAR_SPECIAL_RESULT
 	Compare VAR_SPECIAL_RESULT, 1
 	GoToIfEq _042E
@@ -224,7 +224,7 @@ scr_seq_0265_001:
 	NPCMsg msg_0439_00026
 	WaitButton
 	CloseMsg
-	HideMoneyBox
+	HideMoneyWindow
 	ReleaseAll
 	End
 
@@ -237,7 +237,7 @@ _0290:
 	GoToIfEq _041F
 	NPCMsg msg_0439_00022
 	CloseMsg
-	HideMoneyBox
+	HideMoneyWindow
 	FadeScreen 6, 1, 0, RGB_BLACK
 	WaitFade
 	SetVar VAR_SPECIAL_RESULT, 0
@@ -284,13 +284,13 @@ _0374:
 	WaitButton
 	CloseMsg
 	WaitCry
-	HideMoneyBox
+	HideMoneyWindow
 	ReleaseAll
 	End
 
 _038B:
 	RestoreOverworld
-	ShowMoneyBox 20, 2
+	ShowMoneyWindow 20, 2
 	FadeScreen 6, 1, 1, RGB_BLACK
 	WaitFade
 	Return
@@ -298,7 +298,7 @@ _038B:
 _03A1:
 	Call _038B
 	TouchscreenMenuShow
-	HideMoneyBox
+	HideMoneyWindow
 	CallStd std_bag_is_full_griseous_orb
 	End
 
@@ -308,7 +308,7 @@ _03B1:
 	NPCMsg msg_0439_00040
 	WaitButton
 	CloseMsg
-	HideMoneyBox
+	HideMoneyWindow
 	ReleaseAll
 	End
 
@@ -319,7 +319,7 @@ _03CE:
 	NPCMsg msg_0439_00029
 	WaitButton
 	CloseMsg
-	HideMoneyBox
+	HideMoneyWindow
 	ReleaseAll
 	End
 
@@ -338,7 +338,7 @@ _03FB:
 	NPCMsg msg_0439_00036
 	WaitButton
 	CloseMsg
-	HideMoneyBox
+	HideMoneyWindow
 	ReleaseAll
 	End
 
@@ -348,7 +348,7 @@ _040A:
 	NPCMsg msg_0439_00038
 	WaitButton
 	CloseMsg
-	HideMoneyBox
+	HideMoneyWindow
 	ReleaseAll
 	End
 
@@ -357,7 +357,7 @@ _041F:
 	NPCMsg msg_0439_00039
 	WaitButton
 	CloseMsg
-	HideMoneyBox
+	HideMoneyWindow
 	ReleaseAll
 	End
 
@@ -365,7 +365,7 @@ _042E:
 	NPCMsg msg_0439_00025
 	WaitButton
 	CloseMsg
-	HideMoneyBox
+	HideMoneyWindow
 	ReleaseAll
 	End
 
@@ -436,7 +436,7 @@ _0544:
 	NPCMsg msg_0439_00027
 	WaitButton
 	CloseMsg
-	HideMoneyBox
+	HideMoneyWindow
 	ReleaseAll
 	End
 
@@ -448,7 +448,7 @@ _0566:
 	FadeScreen 6, 1, 1, RGB_BLACK
 	WaitFade
 	SubMoneyVar VAR_SPECIAL_x8004
-	UpdateMoneyBox
+	UpdateMoneyWindow
 	PlaySE SEQ_SE_DP_REGI
 	WaitSE SEQ_SE_DP_REGI
 	NPCMsg msg_0439_00034
@@ -476,7 +476,7 @@ _05DC:
 	NPCMsg msg_0439_00032
 	WaitButton
 	CloseMsg
-	HideMoneyBox
+	HideMoneyWindow
 	ReleaseAll
 	End
 
@@ -511,7 +511,7 @@ _0620:
 	NPCMsg msg_0439_00029
 	WaitButton
 	CloseMsg
-	HideMoneyBox
+	HideMoneyWindow
 	ReleaseAll
 	End
 
@@ -521,7 +521,7 @@ _0660:
 	NPCMsg msg_0439_00042
 	EggHatchAnim
 	CloseMsg
-	HideMoneyBox
+	HideMoneyWindow
 	ReleaseAll
 	End
 	.balign 4, 0

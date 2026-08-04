@@ -14,20 +14,20 @@ BOOL ScrCmd_116(ScriptContext *ctx) {
     u8 type = ScriptReadByte(ctx);
     u16 x = ScriptGetVar(ctx);
     u16 y = ScriptGetVar(ctx);
-    Window **window = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_POINTS_BOX);
+    Window **window = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_SPECIAL_CURRENCY_WINDOW);
     *window = ov01_021EEC00(ctx->fieldSystem, type, x, y);
     return FALSE;
 }
 
 BOOL ScrCmd_117(ScriptContext *ctx) {
-    Window **window = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_POINTS_BOX);
+    Window **window = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_SPECIAL_CURRENCY_WINDOW);
     ov01_021EEC68(*window);
     return FALSE;
 }
 
 BOOL ScrCmd_118(ScriptContext *ctx) {
     u8 type = ScriptReadByte(ctx);
-    Window **window = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_POINTS_BOX);
+    Window **window = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_SPECIAL_CURRENCY_WINDOW);
     ov01_021EEC7C(ctx->fieldSystem, *window, type);
     return FALSE;
 }

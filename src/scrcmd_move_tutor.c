@@ -10,7 +10,9 @@
 #include "heap.h"
 #include "message_format.h"
 #include "msgdata.h"
-#include "overlay_01.h"
+#include "overlay_01.h" // check without?
+#include "overlay_01_021EDAFC.h"
+#include "overlay_01_021F6830.h"
 #include "party.h"
 #include "player_avatar.h"
 #include "pm_string.h"
@@ -252,7 +254,7 @@ BOOL ScrCmd_MoveTutorChooseMove(ScriptContext *ctx) {
     s32 numLearnableMoves;
     BOOL showNextButton;
     FieldSystem *fieldSystem = ctx->fieldSystem;
-    struct UnkStruct_ov01_021EDC28 **unk = ov01_021F6B20(fieldSystem);
+    FieldMenuManager **menu = ov01_021F6B20(fieldSystem);
     u16 resultVarId;
     MsgData *messageData;
     u16 showAsTwoColumns;
@@ -285,7 +287,7 @@ BOOL ScrCmd_MoveTutorChooseMove(ScriptContext *ctx) {
     }
     u16 *result = GetVarPointer(fieldSystem, resultVarId);
     Window *window = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_WINDOW);
-    *unk = ov01_021EDF78(fieldSystem, 1, 1, 0, 1, result, *messageFormat, window, ctx->msgdata);
+    *menu = FieldMenuManager_New(fieldSystem, 1, 1, 0, 1, result, *messageFormat, window, ctx->msgdata);
     messageData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0750_bin, HEAP_ID_FIELD3);
     String *string = String_New(0x10, HEAP_ID_FIELD3);
     showAsTwoColumns = (numLearnableMoves + showNextButton >= 4) ? 1 : 0;
@@ -293,14 +295,14 @@ BOOL ScrCmd_MoveTutorChooseMove(ScriptContext *ctx) {
         ReadMsgDataIntoString(messageData, sTutorMoves[learnableMoves[i + numMovesToSkip]].move, string);
         BufferString(*messageFormat, 0, string, 2, 1, 2);
         BufferIntegerAsString(*messageFormat, 1, sTutorMoves[learnableMoves[i + numMovesToSkip]].cost, 2, PRINTING_MODE_RIGHT_ALIGN, TRUE);
-        MoveTutorMenu_SetListItem(*unk, showAsTwoColumns, 0xff, sTutorMoves[learnableMoves[i + numMovesToSkip]].move);
+        MoveTutorMenu_SetListItem(*menu, showAsTwoColumns, 0xff, sTutorMoves[learnableMoves[i + numMovesToSkip]].move);
     }
     String_Delete(string);
     DestroyMsgData(messageData);
     if (showNextButton) {
-        MoveTutorMenu_SetListItem(*unk, 2, 0xff, 0xfffd);
+        MoveTutorMenu_SetListItem(*menu, 2, 0xff, 0xfffd);
     }
-    MoveTutorMenu_SetListItem(*unk, 3, 0xff, 0xfffe);
+    MoveTutorMenu_SetListItem(*menu, 3, 0xff, 0xfffe);
     ov01_021F6ABC(fieldSystem, 3, 7, GetVarPointer(fieldSystem, ctx->data[0]));
     SetupNativeScript(ctx, ov01_0220305C);
     u16 *unused = GetVarPointer(fieldSystem, ctx->data[0]); // yes, this is needed here to match
@@ -309,12 +311,12 @@ BOOL ScrCmd_MoveTutorChooseMove(ScriptContext *ctx) {
 
 static BOOL ov01_0220305C(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
-    struct UnkStruct_ov01_021EDC28 **unk = ov01_021F6B20(fieldSystem);
+    FieldMenuManager **menu = ov01_021F6B20(fieldSystem);
     u16 *result = GetVarPointer(fieldSystem, ctx->data[0]);
     if (*result == 0xeeee) {
         return FALSE;
     }
-    ov01_021EDF00(*unk);
+    ov01_021EDF00(*menu);
     return TRUE;
 }
 

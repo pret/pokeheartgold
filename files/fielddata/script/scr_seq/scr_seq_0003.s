@@ -363,7 +363,7 @@ _04D6:
 _04DD:
 	SetSignpostAction MAPSIGNCOMMAND_HIDE
 	WaitSignpostAction
-	ScrCmd_061
+	ShowStartMenu
 	RestartCurrentScript
 	End
 

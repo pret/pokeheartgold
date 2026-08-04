@@ -26,7 +26,7 @@ void LoadScriptsAndMessagesParameterized(FieldSystem *fieldSystem, ScriptContext
 void LoadScriptsAndMessagesForCurrentMap(FieldSystem *fieldSystem, ScriptContext *ctx);
 void *FieldSysGetAttrAddrInternal(ScriptEnvironment *fieldSystem, enum ScriptEnvField field);
 void *FieldSysGetAttrAddr(FieldSystem *fieldSystem, enum ScriptEnvField field);
-void sub_0204031C(FieldSystem *fieldSystem);
+void FieldSystem_ShowStartMenu(FieldSystem *fieldSystem);
 void ScriptRunByIndex(ScriptContext *ctx, int idx);
 u8 *LoadScriptsForCurrentMap(u32 mapId);
 u32 GetCurrentMapMessageBank(u32 mapId);

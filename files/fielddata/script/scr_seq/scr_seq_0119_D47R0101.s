@@ -571,7 +571,7 @@ _0728:
 	BufferInt 1, VAR_SPECIAL_RESULT
 	NPCMsg msg_0135_D47R0101_00000
 _0736:
-	ShowMoneyBox 20, 2
+	ShowMoneyWindow 20, 2
 	TouchscreenMenuHide
 	GetMenuChoice VAR_SPECIAL_RESULT
 	TouchscreenMenuShow
@@ -592,7 +592,7 @@ _0773:
 	NPCMsg msg_0135_D47R0101_00002
 	PlaySE SEQ_SE_DP_REGI
 	SubMoneyImmediate 500
-	UpdateMoneyBox
+	UpdateMoneyWindow
 	NPCMsg msg_0135_D47R0101_00004
 	BufferPlayersName 0
 	SetVar VAR_SPECIAL_RESULT, 30
@@ -602,7 +602,7 @@ _0773:
 	WaitFanfare
 	NPCMsg msg_0135_D47R0101_00006
 	CloseMsg
-	HideMoneyBox
+	HideMoneyWindow
 	ScrCmd_600
 	ApplyMovement obj_player, _08C4
 	WaitMovement
@@ -629,7 +629,7 @@ _0773:
 	End
 
 _0846:
-	HideMoneyBox
+	HideMoneyWindow
 	NPCMsg msg_0135_D47R0101_00003
 	WaitButton
 	CloseMsg
@@ -637,7 +637,7 @@ _0846:
 	End
 
 _0853:
-	HideMoneyBox
+	HideMoneyWindow
 	Compare VAR_UNK_4057, 6
 	GoToIfLt _086B
 	NPCMsg msg_0135_D47R0101_00013
@@ -652,7 +652,7 @@ _086E:
 	End
 
 _0876:
-	HideMoneyBox
+	HideMoneyWindow
 	Compare VAR_UNK_4057, 6
 	GoToIfLt _088E
 	NPCMsg msg_0135_D47R0101_00011
@@ -973,7 +973,7 @@ _0C84:
 	End
 
 _0C8F:
-	ShowMoneyBox 20, 2
+	ShowMoneyWindow 20, 2
 	TouchscreenMenuHide
 	GetMenuChoice VAR_SPECIAL_RESULT
 	TouchscreenMenuShow
@@ -994,7 +994,7 @@ _0CCC:
 	NPCMsg msg_0135_D47R0101_00055
 	PlaySE SEQ_SE_DP_REGI
 	SubMoneyImmediate 500
-	UpdateMoneyBox
+	UpdateMoneyWindow
 	NPCMsg msg_0135_D47R0101_00057
 	BufferPlayersName 0
 	SetVar VAR_SPECIAL_RESULT, 30
@@ -1004,7 +1004,7 @@ _0CCC:
 	WaitFanfare
 	NPCMsg msg_0135_D47R0101_00059
 	CloseMsg
-	HideMoneyBox
+	HideMoneyWindow
 	ScrCmd_600
 	ApplyMovement obj_player, _08C4
 	WaitMovement
@@ -1031,7 +1031,7 @@ _0CCC:
 	End
 
 _0D9F:
-	HideMoneyBox
+	HideMoneyWindow
 	NPCMsg msg_0135_D47R0101_00003
 	WaitButton
 	CloseMsg
@@ -1039,7 +1039,7 @@ _0D9F:
 	End
 
 _0DAC:
-	HideMoneyBox
+	HideMoneyWindow
 	Compare VAR_UNK_4057, 6
 	GoToIfLt _0DC4
 	NPCMsg msg_0135_D47R0101_00013
@@ -1054,7 +1054,7 @@ _0DC7:
 	End
 
 _0DCF:
-	HideMoneyBox
+	HideMoneyWindow
 	Compare VAR_UNK_4057, 6
 	GoToIfLt _0DE7
 	NPCMsg msg_0135_D47R0101_00011

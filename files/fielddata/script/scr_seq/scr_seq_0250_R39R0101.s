@@ -34,7 +34,7 @@ _002C:
 	End
 
 _0058:
-	ShowMoneyBox 20, 2
+	ShowMoneyWindow 20, 2
 	NPCMsg msg_0397_R39R0101_00001
 	TouchscreenMenuHide
 	MenuInit 1, 1, 0, 1, VAR_SPECIAL_RESULT
@@ -54,11 +54,11 @@ _0058:
 	GoToIfEq _00F7
 	GoToIfNoItemSpace ITEM_MOOMOO_MILK, VAR_TEMP_x4000, _0104
 	SubMoneyVar VAR_TEMP_x4001
-	UpdateMoneyBox
+	UpdateMoneyWindow
 	NPCMsg msg_0397_R39R0101_00002
 	CallStd std_give_item_verbose
 	CloseMsg
-	HideMoneyBox
+	HideMoneyWindow
 	ReleaseAll
 	End
 
@@ -66,7 +66,7 @@ _00F7:
 	NPCMsg msg_0397_R39R0101_00003
 	WaitButton
 	CloseMsg
-	HideMoneyBox
+	HideMoneyWindow
 	ReleaseAll
 	End
 
@@ -74,7 +74,7 @@ _0104:
 	NPCMsg msg_0397_R39R0101_00004
 	WaitButton
 	CloseMsg
-	HideMoneyBox
+	HideMoneyWindow
 	ReleaseAll
 	End
 
@@ -82,7 +82,7 @@ _0111:
 	NPCMsg msg_0397_R39R0101_00005
 	WaitButton
 	CloseMsg
-	HideMoneyBox
+	HideMoneyWindow
 	ReleaseAll
 	End
 

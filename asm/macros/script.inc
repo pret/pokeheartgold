@@ -423,11 +423,11 @@
 	CallStd std_signpost
 	.endm
 
-	.macro ScrCmd_061
+	.macro ShowStartMenu
 	.short 61
 	.endm
 
-	.macro ScrCmd_ScrollBG3 distanceX, countX, directionX, distanceY, countY, directionY
+	.macro ScrollBG3 distanceX, countX, directionX, distanceY, countY, directionY
 	.short 62
 	.byte \distanceX
 	.byte \countX
@@ -711,17 +711,17 @@
 	.word \amount
 	.endm
 
-	.macro ShowMoneyBox xPos, yPos
+	.macro ShowMoneyWindow xPos, yPos
 	.short 113
 	.short \xPos
 	.short \yPos
 	.endm
 
-	.macro HideMoneyBox
+	.macro HideMoneyWindow
 	.short 114
 	.endm
 
-	.macro UpdateMoneyBox
+	.macro UpdateMoneyWindow
 	.short 115
 	.endm
 

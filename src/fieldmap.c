@@ -126,7 +126,7 @@ BOOL Task_RunScripts(TaskManager *taskman) {
             env->activeScriptContextCount--;
         }
         if (env->activeScriptContextCount == 0) {
-            void (*callback)(FieldSystem *a0) = env->scrctx_end_cb;
+            void (*callback)(FieldSystem *a0) = env->function;
             MessageFormat_Delete(env->msgfmt);
             String_Delete(env->stringBuffer0);
             String_Delete(env->stringBuffer1);
@@ -297,10 +297,10 @@ void *FieldSysGetAttrAddrInternal(ScriptEnvironment *environment, enum ScriptEnv
         return &environment->engagedTrainers[1].overworldEvent;
     case SCRIPTENV_ENGAGED_TRAINER_1_FIELD_18:
         return &environment->engagedTrainers[1].unk18;
-    case SCRIPTENV_POINTS_BOX:
-        return &environment->pointsBox;
-    case SCRIPTENV_MONEY_BOX:
-        return &environment->moneyBox;
+    case SCRIPTENV_SPECIAL_CURRENCY_WINDOW:
+        return &environment->specialCurrencyWindow;
+    case SCRIPTENV_MONEY_WINDOW:
+        return &environment->moneyWindow;
     case SCRIPTENV_SAVE_STATS_PRINTER:
         return &environment->saveStatsPrinter;
     case SCRIPTENV_SPECIAL_VAR_8000:
@@ -331,10 +331,10 @@ void *FieldSysGetAttrAddr(FieldSystem *fieldSystem, enum ScriptEnvField field) {
     return FieldSysGetAttrAddrInternal(unk, field);
 }
 
-void sub_0204031C(FieldSystem *fieldSystem) {
-    ScriptEnvironment *unk = TaskManager_GetEnvironment(fieldSystem->taskman);
+void FieldSystem_ShowStartMenu(FieldSystem *fieldSystem) {
+    ScriptEnvironment *env = TaskManager_GetEnvironment(fieldSystem->taskman);
     if (FieldSystem_MapIsNotMysteryZone(fieldSystem) == TRUE) {
-        unk->scrctx_end_cb = sub_0203BD64;
+        env->function = StartMenu_OpenFromScript;
     }
 }
 

@@ -531,7 +531,7 @@ scr_seq_D49R0101_014:
 	CopyVar VAR_TEMP_x4005, VAR_SPECIAL_x8000
 	Compare VAR_TEMP_x4005, 0
 	GoToIfNe _072E
-	ShowMoneyBox 20, 2
+	ShowMoneyWindow 20, 2
 	GoTo _0759
 
 _0728:
@@ -679,7 +679,7 @@ _08F8:
 	CallIfEq _08CC
 	Compare VAR_TEMP_x4005, 0
 	GoToIfNe _097D
-	UpdateMoneyBox
+	UpdateMoneyWindow
 	GoTo _098D
 
 _097D:
@@ -736,7 +736,7 @@ _0A35:
 	CloseMsg
 	Compare VAR_TEMP_x4005, 0
 	GoToIfNe _0A52
-	HideMoneyBox
+	HideMoneyWindow
 	GoTo _0A54
 
 _0A52:
@@ -751,7 +751,7 @@ _0A5C:
 	CloseMsg
 	Compare VAR_TEMP_x4005, 0
 	GoToIfNe _0A75
-	HideMoneyBox
+	HideMoneyWindow
 	GoTo _0A77
 
 _0A75:
