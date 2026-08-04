@@ -1,6 +1,8 @@
 #ifndef POKEHEARTGOLD_OVERLAY_01_021FB5D4_H
 #define POKEHEARTGOLD_OVERLAY_01_021FB5D4_H
 
+#include "global.h"
+
 void FieldSystem_DoPoisonEffect(u32 unk20);
 
 #endif // POKEHEARTGOLD_OVERLAY_01_021FB5D4_H

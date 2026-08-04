@@ -4454,9 +4454,9 @@ _021E7B44:
 	add r6, r7, #4
 _021E7B96:
 	ldr r0, [r5, r7]
-	bl sub_0200ACF0
+	bl SpriteTransfer_CreateCharTransferTask
 	ldr r0, [r5, r6]
-	bl sub_0200AF94
+	bl SpriteTransfer_CreateExtPlttTransferTask
 	add r4, r4, #1
 	add r5, #0x10
 	cmp r4, #5
@@ -4849,9 +4849,9 @@ _021E7EA2:
 	mov r0, #0x4f
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
-	bl sub_0200AEB0
+	bl SpriteTransfer_DeleteCharTransferTask
 	ldr r0, [r6, r7]
-	bl sub_0200B0A8
+	bl SpriteTransfer_DeletePlttTransferTask
 	add r0, r4, #1
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18
@@ -4934,7 +4934,7 @@ _021E7F38:
 	mov r2, #0xcf
 	bl ReplacePlttResObjFromNarc
 	add r0, r6, #0
-	bl sub_0200B084
+	bl SpriteTransfer_ReplacePlttData
 	add sp, #8
 	pop {r4, r5, r6, pc}
 	.balign 4, 0

@@ -1,6 +1,8 @@
 #ifndef POKEHEARTGOLD_UNK_02034B0C_H
 #define POKEHEARTGOLD_UNK_02034B0C_H
 
+#include "player_data.h"
+
 void sub_02034D8C(void);
 BOOL sub_02034DB8(void);
 int sub_0203511C();

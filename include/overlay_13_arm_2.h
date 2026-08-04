@@ -1,6 +1,8 @@
 #ifndef POKEHEARTGOLD_OVERLAY_13_ARM_2_H
 #define POKEHEARTGOLD_OVERLAY_13_ARM_2_H
 
+#include "global.h"
+
 BOOL ov13_0222B430(void *, s32, s32);
 
 #endif // POKEHEARTGOLD_OVERLAY_13_ARM_2_H

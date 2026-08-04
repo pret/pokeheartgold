@@ -3,7 +3,7 @@
 #include "data/resdat.naix"
 
 #include "math_util.h"
-#include "unk_0200ACF0.h"
+#include "sprite_transfer.h"
 #include "unk_0200B150.h"
 #include "vram_transfer_manager.h"
 
@@ -11,7 +11,7 @@ typedef struct PokegearObjResSpec {
     u32 maxSprites;
     const OamManagerParam *oamManagerParam;
     const OamCharTransferParam *oamCharTransferParam;
-    const u16 *resIdList;
+    const ResdatIdList *resIdList;
 } PokegearObjResSpec;
 
 static void PokegearUIManager_LoadInitialGfx(PokegearUIManager *uiManager, u16 skin);
@@ -37,50 +37,50 @@ static const OamCharTransferParam sOamCharTransferParam = {
     .charModeSub = GX_OBJVRAMMODE_CHAR_1D_32K,
 };
 
-static const u16 sResList_Map[] = {
-    NARC_resdat_resdat_00000034_bin,
-    NARC_resdat_resdat_00000035_bin,
-    NARC_resdat_resdat_00000033_bin,
-    NARC_resdat_resdat_00000032_bin,
-    0xFFFF,
-    0xFFFF,
-    NARC_resdat_resdat_00000080_bin,
+static const ResdatIdList sResList_Map = {
+    .charRes = NARC_resdat_resdat_00000034_bin,
+    .plttRes = NARC_resdat_resdat_00000035_bin,
+    .cellRes = NARC_resdat_resdat_00000033_bin,
+    .animRes = NARC_resdat_resdat_00000032_bin,
+    .mcelRes = 0xFFFF,
+    .manmRes = 0xFFFF,
+    .headerId = NARC_resdat_resdat_00000080_bin,
 };
-static const u16 sResList_Configure[] = {
-    NARC_resdat_resdat_00000042_bin,
-    NARC_resdat_resdat_00000043_bin,
-    NARC_resdat_resdat_00000041_bin,
-    NARC_resdat_resdat_00000040_bin,
-    0xFFFF,
-    0xFFFF,
-    NARC_resdat_resdat_00000082_bin,
+static const ResdatIdList sResList_Configure = {
+    .charRes = NARC_resdat_resdat_00000042_bin,
+    .plttRes = NARC_resdat_resdat_00000043_bin,
+    .cellRes = NARC_resdat_resdat_00000041_bin,
+    .animRes = NARC_resdat_resdat_00000040_bin,
+    .mcelRes = 0xFFFF,
+    .manmRes = 0xFFFF,
+    .headerId = NARC_resdat_resdat_00000082_bin,
 };
-static const u16 sResList_Phone[] = {
-    NARC_resdat_resdat_00000046_bin,
-    NARC_resdat_resdat_00000047_bin,
-    NARC_resdat_resdat_00000045_bin,
-    NARC_resdat_resdat_00000044_bin,
-    0xFFFF,
-    0xFFFF,
-    NARC_resdat_resdat_00000083_bin,
+static const ResdatIdList sResList_Phone = {
+    .charRes = NARC_resdat_resdat_00000046_bin,
+    .plttRes = NARC_resdat_resdat_00000047_bin,
+    .cellRes = NARC_resdat_resdat_00000045_bin,
+    .animRes = NARC_resdat_resdat_00000044_bin,
+    .mcelRes = 0xFFFF,
+    .manmRes = 0xFFFF,
+    .headerId = NARC_resdat_resdat_00000083_bin,
 };
-static const u16 sResList_Radio[] = {
-    NARC_resdat_resdat_00000038_bin,
-    NARC_resdat_resdat_00000039_bin,
-    NARC_resdat_resdat_00000037_bin,
-    NARC_resdat_resdat_00000036_bin,
-    0xFFFF,
-    0xFFFF,
-    NARC_resdat_resdat_00000081_bin,
+static const ResdatIdList sResList_Radio = {
+    .charRes = NARC_resdat_resdat_00000038_bin,
+    .plttRes = NARC_resdat_resdat_00000039_bin,
+    .cellRes = NARC_resdat_resdat_00000037_bin,
+    .animRes = NARC_resdat_resdat_00000036_bin,
+    .mcelRes = 0xFFFF,
+    .manmRes = 0xFFFF,
+    .headerId = NARC_resdat_resdat_00000081_bin,
 };
 
 // clang-format off
 static const PokegearObjResSpec sPokegearObjResSpecs[] = {
-    [GEAR_APP_CONFIGURE] = { 0x80, &sOamManagerParam, &sOamCharTransferParam, sResList_Configure },
-    [GEAR_APP_RADIO]     = { 0x80, &sOamManagerParam, &sOamCharTransferParam, sResList_Radio     },
-    [GEAR_APP_MAP]       = { 0xC0, &sOamManagerParam, &sOamCharTransferParam, sResList_Map       },
-    [GEAR_APP_PHONE]     = { 0x80, &sOamManagerParam, &sOamCharTransferParam, sResList_Phone     },
-    [GEAR_APP_CANCEL]    = { 0x80, &sOamManagerParam, &sOamCharTransferParam, sResList_Map       },
+    [GEAR_APP_CONFIGURE] = { 0x80, &sOamManagerParam, &sOamCharTransferParam, &sResList_Configure },
+    [GEAR_APP_RADIO]     = { 0x80, &sOamManagerParam, &sOamCharTransferParam, &sResList_Radio     },
+    [GEAR_APP_MAP]       = { 0xC0, &sOamManagerParam, &sOamCharTransferParam, &sResList_Map       },
+    [GEAR_APP_PHONE]     = { 0x80, &sOamManagerParam, &sOamCharTransferParam, &sResList_Phone     },
+    [GEAR_APP_CANCEL]    = { 0x80, &sOamManagerParam, &sOamCharTransferParam, &sResList_Map       },
 };
 // clang-format on
 
@@ -150,11 +150,11 @@ void PokegearUIManager_LoadSkinGfx(PokegearUIManager *uiManager, u8 skin) {
 
     obj = uiManager->spriteResources[GF_GFX_RES_TYPE_CHAR]->obj[0];
     ReplaceCharResObjFromNarc(uiManager->resourceManagers[GF_GFX_RES_TYPE_CHAR], obj, NARC_application_pokegear_pgear_gra, skin + NARC_pgear_gra_pgear_gra_00000006_NCGR, FALSE, uiManager->heapID);
-    sub_0200AE8C(obj);
+    SpriteTransfer_ReplaceCharData(obj);
 
     obj = uiManager->spriteResources[GF_GFX_RES_TYPE_PLTT]->obj[0];
     ReplacePlttResObjFromNarc(uiManager->resourceManagers[GF_GFX_RES_TYPE_PLTT], obj, NARC_application_pokegear_pgear_gra, skin + NARC_pgear_gra_pgear_gra_00000000_NCLR, FALSE, uiManager->heapID);
-    sub_0200B084(obj);
+    SpriteTransfer_ReplacePlttData(obj);
 }
 
 void PokegearUIManager_AnimateSprites(PokegearUIManager *uiManager) {
@@ -223,8 +223,8 @@ static void PokegearUIManager_LoadInitialGfx(PokegearUIManager *uiManager, u16 s
 
 static void PokegearUIManager_UnloadSprites(PokegearUIManager *auiManager) {
     SpriteList_Delete(auiManager->spriteList);
-    sub_0200AED4(auiManager->spriteResources[GF_GFX_RES_TYPE_CHAR]);
-    sub_0200B0CC(auiManager->spriteResources[GF_GFX_RES_TYPE_PLTT]);
+    SpriteTransfer_DeleteAllCharTransferTasks(auiManager->spriteResources[GF_GFX_RES_TYPE_CHAR]);
+    SpriteTransfer_DeleteAllPlttTransferTasks(auiManager->spriteResources[GF_GFX_RES_TYPE_PLTT]);
     for (u32 i = 0; i < 4; ++i) {
         Delete2DGfxResObjList(auiManager->spriteResources[i]);
         Destroy2DGfxResObjMan(auiManager->resourceManagers[i]);
@@ -239,14 +239,14 @@ static void PokegearUIManager_LoadInitialSkinGfx(PokegearUIManager *uiManager, u
     GF_ASSERT(objList->obj[0] != NULL);
     switch (uiManager->mode) {
     case 1:
-        sub_0200ADA4(objList->obj[0]);
+        SpriteTransfer_CreateCharTransferTask_AllocAtEnd(objList->obj[0]);
         break;
     case 2:
-        sub_0200AE18(objList->obj[0]);
+        SpriteTransfer_CreateCharTransferTask_UpdateMappingTypeFromHW_AllocAtEnd(objList->obj[0]);
         break;
     case 0:
     default:
-        sub_0200ACF0(objList->obj[0]);
+        SpriteTransfer_CreateCharTransferTask(objList->obj[0]);
         break;
     }
 
@@ -259,7 +259,7 @@ static void PokegearUIManager_LoadInitialSkinGfx(PokegearUIManager *uiManager, u
     objList = uiManager->spriteResources[GF_GFX_RES_TYPE_PLTT];
     objList->obj[0] = AddPlttResObjFromNarc(uiManager->resourceManagers[GF_GFX_RES_TYPE_PLTT], NARC_application_pokegear_pgear_gra, skin + NARC_pgear_gra_pgear_gra_00000000_NCLR, FALSE, 0xE000, (NNS_G2D_VRAM_TYPE)uiManager->vramType, 4, uiManager->heapID);
     GF_ASSERT(objList->obj[0] != NULL);
-    sub_0200B00C(objList->obj[0]);
+    SpriteTransfer_CreatePlttTransferTask(objList->obj[0]);
 }
 
 // functions for PokegearObjectsManager

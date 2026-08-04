@@ -5542,7 +5542,7 @@ ov108_021E84F8: ; 0x021E84F8
 	mov r2, #0xa6
 	bl ReplaceCharResObjFromNarc
 	add r0, r4, #0
-	bl sub_0200AE8C
+	bl SpriteTransfer_ReplaceCharData
 	add sp, #8
 	pop {r4, pc}
 	.balign 4, 0
@@ -5811,11 +5811,11 @@ ov108_021E8718: ; 0x021E8718
 	mov r0, #0x55
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_0200AED4
+	bl SpriteTransfer_DeleteAllCharTransferTasks
 	mov r0, #0x56
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_0200B0CC
+	bl SpriteTransfer_DeleteAllPlttTransferTasks
 	mov r7, #0x55
 	lsl r7, r7, #2
 	add r6, r7, #0
@@ -5879,17 +5879,17 @@ _021E879A:
 _021E87A8:
 	ldr r0, [r6]
 	ldr r0, [r0, r4]
-	bl sub_0200ADA4
+	bl SpriteTransfer_CreateCharTransferTask_AllocAtEnd
 	b _021E87C4
 _021E87B2:
 	ldr r0, [r6]
 	ldr r0, [r0, r4]
-	bl sub_0200AE18
+	bl SpriteTransfer_CreateCharTransferTask_UpdateMappingTypeFromHW_AllocAtEnd
 	b _021E87C4
 _021E87BC:
 	ldr r0, [r6]
 	ldr r0, [r0, r4]
-	bl sub_0200AD64
+	bl SpriteTransfer_CreateCharTransferTask_UpdateMappingTypeFromHW
 _021E87C4:
 	add r7, r7, #1
 	add r4, r4, #4
@@ -5956,7 +5956,7 @@ _021E8806:
 _021E8844:
 	ldr r0, [r4]
 	ldr r0, [r0]
-	bl sub_0200B00C
+	bl SpriteTransfer_CreatePlttTransferTask
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov108_021E8758

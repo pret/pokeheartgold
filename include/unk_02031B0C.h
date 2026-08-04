@@ -1,6 +1,7 @@
 #ifndef POKEHEARTGOLD_UNK_02031B0C_H
 #define POKEHEARTGOLD_UNK_02031B0C_H
 
+#include "pm_string.h"
 #include "save.h"
 
 typedef struct UnkStruct_02031CEC {

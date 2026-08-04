@@ -1,6 +1,8 @@
 #ifndef POKEHEARTGOLD_OVERLAY_01_021F467C_H
 #define POKEHEARTGOLD_OVERLAY_01_021F467C_H
 
+#include "global.h"
+
 u32 ov01_021F467C(u32 a0, u32 a1);
 void ov01_021F46DC(u32 *a0);
 

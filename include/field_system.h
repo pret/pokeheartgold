@@ -88,12 +88,12 @@ typedef struct FieldEnvSubUnk18 {
     u32 direction;
 } FieldEnvSubUnk18;
 
-struct FieldSystemUnkSub68 {
-    Window unk0;
-    u16 unk10;
-    u8 unk12;
-    u8 unk13_0 : 7;
-    u8 unk13_7 : 1;
+struct FieldSignpostWindow {
+    Window window;
+    u16 map;
+    u8 type;
+    u8 cmd : 7;
+    u8 active : 1;
 };
 
 typedef struct FieldSystemUnkSub4 {
@@ -133,7 +133,7 @@ struct FieldSystem {
     TerrainAttributes *terrainAttributes;
     u32 unk60;
     int unk64;
-    struct FieldSystemUnkSub68 *unk68;
+    struct FieldSignpostWindow *signpostWindow;
     BOOL unk6C;
     int unk70;
     const struct UnkStruct_020FC5CC *unk74;
@@ -149,7 +149,7 @@ struct FieldSystem {
     u8 filler_98[0x4];
     void *unk9C;
     FrontierFieldSystem *frontierFsys;
-    Save_LinkBattleRuleset *linkBattleRuleset;
+    LinkBattleRuleset *linkBattleRuleset;
     UnkStruct_02092BB8 *unkA8;
     u32 unkAC;
     void *unkB0;
@@ -181,19 +181,19 @@ struct FieldSystem {
 }; // size: 0x128
 
 typedef struct FieldInput {
-    u16 interact:1;
-    u16 endMovement:1;
-    u16 menu:1;
-    u16 registeredItem:2;
-    u16 sign:1;
-    u16 mapTransition:1;
-    u16 movement:1;
-    u16 unk0_8:1;
-    u16 unk0_9:1;
-    u16 unk0_A:1;
-    u16 unk0_B:1;
-    u16 unk0_C:1;
-    u16 unk0_D:1;
+    u16 interact : 1;
+    u16 endMovement : 1;
+    u16 menu : 1;
+    u16 registeredItem : 2;
+    u16 sign : 1;
+    u16 mapTransition : 1;
+    u16 movement : 1;
+    u16 unk0_8 : 1;
+    u16 unk0_9 : 1;
+    u16 unk0_A : 1;
+    u16 unk0_B : 1;
+    u16 unk0_C : 1;
+    u16 unk0_D : 1;
     u16 unk2;
     u8 playerDir;
     s8 transitionDir;

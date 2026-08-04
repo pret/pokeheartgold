@@ -317,20 +317,20 @@ static void GameClearSave_InitGraphics(FieldSystem *fieldSystem, GameClearWork *
 static void GameClearSave_PrintSaving(FieldSystem *fieldSystem, GameClearWork *env) {
     Options *options = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);
     env->windowText = ReadMsgData_NewNarc_NewString(NARC_msgdata_msg, NARC_msg_msg_0040_bin, msg_0040_00015, HEAP_ID_FIELD3);
-    sub_0205B514(env->bgConfig, &env->window, 3);
-    sub_0205B564(&env->window, options);
-    env->printerId = sub_0205B5B4(&env->window, env->windowText, options, 1);
+    DialogBox_AddWindowToLayer3(env->bgConfig, &env->window, GF_BG_LYR_MAIN_3);
+    DialogBox_LoadFrame(&env->window, options);
+    env->printerId = DialogBox_PrintMessage(&env->window, env->windowText, options, 1);
     env->waitingIcon = WaitingIcon_New(&env->window, 0x000003e2);
 }
 
 static BOOL GameClearSave_IsPrintFinished(GameClearWork *env) {
-    return IsPrintFinished((u8)env->printerId);
+    return DialogBox_IsPrintFinished((u8)env->printerId);
 }
 
 static void sub_02052E70(GameClearWork *env) {
     String_Delete(env->windowText);
     sub_0200F450(env->waitingIcon);
-    sub_0205B5A8(&env->window);
+    DialogBox_Clear(&env->window);
 }
 
 static void GameClearSave_PrintSaveStatus(FieldSystem *fieldSystem, GameClearWork *env, int writeStatus) {
@@ -346,7 +346,7 @@ static void GameClearSave_PrintSaveStatus(FieldSystem *fieldSystem, GameClearWor
     }
     DestroyMsgData(msgData);
     Options *options = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);
-    env->printerId = sub_0205B5B4(&env->window, env->windowText, options, 1);
+    env->printerId = DialogBox_PrintMessage(&env->window, env->windowText, options, 1);
 }
 
 static void GameClearSave_Free(FieldSystem *fieldSystem, GameClearWork *env) {

@@ -253,7 +253,7 @@ _0395:
 	GoTo _03B4
 	End
 _03A7:
-	ScrCmd_048 msg_0043_00211
+	ShowMessageSynchronized msg_0043_00211
 	CloseMsg
 	GoTo _03B4
 	End
@@ -265,16 +265,16 @@ _03B4:
 	End
 _03CD:
 	BufferPlayersName 0
-	ScrCmd_048 msg_0043_00066
+	ShowMessageSynchronized msg_0043_00066
 	GoTo _03E9
 	End
 _03DB:
 	BufferPlayersName 0
-	ScrCmd_048 msg_0043_00067
+	ShowMessageSynchronized msg_0043_00067
 	GoTo _03E9
 	End
 _03E9:
-	ScrCmd_048 msg_0043_00068
+	ShowMessageSynchronized msg_0043_00068
 	ScrCmd_232 26
 	ScrCmd_233 26
 	CloseMsg
@@ -286,7 +286,7 @@ _03FE:
 	ScrCmd_257 239
 	Pokeathlon 1, 0, VAR_SPECIAL_x8000, VAR_SPECIAL_RESULT, VAR_SPECIAL_x8001, VAR_SPECIAL_x8002, VAR_SPECIAL_x8003
 	ScrCmd_237
-	ScrCmd_048 msg_0043_00078
+	ShowMessageSynchronized msg_0043_00078
 	CloseMsg
 	ScrCmd_232 24
 	ScrCmd_233 24

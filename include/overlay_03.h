@@ -1,6 +1,9 @@
 #ifndef POKEHEARTGOLD_OVERLAY_03_H
 #define POKEHEARTGOLD_OVERLAY_03_H
 
+#include "field/field_sprite_manager.h"
+#include "pokeathlon/pokeathlon_save.h"
+
 #include "bag_types_def.h"
 #include "dex_mon_measures.h"
 #include "game_stats.h"
@@ -10,9 +13,6 @@
 #include "save_vars_flags.h"
 #include "script.h"
 #include "unk_02031B0C.h"
-
-#include "field/ov01_021E7FDC.h"
-#include "pokeathlon/pokeathlon_save.h"
 
 enum PokeathlonData {
     OVERALL_DATA,
@@ -49,7 +49,7 @@ typedef struct MartData {
     MsgData *messageData;
     MessageFormat *messageFormat;
     Camera *camera;
-    UnkStruct_ov01_021E7FDC unk_ov01_021E7FDC;
+    FieldSpriteManager fieldSpriteManager;
     Sprite *sprites[19];
     u16 spriteDrawn[2]; // Draw flags for sprites 0 and 1.
     PlayerProfile *playerProfile;

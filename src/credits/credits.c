@@ -14,12 +14,12 @@
 #include "sound.h"
 #include "sound_02004A44.h"
 #include "sprite.h"
+#include "sprite_transfer.h"
 #include "sys_task_api.h"
 #include "system.h"
 #include "text.h"
 #include "unk_02009D48.h"
 #include "unk_0200A090.h"
-#include "unk_0200ACF0.h"
 #include "unk_0200B150.h"
 #include "unk_0200FA24.h"
 
@@ -513,12 +513,12 @@ static void ov76_021E6170(CreditsAppWork *work) {
         work->cutsceneRsrs[i].plttResObj = AddPlttResObjFromOpenNarc(work->gf2dGfxResMan[GF_GFX_RES_TYPE_PLTT], *narc, 149, FALSE, i + 2, NNS_G2D_VRAM_TYPE_2DMAIN, 1, HEAP_ID_CREDITS);
     }
 
-    sub_0200ACF0(work->gf2dGfxResObj[GF_GFX_RES_TYPE_CHAR]);
-    sub_0200AF94(work->gf2dGfxResObj[GF_GFX_RES_TYPE_PLTT]);
+    SpriteTransfer_CreateCharTransferTask(work->gf2dGfxResObj[GF_GFX_RES_TYPE_CHAR]);
+    SpriteTransfer_CreateExtPlttTransferTask(work->gf2dGfxResObj[GF_GFX_RES_TYPE_PLTT]);
 
     for (u8 i = 0; i < UNIQUE_SPRITES_PER_CUTSCENE; i++) {
-        sub_0200ACF0(work->cutsceneRsrs[i].charResObj);
-        sub_0200AF94(work->cutsceneRsrs[i].plttResObj);
+        SpriteTransfer_CreateCharTransferTask(work->cutsceneRsrs[i].charResObj);
+        SpriteTransfer_CreateExtPlttTransferTask(work->cutsceneRsrs[i].plttResObj);
     }
 
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
@@ -526,12 +526,12 @@ static void ov76_021E6170(CreditsAppWork *work) {
 }
 
 static void ov76_021E62B4(CreditsAppWork *work) {
-    sub_0200AEB0(work->gf2dGfxResObj[GF_GFX_RES_TYPE_CHAR]);
-    sub_0200B0A8(work->gf2dGfxResObj[GF_GFX_RES_TYPE_PLTT]);
+    SpriteTransfer_DeleteCharTransferTask(work->gf2dGfxResObj[GF_GFX_RES_TYPE_CHAR]);
+    SpriteTransfer_DeletePlttTransferTask(work->gf2dGfxResObj[GF_GFX_RES_TYPE_PLTT]);
 
     for (u8 i = 0; i < 6; i++) {
-        sub_0200AEB0(work->cutsceneRsrs[i].charResObj);
-        sub_0200B0A8(work->cutsceneRsrs[i].plttResObj);
+        SpriteTransfer_DeleteCharTransferTask(work->cutsceneRsrs[i].charResObj);
+        SpriteTransfer_DeletePlttTransferTask(work->cutsceneRsrs[i].plttResObj);
     }
 }
 
@@ -929,7 +929,7 @@ static void LoadCutsceneSpriteResources(CreditsAppWork *work) {
     for (u8 i = 0; i < UNIQUE_SPRITES_PER_CUTSCENE; i++) {
         SpriteResource *charResObj = work->cutsceneRsrs[i].charResObj;
         SpriteResource *plttResObj = work->cutsceneRsrs[i].plttResObj;
-        NNSG2dImageProxy *imageProxy = sub_0200AF00(charResObj);
+        NNSG2dImageProxy *imageProxy = SpriteTransfer_GetCharProxy(charResObj);
         NNSG2dImagePaletteProxy *plttProxy = SpriteTransfer_GetPaletteProxy(plttResObj, imageProxy);
 
         cutsceneWork->spriteGfx[i].imageProxy = imageProxy;

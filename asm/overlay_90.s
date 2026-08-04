@@ -1056,7 +1056,7 @@ _02258EF6:
 	bl AddCellOrAnimResObjFromOpenNarc
 	str r0, [r4, #0x10]
 	ldr r0, [r4, #4]
-	bl sub_0200ADA4
+	bl SpriteTransfer_CreateCharTransferTask_AllocAtEnd
 	cmp r0, #0
 	bne _02258F66
 	bl GF_AssertFail
@@ -1064,7 +1064,7 @@ _02258F66:
 	ldr r0, [r4, #4]
 	bl sub_0200A740
 	ldr r0, [r4, #8]
-	bl sub_0200B00C
+	bl SpriteTransfer_CreatePlttTransferTask
 	cmp r0, #0
 	bne _02258F7A
 	bl GF_AssertFail
@@ -1113,9 +1113,9 @@ _02258FC8:
 	mov r0, #0
 	str r0, [r4]
 	ldr r0, [r4, #4]
-	bl sub_0200AEB0
+	bl SpriteTransfer_DeleteCharTransferTask
 	ldr r0, [r4, #8]
-	bl sub_0200B0A8
+	bl SpriteTransfer_DeletePlttTransferTask
 	mov r6, #0
 _02258FDA:
 	ldr r0, [r5]

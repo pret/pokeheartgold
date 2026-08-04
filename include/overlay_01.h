@@ -19,13 +19,6 @@ struct ErrorContinueEnv {
 
 struct FishingRodWork;
 
-// TODO: does this struct have more members?
-struct UnkStruct_Ov01_021EF4C4 {
-    u8 textFrameDelay;
-    u8 unk1;
-    u8 fontId;
-};
-
 struct UnkStruct_ov01_021EDC28;
 
 typedef struct UnkStruct_field_021F4360 {
@@ -53,15 +46,7 @@ BOOL Field_PlayerCanSurfOnTile(PlayerAvatar *fieldPlayerAvatar, int standingTile
 BOOL MetatileBehavior_IsRockClimbInDirection(int facingTile, int facingDirection);
 BOOL FieldSystem_FacingModelIsHeadbuttTree(FieldSystem *fieldSystem);
 BOOL Task_UseSweetScentInField(TaskManager *taskManager);
-BOOL ov01_021EF348(ScriptContext *ctx);
-void ov01_021EF4C4(struct UnkStruct_Ov01_021EF4C4 *, ScriptContext *ctx);
-void ov01_021EF4DC(ScriptContext *ctx, MsgData *msg_data, u16 msg_no, u8 can_ab_speed_up, struct UnkStruct_Ov01_021EF4C4 *);
-void ov01_021F3D68(struct FieldSystemUnkSub68 *, u8, u16);
-void ov01_021F3D70(struct FieldSystemUnkSub68 *, u8);
-Window *ov01_021F3D80(struct FieldSystemUnkSub68 *);
-u8 ov01_021F3D84(struct FieldSystemUnkSub68 *);
-BOOL ov01_021F3D88(struct FieldSystemUnkSub68 *);
-void ov01_021F3D98(FieldSystem *fieldSystem);
+BOOL ScriptContext_WaitForFinishedPrinting(ScriptContext *ctx);
 struct UnkStruct_ov01_021EDC28 *ov01_021EDF78(FieldSystem *fieldSystem, u8 x, u8 y, u8 initCursorPos, u8 cancellable, u16 *ret_p, MessageFormat *msgFmt, Window *window, MsgData *msgData);
 struct UnkStruct_ov01_021EDC28 **ov01_021F6B20(FieldSystem *fieldSystem);
 void ov01_021EDC7C(struct UnkStruct_ov01_021EDC28 *menu, u32 msgId, u32 value);

@@ -7,9 +7,9 @@
 
 #include "brightness.h"
 #include "phonebook_dat.h"
+#include "poke_overlay.h"
 #include "pokegear_apps.h"
 #include "roamer.h"
-#include "sound_02004A44.h"
 #include "sys_flags.h"
 #include "touchscreen.h"
 #include "unk_02005D10.h"

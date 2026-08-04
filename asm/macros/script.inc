@@ -340,7 +340,7 @@
 	.short \msg_id
 	.endm
 
-	.macro ScrCmd_048 msg_id
+	.macro ShowMessageSynchronized msg_id
 	.short 48
 	.byte \msg_id
 	.endm
@@ -381,21 +381,18 @@
 	.short \out
 	.endm
 
-	; SetSignpostMap
-	.macro ScrCmd_055 type, map
+	.macro SetSignpostMap type, map
 	.short 56
 	.byte \type
 	.short \map
 	.endm
 
-	; SetSignpostAction
-	.macro ScrCmd_057 action
+	.macro SetSignpostAction action
 	.short 57
 	.byte \action
 	.endm
 
-	; WaitSignpostAction
-	.macro ScrCmd_058
+	.macro WaitSignpostAction
 	.short 58
 	.endm
 
@@ -405,10 +402,25 @@
 	.short \out
 	.endm
 
-	; WaitSignpost
-	.macro ScrCmd_060 out
+	.macro TrainerTipsEx type, message
+	SetSignpostMap \type, 0
+	SetSignpostAction MAPSIGNCOMMAND_WIPE_IN
+	WaitSignpostAction
+	TrainerTips \message, VAR_SPECIAL_RESULT
+	CallStd std_signpost
+	.endm
+
+	.macro WaitSignpost out
 	.short 60
 	.short \out
+	.endm
+
+	.macro DirectionSignpostEx type, map, message
+	DirectionSignpost \message, \type, \map, VAR_SPECIAL_RESULT
+	SetSignpostAction MAPSIGNCOMMAND_WIPE_IN
+	WaitSignpostAction
+	WaitSignpost VAR_SPECIAL_RESULT
+	CallStd std_signpost
 	.endm
 
 	.macro ScrCmd_061

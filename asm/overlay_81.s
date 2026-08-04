@@ -9636,9 +9636,9 @@ _022429C8:
 	sub r6, #0x48
 _02242A60:
 	ldr r0, [r5, r7]
-	bl sub_0200ACF0
+	bl SpriteTransfer_CreateCharTransferTask
 	ldr r0, [r5, r6]
-	bl sub_0200AF94
+	bl SpriteTransfer_CreateExtPlttTransferTask
 	add r4, r4, #1
 	add r5, #0x10
 	cmp r4, #6
@@ -9757,9 +9757,9 @@ _02242B42:
 	mov r0, #0x4f
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
-	bl sub_0200AEB0
+	bl SpriteTransfer_DeleteCharTransferTask
 	ldr r0, [r6, r7]
-	bl sub_0200B0A8
+	bl SpriteTransfer_DeletePlttTransferTask
 	add r0, r4, #1
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18
