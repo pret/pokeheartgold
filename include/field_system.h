@@ -161,7 +161,7 @@ struct FieldSystem {
     u8 filler_CC[0x4];
     u16 lastTouchMenuInput;
     u8 unkD2_0 : 6;
-    u8 unkD2_6 : 1;
+    u8 messageBoxOpen : 1;
     u8 unkD2_7 : 1;
     u8 unkD3;
     u8 filler_D4[0x4];

@@ -78,7 +78,7 @@ BOOL ScrCmd_058(ScriptContext *ctx);
 BOOL ScrCmd_TrainerTips(ScriptContext *ctx);
 BOOL ScrCmd_060(ScriptContext *ctx);
 BOOL ScrCmd_061(ScriptContext *ctx);
-BOOL ScrCmd_062(ScriptContext *ctx);
+BOOL ScrCmd_ScrollBG3(ScriptContext *ctx);
 BOOL ScrCmd_YesNo(ScriptContext *ctx);
 BOOL ScrCmd_064(ScriptContext *ctx);
 BOOL ScrCmd_065(ScriptContext *ctx);

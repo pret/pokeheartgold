@@ -340,9 +340,9 @@
 	.short \msg_id
 	.endm
 
-	.macro ScrCmd_048 msgID
+	.macro ScrCmd_048 msg_id
 	.short 48
-	.byte \msgID
+	.byte \msg_id
 	.endm
 
 	; Waits for A or B button
@@ -415,14 +415,14 @@
 	.short 61
 	.endm
 
-	.macro ScrCmd_062 arg0, arg1, arg2, arg3, arg4, arg5
+	.macro ScrCmd_ScrollBG3 distanceX, countX, directionX, distanceY, countY, directionY
 	.short 62
-	.byte \arg0
-	.byte \arg1
-	.byte \arg2
-	.byte \arg3
-	.byte \arg4
-	.byte \arg5
+	.byte \distanceX
+	.byte \countX
+	.byte \directionX
+	.byte \distanceY
+	.byte \countY
+	.byte \directionY
 	.endm
 
 	; Creates a yes/no selection box and returns the result once the player has chosen either option.
@@ -527,9 +527,9 @@
 	.short 79
 	.endm
 
-	.macro PlayBGM bgm
+	.macro PlayBGM sndseq
 	.short 80
-	.short \bgm
+	.short \sndseq
 	.endm
 
 	.macro StopBGM sndseq

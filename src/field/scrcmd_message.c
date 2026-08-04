@@ -279,7 +279,7 @@ static void ovFieldMain_CreateMessageBox(FieldSystem *fieldSystem, MessageBox *m
         sub_0205B514(fieldSystem->bgConfig, messageBox->window, 3);
         sub_0205B564(messageBox->window, Save_PlayerData_GetOptionsAddr(fieldSystem->saveData));
         *(messageBox->unk10) = 1;
-        fieldSystem->unkD2_6 = TRUE;
+        fieldSystem->messageBoxOpen = TRUE;
     }
     FillWindowPixelBuffer(messageBox->window, 15);
 }

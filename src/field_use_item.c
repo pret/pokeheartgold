@@ -499,7 +499,7 @@ static BOOL Task_PrintRegisteredKeyItemUseMessage(TaskManager *taskManager) {
 
     switch (env->state) {
     case 0:
-        fieldSystem->unkD2_6 = TRUE;
+        fieldSystem->messageBoxOpen = TRUE;
         MapObjectManager_PauseAllMovement(fieldSystem->mapObjectManager);
         sub_0205B514(fieldSystem->bgConfig, &env->window, 3);
         options = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);
@@ -510,7 +510,7 @@ static BOOL Task_PrintRegisteredKeyItemUseMessage(TaskManager *taskManager) {
     case 1:
         if (IsPrintFinished(env->printerId) == TRUE) {
             if ((gSystem.newKeys & (PAD_BUTTON_A | PAD_BUTTON_B | PAD_KEY_UP | PAD_KEY_DOWN | PAD_KEY_LEFT | PAD_KEY_RIGHT)) || (gSystem.simulatedInputs & PAD_BUTTON_A)) {
-                fieldSystem->unkD2_6 = FALSE;
+                fieldSystem->messageBoxOpen = FALSE;
                 ClearFrameAndWindow2(&env->window, 0);
                 env->state++;
             }
