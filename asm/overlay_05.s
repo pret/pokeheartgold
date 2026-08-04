@@ -6019,7 +6019,7 @@ ov05_0221EA38: ; 0x0221EA38
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _0221EA4E
-	bl sub_0200F450
+	bl WaitingIcon_Destroy
 	ldr r0, _0221EA50 ; =0x00000BC4
 	mov r1, #0
 	str r1, [r4, r0]

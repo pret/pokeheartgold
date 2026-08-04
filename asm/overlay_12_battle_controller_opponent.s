@@ -15838,7 +15838,7 @@ ov12_022605D0: ; 0x022605D0
 	beq _022605F2
 	ldr r0, [r4]
 	bl ov12_0223BB78
-	bl sub_0200F450
+	bl WaitingIcon_Destroy
 	ldr r0, [r4]
 	mov r1, #0
 	bl ov12_0223BB80

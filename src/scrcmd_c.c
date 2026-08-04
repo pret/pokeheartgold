@@ -117,20 +117,25 @@ FS_EXTERN_OVERLAY(OVY_21);
 FS_EXTERN_OVERLAY(OVY_22);
 FS_EXTERN_OVERLAY(OVY_25);
 
-BOOL sub_020416E4(ScriptContext *ctx);
-BOOL sub_02042C78(ScriptContext *ctx);
-BOOL ScrNative_WaitApplication(ScriptContext *ctx);
-LocalMapObject *sub_02041C70(FieldSystem *fieldSystem, u16 person);
-void _ScheduleObjectEventMovement(FieldSystem *fieldSystem, EventObjectMovementMan *movementMan, MovementScriptCommand *a2);
-void Script_SetMonSeenFlagBySpecies(FieldSystem *fieldSystem, u16 species);
+static BOOL NativeScript_RunPauseTimer(ScriptContext *ctx);
+static BOOL NativeScript_WaitStd(ScriptContext *ctx);
+static BOOL NativeScript_CheckABPress(ScriptContext *ctx);
+static BOOL NativeScript_DecrementABPressTimer(ScriptContext *ctx);
+static BOOL NativeScript_CheckABPadPress_FaceDirection(ScriptContext *ctx);
+static BOOL NativeScript_CheckABPadPress(ScriptContext *ctx);
+static BOOL NativeScript_ScrollBG3(ScriptContext *ctx);
+static BOOL NativeScript_WaitForFinishedSignpost(ScriptContext *ctx);
+static BOOL NativeScript_WaitTrainerTips(ScriptContext *ctx);
+static BOOL NativeScript_WaitSignpost(ScriptContext *ctx);
+static BOOL NativeScript_WaitForYesNoResult(ScriptContext *ctx);
+static BOOL NativeScript_ResumeOnMenuSelection(ScriptContext *ctx);
 
-static BOOL RunPauseTimer(ScriptContext *ctx);
-static BOOL ScrNative_WaitStd(ScriptContext *ctx);
-static BOOL ScriptContext_CheckABPress(ScriptContext *ctx);
-static BOOL ScriptContext_DecrementABPressTimer(ScriptContext *ctx);
-static BOOL ScriptContext_CheckABPadPress_FaceDirection(ScriptContext *ctx);
-static BOOL ScriptContext_CheckABPadPress(ScriptContext *ctx);
-static BOOL ScriptContext_ScrollBG3(ScriptContext *ctx);
+static BOOL sub_02042C78(ScriptContext *ctx);
+
+BOOL ScrNative_WaitApplication(ScriptContext *ctx); // something's fucky
+static LocalMapObject *sub_02041C70(FieldSystem *fieldSystem, u16 person);
+static void _ScheduleObjectEventMovement(FieldSystem *fieldSystem, EventObjectMovementMan *movementMan, MovementScriptCommand *a2);
+static void Script_SetMonSeenFlagBySpecies(FieldSystem *fieldSystem, u16 species);
 
 #include "data/fieldmap.h"
 
@@ -179,12 +184,12 @@ BOOL ScrCmd_Wait(ScriptContext *ctx) {
     *ret_ptr = frames_to_wait;
 
     ctx->data[0] = ptr_offset;
-    SetupNativeScript(ctx, RunPauseTimer);
+    SetupNativeScript(ctx, NativeScript_RunPauseTimer);
 
     return TRUE;
 }
 
-static BOOL RunPauseTimer(ScriptContext *ctx) {
+static BOOL NativeScript_RunPauseTimer(ScriptContext *ctx) {
     u16 *frames_to_wait = GetVarPointer(ctx->fieldSystem, ctx->data[0]);
     (*frames_to_wait)--;
 
@@ -366,11 +371,11 @@ BOOL ScrCmd_CallStd(ScriptContext *ctx) {
 
     *unk |= (1 << ctx->id);
 
-    SetupNativeScript(ctx, ScrNative_WaitStd);
+    SetupNativeScript(ctx, NativeScript_WaitStd);
     return TRUE;
 }
 
-static BOOL ScrNative_WaitStd(ScriptContext *ctx) {
+static BOOL NativeScript_WaitStd(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
     u8 *unk = FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_FIELD_07);
     u8 *unused = FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_ACTIVE_SCRIPT_CONTEXT_COUNT);
@@ -609,22 +614,22 @@ BOOL ScrCmd_ShowMessageSynchronized(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_WaitABPress(ScriptContext *ctx) {
-    SetupNativeScript(ctx, ScriptContext_CheckABPress);
+    SetupNativeScript(ctx, NativeScript_CheckABPress);
     return TRUE;
 }
 
-static BOOL ScriptContext_CheckABPress(ScriptContext *ctx) {
+static BOOL NativeScript_CheckABPress(ScriptContext *ctx) {
     return (gSystem.newKeys & (PAD_BUTTON_A | PAD_BUTTON_B)) != 0;
 }
 
 // ScrCmd_WaitABPressTime in pokeplatinum
 BOOL ScrCmd_WaitButtonOrDelay(ScriptContext *ctx) {
     ctx->data[0] = ScriptGetVar(ctx);
-    SetupNativeScript(ctx, ScriptContext_DecrementABPressTimer);
+    SetupNativeScript(ctx, NativeScript_DecrementABPressTimer);
     return TRUE;
 }
 
-static BOOL ScriptContext_DecrementABPressTimer(ScriptContext *ctx) {
+static BOOL NativeScript_DecrementABPressTimer(ScriptContext *ctx) {
     if ((gSystem.newKeys & (PAD_BUTTON_A | PAD_BUTTON_B)) != 0) {
         return TRUE;
     }
@@ -633,11 +638,11 @@ static BOOL ScriptContext_DecrementABPressTimer(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_WaitButton(ScriptContext *ctx) {
-    SetupNativeScript(ctx, ScriptContext_CheckABPadPress_FaceDirection);
+    SetupNativeScript(ctx, NativeScript_CheckABPadPress_FaceDirection);
     return TRUE;
 }
 
-static BOOL ScriptContext_CheckABPadPress_FaceDirection(ScriptContext *ctx) {
+static BOOL NativeScript_CheckABPadPress_FaceDirection(ScriptContext *ctx) {
     int new_keys = gSystem.newKeys;
 
     if ((new_keys & (PAD_BUTTON_A | PAD_BUTTON_B)) != 0) {
@@ -661,11 +666,11 @@ static BOOL ScriptContext_CheckABPadPress_FaceDirection(ScriptContext *ctx) {
 
 // ScrCmd_WaitABPadPress in pokeplatinum
 BOOL ScrCmd_WaitButtonOrDpad(ScriptContext *ctx) {
-    SetupNativeScript(ctx, ScriptContext_CheckABPadPress);
+    SetupNativeScript(ctx, NativeScript_CheckABPadPress);
     return TRUE;
 }
 
-static BOOL ScriptContext_CheckABPadPress(ScriptContext *ctx) {
+static BOOL NativeScript_CheckABPadPress(ScriptContext *ctx) {
     if ((gSystem.newKeys & (PAD_BUTTON_A | PAD_BUTTON_B)) != 0) {
         return TRUE;
     }
@@ -737,11 +742,11 @@ BOOL ScrCmd_ScrollBG3(ScriptContext *ctx) {
     *countY = ScriptReadByte(ctx);
     *directionY = ScriptReadByte(ctx);
 
-    SetupNativeScript(ctx, ScriptContext_ScrollBG3);
+    SetupNativeScript(ctx, NativeScript_ScrollBG3);
     return TRUE;
 }
 
-static BOOL ScriptContext_ScrollBG3(ScriptContext *ctx) {
+static BOOL NativeScript_ScrollBG3(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
     u16 *distanceX = FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_SPECIAL_VAR_8008);
     u16 *directionX = FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_SPECIAL_VAR_8009);
@@ -826,22 +831,18 @@ BOOL ScrCmd_SetSignpostAction(ScriptContext *ctx) {
     return TRUE;
 }
 
-static BOOL sub_02041454(ScriptContext *ctx);
-
 BOOL ScrCmd_WaitSignpostAction(ScriptContext *ctx) {
     if (FieldSignpostWindow_CommandIsFinished(ctx->fieldSystem->signpostWindow) == TRUE) {
         return FALSE;
     }
 
-    SetupNativeScript(ctx, sub_02041454);
+    SetupNativeScript(ctx, NativeScript_WaitForFinishedSignpost);
     return TRUE;
 }
 
-static BOOL sub_02041454(ScriptContext *ctx) {
+static BOOL NativeScript_WaitForFinishedSignpost(ScriptContext *ctx) {
     return FieldSignpostWindow_CommandIsFinished(ctx->fieldSystem->signpostWindow) == TRUE;
 }
-
-static BOOL NativeScript_WaitTrainerTips(ScriptContext *ctx);
 
 BOOL ScrCmd_TrainerTips(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
@@ -903,8 +904,6 @@ static BOOL NativeScript_WaitTrainerTips(ScriptContext *ctx) {
     return FALSE;
 }
 
-static BOOL NativeScript_WaitSignpost(ScriptContext *ctx);
-
 BOOL ScrCmd_WaitSignpost(ScriptContext *ctx) {
     ctx->data[0] = ScriptReadHalfword(ctx);
     SetupNativeScript(ctx, NativeScript_WaitSignpost);
@@ -943,8 +942,8 @@ static BOOL NativeScript_WaitSignpost(ScriptContext *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_061(ScriptContext *ctx) {
-    sub_0204031C(ctx->fieldSystem);
+BOOL ScrCmd_061(ScriptContext *ctx) { // ScrCmd_ShowStartMenu?
+    sub_0204031C(ctx->fieldSystem); // FieldSystem_ShowStartMenu?
     return FALSE;
 }
 
@@ -955,25 +954,27 @@ BOOL ScrCmd_YesNo(ScriptContext *ctx) {
     LoadUserFrameGfx1(fieldSystem->bgConfig, GF_BG_LYR_MAIN_3, 0x3D9, 11, 0, HEAP_ID_FIELD1);
     *listMenu2D = Std_CreateYesNoMenu(fieldSystem->bgConfig, &_020FAC94, 0x3D9, 11, HEAP_ID_FIELD1);
     ctx->data[0] = data;
-    SetupNativeScript(ctx, sub_020416E4);
+    SetupNativeScript(ctx, NativeScript_WaitForYesNoResult);
     return TRUE;
 }
 
-BOOL sub_020416E4(ScriptContext *ctx) {
+static BOOL NativeScript_WaitForYesNoResult(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
     struct ListMenu2D **listMenu2D = FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_LIST_MENU_2D);
     u16 *ret_p = GetVarPointer(fieldSystem, ctx->data[0]);
+
     int selection = Handle2dMenuInput_DeleteOnFinish(*listMenu2D, HEAP_ID_FIELD1);
     if (selection == LIST_NOTHING_CHOSEN) {
         return FALSE;
-    } else {
-        if (selection == 0) {
-            *ret_p = 0; // yes
-        } else {
-            *ret_p = 1; // no
-        }
-        return TRUE;
     }
+    
+    if (selection == 0) { // MENU_YES
+        *ret_p = 0; // MENU_YES
+    } else {
+        *ret_p = 1; // MENU_NO
+    }
+    
+    return TRUE;
 }
 
 BOOL ScrCmd_AddWaitingIcon(ScriptContext *ctx) {
@@ -985,59 +986,71 @@ BOOL ScrCmd_AddWaitingIcon(ScriptContext *ctx) {
 
 BOOL ScrCmd_RemoveWaitingIcon(ScriptContext *ctx) {
     WaitingIcon **waitingIcon = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_WAITING_ICON);
-    sub_0200F450(*waitingIcon);
+    WaitingIcon_Destroy(*waitingIcon);
     return FALSE;
 }
 
-static void sub_02041770(ScriptContext *ctx, struct UnkStruct_ov01_021EDC28 **a1, MsgData *msgData) {
+static void TextMenu_Init(ScriptContext *ctx, struct UnkStruct_ov01_021EDC28 **a1, MsgData *msgData) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
     MessageFormat **msgFmt = FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
-    u8 x = ScriptReadByte(ctx);
-    u8 y = ScriptReadByte(ctx);
+    u8 anchorX = ScriptReadByte(ctx);
+    u8 anchorY = ScriptReadByte(ctx);
     u8 initCursorPos = ScriptReadByte(ctx);
     u8 cancellable = ScriptReadByte(ctx);
     u16 var = ScriptReadHalfword(ctx);
-    *a1 = ov01_021EDF78(fieldSystem, x, y, initCursorPos, cancellable, GetVarPointer(fieldSystem, var), *msgFmt, FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_WINDOW), msgData);
+    
+    // UnkStruct_ov01_021EDC28 == FieldMenuManager?
+    // ov01_021EDF78 == FieldMenuManager_New?
+    *a1 = ov01_021EDF78(fieldSystem, anchorX, anchorY, initCursorPos, cancellable, GetVarPointer(fieldSystem, var), *msgFmt, FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_WINDOW), msgData);
     ctx->data[0] = var;
 }
 
+// ScrCmd_InitLocalTextMenu?
 BOOL ScrCmd_064(ScriptContext *ctx) {
-    sub_02041770(ctx, FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MENU_WINDOW), NULL);
+    TextMenu_Init(ctx, FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MENU_WINDOW), NULL);
     return TRUE;
 }
 
+// ScrCmd_InitGlobalTextMenu?
 BOOL ScrCmd_065(ScriptContext *ctx) {
-    sub_02041770(ctx, FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MENU_WINDOW), ctx->msgdata);
+    TextMenu_Init(ctx, FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MENU_WINDOW), ctx->msgdata);
     return TRUE;
 }
 
+// ScrCmd_AddMenuEntryImm?
 BOOL ScrCmd_066(ScriptContext *ctx) {
     struct UnkStruct_ov01_021EDC28 **pp_menu = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MENU_WINDOW);
-    u8 msgId = ScriptReadByte(ctx);
+    
+    u8 msgID = ScriptReadByte(ctx);
     u8 value = ScriptReadByte(ctx);
-    ov01_021EDC7C(*pp_menu, msgId, value);
+    
+    ov01_021EDC7C(*pp_menu, msgID, value); // FieldMenuManager_AddMenuEntry
     return FALSE;
 }
 
+// ScrCmd_AddMenuEntry?
 BOOL ScrCmd_559(ScriptContext *ctx) {
     struct UnkStruct_ov01_021EDC28 **pp_menu = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MENU_WINDOW);
-    u16 msgId = ScriptGetVar(ctx);
+    
+    u16 msgID = ScriptGetVar(ctx);
     u16 value = ScriptGetVar(ctx);
-    ov01_021EDC7C(*pp_menu, msgId, value);
+
+    ov01_021EDC7C(*pp_menu, msgID, value);
     return FALSE;
 }
 
-BOOL sub_020418B4(ScriptContext *ctx);
-
+// ScrCmd_ShowMenu?
 BOOL ScrCmd_067(ScriptContext *ctx) {
     struct UnkStruct_ov01_021EDC28 **pp_menu = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MENU_WINDOW);
-    ov01_021EDC84(*pp_menu);
-    SetupNativeScript(ctx, sub_020418B4);
+    
+    ov01_021EDC84(*pp_menu); // FieldMenuManager_ShowSingleColumnMenu
+    SetupNativeScript(ctx, NativeScript_ResumeOnMenuSelection);
+    
     return TRUE;
 }
 
-BOOL sub_020418B4(ScriptContext *ctx) {
-    return *GetVarPointer(ctx->fieldSystem, ctx->data[0]) != 0xEEEE;
+static BOOL NativeScript_ResumeOnMenuSelection(ScriptContext *ctx) {
+    return *GetVarPointer(ctx->fieldSystem, ctx->data[0]) != 0xEEEE; // LIST_MENU_NO_SELECTION_YET
 }
 
 BOOL sub_02041900(ScriptContext *ctx);
@@ -1066,13 +1079,15 @@ BOOL sub_02041900(ScriptContext *ctx) {
     }
 }
 
+// Duplicate of ScrCmd_064
 BOOL ScrCmd_068(ScriptContext *ctx) {
-    sub_02041770(ctx, FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MENU_WINDOW), NULL);
+    TextMenu_Init(ctx, FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MENU_WINDOW), NULL);
     return TRUE;
 }
 
+// Duplicate of ScrCmd_065
 BOOL ScrCmd_069(ScriptContext *ctx) {
-    sub_02041770(ctx, FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MENU_WINDOW), ctx->msgdata);
+    TextMenu_Init(ctx, FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MENU_WINDOW), ctx->msgdata);
     return TRUE;
 }
 
@@ -1088,7 +1103,7 @@ BOOL ScrCmd_070(ScriptContext *ctx) {
 BOOL ScrCmd_071(ScriptContext *ctx) {
     struct UnkStruct_ov01_021EDC28 **pp_menu = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MENU_WINDOW);
     ov01_021EDFA4(*pp_menu);
-    SetupNativeScript(ctx, sub_020418B4);
+    SetupNativeScript(ctx, NativeScript_ResumeOnMenuSelection);
     return TRUE;
 }
 
@@ -1096,7 +1111,7 @@ BOOL ScrCmd_695(ScriptContext *ctx) {
     struct UnkStruct_ov01_021EDC28 **pp_menu = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MENU_WINDOW);
     u16 var = ScriptGetVar(ctx);
     ov01_021EE014(*pp_menu, var);
-    SetupNativeScript(ctx, sub_020418B4);
+    SetupNativeScript(ctx, NativeScript_ResumeOnMenuSelection);
     return TRUE;
 }
 
@@ -1105,7 +1120,7 @@ BOOL ScrCmd_677(ScriptContext *ctx) {
     u16 *var1 = ScriptGetVarPointer(ctx);
     u16 *var2 = ScriptGetVarPointer(ctx);
     ov01_021EE0EC(*pp_menu, var1, var2);
-    SetupNativeScript(ctx, sub_020418B4);
+    SetupNativeScript(ctx, NativeScript_ResumeOnMenuSelection);
     return TRUE;
 }
 
@@ -1113,7 +1128,7 @@ BOOL ScrCmd_072(ScriptContext *ctx) {
     struct UnkStruct_ov01_021EDC28 **pp_menu = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MENU_WINDOW);
     u8 val = ScriptReadByte(ctx);
     ov01_021EE974(*pp_menu, val);
-    SetupNativeScript(ctx, sub_020418B4);
+    SetupNativeScript(ctx, NativeScript_ResumeOnMenuSelection);
     return TRUE;
 }
 
@@ -1196,7 +1211,7 @@ BOOL ScrCmd_563(ScriptContext *ctx) {
     return FALSE;
 }
 
-LocalMapObject *sub_02041C70(FieldSystem *fieldSystem, u16 person) {
+static LocalMapObject *sub_02041C70(FieldSystem *fieldSystem, u16 person) {
     if (person == 0xF2) {
         return MapObjectManager_GetFirstActiveObjectWithMovement(fieldSystem->mapObjectManager, 0x30);
     } else if (person == 0xF1) {
@@ -1228,7 +1243,7 @@ struct ObjectMovementTaskEnv {
 
 void _RunObjectEventMovement(SysTask *task, struct ObjectMovementTaskEnv *env);
 
-void _ScheduleObjectEventMovement(FieldSystem *fieldSystem, EventObjectMovementMan *movementMan, MovementScriptCommand *a2) {
+static void _ScheduleObjectEventMovement(FieldSystem *fieldSystem, EventObjectMovementMan *movementMan, MovementScriptCommand *a2) {
     struct ObjectMovementTaskEnv *env = Heap_Alloc(HEAP_ID_FIELD1, sizeof(struct ObjectMovementTaskEnv));
     if (env == NULL) {
         GF_ASSERT(FALSE);
@@ -1894,7 +1909,7 @@ BOOL ScrCmd_549(ScriptContext *ctx) {
     return TRUE;
 }
 
-BOOL sub_02042C78(ScriptContext *ctx) {
+static BOOL sub_02042C78(ScriptContext *ctx) {
     u8 **r0 = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MISC_DATA_PTR);
     u16 *dest_p = GetVarPointer(ctx->fieldSystem, ctx->data[0]);
     return **r0 != 3;
@@ -3643,7 +3658,7 @@ BOOL ScrCmd_502(ScriptContext *ctx) {
     return FALSE;
 }
 
-void Script_SetMonSeenFlagBySpecies(FieldSystem *fieldSystem, u16 species) {
+static void Script_SetMonSeenFlagBySpecies(FieldSystem *fieldSystem, u16 species) {
     Pokedex *pokedex = Save_Pokedex_Get(fieldSystem->saveData);
     Pokemon *mon = AllocMonZeroed(HEAP_ID_FIELD3);
     ZeroMonData(mon);
@@ -5005,12 +5020,12 @@ BOOL sub_020477C0(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_MenuInitStdGmm(ScriptContext *ctx) {
-    sub_02041770(ctx, ov01_021F6B20(ctx->fieldSystem), NULL);
+    TextMenu_Init(ctx, ov01_021F6B20(ctx->fieldSystem), NULL);
     return TRUE;
 }
 
 BOOL ScrCmd_MenuInit(ScriptContext *ctx) {
-    sub_02041770(ctx, ov01_021F6B20(ctx->fieldSystem), ctx->msgdata);
+    TextMenu_Init(ctx, ov01_021F6B20(ctx->fieldSystem), ctx->msgdata);
     return TRUE;
 }
 

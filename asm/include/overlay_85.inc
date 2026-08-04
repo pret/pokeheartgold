@@ -93,7 +93,7 @@
 .public DrawFrameAndWindow2
 .public ClearFrameAndWindow2
 .public WaitingIcon_New
-.public sub_0200F450
+.public WaitingIcon_Destroy
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
 .public Main_SetVBlankIntrCB

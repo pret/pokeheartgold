@@ -3503,7 +3503,7 @@ ov39_02228AA8: ; 0x02228AA8
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _02228ABE
-	bl sub_0200F450
+	bl WaitingIcon_Destroy
 	mov r0, #0
 	add r4, #0x88
 	str r0, [r4]

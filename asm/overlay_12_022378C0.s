@@ -4215,7 +4215,7 @@ _0223A052:
 	ldr r0, _0223A084 ; =0x00001024
 	mov r7, #1
 	ldr r0, [r4, r0]
-	bl sub_0200F450
+	bl WaitingIcon_Destroy
 	mov r0, #0
 	bl sub_02037930
 _0223A06C:

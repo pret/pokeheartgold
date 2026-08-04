@@ -32,7 +32,7 @@
 .public LoadMapSignpostFrameAndGraphic
 .public DrawFrameAndWindow3
 .public WaitingIcon_New
-.public sub_0200F450
+.public WaitingIcon_Destroy
 .public sub_0200F478
 .public DrawPokemonPicFromSpecies
 .public DrawPokemonPicFromMon

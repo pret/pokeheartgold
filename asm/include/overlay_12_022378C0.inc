@@ -64,7 +64,7 @@
 .public DrawFrameAndWindow2
 .public sub_0200EB80
 .public WaitingIcon_New
-.public sub_0200F450
+.public WaitingIcon_Destroy
 .public SetMasterBrightnessNeutral
 .public sub_0200FBF4
 .public sub_02014DA0

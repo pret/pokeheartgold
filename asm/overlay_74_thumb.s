@@ -1347,7 +1347,7 @@ _0222977A:
 	bl Sprite_SetDrawFlag
 	ldr r0, _02229A00 ; =0x000034D8
 	ldr r0, [r4, r0]
-	bl sub_0200F450
+	bl WaitingIcon_Destroy
 	ldr r0, _02229A00 ; =0x000034D8
 	mov r1, #0
 	str r1, [r4, r0]
@@ -1687,7 +1687,7 @@ _02229A4A:
 	bl Sprite_SetDrawFlag
 	ldr r0, _02229B5C ; =0x000034D8
 	ldr r0, [r4, r0]
-	bl sub_0200F450
+	bl WaitingIcon_Destroy
 	ldr r0, _02229B60 ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 	ldr r0, _02229B5C ; =0x000034D8
@@ -1739,7 +1739,7 @@ _02229AB8:
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _02229AE0
-	bl sub_0200F450
+	bl WaitingIcon_Destroy
 _02229AE0:
 	ldr r0, _02229B5C ; =0x000034D8
 	mov r1, #0
@@ -1790,7 +1790,7 @@ _02229B20:
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _02229B4E
-	bl sub_0200F450
+	bl WaitingIcon_Destroy
 _02229B4E:
 	mov r0, #5
 	pop {r3, r4, r5, pc}
@@ -8842,7 +8842,7 @@ _0222D3A4:
 	bl SaveGameNormal
 	ldr r0, _0222D404 ; =0x00003D50
 	ldr r0, [r4, r0]
-	bl sub_0200F450
+	bl WaitingIcon_Destroy
 	ldr r0, _0222D408 ; =0x00002BA0
 	ldr r0, [r4, r0]
 	bl SaveMysteryGift_HasAnyCard
@@ -11253,7 +11253,7 @@ _0222E704:
 	bl ov74_0222D9E0
 	ldr r0, _0222E7DC ; =0x00003D50
 	ldr r0, [r4, r0]
-	bl sub_0200F450
+	bl WaitingIcon_Destroy
 	add r0, r4, #0
 	add r1, r5, #0
 	mov r2, #0x1a
@@ -21348,7 +21348,7 @@ _0223355C:
 	bl ov74_02231930
 	ldr r0, _02233640 ; =0x0000E898
 	ldr r0, [r4, r0]
-	bl sub_0200F450
+	bl WaitingIcon_Destroy
 	mov r0, #7
 	str r0, [r4, #4]
 	mov r0, #0xb
@@ -21679,7 +21679,7 @@ _02233818:
 	beq _02233896
 	ldr r0, _022338C0 ; =0x0000E898
 	ldr r0, [r4, r0]
-	bl sub_0200F450
+	bl WaitingIcon_Destroy
 	ldr r0, _022338C4 ; =SEQ_SE_DP_SAVE
 	bl PlaySE
 	cmp r6, #0xb

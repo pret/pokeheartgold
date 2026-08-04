@@ -1472,7 +1472,7 @@ ov47_022593A0: ; 0x022593A0
 	ldr r0, [r4, #0x1c]
 	cmp r0, #0
 	beq _022593B2
-	bl sub_0200F450
+	bl WaitingIcon_Destroy
 	mov r0, #0
 	str r0, [r4, #0x1c]
 _022593B2:

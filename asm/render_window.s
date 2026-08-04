@@ -2117,8 +2117,8 @@ sub_0200F43C: ; 0x0200F43C
 	.balign 4, 0
 	thumb_func_end sub_0200F43C
 
-	thumb_func_start sub_0200F450
-sub_0200F450: ; 0x0200F450
+	thumb_func_start WaitingIcon_Destroy
+WaitingIcon_Destroy: ; 0x0200F450
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, _0200F470 ; =sub_0200F43C
@@ -2136,7 +2136,7 @@ sub_0200F450: ; 0x0200F450
 	nop
 _0200F470: .word sub_0200F43C
 _0200F474: .word 0x00000488
-	thumb_func_end sub_0200F450
+	thumb_func_end WaitingIcon_Destroy
 
 	thumb_func_start sub_0200F478
 sub_0200F478: ; 0x0200F478

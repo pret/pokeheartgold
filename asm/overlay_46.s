@@ -1539,7 +1539,7 @@ ov46_02259474: ; 0x02259474
 	bl GF_AssertFail
 _02259488:
 	ldr r0, [r4, #0x24]
-	bl sub_0200F450
+	bl WaitingIcon_Destroy
 	mov r0, #0
 	str r0, [r4, #0x24]
 _02259492:
