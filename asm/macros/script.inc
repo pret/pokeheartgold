@@ -471,6 +471,7 @@
 	.short 67
 	.endm
 
+	; Unused duplicate of InitLocalTextMenu.
 	.macro ScrCmd_068 anchorX, anchorY, initialCursorPos, canExitWithB, selectedOption
 	.short 68
 	.byte \anchorX
@@ -480,6 +481,7 @@
 	.short \selectedOption
 	.endm
 
+	; Unused duplicate of InitGlobalTextMenu.
 	.macro ScrCmd_069 anchorX, anchorY, initialCursorPos, canExitWithB, selectedOption
 	.short 69
 	.byte \anchorX
