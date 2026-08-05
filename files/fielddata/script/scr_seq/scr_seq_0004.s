@@ -951,11 +951,11 @@ scr_seq_0004_011:
 	End
 _0E9D:
 	NPCMsg msg_0046_00117
-	ScrCmd_064 1, 1, 0, 1, VAR_SPECIAL_RESULT
+	InitLocalTextMenu 1, 1, 0, 1, VAR_SPECIAL_RESULT
 	ScrCmd_066 msg_0046_00042, 0
 	ScrCmd_066 msg_0046_00043, 1
 	ScrCmd_066 msg_0046_00011, 2
-	ScrCmd_067
+	ShowMenu
 	Switch VAR_SPECIAL_RESULT
 	Case 0, _0EF6
 	Case 1, _0F1C

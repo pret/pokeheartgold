@@ -132,6 +132,7 @@ static BOOL NativeScript_WaitSignpost(ScriptContext *ctx);
 static BOOL NativeScript_WaitForYesNoResult(ScriptContext *ctx);
 static BOOL NativeScript_ResumeOnMenuSelection(ScriptContext *ctx);
 
+static BOOL sub_02041900(ScriptContext *ctx);
 static BOOL sub_02042C78(ScriptContext *ctx);
 static BOOL sub_020476E8(ScriptContext *ctx);
 static BOOL sub_02047744(ScriptContext *ctx);
@@ -1010,14 +1011,12 @@ static void TextMenu_Init(ScriptContext *ctx, FieldMenuManager **menu, MsgData *
     ctx->data[0] = var;
 }
 
-// ScrCmd_InitLocalTextMenu?
-BOOL ScrCmd_064(ScriptContext *ctx) {
+BOOL ScrCmd_InitLocalTextMenu(ScriptContext *ctx) {
     TextMenu_Init(ctx, FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MENU_WINDOW), NULL);
     return TRUE;
 }
 
-// ScrCmd_InitGlobalTextMenu?
-BOOL ScrCmd_065(ScriptContext *ctx) {
+BOOL ScrCmd_InitGlobalTextMenu(ScriptContext *ctx) {
     TextMenu_Init(ctx, FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MENU_WINDOW), ctx->msgdata);
     return TRUE;
 }
@@ -1029,7 +1028,7 @@ BOOL ScrCmd_066(ScriptContext *ctx) {
     u8 msgID = ScriptReadByte(ctx);
     u8 value = ScriptReadByte(ctx);
     
-    ov01_021EDC7C(*menu, msgID, value); // FieldMenuManager_AddMenuEntry
+    FieldMenuManager_AddMenuEntry(*menu, msgID, value);
     return FALSE;
 }
 
@@ -1040,15 +1039,14 @@ BOOL ScrCmd_559(ScriptContext *ctx) {
     u16 msgID = ScriptGetVar(ctx);
     u16 value = ScriptGetVar(ctx);
 
-    ov01_021EDC7C(*menu, msgID, value);
+    FieldMenuManager_AddMenuEntry(*menu, msgID, value);
     return FALSE;
 }
 
-// ScrCmd_ShowMenu?
-BOOL ScrCmd_067(ScriptContext *ctx) {
+BOOL ScrCmd_ShowMenu(ScriptContext *ctx) {
     FieldMenuManager **menu = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MENU_WINDOW);
     
-    ov01_021EDC84(*menu); // FieldMenuManager_ShowSingleColumnMenu
+    FieldMenuManager_ShowSingleColumnMenu(*menu);
     SetupNativeScript(ctx, NativeScript_ResumeOnMenuSelection);
     
     return TRUE;
@@ -1058,16 +1056,14 @@ static BOOL NativeScript_ResumeOnMenuSelection(ScriptContext *ctx) {
     return *GetVarPointer(ctx->fieldSystem, ctx->data[0]) != 0xEEEE; // LIST_MENU_NO_SELECTION_YET
 }
 
-BOOL sub_02041900(ScriptContext *ctx);
-
 BOOL ScrCmd_585(ScriptContext *ctx) {
     FieldMenuManager **menu = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MENU_WINDOW);
-    ov01_021EDC84(*menu);
+    FieldMenuManager_ShowSingleColumnMenu(*menu);
     SetupNativeScript(ctx, sub_02041900);
     return TRUE;
 }
 
-BOOL sub_02041900(ScriptContext *ctx) {
+static BOOL sub_02041900(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
     u16 *p_var = GetVarPointer(fieldSystem, ctx->data[0]);
     FieldMenuManager **menu = FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_MENU_WINDOW);
@@ -1084,13 +1080,13 @@ BOOL sub_02041900(ScriptContext *ctx) {
     }
 }
 
-// Duplicate of ScrCmd_064
+// Unused duplicate of ScrCmd_InitLocalTextMenu.
 BOOL ScrCmd_068(ScriptContext *ctx) {
     TextMenu_Init(ctx, FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MENU_WINDOW), NULL);
     return TRUE;
 }
 
-// Duplicate of ScrCmd_065
+// Unused duplicate of ScrCmd_InitGlobalTextMenu.
 BOOL ScrCmd_069(ScriptContext *ctx) {
     TextMenu_Init(ctx, FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MENU_WINDOW), ctx->msgdata);
     return TRUE;

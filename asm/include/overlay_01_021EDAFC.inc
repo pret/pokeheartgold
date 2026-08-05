@@ -55,8 +55,8 @@
 .public _s32_div_f
 .public gSystem
 .public ov01_021EDC28
-.public ov01_021EDC7C
-.public ov01_021EDC84
+.public FieldMenuManager_AddMenuEntry
+.public FieldMenuManager_ShowSingleColumnMenu
 .public ov01_021EDF00
 .public ov01_021EDF38
 .public FieldMenuManager_New

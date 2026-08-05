@@ -69,7 +69,7 @@ _00D2:
 	End
 
 _00EC:
-	ScrCmd_064 31, 3, 0, 1, VAR_SPECIAL_RESULT
+	InitLocalTextMenu 31, 3, 0, 1, VAR_SPECIAL_RESULT
 	ScrCmd_841 1
 	ScrCmd_066 168, 0
 	ScrCmd_066 59, 1

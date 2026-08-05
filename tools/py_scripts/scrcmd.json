@@ -401,7 +401,7 @@
       ]
     },
     {
-      "name": "ScrCmd_064",
+      "name": "InitLocalTextMenu",
       "args": [
         1,
         1,
@@ -411,7 +411,7 @@
       ]
     },
     {
-      "name": "ScrCmd_065",
+      "name": "InitGlobalTextMenu",
       "args": [
         1,
         1,
@@ -428,7 +428,7 @@
       ]
     },
     {
-      "name": "ScrCmd_067",
+      "name": "ShowMenu",
       "args": []
     },
     {

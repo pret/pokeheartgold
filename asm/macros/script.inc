@@ -443,22 +443,22 @@
 	.short \retVar
 	.endm
 
-	.macro ScrCmd_064 arg0, arg1, arg2, arg3, arg4
+	.macro InitLocalTextMenu anchorX, anchorY, initialCursorPos, canExitWithB, selectedOption
 	.short 64
-	.byte \arg0
-	.byte \arg1
-	.byte \arg2
-	.byte \arg3
-	.short \arg4
+	.byte \anchorX
+	.byte \anchorY
+	.byte \initialCursorPos
+	.byte \canExitWithB
+	.short \selectedOption
 	.endm
 
-	.macro ScrCmd_065 arg0, arg1, arg2, arg3, arg4
+	.macro InitGlobalTextMenu anchorX, anchorY, initialCursorPos, canExitWithB, selectedOption
 	.short 65
-	.byte \arg0
-	.byte \arg1
-	.byte \arg2
-	.byte \arg3
-	.short \arg4
+	.byte \anchorX
+	.byte \anchorY
+	.byte \initialCursorPos
+	.byte \canExitWithB
+	.short \selectedOption
 	.endm
 
 	.macro ScrCmd_066 arg0, arg1
@@ -467,26 +467,26 @@
 	.byte \arg1
 	.endm
 
-	.macro ScrCmd_067
+	.macro ShowMenu
 	.short 67
 	.endm
 
-	.macro ScrCmd_068 arg0, arg1, arg2, arg3, arg4
+	.macro ScrCmd_068 anchorX, anchorY, initialCursorPos, canExitWithB, selectedOption
 	.short 68
-	.byte \arg0
-	.byte \arg1
-	.byte \arg2
-	.byte \arg3
-	.short \arg4
+	.byte \anchorX
+	.byte \anchorY
+	.byte \initialCursorPos
+	.byte \canExitWithB
+	.short \selectedOption
 	.endm
 
-	.macro ScrCmd_069 arg0, arg1, arg2, arg3, arg4
+	.macro ScrCmd_069 anchorX, anchorY, initialCursorPos, canExitWithB, selectedOption
 	.short 69
-	.byte \arg0
-	.byte \arg1
-	.byte \arg2
-	.byte \arg3
-	.short \arg4
+	.byte \anchorX
+	.byte \anchorY
+	.byte \initialCursorPos
+	.byte \canExitWithB
+	.short \selectedOption
 	.endm
 
 	.macro ScrCmd_070 arg0, arg1, arg2

@@ -214,16 +214,16 @@ _021EDC48:
 	pop {r4, r5, r6, r7, pc}
 	thumb_func_end ov01_021EDC28
 
-	thumb_func_start ov01_021EDC7C
-ov01_021EDC7C: ; 0x021EDC7C
+	thumb_func_start FieldMenuManager_AddMenuEntry
+FieldMenuManager_AddMenuEntry: ; 0x021EDC7C
 	ldr r3, _021EDC80 ; =ov01_021EDD68
 	bx r3
 	.balign 4, 0
 _021EDC80: .word ov01_021EDD68
-	thumb_func_end ov01_021EDC7C
+	thumb_func_end FieldMenuManager_AddMenuEntry
 
-	thumb_func_start ov01_021EDC84
-ov01_021EDC84: ; 0x021EDC84
+	thumb_func_start FieldMenuManager_ShowSingleColumnMenu
+FieldMenuManager_ShowSingleColumnMenu: ; 0x021EDC84
 	push {r3, r4, lr}
 	sub sp, #0x14
 	add r4, r0, #0
@@ -333,7 +333,7 @@ _021EDCD8:
 	nop
 _021EDD60: .word 0x000003D9
 _021EDD64: .word ov01_021EDE8C
-	thumb_func_end ov01_021EDC84
+	thumb_func_end FieldMenuManager_ShowSingleColumnMenu
 
 	thumb_func_start ov01_021EDD68
 ov01_021EDD68: ; 0x021EDD68

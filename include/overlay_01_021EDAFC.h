@@ -9,8 +9,8 @@ typedef struct FieldMenuManager FieldMenuManager;
 typedef BOOL (*UnkCallback_021F6B34)(FieldMenuManager *menu, int idx);
 
 FieldMenuManager *FieldMenuManager_New(FieldSystem *fieldSystem, u8 anchorX, u8 anchorY, u8 initCursorPos, u8 cancellable, u16 *ret_p, MessageFormat *msgFmt, Window *window, MsgData *msgData);
-void ov01_021EDC7C(FieldMenuManager *menu, u32 msgId, u32 value);
-void ov01_021EDC84(FieldMenuManager *menu);
+void FieldMenuManager_AddMenuEntry(FieldMenuManager *menu, u32 msgID, u32 value);
+void FieldMenuManager_ShowSingleColumnMenu(FieldMenuManager *menu);
 void ov01_021EDF00(FieldMenuManager *menu);
 void ov01_021EDF38(FieldMenuManager *menu);
 void ov01_021EE014(FieldMenuManager *menu, u16 a1);
