@@ -7,6 +7,8 @@
 #include "field/field_control.h"
 #include "field/signpost.h"
 
+#include "field/field_control.h"
+
 #include "field_warp_tasks.h"
 #include "main.h"
 #include "map_events.h"
