@@ -104,8 +104,8 @@ _021E87D0:
 	.balign 4, 0
 	thumb_func_end ov01_021E87A8
 
-	thumb_func_start ov01_021E87E4
-ov01_021E87E4: ; 0x021E87E4
+	thumb_func_start MapPropAnimationManager_Init
+MapPropAnimationManager_Init: ; 0x021E87E4
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	str r1, [sp, #4]
@@ -163,7 +163,7 @@ _021E881E:
 	add r0, r7, #0
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ov01_021E87E4
+	thumb_func_end MapPropAnimationManager_Init
 
 	thumb_func_start ov01_021E8858
 ov01_021E8858: ; 0x021E8858
@@ -424,8 +424,8 @@ _021E8A1A:
 	pop {r4, r5, r6, r7, pc}
 	thumb_func_end ov01_021E8970
 
-	thumb_func_start ov01_021E8A28
-ov01_021E8A28: ; 0x021E8A28
+	thumb_func_start MapPropAnimationManager_UnloadAllAnimations
+MapPropAnimationManager_UnloadAllAnimations: ; 0x021E8A28
 	push {r3, r4}
 	cmp r0, #0
 	beq _021E8A4C
@@ -450,7 +450,7 @@ _021E8A44:
 _021E8A4C:
 	pop {r3, r4}
 	bx lr
-	thumb_func_end ov01_021E8A28
+	thumb_func_end MapPropAnimationManager_UnloadAllAnimations
 
 	thumb_func_start ov01_021E8A50
 ov01_021E8A50: ; 0x021E8A50
@@ -538,8 +538,8 @@ _021E8ADC:
 	.balign 4, 0
 	thumb_func_end ov01_021E8A8C
 
-	thumb_func_start ov01_021E8AEC
-ov01_021E8AEC: ; 0x021E8AEC
+	thumb_func_start MapPropAnimationManager_Free
+MapPropAnimationManager_Free: ; 0x021E8AEC
 	push {r4, lr}
 	add r4, r0, #0
 	beq _021E8B02
@@ -551,7 +551,7 @@ ov01_021E8AEC: ; 0x021E8AEC
 	bl Heap_Free
 _021E8B02:
 	pop {r4, pc}
-	thumb_func_end ov01_021E8AEC
+	thumb_func_end MapPropAnimationManager_Free
 
 	thumb_func_start ov01_021E8B04
 ov01_021E8B04: ; 0x021E8B04

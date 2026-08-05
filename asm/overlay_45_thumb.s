@@ -14480,7 +14480,7 @@ _022304E2:
 	str r0, [r4, #8]
 	mov r0, #1
 	add r1, r7, #0
-	bl sub_02023738
+	bl BillboardLists_Create
 	ldr r0, [sp, #4]
 	str r7, [sp, #0x24]
 	str r0, [sp, #0x20]
@@ -14641,7 +14641,7 @@ ov45_02230638: ; 0x02230638
 	bl GF2dGfxRawResMan_FreeAllObjs
 	ldr r0, [r4, #0xc]
 	bl sub_02023874
-	bl sub_02023778
+	bl BillboardLists_Delete
 	ldr r0, [r4, #8]
 	bl GF3dGfxRawResMan_Destroy
 	ldr r0, [r4]
@@ -14689,7 +14689,7 @@ _022306B0:
 ov45_022306B4: ; 0x022306B4
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_020237B0
+	bl BillboardLists_Draw
 	add r0, r5, #0
 	add r0, #0x18
 	bl ov45_02230A58

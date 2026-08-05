@@ -727,7 +727,7 @@ BOOL ScrCmd_722(ScriptContext *ctx);
 BOOL ScrCmd_723(ScriptContext *ctx);
 BOOL ScrCmd_724(ScriptContext *ctx);
 BOOL ScrCmd_725(ScriptContext *ctx);
-BOOL ScrCmd_726(ScriptContext *ctx);
+BOOL ScrCmd_ProcessSoundplate(ScriptContext *ctx);
 BOOL ScrCmd_GetFollowPokePartyIndex(ScriptContext *ctx);
 BOOL ScrCmd_728(ScriptContext *ctx);
 BOOL ScrCmd_729(ScriptContext *ctx);
@@ -1582,7 +1582,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_723,
     ScrCmd_724,
     ScrCmd_725,
-    ScrCmd_726,
+    ScrCmd_ProcessSoundplate,
     ScrCmd_GetFollowPokePartyIndex,
     ScrCmd_728,
     ScrCmd_729,

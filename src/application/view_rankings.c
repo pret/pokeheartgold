@@ -18,6 +18,7 @@
 #include "player_data.h"
 #include "render_window.h"
 #include "save_rankings.h"
+#include "screen_fade.h"
 #include "sprite.h"
 #include "sprite_transfer.h"
 #include "system.h"
@@ -26,7 +27,6 @@
 #include "unk_02009D48.h"
 #include "unk_0200A090.h"
 #include "unk_0200B150.h"
-#include "unk_0200FA24.h"
 #include "unk_02097D3C.h"
 #include "vram_transfer_manager.h"
 #include "yes_no_prompt.h"
@@ -304,7 +304,7 @@ BOOL ViewRankingsApp_Main(OverlayManager *man, int *pState) {
     ViewRankingsAppData *appData = OverlayManager_GetData(man);
     switch (appData->mainState) {
     case VIEW_RANKINGS_APP_MAIN_STATE_FADE_IN:
-        BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 1, HEAP_ID_RANKINGS_APP);
+        BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_IN, FADE_TYPE_BRIGHTNESS_IN, RGB_BLACK, 6, 1, HEAP_ID_RANKINGS_APP);
         appData->mainState = VIEW_RANKINGS_APP_MAIN_STATE_WAIT_FADE_IN;
         break;
     case VIEW_RANKINGS_APP_MAIN_STATE_WAIT_FADE_IN:
@@ -318,7 +318,7 @@ BOOL ViewRankingsApp_Main(OverlayManager *man, int *pState) {
         }
         break;
     case VIEW_RANKINGS_APP_MAIN_STATE_FADE_OUT:
-        BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, HEAP_ID_RANKINGS_APP);
+        BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, RGB_BLACK, 6, 1, HEAP_ID_RANKINGS_APP);
         appData->mainState = VIEW_RANKINGS_APP_MAIN_STATE_WAIT_FADE_OUT;
         break;
     case VIEW_RANKINGS_APP_MAIN_STATE_WAIT_FADE_OUT:

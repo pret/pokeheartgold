@@ -22,7 +22,7 @@
 .public sub_02054D10
 .public sub_02054DC8
 .public sub_02054E20
-.public sub_02064938
+.public Gymmick_CheckCollision
 .public _s32_div_f
 .public ov01_021F3B0C
 .public ov01_021F3B34

@@ -16,13 +16,13 @@
 #include "overlay_44.h"
 #include "overlay_manager.h"
 #include "poke_overlay.h"
+#include "screen_fade.h"
 #include "sound_02004A44.h"
 #include "sprite.h"
 #include "text.h"
 #include "unk_02005D10.h"
 #include "unk_0200A090.h"
 #include "unk_0200B150.h"
-#include "unk_0200FA24.h"
 #include "unk_02034354.h"
 #include "unk_02035900.h"
 #include "unk_020379A0.h"
@@ -225,11 +225,11 @@ s32 ov44_02232F64(OverlayManager *overlayManager, u32 *arg1) {
     temp_r7 = OverlayManager_GetArgs(overlayManager);
     switch (arg1[0]) {
     case 0:
-        BeginNormalPaletteFade(3, 1, 1, RGB_BLACK, 6, 1, HEAP_ID_103);
+        BeginNormalPaletteFade(FADE_MAIN_ONLY, FADE_TYPE_BRIGHTNESS_IN, FADE_TYPE_BRIGHTNESS_IN, RGB_BLACK, 6, 1, HEAP_ID_103);
         arg1[0]++;
         break;
     case 1:
-        if (IsPaletteFadeFinished() != 0) {
+        if (IsPaletteFadeFinished()) {
             arg1[0]++;
         }
         break;
@@ -261,11 +261,11 @@ s32 ov44_02232F64(OverlayManager *overlayManager, u32 *arg1) {
         }
         break;
     case 3:
-        BeginNormalPaletteFade(3, 0, 0, RGB_BLACK, 6, 1, HEAP_ID_103);
+        BeginNormalPaletteFade(FADE_MAIN_ONLY, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, RGB_BLACK, 6, 1, HEAP_ID_103);
         arg1[0]++;
         break;
     case 4:
-        if (IsPaletteFadeFinished() != 0) {
+        if (IsPaletteFadeFinished()) {
             return 1;
         }
     }
@@ -1879,10 +1879,10 @@ s32 ov44_022351DC(UnkStruct_ov44_02235340 *arg0, UnkStruct_ov44_args *arg1, enum
 
 s32 ov44_02235218(UnkStruct_ov44_02235340 *arg0, UnkStruct_ov44_args *arg1, enum HeapID heapID) {
     ov44_02233E48(arg0);
-    if ((sub_020390C4() == 1) && (sub_020373B4(0) == 1)) {
+    if (sub_020390C4() == 1 && sub_020373B4(0) == 1) {
         sub_020378E4(0);
         ov44_022342E0(arg0, arg1, heapID);
-        BeginNormalPaletteFade(3, 0, 0, RGB_BLACK, 6, 1, heapID);
+        BeginNormalPaletteFade(FADE_MAIN_ONLY, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, RGB_BLACK, 6, 1, heapID);
         arg0->unk5 = 27;
     }
     return 0;
@@ -1891,7 +1891,7 @@ s32 ov44_02235218(UnkStruct_ov44_02235340 *arg0, UnkStruct_ov44_args *arg1, enum
 s32 ov44_02235268(UnkStruct_ov44_02235340 *arg0, UnkStruct_ov44_args *arg1, enum HeapID heapID) {
     u8 *temp_r0;
 
-    if (IsPaletteFadeFinished() != 0) {
+    if (IsPaletteFadeFinished()) {
         sub_02034354(arg1->unk8, 0);
         arg0->unk27 = 1;
         ov44_02234204(arg0);
@@ -1922,7 +1922,7 @@ s32 ov44_02235268(UnkStruct_ov44_02235340 *arg0, UnkStruct_ov44_args *arg1, enum
         temp_r0[1] = 0;
         temp_r0[2] = 0;
         temp_r0[3] = 0;
-        BeginNormalPaletteFade(3, 1, 1, RGB_BLACK, 6, 1, heapID);
+        BeginNormalPaletteFade(FADE_MAIN_ONLY, FADE_TYPE_BRIGHTNESS_IN, FADE_TYPE_BRIGHTNESS_IN, RGB_BLACK, 6, 1, heapID);
         arg0->unk5 = 28;
     }
     return 0;

@@ -121,7 +121,7 @@ _020962B8:
 	cmp r0, #0
 	beq _02096314
 	mov r0, #1
-	bl ov01_021E636C
+	bl FieldMap_FadeScreen
 	mov r0, #3
 	str r0, [r4, #0x18]
 	b _02096314

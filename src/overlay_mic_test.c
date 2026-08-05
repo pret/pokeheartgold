@@ -7,6 +7,7 @@
 #include "gf_gfx_loader.h"
 #include "main.h"
 #include "math_util.h"
+#include "screen_fade.h"
 #include "sound.h"
 #include "sound_02004A44.h"
 #include "system.h"
@@ -15,7 +16,6 @@
 #include "touchscreen.h"
 #include "unk_02005D10.h"
 #include "unk_0200B150.h"
-#include "unk_0200FA24.h"
 #include "vram_transfer_manager.h"
 
 typedef struct MicTestData MicTestData;
@@ -489,7 +489,7 @@ static void MicTestTask_FadeIn(MicTestTaskManager *taskMan, u32 *state) {
 
     switch (*state) {
     case MICTEST_FADE_IN_STATE_START:
-        BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 1, micTest->heapID);
+        BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_IN, FADE_TYPE_BRIGHTNESS_IN, RGB_BLACK, 6, 1, micTest->heapID);
         *state = MICTEST_FADE_IN_STATE_WAIT;
         break;
     case MICTEST_FADE_IN_STATE_WAIT:
@@ -564,7 +564,7 @@ static void MicTestTask_FadeOut(MicTestTaskManager *taskMan, u32 *state) {
 
     switch (*state) {
     case MICTEST_FADE_OUT_STATE_START:
-        BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, micTest->heapID);
+        BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, RGB_BLACK, 6, 1, micTest->heapID);
         (*state) = MICTEST_FADE_OUT_STATE_WAIT;
         break;
     case MICTEST_FADE_OUT_STATE_WAIT:
@@ -593,8 +593,8 @@ static void ov62_021E5C34(enum HeapID heapID) {
     GfGfx_DisableEngineBPlanes();
     GX_SetVisiblePlane(0);
     GXS_SetVisiblePlane(0);
-    sub_0200FBDC(0);
-    sub_0200FBDC(1);
+    ResetVisibleHardwareWindows(PM_LCD_TOP);
+    ResetVisibleHardwareWindows(PM_LCD_BOTTOM);
     GF_CreateVramTransferManager(0x20, heapID);
 }
 

@@ -2,15 +2,15 @@
 #include "field/overlay_01_021FB878.h"
 #include "overlay_2/event_cutscene.h"
 
-#include "fieldmap.h"
+#include "script_manager.h"
 #include "follow_mon.h"
 #include "math_util.h"
 #include "overlay_01_021F467C.h"
 #include "overlay_01_021F944C.h"
 #include "overlay_01_022053EC.h"
+#include "screen_fade.h"
 #include "script_pokemon_util.h"
 #include "task.h"
-#include "unk_0200FA24.h"
 #include "unk_02062108.h"
 #include "unk_020689C8.h"
 
@@ -72,13 +72,13 @@ static BOOL Task_SinjohCutscene(TaskManager *taskMan) {
     SinjohCutsceneData *data = TaskManager_GetEnvironment(taskMan);
     switch (*state) {
     case SJC_STATE_BEGIN_PALETTE_FADE:
-        BeginNormalPaletteFade(3, 0, 0, RGB_WHITE, 2, 1, HEAP_ID_FIELD1);
+        BeginNormalPaletteFade(FADE_MAIN_ONLY, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, RGB_WHITE, 2, 1, HEAP_ID_FIELD1);
         (*state)++;
         break;
     case SJC_STATE_LOAD_RESOURCES:
         if (IsPaletteFadeFinished()) {
             SinjohCutscene_LoadResources(data);
-            BeginNormalPaletteFade(3, 1, 0, RGB_WHITE, 2, 1, HEAP_ID_FIELD1);
+            BeginNormalPaletteFade(FADE_MAIN_ONLY, FADE_TYPE_BRIGHTNESS_IN, FADE_TYPE_BRIGHTNESS_OUT, RGB_WHITE, 2, 1, HEAP_ID_FIELD1);
             (*state)++;
         }
         break;
@@ -99,7 +99,7 @@ static BOOL Task_SinjohCutscene(TaskManager *taskMan) {
         break;
     case SJC_STATE_4:
         if (++data->unk227 >= 150) {
-            BeginNormalPaletteFade(3, 0, 0, RGB_WHITE, 2, 1, HEAP_ID_FIELD1);
+            BeginNormalPaletteFade(FADE_MAIN_ONLY, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, RGB_WHITE, 2, 1, HEAP_ID_FIELD1);
             (*state)++;
         }
         break;
@@ -255,13 +255,13 @@ static BOOL Task_SinjohGetEggCutscene(TaskManager *taskMan) {
 
     switch (*state) {
     case SGEC_STATE_BEGIN_PALETTE_FADE:
-        BeginNormalPaletteFade(3, 0, 0, RGB_WHITE, 2, 1, HEAP_ID_FIELD1);
+        BeginNormalPaletteFade(FADE_MAIN_ONLY, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, RGB_WHITE, 2, 1, HEAP_ID_FIELD1);
         (*state)++;
         break;
     case SGEC_STATE_LOAD_RESOURCES:
         if (IsPaletteFadeFinished()) {
             SinjohGetEggCutscene_LoadResources(data);
-            BeginNormalPaletteFade(3, 1, 0, RGB_WHITE, 2, 1, HEAP_ID_FIELD1);
+            BeginNormalPaletteFade(FADE_MAIN_ONLY, FADE_TYPE_BRIGHTNESS_IN, FADE_TYPE_BRIGHTNESS_OUT, RGB_WHITE, 2, 1, HEAP_ID_FIELD1);
             (*state)++;
         }
         break;

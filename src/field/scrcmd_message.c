@@ -2,7 +2,7 @@
 
 #include "bg_window.h"
 #include "field_system.h"
-#include "fieldmap.h"
+#include "script_manager.h"
 #include "font.h"
 #include "mail_message.h"
 #include "map_object.h"

@@ -453,7 +453,7 @@ _021E941A:
 	add r7, r0, #0
 	bne _021E9442
 	mov r0, #1
-	bl ov01_021E636C
+	bl FieldMap_FadeScreen
 	mov r0, #6
 	str r0, [r6]
 	add sp, #0x58
@@ -484,7 +484,7 @@ _021E9442:
 	b _021E9486
 _021E9476:
 	mov r0, #1
-	bl ov01_021E636C
+	bl FieldMap_FadeScreen
 	mov r0, #6
 	str r0, [r6]
 	add sp, #0x58
@@ -950,7 +950,7 @@ _021E97FE:
 	b _021E98E0
 _021E9806:
 	mov r0, #1
-	bl ov01_021E636C
+	bl FieldMap_FadeScreen
 	ldr r0, [r6, #0x58]
 	ldr r3, _021E98EC ; =SEQ_SE_DP_ESUKA
 	mov r1, #2
@@ -1229,7 +1229,7 @@ _021E9A3C:
 	mov r1, #0x4a
 	bl MapObject_SetHeldMovement
 	mov r0, #0
-	bl ov01_021E636C
+	bl FieldMap_FadeScreen
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
@@ -2203,8 +2203,8 @@ _021EA21C:
 	pop {r4, pc}
 	thumb_func_end ov01_021EA1F4
 
-	thumb_func_start ov01_021EA220
-ov01_021EA220: ; 0x021EA220
+	thumb_func_start AreaLightManager_New
+AreaLightManager_New: ; 0x021EA220
 	push {r4, r5, r6, lr}
 	add r6, r1, #0
 	add r5, r0, #0
@@ -2254,10 +2254,10 @@ _021EA272:
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _021EA280: .word ov01_02206450
-	thumb_func_end ov01_021EA220
+	thumb_func_end AreaLightManager_New
 
-	thumb_func_start ov01_021EA284
-ov01_021EA284: ; 0x021EA284
+	thumb_func_start AreaLightManager_Free
+AreaLightManager_Free: ; 0x021EA284
 	push {r4, lr}
 	add r4, r0, #0
 	bne _021EA28E
@@ -2272,10 +2272,10 @@ _021EA28E:
 	mov r0, #0
 	str r0, [r4]
 	pop {r4, pc}
-	thumb_func_end ov01_021EA284
+	thumb_func_end AreaLightManager_Free
 
-	thumb_func_start ov01_021EA2A4
-ov01_021EA2A4: ; 0x021EA2A4
+	thumb_func_start AreaLightManager_UpdateActiveTemplate
+AreaLightManager_UpdateActiveTemplate: ; 0x021EA2A4
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	bne _021EA2AE
@@ -2325,7 +2325,7 @@ _021EA2F0:
 _021EA2FC:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov01_021EA2A4
+	thumb_func_end AreaLightManager_UpdateActiveTemplate
 
 	thumb_func_start ov01_021EA300
 ov01_021EA300: ; 0x021EA300

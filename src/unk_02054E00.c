@@ -1,7 +1,8 @@
 #include "unk_02054E00.h"
 
+#include "field/map_load_manager.h"
+
 #include "overlay_01_021F3610.h"
-#include "overlay_01_021F4704.h"
 
 BOOL MapModel_IsHeadbuttTree(u32 mapModelNo) {
     if (mapModelNo == 0xd0) {
@@ -29,7 +30,7 @@ u16 MapCoordToMatrixIndex(FieldSystem *fieldSystem, int coordX, int coordY) {
 void sub_02054EB0(FieldSystem *fieldSystem, int a1, BOOL a2) {
     int val;
     for (u8 i = 0; i < 4; i++) {
-        ov01_021F630C(i, fieldSystem->unk2C, &val);
+        ov01_021F630C(i, fieldSystem->mapLoadManager, &val);
         if (val != 0) {
             for (u8 j = 0; j < 32; j++) {
                 int res = ov01_021F3B44(val, j);

@@ -14,8 +14,8 @@
 
 	.text
 
-	thumb_func_start ov01_021FB4C0
-ov01_021FB4C0: ; 0x021FB4C0
+	thumb_func_start HBlankSystem_New
+HBlankSystem_New: ; 0x021FB4C0
 	push {r4, lr}
 	mov r1, #0x1c
 	bl Heap_Alloc
@@ -24,17 +24,17 @@ ov01_021FB4C0: ; 0x021FB4C0
 	add r0, r4, #0
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end ov01_021FB4C0
+	thumb_func_end HBlankSystem_New
 
-	thumb_func_start ov01_021FB4D4
-ov01_021FB4D4: ; 0x021FB4D4
+	thumb_func_start HBlankSystem_Delete
+HBlankSystem_Delete: ; 0x021FB4D4
 	push {r4, lr}
 	add r4, r0, #0
 	beq _021FB4F0
 	ldr r1, [r4]
 	cmp r1, #1
 	bne _021FB4E4
-	bl ov01_021FB514
+	bl HBlankSystem_Stop
 _021FB4E4:
 	add r0, r4, #0
 	bl ov01_021FB55C
@@ -43,10 +43,10 @@ _021FB4E4:
 _021FB4F0:
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end ov01_021FB4D4
+	thumb_func_end HBlankSystem_Delete
 
-	thumb_func_start ov01_021FB4F4
-ov01_021FB4F4: ; 0x021FB4F4
+	thumb_func_start HBlankSystem_Start
+HBlankSystem_Start: ; 0x021FB4F4
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, _021FB510 ; =ov01_021FB594
@@ -61,10 +61,10 @@ _021FB508:
 	pop {r4, pc}
 	nop
 _021FB510: .word ov01_021FB594
-	thumb_func_end ov01_021FB4F4
+	thumb_func_end HBlankSystem_Start
 
-	thumb_func_start ov01_021FB514
-ov01_021FB514: ; 0x021FB514
+	thumb_func_start HBlankSystem_Stop
+HBlankSystem_Stop: ; 0x021FB514
 	push {r4, lr}
 	add r4, r0, #0
 	mov r0, #0
@@ -78,7 +78,7 @@ _021FB528:
 	str r0, [r4]
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end ov01_021FB514
+	thumb_func_end HBlankSystem_Stop
 
 	thumb_func_start ov01_021FB530
 ov01_021FB530: ; 0x021FB530

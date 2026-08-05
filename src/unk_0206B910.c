@@ -4,7 +4,7 @@
 
 #include "assert.h"
 #include "bag.h"
-#include "fieldmap.h"
+#include "script_manager.h"
 #include "heap.h"
 #include "launch_application.h"
 #include "mail.h"

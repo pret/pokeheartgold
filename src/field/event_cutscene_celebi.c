@@ -2,15 +2,15 @@
 #include "field/overlay_01_021FB878.h"
 #include "overlay_2/event_cutscene.h"
 
-#include "fieldmap.h"
+#include "script_manager.h"
 #include "follow_mon.h"
 #include "math_util.h"
 #include "overlay_01_021F467C.h"
 #include "overlay_01_021F944C.h"
 #include "overlay_01_022053EC.h"
+#include "screen_fade.h"
 #include "script_pokemon_util.h"
 #include "task.h"
-#include "unk_0200FA24.h"
 #include "unk_02062108.h"
 #include "unk_020689C8.h"
 
@@ -78,14 +78,14 @@ static BOOL Task_CelebiTimeTravelCutscene(TaskManager *taskMan) {
     CelebiTimeTravelCutsceneTaskData *data = TaskManager_GetEnvironment(taskMan);
     switch (*state) {
     case CTT_STATE_BEGIN_PALETTE_FADE:
-        BeginNormalPaletteFade(3, 0, 0, RGB_WHITE, 4, 1, HEAP_ID_FIELD1);
+        BeginNormalPaletteFade(FADE_MAIN_ONLY, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, RGB_WHITE, 4, 1, HEAP_ID_FIELD1);
         (*state)++;
         break;
     case CTT_STATE_LOAD_RESOURCES:
         if (IsPaletteFadeFinished()) {
             CelebiCutscene_LoadResources(data);
             sub_02069DC8(FollowMon_GetMapObject(data->fieldSystem), 1);
-            BeginNormalPaletteFade(3, 1, 0, RGB_WHITE, 4, 1, HEAP_ID_FIELD1);
+            BeginNormalPaletteFade(FADE_MAIN_ONLY, FADE_TYPE_BRIGHTNESS_IN, FADE_TYPE_BRIGHTNESS_OUT, RGB_WHITE, 4, 1, HEAP_ID_FIELD1);
             (*state)++;
         }
         break;
@@ -105,7 +105,7 @@ static BOOL Task_CelebiTimeTravelCutscene(TaskManager *taskMan) {
         break;
     case CTT_STATE_PALETTE_FADE_2:
         if (++data->frameTimer >= 80) {
-            BeginNormalPaletteFade(0, 0, 0, RGB_WHITE, 30, 1, HEAP_ID_FIELD1);
+            BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, RGB_WHITE, 30, 1, HEAP_ID_FIELD1);
             (*state)++;
         }
         break;

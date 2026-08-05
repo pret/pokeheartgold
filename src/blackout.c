@@ -11,11 +11,11 @@
 #include "render_window.h"
 #include "save_local_field_data.h"
 #include "scrcmd.h"
+#include "screen_fade.h"
 #include "sound.h"
 #include "system.h"
 #include "text.h"
 #include "unk_0200B150.h"
-#include "unk_0200FA24.h"
 #include "unk_0203BA5C.h"
 #include "unk_020552A4.h"
 #include "unk_0206793C.h"
@@ -90,8 +90,8 @@ static void Blackout_DrawMessage(FieldSystem *fieldSystem, TaskManager *taskMana
     env->bgConfig = BgConfig_Alloc(HEAP_ID_FIELD2);
     sub_0200FBF4(PM_LCD_TOP, RGB_WHITE);
     sub_0200FBF4(PM_LCD_BOTTOM, RGB_WHITE);
-    sub_0200FBDC(0); // PM_LCD_TOP?
-    sub_0200FBDC(1); // PM_LCD_TOP?
+    ResetVisibleHardwareWindows(PM_LCD_TOP);
+    ResetVisibleHardwareWindows(PM_LCD_BOTTOM);
     Blackout_InitDisplays(env->bgConfig);
     env->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0203_bin, HEAP_ID_FIELD2);
     env->msgFmt = MessageFormat_New(HEAP_ID_FIELD2);
@@ -122,7 +122,7 @@ static BOOL Task_ShowPrintedBlackoutMessage(TaskManager *taskManager) {
     BlackoutScreenEnvironment *env = TaskManager_GetEnvironment(taskManager);
     switch (env->state) {
     case STATE_SHOW_PRINTED_BLACKOUT_FADE_IN:
-        BeginNormalPaletteFade(3, 1, 43, RGB_WHITE, 8, 1, HEAP_ID_FIELD3);
+        BeginNormalPaletteFade(FADE_MAIN_ONLY, FADE_TYPE_BRIGHTNESS_IN, FADE_TYPE_UNK_43, RGB_WHITE, 8, 1, HEAP_ID_FIELD3);
         G2_BlendNone();
         env->state++;
         break;
@@ -133,7 +133,7 @@ static BOOL Task_ShowPrintedBlackoutMessage(TaskManager *taskManager) {
         break;
     case STATE_SHOW_PRINTED_BLACKOUT_FADE_OUT_INPUT:
         if (gSystem.newKeys & PAD_BUTTON_A || gSystem.newKeys & PAD_BUTTON_B || gSystem.touchNew != 0) {
-            BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 8, 1, HEAP_ID_FIELD3);
+            BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, RGB_BLACK, 8, 1, HEAP_ID_FIELD3);
             env->state++;
         }
         break;

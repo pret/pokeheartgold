@@ -582,7 +582,7 @@ _02054A10:
 	ldr r3, [r3, #4]
 	add r1, r4, #0
 	add r2, r7, #0
-	bl sub_02064938
+	bl Gymmick_CheckCollision
 	cmp r0, #0
 	bne _02054A52
 	add r0, r5, #0

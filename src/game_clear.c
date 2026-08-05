@@ -21,13 +21,13 @@
 #include "save_arrays.h"
 #include "save_local_field_data.h"
 #include "save_vars_flags.h"
+#include "screen_fade.h"
 #include "sound.h"
 #include "sound_02004A44.h"
 #include "sys_flags.h"
 #include "task.h"
 #include "text.h"
 #include "unk_02005D10.h"
-#include "unk_0200FA24.h"
 #include "unk_020552A4.h"
 #include "unk_02055418.h"
 #include "unk_0206793C.h"
@@ -122,7 +122,7 @@ BOOL sub_0205298C(TaskManager *taskman) {
         ++(*state);
         break;
     case 4:
-        BeginNormalPaletteFade(0, 1, 1, RGB_WHITE, 8, 1, HEAP_ID_FIELD3);
+        BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_IN, FADE_TYPE_BRIGHTNESS_IN, RGB_WHITE, 8, 1, HEAP_ID_FIELD3);
         G2_BlendNone();
         ++(*state);
         break;
@@ -166,14 +166,14 @@ static BOOL Task_GameClear(TaskManager *taskman) {
             break;
         }
         GameClearSave_InitGraphics(fieldSystem, env);
-        BeginNormalPaletteFade(3, 1, 1, RGB_BLACK, 8, 1, HEAP_ID_FIELD3);
+        BeginNormalPaletteFade(FADE_MAIN_ONLY, FADE_TYPE_BRIGHTNESS_IN, FADE_TYPE_BRIGHTNESS_IN, RGB_BLACK, 8, 1, HEAP_ID_FIELD3);
         *state = 2;
         break;
     case 1:
         if (!FieldSystem_ApplicationIsRunning(fieldSystem)) {
             Heap_Create(HEAP_ID_3, HEAP_ID_FIELD1, 0x20000);
             GameClearSave_InitGraphics(fieldSystem, env);
-            BeginNormalPaletteFade(3, 1, 1, RGB_BLACK, 8, 1, HEAP_ID_FIELD3);
+            BeginNormalPaletteFade(FADE_MAIN_ONLY, FADE_TYPE_BRIGHTNESS_IN, FADE_TYPE_BRIGHTNESS_IN, RGB_BLACK, 8, 1, HEAP_ID_FIELD3);
             ++(*state);
         }
         break;
@@ -217,7 +217,7 @@ static BOOL Task_GameClear(TaskManager *taskman) {
         ++(*state);
         break;
     case 7:
-        BeginNormalPaletteFade(3, 0, 0, RGB_BLACK, 8, 1, HEAP_ID_FIELD3);
+        BeginNormalPaletteFade(FADE_MAIN_ONLY, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, RGB_BLACK, 8, 1, HEAP_ID_FIELD3);
         env->bgmVolume = 127;
         ++(*state);
         break;

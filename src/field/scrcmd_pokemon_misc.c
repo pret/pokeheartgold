@@ -14,7 +14,7 @@
 
 #include "bag.h"
 #include "bug_contest.h"
-#include "fieldmap.h"
+#include "script_manager.h"
 #include "follow_mon.h"
 #include "friend_group.h"
 #include "get_egg.h"
@@ -34,11 +34,11 @@
 #include "pokedex.h"
 #include "save_wifi_history.h"
 #include "scrcmd.h"
+#include "screen_fade.h"
 #include "sound_02004A44.h"
 #include "sys_vars.h"
 #include "system.h"
 #include "unk_02005D10.h"
-#include "unk_0200FA24.h"
 #include "unk_02023694.h"
 #include "unk_02030A98.h"
 #include "unk_02031B0C.h"
@@ -828,8 +828,8 @@ BOOL ScrCmd_725(ScriptContext *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_726(ScriptContext *ctx) {
-    ov01_021E7F00(ctx->fieldSystem, TRUE);
+BOOL ScrCmd_ProcessSoundplate(ScriptContext *ctx) {
+    FieldSystem_ProcessSoundplate(ctx->fieldSystem, TRUE);
     return FALSE;
 }
 

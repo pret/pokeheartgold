@@ -46,12 +46,12 @@
 .public DC_FlushRange
 .public memset
 .public ov01_021EA3B0
-.public ov01_021F1348
-.public ov01_021F1384
+.public FieldEffectManager_New
+.public FieldEffectManager_InitAnimManagerList
 .public ov01_021F1390
-.public ov01_021F13D0
-.public ov01_021F13EC
-.public ov01_021F13F4
+.public FieldEffectManager_InitRenderers
+.public FieldEffectManager_Render
+.public FieldEffectManager_Free
 .public ov01_021F1430
 .public ov01_021F1448
 .public ov01_021F1450

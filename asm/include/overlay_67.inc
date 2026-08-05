@@ -49,7 +49,7 @@
 .public ManagedSprite_SetPositionXY
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
-.public sub_0200FBDC
+.public ResetVisibleHardwareWindows
 .public MailMsg_GetExpandedString
 .public GridInputHandler_Create
 .public GridInputHandler_Free

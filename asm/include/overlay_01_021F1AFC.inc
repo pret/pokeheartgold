@@ -95,7 +95,7 @@
 .public Party_GetMonByIndex
 .public SaveArray_Party_Get
 .public memset
-.public ov01_021E7F00
+.public FieldSystem_ProcessSoundplate
 .public ov01_021F1640
 .public Field_PlayerAvatar_OrrTransitionFlags
 .public Field_PlayerAvatar_ApplyTransitionFlags

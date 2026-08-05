@@ -18,6 +18,7 @@
 #include "player_data.h"
 #include "render_window.h"
 #include "save_vars_flags.h"
+#include "screen_fade.h"
 #include "sound_02004A44.h"
 #include "sprite.h"
 #include "sprite_system.h"
@@ -27,7 +28,6 @@
 #include "touchscreen.h"
 #include "unk_02005D10.h"
 #include "unk_0200B150.h"
-#include "unk_0200FA24.h"
 #include "unk_020210A0.h"
 #include "vram_transfer_manager.h"
 #include "yes_no_prompt.h"
@@ -651,12 +651,12 @@ static void AlphPuzzle_ScreenOff(void) {
     HBlankInterruptDisable();
     GfGfx_DisableEngineAPlanes();
     GfGfx_DisableEngineBPlanes();
-    GX_SetVisiblePlane(0);
-    GXS_SetVisiblePlane(0);
+    GX_SetVisiblePlane(GX_PLANEMASK_NONE);
+    GXS_SetVisiblePlane(GX_PLANEMASK_NONE);
     sub_0200FBF4(PM_LCD_TOP, RGB_BLACK);
     sub_0200FBF4(PM_LCD_BOTTOM, RGB_BLACK);
-    sub_0200FBDC(0);
-    sub_0200FBDC(1);
+    ResetVisibleHardwareWindows(PM_LCD_TOP);
+    ResetVisibleHardwareWindows(PM_LCD_BOTTOM);
 }
 
 static void AlphPuzzle_InitTextOptionsAndPuzzleIndex(AlphPuzzleData *data) {
@@ -699,7 +699,7 @@ static BOOL AlphPuzzle_OverlayExitStep(AlphPuzzleData *data) {
 static int AlphPuzzleMainSeq_FadeIn(AlphPuzzleData *data) {
     switch (data->unkState) {
     case 0:
-        BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 1, data->heapID);
+        BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_IN, FADE_TYPE_BRIGHTNESS_IN, RGB_BLACK, 6, 1, data->heapID);
         data->unkState++;
         break;
     case 1:
@@ -715,7 +715,7 @@ static int AlphPuzzleMainSeq_FadeIn(AlphPuzzleData *data) {
 static int AlphPuzzleMainSeq_FadeOut(AlphPuzzleData *data) {
     switch (data->unkState) {
     case 0:
-        BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, data->heapID);
+        BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, RGB_BLACK, 6, 1, data->heapID);
         data->unkState++;
         break;
     case 1:
@@ -773,8 +773,8 @@ static void AlphPuzzle_TeardownGraphics(AlphPuzzleData *data) {
 static void AlphPuzzle_DrawHintTextAndHideCursor(AlphPuzzleData *data) {
     AlphPuzzle_ToggleDropCursorSprite(data, 0);
     AlphPuzzle_PrintHintText(data);
-    ScheduleBgTilemapBufferTransfer(data->bgConfig, 2);
-    ScheduleBgTilemapBufferTransfer(data->bgConfig, 4);
+    ScheduleBgTilemapBufferTransfer(data->bgConfig, GF_BG_LYR_MAIN_2);
+    ScheduleBgTilemapBufferTransfer(data->bgConfig, GF_BG_LYR_SUB_0);
 }
 
 static int AlphPuzzle_CheckInput(AlphPuzzleData *data) {
