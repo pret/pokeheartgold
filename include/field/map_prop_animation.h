@@ -5,13 +5,37 @@
 
 #include "filesystem.h"
 
+#define MAP_PROP_ANIMATION_MANAGER_MAX_BICYCLE_SLOPE_ANIMATIONS 2
+
+typedef struct MapPropAnimation {
+    NNSG3dAnmObj *animationObj;
+    u32 unk4;
+    int unk8;
+    int unkC;
+    int unk10;
+    u32 unk14;
+    u32 unk18;
+    u32 unk1C;
+} MapPropAnimation;
+
+typedef struct BicycleSlopeAnimation {
+    BOOL loaded;
+    NNSG3dRenderObj *renderObj;
+    MapPropAnimation *animation;
+    int animID;
+} BicycleSlopeAnimation; // Size: 0x10
+
 typedef struct MapPropAnimationManager {
-    u8 unk0[0x13C];
-} MapPropAnimationManager;
+    u8 unk0[0x110];
+    BicycleSlopeAnimation bicycleSlopeAnimations[MAP_PROP_ANIMATION_MANAGER_MAX_BICYCLE_SLOPE_ANIMATIONS];
+    NARC *unk130;
+    NARC *unk134;
+    void *unk138;
+} MapPropAnimationManager; // Size: 0x13C
 
 typedef struct MapPropOneShotAnimationManager {
     u8 unk0[0x380];
-} MapPropOneShotAnimationManager;
+} MapPropOneShotAnimationManager; // Size: 0x380
 
 MapPropAnimationManager *MapPropAnimationManager_Init(NARC *narc, FieldSystemUnkSubC8 *unkSubC8);
 void ov01_021E8970(int modelNum, int animNum, int a2, UnkStruct_FieldSysC0_SubC *renderObj, MapPropAnimationManager *mapPropAnimationManager);
