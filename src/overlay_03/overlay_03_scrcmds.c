@@ -4,7 +4,7 @@
 #include "launch_application.h"
 #include "overlay_01.h"
 #include "overlay_01_021F3610.h"
-#include "overlay_01_021F4704.h"
+#include "field/map_load_manager.h"
 #include "overlay_02.h"
 #include "overlay_03.h"
 #include "overlay_108.h"
@@ -61,12 +61,12 @@ BOOL ScrCmd_720(ScriptContext *ctx) {
     areaID = areaX / 32 + (areaY / 32 * 3);
 
     areaSet = SafariZone_GetAreaSet(Save_SafariZone_Get(fieldSystem->saveData), 0);
-    u32 temp_r0 = ov01_021F6320(fieldSystem->unk2C);
+    u32 temp_r0 = ov01_021F6320(fieldSystem->mapLoadManager);
 
     s32 sp20;
-    ov01_021F630C((u8)temp_r0, fieldSystem->unk2C, &sp20);
-    sp8 = ov01_021F65E4(fieldSystem->unk2C, (u8)temp_r0);
-    sp4 = ov01_021F65F0(fieldSystem->unk2C, (u8)temp_r0);
+    ov01_021F630C((u8)temp_r0, fieldSystem->mapLoadManager, &sp20);
+    sp8 = ov01_021F65E4(fieldSystem->mapLoadManager, (u8)temp_r0);
+    sp4 = ov01_021F65F0(fieldSystem->mapLoadManager, (u8)temp_r0);
 
     SAFARIZONE_OBJECT *safariObject = &areaSet->areas[areaID].objects[safariObjectID];
 

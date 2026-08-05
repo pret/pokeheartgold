@@ -71,6 +71,8 @@ typedef struct Camera {
     CameraHistory *history;
 } Camera;
 
+extern GXBufferMode gG3dDepthBufferingMode;
+
 void Camera_History_New(s32 count, s32 initialWriteIdx, s32 updateEnableFlags, enum HeapID heapID, Camera *camera);
 void Camera_History_Delete(Camera *camera);
 Camera *Camera_New(enum HeapID heapID);

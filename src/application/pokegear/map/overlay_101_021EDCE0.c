@@ -6,7 +6,7 @@
 #include "font.h"
 #include "gf_gfx_loader.h"
 #include "text.h"
-#include "unk_0200FA24.h"
+#include "screen_fade.h"
 #include "unk_020210A0.h"
 #include "unk_0208805C.h"
 
@@ -260,12 +260,12 @@ BOOL FlyMap_LoadGFX(PokegearMapAppData *mapApp) {
         HBlankInterruptDisable();
         GfGfx_DisableEngineAPlanes();
         GfGfx_DisableEngineBPlanes();
-        GX_SetVisiblePlane(0);
-        GXS_SetVisiblePlane(0);
-        sub_0200FBF4(0, 0);
-        sub_0200FBF4(1, 0);
-        sub_0200FBDC(0);
-        sub_0200FBDC(1);
+        GX_SetVisiblePlane(GX_PLANEMASK_NONE);
+        GXS_SetVisiblePlane(GX_PLANEMASK_NONE);
+        sub_0200FBF4(PM_LCD_TOP, RGB_BLACK);
+        sub_0200FBF4(PM_LCD_BOTTOM, RGB_BLACK);
+        ResetVisibleHardwareWindows(PM_LCD_TOP);
+        ResetVisibleHardwareWindows(PM_LCD_BOTTOM);
         sub_020210BC();
         sub_02021148(2);
         break;

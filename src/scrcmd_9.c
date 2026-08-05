@@ -5,7 +5,7 @@
 #include "assert.h"
 #include "error_handling.h"
 #include "field_system.h"
-#include "fieldmap.h"
+#include "script_manager.h"
 #include "filesystem.h"
 #include "frontier_data.h"
 #include "game_stats.h"

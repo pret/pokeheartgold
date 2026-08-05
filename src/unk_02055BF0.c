@@ -5,6 +5,7 @@
 #include "camera.h"
 #include "field_bgm.h"
 #include "field_warp_tasks.h"
+#include "field/fieldmap.h"
 #include "follow_mon.h"
 #include "heap.h"
 #include "map_header.h"
@@ -13,8 +14,8 @@
 #include "overlay_01.h"
 #include "overlay_01_021E90C0.h"
 #include "overlay_01_021F1AFC.h"
-#include "overlay_01_021F4704.h"
-#include "overlay_01_021FB4C0.h"
+#include "field/map_load_manager.h"
+#include "field/hblank_system.h"
 #include "overlay_01_022031C0.h"
 #include "overlay_01_022053EC.h"
 #include "player_avatar.h"
@@ -22,7 +23,6 @@
 #include "script.h"
 #include "sound.h"
 #include "unk_02005D10.h"
-#include "unk_0200FA24.h"
 #include "unk_02054648.h"
 #include "unk_02055244.h"
 #include "unk_020552A4.h"
@@ -38,9 +38,9 @@ extern TaskFunc sMapEnterRoutines[9];
 extern TaskFunc sMapExitRoutines[9];
 extern FieldSystemFunc _020FC76C[9];
 
-void NewFieldFadeEnvironment(TaskManager *man, int pattern, int typeTop, int typeBottom, u16 colour, int duration, int framesPer, enum HeapID heapID) {
+void NewFieldFadeEnvironment(TaskManager *man, enum FadeMode fadeMode, enum FadeType typeTop, enum FadeType typeBottom, u16 colour, int duration, int framesPer, enum HeapID heapID) {
     FieldFadeEnvironment *sfenv = Heap_Alloc(heapID, sizeof(FieldFadeEnvironment));
-    sfenv->pattern = pattern;
+    sfenv->fadeMode = fadeMode;
     sfenv->typeTop = typeTop;
     sfenv->typeBottom = typeBottom;
     sfenv->colour = colour;
@@ -56,13 +56,13 @@ BOOL RoutineFieldFade(TaskManager *man) {
     FieldFadeEnvironment *fenv = TaskManager_GetEnvironment(man);
     switch (fenv->state) {
     case 0:
-        ov01_021FB514(fieldSystem->unk4->unk1c);
-        BeginNormalPaletteFade(fenv->pattern, fenv->typeTop, fenv->typeBottom, fenv->colour, fenv->duration, fenv->framesPer, fenv->heapID);
+        HBlankSystem_Stop(fieldSystem->unk4->hBlankSystem);
+        BeginNormalPaletteFade(fenv->fadeMode, fenv->typeTop, fenv->typeBottom, fenv->colour, fenv->duration, fenv->framesPer, fenv->heapID);
         fenv->state++;
         break;
     case 1:
         if (IsPaletteFadeFinished()) {
-            ov01_021FB4F4(fieldSystem->unk4->unk1c);
+            HBlankSystem_Start(fieldSystem->unk4->hBlankSystem);
             Heap_Free(fenv);
             return TRUE;
         }
@@ -191,7 +191,7 @@ BOOL sub_02055DBC(TaskManager *man) {
         break;
     case 7:
         if (GF_SndGetFadeTimer() == 0) {
-            FieldBGM_PlayForMapHeader(fieldSystem, env->location.mapId, 1);
+            FieldBGM_PlayForMapHeader(fieldSystem, env->location.mapId, TRUE);
             if (!MapHeader_IsCave(env->destinationMapID)) {                  // this has gotta be for the pre-entering images right?
                 int index = MapPreviewGraphic_GetIndex(env->location.mapId); // this gets the index of the location in the list of maps that have map icons
                 if (index != 255) {
@@ -333,7 +333,7 @@ BOOL sub_0205613C(TaskManager *man) {
     }
     case 3:
         PlaySE(SEQ_SE_DP_KAIDAN2);
-        ov01_021E636C(FALSE);
+        FieldMap_FadeScreen(FADE_TYPE_BRIGHTNESS_OUT);
         fenv->transitionState++;
         break;
     case 4:
@@ -391,7 +391,7 @@ BOOL sub_020562B0(TaskManager *man) {
         fenv18->state = 0;
         fenv18->direction = PlayerAvatar_GetFacingDirection(fieldSystem->playerAvatar);
         PlayerAvatar_ToggleAutomaticHeightUpdating(fieldSystem->playerAvatar, FALSE);
-        ov01_021F6304(fieldSystem->unk2C);
+        MapLoadManager_ForgetTrackedTarget(fieldSystem->mapLoadManager);
         if (FollowMon_IsActive(fieldSystem)) {
             BOOL flag = TRUE;
             int var;
@@ -439,7 +439,7 @@ BOOL sub_020562B0(TaskManager *man) {
         break;
     case 2:
         PlaySE(SEQ_SE_DP_KAIDAN2);
-        ov01_021E636C(0);
+        FieldMap_FadeScreen(FADE_TYPE_BRIGHTNESS_OUT);
         fenv->transitionState++;
         break;
     case 3:
@@ -492,7 +492,7 @@ BOOL sub_02056424(TaskManager *man) {
         break;
     case 3:
         PlaySE(SEQ_SE_DP_KAIDAN2);
-        ov01_021E636C(0);
+        FieldMap_FadeScreen(FADE_TYPE_BRIGHTNESS_OUT);
         fenv->transitionState++;
         break;
     case 4:

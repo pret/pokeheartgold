@@ -170,7 +170,7 @@ sub_020659CC: ; 0x020659CC
 	add r0, r5, #0
 	bl MapObject_ClearSingleMovement
 	add r0, r5, #0
-	bl MapObject_ClearFlag3
+	bl MapObject_ClearEndMovement
 	add r0, r5, #0
 	mov r1, #0x20
 	bl MapObject_ClearFlagsBits
@@ -224,7 +224,7 @@ sub_02065A4C: ; 0x02065A4C
 	add r0, r5, #0
 	bl MapObject_ClearSingleMovement
 	add r0, r5, #0
-	bl MapObject_ClearFlag3
+	bl MapObject_ClearEndMovement
 	mov r0, #1
 	lsl r0, r0, #8
 	ldr r1, [r4, r0]
@@ -357,7 +357,7 @@ sub_02065B70: ; 0x02065B70
 	add r4, r1, #0
 	bl MapObject_ClearSingleMovement
 	add r0, r5, #0
-	bl MapObject_ClearFlag3
+	bl MapObject_ClearEndMovement
 	add r0, r5, #0
 	add r1, r4, #0
 	bl sub_02065D24
@@ -413,7 +413,7 @@ sub_02065BE8: ; 0x02065BE8
 	add r4, r1, #0
 	bl MapObject_ClearSingleMovement
 	add r0, r5, #0
-	bl MapObject_ClearFlag3
+	bl MapObject_ClearEndMovement
 	add r0, r5, #0
 	add r1, r4, #0
 	bl sub_02065D24
@@ -998,7 +998,7 @@ sub_02066064: ; 0x02066064
 	add r4, r1, #0
 	bl MapObject_ClearSingleMovement
 	add r0, r5, #0
-	bl MapObject_ClearFlag3
+	bl MapObject_ClearEndMovement
 	add r0, r5, #0
 	add r1, r4, #0
 	bl sub_020661F0
@@ -1452,7 +1452,7 @@ _020663CE:
 	add r0, r5, #0
 	bl MapObject_ClearSingleMovement
 	add r0, r5, #0
-	bl MapObject_ClearFlag3
+	bl MapObject_ClearEndMovement
 	ldrb r0, [r4]
 	add r0, r0, #1
 	strb r0, [r4]

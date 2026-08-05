@@ -51,7 +51,7 @@
 .public LoadUserFrameGfx2
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
-.public sub_0200FBDC
+.public ResetVisibleHardwareWindows
 .public sub_0200FBF4
 .public YesNoPrompt_Create
 .public YesNoPrompt_Destroy

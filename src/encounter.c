@@ -66,7 +66,7 @@ static BOOL Task_StartBattle(TaskManager *taskManager) {
     switch (*state) {
     case 0:
         Battle_LaunchApp(fieldSystem, battleSetup);
-        sub_0203E354();
+        Field_SetEnvironmentSoundState_None_Unk2();
         (*state)++;
         break;
     case 1:

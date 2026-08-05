@@ -2,15 +2,15 @@
 
 #include "overlay_2/event_cutscene.h"
 
-#include "fieldmap.h"
+#include "script_manager.h"
 #include "follow_mon.h"
 #include "math_util.h"
 #include "overlay_01_021F467C.h"
 #include "overlay_01_021F944C.h"
 #include "overlay_01_022053EC.h"
+#include "screen_fade.h"
 #include "script_pokemon_util.h"
 #include "task.h"
-#include "unk_0200FA24.h"
 #include "unk_02062108.h"
 #include "unk_020689C8.h"
 
@@ -62,7 +62,7 @@ static BOOL ov02_022523D0(TaskManager *taskMan) {
         MapObject_CopyPositionVector(FollowMon_GetMapObject(fieldSystem), &pos);
         u32 res;
         if (FollowMon_IsVisible(fieldSystem)) {
-            env->unk4 = ov01_022052C4(fieldSystem->unk_44, &pos);
+            env->unk4 = ov01_022052C4(fieldSystem->fieldEffectManager, &pos);
             res = 1;
         } else {
             env->unk4 = 0;

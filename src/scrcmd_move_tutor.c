@@ -6,7 +6,7 @@
 #include "msgdata/msg.naix"
 
 #include "assert.h"
-#include "fieldmap.h"
+#include "script_manager.h"
 #include "heap.h"
 #include "message_format.h"
 #include "msgdata.h"

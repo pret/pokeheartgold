@@ -138,17 +138,22 @@ typedef enum ScriptEnvField {
     SCRIPTENV_SPECIAL_VAR_LAST_INTERACTED
 } ScriptEnvField;
 
-struct UnkStruct_020FC5CC {
-    u32 unk0_00 : 4;
-    u32 unk0_04 : 4;
-    u32 unk0_08 : 4;
-    u32 unk0_0C : 4;
-    u32 unk0_10 : 4;
-    u32 unk0_14 : 4;
-    u32 unk0_18 : 8;
-    u8 unk_4;
-    u8 unk_5;
-    u8 unk_6;
+struct MapLoadMode {
+    u32 fieldBottomScreen : 4;
+    u32 skipMapAttributes : 4;
+    u32 useSimpleTerrainCollisions : 4;
+    u32 switchScreens : 4;
+    u32 useSeparateTerrainAttributes : 4;
+    u32 loadExtOverlay : 4;
+    u32 separateTerrainAttributesBlockCount : 8;
+    union {
+        u32 unk_4;
+        struct {
+            u8 unk4;
+            u8 unk5;
+            u8 unk6;
+        };
+    };
 };
 
 struct UnkStruct_02059E1C;

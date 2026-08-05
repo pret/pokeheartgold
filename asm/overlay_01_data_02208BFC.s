@@ -14,8 +14,8 @@
 
 	.rodata
 
-	.public ov01_02208BFC
-ov01_02208BFC: ; 0x02208BFC
+	.public defaultFieldEffectRenderers
+defaultFieldEffectRenderers: ; 0x02208BFC
 	.word 0x14
 	.word 0x13
 	.word 0x11

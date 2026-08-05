@@ -54,9 +54,9 @@
 .public sub_0205F524
 .public MapObject_GetFieldSystem
 .public sub_0205F5E8
-.public sub_0205F610
+.public MapObjectManager_NotEndMovement
 .public MapObject_CheckSingleMovement
-.public MapObject_SetFlag2
+.public MapObject_SetStartMovement
 .public MapObject_CheckVisible
 .public MapObject_CheckMovementPaused
 .public sub_0205F73C

@@ -1,4 +1,4 @@
-#include "fieldmap.h"
+#include "script_manager.h"
 #include "overlay_26.h"
 #include "save.h"
 #include "sys_flags.h"

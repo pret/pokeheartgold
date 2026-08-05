@@ -6,10 +6,10 @@
 #include "gf_gfx_loader.h"
 #include "list_menu_items.h"
 #include "pokedex_util.h"
+#include "screen_fade.h"
 #include "sound_02004A44.h"
 #include "sound_chatot.h"
 #include "unk_02005D10.h"
-#include "unk_0200FA24.h"
 #include "unk_020210A0.h"
 #include "unk_0208805C.h"
 
@@ -3385,7 +3385,7 @@ static int PokedexApp_MainSeq_92(PokedexAppData *pokedexApp) {
 }
 
 static int ov18_021EDB3C(PokedexAppData *pokedexApp, int a1) {
-    BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, HEAP_ID_POKEDEX_APP);
+    BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, RGB_BLACK, 6, 1, HEAP_ID_POKEDEX_APP);
     pokedexApp->unk_0860 = a1;
     return POKEDEXAPP_MAINSEQ_02;
 }

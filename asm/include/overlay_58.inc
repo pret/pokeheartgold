@@ -7,7 +7,7 @@
 .public OverlayManager_FreeData
 .public OverlayManager_GetArgs
 .public OverlayManager_Run
-.public sub_0200FBDC
+.public ResetVisibleHardwareWindows
 .public sub_0200FBF4
 .public Main_SetVBlankIntrCB
 .public HBlankInterruptDisable

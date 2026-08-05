@@ -19,9 +19,9 @@
 #include "msgdata.h"
 #include "party.h"
 #include "pokemon_mood.h"
+#include "screen_fade.h"
 #include "text.h"
 #include "unk_02005D10.h"
-#include "unk_0200FA24.h"
 #include "unk_0202FBCC.h"
 
 static u8 ov12_0223BFB0(u8 *buffer, u8 *index, u16 *size);
@@ -1214,7 +1214,7 @@ void ov12_0223BFFC(BattleSystem *battleSystem, u32 flag) {
     }
 
     BattleInput_PrintSystemMessage(battleSystem->battleInput, flag);
-    BeginNormalPaletteFade(3, 0, 0, RGB_BLACK, 16, 2, HEAP_ID_BATTLE);
+    BeginNormalPaletteFade(FADE_MAIN_ONLY, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, RGB_BLACK, 16, 2, HEAP_ID_BATTLE);
     Sound_Stop();
     Sound_SetMasterVolume(0);
     battleSystem->isRecordingPaused = TRUE;

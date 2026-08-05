@@ -16,9 +16,9 @@
 #include "msgdata.h"
 #include "pm_string.h"
 #include "render_window.h"
+#include "screen_fade.h"
 #include "system.h"
 #include "text.h"
-#include "unk_0200FA24.h"
 
 static const GraphicsBanks sDataReadErrorBanksConfig = {
     .bg = GX_VRAM_BG_256_AB,

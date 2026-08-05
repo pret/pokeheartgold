@@ -17,7 +17,7 @@
 .public AddTextPrinterParameterized
 .public Options_GetTextFrameDelay
 .public Options_GetFrame
-.public sub_0205B4EC
+.public FieldMessage_LoadTextPalettes
 .public sub_0205B514
 .public sub_0205B564
 .public sub_0205B5A8

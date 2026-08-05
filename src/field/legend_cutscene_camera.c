@@ -4,6 +4,7 @@
 
 #include "demo/legend.naix"
 #include "field/overlay_01_021E66E4.h"
+#include "field/map_prop_animation.h"
 #include "field/overlay_01_021FB878.h"
 #include "field/overlay_01_02204004.h"
 #include "fielddata/script/scr_seq/event_D17R0110.h"
@@ -559,10 +560,10 @@ static BOOL ov02_02251320(TaskManager *taskman) {
     case UNUSED_HO_OH_ANIM_TASK_STATE_0:
         renderObj = Field3dObjectList_GetRenderObjectByID(fieldSystem->unkC0, taskData->birdModelNum);
         for (i = 0; i < 2; ++i) {
-            ov01_021E8970(taskData->birdModelNum, i, 1, renderObj, fieldSystem->unk54);
+            ov01_021E8970(taskData->birdModelNum, i, 1, renderObj, fieldSystem->mapPropAnimationManager);
         }
         for (i = 0; i < 2; ++i) {
-            UnkStruct_ov01_021E8B04 *anim = ov01_021E8B04(taskData->birdModelNum, i, fieldSystem->unk54);
+            MapPropAnimationManager *anim = ov01_021E8B04(taskData->birdModelNum, i, fieldSystem->mapPropAnimationManager);
             ov01_021E8B84(anim, 1);
             ov01_021E8B6C(anim);
         }
@@ -570,12 +571,12 @@ static BOOL ov02_02251320(TaskManager *taskman) {
         break;
     case UNUSED_HO_OH_ANIM_TASK_STATE_1:
         renderObj = Field3dObjectList_GetRenderObjectByID(fieldSystem->unkC0, taskData->birdModelNum);
-        if (ov01_021E8B90(ov01_021E8B04(taskData->birdModelNum, 0, fieldSystem->unk54))) {
+        if (ov01_021E8B90(ov01_021E8B04(taskData->birdModelNum, 0, fieldSystem->mapPropAnimationManager))) {
             for (i = 0; i < 2; ++i) {
-                ov01_021E8A8C(fieldSystem->unk54, renderObj, taskData->birdModelNum, i);
+                ov01_021E8A8C(fieldSystem->mapPropAnimationManager, renderObj, taskData->birdModelNum, i);
             }
             for (i = 0; i < 2; ++i) {
-                ov01_021E8970(taskData->birdModelNum, i + 2, 1, renderObj, fieldSystem->unk54);
+                ov01_021E8970(taskData->birdModelNum, i + 2, 1, renderObj, fieldSystem->mapPropAnimationManager);
             }
             *pState = UNUSED_HO_OH_ANIM_TASK_STATE_2;
         }

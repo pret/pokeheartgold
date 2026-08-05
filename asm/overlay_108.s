@@ -490,9 +490,9 @@ _021E5C68:
 	mov r1, #0
 	bl sub_0200FBF4
 	mov r0, #0
-	bl sub_0200FBDC
+	bl ResetVisibleHardwareWindows
 	mov r0, #1
-	bl sub_0200FBDC
+	bl ResetVisibleHardwareWindows
 	bl sub_020210BC
 	mov r0, #4
 	bl sub_02021148

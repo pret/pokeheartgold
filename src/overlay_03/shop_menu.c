@@ -1,8 +1,9 @@
 #include "global.h"
 
 #include "data/resdat.naix"
+#include "field/fieldmap.h"
 #include "field/field_sprite_manager.h"
-#include "field/overlay_01_021E8744.h"
+#include "field/map_prop_animation.h"
 #include "field/overlay_01_02204004.h"
 #include "msgdata/msg.naix"
 
@@ -15,13 +16,13 @@
 #include "overlay_03.h"
 #include "render_window.h"
 #include "scrcmd.h"
+#include "screen_fade.h"
 #include "sprite_transfer.h"
 #include "sys_flags.h"
 #include "sys_vars.h"
 #include "task.h"
 #include "text.h"
 #include "unk_02005D10.h"
-#include "unk_0200FA24.h"
 #include "unk_02058034.h"
 #include "unk_02091054.h"
 #include "unk_02092B04.h"
@@ -59,7 +60,7 @@ static void ov03_02258560(MartData *data, BOOL arg1);
 static void ov03_022586BC(MartData *data, int flag);
 static u8 ov03_022586CC(MartData *data, u8 arg1, u8 arg2);
 static u8 ov03_022586E0(MartData *data);
-static void ov03_0225874C(FieldSystem *fieldSystem_unused, MartData *data);
+static void Mart_FadeOut(FieldSystem *fieldSystem_unused, MartData *data);
 static void ov03_02258764(TaskManager *taskManager);
 static u8 ov03_022587D4(FieldSystem *fieldSystem_unused, MartData *data_unused);
 static void MartData_RestoreBgPriorities(MartData *data);
@@ -156,7 +157,7 @@ static void ov03_02256BA8(FieldSystem *fieldSystem, u8 index) {
     if (renderObject == NULL) {
         GF_AssertFail();
     } else {
-        ov01_021E8970(modelID, sub_020669B4(Save_VarsFlags_Get(fieldSystem->saveData), index), 1, renderObject, fieldSystem->unk54);
+        ov01_021E8970(modelID, sub_020669B4(Save_VarsFlags_Get(fieldSystem->saveData), index), 1, renderObject, fieldSystem->mapPropAnimationManager); 
     }
 }
 
@@ -381,7 +382,7 @@ BOOL Task_Mart(TaskManager *taskManager) {
         data->state = ov03_022586E0(data);
         break;
     case TASK_MART_22:
-        ov03_0225874C(fieldSystem, data); // Always sets state to 23.
+        Mart_FadeOut(fieldSystem, data); // Always sets state to 23.
         break;
     case TASK_MART_23:
         ov03_02258764(taskManager);
@@ -1497,8 +1498,8 @@ static u8 ov03_022586E0(MartData *data) {
     return TASK_MART_21;
 }
 
-static void ov03_0225874C(FieldSystem *fieldSystem_unused, MartData *data) {
-    ov01_021E636C(0);
+static void Mart_FadeOut(FieldSystem *fieldSystem_unused, MartData *data) {
+    FieldMap_FadeScreen(FADE_TYPE_BRIGHTNESS_OUT);
     data->state = TASK_MART_23;
 }
 

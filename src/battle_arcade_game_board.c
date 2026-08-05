@@ -20,6 +20,7 @@
 #include "poke_overlay.h"
 #include "pokemon.h"
 #include "pokemon_icon_idx.h"
+#include "screen_fade.h"
 #include "sprite_transfer.h"
 #include "system.h"
 #include "touchscreen.h"
@@ -27,7 +28,6 @@
 #include "unk_02009D48.h"
 #include "unk_0200A090.h"
 #include "unk_0200B150.h"
-#include "unk_0200FA24.h"
 #include "unk_02030A98.h"
 #include "unk_02035900.h"
 #include "unk_020379A0.h"
@@ -285,7 +285,7 @@ static BOOL BattleArcadeGameBoard_Init(GAME_BOARD_WORK *work) {
                 work->substate++;
             }
         } else {
-            BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 3, HEAP_ID_GAME_BOARD);
+            BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_IN, FADE_TYPE_BRIGHTNESS_IN, RGB_BLACK, 6, 3, HEAP_ID_GAME_BOARD);
             work->substate++;
         }
         break;
@@ -293,7 +293,7 @@ static BOOL BattleArcadeGameBoard_Init(GAME_BOARD_WORK *work) {
         if (BattleArcade_MultiplayerCheck(work->type) == TRUE) {
             if (work->unkF >= 2) {
                 work->unkF = 0;
-                BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 3, HEAP_ID_GAME_BOARD);
+                BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_IN, FADE_TYPE_BRIGHTNESS_IN, RGB_BLACK, 6, 3, HEAP_ID_GAME_BOARD);
                 work->substate++;
             }
         } else {
@@ -476,7 +476,7 @@ static BOOL BattleArcadeGameBoard_EndMulti(GAME_BOARD_WORK *work) {
 static BOOL BattleArcadeGameBoard_End(GAME_BOARD_WORK *work) {
     switch (work->substate) {
     case 0:
-        BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, HEAP_ID_GAME_BOARD);
+        BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, RGB_BLACK, 6, 1, HEAP_ID_GAME_BOARD);
         work->substate++;
         break;
     case 1:

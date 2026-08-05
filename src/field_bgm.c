@@ -210,10 +210,10 @@ void FieldBGM_TryFadeIn(FieldSystem *fieldSystem, u32 mapId) {
     }
 }
 
-void FieldBGM_PlayForMapHeader(FieldSystem *fieldSystem, u32 mapID, u32 a2) {
+void FieldBGM_PlayForMapHeader(FieldSystem *fieldSystem, u32 mapID, BOOL a2) {
     u16 seqNo;
 
-    if (GF_SND_BGM_DisableCheck() == 1) {
+    if (GF_SND_BGM_DisableCheck() == TRUE) {
         return;
     }
 
@@ -225,9 +225,9 @@ void FieldBGM_PlayForMapHeader(FieldSystem *fieldSystem, u32 mapID, u32 a2) {
 
     sub_02005CF4(TRUE);
 
-    fieldSystem->unkC4 = -3;
+    fieldSystem->environmentSoundState = ENVIRONMENT_SOUND_NONE_UNK3;
 
-    if (a2 == 1) {
+    if (a2 == TRUE) {
         sub_02055198(fieldSystem, seqNo);
     } else {
         sub_02055198(NULL, seqNo);
@@ -250,7 +250,7 @@ BOOL FieldBGM_PlayEffectiveForMapHeader(FieldSystem *fieldSystem, u32 mapId) {
 BOOL sub_02055198(FieldSystem *fieldSystem, u16 seqNo) {
     BOOL res = sub_02004EB4(seqNo);
     if (res == TRUE && fieldSystem != NULL) {
-        ov01_021E7F00(fieldSystem, FALSE);
+        FieldSystem_ProcessSoundplate(fieldSystem, FALSE);
     }
     return res;
 }

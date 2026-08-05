@@ -6,7 +6,7 @@
 
 #include "assert.h"
 #include "encounter.h"
-#include "fieldmap.h"
+#include "script_manager.h"
 #include "filesystem.h"
 #include "follow_mon.h"
 #include "heap.h"

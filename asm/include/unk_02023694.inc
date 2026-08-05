@@ -10,9 +10,9 @@
 .public sub_020206E0
 .public sub_02020738
 .public sub_02020764
-.public sub_02023738
-.public sub_02023778
-.public sub_020237B0
+.public BillboardLists_Create
+.public BillboardLists_Delete
+.public BillboardLists_Draw
 .public sub_020237EC
 .public sub_02023874
 .public sub_020238F8
