@@ -72,10 +72,10 @@ BOOL ScrCmd_720(ScriptContext *ctx) {
     SAFARIZONE_OBJECT *safariObject = &areaSet->areas[areaID].objects[safariObjectID];
 
     SafariObjectConfig objectConfig;
-    GetSafariObjectConfig((void *)&objectConfig, safariObject->unk[0], (u8)PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfile(fieldSystem->saveData)));
+    GetSafariObjectConfig((void *)&objectConfig, safariObject->unk_0, (u8)PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfile(fieldSystem->saveData)));
 
-    for (int unkHeightCounter = safariObject->unk[3]; unkHeightCounter > safariObject->unk[3] - objectConfig.height; unkHeightCounter--) {
-        for (int unkWidthCounter = safariObject->unk[1]; unkWidthCounter < safariObject->unk[1] + objectConfig.width; unkWidthCounter++) {
+    for (int unkHeightCounter = safariObject->unk_3; unkHeightCounter > safariObject->unk_3 - objectConfig.height; unkHeightCounter--) {
+        for (int unkWidthCounter = safariObject->unk_1; unkWidthCounter < safariObject->unk_1 + objectConfig.width; unkWidthCounter++) {
             sp8[unkWidthCounter + unkHeightCounter * 32] = sp4[unkWidthCounter + unkHeightCounter * 32];
         }
     }
@@ -89,10 +89,10 @@ BOOL ScrCmd_720(ScriptContext *ctx) {
             s16 localX = (s16)(((position.x >> 12) + 0xF8) / 16);
             s16 localZ = (s16)(((position.z >> 12) + 0xF8) / 16);
 
-            if (localX >= safariObject->unk[1]
-                && localZ <= safariObject->unk[3]
-                && localX < safariObject->unk[1] + objectConfig.width
-                && localZ > safariObject->unk[3] - objectConfig.height) {
+            if (localX >= safariObject->unk_1
+                && localZ <= safariObject->unk_3
+                && localX < safariObject->unk_1 + objectConfig.width
+                && localZ > safariObject->unk_3 - objectConfig.height) {
                 ov01_021F3B2C(sp18, 1);
                 break;
             }

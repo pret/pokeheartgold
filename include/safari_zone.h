@@ -8,7 +8,10 @@
 #include "save.h"
 
 typedef struct SAFARIZONE_OBJECT {
-    u8 unk[4];
+    u8 unk_0;
+    u8 unk_1;
+    u8 unk_2;
+    u8 unk_3;
 } SAFARIZONE_OBJECT;
 
 typedef struct SAFARIZONE_AREA {
