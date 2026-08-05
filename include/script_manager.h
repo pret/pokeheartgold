@@ -1,5 +1,5 @@
-#ifndef POKEHEARTGOLD_FIELDMAP_H
-#define POKEHEARTGOLD_FIELDMAP_H
+#ifndef POKEHEARTGOLD_SCRIPT_MANAGER_H
+#define POKEHEARTGOLD_SCRIPT_MANAGER_H
 
 #include "script.h"
 #include "trainer_data.h"
@@ -59,4 +59,4 @@ u16 GetMapLoadScriptId(u8 *header, u8 type);
 u16 GetMapSceneScriptId(FieldSystem *fieldSystem, u8 *header, u8 type);
 void *FieldSysGetAttrAddr(FieldSystem *fieldSystem, enum ScriptEnvField field);
 
-#endif
+#endif // POKEHEARTGOLD_SCRIPT_MANAGER_H

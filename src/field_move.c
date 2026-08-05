@@ -2,6 +2,7 @@
 
 #include "constants/badge.h"
 #include "constants/maps.h"
+#include "constants/field/map_load.h"
 #include "constants/sprites.h"
 #include "constants/std_script.h"
 #include "constants/weather.h"
@@ -182,7 +183,7 @@ static void FieldMove_DeleteUseEnvironment(FieldUseMoveEnvironment *environment)
 }
 
 static u32 FieldMove_CheckCut(const FieldMoveCheckData *checkData) {
-    if (checkData->fieldSystem->unk70 == 2 || checkData->fieldSystem->unk70 == 3) {
+    if (checkData->fieldSystem->mapLoadType == MAP_LOAD_TYPE_UNION || checkData->fieldSystem->mapLoadType == MAP_LOAD_TYPE_COLOSSEUM) {
         return FIELD_MOVE_RESPONSE_NOT_HERE;
     }
     if (!PlayerProfile_TestBadgeFlag(Save_PlayerData_GetProfile(checkData->fieldSystem->saveData), BADGE_HIVE)) {
@@ -214,7 +215,7 @@ static BOOL Task_UseCutInField(TaskManager *taskManager) {
 }
 
 static u32 FieldMove_CheckFly(const FieldMoveCheckData *checkData) {
-    if (checkData->fieldSystem->unk70 == 2 || checkData->fieldSystem->unk70 == 3) {
+    if (checkData->fieldSystem->mapLoadType == MAP_LOAD_TYPE_UNION || checkData->fieldSystem->mapLoadType == MAP_LOAD_TYPE_COLOSSEUM) {
         return FIELD_MOVE_RESPONSE_NOT_HERE;
     }
     if (!PlayerProfile_TestBadgeFlag(Save_PlayerData_GetProfile(checkData->fieldSystem->saveData), BADGE_STORM)) {
@@ -247,7 +248,7 @@ static void FieldMove_UseFly(FieldMoveUseData *useData, const FieldMoveCheckData
 }
 
 static u32 FieldMove_CheckSurf(const FieldMoveCheckData *checkData) {
-    if (checkData->fieldSystem->unk70 == 2 || checkData->fieldSystem->unk70 == 3) {
+    if (checkData->fieldSystem->mapLoadType == MAP_LOAD_TYPE_UNION || checkData->fieldSystem->mapLoadType == MAP_LOAD_TYPE_COLOSSEUM) {
         return FIELD_MOVE_RESPONSE_NOT_HERE;
     }
     if (!PlayerProfile_TestBadgeFlag(Save_PlayerData_GetProfile(checkData->fieldSystem->saveData), BADGE_FOG)) {
@@ -288,7 +289,7 @@ static BOOL Task_UseSurfInField(TaskManager *taskManager) {
 }
 
 static u32 FieldMove_CheckStrength(const FieldMoveCheckData *checkData) {
-    if (checkData->fieldSystem->unk70 == 2 || checkData->fieldSystem->unk70 == 3) {
+    if (checkData->fieldSystem->mapLoadType == MAP_LOAD_TYPE_UNION || checkData->fieldSystem->mapLoadType == MAP_LOAD_TYPE_COLOSSEUM) {
         return FIELD_MOVE_RESPONSE_NOT_HERE;
     }
     if (!PlayerProfile_TestBadgeFlag(Save_PlayerData_GetProfile(checkData->fieldSystem->saveData), BADGE_PLAIN)) {
@@ -323,7 +324,7 @@ static BOOL Task_UseStrengthInField(TaskManager *taskManager) {
 }
 
 static u32 FieldMove_CheckRockSmash(const FieldMoveCheckData *checkData) {
-    if (checkData->fieldSystem->unk70 == 2 || checkData->fieldSystem->unk70 == 3) {
+    if (checkData->fieldSystem->mapLoadType == MAP_LOAD_TYPE_UNION || checkData->fieldSystem->mapLoadType == MAP_LOAD_TYPE_COLOSSEUM) {
         return FIELD_MOVE_RESPONSE_NOT_HERE;
     }
     if (!PlayerProfile_TestBadgeFlag(Save_PlayerData_GetProfile(checkData->fieldSystem->saveData), BADGE_ZEPHYR)) {
@@ -355,7 +356,7 @@ static BOOL Task_UseRockSmashInField(TaskManager *taskManager) {
 }
 
 static u32 FieldMove_CheckWaterfall(const FieldMoveCheckData *checkData) {
-    if (checkData->fieldSystem->unk70 == 2 || checkData->fieldSystem->unk70 == 3) {
+    if (checkData->fieldSystem->mapLoadType == MAP_LOAD_TYPE_UNION || checkData->fieldSystem->mapLoadType == MAP_LOAD_TYPE_COLOSSEUM) {
         return FIELD_MOVE_RESPONSE_NOT_HERE;
     }
     if (PlayerAvatar_GetState(checkData->fieldSystem->playerAvatar) != PLAYER_STATE_SURFING) {
@@ -390,7 +391,7 @@ static BOOL Task_UseWaterfallInField(TaskManager *taskManager) {
 }
 
 static u32 FieldMove_CheckRockClimb(const FieldMoveCheckData *checkData) {
-    if (checkData->fieldSystem->unk70 == 2 || checkData->fieldSystem->unk70 == 3) {
+    if (checkData->fieldSystem->mapLoadType == MAP_LOAD_TYPE_UNION || checkData->fieldSystem->mapLoadType == MAP_LOAD_TYPE_COLOSSEUM) {
         return FIELD_MOVE_RESPONSE_NOT_HERE;
     }
     if (!PlayerProfile_TestBadgeFlag(Save_PlayerData_GetProfile(checkData->fieldSystem->saveData), BADGE_EARTH)) {
@@ -428,7 +429,7 @@ static BOOL Task_UseRockClimbInField(TaskManager *taskManager) {
 }
 
 static u32 FieldMove_CheckFlash(const FieldMoveCheckData *checkData) {
-    if (checkData->fieldSystem->unk70 == 2 || checkData->fieldSystem->unk70 == 3) {
+    if (checkData->fieldSystem->mapLoadType == MAP_LOAD_TYPE_UNION || checkData->fieldSystem->mapLoadType == MAP_LOAD_TYPE_COLOSSEUM) {
         return FIELD_MOVE_RESPONSE_NOT_HERE;
     }
     if (CheckUseFlashInAlphChamber(checkData->fieldSystem)) {
@@ -464,7 +465,7 @@ static BOOL Task_UseFlashInField(TaskManager *taskManager) {
 }
 
 static u32 FieldMove_CheckTeleport(const FieldMoveCheckData *checkData) {
-    if (checkData->fieldSystem->unk70 == 2 || checkData->fieldSystem->unk70 == 3) {
+    if (checkData->fieldSystem->mapLoadType == MAP_LOAD_TYPE_UNION || checkData->fieldSystem->mapLoadType == MAP_LOAD_TYPE_COLOSSEUM) {
         return FIELD_MOVE_RESPONSE_NOT_HERE;
     }
     if (!MapHeader_IsTeleportAllowed(checkData->mapId)) {
@@ -507,7 +508,7 @@ static BOOL Task_UseTeleportInField(TaskManager *taskManager) {
 }
 
 static u32 FieldMove_CheckDig(const FieldMoveCheckData *checkData) {
-    if (checkData->fieldSystem->unk70 == 2 || checkData->fieldSystem->unk70 == 3) {
+    if (checkData->fieldSystem->mapLoadType == MAP_LOAD_TYPE_UNION || checkData->fieldSystem->mapLoadType == MAP_LOAD_TYPE_COLOSSEUM) {
         return FIELD_MOVE_RESPONSE_NOT_HERE;
     }
     if (MapHeader_IsCave(checkData->mapId) != TRUE || MapHeader_IsEscapeRopeAllowed(checkData->mapId) != TRUE) {
@@ -547,7 +548,7 @@ static BOOL Task_UseDigInField(TaskManager *taskManager) {
 }
 
 static u32 FieldMove_CheckSweetScent(const FieldMoveCheckData *checkData) {
-    if (checkData->fieldSystem->unk70 == 2 || checkData->fieldSystem->unk70 == 3) {
+    if (checkData->fieldSystem->mapLoadType == MAP_LOAD_TYPE_UNION || checkData->fieldSystem->mapLoadType == MAP_LOAD_TYPE_COLOSSEUM) {
         return FIELD_MOVE_RESPONSE_NOT_HERE;
     }
     if (FieldMove_CheckPalPark(checkData) == TRUE) {
@@ -571,7 +572,7 @@ static void FieldMove_UseSweetScent(FieldMoveUseData *useData, const FieldMoveCh
 }
 
 static u32 FieldMove_CheckChatter(const FieldMoveCheckData *checkData) {
-    if (checkData->fieldSystem->unk70 == 2 || checkData->fieldSystem->unk70 == 3) {
+    if (checkData->fieldSystem->mapLoadType == MAP_LOAD_TYPE_UNION || checkData->fieldSystem->mapLoadType == MAP_LOAD_TYPE_COLOSSEUM) {
         return FIELD_MOVE_RESPONSE_NOT_HERE;
     }
 
@@ -598,7 +599,7 @@ static BOOL Task_UseChatterInField(TaskManager *taskManager) {
 }
 
 static u32 FieldMove_CheckWhirlpool(const FieldMoveCheckData *checkData) {
-    if (checkData->fieldSystem->unk70 == 2 || checkData->fieldSystem->unk70 == 3) {
+    if (checkData->fieldSystem->mapLoadType == MAP_LOAD_TYPE_UNION || checkData->fieldSystem->mapLoadType == MAP_LOAD_TYPE_COLOSSEUM) {
         return FIELD_MOVE_RESPONSE_NOT_HERE;
     }
     if (PlayerAvatar_GetState(checkData->fieldSystem->playerAvatar) != PLAYER_STATE_SURFING) {
@@ -633,7 +634,7 @@ static BOOL Task_UseWhirlpoolInField(TaskManager *taskManager) {
 }
 
 static u32 FieldMove_CheckHeadbutt(const FieldMoveCheckData *checkData) {
-    if (checkData->fieldSystem->unk70 == 2 || checkData->fieldSystem->unk70 == 3) {
+    if (checkData->fieldSystem->mapLoadType == MAP_LOAD_TYPE_UNION || checkData->fieldSystem->mapLoadType == MAP_LOAD_TYPE_COLOSSEUM) {
         return FIELD_MOVE_RESPONSE_NOT_HERE;
     }
     if (FieldMove_CheckFlag(checkData, FIELD_MOVE_CHECK_HEADBUTT)) {

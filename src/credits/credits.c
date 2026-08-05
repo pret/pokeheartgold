@@ -11,6 +11,7 @@
 #include "obj_char_transfer.h"
 #include "obj_pltt_transfer.h"
 #include "overlay_manager.h"
+#include "screen_fade.h"
 #include "sound.h"
 #include "sound_02004A44.h"
 #include "sprite.h"
@@ -21,7 +22,6 @@
 #include "unk_02009D48.h"
 #include "unk_0200A090.h"
 #include "unk_0200B150.h"
-#include "unk_0200FA24.h"
 
 #ifdef HEARTGOLD
 #define GAME_TITLE_MSG_NO 0
@@ -261,7 +261,7 @@ BOOL Credits_Init(OverlayManager *man, int *state) {
         break;
     case 2:
         work = OverlayManager_GetData(man);
-        BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 30, 1, HEAP_ID_CREDITS);
+        BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_IN, FADE_TYPE_BRIGHTNESS_IN, RGB_BLACK, 30, 1, HEAP_ID_CREDITS);
         return TRUE;
     }
     return FALSE;
@@ -317,7 +317,7 @@ BOOL Credits_Main(OverlayManager *man, int *state) {
         // No skipping on first playthrough
         if (work->args->gameCleared && ((gSystem.newKeys & PAD_BUTTON_START) || gSystem.touchNew != 0)) {
             work->skipCredits = TRUE;
-            BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 30, 1, HEAP_ID_CREDITS);
+            BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, RGB_BLACK, 30, 1, HEAP_ID_CREDITS);
             GF_SndStartFadeOutBGM(0, 26);
             *state += 1;
             break;
@@ -330,7 +330,7 @@ BOOL Credits_Main(OverlayManager *man, int *state) {
         if (work->timer < CREDITS_FRAMES) {
             break;
         }
-        BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 30, 1, HEAP_ID_CREDITS);
+        BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, RGB_BLACK, 30, 1, HEAP_ID_CREDITS);
         *state += 1;
         break;
     case CREDITS_STATE_MAIN_FADE_OUT:
@@ -351,7 +351,7 @@ BOOL Credits_Main(OverlayManager *man, int *state) {
             GfGfx_SwapDisplay();
 
             // Start fading into the "The End" screen
-            BeginNormalPaletteFade(3, 1, 1, RGB_BLACK, 1, 1, HEAP_ID_CREDITS);
+            BeginNormalPaletteFade(FADE_MAIN_ONLY, FADE_TYPE_BRIGHTNESS_IN, FADE_TYPE_BRIGHTNESS_IN, RGB_BLACK, 1, 1, HEAP_ID_CREDITS);
             *state += 1;
         }
         break;
@@ -363,7 +363,7 @@ BOOL Credits_Main(OverlayManager *man, int *state) {
         break;
     case CREDITS_STATE_THE_END:
         if ((gSystem.newKeys & (PAD_BUTTON_START | PAD_BUTTON_A)) || gSystem.touchNew != 0) {
-            BeginNormalPaletteFade(3, 0, 0, RGB_BLACK, 60, 1, HEAP_ID_CREDITS);
+            BeginNormalPaletteFade(FADE_MAIN_ONLY, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, RGB_BLACK, 60, 1, HEAP_ID_CREDITS);
             *state = CREDITS_STATE_THE_END_FADE_OUT;
             break;
         }
@@ -374,7 +374,7 @@ BOOL Credits_Main(OverlayManager *man, int *state) {
         break;
     case CREDITS_STATE_THE_END_MUSIC_BOX:
         if ((gSystem.newKeys & (PAD_BUTTON_START | PAD_BUTTON_A)) || gSystem.touchNew != 0) {
-            BeginNormalPaletteFade(3, 0, 0, RGB_BLACK, 60, 1, HEAP_ID_CREDITS);
+            BeginNormalPaletteFade(FADE_MAIN_ONLY, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, RGB_BLACK, 60, 1, HEAP_ID_CREDITS);
             *state += 1;
         }
         break;

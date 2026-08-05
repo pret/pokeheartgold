@@ -229,7 +229,7 @@ _03DB:
 	TouchscreenMenuShow
 	StopBGM 0
 	ResetBGM
-	ScrCmd_726
+	ProcessSoundplate
 	ReleaseAll
 	End
 

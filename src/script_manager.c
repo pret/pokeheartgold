@@ -7,7 +7,7 @@
 #include "msgdata/msg.naix"
 
 #include "field_system.h"
-#include "fieldmap.h"
+#include "script_manager.h"
 #include "map_events.h"
 #include "map_header.h"
 #include "map_object.h"
@@ -511,7 +511,7 @@ BOOL GetHiddenItemParams(ScriptEnvironment *env, u16 script) {
 
 HiddenItemResponse *AllocAndFetchNearbyHiddenItems(FieldSystem *fieldSystem, enum HeapID heapID) {
     HiddenItemResponse *ret;
-    const BG_EVENT *bgEvents;
+    const BgEvent *bgEvents;
     int i;
     int num_bgs;
     int j;

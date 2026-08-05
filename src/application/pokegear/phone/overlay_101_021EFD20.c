@@ -3,8 +3,8 @@
 #include "msgdata/msg/msg_0271.h"
 
 #include "render_text.h"
+#include "screen_fade.h"
 #include "unk_02005D10.h"
-#include "unk_0200FA24.h"
 
 const TouchscreenHitbox ov101_021F8400 = {
     .rect = { 0x88, 0xb8, 0x08, 0xf8 }
@@ -115,7 +115,7 @@ int PokegearPhone_HandleMoveContactsInput(PokegearPhoneAppData *phoneApp) {
 BOOL ov101_021EFF14(PokegearPhoneAppData *phoneApp) {
     switch (phoneApp->subsubtaskState) {
     case 0:
-        BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 1, phoneApp->heapID);
+        BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_IN, FADE_TYPE_BRIGHTNESS_IN, RGB_BLACK, 6, 1, phoneApp->heapID);
         if (phoneApp->isIncomingCall) {
             PaletteData_BlendPalette(phoneApp->pokegear->plttData, PLTTBUF_MAIN_BG, 0xB0, 0x30, 0, RGB_BLACK);
             PaletteData_BlendPalette(phoneApp->pokegear->plttData, PLTTBUF_MAIN_OBJ, 0x40, 0xC0, 0, RGB_BLACK);

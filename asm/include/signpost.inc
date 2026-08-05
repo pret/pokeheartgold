@@ -9,12 +9,12 @@
 .public RemoveWindow
 .public sub_0205B63C
 .public sub_0205B6A0
-.public ov01_021F3D38
-.public ov01_021F3D50
+.public Signpost_Init
+.public Signpost_Free
 .public ov01_021F3D68
 .public ov01_021F3D70
 .public ov01_021F3D80
 .public ov01_021F3D84
 .public ov01_021F3D88
-.public ov01_021F3D98
+.public Signpost_DoCurrentCommand
 .public ov01_021F3DFC

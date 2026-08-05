@@ -280,7 +280,7 @@ _021F4894:
 	add r1, #0xbc
 	ldr r1, [r1]
 	mov r0, #4
-	bl ov01_021F3638
+	bl MapPropManager_New
 	add r1, r5, r4
 	add r1, #0x90
 	ldr r2, [r1]
@@ -383,7 +383,7 @@ _021F4982:
 	add r1, #0xbc
 	ldr r1, [r1]
 	mov r0, #4
-	bl ov01_021F3638
+	bl MapPropManager_New
 	add r1, r5, r4
 	add r1, #0x90
 	ldr r2, [r1]
@@ -677,7 +677,7 @@ ov01_021F4BE8: ; 0x021F4BE8
 	str r0, [r4, #0x10]
 	add r0, r3, #0
 	add r7, r2, #0
-	bl ov01_021FB9CC
+	bl AreaDataManager_GetMapTexture
 	ldr r1, _021F4C64 ; =0x00000854
 	mov r3, #1
 	add r2, r5, r1
@@ -739,7 +739,7 @@ ov01_021F4C6C: ; 0x021F4C6C
 	add r0, r3, #0
 	add r4, r1, #0
 	add r6, r2, #0
-	bl ov01_021FB9CC
+	bl AreaDataManager_GetMapTexture
 	mov r2, #1
 	str r0, [sp]
 	lsl r2, r2, #8
@@ -1307,8 +1307,8 @@ _021F50B6:
 	pop {r4, r5, r6, r7, pc}
 	thumb_func_end ov01_021F5038
 
-	thumb_func_start ov01_021F50F0
-ov01_021F50F0: ; 0x021F50F0
+	thumb_func_start MapLoadManager_Tick
+MapLoadManager_Tick: ; 0x021F50F0
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x14
 	add r5, r0, #0
@@ -1803,7 +1803,7 @@ _021F54A4:
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
 _021F54A8: .word 0x00000864
-	thumb_func_end ov01_021F50F0
+	thumb_func_end MapLoadManager_Tick
 
 	thumb_func_start ov01_021F54AC
 ov01_021F54AC: ; 0x021F54AC
@@ -2420,8 +2420,8 @@ _021F5952:
 	.balign 4, 0
 	thumb_func_end ov01_021F562C
 
-	thumb_func_start ov01_021F595C
-ov01_021F595C: ; 0x021F595C
+	thumb_func_start MapLoadManager_RenderLoadedMap
+MapLoadManager_RenderLoadedMap: ; 0x021F595C
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x44
 	add r5, r1, #0
@@ -2501,7 +2501,7 @@ _021F59F4: .word 0x00000864
 _021F59F8: .word ov01_02206BD8
 _021F59FC: .word ov01_02206BE4
 _021F5A00: .word 0x00000868
-	thumb_func_end ov01_021F595C
+	thumb_func_end MapLoadManager_RenderLoadedMap
 
 	thumb_func_start ov01_021F5A04
 ov01_021F5A04: ; 0x021F5A04
@@ -3368,8 +3368,8 @@ _021F601A:
 	.balign 4, 0
 	thumb_func_end ov01_021F5FB8
 
-	thumb_func_start ov01_021F6020
-ov01_021F6020: ; 0x021F6020
+	thumb_func_start MapLoadManager_New
+MapLoadManager_New: ; 0x021F6020
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r7, r1, #0
@@ -3487,10 +3487,10 @@ _021F6078:
 _021F610C: .word ov01_02206BC0
 _021F6110: .word ov01_02206BD0
 _021F6114: .word ov01_02206BC8
-	thumb_func_end ov01_021F6020
+	thumb_func_end MapLoadManager_New
 
-	thumb_func_start ov01_021F6118
-ov01_021F6118: ; 0x021F6118
+	thumb_func_start MapLoadManager_InitialLoad
+MapLoadManager_InitialLoad: ; 0x021F6118
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r6, r5, #0
@@ -3508,7 +3508,7 @@ ov01_021F6118: ; 0x021F6118
 	add r2, r5, #0
 	bl ov01_021F5F64
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ov01_021F6118
+	thumb_func_end MapLoadManager_InitialLoad
 
 	thumb_func_start ov01_021F613C
 ov01_021F613C: ; 0x021F613C
@@ -3564,8 +3564,8 @@ _021F61A4:
 	.balign 4, 0
 	thumb_func_end ov01_021F613C
 
-	thumb_func_start ov01_021F61A8
-ov01_021F61A8: ; 0x021F61A8
+	thumb_func_start MapLoadManager_RenderLoadedMaps
+MapLoadManager_RenderLoadedMaps: ; 0x021F61A8
 	push {r3, r4, r5, r6, r7, lr}
 	mov r4, #0
 	add r5, r0, #0
@@ -3584,7 +3584,7 @@ _021F61B2:
 	add r0, r4, #0
 	add r1, r5, #0
 	add r2, r6, #0
-	bl ov01_021F595C
+	bl MapLoadManager_RenderLoadedMap
 _021F61CE:
 	add r0, r4, #1
 	lsl r0, r0, #0x18
@@ -3593,7 +3593,7 @@ _021F61CE:
 	blo _021F61B2
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ov01_021F61A8
+	thumb_func_end MapLoadManager_RenderLoadedMaps
 
 	thumb_func_start ov01_021F61DC
 ov01_021F61DC: ; 0x021F61DC
@@ -3613,8 +3613,8 @@ ov01_021F61DC: ; 0x021F61DC
 	.balign 4, 0
 	thumb_func_end ov01_021F61DC
 
-	thumb_func_start ov01_021F61F8
-ov01_021F61F8: ; 0x021F61F8
+	thumb_func_start MapLoadManager_End
+MapLoadManager_End: ; 0x021F61F8
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	bl sub_0201A430
@@ -3699,10 +3699,10 @@ _021F6272:
 _021F62A4: .word 0x00000864
 _021F62A8: .word 0x0000085C
 _021F62AC: .word 0x00000868
-	thumb_func_end ov01_021F61F8
+	thumb_func_end MapLoadManager_End
 
-	thumb_func_start ov01_021F62B0
-ov01_021F62B0: ; 0x021F62B0
+	thumb_func_start MapLoadManager_FreeNARCAndLoadedMapBuffers
+MapLoadManager_FreeNARCAndLoadedMapBuffers: ; 0x021F62B0
 	push {r4, lr}
 	add r4, r0, #0
 	mov r0, #1
@@ -3714,10 +3714,10 @@ ov01_021F62B0: ; 0x021F62B0
 	add r0, r4, #0
 	bl Heap_Free
 	pop {r4, pc}
-	thumb_func_end ov01_021F62B0
+	thumb_func_end MapLoadManager_FreeNARCAndLoadedMapBuffers
 
-	thumb_func_start ov01_021F62CC
-ov01_021F62CC: ; 0x021F62CC
+	thumb_func_start MapLoadManager_HasEnded
+MapLoadManager_HasEnded: ; 0x021F62CC
 	add r1, r0, #0
 	add r1, #0xb0
 	ldr r1, [r1]
@@ -3733,10 +3733,10 @@ _021F62E2:
 	mov r0, #0
 	bx lr
 	.balign 4, 0
-	thumb_func_end ov01_021F62CC
+	thumb_func_end MapLoadManager_HasEnded
 
-	thumb_func_start ov01_021F62E8
-ov01_021F62E8: ; 0x021F62E8
+	thumb_func_start MapLoadManager_TrackTarget
+MapLoadManager_TrackTarget: ; 0x021F62E8
 	push {r4, r5}
 	add r5, r0, #0
 	add r4, r1, #0
@@ -3751,15 +3751,15 @@ ov01_021F62E8: ; 0x021F62E8
 	str r5, [r4]
 	pop {r4, r5}
 	bx lr
-	thumb_func_end ov01_021F62E8
+	thumb_func_end MapLoadManager_TrackTarget
 
-	thumb_func_start ov01_021F6304
-ov01_021F6304: ; 0x021F6304
+	thumb_func_start MapLoadManager_ForgetTrackedTarget
+MapLoadManager_ForgetTrackedTarget: ; 0x021F6304
 	mov r1, #0
 	add r0, #0xdc
 	str r1, [r0]
 	bx lr
-	thumb_func_end ov01_021F6304
+	thumb_func_end MapLoadManager_ForgetTrackedTarget
 
 	thumb_func_start ov01_021F630C
 ov01_021F630C: ; 0x021F630C

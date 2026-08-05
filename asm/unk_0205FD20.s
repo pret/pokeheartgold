@@ -162,7 +162,7 @@ sub_0205FE24: ; 0x0205FE24
 	cmp r0, #1
 	bne _0205FE44
 	add r0, r4, #0
-	bl MapObject_SetFlag2
+	bl MapObject_SetStartMovement
 _0205FE44:
 	pop {r4, pc}
 	.balign 4, 0
@@ -865,7 +865,7 @@ sub_020603F8: ; 0x020603F8
 	add r6, r2, #0
 	add r7, r3, #0
 	bl MapObject_GetManager
-	bl sub_0205F610
+	bl MapObjectManager_NotEndMovement
 	cmp r0, #0
 	beq _02060416
 	ldrh r0, [r7]
@@ -1004,7 +1004,7 @@ sub_02060530: ; 0x02060530
 	add r4, r1, #0
 	add r6, r3, #0
 	bl MapObject_GetManager
-	bl sub_0205F610
+	bl MapObjectManager_NotEndMovement
 	cmp r0, #0
 	bne _02060546
 	b _0206064A

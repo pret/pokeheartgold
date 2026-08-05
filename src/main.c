@@ -8,12 +8,12 @@
 #include "player_data.h"
 #include "poke_overlay.h"
 #include "save_data_read_error.h"
+#include "screen_fade.h"
 #include "sound.h"
 #include "sound_02004A44.h"
 #include "sys_task.h"
 #include "system.h"
 #include "timer_3.h"
-#include "unk_0200FA24.h"
 #include "unk_02018380.h"
 #include "unk_020210A0.h"
 #include "unk_02026E30.h"
@@ -206,7 +206,7 @@ static void DoSoftReset(u32 param) {
     if (sub_02038D90()) {
         Save_Cancel(SaveData_Get());
     }
-    while (1) {
+    while (TRUE) {
         HandleDSLidAction();
         sub_02000F40(param);
     }

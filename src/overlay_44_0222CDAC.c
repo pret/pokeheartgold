@@ -20,6 +20,7 @@
 #include "render_window.h"
 #include "save_frontier.h"
 #include "save_wifi_history.h"
+#include "screen_fade.h"
 #include "sound.h"
 #include "sound_02004A44.h"
 #include "sprite_transfer.h"
@@ -30,7 +31,6 @@
 #include "unk_02005D10.h"
 #include "unk_0200A090.h"
 #include "unk_0200B150.h"
-#include "unk_0200FA24.h"
 #include "unk_02013534.h"
 #include "unk_020210A0.h"
 #include "unk_0202C034.h"
@@ -885,7 +885,7 @@ s32 ov44_0222A4B4(OverlayManager *overlayMananger, s32 *arg1) {
         GfGfx_EngineBTogglePlanes(15, 0);
         ov44_0222ADF8(data);
         ov44_0222A1FC(data);
-        BeginNormalPaletteFade(0, 1, 1, 0, 6, 1, HEAP_ID_53);
+        BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_IN, FADE_TYPE_BRIGHTNESS_IN, RGB_BLACK, 6, 1, HEAP_ID_53);
         if (sub_02039998() != 0) {
             sub_0203A880();
         } else {
@@ -1007,8 +1007,8 @@ void ov44_0222A7F8(UnkStruct_ov44_022319EC *arg0) {
     GF_RunVramTransferTasks();
     OamManager_ApplyAndResetBuffers();
     if (arg0->unk10BC == 1) {
-        SetMasterBrightnessNeutral(0);
-        SetMasterBrightnessNeutral(1);
+        SetMasterBrightnessNeutral(PM_LCD_TOP);
+        SetMasterBrightnessNeutral(PM_LCD_BOTTOM);
         arg0->unk10BC = 0;
     }
 }
@@ -1275,7 +1275,7 @@ s32 ov44_0222ADC4(u32 arg0) {
 }
 
 u32 ov44_0222ADD0(void) {
-    BeginNormalPaletteFade(0, 0, 0, 0, 6, 1, HEAP_ID_53);
+    BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, RGB_BLACK, 6, 1, HEAP_ID_53);
     ov44_0222E030();
     return 18;
 }
@@ -1791,8 +1791,8 @@ s32 ov44_0222BC78(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
 
     } else {
         if (ov44_02231BB0(&arg0->unk38C) == 1) {
-            sub_0200FBF4(0, 0);
-            sub_0200FBF4(1, 0);
+            sub_0200FBF4(PM_LCD_TOP, RGB_BLACK);
+            sub_0200FBF4(PM_LCD_BOTTOM, RGB_BLACK);
             ov44_02231B4C(&arg0->unk38C);
             for (s32 i = 0; i < 33; i++) {
                 arg0->unkA88[i] = 0;
@@ -2070,7 +2070,7 @@ s32 ov44_0222C35C(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
     NARC_Delete(temp_r0);
     gSystem.screensFlipped = 0;
     GfGfx_SwapDisplay();
-    BeginNormalPaletteFade(0, 1, 1, 0, 6, 1, HEAP_ID_53);
+    BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_IN, FADE_TYPE_BRIGHTNESS_IN, RGB_BLACK, 6, 1, HEAP_ID_53);
     arg0->unk348 = 19;
     sub_020398D4(0, 0);
     return arg1;
@@ -2805,7 +2805,7 @@ s32 ov44_0222D824(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
     if (sub_020392A0() != 0) {
         sub_020398D4(0, 1);
         sub_020378E4(0);
-        BeginNormalPaletteFade(0, 0, 0, 0, 6, 1, HEAP_ID_53);
+        BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, RGB_BLACK, 6, 1, HEAP_ID_53);
         arg0->unk384 = 0;
         sub_02034354(arg0->saveData, 0);
         sub_02034434();
@@ -3279,7 +3279,7 @@ s32 ov44_0222E45C(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
             ov44_0222A1B4(temp_r6);
             arg0->unk34C = ov44_02229F74(temp_r6);
             sub_020378E4(0);
-            BeginNormalPaletteFade(0, 0, 0, 0, 6, 1, HEAP_ID_53);
+            BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, RGB_BLACK, 6, 1, HEAP_ID_53);
             arg0->unk384 = 0;
             arg1 = 2;
         } else if (sub_02037880() == 1) {
@@ -3526,7 +3526,7 @@ s32 ov44_0222EA2C(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
             arg0->unk34C = 6;
         }
         ov44_0222F818(arg0, var_r1);
-        BeginNormalPaletteFade(0, 0, 0, 0, 6, 1, HEAP_ID_53);
+        BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, RGB_BLACK, 6, 1, HEAP_ID_53);
         arg1 = 2;
     }
     return arg1;
@@ -3892,7 +3892,7 @@ s32 ov44_0222F194(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
 
 s32 ov44_0222F4E0(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
     if (sub_02037D78() == 0) {
-        BeginNormalPaletteFade(0, 0, 0, 0, 6, 1, HEAP_ID_53);
+        BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, RGB_BLACK, 6, 1, HEAP_ID_53);
         arg1 = 2;
     }
     return arg1;

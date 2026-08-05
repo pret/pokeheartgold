@@ -5,8 +5,8 @@
 #include "overlay_01_021F467C.h"
 #include "overlay_01_021F944C.h"
 #include "overlay_01_022053EC.h"
+#include "screen_fade.h"
 #include "script_pokemon_util.h"
-#include "unk_0200FA24.h"
 #include "unk_02062108.h"
 #include "unk_020689C8.h"
 

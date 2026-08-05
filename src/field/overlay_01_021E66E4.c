@@ -8,9 +8,9 @@ static void Task_Field3dObject_Update(SysTask *task, void *taskdata);
 static void Task_Field3dObject_Render(SysTask *task, void *taskData);
 
 const OverlayManagerTemplate ov01_02206378 = {
-    .init = ov01_021E5924,
-    .exec = ov01_021E5BE4,
-    .exit = ov01_021E5C24,
+    .init = FieldMap_Init,
+    .exec = FieldMap_Main,
+    .exit = FieldMap_Exit,
     .ovy_id = FS_OVERLAY_ID_NONE
 };
 

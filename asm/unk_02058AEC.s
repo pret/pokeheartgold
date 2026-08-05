@@ -292,7 +292,7 @@ sub_02058D04: ; 0x02058D04
 	cmp r0, #0
 	beq _02058D1E
 	mov r0, #1
-	bl ov01_021E636C
+	bl FieldMap_FadeScreen
 	bl sub_02056E60
 	mov r0, #1
 	pop {r3, pc}
@@ -587,7 +587,7 @@ _02058F40:
 	b _02059472
 _02058F54:
 	mov r0, #0
-	bl ov01_021E636C
+	bl FieldMap_FadeScreen
 	mov r0, #0xe
 	str r0, [r4, #0x34]
 	b _02059472
@@ -1058,7 +1058,7 @@ _020592FC:
 	b _02059472
 _02059334:
 	mov r0, #0
-	bl ov01_021E636C
+	bl FieldMap_FadeScreen
 	mov r0, #0x21
 	str r0, [r4, #0x34]
 	b _02059472
@@ -2284,7 +2284,7 @@ _02059C6C:
 	add r0, #8
 	bl RemoveWindow
 	mov r0, #0
-	bl ov01_021E636C
+	bl FieldMap_FadeScreen
 	ldr r0, [r4, #0x28]
 	add r0, r0, #1
 	str r0, [r4, #0x28]
@@ -2332,7 +2332,7 @@ _02059D08:
 	cmp r0, #0
 	bne _02059D36
 	mov r0, #1
-	bl ov01_021E636C
+	bl FieldMap_FadeScreen
 	bl sub_02056E60
 	ldr r0, [r4, #0x28]
 	add r0, r0, #1

@@ -272,7 +272,7 @@ _02061420:
 	add r0, r5, #0
 	bl MapObject_ClearSingleMovement
 	add r0, r5, #0
-	bl MapObject_ClearFlag3
+	bl MapObject_ClearEndMovement
 	add r0, r5, #0
 	bl MapObject_GetFacingDirection
 	mov r1, #0

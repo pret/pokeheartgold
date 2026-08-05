@@ -578,9 +578,9 @@ ov58_02237CCC: ; 0x02237CCC
 	mov r1, #0
 	bl sub_0200FBF4
 	mov r0, #0
-	bl sub_0200FBDC
+	bl ResetVisibleHardwareWindows
 	mov r0, #1
-	bl sub_0200FBDC
+	bl ResetVisibleHardwareWindows
 	pop {r3, pc}
 	.balign 4, 0
 _02237D14: .word 0xFFFFE0FF

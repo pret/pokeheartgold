@@ -92,9 +92,9 @@
 .public ov01_021F3B3C
 .public ov01_021F3B44
 .public ov01_021F3B4C
-.public ov01_021F3C0C
-.public ov01_021F62E8
-.public ov01_021F6304
+.public MapPropManager_LoadOne
+.public MapLoadManager_TrackTarget
+.public MapLoadManager_ForgetTrackedTarget
 .public ov01_021F72DC
 .public ov01_021FA2D4
 .public ov01_021FA930

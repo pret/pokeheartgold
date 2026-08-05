@@ -30,7 +30,7 @@ ov04_02253E20: ; 0x02253E20
 	add r0, r5, #0
 	add r0, #0x9c
 	ldr r0, [r0]
-	bl ov01_021F3C0C
+	bl MapPropManager_LoadOne
 	mov r3, #3
 	mov r0, #2
 	str r3, [sp]
@@ -480,7 +480,7 @@ _022541C4:
 	add r0, #0x9c
 	ldr r0, [r0]
 	add r2, sp, #4
-	bl ov01_021F3C0C
+	bl MapPropManager_LoadOne
 	str r0, [r5, #4]
 	add r6, r6, #1
 	add r5, r5, #4
@@ -1384,7 +1384,7 @@ _022548C6:
 	mov r0, #1
 	str r0, [r4, #0x1c]
 	ldr r0, [r5, #0x2c]
-	bl ov01_021F6304
+	bl MapLoadManager_ForgetTrackedTarget
 	b _0225495E
 _0225494A:
 	cmp r0, #1
@@ -1394,7 +1394,7 @@ _0225494A:
 	ldr r0, [r5, #0x40]
 	bl PlayerAvatar_GetPositionVector
 	ldr r1, [r5, #0x2c]
-	bl ov01_021F62E8
+	bl MapLoadManager_TrackTarget
 _0225495E:
 	mov r0, #0
 	strb r0, [r4, #0x16]
@@ -1874,7 +1874,7 @@ _02254D38:
 	ldr r0, [r0]
 	add r2, sp, #8
 	mov r3, #0
-	bl ov01_021F3C0C
+	bl MapPropManager_LoadOne
 	str r0, [r4]
 	ldrb r0, [r7, r6]
 	cmp r0, #0
@@ -2251,7 +2251,7 @@ _02254FEC:
 	ldr r1, [r1]
 	add r0, #0x9c
 	ldr r0, [r0]
-	bl ov01_021F3C0C
+	bl MapPropManager_LoadOne
 	strb r0, [r6, #0xb]
 	str r7, [sp]
 	ldr r1, [sp, #8]

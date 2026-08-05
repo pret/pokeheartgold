@@ -1915,11 +1915,11 @@ static LocalMapObject *FollowMon_CreateMapObject(MapObjectManager *mapObjectMana
     return mapObject;
 }
 
-FieldSystemUnk108 *FieldSystem_UnkSub108_Alloc(enum HeapID heapID) {
-    FieldSystemUnk108 *ret;
+FieldSystemUnkSub108 *FieldSystem_UnkSub108_Alloc(enum HeapID heapID) {
+    FieldSystemUnkSub108 *ret;
 
-    ret = Heap_Alloc(heapID, sizeof(FieldSystemUnk108));
-    MI_CpuClear8(ret, sizeof(FieldSystemUnk108));
+    ret = Heap_Alloc(heapID, sizeof(FieldSystemUnkSub108));
+    MI_CpuClear8(ret, sizeof(FieldSystemUnkSub108));
     ret->species = 0;
     ret->personality = 0;
     ret->isRegistered = FALSE;
@@ -1927,7 +1927,7 @@ FieldSystemUnk108 *FieldSystem_UnkSub108_Alloc(enum HeapID heapID) {
     return ret;
 }
 
-void FieldSystem_UnkSub108_AddMonMood(FieldSystemUnk108 *unk, s8 by) {
+void FieldSystem_UnkSub108_AddMonMood(FieldSystemUnkSub108 *unk, s8 by) {
     s8 mood;
 
     if (unk->mon == NULL) {
@@ -1946,7 +1946,7 @@ void FieldSystem_UnkSub108_AddMonMood(FieldSystemUnk108 *unk, s8 by) {
     SetMonData(unk->mon, MON_DATA_MOOD, &mood);
 }
 
-void FieldSystem_UnkSub108_SetMonMood(FieldSystemUnk108 *unk, s8 mood) {
+void FieldSystem_UnkSub108_SetMonMood(FieldSystemUnkSub108 *unk, s8 mood) {
     if (unk->mon == NULL) {
         GF_ASSERT(FALSE);
         return;
@@ -1955,7 +1955,7 @@ void FieldSystem_UnkSub108_SetMonMood(FieldSystemUnk108 *unk, s8 mood) {
     SetMonData(unk->mon, MON_DATA_MOOD, &mood);
 }
 
-s8 FieldSystem_UnkSub108_GetMonMood(FieldSystemUnk108 *unk) {
+s8 FieldSystem_UnkSub108_GetMonMood(FieldSystemUnkSub108 *unk) {
     if (unk->mon == NULL) {
         GF_ASSERT(FALSE);
         return 0;
@@ -1964,7 +1964,7 @@ s8 FieldSystem_UnkSub108_GetMonMood(FieldSystemUnk108 *unk) {
     return GetMonData(unk->mon, MON_DATA_MOOD, NULL);
 }
 
-void FieldSystem_UnkSub108_Set(FieldSystemUnk108 *a0, Pokemon *mon, u16 species, u32 personality) {
+void FieldSystem_UnkSub108_Set(FieldSystemUnkSub108 *a0, Pokemon *mon, u16 species, u32 personality) {
     s8 mood;
     if (species != SPECIES_NONE && (a0->isRegistered == FALSE || a0->species != species || a0->personality != personality)) {
         a0->species = species;
@@ -1976,7 +1976,7 @@ void FieldSystem_UnkSub108_Set(FieldSystemUnk108 *a0, Pokemon *mon, u16 species,
     }
 }
 
-void FieldSystem_UnkSub108_MoveMoodTowardsNeutral(FieldSystemUnk108 *a0) {
+void FieldSystem_UnkSub108_MoveMoodTowardsNeutral(FieldSystemUnkSub108 *a0) {
     s8 mood;
     if (a0->mon == NULL) {
         GF_ASSERT(FALSE);

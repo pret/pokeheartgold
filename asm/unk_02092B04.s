@@ -88,7 +88,7 @@ sub_02092B7C: ; 0x02092B7C
 	cmp r0, #0
 	beq _02092BAE
 	mov r0, #1
-	bl ov01_021E636C
+	bl FieldMap_FadeScreen
 	ldr r1, _02092BB0 ; =Task_Mart
 	add r0, r5, #0
 	add r2, r4, #0

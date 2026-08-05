@@ -9,7 +9,7 @@
 #include "assert.h"
 #include "field_system.h"
 #include "field_warp_tasks.h"
-#include "fieldmap.h"
+#include "script_manager.h"
 #include "gf_gfx_loader.h"
 #include "gymmick.h"
 #include "heap.h"

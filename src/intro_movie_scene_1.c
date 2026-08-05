@@ -9,7 +9,7 @@
 #include "sprite_transfer.h"
 #include "system.h"
 #include "unk_0200B150.h"
-#include "unk_0200FA24.h"
+#include "screen_fade.h"
 
 enum IntroScene1State {
     INTRO_SCENE1_APPEAR_COPYRIGHT,
@@ -155,7 +155,7 @@ static BOOL IntroMovie_Scene1_Main(IntroMovieOverlayData *data, IntroMovieScene1
         break;
     case INTRO_SCENE1_DELAY90_START_FADEOUT: // Run anim 90 frames then start fade to white
         if (timer >= 90) {
-            BeginNormalPaletteFade(0, 0, 0, RGB_WHITE, 65, 1, HEAP_ID_INTRO_MOVIE);
+            BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, RGB_WHITE, 65, 1, HEAP_ID_INTRO_MOVIE);
             IntroMovie_AdvanceSceneStep(data);
         }
         break;

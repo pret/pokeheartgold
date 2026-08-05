@@ -38,8 +38,8 @@ _021F361E:
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov01_021F3610
 
-	thumb_func_start ov01_021F3638
-ov01_021F3638: ; 0x021F3638
+	thumb_func_start MapPropManager_New
+MapPropManager_New: ; 0x021F3638
 	push {r3, r4, r5, lr}
 	add r5, r1, #0
 	ldr r1, _021F365C ; =0x00000704
@@ -56,7 +56,7 @@ ov01_021F3638: ; 0x021F3638
 	pop {r3, r4, r5, pc}
 	nop
 _021F365C: .word 0x00000704
-	thumb_func_end ov01_021F3638
+	thumb_func_end MapPropManager_New
 
 	thumb_func_start ov01_021F3660
 ov01_021F3660: ; 0x021F3660
@@ -853,8 +853,8 @@ _021F3C04: .word NNS_G3dGlb + 0xBC
 _021F3C08: .word NNS_G3dGlb + 0x80
 	thumb_func_end ov01_021F3B84
 
-	thumb_func_start ov01_021F3C0C
-ov01_021F3C0C: ; 0x021F3C0C
+	thumb_func_start MapPropManager_LoadOne
+MapPropManager_LoadOne: ; 0x021F3C0C
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	ldr r4, _021F3C98 ; =ov01_02206A78
@@ -929,7 +929,7 @@ _021F3C84:
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
 _021F3C98: .word ov01_02206A78
-	thumb_func_end ov01_021F3C0C
+	thumb_func_end MapPropManager_LoadOne
 
 	thumb_func_start ov01_021F3C9C
 ov01_021F3C9C: ; 0x021F3C9C

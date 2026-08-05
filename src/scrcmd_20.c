@@ -7,7 +7,7 @@
 #include "assert.h"
 #include "bag.h"
 #include "field_system.h"
-#include "fieldmap.h"
+#include "script_manager.h"
 #include "frontier_data.h"
 #include "game_stats.h"
 #include "heap.h"

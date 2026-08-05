@@ -25,8 +25,8 @@ ov01_021FB878: ; 0x021FB878
 _021FB884: .word Heap_Realloc
 	thumb_func_end ov01_021FB878
 
-	thumb_func_start ov01_021FB888
-ov01_021FB888: ; 0x021FB888
+	thumb_func_start AreaDataManager_Alloc
+AreaDataManager_Alloc: ; 0x021FB888
 	push {r3, r4, r5, lr}
 	ldr r1, _021FB8F8 ; =0x000008C4
 	add r5, r0, #0
@@ -82,7 +82,7 @@ _021FB8EE:
 _021FB8F8: .word 0x000008C4
 _021FB8FC: .word 0x000008B8
 _021FB900: .word 0x000008B6
-	thumb_func_end ov01_021FB888
+	thumb_func_end AreaDataManager_Alloc
 
 	thumb_func_start ov01_021FB904
 ov01_021FB904: ; 0x021FB904
@@ -117,8 +117,8 @@ _021FB930:
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov01_021FB90C
 
-	thumb_func_start ov01_021FB934
-ov01_021FB934: ; 0x021FB934
+	thumb_func_start AreaDataManager_GetMapPropModelFile
+AreaDataManager_GetMapPropModelFile: ; 0x021FB934
 	push {r4, lr}
 	add r4, r0, #0
 	bne _021FB93E
@@ -127,10 +127,10 @@ _021FB93E:
 	add r0, r4, #4
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end ov01_021FB934
+	thumb_func_end AreaDataManager_GetMapPropModelFile
 
-	thumb_func_start ov01_021FB944
-ov01_021FB944: ; 0x021FB944
+	thumb_func_start AreaDataManager_Free
+AreaDataManager_Free: ; 0x021FB944
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	mov r0, #0x23
@@ -191,10 +191,10 @@ _021FB9BC: .word 0x000008AC
 _021FB9C0: .word 0x00000226
 _021FB9C4: .word 0x000008BC
 _021FB9C8: .word 0x0000089C
-	thumb_func_end ov01_021FB944
+	thumb_func_end AreaDataManager_Free
 
-	thumb_func_start ov01_021FB9CC
-ov01_021FB9CC: ; 0x021FB9CC
+	thumb_func_start AreaDataManager_GetMapTexture
+AreaDataManager_GetMapTexture: ; 0x021FB9CC
 	push {r4, lr}
 	add r4, r0, #0
 	bne _021FB9D6
@@ -205,7 +205,7 @@ _021FB9D6:
 	pop {r4, pc}
 	.balign 4, 0
 _021FB9DC: .word 0x000008A4
-	thumb_func_end ov01_021FB9CC
+	thumb_func_end AreaDataManager_GetMapTexture
 
 	thumb_func_start ov01_021FB9E0
 ov01_021FB9E0: ; 0x021FB9E0
@@ -245,8 +245,8 @@ _021FBA0C:
 _021FBA10: .word 0x000008B7
 	thumb_func_end ov01_021FBA00
 
-	thumb_func_start ov01_021FBA14
-ov01_021FBA14: ; 0x021FBA14
+	thumb_func_start AreaDataManager_GetAreaLightArchiveID
+AreaDataManager_GetAreaLightArchiveID: ; 0x021FBA14
 	ldr r1, _021FBA38 ; =0x000008B7
 	ldrb r0, [r0, r1]
 	cmp r0, #0
@@ -270,10 +270,10 @@ _021FBA32:
 	bx lr
 	nop
 _021FBA38: .word 0x000008B7
-	thumb_func_end ov01_021FBA14
+	thumb_func_end AreaDataManager_GetAreaLightArchiveID
 
-	thumb_func_start ov01_021FBA3C
-ov01_021FBA3C: ; 0x021FBA3C
+	thumb_func_start AreaDataManager_Load
+AreaDataManager_Load: ; 0x021FBA3C
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x13c
 	str r1, [sp, #0xc]
@@ -577,7 +577,7 @@ _021FBCC8: .word ov01_02208BA0
 _021FBCCC: .word ov01_02208BB0
 _021FBCD0: .word ov01_02209A88
 _021FBCD4: .word ov01_02209AB4
-	thumb_func_end ov01_021FBA3C
+	thumb_func_end AreaDataManager_Load
 
 	thumb_func_start Field3dModel_LoadFromFilesystem
 Field3dModel_LoadFromFilesystem: ; 0x021FBCD8

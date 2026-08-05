@@ -7,11 +7,12 @@
 #include "pokeathlon/pokeathlon_save.h"
 
 #include "apricorn_tree.h"
-#include "fieldmap.h"
+#include "script_manager.h"
 #include "friend_group.h"
 #include "gf_3d_render.h"
 #include "map_object.h"
 #include "overlay_01.h"
+#include "overlay_01_021F1348.h"
 #include "roamer.h"
 #include "sav_system_info.h"
 #include "save_misc_data.h"
@@ -158,13 +159,13 @@ void sub_020556B8(FieldSystem *fieldSystem) {
 }
 
 void sub_020556C8(FieldSystem *fieldSystem, UnkStruct_020556FC *unkPtrB) {
-    void *unkB = fieldSystem->unk_44;
-    unkPtrB->unk5c = Heap_Alloc(unkPtrB->heapID, ov01_021F149C(unkB, 31));
-    ov01_021F14A8(unkB, 31, unkPtrB->unk5c);
+    FieldEffectManager *fieldEffectManager = fieldSystem->fieldEffectManager;
+    unkPtrB->unk5c = Heap_Alloc(unkPtrB->heapID, ov01_021F149C(fieldEffectManager, 31));
+    ov01_021F14A8(fieldEffectManager, 31, unkPtrB->unk5c);
     GF3dRender_InitObjFromHeader(&unkPtrB->unk4, &unkPtrB->unk58, &unkPtrB->unk5c);
 }
 
-void sub_020556FC(struct UnkStruct_020556FC *unkPtr) {
+void sub_020556FC(UnkStruct_020556FC *unkPtr) {
     ov01_021F1448(unkPtr->unk5c); // function frees unk5c to heap
 }
 

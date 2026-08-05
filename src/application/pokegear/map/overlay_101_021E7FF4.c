@@ -6,9 +6,9 @@
 #include "msgdata/msg/msg_0273.h"
 
 #include "gf_gfx_loader.h"
+#include "screen_fade.h"
 #include "text.h"
 #include "unk_02005D10.h"
-#include "unk_0200FA24.h"
 #include "unk_02013534.h"
 #include "unk_0208805C.h"
 
@@ -91,7 +91,7 @@ BOOL PokegearMap_AnimateSwitchToMarkingMode(PokegearMapAppData *mapApp) {
     case 0:
         PokegearMap_SaveState(mapApp);
         PokegearMap_BeginScrollMarkingsPanelTopScreen(mapApp, 1);
-        BeginNormalPaletteFade(3, 0, 0, RGB_BLACK, 6, 1, mapApp->heapID);
+        BeginNormalPaletteFade(FADE_MAIN_ONLY, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, RGB_BLACK, 6, 1, mapApp->heapID);
         break;
     case 1:
         plttFadeFinished = IsPaletteFadeFinished();
@@ -104,7 +104,7 @@ BOOL PokegearMap_AnimateSwitchToMarkingMode(PokegearMapAppData *mapApp) {
     case 2:
         ov101_021E9264(mapApp, TRUE);
         PokegearMap_SetBgParam_MarkingsMode(mapApp);
-        BeginNormalPaletteFade(3, 1, 1, RGB_BLACK, 6, 1, mapApp->heapID);
+        BeginNormalPaletteFade(FADE_MAIN_ONLY, FADE_TYPE_BRIGHTNESS_IN, FADE_TYPE_BRIGHTNESS_IN, RGB_BLACK, 6, 1, mapApp->heapID);
         PokegearMap_BeginScrollMarkingsPanelBottomScreen(mapApp, 0);
         break;
     case 3:
@@ -138,7 +138,7 @@ BOOL PokegearMap_AnimateSwitchFromMarkingMode(PokegearMapAppData *mapApp) {
         if (!PokegearMap_RunScrollMarkingsPanelBottomScreen(mapApp, 1)) {
             return FALSE;
         }
-        BeginNormalPaletteFade(3, 0, 0, RGB_BLACK, 6, 1, mapApp->heapID);
+        BeginNormalPaletteFade(FADE_MAIN_ONLY, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, RGB_BLACK, 6, 1, mapApp->heapID);
         break;
     case 2:
         if (!IsPaletteFadeFinished()) {
@@ -151,7 +151,7 @@ BOOL PokegearMap_AnimateSwitchFromMarkingMode(PokegearMapAppData *mapApp) {
         ov101_021E9264(mapApp, FALSE);
         PokegearMap_SetBgParam_MapMode(mapApp);
         PokegearMap_BeginScrollMarkingsPanelTopScreen(mapApp, 0);
-        BeginNormalPaletteFade(3, 1, 1, RGB_BLACK, 6, 1, mapApp->heapID);
+        BeginNormalPaletteFade(FADE_MAIN_ONLY, FADE_TYPE_BRIGHTNESS_IN, FADE_TYPE_BRIGHTNESS_IN, RGB_BLACK, 6, 1, mapApp->heapID);
         break;
     case 4:
         plttFadeFinished = IsPaletteFadeFinished();

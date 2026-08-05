@@ -4,9 +4,9 @@
 .public Heap_Alloc
 .public Heap_Free
 .public GF_AssertFail
-.public ov01_021FB4C0
-.public ov01_021FB4D4
-.public ov01_021FB4F4
-.public ov01_021FB514
+.public HBlankSystem_New
+.public HBlankSystem_Delete
+.public HBlankSystem_Start
+.public HBlankSystem_Stop
 .public ov01_021FB530
 .public ov01_021FB554

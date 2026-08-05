@@ -3405,7 +3405,7 @@ ov02_02249FD4: ; 0x02249FD4
 	strh r0, [r2, #6]
 	mov r0, #0
 	mov r1, #1
-	bl sub_0205B4EC
+	bl FieldMessage_LoadTextPalettes
 	mov r0, #8
 	mov r1, #1
 	bl GfGfx_EngineATogglePlanes
@@ -3441,7 +3441,7 @@ ov02_0224A028: ; 0x0224A028
 	strh r0, [r2, #6]
 	mov r0, #0
 	mov r1, #1
-	bl sub_0205B4EC
+	bl FieldMessage_LoadTextPalettes
 	mov r0, #8
 	mov r1, #1
 	bl GfGfx_EngineATogglePlanes
@@ -7217,7 +7217,7 @@ _0224BC98:
 	mov r1, #0x6b
 	add r2, sp, #0x28
 	add r3, sp, #0x1c
-	bl ov01_021F3C0C
+	bl MapPropManager_LoadOne
 	ldrb r1, [r4, #0xd]
 	add r1, r4, r1
 	strb r0, [r1, #0x10]
@@ -9575,7 +9575,7 @@ _0224CEBA:
 	mov r1, #0x6b
 	add r2, sp, #0x24
 	add r3, sp, #0x18
-	bl ov01_021F3C0C
+	bl MapPropManager_LoadOne
 	ldrb r1, [r4, #0xd]
 	add r1, r4, r1
 	strb r0, [r1, #0x10]

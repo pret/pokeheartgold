@@ -4115,7 +4115,7 @@
 	.short \arg1
 	.endm
 
-	.macro ScrCmd_726
+	.macro ProcessSoundplate
 	.short 726
 	.endm
 
@@ -4446,13 +4446,13 @@
 	.short \arg1
 	.endm
 
-	.macro ScrCmd_CheckSafariZoneChallengeCompleted arg0, arg1
+	.macro CheckSafariZoneChallengeCompleted arg0, arg1
 	.short 791
 	.byte \arg0
 	.short \arg1
 	.endm
 
-	.macro ScrCmd_UpdateSafariZoneIGT
+	.macro UpdateSafariZoneIGT
 	.short 792
 	.endm
 
