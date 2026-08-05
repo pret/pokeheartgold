@@ -1,0 +1,52 @@
+name: calcrom
+
+description: |
+  Runs the rust reimplementation of calcrom
+
+inputs:
+  romnames:
+    description: |
+      Names of the ROMs to analyze
+  arm9subdir:
+    description: |
+      Subdirectory containing ARM9 sources
+    default: ''
+  arm7subdir:
+    description: |
+      Subdirectory containing ARM7 sources
+    default: sub
+  arm9stem:
+    description: |
+      Name of the ARM9 binary
+    default: main
+  arm7stem:
+    description: |
+      Name of the ARM7 binary
+    default: ichneumon_sub
+
+outputs:
+  calcrom_output:
+    description: |
+      Text output from the calcrom utility
+
+runs:
+  using: composite
+  steps:
+    - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      with:
+        repository: PikalaxALT/pokeheartgold-calcrom
+        ref: 8bf8bb71d448156d7e535612e4072a36f70568a2 # v0.1.0
+        path: calcrom
+    - uses: actions-rust-lang/setup-rust-toolchain@166cdcfd11aee3cb47222f9ddb555ce30ddb9659 # v1.17.0
+    - shell: /bin/bash
+      run: |
+        {
+          echo 'calcrom_output<<EOF'
+          cargo run --manifest-path calcrom/Cargo.toml --release -- \
+            -9 ${{ inputs.arm9subdir }} \
+            -7 ${{ inputs.arm7subdir }} \
+            -m ${{ inputs.arm9stem }} \
+            -s ${{ inputs.arm7stem }} \
+            ${{ inputs.romnames }}
+          echo 'EOF'
+        } | tee -a "$GITHUB_OUTPUT"
