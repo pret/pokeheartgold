@@ -4,6 +4,10 @@ description: |
   Runs the rust reimplementation of calcrom
 
 inputs:
+  repodir:
+    description: |
+      Root of the ROM source tree
+    default: "${{ github.workspace }}"
   romnames:
     description: |
       Names of the ROMs to analyze
@@ -45,6 +49,7 @@ runs:
         {
           echo 'calcrom_output<<EOF'
           cargo run --manifest-path calcrom/Cargo.toml --release -- \
+            -d "${{ inputs.repodir }}" \
             -9 "${{ inputs.arm9subdir }}" \
             -7 "${{ inputs.arm7subdir }}" \
             -m "${{ inputs.arm9stem }}" \
