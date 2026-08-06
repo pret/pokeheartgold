@@ -45,10 +45,10 @@ runs:
         {
           echo 'calcrom_output<<EOF'
           cargo run --manifest-path calcrom/Cargo.toml --release -- \
-            -9 ${{ inputs.arm9subdir }} \
-            -7 ${{ inputs.arm7subdir }} \
-            -m ${{ inputs.arm9stem }} \
-            -s ${{ inputs.arm7stem }} \
+            -9 "${{ inputs.arm9subdir }}" \
+            -7 "${{ inputs.arm7subdir }}" \
+            -m "${{ inputs.arm9stem }}" \
+            -s "${{ inputs.arm7stem }}" \
             ${{ inputs.romnames }}
           echo 'EOF'
         } | tee -a "$GITHUB_OUTPUT"
