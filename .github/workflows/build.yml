@@ -71,7 +71,7 @@ jobs:
       - name: Calcrom
         id: calcrom
         if: ${{ github.event_name == 'push' }}
-        uses: ./.github/actions/calcrom/action.yml
+        uses: ./.github/actions/calcrom/
         with:
           romnames: heartgold.us soulsilver.us
 
