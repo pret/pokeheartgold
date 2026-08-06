@@ -5,6 +5,8 @@
 
 #include "filesystem.h"
 
+#define MAP_PROP_ANIM_LIST_FILE_ARCHIVE_IDS_COUNT 4
+
 #define MAP_PROP_ANIMATION_MANAGER_MAX_ANIMATIONS               16
 #define MAP_PROP_ANIMATION_MANAGER_MAX_BICYCLE_SLOPE_ANIMATIONS 2
 
@@ -15,10 +17,19 @@ typedef struct BicycleSlopeAnimation {
     int animID;
 } BicycleSlopeAnimation; // Size: 0x10
 
+typedef struct MapPropAnimListFile {
+    u8 hasAnimations;
+    u8 flags;
+    u8 isBicycleSlope;
+    u8 filler_3;
+    u32 unk4;
+    u32 animArchiveIDs[MAP_PROP_ANIM_LIST_FILE_ARCHIVE_IDS_COUNT];
+} MapPropAnimListFile; // Size: 0x18
+
 typedef struct MapPropAnimationData { // Should we swap the names?
     MapPropAnimation *animation;
-    u32 unk4;
-    u32 unk8;
+    BOOL loaded;
+    int animArchiveID;
     u32 unkC;
 } MapPropAnimationData;
 
@@ -28,7 +39,7 @@ typedef struct MapPropAnimationManager {
     BicycleSlopeAnimation bicycleSlopeAnimations[MAP_PROP_ANIMATION_MANAGER_MAX_BICYCLE_SLOPE_ANIMATIONS];
     NARC *unk130;
     NARC *unk134;
-    void *unk138;
+    void *unk138; //unkccsub0?
 } MapPropAnimationManager; // Size: 0x13C
 
 typedef struct MapPropOneShotAnimationManager {

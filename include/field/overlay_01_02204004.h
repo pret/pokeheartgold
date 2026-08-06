@@ -10,9 +10,9 @@
 typedef struct MapPropAnimation {
     NNSG3dAnmObj *animObj;
     void *res;
-    int unk8;
-    u32 unkC;
-    u32 unk10;
+    int loopCount;
+    BOOL paused;
+    BOOL reversed;
     u32 unk14;
     int unk18;
     u32 unk1C;
@@ -94,16 +94,16 @@ void ov01_02204350(FieldSystemUnkSubC8 *unkSubC8);
 void ov01_022043D8(FieldSystemUnkSubC8 *unkSubC8);
 void ov01_02204424(FieldSystemUnkSubC8 *unkSubC8);
 void ov01_02204470(FieldSystemUnkSubCC_Sub0 *unkCC_Sub0, MapPropAnimation *animation, void *res, NNSG3dResMdl *model, NNSG3dResTex *texture);
-void ov01_022044C8(MapPropAnimation *animation, int unk8, int unkC, int unk10);
-void ov01_022044E0(MapPropAnimation *animation);
+void ov01_022044C8(MapPropAnimation *animation, int loopCount, BOOL paused, BOOL reversed);
+void MapPropAnimation_GoToFirstFrame(MapPropAnimation *animation);
 void ov01_02204500(FieldSystemUnkSubCC_Sub0 *unkCC_Sub0, MapPropAnimation *animation);
 void ov01_0220450C(UnkStruct_FieldSysC0_SubC *unkC0_SubC, MapPropAnimation *animation);
 BOOL ov01_02204518(UnkStruct_FieldSysC0_SubC *unkC0_SubC, MapPropAnimation *animation);
 u16 ov01_02204554(MapPropAnimation *animation);
-void ov01_0220455C(MapPropAnimation *animation, int unkC);
+void ov01_0220455C(MapPropAnimation *animation, BOOL paused);
 BOOL ov01_02204560(MapPropAnimation *animation);
 void ov01_02204570(MapPropAnimation *animation);
-void ov01_02204590(MapPropAnimation *animation, int unk8);
+void ov01_02204590(MapPropAnimation *animation, int loopCount);
 FieldSystemUnkSubCC *ov01_0220460C(FieldSystemUnkSubC8 *unkSubC8); // UnkCC_Init
 void ov01_02204634(FieldSystemUnkSubCC *unkCC); // UnkCC_Free
 void ov01_0220463C(FieldSystemUnkSubCC *unkCC, int fileID); // UnkCC_Load

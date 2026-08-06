@@ -38,7 +38,7 @@
 .public ov01_0220431C
 .public ov01_02204470
 .public ov01_022044C8
-.public ov01_022044E0
+.public MapPropAnimation_GoToFirstFrame
 .public ov01_02204500
 .public ov01_0220450C
 .public ov01_02204518
@@ -51,3 +51,7 @@
 .public ov01_02204834
 .public BicycleSlopeAnimation_Load
 .public ov01_021E87A8
+.public MapPropAnimation_GetAnimationObj
+.public MapPropAnimation_CheckDeferredLoadingFlag
+.public MapPropAnimation_CheckDeferredAddToRenderObjFlag
+.public MapPropAnimationManager_LoadPropAnimationForOneShot

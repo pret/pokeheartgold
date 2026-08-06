@@ -47,8 +47,8 @@ MapPropAnimationManager *MapPropAnimationManager_Init(NARC *narc, FieldSystemUnk
     MapPropAnimationManager *mapPropAnimationManager = Heap_Alloc(HEAP_ID_FIELD1, sizeof(MapPropAnimationManager));
     
     for(i = 0; i < MAP_PROP_ANIMATION_MANAGER_MAX_ANIMATIONS; i++) {
-        mapPropAnimationManager->animations[i].unk4 = 0;
-        mapPropAnimationManager->animations[i].unk8 = 0;
+        mapPropAnimationManager->animations[i].loaded = FALSE;
+        mapPropAnimationManager->animations[i].animArchiveID = 0;
         mapPropAnimationManager->animations[i].unkC = 0;
     }
     
@@ -63,4 +63,79 @@ MapPropAnimationManager *MapPropAnimationManager_Init(NARC *narc, FieldSystemUnk
     mapPropAnimationManager->unk134 = narc;
     mapPropAnimationManager->unk138 = ov01_022041D8(unkSubC8, HEAP_ID_FIELD1, 0x10);
     return mapPropAnimationManager;
+}
+
+// Make static
+NNSG3dAnmObj *MapPropAnimation_GetAnimationObj(MapPropAnimation *animation);
+
+NNSG3dAnmObj *MapPropAnimation_GetAnimationObj(MapPropAnimation *animation) {
+    if (animation == NULL) {
+        return NULL;
+    }
+    
+    return animation->animObj;
+}
+
+// Make static
+BOOL MapPropAnimation_CheckDeferredLoadingFlag(const u8 animationFlags);
+
+BOOL MapPropAnimation_CheckDeferredLoadingFlag(const u8 animationFlags) {
+    if (animationFlags == 8) return FALSE;
+    
+    BOOL deferredLoading = TRUE;
+    if ((animationFlags & 1) != 1) deferredLoading = FALSE; // TODO: Flag name
+    
+    return deferredLoading;
+}
+
+// Make static
+BOOL MapPropAnimation_CheckDeferredAddToRenderObjFlag(const u8 animationFlags);
+
+BOOL MapPropAnimation_CheckDeferredAddToRenderObjFlag(const u8 animationFlags) {
+    if (animationFlags == 8) return TRUE;
+    
+    return (((animationFlags >> 1) & 1) == 1);
+}
+
+// Make static
+MapPropAnimationData *MapPropAnimationManager_LoadPropAnimationForOneShot(const int mapPropModelID, const int mapPropAnimIndex, const int animationLoopCount, const int arg3, const BOOL animationReversed, const BOOL animationPaused, const BOOL isDeferredLoading, NNSG3dResMdl *mapPropModel, NNSG3dResTex *mapPropTexture, MapPropAnimationManager *mapPropAnimationManager);
+
+MapPropAnimationData *MapPropAnimationManager_LoadPropAnimationForOneShot(const int mapPropModelID, const int mapPropAnimIndex, const int animationLoopCount, const int arg3, const BOOL animationReversed, const BOOL animationPaused, const BOOL isDeferredLoading, NNSG3dResMdl *mapPropModel, NNSG3dResTex *mapPropTexture, MapPropAnimationManager *mapPropAnimationManager) {
+    int i;
+
+    MapPropAnimListFile animListFile;
+    NARC_ReadWholeMember(mapPropAnimationManager->unk134, mapPropModelID, &animListFile); // animListNarc
+    GF_ASSERT(mapPropAnimIndex < 4); // MAP_PROP_ANIM_LIST_FILE_ARCHIVE_IDS_COUNT
+    
+    int animArchiveID = animListFile.animArchiveIDs[mapPropAnimIndex];
+    
+    if (animArchiveID == -1) { // ANIM_ARCHIVE_ID_NONE
+        return NULL;
+    } else if (MapPropAnimation_CheckDeferredLoadingFlag(animListFile.flags) != isDeferredLoading) {
+        return NULL;
+    }
+    
+    for (i = 0; i < MAP_PROP_ANIMATION_MANAGER_MAX_ANIMATIONS; i++) {
+        GF_ASSERT(arg3 == 0 || arg3 != mapPropAnimationManager->animations[i].unkC); // pastoriaGymButtonGroup-- What is this in HGSS?
+    }
+
+    for (i = 0; i < MAP_PROP_ANIMATION_MANAGER_MAX_ANIMATIONS; i++) {
+        if (!mapPropAnimationManager->animations[i].loaded) {
+            mapPropAnimationManager->animations[i].loaded = TRUE;
+            MapPropAnimation *animation = ov01_022042FC(mapPropAnimationManager->unk138);
+            GF_ASSERT(animation != NULL);
+            ov01_022044C8(animation, animationLoopCount, animationPaused, animationReversed);
+            mapPropAnimationManager->animations[i].animArchiveID = animArchiveID;
+            mapPropAnimationManager->animations[i].unkC = arg3;
+            // MapPropAnimation_LoadAnimationObj?
+            ov01_021E87A8(mapPropAnimationManager->unk130, mapPropAnimationManager->unk138, animation, animArchiveID, mapPropModel, mapPropTexture);
+            mapPropAnimationManager->animations[i].animation = animation;
+            
+            MapPropAnimation_GoToFirstFrame(mapPropAnimationManager->animations[i].animation);
+            
+            return &mapPropAnimationManager->animations[i];
+        }
+    }
+    GF_ASSERT(FALSE);
+    return NULL;
 }

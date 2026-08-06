@@ -199,10 +199,10 @@ void ov01_02204350(FieldSystemUnkSubC8 *unkC8) {
             for (int i = 0; i < unkC8->unkC; i++) {
                 for (int j = 0; j < unkCC_Sub0->unk20; j++) {
                     MapPropAnimation *animation = &unkCC_Sub0->unk10[j];
-                    if (animation->unk14 == 1 && animation->unkC != 1 && animation->unk1C) {
+                    if (animation->unk14 == 1 && animation->paused != TRUE && animation->unk1C) {
                         ov01_02204594(animation);
-                        if (animation->unk8 != -1 && ov01_022045DC(animation)) {
-                            if (animation->unk18 + 1 >= animation->unk8) {
+                        if (animation->loopCount != -1 && ov01_022045DC(animation)) {
+                            if (animation->unk18 + 1 >= animation->loopCount) {
                                 animation->unk1C = 0;
                             } else {
                                 animation->unk18++;
@@ -225,7 +225,7 @@ void ov01_022043D8(FieldSystemUnkSubC8 *unkSubC8) {
                 for (j = 0; j < unk4->unk20; j++) {
                     MapPropAnimation *animation = &unk4->unk10[j];
                     if (animation->unk14 == 1 && animation->unk1C) {
-                        animation->unkC = 1;
+                        animation->paused = TRUE;
                     }
                 }
                 unk4 = unk4->next;
@@ -242,7 +242,7 @@ void ov01_02204424(FieldSystemUnkSubC8 *unkSubC8) {
                 for (int j = 0; j < unkCC_Sub0->unk20; j++) {
                     MapPropAnimation *animation = &unkCC_Sub0->unk10[j];
                     if (animation->unk14 == 1 && animation->unk1C) {
-                        ov01_022044E0(animation);
+                        MapPropAnimation_GoToFirstFrame(animation);
                     }
                 }
                 unkCC_Sub0 = unkCC_Sub0->next;
@@ -277,20 +277,20 @@ static void ov01_022044C4(FieldSystemUnkSubCC_Sub0 *unkCC_Sub0, void *arg1) {
     unkCC_Sub0->unk1C = arg1;
 }
 
-void ov01_022044C8(MapPropAnimation *animation, int unk8, int unkC, int unk10) {
+void ov01_022044C8(MapPropAnimation *animation, int loopCount, BOOL paused, BOOL reversed) {
     animation->unk18 = 0;
     animation->unk1C = 1;
     animation->unk14 = 1;
-    animation->unk8 = unk8;
-    animation->unkC = unkC;
-    animation->unk10 = unk10;
+    animation->loopCount = loopCount;
+    animation->paused = paused;
+    animation->reversed = reversed;
 }
 
-void ov01_022044E0(MapPropAnimation *animation) {
-    if (animation->unk10 == 0) {
+void MapPropAnimation_GoToFirstFrame(MapPropAnimation *animation) {
+    if (!animation->reversed) {
         animation->animObj->frame = 0;
     } else {
-        animation->animObj->frame = NNS_G3dAnmObjGetNumFrame(animation->animObj) - 0x1000;
+        animation->animObj->frame = NNS_G3dAnmObjGetNumFrame(animation->animObj) - 0x1000; // FX32_ONE
     }
 }
 
@@ -313,11 +313,11 @@ BOOL ov01_02204518(UnkStruct_FieldSysC0_SubC *unkC0_SubC, MapPropAnimation *anim
 }
 
 u16 ov01_02204554(MapPropAnimation *animation) {
-    return animation->unk8;
+    return animation->loopCount;
 }
 
-void ov01_0220455C(MapPropAnimation *animation, int unkC) {
-    animation->unkC = unkC;
+void ov01_0220455C(MapPropAnimation *animation, BOOL paused) {
+    animation->paused = paused;
 }
 
 BOOL ov01_02204560(MapPropAnimation *animation) {
@@ -325,19 +325,19 @@ BOOL ov01_02204560(MapPropAnimation *animation) {
 }
 
 void ov01_02204570(MapPropAnimation *animation) {
-    if (animation->unk10 == 0) {
+    if (!animation->reversed) {
         animation->animObj->frame = NNS_G3dAnmObjGetNumFrame(animation->animObj) - 0x1000;
     } else {
         animation->animObj->frame = 0;
     }
 }
 
-void ov01_02204590(MapPropAnimation *animation, int unk8) {
-    animation->unk8 = unk8;
+void ov01_02204590(MapPropAnimation *animation, int loopCount) {
+    animation->loopCount = loopCount;
 }
 
 static void ov01_02204594(MapPropAnimation *animation) {
-    if (animation->unk10 == 0) {
+    if (!animation->reversed) {
         animation->animObj->frame += 0x1000;
         if (animation->animObj->frame == NNS_G3dAnmObjGetNumFrame(animation->animObj)) {
             animation->animObj->frame = 0;
@@ -352,7 +352,7 @@ static void ov01_02204594(MapPropAnimation *animation) {
 }
 
 static BOOL ov01_022045DC(MapPropAnimation *animation) {
-    if (animation->unk10 == 0) {
+    if (!animation->reversed) {
         return animation->animObj->frame >= NNS_G3dAnmObjGetNumFrame(animation->animObj) - 0x1000;
     }
     return animation->animObj->frame == 0;
@@ -375,7 +375,7 @@ void ov01_0220463C(FieldSystemUnkSubCC *unkCC, int fileID) {
     if (animation == NULL) {
         GF_AssertFail();
     }
-    ov01_022044C8(animation, -1, 0, 0);
+    ov01_022044C8(animation, -1, FALSE, FALSE);
     ov01_022044B0(unkCC->unk0, animation, AllocAndReadWholeNarcMemberByIdPair(NARC_a_1_4_0, fileID, HEAP_ID_FIELD1), 0);
     unkCC->unk4 = animation;
 }

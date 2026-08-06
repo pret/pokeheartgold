@@ -14,165 +14,6 @@
 
 	.text
 
-	thumb_func_start ov01_021E8858
-ov01_021E8858: ; 0x021E8858
-	cmp r0, #0
-	bne _021E8860
-	mov r0, #0
-	bx lr
-_021E8860:
-	ldr r0, [r0]
-	bx lr
-	thumb_func_end ov01_021E8858
-
-	thumb_func_start ov01_021E8864
-ov01_021E8864: ; 0x021E8864
-	cmp r0, #8
-	bne _021E886C
-	mov r0, #0
-	bx lr
-_021E886C:
-	mov r1, #1
-	and r0, r1
-	cmp r0, #1
-	beq _021E8876
-	mov r1, #0
-_021E8876:
-	add r0, r1, #0
-	bx lr
-	.balign 4, 0
-	thumb_func_end ov01_021E8864
-
-	thumb_func_start ov01_021E887C
-ov01_021E887C: ; 0x021E887C
-	cmp r0, #8
-	bne _021E8884
-	mov r0, #1
-	bx lr
-_021E8884:
-	asr r1, r0, #1
-	mov r0, #1
-	and r1, r0
-	cmp r1, #1
-	beq _021E8890
-	mov r0, #0
-_021E8890:
-	bx lr
-	.balign 4, 0
-	thumb_func_end ov01_021E887C
-
-	thumb_func_start ov01_021E8894
-ov01_021E8894: ; 0x021E8894
-	push {r3, r4, r5, r6, r7, lr}
-	sub sp, #0x28
-	add r6, r0, #0
-	mov r0, #0x4d
-	ldr r7, [sp, #0x54]
-	lsl r0, r0, #2
-	add r4, r1, #0
-	str r2, [sp, #8]
-	ldr r0, [r7, r0]
-	add r1, r6, #0
-	add r2, sp, #0x10
-	add r5, r3, #0
-	bl NARC_ReadWholeMember
-	cmp r4, #4
-	blt _021E88B8
-	bl GF_AssertFail
-_021E88B8:
-	lsl r1, r4, #2
-	add r0, sp, #0x18
-	ldr r0, [r0, r1]
-	mov r1, #0
-	mvn r1, r1
-	str r0, [sp, #0xc]
-	cmp r0, r1
-	bne _021E88CE
-	add sp, #0x28
-	mov r0, #0
-	pop {r3, r4, r5, r6, r7, pc}
-_021E88CE:
-	add r0, sp, #0x10
-	ldrb r0, [r0, #1]
-	bl ov01_021E8864
-	ldr r1, [sp, #0x48]
-	cmp r1, r0
-	beq _021E88E2
-	add sp, #0x28
-	mov r0, #0
-	pop {r3, r4, r5, r6, r7, pc}
-_021E88E2:
-	mov r6, #0
-	add r4, r7, #0
-_021E88E6:
-	cmp r5, #0
-	beq _021E88F4
-	ldr r0, [r4, #0x1c]
-	cmp r5, r0
-	bne _021E88F4
-	bl GF_AssertFail
-_021E88F4:
-	add r6, r6, #1
-	add r4, #0x10
-	cmp r6, #0x10
-	blt _021E88E6
-	mov r2, #0
-	add r1, r7, #0
-_021E8900:
-	ldr r0, [r1, #0x14]
-	cmp r0, #0
-	bne _021E895E
-	lsl r4, r2, #4
-	mov r1, #1
-	add r0, r7, r4
-	str r1, [r0, #0x14]
-	mov r0, #0x4e
-	lsl r0, r0, #2
-	ldr r0, [r7, r0]
-	bl ov01_022042FC
-	add r6, r0, #0
-	bne _021E8920
-	bl GF_AssertFail
-_021E8920:
-	ldr r1, [sp, #8]
-	ldr r2, [sp, #0x44]
-	ldr r3, [sp, #0x40]
-	add r0, r6, #0
-	bl ov01_022044C8
-	ldr r0, [sp, #0xc]
-	add r1, r7, r4
-	str r0, [r1, #0x18]
-	str r5, [r1, #0x1c]
-	ldr r0, [sp, #0x4c]
-	mov r1, #0x13
-	str r0, [sp]
-	ldr r0, [sp, #0x50]
-	lsl r1, r1, #4
-	str r0, [sp, #4]
-	ldr r0, [r7, r1]
-	add r1, #8
-	ldr r1, [r7, r1]
-	ldr r3, [sp, #0xc]
-	add r2, r6, #0
-	bl ov01_021E87A8
-	add r7, #0x10
-	str r6, [r7, r4]
-	ldr r0, [r7, r4]
-	bl ov01_022044E0
-	add sp, #0x28
-	add r0, r7, r4
-	pop {r3, r4, r5, r6, r7, pc}
-_021E895E:
-	add r2, r2, #1
-	add r1, #0x10
-	cmp r2, #0x10
-	blt _021E8900
-	bl GF_AssertFail
-	mov r0, #0
-	add sp, #0x28
-	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ov01_021E8894
-
 	// void ov01_021E8970(int a0, int a1, int a2, UnkStruct_FieldSysC0_SubC *a3, void *a4);
 	thumb_func_start ov01_021E8970
 ov01_021E8970: ; 0x021E8970
@@ -221,7 +62,7 @@ _021E89B2:
 _021E89C6:
 	add r0, sp, #4
 	ldrb r0, [r0, #1]
-	bl ov01_021E887C
+	bl MapPropAnimation_CheckDeferredAddToRenderObjFlag
 	cmp r7, r0
 	beq _021E89D8
 	add sp, #0x1c
@@ -464,11 +305,11 @@ _021E8B68: .word ov01_0220455C
 
 	thumb_func_start ov01_021E8B6C
 ov01_021E8B6C: ; 0x021E8B6C
-	ldr r3, _021E8B74 ; =ov01_022044E0
+	ldr r3, _021E8B74 ; =MapPropAnimation_GoToFirstFrame
 	ldr r0, [r0]
 	bx r3
 	nop
-_021E8B74: .word ov01_022044E0
+_021E8B74: .word MapPropAnimation_GoToFirstFrame
 	thumb_func_end ov01_021E8B6C
 
 	thumb_func_start ov01_021E8B78
@@ -693,10 +534,10 @@ _021E8CCE:
 	lsl r0, r4, #2
 	ldr r0, [r5, r0]
 	str r0, [sp, #4]
-	bl ov01_021E8858
+	bl MapPropAnimation_GetAnimationObj
 	str r0, [sp]
 	ldr r0, [r5, #0x2c]
-	bl ov01_021E8858
+	bl MapPropAnimation_GetAnimationObj
 	add r7, r0, #0
 	mov r4, #0
 _021E8CE4:
@@ -755,7 +596,7 @@ _021E8D30:
 	ldr r0, [sp, #0x18]
 	mov r3, #0
 	str r7, [sp, #0x14]
-	bl ov01_021E8894
+	bl MapPropAnimationManager_LoadPropAnimationForOneShot
 	add r4, r0, #0
 	bne _021E8D56
 	bl GF_AssertFail
@@ -779,7 +620,7 @@ ov01_021E8D6C: ; 0x021E8D6C
 	add r6, r1, #0
 	str r0, [sp]
 	ldr r0, [r6, #0x2c]
-	bl ov01_021E8858
+	bl MapPropAnimation_GetAnimationObj
 	add r7, r0, #0
 	mov r4, #0
 	add r5, r6, #0
@@ -1068,7 +909,7 @@ _021E8F6C:
 	beq _021E8F86
 	ldr r0, [sp, #0x50]
 	ldrb r0, [r0, #1]
-	bl ov01_021E8864
+	bl MapPropAnimation_CheckDeferredLoadingFlag
 	cmp r0, #0
 	beq _021E8F88
 _021E8F86:
@@ -1076,7 +917,7 @@ _021E8F86:
 _021E8F88:
 	ldr r0, [sp, #0x50]
 	ldrb r0, [r0, #1]
-	bl ov01_021E887C
+	bl MapPropAnimation_CheckDeferredAddToRenderObjFlag
 	cmp r0, #0
 	bne _021E8F9A
 	mov r0, #1
@@ -1140,7 +981,7 @@ _021E8FE6:
 	bl ov01_021E87A8
 	add r0, r6, #0
 	str r6, [r5, #0x10]
-	bl ov01_022044E0
+	bl MapPropAnimation_GoToFirstFrame
 	ldr r0, [sp, #0x14]
 	cmp r0, #0
 	beq _021E9044
