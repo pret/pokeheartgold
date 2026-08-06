@@ -5,18 +5,8 @@
 
 #include "filesystem.h"
 
+#define MAP_PROP_ANIMATION_MANAGER_MAX_ANIMATIONS               16
 #define MAP_PROP_ANIMATION_MANAGER_MAX_BICYCLE_SLOPE_ANIMATIONS 2
-
-typedef struct MapPropAnimation {
-    NNSG3dAnmObj *animationObj;
-    u32 unk4;
-    int unk8;
-    int unkC;
-    int unk10;
-    u32 unk14;
-    u32 unk18;
-    u32 unk1C;
-} MapPropAnimation;
 
 typedef struct BicycleSlopeAnimation {
     BOOL loaded;
@@ -25,8 +15,16 @@ typedef struct BicycleSlopeAnimation {
     int animID;
 } BicycleSlopeAnimation; // Size: 0x10
 
+typedef struct MapPropAnimationData { // Should we swap the names?
+    MapPropAnimation *animation;
+    u32 unk4;
+    u32 unk8;
+    u32 unkC;
+} MapPropAnimationData;
+
 typedef struct MapPropAnimationManager {
-    u8 unk0[0x110];
+    NNSFndAllocator allocator;
+    MapPropAnimationData animations[MAP_PROP_ANIMATION_MANAGER_MAX_ANIMATIONS];
     BicycleSlopeAnimation bicycleSlopeAnimations[MAP_PROP_ANIMATION_MANAGER_MAX_BICYCLE_SLOPE_ANIMATIONS];
     NARC *unk130;
     NARC *unk134;

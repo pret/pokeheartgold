@@ -14,67 +14,6 @@
 
 	.text
 
-	thumb_func_start MapPropAnimationManager_Init
-MapPropAnimationManager_Init: ; 0x021E87E4
-	push {r3, r4, r5, r6, r7, lr}
-	sub sp, #8
-	str r1, [sp, #4]
-	mov r1, #0x4f
-	str r0, [sp]
-	mov r0, #4
-	lsl r1, r1, #2
-	bl Heap_Alloc
-	add r7, r0, #0
-	mov r0, #0
-	add r1, r7, #0
-	add r6, r0, #0
-_021E87FE:
-	str r6, [r1, #0x14]
-	str r6, [r1, #0x18]
-	str r6, [r1, #0x1c]
-	add r0, r0, #1
-	add r1, #0x10
-	cmp r0, #0x10
-	blt _021E87FE
-	mov r0, #0x11
-	lsl r0, r0, #4
-	add r2, r0, #0
-	add r3, r0, #0
-	add r5, r7, #0
-	mov r4, #0
-	add r1, r0, #4
-	add r2, #8
-	add r3, #0xc
-_021E881E:
-	str r4, [r5, r0]
-	str r4, [r5, r1]
-	str r4, [r5, r2]
-	str r4, [r5, r3]
-	add r6, r6, #1
-	add r5, #0x10
-	cmp r6, #2
-	blt _021E881E
-	mov r0, #0x6a
-	mov r1, #4
-	bl NARC_New
-	mov r1, #0x13
-	lsl r1, r1, #4
-	str r0, [r7, r1]
-	ldr r0, [sp]
-	add r1, r1, #4
-	str r0, [r7, r1]
-	ldr r0, [sp, #4]
-	mov r1, #4
-	mov r2, #0x10
-	bl ov01_022041D8
-	mov r1, #0x4e
-	lsl r1, r1, #2
-	str r0, [r7, r1]
-	add r0, r7, #0
-	add sp, #8
-	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ov01_021E87E4
-
 	thumb_func_start ov01_021E8858
 ov01_021E8858: ; 0x021E8858
 	cmp r0, #0
@@ -308,7 +247,7 @@ _021E89DC:
 	ldr r2, [r2, #0x10]
 	add r0, r6, r0
 	lsr r3, r3, #0x18
-	bl ov01_021E8744
+	bl BicycleSlopeAnimation_Load
 	b _021E8A04
 _021E8A02:
 	mov r0, #1
@@ -334,8 +273,8 @@ _021E8A1A:
 	pop {r4, r5, r6, r7, pc}
 	thumb_func_end ov01_021E8970
 
-	thumb_func_start ov01_021E8A28
-ov01_021E8A28: ; 0x021E8A28
+	thumb_func_start MapPropAnimationManager_UnloadAllAnimations
+MapPropAnimationManager_UnloadAllAnimations: ; 0x021E8A28
 	push {r3, r4}
 	cmp r0, #0
 	beq _021E8A4C
@@ -360,7 +299,7 @@ _021E8A44:
 _021E8A4C:
 	pop {r3, r4}
 	bx lr
-	thumb_func_end ov01_021E8A28
+	thumb_func_end MapPropAnimationManager_UnloadAllAnimations
 
 	thumb_func_start ov01_021E8A50
 ov01_021E8A50: ; 0x021E8A50
@@ -448,8 +387,8 @@ _021E8ADC:
 	.balign 4, 0
 	thumb_func_end ov01_021E8A8C
 
-	thumb_func_start ov01_021E8AEC
-ov01_021E8AEC: ; 0x021E8AEC
+	thumb_func_start MapPropAnimationManager_Free
+MapPropAnimationManager_Free: ; 0x021E8AEC
 	push {r4, lr}
 	add r4, r0, #0
 	beq _021E8B02
@@ -461,7 +400,7 @@ ov01_021E8AEC: ; 0x021E8AEC
 	bl Heap_Free
 _021E8B02:
 	pop {r4, pc}
-	thumb_func_end ov01_021E8AEC
+	thumb_func_end MapPropAnimationManager_Free
 
 	thumb_func_start ov01_021E8B04
 ov01_021E8B04: ; 0x021E8B04
@@ -1217,7 +1156,7 @@ _021E8FE6:
 	ldr r2, [r5, #0x10]
 	add r0, r7, r0
 	lsr r3, r3, #0x18
-	bl ov01_021E8744
+	bl BicycleSlopeAnimation_Load
 	b _021E9036
 _021E9034:
 	mov r0, #1
