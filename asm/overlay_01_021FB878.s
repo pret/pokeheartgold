@@ -382,7 +382,7 @@ _021FBB0E:
 	ldr r0, _021FBCB8 ; =0x000008AC
 	str r1, [r5, r0]
 	ldr r0, [sp, #0x10]
-	bl ov01_021E8B9C
+	bl MapPropAnimationManager_GetAnimListNARCFileCount
 	str r0, [sp, #0x1c]
 	mov r0, #0
 	str r0, [sp, #0x20]

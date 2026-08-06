@@ -560,7 +560,7 @@ static BOOL ov02_02251320(TaskManager *taskman) {
     case UNUSED_HO_OH_ANIM_TASK_STATE_0:
         renderObj = Field3dObjectList_GetRenderObjectByID(fieldSystem->unkC0, taskData->birdModelNum);
         for (i = 0; i < 2; ++i) {
-            ov01_021E8970(taskData->birdModelNum, i, 1, renderObj, fieldSystem->mapPropAnimationManager);
+            MapPropAnimationManager_AddAnimationToRenderObj(taskData->birdModelNum, i, 1, renderObj, fieldSystem->mapPropAnimationManager);
         }
         for (i = 0; i < 2; ++i) {
             MapPropAnimationManager *anim = ov01_021E8B04(taskData->birdModelNum, i, fieldSystem->mapPropAnimationManager);
@@ -576,7 +576,7 @@ static BOOL ov02_02251320(TaskManager *taskman) {
                 ov01_021E8A8C(fieldSystem->mapPropAnimationManager, renderObj, taskData->birdModelNum, i);
             }
             for (i = 0; i < 2; ++i) {
-                ov01_021E8970(taskData->birdModelNum, i + 2, 1, renderObj, fieldSystem->mapPropAnimationManager);
+                MapPropAnimationManager_AddAnimationToRenderObj(taskData->birdModelNum, i + 2, 1, renderObj, fieldSystem->mapPropAnimationManager);
             }
             *pState = UNUSED_HO_OH_ANIM_TASK_STATE_2;
         }

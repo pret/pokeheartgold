@@ -10,8 +10,6 @@
 .public Heap_Free
 .public GF_AssertFail
 .public MIi_CpuClearFast
-.public ov01_021E8970
-.public MapPropAnimationManager_UnloadAllAnimations
 .public ov01_021E8A8C
 .public MapPropAnimationManager_Free
 .public ov01_021E8B04
@@ -20,7 +18,7 @@
 .public ov01_021E8B78
 .public ov01_021E8B84
 .public ov01_021E8B90
-.public ov01_021E8B9C
+.public MapPropAnimationManager_GetAnimListNARCFileCount
 .public ov01_021E8BAC
 .public ov01_021E8DB4
 .public ov01_021E8DD4
@@ -42,11 +40,10 @@
 .public ov01_02204500
 .public ov01_0220450C
 .public ov01_02204518
-.public ov01_02204554
-.public ov01_0220455C
+.public MapPropAnimation_SetPaused
 .public ov01_02204560
 .public ov01_02204570
-.public ov01_02204590
+.public MapPropAnimation_SetLoopCount
 .public ov01_0220476C
 .public ov01_02204834
 .public BicycleSlopeAnimation_Load

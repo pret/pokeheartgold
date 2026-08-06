@@ -14,134 +14,6 @@
 
 	.text
 
-	// void ov01_021E8970(int a0, int a1, int a2, UnkStruct_FieldSysC0_SubC *a3, void *a4);
-	thumb_func_start ov01_021E8970
-ov01_021E8970: ; 0x021E8970
-	push {r4, r5, r6, r7, lr}
-	sub sp, #0x1c
-	ldr r6, [sp, #0x30]
-	add r5, r0, #0
-	add r4, r1, #0
-	add r7, r2, #0
-	str r3, [sp]
-	cmp r6, #0
-	bne _021E898C
-	bl GF_AssertFail
-	add sp, #0x1c
-	mov r0, #0
-	pop {r4, r5, r6, r7, pc}
-_021E898C:
-	add r0, r6, #0
-	bl ov01_021E8B9C
-	cmp r5, r0
-	blt _021E899C
-	add sp, #0x1c
-	mov r0, #0
-	pop {r4, r5, r6, r7, pc}
-_021E899C:
-	mov r0, #0x4d
-	lsl r0, r0, #2
-	ldr r0, [r6, r0]
-	add r1, r5, #0
-	add r2, sp, #4
-	bl NARC_ReadWholeMember
-	cmp r4, #4
-	blt _021E89B2
-	bl GF_AssertFail
-_021E89B2:
-	lsl r1, r4, #2
-	add r0, sp, #0xc
-	ldr r5, [r0, r1]
-	mov r0, #0
-	mvn r0, r0
-	cmp r5, r0
-	bne _021E89C6
-	add sp, #0x1c
-	mov r0, #0
-	pop {r4, r5, r6, r7, pc}
-_021E89C6:
-	add r0, sp, #4
-	ldrb r0, [r0, #1]
-	bl MapPropAnimation_CheckDeferredAddToRenderObjFlag
-	cmp r7, r0
-	beq _021E89D8
-	add sp, #0x1c
-	mov r0, #0
-	pop {r4, r5, r6, r7, pc}
-_021E89D8:
-	mov r4, #0
-	add r1, r6, #0
-_021E89DC:
-	ldr r0, [r1, #0x18]
-	cmp r5, r0
-	bne _021E8A1A
-	add r0, sp, #4
-	ldrb r0, [r0, #2]
-	cmp r0, #0
-	beq _021E8A02
-	lsl r2, r4, #4
-	mov r0, #0x11
-	add r2, r6, r2
-	lsl r0, r0, #4
-	lsl r3, r5, #0x18
-	ldr r1, [sp]
-	ldr r2, [r2, #0x10]
-	add r0, r6, r0
-	lsr r3, r3, #0x18
-	bl BicycleSlopeAnimation_Load
-	b _021E8A04
-_021E8A02:
-	mov r0, #1
-_021E8A04:
-	cmp r0, #0
-	beq _021E8A14
-	lsl r1, r4, #4
-	add r1, r6, r1
-	ldr r0, [sp]
-	ldr r1, [r1, #0x10]
-	bl ov01_0220450C
-_021E8A14:
-	add sp, #0x1c
-	mov r0, #1
-	pop {r4, r5, r6, r7, pc}
-_021E8A1A:
-	add r4, r4, #1
-	add r1, #0x10
-	cmp r4, #0x10
-	blt _021E89DC
-	mov r0, #0
-	add sp, #0x1c
-	pop {r4, r5, r6, r7, pc}
-	thumb_func_end ov01_021E8970
-
-	thumb_func_start MapPropAnimationManager_UnloadAllAnimations
-MapPropAnimationManager_UnloadAllAnimations: ; 0x021E8A28
-	push {r3, r4}
-	cmp r0, #0
-	beq _021E8A4C
-	mov r4, #0
-	add r2, r4, #0
-	add r1, r4, #0
-_021E8A34:
-	ldr r3, [r0, #0x14]
-	cmp r3, #0
-	beq _021E8A44
-	cmp r3, #1
-	bne _021E8A40
-	str r2, [r0, #0x10]
-_021E8A40:
-	str r1, [r0, #0x14]
-	str r1, [r0, #0x1c]
-_021E8A44:
-	add r4, r4, #1
-	add r0, #0x10
-	cmp r4, #0x10
-	blt _021E8A34
-_021E8A4C:
-	pop {r3, r4}
-	bx lr
-	thumb_func_end MapPropAnimationManager_UnloadAllAnimations
-
 	thumb_func_start ov01_021E8A50
 ov01_021E8A50: ; 0x021E8A50
 	push {r3, r4, r5, lr}
@@ -296,11 +168,11 @@ _021E8B58:
 
 	thumb_func_start ov01_021E8B60
 ov01_021E8B60: ; 0x021E8B60
-	ldr r3, _021E8B68 ; =ov01_0220455C
+	ldr r3, _021E8B68 ; =MapPropAnimation_SetPaused
 	ldr r0, [r0]
 	bx r3
 	nop
-_021E8B68: .word ov01_0220455C
+_021E8B68: .word MapPropAnimation_SetPaused
 	thumb_func_end ov01_021E8B60
 
 	thumb_func_start ov01_021E8B6C
@@ -323,11 +195,11 @@ _021E8B80: .word ov01_02204570
 
 	thumb_func_start ov01_021E8B84
 ov01_021E8B84: ; 0x021E8B84
-	ldr r3, _021E8B8C ; =ov01_02204590
+	ldr r3, _021E8B8C ; =MapPropAnimation_SetLoopCount
 	ldr r0, [r0]
 	bx r3
 	nop
-_021E8B8C: .word ov01_02204590
+_021E8B8C: .word MapPropAnimation_SetLoopCount
 	thumb_func_end ov01_021E8B84
 
 	thumb_func_start ov01_021E8B90
@@ -339,8 +211,8 @@ ov01_021E8B90: ; 0x021E8B90
 _021E8B98: .word ov01_02204560
 	thumb_func_end ov01_021E8B90
 
-	thumb_func_start ov01_021E8B9C
-ov01_021E8B9C: ; 0x021E8B9C
+	thumb_func_start MapPropAnimationManager_GetAnimListNARCFileCount
+MapPropAnimationManager_GetAnimListNARCFileCount: ; 0x021E8B9C
 	mov r1, #0x4d
 	lsl r1, r1, #2
 	ldr r3, _021E8BA8 ; =NARC_GetFileCount
@@ -348,7 +220,7 @@ ov01_021E8B9C: ; 0x021E8B9C
 	bx r3
 	nop
 _021E8BA8: .word NARC_GetFileCount
-	thumb_func_end ov01_021E8B9C
+	thumb_func_end MapPropAnimationManager_GetAnimListNARCFileCount
 
 	thumb_func_start ov01_021E8BAC
 ov01_021E8BAC: ; 0x021E8BAC
@@ -888,7 +760,7 @@ ov01_021E8F3C: ; 0x021E8F3C
 	str r1, [sp, #8]
 	str r2, [sp, #0xc]
 	str r3, [sp, #0x10]
-	bl ov01_021E8B9C
+	bl MapPropAnimationManager_GetAnimListNARCFileCount
 	cmp r4, r0
 	bge _021E8F86
 	ldr r0, [sp, #0x50]

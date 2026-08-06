@@ -1,20 +1,20 @@
 #include "field/map_prop_animation.h"
 #include "field/overlay_01_02204004.h"
 
-//#include "filesystem.h"
 #include "global.h"
 
 // Make static
-BOOL BicycleSlopeAnimation_Load(BicycleSlopeAnimation *bicycleSlopeAnims, NNSG3dRenderObj *renderObj, MapPropAnimation *animation, const u8 animID);
 void ov01_021E87A8(NARC *narc, FieldSystemUnkSubCC_Sub0 *unkCC_Sub0, MapPropAnimation *animation, int fileID, NNSG3dResMdl *resMdl, NNSG3dResTex *resTex);
 
-BOOL BicycleSlopeAnimation_Load(BicycleSlopeAnimation *bicycleSlopeAnims, NNSG3dRenderObj *renderObj, MapPropAnimation *animation, const u8 animID) {
+BOOL BicycleSlopeAnimation_Load(BicycleSlopeAnimation *bicycleSlopeAnims, UnkStruct_FieldSysC0_SubC *unkC0_SubC, MapPropAnimation *animation, const u8 animID);
+
+BOOL BicycleSlopeAnimation_Load(BicycleSlopeAnimation *bicycleSlopeAnims, UnkStruct_FieldSysC0_SubC *unkC0_SubC, MapPropAnimation *animation, const u8 animID) {
     int i;
     
-    GF_ASSERT(ov01_02204554(animation) != -1); 
+    GF_ASSERT(MapPropAnimation_GetLoopCount(animation) != -1); 
     
     for (i = 0; i < MAP_PROP_ANIMATION_MANAGER_MAX_BICYCLE_SLOPE_ANIMATIONS; i++) {
-        if (bicycleSlopeAnims[i].loaded && animID == bicycleSlopeAnims[i].animID && bicycleSlopeAnims[i].renderObj == renderObj) {
+        if (bicycleSlopeAnims[i].loaded && animID == bicycleSlopeAnims[i].animID && bicycleSlopeAnims[i].renderObj == &unkC0_SubC->renderObj) {
             return FALSE;
         }
     }
@@ -24,7 +24,7 @@ BOOL BicycleSlopeAnimation_Load(BicycleSlopeAnimation *bicycleSlopeAnims, NNSG3d
             bicycleSlopeAnims[i].loaded = TRUE;
             bicycleSlopeAnims[i].animID = animID;
             bicycleSlopeAnims[i].animation = animation;
-            bicycleSlopeAnims[i].renderObj = renderObj;
+            bicycleSlopeAnims[i].renderObj = &unkC0_SubC->renderObj;
             break;
         }
     }
@@ -138,4 +138,52 @@ MapPropAnimationData *MapPropAnimationManager_LoadPropAnimationForOneShot(const 
     }
     GF_ASSERT(FALSE);
     return NULL;
+}
+
+BOOL MapPropAnimationManager_AddAnimationToRenderObj(const int mapPropModelID, const int mapPropAnimID, const BOOL isDeferred, UnkStruct_FieldSysC0_SubC *unkC0_SubC, MapPropAnimationManager *manager) {
+    if (manager == NULL) {
+        GF_ASSERT(FALSE);
+        return FALSE;
+    } else if (mapPropModelID >= MapPropAnimationManager_GetAnimListNARCFileCount(manager)) {
+        return FALSE;
+    }
+
+    MapPropAnimListFile animListFile;
+    NARC_ReadWholeMember(manager->unk134, mapPropModelID, &animListFile);
+    GF_ASSERT(mapPropAnimID < MAP_PROP_ANIM_LIST_FILE_ARCHIVE_IDS_COUNT);
+
+    int animArchiveID = animListFile.animArchiveIDs[mapPropAnimID];
+    
+    if (animArchiveID == -1) {
+        return FALSE;
+    } else if (isDeferred != MapPropAnimation_CheckDeferredAddToRenderObjFlag(animListFile.flags)) {
+        return FALSE;
+    }
+    
+    for (int i = 0; i < MAP_PROP_ANIMATION_MANAGER_MAX_ANIMATIONS; i++) {
+        if (animArchiveID == manager->animations[i].animArchiveID) {
+            BOOL addAnimationObj = animListFile.isBicycleSlope ? BicycleSlopeAnimation_Load(manager->bicycleSlopeAnimations, unkC0_SubC, manager->animations[i].animation, animArchiveID) : TRUE;
+            if (addAnimationObj) {
+                ov01_0220450C(unkC0_SubC, manager->animations[i].animation);
+            }
+            return TRUE;
+        }
+    }
+    return FALSE;
+}
+
+void MapPropAnimationManager_UnloadAllAnimations(MapPropAnimationManager *manager) {
+    if (manager == NULL) {
+        return;
+    }
+
+    for (int i = 0; i < MAP_PROP_ANIMATION_MANAGER_MAX_ANIMATIONS; i++) {
+        if (manager->animations[i].loaded) {
+            if (manager->animations[i].loaded == TRUE) {
+                manager->animations[i].animation = NULL;
+            }
+            manager->animations[i].loaded = FALSE;
+            manager->animations[i].unkC = 0;
+        }
+    }
 }

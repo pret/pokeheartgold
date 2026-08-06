@@ -290,15 +290,15 @@ void MapPropAnimation_GoToFirstFrame(MapPropAnimation *animation) {
     if (!animation->reversed) {
         animation->animObj->frame = 0;
     } else {
-        animation->animObj->frame = NNS_G3dAnmObjGetNumFrame(animation->animObj) - 0x1000; // FX32_ONE
+        animation->animObj->frame = NNS_G3dAnmObjGetNumFrame(animation->animObj) - FX32_ONE;
     }
 }
 
-void ov01_02204500(FieldSystemUnkSubCC_Sub0 *unkCC_Sub0, MapPropAnimation *animation) {
+void ov01_02204500(FieldSystemUnkSubCC_Sub0 *unkCC_Sub0, MapPropAnimation *animation) { // UnkCC_Sub0_FreeMapPropAnimObjFromRenderObj
     NNS_G3dFreeAnmObj(&unkCC_Sub0->unk0, animation->animObj);
 }
 
-void ov01_0220450C(UnkStruct_FieldSysC0_SubC *unkC0_SubC, MapPropAnimation *animation) {
+void ov01_0220450C(UnkStruct_FieldSysC0_SubC *unkC0_SubC, MapPropAnimation *animation) { // UnkC0_SubC_AddMapPropAnimObjToRenderObj
     NNS_G3dRenderObjAddAnmObj(&unkC0_SubC->renderObj, animation->animObj);
 }
 
@@ -312,11 +312,11 @@ BOOL ov01_02204518(UnkStruct_FieldSysC0_SubC *unkC0_SubC, MapPropAnimation *anim
     return TRUE;
 }
 
-u16 ov01_02204554(MapPropAnimation *animation) {
+u16 MapPropAnimation_GetLoopCount(MapPropAnimation *animation) {
     return animation->loopCount;
 }
 
-void ov01_0220455C(MapPropAnimation *animation, BOOL paused) {
+void MapPropAnimation_SetPaused(MapPropAnimation *animation, BOOL paused) {
     animation->paused = paused;
 }
 
@@ -326,34 +326,34 @@ BOOL ov01_02204560(MapPropAnimation *animation) {
 
 void ov01_02204570(MapPropAnimation *animation) {
     if (!animation->reversed) {
-        animation->animObj->frame = NNS_G3dAnmObjGetNumFrame(animation->animObj) - 0x1000;
+        animation->animObj->frame = NNS_G3dAnmObjGetNumFrame(animation->animObj) - FX32_ONE;
     } else {
         animation->animObj->frame = 0;
     }
 }
 
-void ov01_02204590(MapPropAnimation *animation, int loopCount) {
+void MapPropAnimation_SetLoopCount(MapPropAnimation *animation, int loopCount) {
     animation->loopCount = loopCount;
 }
 
 static void ov01_02204594(MapPropAnimation *animation) {
     if (!animation->reversed) {
-        animation->animObj->frame += 0x1000;
+        animation->animObj->frame += FX32_ONE;
         if (animation->animObj->frame == NNS_G3dAnmObjGetNumFrame(animation->animObj)) {
             animation->animObj->frame = 0;
         }
     } else {
         if (animation->animObj->frame <= 0) {
-            animation->animObj->frame = NNS_G3dAnmObjGetNumFrame(animation->animObj) - 0x1000;
+            animation->animObj->frame = NNS_G3dAnmObjGetNumFrame(animation->animObj) - FX32_ONE;
         } else {
-            animation->animObj->frame -= 0x1000;
+            animation->animObj->frame -= FX32_ONE;
         }
     }
 }
 
 static BOOL ov01_022045DC(MapPropAnimation *animation) {
     if (!animation->reversed) {
-        return animation->animObj->frame >= NNS_G3dAnmObjGetNumFrame(animation->animObj) - 0x1000;
+        return animation->animObj->frame >= NNS_G3dAnmObjGetNumFrame(animation->animObj) - FX32_ONE;
     }
     return animation->animObj->frame == 0;
 }

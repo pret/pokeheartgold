@@ -99,11 +99,11 @@ void MapPropAnimation_GoToFirstFrame(MapPropAnimation *animation);
 void ov01_02204500(FieldSystemUnkSubCC_Sub0 *unkCC_Sub0, MapPropAnimation *animation);
 void ov01_0220450C(UnkStruct_FieldSysC0_SubC *unkC0_SubC, MapPropAnimation *animation);
 BOOL ov01_02204518(UnkStruct_FieldSysC0_SubC *unkC0_SubC, MapPropAnimation *animation);
-u16 ov01_02204554(MapPropAnimation *animation);
-void ov01_0220455C(MapPropAnimation *animation, BOOL paused);
+u16 MapPropAnimation_GetLoopCount(MapPropAnimation *animation);
+void MapPropAnimation_SetPaused(MapPropAnimation *animation, BOOL paused);
 BOOL ov01_02204560(MapPropAnimation *animation);
 void ov01_02204570(MapPropAnimation *animation);
-void ov01_02204590(MapPropAnimation *animation, int loopCount);
+void MapPropAnimation_SetLoopCount(MapPropAnimation *animation, int loopCount);
 FieldSystemUnkSubCC *ov01_0220460C(FieldSystemUnkSubC8 *unkSubC8); // UnkCC_Init
 void ov01_02204634(FieldSystemUnkSubCC *unkCC); // UnkCC_Free
 void ov01_0220463C(FieldSystemUnkSubCC *unkCC, int fileID); // UnkCC_Load

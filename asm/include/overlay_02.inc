@@ -381,7 +381,7 @@
 .public Field3dObjectTaskManager_CreateTask
 .public Field3dObjectTask_Delete
 .public Field3dObjectTask_GetData
-.public ov01_021E8970
+.public MapPropAnimationManager_AddAnimationToRenderObj
 .public ov01_021E8A8C
 .public ov01_021E8B04
 .public ov01_021E8B6C

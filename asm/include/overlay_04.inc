@@ -68,7 +68,7 @@
 .public G3X_SetEdgeColorTable
 .public MI_CpuFill8
 .public _s32_div_f
-.public ov01_021E8970
+.public MapPropAnimationManager_AddAnimationToRenderObj
 .public ov01_021E8A8C
 .public ov01_021E8B04
 .public ov01_021E8B60
