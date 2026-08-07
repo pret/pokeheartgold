@@ -103,14 +103,14 @@ jobs:
           retention-days: 1
 
       - name: Checkout xMAP
-        if: ${{ github.event_name == 'push' }}
+        if: ${{ github.event_name == 'push' && github.repository == 'pret/pokeheartgold' }}
         uses: actions/checkout@v4
         with:
           path: "xmap"
           ref: "xmap"
 
       - name: Move xMAP
-        if: ${{ github.event_name == 'push' }}
+        if: ${{ github.event_name == 'push' && github.repository == 'pret/pokeheartgold' }}
         run: |
           mkdir -p xmap
           cp build/heartgold.us/*.xMAP xmap/heartgoldus.xMAP
@@ -118,7 +118,7 @@ jobs:
           echo "XMAP_COMMIT_MSG=$( git log --format=%s ${GITHUB_SHA} )" >> $GITHUB_ENV
 
       - name: Update xMAP
-        if: ${{ github.event_name == 'push' }}
+        if: ${{ github.event_name == 'push' && github.repository == 'pret/pokeheartgold' }}
         uses: EndBug/add-and-commit@v9
         with:
           cwd: "./xmap"
