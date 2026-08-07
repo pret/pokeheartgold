@@ -299,3 +299,30 @@ void ov01_021F3B84(const NNSG3dResMdl *model, const VecFx32 *baseTrans, const Mt
         NNS_G3dDraw1Mat1Shp(model, r5, r6[r4 * 2 + 1], r3);
     }
 }
+
+u8 MapPropManager_LoadOne(MapPropManager *mapPropManager, int modelID, const VecFx32 *position, const VecFx32 *rotation, MapPropAnimationManager *mapPropAnimationManager) {
+    extern const VecFx32 ov01_02206A78;
+    VecFx32 sp0 = ov01_02206A78;
+
+    for (u8 i = 0; i < MAP_PROP_MAX; ++i) {
+        MapProp *mapProp = &mapPropManager->mapProps[i];
+        if (mapProp->unk_04) {
+            continue;
+        }
+        mapProp->unk_04 = 1;
+        mapProp->unk_14 = *position;
+        if (rotation != NULL) {
+            mapProp->unk_0C = 1;
+            mapProp->unk_20 = *rotation;
+        } else {
+            mapProp->unk_0C = 0;
+        }
+        mapProp->unk_2C = sp0;
+        mapProp->buildModel = modelID;
+        mapProp->unk_10 = ov01_022040F8(mapPropManager->fsys_unkC0, modelID);
+        return i;
+    }
+
+    GF_ASSERT(FALSE);
+    return MAP_PROP_MAX;
+}
