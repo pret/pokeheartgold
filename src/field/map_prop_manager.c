@@ -22,7 +22,7 @@ typedef struct MapPropArcData {
 
 struct MapProp {
     int buildModel;
-    int unk_04;
+    BOOL unk_04;
     int unk_08;
     int unk_0C;
     UnkStruct_FieldSysC0_SubC *unk_10;
@@ -233,4 +233,46 @@ void ov01_021F3B0C(VecFx32 *vec, MapProp *mapProp) {
 
 void ov01_021F3B1C(MapProp *mapProp, VecFx32 *vec) {
     mapProp->unk_14 = *vec;
+}
+
+void ov01_021F3B2C(MapProp *mapProp, int a1) {
+    mapProp->unk_08 = a1;
+}
+
+BOOL ov01_021F3B30(MapProp *mapProp) {
+    return mapProp->unk_04;
+}
+
+int ov01_021F3B34(MapProp *mapProp) {
+    return mapProp->buildModel;
+}
+
+UnkStruct_FieldSysC0_SubC *ov01_021F3B38(MapProp *mapProp) {
+    return mapProp->unk_10;
+}
+
+NNSG3dResMdl *ov01_021F3B3C(MapProp *mapProp) {
+    return mapProp->unk_10->model;
+}
+
+MapProp *ov01_021F3B44(MapPropManager *mapPropManager, u8 index) {
+    return &mapPropManager->mapProps[index];
+}
+
+MapProp *ov01_021F3B4C(MapPropManager *mapPropManager, int buildModel) {
+    for (int i = 0; i < MAP_PROP_MAX; ++i) {
+        MapProp *mapProp = &mapPropManager->mapProps[i];
+        if (mapProp->buildModel == buildModel) {
+            return mapProp;
+        }
+    }
+
+    return NULL;
+}
+
+MapProp *ov01_021F3B60(MapPropManager *mapPropManager, int index) {
+    GF_ASSERT(index < MAP_PROP_MAX);
+    MapProp *ret = &mapPropManager->mapProps[index];
+    GF_ASSERT(ret->unk_04 != 0);
+    return ret;
 }
