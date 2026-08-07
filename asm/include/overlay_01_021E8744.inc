@@ -19,6 +19,7 @@
 .public MapPropOneShotAnimationManager_GetAnimation
 .public MapPropOneShotAnimation_Init
 .public MapPropOneShotAnimation_SetAnimation
+.public MapPropOneShotAnimation_SwitchAnimation
 .public ov01_021E8DB4
 .public ov01_021E8DD4
 .public ov01_021E8DE8
@@ -46,7 +47,7 @@
 .public ov01_02204834
 .public BicycleSlopeAnimation_Load
 .public ov01_021E87A8
-.public MapPropAnimation_GetAnimationObj
+.public MapPropAnimationData_GetAnimation
 .public MapPropAnimation_CheckDeferredLoadingFlag
 .public MapPropAnimation_CheckDeferredAddToRenderObjFlag
 .public MapPropAnimationManager_LoadPropAnimationForOneShot

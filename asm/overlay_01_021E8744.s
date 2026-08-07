@@ -14,50 +14,6 @@
 
 	.text
 
-	thumb_func_start ov01_021E8CBC
-ov01_021E8CBC: ; 0x021E8CBC
-	push {r3, r4, r5, r6, r7, lr}
-	sub sp, #8
-	add r5, r0, #0
-	ldr r0, [r5, #0x10]
-	add r4, r1, #0
-	cmp r4, r0
-	blt _021E8CCE
-	bl GF_AssertFail
-_021E8CCE:
-	lsl r0, r4, #2
-	ldr r0, [r5, r0]
-	str r0, [sp, #4]
-	bl MapPropAnimation_GetAnimationObj
-	str r0, [sp]
-	ldr r0, [r5, #0x2c]
-	bl MapPropAnimation_GetAnimationObj
-	add r7, r0, #0
-	mov r4, #0
-_021E8CE4:
-	lsl r0, r4, #2
-	add r6, r5, r0
-	ldr r0, [r6, #0x14]
-	cmp r0, #0
-	beq _021E8CFC
-	add r1, r7, #0
-	bl ov01_02204518
-	ldr r0, [r6, #0x14]
-	ldr r1, [sp]
-	bl ov01_0220450C
-_021E8CFC:
-	add r0, r4, #1
-	lsl r0, r0, #0x18
-	lsr r4, r0, #0x18
-	cmp r4, #6
-	blo _021E8CE4
-	ldr r0, [sp, #4]
-	str r0, [r5, #0x2c]
-	add sp, #8
-	pop {r3, r4, r5, r6, r7, pc}
-	.balign 4, 0
-	thumb_func_end ov01_021E8CBC
-
 	thumb_func_start ov01_021E8D10
 ov01_021E8D10: ; 0x021E8D10
 	push {r3, r4, r5, r6, r7, lr}
@@ -114,7 +70,7 @@ ov01_021E8D6C: ; 0x021E8D6C
 	add r6, r1, #0
 	str r0, [sp]
 	ldr r0, [r6, #0x2c]
-	bl MapPropAnimation_GetAnimationObj
+	bl MapPropAnimationData_GetAnimation
 	add r7, r0, #0
 	mov r4, #0
 	add r5, r6, #0
@@ -268,7 +224,7 @@ _021E8E80:
 	add r1, r4, #0
 	bl MapPropOneShotAnimationManager_GetAnimation
 	add r1, r6, #0
-	bl ov01_021E8CBC
+	bl MapPropOneShotAnimation_SwitchAnimation
 	mov r1, #0
 	bl MapPropAnimationData_SetAnimationPaused
 	pop {r4, r5, r6, pc}
@@ -290,7 +246,7 @@ _021E8EAA:
 	add r1, r5, #0
 	bl MapPropOneShotAnimationManager_GetAnimation
 	add r1, r7, #0
-	bl ov01_021E8CBC
+	bl MapPropOneShotAnimation_SwitchAnimation
 	add r5, r0, #0
 	cmp r4, #0
 	beq _021E8EC6

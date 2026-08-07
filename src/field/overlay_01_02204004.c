@@ -294,21 +294,21 @@ void MapPropAnimation_GoToFirstFrame(MapPropAnimation *animation) {
     }
 }
 
-void ov01_02204500(FieldSystemUnkSubCC_Sub0 *unkCC_Sub0, MapPropAnimation *animation) { // UnkCC_Sub0_FreeMapPropAnimObjFromRenderObj
+void ov01_02204500(FieldSystemUnkSubCC_Sub0 *unkCC_Sub0, MapPropAnimation *animation) { // FreeMapPropAnimObj
     NNS_G3dFreeAnmObj(&unkCC_Sub0->unk0, animation->animObj);
 }
 
-void ov01_0220450C(UnkStruct_FieldSysC0_SubC *unkC0_SubC, MapPropAnimation *animation) { // UnkC0_SubC_AddMapPropAnimObjToRenderObj
-    NNS_G3dRenderObjAddAnmObj(&unkC0_SubC->renderObj, animation->animObj);
+void ov01_0220450C(NNSG3dRenderObj *renderObj, MapPropAnimation *animation) { // AddMapPropAnimObjToRenderObj
+    NNS_G3dRenderObjAddAnmObj(renderObj, animation->animObj);
 }
 
-BOOL ov01_02204518(UnkStruct_FieldSysC0_SubC *unkC0_SubC, MapPropAnimation *animation) {
+BOOL ov01_02204518(NNSG3dRenderObj *renderObj, MapPropAnimation *animation) {
     if (animation == NULL) return FALSE;
     if (animation->animObj == NULL) return FALSE;
-    if (unkC0_SubC == NULL) return FALSE;
-    if (unkC0_SubC->renderObj.anmMat == NULL && unkC0_SubC->renderObj.anmJnt == NULL && unkC0_SubC->renderObj.anmVis == NULL) return FALSE;
+    if (renderObj == NULL) return FALSE;
+    if (renderObj->anmMat == NULL && renderObj->anmJnt == NULL && renderObj->anmVis == NULL) return FALSE;
     
-    NNS_G3dRenderObjRemoveAnmObj(&unkC0_SubC->renderObj, animation->animObj);
+    NNS_G3dRenderObjRemoveAnmObj(renderObj, animation->animObj);
     return TRUE;
 }
 
@@ -380,12 +380,12 @@ void ov01_0220463C(FieldSystemUnkSubCC *unkCC, int fileID) {
     unkCC->unk4 = animation;
 }
 
-void ov01_02204678(FieldSystemUnkSubCC *unkCC, UnkStruct_FieldSysC0_SubC *unkC0_SubC) {
-    ov01_0220450C(unkC0_SubC, unkCC->unk4);
+void ov01_02204678(FieldSystemUnkSubCC *unkCC, NNSG3dRenderObj *renderObj) {
+    ov01_0220450C(renderObj, unkCC->unk4);
 }
 
-void ov01_02204688(FieldSystemUnkSubCC *unkCC, UnkStruct_FieldSysC0_SubC *unkC0_SubC) {
-    ov01_02204518(unkC0_SubC, unkCC->unk4);
+void ov01_02204688(FieldSystemUnkSubCC *unkCC, NNSG3dRenderObj *renderObj) {
+    ov01_02204518(renderObj, unkCC->unk4);
 }
 
 void ov01_02204698(FieldSystemUnkSubCC *unkCC) {
@@ -477,9 +477,9 @@ void ov01_022047DC(FieldSystemUnkSub104 *unk104) {
         unk104->timeOfDay = (TIMEOFDAY)currentTimeOfDay;
         for (int i = 0; i < 4; i++) {
             if (unk104->unkSub[i].unk0 != 0) {
-                FieldSystemUnkSub104_Sub8* sub = &unk104->unkSub[i];
-                ov01_02204518(sub->unk18, sub->animations[ov01_022095EC[previousTimeOfDay]]);
-                ov01_0220450C(sub->unk18, sub->animations[ov01_022095EC[currentTimeOfDay]]);
+                FieldSystemUnkSub104_Sub8 *sub = &unk104->unkSub[i];
+                ov01_02204518(&sub->unk18->renderObj, sub->animations[ov01_022095EC[previousTimeOfDay]]);
+                ov01_0220450C(&sub->unk18->renderObj, sub->animations[ov01_022095EC[currentTimeOfDay]]);
             }
         }
     }

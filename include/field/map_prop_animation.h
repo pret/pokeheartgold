@@ -49,14 +49,14 @@ typedef struct MapPropAnimationManager {
 } MapPropAnimationManager; // Size: 0x13C
 
 typedef struct MapPropOneShotAnimationList {
-    MapPropAnimation *list[MAP_PROP_ONE_SHOT_ANIMATION_MAX_ANIMATIONS];
+    MapPropAnimationData *list[MAP_PROP_ONE_SHOT_ANIMATION_MAX_ANIMATIONS];
     int count;
 } MapPropOneShotAnimationList;
 
 typedef struct MapPropOneShotAnimation {
     MapPropOneShotAnimationList animations;
-    NNSG3dRenderObj *mapPropRenderObjs[MAP_PROP_ONE_SHOT_ANIMATION_MAX_RENDER_OBJS];
-    MapPropAnimation *currentAnimation;
+    NNSG3dRenderObj *mapPropRenderObjs[MAP_PROP_ONE_SHOT_ANIMATION_MAX_RENDER_OBJS]; // SubC?
+    MapPropAnimationData *currentAnimation;
     int mapPropModelID;
     u8 tag;
     u8 unk35;
@@ -68,9 +68,9 @@ typedef struct MapPropOneShotAnimationManager {
 } MapPropOneShotAnimationManager; // Size: 0x380
 
 MapPropAnimationManager *MapPropAnimationManager_Init(NARC *narc, FieldSystemUnkSubC8 *unkSubC8);
-BOOL MapPropAnimationManager_AddAnimationToRenderObj(const int mapPropModelID, const int mapPropAnimID, const BOOL isDeferred, UnkStruct_FieldSysC0_SubC *renderObj, MapPropAnimationManager *manager);
+BOOL MapPropAnimationManager_AddAnimationToRenderObj(const int mapPropModelID, const int mapPropAnimID, const BOOL isDeferred, NNSG3dRenderObj *renderObj, MapPropAnimationManager *manager);
 void MapPropAnimationManager_UnloadAllAnimations(MapPropAnimationManager *manager);
-void MapPropAnimationManager_RemoveAnimationFromRenderObj(MapPropAnimationManager *mapPropAnimationManager, UnkStruct_FieldSysC0_SubC *unkC0_SubC, const int mapPropModelID, const int mapPropAnimIndex);
+void MapPropAnimationManager_RemoveAnimationFromRenderObj(MapPropAnimationManager *mapPropAnimationManager, NNSG3dRenderObj *renderObj, const int mapPropModelID, const int mapPropAnimIndex);
 void MapPropAnimationManager_Free(MapPropAnimationManager *manager);
 MapPropAnimationData *MapPropAnimationManager_GetAnimationData(const int mapPropModelID, const int mapPropAnimIndex, MapPropAnimationManager *mapPropAnimationManager);
 void MapPropAnimationData_SetAnimationPaused(MapPropAnimationData *animation, const BOOL paused);

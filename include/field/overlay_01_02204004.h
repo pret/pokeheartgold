@@ -97,8 +97,8 @@ void ov01_02204470(FieldSystemUnkSubCC_Sub0 *unkCC_Sub0, MapPropAnimation *anima
 void ov01_022044C8(MapPropAnimation *animation, int loopCount, BOOL paused, BOOL reversed);
 void MapPropAnimation_GoToFirstFrame(MapPropAnimation *animation);
 void ov01_02204500(FieldSystemUnkSubCC_Sub0 *unkCC_Sub0, MapPropAnimation *animation);
-void ov01_0220450C(UnkStruct_FieldSysC0_SubC *unkC0_SubC, MapPropAnimation *animation);
-BOOL ov01_02204518(UnkStruct_FieldSysC0_SubC *unkC0_SubC, MapPropAnimation *animation);
+void ov01_0220450C(NNSG3dRenderObj *renderObj, MapPropAnimation *animation);
+BOOL ov01_02204518(NNSG3dRenderObj *renderObj, MapPropAnimation *animation);
 u16 MapPropAnimation_GetLoopCount(MapPropAnimation *animation);
 void MapPropAnimation_SetPaused(MapPropAnimation *animation, BOOL paused);
 BOOL MapPropAnimation_IsLoopFinished(MapPropAnimation *animation);
@@ -107,8 +107,8 @@ void MapPropAnimation_SetLoopCount(MapPropAnimation *animation, const int loopCo
 FieldSystemUnkSubCC *ov01_0220460C(FieldSystemUnkSubC8 *unkSubC8); // UnkCC_Init
 void ov01_02204634(FieldSystemUnkSubCC *unkCC); // UnkCC_Free
 void ov01_0220463C(FieldSystemUnkSubCC *unkCC, int fileID); // UnkCC_Load
-void ov01_02204678(FieldSystemUnkSubCC *unkCC, UnkStruct_FieldSysC0_SubC *unkC0_SubC);
-void ov01_02204688(FieldSystemUnkSubCC *unkCC, UnkStruct_FieldSysC0_SubC *unkC0_SubC);
+void ov01_02204678(FieldSystemUnkSubCC *unkCC, NNSG3dRenderObj *renderObj);
+void ov01_02204688(FieldSystemUnkSubCC *unkCC, NNSG3dRenderObj *renderObj);
 void ov01_02204698(FieldSystemUnkSubCC *unkCC);
 FieldSystemUnkSub104 *ov01_02204744(enum HeapID heapID);
 void ov01_02204764(FieldSystemUnkSub104 *unk104);
