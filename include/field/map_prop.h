@@ -17,12 +17,15 @@ void ov01_021F36DC(int modelID, MapPropManager *mapPropManager);
 void ov01_021F3744(NARC *narc, u32 size, MapPropManager *mapPropManager, int a3);
 void ov01_021F3834(NARC *a0, MapPropManager *mapPropManager, int a2, const SAFARIZONE_AREA *safariArea, u16 *a4, BOOL gender);
 void ov01_021F3A3C(const VecFx32 *a0, AreaDataManager *a1, BOOL a2, ModelAttributes *a3, MapPropManager *a4);
+VecFx32 *ov01_021F3B04(MapProp *mapProp);
+VecFx32 *ov01_021F3B08(MapProp *mapProp);
+void ov01_021F3B0C(VecFx32 *vec, MapProp *mapProp);
+void ov01_021F3B1C(MapProp *mapProp, VecFx32 *vec);
+void ov01_021F3B2C(MapProp *mapProp, int a1);
+BOOL ov01_021F3B30(MapProp *mapProp);
+int ov01_021F3B34(MapProp *mapProp);
+MapProp *ov01_021F3B44(MapPropManager *mapPropManager, u8 index);
 void MapPropManager_LoadOne(MapPropManager *mapPropManager, int modelID, const VecFx32 *position, const VecFx32 *rotation, MapPropAnimationManager *mapPropAnimationManager);
 void ov01_021F3C9C(MapPropManager *mapPropManager, AreaDataManager *areaDataManager);
-void ov01_021F3B0C(VecFx32 *vec, int);
-BOOL ov01_021F3B30();
-void ov01_021F3B2C(int, int);
-int ov01_021F3B34(int);
-int ov01_021F3B44(int, u8 index);
 
 #endif // POKEHEARTGOLD_FIELD_MAP_PROP_H

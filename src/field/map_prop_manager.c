@@ -218,3 +218,19 @@ void ov01_021F3A3C(const VecFx32 *a0, AreaDataManager *a1, BOOL a2, ModelAttribu
         }
     }
 }
+
+VecFx32 *ov01_021F3B04(MapProp *mapProp) {
+    return &mapProp->unk_2C;
+}
+
+VecFx32 *ov01_021F3B08(MapProp *mapProp) {
+    return &mapProp->unk_20;
+}
+
+void ov01_021F3B0C(VecFx32 *vec, MapProp *mapProp) {
+    *vec = mapProp->unk_14;
+}
+
+void ov01_021F3B1C(MapProp *mapProp, VecFx32 *vec) {
+    mapProp->unk_14 = *vec;
+}

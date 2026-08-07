@@ -64,7 +64,7 @@ BOOL ScrCmd_720(ScriptContext *ctx) {
     areaSet = SafariZone_GetAreaSet(Save_SafariZone_Get(fieldSystem->saveData), 0);
     u32 temp_r0 = ov01_021F6320(fieldSystem->mapLoadManager);
 
-    s32 sp20;
+    MapPropManager *sp20;
     ov01_021F630C((u8)temp_r0, fieldSystem->mapLoadManager, &sp20);
     sp8 = ov01_021F65E4(fieldSystem->mapLoadManager, (u8)temp_r0);
     sp4 = ov01_021F65F0(fieldSystem->mapLoadManager, (u8)temp_r0);
@@ -81,8 +81,8 @@ BOOL ScrCmd_720(ScriptContext *ctx) {
     }
 
     for (int index = 0; index < 32; index++) {
-        int sp18 = ov01_021F3B44(sp20, index);
-        if (ov01_021F3B30()) {
+        MapProp *sp18 = ov01_021F3B44(sp20, index);
+        if (ov01_021F3B30(sp18)) {
             VecFx32 position;
             ov01_021F3B0C(&position, sp18);
 

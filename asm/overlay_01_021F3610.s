@@ -14,42 +14,6 @@
 
 	.text
 
-	thumb_func_start ov01_021F3B04
-ov01_021F3B04: ; 0x021F3B04
-	add r0, #0x2c
-	bx lr
-	thumb_func_end ov01_021F3B04
-
-	thumb_func_start ov01_021F3B08
-ov01_021F3B08: ; 0x021F3B08
-	add r0, #0x20
-	bx lr
-	thumb_func_end ov01_021F3B08
-
-	thumb_func_start ov01_021F3B0C
-ov01_021F3B0C: ; 0x021F3B0C
-	add r2, r1, #0
-	add r2, #0x14
-	add r3, r0, #0
-	ldmia r2!, {r0, r1}
-	stmia r3!, {r0, r1}
-	ldr r0, [r2]
-	str r0, [r3]
-	bx lr
-	thumb_func_end ov01_021F3B0C
-
-	thumb_func_start ov01_021F3B1C
-ov01_021F3B1C: ; 0x021F3B1C
-	add r3, r1, #0
-	add r2, r0, #0
-	ldmia r3!, {r0, r1}
-	add r2, #0x14
-	stmia r2!, {r0, r1}
-	ldr r0, [r3]
-	str r0, [r2]
-	bx lr
-	thumb_func_end ov01_021F3B1C
-
 	thumb_func_start ov01_021F3B2C
 ov01_021F3B2C: ; 0x021F3B2C
 	str r1, [r0, #8]
