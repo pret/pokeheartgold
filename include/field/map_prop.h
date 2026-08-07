@@ -2,6 +2,7 @@
 #define POKEHEARTGOLD_FIELD_MAP_PROP_H
 
 #include "field/area_data.h"
+#include "field/model_attributes.h"
 
 #include "field_types_def.h"
 #include "safari_zone.h"
@@ -14,7 +15,8 @@ void MapPropManager_Free(MapPropManager *mapPropManager);
 void ov01_021F36AC(MapPropManager *mapPropManager);
 void ov01_021F36DC(int modelID, MapPropManager *mapPropManager);
 void ov01_021F3744(NARC *narc, u32 size, MapPropManager *mapPropManager, int a3);
-void ov01_021F3834(int a0, MapPropManager *mapPropManager, int a2, const SAFARIZONE_AREA *a3, u16 *a4, BOOL a5);
+void ov01_021F3834(NARC *a0, MapPropManager *mapPropManager, int a2, const SAFARIZONE_AREA *safariArea, u16 *a4, BOOL gender);
+void ov01_021F3A3C(const VecFx32 *a0, AreaDataManager *a1, BOOL a2, ModelAttributes *a3, MapPropManager *a4);
 void MapPropManager_LoadOne(MapPropManager *mapPropManager, int modelID, const VecFx32 *position, const VecFx32 *rotation, MapPropAnimationManager *mapPropAnimationManager);
 void ov01_021F3C9C(MapPropManager *mapPropManager, AreaDataManager *areaDataManager);
 void ov01_021F3B0C(VecFx32 *vec, int);

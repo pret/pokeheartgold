@@ -2,8 +2,12 @@
 
 #include "field/map_load_manager.h"
 #include "field/map_prop.h"
+#include "field/overlay_01_021EA6C4.h"
+#include "field/overlay_01_021F3610.h"
 
 #include "field_system.h"
+#include "gf_3d_render.h"
+#include "unk_0201F990.h"
 #include "unk_02097268.h"
 
 #define MAP_PROP_MAX 32
@@ -17,7 +21,7 @@ typedef struct MapPropArcData {
 } MapPropArcData; // size: 0x30
 
 struct MapProp {
-    int unk_00;
+    int buildModel;
     int unk_04;
     int unk_08;
     int unk_0C;
@@ -58,7 +62,7 @@ void MapPropManager_Free(MapPropManager *mapPropManager) {
 static void MapProp_Init(MapProp *mapProp) {
     VecFx32 sp0 = { 0, 0, 0 };
 
-    mapProp->unk_00 = 0;
+    mapProp->buildModel = 0;
     mapProp->unk_04 = 0;
     mapProp->unk_08 = 0;
     mapProp->unk_0C = 0;
@@ -81,7 +85,7 @@ void ov01_021F36DC(int modelID, MapPropManager *mapPropManager) {
     VecFx32 sp0 = { 0, 0, 0 };
     MapProp *mapProp = &mapPropManager->mapProps[modelID];
 
-    mapProp->unk_00 = 0;
+    mapProp->buildModel = 0;
     mapProp->unk_04 = 0;
     mapProp->unk_08 = 0;
     mapProp->unk_0C = 0;
@@ -110,19 +114,19 @@ void ov01_021F3744(NARC *narc, u32 size, MapPropManager *mapPropManager, int a3)
     for (int i = 0; i < MAP_PROP_MAX; ++i) {
         MapProp *mapProp = &mapPropManager->mapProps[i];
         if (i < num) {
-            mapProp->unk_00 = narcData[i].unk_00;
+            mapProp->buildModel = narcData[i].unk_00;
             mapProp->unk_04 = 1;
             mapProp->unk_0C = 0;
             mapProp->unk_14 = narcData[i].unk_04;
             mapProp->unk_20 = narcData[i].unk_10;
             mapProp->unk_2C = narcData[i].unk_1C;
-            if (!ov01_02204154(mapPropManager->fsys_unkC0, mapProp->unk_00)) {
-                mapProp->unk_00 = 0;
+            if (!ov01_02204154(mapPropManager->fsys_unkC0, mapProp->buildModel)) {
+                mapProp->buildModel = 0;
             }
-            mapProp->unk_10 = ov01_022040F8(mapPropManager->fsys_unkC0, mapProp->unk_00);
+            mapProp->unk_10 = ov01_022040F8(mapPropManager->fsys_unkC0, mapProp->buildModel);
         } else {
             VecFx32 sp8 = { 0, 0, 0 };
-            mapProp->unk_00 = 0;
+            mapProp->buildModel = 0;
             mapProp->unk_04 = 0;
             mapProp->unk_0C = 0;
             mapProp->unk_14 = sp8;
@@ -135,11 +139,11 @@ void ov01_021F3744(NARC *narc, u32 size, MapPropManager *mapPropManager, int a3)
     }
 }
 
-void ov01_021F3834(int a0, MapPropManager *mapPropManager, int a2, const SAFARIZONE_AREA *a3, u16 *a4, BOOL a5) {
+void ov01_021F3834(NARC *a0, MapPropManager *mapPropManager, int a2, const SAFARIZONE_AREA *safariArea, u16 *a4, BOOL gender) {
 #pragma unused(a0)
 #pragma unused(a2)
 
-    u32 sp10 = a3->active_object_count;
+    u32 sp10 = safariArea->active_object_count;
     if (sp10 > SAFARI_ZONE_MAX_OBJECTS) {
         GF_ASSERT(FALSE);
         sp10 = 0;
@@ -152,35 +156,65 @@ void ov01_021F3834(int a0, MapPropManager *mapPropManager, int a2, const SAFARIZ
         MapProp *mapProp = &mapPropManager->mapProps[i];
 
         if (i >= sp10) {
-            mapProp->unk_00 = 0;
+            mapProp->buildModel = 0;
             mapProp->unk_04 = 0;
             mapProp->unk_0C = 0;
             mapProp->unk_14 = sp24;
             mapProp->unk_20 = sp24;
             mapProp->unk_2C = sp18;
         } else {
-            SafariObjectConfig sp14;
-            GetSafariObjectConfig(&sp14, a3->objects[i].unk_0, a5);
-            mapProp->unk_00 = sp14.buildModel;
-            s16 r1 = 16 * a3->objects[i].unk_1 + 8 * sp14.width;
-            s16 r5 = a3->objects[i].unk_2;
-            s16 r7 = 16 * a3->objects[i].unk_3 + 8 * (2 - sp14.height);
-            mapProp->unk_14.x = FX32_CONST(r1 - 0x100);
-            mapProp->unk_14.y = FX32_CONST(r5);
-            mapProp->unk_14.z = FX32_CONST(r7 - 0x100);
+            SafariObjectConfig objectConfig;
+            GetSafariObjectConfig(&objectConfig, safariArea->objects[i].id, gender);
+            mapProp->buildModel = objectConfig.buildModel;
+            s16 x = 16 * safariArea->objects[i].x + 8 * objectConfig.width;
+            s16 y = safariArea->objects[i].y;
+            s16 z = 16 * safariArea->objects[i].z + 8 * (2 - objectConfig.height);
+            mapProp->unk_14.x = FX32_CONST(x - 0x100);
+            mapProp->unk_14.y = FX32_CONST(y);
+            mapProp->unk_14.z = FX32_CONST(z - 0x100);
             mapProp->unk_20 = sp24;
             mapProp->unk_2C = sp18;
             mapProp->unk_04 = 1;
             mapProp->unk_0C = 0;
-            for (int j = a3->objects[i].unk_3; j > a3->objects[i].unk_3 - sp14.height; --j) {
-                for (int k = a3->objects[i].unk_1; k < a3->objects[i].unk_1 + sp14.width; ++k) {
+            for (int j = safariArea->objects[i].z; j > safariArea->objects[i].z - objectConfig.height; --j) {
+                for (int k = safariArea->objects[i].x; k < safariArea->objects[i].x + objectConfig.width; ++k) {
                     a4[j * 32 + k] = 0x8023;
                 }
             }
-            if (!ov01_02204154(mapPropManager->fsys_unkC0, mapProp->unk_00)) {
-                mapProp->unk_00 = 0;
+            if (!ov01_02204154(mapPropManager->fsys_unkC0, mapProp->buildModel)) {
+                mapProp->buildModel = 0;
             }
-            mapProp->unk_10 = ov01_022040F8(mapPropManager->fsys_unkC0, mapProp->unk_00);
+            mapProp->unk_10 = ov01_022040F8(mapPropManager->fsys_unkC0, mapProp->buildModel);
+        }
+    }
+}
+
+void ov01_021F3A3C(const VecFx32 *a0, AreaDataManager *a1, BOOL a2, ModelAttributes *a3, MapPropManager *a4) {
+    VecFx32 sp3C;
+    extern const MtxFx33 ov01_02206A90;
+    MtxFx33 sp18 = ov01_02206A90;
+
+    for (int i = 0; i < MAP_PROP_MAX; ++i) {
+        MapProp *r5 = &a4->mapProps[i];
+        if (!r5->unk_04 || r5->unk_08) {
+            continue;
+        }
+        sp3C = r5->unk_14;
+        sp3C.x += a0->x;
+        sp3C.z += a0->z;
+        if (!sub_0201F990(r5->unk_10->model, &sp3C, &sp18, &r5->unk_2C)) {
+            continue;
+        }
+        AreaDataManager_Sub8AC *r4 = ov01_021FB9F4(a1);
+        if (a2 == TRUE) {
+            ov01_021EA9B0(a3, r5->unk_10->model, 0xF33);
+        }
+        u16 sp14;
+        ov01_021EA7F8(r5->buildModel, r4, &sp14);
+        if (sp14 == 0) {
+            GF3dRender_DrawModel(&r5->unk_10->renderObj, &sp3C, &sp18, &r5->unk_2C);
+        } else {
+            ov01_021F3B84(r5->unk_10->model, &sp3C, &sp18, &r5->unk_2C, r4, r5->buildModel);
         }
     }
 }
