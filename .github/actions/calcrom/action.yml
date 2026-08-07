@@ -39,7 +39,7 @@ runs:
     - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       with:
         repository: PikalaxALT/pokeheartgold-calcrom
-        ref: 1f0dcd83a5e7b9ad14ff313666197286d3971e8a # v0.1.0
+        ref: fc03168aa1d04e95e619a5f4a64ec01791683df1 # v0.1.0
         path: calcrom
     - uses: actions-rust-lang/setup-rust-toolchain@166cdcfd11aee3cb47222f9ddb555ce30ddb9659 # v1.17.0
       with:
