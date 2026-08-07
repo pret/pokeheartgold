@@ -48,7 +48,7 @@ runs:
       run: |
         {
           echo 'calcrom_output<<EOF'
-          cargo run --manifest-path calcrom/Cargo.toml --release -- \
+          cargo run --manifest-path calcrom/Cargo.toml -- \
             -d "${{ inputs.repodir }}" \
             -9 "${{ inputs.arm9subdir }}" \
             -7 "${{ inputs.arm7subdir }}" \
