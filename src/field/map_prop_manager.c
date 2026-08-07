@@ -7,6 +7,7 @@
 #include "field_system.h"
 #include "gf_3d_render.h"
 #include "unk_0201F990.h"
+#include "unk_02020B8C.h"
 #include "unk_02097268.h"
 
 #define MAP_PROP_MAX 32
@@ -150,8 +151,7 @@ void ov01_021F3834(NARC *a0, MapPropManager *mapPropManager, int a2, const SAFAR
 
     for (int i = 0; i < MAP_PROP_MAX; ++i) {
         VecFx32 sp24 = { 0, 0, 0 };
-        extern const VecFx32 ov01_02206A84; // = { FX32_ONE, FX32_ONE, FX32_ONE };
-        VecFx32 sp18 = ov01_02206A84;
+        VecFx32 sp18 = { FX32_ONE, FX32_ONE, FX32_ONE };
         MapProp *mapProp = &mapPropManager->mapProps[i];
 
         if (i >= sp10) {
@@ -190,8 +190,7 @@ void ov01_021F3834(NARC *a0, MapPropManager *mapPropManager, int a2, const SAFAR
 
 void ov01_021F3A3C(const VecFx32 *a0, AreaDataManager *a1, BOOL a2, ModelAttributes *a3, MapPropManager *a4) {
     VecFx32 sp3C;
-    extern const MtxFx33 ov01_02206A90;
-    MtxFx33 sp18 = ov01_02206A90;
+    MtxFx33 sp18 = { FX32_ONE, 0, 0, 0, FX32_ONE, 0, 0, 0, FX32_ONE };
 
     for (int i = 0; i < MAP_PROP_MAX; ++i) {
         MapProp *r5 = &a4->mapProps[i];
@@ -301,8 +300,7 @@ void ov01_021F3B84(const NNSG3dResMdl *model, const VecFx32 *baseTrans, const Mt
 }
 
 u8 MapPropManager_LoadOne(MapPropManager *mapPropManager, int modelID, const VecFx32 *position, const VecFx32 *rotation, MapPropAnimationManager *mapPropAnimationManager) {
-    extern const VecFx32 ov01_02206A78;
-    VecFx32 sp0 = ov01_02206A78;
+    VecFx32 sp0 = { FX32_ONE, FX32_ONE, FX32_ONE };
 
     for (u8 i = 0; i < MAP_PROP_MAX; ++i) {
         MapProp *mapProp = &mapPropManager->mapProps[i];
@@ -325,4 +323,29 @@ u8 MapPropManager_LoadOne(MapPropManager *mapPropManager, int modelID, const Vec
 
     GF_ASSERT(FALSE);
     return MAP_PROP_MAX;
+}
+
+void ov01_021F3C9C(MapPropManager *mapPropManager, AreaDataManager *areaDataManager) {
+    MtxFx33 sp14 = { FX32_ONE, 0, 0, 0, FX32_ONE, 0, 0, 0, FX32_ONE };
+
+    for (u8 i = 0; i < MAP_PROP_MAX; ++i) {
+        MapProp *r5 = &mapPropManager->mapProps[i];
+        if (!r5->unk_04) {
+            continue;
+        }
+        if (r5->unk_08) {
+            continue;
+        }
+        AreaDataManager_Sub8AC *r6 = ov01_021FB9F4(areaDataManager);
+        u16 sp10;
+        ov01_021EA7F8(r5->buildModel, r6, &sp10);
+        if (r5->unk_0C) {
+            sub_02020D2C(&sp14, &r5->unk_20);
+        }
+        if (sp10 == 0) {
+            GF3dRender_DrawModel(&r5->unk_10->renderObj, &r5->unk_14, &sp14, &r5->unk_2C);
+        } else {
+            ov01_021F3B84(r5->unk_10->model, &r5->unk_14, &sp14, &r5->unk_2C, r6, r5->buildModel);
+        }
+    }
 }

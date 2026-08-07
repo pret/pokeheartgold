@@ -508,7 +508,6 @@ Overlay field
     Object asm/overlay_01_021F3114.o
     Object asm/overlay_01_021F3378.o
     Object src/field/map_prop_manager.o
-    Object asm/overlay_01_021F3610.o
     Object asm/signpost.o
     Object asm/overlay_01_021F3F50.o
     Object asm/overlay_01_021F4464.o
