@@ -81,8 +81,8 @@
 .public ov01_021EAB08
 .public ov01_021EAB1C
 .public ov01_021EAB30
-.public ov01_021F3B38
-.public ov01_021F3B3C
+.public MapProp_GetRenderSurface
+.public MapProp_GetResModel
 .public ov01_021FB904
 .public ov01_021FB9E0
 .public ov01_02205790

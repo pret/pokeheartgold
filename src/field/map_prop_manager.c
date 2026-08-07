@@ -14,21 +14,21 @@
 
 typedef struct MapPropArcData {
     int unk_00;
-    VecFx32 unk_04;
-    VecFx32 unk_10;
-    VecFx32 unk_1C;
+    VecFx32 translation;
+    VecFx32 rotation;
+    VecFx32 scale;
     u8 padding[8];
 } MapPropArcData; // size: 0x30
 
 struct MapProp {
     int buildModel;
-    BOOL unk_04;
-    int unk_08;
-    int unk_0C;
-    UnkStruct_FieldSysC0_SubC *unk_10;
-    VecFx32 unk_14;
-    VecFx32 unk_20;
-    VecFx32 unk_2C;
+    BOOL active;
+    BOOL culled;
+    BOOL overrideRotation;
+    UnkStruct_FieldSysC0_SubC *render;
+    VecFx32 translation;
+    VecFx32 rotation;
+    VecFx32 scale;
 }; // size: 0x38
 
 struct MapPropManager {
@@ -38,13 +38,14 @@ struct MapPropManager {
 
 static void MapPropManager_Init(MapPropManager *mapPropManager, void *unkC0);
 static void MapProp_Init(MapProp *mapProp);
+static void DrawModelShapewise(const NNSG3dResMdl *mapPropManager, const VecFx32 *baseTrans, const MtxFx33 *prmBaseRot, const VecFx32 *baseScale, AreaDataManager_Sub8AC *a4, int a5);
 
 static void MapPropManager_Init(MapPropManager *mapPropManager, void *unkC0) {
     mapPropManager->fsys_unkC0 = unkC0;
     for (u8 i = 0; i < MAP_PROP_MAX; ++i) {
         MapProp *mapProp = &mapPropManager->mapProps[i];
         MapProp_Init(mapProp);
-        mapProp->unk_10 = NULL;
+        mapProp->render = NULL;
     }
 }
 
@@ -60,45 +61,45 @@ void MapPropManager_Free(MapPropManager *mapPropManager) {
 }
 
 static void MapProp_Init(MapProp *mapProp) {
-    VecFx32 sp0 = { 0, 0, 0 };
+    VecFx32 zero = { 0, 0, 0 };
 
     mapProp->buildModel = 0;
-    mapProp->unk_04 = 0;
-    mapProp->unk_08 = 0;
-    mapProp->unk_0C = 0;
-    mapProp->unk_14 = sp0;
-    mapProp->unk_20 = sp0;
-    mapProp->unk_2C = sp0;
+    mapProp->active = FALSE;
+    mapProp->culled = FALSE;
+    mapProp->overrideRotation = FALSE;
+    mapProp->translation = zero;
+    mapProp->rotation = zero;
+    mapProp->scale = zero;
 }
 
-void ov01_021F36AC(MapPropManager *mapPropManager) {
+void MapPropManager_Reset(MapPropManager *mapPropManager) {
     for (u8 i = 0; i < MAP_PROP_MAX; ++i) {
         MapProp *mapProp = &mapPropManager->mapProps[i];
         MapProp_Init(mapProp);
-        ov01_0220411C(mapPropManager->fsys_unkC0, mapProp->unk_10);
-        mapProp->unk_10 = NULL;
+        ov01_0220411C(mapPropManager->fsys_unkC0, mapProp->render);
+        mapProp->render = NULL;
     }
 }
 
-void ov01_021F36DC(int modelID, MapPropManager *mapPropManager) {
+void MapPropManager_RemoveMapPropByIndex(int modelID, MapPropManager *mapPropManager) {
     GF_ASSERT(modelID < MAP_PROP_MAX);
-    VecFx32 sp0 = { 0, 0, 0 };
+    VecFx32 zero = { 0, 0, 0 };
     MapProp *mapProp = &mapPropManager->mapProps[modelID];
 
     mapProp->buildModel = 0;
-    mapProp->unk_04 = 0;
-    mapProp->unk_08 = 0;
-    mapProp->unk_0C = 0;
-    mapProp->unk_14 = sp0;
-    mapProp->unk_20 = sp0;
-    mapProp->unk_2C = sp0;
+    mapProp->active = FALSE;
+    mapProp->culled = FALSE;
+    mapProp->overrideRotation = FALSE;
+    mapProp->translation = zero;
+    mapProp->rotation = zero;
+    mapProp->scale = zero;
 
-    ov01_0220411C(mapPropManager->fsys_unkC0, mapPropManager->mapProps[modelID].unk_10);
-    mapPropManager->mapProps[modelID].unk_10 = NULL;
+    ov01_0220411C(mapPropManager->fsys_unkC0, mapPropManager->mapProps[modelID].render);
+    mapPropManager->mapProps[modelID].render = NULL;
 }
 
 // NARC_a_0_6_5
-void ov01_021F3744(NARC *narc, u32 size, MapPropManager *mapPropManager, int a3) {
+void MapPropManager_LoadFromNARC(NARC *narc, u32 size, MapPropManager *mapPropManager, int a3) {
 #pragma unused(a3)
     MapPropArcData *narcData = NULL;
     u32 num;
@@ -115,23 +116,23 @@ void ov01_021F3744(NARC *narc, u32 size, MapPropManager *mapPropManager, int a3)
         MapProp *mapProp = &mapPropManager->mapProps[i];
         if (i < num) {
             mapProp->buildModel = narcData[i].unk_00;
-            mapProp->unk_04 = 1;
-            mapProp->unk_0C = 0;
-            mapProp->unk_14 = narcData[i].unk_04;
-            mapProp->unk_20 = narcData[i].unk_10;
-            mapProp->unk_2C = narcData[i].unk_1C;
+            mapProp->active = TRUE;
+            mapProp->overrideRotation = FALSE;
+            mapProp->translation = narcData[i].translation;
+            mapProp->rotation = narcData[i].rotation;
+            mapProp->scale = narcData[i].scale;
             if (!ov01_02204154(mapPropManager->fsys_unkC0, mapProp->buildModel)) {
                 mapProp->buildModel = 0;
             }
-            mapProp->unk_10 = ov01_022040F8(mapPropManager->fsys_unkC0, mapProp->buildModel);
+            mapProp->render = ov01_022040F8(mapPropManager->fsys_unkC0, mapProp->buildModel);
         } else {
-            VecFx32 sp8 = { 0, 0, 0 };
+            VecFx32 zero = { 0, 0, 0 };
             mapProp->buildModel = 0;
-            mapProp->unk_04 = 0;
-            mapProp->unk_0C = 0;
-            mapProp->unk_14 = sp8;
-            mapProp->unk_20 = sp8;
-            mapProp->unk_2C = sp8;
+            mapProp->active = FALSE;
+            mapProp->overrideRotation = FALSE;
+            mapProp->translation = zero;
+            mapProp->rotation = zero;
+            mapProp->scale = zero;
         }
     }
     if (narcData != NULL) {
@@ -139,28 +140,28 @@ void ov01_021F3744(NARC *narc, u32 size, MapPropManager *mapPropManager, int a3)
     }
 }
 
-void ov01_021F3834(NARC *a0, MapPropManager *mapPropManager, int a2, const SAFARIZONE_AREA *safariArea, u16 *a4, BOOL gender) {
+void MapPropManager_LoadFromSafariZone(NARC *a0, MapPropManager *mapPropManager, int a2, const SAFARIZONE_AREA *safariArea, u16 *a4, BOOL gender) {
 #pragma unused(a0)
 #pragma unused(a2)
 
-    u32 sp10 = safariArea->active_object_count;
-    if (sp10 > SAFARI_ZONE_MAX_OBJECTS) {
+    u32 numSafariObjects = safariArea->active_object_count;
+    if (numSafariObjects > SAFARI_ZONE_MAX_OBJECTS) {
         GF_ASSERT(FALSE);
-        sp10 = 0;
+        numSafariObjects = 0;
     }
 
     for (int i = 0; i < MAP_PROP_MAX; ++i) {
-        VecFx32 sp24 = { 0, 0, 0 };
-        VecFx32 sp18 = { FX32_ONE, FX32_ONE, FX32_ONE };
+        VecFx32 rotation = { 0, 0, 0 };
+        VecFx32 scale = { FX32_ONE, FX32_ONE, FX32_ONE };
         MapProp *mapProp = &mapPropManager->mapProps[i];
 
-        if (i >= sp10) {
+        if (i >= numSafariObjects) {
             mapProp->buildModel = 0;
-            mapProp->unk_04 = 0;
-            mapProp->unk_0C = 0;
-            mapProp->unk_14 = sp24;
-            mapProp->unk_20 = sp24;
-            mapProp->unk_2C = sp18;
+            mapProp->active = FALSE;
+            mapProp->overrideRotation = FALSE;
+            mapProp->translation = rotation;
+            mapProp->rotation = rotation;
+            mapProp->scale = scale;
         } else {
             SafariObjectConfig objectConfig;
             GetSafariObjectConfig(&objectConfig, safariArea->objects[i].id, gender);
@@ -168,13 +169,13 @@ void ov01_021F3834(NARC *a0, MapPropManager *mapPropManager, int a2, const SAFAR
             s16 x = 16 * safariArea->objects[i].x + 8 * objectConfig.width;
             s16 y = safariArea->objects[i].y;
             s16 z = 16 * safariArea->objects[i].z + 8 * (2 - objectConfig.height);
-            mapProp->unk_14.x = FX32_CONST(x - 0x100);
-            mapProp->unk_14.y = FX32_CONST(y);
-            mapProp->unk_14.z = FX32_CONST(z - 0x100);
-            mapProp->unk_20 = sp24;
-            mapProp->unk_2C = sp18;
-            mapProp->unk_04 = 1;
-            mapProp->unk_0C = 0;
+            mapProp->translation.x = FX32_CONST(x - 0x100);
+            mapProp->translation.y = FX32_CONST(y);
+            mapProp->translation.z = FX32_CONST(z - 0x100);
+            mapProp->rotation = rotation;
+            mapProp->scale = scale;
+            mapProp->active = TRUE;
+            mapProp->overrideRotation = FALSE;
             for (int j = safariArea->objects[i].z; j > safariArea->objects[i].z - objectConfig.height; --j) {
                 for (int k = safariArea->objects[i].x; k < safariArea->objects[i].x + objectConfig.width; ++k) {
                     a4[j * 32 + k] = 0x8023;
@@ -183,81 +184,81 @@ void ov01_021F3834(NARC *a0, MapPropManager *mapPropManager, int a2, const SAFAR
             if (!ov01_02204154(mapPropManager->fsys_unkC0, mapProp->buildModel)) {
                 mapProp->buildModel = 0;
             }
-            mapProp->unk_10 = ov01_022040F8(mapPropManager->fsys_unkC0, mapProp->buildModel);
+            mapProp->render = ov01_022040F8(mapPropManager->fsys_unkC0, mapProp->buildModel);
         }
     }
 }
 
-void ov01_021F3A3C(const VecFx32 *a0, AreaDataManager *a1, BOOL a2, ModelAttributes *a3, MapPropManager *a4) {
-    VecFx32 sp3C;
-    MtxFx33 sp18 = { FX32_ONE, 0, 0, 0, FX32_ONE, 0, 0, 0, FX32_ONE };
+void ov01_021F3A3C(const VecFx32 *position, AreaDataManager *areaDataManager, BOOL a2, ModelAttributes *modelAttributes, MapPropManager *mapPropManager) {
+    VecFx32 translation;
+    MtxFx33 rotation = { FX32_ONE, 0, 0, 0, FX32_ONE, 0, 0, 0, FX32_ONE };
 
     for (int i = 0; i < MAP_PROP_MAX; ++i) {
-        MapProp *r5 = &a4->mapProps[i];
-        if (!r5->unk_04 || r5->unk_08) {
+        MapProp *mapProp = &mapPropManager->mapProps[i];
+        if (!mapProp->active || mapProp->culled) {
             continue;
         }
-        sp3C = r5->unk_14;
-        sp3C.x += a0->x;
-        sp3C.z += a0->z;
-        if (!sub_0201F990(r5->unk_10->model, &sp3C, &sp18, &r5->unk_2C)) {
+        translation = mapProp->translation;
+        translation.x += position->x;
+        translation.z += position->z;
+        if (!sub_0201F990(mapProp->render->model, &translation, &rotation, &mapProp->scale)) {
             continue;
         }
-        AreaDataManager_Sub8AC *r4 = ov01_021FB9F4(a1);
+        AreaDataManager_Sub8AC *r4 = ov01_021FB9F4(areaDataManager);
         if (a2 == TRUE) {
-            ov01_021EA9B0(a3, r5->unk_10->model, 0xF33);
+            ov01_021EA9B0(modelAttributes, mapProp->render->model, 0xF33);
         }
         u16 sp14;
-        ov01_021EA7F8(r5->buildModel, r4, &sp14);
+        ov01_021EA7F8(mapProp->buildModel, r4, &sp14);
         if (sp14 == 0) {
-            GF3dRender_DrawModel(&r5->unk_10->renderObj, &sp3C, &sp18, &r5->unk_2C);
+            GF3dRender_DrawModel(&mapProp->render->renderObj, &translation, &rotation, &mapProp->scale);
         } else {
-            ov01_021F3B84(r5->unk_10->model, &sp3C, &sp18, &r5->unk_2C, r4, r5->buildModel);
+            DrawModelShapewise(mapProp->render->model, &translation, &rotation, &mapProp->scale, r4, mapProp->buildModel);
         }
     }
 }
 
-VecFx32 *ov01_021F3B04(MapProp *mapProp) {
-    return &mapProp->unk_2C;
+VecFx32 *MapProp_GetScale(MapProp *mapProp) {
+    return &mapProp->scale;
 }
 
-VecFx32 *ov01_021F3B08(MapProp *mapProp) {
-    return &mapProp->unk_20;
+VecFx32 *MapProp_GetRotation(MapProp *mapProp) {
+    return &mapProp->rotation;
 }
 
-void ov01_021F3B0C(VecFx32 *vec, MapProp *mapProp) {
-    *vec = mapProp->unk_14;
+void MapProp_GetTranslation(VecFx32 *translation, MapProp *mapProp) {
+    *translation = mapProp->translation;
 }
 
-void ov01_021F3B1C(MapProp *mapProp, VecFx32 *vec) {
-    mapProp->unk_14 = *vec;
+void MapProp_SetTranslation(MapProp *mapProp, VecFx32 *translation) {
+    mapProp->translation = *translation;
 }
 
-void ov01_021F3B2C(MapProp *mapProp, int a1) {
-    mapProp->unk_08 = a1;
+void MapProp_SetCulled(MapProp *mapProp, BOOL culled) {
+    mapProp->culled = culled;
 }
 
-BOOL ov01_021F3B30(MapProp *mapProp) {
-    return mapProp->unk_04;
+BOOL MapProp_IsActive(MapProp *mapProp) {
+    return mapProp->active;
 }
 
-int ov01_021F3B34(MapProp *mapProp) {
+int MapProp_GetBuildModel(MapProp *mapProp) {
     return mapProp->buildModel;
 }
 
-UnkStruct_FieldSysC0_SubC *ov01_021F3B38(MapProp *mapProp) {
-    return mapProp->unk_10;
+UnkStruct_FieldSysC0_SubC *MapProp_GetRenderSurface(MapProp *mapProp) {
+    return mapProp->render;
 }
 
-NNSG3dResMdl *ov01_021F3B3C(MapProp *mapProp) {
-    return mapProp->unk_10->model;
+NNSG3dResMdl *MapProp_GetResModel(MapProp *mapProp) {
+    return mapProp->render->model;
 }
 
-MapProp *ov01_021F3B44(MapPropManager *mapPropManager, u8 index) {
+MapProp *MapPropManager_GetMapPropByIndex(MapPropManager *mapPropManager, u8 index) {
     return &mapPropManager->mapProps[index];
 }
 
-MapProp *ov01_021F3B4C(MapPropManager *mapPropManager, int buildModel) {
+MapProp *MapPropManager_FindMapPropByBuildModel(MapPropManager *mapPropManager, int buildModel) {
     for (int i = 0; i < MAP_PROP_MAX; ++i) {
         MapProp *mapProp = &mapPropManager->mapProps[i];
         if (mapProp->buildModel == buildModel) {
@@ -268,14 +269,14 @@ MapProp *ov01_021F3B4C(MapPropManager *mapPropManager, int buildModel) {
     return NULL;
 }
 
-MapProp *ov01_021F3B60(MapPropManager *mapPropManager, int index) {
+MapProp *MapPropManager_GetMapPropByIndex_Checked_RequireActive(MapPropManager *mapPropManager, int index) {
     GF_ASSERT(index < MAP_PROP_MAX);
     MapProp *ret = &mapPropManager->mapProps[index];
-    GF_ASSERT(ret->unk_04 != 0);
+    GF_ASSERT(ret->active);
     return ret;
 }
 
-void ov01_021F3B84(const NNSG3dResMdl *model, const VecFx32 *baseTrans, const MtxFx33 *prmBaseRot, const VecFx32 *baseScale, AreaDataManager_Sub8AC *a4, int a5) {
+static void DrawModelShapewise(const NNSG3dResMdl *model, const VecFx32 *baseTrans, const MtxFx33 *prmBaseRot, const VecFx32 *baseScale, AreaDataManager_Sub8AC *a4, int buildModel) {
     NNS_G3dGlbSetBaseTrans(baseTrans);
     NNS_G3dGlbSetBaseRot(prmBaseRot);
     NNS_G3dGlbSetBaseScale(baseScale);
@@ -283,41 +284,41 @@ void ov01_021F3B84(const NNSG3dResMdl *model, const VecFx32 *baseTrans, const Mt
 
     u16 sp2;
     u16 sp0;
-    ov01_021EA804(a5, a4, &sp2, &sp0);
-    u16 *r6 = ov01_021EA81C(sp0, a4);
-    u8 r4;
-    u8 r5 = 0xFF;
-    for (r4 = 0; r4 < sp2; ++r4) {
-        BOOL r3;
-        if (r5 != r6[r4 * 2]) {
-            r5 = r6[r4 * 2];
-            r3 = TRUE;
+    ov01_021EA804(buildModel, a4, &sp2, &sp0);
+    u16 *shpDat = ov01_021EA81C(sp0, a4);
+    u8 i;
+    u8 matID = 0xFF;
+    for (i = 0; i < sp2; ++i) {
+        BOOL sendMat;
+        if (matID != shpDat[i * 2]) {
+            matID = shpDat[i * 2];
+            sendMat = TRUE;
         } else {
-            r3 = FALSE;
+            sendMat = FALSE;
         }
-        NNS_G3dDraw1Mat1Shp(model, r5, r6[r4 * 2 + 1], r3);
+        NNS_G3dDraw1Mat1Shp(model, matID, shpDat[i * 2 + 1], sendMat);
     }
 }
 
 u8 MapPropManager_LoadOne(MapPropManager *mapPropManager, int modelID, const VecFx32 *position, const VecFx32 *rotation, MapPropAnimationManager *mapPropAnimationManager) {
-    VecFx32 sp0 = { FX32_ONE, FX32_ONE, FX32_ONE };
+    VecFx32 scale = { FX32_ONE, FX32_ONE, FX32_ONE };
 
     for (u8 i = 0; i < MAP_PROP_MAX; ++i) {
         MapProp *mapProp = &mapPropManager->mapProps[i];
-        if (mapProp->unk_04) {
+        if (mapProp->active) {
             continue;
         }
-        mapProp->unk_04 = 1;
-        mapProp->unk_14 = *position;
+        mapProp->active = TRUE;
+        mapProp->translation = *position;
         if (rotation != NULL) {
-            mapProp->unk_0C = 1;
-            mapProp->unk_20 = *rotation;
+            mapProp->overrideRotation = TRUE;
+            mapProp->rotation = *rotation;
         } else {
-            mapProp->unk_0C = 0;
+            mapProp->overrideRotation = FALSE;
         }
-        mapProp->unk_2C = sp0;
+        mapProp->scale = scale;
         mapProp->buildModel = modelID;
-        mapProp->unk_10 = ov01_022040F8(mapPropManager->fsys_unkC0, modelID);
+        mapProp->render = ov01_022040F8(mapPropManager->fsys_unkC0, modelID);
         return i;
     }
 
@@ -326,26 +327,23 @@ u8 MapPropManager_LoadOne(MapPropManager *mapPropManager, int modelID, const Vec
 }
 
 void ov01_021F3C9C(MapPropManager *mapPropManager, AreaDataManager *areaDataManager) {
-    MtxFx33 sp14 = { FX32_ONE, 0, 0, 0, FX32_ONE, 0, 0, 0, FX32_ONE };
+    MtxFx33 baseRot = { FX32_ONE, 0, 0, 0, FX32_ONE, 0, 0, 0, FX32_ONE };
 
     for (u8 i = 0; i < MAP_PROP_MAX; ++i) {
-        MapProp *r5 = &mapPropManager->mapProps[i];
-        if (!r5->unk_04) {
-            continue;
-        }
-        if (r5->unk_08) {
+        MapProp *mapProp = &mapPropManager->mapProps[i];
+        if (!mapProp->active || mapProp->culled) {
             continue;
         }
         AreaDataManager_Sub8AC *r6 = ov01_021FB9F4(areaDataManager);
         u16 sp10;
-        ov01_021EA7F8(r5->buildModel, r6, &sp10);
-        if (r5->unk_0C) {
-            sub_02020D2C(&sp14, &r5->unk_20);
+        ov01_021EA7F8(mapProp->buildModel, r6, &sp10);
+        if (mapProp->overrideRotation) {
+            sub_02020D2C(&baseRot, &mapProp->rotation);
         }
         if (sp10 == 0) {
-            GF3dRender_DrawModel(&r5->unk_10->renderObj, &r5->unk_14, &sp14, &r5->unk_2C);
+            GF3dRender_DrawModel(&mapProp->render->renderObj, &mapProp->translation, &baseRot, &mapProp->scale);
         } else {
-            ov01_021F3B84(r5->unk_10->model, &r5->unk_14, &sp14, &r5->unk_2C, r6, r5->buildModel);
+            DrawModelShapewise(mapProp->render->model, &mapProp->translation, &baseRot, &mapProp->scale, r6, mapProp->buildModel);
         }
     }
 }

@@ -156,10 +156,10 @@ _021E91B6:
 	bl ov01_021FB9E0
 	str r0, [sp, #0x28]
 	ldr r0, [sp, #0x2c]
-	bl ov01_021F3B38
+	bl MapProp_GetRenderSurface
 	add r5, r0, #0
 	ldr r0, [sp, #0x2c]
-	bl ov01_021F3B3C
+	bl MapProp_GetResModel
 	str r5, [sp]
 	str r0, [sp, #4]
 	ldr r0, [sp, #0x28]
@@ -464,10 +464,10 @@ _021E9442:
 	bl ov01_021FB9E0
 	str r0, [sp, #0x28]
 	ldr r0, [sp, #0x2c]
-	bl ov01_021F3B38
+	bl MapProp_GetRenderSurface
 	add r5, r0, #0
 	ldr r0, [sp, #0x2c]
-	bl ov01_021F3B3C
+	bl MapProp_GetResModel
 	str r5, [sp]
 	str r0, [sp, #4]
 	ldr r0, [sp, #0x28]
@@ -908,10 +908,10 @@ _021E9788:
 	bl ov01_021FB9E0
 	add r7, r0, #0
 	ldr r0, [sp, #0x1c]
-	bl ov01_021F3B38
+	bl MapProp_GetRenderSurface
 	add r5, r0, #0
 	ldr r0, [sp, #0x1c]
-	bl ov01_021F3B3C
+	bl MapProp_GetResModel
 	str r5, [sp]
 	str r0, [sp, #4]
 	str r7, [sp, #8]
@@ -1132,10 +1132,10 @@ _021E995A:
 	bl ov01_021FB9E0
 	add r7, r0, #0
 	ldr r0, [sp, #0x20]
-	bl ov01_021F3B38
+	bl MapProp_GetRenderSurface
 	add r5, r0, #0
 	ldr r0, [sp, #0x20]
-	bl ov01_021F3B3C
+	bl MapProp_GetResModel
 	str r5, [sp]
 	str r0, [sp, #4]
 	str r7, [sp, #8]
@@ -1373,10 +1373,10 @@ _021E9B62:
 	bl ov01_021FB9E0
 	add r6, r0, #0
 	ldr r0, [sp, #0x28]
-	bl ov01_021F3B38
+	bl MapProp_GetRenderSurface
 	add r4, r0, #0
 	ldr r0, [sp, #0x28]
-	bl ov01_021F3B3C
+	bl MapProp_GetResModel
 	str r4, [sp]
 	str r0, [sp, #4]
 	str r6, [sp, #8]
@@ -1613,10 +1613,10 @@ _021E9D50:
 	bl ov01_021FB9E0
 	str r0, [sp, #0x2c]
 	ldr r0, [sp, #0x30]
-	bl ov01_021F3B38
+	bl MapProp_GetRenderSurface
 	add r5, r0, #0
 	ldr r0, [sp, #0x30]
-	bl ov01_021F3B3C
+	bl MapProp_GetResModel
 	str r5, [sp]
 	str r0, [sp, #4]
 	ldr r0, [sp, #0x2c]

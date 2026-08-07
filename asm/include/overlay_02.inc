@@ -395,11 +395,11 @@
 .public AreaLightManager_New
 .public AreaLightManager_Free
 .public ov01_021F1448
-.public ov01_021F36DC
-.public ov01_021F3B0C
-.public ov01_021F3B38
-.public ov01_021F3B3C
-.public ov01_021F3B60
+.public MapPropManager_RemoveMapPropByIndex
+.public MapProp_GetTranslation
+.public MapProp_GetRenderSurface
+.public MapProp_GetResModel
+.public MapPropManager_GetMapPropByIndex_Checked_RequireActive
 .public MapPropManager_LoadOne
 .public ov01_021F467C
 .public ov01_021F46DC

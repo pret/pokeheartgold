@@ -32,11 +32,11 @@ void sub_02054EB0(FieldSystem *fieldSystem, int a1, BOOL a2) {
         ov01_021F630C(i, fieldSystem->mapLoadManager, &val);
         if (val != 0) {
             for (u8 j = 0; j < 32; j++) {
-                MapProp *res = ov01_021F3B44(val, j);
-                if (ov01_021F3B30(res)) {
-                    int res2 = ov01_021F3B34(res);
+                MapProp *res = MapPropManager_GetMapPropByIndex(val, j);
+                if (MapProp_IsActive(res)) {
+                    int res2 = MapProp_GetBuildModel(res);
                     if (res2 == a1) {
-                        ov01_021F3B2C(res, a2);
+                        MapProp_SetCulled(res, a2);
                     }
                 }
             }

@@ -7015,7 +7015,7 @@ PokecenterAnimCreate: ; 0x0224BB18
 	bl sub_02054DC8
 	ldr r1, [sp, #4]
 	add r0, sp, #8
-	bl ov01_021F3B0C
+	bl MapProp_GetTranslation
 	add r3, sp, #8
 	ldmia r3!, {r0, r1}
 	add r2, r4, #0
@@ -7156,7 +7156,7 @@ _0224BC30:
 	bl GF_AssertFail
 _0224BC66:
 	ldr r0, [sp, #0x18]
-	bl ov01_021F3B38
+	bl MapProp_GetRenderSurface
 	add r5, r0, #0
 	ldr r0, [r6, #0x34]
 	bl ov01_021FB9E0
@@ -7250,8 +7250,8 @@ _0224BD1E:
 	add r0, #0x9c
 	ldrb r1, [r4, #0x10]
 	ldr r0, [r0]
-	bl ov01_021F3B60
-	bl ov01_021F3B38
+	bl MapPropManager_GetMapPropByIndex_Checked_RequireActive
+	bl MapProp_GetRenderSurface
 	add r3, r0, #0
 	ldr r0, [r6, #0x58]
 	mov r1, #0x10
@@ -7308,7 +7308,7 @@ _0224BDA0:
 	add r1, #0x9c
 	ldrb r0, [r0, #0x10]
 	ldr r1, [r1]
-	bl ov01_021F36DC
+	bl MapPropManager_RemoveMapPropByIndex
 	add r0, r5, #1
 	lsl r0, r0, #0x18
 	lsr r5, r0, #0x18
@@ -7434,7 +7434,7 @@ _0224BE8A:
 	bl GF_AssertFail
 _0224BE9E:
 	ldr r0, [sp, #0x18]
-	bl ov01_021F3B38
+	bl MapProp_GetRenderSurface
 	add r5, r0, #0
 	ldr r0, [r6, #0x34]
 	bl ov01_021FB9E0
@@ -7544,10 +7544,10 @@ ov02_0224BF58: ; 0x0224BF58
 	bl ov01_021FB9E0
 	add r6, r0, #0
 	ldr r0, [sp, #0x24]
-	bl ov01_021F3B38
+	bl MapProp_GetRenderSurface
 	add r4, r0, #0
 	ldr r0, [sp, #0x24]
-	bl ov01_021F3B3C
+	bl MapProp_GetResModel
 	str r4, [sp]
 	str r0, [sp, #4]
 	str r6, [sp, #8]
@@ -9430,7 +9430,7 @@ ov02_0224CDB0: ; 0x0224CDB0
 	bl sub_02054DC8
 	ldr r1, [sp, #4]
 	add r0, sp, #8
-	bl ov01_021F3B0C
+	bl MapProp_GetTranslation
 	add r3, sp, #8
 	ldmia r3!, {r0, r1}
 	add r2, r4, #0
@@ -9608,8 +9608,8 @@ _0224CF40:
 	add r0, #0x9c
 	ldrb r1, [r4, #0x10]
 	ldr r0, [r0]
-	bl ov01_021F3B60
-	bl ov01_021F3B38
+	bl MapPropManager_GetMapPropByIndex_Checked_RequireActive
+	bl MapProp_GetRenderSurface
 	add r3, r0, #0
 	ldr r0, [r6, #0x58]
 	mov r1, #0x10
@@ -9648,7 +9648,7 @@ _0224CF94:
 	add r1, #0x9c
 	ldrb r0, [r0, #0x10]
 	ldr r1, [r1]
-	bl ov01_021F36DC
+	bl MapPropManager_RemoveMapPropByIndex
 	add r0, r5, #1
 	lsl r0, r0, #0x18
 	lsr r5, r0, #0x18

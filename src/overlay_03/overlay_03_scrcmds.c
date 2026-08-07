@@ -81,10 +81,10 @@ BOOL ScrCmd_720(ScriptContext *ctx) {
     }
 
     for (int index = 0; index < 32; index++) {
-        MapProp *sp18 = ov01_021F3B44(sp20, index);
-        if (ov01_021F3B30(sp18)) {
+        MapProp *sp18 = MapPropManager_GetMapPropByIndex(sp20, index);
+        if (MapProp_IsActive(sp18)) {
             VecFx32 position;
-            ov01_021F3B0C(&position, sp18);
+            MapProp_GetTranslation(&position, sp18);
 
             s16 localX = (s16)(((position.x >> 12) + 0xF8) / 16);
             s16 localZ = (s16)(((position.z >> 12) + 0xF8) / 16);
@@ -93,7 +93,7 @@ BOOL ScrCmd_720(ScriptContext *ctx) {
                 && localZ <= safariObject->z
                 && localX < safariObject->x + objectConfig.width
                 && localZ > safariObject->z - objectConfig.height) {
-                ov01_021F3B2C(sp18, 1);
+                MapProp_SetCulled(sp18, 1);
                 break;
             }
         }
