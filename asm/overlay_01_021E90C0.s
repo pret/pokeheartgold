@@ -145,7 +145,7 @@ _021E9198:
 	beq _021E91F4
 	ldr r0, [r6, #0x54]
 	ldr r1, [sp, #0x20]
-	bl ov01_021E8BAC
+	bl MapPropAnimationManager_GetPropAnimationCount
 	add r7, r0, #0
 	bne _021E91B6
 	add sp, #0x58
@@ -449,7 +449,7 @@ _021E941A:
 	beq _021E9476
 	ldr r0, [r4, #0x54]
 	ldr r1, [sp, #0x20]
-	bl ov01_021E8BAC
+	bl MapPropAnimationManager_GetPropAnimationCount
 	add r7, r0, #0
 	bne _021E9442
 	mov r0, #1
@@ -1366,7 +1366,7 @@ _021E9B62:
 	beq _021E9BB0
 	ldr r0, [r7, #0x54]
 	ldr r1, [sp, #0x20]
-	bl ov01_021E8BAC
+	bl MapPropAnimationManager_GetPropAnimationCount
 	add r5, r0, #0
 	beq _021E9BB4
 	ldr r0, [r7, #0x34]
@@ -1602,7 +1602,7 @@ _021E9D32:
 	beq _021E9D88
 	ldr r0, [r4, #0x54]
 	ldr r1, [sp, #0x20]
-	bl ov01_021E8BAC
+	bl MapPropAnimationManager_GetPropAnimationCount
 	add r7, r0, #0
 	bne _021E9D50
 	add sp, #0x5c

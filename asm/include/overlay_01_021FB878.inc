@@ -40,7 +40,7 @@
 .public FX_SinCosTable_
 .public NNS_GfdDefaultFuncFreeTexVram
 .public NNS_GfdDefaultFuncFreePlttVram
-.public ov01_021E8B9C
+.public MapPropAnimationManager_GetAnimListNARCFileCount
 .public ov01_021E8F3C
 .public ov01_021EA724
 .public ov01_021EA73C
