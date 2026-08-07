@@ -50,9 +50,9 @@
 .public GF3dRender_BindModelSet
 .public sub_0201FA34
 .public MTRandom
-.public sub_02023738
-.public sub_02023778
-.public sub_020237B0
+.public BillboardLists_Create
+.public BillboardLists_Delete
+.public BillboardLists_Draw
 .public sub_020237EC
 .public sub_02023874
 .public sub_02023910

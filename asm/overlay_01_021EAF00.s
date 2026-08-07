@@ -30,8 +30,8 @@ _021EAF14:
 	pop {r4, pc}
 	thumb_func_end ov01_021EAF00
 
-	thumb_func_start ov01_021EAF18
-ov01_021EAF18: ; 0x021EAF18
+	thumb_func_start FieldSystem_InitBottomScreen
+FieldSystem_InitBottomScreen: ; 0x021EAF18
 	push {r4, lr}
 	add r4, r0, #0
 	bl ov01_021EAF00
@@ -44,10 +44,10 @@ ov01_021EAF18: ; 0x021EAF18
 	pop {r4, pc}
 	nop
 _021EAF30: .word ov01_022066DC
-	thumb_func_end ov01_021EAF18
+	thumb_func_end FieldSystem_InitBottomScreen
 
-	thumb_func_start ov01_021EAF34
-ov01_021EAF34: ; 0x021EAF34
+	thumb_func_start FieldSystem_IsBottomScreenRunningDummy
+FieldSystem_IsBottomScreenRunningDummy: ; 0x021EAF34
 	push {r4, lr}
 	add r4, r0, #0
 	bl ov01_021EAF00
@@ -64,10 +64,10 @@ _021EAF4A:
 	pop {r4, pc}
 	.balign 4, 0
 _021EAF50: .word ov01_022066DC + 4
-	thumb_func_end ov01_021EAF34
+	thumb_func_end FieldSystem_IsBottomScreenRunningDummy
 
-	thumb_func_start ov01_021EAF54
-ov01_021EAF54: ; 0x021EAF54
+	thumb_func_start FieldSystem_EndBottomScreen
+FieldSystem_EndBottomScreen: ; 0x021EAF54
 	push {r4, lr}
 	add r4, r0, #0
 	bl ov01_021EAF00
@@ -80,10 +80,10 @@ ov01_021EAF54: ; 0x021EAF54
 	pop {r4, pc}
 	nop
 _021EAF6C: .word ov01_022066DC + 8
-	thumb_func_end ov01_021EAF54
+	thumb_func_end FieldSystem_EndBottomScreen
 
-	thumb_func_start ov01_021EAF70
-ov01_021EAF70: ; 0x021EAF70
+	thumb_func_start FieldSystem_IsBottomScreenDone
+FieldSystem_IsBottomScreenDone: ; 0x021EAF70
 	push {r4, lr}
 	add r4, r0, #0
 	bl ov01_021EAF00
@@ -96,7 +96,7 @@ ov01_021EAF70: ; 0x021EAF70
 	pop {r4, pc}
 	nop
 _021EAF88: .word ov01_022066DC + 12
-	thumb_func_end ov01_021EAF70
+	thumb_func_end FieldSystem_IsBottomScreenDone
 
 	thumb_func_start ov01_021EAF8C
 ov01_021EAF8C: ; 0x021EAF8C

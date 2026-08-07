@@ -230,7 +230,7 @@
 .public sub_02054C90
 .public sub_02054DC8
 .public Field_GetTimeOfDay
-.public DialogBox_LoadFontPals
+.public FieldMessage_LoadTextPalettes
 .public DialogBox_AddWindowToLayer3
 .public DialogBox_LoadFrame
 .public DialogBox_PrintMessage
@@ -392,15 +392,15 @@
 .public ov01_021E8E70
 .public ov01_021E8ED0
 .public ov01_021E8F10
-.public ov01_021EA220
-.public ov01_021EA284
+.public AreaLightManager_New
+.public AreaLightManager_Free
 .public ov01_021F1448
 .public ov01_021F36DC
 .public ov01_021F3B0C
 .public ov01_021F3B38
 .public ov01_021F3B3C
 .public ov01_021F3B60
-.public ov01_021F3C0C
+.public MapPropManager_LoadOne
 .public ov01_021F467C
 .public ov01_021F46DC
 .public ov01_021F6A9C

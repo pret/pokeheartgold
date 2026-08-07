@@ -148,4 +148,4 @@
 .public gOverlayTemplate_PartyMenu
 .public gOverlayTemplate_PokemonSummary
 .public gSystem
-.public ov01_021E636C
+.public FieldMap_FadeScreen

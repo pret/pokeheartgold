@@ -200,7 +200,7 @@ _0225F168:
 	ldr r0, [r4, #0x10]
 	ldr r0, [r0, #4]
 	ldr r0, [r0, #0x1c]
-	bl ov01_021FB514
+	bl HBlankSystem_Stop
 	mov r0, #6
 	str r0, [sp]
 	mov r0, #1
@@ -254,7 +254,7 @@ _0225F21C:
 	ldr r0, [r4, #0x10]
 	ldr r0, [r0, #4]
 	ldr r0, [r0, #0x1c]
-	bl ov01_021FB4F4
+	bl HBlankSystem_Start
 	ldr r1, [r4, #0x14]
 	cmp r1, #0
 	beq _0225F238
@@ -528,7 +528,7 @@ _0225F45C:
 	ldr r0, [r6, #0x10]
 	ldr r0, [r0, #4]
 	ldr r0, [r0, #0x1c]
-	bl ov01_021FB514
+	bl HBlankSystem_Stop
 	mov r0, #8
 	str r0, [sp]
 	mov r0, #1
@@ -559,7 +559,7 @@ _0225F496:
 	ldr r0, [r6, #0x10]
 	ldr r0, [r0, #4]
 	ldr r0, [r0, #0x1c]
-	bl ov01_021FB4F4
+	bl HBlankSystem_Start
 	ldr r1, [r6, #0x14]
 	cmp r1, #0
 	beq _0225F4B2

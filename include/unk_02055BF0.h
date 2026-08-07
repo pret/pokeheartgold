@@ -2,14 +2,15 @@
 #define POKEHEARTGOLD_UNK_02055BF0_H
 
 #include "field_system.h"
+#include "screen_fade.h"
 #include "task.h"
 #include "unk_0206793C.h"
 
 typedef struct FieldFadeEnvironment {
     u32 state;
-    int pattern;
-    int typeTop;
-    int typeBottom;
+    enum FadeMode fadeMode;
+    enum FadeType typeTop;
+    enum FadeType typeBottom;
     u16 colour;
     u16 unk12;
     u32 duration;
@@ -28,7 +29,7 @@ typedef struct FieldTransitionEnvironment {
     UnkStruct_0206793C *unk24;
 } FieldTransitionEnvironment; // size: 0x28
 
-void NewFieldFadeEnvironment(TaskManager *man, int pattern, int typeTop, int typeBottom, u16 colour, int duration, int framesPer, enum HeapID heapID);
+void NewFieldFadeEnvironment(TaskManager *man, enum FadeMode fadeMode, enum FadeType typeTop, enum FadeType typeBottom, u16 colour, int duration, int framesPer, enum HeapID heapID);
 void NewFieldTransitionEnvironment(FieldSystem *fieldSystem, int mapID, int warpID, int x, int z, int dir, u32 transNo);
 void sub_02055CD8(FieldSystem *fieldSystem, int mapID, int warpID, int x, int z, int dir);
 

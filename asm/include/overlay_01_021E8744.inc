@@ -10,11 +10,11 @@
 .public Heap_Free
 .public GF_AssertFail
 .public MIi_CpuClearFast
-.public ov01_021E87E4
+.public MapPropAnimationManager_Init
 .public ov01_021E8970
-.public ov01_021E8A28
+.public MapPropAnimationManager_UnloadAllAnimations
 .public ov01_021E8A8C
-.public ov01_021E8AEC
+.public MapPropAnimationManager_Free
 .public ov01_021E8B04
 .public ov01_021E8B60
 .public ov01_021E8B6C

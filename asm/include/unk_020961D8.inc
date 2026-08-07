@@ -24,4 +24,4 @@
 .public sub_02090D48
 .public sub_02090D60
 .public sub_020961D8
-.public ov01_021E636C
+.public FieldMap_FadeScreen

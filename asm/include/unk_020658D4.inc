@@ -33,7 +33,7 @@
 .public MapObject_SetSingleMovement
 .public MapObject_ClearSingleMovement
 .public MapObject_CheckSingleMovement
-.public MapObject_ClearFlag3
+.public MapObject_ClearEndMovement
 .public MapObject_ClearFlag18
 .public sub_0205F73C
 .public MapObject_GetPreviousXCoord

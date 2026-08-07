@@ -230,9 +230,9 @@ _021E5A8C:
 	strh r0, [r2]
 	bl ov67_021E5BC0
 	mov r0, #0
-	bl sub_0200FBDC
+	bl ResetVisibleHardwareWindows
 	mov r0, #1
-	bl sub_0200FBDC
+	bl ResetVisibleHardwareWindows
 	add r0, r4, #0
 	bl ov67_021E5DA0
 	b _021E5B24

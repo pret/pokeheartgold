@@ -36,7 +36,7 @@
 .public ManagedSprite_OffsetPositionXY
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
-.public sub_0200FBDC
+.public ResetVisibleHardwareWindows
 .public GridInputHandler_Create
 .public GridInputHandler_Free
 .public GridInputHandler_HandleInput_AllowHold

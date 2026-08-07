@@ -76,7 +76,7 @@
 .public ClearFrameAndWindow2
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
-.public sub_0200FBDC
+.public ResetVisibleHardwareWindows
 .public sub_0200FBF4
 .public FontSystem_NewInit
 .public sub_020135AC

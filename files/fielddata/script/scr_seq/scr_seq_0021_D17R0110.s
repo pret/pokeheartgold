@@ -326,7 +326,7 @@ scr_seq_D17R0110_006:
 	StopBGM 30
 	ApplyMovement obj_D17R0110_dancer, _0798
 	WaitMovement
-	ScrCmd_726
+	ProcessSoundplate
 	BufferPlayersName 0
 	NPCMsg msg_0058_D17R0110_00002
 	CloseMsg

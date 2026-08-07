@@ -51,7 +51,7 @@ u8 sub_0205C310(u32 param0);
 u8 sub_0205C350(u32 param0);
 PlayerAvatar *PlayerAvatar_CreateWithParams(MapObjectManager *manager, u32 x, u32 z, u32 direction, s32 state, u32 gender, u32 param6, PlayerSaveData *playerSaveData);
 PlayerAvatar *PlayerAvatar_CreateWithActiveMapObject(MapObjectManager *manager, PlayerSaveData *playerSaveData, u32 gender);
-void sub_0205C46C(PlayerAvatar *avatar);
+void PlayerAvatar_InitMapFeatures(PlayerAvatar *avatar);
 void PlayerAvatar_FreeToHeap(PlayerAvatar *avatar);
 void PlayerAvatar_DeleteFromMap(PlayerAvatar *avatar);
 LocalMapObject *MapObjectManager_GetFirstActiveObjectWithMovement1(MapObjectManager *manager);

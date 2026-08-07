@@ -95,9 +95,9 @@ _021E591C:
 	mov r1, #4
 	bl SetKeyRepeatTimers
 	mov r0, #0
-	bl sub_0200FBDC
+	bl ResetVisibleHardwareWindows
 	mov r0, #1
-	bl sub_0200FBDC
+	bl ResetVisibleHardwareWindows
 	ldr r0, _021E5A00 ; =ov99_021E6250
 	add r1, r4, #0
 	bl Main_SetVBlankIntrCB
@@ -1886,9 +1886,9 @@ _021E6798:
 	add r0, r4, #0
 	bl ov99_021E6D34
 	mov r0, #0
-	bl sub_0200FBDC
+	bl ResetVisibleHardwareWindows
 	mov r0, #1
-	bl sub_0200FBDC
+	bl ResetVisibleHardwareWindows
 	ldr r0, _021E683C ; =ov99_021E6938
 	add r1, r4, #0
 	bl Main_SetVBlankIntrCB
@@ -4057,9 +4057,9 @@ _021E783C:
 	add r0, r4, #0
 	bl ov99_021E8224
 	mov r0, #0
-	bl sub_0200FBDC
+	bl ResetVisibleHardwareWindows
 	mov r0, #1
-	bl sub_0200FBDC
+	bl ResetVisibleHardwareWindows
 	ldr r0, _021E78EC ; =ov99_021E7A54
 	add r1, r4, #0
 	bl Main_SetVBlankIntrCB
@@ -5408,9 +5408,9 @@ _021E831E:
 	add r0, r4, #0
 	bl ov99_021E8818
 	mov r0, #0
-	bl sub_0200FBDC
+	bl ResetVisibleHardwareWindows
 	mov r0, #1
-	bl sub_0200FBDC
+	bl ResetVisibleHardwareWindows
 	ldr r0, _021E83A8 ; =ov99_021E856C
 	add r1, r4, #0
 	bl Main_SetVBlankIntrCB

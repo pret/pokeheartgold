@@ -6,7 +6,7 @@
 #include "options.h"
 #include "pm_string.h"
 
-void DialogBox_LoadFontPals(enum GFPalLoadLocation location, BOOL resetPrinters);
+void FieldMessage_LoadTextPalettes(enum GFPalLoadLocation location, BOOL resetPrinters);
 void DialogBox_AddWindowToLayer3(BgConfig *bgConfig, Window *window, GFBgLayer layer);
 void DialogBox_LoadFrame(Window *window, Options *options);
 void DialogBox_Clear(Window *window);

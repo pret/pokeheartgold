@@ -1,97 +1,100 @@
-#include "field_signpost_window.h"
+#include "field/signpost.h"
 
 #include "global.h"
 
+#include "constants/scrcmd.h"
+
 #include "dialog_box.h"
+#include "field_system.h"
 
 static void FieldSystem_SignpostWindowCommand_Show(FieldSystem *fieldSystem);
 static void FieldSystem_SignpostWindowCommand_Hide(FieldSystem *fieldSystem);
 static BOOL FieldSystem_SignpostWindowCommand_WipeIn(FieldSystem *fieldSystem);
 static BOOL FieldSystem_SignpostWindowCommand_WipeOut(FieldSystem *fieldSystem);
 
-struct FieldSignpostWindow *FieldSignpostWindow_New(enum HeapID heapId) {
-    struct FieldSignpostWindow *ret = Heap_Alloc(heapId, sizeof(struct FieldSignpostWindow));
-    memset(ret, 0, sizeof(struct FieldSignpostWindow));
+Signpost *Signpost_Init(enum HeapID heapId) {
+    Signpost *ret = Heap_Alloc(heapId, sizeof(Signpost));
+    memset(ret, 0, sizeof(Signpost));
     return ret;
 }
 
-void FieldSignpostWindow_Delete(struct FieldSignpostWindow *signpostWindow) {
-    if (signpostWindow->active) {
-        RemoveWindow(&signpostWindow->window);
+void Signpost_Free(Signpost *signpost) {
+    if (signpost->isActive) {
+        RemoveWindow(&signpost->window);
     }
-    Heap_Free(signpostWindow);
+    Heap_Free(signpost);
 }
 
-void FieldSignpostWindow_SetParam(struct FieldSignpostWindow *signpostWindow, u8 type, u16 map) {
-    signpostWindow->type = type;
-    signpostWindow->map = map;
+void Signpost_SetParam(Signpost *signpost, u8 type, u16 map) {
+    signpost->type = type;
+    signpost->map = map;
 }
 
-void FieldSignpostWindow_SetCommand(struct FieldSignpostWindow *signpostWindow, u8 cmd) {
-    signpostWindow->cmd = cmd;
+void Signpost_SetCommand(Signpost *signpost, u8 command) {
+    signpost->command = command;
 }
 
-Window *FieldSignpostWindow_GetWindow(struct FieldSignpostWindow *signpostWindow) {
-    return &signpostWindow->window;
+Window *Signpost_GetWindow(Signpost *signpost) {
+    return &signpost->window;
 }
 
-u8 FieldSignpostWindow_GetType(struct FieldSignpostWindow *signpostWindow) {
-    return signpostWindow->type;
+u8 Signpost_GetType(Signpost *signpost) {
+    return signpost->type;
 }
 
-BOOL FieldSignpostWindow_CommandIsFinished(struct FieldSignpostWindow *signpostWindow) {
-    return signpostWindow->cmd == MAPSIGNCOMMAND_NOP;
+BOOL Signpost_CommandIsFinished(Signpost *signpost) {
+    return signpost->command == MAPSIGNCOMMAND_NOP;
 }
 
-void FieldSystem_ExecuteSignpostWindowCommand(FieldSystem *fieldSystem) {
-    struct FieldSignpostWindow *signpostWindow = fieldSystem->signpostWindow;
+void Signpost_DoCurrentCommand(FieldSystem *fieldSystem) {
+    Signpost *signpost = fieldSystem->signpost;
 
-    switch (signpostWindow->cmd) {
+    switch (signpost->command) {
     case MAPSIGNCOMMAND_NOP:
         break;
     case MAPSIGNCOMMAND_SHOW:
         FieldSystem_SignpostWindowCommand_Show(fieldSystem);
-        signpostWindow->cmd = MAPSIGNCOMMAND_NOP;
+        signpost->command = MAPSIGNCOMMAND_NOP;
         break;
     case MAPSIGNCOMMAND_WIPE_OUT:
         if (FieldSystem_SignpostWindowCommand_WipeOut(fieldSystem) == TRUE) {
-            signpostWindow->cmd = MAPSIGNCOMMAND_NOP;
+            signpost->command = MAPSIGNCOMMAND_NOP;
         }
         break;
     case MAPSIGNCOMMAND_WIPE_IN:
         if (FieldSystem_SignpostWindowCommand_WipeIn(fieldSystem) == TRUE) {
-            signpostWindow->cmd = MAPSIGNCOMMAND_NOP;
+            signpost->command = MAPSIGNCOMMAND_NOP;
         }
         break;
     case MAPSIGNCOMMAND_HIDE:
         FieldSystem_SignpostWindowCommand_Hide(fieldSystem);
-        signpostWindow->cmd = MAPSIGNCOMMAND_NOP;
+        signpost->command = MAPSIGNCOMMAND_NOP;
         break;
     }
 }
 
 void FieldSystem_SetAndExecuteSignpostWindowCommand(FieldSystem *fieldSystem, u8 cmd) {
-    FieldSignpostWindow_SetCommand(fieldSystem->signpostWindow, cmd);
-    FieldSystem_ExecuteSignpostWindowCommand(fieldSystem);
+    Signpost_SetCommand(fieldSystem->signpost, cmd);
+    Signpost_DoCurrentCommand(fieldSystem);
 }
 
 static void FieldSystem_SignpostWindowCommand_Show(FieldSystem *fieldSystem) {
     BgSetPosTextAndCommit(fieldSystem->bgConfig, GF_BG_LYR_MAIN_3, BG_POS_OP_SET_Y, -48);
 
-    if (!fieldSystem->signpostWindow->active) {
-        DialogBox_AddWindowToLayer3WithXOffset(fieldSystem->bgConfig, &fieldSystem->signpostWindow->window, fieldSystem->signpostWindow->type, GF_BG_LYR_MAIN_3);
-        fieldSystem->signpostWindow->active = TRUE;
+    if (!fieldSystem->signpost->isActive) {
+        DialogBox_AddWindowToLayer3WithXOffset(fieldSystem->bgConfig, &fieldSystem->signpost->window, fieldSystem->signpost->type, GF_BG_LYR_MAIN_3);
+        fieldSystem->signpost->isActive = TRUE;
     }
-    DialogBox_DrawFrameWithWayfindingGraphic(&fieldSystem->signpostWindow->window, fieldSystem->signpostWindow->type, fieldSystem->signpostWindow->map);
+    DialogBox_DrawFrameWithWayfindingGraphic(&fieldSystem->signpost->window, fieldSystem->signpost->type, fieldSystem->signpost->map);
 }
 
 static void FieldSystem_SignpostWindowCommand_Hide(FieldSystem *fieldSystem) {
-    if (fieldSystem->signpostWindow->active) {
-        RemoveWindow(&fieldSystem->signpostWindow->window);
+    if (fieldSystem->signpost->isActive) {
+        RemoveWindow(&fieldSystem->signpost->window);
         FillBgTilemapRect(fieldSystem->bgConfig, GF_BG_LYR_MAIN_3, 0, 0, 18, 32, 6, TILEMAP_FILL_KEEP_PAL);
         BgCommitTilemapBufferToVram(fieldSystem->bgConfig, GF_BG_LYR_MAIN_3);
         BgSetPosTextAndCommit(fieldSystem->bgConfig, GF_BG_LYR_MAIN_3, BG_POS_OP_SET_Y, 0);
-        fieldSystem->signpostWindow->active = FALSE;
+        fieldSystem->signpost->isActive = FALSE;
     }
 }
 

@@ -100,8 +100,8 @@ _020236E0:
 	.balign 4, 0
 	thumb_func_end sub_020236BC
 
-	thumb_func_start sub_02023738
-sub_02023738: ; 0x02023738
+	thumb_func_start BillboardLists_Create
+BillboardLists_Create: ; 0x02023738
 	push {r3, r4, r5, r6, r7, lr}
 	add r6, r0, #0
 	ldr r0, _02023774 ; =_021D2208
@@ -134,10 +134,10 @@ _02023772:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _02023774: .word _021D2208
-	thumb_func_end sub_02023738
+	thumb_func_end BillboardLists_Create
 
-	thumb_func_start sub_02023778
-sub_02023778: ; 0x02023778
+	thumb_func_start BillboardLists_Delete
+BillboardLists_Delete: ; 0x02023778
 	push {r4, r5, r6, lr}
 	ldr r6, _020237AC ; =_021D2208
 	mov r4, #0
@@ -165,10 +165,10 @@ _02023798:
 	pop {r4, r5, r6, pc}
 	nop
 _020237AC: .word _021D2208
-	thumb_func_end sub_02023778
+	thumb_func_end BillboardLists_Delete
 
-	thumb_func_start sub_020237B0
-sub_020237B0: ; 0x020237B0
+	thumb_func_start BillboardLists_Draw
+BillboardLists_Draw: ; 0x020237B0
 	push {r3, r4, r5, r6, r7, lr}
 	ldr r6, _020237E8 ; =_021D2208
 	mov r4, #0
@@ -201,7 +201,7 @@ _020237E4:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _020237E8: .word _021D2208
-	thumb_func_end sub_020237B0
+	thumb_func_end BillboardLists_Draw
 
 	thumb_func_start sub_020237EC
 sub_020237EC: ; 0x020237EC

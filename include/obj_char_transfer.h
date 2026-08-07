@@ -7,8 +7,8 @@
 
 typedef struct ObjCharTransferTemplate {
     int maxTasks;
-    u32 sizeMain;
-    u32 sizeSub;
+    int sizeMain;
+    int sizeSub;
     enum HeapID heapID;
 } ObjCharTransferTemplate;
 

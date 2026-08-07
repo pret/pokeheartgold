@@ -17,7 +17,7 @@ BOOL FieldBGM_TryFadeOut(FieldSystem *fieldSystem, u16 seqNo, int mode);
 static void FieldBGM_GetFadeOutAndWaitFrames(FieldSystem *fieldSystem, int mode, int *fadeOutFrames, int *waitFrames);
 int FieldBGM_GetEyesMeetForTrainer(u16 a0, int regionNo);
 void FieldBGM_TryFadeIn(FieldSystem *fieldSystem, u32 mapId);
-void FieldBGM_PlayForMapHeader(FieldSystem *fieldSystem, u32 mapId, u32 a2);
+void FieldBGM_PlayForMapHeader(FieldSystem *fieldSystem, u32 mapId, BOOL a2);
 BOOL FieldBGM_PlayEffectiveForMapHeader(FieldSystem *fieldSystem, u32 mapId);
 BOOL sub_02055198(FieldSystem *fieldSystem, u16 seqNo);
 

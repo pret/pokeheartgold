@@ -10,10 +10,10 @@
 #include "poke_overlay.h"
 #include "pokegear_apps.h"
 #include "roamer.h"
+#include "screen_fade.h"
 #include "sys_flags.h"
 #include "touchscreen.h"
 #include "unk_02005D10.h"
-#include "unk_0200FA24.h"
 
 FS_EXTERN_OVERLAY(OVY_26);
 
@@ -352,7 +352,7 @@ static int PokegearMap_MainTask_FadeIn(PokegearMapAppData *mapApp) {
 
     switch (mapApp->state) {
     case 0:
-        BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 1, mapApp->heapID);
+        BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_IN, FADE_TYPE_BRIGHTNESS_IN, RGB_BLACK, 6, 1, mapApp->heapID);
         if (mapApp->inMarkingsMode == 1) {
             for (i = 0; i < 4; ++i) {
                 ToggleBgLayer(i + GF_BG_LYR_MAIN_1, TRUE);
@@ -389,7 +389,7 @@ static int PokegearMap_MainTask_FadeIn(PokegearMapAppData *mapApp) {
 static int PokegearMap_MainTask_FadeOut(PokegearMapAppData *mapApp) {
     switch (mapApp->state) {
     case 0:
-        BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, mapApp->heapID);
+        BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, RGB_BLACK, 6, 1, mapApp->heapID);
         ++mapApp->state;
         break;
     case 1:

@@ -729,7 +729,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_723,
     ScrCmd_724,
     ScrCmd_725,
-    ScrCmd_726,
+    ScrCmd_ProcessSoundplate,
     ScrCmd_GetFollowPokePartyIndex,
     ScrCmd_728,
     ScrCmd_729,
