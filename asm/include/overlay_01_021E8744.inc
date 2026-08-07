@@ -14,7 +14,11 @@
 .public MapPropAnimationData_SetAnimationPaused
 .public MapPropAnimationData_SetAnimationLoopCount
 .public MapPropAnimationManager_GetAnimListNARCFileCount
-.public ov01_021E8BAC
+.public MapPropOneShotAnimationManager_AllocateAnimation
+.public MapPropOneShotAnimation_Reset
+.public MapPropOneShotAnimationManager_GetAnimation
+.public MapPropOneShotAnimation_Init
+.public MapPropOneShotAnimation_SetAnimation
 .public ov01_021E8DB4
 .public ov01_021E8DD4
 .public ov01_021E8DE8

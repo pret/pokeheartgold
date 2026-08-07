@@ -276,3 +276,96 @@ BOOL MapPropAnimationData_IsAnimationLoopFinished(MapPropAnimationData *animData
 int MapPropAnimationManager_GetAnimListNARCFileCount(MapPropAnimationManager *manager) {
     return NARC_GetFileCount(manager->unk134);
 }
+
+const u8 MapPropAnimationManager_GetPropAnimationCount(MapPropAnimationManager *manager, const int mapPropModelID) {
+    u8 i;
+    MapPropAnimListFile animListFile;
+    NARC_ReadWholeMember(manager->unk134, mapPropModelID, &animListFile);
+
+    // TODO: Check if plat's oversight preventing this from triggering still exists.
+    if (!animListFile.hasAnimations) {
+        return 0;
+    }
+
+    for (i = 0; i < MAP_PROP_ANIM_LIST_FILE_ARCHIVE_IDS_COUNT; i++) {
+        if (animListFile.animArchiveIDs[i] == -1) { // ANIM_ARCHIVE_ID_NONE
+            break;
+        }
+    }
+
+    return i;
+}
+
+// Make static
+MapPropOneShotAnimation *MapPropOneShotAnimationManager_AllocateAnimation(MapPropOneShotAnimationManager *manager, const u8 tag);
+
+MapPropOneShotAnimation *MapPropOneShotAnimationManager_AllocateAnimation(MapPropOneShotAnimationManager *manager, const u8 tag) {
+    u8 i;
+
+    GF_ASSERT(tag != 0);
+    u8 itemIndex = MAP_PROP_ONE_SHOT_ANIMATION_MANAGER_MAX_ITEMS;
+
+    for (i = 0; i < MAP_PROP_ONE_SHOT_ANIMATION_MANAGER_MAX_ITEMS; i++) {
+        if (itemIndex == MAP_PROP_ONE_SHOT_ANIMATION_MANAGER_MAX_ITEMS && manager->items[i].tag == 0) {
+            itemIndex = i;
+        }
+    }
+    if (itemIndex != MAP_PROP_ONE_SHOT_ANIMATION_MANAGER_MAX_ITEMS) {
+        manager->items[itemIndex].tag = tag;
+        manager->items[itemIndex].unk35 = 0;
+    } else {
+        GF_ASSERT(FALSE);
+        return NULL;
+    }
+    return &manager->items[itemIndex];
+}
+
+// Make static
+void MapPropOneShotAnimation_Reset(MapPropOneShotAnimation *oneShotAnimation);
+
+void MapPropOneShotAnimation_Reset(MapPropOneShotAnimation *oneShotAnimation) {
+    oneShotAnimation->tag = 0;
+    oneShotAnimation->mapPropModelID = 0;
+    oneShotAnimation->currentAnimation = NULL;
+
+    for (u8 i = 0; i < MAP_PROP_ONE_SHOT_ANIMATION_MAX_RENDER_OBJS; i++) {
+        oneShotAnimation->mapPropRenderObjs[i] = NULL;
+    }
+}
+
+// Make static
+MapPropOneShotAnimation *MapPropOneShotAnimationManager_GetAnimation(MapPropOneShotAnimationManager *manager, const int tag);
+
+MapPropOneShotAnimation *MapPropOneShotAnimationManager_GetAnimation(MapPropOneShotAnimationManager *manager, const int tag) {
+    int i;
+    MapPropOneShotAnimation *oneShotAnimation = NULL;
+
+    for (i = 0; i < MAP_PROP_ONE_SHOT_ANIMATION_MANAGER_MAX_ITEMS; i++) {
+        if (manager->items[i].tag == tag) {
+            oneShotAnimation = &manager->items[i];
+            break;
+        }
+    }
+    return oneShotAnimation;
+}
+
+// Make static
+void MapPropOneShotAnimation_Init(NNSG3dRenderObj *mapPropRenderObj, const int animationCount, MapPropOneShotAnimation *oneShotAnimation);
+
+void MapPropOneShotAnimation_Init(NNSG3dRenderObj *mapPropRenderObj, const int animationCount, MapPropOneShotAnimation *oneShotAnimation) {
+    GF_ASSERT(animationCount <= MAP_PROP_ONE_SHOT_ANIMATION_MAX_ANIMATIONS);
+
+    if (mapPropRenderObj != NULL) {
+        oneShotAnimation->mapPropRenderObjs[0] = mapPropRenderObj;
+    }
+    
+    oneShotAnimation->animations.count = animationCount;
+}
+
+// Make static
+void MapPropOneShotAnimation_SetAnimation(MapPropOneShotAnimation *oneShotAnimation, const int mapPropAnimIndex, MapPropAnimation *animation);
+
+void MapPropOneShotAnimation_SetAnimation(MapPropOneShotAnimation *oneShotAnimation, const int mapPropAnimIndex, MapPropAnimation *animation) {
+    GF_ASSERT(mapPropAnimIndex < oneShotAnimation->animations.count);
+    oneShotAnimation->animations.list[mapPropAnimIndex] = animation;
+}

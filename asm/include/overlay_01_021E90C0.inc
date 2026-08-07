@@ -45,7 +45,7 @@
 .public NNSi_G3dModifyMatFlag
 .public MI_CpuFill8
 .public FieldMap_FadeScreen
-.public ov01_021E8BAC
+.public MapPropAnimationManager_GetPropAnimationCount
 .public ov01_021E8DE8
 .public ov01_021E8E98
 .public ov01_021E8ED0

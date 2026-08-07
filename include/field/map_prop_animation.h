@@ -10,6 +10,12 @@
 #define MAP_PROP_ANIMATION_MANAGER_MAX_ANIMATIONS               16
 #define MAP_PROP_ANIMATION_MANAGER_MAX_BICYCLE_SLOPE_ANIMATIONS 2
 
+#define MAP_PROP_ONE_SHOT_ANIMATION_MAX_ANIMATIONS 4
+
+#define MAP_PROP_ONE_SHOT_ANIMATION_MAX_RENDER_OBJS 6
+
+#define MAP_PROP_ONE_SHOT_ANIMATION_MANAGER_MAX_ITEMS 16
+
 typedef struct BicycleSlopeAnimation {
     BOOL loaded;
     NNSG3dRenderObj *renderObj;
@@ -42,8 +48,23 @@ typedef struct MapPropAnimationManager {
     FieldSystemUnkSubCC_Sub0 *unk138;
 } MapPropAnimationManager; // Size: 0x13C
 
+typedef struct MapPropOneShotAnimationList {
+    MapPropAnimation *list[MAP_PROP_ONE_SHOT_ANIMATION_MAX_ANIMATIONS];
+    int count;
+} MapPropOneShotAnimationList;
+
+typedef struct MapPropOneShotAnimation {
+    MapPropOneShotAnimationList animations;
+    NNSG3dRenderObj *mapPropRenderObjs[MAP_PROP_ONE_SHOT_ANIMATION_MAX_RENDER_OBJS];
+    MapPropAnimation *currentAnimation;
+    int mapPropModelID;
+    u8 tag;
+    u8 unk35;
+    u16 unk36;
+} MapPropOneShotAnimation; // Size: 0x38 (at most)
+
 typedef struct MapPropOneShotAnimationManager {
-    u8 unk0[0x380];
+    MapPropOneShotAnimation items[MAP_PROP_ONE_SHOT_ANIMATION_MANAGER_MAX_ITEMS];
 } MapPropOneShotAnimationManager; // Size: 0x380
 
 MapPropAnimationManager *MapPropAnimationManager_Init(NARC *narc, FieldSystemUnkSubC8 *unkSubC8);
@@ -58,6 +79,7 @@ void MapPropAnimationData_GoToLastAnimationFrame(MapPropAnimationData *animData)
 void MapPropAnimationData_SetAnimationLoopCount(MapPropAnimationData *animation, int loopCount);
 BOOL MapPropAnimationData_IsAnimationLoopFinished(MapPropAnimationData *animation);
 int MapPropAnimationManager_GetAnimListNARCFileCount(MapPropAnimationManager *mapPropAnimationManager);
+const u8 MapPropAnimationManager_GetPropAnimationCount(MapPropAnimationManager *manager, const int mapPropModelID);
 MapPropOneShotAnimationManager *ov01_021E8DB4();
 void ov01_021E8DD4(MapPropOneShotAnimationManager **mapPropOneShotAnimationManager);
 

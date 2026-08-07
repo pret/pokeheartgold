@@ -4682,7 +4682,7 @@ ov04_02256278: ; 0x02256278
 	str r0, [sp, #4]
 	ldr r0, [r4, #0x54]
 	mov r1, #0xad
-	bl ov01_021E8BAC
+	bl MapPropAnimationManager_GetPropAnimationCount
 	add r7, r0, #0
 	mov r5, #0
 	cmp r7, #0
@@ -4699,7 +4699,7 @@ _022562B4:
 _022562C6:
 	ldr r0, [r4, #0x54]
 	mov r1, #0xae
-	bl ov01_021E8BAC
+	bl MapPropAnimationManager_GetPropAnimationCount
 	add r7, r0, #0
 	mov r5, #0
 	cmp r7, #0
@@ -4763,7 +4763,7 @@ ov04_02256304: ; 0x02256304
 	add r7, r0, #0
 	ldr r0, [r5, #0x54]
 	mov r1, #0xc7
-	bl ov01_021E8BAC
+	bl MapPropAnimationManager_GetPropAnimationCount
 	add r6, r0, #0
 	ldr r4, _022563AC ; =0x00000000
 	beq _02256370
@@ -4791,7 +4791,7 @@ _02256370:
 	add r7, r0, #0
 	ldr r0, [r5, #0x54]
 	mov r1, #0xc8
-	bl ov01_021E8BAC
+	bl MapPropAnimationManager_GetPropAnimationCount
 	add r6, r0, #0
 	ldr r4, _022563AC ; =0x00000000
 	beq _022563AA
@@ -5083,7 +5083,7 @@ _022565B2:
 	str r0, [sp, #8]
 	ldr r0, [r6, #0x54]
 	ldr r1, [r4, #0x10]
-	bl ov01_021E8BAC
+	bl MapPropAnimationManager_GetPropAnimationCount
 	add r7, r0, #0
 	ldr r5, _02256648 ; =0x00000000
 	beq _022565E4
@@ -5114,7 +5114,7 @@ _022565F2:
 	str r0, [sp, #4]
 	ldr r0, [r6, #0x54]
 	ldr r1, [r4, #0x10]
-	bl ov01_021E8BAC
+	bl MapPropAnimationManager_GetPropAnimationCount
 	add r7, r0, #0
 	ldr r5, _02256648 ; =0x00000000
 	beq _02256628

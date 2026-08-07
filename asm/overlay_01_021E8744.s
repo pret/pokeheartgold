@@ -14,176 +14,6 @@
 
 	.text
 
-	thumb_func_start ov01_021E8BAC
-ov01_021E8BAC: ; 0x021E8BAC
-	push {r3, lr}
-	sub sp, #0x18
-	mov r2, #0x4d
-	lsl r2, r2, #2
-	ldr r0, [r0, r2]
-	add r2, sp, #0
-	bl NARC_ReadWholeMember
-	add r0, sp, #0
-	ldrb r0, [r0]
-	cmp r0, #0
-	bne _021E8BCA
-	add sp, #0x18
-	mov r0, #0
-	pop {r3, pc}
-_021E8BCA:
-	mov r0, #0
-	add r3, sp, #0
-	sub r1, r0, #1
-_021E8BD0:
-	lsl r2, r0, #2
-	add r2, r3, r2
-	ldr r2, [r2, #8]
-	cmp r2, r1
-	beq _021E8BE4
-	add r0, r0, #1
-	lsl r0, r0, #0x18
-	lsr r0, r0, #0x18
-	cmp r0, #4
-	blo _021E8BD0
-_021E8BE4:
-	add sp, #0x18
-	pop {r3, pc}
-	thumb_func_end ov01_021E8BAC
-
-	thumb_func_start ov01_021E8BE8
-ov01_021E8BE8: ; 0x021E8BE8
-	push {r3, r4, r5, lr}
-	add r5, r0, #0
-	add r4, r1, #0
-	bne _021E8BF4
-	bl GF_AssertFail
-_021E8BF4:
-	mov r1, #0x10
-	mov r0, #0
-	mov r2, #0x38
-_021E8BFA:
-	cmp r1, #0x10
-	bne _021E8C0E
-	add r3, r0, #0
-	mul r3, r2
-	add r3, r5, r3
-	add r3, #0x34
-	ldrb r3, [r3]
-	cmp r3, #0
-	bne _021E8C0E
-	add r1, r0, #0
-_021E8C0E:
-	add r0, r0, #1
-	lsl r0, r0, #0x18
-	lsr r0, r0, #0x18
-	cmp r0, #0x10
-	blo _021E8BFA
-	cmp r1, #0x10
-	beq _021E8C32
-	add r2, r1, #0
-	mov r0, #0x38
-	mul r2, r0
-	add r0, r5, r2
-	add r0, #0x34
-	strb r4, [r0]
-	add r0, r5, r2
-	mov r1, #0
-	add r0, #0x35
-	strb r1, [r0]
-	b _021E8C3A
-_021E8C32:
-	bl GF_AssertFail
-	mov r0, #0
-	pop {r3, r4, r5, pc}
-_021E8C3A:
-	add r0, r5, r2
-	pop {r3, r4, r5, pc}
-	.balign 4, 0
-	thumb_func_end ov01_021E8BE8
-
-	thumb_func_start ov01_021E8C40
-ov01_021E8C40: ; 0x021E8C40
-	add r1, r0, #0
-	mov r3, #0
-	add r1, #0x34
-	strb r3, [r1]
-	str r3, [r0, #0x30]
-	str r3, [r0, #0x2c]
-	add r2, r3, #0
-_021E8C4E:
-	lsl r1, r3, #2
-	add r1, r0, r1
-	str r2, [r1, #0x14]
-	add r1, r3, #1
-	lsl r1, r1, #0x18
-	lsr r3, r1, #0x18
-	cmp r3, #6
-	blo _021E8C4E
-	bx lr
-	thumb_func_end ov01_021E8C40
-
-	thumb_func_start ov01_021E8C60
-ov01_021E8C60: ; 0x021E8C60
-	push {r4, r5}
-	mov r4, #0
-	add r3, r4, #0
-	add r5, r0, #0
-_021E8C68:
-	add r2, r5, #0
-	add r2, #0x34
-	ldrb r2, [r2]
-	cmp r1, r2
-	bne _021E8C7A
-	mov r1, #0x38
-	mul r1, r3
-	add r4, r0, r1
-	b _021E8C82
-_021E8C7A:
-	add r3, r3, #1
-	add r5, #0x38
-	cmp r3, #0x10
-	blt _021E8C68
-_021E8C82:
-	add r0, r4, #0
-	pop {r4, r5}
-	bx lr
-	thumb_func_end ov01_021E8C60
-
-	thumb_func_start ov01_021E8C88
-ov01_021E8C88: ; 0x021E8C88
-	push {r4, r5, r6, lr}
-	add r4, r1, #0
-	add r5, r0, #0
-	add r6, r2, #0
-	cmp r4, #4
-	ble _021E8C98
-	bl GF_AssertFail
-_021E8C98:
-	cmp r5, #0
-	beq _021E8C9E
-	str r5, [r6, #0x14]
-_021E8C9E:
-	str r4, [r6, #0x10]
-	pop {r4, r5, r6, pc}
-	.balign 4, 0
-	thumb_func_end ov01_021E8C88
-
-	thumb_func_start ov01_021E8CA4
-ov01_021E8CA4: ; 0x021E8CA4
-	push {r4, r5, r6, lr}
-	add r5, r0, #0
-	ldr r0, [r5, #0x10]
-	add r4, r1, #0
-	add r6, r2, #0
-	cmp r4, r0
-	blt _021E8CB6
-	bl GF_AssertFail
-_021E8CB6:
-	lsl r0, r4, #2
-	str r6, [r5, r0]
-	pop {r4, r5, r6, pc}
-	thumb_func_end ov01_021E8CA4
-
 	thumb_func_start ov01_021E8CBC
 ov01_021E8CBC: ; 0x021E8CBC
 	push {r3, r4, r5, r6, r7, lr}
@@ -268,7 +98,7 @@ _021E8D56:
 	ldr r0, [sp, #0x4c]
 	add r1, r5, #0
 	add r2, r4, #0
-	bl ov01_021E8CA4
+	bl MapPropOneShotAnimation_SetAnimation
 	ldr r0, [sp, #0x24]
 	add r5, r5, #1
 	cmp r5, r0
@@ -360,7 +190,7 @@ ov01_021E8DE8: ; 0x021E8DE8
 	lsl r1, r2, #0x18
 	lsr r1, r1, #0x18
 	add r6, r3, #0
-	bl ov01_021E8BE8
+	bl MapPropOneShotAnimationManager_AllocateAnimation
 	add r5, r0, #0
 	bne _021E8E06
 	bl GF_AssertFail
@@ -370,7 +200,7 @@ _021E8E06:
 	ldr r0, [sp, #0x28]
 	ldr r1, [sp, #0x34]
 	add r2, r5, #0
-	bl ov01_021E8C88
+	bl MapPropOneShotAnimation_Init
 	add r0, sp, #0x38
 	ldrb r4, [r0]
 	cmp r4, #0
@@ -410,7 +240,7 @@ ov01_021E8E40: ; 0x021E8E40
 _021E8E52:
 	add r0, r5, #0
 	add r1, r7, #0
-	bl ov01_021E8C60
+	bl MapPropOneShotAnimationManager_GetAnimation
 	add r5, r0, #0
 	add r5, #0x14
 	lsl r4, r4, #2
@@ -436,7 +266,7 @@ ov01_021E8E70: ; 0x021E8E70
 _021E8E80:
 	add r0, r5, #0
 	add r1, r4, #0
-	bl ov01_021E8C60
+	bl MapPropOneShotAnimationManager_GetAnimation
 	add r1, r6, #0
 	bl ov01_021E8CBC
 	mov r1, #0
@@ -458,7 +288,7 @@ ov01_021E8E98: ; 0x021E8E98
 _021E8EAA:
 	add r0, r6, #0
 	add r1, r5, #0
-	bl ov01_021E8C60
+	bl MapPropOneShotAnimationManager_GetAnimation
 	add r1, r7, #0
 	bl ov01_021E8CBC
 	add r5, r0, #0
@@ -485,13 +315,13 @@ ov01_021E8ED0: ; 0x021E8ED0
 _021E8EDE:
 	add r0, r4, #0
 	add r1, r6, #0
-	bl ov01_021E8C60
+	bl MapPropOneShotAnimationManager_GetAnimation
 	add r4, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
 	bl ov01_021E8D6C
 	add r0, r4, #0
-	bl ov01_021E8C40
+	bl MapPropOneShotAnimation_Reset
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov01_021E8ED0
 
@@ -505,7 +335,7 @@ ov01_021E8EF8: ; 0x021E8EF8
 _021E8F04:
 	add r0, r5, #0
 	add r1, r4, #0
-	bl ov01_021E8C60
+	bl MapPropOneShotAnimationManager_GetAnimation
 	ldr r0, [r0, #0x2c]
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov01_021E8EF8
@@ -532,7 +362,7 @@ _021E8F2C:
 	thumb_func_start ov01_021E8F30
 ov01_021E8F30: ; 0x021E8F30
 	push {r3, lr}
-	bl ov01_021E8C60
+	bl MapPropOneShotAnimationManager_GetAnimation
 	ldr r0, [r0, #0x30]
 	pop {r3, pc}
 	.balign 4, 0
@@ -734,7 +564,7 @@ _021E90AC:
 ov01_021E90B0: ; 0x021E90B0
 	push {r4, lr}
 	add r4, r2, #0
-	bl ov01_021E8C60
+	bl MapPropOneShotAnimationManager_GetAnimation
 	add r0, #0x35
 	strb r4, [r0]
 	pop {r4, pc}
