@@ -12,74 +12,9 @@
 	.include "overlay_01_021F3610.inc"
 	.include "global.inc"
 
-	.text
+	.extern ov01_021F3B84
 
-	thumb_func_start ov01_021F3B84
-ov01_021F3B84: ; 0x021F3B84
-	push {r3, r4, r5, r6, r7, lr}
-	add r7, r0, #0
-	add r0, r1, #0
-	add r4, r2, #0
-	add r5, r3, #0
-	bl NNS_G3dGlbSetBaseTrans
-	ldr r1, _021F3C04 ; =NNS_G3dGlb + 0xBC
-	add r0, r4, #0
-	bl MI_Copy36B
-	ldr r1, _021F3C08 ; =NNS_G3dGlb + 0x80
-	mov r0, #0xa4
-	ldr r2, [r1, #0x7c]
-	bic r2, r0
-	add r0, r5, #0
-	str r2, [r1, #0x7c]
-	bl NNS_G3dGlbSetBaseScale
-	bl NNS_G3dGlbFlushP
-	add r2, sp, #0
-	ldr r0, [sp, #0x1c]
-	ldr r1, [sp, #0x18]
-	add r2, #2
-	add r3, sp, #0
-	bl ov01_021EA804
-	add r0, sp, #0
-	ldrh r0, [r0]
-	ldr r1, [sp, #0x18]
-	bl ov01_021EA81C
-	add r6, r0, #0
-	add r0, sp, #0
-	ldrh r0, [r0, #2]
-	mov r5, #0xff
-	mov r4, #0
-	cmp r0, #0
-	ble _021F3C00
-_021F3BD4:
-	lsl r0, r4, #2
-	add r2, r6, r0
-	ldrh r0, [r6, r0]
-	cmp r5, r0
-	beq _021F3BE6
-	lsl r0, r0, #0x18
-	lsr r5, r0, #0x18
-	mov r3, #1
-	b _021F3BE8
-_021F3BE6:
-	mov r3, #0
-_021F3BE8:
-	ldrh r2, [r2, #2]
-	add r0, r7, #0
-	add r1, r5, #0
-	bl NNS_G3dDraw1Mat1Shp
-	add r0, r4, #1
-	lsl r0, r0, #0x18
-	lsr r4, r0, #0x18
-	add r0, sp, #0
-	ldrh r0, [r0, #2]
-	cmp r4, r0
-	blt _021F3BD4
-_021F3C00:
-	pop {r3, r4, r5, r6, r7, pc}
-	nop
-_021F3C04: .word NNS_G3dGlb + 0xBC
-_021F3C08: .word NNS_G3dGlb + 0x80
-	thumb_func_end ov01_021F3B84
+	.text
 
 	thumb_func_start MapPropManager_LoadOne
 MapPropManager_LoadOne: ; 0x021F3C0C

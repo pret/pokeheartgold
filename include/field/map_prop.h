@@ -29,6 +29,7 @@ NNSG3dResMdl *ov01_021F3B3C(MapProp *mapProp);
 MapProp *ov01_021F3B44(MapPropManager *mapPropManager, u8 index);
 MapProp *ov01_021F3B4C(MapPropManager *mapPropManager, int buildModel);
 MapProp *ov01_021F3B60(MapPropManager *mapPropManager, int index);
+void ov01_021F3B84(const NNSG3dResMdl *mapPropManager, const VecFx32 *baseTrans, const MtxFx33 *prmBaseRot, const VecFx32 *baseScale, AreaDataManager_Sub8AC *a4, int a5);
 void MapPropManager_LoadOne(MapPropManager *mapPropManager, int modelID, const VecFx32 *position, const VecFx32 *rotation, MapPropAnimationManager *mapPropAnimationManager);
 void ov01_021F3C9C(MapPropManager *mapPropManager, AreaDataManager *areaDataManager);
 

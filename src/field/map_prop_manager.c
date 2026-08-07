@@ -3,7 +3,6 @@
 #include "field/map_load_manager.h"
 #include "field/map_prop.h"
 #include "field/overlay_01_021EA6C4.h"
-#include "field/overlay_01_021F3610.h"
 
 #include "field_system.h"
 #include "gf_3d_render.h"
@@ -275,4 +274,28 @@ MapProp *ov01_021F3B60(MapPropManager *mapPropManager, int index) {
     MapProp *ret = &mapPropManager->mapProps[index];
     GF_ASSERT(ret->unk_04 != 0);
     return ret;
+}
+
+void ov01_021F3B84(const NNSG3dResMdl *model, const VecFx32 *baseTrans, const MtxFx33 *prmBaseRot, const VecFx32 *baseScale, AreaDataManager_Sub8AC *a4, int a5) {
+    NNS_G3dGlbSetBaseTrans(baseTrans);
+    NNS_G3dGlbSetBaseRot(prmBaseRot);
+    NNS_G3dGlbSetBaseScale(baseScale);
+    NNS_G3dGlbFlush();
+
+    u16 sp2;
+    u16 sp0;
+    ov01_021EA804(a5, a4, &sp2, &sp0);
+    u16 *r6 = ov01_021EA81C(sp0, a4);
+    u8 r4;
+    u8 r5 = 0xFF;
+    for (r4 = 0; r4 < sp2; ++r4) {
+        BOOL r3;
+        if (r5 != r6[r4 * 2]) {
+            r5 = r6[r4 * 2];
+            r3 = TRUE;
+        } else {
+            r3 = FALSE;
+        }
+        NNS_G3dDraw1Mat1Shp(model, r5, r6[r4 * 2 + 1], r3);
+    }
 }
