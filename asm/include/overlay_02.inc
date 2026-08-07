@@ -382,11 +382,11 @@
 .public Field3dObjectTask_Delete
 .public Field3dObjectTask_GetData
 .public MapPropAnimationManager_AddAnimationToRenderObj
-.public ov01_021E8A8C
-.public ov01_021E8B04
-.public ov01_021E8B6C
-.public ov01_021E8B84
-.public ov01_021E8B90
+.public MapPropAnimationManager_RemoveAnimationFromRenderObj
+.public MapPropAnimationManager_GetAnimationData
+.public MapPropAnimationData_GoToFirstAnimationFrame
+.public MapPropAnimationData_SetAnimationLoopCount
+.public MapPropAnimationData_IsAnimationLoopFinished
 .public ov01_021E8DE8
 .public ov01_021E8E40
 .public ov01_021E8E70

@@ -199,11 +199,11 @@ void ov01_02204350(FieldSystemUnkSubC8 *unkC8) {
             for (int i = 0; i < unkC8->unkC; i++) {
                 for (int j = 0; j < unkCC_Sub0->unk20; j++) {
                     MapPropAnimation *animation = &unkCC_Sub0->unk10[j];
-                    if (animation->unk14 == 1 && animation->paused != TRUE && animation->unk1C) {
+                    if (animation->unk14 == 1 && animation->paused != TRUE && animation->looping) {
                         ov01_02204594(animation);
                         if (animation->loopCount != -1 && ov01_022045DC(animation)) {
                             if (animation->unk18 + 1 >= animation->loopCount) {
-                                animation->unk1C = 0;
+                                animation->looping = FALSE;
                             } else {
                                 animation->unk18++;
                             }
@@ -224,7 +224,7 @@ void ov01_022043D8(FieldSystemUnkSubC8 *unkSubC8) {
             for (i = 0; i < unkSubC8->unkC; i++) {
                 for (j = 0; j < unk4->unk20; j++) {
                     MapPropAnimation *animation = &unk4->unk10[j];
-                    if (animation->unk14 == 1 && animation->unk1C) {
+                    if (animation->unk14 == 1 && animation->looping) {
                         animation->paused = TRUE;
                     }
                 }
@@ -241,7 +241,7 @@ void ov01_02204424(FieldSystemUnkSubC8 *unkSubC8) {
             for (int i = 0; i < unkSubC8->unkC; i++) {
                 for (int j = 0; j < unkCC_Sub0->unk20; j++) {
                     MapPropAnimation *animation = &unkCC_Sub0->unk10[j];
-                    if (animation->unk14 == 1 && animation->unk1C) {
+                    if (animation->unk14 == 1 && animation->looping) {
                         MapPropAnimation_GoToFirstFrame(animation);
                     }
                 }
@@ -279,7 +279,7 @@ static void ov01_022044C4(FieldSystemUnkSubCC_Sub0 *unkCC_Sub0, void *arg1) {
 
 void ov01_022044C8(MapPropAnimation *animation, int loopCount, BOOL paused, BOOL reversed) {
     animation->unk18 = 0;
-    animation->unk1C = 1;
+    animation->looping = TRUE;
     animation->unk14 = 1;
     animation->loopCount = loopCount;
     animation->paused = paused;
@@ -320,11 +320,11 @@ void MapPropAnimation_SetPaused(MapPropAnimation *animation, BOOL paused) {
     animation->paused = paused;
 }
 
-BOOL ov01_02204560(MapPropAnimation *animation) {
-    return animation->unk1C == 0;
+BOOL MapPropAnimation_IsLoopFinished(MapPropAnimation *animation) {
+    return animation->looping == FALSE;
 }
 
-void ov01_02204570(MapPropAnimation *animation) {
+void MapPropAnimation_GoToLastFrame(MapPropAnimation *animation) {
     if (!animation->reversed) {
         animation->animObj->frame = NNS_G3dAnmObjGetNumFrame(animation->animObj) - FX32_ONE;
     } else {
@@ -332,7 +332,7 @@ void ov01_02204570(MapPropAnimation *animation) {
     }
 }
 
-void MapPropAnimation_SetLoopCount(MapPropAnimation *animation, int loopCount) {
+void MapPropAnimation_SetLoopCount(MapPropAnimation *animation, const int loopCount) {
     animation->loopCount = loopCount;
 }
 

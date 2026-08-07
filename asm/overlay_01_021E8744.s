@@ -14,214 +14,6 @@
 
 	.text
 
-	thumb_func_start ov01_021E8A50
-ov01_021E8A50: ; 0x021E8A50
-	push {r3, r4, r5, lr}
-	add r5, r0, #0
-	add r4, r1, #0
-	beq _021E8A88
-	cmp r5, #0
-	bne _021E8A60
-	bl GF_AssertFail
-_021E8A60:
-	ldr r0, [r5, #4]
-	cmp r0, #0
-	beq _021E8A88
-	cmp r0, #1
-	bne _021E8A82
-	mov r0, #0x4e
-	lsl r0, r0, #2
-	ldr r0, [r4, r0]
-	ldr r1, [r5]
-	bl ov01_02204500
-	mov r0, #0x4e
-	lsl r0, r0, #2
-	ldr r0, [r4, r0]
-	ldr r1, [r5]
-	bl ov01_0220431C
-_021E8A82:
-	mov r0, #0
-	str r0, [r5, #4]
-	str r0, [r5, #0xc]
-_021E8A88:
-	pop {r3, r4, r5, pc}
-	.balign 4, 0
-	thumb_func_end ov01_021E8A50
-
-	thumb_func_start ov01_021E8A8C
-ov01_021E8A8C: ; 0x021E8A8C
-	push {r4, r5, r6, lr}
-	sub sp, #0x18
-	add r4, r0, #0
-	mov r0, #0x4d
-	lsl r0, r0, #2
-	add r6, r1, #0
-	add r1, r2, #0
-	ldr r0, [r4, r0]
-	add r2, sp, #0
-	add r5, r3, #0
-	bl NARC_ReadWholeMember
-	cmp r5, #4
-	blt _021E8AAC
-	bl GF_AssertFail
-_021E8AAC:
-	lsl r1, r5, #2
-	add r0, sp, #8
-	ldr r5, [r0, r1]
-	mov r0, #0
-	mvn r0, r0
-	cmp r5, r0
-	bne _021E8ABE
-	bl GF_AssertFail
-_021E8ABE:
-	mov r0, #0
-_021E8AC0:
-	lsl r1, r0, #4
-	add r1, r4, r1
-	ldr r2, [r1, #0x14]
-	cmp r2, #1
-	bne _021E8ADC
-	ldr r2, [r1, #0x18]
-	cmp r5, r2
-	bne _021E8ADC
-	ldr r1, [r1, #0x10]
-	add r0, r6, #0
-	bl ov01_02204518
-	add sp, #0x18
-	pop {r4, r5, r6, pc}
-_021E8ADC:
-	add r0, r0, #1
-	lsl r0, r0, #0x18
-	lsr r0, r0, #0x18
-	cmp r0, #0x10
-	blo _021E8AC0
-	add sp, #0x18
-	pop {r4, r5, r6, pc}
-	.balign 4, 0
-	thumb_func_end ov01_021E8A8C
-
-	thumb_func_start MapPropAnimationManager_Free
-MapPropAnimationManager_Free: ; 0x021E8AEC
-	push {r4, lr}
-	add r4, r0, #0
-	beq _021E8B02
-	mov r0, #0x13
-	lsl r0, r0, #4
-	ldr r0, [r4, r0]
-	bl NARC_Delete
-	add r0, r4, #0
-	bl Heap_Free
-_021E8B02:
-	pop {r4, pc}
-	thumb_func_end MapPropAnimationManager_Free
-
-	thumb_func_start ov01_021E8B04
-ov01_021E8B04: ; 0x021E8B04
-	push {r3, r4, r5, lr}
-	sub sp, #0x18
-	add r3, r0, #0
-	mov r0, #0x4d
-	add r5, r2, #0
-	lsl r0, r0, #2
-	add r4, r1, #0
-	ldr r0, [r5, r0]
-	add r1, r3, #0
-	add r2, sp, #0
-	bl NARC_ReadWholeMember
-	cmp r4, #4
-	blt _021E8B24
-	bl GF_AssertFail
-_021E8B24:
-	lsl r1, r4, #2
-	add r0, sp, #8
-	mov r4, #0
-	ldr r1, [r0, r1]
-	add r2, r4, #0
-	add r3, r5, #0
-_021E8B30:
-	ldr r0, [r3, #0x18]
-	cmp r1, r0
-	bne _021E8B48
-	add r5, #0x10
-	lsl r0, r2, #4
-	add r4, r5, r0
-	ldr r0, [r4, #4]
-	cmp r0, #0
-	bne _021E8B50
-	bl GF_AssertFail
-	b _021E8B50
-_021E8B48:
-	add r2, r2, #1
-	add r3, #0x10
-	cmp r2, #0x10
-	blt _021E8B30
-_021E8B50:
-	cmp r4, #0
-	bne _021E8B58
-	bl GF_AssertFail
-_021E8B58:
-	add r0, r4, #0
-	add sp, #0x18
-	pop {r3, r4, r5, pc}
-	.balign 4, 0
-	thumb_func_end ov01_021E8B04
-
-	thumb_func_start ov01_021E8B60
-ov01_021E8B60: ; 0x021E8B60
-	ldr r3, _021E8B68 ; =MapPropAnimation_SetPaused
-	ldr r0, [r0]
-	bx r3
-	nop
-_021E8B68: .word MapPropAnimation_SetPaused
-	thumb_func_end ov01_021E8B60
-
-	thumb_func_start ov01_021E8B6C
-ov01_021E8B6C: ; 0x021E8B6C
-	ldr r3, _021E8B74 ; =MapPropAnimation_GoToFirstFrame
-	ldr r0, [r0]
-	bx r3
-	nop
-_021E8B74: .word MapPropAnimation_GoToFirstFrame
-	thumb_func_end ov01_021E8B6C
-
-	thumb_func_start ov01_021E8B78
-ov01_021E8B78: ; 0x021E8B78
-	ldr r3, _021E8B80 ; =ov01_02204570
-	ldr r0, [r0]
-	bx r3
-	nop
-_021E8B80: .word ov01_02204570
-	thumb_func_end ov01_021E8B78
-
-	thumb_func_start ov01_021E8B84
-ov01_021E8B84: ; 0x021E8B84
-	ldr r3, _021E8B8C ; =MapPropAnimation_SetLoopCount
-	ldr r0, [r0]
-	bx r3
-	nop
-_021E8B8C: .word MapPropAnimation_SetLoopCount
-	thumb_func_end ov01_021E8B84
-
-	thumb_func_start ov01_021E8B90
-ov01_021E8B90: ; 0x021E8B90
-	ldr r3, _021E8B98 ; =ov01_02204560
-	ldr r0, [r0]
-	bx r3
-	nop
-_021E8B98: .word ov01_02204560
-	thumb_func_end ov01_021E8B90
-
-	thumb_func_start MapPropAnimationManager_GetAnimListNARCFileCount
-MapPropAnimationManager_GetAnimListNARCFileCount: ; 0x021E8B9C
-	mov r1, #0x4d
-	lsl r1, r1, #2
-	ldr r3, _021E8BA8 ; =NARC_GetFileCount
-	ldr r0, [r0, r1]
-	bx r3
-	nop
-_021E8BA8: .word NARC_GetFileCount
-	thumb_func_end MapPropAnimationManager_GetAnimListNARCFileCount
-
 	thumb_func_start ov01_021E8BAC
 ov01_021E8BAC: ; 0x021E8BAC
 	push {r3, lr}
@@ -516,7 +308,7 @@ _021E8D8A:
 _021E8D9E:
 	ldr r0, [r4]
 	ldr r1, [sp]
-	bl ov01_021E8A50
+	bl MapPropAnimationManager_UnloadAnimation
 	stmia r4!, {r7}
 	ldr r0, [r6, #0x10]
 	add r5, r5, #1
@@ -648,7 +440,7 @@ _021E8E80:
 	add r1, r6, #0
 	bl ov01_021E8CBC
 	mov r1, #0
-	bl ov01_021E8B60
+	bl MapPropAnimationData_SetAnimationPaused
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 	thumb_func_end ov01_021E8E70
@@ -678,7 +470,7 @@ _021E8EAA:
 _021E8EC6:
 	add r0, r5, #0
 	mov r1, #0
-	bl ov01_021E8B60
+	bl MapPropAnimationData_SetAnimationPaused
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov01_021E8E98
 
@@ -727,7 +519,7 @@ ov01_021E8F10: ; 0x021E8F10
 	bl GF_AssertFail
 _021E8F1E:
 	ldr r0, [r4]
-	bl ov01_02204560
+	bl MapPropAnimation_IsLoopFinished
 	cmp r0, #0
 	beq _021E8F2C
 	mov r0, #1

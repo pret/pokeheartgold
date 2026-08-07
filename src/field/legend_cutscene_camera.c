@@ -563,17 +563,17 @@ static BOOL ov02_02251320(TaskManager *taskman) {
             MapPropAnimationManager_AddAnimationToRenderObj(taskData->birdModelNum, i, 1, renderObj, fieldSystem->mapPropAnimationManager);
         }
         for (i = 0; i < 2; ++i) {
-            MapPropAnimationManager *anim = ov01_021E8B04(taskData->birdModelNum, i, fieldSystem->mapPropAnimationManager);
-            ov01_021E8B84(anim, 1);
-            ov01_021E8B6C(anim);
+            MapPropAnimationData *animData = MapPropAnimationManager_GetAnimationData(taskData->birdModelNum, i, fieldSystem->mapPropAnimationManager);
+            MapPropAnimationData_SetAnimationLoopCount(animData, 1);
+            MapPropAnimationData_GoToFirstAnimationFrame(animData);
         }
         *pState = UNUSED_HO_OH_ANIM_TASK_STATE_1;
         break;
     case UNUSED_HO_OH_ANIM_TASK_STATE_1:
         renderObj = Field3dObjectList_GetRenderObjectByID(fieldSystem->unkC0, taskData->birdModelNum);
-        if (ov01_021E8B90(ov01_021E8B04(taskData->birdModelNum, 0, fieldSystem->mapPropAnimationManager))) {
+        if (MapPropAnimationData_IsAnimationLoopFinished(MapPropAnimationManager_GetAnimationData(taskData->birdModelNum, 0, fieldSystem->mapPropAnimationManager))) {
             for (i = 0; i < 2; ++i) {
-                ov01_021E8A8C(fieldSystem->mapPropAnimationManager, renderObj, taskData->birdModelNum, i);
+                MapPropAnimationManager_RemoveAnimationFromRenderObj(fieldSystem->mapPropAnimationManager, renderObj, taskData->birdModelNum, i);
             }
             for (i = 0; i < 2; ++i) {
                 MapPropAnimationManager_AddAnimationToRenderObj(taskData->birdModelNum, i + 2, 1, renderObj, fieldSystem->mapPropAnimationManager);

@@ -187,3 +187,92 @@ void MapPropAnimationManager_UnloadAllAnimations(MapPropAnimationManager *manage
         }
     }
 }
+
+// Make static
+void MapPropAnimationManager_UnloadAnimation(MapPropAnimationData *animationData, MapPropAnimationManager *manager);
+
+void MapPropAnimationManager_UnloadAnimation(MapPropAnimationData *animationData, MapPropAnimationManager *manager) {
+    if (manager == NULL) {
+        return;
+    }
+
+    GF_ASSERT(animationData != NULL);
+
+    if (animationData->loaded) {
+        if (animationData->loaded == TRUE) { // Technically different than the check above, but the same in practice.
+            ov01_02204500(manager->unk138, animationData->animation);
+            ov01_0220431C(manager->unk138, animationData->animation);
+        }
+        animationData->loaded = FALSE;
+        animationData->unkC = 0;
+    }
+}
+
+void MapPropAnimationManager_RemoveAnimationFromRenderObj(MapPropAnimationManager *mapPropAnimationManager, UnkStruct_FieldSysC0_SubC *unkC0_SubC, const int mapPropModelID, const int mapPropAnimIndex) {
+    MapPropAnimListFile animListFile;
+    NARC_ReadWholeMember(mapPropAnimationManager->unk134, mapPropModelID, &animListFile);
+    
+    GF_ASSERT(mapPropAnimIndex < MAP_PROP_ANIM_LIST_FILE_ARCHIVE_IDS_COUNT);
+    int animArchiveID = animListFile.animArchiveIDs[mapPropAnimIndex];
+    GF_ASSERT(animArchiveID != -1); // ANIME_ARCHIVE_ID_NONE
+    
+    for (u8 i = 0; i < MAP_PROP_ANIMATION_MANAGER_MAX_ANIMATIONS; i++) {
+        if (mapPropAnimationManager->animations[i].loaded == TRUE && animArchiveID == mapPropAnimationManager->animations[i].animArchiveID) {
+            ov01_02204518(unkC0_SubC, mapPropAnimationManager->animations[i].animation);
+            return;
+        }
+    }
+}
+
+void MapPropAnimationManager_Free(MapPropAnimationManager *manager) {
+    if (manager == NULL) {
+        return;
+    }
+    NARC_Delete(manager->unk130);
+    Heap_Free(manager);
+}
+
+MapPropAnimationData *MapPropAnimationManager_GetAnimationData(const int mapPropModelID, const int mapPropAnimIndex, MapPropAnimationManager *manager) {
+    MapPropAnimListFile animListFile;
+
+    NARC_ReadWholeMember(manager->unk134, mapPropModelID, &animListFile);
+    
+    GF_ASSERT(mapPropAnimIndex < MAP_PROP_ANIM_LIST_FILE_ARCHIVE_IDS_COUNT);
+    
+    u32 animArchiveID = animListFile.animArchiveIDs[mapPropAnimIndex];
+    MapPropAnimationData *animationData = NULL;
+    
+    for (int i = 0; i < MAP_PROP_ANIMATION_MANAGER_MAX_ANIMATIONS; i++) {
+        if (manager->animations[i].animArchiveID == animArchiveID) {
+            animationData = &manager->animations[i];
+            GF_ASSERT(animationData->loaded);
+            break;
+        }
+    }
+    GF_ASSERT(animationData != NULL);
+    return animationData;
+}
+
+void MapPropAnimationData_SetAnimationPaused(MapPropAnimationData *animData, const BOOL paused) {
+    MapPropAnimation_SetPaused(animData->animation, paused);
+}
+
+void MapPropAnimationData_GoToFirstAnimationFrame(MapPropAnimationData *animData) {
+    MapPropAnimation_GoToFirstFrame(animData->animation);
+}
+
+void MapPropAnimationData_GoToLastAnimationFrame(MapPropAnimationData *animData) {
+    MapPropAnimation_GoToLastFrame(animData->animation);
+}
+
+void MapPropAnimationData_SetAnimationLoopCount(MapPropAnimationData *animData, int loopCount) {
+    MapPropAnimation_SetLoopCount(animData->animation, loopCount);
+}
+
+BOOL MapPropAnimationData_IsAnimationLoopFinished(MapPropAnimationData *animData) {
+    return MapPropAnimation_IsLoopFinished(animData->animation);
+}
+
+int MapPropAnimationManager_GetAnimListNARCFileCount(MapPropAnimationManager *manager) {
+    return NARC_GetFileCount(manager->unk134);
+}

@@ -39,7 +39,7 @@ typedef struct MapPropAnimationManager {
     BicycleSlopeAnimation bicycleSlopeAnimations[MAP_PROP_ANIMATION_MANAGER_MAX_BICYCLE_SLOPE_ANIMATIONS];
     NARC *unk130;
     NARC *unk134;
-    void *unk138; //unkccsub0?
+    FieldSystemUnkSubCC_Sub0 *unk138;
 } MapPropAnimationManager; // Size: 0x13C
 
 typedef struct MapPropOneShotAnimationManager {
@@ -49,12 +49,14 @@ typedef struct MapPropOneShotAnimationManager {
 MapPropAnimationManager *MapPropAnimationManager_Init(NARC *narc, FieldSystemUnkSubC8 *unkSubC8);
 BOOL MapPropAnimationManager_AddAnimationToRenderObj(const int mapPropModelID, const int mapPropAnimID, const BOOL isDeferred, UnkStruct_FieldSysC0_SubC *renderObj, MapPropAnimationManager *manager);
 void MapPropAnimationManager_UnloadAllAnimations(MapPropAnimationManager *manager);
-void ov01_021E8A8C(MapPropAnimationManager *mapPropAnimationManager, UnkStruct_FieldSysC0_SubC *renderObj, int modelNum, int animNum);
-void MapPropAnimationManager_Free(MapPropAnimationManager *mapPropAnimationManager);
-MapPropAnimationManager *ov01_021E8B04(int modelNum, int animNum, MapPropAnimationManager *mapPropAnimationManager);
-void ov01_021E8B6C(MapPropAnimationManager *mapPropAnimationManager);
-void ov01_021E8B84(MapPropAnimationManager *mapPropAnimationManager, int a1);
-BOOL ov01_021E8B90(MapPropAnimationManager *mapPropAnimationManager);
+void MapPropAnimationManager_RemoveAnimationFromRenderObj(MapPropAnimationManager *mapPropAnimationManager, UnkStruct_FieldSysC0_SubC *unkC0_SubC, const int mapPropModelID, const int mapPropAnimIndex);
+void MapPropAnimationManager_Free(MapPropAnimationManager *manager);
+MapPropAnimationData *MapPropAnimationManager_GetAnimationData(const int mapPropModelID, const int mapPropAnimIndex, MapPropAnimationManager *mapPropAnimationManager);
+void MapPropAnimationData_SetAnimationPaused(MapPropAnimationData *animation, const BOOL paused);
+void MapPropAnimationData_GoToFirstAnimationFrame(MapPropAnimationData *animData);
+void MapPropAnimationData_GoToLastAnimationFrame(MapPropAnimationData *animData);
+void MapPropAnimationData_SetAnimationLoopCount(MapPropAnimationData *animation, int loopCount);
+BOOL MapPropAnimationData_IsAnimationLoopFinished(MapPropAnimationData *animation);
 int MapPropAnimationManager_GetAnimListNARCFileCount(MapPropAnimationManager *mapPropAnimationManager);
 MapPropOneShotAnimationManager *ov01_021E8DB4();
 void ov01_021E8DD4(MapPropOneShotAnimationManager **mapPropOneShotAnimationManager);

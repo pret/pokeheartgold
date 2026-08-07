@@ -15,7 +15,7 @@ typedef struct MapPropAnimation {
     BOOL reversed;
     u32 unk14;
     int unk18;
-    u32 unk1C;
+    BOOL looping;
 } MapPropAnimation;
 
 typedef struct FieldSystemUnkSubCC_Sub0 FieldSystemUnkSubCC_Sub0;
@@ -101,9 +101,9 @@ void ov01_0220450C(UnkStruct_FieldSysC0_SubC *unkC0_SubC, MapPropAnimation *anim
 BOOL ov01_02204518(UnkStruct_FieldSysC0_SubC *unkC0_SubC, MapPropAnimation *animation);
 u16 MapPropAnimation_GetLoopCount(MapPropAnimation *animation);
 void MapPropAnimation_SetPaused(MapPropAnimation *animation, BOOL paused);
-BOOL ov01_02204560(MapPropAnimation *animation);
-void ov01_02204570(MapPropAnimation *animation);
-void MapPropAnimation_SetLoopCount(MapPropAnimation *animation, int loopCount);
+BOOL MapPropAnimation_IsLoopFinished(MapPropAnimation *animation);
+void MapPropAnimation_GoToLastFrame(MapPropAnimation *animation);
+void MapPropAnimation_SetLoopCount(MapPropAnimation *animation, const int loopCount);
 FieldSystemUnkSubCC *ov01_0220460C(FieldSystemUnkSubC8 *unkSubC8); // UnkCC_Init
 void ov01_02204634(FieldSystemUnkSubCC *unkCC); // UnkCC_Free
 void ov01_0220463C(FieldSystemUnkSubCC *unkCC, int fileID); // UnkCC_Load
