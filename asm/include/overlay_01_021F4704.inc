@@ -40,10 +40,10 @@
 .public _u32_div_f
 .public ov01_021EA3B0
 .public MapPropManager_New
-.public ov01_021F3660
-.public ov01_021F36AC
-.public ov01_021F3744
-.public ov01_021F3834
+.public MapPropManager_Free
+.public MapPropManager_Reset
+.public MapPropManager_LoadFromNARC
+.public MapPropManager_LoadFromSafariZone
 .public ov01_021F3A3C
 .public MapLoadManager_Tick
 .public MapLoadManager_New

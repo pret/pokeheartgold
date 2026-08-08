@@ -220,9 +220,9 @@ struct FieldSystem {
     u32 unkAC;
     void *unkB0;
     s64 unkB4;
-    int unkBC;                 // flags?
-    void *unkC0;               // UnkStruct_FieldSysC0
-    int environmentSoundState; // Used to keep track of the active weather/soundplate sound and their associated loading status.
+    int unkBC;                   // flags?
+    UnkStruct_FieldSysC0 *unkC0; // UnkStruct_FieldSysC0
+    int environmentSoundState;   // Used to keep track of the active weather/soundplate sound and their associated loading status.
     FieldSystemUnkSubC8 *unkC8;
     void *unkCC;
     u16 lastTouchMenuInput;

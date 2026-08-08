@@ -1,8 +1,7 @@
 #include "unk_02054E00.h"
 
 #include "field/map_load_manager.h"
-
-#include "overlay_01_021F3610.h"
+#include "field/map_prop.h"
 
 BOOL MapModel_IsHeadbuttTree(u32 mapModelNo) {
     if (mapModelNo == 0xd0) {
@@ -28,16 +27,16 @@ u16 MapCoordToMatrixIndex(FieldSystem *fieldSystem, int coordX, int coordY) {
 }
 
 void sub_02054EB0(FieldSystem *fieldSystem, int a1, BOOL a2) {
-    int val;
+    MapPropManager *val;
     for (u8 i = 0; i < 4; i++) {
         ov01_021F630C(i, fieldSystem->mapLoadManager, &val);
         if (val != 0) {
             for (u8 j = 0; j < 32; j++) {
-                int res = ov01_021F3B44(val, j);
-                if (ov01_021F3B30() != 0) {
-                    int res2 = ov01_021F3B34(res);
+                MapProp *res = MapPropManager_GetMapPropByIndex(val, j);
+                if (MapProp_IsActive(res)) {
+                    int res2 = MapProp_GetBuildModel(res);
                     if (res2 == a1) {
-                        ov01_021F3B2C(res, a2);
+                        MapProp_SetCulled(res, a2);
                     }
                 }
             }

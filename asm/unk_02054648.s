@@ -659,7 +659,7 @@ sub_02054A9C: ; 0x02054A9C
 	add r4, r2, #0
 	add r0, sp, #0
 	add r1, r3, #0
-	bl ov01_021F3B0C
+	bl MapProp_GetTranslation
 	ldr r1, [sp]
 	ldr r0, [r4]
 	ldr r2, [sp, #8]
@@ -725,7 +725,7 @@ _02054AF4:
 _02054B26:
 	ldr r0, [sp, #0xc]
 	add r1, r5, #0
-	bl ov01_021F3B44
+	bl MapPropManager_GetMapPropByIndex
 	add r1, r7, #0
 	add r2, sp, #0x10
 	add r4, r0, #0
@@ -733,7 +733,7 @@ _02054B26:
 	cmp r0, #0
 	beq _02054B54
 	add r0, r4, #0
-	bl ov01_021F3B34
+	bl MapProp_GetBuildModel
 	cmp r0, r6
 	bne _02054B54
 	ldr r0, [sp, #4]
@@ -799,7 +799,7 @@ _02054B84:
 _02054BB6:
 	ldr r0, [sp, #0xc]
 	add r1, r6, #0
-	bl ov01_021F3B44
+	bl MapPropManager_GetMapPropByIndex
 	ldr r1, [sp, #4]
 	add r2, sp, #0x10
 	add r7, r0, #0
@@ -807,7 +807,7 @@ _02054BB6:
 	cmp r0, #0
 	beq _02054C00
 	add r0, r7, #0
-	bl ov01_021F3B34
+	bl MapProp_GetBuildModel
 	mov r1, #0
 	cmp r4, #0
 	bls _02054C00
@@ -877,9 +877,9 @@ _02054C2E:
 _02054C42:
 	ldr r0, [sp, #0xc]
 	add r1, r4, #0
-	bl ov01_021F3B44
+	bl MapPropManager_GetMapPropByIndex
 	add r6, r0, #0
-	bl ov01_021F3B34
+	bl MapProp_GetBuildModel
 	cmp r0, r5
 	bne _02054C76
 	ldr r0, [sp, #4]
@@ -940,9 +940,9 @@ _02054CA0:
 _02054CB4:
 	ldr r0, [sp, #0xc]
 	add r1, r6, #0
-	bl ov01_021F3B44
+	bl MapPropManager_GetMapPropByIndex
 	add r7, r0, #0
-	bl ov01_021F3B34
+	bl MapProp_GetBuildModel
 	mov r1, #0
 	cmp r4, #0
 	bls _02054CF0
@@ -1039,7 +1039,7 @@ _02054D3A:
 _02054D6C:
 	ldr r0, [sp, #0x10]
 	add r1, r5, #0
-	bl ov01_021F3B44
+	bl MapPropManager_GetMapPropByIndex
 	ldr r1, [sp, #4]
 	add r2, sp, #0x14
 	add r6, r0, #0
@@ -1047,7 +1047,7 @@ _02054D6C:
 	cmp r0, #0
 	beq _02054DA8
 	add r0, r6, #0
-	bl ov01_021F3B34
+	bl MapProp_GetBuildModel
 	cmp r0, #0
 	beq _02054DA8
 	cmp r4, r7
