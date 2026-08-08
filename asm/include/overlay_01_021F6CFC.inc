@@ -36,9 +36,9 @@
 .public TaskManager_Call
 .public TaskManager_GetFieldSystem
 .public TaskManager_GetEnvironment
-.public sub_0205B514
-.public sub_0205B564
-.public sub_0205B5B4
+.public DialogBox_AddWindowToLayer3
+.public DialogBox_LoadFrame
+.public DialogBox_PrintMessage
 .public Bag_HasItem
 .public Save_Bag_Get
 .public MI_CpuFill8

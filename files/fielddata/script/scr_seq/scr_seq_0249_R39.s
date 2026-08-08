@@ -369,26 +369,14 @@ _0490:
 	End
 
 scr_seq_R39_003:
-	DirectionSignpost msg_0396_R39_00000, 1, 21, VAR_SPECIAL_RESULT
-	ScrCmd_057 3
-	ScrCmd_058
-	ScrCmd_060 VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	DirectionSignpostEx 1, 21, msg_0396_R39_00000
 	End
 
 scr_seq_R39_004:
-	ScrCmd_056 2, 0
-	ScrCmd_057 3
-	ScrCmd_058
-	TrainerTips msg_0396_R39_00001, VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	TrainerTipsEx 2, msg_0396_R39_00001
 	End
 
 scr_seq_R39_005:
-	ScrCmd_056 3, 0
-	ScrCmd_057 3
-	ScrCmd_058
-	TrainerTips msg_0396_R39_00002, VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	TrainerTipsEx 3, msg_0396_R39_00002
 	End
 	.balign 4, 0

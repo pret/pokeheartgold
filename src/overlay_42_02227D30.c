@@ -444,8 +444,8 @@ void ov42_02227B04(UnkStruct_ov42_02227060 *arg0) {
     }
 }
 
-BOOL ov42_02227B5C(SpriteResource **arg0) {
-    return arg0[0] != NULL;
+BOOL ov42_02227B5C(SpriteResource **spriteResources) {
+    return spriteResources[GF_GFX_RES_TYPE_CHAR] != NULL;
 }
 
 void ov42_02227B6C(UnkStruct_ov42_02227060 *arg0, s32 arg1, enum HeapID heapID) {

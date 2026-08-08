@@ -1,13 +1,12 @@
 #include "field_system.h"
 
-#include "constants/maps.h"
-#include "constants/sndseq.h"
 #include "constants/field/map_load.h"
+#include "constants/maps.h"
+#include "constants/scrcmd.h"
+#include "constants/sndseq.h"
 
 #include "field/field_control.h"
 #include "field/signpost.h"
-
-#include "field/field_control.h"
 
 #include "field_warp_tasks.h"
 #include "main.h"
@@ -243,7 +242,7 @@ void FieldSystem_Control(FieldSystem *fieldSystem) {
         if (movementAllowed) {
             if (FieldInput_Process_BattleTower(&fieldInput, fieldSystem) == TRUE) {
                 FieldDrawMapName_Reset(fieldSystem->unk4->drawMapNameInfo);
-                ov01_021F3DFC(fieldSystem, 4);
+                FieldSystem_SetAndExecuteSignpostWindowCommand(fieldSystem, MAPSIGNCOMMAND_HIDE);
                 ov01_021F2F24(fieldSystem->playerAvatar);
                 ov01_021F6830(fieldSystem, 0, 1);
                 break;
@@ -263,7 +262,7 @@ void FieldSystem_Control(FieldSystem *fieldSystem) {
             u32 newEvent = FieldInput_Process(&fieldInput, fieldSystem);
             if (newEvent) {
                 FieldDrawMapName_Reset(fieldSystem->unk4->drawMapNameInfo);
-                ov01_021F3DFC(fieldSystem, 4);
+                FieldSystem_SetAndExecuteSignpostWindowCommand(fieldSystem, MAPSIGNCOMMAND_HIDE);
                 sub_0205CF44(fieldSystem->playerAvatar);
                 ov01_021F2F24(fieldSystem->playerAvatar);
                 ov01_021F6830(fieldSystem, 0, 1);

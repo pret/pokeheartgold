@@ -305,50 +305,26 @@ scr_seq_T11_007:
 	End
 
 scr_seq_T11_008:
-	ScrCmd_056 2, 0
-	ScrCmd_057 3
-	ScrCmd_058
-	TrainerTips msg_0529_T11_00009, VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	TrainerTipsEx 2, msg_0529_T11_00009
 	End
 
 scr_seq_T11_009:
-	DirectionSignpost msg_0529_T11_00010, 0, 10, VAR_SPECIAL_RESULT
-	ScrCmd_057 3
-	ScrCmd_058
-	ScrCmd_060 VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	DirectionSignpostEx 0, 10, msg_0529_T11_00010
 	End
 
 scr_seq_T11_010:
-	ScrCmd_056 2, 0
-	ScrCmd_057 3
-	ScrCmd_058
-	TrainerTips msg_0529_T11_00011, VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	TrainerTipsEx 2, msg_0529_T11_00011
 	End
 
 scr_seq_T11_011:
-	ScrCmd_056 2, 0
-	ScrCmd_057 3
-	ScrCmd_058
-	TrainerTips msg_0529_T11_00012, VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	TrainerTipsEx 2, msg_0529_T11_00012
 	End
 
 scr_seq_T11_012:
-	ScrCmd_056 2, 0
-	ScrCmd_057 3
-	ScrCmd_058
-	TrainerTips msg_0529_T11_00013, VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	TrainerTipsEx 2, msg_0529_T11_00013
 	End
 
 scr_seq_T11_013:
-	ScrCmd_056 2, 0
-	ScrCmd_057 3
-	ScrCmd_058
-	TrainerTips msg_0529_T11_00014, VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	TrainerTipsEx 2, msg_0529_T11_00014
 	End
 	.balign 4, 0

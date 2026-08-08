@@ -1096,8 +1096,8 @@ _0200EBDE:
 	.balign 4, 0
 	thumb_func_end sub_0200EB80
 
-	thumb_func_start sub_0200EC0C
-sub_0200EC0C: ; 0x0200EC0C
+	thumb_func_start LoadMapSignpostFrameAndGraphic
+LoadMapSignpostFrameAndGraphic: ; 0x0200EC0C
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x1c
 	str r0, [sp, #0x10]
@@ -1153,7 +1153,7 @@ sub_0200EC0C: ; 0x0200EC0C
 _0200EC80:
 	add sp, #0x1c
 	pop {r4, r5, r6, r7, pc}
-	thumb_func_end sub_0200EC0C
+	thumb_func_end LoadMapSignpostFrameAndGraphic
 
 	thumb_func_start sub_0200EC84
 sub_0200EC84: ; 0x0200EC84

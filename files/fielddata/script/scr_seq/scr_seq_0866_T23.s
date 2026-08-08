@@ -286,51 +286,27 @@ _03C3:
 	GoTo _039F
 
 scr_seq_T23_008:
-	ScrCmd_056 2, 0
-	ScrCmd_057 3
-	ScrCmd_058
-	TrainerTips msg_0564_T23_00012, VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	TrainerTipsEx 2, msg_0564_T23_00012
 	End
 
 scr_seq_T23_009:
-	ScrCmd_056 2, 0
-	ScrCmd_057 3
-	ScrCmd_058
-	TrainerTips msg_0564_T23_00013, VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	TrainerTipsEx 2, msg_0564_T23_00013
 	End
 
 scr_seq_T23_010:
-	ScrCmd_056 2, 0
-	ScrCmd_057 3
-	ScrCmd_058
-	TrainerTips msg_0564_T23_00015, VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	TrainerTipsEx 2, msg_0564_T23_00015
 	End
 
 scr_seq_T23_011:
-	DirectionSignpost msg_0564_T23_00011, 0, 14, VAR_SPECIAL_RESULT
-	ScrCmd_057 3
-	ScrCmd_058
-	ScrCmd_060 VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	DirectionSignpostEx 0, 14, msg_0564_T23_00011
 	End
 
 scr_seq_T23_012:
-	ScrCmd_056 2, 0
-	ScrCmd_057 3
-	ScrCmd_058
-	TrainerTips msg_0564_T23_00014, VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	TrainerTipsEx 2, msg_0564_T23_00014
 	End
 
 scr_seq_T23_013:
-	DirectionSignpost msg_0564_T23_00000, 1, 2, VAR_SPECIAL_RESULT
-	ScrCmd_057 3
-	ScrCmd_058
-	ScrCmd_060 VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	DirectionSignpostEx 1, 2, msg_0564_T23_00000
 	End
 
 scr_seq_T23_014:

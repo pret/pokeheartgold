@@ -10,11 +10,7 @@
 	ScrDefEnd
 
 scr_seq_R07_000:
-	ScrCmd_056 2, 0
-	ScrCmd_057 3
-	ScrCmd_058
-	TrainerTips msg_0336_R07_00000, VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	TrainerTipsEx 2, msg_0336_R07_00000
 	End
 
 scr_seq_R07_001:

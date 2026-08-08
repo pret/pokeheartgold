@@ -11,26 +11,14 @@
 	ScrDefEnd
 
 scr_seq_R13_000:
-	ScrCmd_056 3, 0
-	ScrCmd_057 3
-	ScrCmd_058
-	TrainerTips msg_0350_R13_00000, VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	TrainerTipsEx 3, msg_0350_R13_00000
 	End
 
 scr_seq_R13_001:
-	DirectionSignpost msg_0350_R13_00001, 1, 10, VAR_SPECIAL_RESULT
-	ScrCmd_057 3
-	ScrCmd_058
-	ScrCmd_060 VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	DirectionSignpostEx 1, 10, msg_0350_R13_00001
 	End
 
 scr_seq_R13_002:
-	DirectionSignpost msg_0350_R13_00002, 1, 14, VAR_SPECIAL_RESULT
-	ScrCmd_057 3
-	ScrCmd_058
-	ScrCmd_060 VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	DirectionSignpostEx 1, 14, msg_0350_R13_00002
 	End
 	.balign 4, 0
