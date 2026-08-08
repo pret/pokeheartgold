@@ -1,8 +1,8 @@
 #include "msgdata/msg.naix"
 
 #include "bg_window.h"
+#include "dialog_box.h"
 #include "field_system.h"
-#include "script_manager.h"
 #include "font.h"
 #include "mail_message.h"
 #include "map_object.h"
@@ -12,8 +12,8 @@
 #include "pm_string.h"
 #include "scrcmd.h"
 #include "script.h"
+#include "script_manager.h"
 #include "text.h"
-#include "text_0205B4EC.h"
 
 typedef struct MessageBox {
     String *message;
@@ -148,7 +148,7 @@ BOOL ScrCmd_NPCMsg(ScriptContext *ctx) {
 
 BOOL ov01_021EF348(ScriptContext *ctx) {
     u8 *textPrinterNumPtr = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_TEXT_PRINTER_NUMBER);
-    return IsPrintFinished(*textPrinterNumPtr);
+    return DialogBox_IsPrintFinished(*textPrinterNumPtr);
 }
 
 BOOL ScrCmd_NonNPCMsgVar(ScriptContext *ctx) {
@@ -276,10 +276,10 @@ static void ovFieldMain_GetMsgBoxParametersEx(FieldSystem *fieldSystem, MessageF
 
 static void ovFieldMain_CreateMessageBox(FieldSystem *fieldSystem, MessageBox *messageBox) {
     if (*(messageBox->unk10) == 0) {
-        sub_0205B514(fieldSystem->bgConfig, messageBox->window, 3);
-        sub_0205B564(messageBox->window, Save_PlayerData_GetOptionsAddr(fieldSystem->saveData));
+        DialogBox_AddWindowToLayer3(fieldSystem->bgConfig, messageBox->window, GF_BG_LYR_MAIN_3);
+        DialogBox_LoadFrame(messageBox->window, Save_PlayerData_GetOptionsAddr(fieldSystem->saveData));
         *(messageBox->unk10) = 1;
-        fieldSystem->unkD2_6 = TRUE;
+        fieldSystem->textbox_open = TRUE;
     }
     FillWindowPixelBuffer(messageBox->window, 15);
 }
@@ -301,7 +301,7 @@ static void ovFieldMain_GetFormattedECMessage(MessageBox *messageBox, u16 messag
 }
 
 static void ov01_021EF758(MessageBox *messageBox, FontID fontId, u32 textFrameDelay, BOOL canABSpeedUp, u32 a4) {
-    *(messageBox->textPrinterNumPtr) = sub_0205B5EC(messageBox->window, messageBox->message, fontId, textFrameDelay, canABSpeedUp, a4);
+    *(messageBox->textPrinterNumPtr) = DialogBox_PrintMessageEx(messageBox->window, messageBox->message, fontId, textFrameDelay, canABSpeedUp, a4);
 }
 
 static void ovFieldMain_AddTextPrinterParameterized(MessageBox *messageBox, FontID fontId) {

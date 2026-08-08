@@ -101,10 +101,6 @@ _0114:
 	EndMovement
 
 scr_seq_D51R0101_003:
-	ScrCmd_056 2, 0
-	ScrCmd_057 3
-	ScrCmd_058
-	TrainerTips msg_0145_D51R0101_00007, VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	TrainerTipsEx 2, msg_0145_D51R0101_00007
 	End
 	.balign 4, 0

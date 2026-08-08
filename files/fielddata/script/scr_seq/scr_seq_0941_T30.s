@@ -314,43 +314,23 @@ _0430:
 	EndMovement
 
 scr_seq_T30_008:
-	DirectionSignpost msg_0629_T30_00010, 0, 20, VAR_SPECIAL_RESULT
-	ScrCmd_057 3
-	ScrCmd_058
-	ScrCmd_060 VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	DirectionSignpostEx 0, 20, msg_0629_T30_00010
 	End
 
 scr_seq_T30_009:
-	ScrCmd_056 2, 0
-	ScrCmd_057 3
-	ScrCmd_058
-	TrainerTips msg_0629_T30_00011, VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	TrainerTipsEx 2, msg_0629_T30_00011
 	End
 
 scr_seq_T30_010:
-	ScrCmd_056 2, 0
-	ScrCmd_057 3
-	ScrCmd_058
-	TrainerTips msg_0629_T30_00012, VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	TrainerTipsEx 2, msg_0629_T30_00012
 	End
 
 scr_seq_T30_011:
-	ScrCmd_056 2, 0
-	ScrCmd_057 3
-	ScrCmd_058
-	TrainerTips msg_0629_T30_00013, VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	TrainerTipsEx 2, msg_0629_T30_00013
 	End
 
 scr_seq_T30_012:
-	ScrCmd_056 3, 0
-	ScrCmd_057 3
-	ScrCmd_058
-	TrainerTips msg_0629_T30_00014, VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	TrainerTipsEx 3, msg_0629_T30_00014
 	End
 
 scr_seq_T30_013:

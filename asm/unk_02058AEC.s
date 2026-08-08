@@ -426,7 +426,7 @@ _02058E08:
 	ldr r0, [r4, #0x30]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl IsPrintFinished
+	bl DialogBox_IsPrintFinished
 	cmp r0, #0
 	beq _02058E94
 	mov r0, #0x5d
@@ -579,7 +579,7 @@ _02058F40:
 	ldr r0, [r4, #0x30]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl IsPrintFinished
+	bl DialogBox_IsPrintFinished
 	cmp r0, #0
 	beq _02058FB2
 	mov r0, #0xd
@@ -762,7 +762,7 @@ _020590AA:
 	ldr r0, [r4, #0x30]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl IsPrintFinished
+	bl DialogBox_IsPrintFinished
 	cmp r0, #0
 	beq _020590C8
 	mov r0, #0xd
@@ -824,7 +824,7 @@ _0205912A:
 	ldr r0, [r4, #0x30]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl IsPrintFinished
+	bl DialogBox_IsPrintFinished
 	cmp r0, #0
 	beq _0205922E
 	bl sub_02058D24
@@ -894,7 +894,7 @@ _020591C2:
 	ldr r0, [r4, #0x30]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl IsPrintFinished
+	bl DialogBox_IsPrintFinished
 	cmp r0, #0
 	beq _0205922E
 	add r0, r4, #0
@@ -920,7 +920,7 @@ _020591FA:
 	ldr r0, [r4, #0x30]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl IsPrintFinished
+	bl DialogBox_IsPrintFinished
 	cmp r0, #0
 	beq _0205922E
 	add r0, r4, #0
@@ -1003,7 +1003,7 @@ _020592B2:
 	ldr r0, [r4, #0x30]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl IsPrintFinished
+	bl DialogBox_IsPrintFinished
 	cmp r0, #0
 	beq _02059348
 	add r0, r4, #0
@@ -1109,7 +1109,7 @@ _02059398:
 	ldr r0, [r4, #0x30]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl IsPrintFinished
+	bl DialogBox_IsPrintFinished
 	cmp r0, #0
 	beq _02059472
 	mov r0, #2
@@ -1173,7 +1173,7 @@ _02059420:
 	ldr r0, [r4, #0x30]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl IsPrintFinished
+	bl DialogBox_IsPrintFinished
 	cmp r0, #0
 	beq _02059472
 	add r0, r4, #0
@@ -1229,17 +1229,17 @@ sub_02059478: ; 0x02059478
 	add r1, r4, #0
 	ldr r0, [r0, #8]
 	mov r2, #3
-	bl sub_0205B514
+	bl DialogBox_AddWindowToLayer3
 	ldr r0, [r5, #0x24]
 	ldr r0, [r0, #0xc]
 	bl Save_PlayerData_GetOptionsAddr
 	add r1, r0, #0
 	add r0, r4, #0
-	bl sub_0205B564
+	bl DialogBox_LoadFrame
 	b _020594B0
 _020594AA:
 	add r0, r4, #0
-	bl sub_0205B5A8
+	bl DialogBox_Clear
 _020594B0:
 	ldr r0, [r5, #0x24]
 	ldr r0, [r0, #0xc]
@@ -1248,7 +1248,7 @@ _020594B0:
 	add r0, r4, #0
 	add r1, r6, #0
 	mov r3, #1
-	bl sub_0205B5B4
+	bl DialogBox_PrintMessage
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 	thumb_func_end sub_02059478
@@ -2236,13 +2236,13 @@ _02059C10:
 	ldr r0, [r5, #8]
 	add r1, #8
 	mov r2, #3
-	bl sub_0205B514
+	bl DialogBox_AddWindowToLayer3
 	ldr r0, [r5, #0xc]
 	bl Save_PlayerData_GetOptionsAddr
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #8
-	bl sub_0205B564
+	bl DialogBox_LoadFrame
 	ldr r0, [r5, #0xc]
 	bl Save_PlayerData_GetOptionsAddr
 	add r2, r0, #0
@@ -2250,7 +2250,7 @@ _02059C10:
 	ldr r1, [r4, #4]
 	add r0, #8
 	mov r3, #1
-	bl sub_0205B5B4
+	bl DialogBox_PrintMessage
 	str r0, [r4, #0x20]
 	ldr r0, [r4, #0x28]
 	add r0, r0, #1
@@ -2260,7 +2260,7 @@ _02059C6C:
 	ldr r0, [r4, #0x20]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl IsPrintFinished
+	bl DialogBox_IsPrintFinished
 	cmp r0, #0
 	beq _02059D36
 	ldr r0, _02059D3C ; =gSystem

@@ -16,7 +16,6 @@
 
 #include "assert.h"
 #include "encounter.h"
-#include "script_manager.h"
 #include "heap.h"
 #include "mail_message.h"
 #include "msgdata.h"
@@ -27,6 +26,7 @@
 #include "save_trainer_house.h"
 #include "scrcmd.h"
 #include "script.h"
+#include "script_manager.h"
 #include "string_util.h"
 #include "unk_020517A4.h"
 #include "unk_0205B3DC.h"

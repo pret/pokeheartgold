@@ -2351,7 +2351,7 @@ static int BattleInput_TouchCallback_MainMenu(BattleInput *battleInput, int touc
     BattleInput_StartFeedbackTask(Task_ButtonFeedback, battleInput);
 
     battleInput->feedback.button.screenOffsets = sMainMenuButtonsScreenOffsets[touchInput - 1];
-    battleInput->feedback.button.unk8 = &sMainMenuButtonsTouchscreenRect[touchInput - 1];
+    battleInput->feedback.button.touchscreenHitbox = &sMainMenuButtonsTouchscreenRect[touchInput - 1];
     battleInput->feedback.button.unk10 = 1;
     battleInput->feedback.button.ret = touchInput;
     battleInput->feedback.button.textObjId = textObjId;
@@ -2401,7 +2401,7 @@ static int BattleInput_TouchCallback_FightMenu(BattleInput *battleInput, int tou
     BattleInput_StartFeedbackTask(Task_FightMenuButtonFeedback, battleInput);
 
     battleInput->feedback.button.screenOffsets = offsets;
-    battleInput->feedback.button.unk8 = touchscreenRect;
+    battleInput->feedback.button.touchscreenHitbox = touchscreenRect;
     battleInput->feedback.button.unk10 = 3;
     battleInput->feedback.button.ret = touchInput;
     battleInput->feedback.button.shouldDeleteAfter = TRUE;
@@ -2429,10 +2429,10 @@ static int BattleInput_TouchCallback_TwoOptionMenu(BattleInput *battleInput, int
 
     if (touchInput == BATTLE_INPUT_YES) {
         battleInput->feedback.button.screenOffsets = ov12_0226E286[1];
-        battleInput->feedback.button.unk8 = &ov12_0226E24C[1];
+        battleInput->feedback.button.touchscreenHitbox = &ov12_0226E24C[1];
     } else {
         battleInput->feedback.button.screenOffsets = ov12_0226E286[0];
-        battleInput->feedback.button.unk8 = &ov12_0226E24C[0];
+        battleInput->feedback.button.touchscreenHitbox = &ov12_0226E24C[0];
     }
 
     battleInput->feedback.button.unk10 = 6;
@@ -2481,7 +2481,7 @@ static int BattleInput_TouchCallback_TargetMenu(BattleInput *battleInput, int to
         BattleInput_StartFeedbackTask(Task_ButtonFeedback, battleInput);
 
         battleInput->feedback.button.screenOffsets = sTargetMenuButtonsScreenOffsets[4];
-        battleInput->feedback.button.unk8 = &ov12_0226E348[4];
+        battleInput->feedback.button.touchscreenHitbox = &ov12_0226E348[4];
         battleInput->feedback.button.unk10 = 4;
         battleInput->feedback.button.ret = touchInput;
         battleInput->feedback.button.textObjId = 4;
@@ -2518,7 +2518,7 @@ static int BattleInput_TouchCallback_VSRecorderMenu(BattleInput *battleInput, in
     BattleInput_StartFeedbackTask(Task_ButtonFeedback, battleInput);
 
     battleInput->feedback.button.screenOffsets = ov12_0226E228;
-    battleInput->feedback.button.unk8 = &ov12_0226E20C;
+    battleInput->feedback.button.touchscreenHitbox = &ov12_0226E20C;
     battleInput->feedback.button.unk10 = 6;
     battleInput->feedback.button.ret = touchInput;
     battleInput->feedback.button.textObjId = 0;
@@ -3183,7 +3183,7 @@ static void Task_ButtonFeedback(SysTask *task, void *data) {
     switch (battleInput->feedback.state) {
     case 0:
         // Button down
-        ov12_02268EE4(battleInput, battleInput->feedback.button.screenOffsets, battleInput->feedback.button.unk8, battleInput->feedback.button.unk10, 2);
+        ov12_02268EE4(battleInput, battleInput->feedback.button.screenOffsets, battleInput->feedback.button.touchscreenHitbox, battleInput->feedback.button.unk10, 2);
         sub_02013794(battleInput->textObj[battleInput->feedback.button.textObjId].textObj, &x, &y);
         sub_020136B4(battleInput->textObj[battleInput->feedback.button.textObjId].textObj, x, y - 2);
 
@@ -3206,7 +3206,7 @@ static void Task_ButtonFeedback(SysTask *task, void *data) {
         // fallthrough
     case 2:
         // Button up
-        ov12_02268EE4(battleInput, battleInput->feedback.button.screenOffsets, battleInput->feedback.button.unk8, battleInput->feedback.button.unk10, 1);
+        ov12_02268EE4(battleInput, battleInput->feedback.button.screenOffsets, battleInput->feedback.button.touchscreenHitbox, battleInput->feedback.button.unk10, 1);
         sub_02013794(battleInput->textObj[battleInput->feedback.button.textObjId].textObj, &x, &y);
         sub_020136B4(battleInput->textObj[battleInput->feedback.button.textObjId].textObj, x, y + 1);
 
@@ -3281,7 +3281,7 @@ static void Task_FightMenuButtonFeedback(SysTask *task, void *data) {
 
     switch (battleInput->feedback.state) {
     case 0:
-        ov12_02268EE4(battleInput, battleInput->feedback.button.screenOffsets, battleInput->feedback.button.unk8, battleInput->feedback.button.unk10, 2);
+        ov12_02268EE4(battleInput, battleInput->feedback.button.screenOffsets, battleInput->feedback.button.touchscreenHitbox, battleInput->feedback.button.unk10, 2);
 
         if (battleInput->feedback.button.ret != BATTLE_INPUT_CANCEL) {
             sub_02013794(battleInput->textObj[moveTextObjId].textObj, &x, &y);
@@ -3315,7 +3315,7 @@ static void Task_FightMenuButtonFeedback(SysTask *task, void *data) {
         battleInput->feedback.delay = 0;
         battleInput->feedback.state++;
     case 2:
-        ov12_02268EE4(battleInput, battleInput->feedback.button.screenOffsets, battleInput->feedback.button.unk8, battleInput->feedback.button.unk10, 1);
+        ov12_02268EE4(battleInput, battleInput->feedback.button.screenOffsets, battleInput->feedback.button.touchscreenHitbox, battleInput->feedback.button.unk10, 1);
 
         if (battleInput->feedback.button.ret != 0xff) {
             sub_02013794(battleInput->textObj[moveTextObjId].textObj, &x, &y);

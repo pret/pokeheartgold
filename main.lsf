@@ -218,7 +218,7 @@ Static main
     Object asm/unk_0205A44C.o
     Object asm/unk_0205AC88.o
     Object src/unk_0205B3DC.o
-    Object asm/text_0205B4EC.o
+    Object src/dialog_box.o
     Object src/metatile_behavior.o
     Object asm/unk_0205BB1C.o
     Object asm/unk_0205BFF0.o
@@ -508,7 +508,7 @@ Overlay field
     Object asm/overlay_01_021F3114.o
     Object asm/overlay_01_021F3378.o
     Object asm/overlay_01_021F3610.o
-    Object asm/signpost.o
+    Object src/field/signpost.o
     Object asm/overlay_01_021F3F50.o
     Object asm/overlay_01_021F4464.o
     Object asm/overlay_01_021F467C.o

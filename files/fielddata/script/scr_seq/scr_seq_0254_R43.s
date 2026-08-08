@@ -15,26 +15,14 @@ scr_seq_R43_000:
 	End
 
 scr_seq_R43_001:
-	DirectionSignpost msg_0401_R43_00018, 1, 3, VAR_SPECIAL_RESULT
-	ScrCmd_057 3
-	ScrCmd_058
-	ScrCmd_060 VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	DirectionSignpostEx 1, 3, msg_0401_R43_00018
 	End
 
 scr_seq_R43_002:
-	ScrCmd_056 3, 0
-	ScrCmd_057 3
-	ScrCmd_058
-	TrainerTips msg_0401_R43_00019, VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	TrainerTipsEx 3, msg_0401_R43_00019
 	End
 
 scr_seq_R43_003:
-	DirectionSignpost msg_0401_R43_00020, 1, 6, VAR_SPECIAL_RESULT
-	ScrCmd_057 3
-	ScrCmd_058
-	ScrCmd_060 VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	DirectionSignpostEx 1, 6, msg_0401_R43_00020
 	End
 	.balign 4, 0

@@ -9,10 +9,6 @@
 	ScrDefEnd
 
 scr_seq_R04_000:
-	ScrCmd_056 2, 0
-	ScrCmd_057 3
-	ScrCmd_058
-	TrainerTips msg_0328_R04_00000, VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	TrainerTipsEx 2, msg_0328_R04_00000
 	End
 	.balign 4, 0

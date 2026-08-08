@@ -8,6 +8,7 @@
 #include "constants/start_menu_icons.h"
 #include "constants/std_script.h"
 
+#include "field/fieldmap.h"
 #include "msgdata/msg/msg_0196.h"
 
 #include "bag_view.h"
@@ -15,7 +16,6 @@
 #include "field_move.h"
 #include "field_move_environment.h"
 #include "field_system.h"
-#include "field/fieldmap.h"
 #include "field_use_item.h"
 #include "gf_gfx_loader.h"
 #include "launch_application.h"

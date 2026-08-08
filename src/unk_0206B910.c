@@ -4,7 +4,6 @@
 
 #include "assert.h"
 #include "bag.h"
-#include "script_manager.h"
 #include "heap.h"
 #include "launch_application.h"
 #include "mail.h"
@@ -19,6 +18,7 @@
 #include "save_arrays.h"
 #include "scrcmd.h"
 #include "script.h"
+#include "script_manager.h"
 #include "seal_case.h"
 #include "task.h"
 #include "unk_020379A0.h"

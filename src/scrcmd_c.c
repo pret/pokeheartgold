@@ -682,10 +682,10 @@ BOOL ScrCmd_OpenMsg(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
     u8 *unk = FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_FIELD_08);
 
-    sub_0205B514(fieldSystem->bgConfig, FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_WINDOW), 3);
-    sub_0205B564(FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_WINDOW), Save_PlayerData_GetOptionsAddr(ctx->fieldSystem->saveData));
+    DialogBox_AddWindowToLayer3(fieldSystem->bgConfig, FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_WINDOW), GF_BG_LYR_MAIN_3);
+    DialogBox_LoadFrame(FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_WINDOW), Save_PlayerData_GetOptionsAddr(ctx->fieldSystem->saveData));
 
-    fieldSystem->unkD2_6 = 1;
+    fieldSystem->textbox_open = TRUE;
     *unk = 1;
 
     return FALSE;
@@ -699,7 +699,7 @@ BOOL ScrCmd_CloseMsg(ScriptContext *ctx) {
     ClearFrameAndWindow2(window, 0);
     RemoveWindow(window);
 
-    fieldSystem->unkD2_6 = 0;
+    fieldSystem->textbox_open = FALSE;
     *unk = 0;
 
     return FALSE;
@@ -712,7 +712,7 @@ BOOL ScrCmd_HoldMsg(ScriptContext *ctx) {
 
     RemoveWindow(window);
 
-    fieldSystem->unkD2_6 = 0;
+    fieldSystem->textbox_open = FALSE;
     *unk = 0;
 
     return FALSE;
@@ -781,54 +781,54 @@ static BOOL sub_02041270(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_DirectionSignpost(ScriptContext *ctx) {
-    u8 unk2;
+    u8 type;
 
     FieldSystem *fieldSystem = ctx->fieldSystem;
     String **tmp_str = FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_STRING_BUFFER_1);
-    String **unk1 = FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_STRING_BUFFER_0);
+    String **pStrBuf = FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_STRING_BUFFER_0);
     MessageFormat **msg_fmt = FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
     u8 msg_no = ScriptReadByte(ctx);
-    unk2 = ScriptReadByte(ctx);
-    u16 arrow = ScriptReadHalfword(ctx);
+    type = ScriptReadByte(ctx);
+    u16 map = ScriptReadHalfword(ctx);
     u16 unused_result_var_id = ScriptReadHalfword(ctx);
 
-    fieldSystem->unkD2_6 = 1;
+    fieldSystem->textbox_open = TRUE;
 
-    ov01_021F3D68(fieldSystem->signpost, unk2, arrow);
-    ov01_021F3D70(fieldSystem->signpost, 1);
+    Signpost_SetParam(fieldSystem->signpost, type, map);
+    Signpost_SetCommand(fieldSystem->signpost, MAPSIGNCOMMAND_SHOW);
     Signpost_DoCurrentCommand(fieldSystem);
 
     ReadMsgDataIntoString(ctx->msgdata, msg_no, *tmp_str);
-    StringExpandPlaceholders(*msg_fmt, *unk1, *tmp_str);
-    Window *window = ov01_021F3D80(fieldSystem->signpost);
-    AddTextPrinterParameterizedWithColor(window, 1, *unk1, 0, 0, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(2, 10, 15), NULL);
+    StringExpandPlaceholders(*msg_fmt, *pStrBuf, *tmp_str);
+    Window *window = Signpost_GetWindow(fieldSystem->signpost);
+    AddTextPrinterParameterizedWithColor(window, 1, *pStrBuf, 0, 0, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(2, 10, 15), NULL);
 
     return TRUE;
 }
 
-BOOL ScrCmd_056(ScriptContext *ctx) {
+BOOL ScrCmd_SetSignpostMap(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
-    u8 unk1 = ScriptReadByte(ctx);
-    u16 unk2 = ScriptReadHalfword(ctx);
+    u8 type = ScriptReadByte(ctx);
+    u16 map = ScriptReadHalfword(ctx);
 
-    fieldSystem->unkD2_6 = 1;
+    fieldSystem->textbox_open = TRUE;
 
-    ov01_021F3D68(fieldSystem->signpost, unk1, unk2);
-    ov01_021F3D70(fieldSystem->signpost, 1);
+    Signpost_SetParam(fieldSystem->signpost, type, map);
+    Signpost_SetCommand(fieldSystem->signpost, MAPSIGNCOMMAND_SHOW);
 
     return TRUE;
 }
 
-BOOL ScrCmd_057(ScriptContext *ctx) {
+BOOL ScrCmd_SetSignpostAction(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
-    ov01_021F3D70(fieldSystem->signpost, ScriptReadByte(ctx));
+    Signpost_SetCommand(fieldSystem->signpost, ScriptReadByte(ctx));
     return TRUE;
 }
 
 static BOOL sub_02041454(ScriptContext *ctx);
 
-BOOL ScrCmd_058(ScriptContext *ctx) {
-    if (ov01_021F3D88(ctx->fieldSystem->signpost) == TRUE) {
+BOOL ScrCmd_WaitSignpostAction(ScriptContext *ctx) {
+    if (Signpost_CommandIsFinished(ctx->fieldSystem->signpost) == TRUE) {
         return FALSE;
     }
 
@@ -837,45 +837,45 @@ BOOL ScrCmd_058(ScriptContext *ctx) {
 }
 
 static BOOL sub_02041454(ScriptContext *ctx) {
-    return ov01_021F3D88(ctx->fieldSystem->signpost) == TRUE;
+    return Signpost_CommandIsFinished(ctx->fieldSystem->signpost) == TRUE;
 }
 
-static BOOL sub_02041520(ScriptContext *ctx);
+static BOOL NativeScript_WaitTrainerTips(ScriptContext *ctx);
 
 BOOL ScrCmd_TrainerTips(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
     u8 *printer_id_ptr = FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_TEXT_PRINTER_NUMBER);
-    String **tmp_str = FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_STRING_BUFFER_1);
-    String **unk = FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_STRING_BUFFER_0);
+    String **pUnformattedString = FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_STRING_BUFFER_1);
+    String **pFormattedString = FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_STRING_BUFFER_0);
     MessageFormat **msg_fmt = FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
     u8 msg_no = ScriptReadByte(ctx);
     u16 result_var_id = ScriptReadHalfword(ctx);
 
-    ReadMsgDataIntoString(ctx->msgdata, msg_no, *tmp_str);
-    StringExpandPlaceholders(*msg_fmt, *unk, *tmp_str);
+    ReadMsgDataIntoString(ctx->msgdata, msg_no, *pUnformattedString);
+    StringExpandPlaceholders(*msg_fmt, *pFormattedString, *pUnformattedString);
 
     TextFlags_SetCanABSpeedUpPrint(TRUE);
     TextFlags_SetAutoScrollParam(AUTO_SCROLL_OFF);
     TextFlags_SetCanTouchSpeedUpPrint(FALSE);
 
-    Window *window = ov01_021F3D80(fieldSystem->signpost);
+    Window *window = Signpost_GetWindow(fieldSystem->signpost);
     u8 text_speed = Options_GetTextFrameDelay(Save_PlayerData_GetOptionsAddr(fieldSystem->saveData));
-    *printer_id_ptr = AddTextPrinterParameterizedWithColor(window, 1, *unk, 0, 0, text_speed, MAKE_TEXT_COLOR(2, 10, 15), NULL);
+    *printer_id_ptr = AddTextPrinterParameterizedWithColor(window, 1, *pFormattedString, 0, 0, text_speed, MAKE_TEXT_COLOR(2, 10, 15), NULL);
 
     ctx->data[0] = result_var_id;
-    SetupNativeScript(ctx, sub_02041520);
+    SetupNativeScript(ctx, NativeScript_WaitTrainerTips);
     return TRUE;
 }
 
-static BOOL sub_02041520(ScriptContext *ctx) {
+static BOOL NativeScript_WaitTrainerTips(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
     u8 *printer_id_ptr = FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_TEXT_PRINTER_NUMBER);
     u16 *ret_ptr = GetVarPointer(fieldSystem, ctx->data[0]);
-    u8 unused = ov01_021F3D84(fieldSystem->signpost);
+    u8 unused = Signpost_GetType(fieldSystem->signpost);
 
     u16 direction = 0xFFFF;
 
-    if (IsPrintFinished(*printer_id_ptr) == TRUE) {
+    if (DialogBox_IsPrintFinished(*printer_id_ptr) == TRUE) {
         *ret_ptr = 2;
         return TRUE;
     }
@@ -895,22 +895,22 @@ static BOOL sub_02041520(ScriptContext *ctx) {
         RemoveTextPrinter(*printer_id_ptr);
         PlayerAvatar_SetFacingDirection(ctx->fieldSystem->playerAvatar, direction);
         *ret_ptr = 0;
-        ctx->fieldSystem->unkD2_6 = 0;
+        ctx->fieldSystem->textbox_open = FALSE;
         return TRUE;
     }
 
     return FALSE;
 }
 
-static BOOL sub_020415E0(ScriptContext *ctx);
+static BOOL NativeScript_WaitSignpost(ScriptContext *ctx);
 
-BOOL ScrCmd_060(ScriptContext *ctx) {
+BOOL ScrCmd_WaitSignpost(ScriptContext *ctx) {
     ctx->data[0] = ScriptReadHalfword(ctx);
-    SetupNativeScript(ctx, sub_020415E0);
+    SetupNativeScript(ctx, NativeScript_WaitSignpost);
     return TRUE;
 }
 
-static BOOL sub_020415E0(ScriptContext *ctx) {
+static BOOL NativeScript_WaitSignpost(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
     u16 *ret_ptr = GetVarPointer(fieldSystem, ctx->data[0]);
     u16 direction = 0xFFFF;
@@ -918,7 +918,7 @@ static BOOL sub_020415E0(ScriptContext *ctx) {
 
     if ((new_keys & (PAD_BUTTON_A | PAD_BUTTON_B)) != 0) {
         *ret_ptr = 0;
-        fieldSystem->unkD2_6 = 0;
+        fieldSystem->textbox_open = FALSE;
         return TRUE;
     }
 
@@ -935,7 +935,7 @@ static BOOL sub_020415E0(ScriptContext *ctx) {
     if (direction != 0xFFFF) {
         PlayerAvatar_SetFacingDirection(ctx->fieldSystem->playerAvatar, direction);
         *ret_ptr = 0;
-        fieldSystem->unkD2_6 = 0;
+        fieldSystem->textbox_open = FALSE;
         return TRUE;
     }
 
@@ -2407,7 +2407,7 @@ BOOL ScrCmd_TrainerMessage(ScriptContext *ctx) {
 
     GetTrainerMessageByIdPair(trainerno, msgno, *p_strbuf1, HEAP_ID_FIELD2);
     FillWindowPixelBuffer(FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_WINDOW), 15);
-    *p_printerno = sub_0205B5B4(
+    *p_printerno = DialogBox_PrintMessage(
         FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_WINDOW),
         *p_strbuf1,
         Save_PlayerData_GetOptionsAddr(ctx->fieldSystem->saveData),

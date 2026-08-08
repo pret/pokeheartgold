@@ -6,7 +6,6 @@
 
 #include "assert.h"
 #include "encounter.h"
-#include "script_manager.h"
 #include "filesystem.h"
 #include "follow_mon.h"
 #include "heap.h"
@@ -16,6 +15,7 @@
 #include "player_data.h"
 #include "scrcmd.h"
 #include "script.h"
+#include "script_manager.h"
 #include "task.h"
 #include "unk_0205CB48.h"
 #include "unk_0205FD20.h"

@@ -14,10 +14,6 @@ scr_seq_R06_000:
 	End
 
 scr_seq_R06_001:
-	ScrCmd_056 2, 0
-	ScrCmd_057 3
-	ScrCmd_058
-	TrainerTips msg_0334_R06_00001, VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	TrainerTipsEx 2, msg_0334_R06_00001
 	End
 	.balign 4, 0

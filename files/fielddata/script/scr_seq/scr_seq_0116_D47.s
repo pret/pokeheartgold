@@ -148,11 +148,7 @@ scr_seq_D47_010:
 	End
 
 scr_seq_D47_011:
-	ScrCmd_056 2, 0
-	ScrCmd_057 3
-	ScrCmd_058
-	TrainerTips msg_0133_D47_00017, VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	TrainerTipsEx 2, msg_0133_D47_00017
 	End
 
 scr_seq_D47_012:
