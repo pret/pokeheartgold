@@ -39,7 +39,7 @@ runs:
     - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       with:
         repository: PikalaxALT/pokeheartgold-calcrom
-        ref: 8bf8bb71d448156d7e535612e4072a36f70568a2 # v0.1.0
+        ref: 3de2ba72483e48afa10d069ee177006d657d4b76 # v0.1.1
         path: calcrom
     - uses: actions-rust-lang/setup-rust-toolchain@166cdcfd11aee3cb47222f9ddb555ce30ddb9659 # v1.17.0
       with:
@@ -48,7 +48,7 @@ runs:
       run: |
         {
           echo 'calcrom_output<<EOF'
-          cargo run --manifest-path calcrom/Cargo.toml --release -- \
+          cargo run --manifest-path calcrom/Cargo.toml ${{ runner.debug || '--release' }} -- \
             -d "${{ inputs.repodir }}" \
             -9 "${{ inputs.arm9subdir }}" \
             -7 "${{ inputs.arm7subdir }}" \
