@@ -2,13 +2,13 @@
 
 #include "overlay_2/event_cutscene.h"
 
-#include "script_manager.h"
 #include "follow_mon.h"
 #include "math_util.h"
 #include "overlay_01_021F467C.h"
 #include "overlay_01_021F944C.h"
 #include "overlay_01_022053EC.h"
 #include "screen_fade.h"
+#include "script_manager.h"
 #include "script_pokemon_util.h"
 #include "task.h"
 #include "unk_02062108.h"

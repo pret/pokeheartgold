@@ -4300,7 +4300,7 @@ _0225A636:
 	mov r1, #1
 	mov r2, #0x1f
 	mov r3, #2
-	bl sub_0200EC0C
+	bl LoadMapSignpostFrameAndGraphic
 	mov r0, #0x20
 	str r0, [sp]
 	mov r0, #0xd1

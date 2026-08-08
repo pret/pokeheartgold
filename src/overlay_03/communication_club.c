@@ -171,7 +171,7 @@ static const ListMenuTemplate ov03_02259144 = {
 };
 
 static void ov03_02253E20(s32 strno, BOOL arg1) {
-    if (IsPrintFinished(sCommClubManager->printerID) == FALSE) {
+    if (DialogBox_IsPrintFinished(sCommClubManager->printerID) == FALSE) {
         RemoveTextPrinter(sCommClubManager->printerID);
     }
     if (arg1) {
@@ -181,10 +181,10 @@ static void ov03_02253E20(s32 strno, BOOL arg1) {
         ReadMsgDataIntoString(sCommClubManager->msgData, strno, sCommClubManager->string[5]);
     }
     if (WindowIsInUse(&sCommClubManager->windows[2]) == FALSE) {
-        sub_0205B514(sCommClubManager->fieldSystem->bgConfig, &sCommClubManager->windows[2], 3);
+        DialogBox_AddWindowToLayer3(sCommClubManager->fieldSystem->bgConfig, &sCommClubManager->windows[2], GF_BG_LYR_MAIN_3);
     }
-    sub_0205B564(&sCommClubManager->windows[2], Save_PlayerData_GetOptionsAddr(sCommClubManager->fieldSystem->saveData));
-    sCommClubManager->printerID = sub_0205B5B4(&sCommClubManager->windows[2], sCommClubManager->string[5], Save_PlayerData_GetOptionsAddr(sCommClubManager->fieldSystem->saveData), TRUE);
+    DialogBox_LoadFrame(&sCommClubManager->windows[2], Save_PlayerData_GetOptionsAddr(sCommClubManager->fieldSystem->saveData));
+    sCommClubManager->printerID = DialogBox_PrintMessage(&sCommClubManager->windows[2], sCommClubManager->string[5], Save_PlayerData_GetOptionsAddr(sCommClubManager->fieldSystem->saveData), TRUE);
 }
 
 static void ov03_02253ED0(ListMenuTemplate listMenuTemplate, u8 x, u8 y, u8 width, u8 height, u16 baseTile) {
@@ -376,7 +376,7 @@ static void ov03_022543AC(CommClubManager *commClubManager_unused) {
 }
 
 static void ov03_02254420() {
-    if (IsPrintFinished(sCommClubManager->printerID)) {
+    if (DialogBox_IsPrintFinished(sCommClubManager->printerID)) {
         sCommClubManager->items = ListMenuItems_New(16, HEAP_ID_FIELD1);
         for (int i = 0; i < 16; i++) {
             BufferIntegerAsString(sCommClubManager->messageFormat[0], 0, i + 1, 2, PRINTING_MODE_LEADING_ZEROS, TRUE);
@@ -482,15 +482,15 @@ static void ov03_022546B0(void *arg0, CommClubManager *commClubManager) {
     if (ov03_02255B70() <= 2) {
         ov03_02253E20(1, TRUE);
     } else {
-        if (IsPrintFinished(sCommClubManager->printerID) == FALSE) {
+        if (DialogBox_IsPrintFinished(sCommClubManager->printerID) == FALSE) {
             RemoveTextPrinter(sCommClubManager->printerID);
         }
         ReadMsgDataIntoString(sCommClubManager->msgData, CommunicationClub_Text_AskingForRegistration, sCommClubManager->string[4]); // Asking {STRVAR_1 3, 1, 0} to do member\nregistration. Please wait.
         StringExpandPlaceholders(sCommClubManager->messageFormat[2], sCommClubManager->string[5], sCommClubManager->string[4]);
         if (WindowIsInUse(&sCommClubManager->windows[2]) == FALSE) {
-            sub_0205B514(sCommClubManager->fieldSystem->bgConfig, &sCommClubManager->windows[2], 3);
+            DialogBox_AddWindowToLayer3(sCommClubManager->fieldSystem->bgConfig, &sCommClubManager->windows[2], GF_BG_LYR_MAIN_3);
         }
-        sub_0205B564(&sCommClubManager->windows[2], Save_PlayerData_GetOptionsAddr(sCommClubManager->fieldSystem->saveData));
+        DialogBox_LoadFrame(&sCommClubManager->windows[2], Save_PlayerData_GetOptionsAddr(sCommClubManager->fieldSystem->saveData));
         TextFlags_SetCanABSpeedUpPrint(TRUE);
         TextFlags_SetAutoScrollParam(0);
         TextFlags_SetCanTouchSpeedUpPrint(FALSE);
@@ -520,7 +520,7 @@ static BOOL ov03_022547D8(void *arg0, CommClubManager *commClubManager) {
     } else if (sub_02037BA0(0, 2) == sub_0203769C()) {
         sub_02037BC8();
         commClubManager->connectedCount = sub_020347A0();
-        if (IsPrintFinished(sCommClubManager->printerID) == FALSE) {
+        if (DialogBox_IsPrintFinished(sCommClubManager->printerID) == FALSE) {
             RemoveTextPrinter(sCommClubManager->printerID);
         }
         ov03_0225574C(arg0, commClubManager);
@@ -535,7 +535,7 @@ static BOOL ov03_022547D8(void *arg0, CommClubManager *commClubManager) {
 }
 
 static void ov03_022548E0(void *arg0, CommClubManager *unk_ovo3) {
-    if (IsPrintFinished(sCommClubManager->printerID)) {
+    if (DialogBox_IsPrintFinished(sCommClubManager->printerID)) {
         if (unk_ovo3->unkA8 == 0) {
             sCommClubManager->unk9C = &ov03_0225912C;
             sCommClubManager->unkA0 = 1;
@@ -561,7 +561,7 @@ static void ov03_0225499C(void *arg0, CommClubManager *commClubManager) {
         commClubManager->unkA1 = 2;
         return;
     }
-    if (IsPrintFinished(sCommClubManager->printerID)) {
+    if (DialogBox_IsPrintFinished(sCommClubManager->printerID)) {
         ov03_02255C84(commClubManager);
         ov03_02254B4C(&ov03_022549D8);
     }
@@ -779,7 +779,7 @@ static void ov03_02254D64(SysTask *task, void *arg1) {
 
 static void ov03_02254D78(s32 arg0_unused, CommClubManager *commClubManager) {
     ov03_02254C9C(commClubManager);
-    if (IsPrintFinished(sCommClubManager->printerID)) {
+    if (DialogBox_IsPrintFinished(sCommClubManager->printerID)) {
         sCommClubManager->items = ListMenuItems_New(5, HEAP_ID_FIELD1);
         int i;
         for (i = 0; i < 5; i++) {
@@ -1000,7 +1000,7 @@ static void ov03_02255078(void *arg0, CommClubManager *commClubManager) {
 }
 
 static void ov03_02255280(void *arg0, CommClubManager *commClubManager) {
-    if (IsPrintFinished(sCommClubManager->printerID) && ((PAD_BUTTON_A | PAD_BUTTON_B) & gSystem.newKeys || System_GetTouchNew() == TRUE)) {
+    if (DialogBox_IsPrintFinished(sCommClubManager->printerID) && ((PAD_BUTTON_A | PAD_BUTTON_B) & gSystem.newKeys || System_GetTouchNew() == TRUE)) {
         ov03_0225574C(arg0, commClubManager);
         ov03_02254B44();
         sCommClubManager->retCode = 4;
@@ -1009,7 +1009,7 @@ static void ov03_02255280(void *arg0, CommClubManager *commClubManager) {
 
 static void ov03_022552C8(void *arg0, CommClubManager *commClubManager) {
     ov03_02254C9C(commClubManager);
-    if (IsPrintFinished(sCommClubManager->printerID) && ((PAD_BUTTON_A | PAD_BUTTON_B) & gSystem.newKeys || System_GetTouchNew() == TRUE)) {
+    if (DialogBox_IsPrintFinished(sCommClubManager->printerID) && ((PAD_BUTTON_A | PAD_BUTTON_B) & gSystem.newKeys || System_GetTouchNew() == TRUE)) {
         ov03_02254BEC();
         ov03_02254B4C(&ov03_0225530C);
     }
@@ -1017,7 +1017,7 @@ static void ov03_022552C8(void *arg0, CommClubManager *commClubManager) {
 
 static void ov03_0225530C(void *arg0_unused, CommClubManager *commClubManager) {
     ov03_02254C9C(commClubManager);
-    if (IsPrintFinished(sCommClubManager->printerID)) {
+    if (DialogBox_IsPrintFinished(sCommClubManager->printerID)) {
         ov03_02254B4C(&ov03_02254E70);
         if (ov03_02255B84() > 2) {
             sCommClubManager->unk9C = ov03_0225913C;
@@ -1085,7 +1085,7 @@ static void ov03_022553C8(void *arg0_unused, CommClubManager *commClubManager) {
     ov03_02254C9C(commClubManager);
     sub_02037EC0(0);
     ListMenu_ProcessInput(commClubManager->listMenu);
-    if (IsPrintFinished(sCommClubManager->printerID)) {
+    if (DialogBox_IsPrintFinished(sCommClubManager->printerID)) {
         ov03_02255C84(commClubManager);
         ov03_02254B4C(&ov03_02255404);
     }
@@ -1185,7 +1185,7 @@ static void ov03_022554E0(void *arg0, CommClubManager *commClubManager) {
 }
 
 static void ov03_0225554C(SysTask *task, void *commClubManager_unused) {
-    if (IsPrintFinished(sCommClubManager->printerID) && ((PAD_BUTTON_A | PAD_BUTTON_B) & gSystem.newKeys || System_GetTouchNew() == TRUE)) {
+    if (DialogBox_IsPrintFinished(sCommClubManager->printerID) && ((PAD_BUTTON_A | PAD_BUTTON_B) & gSystem.newKeys || System_GetTouchNew() == TRUE)) {
         sCommClubManager->retCode = 1;
         SysTask_Destroy(task);
     }
@@ -1249,7 +1249,7 @@ static void ov03_0225558C(void *arg0, CommClubManager *commClubManager) {
 static void ov03_022555F4(void *arg0_unused, CommClubManager *commClubManager) {
     ov03_02254C9C(commClubManager);
     ListMenu_ProcessInput(commClubManager->listMenu);
-    if (IsPrintFinished(sCommClubManager->printerID)) {
+    if (DialogBox_IsPrintFinished(sCommClubManager->printerID)) {
         ov03_02255C84(commClubManager);
         ov03_02254B4C(&ov03_0225562C);
     }
@@ -1299,7 +1299,7 @@ static void ov03_022556BC(void *arg0, CommClubManager *commClubManager) {
 static void ov03_02255714(s32 arg0_unused, CommClubManager *commClubManager) {
     ov03_02254C9C(commClubManager);
     ListMenu_ProcessInput(commClubManager->listMenu);
-    if (IsPrintFinished(sCommClubManager->printerID)) {
+    if (DialogBox_IsPrintFinished(sCommClubManager->printerID)) {
         ov03_02255C84(commClubManager);
         ov03_02254B4C(&ov03_02255078);
     }
@@ -1346,7 +1346,7 @@ static void ov03_02255860(u32 arg0_unused, CommClubManager *commClubManager) {
         ov03_02254B4C(&ov03_02255A00);
     } else if (ov03_02255C80() || sub_02037700()) {
         ov03_02254B4C(&ov03_02255A00);
-    } else if (IsPrintFinished(sCommClubManager->printerID)) {
+    } else if (DialogBox_IsPrintFinished(sCommClubManager->printerID)) {
         sub_02037AC0(10);
         ov03_02254B4C(&ov03_022558C4);
     }
@@ -1365,7 +1365,7 @@ static void ov03_022558C4(void *task, CommClubManager *commClubManager) {
         ov03_02254B4C(&ov03_02255A00);
         return;
     } else if (sub_02037B38(10) && sub_02037A10()) {
-        if (IsPrintFinished(sCommClubManager->printerID) == FALSE) {
+        if (DialogBox_IsPrintFinished(sCommClubManager->printerID) == FALSE) {
             RemoveTextPrinter(sCommClubManager->printerID);
         }
         commClubManager->connectedCount = sub_02037454();
@@ -1432,14 +1432,14 @@ static void ov03_022558C4(void *task, CommClubManager *commClubManager) {
 }
 
 static void ov03_02255A00() {
-    if (IsPrintFinished(sCommClubManager->printerID)) {
+    if (DialogBox_IsPrintFinished(sCommClubManager->printerID)) {
         ov03_02253E20(0, FALSE);
         ov03_02254B4C(&ov03_02255A2C);
     }
 }
 
 static void ov03_02255A2C(SysTask *task) {
-    if (IsPrintFinished(sCommClubManager->printerID) && ((PAD_BUTTON_A | PAD_BUTTON_B) & gSystem.newKeys || System_GetTouchNew() == TRUE)) {
+    if (DialogBox_IsPrintFinished(sCommClubManager->printerID) && ((PAD_BUTTON_A | PAD_BUTTON_B) & gSystem.newKeys || System_GetTouchNew() == TRUE)) {
         SysTask_Destroy(task);
         ov03_02254B44();
         sCommClubManager->retCode = 1;
@@ -1455,7 +1455,7 @@ static void ov03_02255A70(CommClubManager *commClubManager) {
 }
 
 static void ov03_02255AB0(SysTask *task, void *commClubManager) {
-    if (IsPrintFinished(sCommClubManager->printerID)) {
+    if (DialogBox_IsPrintFinished(sCommClubManager->printerID)) {
         sub_02058180();
         ov03_022542C8(commClubManager);
         SysTask_Destroy(task);
@@ -1471,7 +1471,7 @@ static void ov03_02255ADC(void *commClubManager) {
 }
 
 static void ov03_02255B04(SysTask *task, void *commClubManager) {
-    if (IsPrintFinished(sCommClubManager->printerID) && ((PAD_BUTTON_A | PAD_BUTTON_B) & gSystem.newKeys || System_GetTouchNew() == TRUE)) {
+    if (DialogBox_IsPrintFinished(sCommClubManager->printerID) && ((PAD_BUTTON_A | PAD_BUTTON_B) & gSystem.newKeys || System_GetTouchNew() == TRUE)) {
         ov03_022542C8(commClubManager);
         SysTask_Destroy(task);
     }

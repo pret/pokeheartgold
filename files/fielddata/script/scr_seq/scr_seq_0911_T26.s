@@ -425,35 +425,19 @@ _059C:
 	EndMovement
 
 scr_seq_T26_004:
-	ScrCmd_056 2, 0
-	ScrCmd_057 3
-	ScrCmd_058
-	TrainerTips msg_0604_T26_00007, VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	TrainerTipsEx 2, msg_0604_T26_00007
 	End
 
 scr_seq_T26_005:
-	DirectionSignpost msg_0604_T26_00005, 0, 17, VAR_SPECIAL_RESULT
-	ScrCmd_057 3
-	ScrCmd_058
-	ScrCmd_060 VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	DirectionSignpostEx 0, 17, msg_0604_T26_00005
 	End
 
 scr_seq_T26_006:
-	ScrCmd_056 2, 0
-	ScrCmd_057 3
-	ScrCmd_058
-	TrainerTips msg_0604_T26_00006, VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	TrainerTipsEx 2, msg_0604_T26_00006
 	End
 
 scr_seq_T26_007:
-	ScrCmd_056 2, 0
-	ScrCmd_057 3
-	ScrCmd_058
-	TrainerTips msg_0604_T26_00008, VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	TrainerTipsEx 2, msg_0604_T26_00008
 	End
 
 scr_seq_T26_008:

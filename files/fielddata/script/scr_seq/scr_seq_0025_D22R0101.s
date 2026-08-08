@@ -449,27 +449,15 @@ _0678:
 	EndMovement
 
 scr_seq_D22R0101_001:
-	ScrCmd_056 2, 0
-	ScrCmd_057 3
-	ScrCmd_058
-	TrainerTips msg_0062_D22R0101_00022, VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	TrainerTipsEx 2, msg_0062_D22R0101_00022
 	End
 
 scr_seq_D22R0101_002:
-	ScrCmd_056 3, 0
-	ScrCmd_057 3
-	ScrCmd_058
-	TrainerTips msg_0062_D22R0101_00023, VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	TrainerTipsEx 3, msg_0062_D22R0101_00023
 	End
 
 scr_seq_D22R0101_003:
-	ScrCmd_056 3, 0
-	ScrCmd_057 3
-	ScrCmd_058
-	TrainerTips msg_0062_D22R0101_00024, VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	TrainerTipsEx 3, msg_0062_D22R0101_00024
 	End
 
 scr_seq_D22R0101_004:

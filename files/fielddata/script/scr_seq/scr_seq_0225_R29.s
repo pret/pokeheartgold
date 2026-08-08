@@ -774,19 +774,11 @@ _09A5:
 	End
 
 scr_seq_R29_004:
-	DirectionSignpost msg_0373_R29_00016, 1, 1, VAR_SPECIAL_RESULT
-	ScrCmd_057 3
-	ScrCmd_058
-	ScrCmd_060 VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	DirectionSignpostEx 1, 1, msg_0373_R29_00016
 	End
 
 scr_seq_R29_005:
-	DirectionSignpost msg_0373_R29_00015, 1, 2, VAR_SPECIAL_RESULT
-	ScrCmd_057 3
-	ScrCmd_058
-	ScrCmd_060 VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	DirectionSignpostEx 1, 2, msg_0373_R29_00015
 	End
 
 scr_seq_R29_006:

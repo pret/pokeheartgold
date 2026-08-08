@@ -6,7 +6,6 @@
 #include "msgdata/msg.naix"
 
 #include "assert.h"
-#include "script_manager.h"
 #include "heap.h"
 #include "message_format.h"
 #include "msgdata.h"
@@ -18,6 +17,7 @@
 #include "pokemon_storage_system.h"
 #include "scrcmd.h"
 #include "script.h"
+#include "script_manager.h"
 #include "script_pokemon_util.h"
 
 // Note: move tutors for Blast Burn, Hydro Cannon, Frenzy Plant

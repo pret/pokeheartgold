@@ -1,6 +1,6 @@
-#include "script_manager.h"
 #include "overlay_26.h"
 #include "save.h"
+#include "script_manager.h"
 #include "sys_flags.h"
 
 static u16 GetRematchIdByBaseTrainerId(u16 trainer_no);

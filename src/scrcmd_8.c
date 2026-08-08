@@ -1,8 +1,8 @@
-#include "script_manager.h"
 #include "friend_group.h"
 #include "launch_application.h"
 #include "math_util.h"
 #include "scrcmd.h"
+#include "script_manager.h"
 #include "unk_0202C730.h"
 
 BOOL ScrCmd_GetStaticEncounterOutcome(ScriptContext *ctx) {

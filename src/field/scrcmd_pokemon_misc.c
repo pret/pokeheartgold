@@ -14,7 +14,6 @@
 
 #include "bag.h"
 #include "bug_contest.h"
-#include "script_manager.h"
 #include "follow_mon.h"
 #include "friend_group.h"
 #include "get_egg.h"
@@ -35,6 +34,7 @@
 #include "save_wifi_history.h"
 #include "scrcmd.h"
 #include "screen_fade.h"
+#include "script_manager.h"
 #include "sound_02004A44.h"
 #include "sys_vars.h"
 #include "system.h"

@@ -217,7 +217,7 @@ void ov42_022279C0(UnkStruct_ov42_02227060 *arg0, s32 arg1);
 BOOL ov42_022279E8(UnkStruct_ov42_02227060 *arg0, s32 arg1);
 void ov42_022279FC(UnkStruct_ov42_02227060 *arg0, s32 arg1, enum HeapID heapID);
 void ov42_02227B04(UnkStruct_ov42_02227060 *arg0);
-BOOL ov42_02227B5C(SpriteResource **arg0);
+BOOL ov42_02227B5C(SpriteResource **spriteResources);
 void ov42_02227B6C(UnkStruct_ov42_02227060 *arg0, s32 arg1, enum HeapID heapID);
 void ov42_02227BE0(UnkStruct_ov42_02227060 *arg0);
 void ov42_02227C18(UnkStruct_ov42_02227060 *arg0, enum HeapID heapID);

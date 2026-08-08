@@ -1,8 +1,8 @@
 #include "field_move.h"
 
 #include "constants/badge.h"
-#include "constants/maps.h"
 #include "constants/field/map_load.h"
+#include "constants/maps.h"
 #include "constants/sprites.h"
 #include "constants/std_script.h"
 #include "constants/weather.h"

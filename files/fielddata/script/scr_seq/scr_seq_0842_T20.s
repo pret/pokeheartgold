@@ -1175,11 +1175,7 @@ _0EC0:
 
 scr_seq_T20_007:
 	BufferPlayersName 0
-	ScrCmd_056 2, 0
-	ScrCmd_057 3
-	ScrCmd_058
-	TrainerTips msg_0542_T20_00035, VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	TrainerTipsEx 2, msg_0542_T20_00035
 	End
 
 scr_seq_T20_008:
@@ -1324,11 +1320,7 @@ _10B4:
 
 scr_seq_T20_016:
 	BufferFriendsName 0
-	ScrCmd_056 2, 0
-	ScrCmd_057 3
-	ScrCmd_058
-	TrainerTips msg_0542_T20_00035, VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	TrainerTipsEx 2, msg_0542_T20_00035
 	End
 
 scr_seq_T20_017:
@@ -1843,19 +1835,11 @@ _1700:
 	EndMovement
 
 scr_seq_T20_013:
-	ScrCmd_056 2, 0
-	ScrCmd_057 3
-	ScrCmd_058
-	TrainerTips msg_0542_T20_00036, VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	TrainerTipsEx 2, msg_0542_T20_00036
 	End
 
 scr_seq_T20_014:
-	DirectionSignpost msg_0542_T20_00034, 0, 11, VAR_SPECIAL_RESULT
-	ScrCmd_057 3
-	ScrCmd_058
-	ScrCmd_060 VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	DirectionSignpostEx 0, 11, msg_0542_T20_00034
 	End
 
 scr_seq_T20_015:

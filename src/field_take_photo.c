@@ -4,6 +4,7 @@
 
 #include "constants/scrcmd.h"
 
+#include "field/hblank_system.h"
 #include "graphic/camera_viewfinder.naix"
 
 #include "field_warp_tasks.h"
@@ -14,7 +15,6 @@
 #include "overlay_01_021F72DC.h"
 #include "overlay_01_021F8D80.h"
 #include "overlay_01_021F944C.h"
-#include "field/hblank_system.h"
 #include "overlay_01_022053EC.h"
 #include "photo_album.h"
 #include "screen_fade.h"

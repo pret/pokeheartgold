@@ -2,10 +2,13 @@
 
 #include "constants/sndseq.h"
 
+#include "field/fieldmap.h"
+#include "field/hblank_system.h"
+#include "field/map_load_manager.h"
+
 #include "camera.h"
 #include "field_bgm.h"
 #include "field_warp_tasks.h"
-#include "field/fieldmap.h"
 #include "follow_mon.h"
 #include "heap.h"
 #include "map_header.h"
@@ -14,8 +17,6 @@
 #include "overlay_01.h"
 #include "overlay_01_021E90C0.h"
 #include "overlay_01_021F1AFC.h"
-#include "field/map_load_manager.h"
-#include "field/hblank_system.h"
 #include "overlay_01_022031C0.h"
 #include "overlay_01_022053EC.h"
 #include "player_avatar.h"

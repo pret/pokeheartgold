@@ -72,11 +72,11 @@ BOOL ScrCmd_OpenMsg(ScriptContext *ctx);
 BOOL ScrCmd_CloseMsg(ScriptContext *ctx);
 BOOL ScrCmd_HoldMsg(ScriptContext *ctx);
 BOOL ScrCmd_DirectionSignpost(ScriptContext *ctx);
-BOOL ScrCmd_056(ScriptContext *ctx);
-BOOL ScrCmd_057(ScriptContext *ctx);
-BOOL ScrCmd_058(ScriptContext *ctx);
+BOOL ScrCmd_SetSignpostMap(ScriptContext *ctx);
+BOOL ScrCmd_SetSignpostAction(ScriptContext *ctx);
+BOOL ScrCmd_WaitSignpostAction(ScriptContext *ctx);
 BOOL ScrCmd_TrainerTips(ScriptContext *ctx);
-BOOL ScrCmd_060(ScriptContext *ctx);
+BOOL ScrCmd_WaitSignpost(ScriptContext *ctx);
 BOOL ScrCmd_061(ScriptContext *ctx);
 BOOL ScrCmd_062(ScriptContext *ctx);
 BOOL ScrCmd_YesNo(ScriptContext *ctx);
@@ -89,8 +89,6 @@ BOOL ScrCmd_069(ScriptContext *ctx);
 BOOL ScrCmd_070(ScriptContext *ctx);
 BOOL ScrCmd_071(ScriptContext *ctx);
 BOOL ScrCmd_072(ScriptContext *ctx);
-
-// Sound-related commands
 BOOL ScrCmd_PlaySE(ScriptContext *ctx);
 BOOL ScrCmd_StopSE(ScriptContext *ctx);
 BOOL ScrCmd_WaitSE(ScriptContext *ctx);
@@ -112,8 +110,6 @@ BOOL ScrCmd_ChatotStartRecording(ScriptContext *ctx);
 BOOL ScrCmd_ChatotStopRecording(ScriptContext *ctx);
 BOOL ScrCmd_ChatotSaveRecording(ScriptContext *ctx);
 BOOL ScrCmd_093(ScriptContext *ctx);
-
-// Event objects
 BOOL ScrCmd_ApplyMovement(ScriptContext *ctx);
 BOOL ScrCmd_WaitMovement(ScriptContext *ctx);
 BOOL ScrCmd_LockAll(ScriptContext *ctx);
@@ -130,8 +126,6 @@ BOOL ScrCmd_GetPersonCoords(ScriptContext *ctx);
 BOOL ScrCmd_107(ScriptContext *ctx);
 BOOL ScrCmd_108(ScriptContext *ctx);
 BOOL ScrCmd_109(ScriptContext *ctx);
-
-// scrcmd_money.c
 BOOL ScrCmd_AddMoney(ScriptContext *ctx);
 BOOL ScrCmd_SubMoneyImmediate(ScriptContext *ctx);
 BOOL ScrCmd_HasEnoughMoneyImmediate(ScriptContext *ctx);
@@ -147,15 +141,12 @@ BOOL ScrCmd_TakeCoins(ScriptContext *ctx);
 BOOL ScrCmd_GiveAthletePoints(ScriptContext *ctx);
 BOOL ScrCmd_TakeAthletePoints(ScriptContext *ctx);
 BOOL ScrCmd_CheckAthletePoints(ScriptContext *ctx);
-
-// scrcmd_items.c
 BOOL ScrCmd_GiveItem(ScriptContext *ctx);
 BOOL ScrCmd_TakeItem(ScriptContext *ctx);
 BOOL ScrCmd_HasSpaceForItem(ScriptContext *ctx);
 BOOL ScrCmd_HasItem(ScriptContext *ctx);
 BOOL ScrCmd_ItemIsTMOrHM(ScriptContext *ctx);
 BOOL ScrCmd_GetItemPocket(ScriptContext *ctx);
-
 BOOL ScrCmd_SetStarterChoice(ScriptContext *ctx);
 BOOL ScrCmd_GenderMsgBox(ScriptContext *ctx);
 BOOL ScrCmd_GetSealQuantity(ScriptContext *ctx);
@@ -215,8 +206,6 @@ BOOL ScrCmd_SetBikeStateLock(ScriptContext *ctx);
 BOOL ScrCmd_GetPlayerState(ScriptContext *ctx);
 BOOL ScrCmd_SetAvatarBits(ScriptContext *ctx);
 BOOL ScrCmd_UpdateAvatarState(ScriptContext *ctx);
-
-// Message buffers
 BOOL ScrCmd_BufferPlayersName(ScriptContext *ctx);
 BOOL ScrCmd_BufferRivalsName(ScriptContext *ctx);
 BOOL ScrCmd_BufferFriendsName(ScriptContext *ctx);
@@ -239,8 +228,6 @@ BOOL ScrCmd_208(ScriptContext *ctx);
 BOOL ScrCmd_209(ScriptContext *ctx);
 BOOL ScrCmd_BufferMapSecName(ScriptContext *ctx);
 BOOL ScrCmd_211(ScriptContext *ctx);
-
-// Trainer-related
 BOOL ScrCmd_GetTrainerNum(ScriptContext *ctx);
 BOOL ScrCmd_TrainerBattle(ScriptContext *ctx);
 BOOL ScrCmd_TrainerMessage(ScriptContext *ctx);
@@ -272,8 +259,6 @@ BOOL ScrCmd_MonGetGender(ScriptContext *ctx);
 BOOL ScrCmd_SetDynamicWarp(ScriptContext *ctx);
 BOOL ScrCmd_GetDynamicWarpFloorNo(ScriptContext *ctx);
 BOOL ScrCmd_ElevatorCurFloorBox(ScriptContext *ctx);
-
-// Dex-related
 BOOL ScrCmd_CountJohtoDexSeen(ScriptContext *ctx);
 BOOL ScrCmd_CountJohtoDexOwned(ScriptContext *ctx);
 BOOL ScrCmd_CountNationalDexSeen(ScriptContext *ctx);
@@ -306,8 +291,6 @@ BOOL ScrCmd_271(ScriptContext *ctx);
 BOOL ScrCmd_272(ScriptContext *ctx);
 BOOL ScrCmd_273(ScriptContext *ctx);
 BOOL ScrCmd_274(ScriptContext *ctx);
-
-// scrcmd_mart.c
 BOOL ScrCmd_MartBuy(ScriptContext *ctx);
 BOOL ScrCmd_SpecialMartBuy(ScriptContext *ctx);
 BOOL ScrCmd_DecorationMart(ScriptContext *ctx);
@@ -393,8 +376,6 @@ BOOL ScrCmd_PartyCountNotEgg(ScriptContext *ctx);
 BOOL ScrCmd_CountAliveMons(ScriptContext *ctx);
 BOOL ScrCmd_CountAliveMonsAndPC(ScriptContext *ctx);
 BOOL ScrCmd_PartyCountEgg(ScriptContext *ctx);
-
-// scrcmd_money.c
 BOOL ScrCmd_SubMoneyVar(ScriptContext *ctx);
 BOOL ScrCmd_RetrieveDaycareMon(ScriptContext *ctx);
 BOOL ScrCmd_GiveLoanMon(ScriptContext *ctx);
@@ -521,7 +502,7 @@ BOOL ScrCmd_BufferRibbonName(ScriptContext *ctx);
 BOOL ScrCmd_GetEVTotal(ScriptContext *ctx);
 BOOL ScrCmd_GetWeekday(ScriptContext *ctx);
 BOOL ScrCmd_StartBattleRegulationMenuTask(ScriptContext *ctx);
-// BOOL ScrCmd_Dummy(ScriptContext *ctx);
+BOOL ScrCmd_Dummy(ScriptContext *ctx);
 BOOL ScrCmd_PokeCenAnim(ScriptContext *ctx);
 BOOL ScrCmd_ElevatorAnim(ScriptContext *ctx);
 BOOL ScrCmd_MysteryGift(ScriptContext *ctx);
@@ -715,7 +696,7 @@ BOOL ScrCmd_GetPartyMonForm(ScriptContext *ctx);
 BOOL ScrCmd_677(ScriptContext *ctx);
 BOOL ScrCmd_678(ScriptContext *ctx);
 BOOL ScrCmd_679(ScriptContext *ctx);
-BOOL ScrCmd_AddSpecialGameStat(ScriptContext *ctx);
+BOOL ScrCmd_AddSpecialGameStat2(ScriptContext *ctx);
 BOOL ScrCmd_681(ScriptContext *ctx);
 BOOL ScrCmd_682(ScriptContext *ctx);
 BOOL ScrCmd_GetStaticEncounterOutcome(ScriptContext *ctx);

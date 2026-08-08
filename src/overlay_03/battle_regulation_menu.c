@@ -4,6 +4,7 @@
 #include "msgdata/msg/msg_0046.h"
 #include "msgdata/msg/msg_0182.h"
 
+#include "dialog_box.h"
 #include "field_system.h"
 #include "font.h"
 #include "link_ruleset_data.h"
@@ -12,7 +13,6 @@
 #include "save_link_ruleset.h"
 #include "task.h"
 #include "text.h"
-#include "text_0205B4EC.h"
 #include "unk_02005D10.h"
 
 enum RegulationMenus {
@@ -83,14 +83,14 @@ static const ListMenuTemplate sListMenuTemplate = {
 static void BattleRegulationMenu_PrintMessage(BattleRegulationMenu *menu, int entryID) {
     if (WindowIsInUse(&menu->windows[REGULATION_MENU_WINDOW_MSGBOX]) == FALSE) {
         InitWindow(&menu->windows[REGULATION_MENU_WINDOW_MSGBOX]);
-        sub_0205B514(menu->fieldSystem->bgConfig, &menu->windows[REGULATION_MENU_WINDOW_MSGBOX], 3);
-        sub_0205B564(&menu->windows[REGULATION_MENU_WINDOW_MSGBOX], Save_PlayerData_GetOptionsAddr(menu->fieldSystem->saveData));
+        DialogBox_AddWindowToLayer3(menu->fieldSystem->bgConfig, &menu->windows[REGULATION_MENU_WINDOW_MSGBOX], GF_BG_LYR_MAIN_3);
+        DialogBox_LoadFrame(&menu->windows[REGULATION_MENU_WINDOW_MSGBOX], Save_PlayerData_GetOptionsAddr(menu->fieldSystem->saveData));
     } else {
-        sub_0205B5A8(&menu->windows[REGULATION_MENU_WINDOW_MSGBOX]);
+        DialogBox_Clear(&menu->windows[REGULATION_MENU_WINDOW_MSGBOX]);
     }
     ReadMsgDataIntoString(menu->msgData, entryID, menu->strings[REGULATION_MENU_STRING_FMT]);
     StringExpandPlaceholders(menu->messageFormat, menu->strings[REGULATION_MENU_STRING_DESTINATION], menu->strings[REGULATION_MENU_STRING_FMT]);
-    menu->printerID = sub_0205B5B4(&menu->windows[REGULATION_MENU_WINDOW_MSGBOX], menu->strings[REGULATION_MENU_STRING_DESTINATION], Save_PlayerData_GetOptionsAddr(menu->fieldSystem->saveData), 1);
+    menu->printerID = DialogBox_PrintMessage(&menu->windows[REGULATION_MENU_WINDOW_MSGBOX], menu->strings[REGULATION_MENU_STRING_DESTINATION], Save_PlayerData_GetOptionsAddr(menu->fieldSystem->saveData), 1);
 }
 
 static void BattleRegulationMenu_RemoveMsgBox(BattleRegulationMenu *menu, BOOL clear) {
@@ -421,7 +421,7 @@ static BOOL Task_BattleRegulationMenu(TaskManager *taskManager) {
         menu->state++;
         break;
     case STATE_REGULATION_MENU_SHOW_LIST_MENU_REGULATIONS:
-        if (IsPrintFinished(menu->printerID)) {
+        if (DialogBox_IsPrintFinished(menu->printerID)) {
             BattleRegulationMenu_ShowListMenuRegulations(menu);
             menu->state++;
         }
@@ -461,7 +461,7 @@ static BOOL Task_BattleRegulationMenu(TaskManager *taskManager) {
         }
         break;
     case STATE_REGULATION_MENU_WAIT_MESSAGE_INVALID_TEAM:
-        if (IsPrintFinished(menu->printerID) && (PAD_BUTTON_A | PAD_BUTTON_B) & gSystem.newKeys) {
+        if (DialogBox_IsPrintFinished(menu->printerID) && (PAD_BUTTON_A | PAD_BUTTON_B) & gSystem.newKeys) {
             menu->state = STATE_REGULATION_MENU_PRINT_WHICH_RULESET;
         }
         break;
@@ -479,7 +479,7 @@ static BOOL Task_BattleRegulationMenu(TaskManager *taskManager) {
         }
         break;
     case STATE_REGULATION_MENU_WAIT_RESHOW_CONFIRM_MENU:
-        if (IsPrintFinished(menu->printerID)) {
+        if (DialogBox_IsPrintFinished(menu->printerID)) {
             menu->state = STATE_REGULATION_MENU_SHOW_LIST_MENU_CONFIRM;
         }
         break;

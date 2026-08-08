@@ -1,8 +1,8 @@
 #include "global.h"
 
 #include "data/resdat.naix"
-#include "field/fieldmap.h"
 #include "field/field_sprite_manager.h"
+#include "field/fieldmap.h"
 #include "field/map_prop_animation.h"
 #include "field/overlay_01_02204004.h"
 #include "msgdata/msg.naix"
@@ -157,7 +157,7 @@ static void ov03_02256BA8(FieldSystem *fieldSystem, u8 index) {
     if (renderObject == NULL) {
         GF_AssertFail();
     } else {
-        ov01_021E8970(modelID, sub_020669B4(Save_VarsFlags_Get(fieldSystem->saveData), index), 1, renderObject, fieldSystem->mapPropAnimationManager); 
+        ov01_021E8970(modelID, sub_020669B4(Save_VarsFlags_Get(fieldSystem->saveData), index), 1, renderObject, fieldSystem->mapPropAnimationManager);
     }
 }
 
@@ -756,7 +756,7 @@ static u8 ov03_02257874(MartData *data, u16 itemID) {
 }
 
 static u8 ov03_02257944(MartData *data) {
-    if (IsPrintFinished(data->printerID) == FALSE) {
+    if (DialogBox_IsPrintFinished(data->printerID) == FALSE) {
         return TASK_MART_5;
     }
     Sprite_SetDrawFlag(data->sprites[0], FALSE);
@@ -904,7 +904,7 @@ static u8 ov03_02257CA0(MartData *data) {
 }
 
 static u8 ov03_02257D6C(MartData *data) {
-    if (IsPrintFinished(data->printerID) == FALSE) {
+    if (DialogBox_IsPrintFinished(data->printerID) == FALSE) {
         return TASK_MART_10;
     }
     data->unk298 = 8;
@@ -947,7 +947,7 @@ static void MartData_Inventory_AddApricornOrItem(MartData *data, int item) {
 }
 
 static u8 MartData_PerformTransaction(MartData *data) {
-    if (IsPrintFinished(data->printerID) == FALSE) {
+    if (DialogBox_IsPrintFinished(data->printerID) == FALSE) {
         return TASK_MART_12;
     }
     if (data->martType == MART_TYPE_NORMAL) {
@@ -966,7 +966,7 @@ static u8 MartData_PerformTransaction(MartData *data) {
 }
 
 static u8 ov03_02257F24(MartData *data) {
-    if (IsPrintFinished(data->printerID) == FALSE) {
+    if (DialogBox_IsPrintFinished(data->printerID) == FALSE) {
         return TASK_MART_13;
     }
     if ((PAD_BUTTON_A | PAD_BUTTON_B) & gSystem.newKeys || gSystem.touchNew) {
@@ -991,7 +991,7 @@ static u8 ov03_02257F24(MartData *data) {
 }
 
 static u8 ov03_02257FF8(MartData *data) {
-    if (IsPrintFinished(data->printerID) == FALSE) {
+    if (DialogBox_IsPrintFinished(data->printerID) == FALSE) {
         return TASK_MART_14;
     }
     if ((PAD_BUTTON_A | PAD_BUTTON_B) & gSystem.newKeys || gSystem.touchNew) {
@@ -1008,7 +1008,7 @@ static u8 ov03_02257FF8(MartData *data) {
 }
 
 static u8 ov03_02258078(MartData *data) {
-    if (IsPrintFinished(data->printerID) == FALSE) {
+    if (DialogBox_IsPrintFinished(data->printerID) == FALSE) {
         return TASK_MART_15;
     }
     if ((PAD_BUTTON_A | PAD_BUTTON_B) & gSystem.newKeys || gSystem.touchNew) {

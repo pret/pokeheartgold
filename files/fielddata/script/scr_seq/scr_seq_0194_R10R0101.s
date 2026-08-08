@@ -9,10 +9,6 @@
 	ScrDefEnd
 
 scr_seq_R10R0101_000:
-	DirectionSignpost msg_0343_R10R0101_00000, 1, 3, VAR_SPECIAL_RESULT
-	ScrCmd_057 3
-	ScrCmd_058
-	ScrCmd_060 VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	DirectionSignpostEx 1, 3, msg_0343_R10R0101_00000
 	End
 	.balign 4, 0

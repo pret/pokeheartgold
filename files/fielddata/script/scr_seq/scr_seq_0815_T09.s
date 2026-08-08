@@ -372,18 +372,10 @@ _0495:
 	End
 
 scr_seq_T09_001:
-	ScrCmd_056 2, 0
-	ScrCmd_057 3
-	ScrCmd_058
-	TrainerTips msg_0519_T09_00020, VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	TrainerTipsEx 2, msg_0519_T09_00020
 	End
 
 scr_seq_T09_002:
-	DirectionSignpost msg_0519_T09_00021, 0, 9, VAR_SPECIAL_RESULT
-	ScrCmd_057 3
-	ScrCmd_058
-	ScrCmd_060 VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	DirectionSignpostEx 0, 9, msg_0519_T09_00021
 	End
 	.balign 4, 0

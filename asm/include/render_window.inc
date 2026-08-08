@@ -29,7 +29,7 @@
 .public ClearFrameAndWindow2
 .public sub_0200EB68
 .public sub_0200EB80
-.public sub_0200EC0C
+.public LoadMapSignpostFrameAndGraphic
 .public DrawFrameAndWindow3
 .public WaitingIcon_New
 .public sub_0200F450

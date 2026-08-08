@@ -7,7 +7,6 @@
 #include "pokeathlon/pokeathlon_save.h"
 
 #include "apricorn_tree.h"
-#include "script_manager.h"
 #include "friend_group.h"
 #include "gf_3d_render.h"
 #include "map_object.h"
@@ -18,6 +17,7 @@
 #include "save_misc_data.h"
 #include "save_wifi_history.h"
 #include "script.h"
+#include "script_manager.h"
 #include "sys_vars.h"
 #include "unk_0202C730.h"
 #include "unk_02031B0C.h"

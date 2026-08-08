@@ -15435,7 +15435,7 @@ _0224FA50:
 	ldrh r0, [r4, r0]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl IsPrintFinished
+	bl DialogBox_IsPrintFinished
 	cmp r0, #1
 	bne _0224FB28
 	ldr r1, _0224FB2C ; =0x0000086C
@@ -15617,7 +15617,7 @@ FollowMon_TryPrintInteractionMessage: ; 0x0224FB9C
 	ldr r0, [r5, #8]
 	add r1, r4, #0
 	mov r2, #3
-	bl sub_0205B514
+	bl DialogBox_AddWindowToLayer3
 	ldrh r3, [r6, #2]
 	ldr r1, [r4, #0x10]
 	add r0, r5, #0
@@ -15629,12 +15629,12 @@ FollowMon_TryPrintInteractionMessage: ; 0x0224FB9C
 	add r6, r0, #0
 	add r0, r4, #0
 	add r1, r6, #0
-	bl sub_0205B564
+	bl DialogBox_LoadFrame
 	ldr r1, [r4, #0x10]
 	add r0, r4, #0
 	add r2, r6, #0
 	mov r3, #1
-	bl sub_0205B5B4
+	bl DialogBox_PrintMessage
 	ldr r1, _0224FC04 ; =0x0000086E
 	strh r0, [r4, r1]
 	add r0, r5, #0
@@ -15668,7 +15668,7 @@ ov02_0224FC08: ; 0x0224FC08
 	ldr r0, [r5, #8]
 	add r1, r4, #0
 	mov r2, #3
-	bl sub_0205B514
+	bl DialogBox_AddWindowToLayer3
 	ldr r0, _0224FC6C ; =0x00000816
 	mov r2, #0xb
 	ldrb r0, [r4, r0]
@@ -15682,12 +15682,12 @@ ov02_0224FC08: ; 0x0224FC08
 	add r6, r0, #0
 	add r0, r4, #0
 	add r1, r6, #0
-	bl sub_0205B564
+	bl DialogBox_LoadFrame
 	ldr r1, [r4, #0x10]
 	add r0, r4, #0
 	add r2, r6, #0
 	mov r3, #1
-	bl sub_0205B5B4
+	bl DialogBox_PrintMessage
 	ldr r1, _0224FC70 ; =0x0000086E
 	strh r0, [r4, r1]
 	add r0, r5, #0
@@ -16691,7 +16691,7 @@ _02250418:
 	ldrh r0, [r1, r0]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl IsPrintFinished
+	bl DialogBox_IsPrintFinished
 	cmp r0, #1
 	bne _0225047E
 	bl IsFanfarePlaying

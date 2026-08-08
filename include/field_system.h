@@ -227,7 +227,7 @@ struct FieldSystem {
     void *unkCC;
     u16 lastTouchMenuInput;
     u8 unkD2_0 : 6;
-    u8 unkD2_6 : 1;
+    u8 textbox_open : 1;
     u8 unkD2_7 : 1;
     u8 unkD3;
     u8 filler_D4[0x4];
@@ -235,7 +235,7 @@ struct FieldSystem {
     FieldViewPhoto *viewPhotoTask;
     int lastStartMenuAction;
     FollowMon followMon; // E4
-    void *unk104;
+    FieldSystemUnkSub104 *unk104;
     FieldSystemUnkSub108 *unk108;
     MenuInputStateMgr menuInputState; // Tracks whether the last menu input was touch or keypad
     u8 unk_110;
