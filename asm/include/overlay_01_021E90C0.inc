@@ -46,11 +46,11 @@
 .public MI_CpuFill8
 .public FieldMap_FadeScreen
 .public MapPropAnimationManager_GetPropAnimationCount
-.public ov01_021E8DE8
-.public ov01_021E8E98
-.public ov01_021E8ED0
-.public ov01_021E8F10
-.public ov01_021E8F30
+.public MapPropOneShotAnimationManager_LoadPropAnimations
+.public MapPropOneShotAnimationManager_PlayAnimationWithSoundEffect
+.public MapPropOneShotAnimationManager_UnloadAnimation
+.public MapPropOneShotAnimationManager_IsAnimationLoopFinished
+.public MapPropOneShotAnimationManager_GetAnimationMapPropModelID
 .public ov01_021E90B0
 .public ov01_021E90C0
 .public ov01_021E90D4

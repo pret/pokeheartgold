@@ -491,7 +491,6 @@ Overlay field
     Object src/field/field_control.o
     Object src/field/field_sprite_manager.o
     Object src/field/map_prop_animation.o
-    Object asm/overlay_01_021E8744.o
     Object asm/overlay_01_021E90C0.o
     Object asm/overlay_01_021EA6C4.o
     Object src/overlay_01_021EA824.o

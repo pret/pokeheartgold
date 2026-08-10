@@ -1279,11 +1279,11 @@ _0225482A:
 	ldr r0, [r5, #0x54]
 	ldr r1, [r5, #0x58]
 	mov r3, #0x76
-	bl ov01_021E8DE8
+	bl MapPropOneShotAnimationManager_LoadPropAnimations
 	ldr r0, [r5, #0x58]
 	mov r1, #1
 	mov r2, #0
-	bl ov01_021E8E70
+	bl MapPropOneShotAnimationManager_PlayAnimation
 	ldr r0, _02254B9C ; =SEQ_SE_GS_ITOMARU_ROBO
 	bl PlaySE
 	ldr r0, [r6]
@@ -1464,7 +1464,7 @@ _02254992:
 	ldr r0, [r5, #0x54]
 	ldr r1, [r5, #0x58]
 	mov r2, #1
-	bl ov01_021E8ED0
+	bl MapPropOneShotAnimationManager_UnloadAnimation
 	ldr r0, _02254B9C ; =SEQ_SE_GS_ITOMARU_ROBO
 	mov r1, #1
 	bl StopSE

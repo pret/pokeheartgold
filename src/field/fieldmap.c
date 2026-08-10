@@ -277,7 +277,7 @@ BOOL FieldMap_Exit(OverlayManager *man, int *state) {
 
         MapPropAnimationManager_UnloadAllAnimations(fieldSystem->mapPropAnimationManager);
         MapPropAnimationManager_Free(fieldSystem->mapPropAnimationManager);
-        ov01_021E8DD4(&fieldSystem->mapPropOneShotAnimationManager);
+        MapPropOneShotAnimationManager_Free(&fieldSystem->mapPropOneShotAnimationManager);
         ov01_02204764(fieldSystem->unk104);
         ov01_02204634(fieldSystem->unkCC);
         ov01_02204278(fieldSystem->unkC8);
@@ -657,7 +657,7 @@ static void InitGraphicsAndManagers(FieldSystem* fieldSystem) {
     fieldSystem->unkCC = ov01_0220460C(fieldSystem->unkC8);
     fieldSystem->unk104 = ov01_02204744(HEAP_ID_FIELD1);
     fieldSystem->mapPropAnimationManager = MapPropAnimationManager_Init(ov01_021FB904(fieldSystem->areaDataManager), fieldSystem->unkC8);
-    fieldSystem->mapPropOneShotAnimationManager = ov01_021E8DB4();
+    fieldSystem->mapPropOneShotAnimationManager = MapPropOneShotAnimationManager_New();
 }
 
 static void FieldSystem_InitMapLoadManager(FieldSystem* fieldSystem) {

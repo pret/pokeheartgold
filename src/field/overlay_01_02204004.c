@@ -294,15 +294,15 @@ void MapPropAnimation_GoToFirstFrame(MapPropAnimation *animation) {
     }
 }
 
-void ov01_02204500(FieldSystemUnkSubCC_Sub0 *unkCC_Sub0, MapPropAnimation *animation) { // FreeMapPropAnimObj
+void ov01_02204500(FieldSystemUnkSubCC_Sub0 *unkCC_Sub0, MapPropAnimation *animation) { // FieldSystemUnkSubCC_Sub0_FreeMapPropAnimObj
     NNS_G3dFreeAnmObj(&unkCC_Sub0->unk0, animation->animObj);
 }
 
-void ov01_0220450C(NNSG3dRenderObj *renderObj, MapPropAnimation *animation) { // AddMapPropAnimObjToRenderObj
+void AddMapPropAnimObjToRenderObj(NNSG3dRenderObj *renderObj, MapPropAnimation *animation) {
     NNS_G3dRenderObjAddAnmObj(renderObj, animation->animObj);
 }
 
-BOOL ov01_02204518(NNSG3dRenderObj *renderObj, MapPropAnimation *animation) {
+BOOL RemoveMapPropAnimObjFromRenderObj(NNSG3dRenderObj *renderObj, MapPropAnimation *animation) {
     if (animation == NULL) return FALSE;
     if (animation->animObj == NULL) return FALSE;
     if (renderObj == NULL) return FALSE;
@@ -381,11 +381,11 @@ void ov01_0220463C(FieldSystemUnkSubCC *unkCC, int fileID) {
 }
 
 void ov01_02204678(FieldSystemUnkSubCC *unkCC, NNSG3dRenderObj *renderObj) {
-    ov01_0220450C(renderObj, unkCC->unk4);
+    AddMapPropAnimObjToRenderObj(renderObj, unkCC->unk4);
 }
 
 void ov01_02204688(FieldSystemUnkSubCC *unkCC, NNSG3dRenderObj *renderObj) {
-    ov01_02204518(renderObj, unkCC->unk4);
+    RemoveMapPropAnimObjFromRenderObj(renderObj, unkCC->unk4);
 }
 
 void ov01_02204698(FieldSystemUnkSubCC *unkCC) {
@@ -427,42 +427,42 @@ static void ov01_02204728(NNSG3dAnmObj *alloc, ResAnim_4004 *anim) {
     ov01_022046E8(alloc, anim);
 }
 
-FieldSystemUnkSub104 *ov01_02204744(enum HeapID heapID) {
+FieldSystemUnkSub104 *ov01_02204744(enum HeapID heapID) { // FieldSystemUnkSub104_Init
     FieldSystemUnkSub104 *unk104 = Heap_Alloc(heapID, sizeof(FieldSystemUnkSub104));
     MIi_CpuClearFast(0, (u32*)unk104, sizeof(FieldSystemUnkSub104));
     unk104->timeOfDay = GF_RTC_GetTimeOfDay();
     return unk104;
 }
 
-void ov01_02204764(FieldSystemUnkSub104 *unk104) {
+void ov01_02204764(FieldSystemUnkSub104 *unk104) { // FieldSystemUnkSub104_Free
     Heap_Free(unk104);
 }
 
-void ov01_0220476C(FieldSystemUnkSub104 *unk104, UnkStruct_FieldSysC0_SubC *subC, MapPropAnimation **animation, int arg3) {
+void ov01_0220476C(FieldSystemUnkSub104 *unk104, NNSG3dRenderObj *renderObj, MapPropAnimation **animation, int count) {
     if (unk104->unk4 < 4) {
         if (unk104->unkSub[unk104->unk4].unk0) {
             GF_AssertFail();
         }
-        if (arg3 > 4) {
+        if (count > 4) {
             GF_AssertFail();
         }
         FieldSystemUnkSub104_Sub8 *unkSub = &unk104->unkSub[unk104->unk4];
         unkSub->unk0 = 1;
-        unkSub->unk4 = arg3;
-        if (arg3 > 4) {
+        unkSub->unk4 = count;
+        if (count > 4) {
             unkSub->unk4 = 4;
         }
         for (u8 i = 0;  i < unkSub->unk4; i++) {
             unkSub->animations[i] = animation[i];
         }
-        unkSub->unk18 = subC;
+        unkSub->renderObj = renderObj;
         unk104->unk4++;
     } else {
         GF_AssertFail();
     }
 }
 
-static const u8 ov01_022095EC[5] = {
+static const u8 sTimeOfDayVisualState[RTC_TIMEOFDAY_MAX] = {
     [RTC_TIMEOFDAY_MORN]    = 0,
     [RTC_TIMEOFDAY_DAY]     = 1,
     [RTC_TIMEOFDAY_EVE]     = 2,
@@ -470,7 +470,7 @@ static const u8 ov01_022095EC[5] = {
     [RTC_TIMEOFDAY_LATE]    = 3
 };
 
-void ov01_022047DC(FieldSystemUnkSub104 *unk104) { 
+void ov01_022047DC(FieldSystemUnkSub104 *unk104) { // FieldSystemUnkSub104_SwitchTimeOfDay
     u8 currentTimeOfDay = (u8)GF_RTC_GetTimeOfDay();
     if (unk104->timeOfDay != currentTimeOfDay) {
         u8 previousTimeOfDay = unk104->timeOfDay;
@@ -478,13 +478,13 @@ void ov01_022047DC(FieldSystemUnkSub104 *unk104) {
         for (int i = 0; i < 4; i++) {
             if (unk104->unkSub[i].unk0 != 0) {
                 FieldSystemUnkSub104_Sub8 *sub = &unk104->unkSub[i];
-                ov01_02204518(&sub->unk18->renderObj, sub->animations[ov01_022095EC[previousTimeOfDay]]);
-                ov01_0220450C(&sub->unk18->renderObj, sub->animations[ov01_022095EC[currentTimeOfDay]]);
+                RemoveMapPropAnimObjFromRenderObj(sub->renderObj, sub->animations[sTimeOfDayVisualState[previousTimeOfDay]]);
+                AddMapPropAnimObjToRenderObj(sub->renderObj, sub->animations[sTimeOfDayVisualState[currentTimeOfDay]]);
             }
         }
     }
 }
 
-u8 ov01_02204834(FieldSystemUnkSub104 *unk104) {
-    return ov01_022095EC[unk104->timeOfDay];
+u8 ov01_02204834(FieldSystemUnkSub104 *unk104) { // FieldSystemUnkSub104_GetTimeOfDayVisualState
+    return sTimeOfDayVisualState[unk104->timeOfDay];
 }

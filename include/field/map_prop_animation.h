@@ -80,7 +80,16 @@ void MapPropAnimationData_SetAnimationLoopCount(MapPropAnimationData *animation,
 BOOL MapPropAnimationData_IsAnimationLoopFinished(MapPropAnimationData *animation);
 int MapPropAnimationManager_GetAnimListNARCFileCount(MapPropAnimationManager *mapPropAnimationManager);
 const u8 MapPropAnimationManager_GetPropAnimationCount(MapPropAnimationManager *manager, const int mapPropModelID);
-MapPropOneShotAnimationManager *ov01_021E8DB4();
-void ov01_021E8DD4(MapPropOneShotAnimationManager **mapPropOneShotAnimationManager);
+MapPropOneShotAnimationManager *MapPropOneShotAnimationManager_New(void);
+void MapPropOneShotAnimationManager_Free(MapPropOneShotAnimationManager **manager);
+void MapPropOneShotAnimationManager_LoadPropAnimations(MapPropAnimationManager *animManager, MapPropOneShotAnimationManager *const oneShotAnimManager, const int tag, const int mapPropModelID, NNSG3dRenderObj *mapPropRenderObj, NNSG3dResMdl *mapPropModel, NNSG3dResTex *mapPropTexture, const int animationCount, const u8 animationLoopCount, const BOOL animationReversed);
+void MapPropOneShotAnimationManager_SetAnimationRenderObj(MapPropOneShotAnimationManager *const oneShotAnimManager, const int tag, const u8 renderObjIndex, NNSG3dRenderObj *renderObj);
+void MapPropOneShotAnimationManager_PlayAnimation(MapPropOneShotAnimationManager *const oneShotAnimManager, const int tag, const int mapPropAnimIndex);
+void MapPropOneShotAnimationManager_PlayAnimationWithSoundEffect(MapPropOneShotAnimationManager *const oneShotAnimManager, const int tag, const int mapPropAnimIndex, const int sndseq);
+void MapPropOneShotAnimationManager_UnloadAnimation(MapPropAnimationManager *animManager, MapPropOneShotAnimationManager *oneShotAnimManager, const int tag);
+const BOOL MapPropOneShotAnimationManager_IsAnimationLoopFinished(MapPropOneShotAnimationManager *const oneShotAnimManager, const int tag);
+const int MapPropOneShotAnimationManager_GetAnimationMapPropModelID(MapPropOneShotAnimationManager *const oneShotAnimManager, const int tag);
+void ov01_021E8F3C(int fileCount, NNSG3dResMdl *resMdl, NNSG3dRenderObj *renderObj, NNSG3dResTex *resTex, MapPropAnimListFile *animListFile, MapPropAnimationManager *mapPropAnimationManager, FieldSystemUnkSub104 *unk104);
+void ov01_021E90B0(MapPropOneShotAnimationManager *oneShotAnimManager, const int tag, u8 arg2);
 
 #endif // POKEHEARTGOLD_FIELD_MAP_PROP_ANIMATION_H

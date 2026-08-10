@@ -77,9 +77,9 @@
 .public MapPropAnimationData_SetAnimationLoopCount
 .public MapPropAnimationData_IsAnimationLoopFinished
 .public MapPropAnimationManager_GetPropAnimationCount
-.public ov01_021E8DE8
-.public ov01_021E8E70
-.public ov01_021E8ED0
+.public MapPropOneShotAnimationManager_LoadPropAnimations
+.public MapPropOneShotAnimationManager_PlayAnimation
+.public MapPropOneShotAnimationManager_UnloadAnimation
 .public ov01_021EA864
 .public ov01_021EA89C
 .public ov01_021EA8C4

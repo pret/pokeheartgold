@@ -387,11 +387,11 @@
 .public MapPropAnimationData_GoToFirstAnimationFrame
 .public MapPropAnimationData_SetAnimationLoopCount
 .public MapPropAnimationData_IsAnimationLoopFinished
-.public ov01_021E8DE8
-.public ov01_021E8E40
-.public ov01_021E8E70
-.public ov01_021E8ED0
-.public ov01_021E8F10
+.public MapPropOneShotAnimationManager_LoadPropAnimations
+.public MapPropOneShotAnimationManager_SetAnimationRenderObj
+.public MapPropOneShotAnimationManager_PlayAnimation
+.public MapPropOneShotAnimationManager_UnloadAnimation
+.public MapPropOneShotAnimationManager_IsAnimationLoopFinished
 .public AreaLightManager_New
 .public AreaLightManager_Free
 .public ov01_021F1448
