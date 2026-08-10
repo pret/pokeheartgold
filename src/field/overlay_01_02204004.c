@@ -7,8 +7,8 @@
 
 static BOOL ov01_02204144(UnkStruct_FieldSysC0 *unkC0, int index);
 static UnkStruct_FieldSysC0_SubC *ov01_02204168(UnkStruct_FieldSysC0 *unkC0, NNSG3dResFileHeader **resFileHeader, int index);
-static void ov01_02204594(MapPropAnimation *animation);
-static BOOL ov01_022045DC(MapPropAnimation *animation);
+static void MapPropAnimation_AdvanceFrame(MapPropAnimation *animation);
+static BOOL MapPropAnimation_IsOnLastFrame(MapPropAnimation *animation);
 static void ov01_022046A4(NNSFndAllocator *pAllocator, NNSG3dAnmObj **pAlloc, void *res);
 static void *ov01_022046D4(NNSFndAllocator *pAllocator, ResAnim_4004 *anim);
 static void ov01_02204728(NNSG3dAnmObj *alloc, ResAnim_4004 *anim);
@@ -200,8 +200,8 @@ void ov01_02204350(FieldSystemUnkSubC8 *unkC8) {
                 for (int j = 0; j < unkCC_Sub0->unk20; j++) {
                     MapPropAnimation *animation = &unkCC_Sub0->unk10[j];
                     if (animation->unk14 == 1 && animation->paused != TRUE && animation->looping) {
-                        ov01_02204594(animation);
-                        if (animation->loopCount != -1 && ov01_022045DC(animation)) {
+                        MapPropAnimation_AdvanceFrame(animation);
+                        if (animation->loopCount != -1 && MapPropAnimation_IsOnLastFrame(animation)) {
                             if (animation->unk18 + 1 >= animation->loopCount) {
                                 animation->looping = FALSE;
                             } else {
@@ -277,7 +277,7 @@ static void ov01_022044C4(FieldSystemUnkSubCC_Sub0 *unkCC_Sub0, void *arg1) {
     unkCC_Sub0->unk1C = arg1;
 }
 
-void ov01_022044C8(MapPropAnimation *animation, int loopCount, BOOL paused, BOOL reversed) {
+void MapPropAnimation_Init(MapPropAnimation *animation, int loopCount, BOOL paused, BOOL reversed) {
     animation->unk18 = 0;
     animation->looping = TRUE;
     animation->unk14 = 1;
@@ -298,11 +298,11 @@ void ov01_02204500(FieldSystemUnkSubCC_Sub0 *unkCC_Sub0, MapPropAnimation *anima
     NNS_G3dFreeAnmObj(&unkCC_Sub0->unk0, animation->animObj);
 }
 
-void AddMapPropAnimObjToRenderObj(NNSG3dRenderObj *renderObj, MapPropAnimation *animation) {
+void MapPropAnimation_AddToRenderObj(NNSG3dRenderObj *renderObj, MapPropAnimation *animation) {
     NNS_G3dRenderObjAddAnmObj(renderObj, animation->animObj);
 }
 
-BOOL RemoveMapPropAnimObjFromRenderObj(NNSG3dRenderObj *renderObj, MapPropAnimation *animation) {
+BOOL MapPropAnimation_RemoveFromRenderObj(NNSG3dRenderObj *renderObj, MapPropAnimation *animation) {
     if (animation == NULL) {
         return FALSE;
     }
@@ -344,7 +344,7 @@ void MapPropAnimation_SetLoopCount(MapPropAnimation *animation, const int loopCo
     animation->loopCount = loopCount;
 }
 
-static void ov01_02204594(MapPropAnimation *animation) {
+static void MapPropAnimation_AdvanceFrame(MapPropAnimation *animation) {
     if (!animation->reversed) {
         animation->animObj->frame += FX32_ONE;
         if (animation->animObj->frame == NNS_G3dAnmObjGetNumFrame(animation->animObj)) {
@@ -359,14 +359,14 @@ static void ov01_02204594(MapPropAnimation *animation) {
     }
 }
 
-static BOOL ov01_022045DC(MapPropAnimation *animation) {
+static BOOL MapPropAnimation_IsOnLastFrame(MapPropAnimation *animation) {
     if (!animation->reversed) {
         return animation->animObj->frame >= NNS_G3dAnmObjGetNumFrame(animation->animObj) - FX32_ONE;
     }
     return animation->animObj->frame == 0;
 }
 
-FieldSystemUnkSubCC *ov01_0220460C(FieldSystemUnkSubC8 *unkSubC8) {
+FieldSystemUnkSubCC *ov01_0220460C(FieldSystemUnkSubC8 *unkSubC8) { // UnkCC_Init
     FieldSystemUnkSubCC *unkCC = Heap_Alloc(HEAP_ID_FIELD1, sizeof(FieldSystemUnkSubCC));
     FieldSystemUnkSubCC_Sub0 *unkCC_Sub0 = ov01_022041D8(unkSubC8, HEAP_ID_FIELD1, 1);
     unkCC->unk0 = unkCC_Sub0;
@@ -374,26 +374,26 @@ FieldSystemUnkSubCC *ov01_0220460C(FieldSystemUnkSubC8 *unkSubC8) {
     return unkCC;
 }
 
-void ov01_02204634(FieldSystemUnkSubCC *unkCC) {
+void ov01_02204634(FieldSystemUnkSubCC *unkCC) { // UnkCC_Free
     Heap_Free(unkCC);
 }
 
-void ov01_0220463C(FieldSystemUnkSubCC *unkCC, int fileID) {
+void ov01_0220463C(FieldSystemUnkSubCC *unkCC, int fileID) { // UnkCC_Load
     MapPropAnimation *animation = ov01_022042FC(unkCC->unk0);
     if (animation == NULL) {
         GF_AssertFail();
     }
-    ov01_022044C8(animation, -1, FALSE, FALSE);
+    MapPropAnimation_Init(animation, -1, FALSE, FALSE);
     ov01_022044B0(unkCC->unk0, animation, AllocAndReadWholeNarcMemberByIdPair(NARC_a_1_4_0, fileID, HEAP_ID_FIELD1), 0);
-    unkCC->unk4 = animation;
+    unkCC->mapPropAnimation = animation;
 }
 
-void ov01_02204678(FieldSystemUnkSubCC *unkCC, NNSG3dRenderObj *renderObj) {
-    AddMapPropAnimObjToRenderObj(renderObj, unkCC->unk4);
+void ov01_02204678(FieldSystemUnkSubCC *unkCC, NNSG3dRenderObj *renderObj) { // UnkCC_AddMapPropAnimationToRenderObj
+    MapPropAnimation_AddToRenderObj(renderObj, unkCC->mapPropAnimation);
 }
 
-void ov01_02204688(FieldSystemUnkSubCC *unkCC, NNSG3dRenderObj *renderObj) {
-    RemoveMapPropAnimObjFromRenderObj(renderObj, unkCC->unk4);
+void ov01_02204688(FieldSystemUnkSubCC *unkCC, NNSG3dRenderObj *renderObj) { // UnkCC_RemoveMapPropAnimationFromRenderObj
+    MapPropAnimation_RemoveFromRenderObj(renderObj, unkCC->mapPropAnimation);
 }
 
 void ov01_02204698(FieldSystemUnkSubCC *unkCC) {
@@ -470,7 +470,7 @@ void ov01_0220476C(FieldSystemUnkSub104 *unk104, NNSG3dRenderObj *renderObj, Map
     }
 }
 
-static const u8 sTimeOfDayVisualState[RTC_TIMEOFDAY_MAX] = {
+static const u8 sTimeOfDayVisualState[RTC_TIMEOFDAY_COUNT] = {
     [RTC_TIMEOFDAY_MORN] = 0,
     [RTC_TIMEOFDAY_DAY] = 1,
     [RTC_TIMEOFDAY_EVE] = 2,
@@ -486,8 +486,8 @@ void ov01_022047DC(FieldSystemUnkSub104 *unk104) { // FieldSystemUnkSub104_Switc
         for (int i = 0; i < 4; i++) {
             if (unk104->unkSub[i].unk0 != 0) {
                 FieldSystemUnkSub104_Sub8 *sub = &unk104->unkSub[i];
-                RemoveMapPropAnimObjFromRenderObj(sub->renderObj, sub->animations[sTimeOfDayVisualState[previousTimeOfDay]]);
-                AddMapPropAnimObjToRenderObj(sub->renderObj, sub->animations[sTimeOfDayVisualState[currentTimeOfDay]]);
+                MapPropAnimation_RemoveFromRenderObj(sub->renderObj, sub->animations[sTimeOfDayVisualState[previousTimeOfDay]]);
+                MapPropAnimation_AddToRenderObj(sub->renderObj, sub->animations[sTimeOfDayVisualState[currentTimeOfDay]]);
             }
         }
     }

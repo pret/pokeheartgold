@@ -43,8 +43,8 @@ typedef struct MapPropAnimationManager {
     NNSFndAllocator allocator;
     MapPropAnimationData animations[MAP_PROP_ANIMATION_MANAGER_MAX_ANIMATIONS];
     BicycleSlopeAnimation bicycleSlopeAnimations[MAP_PROP_ANIMATION_MANAGER_MAX_BICYCLE_SLOPE_ANIMATIONS];
-    NARC *unk130;
-    NARC *unk134;
+    NARC *animNARC;
+    NARC *animListNARC;
     FieldSystemUnkSubCC_Sub0 *unk138;
 } MapPropAnimationManager; // Size: 0x13C
 
@@ -67,7 +67,7 @@ typedef struct MapPropOneShotAnimationManager {
     MapPropOneShotAnimation items[MAP_PROP_ONE_SHOT_ANIMATION_MANAGER_MAX_ITEMS];
 } MapPropOneShotAnimationManager; // Size: 0x380
 
-MapPropAnimationManager *MapPropAnimationManager_Init(NARC *narc, FieldSystemUnkSubC8 *unkSubC8);
+MapPropAnimationManager *MapPropAnimationManager_Init(NARC *animListNARC, FieldSystemUnkSubC8 *unkSubC8);
 BOOL MapPropAnimationManager_AddAnimationToRenderObj(const int mapPropModelID, const int mapPropAnimID, const BOOL isDeferred, NNSG3dRenderObj *renderObj, MapPropAnimationManager *manager);
 void MapPropAnimationManager_UnloadAllAnimations(MapPropAnimationManager *manager);
 void MapPropAnimationManager_RemoveAnimationFromRenderObj(MapPropAnimationManager *mapPropAnimationManager, NNSG3dRenderObj *renderObj, const int mapPropModelID, const int mapPropAnimIndex);

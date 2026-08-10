@@ -22,7 +22,7 @@ typedef struct FieldSystemUnkSubCC_Sub0 FieldSystemUnkSubCC_Sub0;
 
 typedef struct FieldSystemUnkSubCC {
     FieldSystemUnkSubCC_Sub0 *unk0;
-    MapPropAnimation *unk4;
+    MapPropAnimation *mapPropAnimation;
 } FieldSystemUnkSubCC;
 
 struct FieldSystemUnkSubCC_Sub0 {
@@ -96,11 +96,11 @@ void ov01_02204350(FieldSystemUnkSubC8 *unkSubC8);
 void ov01_022043D8(FieldSystemUnkSubC8 *unkSubC8);
 void ov01_02204424(FieldSystemUnkSubC8 *unkSubC8);
 void ov01_02204470(FieldSystemUnkSubCC_Sub0 *unkCC_Sub0, MapPropAnimation *animation, void *res, NNSG3dResMdl *model, NNSG3dResTex *texture);
-void ov01_022044C8(MapPropAnimation *animation, int loopCount, BOOL paused, BOOL reversed);
+void MapPropAnimation_Init(MapPropAnimation *animation, int loopCount, BOOL paused, BOOL reversed);
 void MapPropAnimation_GoToFirstFrame(MapPropAnimation *animation);
 void ov01_02204500(FieldSystemUnkSubCC_Sub0 *unkCC_Sub0, MapPropAnimation *animation);
-void AddMapPropAnimObjToRenderObj(NNSG3dRenderObj *renderObj, MapPropAnimation *animation);
-BOOL RemoveMapPropAnimObjFromRenderObj(NNSG3dRenderObj *renderObj, MapPropAnimation *animation);
+void MapPropAnimation_AddToRenderObj(NNSG3dRenderObj *renderObj, MapPropAnimation *animation);
+BOOL MapPropAnimation_RemoveFromRenderObj(NNSG3dRenderObj *renderObj, MapPropAnimation *animation);
 u16 MapPropAnimation_GetLoopCount(MapPropAnimation *animation);
 void MapPropAnimation_SetPaused(MapPropAnimation *animation, BOOL paused);
 BOOL MapPropAnimation_IsLoopFinished(MapPropAnimation *animation);

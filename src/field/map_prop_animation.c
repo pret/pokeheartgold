@@ -7,6 +7,8 @@
 
 #include "global.h"
 
+#define ANIM_ARCHIVE_ID_NONE -1
+
 static void ov01_021E87A8(NARC *narc, FieldSystemUnkSubCC_Sub0 *unkCC_Sub0, MapPropAnimation *animation, int fileID, NNSG3dResMdl *resMdl, NNSG3dResTex *resTex);
 
 static BOOL BicycleSlopeAnimation_Load(BicycleSlopeAnimation *bicycleSlopeAnims, NNSG3dRenderObj *renderObj, MapPropAnimation *animation, const u8 animID) {
@@ -34,7 +36,7 @@ static BOOL BicycleSlopeAnimation_Load(BicycleSlopeAnimation *bicycleSlopeAnims,
 
 // Some equivalent to pokeplatinum's MapPropAnimation_LoadAnimationObj.
 void ov01_021E87A8(NARC *narc, FieldSystemUnkSubCC_Sub0 *unkCC_Sub0, MapPropAnimation *animation, int fileID, NNSG3dResMdl *resMdl, NNSG3dResTex *resTex) {
-    GF_ASSERT(fileID != -1); // ANIME_ARCHIVE_ID_NONE?
+    GF_ASSERT(fileID != ANIM_ARCHIVE_ID_NONE);
     
     void *anim = NARC_AllocAndReadWholeMember(narc, fileID, HEAP_ID_FIELD1);
     
@@ -43,7 +45,7 @@ void ov01_021E87A8(NARC *narc, FieldSystemUnkSubCC_Sub0 *unkCC_Sub0, MapPropAnim
     ov01_02204470(unkCC_Sub0, animation, anim, resMdl, resTex);
 }
 
-MapPropAnimationManager *MapPropAnimationManager_Init(NARC *narc, FieldSystemUnkSubC8 *unkSubC8) {
+MapPropAnimationManager *MapPropAnimationManager_Init(NARC *animListNARC, FieldSystemUnkSubC8 *unkSubC8) {
     int i;
     MapPropAnimationManager *mapPropAnimationManager = Heap_Alloc(HEAP_ID_FIELD1, sizeof(MapPropAnimationManager));
     
@@ -60,8 +62,8 @@ MapPropAnimationManager *MapPropAnimationManager_Init(NARC *narc, FieldSystemUnk
         mapPropAnimationManager->bicycleSlopeAnimations[i].animID = 0;
     }
     
-    mapPropAnimationManager->unk130 = NARC_New(NARC_a_1_0_6, HEAP_ID_FIELD1);
-    mapPropAnimationManager->unk134 = narc;
+    mapPropAnimationManager->animNARC = NARC_New(NARC_a_1_0_6, HEAP_ID_FIELD1);
+    mapPropAnimationManager->animListNARC = animListNARC;
     mapPropAnimationManager->unk138 = ov01_022041D8(unkSubC8, HEAP_ID_FIELD1, 0x10);
     return mapPropAnimationManager;
 }
@@ -75,7 +77,7 @@ static MapPropAnimation *MapPropAnimationData_GetAnimation(MapPropAnimationData 
 }
 
 static BOOL MapPropAnimation_CheckDeferredLoadingFlag(const u8 animationFlags) {
-    if (animationFlags == 8) return FALSE;
+    if (animationFlags == (1 << 3)) return FALSE;
     
     BOOL deferredLoading = TRUE;
     if ((animationFlags & 1) != 1) deferredLoading = FALSE; // TODO: Flag name
@@ -84,7 +86,7 @@ static BOOL MapPropAnimation_CheckDeferredLoadingFlag(const u8 animationFlags) {
 }
 
 static BOOL MapPropAnimation_CheckDeferredAddToRenderObjFlag(const u8 animationFlags) {
-    if (animationFlags == 8) return TRUE;
+    if (animationFlags == (1 << 3)) return TRUE;
     
     return (((animationFlags >> 1) & 1) == 1);
 }
@@ -93,12 +95,12 @@ static MapPropAnimationData *MapPropAnimationManager_LoadPropAnimationForOneShot
     int i;
 
     MapPropAnimListFile animListFile;
-    NARC_ReadWholeMember(mapPropAnimationManager->unk134, mapPropModelID, &animListFile); // animListNarc
-    GF_ASSERT(mapPropAnimIndex < 4); // MAP_PROP_ANIM_LIST_FILE_ARCHIVE_IDS_COUNT
+    NARC_ReadWholeMember(mapPropAnimationManager->animListNARC, mapPropModelID, &animListFile);
+    GF_ASSERT(mapPropAnimIndex < MAP_PROP_ANIM_LIST_FILE_ARCHIVE_IDS_COUNT);
     
     int animArchiveID = animListFile.animArchiveIDs[mapPropAnimIndex];
     
-    if (animArchiveID == -1) { // ANIM_ARCHIVE_ID_NONE
+    if (animArchiveID == ANIM_ARCHIVE_ID_NONE) {
         return NULL;
     } else if (MapPropAnimation_CheckDeferredLoadingFlag(animListFile.flags) != isDeferredLoading) {
         return NULL;
@@ -113,11 +115,11 @@ static MapPropAnimationData *MapPropAnimationManager_LoadPropAnimationForOneShot
             mapPropAnimationManager->animations[i].loaded = TRUE;
             MapPropAnimation *animation = ov01_022042FC(mapPropAnimationManager->unk138);
             GF_ASSERT(animation != NULL);
-            ov01_022044C8(animation, animationLoopCount, animationPaused, animationReversed);
+            MapPropAnimation_Init(animation, animationLoopCount, animationPaused, animationReversed);
             mapPropAnimationManager->animations[i].animArchiveID = animArchiveID;
             mapPropAnimationManager->animations[i].unkC = arg3;
             // MapPropAnimation_LoadAnimationObj?
-            ov01_021E87A8(mapPropAnimationManager->unk130, mapPropAnimationManager->unk138, animation, animArchiveID, mapPropModel, mapPropTexture);
+            ov01_021E87A8(mapPropAnimationManager->animNARC, mapPropAnimationManager->unk138, animation, animArchiveID, mapPropModel, mapPropTexture);
             mapPropAnimationManager->animations[i].animation = animation;
             
             MapPropAnimation_GoToFirstFrame(mapPropAnimationManager->animations[i].animation);
@@ -138,7 +140,7 @@ BOOL MapPropAnimationManager_AddAnimationToRenderObj(const int mapPropModelID, c
     }
 
     MapPropAnimListFile animListFile;
-    NARC_ReadWholeMember(manager->unk134, mapPropModelID, &animListFile);
+    NARC_ReadWholeMember(manager->animListNARC, mapPropModelID, &animListFile);
     GF_ASSERT(mapPropAnimID < MAP_PROP_ANIM_LIST_FILE_ARCHIVE_IDS_COUNT);
 
     int animArchiveID = animListFile.animArchiveIDs[mapPropAnimID];
@@ -153,7 +155,7 @@ BOOL MapPropAnimationManager_AddAnimationToRenderObj(const int mapPropModelID, c
         if (animArchiveID == manager->animations[i].animArchiveID) {
             BOOL addAnimationObj = animListFile.isBicycleSlope ? BicycleSlopeAnimation_Load(manager->bicycleSlopeAnimations, renderObj, manager->animations[i].animation, animArchiveID) : TRUE;
             if (addAnimationObj) {
-                AddMapPropAnimObjToRenderObj(renderObj, manager->animations[i].animation);
+                MapPropAnimation_AddToRenderObj(renderObj, manager->animations[i].animation);
             }
             return TRUE;
         }
@@ -196,15 +198,15 @@ static void MapPropAnimationManager_UnloadAnimation(MapPropAnimationData *animat
 
 void MapPropAnimationManager_RemoveAnimationFromRenderObj(MapPropAnimationManager *mapPropAnimationManager, NNSG3dRenderObj *renderObj, const int mapPropModelID, const int mapPropAnimIndex) {
     MapPropAnimListFile animListFile;
-    NARC_ReadWholeMember(mapPropAnimationManager->unk134, mapPropModelID, &animListFile);
+    NARC_ReadWholeMember(mapPropAnimationManager->animListNARC, mapPropModelID, &animListFile);
     
     GF_ASSERT(mapPropAnimIndex < MAP_PROP_ANIM_LIST_FILE_ARCHIVE_IDS_COUNT);
     int animArchiveID = animListFile.animArchiveIDs[mapPropAnimIndex];
-    GF_ASSERT(animArchiveID != -1); // ANIME_ARCHIVE_ID_NONE
+    GF_ASSERT(animArchiveID != ANIM_ARCHIVE_ID_NONE);
     
     for (u8 i = 0; i < MAP_PROP_ANIMATION_MANAGER_MAX_ANIMATIONS; i++) {
         if (mapPropAnimationManager->animations[i].loaded == TRUE && animArchiveID == mapPropAnimationManager->animations[i].animArchiveID) {
-            RemoveMapPropAnimObjFromRenderObj(renderObj, mapPropAnimationManager->animations[i].animation);
+            MapPropAnimation_RemoveFromRenderObj(renderObj, mapPropAnimationManager->animations[i].animation);
             return;
         }
     }
@@ -214,14 +216,14 @@ void MapPropAnimationManager_Free(MapPropAnimationManager *manager) {
     if (manager == NULL) {
         return;
     }
-    NARC_Delete(manager->unk130);
+    NARC_Delete(manager->animNARC);
     Heap_Free(manager);
 }
 
 MapPropAnimationData *MapPropAnimationManager_GetAnimationData(const int mapPropModelID, const int mapPropAnimIndex, MapPropAnimationManager *manager) {
     MapPropAnimListFile animListFile;
 
-    NARC_ReadWholeMember(manager->unk134, mapPropModelID, &animListFile);
+    NARC_ReadWholeMember(manager->animListNARC, mapPropModelID, &animListFile);
     
     GF_ASSERT(mapPropAnimIndex < MAP_PROP_ANIM_LIST_FILE_ARCHIVE_IDS_COUNT);
     
@@ -260,13 +262,13 @@ BOOL MapPropAnimationData_IsAnimationLoopFinished(MapPropAnimationData *animData
 }
 
 int MapPropAnimationManager_GetAnimListNARCFileCount(MapPropAnimationManager *manager) {
-    return NARC_GetFileCount(manager->unk134);
+    return NARC_GetFileCount(manager->animListNARC);
 }
 
 const u8 MapPropAnimationManager_GetPropAnimationCount(MapPropAnimationManager *manager, const int mapPropModelID) {
     u8 i;
     MapPropAnimListFile animListFile;
-    NARC_ReadWholeMember(manager->unk134, mapPropModelID, &animListFile);
+    NARC_ReadWholeMember(manager->animListNARC, mapPropModelID, &animListFile);
 
     // TODO: Check if plat's oversight preventing this from triggering still exists.
     if (!animListFile.hasAnimations) {
@@ -274,7 +276,7 @@ const u8 MapPropAnimationManager_GetPropAnimationCount(MapPropAnimationManager *
     }
 
     for (i = 0; i < MAP_PROP_ANIM_LIST_FILE_ARCHIVE_IDS_COUNT; i++) {
-        if (animListFile.animArchiveIDs[i] == -1) { // ANIM_ARCHIVE_ID_NONE
+        if (animListFile.animArchiveIDs[i] == ANIM_ARCHIVE_ID_NONE) {
             break;
         }
     }
@@ -350,8 +352,8 @@ static MapPropAnimationData *MapPropOneShotAnimation_SwitchAnimation(MapPropOneS
 
     for (u8 i = 0; i < MAP_PROP_ONE_SHOT_ANIMATION_MAX_RENDER_OBJS; i++) {
         if (oneShotAnimation->mapPropRenderObjs[i] != NULL) {
-            RemoveMapPropAnimObjFromRenderObj(oneShotAnimation->mapPropRenderObjs[i], currentAnimation);
-            AddMapPropAnimObjToRenderObj(oneShotAnimation->mapPropRenderObjs[i], newAnimation);
+            MapPropAnimation_RemoveFromRenderObj(oneShotAnimation->mapPropRenderObjs[i], currentAnimation);
+            MapPropAnimation_AddToRenderObj(oneShotAnimation->mapPropRenderObjs[i], newAnimation);
         }
     }
 
@@ -373,7 +375,7 @@ static void MapPropAnimationManager_UnloadOneShotAnimation(MapPropAnimationManag
 
     for (i = 0; i < MAP_PROP_ONE_SHOT_ANIMATION_MAX_RENDER_OBJS; i++) {
         if (oneShotAnimation->mapPropRenderObjs[i] != NULL) {
-            RemoveMapPropAnimObjFromRenderObj(oneShotAnimation->mapPropRenderObjs[i], animation);
+            MapPropAnimation_RemoveFromRenderObj(oneShotAnimation->mapPropRenderObjs[i], animation);
         }
     }
 
@@ -505,14 +507,14 @@ void ov01_021E8F3C(int fileCount, NNSG3dResMdl *resMdl, NNSG3dRenderObj *renderO
             GF_ASSERT(mapPropAnimation != NULL);
     
             if (animListFile->isBicycleSlope) {
-                ov01_022044C8(mapPropAnimation, 1, TRUE, FALSE);
+                MapPropAnimation_Init(mapPropAnimation, 1, TRUE, FALSE);
             } else {
-                ov01_022044C8(mapPropAnimation, -1, FALSE, FALSE);
+                MapPropAnimation_Init(mapPropAnimation, -1, FALSE, FALSE);
             }
                     
             mapPropAnimationManager->animations[j].animArchiveID = archiveID;
             mapPropAnimationManager->animations[j].unkC = FALSE;
-            ov01_021E87A8(mapPropAnimationManager->unk130, mapPropAnimationManager->unk138, mapPropAnimation, archiveID, resMdl, resTex);
+            ov01_021E87A8(mapPropAnimationManager->animNARC, mapPropAnimationManager->unk138, mapPropAnimation, archiveID, resMdl, resTex);
             mapPropAnimationManager->animations[j].animation = mapPropAnimation;
             MapPropAnimation_GoToFirstFrame(mapPropAnimationManager->animations[j].animation);
                 
@@ -525,9 +527,9 @@ void ov01_021E8F3C(int fileCount, NNSG3dResMdl *resMdl, NNSG3dRenderObj *renderO
                 }
                 
                 if (addToRenderObj) {
-                    AddMapPropAnimObjToRenderObj(renderObj, mapPropAnimationManager->animations[j].animation);
+                    MapPropAnimation_AddToRenderObj(renderObj, mapPropAnimationManager->animations[j].animation);
                 }
-            } else if (animListFile->flags == 8) {
+            } else if (animListFile->flags == (1 << 3)) {
                 timeOfDayAnimations[k++] = mapPropAnimationManager->animations[j].animation;
             }
             break;
@@ -535,8 +537,8 @@ void ov01_021E8F3C(int fileCount, NNSG3dResMdl *resMdl, NNSG3dRenderObj *renderO
         GF_ASSERT(j != MAP_PROP_ANIMATION_MANAGER_MAX_ANIMATIONS);
     }
         
-    if (animListFile->flags == 8) {
-        AddMapPropAnimObjToRenderObj(renderObj, timeOfDayAnimations[ov01_02204834(unk104)]); // FieldSystemUnkSub104_GetTimeOfDayVisualState
+    if (animListFile->flags == (1 << 3)) {
+        MapPropAnimation_AddToRenderObj(renderObj, timeOfDayAnimations[ov01_02204834(unk104)]); // FieldSystemUnkSub104_GetTimeOfDayVisualState
         ov01_0220476C(unk104, renderObj, &timeOfDayAnimations[0], 4);
     }
 }
