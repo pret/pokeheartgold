@@ -1,4 +1,4 @@
-#include <nitro/fs/overlay.h>
+
 #pragma once
 .public GF_SND_BGM_DisableCheck
 .public GF_GetCurrentPlayingBGM

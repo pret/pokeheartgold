@@ -1,4 +1,4 @@
-#include <nitro/fs/overlay.h>
+
 #pragma once
 .public AllocAndReadWholeNarcMemberByIdPair
 .public SysTask_CreateOnVWaitQueue

@@ -1,4 +1,4 @@
-#include <nitro/fs/overlay.h>
+
 #pragma once
 .public GetMainBgPlttAddr
 .public sub_02026E8C

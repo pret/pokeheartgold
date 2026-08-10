@@ -1,4 +1,4 @@
-#include <nitro/fs/overlay.h>
+
 #pragma once
 .public AllocAndReadWholeNarcMemberByIdPair
 .public GF_RTC_GetTimeOfDay

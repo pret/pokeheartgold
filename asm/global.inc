@@ -1,4 +1,4 @@
-#include "config.h"
+#include <nitro/fs/overlay.h>
 
 FS_EXTERN_OVERLAY(OVY_0)
 FS_EXTERN_OVERLAY(OVY_10)

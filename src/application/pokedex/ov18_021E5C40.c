@@ -809,8 +809,12 @@ void ov18_021E6280(PokedexAppData *pokedexApp) {
 
 void ov18_021E62A8(PokedexAppData *pokedexApp) {
     NARC *narc = NARC_New(NARC_application_zukanlist_zkn_data_zukan_hw_data, HEAP_ID_POKEDEX_APP);
-    pokedexApp->unk_1850 = GfGfxLoader_LoadFromOpenNarc(narc, NARC_zukan_hw_data_zukan_hw_data_0_bin, FALSE, HEAP_ID_POKEDEX_APP, FALSE);
-    pokedexApp->unk_1854 = GfGfxLoader_LoadFromOpenNarc(narc, NARC_zukan_hw_data_zukan_hw_data_1_bin, FALSE, HEAP_ID_POKEDEX_APP, FALSE);
+    pokedexApp->unk_1850 = GfGfxLoader_LoadFromOpenNarc(narc, zukan_hw_data_0_bin, FALSE, HEAP_ID_POKEDEX_APP, FALSE);
+#ifdef HEARTGOLD
+    pokedexApp->unk_1854 = GfGfxLoader_LoadFromOpenNarc(narc, zukan_hw_data_1_gold_bin, FALSE, HEAP_ID_POKEDEX_APP, FALSE);
+#else
+    pokedexApp->unk_1854 = GfGfxLoader_LoadFromOpenNarc(narc, zukan_hw_data_1_silver_bin, FALSE, HEAP_ID_POKEDEX_APP, FALSE);
+#endif
     NARC_Delete(narc);
 }
 

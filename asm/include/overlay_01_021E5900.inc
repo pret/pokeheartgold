@@ -1,4 +1,4 @@
-#include <nitro/fs/overlay.h>
+
 #pragma once
 .public sub_02005D00
 .public UnloadOverlayByID

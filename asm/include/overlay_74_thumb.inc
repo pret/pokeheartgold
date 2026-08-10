@@ -1,4 +1,4 @@
-#include <nitro/fs/overlay.h>
+
 #pragma once
 .public SVC_GetCRC16
 .public RegisterMainOverlay

@@ -1,9 +1,5 @@
 build_dir = meson.current_build_dir()
 
-############################################################
-###                        TRAINER                       ###
-############################################################
-subdir('trainer')
-
-
+subdir('pokefoot')
 subdir('pokegra')
+subdir('trainer')

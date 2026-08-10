@@ -1,4 +1,4 @@
-#include <nitro/fs/overlay.h>
+
 #pragma once
 .public PaletteData_LoadPalette
 .public NARC_New

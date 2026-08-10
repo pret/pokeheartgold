@@ -25,6 +25,9 @@ camera_viewfinder_narc = custom_target('camera_viewfinder.narc',
     build_by_default:true,
 )
 
+nitrofs_files += camera_viewfinder_narc
+naix_headers += camera_viewfinder_narc[1]
+
 ############################################################
 ###                         FONT                         ###
 ############################################################

@@ -1,4 +1,5 @@
 subdir('encountdata')
+subdir('eventdata')
 subdir('graphic')
 subdir('mapmatrix')
 subdir('script')

@@ -1,4 +1,4 @@
-#include <nitro/fs/overlay.h>
+
 #pragma once
 .public SysTask_CreateOnVBlankQueue
 .public SysTask_Destroy

@@ -1,4 +1,4 @@
-#include <nitro/fs/overlay.h>
+
 #pragma once
 .public IsPaletteFadeFinished
 .public Heap_AllocAtEnd

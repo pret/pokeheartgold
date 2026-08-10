@@ -1,4 +1,4 @@
-#include <nitro/fs/overlay.h>
+
 #pragma once
 .public CreateYesNoMenu
 .public Handle2dMenuInput_DeleteOnFinish

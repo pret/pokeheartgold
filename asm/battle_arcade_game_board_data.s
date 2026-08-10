@@ -1,4 +1,4 @@
-	.include "asm/macros.inc"
+	.include "macros.inc"
 	.include "battle_arcade_game_board_data.inc"
 	.include "global.inc"
 

@@ -74,6 +74,7 @@ CLOBBER_SIZE_VERSION101_NCGR_FLAGS = ['-clobbersize', '-version101']
 CLOBBER_SIZE_VERSION101_64K_NCGR_FLAGS = ['-clobbersize', '-version101', '-mappingtype', '64']
 VERSION101_SOPC_NCGR_FLAGS = ['-version101', '-sopc']
 VERSION101_SOPC_8BPP_NCGR_FLAGS = ['-version101', '-sopc', '-bitdepth', '8']
+CLOBBER_SIZE_VERSION101_128K_NCGR_FLAGS = ['-clobbersize', '-version101', '-mappingtype', '128']
 
 BPP4_NOPAD_PCMP_NCLR_FLAGS = ['-bitdepth', '4', '-nopad', '-pcmp']
 BPP8_NOPAD_NCLR_PNG_FLAGS = ['-bitdepth', '8', '-nopad']

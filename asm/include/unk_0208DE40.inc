@@ -1,4 +1,4 @@
-#include <nitro/fs/overlay.h>
+
 #pragma once
 .public PokepicManager_Create
 .public PokepicManager_DrawAll

@@ -12,9 +12,11 @@ fs = import('fs')
 ############################################################
 ###                    INCLUDE PATHS                     ###
 ############################################################
-public_includes = include_directories('include', 'asm/include', 'lib/include', 'build/files', 'files')
+public_includes = include_directories('include', 'asm/include', 'lib/include', 'build/files', 'files', 'src')
 toplevel_includes = include_directories('.')
-
+msl_includes = include_directories(
+    'tools' / 'metroskrew' / 'lib' / 'metroskrew' / 'sdk' / 'ds' / '2.0' / 'sp2' / 'msl' / 'MSL_C' / 'MSL_Common' / 'Include'
+)
 ############################################################
 ###                    COMPILER FLAGS                    ###
 ############################################################
@@ -37,7 +39,8 @@ c_args = [
 asm_args = [
     '-proc', 'arm5TE',
     '-16',
-    '-gccinc'
+    '-gccinc',
+    '-g'
 ]
 
 add_global_arguments(c_args,
@@ -100,6 +103,8 @@ subdir('src')
 
 #ARM 9 BINARY
 
+libmslc = fs.copyfile('tools/metroskrew/lib/metroskrew/sdk/ds/2.0/sp2/msl/MSL_C/MSL_ARM/Lib/MSL_C_NITRO_Ai_LE.a')
+
 main = executable('main',
     sources : [
         pokeheartgold_c,
@@ -109,15 +114,24 @@ main = executable('main',
     c_args : [
         
     ],
+    nasm_args : [
+        '-DPM_ASM',
+        '-DSDK_ASM',
+        asm_args
+    ],
     include_directories : [
         public_includes,
         lib_asm_includes,
+        #msl_includes
     ],
     dependencies : [
         nitrosdk_dep,
         nitrosystem_dep,
         nitrowifi_dep,
         nitrodwc_dep,
+    ],
+    link_with : [
+        libmslc
     ],
     native : false
 )

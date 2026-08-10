@@ -78,8 +78,7 @@ if get_option('version') == 'heartgold'
     zukan_enc_gold_narc = custom_target('zukan_enc_gold.narc',
         input : zukan_enc_json,
         output: [ 
-            'zukan_enc_gold.narc', 
-            'zukan_enc_gold.naix',
+            'zukan_enc_gold.narc',
             'zukan_enc.naix' 
         ],
         command : [
@@ -113,8 +112,7 @@ elif get_option('version') == 'soulsilver'
     zukan_enc_silver_narc = custom_target('zukan_enc_silver.narc',
         input : zukan_enc_json,
         output: [ 
-            'zukan_enc_silver.narc', 
-            'zukan_enc_silver.naix',
+            'zukan_enc_silver.narc',
             'zukan_enc.naix' 
         ],
         command : [
@@ -151,7 +149,7 @@ endif
 ############################################################
 subdir('zukan_hw_data')
 
-zukan_hw_narc = custom_target('zukan_hw.narc',
+zukan_hw_narc = custom_target('zukan_hw_data.narc',
     input : [
         zukan_hw_files
     ],
@@ -164,8 +162,8 @@ zukan_hw_narc = custom_target('zukan_hw.narc',
         '@PRIVATE_DIR@',
     ],
     output : [
-        'zukan_hw.narc',
-        'zukan_hw.naix'
+        'zukan_hw_data.narc',
+        'zukan_hw_data.naix'
     ]
 )
 

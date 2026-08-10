@@ -1,4 +1,4 @@
-#include <nitro/fs/overlay.h>
+
 #pragma once
 .public Sound_SetSceneAndPlayBGM
 .public OverlayManager_New

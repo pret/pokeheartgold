@@ -1,4 +1,4 @@
-#include <nitro/fs/overlay.h>
+
 #pragma once
 .public Handle2dMenuInput_DeleteOnFinish
 .public CopyU16StringArrayN

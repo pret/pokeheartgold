@@ -1,4 +1,4 @@
-	.include "asm/macros.inc"
+	.include "macros.inc"
 	.include "unk_02016EDC.inc"
 	.include "global.inc"
 
