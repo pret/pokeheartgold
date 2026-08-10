@@ -394,43 +394,23 @@ _04D0:
 	EndMovement
 
 scr_seq_T24_008:
-	DirectionSignpost msg_0572_T24_00018, 0, 15, VAR_SPECIAL_RESULT
-	ScrCmd_057 3
-	ScrCmd_058
-	ScrCmd_060 VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	DirectionSignpostEx 0, 15, msg_0572_T24_00018
 	End
 
 scr_seq_T24_009:
-	ScrCmd_056 2, 0
-	ScrCmd_057 3
-	ScrCmd_058
-	TrainerTips msg_0572_T24_00019, VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	TrainerTipsEx 2, msg_0572_T24_00019
 	End
 
 scr_seq_T24_010:
-	ScrCmd_056 2, 0
-	ScrCmd_057 3
-	ScrCmd_058
-	TrainerTips msg_0572_T24_00020, VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	TrainerTipsEx 2, msg_0572_T24_00020
 	End
 
 scr_seq_T24_011:
-	ScrCmd_056 2, 0
-	ScrCmd_057 3
-	ScrCmd_058
-	TrainerTips msg_0572_T24_00021, VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	TrainerTipsEx 2, msg_0572_T24_00021
 	End
 
 scr_seq_T24_004:
-	ScrCmd_056 2, 0
-	ScrCmd_057 3
-	ScrCmd_058
-	TrainerTips msg_0572_T24_00022, VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	TrainerTipsEx 2, msg_0572_T24_00022
 	End
 
 scr_seq_T24_012:

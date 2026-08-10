@@ -14,18 +14,10 @@ scr_seq_R38_000:
 	End
 
 scr_seq_R38_001:
-	DirectionSignpost msg_0394_R38_00015, 1, 8, VAR_SPECIAL_RESULT
-	ScrCmd_057 3
-	ScrCmd_058
-	ScrCmd_060 VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	DirectionSignpostEx 1, 8, msg_0394_R38_00015
 	End
 
 scr_seq_R38_002:
-	ScrCmd_056 3, 0
-	ScrCmd_057 3
-	ScrCmd_058
-	TrainerTips msg_0394_R38_00016, VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	TrainerTipsEx 3, msg_0394_R38_00016
 	End
 	.balign 4, 0

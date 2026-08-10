@@ -3,10 +3,10 @@
 #include "pokeathlon/pokeathlon_save.h"
 
 #include "coins.h"
-#include "script_manager.h"
 #include "overlay_01_021EDAFC.h"
 #include "scrcmd.h"
 #include "script.h"
+#include "script_manager.h"
 
 extern Window *ov01_021EEC00(struct FieldSystem *fieldSystem, u8 type, u8 x, u8 y);
 

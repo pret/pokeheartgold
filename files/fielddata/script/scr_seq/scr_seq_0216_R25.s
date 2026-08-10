@@ -636,10 +636,6 @@ _0800:
 	EndMovement
 
 scr_seq_R25_002:
-	ScrCmd_056 2, 0
-	ScrCmd_057 3
-	ScrCmd_058
-	TrainerTips msg_0363_R25_00015, VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	TrainerTipsEx 2, msg_0363_R25_00015
 	End
 	.balign 4, 0

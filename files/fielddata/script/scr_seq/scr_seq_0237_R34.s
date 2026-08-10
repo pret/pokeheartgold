@@ -825,26 +825,14 @@ scr_seq_R34_008:
 	End
 
 scr_seq_R34_009:
-	ScrCmd_056 3, 0
-	ScrCmd_057 3
-	ScrCmd_058
-	TrainerTips msg_0384_R34_00034, VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	TrainerTipsEx 3, msg_0384_R34_00034
 	End
 
 scr_seq_R34_010:
-	ScrCmd_056 2, 0
-	ScrCmd_057 3
-	ScrCmd_058
-	TrainerTips msg_0384_R34_00035, VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	TrainerTipsEx 2, msg_0384_R34_00035
 	End
 
 scr_seq_R34_011:
-	DirectionSignpost msg_0384_R34_00033, 1, 4, VAR_SPECIAL_RESULT
-	ScrCmd_057 3
-	ScrCmd_058
-	ScrCmd_060 VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	DirectionSignpostEx 1, 4, msg_0384_R34_00033
 	End
 	.balign 4, 0

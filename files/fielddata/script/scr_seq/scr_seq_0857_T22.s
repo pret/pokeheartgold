@@ -733,35 +733,19 @@ scr_seq_T22_006:
 	End
 
 scr_seq_T22_007:
-	ScrCmd_056 2, 0
-	ScrCmd_057 3
-	ScrCmd_058
-	TrainerTips msg_0556_T22_00012, VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	TrainerTipsEx 2, msg_0556_T22_00012
 	End
 
 scr_seq_T22_008:
-	DirectionSignpost msg_0556_T22_00009, 0, 13, VAR_SPECIAL_RESULT
-	ScrCmd_057 3
-	ScrCmd_058
-	ScrCmd_060 VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	DirectionSignpostEx 0, 13, msg_0556_T22_00009
 	End
 
 scr_seq_T22_009:
-	ScrCmd_056 2, 0
-	ScrCmd_057 3
-	ScrCmd_058
-	TrainerTips msg_0556_T22_00010, VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	TrainerTipsEx 2, msg_0556_T22_00010
 	End
 
 scr_seq_T22_010:
-	ScrCmd_056 2, 0
-	ScrCmd_057 3
-	ScrCmd_058
-	TrainerTips msg_0556_T22_00011, VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	TrainerTipsEx 2, msg_0556_T22_00011
 	End
 
 scr_seq_T22_011:

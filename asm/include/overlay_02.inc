@@ -231,10 +231,10 @@
 .public sub_02054DC8
 .public Field_GetTimeOfDay
 .public FieldMessage_LoadTextPalettes
-.public sub_0205B514
-.public sub_0205B564
-.public sub_0205B5B4
-.public IsPrintFinished
+.public DialogBox_AddWindowToLayer3
+.public DialogBox_LoadFrame
+.public DialogBox_PrintMessage
+.public DialogBox_IsPrintFinished
 .public MetatileBehavior_IsTallGrass
 .public MetatileBehavior_IsVeryTallGrass
 .public MetatileBehavior_IsSurfableWater

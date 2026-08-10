@@ -4,7 +4,6 @@
 
 #include "overlay_2/overlay_02_gear_phone.h"
 
-#include "script_manager.h"
 #include "map_header.h"
 #include "math_util.h"
 #include "msgdata.h"
@@ -12,6 +11,7 @@
 #include "sav_system_info.h"
 #include "save_local_field_data.h"
 #include "save_vars_flags.h"
+#include "script_manager.h"
 #include "sound_radio.h"
 #include "sys_flags.h"
 #include "sys_vars.h"

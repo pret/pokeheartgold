@@ -81,7 +81,7 @@ typedef struct ResAnim_4004 {
 } ResAnim_4004;
 
 UnkStruct_FieldSysC0 *ov01_02204004(enum HeapID heapID, int indexMax, int objectMax, NNSG3dResFileHeader **fileResHeader); // FieldSysC0_New
-void ov01_02204084(UnkStruct_FieldSysC0 *unkC0); // FieldSysC0_Free
+void ov01_02204084(UnkStruct_FieldSysC0 *unkC0);                                                                           // FieldSysC0_Free
 UnkStruct_FieldSysC0_SubC *ov01_022040A4(UnkStruct_FieldSysC0 *unkC0, int index);
 UnkStruct_FieldSysC0_SubC *Field3dObjectList_GetRenderObjectByID(UnkStruct_FieldSysC0 *unkC0, int index);
 UnkStruct_FieldSysC0_SubC *ov01_022040F8(UnkStruct_FieldSysC0 *unkC0, int index);
@@ -107,8 +107,8 @@ BOOL MapPropAnimation_IsLoopFinished(MapPropAnimation *animation);
 void MapPropAnimation_GoToLastFrame(MapPropAnimation *animation);
 void MapPropAnimation_SetLoopCount(MapPropAnimation *animation, const int loopCount);
 FieldSystemUnkSubCC *ov01_0220460C(FieldSystemUnkSubC8 *unkSubC8); // UnkCC_Init
-void ov01_02204634(FieldSystemUnkSubCC *unkCC); // UnkCC_Free
-void ov01_0220463C(FieldSystemUnkSubCC *unkCC, int fileID); // UnkCC_Load
+void ov01_02204634(FieldSystemUnkSubCC *unkCC);                    // UnkCC_Free
+void ov01_0220463C(FieldSystemUnkSubCC *unkCC, int fileID);        // UnkCC_Load
 void ov01_02204678(FieldSystemUnkSubCC *unkCC, NNSG3dRenderObj *renderObj);
 void ov01_02204688(FieldSystemUnkSubCC *unkCC, NNSG3dRenderObj *renderObj);
 void ov01_02204698(FieldSystemUnkSubCC *unkCC);

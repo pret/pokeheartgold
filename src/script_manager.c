@@ -7,11 +7,11 @@
 #include "msgdata/msg.naix"
 
 #include "field_system.h"
-#include "script_manager.h"
 #include "map_events.h"
 #include "map_header.h"
 #include "map_object.h"
 #include "save_vars_flags.h"
+#include "script_manager.h"
 #include "task.h"
 
 struct ScriptBankMapping {

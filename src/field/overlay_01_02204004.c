@@ -1,8 +1,9 @@
 #include "field/overlay_01_02204004.h"
 
+#include "global.h"
+
 #include "filesystem.h"
 #include "filesystem_files_def.h"
-#include "global.h"
 
 static BOOL ov01_02204144(UnkStruct_FieldSysC0 *unkC0, int index);
 static UnkStruct_FieldSysC0_SubC *ov01_02204168(UnkStruct_FieldSysC0 *unkC0, NNSG3dResFileHeader **resFileHeader, int index);
@@ -25,7 +26,7 @@ UnkStruct_FieldSysC0 *ov01_02204004(enum HeapID heapID, int indexMax, int object
     }
     int size = objectMax * 0x5C;
     unkC0->objectHeap = Heap_Alloc(heapID, size);
-    MIi_CpuClearFast(0, (u32*)unkC0->objectHeap, size);
+    MIi_CpuClearFast(0, (u32 *)unkC0->objectHeap, size);
     unkC0->objects = Heap_Alloc(heapID, objectMax * 4);
     for (i = 0; i < objectMax; i++) {
         unkC0->objects[i] = &unkC0->objectHeap[i];
@@ -75,7 +76,7 @@ BOOL ov01_0220411C(UnkStruct_FieldSysC0 *unkC0, UnkStruct_FieldSysC0_SubC *objec
     if (object == NULL) {
         return FALSE;
     }
-    
+
     if (ov01_02204144(unkC0, object->index) == FALSE) {
         ov01_022040C0(unkC0, object);
         return TRUE;
@@ -93,7 +94,7 @@ BOOL ov01_02204154(UnkStruct_FieldSysC0 *unkC0, int index) {
 
 static UnkStruct_FieldSysC0_SubC *ov01_02204168(UnkStruct_FieldSysC0 *unkC0, NNSG3dResFileHeader **resFileHeader, int index) {
     unkC0->objects[unkC0->numObjects]->model = NNS_G3dGetMdlByIdx(NNS_G3dGetMdlSet(*resFileHeader), 0);
-    
+
     NNS_G3dRenderObjInit(&unkC0->objects[unkC0->numObjects]->renderObj, unkC0->objects[unkC0->numObjects]->model);
     UnkStruct_FieldSysC0_SubC *object = unkC0->objects[unkC0->numObjects];
     unkC0->numObjects++;
@@ -116,10 +117,10 @@ FieldSystemUnkSubCC_Sub0 *ov01_022041D8(FieldSystemUnkSubC8 *unkC8, enum HeapID 
     ret->unk1C = NULL;
     HeapExp_FndInitAllocator(&ret->unk0, heapID, 4);
     ret->unk10 = Heap_Alloc(heapID, count << 5);
-    MIi_CpuClearFast(0, (u32*)(ret->unk10), count << 5);
-    ret->unk14 = Heap_Alloc(heapID, count << 2); 
+    MIi_CpuClearFast(0, (u32 *)(ret->unk10), count << 5);
+    ret->unk14 = Heap_Alloc(heapID, count << 2);
 
-    for(int i = 0; i < count; i++) {
+    for (int i = 0; i < count; i++) {
         ret->unk10[i].unk14 = 0;
         ret->unk10[i].res = NULL;
         ret->unk10[i].animObj = NULL;
@@ -130,8 +131,7 @@ FieldSystemUnkSubCC_Sub0 *ov01_022041D8(FieldSystemUnkSubC8 *unkC8, enum HeapID 
         unkC8->unk4 = ret;
         unkC8->unk8 = ret;
         unkC8->unk0 = ret;
-    } 
-    else {
+    } else {
         unkC8->unk8->next = ret;
         unkC8->unk8 = ret;
     }
@@ -195,7 +195,7 @@ static u16 ov01_0220434C(FieldSystemUnkSubCC_Sub0 *unkCC_Sub0) { // FieldSystemU
 void ov01_02204350(FieldSystemUnkSubC8 *unkC8) {
     if (unkC8 != NULL) {
         FieldSystemUnkSubCC_Sub0 *unkCC_Sub0 = unkC8->unk4;
-        if (unkCC_Sub0 != NULL) {            
+        if (unkCC_Sub0 != NULL) {
             for (int i = 0; i < unkC8->unkC; i++) {
                 for (int j = 0; j < unkCC_Sub0->unk20; j++) {
                     MapPropAnimation *animation = &unkCC_Sub0->unk10[j];
@@ -303,11 +303,19 @@ void AddMapPropAnimObjToRenderObj(NNSG3dRenderObj *renderObj, MapPropAnimation *
 }
 
 BOOL RemoveMapPropAnimObjFromRenderObj(NNSG3dRenderObj *renderObj, MapPropAnimation *animation) {
-    if (animation == NULL) return FALSE;
-    if (animation->animObj == NULL) return FALSE;
-    if (renderObj == NULL) return FALSE;
-    if (renderObj->anmMat == NULL && renderObj->anmJnt == NULL && renderObj->anmVis == NULL) return FALSE;
-    
+    if (animation == NULL) {
+        return FALSE;
+    }
+    if (animation->animObj == NULL) {
+        return FALSE;
+    }
+    if (renderObj == NULL) {
+        return FALSE;
+    }
+    if (renderObj->anmMat == NULL && renderObj->anmJnt == NULL && renderObj->anmVis == NULL) {
+        return FALSE;
+    }
+
     NNS_G3dRenderObjRemoveAnmObj(renderObj, animation->animObj);
     return TRUE;
 }
@@ -399,7 +407,7 @@ static void ov01_022046A4(NNSFndAllocator *pAllocator, NNSG3dAnmObj **pAlloc, vo
     ov01_02204728(alloc, anim);
 }
 
-static int ov01_022046C8(ResAnim_4004 *anim) { // Returns some sort of size 
+static int ov01_022046C8(ResAnim_4004 *anim) { // Returns some sort of size
     return ((anim->numMapData * 2) + 0x1C) & ~3;
 }
 
@@ -413,7 +421,7 @@ static void ov01_022046E8(NNSG3dAnmObj *alloc, ResAnim_4004 *anim) {
     alloc->numMapData = numMapData;
     MIi_CpuClear16(0, alloc->mapData, numMapData * 2);
     for (u32 i = 0; i < anim->numMapData; i++) {
-        alloc->mapData[i] =  i | 0x100;
+        alloc->mapData[i] = i | 0x100;
     }
 }
 
@@ -429,7 +437,7 @@ static void ov01_02204728(NNSG3dAnmObj *alloc, ResAnim_4004 *anim) {
 
 FieldSystemUnkSub104 *ov01_02204744(enum HeapID heapID) { // FieldSystemUnkSub104_Init
     FieldSystemUnkSub104 *unk104 = Heap_Alloc(heapID, sizeof(FieldSystemUnkSub104));
-    MIi_CpuClearFast(0, (u32*)unk104, sizeof(FieldSystemUnkSub104));
+    MIi_CpuClearFast(0, (u32 *)unk104, sizeof(FieldSystemUnkSub104));
     unk104->timeOfDay = GF_RTC_GetTimeOfDay();
     return unk104;
 }
@@ -463,11 +471,11 @@ void ov01_0220476C(FieldSystemUnkSub104 *unk104, NNSG3dRenderObj *renderObj, Map
 }
 
 static const u8 sTimeOfDayVisualState[RTC_TIMEOFDAY_MAX] = {
-    [RTC_TIMEOFDAY_MORN]    = 0,
-    [RTC_TIMEOFDAY_DAY]     = 1,
-    [RTC_TIMEOFDAY_EVE]     = 2,
-    [RTC_TIMEOFDAY_NITE]    = 3,
-    [RTC_TIMEOFDAY_LATE]    = 3
+    [RTC_TIMEOFDAY_MORN] = 0,
+    [RTC_TIMEOFDAY_DAY] = 1,
+    [RTC_TIMEOFDAY_EVE] = 2,
+    [RTC_TIMEOFDAY_NITE] = 3,
+    [RTC_TIMEOFDAY_LATE] = 3
 };
 
 void ov01_022047DC(FieldSystemUnkSub104 *unk104) { // FieldSystemUnkSub104_SwitchTimeOfDay
