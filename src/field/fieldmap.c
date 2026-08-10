@@ -9,12 +9,12 @@
 
 #include "field/area_data.h"
 #include "field/dynamic_terrain_height.h"
+#include "field/field_3d_object_task.h"
 #include "field/field_control.h"
 #include "field/hblank_system.h"
 #include "field/map_load_manager.h"
 #include "field/map_prop_animation.h"
 #include "field/model_attributes.h"
-#include "field/overlay_01_021E66E4.h"
 #include "field/overlay_01_021EABA8.h"
 #include "field/overlay_01_021EAF00.h"
 #include "field/overlay_01_021EAFD4.h"

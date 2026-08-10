@@ -8,6 +8,7 @@
 #include "field/legend_cutscene_camera.h"
 #include "field/map_load_manager.h"
 #include "field/map_prop.h"
+#include "field/rock_smash_item.h"
 #include "field/signpost.h"
 #include "frontier/frontier.h"
 #include "msgdata/msg.naix"
@@ -5142,10 +5143,10 @@ BOOL ScrCmd_BankOrWalletIsFull(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_RockSmashItemCheck(ScriptContext *ctx) {
-    u16 followMonUsingHm = ScriptGetVar(ctx);
+    u16 followMonUsingHM = ScriptGetVar(ctx);
     u16 *itemFound = ScriptGetVarPointer(ctx);
     u16 *item = ScriptGetVarPointer(ctx);
-    FieldSystem_RockSmashItemCheck(ctx->fieldSystem, (u8)followMonUsingHm, itemFound, item);
+    FieldSystem_RockSmashItemCheck(ctx->fieldSystem, (u8)followMonUsingHM, itemFound, item);
     return TRUE;
 }
 

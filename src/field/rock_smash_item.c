@@ -1,4 +1,4 @@
-#include "overlay_01_rock_smash_item.h"
+#include "field/rock_smash_item.h"
 
 #include "global.h"
 
@@ -94,9 +94,9 @@ static BOOL CheckRockSmashItemDrop(FieldSystem *fieldSystem, RockSmashItemCheckW
 static BOOL Task_GetRockSmashItem(TaskManager *taskman);
 static int DrawRockSmashIdx(FieldSystem *fieldSystem);
 
-void FieldSystem_RockSmashItemCheck(FieldSystem *fieldSystem, int followMonUsingHm, u16 *itemFound, u16 *item) {
+void FieldSystem_RockSmashItemCheck(FieldSystem *fieldSystem, BOOL followMonUsingHM, u16 *itemFound, u16 *item) {
     RockSmashItemCheckWork *env = Heap_AllocAtEnd(HEAP_ID_FIELD2, sizeof(RockSmashItemCheckWork));
-    env->followMonUsingHm = followMonUsingHm != 0;
+    env->followMonUsingHm = followMonUsingHM != 0;
     env->itemFound = itemFound;
     env->item = item;
     *env->itemFound = FALSE;
