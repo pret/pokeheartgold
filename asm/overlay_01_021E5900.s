@@ -59,7 +59,7 @@ _021E594A: ; jump table
 	.short _021E5B5C - _021E594A - 2 ; case 2
 	.short _021E5B62 - _021E594A - 2 ; case 3
 _021E5952:
-	ldr r1, _021E5BA0 ; =FS_OVERLAY_ID(ds_protect)
+	ldr r1, _021E5BA0 ; =SDK_OVERLAY_ds_protect_ID
 	mov r0, #0
 	bl FS_LoadOverlay
 	mov r0, #0
@@ -105,7 +105,7 @@ _021E599E:
 	lsl r0, r0, #8
 	lsr r0, r0, #0x1c
 	beq _021E59F0
-	ldr r0, _021E5BB8 ; =FS_OVERLAY_ID(OVY_2)
+	ldr r0, _021E5BB8 ; =SDK_OVERLAY_OVY_2_ID
 	mov r1, #2
 	bl HandleLoadOverlay
 	add r0, r4, #0
@@ -116,17 +116,17 @@ _021E599E:
 	beq _021E59DE
 	b _021E59E8
 _021E59D4:
-	ldr r0, _021E5BBC ; =FS_OVERLAY_ID(OVY_4)
+	ldr r0, _021E5BBC ; =SDK_OVERLAY_OVY_4_ID
 	mov r1, #2
 	bl HandleLoadOverlay
 	b _021E59F0
 _021E59DE:
-	ldr r0, _021E5BC0 ; =FS_OVERLAY_ID(OVY_3)
+	ldr r0, _021E5BC0 ; =SDK_OVERLAY_OVY_3_ID
 	mov r1, #2
 	bl HandleLoadOverlay
 	b _021E59F0
 _021E59E8:
-	ldr r0, _021E5BC0 ; =FS_OVERLAY_ID(OVY_3)
+	ldr r0, _021E5BC0 ; =SDK_OVERLAY_OVY_3_ID
 	mov r1, #2
 	bl HandleLoadOverlay
 _021E59F0:
@@ -145,7 +145,7 @@ _021E59F0:
 	beq _021E5A12
 	bl GF_AssertFail
 _021E5A12:
-	ldr r1, _021E5BA0 ; =FS_OVERLAY_ID(ds_protect)
+	ldr r1, _021E5BA0 ; =SDK_OVERLAY_ds_protect_ID
 	mov r0, #0
 	bl FS_UnloadOverlay
 	mov r0, #4
@@ -312,15 +312,15 @@ _021E5B8E:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _021E5B9C: .word 0x00DCE6A1
-_021E5BA0: .word FS_OVERLAY_ID(ds_protect)
+_021E5BA0: .word SDK_OVERLAY_ds_protect_ID
 _021E5BA4: .word 0x04000050
 _021E5BA8: .word 0x04001050
 _021E5BAC: .word ov01_021E66A8
 _021E5BB0: .word 0x000004CF
 _021E5BB4: .word ov01_021E66D8
-_021E5BB8: .word FS_OVERLAY_ID(OVY_2)
-_021E5BBC: .word FS_OVERLAY_ID(OVY_4)
-_021E5BC0: .word FS_OVERLAY_ID(OVY_3)
+_021E5BB8: .word SDK_OVERLAY_OVY_2_ID
+_021E5BBC: .word SDK_OVERLAY_OVY_4_ID
+_021E5BC0: .word SDK_OVERLAY_OVY_3_ID
 _021E5BC4: .word ov01_021E66B8
 _021E5BC8: .word 0x000003A1
 _021E5BCC: .word 0x00000D69
@@ -386,7 +386,7 @@ _021E5C42:
 _021E5C48:
 	b _021E5E76
 _021E5C4A:
-	ldr r1, _021E5E80 ; =FS_OVERLAY_ID(ds_protect)
+	ldr r1, _021E5E80 ; =SDK_OVERLAY_ds_protect_ID
 	mov r0, #0
 	bl FS_LoadOverlay
 	add r0, r4, #0
@@ -467,7 +467,7 @@ _021E5CFA:
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #0x10]
 	bl ov01_021EB1BC
-	ldr r1, _021E5E80 ; =FS_OVERLAY_ID(ds_protect)
+	ldr r1, _021E5E80 ; =SDK_OVERLAY_ds_protect_ID
 	mov r0, #0
 	bl FS_UnloadOverlay
 	ldr r0, [r4, #4]
@@ -600,11 +600,11 @@ _021E5E12:
 	lsl r0, r0, #8
 	lsr r0, r0, #0x1c
 	beq _021E5E6E
-	ldr r0, _021E5EAC ; =FS_OVERLAY_ID(OVY_2)
+	ldr r0, _021E5EAC ; =SDK_OVERLAY_OVY_2_ID
 	bl UnloadOverlayByID
-	ldr r0, _021E5EB0 ; =FS_OVERLAY_ID(OVY_4)
+	ldr r0, _021E5EB0 ; =SDK_OVERLAY_OVY_4_ID
 	bl UnloadOverlayByID
-	ldr r0, _021E5EB4 ; =FS_OVERLAY_ID(OVY_3)
+	ldr r0, _021E5EB4 ; =SDK_OVERLAY_OVY_3_ID
 	bl UnloadOverlayByID
 _021E5E6E:
 	bl sub_02005D00
@@ -615,7 +615,7 @@ _021E5E76:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _021E5E7C: .word 0x002AAACF
-_021E5E80: .word FS_OVERLAY_ID(ds_protect)
+_021E5E80: .word SDK_OVERLAY_ds_protect_ID
 _021E5E84: .word ov01_021E66C8
 _021E5E88: .word 0x0000023B
 _021E5E8C: .word ov01_021E66DC
@@ -626,9 +626,9 @@ _021E5E9C: .word sub_0203E348
 _021E5EA0: .word 0x00001EA5
 _021E5EA4: .word 0x000004EB
 _021E5EA8: .word 0x000004DD
-_021E5EAC: .word FS_OVERLAY_ID(OVY_2)
-_021E5EB0: .word FS_OVERLAY_ID(OVY_4)
-_021E5EB4: .word FS_OVERLAY_ID(OVY_3)
+_021E5EAC: .word SDK_OVERLAY_OVY_2_ID
+_021E5EB0: .word SDK_OVERLAY_OVY_4_ID
+_021E5EB4: .word SDK_OVERLAY_OVY_3_ID
 	thumb_func_end ov01_021E5C24
 
 	thumb_func_start ov01_021E5EB8

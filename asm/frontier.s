@@ -283,36 +283,36 @@ _020967B8: .word 0x0000FFFF
 	thumb_func_start Frontier_LoadOverlays
 Frontier_LoadOverlays: ; 0x020967BC
 	push {r3, lr}
-	ldr r0, _020967D8 ; =FS_OVERLAY_ID(OVY_80)
+	ldr r0, _020967D8 ; =SDK_OVERLAY_OVY_80_ID
 	mov r1, #2
 	bl HandleLoadOverlay
-	ldr r0, _020967DC ; =FS_OVERLAY_ID(OVY_81)
+	ldr r0, _020967DC ; =SDK_OVERLAY_OVY_81_ID
 	mov r1, #2
 	bl HandleLoadOverlay
-	ldr r0, _020967E0 ; =FS_OVERLAY_ID(OVY_42)
+	ldr r0, _020967E0 ; =SDK_OVERLAY_OVY_42_ID
 	mov r1, #2
 	bl HandleLoadOverlay
 	pop {r3, pc}
 	.balign 4, 0
-_020967D8: .word FS_OVERLAY_ID(OVY_80)
-_020967DC: .word FS_OVERLAY_ID(OVY_81)
-_020967E0: .word FS_OVERLAY_ID(OVY_42)
+_020967D8: .word SDK_OVERLAY_OVY_80_ID
+_020967DC: .word SDK_OVERLAY_OVY_81_ID
+_020967E0: .word SDK_OVERLAY_OVY_42_ID
 	thumb_func_end Frontier_LoadOverlays
 
 	thumb_func_start Frontier_UnloadOverlays
 Frontier_UnloadOverlays: ; 0x020967E4
 	push {r3, lr}
-	ldr r0, _020967FC ; =FS_OVERLAY_ID(OVY_80)
+	ldr r0, _020967FC ; =SDK_OVERLAY_OVY_80_ID
 	bl UnloadOverlayByID
-	ldr r0, _02096800 ; =FS_OVERLAY_ID(OVY_81)
+	ldr r0, _02096800 ; =SDK_OVERLAY_OVY_81_ID
 	bl UnloadOverlayByID
-	ldr r0, _02096804 ; =FS_OVERLAY_ID(OVY_42)
+	ldr r0, _02096804 ; =SDK_OVERLAY_OVY_42_ID
 	bl UnloadOverlayByID
 	pop {r3, pc}
 	nop
-_020967FC: .word FS_OVERLAY_ID(OVY_80)
-_02096800: .word FS_OVERLAY_ID(OVY_81)
-_02096804: .word FS_OVERLAY_ID(OVY_42)
+_020967FC: .word SDK_OVERLAY_OVY_80_ID
+_02096800: .word SDK_OVERLAY_OVY_81_ID
+_02096804: .word SDK_OVERLAY_OVY_42_ID
 	thumb_func_end Frontier_UnloadOverlays
 
 	thumb_func_start Frontier_GetLaunchArgs

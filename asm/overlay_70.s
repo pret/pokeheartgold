@@ -27876,7 +27876,7 @@ ov70_02245D48: ; 0x02245D48
 	.byte 0x00, 0x01, 0x02, 0x03, 0x04, 0x00, 0x00, 0x00
 
 ov70_02245D50: ; 0x02245D50
-	.word TradeSequence_Init, TradeSequence_Main, TradeSequence_Exit, FS_OVERLAY_ID(OVY_71)
+	.word TradeSequence_Init, TradeSequence_Main, TradeSequence_Exit, SDK_OVERLAY_OVY_71_ID
 
 ov70_02245D60: ; 0x02245D60
 	.byte 0x04, 0x03, 0x04, 0x07, 0x04, 0x0B

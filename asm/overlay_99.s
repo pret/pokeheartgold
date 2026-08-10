@@ -9,7 +9,7 @@ PokeathlonCourseRecord_Init: ; 0x021E5900
 	push {r4, r5, lr}
 	sub sp, #0x1c
 	add r4, r0, #0
-	ldr r0, _021E59F0 ; =FS_OVERLAY_ID(OVY_98)
+	ldr r0, _021E59F0 ; =SDK_OVERLAY_OVY_98_ID
 	mov r1, #2
 	bl HandleLoadOverlay
 	add r0, r4, #0
@@ -105,7 +105,7 @@ _021E591C:
 	add sp, #0x1c
 	pop {r4, r5, pc}
 	.balign 4, 0
-_021E59F0: .word FS_OVERLAY_ID(OVY_98)
+_021E59F0: .word SDK_OVERLAY_OVY_98_ID
 _021E59F4: .word 0x0000013A
 _021E59F8: .word ov99_021E96D8
 _021E59FC: .word ov99_021E95A4
@@ -127,12 +127,12 @@ PokeathlonCourseRecord_Exit: ; 0x021E5A04
 	bl OverlayManager_FreeData
 	mov r0, #0x84
 	bl Heap_Destroy
-	ldr r0, _021E5A34 ; =FS_OVERLAY_ID(OVY_98)
+	ldr r0, _021E5A34 ; =SDK_OVERLAY_OVY_98_ID
 	bl UnloadOverlayByID
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop
-_021E5A34: .word FS_OVERLAY_ID(OVY_98)
+_021E5A34: .word SDK_OVERLAY_OVY_98_ID
 	thumb_func_end PokeathlonCourseRecord_Exit
 
 	thumb_func_start PokeathlonCourseRecord_Main
@@ -1826,7 +1826,7 @@ ov99_021E677C: ; 0x021E677C
 	push {r4, r5, lr}
 	sub sp, #0x1c
 	add r4, r0, #0
-	ldr r0, _021E682C ; =FS_OVERLAY_ID(OVY_98)
+	ldr r0, _021E682C ; =SDK_OVERLAY_OVY_98_ID
 	mov r1, #2
 	bl HandleLoadOverlay
 	add r0, r4, #0
@@ -1896,7 +1896,7 @@ _021E6798:
 	add sp, #0x1c
 	pop {r4, r5, pc}
 	.balign 4, 0
-_021E682C: .word FS_OVERLAY_ID(OVY_98)
+_021E682C: .word SDK_OVERLAY_OVY_98_ID
 _021E6830: .word 0x0000013A
 _021E6834: .word ov99_021E9ED0
 _021E6838: .word ov99_021E9DEC
@@ -1926,12 +1926,12 @@ ov99_021E6840: ; 0x021E6840
 	bl OverlayManager_FreeData
 	mov r0, #0x84
 	bl Heap_Destroy
-	ldr r0, _021E6884 ; =FS_OVERLAY_ID(OVY_98)
+	ldr r0, _021E6884 ; =SDK_OVERLAY_OVY_98_ID
 	bl UnloadOverlayByID
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_021E6884: .word FS_OVERLAY_ID(OVY_98)
+_021E6884: .word SDK_OVERLAY_OVY_98_ID
 	thumb_func_end ov99_021E6840
 
 	thumb_func_start ov99_021E6888
@@ -3990,7 +3990,7 @@ _021E7814: .word 0x00000444
 PokeathlonMedals_Init: ; 0x021E7818
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	ldr r0, _021E78E0 ; =FS_OVERLAY_ID(OVY_98)
+	ldr r0, _021E78E0 ; =SDK_OVERLAY_OVY_98_ID
 	mov r1, #2
 	bl HandleLoadOverlay
 	add r0, r4, #0
@@ -4066,7 +4066,7 @@ _021E783C:
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_021E78E0: .word FS_OVERLAY_ID(OVY_98)
+_021E78E0: .word SDK_OVERLAY_OVY_98_ID
 _021E78E4: .word 0x0000013A
 _021E78E8: .word ov99_021E9FDC
 _021E78EC: .word ov99_021E7A54
@@ -4102,13 +4102,13 @@ PokeathlonMedals_Exit: ; 0x021E78F0
 	bl OverlayManager_FreeData
 	mov r0, #0x84
 	bl Heap_Destroy
-	ldr r0, _021E7948 ; =FS_OVERLAY_ID(OVY_98)
+	ldr r0, _021E7948 ; =SDK_OVERLAY_OVY_98_ID
 	bl UnloadOverlayByID
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _021E7944: .word 0x00000404
-_021E7948: .word FS_OVERLAY_ID(OVY_98)
+_021E7948: .word SDK_OVERLAY_OVY_98_ID
 	thumb_func_end PokeathlonMedals_Exit
 
 	thumb_func_start PokeathlonMedals_Main
@@ -5360,7 +5360,7 @@ _021E82FA:
 PokeathlonEventRecord_Init: ; 0x021E8304
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	ldr r0, _021E839C ; =FS_OVERLAY_ID(OVY_98)
+	ldr r0, _021E839C ; =SDK_OVERLAY_OVY_98_ID
 	mov r1, #2
 	bl HandleLoadOverlay
 	add r0, r4, #0
@@ -5417,7 +5417,7 @@ _021E831E:
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop
-_021E839C: .word FS_OVERLAY_ID(OVY_98)
+_021E839C: .word SDK_OVERLAY_OVY_98_ID
 _021E83A0: .word 0x0000013A
 _021E83A4: .word ov99_021EA45C
 _021E83A8: .word ov99_021E856C
@@ -5446,12 +5446,12 @@ PokeathlonEventRecord_Exit: ; 0x021E83AC
 	bl OverlayManager_FreeData
 	mov r0, #0x84
 	bl Heap_Destroy
-	ldr r0, _021E83F0 ; =FS_OVERLAY_ID(OVY_98)
+	ldr r0, _021E83F0 ; =SDK_OVERLAY_OVY_98_ID
 	bl UnloadOverlayByID
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_021E83F0: .word FS_OVERLAY_ID(OVY_98)
+_021E83F0: .word SDK_OVERLAY_OVY_98_ID
 	thumb_func_end PokeathlonEventRecord_Exit
 
 	thumb_func_start PokeathlonEventRecord_Main

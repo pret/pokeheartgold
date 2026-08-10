@@ -44,7 +44,7 @@ ov01_021EFB64: ; 0x021EFB64
 	blt _021EFB78
 	cmp r0, #0x21
 	bgt _021EFB78
-	ldr r0, _021EFBE8 ; =FS_OVERLAY_ID(OVY_115)
+	ldr r0, _021EFBE8 ; =SDK_OVERLAY_OVY_115_ID
 	mov r1, #2
 	bl HandleLoadOverlay
 	pop {r3, pc}
@@ -53,7 +53,7 @@ _021EFB78:
 	sub r1, #0x22
 	cmp r1, #2
 	bhi _021EFB8A
-	ldr r0, _021EFBEC ; =FS_OVERLAY_ID(OVY_116)
+	ldr r0, _021EFBEC ; =SDK_OVERLAY_OVY_116_ID
 	mov r1, #2
 	bl HandleLoadOverlay
 	pop {r3, pc}
@@ -62,14 +62,14 @@ _021EFB8A:
 	blt _021EFB9C
 	cmp r0, #0x2c
 	bgt _021EFB9C
-	ldr r0, _021EFBF0 ; =FS_OVERLAY_ID(OVY_117)
+	ldr r0, _021EFBF0 ; =SDK_OVERLAY_OVY_117_ID
 	mov r1, #2
 	bl HandleLoadOverlay
 	pop {r3, pc}
 _021EFB9C:
 	cmp r0, #0x2d
 	bne _021EFBAA
-	ldr r0, _021EFBF4 ; =FS_OVERLAY_ID(OVY_118)
+	ldr r0, _021EFBF4 ; =SDK_OVERLAY_OVY_118_ID
 	mov r1, #2
 	bl HandleLoadOverlay
 	pop {r3, pc}
@@ -78,7 +78,7 @@ _021EFBAA:
 	blt _021EFBBC
 	cmp r0, #5
 	bgt _021EFBBC
-	ldr r0, _021EFBF8 ; =FS_OVERLAY_ID(OVY_120)
+	ldr r0, _021EFBF8 ; =SDK_OVERLAY_OVY_120_ID
 	mov r1, #2
 	bl HandleLoadOverlay
 	pop {r3, pc}
@@ -87,30 +87,30 @@ _021EFBBC:
 	blt _021EFBCE
 	cmp r0, #0xb
 	bgt _021EFBCE
-	ldr r0, _021EFBFC ; =FS_OVERLAY_ID(OVY_119)
+	ldr r0, _021EFBFC ; =SDK_OVERLAY_OVY_119_ID
 	mov r1, #2
 	bl HandleLoadOverlay
 	pop {r3, pc}
 _021EFBCE:
 	cmp r0, #0x2e
 	bne _021EFBDC
-	ldr r0, _021EFBF8 ; =FS_OVERLAY_ID(OVY_120)
+	ldr r0, _021EFBF8 ; =SDK_OVERLAY_OVY_120_ID
 	mov r1, #2
 	bl HandleLoadOverlay
 	pop {r3, pc}
 _021EFBDC:
-	ldr r0, _021EFC00 ; =FS_OVERLAY_ID(OVY_114)
+	ldr r0, _021EFC00 ; =SDK_OVERLAY_OVY_114_ID
 	mov r1, #2
 	bl HandleLoadOverlay
 	pop {r3, pc}
 	nop
-_021EFBE8: .word FS_OVERLAY_ID(OVY_115)
-_021EFBEC: .word FS_OVERLAY_ID(OVY_116)
-_021EFBF0: .word FS_OVERLAY_ID(OVY_117)
-_021EFBF4: .word FS_OVERLAY_ID(OVY_118)
-_021EFBF8: .word FS_OVERLAY_ID(OVY_120)
-_021EFBFC: .word FS_OVERLAY_ID(OVY_119)
-_021EFC00: .word FS_OVERLAY_ID(OVY_114)
+_021EFBE8: .word SDK_OVERLAY_OVY_115_ID
+_021EFBEC: .word SDK_OVERLAY_OVY_116_ID
+_021EFBF0: .word SDK_OVERLAY_OVY_117_ID
+_021EFBF4: .word SDK_OVERLAY_OVY_118_ID
+_021EFBF8: .word SDK_OVERLAY_OVY_120_ID
+_021EFBFC: .word SDK_OVERLAY_OVY_119_ID
+_021EFC00: .word SDK_OVERLAY_OVY_114_ID
 	thumb_func_end ov01_021EFB64
 
 	thumb_func_start ov01_021EFC04
@@ -120,7 +120,7 @@ ov01_021EFC04: ; 0x021EFC04
 	blt _021EFC16
 	cmp r0, #0x21
 	bgt _021EFC16
-	ldr r0, _021EFC78 ; =FS_OVERLAY_ID(OVY_115)
+	ldr r0, _021EFC78 ; =SDK_OVERLAY_OVY_115_ID
 	bl UnloadOverlayByID
 	pop {r3, pc}
 _021EFC16:
@@ -128,7 +128,7 @@ _021EFC16:
 	sub r1, #0x22
 	cmp r1, #2
 	bhi _021EFC26
-	ldr r0, _021EFC7C ; =FS_OVERLAY_ID(OVY_116)
+	ldr r0, _021EFC7C ; =SDK_OVERLAY_OVY_116_ID
 	bl UnloadOverlayByID
 	pop {r3, pc}
 _021EFC26:
@@ -136,13 +136,13 @@ _021EFC26:
 	blt _021EFC36
 	cmp r0, #0x2c
 	bgt _021EFC36
-	ldr r0, _021EFC80 ; =FS_OVERLAY_ID(OVY_117)
+	ldr r0, _021EFC80 ; =SDK_OVERLAY_OVY_117_ID
 	bl UnloadOverlayByID
 	pop {r3, pc}
 _021EFC36:
 	cmp r0, #0x2d
 	bne _021EFC42
-	ldr r0, _021EFC84 ; =FS_OVERLAY_ID(OVY_118)
+	ldr r0, _021EFC84 ; =SDK_OVERLAY_OVY_118_ID
 	bl UnloadOverlayByID
 	pop {r3, pc}
 _021EFC42:
@@ -150,7 +150,7 @@ _021EFC42:
 	blt _021EFC52
 	cmp r0, #5
 	bgt _021EFC52
-	ldr r0, _021EFC88 ; =FS_OVERLAY_ID(OVY_120)
+	ldr r0, _021EFC88 ; =SDK_OVERLAY_OVY_120_ID
 	bl UnloadOverlayByID
 	pop {r3, pc}
 _021EFC52:
@@ -158,27 +158,27 @@ _021EFC52:
 	blt _021EFC62
 	cmp r0, #0xb
 	bgt _021EFC62
-	ldr r0, _021EFC8C ; =FS_OVERLAY_ID(OVY_119)
+	ldr r0, _021EFC8C ; =SDK_OVERLAY_OVY_119_ID
 	bl UnloadOverlayByID
 	pop {r3, pc}
 _021EFC62:
 	cmp r0, #0x2e
 	bne _021EFC6E
-	ldr r0, _021EFC88 ; =FS_OVERLAY_ID(OVY_120)
+	ldr r0, _021EFC88 ; =SDK_OVERLAY_OVY_120_ID
 	bl UnloadOverlayByID
 	pop {r3, pc}
 _021EFC6E:
-	ldr r0, _021EFC90 ; =FS_OVERLAY_ID(OVY_114)
+	ldr r0, _021EFC90 ; =SDK_OVERLAY_OVY_114_ID
 	bl UnloadOverlayByID
 	pop {r3, pc}
 	nop
-_021EFC78: .word FS_OVERLAY_ID(OVY_115)
-_021EFC7C: .word FS_OVERLAY_ID(OVY_116)
-_021EFC80: .word FS_OVERLAY_ID(OVY_117)
-_021EFC84: .word FS_OVERLAY_ID(OVY_118)
-_021EFC88: .word FS_OVERLAY_ID(OVY_120)
-_021EFC8C: .word FS_OVERLAY_ID(OVY_119)
-_021EFC90: .word FS_OVERLAY_ID(OVY_114)
+_021EFC78: .word SDK_OVERLAY_OVY_115_ID
+_021EFC7C: .word SDK_OVERLAY_OVY_116_ID
+_021EFC80: .word SDK_OVERLAY_OVY_117_ID
+_021EFC84: .word SDK_OVERLAY_OVY_118_ID
+_021EFC88: .word SDK_OVERLAY_OVY_120_ID
+_021EFC8C: .word SDK_OVERLAY_OVY_119_ID
+_021EFC90: .word SDK_OVERLAY_OVY_114_ID
 	thumb_func_end ov01_021EFC04
 
 	thumb_func_start ov01_021EFC94

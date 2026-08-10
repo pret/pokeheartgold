@@ -30,7 +30,7 @@ _021F683E:
 ov01_021F6840: ; 0x021F6840
 	push {r4, lr}
 	add r4, r0, #0
-	ldr r0, _021F6860 ; =FS_OVERLAY_ID(OVY_27)
+	ldr r0, _021F6860 ; =SDK_OVERLAY_OVY_27_ID
 	mov r1, #2
 	bl HandleLoadOverlay
 	add r1, r4, #0
@@ -43,7 +43,7 @@ ov01_021F6840: ; 0x021F6840
 	str r0, [r4]
 	pop {r4, pc}
 	.balign 4, 0
-_021F6860: .word FS_OVERLAY_ID(OVY_27)
+_021F6860: .word SDK_OVERLAY_OVY_27_ID
 	thumb_func_end ov01_021F6840
 
 	thumb_func_start ov01_021F6864
@@ -65,7 +65,7 @@ ov01_021F6874: ; 0x021F6874
 	bl ov30_0225D6FC
 	cmp r0, #0
 	beq _021F688A
-	ldr r0, _021F6890 ; =FS_OVERLAY_ID(OVY_27)
+	ldr r0, _021F6890 ; =SDK_OVERLAY_OVY_27_ID
 	bl UnloadOverlayByID
 	mov r0, #1
 	pop {r3, pc}
@@ -73,14 +73,14 @@ _021F688A:
 	mov r0, #0
 	pop {r3, pc}
 	nop
-_021F6890: .word FS_OVERLAY_ID(OVY_27)
+_021F6890: .word SDK_OVERLAY_OVY_27_ID
 	thumb_func_end ov01_021F6874
 
 	thumb_func_start ov01_021F6894
 ov01_021F6894: ; 0x021F6894
 	push {r4, lr}
 	add r4, r0, #0
-	ldr r0, _021F68B4 ; =FS_OVERLAY_ID(OVY_27)
+	ldr r0, _021F68B4 ; =SDK_OVERLAY_OVY_27_ID
 	mov r1, #2
 	bl HandleLoadOverlay
 	add r1, r4, #0
@@ -92,7 +92,7 @@ ov01_021F6894: ; 0x021F6894
 	str r0, [r4]
 	pop {r4, pc}
 	nop
-_021F68B4: .word FS_OVERLAY_ID(OVY_27)
+_021F68B4: .word SDK_OVERLAY_OVY_27_ID
 	thumb_func_end ov01_021F6894
 
 	thumb_func_start ov01_021F68B8
@@ -109,7 +109,7 @@ ov01_021F68C0: ; 0x021F68C0
 	bl ov01_021F6930
 	cmp r0, #0
 	beq _021F68D4
-	ldr r0, _021F68D8 ; =FS_OVERLAY_ID(OVY_27)
+	ldr r0, _021F68D8 ; =SDK_OVERLAY_OVY_27_ID
 	bl UnloadOverlayByID
 	mov r0, #1
 	pop {r3, pc}
@@ -117,7 +117,7 @@ _021F68D4:
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
-_021F68D8: .word FS_OVERLAY_ID(OVY_27)
+_021F68D8: .word SDK_OVERLAY_OVY_27_ID
 	thumb_func_end ov01_021F68C0
 
 	thumb_func_start ov01_021F68DC
@@ -729,11 +729,11 @@ ov01_02206C08: ; 0x02206C08
 
 ov01_02206C60: ; 0x02206C60
 	.word ov27_02259F80, ov27_0225A19C, ov27_0225A2C8, 0xFFFFFFFF
-	.word ov30_0225D520, ov30_0225D64C, ov30_0225D6FC, FS_OVERLAY_ID(touch_save_app)
-	.word ov31_0225D520, ov31_0225D710, ov31_0225D758, FS_OVERLAY_ID(OVY_31)
+	.word ov30_0225D520, ov30_0225D64C, ov30_0225D6FC, SDK_OVERLAY_touch_save_app_ID
+	.word ov31_0225D520, ov31_0225D710, ov31_0225D758, SDK_OVERLAY_OVY_31_ID
 	.word ov27_0225C250, ov27_0225C398, ov27_0225C418, 0xFFFFFFFF
-	.word ov28_0225D520, ov28_0225D5EC, ov28_0225D624, FS_OVERLAY_ID(OVY_28)
-	.word ov29_0225D520, ov29_0225D5EC, ov29_0225D61C, FS_OVERLAY_ID(OVY_29)
-	.word ov32_0225D520, ov32_0225D5CC, ov32_0225D608, FS_OVERLAY_ID(OVY_32)
-	.word ov33_0225D520, ov33_0225D5A8, ov33_0225D5CC, FS_OVERLAY_ID(OVY_33)
-	.word ov01_021F6B88, ov01_021F6BA0, ov01_021F6BAC, FS_OVERLAY_ID(OVY_34)
+	.word ov28_0225D520, ov28_0225D5EC, ov28_0225D624, SDK_OVERLAY_OVY_28_ID
+	.word ov29_0225D520, ov29_0225D5EC, ov29_0225D61C, SDK_OVERLAY_OVY_29_ID
+	.word ov32_0225D520, ov32_0225D5CC, ov32_0225D608, SDK_OVERLAY_OVY_32_ID
+	.word ov33_0225D520, ov33_0225D5A8, ov33_0225D5CC, SDK_OVERLAY_OVY_33_ID
+	.word ov01_021F6B88, ov01_021F6BA0, ov01_021F6BAC, SDK_OVERLAY_OVY_34_ID

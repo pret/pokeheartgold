@@ -952,7 +952,7 @@ ov74_02229450: ; 0x02229450
 	add r4, r0, #0
 	mov r0, #0x59
 	bl Heap_Destroy
-	ldr r0, _02229474 ; =FS_OVERLAY_ID(intro_title)
+	ldr r0, _02229474 ; =SDK_OVERLAY_intro_title_ID
 	ldr r1, _02229478 ; =gApplication_TitleScreen
 	bl RegisterMainOverlay
 	add r0, r4, #0
@@ -962,7 +962,7 @@ ov74_02229450: ; 0x02229450
 	mov r0, #1
 	pop {r4, pc}
 	nop
-_02229474: .word FS_OVERLAY_ID(intro_title)
+_02229474: .word SDK_OVERLAY_intro_title_ID
 _02229478: .word gApplication_TitleScreen
 	thumb_func_end ov74_02229450
 
@@ -8076,21 +8076,21 @@ ov74_0222CD94: ; 0x0222CD94
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	bne _0222CDB2
-	ldr r0, _0222CDF8 ; =FS_OVERLAY_ID(intro_title)
+	ldr r0, _0222CDF8 ; =SDK_OVERLAY_intro_title_ID
 	ldr r1, _0222CDFC ; =gApplication_TitleScreen
 	bl RegisterMainOverlay
 	b _0222CDCC
 _0222CDB2:
 	cmp r0, #1
 	bne _0222CDC0
-	ldr r0, _0222CE00 ; =FS_OVERLAY_ID(OVY_74)
+	ldr r0, _0222CE00 ; =SDK_OVERLAY_OVY_74_ID
 	ldr r1, _0222CE04 ; =_0223B410
 	bl RegisterMainOverlay
 	b _0222CDCC
 _0222CDC0:
 	cmp r0, #2
 	bne _0222CDCC
-	ldr r0, _0222CE00 ; =FS_OVERLAY_ID(OVY_74)
+	ldr r0, _0222CE00 ; =SDK_OVERLAY_OVY_74_ID
 	ldr r1, _0222CE08 ; =_0223B420
 	bl RegisterMainOverlay
 _0222CDCC:
@@ -8112,9 +8112,9 @@ _0222CDEC:
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop
-_0222CDF8: .word FS_OVERLAY_ID(intro_title)
+_0222CDF8: .word SDK_OVERLAY_intro_title_ID
 _0222CDFC: .word gApplication_TitleScreen
-_0222CE00: .word FS_OVERLAY_ID(OVY_74)
+_0222CE00: .word SDK_OVERLAY_OVY_74_ID
 _0222CE04: .word _0223B410
 _0222CE08: .word _0223B420
 _0222CE0C: .word 0x000015D4
@@ -11826,7 +11826,7 @@ _0222EBA0:
 	ldr r0, _0222EBFC ; =0x000029FC
 	ldr r0, [r7, r0]
 	bl Heap_Free
-	ldr r0, _0222EC00 ; =FS_OVERLAY_ID(OVY_74)
+	ldr r0, _0222EC00 ; =SDK_OVERLAY_OVY_74_ID
 	ldr r1, _0222EC04 ; =gApp_MainMenu_SelectOption_MysteryGift
 	bl RegisterMainOverlay
 	mov r0, #0x59
@@ -11842,7 +11842,7 @@ _0222EBF0: .word 0x00002A08
 _0222EBF4: .word 0x00002BD0
 _0222EBF8: .word 0x00002BE0
 _0222EBFC: .word 0x000029FC
-_0222EC00: .word FS_OVERLAY_ID(OVY_74)
+_0222EC00: .word SDK_OVERLAY_OVY_74_ID
 _0222EC04: .word gApp_MainMenu_SelectOption_MysteryGift
 	thumb_func_end ov74_0222EB44
 
@@ -13829,7 +13829,7 @@ _0222FBE8:
 	ldr r0, _0222FC44 ; =0x000029FC
 	ldr r0, [r7, r0]
 	bl Heap_Free
-	ldr r0, _0222FC48 ; =FS_OVERLAY_ID(OVY_74)
+	ldr r0, _0222FC48 ; =SDK_OVERLAY_OVY_74_ID
 	ldr r1, _0222FC4C ; =gApp_MainMenu_SelectOption_MysteryGift
 	bl RegisterMainOverlay
 	mov r0, #0x59
@@ -13845,7 +13845,7 @@ _0222FC38: .word 0x00002A08
 _0222FC3C: .word 0x00002BC4
 _0222FC40: .word 0x00002BD4
 _0222FC44: .word 0x000029FC
-_0222FC48: .word FS_OVERLAY_ID(OVY_74)
+_0222FC48: .word SDK_OVERLAY_OVY_74_ID
 _0222FC4C: .word gApp_MainMenu_SelectOption_MysteryGift
 	thumb_func_end ov74_0222FB8C
 
@@ -21773,7 +21773,7 @@ ov74_022338D4: ; 0x022338D4
 	bl String_Delete
 	ldr r0, [r4, #0x20]
 	bl Heap_Free
-	ldr r0, _0223391C ; =FS_OVERLAY_ID(intro_title)
+	ldr r0, _0223391C ; =SDK_OVERLAY_intro_title_ID
 	ldr r1, _02233920 ; =gApplication_TitleScreen
 	bl RegisterMainOverlay
 	add r0, r5, #0
@@ -21787,7 +21787,7 @@ ov74_022338D4: ; 0x022338D4
 	nop
 _02233914: .word 0x00012608
 _02233918: .word 0x0001260C
-_0223391C: .word FS_OVERLAY_ID(intro_title)
+_0223391C: .word SDK_OVERLAY_intro_title_ID
 _02233920: .word gApplication_TitleScreen
 	thumb_func_end ov74_022338D4
 

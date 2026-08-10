@@ -24,7 +24,7 @@ ScrCmd_808: ; 0x022053EC
 	add r0, #0x80
 	ldr r0, [r0]
 	bl FieldSystem_VarGet
-	ldr r6, _02205420 ; =FS_OVERLAY_ID(OVY_25)
+	ldr r6, _02205420 ; =SDK_OVERLAY_OVY_25_ID
 	add r4, r0, #0
 	add r0, r6, #0
 	mov r1, #2
@@ -38,7 +38,7 @@ ScrCmd_808: ; 0x022053EC
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-_02205420: .word FS_OVERLAY_ID(OVY_25)
+_02205420: .word SDK_OVERLAY_OVY_25_ID
 	thumb_func_end ScrCmd_808
 
 	thumb_func_start ov01_02205424
