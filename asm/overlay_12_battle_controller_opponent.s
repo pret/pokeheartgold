@@ -11635,7 +11635,7 @@ ov12_0225E404: ; 0x0225E404
 _0225E43A:
 	ldrb r1, [r6, #0x1d]
 	ldr r0, [r6]
-	bl ov10_0221BEF4
+	bl TrainerAI_Main
 	cmp r0, #0xff
 	beq _0225E4C2
 	add r4, r0, #1
@@ -12502,7 +12502,7 @@ _0225EB12:
 	str r1, [r0, #0x1c]
 	ldr r0, [r4, #8]
 	ldr r0, [r0, #4]
-	bl ov10_0221BE20
+	bl TrainerAI_Init
 	ldrb r0, [r4, #0xe]
 	add sp, #0x1fc
 	add sp, #0x14
@@ -14074,7 +14074,7 @@ _0225F7D4:
 	strb r1, [r0, #0x15]
 _0225F7DA:
 	ldr r0, [r4, #4]
-	bl ov10_0221BE20
+	bl TrainerAI_Init
 	ldrb r0, [r4, #0xa]
 	add sp, #0x24
 	add r0, r0, #1
@@ -16405,7 +16405,7 @@ _02260A44:
 	add r1, #0x32
 	strb r0, [r1]
 	ldr r0, [r4, #4]
-	bl ov10_0221BE20
+	bl TrainerAI_Init
 	ldrb r0, [r4, #0xa]
 	add sp, #0xc
 	add r0, r0, #1

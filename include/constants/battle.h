@@ -556,11 +556,11 @@ typedef enum Terrain {
 #define STAT_UP_6    12
 
 // Trainer AI Flags
+#define AI_FLAG_BASIC           (1 << 0)
+#define AI_FLAG_DOUBLES         (1 << 7)
+#define AI_FLAG_ROAMING_POKEMON (1 << 29)
 
-#define AI_DOUBLES (1 << 7)
-#define AI_29      (1 << 29)
-
-// Multi hit flags
+// Multihit flags
 #define MULTIHIT_SKIP_OBEDIENCE_CHECK    (1 << 0)
 #define MULTIHIT_SKIP_TYPE_CHART_CHECK   (1 << 1)
 #define MULTIHIT_SKIP_STATUS_CHECK       (1 << 2)
