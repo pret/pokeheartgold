@@ -145,7 +145,7 @@ BOOL MapPropAnimationManager_AddAnimationToRenderObj(const int mapPropModelID, c
 
     int animArchiveID = animListFile.animArchiveIDs[mapPropAnimID];
     
-    if (animArchiveID == -1) {
+    if (animArchiveID == ANIM_ARCHIVE_ID_NONE) {
         return FALSE;
     } else if (isDeferred != MapPropAnimation_CheckDeferredAddToRenderObjFlag(animListFile.flags)) {
         return FALSE;
@@ -492,7 +492,7 @@ void ov01_021E8F3C(int fileCount, NNSG3dResMdl *resMdl, NNSG3dRenderObj *renderO
     
     for (i = 0; i < MAP_PROP_ANIM_LIST_FILE_ARCHIVE_IDS_COUNT; i++) {
         archiveID = animListFile->animArchiveIDs[i];
-        if (archiveID == -1 || MapPropAnimation_CheckDeferredLoadingFlag(animListFile->flags) != 0) {
+        if (archiveID == ANIM_ARCHIVE_ID_NONE || MapPropAnimation_CheckDeferredLoadingFlag(animListFile->flags) != 0) {
             return;
         }
         
