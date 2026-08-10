@@ -113,31 +113,31 @@ typedef struct SelfTurnData {
 } SelfTurnData;
 
 typedef struct TrainerAIData {
-    u8 unk0;
-    u8 unk1;
+    u8 evalStep;
+    u8 moveSlot;
     u16 unk2;
-    s8 movePoints[4]; // higher points = more priority for selection
+    s8 moveScore[MOVES_MAX]; // Higher score = more priority for selection.
     int unk8;
     u32 aiFlags;
-    u8 unk10;
-    u8 unk11;
+    u8 stateFlags;
+    u8 aiBitShift;
     u8 unk12;
     u8 unk13;
     u8 *unk14;
-    u8 unk18[4];
+    u8 moveDamageRolls[MOVES_MAX];
     u16 moves[BATTLER_MAX][MOVES_MAX];
     u8 abilities[BATTLER_MAX];
     u16 heldItems[BATTLER_MAX];
     u16 unk68[2][4];
     u32 unk78[8];
-    u8 unk98;
+    u8 scriptStackSize;
     u8 unk99[2];
-    u8 battlerIdAttacker;
-    u8 battlerIdTarget;
+    u8 attacker;
+    u8 defender;
     u8 useItem[2];
     u8 unk9F[2];
     u16 unkA0[2];
-    u8 unkA4[4];
+    u8 selectedTarget[BATTLER_MAX];
     MoveTbl moveData[NUM_MOVES + 1];
     ItemData *itemData;
     u16 unk280[4];

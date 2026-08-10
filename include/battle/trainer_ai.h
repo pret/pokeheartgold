@@ -3,11 +3,11 @@
 
 #include "battle.h"
 
-void ov10_0221BE20(BattleSystem *battleSystem, BattleContext *ctx, u8 battlerId, u8 a3);
-u8 ov10_0221BEF4(BattleSystem *battleSystem, u8 battlerId);
+void TrainerAI_Init(BattleSystem *battleSystem, BattleContext *ctx, u8 battlerID, u8 initScore);
+u8 TrainerAI_Main(BattleSystem *battleSystem, u8 battlerID);
 
-// the following functions are in reality static but need to be decompiled still or are used by non-decompiled functions
-u8 ov10_0221BF44(BattleSystem *battleSystem, BattleContext *ctx);
-u8 ov10_0221C038(BattleSystem *battleSystem, BattleContext *ctx);
+// static?
+void TrainerAI_RecordLastMove(BattleSystem *battleSystem, BattleContext *ctx);
+void TrainerAI_EvaluateMoves(BattleSystem *battleSystem, BattleContext *ctx);
 
 #endif

@@ -6218,14 +6218,14 @@ BOOL BattleController_TryEmitExitRecording(BattleSystem *battleSystem, BattleCon
     return FALSE;
 }
 
-int ov12_022581D4(BattleSystem *battleSystem, BattleContext *ctx, int var, int battlerId) {
+int ov12_022581D4(BattleSystem *battleSystem, BattleContext *ctx, int var, int battlerID) {
     switch (var) {
     case 0:
-        return ctx->fieldSideConditionFlags[BattleSystem_GetFieldSide(battleSystem, battlerId)];
+        return ctx->fieldSideConditionFlags[BattleSystem_GetFieldSide(battleSystem, battlerID)];
     case 1:
-        return ctx->fieldSideConditionData[BattleSystem_GetFieldSide(battleSystem, battlerId)].mistTurns;
+        return ctx->fieldSideConditionData[BattleSystem_GetFieldSide(battleSystem, battlerID)].mistTurns;
     case 2:
-        return ctx->selectedMonIndex[battlerId];
+        return ctx->selectedMonIndex[battlerID];
     case 3:
         return ctx->totalTurns;
     case 4:
@@ -6233,19 +6233,19 @@ int ov12_022581D4(BattleSystem *battleSystem, BattleContext *ctx, int var, int b
     case 5:
         return ctx->safariRunAttempts;
     case 6:
-        return ctx->totalTimesFainted[battlerId];
+        return ctx->totalTimesFainted[battlerID];
     case 7:
-        return ctx->totalDamage[battlerId];
+        return ctx->totalDamage[battlerID];
     case 8:
-        return (int)ctx->playerActions[battlerId].command;
+        return (int)ctx->playerActions[battlerID].command;
     case 9:
-        return ctx->trainerAIData.battlerIdTarget;
+        return ctx->trainerAIData.defender;
     case 10:
         return ctx->switchInFlag;
     case 11:
-        return ctx->trainerAIData.unkA4[battlerId];
+        return ctx->trainerAIData.selectedTarget[battlerID];
     case BATTLE_SUBSCRIPT_UPDATE_STAT_STAGE:
-        return ctx->playerActions[battlerId].unk8;
+        return ctx->playerActions[battlerID].unk8;
     case 13:
         return (int)ctx->command;
     case 14:
@@ -6256,25 +6256,25 @@ int ov12_022581D4(BattleSystem *battleSystem, BattleContext *ctx, int var, int b
     return 0;
 }
 
-void ov12_022582B8(BattleSystem *battleSystem, BattleContext *ctx, int var, int battlerId, int data) {
+void ov12_022582B8(BattleSystem *battleSystem, BattleContext *ctx, int var, int battlerID, int data) {
     switch (var) {
     case 0:
-        ctx->fieldSideConditionFlags[BattleSystem_GetFieldSide(battleSystem, battlerId)] = data;
+        ctx->fieldSideConditionFlags[BattleSystem_GetFieldSide(battleSystem, battlerID)] = data;
         break;
     case 1:
-        ctx->fieldSideConditionData[BattleSystem_GetFieldSide(battleSystem, battlerId)].mistTurns = data;
+        ctx->fieldSideConditionData[BattleSystem_GetFieldSide(battleSystem, battlerID)].mistTurns = data;
         break;
     case 2:
-        ctx->selectedMonIndex[battlerId] = data;
+        ctx->selectedMonIndex[battlerID] = data;
         break;
     case 3:
         ctx->totalTurns = data;
         break;
     case 9:
-        ctx->trainerAIData.battlerIdTarget = data;
+        ctx->trainerAIData.defender = data;
         break;
     case 11:
-        ctx->trainerAIData.unkA4[battlerId] = data;
+        ctx->trainerAIData.selectedTarget[battlerID] = data;
         break;
     default:
         GF_ASSERT(FALSE);
