@@ -7,6 +7,6 @@
 
 BOOL MapModel_IsHeadbuttTree(u32 mapModelNo);
 u16 MapCoordToMatrixIndex(FieldSystem *fieldSystem, int coordX, int coordY);
-void sub_02054EB0(FieldSystem *fieldSystem, int a1, BOOL a2);
+void sub_02054EB0(FieldSystem *fieldSystem, int buildModel, BOOL culled);
 
 #endif // POKEHEARTGOLD_UNK_02054E00_H

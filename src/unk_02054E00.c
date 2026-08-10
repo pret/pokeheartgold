@@ -26,17 +26,17 @@ u16 MapCoordToMatrixIndex(FieldSystem *fieldSystem, int coordX, int coordY) {
     return posX + posY * width;
 }
 
-void sub_02054EB0(FieldSystem *fieldSystem, int a1, BOOL a2) {
-    MapPropManager *val;
+void sub_02054EB0(FieldSystem *fieldSystem, int buildModel, BOOL culled) {
+    MapPropManager *mapPropManager;
     for (u8 i = 0; i < 4; i++) {
-        ov01_021F630C(i, fieldSystem->mapLoadManager, &val);
-        if (val != 0) {
-            for (u8 j = 0; j < 32; j++) {
-                MapProp *res = MapPropManager_GetMapPropByIndex(val, j);
-                if (MapProp_IsActive(res)) {
-                    int res2 = MapProp_GetBuildModel(res);
-                    if (res2 == a1) {
-                        MapProp_SetCulled(res, a2);
+        ov01_021F630C(i, fieldSystem->mapLoadManager, &mapPropManager);
+        if (mapPropManager != 0) {
+            for (u8 j = 0; j < MAP_PROP_MAX; j++) {
+                MapProp *mapProp = MapPropManager_GetMapPropByIndex(mapPropManager, j);
+                if (MapProp_IsActive(mapProp)) {
+                    int curBuildModel = MapProp_GetBuildModel(mapProp);
+                    if (curBuildModel == buildModel) {
+                        MapProp_SetCulled(mapProp, culled);
                     }
                 }
             }

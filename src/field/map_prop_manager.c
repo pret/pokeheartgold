@@ -10,8 +10,6 @@
 #include "unk_02020B8C.h"
 #include "unk_02097268.h"
 
-#define MAP_PROP_MAX 32
-
 typedef struct MapPropArcData {
     int unk_00;
     VecFx32 translation;
@@ -100,7 +98,6 @@ void MapPropManager_RemoveMapPropByIndex(int modelID, MapPropManager *mapPropMan
 
 // NARC_a_0_6_5
 void MapPropManager_LoadFromNARC(NARC *narc, u32 size, MapPropManager *mapPropManager, int a3) {
-#pragma unused(a3)
     MapPropArcData *narcData = NULL;
     u32 num;
 
@@ -141,9 +138,6 @@ void MapPropManager_LoadFromNARC(NARC *narc, u32 size, MapPropManager *mapPropMa
 }
 
 void MapPropManager_LoadFromSafariZone(NARC *a0, MapPropManager *mapPropManager, int a2, const SAFARIZONE_AREA *safariArea, u16 *a4, BOOL gender) {
-#pragma unused(a0)
-#pragma unused(a2)
-
     u32 numSafariObjects = safariArea->active_object_count;
     if (numSafariObjects > SAFARI_ZONE_MAX_OBJECTS) {
         GF_ASSERT(FALSE);
@@ -282,21 +276,21 @@ static void DrawModelShapewise(const NNSG3dResMdl *model, const VecFx32 *baseTra
     NNS_G3dGlbSetBaseScale(baseScale);
     NNS_G3dGlbFlush();
 
-    u16 sp2;
+    u16 num;
     u16 sp0;
-    ov01_021EA804(buildModel, a4, &sp2, &sp0);
-    u16 *shpDat = ov01_021EA81C(sp0, a4);
+    ov01_021EA804(buildModel, a4, &num, &sp0);
+    u16(*shpDat)[2] = ov01_021EA81C(sp0, a4);
     u8 i;
     u8 matID = 0xFF;
-    for (i = 0; i < sp2; ++i) {
+    for (i = 0; i < num; ++i) {
         BOOL sendMat;
-        if (matID != shpDat[i * 2]) {
-            matID = shpDat[i * 2];
+        if (matID != shpDat[i][0]) {
+            matID = shpDat[i][0];
             sendMat = TRUE;
         } else {
             sendMat = FALSE;
         }
-        NNS_G3dDraw1Mat1Shp(model, matID, shpDat[i * 2 + 1], sendMat);
+        NNS_G3dDraw1Mat1Shp(model, matID, shpDat[i][1], sendMat);
     }
 }
 

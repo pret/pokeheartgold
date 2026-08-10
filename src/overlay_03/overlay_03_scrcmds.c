@@ -64,8 +64,8 @@ BOOL ScrCmd_720(ScriptContext *ctx) {
     areaSet = SafariZone_GetAreaSet(Save_SafariZone_Get(fieldSystem->saveData), 0);
     u32 temp_r0 = ov01_021F6320(fieldSystem->mapLoadManager);
 
-    MapPropManager *sp20;
-    ov01_021F630C((u8)temp_r0, fieldSystem->mapLoadManager, &sp20);
+    MapPropManager *mapPropManager;
+    ov01_021F630C((u8)temp_r0, fieldSystem->mapLoadManager, &mapPropManager);
     sp8 = ov01_021F65E4(fieldSystem->mapLoadManager, (u8)temp_r0);
     sp4 = ov01_021F65F0(fieldSystem->mapLoadManager, (u8)temp_r0);
 
@@ -80,20 +80,20 @@ BOOL ScrCmd_720(ScriptContext *ctx) {
         }
     }
 
-    for (int index = 0; index < 32; index++) {
-        MapProp *sp18 = MapPropManager_GetMapPropByIndex(sp20, index);
-        if (MapProp_IsActive(sp18)) {
+    for (int index = 0; index < MAP_PROP_MAX; index++) {
+        MapProp *mapProp = MapPropManager_GetMapPropByIndex(mapPropManager, index);
+        if (MapProp_IsActive(mapProp)) {
             VecFx32 position;
-            MapProp_GetTranslation(&position, sp18);
+            MapProp_GetTranslation(&position, mapProp);
 
-            s16 localX = (s16)(((position.x >> 12) + 0xF8) / 16);
-            s16 localZ = (s16)(((position.z >> 12) + 0xF8) / 16);
+            s16 localX = (s16)(((position.x >> FX32_SHIFT) + 0xF8) / 16);
+            s16 localZ = (s16)(((position.z >> FX32_SHIFT) + 0xF8) / 16);
 
             if (localX >= safariObject->x
                 && localZ <= safariObject->z
                 && localX < safariObject->x + objectConfig.width
                 && localZ > safariObject->z - objectConfig.height) {
-                MapProp_SetCulled(sp18, 1);
+                MapProp_SetCulled(mapProp, TRUE);
                 break;
             }
         }
