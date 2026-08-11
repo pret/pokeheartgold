@@ -649,5 +649,7 @@ typedef enum ControllerCommand {
 #define BALL_SHAKE_MAX 4
 #define MOVES_MAX      4
 
+#define MAX_TRAINER_ITEMS 4
+
 #endif // PM_ASM
 #endif // POKEHEARTGOLD_CONSTANTS_BATTLE_H

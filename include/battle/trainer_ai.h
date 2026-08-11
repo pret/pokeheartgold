@@ -8,6 +8,5 @@ u8 TrainerAI_Main(BattleSystem *battleSystem, u8 battlerID);
 
 // static?
 void TrainerAI_RecordLastMove(BattleSystem *battleSystem, BattleContext *ctx);
-void TrainerAI_EvaluateMoves(BattleSystem *battleSystem, BattleContext *ctx);
 
 #endif
