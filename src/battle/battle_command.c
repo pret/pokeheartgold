@@ -764,17 +764,17 @@ static void DamageCalcDefault(BattleSystem *battleSystem, BattleContext *ctx) {
     }
 
     if (GetBattlerHeldItemEffect(ctx, ctx->battlerIdAttacker) == HOLD_EFFECT_BOOST_REPEATED) {
-        ctx->damage = ctx->damage * (10 + ctx->battleMons[ctx->battlerIdAttacker].unk88.metronomeTurns) / 10;
+        ctx->damage = ctx->damage * (10 + ctx->battleMons[ctx->battlerIdAttacker].moveEffectData.metronomeTurns) / 10;
     }
 
-    if (ctx->battleMons[ctx->battlerIdAttacker].unk88.meFirstFlag) {
-        if (ctx->meFirstTotal == ctx->battleMons[ctx->battlerIdAttacker].unk88.meFirstCount) {
-            ctx->battleMons[ctx->battlerIdAttacker].unk88.meFirstCount--;
+    if (ctx->battleMons[ctx->battlerIdAttacker].moveEffectData.meFirstFlag) {
+        if (ctx->meFirstTotal == ctx->battleMons[ctx->battlerIdAttacker].moveEffectData.meFirstCount) {
+            ctx->battleMons[ctx->battlerIdAttacker].moveEffectData.meFirstCount--;
         }
-        if ((ctx->meFirstTotal - ctx->battleMons[ctx->battlerIdAttacker].unk88.meFirstCount) < 2) {
+        if ((ctx->meFirstTotal - ctx->battleMons[ctx->battlerIdAttacker].moveEffectData.meFirstCount) < 2) {
             ctx->damage = ctx->damage * 15 / 10;
         } else {
-            ctx->battleMons[ctx->battlerIdAttacker].unk88.meFirstFlag = 0;
+            ctx->battleMons[ctx->battlerIdAttacker].moveEffectData.meFirstFlag = 0;
         }
     }
 }
@@ -2634,7 +2634,7 @@ BOOL BtlCmd_TryOHKOMove(BattleSystem *battleSystem, BattleContext *ctx) {
                 hitChance = 0;
             }
         } else {
-            if ((((ctx->battleMons[ctx->battlerIdTarget].unk88.battlerIdLockOn == ctx->battlerIdAttacker) && (ctx->battleMons[ctx->battlerIdTarget].moveEffectFlags & MOVE_EFFECT_FLAG_LOCK_ON)) || GetBattlerAbility(ctx, ctx->battlerIdAttacker) == ABILITY_NO_GUARD || GetBattlerAbility(ctx, ctx->battlerIdTarget) == ABILITY_NO_GUARD) && ctx->battleMons[ctx->battlerIdAttacker].level >= ctx->battleMons[ctx->battlerIdTarget].level) {
+            if ((((ctx->battleMons[ctx->battlerIdTarget].moveEffectData.battlerIdLockOn == ctx->battlerIdAttacker) && (ctx->battleMons[ctx->battlerIdTarget].moveEffectFlags & MOVE_EFFECT_FLAG_LOCK_ON)) || GetBattlerAbility(ctx, ctx->battlerIdAttacker) == ABILITY_NO_GUARD || GetBattlerAbility(ctx, ctx->battlerIdTarget) == ABILITY_NO_GUARD) && ctx->battleMons[ctx->battlerIdAttacker].level >= ctx->battleMons[ctx->battlerIdTarget].level) {
                 hitChance = 1;
             } else {
                 hitChance = ctx->battleMons[ctx->battlerIdAttacker].level - ctx->battleMons[ctx->battlerIdTarget].level + ctx->trainerAIData.moveData[ctx->moveNoCur].accuracy;
@@ -2727,10 +2727,10 @@ BOOL BtlCmd_TryMimic(BattleSystem *battleSystem, BattleContext *ctx) {
             } else {
                 ctx->battleMons[ctx->battlerIdAttacker].movePPCur[mimicIndex] = 5;
             }
-            ctx->battleMons[ctx->battlerIdAttacker].unk88.mimicedMoveIndex |= MaskOfFlagNo(mimicIndex);
+            ctx->battleMons[ctx->battlerIdAttacker].moveEffectData.mimicedMoveIndex |= MaskOfFlagNo(mimicIndex);
 
             if (ctx->moveTemp == MOVE_LAST_RESORT) {
-                ctx->battleMons[ctx->battlerIdAttacker].unk88.lastResortCount = 0;
+                ctx->battleMons[ctx->battlerIdAttacker].moveEffectData.lastResortCount = 0;
             }
         } else {
             BattleScriptIncrementPointer(ctx, adrs);
@@ -2778,10 +2778,10 @@ BOOL BtlCmd_TryDisable(BattleSystem *battleSystem, BattleContext *ctx) {
 
     int disabledMoveIndex = BattleMon_GetMoveIndex(&ctx->battleMons[ctx->battlerIdTarget], ctx->moveNoBattlerPrev[ctx->battlerIdTarget]);
 
-    if ((ctx->battleMons[ctx->battlerIdTarget].unk88.disabledMove == 0) && disabledMoveIndex != 4 && ctx->battleMons[ctx->battlerIdTarget].movePPCur[disabledMoveIndex] && ctx->moveNoBattlerPrev[ctx->battlerIdTarget]) {
+    if ((ctx->battleMons[ctx->battlerIdTarget].moveEffectData.disabledMove == 0) && disabledMoveIndex != 4 && ctx->battleMons[ctx->battlerIdTarget].movePPCur[disabledMoveIndex] && ctx->moveNoBattlerPrev[ctx->battlerIdTarget]) {
         ctx->moveTemp = ctx->moveNoBattlerPrev[ctx->battlerIdTarget];
-        ctx->battleMons[ctx->battlerIdTarget].unk88.disabledMove = ctx->moveTemp;
-        ctx->battleMons[ctx->battlerIdTarget].unk88.disabledTurns = BattleSystem_Random(battleSystem) % 4 + 3;
+        ctx->battleMons[ctx->battlerIdTarget].moveEffectData.disabledMove = ctx->moveTemp;
+        ctx->battleMons[ctx->battlerIdTarget].moveEffectData.disabledTurns = BattleSystem_Random(battleSystem) % 4 + 3;
     } else {
         BattleScriptIncrementPointer(ctx, adrs);
     }
@@ -2862,11 +2862,11 @@ BOOL BtlCmd_TryEncore(BattleSystem *battleSystem, BattleContext *ctx) {
         encoredMoveIndex = MAX_MON_MOVES;
     }
 
-    if (ctx->battleMons[ctx->battlerIdTarget].unk88.encoredMove == 0 && encoredMoveIndex != MAX_MON_MOVES && ctx->battleMons[ctx->battlerIdTarget].movePPCur[encoredMoveIndex] && ctx->moveNoBattlerPrev[ctx->battlerIdTarget]) {
+    if (ctx->battleMons[ctx->battlerIdTarget].moveEffectData.encoredMove == 0 && encoredMoveIndex != MAX_MON_MOVES && ctx->battleMons[ctx->battlerIdTarget].movePPCur[encoredMoveIndex] && ctx->moveNoBattlerPrev[ctx->battlerIdTarget]) {
         ctx->moveTemp = ctx->moveNoBattlerPrev[ctx->battlerIdTarget];
-        ctx->battleMons[ctx->battlerIdTarget].unk88.encoredMove = ctx->moveTemp;
-        ctx->battleMons[ctx->battlerIdTarget].unk88.encoredMoveIndex = encoredMoveIndex;
-        ctx->battleMons[ctx->battlerIdTarget].unk88.encoredTurns = BattleSystem_Random(battleSystem) % 5 + 3;
+        ctx->battleMons[ctx->battlerIdTarget].moveEffectData.encoredMove = ctx->moveTemp;
+        ctx->battleMons[ctx->battlerIdTarget].moveEffectData.encoredMoveIndex = encoredMoveIndex;
+        ctx->battleMons[ctx->battlerIdTarget].moveEffectData.encoredTurns = BattleSystem_Random(battleSystem) % 5 + 3;
     } else {
         ctx->moveStatusFlag |= 64;
         BattleScriptIncrementPointer(ctx, adrs);
@@ -2948,7 +2948,7 @@ BOOL BtlCmd_TrySketch(BattleSystem *battleSystem, BattleContext *ctx) {
             BattleController_EmitBattleMonToPartyMonCopy(battleSystem, ctx, ctx->battlerIdAttacker);
             ctx->moveTemp = ctx->moveNoSketch[ctx->battlerIdTarget];
             if (ctx->moveTemp == MOVE_LAST_RESORT) {
-                ctx->battleMons[ctx->battlerIdAttacker].unk88.lastResortCount = 0;
+                ctx->battleMons[ctx->battlerIdAttacker].moveEffectData.lastResortCount = 0;
             }
         } else {
             BattleScriptIncrementPointer(ctx, adrs);
@@ -3102,7 +3102,7 @@ BOOL BtlCmd_TryStealItem(BattleSystem *battleSystem, BattleContext *ctx) {
         BattleScriptIncrementPointer(ctx, adrs1);
     } else if (ctx->battleMons[ctx->battlerIdTarget].item == ITEM_GRISEOUS_ORB) {
         BattleScriptIncrementPointer(ctx, adrs1);
-    } else if (ctx->battleMons[ctx->battlerIdTarget].unk88.custapBerryFlag || ctx->battleMons[ctx->battlerIdTarget].unk88.quickClawFlag) {
+    } else if (ctx->battleMons[ctx->battlerIdTarget].moveEffectData.custapBerryFlag || ctx->battleMons[ctx->battlerIdTarget].moveEffectData.quickClawFlag) {
         BattleScriptIncrementPointer(ctx, adrs1);
     } else {
         if (ctx->battleMons[ctx->battlerIdTarget].item && CheckBattlerAbilityIfNotIgnored(ctx, ctx->battlerIdAttacker, ctx->battlerIdTarget, ABILITY_STICKY_HOLD) == TRUE) {
@@ -3125,7 +3125,7 @@ BOOL BtlCmd_TryProtection(BattleSystem *battleSystem, BattleContext *ctx) {
     int adrs = BattleScriptReadWord(ctx);
 
     if (ctx->moveNoProtect[ctx->battlerIdAttacker] != MOVE_PROTECT && ctx->moveNoProtect[ctx->battlerIdAttacker] != MOVE_DETECT && ctx->moveNoProtect[ctx->battlerIdAttacker] != MOVE_ENDURE) {
-        ctx->battleMons[ctx->battlerIdAttacker].unk88.protectSuccessTurns = 0;
+        ctx->battleMons[ctx->battlerIdAttacker].moveEffectData.protectSuccessTurns = 0;
     }
 
     if (ctx->battlersOnField == 1) {
@@ -3134,7 +3134,7 @@ BOOL BtlCmd_TryProtection(BattleSystem *battleSystem, BattleContext *ctx) {
         flag = TRUE;
     }
 
-    if (sProtectSuccessChance[ctx->battleMons[ctx->battlerIdAttacker].unk88.protectSuccessTurns] >= (u32)BattleSystem_Random(battleSystem) && flag) {
+    if (sProtectSuccessChance[ctx->battleMons[ctx->battlerIdAttacker].moveEffectData.protectSuccessTurns] >= (u32)BattleSystem_Random(battleSystem) && flag) {
         if (ctx->trainerAIData.moveData[ctx->moveNoCur].effect == MOVE_EFFECT_PROTECT) {
             ctx->turnData[ctx->battlerIdAttacker].protectFlag = TRUE;
             // "{0} protected itself!"
@@ -3148,12 +3148,12 @@ BOOL BtlCmd_TryProtection(BattleSystem *battleSystem, BattleContext *ctx) {
         ctx->buffMsg.tag = TAG_NICKNAME;
         ctx->buffMsg.param[0] = CreateNicknameTag(ctx, ctx->battlerIdAttacker);
 
-        if (ctx->battleMons[ctx->battlerIdAttacker].unk88.protectSuccessTurns < NELEMS(sProtectSuccessChance) - 1) {
-            ctx->battleMons[ctx->battlerIdAttacker].unk88.protectSuccessTurns++;
+        if (ctx->battleMons[ctx->battlerIdAttacker].moveEffectData.protectSuccessTurns < NELEMS(sProtectSuccessChance) - 1) {
+            ctx->battleMons[ctx->battlerIdAttacker].moveEffectData.protectSuccessTurns++;
         }
 
     } else {
-        ctx->battleMons[ctx->battlerIdAttacker].unk88.protectSuccessTurns = 0;
+        ctx->battleMons[ctx->battlerIdAttacker].moveEffectData.protectSuccessTurns = 0;
         BattleScriptIncrementPointer(ctx, adrs);
     }
 
@@ -3171,7 +3171,7 @@ BOOL BtlCmd_TrySubstitute(BattleSystem *battleSystem, BattleContext *ctx) {
         BattleScriptIncrementPointer(ctx, adrs);
     } else {
         ctx->hpCalc = -subHp;
-        ctx->battleMons[ctx->battlerIdAttacker].unk88.substituteHp = subHp;
+        ctx->battleMons[ctx->battlerIdAttacker].moveEffectData.substituteHp = subHp;
         ctx->battleMons[ctx->battlerIdAttacker].status2 &= ~STATUS2_BIND;
     }
 
@@ -3260,12 +3260,12 @@ BOOL BtlCmd_Transform(BattleSystem *battleSystem, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     ctx->battleMons[ctx->battlerIdAttacker].status2 |= STATUS2_TRANSFORM;
-    ctx->battleMons[ctx->battlerIdAttacker].unk88.disabledMove = 0;
-    ctx->battleMons[ctx->battlerIdAttacker].unk88.disabledTurns = 0;
-    ctx->battleMons[ctx->battlerIdAttacker].unk88.transformPersonality = ctx->battleMons[ctx->battlerIdTarget].personality;
-    ctx->battleMons[ctx->battlerIdAttacker].unk88.transformGender = ctx->battleMons[ctx->battlerIdTarget].gender;
-    ctx->battleMons[ctx->battlerIdAttacker].unk88.mimicedMoveIndex = 0;
-    ctx->battleMons[ctx->battlerIdAttacker].unk88.lastResortCount = 0;
+    ctx->battleMons[ctx->battlerIdAttacker].moveEffectData.disabledMove = 0;
+    ctx->battleMons[ctx->battlerIdAttacker].moveEffectData.disabledTurns = 0;
+    ctx->battleMons[ctx->battlerIdAttacker].moveEffectData.transformPersonality = ctx->battleMons[ctx->battlerIdTarget].personality;
+    ctx->battleMons[ctx->battlerIdAttacker].moveEffectData.transformGender = ctx->battleMons[ctx->battlerIdTarget].gender;
+    ctx->battleMons[ctx->battlerIdAttacker].moveEffectData.mimicedMoveIndex = 0;
+    ctx->battleMons[ctx->battlerIdAttacker].moveEffectData.lastResortCount = 0;
 
     src = (u8 *)&ctx->battleMons[ctx->battlerIdAttacker];
     dest = (u8 *)&ctx->battleMons[ctx->battlerIdTarget];
@@ -3283,8 +3283,8 @@ BOOL BtlCmd_Transform(BattleSystem *battleSystem, BattleContext *ctx) {
     ctx->battleMons[ctx->battlerIdAttacker].friskFlag = 0;
     ctx->battleMons[ctx->battlerIdAttacker].moldBreakerFlag = 0;
     ctx->battleMons[ctx->battlerIdAttacker].pressureFlag = 0;
-    ctx->battleMons[ctx->battlerIdAttacker].unk88.truantFlag = ctx->totalTurns & 1;
-    ctx->battleMons[ctx->battlerIdAttacker].unk88.slowStartTurns = ctx->totalTurns + 1;
+    ctx->battleMons[ctx->battlerIdAttacker].moveEffectData.truantFlag = ctx->totalTurns & 1;
+    ctx->battleMons[ctx->battlerIdAttacker].moveEffectData.slowStartTurns = ctx->totalTurns + 1;
     ctx->battleMons[ctx->battlerIdAttacker].slowStartFlag = 0;
     ctx->battleMons[ctx->battlerIdAttacker].slowStartEnded = 0;
 
@@ -3351,7 +3351,7 @@ BOOL BtlCmd_TryPerishSong(BattleSystem *battleSystem, BattleContext *ctx) {
             cnt++;
         } else {
             ctx->battleMons[battlerId].moveEffectFlags |= MOVE_EFFECT_FLAG_PERISH_SONG;
-            ctx->battleMons[battlerId].unk88.perishSongTurns = 3;
+            ctx->battleMons[battlerId].moveEffectData.perishSongTurns = 3;
         }
     }
     if (cnt == maxBattlers) {
@@ -3456,20 +3456,20 @@ BOOL BtlCmd_CalcRolloutPower(BattleSystem *battleSystem, BattleContext *ctx) {
     int i, j;
     BattleScriptIncrementPointer(ctx, 1);
 
-    ctx->selfTurnData[ctx->battlerIdAttacker].rolloutCount = ctx->battleMons[ctx->battlerIdAttacker].unk88.rolloutCount;
+    ctx->selfTurnData[ctx->battlerIdAttacker].rolloutCount = ctx->battleMons[ctx->battlerIdAttacker].moveEffectData.rolloutCount;
 
     if (!(ctx->battleMons[ctx->battlerIdAttacker].status2 & STATUS2_LOCKED_INTO_MOVE)) {
         LockBattlerIntoCurrentMove(battleSystem, ctx, ctx->battlerIdAttacker);
-        ctx->battleMons[ctx->battlerIdAttacker].unk88.rolloutCount = 5;
+        ctx->battleMons[ctx->battlerIdAttacker].moveEffectData.rolloutCount = 5;
     }
 
-    if (--ctx->battleMons[ctx->battlerIdAttacker].unk88.rolloutCount == 0) {
+    if (--ctx->battleMons[ctx->battlerIdAttacker].moveEffectData.rolloutCount == 0) {
         UnlockBattlerOutOfCurrentMove(battleSystem, ctx, ctx->battlerIdAttacker);
     }
 
     ctx->movePower = ctx->trainerAIData.moveData[ctx->moveNoCur].power;
 
-    j = 5 - ctx->battleMons[ctx->battlerIdAttacker].unk88.rolloutCount;
+    j = 5 - ctx->battleMons[ctx->battlerIdAttacker].moveEffectData.rolloutCount;
 
     for (i = 1; i < j; i++) {
         ctx->movePower *= 2;
@@ -3487,13 +3487,13 @@ BOOL BtlCmd_CalcFuryCutterPower(BattleSystem *battleSystem, BattleContext *ctx) 
 
     BattleScriptIncrementPointer(ctx, 1);
 
-    if (ctx->battleMons[ctx->battlerIdAttacker].unk88.furyCutterCount < 5) {
-        ctx->battleMons[ctx->battlerIdAttacker].unk88.furyCutterCount++;
+    if (ctx->battleMons[ctx->battlerIdAttacker].moveEffectData.furyCutterCount < 5) {
+        ctx->battleMons[ctx->battlerIdAttacker].moveEffectData.furyCutterCount++;
     }
 
     ctx->movePower = ctx->trainerAIData.moveData[ctx->moveNoCur].power;
 
-    for (i = 1; i < ctx->battleMons[ctx->battlerIdAttacker].unk88.furyCutterCount; i++) {
+    for (i = 1; i < ctx->battleMons[ctx->battlerIdAttacker].moveEffectData.furyCutterCount; i++) {
         ctx->movePower *= 2;
     }
 
@@ -3613,8 +3613,8 @@ BOOL BtlCmd_RapidSpin(BattleSystem *battleSystem, BattleContext *ctx) {
     // Binding Moves
     if (ctx->battleMons[ctx->battlerIdAttacker].status2 & STATUS2_BIND) {
         ctx->battleMons[ctx->battlerIdAttacker].status2 &= ~STATUS2_BIND;
-        ctx->battlerIdTemp = ctx->battleMons[ctx->battlerIdAttacker].unk88.battlerIdBinding;
-        ctx->moveTemp = ctx->battleMons[ctx->battlerIdAttacker].unk88.bindingMove;
+        ctx->battlerIdTemp = ctx->battleMons[ctx->battlerIdAttacker].moveEffectData.battlerIdBinding;
+        ctx->moveTemp = ctx->battleMons[ctx->battlerIdAttacker].moveEffectData.bindingMove;
         BattleScriptGotoSubscript(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_BREAK_BIND_EFFECT);
         return FALSE;
     }
@@ -4223,8 +4223,8 @@ BOOL BtlCmd_TryPursuit(BattleSystem *battleSystem, BattleContext *ctx) {
 
     for (battlerId = 0; battlerId < maxBattlers; battlerId++) {
         if (ctx->playerActions[battlerId].command != CONTROLLER_COMMAND_40 && ctx->battleMons[battlerId].hp && !(ctx->battleMons[battlerId].status & 39) && !CheckTruant(ctx, battlerId) && BattleSystem_GetBattlerSide(battleSystem, battlerId) != BattleSystem_GetBattlerSide(battleSystem, ctx->battlerIdSwitch)) {
-            if (ctx->battleMons[battlerId].unk88.encoredMove && ctx->battleMons[battlerId].unk88.encoredMove == ctx->battleMons[battlerId].moves[ctx->battleMons[battlerId].unk88.encoredMoveIndex]) {
-                moveNo = ctx->battleMons[battlerId].unk88.encoredMove;
+            if (ctx->battleMons[battlerId].moveEffectData.encoredMove && ctx->battleMons[battlerId].moveEffectData.encoredMove == ctx->battleMons[battlerId].moves[ctx->battleMons[battlerId].moveEffectData.encoredMoveIndex]) {
+                moveNo = ctx->battleMons[battlerId].moveEffectData.encoredMove;
             } else {
                 moveNo = GetBattlerSelectedMove(ctx, battlerId);
             }
@@ -4256,7 +4256,7 @@ BOOL BtlCmd_TryPursuit(BattleSystem *battleSystem, BattleContext *ctx) {
         GetHeldItemModifier(ctx, ctx->battlerIdAttacker, 0);
 
         if (itemEffect == HOLD_EFFECT_CHOICE_ATK || itemEffect == HOLD_EFFECT_CHOICE_SPEED || itemEffect == HOLD_EFFECT_CHOICE_SPATK) {
-            ctx->battleMons[ctx->battlerIdAttacker].unk88.moveNoChoice = moveNo;
+            ctx->battleMons[ctx->battlerIdAttacker].moveEffectData.moveNoChoice = moveNo;
         }
     }
 
@@ -4449,15 +4449,15 @@ BOOL BtlCmd_TryMeFirst(BattleSystem *battleSystem, BattleContext *ctx) {
 
     int adrs = BattleScriptReadWord(ctx);
 
-    if (ctx->battleMons[ctx->battlerIdTarget].unk88.encoredMove && ctx->battleMons[ctx->battlerIdTarget].unk88.encoredMove == ctx->battleMons[ctx->battlerIdTarget].moves[ctx->battleMons[ctx->battlerIdTarget].unk88.encoredMoveIndex]) {
-        move = ctx->battleMons[ctx->battlerIdTarget].unk88.encoredMove;
+    if (ctx->battleMons[ctx->battlerIdTarget].moveEffectData.encoredMove && ctx->battleMons[ctx->battlerIdTarget].moveEffectData.encoredMove == ctx->battleMons[ctx->battlerIdTarget].moves[ctx->battleMons[ctx->battlerIdTarget].moveEffectData.encoredMoveIndex]) {
+        move = ctx->battleMons[ctx->battlerIdTarget].moveEffectData.encoredMove;
     } else {
         move = GetBattlerSelectedMove(ctx, ctx->battlerIdTarget);
     }
 
     if (ctx->playerActions[ctx->battlerIdTarget].command != CONTROLLER_COMMAND_40 && ctx->turnData[ctx->battlerIdTarget].struggleFlag == 0 && CheckLegalMeFirstMove(ctx, move) == TRUE && ctx->trainerAIData.moveData[move].power) {
-        ctx->battleMons[ctx->battlerIdAttacker].unk88.meFirstFlag = TRUE;
-        ctx->battleMons[ctx->battlerIdAttacker].unk88.meFirstCount = ctx->meFirstTotal;
+        ctx->battleMons[ctx->battlerIdAttacker].moveEffectData.meFirstFlag = TRUE;
+        ctx->battleMons[ctx->battlerIdAttacker].moveEffectData.meFirstCount = ctx->meFirstTotal;
         ctx->moveTemp = move;
     } else {
         BattleScriptIncrementPointer(ctx, adrs);
@@ -4508,8 +4508,8 @@ BOOL BtlCmd_TrySuckerPunch(BattleSystem *battleSystem, BattleContext *ctx) {
 
     int adrs = BattleScriptReadWord(ctx);
 
-    if (ctx->battleMons[ctx->battlerIdTarget].unk88.encoredMove && ctx->battleMons[ctx->battlerIdTarget].unk88.encoredMove == ctx->battleMons[ctx->battlerIdTarget].moves[ctx->battleMons[ctx->battlerIdTarget].unk88.encoredMoveIndex]) {
-        move = ctx->battleMons[ctx->battlerIdTarget].unk88.encoredMove;
+    if (ctx->battleMons[ctx->battlerIdTarget].moveEffectData.encoredMove && ctx->battleMons[ctx->battlerIdTarget].moveEffectData.encoredMove == ctx->battleMons[ctx->battlerIdTarget].moves[ctx->battleMons[ctx->battlerIdTarget].moveEffectData.encoredMoveIndex]) {
+        move = ctx->battleMons[ctx->battlerIdTarget].moveEffectData.encoredMove;
     } else {
         move = GetBattlerSelectedMove(ctx, ctx->battlerIdTarget);
     }
@@ -4628,7 +4628,7 @@ BOOL BtlCmd_TryLastResort(BattleSystem *battleSystem, BattleContext *ctx) {
 
     int cnt = GetBattlerLearnedMoveCount(battleSystem, ctx, ctx->battlerIdAttacker);
 
-    if (ctx->battleMons[ctx->battlerIdAttacker].unk88.lastResortCount < cnt - 1 || cnt < 2) {
+    if (ctx->battleMons[ctx->battlerIdAttacker].moveEffectData.lastResortCount < cnt - 1 || cnt < 2) {
         BattleScriptIncrementPointer(ctx, adrs);
     }
 
@@ -4950,7 +4950,7 @@ BOOL BtlCmd_TryPluck(BattleSystem *battleSystem, BattleContext *ctx) {
 
     if (ctx->battleMons[ctx->battlerIdTarget].item && CheckBattlerAbilityIfNotIgnored(ctx, ctx->battlerIdAttacker, ctx->battlerIdTarget, ABILITY_STICKY_HOLD) == TRUE) {
         BattleScriptIncrementPointer(ctx, adrs1);
-    } else if ((ctx->battleMons[ctx->battlerIdTarget].item && ctx->battleMons[ctx->battlerIdTarget].unk88.custapBerryFlag) || TryEatOpponentBerry(battleSystem, ctx, ctx->battlerIdTarget) != TRUE) {
+    } else if ((ctx->battleMons[ctx->battlerIdTarget].item && ctx->battleMons[ctx->battlerIdTarget].moveEffectData.custapBerryFlag) || TryEatOpponentBerry(battleSystem, ctx, ctx->battlerIdTarget) != TRUE) {
         BattleScriptIncrementPointer(ctx, adrs2);
     }
 
