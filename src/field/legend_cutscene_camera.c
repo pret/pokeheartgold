@@ -3,8 +3,8 @@
 #include "global.h"
 
 #include "demo/legend.naix"
+#include "field/field_3d_object_task.h"
 #include "field/map_prop_animation.h"
-#include "field/overlay_01_021E66E4.h"
 #include "field/overlay_01_021FB878.h"
 #include "field/overlay_01_02204004.h"
 #include "fielddata/script/scr_seq/event_D17R0110.h"
@@ -551,32 +551,32 @@ static BOOL Task_LugiaEyeGlimmer(TaskManager *taskman) {
 static BOOL ov02_02251320(TaskManager *taskman) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskman);
     u32 *pState = TaskManager_GetStatePtr(taskman);
-    UnkStruct_FieldSysC0_SubC *renderObj;
+    UnkStruct_FieldSysC0_SubC *unkC0_SubC;
     u8 i;
     ClearBellCutsceneCamera *cam = fieldSystem->unk4->legendCutsceneCamera;
     ClearBellCutscene3dObjectTaskData *taskData = Field3dObjectTask_GetData(cam->draw3dTask);
 
     switch (*pState) {
     case UNUSED_HO_OH_ANIM_TASK_STATE_0:
-        renderObj = Field3dObjectList_GetRenderObjectByID(fieldSystem->unkC0, taskData->birdModelNum);
+        unkC0_SubC = Field3dObjectList_GetRenderObjectByID(fieldSystem->unkC0, taskData->birdModelNum);
         for (i = 0; i < 2; ++i) {
-            ov01_021E8970(taskData->birdModelNum, i, 1, renderObj, fieldSystem->mapPropAnimationManager);
+            MapPropAnimationManager_AddAnimationToRenderObj(taskData->birdModelNum, i, 1, &unkC0_SubC->renderObj, fieldSystem->mapPropAnimationManager);
         }
         for (i = 0; i < 2; ++i) {
-            MapPropAnimationManager *anim = ov01_021E8B04(taskData->birdModelNum, i, fieldSystem->mapPropAnimationManager);
-            ov01_021E8B84(anim, 1);
-            ov01_021E8B6C(anim);
+            MapPropAnimationData *animData = MapPropAnimationManager_GetAnimationData(taskData->birdModelNum, i, fieldSystem->mapPropAnimationManager);
+            MapPropAnimationData_SetAnimationLoopCount(animData, 1);
+            MapPropAnimationData_GoToFirstAnimationFrame(animData);
         }
         *pState = UNUSED_HO_OH_ANIM_TASK_STATE_1;
         break;
     case UNUSED_HO_OH_ANIM_TASK_STATE_1:
-        renderObj = Field3dObjectList_GetRenderObjectByID(fieldSystem->unkC0, taskData->birdModelNum);
-        if (ov01_021E8B90(ov01_021E8B04(taskData->birdModelNum, 0, fieldSystem->mapPropAnimationManager))) {
+        unkC0_SubC = Field3dObjectList_GetRenderObjectByID(fieldSystem->unkC0, taskData->birdModelNum);
+        if (MapPropAnimationData_IsAnimationLoopFinished(MapPropAnimationManager_GetAnimationData(taskData->birdModelNum, 0, fieldSystem->mapPropAnimationManager))) {
             for (i = 0; i < 2; ++i) {
-                ov01_021E8A8C(fieldSystem->mapPropAnimationManager, renderObj, taskData->birdModelNum, i);
+                MapPropAnimationManager_RemoveAnimationFromRenderObj(fieldSystem->mapPropAnimationManager, &unkC0_SubC->renderObj, taskData->birdModelNum, i);
             }
             for (i = 0; i < 2; ++i) {
-                ov01_021E8970(taskData->birdModelNum, i + 2, 1, renderObj, fieldSystem->mapPropAnimationManager);
+                MapPropAnimationManager_AddAnimationToRenderObj(taskData->birdModelNum, i + 2, 1, &unkC0_SubC->renderObj, fieldSystem->mapPropAnimationManager);
             }
             *pState = UNUSED_HO_OH_ANIM_TASK_STATE_2;
         }

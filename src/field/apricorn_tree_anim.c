@@ -1,4 +1,4 @@
-#include "overlay_01_apricorn_tree_anim.h"
+#include "field/apricorn_tree_anim.h"
 
 #include "constants/apricorns.h"
 #include "constants/scrcmd.h"
