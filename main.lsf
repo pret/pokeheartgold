@@ -592,7 +592,6 @@ Overlay OVY_4
     After OVY_2
     Object src/field/gymmick/violet.o
     Object src/field/gymmick/azalea.o
-    Object asm/overlay_04_azalea_gymmick.o
     Object asm/overlay_04_ecruteak_gymmick.o
     Object asm/overlay_04_blackthorn_gymmick.o
     Object asm/overlay_04_cianwood_gymmick.o

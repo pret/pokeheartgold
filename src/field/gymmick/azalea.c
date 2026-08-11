@@ -673,3 +673,7 @@ void ov04_02254724(SysTask *sysTask, void *taskData) {
     }
     }
 }
+
+BOOL ov04_02254CA4(TaskManager *taskman) {
+    return !IsSEPlaying(SEQ_SE_DP_KI_GASYAN);
+}
