@@ -18,7 +18,7 @@
 #define DIALOG_BOX_PLTTNUM_FRAME   10
 #define DIALOG_BOX_PLTTNUM_MAPGFX  9
 
-void DialogBox_LoadFontPals(enum GFPalLoadLocation location, BOOL resetPrinters) {
+void FieldMessage_LoadTextPalettes(enum GFPalLoadLocation location, BOOL resetPrinters) {
     if (resetPrinters == TRUE) {
         ResetAllTextPrinters();
     }

@@ -54,7 +54,7 @@
 .public sub_02057F58
 .public sub_02057F70
 .public sub_02057F80
-.public sub_02057FA4
+.public CommPlayerManager_ForcePosition
 .public PlayerAvatar_CreateWithParams
 .public PlayerAvatar_FreeToHeap
 .public PlayerAvatar_DeleteFromMap

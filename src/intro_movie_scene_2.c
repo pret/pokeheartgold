@@ -7,11 +7,11 @@
 #include "math_util.h"
 #include "obj_char_transfer.h"
 #include "obj_pltt_transfer.h"
+#include "screen_fade.h"
 #include "sprite_transfer.h"
 #include "sys_task_api.h"
 #include "system.h"
 #include "unk_0200B150.h"
-#include "unk_0200FA24.h"
 
 enum IntroScene2State {
     INTRO_SCENE2_START_FLYIN,
@@ -117,7 +117,7 @@ static BOOL IntroMovie_Scene2_Main(IntroMovieOverlayData *data, IntroMovieScene2
     u8 stepTimer = IntroMovie_GetSceneStepTimer(data);
     switch (IntroMovie_GetSceneStep(data)) {
     case INTRO_SCENE2_START_FLYIN:
-        BeginNormalPaletteFade(0, 1, 1, RGB_WHITE, 3, 1, HEAP_ID_INTRO_MOVIE);
+        BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_IN, FADE_TYPE_BRIGHTNESS_IN, RGB_WHITE, 3, 1, HEAP_ID_INTRO_MOVIE);
         sceneData->flowerIndex = 0;
         IntroMovie_AdvanceSceneStep(data);
         break;
@@ -131,7 +131,7 @@ static BOOL IntroMovie_Scene2_Main(IntroMovieOverlayData *data, IntroMovieScene2
             IntroMovie_StartBgScroll_NotVBlank(bgConfig, bgAnimCnt->scroll, GF_BG_LYR_MAIN_0, 0, -0xC0, 5);
             IntroMovie_Scene2_StartSpritePanEffect(sceneData, 0, 0, 0xC0, 5);
             IntroMovie_Scene2_StartSpritePanEffect(sceneData, 1, 0, 0xC0, 5);
-            BeginNormalPaletteFade(4, 0, 0, RGB_BLACK, 8, 1, HEAP_ID_INTRO_MOVIE);
+            BeginNormalPaletteFade(FADE_SUB_ONLY, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, RGB_BLACK, 8, 1, HEAP_ID_INTRO_MOVIE);
             IntroMovie_AdvanceSceneStep(data);
         }
         break;

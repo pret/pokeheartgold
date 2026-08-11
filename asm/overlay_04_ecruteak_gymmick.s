@@ -76,7 +76,7 @@ _02254D38:
 	ldr r0, [r0]
 	add r2, sp, #8
 	mov r3, #0
-	bl ov01_021F3C0C
+	bl MapPropManager_LoadOne
 	str r0, [r4]
 	ldrb r0, [r7, r6]
 	cmp r0, #0
@@ -87,9 +87,9 @@ _02254D38:
 	lsl r1, r1, #0x18
 	ldr r0, [r0]
 	lsr r1, r1, #0x18
-	bl ov01_021F3B44
+	bl MapPropManager_GetMapPropByIndex
 	mov r1, #1
-	bl ov01_021F3B2C
+	bl MapProp_SetCulled
 _02254D78:
 	add r6, r6, #1
 	add r4, r4, #4
@@ -200,9 +200,9 @@ ov04_02254E20: ; 0x02254E20
 	ldr r0, [r5]
 	lsl r1, r1, #0x18
 	lsr r1, r1, #0x18
-	bl ov01_021F3B44
+	bl MapPropManager_GetMapPropByIndex
 	add r1, sp, #0
-	bl ov01_021F3B1C
+	bl MapProp_SetTranslation
 	add sp, #0xc
 	pop {r4, r5, pc}
 	.balign 4, 0
@@ -244,13 +244,13 @@ _02254E86:
 	ldr r1, [r5, r1]
 	lsl r1, r1, #0x18
 	lsr r1, r1, #0x18
-	bl ov01_021F3B44
+	bl MapPropManager_GetMapPropByIndex
 	ldr r1, [r4, #4]
 	add r6, r0, #0
 	cmp r1, #4
 	blt _02254ECC
 	mov r1, #1
-	bl ov01_021F3B2C
+	bl MapProp_SetCulled
 	ldr r0, [r4, #0xc]
 	bl FieldSystem_GetSaveData
 	bl Save_GetGymmickPtr
@@ -271,7 +271,7 @@ _02254ECC:
 	str r0, [r4, #4]
 _02254ED0:
 	add r0, r6, #0
-	bl ov01_021F3B04
+	bl MapProp_GetScale
 	add r5, r0, #0
 	mov r0, #1
 	ldr r1, [r4, #4]

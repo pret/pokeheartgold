@@ -2,7 +2,7 @@
 
 #include "field_system.h"
 
-static void TerrainAttributes_Load(MAPMATRIX *mapMatrix, TerrainAttributes *terrainAttributes, const u8 blockCount);
+static void TerrainAttributes_Load(MapMatrix *mapMatrix, TerrainAttributes *terrainAttributes, const u8 blockCount);
 static const u8 TerrainAttributes_GetOrPushLandDataID(const u16 landDataID, u16 *blockIndexToLandDataID, u8 *blockCount);
 
 void TerrainAttributes_New(FieldSystem *fieldSystem, const u8 blockCount) {
@@ -24,7 +24,7 @@ const u16 *TerrainAttributes_Get(const u32 mapMatrixIndex, const TerrainAttribut
     return &terrainAttributes->terrainAttributes[MAP_TILES_COUNT_X * MAP_TILES_COUNT_Z * blockIndex];
 }
 
-static void TerrainAttributes_Load(MAPMATRIX *mapMatrix, TerrainAttributes *terrainAttributes, const u8 blockCount) {
+static void TerrainAttributes_Load(MapMatrix *mapMatrix, TerrainAttributes *terrainAttributes, const u8 blockCount) {
     u16 mapMatrixIndex;
     u16 landDataID;
     int i, j;

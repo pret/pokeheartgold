@@ -144,16 +144,16 @@ _0225482A:
 	add r0, #0x9c
 	ldrb r1, [r4, #0x17]
 	ldr r0, [r0]
-	bl ov01_021F3B44
+	bl MapPropManager_GetMapPropByIndex
 	add r4, r0, #0
 	ldr r0, [r5, #0x34]
 	bl ov01_021FB9E0
 	add r7, r0, #0
 	add r0, r4, #0
-	bl ov01_021F3B38
+	bl MapProp_GetRenderSurface
 	str r0, [sp, #0x2c]
 	add r0, r4, #0
-	bl ov01_021F3B3C
+	bl MapProp_GetResModel
 	ldr r1, [sp, #0x2c]
 	mov r2, #1
 	str r1, [sp]
@@ -167,11 +167,11 @@ _0225482A:
 	ldr r0, [r5, #0x54]
 	ldr r1, [r5, #0x58]
 	mov r3, #0x76
-	bl ov01_021E8DE8
+	bl MapPropOneShotAnimationManager_LoadPropAnimations
 	ldr r0, [r5, #0x58]
 	mov r1, #1
 	mov r2, #0
-	bl ov01_021E8E70
+	bl MapPropOneShotAnimationManager_PlayAnimation
 	ldr r0, _02254B9C ; =SEQ_SE_GS_ITOMARU_ROBO
 	bl PlaySE
 	ldr r0, [r6]
@@ -272,7 +272,7 @@ _022548C6:
 	mov r0, #1
 	str r0, [r4, #0x1c]
 	ldr r0, [r5, #0x2c]
-	bl ov01_021F6304
+	bl MapLoadManager_ForgetTrackedTarget
 	b _0225495E
 _0225494A:
 	cmp r0, #1
@@ -282,7 +282,7 @@ _0225494A:
 	ldr r0, [r5, #0x40]
 	bl PlayerAvatar_GetPositionVector
 	ldr r1, [r5, #0x2c]
-	bl ov01_021F62E8
+	bl MapLoadManager_TrackTarget
 _0225495E:
 	mov r0, #0
 	strb r0, [r4, #0x16]
@@ -352,7 +352,7 @@ _02254992:
 	ldr r0, [r5, #0x54]
 	ldr r1, [r5, #0x58]
 	mov r2, #1
-	bl ov01_021E8ED0
+	bl MapPropOneShotAnimationManager_UnloadAnimation
 	ldr r0, _02254B9C ; =SEQ_SE_GS_ITOMARU_ROBO
 	mov r1, #1
 	bl StopSE
@@ -391,7 +391,7 @@ _02254A22:
 	ldr r0, [r0]
 	lsl r1, r1, #0x18
 	lsr r1, r1, #0x18
-	bl ov01_021F3B44
+	bl MapPropManager_GetMapPropByIndex
 	add r3, r4, #0
 	add r2, sp, #0x74
 	add r3, #0x2c
@@ -408,7 +408,7 @@ _02254A22:
 	str r0, [sp, #0x74]
 	add r0, r6, #0
 	add r1, r7, #0
-	bl ov01_021F3B1C
+	bl MapProp_SetTranslation
 	ldr r3, _02254BA8 ; =ov04_02257344
 	add r2, sp, #0x5c
 	add r6, r4, #0

@@ -6,6 +6,10 @@
 #include "constants/trainers.h"
 
 #include "field/legend_cutscene_camera.h"
+#include "field/map_load_manager.h"
+#include "field/map_prop.h"
+#include "field/rock_smash_item.h"
+#include "field/signpost.h"
 #include "frontier/frontier.h"
 #include "msgdata/msg.naix"
 #include "msgdata/msg/msg_0202.h"
@@ -24,7 +28,6 @@
 #include "fashion_case.h"
 #include "field_bgm.h"
 #include "field_roamer.h"
-#include "field_signpost_window.h"
 #include "field_system.h"
 #include "field_take_photo.h"
 #include "field_warp_tasks.h"
@@ -59,6 +62,7 @@
 #include "save_link_ruleset.h"
 #include "save_local_field_data.h"
 #include "scrcmd.h"
+#include "screen_fade.h"
 #include "script_pokemon_util.h"
 #include "sound_02004A44.h"
 #include "sys_flags.h"
@@ -67,7 +71,6 @@
 #include "task.h"
 #include "text.h"
 #include "trainer_memo.h"
-#include "unk_0200FA24.h"
 #include "unk_0202C034.h"
 #include "unk_02034B0C.h"
 #include "unk_02035900.h"
@@ -792,13 +795,13 @@ BOOL ScrCmd_DirectionSignpost(ScriptContext *ctx) {
 
     fieldSystem->textbox_open = TRUE;
 
-    FieldSignpostWindow_SetParam(fieldSystem->signpostWindow, type, map);
-    FieldSignpostWindow_SetCommand(fieldSystem->signpostWindow, MAPSIGNCOMMAND_SHOW);
-    FieldSystem_ExecuteSignpostWindowCommand(fieldSystem);
+    Signpost_SetParam(fieldSystem->signpost, type, map);
+    Signpost_SetCommand(fieldSystem->signpost, MAPSIGNCOMMAND_SHOW);
+    Signpost_DoCurrentCommand(fieldSystem);
 
     ReadMsgDataIntoString(ctx->msgdata, msg_no, *tmp_str);
     StringExpandPlaceholders(*msg_fmt, *pStrBuf, *tmp_str);
-    Window *window = FieldSignpostWindow_GetWindow(fieldSystem->signpostWindow);
+    Window *window = Signpost_GetWindow(fieldSystem->signpost);
     AddTextPrinterParameterizedWithColor(window, 1, *pStrBuf, 0, 0, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(2, 10, 15), NULL);
 
     return TRUE;
@@ -811,22 +814,22 @@ BOOL ScrCmd_SetSignpostMap(ScriptContext *ctx) {
 
     fieldSystem->textbox_open = TRUE;
 
-    FieldSignpostWindow_SetParam(fieldSystem->signpostWindow, type, map);
-    FieldSignpostWindow_SetCommand(fieldSystem->signpostWindow, MAPSIGNCOMMAND_SHOW);
+    Signpost_SetParam(fieldSystem->signpost, type, map);
+    Signpost_SetCommand(fieldSystem->signpost, MAPSIGNCOMMAND_SHOW);
 
     return TRUE;
 }
 
 BOOL ScrCmd_SetSignpostAction(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
-    FieldSignpostWindow_SetCommand(fieldSystem->signpostWindow, ScriptReadByte(ctx));
+    Signpost_SetCommand(fieldSystem->signpost, ScriptReadByte(ctx));
     return TRUE;
 }
 
 static BOOL sub_02041454(ScriptContext *ctx);
 
 BOOL ScrCmd_WaitSignpostAction(ScriptContext *ctx) {
-    if (FieldSignpostWindow_CommandIsFinished(ctx->fieldSystem->signpostWindow) == TRUE) {
+    if (Signpost_CommandIsFinished(ctx->fieldSystem->signpost) == TRUE) {
         return FALSE;
     }
 
@@ -835,7 +838,7 @@ BOOL ScrCmd_WaitSignpostAction(ScriptContext *ctx) {
 }
 
 static BOOL sub_02041454(ScriptContext *ctx) {
-    return FieldSignpostWindow_CommandIsFinished(ctx->fieldSystem->signpostWindow) == TRUE;
+    return Signpost_CommandIsFinished(ctx->fieldSystem->signpost) == TRUE;
 }
 
 static BOOL NativeScript_WaitTrainerTips(ScriptContext *ctx);
@@ -856,7 +859,7 @@ BOOL ScrCmd_TrainerTips(ScriptContext *ctx) {
     TextFlags_SetAutoScrollParam(AUTO_SCROLL_OFF);
     TextFlags_SetCanTouchSpeedUpPrint(FALSE);
 
-    Window *window = FieldSignpostWindow_GetWindow(fieldSystem->signpostWindow);
+    Window *window = Signpost_GetWindow(fieldSystem->signpost);
     u8 text_speed = Options_GetTextFrameDelay(Save_PlayerData_GetOptionsAddr(fieldSystem->saveData));
     *printer_id_ptr = AddTextPrinterParameterizedWithColor(window, 1, *pFormattedString, 0, 0, text_speed, MAKE_TEXT_COLOR(2, 10, 15), NULL);
 
@@ -869,7 +872,7 @@ static BOOL NativeScript_WaitTrainerTips(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
     u8 *printer_id_ptr = FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_TEXT_PRINTER_NUMBER);
     u16 *ret_ptr = GetVarPointer(fieldSystem, ctx->data[0]);
-    u8 unused = FieldSignpostWindow_GetType(fieldSystem->signpostWindow);
+    u8 unused = Signpost_GetType(fieldSystem->signpost);
 
     u16 direction = 0xFFFF;
 
@@ -1441,7 +1444,7 @@ BOOL ScrCmd_102(ScriptContext *ctx) {
     MapObject_SetVisible(*p_cameraObj, TRUE);
     MapObject_ClearFlag18(*p_cameraObj, FALSE);
     pos = MapObject_GetPositionVector(*p_cameraObj);
-    ov01_021F62E8(pos, ctx->fieldSystem->unk2C);
+    MapLoadManager_TrackTarget(pos, ctx->fieldSystem->mapLoadManager);
     Camera_SetFixedTarget(pos, ctx->fieldSystem->camera);
     return FALSE;
 }
@@ -1451,7 +1454,7 @@ BOOL ScrCmd_103(ScriptContext *ctx) {
     VecFx32 *pos;
     MapObject_Remove(*p_cameraObj);
     pos = MapObject_GetPositionVector(MapObjectManager_GetFirstActiveObjectByID(ctx->fieldSystem->mapObjectManager, obj_player));
-    ov01_021F62E8(pos, ctx->fieldSystem->unk2C);
+    MapLoadManager_TrackTarget(pos, ctx->fieldSystem->mapLoadManager);
     Camera_SetFixedTarget(pos, ctx->fieldSystem->camera);
     return FALSE;
 }
@@ -2186,9 +2189,9 @@ BOOL ScrCmd_FadeScreen(ScriptContext *ctx) {
     u16 speed = ScriptReadHalfword(ctx);
     u16 type = ScriptReadHalfword(ctx);
     u16 color = ScriptReadHalfword(ctx);
-    BeginNormalPaletteFade(0, type, type, color, duration, speed, HEAP_ID_FIELD1);
-    sub_0200FBDC(0);
-    sub_0200FBDC(1);
+    BeginNormalPaletteFade(FADE_BOTH_SCREENS, (enum FadeType)type, (enum FadeType)type, color, duration, speed, HEAP_ID_FIELD1);
+    ResetVisibleHardwareWindows(PM_LCD_TOP);
+    ResetVisibleHardwareWindows(PM_LCD_BOTTOM);
     return FALSE;
 }
 
@@ -2287,7 +2290,7 @@ BOOL ScrCmd_180(ScriptContext *ctx) {
 BOOL ScrCmd_FlashEffect(ScriptContext *ctx) {
     LocalFieldData *localFieldData = Save_LocalFieldData_Get(ctx->fieldSystem->saveData);
     LocalFieldData_SetWeatherType(localFieldData, 12);
-    FieldWeatherUpdate_UsedFlash(ctx->fieldSystem->unk4->unk_0C, LocalFieldData_GetWeatherType(localFieldData)); // CallFieldTask_Flash?
+    WeatherManager_ChangeWeather(ctx->fieldSystem->unk4->weatherManager, LocalFieldData_GetWeatherType(localFieldData));
     return TRUE;
 }
 
@@ -4776,7 +4779,7 @@ BOOL ScrCmd_PlaceStarterBallsInElmsLab(ScriptContext *ctx) {
         n = 3;
     }
     for (i = 0; i < n; i++) {
-        ov01_021F3C0C(fieldSystem->unk9C, 0x8D, &ballCoords[i], 0, fieldSystem->unk54);
+        MapPropManager_LoadOne(fieldSystem->mapPropManager, 0x8D, &ballCoords[i], 0, fieldSystem->mapPropAnimationManager);
     }
     return FALSE;
 }
@@ -5140,10 +5143,10 @@ BOOL ScrCmd_BankOrWalletIsFull(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_RockSmashItemCheck(ScriptContext *ctx) {
-    u16 followMonUsingHm = ScriptGetVar(ctx);
+    u16 followMonUsingHM = ScriptGetVar(ctx);
     u16 *itemFound = ScriptGetVarPointer(ctx);
     u16 *item = ScriptGetVarPointer(ctx);
-    FieldSystem_RockSmashItemCheck(ctx->fieldSystem, (u8)followMonUsingHm, itemFound, item);
+    FieldSystem_RockSmashItemCheck(ctx->fieldSystem, (u8)followMonUsingHM, itemFound, item);
     return TRUE;
 }
 

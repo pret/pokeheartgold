@@ -3008,7 +3008,7 @@ _021F1154:
 	add r0, r2, #0
 	bl SetBothScreensModesAndDisable
 	ldr r0, [r4, #8]
-	bl ov01_021E6050
+	bl Thunk_ov01_021E6138
 	ldr r2, _021F1200 ; =0x0400000E
 	mov r0, #0x43
 	ldrh r1, [r2]
@@ -3076,7 +3076,7 @@ ov01_021F1210: ; 0x021F1210
 	mov r1, #2
 	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #8]
-	bl ov01_021E6048
+	bl Thunk_BgConfig_Init
 	pop {r4, pc}
 	thumb_func_end ov01_021F1210
 

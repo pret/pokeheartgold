@@ -18,8 +18,8 @@
 #include "msgdata/msg/msg_0197.h"
 
 #include "heap.h"
+#include "screen_fade.h"
 #include "sound.h"
-#include "unk_0200FA24.h"
 #include "unk_02035900.h"
 
 static void BattleControllerPlayer_GetBattleMon(BattleSystem *battleSystem, BattleContext *ctx);

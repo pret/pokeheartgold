@@ -35,9 +35,9 @@ TrainerCardMainApp_Init: ; 0x021E5AC0
 	mov r1, #0
 	bl sub_0200FBF4
 	mov r0, #0
-	bl sub_0200FBDC
+	bl ResetVisibleHardwareWindows
 	mov r0, #1
-	bl sub_0200FBDC
+	bl ResetVisibleHardwareWindows
 	mov r0, #4
 	mov r1, #8
 	bl SetKeyRepeatTimers

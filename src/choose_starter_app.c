@@ -17,6 +17,7 @@
 #include "obj_pltt_transfer.h"
 #include "render_text.h"
 #include "render_window.h"
+#include "screen_fade.h"
 #include "sound.h"
 #include "sprite.h"
 #include "sprite_transfer.h"
@@ -26,7 +27,6 @@
 #include "unk_02005D10.h"
 #include "unk_02009D48.h"
 #include "unk_0200B150.h"
-#include "unk_0200FA24.h"
 #include "unk_02013FDC.h"
 #include "unk_02020B8C.h"
 #include "unk_02026E30.h"
@@ -319,7 +319,7 @@ BOOL ChooseStarter_Main(OverlayManager *ovy, int *state) {
         printMsgOnBottom(work, msg_0190_00007);
         GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG1, GF_PLANE_TOGGLE_OFF);
         GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG2, GF_PLANE_TOGGLE_OFF);
-        BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 1, work->heapID);
+        BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_IN, FADE_TYPE_BRIGHTNESS_IN, RGB_BLACK, 6, 1, work->heapID);
         *state = CHOOSE_STARTER_STATE_WAIT_FADE_IN;
         break;
     case CHOOSE_STARTER_STATE_WAIT_FADE_IN:
@@ -460,7 +460,7 @@ BOOL ChooseStarter_Main(OverlayManager *ovy, int *state) {
         *state = 2;
         break;
     case CHOOSE_STARTER_STATE_ZOOM_AND_FADE_OUT:
-        BeginNormalPaletteFade(4, 0, 0, RGB_WHITE, 10, 1, work->heapID);
+        BeginNormalPaletteFade(FADE_SUB_ONLY, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, RGB_WHITE, 10, 1, work->heapID);
         work->modelAnimState = MODEL_ANM_STATE_BALL_OPEN;
         {
             struct CameraTranslationPathTemplate template;
@@ -479,7 +479,7 @@ BOOL ChooseStarter_Main(OverlayManager *ovy, int *state) {
         if (!IsPaletteFadeFinished()) {
             break;
         }
-        BeginNormalPaletteFade(3, 0, 0, RGB_WHITE, 16, 1, work->heapID);
+        BeginNormalPaletteFade(FADE_MAIN_ONLY, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, RGB_WHITE, 16, 1, work->heapID);
         *state = CHOOSE_STARTER_STATE_WAIT_AND_EXIT;
         break;
     case CHOOSE_STARTER_STATE_WAIT_AND_EXIT:

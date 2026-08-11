@@ -6,7 +6,7 @@
 #include "script.h"
 
 SoundplateStruct *sub_02054874(FieldSystem *fieldSystem, int x, int z);
-void sub_0205489C(u32 *a0, int a1);
+void sub_0205489C(void **a0, int a1);
 BOOL sub_020548C0(FieldSystem *fieldSystem, int x, int z);
 u8 GetMetatileBehavior(FieldSystem *fieldSystem, int x, int z);
 BOOL sub_020549A8(FieldSystem *fieldSystem, VecFx32 *playerPos, int xInFront, int yInFront, int a4);

@@ -55,7 +55,7 @@ static BOOL Task_WildEncounter(TaskManager *taskManager);
 static BOOL Task_SafariEncounter(TaskManager *taskManager);
 static BOOL Task_BugContestEncounter(TaskManager *taskManager);
 static BOOL Task_TutorialBattle(TaskManager *taskManager);
-static u32 sub_02051474(LinkBattleRuleset *param0, u32 battleType);
+static u32 sub_02051474(LinkBattleRuleset *ruleset, u32 battleType);
 static void sub_02051660(FieldSystem *fieldSystem, BattleSetup *setup);
 
 static BOOL Task_StartBattle(TaskManager *taskManager) {
@@ -66,7 +66,7 @@ static BOOL Task_StartBattle(TaskManager *taskManager) {
     switch (*state) {
     case 0:
         Battle_LaunchApp(fieldSystem, battleSetup);
-        sub_0203E354();
+        Field_SetEnvironmentSoundState_None_Unk2();
         (*state)++;
         break;
     case 1:

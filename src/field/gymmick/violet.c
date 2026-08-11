@@ -1,6 +1,7 @@
+#include "field/overlay_01_021FB368.h"
+
 #include "field_system.h"
 #include "overlay_01.h"
-#include "overlay_01_021F3610.h"
 #include "overlay_01_022053EC.h"
 #include "overlay_04.h"
 #include "task.h"
@@ -50,27 +51,27 @@ void GymmickInit_Violet(FieldSystem *fieldSystem) {
         0,
         FX32_CONST(0x148),
     };
-    ov01_021F3C0C(fieldSystem->unk9C, 111, &sp18, 0, fieldSystem->unk54);
-    ov01_021FB3E4(0, 14, 19, 3, 3, 0x20000, fieldSystem->unk98);
-    u32 r4 = GymmickInit_Violet_sub(gymmick->violet.liftState);
-    MapPropManager *r6 = ov01_021F3B4C(fieldSystem->unk9C, 111);
-    VecFx32 spC;
-    ov01_021F3B0C(&spC, r6);
-    spC.y = r4;
-    ov01_021F3B1C(r6, &spC);
-    ov01_021FB4A0(0, r4, fieldSystem->unk98);
+    MapPropManager_LoadOne(fieldSystem->mapPropManager, 111, &sp18, 0, fieldSystem->mapPropAnimationManager);
+    ov01_021FB3E4(0, 14, 19, 3, 3, FX32_CONST(32), fieldSystem->dynamicTerrainHeightManager);
+    fx32 y = GymmickInit_Violet_sub(gymmick->violet.liftState);
+    MapProp *mapProp = MapPropManager_FindMapPropByBuildModel(fieldSystem->mapPropManager, 111);
+    VecFx32 translation;
+    MapProp_GetTranslation(&translation, mapProp);
+    translation.y = y;
+    MapProp_SetTranslation(mapProp, &translation);
+    ov01_021FB4A0(0, y, fieldSystem->dynamicTerrainHeightManager);
     G3X_SetEdgeColorTable(ov04_02257334);
 }
 
 void VioletGymmick_ElevatorAction(FieldSystem *fieldSystem) {
-    VecFx32 sp0;
+    VecFx32 playerPosition;
     VioletGymElevatorTaskData *taskData = Heap_AllocAtEnd(HEAP_ID_FIELD2, sizeof(VioletGymElevatorTaskData));
     taskData->state = 0;
     taskData->fieldSystem = fieldSystem;
 
     GymmickUnion *gymmick = Save_Gymmick_AssertMagic_GetData(Save_GetGymmickPtr(FieldSystem_GetSaveData(fieldSystem)), GYMMICK_VIOLET);
-    PlayerAvatar_CopyPositionVector(fieldSystem->playerAvatar, &sp0);
-    if (sp0.y == ELEVATOR_Y_DOWN) {
+    PlayerAvatar_CopyPositionVector(fieldSystem->playerAvatar, &playerPosition);
+    if (playerPosition.y == ELEVATOR_Y_DOWN) {
         TaskManager_Call(fieldSystem->taskman, Task_VioletGymmick_ElevatorUp, taskData);
         gymmick->violet.liftState = 1;
     } else {
@@ -134,24 +135,24 @@ void ov04_02253FF0(SysTask *sysTask, void *taskData) {
         ++violetTaskData->state;
         break;
     case 3: {
-        MapPropManager *mapProp = ov01_021F3B4C(fieldSystem->unk9C, 111);
-        VecFx32 spC;
-        ov01_021F3B0C(&spC, mapProp);
-        spC.y += ELEVATOR_Y_SPEED;
-        if (spC.y >= ELEVATOR_Y_UP) {
-            spC.y = ELEVATOR_Y_UP;
+        MapProp *mapProp = MapPropManager_FindMapPropByBuildModel(fieldSystem->mapPropManager, 111);
+        VecFx32 elevatorTranslation;
+        MapProp_GetTranslation(&elevatorTranslation, mapProp);
+        elevatorTranslation.y += ELEVATOR_Y_SPEED;
+        if (elevatorTranslation.y >= ELEVATOR_Y_UP) {
+            elevatorTranslation.y = ELEVATOR_Y_UP;
             StopSE(SEQ_SE_DP_ELEBETA, 0);
             ++violetTaskData->state;
         }
-        VecFx32 sp0;
-        PlayerAvatar_CopyPositionVector(fieldSystem->playerAvatar, &sp0);
-        sp0.y += ELEVATOR_Y_SPEED;
-        PlayerAvatar_SetMapObjectYPosition(fieldSystem->playerAvatar, sp0.y);
-        ov01_02205A34(fieldSystem, sp0.y);
-        ov01_021F3B1C(mapProp, &spC);
+        VecFx32 playerPosition;
+        PlayerAvatar_CopyPositionVector(fieldSystem->playerAvatar, &playerPosition);
+        playerPosition.y += ELEVATOR_Y_SPEED;
+        PlayerAvatar_SetMapObjectYPosition(fieldSystem->playerAvatar, playerPosition.y);
+        ov01_02205A34(fieldSystem, playerPosition.y);
+        MapProp_SetTranslation(mapProp, &elevatorTranslation);
     } break;
     case 4:
-        ov01_021FB4A0(0, ELEVATOR_Y_UP, fieldSystem->unk98);
+        ov01_021FB4A0(0, ELEVATOR_Y_UP, fieldSystem->dynamicTerrainHeightManager);
         PlayerAvatar_ToggleAutomaticHeightUpdatingImmediate(fieldSystem->playerAvatar, TRUE);
         PlaySE(SEQ_SE_DP_KI_GASYAN);
         SysTask_Destroy(sysTask);
@@ -171,24 +172,24 @@ void ov04_022540C0(SysTask *sysTask, void *taskData) {
         ++violetTaskData->state;
         break;
     case 3: {
-        MapPropManager *mapProp = ov01_021F3B4C(fieldSystem->unk9C, 111);
-        VecFx32 spC;
-        ov01_021F3B0C(&spC, mapProp);
-        spC.y -= ELEVATOR_Y_SPEED;
-        if (spC.y <= ELEVATOR_Y_DOWN) {
-            spC.y = ELEVATOR_Y_DOWN;
+        MapProp *mapProp = MapPropManager_FindMapPropByBuildModel(fieldSystem->mapPropManager, 111);
+        VecFx32 elevatorTranslation;
+        MapProp_GetTranslation(&elevatorTranslation, mapProp);
+        elevatorTranslation.y -= ELEVATOR_Y_SPEED;
+        if (elevatorTranslation.y <= ELEVATOR_Y_DOWN) {
+            elevatorTranslation.y = ELEVATOR_Y_DOWN;
             StopSE(SEQ_SE_DP_ELEBETA, 0);
             ++violetTaskData->state;
         }
-        VecFx32 sp0;
-        PlayerAvatar_CopyPositionVector(fieldSystem->playerAvatar, &sp0);
-        sp0.y -= ELEVATOR_Y_SPEED;
-        PlayerAvatar_SetMapObjectYPosition(fieldSystem->playerAvatar, sp0.y);
-        ov01_02205A34(fieldSystem, sp0.y);
-        ov01_021F3B1C(mapProp, &spC);
+        VecFx32 playerPosition;
+        PlayerAvatar_CopyPositionVector(fieldSystem->playerAvatar, &playerPosition);
+        playerPosition.y -= ELEVATOR_Y_SPEED;
+        PlayerAvatar_SetMapObjectYPosition(fieldSystem->playerAvatar, playerPosition.y);
+        ov01_02205A34(fieldSystem, playerPosition.y);
+        MapProp_SetTranslation(mapProp, &elevatorTranslation);
     } break;
     case 4:
-        ov01_021FB4A0(0, ELEVATOR_Y_DOWN, fieldSystem->unk98);
+        ov01_021FB4A0(0, ELEVATOR_Y_DOWN, fieldSystem->dynamicTerrainHeightManager);
         PlayerAvatar_ToggleAutomaticHeightUpdatingImmediate(fieldSystem->playerAvatar, TRUE);
         PlaySE(SEQ_SE_DP_KI_GASYAN);
         SysTask_Destroy(sysTask);

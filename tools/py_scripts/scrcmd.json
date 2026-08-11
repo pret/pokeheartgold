@@ -4600,7 +4600,7 @@
       ]
     },
     {
-      "name": "ScrCmd_726",
+      "name": "ProcessSoundplate",
       "args": []
     },
     {
@@ -4971,14 +4971,14 @@
       ]
     },
     {
-      "name": "ScrCmd_CheckSafariZoneChallengeCompleted",
+      "name": "CheckSafariZoneChallengeCompleted",
       "args": [
         1,
         "var"
       ]
     },
     {
-      "name": "ScrCmd_UpdateSafariZoneIGT",
+      "name": "UpdateSafariZoneIGT",
       "args": []
     },
     {
