@@ -18,6 +18,8 @@
 #define MOVEMENT_WALK_UNK_48              48
 #define MOVEMENT_UNK_71                   71
 #define MOVEMENT_UNK_72                   72
+#define MOVEMENT_UNK_73                   73
+#define MOVEMENT_UNK_74                   74
 #define MOVEMENT_EMOTE_EXCLAMATION        75
 #define MOVEMENT_STEP_END                 254
 #define MOVEMENT_NONE                     255

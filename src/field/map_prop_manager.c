@@ -240,8 +240,8 @@ int MapProp_GetBuildModel(MapProp *mapProp) {
     return mapProp->buildModel;
 }
 
-UnkStruct_FieldSysC0_SubC *MapProp_GetRenderSurface(MapProp *mapProp) {
-    return mapProp->render;
+NNSG3dRenderObj *MapProp_GetRenderSurface(MapProp *mapProp) {
+    return &mapProp->render->renderObj;
 }
 
 NNSG3dResMdl *MapProp_GetResModel(MapProp *mapProp) {

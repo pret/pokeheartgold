@@ -24,7 +24,7 @@ void MapProp_SetTranslation(MapProp *mapProp, VecFx32 *vec);
 void MapProp_SetCulled(MapProp *mapProp, BOOL culled);
 BOOL MapProp_IsActive(MapProp *mapProp);
 int MapProp_GetBuildModel(MapProp *mapProp);
-UnkStruct_FieldSysC0_SubC *MapProp_GetRenderSurface(MapProp *mapProp);
+NNSG3dRenderObj *MapProp_GetRenderSurface(MapProp *mapProp);
 NNSG3dResMdl *MapProp_GetResModel(MapProp *mapProp);
 MapProp *MapPropManager_GetMapPropByIndex(MapPropManager *mapPropManager, u8 index);
 MapProp *MapPropManager_FindMapPropByBuildModel(MapPropManager *mapPropManager, int buildModel);

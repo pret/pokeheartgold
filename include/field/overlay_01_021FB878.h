@@ -1,6 +1,8 @@
 #ifndef POKEHEARTGOLD_FIELD_OVERLAY_01_021FB878_H
 #define POKEHEARTGOLD_FIELD_OVERLAY_01_021FB878_H
 
+#include "field/area_data.h"
+
 #include "filesystem_files_def.h"
 #include "heap.h"
 
@@ -41,5 +43,6 @@ void Field3dObject_RemoveAnimation(Field3dObject *object, Field3DModelAnimation 
 void Field3dObject_Draw(Field3dObject *object);
 void Field3dObject_SetActiveFlag(Field3dObject *object, BOOL active);
 void Field3dObject_SetPosEx(Field3dObject *object, fx32 x, fx32 y, fx32 z);
+NNSG3dResTex *ov01_021FB9E0(AreaDataManager *areaDataManager);
 
 #endif // POKEHEARTGOLD_FIELD_OVERLAY_01_021FB878_H
