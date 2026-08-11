@@ -313,7 +313,7 @@ BOOL FieldMap_Exit(OverlayManager *man, int *state) {
             SysTask_CreateOnMainQueue(Task_AntipiracyRandom, NULL, 1245);
         }
 
-        ov01_021F3660(fieldSystem->mapPropManager);
+        MapPropManager_Free(fieldSystem->mapPropManager);
         (*state)++;
         break;
     case 1:
