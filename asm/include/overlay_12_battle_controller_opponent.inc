@@ -174,7 +174,7 @@
 .public BattleSystem_GetTrainerGender
 .public BattleSystem_GetBattlerFromBattlerType
 .public ov12_0223AB0C
-.public BattleSystem_GetFieldSide
+.public BattleSystem_GetBattlerSide
 .public BattleSystem_GetMessageIcon
 .public BattleSystem_GetTerrainId
 .public BattleSystem_GetBackgroundId

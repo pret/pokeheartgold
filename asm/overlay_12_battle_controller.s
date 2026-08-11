@@ -1582,7 +1582,7 @@ _02262C9E:
 _02262CBC:
 	ldr r0, [sp, #4]
 	ldr r1, [sp, #0xc]
-	bl BattleSystem_GetFieldSide
+	bl BattleSystem_GetBattlerSide
 	cmp r0, #0
 	beq _02262CD2
 	ldr r0, [sp, #4]
@@ -1657,7 +1657,7 @@ _02262D48:
 _02262D56:
 	ldr r0, [sp, #4]
 	ldr r1, [sp, #0xc]
-	bl BattleSystem_GetFieldSide
+	bl BattleSystem_GetBattlerSide
 	cmp r0, #0
 	beq _02262D6C
 	ldr r0, [sp, #4]
@@ -3547,7 +3547,7 @@ BattleController_EmitBattleMonToPartyMonCopy: ; 0x02263B4C
 	ldrh r1, [r3, r1]
 	strh r1, [r2, #0xc]
 	ldr r1, [sp, #8]
-	bl BattleSystem_GetFieldSide
+	bl BattleSystem_GetBattlerSide
 	lsl r0, r0, #3
 	add r1, r6, r0
 	mov r0, #0x71
@@ -4967,7 +4967,7 @@ ov12_022645F8: ; 0x022645F8
 	beq _02264636
 	ldr r0, [sp]
 	ldr r1, [sp, #0x38]
-	bl BattleSystem_GetFieldSide
+	bl BattleSystem_GetBattlerSide
 	cmp r0, #0
 	bne _0226464C
 _02264636:
@@ -4975,7 +4975,7 @@ _02264636:
 	bne _02264646
 	ldr r0, [sp]
 	ldr r1, [sp, #0x38]
-	bl BattleSystem_GetFieldSide
+	bl BattleSystem_GetBattlerSide
 	cmp r0, #0
 	bne _0226464C
 _02264646:

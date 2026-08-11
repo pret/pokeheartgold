@@ -52,7 +52,7 @@ BOOL BattleSystem_IsFishing(BattleSystem *battleSystem);
 u32 BattleSystem_GetTrainerGender(BattleSystem *battleSystem, int battlerId);
 int BattleSystem_GetBattlerFromBattlerType(BattleSystem *battleSystem, int a1);
 u8 ov12_0223AB0C(BattleSystem *battleSystem, int battlerId);
-u8 BattleSystem_GetFieldSide(BattleSystem *battleSystem, int battlerId);
+u8 BattleSystem_GetBattlerSide(BattleSystem *battleSystem, int battlerId);
 void *BattleSystem_GetMessageIcon(BattleSystem *battleSystem);
 PCStorage *BattleSystem_GetPcStorage(BattleSystem *battleSystem);
 Terrain BattleSystem_GetTerrainId(BattleSystem *battleSystem);

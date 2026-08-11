@@ -376,7 +376,7 @@ _02258AC4:
 	beq _02258B5E
 	add r0, r7, #0
 	add r1, r6, #0
-	bl BattleSystem_GetFieldSide
+	bl BattleSystem_GetBattlerSide
 	add r3, r0, #0
 	mov r0, #6
 	lsl r0, r0, #6
@@ -1868,7 +1868,7 @@ ov12_022595E0: ; 0x022595E0
 	add r6, r4, #0
 	add r5, r0, #0
 	add r6, #0x94
-	bl BattleSystem_GetFieldSide
+	bl BattleSystem_GetBattlerSide
 	cmp r0, #0
 	beq _02259604
 	add r0, r5, #0
@@ -1900,7 +1900,7 @@ ov12_0225961C: ; 0x0225961C
 	add r6, r4, #0
 	add r5, r0, #0
 	add r6, #0x94
-	bl BattleSystem_GetFieldSide
+	bl BattleSystem_GetBattlerSide
 	cmp r0, #0
 	beq _02259640
 	add r0, r5, #0
@@ -2201,7 +2201,7 @@ _02259846:
 	bne _02259894
 	ldr r0, [sp]
 	ldr r1, [sp, #0xc]
-	bl BattleSystem_GetFieldSide
+	bl BattleSystem_GetBattlerSide
 	cmp r0, #0
 	beq _02259888
 	add r0, r4, #0
@@ -11629,7 +11629,7 @@ ov12_0225E404: ; 0x0225E404
 	bne _0225E43A
 	ldrb r1, [r6, #0x1d]
 	ldr r0, [r6]
-	bl BattleSystem_GetFieldSide
+	bl BattleSystem_GetBattlerSide
 	cmp r0, #0
 	bne _0225E44A
 _0225E43A:
@@ -12106,11 +12106,11 @@ _0225E7E2:
 _0225E7F0:
 	ldrb r1, [r4, #0xd]
 	ldr r0, [r4]
-	bl BattleSystem_GetFieldSide
+	bl BattleSystem_GetBattlerSide
 	add r6, r0, #0
 	ldr r0, [r4]
 	add r1, r5, #0
-	bl BattleSystem_GetFieldSide
+	bl BattleSystem_GetBattlerSide
 	cmp r6, r0
 	beq _0225E80C
 	ldr r0, [r4]
@@ -16540,7 +16540,7 @@ ov12_02260BA0: ; 0x02260BA0
 	ldrb r1, [r5, #5]
 	add r4, r0, #0
 	ldr r0, [r5]
-	bl BattleSystem_GetFieldSide
+	bl BattleSystem_GetBattlerSide
 	cmp r0, #0
 	bne _02260BB8
 	mov r6, #0
@@ -16636,7 +16636,7 @@ ov12_02260C58: ; 0x02260C58
 	ldrb r1, [r5, #5]
 	add r7, r0, #0
 	ldr r0, [r5]
-	bl BattleSystem_GetFieldSide
+	bl BattleSystem_GetBattlerSide
 	cmp r0, #0
 	bne _02260C6E
 	mov r4, #0
@@ -18411,7 +18411,7 @@ _022619FC:
 	beq _02261A20
 	add r0, r5, #0
 	add r1, r4, #0
-	bl BattleSystem_GetFieldSide
+	bl BattleSystem_GetBattlerSide
 	cmp r0, #0
 	beq _02261A1E
 	ldr r0, [sp, #4]

@@ -755,7 +755,7 @@ static void DamageCalcDefault(BattleSystem *battleSystem, BattleContext *ctx) {
         type = ctx->trainerAIData.moveData[ctx->moveNoCur].type;
     }
 
-    ctx->damage = CalcMoveDamage(battleSystem, ctx, ctx->moveNoCur, ctx->fieldSideConditionFlags[BattleSystem_GetFieldSide(battleSystem, ctx->battlerIdTarget)], ctx->fieldCondition, ctx->movePower, type, ctx->battlerIdAttacker, ctx->battlerIdTarget, ctx->criticalMultiplier);
+    ctx->damage = CalcMoveDamage(battleSystem, ctx, ctx->moveNoCur, ctx->fieldSideConditionFlags[BattleSystem_GetBattlerSide(battleSystem, ctx->battlerIdTarget)], ctx->fieldCondition, ctx->movePower, type, ctx->battlerIdAttacker, ctx->battlerIdTarget, ctx->criticalMultiplier);
 
     ctx->damage *= ctx->criticalMultiplier;
 
@@ -1640,7 +1640,7 @@ BOOL BtlCmd_ChangeStatStage(BattleSystem *battleSystem, BattleContext *ctx) {
         if (!(ctx->statChangeFlag & (1 << 27))) {
             if (ctx->battlerIdAttacker != ctx->battlerIdStatChange) {
                 // Mist
-                if (ctx->fieldSideConditionData[BattleSystem_GetFieldSide(battleSystem, ctx->battlerIdStatChange)].mistTurns) {
+                if (ctx->fieldSideConditionData[BattleSystem_GetBattlerSide(battleSystem, ctx->battlerIdStatChange)].mistTurns) {
                     // "{0} is protected by Mist!"
                     ctx->buffMsg.id = msg_0197_00273;
                     ctx->buffMsg.tag = TAG_NICKNAME;
@@ -2541,7 +2541,7 @@ BOOL BtlCmd_TryLightScreen(BattleSystem *battleSystem, BattleContext *ctx) {
 
     int adrs = BattleScriptReadWord(ctx);
 
-    int unkA = BattleSystem_GetFieldSide(battleSystem, ctx->battlerIdAttacker);
+    int unkA = BattleSystem_GetBattlerSide(battleSystem, ctx->battlerIdAttacker);
 
     if (ctx->fieldSideConditionFlags[unkA] & SIDE_CONDITION_LIGHT_SCREEN) {
         BattleScriptIncrementPointer(ctx, adrs);
@@ -2572,7 +2572,7 @@ BOOL BtlCmd_TryReflect(BattleSystem *battleSystem, BattleContext *ctx) {
 
     int adrs = BattleScriptReadWord(ctx);
 
-    int unkA = BattleSystem_GetFieldSide(battleSystem, ctx->battlerIdAttacker);
+    int unkA = BattleSystem_GetBattlerSide(battleSystem, ctx->battlerIdAttacker);
 
     if (ctx->fieldSideConditionFlags[unkA] & SIDE_CONDITION_REFLECT) {
         BattleScriptIncrementPointer(ctx, adrs);
@@ -2603,7 +2603,7 @@ BOOL BtlCmd_TryMist(BattleSystem *battleSystem, BattleContext *ctx) {
 
     int adrs = BattleScriptReadWord(ctx);
 
-    int unkA = BattleSystem_GetFieldSide(battleSystem, ctx->battlerIdAttacker);
+    int unkA = BattleSystem_GetBattlerSide(battleSystem, ctx->battlerIdAttacker);
 
     if (ctx->fieldSideConditionFlags[unkA] & SIDE_CONDITION_MIST) {
         BattleScriptIncrementPointer(ctx, adrs);
@@ -2794,8 +2794,8 @@ BOOL BtlCmd_Counter(BattleSystem *battleSystem, BattleContext *ctx) {
 
     int battlerId = ctx->turnData[ctx->battlerIdAttacker].battlerIdPhysicalDamage;
 
-    int sideA = BattleSystem_GetFieldSide(battleSystem, ctx->battlerIdAttacker);
-    int sideB = BattleSystem_GetFieldSide(battleSystem, battlerId);
+    int sideA = BattleSystem_GetBattlerSide(battleSystem, ctx->battlerIdAttacker);
+    int sideB = BattleSystem_GetBattlerSide(battleSystem, battlerId);
 
     if (ctx->turnData[ctx->battlerIdAttacker].physicalDamage[battlerId] && sideA != sideB && ctx->battleMons[battlerId].hp) {
         ctx->damage = ctx->turnData[ctx->battlerIdAttacker].physicalDamage[battlerId] * 2;
@@ -2825,8 +2825,8 @@ BOOL BtlCmd_MirrorCoat(BattleSystem *battleSystem, BattleContext *ctx) {
 
     int battlerId = ctx->turnData[ctx->battlerIdAttacker].battlerIdSpecialDamage;
 
-    int sideA = BattleSystem_GetFieldSide(battleSystem, ctx->battlerIdAttacker);
-    int sideB = BattleSystem_GetFieldSide(battleSystem, battlerId);
+    int sideA = BattleSystem_GetBattlerSide(battleSystem, ctx->battlerIdAttacker);
+    int sideB = BattleSystem_GetBattlerSide(battleSystem, battlerId);
 
     if (ctx->turnData[ctx->battlerIdAttacker].specialDamage[battlerId] && sideA != sideB && ctx->battleMons[battlerId].hp) {
         ctx->damage = ctx->turnData[ctx->battlerIdAttacker].specialDamage[battlerId] * 2;
@@ -3092,9 +3092,9 @@ BOOL BtlCmd_TryStealItem(BattleSystem *battleSystem, BattleContext *ctx) {
     int adrs2 = BattleScriptReadWord(ctx);
 
     u32 battleType = BattleSystem_GetBattleType(battleSystem);
-    int fieldSide = BattleSystem_GetFieldSide(battleSystem, ctx->battlerIdAttacker);
+    int fieldSide = BattleSystem_GetBattlerSide(battleSystem, ctx->battlerIdAttacker);
 
-    if (BattleSystem_GetFieldSide(battleSystem, ctx->battlerIdAttacker) && !(battleType & (BATTLE_TYPE_LINK | BATTLE_TYPE_FRONTIER))) {
+    if (BattleSystem_GetBattlerSide(battleSystem, ctx->battlerIdAttacker) && !(battleType & (BATTLE_TYPE_LINK | BATTLE_TYPE_FRONTIER))) {
         BattleScriptIncrementPointer(ctx, adrs1);
     } else if (ctx->fieldSideConditionData[fieldSide].battlerBitKnockedOffItem & MaskOfFlagNo(ctx->selectedMonIndex[ctx->battlerIdAttacker])) {
         BattleScriptIncrementPointer(ctx, adrs1);
@@ -3197,7 +3197,7 @@ BOOL BtlCmd_TryWhirlwind(BattleSystem *battleSystem, BattleContext *ctx) {
         party = BattleSystem_GetParty(battleSystem, ctx->battlerIdTarget);
         partySize = BattleSystem_GetPartySize(battleSystem, ctx->battlerIdTarget);
 
-        if (battleType & BATTLE_TYPE_MULTI || battleType & BATTLE_TYPE_TAG && BattleSystem_GetFieldSide(battleSystem, ctx->battlerIdTarget)) {
+        if (battleType & BATTLE_TYPE_MULTI || battleType & BATTLE_TYPE_TAG && BattleSystem_GetBattlerSide(battleSystem, ctx->battlerIdTarget)) {
             index0 = 0;
             indexEnd = partySize;
             maxRand = partySize;
@@ -3304,7 +3304,7 @@ BOOL BtlCmd_TrySpikes(BattleSystem *battleSystem, BattleContext *ctx) {
 
     int adrs = BattleScriptReadWord(ctx);
 
-    int fieldSide = BattleSystem_GetFieldSide(battleSystem, ctx->battlerIdAttacker) ^ 1;
+    int fieldSide = BattleSystem_GetBattlerSide(battleSystem, ctx->battlerIdAttacker) ^ 1;
 
     if (ctx->fieldSideConditionData[fieldSide].spikesLayers == 3) {
         ctx->selfTurnData[ctx->battlerIdAttacker].ignorePressure = 1;
@@ -3323,7 +3323,7 @@ BOOL BtlCmd_CheckSpikes(BattleSystem *battleSystem, BattleContext *ctx) {
     int side = BattleScriptReadWord(ctx);
     int adrs = BattleScriptReadWord(ctx);
     int battlerId = BattleSystem_GetBattlerIDBySide(battleSystem, ctx, side);
-    int fieldSide = BattleSystem_GetFieldSide(battleSystem, battlerId);
+    int fieldSide = BattleSystem_GetBattlerSide(battleSystem, battlerId);
 
     if (ctx->fieldSideConditionData[fieldSide].spikesLayers && ctx->battleMons[battlerId].hp) {
         ctx->hpCalc = (5 - ctx->fieldSideConditionData[fieldSide].spikesLayers) * 2;
@@ -3518,7 +3518,7 @@ BOOL BtlCmd_TrySafeguard(BattleSystem *battleSystem, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int adrs = BattleScriptReadWord(ctx);
-    int fieldSide = BattleSystem_GetFieldSide(battleSystem, ctx->battlerIdAttacker);
+    int fieldSide = BattleSystem_GetBattlerSide(battleSystem, ctx->battlerIdAttacker);
 
     if (ctx->fieldSideConditionFlags[fieldSide] & SIDE_CONDITION_SAFEGUARD) {
         BattleScriptIncrementPointer(ctx, adrs);
@@ -3608,7 +3608,7 @@ BOOL BtlCmd_TryReplaceFaintedMon(BattleSystem *battleSystem, BattleContext *ctx)
 }
 
 BOOL BtlCmd_RapidSpin(BattleSystem *battleSystem, BattleContext *ctx) {
-    int side = BattleSystem_GetFieldSide(battleSystem, ctx->battlerIdAttacker);
+    int side = BattleSystem_GetBattlerSide(battleSystem, ctx->battlerIdAttacker);
 
     // Binding Moves
     if (ctx->battleMons[ctx->battlerIdAttacker].status2 & STATUS2_BIND) {
@@ -3709,7 +3709,7 @@ BOOL BtlCmd_TryFutureSight(BattleSystem *battleSystem, BattleContext *ctx) {
     int adrs = BattleScriptReadWord(ctx);
 
     if (ctx->fieldConditionData.futureSightTurns[ctx->battlerIdTarget] == 0) {
-        int side = BattleSystem_GetFieldSide(battleSystem, ctx->battlerIdTarget);
+        int side = BattleSystem_GetBattlerSide(battleSystem, ctx->battlerIdTarget);
         ctx->fieldSideConditionFlags[side] |= SIDE_CONDITION_FUTURE_SIGHT;
         ctx->fieldConditionData.futureSightTurns[ctx->battlerIdTarget] = 3;
         ctx->fieldConditionData.futureSightMoveNo[ctx->battlerIdTarget] = ctx->moveNoCur;
@@ -3839,7 +3839,7 @@ BOOL BtlCmd_BeatUp(BattleSystem *battleSystem, BattleContext *ctx) {
 BOOL BtlCmd_FollowMe(BattleSystem *battleSystem, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
-    int side = BattleSystem_GetFieldSide(battleSystem, ctx->battlerIdAttacker);
+    int side = BattleSystem_GetBattlerSide(battleSystem, ctx->battlerIdAttacker);
     ctx->fieldSideConditionData[side].followMeFlag = TRUE;
     ctx->fieldSideConditionData[side].battlerIdFollowMe = ctx->battlerIdAttacker;
 
@@ -3876,10 +3876,10 @@ BOOL BtlCmd_TrySwapItems(BattleSystem *battleSystem, BattleContext *ctx) {
     int adrsB = BattleScriptReadWord(ctx);
 
     u32 battleType = BattleSystem_GetBattleType(battleSystem);
-    int sideAttacker = BattleSystem_GetFieldSide(battleSystem, ctx->battlerIdAttacker);
-    int sideTarget = BattleSystem_GetFieldSide(battleSystem, ctx->battlerIdTarget);
+    int sideAttacker = BattleSystem_GetBattlerSide(battleSystem, ctx->battlerIdAttacker);
+    int sideTarget = BattleSystem_GetBattlerSide(battleSystem, ctx->battlerIdTarget);
 
-    if (BattleSystem_GetFieldSide(battleSystem, ctx->battlerIdAttacker) && (battleType & (BATTLE_TYPE_LINK | BATTLE_TYPE_FRONTIER)) == 0) {
+    if (BattleSystem_GetBattlerSide(battleSystem, ctx->battlerIdAttacker) && (battleType & (BATTLE_TYPE_LINK | BATTLE_TYPE_FRONTIER)) == 0) {
         BattleScriptIncrementPointer(ctx, adrsA);
     } else if ((ctx->fieldSideConditionData[sideAttacker].battlerBitKnockedOffItem & MaskOfFlagNo(ctx->selectedMonIndex[ctx->battlerIdAttacker])) || (ctx->fieldSideConditionData[sideTarget].battlerBitKnockedOffItem & MaskOfFlagNo(ctx->selectedMonIndex[ctx->battlerIdTarget]))) {
         BattleScriptIncrementPointer(ctx, adrsA);
@@ -3966,7 +3966,7 @@ BOOL BtlCmd_TrySetMagicCoat(BattleSystem *battleSystem, BattleContext *ctx) {
 BOOL BtlCmd_MagicCoat(BattleSystem *battleSystem, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
-    int side = BattleSystem_GetFieldSide(battleSystem, ctx->battlerIdAttacker);
+    int side = BattleSystem_GetBattlerSide(battleSystem, ctx->battlerIdAttacker);
     int battlerId = ctx->battlerIdAttacker;
     ctx->battlerIdMagicCoat = battlerId;
     ctx->battlerIdAttacker = ctx->battlerIdTarget;
@@ -4005,7 +4005,7 @@ BOOL BtlCmd_TryBreakScreens(BattleSystem *battleSystem, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int adrs = BattleScriptReadWord(ctx);
-    int side = BattleSystem_GetFieldSide(battleSystem, ctx->battlerIdTarget);
+    int side = BattleSystem_GetBattlerSide(battleSystem, ctx->battlerIdTarget);
 
     if ((ctx->fieldSideConditionFlags[side] & SIDE_CONDITION_REFLECT) || (ctx->fieldSideConditionFlags[side] & SIDE_CONDITION_LIGHT_SCREEN)) {
         ctx->fieldSideConditionFlags[side] &= ~SIDE_CONDITION_REFLECT;
@@ -4035,7 +4035,7 @@ BOOL BtlCmd_TryKnockOff(BattleSystem *battleSystem, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int adrs = BattleScriptReadWord(ctx);
-    int side = BattleSystem_GetFieldSide(battleSystem, ctx->battlerIdTarget);
+    int side = BattleSystem_GetBattlerSide(battleSystem, ctx->battlerIdTarget);
 
     if (ctx->battleMons[ctx->battlerIdTarget].item && CheckBattlerAbilityIfNotIgnored(ctx, ctx->battlerIdAttacker, ctx->battlerIdTarget, ABILITY_STICKY_HOLD) == TRUE) {
         // "{0}'s {1} made {2} ineffective!"
@@ -4089,10 +4089,10 @@ BOOL BtlCmd_TryImprison(BattleSystem *battleSystem, BattleContext *ctx) {
     if (ctx->battleMons[ctx->battlerIdAttacker].moveEffectFlags & MOVE_EFFECT_FLAG_IMPRISON_USER) {
         BattleScriptIncrementPointer(ctx, adrs);
     } else {
-        side = BattleSystem_GetFieldSide(battleSystem, ctx->battlerIdAttacker);
+        side = BattleSystem_GetBattlerSide(battleSystem, ctx->battlerIdAttacker);
         maxBattlers = BattleSystem_GetMaxBattlers(battleSystem);
         for (battlerId = 0; battlerId < maxBattlers; battlerId++) {
-            if (side != BattleSystem_GetFieldSide(battleSystem, battlerId)) {
+            if (side != BattleSystem_GetBattlerSide(battleSystem, battlerId)) {
                 for (i = 0; i < MAX_MON_MOVES; i++) {
                     for (j = 0; j < MAX_MON_MOVES; j++) {
                         if ((ctx->battleMons[ctx->battlerIdAttacker].moves[i] == ctx->battleMons[battlerId].moves[j]) && ctx->battleMons[ctx->battlerIdAttacker].moves[i] && ctx->battleMons[battlerId].moves[j]) {
@@ -4125,9 +4125,9 @@ BOOL BtlCmd_TryGrudge(BattleSystem *battleSystem, BattleContext *ctx) {
 
     int adrs = BattleScriptReadWord(ctx);
 
-    BattleSystem_GetFieldSide(battleSystem, ctx->battlerIdTarget);
+    BattleSystem_GetBattlerSide(battleSystem, ctx->battlerIdTarget);
 
-    if (ctx->battleMons[ctx->battlerIdFainted].moveEffectFlags & MOVE_EFFECT_FLAG_GRUDGE && BattleSystem_GetFieldSide(battleSystem, ctx->battlerIdAttacker) != BattleSystem_GetFieldSide(battleSystem, ctx->battlerIdFainted) && ctx->battleMons[ctx->battlerIdAttacker].hp && ctx->moveNoTemp != MOVE_STRUGGLE) {
+    if (ctx->battleMons[ctx->battlerIdFainted].moveEffectFlags & MOVE_EFFECT_FLAG_GRUDGE && BattleSystem_GetBattlerSide(battleSystem, ctx->battlerIdAttacker) != BattleSystem_GetBattlerSide(battleSystem, ctx->battlerIdFainted) && ctx->battleMons[ctx->battlerIdAttacker].hp && ctx->moveNoTemp != MOVE_STRUGGLE) {
         pos = ctx->movePos[ctx->battlerIdAttacker];
         ctx->battleMons[ctx->battlerIdAttacker].movePPCur[pos] = 0;
         ctx->moveTemp = ctx->battleMons[ctx->battlerIdAttacker].moves[pos];
@@ -4222,7 +4222,7 @@ BOOL BtlCmd_TryPursuit(BattleSystem *battleSystem, BattleContext *ctx) {
     maxBattlers = BattleSystem_GetMaxBattlers(battleSystem);
 
     for (battlerId = 0; battlerId < maxBattlers; battlerId++) {
-        if (ctx->playerActions[battlerId].command != CONTROLLER_COMMAND_40 && ctx->battleMons[battlerId].hp && !(ctx->battleMons[battlerId].status & 39) && !CheckTruant(ctx, battlerId) && BattleSystem_GetFieldSide(battleSystem, battlerId) != BattleSystem_GetFieldSide(battleSystem, ctx->battlerIdSwitch)) {
+        if (ctx->playerActions[battlerId].command != CONTROLLER_COMMAND_40 && ctx->battleMons[battlerId].hp && !(ctx->battleMons[battlerId].status & 39) && !CheckTruant(ctx, battlerId) && BattleSystem_GetBattlerSide(battleSystem, battlerId) != BattleSystem_GetBattlerSide(battleSystem, ctx->battlerIdSwitch)) {
             if (ctx->battleMons[battlerId].unk88.encoredMove && ctx->battleMons[battlerId].unk88.encoredMove == ctx->battleMons[battlerId].moves[ctx->battleMons[battlerId].unk88.encoredMoveIndex]) {
                 moveNo = ctx->battleMons[battlerId].unk88.encoredMove;
             } else {
@@ -4381,8 +4381,8 @@ BOOL BtlCmd_TryMetalBurst(BattleSystem *battleSystem, BattleContext *ctx) {
 
     int adrs = BattleScriptReadWord(ctx);
 
-    int sideA = BattleSystem_GetFieldSide(battleSystem, ctx->battlerIdAttacker);
-    int sideB = BattleSystem_GetFieldSide(battleSystem, ctx->turnData[ctx->battlerIdAttacker].unk38);
+    int sideA = BattleSystem_GetBattlerSide(battleSystem, ctx->battlerIdAttacker);
+    int sideB = BattleSystem_GetBattlerSide(battleSystem, ctx->turnData[ctx->battlerIdAttacker].unk38);
 
     if (ctx->turnData[ctx->battlerIdAttacker].unk34 && sideA != sideB && ctx->battleMons[ctx->turnData[ctx->battlerIdAttacker].unk38].hp) {
         ctx->damage = ctx->turnData[ctx->battlerIdAttacker].unk34 * 15 / 10;
@@ -4529,7 +4529,7 @@ BOOL BtlCmd_CheckSideCondition(BattleSystem *battleSystem, BattleContext *ctx) {
     int flag = BattleScriptReadWord(ctx);
     int adrs = BattleScriptReadWord(ctx);
 
-    int fieldSide = BattleSystem_GetFieldSide(battleSystem, BattleSystem_GetBattlerIDBySide(battleSystem, ctx, side));
+    int fieldSide = BattleSystem_GetBattlerSide(battleSystem, BattleSystem_GetBattlerIDBySide(battleSystem, ctx, side));
 
     int var;
 
@@ -4640,7 +4640,7 @@ BOOL BtlCmd_TryToxicSpikes(BattleSystem *battleSystem, BattleContext *ctx) {
 
     int adrs = BattleScriptReadWord(ctx);
 
-    int side = BattleSystem_GetFieldSide(battleSystem, ctx->battlerIdAttacker) ^ 1;
+    int side = BattleSystem_GetBattlerSide(battleSystem, ctx->battlerIdAttacker) ^ 1;
 
     if (ctx->fieldSideConditionData[side].toxicSpikesLayers == 2) {
         ctx->selfTurnData[ctx->battlerIdAttacker].ignorePressure = TRUE;
@@ -4660,7 +4660,7 @@ BOOL BtlCmd_CheckToxicSpikes(BattleSystem *battleSystem, BattleContext *ctx) {
     int adrs = BattleScriptReadWord(ctx);
 
     int battlerId = BattleSystem_GetBattlerIDBySide(battleSystem, ctx, side);
-    int fieldSide = BattleSystem_GetFieldSide(battleSystem, battlerId);
+    int fieldSide = BattleSystem_GetBattlerSide(battleSystem, battlerId);
 
     if (ctx->fieldSideConditionData[fieldSide].toxicSpikesLayers) {
         ctx->calcTemp = ctx->fieldSideConditionData[fieldSide].toxicSpikesLayers;
@@ -4731,7 +4731,7 @@ BOOL BtlCmd_IfSameSide(BattleSystem *battleSystem, BattleContext *ctx) {
     int battlerIdA = BattleSystem_GetBattlerIDBySide(battleSystem, ctx, sideA);
     int battlerIdB = BattleSystem_GetBattlerIDBySide(battleSystem, ctx, sideB);
 
-    if (BattleSystem_GetFieldSide(battleSystem, battlerIdA) == BattleSystem_GetFieldSide(battleSystem, battlerIdB)) {
+    if (BattleSystem_GetBattlerSide(battleSystem, battlerIdA) == BattleSystem_GetBattlerSide(battleSystem, battlerIdB)) {
         BattleScriptIncrementPointer(ctx, adrs);
     }
 
@@ -5045,7 +5045,7 @@ BOOL BtlCmd_CheckStealthRock(BattleSystem *battleSystem, BattleContext *ctx) {
     int adrs = BattleScriptReadWord(ctx);
 
     int battlerId = BattleSystem_GetBattlerIDBySide(battleSystem, ctx, side);
-    int fieldSide = BattleSystem_GetFieldSide(battleSystem, battlerId);
+    int fieldSide = BattleSystem_GetBattlerSide(battleSystem, battlerId);
     int type1 = GetBattlerVar(ctx, battlerId, BMON_DATA_TYPE_1, NULL);
     int type2 = GetBattlerVar(ctx, battlerId, BMON_DATA_TYPE_2, NULL);
 
@@ -5387,7 +5387,7 @@ BOOL BtlCmd_CheckWhiteout(BattleSystem *battleSystem, BattleContext *ctx) {
     int battleType = BattleSystem_GetBattleType(battleSystem);
     battlerId = BattleSystem_GetBattlerIDBySide(battleSystem, ctx, side);
 
-    if (battleType & BATTLE_TYPE_MULTI || (battleType & BATTLE_TYPE_TAG && BattleSystem_GetFieldSide(battleSystem, battlerId))) {
+    if (battleType & BATTLE_TYPE_MULTI || (battleType & BATTLE_TYPE_TAG && BattleSystem_GetBattlerSide(battleSystem, battlerId))) {
         Party *party1 = BattleSystem_GetParty(battleSystem, battlerId);
         Party *party2 = BattleSystem_GetParty(battleSystem, BattleSystem_GetBattlerIdPartner(battleSystem, battlerId));
 
@@ -5401,7 +5401,7 @@ BOOL BtlCmd_CheckWhiteout(BattleSystem *battleSystem, BattleContext *ctx) {
             }
         }
 
-        if ((battleType == 75 || battleType == 74) && BattleSystem_GetFieldSide(battleSystem, battlerId) == 0 && ov12_0223AB0C(battleSystem, battlerId) == 2) {
+        if ((battleType == 75 || battleType == 74) && BattleSystem_GetBattlerSide(battleSystem, battlerId) == 0 && ov12_0223AB0C(battleSystem, battlerId) == 2) {
 
         } else {
             for (i = 0; i < Party_GetCount(party2); i++) {
@@ -5812,11 +5812,11 @@ static void *BattleScriptGetVarPointer(BattleSystem *battleSystem, BattleContext
     case BSCRIPT_VAR_MOVE_STATUS_FLAGS:
         return &ctx->moveStatusFlag;
     case BSCRIPT_VAR_SIDE_CONDITION_ATTACKER:
-        return &ctx->fieldSideConditionFlags[BattleSystem_GetFieldSide(battleSystem, ctx->battlerIdAttacker)];
+        return &ctx->fieldSideConditionFlags[BattleSystem_GetBattlerSide(battleSystem, ctx->battlerIdAttacker)];
     case BSCRIPT_VAR_SIDE_CONDITION_TARGET:
-        return &ctx->fieldSideConditionFlags[BattleSystem_GetFieldSide(battleSystem, ctx->battlerIdTarget)];
+        return &ctx->fieldSideConditionFlags[BattleSystem_GetBattlerSide(battleSystem, ctx->battlerIdTarget)];
     case BSCRIPT_VAR_SIDE_CONDITION_STAT_CHANGE:
-        return &ctx->fieldSideConditionFlags[BattleSystem_GetFieldSide(battleSystem, ctx->battlerIdStatChange)];
+        return &ctx->fieldSideConditionFlags[BattleSystem_GetBattlerSide(battleSystem, ctx->battlerIdStatChange)];
     case BSCRIPT_VAR_DAMAGE:
         return &ctx->damage;
     case BSCRIPT_VAR_BATTLER_ATTACKER:
@@ -7467,7 +7467,7 @@ static int BattleSystem_GetBattlerIDBySide(BattleSystem *battleSystem, BattleCon
         int maxBattlers = BattleSystem_GetMaxBattlers(battleSystem);
         for (battlerID = 0; battlerID < maxBattlers; battlerID++) {
             if (battlerID != ctx->battlerIdAttacker
-                && (BattleSystem_GetFieldSide(battleSystem, battlerID) == BattleSystem_GetFieldSide(battleSystem, ctx->battlerIdAttacker))) {
+                && (BattleSystem_GetBattlerSide(battleSystem, battlerID) == BattleSystem_GetBattlerSide(battleSystem, ctx->battlerIdAttacker))) {
                 break;
             }
         }
@@ -7479,7 +7479,7 @@ static int BattleSystem_GetBattlerIDBySide(BattleSystem *battleSystem, BattleCon
         int maxBattlers = BattleSystem_GetMaxBattlers(battleSystem);
         for (battlerID = 0; battlerID < maxBattlers; battlerID++) {
             if (battlerID != ctx->battlerIdTarget
-                && BattleSystem_GetFieldSide(battleSystem, battlerID) == BattleSystem_GetFieldSide(battleSystem, ctx->battlerIdTarget)) {
+                && BattleSystem_GetBattlerSide(battleSystem, battlerID) == BattleSystem_GetBattlerSide(battleSystem, ctx->battlerIdTarget)) {
                 break;
             }
         }
@@ -7489,18 +7489,18 @@ static int BattleSystem_GetBattlerIDBySide(BattleSystem *battleSystem, BattleCon
     } break;
     case BATTLER_CATEGORY_ATTACKER_ENEMY: {
         int maxBattlers = BattleSystem_GetMaxBattlers(battleSystem);
-        int attackerFieldSide = BattleSystem_GetFieldSide(battleSystem, ctx->battlerIdAttacker);
+        int attackerFieldSide = BattleSystem_GetBattlerSide(battleSystem, ctx->battlerIdAttacker);
         for (battlerID = 0; battlerID < maxBattlers; battlerID++) {
-            if (attackerFieldSide != BattleSystem_GetFieldSide(battleSystem, battlerID)) {
+            if (attackerFieldSide != BattleSystem_GetBattlerSide(battleSystem, battlerID)) {
                 break;
             }
         }
     } break;
     case BATTLER_CATEGORY_DEFENDER_ENEMY: {
         int maxBattlers = BattleSystem_GetMaxBattlers(battleSystem);
-        int targetFieldSide = BattleSystem_GetFieldSide(battleSystem, ctx->battlerIdTarget);
+        int targetFieldSide = BattleSystem_GetBattlerSide(battleSystem, ctx->battlerIdTarget);
         for (battlerID = 0; battlerID < maxBattlers; battlerID++) {
-            if (targetFieldSide != BattleSystem_GetFieldSide(battleSystem, battlerID)) {
+            if (targetFieldSide != BattleSystem_GetBattlerSide(battleSystem, battlerID)) {
                 break;
             }
         }
@@ -8082,7 +8082,7 @@ static void BattleSystem_UnloadLevelUpNameplate(BattleSystem *battleSystem, Gett
 }
 
 static void UpdateFriendshipFainted(BattleSystem *battleSystem, BattleContext *ctx, int battlerID) {
-    if (BattleSystem_GetFieldSide(battleSystem, battlerID) == 0) { // TODO: Side consts? Is this BATTLER_CATEGORY_ATTACKER?
+    if (BattleSystem_GetBattlerSide(battleSystem, battlerID) == 0) { // TODO: Side consts? Is this BATTLER_CATEGORY_ATTACKER?
         u8 enemyID;
         if (BattleSystem_GetBattleType(battleSystem) & BATTLE_TYPE_DOUBLES) {
             enemyID = BattleSystem_GetBattlerFromBattlerType(battleSystem, BATTLER_TYPE_ENEMY_SIDE_SLOT_1);

@@ -4,1051 +4,15 @@
 
 	.text
 
-	thumb_func_start TrainerAI_EvaluateMoves
-TrainerAI_EvaluateMoves: ; 0x0221C278
-	push {r3, r4, r5, r6, r7, lr}
-	add r7, r0, #0
-	mov r0, #0xd5
-	add r5, r1, #0
-	lsl r0, r0, #2
-	ldrb r0, [r5, r0]
-	cmp r0, #2
-	beq _0221C35E
-	mov r6, #0xd9
-	lsl r6, r6, #2
-	add r4, r6, #0
-	sub r4, #0x10
-_0221C290:
-	cmp r0, #0
-	beq _0221C29C
-	cmp r0, #1
-	beq _0221C2DC
-	cmp r0, #2
-	b _0221C354
-_0221C29C:
-	ldr r1, _0221C360 ; =0x00000365
-	ldr r0, _0221C364 ; =0x00002134
-	ldrb r1, [r5, r1]
-	ldr r0, [r5, r0]
-	lsl r1, r1, #2
-	ldr r1, [r0, r1]
-	ldr r0, _0221C368 ; =0x00002138
-	str r1, [r5, r0]
-	ldr r0, _0221C36C ; =0x000003CF
-	ldrb r1, [r5, r0]
-	mov r0, #0xc0
-	mul r0, r1
-	add r3, r5, r0
-	ldr r0, _0221C370 ; =0x00000355
-	ldrb r2, [r5, r0]
-	ldr r0, _0221C374 ; =0x00002D6C
-	add r1, r3, r2
-	ldrb r0, [r1, r0]
-	cmp r0, #0
-	bne _0221C2C8
-	mov r1, #0
-	b _0221C2D0
-_0221C2C8:
-	lsl r0, r2, #1
-	add r1, r3, r0
-	ldr r0, _0221C378 ; =0x00002D4C
-	ldrh r1, [r1, r0]
-_0221C2D0:
-	ldr r0, _0221C37C ; =0x00000356
-	strh r1, [r5, r0]
-	ldrb r0, [r5, r4]
-	add r0, r0, #1
-	strb r0, [r5, r4]
-	b _0221C354
-_0221C2DC:
-	ldr r0, _0221C37C ; =0x00000356
-	ldrh r0, [r5, r0]
-	cmp r0, #0
-	beq _0221C2FE
-	ldr r3, _0221C368 ; =0x00002138
-	ldr r2, _0221C364 ; =0x00002134
-	ldr r3, [r5, r3]
-	ldr r2, [r5, r2]
-	lsl r3, r3, #2
-	ldr r2, [r2, r3]
-	add r0, r7, #0
-	lsl r3, r2, #2
-	ldr r2, _0221C380 ; =ov10_0222B0B4
-	add r1, r5, #0
-	ldr r2, [r2, r3]
-	blx r2
-	b _0221C314
-_0221C2FE:
-	ldr r0, _0221C370 ; =0x00000355
-	mov r1, #0
-	ldrb r0, [r5, r0]
-	add r2, r5, r0
-	mov r0, #0xd6
-	lsl r0, r0, #2
-	strb r1, [r2, r0]
-	ldrb r1, [r5, r6]
-	mov r0, #1
-	orr r0, r1
-	strb r0, [r5, r6]
-_0221C314:
-	mov r0, #0xd9
-	lsl r0, r0, #2
-	ldrb r1, [r5, r0]
-	mov r0, #1
-	tst r0, r1
-	beq _0221C354
-	ldr r0, _0221C370 ; =0x00000355
-	ldrb r0, [r5, r0]
-	add r1, r0, #1
-	ldr r0, _0221C370 ; =0x00000355
-	strb r1, [r5, r0]
-	ldrb r0, [r5, r0]
-	cmp r0, #4
-	bhs _0221C346
-	mov r0, #0xd9
-	lsl r0, r0, #2
-	ldrb r1, [r5, r0]
-	mov r0, #8
-	tst r0, r1
-	bne _0221C346
-	mov r0, #0xd5
-	mov r1, #0
-	lsl r0, r0, #2
-	strb r1, [r5, r0]
-	b _0221C34C
-_0221C346:
-	ldrb r0, [r5, r4]
-	add r0, r0, #1
-	strb r0, [r5, r4]
-_0221C34C:
-	ldrb r1, [r5, r6]
-	mov r0, #0xfe
-	and r0, r1
-	strb r0, [r5, r6]
-_0221C354:
-	mov r0, #0xd5
-	lsl r0, r0, #2
-	ldrb r0, [r5, r0]
-	cmp r0, #2
-	bne _0221C290
-_0221C35E:
-	pop {r3, r4, r5, r6, r7, pc}
-	.balign 4, 0
-_0221C360: .word 0x00000365
-_0221C364: .word 0x00002134
-_0221C368: .word 0x00002138
-_0221C36C: .word 0x000003CF
-_0221C370: .word 0x00000355
-_0221C374: .word 0x00002D6C
-_0221C378: .word 0x00002D4C
-_0221C37C: .word 0x00000356
-_0221C380: .word ov10_0222B0B4
-	thumb_func_end TrainerAI_EvaluateMoves
-
-	thumb_func_start ov10_0221C384
-ov10_0221C384: ; 0x0221C384
-	push {r3, r4, r5, r6, r7, lr}
-	add r5, r1, #0
-	add r6, r0, #0
-	add r0, r5, #0
-	mov r1, #1
-	bl ov10_0221EF24
-	add r0, r5, #0
-	bl ov10_0221EEF0
-	add r4, r0, #0
-	add r0, r5, #0
-	bl ov10_0221EEF0
-	add r7, r0, #0
-	add r0, r6, #0
-	bl BattleSystem_Random
-	lsr r2, r0, #0x1f
-	lsl r1, r0, #0x18
-	sub r1, r1, r2
-	mov r0, #0x18
-	ror r1, r0
-	add r0, r2, r1
-	cmp r0, r4
-	bge _0221C3C0
-	add r0, r5, #0
-	add r1, r7, #0
-	bl ov10_0221EF24
-_0221C3C0:
-	pop {r3, r4, r5, r6, r7, pc}
-	.balign 4, 0
-	thumb_func_end ov10_0221C384
-
-	thumb_func_start ov10_0221C3C4
-ov10_0221C3C4: ; 0x0221C3C4
-	push {r3, r4, r5, r6, r7, lr}
-	add r5, r1, #0
-	add r6, r0, #0
-	add r0, r5, #0
-	mov r1, #1
-	bl ov10_0221EF24
-	add r0, r5, #0
-	bl ov10_0221EEF0
-	add r4, r0, #0
-	add r0, r5, #0
-	bl ov10_0221EEF0
-	add r7, r0, #0
-	add r0, r6, #0
-	bl BattleSystem_Random
-	lsr r2, r0, #0x1f
-	lsl r1, r0, #0x18
-	sub r1, r1, r2
-	mov r0, #0x18
-	ror r1, r0
-	add r0, r2, r1
-	cmp r0, r4
-	ble _0221C400
-	add r0, r5, #0
-	add r1, r7, #0
-	bl ov10_0221EF24
-_0221C400:
-	pop {r3, r4, r5, r6, r7, pc}
-	.balign 4, 0
-	thumb_func_end ov10_0221C3C4
-
-	thumb_func_start ov10_0221C404
-ov10_0221C404: ; 0x0221C404
-	push {r3, r4, r5, r6, r7, lr}
-	add r5, r1, #0
-	add r6, r0, #0
-	add r0, r5, #0
-	mov r1, #1
-	bl ov10_0221EF24
-	add r0, r5, #0
-	bl ov10_0221EEF0
-	add r4, r0, #0
-	add r0, r5, #0
-	bl ov10_0221EEF0
-	add r7, r0, #0
-	add r0, r6, #0
-	bl BattleSystem_Random
-	lsr r2, r0, #0x1f
-	lsl r1, r0, #0x18
-	sub r1, r1, r2
-	mov r0, #0x18
-	ror r1, r0
-	add r0, r2, r1
-	cmp r4, r0
-	bne _0221C440
-	add r0, r5, #0
-	add r1, r7, #0
-	bl ov10_0221EF24
-_0221C440:
-	pop {r3, r4, r5, r6, r7, pc}
-	.balign 4, 0
-	thumb_func_end ov10_0221C404
-
-	thumb_func_start ov10_0221C444
-ov10_0221C444: ; 0x0221C444
-	push {r3, r4, r5, r6, r7, lr}
-	add r5, r1, #0
-	add r6, r0, #0
-	add r0, r5, #0
-	mov r1, #1
-	bl ov10_0221EF24
-	add r0, r5, #0
-	bl ov10_0221EEF0
-	add r4, r0, #0
-	add r0, r5, #0
-	bl ov10_0221EEF0
-	add r7, r0, #0
-	add r0, r6, #0
-	bl BattleSystem_Random
-	lsr r2, r0, #0x1f
-	lsl r1, r0, #0x18
-	sub r1, r1, r2
-	mov r0, #0x18
-	ror r1, r0
-	add r0, r2, r1
-	cmp r4, r0
-	beq _0221C480
-	add r0, r5, #0
-	add r1, r7, #0
-	bl ov10_0221EF24
-_0221C480:
-	pop {r3, r4, r5, r6, r7, pc}
-	.balign 4, 0
-	thumb_func_end ov10_0221C444
-
-	thumb_func_start ov10_0221C484
-ov10_0221C484: ; 0x0221C484
-	push {r3, r4, r5, lr}
-	add r4, r1, #0
-	add r0, r4, #0
-	mov r1, #1
-	bl ov10_0221EF24
-	add r0, r4, #0
-	bl ov10_0221EEF0
-	mov r2, #0xd6
-	lsl r2, r2, #2
-	sub r3, r2, #3
-	ldrb r5, [r4, r3]
-	add r1, r4, r2
-	ldrsb r3, [r1, r5]
-	add r0, r3, r0
-	strb r0, [r1, r5]
-	sub r0, r2, #3
-	ldrb r2, [r4, r0]
-	ldrsb r0, [r1, r2]
-	cmp r0, #0
-	bge _0221C4B4
-	mov r0, #0
-	strb r0, [r1, r2]
-_0221C4B4:
-	pop {r3, r4, r5, pc}
-	.balign 4, 0
-	thumb_func_end ov10_0221C484
-
-	thumb_func_start ov10_0221C4B8
-ov10_0221C4B8: ; 0x0221C4B8
-	push {r3, r4, r5, r6, r7, lr}
-	add r5, r1, #0
-	add r0, r5, #0
-	mov r1, #1
-	bl ov10_0221EF24
-	add r0, r5, #0
-	bl ov10_0221EEF0
-	add r4, r0, #0
-	add r0, r5, #0
-	bl ov10_0221EEF0
-	add r6, r0, #0
-	add r0, r5, #0
-	bl ov10_0221EEF0
-	lsl r1, r4, #0x18
-	add r7, r0, #0
-	add r0, r5, #0
-	lsr r1, r1, #0x18
-	bl ov10_0221EF34
-	mov r1, #0xc0
-	mul r1, r0
-	ldr r3, _0221C50C ; =0x00002D8C
-	add r2, r5, r1
-	ldr r1, [r2, r3]
-	mov r0, #0x64
-	mul r0, r1
-	add r1, r3, #4
-	ldr r1, [r2, r1]
-	bl _u32_div_f
-	cmp r0, r6
-	bhs _0221C508
-	add r0, r5, #0
-	add r1, r7, #0
-	bl ov10_0221EF24
-_0221C508:
-	pop {r3, r4, r5, r6, r7, pc}
-	nop
-_0221C50C: .word 0x00002D8C
-	thumb_func_end ov10_0221C4B8
-
-	thumb_func_start ov10_0221C510
-ov10_0221C510: ; 0x0221C510
-	push {r3, r4, r5, r6, r7, lr}
-	add r5, r1, #0
-	add r0, r5, #0
-	mov r1, #1
-	bl ov10_0221EF24
-	add r0, r5, #0
-	bl ov10_0221EEF0
-	add r4, r0, #0
-	add r0, r5, #0
-	bl ov10_0221EEF0
-	add r6, r0, #0
-	add r0, r5, #0
-	bl ov10_0221EEF0
-	lsl r1, r4, #0x18
-	add r7, r0, #0
-	add r0, r5, #0
-	lsr r1, r1, #0x18
-	bl ov10_0221EF34
-	mov r1, #0xc0
-	mul r1, r0
-	ldr r3, _0221C564 ; =0x00002D8C
-	add r2, r5, r1
-	ldr r1, [r2, r3]
-	mov r0, #0x64
-	mul r0, r1
-	add r1, r3, #4
-	ldr r1, [r2, r1]
-	bl _u32_div_f
-	cmp r0, r6
-	bls _0221C560
-	add r0, r5, #0
-	add r1, r7, #0
-	bl ov10_0221EF24
-_0221C560:
-	pop {r3, r4, r5, r6, r7, pc}
-	nop
-_0221C564: .word 0x00002D8C
-	thumb_func_end ov10_0221C510
-
-	thumb_func_start ov10_0221C568
-ov10_0221C568: ; 0x0221C568
-	push {r3, r4, r5, r6, r7, lr}
-	add r5, r1, #0
-	add r0, r5, #0
-	mov r1, #1
-	bl ov10_0221EF24
-	add r0, r5, #0
-	bl ov10_0221EEF0
-	add r4, r0, #0
-	add r0, r5, #0
-	bl ov10_0221EEF0
-	add r6, r0, #0
-	add r0, r5, #0
-	bl ov10_0221EEF0
-	lsl r1, r4, #0x18
-	add r7, r0, #0
-	add r0, r5, #0
-	lsr r1, r1, #0x18
-	bl ov10_0221EF34
-	mov r1, #0xc0
-	mul r1, r0
-	ldr r3, _0221C5BC ; =0x00002D8C
-	add r2, r5, r1
-	ldr r1, [r2, r3]
-	mov r0, #0x64
-	mul r0, r1
-	add r1, r3, #4
-	ldr r1, [r2, r1]
-	bl _u32_div_f
-	cmp r0, r6
-	bne _0221C5B8
-	add r0, r5, #0
-	add r1, r7, #0
-	bl ov10_0221EF24
-_0221C5B8:
-	pop {r3, r4, r5, r6, r7, pc}
-	nop
-_0221C5BC: .word 0x00002D8C
-	thumb_func_end ov10_0221C568
-
-	thumb_func_start ov10_0221C5C0
-ov10_0221C5C0: ; 0x0221C5C0
-	push {r3, r4, r5, r6, r7, lr}
-	add r5, r1, #0
-	add r0, r5, #0
-	mov r1, #1
-	bl ov10_0221EF24
-	add r0, r5, #0
-	bl ov10_0221EEF0
-	add r4, r0, #0
-	add r0, r5, #0
-	bl ov10_0221EEF0
-	add r6, r0, #0
-	add r0, r5, #0
-	bl ov10_0221EEF0
-	lsl r1, r4, #0x18
-	add r7, r0, #0
-	add r0, r5, #0
-	lsr r1, r1, #0x18
-	bl ov10_0221EF34
-	mov r1, #0xc0
-	mul r1, r0
-	ldr r3, _0221C614 ; =0x00002D8C
-	add r2, r5, r1
-	ldr r1, [r2, r3]
-	mov r0, #0x64
-	mul r0, r1
-	add r1, r3, #4
-	ldr r1, [r2, r1]
-	bl _u32_div_f
-	cmp r0, r6
-	beq _0221C610
-	add r0, r5, #0
-	add r1, r7, #0
-	bl ov10_0221EF24
-_0221C610:
-	pop {r3, r4, r5, r6, r7, pc}
-	nop
-_0221C614: .word 0x00002D8C
-	thumb_func_end ov10_0221C5C0
-
-	thumb_func_start ov10_0221C618
-ov10_0221C618: ; 0x0221C618
-	push {r3, r4, r5, r6, r7, lr}
-	add r5, r1, #0
-	add r0, r5, #0
-	mov r1, #1
-	bl ov10_0221EF24
-	add r0, r5, #0
-	bl ov10_0221EEF0
-	add r4, r0, #0
-	add r0, r5, #0
-	bl ov10_0221EEF0
-	add r6, r0, #0
-	add r0, r5, #0
-	bl ov10_0221EEF0
-	lsl r1, r4, #0x18
-	add r7, r0, #0
-	add r0, r5, #0
-	lsr r1, r1, #0x18
-	bl ov10_0221EF34
-	mov r1, #0xc0
-	mul r1, r0
-	ldr r0, _0221C660 ; =0x00002DAC
-	add r1, r5, r1
-	ldr r0, [r1, r0]
-	tst r0, r6
-	beq _0221C65C
-	add r0, r5, #0
-	add r1, r7, #0
-	bl ov10_0221EF24
-_0221C65C:
-	pop {r3, r4, r5, r6, r7, pc}
-	nop
-_0221C660: .word 0x00002DAC
-	thumb_func_end ov10_0221C618
-
-	thumb_func_start ov10_0221C664
-ov10_0221C664: ; 0x0221C664
-	push {r3, r4, r5, r6, r7, lr}
-	add r5, r1, #0
-	add r0, r5, #0
-	mov r1, #1
-	bl ov10_0221EF24
-	add r0, r5, #0
-	bl ov10_0221EEF0
-	add r4, r0, #0
-	add r0, r5, #0
-	bl ov10_0221EEF0
-	add r6, r0, #0
-	add r0, r5, #0
-	bl ov10_0221EEF0
-	lsl r1, r4, #0x18
-	add r7, r0, #0
-	add r0, r5, #0
-	lsr r1, r1, #0x18
-	bl ov10_0221EF34
-	mov r1, #0xc0
-	mul r1, r0
-	ldr r0, _0221C6AC ; =0x00002DAC
-	add r1, r5, r1
-	ldr r0, [r1, r0]
-	tst r0, r6
-	bne _0221C6A8
-	add r0, r5, #0
-	add r1, r7, #0
-	bl ov10_0221EF24
-_0221C6A8:
-	pop {r3, r4, r5, r6, r7, pc}
-	nop
-_0221C6AC: .word 0x00002DAC
-	thumb_func_end ov10_0221C664
-
-	thumb_func_start ov10_0221C6B0
-ov10_0221C6B0: ; 0x0221C6B0
-	push {r3, r4, r5, r6, r7, lr}
-	add r5, r1, #0
-	add r0, r5, #0
-	mov r1, #1
-	bl ov10_0221EF24
-	add r0, r5, #0
-	bl ov10_0221EEF0
-	add r4, r0, #0
-	add r0, r5, #0
-	bl ov10_0221EEF0
-	add r6, r0, #0
-	add r0, r5, #0
-	bl ov10_0221EEF0
-	lsl r1, r4, #0x18
-	add r7, r0, #0
-	add r0, r5, #0
-	lsr r1, r1, #0x18
-	bl ov10_0221EF34
-	mov r1, #0xc0
-	mul r1, r0
-	ldr r0, _0221C6F8 ; =0x00002DB0
-	add r1, r5, r1
-	ldr r0, [r1, r0]
-	tst r0, r6
-	beq _0221C6F4
-	add r0, r5, #0
-	add r1, r7, #0
-	bl ov10_0221EF24
-_0221C6F4:
-	pop {r3, r4, r5, r6, r7, pc}
-	nop
-_0221C6F8: .word 0x00002DB0
-	thumb_func_end ov10_0221C6B0
-
-	thumb_func_start ov10_0221C6FC
-ov10_0221C6FC: ; 0x0221C6FC
-	push {r3, r4, r5, r6, r7, lr}
-	add r5, r1, #0
-	add r0, r5, #0
-	mov r1, #1
-	bl ov10_0221EF24
-	add r0, r5, #0
-	bl ov10_0221EEF0
-	add r4, r0, #0
-	add r0, r5, #0
-	bl ov10_0221EEF0
-	add r6, r0, #0
-	add r0, r5, #0
-	bl ov10_0221EEF0
-	lsl r1, r4, #0x18
-	add r7, r0, #0
-	add r0, r5, #0
-	lsr r1, r1, #0x18
-	bl ov10_0221EF34
-	mov r1, #0xc0
-	mul r1, r0
-	ldr r0, _0221C744 ; =0x00002DB0
-	add r1, r5, r1
-	ldr r0, [r1, r0]
-	tst r0, r6
-	bne _0221C740
-	add r0, r5, #0
-	add r1, r7, #0
-	bl ov10_0221EF24
-_0221C740:
-	pop {r3, r4, r5, r6, r7, pc}
-	nop
-_0221C744: .word 0x00002DB0
-	thumb_func_end ov10_0221C6FC
-
-	thumb_func_start ov10_0221C748
-ov10_0221C748: ; 0x0221C748
-	push {r3, r4, r5, r6, r7, lr}
-	add r5, r1, #0
-	add r0, r5, #0
-	mov r1, #1
-	bl ov10_0221EF24
-	add r0, r5, #0
-	bl ov10_0221EEF0
-	add r4, r0, #0
-	add r0, r5, #0
-	bl ov10_0221EEF0
-	add r6, r0, #0
-	add r0, r5, #0
-	bl ov10_0221EEF0
-	lsl r1, r4, #0x18
-	add r7, r0, #0
-	add r0, r5, #0
-	lsr r1, r1, #0x18
-	bl ov10_0221EF34
-	mov r1, #0xc0
-	mul r1, r0
-	mov r0, #0xb7
-	add r1, r5, r1
-	lsl r0, r0, #6
-	ldr r0, [r1, r0]
-	tst r0, r6
-	beq _0221C78E
-	add r0, r5, #0
-	add r1, r7, #0
-	bl ov10_0221EF24
-_0221C78E:
-	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ov10_0221C748
-
-	thumb_func_start ov10_0221C790
-ov10_0221C790: ; 0x0221C790
-	push {r3, r4, r5, r6, r7, lr}
-	add r5, r1, #0
-	add r0, r5, #0
-	mov r1, #1
-	bl ov10_0221EF24
-	add r0, r5, #0
-	bl ov10_0221EEF0
-	add r4, r0, #0
-	add r0, r5, #0
-	bl ov10_0221EEF0
-	add r6, r0, #0
-	add r0, r5, #0
-	bl ov10_0221EEF0
-	lsl r1, r4, #0x18
-	add r7, r0, #0
-	add r0, r5, #0
-	lsr r1, r1, #0x18
-	bl ov10_0221EF34
-	mov r1, #0xc0
-	mul r1, r0
-	mov r0, #0xb7
-	add r1, r5, r1
-	lsl r0, r0, #6
-	ldr r0, [r1, r0]
-	tst r0, r6
-	bne _0221C7D6
-	add r0, r5, #0
-	add r1, r7, #0
-	bl ov10_0221EF24
-_0221C7D6:
-	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ov10_0221C790
-
-	thumb_func_start ov10_0221C7D8
-ov10_0221C7D8: ; 0x0221C7D8
-	push {r3, r4, r5, r6, r7, lr}
-	add r5, r1, #0
-	add r7, r0, #0
-	add r0, r5, #0
-	mov r1, #1
-	bl ov10_0221EF24
-	add r0, r5, #0
-	bl ov10_0221EEF0
-	add r4, r0, #0
-	add r0, r5, #0
-	bl ov10_0221EEF0
-	add r6, r0, #0
-	add r0, r5, #0
-	bl ov10_0221EEF0
-	lsl r1, r4, #0x18
-	str r0, [sp]
-	add r0, r5, #0
-	lsr r1, r1, #0x18
-	bl ov10_0221EF34
-	add r1, r0, #0
-	add r0, r7, #0
-	bl BattleSystem_GetFieldSide
-	lsl r0, r0, #2
-	add r1, r5, r0
-	mov r0, #0x6f
-	lsl r0, r0, #2
-	ldr r0, [r1, r0]
-	tst r0, r6
-	beq _0221C826
-	ldr r1, [sp]
-	add r0, r5, #0
-	bl ov10_0221EF24
-_0221C826:
-	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ov10_0221C7D8
-
-	thumb_func_start ov10_0221C828
-ov10_0221C828: ; 0x0221C828
-	push {r3, r4, r5, r6, r7, lr}
-	add r5, r1, #0
-	add r7, r0, #0
-	add r0, r5, #0
-	mov r1, #1
-	bl ov10_0221EF24
-	add r0, r5, #0
-	bl ov10_0221EEF0
-	add r4, r0, #0
-	add r0, r5, #0
-	bl ov10_0221EEF0
-	add r6, r0, #0
-	add r0, r5, #0
-	bl ov10_0221EEF0
-	lsl r1, r4, #0x18
-	str r0, [sp]
-	add r0, r5, #0
-	lsr r1, r1, #0x18
-	bl ov10_0221EF34
-	add r1, r0, #0
-	add r0, r7, #0
-	bl BattleSystem_GetFieldSide
-	lsl r0, r0, #2
-	add r1, r5, r0
-	mov r0, #0x6f
-	lsl r0, r0, #2
-	ldr r0, [r1, r0]
-	tst r0, r6
-	bne _0221C876
-	ldr r1, [sp]
-	add r0, r5, #0
-	bl ov10_0221EF24
-_0221C876:
-	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ov10_0221C828
-
-	thumb_func_start ov10_0221C878
-ov10_0221C878: ; 0x0221C878
-	push {r3, r4, r5, lr}
-	add r5, r1, #0
-	add r0, r5, #0
-	mov r1, #1
-	bl ov10_0221EF24
-	add r0, r5, #0
-	bl ov10_0221EEF0
-	add r4, r0, #0
-	add r0, r5, #0
-	bl ov10_0221EEF0
-	add r1, r0, #0
-	mov r0, #0xd7
-	lsl r0, r0, #2
-	ldr r0, [r5, r0]
-	cmp r0, r4
-	bge _0221C8A4
-	add r0, r5, #0
-	bl ov10_0221EF24
-_0221C8A4:
-	pop {r3, r4, r5, pc}
-	.balign 4, 0
-	thumb_func_end ov10_0221C878
-
-	thumb_func_start ov10_0221C8A8
-ov10_0221C8A8: ; 0x0221C8A8
-	push {r3, r4, r5, lr}
-	add r5, r1, #0
-	add r0, r5, #0
-	mov r1, #1
-	bl ov10_0221EF24
-	add r0, r5, #0
-	bl ov10_0221EEF0
-	add r4, r0, #0
-	add r0, r5, #0
-	bl ov10_0221EEF0
-	add r1, r0, #0
-	mov r0, #0xd7
-	lsl r0, r0, #2
-	ldr r0, [r5, r0]
-	cmp r0, r4
-	ble _0221C8D4
-	add r0, r5, #0
-	bl ov10_0221EF24
-_0221C8D4:
-	pop {r3, r4, r5, pc}
-	.balign 4, 0
-	thumb_func_end ov10_0221C8A8
-
-	thumb_func_start ov10_0221C8D8
-ov10_0221C8D8: ; 0x0221C8D8
-	push {r3, r4, r5, lr}
-	add r5, r1, #0
-	add r0, r5, #0
-	mov r1, #1
-	bl ov10_0221EF24
-	add r0, r5, #0
-	bl ov10_0221EEF0
-	add r4, r0, #0
-	add r0, r5, #0
-	bl ov10_0221EEF0
-	add r1, r0, #0
-	mov r0, #0xd7
-	lsl r0, r0, #2
-	ldr r0, [r5, r0]
-	cmp r0, r4
-	bne _0221C904
-	add r0, r5, #0
-	bl ov10_0221EF24
-_0221C904:
-	pop {r3, r4, r5, pc}
-	.balign 4, 0
-	thumb_func_end ov10_0221C8D8
-
-	thumb_func_start ov10_0221C908
-ov10_0221C908: ; 0x0221C908
-	push {r3, r4, r5, lr}
-	add r5, r1, #0
-	add r0, r5, #0
-	mov r1, #1
-	bl ov10_0221EF24
-	add r0, r5, #0
-	bl ov10_0221EEF0
-	add r4, r0, #0
-	add r0, r5, #0
-	bl ov10_0221EEF0
-	add r1, r0, #0
-	mov r0, #0xd7
-	lsl r0, r0, #2
-	ldr r0, [r5, r0]
-	cmp r0, r4
-	beq _0221C934
-	add r0, r5, #0
-	bl ov10_0221EF24
-_0221C934:
-	pop {r3, r4, r5, pc}
-	.balign 4, 0
-	thumb_func_end ov10_0221C908
-
-	thumb_func_start ov10_0221C938
-ov10_0221C938: ; 0x0221C938
-	push {r3, r4, r5, lr}
-	add r5, r1, #0
-	add r0, r5, #0
-	mov r1, #1
-	bl ov10_0221EF24
-	add r0, r5, #0
-	bl ov10_0221EEF0
-	add r4, r0, #0
-	add r0, r5, #0
-	bl ov10_0221EEF0
-	add r1, r0, #0
-	mov r0, #0xd7
-	lsl r0, r0, #2
-	ldr r0, [r5, r0]
-	tst r0, r4
-	beq _0221C964
-	add r0, r5, #0
-	bl ov10_0221EF24
-_0221C964:
-	pop {r3, r4, r5, pc}
-	.balign 4, 0
-	thumb_func_end ov10_0221C938
-
-	thumb_func_start ov10_0221C968
-ov10_0221C968: ; 0x0221C968
-	push {r3, r4, r5, lr}
-	add r5, r1, #0
-	add r0, r5, #0
-	mov r1, #1
-	bl ov10_0221EF24
-	add r0, r5, #0
-	bl ov10_0221EEF0
-	add r4, r0, #0
-	add r0, r5, #0
-	bl ov10_0221EEF0
-	add r1, r0, #0
-	mov r0, #0xd7
-	lsl r0, r0, #2
-	ldr r0, [r5, r0]
-	tst r0, r4
-	bne _0221C994
-	add r0, r5, #0
-	bl ov10_0221EF24
-_0221C994:
-	pop {r3, r4, r5, pc}
-	.balign 4, 0
-	thumb_func_end ov10_0221C968
-
-	thumb_func_start ov10_0221C998
-ov10_0221C998: ; 0x0221C998
-	push {r3, r4, r5, lr}
-	add r5, r1, #0
-	add r0, r5, #0
-	mov r1, #1
-	bl ov10_0221EF24
-	add r0, r5, #0
-	bl ov10_0221EEF0
-	add r4, r0, #0
-	add r0, r5, #0
-	bl ov10_0221EEF0
-	add r1, r0, #0
-	ldr r0, _0221C9C4 ; =0x00000356
-	ldrh r0, [r5, r0]
-	cmp r0, r4
-	bne _0221C9C2
-	add r0, r5, #0
-	bl ov10_0221EF24
-_0221C9C2:
-	pop {r3, r4, r5, pc}
-	.balign 4, 0
-_0221C9C4: .word 0x00000356
-	thumb_func_end ov10_0221C998
-
-	thumb_func_start ov10_0221C9C8
-ov10_0221C9C8: ; 0x0221C9C8
-	push {r3, r4, r5, lr}
-	add r5, r1, #0
-	add r0, r5, #0
-	mov r1, #1
-	bl ov10_0221EF24
-	add r0, r5, #0
-	bl ov10_0221EEF0
-	add r4, r0, #0
-	add r0, r5, #0
-	bl ov10_0221EEF0
-	add r1, r0, #0
-	ldr r0, _0221C9F4 ; =0x00000356
-	ldrh r0, [r5, r0]
-	cmp r0, r4
-	beq _0221C9F2
-	add r0, r5, #0
-	bl ov10_0221EF24
-_0221C9F2:
-	pop {r3, r4, r5, pc}
-	.balign 4, 0
-_0221C9F4: .word 0x00000356
-	thumb_func_end ov10_0221C9C8
-
-	thumb_func_start ov10_0221C9F8
-ov10_0221C9F8: ; 0x0221C9F8
-	push {r3, r4, r5, r6, r7, lr}
-	add r5, r1, #0
-	add r0, r5, #0
-	mov r1, #1
-	bl ov10_0221EF24
-	add r0, r5, #0
-	bl ov10_0221EEF0
-	add r4, r0, #0
-	add r0, r5, #0
-	bl ov10_0221EEF0
-	str r0, [sp]
-	add r0, r5, #0
-	add r1, r4, #0
-	bl ov10_0221EF10
-	mov r1, #0
-	mvn r1, r1
-	cmp r0, r1
-	beq _0221CA48
-	mov r6, #0xd7
-	add r7, r1, #0
-	lsl r6, r6, #2
-_0221CA2A:
-	ldr r1, [r5, r6]
-	cmp r1, r0
-	bne _0221CA3A
-	ldr r1, [sp]
-	add r0, r5, #0
-	bl ov10_0221EF24
-	pop {r3, r4, r5, r6, r7, pc}
-_0221CA3A:
-	add r4, r4, #1
-	add r0, r5, #0
-	add r1, r4, #0
-	bl ov10_0221EF10
-	cmp r0, r7
-	bne _0221CA2A
-_0221CA48:
-	pop {r3, r4, r5, r6, r7, pc}
-	.balign 4, 0
-	thumb_func_end ov10_0221C9F8
-
-	thumb_func_start ov10_0221CA4C
-ov10_0221CA4C: ; 0x0221CA4C
-	push {r3, r4, r5, r6, r7, lr}
-	add r5, r1, #0
-	add r0, r5, #0
-	mov r1, #1
-	bl ov10_0221EF24
-	add r0, r5, #0
-	bl ov10_0221EEF0
-	add r4, r0, #0
-	add r0, r5, #0
-	bl ov10_0221EEF0
-	str r0, [sp]
-	add r0, r5, #0
-	add r1, r4, #0
-	bl ov10_0221EF10
-	mov r1, #0
-	mvn r1, r1
-	cmp r0, r1
-	beq _0221CA92
-	mov r6, #0xd7
-	add r7, r1, #0
-	lsl r6, r6, #2
-_0221CA7E:
-	ldr r1, [r5, r6]
-	cmp r1, r0
-	beq _0221CA9A
-	add r4, r4, #1
-	add r0, r5, #0
-	add r1, r4, #0
-	bl ov10_0221EF10
-	cmp r0, r7
-	bne _0221CA7E
-_0221CA92:
-	ldr r1, [sp]
-	add r0, r5, #0
-	bl ov10_0221EF24
-_0221CA9A:
-	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ov10_0221CA4C
-
 	thumb_func_start ov10_0221CA9C
 ov10_0221CA9C: ; 0x0221CA9C
 	push {r3, r4, r5, r6, r7, lr}
 	add r6, r1, #0
 	add r0, r6, #0
 	mov r1, #1
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	add r0, r6, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	ldr r1, _0221CAF4 ; =0x000003CF
 	mov ip, r0
 	ldrb r2, [r6, r1]
@@ -1083,7 +47,7 @@ _0221CAE4:
 	bge _0221CAF0
 	add r0, r6, #0
 	mov r1, ip
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 _0221CAF0:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -1098,9 +62,9 @@ ov10_0221CB00: ; 0x0221CB00
 	add r6, r1, #0
 	add r0, r6, #0
 	mov r1, #1
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	add r0, r6, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	ldr r1, _0221CB58 ; =0x000003CF
 	mov ip, r0
 	ldrb r2, [r6, r1]
@@ -1135,7 +99,7 @@ _0221CB48:
 	bne _0221CB54
 	add r0, r6, #0
 	mov r1, ip
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 _0221CB54:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -1150,7 +114,7 @@ ov10_0221CB64: ; 0x0221CB64
 	add r4, r1, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	mov r0, #0x15
 	lsl r0, r0, #4
 	ldr r1, [r4, r0]
@@ -1168,9 +132,9 @@ ov10_0221CB80: ; 0x0221CB80
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	add r0, r4, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	cmp r0, #8
 	bls _0221CB9A
 	b _0221CCA4
@@ -1320,17 +284,17 @@ ov10_0221CCB4: ; 0x0221CCB4
 	add r5, r1, #0
 	add r0, r5, #0
 	mov r1, #1
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	add r0, r5, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	add r6, r0, #0
 	add r0, r5, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	lsl r1, r6, #0x18
 	add r4, r0, #0
 	add r0, r5, #0
 	lsr r1, r1, #0x18
-	bl ov10_0221EF34
+	bl AIScript_Battler
 	add r6, r0, #0
 	add r0, r5, #0
 	add r1, r6, #0
@@ -1366,7 +330,7 @@ ov10_0221CD10: ; 0x0221CD10
 	add r4, r1, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	ldr r0, _0221CD30 ; =0x00000356
 	ldrh r1, [r4, r0]
 	lsl r1, r1, #4
@@ -1389,9 +353,9 @@ ov10_0221CD34: ; 0x0221CD34
 	str r0, [sp, #0x18]
 	add r0, r6, #0
 	mov r1, #1
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	add r0, r6, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	ldr r2, _0221CE50 ; =0x00000356
 	str r0, [sp, #0x1c]
 	ldrh r3, [r6, r2]
@@ -1546,14 +510,14 @@ ov10_0221CE70: ; 0x0221CE70
 	add r4, r1, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	add r0, r4, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	add r1, r0, #0
 	lsl r1, r1, #0x18
 	add r0, r4, #0
 	lsr r1, r1, #0x18
-	bl ov10_0221EF34
+	bl AIScript_Battler
 	lsl r0, r0, #1
 	add r1, r4, r0
 	ldr r0, _0221CEA0 ; =0x0000307C
@@ -1572,12 +536,12 @@ ov10_0221CEA4: ; 0x0221CEA4
 	add r5, r1, #0
 	add r0, r5, #0
 	mov r1, #1
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	add r0, r5, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	add r4, r0, #0
 	add r0, r5, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	add r1, r0, #0
 	mov r0, #0xd7
 	lsl r0, r0, #2
@@ -1585,7 +549,7 @@ ov10_0221CEA4: ; 0x0221CEA4
 	cmp r4, r0
 	bne _0221CED0
 	add r0, r5, #0
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 _0221CED0:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -1597,12 +561,12 @@ ov10_0221CED4: ; 0x0221CED4
 	add r5, r1, #0
 	add r0, r5, #0
 	mov r1, #1
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	add r0, r5, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	add r4, r0, #0
 	add r0, r5, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	add r1, r0, #0
 	mov r0, #0xd7
 	lsl r0, r0, #2
@@ -1610,7 +574,7 @@ ov10_0221CED4: ; 0x0221CED4
 	cmp r4, r0
 	beq _0221CF00
 	add r0, r5, #0
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 _0221CF00:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -1623,12 +587,12 @@ ov10_0221CF04: ; 0x0221CF04
 	add r6, r0, #0
 	add r0, r5, #0
 	mov r1, #1
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	add r0, r5, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	add r4, r0, #0
 	add r0, r5, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	add r7, r0, #0
 	mov r0, #1
 	str r0, [sp]
@@ -1643,7 +607,7 @@ ov10_0221CF04: ; 0x0221CF04
 	bne _0221CF42
 	add r0, r5, #0
 	add r1, r7, #0
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 _0221CF42:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -1657,12 +621,12 @@ ov10_0221CF48: ; 0x0221CF48
 	add r6, r0, #0
 	add r0, r5, #0
 	mov r1, #1
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	add r0, r5, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	add r4, r0, #0
 	add r0, r5, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	add r7, r0, #0
 	mov r0, #1
 	str r0, [sp]
@@ -1677,7 +641,7 @@ ov10_0221CF48: ; 0x0221CF48
 	beq _0221CF86
 	add r0, r5, #0
 	add r1, r7, #0
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 _0221CF86:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -1692,9 +656,9 @@ ov10_0221CF8C: ; 0x0221CF8C
 	add r7, r0, #0
 	add r0, r5, #0
 	mov r1, #1
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	add r0, r5, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	add r2, r0, #0
 	mov r0, #0xd7
 	mov r1, #0
@@ -1703,7 +667,7 @@ ov10_0221CF8C: ; 0x0221CF8C
 	lsl r1, r2, #0x18
 	add r0, r5, #0
 	lsr r1, r1, #0x18
-	bl ov10_0221EF34
+	bl AIScript_Battler
 	str r0, [sp]
 	ldr r1, [sp]
 	add r0, r7, #0
@@ -1797,7 +761,7 @@ ov10_0221D068: ; 0x0221D068
 	add r4, r1, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	ldr r0, _0221D080 ; =0x00000356
 	ldrh r1, [r4, r0]
 	add r0, r0, #6
@@ -1813,7 +777,7 @@ ov10_0221D084: ; 0x0221D084
 	add r4, r1, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	ldr r0, _0221D0A4 ; =0x00000356
 	ldrh r1, [r4, r0]
 	lsl r1, r1, #4
@@ -1835,14 +799,14 @@ ov10_0221D0A8: ; 0x0221D0A8
 	str r0, [sp]
 	add r0, r5, #0
 	mov r1, #1
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	add r0, r5, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	add r7, r0, #0
 	lsl r1, r7, #0x18
 	add r0, r5, #0
 	lsr r1, r1, #0x18
-	bl ov10_0221EF34
+	bl AIScript_Battler
 	add r1, r0, #0
 	mov r3, #0xb7
 	mov r2, #2
@@ -1951,17 +915,17 @@ ov10_0221D188: ; 0x0221D188
 	add r5, r1, #0
 	add r0, r5, #0
 	mov r1, #1
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	add r0, r5, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	add r4, r0, #0
 	add r0, r5, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	lsl r1, r4, #0x18
 	add r7, r0, #0
 	add r0, r5, #0
 	lsr r1, r1, #0x18
-	bl ov10_0221EF34
+	bl AIScript_Battler
 	mov r1, #0xc0
 	mul r1, r0
 	mov r2, #2
@@ -2067,7 +1031,7 @@ ov10_0221D260: ; 0x0221D260
 	add r7, r0, #0
 	add r0, r5, #0
 	mov r1, #1
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	mov r0, #0
 	mov r1, #0xd7
 	lsl r1, r1, #2
@@ -2163,12 +1127,12 @@ ov10_0221D314: ; 0x0221D314
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	add r0, r4, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	add r7, r0, #0
 	add r0, r4, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	str r0, [sp, #0x10]
 	mov r0, #0
 	str r0, [sp, #0x14]
@@ -2224,7 +1188,7 @@ _0221D392:
 	bne _0221D39E
 	ldr r1, [sp, #0x10]
 	add r0, r4, #0
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 _0221D39E:
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
@@ -2241,20 +1205,20 @@ ov10_0221D3AC: ; 0x0221D3AC
 	str r1, [sp]
 	add r0, r1, #0
 	mov r1, #1
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	ldr r0, [sp]
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	add r4, r0, #0
 	ldr r0, [sp]
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	str r0, [sp, #0x10]
 	ldr r0, [sp]
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	str r0, [sp, #0xc]
 	lsl r1, r4, #0x18
 	ldr r0, [sp]
 	lsr r1, r1, #0x18
-	bl ov10_0221EF34
+	bl AIScript_Battler
 	add r6, r0, #0
 	ldr r1, [r7, #0x2c]
 	mov r0, #2
@@ -2330,7 +1294,7 @@ _0221D42A:
 	beq _0221D486
 	ldr r0, [sp]
 	ldr r1, [sp, #0xc]
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
 _0221D486:
@@ -2356,20 +1320,20 @@ ov10_0221D4A0: ; 0x0221D4A0
 	str r1, [sp]
 	add r0, r1, #0
 	mov r1, #1
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	ldr r0, [sp]
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	add r4, r0, #0
 	ldr r0, [sp]
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	str r0, [sp, #0x10]
 	ldr r0, [sp]
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	str r0, [sp, #0xc]
 	lsl r1, r4, #0x18
 	ldr r0, [sp]
 	lsr r1, r1, #0x18
-	bl ov10_0221EF34
+	bl AIScript_Battler
 	add r6, r0, #0
 	ldr r1, [r7, #0x2c]
 	mov r0, #2
@@ -2445,7 +1409,7 @@ _0221D51E:
 	bne _0221D57A
 	ldr r0, [sp]
 	ldr r1, [sp, #0xc]
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
 _0221D57A:
@@ -2469,7 +1433,7 @@ ov10_0221D594: ; 0x0221D594
 	add r4, r1, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	mov r0, #0xd7
 	mov r1, #0
 	lsl r0, r0, #2
@@ -2537,12 +1501,12 @@ ov10_0221D60C: ; 0x0221D60C
 	add r5, r1, #0
 	add r0, r5, #0
 	mov r1, #1
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	add r0, r5, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	add r4, r0, #0
 	add r0, r5, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	add r1, r0, #0
 	ldr r0, _0221D640 ; =0x00000356
 	ldrh r2, [r5, r0]
@@ -2553,7 +1517,7 @@ ov10_0221D60C: ; 0x0221D60C
 	cmp r4, r0
 	bne _0221D63E
 	add r0, r5, #0
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 _0221D63E:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -2566,12 +1530,12 @@ ov10_0221D644: ; 0x0221D644
 	add r5, r1, #0
 	add r0, r5, #0
 	mov r1, #1
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	add r0, r5, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	add r4, r0, #0
 	add r0, r5, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	add r1, r0, #0
 	ldr r0, _0221D678 ; =0x00000356
 	ldrh r2, [r5, r0]
@@ -2582,7 +1546,7 @@ ov10_0221D644: ; 0x0221D644
 	cmp r4, r0
 	beq _0221D676
 	add r0, r5, #0
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 _0221D676:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -2595,23 +1559,23 @@ ov10_0221D67C: ; 0x0221D67C
 	add r5, r1, #0
 	add r0, r5, #0
 	mov r1, #1
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	add r0, r5, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	add r4, r0, #0
 	add r0, r5, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	add r6, r0, #0
 	add r0, r5, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	add r7, r0, #0
 	add r0, r5, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	lsl r1, r4, #0x18
 	str r0, [sp]
 	add r0, r5, #0
 	lsr r1, r1, #0x18
-	bl ov10_0221EF34
+	bl AIScript_Battler
 	mov r1, #0xc0
 	mul r1, r0
 	add r0, r5, r1
@@ -2622,7 +1586,7 @@ ov10_0221D67C: ; 0x0221D67C
 	bge _0221D6CA
 	ldr r1, [sp]
 	add r0, r5, #0
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 _0221D6CA:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -2635,23 +1599,23 @@ ov10_0221D6D0: ; 0x0221D6D0
 	add r5, r1, #0
 	add r0, r5, #0
 	mov r1, #1
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	add r0, r5, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	add r4, r0, #0
 	add r0, r5, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	add r6, r0, #0
 	add r0, r5, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	add r7, r0, #0
 	add r0, r5, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	lsl r1, r4, #0x18
 	str r0, [sp]
 	add r0, r5, #0
 	lsr r1, r1, #0x18
-	bl ov10_0221EF34
+	bl AIScript_Battler
 	mov r1, #0xc0
 	mul r1, r0
 	add r0, r5, r1
@@ -2662,7 +1626,7 @@ ov10_0221D6D0: ; 0x0221D6D0
 	ble _0221D71E
 	ldr r1, [sp]
 	add r0, r5, #0
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 _0221D71E:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -2675,23 +1639,23 @@ ov10_0221D724: ; 0x0221D724
 	add r5, r1, #0
 	add r0, r5, #0
 	mov r1, #1
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	add r0, r5, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	add r4, r0, #0
 	add r0, r5, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	add r6, r0, #0
 	add r0, r5, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	add r7, r0, #0
 	add r0, r5, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	lsl r1, r4, #0x18
 	str r0, [sp]
 	add r0, r5, #0
 	lsr r1, r1, #0x18
-	bl ov10_0221EF34
+	bl AIScript_Battler
 	mov r1, #0xc0
 	mul r1, r0
 	add r0, r5, r1
@@ -2702,7 +1666,7 @@ ov10_0221D724: ; 0x0221D724
 	bne _0221D772
 	ldr r1, [sp]
 	add r0, r5, #0
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 _0221D772:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -2715,23 +1679,23 @@ ov10_0221D778: ; 0x0221D778
 	add r5, r1, #0
 	add r0, r5, #0
 	mov r1, #1
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	add r0, r5, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	add r4, r0, #0
 	add r0, r5, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	add r6, r0, #0
 	add r0, r5, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	add r7, r0, #0
 	add r0, r5, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	lsl r1, r4, #0x18
 	str r0, [sp]
 	add r0, r5, #0
 	lsr r1, r1, #0x18
-	bl ov10_0221EF34
+	bl AIScript_Battler
 	mov r1, #0xc0
 	mul r1, r0
 	add r0, r5, r1
@@ -2742,7 +1706,7 @@ ov10_0221D778: ; 0x0221D778
 	beq _0221D7C6
 	ldr r1, [sp]
 	add r0, r5, #0
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 _0221D7C6:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -2757,12 +1721,12 @@ ov10_0221D7CC: ; 0x0221D7CC
 	str r0, [sp, #0x14]
 	add r0, r6, #0
 	mov r1, #1
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	add r0, r6, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	add r4, r0, #0
 	add r0, r6, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	str r0, [sp, #0x1c]
 	cmp r4, #1
 	bne _0221D7FE
@@ -2881,7 +1845,7 @@ _0221D860:
 	bhi _0221D8D0
 	ldr r1, [sp, #0x1c]
 	add r0, r6, #0
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 _0221D8D0:
 	add sp, #0x28
 	pop {r3, r4, r5, r6, r7, pc}
@@ -2905,12 +1869,12 @@ ov10_0221D8F8: ; 0x0221D8F8
 	str r0, [sp, #0x14]
 	add r0, r6, #0
 	mov r1, #1
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	add r0, r6, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	add r4, r0, #0
 	add r0, r6, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	str r0, [sp, #0x1c]
 	cmp r4, #1
 	bne _0221D92A
@@ -3029,7 +1993,7 @@ _0221D98C:
 	bls _0221D9FC
 	ldr r1, [sp, #0x1c]
 	add r0, r6, #0
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 _0221D9FC:
 	add sp, #0x28
 	pop {r3, r4, r5, r6, r7, pc}
@@ -3051,20 +2015,20 @@ ov10_0221DA24: ; 0x0221DA24
 	add r5, r1, #0
 	add r0, r5, #0
 	mov r1, #1
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	add r0, r5, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	add r6, r0, #0
 	add r0, r5, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	add r4, r0, #0
 	add r0, r5, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	lsl r1, r6, #0x18
 	add r7, r0, #0
 	add r0, r5, #0
 	lsr r1, r1, #0x18
-	bl ov10_0221EF34
+	bl AIScript_Battler
 	cmp r6, #0
 	beq _0221DAB4
 	cmp r6, #1
@@ -3091,7 +2055,7 @@ _0221DA78:
 	bge _0221DAD8
 	add r0, r5, #0
 	add r1, r7, #0
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	pop {r3, r4, r5, r6, r7, pc}
 _0221DA86:
 	mov r1, #0xc0
@@ -3116,7 +2080,7 @@ _0221DAA6:
 	bge _0221DAD8
 	add r0, r5, #0
 	add r1, r7, #0
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	pop {r3, r4, r5, r6, r7, pc}
 _0221DAB4:
 	lsl r0, r0, #3
@@ -3137,7 +2101,7 @@ _0221DACC:
 	bge _0221DAD8
 	add r0, r5, #0
 	add r1, r7, #0
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 _0221DAD8:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -3151,20 +2115,20 @@ ov10_0221DAE4: ; 0x0221DAE4
 	add r5, r1, #0
 	add r0, r5, #0
 	mov r1, #1
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	add r0, r5, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	add r6, r0, #0
 	add r0, r5, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	add r4, r0, #0
 	add r0, r5, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	lsl r1, r6, #0x18
 	add r7, r0, #0
 	add r0, r5, #0
 	lsr r1, r1, #0x18
-	bl ov10_0221EF34
+	bl AIScript_Battler
 	cmp r6, #0
 	beq _0221DB74
 	cmp r6, #1
@@ -3191,7 +2155,7 @@ _0221DB38:
 	bne _0221DB98
 	add r0, r5, #0
 	add r1, r7, #0
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	pop {r3, r4, r5, r6, r7, pc}
 _0221DB46:
 	mov r1, #0xc0
@@ -3216,7 +2180,7 @@ _0221DB66:
 	bne _0221DB98
 	add r0, r5, #0
 	add r1, r7, #0
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	pop {r3, r4, r5, r6, r7, pc}
 _0221DB74:
 	lsl r0, r0, #3
@@ -3237,7 +2201,7 @@ _0221DB8C:
 	bne _0221DB98
 	add r0, r5, #0
 	add r1, r7, #0
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 _0221DB98:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -3251,20 +2215,20 @@ ov10_0221DBA4: ; 0x0221DBA4
 	add r5, r1, #0
 	add r0, r5, #0
 	mov r1, #1
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	add r0, r5, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	add r6, r0, #0
 	add r0, r5, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	add r4, r0, #0
 	add r0, r5, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	lsl r1, r6, #0x18
 	add r7, r0, #0
 	add r0, r5, #0
 	lsr r1, r1, #0x18
-	bl ov10_0221EF34
+	bl AIScript_Battler
 	cmp r6, #0
 	beq _0221DC0C
 	cmp r6, #1
@@ -3294,7 +2258,7 @@ _0221DBFE:
 	bge _0221DC3C
 	add r0, r5, #0
 	add r1, r7, #0
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	pop {r3, r4, r5, r6, r7, pc}
 _0221DC0C:
 	ldr r2, _0221DC40 ; =0x000003DE
@@ -3322,7 +2286,7 @@ _0221DC30:
 	bge _0221DC3C
 	add r0, r5, #0
 	add r1, r7, #0
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 _0221DC3C:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -3336,20 +2300,20 @@ ov10_0221DC48: ; 0x0221DC48
 	add r5, r1, #0
 	add r0, r5, #0
 	mov r1, #1
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	add r0, r5, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	add r6, r0, #0
 	add r0, r5, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	add r4, r0, #0
 	add r0, r5, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	lsl r1, r6, #0x18
 	add r7, r0, #0
 	add r0, r5, #0
 	lsr r1, r1, #0x18
-	bl ov10_0221EF34
+	bl AIScript_Battler
 	cmp r6, #0
 	beq _0221DCB0
 	cmp r6, #1
@@ -3379,7 +2343,7 @@ _0221DCA2:
 	bne _0221DCE0
 	add r0, r5, #0
 	add r1, r7, #0
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	pop {r3, r4, r5, r6, r7, pc}
 _0221DCB0:
 	ldr r2, _0221DCE4 ; =0x000003DE
@@ -3407,7 +2371,7 @@ _0221DCD4:
 	bne _0221DCE0
 	add r0, r5, #0
 	add r1, r7, #0
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 _0221DCE0:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -3421,20 +2385,20 @@ ov10_0221DCEC: ; 0x0221DCEC
 	add r5, r1, #0
 	add r0, r5, #0
 	mov r1, #1
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	add r0, r5, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	add r6, r0, #0
 	add r0, r5, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	add r4, r0, #0
 	add r0, r5, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	lsl r1, r6, #0x18
 	add r7, r0, #0
 	add r0, r5, #0
 	lsr r1, r1, #0x18
-	bl ov10_0221EF34
+	bl AIScript_Battler
 	cmp r4, #0
 	beq _0221DD24
 	cmp r4, #1
@@ -3451,7 +2415,7 @@ _0221DD24:
 	beq _0221DD56
 	add r0, r5, #0
 	add r1, r7, #0
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	pop {r3, r4, r5, r6, r7, pc}
 _0221DD3E:
 	mov r1, #0xc0
@@ -3464,7 +2428,7 @@ _0221DD3E:
 	beq _0221DD56
 	add r0, r5, #0
 	add r1, r7, #0
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 _0221DD56:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -3477,12 +2441,12 @@ ov10_0221DD5C: ; 0x0221DD5C
 	add r4, r1, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	add r0, r4, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	add r5, r0, #0
 	add r0, r4, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	add r1, r0, #0
 	cmp r5, #0
 	beq _0221DD82
@@ -3502,7 +2466,7 @@ _0221DD82:
 	cmp r0, r2
 	bne _0221DDBC
 	add r0, r4, #0
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	pop {r3, r4, r5, pc}
 _0221DDA0:
 	ldr r2, _0221DDC0 ; =0x00000356
@@ -3517,7 +2481,7 @@ _0221DDA0:
 	cmp r0, r2
 	bne _0221DDBC
 	add r0, r4, #0
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 _0221DDBC:
 	pop {r3, r4, r5, pc}
 	nop
@@ -3532,7 +2496,7 @@ ov10_0221DDCC: ; 0x0221DDCC
 	add r4, r1, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	mov r1, #0xd9
 	lsl r1, r1, #2
 	ldrb r2, [r4, r1]
@@ -3561,14 +2525,14 @@ ov10_0221DDF0: ; 0x0221DDF0
 	add r4, r1, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	add r0, r4, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	add r1, r0, #0
 	lsl r1, r1, #0x18
 	add r0, r4, #0
 	lsr r1, r1, #0x18
-	bl ov10_0221EF34
+	bl AIScript_Battler
 	mov r1, #0xc0
 	mul r1, r0
 	ldr r0, _0221DE20 ; =0x00002DB8
@@ -3588,14 +2552,14 @@ ov10_0221DE24: ; 0x0221DE24
 	add r4, r1, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	add r0, r4, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	add r1, r0, #0
 	lsl r1, r1, #0x18
 	add r0, r4, #0
 	lsr r1, r1, #0x18
-	bl ov10_0221EF34
+	bl AIScript_Battler
 	ldr r1, _0221DE80 ; =0x000003CF
 	add r2, r0, #0
 	ldrb r0, [r4, r1]
@@ -3636,20 +2600,20 @@ ov10_0221DE88: ; 0x0221DE88
 	add r5, r1, #0
 	add r0, r5, #0
 	mov r1, #1
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	add r0, r5, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	add r6, r0, #0
 	add r0, r5, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	add r4, r0, #0
 	add r0, r5, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	lsl r1, r6, #0x18
 	add r7, r0, #0
 	add r0, r5, #0
 	lsr r1, r1, #0x18
-	bl ov10_0221EF34
+	bl AIScript_Battler
 	add r6, r0, #0
 	ldr r0, _0221DEE8 ; =0x000003CF
 	mov r1, #1
@@ -3674,7 +2638,7 @@ _0221DED8:
 	bne _0221DEE6
 	add r0, r5, #0
 	add r1, r7, #0
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 _0221DEE6:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -3688,12 +2652,12 @@ ov10_0221DEF0: ; 0x0221DEF0
 	add r5, r1, #0
 	add r0, r5, #0
 	mov r1, #1
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	add r0, r5, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	add r4, r0, #0
 	add r0, r5, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	add r1, r0, #0
 	mov r0, #6
 	lsl r0, r0, #6
@@ -3701,7 +2665,7 @@ ov10_0221DEF0: ; 0x0221DEF0
 	tst r0, r4
 	beq _0221DF1C
 	add r0, r5, #0
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 _0221DF1C:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -3714,20 +2678,20 @@ ov10_0221DF20: ; 0x0221DF20
 	add r7, r0, #0
 	add r0, r5, #0
 	mov r1, #1
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	add r0, r5, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	add r6, r0, #0
 	add r0, r5, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	lsl r1, r6, #0x18
 	add r4, r0, #0
 	add r0, r5, #0
 	lsr r1, r1, #0x18
-	bl ov10_0221EF34
+	bl AIScript_Battler
 	add r1, r0, #0
 	add r0, r7, #0
-	bl BattleSystem_GetFieldSide
+	bl BattleSystem_GetBattlerSide
 	cmp r4, #4
 	beq _0221DF5E
 	mov r1, #1
@@ -3768,17 +2732,17 @@ ov10_0221DF88: ; 0x0221DF88
 	str r1, [sp]
 	add r0, r1, #0
 	mov r1, #1
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	ldr r0, [sp]
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	add r4, r0, #0
 	ldr r0, [sp]
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	str r0, [sp, #8]
 	lsl r1, r4, #0x18
 	ldr r0, [sp]
 	lsr r1, r1, #0x18
-	bl ov10_0221EF34
+	bl AIScript_Battler
 	add r6, r0, #0
 	add r0, r5, #0
 	add r1, r6, #0
@@ -3812,7 +2776,7 @@ _0221DFC8:
 	beq _0221E002
 	ldr r0, [sp]
 	ldr r1, [sp, #8]
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 _0221E002:
@@ -3837,17 +2801,17 @@ ov10_0221E018: ; 0x0221E018
 	str r1, [sp, #4]
 	add r0, r1, #0
 	mov r1, #1
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	ldr r0, [sp, #4]
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	add r4, r0, #0
 	ldr r0, [sp, #4]
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	str r0, [sp, #0x10]
 	lsl r1, r4, #0x18
 	ldr r0, [sp, #4]
 	lsr r1, r1, #0x18
-	bl ov10_0221EF34
+	bl AIScript_Battler
 	str r0, [sp, #8]
 	ldr r0, [sp]
 	ldr r1, [sp, #8]
@@ -3887,7 +2851,7 @@ _0221E072:
 	beq _0221E09A
 	ldr r0, [sp, #4]
 	ldr r1, [sp, #0x10]
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	b _0221E0A0
 _0221E09A:
 	add r4, r4, #1
@@ -3916,14 +2880,14 @@ ov10_0221E0BC: ; 0x0221E0BC
 	add r4, r1, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	add r0, r4, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	add r1, r0, #0
 	lsl r1, r1, #0x18
 	add r0, r4, #0
 	lsr r1, r1, #0x18
-	bl ov10_0221EF34
+	bl AIScript_Battler
 	add r1, r0, #0
 	add r0, r4, #0
 	bl GetHeldItemFlingPower
@@ -3940,7 +2904,7 @@ ov10_0221E0EC: ; 0x0221E0EC
 	add r4, r1, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	ldr r1, _0221E114 ; =0x000003CF
 	mov r0, #0xc0
 	ldrb r2, [r4, r1]
@@ -3967,17 +2931,17 @@ ov10_0221E11C: ; 0x0221E11C
 	add r6, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	add r0, r4, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	add r5, r0, #0
 	add r0, r4, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	lsl r1, r5, #0x18
 	add r7, r0, #0
 	add r0, r4, #0
 	lsr r1, r1, #0x18
-	bl ov10_0221EF34
+	bl AIScript_Battler
 	add r5, r0, #0
 	add r0, r6, #0
 	add r1, r4, #0
@@ -3997,7 +2961,7 @@ ov10_0221E11C: ; 0x0221E11C
 	ble _0221E170
 	add r0, r4, #0
 	add r1, r7, #0
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 _0221E170:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -4010,7 +2974,7 @@ ov10_0221E178: ; 0x0221E178
 	add r4, r1, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	ldr r0, _0221E198 ; =0x00000356
 	ldrh r1, [r4, r0]
 	lsl r1, r1, #4
@@ -4031,7 +2995,7 @@ ov10_0221E19C: ; 0x0221E19C
 	add r4, r1, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	mov r1, #0x3d
 	lsl r1, r1, #4
 	ldrb r0, [r4, r1]
@@ -4059,14 +3023,14 @@ ov10_0221E1CC: ; 0x0221E1CC
 	str r1, [sp, #8]
 	add r0, r1, #0
 	mov r1, #1
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	ldr r0, [sp, #8]
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	add r1, r0, #0
 	lsl r1, r1, #0x18
 	ldr r0, [sp, #8]
 	lsr r1, r1, #0x18
-	bl ov10_0221EF34
+	bl AIScript_Battler
 	str r0, [sp, #0x10]
 	ldr r0, [sp, #4]
 	bl BattleSystem_GetMaxBattlers
@@ -4164,14 +3128,14 @@ ov10_0221E290: ; 0x0221E290
 	add r4, r1, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	add r0, r4, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	add r1, r0, #0
 	lsl r1, r1, #0x18
 	add r0, r4, #0
 	lsr r1, r1, #0x18
-	bl ov10_0221EF34
+	bl AIScript_Battler
 	mov r1, #0x15
 	lsl r1, r1, #4
 	ldr r2, [r4, r1]
@@ -4197,12 +3161,12 @@ ov10_0221E2CC: ; 0x0221E2CC
 	str r1, [sp, #0x1c]
 	add r0, r1, #0
 	mov r1, #1
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	ldr r0, [sp, #0x1c]
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	str r0, [sp, #0x30]
 	ldr r0, [sp, #0x1c]
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	str r0, [sp, #0x2c]
 	mov r4, #0
 	ldr r1, _0221E450 ; =0x000003CF
@@ -4359,7 +3323,7 @@ _0221E3D4:
 	ble _0221E43C
 	ldr r0, [sp, #0x1c]
 	ldr r1, [sp, #0x2c]
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	add sp, #0x54
 	pop {r4, r5, r6, r7, pc}
 _0221E43C:
@@ -4386,9 +3350,9 @@ ov10_0221E460: ; 0x0221E460
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	add r0, r4, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	ldr r2, _0221E494 ; =0x000003CF
 	add r6, r0, #0
 	ldrb r2, [r4, r2]
@@ -4400,7 +3364,7 @@ ov10_0221E460: ; 0x0221E460
 	bne _0221E490
 	add r0, r4, #0
 	add r1, r6, #0
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 _0221E490:
 	pop {r4, r5, r6, pc}
 	nop
@@ -4415,15 +3379,15 @@ ov10_0221E498: ; 0x0221E498
 	str r0, [sp, #0x18]
 	add r0, r6, #0
 	mov r1, #1
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	add r0, r6, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	str r0, [sp, #0x28]
 	add r0, r6, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	str r0, [sp, #0x24]
 	add r0, r6, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	ldr r7, _0221E59C ; =0x000003CF
 	str r0, [sp, #0x20]
 	mov r4, #0
@@ -4480,7 +3444,7 @@ _0221E4C6:
 	lsl r1, r1, #0x18
 	add r0, r6, #0
 	lsr r1, r1, #0x18
-	bl ov10_0221EF34
+	bl AIScript_Battler
 	add r4, r0, #0
 	ldr r0, [sp, #0x24]
 	cmp r0, #1
@@ -4527,7 +3491,7 @@ _0221E54C:
 	ble _0221E596
 	ldr r1, [sp, #0x20]
 	add r0, r6, #0
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 _0221E596:
 	add sp, #0x44
 	pop {r4, r5, r6, r7, pc}
@@ -4545,14 +3509,14 @@ ov10_0221E5B0: ; 0x0221E5B0
 	add r4, r1, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	add r0, r4, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	add r1, r0, #0
 	lsl r1, r1, #0x18
 	add r0, r4, #0
 	lsr r1, r1, #0x18
-	bl ov10_0221EF34
+	bl AIScript_Battler
 	mov r2, #0xd7
 	mov r3, #0xd7
 	mov r1, #0
@@ -4587,17 +3551,17 @@ ov10_0221E600: ; 0x0221E600
 	add r5, r1, #0
 	add r0, r5, #0
 	mov r1, #1
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	add r0, r5, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	add r6, r0, #0
 	add r0, r5, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	lsl r1, r6, #0x18
 	add r4, r0, #0
 	add r0, r5, #0
 	lsr r1, r1, #0x18
-	bl ov10_0221EF34
+	bl AIScript_Battler
 	ldr r3, _0221E648 ; =0x000003CF
 	mov r1, #0xc0
 	ldrb r6, [r5, r3]
@@ -4627,20 +3591,20 @@ ov10_0221E650: ; 0x0221E650
 	add r5, r1, #0
 	add r0, r5, #0
 	mov r1, #1
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	add r0, r5, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	add r4, r0, #0
 	add r0, r5, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	add r6, r0, #0
 	add r0, r5, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	lsl r1, r4, #0x18
 	add r7, r0, #0
 	add r0, r5, #0
 	lsr r1, r1, #0x18
-	bl ov10_0221EF34
+	bl AIScript_Battler
 	add r1, r0, #0
 	str r6, [sp]
 	add r0, r5, #0
@@ -4653,7 +3617,7 @@ ov10_0221E650: ; 0x0221E650
 	bge _0221E69E
 	add r0, r5, #0
 	add r1, r7, #0
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 _0221E69E:
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
@@ -4667,20 +3631,20 @@ ov10_0221E6A4: ; 0x0221E6A4
 	add r5, r1, #0
 	add r0, r5, #0
 	mov r1, #1
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	add r0, r5, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	add r4, r0, #0
 	add r0, r5, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	add r6, r0, #0
 	add r0, r5, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	lsl r1, r4, #0x18
 	add r7, r0, #0
 	add r0, r5, #0
 	lsr r1, r1, #0x18
-	bl ov10_0221EF34
+	bl AIScript_Battler
 	add r1, r0, #0
 	str r6, [sp]
 	add r0, r5, #0
@@ -4693,7 +3657,7 @@ ov10_0221E6A4: ; 0x0221E6A4
 	ble _0221E6F2
 	add r0, r5, #0
 	add r1, r7, #0
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 _0221E6F2:
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
@@ -4707,20 +3671,20 @@ ov10_0221E6F8: ; 0x0221E6F8
 	add r5, r1, #0
 	add r0, r5, #0
 	mov r1, #1
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	add r0, r5, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	add r4, r0, #0
 	add r0, r5, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	add r6, r0, #0
 	add r0, r5, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	lsl r1, r4, #0x18
 	add r7, r0, #0
 	add r0, r5, #0
 	lsr r1, r1, #0x18
-	bl ov10_0221EF34
+	bl AIScript_Battler
 	add r1, r0, #0
 	str r6, [sp]
 	add r0, r5, #0
@@ -4733,7 +3697,7 @@ ov10_0221E6F8: ; 0x0221E6F8
 	bne _0221E746
 	add r0, r5, #0
 	add r1, r7, #0
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 _0221E746:
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
@@ -4878,9 +3842,9 @@ ov10_0221E848: ; 0x0221E848
 	str r0, [sp, #0x18]
 	add r0, r6, #0
 	mov r1, #1
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	add r0, r6, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	ldr r2, _0221E984 ; =0x00000356
 	str r0, [sp, #0x20]
 	ldrh r3, [r6, r2]
@@ -5053,12 +4017,12 @@ ov10_0221E9A4: ; 0x0221E9A4
 	add r5, r1, #0
 	add r0, r5, #0
 	mov r1, #1
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	add r0, r5, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	add r4, r0, #0
 	add r0, r5, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	add r6, r0, #0
 	cmp r4, #1
 	bne _0221E9C8
@@ -5071,7 +4035,7 @@ _0221E9D0:
 	lsl r1, r4, #0x18
 	add r0, r5, #0
 	lsr r1, r1, #0x18
-	bl ov10_0221EF34
+	bl AIScript_Battler
 	bl MaskOfFlagNo
 	ldr r1, _0221E9F0 ; =0x00003108
 	ldrb r1, [r5, r1]
@@ -5079,7 +4043,7 @@ _0221E9D0:
 	beq _0221E9EE
 	add r0, r5, #0
 	add r1, r6, #0
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 _0221E9EE:
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -5092,12 +4056,12 @@ ov10_0221E9F4: ; 0x0221E9F4
 	add r5, r1, #0
 	add r0, r5, #0
 	mov r1, #1
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	add r0, r5, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	add r4, r0, #0
 	add r0, r5, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	add r6, r0, #0
 	cmp r4, #1
 	bne _0221EA18
@@ -5110,7 +4074,7 @@ _0221EA20:
 	lsl r1, r4, #0x18
 	add r0, r5, #0
 	lsr r1, r1, #0x18
-	bl ov10_0221EF34
+	bl AIScript_Battler
 	bl MaskOfFlagNo
 	ldr r1, _0221EA40 ; =0x00003108
 	ldrb r1, [r5, r1]
@@ -5118,7 +4082,7 @@ _0221EA20:
 	bne _0221EA3E
 	add r0, r5, #0
 	add r1, r6, #0
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 _0221EA3E:
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -5131,14 +4095,14 @@ ov10_0221EA44: ; 0x0221EA44
 	add r4, r1, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	add r0, r4, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	add r1, r0, #0
 	lsl r1, r1, #0x18
 	add r0, r4, #0
 	lsr r1, r1, #0x18
-	bl ov10_0221EF34
+	bl AIScript_Battler
 	mov r1, #0xc0
 	mul r1, r0
 	ldr r0, _0221EA78 ; =0x00002DBE
@@ -5160,14 +4124,14 @@ ov10_0221EA7C: ; 0x0221EA7C
 	add r4, r1, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	add r0, r4, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	add r1, r0, #0
 	lsl r1, r1, #0x18
 	add r0, r4, #0
 	lsr r1, r1, #0x18
-	bl ov10_0221EF34
+	bl AIScript_Battler
 	add r2, r0, #0
 	mov r1, #0xc0
 	mul r2, r1
@@ -5199,14 +4163,14 @@ ov10_0221EAC8: ; 0x0221EAC8
 	add r4, r1, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	add r0, r4, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	add r1, r0, #0
 	lsl r1, r1, #0x18
 	add r0, r4, #0
 	lsr r1, r1, #0x18
-	bl ov10_0221EF34
+	bl AIScript_Battler
 	mov r1, #0xc0
 	mul r1, r0
 	ldr r0, _0221EAFC ; =0x00002DC8
@@ -5229,7 +4193,7 @@ ov10_0221EB00: ; 0x0221EB00
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	mov r0, #0xd7
 	ldr r1, [r5, #0x2c]
 	lsl r0, r0, #2
@@ -5243,14 +4207,14 @@ ov10_0221EB18: ; 0x0221EB18
 	add r4, r1, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	add r0, r4, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	add r1, r0, #0
 	lsl r1, r1, #0x18
 	add r0, r4, #0
 	lsr r1, r1, #0x18
-	bl ov10_0221EF34
+	bl AIScript_Battler
 	lsl r0, r0, #1
 	add r1, r4, r0
 	ldr r0, _0221EB48 ; =0x00003124
@@ -5269,7 +4233,7 @@ ov10_0221EB4C: ; 0x0221EB4C
 	add r4, r1, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	mov r1, #0xd7
 	lsl r1, r1, #2
 	ldr r0, [r4, r1]
@@ -5288,7 +4252,7 @@ ov10_0221EB6C: ; 0x0221EB6C
 	add r4, r1, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	mov r1, #0xd7
 	lsl r1, r1, #2
 	ldr r0, [r4, r1]
@@ -5307,7 +4271,7 @@ ov10_0221EB8C: ; 0x0221EB8C
 	add r4, r1, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	mov r1, #0xd7
 	lsl r1, r1, #2
 	ldr r0, [r4, r1]
@@ -5326,14 +4290,14 @@ ov10_0221EBAC: ; 0x0221EBAC
 	add r4, r1, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	add r0, r4, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	add r1, r0, #0
 	lsl r1, r1, #0x18
 	add r0, r4, #0
 	lsr r1, r1, #0x18
-	bl ov10_0221EF34
+	bl AIScript_Battler
 	lsl r1, r0, #1
 	add r2, r4, r1
 	ldr r1, _0221EC00 ; =0x0000305C
@@ -5373,9 +4337,9 @@ ov10_0221EC08: ; 0x0221EC08
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	add r0, r4, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -5389,12 +4353,12 @@ ov10_0221EC28: ; 0x0221EC28
 	add r4, r1, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	add r0, r4, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	add r1, r0, #0
 	add r0, r4, #0
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	pop {r4, pc}
 	thumb_func_end ov10_0221EC28
 
@@ -5405,7 +4369,7 @@ ov10_0221EC44: ; 0x0221EC44
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	add r0, r5, #0
 	add r1, r4, #0
 	bl ov10_0221EE60
@@ -5427,12 +4391,12 @@ ov10_0221EC6C: ; 0x0221EC6C
 	add r5, r1, #0
 	add r0, r5, #0
 	mov r1, #1
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	add r0, r5, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	add r4, r0, #0
 	add r0, r5, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	add r1, r0, #0
 	cmp r4, #0
 	beq _0221EC96
@@ -5458,7 +4422,7 @@ _0221EC96:
 	cmp r0, r2
 	bls _0221ED06
 	add r0, r5, #0
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	pop {r3, r4, r5, pc}
 _0221ECBC:
 	ldr r2, _0221ED08 ; =0x000003CF
@@ -5477,7 +4441,7 @@ _0221ECBC:
 	cmp r0, r2
 	bhs _0221ED06
 	add r0, r5, #0
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	pop {r3, r4, r5, pc}
 _0221ECE2:
 	ldr r2, _0221ED08 ; =0x000003CF
@@ -5496,7 +4460,7 @@ _0221ECE2:
 	cmp r0, r2
 	bne _0221ED06
 	add r0, r5, #0
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 _0221ED06:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -5510,9 +4474,9 @@ ov10_0221ED10: ; 0x0221ED10
 	add r4, r1, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	add r0, r4, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	add r1, r0, #0
 	mov r0, #0x3d
 	lsl r0, r0, #4
@@ -5526,7 +4490,7 @@ ov10_0221ED10: ; 0x0221ED10
 	lsr r0, r0, #0x1d
 	beq _0221ED40
 	add r0, r4, #0
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 _0221ED40:
 	pop {r4, pc}
 	nop
@@ -5539,9 +4503,9 @@ ov10_0221ED48: ; 0x0221ED48
 	add r4, r1, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	add r0, r4, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	add r1, r0, #0
 	mov r0, #0x3d
 	lsl r0, r0, #4
@@ -5555,7 +4519,7 @@ ov10_0221ED48: ; 0x0221ED48
 	lsr r0, r0, #0x1d
 	bne _0221ED78
 	add r0, r4, #0
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 _0221ED78:
 	pop {r4, pc}
 	nop
@@ -5568,9 +4532,9 @@ ov10_0221ED80: ; 0x0221ED80
 	add r4, r1, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	add r0, r4, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	ldr r2, _0221EDB0 ; =0x000003CF
 	add r1, r0, #0
 	ldrb r0, [r4, r2]
@@ -5582,7 +4546,7 @@ ov10_0221ED80: ; 0x0221ED80
 	cmp r0, r2
 	bne _0221EDAC
 	add r0, r4, #0
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 _0221EDAC:
 	pop {r4, pc}
 	nop
@@ -5595,17 +4559,17 @@ ov10_0221EDB4: ; 0x0221EDB4
 	add r5, r1, #0
 	add r0, r5, #0
 	mov r1, #1
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	add r0, r5, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	add r4, r0, #0
 	add r0, r5, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	lsl r1, r4, #0x18
 	add r6, r0, #0
 	add r0, r5, #0
 	lsr r1, r1, #0x18
-	bl ov10_0221EF34
+	bl AIScript_Battler
 	mov r1, #0xc0
 	mul r1, r0
 	ldr r0, _0221EDF4 ; =0x00002DC8
@@ -5615,7 +4579,7 @@ ov10_0221EDB4: ; 0x0221EDB4
 	beq _0221EDF0
 	add r0, r5, #0
 	add r1, r6, #0
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 _0221EDF0:
 	pop {r4, r5, r6, pc}
 	nop
@@ -5628,14 +4592,14 @@ ov10_0221EDF8: ; 0x0221EDF8
 	add r4, r1, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	add r0, r4, #0
-	bl ov10_0221EEF0
+	bl AIScript_Read
 	add r1, r0, #0
 	lsl r1, r1, #0x18
 	add r0, r4, #0
 	lsr r1, r1, #0x18
-	bl ov10_0221EF34
+	bl AIScript_Battler
 	add r1, r0, #0
 	add r0, r4, #0
 	bl GetBattlerAbility
@@ -5663,7 +4627,7 @@ ov10_0221EE28: ; 0x0221EE28
 	str r3, [r0, r1]
 	add r0, r4, #0
 	add r1, r2, #0
-	bl ov10_0221EF24
+	bl AIScript_IncrementCursor
 	mov r0, #0xf3
 	lsl r0, r0, #2
 	ldrb r0, [r4, r0]
@@ -5760,8 +4724,8 @@ _0221EEEA:
 _0221EEEC: .word 0x0000307C
 	thumb_func_end TrainerAI_RecordLastMove
 
-	thumb_func_start ov10_0221EEF0
-ov10_0221EEF0: ; 0x0221EEF0
+	thumb_func_start AIScript_Read
+AIScript_Read: ; 0x0221EEF0
 	ldr r1, _0221EF0C ; =0x00002134
 	add r2, r1, #4
 	ldr r2, [r0, r2]
@@ -5777,10 +4741,10 @@ ov10_0221EEF0: ; 0x0221EEF0
 	bx lr
 	nop
 _0221EF0C: .word 0x00002134
-	thumb_func_end ov10_0221EEF0
+	thumb_func_end AIScript_Read
 
-	thumb_func_start ov10_0221EF10
-ov10_0221EF10: ; 0x0221EF10
+	thumb_func_start AIScript_ReadOffset
+AIScript_ReadOffset: ; 0x0221EF10
 	ldr r2, _0221EF20 ; =0x00002134
 	ldr r3, [r0, r2]
 	add r2, r2, #4
@@ -5791,10 +4755,10 @@ ov10_0221EF10: ; 0x0221EF10
 	bx lr
 	.balign 4, 0
 _0221EF20: .word 0x00002134
-	thumb_func_end ov10_0221EF10
+	thumb_func_end AIScript_ReadOffset
 
-	thumb_func_start ov10_0221EF24
-ov10_0221EF24: ; 0x0221EF24
+	thumb_func_start AIScript_IncrementCursor
+AIScript_IncrementCursor: ; 0x0221EF24
 	ldr r2, _0221EF30 ; =0x00002138
 	ldr r3, [r0, r2]
 	add r1, r3, r1
@@ -5802,10 +4766,10 @@ ov10_0221EF24: ; 0x0221EF24
 	bx lr
 	nop
 _0221EF30: .word 0x00002138
-	thumb_func_end ov10_0221EF24
+	thumb_func_end AIScript_IncrementCursor
 
-	thumb_func_start ov10_0221EF34
-ov10_0221EF34: ; 0x0221EF34
+	thumb_func_start AIScript_Battler
+AIScript_Battler: ; 0x0221EF34
 	cmp r1, #3
 	bhi _0221EF52
 	add r1, r1, r1
@@ -5847,7 +4811,7 @@ _0221EF68:
 	bx lr
 	.balign 4, 0
 _0221EF78: .word 0x000003CF
-	thumb_func_end ov10_0221EF34
+	thumb_func_end AIScript_Battler
 
 	thumb_func_start ov10_0221EF7C
 ov10_0221EF7C: ; 0x0221EF7C
@@ -6006,7 +4970,7 @@ ov10_0221F084: ; 0x0221F084
 	lsl r1, r1, #4
 	ldrb r1, [r6, r1]
 	add r5, r2, #0
-	bl BattleSystem_GetFieldSide
+	bl BattleSystem_GetBattlerSide
 	mov r4, #0
 	str r0, [sp, #0x28]
 	add r0, r4, #0
@@ -8756,7 +7720,7 @@ ov10_022205BC: ; 0x022205BC
 	bne _022205E0
 	ldr r0, [sp]
 	add r1, r7, #0
-	bl BattleSystem_GetFieldSide
+	bl BattleSystem_GetBattlerSide
 	cmp r0, #0
 	bne _022206A0
 _022205E0:
@@ -9377,7 +8341,7 @@ _02220AA8: .word 0x000003D6
 
 	.rodata
 
-ov10_02220AAC:
+gTrainerAITable:
 	.byte 0x20, 0x00, 0x00, 0x00
 	.byte 0xA3, 0x20, 0x00, 0x00, 0xF2, 0x09, 0x00, 0x00, 0xE2, 0x20, 0x00, 0x00, 0x3D, 0x21, 0x00, 0x00
 	.byte 0x30, 0x21, 0x00, 0x00, 0x63, 0x21, 0x00, 0x00, 0xC6, 0x21, 0x00, 0x00, 0xCA, 0x27, 0x00, 0x00
@@ -12048,34 +11012,35 @@ ov10_0222B098: ; 0x0222B098
 	.byte 0x50, 0x00, 0x91, 0x00, 0x97, 0x00, 0xA1, 0x00, 0xAA, 0x00, 0xB6, 0x00, 0xBE, 0x00, 0xF8, 0x00
 	.byte 0x0D, 0x01, 0xFF, 0xFF
 
-ov10_0222B0B4: ; 0x0222B0B4
-	.word ov10_0221C384
-	.word ov10_0221C3C4
-	.word ov10_0221C404
-	.word ov10_0221C444
-	.word ov10_0221C484
-	.word ov10_0221C4B8
-	.word ov10_0221C510
-	.word ov10_0221C568
-	.word ov10_0221C5C0
-	.word ov10_0221C618
-	.word ov10_0221C664
-	.word ov10_0221C6B0
-	.word ov10_0221C6FC
-	.word ov10_0221C748
-	.word ov10_0221C790
-	.word ov10_0221C7D8
-	.word ov10_0221C828
-	.word ov10_0221C878
-	.word ov10_0221C8A8
-	.word ov10_0221C8D8
-	.word ov10_0221C908
-	.word ov10_0221C938
-	.word ov10_0221C968
-	.word ov10_0221C998
-	.word ov10_0221C9C8
-	.word ov10_0221C9F8
-	.word ov10_0221CA4C
+	.public sAICommandTable
+sAICommandTable: ; 0x0222B0B4
+	.word AICmd_IfRandomLessThan
+	.word AICmd_IfRandomGreaterThan
+	.word AICmd_IfRandomEqualTo
+	.word AICmd_IfRandomNotEqualTo
+	.word AICmd_AddToMoveScore
+	.word AICmd_IfHPPercentLessThan
+	.word AICmd_IfHPPercentGreaterThan
+	.word AICmd_IfHPPercentEqualTo
+	.word AICmd_IfHPPercentNotEqualTo
+	.word AICmd_IfStatus
+	.word AICmd_IfNotStatus
+	.word AICmd_IfStatus2
+	.word AICmd_IfNotStatus2
+	.word AICmd_IfMoveEffect
+	.word AICmd_IfNotMoveEffect
+	.word AICmd_IfSideCondition
+	.word AICmd_IfNotSideCondition
+	.word AICmd_IfLoadedLessThan
+	.word AICmd_IfLoadedGreaterThan
+	.word AICmd_IfLoadedEqualTo
+	.word AICmd_IfLoadedNotEqualTo
+	.word AICmd_IfLoadedMask
+	.word AICmd_IfLoadedNotMask
+	.word AICmd_IfMoveEqualTo
+	.word AICmd_IfMoveNotEqualTo
+	.word AICmd_IfLoadedInTable
+	.word AICmd_IfLoadedNotInTable
 	.word ov10_0221CA9C
 	.word ov10_0221CB00
 	.word ov10_0221CB64

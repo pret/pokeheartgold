@@ -270,7 +270,7 @@ u8 ov12_0223AB0C(BattleSystem *battleSystem, int battlerId) {
     return ov12_02261258(battleSystem->opponentData[battlerId]);
 }
 
-u8 BattleSystem_GetFieldSide(BattleSystem *battleSystem, int battlerId) {
+u8 BattleSystem_GetBattlerSide(BattleSystem *battleSystem, int battlerId) {
     return ov12_02261258(battleSystem->opponentData[battlerId]) & 1;
 }
 
@@ -307,7 +307,7 @@ int BattleSystem_GetBattlerIdPartner(BattleSystem *battleSystem, int battlerId) 
     }
 
     for (battlerIdPartner = 0; battlerIdPartner < maxBattlers; battlerIdPartner++) {
-        if (battlerIdPartner != battlerId && BattleSystem_GetFieldSide(battleSystem, battlerIdPartner) == BattleSystem_GetFieldSide(battleSystem, battlerId)) {
+        if (battlerIdPartner != battlerId && BattleSystem_GetBattlerSide(battleSystem, battlerIdPartner) == BattleSystem_GetBattlerSide(battleSystem, battlerId)) {
             break;
         }
     }
@@ -325,7 +325,7 @@ int ov12_0223ABB8(BattleSystem *battleSystem, int battlerId, int side) {
     }
 
     for (battlerIdOpponent = 0; battlerIdOpponent < maxBattlers; battlerIdOpponent++) {
-        if (battlerIdOpponent != battlerId && (ov12_0223AB0C(battleSystem, battlerIdOpponent) & 2) == side && BattleSystem_GetFieldSide(battleSystem, battlerIdOpponent) != BattleSystem_GetFieldSide(battleSystem, battlerId)) {
+        if (battlerIdOpponent != battlerId && (ov12_0223AB0C(battleSystem, battlerIdOpponent) & 2) == side && BattleSystem_GetBattlerSide(battleSystem, battlerIdOpponent) != BattleSystem_GetBattlerSide(battleSystem, battlerId)) {
             break;
         }
     }
@@ -584,7 +584,7 @@ BOOL BattleSystem_RecoverStatus(BattleSystem *battleSystem, int battlerId, int s
             }
             AddMonData(mon, MON_DATA_HP, data);
             if (!GetItemAttr(item, ITEMATTR_REVIVE, HEAP_ID_BATTLE)) {
-                if (BattleSystem_GetFieldSide(battleSystem, battlerId)) {
+                if (BattleSystem_GetBattlerSide(battleSystem, battlerId)) {
                     SetBattlerVar(ctx, battlerId, BMON_DATA_HELD_ITEM_RESTORE_HP, &data);
                 } else if (index1 == selectedMonIndex || index2 == selectedMonIndex) {
                     AddBattlerVar(ctx, battlerId, BMON_DATA_HP, data);
@@ -1455,7 +1455,7 @@ static void BattleSystem_AdjustMessageForSide(BattleSystem *battleSystem, Battle
     }
 
     if (msg->tag & 0x40) {
-        if (BattleSystem_GetFieldSide(battleSystem, msg->battlerId)) {
+        if (BattleSystem_GetBattlerSide(battleSystem, msg->battlerId)) {
             msg->id++;
         }
         return;
@@ -1487,7 +1487,7 @@ static void BattleSystem_AdjustMessageForSide(BattleSystem *battleSystem, Battle
     case TAG_TRCLASS_TRNAME_NICKNAME_TRCLASS_TRNAME_NICKNAME:
         break;
     case TAG_NONE_SIDE:
-        if (BattleSystem_GetFieldSide(battleSystem, msg->param[0] & 0xFF)) {
+        if (BattleSystem_GetBattlerSide(battleSystem, msg->param[0] & 0xFF)) {
             msg->id++;
         }
         break;
@@ -1514,7 +1514,7 @@ static void BattleSystem_AdjustMessageForSide(BattleSystem *battleSystem, Battle
     case TAG_NICKNAME_ITEM_STAT:
     case TAG_NICKNAME_ITEM_STATUS:
     case TAG_NICKNAME_BOX_BOX:
-        if (BattleSystem_GetFieldSide(battleSystem, msg->param[0] & 0xFF)) {
+        if (BattleSystem_GetBattlerSide(battleSystem, msg->param[0] & 0xFF)) {
             msg->id++;
             if (battleType & BATTLE_TYPE_TRAINER) {
                 msg->id++;
@@ -1522,14 +1522,14 @@ static void BattleSystem_AdjustMessageForSide(BattleSystem *battleSystem, Battle
         }
         break;
     case TAG_MOVE_SIDE:
-        if (BattleSystem_GetFieldSide(battleSystem, msg->param[1] & 0xFF)) {
+        if (BattleSystem_GetBattlerSide(battleSystem, msg->param[1] & 0xFF)) {
             msg->id++;
         }
         break;
     case TAG_MOVE_NICKNAME:
     case TAG_ABILITY_NICKNAME:
     case TAG_ITEM_NICKNAME_FLAVOR:
-        if (BattleSystem_GetFieldSide(battleSystem, msg->param[1] & 0xFF)) {
+        if (BattleSystem_GetBattlerSide(battleSystem, msg->param[1] & 0xFF)) {
             msg->id++;
             if (battleType & BATTLE_TYPE_TRAINER) {
                 msg->id++;
@@ -1540,15 +1540,15 @@ static void BattleSystem_AdjustMessageForSide(BattleSystem *battleSystem, Battle
     case TAG_NICKNAME_NICKNAME_MOVE:
     case TAG_NICKNAME_NICKNAME_ABILITY:
     case TAG_NICKNAME_NICKNAME_ITEM:
-        if (BattleSystem_GetFieldSide(battleSystem, msg->param[0] & 0xFF)) {
+        if (BattleSystem_GetBattlerSide(battleSystem, msg->param[0] & 0xFF)) {
             msg->id += 3;
             if (battleType & BATTLE_TYPE_TRAINER) {
                 msg->id += 2;
             }
-            if (BattleSystem_GetFieldSide(battleSystem, msg->param[1] & 0xFF)) {
+            if (BattleSystem_GetBattlerSide(battleSystem, msg->param[1] & 0xFF)) {
                 msg->id++;
             }
-        } else if (BattleSystem_GetFieldSide(battleSystem, msg->param[1] & 0xFF)) {
+        } else if (BattleSystem_GetBattlerSide(battleSystem, msg->param[1] & 0xFF)) {
             msg->id++;
             if (battleType & BATTLE_TYPE_TRAINER) {
                 msg->id++;
@@ -1561,15 +1561,15 @@ static void BattleSystem_AdjustMessageForSide(BattleSystem *battleSystem, Battle
     case TAG_NICKNAME_ABILITY_NICKNAME_ABILITY:
     case TAG_NICKNAME_ABILITY_NICKNAME_STAT:
     case TAG_NICKNAME_ITEM_NICKNAME_ITEM:
-        if (BattleSystem_GetFieldSide(battleSystem, msg->param[0] & 0xFF)) {
+        if (BattleSystem_GetBattlerSide(battleSystem, msg->param[0] & 0xFF)) {
             msg->id += 3;
             if (battleType & BATTLE_TYPE_TRAINER) {
                 msg->id += 2;
             }
-            if (BattleSystem_GetFieldSide(battleSystem, msg->param[2] & 0xFF)) {
+            if (BattleSystem_GetBattlerSide(battleSystem, msg->param[2] & 0xFF)) {
                 msg->id++;
             }
-        } else if (BattleSystem_GetFieldSide(battleSystem, msg->param[2] & 0xFF)) {
+        } else if (BattleSystem_GetBattlerSide(battleSystem, msg->param[2] & 0xFF)) {
             msg->id++;
             if (battleType & BATTLE_TYPE_TRAINER) {
                 msg->id++;

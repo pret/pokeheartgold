@@ -9,8 +9,24 @@
 
 #include "system.h"
 
+typedef void (*AICommandFunc)(BattleSystem *, BattleContext *);
+
+enum AIEvalStep {
+    AI_EVAL_STEP_INIT,
+    AI_EVAL_STEP_EVAL,
+    AI_EVAL_STEP_END,
+};
+
 static u8 TrainerAI_MainSingles(BattleSystem *battleSystem, BattleContext *ctx);
 static u8 TrainerAI_MainDoubles(BattleSystem *battleSystem, BattleContext *ctx);
+static void TrainerAI_EvaluateMoves(BattleSystem *battleSystem, BattleContext *ctx);
+
+int AIScript_Read(BattleContext *ctx);
+int AIScript_ReadOffset(BattleContext *battleCtx, int offset);
+void AIScript_IncrementCursor(BattleContext *ctx, int jump);
+u8 AIScript_Battler(BattleContext *ctx, u8 inBattler);
+
+extern const AICommandFunc sAICommandTable[];
 
 void TrainerAI_Init(BattleSystem *battleSystem, BattleContext *ctx, u8 battlerID, u8 initScore) {
     int i;
@@ -73,8 +89,7 @@ u8 TrainerAI_Main(BattleSystem *battleSystem, u8 battlerID) {
     return ret;
 }
 
-static u8 TrainerAI_MainSingles(BattleSystem *battleSystem, BattleContext *ctx)
-{
+static u8 TrainerAI_MainSingles(BattleSystem *battleSystem, BattleContext *ctx) {
     u8 maxScoreMoves[MAX_MON_MOVES];
     u8 maxScoreMoveSlots[MAX_MON_MOVES];
     u8 numMaxScoreMoves;
@@ -86,7 +101,7 @@ static u8 TrainerAI_MainSingles(BattleSystem *battleSystem, BattleContext *ctx)
     while (ctx->trainerAIData.aiFlags) {
         if (ctx->trainerAIData.aiFlags & AI_FLAG_BASIC) {
             if ((ctx->trainerAIData.stateFlags & AI_STATUS_FLAG_CONTINUE) == FALSE) {
-                ctx->trainerAIData.evalStep = 0; // 0 = AI_EVAL_STEP_INIT
+                ctx->trainerAIData.evalStep = AI_EVAL_STEP_INIT;
             }
 
             TrainerAI_EvaluateMoves(battleSystem, ctx);
@@ -131,8 +146,7 @@ static u8 TrainerAI_MainSingles(BattleSystem *battleSystem, BattleContext *ctx)
     return action;
 }
 
-static u8 TrainerAI_MainDoubles(BattleSystem *battleSystem, BattleContext *ctx)
-{
+static u8 TrainerAI_MainDoubles(BattleSystem *battleSystem, BattleContext *ctx) {
     int battlerID, battlerCount, aiFlags;
     s16 maxScoreForBattler[BATTLER_MAX];
     u8 battlerTemp[BATTLER_MAX];
@@ -148,7 +162,7 @@ static u8 TrainerAI_MainDoubles(BattleSystem *battleSystem, BattleContext *ctx)
             continue;
         }
 
-        TrainerAI_Init(battleSystem, ctx, ctx->trainerAIData.attacker, 0xF);
+        TrainerAI_Init(battleSystem, ctx, ctx->trainerAIData.attacker, AI_INIT_SCORE_ALL_MOVES);
 
         // Record the last moves of enemy battlers.
         ctx->trainerAIData.defender = battlerID;
@@ -164,7 +178,7 @@ static u8 TrainerAI_MainDoubles(BattleSystem *battleSystem, BattleContext *ctx)
         while (aiFlags) {
             if (aiFlags & AI_FLAG_BASIC) {
                 if ((ctx->trainerAIData.stateFlags & AI_STATUS_FLAG_CONTINUE) == FALSE) {
-                    ctx->trainerAIData.evalStep = 0; // AI_EVAL_STEP_INIT
+                    ctx->trainerAIData.evalStep = AI_EVAL_STEP_INIT;
                 }
 
                 TrainerAI_EvaluateMoves(battleSystem, ctx);
@@ -242,7 +256,7 @@ static u8 TrainerAI_MainDoubles(BattleSystem *battleSystem, BattleContext *ctx)
 
     // Override targets as needed.
     if (ctx->trainerAIData.moveData[move].range == RANGE_SINGLE_TARGET_USER_SIDE
-        && BattleSystem_GetFieldSide(battleSystem, ctx->trainerAIData.selectedTarget[ctx->trainerAIData.attacker]) == 0) {
+        && BattleSystem_GetBattlerSide(battleSystem, ctx->trainerAIData.selectedTarget[ctx->trainerAIData.attacker]) == 0) {
         ctx->trainerAIData.selectedTarget[ctx->trainerAIData.attacker] = ctx->trainerAIData.attacker;
     }
 
@@ -251,4 +265,416 @@ static u8 TrainerAI_MainDoubles(BattleSystem *battleSystem, BattleContext *ctx)
     }
 
     return moveSlot;
+}
+
+static void TrainerAI_EvaluateMoves(BattleSystem *battleSystem, BattleContext *ctx) {
+    while (ctx->trainerAIData.evalStep != AI_EVAL_STEP_END) {
+        switch (ctx->trainerAIData.evalStep) {
+        case AI_EVAL_STEP_INIT:
+            ctx->aiScriptCursor = ctx->aiScriptTemp[ctx->trainerAIData.aiBitShift];
+
+            if (ctx->battleMons[ctx->trainerAIData.attacker].movePPCur[ctx->trainerAIData.moveSlot] == 0) {
+                ctx->trainerAIData.move = MOVE_NONE;
+            } else {
+                ctx->trainerAIData.move = ctx->battleMons[ctx->trainerAIData.attacker].moves[ctx->trainerAIData.moveSlot];
+            }
+
+            ctx->trainerAIData.evalStep++;
+            break;
+
+        case AI_EVAL_STEP_EVAL:
+            if (ctx->trainerAIData.move != MOVE_NONE) {
+                sAICommandTable[ctx->aiScriptTemp[ctx->aiScriptCursor]](battleSystem, ctx);
+            } else {
+                ctx->trainerAIData.moveScore[ctx->trainerAIData.moveSlot] = 0;
+                ctx->trainerAIData.stateFlags |= AI_STATUS_FLAG_DONE;
+            }
+
+            if (ctx->trainerAIData.stateFlags & AI_STATUS_FLAG_DONE) {
+                // If we haven't gone through all the moves, loop back to INIT state and evaluate the next move.
+                ctx->trainerAIData.moveSlot++;
+                if (ctx->trainerAIData.moveSlot < MAX_MON_MOVES && (ctx->trainerAIData.stateFlags & AI_STATUS_FLAG_BREAK) == FALSE) {
+                    ctx->trainerAIData.evalStep = AI_EVAL_STEP_INIT;
+                } else {
+                    ctx->trainerAIData.evalStep++;
+                }
+
+                ctx->trainerAIData.stateFlags &= AI_STATUS_FLAG_DONE_OFF;
+            }
+            break;
+
+        case AI_EVAL_STEP_END:
+            break;
+        }
+    }
+}
+
+// Make static
+void AICmd_IfRandomLessThan(BattleSystem *battleSystem, BattleContext *ctx);
+void AICmd_IfRandomLessThan(BattleSystem *battleSystem, BattleContext *ctx) {
+    AIScript_IncrementCursor(ctx, 1);
+
+    int val = AIScript_Read(ctx);
+    int jump = AIScript_Read(ctx);
+
+    if (BattleSystem_Random(battleSystem) % 256 < val) {
+        AIScript_IncrementCursor(ctx, jump);
+    }
+}
+
+// Make static
+void AICmd_IfRandomGreaterThan(BattleSystem *battleSystem, BattleContext *ctx);
+void AICmd_IfRandomGreaterThan(BattleSystem *battleSystem, BattleContext *ctx) {
+    AIScript_IncrementCursor(ctx, 1);
+
+    int val = AIScript_Read(ctx);
+    int jump = AIScript_Read(ctx);
+
+    if (BattleSystem_Random(battleSystem) % 256 > val) {
+        AIScript_IncrementCursor(ctx, jump);
+    }
+}
+
+// Make static
+void AICmd_IfRandomEqualTo(BattleSystem *battleSystem, BattleContext *ctx);
+void AICmd_IfRandomEqualTo(BattleSystem *battleSystem, BattleContext *ctx) {
+    AIScript_IncrementCursor(ctx, 1);
+
+    int val = AIScript_Read(ctx);
+    int jump = AIScript_Read(ctx);
+
+    if (BattleSystem_Random(battleSystem) % 256 == val) {
+        AIScript_IncrementCursor(ctx, jump);
+    }
+}
+
+// Make static
+void AICmd_IfRandomNotEqualTo(BattleSystem *battleSystem, BattleContext *ctx);
+void AICmd_IfRandomNotEqualTo(BattleSystem *battleSystem, BattleContext *ctx) {
+    AIScript_IncrementCursor(ctx, 1);
+
+    int val = AIScript_Read(ctx);
+    int jump = AIScript_Read(ctx);
+
+    if (BattleSystem_Random(battleSystem) % 256 != val) {
+        AIScript_IncrementCursor(ctx, jump);
+    }
+}
+
+// Make static
+void AICmd_AddToMoveScore(BattleSystem *battleSystem, BattleContext *ctx);
+void AICmd_AddToMoveScore(BattleSystem *battleSystem, BattleContext *ctx) {
+    AIScript_IncrementCursor(ctx, 1);
+
+    int val = AIScript_Read(ctx);
+    ctx->trainerAIData.moveScore[ctx->trainerAIData.moveSlot] += val;
+
+    if (ctx->trainerAIData.moveScore[ctx->trainerAIData.moveSlot] < 0) {
+        ctx->trainerAIData.moveScore[ctx->trainerAIData.moveSlot] = 0;
+    }
+}
+
+void AICmd_IfHPPercentLessThan(BattleSystem *battleSystem, BattleContext *ctx);
+void AICmd_IfHPPercentLessThan(BattleSystem *battleSystem, BattleContext *ctx) {
+    AIScript_IncrementCursor(ctx, 1);
+
+    int inBattler = AIScript_Read(ctx);
+    int targetPercent = AIScript_Read(ctx);
+    int jump = AIScript_Read(ctx);
+    u8 battler = AIScript_Battler(ctx, inBattler);
+    u32 hpPercent = ctx->battleMons[battler].hp * 100 / ctx->battleMons[battler].maxHp;
+
+    if (hpPercent < targetPercent) {
+        AIScript_IncrementCursor(ctx, jump);
+    }
+}
+
+void AICmd_IfHPPercentGreaterThan(BattleSystem *battleSystem, BattleContext *ctx);
+void AICmd_IfHPPercentGreaterThan(BattleSystem *battleSystem, BattleContext *ctx) {
+    AIScript_IncrementCursor(ctx, 1);
+
+    int inBattler = AIScript_Read(ctx);
+    int targetPercent = AIScript_Read(ctx);
+    int jump = AIScript_Read(ctx);
+    u8 battler = AIScript_Battler(ctx, inBattler);
+    u32 hpPercent = ctx->battleMons[battler].hp * 100 / ctx->battleMons[battler].maxHp;
+
+    if (hpPercent > targetPercent) {
+        AIScript_IncrementCursor(ctx, jump);
+    }
+}
+
+void AICmd_IfHPPercentEqualTo(BattleSystem *battleSystem, BattleContext *ctx);
+void AICmd_IfHPPercentEqualTo(BattleSystem *battleSystem, BattleContext *ctx) {
+    AIScript_IncrementCursor(ctx, 1);
+
+    int inBattler = AIScript_Read(ctx);
+    int targetPercent = AIScript_Read(ctx);
+    int jump = AIScript_Read(ctx);
+    u8 battler = AIScript_Battler(ctx, inBattler);
+    u32 hpPercent = ctx->battleMons[battler].hp * 100 / ctx->battleMons[battler].maxHp;
+
+    if (hpPercent == targetPercent) {
+        AIScript_IncrementCursor(ctx, jump);
+    }
+}
+
+void AICmd_IfHPPercentNotEqualTo(BattleSystem *battleSystem, BattleContext *ctx);
+void AICmd_IfHPPercentNotEqualTo(BattleSystem *battleSystem, BattleContext *ctx) {
+    AIScript_IncrementCursor(ctx, 1);
+
+    int inBattler = AIScript_Read(ctx);
+    int targetPercent = AIScript_Read(ctx);
+    int jump = AIScript_Read(ctx);
+    u8 battler = AIScript_Battler(ctx, inBattler);
+    u32 hpPercent = ctx->battleMons[battler].hp * 100 / ctx->battleMons[battler].maxHp;
+
+    if (hpPercent != targetPercent) {
+        AIScript_IncrementCursor(ctx, jump);
+    }
+}
+
+void AICmd_IfStatus(BattleSystem *battleSystem, BattleContext *ctx);
+void AICmd_IfStatus(BattleSystem *battleSystem, BattleContext *ctx) {
+    AIScript_IncrementCursor(ctx, 1);
+
+    int inBattler = AIScript_Read(ctx);
+    u32 mask = AIScript_Read(ctx);
+    int jump = AIScript_Read(ctx);
+    u8 battler = AIScript_Battler(ctx, inBattler);
+
+    if (ctx->battleMons[battler].status & mask) {
+        AIScript_IncrementCursor(ctx, jump);
+    }
+}
+
+void AICmd_IfNotStatus(BattleSystem *battleSystem, BattleContext *ctx);
+void AICmd_IfNotStatus(BattleSystem *battleSystem, BattleContext *ctx) {
+    AIScript_IncrementCursor(ctx, 1);
+
+    int inBattler = AIScript_Read(ctx);
+    u32 mask = AIScript_Read(ctx);
+    int jump = AIScript_Read(ctx);
+    u8 battler = AIScript_Battler(ctx, inBattler);
+
+    if ((ctx->battleMons[battler].status & mask) == FALSE) {
+        AIScript_IncrementCursor(ctx, jump);
+    }
+}
+
+void AICmd_IfStatus2(BattleSystem *battleSystem, BattleContext *ctx);
+void AICmd_IfStatus2(BattleSystem *battleSystem, BattleContext *ctx) {
+    AIScript_IncrementCursor(ctx, 1);
+
+    int inBattler = AIScript_Read(ctx);
+    u32 mask = AIScript_Read(ctx);
+    int jump = AIScript_Read(ctx);
+    u8 battler = AIScript_Battler(ctx, inBattler);
+
+    if (ctx->battleMons[battler].status2 & mask) {
+        AIScript_IncrementCursor(ctx, jump);
+    }
+}
+
+void AICmd_IfNotStatus2(BattleSystem *battleSystem, BattleContext *ctx);
+void AICmd_IfNotStatus2(BattleSystem *battleSystem, BattleContext *ctx) {
+    AIScript_IncrementCursor(ctx, 1);
+
+    int inBattler = AIScript_Read(ctx);
+    u32 mask = AIScript_Read(ctx);
+    int jump = AIScript_Read(ctx);
+    u8 battler = AIScript_Battler(ctx, inBattler);
+
+    if ((ctx->battleMons[battler].status2 & mask) == FALSE) {
+        AIScript_IncrementCursor(ctx, jump);
+    }
+}
+
+void AICmd_IfMoveEffect(BattleSystem *battleSystem, BattleContext *ctx);
+void AICmd_IfMoveEffect(BattleSystem *battleSystem, BattleContext *ctx) {
+    AIScript_IncrementCursor(ctx, 1);
+
+    int inBattler = AIScript_Read(ctx);
+    u32 flag = AIScript_Read(ctx);
+    int jump = AIScript_Read(ctx);
+    u8 battler = AIScript_Battler(ctx, inBattler);
+
+    if (ctx->battleMons[battler].moveEffectFlags & flag) {
+        AIScript_IncrementCursor(ctx, jump);
+    }
+}
+
+void AICmd_IfNotMoveEffect(BattleSystem *battleSystem, BattleContext *ctx);
+void AICmd_IfNotMoveEffect(BattleSystem *battleSystem, BattleContext *ctx) {
+    AIScript_IncrementCursor(ctx, 1);
+
+    int inBattler = AIScript_Read(ctx);
+    u32 flag = AIScript_Read(ctx);
+    int jump = AIScript_Read(ctx);
+    u8 battler = AIScript_Battler(ctx, inBattler);
+
+    if ((ctx->battleMons[battler].moveEffectFlags & flag) == FALSE) {
+        AIScript_IncrementCursor(ctx, jump);
+    }
+}
+
+void AICmd_IfSideCondition(BattleSystem *battleSystem, BattleContext *ctx);
+void AICmd_IfSideCondition(BattleSystem *battleSystem, BattleContext *ctx) {
+    AIScript_IncrementCursor(ctx, 1);
+
+    int inBattler = AIScript_Read(ctx);
+    u32 flag = AIScript_Read(ctx);
+    int jump = AIScript_Read(ctx);
+    u8 battler = AIScript_Battler(ctx, inBattler);
+    u8 side = BattleSystem_GetBattlerSide(battleSystem, battler);
+
+    if (ctx->fieldSideConditionFlags[side] & flag) {
+        AIScript_IncrementCursor(ctx, jump);
+    }
+}
+
+void AICmd_IfNotSideCondition(BattleSystem *battleSystem, BattleContext *ctx);
+void AICmd_IfNotSideCondition(BattleSystem *battleSystem, BattleContext *ctx) {
+    AIScript_IncrementCursor(ctx, 1);
+
+    int inBattler = AIScript_Read(ctx);
+    u32 flag = AIScript_Read(ctx);
+    int jump = AIScript_Read(ctx);
+    u8 battler = AIScript_Battler(ctx, inBattler);
+    u8 side = BattleSystem_GetBattlerSide(battleSystem, battler);
+
+    if ((ctx->fieldSideConditionFlags[side] & flag) == FALSE) {
+        AIScript_IncrementCursor(ctx, jump);
+    }
+}
+
+void AICmd_IfLoadedLessThan(BattleSystem *battleSystem, BattleContext *ctx);
+void AICmd_IfLoadedLessThan(BattleSystem *battleSystem, BattleContext *ctx) {
+    AIScript_IncrementCursor(ctx, 1);
+
+    int val = AIScript_Read(ctx);
+    int jump = AIScript_Read(ctx);
+
+    if (ctx->trainerAIData.calcTemp < val) {
+        AIScript_IncrementCursor(ctx, jump);
+    }
+}
+
+void AICmd_IfLoadedGreaterThan(BattleSystem *battleSystem, BattleContext *ctx);
+void AICmd_IfLoadedGreaterThan(BattleSystem *battleSystem, BattleContext *ctx) {
+    AIScript_IncrementCursor(ctx, 1);
+
+    int val = AIScript_Read(ctx);
+    int jump = AIScript_Read(ctx);
+
+    if (ctx->trainerAIData.calcTemp > val) {
+        AIScript_IncrementCursor(ctx, jump);
+    }
+}
+
+void AICmd_IfLoadedEqualTo(BattleSystem *battleSystem, BattleContext *ctx);
+void AICmd_IfLoadedEqualTo(BattleSystem *battleSystem, BattleContext *ctx) {
+    AIScript_IncrementCursor(ctx, 1);
+
+    int val = AIScript_Read(ctx);
+    int jump = AIScript_Read(ctx);
+
+    if (ctx->trainerAIData.calcTemp == val) {
+        AIScript_IncrementCursor(ctx, jump);
+    }
+}
+
+void AICmd_IfLoadedNotEqualTo(BattleSystem *battleSystem, BattleContext *ctx);
+void AICmd_IfLoadedNotEqualTo(BattleSystem *battleSystem, BattleContext *ctx) {
+    AIScript_IncrementCursor(ctx, 1);
+
+    int val = AIScript_Read(ctx);
+    int jump = AIScript_Read(ctx);
+
+    if (ctx->trainerAIData.calcTemp != val) {
+        AIScript_IncrementCursor(ctx, jump);
+    }
+}
+
+void AICmd_IfLoadedMask(BattleSystem *battleSystem, BattleContext *ctx);
+void AICmd_IfLoadedMask(BattleSystem *battleSystem, BattleContext *ctx) {
+    AIScript_IncrementCursor(ctx, 1);
+
+    int mask = AIScript_Read(ctx);
+    int jump = AIScript_Read(ctx);
+
+    if (ctx->trainerAIData.calcTemp & mask) {
+        AIScript_IncrementCursor(ctx, jump);
+    }
+}
+
+void AICmd_IfLoadedNotMask(BattleSystem *battleSystem, BattleContext *ctx);
+void AICmd_IfLoadedNotMask(BattleSystem *battleSystem, BattleContext *ctx) {
+    AIScript_IncrementCursor(ctx, 1);
+
+    int mask = AIScript_Read(ctx);
+    int jump = AIScript_Read(ctx);
+
+    if ((ctx->trainerAIData.calcTemp & mask) == FALSE) {
+        AIScript_IncrementCursor(ctx, jump);
+    }
+}
+
+void AICmd_IfMoveEqualTo(BattleSystem *battleSystem, BattleContext *ctx);
+void AICmd_IfMoveEqualTo(BattleSystem *battleSystem, BattleContext *ctx) {
+    AIScript_IncrementCursor(ctx, 1);
+
+    int val = AIScript_Read(ctx);
+    int jump = AIScript_Read(ctx);
+
+    if (ctx->trainerAIData.move == val) {
+        AIScript_IncrementCursor(ctx, jump);
+    }
+}
+
+void AICmd_IfMoveNotEqualTo(BattleSystem *battleSystem, BattleContext *ctx);
+void AICmd_IfMoveNotEqualTo(BattleSystem *battleSystem, BattleContext *ctx) {
+    AIScript_IncrementCursor(ctx, 1);
+
+    int val = AIScript_Read(ctx);
+    int jump = AIScript_Read(ctx);
+
+    if (ctx->trainerAIData.move != val) {
+        AIScript_IncrementCursor(ctx, jump);
+    }
+}
+
+void AICmd_IfLoadedInTable(BattleSystem *battleSystem, BattleContext *ctx);
+void AICmd_IfLoadedInTable(BattleSystem *battleSystem, BattleContext *ctx) {
+    AIScript_IncrementCursor(ctx, 1);
+
+    int offset = AIScript_Read(ctx);
+    int jump = AIScript_Read(ctx);
+    int val;
+
+    while ((val = AIScript_ReadOffset(ctx, offset)) != 0xFFFFFFFF) {
+        if (ctx->trainerAIData.calcTemp == val) {
+            AIScript_IncrementCursor(ctx, jump);
+            break;
+        }
+        offset++;
+    }
+}
+
+void AICmd_IfLoadedNotInTable(BattleSystem *battleSystem, BattleContext *ctx);
+void AICmd_IfLoadedNotInTable(BattleSystem *battleSystem, BattleContext *ctx) {
+    AIScript_IncrementCursor(ctx, 1);
+
+    int offset = AIScript_Read(ctx);
+    int jump = AIScript_Read(ctx);
+    int val;
+
+    while ((val = AIScript_ReadOffset(ctx, offset)) != 0xFFFFFFFF) {
+        if (ctx->trainerAIData.calcTemp == val) {
+            return;
+        }
+        offset++;
+    }
+
+    AIScript_IncrementCursor(ctx, jump);
 }

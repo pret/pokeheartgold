@@ -3,6 +3,7 @@
 #include "global.h"
 
 #include "constants/abilities.h"
+#include "constants/battle.h"
 #include "constants/battle_menu.h"
 #include "constants/battle_subscript.h"
 #include "constants/items.h"
@@ -91,7 +92,7 @@ static BOOL TryBuildRage(BattleSystem *battleSystem, BattleContext *ctx);
 static BOOL TryItemFlinch(BattleSystem *battleSystem, BattleContext *ctx);
 static BOOL ov12_0224E130(BattleSystem *battleSystem, BattleContext *ctx);
 static BOOL ov12_0224E1BC(BattleSystem *battleSystem, BattleContext *ctx);
-static void ov12_0224E384(BattleSystem *battleSystem, BattleContext *ctx);
+static void BattleControllerPlayer_InitAI(BattleSystem *battleSystem, BattleContext *ctx);
 static void ov12_0224E414(BattleSystem *battleSystem, BattleContext *ctx);
 
 static const ControllerFunction sPlayerBattleCommands[CONTROLLER_COMMAND_MAX] = {
@@ -149,7 +150,7 @@ BattleContext *BattleContext_New(BattleSystem *battleSystem) {
 
     BattleContext_Init(ctx);
     ov12_02251038(battleSystem, ctx);
-    ov12_0224E384(battleSystem, ctx);
+    BattleControllerPlayer_InitAI(battleSystem, ctx);
     LoadMoveTbl(ctx->trainerAIData.moveData);
     ctx->trainerAIData.itemData = LoadAllItemData(HEAP_ID_BATTLE);
 
@@ -1589,7 +1590,7 @@ static void BattleControllerPlayer_UpdateFieldConditionExtra(BattleSystem *battl
             ctx->updateFieldConditionExtraData++;
             if (ctx->fieldConditionData.futureSightTurns[battlerId]) {
                 if (!(--ctx->fieldConditionData.futureSightTurns[battlerId]) && ctx->battleMons[battlerId].hp != 0) {
-                    ctx->fieldSideConditionFlags[BattleSystem_GetFieldSide(battleSystem, battlerId)] &= ~SIDE_CONDITION_FUTURE_SIGHT;
+                    ctx->fieldSideConditionFlags[BattleSystem_GetBattlerSide(battleSystem, battlerId)] &= ~SIDE_CONDITION_FUTURE_SIGHT;
                     ctx->buffMsg.id = msg_0197_00475; // Seadra took the Doom Desire attack!
                     ctx->buffMsg.tag = TAG_NICKNAME_MOVE;
                     ctx->buffMsg.param[0] = CreateNicknameTag(ctx, battlerId);
@@ -1714,7 +1715,7 @@ static void BattleControllerPlayer_ItemInput(BattleSystem *battleSystem, BattleC
     ctx->battlerIdTarget = Battler_GetRandomOpposingBattlerId(battleSystem, ctx, ctx->battlerIdAttacker);
     item = (BattleItem *)&ctx->playerActions[ctx->battlerIdAttacker].unk8;
 
-    if (BattleSystem_GetFieldSide(battleSystem, ctx->battlerIdAttacker)) {
+    if (BattleSystem_GetBattlerSide(battleSystem, ctx->battlerIdAttacker)) {
         switch (ctx->trainerAIData.useItem[ctx->battlerIdAttacker >> 1]) {
         case 0:
             script = BATTLE_SUBSCRIPT_USE_FULL_RESTORE;
@@ -1780,7 +1781,7 @@ static void BattleControllerPlayer_PokemonInput(BattleSystem *battleSystem, Batt
 static void BattleControllerPlayer_RunInput(BattleSystem *battleSystem, BattleContext *ctx) {
     ctx->battlerIdAttacker = ctx->executionOrder[ctx->executionIndex];
 
-    if (BattleSystem_GetFieldSide(battleSystem, ctx->battlerIdAttacker) && !(BattleSystem_GetBattleType(battleSystem) & BATTLE_TYPE_LINK)) {
+    if (BattleSystem_GetBattlerSide(battleSystem, ctx->battlerIdAttacker) && !(BattleSystem_GetBattleType(battleSystem) & BATTLE_TYPE_LINK)) {
         if (ctx->battleMons[ctx->battlerIdAttacker].status2 & (STATUS2_BIND | STATUS2_MEAN_LOOK)) {
             ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 286);
             ctx->scriptSeqNo = 0;
@@ -1889,7 +1890,7 @@ static u32 TryDisobedience(BattleSystem *battleSystem, BattleContext *ctx, int *
         return 0;
     }
 
-    if (BattleSystem_GetFieldSide(battleSystem, ctx->battlerIdAttacker)) {
+    if (BattleSystem_GetBattlerSide(battleSystem, ctx->battlerIdAttacker)) {
         return 0;
     }
 
@@ -2812,7 +2813,7 @@ static void BattleControllerPlayer_HpCalc(BattleSystem *battleSystem, BattleCont
 
         GF_ASSERT(ctx->damage < 0);
 
-        if (BattleSystem_GetFieldSide(battleSystem, ctx->battlerIdAttacker) == BattleSystem_GetFieldSide(battleSystem, ctx->battlerIdTarget)) {
+        if (BattleSystem_GetBattlerSide(battleSystem, ctx->battlerIdAttacker) == BattleSystem_GetBattlerSide(battleSystem, ctx->battlerIdTarget)) {
             BattleController_EmitIncrementGameStat(battleSystem, ctx->battlerIdAttacker, 0, GAME_STAT_ALLIES_DAMAGED);
         }
 
@@ -3422,7 +3423,7 @@ static BOOL ov12_0224D540(BattleSystem *battleSystem, BattleContext *ctx) {
 
     for (battlerId = 0; battlerId < maxBattlers; battlerId++) {
         ctx->unk_13C[battlerId] &= ~1;
-        if (((battleType & BATTLE_TYPE_DOUBLES) && !(battleType & (BATTLE_TYPE_MULTI | BATTLE_TYPE_TAG))) || ((battleType & BATTLE_TYPE_TAG) && BattleSystem_GetFieldSide(battleSystem, battlerId) == 0)) {
+        if (((battleType & BATTLE_TYPE_DOUBLES) && !(battleType & (BATTLE_TYPE_MULTI | BATTLE_TYPE_TAG))) || ((battleType & BATTLE_TYPE_TAG) && BattleSystem_GetBattlerSide(battleSystem, battlerId) == 0)) {
             if (ctx->battleMons[battlerId].hp != 0 || ctx->battleMons[battlerId ^ 2].hp != 0 || !(battlerId & 2)) {
                 if (ctx->battleMons[battlerId].hp == 0) {
                     int i;
@@ -3499,7 +3500,7 @@ static BOOL ov12_0224D7EC(BattleSystem *battleSystem, BattleContext *ctx) {
     u8 battleOutcome = 0;
 
     for (battlerId = 0; battlerId < maxBattlers; battlerId++) {
-        if ((battleType == (BATTLE_TYPE_AI | BATTLE_TYPE_MULTI | BATTLE_TYPE_DOUBLES) || battleType == (BATTLE_TYPE_AI | BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_MULTI)) && BattleSystem_GetFieldSide(battleSystem, battlerId) == 0) {
+        if ((battleType == (BATTLE_TYPE_AI | BATTLE_TYPE_MULTI | BATTLE_TYPE_DOUBLES) || battleType == (BATTLE_TYPE_AI | BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_MULTI)) && BattleSystem_GetBattlerSide(battleSystem, battlerId) == 0) {
             if (ov12_0223AB0C(battleSystem, battlerId) == 2 && ctx->battleMons[battlerId].hp == 0) {
                 int hp = 0;
                 Party *party = BattleSystem_GetParty(battleSystem, battlerId);
@@ -3516,7 +3517,7 @@ static BOOL ov12_0224D7EC(BattleSystem *battleSystem, BattleContext *ctx) {
                     battleOutcome |= 2;
                 }
             }
-        } else if ((battleType & BATTLE_TYPE_MULTI) || ((battleType & BATTLE_TYPE_TAG) && BattleSystem_GetFieldSide(battleSystem, battlerId))) {
+        } else if ((battleType & BATTLE_TYPE_MULTI) || ((battleType & BATTLE_TYPE_TAG) && BattleSystem_GetBattlerSide(battleSystem, battlerId))) {
             if (ctx->battleMons[battlerId].hp == 0) {
                 int i;
                 int hp = 0;
@@ -3933,31 +3934,29 @@ static BOOL ov12_0224E1BC(BattleSystem *battleSystem, BattleContext *ctx) {
     return flag == 1;
 }
 
-extern u32 ov10_02220AAC[];
+extern u32 gTrainerAITable[];
 
-static void ov12_0224E384(BattleSystem *battleSystem, BattleContext *ctx) {
-    int i;
+static void BattleControllerPlayer_InitAI(BattleSystem *battleSystem, BattleContext *ctx) {
     int battler;
     u32 battleType = BattleSystem_GetBattleType(battleSystem);
-    u16 item;
 
     MIi_CpuClear32(0, (u32 *)&ctx->trainerAIData, sizeof(TrainerAIData));
 
     if ((battleType & BATTLE_TYPE_TRAINER) && !(battleType & (BATTLE_TYPE_NO_EXP | BATTLE_TYPE_AI))) {
-        for (battler = 0; battler < 4; battler++) {
+        for (battler = 0; battler < BATTLER_MAX; battler++) {
             if (battler & 1) {
-                for (i = 0; i < 4; i++) {
-                    item = BattleSystem_GetTrainerItem(battleSystem, battler, i);
-                    if (item != 0) {
-                        ctx->trainerAIData.unk68[battler >> 1][ctx->trainerAIData.unk99[battler >> 1]] = item;
-                        ctx->trainerAIData.unk99[battler >> 1]++;
+                for (int i = 0; i < MAX_TRAINER_ITEMS; i++) {
+                    u16 item = BattleSystem_GetTrainerItem(battleSystem, battler, i);
+                    if (item != ITEM_NONE) {
+                        ctx->trainerAIData.trainerItems[battler >> 1][ctx->trainerAIData.trainerItemCounts[battler >> 1]] = item;
+                        ctx->trainerAIData.trainerItemCounts[battler >> 1]++;
                     }
                 }
             }
         }
     }
 
-    ctx->unk_2134 = ov10_02220AAC;
+    ctx->aiScriptTemp = gTrainerAITable;
 }
 
 static void ov12_0224E414(BattleSystem *battleSystem, BattleContext *ctx) {
