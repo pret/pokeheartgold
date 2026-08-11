@@ -24,9 +24,9 @@
 .public sub_02054E20
 .public Gymmick_CheckCollision
 .public _s32_div_f
-.public ov01_021F3B0C
-.public ov01_021F3B34
-.public ov01_021F3B44
+.public MapProp_GetTranslation
+.public MapProp_GetBuildModel
+.public MapPropManager_GetMapPropByIndex
 .public ov01_021F630C
 .public ov01_021F6328
 .public ov01_021F635C

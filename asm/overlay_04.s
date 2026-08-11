@@ -68,15 +68,15 @@ _02253E94:
 	add r0, #0x9c
 	ldr r0, [r0]
 	mov r1, #0x6f
-	bl ov01_021F3B4C
+	bl MapPropManager_FindMapPropByBuildModel
 	add r6, r0, #0
 	add r0, sp, #0xc
 	add r1, r6, #0
-	bl ov01_021F3B0C
+	bl MapProp_GetTranslation
 	add r0, r6, #0
 	add r1, sp, #0xc
 	str r4, [sp, #0x10]
-	bl ov01_021F3B1C
+	bl MapProp_SetTranslation
 	add r5, #0x98
 	ldr r2, [r5]
 	mov r0, #0
@@ -265,11 +265,11 @@ _02254026:
 	add r0, #0x9c
 	ldr r0, [r0]
 	mov r1, #0x6f
-	bl ov01_021F3B4C
+	bl MapPropManager_FindMapPropByBuildModel
 	add r6, r0, #0
 	add r0, sp, #0xc
 	add r1, r6, #0
-	bl ov01_021F3B0C
+	bl MapProp_GetTranslation
 	mov r0, #1
 	ldr r1, [sp, #0x10]
 	lsl r0, r0, #0x10
@@ -303,7 +303,7 @@ _02254060:
 	bl ov01_02205A34
 	add r0, r6, #0
 	add r1, sp, #0xc
-	bl ov01_021F3B1C
+	bl MapProp_SetTranslation
 	add sp, #0x18
 	pop {r4, r5, r6, pc}
 _0225408C:
@@ -363,11 +363,11 @@ _022540F6:
 	add r0, #0x9c
 	ldr r0, [r0]
 	mov r1, #0x6f
-	bl ov01_021F3B4C
+	bl MapPropManager_FindMapPropByBuildModel
 	add r6, r0, #0
 	add r0, sp, #0xc
 	add r1, r6, #0
-	bl ov01_021F3B0C
+	bl MapProp_GetTranslation
 	mov r0, #1
 	ldr r1, [sp, #0x10]
 	lsl r0, r0, #0x10
@@ -401,7 +401,7 @@ _02254130:
 	bl ov01_02205A34
 	add r0, r6, #0
 	add r1, sp, #0xc
-	bl ov01_021F3B1C
+	bl MapProp_SetTranslation
 	add sp, #0x18
 	pop {r4, r5, r6, pc}
 _0225415C:
@@ -1256,16 +1256,16 @@ _0225482A:
 	add r0, #0x9c
 	ldrb r1, [r4, #0x17]
 	ldr r0, [r0]
-	bl ov01_021F3B44
+	bl MapPropManager_GetMapPropByIndex
 	add r4, r0, #0
 	ldr r0, [r5, #0x34]
 	bl ov01_021FB9E0
 	add r7, r0, #0
 	add r0, r4, #0
-	bl ov01_021F3B38
+	bl MapProp_GetRenderSurface
 	str r0, [sp, #0x2c]
 	add r0, r4, #0
-	bl ov01_021F3B3C
+	bl MapProp_GetResModel
 	ldr r1, [sp, #0x2c]
 	mov r2, #1
 	str r1, [sp]
@@ -1503,7 +1503,7 @@ _02254A22:
 	ldr r0, [r0]
 	lsl r1, r1, #0x18
 	lsr r1, r1, #0x18
-	bl ov01_021F3B44
+	bl MapPropManager_GetMapPropByIndex
 	add r3, r4, #0
 	add r2, sp, #0x74
 	add r3, #0x2c
@@ -1520,7 +1520,7 @@ _02254A22:
 	str r0, [sp, #0x74]
 	add r0, r6, #0
 	add r1, r7, #0
-	bl ov01_021F3B1C
+	bl MapProp_SetTranslation
 	ldr r3, _02254BA8 ; =ov04_02257344
 	add r2, sp, #0x5c
 	add r6, r4, #0
@@ -1885,9 +1885,9 @@ _02254D38:
 	lsl r1, r1, #0x18
 	ldr r0, [r0]
 	lsr r1, r1, #0x18
-	bl ov01_021F3B44
+	bl MapPropManager_GetMapPropByIndex
 	mov r1, #1
-	bl ov01_021F3B2C
+	bl MapProp_SetCulled
 _02254D78:
 	add r6, r6, #1
 	add r4, r4, #4
@@ -1998,9 +1998,9 @@ ov04_02254E20: ; 0x02254E20
 	ldr r0, [r5]
 	lsl r1, r1, #0x18
 	lsr r1, r1, #0x18
-	bl ov01_021F3B44
+	bl MapPropManager_GetMapPropByIndex
 	add r1, sp, #0
-	bl ov01_021F3B1C
+	bl MapProp_SetTranslation
 	add sp, #0xc
 	pop {r4, r5, pc}
 	.balign 4, 0
@@ -2042,13 +2042,13 @@ _02254E86:
 	ldr r1, [r5, r1]
 	lsl r1, r1, #0x18
 	lsr r1, r1, #0x18
-	bl ov01_021F3B44
+	bl MapPropManager_GetMapPropByIndex
 	ldr r1, [r4, #4]
 	add r6, r0, #0
 	cmp r1, #4
 	blt _02254ECC
 	mov r1, #1
-	bl ov01_021F3B2C
+	bl MapProp_SetCulled
 	ldr r0, [r4, #0xc]
 	bl FieldSystem_GetSaveData
 	bl Save_GetGymmickPtr
@@ -2069,7 +2069,7 @@ _02254ECC:
 	str r0, [r4, #4]
 _02254ED0:
 	add r0, r6, #0
-	bl ov01_021F3B04
+	bl MapProp_GetScale
 	add r5, r0, #0
 	mov r0, #1
 	ldr r1, [r4, #4]
@@ -3627,10 +3627,10 @@ _02255A16:
 	add r0, #0x9c
 	ldrb r1, [r1, #0xb]
 	ldr r0, [r0]
-	bl ov01_021F3B44
+	bl MapPropManager_GetMapPropByIndex
 	add r1, r0, #0
 	add r0, sp, #8
-	bl ov01_021F3B0C
+	bl MapProp_GetTranslation
 	ldr r1, [sp, #8]
 	asr r0, r1, #0xf
 	lsr r0, r0, #0x10
@@ -3760,8 +3760,8 @@ _02255B24:
 	add r5, #0x9c
 	ldrb r1, [r1, #0xb]
 	ldr r0, [r5]
-	bl ov01_021F3B44
-	bl ov01_021F3B08
+	bl MapPropManager_GetMapPropByIndex
+	bl MapProp_GetRotation
 	add r1, sp, #0
 	ldrh r1, [r1]
 	str r1, [r4, #0x68]
@@ -3790,8 +3790,8 @@ _02255B64:
 	add r0, #0x9c
 	ldrb r1, [r1, #0xb]
 	ldr r0, [r0]
-	bl ov01_021F3B44
-	bl ov01_021F3B08
+	bl MapPropManager_GetMapPropByIndex
+	bl MapProp_GetRotation
 	mov r1, #1
 	ldr r2, [r0, #4]
 	lsl r1, r1, #0xa
@@ -3880,8 +3880,8 @@ _02255C26:
 	add r5, #0x9c
 	ldrb r1, [r1, #0xb]
 	ldr r0, [r5]
-	bl ov01_021F3B44
-	bl ov01_021F3B08
+	bl MapPropManager_GetMapPropByIndex
+	bl MapProp_GetRotation
 	mov r1, #1
 	ldr r2, [r0, #4]
 	lsl r1, r1, #0xa
@@ -3910,8 +3910,8 @@ _02255C64:
 	add r5, #0x9c
 	ldrb r1, [r1, #0xb]
 	ldr r0, [r5]
-	bl ov01_021F3B44
-	bl ov01_021F3B08
+	bl MapPropManager_GetMapPropByIndex
+	bl MapProp_GetRotation
 	mov r1, #1
 	ldr r2, [r0, #4]
 	lsl r1, r1, #0xa
@@ -4115,11 +4115,11 @@ _02255DEA:
 	add r0, #0x9c
 	ldrb r1, [r1, #0xb]
 	ldr r0, [r0]
-	bl ov01_021F3B44
+	bl MapPropManager_GetMapPropByIndex
 	str r0, [sp]
 	ldr r1, [sp]
 	add r0, sp, #0x34
-	bl ov01_021F3B0C
+	bl MapProp_GetTranslation
 	add r0, sp, #0x34
 	add r1, r4, #0
 	add r1, #0x58
@@ -4127,7 +4127,7 @@ _02255DEA:
 	bl VEC_Add
 	ldr r0, [sp]
 	add r1, sp, #0x34
-	bl ov01_021F3B1C
+	bl MapProp_SetTranslation
 	ldr r0, [r6, #0x40]
 	bl PlayerAvatar_GetMapObject
 	add r1, sp, #0x28
@@ -4259,11 +4259,11 @@ _02255F1C:
 	add r0, #0x9c
 	ldrb r1, [r1, #0xb]
 	ldr r0, [r0]
-	bl ov01_021F3B44
+	bl MapPropManager_GetMapPropByIndex
 	add r5, r0, #0
 	add r0, sp, #0x10
 	add r1, r5, #0
-	bl ov01_021F3B0C
+	bl MapProp_GetTranslation
 	add r0, sp, #0x10
 	add r1, r4, #0
 	add r1, #0x58
@@ -4271,7 +4271,7 @@ _02255F1C:
 	bl VEC_Add
 	add r0, r5, #0
 	add r1, sp, #0x10
-	bl ov01_021F3B1C
+	bl MapProp_SetTranslation
 	ldr r0, [r6, #0x40]
 	bl PlayerAvatar_GetMapObject
 	add r1, sp, #4
