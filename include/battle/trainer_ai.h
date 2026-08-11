@@ -6,7 +6,4 @@
 void TrainerAI_Init(BattleSystem *battleSystem, BattleContext *ctx, u8 battlerID, u8 initScore);
 u8 TrainerAI_Main(BattleSystem *battleSystem, u8 battlerID);
 
-// static?
-void TrainerAI_RecordLastMove(BattleSystem *battleSystem, BattleContext *ctx);
-
 #endif

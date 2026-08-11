@@ -158,7 +158,7 @@ typedef struct MoveFailFlags {
     u32 unused : 21;
 } MoveFailFlags;
 
-typedef struct UnkBattlemonSub {
+typedef struct MoveEffectData {
     u32 disabledTurns : 3;
     u32 encoredTurns : 3;
     u32 isCharged : 2;
@@ -179,7 +179,7 @@ typedef struct UnkBattlemonSub {
     u32 lastResortCount : 3;
     u32 magnetRiseTurns : 3;
     u32 healBlockTurns : 3;
-    u32 embargoFlag : 3;
+    u32 embargoTurns : 3;
     u32 knockOffFlag : 1;   // unclear whether true mean knocked off or not knocked
                             // off based on current information on its usage
     u32 metronomeTurns : 4; // refers to the item, not the move
@@ -202,7 +202,7 @@ typedef struct UnkBattlemonSub {
     u16 moveNoChoice;
     u16 transformGender;
     int unk30;
-} UnkBattlemonSub;
+} MoveEffectData;
 
 typedef struct BattleMon {
     u16 species;
@@ -262,7 +262,7 @@ typedef struct BattleMon {
     u8 ball;
     u32 moveEffectFlags;
     u32 moveEffectFlagsTemp;
-    UnkBattlemonSub unk88;
+    MoveEffectData moveEffectData;
 } BattleMon;
 
 typedef struct PokemonStats {

@@ -130,7 +130,7 @@
 #define MOVE_EFFECT_PASS_STATS_AND_STATUS              127
 #define MOVE_EFFECT_HIT_BEFORE_SWITCH                  128
 #define MOVE_EFFECT_REMOVE_HAZARDS_AND_BINDING         129
-#define MOVE_EFFECT_10_DAMAGE_FLAT                     130
+#define MOVE_EFFECT_20_DAMAGE_FLAT                     130
 #define MOVE_EFFECT_UNUSED_131                         131
 #define MOVE_EFFECT_HEAL_HALF_MORE_IN_SUN              132
 #define MOVE_EFFECT_UNUSED_133                         133
@@ -151,7 +151,7 @@
 #define MOVE_EFFECT_HIT_IN_3_TURNS                     148
 #define MOVE_EFFECT_DOUBLE_DAMAGE_FLY_OR_BOUNCE        149
 #define MOVE_EFFECT_FLINCH_MINIMIZE_DOUBLE_HIT         150
-#define MOVE_EFFECT_151                                151
+#define MOVE_EFFECT_SKIP_CHARGE_TURN_IN_SUN            151
 #define MOVE_EFFECT_THUNDER                            152
 #define MOVE_EFFECT_FLEE_FROM_WILD_BATTLE              153
 #define MOVE_EFFECT_BEAT_UP                            154
@@ -182,6 +182,10 @@
 #define MOVE_EFFECT_HEAL_IN_3_TURNS                    179
 #define MOVE_EFFECT_USE_RANDOM_ALLY_MOVE               180
 #define MOVE_EFFECT_GROUND_TRAP_USER_CONTINUOUS_HEAL   181
+#define MOVE_EFFECT_LOWER_OWN_ATK_AND_DEF              182
+#define MOVE_EFFECT_APPLY_MAGIC_COAT                   183
+#define MOVE_EFFECT_RECYCLE                            184
+#define MOVE_EFFECT_DOUBLE_POWER_IF_HIT                185
 #define MOVE_EFFECT_REMOVE_SCREENS                     186
 #define MOVE_EFFECT_STATUS_SLEEP_NEXT_TURN             187
 #define MOVE_EFFECT_REMOVE_HELD_ITEM                   188
@@ -195,6 +199,7 @@
 #define MOVE_EFFECT_INCREASE_POWER_WITH_WEIGHT         196
 #define MOVE_EFFECT_SECRET_POWER                       197
 #define MOVE_EFFECT_RECOIL_THIRD                       198
+#define MOVE_EFFECT_CONFUSE_ALL                        199
 #define MOVE_EFFECT_HIGH_CRITICAL_BURN_HIT             200
 #define MOVE_EFFECT_HALVE_ELECTRIC_DAMAGE              201
 #define MOVE_EFFECT_FLINCH_POISON_HIT                  202
@@ -225,7 +230,7 @@
 #define MOVE_EFFECT_METAL_BURST                        227
 #define MOVE_EFFECT_SWITCH_HIT                         228
 #define MOVE_EFFECT_DEF_SPD_DOWN_HIT                   229
-#define MOVE_EFFECT_DOUBLE_POWER_IF_HIT                230
+#define MOVE_EFFECT_DOUBLE_POWER_IF_MOVING_SECOND      230
 #define MOVE_EFFECT_DOUBLE_POWER_IF_TARGET_HIT         231
 #define MOVE_EFFECT_PREVENT_ITEM_USE                   232
 #define MOVE_EFFECT_FLING                              233
