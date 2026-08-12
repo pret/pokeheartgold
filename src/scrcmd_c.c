@@ -3081,31 +3081,31 @@ BOOL ScrCmd_EcruteakGymInit(ScriptContext *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_315(ScriptContext *ctx) {
+BOOL ScrCmd_BindEcruteakGymCandleToTrainerSprite(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
     if (Save_Gymmick_GetType(Save_GetGymmickPtr(FieldSystem_GetSaveData(fieldSystem))) != GYMMICK_ECRUTEAK) {
         return FALSE;
     }
-    ov04_02254D98(fieldSystem);
+    EcruteakGymmick_BindCandleToTrainerObject(fieldSystem);
     return FALSE;
 }
 
-BOOL ScrCmd_316(ScriptContext *ctx) {
+BOOL ScrCmd_UnbindEcruteakGymCandleFromTrainerSprite(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
     if (Save_Gymmick_GetType(Save_GetGymmickPtr(FieldSystem_GetSaveData(fieldSystem))) != GYMMICK_ECRUTEAK) {
         return FALSE;
     }
-    ov04_02254DD0(fieldSystem);
+    EcruteakGymmick_UnbindCandleFromTrainerObject(fieldSystem);
     return FALSE;
 }
 
-BOOL ScrCmd_317(ScriptContext *ctx) {
+BOOL ScrCmd_ExtinguishEcruteakGymCandle(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
-    u8 r5 = ScriptReadByte(ctx);
+    u8 playerTalkedToTrainer = ScriptReadByte(ctx);
     if (Save_Gymmick_GetType(Save_GetGymmickPtr(FieldSystem_GetSaveData(fieldSystem))) != GYMMICK_ECRUTEAK) {
         return TRUE;
     }
-    ov04_02254DE0(fieldSystem, (r5 != 0) ? 10 : 30);
+    EcruteakGymmick_ExtinguishCandle(fieldSystem, playerTalkedToTrainer ? SCRIPTENV_LAST_INTERACTED : SCRIPTENV_ENGAGED_TRAINER_0_EVENT);
     return TRUE;
 }
 

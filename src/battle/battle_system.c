@@ -851,10 +851,10 @@ void BattleSystem_SetBackground(BattleSystem *battleSystem) {
     battleSystem->unk220 = Heap_Alloc(HEAP_ID_BATTLE, 0x10000);
     battleSystem->unk224 = Heap_Alloc(HEAP_ID_BATTLE, 0x200);
 
-    MIi_CpuCopy32((void *)0x6010000, (u32 *)battleSystem->unk220, 0x10000);
+    MI_CpuCopy32((void *)0x6010000, (u32 *)battleSystem->unk220, 0x10000);
     dst = (u32 *)battleSystem->unk224;
     src = (u32 *)PaletteData_GetUnfadedBuf(battleSystem->palette, PLTTBUF_MAIN_BG);
-    MIi_CpuCopy32(src, dst, 0x200);
+    MI_CpuCopy32(src, dst, 0x200);
 
     vram = (u8 *)0x6400000;
     image = Sprite_GetImageProxy(battleSystem->unk17C[1].unk0->sprite);

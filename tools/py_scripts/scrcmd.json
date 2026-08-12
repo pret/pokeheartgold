@@ -1923,15 +1923,15 @@
       "args": []
     },
     {
-      "name": "ScrCmd_315",
+      "name": "BindEcruteakGymCandleToTrainerSprite",
       "args": []
     },
     {
-      "name": "ScrCmd_316",
+      "name": "UnbindEcruteakGymCandleFromTrainerSprite",
       "args": []
     },
     {
-      "name": "ScrCmd_317",
+      "name": "ExtinguishEcruteakGymCandle",
       "args": [
         1
       ]

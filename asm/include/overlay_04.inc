@@ -126,9 +126,9 @@
 .public GymmickFree_Azalea
 .public GymmickInit_Ecruteak
 .public GymmickFree_Ecruteak
-.public ov04_02254D98
-.public ov04_02254DD0
-.public ov04_02254DE0
+.public EcruteakGymmick_BindCandleToTrainerObject
+.public EcruteakGymmick_UnbindCandleFromTrainerObject
+.public EcruteakGymmick_ExtinguishCandle
 .public GymmickInit_Blackthorn
 .public GymmickFree_Blackthorn
 .public ov04_02255090

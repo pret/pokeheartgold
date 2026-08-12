@@ -394,7 +394,7 @@ static void MapPropAnimationManager_UnloadOneShotAnimation(MapPropAnimationManag
 
 MapPropOneShotAnimationManager *MapPropOneShotAnimationManager_New(void) {
     MapPropOneShotAnimationManager *manager = Heap_Alloc(HEAP_ID_FIELD1, sizeof(MapPropOneShotAnimationManager));
-    MIi_CpuClearFast(0, (u32 *)manager, sizeof(MapPropOneShotAnimationManager));
+    MI_CpuClearFast((u32 *)manager, sizeof(MapPropOneShotAnimationManager));
     return manager;
 }
 

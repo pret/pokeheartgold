@@ -6,114 +6,8 @@
 
 	.text
 
-	thumb_func_start GymmickInit_Ecruteak
-GymmickInit_Ecruteak: ; 0x02254CBC
-	push {r4, r5, r6, r7, lr}
-	sub sp, #0x34
-	add r5, r0, #0
-	bl FieldSystem_GetSaveData
-	bl Save_GetGymmickPtr
-	mov r1, #1
-	bl Save_Gymmick_AssertMagic_GetData
-	add r7, r0, #0
-	mov r0, #4
-	mov r1, #0x1c
-	bl Heap_Alloc
-	ldr r1, [r5, #4]
-	mov r2, #0x1c
-	str r0, [r1, #0x24]
-	ldr r0, [r5, #4]
-	mov r1, #0
-	ldr r0, [r0, #0x24]
-	bl MI_CpuFill8
-	ldr r0, [r5, #4]
-	mov r1, #1
-	lsl r1, r1, #8
-	ldr r4, [r0, #0x24]
-	add r0, r1, #0
-	add r0, #0x1c
-	str r1, [r5, r0]
-	mov r0, #0xa
-	mov r3, #0
-	str r0, [sp]
-	str r3, [sp, #4]
-	ldr r0, [r5, #0x4c]
-	sub r1, r3, #1
-	mov r2, #1
-	bl ov01_021EA864
-	mov r1, #0
-	ldr r0, [r5, #0x4c]
-	mvn r1, r1
-	mov r2, #0
-	mov r3, #0x1f
-	bl ov01_021EA89C
-	mov r1, #0
-	add r2, sp, #0x14
-	sub r0, r1, #1
-_02254D1E:
-	add r1, r1, #1
-	strb r0, [r2]
-	add r2, r2, #1
-	cmp r1, #0x20
-	blt _02254D1E
-	ldr r0, [r5, #0x4c]
-	add r1, sp, #0x14
-	bl ov01_021EA8C4
-	add r0, r5, #0
-	bl ov04_02254F44
-	mov r6, #0
-_02254D38:
-	ldr r0, [r5, #0x3c]
-	add r1, r6, #2
-	bl MapObjectManager_GetFirstActiveObjectByID
-	add r1, sp, #8
-	bl MapObject_CopyPositionVector
-	ldr r0, [r5, #0x54]
-	mov r1, #0x80
-	str r0, [sp]
-	add r0, r5, #0
-	add r0, #0x9c
-	ldr r0, [r0]
-	add r2, sp, #8
-	mov r3, #0
-	bl MapPropManager_LoadOne
-	str r0, [r4]
-	ldrb r0, [r7, r6]
-	cmp r0, #0
-	beq _02254D78
-	add r0, r5, #0
-	ldr r1, [r4]
-	add r0, #0x9c
-	lsl r1, r1, #0x18
-	ldr r0, [r0]
-	lsr r1, r1, #0x18
-	bl MapPropManager_GetMapPropByIndex
-	mov r1, #1
-	bl MapProp_SetCulled
-_02254D78:
-	add r6, r6, #1
-	add r4, r4, #4
-	cmp r6, #4
-	blt _02254D38
-	add sp, #0x34
-	pop {r4, r5, r6, r7, pc}
-	thumb_func_end GymmickInit_Ecruteak
-
-	thumb_func_start GymmickFree_Ecruteak
-GymmickFree_Ecruteak: ; 0x02254D84
-	push {r4, lr}
-	add r4, r0, #0
-	ldr r0, [r4, #4]
-	ldr r0, [r0, #0x24]
-	bl Heap_Free
-	ldr r0, [r4, #4]
-	mov r1, #0
-	str r1, [r0, #0x24]
-	pop {r4, pc}
-	thumb_func_end GymmickFree_Ecruteak
-
-	thumb_func_start ov04_02254D98
-ov04_02254D98: ; 0x02254D98
+	thumb_func_start EcruteakGymmick_BindCandleToTrainerObject
+EcruteakGymmick_BindCandleToTrainerObject: ; 0x02254D98
 	push {r4, r5, r6, lr}
 	add r6, r0, #0
 	ldr r1, [r6, #4]
@@ -139,21 +33,21 @@ _02254DB8:
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _02254DCC: .word ov04_02254E20
-	thumb_func_end ov04_02254D98
+	thumb_func_end EcruteakGymmick_BindCandleToTrainerObject
 
-	thumb_func_start ov04_02254DD0
-ov04_02254DD0: ; 0x02254DD0
+	thumb_func_start EcruteakGymmick_UnbindCandleFromTrainerObject
+EcruteakGymmick_UnbindCandleFromTrainerObject: ; 0x02254DD0
 	ldr r0, [r0, #4]
-	ldr r3, _02254DDC ; =sub_0200E390
+	ldr r3, _02254DDC ; =SysTask_Destroy
 	ldr r0, [r0, #0x24]
 	ldr r0, [r0, #0x14]
 	bx r3
 	nop
 _02254DDC: .word SysTask_Destroy
-	thumb_func_end ov04_02254DD0
+	thumb_func_end EcruteakGymmick_UnbindCandleFromTrainerObject
 
-	thumb_func_start ov04_02254DE0
-ov04_02254DE0: ; 0x02254DE0
+	thumb_func_start EcruteakGymmick_ExtinguishCandle
+EcruteakGymmick_ExtinguishCandle: ; 0x02254DE0
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	ldr r2, [r5, #4]
@@ -181,7 +75,7 @@ ov04_02254DE0: ; 0x02254DE0
 	pop {r4, r5, r6, pc}
 	nop
 _02254E1C: .word ov04_02254E50
-	thumb_func_end ov04_02254DE0
+	thumb_func_end EcruteakGymmick_ExtinguishCandle
 
 	thumb_func_start ov04_02254E20
 ov04_02254E20: ; 0x02254E20

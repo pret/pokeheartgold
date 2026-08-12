@@ -1827,15 +1827,15 @@
 	.short 314
 	.endm
 
-	.macro ScrCmd_315
+	.macro BindEcruteakGymCandleToTrainerSprite
 	.short 315
 	.endm
 
-	.macro ScrCmd_316
+	.macro UnbindEcruteakGymCandleFromTrainerSprite
 	.short 316
 	.endm
 
-	.macro ScrCmd_317 arg0
+	.macro ExtinguishEcruteakGymCandle arg0
 	.short 317
 	.byte \arg0
 	.endm
