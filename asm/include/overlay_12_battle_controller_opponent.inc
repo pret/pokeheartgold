@@ -226,7 +226,7 @@
 .public BattleSystem_PrintBattleMessage
 .public GetBattlerVar
 .public ov12_022506D4
-.public ov12_02251D28
+.public BattleSystem_ApplyTypeChart
 .public ov12_02252054
 .public CheckAbilityActive
 .public CalculateTypeEffectiveness

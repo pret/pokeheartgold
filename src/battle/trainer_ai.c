@@ -54,12 +54,14 @@ static u8 TrainerAI_MainSingles(BattleSystem *battleSystem, BattleContext *ctx);
 static u8 TrainerAI_MainDoubles(BattleSystem *battleSystem, BattleContext *ctx);
 static void TrainerAI_EvaluateMoves(BattleSystem *battleSystem, BattleContext *ctx);
 
+int TrainerAI_MoveType(BattleSystem *battleSystem, BattleContext *ctx, int battler, int move);
 void TrainerAI_RecordLastMove(BattleSystem *battleSystem, BattleContext *ctx);
 int AIScript_Read(BattleContext *ctx);
 int AIScript_ReadOffset(BattleContext *ctx, int offset);
 void AIScript_IncrementCursor(BattleContext *ctx, int jump);
 u8 AIScript_Battler(BattleContext *ctx, u8 inBattler);
 s32 TrainerAI_CalcAllDamage(BattleSystem *battleSystem, BattleContext *ctx, int attacker, u16 *moves, s32 *damageVals, u16 heldItem, u8 *ivs, int ability, BOOL embargo, BOOL varyDamage);
+s32 TrainerAI_CalcDamage(BattleSystem *battleSystem, BattleContext *ctx, u16 move, u16 heldItem, u8 *ivs, int attacker, int ability, BOOL embargo, u8 variance);
 
 extern const AICommandFunc sAICommandTable[];
 
@@ -840,6 +842,7 @@ void AICmd_FlagMoveDamageScore(BattleSystem *battleSystem, BattleContext *ctx) {
 
     BOOL varyDamage = AIScript_Read(ctx);
 
+    // Do-whiles are required to match, despite not being the case in pokeplatinum.
     int noDamageCalcIndex = 0;
     do  {
         if (ctx->trainerAIData.moveData[ctx->trainerAIData.move].effect == sNoDamageCalcMoveEffects[noDamageCalcIndex]) {
@@ -1033,5 +1036,735 @@ void AICmd_LoadBattlerAbility(BattleSystem *battleSystem, BattleContext *ctx) {
         }
     } else {
         ctx->trainerAIData.calcTemp = ctx->battleMons[battler].ability;
+    }
+}
+
+void AICmd_CheckBattlerAbility(BattleSystem *battleSystem, BattleContext *ctx);
+void AICmd_CheckBattlerAbility(BattleSystem *battleSystem, BattleContext *ctx) {
+    AIScript_IncrementCursor(ctx, 1);
+
+    int inBattler = AIScript_Read(ctx);
+    int expected = AIScript_Read(ctx);
+    u8 battler = AIScript_Battler(ctx, inBattler);
+    int tempAbility;
+
+    if (ctx->battleMons[battler].moveEffectFlags & MOVE_EFFECT_FLAG_ABILITY_SUPPRESSED) {
+        tempAbility = ABILITY_NONE;
+    } else if (inBattler == AI_BATTLER_DEFENDER || inBattler == AI_BATTLER_DEFENDER_PARTNER) {
+        // If we already know an opponent's ability, load that ability
+        if (ctx->trainerAIData.abilities[battler]) {
+            tempAbility = ctx->trainerAIData.abilities[battler];
+            ctx->trainerAIData.calcTemp = ctx->trainerAIData.abilities[battler];
+        } else {
+            // If the opponent has an ability that traps us, we should already know about it (because it self-announces).
+            if (ctx->battleMons[battler].ability == ABILITY_SHADOW_TAG
+                || ctx->battleMons[battler].ability == ABILITY_MAGNET_PULL
+                || ctx->battleMons[battler].ability == ABILITY_ARENA_TRAP) {
+                tempAbility = ctx->battleMons[battler].ability;
+            } else {
+                // Try to guess the opponent's ability (flip a coin).
+                int ability1 = GetMonBaseStat(ctx->battleMons[battler].species, BASE_ABILITY_1);
+                int ability2 = GetMonBaseStat(ctx->battleMons[battler].species, BASE_ABILITY_2);
+
+                if (ability1 && ability2) {
+                    // If the opponent has two abilities, but neither are the expected one,
+                    // prefer ability 1 for the final check.
+                    if (ability1 != expected && ability2 != expected) {
+                        tempAbility = ability1;
+                        // Otherwise, pretend that we don't know about it.
+                    } else {
+                        tempAbility = ABILITY_NONE;
+                    }
+                } else if (ability1) {
+                    tempAbility = ability1;
+                } else {
+                    tempAbility = ability2;
+                }
+            }
+        }
+    } else {
+        tempAbility = ctx->battleMons[battler].ability;
+    }
+
+    if (tempAbility == ABILITY_NONE) {
+        ctx->trainerAIData.calcTemp = AI_UNKNOWN;
+    } else if (tempAbility == expected) {
+        ctx->trainerAIData.calcTemp = AI_HAVE;
+    } else {
+        ctx->trainerAIData.calcTemp = AI_NOT_HAVE;
+    }
+}
+
+void AICmd_CalcMaxEffectiveness(BattleSystem *battleSystem, BattleContext *ctx);
+void AICmd_CalcMaxEffectiveness(BattleSystem *battleSystem, BattleContext *ctx) {
+    AIScript_IncrementCursor(ctx, 1);
+
+    ctx->trainerAIData.calcTemp = TYPE_MULTI_IMMUNE;
+
+    for (int i = 0; i < MAX_MON_MOVES; i++) {
+        u32 damage = TYPE_MULTI_BASE_DAMAGE;
+        u32 effectiveness = 0;
+        u16 move = ctx->battleMons[ctx->trainerAIData.attacker].moves[i];
+        int moveType = TrainerAI_MoveType(battleSystem, ctx, ctx->trainerAIData.attacker, move);
+
+        if (move) {
+            damage = BattleSystem_ApplyTypeChart(battleSystem,
+                ctx,
+                move,
+                moveType,
+                ctx->trainerAIData.attacker,
+                ctx->trainerAIData.defender,
+                damage,
+                &effectiveness);
+
+            if (damage == TYPE_MULTI_STAB_DAMAGE * 2) {
+                damage = TYPE_MULTI_DOUBLE_DAMAGE;
+            } else if (damage == TYPE_MULTI_STAB_DAMAGE * 4) {
+                damage = TYPE_MULTI_QUADRUPLE_DAMAGE;
+            } else if (damage == TYPE_MULTI_STAB_DAMAGE / 2) {
+                damage = TYPE_MULTI_HALF_DAMAGE;
+            } else if (damage == TYPE_MULTI_STAB_DAMAGE / 4) {
+                damage = TYPE_MULTI_QUARTER_DAMAGE;
+            }
+
+            if (effectiveness & MOVE_STATUS_IMMUNE) {
+                damage = TYPE_MULTI_IMMUNE;
+            }
+
+            if (ctx->trainerAIData.calcTemp < damage) {
+                ctx->trainerAIData.calcTemp = damage;
+            }
+        }
+    }
+}
+
+void AICmd_IfMoveEffectivenessEquals(BattleSystem *battleSystem, BattleContext *ctx);
+void AICmd_IfMoveEffectivenessEquals(BattleSystem *battleSystem, BattleContext *ctx) {
+    AIScript_IncrementCursor(ctx, 1);
+
+    int expected = AIScript_Read(ctx);
+    int jump = AIScript_Read(ctx);
+    u32 damage = TYPE_MULTI_BASE_DAMAGE;
+    u32 effectiveness = 0;
+
+    damage = BattleSystem_ApplyTypeChart(battleSystem,
+        ctx,
+        ctx->trainerAIData.move,
+        TrainerAI_MoveType(battleSystem, ctx, ctx->trainerAIData.attacker, ctx->trainerAIData.move),
+        ctx->trainerAIData.attacker,
+        ctx->trainerAIData.defender,
+        damage,
+        &effectiveness);
+
+    if (damage == TYPE_MULTI_STAB_DAMAGE * 2) {
+        damage = TYPE_MULTI_DOUBLE_DAMAGE;
+    } else if (damage == TYPE_MULTI_STAB_DAMAGE * 4) {
+        damage = TYPE_MULTI_QUADRUPLE_DAMAGE;
+    } else if (damage == TYPE_MULTI_STAB_DAMAGE / 2) {
+        damage = TYPE_MULTI_HALF_DAMAGE;
+    } else if (damage == TYPE_MULTI_STAB_DAMAGE / 4) {
+        damage = TYPE_MULTI_QUARTER_DAMAGE;
+    }
+
+    if (effectiveness & MOVE_STATUS_IMMUNE) {
+        damage = TYPE_MULTI_IMMUNE;
+    }
+
+    if (damage == expected) {
+        AIScript_IncrementCursor(ctx, jump);
+    }
+}
+
+void AICmd_IfPartyMemberStatus(BattleSystem *battleSystem, BattleContext *ctx);
+void AICmd_IfPartyMemberStatus(BattleSystem *battleSystem, BattleContext *ctx) {
+    AIScript_IncrementCursor(ctx, 1);
+
+    Party *party; // this must be declared first to match
+    int inBattler = AIScript_Read(ctx);
+    u32 statusMask = AIScript_Read(ctx);
+    int jump = AIScript_Read(ctx);
+    u8 battler = AIScript_Battler(ctx, inBattler);
+
+    u8 slot1, slot2;
+    if (battleSystem->battleType & BATTLE_TYPE_DOUBLES) {
+        slot1 = ctx->selectedMonIndex[battler];
+        slot2 = ctx->selectedMonIndex[BattleSystem_GetBattlerIdPartner(battleSystem, battler)];
+    } else {
+        slot1 = slot2 = ctx->selectedMonIndex[battler];
+    }
+
+    party = BattleSystem_GetParty(battleSystem, battler);
+    for (int i = 0; i < BattleSystem_GetPartySize(battleSystem, battler); i++) {
+        Pokemon *mon = Party_GetMonByIndex(party, i);
+
+        if (i != slot1 && i != slot2
+            && GetMonData(mon, MON_DATA_HP, NULL) != 0
+            && GetMonData(mon, MON_DATA_SPECIES_OR_EGG, NULL) != SPECIES_NONE
+            && GetMonData(mon, MON_DATA_SPECIES_OR_EGG, NULL) != SPECIES_EGG
+            && (GetMonData(mon, MON_DATA_STATUS, NULL) & statusMask)) {
+            AIScript_IncrementCursor(ctx, jump);
+            return;
+        }
+    }
+}
+
+void AICmd_IfPartyMemberNotStatus(BattleSystem *battleSystem, BattleContext *ctx);
+void AICmd_IfPartyMemberNotStatus(BattleSystem *battleSystem, BattleContext *ctx) {
+    AIScript_IncrementCursor(ctx, 1);
+
+    Party *party; // this must be declared first to match
+    int inBattler = AIScript_Read(ctx);
+    u32 statusMask = AIScript_Read(ctx);
+    int jump = AIScript_Read(ctx);
+    u8 battler = AIScript_Battler(ctx, inBattler);
+
+    u8 slot1, slot2;
+    if (battleSystem->battleType & BATTLE_TYPE_DOUBLES) {
+        slot1 = ctx->selectedMonIndex[battler];
+        slot2 = ctx->selectedMonIndex[BattleSystem_GetBattlerIdPartner(battleSystem, battler)];
+    } else {
+        slot1 = slot2 = ctx->selectedMonIndex[battler];
+    }
+
+    party = BattleSystem_GetParty(battleSystem, battler);
+    for (int i = 0; i < BattleSystem_GetPartySize(battleSystem, battler); i++) {
+        Pokemon *mon = Party_GetMonByIndex(party, i);
+
+        if (i != slot1 && i != slot2
+            && GetMonData(mon, MON_DATA_HP, NULL) != 0
+            && GetMonData(mon, MON_DATA_SPECIES_OR_EGG, NULL) != SPECIES_NONE
+            && GetMonData(mon, MON_DATA_SPECIES_OR_EGG, NULL) != SPECIES_EGG
+            && (GetMonData(mon, MON_DATA_STATUS, NULL) & statusMask) == FALSE) {
+            AIScript_IncrementCursor(ctx, jump);
+            return;
+        }
+    }
+}
+
+void AICmd_LoadCurrentWeather(BattleSystem *battleSystem, BattleContext *ctx);
+void AICmd_LoadCurrentWeather(BattleSystem *battleSystem, BattleContext *ctx) {
+    AIScript_IncrementCursor(ctx, 1);
+
+    ctx->trainerAIData.calcTemp = AI_WEATHER_CLEAR;
+
+    if (ctx->fieldCondition & FIELD_CONDITION_RAIN_ALL) {
+        ctx->trainerAIData.calcTemp = AI_WEATHER_RAINING;
+    }
+
+    if (ctx->fieldCondition & FIELD_CONDITION_SANDSTORM_ALL) {
+        ctx->trainerAIData.calcTemp = AI_WEATHER_SANDSTORM;
+    }
+
+    if (ctx->fieldCondition & FIELD_CONDITION_SUN_ALL) {
+        ctx->trainerAIData.calcTemp = AI_WEATHER_SUNNY;
+    }
+
+    if (ctx->fieldCondition & FIELD_CONDITION_HAIL_ALL) {
+        ctx->trainerAIData.calcTemp = AI_WEATHER_HAILING;
+    }
+
+    if (ctx->fieldCondition & FIELD_CONDITION_FOG) {
+        ctx->trainerAIData.calcTemp = AI_WEATHER_DEEP_FOG;
+    }
+}
+
+void AICmd_IfCurrentMoveEffectEqualTo(BattleSystem *battleSystem, BattleContext *ctx);
+void AICmd_IfCurrentMoveEffectEqualTo(BattleSystem *battleSystem, BattleContext *ctx) {
+    AIScript_IncrementCursor(ctx, 1);
+
+    int expected = AIScript_Read(ctx);
+    int jump = AIScript_Read(ctx);
+
+    if (ctx->trainerAIData.moveData[ctx->trainerAIData.move].effect == expected) {
+        AIScript_IncrementCursor(ctx, jump);
+    }
+}
+
+void AICmd_IfCurrentMoveEffectNotEqualTo(BattleSystem *battleSystem, BattleContext *ctx);
+void AICmd_IfCurrentMoveEffectNotEqualTo(BattleSystem *battleSystem, BattleContext *ctx) {
+    AIScript_IncrementCursor(ctx, 1);
+
+    int expected = AIScript_Read(ctx);
+    int jump = AIScript_Read(ctx);
+
+    if (ctx->trainerAIData.moveData[ctx->trainerAIData.move].effect != expected) {
+        AIScript_IncrementCursor(ctx, jump);
+    }
+}
+
+void AICmd_IfStatStageLessThan(BattleSystem *battleSystem, BattleContext *ctx);
+void AICmd_IfStatStageLessThan(BattleSystem *battleSystem, BattleContext *ctx) {
+    AIScript_IncrementCursor(ctx, 1);
+
+    int inBattler = AIScript_Read(ctx);
+    int stat = AIScript_Read(ctx);
+    int val = AIScript_Read(ctx);
+    int jump = AIScript_Read(ctx);
+    u8 battler = AIScript_Battler(ctx, inBattler);
+
+    if (ctx->battleMons[battler].statChanges[stat] < val) {
+        AIScript_IncrementCursor(ctx, jump);
+    }
+}
+
+void AICmd_IfStatStageGreaterThan(BattleSystem *battleSystem, BattleContext *ctx);
+void AICmd_IfStatStageGreaterThan(BattleSystem *battleSystem, BattleContext *ctx) {
+    AIScript_IncrementCursor(ctx, 1);
+
+    int inBattler = AIScript_Read(ctx);
+    int stat = AIScript_Read(ctx);
+    int val = AIScript_Read(ctx);
+    int jump = AIScript_Read(ctx);
+    u8 battler = AIScript_Battler(ctx, inBattler);
+
+    if (ctx->battleMons[battler].statChanges[stat] > val) {
+        AIScript_IncrementCursor(ctx, jump);
+    }
+}
+
+void AICmd_IfStatStageEqualTo(BattleSystem *battleSystem, BattleContext *ctx);
+void AICmd_IfStatStageEqualTo(BattleSystem *battleSystem, BattleContext *ctx) {
+    AIScript_IncrementCursor(ctx, 1);
+
+    int inBattler = AIScript_Read(ctx);
+    int stat = AIScript_Read(ctx);
+    int val = AIScript_Read(ctx);
+    int jump = AIScript_Read(ctx);
+    u8 battler = AIScript_Battler(ctx, inBattler);
+
+    if (ctx->battleMons[battler].statChanges[stat] == val) {
+        AIScript_IncrementCursor(ctx, jump);
+    }
+}
+
+void AICmd_IfStatStageNotEqualTo(BattleSystem *battleSystem, BattleContext *ctx);
+void AICmd_IfStatStageNotEqualTo(BattleSystem *battleSystem, BattleContext *ctx) {
+    AIScript_IncrementCursor(ctx, 1);
+
+    int inBattler = AIScript_Read(ctx);
+    int stat = AIScript_Read(ctx);
+    int val = AIScript_Read(ctx);
+    int jump = AIScript_Read(ctx);
+    u8 battler = AIScript_Battler(ctx, inBattler);
+
+    if (ctx->battleMons[battler].statChanges[stat] != val) {
+        AIScript_IncrementCursor(ctx, jump);
+    }
+}
+
+void AICmd_IfCurrentMoveKOs(BattleSystem *battleSystem, BattleContext *ctx);
+void AICmd_IfCurrentMoveKOs(BattleSystem *battleSystem, BattleContext *ctx) {
+    AIScript_IncrementCursor(ctx, 1);
+
+    BOOL useDamageRoll = AIScript_Read(ctx);
+    int jump = AIScript_Read(ctx);
+
+    int roll;
+    if (useDamageRoll == TRUE) {
+        roll = ctx->trainerAIData.moveDamageRolls[ctx->trainerAIData.moveSlot];
+    } else {
+        roll = 100;
+    }
+
+    int noDamageCalcIndex = 0;
+    do {
+        if (ctx->trainerAIData.moveData[ctx->trainerAIData.move].effect == sNoDamageCalcMoveEffects[noDamageCalcIndex]) {
+            break;
+        }
+        noDamageCalcIndex++;
+    } while (sNoDamageCalcMoveEffects[noDamageCalcIndex] != 0xFFFF);
+
+    int altPowerIndex = 0;
+    do {
+        if (ctx->trainerAIData.moveData[ctx->trainerAIData.move].effect == sAltPowerMoveEffects[altPowerIndex]) {
+            break;
+        }
+        altPowerIndex++;
+    } while (sAltPowerMoveEffects[altPowerIndex] != 0xFFFF);
+
+    if (sAltPowerMoveEffects[altPowerIndex] != 0xFFFF
+        || (ctx->trainerAIData.moveData[ctx->trainerAIData.move].power > 1 && sNoDamageCalcMoveEffects[noDamageCalcIndex] == 0xFFFF)) {
+        u8 ivs[NUM_STATS];
+        for (int stat = STAT_HP; stat < NUM_STATS; stat++) {
+            ivs[stat] = GetBattlerVar(ctx, ctx->trainerAIData.attacker, BMON_DATA_HP_IV + stat, NULL);
+        }
+
+        u32 damage = TrainerAI_CalcDamage(battleSystem,
+            ctx,
+            ctx->trainerAIData.move,
+            ctx->battleMons[ctx->trainerAIData.attacker].item,
+            ivs,
+            ctx->trainerAIData.attacker,
+            GetBattlerAbility(ctx, ctx->trainerAIData.attacker),
+            ctx->battleMons[ctx->trainerAIData.attacker].moveEffectData.embargoTurns,
+            roll);
+
+        if (ctx->battleMons[ctx->trainerAIData.defender].hp <= damage) {
+            AIScript_IncrementCursor(ctx, jump);
+        }
+    }
+}
+
+void AICmd_IfCurrentMoveDoesNotKO(BattleSystem *battleSystem, BattleContext *ctx);
+void AICmd_IfCurrentMoveDoesNotKO(BattleSystem *battleSystem, BattleContext *ctx) {
+    AIScript_IncrementCursor(ctx, 1);
+
+    BOOL useDamageRoll = AIScript_Read(ctx);
+    int jump = AIScript_Read(ctx);
+
+    int roll;
+    if (useDamageRoll == TRUE) {
+        roll = ctx->trainerAIData.moveDamageRolls[ctx->trainerAIData.moveSlot];
+    } else {
+        roll = 100;
+    }
+
+    int noDamageCalcIndex = 0;
+    do {
+        if (ctx->trainerAIData.moveData[ctx->trainerAIData.move].effect == sNoDamageCalcMoveEffects[noDamageCalcIndex]) {
+            break;
+        }
+        noDamageCalcIndex++;
+    } while (sNoDamageCalcMoveEffects[noDamageCalcIndex] != 0xFFFF);
+
+    int altPowerIndex = 0;
+    do {
+        if (ctx->trainerAIData.moveData[ctx->trainerAIData.move].effect == sAltPowerMoveEffects[altPowerIndex]) {
+            break;
+        }
+        altPowerIndex++;
+    } while (sAltPowerMoveEffects[altPowerIndex] != 0xFFFF);
+
+    if (sAltPowerMoveEffects[altPowerIndex] != 0xFFFF
+        || (ctx->trainerAIData.moveData[ctx->trainerAIData.move].power > 1 && sNoDamageCalcMoveEffects[noDamageCalcIndex] == 0xFFFF)) {
+        u8 ivs[NUM_STATS];
+        for (int stat = STAT_HP; stat < NUM_STATS; stat++) {
+            ivs[stat] = GetBattlerVar(ctx, ctx->trainerAIData.attacker, BMON_DATA_HP_IV + stat, NULL);
+        }
+
+        u32 damage = TrainerAI_CalcDamage(battleSystem,
+            ctx,
+            ctx->trainerAIData.move,
+            ctx->battleMons[ctx->trainerAIData.attacker].item,
+            ivs,
+            ctx->trainerAIData.attacker,
+            GetBattlerAbility(ctx, ctx->trainerAIData.attacker),
+            ctx->battleMons[ctx->trainerAIData.attacker].moveEffectData.embargoTurns,
+            roll);
+
+        if (ctx->battleMons[ctx->trainerAIData.defender].hp > damage) {
+            AIScript_IncrementCursor(ctx, jump);
+        }
+    }
+}
+
+void AICmd_IfMoveKnown(BattleSystem *battleSystem, BattleContext *ctx);
+void AICmd_IfMoveKnown(BattleSystem *battleSystem, BattleContext *ctx) {
+    AIScript_IncrementCursor(ctx, 1);
+
+    int inBattler = AIScript_Read(ctx);
+    int move = AIScript_Read(ctx);
+    int jump = AIScript_Read(ctx);
+    u8 battler = AIScript_Battler(ctx, inBattler);
+    int i;
+
+    switch (inBattler) {
+    case AI_BATTLER_ATTACKER:
+        for (i = 0; i < MAX_MON_MOVES; i++) {
+            if (ctx->battleMons[battler].moves[i] == move) {
+                break;
+            }
+        }
+
+        if (i < MAX_MON_MOVES) {
+            AIScript_IncrementCursor(ctx, jump);
+        }
+        break;
+
+    case AI_BATTLER_ATTACKER_PARTNER:
+        if (ctx->battleMons[battler].hp == 0) {
+            break;
+        }
+
+        for (i = 0; i < MAX_MON_MOVES; i++) {
+            if (ctx->battleMons[battler].moves[i] == move) {
+                break;
+            }
+        }
+
+        if (i < MAX_MON_MOVES) {
+            AIScript_IncrementCursor(ctx, jump);
+        }
+        break;
+
+    case AI_BATTLER_DEFENDER:
+        for (i = 0; i < MAX_MON_MOVES; i++) {
+            if (ctx->trainerAIData.moves[battler][i] == move) {
+                break;
+            }
+        }
+
+        if (i < MAX_MON_MOVES) {
+            AIScript_IncrementCursor(ctx, jump);
+        }
+        break;
+
+    default:
+        break;
+    }
+}
+
+void AICmd_IfMoveNotKnown(BattleSystem *battleSystem, BattleContext *ctx);
+void AICmd_IfMoveNotKnown(BattleSystem *battleSystem, BattleContext *ctx) {
+    AIScript_IncrementCursor(ctx, 1);
+
+    int inBattler = AIScript_Read(ctx);
+    int move = AIScript_Read(ctx);
+    int jump = AIScript_Read(ctx);
+    u8 battler = AIScript_Battler(ctx, inBattler);
+    int i;
+
+    switch (inBattler) {
+    case AI_BATTLER_ATTACKER:
+        for (i = 0; i < MAX_MON_MOVES; i++) {
+            if (ctx->battleMons[battler].moves[i] == move) {
+                break;
+            }
+        }
+
+        if (i == MAX_MON_MOVES) {
+            AIScript_IncrementCursor(ctx, jump);
+        }
+        break;
+
+    case AI_BATTLER_ATTACKER_PARTNER:
+        if (ctx->battleMons[battler].hp == 0) {
+            break;
+        }
+
+        for (i = 0; i < MAX_MON_MOVES; i++) {
+            if (ctx->battleMons[battler].moves[i] == move) {
+                break;
+            }
+        }
+
+        if (i == MAX_MON_MOVES) {
+            AIScript_IncrementCursor(ctx, jump);
+        }
+        break;
+
+    case AI_BATTLER_DEFENDER:
+        for (i = 0; i < MAX_MON_MOVES; i++) {
+            if (ctx->trainerAIData.moves[battler][i] == move) {
+                break;
+            }
+        }
+
+        if (i == MAX_MON_MOVES) {
+            AIScript_IncrementCursor(ctx, jump);
+        }
+        break;
+
+    default:
+        break;
+    }
+}
+
+void AICmd_IfMoveEffectKnown(BattleSystem *battleSystem, BattleContext *ctx);
+void AICmd_IfMoveEffectKnown(BattleSystem *battleSystem, BattleContext *ctx) {
+    AIScript_IncrementCursor(ctx, 1);
+
+    int inBattler = AIScript_Read(ctx);
+    int effect = AIScript_Read(ctx);
+    int jump = AIScript_Read(ctx);
+    u8 battler = AIScript_Battler(ctx, inBattler);
+    int i;
+
+    switch (inBattler) {
+    case AI_BATTLER_ATTACKER:
+        for (i = 0; i < MAX_MON_MOVES; i++) {
+            if (ctx->battleMons[battler].moves[i]
+                && ctx->trainerAIData.moveData[ctx->battleMons[battler].moves[i]].effect == effect) {
+                break;
+            }
+        }
+
+        if (i < MAX_MON_MOVES) {
+            AIScript_IncrementCursor(ctx, jump);
+        }
+        break;
+
+    case AI_BATTLER_DEFENDER:
+        for (i = 0; i < MAX_MON_MOVES; i++) {
+            if (ctx->trainerAIData.moves[battler][i]
+                && ctx->trainerAIData.moveData[ctx->trainerAIData.moves[battler][i]].effect == effect) {
+                break;
+            }
+        }
+
+        if (i < MAX_MON_MOVES) {
+            AIScript_IncrementCursor(ctx, jump);
+        }
+        break;
+
+    default:
+        break;
+    }
+}
+
+void AICmd_IfMoveEffectNotKnown(BattleSystem *battleSystem, BattleContext *ctx);
+void AICmd_IfMoveEffectNotKnown(BattleSystem *battleSystem, BattleContext *ctx) {
+    AIScript_IncrementCursor(ctx, 1);
+
+    int inBattler = AIScript_Read(ctx);
+    int effect = AIScript_Read(ctx);
+    int jump = AIScript_Read(ctx);
+    u8 battler = AIScript_Battler(ctx, inBattler);
+    int i;
+
+    switch (inBattler) {
+    case AI_BATTLER_ATTACKER:
+        for (i = 0; i < MAX_MON_MOVES; i++) {
+            if (ctx->battleMons[battler].moves[i]
+                && ctx->trainerAIData.moveData[ctx->battleMons[battler].moves[i]].effect == effect) {
+                break;
+            }
+        }
+
+        if (i == MAX_MON_MOVES) {
+            AIScript_IncrementCursor(ctx, jump);
+        }
+        break;
+
+    case AI_BATTLER_DEFENDER:
+        for (i = 0; i < MAX_MON_MOVES; i++) {
+            if (ctx->trainerAIData.moves[battler][i]
+                && ctx->trainerAIData.moveData[ctx->trainerAIData.moves[battler][i]].effect == effect) {
+                break;
+            }
+        }
+
+        if (i == MAX_MON_MOVES) {
+            AIScript_IncrementCursor(ctx, jump);
+        }
+        break;
+
+    default:
+        break;
+    }
+}
+
+// TODO: Consider rename. IfBattlerMoveLockedByEffect? IfBattlerDisabledOrEncored?
+void AICmd_IfBattlerUnderEffect(BattleSystem *battleSystem, BattleContext *ctx);
+void AICmd_IfBattlerUnderEffect(BattleSystem *battleSystem, BattleContext *ctx) {
+    AIScript_IncrementCursor(ctx, 1);
+
+    int inBattler = AIScript_Read(ctx);
+    int check = AIScript_Read(ctx);
+    int jump = AIScript_Read(ctx);
+    u8 battler = AIScript_Battler(ctx, inBattler);
+
+    switch (check) {
+    case CHECK_DISABLE:
+        if (ctx->battleMons[battler].moveEffectData.disabledTurns) {
+            AIScript_IncrementCursor(ctx, jump);
+        }
+        break;
+
+    case CHECK_ENCORE:
+        if (ctx->battleMons[battler].moveEffectData.encoredTurns) {
+            AIScript_IncrementCursor(ctx, jump);
+        }
+        break;
+
+    default:
+        break;
+    }
+}
+
+// AICmd_IfCurrentMoveIsDisabledOrEncored?
+void AICmd_IfCurrentMoveMatchesEffect(BattleSystem *battleSystem, BattleContext *ctx);
+void AICmd_IfCurrentMoveMatchesEffect(BattleSystem *battleSystem, BattleContext *ctx) {
+    AIScript_IncrementCursor(ctx, 1);
+
+    int check = AIScript_Read(ctx);
+    int jump = AIScript_Read(ctx);
+
+    switch (check) {
+    case CHECK_DISABLE:
+        if (ctx->battleMons[ctx->trainerAIData.attacker].moveEffectData.disabledMove == ctx->trainerAIData.move) {
+            AIScript_IncrementCursor(ctx, jump);
+        }
+        break;
+
+    case CHECK_ENCORE:
+        if (ctx->battleMons[ctx->trainerAIData.attacker].moveEffectData.encoredMove == ctx->trainerAIData.move) {
+            AIScript_IncrementCursor(ctx, jump);
+        }
+        break;
+
+    default:
+        break;
+    }
+}
+
+void AICmd_Escape(BattleSystem *battleSystem, BattleContext *ctx);
+void AICmd_Escape(BattleSystem *battleSystem, BattleContext *ctx) {
+    AIScript_IncrementCursor(ctx, 1);
+    ctx->trainerAIData.stateFlags |= (AI_STATUS_FLAG_DONE | AI_STATUS_FLAG_ESCAPE | AI_STATUS_FLAG_BREAK);
+}
+
+void AICmd_Dummy3E(BattleSystem *battleSystem, BattleContext *ctx);
+void AICmd_Dummy3E(BattleSystem *battleSystem, BattleContext *ctx) {
+    return;
+}
+
+void AICmd_Dummy3F(BattleSystem *battleSystem, BattleContext *ctx);
+void AICmd_Dummy3F(BattleSystem *battleSystem, BattleContext *ctx) {
+    return;
+}
+
+void AICmd_LoadHeldItem(BattleSystem *battleSystem, BattleContext *ctx);
+void AICmd_LoadHeldItem(BattleSystem *battleSystem, BattleContext *ctx) {
+    AIScript_IncrementCursor(ctx, 1);
+
+    int inBattler = AIScript_Read(ctx);
+    u8 battler = AIScript_Battler(ctx, inBattler);
+
+    ctx->trainerAIData.calcTemp = ctx->battleMons[battler].item;
+}
+
+void AICmd_LoadHeldItemEffect(BattleSystem *battleSystem, BattleContext *ctx);
+void AICmd_LoadHeldItemEffect(BattleSystem *battleSystem, BattleContext *ctx) {
+    AIScript_IncrementCursor(ctx, 1);
+
+    int inBattler = AIScript_Read(ctx);
+    u8 battler = AIScript_Battler(ctx, inBattler);
+
+    if (ctx->trainerAIData.attacker != battler) {
+        ctx->trainerAIData.calcTemp = GetItemVar(ctx, ctx->trainerAIData.heldItems[battler], ITEMATTR_HOLD_EFFECT); // BattleSystem_GetItemData in pokeplatinum
+    } else {
+        ctx->trainerAIData.calcTemp = GetItemVar(ctx, ctx->battleMons[battler].item, ITEMATTR_HOLD_EFFECT);
+    }
+}
+
+void AICmd_IfHeldItemEqualTo(BattleSystem *battleSystem, BattleContext *ctx);
+void AICmd_IfHeldItemEqualTo(BattleSystem *battleSystem, BattleContext *ctx) {
+    AIScript_IncrementCursor(ctx, 1);
+
+    int inBattler = AIScript_Read(ctx);
+    int expected = AIScript_Read(ctx);
+    int jump = AIScript_Read(ctx);
+    u8 battler = AIScript_Battler(ctx, inBattler);
+    u16 heldItem;
+
+    if ((battler & 1) == (ctx->trainerAIData.attacker & 1)) {
+        heldItem = ctx->battleMons[battler].item;
+    } else {
+        heldItem = ctx->trainerAIData.heldItems[battler];
+    }
+
+    if (heldItem == expected) {
+        AIScript_IncrementCursor(ctx, jump);
     }
 }

@@ -2225,7 +2225,7 @@ BOOL ov12_02251C74(BattleContext *ctx, int battlerIdAttacker, int battlerIdTarge
     return ret;
 }
 
-int ov12_02251D28(BattleSystem *battleSystem, BattleContext *ctx, int moveNo, int moveTypeDefault, int battlerIdAttacker, int battlerIdTarget, int damage, u32 *moveStatusFlag) {
+int BattleSystem_ApplyTypeChart(BattleSystem *battleSystem, BattleContext *ctx, int moveNo, int moveTypeDefault, int battlerIdAttacker, int battlerIdTarget, int damage, u32 *moveStatusFlag) {
     int i;
     int seffectMod; // this variable is not used but is required to match
     u8 moveType;
@@ -3313,7 +3313,7 @@ int TryAbilityOnEntry(BattleSystem *battleSystem, BattleContext *ctx) {
                                 moveNo = ctx->battleMons[battlerIdCheck].moves[index];
                                 if (moveNo) {
                                     moveStatus = 0;
-                                    ctx->damage = ov12_02251D28(battleSystem, ctx, moveNo, 0, battlerIdCheck, battlerId, ctx->damage, &moveStatus);
+                                    ctx->damage = BattleSystem_ApplyTypeChart(battleSystem, ctx, moveNo, 0, battlerIdCheck, battlerId, ctx->damage, &moveStatus);
                                     if (!(moveStatus & MOVE_STATUS_NO_EFFECT) && !ov12_0225865C(ctx, moveNo) && ((moveStatus & MOVE_STATUS_SUPER_EFFECTIVE) || (ctx->trainerAIData.moveData[moveNo].effect == MOVE_EFFECT_ONE_HIT_KO && ctx->battleMons[battlerId].level <= ctx->battleMons[battlerIdCheck].level))) {
                                         flag = TRUE;
                                         break;

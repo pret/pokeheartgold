@@ -39,7 +39,7 @@ void ov12_02251710(BattleSystem *battleSystem, BattleContext *ctx);
 u32 StruggleCheck(BattleSystem *battleSystem, BattleContext *ctx, int battlerId, u32 nonSelectableMoves, u32 a4);
 BOOL ov12_02251A28(BattleSystem *battleSystem, BattleContext *ctx, int battlerId, int movePos, BattleMessage *msg);
 int BattleMon_GetMoveIndex(BattleMon *mon, u16 move);
-int ov12_02251D28(BattleSystem *battleSystem, BattleContext *ctx, int moveNo, int moveTypeDefault, int battlerIdAttacker, int battlerIdTarget, int damage, u32 *moveStatusFlag);
+int BattleSystem_ApplyTypeChart(BattleSystem *battleSystem, BattleContext *ctx, int moveNo, int moveTypeDefault, int battlerIdAttacker, int battlerIdTarget, int damage, u32 *moveStatusFlag);
 void ov12_02252054(BattleContext *ctx, int moveNo, int moveTypeDefault, int abilityAttacker, int abilityTarget, int item, int type1, int type2, u32 *moveStatusFlag);
 BOOL ov12_02252218(BattleContext *ctx, int battlerId);
 u8 GetMonsHitCount(BattleSystem *battleSystem, BattleContext *ctx, u32 flag, int battlerId);
@@ -130,7 +130,7 @@ void Link_CheckTimeout(BattleContext *ctx);
 BOOL CheckLegalMeFirstMove(BattleContext *ctx, u16 move);
 int Battler_GetRandomOpposingBattlerId(BattleSystem *battleSystem, BattleContext *ctx, int battlerId);
 u32 CalcMoneyLoss(Party *party, PlayerProfile *profile);
-int ov12_02251D28(BattleSystem *battleSystem, BattleContext *ctx, int moveNo, int moveType, int battlerIdAttacker, int battlerIdTarget, int dmg, u32 *statusFlag);
+int BattleSystem_ApplyTypeChart(BattleSystem *battleSystem, BattleContext *ctx, int moveNo, int moveType, int battlerIdAttacker, int battlerIdTarget, int dmg, u32 *statusFlag);
 void ov12_02252D14(BattleSystem *battleSystem, BattleContext *ctx);
 
 #endif

@@ -2092,7 +2092,7 @@ static BOOL ov12_0224B398(BattleSystem *battleSystem, BattleContext *ctx) {
 
 static BOOL ov12_0224B498(BattleSystem *battleSystem, BattleContext *ctx) {
     if ((ctx->trainerAIData.moveData[ctx->moveNoCur].range != RANGE_USER && ctx->trainerAIData.moveData[ctx->moveNoCur].range != RANGE_USER_SIDE && ctx->trainerAIData.moveData[ctx->moveNoCur].power != 0 && !(ctx->battleStatus & BATTLE_STATUS_IGNORE_TYPE_IMMUNITY) && !(ctx->battleStatus & BATTLE_STATUS_CHARGE_TURN)) || ctx->moveNoCur == MOVE_THUNDER_WAVE) {
-        ctx->damage = ov12_02251D28(battleSystem, ctx, ctx->moveNoCur, ctx->moveType, ctx->battlerIdAttacker, ctx->battlerIdTarget, ctx->damage, &ctx->moveStatusFlag);
+        ctx->damage = BattleSystem_ApplyTypeChart(battleSystem, ctx, ctx->moveNoCur, ctx->moveType, ctx->battlerIdAttacker, ctx->battlerIdTarget, ctx->damage, &ctx->moveStatusFlag);
         if (ctx->moveStatusFlag & MOVE_STATUS_NO_EFFECT) {
             ctx->moveFail[ctx->battlerIdAttacker].noEffect = TRUE;
         }
