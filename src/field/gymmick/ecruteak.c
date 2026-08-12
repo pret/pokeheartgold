@@ -12,23 +12,23 @@
 #define NUM_CANDLES 4
 
 typedef struct EcruteakGymmickLocalData {
-    int unk_00[NUM_CANDLES];
-    int unk_10;
-    SysTask *unk_14;
-    LocalMapObject *unk_18;
+    int candleMapProps[NUM_CANDLES];
+    int candleIdx;
+    SysTask *sysTask;
+    LocalMapObject *mapObject;
 } EcruteakGymmickLocalData; // size: 0x1C
 
 typedef struct EcruteakExtinguishCandleTaskData {
-    int unk_0;
-    int unk_4;
-    int unk_8;
-    FieldSystem *unk_C;
+    int state;
+    int scaleFactor;
+    int delayTimer;
+    FieldSystem *fieldSystem;
 } EcruteakExtinguishCandleTaskData;
 
-void ov04_02254E20(SysTask *task, void *data);
-BOOL ov04_02254E50(TaskManager *taskman);
-u8 ov04_MortyGymTrainerObjectToCandleIdx(LocalMapObject *mapObject);
-void ov04_02254F44(FieldSystem *fieldSystem);
+static void SysTask_MoveCandleToFollowMapObject(SysTask *task, void *data);
+static BOOL Task_ExtinguishCandle(TaskManager *taskman);
+static u8 MortyGymTrainerObjectToCandleIdx(LocalMapObject *mapObject);
+static void ApplyFogToMapObjects(FieldSystem *fieldSystem);
 
 void GymmickInit_Ecruteak(FieldSystem *fieldSystem) {
     GymmickUnion *gymmickUnion = Save_Gymmick_AssertMagic_GetData(Save_GetGymmickPtr(FieldSystem_GetSaveData(fieldSystem)), GYMMICK_ECRUTEAK);
@@ -39,19 +39,19 @@ void GymmickInit_Ecruteak(FieldSystem *fieldSystem) {
     ov01_021EA864(fieldSystem->fog, -1, TRUE, GX_FOGBLEND_COLOR_ALPHA, GX_FOGSLOPE_0x0020, 0);
     ov01_021EA89C(fieldSystem->fog, -1, 0, 31);
 
-    s8 sp14[32];
+    s8 fogTable[32];
     for (int i = 0; i < 32; ++i) {
-        sp14[i] = -1;
+        fogTable[i] = -1;
     }
-    ov01_021EA8C4(fieldSystem->fog, (u32 *)sp14);
-    ov04_02254F44(fieldSystem);
+    ov01_021EA8C4(fieldSystem->fog, (u32 *)fogTable);
+    ApplyFogToMapObjects(fieldSystem);
 
     for (int i = 0; i < NUM_CANDLES; ++i) {
         VecFx32 sp08;
         MapObject_CopyPositionVector(MapObjectManager_GetFirstActiveObjectByID(fieldSystem->mapObjectManager, obj_T27GYM0101_itako + i), &sp08);
-        localData->unk_00[i] = MapPropManager_LoadOne(fieldSystem->mapPropManager, 128, &sp08, NULL, fieldSystem->mapPropAnimationManager);
+        localData->candleMapProps[i] = MapPropManager_LoadOne(fieldSystem->mapPropManager, 128, &sp08, NULL, fieldSystem->mapPropAnimationManager);
         if (gymmickUnion->ecruteak.candles[i]) {
-            MapProp_SetCulled(MapPropManager_GetMapPropByIndex(fieldSystem->mapPropManager, localData->unk_00[i]), TRUE);
+            MapProp_SetCulled(MapPropManager_GetMapPropByIndex(fieldSystem->mapPropManager, localData->candleMapProps[i]), TRUE);
         }
     }
 }
@@ -65,73 +65,73 @@ void EcruteakGymmick_BindCandleToTrainerObject(FieldSystem *fieldSystem) {
     EcruteakGymmickLocalData *localData = fieldSystem->unk4->unk24;
 
     LocalMapObject **attrPtr = FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_ENGAGED_TRAINER_0_EVENT);
-    u8 candleIdx = ov04_MortyGymTrainerObjectToCandleIdx(*attrPtr);
+    u8 candleIdx = MortyGymTrainerObjectToCandleIdx(*attrPtr);
     if (candleIdx == NUM_CANDLES) {
         GF_ASSERT(FALSE);
         return;
     }
-    localData->unk_10 = candleIdx;
-    localData->unk_18 = *attrPtr;
-    localData->unk_14 = SysTask_CreateOnMainQueue(ov04_02254E20, fieldSystem, 0);
+    localData->candleIdx = candleIdx;
+    localData->mapObject = *attrPtr;
+    localData->sysTask = SysTask_CreateOnMainQueue(SysTask_MoveCandleToFollowMapObject, fieldSystem, 0);
 }
 
 void EcruteakGymmick_UnbindCandleFromTrainerObject(FieldSystem *fieldSystem) {
     EcruteakGymmickLocalData *localData = fieldSystem->unk4->unk24;
-    SysTask_Destroy(localData->unk_14);
+    SysTask_Destroy(localData->sysTask);
 }
 
 void EcruteakGymmick_ExtinguishCandle(FieldSystem *fieldSystem, ScriptEnvField field) {
     EcruteakGymmickLocalData *localData = fieldSystem->unk4->unk24;
     LocalMapObject **attrPtr = FieldSysGetAttrAddr(fieldSystem, field);
-    localData->unk_10 = ov04_MortyGymTrainerObjectToCandleIdx(*attrPtr);
-    localData->unk_18 = *attrPtr;
+    localData->candleIdx = MortyGymTrainerObjectToCandleIdx(*attrPtr);
+    localData->mapObject = *attrPtr;
     EcruteakExtinguishCandleTaskData *taskData = Heap_AllocAtEnd(HEAP_ID_FIELD2, sizeof(EcruteakExtinguishCandleTaskData));
-    taskData->unk_0 = 0;
-    taskData->unk_4 = 1;
-    taskData->unk_8 = 0;
-    taskData->unk_C = fieldSystem;
-    TaskManager_Call(fieldSystem->taskman, ov04_02254E50, taskData);
+    taskData->state = 0;
+    taskData->scaleFactor = 1;
+    taskData->delayTimer = 0;
+    taskData->fieldSystem = fieldSystem;
+    TaskManager_Call(fieldSystem->taskman, Task_ExtinguishCandle, taskData);
 }
 
-void ov04_02254E20(SysTask *task, void *data) {
+static void SysTask_MoveCandleToFollowMapObject(SysTask *task, void *data) {
     FieldSystem *fieldSystem = data;
     EcruteakGymmickLocalData *localData = fieldSystem->unk4->unk24;
     VecFx32 objectPos;
-    MapObject_CopyPositionVector(localData->unk_18, &objectPos);
-    MapProp_SetTranslation(MapPropManager_GetMapPropByIndex(fieldSystem->mapPropManager, localData->unk_00[localData->unk_10]), &objectPos);
+    MapObject_CopyPositionVector(localData->mapObject, &objectPos);
+    MapProp_SetTranslation(MapPropManager_GetMapPropByIndex(fieldSystem->mapPropManager, localData->candleMapProps[localData->candleIdx]), &objectPos);
 }
 
-BOOL ov04_02254E50(TaskManager *taskman) {
+static BOOL Task_ExtinguishCandle(TaskManager *taskman) {
     EcruteakExtinguishCandleTaskData *taskData = TaskManager_GetEnvironment(taskman);
-    EcruteakGymmickLocalData *localData = taskData->unk_C->unk4->unk24;
+    EcruteakGymmickLocalData *localData = taskData->fieldSystem->unk4->unk24;
 
-    switch (taskData->unk_0) {
+    switch (taskData->state) {
     case 0:
-        if (taskData->unk_8++ >= 30) {
+        if (taskData->delayTimer++ >= 30) {
             PlaySE(SEQ_SE_GS_ROUSOKU_KIERU);
-            ++taskData->unk_0;
+            ++taskData->state;
         }
         break;
     case 1: {
-        MapProp *mapProp = MapPropManager_GetMapPropByIndex(taskData->unk_C->mapPropManager, localData->unk_00[localData->unk_10]);
-        if (taskData->unk_4 >= 4) {
+        MapProp *mapProp = MapPropManager_GetMapPropByIndex(taskData->fieldSystem->mapPropManager, localData->candleMapProps[localData->candleIdx]);
+        if (taskData->scaleFactor >= 4) {
             MapProp_SetCulled(mapProp, TRUE);
-            GymmickUnion *gymmickUnion = Save_Gymmick_AssertMagic_GetData(Save_GetGymmickPtr(FieldSystem_GetSaveData(taskData->unk_C)), GYMMICK_ECRUTEAK);
-            gymmickUnion->ecruteak.candles[localData->unk_10] = TRUE;
-            ov01_021FA930(localData->unk_18, SPRITE_ITAKO_);
-            ++taskData->unk_0;
+            GymmickUnion *gymmickUnion = Save_Gymmick_AssertMagic_GetData(Save_GetGymmickPtr(FieldSystem_GetSaveData(taskData->fieldSystem)), GYMMICK_ECRUTEAK);
+            gymmickUnion->ecruteak.candles[localData->candleIdx] = TRUE;
+            ov01_021FA930(localData->mapObject, SPRITE_ITAKO_);
+            ++taskData->state;
         } else {
-            ++taskData->unk_4;
+            ++taskData->scaleFactor;
         }
         VecFx32 *scale = MapProp_GetScale(mapProp);
-        scale->x = FX32_ONE / taskData->unk_4;
-        scale->y = FX32_ONE / taskData->unk_4;
-        scale->z = FX32_ONE / taskData->unk_4;
+        scale->x = FX32_ONE / taskData->scaleFactor;
+        scale->y = FX32_ONE / taskData->scaleFactor;
+        scale->z = FX32_ONE / taskData->scaleFactor;
         break;
     }
     case 2:
-        if (!ov01_021FA2D4(localData->unk_18)) {
-            ov04_02254F44(taskData->unk_C);
+        if (!ov01_021FA2D4(localData->mapObject)) {
+            ApplyFogToMapObjects(taskData->fieldSystem);
             Heap_Free(taskData);
             return TRUE;
         }
@@ -141,7 +141,7 @@ BOOL ov04_02254E50(TaskManager *taskman) {
     return FALSE;
 }
 
-u8 ov04_MortyGymTrainerObjectToCandleIdx(LocalMapObject *mapObject) {
+static u8 MortyGymTrainerObjectToCandleIdx(LocalMapObject *mapObject) {
     static const u32 sMortyGymTrainerObjectIds[NUM_CANDLES] = {
         obj_T27GYM0101_itako,
         obj_T27GYM0101_itako_2,
@@ -160,7 +160,7 @@ u8 ov04_MortyGymTrainerObjectToCandleIdx(LocalMapObject *mapObject) {
     return i;
 }
 
-void ov04_02254F44(FieldSystem *fieldSystem) {
+static void ApplyFogToMapObjects(FieldSystem *fieldSystem) {
     int i;
     int numObjects = MapObjectManager_GetObjectCount(fieldSystem->mapObjectManager);
     LocalMapObject *objects = MapObjectManager_GetObjects(fieldSystem->mapObjectManager);
