@@ -30,36 +30,36 @@ typedef struct AzaleaGymmickSpinarakRideData {
 
 typedef struct AzaleaGymmickLocalData {
     u8 filler_00[4];
-    int unk_04[4];
-    u8 unk_14;
-    u8 unk_15;
-    u8 unk_16;
-    u8 unk_17;
-    u8 unk_18;
-    u8 unk_19;
-    u8 unk_1A;
-    s8 unk_1B;
-    int unk_1C;
-    BOOL unk_20[2];
-    const AzaleaGymmickSpinarakRouteNode *unk_28;
-    VecFx32 unk_2C;
-    VecFx32 unk_38;
-    int unk_44;
-    int unk_48;
-    fx32 unk_4C;
-    int unk_50;
+    int spinarakMapPropIds[4];
+    u8 nodeIdx;
+    u8 switchState;
+    u8 segmentDone;
+    u8 spiderIdx;
+    u8 spinarakPair;
+    u8 spinarakDirection;
+    u8 curNodeIndex;
+    s8 playerZOffset;
+    int mustResetTargetTrack;
+    BOOL moveVectorComponentSigns[2];
+    const AzaleaGymmickSpinarakRouteNode *node;
+    VecFx32 spinarakPos;
+    VecFx32 moveVector;
+    int shakeCount;
+    int shakeFrame;
+    fx32 shakeDirection;
+    int terminalWaitCounter;
 } AzaleaGymmickLocalData; // size: 0x54
 
-BOOL ov04_0225463C(TaskManager *taskman);
-VecFx32 ov04_02254698(const AzaleaGymmickSpinarakRouteNode *a0, const AzaleaGymmickSpinarakRouteNode *a1);
-void ov04_022546C8(const VecFx32 *a0, BOOL *a1);
-int ov04_022546E8(int a0, fx32 a1, fx32 a2, BOOL a3);
-void ov04_02254724(SysTask *sysTask, void *taskData);
-BOOL ov04_02254CA4(TaskManager *taskman);
+static BOOL Task_SpinarakRide(TaskManager *taskman);
+static VecFx32 AzaleaGymmick_GetVectorBetweenRouteNodes(const AzaleaGymmickSpinarakRouteNode *prev, const AzaleaGymmickSpinarakRouteNode *next);
+static void AzaleaGymmick_GetSignsOfVectorXZComponents(const VecFx32 *deltaVec, BOOL *xzSigns);
+static int AzaleaGymmick_GetMovementDoneParams(BOOL sign, fx32 cur, fx32 delta, u16 nodeComponent);
+static void SysTask_DoSpinarakRide(SysTask *sysTask, void *taskData);
+static BOOL Task_WaitSwitchFlipSFX(TaskManager *taskman);
 
 // FIXME: clang-format is misbehaving on these data
 // clang-format off
-static const AzaleaGymmickSpinarakRouteNode ov04_02257404[] = {
+static const AzaleaGymmickSpinarakRouteNode sSpinarakRoute_1to5[] = {
     { 3,  31 },
     { 3,  29 },
     { 9,  29 },
@@ -70,7 +70,7 @@ static const AzaleaGymmickSpinarakRouteNode ov04_02257404[] = {
     { 9,  24 },
 };
 
-static const AzaleaGymmickSpinarakRouteNode ov04_02257584[] = {
+static const AzaleaGymmickSpinarakRouteNode sSpinarakRoute_2to6[] = {
     { 9,  31 },
     { 9,  29 },
     { 3,  29 },
@@ -81,7 +81,7 @@ static const AzaleaGymmickSpinarakRouteNode ov04_02257584[] = {
     { 15, 24 },
 };
 
-static const AzaleaGymmickSpinarakRouteNode ov04_0225737C[] = {
+static const AzaleaGymmickSpinarakRouteNode sSpinarakRoute_3to4[] = {
     { 15, 31 },
     { 15, 28 },
     { 9,  27 },
@@ -90,7 +90,7 @@ static const AzaleaGymmickSpinarakRouteNode ov04_0225737C[] = {
     { 3,  24 },
 };
 
-static const AzaleaGymmickSpinarakRouteNode ov04_02257394[] = {
+static const AzaleaGymmickSpinarakRouteNode sSpinarakRoute_7to10[] = {
     { 3, 16 },
     { 3, 12 },
     { 9, 13 },
@@ -99,14 +99,14 @@ static const AzaleaGymmickSpinarakRouteNode ov04_02257394[] = {
     { 3, 9  },
 };
 
-static const AzaleaGymmickSpinarakRouteNode ov04_0225736C[] = {
+static const AzaleaGymmickSpinarakRouteNode sSpinarakRoute_7to11[] = {
     { 3, 16 },
     { 3, 12 },
     { 9, 13 },
     { 9, 9  },
 };
 
-static const AzaleaGymmickSpinarakRouteNode ov04_02257504[] = {
+static const AzaleaGymmickSpinarakRouteNode sSpinarakRoute_8to10[] = {
     { 9,  16 },
     { 9,  14 },
     { 15, 14 },
@@ -117,14 +117,14 @@ static const AzaleaGymmickSpinarakRouteNode ov04_02257504[] = {
     { 3,  9  },
 };
 
-static const AzaleaGymmickSpinarakRouteNode ov04_0225735C[] = {
+static const AzaleaGymmickSpinarakRouteNode sSpinarakRoute_8to12[] = {
     { 9,  16 },
     { 9,  14 },
     { 15, 14 },
     { 15, 9  },
 };
 
-static const AzaleaGymmickSpinarakRouteNode ov04_022573AC[] = {
+static const AzaleaGymmickSpinarakRouteNode sSpinarakRoute_8to11[] = {
     { 9,  16 },
     { 9,  14 },
     { 15, 14 },
@@ -133,7 +133,7 @@ static const AzaleaGymmickSpinarakRouteNode ov04_022573AC[] = {
     { 9,  9  },
 };
 
-static const AzaleaGymmickSpinarakRouteNode ov04_022575D4[] = {
+static const AzaleaGymmickSpinarakRouteNode sSpinarakInitialPositions[] = {
     { 3,  31 },
     { 9,  31 },
     { 15, 31 },
@@ -148,103 +148,103 @@ static const AzaleaGymmickSpinarakRouteNode ov04_022575D4[] = {
     { 15, 9  },
 };
 
-static const AzaleaGymmickSpinarakRoute ov04_02257484[] = {
-    { NELEMS(ov04_02257404), 4, ov04_02257404 },
-    { NELEMS(ov04_02257404), 4, ov04_02257404 },
-    { NELEMS(ov04_02257404), 4, ov04_02257404 },
-    { NELEMS(ov04_02257404), 4, ov04_02257404 },
+static const AzaleaGymmickSpinarakRoute sSpinarakRoutes_From1[] = {
+    { NELEMS(sSpinarakRoute_1to5), 4, sSpinarakRoute_1to5 },
+    { NELEMS(sSpinarakRoute_1to5), 4, sSpinarakRoute_1to5 },
+    { NELEMS(sSpinarakRoute_1to5), 4, sSpinarakRoute_1to5 },
+    { NELEMS(sSpinarakRoute_1to5), 4, sSpinarakRoute_1to5 },
 };
 
-static const AzaleaGymmickSpinarakRoute ov04_02257464[] = {
-    { NELEMS(ov04_02257584), 5, ov04_02257584 },
-    { NELEMS(ov04_02257584), 5, ov04_02257584 },
-    { NELEMS(ov04_02257584), 5, ov04_02257584 },
-    { NELEMS(ov04_02257584), 5, ov04_02257584 },
+static const AzaleaGymmickSpinarakRoute sSpinarakRoutes_From2[] = {
+    { NELEMS(sSpinarakRoute_2to6), 5, sSpinarakRoute_2to6 },
+    { NELEMS(sSpinarakRoute_2to6), 5, sSpinarakRoute_2to6 },
+    { NELEMS(sSpinarakRoute_2to6), 5, sSpinarakRoute_2to6 },
+    { NELEMS(sSpinarakRoute_2to6), 5, sSpinarakRoute_2to6 },
 };
 
-static const AzaleaGymmickSpinarakRoute ov04_02257444[] = {
-    { NELEMS(ov04_0225737C), 3, ov04_0225737C },
-    { NELEMS(ov04_0225737C), 3, ov04_0225737C },
-    { NELEMS(ov04_0225737C), 3, ov04_0225737C },
-    { NELEMS(ov04_0225737C), 3, ov04_0225737C },
+static const AzaleaGymmickSpinarakRoute sSpinarakRoutes_From3[] = {
+    { NELEMS(sSpinarakRoute_3to4), 3, sSpinarakRoute_3to4 },
+    { NELEMS(sSpinarakRoute_3to4), 3, sSpinarakRoute_3to4 },
+    { NELEMS(sSpinarakRoute_3to4), 3, sSpinarakRoute_3to4 },
+    { NELEMS(sSpinarakRoute_3to4), 3, sSpinarakRoute_3to4 },
 };
 
-static const AzaleaGymmickSpinarakRoute ov04_02257424[] = {
-    { NELEMS(ov04_0225737C), 2, ov04_0225737C },
-    { NELEMS(ov04_0225737C), 2, ov04_0225737C },
-    { NELEMS(ov04_0225737C), 2, ov04_0225737C },
-    { NELEMS(ov04_0225737C), 2, ov04_0225737C },
+static const AzaleaGymmickSpinarakRoute sSpinarakRoutes_From4[] = {
+    { NELEMS(sSpinarakRoute_3to4), 2, sSpinarakRoute_3to4 },
+    { NELEMS(sSpinarakRoute_3to4), 2, sSpinarakRoute_3to4 },
+    { NELEMS(sSpinarakRoute_3to4), 2, sSpinarakRoute_3to4 },
+    { NELEMS(sSpinarakRoute_3to4), 2, sSpinarakRoute_3to4 },
 };
 
-static const AzaleaGymmickSpinarakRoute ov04_022574A4[] = {
-    { NELEMS(ov04_02257404), 0, ov04_02257404 },
-    { NELEMS(ov04_02257404), 0, ov04_02257404 },
-    { NELEMS(ov04_02257404), 0, ov04_02257404 },
-    { NELEMS(ov04_02257404), 0, ov04_02257404 },
+static const AzaleaGymmickSpinarakRoute sSpinarakRoutes_From5[] = {
+    { NELEMS(sSpinarakRoute_1to5), 0, sSpinarakRoute_1to5 },
+    { NELEMS(sSpinarakRoute_1to5), 0, sSpinarakRoute_1to5 },
+    { NELEMS(sSpinarakRoute_1to5), 0, sSpinarakRoute_1to5 },
+    { NELEMS(sSpinarakRoute_1to5), 0, sSpinarakRoute_1to5 },
 };
 
-static const AzaleaGymmickSpinarakRoute ov04_022574C4[] = {
-    { NELEMS(ov04_02257584), 1, ov04_02257584 },
-    { NELEMS(ov04_02257584), 1, ov04_02257584 },
-    { NELEMS(ov04_02257584), 1, ov04_02257584 },
-    { NELEMS(ov04_02257584), 1, ov04_02257584 },
+static const AzaleaGymmickSpinarakRoute sSpinarakRoutes_From6[] = {
+    { NELEMS(sSpinarakRoute_2to6), 1, sSpinarakRoute_2to6 },
+    { NELEMS(sSpinarakRoute_2to6), 1, sSpinarakRoute_2to6 },
+    { NELEMS(sSpinarakRoute_2to6), 1, sSpinarakRoute_2to6 },
+    { NELEMS(sSpinarakRoute_2to6), 1, sSpinarakRoute_2to6 },
 };
 
-static const AzaleaGymmickSpinarakRoute ov04_02257524[] = {
+static const AzaleaGymmickSpinarakRoute sSpinarakRoutes_From7[] = {
     {},
-    { NELEMS(ov04_02257394), 9, ov04_02257394 },
+    { NELEMS(sSpinarakRoute_7to10), 9, sSpinarakRoute_7to10 },
     {},
-    { NELEMS(ov04_0225736C), 10, ov04_0225736C },
+    { NELEMS(sSpinarakRoute_7to11), 10, sSpinarakRoute_7to11 },
 };
 
-static const AzaleaGymmickSpinarakRoute ov04_02257544[] = {
-    { NELEMS(ov04_02257504), 9,  ov04_02257504 },
-    { NELEMS(ov04_0225735C), 11, ov04_0225735C },
-    { NELEMS(ov04_022573AC), 10, ov04_022573AC },
-    { NELEMS(ov04_0225735C), 11, ov04_0225735C },
+static const AzaleaGymmickSpinarakRoute sSpinarakRoutes_From8[] = {
+    { NELEMS(sSpinarakRoute_8to10), 9,  sSpinarakRoute_8to10 },
+    { NELEMS(sSpinarakRoute_8to12), 11, sSpinarakRoute_8to12 },
+    { NELEMS(sSpinarakRoute_8to11), 10, sSpinarakRoute_8to11 },
+    { NELEMS(sSpinarakRoute_8to12), 11, sSpinarakRoute_8to12 },
 };
 
-static const AzaleaGymmickSpinarakRoute ov04_022573C4[] = {
-    {},
-    {},
+static const AzaleaGymmickSpinarakRoute sSpinarakRoutes_From9[] = {
     {},
     {},
-};
-
-static const AzaleaGymmickSpinarakRoute ov04_022573E4[] = {
-    { NELEMS(ov04_02257504), 7, ov04_02257504 },
-    { NELEMS(ov04_02257394), 6, ov04_02257394 },
     {},
     {},
 };
 
-static const AzaleaGymmickSpinarakRoute ov04_022574E4[] = {
+static const AzaleaGymmickSpinarakRoute sSpinarakRoutes_From10[] = {
+    { NELEMS(sSpinarakRoute_8to10), 7, sSpinarakRoute_8to10 },
+    { NELEMS(sSpinarakRoute_7to10), 6, sSpinarakRoute_7to10 },
     {},
     {},
-    { NELEMS(ov04_022573AC), 7, ov04_022573AC },
-    { NELEMS(ov04_0225736C), 6, ov04_0225736C },
 };
 
-static const AzaleaGymmickSpinarakRoute ov04_02257564[] = {
+static const AzaleaGymmickSpinarakRoute sSpinarakRoutes_From11[] = {
     {},
-    { NELEMS(ov04_0225735C), 7, ov04_0225735C },
     {},
-    { NELEMS(ov04_0225735C), 7, ov04_0225735C },
+    { NELEMS(sSpinarakRoute_8to11), 7, sSpinarakRoute_8to11 },
+    { NELEMS(sSpinarakRoute_7to11), 6, sSpinarakRoute_7to11 },
 };
 
-const AzaleaGymmickSpinarakRoute *const ov04_022575A4[] = {
-    ov04_02257484,
-    ov04_02257464,
-    ov04_02257444,
-    ov04_02257424,
-    ov04_022574A4,
-    ov04_022574C4,
-    ov04_02257524,
-    ov04_02257544,
-    ov04_022573C4,
-    ov04_022573E4,
-    ov04_022574E4,
-    ov04_02257564,
+static const AzaleaGymmickSpinarakRoute sSpinarakRoutes_From12[] = {
+    {},
+    { NELEMS(sSpinarakRoute_8to12), 7, sSpinarakRoute_8to12 },
+    {},
+    { NELEMS(sSpinarakRoute_8to12), 7, sSpinarakRoute_8to12 },
+};
+
+static const AzaleaGymmickSpinarakRoute *const sSpinarakRoutes_Froms[] = {
+    sSpinarakRoutes_From1,
+    sSpinarakRoutes_From2,
+    sSpinarakRoutes_From3,
+    sSpinarakRoutes_From4,
+    sSpinarakRoutes_From5,
+    sSpinarakRoutes_From6,
+    sSpinarakRoutes_From7,
+    sSpinarakRoutes_From8,
+    sSpinarakRoutes_From9,
+    sSpinarakRoutes_From10,
+    sSpinarakRoutes_From11,
+    sSpinarakRoutes_From12,
 };
 // clang-format on
 
@@ -254,12 +254,12 @@ void GymmickInit_Azalea(FieldSystem *fieldSystem) {
     MI_CpuFill8(fieldSystem->unk4->unk24, 0, sizeof(AzaleaGymmickLocalData));
     AzaleaGymmickLocalData *localData = fieldSystem->unk4->unk24;
     for (int i = 0; i < 4; ++i) {
-        VecFx32 sp4 = { 0, 0, 0 };
+        VecFx32 spinarakPos = { 0, 0, 0 };
         u8 spider = gymmickUnion->azalea.spiders[i];
-        sp4.x = ov04_022575D4[spider].x * 16 * FX32_ONE;
-        sp4.x += FX32_CONST(8);
-        sp4.z = ov04_022575D4[spider].z * 16 * FX32_ONE;
-        localData->unk_04[i] = MapPropManager_LoadOne(fieldSystem->mapPropManager, 118, &sp4, 0, fieldSystem->mapPropAnimationManager);
+        spinarakPos.x = sSpinarakInitialPositions[spider].x * 16 * FX32_ONE;
+        spinarakPos.x += FX32_CONST(8);
+        spinarakPos.z = sSpinarakInitialPositions[spider].z * 16 * FX32_ONE;
+        localData->spinarakMapPropIds[i] = MapPropManager_LoadOne(fieldSystem->mapPropManager, 118, &spinarakPos, 0, fieldSystem->mapPropAnimationManager);
     }
     switch (gymmickUnion->azalea.switches) {
     case 0:
@@ -293,45 +293,45 @@ void GymmickInit_Azalea(FieldSystem *fieldSystem) {
 
 void FlipAzaleaGymSwitch(FieldSystem *fieldSystem, u8 switchNo) {
     GymmickUnion *gymmickUnion = Save_Gymmick_AssertMagic_GetData(Save_GetGymmickPtr(FieldSystem_GetSaveData(fieldSystem)), GYMMICK_AZALEA);
-    UnkStruct_FieldSysC0_SubC *r7;
-    UnkStruct_FieldSysC0_SubC *sp4;
-    u8 r6;
+    UnkStruct_FieldSysC0_SubC *switch1;
+    UnkStruct_FieldSysC0_SubC *switch2;
+    u8 switchStateBefore;
 
     PlaySE(SEQ_SE_DP_KI_GASYAN);
     if (switchNo == 0) {
-        r6 = (gymmickUnion->azalea.switches >> 0) & 1;
+        switchStateBefore = (gymmickUnion->azalea.switches >> 0) & 1;
         gymmickUnion->azalea.switches ^= (1 << 0);
-        r7 = Field3dObjectList_GetRenderObjectByID(fieldSystem->unkC0, 116);
-        sp4 = Field3dObjectList_GetRenderObjectByID(fieldSystem->unkC0, 117);
-        MapPropAnimationManager_RemoveAnimationFromRenderObj(fieldSystem->mapPropAnimationManager, &r7->renderObj, 116, r6);
-        MapPropAnimationManager_RemoveAnimationFromRenderObj(fieldSystem->mapPropAnimationManager, &sp4->renderObj, 117, r6);
+        switch1 = Field3dObjectList_GetRenderObjectByID(fieldSystem->unkC0, 116);
+        switch2 = Field3dObjectList_GetRenderObjectByID(fieldSystem->unkC0, 117);
+        MapPropAnimationManager_RemoveAnimationFromRenderObj(fieldSystem->mapPropAnimationManager, &switch1->renderObj, 116, switchStateBefore);
+        MapPropAnimationManager_RemoveAnimationFromRenderObj(fieldSystem->mapPropAnimationManager, &switch2->renderObj, 117, switchStateBefore);
         u8 r0 = (gymmickUnion->azalea.switches >> 0) & 1;
         if (r0) {
-            MapPropAnimationManager_AddAnimationToRenderObj(116, 1, 1, &r7->renderObj, fieldSystem->mapPropAnimationManager);
-            MapPropAnimationManager_AddAnimationToRenderObj(117, 1, 1, &sp4->renderObj, fieldSystem->mapPropAnimationManager);
+            MapPropAnimationManager_AddAnimationToRenderObj(116, 1, 1, &switch1->renderObj, fieldSystem->mapPropAnimationManager);
+            MapPropAnimationManager_AddAnimationToRenderObj(117, 1, 1, &switch2->renderObj, fieldSystem->mapPropAnimationManager);
         } else {
-            MapPropAnimationManager_AddAnimationToRenderObj(116, 0, 1, &r7->renderObj, fieldSystem->mapPropAnimationManager);
-            MapPropAnimationManager_AddAnimationToRenderObj(117, 0, 1, &sp4->renderObj, fieldSystem->mapPropAnimationManager);
+            MapPropAnimationManager_AddAnimationToRenderObj(116, 0, 1, &switch1->renderObj, fieldSystem->mapPropAnimationManager);
+            MapPropAnimationManager_AddAnimationToRenderObj(117, 0, 1, &switch2->renderObj, fieldSystem->mapPropAnimationManager);
         }
     } else if (switchNo == 1) {
-        r6 = (gymmickUnion->azalea.switches >> 1) & 1;
+        switchStateBefore = (gymmickUnion->azalea.switches >> 1) & 1;
         gymmickUnion->azalea.switches ^= (1 << 1);
-        r7 = Field3dObjectList_GetRenderObjectByID(fieldSystem->unkC0, 115);
-        sp4 = Field3dObjectList_GetRenderObjectByID(fieldSystem->unkC0, 122);
-        MapPropAnimationManager_RemoveAnimationFromRenderObj(fieldSystem->mapPropAnimationManager, &r7->renderObj, 115, r6);
-        MapPropAnimationManager_RemoveAnimationFromRenderObj(fieldSystem->mapPropAnimationManager, &sp4->renderObj, 122, r6);
-        u8 r0 = (gymmickUnion->azalea.switches >> 1) & 1;
-        if (r0) {
-            MapPropAnimationManager_AddAnimationToRenderObj(115, 1, 1, &r7->renderObj, fieldSystem->mapPropAnimationManager);
-            MapPropAnimationManager_AddAnimationToRenderObj(122, 1, 1, &sp4->renderObj, fieldSystem->mapPropAnimationManager);
+        switch1 = Field3dObjectList_GetRenderObjectByID(fieldSystem->unkC0, 115);
+        switch2 = Field3dObjectList_GetRenderObjectByID(fieldSystem->unkC0, 122);
+        MapPropAnimationManager_RemoveAnimationFromRenderObj(fieldSystem->mapPropAnimationManager, &switch1->renderObj, 115, switchStateBefore);
+        MapPropAnimationManager_RemoveAnimationFromRenderObj(fieldSystem->mapPropAnimationManager, &switch2->renderObj, 122, switchStateBefore);
+        u8 switchStateAfter = (gymmickUnion->azalea.switches >> 1) & 1;
+        if (switchStateAfter) {
+            MapPropAnimationManager_AddAnimationToRenderObj(115, 1, 1, &switch1->renderObj, fieldSystem->mapPropAnimationManager);
+            MapPropAnimationManager_AddAnimationToRenderObj(122, 1, 1, &switch2->renderObj, fieldSystem->mapPropAnimationManager);
         } else {
-            MapPropAnimationManager_AddAnimationToRenderObj(115, 0, 1, &r7->renderObj, fieldSystem->mapPropAnimationManager);
-            MapPropAnimationManager_AddAnimationToRenderObj(122, 0, 1, &sp4->renderObj, fieldSystem->mapPropAnimationManager);
+            MapPropAnimationManager_AddAnimationToRenderObj(115, 0, 1, &switch1->renderObj, fieldSystem->mapPropAnimationManager);
+            MapPropAnimationManager_AddAnimationToRenderObj(122, 0, 1, &switch2->renderObj, fieldSystem->mapPropAnimationManager);
         }
     } else {
         GF_ASSERT(FALSE);
     }
-    TaskManager_Call(fieldSystem->taskman, ov04_02254CA4, NULL);
+    TaskManager_Call(fieldSystem->taskman, Task_WaitSwitchFlipSFX, NULL);
 }
 
 void BeginAzaleaGymSpinarakRide(FieldSystem *fieldSystem, u8 spinarakNo) {
@@ -339,18 +339,18 @@ void BeginAzaleaGymSpinarakRide(FieldSystem *fieldSystem, u8 spinarakNo) {
     AzaleaGymmickSpinarakRideData *rideData = Heap_AllocAtEnd(HEAP_ID_FIELD2, sizeof(AzaleaGymmickSpinarakRideData));
     rideData->state = 0;
     rideData->fieldSystem = fieldSystem;
-    localData->unk_18 = spinarakNo;
-    localData->unk_2C.y = 0;
-    localData->unk_14 = 0;
-    localData->unk_16 = 1;
-    localData->unk_1C = 0;
+    localData->spinarakPair = spinarakNo;
+    localData->spinarakPos.y = 0;
+    localData->nodeIdx = 0;
+    localData->segmentDone = TRUE;
+    localData->mustResetTargetTrack = FALSE;
 
     int spiderIdx;
     GymmickUnion *gymmickUnion = Save_Gymmick_AssertMagic_GetData(Save_GetGymmickPtr(FieldSystem_GetSaveData(fieldSystem)), GYMMICK_AZALEA);
-    localData->unk_15 = gymmickUnion->azalea.switches;
+    localData->switchState = gymmickUnion->azalea.switches;
     for (spiderIdx = 0; spiderIdx < 4; ++spiderIdx) {
         if (spinarakNo == gymmickUnion->azalea.spiders[spiderIdx]) {
-            localData->unk_17 = spiderIdx;
+            localData->spiderIdx = spiderIdx;
             break;
         }
     }
@@ -365,23 +365,23 @@ void BeginAzaleaGymSpinarakRide(FieldSystem *fieldSystem, u8 spinarakNo) {
     case 9:
     case 10:
     case 11:
-        localData->unk_19 = 1;
-        localData->unk_1A = ov04_022575A4[spinarakNo][localData->unk_15].length - 1;
-        localData->unk_1B = 1;
+        localData->spinarakDirection = 1;
+        localData->curNodeIndex = sSpinarakRoutes_Froms[spinarakNo][localData->switchState].length - 1;
+        localData->playerZOffset = 1;
         break;
     default:
-        localData->unk_19 = 0;
-        localData->unk_1A = 0;
-        localData->unk_1B = 0;
+        localData->spinarakDirection = 0;
+        localData->curNodeIndex = 0;
+        localData->playerZOffset = 0;
         break;
     }
-    const AzaleaGymmickSpinarakRouteNode *ptr = &ov04_022575A4[spinarakNo][localData->unk_15].route[localData->unk_1A];
-    localData->unk_2C.x = ptr->x * FX32_ONE * 16;
-    localData->unk_2C.z = ptr->z * FX32_ONE * 16;
-    TaskManager_Call(fieldSystem->taskman, ov04_0225463C, rideData);
+    const AzaleaGymmickSpinarakRouteNode *ptr = &sSpinarakRoutes_Froms[spinarakNo][localData->switchState].route[localData->curNodeIndex];
+    localData->spinarakPos.x = ptr->x * FX32_ONE * 16;
+    localData->spinarakPos.z = ptr->z * FX32_ONE * 16;
+    TaskManager_Call(fieldSystem->taskman, Task_SpinarakRide, rideData);
 }
 
-BOOL ov04_0225463C(TaskManager *taskman) {
+static BOOL Task_SpinarakRide(TaskManager *taskman) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskman);
     AzaleaGymmickSpinarakRideData *rideData = TaskManager_GetEnvironment(taskman);
 
@@ -391,7 +391,7 @@ BOOL ov04_0225463C(TaskManager *taskman) {
         ++rideData->state;
         break;
     case 1:
-        SysTask_CreateOnMainQueue(ov04_02254724, rideData, 0);
+        SysTask_CreateOnMainQueue(SysTask_DoSpinarakRide, rideData, 0);
         ++rideData->state;
         break;
     case 10:
@@ -402,39 +402,39 @@ BOOL ov04_0225463C(TaskManager *taskman) {
     return FALSE;
 }
 
-VecFx32 ov04_02254698(const AzaleaGymmickSpinarakRouteNode *a0, const AzaleaGymmickSpinarakRouteNode *a1) {
+static VecFx32 AzaleaGymmick_GetVectorBetweenRouteNodes(const AzaleaGymmickSpinarakRouteNode *prev, const AzaleaGymmickSpinarakRouteNode *next) {
     VecFx32 ret;
 
-    ret.x = (a1->x - a0->x) * FX32_ONE;
-    ret.z = (a1->z - a0->z) * FX32_ONE;
+    ret.x = (next->x - prev->x) * FX32_ONE;
+    ret.z = (next->z - prev->z) * FX32_ONE;
     ret.y = 0;
     return ret;
 }
 
-void ov04_022546C8(const VecFx32 *a0, BOOL *a1) {
-    if (a0->x >= 0) {
-        a1[0] = TRUE;
+static void AzaleaGymmick_GetSignsOfVectorXZComponents(const VecFx32 *deltaVec, BOOL *xzSigns) {
+    if (deltaVec->x >= 0) {
+        xzSigns[0] = TRUE;
     } else {
-        a1[0] = FALSE;
+        xzSigns[0] = FALSE;
     }
-    if (a0->z >= 0) {
-        a1[1] = TRUE;
+    if (deltaVec->z >= 0) {
+        xzSigns[1] = TRUE;
     } else {
-        a1[1] = FALSE;
+        xzSigns[1] = FALSE;
     }
 }
 
-int ov04_022546E8(int a0, fx32 a1, fx32 a2, BOOL a3) {
+static int AzaleaGymmick_GetMovementDoneParams(BOOL sign, fx32 cur, fx32 delta, u16 nodeComponent) {
     int ret = 0;
-    fx32 r3 = a3 * FX32_ONE * 16;
-    if (a1 + a2 == r3) {
+    fx32 nodeComponentFx = nodeComponent * FX32_ONE * 16;
+    if (cur + delta == nodeComponentFx) {
         ret = 1;
-    } else if (a0) {
-        if (a1 + a2 > r3) {
+    } else if (sign) {
+        if (cur + delta > nodeComponentFx) {
             ret = 2;
         }
     } else {
-        if (a1 + a2 < r3) {
+        if (cur + delta < nodeComponentFx) {
             ret = 2;
         }
     }
@@ -446,7 +446,7 @@ void GymmickFree_Azalea(FieldSystem *fieldSystem) {
     fieldSystem->unk4->unk24 = NULL;
 }
 
-void ov04_02254724(SysTask *sysTask, void *taskData) {
+static void SysTask_DoSpinarakRide(SysTask *sysTask, void *taskData) {
     AzaleaGymmickSpinarakRideData *rideData = taskData;
     FieldSystem *fieldSystem = rideData->fieldSystem;
     AzaleaGymmickLocalData *localData = fieldSystem->unk4->unk24;
@@ -457,7 +457,7 @@ void ov04_02254724(SysTask *sysTask, void *taskData) {
             LocalMapObject *playerObject = PlayerAvatar_GetMapObject(fieldSystem->playerAvatar);
             LocalMapObject *followMonObject = FollowMon_GetMapObject(fieldSystem);
 
-            if (localData->unk_19) {
+            if (localData->spinarakDirection) {
                 MapObject_SetHeldMovement(playerObject, MOVEMENT_STEP_DOWN);
                 MapObject_SetHeldMovement(followMonObject, MOVEMENT_STEP_DOWN);
             } else {
@@ -467,7 +467,7 @@ void ov04_02254724(SysTask *sysTask, void *taskData) {
         } else {
             LocalMapObject *playerObject = PlayerAvatar_GetMapObject(fieldSystem->playerAvatar);
 
-            if (localData->unk_19) {
+            if (localData->spinarakDirection) {
                 MapObject_SetHeldMovement(playerObject, MOVEMENT_STEP_DOWN);
             } else {
                 MapObject_SetHeldMovement(playerObject, MOVEMENT_STEP_UP);
@@ -480,164 +480,164 @@ void ov04_02254724(SysTask *sysTask, void *taskData) {
             LocalMapObject *followMonObject = FollowMon_GetMapObject(fieldSystem);
             if (MapObject_AreBitsSetForMovementScriptInit(playerObject) && MapObject_AreBitsSetForMovementScriptInit(followMonObject)) {
                 MapObject_SetHeldMovement(playerObject, MOVEMENT_UNK_73);
-                localData->unk_50 = 0;
+                localData->terminalWaitCounter = 0;
                 ++rideData->state;
             }
         } else {
             if (MapObject_AreBitsSetForMovementScriptInit(playerObject)) {
                 MapObject_SetHeldMovement(playerObject, MOVEMENT_UNK_73);
-                localData->unk_50 = 0;
+                localData->terminalWaitCounter = 0;
                 ++rideData->state;
             }
         }
         break;
     }
     case 4:
-        if (localData->unk_50++ >= 4) {
-            MapProp *mapProp = MapPropManager_GetMapPropByIndex(fieldSystem->mapPropManager, localData->unk_17);
-            NNSG3dResTex *r7 = ov01_021FB9E0(fieldSystem->areaDataManager);
-            NNSG3dRenderObj *sp2C = MapProp_GetRenderSurface(mapProp);
-            NNSG3dResMdl *sp4 = MapProp_GetResModel(mapProp);
-            MapPropOneShotAnimationManager_LoadPropAnimations(fieldSystem->mapPropAnimationManager, fieldSystem->mapPropOneShotAnimationManager, 1, 118, sp2C, sp4, r7, 1, 255, FALSE);
+        if (localData->terminalWaitCounter++ >= 4) {
+            MapProp *mapProp = MapPropManager_GetMapPropByIndex(fieldSystem->mapPropManager, localData->spiderIdx);
+            NNSG3dResTex *tex = ov01_021FB9E0(fieldSystem->areaDataManager);
+            NNSG3dRenderObj *renderObj = MapProp_GetRenderSurface(mapProp);
+            NNSG3dResMdl *mdl = MapProp_GetResModel(mapProp);
+            MapPropOneShotAnimationManager_LoadPropAnimations(fieldSystem->mapPropAnimationManager, fieldSystem->mapPropOneShotAnimationManager, 1, 118, renderObj, mdl, tex, 1, 255, FALSE);
             MapPropOneShotAnimationManager_PlayAnimation(fieldSystem->mapPropOneShotAnimationManager, 1, 0);
             PlaySE(SEQ_SE_GS_ITOMARU_ROBO);
             ++rideData->state;
         }
         break;
     case 5: {
-        u16 sp24;
-        int r1;
-        int r7;
-        const AzaleaGymmickSpinarakRouteNode *r1_2;
-        int sp20;
-        int r0;
+        u16 spinarakPair;
+        int length;
+        int switchState;
+        const AzaleaGymmickSpinarakRouteNode *prevNode;
+        int xDoneState;
+        int zDoneState;
 
-        sp24 = localData->unk_18;
-        r7 = localData->unk_15;
-        if (localData->unk_16) {
-            fx32 sp34;
-            if (localData->unk_19) {
-                r1_2 = &ov04_022575A4[sp24][r7].route[localData->unk_1A];
-                localData->unk_28 = &ov04_022575A4[sp24][r7].route[localData->unk_1A - 1];
+        spinarakPair = localData->spinarakPair;
+        switchState = localData->switchState;
+        if (localData->segmentDone) {
+            fx32 xComponent;
+            if (localData->spinarakDirection) {
+                prevNode = &sSpinarakRoutes_Froms[spinarakPair][switchState].route[localData->curNodeIndex];
+                localData->node = &sSpinarakRoutes_Froms[spinarakPair][switchState].route[localData->curNodeIndex - 1];
             } else {
-                r1_2 = &ov04_022575A4[sp24][r7].route[localData->unk_1A];
-                localData->unk_28 = &ov04_022575A4[sp24][r7].route[localData->unk_1A + 1];
+                prevNode = &sSpinarakRoutes_Froms[spinarakPair][switchState].route[localData->curNodeIndex];
+                localData->node = &sSpinarakRoutes_Froms[spinarakPair][switchState].route[localData->curNodeIndex + 1];
             }
-            localData->unk_38 = ov04_02254698(r1_2, localData->unk_28);
-            ov04_022546C8(&localData->unk_38, localData->unk_20);
-            VEC_Normalize(&localData->unk_38, &localData->unk_38);
+            localData->moveVector = AzaleaGymmick_GetVectorBetweenRouteNodes(prevNode, localData->node);
+            AzaleaGymmick_GetSignsOfVectorXZComponents(&localData->moveVector, localData->moveVectorComponentSigns);
+            VEC_Normalize(&localData->moveVector, &localData->moveVector);
 
-            VecFx32 sp8C = { FX32_ONE, 0, 0 };
-            sp34 = VEC_DotProduct(&localData->unk_38, &sp8C);
+            VecFx32 xOne = { FX32_ONE, 0, 0 };
+            xComponent = VEC_DotProduct(&localData->moveVector, &xOne);
 
-            VecFx32 sp80 = { 0, 0, 0 };
-            VEC_MultAdd(FX32_CONST(2), &localData->unk_38, &sp80, &localData->unk_38);
+            VecFx32 zero = { 0, 0, 0 };
+            VEC_MultAdd(FX32_CONST(2), &localData->moveVector, &zero, &localData->moveVector);
 
-            if (localData->unk_1C == 0 && sp34 != 0 && sp34 != FX32_ONE) {
-                localData->unk_1C = 1;
+            if (localData->mustResetTargetTrack == FALSE && xComponent != 0 && xComponent != FX32_ONE) {
+                localData->mustResetTargetTrack = TRUE;
                 MapLoadManager_ForgetTrackedTarget(fieldSystem->mapLoadManager);
-            } else if (localData->unk_1C == 1) {
-                localData->unk_1C = 0;
+            } else if (localData->mustResetTargetTrack == TRUE) {
+                localData->mustResetTargetTrack = FALSE;
                 MapLoadManager_TrackTarget(PlayerAvatar_GetPositionVector(fieldSystem->playerAvatar), fieldSystem->mapLoadManager);
             }
-            localData->unk_16 = 0;
+            localData->segmentDone = FALSE;
         }
-        sp20 = ov04_022546E8(localData->unk_20[0], localData->unk_2C.x, localData->unk_38.x, localData->unk_28->x);
-        r0 = ov04_022546E8(localData->unk_20[1], localData->unk_2C.z, localData->unk_38.z, localData->unk_28->z);
-        if (sp20 == 2) {
-            localData->unk_38.x = 0;
+        xDoneState = AzaleaGymmick_GetMovementDoneParams(localData->moveVectorComponentSigns[0], localData->spinarakPos.x, localData->moveVector.x, localData->node->x);
+        zDoneState = AzaleaGymmick_GetMovementDoneParams(localData->moveVectorComponentSigns[1], localData->spinarakPos.z, localData->moveVector.z, localData->node->z);
+        if (xDoneState == 2) {
+            localData->moveVector.x = 0;
         }
-        if (r0 == 2) {
-            localData->unk_38.z = 0;
+        if (zDoneState == 2) {
+            localData->moveVector.z = 0;
         }
-        if (sp20 != 0 && r0 != 0) {
-            localData->unk_2C.x = localData->unk_28->x * 16 * FX32_ONE;
-            localData->unk_2C.z = localData->unk_28->z * 16 * FX32_ONE;
-            ++localData->unk_14;
-            r1 = ov04_022575A4[sp24][r7].length;
-            if (localData->unk_14 >= r1 - 1) {
+        if (xDoneState != 0 && zDoneState != 0) {
+            localData->spinarakPos.x = localData->node->x * 16 * FX32_ONE;
+            localData->spinarakPos.z = localData->node->z * 16 * FX32_ONE;
+            ++localData->nodeIdx;
+            length = sSpinarakRoutes_Froms[spinarakPair][switchState].length;
+            if (localData->nodeIdx >= length - 1) {
                 GymmickUnion *gymmickUnion = Save_Gymmick_AssertMagic_GetData(Save_GetGymmickPtr(FieldSystem_GetSaveData(fieldSystem)), GYMMICK_AZALEA);
-                gymmickUnion->azalea.spiders[localData->unk_17] = ov04_022575A4[sp24][r7].destination;
+                gymmickUnion->azalea.spiders[localData->spiderIdx] = sSpinarakRoutes_Froms[spinarakPair][switchState].destination;
                 MapPropOneShotAnimationManager_UnloadAnimation(fieldSystem->mapPropAnimationManager, fieldSystem->mapPropOneShotAnimationManager, 1);
                 StopSE(SEQ_SE_GS_ITOMARU_ROBO, 1);
                 ++rideData->state;
             } else {
-                if (localData->unk_19) {
-                    --localData->unk_1A;
+                if (localData->spinarakDirection) {
+                    --localData->curNodeIndex;
                 } else {
-                    ++localData->unk_1A;
+                    ++localData->curNodeIndex;
                 }
-                localData->unk_16 = 1;
+                localData->segmentDone = TRUE;
             }
         } else {
-            VEC_Add(&localData->unk_2C, &localData->unk_38, &localData->unk_2C);
+            VEC_Add(&localData->spinarakPos, &localData->moveVector, &localData->spinarakPos);
         }
-        MapProp *r6 = MapPropManager_GetMapPropByIndex(fieldSystem->mapPropManager, localData->unk_04[localData->unk_17]);
-        VecFx32 sp74 = localData->unk_2C;
-        sp74.x += FX32_CONST(8);
-        MapProp_SetTranslation(r6, &sp74);
+        MapProp *spinarakMapProp = MapPropManager_GetMapPropByIndex(fieldSystem->mapPropManager, localData->spinarakMapPropIds[localData->spiderIdx]);
+        VecFx32 spinarakPos = localData->spinarakPos;
+        spinarakPos.x += FX32_CONST(8);
+        MapProp_SetTranslation(spinarakMapProp, &spinarakPos);
 
-        VecFx32 sp68;
-        VecFx32 sp5C = { 8 * FX32_ONE, 0, 8 * FX32_ONE };
-        sp68 = localData->unk_2C;
-        VEC_Add(&sp68, &sp5C, &sp68);
-        sp68.z += localData->unk_1B * 16 * FX32_ONE;
-        MapObject_SetPositionVector(PlayerAvatar_GetMapObject(fieldSystem->playerAvatar), &sp68);
+        VecFx32 playerPos;
+        VecFx32 playerSpinarakOffset = { 8 * FX32_ONE, 0, 8 * FX32_ONE };
+        playerPos = localData->spinarakPos;
+        VEC_Add(&playerPos, &playerSpinarakOffset, &playerPos);
+        playerPos.z += localData->playerZOffset * 16 * FX32_ONE;
+        MapObject_SetPositionVector(PlayerAvatar_GetMapObject(fieldSystem->playerAvatar), &playerPos);
         if (FollowMon_IsActive(fieldSystem)) {
-            s8 r6_2 = 1 - localData->unk_1B;
-            VecFx32 sp50 = localData->unk_2C;
-            VEC_Add(&sp50, &sp5C, &sp50);
-            sp50.z += r6_2 * 16 * FX32_ONE;
-            MapObject_SetPositionVector(FollowMon_GetMapObject(fieldSystem), &sp50);
+            s8 followMonZOffset = 1 - localData->playerZOffset;
+            VecFx32 followMonPos = localData->spinarakPos;
+            VEC_Add(&followMonPos, &playerSpinarakOffset, &followMonPos);
+            followMonPos.z += followMonZOffset * 16 * FX32_ONE;
+            MapObject_SetPositionVector(FollowMon_GetMapObject(fieldSystem), &followMonPos);
         }
         break;
     }
     case 6: {
         LocalMapObject *playerObject = PlayerAvatar_GetMapObject(fieldSystem->playerAvatar);
-        MapObject_SetCurrentX(playerObject, localData->unk_28->x);
+        MapObject_SetCurrentX(playerObject, localData->node->x);
         MapObject_SetCurrentY(playerObject, 0);
-        MapObject_SetCurrentZ(playerObject, localData->unk_28->z + localData->unk_1B);
+        MapObject_SetCurrentZ(playerObject, localData->node->z + localData->playerZOffset);
         sub_02060F78(playerObject);
         MapObject_SetHeldMovement(playerObject, MOVEMENT_UNK_74);
         if (FollowMon_IsActive(fieldSystem)) {
             LocalMapObject *followMonObject = FollowMon_GetMapObject(fieldSystem);
-            MapObject_SetCurrentX(followMonObject, localData->unk_28->x);
+            MapObject_SetCurrentX(followMonObject, localData->node->x);
             MapObject_SetCurrentY(followMonObject, 0);
-            MapObject_SetCurrentZ(followMonObject, localData->unk_28->z + (1 - localData->unk_1B));
+            MapObject_SetCurrentZ(followMonObject, localData->node->z + (1 - localData->playerZOffset));
             sub_02060F78(followMonObject);
         }
-        localData->unk_44 = 0;
-        localData->unk_48 = 0;
+        localData->shakeCount = 0;
+        localData->shakeFrame = 0;
         if (PlayerAvatar_GetFacingDirection(fieldSystem->playerAvatar) == DIR_SOUTH) {
-            localData->unk_4C = FX32_ONE;
+            localData->shakeDirection = FX32_ONE;
         } else {
-            localData->unk_4C = -FX32_ONE;
+            localData->shakeDirection = -FX32_ONE;
         }
         ++rideData->state;
         break;
     }
     case 7: {
-        VecFx32 sp44 = { 0, 0, 0 };
-        sp44.z = localData->unk_4C;
-        if (localData->unk_48++ == 0) {
-            Camera_OffsetLookAtPosAndTarget(&sp44, fieldSystem->camera);
-            ++localData->unk_44;
-        } else if (localData->unk_48 > 1) {
-            localData->unk_48 = 0;
-            localData->unk_4C *= -1;
+        VecFx32 cameraLookDelta = { 0, 0, 0 };
+        cameraLookDelta.z = localData->shakeDirection;
+        if (localData->shakeFrame++ == 0) {
+            Camera_OffsetLookAtPosAndTarget(&cameraLookDelta, fieldSystem->camera);
+            ++localData->shakeCount;
+        } else if (localData->shakeFrame > 1) {
+            localData->shakeFrame = 0;
+            localData->shakeDirection *= -1;
         }
-        if (localData->unk_44 >= 4) {
-            localData->unk_50 = 0;
+        if (localData->shakeCount >= 4) {
+            localData->terminalWaitCounter = 0;
             ++rideData->state;
         }
         break;
     }
     case 8:
-        if (localData->unk_50++ >= 8) {
+        if (localData->terminalWaitCounter++ >= 8) {
             LocalMapObject *playerObject = PlayerAvatar_GetMapObject(fieldSystem->playerAvatar);
             if (FollowMon_IsActive(fieldSystem)) {
                 LocalMapObject *followMonObject = FollowMon_GetMapObject(fieldSystem);
-                if (localData->unk_19) {
+                if (localData->spinarakDirection) {
                     MapObject_SetHeldMovement(playerObject, MOVEMENT_STEP_DOWN);
                     MapObject_SetHeldMovement(followMonObject, MOVEMENT_STEP_DOWN);
                 } else {
@@ -645,7 +645,7 @@ void ov04_02254724(SysTask *sysTask, void *taskData) {
                     MapObject_SetHeldMovement(followMonObject, MOVEMENT_STEP_UP);
                 }
             } else {
-                if (localData->unk_19) {
+                if (localData->spinarakDirection) {
                     MapObject_SetHeldMovement(playerObject, MOVEMENT_STEP_DOWN);
                 } else {
                     MapObject_SetHeldMovement(playerObject, MOVEMENT_STEP_UP);
@@ -674,6 +674,6 @@ void ov04_02254724(SysTask *sysTask, void *taskData) {
     }
 }
 
-BOOL ov04_02254CA4(TaskManager *taskman) {
+static BOOL Task_WaitSwitchFlipSFX(TaskManager *taskman) {
     return !IsSEPlaying(SEQ_SE_DP_KI_GASYAN);
 }

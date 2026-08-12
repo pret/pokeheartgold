@@ -16,12 +16,12 @@ typedef struct VioletGymElevatorTaskData {
     FieldSystem *fieldSystem;
 } VioletGymElevatorTaskData;
 
-BOOL Task_VioletGymmick_ElevatorUp(TaskManager *taskman);
-BOOL Task_VioletGymmick_ElevatorDown(TaskManager *taskman);
-void ov04_02253FF0(SysTask *sysTask, void *taskData);
-void ov04_022540C0(SysTask *sysTask, void *taskData);
+static BOOL Task_VioletGymmick_ElevatorUp(TaskManager *taskman);
+static BOOL Task_VioletGymmick_ElevatorDown(TaskManager *taskman);
+static void SysTask_ElevatorUp(SysTask *sysTask, void *taskData);
+static void SysTask_ElevatorDown(SysTask *sysTask, void *taskData);
 
-static const GXRgb ov04_02257334[] = {
+static const GXRgb sEdgeColorTable[] = {
     GX_RGB(0, 0, 0),
     GX_RGB(9, 9, 9),
     GX_RGB(16, 11, 4),
@@ -60,7 +60,7 @@ void GymmickInit_Violet(FieldSystem *fieldSystem) {
     translation.y = y;
     MapProp_SetTranslation(mapProp, &translation);
     ov01_021FB4A0(0, y, fieldSystem->dynamicTerrainHeightManager);
-    G3X_SetEdgeColorTable(ov04_02257334);
+    G3X_SetEdgeColorTable(sEdgeColorTable);
 }
 
 void VioletGymmick_ElevatorAction(FieldSystem *fieldSystem) {
@@ -80,7 +80,7 @@ void VioletGymmick_ElevatorAction(FieldSystem *fieldSystem) {
     }
 }
 
-BOOL Task_VioletGymmick_ElevatorUp(TaskManager *taskman) {
+static BOOL Task_VioletGymmick_ElevatorUp(TaskManager *taskman) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskman);
     VioletGymElevatorTaskData *taskData = TaskManager_GetEnvironment(taskman);
 
@@ -91,7 +91,7 @@ BOOL Task_VioletGymmick_ElevatorUp(TaskManager *taskman) {
         ++taskData->state;
         break;
     case 1:
-        SysTask_CreateOnMainQueue(ov04_02253FF0, taskData, 0);
+        SysTask_CreateOnMainQueue(SysTask_ElevatorUp, taskData, 0);
         ++taskData->state;
         break;
     case 5:
@@ -102,7 +102,7 @@ BOOL Task_VioletGymmick_ElevatorUp(TaskManager *taskman) {
     return FALSE;
 }
 
-BOOL Task_VioletGymmick_ElevatorDown(TaskManager *taskman) {
+static BOOL Task_VioletGymmick_ElevatorDown(TaskManager *taskman) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskman);
     VioletGymElevatorTaskData *taskData = TaskManager_GetEnvironment(taskman);
 
@@ -113,7 +113,7 @@ BOOL Task_VioletGymmick_ElevatorDown(TaskManager *taskman) {
         ++taskData->state;
         break;
     case 1:
-        SysTask_CreateOnMainQueue(ov04_022540C0, taskData, 0);
+        SysTask_CreateOnMainQueue(SysTask_ElevatorDown, taskData, 0);
         ++taskData->state;
         break;
     case 5:
@@ -124,7 +124,7 @@ BOOL Task_VioletGymmick_ElevatorDown(TaskManager *taskman) {
     return FALSE;
 }
 
-void ov04_02253FF0(SysTask *sysTask, void *taskData) {
+static void SysTask_ElevatorUp(SysTask *sysTask, void *taskData) {
     VioletGymElevatorTaskData *violetTaskData = taskData;
     FieldSystem *fieldSystem = violetTaskData->fieldSystem;
 
@@ -161,7 +161,7 @@ void ov04_02253FF0(SysTask *sysTask, void *taskData) {
     }
 }
 
-void ov04_022540C0(SysTask *sysTask, void *taskData) {
+static void SysTask_ElevatorDown(SysTask *sysTask, void *taskData) {
     VioletGymElevatorTaskData *violetTaskData = taskData;
     FieldSystem *fieldSystem = violetTaskData->fieldSystem;
 
