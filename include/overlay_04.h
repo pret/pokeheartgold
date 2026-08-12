@@ -26,7 +26,7 @@ void GymmickInit_Viridian(FieldSystem *fieldSystem);
 void GymmickInit_Sinjoh(FieldSystem *fieldSystem);
 void EcruteakGymmick_BindCandleToTrainerObject(FieldSystem *fieldSystem);
 void EcruteakGymmick_UnbindCandleFromTrainerObject(FieldSystem *fieldSystem);
-void EcruteakGymmick_ExtinguishCandle(FieldSystem *fieldSystem, int a1);
+void EcruteakGymmick_ExtinguishCandle(FieldSystem *fieldSystem, ScriptEnvField field);
 int ov04_02256058(FieldSystem *fieldSystem);
 void ov04_0225640C(FieldSystem *fieldSystem, u8 lockno, u8 relock);
 BOOL ov04_022563C4(FieldSystem *fieldSystem, u8 canId);
