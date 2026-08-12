@@ -666,5 +666,7 @@ typedef enum ControllerCommand {
 #define TYPE_MULTI_DOUBLE_DAMAGE    80
 #define TYPE_MULTI_QUADRUPLE_DAMAGE 160
 
+#define MAX_BATTLERS_PER_SIDE 2
+
 #endif // PM_ASM
 #endif // POKEHEARTGOLD_CONSTANTS_BATTLE_H
