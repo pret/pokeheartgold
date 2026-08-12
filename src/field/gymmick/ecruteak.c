@@ -3,9 +3,11 @@
 #include "fielddata/script/scr_seq/event_T27GYM0101.h"
 
 #include "field_system.h"
+#include "overlay_01_021F72DC.h"
 #include "overlay_01_021F944C.h"
 #include "overlay_04.h"
 #include "unk_02005D10.h"
+#include "unk_02023694.h"
 
 #define NUM_CANDLES 4
 
@@ -137,4 +139,35 @@ BOOL ov04_02254E50(TaskManager *taskman) {
     }
 
     return FALSE;
+}
+
+u8 ov04_MortyGymTrainerObjectToCandleIdx(LocalMapObject *mapObject) {
+    static const u32 sMortyGymTrainerObjectIds[NUM_CANDLES] = {
+        obj_T27GYM0101_itako,
+        obj_T27GYM0101_itako_2,
+        obj_T27GYM0101_itako_3,
+        obj_T27GYM0101_itako_4,
+    };
+
+    u32 mapObjectId = MapObject_GetID(mapObject);
+    u8 i;
+    for (i = 0; i < NUM_CANDLES; ++i) {
+        if (sMortyGymTrainerObjectIds[i] == mapObjectId) {
+            break;
+        }
+    }
+
+    return i;
+}
+
+void ov04_02254F44(FieldSystem *fieldSystem) {
+    int i;
+    int numObjects = MapObjectManager_GetObjectCount(fieldSystem->mapObjectManager);
+    LocalMapObject *objects = MapObjectManager_GetObjects(fieldSystem->mapObjectManager);
+    for (i = 0; i < numObjects; ++i) {
+        if (MapObject_CheckActive(objects) == TRUE) {
+            NNS_G3dMdlSetMdlFogEnableFlagAll(sub_02023F90(ov01_021F72DC(objects)), FALSE);
+        }
+        MapObjectArray_NextObject2(&objects);
+    }
 }
