@@ -413,7 +413,7 @@ _02258AC4:
 	ldr r2, [sp, #0x8c]
 	add r0, r7, #0
 	add r1, r5, #0
-	bl ov12_02251D28
+	bl BattleSystem_ApplyTypeChart
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	str r0, [sp, #0x4c]
