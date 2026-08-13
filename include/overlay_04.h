@@ -34,7 +34,7 @@ void VioletGymmick_ElevatorAction(FieldSystem *fieldSystem);
 void BeginAzaleaGymSpinarakRide(FieldSystem *fieldSystem, u8 spinarakNo);
 void FlipAzaleaGymSwitch(FieldSystem *fieldSystem, u8 switchNo);
 
-BOOL GymmickCheckCollision_Blackthorn(FieldSystem *fieldSystem, u32 a1, u32 a2, u32 a3, u32 a4);
+BOOL GymmickCheckCollision_Blackthorn(FieldSystem *fieldSystem, u32 tileX, u32 tileZ, u32 height, BOOL *isColliding);
 void ov04_02256ED8(FieldSystem *fieldSystem);
 void ov04_02256F00(FieldSystem *fieldSystem, u8 a1);
 

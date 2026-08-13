@@ -6,229 +6,6 @@
 
 	.text
 
-	thumb_func_start GymmickInit_Blackthorn
-GymmickInit_Blackthorn: ; 0x02254F8C
-	push {r4, r5, r6, r7, lr}
-	sub sp, #0x44
-	ldr r3, _02255070 ; =ov04_0225762C
-	str r0, [sp, #4]
-	ldmia r3!, {r0, r1}
-	add r2, sp, #0x38
-	stmia r2!, {r0, r1}
-	ldr r0, [r3]
-	str r0, [r2]
-	ldr r0, [sp, #4]
-	bl FieldSystem_GetSaveData
-	bl Save_GetGymmickPtr
-	mov r1, #6
-	bl Save_Gymmick_AssertMagic_GetData
-	str r0, [sp, #0x10]
-	ldr r1, _02255074 ; =0x00000754
-	mov r0, #4
-	bl Heap_Alloc
-	ldr r1, [sp, #4]
-	ldr r2, _02255074 ; =0x00000754
-	ldr r1, [r1, #4]
-	str r0, [r1, #0x24]
-	ldr r0, [sp, #4]
-	mov r1, #0
-	ldr r0, [r0, #4]
-	ldr r0, [r0, #0x24]
-	bl MI_CpuFill8
-	ldr r0, [sp, #4]
-	ldr r2, _02255078 ; =ov04_02257620
-	ldr r0, [r0, #4]
-	add r3, sp, #0x14
-	ldr r6, [r0, #0x24]
-	ldr r0, [sp, #4]
-	ldr r4, [sp, #0x10]
-	str r0, [r6]
-	add r0, sp, #0x38
-	str r0, [sp, #0xc]
-	ldmia r2!, {r0, r1}
-	stmia r3!, {r0, r1}
-	ldr r0, [r2]
-	mov r5, #0
-	add r7, r6, #4
-	str r0, [r3]
-_02254FEC:
-	add r3, sp, #0x14
-	ldmia r3!, {r0, r1}
-	add r2, sp, #0x2c
-	mov ip, r2
-	stmia r2!, {r0, r1}
-	ldr r0, [r3]
-	mov r1, #0
-	str r0, [r2]
-	add r0, sp, #0x20
-	str r1, [r0]
-	str r1, [r0, #4]
-	str r1, [r0, #8]
-	ldr r0, [sp, #0x10]
-	mov r2, ip
-	add r0, r0, r5
-	str r0, [sp, #8]
-	ldrb r0, [r0, #0xc]
-	add r3, sp, #0x20
-	lsl r0, r0, #0xe
-	neg r0, r0
-	str r0, [sp, #0x24]
-	ldrh r0, [r4]
-	lsl r1, r0, #0x10
-	mov r0, #2
-	lsl r0, r0, #0xe
-	add r0, r1, r0
-	str r0, [sp, #0x2c]
-	ldrh r0, [r4, #6]
-	lsl r1, r0, #0x10
-	mov r0, #2
-	lsl r0, r0, #0xe
-	add r0, r1, r0
-	str r0, [sp, #0x34]
-	ldr r0, [sp, #4]
-	ldr r1, [sp, #0xc]
-	ldr r0, [r0, #0x54]
-	str r0, [sp]
-	ldr r0, [sp, #4]
-	ldr r1, [r1]
-	add r0, #0x9c
-	ldr r0, [r0]
-	bl MapPropManager_LoadOne
-	strb r0, [r6, #0xb]
-	str r7, [sp]
-	ldr r1, [sp, #8]
-	lsl r0, r5, #0x18
-	ldrb r1, [r1, #0xc]
-	ldrh r2, [r4]
-	ldrh r3, [r4, #6]
-	lsr r0, r0, #0x18
-	bl ov04_02255140
-	ldr r0, [sp, #0xc]
-	add r5, r5, #1
-	add r0, r0, #4
-	str r0, [sp, #0xc]
-	mov r0, #0x27
-	lsl r0, r0, #4
-	add r4, r4, #2
-	add r6, r6, r0
-	add r7, r7, r0
-	cmp r5, #3
-	blt _02254FEC
-	add sp, #0x44
-	pop {r4, r5, r6, r7, pc}
-	.balign 4, 0
-_02255070: .word ov04_0225762C
-_02255074: .word 0x00000754
-_02255078: .word ov04_02257620
-	thumb_func_end GymmickInit_Blackthorn
-
-	thumb_func_start GymmickFree_Blackthorn
-GymmickFree_Blackthorn: ; 0x0225507C
-	push {r4, lr}
-	add r4, r0, #0
-	ldr r0, [r4, #4]
-	ldr r0, [r0, #0x24]
-	bl Heap_Free
-	ldr r0, [r4, #4]
-	mov r1, #0
-	str r1, [r0, #0x24]
-	pop {r4, pc}
-	thumb_func_end GymmickFree_Blackthorn
-
-	thumb_func_start ov04_02255090
-ov04_02255090: ; 0x02255090
-	push {r4, r5, r6, lr}
-	add r5, r0, #0
-	bl FieldSystem_GetSaveData
-	bl Save_GetGymmickPtr
-	bl Save_Gymmick_GetType
-	cmp r0, #6
-	beq _022550A8
-	mov r0, #0
-	pop {r4, r5, r6, pc}
-_022550A8:
-	ldr r0, [r5, #4]
-	ldr r4, [r0, #0x24]
-	cmp r4, #0
-	bne _022550B4
-	mov r0, #0
-	pop {r4, r5, r6, pc}
-_022550B4:
-	ldr r0, [r5, #0x40]
-	bl PlayerAvatar_GetXCoord
-	add r6, r0, #0
-	ldr r0, [r5, #0x40]
-	bl PlayerAvatar_GetZCoord
-	add r2, r0, #0
-	lsl r1, r6, #0x10
-	lsl r2, r2, #0x10
-	add r0, r4, #0
-	lsr r1, r1, #0x10
-	lsr r2, r2, #0x10
-	bl ov04_02255708
-	pop {r4, r5, r6, pc}
-	thumb_func_end ov04_02255090
-
-	thumb_func_start GymmickCheckCollision_Blackthorn
-GymmickCheckCollision_Blackthorn: ; 0x022550D4
-	push {r3, r4, r5, r6, r7, lr}
-	str r0, [sp]
-	ldr r0, [sp, #0x18]
-	mov r6, #0x79
-	str r0, [sp, #0x18]
-	mov r0, #0
-	mov ip, r0
-	ldr r0, [sp]
-	lsl r6, r6, #2
-	ldr r0, [r0, #4]
-	add r3, r1, #0
-	ldr r0, [r0, #0x24]
-	sub r4, r6, #4
-	add r7, r0, #4
-_022550F0:
-	mov r0, #0
-	add r1, r7, #0
-_022550F4:
-	ldr r5, [r1, r4]
-	cmp r3, r5
-	bne _0225510A
-	ldr r5, [r1, r6]
-	cmp r2, r5
-	bne _0225510A
-	ldr r0, [sp, #0x18]
-	mov r1, #0
-	str r1, [r0]
-	mov r0, #1
-	pop {r3, r4, r5, r6, r7, pc}
-_0225510A:
-	add r0, r0, #1
-	add r1, #8
-	cmp r0, #0x12
-	blt _022550F4
-	mov r0, #0x27
-	lsl r0, r0, #4
-	add r7, r7, r0
-	mov r0, ip
-	add r0, r0, #1
-	mov ip, r0
-	cmp r0, #3
-	blt _022550F0
-	ldr r0, [sp]
-	add r1, r3, #0
-	bl GetMetatileBehavior
-	bl MetatileBehavior_IsMagma
-	cmp r0, #0
-	beq _0225513A
-	ldr r1, [sp, #0x18]
-	mov r0, #1
-	str r0, [r1]
-	pop {r3, r4, r5, r6, r7, pc}
-_0225513A:
-	mov r0, #0
-	pop {r3, r4, r5, r6, r7, pc}
-	.balign 4, 0
-	thumb_func_end GymmickCheckCollision_Blackthorn
-
 	thumb_func_start ov04_02255140
 ov04_02255140: ; 0x02255140
 	push {r4, r5, r6, r7, lr}
@@ -2168,23 +1945,32 @@ _02255FBC: .word SEQ_SE_GS_GONDORA_KABEHIT
 
     .rodata
 
+	.global ov04_02257614
 ov04_02257614: ; 0x02257614
 	.byte 0x40, 0x14, 0x1E, 0x2E
 
+	.global ov04_02257618
 ov04_02257618: ; 0x02257618
 	.byte 0x40, 0x40, 0x40, 0x40, 0x2A, 0x00, 0x00, 0x00
 
+	.global ov04_02257620
 ov04_02257620: ; 0x02257620
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00
+	.word 0x00000000
+	.word 0x00030000
+	.word 0x00000000
 
+	.global ov04_0225762C
 ov04_0225762C: ; 0x0225762C
-	.byte 0x78, 0x00, 0x00, 0x00
-	.byte 0x79, 0x00, 0x00, 0x00, 0x78, 0x00, 0x00, 0x00
+	.word 0x00000078
+	.word 0x00000079
+	.word 0x00000078
 
+	.global ov04_02257638
 ov04_02257638: ; 0x02257638
 	.byte 0x0A, 0x0A, 0x0D, 0x12, 0x19, 0x26, 0x33, 0x40
 	.byte 0x40, 0x17, 0x1C, 0x23, 0x2D, 0x37, 0x00, 0x00
 
+	.global ov04_02257648
 ov04_02257648: ; 0x02257648
 	.byte 0x08, 0x09, 0x0A, 0x0E, 0x13, 0x1A, 0x25, 0x33
 	.byte 0x40, 0x11, 0x13, 0x17, 0x1C, 0x23, 0x2E, 0x37, 0x40, 0x40, 0x40, 0x1E, 0x23, 0x29, 0x31, 0x39

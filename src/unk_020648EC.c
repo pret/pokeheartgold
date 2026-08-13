@@ -9,7 +9,7 @@
 #include "script.h"
 
 typedef void (*FieldSystemFunc1)(FieldSystem *);
-typedef BOOL (*FieldSystemFunc2)(FieldSystem *, u32, u32, u32, u32);
+typedef BOOL (*FieldSystemFunc2)(FieldSystem *, u32, u32, u32, BOOL *);
 
 static const FieldSystemFunc1 sInitFuncs[];
 static const FieldSystemFunc1 sFreeFuncs[];
@@ -29,7 +29,7 @@ void Gymmick_Free(FieldSystem *fieldSystem) {
     }
 }
 
-BOOL Gymmick_CheckCollision(FieldSystem *fieldSystem, u32 tileX, u32 tileZ, u32 height, u32 isColliding) {
+BOOL Gymmick_CheckCollision(FieldSystem *fieldSystem, u32 tileX, u32 tileZ, u32 height, BOOL *isColliding) {
     GymmickType type = Save_Gymmick_GetType(Save_GetGymmickPtr(FieldSystem_GetSaveData(fieldSystem)));
     if (type == GYMMICK_NONE) {
         return FALSE;
