@@ -1743,7 +1743,7 @@ void BattleContext_Init(BattleContext *ctx) {
 
     for (battlerId = 0; battlerId < 4; battlerId++) {
         MIi_CpuClearFast(0, (u32 *)&ctx->selfTurnData[battlerId], sizeof(SelfTurnData));
-        ctx->unk_21A4[battlerId] = 6;
+        ctx->aiSwitchedPartySlot[battlerId] = 6;
     }
 }
 
@@ -1752,7 +1752,7 @@ void ov12_02251038(BattleSystem *battleSystem, BattleContext *ctx) {
 
     for (int battlerId = 0; battlerId < 4; battlerId++) {
         ctx->moveNoHitBattler[battlerId] = 0xFF;
-        ctx->unk_21A0[battlerId] = 6;
+        ctx->switchedPartySlot[battlerId] = 6;
         ctx->unk_310C[battlerId] = BattleSystem_Random(battleSystem);
     }
 
@@ -2328,7 +2328,7 @@ int BattleSystem_ApplyTypeChart(BattleSystem *battleSystem, BattleContext *ctx, 
     return damage;
 }
 
-void ov12_02252054(BattleContext *ctx, int moveNo, int moveTypeDefault, int abilityAttacker, int abilityTarget, int item, int type1, int type2, u32 *moveStatusFlag) {
+void BattleSystem_CalcEffectiveness(BattleContext *ctx, int moveNo, int moveTypeDefault, int abilityAttacker, int abilityTarget, int item, int type1, int type2, u32 *moveStatusFlag) {
     int i;
     u8 moveType;
 
@@ -2680,7 +2680,7 @@ BOOL CanSwitchMon(BattleSystem *battleSystem, BattleContext *ctx, int battlerId)
     party = BattleSystem_GetParty(battleSystem, battlerId);
     partySize = BattleSystem_GetPartySize(battleSystem, battlerId);
 
-    if ((battleType & BATTLE_TYPE_MULTI) || ((battleType & BATTLE_TYPE_TAG) && (ov12_0223AB0C(battleSystem, battlerId) & 1))) {
+    if ((battleType & BATTLE_TYPE_MULTI) || ((battleType & BATTLE_TYPE_TAG) && (BattleSystem_GetBattlerType(battleSystem, battlerId) & 1))) {
         start = 0;
         cntMax = 1;
         monIndex1 = ctx->selectedMonIndex[battlerId];
@@ -5428,8 +5428,8 @@ void ov12_02256F78(BattleSystem *battleSystem, BattleContext *ctx, int battlerId
     int flag;
     u32 battleType = BattleSystem_GetBattleType(battleSystem);
 
-    if (((battleType & BATTLE_TYPE_DOUBLES) && !(battleType & (BATTLE_TYPE_MULTI | BATTLE_TYPE_TAG))) || ((battleType & BATTLE_TYPE_TAG) && !(ov12_0223AB0C(battleSystem, battlerId) & 1))) {
-        if (ov12_0223AB0C(battleSystem, battlerId) == 4 || ov12_0223AB0C(battleSystem, battlerId) == 5) {
+    if (((battleType & BATTLE_TYPE_DOUBLES) && !(battleType & (BATTLE_TYPE_MULTI | BATTLE_TYPE_TAG))) || ((battleType & BATTLE_TYPE_TAG) && !(BattleSystem_GetBattlerType(battleSystem, battlerId) & 1))) {
+        if (BattleSystem_GetBattlerType(battleSystem, battlerId) == 4 || BattleSystem_GetBattlerType(battleSystem, battlerId) == 5) {
             flag = 1;
         } else {
             flag = 0;

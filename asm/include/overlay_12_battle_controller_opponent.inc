@@ -142,7 +142,7 @@
 .public ov08_022225D4
 .public TrainerAI_Init
 .public TrainerAI_Main
-.public ov10_022205BC
+.public TrainerAI_PickCommand
 .public ov12_02237B0C
 .public ov12_02237BB8
 .public ov12_02237ED0
@@ -173,7 +173,7 @@
 .public BattleSystem_GetBag
 .public BattleSystem_GetTrainerGender
 .public BattleSystem_GetBattlerFromBattlerType
-.public ov12_0223AB0C
+.public BattleSystem_GetBattlerType
 .public BattleSystem_GetBattlerSide
 .public BattleSystem_GetMessageIcon
 .public BattleSystem_GetTerrainId
@@ -227,7 +227,7 @@
 .public GetBattlerVar
 .public ov12_022506D4
 .public BattleSystem_ApplyTypeChart
-.public ov12_02252054
+.public BattleSystem_CalcEffectiveness
 .public CheckAbilityActive
 .public CalculateTypeEffectiveness
 .public GetBattlerAbility
@@ -238,8 +238,8 @@
 .public BattleController_TryEmitExitRecording
 .public ov12_022581D4
 .public ov12_022582B8
-.public ov12_02258800
-.public ov12_02258BB4
+.public BattleAI_PostKOSwitchIn
+.public Move_CalcVariableDamageType
 .public ov12_02258D74
 .public ov12_02258DB0
 .public ov12_02258E54

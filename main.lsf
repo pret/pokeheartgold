@@ -620,7 +620,7 @@ Overlay OVY_10
 {
     After OVY_6
     Object src/battle/trainer_ai.o
-    Object asm/overlay_10_trainer_ai.o
+    Object asm/trainer_ai_data.o
 }
 Overlay OVY_11
 {

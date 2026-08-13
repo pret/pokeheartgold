@@ -18,7 +18,7 @@
 .public BattleSystem_GetPartySize
 .public BattleSystem_GetPartyMon
 .public BattleSystem_GetBattlerFromBattlerType
-.public ov12_0223AB0C
+.public BattleSystem_GetBattlerType
 .public BattleSystem_GetBattlerSide
 .public BattleSystem_GetBattlerIdPartner
 .public BattleSystem_Random
@@ -26,7 +26,7 @@
 .public CheckSortSpeed
 .public StruggleCheck
 .public BattleSystem_ApplyTypeChart
-.public ov12_02252054
+.public BattleSystem_CalcEffectiveness
 .public CheckAbilityActive
 .public CurseUserIsGhost
 .public GetBattlerAbility
@@ -39,7 +39,7 @@
 .public CalcMoveDamage
 .public GetItemVar
 .public ov12_02258800
-.public ov12_02258BB4
+.public Move_CalcVariableDamageType
 .public AICmd_IfRandomLessThan
 .public AICmd_IfRandomGreaterThan
 .public AICmd_IfRandomEqualTo
@@ -152,3 +152,12 @@
 .public AICmd_IfTargetIsPartner
 .public AICmd_IfActivatedFlashFire
 .public AICmd_LoadAbility
+.public TrainerAI_MoveType
+.public AI_PerishSongKO
+.public AI_CannotDamageWonderGuard
+.public AI_OnlyIneffectiveMoves
+.public AI_HasAbsorbAbilityInParty
+.public AI_HasPartyMemberWithSuperEffectiveMove
+.public AI_IsAsleepWithNaturalCure
+.public AI_IsHeavilyStatBoosted
+.public TrainerAI_ShouldSwitch

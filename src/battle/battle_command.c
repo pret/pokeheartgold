@@ -1369,7 +1369,7 @@ BOOL BtlCmd_WaitMonSelection(BattleSystem *battleSystem, BattleContext *ctx) {
 
     for (battlerId = 0; battlerId < maxBattlers; battlerId++) {
         if ((ctx->unk_13C[battlerId] & 1) && BattleBuffer_GetNext(ctx, battlerId)) {
-            ctx->unk_21A0[battlerId] = ctx->battleBuffer[battlerId][0] - 1;
+            ctx->switchedPartySlot[battlerId] = ctx->battleBuffer[battlerId][0] - 1;
             switchCnt--;
             if (!(ctx->battleStatus2 & (MaskOfFlagNo(battlerId) << BATTLE_STATUS_FAINTED_SHIFT))) {
                 ctx->battleStatus2 |= (MaskOfFlagNo(battlerId) << BATTLE_STATUS_FAINTED_SHIFT);
@@ -1414,8 +1414,8 @@ BOOL BtlCmd_SwitchAndUpdateMon(BattleSystem *battleSystem, BattleContext *ctx) {
 
     ctx->unk_13C[battlerId] &= ~1;
     ctx->switchInFlag &= (MaskOfFlagNo(battlerId) ^ ~0);
-    ctx->selectedMonIndex[battlerId] = ctx->unk_21A0[battlerId];
-    ctx->unk_21A0[battlerId] = 6;
+    ctx->selectedMonIndex[battlerId] = ctx->switchedPartySlot[battlerId];
+    ctx->switchedPartySlot[battlerId] = 6;
 
     BattleSystem_GetBattleMon(battleSystem, ctx, battlerId, ctx->selectedMonIndex[battlerId]);
     ov12_02256F78(battleSystem, ctx, battlerId, ctx->selectedMonIndex[battlerId]);
@@ -3241,7 +3241,7 @@ BOOL BtlCmd_TryWhirlwind(BattleSystem *battleSystem, BattleContext *ctx) {
             } while (GetMonData(mon, MON_DATA_SPECIES, 0) == SPECIES_NONE
                 || GetMonData(mon, MON_DATA_IS_EGG, 0) == TRUE
                 || GetMonData(mon, MON_DATA_HP, 0) == 0);
-            ctx->unk_21A0[ctx->battlerIdTarget] = monIndex;
+            ctx->switchedPartySlot[ctx->battlerIdTarget] = monIndex;
         } else {
             BattleScriptIncrementPointer(ctx, adrs);
         }
@@ -5019,7 +5019,7 @@ BOOL BtlCmd_WaitPokemonMenuResult(BattleSystem *battleSystem, BattleContext *ctx
         if (selection == 255) {
             BattleScriptIncrementPointer(ctx, adrs);
         } else {
-            ctx->unk_21A0[0] = selection - 1;
+            ctx->switchedPartySlot[0] = selection - 1;
         }
     }
 
@@ -5401,7 +5401,7 @@ BOOL BtlCmd_CheckWhiteout(BattleSystem *battleSystem, BattleContext *ctx) {
             }
         }
 
-        if ((battleType == 75 || battleType == 74) && BattleSystem_GetBattlerSide(battleSystem, battlerId) == 0 && ov12_0223AB0C(battleSystem, battlerId) == 2) {
+        if ((battleType == 75 || battleType == 74) && BattleSystem_GetBattlerSide(battleSystem, battlerId) == 0 && BattleSystem_GetBattlerType(battleSystem, battlerId) == 2) {
 
         } else {
             for (i = 0; i < Party_GetCount(party2); i++) {
@@ -7884,7 +7884,7 @@ static void InitBattleMsg(BattleSystem *battleSystem, BattleContext *ctx, Battle
 static int ov12_022480C0(BattleSystem *battleSystem, BattleContext *ctx, int side) {
     int battlerID = BattleSystem_GetBattlerIDBySide(battleSystem, ctx, side);
     if (side == BATTLER_CATEGORY_SWITCHED_MON_AFTER) {
-        return battlerID | (ctx->unk_21A0[battlerID] << 8);
+        return battlerID | (ctx->switchedPartySlot[battlerID] << 8);
     } else {
         return battlerID | (ctx->selectedMonIndex[battlerID] << 8);
     }

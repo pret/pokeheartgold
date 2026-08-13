@@ -9,6 +9,7 @@
 #include "constants/items.h"
 #include "constants/message_tags.h"
 #include "constants/move_effects.h"
+#include "constants/battle/trainer_ai.h"
 
 #include "battle/battle_022378C0.h"
 #include "battle/battle_command.h"
@@ -513,7 +514,7 @@ static void BattleControllerPlayer_SelectionScreenInput(BattleSystem *battleSyst
 
             v8 = BattlerCanSwitch(battleSystem, ctx, battlerId);
 
-            if (((ov12_0223AB0C(battleSystem, battlerId) == 4) || (ov12_0223AB0C(battleSystem, battlerId) == 5)) && ((battleType == (BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLES)) || (battleType == (BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_LINK)) || (battleType == (BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_FRONTIER)) || ((battleType == (BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_TAG)) && (ov12_0223AB0C(battleSystem, battlerId) == 4)))) {
+            if (((BattleSystem_GetBattlerType(battleSystem, battlerId) == 4) || (BattleSystem_GetBattlerType(battleSystem, battlerId) == 5)) && ((battleType == (BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLES)) || (battleType == (BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_LINK)) || (battleType == (BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_FRONTIER)) || ((battleType == (BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_TAG)) && (BattleSystem_GetBattlerType(battleSystem, battlerId) == 4)))) {
                 partnerId = BattleSystem_GetBattlerIdPartner(battleSystem, battlerId);
 
                 if (ctx->playerActions[partnerId].command == CONTROLLER_COMMAND_POKEMON_INPUT) {
@@ -530,7 +531,7 @@ static void BattleControllerPlayer_SelectionScreenInput(BattleSystem *battleSyst
                 ctx->unk_0[battlerId] = SSI_STATE_SELECT_COMMAND_INIT;
             } else if (BattleBuffer_GetNext(ctx, battlerId)) {
                 ctx->playerActions[battlerId].unk8 = ctx->battleBuffer[battlerId][0] - 1;
-                ctx->unk_21A0[battlerId] = ctx->battleBuffer[battlerId][0] - 1;
+                ctx->switchedPartySlot[battlerId] = ctx->battleBuffer[battlerId][0] - 1;
                 ctx->unk_0[battlerId] = SSI_STATE_13;
             }
             break;
@@ -627,7 +628,7 @@ static void BattleControllerPlayer_SelectionScreenInput(BattleSystem *battleSyst
 
         for (battlerId = 0; battlerId < battlersMax; battlerId++) {
             if (ctx->playerActions[battlerId].command == CONTROLLER_COMMAND_POKEMON_INPUT) {
-                ov12_02256F78(battleSystem, ctx, battlerId, ctx->unk_21A0[battlerId]);
+                ov12_02256F78(battleSystem, ctx, battlerId, ctx->switchedPartySlot[battlerId]);
             }
         }
     }
@@ -1716,30 +1717,30 @@ static void BattleControllerPlayer_ItemInput(BattleSystem *battleSystem, BattleC
     item = (BattleItem *)&ctx->playerActions[ctx->battlerIdAttacker].unk8;
 
     if (BattleSystem_GetBattlerSide(battleSystem, ctx->battlerIdAttacker)) {
-        switch (ctx->trainerAIData.useItem[ctx->battlerIdAttacker >> 1]) {
-        case 0:
+        switch (ctx->trainerAIData.usedItemType[ctx->battlerIdAttacker >> 1]) {
+        case ITEM_AI_CATEGORY_FULL_RESTORE:
             script = BATTLE_SUBSCRIPT_USE_FULL_RESTORE;
             break;
-        case 1:
+        case ITEM_AI_CATEGORY_RECOVER_HP:
             script = BATTLE_SUBSCRIPT_USE_POTION;
             break;
-        case 2:
-            if ((ctx->trainerAIData.unk9F[ctx->battlerIdAttacker >> 1] & 1) && (ctx->trainerAIData.unk9F[ctx->battlerIdAttacker >> 1] & 0x3e)) {
+        case ITEM_AI_CATEGORY_RECOVER_STATUS:
+            if ((ctx->trainerAIData.usedItemCondition[ctx->battlerIdAttacker >> 1] & 1) && (ctx->trainerAIData.usedItemCondition[ctx->battlerIdAttacker >> 1] & 0x3e)) {
                 ctx->msgTemp = 6;
             } else {
-                ctx->msgTemp = LowestFlagNo(ctx->trainerAIData.unk9F[ctx->battlerIdAttacker >> 1]);
+                ctx->msgTemp = LowestFlagNo(ctx->trainerAIData.usedItemCondition[ctx->battlerIdAttacker >> 1]);
             }
             script = BATTLE_SUBSCRIPT_USE_STATUS_RECOVERY;
             break;
-        case 3:
-            ctx->msgTemp = ctx->trainerAIData.unk9F[ctx->battlerIdAttacker >> 1];
+        case ITEM_AI_CATEGORY_STAT_BOOSTER:
+            ctx->msgTemp = ctx->trainerAIData.usedItemCondition[ctx->battlerIdAttacker >> 1];
             script = BATTLE_SUBSCRIPT_USE_STAT_BOOSTER;
             break;
-        case 4:
+        case ITEM_AI_CATEGORY_GUARD_SPEC:
             script = BATTLE_SUBSCRIPT_USE_GUARD_SPEC;
             break;
         }
-        ctx->itemTemp = ctx->trainerAIData.unkA0[ctx->battlerIdAttacker >> 1];
+        ctx->itemTemp = ctx->trainerAIData.usedItem[ctx->battlerIdAttacker >> 1];
     } else {
         switch (item->page) {
         case BTLPOCKETLIST_HP_PP_RESTORE:
@@ -1894,7 +1895,7 @@ static u32 TryDisobedience(BattleSystem *battleSystem, BattleContext *ctx, int *
         return 0;
     }
 
-    if ((battleType & BATTLE_TYPE_AI) && ov12_0223AB0C(battleSystem, ctx->battlerIdAttacker) == 4) {
+    if ((battleType & BATTLE_TYPE_AI) && BattleSystem_GetBattlerType(battleSystem, ctx->battlerIdAttacker) == 4) {
         return 0;
     }
 
@@ -3501,7 +3502,7 @@ static BOOL ov12_0224D7EC(BattleSystem *battleSystem, BattleContext *ctx) {
 
     for (battlerId = 0; battlerId < maxBattlers; battlerId++) {
         if ((battleType == (BATTLE_TYPE_AI | BATTLE_TYPE_MULTI | BATTLE_TYPE_DOUBLES) || battleType == (BATTLE_TYPE_AI | BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_MULTI)) && BattleSystem_GetBattlerSide(battleSystem, battlerId) == 0) {
-            if (ov12_0223AB0C(battleSystem, battlerId) == 2 && ctx->battleMons[battlerId].hp == 0) {
+            if (BattleSystem_GetBattlerType(battleSystem, battlerId) == 2 && ctx->battleMons[battlerId].hp == 0) {
                 int hp = 0;
                 Party *party = BattleSystem_GetParty(battleSystem, battlerId);
                 BattleSystem_GetOpponentData(battleSystem, battlerId);
