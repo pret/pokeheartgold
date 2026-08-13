@@ -564,7 +564,7 @@ Overlay OVY_10
 {
     After OVY_6
     Object main.nef.p/src_battle_trainer_ai.c.o
-    Object main.nef.p/asm_overlay_10_trainer_ai.s.o
+    Object main.nef.p/asm_trainer_ai_data.s.o
 }
 Overlay OVY_11
 {

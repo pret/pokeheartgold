@@ -31,7 +31,7 @@
 .public ov12_0223A984
 .public ov12_0223A990
 .public BattleSystem_GetBattlerFromBattlerType
-.public ov12_0223AB0C
+.public BattleSystem_GetBattlerType
 .public BattleSystem_GetBattlerSide
 .public BattleSystem_GetTerrainId
 .public BattleSystem_GetBattlerIdPartner

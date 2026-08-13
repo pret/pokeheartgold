@@ -1,10 +1,13 @@
 #include "battle/trainer_ai.h"
 
 #include "battle/battle.h"
+#include "battle/battle_controller_opponent.h"
 #include "battle/battle_system.h"
 #include "battle/overlay_12_0224E4FC.h"
 
 #include "constants/abilities.h"
+#include "constants/battle_menu.h"
+#include "constants/items.h"
 #include "constants/moves.h"
 #include "constants/battle/trainer_ai.h"
 
@@ -53,19 +56,19 @@ enum AIEvalStep {
 static u8 TrainerAI_MainSingles(BattleSystem *battleSystem, BattleContext *ctx);
 static u8 TrainerAI_MainDoubles(BattleSystem *battleSystem, BattleContext *ctx);
 static void TrainerAI_EvaluateMoves(BattleSystem *battleSystem, BattleContext *ctx);
-
-int TrainerAI_MoveType(BattleSystem *battleSystem, BattleContext *ctx, int battler, int move);
-void TrainerAI_RecordLastMove(BattleSystem *battleSystem, BattleContext *ctx);
-void AIScript_PushCursor(BattleSystem *battleSystem, BattleContext *ctx, int address);
-BOOL AIScript_PopCursor(BattleSystem *battleSystem, BattleContext *ctx);
-int AIScript_Read(BattleContext *ctx);
-int AIScript_ReadOffset(BattleContext *ctx, int offset);
-void AIScript_IncrementCursor(BattleContext *ctx, int jump);
-u8 AIScript_Battler(BattleContext *ctx, u8 inBattler);
-s32 TrainerAI_CalcAllDamage(BattleSystem *battleSystem, BattleContext *ctx, int attacker, u16 *moves, s32 *damageVals, u16 heldItem, u8 *ivs, int ability, BOOL embargo, BOOL varyDamage);
-s32 TrainerAI_CalcDamage(BattleSystem *battleSystem, BattleContext *ctx, u16 move, u16 heldItem, u8 *ivs, int attacker, int ability, BOOL embargo, u8 variance);
-BOOL AI_HasSuperEffectiveMove(BattleSystem *battleSystem, BattleContext *ctx, int battler, BOOL alwaysSwitch);
+static void AIScript_PushCursor(BattleSystem *battleSystem, BattleContext *ctx, int address);
+static BOOL AIScript_PopCursor(BattleSystem *battleSystem, BattleContext *ctx);
+static void TrainerAI_RecordLastMove(BattleSystem *battleSystem, BattleContext *ctx);
+static int AIScript_Read(BattleContext *ctx);
+static int AIScript_ReadOffset(BattleContext *ctx, int offset);
+static void AIScript_IncrementCursor(BattleContext *ctx, int jump);
 static void TrainerAI_GetStats(BattleContext *ctx, int battler, int *buf1, int *buf2, int stat);
+static u8 AIScript_Battler(BattleContext *ctx, u8 inBattler);
+static s32 TrainerAI_CalcAllDamage(BattleSystem *battleSystem, BattleContext *ctx, int attacker, u16 *moves, s32 *damageVals, u16 heldItem, u8 *ivs, int ability, BOOL embargo, BOOL varyDamage);
+static s32 TrainerAI_CalcDamage(BattleSystem *battleSystem, BattleContext *ctx, u16 move, u16 heldItem, u8 *ivs, int attacker, int ability, BOOL embargo, u8 variance);
+static int TrainerAI_MoveType(BattleSystem *battleSystem, BattleContext *ctx, int battler, int move);
+static BOOL AI_HasSuperEffectiveMove(BattleSystem *battleSystem, BattleContext *ctx, int battler, BOOL alwaysSwitch);
+static BOOL TrainerAI_ShouldUseItem(BattleSystem *battleSystem, int battler);
 
 extern const AICommandFunc sAICommandTable[];
 
@@ -350,7 +353,6 @@ static void TrainerAI_EvaluateMoves(BattleSystem *battleSystem, BattleContext *c
     }
 }
 
-// Make static
 void AICmd_IfRandomLessThan(BattleSystem *battleSystem, BattleContext *ctx);
 void AICmd_IfRandomLessThan(BattleSystem *battleSystem, BattleContext *ctx) {
     AIScript_IncrementCursor(ctx, 1);
@@ -363,7 +365,6 @@ void AICmd_IfRandomLessThan(BattleSystem *battleSystem, BattleContext *ctx) {
     }
 }
 
-// Make static
 void AICmd_IfRandomGreaterThan(BattleSystem *battleSystem, BattleContext *ctx);
 void AICmd_IfRandomGreaterThan(BattleSystem *battleSystem, BattleContext *ctx) {
     AIScript_IncrementCursor(ctx, 1);
@@ -376,7 +377,6 @@ void AICmd_IfRandomGreaterThan(BattleSystem *battleSystem, BattleContext *ctx) {
     }
 }
 
-// Make static
 void AICmd_IfRandomEqualTo(BattleSystem *battleSystem, BattleContext *ctx);
 void AICmd_IfRandomEqualTo(BattleSystem *battleSystem, BattleContext *ctx) {
     AIScript_IncrementCursor(ctx, 1);
@@ -389,7 +389,6 @@ void AICmd_IfRandomEqualTo(BattleSystem *battleSystem, BattleContext *ctx) {
     }
 }
 
-// Make static
 void AICmd_IfRandomNotEqualTo(BattleSystem *battleSystem, BattleContext *ctx);
 void AICmd_IfRandomNotEqualTo(BattleSystem *battleSystem, BattleContext *ctx) {
     AIScript_IncrementCursor(ctx, 1);
@@ -402,7 +401,6 @@ void AICmd_IfRandomNotEqualTo(BattleSystem *battleSystem, BattleContext *ctx) {
     }
 }
 
-// Make static
 void AICmd_AddToMoveScore(BattleSystem *battleSystem, BattleContext *ctx);
 void AICmd_AddToMoveScore(BattleSystem *battleSystem, BattleContext *ctx) {
     AIScript_IncrementCursor(ctx, 1);
@@ -1746,7 +1744,7 @@ void AICmd_LoadHeldItemEffect(BattleSystem *battleSystem, BattleContext *ctx) {
     u8 battler = AIScript_Battler(ctx, inBattler);
 
     if (ctx->trainerAIData.attacker != battler) {
-        ctx->trainerAIData.calcTemp = GetItemVar(ctx, ctx->trainerAIData.heldItems[battler], ITEMATTR_HOLD_EFFECT); // BattleSystem_GetItemData in pokeplatinum
+        ctx->trainerAIData.calcTemp = GetItemVar(ctx, ctx->trainerAIData.heldItems[battler], ITEMATTR_HOLD_EFFECT); // GetItemVar in pokeplatinum
     } else {
         ctx->trainerAIData.calcTemp = GetItemVar(ctx, ctx->battleMons[battler].item, ITEMATTR_HOLD_EFFECT);
     }
@@ -2502,4 +2500,1538 @@ void AICmd_LoadAbility(BattleSystem *battleSystem, BattleContext *ctx) {
     u8 battler = AIScript_Battler(ctx, inBattler);
 
     ctx->trainerAIData.calcTemp = GetBattlerAbility(ctx, battler);
+}
+
+/**
+ * @brief Push an address for the AI script onto the cursor stack.
+ *
+ * @param battleSystem
+ * @param ctx
+ * @param offset    Distance to jump ahead after pushing the cursor.
+ */
+static void AIScript_PushCursor(BattleSystem *battleSystem, BattleContext *ctx, int offset) {
+    ctx->trainerAIData.scriptStackPointer[ctx->trainerAIData.scriptStackSize++] = ctx->aiScriptCursor;
+    AIScript_IncrementCursor(ctx, offset);
+
+    GF_ASSERT(ctx->trainerAIData.scriptStackSize <= AI_MAX_STACK_SIZE);
+}
+
+/**
+ * @brief Pop the top element of the cursor stack into the cursor.
+ *
+ * @param battleSystem
+ * @param ctx
+ * @return TRUE if the cursor stack had an element to be popped; FALSE
+ * if it was empty.
+ */
+static BOOL AIScript_PopCursor(BattleSystem *battleSystem, BattleContext *ctx) {
+    if (ctx->trainerAIData.scriptStackSize) {
+        ctx->trainerAIData.scriptStackSize--;
+        ctx->aiScriptCursor = ctx->trainerAIData.scriptStackPointer[ctx->trainerAIData.scriptStackSize];
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
+/**
+ * @brief Record the last move used by an active battler, if it is not
+ * already known.
+ *
+ * @param battleSystem
+ * @param ctx
+ */
+static void TrainerAI_RecordLastMove(BattleSystem *battleSystem, BattleContext *ctx) {
+    for (int i = 0; i < MAX_MON_MOVES; i++) {
+        if (ctx->trainerAIData.moves[ctx->trainerAIData.defender][i] == ctx->moveNoBattlerPrev[ctx->trainerAIData.defender]) {
+            break;
+        }
+
+        if (ctx->trainerAIData.moves[ctx->trainerAIData.defender][i] == MOVE_NONE) {
+            ctx->trainerAIData.moves[ctx->trainerAIData.defender][i] = ctx->moveNoBattlerPrev[ctx->trainerAIData.defender];
+            break;
+        }
+    }
+}
+
+/**
+ * @brief Read a word from the AI script at the current cursor position,
+ * then increment the cursor.
+ *
+ * @param ctx
+ * @return Current word for the AI script under the cursor.
+ */
+static int AIScript_Read(BattleContext *ctx) {
+    int word = ctx->aiScriptTemp[ctx->aiScriptCursor];
+    ctx->aiScriptCursor++;
+
+    return word;
+}
+
+/**
+ * @brief Read a word from the AI script at the current cursor position
+ * offset by a specified value, then increment the cursor.
+ *
+ * @param ctx
+ * @return Current word for the AI script under the cursor + an offset.
+ */
+static int AIScript_ReadOffset(BattleContext *ctx, int offset) {
+    return ctx->aiScriptTemp[ctx->aiScriptCursor + offset];
+}
+
+/**
+ * @brief Increment the cursor for the AI script by a fixed amount.
+ *
+ * @param ctx
+ * @param i         Amount by which to increment the script cursor.
+ */
+static void AIScript_IncrementCursor(BattleContext *ctx, int i) {
+    ctx->aiScriptCursor += i;
+}
+
+/**
+ * @brief Determine the true battler ID for an input battler value as
+ * recognized by the AI script.
+ *
+ * @param ctx
+ * @param inBattler The input battler value.
+ * @return True battler ID for the input battler value.
+ */
+static u8 AIScript_Battler(BattleContext *ctx, u8 inBattler) {
+    // The order of this switch statement must be maintained to match.
+    switch (inBattler) {
+    case AI_BATTLER_ATTACKER:
+        return ctx->trainerAIData.attacker;
+
+    case AI_BATTLER_DEFENDER:
+    default:
+        return ctx->trainerAIData.defender;
+
+    case AI_BATTLER_ATTACKER_PARTNER:
+        return ctx->trainerAIData.attacker ^ 2;
+
+    case AI_BATTLER_DEFENDER_PARTNER:
+        return ctx->trainerAIData.defender ^ 2;
+    }
+}
+
+/**
+ * @brief Calculate the damage that will be done by all of an attacker's moves.
+ *
+ * @param battleSystem
+ * @param ctx
+ * @param attacker      The attacker's battler ID.
+ * @param moves         The attacker's moveset.
+ * @param damageVals    Out-param for all damage values as computed by the routine.
+ * @param heldItem      The attacker's held item.
+ * @param ivs           The attacker's IVs. Used for calculating Hidden Power params.
+ * @param ability       The attacker's ability.
+ * @param embargoTurns  Number of turns that the attacker is still under Embargo.
+ * @param varyDamage    If TRUE, apply random damage variance to each calculation.
+ * @return              The highest damage value among all considered moves.
+ */
+static s32 TrainerAI_CalcAllDamage(BattleSystem *battleSystem, BattleContext *ctx, int attacker, u16 *moves, s32 *damageVals, u16 heldItem, u8 *ivs, int ability, int embargoTurns, BOOL varyDamage) {
+    int i;
+    s32 maxDamage;
+    u8 damageRoll;
+
+    maxDamage = 0;
+
+    // Step 1: Compute the true damage of a given move.
+    for (i = 0; i < MAX_MON_MOVES; i++) {
+        int noDamageCalcIndex = 0;
+        do {
+            if (ctx->trainerAIData.moveData[moves[i]].effect == sNoDamageCalcMoveEffects[noDamageCalcIndex]) {
+                break;
+            }
+            noDamageCalcIndex++;
+        } while (sNoDamageCalcMoveEffects[noDamageCalcIndex] != 0xFFFF);
+
+        int altPowerIndex = 0;
+        do {
+            if (ctx->trainerAIData.moveData[moves[i]].effect == sAltPowerMoveEffects[altPowerIndex]) {
+                break;
+            }
+            altPowerIndex++;
+        } while (sAltPowerMoveEffects[altPowerIndex] != 0xFFFF);
+
+        if (sAltPowerMoveEffects[altPowerIndex] != 0xFFFF
+            || (moves[i] != MOVE_NONE && sNoDamageCalcMoveEffects[noDamageCalcIndex] == 0xFFFF && ctx->trainerAIData.moveData[moves[i]].power > 1)) {
+            if (varyDamage == TRUE) {
+                damageRoll = ctx->trainerAIData.moveDamageRolls[i];
+            } else {
+                damageRoll = 100;
+            }
+
+            damageVals[i] = TrainerAI_CalcDamage(battleSystem, ctx, moves[i], heldItem, ivs, attacker, ability, embargoTurns, damageRoll);
+        } else {
+            damageVals[i] = 0;
+        }
+    }
+
+    // Step 2: Determine the maximum-damage of all moves.
+    for (i = 0; i < MAX_MON_MOVES; i++) {
+        if (maxDamage < damageVals[i]) {
+            maxDamage = damageVals[i];
+        }
+    }
+
+    return maxDamage;
+}
+
+enum WeightToPowerFields {
+    WEIGHT_TO_POWER_WEIGHT,
+    WEIGHT_TO_POWER_POWER,
+    WEIGHT_TO_POWER_FIELDS
+};
+
+extern const u16 sWeightToPower[][WEIGHT_TO_POWER_FIELDS]; /*= {
+    { 100, 20 },
+    { 250, 40 },
+    { 500, 60 },
+    { 1000, 80 },
+    { 2000, 100 },
+    { 0xFFFF, 0xFFFF },
+};*/
+
+/**
+ * @brief Damage calculation routine visible to the AI.
+ *
+ * @param battleSystem
+ * @param ctx
+ * @param move          The move being used
+ * @param heldItem      The attacker's held item.
+ * @param ivs           The attacker's IVs. Used for Hidden Power calculation.
+ * @param attacker      The attacker's ID.
+ * @param ability       The attacker's ability.
+ * @param embargoTurns  Number of turns that the attacker is still under Embargo.
+ * @param variance      Variance factor applied to the damage value. This is presumed
+ *                      to be a value in the range [85..100].
+ * @return Calculated damage value.
+ */
+static s32 TrainerAI_CalcDamage(BattleSystem *battleSystem, BattleContext *ctx, u16 move, u16 heldItem, u8 *ivs, int attacker, int ability, int embargoTurns, u8 variance)
+{
+    // must declare C89-style to match
+    int defendingSide;
+    int power;
+    int type;
+    u32 effectivenessFlags;
+    s32 damage;
+
+    defendingSide = BattleSystem_GetBattlerSide(battleSystem, ctx->trainerAIData.defender);
+    damage = 0;
+    power = 0;
+    type = 0;
+    effectivenessFlags = 0;
+
+    switch (move) {
+    case MOVE_NATURAL_GIFT:
+        if (ability != ABILITY_KLUTZ && embargoTurns == 0) {
+            power = GetItemVar(ctx, heldItem, ITEMATTR_NATURAL_GIFT_POWER);
+
+            if (power) {
+                type = GetItemVar(ctx, heldItem, ITEMATTR_NATURAL_GIFT_TYPE);
+            } else {
+                type = TYPE_NORMAL;
+            }
+        }
+        break;
+
+    case MOVE_JUDGMENT:
+        if (ability != ABILITY_KLUTZ && embargoTurns == 0) {
+            power = 0;
+
+            switch (GetItemVar(ctx, heldItem, ITEMATTR_HOLD_EFFECT)) {
+            case HOLD_EFFECT_ARCEUS_FIGHTING:
+                type = TYPE_FIGHTING;
+                break;
+
+            case HOLD_EFFECT_ARCEUS_FLYING:
+                type = TYPE_FLYING;
+                break;
+
+            case HOLD_EFFECT_ARCEUS_POISON:
+                type = TYPE_POISON;
+                break;
+
+            case HOLD_EFFECT_ARCEUS_GROUND:
+                type = TYPE_GROUND;
+                break;
+
+            case HOLD_EFFECT_ARCEUS_ROCK:
+                type = TYPE_ROCK;
+                break;
+
+            case HOLD_EFFECT_ARCEUS_BUG:
+                type = TYPE_BUG;
+                break;
+
+            case HOLD_EFFECT_ARCEUS_GHOST:
+                type = TYPE_GHOST;
+                break;
+
+            case HOLD_EFFECT_ARCEUS_STEEL:
+                type = TYPE_STEEL;
+                break;
+
+            case HOLD_EFFECT_ARCEUS_FIRE:
+                type = TYPE_FIRE;
+                break;
+
+            case HOLD_EFFECT_ARCEUS_WATER:
+                type = TYPE_WATER;
+                break;
+
+            case HOLD_EFFECT_ARCEUS_GRASS:
+                type = TYPE_GRASS;
+                break;
+
+            case HOLD_EFFECT_ARCEUS_ELECTRIC:
+                type = TYPE_ELECTRIC;
+                break;
+
+            case HOLD_EFFECT_ARCEUS_PSYCHIC:
+                type = TYPE_PSYCHIC;
+                break;
+
+            case HOLD_EFFECT_ARCEUS_ICE:
+                type = TYPE_ICE;
+                break;
+
+            case HOLD_EFFECT_ARCEUS_DRAGON:
+                type = TYPE_DRAGON;
+                break;
+
+            case HOLD_EFFECT_ARCEUS_DARK:
+                type = TYPE_DARK;
+                break;
+
+            default:
+                type = TYPE_NORMAL;
+                break;
+            }
+        }
+        break;
+
+    case MOVE_HIDDEN_POWER:
+        power = ((ivs[STAT_HP] & 2) >> 1)
+            | ((ivs[STAT_ATK] & 2) >> 0)
+            | ((ivs[STAT_DEF] & 2) << 1)
+            | ((ivs[STAT_SPEED] & 2) << 2)
+            | ((ivs[STAT_SPATK] & 2) << 3)
+            | ((ivs[STAT_SPDEF] & 2) << 4);
+        type = ((ivs[STAT_HP] & 1) >> 0)
+            | ((ivs[STAT_ATK] & 1) << 1)
+            | ((ivs[STAT_DEF] & 1) << 2)
+            | ((ivs[STAT_SPEED] & 1) << 3)
+            | ((ivs[STAT_SPATK] & 1) << 4)
+            | ((ivs[STAT_SPDEF] & 1) << 5);
+
+        power = power * 40 / 63 + 30;
+        type = (type * 15 / 63) + 1;
+
+        if (type >= TYPE_MYSTERY) {
+            type++;
+        }
+        break;
+
+    case MOVE_GYRO_BALL:
+        power = 1 + 25 * ctx->effectiveSpeed[ctx->trainerAIData.defender] / ctx->effectiveSpeed[attacker];
+
+        if (power > 150) {
+            power = 150;
+        }
+
+        type = TYPE_NORMAL; // Default to the base move type.
+        break;
+
+    case MOVE_DRAGON_RAGE:
+        damage = 40;
+        break;
+
+    case MOVE_SEISMIC_TOSS:
+    case MOVE_NIGHT_SHADE:
+        damage = ctx->battleMons[attacker].level;
+        break;
+
+    case MOVE_PSYWAVE:
+        damage = ctx->battleMons[attacker].level * (BattleSystem_Random(battleSystem) % 11 + 5) / 10;
+        break;
+
+    case MOVE_RETURN:
+        power = ctx->battleMons[attacker].friendship * 10 / 25;
+        type = TYPE_NORMAL;
+        break;
+
+    case MOVE_FRUSTRATION:
+        power = (255 - ctx->battleMons[attacker].friendship) * 10 / 25;
+        type = TYPE_NORMAL;
+        break;
+
+    case MOVE_MAGNITUDE:
+        // Simulate a Magnitude roll.
+        power = BattleSystem_Random(battleSystem) % 100;
+
+        if (power < 5) {
+            power = 10;
+        } else if (power < 15) {
+            power = 30;
+        } else if (power < 35) {
+            power = 50;
+        } else if (power < 65) {
+            power = 70;
+        } else if (power < 85) {
+            power = 90;
+        } else if (power < 95) {
+            power = 110;
+        } else {
+            power = 150;
+        }
+
+        type = TYPE_NORMAL;
+        break;
+
+    case MOVE_SONIC_BOOM:
+        damage = 20;
+        break;
+
+    case MOVE_LOW_KICK:
+    case MOVE_GRASS_KNOT: {
+        int i = 0;
+        do {
+            if (sWeightToPower[i][WEIGHT_TO_POWER_WEIGHT] >= ctx->battleMons[ctx->trainerAIData.defender].weight) {
+                break;
+            }
+            i++;
+        } while (sWeightToPower[i][WEIGHT_TO_POWER_WEIGHT] != 0xFFFF);
+
+        if (sWeightToPower[i][WEIGHT_TO_POWER_WEIGHT] != 0xFFFF) {
+            power = sWeightToPower[i][WEIGHT_TO_POWER_POWER];
+        } else {
+            power = 120;
+        }
+
+        break;
+    }
+
+    default:
+        // Move has no special calculation logic; default to the basic calc.
+        power = 0;
+        type = TYPE_NORMAL;
+        break;
+    }
+
+    if (damage == 0) {
+        damage = CalcMoveDamage(battleSystem, // BattleSystem_CalcMoveDamage in pokeplatinum.
+            ctx,
+            move,
+            ctx->fieldSideConditionFlags[defendingSide],
+            ctx->fieldCondition,
+            power,
+            type,
+            attacker,
+            ctx->trainerAIData.defender,
+            1);
+    } else {
+        ctx->battleStatus |= BATTLE_STATUS_IGNORE_TYPE_EFFECTIVENESS;
+    }
+
+    damage = BattleSystem_ApplyTypeChart(battleSystem,
+        ctx,
+        move,
+        type,
+        attacker,
+        ctx->trainerAIData.defender,
+        damage,
+        &effectivenessFlags);
+    ctx->battleStatus &= ~BATTLE_STATUS_IGNORE_TYPE_EFFECTIVENESS;
+
+    if (effectivenessFlags & MOVE_STATUS_IMMUNE) {
+        damage = 0;
+    } else {
+        damage = DamageDivide(damage * variance, 100); // BattleSystem_Divide in pokeplatinum.
+    }
+
+    return damage;
+}
+
+/**
+ * @brief Compute the type of a move. Variable-type moves will have their type
+ * computed according to the usual routines (i.e., Natural Gift, Judgment,
+ * Hidden Power, and Weather Ball). Moves without a variable typing will be
+ * returned as TYPE_NORMAL.
+ *
+ * @param battleSystem
+ * @param ctx
+ * @param battler   The battler using the move.
+ * @param move      The move being used.
+ * @return The type of the move.
+ */
+static int TrainerAI_MoveType(BattleSystem *battleSystem, BattleContext *ctx, int battler, int move) {
+    int result;
+
+    switch (move) {
+    case MOVE_NATURAL_GIFT:
+        result = GetNaturalGiftType(ctx, battler);
+        break;
+
+    case MOVE_JUDGMENT:
+        switch (GetBattlerHeldItemEffect(ctx, battler)) {
+        case HOLD_EFFECT_ARCEUS_FIGHTING:
+            result = TYPE_FIGHTING;
+            break;
+
+        case HOLD_EFFECT_ARCEUS_FLYING:
+            result = TYPE_FLYING;
+            break;
+
+        case HOLD_EFFECT_ARCEUS_POISON:
+            result = TYPE_POISON;
+            break;
+
+        case HOLD_EFFECT_ARCEUS_GROUND:
+            result = TYPE_GROUND;
+            break;
+
+        case HOLD_EFFECT_ARCEUS_ROCK:
+            result = TYPE_ROCK;
+            break;
+
+        case HOLD_EFFECT_ARCEUS_BUG:
+            result = TYPE_BUG;
+            break;
+
+        case HOLD_EFFECT_ARCEUS_GHOST:
+            result = TYPE_GHOST;
+            break;
+
+        case HOLD_EFFECT_ARCEUS_STEEL:
+            result = TYPE_STEEL;
+            break;
+
+        case HOLD_EFFECT_ARCEUS_FIRE:
+            result = TYPE_FIRE;
+            break;
+
+        case HOLD_EFFECT_ARCEUS_WATER:
+            result = TYPE_WATER;
+            break;
+
+        case HOLD_EFFECT_ARCEUS_GRASS:
+            result = TYPE_GRASS;
+            break;
+
+        case HOLD_EFFECT_ARCEUS_ELECTRIC:
+            result = TYPE_ELECTRIC;
+            break;
+
+        case HOLD_EFFECT_ARCEUS_PSYCHIC:
+            result = TYPE_PSYCHIC;
+            break;
+
+        case HOLD_EFFECT_ARCEUS_ICE:
+            result = TYPE_ICE;
+            break;
+
+        case HOLD_EFFECT_ARCEUS_DRAGON:
+            result = TYPE_DRAGON;
+            break;
+
+        case HOLD_EFFECT_ARCEUS_DARK:
+            result = TYPE_DARK;
+            break;
+
+        default:
+            result = TYPE_NORMAL;
+            break;
+        }
+        break;
+
+    case MOVE_HIDDEN_POWER:
+        result = ((ctx->battleMons[battler].hpIV & 1) >> 0)
+            | ((ctx->battleMons[battler].atkIV & 1) << 1)
+            | ((ctx->battleMons[battler].defIV & 1) << 2)
+            | ((ctx->battleMons[battler].speedIV & 1) << 3)
+            | ((ctx->battleMons[battler].spAtkIV & 1) << 4)
+            | ((ctx->battleMons[battler].spDefIV & 1) << 5);
+        result = (result * 15 / 63) + 1;
+
+        if (result >= TYPE_MYSTERY) {
+            result++;
+        }
+        break;
+
+    case MOVE_WEATHER_BALL:
+        if (CheckAbilityActive(battleSystem, ctx, CHECK_ABILITY_ALL_HP, 0, ABILITY_CLOUD_NINE) == FALSE
+        && CheckAbilityActive(battleSystem, ctx, CHECK_ABILITY_ALL_HP, 0, ABILITY_AIR_LOCK) == FALSE
+        && (ctx->fieldCondition & FIELD_CONDITION_WEATHER)) {
+            if (ctx->fieldCondition & FIELD_CONDITION_RAIN_ALL) {
+                result = TYPE_WATER;
+            }
+
+            if (ctx->fieldCondition & FIELD_CONDITION_SANDSTORM_ALL) {
+                result = TYPE_ROCK;
+            }
+
+            if (ctx->fieldCondition & FIELD_CONDITION_SUN_ALL) {
+                result = TYPE_FIRE;
+            }
+
+            if (ctx->fieldCondition & FIELD_CONDITION_HAIL_ALL) {
+                result = TYPE_ICE;
+            }
+        }
+        break;
+
+    default:
+        result = TYPE_NORMAL;
+        break;
+    }
+
+    return result;
+}
+
+/**
+ * @brief Check if Perish Song is active on a battler and the battler should
+ * faint at the end of the turn. If so, treat the next switch as post-KO switch
+ * AI.
+ *
+ * This routine is bugged; it functionally does nothing. The Perish Song turn
+ * count decrements at the end of the turn, so the AI never sees that it WILL
+ * die to Perish Song.
+ *
+ * @param ctx
+ * @param battler   The AI's battler.
+ * @return TRUE if the AI has a switch to make, FALSE otherwise.
+ */
+BOOL AI_PerishSongKO(BattleContext *ctx, int battler);
+BOOL AI_PerishSongKO(BattleContext *ctx, int battler) {
+    if ((ctx->battleMons[battler].moveEffectFlags & MOVE_EFFECT_FLAG_PERISH_SONG)
+        && ctx->battleMons[battler].moveEffectData.perishSongTurns == 0) {
+        ctx->aiSwitchedPartySlot[battler] = 6;
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
+/**
+ * @brief Check if an AI's battler cannot damage the opponent's Pokemon due to
+ * Wonder Guard. If so, check for any living party member that can deal damage
+ * to that Pokemon, and switch to that mon 66% of the time.
+ *
+ * This routine does NOT apply to double-battles.
+ *
+ * @param battleSystem
+ * @param ctx
+ * @param battler   The AI's battler.
+ * @return TRUE if the AI has a switch to make, FALSE otherwise.
+ */
+BOOL AI_CannotDamageWonderGuard(BattleSystem *battleSystem, BattleContext *ctx, int battler);
+BOOL AI_CannotDamageWonderGuard(BattleSystem *battleSystem, BattleContext *ctx, int battler) {
+    int i, j;
+    u16 move;
+    int moveType;
+    u32 effectiveness;
+    Pokemon *mon;
+
+    if (BattleSystem_GetBattleType(battleSystem) & BATTLE_TYPE_DOUBLES) {
+        return FALSE;
+    }
+
+    if (ctx->battleMons[battler ^ 1].ability == ABILITY_WONDER_GUARD) { // battler ^ 1 is BATTLER_OPP(battler) in pokeplatinum.
+        // Check if we have a super-effective move against the opponent.
+        for (i = 0; i < MAX_MON_MOVES; i++) {
+            move = ctx->battleMons[battler].moves[i];
+            moveType = TrainerAI_MoveType(battleSystem, ctx, battler, move);
+
+            if (move) {
+                effectiveness = 0;
+                BattleSystem_ApplyTypeChart(battleSystem, ctx, move, moveType, battler, battler ^ 1, 0, &effectiveness);
+
+                if (effectiveness & MOVE_STATUS_SUPER_EFFECTIVE) {
+                    return FALSE;
+                }
+            }
+        }
+
+        // If we don't, check if any of our party members have a super-effective move
+        for (i = 0; i < BattleSystem_GetPartySize(battleSystem, battler); i++) {
+            mon = BattleSystem_GetPartyMon(battleSystem, battler, i);
+
+            if (GetMonData(mon, MON_DATA_HP, NULL) != 0
+                && GetMonData(mon, MON_DATA_SPECIES_OR_EGG, NULL) != SPECIES_NONE
+                && GetMonData(mon, MON_DATA_SPECIES_OR_EGG, NULL) != SPECIES_EGG
+                && i != ctx->selectedMonIndex[battler]) {
+                for (j = 0; j < MAX_MON_MOVES; j++) {
+                    move = GetMonData(mon, MON_DATA_MOVE1 + j, NULL);
+                    moveType = Move_CalcVariableDamageType(battleSystem, ctx, mon, move);
+
+                    if (move) {
+                        effectiveness = 0;
+                        BattleSystem_CalcEffectiveness(ctx,
+                            move,
+                            moveType,
+                            GetMonData(mon, MON_DATA_ABILITY, NULL),
+                            GetBattlerAbility(ctx, battler ^ 1),
+                            GetBattlerHeldItemEffect(ctx, battler ^ 1),
+                            GetBattlerVar(ctx, battler ^ 1, BMON_DATA_TYPE_1, NULL),
+                            GetBattlerVar(ctx, battler ^ 1, BMON_DATA_TYPE_2, NULL),
+                            &effectiveness);
+
+                        // If this party member has a super-effective move, switch 2/3 of the time.
+                        if ((effectiveness & MOVE_STATUS_SUPER_EFFECTIVE) && BattleSystem_Random(battleSystem) % 3 < 2) {
+                            ctx->aiSwitchedPartySlot[battler] = i;
+                            return TRUE;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    return FALSE;
+}
+
+/**
+ * @brief Check if an AI's battler only has moves which do not deal damage to either
+ * of the opponent's Pokemon.
+ *
+ * @param battleSystem
+ * @param ctx
+ * @param battler   The AI's battler.
+ * @return TRUE if the AI has a switch to make, FALSE otherwise.
+ */
+static BOOL AI_OnlyIneffectiveMoves(BattleSystem *battleSystem, BattleContext *ctx, int battler) {
+    int i, j;
+    u8 defender1, defender2;
+    u8 aiSlot1, aiSlot2;
+    u16 move;
+    int type;
+    u32 effectiveness;
+    int start, end;
+    int numMoves;
+    Pokemon *mon;
+
+    // "Player" consts here refer to the AI's perspective.
+    if (BattleSystem_GetBattleType(battleSystem) & BATTLE_TYPE_DOUBLES) {
+        defender1 = BATTLER_PLAYER;
+        defender2 = BATTLER_PLAYER2;
+    } else {
+        defender1 = BATTLER_PLAYER;
+        defender2 = BATTLER_PLAYER;
+    }
+
+    // Check all of this mon's attacking moves for immunities. If any of our moves can deal damage to
+    // either of the opponents' battlers, do not switch.
+    numMoves = 0;
+    for (i = 0; i < MAX_MON_MOVES; i++) {
+        move = ctx->battleMons[battler].moves[i];
+        type = TrainerAI_MoveType(battleSystem, ctx, battler, move);
+
+        if (move && ctx->trainerAIData.moveData[move].power) {
+            numMoves++;
+
+            effectiveness = 0;
+            if (ctx->battleMons[defender1].hp) {
+                BattleSystem_ApplyTypeChart(battleSystem, ctx, move, type, battler, defender1, 0, &effectiveness);
+            }
+
+            if ((effectiveness & MOVE_STATUS_NO_EFFECT) == FALSE) {
+                return FALSE;
+            }
+
+            effectiveness = 0;
+            if (ctx->battleMons[defender2].hp) {
+                BattleSystem_ApplyTypeChart(battleSystem, ctx, move, type, battler, defender2, 0, &effectiveness);
+            }
+
+            if ((effectiveness & MOVE_STATUS_NO_EFFECT) == FALSE) {
+                return FALSE;
+            }
+        }
+    }
+
+    // If we have more than 1 attacking move, do not switch.
+    if (numMoves < 2) {
+        return FALSE;
+    }
+
+    aiSlot1 = battler;
+    if ((BattleSystem_GetBattleType(battleSystem) & BATTLE_TYPE_TAG) || (BattleSystem_GetBattleType(battleSystem) & BATTLE_TYPE_MULTI)) {
+        aiSlot2 = aiSlot1;
+    } else {
+        aiSlot2 = BattleSystem_GetBattlerIdPartner(battleSystem, battler);
+    }
+
+    start = 0;
+    end = BattleSystem_GetPartySize(battleSystem, battler);
+
+    // For each of the AI's active party Pokemon on the bench, check if any of them have a
+    // damaging move which is super-effective against either of the player's active Pokemon
+    // on the battlefield. If any such Pokemon on the bench exists, switch to it 66% of
+    // the time.
+    for (i = start; i < end; i++) {
+        mon = BattleSystem_GetPartyMon(battleSystem, battler, i);
+
+        if (GetMonData(mon, MON_DATA_HP, NULL) != 0
+            && GetMonData(mon, MON_DATA_SPECIES_OR_EGG, NULL) != SPECIES_NONE
+            && GetMonData(mon, MON_DATA_SPECIES_OR_EGG, NULL) != SPECIES_EGG
+            && i != ctx->selectedMonIndex[aiSlot1]
+            && i != ctx->selectedMonIndex[aiSlot2]
+            && i != ctx->aiSwitchedPartySlot[aiSlot1]
+            && i != ctx->aiSwitchedPartySlot[aiSlot2]) {
+            for (j = 0; j < MAX_MON_MOVES; j++) {
+                move = GetMonData(mon, MON_DATA_MOVE1 + j, NULL);
+                type = Move_CalcVariableDamageType(battleSystem, ctx, mon, move);
+
+                if (move && ctx->trainerAIData.moveData[move].power) {
+                    effectiveness = 0;
+                    if (ctx->battleMons[defender1].hp) {
+                        BattleSystem_CalcEffectiveness(ctx,
+                            move,
+                            type,
+                            GetMonData(mon, MON_DATA_ABILITY, NULL),
+                            GetBattlerAbility(ctx, defender1),
+                            GetBattlerHeldItemEffect(ctx, defender1),
+                            GetBattlerVar(ctx, defender1, BMON_DATA_TYPE_1, NULL),
+                            GetBattlerVar(ctx, defender1, BMON_DATA_TYPE_2, NULL),
+                            &effectiveness);
+                    }
+
+                    if ((effectiveness & MOVE_STATUS_SUPER_EFFECTIVE) && BattleSystem_Random(battleSystem) % 3 < 2) {
+                        ctx->aiSwitchedPartySlot[battler] = i;
+                        return TRUE;
+                    }
+
+                    effectiveness = 0;
+                    if (ctx->battleMons[defender2].hp) {
+                        BattleSystem_CalcEffectiveness(ctx,
+                            move,
+                            type,
+                            GetMonData(mon, MON_DATA_ABILITY, NULL),
+                            GetBattlerAbility(ctx, defender2),
+                            GetBattlerHeldItemEffect(ctx, defender2),
+                            GetBattlerVar(ctx, defender2, BMON_DATA_TYPE_1, NULL),
+                            GetBattlerVar(ctx, defender2, BMON_DATA_TYPE_2, NULL),
+                            &effectiveness);
+                    }
+
+                    if ((effectiveness & MOVE_STATUS_SUPER_EFFECTIVE) && BattleSystem_Random(battleSystem) % 3 < 2) {
+                        ctx->aiSwitchedPartySlot[battler] = i;
+                        return TRUE;
+                    }
+                }
+            }
+        }
+    }
+
+    // For each of the AI's active party Pokemon on the bench, check if any of them have a
+    // damaging move which is normally-effective against either of the player's active
+    // Pokemon on the battlefield. If any such Pokemon on the bench exists, switch to it
+    // 50% of the time.
+    for (i = start; i < end; i++) {
+        mon = BattleSystem_GetPartyMon(battleSystem, battler, i);
+
+        if (GetMonData(mon, MON_DATA_HP, NULL) != 0
+            && GetMonData(mon, MON_DATA_SPECIES_OR_EGG, NULL) != SPECIES_NONE
+            && GetMonData(mon, MON_DATA_SPECIES_OR_EGG, NULL) != SPECIES_EGG
+            && i != ctx->selectedMonIndex[aiSlot1]
+            && i != ctx->selectedMonIndex[aiSlot2]
+            && i != ctx->aiSwitchedPartySlot[aiSlot1]
+            && i != ctx->aiSwitchedPartySlot[aiSlot2]) {
+            for (j = 0; j < MAX_MON_MOVES; j++) {
+                move = GetMonData(mon, MON_DATA_MOVE1 + j, NULL);
+                type = Move_CalcVariableDamageType(battleSystem, ctx, mon, move);
+
+                if (move && ctx->trainerAIData.moveData[move].power) {
+                    effectiveness = 0;
+                    if (ctx->battleMons[defender1].hp) {
+                        BattleSystem_CalcEffectiveness(ctx,
+                            move,
+                            type,
+                            GetMonData(mon, MON_DATA_ABILITY, NULL),
+                            GetBattlerAbility(ctx, defender1),
+                            GetBattlerHeldItemEffect(ctx, defender1),
+                            GetBattlerVar(ctx, defender1, BMON_DATA_TYPE_1, NULL),
+                            GetBattlerVar(ctx, defender1, BMON_DATA_TYPE_2, NULL),
+                            &effectiveness);
+                    }
+
+                    if (effectiveness == 0 && BattleSystem_Random(battleSystem) % 2 == 0) {
+                        ctx->aiSwitchedPartySlot[battler] = i;
+                        return TRUE;
+                    }
+
+                    effectiveness = 0;
+                    if (ctx->battleMons[defender2].hp) {
+                        BattleSystem_CalcEffectiveness(ctx,
+                            move,
+                            type,
+                            GetMonData(mon, MON_DATA_ABILITY, NULL),
+                            GetBattlerAbility(ctx, defender2),
+                            GetBattlerHeldItemEffect(ctx, defender2),
+                            GetBattlerVar(ctx, defender2, BMON_DATA_TYPE_1, NULL),
+                            GetBattlerVar(ctx, defender2, BMON_DATA_TYPE_2, NULL),
+                            &effectiveness);
+                    }
+
+                    if (effectiveness == 0 && BattleSystem_Random(battleSystem) % 2 == 0) {
+                        ctx->aiSwitchedPartySlot[battler] = i;
+                        return TRUE;
+                    }
+                }
+            }
+        }
+    }
+
+    return FALSE;
+}
+
+/**
+ * @brief Check if an AI's battler has a super-effective move against either of the
+ * opponent's Pokemon.
+ *
+ * @param battleSystem
+ * @param ctx
+ * @param battler   The AI's battler.
+ * @param flag      If TRUE, will always return TRUE if the AI's battler has a super-
+ *                  effective move. If FALSE, returns TRUE 90% of the time for either
+ *                  target against which the battler has a super-effective move.
+ * @return TRUE if the AI's battler has a super-effective move.
+ */
+static BOOL AI_HasSuperEffectiveMove(BattleSystem *battleSystem, BattleContext *ctx, int battler, BOOL flag) {
+    int i;
+    u32 effectiveness;
+    u8 defender;
+    u8 oppositeSlot;
+    u16 move;
+    int type;
+
+    // Look at the slot directly across from us on the opposite side. i.e.,
+    // AI slot 1 looks at player slot 1, AI slot 2 looks at player slot 2.
+    oppositeSlot = BattleSystem_GetBattlerType(battleSystem, battler) ^ 1;
+    defender = BattleSystem_GetBattlerFromBattlerType(battleSystem, oppositeSlot);
+
+    if ((ctx->switchInFlag & MaskOfFlagNo(defender)) == FALSE) {
+        // Check if the player's battler is weak to any of our moves.
+        for (i = 0; i < MAX_MON_MOVES; i++) {
+            move = ctx->battleMons[battler].moves[i];
+            type = TrainerAI_MoveType(battleSystem, ctx, battler, move);
+
+            if (move) {
+                effectiveness = 0;
+                BattleSystem_ApplyTypeChart(battleSystem, ctx, move, type, battler, defender, 0, &effectiveness);
+
+                // If the defending mon is weak to our move, return TRUE 90-100% of the time.
+                if (effectiveness & MOVE_STATUS_SUPER_EFFECTIVE) {
+                    if (flag) {
+                        return TRUE;
+                    } else if (BattleSystem_Random(battleSystem) % 10 != 0) {
+                        return TRUE;
+                    }
+                }
+            }
+        }
+    }
+
+    // Check the defender's partner the same way as above.
+    if ((BattleSystem_GetBattleType(battleSystem) & BATTLE_TYPE_DOUBLES) == FALSE) {
+        return FALSE;
+    }
+    defender = BattleSystem_GetBattlerIdPartner(battleSystem, defender);
+
+    if ((ctx->switchInFlag & MaskOfFlagNo(defender)) == FALSE) {
+        for (i = 0; i < MAX_MON_MOVES; i++) {
+            move = ctx->battleMons[battler].moves[i];
+            type = TrainerAI_MoveType(battleSystem, ctx, battler, move);
+
+            if (move) {
+                effectiveness = 0;
+                BattleSystem_ApplyTypeChart(battleSystem, ctx, move, type, battler, defender, 0, &effectiveness);
+
+                // If the defending mon is weak to our move, return TRUE 90-100% of the time.
+                if (effectiveness & MOVE_STATUS_SUPER_EFFECTIVE) {
+                    if (flag) {
+                        return TRUE;
+                    } else if (BattleSystem_Random(battleSystem) % 10 != 0) {
+                        return TRUE;
+                    }
+                }
+            }
+        }
+    }
+
+    return FALSE;
+}
+
+/**
+ * @brief Check if the AI's party has a Pokemon on the bench which has an "absorbing"
+ * ability for the move which was last used on it (specifically, Volt Absorb, Water
+ * Absorb, and Flash Fire).
+ *
+ * This routine will skip its checks roughly 33% of the time if the AI's battler has
+ * a super-effective move. It will also skip its checks if the AI's active battler
+ * is the one with the absorbing ability.
+ *
+ * @param battleSystem
+ * @param ctx
+ * @param battler   The AI's battler.
+ * @return BOOL
+ */
+BOOL AI_HasAbsorbAbilityInParty(BattleSystem *battleSystem, BattleContext *ctx, int battler);
+BOOL AI_HasAbsorbAbilityInParty(BattleSystem *battleSystem, BattleContext *ctx, int battler) {
+    int i;
+    u8 aiSlot1, aiSlot2;
+    u8 moveType;
+    u8 ability;
+    u8 checkAbility;
+    int start, end;
+    Pokemon *mon;
+
+    // If we have a super-effective move against either opponent, do not switch ~33% of the time.
+    if (AI_HasSuperEffectiveMove(battleSystem, ctx, battler, TRUE) && BattleSystem_Random(battleSystem) % 3 != 0) {
+        return FALSE;
+    }
+
+    // If we have not been hit by a move by this battler, do not switch.
+    if (ctx->moveNoHit[battler] == MOVE_NONE) {
+        return FALSE;
+    }
+
+    // If the last move that hit us does not deal damage, do not switch.
+    if (ctx->trainerAIData.moveData[ctx->moveNoHit[battler]].power == 0) {
+        return FALSE;
+    }
+
+    moveType = ctx->trainerAIData.moveData[ctx->moveNoHit[battler]].type;
+    // Oversight: Dry Skin and Motor Drive are not checked.
+    if (moveType == TYPE_FIRE) {
+        checkAbility = ABILITY_FLASH_FIRE;
+    } else if (moveType == TYPE_WATER) {
+        checkAbility = ABILITY_WATER_ABSORB;
+    } else if (moveType == TYPE_ELECTRIC) {
+        checkAbility = ABILITY_VOLT_ABSORB;
+    } else {
+        return ABILITY_NONE;
+    }
+
+    // If our ability absorbs the type of the last move that hit us, do not switch.
+    if (GetBattlerAbility(ctx, battler) == checkAbility) {
+        return FALSE;
+    }
+
+    aiSlot1 = battler;
+    if ((BattleSystem_GetBattleType(battleSystem) & BATTLE_TYPE_TAG) || (BattleSystem_GetBattleType(battleSystem) & BATTLE_TYPE_MULTI)) {
+        aiSlot2 = aiSlot1;
+    } else {
+        aiSlot2 = BattleSystem_GetBattlerIdPartner(battleSystem, battler);
+    }
+
+    start = 0;
+    end = BattleSystem_GetPartySize(battleSystem, battler);
+
+    // Check each Pokemon on the bench for one which has an ability that absorbs
+    // the last move that was used.
+    for (i = start; i < end; i++) {
+        mon = BattleSystem_GetPartyMon(battleSystem, battler, i);
+
+        if (GetMonData(mon, MON_DATA_HP, NULL) != 0
+            && GetMonData(mon, MON_DATA_SPECIES_OR_EGG, NULL) != SPECIES_NONE
+            && GetMonData(mon, MON_DATA_SPECIES_OR_EGG, NULL) != SPECIES_EGG
+            && i != ctx->selectedMonIndex[aiSlot1]
+            && i != ctx->selectedMonIndex[aiSlot2]
+            && i != ctx->aiSwitchedPartySlot[aiSlot1]
+            && i != ctx->aiSwitchedPartySlot[aiSlot2]) {
+            ability = GetMonData(mon, MON_DATA_ABILITY, NULL);
+
+            // Switch to a matching Pokemon 50% of the time.
+            if (checkAbility == ability && (BattleSystem_Random(battleSystem) & 1)) {
+                ctx->aiSwitchedPartySlot[battler] = i;
+                return TRUE;
+            }
+        }
+    }
+
+    return FALSE;
+}
+
+/**
+ * @brief Check if the AI has a party member with a super-effective move, constrained
+ * to mons with a certain effectiveness matchup against the move that last hit us.
+ *
+ * @param battleSystem
+ * @param ctx
+ * @param battler               The AI's battler.
+ * @param checkEffectiveness    The desired effectiveness mask against the last move.
+ * @param rand                  Random odds to switch, if conditions are met.
+ * @return TRUE if the AI should switch, FALSE if not.
+ */
+BOOL AI_HasPartyMemberWithSuperEffectiveMove(BattleSystem *battleSystem, BattleContext *ctx, int battler, u32 checkEffectiveness, u8 rand);
+BOOL AI_HasPartyMemberWithSuperEffectiveMove(BattleSystem *battleSystem, BattleContext *ctx, int battler, u32 checkEffectiveness, u8 rand) {
+    int i, j;
+    u8 aiSlot1, aiSlot2;
+    u16 move;
+    int moveType;
+    u32 effectiveness;
+    int start, end;
+    Pokemon *mon;
+
+    if (ctx->moveNoHit[battler] == MOVE_NONE || ctx->moveNoHitBattler[battler] == BATTLER_NONE) {
+        return FALSE;
+    }
+
+    // If the last move that hit us is a status move, do not switch.
+    if (ctx->trainerAIData.moveData[ctx->moveNoHit[battler]].power == 0) {
+        return FALSE;
+    }
+
+    aiSlot1 = battler;
+    if ((BattleSystem_GetBattleType(battleSystem) & BATTLE_TYPE_TAG) || (BattleSystem_GetBattleType(battleSystem) & BATTLE_TYPE_MULTI)) {
+        aiSlot2 = aiSlot1;
+    } else {
+        aiSlot2 = BattleSystem_GetBattlerIdPartner(battleSystem, battler);
+    }
+
+    start = 0;
+    end = BattleSystem_GetPartySize(battleSystem, battler);
+
+    for (i = start; i < end; i++) {
+        mon = BattleSystem_GetPartyMon(battleSystem, battler, i);
+
+        if (GetMonData(mon, MON_DATA_HP, NULL) != 0
+            && GetMonData(mon, MON_DATA_SPECIES_OR_EGG, NULL) != SPECIES_NONE
+            && GetMonData(mon, MON_DATA_SPECIES_OR_EGG, NULL) != SPECIES_EGG
+            && i != ctx->selectedMonIndex[aiSlot1]
+            && i != ctx->selectedMonIndex[aiSlot2]
+            && i != ctx->aiSwitchedPartySlot[aiSlot1]
+            && i != ctx->aiSwitchedPartySlot[aiSlot2]) {
+            effectiveness = 0;
+            moveType = TrainerAI_MoveType(battleSystem, ctx, ctx->moveNoHitBattler[battler], ctx->moveNoHit[battler]);
+
+            BattleSystem_CalcEffectiveness(ctx,
+                ctx->moveNoHit[battler],
+                moveType,
+                GetBattlerAbility(ctx, ctx->moveNoHitBattler[battler]),
+                GetMonData(mon, MON_DATA_ABILITY, NULL),
+                GetItemVar(ctx, GetMonData(mon, MON_DATA_HELD_ITEM, NULL), ITEMATTR_HOLD_EFFECT),
+                GetMonData(mon, MON_DATA_TYPE_1, NULL),
+                GetMonData(mon, MON_DATA_TYPE_2, NULL),
+                &effectiveness);
+
+            if (effectiveness & checkEffectiveness) {
+                for (j = 0; j < MAX_MON_MOVES; j++) {
+                    move = GetMonData(mon, MON_DATA_MOVE1 + j, NULL);
+                    moveType = Move_CalcVariableDamageType(battleSystem, ctx, mon, move);
+
+                    if (move) {
+                        effectiveness = 0;
+                        BattleSystem_CalcEffectiveness(ctx,
+                            move,
+                            moveType,
+                            GetMonData(mon, MON_DATA_ABILITY, NULL),
+                            GetBattlerAbility(ctx, ctx->moveNoHitBattler[battler]),
+                            GetBattlerHeldItemEffect(ctx, ctx->moveNoHitBattler[battler]),
+                            GetBattlerVar(ctx, ctx->moveNoHitBattler[battler], BMON_DATA_TYPE_1, NULL),
+                            GetBattlerVar(ctx, ctx->moveNoHitBattler[battler], BMON_DATA_TYPE_2, NULL),
+                            &effectiveness);
+
+                        if ((effectiveness & MOVE_STATUS_SUPER_EFFECTIVE) && BattleSystem_Random(battleSystem) % rand == 0) {
+                            ctx->aiSwitchedPartySlot[battler] = i;
+                            return TRUE;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    return FALSE;
+}
+
+/**
+ * @brief Check if the AI's battler is asleep and has Natural Cure + an eligible switch.
+ *
+ * @param battleSystem
+ * @param ctx
+ * @param battler   The AI's battler.
+ * @return TRUE if the AI should switch, FALSE otherwise.
+ */
+BOOL AI_IsAsleepWithNaturalCure(BattleSystem *battleSystem, BattleContext *ctx, int battler);
+BOOL AI_IsAsleepWithNaturalCure(BattleSystem *battleSystem, BattleContext *ctx, int battler) {
+    // Don't switch if we aren't asleep, don't have Natural Cure, or are below 50% HP.
+    if ((ctx->battleMons[battler].status & STATUS_SLEEP) == FALSE
+        || GetBattlerAbility(ctx, battler) != ABILITY_NATURAL_CURE
+        || ctx->battleMons[battler].hp < (ctx->battleMons[battler].maxHp / 2)) {
+        return FALSE;
+    }
+
+    // Check for the move that last hit you; i.e., don't switch on your first turn.
+    // Switch 50% of the time, and use post-KO switch logic.
+    if (ctx->moveNoHit[battler] == MOVE_NONE && (BattleSystem_Random(battleSystem) & 1)) {
+        ctx->aiSwitchedPartySlot[battler] = 6;
+        return TRUE;
+    }
+
+    // If the last move that hit you is a status move, switch 50% of the time, following
+    // post-KO switch logic.
+    if (ctx->trainerAIData.moveData[ctx->moveNoHit[battler]].power == 0 && (BattleSystem_Random(battleSystem) & 1)) {
+        ctx->aiSwitchedPartySlot[battler] = 6;
+        return TRUE;
+    }
+
+    // If we have a party member with an immunity to the last move that also has a super-effective
+    // move, switch 50% of the time.
+    if (AI_HasPartyMemberWithSuperEffectiveMove(battleSystem, ctx, battler, MOVE_STATUS_NO_EFFECT, 1)) {
+        return TRUE;
+    }
+
+    // If we have a party member with a resistance to the last move that also has a super-effective
+    // move, switch 50% of the time.
+    if (AI_HasPartyMemberWithSuperEffectiveMove(battleSystem, ctx, battler, MOVE_STATUS_NOT_VERY_EFFECTIVE, 1)) {
+        return TRUE;
+    }
+
+    // Randomly switch 50% of the time, following post-KO switch logic.
+    if (BattleSystem_Random(battleSystem) & 1) {
+        ctx->aiSwitchedPartySlot[battler] = 6;
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
+/**
+ * @brief Check if the AI's current battler is heavily stat-boosted (that is,
+ * if the sum of its total positive stat stage changes is greater than or
+ * equal to 4.)
+ *
+ * @param battleSystem
+ * @param ctx
+ * @param battler   The AI's current battler.
+ * @return          TRUE if the AI has a high number of positive stat stages;
+ *                  FALSE otherwise.
+ */
+BOOL AI_IsHeavilyStatBoosted(BattleSystem *battleSystem, BattleContext *ctx, int battler);
+BOOL AI_IsHeavilyStatBoosted(BattleSystem *battleSystem, BattleContext *ctx, int battler) {
+    int stat;
+    u8 numBoosts = 0;
+
+    for (stat = STAT_HP; stat < NUM_BATTLE_STATS; stat++) {
+        if (ctx->battleMons[battler].statChanges[stat] > 6) {
+            numBoosts += ctx->battleMons[battler].statChanges[stat] - 6;
+        }
+    }
+
+    return numBoosts >= 4;
+}
+
+/**
+ * @brief Check if the AI should switch for turn.
+ *
+ * @param battleSystem
+ * @param ctx
+ * @param battler   TRUE if the battler
+ * @return BOOL
+ */
+
+BOOL TrainerAI_ShouldSwitch(BattleSystem *battleSystem, BattleContext *ctx, int battler);
+BOOL TrainerAI_ShouldSwitch(BattleSystem *battleSystem, BattleContext *ctx, int battler) {
+    int i;
+    int alivePartyMons;
+    u8 aiSlot1, aiSlot2;
+    int start, end;
+    Pokemon *mon;
+
+    // Don't try to make illegal switches.
+    // This definition is naiive: the AI does not consider itself immune to Magnet Pull from an ally,
+    // Shadow Tag if it also has Shadow Tag, Arena Trap if it is a Flying-type, or always able to switch
+    // if it is holding a Shed Shell.
+    if ((ctx->battleMons[battler].status2 & STATUS2_TRAPPED)
+        || (ctx->battleMons[battler].moveEffectFlags & MOVE_EFFECT_FLAG_INGRAIN)
+        || CheckAbilityActive(battleSystem, ctx, CHECK_ABILITY_OPPOSING_SIDE, battler, ABILITY_SHADOW_TAG)
+        || CheckAbilityActive(battleSystem, ctx, CHECK_ABILITY_OPPOSING_SIDE, battler, ABILITY_ARENA_TRAP)
+        || (CheckAbilityActive(battleSystem, ctx, CHECK_ABILITY_ALL_NOT_USER, battler, ABILITY_MAGNET_PULL)
+        && (GetBattlerVar(ctx, battler, BMON_DATA_TYPE_1, NULL) == TYPE_STEEL || GetBattlerVar(ctx, battler, BMON_DATA_TYPE_2, NULL) == TYPE_STEEL))) {
+        return FALSE;
+    }
+
+    alivePartyMons = 0;
+    aiSlot1 = battler;
+    if ((BattleSystem_GetBattleType(battleSystem) & BATTLE_TYPE_TAG) || (BattleSystem_GetBattleType(battleSystem) & BATTLE_TYPE_MULTI)) {
+        aiSlot2 = aiSlot1;
+    } else {
+        aiSlot2 = BattleSystem_GetBattlerIdPartner(battleSystem, battler);
+    }
+
+    // Check for living party members (obviously, do not try to switch if there are none).
+    start = 0;
+    end = BattleSystem_GetPartySize(battleSystem, battler);
+    for (i = start; i < end; i++) {
+        mon = BattleSystem_GetPartyMon(battleSystem, battler, i);
+
+        if (GetMonData(mon, MON_DATA_HP, NULL) != 0
+            && GetMonData(mon, MON_DATA_SPECIES_OR_EGG, NULL) != SPECIES_NONE
+            && GetMonData(mon, MON_DATA_SPECIES_OR_EGG, NULL) != SPECIES_EGG
+            && i != ctx->selectedMonIndex[aiSlot1]
+            && i != ctx->selectedMonIndex[aiSlot2]
+            && i != ctx->aiSwitchedPartySlot[aiSlot1]
+            && i != ctx->aiSwitchedPartySlot[aiSlot2]) {
+            alivePartyMons++;
+        }
+    }
+
+    if (alivePartyMons) {
+        if (AI_PerishSongKO(ctx, battler)) {
+            return TRUE;
+        }
+
+        if (AI_CannotDamageWonderGuard(battleSystem, ctx, battler)) {
+            return TRUE;
+        }
+
+        if (AI_OnlyIneffectiveMoves(battleSystem, ctx, battler)) {
+            return TRUE;
+        }
+
+        if (AI_HasAbsorbAbilityInParty(battleSystem, ctx, battler)) {
+            return TRUE;
+        }
+
+        if (AI_IsAsleepWithNaturalCure(battleSystem, ctx, battler)) {
+            return TRUE;
+        }
+
+        // Do not switch if we have a super-effective move.
+        // Note that this has a 10% chance of returning FALSE for each of our
+        // moves that are super-effective against either opponent.
+        if (AI_HasSuperEffectiveMove(battleSystem, ctx, battler, FALSE)) {
+            return FALSE;
+        }
+
+        // Never switch if the active battler has 4+ positive stat stages.
+        if (AI_IsHeavilyStatBoosted(battleSystem, ctx, battler)) {
+            return FALSE;
+        }
+
+        // 33% of the time, switch to a party member with an immunity to the last move that hit
+        // this battler which also has a super-effective move against an opposing Pokemon.
+        if (AI_HasPartyMemberWithSuperEffectiveMove(battleSystem, ctx, battler, 0x8, 2)) {
+            return TRUE;
+        }
+
+        // 25% of the time, switch to a party member with an immunity to the last move that hit
+        // this battler which also has a super-effective move against an opposing Pokemon.
+        if (AI_HasPartyMemberWithSuperEffectiveMove(battleSystem, ctx, battler, 0x4, 3)) {
+            return TRUE;
+        }
+    }
+
+    return FALSE;
+}
+
+int TrainerAI_PickCommand(BattleSystem *battleSystem, int battler) {
+    // must declare C89-style to match
+    int i;
+    u8 battler1, battler2;
+    u32 battleType;
+    int end;
+    Pokemon *mon;
+    BattleContext *ctx = battleSystem->ctx;
+    battleType = BattleSystem_GetBattleType(battleSystem);
+
+    if ((battleType & BATTLE_TYPE_TRAINER) || BattleSystem_GetBattlerSide(battleSystem, battler) == BATTLER_SIDE_PLAYER) {
+        if (TrainerAI_ShouldSwitch(battleSystem, ctx, battler)) {
+            // If this is a switch which should use the post-KO switch logic, then do so.
+            // If there is no valid battler, pick the first one in party order.
+            if (ctx->aiSwitchedPartySlot[battler] == 6) {
+                if ((i = BattleAI_PostKOSwitchIn(battleSystem, battler)) == 6) {
+                    battler1 = battler;
+                    if ((battleType & BATTLE_TYPE_TAG) || (battleType & BATTLE_TYPE_MULTI)) {
+                        battler2 = battler1;
+                    } else {
+                        battler2 = BattleSystem_GetBattlerIdPartner(battleSystem, battler);
+                    }
+
+                    end = BattleSystem_GetPartySize(battleSystem, battler);
+                    for (i = 0; i < end; i++) {
+                        mon = BattleSystem_GetPartyMon(battleSystem, battler, i);
+
+                        if (GetMonData(mon, MON_DATA_HP, NULL) != 0
+                            && i != ctx->selectedMonIndex[battler1]
+                            && i != ctx->selectedMonIndex[battler2]
+                            && i != ctx->aiSwitchedPartySlot[battler1]
+                            && i != ctx->aiSwitchedPartySlot[battler2]) {
+                            break;
+                        }
+                    }
+                }
+
+                ctx->aiSwitchedPartySlot[battler] = i;
+            }
+
+            return BATTLE_INPUT_POKEMON;
+        }
+
+        // Check if the AI determines that it should use an item
+        if (TrainerAI_ShouldUseItem(battleSystem, battler)) {
+            return BATTLE_INPUT_BAG;
+        }
+    }
+
+    return BATTLE_INPUT_FIGHT;
+}
+
+/**
+ * @brief Determine if the AI should use an item on its active battler.
+ *
+ * Several buffers will be filled, if an item should be used:
+ * 1. The item type (e.g., Full Restore, Potion, etc.)
+ * 2. Any parameters for the item, e.g. what status condition it heals
+ * 3. What item number is used
+ *
+ * The trainer's pocket of items will also be updated appropriately.
+ *
+ * @param battleSystem
+ * @param battler   The AI's battler.
+ * @return          TRUE if an item should be used, FALSE if not.
+ */
+static BOOL TrainerAI_ShouldUseItem(BattleSystem *battleSystem, int battler) {
+    int i;
+    u8 aliveMons = 0;
+    BattleContext *ctx = battleSystem->ctx;
+    ctx->trainerAIData.usedItemCondition[battler >> 1] = 0;
+    BOOL result = FALSE;
+
+    // Don't let the AI partners ever use items in battle against trainers.
+    if ((battleSystem->battleType & BATTLE_TYPE_TRAINER_WITH_AI_PARTNER) == BATTLE_TYPE_TRAINER_WITH_AI_PARTNER
+        && BattleSystem_GetBattlerType(battleSystem, battler) == BATTLER_TYPE_PLAYER_SIDE_SLOT_2) {
+        return result;
+    }
+
+    // Don't try to use items if it's illegal to do so.
+    if (ctx->battleMons[battler].moveEffectFlags & MOVE_EFFECT_FLAG_EMBARGO) {
+        return result;
+    }
+
+    Party *party = BattleSystem_GetParty(battleSystem, battler);
+    for (i = 0; i < Party_GetCount(party); i++) {
+        Pokemon *mon = Party_GetMonByIndex(party, i);
+
+        if (GetMonData(mon, MON_DATA_HP, NULL) != 0
+            && GetMonData(mon, MON_DATA_SPECIES_OR_EGG, NULL) != SPECIES_NONE
+            && GetMonData(mon, MON_DATA_SPECIES_OR_EGG, NULL) != SPECIES_EGG) {
+            aliveMons++;
+        }
+    }
+
+    for (i = 0; i < MAX_TRAINER_ITEMS; i++) {
+        if (i == 0 || aliveMons <= ctx->trainerAIData.trainerItemCounts[battler >> 1] - i) {
+            u16 item = ctx->trainerAIData.trainerItems[battler >> 1][i];
+
+            if (item == ITEM_NONE) {
+                continue;
+            }
+
+            if (item == ITEM_FULL_RESTORE) {
+                if (ctx->battleMons[battler].hp < (ctx->battleMons[battler].maxHp / 4)
+                    && ctx->battleMons[battler].hp) {
+                    ctx->trainerAIData.usedItemType[battler >> 1] = ITEM_AI_CATEGORY_FULL_RESTORE;
+                    result = TRUE;
+                }
+            } else if (GetItemVar(ctx, item, ITEMATTR_HP_RESTORE)) {
+                u8 hpRestore = GetItemVar(ctx, item, ITEMATTR_HP_RESTORE_PARAM);
+
+                // Use an HP restore item if the battler is at less than 1/4 HP or if the full HP restore
+                // value of the item would be used.
+                if (hpRestore) {
+                    if (ctx->battleMons[battler].hp
+                        && (ctx->battleMons[battler].hp < (ctx->battleMons[battler].maxHp / 4)
+                            || (ctx->battleMons[battler].maxHp - ctx->battleMons[battler].hp) > hpRestore)) {
+                        ctx->trainerAIData.usedItemType[battler >> 1] = ITEM_AI_CATEGORY_RECOVER_HP;
+                        result = TRUE;
+                    }
+                }
+            } else if (GetItemVar(ctx, item, ITEMATTR_SLP_HEAL)) {
+                if (ctx->battleMons[battler].status & STATUS_SLEEP) {
+                    ctx->trainerAIData.usedItemCondition[battler >> 1] |= MaskOfFlagNo(5);
+                    ctx->trainerAIData.usedItemType[battler >> 1] = ITEM_AI_CATEGORY_RECOVER_STATUS;
+                    result = TRUE;
+                }
+            } else if (GetItemVar(ctx, item, ITEMATTR_PSN_HEAL)) {
+                if ((ctx->battleMons[battler].status & STATUS_POISON)
+                    || (ctx->battleMons[battler].status & STATUS_BAD_POISON)) {
+                    ctx->trainerAIData.usedItemCondition[battler >> 1] |= MaskOfFlagNo(4);
+                    ctx->trainerAIData.usedItemType[battler >> 1] = ITEM_AI_CATEGORY_RECOVER_STATUS;
+                    result = TRUE;
+                }
+            } else if (GetItemVar(ctx, item, ITEMATTR_BRN_HEAL)) {
+                if (ctx->battleMons[battler].status & STATUS_BURN) {
+                    ctx->trainerAIData.usedItemCondition[battler >> 1] |= MaskOfFlagNo(3);
+                    ctx->trainerAIData.usedItemType[battler >> 1] = ITEM_AI_CATEGORY_RECOVER_STATUS;
+                    result = TRUE;
+                }
+            } else if (GetItemVar(ctx, item, ITEMATTR_FRZ_HEAL)) {
+                if (ctx->battleMons[battler].status & STATUS_FREEZE) {
+                    ctx->trainerAIData.usedItemCondition[battler >> 1] |= MaskOfFlagNo(2);
+                    ctx->trainerAIData.usedItemType[battler >> 1] = ITEM_AI_CATEGORY_RECOVER_STATUS;
+                    result = TRUE;
+                }
+            } else if (GetItemVar(ctx, item, ITEMATTR_PRZ_HEAL)) {
+                if (ctx->battleMons[battler].status & STATUS_PARALYSIS) {
+                    ctx->trainerAIData.usedItemCondition[battler >> 1] |= MaskOfFlagNo(1);
+                    ctx->trainerAIData.usedItemType[battler >> 1] = ITEM_AI_CATEGORY_RECOVER_STATUS;
+                    result = TRUE;
+                }
+            } else if (GetItemVar(ctx, item, ITEMATTR_CFS_HEAL)) {
+                if (ctx->battleMons[battler].status2 & STATUS2_CONFUSION) {
+                    ctx->trainerAIData.usedItemCondition[battler >> 1] |= MaskOfFlagNo(0);
+                    ctx->trainerAIData.usedItemType[battler >> 1] = ITEM_AI_CATEGORY_RECOVER_STATUS;
+                    result = TRUE;
+                }
+                // Don't try to use any of these until after the first turn that a mon is in play.
+            } else if ((ctx->battleMons[battler].moveEffectData.fakeOutCount - ctx->totalTurns) >= 0) {
+                if (GetItemVar(ctx, item, ITEMATTR_ATK_STAGES)) {
+                    ctx->trainerAIData.usedItemCondition[battler >> 1] = STAT_ATK;
+                    ctx->trainerAIData.usedItemType[battler >> 1] = ITEM_AI_CATEGORY_STAT_BOOSTER;
+                    result = TRUE;
+                } else if (GetItemVar(ctx, item, ITEMATTR_DEF_STAGES)) {
+                    ctx->trainerAIData.usedItemCondition[battler >> 1] = STAT_DEF;
+                    ctx->trainerAIData.usedItemType[battler >> 1] = ITEM_AI_CATEGORY_STAT_BOOSTER;
+                    result = TRUE;
+                } else if (GetItemVar(ctx, item, ITEMATTR_SPATK_STAGES)) {
+                    ctx->trainerAIData.usedItemCondition[battler >> 1] = STAT_SPATK;
+                    ctx->trainerAIData.usedItemType[battler >> 1] = ITEM_AI_CATEGORY_STAT_BOOSTER;
+                    result = TRUE;
+                } else if (GetItemVar(ctx, item, ITEMATTR_SPDEF_STAGES)) {
+                    ctx->trainerAIData.usedItemCondition[battler >> 1] = STAT_SPDEF;
+                    ctx->trainerAIData.usedItemType[battler >> 1] = ITEM_AI_CATEGORY_STAT_BOOSTER;
+                    result = TRUE;
+                } else if (GetItemVar(ctx, item, ITEMATTR_SPEED_STAGES)) {
+                    ctx->trainerAIData.usedItemCondition[battler >> 1] = STAT_SPEED;
+                    ctx->trainerAIData.usedItemType[battler >> 1] = ITEM_AI_CATEGORY_STAT_BOOSTER;
+                    result = TRUE;
+                } else if (GetItemVar(ctx, item, ITEMATTR_ACCURACY_STAGES)) {
+                    ctx->trainerAIData.usedItemCondition[battler >> 1] = STAT_ACC;
+                    ctx->trainerAIData.usedItemType[battler >> 1] = ITEM_AI_CATEGORY_STAT_BOOSTER;
+                    result = TRUE;
+                } else if (GetItemVar(ctx, item, ITEMATTR_GUARD_SPEC)
+                    && (ctx->fieldSideConditionFlags[1] & SIDE_CONDITION_MIST) == FALSE) {
+                    ctx->trainerAIData.usedItemType[battler >> 1] = ITEM_AI_CATEGORY_GUARD_SPEC;
+                    result = TRUE;
+                }
+            } else {
+                // Unrecognized item type
+                ctx->trainerAIData.usedItemType[battler >> 1] = ITEM_AI_CATEGORY_MAX;
+            }
+
+            if (result == TRUE) {
+                ctx->trainerAIData.usedItem[battler >> 1] = item;
+                ctx->trainerAIData.trainerItems[battler >> 1][i] = 0;
+                break;
+            }
+        }
+    }
+
+    return result;
 }

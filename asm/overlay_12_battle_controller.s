@@ -378,7 +378,7 @@ BattleController_EmitPokemonEncounter: ; 0x022622F0
 	sub r2, #0x16
 	ldr r2, [r3, r2]
 	str r2, [sp, #8]
-	bl ov12_0223AB0C
+	bl BattleSystem_GetBattlerType
 	add r2, r0, #0
 	ldr r0, [r6, #0x30]
 	add r1, r7, #0
@@ -503,7 +503,7 @@ BattleController_EmitPokemonSlideIn: ; 0x022623F0
 	sub r2, #0x16
 	ldr r2, [r3, r2]
 	str r2, [sp, #8]
-	bl ov12_0223AB0C
+	bl BattleSystem_GetBattlerType
 	add r2, r0, #0
 	ldr r0, [r6, #0x30]
 	add r1, r7, #0
@@ -674,7 +674,7 @@ _0226258E:
 	add r1, r7, #0
 	strh r0, [r3, #2]
 	add r0, r4, #0
-	bl ov12_0223AB0C
+	bl BattleSystem_GetBattlerType
 	add r2, r0, #0
 	ldr r0, [r4, #0x30]
 	add r1, r7, #0
@@ -4985,12 +4985,12 @@ _02264646:
 _0226464C:
 	ldr r0, [sp]
 	ldr r1, [sp, #0x38]
-	bl ov12_0223AB0C
+	bl BattleSystem_GetBattlerType
 	cmp r0, #2
 	beq _02264664
 	ldr r0, [sp]
 	ldr r1, [sp, #0x38]
-	bl ov12_0223AB0C
+	bl BattleSystem_GetBattlerType
 	cmp r0, #3
 	bne _02264672
 _02264664:

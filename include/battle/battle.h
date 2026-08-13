@@ -3,6 +3,7 @@
 
 #include "constants/battle.h"
 #include "constants/moves.h"
+#include "constants/battle/trainer_ai.h"
 
 #include "bag.h"
 #include "bag_cursor.h"
@@ -129,14 +130,14 @@ typedef struct TrainerAIData {
     u8 abilities[BATTLER_MAX];
     u16 heldItems[BATTLER_MAX];
     u16 trainerItems[2][4];
-    u32 unk78[8];
+    u32 scriptStackPointer[AI_MAX_STACK_SIZE];
     u8 scriptStackSize;
     u8 trainerItemCounts[2];
     u8 attacker;
     u8 defender;
-    u8 useItem[2];
-    u8 unk9F[2];
-    u16 unkA0[2];
+    u8 usedItemType[2];
+    u8 usedItemCondition[2];
+    u16 usedItem[2];
     u8 selectedTarget[BATTLER_MAX];
     MoveTbl moveData[NUM_MOVES + 1];
     ItemData *itemData;
@@ -381,8 +382,8 @@ typedef struct BattleContext {
     u32 checkMultiHit;
     u32 unk_218C[4];
     u8 selectedMonIndex[4];
-    u8 unk_21A0[4];
-    u8 unk_21A4[4];
+    u8 switchedPartySlot[4];
+    u8 aiSwitchedPartySlot[4];
     PlayerActions playerActions[4];
     u8 executionOrder[4]; // accounts for running, items, etc used in battler
                           // slots
