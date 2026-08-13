@@ -153,11 +153,11 @@ BOOL ScrCmd_710(ScriptContext *ctx) {
 
 static void ov03_02256BA8(FieldSystem *fieldSystem, u8 index) {
     u16 modelID = ov03_0225945C[index];
-    UnkStruct_FieldSysC0_SubC *renderObject = Field3dObjectList_GetRenderObjectByID(fieldSystem->unkC0, modelID);
-    if (renderObject == NULL) {
+    UnkStruct_FieldSysC0_SubC *unkC0_SubC = Field3dObjectList_GetRenderObjectByID(fieldSystem->unkC0, modelID);
+    if (unkC0_SubC == NULL) {
         GF_AssertFail();
     } else {
-        ov01_021E8970(modelID, sub_020669B4(Save_VarsFlags_Get(fieldSystem->saveData), index), 1, renderObject, fieldSystem->mapPropAnimationManager);
+        MapPropAnimationManager_AddAnimationToRenderObj(modelID, sub_020669B4(Save_VarsFlags_Get(fieldSystem->saveData), index), 1, &unkC0_SubC->renderObj, fieldSystem->mapPropAnimationManager); 
     }
 }
 

@@ -21,7 +21,7 @@ typedef struct SafariObjectConfig {
     u8 objectType;
 } SafariObjectConfig;
 
-void GetSafariObjectConfig(SafariObjectConfig *a0, int a1, BOOL a2);
+void GetSafariObjectConfig(SafariObjectConfig *dest, int idx, int gender);
 void SaveData_SafariZone_CheckAreasWithUpdatedEncounters(SaveData *saveData, int a1);
 EncounterSlot *SafariZoneAreaSet_LoadAreaEncounters(SafariZoneAreaSet *areaSet, int area, int encounterType, TimeOfDayWildParam timeOfDay, enum HeapID heapID);
 

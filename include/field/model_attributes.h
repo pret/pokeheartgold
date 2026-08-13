@@ -29,5 +29,6 @@ void ModelAttributes_SetPolygonMode(ModelAttributes *modelAttributes, GXPolygonM
 void ModelAttributes_SetCullMode(ModelAttributes *modelAttributes, GXCull cullMode, BOOL applyGlobal);
 void ModelAttributes_SetAlpha(ModelAttributes *modelAttributes, int alpha, BOOL applyGlobal);
 void ModelAttributes_SetMiscAttrEnabled(ModelAttributes *modelAttributes, int miscFlagsMask, BOOL enable, BOOL applyGlobal);
+void ov01_021EA9B0(ModelAttributes *modelAttributes, NNSG3dResMdl *model, u32 a2);
 
 #endif // POKEHEARTGOLD_FIELD_MODEL_ATTRIBUTES_H

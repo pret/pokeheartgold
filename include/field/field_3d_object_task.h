@@ -1,5 +1,5 @@
-#ifndef POKEHEARTGOLD_FIELD_OVERLAY_01_021E66E4_H
-#define POKEHEARTGOLD_FIELD_OVERLAY_01_021E66E4_H
+#ifndef POKEHEARTGOLD_FIELD_FIELD_3D_OBJECT_TASK_H
+#define POKEHEARTGOLD_FIELD_FIELD_3D_OBJECT_TASK_H
 
 #include "heap.h"
 #include "sys_task.h"
@@ -43,4 +43,4 @@ Field3dObjectTask *Field3dObjectTaskManager_CreateTask(Field3dObjectTaskManager 
 void Field3dObjectTask_Delete(Field3dObjectTask *task);
 void *Field3dObjectTask_GetData(Field3dObjectTask *task);
 
-#endif // POKEHEARTGOLD_FIELD_OVERLAY_01_021E66E4_H
+#endif // POKEHEARTGOLD_FIELD_FIELD_3D_OBJECT_TASK_H
