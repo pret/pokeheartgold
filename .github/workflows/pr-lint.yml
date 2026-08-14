@@ -1,0 +1,33 @@
+name: pr-lint
+on:
+  pull_request:
+    branches: [main]
+    paths: ['**.c', '**.h']
+  workflow_dispatch: {}
+
+jobs:
+  pr-lint:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      pull-requests: read
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: cpp-linter/cpp-linter-action@v2.18.0
+        id: linter
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          style: 'file' # Use repository .clang-format file
+          tidy-checks: '-*' # Disable clang-tidy checks
+          version: '19'
+          files-changed-only: false # Github returns error code 406 if more than 300 files are changed in a PR
+          ignore: '.github|lib|subprojects|tools'
+          file-annotations: false
+
+      - name: fail fast
+        if: steps.linter.outputs.clang-format-checks-failed > 0
+        run: exit 1
