@@ -6,28 +6,29 @@
 #include "gf_rtc.h"
 #include "heap.h"
 
-typedef struct FieldSystemUnkSubCC_Sub0_SubStruct {
+// Todo: move back probably
+typedef struct MapPropAnimation {
     NNSG3dAnmObj *animObj;
     void *res;
-    int unk8;
-    u32 unkC;
-    u32 unk10;
+    int loopCount;
+    BOOL paused;
+    BOOL reversed;
     u32 unk14;
     int unk18;
-    u32 unk1C;
-} FieldSystemUnkSubCC_Sub0_SubStruct;
+    BOOL looping;
+} MapPropAnimation;
 
 typedef struct FieldSystemUnkSubCC_Sub0 FieldSystemUnkSubCC_Sub0;
 
 typedef struct FieldSystemUnkSubCC {
     FieldSystemUnkSubCC_Sub0 *unk0;
-    FieldSystemUnkSubCC_Sub0_SubStruct *unk4;
+    MapPropAnimation *mapPropAnimation;
 } FieldSystemUnkSubCC;
 
 struct FieldSystemUnkSubCC_Sub0 {
     NNSFndAllocator unk0;
-    FieldSystemUnkSubCC_Sub0_SubStruct *unk10;
-    FieldSystemUnkSubCC_Sub0_SubStruct **unk14;
+    MapPropAnimation *unk10;
+    MapPropAnimation **unk14;
     FieldSystemUnkSubCC_Sub0 *next;
     void *unk1C;
     u16 unk20;
@@ -57,13 +58,15 @@ typedef struct UnkStruct_FieldSysC0 {
     int objectMax;
 } UnkStruct_FieldSysC0;
 
+// TimeOfDayVisual?
 typedef struct FieldSystemUnkSub104_Sub8 {
     u32 unk0;
     int unk4;
-    FieldSystemUnkSubCC_Sub0_SubStruct *unk8[4];
-    UnkStruct_FieldSysC0_SubC *unk18;
+    MapPropAnimation *animations[4];
+    NNSG3dRenderObj *renderObj;
 } FieldSystemUnkSub104_Sub8; // Size: 0x1C
 
+// TimeOfDayVisualManager?
 typedef struct FieldSystemUnkSub104 {
     TIMEOFDAY timeOfDay;
     int unk4;
@@ -87,31 +90,31 @@ BOOL ov01_02204154(UnkStruct_FieldSysC0 *unkC0, int index);
 FieldSystemUnkSubC8 *ov01_022041C4(enum HeapID heapID);
 FieldSystemUnkSubCC_Sub0 *ov01_022041D8(FieldSystemUnkSubC8 *unkC8, enum HeapID heapID, u16 count);
 void ov01_02204278(FieldSystemUnkSubC8 *unkSubC8); // UnkSubC8_Free
-FieldSystemUnkSubCC_Sub0_SubStruct *ov01_022042FC(FieldSystemUnkSubCC_Sub0 *unkCC_Sub0);
-void ov01_0220431C(FieldSystemUnkSubCC_Sub0 *unkCC_Sub0, FieldSystemUnkSubCC_Sub0_SubStruct *substruct);
+MapPropAnimation *ov01_022042FC(FieldSystemUnkSubCC_Sub0 *unkCC_Sub0);
+void ov01_0220431C(FieldSystemUnkSubCC_Sub0 *unkCC_Sub0, MapPropAnimation *animation);
 void ov01_02204350(FieldSystemUnkSubC8 *unkSubC8);
 void ov01_022043D8(FieldSystemUnkSubC8 *unkSubC8);
 void ov01_02204424(FieldSystemUnkSubC8 *unkSubC8);
-void ov01_02204470(FieldSystemUnkSubCC_Sub0 *unkCC_Sub0, FieldSystemUnkSubCC_Sub0_SubStruct *substruct, void *res, NNSG3dResMdl *model, NNSG3dResTex *texture);
-void ov01_022044C8(FieldSystemUnkSubCC_Sub0_SubStruct *substruct, int unk8, int unkC, int unk10);
-void ov01_022044E0(FieldSystemUnkSubCC_Sub0_SubStruct *substruct);
-void ov01_02204500(FieldSystemUnkSubCC_Sub0 *unkCC_Sub0, FieldSystemUnkSubCC_Sub0_SubStruct *substruct);
-void ov01_0220450C(UnkStruct_FieldSysC0_SubC *unkC0_SubC, FieldSystemUnkSubCC_Sub0_SubStruct *substruct);
-BOOL ov01_02204518(UnkStruct_FieldSysC0_SubC *unkC0_SubC, FieldSystemUnkSubCC_Sub0_SubStruct *substruct);
-u16 ov01_02204554(FieldSystemUnkSubCC_Sub0_SubStruct *substruct);
-void ov01_0220455C(FieldSystemUnkSubCC_Sub0_SubStruct *substruct, int unkC);
-BOOL ov01_02204560(FieldSystemUnkSubCC_Sub0_SubStruct *substruct);
-void ov01_02204570(FieldSystemUnkSubCC_Sub0_SubStruct *substruct);
-void ov01_02204590(FieldSystemUnkSubCC_Sub0_SubStruct *substruct, int unk8);
+void ov01_02204470(FieldSystemUnkSubCC_Sub0 *unkCC_Sub0, MapPropAnimation *animation, void *res, NNSG3dResMdl *model, NNSG3dResTex *texture);
+void MapPropAnimation_Init(MapPropAnimation *animation, int loopCount, BOOL paused, BOOL reversed);
+void MapPropAnimation_GoToFirstFrame(MapPropAnimation *animation);
+void ov01_02204500(FieldSystemUnkSubCC_Sub0 *unkCC_Sub0, MapPropAnimation *animation);
+void MapPropAnimation_AddToRenderObj(NNSG3dRenderObj *renderObj, MapPropAnimation *animation);
+BOOL MapPropAnimation_RemoveFromRenderObj(NNSG3dRenderObj *renderObj, MapPropAnimation *animation);
+u16 MapPropAnimation_GetLoopCount(MapPropAnimation *animation);
+void MapPropAnimation_SetPaused(MapPropAnimation *animation, BOOL paused);
+BOOL MapPropAnimation_IsLoopFinished(MapPropAnimation *animation);
+void MapPropAnimation_GoToLastFrame(MapPropAnimation *animation);
+void MapPropAnimation_SetLoopCount(MapPropAnimation *animation, const int loopCount);
 FieldSystemUnkSubCC *ov01_0220460C(FieldSystemUnkSubC8 *unkSubC8); // UnkCC_Init
 void ov01_02204634(FieldSystemUnkSubCC *unkCC);                    // UnkCC_Free
 void ov01_0220463C(FieldSystemUnkSubCC *unkCC, int fileID);        // UnkCC_Load
-void ov01_02204678(FieldSystemUnkSubCC *unkCC, UnkStruct_FieldSysC0_SubC *unkC0_SubC);
-void ov01_02204688(FieldSystemUnkSubCC *unkCC, UnkStruct_FieldSysC0_SubC *unkC0_SubC);
+void ov01_02204678(FieldSystemUnkSubCC *unkCC, NNSG3dRenderObj *renderObj);
+void ov01_02204688(FieldSystemUnkSubCC *unkCC, NNSG3dRenderObj *renderObj);
 void ov01_02204698(FieldSystemUnkSubCC *unkCC);
 FieldSystemUnkSub104 *ov01_02204744(enum HeapID heapID);
 void ov01_02204764(FieldSystemUnkSub104 *unk104);
-void ov01_0220476C(FieldSystemUnkSub104 *unk104, UnkStruct_FieldSysC0_SubC *subC, FieldSystemUnkSubCC_Sub0_SubStruct **substruct, int arg3);
+void ov01_0220476C(FieldSystemUnkSub104 *unk104, NNSG3dRenderObj *renderObj, MapPropAnimation **animation, int count);
 void ov01_022047DC(FieldSystemUnkSub104 *unk104);
 u8 ov01_02204834(FieldSystemUnkSub104 *unk104);
 

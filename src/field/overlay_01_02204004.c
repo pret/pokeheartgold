@@ -7,8 +7,8 @@
 
 static BOOL ov01_02204144(UnkStruct_FieldSysC0 *unkC0, int index);
 static UnkStruct_FieldSysC0_SubC *ov01_02204168(UnkStruct_FieldSysC0 *unkC0, NNSG3dResFileHeader **resFileHeader, int index);
-static void ov01_02204594(FieldSystemUnkSubCC_Sub0_SubStruct *substruct);
-static BOOL ov01_022045DC(FieldSystemUnkSubCC_Sub0_SubStruct *substruct);
+static void MapPropAnimation_AdvanceFrame(MapPropAnimation *animation);
+static BOOL MapPropAnimation_IsOnLastFrame(MapPropAnimation *animation);
 static void ov01_022046A4(NNSFndAllocator *pAllocator, NNSG3dAnmObj **pAlloc, void *res);
 static void *ov01_022046D4(NNSFndAllocator *pAllocator, ResAnim_4004 *anim);
 static void ov01_02204728(NNSG3dAnmObj *alloc, ResAnim_4004 *anim);
@@ -147,10 +147,10 @@ void ov01_02204278(FieldSystemUnkSubC8 *unkSubC8) { // UnkSubC8_Free
         } else {
             for (int i = 0; i < unkSubC8->unkC; i++) {
                 for (int j = 0; j < unk4->unk20; j++) {
-                    FieldSystemUnkSubCC_Sub0_SubStruct *substruct = &unk4->unk10[j];
-                    if (substruct->unk14 == 1) {
-                        ov01_02204500(unk4, substruct);
-                        ov01_0220431C(unk4, substruct);
+                    MapPropAnimation *animation = &unk4->unk10[j];
+                    if (animation->unk14 == 1) {
+                        ov01_02204500(unk4, animation);
+                        ov01_0220431C(unk4, animation);
                     }
                 }
                 Heap_Free(unk4->unk10);
@@ -164,7 +164,7 @@ void ov01_02204278(FieldSystemUnkSubC8 *unkSubC8) { // UnkSubC8_Free
     }
 }
 
-FieldSystemUnkSubCC_Sub0_SubStruct *ov01_022042FC(FieldSystemUnkSubCC_Sub0 *unkCC_Sub0) {
+MapPropAnimation *ov01_022042FC(FieldSystemUnkSubCC_Sub0 *unkCC_Sub0) {
     u16 index = unkCC_Sub0->unk22;
     if (unkCC_Sub0->unk22 >= unkCC_Sub0->unk20) {
         GF_ASSERT(FALSE);
@@ -174,17 +174,17 @@ FieldSystemUnkSubCC_Sub0_SubStruct *ov01_022042FC(FieldSystemUnkSubCC_Sub0 *unkC
     return unkCC_Sub0->unk14[index];
 }
 
-void ov01_0220431C(FieldSystemUnkSubCC_Sub0 *unkCC_Sub0, FieldSystemUnkSubCC_Sub0_SubStruct *substruct) {
+void ov01_0220431C(FieldSystemUnkSubCC_Sub0 *unkCC_Sub0, MapPropAnimation *animation) {
     if (unkCC_Sub0->unk22 == 0) {
         GF_AssertFail();
     } else {
         unkCC_Sub0->unk22--;
-        if (substruct->res != NULL) {
-            Heap_Free(substruct->res);
+        if (animation->res != NULL) {
+            Heap_Free(animation->res);
         }
-        substruct->animObj = NULL;
-        substruct->unk14 = 0;
-        unkCC_Sub0->unk14[unkCC_Sub0->unk22] = substruct;
+        animation->animObj = NULL;
+        animation->unk14 = 0;
+        unkCC_Sub0->unk14[unkCC_Sub0->unk22] = animation;
     }
 }
 
@@ -198,14 +198,14 @@ void ov01_02204350(FieldSystemUnkSubC8 *unkC8) {
         if (unkCC_Sub0 != NULL) {
             for (int i = 0; i < unkC8->unkC; i++) {
                 for (int j = 0; j < unkCC_Sub0->unk20; j++) {
-                    FieldSystemUnkSubCC_Sub0_SubStruct *substruct = &unkCC_Sub0->unk10[j];
-                    if (substruct->unk14 == 1 && substruct->unkC != 1 && substruct->unk1C) {
-                        ov01_02204594(substruct);
-                        if (substruct->unk8 != -1 && ov01_022045DC(substruct)) {
-                            if (substruct->unk18 + 1 >= substruct->unk8) {
-                                substruct->unk1C = 0;
+                    MapPropAnimation *animation = &unkCC_Sub0->unk10[j];
+                    if (animation->unk14 == 1 && animation->paused != TRUE && animation->looping) {
+                        MapPropAnimation_AdvanceFrame(animation);
+                        if (animation->loopCount != -1 && MapPropAnimation_IsOnLastFrame(animation)) {
+                            if (animation->unk18 + 1 >= animation->loopCount) {
+                                animation->looping = FALSE;
                             } else {
-                                substruct->unk18++;
+                                animation->unk18++;
                             }
                         }
                     }
@@ -223,9 +223,9 @@ void ov01_022043D8(FieldSystemUnkSubC8 *unkSubC8) {
         if (unk4 != NULL) {
             for (i = 0; i < unkSubC8->unkC; i++) {
                 for (j = 0; j < unk4->unk20; j++) {
-                    FieldSystemUnkSubCC_Sub0_SubStruct *substruct = &unk4->unk10[j];
-                    if (substruct->unk14 == 1 && substruct->unk1C) {
-                        substruct->unkC = 1;
+                    MapPropAnimation *animation = &unk4->unk10[j];
+                    if (animation->unk14 == 1 && animation->looping) {
+                        animation->paused = TRUE;
                     }
                 }
                 unk4 = unk4->next;
@@ -240,9 +240,9 @@ void ov01_02204424(FieldSystemUnkSubC8 *unkSubC8) {
         if (unkCC_Sub0 != NULL) {
             for (int i = 0; i < unkSubC8->unkC; i++) {
                 for (int j = 0; j < unkCC_Sub0->unk20; j++) {
-                    FieldSystemUnkSubCC_Sub0_SubStruct *substruct = &unkCC_Sub0->unk10[j];
-                    if (substruct->unk14 == 1 && substruct->unk1C) {
-                        ov01_022044E0(substruct);
+                    MapPropAnimation *animation = &unkCC_Sub0->unk10[j];
+                    if (animation->unk14 == 1 && animation->looping) {
+                        MapPropAnimation_GoToFirstFrame(animation);
                     }
                 }
                 unkCC_Sub0 = unkCC_Sub0->next;
@@ -251,25 +251,25 @@ void ov01_02204424(FieldSystemUnkSubC8 *unkSubC8) {
     }
 }
 
-void ov01_02204470(FieldSystemUnkSubCC_Sub0 *unkCC_Sub0, FieldSystemUnkSubCC_Sub0_SubStruct *substruct, void *res, NNSG3dResMdl *model, NNSG3dResTex *texture) {
+void ov01_02204470(FieldSystemUnkSubCC_Sub0 *unkCC_Sub0, MapPropAnimation *animation, void *res, NNSG3dResMdl *model, NNSG3dResTex *texture) {
     void *anim = NNS_G3dGetAnmByIdx(res, 0);
     if (anim == NULL) {
         GF_AssertFail();
     }
     NNSG3dAnmObj *animObj = NNS_G3dAllocAnmObj(&unkCC_Sub0->unk0, anim, model);
-    substruct->animObj = animObj;
+    animation->animObj = animObj;
     if (animObj == NULL) {
         GF_AssertFail();
     }
-    NNS_G3dAnmObjInit(substruct->animObj, anim, model, texture);
-    substruct->res = res;
+    NNS_G3dAnmObjInit(animation->animObj, anim, model, texture);
+    animation->res = res;
 }
 
-static void ov01_022044B0(FieldSystemUnkSubCC_Sub0 *unkCC_Sub0, FieldSystemUnkSubCC_Sub0_SubStruct *substruct, void *res, int arg3) {
+static void ov01_022044B0(FieldSystemUnkSubCC_Sub0 *unkCC_Sub0, MapPropAnimation *animation, void *res, int arg3) {
     void (*unkFunc)() = unkCC_Sub0->unk1C;
     if (unkFunc != NULL) {
-        unkFunc(unkCC_Sub0, substruct, res, arg3);
-        substruct->res = res;
+        unkFunc(unkCC_Sub0, animation, res, arg3);
+        animation->res = res;
     }
 }
 
@@ -277,96 +277,96 @@ static void ov01_022044C4(FieldSystemUnkSubCC_Sub0 *unkCC_Sub0, void *arg1) {
     unkCC_Sub0->unk1C = arg1;
 }
 
-void ov01_022044C8(FieldSystemUnkSubCC_Sub0_SubStruct *substruct, int unk8, int unkC, int unk10) {
-    substruct->unk18 = 0;
-    substruct->unk1C = 1;
-    substruct->unk14 = 1;
-    substruct->unk8 = unk8;
-    substruct->unkC = unkC;
-    substruct->unk10 = unk10;
+void MapPropAnimation_Init(MapPropAnimation *animation, int loopCount, BOOL paused, BOOL reversed) {
+    animation->unk18 = 0;
+    animation->looping = TRUE;
+    animation->unk14 = 1;
+    animation->loopCount = loopCount;
+    animation->paused = paused;
+    animation->reversed = reversed;
 }
 
-void ov01_022044E0(FieldSystemUnkSubCC_Sub0_SubStruct *substruct) {
-    if (substruct->unk10 == 0) {
-        substruct->animObj->frame = 0;
+void MapPropAnimation_GoToFirstFrame(MapPropAnimation *animation) {
+    if (!animation->reversed) {
+        animation->animObj->frame = 0;
     } else {
-        substruct->animObj->frame = NNS_G3dAnmObjGetNumFrame(substruct->animObj) - 0x1000;
+        animation->animObj->frame = NNS_G3dAnmObjGetNumFrame(animation->animObj) - FX32_ONE;
     }
 }
 
-void ov01_02204500(FieldSystemUnkSubCC_Sub0 *unkCC_Sub0, FieldSystemUnkSubCC_Sub0_SubStruct *substruct) {
-    NNS_G3dFreeAnmObj(&unkCC_Sub0->unk0, substruct->animObj);
+void ov01_02204500(FieldSystemUnkSubCC_Sub0 *unkCC_Sub0, MapPropAnimation *animation) { // FieldSystemUnkSubCC_Sub0_FreeMapPropAnimObj
+    NNS_G3dFreeAnmObj(&unkCC_Sub0->unk0, animation->animObj);
 }
 
-void ov01_0220450C(UnkStruct_FieldSysC0_SubC *unkC0_SubC, FieldSystemUnkSubCC_Sub0_SubStruct *substruct) {
-    NNS_G3dRenderObjAddAnmObj(&unkC0_SubC->renderObj, substruct->animObj);
+void MapPropAnimation_AddToRenderObj(NNSG3dRenderObj *renderObj, MapPropAnimation *animation) {
+    NNS_G3dRenderObjAddAnmObj(renderObj, animation->animObj);
 }
 
-BOOL ov01_02204518(UnkStruct_FieldSysC0_SubC *unkC0_SubC, FieldSystemUnkSubCC_Sub0_SubStruct *substruct) {
-    if (substruct == NULL) {
+BOOL MapPropAnimation_RemoveFromRenderObj(NNSG3dRenderObj *renderObj, MapPropAnimation *animation) {
+    if (animation == NULL) {
         return FALSE;
     }
-    if (substruct->animObj == NULL) {
+    if (animation->animObj == NULL) {
         return FALSE;
     }
-    if (unkC0_SubC == NULL) {
+    if (renderObj == NULL) {
         return FALSE;
     }
-    if (unkC0_SubC->renderObj.anmMat == NULL && unkC0_SubC->renderObj.anmJnt == NULL && unkC0_SubC->renderObj.anmVis == NULL) {
+    if (renderObj->anmMat == NULL && renderObj->anmJnt == NULL && renderObj->anmVis == NULL) {
         return FALSE;
     }
 
-    NNS_G3dRenderObjRemoveAnmObj(&unkC0_SubC->renderObj, substruct->animObj);
+    NNS_G3dRenderObjRemoveAnmObj(renderObj, animation->animObj);
     return TRUE;
 }
 
-u16 ov01_02204554(FieldSystemUnkSubCC_Sub0_SubStruct *substruct) {
-    return substruct->unk8;
+u16 MapPropAnimation_GetLoopCount(MapPropAnimation *animation) {
+    return animation->loopCount;
 }
 
-void ov01_0220455C(FieldSystemUnkSubCC_Sub0_SubStruct *substruct, int unkC) {
-    substruct->unkC = unkC;
+void MapPropAnimation_SetPaused(MapPropAnimation *animation, BOOL paused) {
+    animation->paused = paused;
 }
 
-BOOL ov01_02204560(FieldSystemUnkSubCC_Sub0_SubStruct *substruct) {
-    return substruct->unk1C == 0;
+BOOL MapPropAnimation_IsLoopFinished(MapPropAnimation *animation) {
+    return animation->looping == FALSE;
 }
 
-void ov01_02204570(FieldSystemUnkSubCC_Sub0_SubStruct *substruct) {
-    if (substruct->unk10 == 0) {
-        substruct->animObj->frame = NNS_G3dAnmObjGetNumFrame(substruct->animObj) - 0x1000;
+void MapPropAnimation_GoToLastFrame(MapPropAnimation *animation) {
+    if (!animation->reversed) {
+        animation->animObj->frame = NNS_G3dAnmObjGetNumFrame(animation->animObj) - FX32_ONE;
     } else {
-        substruct->animObj->frame = 0;
+        animation->animObj->frame = 0;
     }
 }
 
-void ov01_02204590(FieldSystemUnkSubCC_Sub0_SubStruct *substruct, int unk8) {
-    substruct->unk8 = unk8;
+void MapPropAnimation_SetLoopCount(MapPropAnimation *animation, const int loopCount) {
+    animation->loopCount = loopCount;
 }
 
-static void ov01_02204594(FieldSystemUnkSubCC_Sub0_SubStruct *substruct) {
-    if (substruct->unk10 == 0) {
-        substruct->animObj->frame += 0x1000;
-        if (substruct->animObj->frame == NNS_G3dAnmObjGetNumFrame(substruct->animObj)) {
-            substruct->animObj->frame = 0;
+static void MapPropAnimation_AdvanceFrame(MapPropAnimation *animation) {
+    if (!animation->reversed) {
+        animation->animObj->frame += FX32_ONE;
+        if (animation->animObj->frame == NNS_G3dAnmObjGetNumFrame(animation->animObj)) {
+            animation->animObj->frame = 0;
         }
     } else {
-        if (substruct->animObj->frame <= 0) {
-            substruct->animObj->frame = NNS_G3dAnmObjGetNumFrame(substruct->animObj) - 0x1000;
+        if (animation->animObj->frame <= 0) {
+            animation->animObj->frame = NNS_G3dAnmObjGetNumFrame(animation->animObj) - FX32_ONE;
         } else {
-            substruct->animObj->frame -= 0x1000;
+            animation->animObj->frame -= FX32_ONE;
         }
     }
 }
 
-static BOOL ov01_022045DC(FieldSystemUnkSubCC_Sub0_SubStruct *substruct) {
-    if (substruct->unk10 == 0) {
-        return substruct->animObj->frame >= NNS_G3dAnmObjGetNumFrame(substruct->animObj) - 0x1000;
+static BOOL MapPropAnimation_IsOnLastFrame(MapPropAnimation *animation) {
+    if (!animation->reversed) {
+        return animation->animObj->frame >= NNS_G3dAnmObjGetNumFrame(animation->animObj) - FX32_ONE;
     }
-    return substruct->animObj->frame == 0;
+    return animation->animObj->frame == 0;
 }
 
-FieldSystemUnkSubCC *ov01_0220460C(FieldSystemUnkSubC8 *unkSubC8) {
+FieldSystemUnkSubCC *ov01_0220460C(FieldSystemUnkSubC8 *unkSubC8) { // UnkCC_Init
     FieldSystemUnkSubCC *unkCC = Heap_Alloc(HEAP_ID_FIELD1, sizeof(FieldSystemUnkSubCC));
     FieldSystemUnkSubCC_Sub0 *unkCC_Sub0 = ov01_022041D8(unkSubC8, HEAP_ID_FIELD1, 1);
     unkCC->unk0 = unkCC_Sub0;
@@ -374,26 +374,26 @@ FieldSystemUnkSubCC *ov01_0220460C(FieldSystemUnkSubC8 *unkSubC8) {
     return unkCC;
 }
 
-void ov01_02204634(FieldSystemUnkSubCC *unkCC) {
+void ov01_02204634(FieldSystemUnkSubCC *unkCC) { // UnkCC_Free
     Heap_Free(unkCC);
 }
 
-void ov01_0220463C(FieldSystemUnkSubCC *unkCC, int fileID) {
-    FieldSystemUnkSubCC_Sub0_SubStruct *substruct = ov01_022042FC(unkCC->unk0);
-    if (substruct == NULL) {
+void ov01_0220463C(FieldSystemUnkSubCC *unkCC, int fileID) { // UnkCC_Load
+    MapPropAnimation *animation = ov01_022042FC(unkCC->unk0);
+    if (animation == NULL) {
         GF_AssertFail();
     }
-    ov01_022044C8(substruct, -1, 0, 0);
-    ov01_022044B0(unkCC->unk0, substruct, AllocAndReadWholeNarcMemberByIdPair(NARC_a_1_4_0, fileID, HEAP_ID_FIELD1), 0);
-    unkCC->unk4 = substruct;
+    MapPropAnimation_Init(animation, -1, FALSE, FALSE);
+    ov01_022044B0(unkCC->unk0, animation, AllocAndReadWholeNarcMemberByIdPair(NARC_a_1_4_0, fileID, HEAP_ID_FIELD1), 0);
+    unkCC->mapPropAnimation = animation;
 }
 
-void ov01_02204678(FieldSystemUnkSubCC *unkCC, UnkStruct_FieldSysC0_SubC *unkC0_SubC) {
-    ov01_0220450C(unkC0_SubC, unkCC->unk4);
+void ov01_02204678(FieldSystemUnkSubCC *unkCC, NNSG3dRenderObj *renderObj) { // UnkCC_AddMapPropAnimationToRenderObj
+    MapPropAnimation_AddToRenderObj(renderObj, unkCC->mapPropAnimation);
 }
 
-void ov01_02204688(FieldSystemUnkSubCC *unkCC, UnkStruct_FieldSysC0_SubC *unkC0_SubC) {
-    ov01_02204518(unkC0_SubC, unkCC->unk4);
+void ov01_02204688(FieldSystemUnkSubCC *unkCC, NNSG3dRenderObj *renderObj) { // UnkCC_RemoveMapPropAnimationFromRenderObj
+    MapPropAnimation_RemoveFromRenderObj(renderObj, unkCC->mapPropAnimation);
 }
 
 void ov01_02204698(FieldSystemUnkSubCC *unkCC) {
@@ -435,42 +435,42 @@ static void ov01_02204728(NNSG3dAnmObj *alloc, ResAnim_4004 *anim) {
     ov01_022046E8(alloc, anim);
 }
 
-FieldSystemUnkSub104 *ov01_02204744(enum HeapID heapID) {
+FieldSystemUnkSub104 *ov01_02204744(enum HeapID heapID) { // FieldSystemUnkSub104_Init
     FieldSystemUnkSub104 *unk104 = Heap_Alloc(heapID, sizeof(FieldSystemUnkSub104));
     MIi_CpuClearFast(0, (u32 *)unk104, sizeof(FieldSystemUnkSub104));
     unk104->timeOfDay = GF_RTC_GetTimeOfDay();
     return unk104;
 }
 
-void ov01_02204764(FieldSystemUnkSub104 *unk104) {
+void ov01_02204764(FieldSystemUnkSub104 *unk104) { // FieldSystemUnkSub104_Free
     Heap_Free(unk104);
 }
 
-void ov01_0220476C(FieldSystemUnkSub104 *unk104, UnkStruct_FieldSysC0_SubC *subC, FieldSystemUnkSubCC_Sub0_SubStruct **substruct, int arg3) {
+void ov01_0220476C(FieldSystemUnkSub104 *unk104, NNSG3dRenderObj *renderObj, MapPropAnimation **animation, int count) {
     if (unk104->unk4 < 4) {
         if (unk104->unkSub[unk104->unk4].unk0) {
             GF_AssertFail();
         }
-        if (arg3 > 4) {
+        if (count > 4) {
             GF_AssertFail();
         }
         FieldSystemUnkSub104_Sub8 *unkSub = &unk104->unkSub[unk104->unk4];
         unkSub->unk0 = 1;
-        unkSub->unk4 = arg3;
-        if (arg3 > 4) {
+        unkSub->unk4 = count;
+        if (count > 4) {
             unkSub->unk4 = 4;
         }
-        for (u8 i = 0; i < unkSub->unk4; i++) {
-            unkSub->unk8[i] = substruct[i];
+        for (u8 i = 0;  i < unkSub->unk4; i++) {
+            unkSub->animations[i] = animation[i];
         }
-        unkSub->unk18 = subC;
+        unkSub->renderObj = renderObj;
         unk104->unk4++;
     } else {
         GF_AssertFail();
     }
 }
 
-static const u8 ov01_022095EC[5] = {
+static const u8 sTimeOfDayVisualState[RTC_TIMEOFDAY_COUNT] = {
     [RTC_TIMEOFDAY_MORN] = 0,
     [RTC_TIMEOFDAY_DAY] = 1,
     [RTC_TIMEOFDAY_EVE] = 2,
@@ -478,7 +478,7 @@ static const u8 ov01_022095EC[5] = {
     [RTC_TIMEOFDAY_LATE] = 3
 };
 
-void ov01_022047DC(FieldSystemUnkSub104 *unk104) {
+void ov01_022047DC(FieldSystemUnkSub104 *unk104) { // FieldSystemUnkSub104_SwitchTimeOfDay
     u8 currentTimeOfDay = (u8)GF_RTC_GetTimeOfDay();
     if (unk104->timeOfDay != currentTimeOfDay) {
         u8 previousTimeOfDay = unk104->timeOfDay;
@@ -486,13 +486,13 @@ void ov01_022047DC(FieldSystemUnkSub104 *unk104) {
         for (int i = 0; i < 4; i++) {
             if (unk104->unkSub[i].unk0 != 0) {
                 FieldSystemUnkSub104_Sub8 *sub = &unk104->unkSub[i];
-                ov01_02204518(sub->unk18, sub->unk8[ov01_022095EC[previousTimeOfDay]]);
-                ov01_0220450C(sub->unk18, sub->unk8[ov01_022095EC[currentTimeOfDay]]);
+                MapPropAnimation_RemoveFromRenderObj(sub->renderObj, sub->animations[sTimeOfDayVisualState[previousTimeOfDay]]);
+                MapPropAnimation_AddToRenderObj(sub->renderObj, sub->animations[sTimeOfDayVisualState[currentTimeOfDay]]);
             }
         }
     }
 }
 
-u8 ov01_02204834(FieldSystemUnkSub104 *unk104) {
-    return ov01_022095EC[unk104->timeOfDay];
+u8 ov01_02204834(FieldSystemUnkSub104 *unk104) { // FieldSystemUnkSub104_GetTimeOfDayVisualState
+    return sTimeOfDayVisualState[unk104->timeOfDay];
 }

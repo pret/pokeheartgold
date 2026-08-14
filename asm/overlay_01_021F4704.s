@@ -605,7 +605,7 @@ _021F4B56:
 	ldr r1, [r1, #0xc]
 	ldr r2, [r7, r2]
 	ldr r3, [r5]
-	bl ov01_021F3744
+	bl MapPropManager_LoadFromNARC
 	add sp, #0x1c
 	pop {r4, r5, r6, r7, pc}
 _021F4B70:
@@ -658,7 +658,7 @@ _021F4BAC:
 	ldr r3, [sp, #0x10]
 	ldr r1, [r7, r1]
 	add r3, r3, r5
-	bl ov01_021F3834
+	bl MapPropManager_LoadFromSafariZone
 	add sp, #0x1c
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -851,7 +851,7 @@ ov01_021F4D10: ; 0x021F4D10
 	add r3, #0xf4
 	ldr r1, [sp, #0x1c]
 	ldr r3, [r3]
-	bl ov01_021F3744
+	bl MapPropManager_LoadFromNARC
 	str r5, [sp]
 	str r7, [sp, #4]
 	mov r0, #1
@@ -918,7 +918,7 @@ ov01_021F4D88: ; 0x021F4D88
 	add r3, #0xf4
 	ldr r1, [sp, #0x1c]
 	ldr r3, [r3]
-	bl ov01_021F3744
+	bl MapPropManager_LoadFromNARC
 	str r4, [sp]
 	str r7, [sp, #4]
 	mov r0, #0
@@ -1038,7 +1038,7 @@ ov01_021F4E88: ; 0x021F4E88
 	add r3, #0xf4
 	ldr r1, [sp, #0x24]
 	ldr r3, [r3]
-	bl ov01_021F3744
+	bl MapPropManager_LoadFromNARC
 	ldr r0, [sp, #0x14]
 	ldr r3, [sp, #0x10]
 	str r0, [sp]
@@ -1110,7 +1110,7 @@ ov01_021F4F0C: ; 0x021F4F0C
 	add r3, #0xf4
 	ldr r1, [sp, #0x24]
 	ldr r3, [r3]
-	bl ov01_021F3744
+	bl MapPropManager_LoadFromNARC
 	ldr r0, [sp, #0x14]
 	ldr r3, [sp, #0x10]
 	str r0, [sp]
@@ -1919,7 +1919,7 @@ ov01_021F5568: ; 0x021F5568
 	ldr r1, [r4, r5]
 	ldr r0, _021F55E8 ; =0x00000868
 	ldr r0, [r1, r0]
-	bl ov01_021F36AC
+	bl MapPropManager_Reset
 	mov r0, #0
 	mov r2, #0x86
 	ldr r1, [r4, r5]
@@ -3654,7 +3654,7 @@ _021F6226:
 	ldr r1, [r0]
 	ldr r0, _021F62AC ; =0x00000868
 	ldr r0, [r1, r0]
-	bl ov01_021F3660
+	bl MapPropManager_Free
 	add r0, r5, r4
 	add r0, #0x90
 	ldr r1, [r0]

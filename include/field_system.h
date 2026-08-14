@@ -5,11 +5,11 @@
 #include "field/area_light.h"
 #include "field/draw_map_name.h"
 #include "field/dynamic_terrain_height.h"
+#include "field/field_3d_object_task.h"
 #include "field/hblank_system.h"
 #include "field/map_prop.h"
 #include "field/map_prop_animation.h"
 #include "field/model_attributes.h"
-#include "field/overlay_01_021E66E4.h"
 #include "field/overlay_01_021EAFD4.h"
 #include "field/overlay_01_02204004.h"
 #include "field/signpost.h"
@@ -220,9 +220,9 @@ struct FieldSystem {
     u32 unkAC;
     void *unkB0;
     s64 unkB4;
-    int unkBC;                 // flags?
-    void *unkC0;               // UnkStruct_FieldSysC0
-    int environmentSoundState; // Used to keep track of the active weather/soundplate sound and their associated loading status.
+    int unkBC;                   // flags?
+    UnkStruct_FieldSysC0 *unkC0; // UnkStruct_FieldSysC0
+    int environmentSoundState;   // Used to keep track of the active weather/soundplate sound and their associated loading status.
     FieldSystemUnkSubC8 *unkC8;
     void *unkCC;
     u16 lastTouchMenuInput;

@@ -9,12 +9,12 @@
 
 #include "field/area_data.h"
 #include "field/dynamic_terrain_height.h"
+#include "field/field_3d_object_task.h"
 #include "field/field_control.h"
 #include "field/hblank_system.h"
 #include "field/map_load_manager.h"
 #include "field/map_prop_animation.h"
 #include "field/model_attributes.h"
-#include "field/overlay_01_021E66E4.h"
 #include "field/overlay_01_021EABA8.h"
 #include "field/overlay_01_021EAF00.h"
 #include "field/overlay_01_021EAFD4.h"
@@ -279,7 +279,7 @@ BOOL FieldMap_Exit(OverlayManager *man, int *state) {
 
         MapPropAnimationManager_UnloadAllAnimations(fieldSystem->mapPropAnimationManager);
         MapPropAnimationManager_Free(fieldSystem->mapPropAnimationManager);
-        ov01_021E8DD4(&fieldSystem->mapPropOneShotAnimationManager);
+        MapPropOneShotAnimationManager_Free(&fieldSystem->mapPropOneShotAnimationManager);
         ov01_02204764(fieldSystem->unk104);
         ov01_02204634(fieldSystem->unkCC);
         ov01_02204278(fieldSystem->unkC8);
@@ -313,7 +313,7 @@ BOOL FieldMap_Exit(OverlayManager *man, int *state) {
             SysTask_CreateOnMainQueue(Task_AntipiracyRandom, NULL, 1245);
         }
 
-        ov01_021F3660(fieldSystem->mapPropManager);
+        MapPropManager_Free(fieldSystem->mapPropManager);
         (*state)++;
         break;
     case 1:
@@ -667,7 +667,7 @@ static void InitGraphicsAndManagers(FieldSystem *fieldSystem) {
     fieldSystem->unkCC = ov01_0220460C(fieldSystem->unkC8);
     fieldSystem->unk104 = ov01_02204744(HEAP_ID_FIELD1);
     fieldSystem->mapPropAnimationManager = MapPropAnimationManager_Init(ov01_021FB904(fieldSystem->areaDataManager), fieldSystem->unkC8);
-    fieldSystem->mapPropOneShotAnimationManager = ov01_021E8DB4();
+    fieldSystem->mapPropOneShotAnimationManager = MapPropOneShotAnimationManager_New();
 }
 
 static void FieldSystem_InitMapLoadManager(FieldSystem *fieldSystem) {
