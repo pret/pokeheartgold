@@ -7,48 +7,7 @@
 	.text
 
 	.extern ov04_02255140
-
-	thumb_func_start ov04_02255480
-ov04_02255480: ; 0x02255480
-	push {r4, r5}
-	ldr r4, [r3]
-	ldr r3, [r3, #4]
-	ldr r5, [sp, #8]
-	sub r4, r4, r1
-	sub r3, r3, r2
-	cmp r0, #1
-	beq _0225549C
-	cmp r0, #2
-	beq _022554A4
-	cmp r0, #3
-	beq _022554AE
-	pop {r4, r5}
-	bx lr
-_0225549C:
-	neg r0, r3
-	str r0, [r5]
-	str r4, [r5, #4]
-	b _022554B4
-_022554A4:
-	neg r0, r4
-	str r0, [r5]
-	neg r0, r3
-	str r0, [r5, #4]
-	b _022554B4
-_022554AE:
-	str r3, [r5]
-	neg r0, r4
-	str r0, [r5, #4]
-_022554B4:
-	ldr r0, [r5]
-	add r0, r0, r1
-	str r0, [r5]
-	ldr r0, [r5, #4]
-	add r0, r0, r2
-	str r0, [r5, #4]
-	pop {r4, r5}
-	bx lr
-	thumb_func_end ov04_02255480
+	.extern ov04_02255480
 
 	thumb_func_start ov04_022554C4
 ov04_022554C4: ; 0x022554C4

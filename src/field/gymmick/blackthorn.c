@@ -33,6 +33,7 @@ typedef struct BlackthornGymmickLocalData {
 } BlackthornGymmickLocalData; // size: 0x754
 
 void ov04_02255140(u8 i, u8 rot, u16 x, u16 z, BlackthornGymmickPlatformData *platform);
+void ov04_02255480(u8 rot, int x, int z, BlackthornGymXZPoint *pointIn, BlackthornGymXZPoint *pointOut);
 void ov04_022554FC(u8 rot, u16 x, u16 z, BlackthornGymmickPlatformData *platform);
 BOOL ov04_02255708(BlackthornGymmickLocalData *localData, u16 x, u16 z);
 
@@ -227,4 +228,28 @@ void ov04_02255140(u8 index, u8 rot, u16 x, u16 z, BlackthornGymmickPlatformData
     }
     platform->unk_006 = rot;
     ov04_022554FC(rot, x, z, platform);
+}
+
+void ov04_02255480(u8 rot, int x, int z, BlackthornGymXZPoint *pointIn, BlackthornGymXZPoint *pointOut) {
+    int dx = pointIn->x - x;
+    int dz = pointIn->z - z;
+
+    switch (rot) {
+    case 1:
+        pointOut->x = -dz;
+        pointOut->z = dx;
+        break;
+    case 2:
+        pointOut->x = -dx;
+        pointOut->z = -dz;
+        break;
+    case 3:
+        pointOut->x = dz;
+        pointOut->z = -dx;
+        break;
+    default:
+        return;
+    }
+    pointOut->x += x;
+    pointOut->z += z;
 }
