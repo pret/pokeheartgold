@@ -8,46 +8,8 @@
 
 	.extern ov04_02255140
 	.extern ov04_02255480
-
-	thumb_func_start ov04_022554C4
-ov04_022554C4: ; 0x022554C4
-	push {r3, r4}
-	mov r4, #0
-	cmp r1, #0
-	ble _022554DA
-_022554CC:
-	ldr r3, [r2]
-	add r4, r4, #1
-	add r3, r3, r0
-	str r3, [r2]
-	add r2, #8
-	cmp r4, r1
-	blt _022554CC
-_022554DA:
-	pop {r3, r4}
-	bx lr
-	.balign 4, 0
-	thumb_func_end ov04_022554C4
-
-	thumb_func_start ov04_022554E0
-ov04_022554E0: ; 0x022554E0
-	push {r3, r4}
-	mov r4, #0
-	cmp r1, #0
-	ble _022554F6
-_022554E8:
-	ldr r3, [r2, #4]
-	add r4, r4, #1
-	add r3, r3, r0
-	str r3, [r2, #4]
-	add r2, #8
-	cmp r4, r1
-	blt _022554E8
-_022554F6:
-	pop {r3, r4}
-	bx lr
-	.balign 4, 0
-	thumb_func_end ov04_022554E0
+	.extern ov04_022554C4
+	.extern ov04_022554E0
 
 	thumb_func_start ov04_022554FC
 ov04_022554FC: ; 0x022554FC

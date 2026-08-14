@@ -34,6 +34,8 @@ typedef struct BlackthornGymmickLocalData {
 
 void ov04_02255140(u8 i, u8 rot, u16 x, u16 z, BlackthornGymmickPlatformData *platform);
 void ov04_02255480(u8 rot, int x, int z, BlackthornGymXZPoint *pointIn, BlackthornGymXZPoint *pointOut);
+void ov04_022554C4(int dx, int height, BlackthornGymXZPoint *column);
+void ov04_022554E0(int dz, int width, BlackthornGymXZPoint *row);
 void ov04_022554FC(u8 rot, u16 x, u16 z, BlackthornGymmickPlatformData *platform);
 BOOL ov04_02255708(BlackthornGymmickLocalData *localData, u16 x, u16 z);
 
@@ -252,4 +254,16 @@ void ov04_02255480(u8 rot, int x, int z, BlackthornGymXZPoint *pointIn, Blacktho
     }
     pointOut->x += x;
     pointOut->z += z;
+}
+
+void ov04_022554C4(int dx, int height, BlackthornGymXZPoint *column) {
+    for (int i = 0; i < height; ++i) {
+        column[i].x += dx;
+    }
+}
+
+void ov04_022554E0(int dz, int width, BlackthornGymXZPoint *row) {
+    for (int i = 0; i < width; ++i) {
+        row[i].z += dz;
+    }
 }
