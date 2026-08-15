@@ -33,10 +33,10 @@ typedef struct BlackthornGymmickLocalData {
 } BlackthornGymmickLocalData; // size: 0x754
 
 void ov04_02255140(u8 i, u8 rot, u16 x, u16 z, BlackthornGymmickPlatformData *platform);
-void ov04_02255480(u8 rot, int x, int z, BlackthornGymXZPoint *pointIn, BlackthornGymXZPoint *pointOut);
-void ov04_022554C4(int dx, int height, BlackthornGymXZPoint *column);
-void ov04_022554E0(int dz, int width, BlackthornGymXZPoint *row);
-void ov04_022554FC(u8 rot, u16 x, u16 z, BlackthornGymmickPlatformData *platform);
+void ov04_02255480(const u8 rot, const u16 x, const u16 z, const BlackthornGymXZPoint *pointIn, BlackthornGymXZPoint *pointOut);
+void ov04_022554C4(int dx, u8 height, BlackthornGymXZPoint *column);
+void ov04_022554E0(int dz, u8 width, BlackthornGymXZPoint *row);
+void ov04_022554FC(const u8 rot, const u16 x, const u16 z, BlackthornGymmickPlatformData *platform);
 BOOL ov04_02255708(BlackthornGymmickLocalData *localData, u16 x, u16 z);
 
 void GymmickInit_Blackthorn(FieldSystem *fieldSystem) {
@@ -232,7 +232,7 @@ void ov04_02255140(u8 index, u8 rot, u16 x, u16 z, BlackthornGymmickPlatformData
     ov04_022554FC(rot, x, z, platform);
 }
 
-void ov04_02255480(u8 rot, int x, int z, BlackthornGymXZPoint *pointIn, BlackthornGymXZPoint *pointOut) {
+void ov04_02255480(const u8 rot, const u16 x, const u16 z, const BlackthornGymXZPoint *pointIn, BlackthornGymXZPoint *pointOut) {
     int dx = pointIn->x - x;
     int dz = pointIn->z - z;
 
@@ -256,14 +256,56 @@ void ov04_02255480(u8 rot, int x, int z, BlackthornGymXZPoint *pointIn, Blacktho
     pointOut->z += z;
 }
 
-void ov04_022554C4(int dx, int height, BlackthornGymXZPoint *column) {
+void ov04_022554C4(int dx, u8 height, BlackthornGymXZPoint *column) {
     for (int i = 0; i < height; ++i) {
         column[i].x += dx;
     }
 }
 
-void ov04_022554E0(int dz, int width, BlackthornGymXZPoint *row) {
+void ov04_022554E0(int dz, u8 width, BlackthornGymXZPoint *row) {
     for (int i = 0; i < width; ++i) {
         row[i].z += dz;
+    }
+}
+
+// the const is required to match
+// i don't make the rules
+void ov04_022554FC(const u8 rot, const u16 x, const u16 z, BlackthornGymmickPlatformData *platform) {
+    int i;
+    int sp44;
+    u8 sp20;
+    u8 sp24;
+
+    if (platform->unk_000 == 0) {
+        sp44 = 14;
+        sp20 = 5;
+        sp24 = 7;
+    } else {
+        sp44 = 24;
+        sp20 = 4;
+        sp24 = 8;
+    }
+    ov04_02255480(rot, x, z, &platform->unk_010, &platform->unk_010);
+    ov04_02255480(rot, x, z, &platform->unk_018, &platform->unk_018);
+    for (i = 0; i < sp24; ++i) {
+        ov04_02255480(rot, x, z, &platform->unk_028[i], &platform->unk_028[i]);
+    }
+    for (i = 0; i < sp24; ++i) {
+        ov04_02255480(rot, x, z, &platform->unk_068[i], &platform->unk_068[i]);
+    }
+    for (i = 0; i < sp20; ++i) {
+        ov04_02255480(rot, x, z, &platform->unk_0A8[i], &platform->unk_0A8[i]);
+    }
+    for (i = 0; i < sp20; ++i) {
+        ov04_02255480(rot, x, z, &platform->unk_0D0[i], &platform->unk_0D0[i]);
+    }
+    for (i = 0; i < sp44; ++i) {
+        ov04_02255480(rot, x, z, &platform->unk_0F8[i], &platform->unk_0F8[i]);
+    }
+    for (i = 0; i < sp20; ++i) {
+        ov04_02255480(rot, x, z, &platform->unk_1B8[i], &platform->unk_1B8[i]);
+    }
+    for (i = 0; i < 18; ++i) {
+        ov04_02255480(rot, x, z, &platform->unk_1E0[i], &platform->unk_1E0[i]);
     }
 }
