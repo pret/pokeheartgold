@@ -1,6 +1,7 @@
 #include "field_system.h"
 #include "metatile_behavior.h"
 #include "overlay_04.h"
+#include "unk_02005D10.h"
 #include "unk_02054648.h"
 
 typedef struct BlackthornGymXZPoint {
@@ -32,12 +33,30 @@ typedef struct BlackthornGymmickLocalData {
     BlackthornGymmickPlatformData platforms[3];
 } BlackthornGymmickLocalData; // size: 0x754
 
+typedef struct BlackthornGymMovePlatformTaskData {
+    int unk_00;
+    u8 filler_04[0x48];
+    u8 unk_4C;
+    u8 unk_4D;
+    u8 unk_4E;
+    int unk_50;
+    int unk_54;
+    VecFx32 unk_58;
+    u8 filler_64[12];
+    FieldSystem *unk_70;
+} BlackthornGymMovePlatformTaskData;
+
 void ov04_02255140(u8 i, u8 rot, u16 x, u16 z, BlackthornGymmickPlatformData *platform);
 void ov04_02255480(const u8 rot, const u16 x, const u16 z, const BlackthornGymXZPoint *pointIn, BlackthornGymXZPoint *pointOut);
-void ov04_022554C4(int dx, u8 height, BlackthornGymXZPoint *column);
-void ov04_022554E0(int dz, u8 width, BlackthornGymXZPoint *row);
+void ov04_022554C4(const int dx, const u8 height, BlackthornGymXZPoint *column);
+void ov04_022554E0(const int dz, const u8 width, BlackthornGymXZPoint *row);
 void ov04_022554FC(const u8 rot, const u16 x, const u16 z, BlackthornGymmickPlatformData *platform);
-BOOL ov04_02255708(BlackthornGymmickLocalData *localData, u16 x, u16 z);
+int ov04_022556AC(const BlackthornGymmickLocalData *localData, const u16 x, const u16 z, u8 *out);
+BOOL ov04_02255708(const BlackthornGymmickLocalData *localData, const u16 x, const u16 z);
+int ov04_022558B4(u8 a0, u8 a1);
+void ov04_022558D0(int a0, VecFx32 *a1);
+BOOL ov04_022559C8(TaskManager *taskman);
+BOOL ov04_02255AC4(TaskManager *taskman);
 
 void GymmickInit_Blackthorn(FieldSystem *fieldSystem) {
     extern const int ov04_0225762C[3];
@@ -256,13 +275,13 @@ void ov04_02255480(const u8 rot, const u16 x, const u16 z, const BlackthornGymXZ
     pointOut->z += z;
 }
 
-void ov04_022554C4(int dx, u8 height, BlackthornGymXZPoint *column) {
+void ov04_022554C4(const int dx, const u8 height, BlackthornGymXZPoint *column) {
     for (int i = 0; i < height; ++i) {
         column[i].x += dx;
     }
 }
 
-void ov04_022554E0(int dz, u8 width, BlackthornGymXZPoint *row) {
+void ov04_022554E0(const int dz, const u8 width, BlackthornGymXZPoint *row) {
     for (int i = 0; i < width; ++i) {
         row[i].z += dz;
     }
@@ -308,4 +327,67 @@ void ov04_022554FC(const u8 rot, const u16 x, const u16 z, BlackthornGymmickPlat
     for (i = 0; i < 18; ++i) {
         ov04_02255480(rot, x, z, &platform->unk_1E0[i], &platform->unk_1E0[i]);
     }
+}
+
+int ov04_022556AC(const BlackthornGymmickLocalData *localData, const u16 x, const u16 z, u8 *out) {
+    for (u8 i = 0; i < 3; ++i) {
+        if (x == localData->platforms[i].unk_008.x && z == localData->platforms[i].unk_008.z) {
+            *out = i;
+            return 1;
+        }
+        if (x == localData->platforms[i].unk_010.x && z == localData->platforms[i].unk_010.z) {
+            *out = i;
+            return 2;
+        }
+        if (x == localData->platforms[i].unk_018.x && z == localData->platforms[i].unk_018.z) {
+            *out = i;
+            return 3;
+        }
+    }
+    return 0;
+}
+
+BOOL ov04_02255708(const BlackthornGymmickLocalData *localData, const u16 x, const u16 z) {
+    u8 sp0;
+    int r6 = ov04_022556AC(localData, x, z, &sp0);
+    if (r6 == 0) {
+        return FALSE;
+    }
+    BlackthornGymMovePlatformTaskData *taskData = Heap_AllocAtEnd(HEAP_ID_FIELD2, sizeof(BlackthornGymMovePlatformTaskData));
+    taskData->unk_70 = localData->fieldSystem;
+    taskData->unk_00 = 0;
+    taskData->unk_4C = sp0;
+    taskData->unk_50 = r6;
+
+    BOOL ret = FALSE;
+    switch (r6) {
+    case 1:
+        taskData->unk_00 = 8;
+        PlaySE(SEQ_SE_GS_GONDORA_IDOU);
+        FieldSystem_CreateTask(localData->fieldSystem, ov04_02255AC4, taskData);
+        ret = TRUE;
+        break;
+    case 2:
+        taskData->unk_00 = 0;
+        taskData->unk_4D = 0;
+        taskData->unk_4E = localData->platforms[sp0].unk_004;
+        taskData->unk_54 = ov04_022558B4(localData->platforms[sp0].unk_006, 0);
+        ov04_022558D0(taskData->unk_54, &taskData->unk_58);
+        PlaySE(SEQ_SE_GS_GONDORA_IDOU);
+        FieldSystem_CreateTask(localData->fieldSystem, ov04_022559C8, taskData);
+        ret = TRUE;
+        break;
+    case 3:
+        taskData->unk_00 = 0;
+        taskData->unk_4D = 0;
+        taskData->unk_4E = localData->platforms[sp0].unk_004;
+        taskData->unk_54 = ov04_022558B4(localData->platforms[sp0].unk_006, 1);
+        ov04_022558D0(taskData->unk_54, &taskData->unk_58);
+        PlaySE(SEQ_SE_GS_GONDORA_IDOU);
+        FieldSystem_CreateTask(localData->fieldSystem, ov04_022559C8, taskData);
+        ret = TRUE;
+        break;
+    }
+
+    return ret;
 }
