@@ -97,3 +97,4 @@ demo/intro/intro.narc
 data/namein.narc
 data/sbox_gra.narc
 *.NCLR
+!itemtool/itemdata/item_icon/*.NCLR
