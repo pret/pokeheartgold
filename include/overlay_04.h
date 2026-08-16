@@ -29,7 +29,7 @@ void EcruteakGymmick_UnbindCandleFromTrainerObject(FieldSystem *fieldSystem);
 void EcruteakGymmick_ExtinguishCandle(FieldSystem *fieldSystem, ScriptEnvField field);
 BOOL CianwoodGymmick_ActivateWinch(FieldSystem *fieldSystem);
 void ov04_0225640C(FieldSystem *fieldSystem, u8 lockno, u8 relock);
-BOOL ov04_022563C4(FieldSystem *fieldSystem, u8 canId);
+u8 ov04_022563C4(FieldSystem *fieldSystem, u8 canId);
 void VioletGymmick_ElevatorAction(FieldSystem *fieldSystem);
 void BeginAzaleaGymSpinarakRide(FieldSystem *fieldSystem, u8 spinarakNo);
 void FlipAzaleaGymSwitch(FieldSystem *fieldSystem, u8 switchNo);
