@@ -39,10 +39,13 @@ typedef struct BlackthornGymMovePlatformTaskData {
     u8 unk_4C;
     u8 unk_4D;
     u8 unk_4E;
+    u8 unk_4F;
     int unk_50;
     int unk_54;
     VecFx32 unk_58;
-    u8 filler_64[12];
+    fx32 unk_64;
+    fx32 unk_68;
+    fx32 unk_6C;
     FieldSystem *unk_70;
 } BlackthornGymMovePlatformTaskData;
 
@@ -62,6 +65,7 @@ u16 ov04_02255960(FieldSystem *fieldSystem, const u8 dim, const BlackthornGymXZP
 BOOL ov04_022559C8(TaskManager *taskman);
 BOOL ov04_02255AC4(TaskManager *taskman);
 void ov04_02255D88(SysTask *task, void *data);
+int ov04_02255CBC(FieldSystem *fieldSystem, BlackthornGymmickPlatformData *platform, u16 *out);
 
 void GymmickInit_Blackthorn(FieldSystem *fieldSystem) {
     extern const int ov04_0225762C[3];
@@ -522,6 +526,74 @@ BOOL ov04_022559C8(TaskManager *taskman) {
         taskData->unk_00 = 7;
     } break;
     case 7:
+        StopSE(SEQ_SE_GS_GONDORA_IDOU, 0);
+        Heap_Free(taskData);
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
+BOOL ov04_02255AC4(TaskManager *taskman) {
+    FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskman);
+    BlackthornGymMovePlatformTaskData *taskData = TaskManager_GetEnvironment(taskman);
+    BlackthornGymmickLocalData *localData = fieldSystem->unk4->unk24;
+
+    switch (taskData->unk_00) {
+    case 8: {
+        BlackthornGymmickPlatformData *platform = &localData->platforms[taskData->unk_4C];
+        taskData->unk_4F = 0;
+        u16 sp0;
+        int response = ov04_02255CBC(fieldSystem, platform, &sp0);
+        if (response == 2) {
+            taskData->unk_00 = 9;
+        } else if (response == 1) {
+            VecFx32 *pRot = MapProp_GetRotation(MapPropManager_GetMapPropByIndex(fieldSystem->mapPropManager, localData->platforms[taskData->unk_4C].unk_007));
+            taskData->unk_68 = sp0;
+            taskData->unk_6C = pRot->y;
+            taskData->unk_64 = 0;
+            taskData->unk_00 = 10;
+            PlaySE(SEQ_SE_GS_GONDORA_KABEHIT);
+        } else {
+            taskData->unk_00 = 12;
+        }
+    } break;
+    case 9: {
+        VecFx32 *pRot = MapProp_GetRotation(MapPropManager_GetMapPropByIndex(fieldSystem->mapPropManager, localData->platforms[taskData->unk_4C].unk_007));
+        pRot->y -= FX32_CONST(0.25);
+        ++taskData->unk_4F;
+        if (taskData->unk_4F >= 16) {
+            BlackthornGymmickPlatformData *platform = &localData->platforms[taskData->unk_4C];
+            taskData->unk_4F = 0;
+            GymmickUnion *gymmickUnion = Save_Gymmick_AssertMagic_GetData(Save_GetGymmickPtr(FieldSystem_GetSaveData(fieldSystem)), GYMMICK_BLACKTHORN);
+            gymmickUnion->blackthorn.rot[taskData->unk_4C] = (gymmickUnion->blackthorn.rot[taskData->unk_4C] + 1) % 4;
+            platform->unk_006 = gymmickUnion->blackthorn.rot[taskData->unk_4C];
+            LocalMapObject *playerObject = PlayerAvatar_GetMapObject(fieldSystem->playerAvatar);
+            int playerX = MapObject_GetXCoord(playerObject);
+            int playerZ = MapObject_GetZCoord(playerObject);
+            ov04_022554FC(1, playerX, playerZ, platform);
+            taskData->unk_00 = 12;
+        }
+    } break;
+    case 10: {
+        VecFx32 *pRot = MapProp_GetRotation(MapPropManager_GetMapPropByIndex(fieldSystem->mapPropManager, localData->platforms[taskData->unk_4C].unk_007));
+        pRot->y -= FX32_CONST(0.25);
+        taskData->unk_64 += FX32_CONST(0.25);
+        if (taskData->unk_64 >= taskData->unk_68) {
+            pRot->y = taskData->unk_6C - taskData->unk_68;
+            taskData->unk_00 = 11;
+        }
+    } break;
+    case 11: {
+        VecFx32 *pRot = MapProp_GetRotation(MapPropManager_GetMapPropByIndex(fieldSystem->mapPropManager, localData->platforms[taskData->unk_4C].unk_007));
+        pRot->y += FX32_CONST(0.25);
+        taskData->unk_64 -= FX32_CONST(0.25);
+        if (taskData->unk_64 <= 0) {
+            pRot->y = taskData->unk_6C;
+            taskData->unk_00 = 12;
+        }
+    } break;
+    case 12:
         StopSE(SEQ_SE_GS_GONDORA_IDOU, 0);
         Heap_Free(taskData);
         return TRUE;
