@@ -61,6 +61,7 @@ u8 ov04_02255910(FieldSystem *fieldSystem, const u8 dim, const BlackthornGymXZPo
 u16 ov04_02255960(FieldSystem *fieldSystem, const u8 dim, const BlackthornGymXZPoint *const points, const u8 *const a3);
 BOOL ov04_022559C8(TaskManager *taskman);
 BOOL ov04_02255AC4(TaskManager *taskman);
+void ov04_02255D88(SysTask *task, void *data);
 
 void GymmickInit_Blackthorn(FieldSystem *fieldSystem) {
     extern const int ov04_0225762C[3];
@@ -495,4 +496,36 @@ u16 ov04_02255960(FieldSystem *fieldSystem, const u8 dim, const BlackthornGymXZP
     }
 
     return ret;
+}
+
+BOOL ov04_022559C8(TaskManager *taskman) {
+    FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskman);
+    BlackthornGymMovePlatformTaskData *taskData = TaskManager_GetEnvironment(taskman);
+    BlackthornGymmickLocalData *localData = fieldSystem->unk4->unk24;
+
+    switch (taskData->unk_00) {
+    case 0:
+        ov04_02255804(&localData->platforms[taskData->unk_4C], taskData);
+        SysTask_CreateOnMainQueue(ov04_02255D88, taskData, 0);
+        taskData->unk_00 = 1;
+        break;
+    case 3: {
+        VecFx32 sp8;
+        MapProp_GetTranslation(&sp8, MapPropManager_GetMapPropByIndex(fieldSystem->mapPropManager, localData->platforms[taskData->unk_4C].unk_007));
+        int x = sp8.x / (16 * FX32_ONE);
+        int z = sp8.z / (16 * FX32_ONE);
+        BlackthornGymmickPlatformData *platform = &localData->platforms[taskData->unk_4C];
+        GymmickUnion *gymmickUnion = Save_Gymmick_AssertMagic_GetData(Save_GetGymmickPtr(FieldSystem_GetSaveData(fieldSystem)), GYMMICK_BLACKTHORN);
+        gymmickUnion->blackthorn.x[taskData->unk_4C] = x;
+        gymmickUnion->blackthorn.z[taskData->unk_4C] = z;
+        ov04_02255140(taskData->unk_4C, platform->unk_006, x, z, platform);
+        taskData->unk_00 = 7;
+    } break;
+    case 7:
+        StopSE(SEQ_SE_GS_GONDORA_IDOU, 0);
+        Heap_Free(taskData);
+        return TRUE;
+    }
+
+    return FALSE;
 }
