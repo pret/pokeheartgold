@@ -197,7 +197,7 @@ struct FieldSystem {
     MapPropAnimationManager *mapPropAnimationManager;
     MapPropOneShotAnimationManager *mapPropOneShotAnimationManager;
     TerrainAttributes *terrainAttributes;
-    void *unk60;
+    void *unk60; // something to do with collision
     BOOL skipMapAttributes;
     Signpost *signpost;
     BOOL runningFieldMap;
