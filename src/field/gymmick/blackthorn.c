@@ -35,7 +35,7 @@ typedef struct BlackthornGymmickLocalData {
 
 typedef struct BlackthornGymMovePlatformTaskData {
     int unk_00;
-    u8 filler_04[0x48];
+    BlackthornGymXZPoint unk_04[9];
     u8 unk_4C;
     u8 unk_4D;
     u8 unk_4E;
@@ -53,6 +53,8 @@ void ov04_022554E0(const int dz, const u8 width, BlackthornGymXZPoint *row);
 void ov04_022554FC(const u8 rot, const u16 x, const u16 z, BlackthornGymmickPlatformData *platform);
 int ov04_022556AC(const BlackthornGymmickLocalData *localData, const u16 x, const u16 z, u8 *out);
 BOOL ov04_02255708(const BlackthornGymmickLocalData *localData, const u16 x, const u16 z);
+void ov04_02255804(const BlackthornGymmickPlatformData *platform, BlackthornGymMovePlatformTaskData *taskData);
+void ov04_02255858(const int a0, BlackthornGymMovePlatformTaskData *taskData);
 int ov04_022558B4(u8 a0, u8 a1);
 void ov04_022558D0(int a0, VecFx32 *a1);
 BOOL ov04_022559C8(TaskManager *taskman);
@@ -390,4 +392,38 @@ BOOL ov04_02255708(const BlackthornGymmickLocalData *localData, const u16 x, con
     }
 
     return ret;
+}
+
+void ov04_02255804(const BlackthornGymmickPlatformData *platform, BlackthornGymMovePlatformTaskData *taskData) {
+    int i;
+
+    switch (taskData->unk_50) {
+    case 2:
+        for (i = 0; i < platform->unk_005; ++i) {
+            taskData->unk_04[i] = platform->unk_028[i];
+        }
+        break;
+    case 3:
+        for (i = 0; i < platform->unk_005; ++i) {
+            taskData->unk_04[i] = platform->unk_068[i];
+        }
+        break;
+    }
+}
+
+void ov04_02255858(const int a0, BlackthornGymMovePlatformTaskData *taskData) {
+    switch (taskData->unk_54) {
+    case 0:
+        ov04_022554C4(1, a0, taskData->unk_04);
+        break;
+    case 1:
+        ov04_022554E0(1, a0, taskData->unk_04);
+        break;
+    case 2:
+        ov04_022554C4(-1, a0, taskData->unk_04);
+        break;
+    case 3:
+        ov04_022554E0(-1, a0, taskData->unk_04);
+        break;
+    }
 }
