@@ -57,6 +57,8 @@ void ov04_02255804(const BlackthornGymmickPlatformData *platform, BlackthornGymM
 void ov04_02255858(const int a0, BlackthornGymMovePlatformTaskData *taskData);
 int ov04_022558B4(u8 a0, u8 a1);
 void ov04_022558D0(int a0, VecFx32 *a1);
+u8 ov04_02255910(FieldSystem *fieldSystem, const u8 dim, const BlackthornGymXZPoint *const points);
+u16 ov04_02255960(FieldSystem *fieldSystem, const u8 dim, const BlackthornGymXZPoint *const points, const u8 *const a3);
 BOOL ov04_022559C8(TaskManager *taskman);
 BOOL ov04_02255AC4(TaskManager *taskman);
 
@@ -426,4 +428,71 @@ void ov04_02255858(const int a0, BlackthornGymMovePlatformTaskData *taskData) {
         ov04_022554E0(-1, a0, taskData->unk_04);
         break;
     }
+}
+
+int ov04_022558B4(u8 a0, u8 a1) {
+    u8 addend;
+    if (a1 == 0) {
+        addend = 0;
+    } else {
+        addend = 2;
+    }
+    return (addend + a0) % 4;
+}
+
+void ov04_022558D0(int a0, VecFx32 *a1) {
+    a1->x = 0;
+    a1->y = 0;
+    a1->z = 0;
+
+    switch (a0) {
+    case 0:
+        a1->x = 8 * FX32_ONE;
+        break;
+    case 1:
+        a1->z = 8 * FX32_ONE;
+        break;
+    case 2:
+        a1->x = -8 * FX32_ONE;
+        break;
+    case 3:
+        a1->z = -8 * FX32_ONE;
+        break;
+    }
+}
+
+u8 ov04_02255910(FieldSystem *fieldSystem, const u8 dim, const BlackthornGymXZPoint *const points) {
+    u8 ret = 0xFF;
+
+    for (int i = 0; i < dim; ++i) {
+        if (sub_020548C0(fieldSystem, points[i].x, points[i].z)) {
+            ret = i;
+            break;
+        }
+        if (!MetatileBehavior_IsMagma(GetMetatileBehavior(fieldSystem, points[i].x, points[i].z))) {
+            ret = i;
+            break;
+        }
+    }
+    return ret;
+}
+
+u16 ov04_02255960(FieldSystem *fieldSystem, const u8 dim, const BlackthornGymXZPoint *const points, const u8 *const a3) {
+    u16 ret = 0x4000;
+
+    for (int i = 0; i < dim; ++i) {
+        BOOL ok = sub_020548C0(fieldSystem, points[i].x, points[i].z);
+        if (!ok) {
+            ok = !MetatileBehavior_IsMagma(GetMetatileBehavior(fieldSystem, points[i].x, points[i].z));
+        }
+        if (ok) {
+            int val = a3[i] << 8;
+            if (val < 0x4000) {
+                ret = val;
+                break;
+            }
+        }
+    }
+
+    return ret;
 }
