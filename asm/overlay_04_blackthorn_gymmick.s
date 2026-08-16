@@ -10,49 +10,6 @@
 	.extern ov04_02255910
 	.extern ov04_02255960
 
-	thumb_func_start ov04_02255D34
-ov04_02255D34: ; 0x02255D34
-	push {r3, r4, r5, r6, r7, lr}
-	add r5, r1, #0
-	add r7, r0, #0
-	ldr r0, [r5]
-	cmp r0, #0
-	bne _02255D48
-	mov r1, #0xe
-	ldr r3, _02255D78 ; =ov04_02257638
-	ldr r4, _02255D7C ; =ov04_02257618
-	b _02255D4E
-_02255D48:
-	ldr r3, _02255D80 ; =ov04_02257648
-	ldr r4, _02255D84 ; =ov04_02257614
-	mov r1, #0x18
-_02255D4E:
-	ldrb r0, [r5, #4]
-	add r2, r5, #0
-	add r2, #0xf8
-	str r0, [sp]
-	add r0, r7, #0
-	bl ov04_02255960
-	mov r2, #0x6e
-	lsl r2, r2, #2
-	add r6, r0, #0
-	ldr r1, [sp]
-	add r0, r7, #0
-	add r2, r5, r2
-	add r3, r4, #0
-	bl ov04_02255960
-	cmp r6, r0
-	bhi _02255D74
-	add r0, r6, #0
-_02255D74:
-	pop {r3, r4, r5, r6, r7, pc}
-	nop
-_02255D78: .word ov04_02257638
-_02255D7C: .word ov04_02257618
-_02255D80: .word ov04_02257648
-_02255D84: .word ov04_02257614
-	thumb_func_end ov04_02255D34
-
 	thumb_func_start ov04_02255D88
 ov04_02255D88: ; 0x02255D88
 	push {r3, r4, r5, r6, r7, lr}
@@ -326,35 +283,3 @@ _02255FB8:
 	.balign 4, 0
 _02255FBC: .word SEQ_SE_GS_GONDORA_KABEHIT
 	thumb_func_end ov04_02255D88
-
-    .rodata
-
-	.global ov04_02257614
-ov04_02257614: ; 0x02257614
-	.byte 0x40, 0x14, 0x1E, 0x2E
-
-	.global ov04_02257618
-ov04_02257618: ; 0x02257618
-	.byte 0x40, 0x40, 0x40, 0x40, 0x2A, 0x00, 0x00, 0x00
-
-	.global ov04_02257620
-ov04_02257620: ; 0x02257620
-	.word 0x00000000
-	.word 0x00030000
-	.word 0x00000000
-
-	.global ov04_0225762C
-ov04_0225762C: ; 0x0225762C
-	.word 0x00000078
-	.word 0x00000079
-	.word 0x00000078
-
-	.global ov04_02257638
-ov04_02257638: ; 0x02257638
-	.byte 0x0A, 0x0A, 0x0D, 0x12, 0x19, 0x26, 0x33, 0x40
-	.byte 0x40, 0x17, 0x1C, 0x23, 0x2D, 0x37, 0x00, 0x00
-
-	.global ov04_02257648
-ov04_02257648: ; 0x02257648
-	.byte 0x08, 0x09, 0x0A, 0x0E, 0x13, 0x1A, 0x25, 0x33
-	.byte 0x40, 0x11, 0x13, 0x17, 0x1C, 0x23, 0x2E, 0x37, 0x40, 0x40, 0x40, 0x1E, 0x23, 0x29, 0x31, 0x39

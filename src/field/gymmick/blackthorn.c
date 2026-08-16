@@ -68,10 +68,13 @@ void ov04_02255D88(SysTask *task, void *data);
 int ov04_02255CBC(FieldSystem *fieldSystem, BlackthornGymmickPlatformData *platform, u16 *out);
 u16 ov04_02255D34(FieldSystem *fieldSystem, BlackthornGymmickPlatformData *platform);
 
+const u8 ov04_02257638[] = { 10, 10, 13, 18, 25, 38, 51, 64, 64, 23, 28, 35, 45, 55 };
+const u8 ov04_02257648[] = { 8, 9, 10, 14, 19, 26, 37, 51, 64, 17, 19, 23, 28, 35, 46, 55, 64, 64, 64, 30, 35, 41, 49, 57 };
+const u8 ov04_02257618[] = { 64, 64, 64, 64, 42 };
+const u8 ov04_02257614[] = { 64, 20, 30, 46 };
+
 void GymmickInit_Blackthorn(FieldSystem *fieldSystem) {
-    extern const int ov04_0225762C[3];
-    int sp38[3];
-    ARRAY_ASSIGN(sp38, ov04_0225762C);
+    int sp38[3] = { 120, 121, 120 };
 
     GymmickUnion *gymmickUnion = Save_Gymmick_AssertMagic_GetData(Save_GetGymmickPtr(FieldSystem_GetSaveData(fieldSystem)), GYMMICK_BLACKTHORN);
     fieldSystem->unk4->unk24 = Heap_Alloc(HEAP_ID_FIELD1, sizeof(BlackthornGymmickLocalData));
@@ -79,8 +82,7 @@ void GymmickInit_Blackthorn(FieldSystem *fieldSystem) {
     BlackthornGymmickLocalData *localData = fieldSystem->unk4->unk24;
     localData->fieldSystem = fieldSystem;
     for (int i = 0; i < 3; ++i) {
-        extern const VecFx32 ov04_02257620;
-        VecFx32 sp2C = ov04_02257620;
+        VecFx32 sp2C = { 0, 48 * FX32_ONE, 0 };
         VecFx32 sp20 = { 0, 0, 0 };
         sp20.y = -4 * FX32_ONE * gymmickUnion->blackthorn.rot[i];
         sp2C.x = 16 * FX32_ONE * gymmickUnion->blackthorn.x[i] + 8 * FX32_ONE;
@@ -623,4 +625,28 @@ int ov04_02255CBC(FieldSystem *fieldSystem, BlackthornGymmickPlatformData *platf
         return 1;
     }
     return 2;
+}
+
+u16 ov04_02255D34(FieldSystem *fieldSystem, BlackthornGymmickPlatformData *platform) {
+    u8 r1;
+    u8 sp0;
+    const u8 *r3;
+    const u8 *r4;
+
+    if (platform->unk_000 == 0) {
+        r1 = 14;
+        r3 = ov04_02257638;
+        r4 = ov04_02257618;
+    } else {
+        r1 = 24;
+        r3 = ov04_02257648;
+        r4 = ov04_02257614;
+    }
+    sp0 = platform->unk_004;
+    u16 r6 = ov04_02255960(fieldSystem, r1, platform->unk_0F8, r3);
+    u16 r0 = ov04_02255960(fieldSystem, sp0, platform->unk_1B8, r4);
+    if (r6 <= r0) {
+        r0 = r6;
+    }
+    return r0;
 }
