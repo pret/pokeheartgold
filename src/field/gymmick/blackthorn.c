@@ -3,6 +3,7 @@
 #include "overlay_04.h"
 #include "unk_02005D10.h"
 #include "unk_02054648.h"
+#include "unk_0205FD20.h"
 
 typedef struct BlackthornGymXZPoint {
     int x;
@@ -64,9 +65,9 @@ u8 ov04_02255910(FieldSystem *fieldSystem, const u8 dim, const BlackthornGymXZPo
 u16 ov04_02255960(FieldSystem *fieldSystem, const u8 dim, const BlackthornGymXZPoint *const points, const u8 *const a3);
 BOOL ov04_022559C8(TaskManager *taskman);
 BOOL ov04_02255AC4(TaskManager *taskman);
-void ov04_02255D88(SysTask *task, void *data);
 int ov04_02255CBC(FieldSystem *fieldSystem, BlackthornGymmickPlatformData *platform, u16 *out);
 u16 ov04_02255D34(FieldSystem *fieldSystem, BlackthornGymmickPlatformData *platform);
+void ov04_02255D88(SysTask *task, void *data);
 
 const u8 ov04_02257638[] = { 10, 10, 13, 18, 25, 38, 51, 64, 64, 23, 28, 35, 45, 55 };
 const u8 ov04_02257648[] = { 8, 9, 10, 14, 19, 26, 37, 51, 64, 17, 19, 23, 28, 35, 46, 55, 64, 64, 64, 30, 35, 41, 49, 57 };
@@ -649,4 +650,85 @@ u16 ov04_02255D34(FieldSystem *fieldSystem, BlackthornGymmickPlatformData *platf
         r0 = r6;
     }
     return r0;
+}
+
+void ov04_02255D88(SysTask *task, void *data) {
+    BlackthornGymMovePlatformTaskData *taskData = data;
+    FieldSystem *fieldSystem = taskData->unk_70;
+    BlackthornGymmickLocalData *localData = fieldSystem->unk4->unk24;
+
+    switch (taskData->unk_00) {
+    case 1:
+        taskData->unk_4F = 0;
+        if (ov04_02255910(fieldSystem, localData->platforms[taskData->unk_4C].unk_005, taskData->unk_04) == 255) {
+            taskData->unk_00 = 2;
+        } else {
+            taskData->unk_00 = 4;
+        }
+        break;
+    case 2: {
+        MapProp *mapProp = MapPropManager_GetMapPropByIndex(fieldSystem->mapPropManager, localData->platforms[taskData->unk_4C].unk_007);
+        VecFx32 sp34;
+        MapProp_GetTranslation(&sp34, mapProp);
+        VEC_Add(&sp34, &taskData->unk_58, &sp34);
+        MapProp_SetTranslation(mapProp, &sp34);
+        LocalMapObject *playerObject = PlayerAvatar_GetMapObject(fieldSystem->playerAvatar);
+        VecFx32 sp28;
+        MapObject_CopyPositionVector(playerObject, &sp28);
+        VEC_Add(&sp28, &taskData->unk_58, &sp28);
+        MapObject_SetPositionVector(playerObject, &sp28);
+        ++taskData->unk_4F;
+        if (taskData->unk_4F >= 2) {
+            taskData->unk_4F = 0;
+            ov04_02255858(localData->platforms[taskData->unk_4C].unk_005, taskData);
+            ++taskData->unk_4D;
+            if (taskData->unk_4D >= taskData->unk_4E) {
+                VecFx32 sp1C;
+                MapObject_CopyPositionVector(playerObject, &sp1C);
+                MapObject_SetCurrentX(playerObject, sp1C.x / (16 * FX32_ONE));
+                MapObject_SetCurrentZ(playerObject, sp1C.z / (16 * FX32_ONE));
+                sub_02060F78(playerObject);
+                SysTask_Destroy(task);
+                taskData->unk_00 = 3;
+            } else {
+                taskData->unk_00 = 1;
+            }
+        }
+    } break;
+    case 4:
+        PlaySE(SEQ_SE_GS_GONDORA_KABEHIT);
+        taskData->unk_00 = 5;
+        break;
+    case 5:
+        if (taskData->unk_4D == 0) {
+            SysTask_Destroy(task);
+            taskData->unk_00 = 7;
+        } else {
+            taskData->unk_58.x *= -1;
+            taskData->unk_58.z *= -1;
+            taskData->unk_00 = 6;
+        }
+        break;
+    case 6: {
+        MapProp *mapProp = MapPropManager_GetMapPropByIndex(fieldSystem->mapPropManager, localData->platforms[taskData->unk_4C].unk_007);
+        VecFx32 sp10;
+        MapProp_GetTranslation(&sp10, mapProp);
+        VEC_Add(&sp10, &taskData->unk_58, &sp10);
+        MapProp_SetTranslation(mapProp, &sp10);
+        LocalMapObject *playerObject = PlayerAvatar_GetMapObject(fieldSystem->playerAvatar);
+        VecFx32 sp04;
+        MapObject_CopyPositionVector(playerObject, &sp04);
+        VEC_Add(&sp04, &taskData->unk_58, &sp04);
+        MapObject_SetPositionVector(playerObject, &sp04);
+        ++taskData->unk_4F;
+        if (taskData->unk_4F >= 2) {
+            taskData->unk_4F = 0;
+            --taskData->unk_4D;
+            if (taskData->unk_4D == 0) {
+                SysTask_Destroy(task);
+                taskData->unk_00 = 7;
+            }
+        }
+    } break;
+    }
 }
