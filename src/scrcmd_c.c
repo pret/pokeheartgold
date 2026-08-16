@@ -3117,7 +3117,7 @@ BOOL ScrCmd_CianwoodGymInit(ScriptContext *ctx) {
 BOOL ScrCmd_CianwoodGymTurnWinch(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    *p_ret = ov04_02256058(fieldSystem);
+    *p_ret = CianwoodGymmick_ActivateWinch(fieldSystem);
     return TRUE;
 }
 

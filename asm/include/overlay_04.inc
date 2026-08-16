@@ -135,7 +135,7 @@
 .public GymmickCheckCollision_Blackthorn
 .public GymmickInit_Cianwood
 .public GymmickFree_Cianwood
-.public ov04_02256058
+.public CianwoodGymmick_ActivateWinch
 .public GymmickInit_Vermilion
 .public GymmickFree_Vermilion
 .public ov04_022563C4

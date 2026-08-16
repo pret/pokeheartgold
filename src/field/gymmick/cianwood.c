@@ -11,9 +11,9 @@ typedef struct CianwoodGymmickWinchTaskData {
     GFCameraTranslationWrapper *translationWrapper;
 } CianwoodGymmickWinchTaskData;
 
-void ov04_0225609C(CianwoodGymmickLocalData *localData);
-BOOL ov04_022560D4(TaskManager *taskman);
-u32 ov04_02256278(FieldSystem *fieldSystem);
+static void CianwoodGymmick_LaunchWinchTask(CianwoodGymmickLocalData *localData);
+static BOOL Task_CianwoodGymmick_LiftWinchCutscene(TaskManager *taskman);
+static int CianwoodGymmick_RebindAnimationObjectsAndGetCount(FieldSystem *fieldSystem);
 
 void GymmickInit_Cianwood(FieldSystem *fieldSystem) {
     GymmickUnion *gymmickUnion = Save_Gymmick_AssertMagic_GetData(Save_GetGymmickPtr(FieldSystem_GetSaveData(fieldSystem)), GYMMICK_CIANWOOD);
@@ -24,8 +24,8 @@ void GymmickInit_Cianwood(FieldSystem *fieldSystem) {
 
     if (gymmickUnion->cianwood.winch) {
         MapPropAnimationData *animData;
-        u32 r7 = ov04_02256278(fieldSystem);
-        for (u8 i = 0; i < r7; ++i) {
+        u32 num = CianwoodGymmick_RebindAnimationObjectsAndGetCount(fieldSystem);
+        for (u8 i = 0; i < num; ++i) {
             animData = MapPropAnimationManager_GetAnimationData(174, i, fieldSystem->mapPropAnimationManager);
             MapPropAnimationData_SetAnimationPaused(animData, TRUE);
             MapPropAnimationData_GoToLastAnimationFrame(animData);
@@ -41,7 +41,7 @@ void GymmickFree_Cianwood(FieldSystem *fieldSystem) {
     fieldSystem->unk4->unk24 = NULL;
 }
 
-BOOL ov04_02256058(FieldSystem *fieldSystem) {
+BOOL CianwoodGymmick_ActivateWinch(FieldSystem *fieldSystem) {
     Gymmick *gymmick = Save_GetGymmickPtr(FieldSystem_GetSaveData(fieldSystem));
     if (Save_Gymmick_GetType(gymmick) != GYMMICK_CIANWOOD) {
         return FALSE;
@@ -52,39 +52,39 @@ BOOL ov04_02256058(FieldSystem *fieldSystem) {
         return FALSE;
     }
     if (!gymmickUnion->cianwood.winch) {
-        ov04_0225609C(localData);
+        CianwoodGymmick_LaunchWinchTask(localData);
         return TRUE;
     }
     return FALSE;
 }
 
-void ov04_0225609C(CianwoodGymmickLocalData *localData) {
+static void CianwoodGymmick_LaunchWinchTask(CianwoodGymmickLocalData *localData) {
     GymmickUnion *gymmickUnion = Save_Gymmick_AssertMagic_GetData(Save_GetGymmickPtr(FieldSystem_GetSaveData(localData->fieldSystem)), GYMMICK_CIANWOOD);
     CianwoodGymmickWinchTaskData *taskData = Heap_AllocAtEnd(HEAP_ID_FIELD2, sizeof(CianwoodGymmickWinchTaskData));
     taskData->state = 0;
     gymmickUnion->cianwood.winch = TRUE;
-    TaskManager_Call(localData->fieldSystem->taskman, ov04_022560D4, taskData);
+    TaskManager_Call(localData->fieldSystem->taskman, Task_CianwoodGymmick_LiftWinchCutscene, taskData);
 }
 
-BOOL ov04_022560D4(TaskManager *taskman) {
+static BOOL Task_CianwoodGymmick_LiftWinchCutscene(TaskManager *taskman) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskman);
     CianwoodGymmickWinchTaskData *taskData = TaskManager_GetEnvironment(taskman);
     LocalMapObject *playerObject = PlayerAvatar_GetMapObject(fieldSystem->playerAvatar);
 
     switch (taskData->state) {
     case 0: {
-        CameraTranslationPathTemplate sp44;
+        CameraTranslationPathTemplate pathTemplate;
         CameraAngle cameraAngle = Camera_GetAngle(fieldSystem->camera);
-        sp44.angleX = cameraAngle.x;
-        sp44.perspectiveAngle = Camera_GetPerspectiveAngle(fieldSystem->camera);
-        sp44.position = (VecFx32) {
+        pathTemplate.angleX = cameraAngle.x;
+        pathTemplate.perspectiveAngle = Camera_GetPerspectiveAngle(fieldSystem->camera);
+        pathTemplate.position = (VecFx32) {
             50 * FX32_ONE,
             0,
             58 * FX32_ONE,
         };
-        sp44.distance = Camera_GetDistance(fieldSystem->camera);
+        pathTemplate.distance = Camera_GetDistance(fieldSystem->camera);
         taskData->translationWrapper = CreateCameraTranslationWrapper(HEAP_ID_FIELD1, fieldSystem->camera);
-        SetCameraTranslationPath(taskData->translationWrapper, &sp44, 24);
+        SetCameraTranslationPath(taskData->translationWrapper, &pathTemplate, 24);
         ++taskData->state;
     } break;
     case 1:
@@ -94,9 +94,9 @@ BOOL ov04_022560D4(TaskManager *taskman) {
         }
         break;
     case 2: {
-        int sp0 = ov04_02256278(fieldSystem);
+        int num = CianwoodGymmick_RebindAnimationObjectsAndGetCount(fieldSystem);
         MapPropAnimationData *animData;
-        for (int i = 0; i < sp0; ++i) {
+        for (int i = 0; i < num; ++i) {
             animData = MapPropAnimationManager_GetAnimationData(174, i, fieldSystem->mapPropAnimationManager);
             MapPropAnimationData_SetAnimationLoopCount(animData, 1);
             MapPropAnimationData_GoToFirstAnimationFrame(animData);
@@ -112,15 +112,15 @@ BOOL ov04_022560D4(TaskManager *taskman) {
         }
         break;
     case 4: {
-        CameraTranslationPathTemplate sp30;
-        VecFx32 sp24 = { 0, 0, 0 };
+        CameraTranslationPathTemplate pathTemplate;
+        VecFx32 centerPos = { 0, 0, 0 };
         CameraAngle angle = Camera_GetAngle(fieldSystem->camera);
-        sp30.angleX = angle.x;
-        sp30.perspectiveAngle = Camera_GetPerspectiveAngle(fieldSystem->camera);
-        sp30.position = sp24;
-        sp30.distance = Camera_GetDistance(fieldSystem->camera);
+        pathTemplate.angleX = angle.x;
+        pathTemplate.perspectiveAngle = Camera_GetPerspectiveAngle(fieldSystem->camera);
+        pathTemplate.position = centerPos;
+        pathTemplate.distance = Camera_GetDistance(fieldSystem->camera);
         taskData->translationWrapper = CreateCameraTranslationWrapper(HEAP_ID_FIELD1, fieldSystem->camera);
-        SetCameraTranslationPath(taskData->translationWrapper, &sp30, 24);
+        SetCameraTranslationPath(taskData->translationWrapper, &pathTemplate, 24);
         ++taskData->state;
     } break;
     case 5:
@@ -135,4 +135,22 @@ BOOL ov04_022560D4(TaskManager *taskman) {
     }
 
     return FALSE;
+}
+
+static int CianwoodGymmick_RebindAnimationObjectsAndGetCount(FieldSystem *fieldSystem) {
+    UnkStruct_FieldSysC0_SubC *unkC0subC_173 = Field3dObjectList_GetRenderObjectByID(fieldSystem->unkC0, 173);
+    UnkStruct_FieldSysC0_SubC *unkC0subC_174 = Field3dObjectList_GetRenderObjectByID(fieldSystem->unkC0, 174);
+    UnkStruct_FieldSysC0_SubC *unkC0subC_175 = Field3dObjectList_GetRenderObjectByID(fieldSystem->unkC0, 175);
+
+    int numPropAnims = MapPropAnimationManager_GetPropAnimationCount(fieldSystem->mapPropAnimationManager, 173);
+    for (int i = 0; i < numPropAnims; ++i) {
+        MapPropAnimationManager_RemoveAnimationFromRenderObj(fieldSystem->mapPropAnimationManager, &unkC0subC_173->renderObj, 173, i);
+    }
+
+    numPropAnims = MapPropAnimationManager_GetPropAnimationCount(fieldSystem->mapPropAnimationManager, 174);
+    for (int i = 0; i < numPropAnims; ++i) {
+        MapPropAnimationManager_AddAnimationToRenderObj(174, i, TRUE, &unkC0subC_173->renderObj, fieldSystem->mapPropAnimationManager);
+    }
+    MapPropAnimationManager_AddAnimationToRenderObj(175, 0, TRUE, &unkC0subC_175->renderObj, fieldSystem->mapPropAnimationManager);
+    return numPropAnims;
 }
