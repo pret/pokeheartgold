@@ -6,79 +6,9 @@
 
 	.text
 
-	.extern ov04_02255140
-	.extern ov04_022554C4
-	.extern ov04_022554E0
-	.extern ov04_022554FC
-	.extern ov04_022556AC
-	.extern ov04_02255804
 	.extern ov04_02255858
 	.extern ov04_02255910
 	.extern ov04_02255960
-
-	thumb_func_start ov04_02255CBC
-ov04_02255CBC: ; 0x02255CBC
-	push {r3, r4, r5, r6, r7, lr}
-	add r4, r1, #0
-	ldrb r1, [r4, #4]
-	add r6, r2, #0
-	add r5, r0, #0
-	sub r2, r1, #1
-	lsl r2, r2, #0x18
-	lsr r7, r2, #0x18
-	add r2, r4, #0
-	add r2, #0xa8
-	bl ov04_02255910
-	cmp r0, #0xff
-	beq _02255CDC
-	mov r0, #0
-	pop {r3, r4, r5, r6, r7, pc}
-_02255CDC:
-	ldrb r1, [r4, #4]
-	add r2, r4, #0
-	add r0, r5, #0
-	add r2, #0xd0
-	bl ov04_02255910
-	cmp r0, #0xff
-	beq _02255CF0
-	mov r0, #0
-	pop {r3, r4, r5, r6, r7, pc}
-_02255CF0:
-	ldrb r1, [r4, #5]
-	add r2, r4, #0
-	add r0, r5, #0
-	add r2, #0x68
-	bl ov04_02255910
-	cmp r0, #0xff
-	beq _02255D04
-	mov r0, #0
-	pop {r3, r4, r5, r6, r7, pc}
-_02255D04:
-	add r2, r4, #0
-	add r0, r5, #0
-	add r1, r7, #0
-	add r2, #0x28
-	bl ov04_02255910
-	cmp r0, #0xff
-	beq _02255D18
-	mov r0, #0
-	pop {r3, r4, r5, r6, r7, pc}
-_02255D18:
-	add r0, r5, #0
-	add r1, r4, #0
-	bl ov04_02255D34
-	mov r1, #1
-	lsl r1, r1, #0xe
-	cmp r0, r1
-	bhs _02255D2E
-	strh r0, [r6]
-	mov r0, #1
-	pop {r3, r4, r5, r6, r7, pc}
-_02255D2E:
-	mov r0, #2
-	pop {r3, r4, r5, r6, r7, pc}
-	.balign 4, 0
-	thumb_func_end ov04_02255CBC
 
 	thumb_func_start ov04_02255D34
 ov04_02255D34: ; 0x02255D34

@@ -66,6 +66,7 @@ BOOL ov04_022559C8(TaskManager *taskman);
 BOOL ov04_02255AC4(TaskManager *taskman);
 void ov04_02255D88(SysTask *task, void *data);
 int ov04_02255CBC(FieldSystem *fieldSystem, BlackthornGymmickPlatformData *platform, u16 *out);
+u16 ov04_02255D34(FieldSystem *fieldSystem, BlackthornGymmickPlatformData *platform);
 
 void GymmickInit_Blackthorn(FieldSystem *fieldSystem) {
     extern const int ov04_0225762C[3];
@@ -600,4 +601,26 @@ BOOL ov04_02255AC4(TaskManager *taskman) {
     }
 
     return FALSE;
+}
+
+int ov04_02255CBC(FieldSystem *fieldSystem, BlackthornGymmickPlatformData *platform, u16 *out) {
+    u8 r7 = platform->unk_004 - 1;
+    if (ov04_02255910(fieldSystem, platform->unk_004, platform->unk_0A8) != 0xFF) {
+        return 0;
+    }
+    if (ov04_02255910(fieldSystem, platform->unk_004, platform->unk_0D0) != 0xFF) {
+        return 0;
+    }
+    if (ov04_02255910(fieldSystem, platform->unk_005, platform->unk_068) != 0xFF) {
+        return 0;
+    }
+    if (ov04_02255910(fieldSystem, r7, platform->unk_028) != 0xFF) {
+        return 0;
+    }
+    u16 r0 = ov04_02255D34(fieldSystem, platform);
+    if (r0 < 0x4000) {
+        *out = r0;
+        return 1;
+    }
+    return 2;
 }
