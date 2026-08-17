@@ -1,13 +1,17 @@
+#include "fielddata/script/scr_seq/event_T06GYM0101.h"
+
 #include "field_system.h"
 #include "overlay_04.h"
+#include "unk_02005D10.h"
+#include "unk_02062108.h"
 
 typedef struct VermilionGymmickLocalData {
     FieldSystem *fieldSystem;
 } VermilionGymmickLocalData;
 
 typedef struct VermilionGymmickLockActionTaskData {
-    int unk_0;
-    LocalMapObject *unk_4[3];
+    int unk_00;
+    LocalMapObject *unk_04[3];
     int unk_10;
     u16 unk_14;
     u8 unk_16;
@@ -94,4 +98,81 @@ void ov04_0225640C(FieldSystem *fieldSystem, u8 lockno, u8 relock) {
     default:
         GF_ASSERT(FALSE);
     }
+}
+
+BOOL ov04_022564A0(TaskManager *taskman) {
+    FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskman);
+    VermilionGymmickLockActionTaskData *taskData = TaskManager_GetEnvironment(taskman);
+    u32 *pState = TaskManager_GetStatePtr(taskman);
+
+    switch (*pState) {
+    case 0:
+        if (taskData->unk_10 == 199) {
+            taskData->unk_04[0] = MapObjectManager_GetFirstActiveObjectByID(fieldSystem->mapObjectManager, obj_T06GYM0101_stop_4);
+            taskData->unk_04[1] = MapObjectManager_GetFirstActiveObjectByID(fieldSystem->mapObjectManager, obj_T06GYM0101_stop_5);
+            taskData->unk_04[2] = MapObjectManager_GetFirstActiveObjectByID(fieldSystem->mapObjectManager, obj_T06GYM0101_stop_6);
+        } else {
+            taskData->unk_04[0] = MapObjectManager_GetFirstActiveObjectByID(fieldSystem->mapObjectManager, obj_T06GYM0101_stop);
+            taskData->unk_04[1] = MapObjectManager_GetFirstActiveObjectByID(fieldSystem->mapObjectManager, obj_T06GYM0101_stop_2);
+            taskData->unk_04[2] = MapObjectManager_GetFirstActiveObjectByID(fieldSystem->mapObjectManager, obj_T06GYM0101_stop_3);
+        }
+        taskData->unk_14 = 0;
+        *pState = taskData->unk_16;
+        break;
+    case 1:
+        MapObject_SetHeldMovement(taskData->unk_04[0], MOVEMENT_UNK_22);
+        MapObject_SetHeldMovement(taskData->unk_04[1], MOVEMENT_UNK_22);
+        MapObject_SetHeldMovement(taskData->unk_04[2], MOVEMENT_UNK_23);
+        *pState = 3;
+        break;
+    case 2:
+        MapObject_SetHeldMovement(taskData->unk_04[0], MOVEMENT_UNK_23);
+        MapObject_SetHeldMovement(taskData->unk_04[1], MOVEMENT_UNK_23);
+        MapObject_SetHeldMovement(taskData->unk_04[2], MOVEMENT_UNK_22);
+        *pState = 3;
+        break;
+    case 3: {
+        u8 i;
+        for (i = 0; i < 3; ++i) {
+            if (!MapObject_AreBitsSetForMovementScriptInit(taskData->unk_04[i])) {
+                break;
+            }
+        }
+        if (i == 3) {
+            ++taskData->unk_14;
+            if (taskData->unk_14 >= 2) {
+                if (taskData->unk_16 == 1) {
+                    *pState = 4;
+                } else {
+                    *pState = 5;
+                }
+            } else {
+                *pState = taskData->unk_16;
+            }
+        }
+    } break;
+    case 4: {
+        UnkStruct_FieldSysC0_SubC *gateRender = Field3dObjectList_GetRenderObjectByID(fieldSystem->unkC0, taskData->unk_10);
+        u32 num = MapPropAnimationManager_GetPropAnimationCount(fieldSystem->mapPropAnimationManager, taskData->unk_10);
+        for (u8 i = 0; i < num; ++i) {
+            MapPropAnimationManager_RemoveAnimationFromRenderObj(fieldSystem->mapPropAnimationManager, &gateRender->renderObj, taskData->unk_10, i);
+        }
+        PlaySE(SEQ_SE_DP_UG_020);
+        *pState = 6;
+    } break;
+    case 5: {
+        UnkStruct_FieldSysC0_SubC *gateRender = Field3dObjectList_GetRenderObjectByID(fieldSystem->unkC0, taskData->unk_10);
+        u32 num = MapPropAnimationManager_GetPropAnimationCount(fieldSystem->mapPropAnimationManager, taskData->unk_10);
+        for (u8 i = 0; i < num; ++i) {
+            MapPropAnimationManager_AddAnimationToRenderObj(taskData->unk_10, i, FALSE, &gateRender->renderObj, fieldSystem->mapPropAnimationManager);
+        }
+        PlaySE(SEQ_SE_DP_UG_020);
+        *pState = 6;
+    } break;
+    case 6:
+        Heap_Free(taskData);
+        return TRUE;
+    }
+
+    return FALSE;
 }
