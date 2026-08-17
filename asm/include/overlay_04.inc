@@ -138,8 +138,8 @@
 .public CianwoodGymmick_ActivateWinch
 .public GymmickInit_Vermilion
 .public GymmickFree_Vermilion
-.public ov04_022563C4
-.public ov04_0225640C
+.public VermilionGymmick_SwitchCheck
+.public VermilionGymmick_GateAction
 .public GymmickInit_Fuchsia
 .public GymmickFree_Fuchsia
 .public ov04_022566EC

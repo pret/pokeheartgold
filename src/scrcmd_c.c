@@ -3130,7 +3130,7 @@ BOOL ScrCmd_VermilionGymLockAction(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
     u8 lockno = ScriptReadByte(ctx);
     u8 relock = ScriptReadByte(ctx);
-    ov04_0225640C(fieldSystem, lockno, relock);
+    VermilionGymmick_GateAction(fieldSystem, lockno, relock);
     return TRUE;
 }
 
@@ -3138,7 +3138,7 @@ BOOL ScrCmd_VermilionGymCanCheck(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
     u8 canId = ScriptReadByte(ctx);
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    *p_ret = ov04_022563C4(fieldSystem, canId);
+    *p_ret = VermilionGymmick_SwitchCheck(fieldSystem, canId);
     return FALSE;
 }
 
