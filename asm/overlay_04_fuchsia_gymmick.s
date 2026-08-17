@@ -6,45 +6,6 @@
 
 	.text
 
-	thumb_func_start GymmickFree_Fuchsia
-GymmickFree_Fuchsia: ; 0x022566A0
-	push {r3, r4, r5, r6, r7, lr}
-	str r0, [sp]
-	ldr r0, [r0, #4]
-	ldr r5, [r0, #0x24]
-	add r0, r5, #0
-	bl ov04_0225686C
-	ldr r6, _022566E4 ; =0x00001DB4
-	mov r4, #0
-	mov r7, #0xc
-_022566B4:
-	add r0, r4, #0
-	mul r0, r7
-	add r1, r5, r0
-	ldrh r0, [r1, r6]
-	cmp r0, #0
-	beq _022566C8
-	ldr r0, _022566E8 ; =0x00001DBC
-	ldr r0, [r1, r0]
-	bl SysTask_Destroy
-_022566C8:
-	add r0, r4, #1
-	lsl r0, r0, #0x18
-	lsr r4, r0, #0x18
-	cmp r4, #3
-	blo _022566B4
-	add r0, r5, #0
-	bl Heap_Free
-	ldr r0, [sp]
-	mov r1, #0
-	ldr r0, [r0, #4]
-	str r1, [r0, #0x24]
-	pop {r3, r4, r5, r6, r7, pc}
-	nop
-_022566E4: .word 0x00001DB4
-_022566E8: .word 0x00001DBC
-	thumb_func_end GymmickFree_Fuchsia
-
 	thumb_func_start ov04_022566EC
 ov04_022566EC: ; 0x022566EC
 	push {r4, r5, r6, lr}
