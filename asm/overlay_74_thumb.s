@@ -28379,7 +28379,7 @@ ov74_022369D8: ; 0x022369D8
 	add r4, r0, #0
 	add r0, sp, #0
 	add r1, sp, #4
-	bl ov00_021EC11C
+	bl DWC_GetLastErrorEx
 	ldr r0, [sp]
 	ldr r1, [sp, #4]
 	neg r0, r0
@@ -28417,7 +28417,7 @@ _02236A28: .word 0x0000100F
 ov74_02236A2C: ; 0x02236A2C
 	push {lr}
 	sub sp, #0x3c
-	bl ov00_021EC724
+	bl DWC_GetInetStatus
 	cmp r0, #4
 	beq _02236A40
 	cmp r0, #7
@@ -28426,7 +28426,7 @@ ov74_02236A2C: ; 0x02236A2C
 	b _02236A4C
 _02236A40:
 	add r0, sp, #0
-	bl ov00_021EC9E0
+	bl DWC_GetApInfo
 	add sp, #0x3c
 	mov r0, #1
 	pop {pc}
@@ -28469,7 +28469,7 @@ ov74_02236A78: ; 0x02236A78
 	ldr r0, _02236AA4 ; =0x00001013
 	str r0, [r4]
 	ldr r0, _02236AA8 ; =ov74_02236ABC
-	bl ov00_021ED308
+	bl DWC_NdCleanupAsync
 	cmp r0, #0
 	bne _02236A9A
 	ldr r0, [sp, #0x10]
@@ -28582,7 +28582,7 @@ _02236B5A:
 	beq _02236C3E
 	ldr r0, _02236DF0 ; =ov74_022369A8
 	ldr r1, _02236DF4 ; =ov74_022369C8
-	bl ov00_021EC294
+	bl DWC_SetMemFunc
 	ldr r0, [r4, #4]
 	bl sub_020394A0
 	ldr r0, _02236DF8 ; =0x00001002
@@ -28594,10 +28594,10 @@ _02236B76:
 	add r0, r4, r0
 	mov r2, #1
 	mov r3, #0x14
-	bl ov00_021EC3F0
+	bl DWC_InitInetEx
 	mov r0, #2
-	bl ov00_021EC454
-	bl ov00_021EC4A4
+	bl DWC_SetAuthServer
+	bl DWC_ConnectInetAsync
 	bl sub_0203A880
 	ldr r0, _02236E00 ; =0x00001003
 	mov r1, #0
@@ -28606,8 +28606,8 @@ _02236B76:
 	str r1, [r4, r0]
 	b _02236F0A
 _02236B9E:
-	bl ov00_021EC60C
-	bl ov00_021EC5B4
+	bl DWC_ProcessInet
+	bl DWC_CheckInet
 	cmp r0, #0
 	beq _02236BD6
 	add r0, r4, #0
@@ -28643,7 +28643,7 @@ _02236BD6:
 	str r1, [r4, r0]
 	b _02236F0A
 _02236BE8:
-	bl ov00_021ECD04
+	bl DWC_NASLoginAsync
 	cmp r0, #0
 	bne _02236BFA
 	add r0, r4, #0
@@ -28655,11 +28655,11 @@ _02236BFA:
 	str r0, [r5]
 	b _02236F0A
 _02236C00:
-	bl ov00_021ECDC8
+	bl DWC_NASLoginProcess
 	cmp r0, #3
 	bne _02236C14
 	ldr r0, _02236E1C ; =0x00001006
-	ldr r1, _02236E20 ; =ov00_021ECB40
+	ldr r1, _02236E20 ; =DWC_UpdateConnection
 	str r0, [r5]
 	ldr r0, _02236DE8 ; =0x0000267C
 	str r1, [r4, r0]
@@ -28670,7 +28670,7 @@ _02236C14:
 	add r0, r4, #0
 	bl ov74_022369D8
 	str r0, [r5]
-	bl ov00_021EC8D8
+	bl DWC_CleanupInet
 	b _02236C34
 _02236C26:
 	cmp r0, #5
@@ -28689,13 +28689,13 @@ _02236C34:
 _02236C3E:
 	b _02236F0A
 _02236C40:
-	bl ov00_021ECEC0
+	bl DWC_NASLoginAbort
 	b _02236F0A
 _02236C46:
 	ldr r0, _02236E24 ; =ov74_02236AAC
 	ldr r1, _02236E28 ; =ov74_0223D038
 	ldr r2, _02236E2C ; =ov74_0223D040
-	bl ov00_021ED1F0
+	bl DWC_NdInitAsync
 	cmp r0, #0
 	bne _02236C5E
 	add r0, r4, #0
@@ -28724,7 +28724,7 @@ _02236C82:
 	ldr r0, _02236E34 ; =ov74_0223D054
 	add r1, r0, #0
 	add r2, r0, #0
-	bl ov00_021ED354
+	bl DWC_NdSetAttr
 	cmp r0, #0
 	bne _02236C9A
 	add r0, r4, #0
@@ -28738,7 +28738,7 @@ _02236C9A:
 _02236CA0:
 	ldr r0, _02236E3C ; =0x00001654
 	add r0, r4, r0
-	bl ov00_021ED388
+	bl DWC_NdGetFileListNumAsync
 	cmp r0, #0
 	bne _02236CB6
 	add r0, r4, #0
@@ -28767,7 +28767,7 @@ _02236CDA:
 	ldr r0, _02236E44 ; =ov74_0223E318
 	mov r1, #0
 	mov r2, #0xa
-	bl ov00_021ED3AC
+	bl DWC_NdGetFileListAsync
 	cmp r0, #0
 	bne _02236CF2
 	add r0, r4, #0
@@ -28785,7 +28785,7 @@ _02236CFE:
 	ldr r0, _02236E44 ; =ov74_0223E318
 	add r1, r4, r1
 	add r2, r3, #0
-	bl ov00_021ED3F4
+	bl DWC_NdGetFileAsync
 	cmp r0, #0
 	bne _02236D18
 	add r0, r4, #0
@@ -28821,7 +28821,7 @@ _02236D46:
 	add r0, r4, r1
 	add r1, r1, #4
 	add r1, r4, r1
-	bl ov00_021ED444
+	bl DWC_NdGetProgress
 	cmp r0, #1
 	bne _02236DD0
 	ldr r1, _02236E58 ; =0x0000265C
@@ -28866,7 +28866,7 @@ _02236D9A:
 	bl ov74_02236A78
 	b _02236F0A
 _02236DAA:
-	bl ov00_021ED428
+	bl DWC_NdCancelAsync
 	cmp r0, #0
 	bne _02236DB8
 	ldr r0, _02236E0C ; =0x0000100D
@@ -28881,7 +28881,7 @@ _02236DB8:
 	ldr r0, [r0, #8]
 	pop {r3, r4, r5, pc}
 _02236DC8:
-	bl ov00_021EC938
+	bl DWC_CleanupInetAsync
 	cmp r0, #1
 	beq _02236DD2
 _02236DD0:
@@ -28912,7 +28912,7 @@ _02236E10: .word 0x00001004
 _02236E14: .word gSystem
 _02236E18: .word 0x00001005
 _02236E1C: .word 0x00001006
-_02236E20: .word ov00_021ECB40
+_02236E20: .word DWC_UpdateConnection
 _02236E24: .word ov74_02236AAC
 _02236E28: .word ov74_0223D038
 _02236E2C: .word ov74_0223D040
@@ -28951,7 +28951,7 @@ _02236E84:
 	str r0, [r5]
 	b _02236F0A
 _02236E8A:
-	bl ov00_021EC8D8
+	bl DWC_CleanupInet
 	ldr r0, _02236F14 ; =0x00001010
 	str r0, [r5]
 	b _02236F0A
@@ -28964,7 +28964,7 @@ _02236E94:
 	ldr r0, _02236F20 ; =0x0000267C
 	mov r1, #0
 	str r1, [r4, r0]
-	bl ov00_021EC210
+	bl DWC_ClearError
 	bl ov74_02236AC8
 	mov r0, #4
 	pop {r3, r4, r5, pc}

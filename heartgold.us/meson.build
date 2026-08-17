@@ -1,3 +1,10 @@
+# Generate main.lcf
+main_lcf = custom_target('main.lcf',
+    output: 'main.lcf',
+    input: main_lsf + main_lcf_template,
+    command: [makelcf_exe, '@INPUT@','@OUTPUT@']
+)
+
 # Collect ROM inputs and SHA-sums
 icon_png = files('icon.png')
 

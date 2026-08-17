@@ -1,5 +1,3 @@
-relative_source_root = fs.relative_to(meson.project_source_root(), meson.project_build_root())
-
 nitrofs_files = []
 naix_headers = []
 
@@ -86,10 +84,13 @@ subdir('application')
 subdir('arc')
 subdir('data')
 subdir('demo')
-subdir('fielddata')
 subdir('graphic')
 subdir('itemtool')
 subdir('poketool')
 
 #Msgdata must come after poketool for trainer name file
 subdir('msgdata')
+
+#Scripts must come after msgdata
+subdir('fielddata')
+

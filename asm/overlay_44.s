@@ -22003,7 +22003,7 @@ ov44_02234AE4: ; 0x02234AE4
 	sub r0, r0, #4
 	cmp r0, #1
 	bhi _02234B14
-	bl ov00_021EDB1C
+	bl DWC_ProcessFriendsMatch
 _02234B14:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
@@ -22017,7 +22017,7 @@ ov44_02234B18: ; 0x02234B18
 	sub r0, r0, #4
 	cmp r0, #1
 	bhi _02234B2A
-	bl ov00_021EDB1C
+	bl DWC_ProcessFriendsMatch
 _02234B2A:
 	add r0, r4, #0
 	add r0, #0x30

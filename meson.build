@@ -12,11 +12,13 @@ fs = import('fs')
 ############################################################
 ###                    INCLUDE PATHS                     ###
 ############################################################
-public_includes = include_directories('include', 'asm/include', 'lib/include', 'build/files', 'files', 'src')
+public_includes = include_directories('include', 'asm/include', 'lib/include', 'build/files', 'files', 'src', 'asm')
 toplevel_includes = include_directories('.')
 msl_includes = include_directories(
     'tools' / 'metroskrew' / 'lib' / 'metroskrew' / 'sdk' / 'ds' / '2.0' / 'sp2' / 'msl' / 'MSL_C' / 'MSL_Common' / 'Include'
 )
+relative_source_root = fs.relative_to(meson.project_source_root(), meson.project_build_root())
+
 ############################################################
 ###                    COMPILER FLAGS                    ###
 ############################################################
@@ -34,6 +36,7 @@ c_args = [
     '-nosyspath',
     '-stdinc',
     '-sym', 'on',
+    '-O4,p'
 ]
 
 asm_args = [
@@ -41,6 +44,20 @@ asm_args = [
     '-16',
     '-gccinc',
     '-g'
+]
+
+link_args = [
+    '-w', 'off',
+    '-proc', 'arm946e',
+    '-nopic',
+    '-nopid',
+    '-interworking',
+    '-map', 'closure,unused',
+    '-symtab', 'sort',
+    '-msgstyle' ,'gcc',
+    '-m', '_start',
+    '-force_active', 'DGTi_hash2_arm4_small',
+    '-sym', 'on'
 ]
 
 add_global_arguments(c_args,
@@ -73,8 +90,7 @@ nitrowifi_dep = dependency('NitroWiFi',
 
 nitrodwc_dep = dependency('NitroDWC',
     default_options: {
-        'mwrap_sdk': '2.0/sp2p2',
-        'link_ppwlobby': true
+        'mwrap_sdk': '2.0/sp2p2'
     }
 )
 
@@ -86,6 +102,10 @@ subdir('tools')
 ############################################################
 ###                      SPEC FILES                      ###
 ############################################################
+# Collect inputs for main.lcf
+main_lsf = files('main.lsf')
+main_lcf_template = subproject('NitroSDK').get_variable('main_lcf_template')
+
 subdir('heartgold.us')
 
 ############################################################
@@ -104,11 +124,13 @@ subdir('src')
 #ARM 9 BINARY
 
 libmslc = fs.copyfile('tools/metroskrew/lib/metroskrew/sdk/ds/2.0/sp2/msl/MSL_C/MSL_ARM/Lib/MSL_C_NITRO_Ai_LE.a')
+libdsprot = fs.copyfile('lib/dsprot/libdsprot.a')
 
 main = executable('main',
     sources : [
         pokeheartgold_c,
         pokeheartgold_asm,
+        nitrodwc_asm,
         naix_headers,
     ],
     c_args : [
@@ -122,7 +144,6 @@ main = executable('main',
     include_directories : [
         public_includes,
         lib_asm_includes,
-        #msl_includes
     ],
     dependencies : [
         nitrosdk_dep,
@@ -131,8 +152,19 @@ main = executable('main',
         nitrodwc_dep,
     ],
     link_with : [
-        libmslc
+        libmslc,
+        libsyscall,
+        libspl,
+        libwifi,
+        libVCT,
+        libdsprot,
+        libirc,
     ],
+    link_args : [
+        link_args,
+        'heartgold.us/main.lcf'
+    ],
+    link_depends : main_lcf,
     native : false
 )
 
@@ -151,7 +183,8 @@ pokeheartgold_nds = custom_target('pokeheartgold.us.nds',
         nitrorom_exe,
         'pack',
         '-DHEADER_TEMPLATE=@INPUT1@', #rom_header_template
-    ]
+    ],
+    build_by_default : true
 )
 
 ############################################################

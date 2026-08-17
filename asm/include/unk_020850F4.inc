@@ -60,4 +60,4 @@
 .public _02102620
 .public gSystem
 .public OS_IRQTable
-.public ov00_021EC9D4
+.public DWC_GetLinkLevel

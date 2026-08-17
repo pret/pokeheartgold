@@ -1,4 +1,4 @@
-	.include "asm/macros.inc"
+	.include "macros.inc"
 	.include "overlay_38_arm.inc"
 	.include "global.inc"
 
@@ -33,7 +33,7 @@ _0221C06C:
 	ldmib r5, {r0, r1}
 	add r4, r1, r4
 	mov r1, r4
-	bl ov00_021EC3BC
+	bl DWCi_GsRealloc
 	cmp r0, #0
 	moveq r0, #0
 	stmneib r5, {r0, r4}
@@ -216,7 +216,7 @@ _0221C2F0:
 	ldr r1, [r4, #0x1c]
 	cmp r1, #0
 	bne _0221C310
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 _0221C310:
 	mov r0, r4
 	mov r1, #0
@@ -547,7 +547,7 @@ _0221C764:
 	mov r1, r6
 	mov r2, r5
 	mov r3, r4
-	bl ov00_021FF59C
+	bl GSISocketSelect
 	cmp r0, r8
 	beq _0221C78C
 	ldr r0, [sp]
@@ -559,7 +559,7 @@ _0221C78C:
 	mov r0, #5
 	str r0, [r7, #0x38]
 	ldr r0, [r7, #0x48]
-	bl ov00_021FFA60
+	bl GOAGetLastError
 	str r0, [r7, #0x4c]
 	add sp, sp, #8
 	mov r0, #0
@@ -869,7 +869,7 @@ ov38_0221CB7C: ; 0x0221CB7C
 	cmp r0, #0
 	sub r4, r2, #1
 	beq _0221CBD0
-	bl ov00_021FF368
+	bl current_time
 	ldr r1, _0221CD8C ; =ov38_0222531C
 	ldr r3, [r7, #0x138]
 	ldr r2, [r1]
@@ -906,14 +906,14 @@ _0221CC18:
 	mov r1, r6
 	mov r2, r4
 	mov r3, #0
-	bl ov00_021FF92C
+	bl recv
 	mov r2, r0
 	mvn r0, #0
 	str r2, [sp]
 	cmp r2, r0
 	bne _0221CC88
 	ldr r0, [r7, #0x48]
-	bl ov00_021FFA60
+	bl GOAGetLastError
 	mvn r2, #5
 	cmp r0, r2
 	subne r1, r2, #0x14
@@ -1011,12 +1011,12 @@ ov38_0221CD90: ; 0x0221CD90
 	mov r4, r0
 	ldr r0, [r4, #0x48]
 	mov r3, #0
-	bl ov00_021FF970
+	bl send
 	mvn r1, #0
 	cmp r0, r1
 	bne _0221CDF4
 	ldr r0, [r4, #0x48]
-	bl ov00_021FFA60
+	bl GOAGetLastError
 	mvn r2, #5
 	cmp r0, r2
 	subne r1, r2, #0x14
@@ -1104,7 +1104,7 @@ _0221CECC:
 	ldr r0, [r0, #4]
 	add r5, r6, #4
 	mov r1, r5, lsl #2
-	bl ov00_021EC3BC
+	bl DWCi_GsRealloc
 	cmp r0, #0
 	mvneq r0, #0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
@@ -1117,7 +1117,7 @@ _0221CECC:
 	mov r4, #0x184
 _0221CF0C:
 	mov r0, r4
-	bl ov00_021EC3A8
+	bl DWCi_GsMalloc
 	ldr r1, [r8, #4]
 	str r0, [r1, r7, lsl #2]
 	ldr r0, [r8, #4]
@@ -1131,7 +1131,7 @@ _0221CF0C:
 _0221CF3C:
 	ldr r0, [r4, #4]
 	ldr r0, [r0, r7, lsl #2]
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	sub r7, r7, #1
 	cmp r7, r6
 	bge _0221CF3C
@@ -1324,25 +1324,25 @@ _0221D1AC:
 	ldmgeia sp!, {r4, pc}
 	bl ov38_0221CA4C
 	ldr r0, [r4, #0x14]
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	ldr r0, [r4, #0x18]
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	ldr r0, [r4, #0x24]
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	ldr r0, [r4, #0x28]
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	ldr r0, [r4, #0x108]
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	ldr r0, [r4, #0x15c]
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	ldr r0, [r4, #0x48]
 	mvn r1, #0
 	cmp r0, r1
 	beq _0221D240
 	mov r1, #2
-	bl ov00_021FF82C
+	bl shutdown
 	ldr r0, [r4, #0x48]
-	bl ov00_021FF818
+	bl closesocket
 _0221D240:
 	add r0, r4, #0x50
 	bl ghiFreeBuffer
@@ -1508,26 +1508,26 @@ _0221D454:
 	mov r0, #0
 	str r0, [r4, #0x10]
 	ldr r0, [r4, #0x14]
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	ldr r1, [r4, #0x108]
 	mov r0, #0
 	str r1, [r4, #0x14]
 	str r0, [r4, #0x108]
 	ldr r0, [r4, #0x18]
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	mov r0, #0
 	str r0, [r4, #0x18]
 	str r0, [r4, #0x1c]
 	strh r0, [r4, #0x20]
 	ldr r0, [r4, #0x24]
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	mov r0, #0
 	str r0, [r4, #0x24]
 	ldr r0, [r4, #0x48]
 	mov r1, #2
-	bl ov00_021FF82C
+	bl shutdown
 	ldr r0, [r4, #0x48]
-	bl ov00_021FF818
+	bl closesocket
 	mvn r1, #0
 	add r0, r4, #0x50
 	str r1, [r4, #0x48]
@@ -1574,7 +1574,7 @@ ov38_0221D518: ; 0x0221D518
 _0221D548:
 	ldr r0, [r4, #4]
 	ldr r0, [r0, r5, lsl #2]
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	ldr r0, [r4, #0xc]
 	add r5, r5, #1
 	cmp r5, r0
@@ -1582,7 +1582,7 @@ _0221D548:
 _0221D564:
 	ldr r0, _0221D588 ; =ov38_0222602C
 	ldr r0, [r0, #4]
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	ldr r0, _0221D588 ; =ov38_0222602C
 	mov r1, #0
 	str r1, [r0, #4]
@@ -1804,7 +1804,7 @@ ov38_0221D808: ; 0x0221D808
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _0221D848
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	ldr r0, _0221D860 ; =ov38_02226028
 	mov r1, #0
 	str r1, [r0]
@@ -1900,7 +1900,7 @@ _0221D95C:
 	mov r1, #0
 	mov r0, r8
 	str r1, [r4, #0xc]
-	bl ov00_021FF3D4
+	bl goastrdup
 	str r0, [r4, #0x14]
 	cmp r0, #0
 	bne _0221D998
@@ -1914,7 +1914,7 @@ _0221D998:
 	cmpne r0, #0
 	beq _0221D9CC
 	mov r0, r7
-	bl ov00_021FF3D4
+	bl goastrdup
 	str r0, [r4, #0x28]
 	cmp r0, #0
 	bne _0221D9CC
@@ -1983,7 +1983,7 @@ _0221DA84:
 	mov r5, #0xa
 _0221DAA4:
 	mov r0, r5
-	bl ov00_021FF3C0
+	bl msleep
 	mov r0, r4
 	bl ghiProcessConnection
 	cmp r0, #0
@@ -2026,9 +2026,9 @@ ov38_0221DB08: ; 0x0221DB08
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	ldr r0, [r4]
-	bl ov00_021FE678
+	bl ArrayFree
 	mov r0, r4
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	ldmia sp!, {r4, pc}
 	arm_func_end ov38_0221DB08
 
@@ -2081,7 +2081,7 @@ ghiPostGetNoFilesContentLength: ; 0x0221DB84
 _0221DBBC:
 	ldr r0, [r6]
 	mov r1, r8
-	bl ov00_021FE6EC
+	bl ArrayNth
 	mov r7, r0
 	ldr r0, [r7]
 	cmp r0, #0
@@ -2145,7 +2145,7 @@ _0221DC78:
 _0221DC98:
 	ldr r0, [r7]
 	mov r1, r8
-	bl ov00_021FE6EC
+	bl ArrayNth
 	mov r6, r0
 	ldr r0, [r6]
 	cmp r0, #0
@@ -2174,7 +2174,7 @@ _0221DCD4:
 	add sl, sl, r0
 	ldr r0, [r4, #0x140]
 	mov r1, r8
-	bl ov00_021FE6EC
+	bl ArrayNth
 	movs r6, r0
 	bne _0221DD30
 	ldr r1, _0221DDC0 ; =ov38_02225644
@@ -2381,7 +2381,7 @@ _0221DF78:
 	mov r1, r8
 	mov r0, #0x10
 	mov r2, #0
-	bl ov00_021FE5B4
+	bl ArrayNew
 	cmp r0, #0
 	str r0, [r4, #0x140]
 	addeq sp, sp, #0x10
@@ -2396,7 +2396,7 @@ _0221DFF8:
 	ldr r0, [r4, #0x13c]
 	mov r1, r7
 	ldr r0, [r0]
-	bl ov00_021FE6EC
+	bl ArrayNth
 	str r5, [r6]
 	str r0, [sp]
 	mov r0, r6
@@ -2411,13 +2411,13 @@ _0221DFF8:
 _0221E034:
 	ldr r0, [r4, #0x140]
 	mov r1, r7
-	bl ov00_021FE6EC
+	bl ArrayNth
 	bl ghiPostStateCleanup
 	subs r7, r7, #1
 	bpl _0221E034
 _0221E04C:
 	ldr r0, [r4, #0x140]
-	bl ov00_021FE678
+	bl ArrayFree
 	mov r0, #0
 	add sp, sp, #0x10
 	str r0, [r4, #0x140]
@@ -2425,7 +2425,7 @@ _0221E04C:
 _0221E064:
 	ldr r0, [r4, #0x140]
 	mov r1, r6
-	bl ov00_021FE754
+	bl ArrayAppend
 	add r7, r7, #1
 	cmp r7, r8
 	blt _0221DFF8
@@ -2473,14 +2473,14 @@ ov38_0221E0DC: ; 0x0221E0DC
 _0221E104:
 	ldr r0, [r6, #0x140]
 	mov r1, r4
-	bl ov00_021FE6EC
+	bl ArrayNth
 	bl ghiPostStateCleanup
 	add r4, r4, #1
 	cmp r4, r5
 	blt _0221E104
 _0221E120:
 	ldr r0, [r6, #0x140]
-	bl ov00_021FE678
+	bl ArrayFree
 	mov r0, #0
 	str r0, [r6, #0x140]
 _0221E130:
@@ -3032,7 +3032,7 @@ _0221E8AC:
 	mov fp, #1
 _0221E8CC:
 	ldr r0, [sl, #0x140]
-	bl ov00_021FE6EC
+	bl ArrayNth
 	movs r8, r0
 	bne _0221E8F0
 	mov r0, r7
@@ -3168,7 +3168,7 @@ _0221EA9C:
 	mov r1, #0
 	mov r0, r4
 	strb r1, [r4, r6]
-	bl ov00_021FF3D4
+	bl goastrdup
 	str r0, [r5, #0x18]
 	cmp r0, #0
 	moveq r0, #0
@@ -3203,7 +3203,7 @@ _0221EB2C:
 	cmp r0, #0
 	ldreq r4, _0221EBAC ; =ov38_02225BAC
 	mov r0, r4
-	bl ov00_021FF3D4
+	bl goastrdup
 	mov r1, #0x20
 	mov r7, r0
 	str r0, [r5, #0x24]
@@ -3244,7 +3244,7 @@ ov38_0221EBB0: ; 0x0221EBB0
 	mov r4, r0
 	mov r2, r1
 	bl ghiCallProgressCallback
-	bl ov00_021FF3CC
+	bl SocketStartUp
 	mov r0, r4
 	bl ghiParseURL
 	cmp r0, #0
@@ -3264,7 +3264,7 @@ _0221EBEC:
 	ldreq r5, [r4, #0x18]
 _0221EC08:
 	mov r0, r5
-	bl ov00_021FFA44
+	bl inet_addr
 	mvn r1, #0
 	str r0, [r4, #0x1c]
 	cmp r0, r1
@@ -3307,7 +3307,7 @@ ov38_0221EC74: ; 0x0221EC74
 	mov r0, #2
 	mov r1, #1
 	mov r2, #0
-	bl ov00_021FF804
+	bl socket
 	mvn r1, #0
 	str r0, [r4, #0x48]
 	cmp r0, r1
@@ -3317,13 +3317,13 @@ ov38_0221EC74: ; 0x0221EC74
 	mov r0, #5
 	str r0, [r4, #0x38]
 	ldr r0, [r4, #0x48]
-	bl ov00_021FFA60
+	bl GOAGetLastError
 	add sp, sp, #0x10
 	str r0, [r4, #0x4c]
 	ldmia sp!, {r4, pc}
 _0221ECD4:
 	mov r1, #0
-	bl ov00_021FF44C
+	bl SetSockBlocking
 	cmp r0, #0
 	bne _0221ED08
 	mov r0, #1
@@ -3331,7 +3331,7 @@ _0221ECD4:
 	mov r0, #5
 	str r0, [r4, #0x38]
 	ldr r0, [r4, #0x48]
-	bl ov00_021FFA60
+	bl GOAGetLastError
 	add sp, sp, #0x10
 	str r0, [r4, #0x4c]
 	ldmia sp!, {r4, pc}
@@ -3342,7 +3342,7 @@ _0221ED08:
 	ldr r1, _0221EEB8 ; =ov38_02225320
 	ldr r0, [r4, #0x48]
 	ldr r1, [r1]
-	bl ov00_021FF48C
+	bl SetReceiveBufferSize
 _0221ED24:
 	add r2, sp, #8
 	mov r1, #0
@@ -3390,12 +3390,12 @@ _0221EDBC:
 	str r0, [sp, #0xc]
 	ldr r0, [r4, #0x48]
 	mov r2, #8
-	bl ov00_021FF8A0
+	bl connect
 	mvn r1, #0
 	cmp r0, r1
 	bne _0221EE20
 	ldr r0, [r4, #0x48]
-	bl ov00_021FFA60
+	bl GOAGetLastError
 	mvn r2, #5
 	cmp r0, r2
 	subne r1, r2, #0x14
@@ -3415,7 +3415,7 @@ _0221EE20:
 	add r2, sp, #4
 	add r3, sp, #0
 	mov r1, #0
-	bl ov00_021FF59C
+	bl GSISocketSelect
 	cmp r0, #0
 	movgt r1, #1
 	movle r1, #0
@@ -3434,7 +3434,7 @@ _0221EE58:
 	str r0, [r4, #0x38]
 	ldmneia sp!, {r4, pc}
 	ldr r0, [r4, #0x48]
-	bl ov00_021FFA60
+	bl GOAGetLastError
 	add sp, sp, #0x10
 	str r0, [r4, #0x4c]
 	ldmia sp!, {r4, pc}
@@ -3784,7 +3784,7 @@ ov38_0221F330: ; 0x0221F330
 	ldr r0, [r4, #0x48]
 	add r1, sp, #0
 	mov r3, r2
-	bl ov00_021FF59C
+	bl GSISocketSelect
 	mvn r1, #0
 	cmp r0, r1
 	bne _0221F380
@@ -3793,7 +3793,7 @@ ov38_0221F330: ; 0x0221F330
 	mov r0, #5
 	str r0, [r4, #0x38]
 	ldr r0, [r4, #0x48]
-	bl ov00_021FFA60
+	bl GOAGetLastError
 	add sp, sp, #4
 	str r0, [r4, #0x4c]
 	ldmia sp!, {r3, r4, pc}
@@ -3845,7 +3845,7 @@ _0221F3F4:
 	mov ip, #0
 	ldr r5, [sp, #8]
 	mov lr, #1
-	ldr r2, _0221F4F8 ; =__msl_digit
+	ldr r2, _0221F4F8 ; =0x8
 	mov r3, ip
 	b _0221F438
 _0221F430:
@@ -3905,7 +3905,7 @@ _0221F4E8: .word 0x0000024E
 _0221F4EC: .word ov38_02225C78
 _0221F4F0: .word 0x0000024F
 _0221F4F4: .word ov38_02225C98
-_0221F4F8: .word __msl_digit
+_0221F4F8: .word 0x8
 	arm_func_end ghiParseStatus
 
 	arm_func_start ov38_0221F4FC
@@ -3980,7 +3980,7 @@ _0221F5E8:
 	mov r0, #7
 	str r0, [r4, #0x38]
 	ldr r0, [r4, #0x48]
-	bl ov00_021FFA60
+	bl GOAGetLastError
 	str r0, [r4, #0x4c]
 	add sp, sp, #4
 	add sp, sp, #0x400
@@ -4297,7 +4297,7 @@ ov38_0221FA38: ; 0x0221FA38
 	sub sp, sp, #0x18
 	mov sl, r0
 	mov r0, #0x1000
-	bl ov00_021EC3A8
+	bl DWCi_GsMalloc
 	str r0, [sp, #4]
 	cmp r0, #0
 	bne _0221FA6C
@@ -4404,7 +4404,7 @@ _0221FBC0:
 	cmp r0, #0
 	beq _0221FCE8
 	add r4, r0, #9
-	ldr r1, _0221FE94 ; =__msl_digit
+	ldr r1, _0221FE94 ; =0x8
 	mov r2, #0
 	b _0221FBE8
 _0221FBE4:
@@ -4426,7 +4426,7 @@ _0221FC10:
 	cmp r0, #0
 	bne _0221FBE4
 	mov r3, r4
-	ldr r1, _0221FE94 ; =__msl_digit
+	ldr r1, _0221FE94 ; =0x8
 	mov r2, #0
 	b _0221FC2C
 _0221FC28:
@@ -4461,7 +4461,7 @@ _0221FC60:
 	bl strlen
 	add r1, r5, #0xe
 	add r0, r1, r0
-	bl ov00_021EC3A8
+	bl DWCi_GsMalloc
 	str r0, [sl, #0x108]
 	cmp r0, #0
 	moveq r0, #1
@@ -4476,7 +4476,7 @@ _0221FC60:
 	b _0221FE74
 _0221FCC4:
 	mov r0, r4
-	bl ov00_021FF3D4
+	bl goastrdup
 	str r0, [sl, #0x108]
 	cmp r0, #0
 	bne _0221FE74
@@ -4591,11 +4591,11 @@ _0221FE50:
 	mov r0, #7
 	str r0, [sl, #0x38]
 	ldr r0, [sl, #0x48]
-	bl ov00_021FFA60
+	bl GOAGetLastError
 	str r0, [sl, #0x4c]
 _0221FE74:
 	ldr r0, [sp, #4]
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	add sp, sp, #0x18
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.balign 4, 0
@@ -4603,7 +4603,7 @@ _0221FE84: .word ov38_02225CCC
 _0221FE88: .word ov38_02225CD4
 _0221FE8C: .word 0x51EB851F
 _0221FE90: .word ov38_02225CD8
-_0221FE94: .word __msl_digit
+_0221FE94: .word 0x8
 _0221FE98: .word ov38_02225CE4
 _0221FE9C: .word ov38_02225CF4
 _0221FEA0: .word ov38_02224E6C
@@ -4614,11 +4614,11 @@ _0221FEA4: .word ov38_02225D04
 ov38_0221FEA8: ; 0x0221FEA8
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	mov sb, r0
-	bl ov00_021FF368
+	bl current_time
 	mov r7, r0
 	mov r0, #0x2000
 	mov r8, #0
-	bl ov00_021EC3A8
+	bl DWCi_GsMalloc
 	movs r6, r0
 	bne _0221FEDC
 	mov r0, #1
@@ -4657,7 +4657,7 @@ _0221FF38:
 	bl ghiProcessIncomingFileData
 	cmp r0, #0
 	beq _0221FF70
-	bl ov00_021FF368
+	bl current_time
 	sub r8, r0, r7
 _0221FF58:
 	ldr r0, [sb, #0xfc]
@@ -4668,7 +4668,7 @@ _0221FF58:
 	blo _0221FEE8
 _0221FF70:
 	mov r0, r6
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	arm_func_end ov38_0221FEA8
 
@@ -5235,7 +5235,7 @@ _0222069C:
 	ldrb r1, [ip]
 	ldr r0, _02220778 ; =ov38_022260FC
 	strb r1, [r3]
-	bl ov00_021EC9E0
+	bl DWC_GetApInfo
 	cmp r0, #0
 	beq _02220768
 	ldr r0, _0222077C ; =ov38_022260FC

@@ -1,4 +1,4 @@
-#include <nitro/fs/overlay.h>
+
 #pragma once
 .public SOC_Socket
 .public SOC_Connect
@@ -21,12 +21,12 @@
 .public memcpy
 .public strcpy
 .public _ll_udiv
-.public ov00_021EC11C
-.public ov00_021EC2A8
-.public ov00_021EC2EC
-.public ov00_021ECC6C
-.public ov00_021ECCE0
-.public ov00_021FFA44
+.public DWC_GetLastErrorEx
+.public DWC_Alloc
+.public DWC_Free
+.public DWC_SVLGetTokenAsync
+.public DWC_SVLProcess
+.public inet_addr
 .public ov39_0222A110
 .public ov39_0222A130
 .public ov39_0222A13C

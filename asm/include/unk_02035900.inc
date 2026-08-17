@@ -119,4 +119,4 @@
 .public ov00_021E6CB8
 .public ov00_021E7080
 .public ov00_021E70CC
-.public ov00_021EE4FC
+.public DWC_GetAIDBitmap

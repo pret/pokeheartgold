@@ -1076,7 +1076,7 @@ ov01_022046D4: ; 0x022046D4
 ov01_022046E8: ; 0x022046E8
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	ldr r0, _02204724 ; =_02110A0C
+	ldr r0, _02204724 ; =NNS_G3dFuncAnmMatNsBtaDefault
 	add r4, r1, #0
 	ldr r0, [r0]
 	add r1, r5, #0
@@ -1105,7 +1105,7 @@ _02204710:
 _02204720:
 	pop {r3, r4, r5, pc}
 	nop
-_02204724: .word _02110A0C
+_02204724: .word NNS_G3dFuncAnmMatNsBtaDefault
 	thumb_func_end ov01_022046E8
 
 	thumb_func_start ov01_02204728

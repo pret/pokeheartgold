@@ -183,7 +183,6 @@
 .public gOverlayTemplate_NamingScreen
 .public gSystem
 .public ov00_021E6EBC
-.public _0223DC20
 .public ov42_02228110
 .public ov42_02228188
 .public ov42_022282DC

@@ -10,6 +10,6 @@
 .public OS_InitAlarm
 .public OS_DisableInterrupts
 .public OS_RestoreInterrupts
-.public ov00_021EC454
+.public DWC_SetAuthServer
 .public ov13_0221BA00
 .public ov13_0222B430

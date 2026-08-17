@@ -69,9 +69,9 @@ ov75_022469D8: ; 0x022469D8
 	ldr r0, [r4, #0x7c]
 	cmp r0, #1
 	bne _022469FC
-	bl ov00_021ECB40
+	bl DWC_UpdateConnection
 	bl ov70_022378DC
-	bl ov00_021EC9D4
+	bl DWC_GetLinkLevel
 	mov r1, #3
 	sub r0, r1, r0
 	bl sub_0203A930
@@ -106,7 +106,7 @@ _02246A24:
 	str r1, [r0]
 	ldr r0, _02246AE8 ; =ov75_02246BF0
 	ldr r1, _02246AEC ; =ov75_02246C18
-	bl ov00_021EC294
+	bl DWC_SetMemFunc
 	mov r0, #1
 	str r0, [r4, #0x7c]
 	mov r0, #2
@@ -903,7 +903,7 @@ ov75_02246F0C: ; 0x02246F0C
 	beq _0224705E
 	b _02247074
 _02247032:
-	bl ov00_021EC5B4
+	bl DWC_CheckInet
 	cmp r0, #0
 	bne _02247058
 	ldr r0, [r5]
@@ -3733,7 +3733,7 @@ ov75_02248714: ; 0x02248714
 	push {r4, lr}
 	add r4, r0, #0
 	bl sub_0203957C
-	bl ov00_021EC8D8
+	bl DWC_CleanupInet
 	bl sub_0203A914
 	mov r0, #4
 	bl Sys_ClearSleepDisableFlag
@@ -3833,10 +3833,10 @@ _022487D4:
 	add r0, #0x14
 	mov r2, #1
 	mov r3, #0x14
-	bl ov00_021EC3F0
+	bl DWC_InitInetEx
 	mov r0, #2
-	bl ov00_021EC454
-	bl ov00_021EC4A4
+	bl DWC_SetAuthServer
+	bl DWC_ConnectInetAsync
 	mov r0, #0xd
 	str r0, [r4, #8]
 _022487F6:
@@ -3852,11 +3852,11 @@ ov75_02248800: ; 0x02248800
 	push {r4, lr}
 	sub sp, #0x48
 	add r4, r0, #0
-	bl ov00_021EC60C
-	bl ov00_021EC5B4
+	bl DWC_ProcessInet
+	bl DWC_CheckInet
 	cmp r0, #0
 	beq _022488A6
-	bl ov00_021EC724
+	bl DWC_GetInetStatus
 	cmp r0, #8
 	bhi _02248886
 	add r0, r0, r0
@@ -3878,14 +3878,14 @@ _02248826: ; jump table
 _02248838:
 	add r0, sp, #8
 	add r1, sp, #4
-	bl ov00_021EC11C
+	bl DWC_GetLastErrorEx
 	str r0, [r4, #0x14]
 	ldr r0, [sp, #8]
 	str r0, [r4, #0x18]
 	ldr r0, [sp, #4]
 	str r0, [r4, #0x1c]
-	bl ov00_021EC210
-	bl ov00_021EC8D8
+	bl DWC_ClearError
+	bl DWC_CleanupInet
 	bl sub_0203A914
 	bl sub_0203957C
 	mov r0, #4
@@ -3910,7 +3910,7 @@ _0224887A:
 	b _022488A6
 _02248886:
 	add r0, sp, #0
-	bl ov00_021EC0FC
+	bl DWC_GetLastError
 	add r0, r4, #0
 	bl ov75_02247878
 	mov r0, #0x20
@@ -3920,7 +3920,7 @@ _02248886:
 	b _022488A6
 _0224889C:
 	add r0, sp, #0xc
-	bl ov00_021EC9E0
+	bl DWC_GetApInfo
 	mov r0, #0xe
 	str r0, [r4, #8]
 _022488A6:
@@ -3933,7 +3933,7 @@ _022488A6:
 ov75_022488AC: ; 0x022488AC
 	push {r4, lr}
 	add r4, r0, #0
-	bl ov00_021ECD04
+	bl DWC_NASLoginAsync
 	mov r0, #0xf
 	str r0, [r4, #8]
 	mov r0, #0
@@ -3945,7 +3945,7 @@ ov75_022488BC: ; 0x022488BC
 	push {r4, lr}
 	sub sp, #8
 	add r4, r0, #0
-	bl ov00_021ECDC8
+	bl DWC_NASLoginProcess
 	cmp r0, #5
 	bhi _02248984
 	add r0, r0, r0
@@ -3970,12 +3970,12 @@ _022488E8:
 	bl ov75_02247878
 	add r0, sp, #4
 	add r1, sp, #0
-	bl ov00_021EC11C
+	bl DWC_GetLastErrorEx
 	str r0, [r4, #0x14]
 	ldr r0, [sp, #4]
 	str r0, [r4, #0x18]
-	bl ov00_021EC210
-	bl ov00_021EC8D8
+	bl DWC_ClearError
+	bl DWC_CleanupInet
 	bl sub_0203A914
 	bl sub_0203957C
 	mov r0, #4
@@ -4017,7 +4017,7 @@ _02248952:
 	str r0, [r4, #8]
 	b _02248972
 _02248956:
-	bl ov00_021FA0D8
+	bl DWC_ShutdownGHTTP
 	mov r0, #0x1b
 	str r0, [r4, #8]
 	b _02248972
@@ -4025,7 +4025,7 @@ _02248960:
 	str r0, [r4, #8]
 	b _02248972
 _02248964:
-	bl ov00_021ED9B4
+	bl DWC_ShutdownFriendsMatch
 	mov r0, #0x1b
 	str r0, [r4, #8]
 	b _02248972
@@ -5048,7 +5048,7 @@ _0224910E:
 	str r0, [r4]
 	b _022491C2
 _0224912C:
-	bl ov00_021EC8D8
+	bl DWC_CleanupInet
 	bl sub_0203A914
 	bl sub_0203957C
 	mov r0, #4
@@ -5416,7 +5416,7 @@ _022493BC:
 	cmp r0, #0
 	bne _02249456
 	bl sub_0203957C
-	bl ov00_021EC8D8
+	bl DWC_CleanupInet
 	bl sub_0203A914
 	mov r0, #4
 	bl Sys_ClearSleepDisableFlag

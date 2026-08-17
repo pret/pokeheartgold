@@ -1,4 +1,4 @@
-	.include "asm/macros.inc"
+	.include "macros.inc"
 	.include "nitro.inc"
 	.include "global.inc"
 

@@ -321,7 +321,7 @@
 .public ov00_021E7220
 .public ov00_021E7314
 .public ov00_021E7328
-.public ov00_021EDB1C
+.public DWC_ProcessFriendsMatch
 .public ov42_02227EE0
 .public ov42_02227F28
 .public ov42_02227F40

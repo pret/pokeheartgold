@@ -31,7 +31,7 @@ _0221BA0C:
 	bl OS_DisableInterrupts
 	add r5, r0, #0
 	mov r0, #2
-	bl ov00_021EC454
+	bl DWC_SetAuthServer
 	mov r1, #1
 	ldr r0, [sp]
 	lsl r1, r1, #0x12

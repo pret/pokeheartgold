@@ -385,8 +385,8 @@ ov39_02227334: ; 0x02227334
 ov39_02227348: ; 0x02227348
 	push {r4, lr}
 	add r4, r0, #0
-	bl ov00_021EC210
-	bl ov00_021EC8D8
+	bl DWC_ClearError
+	bl DWC_CleanupInet
 	bl sub_0203946C
 	mov r0, #0xf2
 	mov r1, #0
@@ -3808,10 +3808,10 @@ _02228CE4:
 	add r0, #0x14
 	mov r2, #1
 	mov r3, #0x14
-	bl ov00_021EC3F0
+	bl DWC_InitInetEx
 	mov r0, #2
-	bl ov00_021EC454
-	bl ov00_021EC4A4
+	bl DWC_SetAuthServer
+	bl DWC_ConnectInetAsync
 	mov r0, #2
 	str r0, [r4, #8]
 _02228D00:
@@ -3827,11 +3827,11 @@ ov39_02228D0C: ; 0x02228D0C
 	push {r4, lr}
 	sub sp, #0x48
 	add r4, r0, #0
-	bl ov00_021EC60C
-	bl ov00_021EC5B4
+	bl DWC_ProcessInet
+	bl DWC_CheckInet
 	cmp r0, #0
 	beq _02228D8A
-	bl ov00_021EC724
+	bl DWC_GetInetStatus
 	cmp r0, #8
 	bhi _02228D6A
 	add r0, r0, r0
@@ -3853,14 +3853,14 @@ _02228D32: ; jump table
 _02228D44:
 	add r0, sp, #8
 	add r1, sp, #4
-	bl ov00_021EC11C
+	bl DWC_GetLastErrorEx
 	str r0, [r4, #0x14]
 	ldr r0, [sp, #8]
 	str r0, [r4, #0x18]
 	ldr r0, [sp, #4]
 	str r0, [r4, #0x1c]
-	bl ov00_021EC210
-	bl ov00_021EC8D8
+	bl DWC_ClearError
+	bl DWC_CleanupInet
 	add r0, r4, #0
 	bl ov39_02228AA8
 	mov r0, #6
@@ -3868,7 +3868,7 @@ _02228D44:
 	b _02228D8A
 _02228D6A:
 	add r0, sp, #0
-	bl ov00_021EC0FC
+	bl DWC_GetLastError
 	add r0, r4, #0
 	bl ov39_02228AA8
 	mov r0, #0xa
@@ -3878,7 +3878,7 @@ _02228D6A:
 	b _02228D8A
 _02228D80:
 	add r0, sp, #0xc
-	bl ov00_021EC9E0
+	bl DWC_GetApInfo
 	mov r0, #3
 	str r0, [r4, #8]
 _02228D8A:
@@ -3891,7 +3891,7 @@ _02228D8A:
 ov39_02228D90: ; 0x02228D90
 	push {r4, lr}
 	add r4, r0, #0
-	bl ov00_021ECD04
+	bl DWC_NASLoginAsync
 	mov r0, #4
 	str r0, [r4, #8]
 	mov r0, #0
@@ -3903,7 +3903,7 @@ ov39_02228DA0: ; 0x02228DA0
 	push {r4, lr}
 	sub sp, #8
 	add r4, r0, #0
-	bl ov00_021ECDC8
+	bl DWC_NASLoginProcess
 	cmp r0, #5
 	bhi _02228E44
 	add r0, r0, r0
@@ -3928,14 +3928,14 @@ _02228DCC:
 	bl ov39_02228AA8
 	add r0, sp, #4
 	add r1, sp, #0
-	bl ov00_021EC11C
+	bl DWC_GetLastErrorEx
 	str r0, [r4, #0x14]
 	ldr r0, [sp, #4]
 	str r0, [r4, #0x18]
 	ldr r0, [sp]
 	str r0, [r4, #0x1c]
-	bl ov00_021EC210
-	bl ov00_021EC8D8
+	bl DWC_ClearError
+	bl DWC_CleanupInet
 	mov r0, #6
 	str r0, [r4, #8]
 	ldr r1, [sp]
@@ -3960,7 +3960,7 @@ _02228E12:
 	str r0, [r4, #8]
 	b _02228E32
 _02228E16:
-	bl ov00_021FA0D8
+	bl DWC_ShutdownGHTTP
 	mov r0, #6
 	str r0, [r4, #8]
 	b _02228E32
@@ -3968,7 +3968,7 @@ _02228E20:
 	str r0, [r4, #8]
 	b _02228E32
 _02228E24:
-	bl ov00_021ED9B4
+	bl DWC_ShutdownFriendsMatch
 	mov r0, #6
 	str r0, [r4, #8]
 	b _02228E32
@@ -4234,7 +4234,7 @@ _0222900C:
 	cmp r0, #0
 	bne _02229080
 	bl sub_0203946C
-	bl ov00_021EC8D8
+	bl DWC_CleanupInet
 	add r0, r4, #0
 	add r0, #0x94
 	ldr r0, [r0]
@@ -4356,7 +4356,7 @@ _022290D8:
 	str r0, [r4]
 	b _02229152
 _022290FA:
-	bl ov00_021EC8D8
+	bl DWC_CleanupInet
 	bl sub_0203946C
 	add r0, r4, #0
 	add r0, #0x94

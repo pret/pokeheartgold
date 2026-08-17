@@ -55,3 +55,4 @@
 .public ov01_0220476C
 .public ov01_022047DC
 .public ov01_02204834
+.public NNS_G3dFuncAnmMatNsBtaDefault

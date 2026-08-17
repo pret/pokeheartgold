@@ -723,7 +723,7 @@ _02237E04:
 	mov r4, #5
 	mvn r4, r4
 _02237E18:
-	bl ov00_021EC210
+	bl DWC_ClearError
 _02237E1C:
 	add r0, r4, #0
 	pop {r4, pc}
@@ -894,9 +894,9 @@ NintendoWfc_Main: ; 0x02237F9C
 	add r4, r1, #0
 	bl OverlayManager_GetData
 	add r5, r0, #0
-	bl ov00_021ECB40
+	bl DWC_UpdateConnection
 	bl ov72_022378DC
-	bl ov00_021ECB40
+	bl DWC_UpdateConnection
 	ldr r1, [r4]
 	cmp r1, #5
 	bhi _02238044
@@ -922,7 +922,7 @@ _02237FD0:
 	str r1, [r0]
 	ldr r0, _02238058 ; =ov72_02238778
 	ldr r1, _0223805C ; =ov72_022387A0
-	bl ov00_021EC294
+	bl DWC_SetMemFunc
 	mov r0, #1
 	str r0, [r4]
 	b _02238044
@@ -1872,7 +1872,7 @@ _022387C0: .word ov72_0223B92C
 	thumb_func_start ov72_022387C4
 ov72_022387C4: ; 0x022387C4
 	push {r3, lr}
-	bl ov00_021EC9D4
+	bl DWC_GetLinkLevel
 	mov r1, #3
 	sub r0, r1, r0
 	pop {r3, pc}
@@ -2003,7 +2003,7 @@ ov72_0223886C: ; 0x0223886C
 	ldr r0, _02238940 ; =0x00000F4C
 	mov r1, #0
 	str r1, [r4, r0]
-	bl ov00_021EC5B4
+	bl DWC_CheckInet
 	cmp r0, #0
 	bne _0223892E
 	ldr r1, [r4]
@@ -3056,7 +3056,7 @@ ov72_02239198: ; 0x02239198
 	beq _022391E0
 	cmp r0, #2
 	bne _022391C0
-	bl ov00_021EC5B4
+	bl DWC_CheckInet
 	cmp r0, #0
 	bne _022391BA
 	mov r0, #0
@@ -3067,7 +3067,7 @@ _022391BA:
 	str r0, [r4, #0x1c]
 	b _022391E0
 _022391C0:
-	bl ov00_021EC5B4
+	bl DWC_CheckInet
 	cmp r0, #0
 	bne _022391D6
 	mov r1, #0
@@ -3106,10 +3106,10 @@ ov72_022391E8: ; 0x022391E8
 	mov r1, #2
 	mov r2, #1
 	mov r3, #0x14
-	bl ov00_021EC3F0
+	bl DWC_InitInetEx
 	mov r0, #2
-	bl ov00_021EC454
-	bl ov00_021EC4A4
+	bl DWC_SetAuthServer
+	bl DWC_ConnectInetAsync
 	mov r0, #3
 	str r0, [r4, #0x1c]
 	pop {r4, pc}
@@ -3121,11 +3121,11 @@ ov72_02239220: ; 0x02239220
 	push {r3, r4, lr}
 	sub sp, #0x44
 	add r4, r0, #0
-	bl ov00_021EC60C
-	bl ov00_021EC5B4
+	bl DWC_ProcessInet
+	bl DWC_CheckInet
 	cmp r0, #0
 	beq _022392A0
-	bl ov00_021EC724
+	bl DWC_GetInetStatus
 	cmp r0, #8
 	bhi _0223927E
 	add r0, r0, r0
@@ -3146,15 +3146,15 @@ _02239246: ; jump table
 	.short _0223927E - _02239246 - 2 ; case 8
 _02239258:
 	add r0, sp, #4
-	bl ov00_021EC0FC
+	bl DWC_GetLastError
 	mov r1, #0xf5
 	lsl r1, r1, #4
 	str r0, [r4, r1]
 	ldr r2, [sp, #4]
 	add r0, r1, #4
 	str r2, [r4, r0]
-	bl ov00_021EC210
-	bl ov00_021EC8D8
+	bl DWC_ClearError
+	bl DWC_CleanupInet
 	add r0, r4, #0
 	bl ov72_0223A444
 	mov r0, #0x37
@@ -3162,7 +3162,7 @@ _02239258:
 	b _022392A0
 _0223927E:
 	add r0, sp, #0
-	bl ov00_021EC0FC
+	bl DWC_GetLastError
 	add r0, r4, #0
 	bl ov72_0223A444
 	mov r1, #0x35
@@ -3173,7 +3173,7 @@ _0223927E:
 	b _022392A0
 _02239296:
 	add r0, sp, #8
-	bl ov00_021EC9E0
+	bl DWC_GetApInfo
 	mov r0, #4
 	str r0, [r4, #0x1c]
 _022392A0:
@@ -3188,7 +3188,7 @@ _022392A8: .word 0x00000F5C
 ov72_022392AC: ; 0x022392AC
 	push {r4, lr}
 	add r4, r0, #0
-	bl ov00_021ECD04
+	bl DWC_NASLoginAsync
 	mov r0, #5
 	str r0, [r4, #0x1c]
 	mov r0, #3
@@ -3200,7 +3200,7 @@ ov72_022392BC: ; 0x022392BC
 	push {r4, lr}
 	sub sp, #8
 	add r4, r0, #0
-	bl ov00_021ECDC8
+	bl DWC_NASLoginProcess
 	cmp r0, #5
 	bhi _02239362
 	add r0, r0, r0
@@ -3225,15 +3225,15 @@ _022392E8:
 	bl ov72_0223A444
 	add r0, sp, #4
 	add r1, sp, #0
-	bl ov00_021EC11C
+	bl DWC_GetLastErrorEx
 	mov r1, #0xf5
 	lsl r1, r1, #4
 	str r0, [r4, r1]
 	ldr r2, [sp, #4]
 	add r0, r1, #4
 	str r2, [r4, r0]
-	bl ov00_021EC210
-	bl ov00_021EC8D8
+	bl DWC_ClearError
+	bl DWC_CleanupInet
 	mov r0, #0x37
 	str r0, [r4, #0x1c]
 	ldr r1, [sp]
@@ -3258,7 +3258,7 @@ _02239330:
 	str r0, [r4, #0x1c]
 	b _02239350
 _02239334:
-	bl ov00_021FA0D8
+	bl DWC_ShutdownGHTTP
 	mov r0, #0x37
 	str r0, [r4, #0x1c]
 	b _02239350
@@ -3266,7 +3266,7 @@ _0223933E:
 	str r0, [r4, #0x1c]
 	b _02239350
 _02239342:
-	bl ov00_021ED9B4
+	bl DWC_ShutdownFriendsMatch
 	mov r0, #0x37
 	str r0, [r4, #0x1c]
 	b _02239350
@@ -3849,7 +3849,7 @@ ov72_02239784: ; 0x02239784
 	ble _022397D2
 	add r0, sp, #0
 	add r1, sp, #0x10
-	bl ov00_021ECB94
+	bl DWC_GetDateTime
 	add r0, r5, #0
 	add r0, #0x9c
 	add r1, r5, #0
@@ -4046,7 +4046,7 @@ _022398F6:
 	bl ov72_02238680
 	add r0, sp, #0
 	add r1, sp, #0x10
-	bl ov00_021ECB94
+	bl DWC_GetDateTime
 	add r1, r4, #0
 	ldr r0, [r4]
 	add r1, #0x94
@@ -4922,7 +4922,7 @@ _02239FB8: .word 0x00000BDC
 ov72_02239FBC: ; 0x02239FBC
 	push {r4, lr}
 	add r4, r0, #0
-	bl ov00_021EC8D8
+	bl DWC_CleanupInet
 	mov r1, #0
 	add r0, r4, #0
 	add r2, r1, #0
@@ -5125,7 +5125,7 @@ _0223A120:
 	cmp r0, #0
 	bne _0223A198
 	bl sub_0203946C
-	bl ov00_021EC8D8
+	bl DWC_CleanupInet
 	mov r0, #0xfd
 	lsl r0, r0, #4
 	ldrsh r1, [r4, r0]

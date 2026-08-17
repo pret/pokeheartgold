@@ -1,4 +1,4 @@
-#include <nitro/fs/overlay.h>
+
 #pragma once
 .public OSi_ReferSymbol
 .public _version_NINTENDO_WiFi

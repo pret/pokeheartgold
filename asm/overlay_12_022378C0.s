@@ -5145,7 +5145,7 @@ ov12_0223A7A0: ; 0x0223A7A0
 	bl sub_02039998
 	cmp r0, #0
 	beq _0223A7BC
-	bl ov00_021EC9D4
+	bl DWC_GetLinkLevel
 	mov r1, #3
 	sub r0, r1, r0
 	bl sub_0203A930

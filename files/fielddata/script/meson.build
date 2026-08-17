@@ -36,5 +36,6 @@ scr_seq_narc = custom_target('scr_seq.narc',
         '--file', '@OUTPUT0@',
         '@PRIVATE_DIR@'
     ],
+    depends : text_banks,
     build_by_default : true
 )
