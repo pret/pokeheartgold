@@ -6,44 +6,6 @@
 
 	.text
 
-	thumb_func_start GymmickInit_Fuchsia
-GymmickInit_Fuchsia: ; 0x02256650
-	push {r4, lr}
-	add r4, r0, #0
-	bl FieldSystem_GetSaveData
-	bl Save_GetGymmickPtr
-	mov r1, #7
-	bl Save_Gymmick_AssertMagic_GetData
-	ldr r1, _02256698 ; =0x00001DD8
-	mov r0, #4
-	bl Heap_Alloc
-	ldr r1, [r4, #4]
-	ldr r2, _02256698 ; =0x00001DD8
-	str r0, [r1, #0x24]
-	ldr r0, [r4, #4]
-	mov r1, #0
-	ldr r0, [r0, #0x24]
-	bl MI_CpuFill8
-	ldr r0, [r4, #4]
-	mov r1, #4
-	ldr r4, [r0, #0x24]
-	add r0, r4, #0
-	bl ov04_02256758
-	mov r2, #0
-	ldr r0, _0225669C ; =0x00001DB6
-	sub r1, r2, #1
-_0225668C:
-	add r2, r2, #1
-	strh r1, [r4, r0]
-	add r4, #0xc
-	cmp r2, #3
-	blt _0225668C
-	pop {r4, pc}
-	.balign 4, 0
-_02256698: .word 0x00001DD8
-_0225669C: .word 0x00001DB6
-	thumb_func_end GymmickInit_Fuchsia
-
 	thumb_func_start GymmickFree_Fuchsia
 GymmickFree_Fuchsia: ; 0x022566A0
 	push {r3, r4, r5, r6, r7, lr}
