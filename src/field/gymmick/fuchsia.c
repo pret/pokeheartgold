@@ -192,3 +192,24 @@ void ov04_02256950(FuchsiaGymmickLocalData *localData, FieldSystem *fieldSystem,
     }
     localData->unk_00D0 = (localData->unk_00D0 + 1) % 3;
 }
+
+BOOL ov04_02256A54(Field3DModelAnimation *anim, u8 num) {
+    u8 i;
+    u8 count = 0;
+
+    for (i = 0; i < num; ++i) {
+        if (Field3dModelAnimation_FrameAdvanceAndCheck(&anim[i], FX32_ONE)) {
+            ++count;
+        }
+    }
+
+    return count == num;
+}
+
+FuchsiaGymmickLocalData_Sub00D4_Sub004 *ov04_02256A90(FuchsiaGymmickLocalData_Sub00D4 *a0) {
+    GF_ASSERT(!a0->unk_004[a0->unk_000].unk_00);
+    FuchsiaGymmickLocalData_Sub00D4_Sub004 *ret = &a0->unk_004[a0->unk_000];
+    ret->unk_00 = TRUE;
+    a0->unk_000 = (a0->unk_000 + 1) % 3;
+    return ret;
+}
