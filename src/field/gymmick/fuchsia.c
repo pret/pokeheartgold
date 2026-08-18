@@ -8,7 +8,7 @@ typedef struct FuchsiaGymmickWallData {
     int unk_00;
     int unk_04;
     u16 unk_08;
-    u8 unk_0A[4][2];
+    s8 unk_0A[4][2];
 } FuchsiaGymmickWallData;
 
 typedef struct FuchsiaGymmickLocalData_Sub00D4_Sub004 {
@@ -37,13 +37,15 @@ typedef struct FuchsiaGymmickLocalData {
     FuchsiaGymmickLocalData_Sub1DB4 unk_1DB4[3];
 } FuchsiaGymmickLocalData; // size: 0x1DD8
 
-void ov04_02256734(FieldSystem *fieldSystem, FuchsiaGymmickLocalData *localData);
+void ov04_02256734(SysTask *sysTask, void *data);
 void ov04_02256758(FuchsiaGymmickLocalData *localData, enum HeapID heapID);
 void ov04_0225686C(FuchsiaGymmickLocalData *localData);
 s16 ov04_022568F0(int x, int z);
-BOOL ov04_02256920(FuchsiaGymmickLocalData_Sub1DB4 *a0, int a1);
-ov04_02256950(FuchsiaGymmickLocalData *localData, FieldSystem *fieldSystem, u8 a2);
+BOOL ov04_02256920(FuchsiaGymmickLocalData_Sub1DB4 *a0, s16 a1);
+void ov04_02256950(FuchsiaGymmickLocalData *localData, FieldSystem *fieldSystem, u8 a2);
 BOOL ov04_02256A54(Field3DModelAnimation *anim, u8 num);
+FuchsiaGymmickLocalData_Sub00D4_Sub004 *ov04_02256A90(FuchsiaGymmickLocalData_Sub00D4 *a0);
+void ov04_02256AC4(FuchsiaGymmickLocalData *localData, u8 a1);
 void ov04_02256B3C(FuchsiaGymmickLocalData *localData);
 
 extern const FuchsiaGymmickWallData ov04_0225766C[];
@@ -76,7 +78,7 @@ void GymmickFree_Fuchsia(FieldSystem *fieldSystem) {
 void ov04_022566EC(FieldSystem *fieldSystem, int x, int z) {
     FuchsiaGymmickLocalData *localData = fieldSystem->unk4->unk24;
 
-    int r4 = ov04_022568F0(x, z);
+    s16 r4 = ov04_022568F0(x, z);
     if (r4 < 0) {
         PlaySE(SEQ_SE_DP_WALL_HIT);
         return;
@@ -87,7 +89,8 @@ void ov04_022566EC(FieldSystem *fieldSystem, int x, int z) {
     }
 }
 
-void ov04_02256734(FieldSystem *fieldSystem, FuchsiaGymmickLocalData *localData) {
+void ov04_02256734(SysTask *sysTask, void *data) {
+    FuchsiaGymmickLocalData *localData = data;
     FuchsiaGymmickLocalData_Sub00D4_Sub004 *r4 = localData->unk_0000.pHeap;
     if (ov04_02256A54(r4->unk_04, 4)) {
         ov04_02256B3C(localData);
@@ -151,4 +154,41 @@ s16 ov04_022568F0(int x, int z) {
     }
 
     return -1;
+}
+
+BOOL ov04_02256920(FuchsiaGymmickLocalData_Sub1DB4 *a0, s16 a1) {
+    for (u8 i = 0; i < 3; ++i) {
+        if (a0[i].unk_0 && a0[i].unk_2 == a1) {
+            return TRUE;
+        }
+    }
+
+    return FALSE;
+}
+
+void ov04_02256950(FuchsiaGymmickLocalData *localData, FieldSystem *fieldSystem, u8 a2) {
+    u8 i;
+    u8 r2;
+    FuchsiaGymmickLocalData_Sub1DB4 *r5 = &localData->unk_1DB4[localData->unk_00D0];
+
+    if (r5->unk_0) {
+        GF_ASSERT(FALSE);
+        return;
+    }
+    ov04_02256AC4(localData, a2);
+    r5->unk_0 = TRUE;
+    r5->unk_2 = a2;
+    r2 = ov04_0225766C[a2].unk_08;
+    r5->unk_4 = ov04_02256A90(&localData->unk_00D4[r2]);
+    r5->unk_8 = SysTask_CreateOnMainQueue(ov04_02256734, r5, 0);
+    Field3dObject_SetActiveFlag(&r5->unk_4->unk_54, TRUE);
+    VecFx32 sp4 = { 0, 0, 0 };
+    MapObject_CopyPositionVector(PlayerAvatar_GetMapObject(fieldSystem->playerAvatar), &sp4);
+    sp4.x = FX32_ONE * ((8 + 16 * ov04_0225766C[a2].unk_00) + 16 * ov04_0225766C[a2].unk_0A[0][0]);
+    sp4.z = FX32_ONE * ((8 + 16 * ov04_0225766C[a2].unk_04) + 16 * ov04_0225766C[a2].unk_0A[0][1]);
+    Field3dObject_SetPosEx(&r5->unk_4->unk_54, sp4.x, sp4.y, sp4.z);
+    for (i = 0; i < 4; ++i) {
+        Field3dModelAnimation_FrameSet(&r5->unk_4->unk_04[i], 0);
+    }
+    localData->unk_00D0 = (localData->unk_00D0 + 1) % 3;
 }
