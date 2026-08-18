@@ -117,3 +117,19 @@ void ov04_02256758(FuchsiaGymmickLocalData *localData, enum HeapID heapID) {
         }
     }
 }
+
+void ov04_0225686C(FuchsiaGymmickLocalData *localData) {
+    u8 i;
+    for (i = 0; i < 12; ++i) {
+        u8 j;
+        FuchsiaGymmickLocalData_Sub00D4_Sub004 *sp0;
+        Field3dModel_Unload(&localData->unk_0010[i]);
+        for (j = 0; j < 3; ++j) {
+            u8 k;
+            sp0 = &localData->unk_00D4[i].unk_004[j];
+            for (k = 0; k < 4; ++k) {
+                Field3dModelAnimation_Unload(&sp0->unk_04[k], &localData->unk_0000);
+            }
+        }
+    }
+}
