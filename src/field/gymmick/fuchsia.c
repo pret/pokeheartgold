@@ -4,6 +4,13 @@
 #include "overlay_04.h"
 #include "unk_02005D10.h"
 
+typedef struct FuchsiaGymmickWallData {
+    int unk_00;
+    int unk_04;
+    u16 unk_08;
+    u8 unk_0A[4][2];
+} FuchsiaGymmickWallData;
+
 typedef struct FuchsiaGymmickLocalData_Sub00D4_Sub004 {
     BOOL unk_00;
     Field3DModelAnimation unk_04[4];
@@ -33,11 +40,13 @@ typedef struct FuchsiaGymmickLocalData {
 void ov04_02256734(FieldSystem *fieldSystem, FuchsiaGymmickLocalData *localData);
 void ov04_02256758(FuchsiaGymmickLocalData *localData, enum HeapID heapID);
 void ov04_0225686C(FuchsiaGymmickLocalData *localData);
-int ov04_022568F0(int x, int z);
+s16 ov04_022568F0(int x, int z);
 BOOL ov04_02256920(FuchsiaGymmickLocalData_Sub1DB4 *a0, int a1);
 ov04_02256950(FuchsiaGymmickLocalData *localData, FieldSystem *fieldSystem, u8 a2);
 BOOL ov04_02256A54(Field3DModelAnimation *anim, u8 num);
 void ov04_02256B3C(FuchsiaGymmickLocalData *localData);
+
+extern const FuchsiaGymmickWallData ov04_0225766C[];
 
 void GymmickInit_Fuchsia(FieldSystem *fieldSystem) {
     GymmickUnion *gymmickUnion = Save_Gymmick_AssertMagic_GetData(Save_GetGymmickPtr(FieldSystem_GetSaveData(fieldSystem)), GYMMICK_FUCHSIA);
@@ -132,4 +141,14 @@ void ov04_0225686C(FuchsiaGymmickLocalData *localData) {
             }
         }
     }
+}
+
+s16 ov04_022568F0(int x, int z) {
+    for (s16 i = 0; i < 60; ++i) {
+        if (x == ov04_0225766C[i].unk_00 && z == ov04_0225766C[i].unk_04) {
+            return i;
+        }
+    }
+
+    return -1;
 }

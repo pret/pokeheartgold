@@ -8,36 +8,6 @@
 
 	.text
 
-	thumb_func_start ov04_022568F0
-ov04_022568F0: ; 0x022568F0
-	push {r3, r4}
-	ldr r4, _0225691C ; =ov04_0225766C
-	mov r3, #0
-_022568F6:
-	ldr r2, [r4]
-	cmp r0, r2
-	bne _02256908
-	ldr r2, [r4, #4]
-	cmp r1, r2
-	bne _02256908
-	add r0, r3, #0
-	pop {r3, r4}
-	bx lr
-_02256908:
-	add r2, r3, #1
-	lsl r2, r2, #0x10
-	asr r3, r2, #0x10
-	add r4, #0x14
-	cmp r3, #0x3c
-	blt _022568F6
-	mov r0, #0
-	mvn r0, r0
-	pop {r3, r4}
-	bx lr
-	.balign 4, 0
-_0225691C: .word ov04_0225766C
-	thumb_func_end ov04_022568F0
-
 	thumb_func_start ov04_02256920
 ov04_02256920: ; 0x02256920
 	push {r3, r4, r5, r6}
@@ -344,6 +314,7 @@ ov04_02256B3C: ; 0x02256B3C
 
     .rodata
 
+	.global ov04_0225766C
 ov04_0225766C: ; 0x0225766C
 	.word 0x00000004
 	.word 0x00000004
