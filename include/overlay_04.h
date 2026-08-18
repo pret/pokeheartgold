@@ -36,5 +36,6 @@ void FlipAzaleaGymSwitch(FieldSystem *fieldSystem, u8 switchNo);
 BOOL GymmickCheckCollision_Blackthorn(FieldSystem *fieldSystem, u32 tileX, u32 tileZ, u32 height, BOOL *isColliding);
 void ov04_02256ED8(FieldSystem *fieldSystem);
 void ov04_02256F00(FieldSystem *fieldSystem, u8 a1);
+void ov04_022566EC(FieldSystem *fieldSystem, int x, int z);
 
 #endif // POKEHEARTGOLD_OVERLAY_04_H
