@@ -597,7 +597,6 @@ Overlay OVY_4
     Object src/field/gymmick/cianwood.o
     Object src/field/gymmick/vermilion.o
     Object src/field/gymmick/fuchsia.o
-    Object asm/overlay_04_fuchsia_gymmick.o
     Object asm/overlay_04_viridian_gymmick.o
     Object asm/overlay_04_sinjoh_gymmick.o
 }

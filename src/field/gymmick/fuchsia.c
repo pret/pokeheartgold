@@ -8,7 +8,9 @@ typedef struct FuchsiaGymmickWallData {
     int unk_00;
     int unk_04;
     u16 unk_08;
-    s8 unk_0A[4][2];
+    s8 unk_0A;
+    s8 unk_0B;
+    s8 unk_0C[6];
 } FuchsiaGymmickWallData;
 
 typedef struct FuchsiaGymmickLocalData_Sub00D4_Sub004 {
@@ -45,10 +47,491 @@ BOOL ov04_02256920(FuchsiaGymmickLocalData_Sub1DB4 *a0, s16 a1);
 void ov04_02256950(FuchsiaGymmickLocalData *localData, FieldSystem *fieldSystem, u8 a2);
 BOOL ov04_02256A54(Field3DModelAnimation *anim, u8 num);
 FuchsiaGymmickLocalData_Sub00D4_Sub004 *ov04_02256A90(FuchsiaGymmickLocalData_Sub00D4 *a0);
-void ov04_02256AC4(FuchsiaGymmickLocalData *localData, u8 a1);
-void ov04_02256B3C(FuchsiaGymmickLocalData *localData);
+void ov04_02256AC4(FuchsiaGymmickLocalData *localData, const u8 a1);
+void ov04_02256B3C(FuchsiaGymmickLocalData_Sub1DB4 *a0);
 
-extern const FuchsiaGymmickWallData ov04_0225766C[];
+static const FuchsiaGymmickWallData ov04_0225766C[] = {
+    {
+     .unk_00 = 4,
+     .unk_04 = 4,
+     .unk_08 = 0,
+     .unk_0A = 0,
+     .unk_0B = 0,
+     .unk_0C = { 1, 2, -1, -1, -1, -1 },
+     },
+    {
+     .unk_00 = 5,
+     .unk_04 = 4,
+     .unk_08 = 1,
+     .unk_0A = 0,
+     .unk_0B = 0,
+     .unk_0C = { 0, 2, 3, -1, -1, -1 },
+     },
+    {
+     .unk_00 = 6,
+     .unk_04 = 4,
+     .unk_08 = 1,
+     .unk_0A = 0,
+     .unk_0B = 0,
+     .unk_0C = { 1, 3, -1, -1, -1, -1 },
+     },
+    {
+     .unk_00 = 7,
+     .unk_04 = 4,
+     .unk_08 = 9,
+     .unk_0A = 0,
+     .unk_0B = 0,
+     .unk_0C = { 1, 2, 5, -1, -1, -1 },
+     },
+    {
+     .unk_00 = 11,
+     .unk_04 = 4,
+     .unk_08 = 2,
+     .unk_0A = 0,
+     .unk_0B = 0,
+     .unk_0C = { 7, -1, -1, -1, -1, -1 },
+     },
+    {
+     .unk_00 = 7,
+     .unk_04 = 5,
+     .unk_08 = 6,
+     .unk_0A = 0,
+     .unk_0B = 0,
+     .unk_0C = { 3, 6, 8, -1, -1, -1 },
+     },
+    {
+     .unk_00 = 8,
+     .unk_04 = 5,
+     .unk_08 = 0,
+     .unk_0A = -1,
+     .unk_0B = 0,
+     .unk_0C = { 3, 5, 8, -1, -1, -1 },
+     },
+    {
+     .unk_00 = 11,
+     .unk_04 = 5,
+     .unk_08 = 3,
+     .unk_0A = 0,
+     .unk_0B = 0,
+     .unk_0C = { 4, 9, -1, -1, -1, -1 },
+     },
+    {
+     .unk_00 = 7,
+     .unk_04 = 6,
+     .unk_08 = 3,
+     .unk_0A = 0,
+     .unk_0B = 0,
+     .unk_0C = { 3, 5, 6, 13, 15, -1 },
+     },
+    {
+     .unk_00 = 11,
+     .unk_04 = 6,
+     .unk_08 = 3,
+     .unk_0A = 0,
+     .unk_0B = 0,
+     .unk_0C = { 4, 7, 14, 16, -1, -1 },
+     },
+    {
+     .unk_00 = 1,
+     .unk_04 = 7,
+     .unk_08 = 0,
+     .unk_0A = 0,
+     .unk_0B = 0,
+     .unk_0C = { 11, 12, -1, -1, -1, -1 },
+     },
+    {
+     .unk_00 = 2,
+     .unk_04 = 7,
+     .unk_08 = 1,
+     .unk_0A = 0,
+     .unk_0B = 0,
+     .unk_0C = { 10, 11, -1, -1, -1, -1 },
+     },
+    {
+     .unk_00 = 3,
+     .unk_04 = 7,
+     .unk_08 = 0,
+     .unk_0A = -1,
+     .unk_0B = 0,
+     .unk_0C = { 10, 11, -1, -1, -1, -1 },
+     },
+    {
+     .unk_00 = 7,
+     .unk_04 = 7,
+     .unk_08 = 3,
+     .unk_0A = 0,
+     .unk_0B = 0,
+     .unk_0C = { 5, 13, 15, 17, -1, -1 },
+     },
+    {
+     .unk_00 = 11,
+     .unk_04 = 7,
+     .unk_08 = 3,
+     .unk_0A = 0,
+     .unk_0B = 0,
+     .unk_0C = { 7, 16, -1, -1, -1, -1 },
+     },
+    {
+     .unk_00 = 7,
+     .unk_04 = 8,
+     .unk_08 = 3,
+     .unk_0A = 0,
+     .unk_0B = 0,
+     .unk_0C = { 8, 13, 17, 18, -1, -1 },
+     },
+    {
+     .unk_00 = 11,
+     .unk_04 = 8,
+     .unk_08 = 2,
+     .unk_0A = 0,
+     .unk_0B = -1,
+     .unk_0C = { 9, 14, -1, -1, -1, -1 },
+     },
+    {
+     .unk_00 = 7,
+     .unk_04 = 9,
+     .unk_08 = 10,
+     .unk_0A = 0,
+     .unk_0B = 0,
+     .unk_0C = { 13, 18, 19, -1, -1, -1 },
+     },
+    {
+     .unk_00 = 8,
+     .unk_04 = 9,
+     .unk_08 = 1,
+     .unk_0A = 0,
+     .unk_0B = 0,
+     .unk_0C = { 15, 17, 19, 20, -1, -1 },
+     },
+    {
+     .unk_00 = 9,
+     .unk_04 = 9,
+     .unk_08 = 1,
+     .unk_0A = 0,
+     .unk_0B = 0,
+     .unk_0C = { 17, 18, 20, 25, -1, -1 },
+     },
+    {
+     .unk_00 = 10,
+     .unk_04 = 9,
+     .unk_08 = 9,
+     .unk_0A = 0,
+     .unk_0B = 0,
+     .unk_0C = { 18, 19, 25, 27, -1, -1 },
+     },
+    {
+     .unk_00 = 1,
+     .unk_04 = 10,
+     .unk_08 = 2,
+     .unk_0A = 0,
+     .unk_0B = 0,
+     .unk_0C = { 26, -1, -1, -1, -1, -1 },
+     },
+    {
+     .unk_00 = 4,
+     .unk_04 = 10,
+     .unk_08 = 0,
+     .unk_0A = 0,
+     .unk_0B = 0,
+     .unk_0C = { 23, 24, -1, -1, -1, -1 },
+     },
+    {
+     .unk_00 = 5,
+     .unk_04 = 10,
+     .unk_08 = 1,
+     .unk_0A = 0,
+     .unk_0B = 0,
+     .unk_0C = { 22, 24, -1, -1, -1, -1 },
+     },
+    {
+     .unk_00 = 6,
+     .unk_04 = 10,
+     .unk_08 = 0,
+     .unk_0A = -1,
+     .unk_0B = 0,
+     .unk_0C = { 22, 23, -1, -1, -1, -1 },
+     },
+    {
+     .unk_00 = 10,
+     .unk_04 = 10,
+     .unk_08 = 3,
+     .unk_0A = 0,
+     .unk_0B = 0,
+     .unk_0C = { 19, 20, 27, 28, -1, -1 },
+     },
+    {
+     .unk_00 = 1,
+     .unk_04 = 11,
+     .unk_08 = 2,
+     .unk_0A = 0,
+     .unk_0B = -1,
+     .unk_0C = { 21, -1, -1, -1, -1, -1 },
+     },
+    {
+     .unk_00 = 10,
+     .unk_04 = 11,
+     .unk_08 = 3,
+     .unk_0A = 0,
+     .unk_0B = 0,
+     .unk_0C = { 20, 25, 28, 35, -1, -1 },
+     },
+    {
+     .unk_00 = 10,
+     .unk_04 = 12,
+     .unk_08 = 3,
+     .unk_0A = 0,
+     .unk_0B = 0,
+     .unk_0C = { 25, 27, 35, 37, 34, -1 },
+     },
+    {
+     .unk_00 = 4,
+     .unk_04 = 13,
+     .unk_08 = 8,
+     .unk_0A = 0,
+     .unk_0B = 0,
+     .unk_0C = { 26, 30, 31, -1, -1, -1 },
+     },
+    {
+     .unk_00 = 5,
+     .unk_04 = 13,
+     .unk_08 = 1,
+     .unk_0A = 0,
+     .unk_0B = 0,
+     .unk_0C = { 36, 29, 31, 32, 32, -1 },
+     },
+    {
+     .unk_00 = 6,
+     .unk_04 = 13,
+     .unk_08 = 1,
+     .unk_0A = 0,
+     .unk_0B = 0,
+     .unk_0C = { 29, 30, 32, 33, -1, -1 },
+     },
+    {
+     .unk_00 = 7,
+     .unk_04 = 13,
+     .unk_08 = 1,
+     .unk_0A = 0,
+     .unk_0B = 0,
+     .unk_0C = { 30, 31, 33, 34, -1, -1 },
+     },
+    {
+     .unk_00 = 8,
+     .unk_04 = 13,
+     .unk_08 = 1,
+     .unk_0A = 0,
+     .unk_0B = 0,
+     .unk_0C = { 31, 32, 34, 35, -1, -1 },
+     },
+    {
+     .unk_00 = 9,
+     .unk_04 = 13,
+     .unk_08 = 1,
+     .unk_0A = 0,
+     .unk_0B = 0,
+     .unk_0C = { 32, 33, 35, 28, 37, -1 },
+     },
+    {
+     .unk_00 = 10,
+     .unk_04 = 13,
+     .unk_08 = 7,
+     .unk_0A = 0,
+     .unk_0B = 0,
+     .unk_0C = { 27, 28, 37, 34, -1, -1 },
+     },
+    {
+     .unk_00 = 4,
+     .unk_04 = 14,
+     .unk_08 = 2,
+     .unk_0A = 0,
+     .unk_0B = -1,
+     .unk_0C = { 29, 30, -1, -1, -1, -1 },
+     },
+    {
+     .unk_00 = 10,
+     .unk_04 = 14,
+     .unk_08 = 2,
+     .unk_0A = 0,
+     .unk_0B = -1,
+     .unk_0C = { 28, 34, 35, 37, -1, -1 },
+     },
+    {
+     .unk_00 = 11,
+     .unk_04 = 15,
+     .unk_08 = 2,
+     .unk_0A = 0,
+     .unk_0B = 0,
+     .unk_0C = { 39, 44, -1, -1, -1, -1 },
+     },
+    {
+     .unk_00 = 11,
+     .unk_04 = 16,
+     .unk_08 = 3,
+     .unk_0A = 0,
+     .unk_0B = 0,
+     .unk_0C = { 38, 44, 46, -1, -1, -1 },
+     },
+    {
+     .unk_00 = 2,
+     .unk_04 = 17,
+     .unk_08 = 0,
+     .unk_0A = 0,
+     .unk_0B = 0,
+     .unk_0C = { 41, 42, -1, -1, -1, -1 },
+     },
+    {
+     .unk_00 = 3,
+     .unk_04 = 17,
+     .unk_08 = 1,
+     .unk_0A = 0,
+     .unk_0B = 0,
+     .unk_0C = { 40, 42, 43, 45, -1, -1 },
+     },
+    {
+     .unk_00 = 4,
+     .unk_04 = 17,
+     .unk_08 = 4,
+     .unk_0A = 0,
+     .unk_0B = 0,
+     .unk_0C = { 40, 41, 43, 45, -1, -1 },
+     },
+    {
+     .unk_00 = 5,
+     .unk_04 = 17,
+     .unk_08 = 0,
+     .unk_0A = -1,
+     .unk_0B = 0,
+     .unk_0C = { 41, 45, -1, -1, -1, -1 },
+     },
+    {
+     .unk_00 = 11,
+     .unk_04 = 17,
+     .unk_08 = 3,
+     .unk_0A = 0,
+     .unk_0B = 0,
+     .unk_0C = { 38, 39, 46, 48, -1, -1 },
+     },
+    {
+     .unk_00 = 4,
+     .unk_04 = 18,
+     .unk_08 = 3,
+     .unk_0A = 0,
+     .unk_0B = 0,
+     .unk_0C = { 41, 43, 42, 47, 52, -1 },
+     },
+    {
+     .unk_00 = 11,
+     .unk_04 = 18,
+     .unk_08 = 3,
+     .unk_0A = 0,
+     .unk_0B = 0,
+     .unk_0C = { 39, 44, 48, 59, -1, -1 },
+     },
+    {
+     .unk_00 = 4,
+     .unk_04 = 19,
+     .unk_08 = 3,
+     .unk_0A = 0,
+     .unk_0B = 0,
+     .unk_0C = { 42, 45, 51, 52, 53, -1 },
+     },
+    {
+     .unk_00 = 11,
+     .unk_04 = 19,
+     .unk_08 = 3,
+     .unk_0A = 0,
+     .unk_0B = 0,
+     .unk_0C = { 44, 46, 59, 58, -1, -1 },
+     },
+    {
+     .unk_00 = 1,
+     .unk_04 = 20,
+     .unk_08 = 0,
+     .unk_0A = 0,
+     .unk_0B = 0,
+     .unk_0C = { 50, 51, -1, -1, -1, -1 },
+     },
+    {
+     .unk_00 = 2,
+     .unk_04 = 20,
+     .unk_08 = 1,
+     .unk_0A = 0,
+     .unk_0B = 0,
+     .unk_0C = { 49, 51, 52, -1, -1, -1 },
+     },
+    {
+     .unk_00 = 3,
+     .unk_04 = 20,
+     .unk_08 = 1,
+     .unk_0A = 0,
+     .unk_0B = 0,
+     .unk_0C = { 49, 50, 52, 53, 47, -1 },
+     },
+    {
+     .unk_00 = 4,
+     .unk_04 = 20,
+     .unk_08 = 5,
+     .unk_0A = 0,
+     .unk_0B = 0,
+     .unk_0C = { 50, 51, 45, 47, 53, 54 },
+     },
+    {
+     .unk_00 = 5,
+     .unk_04 = 20,
+     .unk_08 = 1,
+     .unk_0A = 0,
+     .unk_0B = 0,
+     .unk_0C = { 47, 51, 52, 54, 55, -1 },
+     },
+    {
+     .unk_00 = 6,
+     .unk_04 = 20,
+     .unk_08 = 1,
+     .unk_0A = 0,
+     .unk_0B = 0,
+     .unk_0C = { 52, 53, 55, 56, -1, -1 },
+     },
+    {
+     .unk_00 = 7,
+     .unk_04 = 20,
+     .unk_08 = 1,
+     .unk_0A = 0,
+     .unk_0B = 0,
+     .unk_0C = { 53, 54, 56, 57, -1, -1 },
+     },
+    {
+     .unk_00 = 8,
+     .unk_04 = 20,
+     .unk_08 = 1,
+     .unk_0A = 0,
+     .unk_0B = 0,
+     .unk_0C = { 54, 55, 57, 58, 59, -1 },
+     },
+    {
+     .unk_00 = 9,
+     .unk_04 = 20,
+     .unk_08 = 1,
+     .unk_0A = 0,
+     .unk_0B = 0,
+     .unk_0C = { 55, 56, 58, 59, -1, -1 },
+     },
+    {
+     .unk_00 = 10,
+     .unk_04 = 20,
+     .unk_08 = 1,
+     .unk_0A = 0,
+     .unk_0B = 0,
+     .unk_0C = { 56, 57, 59, 48, -1, -1 },
+     },
+    {
+     .unk_00 = 11,
+     .unk_04 = 20,
+     .unk_08 = 11,
+     .unk_0A = 0,
+     .unk_0B = 0,
+     .unk_0C = { 58, 48, 57, 46, -1, -1 },
+     },
+};
 
 void GymmickInit_Fuchsia(FieldSystem *fieldSystem) {
     GymmickUnion *gymmickUnion = Save_Gymmick_AssertMagic_GetData(Save_GetGymmickPtr(FieldSystem_GetSaveData(fieldSystem)), GYMMICK_FUCHSIA);
@@ -90,10 +573,10 @@ void ov04_022566EC(FieldSystem *fieldSystem, int x, int z) {
 }
 
 void ov04_02256734(SysTask *sysTask, void *data) {
-    FuchsiaGymmickLocalData *localData = data;
-    FuchsiaGymmickLocalData_Sub00D4_Sub004 *r4 = localData->unk_0000.pHeap;
+    FuchsiaGymmickLocalData_Sub1DB4 *r5 = data;
+    FuchsiaGymmickLocalData_Sub00D4_Sub004 *r4 = r5->unk_4;
     if (ov04_02256A54(r4->unk_04, 4)) {
-        ov04_02256B3C(localData);
+        ov04_02256B3C(r5);
     } else {
         Field3dObject_Draw(&r4->unk_54);
     }
@@ -184,8 +667,8 @@ void ov04_02256950(FuchsiaGymmickLocalData *localData, FieldSystem *fieldSystem,
     Field3dObject_SetActiveFlag(&r5->unk_4->unk_54, TRUE);
     VecFx32 sp4 = { 0, 0, 0 };
     MapObject_CopyPositionVector(PlayerAvatar_GetMapObject(fieldSystem->playerAvatar), &sp4);
-    sp4.x = FX32_ONE * ((8 + 16 * ov04_0225766C[a2].unk_00) + 16 * ov04_0225766C[a2].unk_0A[0][0]);
-    sp4.z = FX32_ONE * ((8 + 16 * ov04_0225766C[a2].unk_04) + 16 * ov04_0225766C[a2].unk_0A[0][1]);
+    sp4.x = FX32_ONE * ((8 + 16 * ov04_0225766C[a2].unk_00) + 16 * ov04_0225766C[a2].unk_0A);
+    sp4.z = FX32_ONE * ((8 + 16 * ov04_0225766C[a2].unk_04) + 16 * ov04_0225766C[a2].unk_0B);
     Field3dObject_SetPosEx(&r5->unk_4->unk_54, sp4.x, sp4.y, sp4.z);
     for (i = 0; i < 4; ++i) {
         Field3dModelAnimation_FrameSet(&r5->unk_4->unk_04[i], 0);
@@ -212,4 +695,35 @@ FuchsiaGymmickLocalData_Sub00D4_Sub004 *ov04_02256A90(FuchsiaGymmickLocalData_Su
     ret->unk_00 = TRUE;
     a0->unk_000 = (a0->unk_000 + 1) % 3;
     return ret;
+}
+
+void ov04_02256AC4(FuchsiaGymmickLocalData *localData, const u8 a1) {
+    u8 i;
+    u8 j;
+    for (i = 0; i < 6; ++i) {
+        if (ov04_0225766C[a1].unk_0C[i] < 0) {
+            break;
+        }
+        for (j = 0; j < 3; ++j) {
+            s16 r0;
+            if (!localData->unk_1DB4[j].unk_0) {
+                continue;
+            }
+            r0 = localData->unk_1DB4[j].unk_2;
+            if (ov04_0225766C[a1].unk_0C[i] == r0) {
+                ov04_02256B3C(&localData->unk_1DB4[j]);
+                break;
+            }
+        }
+    }
+}
+
+void ov04_02256B3C(FuchsiaGymmickLocalData_Sub1DB4 *a0) {
+    Field3dObject_SetActiveFlag(&a0->unk_4->unk_54, FALSE);
+    a0->unk_4->unk_00 = FALSE;
+    a0->unk_0 = FALSE;
+    a0->unk_2 = -1;
+    a0->unk_4 = NULL;
+    SysTask_Destroy(a0->unk_8);
+    a0->unk_8 = NULL;
 }
