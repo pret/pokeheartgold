@@ -142,7 +142,7 @@
 .public VermilionGymmick_GateAction
 .public GymmickInit_Fuchsia
 .public GymmickFree_Fuchsia
-.public ov04_022566EC
+.public FuchsiaGymmick_CheckCollision
 .public GymmickInit_Viridian
 .public GymmickFree_Viridian
 .public ov04_02256BE4
