@@ -42,6 +42,7 @@ void Field3dObject_AddAnimation(Field3dObject *object, Field3DModelAnimation *an
 void Field3dObject_RemoveAnimation(Field3dObject *object, Field3DModelAnimation *anim);
 void Field3dObject_Draw(Field3dObject *object);
 void Field3dObject_SetActiveFlag(Field3dObject *object, BOOL active);
+BOOL Field3dObject_GetActiveFlag(Field3dObject *object);
 void Field3dObject_SetPosEx(Field3dObject *object, fx32 x, fx32 y, fx32 z);
 NNSG3dResTex *ov01_021FB9E0(AreaDataManager *areaDataManager);
 
