@@ -5,7 +5,7 @@
 
 typedef struct SinjohGymmickLocalData_Sub014 {
     Field3dModel unk_00;
-    Field3DModelAnimation unk_14[2];
+    Field3DModelAnimation unk_10[2];
     Field3dObject unk_38;
     BOOL unk_B0;
 } SinjohGymmickLocalData_Sub014;
@@ -21,6 +21,7 @@ typedef struct SinjohGymmickLocalData {
 void ov04_02256F50(SinjohGymmickLocalData *localData);
 void ov04_022570EC(SinjohGymmickLocalData *localData);
 void ov04_02257148(SysTask *sysTask, void *taskData);
+void ov04_022572E0(Field3DModelAnimation *a0, const u8 a1, const u32 a2);
 BOOL ov04_02257308(TaskManager *taskman);
 
 void GymmickInit_Sinjoh(FieldSystem *fieldSystem) {
@@ -59,4 +60,58 @@ void ov04_02256F00(FieldSystem *fieldSystem, u8 a1) {
     gymmickUnion->sinjoh.choice = a1;
     localData->unk_230 = 1;
     TaskManager_Call(fieldSystem->taskman, ov04_02257308, localData);
+}
+
+void ov04_02256F50(SinjohGymmickLocalData *localData) {
+    u8 i;
+    u8 j;
+    enum HeapID heapID = HEAP_ID_FIELD1;
+
+    const int ov04_02257B28[3][2] = {
+        { 102, 103 },
+        { 105, 106 },
+        { 108, 109 },
+    };
+    const int ov04_02257B1C[3] = {
+        101,
+        104,
+        107,
+    };
+
+    HeapExp_FndInitAllocator(&localData->unk_004, heapID, 0x20);
+
+    for (i = 0; i < 3; ++i) {
+        Field3dModel_LoadFromFilesystem(&localData->unk_014[i].unk_00, NARC_demo_legend, ov04_02257B1C[i], heapID);
+    }
+
+    for (j = 0; j < 3; ++j) {
+        for (i = 0; i < 2; ++i) {
+            Field3dModelAnimation_LoadFromFilesystem(&localData->unk_014[j].unk_10[i], &localData->unk_014[j].unk_00, NARC_demo_legend, ov04_02257B28[j][i], heapID, &localData->unk_004);
+        }
+    }
+
+    for (i = 0; i < 3; ++i) {
+        Field3dObject_InitFromModel(&localData->unk_014[i].unk_38, &localData->unk_014[i].unk_00);
+    }
+
+    for (j = 0; j < 3; ++j) {
+        for (i = 0; i < 2; ++i) {
+            Field3dObject_AddAnimation(&localData->unk_014[j].unk_38, &localData->unk_014[j].unk_10[i]);
+        }
+    }
+
+    for (i = 0; i < 3; ++i) {
+        Field3dObject_SetActiveFlag(&localData->unk_014[i].unk_38, TRUE);
+        ov04_022572E0(localData->unk_014[i].unk_10, 2, 0);
+    }
+
+    const VecFx32 ov04_02257B40[3] = {
+        { FX32_CONST(200), FX32_CONST(16), FX32_CONST(248) },
+        { FX32_CONST(328), FX32_CONST(16), FX32_CONST(248) },
+        { FX32_CONST(264), FX32_CONST(16), FX32_CONST(136) },
+    };
+
+    for (i = 0; i < 3; ++i) {
+        Field3dObject_SetPosEx(&localData->unk_014[i].unk_38, ov04_02257B40[i].x, ov04_02257B40[i].y, ov04_02257B40[i].z);
+    }
 }
