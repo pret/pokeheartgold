@@ -26,6 +26,7 @@ void ov04_02256C20(ViridianGymmickLocalData *localData, enum HeapID heapID);
 void ov04_02256D00(ViridianGymmickLocalData *localData);
 void ov04_02256D68(ViridianGymmickLocalData_Sub054 *a0, FieldSystem *fieldSystem, u8 a2);
 void ov04_02256DFC(SysTask *sysTask, void *taskData);
+BOOL ov04_02256E48(ViridianGymmickLocalData_Sub054_Sub008 *a0);
 
 void GymmickInit_Viridian(FieldSystem *fieldSystem) {
     GymmickUnion *gymmickUnion = Save_Gymmick_AssertMagic_GetData(Save_GetGymmickPtr(FieldSystem_GetSaveData(fieldSystem)), GYMMICK_VIRIDIAN);
@@ -132,4 +133,25 @@ void ov04_02256D68(ViridianGymmickLocalData_Sub054 *a0, FieldSystem *fieldSystem
     MapObject_CopyPositionVector(PlayerAvatar_GetMapObject(fieldSystem->playerAvatar), &sp0);
     Field3dObject_SetPosEx(&a0->unk_008[r5].unk_14, sp0.x, sp0.y, sp0.z);
     Field3dModelAnimation_FrameSet(&a0->unk_008[r5].unk_00, 0);
+}
+
+void ov04_02256DFC(SysTask *sysTask, void *taskData) {
+    ViridianGymmickLocalData_Sub054 *r5 = taskData;
+    u8 r4 = r5->unk_004;
+    if (ov04_02256E48(&r5->unk_008[r4])) {
+        Field3dObject_SetActiveFlag(&r5->unk_008[r4].unk_14, FALSE);
+        r5->unk_000 = 0;
+        SysTask_Destroy(r5->unk_238);
+        r5->unk_238 = NULL;
+    } else {
+        Field3dObject_Draw(&r5->unk_008[r4].unk_14);
+    }
+}
+
+BOOL ov04_02256E48(ViridianGymmickLocalData_Sub054_Sub008 *a0) {
+    if (Field3dModelAnimation_FrameAdvanceAndCheck(&a0->unk_00, FX32_ONE)) {
+        return TRUE;
+    } else {
+        return FALSE;
+    }
 }
