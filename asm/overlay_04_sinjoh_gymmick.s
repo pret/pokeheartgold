@@ -6,43 +6,6 @@
 
 	.text
 
-	thumb_func_start GymmickInit_Sinjoh
-GymmickInit_Sinjoh: ; 0x02256E60
-	push {r3, r4, r5, lr}
-	add r5, r0, #0
-	bl FieldSystem_GetSaveData
-	bl Save_GetGymmickPtr
-	mov r1, #9
-	bl Save_Gymmick_AssertMagic_GetData
-	mov r1, #0x8e
-	mov r0, #4
-	lsl r1, r1, #2
-	bl Heap_Alloc
-	ldr r1, [r5, #4]
-	mov r2, #0x8e
-	str r0, [r1, #0x24]
-	ldr r0, [r5, #4]
-	mov r1, #0
-	ldr r0, [r0, #0x24]
-	lsl r2, r2, #2
-	bl MI_CpuFill8
-	ldr r0, [r5, #4]
-	ldr r4, [r0, #0x24]
-	add r0, r4, #0
-	str r5, [r4]
-	bl ov04_02256F50
-	ldr r0, _02256EAC ; =ov04_02257148
-	add r1, r4, #0
-	mov r2, #1
-	bl SysTask_CreateOnMainQueue
-	mov r1, #0x8d
-	lsl r1, r1, #2
-	str r0, [r4, r1]
-	pop {r3, r4, r5, pc}
-	.balign 4, 0
-_02256EAC: .word ov04_02257148
-	thumb_func_end GymmickInit_Sinjoh
-
 	thumb_func_start GymmickFree_Sinjoh
 GymmickFree_Sinjoh: ; 0x02256EB0
 	push {r3, r4, r5, lr}
