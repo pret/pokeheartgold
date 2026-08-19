@@ -86,3 +86,20 @@ void ov04_02256C20(ViridianGymmickLocalData *localData, enum HeapID heapID) {
         }
     }
 }
+
+void ov04_02256D00(ViridianGymmickLocalData *localData) {
+    u8 i;
+    u8 j;
+    u8 k;
+
+    for (i = 0; i < 4; ++i) {
+        Field3dModel_Unload(&localData->unk_010[i]);
+    }
+
+    for (j = 0; j < 3; ++j) {
+        ViridianGymmickLocalData_Sub054 *r4 = &localData->unk_054[j];
+        for (k = 0; k < 4; ++k) {
+            Field3dModelAnimation_Unload(&r4->unk_008[k].unk_00, &localData->unk_000);
+        }
+    }
+}

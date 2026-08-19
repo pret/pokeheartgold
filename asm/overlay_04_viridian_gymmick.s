@@ -6,63 +6,6 @@
 
 	.text
 
-	thumb_func_start ov04_02256D00
-ov04_02256D00: ; 0x02256D00
-	push {r3, r4, r5, r6, r7, lr}
-	sub sp, #8
-	add r6, r0, #0
-	add r5, r6, #0
-	mov r4, #0
-	add r5, #0x10
-_02256D0C:
-	lsl r0, r4, #4
-	add r0, r5, r0
-	bl Field3dModel_Unload
-	add r0, r4, #1
-	lsl r0, r0, #0x18
-	lsr r4, r0, #0x18
-	cmp r4, #4
-	blo _02256D0C
-	mov r0, #0
-	str r0, [sp]
-	add r0, r6, #0
-	str r0, [sp, #4]
-	add r0, #0x54
-	str r0, [sp, #4]
-	mov r7, #0x8c
-_02256D2C:
-	ldr r1, [sp]
-	mov r0, #0x8f
-	lsl r0, r0, #2
-	add r2, r1, #0
-	mul r2, r0
-	ldr r0, [sp, #4]
-	mov r5, #0
-	add r4, r0, r2
-	add r4, #8
-_02256D3E:
-	add r0, r5, #0
-	mul r0, r7
-	add r0, r4, r0
-	add r1, r6, #0
-	bl Field3dModelAnimation_Unload
-	add r0, r5, #1
-	lsl r0, r0, #0x18
-	lsr r5, r0, #0x18
-	cmp r5, #4
-	blo _02256D3E
-	ldr r0, [sp]
-	add r0, r0, #1
-	lsl r0, r0, #0x18
-	lsr r0, r0, #0x18
-	str r0, [sp]
-	cmp r0, #3
-	blo _02256D2C
-	add sp, #8
-	pop {r3, r4, r5, r6, r7, pc}
-	.balign 4, 0
-	thumb_func_end ov04_02256D00
-
 	thumb_func_start ov04_02256D68
 ov04_02256D68: ; 0x02256D68
 	push {r4, r5, r6, r7, lr}
