@@ -6,56 +6,6 @@
 
 	.text
 
-	thumb_func_start ov04_022570EC
-ov04_022570EC: ; 0x022570EC
-	push {r3, r4, r5, r6, r7, lr}
-	sub sp, #0x10
-	add r6, r0, #0
-	mov r0, #0
-	str r0, [sp, #4]
-	add r0, r6, #0
-	str r0, [sp, #0xc]
-	add r0, #0x14
-	str r0, [sp, #0xc]
-	add r0, r6, #0
-	str r0, [sp, #8]
-	add r0, #0x24
-	str r0, [sp, #8]
-	mov r7, #0x14
-_02257108:
-	ldr r1, [sp, #4]
-	mov r0, #0xb4
-	mul r0, r1
-	ldr r1, [sp, #8]
-	mov r4, #0
-	str r0, [sp]
-	add r5, r1, r0
-_02257116:
-	add r0, r4, #0
-	mul r0, r7
-	add r0, r5, r0
-	add r1, r6, #4
-	bl Field3dModelAnimation_Unload
-	add r0, r4, #1
-	lsl r0, r0, #0x18
-	lsr r4, r0, #0x18
-	cmp r4, #2
-	blo _02257116
-	ldr r1, [sp, #0xc]
-	ldr r0, [sp]
-	add r0, r1, r0
-	bl Field3dModel_Unload
-	ldr r0, [sp, #4]
-	add r0, r0, #1
-	lsl r0, r0, #0x18
-	lsr r0, r0, #0x18
-	str r0, [sp, #4]
-	cmp r0, #3
-	blo _02257108
-	add sp, #0x10
-	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ov04_022570EC
-
 	thumb_func_start ov04_02257148
 ov04_02257148: ; 0x02257148
 	push {r4, r5, r6, r7, lr}

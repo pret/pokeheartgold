@@ -115,3 +115,15 @@ void ov04_02256F50(SinjohGymmickLocalData *localData) {
         Field3dObject_SetPosEx(&localData->unk_014[i].unk_38, ov04_02257B40[i].x, ov04_02257B40[i].y, ov04_02257B40[i].z);
     }
 }
+
+void ov04_022570EC(SinjohGymmickLocalData *localData) {
+    u8 i;
+    u8 j;
+
+    for (j = 0; j < 3; ++j) {
+        for (i = 0; i < 2; ++i) {
+            Field3dModelAnimation_Unload(&localData->unk_014[j].unk_10[i], &localData->unk_004);
+        }
+        Field3dModel_Unload(&localData->unk_014[j].unk_00);
+    }
+}
