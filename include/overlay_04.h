@@ -11,7 +11,7 @@ void GymmickFree_Blackthorn(FieldSystem *fieldSystem);
 BOOL ov04_02255090(FieldSystem *fieldSystem);
 void GymmickFree_Fuchsia(FieldSystem *fieldSystem);
 void GymmickFree_Viridian(FieldSystem *fieldSystem);
-void ov04_02256BE4(FieldSystem *fieldSystem, u8 arg1);
+void ViridianGymmick_HandleTileAction(FieldSystem *fieldSystem, u8 arg1);
 void GymmickFree_Sinjoh(FieldSystem *fieldSystem);
 
 void GymmickInit_Ecruteak(FieldSystem *fieldSystem);

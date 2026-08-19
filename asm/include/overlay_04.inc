@@ -145,7 +145,7 @@
 .public FuchsiaGymmick_CheckCollision
 .public GymmickInit_Viridian
 .public GymmickFree_Viridian
-.public ov04_02256BE4
+.public ViridianGymmick_HandleTileAction
 .public GymmickInit_Sinjoh
 .public GymmickFree_Sinjoh
 .public ov04_02256ED8
