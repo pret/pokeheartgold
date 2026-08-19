@@ -25,6 +25,7 @@ typedef struct ViridianGymmickLocalData {
 void ov04_02256C20(ViridianGymmickLocalData *localData, enum HeapID heapID);
 void ov04_02256D00(ViridianGymmickLocalData *localData);
 void ov04_02256D68(ViridianGymmickLocalData_Sub054 *a0, FieldSystem *fieldSystem, u8 a2);
+void ov04_02256DFC(SysTask *sysTask, void *taskData);
 
 void GymmickInit_Viridian(FieldSystem *fieldSystem) {
     GymmickUnion *gymmickUnion = Save_Gymmick_AssertMagic_GetData(Save_GetGymmickPtr(FieldSystem_GetSaveData(fieldSystem)), GYMMICK_VIRIDIAN);
@@ -102,4 +103,33 @@ void ov04_02256D00(ViridianGymmickLocalData *localData) {
             Field3dModelAnimation_Unload(&r4->unk_008[k].unk_00, &localData->unk_000);
         }
     }
+}
+
+void ov04_02256D68(ViridianGymmickLocalData_Sub054 *a0, FieldSystem *fieldSystem, u8 a2) {
+    int r5 = 1;
+    a0->unk_000 = 1;
+    switch (a2) {
+    case 64:
+        r5 = 2;
+        break;
+    case 65:
+        r5 = 0;
+        break;
+    case 66:
+        r5 = 3;
+        break;
+    case 67:
+        r5 = 1;
+        break;
+    default:
+        GF_ASSERT(FALSE);
+        return;
+    }
+    a0->unk_004 = r5;
+    a0->unk_238 = SysTask_CreateOnMainQueue(ov04_02256DFC, a0, 0);
+    Field3dObject_SetActiveFlag(&a0->unk_008[r5].unk_14, TRUE);
+    VecFx32 sp0 = { 0, 0, 0 };
+    MapObject_CopyPositionVector(PlayerAvatar_GetMapObject(fieldSystem->playerAvatar), &sp0);
+    Field3dObject_SetPosEx(&a0->unk_008[r5].unk_14, sp0.x, sp0.y, sp0.z);
+    Field3dModelAnimation_FrameSet(&a0->unk_008[r5].unk_00, 0);
 }
