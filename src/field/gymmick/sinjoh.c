@@ -173,3 +173,40 @@ void ov04_02257148(SysTask *sysTask, void *taskData) {
     GF_ASSERT(sp8[1] == sp8[2]);
     GF_ASSERT(sp8[2] == sp8[0]);
 }
+
+BOOL ov04_02257240(SinjohGymmickLocalData_Sub014 *a0, const u8 a1, const u8 a2) {
+    u8 i;
+    fx32 r0;
+    fx32 spC;
+    fx32 r1;
+    u8 r6 = FALSE;
+    if (a0->unk_B0) {
+        spC = FX32_CONST(60);
+    } else {
+        spC = FX32_CONST(30);
+    }
+    for (i = 0; i < a1; ++i) {
+        r0 = ov01_021FBF28(&a0->unk_10[i]);
+        if (r0 + FX32_ONE >= spC) {
+            if (i != 0) {
+                GF_ASSERT(r6);
+            }
+            r6 = TRUE;
+        }
+        Field3dModelAnimation_FrameAdvanceAndLoop(&a0->unk_10[i], FX32_ONE);
+        if (r6) {
+            a0->unk_B0 = a2;
+            if (a0->unk_B0) {
+                r1 = FX32_CONST(30);
+            } else {
+                r1 = 0;
+            }
+            Field3dModelAnimation_FrameSet(&a0->unk_10[i], r1);
+        }
+    }
+    if (r6) {
+        return TRUE;
+    } else {
+        return FALSE;
+    }
+}
