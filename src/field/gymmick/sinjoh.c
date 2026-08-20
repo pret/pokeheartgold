@@ -22,7 +22,7 @@ void ov04_02256F50(SinjohGymmickLocalData *localData);
 void ov04_022570EC(SinjohGymmickLocalData *localData);
 void ov04_02257148(SysTask *sysTask, void *taskData);
 BOOL ov04_02257240(SinjohGymmickLocalData_Sub014 *a0, const u8 a1, const u8 a2);
-void ov04_022572E0(Field3DModelAnimation *a0, const u8 a1, const u32 a2);
+void ov04_022572E0(Field3DModelAnimation *a0, const u8 a1, const fx32 a2);
 BOOL ov04_02257308(TaskManager *taskman);
 
 void GymmickInit_Sinjoh(FieldSystem *fieldSystem) {
@@ -209,4 +209,19 @@ BOOL ov04_02257240(SinjohGymmickLocalData_Sub014 *a0, const u8 a1, const u8 a2) 
     } else {
         return FALSE;
     }
+}
+
+void ov04_022572E0(Field3DModelAnimation *a0, const u8 a1, const fx32 a2) {
+    u8 i;
+
+    for (i = 0; i < a1; ++i) {
+        Field3dModelAnimation_FrameSet(&a0[i], a2);
+    }
+}
+
+BOOL ov04_02257308(TaskManager *taskman) {
+    FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskman);
+    SinjohGymmickLocalData *localData = TaskManager_GetEnvironment(taskman);
+
+    return !localData->unk_230;
 }
