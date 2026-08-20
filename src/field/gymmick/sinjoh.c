@@ -4,224 +4,225 @@
 #include "overlay_04.h"
 
 typedef struct SinjohGymmickLocalData_Sub014 {
-    Field3dModel unk_00;
-    Field3DModelAnimation unk_10[2];
-    Field3dObject unk_38;
-    BOOL unk_B0;
-} SinjohGymmickLocalData_Sub014;
+    Field3dModel model;
+    Field3DModelAnimation anims[2];
+    Field3dObject object;
+    int animId;
+} SinjohGymmickModelState;
 
 typedef struct SinjohGymmickLocalData {
-    FieldSystem *unk_000;
-    NNSFndAllocator unk_004;
-    SinjohGymmickLocalData_Sub014 unk_014[3];
-    int unk_230;
-    SysTask *unk_234;
+    FieldSystem *fieldSystem;
+    NNSFndAllocator allocator;
+    SinjohGymmickModelState modelStates[3];
+    BOOL active;
+    SysTask *sysTask;
 } SinjohGymmickLocalData; // size: 0x238
 
-void ov04_02256F50(SinjohGymmickLocalData *localData);
-void ov04_022570EC(SinjohGymmickLocalData *localData);
-void ov04_02257148(SysTask *sysTask, void *taskData);
-BOOL ov04_02257240(SinjohGymmickLocalData_Sub014 *a0, const u8 a1, const u8 a2);
-void ov04_022572E0(Field3DModelAnimation *a0, const u8 a1, const fx32 a2);
-BOOL ov04_02257308(TaskManager *taskman);
+static void SinjohGymmick_Load3dGraphics(SinjohGymmickLocalData *localData);
+static void SinjohGymmick_Unload3dGraphics(SinjohGymmickLocalData *localData);
+static void SysTask_SinjohGymmick(SysTask *sysTask, void *taskData);
+static BOOL SinjohGymmick_AdvanceAnimAndSetAnimIdIfCurrentAnimFinished(SinjohGymmickModelState *modelState, const u8 numAnims, const u8 animId);
+static void SinjohGymmick_SetAnimsFrames(Field3DModelAnimation *anims, const u8 num, const fx32 frame);
+static BOOL Task_SinjohGymmick_WaitAnimFinished(TaskManager *taskman);
 
 void GymmickInit_Sinjoh(FieldSystem *fieldSystem) {
     GymmickUnion *gymmickUnion = Save_Gymmick_AssertMagic_GetData(Save_GetGymmickPtr(FieldSystem_GetSaveData(fieldSystem)), GYMMICK_SINJOH);
     fieldSystem->unk4->unk24 = Heap_Alloc(HEAP_ID_FIELD1, sizeof(SinjohGymmickLocalData));
     MI_CpuClear8(fieldSystem->unk4->unk24, sizeof(SinjohGymmickLocalData));
     SinjohGymmickLocalData *localData = fieldSystem->unk4->unk24;
-    localData->unk_000 = fieldSystem;
-    ov04_02256F50(localData);
-    localData->unk_234 = SysTask_CreateOnMainQueue(ov04_02257148, localData, 1);
+    localData->fieldSystem = fieldSystem;
+    SinjohGymmick_Load3dGraphics(localData);
+    localData->sysTask = SysTask_CreateOnMainQueue(SysTask_SinjohGymmick, localData, 1);
 }
 
 void GymmickFree_Sinjoh(FieldSystem *fieldSystem) {
     SinjohGymmickLocalData *localData = fieldSystem->unk4->unk24;
-    SysTask_Destroy(localData->unk_234);
-    ov04_022570EC(localData);
+    SysTask_Destroy(localData->sysTask);
+    SinjohGymmick_Unload3dGraphics(localData);
     Heap_Free(localData);
     fieldSystem->unk4->unk24 = NULL;
 }
 
-void ov04_02256ED8(FieldSystem *fieldSystem) {
+void SinjohGymmick_FreezeAllModels(FieldSystem *fieldSystem) {
     SinjohGymmickLocalData *localData = fieldSystem->unk4->unk24;
     for (u8 i = 0; i < 3; ++i) {
-        Field3dObject_SetActiveFlag(&localData->unk_014[i].unk_38, FALSE);
+        Field3dObject_SetActiveFlag(&localData->modelStates[i].object, FALSE);
     }
 }
 
-void ov04_02256F00(FieldSystem *fieldSystem, u8 a1) {
+void SinjohGymmick_SetChosenLegend(FieldSystem *fieldSystem, u8 choice) {
     SinjohGymmickLocalData *localData = fieldSystem->unk4->unk24;
-    if (a1 > 3) {
+    if (choice > 3) {
         GF_ASSERT(FALSE);
         return;
     }
-    GF_ASSERT(Field3dObject_GetActiveFlag(&localData->unk_014[0].unk_38));
+    GF_ASSERT(Field3dObject_GetActiveFlag(&localData->modelStates[0].object));
     GymmickUnion *gymmickUnion = Save_Gymmick_AssertMagic_GetData(Save_GetGymmickPtr(FieldSystem_GetSaveData(fieldSystem)), GYMMICK_SINJOH);
-    gymmickUnion->sinjoh.choice = a1;
-    localData->unk_230 = 1;
-    TaskManager_Call(fieldSystem->taskman, ov04_02257308, localData);
+    gymmickUnion->sinjoh.choice = choice;
+    localData->active = TRUE;
+    TaskManager_Call(fieldSystem->taskman, Task_SinjohGymmick_WaitAnimFinished, localData);
 }
 
-void ov04_02256F50(SinjohGymmickLocalData *localData) {
+static void SinjohGymmick_Load3dGraphics(SinjohGymmickLocalData *localData) {
     u8 i;
     u8 j;
     enum HeapID heapID = HEAP_ID_FIELD1;
 
-    const int ov04_02257B28[3][2] = {
+    const int animIds[3][2] = {
         { 102, 103 },
         { 105, 106 },
         { 108, 109 },
     };
-    const int ov04_02257B1C[3] = {
+    const int modelIds[3] = {
         101,
         104,
         107,
     };
 
-    HeapExp_FndInitAllocator(&localData->unk_004, heapID, 0x20);
+    HeapExp_FndInitAllocator(&localData->allocator, heapID, 0x20);
 
     for (i = 0; i < 3; ++i) {
-        Field3dModel_LoadFromFilesystem(&localData->unk_014[i].unk_00, NARC_demo_legend, ov04_02257B1C[i], heapID);
+        Field3dModel_LoadFromFilesystem(&localData->modelStates[i].model, NARC_demo_legend, modelIds[i], heapID);
     }
 
     for (j = 0; j < 3; ++j) {
         for (i = 0; i < 2; ++i) {
-            Field3dModelAnimation_LoadFromFilesystem(&localData->unk_014[j].unk_10[i], &localData->unk_014[j].unk_00, NARC_demo_legend, ov04_02257B28[j][i], heapID, &localData->unk_004);
+            Field3dModelAnimation_LoadFromFilesystem(&localData->modelStates[j].anims[i], &localData->modelStates[j].model, NARC_demo_legend, animIds[j][i], heapID, &localData->allocator);
         }
     }
 
     for (i = 0; i < 3; ++i) {
-        Field3dObject_InitFromModel(&localData->unk_014[i].unk_38, &localData->unk_014[i].unk_00);
+        Field3dObject_InitFromModel(&localData->modelStates[i].object, &localData->modelStates[i].model);
     }
 
     for (j = 0; j < 3; ++j) {
         for (i = 0; i < 2; ++i) {
-            Field3dObject_AddAnimation(&localData->unk_014[j].unk_38, &localData->unk_014[j].unk_10[i]);
+            Field3dObject_AddAnimation(&localData->modelStates[j].object, &localData->modelStates[j].anims[i]);
         }
     }
 
     for (i = 0; i < 3; ++i) {
-        Field3dObject_SetActiveFlag(&localData->unk_014[i].unk_38, TRUE);
-        ov04_022572E0(localData->unk_014[i].unk_10, 2, 0);
+        Field3dObject_SetActiveFlag(&localData->modelStates[i].object, TRUE);
+        SinjohGymmick_SetAnimsFrames(localData->modelStates[i].anims, 2, 0);
     }
 
-    const VecFx32 ov04_02257B40[3] = {
+    const VecFx32 positions[3] = {
         { FX32_CONST(200), FX32_CONST(16), FX32_CONST(248) },
         { FX32_CONST(328), FX32_CONST(16), FX32_CONST(248) },
         { FX32_CONST(264), FX32_CONST(16), FX32_CONST(136) },
     };
 
     for (i = 0; i < 3; ++i) {
-        Field3dObject_SetPosEx(&localData->unk_014[i].unk_38, ov04_02257B40[i].x, ov04_02257B40[i].y, ov04_02257B40[i].z);
+        Field3dObject_SetPosEx(&localData->modelStates[i].object, positions[i].x, positions[i].y, positions[i].z);
     }
 }
 
-void ov04_022570EC(SinjohGymmickLocalData *localData) {
+static void SinjohGymmick_Unload3dGraphics(SinjohGymmickLocalData *localData) {
     u8 i;
     u8 j;
 
     for (j = 0; j < 3; ++j) {
         for (i = 0; i < 2; ++i) {
-            Field3dModelAnimation_Unload(&localData->unk_014[j].unk_10[i], &localData->unk_004);
+            Field3dModelAnimation_Unload(&localData->modelStates[j].anims[i], &localData->allocator);
         }
-        Field3dModel_Unload(&localData->unk_014[j].unk_00);
+        Field3dModel_Unload(&localData->modelStates[j].model);
     }
 }
 
-void ov04_02257148(SysTask *sysTask, void *taskData) {
+static void SysTask_SinjohGymmick(SysTask *sysTask, void *taskData) {
     u8 i;
     SinjohGymmickLocalData *localData = taskData;
-    int sp8[3];
-    u8 sp4[3] = { 0, 0, 0 };
-    BOOL sp0;
-    FieldSystem *fieldSystem = localData->unk_000;
+    int currentFrames[3];
+    u8 choiceFlag[3] = { 0, 0, 0 };
+    BOOL isFinished;
+    FieldSystem *fieldSystem = localData->fieldSystem;
     GymmickUnion *gymmickUnion = Save_Gymmick_AssertMagic_GetData(Save_GetGymmickPtr(FieldSystem_GetSaveData(fieldSystem)), GYMMICK_SINJOH);
 
     switch (gymmickUnion->sinjoh.choice) {
     case 0:
         break;
     case 1:
-        sp4[0] = 1;
+        choiceFlag[0] = 1;
         break;
     case 2:
-        sp4[1] = 1;
+        choiceFlag[1] = 1;
         break;
     case 3:
-        sp4[2] = 1;
+        choiceFlag[2] = 1;
         break;
     default:
         GF_ASSERT(FALSE);
     }
     for (i = 0; i < 3; ++i) {
-        sp0 = ov04_02257240(&localData->unk_014[i], 2, sp4[i]); // bug: only the result of the last call matters
+        isFinished = SinjohGymmick_AdvanceAnimAndSetAnimIdIfCurrentAnimFinished(&localData->modelStates[i], 2, choiceFlag[i]); // bug: only the result of the last call matters
     }
     for (i = 0; i < 3; ++i) {
-        Field3dObject_Draw(&localData->unk_014[i].unk_38);
+        Field3dObject_Draw(&localData->modelStates[i].object);
     }
 
-    if (sp0) {
-        localData->unk_230 = 0;
+    if (isFinished) {
+        localData->active = 0;
     }
 
+    // Require all anims be synchronized
     for (i = 0; i < 3; ++i) {
-        SinjohGymmickLocalData_Sub014 *r0 = &localData->unk_014[i];
-        sp8[i] = ov01_021FBF28(&r0->unk_10[0]) / FX32_ONE;
-        sp8[i] %= 30;
+        SinjohGymmickModelState *modelState = &localData->modelStates[i];
+        currentFrames[i] = Field3dModelAnimation_FrameGet(&modelState->anims[0]) / FX32_ONE;
+        currentFrames[i] %= 30;
     }
-    GF_ASSERT(sp8[0] == sp8[1]);
-    GF_ASSERT(sp8[1] == sp8[2]);
-    GF_ASSERT(sp8[2] == sp8[0]);
+    GF_ASSERT(currentFrames[0] == currentFrames[1]);
+    GF_ASSERT(currentFrames[1] == currentFrames[2]);
+    GF_ASSERT(currentFrames[2] == currentFrames[0]);
 }
 
-BOOL ov04_02257240(SinjohGymmickLocalData_Sub014 *a0, const u8 a1, const u8 a2) {
+static BOOL SinjohGymmick_AdvanceAnimAndSetAnimIdIfCurrentAnimFinished(SinjohGymmickModelState *modelState, const u8 numAnims, const u8 animId) {
     u8 i;
-    fx32 r0;
-    fx32 spC;
-    fx32 r1;
-    u8 r6 = FALSE;
-    if (a0->unk_B0) {
-        spC = FX32_CONST(60);
+    fx32 currentFrame;
+    fx32 endFrame;
+    fx32 startFrame;
+    u8 animEnded = FALSE;
+    if (modelState->animId) {
+        endFrame = FX32_CONST(60);
     } else {
-        spC = FX32_CONST(30);
+        endFrame = FX32_CONST(30);
     }
-    for (i = 0; i < a1; ++i) {
-        r0 = ov01_021FBF28(&a0->unk_10[i]);
-        if (r0 + FX32_ONE >= spC) {
+    for (i = 0; i < numAnims; ++i) {
+        currentFrame = Field3dModelAnimation_FrameGet(&modelState->anims[i]);
+        if (currentFrame + FX32_ONE >= endFrame) {
             if (i != 0) {
-                GF_ASSERT(r6);
+                GF_ASSERT(animEnded);
             }
-            r6 = TRUE;
+            animEnded = TRUE;
         }
-        Field3dModelAnimation_FrameAdvanceAndLoop(&a0->unk_10[i], FX32_ONE);
-        if (r6) {
-            a0->unk_B0 = a2;
-            if (a0->unk_B0) {
-                r1 = FX32_CONST(30);
+        Field3dModelAnimation_FrameAdvanceAndLoop(&modelState->anims[i], FX32_ONE);
+        if (animEnded) {
+            modelState->animId = animId;
+            if (modelState->animId) {
+                startFrame = FX32_CONST(30);
             } else {
-                r1 = 0;
+                startFrame = 0;
             }
-            Field3dModelAnimation_FrameSet(&a0->unk_10[i], r1);
+            Field3dModelAnimation_FrameSet(&modelState->anims[i], startFrame);
         }
     }
-    if (r6) {
+    if (animEnded) {
         return TRUE;
     } else {
         return FALSE;
     }
 }
 
-void ov04_022572E0(Field3DModelAnimation *a0, const u8 a1, const fx32 a2) {
+static void SinjohGymmick_SetAnimsFrames(Field3DModelAnimation *anims, const u8 num, const fx32 frame) {
     u8 i;
 
-    for (i = 0; i < a1; ++i) {
-        Field3dModelAnimation_FrameSet(&a0[i], a2);
+    for (i = 0; i < num; ++i) {
+        Field3dModelAnimation_FrameSet(&anims[i], frame);
     }
 }
 
-BOOL ov04_02257308(TaskManager *taskman) {
+static BOOL Task_SinjohGymmick_WaitAnimFinished(TaskManager *taskman) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskman);
     SinjohGymmickLocalData *localData = TaskManager_GetEnvironment(taskman);
 
-    return !localData->unk_230;
+    return !localData->active;
 }

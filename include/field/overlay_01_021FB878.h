@@ -17,7 +17,7 @@ typedef struct Field3DModelAnimation {
     void *fileDataRaw;
     void *animRaw;
     NNSG3dAnmObj *animObj;
-    int frame;
+    fx32 frame;
     BOOL shouldRetainData; // if FALSE, fileDataRaw is freed on unload
 } Field3DModelAnimation;
 
@@ -45,6 +45,6 @@ void Field3dObject_SetActiveFlag(Field3dObject *object, BOOL active);
 BOOL Field3dObject_GetActiveFlag(Field3dObject *object);
 void Field3dObject_SetPosEx(Field3dObject *object, fx32 x, fx32 y, fx32 z);
 NNSG3dResTex *ov01_021FB9E0(AreaDataManager *areaDataManager);
-fx32 ov01_021FBF28(Field3DModelAnimation *anim);
+fx32 Field3dModelAnimation_FrameGet(Field3DModelAnimation *anim);
 
 #endif // POKEHEARTGOLD_FIELD_OVERLAY_01_021FB878_H

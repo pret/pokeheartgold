@@ -5354,12 +5354,12 @@ BOOL ScrCmd_MystriStageGymmickInit(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_819(ScriptContext *ctx) {
-    ov04_02256ED8(ctx->fieldSystem);
+    SinjohGymmick_FreezeAllModels(ctx->fieldSystem);
     return FALSE;
 }
 
 BOOL ScrCmd_820(ScriptContext *ctx) {
-    ov04_02256F00(ctx->fieldSystem, ScriptReadByte(ctx));
+    SinjohGymmick_SetChosenLegend(ctx->fieldSystem, ScriptReadByte(ctx));
     return TRUE;
 }
 

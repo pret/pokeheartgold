@@ -108,7 +108,7 @@
 .public Field3dModelAnimation_FrameAdvanceAndLoop
 .public Field3dModelAnimation_FrameAdvanceAndCheck
 .public Field3dModelAnimation_FrameSet
-.public ov01_021FBF28
+.public Field3dModelAnimation_FrameGet
 .public Field3dObject_InitFromModel
 .public Field3dObject_AddAnimation
 .public Field3dObject_Draw
@@ -148,5 +148,5 @@
 .public ViridianGymmick_HandleTileAction
 .public GymmickInit_Sinjoh
 .public GymmickFree_Sinjoh
-.public ov04_02256ED8
-.public ov04_02256F00
+.public SinjohGymmick_FreezeAllModels
+.public SinjohGymmick_SetChosenLegend
