@@ -1,6 +1,8 @@
 #ifndef POKEHEARTGOLD_PM_VERSION_H
 #define POKEHEARTGOLD_PM_VERSION_H
 
+#include <nitro.h>
+
 extern const u8 gGameVersion;
 extern const u8 gGameLanguage;
 

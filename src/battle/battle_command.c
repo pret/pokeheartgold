@@ -38,6 +38,7 @@
 #include "pokemon_icon_idx.h"
 #include "pokemon_mood.h"
 #include "render_window.h"
+#include "screen_fade.h"
 #include "sound.h"
 #include "sound_chatot.h"
 #include "sprite_system.h"
@@ -46,7 +47,6 @@
 #include "text.h"
 #include "touchscreen.h"
 #include "unk_02005D10.h"
-#include "unk_0200FA24.h"
 #include "unk_02013534.h"
 #include "unk_020163E0.h"
 #include "unk_0208805C.h"
@@ -3952,7 +3952,7 @@ BOOL BtlCmd_TrySetMagicCoat(BattleSystem *battleSystem, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
     u32 unkA = BattleScriptReadWord(ctx);
 
-    for (i = 0; i < BattleSystem_GetMaxBattlers(battleSystem); i++) {}
+    for (i = 0; i < BattleSystem_GetMaxBattlers(battleSystem); i++) { }
 
     if (ctx->battlersOnField == 1) {
         BattleScriptIncrementPointer(ctx, unkA);

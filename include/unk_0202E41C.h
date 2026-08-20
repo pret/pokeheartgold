@@ -1,6 +1,8 @@
 #ifndef POKEHEARTGOLD_UNK_0202E41C_H
 #define POKEHEARTGOLD_UNK_0202E41C_H
 
+#include "global.h"
+
 typedef struct UnkStruct_0202E474 {
     u8 filler_000[12];
     u8 unk_00C[192];

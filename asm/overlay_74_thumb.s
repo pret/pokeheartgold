@@ -4481,13 +4481,13 @@ ov74_0222AF28: ; 0x0222AF28
 	bl AddCellOrAnimResObjFromNarc
 	str r0, [r4, #0x7c]
 	ldr r0, [r4, #0x58]
-	bl sub_0200ACF0
+	bl SpriteTransfer_CreateCharTransferTask
 	ldr r0, [r4, #0x70]
-	bl sub_0200ACF0
+	bl SpriteTransfer_CreateCharTransferTask
 	ldr r0, [r4, #0x5c]
-	bl sub_0200B00C
+	bl SpriteTransfer_CreatePlttTransferTask
 	ldr r0, [r4, #0x74]
-	bl sub_0200B00C
+	bl SpriteTransfer_CreatePlttTransferTask
 	mov r0, #0
 	mov r5, #0x4b
 	ldr r2, [r4, #0xc]
@@ -18268,11 +18268,11 @@ _02231C36:
 	str r0, [r6, r1]
 	sub r1, #0xc
 	ldr r0, [r6, r1]
-	bl sub_0200ACF0
+	bl SpriteTransfer_CreateCharTransferTask
 	mov r0, #0x17
 	lsl r0, r0, #4
 	ldr r0, [r6, r0]
-	bl sub_0200AF94
+	bl SpriteTransfer_CreateExtPlttTransferTask
 	bl sub_02074490
 	add r1, r0, #0
 	mov r0, #0
@@ -20554,11 +20554,11 @@ _02232EB4:
 	mov r0, #0x5b
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
-	bl sub_0200AEB0
+	bl SpriteTransfer_DeleteCharTransferTask
 	mov r0, #0x17
 	lsl r0, r0, #4
 	ldr r0, [r6, r0]
-	bl sub_0200B0A8
+	bl SpriteTransfer_DeletePlttTransferTask
 	mov r7, #0x55
 	mov r5, #0
 	add r4, r6, #0
@@ -26042,12 +26042,12 @@ _0223580C:
 	add r1, r5, r6
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
-	bl sub_0200ACF0
+	bl SpriteTransfer_CreateCharTransferTask
 	mov r0, #0x5f
 	add r1, r5, r6
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
-	bl sub_0200B00C
+	bl SpriteTransfer_CreatePlttTransferTask
 	mov r0, #0
 	mov r2, #0x16
 	str r4, [sp]
@@ -26280,7 +26280,7 @@ _022359DA:
 	ldr r0, [r0, r1]
 	cmp r0, #0
 	beq _022359EA
-	bl sub_0200AEB0
+	bl SpriteTransfer_DeleteCharTransferTask
 _022359EA:
 	mov r1, #0x57
 	ldr r0, _02235A64 ; =ov74_0223D488
@@ -26288,7 +26288,7 @@ _022359EA:
 	ldr r0, [r0, r1]
 	cmp r0, #0
 	beq _022359FA
-	bl sub_0200AEB0
+	bl SpriteTransfer_DeleteCharTransferTask
 _022359FA:
 	mov r1, #0x52
 	ldr r0, _02235A64 ; =ov74_0223D488
@@ -26296,7 +26296,7 @@ _022359FA:
 	ldr r0, [r0, r1]
 	cmp r0, #0
 	beq _02235A0A
-	bl sub_0200B0A8
+	bl SpriteTransfer_DeletePlttTransferTask
 _02235A0A:
 	mov r1, #0x16
 	ldr r0, _02235A64 ; =ov74_0223D488
@@ -26304,7 +26304,7 @@ _02235A0A:
 	ldr r0, [r0, r1]
 	cmp r0, #0
 	beq _02235A1A
-	bl sub_0200B0A8
+	bl SpriteTransfer_DeletePlttTransferTask
 _02235A1A:
 	mov r4, #0
 	mov r7, #0x4b

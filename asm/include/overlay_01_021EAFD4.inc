@@ -12,8 +12,8 @@
 .public GF_AssertFail
 .public NNS_G3dGetTex
 .public sprintf
-.public ov01_021EAFD4
-.public ov01_021EB00C
-.public ov01_021EB114
-.public ov01_021EB1BC
-.public ov01_021EB1DC
+.public FieldTextureManager_Init
+.public FieldTextureManager_LoadTexture
+.public FieldTextureManager_Free
+.public FieldTextureManager_FreeAllSlots
+.public FieldTextureManager_Destroy

@@ -3,6 +3,7 @@
 
 #include "unk_02037C94.h"
 #include "global.h"
+
 #include "safari_zone.h"
 
 BOOL sub_02036144(void);

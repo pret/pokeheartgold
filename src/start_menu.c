@@ -2,11 +2,13 @@
 
 #include "global.h"
 
+#include "constants/field/map_load.h"
 #include "constants/map_sections.h"
 #include "constants/sndseq.h"
 #include "constants/start_menu_icons.h"
 #include "constants/std_script.h"
 
+#include "field/fieldmap.h"
 #include "msgdata/msg/msg_0196.h"
 
 #include "bag_view.h"
@@ -26,13 +28,13 @@
 #include "pokedex_util.h"
 #include "save_local_field_data.h"
 #include "save_vars_flags.h"
+#include "screen_fade.h"
 #include "sound.h"
 #include "sound_02004A44.h"
+#include "sprite_transfer.h"
 #include "sys_flags.h"
 #include "system.h"
 #include "unk_02005D10.h"
-#include "unk_0200ACF0.h"
-#include "unk_0200FA24.h"
 #include "unk_02034B0C.h"
 #include "unk_02037C94.h"
 #include "unk_0205A44C.h"
@@ -263,9 +265,9 @@ void sub_0203BD64(FieldSystem *fieldSystem) {
         startMenu->inhibitIconFlags = FieldSystem_GetStartMenuButtonInhibitFlags_PalPark(fieldSystem);
     } else if (FieldSystem_MapIsBattleTowerMultiPartnerSelectRoom(fieldSystem) == TRUE) {
         startMenu->inhibitIconFlags = FieldSystem_GetStartMenuButtonInhibitFlags_BattleTowerMultiPartnerSelectRoom(fieldSystem);
-    } else if (fieldSystem->unk70 == 3) {
+    } else if (fieldSystem->mapLoadType == MAP_LOAD_TYPE_COLOSSEUM) {
         startMenu->inhibitIconFlags = sub_0203BEE8(fieldSystem);
-    } else if (fieldSystem->unk70 == 2) {
+    } else if (fieldSystem->mapLoadType == MAP_LOAD_TYPE_UNION) {
         startMenu->inhibitIconFlags = sub_0203BEE0(fieldSystem);
         startMenu->unk_350 = TRUE;
     } else {
@@ -386,13 +388,13 @@ static BOOL Task_StartMenu(TaskManager *taskManager) {
             MapObjectManager_PauseAllMovement(fieldSystem->mapObjectManager);
             Task_StartMenu_DrawCursor(taskManager);
             fieldSystem->unkD2_0 = 1;
-            ov01_021E636C(1);
+            FieldMap_FadeScreen(FADE_TYPE_BRIGHTNESS_IN);
             startMenu->state = START_MENU_STATE_RETURN_WAIT_FADE;
         }
         break;
     case START_MENU_STATE_10:
         if (sub_020505C8(fieldSystem)) {
-            ov01_021E636C(1);
+            FieldMap_FadeScreen(FADE_TYPE_BRIGHTNESS_IN);
             startMenu->state = START_MENU_STATE_11;
         }
         break;
@@ -407,7 +409,7 @@ static BOOL Task_StartMenu(TaskManager *taskManager) {
     case START_MENU_STATE_12:
         if (sub_020505C8(fieldSystem)) {
             MapObjectManager_PauseAllMovement(fieldSystem->mapObjectManager);
-            ov01_021E636C(1);
+            FieldMap_FadeScreen(FADE_TYPE_BRIGHTNESS_IN);
             startMenu->state = START_MENU_STATE_13;
         }
         break;
@@ -669,8 +671,8 @@ static void StartMenu_CreateCursor(StartMenuTaskData *startMenu, u8 *a1, u32 a2,
     startMenu->gfxResObj[GF_GFX_RES_TYPE_PLTT] = AddPlttResObjFromNarc(startMenu->gfxResMan[GF_GFX_RES_TYPE_PLTT], NARC_a_0_1_4, 61, FALSE, 0, NNS_G2D_VRAM_TYPE_2DMAIN, 1, HEAP_ID_FIELD2);
     startMenu->gfxResObj[GF_GFX_RES_TYPE_CELL] = AddCellOrAnimResObjFromNarc(startMenu->gfxResMan[GF_GFX_RES_TYPE_CELL], NARC_a_0_1_4, 62, TRUE, 0, GF_GFX_RES_TYPE_CELL, HEAP_ID_FIELD2);
     startMenu->gfxResObj[GF_GFX_RES_TYPE_ANIM] = AddCellOrAnimResObjFromNarc(startMenu->gfxResMan[GF_GFX_RES_TYPE_ANIM], NARC_a_0_1_4, 63, TRUE, 0, GF_GFX_RES_TYPE_ANIM, HEAP_ID_FIELD2);
-    sub_0200ADA4(startMenu->gfxResObj[GF_GFX_RES_TYPE_CHAR]);
-    sub_0200B00C(startMenu->gfxResObj[GF_GFX_RES_TYPE_PLTT]);
+    SpriteTransfer_CreateCharTransferTask_AllocAtEnd(startMenu->gfxResObj[GF_GFX_RES_TYPE_CHAR]);
+    SpriteTransfer_CreatePlttTransferTask(startMenu->gfxResObj[GF_GFX_RES_TYPE_PLTT]);
     sub_0200A740(startMenu->gfxResObj[GF_GFX_RES_TYPE_PLTT]);
     CreateSpriteResourcesHeader(&startMenu->spriteResourcesHeader, 0, 0, 0, 0, -1, -1, 0, 0, startMenu->gfxResMan[GF_GFX_RES_TYPE_CHAR], startMenu->gfxResMan[GF_GFX_RES_TYPE_PLTT], startMenu->gfxResMan[GF_GFX_RES_TYPE_CELL], startMenu->gfxResMan[GF_GFX_RES_TYPE_ANIM], NULL, NULL);
 
@@ -694,8 +696,8 @@ static void StartMenu_CreateCursor(StartMenuTaskData *startMenu, u8 *a1, u32 a2,
 }
 
 static void StartMenu_DestroyCursor(StartMenuTaskData *startMenu) {
-    sub_0200AEB0(startMenu->gfxResObj[GF_GFX_RES_TYPE_CHAR]);
-    sub_0200B0A8(startMenu->gfxResObj[GF_GFX_RES_TYPE_PLTT]);
+    SpriteTransfer_DeleteCharTransferTask(startMenu->gfxResObj[GF_GFX_RES_TYPE_CHAR]);
+    SpriteTransfer_DeletePlttTransferTask(startMenu->gfxResObj[GF_GFX_RES_TYPE_PLTT]);
     for (u16 i = 0; i < 4; ++i) {
         Destroy2DGfxResObjMan(startMenu->gfxResMan[i]);
     }
@@ -734,7 +736,7 @@ void StartMenu_SetExitTaskFunc(StartMenuTaskData *startMenu, TaskFunc func) {
 static BOOL Task_StartMenu_HandleSelection_Pokedex(TaskManager *taskManager) {
     StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
 
-    ov01_021E636C(0);
+    FieldMap_FadeScreen(FADE_TYPE_BRIGHTNESS_OUT);
     startMenu->exitTaskFunc = Task_StartMenu_OpenPokedex;
     startMenu->state = START_MENU_STATE_WAIT_FADE;
     return TRUE;
@@ -793,7 +795,7 @@ static BOOL Task_StartMenu_HandleReturn_Pokedex(TaskManager *taskManager) {
 static BOOL Task_StartMenu_HandleSelection_Pokemon(TaskManager *taskManager) {
     StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
 
-    ov01_021E636C(0);
+    FieldMap_FadeScreen(FADE_TYPE_BRIGHTNESS_OUT);
     startMenu->exitTaskFunc = Task_StartMenu_Pokemon;
     startMenu->state = START_MENU_STATE_WAIT_FADE;
     return TRUE;
@@ -989,7 +991,7 @@ BOOL Task_StartMenu_HandleReturn_Pokemon(TaskManager *taskManager) {
 static BOOL Task_StartMenu_HandleSelection_Bag(TaskManager *taskManager) {
     StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
 
-    ov01_021E636C(0);
+    FieldMap_FadeScreen(FADE_TYPE_BRIGHTNESS_OUT);
     startMenu->exitTaskFunc = Task_StartMenu_Bag;
     startMenu->state = START_MENU_STATE_WAIT_FADE;
     return TRUE;
@@ -1093,7 +1095,7 @@ static BOOL Task_StartMenu_HandleReturn(TaskManager *taskManager) {
 static BOOL Task_StartMenu_HandleSelection_TrainerCard(TaskManager *taskManager) {
     StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
 
-    ov01_021E636C(0);
+    FieldMap_FadeScreen(FADE_TYPE_BRIGHTNESS_OUT);
     startMenu->exitTaskFunc = sub_0203D1CC;
     startMenu->state = START_MENU_STATE_WAIT_FADE;
     return TRUE;
@@ -1179,7 +1181,7 @@ static void sub_0203D304(TaskManager *taskManager) {
 static BOOL Task_StartMenu_HandleSelection_Options(TaskManager *taskManager) {
     StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
 
-    ov01_021E636C(0);
+    FieldMap_FadeScreen(FADE_TYPE_BRIGHTNESS_OUT);
     startMenu->exitTaskFunc = Task_StartMenu_Options;
     startMenu->state = START_MENU_STATE_WAIT_FADE;
     return TRUE;
@@ -1207,7 +1209,7 @@ static BOOL Task_StartMenu_HandleReturn_Options(TaskManager *taskManager) {
 static BOOL Task_StartMenu_HandleSelection_RemovedEasyChatThing(TaskManager *taskManager) {
     StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
 
-    ov01_021E636C(0);
+    FieldMap_FadeScreen(FADE_TYPE_BRIGHTNESS_OUT);
     startMenu->exitTaskFunc = Task_StartMenu_RemovedEasyChatThing;
     startMenu->state = START_MENU_STATE_WAIT_FADE;
     return TRUE;
@@ -1267,7 +1269,7 @@ static BOOL Task_StartMenu_HandleSelection_Retire(TaskManager *taskManager) {
 static BOOL Task_StartMenu_HandleSelection_Pokegear(TaskManager *taskManager) {
     StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
 
-    ov01_021E636C(0);
+    FieldMap_FadeScreen(FADE_TYPE_BRIGHTNESS_OUT);
     startMenu->exitTaskFunc = Task_StartMenu_Pokegear;
     startMenu->state = START_MENU_STATE_WAIT_FADE;
     return TRUE;
@@ -1335,7 +1337,7 @@ static void sub_0203D664(TaskManager *taskManager, int a1) {
 
     Bag *bag = Save_Bag_Get(fieldSystem->saveData);
     for (u8 i = 0; i < NUM_BERRIES; ++i) {
-        if (Bag_HasItem(bag, BerryToItemId(i), 1, HEAP_ID_FIELD2)) {}
+        if (Bag_HasItem(bag, BerryToItemId(i), 1, HEAP_ID_FIELD2)) { }
     }
     u8 scroll, position;
     BagCursor_Field_PocketGetPosition(fieldSystem->bagCursor, POCKET_BERRIES, &position, &scroll);

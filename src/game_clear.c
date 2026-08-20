@@ -21,13 +21,13 @@
 #include "save_arrays.h"
 #include "save_local_field_data.h"
 #include "save_vars_flags.h"
+#include "screen_fade.h"
 #include "sound.h"
 #include "sound_02004A44.h"
 #include "sys_flags.h"
 #include "task.h"
 #include "text.h"
 #include "unk_02005D10.h"
-#include "unk_0200FA24.h"
 #include "unk_020552A4.h"
 #include "unk_02055418.h"
 #include "unk_0206793C.h"
@@ -122,7 +122,7 @@ BOOL sub_0205298C(TaskManager *taskman) {
         ++(*state);
         break;
     case 4:
-        BeginNormalPaletteFade(0, 1, 1, RGB_WHITE, 8, 1, HEAP_ID_FIELD3);
+        BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_IN, FADE_TYPE_BRIGHTNESS_IN, RGB_WHITE, 8, 1, HEAP_ID_FIELD3);
         G2_BlendNone();
         ++(*state);
         break;
@@ -166,14 +166,14 @@ static BOOL Task_GameClear(TaskManager *taskman) {
             break;
         }
         GameClearSave_InitGraphics(fieldSystem, env);
-        BeginNormalPaletteFade(3, 1, 1, RGB_BLACK, 8, 1, HEAP_ID_FIELD3);
+        BeginNormalPaletteFade(FADE_MAIN_ONLY, FADE_TYPE_BRIGHTNESS_IN, FADE_TYPE_BRIGHTNESS_IN, RGB_BLACK, 8, 1, HEAP_ID_FIELD3);
         *state = 2;
         break;
     case 1:
         if (!FieldSystem_ApplicationIsRunning(fieldSystem)) {
             Heap_Create(HEAP_ID_3, HEAP_ID_FIELD1, 0x20000);
             GameClearSave_InitGraphics(fieldSystem, env);
-            BeginNormalPaletteFade(3, 1, 1, RGB_BLACK, 8, 1, HEAP_ID_FIELD3);
+            BeginNormalPaletteFade(FADE_MAIN_ONLY, FADE_TYPE_BRIGHTNESS_IN, FADE_TYPE_BRIGHTNESS_IN, RGB_BLACK, 8, 1, HEAP_ID_FIELD3);
             ++(*state);
         }
         break;
@@ -217,7 +217,7 @@ static BOOL Task_GameClear(TaskManager *taskman) {
         ++(*state);
         break;
     case 7:
-        BeginNormalPaletteFade(3, 0, 0, RGB_BLACK, 8, 1, HEAP_ID_FIELD3);
+        BeginNormalPaletteFade(FADE_MAIN_ONLY, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, RGB_BLACK, 8, 1, HEAP_ID_FIELD3);
         env->bgmVolume = 127;
         ++(*state);
         break;
@@ -317,20 +317,20 @@ static void GameClearSave_InitGraphics(FieldSystem *fieldSystem, GameClearWork *
 static void GameClearSave_PrintSaving(FieldSystem *fieldSystem, GameClearWork *env) {
     Options *options = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);
     env->windowText = ReadMsgData_NewNarc_NewString(NARC_msgdata_msg, NARC_msg_msg_0040_bin, msg_0040_00015, HEAP_ID_FIELD3);
-    sub_0205B514(env->bgConfig, &env->window, 3);
-    sub_0205B564(&env->window, options);
-    env->printerId = sub_0205B5B4(&env->window, env->windowText, options, 1);
+    DialogBox_AddWindowToLayer3(env->bgConfig, &env->window, GF_BG_LYR_MAIN_3);
+    DialogBox_LoadFrame(&env->window, options);
+    env->printerId = DialogBox_PrintMessage(&env->window, env->windowText, options, 1);
     env->waitingIcon = WaitingIcon_New(&env->window, 0x000003e2);
 }
 
 static BOOL GameClearSave_IsPrintFinished(GameClearWork *env) {
-    return IsPrintFinished((u8)env->printerId);
+    return DialogBox_IsPrintFinished((u8)env->printerId);
 }
 
 static void sub_02052E70(GameClearWork *env) {
     String_Delete(env->windowText);
     sub_0200F450(env->waitingIcon);
-    sub_0205B5A8(&env->window);
+    DialogBox_Clear(&env->window);
 }
 
 static void GameClearSave_PrintSaveStatus(FieldSystem *fieldSystem, GameClearWork *env, int writeStatus) {
@@ -346,7 +346,7 @@ static void GameClearSave_PrintSaveStatus(FieldSystem *fieldSystem, GameClearWor
     }
     DestroyMsgData(msgData);
     Options *options = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);
-    env->printerId = sub_0205B5B4(&env->window, env->windowText, options, 1);
+    env->printerId = DialogBox_PrintMessage(&env->window, env->windowText, options, 1);
 }
 
 static void GameClearSave_Free(FieldSystem *fieldSystem, GameClearWork *env) {

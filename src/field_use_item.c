@@ -3,6 +3,7 @@
 #include "constants/items.h"
 #include "constants/sndseq.h"
 
+#include "field/fieldmap.h"
 #include "fielddata/script/scr_seq/event_D24R0202.h"
 #include "fielddata/script/scr_seq/event_D24R0206.h"
 #include "msgdata/msg.naix"
@@ -25,6 +26,7 @@
 #include "party_menu.h"
 #include "render_window.h"
 #include "save_arrays.h"
+#include "screen_fade.h"
 #include "script.h"
 #include "sound_02004A44.h"
 #include "sound_radio.h"
@@ -33,7 +35,6 @@
 #include "system.h"
 #include "task.h"
 #include "text.h"
-#include "unk_0200FA24.h"
 #include "unk_0203DB6C.h"
 #include "unk_02054648.h"
 #include "unk_02062108.h"
@@ -499,18 +500,18 @@ static BOOL Task_PrintRegisteredKeyItemUseMessage(TaskManager *taskManager) {
 
     switch (env->state) {
     case 0:
-        fieldSystem->unkD2_6 = TRUE;
+        fieldSystem->textbox_open = TRUE;
         MapObjectManager_PauseAllMovement(fieldSystem->mapObjectManager);
-        sub_0205B514(fieldSystem->bgConfig, &env->window, 3);
+        DialogBox_AddWindowToLayer3(fieldSystem->bgConfig, &env->window, GF_BG_LYR_MAIN_3);
         options = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);
-        sub_0205B564(&env->window, options);
-        env->printerId = sub_0205B5B4(&env->window, env->strbuf, options, TRUE);
+        DialogBox_LoadFrame(&env->window, options);
+        env->printerId = DialogBox_PrintMessage(&env->window, env->strbuf, options, TRUE);
         env->state++;
         break;
     case 1:
-        if (IsPrintFinished(env->printerId) == TRUE) {
+        if (DialogBox_IsPrintFinished(env->printerId) == TRUE) {
             if ((gSystem.newKeys & (PAD_BUTTON_A | PAD_BUTTON_B | PAD_KEY_UP | PAD_KEY_DOWN | PAD_KEY_LEFT | PAD_KEY_RIGHT)) || (gSystem.simulatedInputs & PAD_BUTTON_A)) {
-                fieldSystem->unkD2_6 = FALSE;
+                fieldSystem->textbox_open = FALSE;
                 ClearFrameAndWindow2(&env->window, 0);
                 env->state++;
             }
@@ -827,7 +828,7 @@ static BOOL Task_RegisteredItem_GoToApp(TaskManager *taskManager) {
     switch (env->state) {
     case 0:
         MapObjectManager_PauseAllMovement(fieldSystem->mapObjectManager);
-        ov01_021E636C(0);
+        FieldMap_FadeScreen(FADE_TYPE_BRIGHTNESS_OUT);
         env->state = 1;
         break;
     case 1:
@@ -855,7 +856,7 @@ static BOOL Task_RegisteredItem_GoToApp(TaskManager *taskManager) {
     case 4:
         if (sub_020505C8(fieldSystem)) {
             MapObjectManager_PauseAllMovement(fieldSystem->mapObjectManager);
-            ov01_021E636C(1);
+            FieldMap_FadeScreen(FADE_TYPE_BRIGHTNESS_IN);
             env->state = 5;
         }
         break;

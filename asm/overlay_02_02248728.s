@@ -194,7 +194,7 @@ _0224887C:
 	cmp r2, r1
 	beq _02248892
 	ldr r0, [r0, #4]
-	bl sub_0200AEB0
+	bl SpriteTransfer_DeleteCharTransferTask
 _02248892:
 	ldrb r0, [r5]
 	add r6, r6, #1
@@ -218,7 +218,7 @@ _022488A8:
 	cmp r2, r1
 	beq _022488BE
 	ldr r0, [r0, #4]
-	bl sub_0200B0A8
+	bl SpriteTransfer_DeletePlttTransferTask
 _022488BE:
 	ldrb r0, [r5, #1]
 	add r6, r6, #1
@@ -394,7 +394,7 @@ _02248A04:
 	lsl r1, r2, #3
 	add r0, r0, r1
 	ldr r0, [r0, #4]
-	bl sub_0200ADA4
+	bl SpriteTransfer_CreateCharTransferTask_AllocAtEnd
 	pop {r4, r5, r6, pc}
 _02248A16:
 	add r2, r2, #1
@@ -517,7 +517,7 @@ _02248ADC:
 	lsl r1, r2, #3
 	add r0, r0, r1
 	ldr r0, [r0, #4]
-	bl sub_0200B00C
+	bl SpriteTransfer_CreatePlttTransferTask
 	pop {r4, r5, r6, pc}
 _02248AEE:
 	add r2, r2, #1
@@ -3061,7 +3061,7 @@ _02249D72:
 	ldr r0, [r5, r7]
 	cmp r0, #0
 	beq _02249D7C
-	bl sub_0200ADA4
+	bl SpriteTransfer_CreateCharTransferTask_AllocAtEnd
 _02249D7C:
 	add r4, r4, #1
 	add r5, r5, #4
@@ -3075,7 +3075,7 @@ _02249D8C:
 	ldr r0, [r4, r7]
 	cmp r0, #0
 	beq _02249D96
-	bl sub_0200B00C
+	bl SpriteTransfer_CreatePlttTransferTask
 _02249D96:
 	add r5, r5, #1
 	add r4, r4, #4
@@ -3196,7 +3196,7 @@ ov02_02249E58: ; 0x02249E58
 	ldr r1, [r4, r1]
 	cmp r1, #0
 	bne _02249E8A
-	bl sub_0200ADA4
+	bl SpriteTransfer_CreateCharTransferTask_AllocAtEnd
 	ldr r0, _02249E8C ; =ov02_02249E90
 	add r1, r4, #0
 	mov r2, #0x80
@@ -3405,7 +3405,7 @@ ov02_02249FD4: ; 0x02249FD4
 	strh r0, [r2, #6]
 	mov r0, #0
 	mov r1, #1
-	bl sub_0205B4EC
+	bl FieldMessage_LoadTextPalettes
 	mov r0, #8
 	mov r1, #1
 	bl GfGfx_EngineATogglePlanes
@@ -3441,7 +3441,7 @@ ov02_0224A028: ; 0x0224A028
 	strh r0, [r2, #6]
 	mov r0, #0
 	mov r1, #1
-	bl sub_0205B4EC
+	bl FieldMessage_LoadTextPalettes
 	mov r0, #8
 	mov r1, #1
 	bl GfGfx_EngineATogglePlanes
@@ -3713,7 +3713,7 @@ _0224A294:
 	ldr r0, [r5, r7]
 	cmp r0, #0
 	beq _0224A29E
-	bl sub_0200AEB0
+	bl SpriteTransfer_DeleteCharTransferTask
 _0224A29E:
 	add r4, r4, #1
 	add r5, r5, #4
@@ -3727,7 +3727,7 @@ _0224A2AE:
 	ldr r0, [r4, r7]
 	cmp r0, #0
 	beq _0224A2B8
-	bl sub_0200B0A8
+	bl SpriteTransfer_DeletePlttTransferTask
 _0224A2B8:
 	add r5, r5, #1
 	add r4, r4, #4
@@ -4494,7 +4494,7 @@ ov02_0224A834: ; 0x0224A834
 	ldr r0, [r0, r1]
 	mov r1, #3
 	bl SpriteResourceCollection_Find
-	bl sub_0200AF00
+	bl SpriteTransfer_GetCharProxy
 	mov r1, #1
 	bl NNS_G2dGetImageLocation
 	mov r1, #0x32
@@ -4541,7 +4541,7 @@ ov02_0224A88C: ; 0x0224A88C
 	ldr r0, [r5, r0]
 	mov r1, #3
 	bl SpriteResourceCollection_Find
-	bl sub_0200AF00
+	bl SpriteTransfer_GetCharProxy
 	add r6, r0, #0
 	mov r0, #0x1a
 	lsl r0, r0, #4
@@ -4574,7 +4574,7 @@ ov02_0224A8D4: ; 0x0224A8D4
 	mov r1, #3
 	bl SpriteResourceCollection_Find
 	add r4, r0, #0
-	bl sub_0200AEB0
+	bl SpriteTransfer_DeleteCharTransferTask
 	mov r0, #0x67
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -4611,7 +4611,7 @@ _0224A922:
 	mov r1, #3
 	bl SpriteResourceCollection_Find
 	add r4, r0, #0
-	bl sub_0200B0A8
+	bl SpriteTransfer_DeletePlttTransferTask
 	mov r0, #0x1a
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
@@ -7015,7 +7015,7 @@ PokecenterAnimCreate: ; 0x0224BB18
 	bl sub_02054DC8
 	ldr r1, [sp, #4]
 	add r0, sp, #8
-	bl ov01_021F3B0C
+	bl MapProp_GetTranslation
 	add r3, sp, #8
 	ldmia r3!, {r0, r1}
 	add r2, r4, #0
@@ -7145,7 +7145,7 @@ _0224BC30:
 	ldr r1, [r6, #0x58]
 	mov r2, #0x10
 	mov r3, #0x6b
-	bl ov01_021E8DE8
+	bl MapPropOneShotAnimationManager_LoadPropAnimations
 	add r0, r6, #0
 	mov r1, #0x25
 	add r2, sp, #0x18
@@ -7156,7 +7156,7 @@ _0224BC30:
 	bl GF_AssertFail
 _0224BC66:
 	ldr r0, [sp, #0x18]
-	bl ov01_021F3B38
+	bl MapProp_GetRenderSurface
 	add r5, r0, #0
 	ldr r0, [r6, #0x34]
 	bl ov01_021FB9E0
@@ -7172,7 +7172,7 @@ _0224BC66:
 	ldr r1, [r6, #0x58]
 	mov r2, #0x20
 	mov r3, #0x25
-	bl ov01_021E8DE8
+	bl MapPropOneShotAnimationManager_LoadPropAnimations
 	ldrb r0, [r4, #0xf]
 	add r0, r0, #1
 	strb r0, [r4, #0xf]
@@ -7217,7 +7217,7 @@ _0224BC98:
 	mov r1, #0x6b
 	add r2, sp, #0x28
 	add r3, sp, #0x1c
-	bl ov01_021F3C0C
+	bl MapPropManager_LoadOne
 	ldrb r1, [r4, #0xd]
 	add r1, r4, r1
 	strb r0, [r1, #0x10]
@@ -7250,13 +7250,13 @@ _0224BD1E:
 	add r0, #0x9c
 	ldrb r1, [r4, #0x10]
 	ldr r0, [r0]
-	bl ov01_021F3B60
-	bl ov01_021F3B38
+	bl MapPropManager_GetMapPropByIndex_Checked_RequireActive
+	bl MapProp_GetRenderSurface
 	add r3, r0, #0
 	ldr r0, [r6, #0x58]
 	mov r1, #0x10
 	mov r2, #0
-	bl ov01_021E8E40
+	bl MapPropOneShotAnimationManager_SetAnimationRenderObj
 	ldrb r0, [r4, #0xf]
 	add r0, r0, #1
 	strb r0, [r4, #0xf]
@@ -7265,11 +7265,11 @@ _0224BD42:
 	ldr r0, [r6, #0x58]
 	mov r1, #0x10
 	mov r2, #0
-	bl ov01_021E8E70
+	bl MapPropOneShotAnimationManager_PlayAnimation
 	ldr r0, [r6, #0x58]
 	mov r1, #0x20
 	mov r2, #0
-	bl ov01_021E8E70
+	bl MapPropOneShotAnimationManager_PlayAnimation
 	ldr r0, _0224BDE4 ; =SEQ_ME_ASA
 	bl PlayFanfare
 	ldrb r0, [r4, #0xf]
@@ -7279,12 +7279,12 @@ _0224BD42:
 _0224BD64:
 	ldr r0, [r6, #0x58]
 	mov r1, #0x10
-	bl ov01_021E8F10
+	bl MapPropOneShotAnimationManager_IsAnimationLoopFinished
 	cmp r0, #0
 	beq _0224BDCC
 	ldr r0, [r6, #0x58]
 	mov r1, #0x20
-	bl ov01_021E8F10
+	bl MapPropOneShotAnimationManager_IsAnimationLoopFinished
 	cmp r0, #0
 	beq _0224BDCC
 	bl IsFanfarePlaying
@@ -7293,11 +7293,11 @@ _0224BD64:
 	ldr r0, [r6, #0x54]
 	ldr r1, [r6, #0x58]
 	mov r2, #0x20
-	bl ov01_021E8ED0
+	bl MapPropOneShotAnimationManager_UnloadAnimation
 	ldr r0, [r6, #0x54]
 	ldr r1, [r6, #0x58]
 	mov r2, #0x10
-	bl ov01_021E8ED0
+	bl MapPropOneShotAnimationManager_UnloadAnimation
 	ldrb r0, [r4, #0xc]
 	mov r5, #0
 	cmp r0, #0
@@ -7308,7 +7308,7 @@ _0224BDA0:
 	add r1, #0x9c
 	ldrb r0, [r0, #0x10]
 	ldr r1, [r1]
-	bl ov01_021F36DC
+	bl MapPropManager_RemoveMapPropByIndex
 	add r0, r5, #1
 	lsl r0, r0, #0x18
 	lsr r5, r0, #0x18
@@ -7434,7 +7434,7 @@ _0224BE8A:
 	bl GF_AssertFail
 _0224BE9E:
 	ldr r0, [sp, #0x18]
-	bl ov01_021F3B38
+	bl MapProp_GetRenderSurface
 	add r5, r0, #0
 	ldr r0, [r6, #0x34]
 	bl ov01_021FB9E0
@@ -7451,7 +7451,7 @@ _0224BE9E:
 	str r0, [sp, #0x14]
 	ldr r0, [r6, #0x54]
 	ldr r1, [r6, #0x58]
-	bl ov01_021E8DE8
+	bl MapPropOneShotAnimationManager_LoadPropAnimations
 	ldrb r0, [r4, #2]
 	add r0, r0, #1
 	strb r0, [r4, #2]
@@ -7472,7 +7472,7 @@ _0224BEE8:
 	ldrb r2, [r4, #1]
 	ldr r0, [r6, #0x58]
 	mov r1, #1
-	bl ov01_021E8E70
+	bl MapPropOneShotAnimationManager_PlayAnimation
 	ldr r0, _0224BF50 ; =SEQ_SE_DP_ELEBETA2
 	bl PlaySE
 	ldrb r0, [r4, #2]
@@ -7482,7 +7482,7 @@ _0224BEE8:
 _0224BF00:
 	ldr r0, [r6, #0x58]
 	mov r1, #1
-	bl ov01_021E8F10
+	bl MapPropOneShotAnimationManager_IsAnimationLoopFinished
 	cmp r0, #0
 	beq _0224BF48
 	ldr r0, _0224BF50 ; =SEQ_SE_DP_ELEBETA2
@@ -7493,7 +7493,7 @@ _0224BF00:
 	ldr r0, [r6, #0x54]
 	ldr r1, [r6, #0x58]
 	mov r2, #1
-	bl ov01_021E8ED0
+	bl MapPropOneShotAnimationManager_UnloadAnimation
 	ldrb r0, [r4, #2]
 	add r0, r0, #1
 	strb r0, [r4, #2]
@@ -7544,10 +7544,10 @@ ov02_0224BF58: ; 0x0224BF58
 	bl ov01_021FB9E0
 	add r6, r0, #0
 	ldr r0, [sp, #0x24]
-	bl ov01_021F3B38
+	bl MapProp_GetRenderSurface
 	add r4, r0, #0
 	ldr r0, [sp, #0x24]
-	bl ov01_021F3B3C
+	bl MapProp_GetResModel
 	str r4, [sp]
 	str r0, [sp, #4]
 	str r6, [sp, #8]
@@ -7561,7 +7561,7 @@ ov02_0224BF58: ; 0x0224BF58
 	ldr r1, [r5, #0x58]
 	ldr r3, [sp, #0x20]
 	add r2, r7, #0
-	bl ov01_021E8DE8
+	bl MapPropOneShotAnimationManager_LoadPropAnimations
 	add sp, #0x28
 	pop {r3, r4, r5, r6, r7, pc}
 _0224BFB4:
@@ -7574,22 +7574,22 @@ _0224BFBC: .word ov02_022536E8
 
 	thumb_func_start ov02_0224BFC0
 ov02_0224BFC0: ; 0x0224BFC0
-	ldr r3, _0224BFC8 ; =ov01_021E8E70
+	ldr r3, _0224BFC8 ; =MapPropOneShotAnimationManager_PlayAnimation
 	ldr r0, [r0, #0x58]
 	mov r2, #0
 	bx r3
 	.balign 4, 0
-_0224BFC8: .word ov01_021E8E70
+_0224BFC8: .word MapPropOneShotAnimationManager_PlayAnimation
 	thumb_func_end ov02_0224BFC0
 
 	thumb_func_start ov02_0224BFCC
 ov02_0224BFCC: ; 0x0224BFCC
-	ldr r3, _0224BFD4 ; =ov01_021E8E70
+	ldr r3, _0224BFD4 ; =MapPropOneShotAnimationManager_PlayAnimation
 	ldr r0, [r0, #0x58]
 	mov r2, #1
 	bx r3
 	.balign 4, 0
-_0224BFD4: .word ov01_021E8E70
+_0224BFD4: .word MapPropOneShotAnimationManager_PlayAnimation
 	thumb_func_end ov02_0224BFCC
 
 	thumb_func_start CreateFieldEscapeRopeTaskEnv
@@ -9430,7 +9430,7 @@ ov02_0224CDB0: ; 0x0224CDB0
 	bl sub_02054DC8
 	ldr r1, [sp, #4]
 	add r0, sp, #8
-	bl ov01_021F3B0C
+	bl MapProp_GetTranslation
 	add r3, sp, #8
 	ldmia r3!, {r0, r1}
 	add r2, r4, #0
@@ -9530,7 +9530,7 @@ _0224CE90:
 	ldr r1, [r6, #0x58]
 	mov r2, #0x10
 	mov r3, #0x6b
-	bl ov01_021E8DE8
+	bl MapPropOneShotAnimationManager_LoadPropAnimations
 	ldrb r0, [r4, #0xf]
 	add r0, r0, #1
 	strb r0, [r4, #0xf]
@@ -9575,7 +9575,7 @@ _0224CEBA:
 	mov r1, #0x6b
 	add r2, sp, #0x24
 	add r3, sp, #0x18
-	bl ov01_021F3C0C
+	bl MapPropManager_LoadOne
 	ldrb r1, [r4, #0xd]
 	add r1, r4, r1
 	strb r0, [r1, #0x10]
@@ -9608,13 +9608,13 @@ _0224CF40:
 	add r0, #0x9c
 	ldrb r1, [r4, #0x10]
 	ldr r0, [r0]
-	bl ov01_021F3B60
-	bl ov01_021F3B38
+	bl MapPropManager_GetMapPropByIndex_Checked_RequireActive
+	bl MapProp_GetRenderSurface
 	add r3, r0, #0
 	ldr r0, [r6, #0x58]
 	mov r1, #0x10
 	mov r2, #0
-	bl ov01_021E8E40
+	bl MapPropOneShotAnimationManager_SetAnimationRenderObj
 	ldrb r0, [r4, #0xf]
 	add r0, r0, #1
 	strb r0, [r4, #0xf]
@@ -9623,7 +9623,7 @@ _0224CF64:
 	ldr r0, [r6, #0x58]
 	mov r1, #0x10
 	mov r2, #0
-	bl ov01_021E8E70
+	bl MapPropOneShotAnimationManager_PlayAnimation
 	ldrb r0, [r4, #0xf]
 	add r0, r0, #1
 	strb r0, [r4, #0xf]
@@ -9631,13 +9631,13 @@ _0224CF64:
 _0224CF76:
 	ldr r0, [r6, #0x58]
 	mov r1, #0x10
-	bl ov01_021E8F10
+	bl MapPropOneShotAnimationManager_IsAnimationLoopFinished
 	cmp r0, #0
 	beq _0224CFC0
 	ldr r0, [r6, #0x54]
 	ldr r1, [r6, #0x58]
 	mov r2, #0x10
-	bl ov01_021E8ED0
+	bl MapPropOneShotAnimationManager_UnloadAnimation
 	ldrb r0, [r4, #0xc]
 	mov r5, #0
 	cmp r0, #0
@@ -9648,7 +9648,7 @@ _0224CF94:
 	add r1, #0x9c
 	ldrb r0, [r0, #0x10]
 	ldr r1, [r1]
-	bl ov01_021F36DC
+	bl MapPropManager_RemoveMapPropByIndex
 	add r0, r5, #1
 	lsl r0, r0, #0x18
 	lsr r5, r0, #0x18
@@ -15435,7 +15435,7 @@ _0224FA50:
 	ldrh r0, [r4, r0]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl IsPrintFinished
+	bl DialogBox_IsPrintFinished
 	cmp r0, #1
 	bne _0224FB28
 	ldr r1, _0224FB2C ; =0x0000086C
@@ -15617,7 +15617,7 @@ FollowMon_TryPrintInteractionMessage: ; 0x0224FB9C
 	ldr r0, [r5, #8]
 	add r1, r4, #0
 	mov r2, #3
-	bl sub_0205B514
+	bl DialogBox_AddWindowToLayer3
 	ldrh r3, [r6, #2]
 	ldr r1, [r4, #0x10]
 	add r0, r5, #0
@@ -15629,12 +15629,12 @@ FollowMon_TryPrintInteractionMessage: ; 0x0224FB9C
 	add r6, r0, #0
 	add r0, r4, #0
 	add r1, r6, #0
-	bl sub_0205B564
+	bl DialogBox_LoadFrame
 	ldr r1, [r4, #0x10]
 	add r0, r4, #0
 	add r2, r6, #0
 	mov r3, #1
-	bl sub_0205B5B4
+	bl DialogBox_PrintMessage
 	ldr r1, _0224FC04 ; =0x0000086E
 	strh r0, [r4, r1]
 	add r0, r5, #0
@@ -15668,7 +15668,7 @@ ov02_0224FC08: ; 0x0224FC08
 	ldr r0, [r5, #8]
 	add r1, r4, #0
 	mov r2, #3
-	bl sub_0205B514
+	bl DialogBox_AddWindowToLayer3
 	ldr r0, _0224FC6C ; =0x00000816
 	mov r2, #0xb
 	ldrb r0, [r4, r0]
@@ -15682,12 +15682,12 @@ ov02_0224FC08: ; 0x0224FC08
 	add r6, r0, #0
 	add r0, r4, #0
 	add r1, r6, #0
-	bl sub_0205B564
+	bl DialogBox_LoadFrame
 	ldr r1, [r4, #0x10]
 	add r0, r4, #0
 	add r2, r6, #0
 	mov r3, #1
-	bl sub_0205B5B4
+	bl DialogBox_PrintMessage
 	ldr r1, _0224FC70 ; =0x0000086E
 	strh r0, [r4, r1]
 	add r0, r5, #0
@@ -16691,7 +16691,7 @@ _02250418:
 	ldrh r0, [r1, r0]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl IsPrintFinished
+	bl DialogBox_IsPrintFinished
 	cmp r0, #1
 	bne _0225047E
 	bl IsFanfarePlaying

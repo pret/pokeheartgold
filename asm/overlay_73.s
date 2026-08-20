@@ -315,11 +315,11 @@ ov73_021E5BAC: ; 0x021E5BAC
 	mov r0, #0x6b
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
-	bl sub_0200AEB0
+	bl SpriteTransfer_DeleteCharTransferTask
 	mov r0, #0x1b
 	lsl r0, r0, #4
 	ldr r0, [r6, r0]
-	bl sub_0200B0A8
+	bl SpriteTransfer_DeletePlttTransferTask
 	mov r7, #0x5f
 	mov r4, #0
 	add r5, r6, #0
@@ -1000,11 +1000,11 @@ _021E60D8:
 	str r0, [r6, r1]
 	sub r1, #0xc
 	ldr r0, [r6, r1]
-	bl sub_0200ACF0
+	bl SpriteTransfer_CreateCharTransferTask
 	mov r0, #0x1b
 	lsl r0, r0, #4
 	ldr r0, [r6, r0]
-	bl sub_0200AF94
+	bl SpriteTransfer_CreateExtPlttTransferTask
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov73_021E6090
@@ -5263,10 +5263,10 @@ _021E81E8:
 	str r0, [r6, r1]
 	sub r1, #0xc
 	ldr r0, [r6, r1]
-	bl sub_0200ACF0
+	bl SpriteTransfer_CreateCharTransferTask
 	ldr r0, _021E82A0 ; =0x00000D38
 	ldr r0, [r6, r0]
-	bl sub_0200AF94
+	bl SpriteTransfer_CreateExtPlttTransferTask
 	ldr r0, [sp, #0x14]
 	bl NARC_Delete
 	add sp, #0x18
@@ -5533,10 +5533,10 @@ ov73_021E847C: ; 0x021E847C
 	add r6, r0, #0
 	ldr r0, _021E84C0 ; =0x00000D34
 	ldr r0, [r6, r0]
-	bl sub_0200AEB0
+	bl SpriteTransfer_DeleteCharTransferTask
 	ldr r0, _021E84C4 ; =0x00000D38
 	ldr r0, [r6, r0]
-	bl sub_0200B0A8
+	bl SpriteTransfer_DeletePlttTransferTask
 	ldr r7, _021E84C8 ; =0x00000D24
 	mov r4, #0
 	add r5, r6, #0

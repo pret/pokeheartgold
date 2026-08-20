@@ -30,7 +30,7 @@ Static main
     Object src/pokepic.o
     Object src/unk_02009D48.o
     Object src/unk_0200A090.o
-    Object src/unk_0200ACF0.o
+    Object src/sprite_transfer.o
     Object asm/unk_0200B150.o
     Object src/brightness.o
     Object src/msgdata.o
@@ -168,7 +168,7 @@ Static main
     Object src/location_backup.o
     Object src/launch_application.o
     Object src/script.o
-    Object src/fieldmap.o
+    Object src/script_manager.o
     Object src/scrcmd_c.o
     Object src/scrcmd_mart.o
     Object src/scrcmd_strbuf.o
@@ -218,7 +218,7 @@ Static main
     Object asm/unk_0205A44C.o
     Object asm/unk_0205AC88.o
     Object src/unk_0205B3DC.o
-    Object asm/text_0205B4EC.o
+    Object src/dialog_box.o
     Object src/metatile_behavior.o
     Object asm/unk_0205BB1C.o
     Object asm/unk_0205BFF0.o
@@ -486,15 +486,15 @@ Overlay OVY_0
 Overlay field
 {
     After main
-    Object asm/overlay_01_021E5900.o
-    Object src/field/overlay_01_021E66E4.o
+    Object src/field/fieldmap.o
+    Object src/field/field_3d_object_task.o
     Object src/field/field_control.o
-    Object asm/overlay_01_021E7FDC.o
-    Object asm/overlay_01_021E8744.o
+    Object src/field/field_sprite_manager.o
+    Object src/field/map_prop_animation.o
     Object asm/overlay_01_021E90C0.o
     Object asm/overlay_01_021EA6C4.o
     Object src/overlay_01_021EA824.o
-    Object asm/overlay_01_021EA8E0.o
+    Object asm/model_attributes.o
     Object asm/overlay_01_021EABA8.o
     Object asm/overlay_01_021EAF00.o
     Object asm/overlay_01_021EAFD4.o
@@ -507,8 +507,8 @@ Overlay field
     Object asm/overlay_01_021F1AFC.o
     Object asm/overlay_01_021F3114.o
     Object asm/overlay_01_021F3378.o
-    Object asm/overlay_01_021F3610.o
-    Object asm/overlay_01_021F3D38.o
+    Object src/field/map_prop_manager.o
+    Object src/field/signpost.o
     Object asm/overlay_01_021F3F50.o
     Object asm/overlay_01_021F4464.o
     Object asm/overlay_01_021F467C.o
@@ -552,14 +552,14 @@ Overlay field
     Object asm/overlay_01_022006A8.o
     Object asm/overlay_01_02200858.o
     Object src/field/scrcmd_pokemon_misc.o
-    Object src/scrcmd_move_tutor.o
+    Object src/field/scrcmd_move_tutor.o
     Object src/field/scrcmd_moneybox.o
     Object asm/overlay_01_022031C0.o
     Object asm/overlay_01_02203A18.o
     Object asm/overlay_01_02203E40.o
-    Object asm/overlay_01_02204004.o
-    Object src/field/overlay_01_apricorn_tree_anim.o
-    Object src/field/overlay_01_rock_smash_item.o
+    Object src/field/overlay_01_02204004.o
+    Object src/field/apricorn_tree_anim.o
+    Object src/field/rock_smash_item.o
     Object src/field/headbutt.o
     Object asm/overlay_01_022051EC.o
     Object asm/overlay_01_022053EC.o
@@ -822,9 +822,9 @@ Overlay OVY_44
 {
     After OVY_42
     Object src/overlay_44_0222CDAC.o
-    Object src/overlay_44_02232E9C.o
+    Object src/overlay_44_02231A14.o
+    Object src/overlay_44_02232E90.o
     Object src/overlay_44_02235340.o
-    Object asm/overlay_44.o
 }
 Overlay OVY_45
 {
@@ -1323,23 +1323,23 @@ Overlay voltorb_flip
 Overlay ds_protect
 {
     After OVY_31
-	Object lib/dsprot/dsprot_main_encrypted.o        
+	Object lib/dsprot/dsprot_main_encrypted.o
 	Object lib/dsprot/dsprot_main_decrypter_encoded.o
 	Object lib/dsprot/dsprot_main_decrypter_decoder.o
-	Object lib/dsprot/extra.o                        
-	Object lib/dsprot/integrity_encrypted.o          
-	Object lib/dsprot/integrity_decrypter_encoded.o  
-	Object lib/dsprot/integrity_decrypter_decoder.o  
-	Object lib/dsprot/encryptor_encoded.o            
-	Object lib/dsprot/encryptor_decoder.o            
-	Object lib/dsprot/mac_owner_encrypted.o          
-	Object lib/dsprot/mac_owner_decrypter_encoded.o  
-	Object lib/dsprot/rom_util_encrypted.o           
-	Object lib/dsprot/rom_util_decrypter_encoded.o   
-	Object lib/dsprot/rom_test_encrypted.o           
-	Object lib/dsprot/rom_test_decrypter_encoded.o   
-	Object lib/dsprot/coretests_decrypter_decoder.o  
-	Object lib/dsprot/rc4_encoded.o                  
+	Object lib/dsprot/extra.o
+	Object lib/dsprot/integrity_encrypted.o
+	Object lib/dsprot/integrity_decrypter_encoded.o
+	Object lib/dsprot/integrity_decrypter_decoder.o
+	Object lib/dsprot/encryptor_encoded.o
+	Object lib/dsprot/encryptor_decoder.o
+	Object lib/dsprot/mac_owner_encrypted.o
+	Object lib/dsprot/mac_owner_decrypter_encoded.o
+	Object lib/dsprot/rom_util_encrypted.o
+	Object lib/dsprot/rom_util_decrypter_encoded.o
+	Object lib/dsprot/rom_test_encrypted.o
+	Object lib/dsprot/rom_test_decrypter_encoded.o
+	Object lib/dsprot/coretests_decrypter_decoder.o
+	Object lib/dsprot/rc4_encoded.o
 	Object lib/dsprot/rc4_decoder.o
 }
 Overlay OVY_124

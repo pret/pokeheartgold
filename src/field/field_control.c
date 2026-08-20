@@ -1,14 +1,22 @@
-#include "overlay_01.h"
-#include "overlay_01_021F1AFC.h"
-#include "overlay_01_021F3114.h"
-#include "overlay_01_021F6830.h"
-#include "overlay_01_021FB5D4.h"
 #include "field/field_control.h"
+
+#include "global.h"
+
+#include "constants/badge.h"
+#include "constants/field_poison.h"
+#include "constants/game_stats.h"
+#include "constants/global_fieldmap.h"
+#include "constants/init_script_types.h"
+#include "constants/maps.h"
+#include "constants/movements.h"
+#include "constants/moves.h"
+#include "constants/player_avatar.h"
+#include "constants/std_script.h"
+
 #include "field/encounter_check.h"
 #include "overlay_2/event_cutscene.h"
-#include "overlay_2/overlay_02_gear_phone.h"
 #include "overlay_2/overlay_02_02248728.h"
-#include "overlay_04.h"
+#include "overlay_2/overlay_02_gear_phone.h"
 
 #include "bug_contest_internal.h"
 #include "catching_show.h"
@@ -25,6 +33,12 @@
 #include "map_object.h"
 #include "menu_input_state.h"
 #include "metatile_behavior.h"
+#include "overlay_01.h"
+#include "overlay_01_021F1AFC.h"
+#include "overlay_01_021F3114.h"
+#include "overlay_01_021F6830.h"
+#include "overlay_01_021FB5D4.h"
+#include "overlay_04.h"
 #include "player_avatar.h"
 #include "safari_zone.h"
 #include "save_pokegear.h"
@@ -49,17 +63,6 @@
 #include "unk_0205CB48.h"
 #include "unk_020632B0.h"
 #include "unk_0206D494.h"
-
-#include "constants/field_poison.h"
-#include "constants/game_stats.h"
-#include "constants/global_fieldmap.h"
-#include "constants/maps.h"
-#include "constants/movements.h"
-#include "constants/moves.h"
-#include "constants/player_avatar.h"
-#include "constants/std_script.h"
-
-#include "global.h"
 
 static BOOL FieldSystem_CheckSign(FieldSystem *fieldSystem);
 static u16 GetInteractedMetatileScript(FieldSystem *fieldSystem, u8 metatileBehavior);
@@ -86,7 +89,7 @@ static u8 ov01_021E7B70(FieldSystem *fieldSystem);
 static BOOL FieldSystem_MapConnection(FieldSystem *fieldSystem, int x, int z, Location *location);
 static void FieldSystem_SetMapConnection(FieldSystem *fieldSystem, int x, int z, int facingDirection);
 static void FieldSystem_TrySetMapConnection(FieldSystem *fieldSystem);
-static void ov01_021E7DFC(FieldSystem *fieldSystem, int x, int z);
+static void FieldSystem_ProcessSoundplateAtCoords(FieldSystem *fieldSystem, int x, int z);
 static u16 GetInteractedHeadbuttTreeScript(FieldSystem *fieldSystem);
 
 static void FieldInput_Clear(FieldInput *fieldInput) {
@@ -167,7 +170,7 @@ void FieldInput_Update(FieldInput *fieldInput, FieldSystem *fieldSystem, u16 new
     } else {
         fieldSystem->lastTouchMenuInput = 0;
     }
-    
+
     if (moveState == PLAYER_MOVE_STATE_END && avatarMoveState == AVATAR_MOVE_STATE_MOVING) {
         fieldInput->movement = TRUE;
     }
@@ -176,28 +179,28 @@ void FieldInput_Update(FieldInput *fieldInput, FieldSystem *fieldSystem, u16 new
     }
 
     if (facingDirection == DIR_NORTH && (PAD_KEY_UP & heldKeys)
-    || facingDirection == DIR_SOUTH && (PAD_KEY_DOWN & heldKeys)
-    || facingDirection == DIR_WEST && (PAD_KEY_LEFT & heldKeys)
-    || facingDirection == DIR_EAST && (PAD_KEY_RIGHT & heldKeys)) {
+        || facingDirection == DIR_SOUTH && (PAD_KEY_DOWN & heldKeys)
+        || facingDirection == DIR_WEST && (PAD_KEY_LEFT & heldKeys)
+        || facingDirection == DIR_EAST && (PAD_KEY_RIGHT & heldKeys)) {
         fieldInput->transitionDir = facingDirection;
     } else {
         fieldInput->transitionDir = DIR_NONE;
     }
-    
+
     fieldInput->playerDir = sub_0205DD94(fieldSystem->playerAvatar, newKeys, heldKeys);
 }
 
 int FieldInput_Process(FieldInput *fieldInput, FieldSystem *fieldSystem) {
-    if (fieldInput->unk0_D == FALSE && TryStartMapScriptByType(fieldSystem, 1) == TRUE) { // 1 is INIT_SCRIPT_ON_FRAME_TABLE in pokeplatinum.
+    if (fieldInput->unk0_D == FALSE && TryStartMapScriptByType(fieldSystem, INIT_SCRIPT_ON_FRAME_TABLE) == TRUE) {
         return 1;
     }
-    
+
     if (fieldInput->unk0_D == FALSE) {
         BOOL doublesEligible = HasEnoughAlivePokemonForDoubleBattle(SaveArray_Party_Get(fieldSystem->saveData));
         if (Save_VarsFlags_CheckHaveFollower(Save_VarsFlags_Get(fieldSystem->saveData)) == TRUE) { // Never true in HGSS, but the capability was not removed.
             doublesEligible = TRUE;
         }
-        
+
         if (TryGetSeenByNpcTrainers(fieldSystem, doublesEligible) == TRUE) {
             sub_0205CF44(fieldSystem->playerAvatar);
             MapObjectManager_PauseAllMovement(fieldSystem->mapObjectManager);
@@ -207,33 +210,33 @@ int FieldInput_Process(FieldInput *fieldInput, FieldSystem *fieldSystem) {
             return 1;
         }
     }
-    
+
     if (fieldInput->movement) {
         Save_VarsFlags_ClearStepTakenFlag(Save_VarsFlags_Get(fieldSystem->saveData));
         if (FieldSystem_ProcessStep(fieldSystem) == TRUE) {
             return 1;
         }
     }
-    
+
     if (FieldSystem_UpdateBugContest(fieldSystem)) {
         return 1;
     }
-    
+
     int playerEvent = PLAYER_EVENT_NONE;
     int direction = sub_0205DD94(fieldSystem->playerAvatar, fieldInput->newKeys, fieldInput->heldKeys);
-    
+
     if (StrengthFlagAction(Save_VarsFlags_Get(fieldSystem->saveData), 2)) {
         playerEvent |= PLAYER_EVENT_USED_STRENGTH;
     }
-    
+
     if (GetIdxOfFirstPartyMonWithMove(SaveArray_Party_Get(fieldSystem->saveData), MOVE_WATERFALL) != 0xFF) {
         playerEvent |= PLAYER_EVENT_USED_WATERFALL;
     }
-    
+
     if (ov01_021F1D94(fieldSystem, fieldSystem->playerAvatar, direction, playerEvent) == TRUE) {
         return 1;
     }
-    
+
     if (fieldInput->endMovement) {
         if (FieldSystem_CheckWildEncounter(fieldSystem)) {
             return 1;
@@ -248,9 +251,9 @@ int FieldInput_Process(FieldInput *fieldInput, FieldSystem *fieldSystem) {
         && FieldSystem_CheckSign(fieldSystem) == TRUE) {
         return 1;
     }
-    
+
     if (fieldInput->interact) {
-        LocalMapObject* mapObject;
+        LocalMapObject *mapObject;
         if (sub_0203DC64(fieldSystem, &mapObject) == TRUE) {
             if (sub_0205CF60(fieldSystem->playerAvatar) == TRUE) {
                 sub_0205CFBC(fieldSystem->playerAvatar, PlayerAvatar_GetFacingDirection(fieldSystem->playerAvatar));
@@ -283,12 +286,12 @@ int FieldInput_Process(FieldInput *fieldInput, FieldSystem *fieldSystem) {
             return 1;
         }
     }
-    
+
     if (fieldInput->mapTransition && FieldSystem_CheckMapTransition(fieldSystem, fieldInput) == TRUE) {
         FieldSystem_TrySetMapConnection(fieldSystem);
         return 1;
     }
-    
+
     if (fieldInput->registeredItem) {
         u32 registeredItemResult = UseRegisteredItemButtonInField(fieldSystem, fieldInput->registeredItem);
         if (registeredItemResult) {
@@ -296,13 +299,13 @@ int FieldInput_Process(FieldInput *fieldInput, FieldSystem *fieldSystem) {
             return registeredItemResult;
         }
     }
-    
+
     if (fieldInput->menu && FieldSystem_MapIsNotMysteryZone(fieldSystem) == TRUE) {
         PlaySE(SEQ_SE_DP_WIN_OPEN);
         StartMenu_Init(fieldSystem);
         return 2;
     }
-    
+
     if (ov02_02252334(fieldSystem)) {
         StartMapSceneScript(fieldSystem, std_revert_shaymin, NULL);
         return 1;
@@ -312,7 +315,7 @@ int FieldInput_Process(FieldInput *fieldInput, FieldSystem *fieldSystem) {
         ov01_021F6A9C(fieldSystem, 0, 0);
         return 2;
     }
-    
+
     if (fieldInput->unk0_8 && ov02_02251F20(FieldSystem_GetGearPhoneRingManager(fieldSystem))) {
         return 2;
     }
@@ -378,7 +381,7 @@ static BOOL ov01_021E6ED8() { // CheckTrainerInfo?
 }
 
 BOOL FieldInput_Process_UnionRoom(FieldInput *input, FieldSystem *fieldSystem) {
-    if (sub_02033250() & 0xFE) { // WirelessManager_GetConnectedBitmap?
+    if (sub_02033250() & 0xFE) {                     // WirelessManager_GetConnectedBitmap?
         if (ov01_021E6ED8() && sub_02037454() > 1) { // sub_02037454 == CommSys_ConnectedCount?
             StartMapSceneScript(fieldSystem, 5, NULL);
             return TRUE;
@@ -412,7 +415,7 @@ BOOL FieldInput_Process_UnionRoom(FieldInput *input, FieldSystem *fieldSystem) {
 }
 
 int FieldInput_Process_BattleTower(FieldInput *fieldInput, FieldSystem *fieldSystem) {
-    if (fieldInput->unk0_D == FALSE && TryStartMapScriptByType(fieldSystem, 1) == TRUE) {
+    if (fieldInput->unk0_D == FALSE && TryStartMapScriptByType(fieldSystem, INIT_SCRIPT_ON_FRAME_TABLE) == TRUE) {
         return 1;
     }
 
@@ -431,7 +434,7 @@ int FieldInput_Process_BattleTower(FieldInput *fieldInput, FieldSystem *fieldSys
             return 1;
         }
 
-        BG_EVENT *bgEvents = Field_GetBgEvents(fieldSystem);
+        BgEvent *bgEvents = Field_GetBgEvents(fieldSystem);
         u32 bgEventScript = GetInteractedBackgroundEventScript(fieldSystem, bgEvents, Field_GetNumBgEvents(fieldSystem));
         if (bgEventScript != 0xFFFF) {
             StartMapSceneScript(fieldSystem, bgEventScript, NULL);
@@ -469,10 +472,10 @@ static BOOL FieldSystem_CheckWildEncounter(FieldSystem *fieldSystem) {
     if (fieldSystem->encounterInhibitSteps < 0xFFFF) {
         fieldSystem->encounterInhibitSteps++;
     }
-    
+
     int x, z;
     PlayerAvatar_GetStandingTileCoords(fieldSystem, &x, &z);
-    
+
     if (Save_VarsFlags_CheckPalParkSysFlag(Save_VarsFlags_Get(fieldSystem->saveData)) == TRUE) {
         if (CatchingShow_CheckWildEncounter(fieldSystem, x, z) == TRUE) {
             sub_020511F8(fieldSystem, CatchingShow_GetBattleDataTransfer(fieldSystem)); // Encounter_NewVsPalParkTransfer?
@@ -480,20 +483,20 @@ static BOOL FieldSystem_CheckWildEncounter(FieldSystem *fieldSystem) {
         }
         return FALSE;
     }
-    
-    return (MapHeader_HasWildEncounters(fieldSystem->location->mapId) && FieldSystem_PerformLandOrSurfEncounterCheck(fieldSystem) == TRUE);
+
+    return MapHeader_HasWildEncounters(fieldSystem->location->mapId) && FieldSystem_PerformLandOrSurfEncounterCheck(fieldSystem) == TRUE;
 }
 
 static BOOL FieldSystem_CheckMapTransition(FieldSystem *fieldSystem, FieldInput *fieldInput) {
     if (fieldInput->transitionDir == DIR_NONE) {
         return FALSE;
     }
-    
+
     int x, z;
     Location nextMap;
     PlayerAvatar_GetStandingTileCoords(fieldSystem, &x, &z);
     u8 metatileBehavior = GetMetatileBehavior(fieldSystem, x, z);
-    
+
     if (MetatileBehavior_IsLadderNorth(metatileBehavior)) {
         if (fieldInput->transitionDir == DIR_NORTH && FieldSystem_MapConnection(fieldSystem, x, z, &nextMap)) {
             NewFieldTransitionEnvironment(fieldSystem, nextMap.mapId, nextMap.warpId, 0, 0, fieldInput->transitionDir, 7);
@@ -507,13 +510,13 @@ static BOOL FieldSystem_CheckMapTransition(FieldSystem *fieldSystem, FieldInput 
         }
         return FALSE;
     }
-    
+
     PlayerAvatar_GetFacingTileCoords(fieldSystem, &x, &z);
 
     if (sub_020548C0(fieldSystem, x, z) == FALSE) { // TerrainCollisionManager_CheckCollision?
         return FALSE;
     }
-    
+
     if (FieldSystem_MapConnection(fieldSystem, x, z, &nextMap) && fieldInput->transitionDir != DIR_NONE) {
         metatileBehavior = GetMetatileBehavior(fieldSystem, x, z);
 
@@ -522,7 +525,7 @@ static BOOL FieldSystem_CheckMapTransition(FieldSystem *fieldSystem, FieldInput 
             return TRUE;
         }
     }
-    
+
     PlayerAvatar_GetStandingTileCoords(fieldSystem, &x, &z);
     metatileBehavior = GetMetatileBehavior(fieldSystem, x, z);
 
@@ -551,7 +554,7 @@ static BOOL FieldSystem_CheckMapTransition(FieldSystem *fieldSystem, FieldInput 
     if (FieldSystem_MapConnection(fieldSystem, x, z, &nextMap) == FALSE) {
         return FALSE;
     }
-    
+
     u32 transNo;
     if (MetatileBehavior_IsDoor(metatileBehavior)) {
         transNo = 1;
@@ -602,9 +605,9 @@ static u16 GetInteractedMetatileScript(FieldSystem *fieldSystem, u8 metatileBeha
         return std_field_headbutt;
     } else if (MetatileBehavior_IsRockClimbInDirection(metatileBehavior, facingDirection)) {
         return std_field_rock_climb;
-    } else if (PlayerAvatar_GetState(fieldSystem->playerAvatar) != 2) {
+    } else if (PlayerAvatar_GetState(fieldSystem->playerAvatar) != PLAYER_STATE_SURFING) {
         PlayerProfile *profile = Save_PlayerData_GetProfile(fieldSystem->saveData);
-        if (Field_PlayerCanSurfOnTile(fieldSystem->playerAvatar, standingTile, metatileBehavior) && PlayerProfile_TestBadgeFlag(profile, 3) && GetIdxOfFirstPartyMonWithMove(SaveArray_Party_Get(fieldSystem->saveData), MOVE_SURF) != 0xFF) {
+        if (Field_PlayerCanSurfOnTile(fieldSystem->playerAvatar, standingTile, metatileBehavior) && PlayerProfile_TestBadgeFlag(profile, BADGE_FOG) && GetIdxOfFirstPartyMonWithMove(SaveArray_Party_Get(fieldSystem->saveData), MOVE_SURF) != 0xFF) {
             return std_field_surf;
         } else if (ov02_0224E35C(fieldSystem) && ov02_0224E4CC(metatileBehavior, ov01_021E7B70(fieldSystem))) {
             return std_safari_place_object;
@@ -616,13 +619,13 @@ static u16 GetInteractedMetatileScript(FieldSystem *fieldSystem, u8 metatileBeha
     } else if (ov02_0224E35C(fieldSystem) && ov02_0224E4DC(metatileBehavior, ov01_021E7B70(fieldSystem))) {
         return std_safari_place_object;
     }
-    
+
     if (Save_VarsFlags_CheckSafariSysFlag(Save_VarsFlags_Get(fieldSystem->saveData))) {
         if (sub_0202F620(Save_SafariZone_Get(fieldSystem->saveData)) == 0 && sub_0205BAEC(metatileBehavior)) {
             return std_safari_remove_object;
         }
     }
-    
+
     return 0xFFFF;
 }
 
@@ -633,50 +636,50 @@ static BOOL FieldSystem_ProcessStep(FieldSystem *fieldSystem) {
         ov04_02256BE4(fieldSystem, sub_0205F504(PlayerAvatar_GetMapObject(fieldSystem->playerAvatar)));
         return TRUE;
     }
-    
+
     int x = PlayerAvatar_GetXCoord(fieldSystem->playerAvatar);
     int z = PlayerAvatar_GetZCoord(fieldSystem->playerAvatar);
 
-    ov01_021E7DFC(fieldSystem, x, z);
+    FieldSystem_ProcessSoundplateAtCoords(fieldSystem, x, z);
 
     u8 metatileBehavior = GetMetatileBehavior(fieldSystem, x, z);
-    
+
     if (FieldSystem_CheckCoordEvent(fieldSystem) == TRUE) {
         return TRUE;
     }
-    
+
     if (FieldSystem_CheckTransition(fieldSystem, x, z, metatileBehavior) == TRUE) {
         FieldSystem_TrySetMapConnection(fieldSystem);
         return TRUE;
     }
-    
+
     if (PlayerAvatar_CheckForcedMovement(fieldSystem->playerAvatar)) {
         return FALSE;
     }
-    
+
     ov01_021F6830(fieldSystem, 5, 1);
     ov01_021E7A98(fieldSystem);
-    
+
     if (FieldSystem_UpdatePoison(fieldSystem) == TRUE) { // Returns TRUE if a mon survived poisoning.
         return TRUE;
     }
-    
+
     if (FieldSystem_UpdateSafari(fieldSystem) == TRUE) {
         return TRUE;
     }
-    
+
     if (FieldSystem_UpdateDaycare(fieldSystem) == TRUE) {
         return TRUE;
     }
-    
+
     if (FieldSystem_UpdateRepel(fieldSystem) == TRUE) {
         return TRUE;
     }
-    
+
     if (FieldSystem_UpdateBikeShop(fieldSystem) == TRUE) { // Never returns TRUE, as this is handled through the Pokegear.
         return TRUE;
     }
-    
+
     if (FieldSystem_UpdateFriendship(fieldSystem)) {
         FieldSystem_CalculateFriendship(fieldSystem);
     }
@@ -700,11 +703,11 @@ static BOOL FieldSystem_CheckCoordEvent(FieldSystem *fieldSystem) {
 static BOOL FieldSystem_CheckTransition(FieldSystem *fieldSystem, int x, int z, u8 metatileBehavior) {
     int facingDirection, dir;
     Location location;
-    
+
     if (FieldSystem_MapConnection(fieldSystem, x, z, &location) == FALSE) {
         return FALSE;
     }
-    
+
     if (MetatileBehavior_IsEscalatorFlipFace(metatileBehavior) == TRUE) {
         facingDirection = PlayerAvatar_GetFacingDirection(fieldSystem->playerAvatar);
         if (facingDirection == DIR_WEST) {
@@ -726,17 +729,17 @@ static BOOL FieldSystem_CheckTransition(FieldSystem *fieldSystem, int x, int z, 
         NewFieldTransitionEnvironment(fieldSystem, location.mapId, location.warpId, 0, 0, facingDirection, 2);
         return TRUE;
     }
-    
+
     if (MetatileBehavior_IsWarpEntranceNorth(metatileBehavior) || MetatileBehavior_IsWarpNorth(metatileBehavior)) {
         sub_02055CD8(fieldSystem, location.mapId, location.warpId, 0, 0, 0);
         return TRUE;
     }
-    
+
     if (MetatileBehavior_IsWarpPanel(metatileBehavior)) {
         sub_02053E08(fieldSystem, location.mapId, location.warpId); // FieldSystem_StartMapChangeWarpTask
         return TRUE;
     }
-    
+
     if (MetatileBehavior_IsLadderDown(metatileBehavior)) {
         NewFieldTransitionEnvironment(fieldSystem, location.mapId, location.warpId, 0, 0, 0, 8);
         return TRUE;
@@ -785,14 +788,14 @@ static void FieldSystem_CalculateFriendship(FieldSystem *fieldSystem) {
 
 static BOOL FieldSystem_UpdatePoison(FieldSystem *fieldSystem) {
     Party *party = SaveArray_Party_Get(fieldSystem->saveData);
-    
+
     u16 *stepCounter = LocalFieldData_GetPoisonStepCounter(Save_LocalFieldData_Get(fieldSystem->saveData));
     (*stepCounter)++;
     *stepCounter %= 4;
     if (*stepCounter) {
         return FALSE;
     }
-    
+
     switch (ApplyPoisonStep(party, MapHeader_GetMapSec(fieldSystem->location->mapId))) {
     case FIELD_POISON_NONE:
         return FALSE;
@@ -812,7 +815,7 @@ static BOOL FieldSystem_UpdateSafari(FieldSystem *fieldSystem) {
     if (Save_VarsFlags_CheckSafariSysFlag(Save_VarsFlags_Get(fieldSystem->saveData)) == FALSE) {
         return FALSE;
     }
-    
+
     if (*LocalFieldData_GetSafariBallsCounter(Save_LocalFieldData_Get(fieldSystem->saveData)) == 0) {
         StartMapSceneScript(fieldSystem, std_safari_balls_out, NULL);
         return TRUE;
@@ -822,21 +825,21 @@ static BOOL FieldSystem_UpdateSafari(FieldSystem *fieldSystem) {
 
 static BOOL FieldSystem_UpdateBikeShop(FieldSystem *fieldSystem) {
     PhoneCallPersistentState *phoneCallPersistentState = SaveData_GetPhoneCallPersistentState(fieldSystem->saveData);
-    if (Save_VarsFlags_CheckFlagInArray(Save_VarsFlags_Get(fieldSystem->saveData), FLAG_SYS_GOT_BIKE_SHOP_CALL) == FALSE 
-    && PhoneCallPersistentState_CheckCallTriggerFlag(phoneCallPersistentState, CALL_TRIGGER_BIKE_SHOP_STEPS) == FALSE
-    && GameStats_GetCapped(Save_GameStats_Get(fieldSystem->saveData), GAME_STAT_STEPS_BIKED) >= 1024) {
+    if (Save_VarsFlags_CheckFlagInArray(Save_VarsFlags_Get(fieldSystem->saveData), FLAG_SYS_GOT_BIKE_SHOP_CALL) == FALSE
+        && PhoneCallPersistentState_CheckCallTriggerFlag(phoneCallPersistentState, CALL_TRIGGER_BIKE_SHOP_STEPS) == FALSE
+        && GameStats_GetCapped(Save_GameStats_Get(fieldSystem->saveData), GAME_STAT_STEPS_BIKED) >= 1024) {
         sub_02092E14(FieldSystem_GetGearPhoneRingManager(fieldSystem), 2, 1);
         return FALSE;
     }
     return FALSE;
 }
 
-static BOOL FieldSystem_UpdateBugContest(FieldSystem* fieldSystem) {
-    BugContest* bugContest = FieldSystem_BugContest_Get(fieldSystem);
+static BOOL FieldSystem_UpdateBugContest(FieldSystem *fieldSystem) {
+    BugContest *bugContest = FieldSystem_BugContest_Get(fieldSystem);
     if (Save_VarsFlags_CheckBugContestFlag(Save_VarsFlags_Get(fieldSystem->saveData)) == 0) {
         return FALSE;
     }
-    
+
     if (bugContest->elapsed_time >= 20) {
         StartMapSceneScript(fieldSystem, std_bug_contest_time_up, NULL);
         return TRUE;
@@ -861,18 +864,18 @@ static void PlayerAvatar_GetFacingTileCoords(FieldSystem *fieldSystem, int *x, i
 static void ShiftFieldCoordsByCompassDirection(FieldSystem *fieldSystem, u32 facingDirection, int *x, int *z) {
     PlayerAvatar_GetStandingTileCoords(fieldSystem, x, z);
     switch (facingDirection) {
-        case DIR_NORTH:
-            (*z)--;
-            return;
-        case DIR_SOUTH:
-            (*z)++;
-            return;
-        case DIR_WEST:
-            (*x)--;
-            return;
-        case DIR_EAST:
-            (*x)++;
-            return;
+    case DIR_NORTH:
+        (*z)--;
+        return;
+    case DIR_SOUTH:
+        (*z)++;
+        return;
+    case DIR_WEST:
+        (*x)--;
+        return;
+    case DIR_EAST:
+        (*x)++;
+        return;
     }
 }
 
@@ -894,13 +897,12 @@ static u8 ov01_021E7B70(FieldSystem *fieldSystem) {
     return sub_020548C0(fieldSystem, x, z);
 }
 
-static inline void SetLocation(Location * location, int mapId, int warpId, int x, int z, int dir)
-{
-	location->mapId = mapId;
-	location->warpId = warpId;
-	location->x = x;
-	location->y = z;
-	location->direction = dir;
+static inline void SetLocation(Location *location, int mapId, int warpId, int x, int z, int dir) {
+    location->mapId = mapId;
+    location->warpId = warpId;
+    location->x = x;
+    location->y = z;
+    location->direction = dir;
 }
 
 static BOOL FieldSystem_MapConnection(FieldSystem *fieldSystem, int x, int z, Location *location) {
@@ -909,7 +911,7 @@ static BOOL FieldSystem_MapConnection(FieldSystem *fieldSystem, int x, int z, Lo
         return FALSE;
     }
 
-    const WARP_EVENT *warpEvent = Field_GetWarpEventI(fieldSystem, warpNo);
+    const WarpEvent *warpEvent = Field_GetWarpEventI(fieldSystem, warpNo);
     if (warpEvent == NULL) {
         return FALSE;
     }
@@ -935,7 +937,7 @@ static BOOL FieldSystem_MapConnection(FieldSystem *fieldSystem, int x, int z, Lo
 
 static void FieldSystem_SetMapConnection(FieldSystem *fieldSystem, int x, int z, int facingDirection) {
     Location *nextMap = LocalFieldData_GetSpecialSpawnWarpPtr(Save_LocalFieldData_Get(fieldSystem->saveData));
-    
+
     *nextMap = *fieldSystem->location;
     nextMap->direction = facingDirection;
     nextMap->x = x;
@@ -966,29 +968,57 @@ static void FieldSystem_TrySetMapConnection(FieldSystem *fieldSystem) {
     }
 }
 
-static const u8 sBGMVolume[3] = {
-    0x60,
-    0x40,
-    0x20
+enum SoundplateSoundID {
+    SOUNDPLATE_SOUND_WATER_FLOW = 0,
+    SOUNDPLATE_SOUND_WINDMILL,
+    SOUNDPLATE_SOUND_SEASHORE,
+    SOUNDPLATE_SOUND_PILLAR,
+    SOUNDPLATE_SOUND_WHIRLPOOL,
+    SOUNDPLATE_SOUND_WATERFALL,
+    SOUNDPLATE_SOUND_LAVA,
+    SOUNDPLATE_SOUND_CHEERS,
+    SOUNDPLATE_SOUND_STEAM_WHISTLE,
+    SOUNDPLATE_SOUND_SNORLAX_SNORING,
+    SOUNDPLATE_SOUND_MOTOR,
+    SOUNDPLATE_SOUND_BELLS,
+    SOUNDPLATE_SOUND_STRONG_WIND,
+    SOUNDPLATE_SOUND_ENGINE,
+    SOUNDPLATE_SOUND_FOUNTAIN,
+    SOUNDPLATE_SOUND_ELECTRIC_BARRIER,
+    SOUNDPLATE_SOUND_MAX
 };
 
-static const u8 sSoundplateVolume[16][3] = {
-    {0x40, 0x60, 0x7F},
-    {0x2E, 0x60, 0x7F},
-    {0x2E, 0x60, 0x7F},
-    {0x40, 0x60, 0x7F},
-    {0x2E, 0x40, 0x60},
-    {0x40, 0x60, 0x6C},
-    {0x2E, 0x60, 0x6C},
-    {0x2E, 0x60, 0x7F},
-    {0x2E, 0x60, 0x7F},
-    {0x2E, 0x60, 0x7F},
-    {0x2E, 0x60, 0x7F},
-    {0x2E, 0x48, 0x6C},
-    {0x2E, 0x60, 0x7F},
-    {0x2E, 0x60, 0x7F},
-    {0x40, 0x60, 0x7F},
-    {0x2E, 0x60, 0x7F}
+// This enum is meant to show how plate volume IDs are used in-game, but the code itself has no concept of 'distance'.
+enum SoundplateVolumeRange {
+    SOUNDPLATE_VOLUME_RANGE_FAR,
+    SOUNDPLATE_VOLUME_RANGE_MID,
+    SOUNDPLATE_VOLUME_RANGE_CLOSE,
+    SOUNDPLATE_VOLUME_RANGE_MAX
+};
+
+static const u8 sBGMVolume[SOUNDPLATE_VOLUME_RANGE_MAX] = {
+    [SOUNDPLATE_VOLUME_RANGE_FAR] = 96,
+    [SOUNDPLATE_VOLUME_RANGE_MID] = 64,
+    [SOUNDPLATE_VOLUME_RANGE_CLOSE] = 32
+};
+
+static const u8 sSoundplateVolume[SOUNDPLATE_SOUND_MAX][SOUNDPLATE_VOLUME_RANGE_MAX] = {
+    [SOUNDPLATE_SOUND_WATER_FLOW] = { 64, 96, 127 },
+    [SOUNDPLATE_SOUND_WINDMILL] = { 46, 96, 127 },
+    [SOUNDPLATE_SOUND_SEASHORE] = { 46, 96, 127 },
+    [SOUNDPLATE_SOUND_PILLAR] = { 64, 96, 127 },
+    [SOUNDPLATE_SOUND_WHIRLPOOL] = { 46, 64, 96  },
+    [SOUNDPLATE_SOUND_WATERFALL] = { 64, 96, 108 },
+    [SOUNDPLATE_SOUND_LAVA] = { 46, 96, 108 },
+    [SOUNDPLATE_SOUND_CHEERS] = { 46, 96, 127 },
+    [SOUNDPLATE_SOUND_STEAM_WHISTLE] = { 46, 96, 127 },
+    [SOUNDPLATE_SOUND_SNORLAX_SNORING] = { 46, 96, 127 },
+    [SOUNDPLATE_SOUND_MOTOR] = { 46, 96, 127 },
+    [SOUNDPLATE_SOUND_BELLS] = { 46, 72, 108 },
+    [SOUNDPLATE_SOUND_STRONG_WIND] = { 46, 96, 127 },
+    [SOUNDPLATE_SOUND_ENGINE] = { 46, 96, 127 },
+    [SOUNDPLATE_SOUND_FOUNTAIN] = { 64, 96, 127 },
+    [SOUNDPLATE_SOUND_ELECTRIC_BARRIER] = { 46, 96, 127 }
 };
 
 enum SoundplateSoundParams {
@@ -997,23 +1027,23 @@ enum SoundplateSoundParams {
     SOUNDPLATE_SOUND_PARAMS
 };
 
-static const u16 sSoundplateSounds[16][SOUNDPLATE_SOUND_PARAMS] = {
-    { SEQ_SE_GS_N_SESERAGI,     TRUE  }, // Water Flow
-	{ SEQ_SE_GS_N_HUUSHA,       FALSE }, // Windmill
-	{ SEQ_SE_GS_N_UMIBE,        FALSE }, // Seashore
-	{ SEQ_SE_GS_N_HASHIRA,      TRUE  }, // Pillar
-	{ SEQ_SE_GS_N_UZUSIO,       FALSE }, // Whirlpool
-	{ SEQ_SE_GS_N_TAKI,         FALSE }, // Waterfall
-	{ SEQ_SE_GS_N_YOUGAN,       TRUE  }, // Lava
-	{ SEQ_SE_GS_N_KANSEI,       FALSE }, // Cheers
-	{ SEQ_SE_GS_N_KITEKI,       FALSE }, // Steam Whistle
-	{ SEQ_SE_GS_KABIGON_IBIKI,  TRUE  }, // Snorlax's Snoring
-	{ SEQ_SE_GS_N_MOTER,        TRUE  }, // Motor
-	{ SEQ_SE_GS_N_KANE,         TRUE  }, // Bells
-	{ SEQ_SE_GS_KYOUHUU,        TRUE  }, // Strong Wind
-	{ SEQ_SE_GS_N_ENGINE,       TRUE  }, // Engine
-	{ SEQ_SE_GS_N_HUNSUI,       FALSE }, // Fountain
-	{ SEQ_SE_GS_DENGEKIBARIA,   FALSE }  // Electric Barrier
+static const u16 sSoundplateSounds[SOUNDPLATE_SOUND_MAX][SOUNDPLATE_SOUND_PARAMS] = {
+    [SOUNDPLATE_SOUND_WATER_FLOW] = { SEQ_SE_GS_N_SESERAGI,    TRUE  },
+    [SOUNDPLATE_SOUND_WINDMILL] = { SEQ_SE_GS_N_HUUSHA,      FALSE },
+    [SOUNDPLATE_SOUND_SEASHORE] = { SEQ_SE_GS_N_UMIBE,       FALSE },
+    [SOUNDPLATE_SOUND_PILLAR] = { SEQ_SE_GS_N_HASHIRA,     TRUE  },
+    [SOUNDPLATE_SOUND_WHIRLPOOL] = { SEQ_SE_GS_N_UZUSIO,      FALSE },
+    [SOUNDPLATE_SOUND_WATERFALL] = { SEQ_SE_GS_N_TAKI,        FALSE },
+    [SOUNDPLATE_SOUND_LAVA] = { SEQ_SE_GS_N_YOUGAN,      TRUE  },
+    [SOUNDPLATE_SOUND_CHEERS] = { SEQ_SE_GS_N_KANSEI,      FALSE },
+    [SOUNDPLATE_SOUND_STEAM_WHISTLE] = { SEQ_SE_GS_N_KITEKI,      FALSE },
+    [SOUNDPLATE_SOUND_SNORLAX_SNORING] = { SEQ_SE_GS_KABIGON_IBIKI, TRUE  },
+    [SOUNDPLATE_SOUND_MOTOR] = { SEQ_SE_GS_N_MOTER,       TRUE  },
+    [SOUNDPLATE_SOUND_BELLS] = { SEQ_SE_GS_N_KANE,        TRUE  },
+    [SOUNDPLATE_SOUND_STRONG_WIND] = { SEQ_SE_GS_KYOUHUU,       TRUE  },
+    [SOUNDPLATE_SOUND_ENGINE] = { SEQ_SE_GS_N_ENGINE,      TRUE  },
+    [SOUNDPLATE_SOUND_FOUNTAIN] = { SEQ_SE_GS_N_HUNSUI,      FALSE },
+    [SOUNDPLATE_SOUND_ELECTRIC_BARRIER] = { SEQ_SE_GS_DENGEKIBARIA,  FALSE }
 };
 
 static int GetLocalSoundplateID(const SoundplateStruct *soundplateStruct, int globalX, int globalZ) {
@@ -1032,11 +1062,11 @@ static int GetLocalSoundplateID(const SoundplateStruct *soundplateStruct, int gl
     return ret;
 }
 
-static BOOL ov01_021E7D58(FieldSystem *fieldSystem, SoundplateStruct *soundplateStruct, int soundplateID) {
+static BOOL FieldSystem_SoundplateIsActive(FieldSystem *fieldSystem, SoundplateStruct *soundplateStruct, int soundplateID) {
     SaveVarsFlags *state = Save_VarsFlags_Get(fieldSystem->saveData);
     u16 sndSeq = sSoundplateSounds[soundplateStruct->soundplates[soundplateID].soundplateSoundID][0];
     Location *location = LocalFieldData_GetCurrentPosition(Save_LocalFieldData_Get(fieldSystem->saveData));
-    
+
     if (location->mapId == MAP_CIANWOOD_GYM && CheckDisabledCianwoodWaterfall(state) && sndSeq == SEQ_SE_GS_N_TAKI) {
         return FALSE;
     } else if (location->mapId == MAP_VERMILION_GYM && CheckSolvedLtSurgeGym(state) && sndSeq == SEQ_SE_GS_DENGEKIBARIA) {
@@ -1049,54 +1079,54 @@ static BOOL ov01_021E7D58(FieldSystem *fieldSystem, SoundplateStruct *soundplate
     return TRUE;
 }
 
-static void ov01_021E7DFC(FieldSystem *fieldSystem, int x, int z) {
+static void FieldSystem_ProcessSoundplateAtCoords(FieldSystem *fieldSystem, int x, int z) {
     SoundplateStruct *soundplateStruct = sub_02054874(fieldSystem, x, z);
-    
-    if (fieldSystem->unkC4 == -2) {
-        fieldSystem->unkC4 = -1;
-    } else if (fieldSystem->unkC4 == -3) {
-        fieldSystem->unkC4 = -1;
+
+    if (fieldSystem->environmentSoundState == ENVIRONMENT_SOUND_NONE_UNK2) {
+        fieldSystem->environmentSoundState = ENVIRONMENT_SOUND_NONE;
+    } else if (fieldSystem->environmentSoundState == ENVIRONMENT_SOUND_NONE_UNK3) {
+        fieldSystem->environmentSoundState = ENVIRONMENT_SOUND_NONE;
     }
-    
+
     z = GetLocalSoundplateID(soundplateStruct, x, z);
     if (z != -1) {
-        if (ov01_021E7D58(fieldSystem, soundplateStruct, z)) {
+        if (FieldSystem_SoundplateIsActive(fieldSystem, soundplateStruct, z)) {
             u8 soundplateSoundID = soundplateStruct->soundplates[z].soundplateSoundID;
-            if (soundplateSoundID < 16) {
-                if (fieldSystem->unkC4 != sSoundplateSounds[soundplateSoundID][SOUNDPLATE_SOUND_SEQ]) {
+            if (soundplateSoundID < SOUNDPLATE_SOUND_MAX) {
+                if (fieldSystem->environmentSoundState != sSoundplateSounds[soundplateSoundID][SOUNDPLATE_SOUND_SEQ]) {
                     if (sSoundplateSounds[soundplateSoundID][SOUNDPLATE_SOUND_UNK_BOOL] == TRUE) {
                         sub_02006088(sSoundplateSounds[soundplateSoundID][SOUNDPLATE_SOUND_SEQ]);
                     } else {
                         PlaySE(sSoundplateSounds[soundplateSoundID][SOUNDPLATE_SOUND_SEQ]);
                     }
                 }
-                fieldSystem->unkC4 = sSoundplateSounds[soundplateStruct->soundplates[z].soundplateSoundID][SOUNDPLATE_SOUND_SEQ];
+                fieldSystem->environmentSoundState = sSoundplateSounds[soundplateStruct->soundplates[z].soundplateSoundID][SOUNDPLATE_SOUND_SEQ];
                 u8 volumeIndex = soundplateStruct->soundplates[z].volumeIndex;
-                if (volumeIndex < 3) {
+                if (volumeIndex < SOUNDPLATE_VOLUME_RANGE_MAX) {
                     GF_SndHandleMoveVolume(0, sBGMVolume[volumeIndex], 15);
                     GF_SndHandleMoveVolume(5, sSoundplateVolume[soundplateStruct->soundplates[z].soundplateSoundID][soundplateStruct->soundplates[z].volumeIndex], 5);
                 }
-            } else if (z >= 16) {
+            } else if (z >= SOUNDPLATE_SOUND_MAX) {
                 GF_AssertFail();
             }
         }
     } else {
-        if (fieldSystem->unkC4 != -1) {
-            StopSE(fieldSystem->unkC4, 10);
+        if (fieldSystem->environmentSoundState != ENVIRONMENT_SOUND_NONE) {
+            StopSE(fieldSystem->environmentSoundState, 10);
             GF_SndHandleMoveVolume(0, 128, 15);
-            fieldSystem->unkC4 = -1;
+            fieldSystem->environmentSoundState = ENVIRONMENT_SOUND_NONE;
         }
     }
 }
 
-void ov01_021E7F00(FieldSystem *fieldSystem, BOOL arg1) {
+void FieldSystem_ProcessSoundplate(FieldSystem *fieldSystem, BOOL wipeEnvironmentSound) {
     if (fieldSystem->unkAC == 0) {
         int x = PlayerAvatar_GetXCoord(fieldSystem->playerAvatar);
         int z = PlayerAvatar_GetZCoord(fieldSystem->playerAvatar);
-        if (arg1) {
-            fieldSystem->unkC4 = -1;
+        if (wipeEnvironmentSound) {
+            fieldSystem->environmentSoundState = ENVIRONMENT_SOUND_NONE;
         }
-        ov01_021E7DFC(fieldSystem, x, z);
+        FieldSystem_ProcessSoundplateAtCoords(fieldSystem, x, z);
     }
 }
 
@@ -1111,12 +1141,12 @@ u32 ov01_021E7F54(FieldSystem *fieldSystem) {
     LocalMapObject *facingObject;
     if (sub_0203DC64(fieldSystem, &facingObject) == TRUE) {
         switch (MapObject_GetType(facingObject)) {
-            case 3:
-                return 0;
-            case 0:
-                return 1;
-            default:
-                return 1;
+        case 3:
+            return 0;
+        case 0:
+            return 1;
+        default:
+            return 1;
         }
     }
     if (GetInteractedBackgroundEventScript(fieldSystem, Field_GetBgEvents(fieldSystem), Field_GetNumBgEvents(fieldSystem)) != 0xFFFF) {

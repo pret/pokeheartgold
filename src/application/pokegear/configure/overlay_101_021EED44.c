@@ -3,7 +3,7 @@
 #include "msgdata/msg/msg_0270.h"
 
 #include "font.h"
-#include "unk_0200FA24.h"
+#include "screen_fade.h"
 
 static void PokegearConfigure_LoadAndSetSkin(PokegearConfigureAppData *configureApp);
 static void PokegearConfigure_InitBGs(PokegearConfigureAppData *configureApp);
@@ -166,7 +166,7 @@ static void PokegearConfigure_LoadAndSetSkin(PokegearConfigureAppData *configure
 BOOL PokegearConfigure_SwapSkins(PokegearConfigureAppData *configureApp) {
     switch (configureApp->substate) {
     case 0:
-        BeginNormalPaletteFade(1, 4, 4, RGB_BLACK, 6, 1, configureApp->heapId);
+        BeginNormalPaletteFade(FADE_MAIN_THEN_SUB, FADE_TYPE_UPWARD_OUT, FADE_TYPE_UPWARD_OUT, RGB_BLACK, 6, 1, configureApp->heapId);
         break;
     case 1:
         if (!IsPaletteFadeFinished()) {
@@ -175,7 +175,7 @@ BOOL PokegearConfigure_SwapSkins(PokegearConfigureAppData *configureApp) {
         PokegearConfigure_LoadAndSetSkin(configureApp);
         break;
     case 2:
-        BeginNormalPaletteFade(2, 3, 3, RGB_BLACK, 6, 1, configureApp->heapId);
+        BeginNormalPaletteFade(FADE_SUB_THEN_MAIN, FADE_TYPE_DOWNWARD_IN, FADE_TYPE_DOWNWARD_IN, RGB_BLACK, 6, 1, configureApp->heapId);
         break;
     case 3:
         if (!IsPaletteFadeFinished()) {

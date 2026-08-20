@@ -1,15 +1,14 @@
 #include "unk_020971F8.h"
 
-#include "global.h"
-
 #include "unk_02033AE0.h"
+#include "unk_0203AC88.h"
 
 void sub_020971F8(void *arg0) {
     sub_0203410C(sub_0203AC88(), sub_0203AC90(), arg0);
 }
 
 void sub_02097214(void) {
-    sub_0203410C(sub_0203AC88(), sub_0203AC90(), 0);
+    sub_0203410C(sub_0203AC88(), sub_0203AC90(), NULL);
 }
 
 s32 sub_0209722C(void) {

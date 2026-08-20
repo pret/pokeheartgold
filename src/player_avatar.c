@@ -180,7 +180,7 @@ PlayerAvatar *PlayerAvatar_CreateWithActiveMapObject(MapObjectManager *manager, 
     return avatar;
 }
 
-void sub_0205C46C(PlayerAvatar *avatar) {
+void PlayerAvatar_InitMapFeatures(PlayerAvatar *avatar) {
     LocalMapObject *mapObject = PlayerAvatar_GetMapObject(avatar);
     GF_ASSERT(mapObject != NULL);
     MapObject_GetManager(mapObject);

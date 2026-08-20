@@ -4,6 +4,7 @@
 #include "constants/map_sections.h"
 #include "constants/moves.h"
 
+#include "field/field_control.h"
 #include "msgdata/msg.naix"
 #include "msgdata/msg/msg_0066_D23R0102.h"
 #include "msgdata/msg/msg_0096_D31R0201.h"
@@ -13,7 +14,6 @@
 
 #include "bag.h"
 #include "bug_contest.h"
-#include "fieldmap.h"
 #include "follow_mon.h"
 #include "friend_group.h"
 #include "get_egg.h"
@@ -24,7 +24,6 @@
 #include "map_object.h"
 #include "map_section.h"
 #include "math_util.h"
-#include "field/field_control.h"
 #include "overlay_01_021F72DC.h"
 #include "overlay_01_021F944C.h"
 #include "overlay_02.h"
@@ -34,11 +33,12 @@
 #include "pokedex.h"
 #include "save_wifi_history.h"
 #include "scrcmd.h"
+#include "screen_fade.h"
+#include "script_manager.h"
 #include "sound_02004A44.h"
 #include "sys_vars.h"
 #include "system.h"
 #include "unk_02005D10.h"
-#include "unk_0200FA24.h"
 #include "unk_02023694.h"
 #include "unk_02030A98.h"
 #include "unk_02031B0C.h"
@@ -828,8 +828,8 @@ BOOL ScrCmd_725(ScriptContext *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_726(ScriptContext *ctx) {
-    ov01_021E7F00(ctx->fieldSystem, TRUE);
+BOOL ScrCmd_ProcessSoundplate(ScriptContext *ctx) {
+    FieldSystem_ProcessSoundplate(ctx->fieldSystem, TRUE);
     return FALSE;
 }
 

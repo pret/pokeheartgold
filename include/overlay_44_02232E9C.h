@@ -3,12 +3,12 @@
 
 #include "global.h"
 
-#include "overlay_42.h"
 #include "heap.h"
 #include "list_menu.h"
 #include "list_menu_2d.h"
 #include "main.h"
 #include "obj_char_transfer.h"
+#include "overlay_42.h"
 #include "render_window.h"
 #include "sprite.h"
 #include "unk_02009D48.h"
@@ -43,8 +43,8 @@ typedef void (*func_type_02236680)(UnkStruct_ov44_022319EC *, enum HeapID);
 typedef s32 (*func_type_0222A60C)(UnkStruct_ov44_022319EC *, s32);
 
 struct UnkStruct_ov44_02232B74 {
-    UnkStruct_ov42_02228110* unk0;
-    UnkStruct_ov42_0222903C* unk4;
+    UnkStruct_ov42_02228110 *unk0;
+    UnkStruct_ov42_0222903C *unk4;
     s16 unk8;
     u8 unkA;
     u8 unkB;
@@ -84,11 +84,11 @@ struct UnkStruct_ov44_02232DA0 {
     UnkStruct_ov44_02232B74 *unk6CC;
     UnkStruct_ov44_02232E80 unk6D0;
     UnkStruct_ov42_02227F68 *unk6E4;
-    UnkStruct_ov42_022280A8*  unk6E8;
-    UnkStruct_ov42_02228EDC* unk6EC;
+    UnkStruct_ov42_022280A8 *unk6E8;
+    UnkStruct_ov42_02228EDC *unk6EC;
     UnkStruct_ov44_02232914 unk6F0;
-    UnkStruct_ov42_022293B8* unk6F4;
-    UnkStruct_ov42_02229A40* unk6F8;
+    UnkStruct_ov42_022293B8 *unk6F4;
+    UnkStruct_ov42_02229A40 *unk6F8;
 };
 
 typedef struct UnkStruct_ov44_02231800 {
@@ -417,7 +417,7 @@ void ov44_02231054(UnkStruct_ov44_022319EC *arg0, s32 arg1, s32 arg2, s32 arg3, 
 void ov44_02231084(UnkStruct_ov44_022319EC *arg0, String *arg1, u32 arg2, s32 arg3);
 void ov44_022310C8(UnkStruct_ov44_022319EC *arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4);
 void ov44_02231148(UnkStruct_ov44_022319EC *arg0, u8 arg1, u8 arg2, u8 arg3, u8 arg4);
-s32 ov44_0223120C(u32 arg0, s32 *color);
+s32 ov44_0223120C(u32 arg0, u32 *color);
 void ov44_022312B8(UnkStruct_ov44_022319EC *arg0, Window *arg1, s32 arg2, s32 arg3, s32 arg4);
 void ov44_02231344(UnkStruct_ov44_022319EC *arg0, Window *arg1, s32 arg2, u32 arg3, u32 arg4);
 void ov44_022313C8(UnkStruct_ov44_022319EC *arg0);
@@ -497,7 +497,7 @@ void ov44_02232594(UnkStruct_ov44_02232DA0 *arg0);
 void ov44_022325A4(UnkStruct_ov44_02232DA0 *arg0, UnkStruct_ov44_02232914 arg1, s32 arg2);
 void ov44_022325F4(UnkStruct_ov44_02232DA0 *arg0);
 s32 ov44_02232604(UnkStruct_ov44_02232DA0 *arg0);
-void ov44_02232680(UnkStruct_ov44_02232DA0 *arg0, u16 *arg1, u32 arg2);
+void ov44_02232680(UnkStruct_ov44_02232DA0 *arg0, s16 *arg1, u32 arg2);
 void ov44_02232724(UnkStruct_ov44_02232DA0 *arg0, s16 *arg1);
 UnkStruct_ov44_02232B74 *ov44_02232798(UnkStruct_ov44_02232DA0 *arg0);
 void ov44_022327C8(UnkStruct_ov44_02232DA0 *arg0, UnkStruct_ov44_02232B74 *arg1, s32 arg2);
@@ -531,6 +531,6 @@ void ov44_02232E54(UnkStruct_ov44_02232E80 *arg0);
 void ov44_02232E5C(UnkStruct_ov44_02232E80 *arg0, u8 arg1);
 void ov44_02232E80(UnkStruct_ov44_02232E80 *arg0);
 UnkStruct_ov44_02232914 ov44_02232E90(s32 arg0);
-u32 *ov44_02232E9C(u32 arg0);
+const u32 *ov44_02232E9C(u32 arg0);
 
 #endif // POKEHEARTGOLD_OVY_44_02232E9C_H

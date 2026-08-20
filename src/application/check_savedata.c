@@ -15,11 +15,11 @@
 #include "msgdata.h"
 #include "render_text.h"
 #include "render_window.h"
+#include "screen_fade.h"
 #include "sound_02004A44.h"
 #include "system.h"
 #include "text.h"
 #include "unk_02005D10.h"
-#include "unk_0200FA24.h"
 
 typedef enum CheckSavedataApp_MainState {
     MAINSTATE_CHECK_SAVE_FLAGS,
@@ -284,7 +284,7 @@ static BOOL CheckSavedataApp_DoMainTask(CheckSavedataApp_Data *data) {
     case MAINSTATE_FADE_IN:
         BG_SetMaskColor(GF_BG_LYR_MAIN_0, RGB(1, 1, 27));
         BG_SetMaskColor(GF_BG_LYR_SUB_0, RGB(1, 1, 27));
-        BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 1, data->heapID);
+        BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_IN, FADE_TYPE_BRIGHTNESS_IN, RGB_BLACK, 6, 1, data->heapID);
         data->mainState = MAINSTATE_WAIT_FOR_FADE_IN;
         break;
     case MAINSTATE_WAIT_FOR_FADE_IN:
@@ -294,7 +294,7 @@ static BOOL CheckSavedataApp_DoMainTask(CheckSavedataApp_Data *data) {
         break;
     case MAINSTATE_PRINT_ERROR_MESSAGE_FADE_OUT:
         if (CheckSavedataApp_PrintMessage(data, data->msgNum, FALSE, 4) == TRUE) {
-            BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, data->heapID);
+            BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, RGB_BLACK, 6, 1, data->heapID);
             data->mainState = MAINSTATE_WAIT_FOR_FADE_OUT;
         }
         break;

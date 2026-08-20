@@ -49,7 +49,7 @@
 .public sub_02069DC8
 .public FollowMon_IsActive
 .public VEC_Subtract
-.public ov01_021E636C
+.public FieldMap_FadeScreen
 .public ov01_021E90C0
 .public ov01_021E90D4
 .public ov01_021E90DC

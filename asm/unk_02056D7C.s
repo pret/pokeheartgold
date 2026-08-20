@@ -2519,8 +2519,8 @@ _02057F9C:
 _02057FA0: .word _021D41C4
 	thumb_func_end sub_02057F80
 
-	thumb_func_start sub_02057FA4
-sub_02057FA4: ; 0x02057FA4
+	thumb_func_start CommPlayerManager_ForcePosition
+CommPlayerManager_ForcePosition: ; 0x02057FA4
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x10
 	ldr r0, _02058020 ; =_021D41C4
@@ -2582,7 +2582,7 @@ _0205801A:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _02058020: .word _021D41C4
-	thumb_func_end sub_02057FA4
+	thumb_func_end CommPlayerManager_ForcePosition
 
 	thumb_func_start sub_02058024
 sub_02058024: ; 0x02058024

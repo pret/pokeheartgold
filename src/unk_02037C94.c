@@ -70,9 +70,8 @@ void sub_02037C98(SaveData *saveData, s8 arg1) {
     if (_021D4150 == NULL) {
         GF_ASSERT(saveData);
         sub_02034D8C();
-        UnkStruct_sub_02039C6C *temp_r0 = Heap_Alloc(HEAP_ID_15, sizeof(UnkStruct_sub_02039C6C));
-        _021D4150 = temp_r0;
-        MI_CpuFill8(temp_r0, 0, sizeof(UnkStruct_sub_02039C6C));
+        _021D4150 = Heap_Alloc(HEAP_ID_15, sizeof(UnkStruct_sub_02039C6C));;
+        MI_CpuFill8(_021D4150, 0, sizeof(UnkStruct_sub_02039C6C));
         _021D4150->unk44 = 50;
         _021D4150->unk52 = 1;
         _021D4150->unk28 = saveData;
@@ -776,10 +775,10 @@ void sub_02038B3C(u8 arg0, u8 arg1, u8 *arg2) {
 
 void sub_02038B9C(u32 arg0, u32 arg1, u8 *arg2) {
     u32 i;
-    s32 var_r4 = 1;
+    BOOL var_r4 = TRUE;
     for (i = 1; i < 6; i++) {
         if (_0210F904[i] != arg2[i]) {
-            var_r4 = 0;
+            var_r4 = FALSE;
             break;
         }
     }
@@ -789,10 +788,10 @@ void sub_02038B9C(u32 arg0, u32 arg1, u8 *arg2) {
             _021D4150->unk4C = 1;
         }
     } else {
-        var_r4 = 1;
+        var_r4 = TRUE;
         for (i = 1; i < 6; i++) {
             if (_0210F914[i] != arg2[i]) {
-                var_r4 = 0;
+                var_r4 = FALSE;
                 break;
             }
         }
@@ -823,7 +822,7 @@ void sub_02038C34(void) {
 
 void sub_02038C3C(u32 arg0, s32 arg1) {
     switch (arg0) {
-    case 819:
+    case 0x333:
         if (arg1 == 15) {
             _021D4150->unk58 = (1 | _021D4150->unk58);
         }
@@ -1184,9 +1183,8 @@ BOOL sub_020393C8(void) {
 void sub_02039418(SaveData *saveData) {
     if (_021D4150 == NULL) {
         Heap_CreateAtEnd(HEAP_ID_3, HEAP_ID_15, 256);
-        UnkStruct_sub_02039C6C *temp_r0 = Heap_Alloc(HEAP_ID_15, 104);
-        _021D4150 = temp_r0;
-        MI_CpuFill8(temp_r0, 0, 104);
+        _021D4150 = Heap_Alloc(HEAP_ID_15, 104);
+        MI_CpuFill8(_021D4150, 0, 104);
         _021D4150->unk4E = 24;
         _021D4150->unk55 = 1;
         _021D4150->unk28 = saveData;
@@ -1209,9 +1207,8 @@ void sub_020394A0(SaveData *saveData) {
 
     if (_021D4150 == NULL) {
         Heap_CreateAtEnd(HEAP_ID_3, HEAP_ID_15, 256);
-        UnkStruct_sub_02039C6C *temp_r0 = Heap_Alloc(HEAP_ID_15, 104);
-        _021D4150 = temp_r0;
-        MI_CpuFill8(temp_r0, 0, 104);
+        _021D4150 = Heap_Alloc(HEAP_ID_15, 104);
+        MI_CpuFill8(_021D4150, 0, 104);
         _021D4150->unk4E = 25;
         _021D4150->unk55 = 1;
         _021D4150->unk28 = saveData;
@@ -1233,9 +1230,8 @@ void sub_020394F4(void) {
 void sub_02039528(SaveData *saveData) {
     if (_021D4150 == NULL) {
         Heap_CreateAtEnd(HEAP_ID_3, HEAP_ID_15, 256);
-        UnkStruct_sub_02039C6C *temp_r0 = Heap_Alloc(HEAP_ID_15, 104);
-        _021D4150 = temp_r0;
-        MI_CpuFill8(temp_r0, 0, 104);
+        _021D4150 = Heap_Alloc(HEAP_ID_15, 104);
+        MI_CpuFill8(_021D4150, 0, 104);
         _021D4150->unk4E = 36;
         _021D4150->unk55 = 1;
         _021D4150->unk28 = saveData;
@@ -1765,9 +1761,7 @@ void sub_02039F68(SaveWiFiHistory *arg0) {
     if (sub_02034818(0)) {
         for (int i = 0; i < temp_r7; i++) {
             if (i != sub_0203769C()) {
-                s32 temp_r4 = sub_020348A8(i);
-                s32 temp_r6 = sub_020348CC(i);
-                sub_02039FB8(arg0, temp_r4, temp_r6, PlayerProfile_GetLanguage(sub_02034818(i)));
+                sub_02039FB8(arg0, sub_020348A8(i), sub_020348CC(i), PlayerProfile_GetLanguage(sub_02034818(i)));
             }
         }
     }

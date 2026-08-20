@@ -432,11 +432,11 @@ ov34_0225D87C: ; 0x0225D87C
 	mov r0, #0x59
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
-	bl sub_0200AEB0
+	bl SpriteTransfer_DeleteCharTransferTask
 	mov r0, #0x5a
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
-	bl sub_0200B0A8
+	bl SpriteTransfer_DeletePlttTransferTask
 	mov r7, #0x55
 	mov r4, #0
 	add r5, r6, #0
@@ -617,7 +617,7 @@ ov34_0225D924: ; 0x0225D924
 	bl GfGfxLoader_LoadScrnData
 	mov r0, #4
 	mov r1, #0
-	bl sub_0205B4EC
+	bl FieldMessage_LoadTextPalettes
 	add sp, #0x80
 	pop {r3, r4, r5, pc}
 	nop
@@ -716,11 +716,11 @@ _0225DA6C:
 	str r0, [r6, r1]
 	sub r1, #0xc
 	ldr r0, [r6, r1]
-	bl sub_0200ADA4
+	bl SpriteTransfer_CreateCharTransferTask_AllocAtEnd
 	mov r0, #0x5a
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
-	bl sub_0200B00C
+	bl SpriteTransfer_CreatePlttTransferTask
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
