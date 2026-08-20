@@ -21,6 +21,7 @@ typedef struct SinjohGymmickLocalData {
 void ov04_02256F50(SinjohGymmickLocalData *localData);
 void ov04_022570EC(SinjohGymmickLocalData *localData);
 void ov04_02257148(SysTask *sysTask, void *taskData);
+BOOL ov04_02257240(SinjohGymmickLocalData_Sub014 *a0, const u8 a1, const u8 a2);
 void ov04_022572E0(Field3DModelAnimation *a0, const u8 a1, const u32 a2);
 BOOL ov04_02257308(TaskManager *taskman);
 
@@ -126,4 +127,49 @@ void ov04_022570EC(SinjohGymmickLocalData *localData) {
         }
         Field3dModel_Unload(&localData->unk_014[j].unk_00);
     }
+}
+
+void ov04_02257148(SysTask *sysTask, void *taskData) {
+    u8 i;
+    SinjohGymmickLocalData *localData = taskData;
+    int sp8[3];
+    u8 sp4[3] = { 0, 0, 0 };
+    BOOL sp0;
+    FieldSystem *fieldSystem = localData->unk_000;
+    GymmickUnion *gymmickUnion = Save_Gymmick_AssertMagic_GetData(Save_GetGymmickPtr(FieldSystem_GetSaveData(fieldSystem)), GYMMICK_SINJOH);
+
+    switch (gymmickUnion->sinjoh.choice) {
+    case 0:
+        break;
+    case 1:
+        sp4[0] = 1;
+        break;
+    case 2:
+        sp4[1] = 1;
+        break;
+    case 3:
+        sp4[2] = 1;
+        break;
+    default:
+        GF_ASSERT(FALSE);
+    }
+    for (i = 0; i < 3; ++i) {
+        sp0 = ov04_02257240(&localData->unk_014[i], 2, sp4[i]); // bug: only the result of the last call matters
+    }
+    for (i = 0; i < 3; ++i) {
+        Field3dObject_Draw(&localData->unk_014[i].unk_38);
+    }
+
+    if (sp0) {
+        localData->unk_230 = 0;
+    }
+
+    for (i = 0; i < 3; ++i) {
+        SinjohGymmickLocalData_Sub014 *r0 = &localData->unk_014[i];
+        sp8[i] = ov01_021FBF28(&r0->unk_10[0]) / FX32_ONE;
+        sp8[i] %= 30;
+    }
+    GF_ASSERT(sp8[0] == sp8[1]);
+    GF_ASSERT(sp8[1] == sp8[2]);
+    GF_ASSERT(sp8[2] == sp8[0]);
 }
