@@ -103,7 +103,7 @@ typedef struct FieldSystemUnkSub4 {
     UnkStruct_020556FC *unk18;
     HBlankSystem *hBlankSystem;
     void *unk20;
-    void *legendCutsceneCamera;
+    void *unk24;
 } FieldSystemUnkSub4;
 
 #define MAP_OBJECT_PRELOAD_SENTINEL 0xFFFF
@@ -197,7 +197,7 @@ struct FieldSystem {
     MapPropAnimationManager *mapPropAnimationManager;
     MapPropOneShotAnimationManager *mapPropOneShotAnimationManager;
     TerrainAttributes *terrainAttributes;
-    void *unk60;
+    void *unk60; // something to do with collision
     BOOL skipMapAttributes;
     Signpost *signpost;
     BOOL runningFieldMap;

@@ -11,13 +11,13 @@
 #include "script_manager.h"
 #include "sys_task_api.h"
 #include "unk_0205FD20.h"
+#include "unk_02062108.h"
 
 extern UnkLMOCallbackStruct *_020FD1F4[57];
 extern UnkLMOCallbackStruct2 *ov01_02209A38[20];
 
 extern void sub_020611DC(LocalMapObject *object);
 extern BOOL sub_02061248(FieldSystem *fieldSystem, VecFx32 *, BOOL);
-extern void MapObject_ClearHeldMovement(LocalMapObject *object);
 extern void ov01_021FA2B8(LocalMapObject *object, BOOL set);
 extern void sub_0205FD30(LocalMapObject *object);
 extern void ov01_021F92A0(LocalMapObject *object);
