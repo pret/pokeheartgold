@@ -429,7 +429,7 @@ void ov44_0223247C(UnkStruct_ov44_02231A7C *arg0) {
 }
 
 void ov44_022324B0(UnkStruct_ov44_02231A7C *arg0, enum HeapID heapID) {
-    SpriteTemplate spriteTemplate = { };
+    SpriteTemplate spriteTemplate = {};
     spriteTemplate.spriteList = arg0->unk0;
     spriteTemplate.header = &arg0->unk14C;
 
