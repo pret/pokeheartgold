@@ -3300,7 +3300,7 @@ _022398A0:
 _022398BE:
 	add r0, r5, #0
 	add r1, r4, #0
-	bl BattleSystem_GetFieldSide
+	bl BattleSystem_GetBattlerSide
 	cmp r0, #0
 	bne _022398FE
 	add r0, r5, #0

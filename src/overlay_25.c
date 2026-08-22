@@ -269,7 +269,7 @@ BOOL ScrCmd_ShowTrainerHouseIntroMessage(ScriptContext *ctx) {
 
 static BattleSetup *TrainerHouse_NewBattleSetup(FieldSystem *fieldSystem, TrainerHouseSet *set) {
     s32 i;
-    BattleSetup *setup = BattleSetup_New(HEAP_ID_FIELD2, BATTLE_TYPE_TRAINER | BATTLE_TYPE_FRONTIER | BATTLE_TYPE_13);
+    BattleSetup *setup = BattleSetup_New(HEAP_ID_FIELD2, BATTLE_TYPE_TRAINER | BATTLE_TYPE_FRONTIER | BATTLE_TYPE_TRAINER_HOUSE);
     SaveData *saveData = fieldSystem->saveData;
     Party *party = SaveArray_Party_Get(saveData);
     sub_02051D18(setup, fieldSystem, saveData, fieldSystem->location->mapId, fieldSystem->bagCursor, fieldSystem->unkB0);

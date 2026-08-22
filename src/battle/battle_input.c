@@ -4607,5 +4607,5 @@ static void BattleInput_DeleteBugContestGraphics(BattleInput *battleInput) {
 
 static BOOL BattleSystem_IsInFrontier(BattleSystem *battleSystem) {
     int battleType = BattleSystem_GetBattleType(battleSystem);
-    return (battleType & BATTLE_TYPE_FRONTIER) && !(battleType & BATTLE_TYPE_13);
+    return (battleType & BATTLE_TYPE_FRONTIER) && !(battleType & BATTLE_TYPE_TRAINER_HOUSE);
 }
