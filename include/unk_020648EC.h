@@ -5,6 +5,6 @@
 
 void Gymmick_Init(FieldSystem *fieldSystem);
 void Gymmick_Free(FieldSystem *fieldSystem);
-BOOL Gymmick_CheckCollision(FieldSystem *fieldSystem, u32 tileX, u32 tileZ, u32 height, u32 isColliding);
+BOOL Gymmick_CheckCollision(FieldSystem *fieldSystem, u32 tileX, u32 tileZ, u32 height, BOOL *isColliding);
 
 #endif // POKEHEARTGOLD_UNK_020648EC_H

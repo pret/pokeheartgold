@@ -157,7 +157,7 @@ static void ov03_02256BA8(FieldSystem *fieldSystem, u8 index) {
     if (unkC0_SubC == NULL) {
         GF_AssertFail();
     } else {
-        MapPropAnimationManager_AddAnimationToRenderObj(modelID, sub_020669B4(Save_VarsFlags_Get(fieldSystem->saveData), index), 1, &unkC0_SubC->renderObj, fieldSystem->mapPropAnimationManager); 
+        MapPropAnimationManager_AddAnimationToRenderObj(modelID, sub_020669B4(Save_VarsFlags_Get(fieldSystem->saveData), index), 1, &unkC0_SubC->renderObj, fieldSystem->mapPropAnimationManager);
     }
 }
 

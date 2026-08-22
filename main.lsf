@@ -590,7 +590,15 @@ Overlay OVY_3
 Overlay OVY_4
 {
     After OVY_2
-    Object asm/overlay_04.o
+    Object src/field/gymmick/violet.o
+    Object src/field/gymmick/azalea.o
+    Object src/field/gymmick/ecruteak.o
+    Object src/field/gymmick/blackthorn.o
+    Object src/field/gymmick/cianwood.o
+    Object src/field/gymmick/vermilion.o
+    Object src/field/gymmick/fuchsia.o
+    Object src/field/gymmick/viridian.o
+    Object src/field/gymmick/sinjoh.o
 }
 Overlay OVY_5
 {

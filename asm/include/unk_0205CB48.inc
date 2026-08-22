@@ -120,4 +120,4 @@
 .public ov01_021F2EDC
 .public ov01_021F2F24
 .public ov01_02205990
-.public ov04_022566EC
+.public FuchsiaGymmick_CheckCollision

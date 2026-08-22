@@ -605,7 +605,7 @@ static void ov01_021E6220(FieldSystem *fieldSystem) {
 
     // Resembles NNS_G3dGlbSetProjectionMtx(), except this has no NNS_G3D_NULL_ASSERT func,
     // So static below is either a diff func or that one is incorrect?
-    MIi_CpuCopyFast((u32 *)&v1, (u32 *)&NNS_G3dGlb.projMtx, sizeof(MtxFx44));
+    MI_CpuCopyFast((u32 *)&v1, (u32 *)&NNS_G3dGlb.projMtx, sizeof(MtxFx44));
     NNS_G3dGlb.flag &= ~(NNS_G3D_GLB_FLAG_INVPROJ_UPTODATE | NNS_G3D_GLB_FLAG_INVCAMERAPROJ_UPTODATE);
     NNS_G3dGlbFlushP();
 
@@ -613,7 +613,7 @@ static void ov01_021E6220(FieldSystem *fieldSystem) {
     BillboardLists_Draw();
 
     // Same here.
-    MIi_CpuCopyFast((u32 *)&v0, (u32 *)&NNS_G3dGlb.projMtx, sizeof(MtxFx44));
+    MI_CpuCopyFast((u32 *)&v0, (u32 *)&NNS_G3dGlb.projMtx, sizeof(MtxFx44));
     NNS_G3dGlb.flag &= ~(NNS_G3D_GLB_FLAG_INVPROJ_UPTODATE | NNS_G3D_GLB_FLAG_INVCAMERAPROJ_UPTODATE);
     NNS_G3dGlbFlushP();
 

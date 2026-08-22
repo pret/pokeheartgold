@@ -26,7 +26,7 @@ UnkStruct_FieldSysC0 *ov01_02204004(enum HeapID heapID, int indexMax, int object
     }
     int size = objectMax * 0x5C;
     unkC0->objectHeap = Heap_Alloc(heapID, size);
-    MIi_CpuClearFast(0, (u32 *)unkC0->objectHeap, size);
+    MI_CpuClearFast((u32 *)unkC0->objectHeap, size);
     unkC0->objects = Heap_Alloc(heapID, objectMax * 4);
     for (i = 0; i < objectMax; i++) {
         unkC0->objects[i] = &unkC0->objectHeap[i];
@@ -117,7 +117,7 @@ FieldSystemUnkSubCC_Sub0 *ov01_022041D8(FieldSystemUnkSubC8 *unkC8, enum HeapID 
     ret->unk1C = NULL;
     HeapExp_FndInitAllocator(&ret->unk0, heapID, 4);
     ret->unk10 = Heap_Alloc(heapID, count << 5);
-    MIi_CpuClearFast(0, (u32 *)(ret->unk10), count << 5);
+    MI_CpuClearFast((u32 *)(ret->unk10), count << 5);
     ret->unk14 = Heap_Alloc(heapID, count << 2);
 
     for (int i = 0; i < count; i++) {
@@ -419,7 +419,7 @@ static void ov01_022046E8(NNSG3dAnmObj *alloc, ResAnim_4004 *anim) {
     alloc->funcAnm = _02110A0C; // NNS_G3dFuncAnmMatNsBtaDefault
     u8 numMapData = anim->numMapData;
     alloc->numMapData = numMapData;
-    MIi_CpuClear16(0, alloc->mapData, numMapData * 2);
+    MI_CpuClear16(alloc->mapData, numMapData * 2);
     for (u32 i = 0; i < anim->numMapData; i++) {
         alloc->mapData[i] = i | 0x100;
     }
@@ -437,7 +437,7 @@ static void ov01_02204728(NNSG3dAnmObj *alloc, ResAnim_4004 *anim) {
 
 FieldSystemUnkSub104 *ov01_02204744(enum HeapID heapID) { // FieldSystemUnkSub104_Init
     FieldSystemUnkSub104 *unk104 = Heap_Alloc(heapID, sizeof(FieldSystemUnkSub104));
-    MIi_CpuClearFast(0, (u32 *)unk104, sizeof(FieldSystemUnkSub104));
+    MI_CpuClearFast((u32 *)unk104, sizeof(FieldSystemUnkSub104));
     unk104->timeOfDay = GF_RTC_GetTimeOfDay();
     return unk104;
 }
@@ -460,7 +460,7 @@ void ov01_0220476C(FieldSystemUnkSub104 *unk104, NNSG3dRenderObj *renderObj, Map
         if (count > 4) {
             unkSub->unk4 = 4;
         }
-        for (u8 i = 0;  i < unkSub->unk4; i++) {
+        for (u8 i = 0; i < unkSub->unk4; i++) {
             unkSub->animations[i] = animation[i];
         }
         unkSub->renderObj = renderObj;

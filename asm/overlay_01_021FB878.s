@@ -918,11 +918,11 @@ Field3dModelAnimation_FrameSet: ; 0x021FBF20
 	bx lr
 	thumb_func_end Field3dModelAnimation_FrameSet
 
-	thumb_func_start ov01_021FBF28
-ov01_021FBF28: ; 0x021FBF28
+	thumb_func_start Field3dModelAnimation_FrameGet
+Field3dModelAnimation_FrameGet: ; 0x021FBF28
 	ldr r0, [r0, #0xc]
 	bx lr
-	thumb_func_end ov01_021FBF28
+	thumb_func_end Field3dModelAnimation_FrameGet
 
 	thumb_func_start Field3dObject_InitFromModel
 Field3dObject_InitFromModel: ; 0x021FBF2C

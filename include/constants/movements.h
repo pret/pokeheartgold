@@ -13,11 +13,15 @@
 #define MOVEMENT_RUN_DOWN                 17
 #define MOVEMENT_RUN_LEFT                 18
 #define MOVEMENT_RUN_RIGHT                19
+#define MOVEMENT_UNK_22                   22
+#define MOVEMENT_UNK_23                   23
 #define MOVEMENT_WALK_IN_PLACE_FACE_DOWN  37
 #define MOVEMENT_WALK_IN_PLACE_FACE_RIGHT 39
 #define MOVEMENT_WALK_UNK_48              48
 #define MOVEMENT_UNK_71                   71
 #define MOVEMENT_UNK_72                   72
+#define MOVEMENT_UNK_73                   73
+#define MOVEMENT_UNK_74                   74
 #define MOVEMENT_EMOTE_EXCLAMATION        75
 #define MOVEMENT_STEP_END                 254
 #define MOVEMENT_NONE                     255
