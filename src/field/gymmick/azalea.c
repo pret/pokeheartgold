@@ -58,7 +58,6 @@ static void SysTask_DoSpinarakRide(SysTask *sysTask, void *taskData);
 static BOOL Task_WaitSwitchFlipSFX(TaskManager *taskman);
 
 // FIXME: clang-format is misbehaving on these data
-// clang-format off
 static const AzaleaGymmickSpinarakRouteNode sSpinarakRoute_1to5[] = {
     { 3,  31 },
     { 3,  29 },
@@ -246,7 +245,6 @@ static const AzaleaGymmickSpinarakRoute *const sSpinarakRoutes_Froms[] = {
     sSpinarakRoutes_From11,
     sSpinarakRoutes_From12,
 };
-// clang-format on
 
 void GymmickInit_Azalea(FieldSystem *fieldSystem) {
     GymmickUnion *gymmickUnion = Save_Gymmick_AssertMagic_GetData(Save_GetGymmickPtr(FieldSystem_GetSaveData(fieldSystem)), GYMMICK_AZALEA);
