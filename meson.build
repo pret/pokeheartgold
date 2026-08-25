@@ -206,6 +206,27 @@ pokeheartgold_nds = custom_target('pokeheartgold.us.nds',
 )
 
 ############################################################
+###                        TESTS                         ###
+############################################################
+sha1sum = find_program(['sha1sum', 'shasum'], native: true)
+
+test('Main Checksums',
+    sha1sum,
+    args: ['-c', '--quiet', main_sha1]
+)
+
+test('Filesystem Checksums',
+    sha1sum,
+    args: ['-c', '--quiet', filesystem_sha1]
+)
+
+test('ROM Checksum',
+    sha1sum,
+    args: ['-c', '--quiet', rom_sha1]
+)
+
+
+############################################################
 ###                       POSTCONF                       ###
 ############################################################
 meson.add_postconf_script(postconf_py)

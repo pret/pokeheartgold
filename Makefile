@@ -1,12 +1,14 @@
-.PHONY:     \
-	all 	\
-	check	\
-	meson   \
-	release \	
-	skrew	\
-	skrewrm \
-	skrewup \
-	target  \
+.PHONY:     		\
+	all 			\
+	check			\
+	meson   		\
+	release 		\	
+	rom 			\
+	setup_release 	\
+	skrew			\
+	skrewrm 		\
+	skrewup 		\
+	target  		\
 	update
 
 SUBPROJ_DIR := subprojects
@@ -75,6 +77,18 @@ else
 endif
 
 export NINJA_STATUS := [%p %f/%t] 
+
+# Modders can delete the `check` dependency here after their first build.
+all: release check
+
+.NOTPARALLEL: release
+release: rom
+
+check: rom
+	$(MESON) test -C $(BUILD)
+
+rom: $(BUILD)/build.ninja
+	$(NINJA) -C $(BUILD) pokeheartgold.us.nds
 
 target: $(BUILD)/build.ninja
 	@echo $(SKREW_EXE)

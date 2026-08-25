@@ -6,8 +6,9 @@ libsyscall_link_args = [
     '-proc', 'v5te'
 ]
 
+#TODO: Version difference
+# SS is 'asm/_secure_IPGE.s',
 libsyscall_asm = files(
-    'asm/_secure_IPGE.s',
     'asm/_secure_IPKE.s'
 )
 
