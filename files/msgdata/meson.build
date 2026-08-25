@@ -50,3 +50,5 @@ text_banks = custom_target('msg.narc',
 
 nitrofs_files += text_banks
 naix_headers += text_banks[1]
+
+subdir('scenario')

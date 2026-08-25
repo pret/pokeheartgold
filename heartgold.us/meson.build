@@ -13,3 +13,6 @@ rom_header_template = files('rom_header_template.sbin')
 main_sha1 = files('main.sha1')
 filesystem_sha1 = files('filesystem.sha1')
 rom_sha1 = files('rom.sha1')
+
+rom_ini = files('rom.ini')
+filesys_csv = files('filesystem.csv')

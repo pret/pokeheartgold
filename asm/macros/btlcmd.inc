@@ -15,7 +15,7 @@
 #include "constants/message_tags.h"
 #include "constants/moves.h"
 #include "constants/opcode.h"
-#include "msg/msg_0197.h"
+#include "msgdata/msg/msg_0197.h"
 
     .equ FALSE 0
     .equ TRUE 1

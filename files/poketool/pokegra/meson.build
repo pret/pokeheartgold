@@ -38,3 +38,47 @@ otherpoke_narc = custom_target('otherpoke.narc',
 
 nitrofs_files += otherpoke_narc
 naix_headers += otherpoke_narc[1]
+
+############################################################
+###                       POKEGRA                        ###
+############################################################
+pokegra_female_back = []
+pokegra_female_front = []
+pokegra_male_back = []
+pokegra_male_front = []
+#pokegra_normal_pal = []
+#pokegra_shiny_pal = []
+
+subdir('pokegra')
+
+pokegra_narc = custom_target('pokegra.narc',
+    output: 'pokegra.narc',
+    input: [
+        pokegra_female_back,
+        pokegra_female_front,
+        pokegra_male_back,
+        pokegra_male_front
+    ],
+    command: [
+        make_pokegra_py,
+        '--nitrogfx', nitrogfx_exe,
+        '--narc', nitroarc_exe,
+        '--source-dir', '@CURRENT_SOURCE_DIR@' / 'pokegra',
+        '--private-dir', '@PRIVATE_DIR@',
+        '--output-dir', '@OUTDIR@',
+    ],
+)
+
+nitrofs_files += pokegra_narc
+
+# Prebuilt Files #
+
+prebuilt_files = [
+    'height.narc',
+    'height_o.narc'
+]
+
+foreach f : prebuilt_files
+    nitrofs_files += fs.copyfile(f)
+endforeach
+

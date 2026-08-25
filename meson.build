@@ -114,14 +114,15 @@ subdir('heartgold.us')
 subdir('lib')
 
 ############################################################
-###                         FILES                        ###
+###                     FILE SYSTEM                      ###
 ############################################################
 subdir('files')
 
+############################################################
+###                     ARM9 BINARY                      ###
+############################################################
 subdir('asm')
 subdir('src')
-
-#ARM 9 BINARY
 
 libmslc = fs.copyfile('tools/metroskrew/lib/metroskrew/sdk/ds/2.0/sp2/msl/MSL_C/MSL_ARM/Lib/MSL_C_NITRO_Ai_LE.a')
 libdsprot = fs.copyfile('lib/dsprot/libdsprot.a')
@@ -167,6 +168,14 @@ main = executable('main',
     link_depends : main_lcf,
     native : false
 )
+############################################################
+###                    ARM7 BINARIES                     ###
+############################################################
+ichneumon_sub = subproject('NitroSDK'
+    ).get_variable('ichneumon_sub')
+
+ichneumon_sub_defs = subproject('NitroSDK'
+    ).get_variable('ichneumon_sub_defs')
 
 ############################################################
 ###                        DS ROM                        ###
@@ -177,12 +186,21 @@ pokeheartgold_nds = custom_target('pokeheartgold.us.nds',
     input : [
         main,
         rom_header_template,
+        icon_png,
+        ichneumon_sub,
+        ichneumon_sub_defs,
         nitrofs_files,
     ],
     command : [
         nitrorom_exe,
         'pack',
-        '-DHEADER_TEMPLATE=@INPUT1@', #rom_header_template
+        '-DHEADER_TEMPLATE=@INPUT1@',   # rom_header_template
+        '-DICON_PNG=@INPUT2@',          # icon_png
+        '-DARM7_STATIC=@INPUT3@',       # ichneumon_sub
+        '-DARM7_DEFINE=@INPUT4@',       # ichneumon_sub_defs
+        '--output=@OUTPUT0@',           # pokeheartgold.us.nds
+        rom_ini,
+        filesys_csv,
     ],
     build_by_default : true
 )

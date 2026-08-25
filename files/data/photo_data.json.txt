@@ -1,7 +1,6 @@
 {{ doNotModifyHeader }}
 
-#include "global.h"
-#include "photo_album.h"
+#include "struct_defs/photo_data_narc_struct.h"
 #include "constants/maps.h"
 #include "constants/sprites.h"
 

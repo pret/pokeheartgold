@@ -94,6 +94,7 @@ naix_headers += puzzle_gra_narc[1]
 # Subdirectories
 subdir('annon')
 subdir('choose_starter')
+subdir('custom_ball')
 subdir('pokegear')
 subdir('record')
 subdir('zukanlist')

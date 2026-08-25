@@ -80,17 +80,24 @@ BPP8_NOPAD_NCLR_PNG_FLAGS = ['-bitdepth', '8', '-nopad']
 EXTFMT_LZ_FLAGS = ['-nopad', '-extfmt']
 
 # Subdirectories
+subdir('a')
 subdir('application')
 subdir('arc')
 subdir('data')
 subdir('demo')
+subdir('dwc')
 subdir('graphic')
 subdir('itemtool')
+subdir('pbr')
 subdir('poketool')
+subdir('resource')
+subdir('system')
+subdir('tel')
 
 #Msgdata must come after poketool for trainer name file
 subdir('msgdata')
 
 #Scripts must come after msgdata
 subdir('fielddata')
+subdir('battledata')
 

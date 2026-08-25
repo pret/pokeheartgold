@@ -1,3 +1,4 @@
 json2bin_sh = find_program('json2bin.sh')
 makescript_sh = find_program('makescript.sh')
 makeotherpoke_sh = find_program('makeotherpoke.sh')
+make_pokegra_py = find_program('make_pokegra.py')

@@ -29,12 +29,6 @@ nitrofs_files += camera_viewfinder_narc
 naix_headers += camera_viewfinder_narc[1]
 
 ############################################################
-###                         FONT                         ###
-############################################################
-
-# Skipped as it is not currently built by make
-
-############################################################
 ###                      PLIST_GRA                       ###
 ############################################################
 subdir('plist_gra')
@@ -93,3 +87,4 @@ zukan_gra_narc = custom_target('zukan_gra.narc',
 nitrofs_files += zukan_gra_narc
 naix_headers += zukan_gra_narc[1]
 
+nitrofs_files += fs.copyfile('font.narc')
