@@ -1,6 +1,6 @@
-#include "application/pokegear/pgear_gra.naix"
+#include "files/application/pokegear/pgear_gra.naix"
 #include "application/pokegear/pokegear_internal.h"
-#include "data/resdat.naix"
+#include "files/data/resdat.naix"
 
 #include "math_util.h"
 #include "unk_0200ACF0.h"

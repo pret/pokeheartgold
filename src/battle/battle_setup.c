@@ -4,8 +4,8 @@
 
 #include "constants/battle.h"
 
-#include "msgdata/msg.naix"
-#include "msgdata/msg/msg_0445.h"
+#include "files/msgdata/msg.naix"
+#include "files/msgdata/msg/msg_0445.h"
 
 #include "follow_mon.h"
 #include "metatile_behavior.h"

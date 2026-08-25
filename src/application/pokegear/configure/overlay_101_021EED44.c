@@ -1,6 +1,6 @@
 #include "application/pokegear/configure/pokegear_configure_internal.h"
-#include "msgdata/msg.naix"
-#include "msgdata/msg/msg_0270.h"
+#include "files/msgdata/msg.naix"
+#include "files/msgdata/msg/msg_0270.h"
 
 #include "font.h"
 #include "unk_0200FA24.h"

@@ -4,8 +4,8 @@
 
 #include "constants/sndseq.h"
 
-#include "msgdata/msg.naix"
-#include "msgdata/msg/msg_0191.h"
+#include "files/msgdata/msg.naix"
+#include "files/msgdata/msg/msg_0191.h"
 
 #include "font.h"
 #include "render_window.h"

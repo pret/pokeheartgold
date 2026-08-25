@@ -3,8 +3,8 @@
 #include "constants/sndseq.h"
 
 #include "application/pokegear/radio/radio_internal.h"
-#include "msgdata/msg.naix"
-#include "msgdata/msg/msg_0416.h"
+#include "files/msgdata/msg.naix"
+#include "files/msgdata/msg/msg_0416.h"
 
 #include "bag.h"
 #include "math_util.h"

@@ -4,8 +4,8 @@
 
 #include "constants/pokemon.h"
 
-#include "application/zukanlist/zkn_data/zukan_data.naix"
-#include "msgdata/msg.naix"
+#include "files/application/zukanlist/zkn_data/zukan_data.naix"
+#include "files/msgdata/msg.naix"
 
 #include "filesystem.h"
 #include "gf_gfx_loader.h"

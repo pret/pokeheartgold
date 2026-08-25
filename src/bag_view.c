@@ -4,9 +4,9 @@
 
 #include "constants/items.h"
 
-#include "msgdata/msg.naix"
-#include "msgdata/msg/msg_0010.h"
-#include "msgdata/msg/msg_0040.h"
+#include "files/msgdata/msg.naix"
+#include "files/msgdata/msg/msg_0010.h"
+#include "files/msgdata/msg/msg_0040.h"
 
 #include "coins.h"
 #include "fashion_case.h"

@@ -5,9 +5,9 @@
 #include "constants/game_stats.h"
 #include "constants/sndseq.h"
 
-#include "application/voltorb_flip.naix"
-#include "msgdata/msg.naix"
-#include "msgdata/msg/msg_0039.h"
+#include "files/application/voltorb_flip.naix"
+#include "files/msgdata/msg.naix"
+#include "files/msgdata/msg/msg_0039.h"
 #include "voltorb_flip/voltorb_flip_app_data.h"
 #include "voltorb_flip/voltorb_flip_game.h"
 #include "voltorb_flip/voltorb_flip_input.h"

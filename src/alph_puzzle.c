@@ -4,10 +4,10 @@
 
 #include "constants/sndseq.h"
 
-#include "application/annon/puzzle_gra.naix"
-#include "data/resdat.naix"
-#include "msgdata/msg.naix"
-#include "msgdata/msg/msg_0002.h"
+#include "files/application/annon/puzzle_gra.naix"
+#include "files/data/resdat.naix"
+#include "files/msgdata/msg.naix"
+#include "files/msgdata/msg/msg_0002.h"
 
 #include "font.h"
 #include "gf_gfx_loader.h"

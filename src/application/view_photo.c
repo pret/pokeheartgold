@@ -2,9 +2,9 @@
 
 #include "global.h"
 
-#include "data/resdat.naix"
+#include "files/data/resdat.naix"
 #include "field/ov01_021E7FDC.h"
-#include "msgdata/msg.naix"
+#include "files/msgdata/msg.naix"
 
 #include "field_take_photo.h"
 #include "font.h"

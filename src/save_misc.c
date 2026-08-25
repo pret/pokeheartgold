@@ -1,8 +1,8 @@
 #include "global.h"
 
-#include "msgdata/msg.naix"
-#include "msgdata/msg/msg_0287.h"
-#include "msgdata/msg/msg_0295.h"
+#include "files/msgdata/msg.naix"
+#include "files/msgdata/msg/msg_0287.h"
+#include "files/msgdata/msg/msg_0295.h"
 
 #include "apricorn_tree.h"
 #include "easy_chat.h"

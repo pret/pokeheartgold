@@ -2,7 +2,7 @@
 
 #include "global.h"
 
-#include "data/resdat.naix"
+#include "files/data/resdat.naix"
 
 #include "gf_gfx_loader.h"
 #include "pokemon_icon_idx.h"

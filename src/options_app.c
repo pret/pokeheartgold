@@ -4,9 +4,9 @@
 
 #include "global.h"
 
-#include "data/resdat.naix"
-#include "msgdata/msg.naix"
-#include "msgdata/msg/msg_0045.h"
+#include "files/data/resdat.naix"
+#include "files/msgdata/msg.naix"
+#include "files/msgdata/msg/msg_0045.h"
 
 #include "bg_window.h"
 #include "font.h"

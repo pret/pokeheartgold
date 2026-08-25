@@ -1,7 +1,7 @@
 #include "blackout.h"
 
-#include "msgdata/msg.naix"
-#include "msgdata/msg/msg_0203.h"
+#include "files/msgdata/msg.naix"
+#include "files/msgdata/msg/msg_0203.h"
 
 #include "brightness.h"
 #include "field_warp_tasks.h"

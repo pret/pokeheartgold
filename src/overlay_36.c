@@ -6,10 +6,10 @@
 #include "constants/mail.h"
 #include "constants/species.h"
 
-#include "msgdata/msg.naix"
-#include "msgdata/msg/msg_0292.h"
-#include "msgdata/msg/msg_0293.h"
-#include "msgdata/msg/msg_0445.h"
+#include "files/msgdata/msg.naix"
+#include "files/msgdata/msg/msg_0292.h"
+#include "files/msgdata/msg/msg_0293.h"
+#include "files/msgdata/msg/msg_0445.h"
 
 #include "apricorn_tree.h"
 #include "field_system.h"

@@ -5,7 +5,7 @@
 #include "constants/maps.h"
 #include "constants/movements.h"
 
-#include "fielddata/graphic/preview_graphic/preview_graphic.naix"
+#include "files/fielddata/graphic/preview_graphic/preview_graphic.naix"
 
 #include "follow_mon.h"
 #include "gf_gfx_loader.h"

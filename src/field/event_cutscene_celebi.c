@@ -1,4 +1,4 @@
-#include "demo/legend.naix"
+#include "files/demo/legend.naix"
 #include "field/overlay_01_021FB878.h"
 #include "overlay_2/event_cutscene.h"
 

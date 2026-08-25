@@ -3,7 +3,7 @@
 #include "constants/species.h"
 
 #include "battle/battle_command.h"
-#include "msgdata/msg.naix"
+#include "files/msgdata/msg.naix"
 
 #include "assert.h"
 #include "fieldmap.h"

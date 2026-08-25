@@ -5,7 +5,7 @@ build_dir = meson.current_build_dir()
 ############################################################
 subdir('record')
 
-pgradio_gra_narc = custom_target('record.narc',
+record_narc = custom_target('record.narc',
     command : [
         narc_exe, 
         '-p', build_dir + '/record.narc',
@@ -20,5 +20,7 @@ pgradio_gra_narc = custom_target('record.narc',
         'record.narc',
         'record.naix',
     ],
-    build_by_default:true,
 )
+
+nitrofs_files += record_narc
+naix_headers += record_narc[1]

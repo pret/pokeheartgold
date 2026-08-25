@@ -2,8 +2,8 @@
 
 #include "global.h"
 
-#include "msgdata/msg.naix"
-#include "msgdata/msg/msg_0182.h"
+#include "files/msgdata/msg.naix"
+#include "files/msgdata/msg/msg_0182.h"
 
 #include "msgdata.h"
 

@@ -7,8 +7,8 @@
 
 #include "field/legend_cutscene_camera.h"
 #include "frontier/frontier.h"
-#include "msgdata/msg.naix"
-#include "msgdata/msg/msg_0202.h"
+#include "files/msgdata/msg.naix"
+#include "files/msgdata/msg/msg_0202.h"
 #include "overlay_2/event_cutscene.h"
 #include "overlay_2/overlay_02_02251E74.h"
 #include "overlay_2/overlay_02_gear_phone.h"

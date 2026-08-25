@@ -2,7 +2,7 @@
 
 #include "global.h"
 
-#include "demo/legend.naix"
+#include "files/demo/legend.naix"
 #include "field/overlay_01_021E66E4.h"
 #include "field/overlay_01_021FB878.h"
 #include "field/overlay_01_02204004.h"

@@ -12,7 +12,7 @@ fs = import('fs')
 ############################################################
 ###                    INCLUDE PATHS                     ###
 ############################################################
-public_includes = include_directories('include', 'asm/include', 'lib/include', 'build/files', 'files', 'src', 'asm')
+public_includes = include_directories('include', 'asm/include', 'lib/include', 'files', 'src', 'asm')
 toplevel_includes = include_directories('.')
 msl_includes = include_directories(
     'tools' / 'metroskrew' / 'lib' / 'metroskrew' / 'sdk' / 'ds' / '2.0' / 'sp2' / 'msl' / 'MSL_C' / 'MSL_Common' / 'Include'

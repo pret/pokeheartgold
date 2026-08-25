@@ -24,5 +24,7 @@ puzzle_gra_narc = custom_target('puzzle_gra.narc',
         'puzzle_gra.narc',
         'puzzle_gra.naix',
     ],
-    build_by_default:true,
 )
+
+nitrofs_files += puzzle_gra_narc
+naix_headers += puzzle_gra_narc[1]

@@ -24,5 +24,7 @@ pgradio_gra_narc = custom_target('pgradio_gra.narc',
         'pgradio_gra.narc',
         'pgradio_gra.naix',
     ],
-    build_by_default:true,
 )
+
+nitrofs_files += pgradio_gra_narc
+naix_headers += pgradio_gra_narc[1]

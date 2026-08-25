@@ -4,7 +4,7 @@
 
 #include "constants/species.h"
 
-#include "poketool/pokegra/otherpoke.naix"
+#include "files/poketool/pokegra/otherpoke.naix"
 
 #include "filesystem.h"
 #include "palette.h"

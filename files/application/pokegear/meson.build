@@ -24,8 +24,10 @@ pgear_gra_narc = custom_target('pgear_gra.narc',
         'pgear_gra.narc',
         'pgear_gra.naix',
     ],
-    build_by_default:true,
 )
+
+nitrofs_files += pgear_gra_narc
+naix_headers += pgear_gra_narc[1]
 
 # Subdirs
 subdir('configure')

@@ -1,7 +1,7 @@
 #include "overlay_mic_test.h"
 
-#include "msgdata/msg.naix"
-#include "msgdata/msg/msg_0234.h"
+#include "files/msgdata/msg.naix"
+#include "files/msgdata/msg/msg_0234.h"
 
 #include "font.h"
 #include "gf_gfx_loader.h"

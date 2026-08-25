@@ -5,9 +5,9 @@
 #include "constants/map_sections.h"
 #include "constants/sndseq.h"
 
-#include "data/mmodel/mmodel.naix"
-#include "msgdata/msg.naix"
-#include "msgdata/msg/msg_0180.h"
+#include "files/data/mmodel/mmodel.naix"
+#include "files/msgdata/msg.naix"
+#include "files/msgdata/msg/msg_0180.h"
 
 #include "bg_window.h"
 #include "camera.h"

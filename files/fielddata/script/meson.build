@@ -37,5 +37,7 @@ scr_seq_narc = custom_target('scr_seq.narc',
         '@PRIVATE_DIR@'
     ],
     depends : text_banks,
-    build_by_default : true
 )
+
+nitrofs_files += scr_seq_narc
+naix_headers += scr_seq_narc[1]

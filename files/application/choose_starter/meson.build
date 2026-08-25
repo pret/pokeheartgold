@@ -5,7 +5,7 @@ build_dir = meson.current_build_dir()
 ############################################################
 subdir('choose_starter_main_res')
 
-puzzle_gra_narc = custom_target('choose_starter_main_res.narc',
+choose_starter_narc = custom_target('choose_starter_main_res.narc',
     command : [
         narc_exe, 
         '-p', build_dir + '/choose_starter_main_res.narc',
@@ -24,15 +24,17 @@ puzzle_gra_narc = custom_target('choose_starter_main_res.narc',
         'choose_starter_main_res.narc',
         'choose_starter_main_res.naix',
     ],
-    build_by_default:true,
 )
+
+nitrofs_files += choose_starter_narc
+naix_headers += choose_starter_narc[1]
 
 ############################################################
 ###                  CHOOSE_STARTER_SUB                  ###
 ############################################################
 subdir('choose_starter_sub_res')
 
-puzzle_gra_narc = custom_target('choose_starter_sub_res.narc',
+choose_starter_sub_narc = custom_target('choose_starter_sub_res.narc',
     command : [
         narc_exe, 
         '-p', build_dir + '/choose_starter_sub_res.narc',
@@ -50,5 +52,7 @@ puzzle_gra_narc = custom_target('choose_starter_sub_res.narc',
         'choose_starter_sub_res.narc',
         'choose_starter_sub_res.naix',
     ],
-    build_by_default:true,
 )
+
+nitrofs_files += choose_starter_sub_narc
+naix_headers += choose_starter_sub_narc[1]

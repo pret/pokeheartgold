@@ -5,8 +5,8 @@
 #include "constants/sndseq.h"
 
 #include "credits/credits.h"
-#include "msgdata/msg.naix"
-#include "msgdata/msg/msg_0040.h"
+#include "files/msgdata/msg.naix"
+#include "files/msgdata/msg/msg_0040.h"
 
 #include "bg_window.h"
 #include "game_stats.h"

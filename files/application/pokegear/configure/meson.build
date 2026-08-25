@@ -5,7 +5,7 @@ build_dir = meson.current_build_dir()
 ############################################################
 subdir('pgconf_gra')
 
-pgear_gra_narc = custom_target('pgconf_gra.narc',
+pconf_gra_narc = custom_target('pgconf_gra.narc',
     command : [
         narc_exe, 
         '-p', build_dir + '/pgconf_gra.narc',
@@ -27,3 +27,5 @@ pgear_gra_narc = custom_target('pgconf_gra.narc',
     build_by_default:true,
 )
 
+nitrofs_files += pconf_gra_narc
+naix_headers += pconf_gra_narc[1]

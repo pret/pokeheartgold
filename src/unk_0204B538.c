@@ -6,7 +6,7 @@
 #include "constants/items.h"
 #include "constants/moves.h"
 
-#include "msgdata/msg.naix"
+#include "files/msgdata/msg.naix"
 
 #include "assert.h"
 #include "heap.h"

@@ -24,5 +24,7 @@ pgphone_gra_narc = custom_target('pgphone_gra.narc',
         'pgphone_gra.narc',
         'pgphone_gra.naix',
     ],
-    build_by_default:true,
 )
+
+nitrofs_files += pgphone_gra_narc
+naix_headers += pgphone_gra_narc[1]

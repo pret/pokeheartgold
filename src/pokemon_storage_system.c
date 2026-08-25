@@ -2,8 +2,8 @@
 
 #include "global.h"
 
-#include "msgdata/msg.naix"
-#include "msgdata/msg/msg_0024.h"
+#include "files/msgdata/msg.naix"
+#include "files/msgdata/msg/msg_0024.h"
 
 #include "msgdata.h"
 #include "pokemon.h"

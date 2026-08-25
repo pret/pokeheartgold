@@ -5,9 +5,9 @@
 #include "constants/maps.h"
 #include "constants/moves.h"
 
-#include "graphic/plist_gra.naix"
-#include "msgdata/msg.naix"
-#include "msgdata/msg/msg_0300.h"
+#include "files/graphic/plist_gra.naix"
+#include "files/msgdata/msg.naix"
+#include "files/msgdata/msg/msg_0300.h"
 
 #include "bag.h"
 #include "battle_regulation.h"

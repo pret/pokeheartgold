@@ -2,10 +2,10 @@
 
 #include "global.h"
 
-#include "msgdata/msg.naix"
-#include "msgdata/msg/msg_0017.h"
-#include "msgdata/msg/msg_0442.h"
-#include "msgdata/msg/msg_0800.h"
+#include "files/msgdata/msg.naix"
+#include "files/msgdata/msg/msg_0017.h"
+#include "files/msgdata/msg/msg_0442.h"
+#include "files/msgdata/msg/msg_0800.h"
 
 #include "bg_window.h"
 #include "font.h"

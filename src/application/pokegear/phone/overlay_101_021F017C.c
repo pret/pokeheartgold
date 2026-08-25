@@ -1,9 +1,9 @@
 #include "global.h"
 
-#include "application/pokegear/phone/pgphone_gra.naix"
+#include "files/application/pokegear/phone/pgphone_gra.naix"
 #include "application/pokegear/phone/phone_internal.h"
-#include "msgdata/msg.naix"
-#include "msgdata/msg/msg_0271.h"
+#include "files/msgdata/msg.naix"
+#include "files/msgdata/msg/msg_0271.h"
 
 #include "font.h"
 #include "gf_gfx_loader.h"

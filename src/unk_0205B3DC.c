@@ -4,7 +4,7 @@
 
 #include "constants/sprites.h"
 
-#include "application/record/record.naix"
+#include "files/application/record/record.naix"
 
 #include "gf_gfx_loader.h"
 

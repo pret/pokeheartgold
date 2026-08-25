@@ -1,4 +1,4 @@
-#include "poketool/pokefoot/pokefoot.naix"
+#include "files/poketool/pokefoot/pokefoot.naix"
 
 #include "filesystem.h"
 
