@@ -1,7 +1,6 @@
 
 #pragma once
 .public OSi_ReferSymbol
-.public _version_NINTENDO_DWC_LOBBY
 .public DWC_CheckUserData
 .public DWC_CheckHasProfile
 .public SOC_GetHostByName

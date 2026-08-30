@@ -9,6 +9,10 @@ Static main
 {
     Address 0x02000000
     StackSize 0 2048
+    Library libdwcaccount.a (.version)
+    Object main.nef.p/asm_middleware.s.o
+    Library libcard.a (.version)
+    Library libdwcppwlobby.a (.version)
     Object main.nef.p/src_pm_version.c.o
     Object main.nef.p/src_main.c.o
     Object main.nef.p/src_list_menu.c.o
@@ -343,7 +347,6 @@ Static main
     Object main.nef.p/src_unk_02097F6C.c.o
 
     ### Vendor libraries ###
-    Object main.nef.p/asm_middleware.s.o
     Library libspl.a
     Library libwvr.a
     Library libdwcbm.a
@@ -742,7 +745,7 @@ Overlay OVY_45
 {
     After OVY_42
     Object main.nef.p/asm_overlay_45_thumb.s.o
-    Object main.nef.p/lib_NitroDWC_asm_overlay_45_arm.s.o
+    Library libdwcppwlobby.a
 }
 Overlay OVY_46
 {

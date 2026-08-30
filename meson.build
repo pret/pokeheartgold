@@ -135,7 +135,7 @@ main = executable('main',
         naix_headers,
     ],
     c_args : [
-        
+        '-DPM_KEEP_ASSERTS'
     ],
     nasm_args : [
         '-DPM_ASM',
@@ -151,6 +151,7 @@ main = executable('main',
         nitrosystem_dep,
         nitrowifi_dep,
         nitrodwc_dep,
+        libdwcppwlobby_dep
     ],
     link_with : [
         libmslc,
