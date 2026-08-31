@@ -10,7 +10,10 @@ Static main
     Address 0x02000000
     StackSize 0 2048
     Library libdwcaccount.a (.version)
-    Object main.nef.p/asm_middleware.s.o
+    Library libsoc.a (.version)
+	Library libcps.a (.version)
+	Library libssl.a (.version)
+    Library libvct.a (.version)
     Library libcard.a (.version)
     Library libdwcppwlobby.a (.version)
     Object main.nef.p/src_pm_version.c.o
@@ -351,8 +354,13 @@ Static main
     Library libwvr.a
     Library libdwcbm.a
     Library libdwcaccount.a
-    Library libwifi.a
-    Library libVCT.a
+    Library libcrypto_static.a
+    Library libsoc.a
+    Library libcps.a
+    Library libssl.a
+    Library libwcm.a
+    Library libstubsmd5.a
+    Library libvct.a
     Library libnnsfnd.a
 	Library libnnsgfd.a
 	Library libnnsg2d.a

@@ -219,11 +219,3 @@ _020A07F0:
 	str r7, [r0, #-8]
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, pc}
 	arm_func_end CRYPTO_RC4FastEncrypt
-
-	.data
-
-_021105F4:
-	.asciz "0123456789abcdefghijklmnopqrstuv"
-	.balign 4, 0
-_02110618:
-	.asciz "%s%c%c%c%c%s"
