@@ -11,7 +11,7 @@
 #include "libs/strings.h"
 
 #define configerr(__msg, ...)                                        \
-    {                                                                \
+    do {                                                             \
         cfgresult __res = { .code = E_config_user, .pos = stringZ }; \
         snprintf(                                                    \
             (__res).msg,                                             \
@@ -21,7 +21,7 @@
             ##__VA_ARGS__                                            \
         );                                                           \
         return __res;                                                \
-    }
+    } while (0)
 
 #define configok              \
     (cfgresult)               \

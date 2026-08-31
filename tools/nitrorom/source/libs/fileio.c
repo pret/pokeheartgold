@@ -16,12 +16,12 @@ static inline long priv_fsize(FILE *infp)
     return fsize;
 }
 
-#define wrapsfn(__cfn)                                                           \
-    {                                                                            \
-        char cfilename[256] = { 0 };                                             \
-        memcpy(cfilename, filename.s, filename.len <= 255 ? filename.len : 255); \
-        return __cfn(cfilename);                                                 \
-    }
+#define wrapsfn(__cfn)                                                             \
+    do {                                                                           \
+        char cfilename[4096] = { 0 };                                              \
+        memcpy(cfilename, filename.s, filename.len <= 4095 ? filename.len : 4095); \
+        return __cfn(cfilename);                                                   \
+    } while (0)
 
 string fload(const char *filename)
 {

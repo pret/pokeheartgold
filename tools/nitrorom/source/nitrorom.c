@@ -2,6 +2,7 @@
 
 #include "nitrorom.h"
 
+#include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -38,7 +39,7 @@ int main(int argc, const char **argv)
     }
 
     if (strncmp(argv[1], "--version", 9) == 0) {
-        printf("%s\n", VERSION);
+        printf("%s%s\n", VERSION, REVISION);
         exit(EXIT_SUCCESS);
     }
 

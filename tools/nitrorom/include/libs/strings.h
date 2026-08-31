@@ -18,12 +18,14 @@ typedef struct {
     string tail;
 } strpair;
 
+#define lengthof(__s) ((long)sizeof(__s) / (long)sizeof(*(__s)) - 1)
+
 // clang-format off
 // constructor macros
 #define string(...)           stringX(__VA_ARGS__, stringL, stringS)(__VA_ARGS__)
 #define stringX(a, b, c, ...) c
 #define stringZ               (string){ .s = 0,   .len = 0 }
-#define stringS(__s)          (string){ .s = (unsigned char *)(__s), .len = sizeof(__s) / sizeof(*(__s)) - 1 }
+#define stringS(__s)          (string){ .s = (unsigned char *)(__s), .len = lengthof(__s) }
 #define stringL(__s, __len)   (string){ .s = (unsigned char *)(__s), .len = (__len) }
 
 // unpacking macro for use by printf-esque functions

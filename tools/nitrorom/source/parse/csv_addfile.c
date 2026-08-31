@@ -34,6 +34,18 @@ sheetsresult csv_addfile(sheetsrecord *record, void *user, int line)
         sheetserr("expected 2 fields for record, but found %lu", record->nfields);
     }
 
+    if (record->fields[SOURCE].len == 0) {
+        sheetserr("expected column %d for record to be non-empty", SOURCE);
+    }
+
+    if (record->fields[TARGET].len < 2) {
+        sheetserr("expected column %d for record to have length at least 2", TARGET);
+    }
+
+    if (record->fields[TARGET].s[0] != '/') {
+        sheetserr("expected column %d for record to begin with `/`", TARGET);
+    }
+
     rompacker *packer = user;
     romfile   *file   = push(&packer->filesys, romfile);
     file->source      = record->fields[SOURCE];

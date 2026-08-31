@@ -73,5 +73,5 @@ int stricmp(const string a, const string b)
     unsigned char bc = lower(b.s[i]);
 
     // 0 if equal, -1 if a is lesser, 1 if b is lesser
-    return i == n ? ac != bc : ac < bc ? -1 : 1;
+    return ac == bc ? 0 : ac < bc ? -1 : 1;
 }
