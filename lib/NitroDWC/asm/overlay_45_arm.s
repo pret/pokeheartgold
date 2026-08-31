@@ -1,7 +1,6 @@
 	.include "macros.inc"
 	.include "overlay_45_arm.inc"
 	.include "global.inc"
-	.public _version_NINTENDO_DWC_LOBBY
 
 	.text
 
@@ -43679,3 +43678,9 @@ ov45_022577F8: ; 0x022577F8
 
 ov45_022587F8: ; 0x022587F8
 	.space 0x8
+
+.section .version,4
+.balign 4, 0
+	.public _version_NINTENDO_DWC_LOBBY
+_version_NINTENDO_DWC_LOBBY: ; 0x02000C88
+	.asciz "[SDK+NINTENDO:DWC_LOBBY]"

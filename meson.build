@@ -94,6 +94,8 @@ nitrodwc_dep = dependency('NitroDWC',
     }
 )
 
+libvct_dep = dependency('libvct')
+
 ############################################################
 ###                         TOOLS                        ###
 ############################################################
@@ -135,7 +137,7 @@ main = executable('main',
         naix_headers,
     ],
     c_args : [
-        
+        '-DPM_KEEP_ASSERTS'
     ],
     nasm_args : [
         '-DPM_ASM',
@@ -149,15 +151,16 @@ main = executable('main',
     dependencies : [
         nitrosdk_dep,
         nitrosystem_dep,
+        crypto_static_dep,
         nitrowifi_dep,
         nitrodwc_dep,
+        libvct_dep,
+        libdwcppwlobby_dep,
     ],
     link_with : [
         libmslc,
         libsyscall,
         libspl,
-        libwifi,
-        libVCT,
         libdsprot,
         libirc,
     ],

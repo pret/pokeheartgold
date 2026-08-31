@@ -1883,7 +1883,7 @@ _021E9580:
 	add r6, r0, #0x1800
 	add r4, sl, #0x1000
 _021E95B4:
-	ldr r0, _021E974C ; =_021D4670
+	ldr r0, _021E974C ; =CPSMyIp
 	ldr r0, [r0]
 	cmp r0, #0
 	bne _021E95D4
@@ -1994,7 +1994,7 @@ _021E9728:
 _021E9740: .word 0x0000EA60
 _021E9744: .word ov00_021E9B38
 _021E9748: .word ov00_02216650
-_021E974C: .word _021D4670
+_021E974C: .word CPSMyIp
 _021E9750: .word 0x000082EA
 	arm_func_end ov00_021E9438
 
@@ -24353,8 +24353,8 @@ _021FC598:
 	str r1, [r4, #0xcb4]
 	add r0, r4, #0xd00
 	ldrsb r2, [r0, #0x11]
-	ldr r0, _021FC640 ; =_02108FC0
-	ldr r1, _021FC644 ; =_02108FC8
+	ldr r0, _021FC640 ; =WCM_Bssid_Any
+	ldr r1, _021FC644 ; =WCM_Essid_Any
 	mov r3, #0x200000
 	bl ov00_021FCBB4
 	ldmia sp!, {r3, r4, r5, pc}
@@ -24388,13 +24388,13 @@ _021FC60C:
 	add r2, r4, #0xd00
 	mla r1, r3, r0, r1
 	ldrsb r2, [r2, #0x11]
-	ldr r0, _021FC640 ; =_02108FC0
+	ldr r0, _021FC640 ; =WCM_Bssid_Any
 	mov r3, #0x300000
 	bl ov00_021FCBB4
 	ldmia sp!, {r3, r4, r5, pc}
 	.balign 4, 0
-_021FC640: .word _02108FC0
-_021FC644: .word _02108FC8
+_021FC640: .word WCM_Bssid_Any
+_021FC644: .word WCM_Essid_Any
 	arm_func_end ov00_021FC568
 
 	arm_func_start ov00_021FC648
@@ -24411,15 +24411,15 @@ ov00_021FC648: ; 0x021FC648
 	str r1, [r4, #0xcb4]
 	add r0, r4, #0xd00
 	ldrsb r2, [r0, #0x11]
-	ldr r0, _021FC690 ; =_02108FC0
-	ldr r1, _021FC694 ; =_02108FC8
+	ldr r0, _021FC690 ; =WCM_Bssid_Any
+	ldr r1, _021FC694 ; =WCM_Essid_Any
 	mov r3, #0x200000
 	bl ov00_021FCBB4
 	mov r0, #3
 	ldmia sp!, {r4, pc}
 	.balign 4, 0
-_021FC690: .word _02108FC0
-_021FC694: .word _02108FC8
+_021FC690: .word WCM_Bssid_Any
+_021FC694: .word WCM_Essid_Any
 	arm_func_end ov00_021FC648
 
 	arm_func_start ov00_021FC698
@@ -24457,8 +24457,8 @@ _021FC704:
 	str r1, [r4, #0xcb4]
 	add r0, r4, #0xd00
 	ldrsb r2, [r0, #0x11]
-	ldr r0, _021FC734 ; =_02108FC0
-	ldr r1, _021FC738 ; =_02108FC8
+	ldr r0, _021FC734 ; =WCM_Bssid_Any
+	ldr r1, _021FC738 ; =WCM_Essid_Any
 	mov r3, #0x200000
 	bl ov00_021FCBB4
 _021FC728:
@@ -24466,8 +24466,8 @@ _021FC728:
 	ldmia sp!, {r4, pc}
 	.balign 4, 0
 _021FC730: .word 0x000082EA
-_021FC734: .word _02108FC0
-_021FC738: .word _02108FC8
+_021FC734: .word WCM_Bssid_Any
+_021FC738: .word WCM_Essid_Any
 	arm_func_end ov00_021FC698
 
 	arm_func_start ov00_021FC73C
@@ -24646,7 +24646,7 @@ _021FC98C:
 	add r2, r4, #0xd00
 	mla r1, r3, r0, r1
 	ldrsb r2, [r2, #0x11]
-	ldr r0, _021FC9C8 ; =_02108FC0
+	ldr r0, _021FC9C8 ; =WCM_Bssid_Any
 	mov r3, #0x300000
 	bl ov00_021FCBB4
 _021FC9BC:
@@ -24654,7 +24654,7 @@ _021FC9BC:
 	ldmia sp!, {r4, pc}
 	.balign 4, 0
 _021FC9C4: .word 0x000082EA
-_021FC9C8: .word _02108FC0
+_021FC9C8: .word WCM_Bssid_Any
 	arm_func_end ov00_021FC8AC
 
 	arm_func_start ov00_021FC9CC

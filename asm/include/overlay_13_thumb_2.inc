@@ -54,9 +54,9 @@
 .public _ll_mul
 .public _s32_div_f
 .public _u32_div_f
-.public _02108FC0
-.public _02108FC8
-.public _021D4670
+.public WCM_Bssid_Any
+.public WCM_Essid_Any
+.public CPSMyIp
 .public ov13_02220908
 .public ov13_02222C1C
 .public ov13_02222CE0
