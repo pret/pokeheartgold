@@ -17,7 +17,6 @@ nitroarc_dep = declare_dependency(
     link_with: static_library(
         'nitroarc',
         sources: files('lib/nitroarc.c'),
-
         c_args: nitroarc_cflags,
         include_directories: nitroarc_incdir,
         install: false,

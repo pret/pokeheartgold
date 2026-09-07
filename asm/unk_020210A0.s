@@ -220,7 +220,7 @@ _02021208:
 	add r0, r4, #0
 	bl TP_WaitBusy
 	add r0, r6, #0
-	bl TP_CheckBusy
+	bl TP_CheckError
 	cmp r0, #0
 	beq _0202121E
 	add r5, r5, #1
@@ -440,7 +440,7 @@ _02021390:
 	mov r0, #2
 	bl TP_WaitBusy
 	mov r0, #2
-	bl TP_CheckBusy
+	bl TP_CheckError
 	cmp r0, #0
 	beq _020213AE
 	add r5, r5, #1

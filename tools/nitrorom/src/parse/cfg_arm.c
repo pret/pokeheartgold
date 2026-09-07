@@ -137,10 +137,10 @@ static cfgresult cfg_arm9_nef(rompacker *packer, string val, long line)
     long len = val.len - NEF_EXT_LEN;
 
     {
-        string buf = string(malloc(len + lengthof(".sbin_LZ")), len + lengthof(".sbin_LZ"));
+        string buf = string(malloc(len + lengthof(".sbin")), len + lengthof(".sbin"));
 
         memcpy(buf.s, val.s, len);
-        memcpy(buf.s + len, ".sbin_LZ", lengthof(".sbin_LZ"));
+        memcpy(buf.s + len, ".sbin", lengthof(".sbin"));
 
         cfgresult res = cfg_arm9_staticbinary(packer, buf, line);
         free(buf.s);
@@ -149,10 +149,10 @@ static cfgresult cfg_arm9_nef(rompacker *packer, string val, long line)
     }
 
     {
-        string buf = string(malloc(len + lengthof("_defs.sbin_LZ")), len + lengthof("_defs.sbin_LZ"));
+        string buf = string(malloc(len + lengthof("_defs.sbin")), len + lengthof("_defs.sbin"));
 
         memcpy(buf.s, val.s, len);
-        memcpy(buf.s + len, "_defs.sbin_LZ", lengthof("_defs.sbin_LZ"));
+        memcpy(buf.s + len, "_defs.sbin", lengthof("_defs.sbin"));
 
         cfgresult res = cfg_arm9_definitions(packer, buf, line);
         free(buf.s);
@@ -207,10 +207,10 @@ static cfgresult cfg_arm7_nef(rompacker *packer, string val, long line)
     long len = val.len - NEF_EXT_LEN;
 
     {
-        string buf = string(malloc(len + lengthof(".sbin_LZ")), len + lengthof(".sbin_LZ"));
+        string buf = string(malloc(len + lengthof(".sbin")), len + lengthof(".sbin"));
 
         memcpy(buf.s, val.s, len);
-        memcpy(buf.s + len, ".sbin_LZ", lengthof(".sbin_LZ"));
+        memcpy(buf.s + len, ".sbin", lengthof(".sbin"));
 
         cfgresult res = cfg_arm7_staticbinary(packer, buf, line);
         free(buf.s);
@@ -219,10 +219,10 @@ static cfgresult cfg_arm7_nef(rompacker *packer, string val, long line)
     }
 
     {
-        string buf = string(malloc(len + lengthof("_defs.sbin_LZ")), len + lengthof("_defs.sbin_LZ"));
+        string buf = string(malloc(len + lengthof("_defs.sbin")), len + lengthof("_defs.sbin"));
 
         memcpy(buf.s, val.s, len);
-        memcpy(buf.s + len, "_defs.sbin_LZ", lengthof("_defs.sbin_LZ"));
+        memcpy(buf.s + len, "_defs.sbin", lengthof("_defs.sbin"));
 
         cfgresult res = cfg_arm7_definitions(packer, buf, line);
         free(buf.s);

@@ -14,6 +14,6 @@
 .public TP_GetLatestIndexInAuto
 .public TP_GetCalibratedPoint
 .public TP_WaitBusy
-.public TP_CheckBusy
+.public TP_CheckError
 .public _u32_div_f
 .public gSystem

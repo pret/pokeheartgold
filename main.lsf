@@ -402,7 +402,7 @@ Autoload ITCM
 Autoload DTCM
 {
     Address 0x027E0000
-    Library libos.a (.dtcm.bss)
+    Library libos.a (.dtcm)
 }
 Overlay OVY_0
 {
@@ -581,8 +581,7 @@ Overlay OVY_13
     After OVY_0
     Object main.nef.p/asm_overlay_13_thumb_1.s.o
     Library libmb.a
-    Object main.nef.p/asm_overlay_13_thumb_2.s.o
-    Object main.nef.p/lib_NitroDWC_asm_overlay_13_arm_2.s.o
+    Library libdwcutil.a
 }
 Overlay OVY_14
 {
@@ -716,7 +715,9 @@ Overlay OVY_38
 {
     After OVY_0
     Object main.nef.p/asm_overlay_38_thumb.s.o
-    Object main.nef.p/lib_NitroDWC_asm_overlay_38_arm.s.o
+    Library libdwcgsghttp.a
+    Library libdwcnd.a
+    Library libdwcnhttp.a
 }
 Overlay OVY_39
 {

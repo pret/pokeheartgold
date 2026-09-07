@@ -3162,7 +3162,7 @@ _0221EA44:
 _0221EA9C:
 	ldr r1, _0221EBA4 ; =ov38_02225BA8
 	mov r0, r4
-	bl strspn
+	bl strcspn
 	mov r6, r0
 	ldrsb r7, [r4, r6]
 	mov r1, #0
@@ -3179,7 +3179,7 @@ _0221EA9C:
 	bne _0221EB18
 	add r4, r4, #1
 	mov r0, r4
-	bl atol
+	bl atoi
 	strh r0, [r5, #0x20]
 	ldrh r0, [r5, #0x20]
 	cmp r0, #0
@@ -4542,7 +4542,7 @@ _0221FD84:
 	b _0221FE74
 _0221FDB4:
 	mov r0, r8
-	bl atol
+	bl atoi
 	str r0, [sl, #0x104]
 _0221FDC0:
 	ldr r1, _0221FEA4 ; =ov38_02225D04

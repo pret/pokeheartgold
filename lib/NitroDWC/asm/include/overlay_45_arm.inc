@@ -31,8 +31,8 @@
 .public strstr
 .public strtoul
 .public strtol
-.public atol
-.public strnicmp
+.public atoi
+.public strcasecmp
 .public _s32_div_f
 .public _u32_div_f
 .public __lower_mapC

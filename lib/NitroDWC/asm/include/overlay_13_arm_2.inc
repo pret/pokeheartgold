@@ -189,7 +189,7 @@
 .public memcmp
 .public strlen
 .public strncpy
-.public atol
+.public atoi
 .public swprintf
 .public _ll_udiv
 .public _ull_mod
@@ -216,5 +216,5 @@
 .public ov13_02226D74
 .public ov13_02226E5C
 .public ov13_02226F28
-.public ov13_0222B430
+.public DWC_StartUtility
 .public _0223DC20

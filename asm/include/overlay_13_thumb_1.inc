@@ -12,4 +12,4 @@
 .public OS_RestoreInterrupts
 .public DWC_SetAuthServer
 .public ov13_0221BA00
-.public ov13_0222B430
+.public DWC_StartUtility

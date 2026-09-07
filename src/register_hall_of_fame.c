@@ -1,5 +1,7 @@
 #include "register_hall_of_fame.h"
 
+#include <stdlib.h>
+
 #include "global.h"
 
 #include "constants/map_sections.h"

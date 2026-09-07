@@ -16052,7 +16052,7 @@ _0223EEF8:
 	movs r0, r0, lsr #0x1f
 	addeq r0, r1, #1
 	ldrne r0, [r1, #8]
-	bl atol
+	bl atoi
 	movs r4, r0
 	bne _0223EF40
 	add r0, sp, #0x6c
@@ -20395,7 +20395,7 @@ _02242A80:
 	movs r0, r0, lsr #0x1f
 	addeq r0, r1, #0xd
 	ldrne r0, [r1, #0x14]
-	bl atol
+	bl atoi
 	movs r4, r0
 	add r0, sp, #0xc
 	bne _02242AB8
@@ -25979,7 +25979,7 @@ _02247720:
 _02247740:
 	mov r0, r5
 	mov r1, r4
-	bl strnicmp
+	bl strcasecmp
 	ldmia sp!, {r3, r4, r5, pc}
 	.balign 4, 0
 _02247750: .word ov45_02255958
@@ -26115,7 +26115,7 @@ _022478DC:
 _022478FC:
 	mov r0, r5
 	mov r1, r4
-	bl strnicmp
+	bl strcasecmp
 	ldmia sp!, {r3, r4, r5, pc}
 	.balign 4, 0
 _0224790C: .word ov45_02255958
@@ -26260,10 +26260,10 @@ _02247AD0: .word 0x00000101
 
 	arm_func_start ov45_02247AD4
 ov45_02247AD4: ; 0x02247AD4
-	ldr ip, _02247ADC ; =strnicmp
+	ldr ip, _02247ADC ; =strcasecmp
 	bx ip
 	.balign 4, 0
-_02247ADC: .word strnicmp
+_02247ADC: .word strcasecmp
 	arm_func_end ov45_02247AD4
 
 	arm_func_start ov45_02247AE0
@@ -26301,7 +26301,7 @@ _02247B28:
 _02247B50:
 	mov r0, r8
 	mov r1, sb
-	bl strnicmp
+	bl strcasecmp
 	cmp r0, #0
 	moveq r0, #1
 	ldmeqia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
@@ -28368,7 +28368,7 @@ _0224976C:
 	ldrne r1, [r8, #8]
 	cmpne r1, #0
 	beq _022497F4
-	bl strnicmp
+	bl strcasecmp
 	cmp r0, #0
 	bne _022497F4
 _022497AC:
@@ -28381,7 +28381,7 @@ _022497AC:
 	cmpne r1, #0
 	beq _022497F4
 	mov r0, r7
-	bl strnicmp
+	bl strcasecmp
 	cmp r0, #0
 	bne _022497F4
 _022497DC:
@@ -28454,7 +28454,7 @@ _022498A8:
 	ldr r0, [r4, #0x1c]
 	mov r1, r5
 	ldr r0, [r0, #8]
-	bl strnicmp
+	bl strcasecmp
 	cmp r0, #0
 	moveq r0, r4
 	ldmeqia sp!, {r3, r4, r5, pc}
@@ -30190,7 +30190,7 @@ _0224B05C:
 	cmpne r0, #0
 	streq r7, [sb, #0x1c]
 	beq _0224B0DC
-	bl atol
+	bl atoi
 	str r0, [sb, #0x1c]
 	b _0224B0DC
 _0224B080:
@@ -30311,7 +30311,7 @@ _0224B1DC:
 _0224B204:
 	mov r0, r5
 	add r1, sb, #0x36c
-	bl strnicmp
+	bl strcasecmp
 	cmp r0, #0
 	bne _0224B27C
 	ldr r0, [sb, #0x800]
@@ -30410,7 +30410,7 @@ _0224B358:
 	add r1, r7, #0x36c
 	ldmia r0, {r4, r5}
 	mov r0, r4
-	bl strnicmp
+	bl strcasecmp
 	cmp r0, #0
 	bne _0224B3E8
 	ldr r0, [r7, #0x800]
@@ -30507,7 +30507,7 @@ _0224B4BC:
 	add r1, r7, #0x36c
 	ldmia r0, {r4, r5}
 	mov r0, r4
-	bl strnicmp
+	bl strcasecmp
 	cmp r0, #0
 	bne _0224B550
 	ldr r0, [r7, #0x800]
@@ -30606,7 +30606,7 @@ _0224B628:
 	add r1, r7, #0x36c
 	ldmia r0, {r4, r5}
 	mov r0, r4
-	bl strnicmp
+	bl strcasecmp
 	cmp r0, #0
 	bne _0224B6BC
 	ldr r0, [r7, #0x800]
@@ -30730,7 +30730,7 @@ _0224B7DC:
 	mov r0, r5
 	add r1, r4, #0x36c
 	ldr r6, [r2]
-	bl strnicmp
+	bl strcasecmp
 	cmp r0, #0
 	bne _0224B898
 	mov r0, r6
@@ -31095,7 +31095,7 @@ _0224BCE4:
 	ldmeqia sp!, {r4, r5, r6, r7, r8, sb, pc}
 	mov r0, r6
 	add r1, sb, #0x36c
-	bl strnicmp
+	bl strcasecmp
 	cmp r0, #0
 	bne _0224BDA8
 	ldr r0, [r7, #4]
@@ -33615,7 +33615,7 @@ _0224E05C:
 	bl memcpy
 	ldr r0, [sb, #0x20]
 	ldr r0, [r0, #8]
-	bl atol
+	bl atoi
 	ldr r1, [sb, #0x20]
 	mov r5, r0
 	ldr r0, [r1, #0xc]
@@ -34446,7 +34446,7 @@ _0224EC44:
 	ldmneia sp!, {r3, r4, r5, r6, pc}
 	ldr r0, [r5, #0x20]
 	ldr r0, [r0, #4]
-	bl atol
+	bl atoi
 	ldr r1, [r5, #0x20]
 	mov r5, r0
 	ldr r6, [r1, #8]
@@ -34503,11 +34503,11 @@ _0224ED10:
 	ldmltia sp!, {r3, r4, r5, pc}
 	ldr r0, [r4, #0x20]
 	ldr r0, [r0, #4]
-	bl atol
+	bl atoi
 	str r0, [r5, #0x8ac]
 	ldr r0, [r4, #0x20]
 	ldr r0, [r0, #8]
-	bl atol
+	bl atoi
 	str r0, [r5, #0x8b0]
 	ldr r0, [r5, #0x10]
 	cmp r0, #0
@@ -35080,7 +35080,7 @@ _0224F4D4:
 	ldmneia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	ldr r0, [r5, #0x20]
 	ldr r0, [r0, #4]
-	bl atol
+	bl atoi
 	ldr r2, [r5, #0x20]
 	ldr r1, [r4, #4]
 	ldr r5, [r2, #8]
@@ -35162,7 +35162,7 @@ _0224F5E0:
 _0224F5F8:
 	ldr r0, [r5, #0x14]
 	ldr r1, [r8, r4, lsl #3]
-	bl strnicmp
+	bl strcasecmp
 	cmp r0, #0
 	bne _0224F630
 	ldr r0, _0224F65C ; =ov45_02256410 + 4

@@ -7,9 +7,9 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "config.h"
-
 #define PROGRAM_NAME "nitrorom"
+#define VERSION      "0.1.3"
+#define REVISION     ""
 
 static void showusage(FILE *stream);
 extern int  nitrorom_list(int argc, const char **argv);
@@ -39,7 +39,7 @@ int main(int argc, const char **argv)
     }
 
     if (strncmp(argv[1], "--version", 9) == 0) {
-        printf("%s\n", VERSION);
+        printf("%s%s\n", VERSION, REVISION);
         exit(EXIT_SUCCESS);
     }
 

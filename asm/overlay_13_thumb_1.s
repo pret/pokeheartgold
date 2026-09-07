@@ -39,7 +39,7 @@ _0221BA0C:
 	add r4, r0, #0
 	mov r1, #1
 	mov r2, #0
-	bl ov13_0222B430
+	bl DWC_StartUtility
 	add r0, r4, #0
 	bl Heap_Free
 	add r0, r5, #0

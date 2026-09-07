@@ -143,9 +143,9 @@
 .public atod
 .public strtoul
 .public strtol
-.public atol
+.public atoi
 .public wcslen
-.public strnicmp
+.public strcasecmp
 .public _dadd
 .public _d2f
 .public _dflt

@@ -46,9 +46,9 @@
 .public strlen
 .public strncmp
 .public strchr
-.public strspn
+.public strcspn
 .public strstr
-.public atol
+.public atoi
 .public _ll_udiv
 .public _u32_div_f
 .public __msl_digit

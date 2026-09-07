@@ -1,40 +1,35 @@
 libpng_dep = dependency('libpng', native: true)
 
-clip_dep = declare_dependency(sources: files('source/libs/clip.c'))
-strings_dep = declare_dependency(sources: files('source/libs/strings.c'))
-config_dep = declare_dependency(sources: files('source/libs/config.c'), dependencies: [strings_dep])
-sheets_dep = declare_dependency(sources: files('source/libs/sheets.c'), dependencies: [strings_dep])
-fileio_dep = declare_dependency(sources: files('source/libs/fileio.c'), dependencies: [strings_dep])
+nitrorom_exe = executable('nitrorom',
+    sources: [
+        files(
+            'src/libs/clip.c',
+            'src/libs/config.c',
+            'src/libs/fileio.c',
+            'src/libs/sheets.c',
+            'src/libs/strings.c',
+            'src/nitrorom.c',
+            'src/nitrorom_list.c',
+            'src/nitrorom_pack.c',
+            'src/packer.c',
+            'src/parse/cfg_arm.c',
+            'src/parse/cfg_banner.c',
+            'src/parse/cfg_header.c',
+            'src/parse/cfg_rom.c',
+            'src/parse/csv_addfile.c',
+        ),
+    ],
 
-config_data = configuration_data()
-config_data.set_quoted('VERSION', meson.project_version())
-config_h = configure_file(output: 'config.h', configuration: config_data)
+    c_args: [
+        '-std=gnu17',
+        '-O3',
+        '-Wall',
+        '-Wextra',
+        '-Wno-unused-result',
+        '-Wno-stringop-overflow',
+    ],
 
-nitrorom_exe = executable(
-  'nitrorom',
-  sources: [
-    files(
-      'source/nitrorom.c',
-      'source/nitrorom_list.c',
-      'source/nitrorom_pack.c',
-      'source/packer.c',
-      'source/parse/cfg_arm.c',
-      'source/parse/cfg_banner.c',
-      'source/parse/cfg_header.c',
-      'source/parse/cfg_rom.c',
-      'source/parse/csv_addfile.c',
-    ),
-    config_h
-  ],
-  native: true,
-  include_directories: include_directories('include'),
-  dependencies: [
-    libpng_dep,
-    clip_dep,
-    config_dep,
-    fileio_dep,
-    sheets_dep,
-    strings_dep,
-  ],
+    include_directories: include_directories('include'),
+    dependencies: libpng_dep,
+    native: true,
 )
-

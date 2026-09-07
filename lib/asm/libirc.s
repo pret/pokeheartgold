@@ -458,7 +458,7 @@ _020DE240: .word _021E408C
 _020DE244: .word 0x0000A002
 	arm_func_end CARD_SpiWaitGetStatus
 
-.rodata
+.data
 
 _02110FBC:
 	.byte 0xFD, 0xFF, 0x00, 0x00

@@ -41,4 +41,5 @@ libirc = static_library('irc',
 subdir('dsprot')
 subdir('NitroDWC')
 subdir('syscall')
+subdir('MSL_C')
 

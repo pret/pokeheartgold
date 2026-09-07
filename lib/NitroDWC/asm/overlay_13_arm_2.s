@@ -5146,8 +5146,8 @@ ov13_0222B424: ; 0x0222B424
 _0222B42C: .word ov13_022412F4
 	arm_func_end ov13_0222B424
 
-	arm_func_start ov13_0222B430
-ov13_0222B430: ; 0x0222B430
+	arm_func_start DWC_StartUtility
+DWC_StartUtility: ; 0x0222B430
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r3, _0222B4B4 ; =ov13_0224F4CC
 	str r0, [r3, #4]
@@ -5185,7 +5185,7 @@ _0222B47C:
 	.balign 4, 0
 _0222B4B4: .word ov13_0224F4CC
 _0222B4B8: .word ov13_0222C1BC
-	arm_func_end ov13_0222B430
+	arm_func_end DWC_StartUtility
 
 	arm_func_start ov13_0222B4BC
 ov13_0222B4BC: ; 0x0222B4BC
@@ -13804,7 +13804,7 @@ _022321C0:
 	blt _022321C0
 _022321DC:
 	add r0, sp, #0
-	bl atol
+	bl atoi
 	cmp r0, r4
 	movge r0, #1
 	movlt r0, #0
@@ -24470,7 +24470,7 @@ _0223AAA4:
 	blt _0223AAA4
 _0223AAC0:
 	mov r0, r6
-	bl atol
+	bl atoi
 	strb r0, [sb, r7]
 	add r7, r7, #1
 	cmp r7, #4

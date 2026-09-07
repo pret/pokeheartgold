@@ -51,8 +51,8 @@ msl_c_c_args = [
     '-wrap:sdk', '2.0/sp2p3'
 ]
 
-msl_c_lib = static_library('msl_c',
-    sources : msl_c_srcs,
+msl_c_extras_lib = static_library('msl_c_extras',
+    sources: ['asm/MSL_string_extras.s'],
     c_args : msl_c_c_args,
     nasm_args : asm_args,
     include_directories : [lib_includes, msl_c_includes],
