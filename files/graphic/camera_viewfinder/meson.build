@@ -1,8 +1,3 @@
-camera_viewfinder_knarc_args = copy_gen.process(files(
-    '.knarcorder',
-    '.knarcignore'
-))
-
 camera_viewfinder_nclr = nclr_gen.process(
     files(
         'camera_viewfinder.png'

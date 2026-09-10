@@ -6,23 +6,23 @@ build_dir = meson.current_build_dir()
 subdir('camera_viewfinder')
 
 camera_viewfinder_narc = custom_target('camera_viewfinder.narc',
-    command : [
-        narc_exe, 
-        '-p', build_dir + '/camera_viewfinder.narc',
-        '-d', build_dir + '/camera_viewfinder.narc.p',
-        '-i'
+    output: [
+        'camera_viewfinder.narc',
+        'camera_viewfinder.naix',
     ],
-    input : [
-        camera_viewfinder_knarc_args,
+    input: [
         camera_viewfinder_nclr,
         camera_viewfinder_ncgr_lz,
         camera_viewfinder_nscr_lz,
     ],
-    output : [
-        'camera_viewfinder.narc',
-        'camera_viewfinder.naix',
+    command: [
+        nitroarc_exe,
+        '--create',
+        '--index',
+        '--files-from', files('camera_viewfinder.order'),
+        '--file', '@OUTPUT0@',
+        '@PRIVATE_DIR@',
     ],
-    build_by_default:true,
 )
 
 nitrofs_files += camera_viewfinder_narc

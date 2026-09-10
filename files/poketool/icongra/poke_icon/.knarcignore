@@ -1,9 +1,0 @@
-*.png
-*.pal
-*.json
-*.mk
-*.naix
-*.narc
-.gitignore
-.knarcignore
-
