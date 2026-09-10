@@ -74,7 +74,10 @@ nitrosdk_dep = dependency('NitroSDK',
         'mwrap_libos' : '2.0/sp2p3',
         'mwrap_libcard' : '2.0/sp2p3',
         'mwrap_arm7' : '2.0/sp2p3',
+        'mwrap_libwl_arm7' : '2.0/sp1p2',
         'sp1p3_conditionals' : true,
+        'patch3' : true,
+        'hg_card_spi' : true,
     }
 )
 
