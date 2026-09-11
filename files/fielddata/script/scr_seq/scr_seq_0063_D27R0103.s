@@ -5,20 +5,20 @@
 
 	.rodata
 
-	scrdef scr_seq_D27R0103_000
-	scrdef scr_seq_D27R0103_001
-	scrdef_end
+	ScrDef scr_seq_D27R0103_000
+	ScrDef scr_seq_D27R0103_001
+	ScrDefEnd
 
 scr_seq_D27R0103_000:
-	play_se SEQ_SE_GS_RAKKA01
-	apply_movement obj_player, _0038
-	wait 1, VAR_SPECIAL_RESULT
-	scrcmd_374 obj_player
-	wait_movement
-	screen_shake 0, 1, 1, 8
-	play_se SEQ_SE_DP_SUTYA2
-	setvar VAR_UNK_40A7, 0
-	end
+	PlaySE SEQ_SE_GS_RAKKA01
+	ApplyMovement obj_player, _0038
+	Wait 1, VAR_SPECIAL_RESULT
+	ScrCmd_374 obj_player
+	WaitMovement
+	ScreenShake 0, 1, 1, 8
+	PlaySE SEQ_SE_DP_SUTYA2
+	SetVar VAR_UNK_40A7, 0
+	End
 
 	.balign 4, 0
 _0038:
@@ -26,9 +26,9 @@ _0038:
 	EndMovement
 
 scr_seq_D27R0103_001:
-	compare VAR_UNK_40A7, 1
-	goto_if_ne _0051
-	make_object_visible obj_player
+	Compare VAR_UNK_40A7, 1
+	GoToIfNe _0051
+	MakeObjectVisible obj_player
 _0051:
-	end
+	End
 	.balign 4, 0

@@ -3212,14 +3212,14 @@ _021FAAAA:
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18
 	add r0, r4, #0
-	bl sub_0205BA70
+	bl MetatileBehavior_IsReflective
 	cmp r0, #1
 	bne _021FAB18
 	mov r4, #2
 	b _021FAB28
 _021FAB18:
 	add r0, r4, #0
-	bl sub_0205B984
+	bl MetatileBehavior_IsPuddle
 	cmp r0, #1
 	bne _021FAB26
 	mov r4, #0

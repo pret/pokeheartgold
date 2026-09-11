@@ -5,209 +5,209 @@
 
 	.rodata
 
-	scrdef scr_seq_D17R0101_000
-	scrdef scr_seq_D17R0101_001
-	scrdef scr_seq_D17R0101_002
-	scrdef_end
+	ScrDef scr_seq_D17R0101_000
+	ScrDef scr_seq_D17R0101_001
+	ScrDef scr_seq_D17R0101_002
+	ScrDefEnd
 
 scr_seq_D17R0101_000:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	goto_if_set FLAG_CAUGHT_HO_OH, _0053
-	get_game_version VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 8
-	goto_if_eq _0048
-	goto_if_set FLAG_UNK_108, _005E
-	goto_if_set FLAG_UNK_105, _0069
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	GoToIfSet FLAG_CAUGHT_HO_OH, _0053
+	GetGameVersion VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 8
+	GoToIfEq _0048
+	GoToIfSet FLAG_UNK_108, _005E
+	GoToIfSet FLAG_UNK_105, _0069
 _0048:
-	npc_msg msg_0057_D17R0101_00003
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0057_D17R0101_00003
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0053:
-	npc_msg msg_0057_D17R0101_00006
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0057_D17R0101_00006
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _005E:
-	npc_msg msg_0057_D17R0101_00005
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0057_D17R0101_00005
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0069:
-	npc_msg msg_0057_D17R0101_00004
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0057_D17R0101_00004
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_D17R0101_001:
-	scrcmd_609
-	lockall
-	get_player_facing VAR_TEMP_x400A
-	compare VAR_TEMP_x400A, 0
-	goto_if_ne _0097
-	apply_movement obj_D17R0101_bozu, _02D8
-	goto _009F
+	ScrCmd_609
+	LockAll
+	GetPlayerFacing VAR_TEMP_x400A
+	Compare VAR_TEMP_x400A, 0
+	GoToIfNe _0097
+	ApplyMovement obj_D17R0101_bozu, _02D8
+	GoTo _009F
 
 _0097:
-	apply_movement obj_D17R0101_bozu, _02E0
+	ApplyMovement obj_D17R0101_bozu, _02E0
 _009F:
-	wait_movement
-	get_player_coords VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
-	compare VAR_TEMP_x400A, 0
-	call_if_eq _0150
-	compare VAR_TEMP_x400A, 2
-	call_if_eq _0192
-	goto_if_set FLAG_UNK_093, _028E
-	toggle_following_pokemon_movement 0
-	wait_following_pokemon_movement
-	following_pokemon_movement 56
-	compare VAR_TEMP_x400A, 0
-	goto_if_ne _00F1
-	apply_movement obj_player, _0344
-	goto _0101
+	WaitMovement
+	GetPlayerCoords VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
+	Compare VAR_TEMP_x400A, 0
+	CallIfEq _0150
+	Compare VAR_TEMP_x400A, 2
+	CallIfEq _0192
+	GoToIfSet FLAG_UNK_093, _028E
+	ToggleFollowingPokemonMovement 0
+	WaitFollowingPokemonMovement
+	FollowingPokemonMovement 56
+	Compare VAR_TEMP_x400A, 0
+	GoToIfNe _00F1
+	ApplyMovement obj_player, _0344
+	GoTo _0101
 
 _00F1:
-	apply_movement obj_D17R0101_bozu, _0354
-	apply_movement obj_player, _0354
+	ApplyMovement obj_D17R0101_bozu, _0354
+	ApplyMovement obj_player, _0354
 _0101:
-	wait_movement
-	wait_following_pokemon_movement
-	toggle_following_pokemon_movement 1
-	following_pokemon_movement 48
-	get_game_version VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 7
-	goto_if_ne _0127
-	npc_msg msg_0057_D17R0101_00000
-	goto _012A
+	WaitMovement
+	WaitFollowingPokemonMovement
+	ToggleFollowingPokemonMovement 1
+	FollowingPokemonMovement 48
+	GetGameVersion VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 7
+	GoToIfNe _0127
+	NPCMsg msg_0057_D17R0101_00000
+	GoTo _012A
 
 _0127:
-	npc_msg msg_0057_D17R0101_00001
+	NPCMsg msg_0057_D17R0101_00001
 _012A:
-	closemsg
-	get_player_coords VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
-	compare VAR_TEMP_x400A, 0
-	call_if_eq _01EF
-	compare VAR_TEMP_x400A, 2
-	call_if_eq _0231
-	releaseall
-	end
+	CloseMsg
+	GetPlayerCoords VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
+	Compare VAR_TEMP_x400A, 0
+	CallIfEq _01EF
+	Compare VAR_TEMP_x400A, 2
+	CallIfEq _0231
+	ReleaseAll
+	End
 
 _0150:
-	compare VAR_SPECIAL_x8004, 7
-	goto_if_ne _016B
-	apply_movement obj_D17R0101_bozu, _02EC
-	goto _018E
+	Compare VAR_SPECIAL_x8004, 7
+	GoToIfNe _016B
+	ApplyMovement obj_D17R0101_bozu, _02EC
+	GoTo _018E
 
 _016B:
-	compare VAR_SPECIAL_x8004, 8
-	goto_if_ne _0186
-	apply_movement obj_D17R0101_bozu, _02FC
-	goto _018E
+	Compare VAR_SPECIAL_x8004, 8
+	GoToIfNe _0186
+	ApplyMovement obj_D17R0101_bozu, _02FC
+	GoTo _018E
 
 _0186:
-	apply_movement obj_D17R0101_bozu, _0304
+	ApplyMovement obj_D17R0101_bozu, _0304
 _018E:
-	wait_movement
-	return
+	WaitMovement
+	Return
 
 _0192:
-	compare VAR_SPECIAL_x8005, 7
-	goto_if_ne _01AD
-	apply_movement obj_D17R0101_bozu, _0314
-	goto _01EB
+	Compare VAR_SPECIAL_x8005, 7
+	GoToIfNe _01AD
+	ApplyMovement obj_D17R0101_bozu, _0314
+	GoTo _01EB
 
 _01AD:
-	compare VAR_SPECIAL_x8005, 8
-	goto_if_ne _01C8
-	apply_movement obj_D17R0101_bozu, _0324
-	goto _01EB
+	Compare VAR_SPECIAL_x8005, 8
+	GoToIfNe _01C8
+	ApplyMovement obj_D17R0101_bozu, _0324
+	GoTo _01EB
 
 _01C8:
-	compare VAR_SPECIAL_x8005, 9
-	goto_if_ne _01E3
-	apply_movement obj_D17R0101_bozu, _032C
-	goto _01EB
+	Compare VAR_SPECIAL_x8005, 9
+	GoToIfNe _01E3
+	ApplyMovement obj_D17R0101_bozu, _032C
+	GoTo _01EB
 
 _01E3:
-	apply_movement obj_D17R0101_bozu, _0338
+	ApplyMovement obj_D17R0101_bozu, _0338
 _01EB:
-	wait_movement
-	return
+	WaitMovement
+	Return
 
 _01EF:
-	compare VAR_SPECIAL_x8004, 7
-	goto_if_ne _020A
-	apply_movement obj_D17R0101_bozu, _0364
-	goto _022D
+	Compare VAR_SPECIAL_x8004, 7
+	GoToIfNe _020A
+	ApplyMovement obj_D17R0101_bozu, _0364
+	GoTo _022D
 
 _020A:
-	compare VAR_SPECIAL_x8004, 8
-	goto_if_ne _0225
-	apply_movement obj_D17R0101_bozu, _0378
-	goto _022D
+	Compare VAR_SPECIAL_x8004, 8
+	GoToIfNe _0225
+	ApplyMovement obj_D17R0101_bozu, _0378
+	GoTo _022D
 
 _0225:
-	apply_movement obj_D17R0101_bozu, _0384
+	ApplyMovement obj_D17R0101_bozu, _0384
 _022D:
-	wait_movement
-	return
+	WaitMovement
+	Return
 
 _0231:
-	compare VAR_SPECIAL_x8005, 7
-	goto_if_ne _024C
-	apply_movement obj_D17R0101_bozu, _0398
-	goto _028A
+	Compare VAR_SPECIAL_x8005, 7
+	GoToIfNe _024C
+	ApplyMovement obj_D17R0101_bozu, _0398
+	GoTo _028A
 
 _024C:
-	compare VAR_SPECIAL_x8005, 8
-	goto_if_ne _0267
-	apply_movement obj_D17R0101_bozu, _03A4
-	goto _028A
+	Compare VAR_SPECIAL_x8005, 8
+	GoToIfNe _0267
+	ApplyMovement obj_D17R0101_bozu, _03A4
+	GoTo _028A
 
 _0267:
-	compare VAR_SPECIAL_x8005, 9
-	goto_if_ne _0282
-	apply_movement obj_D17R0101_bozu, _03B0
-	goto _028A
+	Compare VAR_SPECIAL_x8005, 9
+	GoToIfNe _0282
+	ApplyMovement obj_D17R0101_bozu, _03B0
+	GoTo _028A
 
 _0282:
-	apply_movement obj_D17R0101_bozu, _03C0
+	ApplyMovement obj_D17R0101_bozu, _03C0
 _028A:
-	wait_movement
-	return
+	WaitMovement
+	Return
 
 _028E:
-	npc_msg msg_0057_D17R0101_00002
-	closemsg
-	show_legendary_wing 0
-	releaseall
-	setvar VAR_UNK_40F3, 1
-	end
+	NPCMsg msg_0057_D17R0101_00002
+	CloseMsg
+	ShowLegendaryWing 0
+	ReleaseAll
+	SetVar VAR_UNK_40F3, 1
+	End
 
 scr_seq_D17R0101_002:
-	wait 30, VAR_SPECIAL_RESULT
-	compare VAR_TEMP_x400A, 0
-	goto_if_ne _02C2
-	apply_movement obj_D17R0101_bozu, _03D0
-	goto _02CA
+	Wait 30, VAR_SPECIAL_RESULT
+	Compare VAR_TEMP_x400A, 0
+	GoToIfNe _02C2
+	ApplyMovement obj_D17R0101_bozu, _03D0
+	GoTo _02CA
 
 _02C2:
-	apply_movement obj_D17R0101_bozu, _03E0
+	ApplyMovement obj_D17R0101_bozu, _03E0
 _02CA:
-	wait_movement
-	npc_msg msg_0057_D17R0101_00003
-	wait_button_or_walk_away
-	closemsg
-	end
+	WaitMovement
+	NPCMsg msg_0057_D17R0101_00003
+	WaitButton
+	CloseMsg
+	End
 
 	.balign 4, 0
 _02D8:

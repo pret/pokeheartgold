@@ -5447,7 +5447,7 @@ _0223A39A:
 	ldr r0, [r4]
 	ldr r0, [r0, #0x28]
 	bl Save_GameStats_Get
-	mov r1, #7
+	mov r1, #7 ; SCORE_EVENT_BALL_CAPSULE_MODIFIED
 	bl GameStats_AddScore
 	mov r0, #0xfb
 	lsl r0, r0, #2

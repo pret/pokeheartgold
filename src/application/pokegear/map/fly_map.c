@@ -1,9 +1,10 @@
 #include "application/pokegear/map/pokegear_map_internal.h"
 
 #include "phonebook_dat.h"
+#include "poke_overlay.h"
 #include "pokegear_apps.h"
+#include "screen_fade.h"
 #include "sys_flags.h"
-#include "unk_0200FA24.h"
 
 FS_EXTERN_OVERLAY(OVY_26);
 FS_EXTERN_OVERLAY(pokegear);
@@ -198,7 +199,7 @@ static int FlyMap_MainTask_FadeIn(PokegearMapAppData *mapApp) {
 
     switch (mapApp->state) {
     case 0:
-        BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 1, mapApp->heapID);
+        BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_IN, FADE_TYPE_BRIGHTNESS_IN, RGB_BLACK, 6, 1, mapApp->heapID);
         for (i = 0; i < 8; ++i) {
             ToggleBgLayer(i, GF_PLANE_TOGGLE_ON);
         }
@@ -222,7 +223,7 @@ static int FlyMap_MainTask_FadeOut(PokegearMapAppData *mapApp) {
 
     switch (mapApp->state) {
     case 0:
-        BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, mapApp->heapID);
+        BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, RGB_BLACK, 6, 1, mapApp->heapID);
         ++mapApp->state;
         break;
     case 1:

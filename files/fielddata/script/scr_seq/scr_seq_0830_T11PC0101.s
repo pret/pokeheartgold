@@ -5,40 +5,40 @@
 
 	.rodata
 
-	scrdef scr_seq_T11PC0101_000
-	scrdef scr_seq_T11PC0101_001
-	scrdef scr_seq_T11PC0101_002
-	scrdef scr_seq_T11PC0101_003
-	scrdef_end
+	ScrDef scr_seq_T11PC0101_000
+	ScrDef scr_seq_T11PC0101_001
+	ScrDef scr_seq_T11PC0101_002
+	ScrDef scr_seq_T11PC0101_003
+	ScrDefEnd
 
 scr_seq_T11PC0101_000:
-	setvar VAR_SPECIAL_x8007, 0
-	callstd std_nurse_joy
-	end
+	SetVar VAR_SPECIAL_x8007, 0
+	CallStd std_nurse_joy
+	End
 
 scr_seq_T11PC0101_001:
-	simple_npc_msg msg_0532_T11PC0101_00000
-	end
+	SimpleNPCMsg msg_0532_T11PC0101_00000
+	End
 
 scr_seq_T11PC0101_002:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	goto_if_set FLAG_RESTORED_POWER, _004F
-	npc_msg msg_0532_T11PC0101_00001
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	GoToIfSet FLAG_RESTORED_POWER, _004F
+	NPCMsg msg_0532_T11PC0101_00001
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _004F:
-	npc_msg msg_0532_T11PC0101_00002
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0532_T11PC0101_00002
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_T11PC0101_003:
-	simple_npc_msg msg_0532_T11PC0101_00003
-	end
+	SimpleNPCMsg msg_0532_T11PC0101_00003
+	End
 	.balign 4, 0

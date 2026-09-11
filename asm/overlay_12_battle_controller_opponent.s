@@ -1937,7 +1937,7 @@ ov12_02259658: ; 0x02259658
 	add r2, r0, #0
 	add r0, r6, #0
 	add r1, r7, #0
-	bl ov12_0226ADE0
+	bl PartyGauge_LoadGraphics
 	mov r1, #0x65
 	lsl r1, r1, #2
 	ldrb r1, [r4, r1]
@@ -1956,7 +1956,7 @@ ov12_02259694: ; 0x02259694
 	add r5, r0, #0
 	add r4, r1, #0
 	bl BattleSystem_GetSpriteManager
-	bl ov12_0226AE78
+	bl PartyGauge_FreeGraphics
 	mov r1, #0x65
 	lsl r1, r1, #2
 	ldrb r1, [r4, r1]
@@ -2339,7 +2339,7 @@ ov12_02259968: ; 0x02259968
 	str r0, [sp, #0x24]
 	add r6, r1, #0
 	add r5, r2, #0
-	bl ov12_0223A8D4
+	bl BattleSystem_GetPokepicManager
 	str r0, [sp, #0x28]
 	ldr r0, [sp, #0x24]
 	bl BattleSystem_GetBattleType
@@ -3385,7 +3385,7 @@ _0225A166:
 	bne _0225A23A
 _0225A1E8:
 	add r0, r6, #0
-	bl ov12_0223A8D4
+	bl BattleSystem_GetPokepicManager
 	str r0, [sp, #0x24]
 	ldrh r0, [r7, #2]
 	ldrb r1, [r4, #0x13]
@@ -3588,7 +3588,7 @@ ov12_0225A37C: ; 0x0225A37C
 	add r7, r0, #0
 	add r5, r1, #0
 	add r6, r2, #0
-	bl ov12_0223A8D4
+	bl BattleSystem_GetPokepicManager
 	mov r0, #5
 	mov r1, #0x10
 	bl Heap_Alloc
@@ -6558,7 +6558,7 @@ _0225BAA4:
 	strb r1, [r0]
 _0225BAAC:
 	ldr r0, [r4]
-	bl ov12_0223A8D4
+	bl BattleSystem_GetPokepicManager
 	add r2, r4, #0
 	add r3, r4, #0
 	add r5, r0, #0
@@ -7096,7 +7096,7 @@ _0225BF10:
 	strb r1, [r0]
 _0225BF18:
 	ldr r0, [r4]
-	bl ov12_0223A8D4
+	bl BattleSystem_GetPokepicManager
 	add r2, r4, #0
 	add r3, r4, #0
 	add r5, r0, #0
@@ -7463,7 +7463,7 @@ _0225C214:
 	bl ov07_02233DB8
 	str r0, [r4, #0xc]
 	ldr r0, [r4]
-	bl ov12_0223A8D4
+	bl BattleSystem_GetPokepicManager
 	add r2, r4, #0
 	add r3, r4, #0
 	add r5, r0, #0
@@ -8063,7 +8063,7 @@ _0225C6F0: ; jump table
 	.short _0225C8C0 - _0225C6F0 - 2 ; case 9
 _0225C704:
 	ldr r0, [r4]
-	bl ov12_0223A8D4
+	bl BattleSystem_GetPokepicManager
 	add r2, r4, #0
 	add r3, r4, #0
 	add r5, r0, #0
@@ -14851,7 +14851,7 @@ _0225FE1A:
 	cmp r0, #0
 	beq _0225FE30
 	ldr r0, [r4]
-	bl ov12_0223A8D4
+	bl BattleSystem_GetPokepicManager
 	mov r1, #1
 	bl PokepicManager_SetG3UpdateFlagsMask
 _0225FE30:
@@ -14888,7 +14888,7 @@ _0225FE68:
 	cmp r0, #0
 	beq _0225FE7E
 	ldr r0, [r4]
-	bl ov12_0223A8D4
+	bl BattleSystem_GetPokepicManager
 	mov r1, #1
 	bl PokepicManager_ResetG3UpdateFlagsMask
 _0225FE7E:
@@ -15541,7 +15541,7 @@ ov12_0226037C: ; 0x0226037C
 	bl BattleSystem_GetPaletteData
 	add r4, r0, #0
 	ldr r0, [r5]
-	bl ov12_0223A8D4
+	bl BattleSystem_GetPokepicManager
 	add r7, r0, #0
 	ldrb r0, [r5, #6]
 	cmp r0, #0
@@ -16592,7 +16592,7 @@ _02260BEE:
 	add r0, #8
 	add r1, r6, #0
 	add r3, r7, #0
-	bl ov12_0226AEE0
+	bl PartyGauge_NewAndShow
 	add r2, r0, #0
 	ldr r0, [r5]
 	add r1, r6, #0
@@ -16606,7 +16606,7 @@ _02260C22:
 	ldr r0, [r5]
 	add r1, r6, #0
 	bl ov12_0223A908
-	bl ov12_0226AF48
+	bl PartyGauge_IsArrowTaskFinished
 	cmp r0, #1
 	bne _02260C52
 	ldrb r0, [r5, #7]
@@ -16665,17 +16665,17 @@ _02260C90:
 _02260C92:
 	add r0, r6, #0
 	add r2, r1, #0
-	bl ov12_0226AF6C
+	bl PartyGauge_StartHideTask
 	ldrb r0, [r5, #7]
 	add r0, r0, #1
 	strb r0, [r5, #7]
 	pop {r3, r4, r5, r6, r7, pc}
 _02260CA2:
-	bl ov12_0226AFA4
+	bl PartyGauge_IsHideTaskFinished
 	cmp r0, #1
 	bne _02260CD8
 	add r0, r6, #0
-	bl ov12_0226AFC8
+	bl PartyGauge_DeleteAndFreeResources
 	ldr r0, [r5]
 	add r1, r4, #0
 	mov r2, #0
@@ -16793,7 +16793,7 @@ ov12_02260D84: ; 0x02260D84
 	bl BattleSystem_GetPaletteData
 	add r4, r0, #0
 	ldr r0, [r5]
-	bl ov12_0223A8D4
+	bl BattleSystem_GetPokepicManager
 	add r7, r0, #0
 	ldrb r0, [r5, #6]
 	cmp r0, #0

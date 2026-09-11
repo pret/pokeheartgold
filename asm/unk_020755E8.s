@@ -1814,10 +1814,10 @@ _02076478:
 	ldr r1, [r4, #0x28]
 	bl Pokedex_SetMonCaughtFlag
 	ldr r0, [r4, #0x50]
-	mov r1, #0xd
+	mov r1, #0xd ; GAME_STAT_UNIQUE_MONS_CAUGHT
 	bl GameStats_Inc
 	ldr r0, [r4, #0x50]
-	mov r1, #0x15
+	mov r1, #0x15 ; SCORE_EVENT_REGISTER_SPECIES_CAUGHT
 	bl GameStats_AddScore
 	ldr r0, [r4, #0x28]
 	mov r1, #0x4d
@@ -2943,10 +2943,10 @@ _02076D62:
 	add r1, r5, #0
 	bl Pokedex_SetMonCaughtFlag
 	ldr r0, [r4, #0x50]
-	mov r1, #0xd
+	mov r1, #0xd ; GAME_STAT_UNIQUE_MONS_CAUGHT
 	bl GameStats_Inc
 	ldr r0, [r4, #0x50]
-	mov r1, #0x15
+	mov r1, #0x15 ; SCORE_EVENT_REGISTER_SPECIES_CAUGHT
 	bl GameStats_AddScore
 	add r0, r5, #0
 	bl Heap_Free

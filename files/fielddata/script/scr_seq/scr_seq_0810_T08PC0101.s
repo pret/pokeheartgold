@@ -5,50 +5,50 @@
 
 	.rodata
 
-	scrdef scr_seq_T08PC0101_000
-	scrdef scr_seq_T08PC0101_001
-	scrdef scr_seq_T08PC0101_002
-	scrdef scr_seq_T08PC0101_003
-	scrdef_end
+	ScrDef scr_seq_T08PC0101_000
+	ScrDef scr_seq_T08PC0101_001
+	ScrDef scr_seq_T08PC0101_002
+	ScrDef scr_seq_T08PC0101_003
+	ScrDefEnd
 
 scr_seq_T08PC0101_000:
-	setvar VAR_SPECIAL_x8007, 0
-	callstd std_nurse_joy
-	end
+	SetVar VAR_SPECIAL_x8007, 0
+	CallStd std_nurse_joy
+	End
 
 scr_seq_T08PC0101_001:
-	simple_npc_msg msg_0515_T08PC0101_00000
-	end
+	SimpleNPCMsg msg_0515_T08PC0101_00000
+	End
 
 scr_seq_T08PC0101_002:
-	simple_npc_msg msg_0515_T08PC0101_00001
-	end
+	SimpleNPCMsg msg_0515_T08PC0101_00001
+	End
 
 scr_seq_T08PC0101_003:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0515_T08PC0101_00002
-	get_player_facing VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_ne _006E
-	apply_movement obj_T08PC0101_gsgirl1, _009C
-	goto _0091
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	NPCMsg msg_0515_T08PC0101_00002
+	GetPlayerFacing VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfNe _006E
+	ApplyMovement obj_T08PC0101_gsgirl1, _009C
+	GoTo _0091
 
 _006E:
-	compare VAR_SPECIAL_RESULT, 2
-	goto_if_ne _0089
-	apply_movement obj_T08PC0101_gsgirl1, _00C0
-	goto _0091
+	Compare VAR_SPECIAL_RESULT, 2
+	GoToIfNe _0089
+	ApplyMovement obj_T08PC0101_gsgirl1, _00C0
+	GoTo _0091
 
 _0089:
-	apply_movement obj_T08PC0101_gsgirl1, _00E4
+	ApplyMovement obj_T08PC0101_gsgirl1, _00E4
 _0091:
-	npc_msg msg_0515_T08PC0101_00003
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0515_T08PC0101_00003
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 	.balign 4, 0
 _009C:

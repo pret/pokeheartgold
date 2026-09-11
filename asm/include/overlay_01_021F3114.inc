@@ -7,11 +7,11 @@
 .public GF_AssertFail
 .public FieldSystem_CreateTask
 .public TaskManager_GetEnvironment
-.public sub_0205B9DC
-.public sub_0205B9E8
-.public sub_0205B9F4
-.public sub_0205BA00
-.public sub_0205BA0C
+.public MetatileBehavior_IsSlideEast
+.public MetatileBehavior_IsSlideWest
+.public MetatileBehavior_IsSlideNorth
+.public MetatileBehavior_IsSlideSouth
+.public MetatileBehavior_StopSliding
 .public PlayerAvatar_SetFacingDirection
 .public PlayerAvatar_GetMapObject
 .public sub_0205DA34

@@ -12,7 +12,7 @@
 .public PaletteData_PushTransparentBuffers
 .public PaletteData_SetAutoTransparent
 .public PaletteData_FillPaletteInBuffer
-.public sub_02004AC8
+.public Sound_SetFieldBGM
 .public NARC_New
 .public NARC_Delete
 .public GfGfxLoader_LoadCharDataFromOpenNarc

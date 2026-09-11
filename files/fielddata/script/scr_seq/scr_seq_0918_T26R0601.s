@@ -5,53 +5,53 @@
 
 	.rodata
 
-	scrdef scr_seq_T26R0601_000
-	scrdef_end
+	ScrDef scr_seq_T26R0601_000
+	ScrDefEnd
 
 scr_seq_T26R0601_000:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	goto_if_set FLAG_GOT_GOOD_ROD, _008E
-	npc_msg msg_0610_T26R0601_00000
-	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_RESULT
-	touchscreen_menu_show
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0040
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _0079
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	GoToIfSet FLAG_GOT_GOOD_ROD, _008E
+	NPCMsg msg_0610_T26R0601_00000
+	TouchscreenMenuHide
+	GetMenuChoice VAR_SPECIAL_RESULT
+	TouchscreenMenuShow
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0040
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _0079
+	End
 
 _0040:
-	goto_if_no_item_space ITEM_GOOD_ROD, 1, _0084
-	npc_msg msg_0610_T26R0601_00001
-	wait_button_or_walk_away
-	callstd std_give_item_verbose
-	setflag FLAG_GOT_GOOD_ROD
-	npc_msg msg_0610_T26R0601_00003
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	GoToIfNoItemSpace ITEM_GOOD_ROD, 1, _0084
+	NPCMsg msg_0610_T26R0601_00001
+	WaitButton
+	CallStd std_give_item_verbose
+	SetFlag FLAG_GOT_GOOD_ROD
+	NPCMsg msg_0610_T26R0601_00003
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0079:
-	npc_msg msg_0610_T26R0601_00004
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0610_T26R0601_00004
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0084:
-	callstd std_bag_is_full
-	closemsg
-	releaseall
-	end
+	CallStd std_bag_is_full
+	CloseMsg
+	ReleaseAll
+	End
 
 _008E:
-	npc_msg msg_0610_T26R0601_00005
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0610_T26R0601_00005
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 	.balign 4, 0

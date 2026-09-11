@@ -5,142 +5,142 @@
 
 	.rodata
 
-	scrdef scr_seq_R39R0201_000
-	scrdef scr_seq_R39R0201_001
-	scrdef scr_seq_R39R0201_002
-	scrdef scr_seq_R39R0201_003
-	scrdef scr_seq_R39R0201_004
-	scrdef_end
+	ScrDef scr_seq_R39R0201_000
+	ScrDef scr_seq_R39R0201_001
+	ScrDef scr_seq_R39R0201_002
+	ScrDef scr_seq_R39R0201_003
+	ScrDef scr_seq_R39R0201_004
+	ScrDefEnd
 
 scr_seq_R39R0201_004:
-	scrcmd_379 VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 0
-	goto_if_eq _0047
-	compare VAR_TEMP_x4000, 1
-	goto_if_eq _0047
-	compare VAR_TEMP_x4000, 2
-	goto_if_eq _0047
-	clearflag FLAG_UNK_226
-	end
+	ScrCmd_379 VAR_TEMP_x4000
+	Compare VAR_TEMP_x4000, 0
+	GoToIfEq _0047
+	Compare VAR_TEMP_x4000, 1
+	GoToIfEq _0047
+	Compare VAR_TEMP_x4000, 2
+	GoToIfEq _0047
+	ClearFlag FLAG_UNK_226
+	End
 
 _0047:
-	setflag FLAG_UNK_226
-	end
+	SetFlag FLAG_UNK_226
+	End
 
 scr_seq_R39R0201_000:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	goto_if_set FLAG_UNK_100, _00A2
-	goto_if_set FLAG_UNK_0AA, _007E
-	npc_msg msg_0398_R39R0201_00005
-	closemsg
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	GoToIfSet FLAG_UNK_100, _00A2
+	GoToIfSet FLAG_UNK_0AA, _007E
+	NPCMsg msg_0398_R39R0201_00005
+	CloseMsg
 _0070:
-	apply_movement obj_R39R0201_gsbabygirl1, _021C
-	wait_movement
-	releaseall
-	end
+	ApplyMovement obj_R39R0201_gsbabygirl1, _021C
+	WaitMovement
+	ReleaseAll
+	End
 
 _007E:
-	npc_msg msg_0398_R39R0201_00006
-	giveitem_no_check ITEM_SEAL_CASE, 1
-	npc_msg msg_0398_R39R0201_00007
-	closemsg
-	setflag FLAG_UNK_100
-	goto _0070
-	end
+	NPCMsg msg_0398_R39R0201_00006
+	GiveItemNoCheck ITEM_SEAL_CASE, 1
+	NPCMsg msg_0398_R39R0201_00007
+	CloseMsg
+	SetFlag FLAG_UNK_100
+	GoTo _0070
+	End
 
 _00A2:
-	npc_msg msg_0398_R39R0201_00008
-	closemsg
-	goto _0070
-	end
+	NPCMsg msg_0398_R39R0201_00008
+	CloseMsg
+	GoTo _0070
+	End
 
 scr_seq_R39R0201_001:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	goto_if_set FLAG_UNK_101, _00E0
-	goto_if_set FLAG_UNK_0AA, _00FA
-	npc_msg msg_0398_R39R0201_00000
-	closemsg
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	GoToIfSet FLAG_UNK_101, _00E0
+	GoToIfSet FLAG_UNK_0AA, _00FA
+	NPCMsg msg_0398_R39R0201_00000
+	CloseMsg
 _00D2:
-	apply_movement obj_R39R0201_gsbabygirl1_2, _0224
-	wait_movement
-	releaseall
-	end
+	ApplyMovement obj_R39R0201_gsbabygirl1_2, _0224
+	WaitMovement
+	ReleaseAll
+	End
 
 _00E0:
-	npc_msg msg_0398_R39R0201_00004
-	closemsg
-	goto _00D2
-	end
+	NPCMsg msg_0398_R39R0201_00004
+	CloseMsg
+	GoTo _00D2
+	End
 
 _00ED:
-	npc_msg msg_0398_R39R0201_00002
-	closemsg
-	goto _00D2
-	end
+	NPCMsg msg_0398_R39R0201_00002
+	CloseMsg
+	GoTo _00D2
+	End
 
 _00FA:
-	goto_if_unset FLAG_UNK_100, _00ED
-	npc_msg msg_0398_R39R0201_00001
-	setvar VAR_SPECIAL_x8004, 29
-	setvar VAR_SPECIAL_x8005, 34
-	setvar VAR_SPECIAL_x8006, 39
-	get_seal_quantity VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 99
-	goto_if_eq _020C
-	get_seal_quantity VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 99
-	goto_if_eq _020C
-	get_seal_quantity VAR_SPECIAL_x8006, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 99
-	goto_if_eq _020C
-	setvar VAR_SPECIAL_x8000, 3
-	setvar VAR_SPECIAL_x8001, 3
-	setvar VAR_SPECIAL_x8002, 3
-	get_seal_quantity VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 96
-	goto_if_le _01C2
-	subvar VAR_SPECIAL_RESULT, 96
-	subvar VAR_SPECIAL_x8000, VAR_SPECIAL_RESULT
-	get_seal_quantity VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 96
-	goto_if_le _01C2
-	subvar VAR_SPECIAL_RESULT, 96
-	subvar VAR_SPECIAL_x8001, VAR_SPECIAL_RESULT
-	get_seal_quantity VAR_SPECIAL_x8006, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 96
-	goto_if_le _01C2
-	subvar VAR_SPECIAL_RESULT, 96
-	subvar VAR_SPECIAL_x8002, VAR_SPECIAL_RESULT
+	GoToIfUnset FLAG_UNK_100, _00ED
+	NPCMsg msg_0398_R39R0201_00001
+	SetVar VAR_SPECIAL_x8004, 29
+	SetVar VAR_SPECIAL_x8005, 34
+	SetVar VAR_SPECIAL_x8006, 39
+	GetSealQuantity VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 99
+	GoToIfEq _020C
+	GetSealQuantity VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 99
+	GoToIfEq _020C
+	GetSealQuantity VAR_SPECIAL_x8006, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 99
+	GoToIfEq _020C
+	SetVar VAR_SPECIAL_x8000, 3
+	SetVar VAR_SPECIAL_x8001, 3
+	SetVar VAR_SPECIAL_x8002, 3
+	GetSealQuantity VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 96
+	GoToIfLe _01C2
+	SubVar VAR_SPECIAL_RESULT, 96
+	SubVar VAR_SPECIAL_x8000, VAR_SPECIAL_RESULT
+	GetSealQuantity VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 96
+	GoToIfLe _01C2
+	SubVar VAR_SPECIAL_RESULT, 96
+	SubVar VAR_SPECIAL_x8001, VAR_SPECIAL_RESULT
+	GetSealQuantity VAR_SPECIAL_x8006, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 96
+	GoToIfLe _01C2
+	SubVar VAR_SPECIAL_RESULT, 96
+	SubVar VAR_SPECIAL_x8002, VAR_SPECIAL_RESULT
 _01C2:
-	give_or_take_seal VAR_SPECIAL_x8004, VAR_SPECIAL_x8000
-	give_or_take_seal VAR_SPECIAL_x8005, VAR_SPECIAL_x8001
-	give_or_take_seal VAR_SPECIAL_x8006, VAR_SPECIAL_x8002
-	buffer_seal_name_plural 0, VAR_SPECIAL_x8004
-	npc_msg msg_0398_R39R0201_00020
-	play_fanfare SEQ_ME_ITEM
-	wait_fanfare
-	buffer_seal_name_plural 0, VAR_SPECIAL_x8005
-	npc_msg msg_0398_R39R0201_00020
-	play_fanfare SEQ_ME_ITEM
-	wait_fanfare
-	buffer_seal_name_plural 0, VAR_SPECIAL_x8006
-	npc_msg msg_0398_R39R0201_00020
-	play_fanfare SEQ_ME_ITEM
-	wait_fanfare
-	closemsg
-	setflag FLAG_UNK_101
-	goto _00D2
-	end
+	GiveOrTakeSeal VAR_SPECIAL_x8004, VAR_SPECIAL_x8000
+	GiveOrTakeSeal VAR_SPECIAL_x8005, VAR_SPECIAL_x8001
+	GiveOrTakeSeal VAR_SPECIAL_x8006, VAR_SPECIAL_x8002
+	BufferSealNamePlural 0, VAR_SPECIAL_x8004
+	NPCMsg msg_0398_R39R0201_00020
+	PlayFanfare SEQ_ME_ITEM
+	WaitFanfare
+	BufferSealNamePlural 0, VAR_SPECIAL_x8005
+	NPCMsg msg_0398_R39R0201_00020
+	PlayFanfare SEQ_ME_ITEM
+	WaitFanfare
+	BufferSealNamePlural 0, VAR_SPECIAL_x8006
+	NPCMsg msg_0398_R39R0201_00020
+	PlayFanfare SEQ_ME_ITEM
+	WaitFanfare
+	CloseMsg
+	SetFlag FLAG_UNK_101
+	GoTo _00D2
+	End
 
 _020C:
-	npc_msg msg_0398_R39R0201_00003
-	closemsg
-	goto _00D2
-	end
+	NPCMsg msg_0398_R39R0201_00003
+	CloseMsg
+	GoTo _00D2
+	End
 
 	.balign 4, 0
 _021C:
@@ -153,131 +153,131 @@ _0224:
 	EndMovement
 
 scr_seq_R39R0201_002:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	goto_if_set FLAG_UNK_0AA, _0354
-	play_cry SPECIES_MILTANK, 11
-	npc_msg msg_0398_R39R0201_00009
-	wait_cry
-	goto_if_set FLAG_UNK_0A8, _0260
-	npc_msg msg_0398_R39R0201_00010
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	GoToIfSet FLAG_UNK_0AA, _0354
+	PlayCry SPECIES_MILTANK, 11
+	NPCMsg msg_0398_R39R0201_00009
+	WaitCry
+	GoToIfSet FLAG_UNK_0A8, _0260
+	NPCMsg msg_0398_R39R0201_00010
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0260:
-	npc_msg msg_0398_R39R0201_00010
-	wait_button
-	npc_msg msg_0398_R39R0201_00013
-	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_RESULT
-	touchscreen_menu_show
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _028C
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _0378
-	end
+	NPCMsg msg_0398_R39R0201_00010
+	WaitABPress
+	NPCMsg msg_0398_R39R0201_00013
+	TouchscreenMenuHide
+	GetMenuChoice VAR_SPECIAL_RESULT
+	TouchscreenMenuShow
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _028C
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _0378
+	End
 
 _028C:
-	setvar VAR_SPECIAL_x8004, 155
-	setvar VAR_SPECIAL_x8005, 1
-	hasitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _036A
-	takeitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
-	buffer_players_name 0
-	npc_msg msg_0398_R39R0201_00014
-	wait_button_or_walk_away
-	closemsg
-	goto_if_set FLAG_UNK_0B0, _033F
-	goto_if_set FLAG_UNK_0AF, _0337
-	goto_if_set FLAG_UNK_0AE, _0328
-	goto_if_set FLAG_UNK_0AD, _0320
-	goto_if_set FLAG_UNK_0AC, _0311
-	goto_if_set FLAG_UNK_0A9, _0309
-	setflag FLAG_UNK_0A9
-	releaseall
-	end
+	SetVar VAR_SPECIAL_x8004, 155
+	SetVar VAR_SPECIAL_x8005, 1
+	HasItem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _036A
+	TakeItem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
+	BufferPlayersName 0
+	NPCMsg msg_0398_R39R0201_00014
+	WaitButton
+	CloseMsg
+	GoToIfSet FLAG_UNK_0B0, _033F
+	GoToIfSet FLAG_UNK_0AF, _0337
+	GoToIfSet FLAG_UNK_0AE, _0328
+	GoToIfSet FLAG_UNK_0AD, _0320
+	GoToIfSet FLAG_UNK_0AC, _0311
+	GoToIfSet FLAG_UNK_0A9, _0309
+	SetFlag FLAG_UNK_0A9
+	ReleaseAll
+	End
 
 _0309:
-	setflag FLAG_UNK_0AC
-	releaseall
-	end
+	SetFlag FLAG_UNK_0AC
+	ReleaseAll
+	End
 
 _0311:
-	setflag FLAG_UNK_0AD
-	npc_msg msg_0398_R39R0201_00015
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	SetFlag FLAG_UNK_0AD
+	NPCMsg msg_0398_R39R0201_00015
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0320:
-	setflag FLAG_UNK_0AE
-	releaseall
-	end
+	SetFlag FLAG_UNK_0AE
+	ReleaseAll
+	End
 
 _0328:
-	setflag FLAG_UNK_0AF
-	npc_msg msg_0398_R39R0201_00016
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	SetFlag FLAG_UNK_0AF
+	NPCMsg msg_0398_R39R0201_00016
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0337:
-	setflag FLAG_UNK_0B0
-	releaseall
-	end
+	SetFlag FLAG_UNK_0B0
+	ReleaseAll
+	End
 
 _033F:
-	play_fanfare SEQ_ME_ASA
-	wait_fanfare
-	npc_msg msg_0398_R39R0201_00017
-	wait_button_or_walk_away
-	closemsg
-	setflag FLAG_UNK_0AA
-	releaseall
-	end
+	PlayFanfare SEQ_ME_ASA
+	WaitFanfare
+	NPCMsg msg_0398_R39R0201_00017
+	WaitButton
+	CloseMsg
+	SetFlag FLAG_UNK_0AA
+	ReleaseAll
+	End
 
 _0354:
-	play_cry SPECIES_MILTANK, 0
-	npc_msg msg_0398_R39R0201_00011
-	wait_cry
-	npc_msg msg_0398_R39R0201_00012
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlayCry SPECIES_MILTANK, 0
+	NPCMsg msg_0398_R39R0201_00011
+	WaitCry
+	NPCMsg msg_0398_R39R0201_00012
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _036A:
-	buffer_players_name 0
-	npc_msg msg_0398_R39R0201_00018
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	BufferPlayersName 0
+	NPCMsg msg_0398_R39R0201_00018
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0378:
-	buffer_players_name 0
-	npc_msg msg_0398_R39R0201_00019
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	BufferPlayersName 0
+	NPCMsg msg_0398_R39R0201_00019
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_R39R0201_003:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	play_cry SPECIES_MILTANK, 0
-	npc_msg msg_0398_R39R0201_00011
-	wait_cry
-	npc_msg msg_0398_R39R0201_00012
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	PlayCry SPECIES_MILTANK, 0
+	NPCMsg msg_0398_R39R0201_00011
+	WaitCry
+	NPCMsg msg_0398_R39R0201_00012
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 	.balign 4, 0

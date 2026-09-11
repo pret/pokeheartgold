@@ -5,62 +5,62 @@
 
 	.rodata
 
-	scrdef scr_seq_T01R0301_000
-	scrdef scr_seq_T01R0301_001
-	scrdef scr_seq_T01R0301_002
-	scrdef scr_seq_T01R0301_003
-	scrdef scr_seq_T01R0301_004
-	scrdef scr_seq_T01R0301_005
-	scrdef scr_seq_T01R0301_006
-	scrdef scr_seq_T01R0301_007
-	scrdef scr_seq_T01R0301_008
-	scrdef scr_seq_T01R0301_009
-	scrdef scr_seq_T01R0301_010
-	scrdef_end
+	ScrDef scr_seq_T01R0301_000
+	ScrDef scr_seq_T01R0301_001
+	ScrDef scr_seq_T01R0301_002
+	ScrDef scr_seq_T01R0301_003
+	ScrDef scr_seq_T01R0301_004
+	ScrDef scr_seq_T01R0301_005
+	ScrDef scr_seq_T01R0301_006
+	ScrDef scr_seq_T01R0301_007
+	ScrDef scr_seq_T01R0301_008
+	ScrDef scr_seq_T01R0301_009
+	ScrDef scr_seq_T01R0301_010
+	ScrDefEnd
 
 scr_seq_T01R0301_010:
-	compare VAR_UNK_4131, 3
-	goto_if_eq _0057
-	compare VAR_UNK_4131, 4
-	goto_if_eq _0057
-	compare VAR_UNK_4131, 5
-	goto_if_eq _0057
-	end
+	Compare VAR_UNK_4131, 3
+	GoToIfEq _0057
+	Compare VAR_UNK_4131, 4
+	GoToIfEq _0057
+	Compare VAR_UNK_4131, 5
+	GoToIfEq _0057
+	End
 
 _0057:
-	setflag FLAG_HIDE_OAKS_LAB_BULBASAUR_BALL
-	setflag FLAG_HIDE_OAKS_LAB_SQUIRTLE_BALL
-	setflag FLAG_HIDE_OAKS_LAB_CHARMANDER_BALL
-	setvar VAR_UNK_4131, 6
-	end
+	SetFlag FLAG_HIDE_OAKS_LAB_BULBASAUR_BALL
+	SetFlag FLAG_HIDE_OAKS_LAB_SQUIRTLE_BALL
+	SetFlag FLAG_HIDE_OAKS_LAB_CHARMANDER_BALL
+	SetVar VAR_UNK_4131, 6
+	End
 
 scr_seq_T01R0301_006:
-	scrcmd_609
-	lockall
-	toggle_following_pokemon_movement 0
-	wait_following_pokemon_movement
-	following_pokemon_movement 55
-	apply_movement obj_player, _00C8
-	wait_movement
-	buffer_players_name 0
-	gender_msgbox msg_0451_T01R0301_00039, msg_0451_T01R0301_00040
-	closemsg
-	apply_movement obj_T01R0301_ookido, _00E0
-	wait_movement
-	npc_msg msg_0451_T01R0301_00041
-	closemsg
-	apply_movement obj_T01R0301_ookido, _00F4
-	apply_movement obj_player, _00D0
-	wait_movement
-	wait_following_pokemon_movement
-	toggle_following_pokemon_movement 1
-	following_pokemon_movement 48
-	npc_msg msg_0451_T01R0301_00042
-	wait_button_or_walk_away
-	closemsg
-	setvar VAR_UNK_4131, 2
-	releaseall
-	end
+	ScrCmd_609
+	LockAll
+	ToggleFollowingPokemonMovement 0
+	WaitFollowingPokemonMovement
+	FollowingPokemonMovement 55
+	ApplyMovement obj_player, _00C8
+	WaitMovement
+	BufferPlayersName 0
+	GenderMsgBox msg_0451_T01R0301_00039, msg_0451_T01R0301_00040
+	CloseMsg
+	ApplyMovement obj_T01R0301_ookido, _00E0
+	WaitMovement
+	NPCMsg msg_0451_T01R0301_00041
+	CloseMsg
+	ApplyMovement obj_T01R0301_ookido, _00F4
+	ApplyMovement obj_player, _00D0
+	WaitMovement
+	WaitFollowingPokemonMovement
+	ToggleFollowingPokemonMovement 1
+	FollowingPokemonMovement 48
+	NPCMsg msg_0451_T01R0301_00042
+	WaitButton
+	CloseMsg
+	SetVar VAR_UNK_4131, 2
+	ReleaseAll
+	End
 
 	.balign 4, 0
 _00C8:
@@ -90,282 +90,282 @@ _00F4:
 	EndMovement
 
 scr_seq_T01R0301_000:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	compare VAR_UNK_4096, 2
-	goto_if_eq _0282
-	compare VAR_UNK_4131, 3
-	goto_if_eq _0277
-	compare VAR_UNK_4131, 4
-	goto_if_eq _0277
-	compare VAR_UNK_4131, 5
-	goto_if_eq _0277
-	compare VAR_UNK_4131, 2
-	goto_if_eq _026C
-	compare VAR_SCENE_EMBEDDED_TOWER, 7
-	goto_if_eq _04B1
-	compare VAR_SCENE_EMBEDDED_TOWER, 5
-	goto_if_eq _04A6
-	compare VAR_SCENE_EMBEDDED_TOWER, 4
-	goto_if_eq _02CB
-	goto_if_set FLAG_GOT_HM08, _01B2
-	goto_if_set FLAG_UNK_12A, _0195
-	buffer_players_name 0
-	gender_msgbox msg_0451_T01R0301_00000, msg_0451_T01R0301_00001
-	setflag FLAG_UNK_12A
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	Compare VAR_UNK_4096, 2
+	GoToIfEq _0282
+	Compare VAR_UNK_4131, 3
+	GoToIfEq _0277
+	Compare VAR_UNK_4131, 4
+	GoToIfEq _0277
+	Compare VAR_UNK_4131, 5
+	GoToIfEq _0277
+	Compare VAR_UNK_4131, 2
+	GoToIfEq _026C
+	Compare VAR_SCENE_EMBEDDED_TOWER, 7
+	GoToIfEq _04B1
+	Compare VAR_SCENE_EMBEDDED_TOWER, 5
+	GoToIfEq _04A6
+	Compare VAR_SCENE_EMBEDDED_TOWER, 4
+	GoToIfEq _02CB
+	GoToIfSet FLAG_GOT_HM08, _01B2
+	GoToIfSet FLAG_UNK_12A, _0195
+	BufferPlayersName 0
+	GenderMsgBox msg_0451_T01R0301_00000, msg_0451_T01R0301_00001
+	SetFlag FLAG_UNK_12A
 _0195:
-	compare VAR_UNK_4135, 0
-	goto_if_ne _01AB
-	npc_msg msg_0451_T01R0301_00008
-	goto _01B2
+	Compare VAR_UNK_4135, 0
+	GoToIfNe _01AB
+	NPCMsg msg_0451_T01R0301_00008
+	GoTo _01B2
 
 _01AB:
-	buffer_players_name 0
-	gender_msgbox msg_0451_T01R0301_00009, msg_0451_T01R0301_00010
+	BufferPlayersName 0
+	GenderMsgBox msg_0451_T01R0301_00009, msg_0451_T01R0301_00010
 _01B2:
-	goto_if_set FLAG_SYS_OAK_ACKNOWLEDGED_NATIONAL_DEX_COMPLETION, _01F2
-	callstd std_in_person_evaluate_dex
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _01EC
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _01EC
-	check_national_dex_complete VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _01F0
+	GoToIfSet FLAG_SYS_OAK_ACKNOWLEDGED_NATIONAL_DEX_COMPLETION, _01F2
+	CallStd std_in_person_evaluate_dex
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _01EC
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _01EC
+	CheckNationalDexComplete VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _01F0
 _01EC:
-	releaseall
-	end
+	ReleaseAll
+	End
 
 _01F0:
-	wait_button
+	WaitABPress
 _01F2:
-	setflag FLAG_SYS_OAK_ACKNOWLEDGED_NATIONAL_DEX_COMPLETION
-	buffer_players_name 0
-	gender_msgbox msg_0451_T01R0301_00004, msg_0451_T01R0301_00005
-	npc_msg msg_0451_T01R0301_00028
-	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_RESULT
-	touchscreen_menu_show
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _0256
-	photo_album_is_full VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _0261
-	npc_msg msg_0451_T01R0301_00029
-	closemsg
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	cameron_photo 90
-	faceplayer
-	lockall
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
-	npc_msg msg_0451_T01R0301_00030
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	SetFlag FLAG_SYS_OAK_ACKNOWLEDGED_NATIONAL_DEX_COMPLETION
+	BufferPlayersName 0
+	GenderMsgBox msg_0451_T01R0301_00004, msg_0451_T01R0301_00005
+	NPCMsg msg_0451_T01R0301_00028
+	TouchscreenMenuHide
+	GetMenuChoice VAR_SPECIAL_RESULT
+	TouchscreenMenuShow
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _0256
+	PhotoAlbumIsFull VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _0261
+	NPCMsg msg_0451_T01R0301_00029
+	CloseMsg
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	CameronPhoto 90
+	FacePlayer
+	LockAll
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
+	NPCMsg msg_0451_T01R0301_00030
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0256:
-	npc_msg msg_0451_T01R0301_00031
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0451_T01R0301_00031
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0261:
-	npc_msg msg_0451_T01R0301_00032
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0451_T01R0301_00032
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _026C:
-	npc_msg msg_0451_T01R0301_00042
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0451_T01R0301_00042
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0277:
-	npc_msg msg_0451_T01R0301_00053
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0451_T01R0301_00053
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0282:
-	goto_if_set FLAG_GOT_HM08, _02C0
-	npc_msg msg_0451_T01R0301_00055
-	giveitem_no_check ITEM_HM08, 1
-	npc_msg msg_0451_T01R0301_00056
-	buffer_players_name 0
-	gender_msgbox msg_0451_T01R0301_00006, msg_0451_T01R0301_00007
-	setvar VAR_UNK_4110, 2
-	setflag FLAG_UNLOCKED_MT_SILVER
-	wait_button_or_walk_away
-	closemsg
-	setflag FLAG_GOT_HM08
-	releaseall
-	end
+	GoToIfSet FLAG_GOT_HM08, _02C0
+	NPCMsg msg_0451_T01R0301_00055
+	GiveItemNoCheck ITEM_HM08, 1
+	NPCMsg msg_0451_T01R0301_00056
+	BufferPlayersName 0
+	GenderMsgBox msg_0451_T01R0301_00006, msg_0451_T01R0301_00007
+	SetVar VAR_UNK_4110, 2
+	SetFlag FLAG_UNLOCKED_MT_SILVER
+	WaitButton
+	CloseMsg
+	SetFlag FLAG_GOT_HM08
+	ReleaseAll
+	End
 
 _02C0:
-	npc_msg msg_0451_T01R0301_00057
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0451_T01R0301_00057
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _02CB:
-	scrcmd_836 VAR_SPECIAL_x8005
-	compare VAR_SPECIAL_x8005, 1
-	goto_if_eq _040D
-	goto_if_set FLAG_UNK_0BC, _03DE
-	buffer_players_name 0
-	gender_msgbox msg_0451_T01R0301_00011, msg_0451_T01R0301_00012
-	closemsg
-	apply_movement obj_T01R0301_ookido, _04D4
-	wait_movement
-	setflag FLAG_UNK_0BC
-	npc_msg msg_0451_T01R0301_00013
-	closemsg
-	get_player_facing VAR_TEMP_x4001
-	compare VAR_TEMP_x4001, 0
-	goto_if_ne _0320
-	goto _035A
+	CheckKyogreGroudonInParty VAR_SPECIAL_x8005
+	Compare VAR_SPECIAL_x8005, 1
+	GoToIfEq _040D
+	GoToIfSet FLAG_UNK_0BC, _03DE
+	BufferPlayersName 0
+	GenderMsgBox msg_0451_T01R0301_00011, msg_0451_T01R0301_00012
+	CloseMsg
+	ApplyMovement obj_T01R0301_ookido, _04D4
+	WaitMovement
+	SetFlag FLAG_UNK_0BC
+	NPCMsg msg_0451_T01R0301_00013
+	CloseMsg
+	GetPlayerFacing VAR_TEMP_x4001
+	Compare VAR_TEMP_x4001, 0
+	GoToIfNe _0320
+	GoTo _035A
 
 _031A:
-	goto _0358
+	GoTo _0358
 
 _0320:
-	compare VAR_TEMP_x4001, 3
-	goto_if_ne _0339
-	goto _037B
+	Compare VAR_TEMP_x4001, 3
+	GoToIfNe _0339
+	GoTo _037B
 
 _0333:
-	goto _0358
+	GoTo _0358
 
 _0339:
-	compare VAR_TEMP_x4001, 2
-	goto_if_ne _0352
-	goto _039C
+	Compare VAR_TEMP_x4001, 2
+	GoToIfNe _0352
+	GoTo _039C
 
 _034C:
-	goto _0358
+	GoTo _0358
 
 _0352:
-	goto _03BD
+	GoTo _03BD
 
 _0358:
-	wait_movement
+	WaitMovement
 _035A:
-	apply_movement obj_T01R0301_ookido, _0500
-	wait_movement
-	npc_msg msg_0451_T01R0301_00014
-	closemsg
-	apply_movement obj_T01R0301_ookido, _0500
-	wait_movement
-	goto _03DE
-	end
+	ApplyMovement obj_T01R0301_ookido, _0500
+	WaitMovement
+	NPCMsg msg_0451_T01R0301_00014
+	CloseMsg
+	ApplyMovement obj_T01R0301_ookido, _0500
+	WaitMovement
+	GoTo _03DE
+	End
 
 _037B:
-	apply_movement obj_T01R0301_ookido, _052C
-	wait_movement
-	npc_msg msg_0451_T01R0301_00014
-	closemsg
-	apply_movement obj_T01R0301_ookido, _052C
-	wait_movement
-	goto _03DE
-	end
+	ApplyMovement obj_T01R0301_ookido, _052C
+	WaitMovement
+	NPCMsg msg_0451_T01R0301_00014
+	CloseMsg
+	ApplyMovement obj_T01R0301_ookido, _052C
+	WaitMovement
+	GoTo _03DE
+	End
 
 _039C:
-	apply_movement obj_T01R0301_ookido, _0558
-	wait_movement
-	npc_msg msg_0451_T01R0301_00014
-	closemsg
-	apply_movement obj_T01R0301_ookido, _0558
-	wait_movement
-	goto _03DE
-	end
+	ApplyMovement obj_T01R0301_ookido, _0558
+	WaitMovement
+	NPCMsg msg_0451_T01R0301_00014
+	CloseMsg
+	ApplyMovement obj_T01R0301_ookido, _0558
+	WaitMovement
+	GoTo _03DE
+	End
 
 _03BD:
-	apply_movement obj_T01R0301_ookido, _0584
-	wait_movement
-	npc_msg msg_0451_T01R0301_00014
-	closemsg
-	apply_movement obj_T01R0301_ookido, _0584
-	wait_movement
-	goto _03DE
-	end
+	ApplyMovement obj_T01R0301_ookido, _0584
+	WaitMovement
+	NPCMsg msg_0451_T01R0301_00014
+	CloseMsg
+	ApplyMovement obj_T01R0301_ookido, _0584
+	WaitMovement
+	GoTo _03DE
+	End
 
 _03DE:
-	get_game_version VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 8
-	goto_if_eq _03FE
-	buffer_players_name 0
-	gender_msgbox msg_0451_T01R0301_00015, msg_0451_T01R0301_00016
-	closemsg
-	goto _01B2
+	GetGameVersion VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 8
+	GoToIfEq _03FE
+	BufferPlayersName 0
+	GenderMsgBox msg_0451_T01R0301_00015, msg_0451_T01R0301_00016
+	CloseMsg
+	GoTo _01B2
 
 _03FE:
-	buffer_players_name 0
-	gender_msgbox msg_0451_T01R0301_00017, msg_0451_T01R0301_00018
-	closemsg
-	goto _01B2
+	BufferPlayersName 0
+	GenderMsgBox msg_0451_T01R0301_00017, msg_0451_T01R0301_00018
+	CloseMsg
+	GoTo _01B2
 
 _040D:
-	goto_if_unset FLAG_UNK_0BC, _04C2
-	buffer_players_name 0
-	gender_msgbox msg_0451_T01R0301_00019, msg_0451_T01R0301_00020
-	closemsg
+	GoToIfUnset FLAG_UNK_0BC, _04C2
+	BufferPlayersName 0
+	GenderMsgBox msg_0451_T01R0301_00019, msg_0451_T01R0301_00020
+	CloseMsg
 _0421:
-	get_player_facing VAR_TEMP_x4001
-	compare VAR_TEMP_x4001, 0
-	goto_if_ne _0440
-	apply_movement obj_T01R0301_ookido, _0500
-	goto _047E
+	GetPlayerFacing VAR_TEMP_x4001
+	Compare VAR_TEMP_x4001, 0
+	GoToIfNe _0440
+	ApplyMovement obj_T01R0301_ookido, _0500
+	GoTo _047E
 
 _0440:
-	compare VAR_TEMP_x4001, 3
-	goto_if_ne _045B
-	apply_movement obj_T01R0301_ookido, _052C
-	goto _047E
+	Compare VAR_TEMP_x4001, 3
+	GoToIfNe _045B
+	ApplyMovement obj_T01R0301_ookido, _052C
+	GoTo _047E
 
 _045B:
-	compare VAR_TEMP_x4001, 2
-	goto_if_ne _0476
-	apply_movement obj_T01R0301_ookido, _0558
-	goto _047E
+	Compare VAR_TEMP_x4001, 2
+	GoToIfNe _0476
+	ApplyMovement obj_T01R0301_ookido, _0558
+	GoTo _047E
 
 _0476:
-	apply_movement obj_T01R0301_ookido, _0584
+	ApplyMovement obj_T01R0301_ookido, _0584
 _047E:
-	wait_movement
-	buffer_players_name 0
-	giveitem_no_check ITEM_JADE_ORB, 1
-	closemsg
-	npc_msg msg_0451_T01R0301_00021
-	closemsg
-	setvar VAR_SCENE_EMBEDDED_TOWER, 5
-	goto _01B2
+	WaitMovement
+	BufferPlayersName 0
+	GiveItemNoCheck ITEM_JADE_ORB, 1
+	CloseMsg
+	NPCMsg msg_0451_T01R0301_00021
+	CloseMsg
+	SetVar VAR_SCENE_EMBEDDED_TOWER, 5
+	GoTo _01B2
 
 _04A6:
-	npc_msg msg_0451_T01R0301_00022
-	closemsg
-	goto _01B2
+	NPCMsg msg_0451_T01R0301_00022
+	CloseMsg
+	GoTo _01B2
 
 _04B1:
-	npc_msg msg_0451_T01R0301_00023
-	closemsg
-	setvar VAR_SCENE_EMBEDDED_TOWER, 8
-	goto _01B2
+	NPCMsg msg_0451_T01R0301_00023
+	CloseMsg
+	SetVar VAR_SCENE_EMBEDDED_TOWER, 8
+	GoTo _01B2
 
 _04C2:
-	buffer_players_name 0
-	gender_msgbox msg_0451_T01R0301_00024, msg_0451_T01R0301_00025
-	closemsg
-	goto _0421
+	BufferPlayersName 0
+	GenderMsgBox msg_0451_T01R0301_00024, msg_0451_T01R0301_00025
+	CloseMsg
+	GoTo _0421
 
 	.balign 4, 0
 _04D4:
@@ -442,281 +442,281 @@ _0584:
 	EndMovement
 
 scr_seq_T01R0301_001:
-	simple_npc_msg msg_0451_T01R0301_00033
-	end
+	SimpleNPCMsg msg_0451_T01R0301_00033
+	End
 
 scr_seq_T01R0301_002:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	buffer_players_name 0
-	npc_msg msg_0451_T01R0301_00034
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	BufferPlayersName 0
+	NPCMsg msg_0451_T01R0301_00034
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_T01R0301_003:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	buffer_players_name 0
-	npc_msg msg_0451_T01R0301_00035
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	BufferPlayersName 0
+	NPCMsg msg_0451_T01R0301_00035
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_T01R0301_004:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	npc_msg msg_0451_T01R0301_00036
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	NPCMsg msg_0451_T01R0301_00036
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_T01R0301_005:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	buffer_players_name 0
-	gender_msgbox msg_0451_T01R0301_00037, msg_0451_T01R0301_00038
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	BufferPlayersName 0
+	GenderMsgBox msg_0451_T01R0301_00037, msg_0451_T01R0301_00038
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_T01R0301_007:
-	compare VAR_UNK_4131, 6
-	goto_if_eq _0979
-	compare VAR_UNK_4131, 0
-	goto_if_eq _097B
-	compare VAR_UNK_4131, 3
-	goto_if_eq _097B
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	compare VAR_UNK_4131, 4
-	goto_if_eq _097D
-	compare VAR_UNK_4131, 5
-	goto_if_eq _097D
-	get_person_coords 0, VAR_TEMP_x4000, VAR_TEMP_x4001
-	compare VAR_TEMP_x4000, 8
-	goto_if_ne _0663
-	apply_movement obj_T01R0301_ookido, _09C4
-	goto _066B
+	Compare VAR_UNK_4131, 6
+	GoToIfEq _0979
+	Compare VAR_UNK_4131, 0
+	GoToIfEq _097B
+	Compare VAR_UNK_4131, 3
+	GoToIfEq _097B
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	Compare VAR_UNK_4131, 4
+	GoToIfEq _097D
+	Compare VAR_UNK_4131, 5
+	GoToIfEq _097D
+	GetPersonCoords 0, VAR_TEMP_x4000, VAR_TEMP_x4001
+	Compare VAR_TEMP_x4000, 8
+	GoToIfNe _0663
+	ApplyMovement obj_T01R0301_ookido, _09C4
+	GoTo _066B
 
 _0663:
-	apply_movement obj_T01R0301_ookido, _09BC
+	ApplyMovement obj_T01R0301_ookido, _09BC
 _066B:
-	wait_movement
-	scrcmd_452 SPECIES_BULBASAUR, 0
-	play_cry SPECIES_BULBASAUR, 0
-	npc_msg msg_0451_T01R0301_00045
-	wait_cry
-	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _096C
-	setvar VAR_SPECIAL_x8004, 1
-	setvar VAR_SPECIAL_x8006, 3
-	call _0801
-	end
+	WaitMovement
+	ScrCmd_452 SPECIES_BULBASAUR, 0
+	PlayCry SPECIES_BULBASAUR, 0
+	NPCMsg msg_0451_T01R0301_00045
+	WaitCry
+	TouchscreenMenuHide
+	GetMenuChoice VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _096C
+	SetVar VAR_SPECIAL_x8004, 1
+	SetVar VAR_SPECIAL_x8006, 3
+	Call _0801
+	End
 
 scr_seq_T01R0301_008:
-	compare VAR_UNK_4131, 6
-	goto_if_eq _0979
-	compare VAR_UNK_4131, 0
-	goto_if_eq _097B
-	compare VAR_UNK_4131, 4
-	goto_if_eq _097B
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	compare VAR_UNK_4131, 3
-	goto_if_eq _097D
-	compare VAR_UNK_4131, 5
-	goto_if_eq _097D
-	get_person_coords 0, VAR_TEMP_x4000, VAR_TEMP_x4001
-	compare VAR_TEMP_x4000, 8
-	goto_if_ne _0711
-	apply_movement obj_T01R0301_ookido, _09C4
-	goto _0719
+	Compare VAR_UNK_4131, 6
+	GoToIfEq _0979
+	Compare VAR_UNK_4131, 0
+	GoToIfEq _097B
+	Compare VAR_UNK_4131, 4
+	GoToIfEq _097B
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	Compare VAR_UNK_4131, 3
+	GoToIfEq _097D
+	Compare VAR_UNK_4131, 5
+	GoToIfEq _097D
+	GetPersonCoords 0, VAR_TEMP_x4000, VAR_TEMP_x4001
+	Compare VAR_TEMP_x4000, 8
+	GoToIfNe _0711
+	ApplyMovement obj_T01R0301_ookido, _09C4
+	GoTo _0719
 
 _0711:
-	apply_movement obj_T01R0301_ookido, _09BC
+	ApplyMovement obj_T01R0301_ookido, _09BC
 _0719:
-	wait_movement
-	scrcmd_452 SPECIES_SQUIRTLE, 0
-	play_cry SPECIES_SQUIRTLE, 0
-	npc_msg msg_0451_T01R0301_00044
-	wait_cry
-	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _096C
-	setvar VAR_SPECIAL_x8004, 7
-	setvar VAR_SPECIAL_x8006, 4
-	call _0801
-	end
+	WaitMovement
+	ScrCmd_452 SPECIES_SQUIRTLE, 0
+	PlayCry SPECIES_SQUIRTLE, 0
+	NPCMsg msg_0451_T01R0301_00044
+	WaitCry
+	TouchscreenMenuHide
+	GetMenuChoice VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _096C
+	SetVar VAR_SPECIAL_x8004, 7
+	SetVar VAR_SPECIAL_x8006, 4
+	Call _0801
+	End
 
 scr_seq_T01R0301_009:
-	compare VAR_UNK_4131, 6
-	goto_if_eq _0979
-	compare VAR_UNK_4131, 0
-	goto_if_eq _097B
-	compare VAR_UNK_4131, 5
-	goto_if_eq _097B
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	compare VAR_UNK_4131, 3
-	goto_if_eq _097D
-	compare VAR_UNK_4131, 4
-	goto_if_eq _097D
-	get_person_coords 0, VAR_TEMP_x4000, VAR_TEMP_x4001
-	compare VAR_TEMP_x4000, 8
-	goto_if_ne _07BF
-	apply_movement obj_T01R0301_ookido, _09C4
-	goto _07C7
+	Compare VAR_UNK_4131, 6
+	GoToIfEq _0979
+	Compare VAR_UNK_4131, 0
+	GoToIfEq _097B
+	Compare VAR_UNK_4131, 5
+	GoToIfEq _097B
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	Compare VAR_UNK_4131, 3
+	GoToIfEq _097D
+	Compare VAR_UNK_4131, 4
+	GoToIfEq _097D
+	GetPersonCoords 0, VAR_TEMP_x4000, VAR_TEMP_x4001
+	Compare VAR_TEMP_x4000, 8
+	GoToIfNe _07BF
+	ApplyMovement obj_T01R0301_ookido, _09C4
+	GoTo _07C7
 
 _07BF:
-	apply_movement obj_T01R0301_ookido, _09BC
+	ApplyMovement obj_T01R0301_ookido, _09BC
 _07C7:
-	wait_movement
-	scrcmd_452 SPECIES_CHARMANDER, 0
-	play_cry SPECIES_CHARMANDER, 0
-	npc_msg msg_0451_T01R0301_00043
-	wait_cry
-	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _096C
-	setvar VAR_SPECIAL_x8004, 4
-	setvar VAR_SPECIAL_x8006, 5
-	call _0801
-	end
+	WaitMovement
+	ScrCmd_452 SPECIES_CHARMANDER, 0
+	PlayCry SPECIES_CHARMANDER, 0
+	NPCMsg msg_0451_T01R0301_00043
+	WaitCry
+	TouchscreenMenuHide
+	GetMenuChoice VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _096C
+	SetVar VAR_SPECIAL_x8004, 4
+	SetVar VAR_SPECIAL_x8006, 5
+	Call _0801
+	End
 
 _0801:
-	scrcmd_453
-	get_party_count VAR_SPECIAL_x8005
-	compare VAR_SPECIAL_x8005, 6
-	goto_if_eq _098B
-	compare VAR_SPECIAL_x8004, 1
-	goto_if_ne _082F
-	hide_person obj_T01R0301_monstarball_3
-	setflag FLAG_HIDE_OAKS_LAB_BULBASAUR_BALL
-	goto _0852
+	ScrCmd_453
+	GetPartyCount VAR_SPECIAL_x8005
+	Compare VAR_SPECIAL_x8005, 6
+	GoToIfEq _098B
+	Compare VAR_SPECIAL_x8004, 1
+	GoToIfNe _082F
+	HidePerson obj_T01R0301_monstarball_3
+	SetFlag FLAG_HIDE_OAKS_LAB_BULBASAUR_BALL
+	GoTo _0852
 
 _082F:
-	compare VAR_SPECIAL_x8004, 7
-	goto_if_ne _084A
-	hide_person obj_T01R0301_monstarball_2
-	setflag FLAG_HIDE_OAKS_LAB_SQUIRTLE_BALL
-	goto _0852
+	Compare VAR_SPECIAL_x8004, 7
+	GoToIfNe _084A
+	HidePerson obj_T01R0301_monstarball_2
+	SetFlag FLAG_HIDE_OAKS_LAB_SQUIRTLE_BALL
+	GoTo _0852
 
 _084A:
-	hide_person obj_T01R0301_monstarball
-	setflag FLAG_HIDE_OAKS_LAB_CHARMANDER_BALL
+	HidePerson obj_T01R0301_monstarball
+	SetFlag FLAG_HIDE_OAKS_LAB_CHARMANDER_BALL
 _0852:
-	buffer_players_name 0
-	buffer_species_name 1, VAR_SPECIAL_x8004, 0, 0
-	npc_msg msg_0451_T01R0301_00046
-	npc_msg msg_0451_T01R0301_00048
-	play_fanfare SEQ_ME_POKEGET
-	wait_fanfare
-	give_mon VAR_SPECIAL_x8004, 5, 0, 0, 0, VAR_SPECIAL_RESULT
-	buffer_species_name 1, VAR_SPECIAL_x8004, 0, 0
-	npc_msg msg_0451_T01R0301_00049
-	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_RESULT
-	closemsg
-	compare VAR_SPECIAL_RESULT, 0
-	call_if_eq _0929
-	touchscreen_menu_show
-	get_person_coords 0, VAR_TEMP_x4000, VAR_TEMP_x4001
-	compare VAR_TEMP_x4000, 8
-	goto_if_eq _0908
-	toggle_following_pokemon_movement 0
-	wait_following_pokemon_movement
-	following_pokemon_movement 55
-	compare VAR_SPECIAL_x8004, 1
-	goto_if_ne _08D3
-	apply_movement obj_player, _0998
-	goto _08F6
+	BufferPlayersName 0
+	BufferSpeciesName 1, VAR_SPECIAL_x8004, 0, 0
+	NPCMsg msg_0451_T01R0301_00046
+	NPCMsg msg_0451_T01R0301_00048
+	PlayFanfare SEQ_ME_POKEGET
+	WaitFanfare
+	GiveMon VAR_SPECIAL_x8004, 5, 0, 0, 0, VAR_SPECIAL_RESULT
+	BufferSpeciesName 1, VAR_SPECIAL_x8004, 0, 0
+	NPCMsg msg_0451_T01R0301_00049
+	TouchscreenMenuHide
+	GetMenuChoice VAR_SPECIAL_RESULT
+	CloseMsg
+	Compare VAR_SPECIAL_RESULT, 0
+	CallIfEq _0929
+	TouchscreenMenuShow
+	GetPersonCoords 0, VAR_TEMP_x4000, VAR_TEMP_x4001
+	Compare VAR_TEMP_x4000, 8
+	GoToIfEq _0908
+	ToggleFollowingPokemonMovement 0
+	WaitFollowingPokemonMovement
+	FollowingPokemonMovement 55
+	Compare VAR_SPECIAL_x8004, 1
+	GoToIfNe _08D3
+	ApplyMovement obj_player, _0998
+	GoTo _08F6
 
 _08D3:
-	compare VAR_SPECIAL_x8004, 7
-	goto_if_ne _08EE
-	apply_movement obj_player, _09A4
-	goto _08F6
+	Compare VAR_SPECIAL_x8004, 7
+	GoToIfNe _08EE
+	ApplyMovement obj_player, _09A4
+	GoTo _08F6
 
 _08EE:
-	apply_movement obj_player, _09B0
+	ApplyMovement obj_player, _09B0
 _08F6:
-	wait_movement
-	wait_following_pokemon_movement
-	toggle_following_pokemon_movement 1
-	following_pokemon_movement 48
-	goto _0912
+	WaitMovement
+	WaitFollowingPokemonMovement
+	ToggleFollowingPokemonMovement 1
+	FollowingPokemonMovement 48
+	GoTo _0912
 
 _0908:
-	apply_movement obj_player, _09CC
-	wait_movement
+	ApplyMovement obj_player, _09CC
+	WaitMovement
 _0912:
-	npc_msg msg_0451_T01R0301_00052
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	copyvar VAR_UNK_4131, VAR_SPECIAL_x8006
-	setvar VAR_SCENE_EMBEDDED_TOWER, 1
-	return
+	NPCMsg msg_0451_T01R0301_00052
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	CopyVar VAR_UNK_4131, VAR_SPECIAL_x8006
+	SetVar VAR_SCENE_EMBEDDED_TOWER, 1
+	Return
 
 _0929:
-	setvar VAR_TEMP_x4000, 0
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	nickname_input VAR_SPECIAL_x8005, VAR_TEMP_x4000
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
-	touchscreen_menu_hide
-	bufferpartymonnick 1, VAR_SPECIAL_x8005
-	npc_msg msg_0451_T01R0301_00050
-	getmenuchoice VAR_SPECIAL_RESULT
-	closemsg
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _0929
-	return
+	SetVar VAR_TEMP_x4000, 0
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	NicknameInput VAR_SPECIAL_x8005, VAR_TEMP_x4000
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
+	TouchscreenMenuHide
+	BufferPartyMonNick 1, VAR_SPECIAL_x8005
+	NPCMsg msg_0451_T01R0301_00050
+	GetMenuChoice VAR_SPECIAL_RESULT
+	CloseMsg
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _0929
+	Return
 
 _096C:
-	scrcmd_453
-	npc_msg msg_0451_T01R0301_00047
-	wait_button_or_walk_away
-	closemsg
-	touchscreen_menu_show
-	releaseall
+	ScrCmd_453
+	NPCMsg msg_0451_T01R0301_00047
+	WaitButton
+	CloseMsg
+	TouchscreenMenuShow
+	ReleaseAll
 _0979:
-	end
+	End
 
 _097B:
-	end
+	End
 
 _097D:
-	buffer_rivals_name 1
-	npc_msg msg_0451_T01R0301_00054
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	BufferRivalsName 1
+	NPCMsg msg_0451_T01R0301_00054
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _098B:
-	touchscreen_menu_show
-	npc_msg msg_0451_T01R0301_00051
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	return
+	TouchscreenMenuShow
+	NPCMsg msg_0451_T01R0301_00051
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	Return
 
 	.balign 4, 0
 _0998:

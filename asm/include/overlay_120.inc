@@ -58,8 +58,8 @@
 .public ov01_021F12B4
 .public ov01_021F12D0
 .public ov01_021F12E8
-.public ov01_021FB4F4
-.public ov01_021FB514
+.public HBlankSystem_Start
+.public HBlankSystem_Stop
 .public ov120_0225F714
 .public ov120_0225FA5C
 .public ov120_0225FA68

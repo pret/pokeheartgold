@@ -1,7 +1,5 @@
 #include "party_menu.h"
 
-#include "global.h"
-
 #include "constants/maps.h"
 #include "constants/moves.h"
 
@@ -11,7 +9,6 @@
 
 #include "bag.h"
 #include "battle_regulation.h"
-#include "field_system.h"
 #include "font.h"
 #include "gf_gfx_loader.h"
 #include "menu_input_state.h"
@@ -20,12 +17,13 @@
 #include "party_menu_items.h"
 #include "party_menu_list_items.h"
 #include "party_menu_sprites.h"
+#include "poke_overlay.h"
 #include "render_text.h"
 #include "save_link_ruleset.h"
+#include "screen_fade.h"
 #include "sound_02004A44.h"
 #include "system.h"
 #include "unk_02005D10.h"
-#include "unk_0200FA24.h"
 #include "unk_020210A0.h"
 #include "unk_0203A3B0.h"
 #include "unk_02066EDC.h"
@@ -238,14 +236,14 @@ static BOOL PartyMenuApp_Init(OverlayManager *manager, int *pState) {
 
     narc = NARC_New(NARC_graphic_plist_gra, HEAP_ID_PARTY_MENU);
     partyMenu = sub_02079BD8(manager);
-    BeginNormalPaletteFade(2, 3, 3, RGB_BLACK, 6, 1, HEAP_ID_PARTY_MENU);
+    BeginNormalPaletteFade(FADE_SUB_THEN_MAIN, FADE_TYPE_DOWNWARD_IN, FADE_TYPE_DOWNWARD_IN, RGB_BLACK, 6, 1, HEAP_ID_PARTY_MENU);
     sub_02079CE4(partyMenu);
     sub_02079700();
     sub_02079758(partyMenu->bgConfig);
     sub_02079A14(partyMenu, narc);
     sub_020210BC();
     sub_02021148(4);
-    Sound_SetSceneAndPlayBGM(57, 0, 0);
+    Sound_SetSceneAndPlayBGM(57, SEQ_NONE, 0);
     PartyMenu_SetContextMenuStaticStrings(partyMenu);
     PartyMenu_AddAllWindows(partyMenu);
     sub_0207EB24(partyMenu);
@@ -2611,6 +2609,9 @@ static int PartyMenu_Subtask_SwitchItemsHandleYesNoInput(PartyMenu *partyMenu) {
         YesNoPrompt_Destroy(partyMenu->yesNoPrompt);
         PartyMenu_DisableMainScreenBlend_AfterYesNo();
         return PartyMenu_SwitchItemsDeclined(partyMenu);
+
+    default:
+        break;
     }
 
     return PARTY_MENU_STATE_YESNO_ASK_SWITCH_ITEMS;

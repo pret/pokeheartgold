@@ -454,7 +454,7 @@ ov29_0225D880: ; 0x0225D880
 	mov r3, #0
 	bl AddCharResObjFromOpenNarc
 	str r0, [r5]
-	bl sub_0200ADA4
+	bl SpriteTransfer_CreateCharTransferTask_AllocAtEnd
 	ldr r0, [r5]
 	bl sub_0200A740
 	ldr r0, [sp, #0x34]
@@ -471,7 +471,7 @@ ov29_0225D880: ; 0x0225D880
 	mov r3, #0
 	bl AddPlttResObjFromOpenNarc
 	str r0, [r5, #4]
-	bl sub_0200B00C
+	bl SpriteTransfer_CreatePlttTransferTask
 	ldr r0, [r5, #4]
 	bl sub_0200A740
 	ldr r0, [sp, #0x38]
@@ -775,19 +775,19 @@ _0225DB44:
 	mov r0, #0x59
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
-	bl sub_0200AEB0
+	bl SpriteTransfer_DeleteCharTransferTask
 	mov r0, #0x5a
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
-	bl sub_0200B0A8
+	bl SpriteTransfer_DeletePlttTransferTask
 	mov r0, #0x55
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
-	bl sub_0200AEB0
+	bl SpriteTransfer_DeleteCharTransferTask
 	mov r0, #0x56
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
-	bl sub_0200B0A8
+	bl SpriteTransfer_DeletePlttTransferTask
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov29_0225DB38
 

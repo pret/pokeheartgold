@@ -14,6 +14,7 @@
 #include "certificates_app.h"
 #include "choose_starter_app.h"
 #include "fashion_case.h"
+#include "field_bgm.h"
 #include "field_system.h"
 #include "friend_group.h"
 #include "frontier_data.h"
@@ -61,7 +62,6 @@
 #include "pokedex_util.h"
 #include "pokegear_apps.h"
 #include "save_local_field_data.h"
-#include "save_pokeathlon.h"
 #include "save_special_ribbons.h"
 #include "save_trainer_card.h"
 #include "save_wifi_history.h"
@@ -73,9 +73,7 @@
 #include "unk_0202C730.h"
 #include "unk_0202D230.h"
 #include "unk_0202DB34.h"
-#include "unk_02031904.h"
 #include "unk_02037C94.h"
-#include "unk_02054E00.h"
 #include "unk_02055244.h"
 #include "unk_020552A4.h"
 #include "unk_02055418.h"
@@ -194,7 +192,7 @@ void Bag_LaunchApp(FieldSystem *fieldSystem, BagView *args) {
 BagView *sub_0203E3FC(FieldSystem *fieldSystem, ItemCheckUseData *taskman) {
     BagView *bagView = Bag_CreateView(Save_Bag_Get(fieldSystem->saveData), sAllPockets, HEAP_ID_FIELD2);
     sub_0207789C(bagView, fieldSystem->saveData, 0, fieldSystem->bagCursor, &fieldSystem->menuInputState);
-    sub_020778E8(bagView, fieldSystem->unk70);
+    sub_020778E8(bagView, fieldSystem->mapLoadType);
     if (PlayerAvatar_GetState(fieldSystem->playerAvatar) == PLAYER_STATE_CYCLING) {
         sub_020778C8(bagView);
     }
@@ -629,7 +627,7 @@ ApricornBoxArgs *ApricornBox_LaunchApp(FieldSystem *fieldSystem, int a1) {
     MI_CpuFill8(args, 0, sizeof(ApricornBoxArgs));
     args->saveData = FieldSystem_GetSaveData(fieldSystem);
     args->menuInputStatePtr = &fieldSystem->menuInputState;
-    args->unk10 = GameStats_GetCapped(Save_GameStats_Get(args->saveData), GAME_STAT_UNK0);
+    args->steps = GameStats_GetCapped(Save_GameStats_Get(args->saveData), GAME_STAT_STEPS_WALKED);
     if (a1 == 1 && !CheckFlag997(Save_VarsFlags_Get(fieldSystem->saveData))) {
         args->unk0 = 0;
     } else {
@@ -644,7 +642,7 @@ ApricornBoxArgs *sub_0203ED80(FieldSystem *fieldSystem, u32 a1, u16 *a2) {
     MI_CpuFill8(args, 0, sizeof(ApricornBoxArgs));
     args->saveData = FieldSystem_GetSaveData(fieldSystem);
     args->menuInputStatePtr = &fieldSystem->menuInputState;
-    args->unk10 = GameStats_GetCapped(Save_GameStats_Get(args->saveData), GAME_STAT_UNK0);
+    args->steps = GameStats_GetCapped(Save_GameStats_Get(args->saveData), GAME_STAT_STEPS_WALKED);
     args->unk0 = 3;
     args->unkC = a1;
     args->unk8 = a2;
@@ -693,8 +691,8 @@ static void PokeathlonCourseRecord_LaunchApp_Impl(FieldSystem *fieldSystem, Poke
 PokeathlonCourseRecordArgs *PokeathlonCourseRecord_LaunchApp(FieldSystem *fieldSystem) {
     PokeathlonCourseRecordArgs *args = Heap_AllocAtEnd(HEAP_ID_FIELD2, sizeof(PokeathlonCourseRecordArgs));
     SaveData *saveData = FieldSystem_GetSaveData(fieldSystem);
-    POKEATHLON_SAV *pokeathlon = Save_Pokeathlon_Get(saveData);
-    args->pokeathlon = sub_02031974(pokeathlon);
+    PokeathlonSave *pokeathlon = Save_Pokeathlon_Get(saveData);
+    args->pokeathlon = PokeathlonSave_dummy1(pokeathlon);
     args->unk4 = sub_0203EE54(saveData);
     PokeathlonCourseRecord_LaunchApp_Impl(fieldSystem, args);
     return args;
@@ -708,10 +706,10 @@ static void PokeathlonMedals_LaunchApp_Impl(FieldSystem *fieldSystem, Pokeathlon
 PokeathlonMedalsArgs *PokeathlonMedals_LaunchApp(FieldSystem *fieldSystem) {
     PokeathlonMedalsArgs *args = Heap_AllocAtEnd(HEAP_ID_FIELD2, sizeof(PokeathlonMedalsArgs));
     SaveData *saveData = FieldSystem_GetSaveData(fieldSystem);
-    POKEATHLON_SAV *pokeathlonSave = Save_Pokeathlon_Get(saveData);
+    PokeathlonSave *pokeathlonSave = Save_Pokeathlon_Get(saveData);
     Pokedex *pokedex = Save_Pokedex_Get(saveData);
     args->pokedex = pokedex;
-    args->unk4 = sub_02031978(pokeathlonSave);
+    args->unk4 = PokeathlonSave_GetUnkDC(pokeathlonSave);
     args->natDexEnabled = Pokedex_GetNatDexFlag(pokedex);
     args->unkC = sub_0203EE54(saveData);
     PokeathlonMedals_LaunchApp_Impl(fieldSystem, args);
@@ -726,12 +724,12 @@ static void PokeathlonEventRecord_LaunchApp_Impl(FieldSystem *fieldSystem, Pokea
 PokeathlonEventRecordArgs *PokeathlonEventRecord_LaunchApp(FieldSystem *fieldSystem) {
     PokeathlonEventRecordArgs *args = Heap_AllocAtEnd(HEAP_ID_FIELD2, sizeof(PokeathlonEventRecordArgs));
     SaveData *saveData = FieldSystem_GetSaveData(fieldSystem);
-    POKEATHLON_SAV *pokeathlonSave = Save_Pokeathlon_Get(saveData);
-    args->unk0 = sub_0203197C(pokeathlonSave);
-    args->unk4 = sub_02031984(pokeathlonSave);
+    PokeathlonSave *pokeathlonSave = Save_Pokeathlon_Get(saveData);
+    args->recordsSolo = PokeathlonSave_GetRecordsSolo(pokeathlonSave);
+    args->recordsLink = PokeathlonSave_GetRecordsLink(pokeathlonSave);
     args->profile = Save_PlayerData_GetProfile(saveData);
     args->unk10 = sub_0203EE54(saveData);
-    args->unk8 = sub_02031990(pokeathlonSave);
+    args->unk8 = PokeathlonSave_GetUnkAEC(pokeathlonSave);
     PokeathlonEventRecord_LaunchApp_Impl(fieldSystem, args);
     return args;
 }
@@ -978,7 +976,7 @@ static BOOL Task_WirelessTrade(TaskManager *taskman) {
         data->wirelessTradeSelectMon.unk30++;
         data->state = 2;
         GameStats *gameStats = Save_GameStats_Get(fieldSystem->saveData);
-        GameStats_AddScore(gameStats, SCORE_EVENT_16);
+        GameStats_AddScore(gameStats, SCORE_EVENT_LINK_TRADE);
         if (sub_02039998()) {
             GameStats_Inc(gameStats, GAME_STAT_UNK114);
         }
@@ -1255,13 +1253,13 @@ void MoveRelearner_LaunchApp(FieldSystem *menuInputStatePtr, MoveRelearnerArgs *
 void HatchEggInParty(FieldSystem *fieldSystem) {
     UnkStruct_02091240 data;
 
-    Pokemon *mon = sub_0206CE44(SaveArray_Party_Get(fieldSystem->saveData));
+    Pokemon *mon = Party_GetMonToHatch(SaveArray_Party_Get(fieldSystem->saveData));
     GF_ASSERT(mon != NULL);
 
     data.mon = mon;
     data.options = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);
     data.profile = Save_PlayerData_GetProfile(fieldSystem->saveData);
-    data.unkC = FieldSystem_GetOverriddenMusicId(fieldSystem, fieldSystem->location->mapId);
+    data.unkC = FieldBGM_GetEffective(fieldSystem, fieldSystem->location->mapId);
     CallTask_HatchEggInParty(fieldSystem->taskman, &data);
 }
 

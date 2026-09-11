@@ -5,48 +5,48 @@
 
 	.rodata
 
-	scrdef scr_seq_R18R0101_000
-	scrdef scr_seq_R18R0101_001
-	scrdef scr_seq_R18R0101_002
-	scrdef scr_seq_R18R0101_003
-	scrdef_end
+	ScrDef scr_seq_R18R0101_000
+	ScrDef scr_seq_R18R0101_001
+	ScrDef scr_seq_R18R0101_002
+	ScrDef scr_seq_R18R0101_003
+	ScrDefEnd
 
 scr_seq_R18R0101_001:
-	goto_if_set FLAG_UNK_149, _001F
-	end
+	GoToIfSet FLAG_UNK_149, _001F
+	End
 
 _001F:
-	set_bike_state_lock 1
-	end
+	SetBikeStateLock 1
+	End
 
 scr_seq_R18R0101_002:
-	scrcmd_609
-	lockall
-	player_on_bike_check VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _006A
-	apply_movement obj_player, _0084
-	wait_movement
-	npc_msg msg_0359_R18R0101_00001
-	closemsg
-	toggle_following_pokemon_movement 0
-	wait_following_pokemon_movement
-	following_pokemon_movement 55
-	apply_movement obj_player, _008C
-	wait_movement
-	wait_following_pokemon_movement
-	toggle_following_pokemon_movement 1
-	following_pokemon_movement 48
-	releaseall
-	end
+	ScrCmd_609
+	LockAll
+	PlayerOnBikeCheck VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _006A
+	ApplyMovement obj_player, _0084
+	WaitMovement
+	NPCMsg msg_0359_R18R0101_00001
+	CloseMsg
+	ToggleFollowingPokemonMovement 0
+	WaitFollowingPokemonMovement
+	FollowingPokemonMovement 55
+	ApplyMovement obj_player, _008C
+	WaitMovement
+	WaitFollowingPokemonMovement
+	ToggleFollowingPokemonMovement 1
+	FollowingPokemonMovement 48
+	ReleaseAll
+	End
 
 _006A:
-	set_bike_state_lock 1
-	setvar VAR_UNK_4129, 1
-	setvar VAR_UNK_412A, 1
-	setflag FLAG_UNK_149
-	releaseall
-	end
+	SetBikeStateLock 1
+	SetVar VAR_UNK_4129, 1
+	SetVar VAR_UNK_412A, 1
+	SetFlag FLAG_UNK_149
+	ReleaseAll
+	End
 
 	.balign 4, 0
 _0084:
@@ -59,13 +59,13 @@ _008C:
 	EndMovement
 
 scr_seq_R18R0101_003:
-	set_bike_state_lock 0
-	setvar VAR_UNK_4129, 0
-	setvar VAR_UNK_412A, 0
-	clearflag FLAG_UNK_149
-	end
+	SetBikeStateLock 0
+	SetVar VAR_UNK_4129, 0
+	SetVar VAR_UNK_412A, 0
+	ClearFlag FLAG_UNK_149
+	End
 
 scr_seq_R18R0101_000:
-	simple_npc_msg msg_0359_R18R0101_00000
-	end
+	SimpleNPCMsg msg_0359_R18R0101_00000
+	End
 	.balign 4, 0

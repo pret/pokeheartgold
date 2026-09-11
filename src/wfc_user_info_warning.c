@@ -13,9 +13,9 @@
 #include "msgdata.h"
 #include "pm_string.h"
 #include "render_window.h"
+#include "screen_fade.h"
 #include "system.h"
 #include "text.h"
-#include "unk_0200FA24.h"
 
 static const GraphicsBanks sWFCWarningMsgBanksConfig = {
     .bg = GX_VRAM_BG_256_AB,
@@ -113,8 +113,8 @@ void ShowWFCUserInfoWarning(enum HeapID heapID, int a1) {
     String_Delete(warning_string);
 
     GfGfx_BothDispOn();
-    SetMasterBrightnessNeutral(0);
-    SetMasterBrightnessNeutral(1);
+    SetMasterBrightnessNeutral(PM_LCD_TOP);
+    SetMasterBrightnessNeutral(PM_LCD_BOTTOM);
     SetBlendBrightness(0, (GXBlendPlaneMask)(GX_BLEND_PLANEMASK_BD | GX_BLEND_PLANEMASK_OBJ | GX_BLEND_PLANEMASK_BG3 | GX_BLEND_PLANEMASK_BG2 | GX_BLEND_PLANEMASK_BG1 | GX_BLEND_PLANEMASK_BG0), SCREEN_MASK_MAIN | SCREEN_MASK_SUB);
 
     while (TRUE) {

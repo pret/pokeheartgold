@@ -17945,7 +17945,7 @@ _022346B2:
 	mov r1, #0
 	bl StopSE
 	add r0, r4, #0
-	mov r1, #0x24
+	mov r1, #0x24 ; SCORE_EVENT_UPLOADED_DRESS_UP_DATA
 	bl ov40_0222FB28
 	ldr r0, _02234800 ; =0x00000577
 	bl PlaySE
@@ -22476,7 +22476,7 @@ _02236C02:
 	mov r1, #0
 	bl StopSE
 	add r0, r4, #0
-	mov r1, #0x25
+	mov r1, #0x25 ; SCORE_EVENT_UPLOADED_PC_BOX_RECORDS
 	bl ov40_0222FB28
 	add r0, r4, #0
 	mov r1, #1
@@ -43409,7 +43409,7 @@ _02241910:
 	add r2, r1, #0
 	bl sub_02087A08
 	add r0, r4, #0
-	mov r1, #0x23
+	mov r1, #0x23 ; SCORE_EVENT_UPLOADED_BATTLE_VIDEO
 	bl ov40_0222FB28
 	add r0, r4, #0
 	mov r1, #4

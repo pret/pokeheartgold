@@ -5,36 +5,36 @@
 
 	.rodata
 
-	scrdef scr_seq_D26R0103_000
-	scrdef_end
+	ScrDef scr_seq_D26R0103_000
+	ScrDefEnd
 
 scr_seq_D26R0103_000:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	goto_if_set FLAG_GOT_KINGS_ROCK_FROM_SLOWPOKE_WELL_MAN, _004F
-	npc_msg msg_0092_D26R0103_00000
-	wait_button
-	closemsg
-	goto_if_no_item_space ITEM_KINGS_ROCK, 1, _005A
-	callstd std_give_item_verbose
-	setflag FLAG_GOT_KINGS_ROCK_FROM_SLOWPOKE_WELL_MAN
-	goto _004F
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	GoToIfSet FLAG_GOT_KINGS_ROCK_FROM_SLOWPOKE_WELL_MAN, _004F
+	NPCMsg msg_0092_D26R0103_00000
+	WaitABPress
+	CloseMsg
+	GoToIfNoItemSpace ITEM_KINGS_ROCK, 1, _005A
+	CallStd std_give_item_verbose
+	SetFlag FLAG_GOT_KINGS_ROCK_FROM_SLOWPOKE_WELL_MAN
+	GoTo _004F
 
 _004F:
-	npc_msg msg_0092_D26R0103_00002
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0092_D26R0103_00002
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _005A:
-	callstd std_bag_is_full
-	closemsg
-	releaseall
-	end
+	CallStd std_bag_is_full
+	CloseMsg
+	ReleaseAll
+	End
 
 _0064:
-	end
+	End
 
 	.balign 4, 0

@@ -13,7 +13,7 @@
 .public LoadFontPal0
 .public FontID_String_GetWidthMultiline
 .public FontID_String_GetCenterAlignmentX
-.public sub_02004AD8
+.public Sound_SetScene
 .public Sound_SetSceneAndPlayBGM
 .public sub_02005AF8
 .public Sound_Stop
@@ -40,11 +40,11 @@
 .public AddCharResObjFromNarc
 .public AddPlttResObjFromNarc
 .public AddCellOrAnimResObjFromNarc
-.public sub_0200ACF0
-.public sub_0200AEB0
-.public sub_0200AF94
-.public sub_0200B00C
-.public sub_0200B0A8
+.public SpriteTransfer_CreateCharTransferTask
+.public SpriteTransfer_DeleteCharTransferTask
+.public SpriteTransfer_CreateExtPlttTransferTask
+.public SpriteTransfer_CreatePlttTransferTask
+.public SpriteTransfer_DeletePlttTransferTask
 .public OamManager_Create
 .public OamManager_ApplyAndResetBuffers
 .public OamManager_Free

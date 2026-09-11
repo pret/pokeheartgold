@@ -2376,7 +2376,7 @@ _021EECEE:
 	add r4, r0, #0
 	ldr r0, [r5, #0xc]
 	bl Save_Pokeathlon_Get
-	bl SavePokeathlon_GetAthletePoints
+	bl PokeathlonSave_GetAthletePoints
 	add r2, r0, #0
 _021EED04:
 	mov r0, #1

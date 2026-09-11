@@ -22,6 +22,7 @@
 #include <stdlib.h>
 
 #include "common.h"
+#include "nitroarc.h"
 #include "optparse.h"
 
 enum {
@@ -89,9 +90,9 @@ enum {
 
     exclude,
     exclude_from,
-    single_file,
     files_from,
     index,
+    index_namespace,
     no_recurse,
     named,
     stripped,
@@ -113,14 +114,14 @@ static const option_cfg_t s_options[] = {
     [format]    = { "format",    NULL, 'F', 0, true  },
     [no_header] = { "no-header", NULL, 'H', 0, false },
 
-    [exclude]      = { "exclude",      NULL, 'E', 0, true  },
-    [exclude_from] = { "exclude-from", NULL, 'X', 0, true  },
-    [single_file]  = { "single-file",  NULL, 'O', 0, true  },
-    [files_from]   = { "files-from",   NULL, 'T', 0, true  },
-    [index]        = { "index",        NULL, 'I', 0, false },
-    [no_recurse]   = { "no-recursion", NULL, 'R', 0, false },
-    [named]        = { "named",        NULL, 'N', 0, false },
-    [stripped]     = { "stripped",     NULL, 'S', 0, false },
+    [exclude]         = { "exclude",         NULL, 'E', 0, true  },
+    [exclude_from]    = { "exclude-from",    NULL, 'X', 0, true  },
+    [files_from]      = { "files-from",      NULL, 'T', 0, true  },
+    [index]           = { "index",           NULL, 'I', 0, false },
+    [index_namespace] = { "index-namespace", NULL, 'P', 0, false },
+    [no_recurse]      = { "no-recursion",    NULL, 'R', 0, false },
+    [named]           = { "named",           NULL, 'N', 0, false },
+    [stripped]        = { "stripped",        NULL, 'S', 0, false },
 
     [help]    = { "help",    NULL, '?', 'h', false },
     [version] = { "version", NULL, 'V',  0,  false },
@@ -166,17 +167,17 @@ int parse_opts(const char **argv, options_t *opts) {
         case directory:    target_optarg(opts->directory);
         case file:         target_optarg(opts->file);
         case format:       target_optarg(opts->format);
-        case single_file:  target_optarg(opts->single_file);
         case files_from:   target_optarg(opts->files_from);
         case exclude_from: target_optarg(opts->exclude_from);
         case exclude:      target_optarg(opts->exclude_pat);
 
-        case verbose:    opts->verbose = true; break;
-        case no_header:  opts->no_header = true; break;
-        case index:      opts->index = true; break;
-        case no_recurse: opts->no_recurse = true; break;
-        case named:      opts->named = true; break;
-        case stripped:   opts->stripped = true; break;
+        case verbose:         opts->verbose = true; break;
+        case no_header:       opts->no_header = true; break;
+        case index:           opts->index = true; break;
+        case index_namespace: opts->index = true; opts->index_ns = true; break;
+        case no_recurse:      opts->no_recurse = true; break;
+        case named:           opts->named = true; break;
+        case stripped:        opts->stripped = true; break;
 
         case OPT_ERROR:
             progerr("%s", parser.errmsg);
@@ -220,9 +221,9 @@ static void exit_help(const char *name, int exit_status) {
     puts("  -X, --exclude-from=FILE  read exclusion patterns from FILE");
     puts("  -T, --files-from=FILE    read ordered filenames from FILE");
     puts("  -I, --index              create a C-header index of member files");
+    puts("  -P, --index-namespace    like --index, with namespace-prefixes");
     puts("  -N, --named              retain filenames in the archive");
     puts("  -R, --no-recursion       do not discover files in subdirectories");
-    puts("  -O, --single-file=FILE   specify FILE as the only member file");
     puts("  -S, --stripped           do not write the signed file-type header");
     puts("");
     puts("Tabulated data options:");
@@ -242,7 +243,12 @@ static void exit_help(const char *name, int exit_status) {
 }
 
 static void exit_version(void) {
-    puts("nitroarc v0.0.1");
+    putf(
+        "nitroarc v%d.%d.%d\n",
+        NITROARC_VERSION_MAJOR,
+        NITROARC_VERSION_MINOR,
+        NITROARC_VERSION_PATCH
+    );
     puts("");
     puts("Copyright (C) 2026 Rachel <rachel@lhea.me>");
     puts("");

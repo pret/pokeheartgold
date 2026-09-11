@@ -170,7 +170,7 @@ sub_020659CC: ; 0x020659CC
 	add r0, r5, #0
 	bl MapObject_ClearSingleMovement
 	add r0, r5, #0
-	bl MapObject_ClearFlag3
+	bl MapObject_ClearEndMovement
 	add r0, r5, #0
 	mov r1, #0x20
 	bl MapObject_ClearFlagsBits
@@ -224,7 +224,7 @@ sub_02065A4C: ; 0x02065A4C
 	add r0, r5, #0
 	bl MapObject_ClearSingleMovement
 	add r0, r5, #0
-	bl MapObject_ClearFlag3
+	bl MapObject_ClearEndMovement
 	mov r0, #1
 	lsl r0, r0, #8
 	ldr r1, [r4, r0]
@@ -357,7 +357,7 @@ sub_02065B70: ; 0x02065B70
 	add r4, r1, #0
 	bl MapObject_ClearSingleMovement
 	add r0, r5, #0
-	bl MapObject_ClearFlag3
+	bl MapObject_ClearEndMovement
 	add r0, r5, #0
 	add r1, r4, #0
 	bl sub_02065D24
@@ -413,7 +413,7 @@ sub_02065BE8: ; 0x02065BE8
 	add r4, r1, #0
 	bl MapObject_ClearSingleMovement
 	add r0, r5, #0
-	bl MapObject_ClearFlag3
+	bl MapObject_ClearEndMovement
 	add r0, r5, #0
 	add r1, r4, #0
 	bl sub_02065D24
@@ -516,7 +516,7 @@ sub_02065C90: ; 0x02065C90
 	strb r0, [r5]
 _02065CBE:
 	add r0, r4, #0
-	bl PlayerAvatar_GetUnk14
+	bl PlayerAvatar_GetPlayerMoveState
 	cmp r0, #3
 	bne _02065CCC
 	mov r0, #0
@@ -998,7 +998,7 @@ sub_02066064: ; 0x02066064
 	add r4, r1, #0
 	bl MapObject_ClearSingleMovement
 	add r0, r5, #0
-	bl MapObject_ClearFlag3
+	bl MapObject_ClearEndMovement
 	add r0, r5, #0
 	add r1, r4, #0
 	bl sub_020661F0
@@ -1452,7 +1452,7 @@ _020663CE:
 	add r0, r5, #0
 	bl MapObject_ClearSingleMovement
 	add r0, r5, #0
-	bl MapObject_ClearFlag3
+	bl MapObject_ClearEndMovement
 	ldrb r0, [r4]
 	add r0, r0, #1
 	strb r0, [r4]
@@ -1619,7 +1619,7 @@ sub_020664D8: ; 0x020664D8
 	add r6, r0, #0
 	lsl r0, r6, #0x18
 	lsr r0, r0, #0x18
-	bl MetatileBehavior_IsEncounterGrass
+	bl MetatileBehavior_IsTallGrass
 	cmp r0, #1
 	bne _02066516
 	add r0, r5, #0
@@ -1629,7 +1629,7 @@ sub_020664D8: ; 0x020664D8
 _02066516:
 	lsl r0, r6, #0x18
 	lsr r0, r0, #0x18
-	bl sub_0205B6F4
+	bl MetatileBehavior_IsVeryTallGrass
 	cmp r0, #1
 	bne _0206652A
 	add r0, r5, #0
@@ -1660,7 +1660,7 @@ _0206652A:
 	add r4, r0, #0
 	lsl r0, r4, #0x18
 	lsr r0, r0, #0x18
-	bl MetatileBehavior_IsEncounterGrass
+	bl MetatileBehavior_IsTallGrass
 	cmp r0, #1
 	bne _0206657C
 	mov r1, #1
@@ -1674,7 +1674,7 @@ _0206652A:
 _0206657C:
 	lsl r0, r4, #0x18
 	lsr r0, r0, #0x18
-	bl sub_0205B6F4
+	bl MetatileBehavior_IsVeryTallGrass
 	cmp r0, #1
 	bne _02066596
 	mov r1, #1

@@ -2,19 +2,20 @@
 
 #include "global.h"
 
+#include "field/encounter_check.h"
+
 #include "assert.h"
 #include "encounter.h"
-#include "fieldmap.h"
 #include "filesystem.h"
 #include "follow_mon.h"
 #include "heap.h"
 #include "map_object.h"
 #include "overlay_01_021EDAFC.h"
 #include "overlay_01_02204ED8.h"
-#include "overlay_02.h"
 #include "player_data.h"
 #include "scrcmd.h"
 #include "script.h"
+#include "script_manager.h"
 #include "task.h"
 #include "unk_0205CB48.h"
 #include "unk_0205FD20.h"
@@ -139,7 +140,7 @@ static BOOL Task_TryHeadbuttEncounter(TaskManager *taskManager) {
             Heap_Free(didHeadbuttStartBattle);
             return TRUE;
         }
-        if (FieldSystem_ChooseHeadbuttEncounter(fieldSystem, &setup, headbuttEncounterSlots)) {
+        if (FieldSystem_PerformHeadbuttEncounterCheck(fieldSystem, &setup, headbuttEncounterSlots)) {
             *didHeadbuttStartBattle->resultPtr = TRUE;
             Heap_Free(headbuttTable);
             Heap_Free(didHeadbuttStartBattle);

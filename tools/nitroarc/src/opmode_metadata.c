@@ -21,8 +21,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "nitroarc.h"
 #include "common.h"
+#include "nitroarc.h"
 
 static int print_metadata(const nitroarc_t *narc, const options_t *opts);
 

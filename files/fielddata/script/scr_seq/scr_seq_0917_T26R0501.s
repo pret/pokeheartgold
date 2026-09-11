@@ -5,73 +5,73 @@
 
 	.rodata
 
-	scrdef scr_seq_T26R0501_000
-	scrdef scr_seq_T26R0501_001
-	scrdef scr_seq_T26R0501_002
-	scrdef_end
+	ScrDef scr_seq_T26R0501_000
+	ScrDef scr_seq_T26R0501_001
+	ScrDef scr_seq_T26R0501_002
+	ScrDefEnd
 
 scr_seq_T26R0501_000:
-	simple_npc_msg msg_0609_T26R0501_00000
-	end
+	SimpleNPCMsg msg_0609_T26R0501_00000
+	End
 
 scr_seq_T26R0501_001:
-	simple_npc_msg msg_0609_T26R0501_00001
-	end
+	SimpleNPCMsg msg_0609_T26R0501_00001
+	End
 
 scr_seq_T26R0501_002:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	goto_if_unset FLAG_UNK_AB9, _0050
-	npc_msg msg_0609_T26R0501_00004
-	goto _00E3
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	GoToIfUnset FLAG_UNK_AB9, _0050
+	NPCMsg msg_0609_T26R0501_00004
+	GoTo _00E3
 
 _0050:
-	npc_msg msg_0609_T26R0501_00002
-	hasitem ITEM_SEAL_CASE, 1, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_ne _0071
-	npc_msg msg_0609_T26R0501_00005
-	goto _00E3
+	NPCMsg msg_0609_T26R0501_00002
+	HasItem ITEM_SEAL_CASE, 1, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfNe _0071
+	NPCMsg msg_0609_T26R0501_00005
+	GoTo _00E3
 
 _0071:
-	give_random_seal VAR_SPECIAL_x8000, VAR_SPECIAL_x8001, VAR_SPECIAL_x8002
-	compare VAR_SPECIAL_x8000, 0
-	goto_if_ne _008F
-	npc_msg msg_0609_T26R0501_00003
-	goto _00E3
+	GiveRandomSeal VAR_SPECIAL_x8000, VAR_SPECIAL_x8001, VAR_SPECIAL_x8002
+	Compare VAR_SPECIAL_x8000, 0
+	GoToIfNe _008F
+	NPCMsg msg_0609_T26R0501_00003
+	GoTo _00E3
 
 _008F:
-	setflag FLAG_UNK_AB9
-	buffer_seal_name 0, VAR_SPECIAL_x8000
-	npc_msg msg_0609_T26R0501_00006
-	play_fanfare SEQ_ME_ITEM
-	npc_msg msg_0609_T26R0501_00011
-	wait_fanfare
-	compare VAR_SPECIAL_x8001, 0
-	goto_if_eq _00EB
-	buffer_seal_name 0, VAR_SPECIAL_x8001
-	npc_msg msg_0609_T26R0501_00007
-	play_fanfare SEQ_ME_ITEM
-	npc_msg msg_0609_T26R0501_00011
-	wait_fanfare
-	compare VAR_SPECIAL_x8002, 0
-	goto_if_eq _00EB
-	buffer_seal_name 0, VAR_SPECIAL_x8002
-	npc_msg msg_0609_T26R0501_00008
-	play_fanfare SEQ_ME_ITEM
-	npc_msg msg_0609_T26R0501_00011
-	wait_fanfare
-	npc_msg msg_0609_T26R0501_00009
+	SetFlag FLAG_UNK_AB9
+	BufferSealName 0, VAR_SPECIAL_x8000
+	NPCMsg msg_0609_T26R0501_00006
+	PlayFanfare SEQ_ME_ITEM
+	NPCMsg msg_0609_T26R0501_00011
+	WaitFanfare
+	Compare VAR_SPECIAL_x8001, 0
+	GoToIfEq _00EB
+	BufferSealName 0, VAR_SPECIAL_x8001
+	NPCMsg msg_0609_T26R0501_00007
+	PlayFanfare SEQ_ME_ITEM
+	NPCMsg msg_0609_T26R0501_00011
+	WaitFanfare
+	Compare VAR_SPECIAL_x8002, 0
+	GoToIfEq _00EB
+	BufferSealName 0, VAR_SPECIAL_x8002
+	NPCMsg msg_0609_T26R0501_00008
+	PlayFanfare SEQ_ME_ITEM
+	NPCMsg msg_0609_T26R0501_00011
+	WaitFanfare
+	NPCMsg msg_0609_T26R0501_00009
 _00E3:
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _00EB:
-	npc_msg msg_0609_T26R0501_00010
-	goto _00E3
-	end
+	NPCMsg msg_0609_T26R0501_00010
+	GoTo _00E3
+	End
 
 	.balign 4, 0

@@ -5,135 +5,135 @@
 
 	.rodata
 
-	scrdef scr_seq_R35R0101_000
-	scrdef scr_seq_R35R0101_001
-	scrdef_end
+	ScrDef scr_seq_R35R0101_000
+	ScrDef scr_seq_R35R0101_001
+	ScrDefEnd
 
 scr_seq_R35R0101_001:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	goto_if_set FLAG_GOT_RADIO_CARD, _0028
-	npc_msg msg_0388_R35R0101_00013
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	GoToIfSet FLAG_GOT_RADIO_CARD, _0028
+	NPCMsg msg_0388_R35R0101_00013
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0028:
-	npc_msg msg_0388_R35R0101_00014
-	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_RESULT
-	touchscreen_menu_show
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _004B
-	npc_msg msg_0388_R35R0101_00015
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0388_R35R0101_00014
+	TouchscreenMenuHide
+	GetMenuChoice VAR_SPECIAL_RESULT
+	TouchscreenMenuShow
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _004B
+	NPCMsg msg_0388_R35R0101_00015
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _004B:
-	npc_msg msg_0388_R35R0101_00016
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0388_R35R0101_00016
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_R35R0101_000:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	compare VAR_LOAN_SPEAROW, 1
-	goto_if_eq _00BC
-	compare VAR_LOAN_SPEAROW, 2
-	goto_if_ge _0104
-	npc_msg msg_0388_R35R0101_00000
-	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_RESULT
-	touchscreen_menu_show
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _00EE
-	get_party_count VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 6
-	goto_if_eq _00F9
-	npc_msg msg_0388_R35R0101_00003
-	give_loan_mon 7, 20, 101
-	setvar VAR_LOAN_SPEAROW, 1
-	buffer_players_name 0
-	npc_msg msg_0388_R35R0101_00004
-	play_fanfare SEQ_ME_PT_SPECIAL
-	wait_fanfare
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	Compare VAR_LOAN_SPEAROW, 1
+	GoToIfEq _00BC
+	Compare VAR_LOAN_SPEAROW, 2
+	GoToIfGe _0104
+	NPCMsg msg_0388_R35R0101_00000
+	TouchscreenMenuHide
+	GetMenuChoice VAR_SPECIAL_RESULT
+	TouchscreenMenuShow
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _00EE
+	GetPartyCount VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 6
+	GoToIfEq _00F9
+	NPCMsg msg_0388_R35R0101_00003
+	GiveLoanMon 7, 20, 101
+	SetVar VAR_LOAN_SPEAROW, 1
+	BufferPlayersName 0
+	NPCMsg msg_0388_R35R0101_00004
+	PlayFanfare SEQ_ME_PT_SPECIAL
+	WaitFanfare
 _00BC:
-	kenya_check_party_or_mailbox VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0178
-	goto_if_set FLAG_UNK_0B5, _00E3
-	npc_msg msg_0388_R35R0101_00006
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	KenyaCheckPartyOrMailbox VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0178
+	GoToIfSet FLAG_UNK_0B5, _00E3
+	NPCMsg msg_0388_R35R0101_00006
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _00E3:
-	npc_msg msg_0388_R35R0101_00005
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0388_R35R0101_00005
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _00EE:
-	npc_msg msg_0388_R35R0101_00001
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0388_R35R0101_00001
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _00F9:
-	npc_msg msg_0388_R35R0101_00002
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0388_R35R0101_00002
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0104:
-	compare VAR_LOAN_SPEAROW, 4
-	goto_if_ge _016D
-	npc_msg msg_0388_R35R0101_00007
-	goto_if_no_item_space ITEM_HP_UP, 1, _0163
-	callstd std_give_item_verbose
-	compare VAR_LOAN_SPEAROW, 3
-	goto_if_ne _0152
-	setvar VAR_LOAN_SPEAROW, 5
-	goto _0158
+	Compare VAR_LOAN_SPEAROW, 4
+	GoToIfGe _016D
+	NPCMsg msg_0388_R35R0101_00007
+	GoToIfNoItemSpace ITEM_HP_UP, 1, _0163
+	CallStd std_give_item_verbose
+	Compare VAR_LOAN_SPEAROW, 3
+	GoToIfNe _0152
+	SetVar VAR_LOAN_SPEAROW, 5
+	GoTo _0158
 
 _0152:
-	setvar VAR_LOAN_SPEAROW, 4
+	SetVar VAR_LOAN_SPEAROW, 4
 _0158:
-	npc_msg msg_0388_R35R0101_00008
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0388_R35R0101_00008
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0163:
-	callstd std_bag_is_full
-	closemsg
-	releaseall
-	end
+	CallStd std_bag_is_full
+	CloseMsg
+	ReleaseAll
+	End
 
 _016D:
-	npc_msg msg_0388_R35R0101_00010
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0388_R35R0101_00010
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0178:
-	setvar VAR_LOAN_SPEAROW, 6
-	npc_msg msg_0388_R35R0101_00009
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	SetVar VAR_LOAN_SPEAROW, 6
+	NPCMsg msg_0388_R35R0101_00009
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 	.balign 4, 0

@@ -11,7 +11,7 @@ void ov10_0221BE20(BattleSystem *battleSystem, BattleContext *ctx, u8 battlerId,
     u8 struggleFlags;
     u8 *aiData = (u8 *)&ctx->trainerAIData;
 
-    for (i = 0; i < OFFSET_OF(TrainerAIData *, unk1C); i++) {
+    for (i = 0; i < OFFSET_OF(TrainerAIData *, moves); i++) {
         aiData[i] = 0;
     }
 

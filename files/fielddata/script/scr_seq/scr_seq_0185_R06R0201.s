@@ -5,24 +5,24 @@
 
 	.rodata
 
-	scrdef scr_seq_R06R0201_000
-	scrdef_end
+	ScrDef scr_seq_R06R0201_000
+	ScrDefEnd
 
 scr_seq_R06R0201_000:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	goto_if_set FLAG_RESTORED_POWER, _0024
-	npc_msg msg_0335_R06R0201_00000
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	GoToIfSet FLAG_RESTORED_POWER, _0024
+	NPCMsg msg_0335_R06R0201_00000
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0024:
-	npc_msg msg_0335_R06R0201_00001
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0335_R06R0201_00001
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 	.balign 4, 0

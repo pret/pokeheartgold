@@ -63,8 +63,8 @@ _021FB61E:
 	pop {r4, pc}
 	thumb_func_end ov01_021FB610
 
-	thumb_func_start ov01_021FB630
-ov01_021FB630: ; 0x021FB630
+	thumb_func_start FieldSystem_DoPoisonEffect
+FieldSystem_DoPoisonEffect: ; 0x021FB630
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4]
@@ -127,7 +127,7 @@ _021FB6B4: .word ov01_021FB6C4
 _021FB6B8: .word ov01_021FB7CC
 _021FB6BC: .word ov01_021FB800
 _021FB6C0: .word SEQ_SE_DP_DOKU2
-	thumb_func_end ov01_021FB630
+	thumb_func_end FieldSystem_DoPoisonEffect
 
 	thumb_func_start ov01_021FB6C4
 ov01_021FB6C4: ; 0x021FB6C4

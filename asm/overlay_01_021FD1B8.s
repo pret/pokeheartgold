@@ -335,8 +335,8 @@ ov01_021FD3E0: ; 0x021FD3E0
 	pop {r3, r4, pc}
 	thumb_func_end ov01_021FD3E0
 
-	thumb_func_start ov01_021FD3F8
-ov01_021FD3F8: ; 0x021FD3F8
+	thumb_func_start FieldEffect_InitRenderObject
+FieldEffect_InitRenderObject: ; 0x021FD3F8
 	push {r4, r5, r6, lr}
 	mov r5, #0xc
 	add r1, r5, #0
@@ -354,7 +354,7 @@ _021FD406:
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _021FD418: .word ov01_02208E30
-	thumb_func_end ov01_021FD3F8
+	thumb_func_end FieldEffect_InitRenderObject
 
 	.rodata
 

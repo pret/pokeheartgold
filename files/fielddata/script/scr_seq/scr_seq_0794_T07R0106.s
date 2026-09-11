@@ -5,141 +5,141 @@
 
 	.rodata
 
-	scrdef scr_seq_T07R0106_000
-	scrdef scr_seq_T07R0106_001
-	scrdef scr_seq_T07R0106_002
-	scrdef scr_seq_T07R0106_003
-	scrdef_end
+	ScrDef scr_seq_T07R0106_000
+	ScrDef scr_seq_T07R0106_001
+	ScrDef scr_seq_T07R0106_002
+	ScrDef scr_seq_T07R0106_003
+	ScrDefEnd
 
 scr_seq_T07R0106_000:
-	simple_npc_msg msg_0499_T07R0106_00000
-	end
+	SimpleNPCMsg msg_0499_T07R0106_00000
+	End
 
 scr_seq_T07R0106_001:
-	simple_npc_msg msg_0499_T07R0106_00001
-	end
+	SimpleNPCMsg msg_0499_T07R0106_00001
+	End
 
 scr_seq_T07R0106_002:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	npc_msg msg_0499_T07R0106_00002
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	NPCMsg msg_0499_T07R0106_00002
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_T07R0106_003:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	npc_msg msg_0499_T07R0106_00003
-	show_money_box 20, 2
-	goto _005E
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	NPCMsg msg_0499_T07R0106_00003
+	ShowMoneyBox 20, 2
+	GoTo _005E
 
 _005E:
-	touchscreen_menu_hide
-	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x8000
-	menu_item_add 209, 255, 0
-	menu_item_add 210, 255, 1
-	menu_item_add 211, 255, 2
-	menu_item_add 212, 255, 3
-	menu_exec
-	touchscreen_menu_show
-	switch VAR_SPECIAL_x8000
-	case 0, _00C2
-	case 1, _00CE
-	case 2, _00DA
-	npc_msg msg_0499_T07R0106_00007
-	goto _0205
+	TouchscreenMenuHide
+	MenuInitStdGmm 1, 1, 0, 1, VAR_SPECIAL_x8000
+	MenuItemAdd 209, 255, 0
+	MenuItemAdd 210, 255, 1
+	MenuItemAdd 211, 255, 2
+	MenuItemAdd 212, 255, 3
+	MenuExec
+	TouchscreenMenuShow
+	Switch VAR_SPECIAL_x8000
+	Case 0, _00C2
+	Case 1, _00CE
+	Case 2, _00DA
+	NPCMsg msg_0499_T07R0106_00007
+	GoTo _0205
 
 _00C2:
-	setvar VAR_SPECIAL_x8001, 30
-	goto _011C
+	SetVar VAR_SPECIAL_x8001, 30
+	GoTo _011C
 
 _00CE:
-	setvar VAR_SPECIAL_x8001, 31
-	goto _011C
+	SetVar VAR_SPECIAL_x8001, 31
+	GoTo _011C
 
 _00DA:
-	setvar VAR_SPECIAL_x8001, 32
-	goto _011C
+	SetVar VAR_SPECIAL_x8001, 32
+	GoTo _011C
 
 _00E6:
-	hasenoughmoneyimmediate VAR_SPECIAL_RESULT, 200
-	return
+	HasEnoughMoneyImmediate VAR_SPECIAL_RESULT, 200
+	Return
 
 _00F0:
-	hasenoughmoneyimmediate VAR_SPECIAL_RESULT, 300
-	return
+	HasEnoughMoneyImmediate VAR_SPECIAL_RESULT, 300
+	Return
 
 _00FA:
-	hasenoughmoneyimmediate VAR_SPECIAL_RESULT, 350
-	return
+	HasEnoughMoneyImmediate VAR_SPECIAL_RESULT, 350
+	Return
 
 _0104:
-	submoneyimmediate 200
-	return
+	SubMoneyImmediate 200
+	Return
 
 _010C:
-	submoneyimmediate 300
-	return
+	SubMoneyImmediate 300
+	Return
 
 _0114:
-	submoneyimmediate 350
-	return
+	SubMoneyImmediate 350
+	Return
 
 _011C:
-	compare VAR_SPECIAL_x8000, 0
-	call_if_eq _00E6
-	compare VAR_SPECIAL_x8000, 1
-	call_if_eq _00F0
-	compare VAR_SPECIAL_x8000, 2
-	call_if_eq _00FA
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _01F0
-	hasspaceforitem VAR_SPECIAL_x8001, 1, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _01F9
-	compare VAR_SPECIAL_x8000, 0
-	call_if_eq _0104
-	compare VAR_SPECIAL_x8000, 1
-	call_if_eq _010C
-	compare VAR_SPECIAL_x8000, 2
-	call_if_eq _0114
-	update_money_box
-	buffer_item_name 0, VAR_SPECIAL_x8001
-	play_se SEQ_SE_DP_JIHANKI
-	buffer_item_name 0, VAR_SPECIAL_x8001
-	npc_msg msg_0499_T07R0106_00004
-	giveitem_no_check VAR_SPECIAL_x8001, 1
-	random VAR_SPECIAL_RESULT, 64
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_ne _01E7
-	play_se SEQ_SE_DP_JIHANKI
-	buffer_item_name 0, VAR_SPECIAL_x8001
-	npc_msg msg_0499_T07R0106_00005
-	hasspaceforitem VAR_SPECIAL_x8001, 1, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _01F9
-	callstd std_give_item_verbose
+	Compare VAR_SPECIAL_x8000, 0
+	CallIfEq _00E6
+	Compare VAR_SPECIAL_x8000, 1
+	CallIfEq _00F0
+	Compare VAR_SPECIAL_x8000, 2
+	CallIfEq _00FA
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _01F0
+	HasSpaceForItem VAR_SPECIAL_x8001, 1, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _01F9
+	Compare VAR_SPECIAL_x8000, 0
+	CallIfEq _0104
+	Compare VAR_SPECIAL_x8000, 1
+	CallIfEq _010C
+	Compare VAR_SPECIAL_x8000, 2
+	CallIfEq _0114
+	UpdateMoneyBox
+	BufferItemName 0, VAR_SPECIAL_x8001
+	PlaySE SEQ_SE_DP_JIHANKI
+	BufferItemName 0, VAR_SPECIAL_x8001
+	NPCMsg msg_0499_T07R0106_00004
+	GiveItemNoCheck VAR_SPECIAL_x8001, 1
+	Random VAR_SPECIAL_RESULT, 64
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfNe _01E7
+	PlaySE SEQ_SE_DP_JIHANKI
+	BufferItemName 0, VAR_SPECIAL_x8001
+	NPCMsg msg_0499_T07R0106_00005
+	HasSpaceForItem VAR_SPECIAL_x8001, 1, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _01F9
+	CallStd std_give_item_verbose
 _01E7:
-	npc_msg msg_0499_T07R0106_00003
-	goto _005E
+	NPCMsg msg_0499_T07R0106_00003
+	GoTo _005E
 
 _01F0:
-	npc_msg msg_0499_T07R0106_00006
-	goto _0205
+	NPCMsg msg_0499_T07R0106_00006
+	GoTo _0205
 
 _01F9:
-	callstd std_bag_is_full
-	closemsg
-	hide_money_box
-	releaseall
-	end
+	CallStd std_bag_is_full
+	CloseMsg
+	HideMoneyBox
+	ReleaseAll
+	End
 
 _0205:
-	wait_button_or_walk_away
-	closemsg
-	hide_money_box
-	releaseall
-	end
+	WaitButton
+	CloseMsg
+	HideMoneyBox
+	ReleaseAll
+	End
 	.balign 4, 0

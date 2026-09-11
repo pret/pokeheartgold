@@ -1,6 +1,8 @@
 #ifndef POKEHEARTGOLD_OVERLAY_80_02229EE0
 #define POKEHEARTGOLD_OVERLAY_80_02229EE0
 
+#include "global.h"
+
 typedef struct FrontierTrainerData {
     u8 unk0[0x18];
     u16 unk18[4];

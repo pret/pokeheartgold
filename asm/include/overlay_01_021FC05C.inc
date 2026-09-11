@@ -27,5 +27,5 @@
 .public ov01_021EB31C
 .public GetHoneySweetScentWorkSize
 .public Task_HoneyOrSweetScent
-.public ov02_02247170
-.public ov02_02247F9C
+.public FieldSystem_PerformSweetScentEncounterCheck
+.public FieldSystem_CanGenerateStepEncounter

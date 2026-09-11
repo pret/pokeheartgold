@@ -8,8 +8,8 @@
 .public sub_0202D804
 .public sub_0202D928
 .public sub_02034818
-.public sub_0204B4D4
-.public sub_0204B510
+.public GetFrontierTrainerIVs
+.public FrontierFieldSystem_0204B510
 .public BattleSetup_New
 .public BattleSetup_AddMonToParty
 .public sub_02051D18

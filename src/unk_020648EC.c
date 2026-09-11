@@ -11,41 +11,37 @@
 typedef void (*FieldSystemFunc1)(FieldSystem *);
 typedef BOOL (*FieldSystemFunc2)(FieldSystem *, u32, u32, u32, u32);
 
-static const FieldSystemFunc1 _020FE214[];
-static const FieldSystemFunc1 _020FE1EC[];
-static const FieldSystemFunc2 _020FE23C[];
+static const FieldSystemFunc1 sInitFuncs[];
+static const FieldSystemFunc1 sFreeFuncs[];
+static const FieldSystemFunc2 sCheckCollisionFuncs[];
 
-void sub_020648EC(FieldSystem *fieldSystem) {
+void Gymmick_Init(FieldSystem *fieldSystem) {
     GymmickType type = Save_Gymmick_GetType(Save_GetGymmickPtr(FieldSystem_GetSaveData(fieldSystem)));
     if (type != GYMMICK_NONE) {
-        _020FE214[type](fieldSystem);
+        sInitFuncs[type](fieldSystem);
     }
 }
 
-void sub_02064910(FieldSystem *fieldSystem) {
+void Gymmick_Free(FieldSystem *fieldSystem) {
     GymmickType type = Save_Gymmick_GetType(Save_GetGymmickPtr(FieldSystem_GetSaveData(fieldSystem)));
-    if (type != GYMMICK_NONE) {
-        FieldSystemFunc1 func = _020FE1EC[type];
-        if (func != NULL) {
-            func(fieldSystem);
-        }
+    if (type != GYMMICK_NONE && sFreeFuncs[type] != NULL) {
+        sFreeFuncs[type](fieldSystem);
     }
 }
 
-BOOL sub_02064938(FieldSystem *fieldSystem, u32 a1, u32 a2, u32 a3, u32 a4) {
+BOOL Gymmick_CheckCollision(FieldSystem *fieldSystem, u32 tileX, u32 tileZ, u32 height, u32 isColliding) {
     GymmickType type = Save_Gymmick_GetType(Save_GetGymmickPtr(FieldSystem_GetSaveData(fieldSystem)));
     if (type == GYMMICK_NONE) {
         return FALSE;
     }
 
-    FieldSystemFunc2 func = _020FE23C[type];
-    if (func != NULL) {
-        return func(fieldSystem, a1, a2, a3, a4);
+    if (sCheckCollisionFuncs[type] != NULL) {
+        return sCheckCollisionFuncs[type](fieldSystem, tileX, tileZ, height, isColliding);
     }
     return FALSE;
 }
 
-static const FieldSystemFunc1 _020FE214[] = {
+static const FieldSystemFunc1 sInitFuncs[] = {
     [GYMMICK_NONE] = NULL,
     [GYMMICK_ECRUTEAK] = ov04_02254CBC,
     [GYMMICK_CIANWOOD] = ov04_02255FC0,
@@ -58,7 +54,7 @@ static const FieldSystemFunc1 _020FE214[] = {
     [GYMMICK_SINJOH] = ov04_02256E60,
 };
 
-static const FieldSystemFunc1 _020FE1EC[] = {
+static const FieldSystemFunc1 sFreeFuncs[] = {
     [GYMMICK_NONE] = NULL,
     [GYMMICK_ECRUTEAK] = ov04_02254D84,
     [GYMMICK_CIANWOOD] = ov04_02256044,
@@ -71,7 +67,7 @@ static const FieldSystemFunc1 _020FE1EC[] = {
     [GYMMICK_SINJOH] = ov04_02256EB0,
 };
 
-static const FieldSystemFunc2 _020FE23C[] = {
+static const FieldSystemFunc2 sCheckCollisionFuncs[] = {
     [GYMMICK_NONE] = NULL,
     [GYMMICK_ECRUTEAK] = NULL,
     [GYMMICK_CIANWOOD] = NULL,

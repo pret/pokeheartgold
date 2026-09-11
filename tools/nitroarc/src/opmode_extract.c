@@ -25,9 +25,9 @@
 #include <string.h>
 #include <sys/stat.h>
 
-#include "nitroarc.h"
 #include "common.h"
 #include "extensions.h"
+#include "nitroarc.h"
 
 static int deduce_outdir(const options_t *opts, char **out_dirname);
 static int extract_members(const nitroarc_t *narc, const char *outdir);

@@ -5,25 +5,25 @@
 
 	.rodata
 
-	scrdef scr_seq_T07R0701_000
-	scrdef scr_seq_T07R0701_001
-	scrdef scr_seq_T07R0701_002
-	scrdef scr_seq_T07R0701_003
-	scrdef scr_seq_T07R0701_004
-	scrdef scr_seq_T07R0701_005
-	scrdef scr_seq_T07R0701_006
-	scrdef_end
+	ScrDef scr_seq_T07R0701_000
+	ScrDef scr_seq_T07R0701_001
+	ScrDef scr_seq_T07R0701_002
+	ScrDef scr_seq_T07R0701_003
+	ScrDef scr_seq_T07R0701_004
+	ScrDef scr_seq_T07R0701_005
+	ScrDef scr_seq_T07R0701_006
+	ScrDefEnd
 
 scr_seq_T07R0701_005:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0510_T07R0701_00006
-	closemsg
-	apply_movement obj_T07R0701_leader4, _003C
-	wait_movement
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	NPCMsg msg_0510_T07R0701_00006
+	CloseMsg
+	ApplyMovement obj_T07R0701_leader4, _003C
+	WaitMovement
+	ReleaseAll
+	End
 
 	.balign 4, 0
 _003C:
@@ -31,59 +31,59 @@ _003C:
 	EndMovement
 
 scr_seq_T07R0701_004:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	hasitem ITEM_COIN_CASE, 1, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0074
-	npc_msg msg_0510_T07R0701_00004
-	closemsg
-	apply_movement obj_T07R0701_gswoman1, _00D8
-	wait_movement
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	HasItem ITEM_COIN_CASE, 1, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0074
+	NPCMsg msg_0510_T07R0701_00004
+	CloseMsg
+	ApplyMovement obj_T07R0701_gswoman1, _00D8
+	WaitMovement
+	ReleaseAll
+	End
 
 _0074:
-	npc_msg msg_0510_T07R0701_00005
-	closemsg
-	apply_movement obj_T07R0701_gswoman1, _00D8
-	wait_movement
-	releaseall
-	end
+	NPCMsg msg_0510_T07R0701_00005
+	CloseMsg
+	ApplyMovement obj_T07R0701_gswoman1, _00D8
+	WaitMovement
+	ReleaseAll
+	End
 
 scr_seq_T07R0701_001:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0510_T07R0701_00001
-	closemsg
-	apply_movement obj_T07R0701_gsbigman_3, _00E0
-	wait_movement
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	NPCMsg msg_0510_T07R0701_00001
+	CloseMsg
+	ApplyMovement obj_T07R0701_gsbigman_3, _00E0
+	WaitMovement
+	ReleaseAll
+	End
 
 scr_seq_T07R0701_002:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0510_T07R0701_00002
-	closemsg
-	apply_movement obj_T07R0701_gsbigman_2, _00E0
-	wait_movement
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	NPCMsg msg_0510_T07R0701_00002
+	CloseMsg
+	ApplyMovement obj_T07R0701_gsbigman_2, _00E0
+	WaitMovement
+	ReleaseAll
+	End
 
 scr_seq_T07R0701_003:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0510_T07R0701_00003
-	closemsg
-	apply_movement obj_T07R0701_gsbigman, _00D8
-	wait_movement
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	NPCMsg msg_0510_T07R0701_00003
+	CloseMsg
+	ApplyMovement obj_T07R0701_gsbigman, _00D8
+	WaitMovement
+	ReleaseAll
+	End
 
 	.balign 4, 0
 _00D8:
@@ -96,15 +96,15 @@ _00E0:
 	EndMovement
 
 scr_seq_T07R0701_000:
-	simple_npc_msg msg_0510_T07R0701_00000
-	end
+	SimpleNPCMsg msg_0510_T07R0701_00000
+	End
 
 scr_seq_T07R0701_006:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	npc_msg msg_0510_T07R0701_00007
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	NPCMsg msg_0510_T07R0701_00007
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 	.balign 4, 0

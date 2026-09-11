@@ -273,7 +273,7 @@ void ReadKeypadAndTouchpad(void) {
     gSystem.newAndRepeatedKeys = gSystem.newAndRepeatedKeysRaw;
     ApplyButtonModeToInput();
     if (!gSystem.touchpadReadAuto) {
-        while (TP_RequestRawSampling(&rawTpData)) {}
+        while (TP_RequestRawSampling(&rawTpData)) { }
     } else {
         TP_GetLatestRawPointInAuto(&rawTpData);
     }

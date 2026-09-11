@@ -303,7 +303,7 @@ _0225F274:
 	ldr r0, [r0, #0x10]
 	ldr r0, [r0, #4]
 	ldr r0, [r0, #0x1c]
-	bl ov01_021FB514
+	bl HBlankSystem_Stop
 	mov r0, #0xc
 	str r0, [sp]
 	mov r0, #1
@@ -350,7 +350,7 @@ _0225F2E0:
 	ldr r0, [r0, #0x10]
 	ldr r0, [r0, #4]
 	ldr r0, [r0, #0x1c]
-	bl ov01_021FB4F4
+	bl HBlankSystem_Start
 	ldr r0, [sp, #0x18]
 	ldr r1, [r0, #0x14]
 	cmp r1, #0

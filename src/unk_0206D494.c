@@ -9,7 +9,6 @@
 #include "assert.h"
 #include "field_system.h"
 #include "field_warp_tasks.h"
-#include "fieldmap.h"
 #include "gf_gfx_loader.h"
 #include "gymmick.h"
 #include "heap.h"
@@ -29,6 +28,7 @@
 #include "save_vars_flags.h"
 #include "scrcmd.h"
 #include "script.h"
+#include "script_manager.h"
 #include "sys_flags.h"
 #include "task.h"
 #include "unk_02005D10.h"
@@ -225,8 +225,7 @@ static u32 sub_0206D7B8(LocalMapObject *object, u32 x, u32 height, u32 y) {
     if (sub_020549F4(MapObject_GetFieldSystem(object), &position, x, y, &unk) == 1) {
         flags |= 1;
     }
-    u8 behavior = GetMetatileBehavior(MapObject_GetFieldSystem(object), x, y);
-    if (sub_0205B828(behavior) == 0) {
+    if (MetatileBehavior_IsIce(GetMetatileBehavior(MapObject_GetFieldSystem(object), x, y)) == FALSE) {
         flags |= 4;
     }
     if (sub_02060BFC(object, x, height, y) == 1) {
@@ -257,12 +256,12 @@ static u32 sub_0206D81C(u32 direction) {
 }
 
 static void sub_0206D850(PlayerAvatar *playerAvatar) {
-    if (PlayerAvatar_CheckFlag0(playerAvatar) == TRUE) {
+    if (PlayerAvatar_CheckForcedMovement(playerAvatar) == TRUE) {
         MapObject_ClearFlagsBits(PlayerAvatar_GetMapObject(playerAvatar), (MapObjectFlagBits)(MAPOBJECTFLAG_UNK7 | MAPOBJECTFLAG_UNK8));
         if (PlayerAvatar_CheckFlag7(playerAvatar) == 0) {
             PlayerAvatar_ClearUnk24ClearFlag2(playerAvatar);
         }
-        PlayerAvatar_SetFlag0(playerAvatar, 0);
+        PlayerAvatar_SetForcedMovement(playerAvatar, FALSE);
         PlayerAvatar_SetFlag7(playerAvatar, 0);
         PlayerAvatar_SetFlag5(playerAvatar, 0);
     }

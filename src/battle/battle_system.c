@@ -19,9 +19,9 @@
 #include "msgdata.h"
 #include "party.h"
 #include "pokemon_mood.h"
+#include "screen_fade.h"
 #include "text.h"
 #include "unk_02005D10.h"
-#include "unk_0200FA24.h"
 #include "unk_0202FBCC.h"
 
 static u8 ov12_0223BFB0(u8 *buffer, u8 *index, u16 *size);
@@ -99,8 +99,8 @@ Pokemon *BattleSystem_GetPartyMon(BattleSystem *battleSystem, int battlerId, int
     }
 }
 
-u32 *ov12_0223A8D4(BattleSystem *battleSystem) {
-    return battleSystem->unk88;
+PokepicManager *BattleSystem_GetPokepicManager(BattleSystem *battleSystem) {
+    return battleSystem->pokepicManager;
 }
 
 u32 *ov12_0223A8DC(BattleSystem *battleSystem) {
@@ -245,8 +245,8 @@ u16 BattleSystem_GetMonBall(BattleSystem *battleSystem, Pokemon *mon) {
     }
 }
 
-u32 ov12_0223AAB8(BattleSystem *battleSystem) {
-    return battleSystem->unk2474_3;
+BOOL BattleSystem_IsFishing(BattleSystem *battleSystem) {
+    return battleSystem->isFishing;
 }
 
 u32 BattleSystem_GetTrainerGender(BattleSystem *battleSystem, int battlerId) {
@@ -949,8 +949,8 @@ void ov12_0223BB10(BattleSystem *battleSystem, u8 a1) {
     battleSystem->unk2421 = a1;
 }
 
-int ov12_0223BB1C(BattleSystem *battleSystem) {
-    return battleSystem->unk2430;
+BOOL BattleSystem_MetBill(BattleSystem *battleSystem) {
+    return battleSystem->metBill;
 }
 
 void BattleSystem_GameStatIncrement(BattleSystem *battleSystem, int id) {
@@ -1214,7 +1214,7 @@ void ov12_0223BFFC(BattleSystem *battleSystem, u32 flag) {
     }
 
     BattleInput_PrintSystemMessage(battleSystem->battleInput, flag);
-    BeginNormalPaletteFade(3, 0, 0, RGB_BLACK, 16, 2, HEAP_ID_BATTLE);
+    BeginNormalPaletteFade(FADE_MAIN_ONLY, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, RGB_BLACK, 16, 2, HEAP_ID_BATTLE);
     Sound_Stop();
     Sound_SetMasterVolume(0);
     battleSystem->isRecordingPaused = TRUE;

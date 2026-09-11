@@ -26,7 +26,7 @@
 .public ov01_021F06EC
 .public ov01_021F0718
 .public ov01_021F074C
-.public ov01_021FB4F4
-.public ov01_021FB514
+.public HBlankSystem_Start
+.public HBlankSystem_Stop
 .public ov114_0225F020
 .public ov114_0225F280

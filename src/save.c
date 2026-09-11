@@ -1106,7 +1106,7 @@ static s32 FlashWriteChunk(u32 offset, void *data, u32 size) {
     int stat;
     s32 lockId;
     lockId = FlashWriteChunkInternal(offset, data, size);
-    while (!WaitFlashWrite(lockId, 1, &stat)) {}
+    while (!WaitFlashWrite(lockId, 1, &stat)) { }
     return stat;
 }
 

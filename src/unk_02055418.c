@@ -4,20 +4,22 @@
 
 #include "constants/sprites.h"
 
+#include "pokeathlon/pokeathlon_save.h"
+
 #include "apricorn_tree.h"
-#include "fieldmap.h"
 #include "friend_group.h"
 #include "gf_3d_render.h"
 #include "map_object.h"
 #include "overlay_01.h"
+#include "overlay_01_021F1348.h"
 #include "roamer.h"
 #include "sav_system_info.h"
 #include "save_misc_data.h"
 #include "save_wifi_history.h"
 #include "script.h"
+#include "script_manager.h"
 #include "sys_vars.h"
 #include "unk_0202C730.h"
-#include "unk_02031904.h"
 #include "unk_02031B0C.h"
 #include "unk_02066EDC.h"
 #include "unk_0206D494.h"
@@ -86,9 +88,9 @@ void sub_02055508(FieldSystem *fieldSystem, int days) {
     sub_0202F294(SaveData_GetPhoneCallPersistentState(fieldSystem->saveData), days);
     if (!hasPenalty) {
         sub_02031CCC(Save_ApricornBox_Get(fieldSystem->saveData), days);
-        sub_0209730C(fieldSystem->saveData, days);
+        SaveData_SafariZone_CheckAreasWithUpdatedEncounters(fieldSystem->saveData, days);
     }
-    sub_02031AE4(Save_Pokeathlon_Get(fieldSystem->saveData));
+    PokeathlonSave_ResetUnkB7C(Save_Pokeathlon_Get(fieldSystem->saveData));
     Save_VarsFlags_UpdateBuenasPasswordSet(Save_VarsFlags_Get(fieldSystem->saveData));
 }
 
@@ -157,13 +159,13 @@ void sub_020556B8(FieldSystem *fieldSystem) {
 }
 
 void sub_020556C8(FieldSystem *fieldSystem, UnkStruct_020556FC *unkPtrB) {
-    void *unkB = fieldSystem->unk_44;
-    unkPtrB->unk5c = Heap_Alloc(unkPtrB->heapID, ov01_021F149C(unkB, 31));
-    ov01_021F14A8(unkB, 31, unkPtrB->unk5c);
+    FieldEffectManager *fieldEffectManager = fieldSystem->fieldEffectManager;
+    unkPtrB->unk5c = Heap_Alloc(unkPtrB->heapID, ov01_021F149C(fieldEffectManager, 31));
+    ov01_021F14A8(fieldEffectManager, 31, unkPtrB->unk5c);
     GF3dRender_InitObjFromHeader(&unkPtrB->unk4, &unkPtrB->unk58, &unkPtrB->unk5c);
 }
 
-void sub_020556FC(struct UnkStruct_020556FC *unkPtr) {
+void sub_020556FC(UnkStruct_020556FC *unkPtr) {
     ov01_021F1448(unkPtr->unk5c); // function frees unk5c to heap
 }
 

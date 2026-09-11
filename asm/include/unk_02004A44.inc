@@ -21,8 +21,8 @@
 .public GF_GetCurrentPlayingBGM
 .public GF_SetCurrentPlayingBGM
 .public sub_02004AB8
-.public sub_02004AC8
-.public sub_02004AD8
+.public Sound_SetFieldBGM
+.public Sound_SetScene
 .public sub_02004B10
 .public sub_02004B24
 .public sub_02004EB4
@@ -31,7 +31,7 @@
 .public BGM_SaveStateAndPlayNew
 .public sub_02005328
 .public sub_020053A8
-.public sub_020053F0
+.public Sound_ClearBGMPauseFlags
 .public GF_SndHandleMoveVolume
 .public GF_SndHandleSetInitialVolume
 .public sub_02005448

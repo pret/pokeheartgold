@@ -7,6 +7,7 @@ typedef enum PrintingMode {
     PRINTING_MODE_LEFT_ALIGN,
     PRINTING_MODE_RIGHT_ALIGN,
     PRINTING_MODE_LEADING_ZEROS,
+    PRINTING_MODE_5_UNUSED = 5,
 } PrintingMode;
 
 u16 *CopyU16StringArray(u16 *dest, const u16 *src);

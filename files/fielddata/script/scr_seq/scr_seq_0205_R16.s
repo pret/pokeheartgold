@@ -5,20 +5,16 @@
 
 	.rodata
 
-	scrdef scr_seq_R16_000
-	scrdef scr_seq_R16_001
-	scrdef_end
+	ScrDef scr_seq_R16_000
+	ScrDef scr_seq_R16_001
+	ScrDefEnd
 
 scr_seq_R16_000:
-	set_bike_state_lock 1
-	setflag FLAG_UNK_149
-	end
+	SetBikeStateLock 1
+	SetFlag FLAG_UNK_149
+	End
 
 scr_seq_R16_001:
-	scrcmd_055 2, 0
-	scrcmd_057 3
-	scrcmd_058
-	trainer_tips msg_0354_R16_00000, VAR_SPECIAL_RESULT
-	callstd std_signpost
-	end
+	TrainerTipsEx 2, msg_0354_R16_00000
+	End
 	.balign 4, 0

@@ -14,8 +14,8 @@
 
 	.text
 
-	thumb_func_start ov01_021EABA8
-ov01_021EABA8: ; 0x021EABA8
+	thumb_func_start FieldCamera_Create
+FieldCamera_Create: ; 0x021EABA8
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x10
 	str r0, [sp, #0xc]
@@ -76,10 +76,10 @@ _021EAC16:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _021EAC2C: .word ov01_02206478
-	thumb_func_end ov01_021EABA8
+	thumb_func_end FieldCamera_Create
 
-	thumb_func_start ov01_021EAC30
-ov01_021EAC30: ; 0x021EAC30
+	thumb_func_start FieldCamera_Delete
+FieldCamera_Delete: ; 0x021EAC30
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x28]
@@ -90,7 +90,7 @@ ov01_021EAC30: ; 0x021EAC30
 	ldr r0, [r4, #0x24]
 	bl Camera_Delete
 	pop {r4, pc}
-	thumb_func_end ov01_021EAC30
+	thumb_func_end FieldCamera_Delete
 
 	thumb_func_start ov01_021EAC4C
 ov01_021EAC4C: ; 0x021EAC4C

@@ -93,7 +93,7 @@ _0205671C: ; jump table
 	.short _020567AA - _0205671C - 2 ; case 3
 _02056724:
 	mov r0, #1
-	bl ov01_021E636C
+	bl FieldMap_FadeScreen
 	ldr r0, [r5, #0x40]
 	bl PlayerAvatar_GetMapObject
 	add r6, r0, #0
@@ -245,7 +245,7 @@ _0205684E:
 	mov r1, #0
 	str r1, [r0]
 	mov r0, #1
-	bl ov01_021E636C
+	bl FieldMap_FadeScreen
 	ldrh r0, [r4, #2]
 	add r0, r0, #1
 	strh r0, [r4, #2]
@@ -377,7 +377,7 @@ _0205696A:
 	mov r1, #0
 	str r1, [r0]
 	mov r0, #1
-	bl ov01_021E636C
+	bl FieldMap_FadeScreen
 	ldrh r0, [r4, #2]
 	add r0, r0, #1
 	strh r0, [r4, #2]
@@ -583,7 +583,7 @@ sub_02056AEC: ; 0x02056AEC
 	add r1, r6, #0
 	bl GetMetatileBehavior
 	add r6, r0, #0
-	bl sub_0205B810
+	bl MetatileBehavior_IsWarpStairsEast
 	cmp r0, #0
 	beq _02056B5A
 	mov r0, #1
@@ -595,7 +595,7 @@ sub_02056AEC: ; 0x02056AEC
 	b _02056B70
 _02056B5A:
 	add r0, r6, #0
-	bl sub_0205B81C
+	bl MetatileBehavior_IsWarpStairsWest
 	cmp r0, #0
 	beq _02056B70
 	mov r0, #1

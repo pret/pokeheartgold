@@ -50,9 +50,9 @@
 .public GF3dRender_BindModelSet
 .public sub_0201FA34
 .public MTRandom
-.public sub_02023738
-.public sub_02023778
-.public sub_020237B0
+.public BillboardLists_Create
+.public BillboardLists_Delete
+.public BillboardLists_Draw
 .public sub_020237EC
 .public sub_02023874
 .public sub_02023910
@@ -285,8 +285,8 @@
 .public ov45_0222B0BC
 .public ov45_0222B0D8
 .public ov45_0222B0E8
-.public ov45_0222B0F8
-.public ov45_0222B108
+.public IncrementGameStat47
+.public IncrementGameStat119
 .public ov45_0222B118
 .public ov45_0222B134
 .public ov45_0222B1B4

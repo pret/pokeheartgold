@@ -6,6 +6,7 @@
 #include "map_header.h"
 #include "npc_trade.h"
 #include "player_data.h"
+#include "poke_overlay.h"
 #include "pokedex.h"
 #include "ribbon.h"
 #include "save_arrays.h"
@@ -33,7 +34,7 @@ BOOL ScrCmd_GiveMon(ScriptContext *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_TakeMon(ScriptContext *ctx) {
+BOOL ScrCmd_ReturnLoanMon(ScriptContext *ctx) {
     u8 slot = ScriptGetVar(ctx);
     Party *party = SaveArray_Party_Get(ctx->fieldSystem->saveData);
     Party_RemoveMon(party, slot);
@@ -55,7 +56,7 @@ BOOL ScrCmd_GetPartyMonSpecies(ScriptContext *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_PartymonIsMine(ScriptContext *ctx) {
+BOOL ScrCmd_PartyMonIsMine(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
     SaveData *save = FieldSystem_GetSaveData(fieldSystem);
     PlayerProfile *profile = Save_PlayerData_GetProfile(save);
@@ -767,7 +768,7 @@ BOOL ScrCmd_MonHasItem(ScriptContext *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_GetPartymonForm(ScriptContext *ctx) {
+BOOL ScrCmd_GetPartyMonForm2(ScriptContext *ctx) {
     u16 slot = ScriptGetVar(ctx);
     u16 *form = ScriptGetVarPointer(ctx);
 

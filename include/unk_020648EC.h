@@ -3,8 +3,8 @@
 
 #include "field_system.h"
 
-void sub_020648EC(FieldSystem *fieldSystem);
-void sub_02064910(FieldSystem *fieldSystem);
-BOOL sub_02064938(FieldSystem *fieldSystem, u32 a1, u32 a2, u32 a3, u32 a4);
+void Gymmick_Init(FieldSystem *fieldSystem);
+void Gymmick_Free(FieldSystem *fieldSystem);
+BOOL Gymmick_CheckCollision(FieldSystem *fieldSystem, u32 tileX, u32 tileZ, u32 height, u32 isColliding);
 
 #endif // POKEHEARTGOLD_UNK_020648EC_H

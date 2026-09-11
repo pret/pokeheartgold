@@ -5,171 +5,171 @@
 
 	.rodata
 
-	scrdef scr_seq_T11R0802_000
-	scrdef scr_seq_T11R0802_001
-	scrdef scr_seq_T11R0802_002
-	scrdef scr_seq_T11R0802_003
-	scrdef scr_seq_T11R0802_004
-	scrdef scr_seq_T11R0802_005
-	scrdef scr_seq_T11R0802_006
-	scrdef_end
+	ScrDef scr_seq_T11R0802_000
+	ScrDef scr_seq_T11R0802_001
+	ScrDef scr_seq_T11R0802_002
+	ScrDef scr_seq_T11R0802_003
+	ScrDef scr_seq_T11R0802_004
+	ScrDef scr_seq_T11R0802_005
+	ScrDef scr_seq_T11R0802_006
+	ScrDefEnd
 
 scr_seq_T11R0802_004:
-	get_player_gender VAR_TEMP_x4009
-	compare VAR_TEMP_x4009, 0
-	goto_if_ne _003B
-	setvar VAR_OBJ_0, 0
-	goto _0041
+	GetPlayerGender VAR_TEMP_x4009
+	Compare VAR_TEMP_x4009, 0
+	GoToIfNe _003B
+	SetVar VAR_OBJ_0, 0
+	GoTo _0041
 
 _003B:
-	setvar VAR_OBJ_0, 97
+	SetVar VAR_OBJ_0, 97
 _0041:
-	end
+	End
 
 scr_seq_T11R0802_005:
-	compare VAR_TEMP_x400B, 0
-	goto_if_ne _005A
-	hide_person obj_T11R0802_var_1
-	setvar VAR_TEMP_x400B, 1
+	Compare VAR_TEMP_x400B, 0
+	GoToIfNe _005A
+	HidePerson obj_T11R0802_var_1
+	SetVar VAR_TEMP_x400B, 1
 _005A:
-	end
+	End
 
 scr_seq_T11R0802_000:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	getitemquantity ITEM_PASS, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_ne _0125
-	getitemquantity ITEM_LOST_ITEM, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_ne _00E9
-	goto_if_set FLAG_RESTORED_POWER, _00BD
-	call _014D
-	buffer_players_name 0
-	gender_msgbox msg_0541_T11R0802_00000, msg_0541_T11R0802_00001
-	closemsg
-	call _01DB
-	npc_msg msg_0541_T11R0802_00002
-	closemsg
-	apply_movement obj_T11R0802_gsgirl1, _026C
-	wait_movement
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	GetItemQuantity ITEM_PASS, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfNe _0125
+	GetItemQuantity ITEM_LOST_ITEM, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfNe _00E9
+	GoToIfSet FLAG_RESTORED_POWER, _00BD
+	Call _014D
+	BufferPlayersName 0
+	GenderMsgBox msg_0541_T11R0802_00000, msg_0541_T11R0802_00001
+	CloseMsg
+	Call _01DB
+	NPCMsg msg_0541_T11R0802_00002
+	CloseMsg
+	ApplyMovement obj_T11R0802_gsgirl1, _026C
+	WaitMovement
+	ReleaseAll
+	End
 
 _00BD:
-	setflag FLAG_UNK_119
-	call _014D
-	buffer_players_name 0
-	gender_msgbox msg_0541_T11R0802_00003, msg_0541_T11R0802_00004
-	closemsg
-	call _01DB
-	npc_msg msg_0541_T11R0802_00005
-	closemsg
-	apply_movement obj_T11R0802_gsgirl1, _026C
-	wait_movement
-	releaseall
-	end
+	SetFlag FLAG_UNK_119
+	Call _014D
+	BufferPlayersName 0
+	GenderMsgBox msg_0541_T11R0802_00003, msg_0541_T11R0802_00004
+	CloseMsg
+	Call _01DB
+	NPCMsg msg_0541_T11R0802_00005
+	CloseMsg
+	ApplyMovement obj_T11R0802_gsgirl1, _026C
+	WaitMovement
+	ReleaseAll
+	End
 
 _00E9:
-	takeitem ITEM_LOST_ITEM, 1, VAR_SPECIAL_RESULT
-	npc_msg msg_0541_T11R0802_00006
-	clearflag FLAG_HIDE_SAFFRON_CITY_COPYCAT_HOUSE_CLEFAIRY_DOLL
-	show_person obj_T11R0802_mono_pip
-	giveitem_no_check ITEM_PASS, 1
-	npc_msg msg_0541_T11R0802_00008
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	setflag FLAG_UNK_087
-	setflag FLAG_UNK_998
-	setvar VAR_UNK_40FF, 2
-	end
+	TakeItem ITEM_LOST_ITEM, 1, VAR_SPECIAL_RESULT
+	NPCMsg msg_0541_T11R0802_00006
+	ClearFlag FLAG_HIDE_SAFFRON_CITY_COPYCAT_HOUSE_CLEFAIRY_DOLL
+	ShowPerson obj_T11R0802_mono_pip
+	GiveItemNoCheck ITEM_PASS, 1
+	NPCMsg msg_0541_T11R0802_00008
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	SetFlag FLAG_UNK_087
+	SetFlag FLAG_UNK_998
+	SetVar VAR_UNK_40FF, 2
+	End
 
 _0125:
-	call _014D
-	buffer_players_name 0
-	gender_msgbox msg_0541_T11R0802_00009, msg_0541_T11R0802_00010
-	closemsg
-	call _01DB
-	npc_msg msg_0541_T11R0802_00011
-	closemsg
-	apply_movement obj_T11R0802_gsgirl1, _026C
-	wait_movement
-	releaseall
-	end
+	Call _014D
+	BufferPlayersName 0
+	GenderMsgBox msg_0541_T11R0802_00009, msg_0541_T11R0802_00010
+	CloseMsg
+	Call _01DB
+	NPCMsg msg_0541_T11R0802_00011
+	CloseMsg
+	ApplyMovement obj_T11R0802_gsgirl1, _026C
+	WaitMovement
+	ReleaseAll
+	End
 
 _014D:
-	get_player_facing VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_ne _016C
-	apply_movement obj_T11R0802_gsgirl1, _02B0
-	goto _018F
+	GetPlayerFacing VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfNe _016C
+	ApplyMovement obj_T11R0802_gsgirl1, _02B0
+	GoTo _018F
 
 _016C:
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_ne _0187
-	apply_movement obj_T11R0802_gsgirl1, _0274
-	goto _018F
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfNe _0187
+	ApplyMovement obj_T11R0802_gsgirl1, _0274
+	GoTo _018F
 
 _0187:
-	apply_movement obj_T11R0802_gsgirl1, _0294
+	ApplyMovement obj_T11R0802_gsgirl1, _0294
 _018F:
-	wait_movement
-	show_person obj_T11R0802_var_1
-	hide_person obj_T11R0802_gsgirl1
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_ne _01B4
-	apply_movement obj_T11R0802_var_1, _0304
-	goto _01D7
+	WaitMovement
+	ShowPerson obj_T11R0802_var_1
+	HidePerson obj_T11R0802_gsgirl1
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfNe _01B4
+	ApplyMovement obj_T11R0802_var_1, _0304
+	GoTo _01D7
 
 _01B4:
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_ne _01CF
-	apply_movement obj_T11R0802_var_1, _02C8
-	goto _01D7
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfNe _01CF
+	ApplyMovement obj_T11R0802_var_1, _02C8
+	GoTo _01D7
 
 _01CF:
-	apply_movement obj_T11R0802_var_1, _02EC
+	ApplyMovement obj_T11R0802_var_1, _02EC
 _01D7:
-	wait_movement
-	return
+	WaitMovement
+	Return
 
 _01DB:
-	get_player_facing VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_ne _01FA
-	apply_movement obj_T11R0802_var_1, _02B0
-	goto _021D
+	GetPlayerFacing VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfNe _01FA
+	ApplyMovement obj_T11R0802_var_1, _02B0
+	GoTo _021D
 
 _01FA:
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_ne _0215
-	apply_movement obj_T11R0802_var_1, _0274
-	goto _021D
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfNe _0215
+	ApplyMovement obj_T11R0802_var_1, _0274
+	GoTo _021D
 
 _0215:
-	apply_movement obj_T11R0802_var_1, _0294
+	ApplyMovement obj_T11R0802_var_1, _0294
 _021D:
-	wait_movement
-	show_person obj_T11R0802_gsgirl1
-	hide_person obj_T11R0802_var_1
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_ne _0242
-	apply_movement obj_T11R0802_gsgirl1, _0304
-	goto _0265
+	WaitMovement
+	ShowPerson obj_T11R0802_gsgirl1
+	HidePerson obj_T11R0802_var_1
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfNe _0242
+	ApplyMovement obj_T11R0802_gsgirl1, _0304
+	GoTo _0265
 
 _0242:
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_ne _025D
-	apply_movement obj_T11R0802_gsgirl1, _02C8
-	goto _0265
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfNe _025D
+	ApplyMovement obj_T11R0802_gsgirl1, _02C8
+	GoTo _0265
 
 _025D:
-	apply_movement obj_T11R0802_gsgirl1, _02EC
+	ApplyMovement obj_T11R0802_gsgirl1, _02EC
 _0265:
-	wait_movement
-	return
+	WaitMovement
+	Return
 
 	.balign 4, 0
 _026C:
@@ -238,50 +238,50 @@ _0304:
 	EndMovement
 
 scr_seq_T11R0802_003:
-	compare VAR_TEMP_x400A, 0
-	goto_if_ne _03A3
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	npc_msg msg_0541_T11R0802_00012
-	wait_button_or_walk_away
-	closemsg
-	get_player_facing VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_ne _0359
-	apply_movement obj_T11R0802_jupetta, _03C8
-	goto _0397
+	Compare VAR_TEMP_x400A, 0
+	GoToIfNe _03A3
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	NPCMsg msg_0541_T11R0802_00012
+	WaitButton
+	CloseMsg
+	GetPlayerFacing VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfNe _0359
+	ApplyMovement obj_T11R0802_jupetta, _03C8
+	GoTo _0397
 
 _0359:
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_ne _0374
-	apply_movement obj_T11R0802_jupetta, _03C0
-	goto _0397
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfNe _0374
+	ApplyMovement obj_T11R0802_jupetta, _03C0
+	GoTo _0397
 
 _0374:
-	compare VAR_SPECIAL_RESULT, 2
-	goto_if_ne _038F
-	apply_movement obj_T11R0802_jupetta, _03D8
-	goto _0397
+	Compare VAR_SPECIAL_RESULT, 2
+	GoToIfNe _038F
+	ApplyMovement obj_T11R0802_jupetta, _03D8
+	GoTo _0397
 
 _038F:
-	apply_movement obj_T11R0802_jupetta, _03D0
+	ApplyMovement obj_T11R0802_jupetta, _03D0
 _0397:
-	wait_movement
-	setvar VAR_TEMP_x400A, 1
-	releaseall
-	end
+	WaitMovement
+	SetVar VAR_TEMP_x400A, 1
+	ReleaseAll
+	End
 
 _03A3:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	play_cry SPECIES_BANETTE, 0
-	npc_msg msg_0541_T11R0802_00013
-	wait_cry
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	PlayCry SPECIES_BANETTE, 0
+	NPCMsg msg_0541_T11R0802_00013
+	WaitCry
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 	.balign 4, 0
 _03C0:
@@ -304,24 +304,24 @@ _03D8:
 	EndMovement
 
 scr_seq_T11R0802_001:
-	simple_npc_msg msg_0541_T11R0802_00015
-	end
+	SimpleNPCMsg msg_0541_T11R0802_00015
+	End
 
 scr_seq_T11R0802_002:
-	simple_npc_msg msg_0541_T11R0802_00014
-	end
+	SimpleNPCMsg msg_0541_T11R0802_00014
+	End
 
 scr_seq_T11R0802_006:
-	goto_if_set FLAG_HIDE_SAFFRON_CITY_COPYCAT_HOUSE_CLEFAIRY_DOLL, _0431
-	compare VAR_UNK_40FF, 2
-	goto_if_eq _0433
-	simple_npc_msg msg_0541_T11R0802_00016
-	end
+	GoToIfSet FLAG_HIDE_SAFFRON_CITY_COPYCAT_HOUSE_CLEFAIRY_DOLL, _0431
+	Compare VAR_UNK_40FF, 2
+	GoToIfEq _0433
+	SimpleNPCMsg msg_0541_T11R0802_00016
+	End
 
 _0431:
-	end
+	End
 
 _0433:
-	simple_npc_msg msg_0541_T11R0802_00017
-	end
+	SimpleNPCMsg msg_0541_T11R0802_00017
+	End
 	.balign 4, 0

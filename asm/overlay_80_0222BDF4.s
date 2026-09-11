@@ -576,9 +576,9 @@ FrtCmd_019: ; 0x0222C1A8
 	add r2, r7, #0
 	bl BeginNormalPaletteFade
 	mov r0, #0
-	bl sub_0200FBDC
+	bl ResetVisibleHardwareWindows
 	mov r0, #1
-	bl sub_0200FBDC
+	bl ResetVisibleHardwareWindows
 	mov r0, #0
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
@@ -2666,7 +2666,7 @@ FrtCmd_130: ; 0x0222D168
 	add r5, r0, #0
 	ldr r0, [r4, #8]
 	bl Save_GameStats_Get
-	mov r1, #0x45
+	mov r1, #0x45 ; GAME_STAT_BATTLE_POINTS
 	add r2, r5, #0
 	bl GameStats_Add
 	ldr r0, [r4, #8]
@@ -2692,7 +2692,7 @@ FrtCmd_131: ; 0x0222D1A0
 	add r5, r0, #0
 	ldr r0, [r4, #8]
 	bl Save_GameStats_Get
-	mov r1, #0x46
+	mov r1, #0x46 ; GAME_STAT_BATTLE_POINTS_SPENT
 	add r2, r5, #0
 	bl GameStats_Add
 	ldr r0, [r4, #8]
@@ -2983,9 +2983,9 @@ _0222D3BE:
 	cmp r0, #0
 	beq _0222D3FE
 	mov r0, #0
-	bl sub_0200FBDC
+	bl ResetVisibleHardwareWindows
 	mov r0, #1
-	bl sub_0200FBDC
+	bl ResetVisibleHardwareWindows
 	mov r0, #0xc
 	str r0, [sp]
 	mov r0, #1

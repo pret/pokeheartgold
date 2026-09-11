@@ -8,9 +8,11 @@ void ov04_02256044(FieldSystem *fieldSystem);
 void ov04_022563B0(FieldSystem *fieldSystem);
 void ov04_02254710(FieldSystem *fieldSystem);
 void ov04_0225507C(FieldSystem *fieldSystem);
+BOOL ov04_02255090(FieldSystem *fieldSystem);
 void ov04_022566A0(FieldSystem *fieldSystem);
 void ov04_022566A0(FieldSystem *fieldSystem);
 void ov04_02256BA0(FieldSystem *fieldSystem);
+void ov04_02256BE4(FieldSystem *fieldSystem, u8 arg1);
 void ov04_02256EB0(FieldSystem *fieldSystem);
 
 void ov04_02254CBC(FieldSystem *fieldSystem);

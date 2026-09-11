@@ -5,17 +5,17 @@
 
 	.rodata
 
-	scrdef scr_seq_D32R0201_000
-	scrdef scr_seq_D32R0201_001
-	scrdef scr_seq_D32R0201_002
-	scrdef_end
+	ScrDef scr_seq_D32R0201_000
+	ScrDef scr_seq_D32R0201_001
+	ScrDef scr_seq_D32R0201_002
+	ScrDefEnd
 
 scr_seq_D32R0201_000:
-	end
+	End
 
 scr_seq_D32R0201_001:
-	end
+	End
 
 scr_seq_D32R0201_002:
-	end
+	End
 	.balign 4, 0

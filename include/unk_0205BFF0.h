@@ -1,6 +1,8 @@
 #ifndef POKEHEARTGOLD_UNK_0205BFF0_H
 #define POKEHEARTGOLD_UNK_0205BFF0_H
 
+#include "global.h"
+
 int sub_0205BFF0(u8, u8);
 int sub_0205C048(u8, u8);
 u32 sub_0205C0CC(u8);

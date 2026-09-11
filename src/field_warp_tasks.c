@@ -1,7 +1,10 @@
 #include "field_warp_tasks.h"
 
+#include "constants/field/map_load.h"
+#include "constants/init_script_types.h"
 #include "constants/maps.h"
 
+#include "field_bgm.h"
 #include "field_system_rtc_weather.h"
 #include "follow_mon.h"
 #include "map_events.h"
@@ -11,6 +14,7 @@
 #include "save_follow_mon.h"
 #include "save_local_field_data.h"
 #include "save_vars_flags.h"
+#include "screen_fade.h"
 #include "script.h"
 #include "sound.h"
 #include "sound_02004A44.h"
@@ -19,12 +23,10 @@
 #include "sys_vars.h"
 #include "system.h"
 #include "task.h"
+#include "terrain_attributes.h"
 #include "unk_02005D10.h"
-#include "unk_0200FA24.h"
 #include "unk_0203BA5C.h"
-#include "unk_02054514.h"
 #include "unk_02054648.h"
-#include "unk_02054E00.h"
 #include "unk_02055244.h"
 #include "unk_020552A4.h"
 #include "unk_02055418.h"
@@ -101,21 +103,75 @@ static BOOL sub_02053E5C(TaskManager *taskManager);
 static BOOL sub_02053F70(TaskManager *taskManager);
 static BOOL sub_020540A4(TaskManager *taskManager);
 
-static const struct UnkStruct_020FC5CC _020FC5CC[] = {
-    { 1, 0, 0, 0, 0, 1, 0, 0, 64, 12 },
-    { 1, 2, 0, 0, 0, 1, 0, 0, 64, 12 },
-    { 3, 0, 0, 0, 0, 1, 0, 0, 64, 12 },
-    { 1, 1, 1, 0, 1, 1, 1, 0, 64, 12 },
-    { 1, 1, 1, 0, 1, 1, 1, 0, 0,  10 },
-    { 6, 0, 0, 0, 0, 1, 0, 0, 64, 12 },
+static const struct MapLoadMode sMapLoadModes[] = {
+    { .fieldBottomScreen = 1,
+     .skipMapAttributes = FALSE,
+     .useSimpleTerrainCollisions = FALSE,
+     .switchScreens = FALSE,
+     .useSeparateTerrainAttributes = FALSE,
+     .loadExtOverlay = TRUE,
+     .separateTerrainAttributesBlockCount = 0,
+     .unk4 = 0,
+     .unk5 = 64,
+     .unk6 = 12 },
+    { .fieldBottomScreen = 1,
+     .skipMapAttributes = 2,
+     .useSimpleTerrainCollisions = FALSE,
+     .switchScreens = FALSE,
+     .useSeparateTerrainAttributes = FALSE,
+     .loadExtOverlay = TRUE,
+     .separateTerrainAttributesBlockCount = 0,
+     .unk4 = 0,
+     .unk5 = 64,
+     .unk6 = 12 },
+    { .fieldBottomScreen = 3,
+     .skipMapAttributes = FALSE,
+     .useSimpleTerrainCollisions = FALSE,
+     .switchScreens = FALSE,
+     .useSeparateTerrainAttributes = FALSE,
+     .loadExtOverlay = TRUE,
+     .separateTerrainAttributesBlockCount = 0,
+     .unk4 = 0,
+     .unk5 = 64,
+     .unk6 = 12 },
+    { .fieldBottomScreen = 1,
+     .skipMapAttributes = TRUE,
+     .useSimpleTerrainCollisions = TRUE,
+     .switchScreens = FALSE,
+     .useSeparateTerrainAttributes = TRUE,
+     .loadExtOverlay = TRUE,
+     .separateTerrainAttributesBlockCount = 1,
+     .unk4 = 0,
+     .unk5 = 64,
+     .unk6 = 12 },
+    { .fieldBottomScreen = 1,
+     .skipMapAttributes = TRUE,
+     .useSimpleTerrainCollisions = TRUE,
+     .switchScreens = FALSE,
+     .useSeparateTerrainAttributes = TRUE,
+     .loadExtOverlay = TRUE,
+     .separateTerrainAttributesBlockCount = 1,
+     .unk4 = 0,
+     .unk5 = 0,
+     .unk6 = 10 },
+    { .fieldBottomScreen = 6,
+     .skipMapAttributes = FALSE,
+     .useSimpleTerrainCollisions = FALSE,
+     .switchScreens = FALSE,
+     .useSeparateTerrainAttributes = FALSE,
+     .loadExtOverlay = TRUE,
+     .separateTerrainAttributesBlockCount = 0,
+     .unk4 = 0,
+     .unk5 = 64,
+     .unk6 = 12 },
 };
 
 static void sub_02052F30(FieldSystem *fieldSystem) {
-    BOOL r2 = FALSE;
+    BOOL battleTower = FALSE;
 
     switch (fieldSystem->location->mapId) {
     case MAP_SAFARI_ZONE_ENTRANCE_EXTERIOR:
-        fieldSystem->unk70 = 1;
+        fieldSystem->mapLoadType = MAP_LOAD_TYPE_SAFARI;
         return;
     case MAP_BATTLE_TOWER:
     case MAP_BATTLE_TOWER_ELEVATOR:
@@ -124,24 +180,24 @@ static void sub_02052F30(FieldSystem *fieldSystem) {
     case MAP_BATTLE_TOWER_UNUSED_3:
     case MAP_BATTLE_TOWER_UNUSED_4:
     case MAP_BATTLE_TOWER_PARTNER_ROOM:
-        r2 = TRUE;
+        battleTower = TRUE;
         break;
     }
-    if (fieldSystem->unk70 == 1) {
-        fieldSystem->unk70 = 0;
+    if (fieldSystem->mapLoadType == MAP_LOAD_TYPE_SAFARI) {
+        fieldSystem->mapLoadType = MAP_LOAD_TYPE_OVERWORLD;
     }
-    if (!r2 && fieldSystem->unk70 == 4) {
-        fieldSystem->unk70 = 0;
+    if (!battleTower && fieldSystem->mapLoadType == MAP_LOAD_TYPE_BATTLE_TOWER) {
+        fieldSystem->mapLoadType = MAP_LOAD_TYPE_OVERWORLD;
     }
-    if (r2) {
-        fieldSystem->unk70 = 4;
+    if (battleTower) {
+        fieldSystem->mapLoadType = MAP_LOAD_TYPE_BATTLE_TOWER;
     }
 }
 
 static void sub_02052F94(FieldSystem *fieldSystem, Location *location) {
     LocalFieldData *localFieldData = Save_LocalFieldData_Get(fieldSystem->saveData);
     Location *r2 = LocalFieldData_GetPreviousPosition(localFieldData);
-    const WARP_EVENT *warp;
+    const WarpEvent *warp;
     if (location != NULL) {
         *r2 = *fieldSystem->location;
         *fieldSystem->location = *location;
@@ -157,9 +213,9 @@ static void sub_02052F94(FieldSystem *fieldSystem, Location *location) {
     }
 }
 
-void sub_02053018(FieldSystem *fieldSystem) {
-    GF_ASSERT(fieldSystem->unk70 < 6);
-    gSystem.screensFlipped = fieldSystem->unk74->unk0_0C;
+void FieldMapChange_Set3DDisplay(FieldSystem *fieldSystem) {
+    GF_ASSERT(fieldSystem->mapLoadType < MAP_LOAD_TYPE_MAX);
+    gSystem.screensFlipped = fieldSystem->mapLoadMode->switchScreens;
 }
 
 void sub_02053038(FieldSystem *fieldSystem, BOOL isConnection) {
@@ -169,7 +225,7 @@ void sub_02053038(FieldSystem *fieldSystem, BOOL isConnection) {
     u16 weather;
     u16 spawnId;
 
-    FieldSystem_ClearSavedMusicId(fieldSystem);
+    FieldBGM_ClearOverride(fieldSystem);
     if (!fieldSystem->unkAC) {
         ClearTempFieldEventData(fieldSystem);
     }
@@ -208,9 +264,9 @@ void sub_02053038(FieldSystem *fieldSystem, BOOL isConnection) {
             LocalFieldData_SetBlackoutSpawn(localFieldData, spawnId);
         }
     }
-    TryStartMapScriptByType(fieldSystem, 2);
-    fieldSystem->unk7E = 0;
-    fieldSystem->unk7C = 0;
+    TryStartMapScriptByType(fieldSystem, INIT_SCRIPT_ON_TRANSITION);
+    fieldSystem->encounterInhibitSteps = 0;
+    fieldSystem->reverseTurnFrameSteps = 0;
     fieldSystem->unk78 = 0;
     Save_FollowMon_SetInhibitFlagState(Save_FollowMon_Get(fieldSystem->saveData), FALSE);
     ClearFlag99A(Save_VarsFlags_Get(fieldSystem->saveData));
@@ -262,7 +318,9 @@ static void sub_02053284(FieldSystem *fieldSystem) {
     SaveVarsFlags *varsFlags;
 
     sub_02052F30(fieldSystem);
-    GF_ASSERT(fieldSystem->unk60 == 0);
+
+    GF_ASSERT(fieldSystem->unk60 == NULL);
+
     MapMatrix_Load(fieldSystem->location->mapId, fieldSystem->mapMatrix);
     varsFlags = Save_VarsFlags_Get(fieldSystem->saveData);
     if (sub_02066C74(varsFlags, 0)) {
@@ -270,24 +328,26 @@ static void sub_02053284(FieldSystem *fieldSystem) {
     }
     SetLakeOfRageWaterLevel(fieldSystem->mapMatrix, sub_02066C74(varsFlags, 1));
     PlaceSafariZoneAreas(fieldSystem->mapMatrix, fieldSystem->saveData);
-    GF_ASSERT(fieldSystem->unk70 < 6);
-    fieldSystem->unk74 = &_020FC5CC[fieldSystem->unk70];
-    fieldSystem->unk64 = fieldSystem->unk74->unk0_04;
-    fieldSystem->unk18 = fieldSystem->unk74->unk0_00;
-    sub_0205489C(&fieldSystem->unk60, fieldSystem->unk74->unk0_08);
-    if (fieldSystem->unk74->unk0_10) {
-        sub_02054514(fieldSystem, fieldSystem->unk74->unk0_18);
+
+    GF_ASSERT(fieldSystem->mapLoadType < 6);
+
+    fieldSystem->mapLoadMode = &sMapLoadModes[fieldSystem->mapLoadType];
+    fieldSystem->skipMapAttributes = fieldSystem->mapLoadMode->skipMapAttributes;
+    fieldSystem->bottomScreenType = fieldSystem->mapLoadMode->fieldBottomScreen;
+    sub_0205489C(&fieldSystem->unk60, fieldSystem->mapLoadMode->useSimpleTerrainCollisions);
+    if (fieldSystem->mapLoadMode->useSeparateTerrainAttributes) {
+        TerrainAttributes_New(fieldSystem, fieldSystem->mapLoadMode->separateTerrainAttributesBlockCount);
     }
 }
 
 static void sub_02053324(FieldSystem *fieldSystem) {
-    GF_ASSERT(fieldSystem->unk60 != 0);
-    fieldSystem->unk60 = 0;
-    fieldSystem->unk18 = 7;
-    if (fieldSystem->unk74->unk0_10) {
-        sub_0205453C(fieldSystem);
+    GF_ASSERT(fieldSystem->unk60 != NULL);
+    fieldSystem->unk60 = NULL;
+    fieldSystem->bottomScreenType = 7;
+    if (fieldSystem->mapLoadMode->useSeparateTerrainAttributes) {
+        TerrainAttributes_Free(fieldSystem);
     }
-    fieldSystem->unk74 = NULL;
+    fieldSystem->mapLoadMode = 0;
 }
 
 static void _CopyPlayerPosToLocationWorkFacingSouth(Location *location, FieldSystem *fieldSystem) {
@@ -347,7 +407,7 @@ static BOOL FieldTask_NewGame(TaskManager *taskManager) {
 }
 
 TaskManager *CallFieldTask_NewGame(FieldSystem *fieldSystem) {
-    fieldSystem->unk70 = 0;
+    fieldSystem->mapLoadType = 0;
     RunInitScript(fieldSystem);
     return FieldSystem_CreateTask(fieldSystem, FieldTask_NewGame, NULL);
 }
@@ -391,7 +451,7 @@ static BOOL FieldTask_ContinueGame_Normal(TaskManager *taskManager) {
 }
 
 TaskManager *CallFieldTask_ContinueGame_Normal(FieldSystem *fieldSystem) {
-    fieldSystem->unk70 = 0;
+    fieldSystem->mapLoadType = 0;
     return FieldSystem_CreateTask(fieldSystem, FieldTask_ContinueGame_Normal, NULL);
 }
 
@@ -453,7 +513,7 @@ TaskManager *CallFieldTask_ContinueGame_CommError(FieldSystem *fieldSystem) {
     env = Heap_AllocAtEnd(HEAP_ID_FIELD2, sizeof(struct ErrorContinueEnv));
     env->state = 0;
     InitLocation(&env->location, MAP_UNION, -1, 8, 14, DIR_NORTH);
-    fieldSystem->unk70 = 2;
+    fieldSystem->mapLoadType = MAP_LOAD_TYPE_UNION;
     return FieldSystem_CreateTask(fieldSystem, FieldTask_ContinueGame_CommError, env);
 }
 
@@ -464,7 +524,7 @@ static BOOL sub_02053688(TaskManager *taskManager) {
     switch (env->unk0) {
     case 0:
         PlaySE(SEQ_SE_DP_KAIDAN2);
-        FieldSystem_BeginFadeOutMusic(fieldSystem, env->location.mapId);
+        FieldBGM_TryFadeIn(fieldSystem, env->location.mapId);
         sub_020553B0(taskManager);
         env->unk0++;
         break;
@@ -476,7 +536,7 @@ static BOOL sub_02053688(TaskManager *taskManager) {
         if (GF_SndGetFadeTimer() != 0) {
             break;
         }
-        sub_02055110(fieldSystem, env->location.mapId, 0);
+        FieldBGM_PlayForMapHeader(fieldSystem, env->location.mapId, FALSE);
         sub_02055408(taskManager);
         env->unk0++;
         break;
@@ -550,7 +610,7 @@ static BOOL Task_ScriptWarp(TaskManager *taskManager) {
 
     switch (env->state) {
     case 0:
-        FieldSystem_BeginFadeOutMusic(fieldSystem, env->location.mapId);
+        FieldBGM_TryFadeIn(fieldSystem, env->location.mapId);
         CallTask_LeaveOverworld(taskManager);
         env->state++;
         break;
@@ -562,7 +622,7 @@ static BOOL Task_ScriptWarp(TaskManager *taskManager) {
         if (GF_SndGetFadeTimer() != 0) {
             break;
         }
-        sub_02055110(fieldSystem, env->location.mapId, 0);
+        FieldBGM_PlayForMapHeader(fieldSystem, env->location.mapId, FALSE);
         CallTask_RestoreOverworld(taskManager);
         env->state++;
         break;
@@ -617,7 +677,7 @@ static BOOL sub_02053950(TaskManager *taskManager) {
     Location *location = &env->location;
     switch (env->unk0) {
     case 0:
-        FieldSystem_BeginFadeOutMusic(fieldSystem, location->mapId);
+        FieldBGM_TryFadeIn(fieldSystem, location->mapId);
         sub_020539D8(taskManager);
         env->unk0++;
         break;
@@ -676,8 +736,8 @@ static BOOL sub_02053A2C(TaskManager *taskManager) {
     case 1:
         sub_0200615C(5, 10);
         GF_SndHandleMoveVolume(0, 128, 15);
-        fieldSystem->unkC4 = -1;
-        sub_02055110(fieldSystem, fieldSystem->location->mapId, 1);
+        fieldSystem->environmentSoundState = ENVIRONMENT_SOUND_NONE;
+        FieldBGM_PlayForMapHeader(fieldSystem, fieldSystem->location->mapId, TRUE);
         FieldSystem_DrawMapNameAnimation(fieldSystem);
         sub_02053AA0(taskManager);
         (*state_p)++;
@@ -726,7 +786,7 @@ static BOOL sub_02053B3C(TaskManager *taskManager) {
 
     switch (env->unk0) {
     case 0:
-        FieldSystem_BeginFadeOutMusic(fieldSystem, location->mapId);
+        FieldBGM_TryFadeIn(fieldSystem, location->mapId);
         sub_02053BE8(taskManager);
         env->unk0++;
         break;
@@ -739,7 +799,7 @@ static BOOL sub_02053B3C(TaskManager *taskManager) {
         if (GF_SndGetFadeTimer() != 0) {
             break;
         }
-        sub_02055110(fieldSystem, location->mapId, 0);
+        FieldBGM_PlayForMapHeader(fieldSystem, location->mapId, FALSE);
         if (env->unk4 == 2) {
             sub_02067BA4(fieldSystem);
         } else if (env->unk4 == 0 || env->unk4 == 1) {
@@ -839,7 +899,7 @@ static BOOL sub_02053CCC(TaskManager *taskManager) {
         break;
     case 2:
         if (env->unk4) {
-            FieldSystem_BeginFadeOutMusic(fieldSystem, location->mapId);
+            FieldBGM_TryFadeIn(fieldSystem, location->mapId);
             CallTask_LeaveOverworld(taskManager);
             env->unk0++;
         }
@@ -852,7 +912,7 @@ static BOOL sub_02053CCC(TaskManager *taskManager) {
         if (GF_SndGetFadeTimer() != 0) {
             break;
         }
-        sub_02055110(fieldSystem, location->mapId, 0);
+        FieldBGM_PlayForMapHeader(fieldSystem, location->mapId, FALSE);
         CallTask_RestoreOverworld(taskManager);
         env->unk0++;
         break;
@@ -902,7 +962,7 @@ static BOOL sub_02053E5C(TaskManager *taskManager) {
 
     switch (*state_p) {
     case 0:
-        FieldSystem_BeginFadeOutMusic(fieldSystem, location->mapId);
+        FieldBGM_TryFadeIn(fieldSystem, location->mapId);
         ov01_021F35C4(fieldSystem, 1, &env->unk4);
         (*state_p)++;
         break;
@@ -920,7 +980,7 @@ static BOOL sub_02053E5C(TaskManager *taskManager) {
         if (GF_SndGetFadeTimer() != 0) {
             break;
         }
-        sub_02055110(fieldSystem, location->mapId, 0);
+        FieldBGM_PlayForMapHeader(fieldSystem, location->mapId, FALSE);
         CallTask_RestoreOverworld(taskManager);
         (*state_p)++;
         break;
@@ -943,7 +1003,7 @@ void sub_02053F14(FieldSystem *fieldSystem) {
     env->location = *location;
     sub_02059E04(fieldSystem);
     sub_0205AD3C(fieldSystem->unk84);
-    fieldSystem->unk70 = 0;
+    fieldSystem->mapLoadType = 0;
     FieldSystem_CreateTask(fieldSystem, sub_02053E5C, env);
     fieldSystem->unk80 = NULL;
 }
@@ -956,7 +1016,7 @@ static BOOL sub_02053F70(TaskManager *taskManager) {
 
     switch (*state_p) {
     case 0:
-        FieldSystem_BeginFadeOutMusic(fieldSystem, location->mapId);
+        FieldBGM_TryFadeIn(fieldSystem, location->mapId);
         PaletteFadeUntilFinished(taskManager);
         (*state_p)++;
         break;
@@ -972,7 +1032,7 @@ static BOOL sub_02053F70(TaskManager *taskManager) {
         if (GF_SndGetFadeTimer() != 0) {
             break;
         }
-        sub_02055110(fieldSystem, location->mapId, 0);
+        FieldBGM_PlayForMapHeader(fieldSystem, location->mapId, FALSE);
         CallTask_RestoreOverworld(taskManager);
         (*state_p)++;
         break;
@@ -1003,7 +1063,7 @@ void sub_02054030(TaskManager *taskManager) {
     InitLocation(&env->location, MAP_UNION, -1, 8, 14, DIR_NORTH);
     fieldSystem->unk80 = sub_02059DB0(fieldSystem);
     fieldSystem->unk84 = sub_0205AC88(fieldSystem->unk80);
-    fieldSystem->unk70 = 2;
+    fieldSystem->mapLoadType = MAP_LOAD_TYPE_UNION;
     TaskManager_Call(taskManager, sub_02053F70, env);
 }
 
@@ -1014,7 +1074,7 @@ static BOOL sub_020540A4(TaskManager *taskManager) {
     switch (env->unk0) {
     case 0:
         PlaySE(SEQ_SE_DP_KAIDAN2);
-        FieldSystem_BeginFadeOutMusic(fieldSystem, env->location.mapId);
+        FieldBGM_TryFadeIn(fieldSystem, env->location.mapId);
         sub_020553B0(taskManager);
         env->unk0++;
         break;
@@ -1026,7 +1086,7 @@ static BOOL sub_020540A4(TaskManager *taskManager) {
         if (GF_SndGetFadeTimer() != 0) {
             break;
         }
-        sub_02055110(fieldSystem, env->location.mapId, 0);
+        FieldBGM_PlayForMapHeader(fieldSystem, env->location.mapId, FALSE);
         CallTask_RestoreOverworld(taskManager);
         env->unk0++;
         break;
@@ -1042,7 +1102,7 @@ void sub_0205412C(TaskManager *taskManager, u32 mapId, int warpId, int x, int y,
     struct UnkTaskEnv_02053688 *env;
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     _CopyPlayerPosToLocationWorkFacingSouth(LocalFieldData_GetDynamicWarp(Save_LocalFieldData_Get(fieldSystem->saveData)), fieldSystem);
-    fieldSystem->unk70 = 3;
+    fieldSystem->mapLoadType = MAP_LOAD_TYPE_COLOSSEUM;
     env = Heap_AllocAtEnd(HEAP_ID_FIELD2, sizeof(struct UnkTaskEnv_02053688));
     {
         Location location = {
@@ -1061,6 +1121,6 @@ void sub_0205412C(TaskManager *taskManager, u32 mapId, int warpId, int x, int y,
 void sub_02054190(TaskManager *taskManager) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     Location *location = LocalFieldData_GetDynamicWarp(Save_LocalFieldData_Get(fieldSystem->saveData));
-    fieldSystem->unk70 = 0;
+    fieldSystem->mapLoadType = 0;
     sub_02053710(fieldSystem->taskman, location);
 }

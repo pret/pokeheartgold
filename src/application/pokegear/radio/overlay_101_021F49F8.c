@@ -165,7 +165,7 @@ BOOL Radio_VideoUnload(PokegearRadioAppData *radioApp) {
             break;
         }
         PlayBGM(radioApp->pokegear->args->mapMusicID);
-        sub_0203E354();
+        Field_SetEnvironmentSoundState_None_Unk2();
         ++radioApp->substate;
         break;
     case 2:
@@ -339,7 +339,7 @@ void Radio_InitWindows(PokegearRadioAppData *radioApp) {
         FillWindowPixelBuffer(&radioApp->windows[i], 0);
     }
 
-    radioApp->showData = RadioShow_Create(radioApp->pokegear->saveData, radioApp->pokegear->args->mapID, radioApp->pokegear->args->mapHeader, MapHeader_IsInKanto(radioApp->pokegear->args->mapID), &radioApp->windows[0], &radioApp->windows[2], &radioApp->windows[1], MAKE_TEXT_COLOR(1, 2, 0), radioApp->heapID);
+    radioApp->showData = RadioShow_Create(radioApp->pokegear->saveData, radioApp->pokegear->args->mapID, radioApp->pokegear->args->mapHeader, MapHeader_GetRegionNo(radioApp->pokegear->args->mapID), &radioApp->windows[0], &radioApp->windows[2], &radioApp->windows[1], MAKE_TEXT_COLOR(1, 2, 0), radioApp->heapID);
 }
 
 void Radio_UnloadWindows(PokegearRadioAppData *radioApp) {

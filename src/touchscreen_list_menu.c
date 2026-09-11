@@ -16,7 +16,7 @@
 static TouchscreenListMenu *TouchscreenListMenu_CreateInternal(TouchscreenListMenuSpawner *spawner, TouchscreenListMenuHeader *header, u8 isTouch, u8 x, u8 y, u8 width, u8 selection, TouchscreenListMenuCallback callback, void *callbackArg, BOOL silent, enum TouchscreenListMenuTextAlignment alignment);
 static void TouchscreenListMenuSpawner_ScheduleLoadGraphicsToVram(TouchscreenListMenuSpawner *spawner, TouchscreenListMenuHeader *header, PaletteData *paletteData, enum HeapID heapID);
 static void Task_LoadTouchscreenListMenuGraphicsToVram(SysTask *task, void *taskData);
-static u8 TouchscreenListMenu_GetItemsTextMaxWidth(LISTMENUITEM *listMenuItem, u8 num, FontID fontId, u8 margin);
+static u8 TouchscreenListMenu_GetItemsTextMaxWidth(ListMenuItem *listMenuItem, u8 num, FontID fontId, u8 margin);
 static void TouchscreenListMenu_CreateWindows(TouchscreenListMenu *menu);
 static void TouchscreenListMenu_DeleteWindows(TouchscreenListMenu *menu);
 static void TouchscreenListMenu_DrawButtons(TouchscreenListMenu *menu);
@@ -202,7 +202,7 @@ static void Task_LoadTouchscreenListMenuGraphicsToVram(SysTask *task, void *task
     Heap_Free(taskData);
 }
 
-static u8 TouchscreenListMenu_GetItemsTextMaxWidth(LISTMENUITEM *listMenuItem, u8 num, FontID fontId, u8 margin) {
+static u8 TouchscreenListMenu_GetItemsTextMaxWidth(ListMenuItem *listMenuItem, u8 num, FontID fontId, u8 margin) {
     u8 maxWidth = 0;
     for (int i = 0; i < num; ++i) {
         GF_ASSERT(listMenuItem[i].text != NULL);

@@ -5,360 +5,360 @@
 
 	.rodata
 
-	scrdef scr_seq_0166_000
-	scrdef scr_seq_0166_001
-	scrdef scr_seq_0166_002
-	scrdef scr_seq_0166_003
-	scrdef scr_seq_0166_004
-	scrdef scr_seq_0166_005
-	scrdef scr_seq_0166_006
-	scrdef scr_seq_0166_007
-	scrdef scr_seq_0166_008
-	scrdef scr_seq_0166_009
-	scrdef scr_seq_0166_010
-	scrdef scr_seq_0166_011
-	scrdef scr_seq_0166_012
-	scrdef_end
+	ScrDef scr_seq_0166_000
+	ScrDef scr_seq_0166_001
+	ScrDef scr_seq_0166_002
+	ScrDef scr_seq_0166_003
+	ScrDef scr_seq_0166_004
+	ScrDef scr_seq_0166_005
+	ScrDef scr_seq_0166_006
+	ScrDef scr_seq_0166_007
+	ScrDef scr_seq_0166_008
+	ScrDef scr_seq_0166_009
+	ScrDef scr_seq_0166_010
+	ScrDef scr_seq_0166_011
+	ScrDef scr_seq_0166_012
+	ScrDefEnd
 
 scr_seq_0166_000:
-	scrcmd_609
-	lockall
-	setvar VAR_SPECIAL_RESULT, 7
-	clearflag FLAG_UNK_966
-	setvar VAR_UNK_4133, 0
-	releaseall
-	end
+	ScrCmd_609
+	LockAll
+	SetVar VAR_SPECIAL_RESULT, 7
+	ClearFlag FLAG_UNK_966
+	SetVar VAR_UNK_4133, 0
+	ReleaseAll
+	End
 
 scr_seq_0166_001:
-	end
+	End
 
 scr_seq_0166_002:
-	end
+	End
 
 _0052:
-	return
+	Return
 
 scr_seq_0166_003:
-	scrcmd_521
-	call _0064
-	call _0052
-	end
+	ScrCmd_521
+	Call _0064
+	Call _0052
+	End
 
 _0064:
-	return
-	return
+	Return
+	Return
 scr_seq_0166_004:
-	end
-	make_object_visible 0xFF
-	return
+	End
+	MakeObjectVisible 0xFF
+	Return
 scr_seq_0166_005:
-	simple_npc_msg msg_0043_00000
-	end
+	SimpleNPCMsg msg_0043_00000
+	End
 
 scr_seq_0166_006:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	setvar VAR_TEMP_x4003, 0
-	setvar VAR_SPECIAL_x8007, 2
-	npc_msg msg_0043_00003
-	goto _00C1
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	SetVar VAR_TEMP_x4003, 0
+	SetVar VAR_SPECIAL_x8007, 2
+	NPCMsg msg_0043_00003
+	GoTo _00C1
+	End
 scr_seq_0166_007:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	setvar VAR_TEMP_x4003, 1
-	setvar VAR_SPECIAL_x8007, 2
-	npc_msg msg_0043_00007
-	goto _00C1
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	SetVar VAR_TEMP_x4003, 1
+	SetVar VAR_SPECIAL_x8007, 2
+	NPCMsg msg_0043_00007
+	GoTo _00C1
+	End
 _00C1:
-	compare VAR_TEMP_x4003, 1
-	goto_if_eq _00D7
-	npc_msg msg_0043_00004
-	goto _00DA
+	Compare VAR_TEMP_x4003, 1
+	GoToIfEq _00D7
+	NPCMsg msg_0043_00004
+	GoTo _00DA
 
 _00D7:
-	npc_msg msg_0043_00012
+	NPCMsg msg_0043_00012
 _00DA:
-	scrcmd_065 1, 1, 0, 1, VAR_SPECIAL_RESULT
-	scrcmd_066 msg_0043_00008, 0
-	scrcmd_066 msg_0043_00009, 1
-	scrcmd_066 msg_0043_00010, 2
-	scrcmd_067
-	switch VAR_SPECIAL_RESULT
-	case 0, _012F
-	case 1, _0137
-	goto _0118
-	end
+	ScrCmd_065 1, 1, 0, 1, VAR_SPECIAL_RESULT
+	ScrCmd_066 msg_0043_00008, 0
+	ScrCmd_066 msg_0043_00009, 1
+	ScrCmd_066 msg_0043_00010, 2
+	ScrCmd_067
+	Switch VAR_SPECIAL_RESULT
+	Case 0, _012F
+	Case 1, _0137
+	GoTo _0118
+	End
 _0118:
-	scrcmd_283
-	setvar VAR_UNK_4133, 0
-	clearflag FLAG_UNK_966
-	npc_msg msg_0043_00011
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	ScrCmd_283
+	SetVar VAR_UNK_4133, 0
+	ClearFlag FLAG_UNK_966
+	NPCMsg msg_0043_00011
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _012F:
-	goto _0254
-	end
+	GoTo _0254
+	End
 _0137:
-	compare VAR_TEMP_x4003, 1
-	goto_if_eq _014C
-	goto _0155
-	end
+	Compare VAR_TEMP_x4003, 1
+	GoToIfEq _014C
+	GoTo _0155
+	End
 _014C:
-	npc_msg msg_0043_00013
-	goto _00C1
+	NPCMsg msg_0043_00013
+	GoTo _00C1
 
 _0155:
-	npc_msg msg_0043_00005
+	NPCMsg msg_0043_00005
 _0158:
-	scrcmd_064 1, 1, 0, 1, VAR_SPECIAL_RESULT
-	scrcmd_066 msg_0043_00096, 0
-	scrcmd_066 msg_0043_00097, 1
-	scrcmd_066 msg_0043_00098, 2
-	scrcmd_066 msg_0043_00099, 3
-	scrcmd_067
-	switch VAR_SPECIAL_RESULT
-	case 0, _01A7
-	case 1, _01AF
-	case 2, _01BA
-	goto _00C1
-	end
+	ScrCmd_064 1, 1, 0, 1, VAR_SPECIAL_RESULT
+	ScrCmd_066 msg_0043_00096, 0
+	ScrCmd_066 msg_0043_00097, 1
+	ScrCmd_066 msg_0043_00098, 2
+	ScrCmd_066 msg_0043_00099, 3
+	ScrCmd_067
+	Switch VAR_SPECIAL_RESULT
+	Case 0, _01A7
+	Case 1, _01AF
+	Case 2, _01BA
+	GoTo _00C1
+	End
 _01A7:
-	goto _01C8
-	end
+	GoTo _01C8
+	End
 _01AF:
-	npc_msg msg_0043_00018
-	goto _0155
-	end
+	NPCMsg msg_0043_00018
+	GoTo _0155
+	End
 _01BA:
-	npc_msg msg_0043_00019
-	goto _0155
-	end
+	NPCMsg msg_0043_00019
+	GoTo _0155
+	End
 _01C5:
-	npc_msg msg_0043_00117
+	NPCMsg msg_0043_00117
 _01C8:
-	scrcmd_065 1, 1, 0, 1, VAR_SPECIAL_RESULT
-	scrcmd_066 msg_0043_00036, 0
-	scrcmd_066 msg_0043_00037, 1
-	scrcmd_066 msg_0043_00038, 2
-	scrcmd_066 msg_0043_00039, 3
-	scrcmd_066 msg_0043_00040, 4
-	scrcmd_067
-	switch VAR_SPECIAL_RESULT
-	case 0, _0228
-	case 1, _0233
-	case 2, _023E
-	case 3, _0249
-	goto _0158
-	end
+	ScrCmd_065 1, 1, 0, 1, VAR_SPECIAL_RESULT
+	ScrCmd_066 msg_0043_00036, 0
+	ScrCmd_066 msg_0043_00037, 1
+	ScrCmd_066 msg_0043_00038, 2
+	ScrCmd_066 msg_0043_00039, 3
+	ScrCmd_066 msg_0043_00040, 4
+	ScrCmd_067
+	Switch VAR_SPECIAL_RESULT
+	Case 0, _0228
+	Case 1, _0233
+	Case 2, _023E
+	Case 3, _0249
+	GoTo _0158
+	End
 _0228:
-	npc_msg msg_0043_00014
-	goto _01C5
-	end
+	NPCMsg msg_0043_00014
+	GoTo _01C5
+	End
 _0233:
-	npc_msg msg_0043_00015
-	goto _01C5
-	end
+	NPCMsg msg_0043_00015
+	GoTo _01C5
+	End
 _023E:
-	npc_msg msg_0043_00016
-	goto _01C5
-	end
+	NPCMsg msg_0043_00016
+	GoTo _01C5
+	End
 _0249:
-	npc_msg msg_0043_00017
-	goto _01C5
-	end
+	NPCMsg msg_0043_00017
+	GoTo _01C5
+	End
 _0254:
-	npc_msg msg_0043_00219
-	scrcmd_064 18, 1, 0, 1, VAR_SPECIAL_RESULT
-	scrcmd_066 msg_0043_00014, 0
-	scrcmd_066 msg_0043_00015, 1
-	scrcmd_066 msg_0043_00005, 2
-	scrcmd_067
-	switch VAR_SPECIAL_RESULT
-	case 0, _0295
-	case 1, _02E7
-	goto _0118
-	end
+	NPCMsg msg_0043_00219
+	ScrCmd_064 18, 1, 0, 1, VAR_SPECIAL_RESULT
+	ScrCmd_066 msg_0043_00014, 0
+	ScrCmd_066 msg_0043_00015, 1
+	ScrCmd_066 msg_0043_00005, 2
+	ScrCmd_067
+	Switch VAR_SPECIAL_RESULT
+	Case 0, _0295
+	Case 1, _02E7
+	GoTo _0118
+	End
 _0295:
-	npc_msg msg_0043_00212
-	yesno VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _0254
-	closemsg
-	scrcmd_226 8, VAR_SPECIAL_x8005, VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _02D7
-	compare VAR_SPECIAL_RESULT, 3
-	goto_if_eq _02DF
-	goto _0339
-	end
+	NPCMsg msg_0043_00212
+	YesNo VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _0254
+	CloseMsg
+	ScrCmd_226 8, VAR_SPECIAL_x8005, VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _02D7
+	Compare VAR_SPECIAL_RESULT, 3
+	GoToIfEq _02DF
+	GoTo _0339
+	End
 _02D7:
-	goto _0254
-	end
+	GoTo _0254
+	End
 _02DF:
-	goto _0254
-	end
+	GoTo _0254
+	End
 _02E7:
-	npc_msg msg_0043_00212
-	yesno VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _0254
-	closemsg
-	scrcmd_227 8, VAR_SPECIAL_x8005, VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _0329
-	compare VAR_SPECIAL_RESULT, 3
-	goto_if_eq _0331
-	goto _0339
-	end
+	NPCMsg msg_0043_00212
+	YesNo VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _0254
+	CloseMsg
+	ScrCmd_227 8, VAR_SPECIAL_x8005, VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _0329
+	Compare VAR_SPECIAL_RESULT, 3
+	GoToIfEq _0331
+	GoTo _0339
+	End
 _0329:
-	goto _0254
-	end
+	GoTo _0254
+	End
 _0331:
-	scrcmd_283
-	closemsg
-	releaseall
-	end
+	ScrCmd_283
+	CloseMsg
+	ReleaseAll
+	End
 
 _0339:
-	scrcmd_234 VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x8007, VAR_TEMP_x4002
-	scrcmd_232 25
-	scrcmd_233 25
+	ScrCmd_234 VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x8007, VAR_TEMP_x4002
+	ScrCmd_232 25
+	ScrCmd_233 25
 _0347:
-	compare VAR_TEMP_x4003, 0
-	goto_if_eq _038D
-	compare VAR_TEMP_x4003, 1
-	goto_if_eq _0395
-	compare VAR_TEMP_x4003, 2
-	goto_if_eq _03A7
-	end
-	scrcmd_236 VAR_SPECIAL_RESULT
-	addvar VAR_SPECIAL_RESULT, 1
-	npc_msg msg_0043_00177
-	scrcmd_236 VAR_SPECIAL_RESULT
-	closemsg
-	goto _0347
+	Compare VAR_TEMP_x4003, 0
+	GoToIfEq _038D
+	Compare VAR_TEMP_x4003, 1
+	GoToIfEq _0395
+	Compare VAR_TEMP_x4003, 2
+	GoToIfEq _03A7
+	End
+	ScrCmd_236 VAR_SPECIAL_RESULT
+	AddVar VAR_SPECIAL_RESULT, 1
+	NPCMsg msg_0043_00177
+	ScrCmd_236 VAR_SPECIAL_RESULT
+	CloseMsg
+	GoTo _0347
 _038D:
-	goto _03B4
-	end
+	GoTo _03B4
+	End
 _0395:
-	setflag FLAG_UNK_966
-	setvar VAR_UNK_4133, 5
-	goto _03B4
-	end
+	SetFlag FLAG_UNK_966
+	SetVar VAR_UNK_4133, 5
+	GoTo _03B4
+	End
 _03A7:
-	scrcmd_048 msg_0043_00211
-	closemsg
-	goto _03B4
-	end
+	ScrCmd_048 msg_0043_00211
+	CloseMsg
+	GoTo _03B4
+	End
 _03B4:
-	get_player_gender VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _03CD
-	goto _03DB
-	end
+	GetPlayerGender VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _03CD
+	GoTo _03DB
+	End
 _03CD:
-	buffer_players_name 0
-	scrcmd_048 msg_0043_00066
-	goto _03E9
-	end
+	BufferPlayersName 0
+	ScrCmd_048 msg_0043_00066
+	GoTo _03E9
+	End
 _03DB:
-	buffer_players_name 0
-	scrcmd_048 msg_0043_00067
-	goto _03E9
-	end
+	BufferPlayersName 0
+	ScrCmd_048 msg_0043_00067
+	GoTo _03E9
+	End
 _03E9:
-	scrcmd_048 msg_0043_00068
-	scrcmd_232 26
-	scrcmd_233 26
-	closemsg
-	goto _03FE
-	end
+	ScrCmd_048 msg_0043_00068
+	ScrCmd_232 26
+	ScrCmd_233 26
+	CloseMsg
+	GoTo _03FE
+	End
 _03FE:
-	scrcmd_232 4
-	scrcmd_233 4
-	scrcmd_257 239
-	pokeathlon 1, 0, VAR_SPECIAL_x8000, VAR_SPECIAL_RESULT, VAR_SPECIAL_x8001, VAR_SPECIAL_x8002, VAR_SPECIAL_x8003
-	scrcmd_237
-	scrcmd_048 msg_0043_00078
-	closemsg
-	scrcmd_232 24
-	scrcmd_233 24
-	scrcmd_587
-	wait 10, VAR_SPECIAL_RESULT
-	scrcmd_235 VAR_TEMP_x4002
-	clearflag FLAG_UNK_966
-	setvar VAR_UNK_4133, 0
-	goto _0443
+	ScrCmd_232 4
+	ScrCmd_233 4
+	ScrCmd_257 239
+	Pokeathlon 1, 0, VAR_SPECIAL_x8000, VAR_SPECIAL_RESULT, VAR_SPECIAL_x8001, VAR_SPECIAL_x8002, VAR_SPECIAL_x8003
+	ScrCmd_237
+	ScrCmd_048 msg_0043_00078
+	CloseMsg
+	ScrCmd_232 24
+	ScrCmd_233 24
+	ScrCmd_587
+	Wait 10, VAR_SPECIAL_RESULT
+	ScrCmd_235 VAR_TEMP_x4002
+	ClearFlag FLAG_UNK_966
+	SetVar VAR_UNK_4133, 0
+	GoTo _0443
 
 _0443:
-	releaseall
-	end
+	ReleaseAll
+	End
 
 _0447: ; unreferenced
-	   play_se SEQ_SE_DP_CON_F007
-	   compare VAR_SPECIAL_RESULT, 1
-	   call_if_eq _048E
-	   compare VAR_SPECIAL_RESULT, 2
-	   call_if_eq _0498
-	   compare VAR_SPECIAL_RESULT, 3
-	   call_if_eq _04AC
-	   compare VAR_SPECIAL_RESULT, 4
-	   call_if_eq _04C8
-	   compare VAR_SPECIAL_RESULT, 5
-	   call_if_ge _04EE
-	   return
+	   PlaySE SEQ_SE_DP_CON_F007
+	   Compare VAR_SPECIAL_RESULT, 1
+	   CallIfEq _048E
+	   Compare VAR_SPECIAL_RESULT, 2
+	   CallIfEq _0498
+	   Compare VAR_SPECIAL_RESULT, 3
+	   CallIfEq _04AC
+	   Compare VAR_SPECIAL_RESULT, 4
+	   CallIfEq _04C8
+	   Compare VAR_SPECIAL_RESULT, 5
+	   CallIfGe _04EE
+	   Return
 
 _048E:
-	   play_se SEQ_SE_DP_CON_015
-	   wait_se SEQ_SE_DP_CON_015
-	   return
+	   PlaySE SEQ_SE_DP_CON_015
+	   WaitSE SEQ_SE_DP_CON_015
+	   Return
 
 _0498:
-	   play_se SEQ_SE_DP_CON_015
-	   wait 5, VAR_SPECIAL_RESULT
-	   play_se SEQ_SE_DP_CON_015
-	   wait_se SEQ_SE_DP_CON_015
-	   return
+	   PlaySE SEQ_SE_DP_CON_015
+	   Wait 5, VAR_SPECIAL_RESULT
+	   PlaySE SEQ_SE_DP_CON_015
+	   WaitSE SEQ_SE_DP_CON_015
+	   Return
 
 _04AC:
-	   play_se SEQ_SE_DP_CON_015
-	   wait_se SEQ_SE_DP_CON_015
-	   play_se SEQ_SE_DP_CON_015
-	   wait 5, VAR_SPECIAL_RESULT
-	   play_se SEQ_SE_DP_CON_015
-	   wait_se SEQ_SE_DP_CON_015
-	   return
+	   PlaySE SEQ_SE_DP_CON_015
+	   WaitSE SEQ_SE_DP_CON_015
+	   PlaySE SEQ_SE_DP_CON_015
+	   Wait 5, VAR_SPECIAL_RESULT
+	   PlaySE SEQ_SE_DP_CON_015
+	   WaitSE SEQ_SE_DP_CON_015
+	   Return
 
 _04C8:
-	   play_se SEQ_SE_DP_CON_015
-	   wait 5, VAR_SPECIAL_RESULT
-	   play_se SEQ_SE_DP_CON_015
-	   wait_se SEQ_SE_DP_CON_015
-	   play_se SEQ_SE_DP_CON_015
-	   wait 5, VAR_SPECIAL_RESULT
-	   play_se SEQ_SE_DP_CON_015
-	   wait_se SEQ_SE_DP_CON_015
-	   return
+	   PlaySE SEQ_SE_DP_CON_015
+	   Wait 5, VAR_SPECIAL_RESULT
+	   PlaySE SEQ_SE_DP_CON_015
+	   WaitSE SEQ_SE_DP_CON_015
+	   PlaySE SEQ_SE_DP_CON_015
+	   Wait 5, VAR_SPECIAL_RESULT
+	   PlaySE SEQ_SE_DP_CON_015
+	   WaitSE SEQ_SE_DP_CON_015
+	   Return
 
 _04EE:
-	   play_se SEQ_SE_DP_CON_015
-	   wait 5, VAR_SPECIAL_RESULT
-	   play_se SEQ_SE_DP_CON_015
-	   wait 5, VAR_SPECIAL_RESULT
-	   play_se SEQ_SE_DP_CON_015
-	   wait 10, VAR_SPECIAL_RESULT
-	   play_se SEQ_SE_DP_CON_015
-	   wait 5, VAR_SPECIAL_RESULT
-	   play_se SEQ_SE_DP_CON_015
-	   wait_se SEQ_SE_DP_CON_015
-	   return
+	   PlaySE SEQ_SE_DP_CON_015
+	   Wait 5, VAR_SPECIAL_RESULT
+	   PlaySE SEQ_SE_DP_CON_015
+	   Wait 5, VAR_SPECIAL_RESULT
+	   PlaySE SEQ_SE_DP_CON_015
+	   Wait 10, VAR_SPECIAL_RESULT
+	   PlaySE SEQ_SE_DP_CON_015
+	   Wait 5, VAR_SPECIAL_RESULT
+	   PlaySE SEQ_SE_DP_CON_015
+	   WaitSE SEQ_SE_DP_CON_015
+	   Return
 
 	.balign 4, 0
 _0520: ; unreferenced
@@ -410,304 +410,304 @@ scr_seq_0166_008:
 scr_seq_0166_009:
 scr_seq_0166_010:
 scr_seq_0166_011:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	setvar VAR_TEMP_x4003, 2
-	setvar VAR_SPECIAL_x8004, 0
-	npc_msg msg_0043_00111
-	goto _05AF
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	SetVar VAR_TEMP_x4003, 2
+	SetVar VAR_SPECIAL_x8004, 0
+	NPCMsg msg_0043_00111
+	GoTo _05AF
+	End
 _05AF:
-	npc_msg msg_0043_00112
-	scrcmd_065 1, 1, 0, 1, VAR_SPECIAL_RESULT
-	scrcmd_066 msg_0043_00113, 0
-	scrcmd_066 msg_0043_00114, 1
-	scrcmd_066 msg_0043_00115, 2
-	scrcmd_067
-	switch VAR_SPECIAL_RESULT
-	case 0, _05FD
-	case 1, _0872
-	case 2, _0A97
-	goto _0A97
-	end
+	NPCMsg msg_0043_00112
+	ScrCmd_065 1, 1, 0, 1, VAR_SPECIAL_RESULT
+	ScrCmd_066 msg_0043_00113, 0
+	ScrCmd_066 msg_0043_00114, 1
+	ScrCmd_066 msg_0043_00115, 2
+	ScrCmd_067
+	Switch VAR_SPECIAL_RESULT
+	Case 0, _05FD
+	Case 1, _0872
+	Case 2, _0A97
+	GoTo _0A97
+	End
 _05FD:
-	scrcmd_065 1, 1, 0, 1, VAR_SPECIAL_RESULT
-	scrcmd_066 msg_0043_00155, 0
-	scrcmd_066 msg_0043_00156, 1
-	scrcmd_066 msg_0043_00157, 2
-	scrcmd_066 msg_0043_00158, 3
-	scrcmd_067
-	switch VAR_SPECIAL_RESULT
-	case 0, _064C
-	case 1, _0660
-	case 2, _067A
-	goto _068E
-	end
+	ScrCmd_065 1, 1, 0, 1, VAR_SPECIAL_RESULT
+	ScrCmd_066 msg_0043_00155, 0
+	ScrCmd_066 msg_0043_00156, 1
+	ScrCmd_066 msg_0043_00157, 2
+	ScrCmd_066 msg_0043_00158, 3
+	ScrCmd_067
+	Switch VAR_SPECIAL_RESULT
+	Case 0, _064C
+	Case 1, _0660
+	Case 2, _067A
+	GoTo _068E
+	End
 _064C:
-	setvar VAR_TEMP_x4004, 0
-	setvar VAR_SPECIAL_x8007, 3
-	goto _0743
-	end
+	SetVar VAR_TEMP_x4004, 0
+	SetVar VAR_SPECIAL_x8007, 3
+	GoTo _0743
+	End
 _0660:
-	setvar VAR_TEMP_x4004, 1
-	setvar VAR_SPECIAL_x8005, 0
-	setvar VAR_SPECIAL_x8007, 5
-	goto _0743
-	end
+	SetVar VAR_TEMP_x4004, 1
+	SetVar VAR_SPECIAL_x8005, 0
+	SetVar VAR_SPECIAL_x8007, 5
+	GoTo _0743
+	End
 _067A:
-	setvar VAR_TEMP_x4004, 0
-	setvar VAR_SPECIAL_x8007, 7
-	goto _0743
-	end
+	SetVar VAR_TEMP_x4004, 0
+	SetVar VAR_SPECIAL_x8007, 7
+	GoTo _0743
+	End
 _068E:
-	npc_msg msg_0043_00159
-	wait_button_or_walk_away
-	goto _0A9C
-	end
+	NPCMsg msg_0043_00159
+	WaitButton
+	GoTo _0A9C
+	End
 
 _069B:
-	npc_msg msg_0043_00168
-	scrcmd_065 1, 1, 0, 1, VAR_SPECIAL_RESULT
-	scrcmd_066 msg_0043_00169, 0
-	scrcmd_066 msg_0043_00170, 1
-	scrcmd_066 msg_0043_00171, 2
-	scrcmd_066 msg_0043_00172, 3
-	scrcmd_066 msg_0043_00173, 4
-	scrcmd_067
-	switch VAR_SPECIAL_RESULT
-	case 0, _06FE
-	case 1, _070C
-	case 2, _071A
-	case 3, _0728
-	goto _0736
-	end
+	NPCMsg msg_0043_00168
+	ScrCmd_065 1, 1, 0, 1, VAR_SPECIAL_RESULT
+	ScrCmd_066 msg_0043_00169, 0
+	ScrCmd_066 msg_0043_00170, 1
+	ScrCmd_066 msg_0043_00171, 2
+	ScrCmd_066 msg_0043_00172, 3
+	ScrCmd_066 msg_0043_00173, 4
+	ScrCmd_067
+	Switch VAR_SPECIAL_RESULT
+	Case 0, _06FE
+	Case 1, _070C
+	Case 2, _071A
+	Case 3, _0728
+	GoTo _0736
+	End
 _06FE:
-	setvar VAR_SPECIAL_x8004, 0
-	goto _0743
-	end
+	SetVar VAR_SPECIAL_x8004, 0
+	GoTo _0743
+	End
 _070C:
-	setvar VAR_SPECIAL_x8004, 1
-	goto _0743
-	end
+	SetVar VAR_SPECIAL_x8004, 1
+	GoTo _0743
+	End
 _071A:
-	setvar VAR_SPECIAL_x8004, 2
-	goto _0743
-	end
+	SetVar VAR_SPECIAL_x8004, 2
+	GoTo _0743
+	End
 _0728:
-	setvar VAR_SPECIAL_x8004, 3
-	goto _0743
-	end
+	SetVar VAR_SPECIAL_x8004, 3
+	GoTo _0743
+	End
 _0736:
-	npc_msg msg_0043_00174
-	wait_button_or_walk_away
-	goto _0A9C
-	end
+	NPCMsg msg_0043_00174
+	WaitButton
+	GoTo _0A9C
+	End
 _0743:
-	compare VAR_TEMP_x4004, 1
-	goto_if_eq _081D
-	goto _0756
+	Compare VAR_TEMP_x4004, 1
+	GoToIfEq _081D
+	GoTo _0756
 
 _0756:
-	npc_msg msg_0043_00160
-	scrcmd_065 1, 1, 0, 1, VAR_SPECIAL_RESULT
-	scrcmd_066 msg_0043_00161, 0
-	scrcmd_066 msg_0043_00162, 1
-	scrcmd_066 msg_0043_00163, 2
-	scrcmd_066 msg_0043_00164, 3
-	scrcmd_066 msg_0043_00165, 4
-	scrcmd_066 msg_0043_00166, 5
-	scrcmd_067
-	switch VAR_SPECIAL_RESULT
-	case 0, _07CA
-	case 1, _07D8
-	case 2, _07E6
-	case 3, _07F4
-	case 4, _0802
-	goto _0810
-	end
+	NPCMsg msg_0043_00160
+	ScrCmd_065 1, 1, 0, 1, VAR_SPECIAL_RESULT
+	ScrCmd_066 msg_0043_00161, 0
+	ScrCmd_066 msg_0043_00162, 1
+	ScrCmd_066 msg_0043_00163, 2
+	ScrCmd_066 msg_0043_00164, 3
+	ScrCmd_066 msg_0043_00165, 4
+	ScrCmd_066 msg_0043_00166, 5
+	ScrCmd_067
+	Switch VAR_SPECIAL_RESULT
+	Case 0, _07CA
+	Case 1, _07D8
+	Case 2, _07E6
+	Case 3, _07F4
+	Case 4, _0802
+	GoTo _0810
+	End
 _07CA:
-	setvar VAR_SPECIAL_x8005, 0
-	goto _081D
-	end
+	SetVar VAR_SPECIAL_x8005, 0
+	GoTo _081D
+	End
 _07D8:
-	setvar VAR_SPECIAL_x8005, 1
-	goto _081D
-	end
+	SetVar VAR_SPECIAL_x8005, 1
+	GoTo _081D
+	End
 _07E6:
-	setvar VAR_SPECIAL_x8005, 2
-	goto _081D
-	end
+	SetVar VAR_SPECIAL_x8005, 2
+	GoTo _081D
+	End
 _07F4:
-	setvar VAR_SPECIAL_x8005, 3
-	goto _081D
-	end
+	SetVar VAR_SPECIAL_x8005, 3
+	GoTo _081D
+	End
 _0802:
-	setvar VAR_SPECIAL_x8005, 4
-	goto _081D
-	end
+	SetVar VAR_SPECIAL_x8005, 4
+	GoTo _081D
+	End
 _0810:
-	npc_msg msg_0043_00167
-	wait_button_or_walk_away
-	goto _0A9C
-	end
+	NPCMsg msg_0043_00167
+	WaitButton
+	GoTo _0A9C
+	End
 _081D:
-	npc_msg msg_0043_00175
-	npc_msg msg_0043_00176
-	closemsg
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	setvar VAR_SPECIAL_RESULT, 0
+	NPCMsg msg_0043_00175
+	NPCMsg msg_0043_00176
+	CloseMsg
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	SetVar VAR_SPECIAL_RESULT, 0
 _0837:
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _084F
-	get_move_selection 0, VAR_SPECIAL_RESULT
-	goto _0837
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _084F
+	GetMoveSelection 0, VAR_SPECIAL_RESULT
+	GoTo _0837
 
 _084F:
-	restore_overworld
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
-	compare VAR_TEMP_x4002, 255
-	goto_if_eq _0810
-	goto _0339
-	end
+	RestoreOverworld
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
+	Compare VAR_TEMP_x4002, 255
+	GoToIfEq _0810
+	GoTo _0339
+	End
 _0872:
-	npc_msg msg_0043_00117
+	NPCMsg msg_0043_00117
 _0875:
-	scrcmd_065 1, 1, 0, 1, VAR_SPECIAL_RESULT
-	scrcmd_066 msg_0043_00121, 0
-	scrcmd_066 msg_0043_00118, 1
-	scrcmd_066 msg_0043_00119, 2
-	scrcmd_066 msg_0043_00120, 3
-	scrcmd_066 msg_0043_00122, 4
-	scrcmd_067
-	switch VAR_SPECIAL_RESULT
-	case 0, _0A7E
-	case 1, _08D8
-	case 2, _0953
-	case 3, _09EA
-	goto _05AF
-	end
+	ScrCmd_065 1, 1, 0, 1, VAR_SPECIAL_RESULT
+	ScrCmd_066 msg_0043_00121, 0
+	ScrCmd_066 msg_0043_00118, 1
+	ScrCmd_066 msg_0043_00119, 2
+	ScrCmd_066 msg_0043_00120, 3
+	ScrCmd_066 msg_0043_00122, 4
+	ScrCmd_067
+	Switch VAR_SPECIAL_RESULT
+	Case 0, _0A7E
+	Case 1, _08D8
+	Case 2, _0953
+	Case 3, _09EA
+	GoTo _05AF
+	End
 _08D5:
-	npc_msg msg_0043_00117
+	NPCMsg msg_0043_00117
 _08D8:
-	scrcmd_065 1, 1, 0, 1, VAR_SPECIAL_RESULT
-	scrcmd_066 msg_0043_00125, 0
-	scrcmd_066 msg_0043_00126, 1
-	scrcmd_066 msg_0043_00127, 2
-	scrcmd_066 msg_0043_00129, 3
-	scrcmd_067
-	switch VAR_SPECIAL_RESULT
-	case 0, _0927
-	case 1, _0932
-	case 2, _093D
-	goto _0948
-	end
+	ScrCmd_065 1, 1, 0, 1, VAR_SPECIAL_RESULT
+	ScrCmd_066 msg_0043_00125, 0
+	ScrCmd_066 msg_0043_00126, 1
+	ScrCmd_066 msg_0043_00127, 2
+	ScrCmd_066 msg_0043_00129, 3
+	ScrCmd_067
+	Switch VAR_SPECIAL_RESULT
+	Case 0, _0927
+	Case 1, _0932
+	Case 2, _093D
+	GoTo _0948
+	End
 _0927:
-	npc_msg msg_0043_00130
-	goto _08D5
-	end
+	NPCMsg msg_0043_00130
+	GoTo _08D5
+	End
 _0932:
-	npc_msg msg_0043_00131
-	goto _08D5
-	end
+	NPCMsg msg_0043_00131
+	GoTo _08D5
+	End
 _093D:
-	npc_msg msg_0043_00132
-	goto _08D5
-	end
+	NPCMsg msg_0043_00132
+	GoTo _08D5
+	End
 _0948:
-	goto _0875
-	end
+	GoTo _0875
+	End
 _0950:
-	npc_msg msg_0043_00117
+	NPCMsg msg_0043_00117
 _0953:
-	scrcmd_065 1, 1, 0, 1, VAR_SPECIAL_RESULT
-	scrcmd_066 msg_0043_00135, 0
-	scrcmd_066 msg_0043_00136, 1
-	scrcmd_066 msg_0043_00137, 2
-	scrcmd_066 msg_0043_00138, 3
-	scrcmd_066 msg_0043_00139, 4
-	scrcmd_067
-	switch VAR_SPECIAL_RESULT
-	case 0, _09B3
-	case 1, _09BE
-	case 2, _09C9
-	case 3, _09D4
-	goto _09DF
-	end
+	ScrCmd_065 1, 1, 0, 1, VAR_SPECIAL_RESULT
+	ScrCmd_066 msg_0043_00135, 0
+	ScrCmd_066 msg_0043_00136, 1
+	ScrCmd_066 msg_0043_00137, 2
+	ScrCmd_066 msg_0043_00138, 3
+	ScrCmd_066 msg_0043_00139, 4
+	ScrCmd_067
+	Switch VAR_SPECIAL_RESULT
+	Case 0, _09B3
+	Case 1, _09BE
+	Case 2, _09C9
+	Case 3, _09D4
+	GoTo _09DF
+	End
 _09B3:
-	npc_msg msg_0043_00140
-	goto _0950
-	end
+	NPCMsg msg_0043_00140
+	GoTo _0950
+	End
 _09BE:
-	npc_msg msg_0043_00141
-	goto _0950
-	end
+	NPCMsg msg_0043_00141
+	GoTo _0950
+	End
 _09C9:
-	npc_msg msg_0043_00142
-	goto _0950
-	end
+	NPCMsg msg_0043_00142
+	GoTo _0950
+	End
 _09D4:
-	npc_msg msg_0043_00143
-	goto _0950
-	end
+	NPCMsg msg_0043_00143
+	GoTo _0950
+	End
 _09DF:
-	goto _0875
-	end
+	GoTo _0875
+	End
 _09E7:
-	npc_msg msg_0043_00117
+	NPCMsg msg_0043_00117
 _09EA:
-	scrcmd_065 1, 1, 0, 1, VAR_SPECIAL_RESULT
-	scrcmd_066 msg_0043_00145, 0
-	scrcmd_066 msg_0043_00146, 1
-	scrcmd_066 msg_0043_00147, 2
-	scrcmd_066 msg_0043_00148, 3
-	scrcmd_066 msg_0043_00149, 4
-	scrcmd_067
-	switch VAR_SPECIAL_RESULT
-	case 0, _0A4A
-	case 1, _0A55
-	case 2, _0A60
-	case 3, _0A6B
-	goto _0A76
-	end
+	ScrCmd_065 1, 1, 0, 1, VAR_SPECIAL_RESULT
+	ScrCmd_066 msg_0043_00145, 0
+	ScrCmd_066 msg_0043_00146, 1
+	ScrCmd_066 msg_0043_00147, 2
+	ScrCmd_066 msg_0043_00148, 3
+	ScrCmd_066 msg_0043_00149, 4
+	ScrCmd_067
+	Switch VAR_SPECIAL_RESULT
+	Case 0, _0A4A
+	Case 1, _0A55
+	Case 2, _0A60
+	Case 3, _0A6B
+	GoTo _0A76
+	End
 _0A4A:
-	npc_msg msg_0043_00150
-	goto _09E7
-	end
+	NPCMsg msg_0043_00150
+	GoTo _09E7
+	End
 _0A55:
-	npc_msg msg_0043_00151
-	goto _09E7
-	end
+	NPCMsg msg_0043_00151
+	GoTo _09E7
+	End
 _0A60:
-	npc_msg msg_0043_00152
-	goto _09E7
-	end
+	NPCMsg msg_0043_00152
+	GoTo _09E7
+	End
 _0A6B:
-	npc_msg msg_0043_00153
-	goto _09E7
-	end
+	NPCMsg msg_0043_00153
+	GoTo _09E7
+	End
 _0A76:
-	goto _0875
-	end
+	GoTo _0875
+	End
 _0A7E:
-	npc_msg msg_0043_00124
-	npc_msg msg_0043_00117
-	goto _0875
-	end
+	NPCMsg msg_0043_00124
+	NPCMsg msg_0043_00117
+	GoTo _0875
+	End
 _0A8C: ; unreferenced
-	npc_msg msg_0043_00123
-	goto _0A9C
-	end
+	NPCMsg msg_0043_00123
+	GoTo _0A9C
+	End
 _0A97:
-	npc_msg msg_0043_00116
-	wait_button_or_walk_away
+	NPCMsg msg_0043_00116
+	WaitButton
 _0A9C:
-	closemsg
-	releaseall
-	end
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_0166_012:
-	end
+	End
 	.balign 4, 0

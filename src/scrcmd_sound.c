@@ -1,10 +1,10 @@
+#include "field_bgm.h"
 #include "field_system.h"
 #include "sav_chatot.h"
 #include "scrcmd.h"
 #include "sound.h"
 #include "sound_02004A44.h"
 #include "unk_02005D10.h"
-#include "unk_02054E00.h"
 
 BOOL ScrNative_GetFadeTimer(ScriptContext *ctx);
 BOOL ScrNative_SEPlaying(ScriptContext *ctx);
@@ -32,14 +32,14 @@ BOOL ScrCmd_StopBGM(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_ResetBGM(ScriptContext *ctx) {
-    u16 seqno = GetMapMusic(ctx->fieldSystem, ctx->fieldSystem->location->mapId);
+    u16 seqno = FieldBGM_GetForMapHeader(ctx->fieldSystem, ctx->fieldSystem->location->mapId);
     PlayBGM(seqno);
     return FALSE;
 }
 
 BOOL ScrCmd_083(ScriptContext *ctx) {
     u16 seqno = ScriptReadHalfword(ctx);
-    FieldSystem_SetSavedMusicId(ctx->fieldSystem, seqno);
+    FieldBGM_SetOverride(ctx->fieldSystem, seqno);
     return FALSE;
 }
 

@@ -20,6 +20,7 @@
 #include "overlay_16.h"
 #include "render_window.h"
 #include "save_misc_data.h"
+#include "screen_fade.h"
 #include "sound_02004A44.h"
 #include "sprite.h"
 #include "sprite_system.h"
@@ -28,7 +29,6 @@
 #include "touchscreen.h"
 #include "unk_02005D10.h"
 #include "unk_0200B150.h"
-#include "unk_0200FA24.h"
 #include "unk_020210A0.h"
 #include "vram_transfer_manager.h"
 #include "yes_no_prompt.h"
@@ -118,14 +118,15 @@ static const TouchscreenListMenuTemplate sMenuTemplate = {
     31,
     84,
 };
-static const u16 ov17_02203D78[7] = {
-    resdat_00000030_bin,
-    resdat_00000031_bin,
-    resdat_00000029_bin,
-    resdat_00000028_bin,
-    0xFFFF,
-    0xFFFF,
-    resdat_00000079_bin,
+
+static const ResdatIdList ov17_02203D78 = {
+    .charRes = resdat_00000030_bin,
+    .plttRes = resdat_00000031_bin,
+    .cellRes = resdat_00000029_bin,
+    .animRes = resdat_00000028_bin,
+    .mcelRes = 0xFFFF,
+    .manmRes = 0xFFFF,
+    .headerId = resdat_00000079_bin,
 };
 static const GraphicsModes ov17_02203D88 = {
     GX_DISPMODE_GRAPHICS,
@@ -269,8 +270,8 @@ void ov17_02201BC0(void) {
 
     sub_0200FBF4(PM_LCD_TOP, RGB_BLACK);
     sub_0200FBF4(PM_LCD_BOTTOM, RGB_BLACK);
-    sub_0200FBDC(0);
-    sub_0200FBDC(1);
+    ResetVisibleHardwareWindows(PM_LCD_TOP);
+    ResetVisibleHardwareWindows(PM_LCD_BOTTOM);
 }
 
 BOOL BerryPotsApp_Initialize(OverlayManager *manager, int *state) {
@@ -405,7 +406,7 @@ static BOOL ov17_02201E3C(BerryPotsAppData *data) {
 static u32 ov17_02201E50(BerryPotsAppData *data) {
     switch (data->state70) {
     case 0:
-        BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 1, data->heapID);
+        BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_IN, FADE_TYPE_BRIGHTNESS_IN, RGB_BLACK, 6, 1, data->heapID);
         data->state70++;
         break;
     case 1:
@@ -423,7 +424,7 @@ static u32 ov17_02201E50(BerryPotsAppData *data) {
 static u32 ov17_02201EA8(BerryPotsAppData *data) {
     switch (data->state70) {
     case 0:
-        BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, data->heapID);
+        BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, RGB_BLACK, 6, 1, data->heapID);
         data->state70++;
         break;
     case 1:
@@ -719,7 +720,7 @@ static void ov17_022023B0(BerryPotsAppData *data) {
         }
 
         ov16_02201610(data->berryPots, data->unk7C, data->berryGrowthProperties, ItemIdToBerryId(data->args->itemId));
-        GameStats_Inc(data->stats, GAME_STAT_UNK5);
+        GameStats_Inc(data->stats, GAME_STAT_BERRIES_PLANTED);
         data->unk7B = 2;
     }
 
@@ -1042,7 +1043,7 @@ static void ov17_02202B98(BerryPotsAppData *data) {
     Sprite_Delete(unk->soilSpriteMaybe);
     unk->soilSpriteMaybe = NULL;
     Sprite_SetAnimationFrame(data->sprites[data->unk7C + 3], 2);
-    GameStats_AddScore(data->stats, SCORE_EVENT_0);
+    GameStats_AddScore(data->stats, SCORE_EVENT_BERRY_PICKED);
 }
 
 static void ov17_02202BF8(BerryPotsAppData *data) {
@@ -1198,7 +1199,7 @@ static void BerryPotsApp_SetupSpriteRendererAndGfxHandler(BerryPotsAppData *data
 
     data->spriteGfxHandler1 = SpriteManager_New(data->spriteRenderer);
     SpriteSystem_InitSprites(data->spriteRenderer, data->spriteGfxHandler1, 25);
-    sub_0200D2A4(data->spriteRenderer, data->spriteGfxHandler1, ov17_02203D78, 0, 0);
+    sub_0200D2A4(data->spriteRenderer, data->spriteGfxHandler1, &ov17_02203D78, 0, 0);
 
     data->itemIconNarc = NARC_New(NARC_itemtool_itemdata_item_icon, data->heapID);
 

@@ -2,8 +2,8 @@
 #define POKEHEARTGOLD_FRONTIER_H
 
 #include "bag_cursor.h"
-#include "overlay_manager.h"
 #include "field_system.h"
+#include "overlay_manager.h"
 
 typedef struct FrontierLaunchArgs {
     void *unk0;

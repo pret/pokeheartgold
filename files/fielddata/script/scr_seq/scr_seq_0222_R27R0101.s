@@ -5,40 +5,40 @@
 
 	.rodata
 
-	scrdef scr_seq_R27R0101_000
-	scrdef_end
+	ScrDef scr_seq_R27R0101_000
+	ScrDefEnd
 
 scr_seq_R27R0101_000:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	goto_if_set FLAG_GOT_TM37_FROM_ROUTE_27_WOMAN, _006A
-	npc_msg msg_0370_R27R0101_00000
-	get_party_lead_alive VAR_TEMP_x4000
-	mon_get_friendship VAR_SPECIAL_RESULT, VAR_TEMP_x4000
-	compare VAR_SPECIAL_RESULT, 150
-	goto_if_ge _003E
-	npc_msg msg_0370_R27R0101_00003
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	GoToIfSet FLAG_GOT_TM37_FROM_ROUTE_27_WOMAN, _006A
+	NPCMsg msg_0370_R27R0101_00000
+	GetPartyLeadAlive VAR_TEMP_x4000
+	MonGetFriendship VAR_SPECIAL_RESULT, VAR_TEMP_x4000
+	Compare VAR_SPECIAL_RESULT, 150
+	GoToIfGe _003E
+	NPCMsg msg_0370_R27R0101_00003
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _003E:
-	npc_msg msg_0370_R27R0101_00001
-	goto_if_no_item_space ITEM_TM37, 1, _0075
-	callstd std_give_item_verbose
-	setflag FLAG_GOT_TM37_FROM_ROUTE_27_WOMAN
+	NPCMsg msg_0370_R27R0101_00001
+	GoToIfNoItemSpace ITEM_TM37, 1, _0075
+	CallStd std_give_item_verbose
+	SetFlag FLAG_GOT_TM37_FROM_ROUTE_27_WOMAN
 _006A:
-	npc_msg msg_0370_R27R0101_00002
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0370_R27R0101_00002
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0075:
-	callstd std_bag_is_full
-	closemsg
-	releaseall
-	end
+	CallStd std_bag_is_full
+	CloseMsg
+	ReleaseAll
+	End
 	.balign 4, 0

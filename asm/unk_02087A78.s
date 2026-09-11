@@ -437,17 +437,17 @@ _02087D88:
 	mov r0, #0
 	bl sub_02005B68
 	mov r0, #0
-	bl sub_02004AD8
+	bl Sound_SetScene
 	ldr r0, [r5, #0x28]
 	ldr r1, [r0, #0x20]
 	ldr r1, [r1]
-	bl FieldSystem_GetOverriddenMusicId
+	bl FieldBGM_GetEffective
 	add r4, r0, #0
 	ldr r0, [r5, #0x28]
 	ldr r1, [r0, #0x20]
 	ldr r1, [r1]
-	bl GetMapMusic
-	bl sub_02004AC8
+	bl FieldBGM_GetForMapHeader
+	bl Sound_SetFieldBGM
 	mov r0, #0
 	add r1, r4, #0
 	bl sub_02055198

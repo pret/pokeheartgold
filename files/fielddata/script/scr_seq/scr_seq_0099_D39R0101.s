@@ -5,85 +5,85 @@
 
 	.rodata
 
-	scrdef scr_seq_D39R0101_000
-	scrdef scr_seq_D39R0101_001
-	scrdef scr_seq_D39R0101_002
-	scrdef scr_seq_D39R0101_003
-	scrdef scr_seq_D39R0101_004
-	scrdef_end
+	ScrDef scr_seq_D39R0101_000
+	ScrDef scr_seq_D39R0101_001
+	ScrDef scr_seq_D39R0101_002
+	ScrDef scr_seq_D39R0101_003
+	ScrDef scr_seq_D39R0101_004
+	ScrDefEnd
 
 scr_seq_D39R0101_001:
-	goto_if_unset FLAG_UNK_189, _0027
-	clearflag FLAG_UNK_189
-	end
+	GoToIfUnset FLAG_UNK_189, _0027
+	ClearFlag FLAG_UNK_189
+	End
 
 _0027:
-	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 5
-	goto_if_eq _004B
-	compare VAR_TEMP_x4000, 6
-	goto_if_eq _004B
-	setflag FLAG_HIDE_CAMERON
-	end
+	GetWeekday VAR_TEMP_x4000
+	Compare VAR_TEMP_x4000, 5
+	GoToIfEq _004B
+	Compare VAR_TEMP_x4000, 6
+	GoToIfEq _004B
+	SetFlag FLAG_HIDE_CAMERON
+	End
 
 _004B:
-	clearflag FLAG_HIDE_CAMERON
-	end
+	ClearFlag FLAG_HIDE_CAMERON
+	End
 
 scr_seq_D39R0101_000:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	compare VAR_UNK_4100, 1
-	goto_if_eq _008A
-	goto_if_set FLAG_HIDE_ITEMBALL_D39R0101_HM07, _0084
-	npc_msg msg_0122_D39R0101_00001
-	closemsg
-	apply_movement obj_D39R0101_gsmiddleman1, _0114
-	wait_movement
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	Compare VAR_UNK_4100, 1
+	GoToIfEq _008A
+	GoToIfSet FLAG_HIDE_ITEMBALL_D39R0101_HM07, _0084
+	NPCMsg msg_0122_D39R0101_00001
+	CloseMsg
+	ApplyMovement obj_D39R0101_gsmiddleman1, _0114
+	WaitMovement
+	ReleaseAll
+	End
 
 _0084:
-	setvar VAR_UNK_4100, 1
+	SetVar VAR_UNK_4100, 1
 _008A:
-	npc_msg msg_0122_D39R0101_00002
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0122_D39R0101_00002
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_D39R0101_004:
-	scrcmd_609
-	lockall
-	goto_if_set FLAG_HIDE_ITEMBALL_D39R0101_HM07, _00E5
-	apply_movement obj_D39R0101_gsmiddleman1, _0108
-	apply_movement obj_player, _011C
-	wait_movement
-	npc_msg msg_0122_D39R0101_00001
-	closemsg
-	toggle_following_pokemon_movement 0
-	wait_following_pokemon_movement
-	following_pokemon_movement 55
-	apply_movement obj_D39R0101_gsmiddleman1, _0114
-	apply_movement obj_player, _0128
-	wait_movement
-	wait_following_pokemon_movement
-	toggle_following_pokemon_movement 1
-	following_pokemon_movement 48
-	releaseall
-	end
+	ScrCmd_609
+	LockAll
+	GoToIfSet FLAG_HIDE_ITEMBALL_D39R0101_HM07, _00E5
+	ApplyMovement obj_D39R0101_gsmiddleman1, _0108
+	ApplyMovement obj_player, _011C
+	WaitMovement
+	NPCMsg msg_0122_D39R0101_00001
+	CloseMsg
+	ToggleFollowingPokemonMovement 0
+	WaitFollowingPokemonMovement
+	FollowingPokemonMovement 55
+	ApplyMovement obj_D39R0101_gsmiddleman1, _0114
+	ApplyMovement obj_player, _0128
+	WaitMovement
+	WaitFollowingPokemonMovement
+	ToggleFollowingPokemonMovement 1
+	FollowingPokemonMovement 48
+	ReleaseAll
+	End
 
 _00E5:
-	apply_movement obj_D39R0101_gsmiddleman1, _0108
-	apply_movement obj_player, _011C
-	wait_movement
-	npc_msg msg_0122_D39R0101_00002
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	setvar VAR_UNK_4100, 1
-	end
+	ApplyMovement obj_D39R0101_gsmiddleman1, _0108
+	ApplyMovement obj_player, _011C
+	WaitMovement
+	NPCMsg msg_0122_D39R0101_00002
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	SetVar VAR_UNK_4100, 1
+	End
 
 	.balign 4, 0
 _0108:
@@ -108,73 +108,73 @@ _0128:
 	EndMovement
 
 scr_seq_D39R0101_002:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	callstd std_play_kimono_girl_music
-	get_player_facing VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_ne _0157
-	goto _0169
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	CallStd std_play_kimono_girl_music
+	GetPlayerFacing VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfNe _0157
+	GoTo _0169
 
 _0151:
-	goto _0157
+	GoTo _0157
 
 _0157:
-	buffer_players_name 0
-	npc_msg msg_0122_D39R0101_00003
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	callstd std_fade_end_kimono_girl_music
-	end
+	BufferPlayersName 0
+	NPCMsg msg_0122_D39R0101_00003
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	CallStd std_fade_end_kimono_girl_music
+	End
 
 _0169:
-	buffer_players_name 0
-	npc_msg msg_0122_D39R0101_00004
-	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_RESULT
-	touchscreen_menu_show
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0193
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _01F3
-	end
+	BufferPlayersName 0
+	NPCMsg msg_0122_D39R0101_00004
+	TouchscreenMenuHide
+	GetMenuChoice VAR_SPECIAL_RESULT
+	TouchscreenMenuShow
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0193
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _01F3
+	End
 
 _0193:
-	play_se SEQ_SE_DP_WALL_HIT
-	npc_msg msg_0122_D39R0101_00005
-	closemsg
-	get_player_coords VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
-	scrcmd_102 VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
-	apply_movement obj_D39R0101_dancer, _021C
-	apply_movement 241, _0244
-	wait_movement
-	npc_msg msg_0122_D39R0101_00007
-	closemsg
-	apply_movement obj_D39R0101_dancer, _023C
-	wait_movement
-	hide_person obj_D39R0101_dancer
-	play_se SEQ_SE_DP_KAIDAN2
-	wait_se SEQ_SE_DP_KAIDAN2
-	callstd std_fade_end_kimono_girl_music
-	setflag FLAG_UNK_239
-	setvar VAR_UNK_40E8, 1
-	apply_movement 241, _024C
-	wait_movement
-	scrcmd_103
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_WALL_HIT
+	NPCMsg msg_0122_D39R0101_00005
+	CloseMsg
+	GetPlayerCoords VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
+	ScrCmd_102 VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
+	ApplyMovement obj_D39R0101_dancer, _021C
+	ApplyMovement 241, _0244
+	WaitMovement
+	NPCMsg msg_0122_D39R0101_00007
+	CloseMsg
+	ApplyMovement obj_D39R0101_dancer, _023C
+	WaitMovement
+	HidePerson obj_D39R0101_dancer
+	PlaySE SEQ_SE_DP_KAIDAN2
+	WaitSE SEQ_SE_DP_KAIDAN2
+	CallStd std_fade_end_kimono_girl_music
+	SetFlag FLAG_UNK_239
+	SetVar VAR_UNK_40E8, 1
+	ApplyMovement 241, _024C
+	WaitMovement
+	ScrCmd_103
+	ReleaseAll
+	End
 
 _01F3:
-	npc_msg msg_0122_D39R0101_00006
-	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_RESULT
-	touchscreen_menu_show
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0193
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _01F3
-	end
+	NPCMsg msg_0122_D39R0101_00006
+	TouchscreenMenuHide
+	GetMenuChoice VAR_SPECIAL_RESULT
+	TouchscreenMenuShow
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0193
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _01F3
+	End
 
 	.balign 4, 0
 _021C:
@@ -208,89 +208,89 @@ _0254:
 	EndMovement
 
 scr_seq_D39R0101_003:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 0
-	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_RESULT
-	touchscreen_menu_show
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _0384
-	photo_album_is_full VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _0398
-	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 1
-	closemsg
-	toggle_following_pokemon_movement 0
-	wait_following_pokemon_movement
-	following_pokemon_movement 55
-	get_player_facing VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_ne _02D5
-	apply_movement obj_player, _03AC
-	apply_movement obj_D39R0101_gsmiddleman1_2, _03F8
-	goto _0323
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	GetStdMsgNaix 2, VAR_SPECIAL_RESULT
+	MsgBoxExtern VAR_SPECIAL_RESULT, 0
+	TouchscreenMenuHide
+	GetMenuChoice VAR_SPECIAL_RESULT
+	TouchscreenMenuShow
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _0384
+	PhotoAlbumIsFull VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _0398
+	GetStdMsgNaix 2, VAR_SPECIAL_RESULT
+	MsgBoxExtern VAR_SPECIAL_RESULT, 1
+	CloseMsg
+	ToggleFollowingPokemonMovement 0
+	WaitFollowingPokemonMovement
+	FollowingPokemonMovement 55
+	GetPlayerFacing VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfNe _02D5
+	ApplyMovement obj_player, _03AC
+	ApplyMovement obj_D39R0101_gsmiddleman1_2, _03F8
+	GoTo _0323
 
 _02D5:
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_ne _02F0
-	apply_movement obj_player, _03C4
-	goto _0323
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfNe _02F0
+	ApplyMovement obj_player, _03C4
+	GoTo _0323
 
 _02F0:
-	compare VAR_SPECIAL_RESULT, 3
-	goto_if_ne _0313
-	apply_movement obj_player, _03E4
-	apply_movement obj_D39R0101_gsmiddleman1_2, _03F8
-	goto _0323
+	Compare VAR_SPECIAL_RESULT, 3
+	GoToIfNe _0313
+	ApplyMovement obj_player, _03E4
+	ApplyMovement obj_D39R0101_gsmiddleman1_2, _03F8
+	GoTo _0323
 
 _0313:
-	apply_movement obj_player, _03D0
-	apply_movement obj_D39R0101_gsmiddleman1_2, _03F8
+	ApplyMovement obj_player, _03D0
+	ApplyMovement obj_D39R0101_gsmiddleman1_2, _03F8
 _0323:
-	wait_movement
-	wait_following_pokemon_movement
-	toggle_following_pokemon_movement 1
-	following_pokemon_movement 48
-	scrcmd_729 VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_ne _034A
-	apply_movement obj_partner_poke, _0404
-	wait_movement
+	WaitMovement
+	WaitFollowingPokemonMovement
+	ToggleFollowingPokemonMovement 1
+	FollowingPokemonMovement 48
+	ScrCmd_729 VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfNe _034A
+	ApplyMovement obj_partner_poke, _0404
+	WaitMovement
 _034A:
-	setflag FLAG_UNK_189
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	cameron_photo 43
-	lockall
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
-	clearflag FLAG_UNK_189
-	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 2
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	SetFlag FLAG_UNK_189
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	CameronPhoto 43
+	LockAll
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
+	ClearFlag FLAG_UNK_189
+	GetStdMsgNaix 2, VAR_SPECIAL_RESULT
+	MsgBoxExtern VAR_SPECIAL_RESULT, 2
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0384:
-	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 5
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	GetStdMsgNaix 2, VAR_SPECIAL_RESULT
+	MsgBoxExtern VAR_SPECIAL_RESULT, 5
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0398:
-	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 3
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	GetStdMsgNaix 2, VAR_SPECIAL_RESULT
+	MsgBoxExtern VAR_SPECIAL_RESULT, 3
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 	.balign 4, 0
 _03AC:

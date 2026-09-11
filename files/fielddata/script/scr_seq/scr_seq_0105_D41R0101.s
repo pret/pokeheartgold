@@ -5,111 +5,111 @@
 
 	.rodata
 
-	scrdef scr_seq_D41R0101_000
-	scrdef scr_seq_D41R0101_001
-	scrdef_end
+	ScrDef scr_seq_D41R0101_000
+	ScrDef scr_seq_D41R0101_001
+	ScrDefEnd
 
 scr_seq_D41R0101_001:
-	goto_if_unset FLAG_UNK_189, _001B
-	clearflag FLAG_UNK_189
-	end
+	GoToIfUnset FLAG_UNK_189, _001B
+	ClearFlag FLAG_UNK_189
+	End
 
 _001B:
-	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 4
-	goto_if_ne _0036
-	clearflag FLAG_HIDE_CAMERON
-	goto _003A
+	GetWeekday VAR_TEMP_x4000
+	Compare VAR_TEMP_x4000, 4
+	GoToIfNe _0036
+	ClearFlag FLAG_HIDE_CAMERON
+	GoTo _003A
 
 _0036:
-	setflag FLAG_HIDE_CAMERON
+	SetFlag FLAG_HIDE_CAMERON
 _003A:
-	end
+	End
 
 scr_seq_D41R0101_000:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 0
-	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_RESULT
-	touchscreen_menu_show
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _0164
-	photo_album_is_full VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _0178
-	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 1
-	closemsg
-	toggle_following_pokemon_movement 0
-	wait_following_pokemon_movement
-	following_pokemon_movement 55
-	get_player_facing VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_ne _00B5
-	apply_movement obj_player, _018C
-	apply_movement obj_D41R0101_gsmiddleman1, _01D8
-	goto _0103
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	GetStdMsgNaix 2, VAR_SPECIAL_RESULT
+	MsgBoxExtern VAR_SPECIAL_RESULT, 0
+	TouchscreenMenuHide
+	GetMenuChoice VAR_SPECIAL_RESULT
+	TouchscreenMenuShow
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _0164
+	PhotoAlbumIsFull VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _0178
+	GetStdMsgNaix 2, VAR_SPECIAL_RESULT
+	MsgBoxExtern VAR_SPECIAL_RESULT, 1
+	CloseMsg
+	ToggleFollowingPokemonMovement 0
+	WaitFollowingPokemonMovement
+	FollowingPokemonMovement 55
+	GetPlayerFacing VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfNe _00B5
+	ApplyMovement obj_player, _018C
+	ApplyMovement obj_D41R0101_gsmiddleman1, _01D8
+	GoTo _0103
 
 _00B5:
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_ne _00D0
-	apply_movement obj_player, _01A4
-	goto _0103
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfNe _00D0
+	ApplyMovement obj_player, _01A4
+	GoTo _0103
 
 _00D0:
-	compare VAR_SPECIAL_RESULT, 3
-	goto_if_ne _00F3
-	apply_movement obj_player, _01C4
-	apply_movement obj_D41R0101_gsmiddleman1, _01D8
-	goto _0103
+	Compare VAR_SPECIAL_RESULT, 3
+	GoToIfNe _00F3
+	ApplyMovement obj_player, _01C4
+	ApplyMovement obj_D41R0101_gsmiddleman1, _01D8
+	GoTo _0103
 
 _00F3:
-	apply_movement obj_player, _01B0
-	apply_movement obj_D41R0101_gsmiddleman1, _01D8
+	ApplyMovement obj_player, _01B0
+	ApplyMovement obj_D41R0101_gsmiddleman1, _01D8
 _0103:
-	wait_movement
-	wait_following_pokemon_movement
-	toggle_following_pokemon_movement 1
-	following_pokemon_movement 48
-	scrcmd_729 VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_ne _012A
-	apply_movement obj_partner_poke, _01E4
-	wait_movement
+	WaitMovement
+	WaitFollowingPokemonMovement
+	ToggleFollowingPokemonMovement 1
+	FollowingPokemonMovement 48
+	ScrCmd_729 VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfNe _012A
+	ApplyMovement obj_partner_poke, _01E4
+	WaitMovement
 _012A:
-	setflag FLAG_UNK_189
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	cameron_photo 78
-	lockall
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
-	clearflag FLAG_UNK_189
-	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 2
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	SetFlag FLAG_UNK_189
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	CameronPhoto 78
+	LockAll
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
+	ClearFlag FLAG_UNK_189
+	GetStdMsgNaix 2, VAR_SPECIAL_RESULT
+	MsgBoxExtern VAR_SPECIAL_RESULT, 2
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0164:
-	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 5
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	GetStdMsgNaix 2, VAR_SPECIAL_RESULT
+	MsgBoxExtern VAR_SPECIAL_RESULT, 5
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0178:
-	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 3
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	GetStdMsgNaix 2, VAR_SPECIAL_RESULT
+	MsgBoxExtern VAR_SPECIAL_RESULT, 3
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 	.balign 4, 0
 _018C:

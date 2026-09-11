@@ -2,7 +2,7 @@
 
 #include "brightness.h"
 #include "pokegear_apps.h"
-#include "unk_0200FA24.h"
+#include "screen_fade.h"
 
 static void PokegearConfigure_InitInternal(PokegearConfigureAppData *configureApp);
 static void PokegearConfigure_ExitInternal(PokegearConfigureAppData *configureApp);
@@ -158,7 +158,7 @@ static int PokegearConfigure_MainTask_SwapSkins(PokegearConfigureAppData *config
 static int PokegearConfigure_MainTask_FadeIn(PokegearConfigureAppData *configureApp) {
     switch (configureApp->state) {
     case 0:
-        BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 1, configureApp->heapId);
+        BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_IN, FADE_TYPE_BRIGHTNESS_IN, RGB_BLACK, 6, 1, configureApp->heapId);
         for (int i = 0; i < 8; ++i) {
             ToggleBgLayer(i, TRUE);
         }
@@ -185,7 +185,7 @@ static int PokegearConfigure_MainTask_FadeIn(PokegearConfigureAppData *configure
 static int PokegearConfigure_MainTask_FadeOut(PokegearConfigureAppData *configureApp) {
     switch (configureApp->state) {
     case 0:
-        BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, configureApp->heapId);
+        BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, RGB_BLACK, 6, 1, configureApp->heapId);
         ++configureApp->state;
         break;
     case 1:

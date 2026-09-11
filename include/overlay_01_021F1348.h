@@ -6,6 +6,18 @@
 #include "task.h"
 #include "unk_020689C8.h"
 
+typedef struct FieldEffectManager {
+    u8 unk0[0x24];
+} FieldEffectManager;
+
+// (field_effect_manager?)
+FieldEffectManager *FieldEffectManager_New(FieldSystem *fieldSystem, u32 rendererCount, enum HeapID heapID);
+void FieldEffectManager_InitAnimManagerList(FieldEffectManager *fieldEffectManager, u32 animManagerCount);
+void ov01_021F1390(FieldEffectManager *fieldEffectManager, enum HeapID heapID, int, int, int, int, int, int, int);
+void FieldEffectManager_InitRenderers(FieldEffectManager *fieldEffectManager, const u32 *arg1);
+void FieldEffectManager_Render(FieldEffectManager *fieldEffectManager);
+void FieldEffectManager_Free(FieldEffectManager *fieldEffectManager);
+
 typedef struct {
     u8 unk0[0xc];
     NNSG3dResMdl *unkC;
@@ -51,7 +63,7 @@ FieldSystem *ov01_021F146C(LocalMapObject *mapObject);
 TaskManager *ov01_021F1468(FieldSystem *fieldSystem);
 UnkOv01_021FFECC *ov01_021F1450(FieldSystem *fieldSystem, int a1);
 void ov01_021F1620(FieldSystem *fieldSystem, const UnkOv01_02209280 *a1, VecFx32 *a2, int a3, UnkOv01_021FFF5C *a4, int a5);
-void ov01_021F1448(UnkOv01_021FFECC *a0);
+void ov01_021F1448(void *a0); // UnkOv01_021FFECC or NNSG3dResFileHeader?
 void ov01_021F19F4(void *a0, UnkOv01_021FFECC_sub *a1, int a2, int a3, int a4);
 void ov01_021F1640(int a0);
 

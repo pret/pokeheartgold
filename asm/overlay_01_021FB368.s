@@ -50,8 +50,8 @@ _021FB39C:
 	.balign 4, 0
 	thumb_func_end ov01_021FB368
 
-	thumb_func_start ov01_021FB3A4
-ov01_021FB3A4: ; 0x021FB3A4
+	thumb_func_start DynamicTerrainHeightManager_New
+DynamicTerrainHeightManager_New: ; 0x021FB3A4
 	push {r4, r5, r6, lr}
 	add r6, r1, #0
 	add r5, r0, #0
@@ -84,7 +84,7 @@ _021FB3CC:
 _021FB3E0:
 	add r0, r4, #0
 	pop {r4, r5, r6, pc}
-	thumb_func_end ov01_021FB3A4
+	thumb_func_end DynamicTerrainHeightManager_New
 
 	thumb_func_start ov01_021FB3E4
 ov01_021FB3E4: ; 0x021FB3E4
@@ -116,8 +116,8 @@ ov01_021FB3E4: ; 0x021FB3E4
 	bx lr
 	thumb_func_end ov01_021FB3E4
 
-	thumb_func_start ov01_021FB418
-ov01_021FB418: ; 0x021FB418
+	thumb_func_start DynamicTerrainHeightManager_Free
+DynamicTerrainHeightManager_Free: ; 0x021FB418
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #4]
@@ -126,7 +126,7 @@ ov01_021FB418: ; 0x021FB418
 	bl Heap_Free
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end ov01_021FB418
+	thumb_func_end DynamicTerrainHeightManager_Free
 
 	thumb_func_start ov01_021FB42C
 ov01_021FB42C: ; 0x021FB42C

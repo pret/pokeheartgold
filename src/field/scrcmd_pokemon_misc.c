@@ -4,15 +4,16 @@
 #include "constants/map_sections.h"
 #include "constants/moves.h"
 
+#include "field/field_control.h"
 #include "files/msgdata/msg.naix"
 #include "files/msgdata/msg/msg_0066_D23R0102.h"
 #include "files/msgdata/msg/msg_0096_D31R0201.h"
 #include "overlay_2/overlay_02_02251E74.h"
 #include "overlay_2/overlay_02_gear_phone.h"
+#include "pokeathlon/pokeathlon_save.h"
 
 #include "bag.h"
 #include "bug_contest.h"
-#include "fieldmap.h"
 #include "follow_mon.h"
 #include "friend_group.h"
 #include "get_egg.h"
@@ -23,7 +24,6 @@
 #include "map_object.h"
 #include "map_section.h"
 #include "math_util.h"
-#include "overlay_01_021E6880.h"
 #include "overlay_01_021F72DC.h"
 #include "overlay_01_021F944C.h"
 #include "overlay_02.h"
@@ -33,15 +33,14 @@
 #include "pokedex.h"
 #include "save_wifi_history.h"
 #include "scrcmd.h"
+#include "screen_fade.h"
+#include "script_manager.h"
 #include "sound_02004A44.h"
 #include "sys_vars.h"
 #include "system.h"
 #include "unk_02005D10.h"
-#include "unk_0200FA24.h"
 #include "unk_02023694.h"
 #include "unk_02030A98.h"
-#include "unk_02031904.h"
-#include "unk_02031AF0.h"
 #include "unk_02031B0C.h"
 #include "unk_02037C94.h"
 #include "unk_0205BFF0.h"
@@ -76,7 +75,7 @@ typedef struct UnkStructScr_648 {
     struct ListMenuTemplate listMenuTemplate;
     struct ListMenu *listMenu_23C;
     u32 unk_240;
-    LISTMENUITEM items[120];
+    ListMenuItem items[120];
     u16 unk_604[120];
     u16 unk_6F4;
 } SCR_648_STRUCT;
@@ -291,7 +290,7 @@ static void ov01_02200F54(SCR_648_STRUCT *unkPtr) {
     unkPtr->listMenuTemplate.scrollMultiple = 1;
     unkPtr->listMenuTemplate.fontId = 0;
     unkPtr->listMenuTemplate.cursorKind = 0;
-    unkPtr->listMenuTemplate.unk_1C = (u32)unkPtr;
+    unkPtr->listMenuTemplate.data = unkPtr;
 }
 
 static void ov01_02201064(struct ListMenu *listMenu, s32 a1, u8 unused) {
@@ -304,7 +303,7 @@ static void ov01_02201064(struct ListMenu *listMenu, s32 a1, u8 unused) {
 
 static void ov01_02201088(struct ListMenu *listMenu, s32 unused1, u8 unused2) {
     u16 cursorPos = 0, itemsAbove = 0;
-    SCR_648_STRUCT *unkPtr = (SCR_648_STRUCT *)ListMenuGetTemplateField(listMenu, LISTMENUATTR_UNK_1C);
+    SCR_648_STRUCT *unkPtr = (SCR_648_STRUCT *)ListMenuGetTemplateField(listMenu, LISTMENUATTR_DATA);
     ListMenuGetScrollAndRow(listMenu, &cursorPos, &itemsAbove);
     if (unkPtr->cursorPos != 0 && unkPtr->itemsAbove != 0) {
         *unkPtr->cursorPos = cursorPos;
@@ -761,7 +760,7 @@ BOOL ScrCmd_724(ScriptContext *ctx) {
     u8 unkVar = ScriptGetVar(ctx);
     u16 *unkPtrA = ScriptGetVarPointer(ctx);
 
-    Pokeathlon_UnkSubStruct_B00 *unkPtrB = sub_0203199C(Save_Pokeathlon_Get(ctx->fieldSystem->saveData));
+    Pokeathlon_UnkSubStruct_B00 *unkPtrB = PokeathlonSave_GetUnkB00(Save_Pokeathlon_Get(ctx->fieldSystem->saveData));
 
     if (unkVar <= 9) {
         *unkPtrA = ov01_02201B2C(unkPtrB->unk44[unkVar]);
@@ -808,7 +807,7 @@ BOOL ScrCmd_725(ScriptContext *ctx) {
     u8 unkA = ScriptReadByte(ctx);
     u32 unkB = ScriptGetVar(ctx);
 
-    Pokeathlon_UnkSubStruct_B00 *unkPtr = sub_020319F0(Save_Pokeathlon_Get(ctx->fieldSystem->saveData));
+    Pokeathlon_UnkSubStruct_B00 *unkPtr = PokeathlonSave_GetAgainUnkB00(Save_Pokeathlon_Get(ctx->fieldSystem->saveData));
 
     if (unkA == 0) {
         val = unkPtr->unk70 + unkB;
@@ -829,8 +828,8 @@ BOOL ScrCmd_725(ScriptContext *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_726(ScriptContext *ctx) {
-    ov01_021E7F00(ctx->fieldSystem, TRUE);
+BOOL ScrCmd_ProcessSoundplate(ScriptContext *ctx) {
+    FieldSystem_ProcessSoundplate(ctx->fieldSystem, TRUE);
     return FALSE;
 }
 
@@ -951,7 +950,7 @@ BOOL ScrCmd_CreatePokeathlonFriendshipRoomStatues(ScriptContext *ctx) {
     u16 species;
     FieldSystem *fieldSystem = ctx->fieldSystem;
 
-    SavePokeathlonFriendshipRecords *unkPtr = sub_02031B00(fieldSystem->saveData);
+    PokeathlonSave_FriendshipRecords *unkPtr = Save_Pokeathlon_FriendshipRecords_Get(fieldSystem->saveData);
 
     for (i = 0; i < 3; i++) {
         LocalMapObject *mapObj = MapObjectManager_GetFirstActiveObjectByID(fieldSystem->mapObjectManager, 0xf6 + i);

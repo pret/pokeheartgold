@@ -5,65 +5,65 @@
 
 	.rodata
 
-	scrdef scr_seq_T25PC0101_000
-	scrdef scr_seq_T25PC0101_001
-	scrdef scr_seq_T25PC0101_002
-	scrdef scr_seq_T25PC0101_003
-	scrdef_end
+	ScrDef scr_seq_T25PC0101_000
+	ScrDef scr_seq_T25PC0101_001
+	ScrDef scr_seq_T25PC0101_002
+	ScrDef scr_seq_T25PC0101_003
+	ScrDefEnd
 
 scr_seq_T25PC0101_000:
-	setvar VAR_SPECIAL_x8007, 0
-	callstd std_nurse_joy
-	end
+	SetVar VAR_SPECIAL_x8007, 0
+	CallStd std_nurse_joy
+	End
 
 scr_seq_T25PC0101_003:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	compare VAR_SCENE_ROCKET_TAKEOVER, 3
-	goto_if_ne _003C
-	npc_msg msg_0583_T25PC0101_00003
-	goto _003F
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	Compare VAR_SCENE_ROCKET_TAKEOVER, 3
+	GoToIfNe _003C
+	NPCMsg msg_0583_T25PC0101_00003
+	GoTo _003F
 
 _003C:
-	npc_msg msg_0583_T25PC0101_00002
+	NPCMsg msg_0583_T25PC0101_00002
 _003F:
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_T25PC0101_002:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	compare VAR_SCENE_ROCKET_TAKEOVER, 3
-	goto_if_ne _0065
-	npc_msg msg_0583_T25PC0101_00005
-	goto _0068
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	Compare VAR_SCENE_ROCKET_TAKEOVER, 3
+	GoToIfNe _0065
+	NPCMsg msg_0583_T25PC0101_00005
+	GoTo _0068
 
 _0065:
-	npc_msg msg_0583_T25PC0101_00004
+	NPCMsg msg_0583_T25PC0101_00004
 _0068:
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_T25PC0101_001:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	compare VAR_SCENE_ROCKET_TAKEOVER, 3
-	goto_if_ne _008E
-	npc_msg msg_0583_T25PC0101_00001
-	goto _0091
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	Compare VAR_SCENE_ROCKET_TAKEOVER, 3
+	GoToIfNe _008E
+	NPCMsg msg_0583_T25PC0101_00001
+	GoTo _0091
 
 _008E:
-	npc_msg msg_0583_T25PC0101_00000
+	NPCMsg msg_0583_T25PC0101_00000
 _0091:
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 	.balign 4, 0

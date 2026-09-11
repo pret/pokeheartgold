@@ -5,90 +5,90 @@
 
 	.rodata
 
-	scrdef scr_seq_0071_000
-	scrdef scr_seq_0071_001
-	scrdef scr_seq_0071_002
-	scrdef_end
+	ScrDef scr_seq_0071_000
+	ScrDef scr_seq_0071_001
+	ScrDef scr_seq_0071_002
+	ScrDefEnd
 
 scr_seq_0071_000:
-	end
+	End
 
 scr_seq_0071_001:
-	compare VAR_UNK_414E, 0
-	call_if_ne _001F
-	end
+	Compare VAR_UNK_414E, 0
+	CallIfNe _001F
+	End
 
 _001F:
-	make_object_visible obj_player
-	return
+	MakeObjectVisible obj_player
+	Return
 
 scr_seq_0071_002:
-	scrcmd_609
-	lockall
-	call _0090
-	random VAR_SPECIAL_RESULT, 4
-	switch VAR_SPECIAL_RESULT
-	case 1, _00F2
-	case 2, _010C
-	case 3, _0126
-	goto _00D8
+	ScrCmd_609
+	LockAll
+	Call _0090
+	Random VAR_SPECIAL_RESULT, 4
+	Switch VAR_SPECIAL_RESULT
+	Case 1, _00F2
+	Case 2, _010C
+	Case 3, _0126
+	GoTo _00D8
 
 _0068:
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	warp MAP_BATTLE_TOWER_UNUSED_3, 0, 7, 6, DIR_NORTH
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
-	releaseall
-	end
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	Warp MAP_BATTLE_TOWER_UNUSED_3, 0, 7, 6, DIR_NORTH
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
+	ReleaseAll
+	End
 
 _0090:
-	scrcmd_307 0, 0, 2, 2, 77
-	scrcmd_310 77
-	scrcmd_308 77
-	apply_movement 0, _0140
-	wait_movement
-	scrcmd_374 obj_player
-	apply_movement obj_player, _014C
-	wait_movement
-	scrcmd_311 77
-	scrcmd_308 77
-	scrcmd_309 77
-	return
+	ScrCmd_307 0, 0, 2, 2, 77
+	ScrCmd_310 77
+	ScrCmd_308 77
+	ApplyMovement 0, _0140
+	WaitMovement
+	ScrCmd_374 obj_player
+	ApplyMovement obj_player, _014C
+	WaitMovement
+	ScrCmd_311 77
+	ScrCmd_308 77
+	ScrCmd_309 77
+	Return
 
 _00C4:
-	apply_movement 0, _0154
-	apply_movement obj_player, _0164
-	wait_movement
-	return
+	ApplyMovement 0, _0154
+	ApplyMovement obj_player, _0164
+	WaitMovement
+	Return
 
 _00D8:
-	apply_movement 0, _0178
-	apply_movement obj_player, _0188
-	wait_movement
-	goto _0068
-	end
+	ApplyMovement 0, _0178
+	ApplyMovement obj_player, _0188
+	WaitMovement
+	GoTo _0068
+	End
 
 _00F2:
-	apply_movement 0, _019C
-	apply_movement obj_player, _01AC
-	wait_movement
-	goto _0068
-	end
+	ApplyMovement 0, _019C
+	ApplyMovement obj_player, _01AC
+	WaitMovement
+	GoTo _0068
+	End
 
 _010C:
-	apply_movement 0, _01C0
-	apply_movement obj_player, _01D0
-	wait_movement
-	goto _0068
-	end
+	ApplyMovement 0, _01C0
+	ApplyMovement obj_player, _01D0
+	WaitMovement
+	GoTo _0068
+	End
 
 _0126:
-	apply_movement 0, _01E4
-	apply_movement obj_player, _01F4
-	wait_movement
-	goto _0068
-	end
+	ApplyMovement 0, _01E4
+	ApplyMovement obj_player, _01F4
+	WaitMovement
+	GoTo _0068
+	End
 
 	.balign 4, 0
 _0140:

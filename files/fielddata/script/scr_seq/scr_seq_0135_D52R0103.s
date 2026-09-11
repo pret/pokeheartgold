@@ -5,61 +5,61 @@
 
 	.rodata
 
-	scrdef scr_seq_D52R0103_000
-	scrdef scr_seq_D52R0103_001
-	scrdef scr_seq_D52R0103_002
-	scrdef scr_seq_D52R0103_003
-	scrdef_end
+	ScrDef scr_seq_D52R0103_000
+	ScrDef scr_seq_D52R0103_001
+	ScrDef scr_seq_D52R0103_002
+	ScrDef scr_seq_D52R0103_003
+	ScrDefEnd
 
 scr_seq_D52R0103_002:
-	goto_if_set FLAG_ENGAGING_STATIC_POKEMON, _001F
-	end
+	GoToIfSet FLAG_ENGAGING_STATIC_POKEMON, _001F
+	End
 
 _001F:
-	setflag FLAG_HIDE_EMBEDDED_TOWER_RAYQUAZA
-	hide_person obj_D52R0103_tsure_poke_static_rayquaza
-	end
+	SetFlag FLAG_HIDE_EMBEDDED_TOWER_RAYQUAZA
+	HidePerson obj_D52R0103_tsure_poke_static_rayquaza
+	End
 
 scr_seq_D52R0103_003:
-	compare VAR_SCENE_EMBEDDED_TOWER, 7
-	goto_if_ge _003C
-	clearflag FLAG_HIDE_EMBEDDED_TOWER_RAYQUAZA
-	end
+	Compare VAR_SCENE_EMBEDDED_TOWER, 7
+	GoToIfGe _003C
+	ClearFlag FLAG_HIDE_EMBEDDED_TOWER_RAYQUAZA
+	End
 
 _003C:
-	end
+	End
 
 scr_seq_D52R0103_001:
-	scrcmd_609
-	lockall
-	toggle_following_pokemon_movement 0
-	wait_following_pokemon_movement
-	following_pokemon_movement 55
-	apply_movement obj_player, _00B4
-	wait_movement
-	wait_following_pokemon_movement
-	toggle_following_pokemon_movement 1
-	following_pokemon_movement 48
-	play_cry SPECIES_RAYQUAZA, 0
-	wait_cry
-	toggle_following_pokemon_movement 0
-	wait_following_pokemon_movement
-	following_pokemon_movement 55
-	apply_movement obj_player, _00B4
-	wait_movement
-	wait_following_pokemon_movement
-	toggle_following_pokemon_movement 1
-	following_pokemon_movement 48
-	release obj_D52R0103_tsure_poke_static_rayquaza
-	scrcmd_523 obj_D52R0103_tsure_poke_static_rayquaza, 8, 90, 3, 0
-	play_cry SPECIES_RAYQUAZA, 0
-	npc_msg msg_0150_D52R0103_00000
-	wait_cry
-	lock obj_D52R0103_tsure_poke_static_rayquaza
-	closemsg
-	setvar VAR_SCENE_EMBEDDED_TOWER, 6
-	releaseall
-	end
+	ScrCmd_609
+	LockAll
+	ToggleFollowingPokemonMovement 0
+	WaitFollowingPokemonMovement
+	FollowingPokemonMovement 55
+	ApplyMovement obj_player, _00B4
+	WaitMovement
+	WaitFollowingPokemonMovement
+	ToggleFollowingPokemonMovement 1
+	FollowingPokemonMovement 48
+	PlayCry SPECIES_RAYQUAZA, 0
+	WaitCry
+	ToggleFollowingPokemonMovement 0
+	WaitFollowingPokemonMovement
+	FollowingPokemonMovement 55
+	ApplyMovement obj_player, _00B4
+	WaitMovement
+	WaitFollowingPokemonMovement
+	ToggleFollowingPokemonMovement 1
+	FollowingPokemonMovement 48
+	Release obj_D52R0103_tsure_poke_static_rayquaza
+	ScrCmd_523 obj_D52R0103_tsure_poke_static_rayquaza, 8, 90, 3, 0
+	PlayCry SPECIES_RAYQUAZA, 0
+	NPCMsg msg_0150_D52R0103_00000
+	WaitCry
+	Lock obj_D52R0103_tsure_poke_static_rayquaza
+	CloseMsg
+	SetVar VAR_SCENE_EMBEDDED_TOWER, 6
+	ReleaseAll
+	End
 
 	.balign 4, 0
 _00B4:
@@ -68,42 +68,42 @@ _00B4:
 	EndMovement
 
 scr_seq_D52R0103_000:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	release obj_D52R0103_tsure_poke_static_rayquaza
-	scrcmd_523 obj_D52R0103_tsure_poke_static_rayquaza, 8, 90, 3, 0
-	play_cry SPECIES_RAYQUAZA, 0
-	npc_msg msg_0150_D52R0103_00000
-	wait_cry
-	closemsg
-	setflag FLAG_ENGAGING_STATIC_POKEMON
-	wild_battle SPECIES_RAYQUAZA, 50, 0
-	clearflag FLAG_ENGAGING_STATIC_POKEMON
-	check_battle_won VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0142
-	get_static_encounter_outcome VAR_TEMP_x4002
-	compare VAR_TEMP_x4002, 3
-	goto_if_eq _0123
-	compare VAR_TEMP_x4002, 4
-	goto_if_eq _0134
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	Release obj_D52R0103_tsure_poke_static_rayquaza
+	ScrCmd_523 obj_D52R0103_tsure_poke_static_rayquaza, 8, 90, 3, 0
+	PlayCry SPECIES_RAYQUAZA, 0
+	NPCMsg msg_0150_D52R0103_00000
+	WaitCry
+	CloseMsg
+	SetFlag FLAG_ENGAGING_STATIC_POKEMON
+	WildBattle SPECIES_RAYQUAZA, 50, 0
+	ClearFlag FLAG_ENGAGING_STATIC_POKEMON
+	CheckBattleWon VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0142
+	GetStaticEncounterOutcome VAR_TEMP_x4002
+	Compare VAR_TEMP_x4002, 3
+	GoToIfEq _0123
+	Compare VAR_TEMP_x4002, 4
+	GoToIfEq _0134
 _0123:
-	npc_msg msg_0150_D52R0103_00001
-	wait_button_or_walk_away
-	closemsg
-	setvar VAR_SCENE_EMBEDDED_TOWER, 9
-	releaseall
-	end
+	NPCMsg msg_0150_D52R0103_00001
+	WaitButton
+	CloseMsg
+	SetVar VAR_SCENE_EMBEDDED_TOWER, 9
+	ReleaseAll
+	End
 
 _0134:
-	setvar VAR_SCENE_EMBEDDED_TOWER, 7
-	setflag FLAG_CAUGHT_RAYQUAZA
-	releaseall
-	end
+	SetVar VAR_SCENE_EMBEDDED_TOWER, 7
+	SetFlag FLAG_CAUGHT_RAYQUAZA
+	ReleaseAll
+	End
 
 _0142:
-	white_out
-	releaseall
-	end
+	WhiteOut
+	ReleaseAll
+	End
 	.balign 4, 0

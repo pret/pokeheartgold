@@ -15,7 +15,7 @@
 .public GF_AssertFail
 .public MI_CpuFill8
 .public _s32_div_f
-.public ov01_021EABA8
-.public ov01_021EAC30
+.public FieldCamera_Create
+.public FieldCamera_Delete
 .public ov01_021EACBC
 .public ov01_021EAD8C

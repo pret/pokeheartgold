@@ -469,13 +469,13 @@ sub_020570C8: ; 0x020570C8
 	ldr r0, [r0]
 	ldr r0, [r0, #0x30]
 	ldr r0, [r0, #0x40]
-	bl PlayerAvatar_GetUnk10
+	bl PlayerAvatar_GetMoveState
 	add r4, r0, #0
 	ldr r0, _02057128 ; =_021D41C4
 	ldr r0, [r0]
 	ldr r0, [r0, #0x30]
 	ldr r0, [r0, #0x40]
-	bl PlayerAvatar_GetUnk14
+	bl PlayerAvatar_GetPlayerMoveState
 	add r5, r0, #0
 	cmp r4, #0
 	bne _02057112
@@ -2519,8 +2519,8 @@ _02057F9C:
 _02057FA0: .word _021D41C4
 	thumb_func_end sub_02057F80
 
-	thumb_func_start sub_02057FA4
-sub_02057FA4: ; 0x02057FA4
+	thumb_func_start CommPlayerManager_ForcePosition
+CommPlayerManager_ForcePosition: ; 0x02057FA4
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x10
 	ldr r0, _02058020 ; =_021D41C4
@@ -2582,7 +2582,7 @@ _0205801A:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _02058020: .word _021D41C4
-	thumb_func_end sub_02057FA4
+	thumb_func_end CommPlayerManager_ForcePosition
 
 	thumb_func_start sub_02058024
 sub_02058024: ; 0x02058024

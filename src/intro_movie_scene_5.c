@@ -4,9 +4,9 @@
 
 #include "gf_gfx_loader.h"
 #include "intro_movie_internal.h"
+#include "screen_fade.h"
 #include "system.h"
 #include "unk_0200B150.h"
-#include "unk_0200FA24.h"
 
 enum IntroScene5State {
     INTRO_SCENE5_WIPE_IN,
@@ -88,7 +88,7 @@ static BOOL IntroMovie_Scene5_Main(IntroMovieOverlayData *data, IntroMovieScene5
     u8 stepTimer = IntroMovie_GetSceneStepTimer(data);
     switch (IntroMovie_GetSceneStep(data)) {
     case INTRO_SCENE5_WIPE_IN:
-        BeginNormalPaletteFade(1, 9, 5, RGB_BLACK, 18, 1, HEAP_ID_INTRO_MOVIE);
+        BeginNormalPaletteFade(FADE_MAIN_THEN_SUB, FADE_TYPE_UNK_9, FADE_TYPE_UNK_5, RGB_BLACK, 18, 1, HEAP_ID_INTRO_MOVIE);
         IntroMovie_AdvanceSceneStep(data);
         break;
     case INTRO_SCENE5_WAIT_WIPE:
@@ -105,7 +105,7 @@ static BOOL IntroMovie_Scene5_Main(IntroMovieOverlayData *data, IntroMovieScene5
         break;
     case INTRO_SCENE5_WAIT_BG_SCROLL:
         if (stepTimer >= 20) {
-            BeginNormalPaletteFade(0, 0, 0, RGB_WHITE, 50, 1, HEAP_ID_INTRO_MOVIE);
+            BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, RGB_WHITE, 50, 1, HEAP_ID_INTRO_MOVIE);
             IntroMovie_AdvanceSceneStep(data);
         }
         break;

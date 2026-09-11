@@ -802,7 +802,7 @@ static BOOL PokegearMap_MapHasPhoneRematchOrGift(PokegearMapAppData *mapApp, int
     return FALSE;
 }
 
-static void ov101_021EAA0C(PokegearMapAppData *mapApp, BOOL a1, BOOL isKanto) {
+static void ov101_021EAA0C(PokegearMapAppData *mapApp, BOOL a1, int regionNo) {
     u32 mapNameY;
     u32 i;
     u32 tilemap174blockId;
@@ -820,7 +820,7 @@ static void ov101_021EAA0C(PokegearMapAppData *mapApp, BOOL a1, BOOL isKanto) {
     for (i = 0; i < 3; ++i) {
         FillWindowPixelBuffer(&mapApp->windows[i], 0);
     }
-    AddTextPrinterParameterizedWithColor(&mapApp->windows[0], 0, mapApp->regionNameStrings[isKanto], 2, 4, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+    AddTextPrinterParameterizedWithColor(&mapApp->windows[0], 0, mapApp->regionNameStrings[regionNo], 2, 4, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
     if (mapApp->type == PGMAP_TYPE_GEAR) {
         if (!ov101_021EA6C4(mapApp, selectedLoc)) {
             ov101_021EB38C(mapApp, 0, 2);

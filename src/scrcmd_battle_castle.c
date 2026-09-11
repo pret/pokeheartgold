@@ -5,7 +5,6 @@
 #include "assert.h"
 #include "bag.h"
 #include "field_system.h"
-#include "fieldmap.h"
 #include "frontier_data.h"
 #include "game_stats.h"
 #include "heap.h"
@@ -21,6 +20,7 @@
 #include "save_special_ribbons.h"
 #include "scrcmd.h"
 #include "script.h"
+#include "script_manager.h"
 #include "task.h"
 #include "unk_02030A98.h"
 #include "unk_02035900.h"
@@ -72,7 +72,7 @@ BOOL ScrCmd_637(ScriptContext *ctx) {
     void *unk1 = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
     switch (arg0) {
     case 0:
-        *result = sub_0204A5B0(arg1, ctx->fieldSystem->saveData, 0);
+        *result = PartyIsValidForFrontier(arg1, ctx->fieldSystem->saveData, 0);
         break;
     case 1: // Unused
         if (arg1 == 3) {

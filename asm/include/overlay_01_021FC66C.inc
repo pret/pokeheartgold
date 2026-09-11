@@ -26,10 +26,10 @@
 .public FieldSystem_StartForcedWildBattle
 .public BattleSetup_Delete
 .public GetFirstAliveMonInParty_CrashIfNone
-.public sub_0205B514
-.public sub_0205B564
-.public sub_0205B5B4
-.public IsPrintFinished
+.public DialogBox_AddWindowToLayer3
+.public DialogBox_LoadFrame
+.public DialogBox_PrintMessage
+.public DialogBox_IsPrintFinished
 .public PlayerAvatar_GetMapObject
 .public PlayerAvatar_GetState
 .public PlayerAvatar_GetTransitionBits
@@ -56,4 +56,4 @@
 .public Task_OverworldFish
 .public ov01_02200400
 .public ov01_02200540
-.public ov02_02246F70
+.public FieldSystem_PerformFishEncounterCheck

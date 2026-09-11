@@ -1,10 +1,11 @@
 #ifndef POKEHEARTGOLD_OVY_99_H
 #define POKEHEARTGOLD_OVY_99_H
 
+#include "pokeathlon/pokeathlon_save.h"
+
 #include "overlay_manager.h"
 #include "player_data.h"
 #include "pokedex.h"
-#include "save_pokeathlon.h"
 
 typedef struct PokeathlonMedalsArgs {
     Pokedex *pokedex;
@@ -14,20 +15,20 @@ typedef struct PokeathlonMedalsArgs {
 } PokeathlonMedalsArgs;
 
 typedef struct PokeathlonEventRecordArgs {
-    void *unk0;
-    void *unk4;
+    Pokeathlon_RecordsSolo *recordsSolo;
+    Pokeathlon_RecordsLink *recordsLink;
     void *unk8;
     PlayerProfile *profile;
     BOOL unk10;
 } PokeathlonEventRecordArgs;
 
 typedef struct PokeathlonCourseRecordArgs {
-    POKEATHLON_SAV *pokeathlon;
+    PokeathlonSave *pokeathlon;
     BOOL unk4;
 } PokeathlonCourseRecordArgs;
 
 typedef struct UnkStruct_0203EFA0 {
-    POKEATHLON_SAV *pokeathlon;
+    PokeathlonSave *pokeathlon;
     PlayerProfile *profile;
 } UnkStruct_0203EFA0;
 

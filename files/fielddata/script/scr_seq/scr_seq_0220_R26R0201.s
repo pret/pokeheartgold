@@ -5,31 +5,31 @@
 
 	.rodata
 
-	scrdef scr_seq_R26R0201_000
-	scrdef_end
+	ScrDef scr_seq_R26R0201_000
+	ScrDefEnd
 
 scr_seq_R26R0201_000:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0367_R26R0201_00000
-	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_RESULT
-	touchscreen_menu_show
-	closemsg
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _0049
-	npc_msg msg_0367_R26R0201_00001
-	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_RESULT
-	touchscreen_menu_show
-	closemsg
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _0049
-	npc_msg msg_0367_R26R0201_00002
-	wait_button_or_walk_away
-	closemsg
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	NPCMsg msg_0367_R26R0201_00000
+	TouchscreenMenuHide
+	GetMenuChoice VAR_SPECIAL_RESULT
+	TouchscreenMenuShow
+	CloseMsg
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _0049
+	NPCMsg msg_0367_R26R0201_00001
+	TouchscreenMenuHide
+	GetMenuChoice VAR_SPECIAL_RESULT
+	TouchscreenMenuShow
+	CloseMsg
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _0049
+	NPCMsg msg_0367_R26R0201_00002
+	WaitButton
+	CloseMsg
 _0049:
-	releaseall
-	end
+	ReleaseAll
+	End
 	.balign 4, 0

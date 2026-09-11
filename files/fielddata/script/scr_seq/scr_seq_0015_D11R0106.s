@@ -5,316 +5,316 @@
 
 	.rodata
 
-	scrdef scr_seq_D11R0106_000
-	scrdef scr_seq_D11R0106_001
-	scrdef scr_seq_D11R0106_002
-	scrdef scr_seq_D11R0106_003
-	scrdef scr_seq_D11R0106_004
-	scrdef scr_seq_D11R0106_005
-	scrdef scr_seq_D11R0106_006
-	scrdef scr_seq_D11R0106_007
-	scrdef scr_seq_D11R0106_008
-	scrdef scr_seq_D11R0106_009
-	scrdef_end
+	ScrDef scr_seq_D11R0106_000
+	ScrDef scr_seq_D11R0106_001
+	ScrDef scr_seq_D11R0106_002
+	ScrDef scr_seq_D11R0106_003
+	ScrDef scr_seq_D11R0106_004
+	ScrDef scr_seq_D11R0106_005
+	ScrDef scr_seq_D11R0106_006
+	ScrDef scr_seq_D11R0106_007
+	ScrDef scr_seq_D11R0106_008
+	ScrDef scr_seq_D11R0106_009
+	ScrDefEnd
 
 scr_seq_D11R0106_009:
-	get_phone_book_rematch PHONE_CONTACT_BLAINE, VAR_TEMP_x4001
-	compare VAR_TEMP_x4001, 0
-	goto_if_ne _00AB
-	check_registered_phone_number PHONE_CONTACT_BLAINE, VAR_TEMP_x4001
-	compare VAR_TEMP_x4001, 1
-	goto_if_eq _008A
-	check_badge BADGE_EARTH, VAR_TEMP_x4002
-	compare VAR_TEMP_x4002, 1
-	goto_if_eq _0069
-	clearflag FLAG_HIDE_SEAFOAM_GYM_BLAINE
-	end
+	GetPhoneBookRematch PHONE_CONTACT_BLAINE, VAR_TEMP_x4001
+	Compare VAR_TEMP_x4001, 0
+	GoToIfNe _00AB
+	CheckRegisteredPhoneNumber PHONE_CONTACT_BLAINE, VAR_TEMP_x4001
+	Compare VAR_TEMP_x4001, 1
+	GoToIfEq _008A
+	CheckBadge BADGE_EARTH, VAR_TEMP_x4002
+	Compare VAR_TEMP_x4002, 1
+	GoToIfEq _0069
+	ClearFlag FLAG_HIDE_SEAFOAM_GYM_BLAINE
+	End
 
 _0069:
-	get_weekday VAR_TEMP_x4002
-	compare VAR_TEMP_x4002, 2
-	goto_if_ne _0084
-	setflag FLAG_HIDE_SEAFOAM_GYM_BLAINE
-	goto _0088
+	GetWeekday VAR_TEMP_x4002
+	Compare VAR_TEMP_x4002, 2
+	GoToIfNe _0084
+	SetFlag FLAG_HIDE_SEAFOAM_GYM_BLAINE
+	GoTo _0088
 
 _0084:
-	clearflag FLAG_HIDE_SEAFOAM_GYM_BLAINE
+	ClearFlag FLAG_HIDE_SEAFOAM_GYM_BLAINE
 _0088:
-	end
+	End
 
 _008A:
-	get_weekday VAR_TEMP_x4002
-	compare VAR_TEMP_x4002, 4
-	goto_if_ne _00A5
-	setflag FLAG_HIDE_SEAFOAM_GYM_BLAINE
-	goto _00A9
+	GetWeekday VAR_TEMP_x4002
+	Compare VAR_TEMP_x4002, 4
+	GoToIfNe _00A5
+	SetFlag FLAG_HIDE_SEAFOAM_GYM_BLAINE
+	GoTo _00A9
 
 _00A5:
-	clearflag FLAG_HIDE_SEAFOAM_GYM_BLAINE
+	ClearFlag FLAG_HIDE_SEAFOAM_GYM_BLAINE
 _00A9:
-	end
+	End
 
 _00AB:
-	setflag FLAG_HIDE_SEAFOAM_GYM_BLAINE
-	end
+	SetFlag FLAG_HIDE_SEAFOAM_GYM_BLAINE
+	End
 
 scr_seq_D11R0106_008:
-	call_if_set FLAG_UNK_13B, _00D4
-	call_if_set FLAG_UNK_13D, _00E2
-	call_if_set FLAG_UNK_13E, _00F0
-	end
+	CallIfSet FLAG_UNK_13B, _00D4
+	CallIfSet FLAG_UNK_13D, _00E2
+	CallIfSet FLAG_UNK_13E, _00F0
+	End
 
 _00D4:
-	move_person_facing obj_D11R0106_gsassistantm, 21, 0, 14, DIR_WEST
-	return
+	MovePersonFacing obj_D11R0106_gsassistantm, 21, 0, 14, DIR_WEST
+	Return
 
 _00E2:
-	move_person_facing obj_D11R0106_gsassistantm_3, 9, 0, 13, DIR_NORTH
-	return
+	MovePersonFacing obj_D11R0106_gsassistantm_3, 9, 0, 13, DIR_NORTH
+	Return
 
 _00F0:
-	move_person_facing obj_D11R0106_assistantm, 15, 0, 16, DIR_SOUTH
-	return
+	MovePersonFacing obj_D11R0106_assistantm, 15, 0, 16, DIR_SOUTH
+	Return
 
 scr_seq_D11R0106_000:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	check_badge BADGE_VOLCANO, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _01B6
-	npc_msg msg_0053_D11R0106_00000
-	closemsg
-	trainer_battle TRAINER_LEADER_BLAINE_BLAINE, 0, 0, 0
-	check_battle_won VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _01CC
-	give_badge BADGE_VOLCANO
-	addvar VAR_UNK_4135, 1
-	setflag FLAG_UNK_265
-	setflag FLAG_HIDE_ROUTE_19_WORKMEN_CLOSED
-	clearflag FLAG_HIDE_ROUTE_19_WORKMEN_OPEN
-	add_special_game_stat SCORE_EVENT_BADGE_GET
-	setflag FLAG_UNK_13F
-	setflag FLAG_UNK_140
-	setflag FLAG_UNK_13C
-	npc_msg msg_0053_D11R0106_00001
-	buffer_players_name 0
-	npc_msg msg_0053_D11R0106_00002
-	play_fanfare SEQ_ME_BADGE
-	wait_fanfare
-	npc_msg msg_0053_D11R0106_00003
-	goto _0175
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	CheckBadge BADGE_VOLCANO, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _01B6
+	NPCMsg msg_0053_D11R0106_00000
+	CloseMsg
+	TrainerBattle TRAINER_LEADER_BLAINE_BLAINE, 0, 0, 0
+	CheckBattleWon VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _01CC
+	GiveBadge BADGE_VOLCANO
+	AddVar VAR_UNK_4135, 1
+	SetFlag FLAG_UNK_265
+	SetFlag FLAG_HIDE_ROUTE_19_WORKMEN_CLOSED
+	ClearFlag FLAG_HIDE_ROUTE_19_WORKMEN_OPEN
+	AddSpecialGameStat SCORE_EVENT_BADGE_GET
+	SetFlag FLAG_UNK_13F
+	SetFlag FLAG_UNK_140
+	SetFlag FLAG_UNK_13C
+	NPCMsg msg_0053_D11R0106_00001
+	BufferPlayersName 0
+	NPCMsg msg_0053_D11R0106_00002
+	PlayFanfare SEQ_ME_BADGE
+	WaitFanfare
+	NPCMsg msg_0053_D11R0106_00003
+	GoTo _0175
 
 _0175:
-	goto_if_no_item_space ITEM_TM50, 1, _01AC
-	callstd std_give_item_verbose
-	setflag FLAG_GOT_TM50_FROM_BLAINE
-	buffer_players_name 0
-	npc_msg msg_0053_D11R0106_00004
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	GoToIfNoItemSpace ITEM_TM50, 1, _01AC
+	CallStd std_give_item_verbose
+	SetFlag FLAG_GOT_TM50_FROM_BLAINE
+	BufferPlayersName 0
+	NPCMsg msg_0053_D11R0106_00004
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _01AC:
-	callstd std_bag_is_full
-	closemsg
-	releaseall
-	end
+	CallStd std_bag_is_full
+	CloseMsg
+	ReleaseAll
+	End
 
 _01B6:
-	goto_if_unset FLAG_GOT_TM50_FROM_BLAINE, _0175
-	npc_msg msg_0053_D11R0106_00005
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	GoToIfUnset FLAG_GOT_TM50_FROM_BLAINE, _0175
+	NPCMsg msg_0053_D11R0106_00005
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _01CC:
-	white_out
-	releaseall
-	end
+	WhiteOut
+	ReleaseAll
+	End
 
 scr_seq_D11R0106_002:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	goto_if_set FLAG_UNK_13B, _021A
-	npc_msg msg_0053_D11R0106_00006
-	closemsg
-	trainer_battle TRAINER_SUPER_NERD_CARY, 0, 0, 0
-	check_battle_won VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _01CC
-	npc_msg msg_0053_D11R0106_00008
-	closemsg
-	apply_movement obj_D11R0106_gsassistantm, _0424
-	wait_movement
-	setflag FLAG_UNK_13B
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	GoToIfSet FLAG_UNK_13B, _021A
+	NPCMsg msg_0053_D11R0106_00006
+	CloseMsg
+	TrainerBattle TRAINER_SUPER_NERD_CARY, 0, 0, 0
+	CheckBattleWon VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _01CC
+	NPCMsg msg_0053_D11R0106_00008
+	CloseMsg
+	ApplyMovement obj_D11R0106_gsassistantm, _0424
+	WaitMovement
+	SetFlag FLAG_UNK_13B
+	ReleaseAll
+	End
 
 _021A:
-	npc_msg msg_0053_D11R0106_00007
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0053_D11R0106_00007
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_D11R0106_003:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	goto_if_set FLAG_UNK_13C, _028C
-	npc_msg msg_0053_D11R0106_00009
-	closemsg
-	trainer_battle TRAINER_SUPER_NERD_WALDO, 0, 0, 0
-	check_battle_won VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _01CC
-	npc_msg msg_0053_D11R0106_00011
-	closemsg
-	get_player_facing VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_ne _027A
-	apply_movement obj_D11R0106_gsassistantm_2, _043C
-	goto _0282
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	GoToIfSet FLAG_UNK_13C, _028C
+	NPCMsg msg_0053_D11R0106_00009
+	CloseMsg
+	TrainerBattle TRAINER_SUPER_NERD_WALDO, 0, 0, 0
+	CheckBattleWon VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _01CC
+	NPCMsg msg_0053_D11R0106_00011
+	CloseMsg
+	GetPlayerFacing VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfNe _027A
+	ApplyMovement obj_D11R0106_gsassistantm_2, _043C
+	GoTo _0282
 
 _027A:
-	apply_movement obj_D11R0106_gsassistantm_2, _0430
+	ApplyMovement obj_D11R0106_gsassistantm_2, _0430
 _0282:
-	wait_movement
-	setflag FLAG_UNK_13C
-	releaseall
-	end
+	WaitMovement
+	SetFlag FLAG_UNK_13C
+	ReleaseAll
+	End
 
 _028C:
-	npc_msg msg_0053_D11R0106_00010
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0053_D11R0106_00010
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_D11R0106_004:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	goto_if_set FLAG_UNK_13D, _02DF
-	npc_msg msg_0053_D11R0106_00012
-	closemsg
-	trainer_battle TRAINER_SUPER_NERD_MERLE, 0, 0, 0
-	check_battle_won VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _01CC
-	npc_msg msg_0053_D11R0106_00014
-	closemsg
-	apply_movement obj_D11R0106_gsassistantm_3, _0448
-	wait_movement
-	setflag FLAG_UNK_13D
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	GoToIfSet FLAG_UNK_13D, _02DF
+	NPCMsg msg_0053_D11R0106_00012
+	CloseMsg
+	TrainerBattle TRAINER_SUPER_NERD_MERLE, 0, 0, 0
+	CheckBattleWon VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _01CC
+	NPCMsg msg_0053_D11R0106_00014
+	CloseMsg
+	ApplyMovement obj_D11R0106_gsassistantm_3, _0448
+	WaitMovement
+	SetFlag FLAG_UNK_13D
+	ReleaseAll
+	End
 
 _02DF:
-	npc_msg msg_0053_D11R0106_00013
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0053_D11R0106_00013
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_D11R0106_005:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	goto_if_set FLAG_UNK_13E, _0332
-	npc_msg msg_0053_D11R0106_00015
-	closemsg
-	trainer_battle TRAINER_SCIENTIST_GS_LOWELL, 0, 0, 0
-	check_battle_won VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _01CC
-	npc_msg msg_0053_D11R0106_00017
-	closemsg
-	apply_movement obj_D11R0106_assistantm, _0454
-	wait_movement
-	setflag FLAG_UNK_13E
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	GoToIfSet FLAG_UNK_13E, _0332
+	NPCMsg msg_0053_D11R0106_00015
+	CloseMsg
+	TrainerBattle TRAINER_SCIENTIST_GS_LOWELL, 0, 0, 0
+	CheckBattleWon VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _01CC
+	NPCMsg msg_0053_D11R0106_00017
+	CloseMsg
+	ApplyMovement obj_D11R0106_assistantm, _0454
+	WaitMovement
+	SetFlag FLAG_UNK_13E
+	ReleaseAll
+	End
 
 _0332:
-	npc_msg msg_0053_D11R0106_00016
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0053_D11R0106_00016
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_D11R0106_006:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	goto_if_set FLAG_UNK_13F, _03A4
-	npc_msg msg_0053_D11R0106_00018
-	closemsg
-	trainer_battle TRAINER_SCIENTIST_GS_LINDEN, 0, 0, 0
-	check_battle_won VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _01CC
-	npc_msg msg_0053_D11R0106_00020
-	closemsg
-	get_player_facing VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 3
-	goto_if_ne _0392
-	apply_movement obj_D11R0106_assistantm_2, _046C
-	goto _039A
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	GoToIfSet FLAG_UNK_13F, _03A4
+	NPCMsg msg_0053_D11R0106_00018
+	CloseMsg
+	TrainerBattle TRAINER_SCIENTIST_GS_LINDEN, 0, 0, 0
+	CheckBattleWon VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _01CC
+	NPCMsg msg_0053_D11R0106_00020
+	CloseMsg
+	GetPlayerFacing VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 3
+	GoToIfNe _0392
+	ApplyMovement obj_D11R0106_assistantm_2, _046C
+	GoTo _039A
 
 _0392:
-	apply_movement obj_D11R0106_assistantm_2, _0460
+	ApplyMovement obj_D11R0106_assistantm_2, _0460
 _039A:
-	wait_movement
-	setflag FLAG_UNK_13F
-	releaseall
-	end
+	WaitMovement
+	SetFlag FLAG_UNK_13F
+	ReleaseAll
+	End
 
 _03A4:
-	npc_msg msg_0053_D11R0106_00019
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0053_D11R0106_00019
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_D11R0106_007:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	goto_if_set FLAG_UNK_140, _0416
-	npc_msg msg_0053_D11R0106_00021
-	closemsg
-	trainer_battle TRAINER_SCIENTIST_GS_DANIEL, 0, 0, 0
-	check_battle_won VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _01CC
-	npc_msg msg_0053_D11R0106_00023
-	closemsg
-	get_player_facing VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 2
-	goto_if_ne _0404
-	apply_movement obj_D11R0106_assistantm_3, _0478
-	goto _040C
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	GoToIfSet FLAG_UNK_140, _0416
+	NPCMsg msg_0053_D11R0106_00021
+	CloseMsg
+	TrainerBattle TRAINER_SCIENTIST_GS_DANIEL, 0, 0, 0
+	CheckBattleWon VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _01CC
+	NPCMsg msg_0053_D11R0106_00023
+	CloseMsg
+	GetPlayerFacing VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 2
+	GoToIfNe _0404
+	ApplyMovement obj_D11R0106_assistantm_3, _0478
+	GoTo _040C
 
 _0404:
-	apply_movement obj_D11R0106_assistantm_3, _0484
+	ApplyMovement obj_D11R0106_assistantm_3, _0484
 _040C:
-	wait_movement
-	setflag FLAG_UNK_140
-	releaseall
-	end
+	WaitMovement
+	SetFlag FLAG_UNK_140
+	ReleaseAll
+	End
 
 _0416:
-	npc_msg msg_0053_D11R0106_00022
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0053_D11R0106_00022
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 	.balign 4, 0
 _0424:
@@ -371,22 +371,22 @@ _0484:
 	EndMovement
 
 scr_seq_D11R0106_001:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	check_badge BADGE_VOLCANO, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _04B6
-	npc_msg msg_0053_D11R0106_00024
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	CheckBadge BADGE_VOLCANO, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _04B6
+	NPCMsg msg_0053_D11R0106_00024
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _04B6:
-	npc_msg msg_0053_D11R0106_00025
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0053_D11R0106_00025
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 	.balign 4, 0

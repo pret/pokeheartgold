@@ -753,7 +753,7 @@ ov32_0225DB1C: ; 0x0225DB1C
 	mov r3, #1
 	bl AddCharResObjFromOpenNarc
 	str r0, [r5]
-	bl sub_0200ADA4
+	bl SpriteTransfer_CreateCharTransferTask_AllocAtEnd
 	ldr r0, [r5]
 	bl sub_0200A740
 	ldr r0, [sp, #0x34]
@@ -770,7 +770,7 @@ ov32_0225DB1C: ; 0x0225DB1C
 	mov r3, #0
 	bl AddPlttResObjFromOpenNarc
 	str r0, [r5, #4]
-	bl sub_0200B00C
+	bl SpriteTransfer_CreatePlttTransferTask
 	ldr r0, [r5, #4]
 	bl sub_0200A740
 	ldr r0, [sp, #0x38]
@@ -969,11 +969,11 @@ _0225DCE0:
 	mov r0, #0xa2
 	lsl r0, r0, #2
 	ldr r0, [r7, r0]
-	bl sub_0200AEB0
+	bl SpriteTransfer_DeleteCharTransferTask
 	mov r0, #0xa3
 	lsl r0, r0, #2
 	ldr r0, [r7, r0]
-	bl sub_0200B0A8
+	bl SpriteTransfer_DeletePlttTransferTask
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov32_0225DCD4
 

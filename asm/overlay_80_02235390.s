@@ -99,7 +99,7 @@ FrtCmd_090: ; 0x0223541C
 	add r4, r0, #0
 	lsl r0, r4, #0x10
 	lsr r0, r0, #0x10
-	bl sub_02004AC8
+	bl Sound_SetFieldBGM
 	lsl r0, r4, #0x10
 	lsr r0, r0, #0x10
 	bl PlayBGM

@@ -25,8 +25,8 @@
 .public sub_02056BC8
 .public sub_02056C64
 .public sub_02056D00
-.public sub_0205B810
-.public sub_0205B81C
+.public MetatileBehavior_IsWarpStairsEast
+.public MetatileBehavior_IsWarpStairsWest
 .public PlayerAvatar_GetFacingDirection
 .public PlayerAvatar_GetXCoord
 .public PlayerAvatar_GetZCoord
@@ -49,7 +49,7 @@
 .public sub_02069DC8
 .public FollowMon_IsActive
 .public VEC_Subtract
-.public ov01_021E636C
+.public FieldMap_FadeScreen
 .public ov01_021E90C0
 .public ov01_021E90D4
 .public ov01_021E90DC

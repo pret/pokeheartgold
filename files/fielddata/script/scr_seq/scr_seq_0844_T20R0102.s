@@ -5,22 +5,22 @@
 
 	.rodata
 
-	scrdef scr_seq_T20R0102_000
-	scrdef scr_seq_T20R0102_001
-	scrdef_end
+	ScrDef scr_seq_T20R0102_000
+	ScrDef scr_seq_T20R0102_001
+	ScrDefEnd
 
 scr_seq_T20R0102_000:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	buffer_players_name 0
-	gender_msgbox msg_0544_T20R0102_00000, msg_0544_T20R0102_00001
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	BufferPlayersName 0
+	GenderMsgBox msg_0544_T20R0102_00000, msg_0544_T20R0102_00001
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_T20R0102_001:
-	simple_npc_msg msg_0544_T20R0102_00002
-	end
+	SimpleNPCMsg msg_0544_T20R0102_00002
+	End
 	.balign 4, 0

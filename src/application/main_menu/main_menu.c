@@ -22,6 +22,8 @@
 #include "save.h"
 #include "save_arrays.h"
 #include "save_data_read_error.h"
+#include "screen_fade.h"
+#include "sound.h"
 #include "sound_02004A44.h"
 #include "sprite.h"
 #include "system.h"
@@ -30,7 +32,6 @@
 #include "touchscreen.h"
 #include "unk_02005D10.h"
 #include "unk_0200B150.h"
-#include "unk_0200FA24.h"
 #include "vram_transfer_manager.h"
 
 typedef enum MainMenu_AppOption {
@@ -1360,8 +1361,8 @@ BOOL MainMenuApp_Init(OverlayManager *manager, int *state) {
 
     data->bgConfig = BgConfig_Alloc(HEAP_ID_MAIN_MENU);
 
-    sub_0200FBF4(PM_LCD_TOP, 0);
-    sub_0200FBF4(PM_LCD_BOTTOM, 0);
+    sub_0200FBF4(PM_LCD_TOP, RGB_BLACK);
+    sub_0200FBF4(PM_LCD_BOTTOM, RGB_BLACK);
 
     UnkStruct_02111868_sub *args = OverlayManager_GetArgs(manager);
     data->saveData = args->saveData;
@@ -1381,7 +1382,7 @@ BOOL MainMenuApp_Init(OverlayManager *manager, int *state) {
         data->dontHaveSavedata = TRUE;
     }
     sub_02005AF8(0);
-    sub_02004AD8(0);
+    Sound_SetScene(SOUND_SCENE_NONE);
 
     return TRUE;
 }

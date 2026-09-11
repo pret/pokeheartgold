@@ -5,118 +5,118 @@
 
 	.rodata
 
-	scrdef scr_seq_D51R0301_000
-	scrdef scr_seq_D51R0301_001
-	scrdef scr_seq_D51R0301_002
-	scrdef scr_seq_D51R0301_003
-	scrdef_end
+	ScrDef scr_seq_D51R0301_000
+	ScrDef scr_seq_D51R0301_001
+	ScrDef scr_seq_D51R0301_002
+	ScrDef scr_seq_D51R0301_003
+	ScrDefEnd
 
 scr_seq_D51R0301_000:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	goto_if_set FLAG_UNK_09E, _002E
-	npc_msg msg_0147_D51R0301_00000
-	closemsg
-	setflag FLAG_UNK_09E
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	GoToIfSet FLAG_UNK_09E, _002E
+	NPCMsg msg_0147_D51R0301_00000
+	CloseMsg
+	SetFlag FLAG_UNK_09E
 _002E:
-	player_has_species VAR_SPECIAL_RESULT, SPECIES_ARCEUS
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _004C
-	npc_msg msg_0147_D51R0301_00002
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlayerHasSpecies VAR_SPECIAL_RESULT, SPECIES_ARCEUS
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _004C
+	NPCMsg msg_0147_D51R0301_00002
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _004C:
-	apply_movement obj_D51R0301_champion, _0188
-	wait_movement
-	npc_msg msg_0147_D51R0301_00001
-	closemsg
-	get_player_facing VAR_TEMP_x4002
-	compare VAR_TEMP_x4002, 0
-	goto_if_ne _0078
-	goto _0107
+	ApplyMovement obj_D51R0301_champion, _0188
+	WaitMovement
+	NPCMsg msg_0147_D51R0301_00001
+	CloseMsg
+	GetPlayerFacing VAR_TEMP_x4002
+	Compare VAR_TEMP_x4002, 0
+	GoToIfNe _0078
+	GoTo _0107
 
 _0072:
-	goto _0097
+	GoTo _0097
 
 _0078:
-	compare VAR_TEMP_x4002, 1
-	goto_if_ne _0091
-	goto _00CF
+	Compare VAR_TEMP_x4002, 1
+	GoToIfNe _0091
+	GoTo _00CF
 
 _008B:
-	goto _0097
+	GoTo _0097
 
 _0091:
-	goto _0097
+	GoTo _0097
 
 _0097:
-	apply_movement obj_D51R0301_champion, _0194
-	wait_movement
-	apply_movement obj_D51R0301_champion, _01A0
-	wait_movement
-	npc_msg msg_0147_D51R0301_00003
-	closemsg
-	apply_movement obj_D51R0301_champion, _01A8
-	wait_movement
-	npc_msg msg_0147_D51R0301_00004
-	closemsg
-	apply_movement obj_D51R0301_champion, _01B4
-	wait_movement
-	goto _0167
+	ApplyMovement obj_D51R0301_champion, _0194
+	WaitMovement
+	ApplyMovement obj_D51R0301_champion, _01A0
+	WaitMovement
+	NPCMsg msg_0147_D51R0301_00003
+	CloseMsg
+	ApplyMovement obj_D51R0301_champion, _01A8
+	WaitMovement
+	NPCMsg msg_0147_D51R0301_00004
+	CloseMsg
+	ApplyMovement obj_D51R0301_champion, _01B4
+	WaitMovement
+	GoTo _0167
 
 _00CF:
-	apply_movement obj_D51R0301_champion, _01C4
-	wait_movement
-	apply_movement obj_D51R0301_champion, _01D0
-	wait_movement
-	npc_msg msg_0147_D51R0301_00003
-	closemsg
-	apply_movement obj_D51R0301_champion, _01D8
-	wait_movement
-	npc_msg msg_0147_D51R0301_00004
-	closemsg
-	apply_movement obj_D51R0301_champion, _01E0
-	wait_movement
-	goto _0167
+	ApplyMovement obj_D51R0301_champion, _01C4
+	WaitMovement
+	ApplyMovement obj_D51R0301_champion, _01D0
+	WaitMovement
+	NPCMsg msg_0147_D51R0301_00003
+	CloseMsg
+	ApplyMovement obj_D51R0301_champion, _01D8
+	WaitMovement
+	NPCMsg msg_0147_D51R0301_00004
+	CloseMsg
+	ApplyMovement obj_D51R0301_champion, _01E0
+	WaitMovement
+	GoTo _0167
 
 _0107:
-	apply_movement obj_D51R0301_champion, _01F0
-	wait_movement
-	toggle_following_pokemon_movement 0
-	wait_following_pokemon_movement
-	following_pokemon_movement 55
-	apply_movement obj_player, _01FC
-	wait_movement
-	wait_following_pokemon_movement
-	toggle_following_pokemon_movement 1
-	following_pokemon_movement 48
-	apply_movement obj_D51R0301_champion, _0204
-	wait_movement
-	npc_msg msg_0147_D51R0301_00003
-	closemsg
-	apply_movement obj_D51R0301_champion, _020C
-	wait_movement
-	apply_movement obj_player, _022C
-	wait_movement
-	npc_msg msg_0147_D51R0301_00004
-	closemsg
-	apply_movement obj_D51R0301_champion, _021C
-	wait_movement
-	goto _0167
+	ApplyMovement obj_D51R0301_champion, _01F0
+	WaitMovement
+	ToggleFollowingPokemonMovement 0
+	WaitFollowingPokemonMovement
+	FollowingPokemonMovement 55
+	ApplyMovement obj_player, _01FC
+	WaitMovement
+	WaitFollowingPokemonMovement
+	ToggleFollowingPokemonMovement 1
+	FollowingPokemonMovement 48
+	ApplyMovement obj_D51R0301_champion, _0204
+	WaitMovement
+	NPCMsg msg_0147_D51R0301_00003
+	CloseMsg
+	ApplyMovement obj_D51R0301_champion, _020C
+	WaitMovement
+	ApplyMovement obj_player, _022C
+	WaitMovement
+	NPCMsg msg_0147_D51R0301_00004
+	CloseMsg
+	ApplyMovement obj_D51R0301_champion, _021C
+	WaitMovement
+	GoTo _0167
 
 _0167:
-	play_se SEQ_SE_DP_KAIDAN2
-	setflag FLAG_UNK_2DD
-	hide_person obj_D51R0301_champion
-	clearflag FLAG_HIDE_SINJOH_MYSTRI_SHRINE_CYNTHIA
-	wait_se SEQ_SE_DP_KAIDAN2
-	setvar VAR_SCENE_SINJOH_MYSTRI_ROOM, 7
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_KAIDAN2
+	SetFlag FLAG_UNK_2DD
+	HidePerson obj_D51R0301_champion
+	ClearFlag FLAG_HIDE_SINJOH_MYSTRI_SHRINE_CYNTHIA
+	WaitSE SEQ_SE_DP_KAIDAN2
+	SetVar VAR_SCENE_SINJOH_MYSTRI_ROOM, 7
+	ReleaseAll
+	End
 
 	.balign 4, 0
 _0188:
@@ -207,76 +207,76 @@ _022C:
 	EndMovement
 
 scr_seq_D51R0301_001:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	compare VAR_SCENE_SINJOH_MYSTRI_ROOM, 13
-	goto_if_ge _026E
-	goto_if_set FLAG_UNK_09D, _0263
-	npc_msg msg_0147_D51R0301_00007
-	wait_button_or_walk_away
-	closemsg
-	setflag FLAG_UNK_09D
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	Compare VAR_SCENE_SINJOH_MYSTRI_ROOM, 13
+	GoToIfGe _026E
+	GoToIfSet FLAG_UNK_09D, _0263
+	NPCMsg msg_0147_D51R0301_00007
+	WaitButton
+	CloseMsg
+	SetFlag FLAG_UNK_09D
+	ReleaseAll
+	End
 
 _0263:
-	npc_msg msg_0147_D51R0301_00008
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0147_D51R0301_00008
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _026E:
-	npc_msg msg_0147_D51R0301_00009
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0147_D51R0301_00009
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_D51R0301_002:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0147_D51R0301_00010
-	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_RESULT
-	touchscreen_menu_show
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _02A6
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_ge _030C
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	NPCMsg msg_0147_D51R0301_00010
+	TouchscreenMenuHide
+	GetMenuChoice VAR_SPECIAL_RESULT
+	TouchscreenMenuShow
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _02A6
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfGe _030C
 _02A6:
-	npc_msg msg_0147_D51R0301_00011
-	closemsg
-	play_se SEQ_SE_DP_TELE
-	apply_movement obj_player, _0318
-	wait_movement
-	compare VAR_SCENE_SINJOH_MYSTRI_ROOM, 13
-	goto_if_ne _02D2
-	setvar VAR_SCENE_SINJOH_MYSTRI_ROOM, 10
-	goto _02E4
+	NPCMsg msg_0147_D51R0301_00011
+	CloseMsg
+	PlaySE SEQ_SE_DP_TELE
+	ApplyMovement obj_player, _0318
+	WaitMovement
+	Compare VAR_SCENE_SINJOH_MYSTRI_ROOM, 13
+	GoToIfNe _02D2
+	SetVar VAR_SCENE_SINJOH_MYSTRI_ROOM, 10
+	GoTo _02E4
 
 _02D2:
-	setvar VAR_SCENE_SINJOH_MYSTRI_ROOM, 1
-	setflag FLAG_HIDE_SINJOH_MYSTRI_SHRINE_CYNTHIA
-	clearflag FLAG_UNK_2DD
-	clearflag FLAG_UNK_2DB
+	SetVar VAR_SCENE_SINJOH_MYSTRI_ROOM, 1
+	SetFlag FLAG_HIDE_SINJOH_MYSTRI_SHRINE_CYNTHIA
+	ClearFlag FLAG_UNK_2DD
+	ClearFlag FLAG_UNK_2DB
 _02E4:
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	warp MAP_NEW_BARK, 0, 695, 397, DIR_SOUTH
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
-	releaseall
-	end
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	Warp MAP_NEW_BARK, 0, 695, 397, DIR_SOUTH
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
+	ReleaseAll
+	End
 
 _030C:
-	npc_msg msg_0147_D51R0301_00012
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0147_D51R0301_00012
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 	.balign 4, 0
 _0318:
@@ -311,14 +311,14 @@ _0318:
 	EndMovement
 
 scr_seq_D51R0301_003:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	play_cry SPECIES_ABRA, 0
-	npc_msg msg_0147_D51R0301_00013
-	wait_cry
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	PlayCry SPECIES_ABRA, 0
+	NPCMsg msg_0147_D51R0301_00013
+	WaitCry
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 	.balign 4, 0

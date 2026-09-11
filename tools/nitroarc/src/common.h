@@ -46,12 +46,13 @@ struct options {
     unsigned int mode       : 4; // operation mode
     unsigned int verbose    : 1; // -v, --verbose
     unsigned int help       : 1; // -?, --help
-    unsigned int version    : 1; //     --version
-    unsigned int no_header  : 1; //     --no-header
-    unsigned int index      : 1; // -N, --index
-    unsigned int no_recurse : 1; //     --no-recursion
-    unsigned int named      : 1; //     --named
-    unsigned int stripped   : 1; //     --stripped
+    unsigned int version    : 1; // -V, --version
+    unsigned int no_header  : 1; // -H, --no-header
+    unsigned int index      : 1; // -I, --index
+    unsigned int index_ns   : 1; // -P, --index-namespace
+    unsigned int no_recurse : 1; // -R, --no-recursion
+    unsigned int named      : 1; // -N, --named
+    unsigned int stripped   : 1; // -S, --stripped
 
     int          argc;
     const char **argv;
@@ -60,7 +61,6 @@ struct options {
     const char *directory;    // -C, --directory=DIR
     const char *file;         // -f, --file=ARCHIVE
     const char *format;       // -F, --format=FORMAT
-    const char *single_file;  // -O  --single-file=FILE
     const char *files_from;   // -T, --files-from=FILE
     const char *exclude_from; // -X, --exclude-from=FILE
     const char *exclude_pat;  //     --exclude=PATTERN

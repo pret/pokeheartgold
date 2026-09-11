@@ -5,39 +5,39 @@
 
 	.rodata
 
-	scrdef scr_seq_T23FS0101_000
-	scrdef scr_seq_T23FS0101_001
-	scrdef scr_seq_T23FS0101_002
-	scrdef scr_seq_T23FS0101_003
-	scrdef_end
+	ScrDef scr_seq_T23FS0101_000
+	ScrDef scr_seq_T23FS0101_001
+	ScrDef scr_seq_T23FS0101_002
+	ScrDef scr_seq_T23FS0101_003
+	ScrDefEnd
 
 scr_seq_T23FS0101_000:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	callstd std_mart_intro
-	holdmsg
-	setvar VAR_SPECIAL_x8004, 1
-	callstd std_pokemart
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	CallStd std_mart_intro
+	HoldMsg
+	SetVar VAR_SPECIAL_x8004, 1
+	CallStd std_pokemart
+	ReleaseAll
+	End
 
 scr_seq_T23FS0101_001:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	callstd std_mart_intro
-	holdmsg
-	setvar VAR_SPECIAL_x8004, 2
-	callstd std_special_mart
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	CallStd std_mart_intro
+	HoldMsg
+	SetVar VAR_SPECIAL_x8004, 2
+	CallStd std_special_mart
+	ReleaseAll
+	End
 
 scr_seq_T23FS0101_002:
-	simple_npc_msg msg_0565_T23FS0101_00000
-	end
+	SimpleNPCMsg msg_0565_T23FS0101_00000
+	End
 
 scr_seq_T23FS0101_003:
-	simple_npc_msg msg_0565_T23FS0101_00001
-	end
+	SimpleNPCMsg msg_0565_T23FS0101_00001
+	End
 	.balign 4, 0

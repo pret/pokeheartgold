@@ -4,6 +4,8 @@
 
 #include "constants/items.h"
 
+#include "overlay_2/overlay_02_gear_phone.h"
+
 #include "math_util.h"
 
 static void SavePokegear_Init_Internal(SavePokegear *pokegear);
@@ -194,42 +196,42 @@ static void PhoneCallPersistentState_Init(PhoneCallPersistentState *callPersiste
     callPersistentState->kenjiWaitDays = 7;
 }
 
-void sub_0202F01C(PhoneCallPersistentState *callPersistentState, u8 idx) {
+void PhoneCallPersistentState_SetCallTriggerFlag(PhoneCallPersistentState *callPersistentState, u8 idx) {
     u8 byteno;
     u8 flagno;
-    if (idx >= 13) {
+    if (idx >= NUM_CALL_TRIGGERS) {
         GF_ASSERT(FALSE);
         return;
     }
     byteno = idx / 8;
     flagno = idx % 8;
-    callPersistentState->unk_14E[byteno] |= (1 << flagno);
+    callPersistentState->callTriggerFlags[byteno] |= (1 << flagno);
 }
 
-void sub_0202F050(PhoneCallPersistentState *callPersistentState, u8 idx) {
+void PhoneCallPersistentState_ClearCallTriggerFlag(PhoneCallPersistentState *callPersistentState, u8 idx) {
     u8 byteno;
     u8 mask;
-    if (idx >= 13) {
+    if (idx >= NUM_CALL_TRIGGERS) {
         GF_ASSERT(FALSE);
         return;
     }
     byteno = idx / 8;
     mask = 1 << (idx % 8);
-    if (callPersistentState->unk_14E[byteno] & mask) {
-        callPersistentState->unk_14E[byteno] ^= mask;
+    if (callPersistentState->callTriggerFlags[byteno] & mask) {
+        callPersistentState->callTriggerFlags[byteno] ^= mask;
     }
 }
 
-BOOL sub_0202F08C(PhoneCallPersistentState *callPersistentState, u8 idx) {
+BOOL PhoneCallPersistentState_CheckCallTriggerFlag(PhoneCallPersistentState *callPersistentState, u8 idx) {
     u8 byteno;
     u8 flagno;
-    if (idx >= 13) {
+    if (idx >= NUM_CALL_TRIGGERS) {
         GF_ASSERT(FALSE);
         return FALSE;
     }
     byteno = idx / 8;
     flagno = idx % 8;
-    return (callPersistentState->unk_14E[byteno] >> flagno) & 1;
+    return (callPersistentState->callTriggerFlags[byteno] >> flagno) & 1;
 }
 
 void PhoneCallPersistentState_PhoneRematches_SetSeeking(PhoneCallPersistentState *callPersistentState, u8 idx, BOOL state) {

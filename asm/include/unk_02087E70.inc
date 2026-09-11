@@ -8,7 +8,7 @@
 .public GfGfx_SwapDisplay
 .public Save_Misc_Get
 .public sub_0202AC0C
-.public sub_0203E354
+.public Field_SetEnvironmentSoundState_None_Unk2
 .public sub_02055198
 .public sub_02087988
 .public sub_02087A78

@@ -1,11 +1,11 @@
-#include "fieldmap.h"
 #include "friend_group.h"
 #include "launch_application.h"
 #include "math_util.h"
 #include "scrcmd.h"
+#include "script_manager.h"
 #include "unk_0202C730.h"
 
-BOOL ScrCmd_GetStaticEncounterOutcomeFlag(ScriptContext *ctx) {
+BOOL ScrCmd_GetStaticEncounterOutcome(ScriptContext *ctx) {
     u32 *winFlag = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_BATTLE_WIN_FLAG);
     u16 *variable = ScriptGetVarPointer(ctx);
     *variable = *winFlag;

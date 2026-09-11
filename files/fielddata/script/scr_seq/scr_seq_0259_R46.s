@@ -5,42 +5,34 @@
 
 	.rodata
 
-	scrdef scr_seq_R46_000
-	scrdef scr_seq_R46_001
-	scrdef scr_seq_R46_002
-	scrdef_end
+	ScrDef scr_seq_R46_000
+	ScrDef scr_seq_R46_001
+	ScrDef scr_seq_R46_002
+	ScrDefEnd
 
 scr_seq_R46_000:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	goto_if_set FLAG_GAVE_RIVAL_NAME_TO_OFFICER, _002C
-	npc_msg msg_0406_R46_00002
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	GoToIfSet FLAG_GAVE_RIVAL_NAME_TO_OFFICER, _002C
+	NPCMsg msg_0406_R46_00002
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _002C:
-	npc_msg msg_0406_R46_00003
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0406_R46_00003
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_R46_001:
-	direction_signpost msg_0406_R46_00000, 1, 3, VAR_SPECIAL_RESULT
-	scrcmd_057 3
-	scrcmd_058
-	scrcmd_060 VAR_SPECIAL_RESULT
-	callstd std_signpost
-	end
+	DirectionSignpostEx 1, 3, msg_0406_R46_00000
+	End
 
 scr_seq_R46_002:
-	scrcmd_055 2, 0
-	scrcmd_057 3
-	scrcmd_058
-	trainer_tips msg_0406_R46_00001, VAR_SPECIAL_RESULT
-	callstd std_signpost
-	end
+	TrainerTipsEx 2, msg_0406_R46_00001
+	End
 	.balign 4, 0

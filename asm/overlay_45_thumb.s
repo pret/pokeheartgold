@@ -2670,25 +2670,25 @@ ov45_0222B0E8: ; 0x0222B0E8
 _0222B0F4: .word ov45_0222BD94
 	thumb_func_end ov45_0222B0E8
 
-	thumb_func_start ov45_0222B0F8
-ov45_0222B0F8: ; 0x0222B0F8
+	thumb_func_start IncrementGameStat47
+IncrementGameStat47: ; 0x0222B0F8
 	push {r3, lr}
 	ldr r0, [r0]
 	bl Save_GameStats_Get
-	mov r1, #0x2f
+	mov r1, #0x2f ; GAME_STAT_UNK47
 	bl GameStats_Inc
 	pop {r3, pc}
-	thumb_func_end ov45_0222B0F8
+	thumb_func_end IncrementGameStat47
 
-	thumb_func_start ov45_0222B108
-ov45_0222B108: ; 0x0222B108
+	thumb_func_start IncrementGameStat119
+IncrementGameStat119: ; 0x0222B108
 	push {r3, lr}
 	ldr r0, [r0]
 	bl Save_GameStats_Get
-	mov r1, #0x77
+	mov r1, #0x77 ; GAME_STAT_UNK119
 	bl GameStats_Inc
 	pop {r3, pc}
-	thumb_func_end ov45_0222B108
+	thumb_func_end IncrementGameStat119
 
 	thumb_func_start ov45_0222B118
 ov45_0222B118: ; 0x0222B118
@@ -14480,7 +14480,7 @@ _022304E2:
 	str r0, [r4, #8]
 	mov r0, #1
 	add r1, r7, #0
-	bl sub_02023738
+	bl BillboardLists_Create
 	ldr r0, [sp, #4]
 	str r7, [sp, #0x24]
 	str r0, [sp, #0x20]
@@ -14641,7 +14641,7 @@ ov45_02230638: ; 0x02230638
 	bl GF2dGfxRawResMan_FreeAllObjs
 	ldr r0, [r4, #0xc]
 	bl sub_02023874
-	bl sub_02023778
+	bl BillboardLists_Delete
 	ldr r0, [r4, #8]
 	bl GF3dGfxRawResMan_Destroy
 	ldr r0, [r4]
@@ -14689,7 +14689,7 @@ _022306B0:
 ov45_022306B4: ; 0x022306B4
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_020237B0
+	bl BillboardLists_Draw
 	add r0, r5, #0
 	add r0, #0x18
 	bl ov45_02230A58

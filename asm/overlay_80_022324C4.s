@@ -1669,7 +1669,7 @@ _02233244:
 _0223326A:
 	add r0, r6, #0
 	bl Save_GameStats_Get
-	mov r1, #0x42
+	mov r1, #0x42 ; GAME_STAT_UNK66
 	add r2, r4, #0
 	bl GameStats_Add
 	add sp, #0xc

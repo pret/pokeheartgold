@@ -1616,7 +1616,7 @@ ov80_022309F8: ; 0x022309F8
 	ldr r0, _02230A5C ; =0x000004F8
 	ldr r0, [r4, r0]
 	bl Save_GameStats_Get
-	mov r1, #0x41
+	mov r1, #0x41 ; GAME_STAT_UNK65
 	bl GameStats_Inc
 _02230A4C:
 	pop {r4, pc}

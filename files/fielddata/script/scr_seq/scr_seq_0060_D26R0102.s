@@ -6,112 +6,112 @@
 
 	.rodata
 
-	scrdef scr_seq_D26R0102_000
-	scrdef scr_seq_D26R0102_001
-	scrdef scr_seq_D26R0102_002
-	scrdef_end
+	ScrDef scr_seq_D26R0102_000
+	ScrDef scr_seq_D26R0102_001
+	ScrDef scr_seq_D26R0102_002
+	ScrDefEnd
 
 scr_seq_D26R0102_000:
-	simple_npc_msg msg_0091_D26R0102_00005
-	end
+	SimpleNPCMsg msg_0091_D26R0102_00005
+	End
 
 scr_seq_D26R0102_001:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0091_D26R0102_00003
-	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_RESULT
-	touchscreen_menu_show
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0047
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	NPCMsg msg_0091_D26R0102_00003
+	TouchscreenMenuHide
+	GetMenuChoice VAR_SPECIAL_RESULT
+	TouchscreenMenuShow
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0047
+	CloseMsg
+	ReleaseAll
+	End
 
 _0047:
-	buffer_players_name 0
-	npc_msg msg_0091_D26R0102_00004
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	BufferPlayersName 0
+	NPCMsg msg_0091_D26R0102_00004
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_D26R0102_002:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0091_D26R0102_00001
-	closemsg
-	trainer_battle TRAINER_EXECUTIVE_PROTON_PROTON, 0, 0, 0
-	check_battle_won VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0193
-	npc_msg msg_0091_D26R0102_00002
-	closemsg
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	hide_person obj_D26R0102_rocketm
-	hide_person obj_D26R0102_rocketm_2
-	hide_person obj_D26R0102_rocketw
-	hide_person obj_D26R0102_rkanbum3
-	setflag FLAG_UNK_1A9
-	wait 20, VAR_SPECIAL_x8004
-	play_se SEQ_SE_DP_KAIDAN2
-	wait_se SEQ_SE_DP_KAIDAN2
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
-	move_person_facing obj_D26R0102_gantetsu, 36, 0, 7, DIR_WEST
-	toggle_following_pokemon_movement 0
-	wait_following_pokemon_movement
-	following_pokemon_movement 55
-	get_player_facing VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_ne _00F7
-	apply_movement obj_D26R0102_gantetsu, _019C
-	apply_movement obj_player, _01C0
-	goto _0107
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	NPCMsg msg_0091_D26R0102_00001
+	CloseMsg
+	TrainerBattle TRAINER_EXECUTIVE_PROTON_PROTON, 0, 0, 0
+	CheckBattleWon VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0193
+	NPCMsg msg_0091_D26R0102_00002
+	CloseMsg
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	HidePerson obj_D26R0102_rocketm
+	HidePerson obj_D26R0102_rocketm_2
+	HidePerson obj_D26R0102_rocketw
+	HidePerson obj_D26R0102_rkanbum3
+	SetFlag FLAG_UNK_1A9
+	Wait 20, VAR_SPECIAL_x8004
+	PlaySE SEQ_SE_DP_KAIDAN2
+	WaitSE SEQ_SE_DP_KAIDAN2
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
+	MovePersonFacing obj_D26R0102_gantetsu, 36, 0, 7, DIR_WEST
+	ToggleFollowingPokemonMovement 0
+	WaitFollowingPokemonMovement
+	FollowingPokemonMovement 55
+	GetPlayerFacing VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfNe _00F7
+	ApplyMovement obj_D26R0102_gantetsu, _019C
+	ApplyMovement obj_player, _01C0
+	GoTo _0107
 
 _00F7:
-	apply_movement obj_D26R0102_gantetsu, _019C
-	apply_movement obj_player, _01DC
+	ApplyMovement obj_D26R0102_gantetsu, _019C
+	ApplyMovement obj_player, _01DC
 _0107:
-	wait_movement
-	wait_following_pokemon_movement
-	toggle_following_pokemon_movement 1
-	following_pokemon_movement 48
-	buffer_players_name 0
-	npc_msg msg_0091_D26R0102_00000
-	closemsg
-	clearflag FLAG_UNK_19E
-	clearflag FLAG_HIDE_AZALEA_SLOWPOKES
-	setflag FLAG_BEAT_AZALEA_ROCKETS
-	setvar VAR_UNK_4075, 1
-	setvar VAR_UNK_4080, 2
-	setvar VAR_FARFETCHD1_STICKS1, STICKS_ACTIVE
-	setvar VAR_FARFETCHD1_STICKS2, STICKS_ACTIVE
-	setvar VAR_FARFETCHD2_STICKS4, STICKS_ACTIVE
-	play_se SEQ_SE_DP_KAIDAN2
-	wait_se SEQ_SE_DP_KAIDAN2
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	warp MAP_AZALEA_KURT_HOUSE, 0, 4, 5, DIR_NORTH
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
-	setflag FLAG_UNK_1AA
-	setflag FLAG_UNK_1D5
-	setflag FLAG_UNK_1AC
-	clearflag FLAG_HIDE_ILEX_APPRENTICE
-	clearflag FLAG_HIDE_FARFETCHD_1_LOST
-	clearflag FLAG_HIDE_FARFETCHD_2_LOST
-	setvar VAR_UNK_40F4, 1
-	releaseall
-	end
+	WaitMovement
+	WaitFollowingPokemonMovement
+	ToggleFollowingPokemonMovement 1
+	FollowingPokemonMovement 48
+	BufferPlayersName 0
+	NPCMsg msg_0091_D26R0102_00000
+	CloseMsg
+	ClearFlag FLAG_UNK_19E
+	ClearFlag FLAG_HIDE_AZALEA_SLOWPOKES
+	SetFlag FLAG_BEAT_AZALEA_ROCKETS
+	SetVar VAR_UNK_4075, 1
+	SetVar VAR_UNK_4080, 2
+	SetVar VAR_FARFETCHD1_STICKS1, STICKS_ACTIVE
+	SetVar VAR_FARFETCHD1_STICKS2, STICKS_ACTIVE
+	SetVar VAR_FARFETCHD2_STICKS4, STICKS_ACTIVE
+	PlaySE SEQ_SE_DP_KAIDAN2
+	WaitSE SEQ_SE_DP_KAIDAN2
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	Warp MAP_AZALEA_KURT_HOUSE, 0, 4, 5, DIR_NORTH
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
+	SetFlag FLAG_UNK_1AA
+	SetFlag FLAG_UNK_1D5
+	SetFlag FLAG_UNK_1AC
+	ClearFlag FLAG_HIDE_ILEX_APPRENTICE
+	ClearFlag FLAG_HIDE_FARFETCHD_1_LOST
+	ClearFlag FLAG_HIDE_FARFETCHD_2_LOST
+	SetVar VAR_UNK_40F4, 1
+	ReleaseAll
+	End
 
 _0193:
-	white_out
-	releaseall
-	end
+	WhiteOut
+	ReleaseAll
+	End
 
 	.balign 4, 0
 _019C:

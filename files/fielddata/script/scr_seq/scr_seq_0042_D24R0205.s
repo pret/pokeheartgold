@@ -6,103 +6,103 @@
 
 	.rodata
 
-	scrdef scr_seq_D24R0205_000
-	scrdef scr_seq_D24R0205_001
-	scrdef scr_seq_D24R0205_002
-	scrdef scr_seq_D24R0205_003
-	scrdef scr_seq_D24R0205_004
-	scrdef scr_seq_D24R0205_005
-	scrdef scr_seq_D24R0205_006
-	scrdef scr_seq_D24R0205_007
-	scrdef scr_seq_D24R0205_008
-	scrdef scr_seq_D24R0205_009
-	scrdef_end
+	ScrDef scr_seq_D24R0205_000
+	ScrDef scr_seq_D24R0205_001
+	ScrDef scr_seq_D24R0205_002
+	ScrDef scr_seq_D24R0205_003
+	ScrDef scr_seq_D24R0205_004
+	ScrDef scr_seq_D24R0205_005
+	ScrDef scr_seq_D24R0205_006
+	ScrDef scr_seq_D24R0205_007
+	ScrDef scr_seq_D24R0205_008
+	ScrDef scr_seq_D24R0205_009
+	ScrDefEnd
 
 scr_seq_D24R0205_008:
-	compare VAR_SCENE_SINJOH_MYSTRI_ROOM, 10
-	goto_if_eq _003D
-	goto _009D
+	Compare VAR_SCENE_SINJOH_MYSTRI_ROOM, 10
+	GoToIfEq _003D
+	GoTo _009D
 
 _003D:
-	get_party_lead_alive VAR_TEMP_x4005
-	compare VAR_UNK_4102, 1
-	goto_if_eq _0061
-	compare VAR_UNK_4102, 2
-	goto_if_eq _007F
-	goto _009D
+	GetPartyLeadAlive VAR_TEMP_x4005
+	Compare VAR_UNK_4102, 1
+	GoToIfEq _0061
+	Compare VAR_UNK_4102, 2
+	GoToIfEq _007F
+	GoTo _009D
 
 _0061:
-	follower_poke_is_event_trigger EVENT_ARCEUS_HALL_OF_ORIGIN, VAR_TEMP_x4005, VAR_TEMP_x4007
-	compare VAR_TEMP_x4007, 1
-	call_if_eq _009F
-	nop_var_490 VAR_TEMP_x4005
-	nop_var_490 VAR_TEMP_x4007
-	end
+	FollowerPokeIsEventTrigger EVENT_ARCEUS_HALL_OF_ORIGIN, VAR_TEMP_x4005, VAR_TEMP_x4007
+	Compare VAR_TEMP_x4007, 1
+	CallIfEq _009F
+	NopVar490 VAR_TEMP_x4005
+	NopVar490 VAR_TEMP_x4007
+	End
 
 _007F:
-	follower_poke_is_event_trigger EVENT_ARCEUS_MOVIE_GIFT, VAR_TEMP_x4005, VAR_TEMP_x4006
-	compare VAR_TEMP_x4006, 1
-	call_if_eq _009F
-	nop_var_490 VAR_TEMP_x4005
-	nop_var_490 VAR_TEMP_x4006
-	end
+	FollowerPokeIsEventTrigger EVENT_ARCEUS_MOVIE_GIFT, VAR_TEMP_x4005, VAR_TEMP_x4006
+	Compare VAR_TEMP_x4006, 1
+	CallIfEq _009F
+	NopVar490 VAR_TEMP_x4005
+	NopVar490 VAR_TEMP_x4006
+	End
 
 _009D:
-	end
+	End
 
 _009F:
-	setvar VAR_SCENE_SINJOH_MYSTRI_ROOM, 11
-	return
+	SetVar VAR_SCENE_SINJOH_MYSTRI_ROOM, 11
+	Return
 
 scr_seq_D24R0205_000:
-	scrcmd_609
-	lockall
-	play_se SEQ_SE_GS_RAKKA01
-	apply_movement obj_player, _018C
-	scrcmd_374 obj_player
-	wait_movement
-	screen_shake 0, 1, 1, 8
-	play_se SEQ_SE_DP_SUTYA2
-	goto_if_set FLAG_UNK_111, _016F
-	goto_if_set FLAG_GOT_UNOWN_REPORT, _016F
-	wait 5, VAR_SPECIAL_RESULT
-	apply_movement obj_D24R0205_gsassistantm, _0194
-	apply_movement obj_D24R0205_gsassistantm_2, _0194
-	apply_movement obj_D24R0205_gsassistantm_3, _01B8
-	apply_movement obj_D24R0205_gsassistantm_4, _01B8
-	wait_movement
-	npc_msg msg_0076_D24R0205_00000
-	giveitem_no_check ITEM_UNOWN_REPORT, 1
-	closemsg
-	apply_movement obj_D24R0205_gsassistantm, _01A8
-	apply_movement obj_D24R0205_gsassistantm_2, _01B0
-	apply_movement obj_D24R0205_gsassistantm_3, _01CC
-	apply_movement obj_D24R0205_gsassistantm_4, _01CC
-	wait_movement
-	hide_person obj_D24R0205_gsassistantm
-	hide_person obj_D24R0205_gsassistantm_2
-	hide_person obj_D24R0205_gsassistantm_3
-	hide_person obj_D24R0205_gsassistantm_4
-	hide_person obj_D24R0205_gsbigman
-	hide_person obj_D24R0205_gswoman1
-	hide_person obj_D24R0205_gsoldman1
-	setflag FLAG_HIDE_RUINS_OF_ALPH_ASSISTANTS
-	setflag FLAG_HIDE_RUINS_OF_ALPH_TOURISTS
-	setflag FLAG_GOT_UNOWN_REPORT
-	npc_msg msg_0076_D24R0205_00001
-	wait_button_or_walk_away
-	closemsg
+	ScrCmd_609
+	LockAll
+	PlaySE SEQ_SE_GS_RAKKA01
+	ApplyMovement obj_player, _018C
+	ScrCmd_374 obj_player
+	WaitMovement
+	ScreenShake 0, 1, 1, 8
+	PlaySE SEQ_SE_DP_SUTYA2
+	GoToIfSet FLAG_UNK_111, _016F
+	GoToIfSet FLAG_GOT_UNOWN_REPORT, _016F
+	Wait 5, VAR_SPECIAL_RESULT
+	ApplyMovement obj_D24R0205_gsassistantm, _0194
+	ApplyMovement obj_D24R0205_gsassistantm_2, _0194
+	ApplyMovement obj_D24R0205_gsassistantm_3, _01B8
+	ApplyMovement obj_D24R0205_gsassistantm_4, _01B8
+	WaitMovement
+	NPCMsg msg_0076_D24R0205_00000
+	GiveItemNoCheck ITEM_UNOWN_REPORT, 1
+	CloseMsg
+	ApplyMovement obj_D24R0205_gsassistantm, _01A8
+	ApplyMovement obj_D24R0205_gsassistantm_2, _01B0
+	ApplyMovement obj_D24R0205_gsassistantm_3, _01CC
+	ApplyMovement obj_D24R0205_gsassistantm_4, _01CC
+	WaitMovement
+	HidePerson obj_D24R0205_gsassistantm
+	HidePerson obj_D24R0205_gsassistantm_2
+	HidePerson obj_D24R0205_gsassistantm_3
+	HidePerson obj_D24R0205_gsassistantm_4
+	HidePerson obj_D24R0205_gsbigman
+	HidePerson obj_D24R0205_gswoman1
+	HidePerson obj_D24R0205_gsoldman1
+	SetFlag FLAG_HIDE_RUINS_OF_ALPH_ASSISTANTS
+	SetFlag FLAG_HIDE_RUINS_OF_ALPH_TOURISTS
+	SetFlag FLAG_GOT_UNOWN_REPORT
+	NPCMsg msg_0076_D24R0205_00001
+	WaitButton
+	CloseMsg
 _016F:
-	setvar VAR_UNK_40CE, 0
-	releaseall
-	end
+	SetVar VAR_UNK_40CE, 0
+	ReleaseAll
+	End
 
 scr_seq_D24R0205_001:
-	compare VAR_UNK_40CE, 1
-	goto_if_ne _018A
-	make_object_visible obj_player
+	Compare VAR_UNK_40CE, 1
+	GoToIfNe _018A
+	MakeObjectVisible obj_player
 _018A:
-	end
+	End
 
 	.balign 4, 0
 _018C:
@@ -141,53 +141,53 @@ _01CC:
 	EndMovement
 
 scr_seq_D24R0205_006:
-	scrcmd_609
-	lockall
-	apply_movement obj_D24R0205_suit, _02B0
-	toggle_following_pokemon_movement 0
-	wait_following_pokemon_movement
-	following_pokemon_movement 55
-	apply_movement obj_player, _02FC
-	wait_movement
-	wait_following_pokemon_movement
-	toggle_following_pokemon_movement 1
-	following_pokemon_movement 48
-	npc_msg msg_0076_D24R0205_00006
-	closemsg
-	apply_movement obj_D24R0205_suit, _02BC
-	wait_movement
-	npc_msg msg_0076_D24R0205_00007
-	closemsg
-	fade_out_bgm 0, 30
-	play_se SEQ_SE_GS_ZENIGAME_JOURO
-	fade_screen 6, 6, 0, RGB_BLACK
-	wait_fade
-	wait 1, VAR_SPECIAL_RESULT
-	fade_screen 6, 6, 1, RGB_BLACK
-	wait_fade
-	stop_se SEQ_SE_GS_ZENIGAME_JOURO
-	apply_movement obj_D24R0205_suit, _02E4
-	wait_movement
-	npc_msg msg_0076_D24R0205_00008
-	closemsg
-	play_se SEQ_SE_GS_ZENIGAME_JOURO
-	fade_screen 6, 6, 0, RGB_BLACK
-	wait_fade
-	wait 1, VAR_SPECIAL_RESULT
-	fade_screen 6, 6, 1, RGB_BLACK
-	wait_fade
-	stop_se SEQ_SE_GS_ZENIGAME_JOURO
-	setvar VAR_SCENE_SINJOH_MYSTRI_ROOM, 3
-	setflag FLAG_HIDE_ALPH_OUTSIDE_ARCEUS_EVENT_SUIT
-	setflag FLAG_HIDE_ALPH_MAIN_CHAMBER_ARCEUS_EVENT_PEOPLE
-	play_se SEQ_SE_DP_KAIDAN2
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	warp MAP_SINJOH_RUINS_MYSTRI_STAGE, 0, 16, 24, DIR_SOUTH
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
-	releaseall
-	end
+	ScrCmd_609
+	LockAll
+	ApplyMovement obj_D24R0205_suit, _02B0
+	ToggleFollowingPokemonMovement 0
+	WaitFollowingPokemonMovement
+	FollowingPokemonMovement 55
+	ApplyMovement obj_player, _02FC
+	WaitMovement
+	WaitFollowingPokemonMovement
+	ToggleFollowingPokemonMovement 1
+	FollowingPokemonMovement 48
+	NPCMsg msg_0076_D24R0205_00006
+	CloseMsg
+	ApplyMovement obj_D24R0205_suit, _02BC
+	WaitMovement
+	NPCMsg msg_0076_D24R0205_00007
+	CloseMsg
+	FadeOutBGM 0, 30
+	PlaySE SEQ_SE_GS_ZENIGAME_JOURO
+	FadeScreen 6, 6, 0, RGB_BLACK
+	WaitFade
+	Wait 1, VAR_SPECIAL_RESULT
+	FadeScreen 6, 6, 1, RGB_BLACK
+	WaitFade
+	StopSE SEQ_SE_GS_ZENIGAME_JOURO
+	ApplyMovement obj_D24R0205_suit, _02E4
+	WaitMovement
+	NPCMsg msg_0076_D24R0205_00008
+	CloseMsg
+	PlaySE SEQ_SE_GS_ZENIGAME_JOURO
+	FadeScreen 6, 6, 0, RGB_BLACK
+	WaitFade
+	Wait 1, VAR_SPECIAL_RESULT
+	FadeScreen 6, 6, 1, RGB_BLACK
+	WaitFade
+	StopSE SEQ_SE_GS_ZENIGAME_JOURO
+	SetVar VAR_SCENE_SINJOH_MYSTRI_ROOM, 3
+	SetFlag FLAG_HIDE_ALPH_OUTSIDE_ARCEUS_EVENT_SUIT
+	SetFlag FLAG_HIDE_ALPH_MAIN_CHAMBER_ARCEUS_EVENT_PEOPLE
+	PlaySE SEQ_SE_DP_KAIDAN2
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	Warp MAP_SINJOH_RUINS_MYSTRI_STAGE, 0, 16, 24, DIR_SOUTH
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
+	ReleaseAll
+	End
 
 	.balign 4, 0
 _02B0:
@@ -223,32 +223,32 @@ _02FC:
 	EndMovement
 
 scr_seq_D24R0205_007:
-	scrcmd_609
-	lockall
-	toggle_following_pokemon_movement 0
-	wait_following_pokemon_movement
-	following_pokemon_movement 55
-	apply_movement obj_D24R0205_suit, _0368
-	apply_movement obj_player, _0398
-	wait_movement
-	wait_following_pokemon_movement
-	toggle_following_pokemon_movement 1
-	following_pokemon_movement 48
-	apply_movement obj_player, _0390
-	wait_movement
-	npc_msg msg_0076_D24R0205_00009
-	closemsg
-	apply_movement obj_D24R0205_suit, _0380
-	wait_movement
-	npc_msg msg_0076_D24R0205_00010
-	closemsg
-	apply_movement obj_D24R0205_suit, _0388
-	wait_movement
-	hide_person obj_D24R0205_suit
-	setflag FLAG_HIDE_ALPH_MAIN_CHAMBER_ARCEUS_EVENT_PEOPLE
-	setvar VAR_SCENE_SINJOH_MYSTRI_ROOM, 10
-	releaseall
-	end
+	ScrCmd_609
+	LockAll
+	ToggleFollowingPokemonMovement 0
+	WaitFollowingPokemonMovement
+	FollowingPokemonMovement 55
+	ApplyMovement obj_D24R0205_suit, _0368
+	ApplyMovement obj_player, _0398
+	WaitMovement
+	WaitFollowingPokemonMovement
+	ToggleFollowingPokemonMovement 1
+	FollowingPokemonMovement 48
+	ApplyMovement obj_player, _0390
+	WaitMovement
+	NPCMsg msg_0076_D24R0205_00009
+	CloseMsg
+	ApplyMovement obj_D24R0205_suit, _0380
+	WaitMovement
+	NPCMsg msg_0076_D24R0205_00010
+	CloseMsg
+	ApplyMovement obj_D24R0205_suit, _0388
+	WaitMovement
+	HidePerson obj_D24R0205_suit
+	SetFlag FLAG_HIDE_ALPH_MAIN_CHAMBER_ARCEUS_EVENT_PEOPLE
+	SetVar VAR_SCENE_SINJOH_MYSTRI_ROOM, 10
+	ReleaseAll
+	End
 
 	.balign 4, 0
 _0368:
@@ -280,45 +280,45 @@ _0398:
 	EndMovement
 
 scr_seq_D24R0205_009:
-	scrcmd_609
-	lockall
-	toggle_following_pokemon_movement 0
-	wait_following_pokemon_movement
-	following_pokemon_movement 55
-	apply_movement obj_player, _045C
-	wait_movement
-	wait_following_pokemon_movement
-	toggle_following_pokemon_movement 1
-	following_pokemon_movement 48
-	play_se SEQ_SE_GS_ZENIGAME_JOURO
-	fade_screen 6, 6, 0, RGB_BLACK
-	wait_fade
-	wait 1, VAR_SPECIAL_RESULT
-	fade_screen 6, 6, 1, RGB_BLACK
-	wait_fade
-	stop_se SEQ_SE_GS_ZENIGAME_JOURO
-	apply_movement obj_player, _0468
-	wait_movement
-	play_se SEQ_SE_GS_ZENIGAME_JOURO
-	fade_screen 6, 6, 0, RGB_BLACK
-	wait_fade
-	wait 1, VAR_SPECIAL_RESULT
-	fade_screen 6, 6, 1, RGB_BLACK
-	wait_fade
-	stop_se SEQ_SE_GS_ZENIGAME_JOURO
-	setvar VAR_SCENE_SINJOH_MYSTRI_ROOM, 12
-	setvar VAR_UNK_4104, 1
-	setflag FLAG_HIDE_SINJOH_MYSTRI_SHRINE_CYNTHIA
-	setflag FLAG_UNK_2DD
-	setflag FLAG_UNK_2DB
-	play_se SEQ_SE_DP_KAIDAN2
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	warp MAP_SINJOH_RUINS_MYSTRI_STAGE, 0, 16, 24, DIR_SOUTH
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
-	releaseall
-	end
+	ScrCmd_609
+	LockAll
+	ToggleFollowingPokemonMovement 0
+	WaitFollowingPokemonMovement
+	FollowingPokemonMovement 55
+	ApplyMovement obj_player, _045C
+	WaitMovement
+	WaitFollowingPokemonMovement
+	ToggleFollowingPokemonMovement 1
+	FollowingPokemonMovement 48
+	PlaySE SEQ_SE_GS_ZENIGAME_JOURO
+	FadeScreen 6, 6, 0, RGB_BLACK
+	WaitFade
+	Wait 1, VAR_SPECIAL_RESULT
+	FadeScreen 6, 6, 1, RGB_BLACK
+	WaitFade
+	StopSE SEQ_SE_GS_ZENIGAME_JOURO
+	ApplyMovement obj_player, _0468
+	WaitMovement
+	PlaySE SEQ_SE_GS_ZENIGAME_JOURO
+	FadeScreen 6, 6, 0, RGB_BLACK
+	WaitFade
+	Wait 1, VAR_SPECIAL_RESULT
+	FadeScreen 6, 6, 1, RGB_BLACK
+	WaitFade
+	StopSE SEQ_SE_GS_ZENIGAME_JOURO
+	SetVar VAR_SCENE_SINJOH_MYSTRI_ROOM, 12
+	SetVar VAR_UNK_4104, 1
+	SetFlag FLAG_HIDE_SINJOH_MYSTRI_SHRINE_CYNTHIA
+	SetFlag FLAG_UNK_2DD
+	SetFlag FLAG_UNK_2DB
+	PlaySE SEQ_SE_DP_KAIDAN2
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	Warp MAP_SINJOH_RUINS_MYSTRI_STAGE, 0, 16, 24, DIR_SOUTH
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
+	ReleaseAll
+	End
 
 	.balign 4, 0
 _045C:
@@ -336,23 +336,23 @@ _0468:
 	EndMovement
 
 scr_seq_D24R0205_002:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	npc_msg msg_0076_D24R0205_00005
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	NPCMsg msg_0076_D24R0205_00005
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_D24R0205_003:
-	simple_npc_msg msg_0076_D24R0205_00002
-	end
+	SimpleNPCMsg msg_0076_D24R0205_00002
+	End
 
 scr_seq_D24R0205_004:
-	simple_npc_msg msg_0076_D24R0205_00003
-	end
+	SimpleNPCMsg msg_0076_D24R0205_00003
+	End
 
 scr_seq_D24R0205_005:
-	simple_npc_msg msg_0076_D24R0205_00004
-	end
+	SimpleNPCMsg msg_0076_D24R0205_00004
+	End
 	.balign 4, 0

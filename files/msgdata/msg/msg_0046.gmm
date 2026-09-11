@@ -576,7 +576,7 @@
 		<language name="English"></language>
 		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</language>
 	</row>
-	<row id="msg_0046_00120" index="120">
+	<row id="msg_0046_WhichSetOfRules" index="120">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Which set of rules would you like\nto use? {YESNO 0}</language>
 	</row>
@@ -584,7 +584,7 @@
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Battle in {STRVAR_1 26, 0, 0} Cup?{YESNO 0}</language>
 	</row>
-	<row id="msg_0046_00122" index="122">
+	<row id="msg_0046_NeedXPokemonForCup" index="122">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">You need at least {STRVAR_1 50, 1, 0} Pokémon\nthat qualify under the\f{STRVAR_1 26, 0, 0} Cup rules.</language>
 	</row>
@@ -617,15 +617,15 @@
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">{STRVAR_1 26, 0, 0}\nCUP</language>
 	</row>
-	<row id="msg_0046_00129" index="129">
+	<row id="msg_0046_Cancel" index="129">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">CANCEL</language>
 	</row>
-	<row id="msg_0046_00130" index="130">
+	<row id="msg_0046_Confirm" index="130">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">CONFIRM</language>
 	</row>
-	<row id="msg_0046_00131" index="131">
+	<row id="msg_0046_Rules" index="131">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">RULES</language>
 	</row>
@@ -649,7 +649,7 @@
 		<language name="English"></language>
 		<language name="日本語">XXXXXXXXXXXXXXXXX</language>
 	</row>
-	<row id="msg_0046_00136" index="136">
+	<row id="msg_0046_CantFormTeamWithLevelLimit" index="136">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">It’s impossible to form a team of\nPokémon that qualify under the\f{STRVAR_1 26, 0, 0} Cup rules with a\ftotal level limit of {STRVAR_1 52, 1, 0}.</language>
 	</row>

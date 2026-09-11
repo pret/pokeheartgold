@@ -50,7 +50,7 @@
 .public SaveData_GetPhoneCallPersistentState
 .public PhoneCallPersistentState_MomSavings_BalanceAction
 .public Save_Pokeathlon_Get
-.public SavePokeathlon_GetAthletePoints
+.public PokeathlonSave_GetAthletePoints
 .public memset
 .public _s32_div_f
 .public gSystem

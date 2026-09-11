@@ -405,7 +405,7 @@ void Sprite_SetDrawPriority(Sprite *sprite, u32 priority) {
     SpriteList_InsertSprite(spriteList, sprite);
 }
 
-u16 Sprite_GetDrawPriority(Sprite *sprite) {
+u32 Sprite_GetDrawPriority(Sprite *sprite) {
     return sprite->drawPriority;
 }
 

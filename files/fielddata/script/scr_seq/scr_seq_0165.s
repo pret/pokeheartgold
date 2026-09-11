@@ -5,77 +5,77 @@
 
 	.rodata
 
-	scrdef scr_seq_0165_000
-	scrdef_end
+	ScrDef scr_seq_0165_000
+	ScrDefEnd
 
 scr_seq_0165_000:
-	scrcmd_609
-	lockall
-	sys_set_sleep_flag 1
-	wait 1, VAR_SPECIAL_RESULT
-	copyvar VAR_SPECIAL_x8005, VAR_SPECIAL_x8000
-	scrcmd_547 VAR_SPECIAL_x8000
-	chatot_has_cry VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _0037
-	goto _005E
-	end
+	ScrCmd_609
+	LockAll
+	SysSetSleepFlag 1
+	Wait 1, VAR_SPECIAL_RESULT
+	CopyVar VAR_SPECIAL_x8005, VAR_SPECIAL_x8000
+	ScrCmd_547 VAR_SPECIAL_x8000
+	ChatotHasCry VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _0037
+	GoTo _005E
+	End
 
 _0037:
-	npc_msg msg_0268_00000
-	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_RESULT
-	touchscreen_menu_show
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _005E
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _00C9
-	end
+	NPCMsg msg_0268_00000
+	TouchscreenMenuHide
+	GetMenuChoice VAR_SPECIAL_RESULT
+	TouchscreenMenuShow
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _005E
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _00C9
+	End
 
 _005E:
-	fade_out_bgm 42, 10
-	npc_msg msg_0268_00008
-	add_waiting_icon
-	wait 80, VAR_SPECIAL_RESULT
-	remove_waiting_icon
-	npc_msg msg_0268_00001
-	chatot_start_recording VAR_SPECIAL_RESULT
-	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
-	wait 30, VAR_SPECIAL_RESULT
-	fade_in_bgm 10
-	wait 10, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_x8004, 0
-	goto_if_eq _00D5
-	chatot_stop_recording
-	wait 1, VAR_SPECIAL_RESULT
-	chatot_save_recording
-	wait 1, VAR_SPECIAL_RESULT
-	scrcmd_548
-	bufferpartymonnick 0, VAR_SPECIAL_x8005
-	npc_msg msg_0268_00002
-	scrcmd_549 VAR_SPECIAL_RESULT
-	play_cry SPECIES_CHATOT, 0
-	wait_cry
-	goto _00C9
-	end
+	FadeOutBGM 42, 10
+	NPCMsg msg_0268_00008
+	AddWaitingIcon
+	Wait 80, VAR_SPECIAL_RESULT
+	RemoveWaitingIcon
+	NPCMsg msg_0268_00001
+	ChatotStartRecording VAR_SPECIAL_RESULT
+	CopyVar VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
+	Wait 30, VAR_SPECIAL_RESULT
+	FadeInBGM 10
+	Wait 10, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_x8004, 0
+	GoToIfEq _00D5
+	ChatotStopRecording
+	Wait 1, VAR_SPECIAL_RESULT
+	ChatotSaveRecording
+	Wait 1, VAR_SPECIAL_RESULT
+	ScrCmd_548
+	BufferPartyMonNick 0, VAR_SPECIAL_x8005
+	NPCMsg msg_0268_00002
+	ScrCmd_549 VAR_SPECIAL_RESULT
+	PlayCry SPECIES_CHATOT, 0
+	WaitCry
+	GoTo _00C9
+	End
 
 _00C9:
-	scrcmd_453
-	closemsg
-	sys_set_sleep_flag 0
-	releaseall
-	end
+	ScrCmd_453
+	CloseMsg
+	SysSetSleepFlag 0
+	ReleaseAll
+	End
 
 _00D5:
-	bufferpartymonnick 0, VAR_SPECIAL_x8005
-	npc_msg msg_0268_00003
-	npc_msg msg_0268_00004
-	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_RESULT
-	touchscreen_menu_show
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _005E
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _00C9
-	end
+	BufferPartyMonNick 0, VAR_SPECIAL_x8005
+	NPCMsg msg_0268_00003
+	NPCMsg msg_0268_00004
+	TouchscreenMenuHide
+	GetMenuChoice VAR_SPECIAL_RESULT
+	TouchscreenMenuShow
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _005E
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _00C9
+	End
 	.balign 4, 0

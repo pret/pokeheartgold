@@ -1742,13 +1742,13 @@ ov85_021E6594: ; 0x021E6594
 	add r4, r0, #0
 	add r0, #0xcc
 	ldr r0, [r0]
-	mov r1, #0x78
+	mov r1, #0x78 ; GAME_STAT_EGGS_SPUN
 	ldr r0, [r0, #0x28]
 	bl GameStats_Inc
 	add r0, r4, #0
 	add r0, #0xcc
 	ldr r0, [r0]
-	mov r1, #0x22
+	mov r1, #0x22 ; SCORE_EVENT_SPIN_TRADE
 	ldr r0, [r0, #0x28]
 	bl GameStats_AddScore
 	add r0, r4, #0
@@ -6731,11 +6731,11 @@ ov85_021E8B08: ; 0x021E8B08
 	mov r0, #0x6f
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
-	bl sub_0200AEB0
+	bl SpriteTransfer_DeleteCharTransferTask
 	mov r0, #7
 	lsl r0, r0, #6
 	ldr r0, [r6, r0]
-	bl sub_0200B0A8
+	bl SpriteTransfer_DeletePlttTransferTask
 	mov r7, #0x63
 	mov r4, #0
 	add r5, r6, #0
@@ -7375,11 +7375,11 @@ _021E8FD8:
 	str r0, [r6, r1]
 	sub r1, #0xc
 	ldr r0, [r6, r1]
-	bl sub_0200ACF0
+	bl SpriteTransfer_CreateCharTransferTask
 	mov r0, #7
 	lsl r0, r0, #6
 	ldr r0, [r6, r0]
-	bl sub_0200AF94
+	bl SpriteTransfer_CreateExtPlttTransferTask
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -8380,7 +8380,7 @@ ov85_021E9834: ; 0x021E9834
 	mov r1, #1
 	strb r1, [r0, #0xc]
 	ldr r0, [r5, #0xc]
-	mov r1, #0x13
+	mov r1, #0x13 ; SCORE_EVENT_RECORDS_MIXED
 	ldr r0, [r0, #0x28]
 	bl GameStats_AddScore
 	mov r0, #0x3b

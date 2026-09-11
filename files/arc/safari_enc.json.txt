@@ -1,0 +1,188 @@
+{{ doNotModifyHeader }}
+
+#include "constants/species.h"
+#include "constants/safari.h"
+
+    .rodata
+## for map in encounters
+    .type sMap_{{ map.area }},@object
+    .balign 4, 0
+sMap_{{ map.area }}:
+    .byte {{ length(map.land.bonus_mons) }}
+    .byte {{ length(map.surf.bonus_mons) }}
+    .byte {{ length(map.oldrod.bonus_mons) }}
+    .byte {{ length(map.goodrod.bonus_mons) }}
+    .byte {{ length(map.superrod.bonus_mons) }}
+    .balign 4, 0
+## for mon in map.land.mons.morn
+    .short {{ mon.species }}
+    .short {{ mon.level }}
+## endfor
+## for mon in map.land.mons.day
+    .short {{ mon.species }}
+    .short {{ mon.level }}
+## endfor
+## for mon in map.land.mons.nite
+    .short {{ mon.species }}
+    .short {{ mon.level }}
+## endfor
+## for bonus in map.land.bonus_mons
+    .short {{ bonus.morn.species }}
+    .short {{ bonus.morn.level }}
+## endfor
+## for bonus in map.land.bonus_mons
+    .short {{ bonus.day.species }}
+    .short {{ bonus.day.level }}
+## endfor
+## for bonus in map.land.bonus_mons
+    .short {{ bonus.nite.species }}
+    .short {{ bonus.nite.level }}
+## endfor
+## for bonus in map.land.bonus_mons
+## for condition in bonus.conditions
+    .byte {{ condition.object_type }}
+    .byte {{ condition.count }}
+## endfor
+## for i in range(2 - length(bonus.conditions))
+    .byte 0
+    .byte 0
+## endfor
+## endfor
+## for mon in map.surf.mons.morn
+    .short {{ mon.species }}
+    .short {{ mon.level }}
+## endfor
+## for mon in map.surf.mons.day
+    .short {{ mon.species }}
+    .short {{ mon.level }}
+## endfor
+## for mon in map.surf.mons.nite
+    .short {{ mon.species }}
+    .short {{ mon.level }}
+## endfor
+## for bonus in map.surf.bonus_mons
+    .short {{ bonus.morn.species }}
+    .short {{ bonus.morn.level }}
+## endfor
+## for bonus in map.surf.bonus_mons
+    .short {{ bonus.day.species }}
+    .short {{ bonus.day.level }}
+## endfor
+## for bonus in map.surf.bonus_mons
+    .short {{ bonus.nite.species }}
+    .short {{ bonus.nite.level }}
+## endfor
+## for bonus in map.surf.bonus_mons
+## for condition in bonus.conditions
+    .byte {{ condition.object_type }}
+    .byte {{ condition.count }}
+## endfor
+## for i in range(2 - length(bonus.conditions))
+    .byte 0
+    .byte 0
+## endfor
+## endfor
+## for mon in map.oldrod.mons.morn
+    .short {{ mon.species }}
+    .short {{ mon.level }}
+## endfor
+## for mon in map.oldrod.mons.day
+    .short {{ mon.species }}
+    .short {{ mon.level }}
+## endfor
+## for mon in map.oldrod.mons.nite
+    .short {{ mon.species }}
+    .short {{ mon.level }}
+## endfor
+## for bonus in map.oldrod.bonus_mons
+    .short {{ bonus.morn.species }}
+    .short {{ bonus.morn.level }}
+## endfor
+## for bonus in map.oldrod.bonus_mons
+    .short {{ bonus.day.species }}
+    .short {{ bonus.day.level }}
+## endfor
+## for bonus in map.oldrod.bonus_mons
+    .short {{ bonus.nite.species }}
+    .short {{ bonus.nite.level }}
+## endfor
+## for bonus in map.oldrod.bonus_mons
+## for condition in bonus.conditions
+    .byte {{ condition.object_type }}
+    .byte {{ condition.count }}
+## endfor
+## for i in range(2 - length(bonus.conditions))
+    .byte 0
+    .byte 0
+## endfor
+## endfor
+## for mon in map.goodrod.mons.morn
+    .short {{ mon.species }}
+    .short {{ mon.level }}
+## endfor
+## for mon in map.goodrod.mons.day
+    .short {{ mon.species }}
+    .short {{ mon.level }}
+## endfor
+## for mon in map.goodrod.mons.nite
+    .short {{ mon.species }}
+    .short {{ mon.level }}
+## endfor
+## for bonus in map.goodrod.bonus_mons
+    .short {{ bonus.morn.species }}
+    .short {{ bonus.morn.level }}
+## endfor
+## for bonus in map.goodrod.bonus_mons
+    .short {{ bonus.day.species }}
+    .short {{ bonus.day.level }}
+## endfor
+## for bonus in map.goodrod.bonus_mons
+    .short {{ bonus.nite.species }}
+    .short {{ bonus.nite.level }}
+## endfor
+## for bonus in map.goodrod.bonus_mons
+## for condition in bonus.conditions
+    .byte {{ condition.object_type }}
+    .byte {{ condition.count }}
+## endfor
+## for i in range(2 - length(bonus.conditions))
+    .byte 0
+    .byte 0
+## endfor
+## endfor
+## for mon in map.superrod.mons.morn
+    .short {{ mon.species }}
+    .short {{ mon.level }}
+## endfor
+## for mon in map.superrod.mons.day
+    .short {{ mon.species }}
+    .short {{ mon.level }}
+## endfor
+## for mon in map.superrod.mons.nite
+    .short {{ mon.species }}
+    .short {{ mon.level }}
+## endfor
+## for bonus in map.superrod.bonus_mons
+    .short {{ bonus.morn.species }}
+    .short {{ bonus.morn.level }}
+## endfor
+## for bonus in map.superrod.bonus_mons
+    .short {{ bonus.day.species }}
+    .short {{ bonus.day.level }}
+## endfor
+## for bonus in map.superrod.bonus_mons
+    .short {{ bonus.nite.species }}
+    .short {{ bonus.nite.level }}
+## endfor
+## for bonus in map.superrod.bonus_mons
+## for condition in bonus.conditions
+    .byte {{ condition.object_type }}
+    .byte {{ condition.count }}
+## endfor
+## for i in range(2 - length(bonus.conditions))
+    .byte 0
+    .byte 0
+## endfor
+## endfor
+    .size sMap_{{ map.area }},.-sMap_{{ map.area }}
+## endfor

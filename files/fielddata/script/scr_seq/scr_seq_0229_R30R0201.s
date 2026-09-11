@@ -5,137 +5,137 @@
 
 	.rodata
 
-	scrdef scr_seq_R30R0201_000
-	scrdef scr_seq_R30R0201_001
-	scrdef scr_seq_R30R0201_002
-	scrdef scr_seq_R30R0201_003
-	scrdef_end
+	ScrDef scr_seq_R30R0201_000
+	ScrDef scr_seq_R30R0201_001
+	ScrDef scr_seq_R30R0201_002
+	ScrDef scr_seq_R30R0201_003
+	ScrDefEnd
 
 scr_seq_R30R0201_003:
-	compare VAR_SCENE_EMBEDDED_TOWER, 1
-	goto_if_eq _0021
-	end
+	Compare VAR_SCENE_EMBEDDED_TOWER, 1
+	GoToIfEq _0021
+	End
 
 _0021:
-	move_person_facing obj_R30R0201_gsgentleman, 5, 0, 6, DIR_EAST
-	end
+	MovePersonFacing obj_R30R0201_gsgentleman, 5, 0, 6, DIR_EAST
+	End
 
 scr_seq_R30R0201_001:
-	scrcmd_609
-	lockall
-	apply_movement obj_R30R0201_gsgentleman, _03AC
-	wait_movement
-	apply_movement obj_R30R0201_ookido, _041C
-	apply_movement obj_R30R0201_gsgentleman, _03B4
-	wait_movement
-	buffer_players_name 0
-	gender_msgbox msg_0377_R30R0201_00000, msg_0377_R30R0201_00001
-	closemsg
-	toggle_following_pokemon_movement 0
-	wait_following_pokemon_movement
-	following_pokemon_movement 55
-	apply_movement obj_R30R0201_gsgentleman, _03C4
-	apply_movement obj_player, _0404
-	wait_movement
-	wait_following_pokemon_movement
-	toggle_following_pokemon_movement 1
-	following_pokemon_movement 48
-	apply_movement obj_R30R0201_gsgentleman, _03E4
-	wait_movement
-	npc_msg msg_0377_R30R0201_00002
-	giveitem_no_check ITEM_MYSTERY_EGG, 1
-	npc_msg msg_0377_R30R0201_00003
-	npc_msg msg_0377_R30R0201_00004
-	closemsg
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	stop_bgm 0
-	play_fanfare SEQ_ME_ASA
-	wait_fanfare
-	heal_party
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
-	goto _02E8
-	end
+	ScrCmd_609
+	LockAll
+	ApplyMovement obj_R30R0201_gsgentleman, _03AC
+	WaitMovement
+	ApplyMovement obj_R30R0201_ookido, _041C
+	ApplyMovement obj_R30R0201_gsgentleman, _03B4
+	WaitMovement
+	BufferPlayersName 0
+	GenderMsgBox msg_0377_R30R0201_00000, msg_0377_R30R0201_00001
+	CloseMsg
+	ToggleFollowingPokemonMovement 0
+	WaitFollowingPokemonMovement
+	FollowingPokemonMovement 55
+	ApplyMovement obj_R30R0201_gsgentleman, _03C4
+	ApplyMovement obj_player, _0404
+	WaitMovement
+	WaitFollowingPokemonMovement
+	ToggleFollowingPokemonMovement 1
+	FollowingPokemonMovement 48
+	ApplyMovement obj_R30R0201_gsgentleman, _03E4
+	WaitMovement
+	NPCMsg msg_0377_R30R0201_00002
+	GiveItemNoCheck ITEM_MYSTERY_EGG, 1
+	NPCMsg msg_0377_R30R0201_00003
+	NPCMsg msg_0377_R30R0201_00004
+	CloseMsg
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	StopBGM 0
+	PlayFanfare SEQ_ME_ASA
+	WaitFanfare
+	HealParty
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
+	GoTo _02E8
+	End
 
 scr_seq_R30R0201_000:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	compare VAR_SCENE_EMBEDDED_TOWER, 4
-	goto_if_ge _00F1
-	compare VAR_SCENE_EMBEDDED_TOWER, 2
-	goto_if_ge _02CD
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	Compare VAR_SCENE_EMBEDDED_TOWER, 4
+	GoToIfGe _00F1
+	Compare VAR_SCENE_EMBEDDED_TOWER, 2
+	GoToIfGe _02CD
 _00F1:
-	goto_if_set FLAG_EXCHANGED_RED_SCALE, _019F
-	goto_if_set FLAG_GOT_RED_SCALE, _012A
-	compare VAR_SCENE_MR_POKEMONS_HOUSE, 2
-	goto_if_ge _011F
-	npc_msg msg_0377_R30R0201_00005
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	GoToIfSet FLAG_EXCHANGED_RED_SCALE, _019F
+	GoToIfSet FLAG_GOT_RED_SCALE, _012A
+	Compare VAR_SCENE_MR_POKEMONS_HOUSE, 2
+	GoToIfGe _011F
+	NPCMsg msg_0377_R30R0201_00005
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _011F:
-	npc_msg msg_0377_R30R0201_00006
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0377_R30R0201_00006
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _012A:
-	buffer_players_name 0
-	gender_msgbox msg_0377_R30R0201_00016, msg_0377_R30R0201_00017
-	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_RESULT
-	touchscreen_menu_show
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _0189
-	goto_if_no_item_space ITEM_EXP__SHARE, 1, _0194
-	callstd std_give_item_verbose
-	closemsg
-	setflag FLAG_EXCHANGED_RED_SCALE
-	takeitem_no_check ITEM_RED_SCALE, 1
-	releaseall
-	end
+	BufferPlayersName 0
+	GenderMsgBox msg_0377_R30R0201_00016, msg_0377_R30R0201_00017
+	TouchscreenMenuHide
+	GetMenuChoice VAR_SPECIAL_RESULT
+	TouchscreenMenuShow
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _0189
+	GoToIfNoItemSpace ITEM_EXP__SHARE, 1, _0194
+	CallStd std_give_item_verbose
+	CloseMsg
+	SetFlag FLAG_EXCHANGED_RED_SCALE
+	TakeItemNoCheck ITEM_RED_SCALE, 1
+	ReleaseAll
+	End
 
 _0189:
-	npc_msg msg_0377_R30R0201_00020
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0377_R30R0201_00020
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0194:
-	npc_msg msg_0377_R30R0201_00019
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0377_R30R0201_00019
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _019F:
-	goto_if_unset FLAG_UNK_107, _011F
-	npc_msg msg_0377_R30R0201_00007
-	closemsg
-	get_player_facing VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 2
-	goto_if_ne _01CE
-	apply_movement obj_R30R0201_gsgentleman, _01F8
-	goto _01F1
+	GoToIfUnset FLAG_UNK_107, _011F
+	NPCMsg msg_0377_R30R0201_00007
+	CloseMsg
+	GetPlayerFacing VAR_TEMP_x4000
+	Compare VAR_TEMP_x4000, 2
+	GoToIfNe _01CE
+	ApplyMovement obj_R30R0201_gsgentleman, _01F8
+	GoTo _01F1
 
 _01CE:
-	compare VAR_TEMP_x4000, 3
-	goto_if_ne _01E9
-	apply_movement obj_R30R0201_gsgentleman, _020C
-	goto _01F1
+	Compare VAR_TEMP_x4000, 3
+	GoToIfNe _01E9
+	ApplyMovement obj_R30R0201_gsgentleman, _020C
+	GoTo _01F1
 
 _01E9:
-	apply_movement obj_R30R0201_gsgentleman, _0220
+	ApplyMovement obj_R30R0201_gsgentleman, _0220
 _01F1:
-	wait_movement
-	releaseall
-	end
+	WaitMovement
+	ReleaseAll
+	End
 
 	.balign 4, 0
 _01F8:
@@ -162,54 +162,54 @@ _0220:
 	EndMovement
 
 scr_seq_R30R0201_002:
-	scrcmd_609
-	lockall
-	setvar VAR_SCENE_EMBEDDED_TOWER, 2
-	apply_movement obj_R30R0201_gsgentleman, _03AC
-	wait_movement
-	apply_movement obj_R30R0201_gsgentleman, _02D8
-	wait_movement
-	buffer_players_name 0
-	gender_msgbox msg_0377_R30R0201_00021, msg_0377_R30R0201_00022
-	closemsg
-	toggle_following_pokemon_movement 0
-	wait_following_pokemon_movement
-	following_pokemon_movement 55
-	apply_movement obj_R30R0201_gsgentleman, _03C4
-	apply_movement obj_player, _0404
-	wait_movement
-	wait_following_pokemon_movement
-	toggle_following_pokemon_movement 1
-	following_pokemon_movement 48
-	npc_msg msg_0377_R30R0201_00023
-	closemsg
-	apply_movement obj_R30R0201_gsgentleman, _03E4
-	wait_movement
-	buffer_players_name 0
-	get_game_version VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 7
-	goto_if_ne _02B0
-	setvar VAR_SPECIAL_x8004, 535
-	goto _02B6
+	ScrCmd_609
+	LockAll
+	SetVar VAR_SCENE_EMBEDDED_TOWER, 2
+	ApplyMovement obj_R30R0201_gsgentleman, _03AC
+	WaitMovement
+	ApplyMovement obj_R30R0201_gsgentleman, _02D8
+	WaitMovement
+	BufferPlayersName 0
+	GenderMsgBox msg_0377_R30R0201_00021, msg_0377_R30R0201_00022
+	CloseMsg
+	ToggleFollowingPokemonMovement 0
+	WaitFollowingPokemonMovement
+	FollowingPokemonMovement 55
+	ApplyMovement obj_R30R0201_gsgentleman, _03C4
+	ApplyMovement obj_player, _0404
+	WaitMovement
+	WaitFollowingPokemonMovement
+	ToggleFollowingPokemonMovement 1
+	FollowingPokemonMovement 48
+	NPCMsg msg_0377_R30R0201_00023
+	CloseMsg
+	ApplyMovement obj_R30R0201_gsgentleman, _03E4
+	WaitMovement
+	BufferPlayersName 0
+	GetGameVersion VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 7
+	GoToIfNe _02B0
+	SetVar VAR_SPECIAL_x8004, 535
+	GoTo _02B6
 
 _02B0:
-	setvar VAR_SPECIAL_x8004, 534
+	SetVar VAR_SPECIAL_x8004, 534
 _02B6:
-	setvar VAR_SPECIAL_x8005, 1
-	callstd std_give_item_verbose
-	closemsg
-	npc_msg msg_0377_R30R0201_00026
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	SetVar VAR_SPECIAL_x8005, 1
+	CallStd std_give_item_verbose
+	CloseMsg
+	NPCMsg msg_0377_R30R0201_00026
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _02CD:
-	npc_msg msg_0377_R30R0201_00027
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0377_R30R0201_00027
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 	.balign 4, 0
 _02D8:
@@ -219,57 +219,57 @@ _02D8:
 	EndMovement
 
 _02E8:
-	play_bgm SEQ_GS_OHKIDO
-	apply_movement obj_R30R0201_ookido, _0424
-	wait_movement
-	apply_movement obj_player, _0414
-	wait_movement
-	buffer_players_name 0
-	gender_msgbox msg_0377_R30R0201_00008, msg_0377_R30R0201_00009
-	closemsg
-	apply_movement obj_R30R0201_ookido, _0438
-	wait_movement
-	npc_msg msg_0377_R30R0201_00010
-	closemsg
-	apply_movement obj_R30R0201_ookido, _0444
-	wait_movement
-	npc_msg msg_0377_R30R0201_00011
-	buffer_players_name 0
-	npc_msg msg_0377_R30R0201_00012
-	give_pokedex
-	setflag FLAG_GOT_POKEDEX
-	play_fanfare SEQ_ME_ITEM
-	wait_fanfare
-	scrcmd_573
-	gender_msgbox msg_0377_R30R0201_00013, msg_0377_R30R0201_00014
-	closemsg
-	buffer_players_name 0
-	npc_msg msg_0377_R30R0201_00015
-	register_gear_number PHONE_CONTACT_PROF__OAK
-	play_fanfare SEQ_ME_POKEGEAR_REGIST
-	wait_fanfare
-	closemsg
-	apply_movement obj_R30R0201_ookido, _0450
-	wait_movement
-	play_se SEQ_SE_DP_KAIDAN2
-	hide_person obj_R30R0201_ookido
-	wait_se SEQ_SE_DP_DOOR
-	fade_out_bgm 0, 30
-	stop_bgm 0
-	reset_bgm
-	releaseall
-	setvar VAR_SCENE_MR_POKEMONS_HOUSE, 1
-	set_spawn SPAWN_CHERRYGROVE
-	setflag FLAG_HIDE_MR_POKEMONS_HOUSE_OAK
-	setflag FLAG_HIDE_COMM_CLUB_CLOSED_LADIES
-	clearflag FLAG_HIDE_COMM_CLUB_RECEPTIONISTS
-	setflag FLAG_HIDE_NEW_BARK_RIVAL
-	setvar VAR_SCENE_CHERRYGROVE_CITY_OW, 3
-	clearflag FLAG_HIDE_CHERRYGROVE_RIVAL
-	setvar VAR_SCENE_ELMS_LAB, 3
-	clearflag FLAG_HIDE_ELMS_LAB_OFFICER
-	setvar VAR_SCENE_ROUTE_30_OW, 2
-	end
+	PlayBGM SEQ_GS_OHKIDO
+	ApplyMovement obj_R30R0201_ookido, _0424
+	WaitMovement
+	ApplyMovement obj_player, _0414
+	WaitMovement
+	BufferPlayersName 0
+	GenderMsgBox msg_0377_R30R0201_00008, msg_0377_R30R0201_00009
+	CloseMsg
+	ApplyMovement obj_R30R0201_ookido, _0438
+	WaitMovement
+	NPCMsg msg_0377_R30R0201_00010
+	CloseMsg
+	ApplyMovement obj_R30R0201_ookido, _0444
+	WaitMovement
+	NPCMsg msg_0377_R30R0201_00011
+	BufferPlayersName 0
+	NPCMsg msg_0377_R30R0201_00012
+	GivePokedex
+	SetFlag FLAG_GOT_POKEDEX
+	PlayFanfare SEQ_ME_ITEM
+	WaitFanfare
+	ScrCmd_573
+	GenderMsgBox msg_0377_R30R0201_00013, msg_0377_R30R0201_00014
+	CloseMsg
+	BufferPlayersName 0
+	NPCMsg msg_0377_R30R0201_00015
+	RegisterGearNumber PHONE_CONTACT_PROF__OAK
+	PlayFanfare SEQ_ME_POKEGEAR_REGIST
+	WaitFanfare
+	CloseMsg
+	ApplyMovement obj_R30R0201_ookido, _0450
+	WaitMovement
+	PlaySE SEQ_SE_DP_KAIDAN2
+	HidePerson obj_R30R0201_ookido
+	WaitSE SEQ_SE_DP_DOOR
+	FadeOutBGM 0, 30
+	StopBGM 0
+	ResetBGM
+	ReleaseAll
+	SetVar VAR_SCENE_MR_POKEMONS_HOUSE, 1
+	SetSpawn SPAWN_CHERRYGROVE
+	SetFlag FLAG_HIDE_MR_POKEMONS_HOUSE_OAK
+	SetFlag FLAG_HIDE_COMM_CLUB_CLOSED_LADIES
+	ClearFlag FLAG_HIDE_COMM_CLUB_RECEPTIONISTS
+	SetFlag FLAG_HIDE_NEW_BARK_RIVAL
+	SetVar VAR_SCENE_CHERRYGROVE_CITY_OW, 3
+	ClearFlag FLAG_HIDE_CHERRYGROVE_RIVAL
+	SetVar VAR_SCENE_ELMS_LAB, 3
+	ClearFlag FLAG_HIDE_ELMS_LAB_OFFICER
+	SetVar VAR_SCENE_ROUTE_30_OW, 2
+	End
 
 	.balign 4, 0
 _03AC:

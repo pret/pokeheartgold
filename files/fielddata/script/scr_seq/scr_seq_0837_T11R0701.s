@@ -5,240 +5,240 @@
 
 	.rodata
 
-	scrdef scr_seq_T11R0701_000
-	scrdef scr_seq_T11R0701_001
-	scrdef scr_seq_T11R0701_002
-	scrdef scr_seq_T11R0701_003
-	scrdef scr_seq_T11R0701_004
-	scrdef scr_seq_T11R0701_005
-	scrdef_end
+	ScrDef scr_seq_T11R0701_000
+	ScrDef scr_seq_T11R0701_001
+	ScrDef scr_seq_T11R0701_002
+	ScrDef scr_seq_T11R0701_003
+	ScrDef scr_seq_T11R0701_004
+	ScrDef scr_seq_T11R0701_005
+	ScrDefEnd
 
 scr_seq_T11R0701_002:
-	setvar VAR_TEMP_x4008, 0
-	setvar VAR_TEMP_x4009, 0
-	compare VAR_UNK_4130, 3
-	goto_if_eq _0046
-	player_has_species VAR_TEMP_x4000, SPECIES_ROTOM
-	compare VAR_TEMP_x4000, 1
-	goto_if_eq _00AB
+	SetVar VAR_TEMP_x4008, 0
+	SetVar VAR_TEMP_x4009, 0
+	Compare VAR_UNK_4130, 3
+	GoToIfEq _0046
+	PlayerHasSpecies VAR_TEMP_x4000, SPECIES_ROTOM
+	Compare VAR_TEMP_x4000, 1
+	GoToIfEq _00AB
 _0046:
-	setvar VAR_TEMP_x4009, 1
-	clearflag FLAG_UNK_281
-	clearflag FLAG_UNK_282
-	goto_if_set FLAG_TRADE_STEVEN_FORRETRESS_BELDUM, _0099
-	compare VAR_UNK_4130, 4
-	goto_if_eq _0099
-	compare VAR_UNK_4130, 1
-	goto_if_le _0099
-	compare VAR_UNK_40FD, 0
-	goto_if_eq _0099
-	clearflag FLAG_HIDE_SAFFRON_CITY_STEVEN
-	compare VAR_UNK_4130, 5
-	call_if_eq _00A5
-	end
+	SetVar VAR_TEMP_x4009, 1
+	ClearFlag FLAG_UNK_281
+	ClearFlag FLAG_UNK_282
+	GoToIfSet FLAG_TRADE_STEVEN_FORRETRESS_BELDUM, _0099
+	Compare VAR_UNK_4130, 4
+	GoToIfEq _0099
+	Compare VAR_UNK_4130, 1
+	GoToIfLe _0099
+	Compare VAR_UNK_40FD, 0
+	GoToIfEq _0099
+	ClearFlag FLAG_HIDE_SAFFRON_CITY_STEVEN
+	Compare VAR_UNK_4130, 5
+	CallIfEq _00A5
+	End
 
 _0099:
-	setflag FLAG_HIDE_SAFFRON_CITY_STEVEN
-	call _00C3
-	end
+	SetFlag FLAG_HIDE_SAFFRON_CITY_STEVEN
+	Call _00C3
+	End
 
 _00A5:
-	setflag FLAG_HIDE_STEVEN_IN_HOUSE_AFTER_LATIS
-	return
+	SetFlag FLAG_HIDE_STEVEN_IN_HOUSE_AFTER_LATIS
+	Return
 
 _00AB:
-	setflag FLAG_UNK_0A0
-	setflag FLAG_UNK_281
-	setflag FLAG_UNK_282
-	setflag FLAG_HIDE_SAFFRON_CITY_STEVEN
-	call _00C3
-	end
+	SetFlag FLAG_UNK_0A0
+	SetFlag FLAG_UNK_281
+	SetFlag FLAG_UNK_282
+	SetFlag FLAG_HIDE_SAFFRON_CITY_STEVEN
+	Call _00C3
+	End
 
 _00C3:
-	setvar VAR_TEMP_x4008, 1
-	return
+	SetVar VAR_TEMP_x4008, 1
+	Return
 
 scr_seq_T11R0701_005:
-	compare VAR_TEMP_x4009, 1
-	goto_if_ne _00E0
-	move_warp 1, 23, 2
+	Compare VAR_TEMP_x4009, 1
+	GoToIfNe _00E0
+	MoveWarp 1, 23, 2
 _00E0:
-	compare VAR_TEMP_x4008, 0
-	goto_if_ne _0106
-	compare VAR_UNK_4130, 3
-	goto_if_gt _0106
-	move_person_facing obj_T11R0701_daigo, 22, 0, 8, DIR_NORTH
+	Compare VAR_TEMP_x4008, 0
+	GoToIfNe _0106
+	Compare VAR_UNK_4130, 3
+	GoToIfGt _0106
+	MovePersonFacing obj_T11R0701_daigo, 22, 0, 8, DIR_NORTH
 _0106:
-	end
+	End
 
 scr_seq_T11R0701_000:
-	simple_npc_msg msg_0537_T11R0701_00000
-	end
+	SimpleNPCMsg msg_0537_T11R0701_00000
+	End
 
 scr_seq_T11R0701_001:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	goto_if_set FLAG_GOT_UPGRADE_FROM_SAFFRON_CITY_GUARD, _015A
-	npc_msg msg_0537_T11R0701_00001
-	goto_if_no_item_space ITEM_UPGRADE, 1, _0165
-	callstd std_give_item_verbose
-	setflag FLAG_GOT_UPGRADE_FROM_SAFFRON_CITY_GUARD
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	GoToIfSet FLAG_GOT_UPGRADE_FROM_SAFFRON_CITY_GUARD, _015A
+	NPCMsg msg_0537_T11R0701_00001
+	GoToIfNoItemSpace ITEM_UPGRADE, 1, _0165
+	CallStd std_give_item_verbose
+	SetFlag FLAG_GOT_UPGRADE_FROM_SAFFRON_CITY_GUARD
 _015A:
-	npc_msg msg_0537_T11R0701_00002
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0537_T11R0701_00002
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0165:
-	callstd std_bag_is_full
-	closemsg
-	releaseall
-	end
+	CallStd std_bag_is_full
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_T11R0701_004:
-	goto_if_set FLAG_GOT_HOENN_STARTER_FROM_STEVEN, _03E8
-	compare VAR_UNK_4130, 3
-	goto_if_eq _039B
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	setvar VAR_UNK_4130, 3
-	npc_msg msg_0537_T11R0701_00014
-	closemsg
-	get_player_facing VAR_TEMP_x4002
-	compare VAR_TEMP_x4002, 0
-	goto_if_ne _01B7
-	apply_movement obj_T11R0701_daigo, _03AC
-	goto _01DA
+	GoToIfSet FLAG_GOT_HOENN_STARTER_FROM_STEVEN, _03E8
+	Compare VAR_UNK_4130, 3
+	GoToIfEq _039B
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	SetVar VAR_UNK_4130, 3
+	NPCMsg msg_0537_T11R0701_00014
+	CloseMsg
+	GetPlayerFacing VAR_TEMP_x4002
+	Compare VAR_TEMP_x4002, 0
+	GoToIfNe _01B7
+	ApplyMovement obj_T11R0701_daigo, _03AC
+	GoTo _01DA
 
 _01B7:
-	compare VAR_TEMP_x4002, 2
-	goto_if_ne _01D2
-	apply_movement obj_T11R0701_daigo, _03BC
-	goto _01DA
+	Compare VAR_TEMP_x4002, 2
+	GoToIfNe _01D2
+	ApplyMovement obj_T11R0701_daigo, _03BC
+	GoTo _01DA
 
 _01D2:
-	apply_movement obj_T11R0701_daigo, _03B4
+	ApplyMovement obj_T11R0701_daigo, _03B4
 _01DA:
-	wait_movement
-	apply_movement obj_T11R0701_daigo, _03C4
-	wait_movement
-	npc_msg msg_0537_T11R0701_00015
-	compare VAR_TEMP_x4002, 0
-	goto_if_ne _0204
-	apply_movement obj_T11R0701_daigo, _03AC
-	goto _0227
+	WaitMovement
+	ApplyMovement obj_T11R0701_daigo, _03C4
+	WaitMovement
+	NPCMsg msg_0537_T11R0701_00015
+	Compare VAR_TEMP_x4002, 0
+	GoToIfNe _0204
+	ApplyMovement obj_T11R0701_daigo, _03AC
+	GoTo _0227
 
 _0204:
-	compare VAR_TEMP_x4002, 2
-	goto_if_ne _021F
-	apply_movement obj_T11R0701_daigo, _03BC
-	goto _0227
+	Compare VAR_TEMP_x4002, 2
+	GoToIfNe _021F
+	ApplyMovement obj_T11R0701_daigo, _03BC
+	GoTo _0227
 
 _021F:
-	apply_movement obj_T11R0701_daigo, _03B4
+	ApplyMovement obj_T11R0701_daigo, _03B4
 _0227:
-	wait_movement
-	npc_msg msg_0537_T11R0701_00016
+	WaitMovement
+	NPCMsg msg_0537_T11R0701_00016
 _022C:
-	touchscreen_menu_hide
-	menu_init 1, 1, 0, 1, VAR_SPECIAL_x8004
-	menu_item_add 17, 255, 0
-	menu_item_add 18, 255, 1
-	menu_item_add 19, 255, 2
-	menu_item_add 27, 255, 3
-	menu_exec
-	touchscreen_menu_show
-	switch VAR_SPECIAL_x8004
-	case 3, _0346
-	get_party_count VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 6
-	goto_if_eq _033B
-	compare VAR_SPECIAL_x8004, 0
-	goto_if_ne _0297
-	setvar VAR_SPECIAL_x8004, 252
-	goto _02B6
+	TouchscreenMenuHide
+	MenuInit 1, 1, 0, 1, VAR_SPECIAL_x8004
+	MenuItemAdd 17, 255, 0
+	MenuItemAdd 18, 255, 1
+	MenuItemAdd 19, 255, 2
+	MenuItemAdd 27, 255, 3
+	MenuExec
+	TouchscreenMenuShow
+	Switch VAR_SPECIAL_x8004
+	Case 3, _0346
+	GetPartyCount VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 6
+	GoToIfEq _033B
+	Compare VAR_SPECIAL_x8004, 0
+	GoToIfNe _0297
+	SetVar VAR_SPECIAL_x8004, 252
+	GoTo _02B6
 
 _0297:
-	compare VAR_SPECIAL_x8004, 1
-	goto_if_ne _02B0
-	setvar VAR_SPECIAL_x8004, 255
-	goto _02B6
+	Compare VAR_SPECIAL_x8004, 1
+	GoToIfNe _02B0
+	SetVar VAR_SPECIAL_x8004, 255
+	GoTo _02B6
 
 _02B0:
-	setvar VAR_SPECIAL_x8004, 258
+	SetVar VAR_SPECIAL_x8004, 258
 _02B6:
-	buffer_species_name 1, VAR_SPECIAL_x8004, 0, 0
-	buffer_players_name 0
-	npc_msg msg_0537_T11R0701_00020
-	play_fanfare SEQ_ME_POKEGET
-	npc_msg msg_0537_T11R0701_00021
-	wait_fanfare
-	give_mon VAR_SPECIAL_x8004, 5, 0, 0, 0, VAR_SPECIAL_RESULT
-	touchscreen_menu_hide
-	npc_msg msg_0537_T11R0701_00025
-	getmenuchoice VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0351
-	touchscreen_menu_show
+	BufferSpeciesName 1, VAR_SPECIAL_x8004, 0, 0
+	BufferPlayersName 0
+	NPCMsg msg_0537_T11R0701_00020
+	PlayFanfare SEQ_ME_POKEGET
+	NPCMsg msg_0537_T11R0701_00021
+	WaitFanfare
+	GiveMon VAR_SPECIAL_x8004, 5, 0, 0, 0, VAR_SPECIAL_RESULT
+	TouchscreenMenuHide
+	NPCMsg msg_0537_T11R0701_00025
+	GetMenuChoice VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0351
+	TouchscreenMenuShow
 _02F3:
-	npc_msg msg_0537_T11R0701_00022
-	closemsg
-	get_player_facing VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 3
-	goto_if_ne _0317
-	apply_movement obj_T11R0701_daigo, _03DC
-	goto _031F
+	NPCMsg msg_0537_T11R0701_00022
+	CloseMsg
+	GetPlayerFacing VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 3
+	GoToIfNe _0317
+	ApplyMovement obj_T11R0701_daigo, _03DC
+	GoTo _031F
 
 _0317:
-	apply_movement obj_T11R0701_daigo, _03CC
+	ApplyMovement obj_T11R0701_daigo, _03CC
 _031F:
-	wait_movement
-	hide_person obj_T11R0701_daigo
-	setflag FLAG_HIDE_SAFFRON_CITY_STEVEN
-	setflag FLAG_GOT_HOENN_STARTER_FROM_STEVEN
-	setvar VAR_UNK_4130, 4
-	clearflag FLAG_HIDE_STEVEN_IN_HOUSE_AFTER_LATIS
-	releaseall
-	end
+	WaitMovement
+	HidePerson obj_T11R0701_daigo
+	SetFlag FLAG_HIDE_SAFFRON_CITY_STEVEN
+	SetFlag FLAG_GOT_HOENN_STARTER_FROM_STEVEN
+	SetVar VAR_UNK_4130, 4
+	ClearFlag FLAG_HIDE_STEVEN_IN_HOUSE_AFTER_LATIS
+	ReleaseAll
+	End
 
 _033B:
-	npc_msg msg_0537_T11R0701_00023
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0537_T11R0701_00023
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0346:
-	npc_msg msg_0537_T11R0701_00028
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0537_T11R0701_00028
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0351:
-	closemsg
-	get_party_count VAR_SPECIAL_RESULT
-	subvar VAR_SPECIAL_RESULT, 1
-	setvar VAR_TEMP_x4000, 0
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	scrcmd_815 0
-	nickname_input VAR_SPECIAL_RESULT, VAR_TEMP_x4000
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
-	compare VAR_TEMP_x4000, 1
-	goto_if_eq _02F3
-	npc_msg msg_0537_T11R0701_00026
-	goto _02F3
+	CloseMsg
+	GetPartyCount VAR_SPECIAL_RESULT
+	SubVar VAR_SPECIAL_RESULT, 1
+	SetVar VAR_TEMP_x4000, 0
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	ScrCmd_815 0
+	NicknameInput VAR_SPECIAL_RESULT, VAR_TEMP_x4000
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
+	Compare VAR_TEMP_x4000, 1
+	GoToIfEq _02F3
+	NPCMsg msg_0537_T11R0701_00026
+	GoTo _02F3
 
 _039B:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0537_T11R0701_00024
-	goto _022C
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	NPCMsg msg_0537_T11R0701_00024
+	GoTo _022C
 
 	.balign 4, 0
 _03AC:
@@ -274,86 +274,86 @@ _03DC:
 	EndMovement
 
 _03E8:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	setvar VAR_UNK_4130, 6
-	compare VAR_TEMP_x400A, 77
-	goto_if_ne _040C
-	npc_msg msg_0537_T11R0701_00008
-	goto _0415
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	SetVar VAR_UNK_4130, 6
+	Compare VAR_TEMP_x400A, 77
+	GoToIfNe _040C
+	NPCMsg msg_0537_T11R0701_00008
+	GoTo _0415
 
 _040C:
-	npc_msg msg_0537_T11R0701_00007
-	setvar VAR_TEMP_x400A, 77
+	NPCMsg msg_0537_T11R0701_00007
+	SetVar VAR_TEMP_x400A, 77
 _0415:
-	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_RESULT
-	touchscreen_menu_show
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _04EA
-	npc_msg msg_0537_T11R0701_00009
-	closemsg
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	scrcmd_566
-	get_party_selection VAR_SPECIAL_RESULT
-	restore_overworld
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
-	compare VAR_SPECIAL_RESULT, 255
-	goto_if_eq _04EA
-	load_npc_trade 12
-	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
-	mon_get_friendship VAR_TEMP_x4002, VAR_SPECIAL_x8004
-	get_partymon_species VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
-	npc_trade_get_req_species VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
-	goto_if_ne _04F5
-	npc_trade_exec VAR_SPECIAL_x8004
-	npc_trade_end
-	setflag FLAG_TRADE_STEVEN_FORRETRESS_BELDUM
-	compare VAR_TEMP_x4002, 200
-	goto_if_lt _04A2
-	npc_msg msg_0537_T11R0701_00013
-	goto _04A5
+	TouchscreenMenuHide
+	GetMenuChoice VAR_SPECIAL_RESULT
+	TouchscreenMenuShow
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _04EA
+	NPCMsg msg_0537_T11R0701_00009
+	CloseMsg
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	ScrCmd_566
+	GetPartySelection VAR_SPECIAL_RESULT
+	RestoreOverworld
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
+	Compare VAR_SPECIAL_RESULT, 255
+	GoToIfEq _04EA
+	LoadNPCTrade 12
+	CopyVar VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
+	MonGetFriendship VAR_TEMP_x4002, VAR_SPECIAL_x8004
+	GetPartyMonSpecies VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
+	NPCTradeGetReqSpecies VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
+	GoToIfNe _04F5
+	NPCTradeExec VAR_SPECIAL_x8004
+	NPCTradeEnd
+	SetFlag FLAG_TRADE_STEVEN_FORRETRESS_BELDUM
+	Compare VAR_TEMP_x4002, 200
+	GoToIfLt _04A2
+	NPCMsg msg_0537_T11R0701_00013
+	GoTo _04A5
 
 _04A2:
-	npc_msg msg_0537_T11R0701_00012
+	NPCMsg msg_0537_T11R0701_00012
 _04A5:
-	closemsg
-	get_player_facing VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 0
-	goto_if_ne _04C6
-	apply_movement obj_T11R0701_daigo, _0504
-	goto _04CE
+	CloseMsg
+	GetPlayerFacing VAR_TEMP_x4000
+	Compare VAR_TEMP_x4000, 0
+	GoToIfNe _04C6
+	ApplyMovement obj_T11R0701_daigo, _0504
+	GoTo _04CE
 
 _04C6:
-	apply_movement obj_T11R0701_daigo, _051C
+	ApplyMovement obj_T11R0701_daigo, _051C
 _04CE:
-	wait_movement
-	play_se SEQ_SE_DP_KAIDAN2
-	wait_se SEQ_SE_DP_KAIDAN2
-	hide_person obj_T11R0701_daigo
-	setflag FLAG_HIDE_SAFFRON_CITY_STEVEN
-	setvar VAR_UNK_4130, 7
-	releaseall
-	end
+	WaitMovement
+	PlaySE SEQ_SE_DP_KAIDAN2
+	WaitSE SEQ_SE_DP_KAIDAN2
+	HidePerson obj_T11R0701_daigo
+	SetFlag FLAG_HIDE_SAFFRON_CITY_STEVEN
+	SetVar VAR_UNK_4130, 7
+	ReleaseAll
+	End
 
 _04EA:
-	npc_msg msg_0537_T11R0701_00010
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0537_T11R0701_00010
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _04F5:
-	npc_trade_end
-	npc_msg msg_0537_T11R0701_00011
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCTradeEnd
+	NPCMsg msg_0537_T11R0701_00011
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 	.balign 4, 0
 _0504:
@@ -373,11 +373,11 @@ _051C:
 	EndMovement
 
 scr_seq_T11R0701_003:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	npc_msg msg_0537_T11R0701_00003
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	NPCMsg msg_0537_T11R0701_00003
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 	.balign 4, 0

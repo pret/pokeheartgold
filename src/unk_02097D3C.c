@@ -3,8 +3,8 @@
 #include "field_system.h"
 #include "heap.h"
 #include "launch_application.h"
+#include "screen_fade.h"
 #include "task.h"
-#include "unk_0200FA24.h"
 
 static BOOL Task_ViewRankingsApp(TaskManager *taskManager);
 
@@ -24,7 +24,7 @@ static BOOL Task_ViewRankingsApp(TaskManager *taskManager) {
 
     switch (taskData->state) {
     case 0:
-        BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, HEAP_ID_FIELD1);
+        BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, RGB_BLACK, 6, 1, HEAP_ID_FIELD1);
         taskData->state++;
 
         break;
@@ -47,7 +47,7 @@ static BOOL Task_ViewRankingsApp(TaskManager *taskManager) {
         break;
     case 3:
         if (sub_020505C8(fieldSystem)) {
-            BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 1, HEAP_ID_FIELD1);
+            BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_IN, FADE_TYPE_BRIGHTNESS_IN, RGB_BLACK, 6, 1, HEAP_ID_FIELD1);
             taskData->state++;
         }
 

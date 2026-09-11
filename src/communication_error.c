@@ -13,9 +13,9 @@
 #include "overlay_00_thumb.h"
 #include "pm_string.h"
 #include "render_window.h"
+#include "screen_fade.h"
 #include "system.h"
 #include "text.h"
-#include "unk_0200FA24.h"
 #include "unk_02037C94.h"
 
 static const GraphicsBanks sCommunicationErrorGraphicsBanks = {

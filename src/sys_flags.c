@@ -89,16 +89,16 @@ void SetFlag99C(SaveVarsFlags *state) {
     SetScriptFlag(state, FLAG_UNK_99C);
 }
 
-void SetFlag965(SaveVarsFlags *state) {
-    SetScriptFlag(state, FLAG_UNK_965);
+void Save_VarsFlags_SetStepTakenFlag(SaveVarsFlags *state) {
+    SetScriptFlag(state, FLAG_SYS_STEP_TAKEN);
 }
 
-void ClearFlag965(SaveVarsFlags *state) {
-    ClearScriptFlag(state, FLAG_UNK_965);
+void Save_VarsFlags_ClearStepTakenFlag(SaveVarsFlags *state) {
+    ClearScriptFlag(state, FLAG_SYS_STEP_TAKEN);
 }
 
-BOOL CheckFlag965(SaveVarsFlags *state) {
-    return CheckScriptFlag(state, FLAG_UNK_965);
+BOOL Save_VarsFlags_CheckStepTakenFlag(SaveVarsFlags *state) {
+    return CheckScriptFlag(state, FLAG_SYS_STEP_TAKEN);
 }
 
 void Save_VarsFlags_SetRocketCostumeFlag(SaveVarsFlags *state) {
@@ -134,7 +134,7 @@ void Save_VarsFlags_SetAlphPuzzleFlag(SaveVarsFlags *state, u8 flag) {
     }
 }
 
-BOOL Save_VarsFlags_CheckAlphPuzzleFlag(SaveVarsFlags *state, u8 flag) {
+BOOL Save_VarsFlags_CheckAlphPuzzleFlag(SaveVarsFlags *state, int flag) {
     BOOL ret = FALSE;
 
     switch (flag) {
@@ -328,6 +328,7 @@ void ClearFlag99A(SaveVarsFlags *state) {
 }
 
 BOOL CheckFlag99A(SaveVarsFlags *state) {
+    // called by FieldBGM_GetEffective, might be related to surf
     return CheckScriptFlag(state, FLAG_UNK_99A);
 }
 
@@ -335,8 +336,8 @@ BOOL CheckBattledSnorlax(SaveVarsFlags *state) {
     return CheckScriptFlag(state, FLAG_SNORLAX_MEET);
 }
 
-BOOL CheckBattledRedGyarados(SaveVarsFlags *state) {
-    return CheckScriptFlag(state, FLAG_RED_GYARADOS_MEET);
+BOOL CheckRocketHideoutCleared(SaveVarsFlags *state) {
+    return CheckScriptFlag(state, FLAG_ROCKET_HIDEOUT_CLEARED);
 }
 
 void ChangeFlag99D(SaveVarsFlags *state, BOOL set) {

@@ -177,9 +177,9 @@ ov109_021E5A20: ; 0x021E5A20
 	mov r1, #0
 	bl sub_0200FBF4
 	mov r0, #0
-	bl sub_0200FBDC
+	bl ResetVisibleHardwareWindows
 	mov r0, #1
-	bl sub_0200FBDC
+	bl ResetVisibleHardwareWindows
 	pop {r3, pc}
 	.balign 4, 0
 _021E5A68: .word 0xFFFFE0FF

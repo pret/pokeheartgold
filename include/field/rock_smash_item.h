@@ -1,0 +1,14 @@
+#ifndef POKEHEARTGOLD_ROCK_SMASH_ITEM_H
+#define POKEHEARTGOLD_ROCK_SMASH_ITEM_H
+
+#include "field_system.h"
+
+#define ROCK_SMASH_TYPE_DEFAULT       0
+#define ROCK_SMASH_TYPE_RUINS_OF_ALPH 1
+#define ROCK_SMASH_TYPE_CLIFF_CAVE    2
+
+#define NUM_ROCK_SMASH_TYPE 3
+
+void FieldSystem_RockSmashItemCheck(FieldSystem *fieldSystem, BOOL followMonUsingHM, u16 *itemFound, u16 *item);
+
+#endif // POKEHEARTGOLD_ROCK_SMASH_ITEM_H

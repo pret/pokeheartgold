@@ -10,7 +10,7 @@ typedef struct ApricornBoxArgs {
     u8 unk1[0x7];
     u16 *unk8;
     u32 unkC;
-    u32 unk10;
+    u32 steps;
     MenuInputStateMgr *menuInputStatePtr;
     SaveData *saveData;
 } ApricornBoxArgs;

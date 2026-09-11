@@ -5,236 +5,236 @@
 
 	.rodata
 
-	scrdef scr_seq_D35R0102_000
-	scrdef scr_seq_D35R0102_001
-	scrdef scr_seq_D35R0102_002
-	scrdef scr_seq_D35R0102_003
-	scrdef scr_seq_D35R0102_004
-	scrdef scr_seq_D35R0102_005
-	scrdef scr_seq_D35R0102_006
-	scrdef scr_seq_D35R0102_007
-	scrdef scr_seq_D35R0102_008
-	scrdef scr_seq_D35R0102_009
-	scrdef scr_seq_D35R0102_010
-	scrdef scr_seq_D35R0102_011
-	scrdef scr_seq_D35R0102_012
-	scrdef scr_seq_D35R0102_013
-	scrdef scr_seq_D35R0102_014
-	scrdef scr_seq_D35R0102_015
-	scrdef scr_seq_D35R0102_016
-	scrdef scr_seq_D35R0102_017
-	scrdef scr_seq_D35R0102_018
-	scrdef scr_seq_D35R0102_019
-	scrdef scr_seq_D35R0102_020
-	scrdef scr_seq_D35R0102_021
-	scrdef scr_seq_D35R0102_022
-	scrdef scr_seq_D35R0102_023
-	scrdef scr_seq_D35R0102_024
-	scrdef scr_seq_D35R0102_025
-	scrdef scr_seq_D35R0102_026
-	scrdef scr_seq_D35R0102_027
-	scrdef scr_seq_D35R0102_028
-	scrdef scr_seq_D35R0102_029
-	scrdef scr_seq_D35R0102_030
-	scrdef scr_seq_D35R0102_031
-	scrdef scr_seq_D35R0102_032
-	scrdef_end
+	ScrDef scr_seq_D35R0102_000
+	ScrDef scr_seq_D35R0102_001
+	ScrDef scr_seq_D35R0102_002
+	ScrDef scr_seq_D35R0102_003
+	ScrDef scr_seq_D35R0102_004
+	ScrDef scr_seq_D35R0102_005
+	ScrDef scr_seq_D35R0102_006
+	ScrDef scr_seq_D35R0102_007
+	ScrDef scr_seq_D35R0102_008
+	ScrDef scr_seq_D35R0102_009
+	ScrDef scr_seq_D35R0102_010
+	ScrDef scr_seq_D35R0102_011
+	ScrDef scr_seq_D35R0102_012
+	ScrDef scr_seq_D35R0102_013
+	ScrDef scr_seq_D35R0102_014
+	ScrDef scr_seq_D35R0102_015
+	ScrDef scr_seq_D35R0102_016
+	ScrDef scr_seq_D35R0102_017
+	ScrDef scr_seq_D35R0102_018
+	ScrDef scr_seq_D35R0102_019
+	ScrDef scr_seq_D35R0102_020
+	ScrDef scr_seq_D35R0102_021
+	ScrDef scr_seq_D35R0102_022
+	ScrDef scr_seq_D35R0102_023
+	ScrDef scr_seq_D35R0102_024
+	ScrDef scr_seq_D35R0102_025
+	ScrDef scr_seq_D35R0102_026
+	ScrDef scr_seq_D35R0102_027
+	ScrDef scr_seq_D35R0102_028
+	ScrDef scr_seq_D35R0102_029
+	ScrDef scr_seq_D35R0102_030
+	ScrDef scr_seq_D35R0102_031
+	ScrDef scr_seq_D35R0102_032
+	ScrDefEnd
 
 scr_seq_D35R0102_032:
-	end
+	End
 
 scr_seq_D35R0102_031:
-	compare VAR_UNK_40AC, 4
-	goto_if_eq _00BE
-	compare VAR_UNK_40AC, 5
-	goto_if_eq _00BE
-	compare VAR_UNK_40AC, 6
-	goto_if_eq _00BE
-	compare VAR_UNK_40AC, 7
-	goto_if_eq _00BE
-	end
+	Compare VAR_UNK_40AC, 4
+	GoToIfEq _00BE
+	Compare VAR_UNK_40AC, 5
+	GoToIfEq _00BE
+	Compare VAR_UNK_40AC, 6
+	GoToIfEq _00BE
+	Compare VAR_UNK_40AC, 7
+	GoToIfEq _00BE
+	End
 
 _00BE:
-	setvar VAR_UNK_40AC, 8
-	setvar VAR_UNK_40A9, 2
-	setflag FLAG_HIDE_ROCKET_HIDEOUT_B2F_MURKROW_1
-	setflag FLAG_HIDE_ROCKET_HIDEOUT_B3F_MURKROW_2
-	setflag FLAG_HIDE_ROCKET_HIDEOUT_B2F_MURKROW_2
-	clearflag FLAG_HIDE_ROCKET_HIDEOUT_B2F_MURKROW_3
-	end
+	SetVar VAR_UNK_40AC, 8
+	SetVar VAR_UNK_40A9, 2
+	SetFlag FLAG_HIDE_ROCKET_HIDEOUT_B2F_MURKROW_1
+	SetFlag FLAG_HIDE_ROCKET_HIDEOUT_B3F_MURKROW_2
+	SetFlag FLAG_HIDE_ROCKET_HIDEOUT_B2F_MURKROW_2
+	ClearFlag FLAG_HIDE_ROCKET_HIDEOUT_B2F_MURKROW_3
+	End
 
 scr_seq_D35R0102_030:
-	compare VAR_UNK_40AC, 9
-	call_if_ge _025D
-	compare VAR_UNK_40AD, 2
-	goto_if_ne _0108
-	move_person_facing obj_D35R0102_aji_peru, 44, 0, 3, DIR_WEST
-	goto _0133
+	Compare VAR_UNK_40AC, 9
+	CallIfGe _025D
+	Compare VAR_UNK_40AD, 2
+	GoToIfNe _0108
+	MovePersonFacing obj_D35R0102_aji_peru, 44, 0, 3, DIR_WEST
+	GoTo _0133
 
 _0108:
-	compare VAR_UNK_40AD, 1
-	goto_if_ne _0127
-	move_person_facing obj_D35R0102_aji_peru, 44, 0, 3, DIR_SOUTH
-	goto _0133
+	Compare VAR_UNK_40AD, 1
+	GoToIfNe _0127
+	MovePersonFacing obj_D35R0102_aji_peru, 44, 0, 3, DIR_SOUTH
+	GoTo _0133
 
 _0127:
-	move_person_facing obj_D35R0102_aji_peru, 44, 0, 3, DIR_NORTH
+	MovePersonFacing obj_D35R0102_aji_peru, 44, 0, 3, DIR_NORTH
 _0133:
-	compare VAR_UNK_40AE, 2
-	goto_if_ne _0152
-	move_person_facing obj_D35R0102_aji_peru_2, 18, 0, 3, DIR_WEST
-	goto _017D
+	Compare VAR_UNK_40AE, 2
+	GoToIfNe _0152
+	MovePersonFacing obj_D35R0102_aji_peru_2, 18, 0, 3, DIR_WEST
+	GoTo _017D
 
 _0152:
-	compare VAR_UNK_40AE, 1
-	goto_if_ne _0171
-	move_person_facing obj_D35R0102_aji_peru_2, 18, 0, 3, DIR_SOUTH
-	goto _017D
+	Compare VAR_UNK_40AE, 1
+	GoToIfNe _0171
+	MovePersonFacing obj_D35R0102_aji_peru_2, 18, 0, 3, DIR_SOUTH
+	GoTo _017D
 
 _0171:
-	move_person_facing obj_D35R0102_aji_peru_2, 18, 0, 3, DIR_NORTH
+	MovePersonFacing obj_D35R0102_aji_peru_2, 18, 0, 3, DIR_NORTH
 _017D:
-	compare VAR_UNK_40AF, 2
-	goto_if_ne _019C
-	move_person_facing obj_D35R0102_aji_peru_3, 44, 0, 10, DIR_WEST
-	goto _01C7
+	Compare VAR_UNK_40AF, 2
+	GoToIfNe _019C
+	MovePersonFacing obj_D35R0102_aji_peru_3, 44, 0, 10, DIR_WEST
+	GoTo _01C7
 
 _019C:
-	compare VAR_UNK_40AF, 1
-	goto_if_ne _01BB
-	move_person_facing obj_D35R0102_aji_peru_3, 44, 0, 10, DIR_SOUTH
-	goto _01C7
+	Compare VAR_UNK_40AF, 1
+	GoToIfNe _01BB
+	MovePersonFacing obj_D35R0102_aji_peru_3, 44, 0, 10, DIR_SOUTH
+	GoTo _01C7
 
 _01BB:
-	move_person_facing obj_D35R0102_aji_peru_3, 44, 0, 10, DIR_NORTH
+	MovePersonFacing obj_D35R0102_aji_peru_3, 44, 0, 10, DIR_NORTH
 _01C7:
-	compare VAR_UNK_40B0, 2
-	goto_if_ne _01E6
-	move_person_facing obj_D35R0102_aji_peru_4, 44, 0, 28, DIR_WEST
-	goto _0211
+	Compare VAR_UNK_40B0, 2
+	GoToIfNe _01E6
+	MovePersonFacing obj_D35R0102_aji_peru_4, 44, 0, 28, DIR_WEST
+	GoTo _0211
 
 _01E6:
-	compare VAR_UNK_40B0, 1
-	goto_if_ne _0205
-	move_person_facing obj_D35R0102_aji_peru_4, 44, 0, 28, DIR_SOUTH
-	goto _0211
+	Compare VAR_UNK_40B0, 1
+	GoToIfNe _0205
+	MovePersonFacing obj_D35R0102_aji_peru_4, 44, 0, 28, DIR_SOUTH
+	GoTo _0211
 
 _0205:
-	move_person_facing obj_D35R0102_aji_peru_4, 44, 0, 28, DIR_NORTH
+	MovePersonFacing obj_D35R0102_aji_peru_4, 44, 0, 28, DIR_NORTH
 _0211:
-	compare VAR_UNK_40B1, 2
-	goto_if_ne _0230
-	move_person_facing obj_D35R0102_aji_peru_5, 18, 0, 28, DIR_WEST
-	goto _025B
+	Compare VAR_UNK_40B1, 2
+	GoToIfNe _0230
+	MovePersonFacing obj_D35R0102_aji_peru_5, 18, 0, 28, DIR_WEST
+	GoTo _025B
 
 _0230:
-	compare VAR_UNK_40B1, 1
-	goto_if_ne _024F
-	move_person_facing obj_D35R0102_aji_peru_5, 18, 0, 28, DIR_SOUTH
-	goto _025B
+	Compare VAR_UNK_40B1, 1
+	GoToIfNe _024F
+	MovePersonFacing obj_D35R0102_aji_peru_5, 18, 0, 28, DIR_SOUTH
+	GoTo _025B
 
 _024F:
-	move_person_facing obj_D35R0102_aji_peru_5, 18, 0, 28, DIR_NORTH
+	MovePersonFacing obj_D35R0102_aji_peru_5, 18, 0, 28, DIR_NORTH
 _025B:
-	end
+	End
 
 _025D:
-	setvar VAR_UNK_40AD, 2
-	setvar VAR_UNK_40AE, 2
-	setvar VAR_UNK_40AF, 2
-	setvar VAR_UNK_40B0, 2
-	setvar VAR_UNK_40B1, 2
-	return
+	SetVar VAR_UNK_40AD, 2
+	SetVar VAR_UNK_40AE, 2
+	SetVar VAR_UNK_40AF, 2
+	SetVar VAR_UNK_40B0, 2
+	SetVar VAR_UNK_40B1, 2
+	Return
 
 scr_seq_D35R0102_000:
-	scrcmd_609
-	lockall
-	apply_movement obj_player, _0428
-	wait_movement
-	apply_movement obj_D35R0102_aji_peru, _0454
-	wait_movement
-	play_se SEQ_SE_GS_AJITO_SIREN
-	scrcmd_709
-	stop_se SEQ_SE_GS_AJITO_SIREN
-	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
-	compare VAR_TEMP_x4001, 4
-	goto_if_ne _02C4
-	addvar VAR_TEMP_x4001, 1
-	goto _02D0
+	ScrCmd_609
+	LockAll
+	ApplyMovement obj_player, _0428
+	WaitMovement
+	ApplyMovement obj_D35R0102_aji_peru, _0454
+	WaitMovement
+	PlaySE SEQ_SE_GS_AJITO_SIREN
+	ScrCmd_709
+	StopSE SEQ_SE_GS_AJITO_SIREN
+	GetPlayerCoords VAR_TEMP_x4000, VAR_TEMP_x4001
+	Compare VAR_TEMP_x4001, 4
+	GoToIfNe _02C4
+	AddVar VAR_TEMP_x4001, 1
+	GoTo _02D0
 
 _02BE:
-	goto _02D0
+	GoTo _02D0
 
 _02C4:
-	subvar VAR_TEMP_x4001, 1
-	goto _036C
+	SubVar VAR_TEMP_x4001, 1
+	GoTo _036C
 
 _02D0:
-	move_person obj_D35R0102_rocketm, 33, 0
-	clearflag FLAG_UNK_1E8
-	show_person obj_D35R0102_rocketm
-	move_person_facing obj_D35R0102_rocketm, 33, 0, VAR_TEMP_x4001, DIR_WEST
-	apply_movement obj_D35R0102_rocketm, _0460
-	wait_movement
-	apply_movement obj_player, _0478
-	wait_movement
-	npc_msg msg_0112_D35R0102_00000
-	closemsg
-	trainer_battle TRAINER_TEAM_ROCKET_GRUNT_20, 0, 0, 0
-	check_battle_won VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0C03
-	apply_movement obj_D35R0102_rocketm, _0490
-	wait_movement
-	move_person_facing obj_D35R0102_rocketm, 33, 0, VAR_TEMP_x4001, DIR_EAST
-	apply_movement obj_D35R0102_rocketm, _0460
-	wait_movement
-	npc_msg msg_0112_D35R0102_00001
-	closemsg
-	trainer_battle TRAINER_TEAM_ROCKET_GRUNT_21, 0, 0, 0
-	check_battle_won VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0C03
-	apply_movement obj_D35R0102_rocketm, _0490
-	wait_movement
-	goto _0402
+	MovePerson obj_D35R0102_rocketm, 33, 0
+	ClearFlag FLAG_UNK_1E8
+	ShowPerson obj_D35R0102_rocketm
+	MovePersonFacing obj_D35R0102_rocketm, 33, 0, VAR_TEMP_x4001, DIR_WEST
+	ApplyMovement obj_D35R0102_rocketm, _0460
+	WaitMovement
+	ApplyMovement obj_player, _0478
+	WaitMovement
+	NPCMsg msg_0112_D35R0102_00000
+	CloseMsg
+	TrainerBattle TRAINER_TEAM_ROCKET_GRUNT_20, 0, 0, 0
+	CheckBattleWon VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0C03
+	ApplyMovement obj_D35R0102_rocketm, _0490
+	WaitMovement
+	MovePersonFacing obj_D35R0102_rocketm, 33, 0, VAR_TEMP_x4001, DIR_EAST
+	ApplyMovement obj_D35R0102_rocketm, _0460
+	WaitMovement
+	NPCMsg msg_0112_D35R0102_00001
+	CloseMsg
+	TrainerBattle TRAINER_TEAM_ROCKET_GRUNT_21, 0, 0, 0
+	CheckBattleWon VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0C03
+	ApplyMovement obj_D35R0102_rocketm, _0490
+	WaitMovement
+	GoTo _0402
 
 _036C:
-	move_person obj_D35R0102_rocketm, 33, 0
-	clearflag FLAG_UNK_1E8
-	show_person obj_D35R0102_rocketm
-	move_person_facing obj_D35R0102_rocketm, 33, 0, VAR_TEMP_x4001, DIR_WEST
-	apply_movement obj_D35R0102_rocketm, _046C
-	wait_movement
-	apply_movement obj_player, _0484
-	wait_movement
-	npc_msg msg_0112_D35R0102_00000
-	closemsg
-	trainer_battle TRAINER_TEAM_ROCKET_GRUNT_20, 0, 0, 0
-	check_battle_won VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0C03
-	apply_movement obj_D35R0102_rocketm, _0490
-	wait_movement
-	move_person_facing obj_D35R0102_rocketm, 33, 0, VAR_TEMP_x4001, DIR_EAST
-	apply_movement obj_D35R0102_rocketm, _046C
-	wait_movement
-	npc_msg msg_0112_D35R0102_00001
-	closemsg
-	trainer_battle TRAINER_TEAM_ROCKET_GRUNT_21, 0, 0, 0
-	check_battle_won VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0C03
-	apply_movement obj_D35R0102_rocketm, _0490
-	wait_movement
+	MovePerson obj_D35R0102_rocketm, 33, 0
+	ClearFlag FLAG_UNK_1E8
+	ShowPerson obj_D35R0102_rocketm
+	MovePersonFacing obj_D35R0102_rocketm, 33, 0, VAR_TEMP_x4001, DIR_WEST
+	ApplyMovement obj_D35R0102_rocketm, _046C
+	WaitMovement
+	ApplyMovement obj_player, _0484
+	WaitMovement
+	NPCMsg msg_0112_D35R0102_00000
+	CloseMsg
+	TrainerBattle TRAINER_TEAM_ROCKET_GRUNT_20, 0, 0, 0
+	CheckBattleWon VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0C03
+	ApplyMovement obj_D35R0102_rocketm, _0490
+	WaitMovement
+	MovePersonFacing obj_D35R0102_rocketm, 33, 0, VAR_TEMP_x4001, DIR_EAST
+	ApplyMovement obj_D35R0102_rocketm, _046C
+	WaitMovement
+	NPCMsg msg_0112_D35R0102_00001
+	CloseMsg
+	TrainerBattle TRAINER_TEAM_ROCKET_GRUNT_21, 0, 0, 0
+	CheckBattleWon VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0C03
+	ApplyMovement obj_D35R0102_rocketm, _0490
+	WaitMovement
 _0402:
-	move_person_facing obj_D35R0102_rocketm, 37, 0, 0, DIR_WEST
-	setflag FLAG_UNK_1E8
-	setvar VAR_UNK_40AD, 2
-	apply_movement obj_D35R0102_aji_peru, _049C
-	wait_movement
-	releaseall
-	end
+	MovePersonFacing obj_D35R0102_rocketm, 37, 0, 0, DIR_WEST
+	SetFlag FLAG_UNK_1E8
+	SetVar VAR_UNK_40AD, 2
+	ApplyMovement obj_D35R0102_aji_peru, _049C
+	WaitMovement
+	ReleaseAll
+	End
 
 	.balign 4, 0
 _0428:
@@ -302,97 +302,97 @@ _04AC:
 	EndMovement
 
 scr_seq_D35R0102_005:
-	scrcmd_609
-	lockall
-	apply_movement obj_player, _0428
-	wait_movement
-	apply_movement obj_D35R0102_aji_peru_2, _0454
-	wait_movement
-	play_se SEQ_SE_GS_AJITO_SIREN
-	scrcmd_709
-	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
-	compare VAR_TEMP_x4001, 4
-	goto_if_ne _04F7
-	addvar VAR_TEMP_x4001, 1
-	goto _0503
+	ScrCmd_609
+	LockAll
+	ApplyMovement obj_player, _0428
+	WaitMovement
+	ApplyMovement obj_D35R0102_aji_peru_2, _0454
+	WaitMovement
+	PlaySE SEQ_SE_GS_AJITO_SIREN
+	ScrCmd_709
+	GetPlayerCoords VAR_TEMP_x4000, VAR_TEMP_x4001
+	Compare VAR_TEMP_x4001, 4
+	GoToIfNe _04F7
+	AddVar VAR_TEMP_x4001, 1
+	GoTo _0503
 
 _04F1:
-	goto _0503
+	GoTo _0503
 
 _04F7:
-	subvar VAR_TEMP_x4001, 1
-	goto _05A9
+	SubVar VAR_TEMP_x4001, 1
+	GoTo _05A9
 
 _0503:
-	move_person obj_D35R0102_rocketm, 27, 0
-	clearflag FLAG_UNK_1E8
-	show_person obj_D35R0102_rocketm
-	move_person_facing obj_D35R0102_rocketm, 27, 0, VAR_TEMP_x4001, DIR_WEST
-	apply_movement obj_D35R0102_rocketm, _0668
-	wait_movement
-	apply_movement obj_player, _0478
-	wait_movement
-	npc_msg msg_0112_D35R0102_00000
-	closemsg
-	trainer_battle TRAINER_TEAM_ROCKET_GRUNT_20, 0, 0, 0
-	check_battle_won VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0C03
-	apply_movement obj_D35R0102_rocketm, _06C8
-	wait_movement
-	move_person_facing obj_D35R0102_rocketm, 27, 0, VAR_TEMP_x4001, DIR_WEST
-	apply_movement obj_D35R0102_rocketm, _0668
-	wait_movement
-	apply_movement obj_player, _0478
-	wait_movement
-	npc_msg msg_0112_D35R0102_00001
-	closemsg
-	trainer_battle TRAINER_TEAM_ROCKET_GRUNT_21, 0, 0, 0
-	check_battle_won VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0C03
-	apply_movement obj_D35R0102_rocketm, _06C8
-	wait_movement
-	goto _0649
+	MovePerson obj_D35R0102_rocketm, 27, 0
+	ClearFlag FLAG_UNK_1E8
+	ShowPerson obj_D35R0102_rocketm
+	MovePersonFacing obj_D35R0102_rocketm, 27, 0, VAR_TEMP_x4001, DIR_WEST
+	ApplyMovement obj_D35R0102_rocketm, _0668
+	WaitMovement
+	ApplyMovement obj_player, _0478
+	WaitMovement
+	NPCMsg msg_0112_D35R0102_00000
+	CloseMsg
+	TrainerBattle TRAINER_TEAM_ROCKET_GRUNT_20, 0, 0, 0
+	CheckBattleWon VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0C03
+	ApplyMovement obj_D35R0102_rocketm, _06C8
+	WaitMovement
+	MovePersonFacing obj_D35R0102_rocketm, 27, 0, VAR_TEMP_x4001, DIR_WEST
+	ApplyMovement obj_D35R0102_rocketm, _0668
+	WaitMovement
+	ApplyMovement obj_player, _0478
+	WaitMovement
+	NPCMsg msg_0112_D35R0102_00001
+	CloseMsg
+	TrainerBattle TRAINER_TEAM_ROCKET_GRUNT_21, 0, 0, 0
+	CheckBattleWon VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0C03
+	ApplyMovement obj_D35R0102_rocketm, _06C8
+	WaitMovement
+	GoTo _0649
 
 _05A9:
-	move_person obj_D35R0102_rocketm, 27, 0
-	clearflag FLAG_UNK_1E8
-	show_person obj_D35R0102_rocketm
-	move_person_facing obj_D35R0102_rocketm, 27, 0, VAR_TEMP_x4001, DIR_WEST
-	apply_movement obj_D35R0102_rocketm, _0674
-	wait_movement
-	apply_movement obj_player, _0484
-	wait_movement
-	npc_msg msg_0112_D35R0102_00000
-	closemsg
-	trainer_battle TRAINER_TEAM_ROCKET_GRUNT_20, 0, 0, 0
-	check_battle_won VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0C03
-	apply_movement obj_D35R0102_rocketm, _06C8
-	wait_movement
-	move_person_facing obj_D35R0102_rocketm, 27, 0, VAR_TEMP_x4001, DIR_WEST
-	apply_movement obj_D35R0102_rocketm, _0674
-	wait_movement
-	apply_movement obj_player, _0484
-	wait_movement
-	npc_msg msg_0112_D35R0102_00001
-	closemsg
-	trainer_battle TRAINER_TEAM_ROCKET_GRUNT_21, 0, 0, 0
-	check_battle_won VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0C03
-	apply_movement obj_D35R0102_rocketm, _06C8
-	wait_movement
+	MovePerson obj_D35R0102_rocketm, 27, 0
+	ClearFlag FLAG_UNK_1E8
+	ShowPerson obj_D35R0102_rocketm
+	MovePersonFacing obj_D35R0102_rocketm, 27, 0, VAR_TEMP_x4001, DIR_WEST
+	ApplyMovement obj_D35R0102_rocketm, _0674
+	WaitMovement
+	ApplyMovement obj_player, _0484
+	WaitMovement
+	NPCMsg msg_0112_D35R0102_00000
+	CloseMsg
+	TrainerBattle TRAINER_TEAM_ROCKET_GRUNT_20, 0, 0, 0
+	CheckBattleWon VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0C03
+	ApplyMovement obj_D35R0102_rocketm, _06C8
+	WaitMovement
+	MovePersonFacing obj_D35R0102_rocketm, 27, 0, VAR_TEMP_x4001, DIR_WEST
+	ApplyMovement obj_D35R0102_rocketm, _0674
+	WaitMovement
+	ApplyMovement obj_player, _0484
+	WaitMovement
+	NPCMsg msg_0112_D35R0102_00001
+	CloseMsg
+	TrainerBattle TRAINER_TEAM_ROCKET_GRUNT_21, 0, 0, 0
+	CheckBattleWon VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0C03
+	ApplyMovement obj_D35R0102_rocketm, _06C8
+	WaitMovement
 _0649:
-	hide_person obj_D35R0102_rocketm
-	setflag FLAG_UNK_1E8
-	setvar VAR_UNK_40AE, 2
-	apply_movement obj_D35R0102_aji_peru_2, _049C
-	wait_movement
-	releaseall
-	end
+	HidePerson obj_D35R0102_rocketm
+	SetFlag FLAG_UNK_1E8
+	SetVar VAR_UNK_40AE, 2
+	ApplyMovement obj_D35R0102_aji_peru_2, _049C
+	WaitMovement
+	ReleaseAll
+	End
 
 	.balign 4, 0
 _0668:
@@ -467,754 +467,754 @@ _06EC:
 	EndMovement
 
 scr_seq_D35R0102_006:
-	scrcmd_609
-	lockall
-	apply_movement obj_player, _0428
-	wait_movement
-	apply_movement obj_D35R0102_aji_peru_3, _0454
-	wait_movement
-	play_se SEQ_SE_GS_AJITO_SIREN
-	scrcmd_709
-	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
-	compare VAR_TEMP_x4001, 11
-	goto_if_ne _073B
-	addvar VAR_TEMP_x4001, 1
-	goto _0747
+	ScrCmd_609
+	LockAll
+	ApplyMovement obj_player, _0428
+	WaitMovement
+	ApplyMovement obj_D35R0102_aji_peru_3, _0454
+	WaitMovement
+	PlaySE SEQ_SE_GS_AJITO_SIREN
+	ScrCmd_709
+	GetPlayerCoords VAR_TEMP_x4000, VAR_TEMP_x4001
+	Compare VAR_TEMP_x4001, 11
+	GoToIfNe _073B
+	AddVar VAR_TEMP_x4001, 1
+	GoTo _0747
 
 _0735:
-	goto _0747
+	GoTo _0747
 
 _073B:
-	subvar VAR_TEMP_x4001, 1
-	goto _07ED
+	SubVar VAR_TEMP_x4001, 1
+	GoTo _07ED
 
 _0747:
-	move_person obj_D35R0102_rocketm, 33, 0
-	clearflag FLAG_UNK_1E8
-	show_person obj_D35R0102_rocketm
-	move_person_facing obj_D35R0102_rocketm, 33, 0, VAR_TEMP_x4001, DIR_WEST
-	apply_movement obj_D35R0102_rocketm, _0680
-	wait_movement
-	apply_movement obj_player, _0478
-	wait_movement
-	npc_msg msg_0112_D35R0102_00000
-	closemsg
-	trainer_battle TRAINER_TEAM_ROCKET_GRUNT_20, 0, 0, 0
-	check_battle_won VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0C03
-	apply_movement obj_D35R0102_rocketm, _06D4
-	wait_movement
-	move_person_facing obj_D35R0102_rocketm, 33, 0, VAR_TEMP_x4001, DIR_WEST
-	apply_movement obj_D35R0102_rocketm, _0680
-	wait_movement
-	apply_movement obj_player, _0478
-	wait_movement
-	npc_msg msg_0112_D35R0102_00001
-	closemsg
-	trainer_battle TRAINER_TEAM_ROCKET_GRUNT_21, 0, 0, 0
-	check_battle_won VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0C03
-	apply_movement obj_D35R0102_rocketm, _06D4
-	wait_movement
-	goto _088D
+	MovePerson obj_D35R0102_rocketm, 33, 0
+	ClearFlag FLAG_UNK_1E8
+	ShowPerson obj_D35R0102_rocketm
+	MovePersonFacing obj_D35R0102_rocketm, 33, 0, VAR_TEMP_x4001, DIR_WEST
+	ApplyMovement obj_D35R0102_rocketm, _0680
+	WaitMovement
+	ApplyMovement obj_player, _0478
+	WaitMovement
+	NPCMsg msg_0112_D35R0102_00000
+	CloseMsg
+	TrainerBattle TRAINER_TEAM_ROCKET_GRUNT_20, 0, 0, 0
+	CheckBattleWon VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0C03
+	ApplyMovement obj_D35R0102_rocketm, _06D4
+	WaitMovement
+	MovePersonFacing obj_D35R0102_rocketm, 33, 0, VAR_TEMP_x4001, DIR_WEST
+	ApplyMovement obj_D35R0102_rocketm, _0680
+	WaitMovement
+	ApplyMovement obj_player, _0478
+	WaitMovement
+	NPCMsg msg_0112_D35R0102_00001
+	CloseMsg
+	TrainerBattle TRAINER_TEAM_ROCKET_GRUNT_21, 0, 0, 0
+	CheckBattleWon VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0C03
+	ApplyMovement obj_D35R0102_rocketm, _06D4
+	WaitMovement
+	GoTo _088D
 
 _07ED:
-	move_person obj_D35R0102_rocketm, 33, 0
-	clearflag FLAG_UNK_1E8
-	show_person obj_D35R0102_rocketm
-	move_person_facing obj_D35R0102_rocketm, 33, 0, VAR_TEMP_x4001, DIR_WEST
-	apply_movement obj_D35R0102_rocketm, _068C
-	wait_movement
-	apply_movement obj_player, _0484
-	wait_movement
-	npc_msg msg_0112_D35R0102_00000
-	closemsg
-	trainer_battle TRAINER_TEAM_ROCKET_GRUNT_20, 0, 0, 0
-	check_battle_won VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0C03
-	apply_movement obj_D35R0102_rocketm, _06D4
-	wait_movement
-	move_person_facing obj_D35R0102_rocketm, 33, 0, VAR_TEMP_x4001, DIR_WEST
-	apply_movement obj_D35R0102_rocketm, _068C
-	wait_movement
-	apply_movement obj_player, _0484
-	wait_movement
-	npc_msg msg_0112_D35R0102_00001
-	closemsg
-	trainer_battle TRAINER_TEAM_ROCKET_GRUNT_21, 0, 0, 0
-	check_battle_won VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0C03
-	apply_movement obj_D35R0102_rocketm, _06D4
-	wait_movement
+	MovePerson obj_D35R0102_rocketm, 33, 0
+	ClearFlag FLAG_UNK_1E8
+	ShowPerson obj_D35R0102_rocketm
+	MovePersonFacing obj_D35R0102_rocketm, 33, 0, VAR_TEMP_x4001, DIR_WEST
+	ApplyMovement obj_D35R0102_rocketm, _068C
+	WaitMovement
+	ApplyMovement obj_player, _0484
+	WaitMovement
+	NPCMsg msg_0112_D35R0102_00000
+	CloseMsg
+	TrainerBattle TRAINER_TEAM_ROCKET_GRUNT_20, 0, 0, 0
+	CheckBattleWon VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0C03
+	ApplyMovement obj_D35R0102_rocketm, _06D4
+	WaitMovement
+	MovePersonFacing obj_D35R0102_rocketm, 33, 0, VAR_TEMP_x4001, DIR_WEST
+	ApplyMovement obj_D35R0102_rocketm, _068C
+	WaitMovement
+	ApplyMovement obj_player, _0484
+	WaitMovement
+	NPCMsg msg_0112_D35R0102_00001
+	CloseMsg
+	TrainerBattle TRAINER_TEAM_ROCKET_GRUNT_21, 0, 0, 0
+	CheckBattleWon VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0C03
+	ApplyMovement obj_D35R0102_rocketm, _06D4
+	WaitMovement
 _088D:
-	hide_person obj_D35R0102_rocketm
-	setflag FLAG_UNK_1E8
-	setvar VAR_UNK_40AF, 2
-	apply_movement obj_D35R0102_aji_peru_3, _049C
-	wait_movement
-	releaseall
-	end
+	HidePerson obj_D35R0102_rocketm
+	SetFlag FLAG_UNK_1E8
+	SetVar VAR_UNK_40AF, 2
+	ApplyMovement obj_D35R0102_aji_peru_3, _049C
+	WaitMovement
+	ReleaseAll
+	End
 
 scr_seq_D35R0102_007:
-	scrcmd_609
-	lockall
-	apply_movement obj_player, _0428
-	wait_movement
-	apply_movement obj_D35R0102_aji_peru_4, _0454
-	wait_movement
-	play_se SEQ_SE_GS_AJITO_SIREN
-	scrcmd_709
-	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
-	compare VAR_TEMP_x4001, 29
-	goto_if_ne _08EC
-	addvar VAR_TEMP_x4001, 1
-	goto _08F8
+	ScrCmd_609
+	LockAll
+	ApplyMovement obj_player, _0428
+	WaitMovement
+	ApplyMovement obj_D35R0102_aji_peru_4, _0454
+	WaitMovement
+	PlaySE SEQ_SE_GS_AJITO_SIREN
+	ScrCmd_709
+	GetPlayerCoords VAR_TEMP_x4000, VAR_TEMP_x4001
+	Compare VAR_TEMP_x4001, 29
+	GoToIfNe _08EC
+	AddVar VAR_TEMP_x4001, 1
+	GoTo _08F8
 
 _08E6:
-	goto _08F8
+	GoTo _08F8
 
 _08EC:
-	subvar VAR_TEMP_x4001, 1
-	goto _099E
+	SubVar VAR_TEMP_x4001, 1
+	GoTo _099E
 
 _08F8:
-	move_person obj_D35R0102_rocketm, 33, 0
-	clearflag FLAG_UNK_1E8
-	show_person obj_D35R0102_rocketm
-	move_person_facing obj_D35R0102_rocketm, 33, 0, VAR_TEMP_x4001, DIR_WEST
-	apply_movement obj_D35R0102_rocketm, _0698
-	wait_movement
-	apply_movement obj_player, _0478
-	wait_movement
-	npc_msg msg_0112_D35R0102_00000
-	closemsg
-	trainer_battle TRAINER_TEAM_ROCKET_GRUNT_20, 0, 0, 0
-	check_battle_won VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0C03
-	apply_movement obj_D35R0102_rocketm, _06E0
-	wait_movement
-	move_person_facing obj_D35R0102_rocketm, 33, 0, VAR_TEMP_x4001, DIR_WEST
-	apply_movement obj_D35R0102_rocketm, _0698
-	wait_movement
-	apply_movement obj_player, _0478
-	wait_movement
-	npc_msg msg_0112_D35R0102_00001
-	closemsg
-	trainer_battle TRAINER_TEAM_ROCKET_GRUNT_21, 0, 0, 0
-	check_battle_won VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0C03
-	apply_movement obj_D35R0102_rocketm, _06E0
-	wait_movement
-	goto _0A3E
+	MovePerson obj_D35R0102_rocketm, 33, 0
+	ClearFlag FLAG_UNK_1E8
+	ShowPerson obj_D35R0102_rocketm
+	MovePersonFacing obj_D35R0102_rocketm, 33, 0, VAR_TEMP_x4001, DIR_WEST
+	ApplyMovement obj_D35R0102_rocketm, _0698
+	WaitMovement
+	ApplyMovement obj_player, _0478
+	WaitMovement
+	NPCMsg msg_0112_D35R0102_00000
+	CloseMsg
+	TrainerBattle TRAINER_TEAM_ROCKET_GRUNT_20, 0, 0, 0
+	CheckBattleWon VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0C03
+	ApplyMovement obj_D35R0102_rocketm, _06E0
+	WaitMovement
+	MovePersonFacing obj_D35R0102_rocketm, 33, 0, VAR_TEMP_x4001, DIR_WEST
+	ApplyMovement obj_D35R0102_rocketm, _0698
+	WaitMovement
+	ApplyMovement obj_player, _0478
+	WaitMovement
+	NPCMsg msg_0112_D35R0102_00001
+	CloseMsg
+	TrainerBattle TRAINER_TEAM_ROCKET_GRUNT_21, 0, 0, 0
+	CheckBattleWon VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0C03
+	ApplyMovement obj_D35R0102_rocketm, _06E0
+	WaitMovement
+	GoTo _0A3E
 
 _099E:
-	move_person obj_D35R0102_rocketm, 33, 0
-	clearflag FLAG_UNK_1E8
-	show_person obj_D35R0102_rocketm
-	move_person_facing obj_D35R0102_rocketm, 33, 0, VAR_TEMP_x4001, DIR_WEST
-	apply_movement obj_D35R0102_rocketm, _06A4
-	wait_movement
-	apply_movement obj_player, _0484
-	wait_movement
-	npc_msg msg_0112_D35R0102_00000
-	closemsg
-	trainer_battle TRAINER_TEAM_ROCKET_GRUNT_20, 0, 0, 0
-	check_battle_won VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0C03
-	apply_movement obj_D35R0102_rocketm, _06E0
-	wait_movement
-	move_person_facing obj_D35R0102_rocketm, 33, 0, VAR_TEMP_x4001, DIR_WEST
-	apply_movement obj_D35R0102_rocketm, _06A4
-	wait_movement
-	apply_movement obj_player, _0484
-	wait_movement
-	npc_msg msg_0112_D35R0102_00001
-	closemsg
-	trainer_battle TRAINER_TEAM_ROCKET_GRUNT_21, 0, 0, 0
-	check_battle_won VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0C03
-	apply_movement obj_D35R0102_rocketm, _06E0
-	wait_movement
+	MovePerson obj_D35R0102_rocketm, 33, 0
+	ClearFlag FLAG_UNK_1E8
+	ShowPerson obj_D35R0102_rocketm
+	MovePersonFacing obj_D35R0102_rocketm, 33, 0, VAR_TEMP_x4001, DIR_WEST
+	ApplyMovement obj_D35R0102_rocketm, _06A4
+	WaitMovement
+	ApplyMovement obj_player, _0484
+	WaitMovement
+	NPCMsg msg_0112_D35R0102_00000
+	CloseMsg
+	TrainerBattle TRAINER_TEAM_ROCKET_GRUNT_20, 0, 0, 0
+	CheckBattleWon VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0C03
+	ApplyMovement obj_D35R0102_rocketm, _06E0
+	WaitMovement
+	MovePersonFacing obj_D35R0102_rocketm, 33, 0, VAR_TEMP_x4001, DIR_WEST
+	ApplyMovement obj_D35R0102_rocketm, _06A4
+	WaitMovement
+	ApplyMovement obj_player, _0484
+	WaitMovement
+	NPCMsg msg_0112_D35R0102_00001
+	CloseMsg
+	TrainerBattle TRAINER_TEAM_ROCKET_GRUNT_21, 0, 0, 0
+	CheckBattleWon VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0C03
+	ApplyMovement obj_D35R0102_rocketm, _06E0
+	WaitMovement
 _0A3E:
-	hide_person obj_D35R0102_rocketm
-	setvar VAR_UNK_40B0, 2
-	apply_movement obj_D35R0102_aji_peru_4, _049C
-	wait_movement
-	releaseall
-	end
+	HidePerson obj_D35R0102_rocketm
+	SetVar VAR_UNK_40B0, 2
+	ApplyMovement obj_D35R0102_aji_peru_4, _049C
+	WaitMovement
+	ReleaseAll
+	End
 
 scr_seq_D35R0102_008:
-	scrcmd_609
-	lockall
-	apply_movement obj_player, _0428
-	wait_movement
-	apply_movement obj_D35R0102_aji_peru_5, _0454
-	wait_movement
-	play_se SEQ_SE_GS_AJITO_SIREN
-	scrcmd_709
-	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
-	compare VAR_TEMP_x4001, 29
-	goto_if_ne _0A99
-	addvar VAR_TEMP_x4001, 1
-	goto _0AA5
+	ScrCmd_609
+	LockAll
+	ApplyMovement obj_player, _0428
+	WaitMovement
+	ApplyMovement obj_D35R0102_aji_peru_5, _0454
+	WaitMovement
+	PlaySE SEQ_SE_GS_AJITO_SIREN
+	ScrCmd_709
+	GetPlayerCoords VAR_TEMP_x4000, VAR_TEMP_x4001
+	Compare VAR_TEMP_x4001, 29
+	GoToIfNe _0A99
+	AddVar VAR_TEMP_x4001, 1
+	GoTo _0AA5
 
 _0A93:
-	goto _0AA5
+	GoTo _0AA5
 
 _0A99:
-	subvar VAR_TEMP_x4001, 1
-	goto _0B4B
+	SubVar VAR_TEMP_x4001, 1
+	GoTo _0B4B
 
 _0AA5:
-	move_person obj_D35R0102_rocketm, 27, 0
-	clearflag FLAG_UNK_1E8
-	show_person obj_D35R0102_rocketm
-	move_person_facing obj_D35R0102_rocketm, 27, 0, VAR_TEMP_x4001, DIR_WEST
-	apply_movement obj_D35R0102_rocketm, _06B0
-	wait_movement
-	apply_movement obj_player, _0478
-	wait_movement
-	npc_msg msg_0112_D35R0102_00000
-	closemsg
-	trainer_battle TRAINER_TEAM_ROCKET_GRUNT_20, 0, 0, 0
-	check_battle_won VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0C03
-	apply_movement obj_D35R0102_rocketm, _06EC
-	wait_movement
-	move_person_facing obj_D35R0102_rocketm, 27, 0, VAR_TEMP_x4001, DIR_WEST
-	apply_movement obj_D35R0102_rocketm, _06B0
-	wait_movement
-	apply_movement obj_player, _0478
-	wait_movement
-	npc_msg msg_0112_D35R0102_00001
-	closemsg
-	trainer_battle TRAINER_TEAM_ROCKET_GRUNT_21, 0, 0, 0
-	check_battle_won VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0C03
-	apply_movement obj_D35R0102_rocketm, _06EC
-	wait_movement
-	goto _0BEB
+	MovePerson obj_D35R0102_rocketm, 27, 0
+	ClearFlag FLAG_UNK_1E8
+	ShowPerson obj_D35R0102_rocketm
+	MovePersonFacing obj_D35R0102_rocketm, 27, 0, VAR_TEMP_x4001, DIR_WEST
+	ApplyMovement obj_D35R0102_rocketm, _06B0
+	WaitMovement
+	ApplyMovement obj_player, _0478
+	WaitMovement
+	NPCMsg msg_0112_D35R0102_00000
+	CloseMsg
+	TrainerBattle TRAINER_TEAM_ROCKET_GRUNT_20, 0, 0, 0
+	CheckBattleWon VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0C03
+	ApplyMovement obj_D35R0102_rocketm, _06EC
+	WaitMovement
+	MovePersonFacing obj_D35R0102_rocketm, 27, 0, VAR_TEMP_x4001, DIR_WEST
+	ApplyMovement obj_D35R0102_rocketm, _06B0
+	WaitMovement
+	ApplyMovement obj_player, _0478
+	WaitMovement
+	NPCMsg msg_0112_D35R0102_00001
+	CloseMsg
+	TrainerBattle TRAINER_TEAM_ROCKET_GRUNT_21, 0, 0, 0
+	CheckBattleWon VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0C03
+	ApplyMovement obj_D35R0102_rocketm, _06EC
+	WaitMovement
+	GoTo _0BEB
 
 _0B4B:
-	move_person obj_D35R0102_rocketm, 27, 0
-	clearflag FLAG_UNK_1E8
-	show_person obj_D35R0102_rocketm
-	move_person_facing obj_D35R0102_rocketm, 27, 0, VAR_TEMP_x4001, DIR_WEST
-	apply_movement obj_D35R0102_rocketm, _06BC
-	wait_movement
-	apply_movement obj_player, _0484
-	wait_movement
-	npc_msg msg_0112_D35R0102_00000
-	closemsg
-	trainer_battle TRAINER_TEAM_ROCKET_GRUNT_20, 0, 0, 0
-	check_battle_won VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0C03
-	apply_movement obj_D35R0102_rocketm, _06EC
-	wait_movement
-	move_person_facing obj_D35R0102_rocketm, 27, 0, VAR_TEMP_x4001, DIR_WEST
-	apply_movement obj_D35R0102_rocketm, _06BC
-	wait_movement
-	apply_movement obj_player, _0484
-	wait_movement
-	npc_msg msg_0112_D35R0102_00001
-	closemsg
-	trainer_battle TRAINER_TEAM_ROCKET_GRUNT_21, 0, 0, 0
-	check_battle_won VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0C03
-	apply_movement obj_D35R0102_rocketm, _06EC
-	wait_movement
+	MovePerson obj_D35R0102_rocketm, 27, 0
+	ClearFlag FLAG_UNK_1E8
+	ShowPerson obj_D35R0102_rocketm
+	MovePersonFacing obj_D35R0102_rocketm, 27, 0, VAR_TEMP_x4001, DIR_WEST
+	ApplyMovement obj_D35R0102_rocketm, _06BC
+	WaitMovement
+	ApplyMovement obj_player, _0484
+	WaitMovement
+	NPCMsg msg_0112_D35R0102_00000
+	CloseMsg
+	TrainerBattle TRAINER_TEAM_ROCKET_GRUNT_20, 0, 0, 0
+	CheckBattleWon VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0C03
+	ApplyMovement obj_D35R0102_rocketm, _06EC
+	WaitMovement
+	MovePersonFacing obj_D35R0102_rocketm, 27, 0, VAR_TEMP_x4001, DIR_WEST
+	ApplyMovement obj_D35R0102_rocketm, _06BC
+	WaitMovement
+	ApplyMovement obj_player, _0484
+	WaitMovement
+	NPCMsg msg_0112_D35R0102_00001
+	CloseMsg
+	TrainerBattle TRAINER_TEAM_ROCKET_GRUNT_21, 0, 0, 0
+	CheckBattleWon VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0C03
+	ApplyMovement obj_D35R0102_rocketm, _06EC
+	WaitMovement
 _0BEB:
-	hide_person obj_D35R0102_rocketm
-	setvar VAR_UNK_40B1, 2
-	apply_movement obj_D35R0102_aji_peru_5, _049C
-	wait_movement
-	releaseall
-	end
+	HidePerson obj_D35R0102_rocketm
+	SetVar VAR_UNK_40B1, 2
+	ApplyMovement obj_D35R0102_aji_peru_5, _049C
+	WaitMovement
+	ReleaseAll
+	End
 
 _0C03:
-	white_out
-	releaseall
-	end
+	WhiteOut
+	ReleaseAll
+	End
 
 scr_seq_D35R0102_001:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	compare VAR_UNK_40AD, 0
-	goto_if_ne _0C2B
-	npc_msg msg_0112_D35R0102_00002
-	goto _0C4A
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	Compare VAR_UNK_40AD, 0
+	GoToIfNe _0C2B
+	NPCMsg msg_0112_D35R0102_00002
+	GoTo _0C4A
 
 _0C25:
-	goto _0C4A
+	GoTo _0C4A
 
 _0C2B:
-	compare VAR_UNK_40AD, 1
-	goto_if_ne _0C47
-	npc_msg msg_0112_D35R0102_00003
-	goto _0C4A
+	Compare VAR_UNK_40AD, 1
+	GoToIfNe _0C47
+	NPCMsg msg_0112_D35R0102_00003
+	GoTo _0C4A
 
 _0C41:
-	goto _0C4A
+	GoTo _0C4A
 
 _0C47:
-	npc_msg msg_0112_D35R0102_00004
+	NPCMsg msg_0112_D35R0102_00004
 _0C4A:
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_D35R0102_009:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	compare VAR_UNK_40AE, 0
-	goto_if_ne _0C74
-	npc_msg msg_0112_D35R0102_00002
-	goto _0C4A
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	Compare VAR_UNK_40AE, 0
+	GoToIfNe _0C74
+	NPCMsg msg_0112_D35R0102_00002
+	GoTo _0C4A
 
 _0C6E:
-	goto _0C93
+	GoTo _0C93
 
 _0C74:
-	compare VAR_UNK_40AE, 1
-	goto_if_ne _0C90
-	npc_msg msg_0112_D35R0102_00003
-	goto _0C4A
+	Compare VAR_UNK_40AE, 1
+	GoToIfNe _0C90
+	NPCMsg msg_0112_D35R0102_00003
+	GoTo _0C4A
 
 _0C8A:
-	goto _0C93
+	GoTo _0C93
 
 _0C90:
-	npc_msg msg_0112_D35R0102_00004
+	NPCMsg msg_0112_D35R0102_00004
 _0C93:
-	goto _0C4A
+	GoTo _0C4A
 
 scr_seq_D35R0102_010:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	compare VAR_UNK_40AF, 0
-	goto_if_ne _0CBB
-	npc_msg msg_0112_D35R0102_00002
-	goto _0C4A
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	Compare VAR_UNK_40AF, 0
+	GoToIfNe _0CBB
+	NPCMsg msg_0112_D35R0102_00002
+	GoTo _0C4A
 
 _0CB5:
-	goto _0CDA
+	GoTo _0CDA
 
 _0CBB:
-	compare VAR_UNK_40AF, 1
-	goto_if_ne _0CD7
-	npc_msg msg_0112_D35R0102_00003
-	goto _0C4A
+	Compare VAR_UNK_40AF, 1
+	GoToIfNe _0CD7
+	NPCMsg msg_0112_D35R0102_00003
+	GoTo _0C4A
 
 _0CD1:
-	goto _0CDA
+	GoTo _0CDA
 
 _0CD7:
-	npc_msg msg_0112_D35R0102_00004
+	NPCMsg msg_0112_D35R0102_00004
 _0CDA:
-	goto _0C4A
+	GoTo _0C4A
 
 scr_seq_D35R0102_011:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	compare VAR_UNK_40B0, 0
-	goto_if_ne _0D02
-	npc_msg msg_0112_D35R0102_00002
-	goto _0C4A
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	Compare VAR_UNK_40B0, 0
+	GoToIfNe _0D02
+	NPCMsg msg_0112_D35R0102_00002
+	GoTo _0C4A
 
 _0CFC:
-	goto _0D21
+	GoTo _0D21
 
 _0D02:
-	compare VAR_UNK_40B0, 1
-	goto_if_ne _0D1E
-	npc_msg msg_0112_D35R0102_00003
-	goto _0C4A
+	Compare VAR_UNK_40B0, 1
+	GoToIfNe _0D1E
+	NPCMsg msg_0112_D35R0102_00003
+	GoTo _0C4A
 
 _0D08:
-	goto _0D21
+	GoTo _0D21
 
 _0D1E:
-	npc_msg msg_0112_D35R0102_00004
+	NPCMsg msg_0112_D35R0102_00004
 _0D21:
-	goto _0C4A
+	GoTo _0C4A
 
 scr_seq_D35R0102_012:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	compare VAR_UNK_40B1, 0
-	goto_if_ne _0D49
-	npc_msg msg_0112_D35R0102_00002
-	goto _0C4A
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	Compare VAR_UNK_40B1, 0
+	GoToIfNe _0D49
+	NPCMsg msg_0112_D35R0102_00002
+	GoTo _0C4A
 
 _0D43:
-	goto _0D68
+	GoTo _0D68
 
 _0D49:
-	compare VAR_UNK_40B1, 1
-	goto_if_ne _0D65
-	npc_msg msg_0112_D35R0102_00003
-	goto _0C4A
+	Compare VAR_UNK_40B1, 1
+	GoToIfNe _0D65
+	NPCMsg msg_0112_D35R0102_00003
+	GoTo _0C4A
 
 _0D5F:
-	goto _0D68
+	GoTo _0D68
 
 _0D65:
-	npc_msg msg_0112_D35R0102_00004
+	NPCMsg msg_0112_D35R0102_00004
 _0D68:
-	goto _0C4A
+	GoTo _0C4A
 
 scr_seq_D35R0102_002:
-	end
+	End
 
 scr_seq_D35R0102_003:
-	end
+	End
 
 scr_seq_D35R0102_004:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	compare VAR_UNK_40AC, 9
-	goto_if_ge _0F24
-	goto_if_set FLAG_UNK_0D6, _0E58
-	npc_msg msg_0112_D35R0102_00005
-	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_RESULT
-	touchscreen_menu_show
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0DB7
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _0F1E
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	Compare VAR_UNK_40AC, 9
+	GoToIfGe _0F24
+	GoToIfSet FLAG_UNK_0D6, _0E58
+	NPCMsg msg_0112_D35R0102_00005
+	TouchscreenMenuHide
+	GetMenuChoice VAR_SPECIAL_RESULT
+	TouchscreenMenuShow
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0DB7
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _0F1E
 _0DB7:
-	play_se SEQ_SE_DP_DENSI01
-	npc_msg msg_0112_D35R0102_00007
-	closemsg
-	setflag FLAG_UNK_0D6
-	compare VAR_UNK_40AD, 2
-	goto_if_ge _0DDF
-	setvar VAR_UNK_40AD, 1
-	apply_movement obj_D35R0102_aji_peru, _04A4
+	PlaySE SEQ_SE_DP_DENSI01
+	NPCMsg msg_0112_D35R0102_00007
+	CloseMsg
+	SetFlag FLAG_UNK_0D6
+	Compare VAR_UNK_40AD, 2
+	GoToIfGe _0DDF
+	SetVar VAR_UNK_40AD, 1
+	ApplyMovement obj_D35R0102_aji_peru, _04A4
 _0DDF:
-	compare VAR_UNK_40AE, 2
-	goto_if_ge _0DFA
-	setvar VAR_UNK_40AE, 1
-	apply_movement obj_D35R0102_aji_peru_2, _04A4
+	Compare VAR_UNK_40AE, 2
+	GoToIfGe _0DFA
+	SetVar VAR_UNK_40AE, 1
+	ApplyMovement obj_D35R0102_aji_peru_2, _04A4
 _0DFA:
-	compare VAR_UNK_40AF, 2
-	goto_if_ge _0E15
-	setvar VAR_UNK_40AF, 1
-	apply_movement obj_D35R0102_aji_peru_3, _04A4
+	Compare VAR_UNK_40AF, 2
+	GoToIfGe _0E15
+	SetVar VAR_UNK_40AF, 1
+	ApplyMovement obj_D35R0102_aji_peru_3, _04A4
 _0E15:
-	compare VAR_UNK_40B0, 2
-	goto_if_ge _0E30
-	setvar VAR_UNK_40B0, 1
-	apply_movement obj_D35R0102_aji_peru_4, _04A4
+	Compare VAR_UNK_40B0, 2
+	GoToIfGe _0E30
+	SetVar VAR_UNK_40B0, 1
+	ApplyMovement obj_D35R0102_aji_peru_4, _04A4
 _0E30:
-	compare VAR_UNK_40B1, 2
-	goto_if_ge _0E4D
-	setvar VAR_UNK_40B1, 1
-	apply_movement obj_D35R0102_aji_peru_5, _04A4
-	wait_movement
+	Compare VAR_UNK_40B1, 2
+	GoToIfGe _0E4D
+	SetVar VAR_UNK_40B1, 1
+	ApplyMovement obj_D35R0102_aji_peru_5, _04A4
+	WaitMovement
 _0E4D:
-	npc_msg msg_0112_D35R0102_00009
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0112_D35R0102_00009
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0E58:
-	npc_msg msg_0112_D35R0102_00006
-	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_RESULT
-	touchscreen_menu_show
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0E7D
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _0F1E
+	NPCMsg msg_0112_D35R0102_00006
+	TouchscreenMenuHide
+	GetMenuChoice VAR_SPECIAL_RESULT
+	TouchscreenMenuShow
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0E7D
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _0F1E
 _0E7D:
-	play_se SEQ_SE_DP_DENSI01
-	npc_msg msg_0112_D35R0102_00007
-	closemsg
-	clearflag FLAG_UNK_0D6
-	compare VAR_UNK_40AD, 2
-	goto_if_ge _0EA5
-	setvar VAR_UNK_40AD, 0
-	apply_movement obj_D35R0102_aji_peru, _04AC
+	PlaySE SEQ_SE_DP_DENSI01
+	NPCMsg msg_0112_D35R0102_00007
+	CloseMsg
+	ClearFlag FLAG_UNK_0D6
+	Compare VAR_UNK_40AD, 2
+	GoToIfGe _0EA5
+	SetVar VAR_UNK_40AD, 0
+	ApplyMovement obj_D35R0102_aji_peru, _04AC
 _0EA5:
-	compare VAR_UNK_40AE, 2
-	goto_if_ge _0EC0
-	setvar VAR_UNK_40AE, 0
-	apply_movement obj_D35R0102_aji_peru_2, _04AC
+	Compare VAR_UNK_40AE, 2
+	GoToIfGe _0EC0
+	SetVar VAR_UNK_40AE, 0
+	ApplyMovement obj_D35R0102_aji_peru_2, _04AC
 _0EC0:
-	compare VAR_UNK_40AF, 2
-	goto_if_ge _0EDB
-	setvar VAR_UNK_40AF, 0
-	apply_movement obj_D35R0102_aji_peru_3, _04AC
+	Compare VAR_UNK_40AF, 2
+	GoToIfGe _0EDB
+	SetVar VAR_UNK_40AF, 0
+	ApplyMovement obj_D35R0102_aji_peru_3, _04AC
 _0EDB:
-	compare VAR_UNK_40B0, 2
-	goto_if_ge _0EF6
-	setvar VAR_UNK_40B0, 0
-	apply_movement obj_D35R0102_aji_peru_4, _04AC
+	Compare VAR_UNK_40B0, 2
+	GoToIfGe _0EF6
+	SetVar VAR_UNK_40B0, 0
+	ApplyMovement obj_D35R0102_aji_peru_4, _04AC
 _0EF6:
-	compare VAR_UNK_40B1, 2
-	goto_if_ge _0F13
-	setvar VAR_UNK_40B1, 0
-	apply_movement obj_D35R0102_aji_peru_5, _04AC
-	wait_movement
+	Compare VAR_UNK_40B1, 2
+	GoToIfGe _0F13
+	SetVar VAR_UNK_40B1, 0
+	ApplyMovement obj_D35R0102_aji_peru_5, _04AC
+	WaitMovement
 _0F13:
-	npc_msg msg_0112_D35R0102_00010
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0112_D35R0102_00010
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0F1E:
-	closemsg
-	releaseall
-	end
+	CloseMsg
+	ReleaseAll
+	End
 
 _0F24:
-	npc_msg msg_0112_D35R0102_00008
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0112_D35R0102_00008
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_D35R0102_013:
-	scrcmd_609
-	lockall
-	scrcmd_708 1
-	play_se SEQ_SE_GS_DOKU_TRAP
-	rocket_trap_battle SPECIES_KOFFING, 21
-	check_battle_won VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _11FF
-	setvar VAR_ROCKET_TRAP_KOFFING_1, 1
-	releaseall
-	end
+	ScrCmd_609
+	LockAll
+	ScrCmd_708 1
+	PlaySE SEQ_SE_GS_DOKU_TRAP
+	RocketTrapBattle SPECIES_KOFFING, 21
+	CheckBattleWon VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _11FF
+	SetVar VAR_ROCKET_TRAP_KOFFING_1, 1
+	ReleaseAll
+	End
 
 scr_seq_D35R0102_014:
-	scrcmd_609
-	lockall
-	scrcmd_708 0
-	play_se SEQ_SE_GS_DENKI_TRAP
-	rocket_trap_battle SPECIES_VOLTORB, 23
-	check_battle_won VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _11FF
-	setvar VAR_ROCKET_TRAP_VOLTORB_1, 1
-	releaseall
-	end
+	ScrCmd_609
+	LockAll
+	ScrCmd_708 0
+	PlaySE SEQ_SE_GS_DENKI_TRAP
+	RocketTrapBattle SPECIES_VOLTORB, 23
+	CheckBattleWon VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _11FF
+	SetVar VAR_ROCKET_TRAP_VOLTORB_1, 1
+	ReleaseAll
+	End
 
 scr_seq_D35R0102_015:
-	scrcmd_609
-	lockall
-	scrcmd_708 2
-	play_se SEQ_SE_GS_IWA_TRAP
-	rocket_trap_battle SPECIES_GEODUDE, 21
-	check_battle_won VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _11FF
-	setvar VAR_ROCKET_TRAP_GEODUDE_1, 1
-	releaseall
-	end
+	ScrCmd_609
+	LockAll
+	ScrCmd_708 2
+	PlaySE SEQ_SE_GS_IWA_TRAP
+	RocketTrapBattle SPECIES_GEODUDE, 21
+	CheckBattleWon VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _11FF
+	SetVar VAR_ROCKET_TRAP_GEODUDE_1, 1
+	ReleaseAll
+	End
 
 scr_seq_D35R0102_016:
-	scrcmd_609
-	lockall
-	scrcmd_708 0
-	play_se SEQ_SE_GS_DENKI_TRAP
-	rocket_trap_battle SPECIES_VOLTORB, 23
-	check_battle_won VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _11FF
-	setvar VAR_ROCKET_TRAP_VOLTORB_2, 1
-	releaseall
-	end
+	ScrCmd_609
+	LockAll
+	ScrCmd_708 0
+	PlaySE SEQ_SE_GS_DENKI_TRAP
+	RocketTrapBattle SPECIES_VOLTORB, 23
+	CheckBattleWon VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _11FF
+	SetVar VAR_ROCKET_TRAP_VOLTORB_2, 1
+	ReleaseAll
+	End
 
 scr_seq_D35R0102_017:
-	scrcmd_609
-	lockall
-	scrcmd_708 2
-	play_se SEQ_SE_GS_IWA_TRAP
-	rocket_trap_battle SPECIES_GEODUDE, 21
-	check_battle_won VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _11FF
-	setvar VAR_ROCKET_TRAP_GEODUDE_2, 1
-	releaseall
-	end
+	ScrCmd_609
+	LockAll
+	ScrCmd_708 2
+	PlaySE SEQ_SE_GS_IWA_TRAP
+	RocketTrapBattle SPECIES_GEODUDE, 21
+	CheckBattleWon VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _11FF
+	SetVar VAR_ROCKET_TRAP_GEODUDE_2, 1
+	ReleaseAll
+	End
 
 scr_seq_D35R0102_018:
-	scrcmd_609
-	lockall
-	scrcmd_708 0
-	play_se SEQ_SE_GS_DENKI_TRAP
-	rocket_trap_battle SPECIES_VOLTORB, 23
-	check_battle_won VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _11FF
-	setvar VAR_ROCKET_TRAP_VOLTORB_3, 1
-	releaseall
-	end
+	ScrCmd_609
+	LockAll
+	ScrCmd_708 0
+	PlaySE SEQ_SE_GS_DENKI_TRAP
+	RocketTrapBattle SPECIES_VOLTORB, 23
+	CheckBattleWon VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _11FF
+	SetVar VAR_ROCKET_TRAP_VOLTORB_3, 1
+	ReleaseAll
+	End
 
 scr_seq_D35R0102_019:
-	scrcmd_609
-	lockall
-	scrcmd_708 0
-	play_se SEQ_SE_GS_DENKI_TRAP
-	rocket_trap_battle SPECIES_VOLTORB, 23
-	check_battle_won VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _11FF
-	setvar VAR_ROCKET_TRAP_VOLTORB_4, 1
-	releaseall
-	end
+	ScrCmd_609
+	LockAll
+	ScrCmd_708 0
+	PlaySE SEQ_SE_GS_DENKI_TRAP
+	RocketTrapBattle SPECIES_VOLTORB, 23
+	CheckBattleWon VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _11FF
+	SetVar VAR_ROCKET_TRAP_VOLTORB_4, 1
+	ReleaseAll
+	End
 
 scr_seq_D35R0102_020:
-	scrcmd_609
-	lockall
-	scrcmd_708 1
-	play_se SEQ_SE_GS_DOKU_TRAP
-	rocket_trap_battle SPECIES_KOFFING, 21
-	check_battle_won VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _11FF
-	setvar VAR_ROCKET_TRAP_KOFFING_2, 1
-	releaseall
-	end
+	ScrCmd_609
+	LockAll
+	ScrCmd_708 1
+	PlaySE SEQ_SE_GS_DOKU_TRAP
+	RocketTrapBattle SPECIES_KOFFING, 21
+	CheckBattleWon VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _11FF
+	SetVar VAR_ROCKET_TRAP_KOFFING_2, 1
+	ReleaseAll
+	End
 
 scr_seq_D35R0102_021:
-	scrcmd_609
-	lockall
-	scrcmd_708 1
-	play_se SEQ_SE_GS_DOKU_TRAP
-	rocket_trap_battle SPECIES_KOFFING, 21
-	check_battle_won VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _11FF
-	setvar VAR_ROCKET_TRAP_KOFFING_3, 1
-	releaseall
-	end
+	ScrCmd_609
+	LockAll
+	ScrCmd_708 1
+	PlaySE SEQ_SE_GS_DOKU_TRAP
+	RocketTrapBattle SPECIES_KOFFING, 21
+	CheckBattleWon VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _11FF
+	SetVar VAR_ROCKET_TRAP_KOFFING_3, 1
+	ReleaseAll
+	End
 
 scr_seq_D35R0102_022:
-	scrcmd_609
-	lockall
-	scrcmd_708 2
-	play_se SEQ_SE_GS_IWA_TRAP
-	rocket_trap_battle SPECIES_GEODUDE, 21
-	check_battle_won VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _11FF
-	setvar VAR_ROCKET_TRAP_GEODUDE_3, 1
-	releaseall
-	end
+	ScrCmd_609
+	LockAll
+	ScrCmd_708 2
+	PlaySE SEQ_SE_GS_IWA_TRAP
+	RocketTrapBattle SPECIES_GEODUDE, 21
+	CheckBattleWon VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _11FF
+	SetVar VAR_ROCKET_TRAP_GEODUDE_3, 1
+	ReleaseAll
+	End
 
 scr_seq_D35R0102_023:
-	scrcmd_609
-	lockall
-	scrcmd_708 2
-	play_se SEQ_SE_GS_IWA_TRAP
-	rocket_trap_battle SPECIES_GEODUDE, 21
-	check_battle_won VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _11FF
-	setvar VAR_ROCKET_TRAP_GEODUDE_4, 1
-	releaseall
-	end
+	ScrCmd_609
+	LockAll
+	ScrCmd_708 2
+	PlaySE SEQ_SE_GS_IWA_TRAP
+	RocketTrapBattle SPECIES_GEODUDE, 21
+	CheckBattleWon VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _11FF
+	SetVar VAR_ROCKET_TRAP_GEODUDE_4, 1
+	ReleaseAll
+	End
 
 scr_seq_D35R0102_024:
-	scrcmd_609
-	lockall
-	scrcmd_708 1
-	play_se SEQ_SE_GS_DOKU_TRAP
-	rocket_trap_battle SPECIES_KOFFING, 21
-	check_battle_won VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _11FF
-	setvar VAR_ROCKET_TRAP_KOFFING_4, 1
-	releaseall
-	end
+	ScrCmd_609
+	LockAll
+	ScrCmd_708 1
+	PlaySE SEQ_SE_GS_DOKU_TRAP
+	RocketTrapBattle SPECIES_KOFFING, 21
+	CheckBattleWon VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _11FF
+	SetVar VAR_ROCKET_TRAP_KOFFING_4, 1
+	ReleaseAll
+	End
 
 scr_seq_D35R0102_025:
-	scrcmd_609
-	lockall
-	scrcmd_708 0
-	play_se SEQ_SE_GS_DENKI_TRAP
-	rocket_trap_battle SPECIES_VOLTORB, 23
-	check_battle_won VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _11FF
-	setvar VAR_ROCKET_TRAP_VOLTORB_5, 1
-	releaseall
-	end
+	ScrCmd_609
+	LockAll
+	ScrCmd_708 0
+	PlaySE SEQ_SE_GS_DENKI_TRAP
+	RocketTrapBattle SPECIES_VOLTORB, 23
+	CheckBattleWon VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _11FF
+	SetVar VAR_ROCKET_TRAP_VOLTORB_5, 1
+	ReleaseAll
+	End
 
 scr_seq_D35R0102_026:
-	scrcmd_609
-	lockall
-	scrcmd_708 0
-	play_se SEQ_SE_GS_DENKI_TRAP
-	rocket_trap_battle SPECIES_VOLTORB, 23
-	check_battle_won VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _11FF
-	setvar VAR_ROCKET_TRAP_VOLTORB_6, 1
-	releaseall
-	end
+	ScrCmd_609
+	LockAll
+	ScrCmd_708 0
+	PlaySE SEQ_SE_GS_DENKI_TRAP
+	RocketTrapBattle SPECIES_VOLTORB, 23
+	CheckBattleWon VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _11FF
+	SetVar VAR_ROCKET_TRAP_VOLTORB_6, 1
+	ReleaseAll
+	End
 
 scr_seq_D35R0102_027:
-	scrcmd_609
-	lockall
-	scrcmd_708 1
-	play_se SEQ_SE_GS_DOKU_TRAP
-	rocket_trap_battle SPECIES_KOFFING, 21
-	check_battle_won VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _11FF
-	setvar VAR_ROCKET_TRAP_KOFFING_5, 1
-	releaseall
-	end
+	ScrCmd_609
+	LockAll
+	ScrCmd_708 1
+	PlaySE SEQ_SE_GS_DOKU_TRAP
+	RocketTrapBattle SPECIES_KOFFING, 21
+	CheckBattleWon VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _11FF
+	SetVar VAR_ROCKET_TRAP_KOFFING_5, 1
+	ReleaseAll
+	End
 
 scr_seq_D35R0102_028:
-	scrcmd_609
-	lockall
-	scrcmd_708 2
-	play_se SEQ_SE_GS_IWA_TRAP
-	rocket_trap_battle SPECIES_GEODUDE, 21
-	check_battle_won VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _11FF
-	setvar VAR_ROCKET_TRAP_GEODUDE_5, 1
-	releaseall
-	end
+	ScrCmd_609
+	LockAll
+	ScrCmd_708 2
+	PlaySE SEQ_SE_GS_IWA_TRAP
+	RocketTrapBattle SPECIES_GEODUDE, 21
+	CheckBattleWon VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _11FF
+	SetVar VAR_ROCKET_TRAP_GEODUDE_5, 1
+	ReleaseAll
+	End
 
 _11FF:
-	white_out
-	releaseall
-	end
+	WhiteOut
+	ReleaseAll
+	End
 
 scr_seq_D35R0102_029:
-	scrcmd_609
-	lockall
-	play_se SEQ_SE_PL_BOWABOWA
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	wait 15, VAR_SPECIAL_RESULT
-	warp MAP_TEAM_ROCKET_HEADQUARTERS_B1F, 0, 50, 4, DIR_WEST
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
-	releaseall
-	end
+	ScrCmd_609
+	LockAll
+	PlaySE SEQ_SE_PL_BOWABOWA
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	Wait 15, VAR_SPECIAL_RESULT
+	Warp MAP_TEAM_ROCKET_HEADQUARTERS_B1F, 0, 50, 4, DIR_WEST
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
+	ReleaseAll
+	End
 	.balign 4, 0

@@ -5,54 +5,54 @@
 
 	.rodata
 
-	scrdef scr_seq_P01R0306_000
-	scrdef scr_seq_P01R0306_001
-	scrdef scr_seq_P01R0306_002
-	scrdef scr_seq_P01R0306_003
-	scrdef_end
+	ScrDef scr_seq_P01R0306_000
+	ScrDef scr_seq_P01R0306_001
+	ScrDef scr_seq_P01R0306_002
+	ScrDef scr_seq_P01R0306_003
+	ScrDefEnd
 
 scr_seq_P01R0306_001:
-	compare VAR_UNK_40CB, 7
-	goto_if_ge _003C
-	compare VAR_UNK_40CB, 4
-	goto_if_gt _0036
-	setflag FLAG_UNK_218
-	goto _003A
+	Compare VAR_UNK_40CB, 7
+	GoToIfGe _003C
+	Compare VAR_UNK_40CB, 4
+	GoToIfGt _0036
+	SetFlag FLAG_UNK_218
+	GoTo _003A
 
 _0036:
-	clearflag FLAG_UNK_218
+	ClearFlag FLAG_UNK_218
 _003A:
-	end
+	End
 
 _003C:
-	setflag FLAG_UNK_216
-	setflag FLAG_UNK_218
-	end
+	SetFlag FLAG_UNK_216
+	SetFlag FLAG_UNK_218
+	End
 
 scr_seq_P01R0306_000:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	compare VAR_UNK_40CB, 3
-	goto_if_gt _006E
-	apply_movement obj_P01R0306_gsgentleman, _0090
-	wait_movement
-	npc_msg msg_0262_P01R0306_00001
-	goto _0087
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	Compare VAR_UNK_40CB, 3
+	GoToIfGt _006E
+	ApplyMovement obj_P01R0306_gsgentleman, _0090
+	WaitMovement
+	NPCMsg msg_0262_P01R0306_00001
+	GoTo _0087
 
 _006E:
-	compare VAR_UNK_40CB, 4
-	goto_if_ne _0084
-	npc_msg msg_0262_P01R0306_00000
-	goto _0087
+	Compare VAR_UNK_40CB, 4
+	GoToIfNe _0084
+	NPCMsg msg_0262_P01R0306_00000
+	GoTo _0087
 
 _0084:
-	npc_msg msg_0262_P01R0306_00007
+	NPCMsg msg_0262_P01R0306_00007
 _0087:
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 	.balign 4, 0
 _0090:
@@ -60,34 +60,34 @@ _0090:
 	EndMovement
 
 scr_seq_P01R0306_003:
-	scrcmd_609
-	lockall
-	apply_movement obj_P01R0306_gsbabygirl1_3, _0110
-	wait_movement
-	gender_msgbox msg_0262_P01R0306_00002, msg_0262_P01R0306_00003
-	closemsg
-	apply_movement obj_P01R0306_gsgentleman, _0118
-	wait_movement
-	buffer_players_name 0
-	gender_msgbox msg_0262_P01R0306_00004, msg_0262_P01R0306_00005
-	goto_if_no_item_space ITEM_METAL_COAT, 1, _0103
-	callstd std_give_item_verbose
+	ScrCmd_609
+	LockAll
+	ApplyMovement obj_P01R0306_gsbabygirl1_3, _0110
+	WaitMovement
+	GenderMsgBox msg_0262_P01R0306_00002, msg_0262_P01R0306_00003
+	CloseMsg
+	ApplyMovement obj_P01R0306_gsgentleman, _0118
+	WaitMovement
+	BufferPlayersName 0
+	GenderMsgBox msg_0262_P01R0306_00004, msg_0262_P01R0306_00005
+	GoToIfNoItemSpace ITEM_METAL_COAT, 1, _0103
+	CallStd std_give_item_verbose
 _00E2:
-	setvar VAR_UNK_40CB, 6
-	setflag FLAG_UNK_22A
-	play_se SEQ_SE_DP_PINPON
-	wait_se SEQ_SE_DP_PINPON
-	setflag FLAG_BOAT_ARRIVED
-	npc_msg msg_0262_P01R0306_00006
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	SetVar VAR_UNK_40CB, 6
+	SetFlag FLAG_UNK_22A
+	PlaySE SEQ_SE_DP_PINPON
+	WaitSE SEQ_SE_DP_PINPON
+	SetFlag FLAG_BOAT_ARRIVED
+	NPCMsg msg_0262_P01R0306_00006
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0103:
-	callstd std_bag_is_full
-	closemsg
-	goto _00E2
+	CallStd std_bag_is_full
+	CloseMsg
+	GoTo _00E2
 
 	.balign 4, 0
 _0110:
@@ -100,6 +100,6 @@ _0118:
 	EndMovement
 
 scr_seq_P01R0306_002:
-	simple_npc_msg msg_0262_P01R0306_00008
-	end
+	SimpleNPCMsg msg_0262_P01R0306_00008
+	End
 	.balign 4, 0

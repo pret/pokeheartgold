@@ -5,14 +5,10 @@
 
 	.rodata
 
-	scrdef scr_seq_R09_000
-	scrdef_end
+	ScrDef scr_seq_R09_000
+	ScrDefEnd
 
 scr_seq_R09_000:
-	direction_signpost msg_0340_R09_00000, 1, 1, VAR_SPECIAL_RESULT
-	scrcmd_057 3
-	scrcmd_058
-	scrcmd_060 VAR_SPECIAL_RESULT
-	callstd std_signpost
-	end
+	DirectionSignpostEx 1, 1, msg_0340_R09_00000
+	End
 	.balign 4, 0

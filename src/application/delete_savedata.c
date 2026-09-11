@@ -11,11 +11,12 @@
 #include "main.h"
 #include "msgdata.h"
 #include "render_window.h"
+#include "screen_fade.h"
+#include "sound.h"
 #include "sound_02004A44.h"
 #include "system.h"
 #include "text.h"
 #include "unk_02005D10.h"
-#include "unk_0200FA24.h"
 
 typedef enum DeleteSavedataApp_MainState {
     MAINSTATE_ASK_TO_DELETE,
@@ -147,7 +148,7 @@ BOOL DeleteSavedataApp_Main(OverlayManager *manager, int *state) {
     case STATE_SETUP:
         StopBGM(SEQ_GS_POKEMON_THEME, 0);
         sub_02005AF8(0);
-        sub_02004AD8(0);
+        Sound_SetScene(SOUND_SCENE_NONE);
 
         sub_0200FBF4(PM_LCD_TOP, RGB_BLACK);
         sub_0200FBF4(PM_LCD_BOTTOM, RGB_BLACK);
@@ -169,7 +170,7 @@ BOOL DeleteSavedataApp_Main(OverlayManager *manager, int *state) {
 
         GfGfx_BothDispOn();
 
-        BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 1, data->heapID);
+        BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_IN, FADE_TYPE_BRIGHTNESS_IN, RGB_BLACK, 6, 1, data->heapID);
 
         *state = STATE_WAIT_FOR_FADE_IN;
         break;
@@ -180,7 +181,7 @@ BOOL DeleteSavedataApp_Main(OverlayManager *manager, int *state) {
         break;
     case STATE_DELETE_SAVE:
         if (DeleteSavedataApp_DoMainTask(data) == TRUE) {
-            BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, data->heapID);
+            BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, RGB_BLACK, 6, 1, data->heapID);
             *state = STATE_EXIT;
         }
         break;

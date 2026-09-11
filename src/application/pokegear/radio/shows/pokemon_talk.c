@@ -199,7 +199,7 @@ void RadioShow_PokemonTalk_SampleMapAreasAndEncounters(RadioShow *radioShow, Pok
     data->numSpecies = 0;
     data->numPrioritySpecies = 0;
     for (i = 0; i < MAP_ID_MAX; ++i) {
-        if (MapHeader_HasWildEncounters(i) && (radioShow->inKanto == MapHeader_IsInKanto(i))) {
+        if (MapHeader_HasWildEncounters(i) && (radioShow->regionNo == MapHeader_GetRegionNo(i))) {
             for (j = 0; j < NELEMS(sFilterLandmarks); ++j) {
                 if (i == sFilterLandmarks[j]) {
                     break;
@@ -255,7 +255,7 @@ void RadioShow_PokemonTalk_AddSpecies(PokemonTalkData *data, Pokedex *pokedex, u
 
 u16 RadioShow_PokemonTalk_SampleSpeciesFromMapEncounters(PokemonTalkData *data, Pokedex *pokedex, u16 mapID) {
     int i;
-    ENC_DATA encData;
+    EncounterData encData;
 
     WildEncounters_ReadFromNarc(&encData, mapID);
 
@@ -291,8 +291,8 @@ u16 RadioShow_PokemonTalk_SampleSpeciesFromMapEncounters(PokemonTalkData *data, 
             RadioShow_PokemonTalk_AddSpecies(data, pokedex, encData.superRodSlots[i].species);
         }
     }
-    if (encData.swarmSpecies[2] != SPECIES_NONE) {
-        RadioShow_PokemonTalk_AddSpecies(data, pokedex, encData.swarmSpecies[2]);
+    if (encData.nightFish != SPECIES_NONE) {
+        RadioShow_PokemonTalk_AddSpecies(data, pokedex, encData.nightFish);
     }
     if (data->numPrioritySpecies == 0 || (data->numPrioritySpecies == 1 && (LCRandom() % 1000) < 500)) {
         return data->speciesBuffer[LCRandom() % data->numSpecies];

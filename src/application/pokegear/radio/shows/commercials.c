@@ -150,7 +150,7 @@ void RadioShow_Commercials_Init(RadioShow *radioShow) {
         if (r0 != 0xFF && r0 != radioShow->nextStation) {
             continue;
         }
-        if (sCommercialsData[i][1] & (radioShow->inKanto + 1)) {
+        if (sCommercialsData[i][1] & (radioShow->regionNo + 1)) {
             data->unlockedCommercials[num++] = i;
         }
     }

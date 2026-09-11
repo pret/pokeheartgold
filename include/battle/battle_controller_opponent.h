@@ -8,5 +8,6 @@ void *ov12_02261270(OpponentData *opponentData);
 u32 ov12_02261264(OpponentData *opponentData);
 BattleHpBar *OpponentData_GetHpBar(OpponentData *opponentData);
 BattleCursorPosition *ov12_02261280(OpponentData *opponentData);
+void ov12_02261294(OpponentData *opponentData, s32);
 
 #endif

@@ -5,107 +5,107 @@
 
 	.rodata
 
-	scrdef scr_seq_T22FS0101_000
-	scrdef scr_seq_T22FS0101_001
-	scrdef scr_seq_T22FS0101_002
-	scrdef scr_seq_T22FS0101_003
-	scrdef scr_seq_T22FS0101_004
-	scrdef_end
+	ScrDef scr_seq_T22FS0101_000
+	ScrDef scr_seq_T22FS0101_001
+	ScrDef scr_seq_T22FS0101_002
+	ScrDef scr_seq_T22FS0101_003
+	ScrDef scr_seq_T22FS0101_004
+	ScrDefEnd
 
 scr_seq_T22FS0101_000:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	callstd std_mart_intro
-	holdmsg
-	setvar VAR_SPECIAL_x8004, 1
-	callstd std_pokemart
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	CallStd std_mart_intro
+	HoldMsg
+	SetVar VAR_SPECIAL_x8004, 1
+	CallStd std_pokemart
+	ReleaseAll
+	End
 
 scr_seq_T22FS0101_001:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	callstd std_mart_intro
-	holdmsg
-	setvar VAR_SPECIAL_x8004, 1
-	callstd std_special_mart
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	CallStd std_mart_intro
+	HoldMsg
+	SetVar VAR_SPECIAL_x8004, 1
+	CallStd std_special_mart
+	ReleaseAll
+	End
 
 scr_seq_T22FS0101_002:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	goto_if_set FLAG_UNK_06F, _0115
-	buffer_players_name 0
-	gender_msgbox msg_0557_T22FS0101_00002, msg_0557_T22FS0101_00003
-	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_RESULT
-	touchscreen_menu_show
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _00F7
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	GoToIfSet FLAG_UNK_06F, _0115
+	BufferPlayersName 0
+	GenderMsgBox msg_0557_T22FS0101_00002, msg_0557_T22FS0101_00003
+	TouchscreenMenuHide
+	GetMenuChoice VAR_SPECIAL_RESULT
+	TouchscreenMenuShow
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _00F7
 _007D:
-	get_party_count VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 6
-	goto_if_eq _0106
-	give_togepi_egg
-	setflag FLAG_GOT_EGG_FROM_ELMS_ASSISTANT
-	buffer_players_name 0
-	npc_msg msg_0557_T22FS0101_00004
-	play_fanfare SEQ_ME_TAMAGO_GET
-	wait_fanfare
-	gender_msgbox msg_0557_T22FS0101_00005, msg_0557_T22FS0101_00006
-	closemsg
-	get_player_facing VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 3
-	goto_if_ne _00C5
-	apply_movement obj_T22FS0101_assistantm, _014C
-	goto _00CD
+	GetPartyCount VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 6
+	GoToIfEq _0106
+	GiveTogepiEgg
+	SetFlag FLAG_GOT_EGG_FROM_ELMS_ASSISTANT
+	BufferPlayersName 0
+	NPCMsg msg_0557_T22FS0101_00004
+	PlayFanfare SEQ_ME_TAMAGO_GET
+	WaitFanfare
+	GenderMsgBox msg_0557_T22FS0101_00005, msg_0557_T22FS0101_00006
+	CloseMsg
+	GetPlayerFacing VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 3
+	GoToIfNe _00C5
+	ApplyMovement obj_T22FS0101_assistantm, _014C
+	GoTo _00CD
 
 _00C5:
-	apply_movement obj_T22FS0101_assistantm, _0140
+	ApplyMovement obj_T22FS0101_assistantm, _0140
 _00CD:
-	wait_movement
-	play_se SEQ_SE_DP_KAIDAN2
-	hide_person obj_T22FS0101_assistantm
-	wait_se SEQ_SE_DP_KAIDAN2
-	setflag FLAG_HIDE_VIOLET_SHOP_LAB_AIDE
-	releaseall
-	setvar VAR_SCENE_VIOLET_CITY_OW, 3
-	clearflag FLAG_HIDE_VIOLET_KIMONO_GIRL
-	clearflag FLAG_HIDE_ELMS_LAB_AIDE
-	setvar VAR_SCENE_ELMS_LAB, 7
-	end
+	WaitMovement
+	PlaySE SEQ_SE_DP_KAIDAN2
+	HidePerson obj_T22FS0101_assistantm
+	WaitSE SEQ_SE_DP_KAIDAN2
+	SetFlag FLAG_HIDE_VIOLET_SHOP_LAB_AIDE
+	ReleaseAll
+	SetVar VAR_SCENE_VIOLET_CITY_OW, 3
+	ClearFlag FLAG_HIDE_VIOLET_KIMONO_GIRL
+	ClearFlag FLAG_HIDE_ELMS_LAB_AIDE
+	SetVar VAR_SCENE_ELMS_LAB, 7
+	End
 
 _00F7:
-	npc_msg msg_0557_T22FS0101_00008
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	setflag FLAG_UNK_06F
-	end
+	NPCMsg msg_0557_T22FS0101_00008
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	SetFlag FLAG_UNK_06F
+	End
 
 _0106:
-	npc_msg msg_0557_T22FS0101_00007
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	setflag FLAG_UNK_06F
-	end
+	NPCMsg msg_0557_T22FS0101_00007
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	SetFlag FLAG_UNK_06F
+	End
 
 _0115:
-	buffer_players_name 0
-	gender_msgbox msg_0557_T22FS0101_00009, msg_0557_T22FS0101_00010
-	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_RESULT
-	touchscreen_menu_show
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _007D
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _00F7
-	end
+	BufferPlayersName 0
+	GenderMsgBox msg_0557_T22FS0101_00009, msg_0557_T22FS0101_00010
+	TouchscreenMenuHide
+	GetMenuChoice VAR_SPECIAL_RESULT
+	TouchscreenMenuShow
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _007D
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _00F7
+	End
 
 	.balign 4, 0
 _0140:
@@ -121,10 +121,10 @@ _014C:
 	EndMovement
 
 scr_seq_T22FS0101_003:
-	simple_npc_msg msg_0557_T22FS0101_00000
-	end
+	SimpleNPCMsg msg_0557_T22FS0101_00000
+	End
 
 scr_seq_T22FS0101_004:
-	simple_npc_msg msg_0557_T22FS0101_00001
-	end
+	SimpleNPCMsg msg_0557_T22FS0101_00001
+	End
 	.balign 4, 0

@@ -3,7 +3,7 @@
 
 #include "task.h"
 
-void sub_02053018(FieldSystem *fieldSystem);
+void FieldMapChange_Set3DDisplay(FieldSystem *fieldSystem);
 void sub_02053038(FieldSystem *fieldSystem, BOOL isConnection);
 TaskManager *CallFieldTask_NewGame(FieldSystem *fieldSystem);
 TaskManager *CallFieldTask_ContinueGame_Normal(FieldSystem *fieldSystem);

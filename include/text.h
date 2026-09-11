@@ -2,10 +2,10 @@
 #define POKEHEARTGOLD_TEXT_H
 
 #include "bg_window.h"
+#include "dialog_box.h"
 #include "font_types_def.h"
 #include "options.h"
 #include "sys_task_api.h"
-#include "text_0205B4EC.h"
 
 #define MAKE_TEXT_COLOR(fg, sh, bg) ((((fg) & 0xFF) << 16) | (((sh) & 0xFF) << 8) | (((bg) & 0xFF) << 0))
 

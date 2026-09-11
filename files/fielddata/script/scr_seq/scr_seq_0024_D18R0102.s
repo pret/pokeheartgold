@@ -5,158 +5,158 @@
 
 	.rodata
 
-	scrdef scr_seq_D18R0102_000
-	scrdef scr_seq_D18R0102_001
-	scrdef scr_seq_D18R0102_002
-	scrdef_end
+	ScrDef scr_seq_D18R0102_000
+	ScrDef scr_seq_D18R0102_001
+	ScrDef scr_seq_D18R0102_002
+	ScrDefEnd
 
 scr_seq_D18R0102_002:
-	goto_if_set FLAG_ENGAGING_STATIC_POKEMON, _001B
-	end
+	GoToIfSet FLAG_ENGAGING_STATIC_POKEMON, _001B
+	End
 
 _001B:
-	setflag FLAG_HIDE_BURNED_TOWER_STATIC_SUICUNE
-	hide_person obj_D18R0102_tsure_poke_static_suicune_2
-	clearflag FLAG_ENGAGING_STATIC_POKEMON
-	end
+	SetFlag FLAG_HIDE_BURNED_TOWER_STATIC_SUICUNE
+	HidePerson obj_D18R0102_tsure_poke_static_suicune_2
+	ClearFlag FLAG_ENGAGING_STATIC_POKEMON
+	End
 
 scr_seq_D18R0102_000:
-	scrcmd_609
-	lockall
-	play_cry SPECIES_RAIKOU, 0
-	release obj_D18R0102_tsure_poke_static_raikou
-	scrcmd_523 obj_D18R0102_tsure_poke_static_raikou, 2, 90, 2, 0
-	lock obj_D18R0102_tsure_poke_static_raikou
-	wait_cry
-	play_cry SPECIES_ENTEI, 0
-	release obj_D18R0102_tsure_poke_static_entei
-	scrcmd_523 obj_D18R0102_tsure_poke_static_entei, 2, 90, 2, 0
-	lock obj_D18R0102_tsure_poke_static_entei
-	wait_cry
-	play_cry SPECIES_SUICUNE, 0
-	release obj_D18R0102_tsure_poke_static_suicune
-	scrcmd_523 obj_D18R0102_tsure_poke_static_suicune, 2, 90, 2, 0
-	lock obj_D18R0102_tsure_poke_static_suicune
-	wait_cry
-	apply_movement obj_D18R0102_tsure_poke_static_raikou, _0224
-	wait_movement
-	apply_movement obj_D18R0102_tsure_poke_static_entei, _0234
-	wait_movement
-	get_player_coords VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
-	compare VAR_SPECIAL_x8005, 16
-	goto_if_ne _00C8
-	apply_movement obj_D18R0102_tsure_poke_static_suicune, _0244
-	wait_movement
-	play_cry SPECIES_SUICUNE, 0
-	apply_movement obj_D18R0102_tsure_poke_static_suicune, _0254
-	wait_cry
-	goto _00E2
+	ScrCmd_609
+	LockAll
+	PlayCry SPECIES_RAIKOU, 0
+	Release obj_D18R0102_tsure_poke_static_raikou
+	ScrCmd_523 obj_D18R0102_tsure_poke_static_raikou, 2, 90, 2, 0
+	Lock obj_D18R0102_tsure_poke_static_raikou
+	WaitCry
+	PlayCry SPECIES_ENTEI, 0
+	Release obj_D18R0102_tsure_poke_static_entei
+	ScrCmd_523 obj_D18R0102_tsure_poke_static_entei, 2, 90, 2, 0
+	Lock obj_D18R0102_tsure_poke_static_entei
+	WaitCry
+	PlayCry SPECIES_SUICUNE, 0
+	Release obj_D18R0102_tsure_poke_static_suicune
+	ScrCmd_523 obj_D18R0102_tsure_poke_static_suicune, 2, 90, 2, 0
+	Lock obj_D18R0102_tsure_poke_static_suicune
+	WaitCry
+	ApplyMovement obj_D18R0102_tsure_poke_static_raikou, _0224
+	WaitMovement
+	ApplyMovement obj_D18R0102_tsure_poke_static_entei, _0234
+	WaitMovement
+	GetPlayerCoords VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
+	Compare VAR_SPECIAL_x8005, 16
+	GoToIfNe _00C8
+	ApplyMovement obj_D18R0102_tsure_poke_static_suicune, _0244
+	WaitMovement
+	PlayCry SPECIES_SUICUNE, 0
+	ApplyMovement obj_D18R0102_tsure_poke_static_suicune, _0254
+	WaitCry
+	GoTo _00E2
 
 _00C8:
-	apply_movement obj_D18R0102_tsure_poke_static_suicune, _0268
-	wait_movement
-	play_cry SPECIES_SUICUNE, 0
-	apply_movement obj_D18R0102_tsure_poke_static_suicune, _0278
-	wait_cry
+	ApplyMovement obj_D18R0102_tsure_poke_static_suicune, _0268
+	WaitMovement
+	PlayCry SPECIES_SUICUNE, 0
+	ApplyMovement obj_D18R0102_tsure_poke_static_suicune, _0278
+	WaitCry
 _00E2:
-	wait_movement
-	toggle_following_pokemon_movement 0
-	wait_following_pokemon_movement
-	following_pokemon_movement 55
-	apply_movement obj_player, _028C
-	wait_movement
-	wait_following_pokemon_movement
-	toggle_following_pokemon_movement 1
-	following_pokemon_movement 48
-	setflag FLAG_HIDE_BURNED_TOWER_B1F_RAIKOU
-	setflag FLAG_HIDE_BURNED_TOWER_B1F_ENTEI
-	setflag FLAG_HIDE_BURNED_TOWER_B1F_SUICUNE
-	hide_person obj_D18R0102_tsure_poke_static_raikou
-	hide_person obj_D18R0102_tsure_poke_static_entei
-	hide_person obj_D18R0102_tsure_poke_static_suicune
-	create_roamer 0
-	create_roamer 1
-	wait 15, VAR_SPECIAL_RESULT
-	clearflag FLAG_HIDE_BURNED_TOWER_B1F_EUSINE
-	play_se SEQ_SE_DP_KAIDAN2
-	show_person obj_D18R0102_minaki
-	lock obj_D18R0102_minaki
-	wait_se SEQ_SE_DP_KAIDAN2
-	get_player_coords VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
-	compare VAR_SPECIAL_x8005, 16
-	goto_if_ne _015B
-	apply_movement obj_D18R0102_minaki, _029C
-	goto _016B
+	WaitMovement
+	ToggleFollowingPokemonMovement 0
+	WaitFollowingPokemonMovement
+	FollowingPokemonMovement 55
+	ApplyMovement obj_player, _028C
+	WaitMovement
+	WaitFollowingPokemonMovement
+	ToggleFollowingPokemonMovement 1
+	FollowingPokemonMovement 48
+	SetFlag FLAG_HIDE_BURNED_TOWER_B1F_RAIKOU
+	SetFlag FLAG_HIDE_BURNED_TOWER_B1F_ENTEI
+	SetFlag FLAG_HIDE_BURNED_TOWER_B1F_SUICUNE
+	HidePerson obj_D18R0102_tsure_poke_static_raikou
+	HidePerson obj_D18R0102_tsure_poke_static_entei
+	HidePerson obj_D18R0102_tsure_poke_static_suicune
+	CreateRoamer 0
+	CreateRoamer 1
+	Wait 15, VAR_SPECIAL_RESULT
+	ClearFlag FLAG_HIDE_BURNED_TOWER_B1F_EUSINE
+	PlaySE SEQ_SE_DP_KAIDAN2
+	ShowPerson obj_D18R0102_minaki
+	Lock obj_D18R0102_minaki
+	WaitSE SEQ_SE_DP_KAIDAN2
+	GetPlayerCoords VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
+	Compare VAR_SPECIAL_x8005, 16
+	GoToIfNe _015B
+	ApplyMovement obj_D18R0102_minaki, _029C
+	GoTo _016B
 
 _015B:
-	apply_movement obj_D18R0102_minaki, _02B0
-	apply_movement obj_player, _02D8
+	ApplyMovement obj_D18R0102_minaki, _02B0
+	ApplyMovement obj_player, _02D8
 _016B:
-	wait_movement
-	npc_msg msg_0061_D18R0102_00000
-	get_player_coords VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
-	compare VAR_SPECIAL_x8005, 16
-	goto_if_ne _0191
-	apply_movement obj_D18R0102_minaki, _02C4
-	goto _01A1
+	WaitMovement
+	NPCMsg msg_0061_D18R0102_00000
+	GetPlayerCoords VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
+	Compare VAR_SPECIAL_x8005, 16
+	GoToIfNe _0191
+	ApplyMovement obj_D18R0102_minaki, _02C4
+	GoTo _01A1
 
 _0191:
-	apply_movement obj_D18R0102_minaki, _02D0
-	apply_movement obj_player, _02D8
+	ApplyMovement obj_D18R0102_minaki, _02D0
+	ApplyMovement obj_player, _02D8
 _01A1:
-	wait_movement
-	buffer_players_name 0
-	npc_msg msg_0061_D18R0102_00001
-	closemsg
-	get_player_coords VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
-	compare VAR_SPECIAL_x8005, 16
-	goto_if_ne _01CC
-	apply_movement obj_D18R0102_minaki, _02E8
-	goto _01D4
+	WaitMovement
+	BufferPlayersName 0
+	NPCMsg msg_0061_D18R0102_00001
+	CloseMsg
+	GetPlayerCoords VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
+	Compare VAR_SPECIAL_x8005, 16
+	GoToIfNe _01CC
+	ApplyMovement obj_D18R0102_minaki, _02E8
+	GoTo _01D4
 
 _01CC:
-	apply_movement obj_D18R0102_minaki, _02F8
+	ApplyMovement obj_D18R0102_minaki, _02F8
 _01D4:
-	wait_movement
-	play_se SEQ_SE_DP_KAIDAN2
-	wait 2, VAR_SPECIAL_RESULT
-	hide_person obj_D18R0102_minaki
-	wait_se SEQ_SE_DP_KAIDAN2
-	setflag FLAG_HIDE_BURNED_TOWER_B1F_EUSINE
-	setflag FLAG_HIDE_BURNED_TOWER_1F_EUSINE
-	setflag FLAG_HIDE_BURNED_TOWER_1F_MORTY
-	setflag FLAG_HIDE_BURNED_TOWER_1F_RAIKOU
-	setflag FLAG_HIDE_BURNED_TOWER_1F_ENTEI
-	setflag FLAG_HIDE_BURNED_TOWER_1F_SUICUNE
-	clearflag FLAG_HIDE_CIANWOOD_SUICUNE
-	setvar VAR_UNK_40A1, 1
-	setvar VAR_UNK_4076, 1
-	setvar VAR_UNK_4079, 2
-	setflag FLAG_UNK_247
-	clearflag FLAG_HIDE_ECRUTEAK_OLD_MAN
-	releaseall
-	end
+	WaitMovement
+	PlaySE SEQ_SE_DP_KAIDAN2
+	Wait 2, VAR_SPECIAL_RESULT
+	HidePerson obj_D18R0102_minaki
+	WaitSE SEQ_SE_DP_KAIDAN2
+	SetFlag FLAG_HIDE_BURNED_TOWER_B1F_EUSINE
+	SetFlag FLAG_HIDE_BURNED_TOWER_1F_EUSINE
+	SetFlag FLAG_HIDE_BURNED_TOWER_1F_MORTY
+	SetFlag FLAG_HIDE_BURNED_TOWER_1F_RAIKOU
+	SetFlag FLAG_HIDE_BURNED_TOWER_1F_ENTEI
+	SetFlag FLAG_HIDE_BURNED_TOWER_1F_SUICUNE
+	ClearFlag FLAG_HIDE_CIANWOOD_SUICUNE
+	SetVar VAR_UNK_40A1, 1
+	SetVar VAR_UNK_4076, 1
+	SetVar VAR_UNK_4079, 2
+	SetFlag FLAG_UNK_247
+	ClearFlag FLAG_HIDE_ECRUTEAK_OLD_MAN
+	ReleaseAll
+	End
 
 	.balign 4, 0
 _0224:
 	MoveAction_105 1
 	SetInvisible
 	EndMovement
-	end
+	End
 
 	.balign 4, 0
 _0234:
 	MoveAction_106 1
 	SetInvisible
 	EndMovement
-	end
+	End
 
 	.balign 4, 0
 _0244:
 	MoveAction_107 1
 	FaceEast
 	EndMovement
-	end
+	End
 
 	.balign 4, 0
 _0254:
@@ -164,14 +164,14 @@ _0254:
 	MoveAction_108 1
 	SetInvisible
 	EndMovement
-	end
+	End
 
 	.balign 4, 0
 _0268:
 	MoveAction_109 1
 	FaceEast
 	EndMovement
-	end
+	End
 
 	.balign 4, 0
 _0278:
@@ -179,14 +179,14 @@ _0278:
 	MoveAction_110 1
 	SetInvisible
 	EndMovement
-	end
+	End
 
 	.balign 4, 0
 _028C:
 	WalkNormalWest
 	FaceSouth
 	EndMovement
-	end
+	End
 
 	.balign 4, 0
 _029C:
@@ -194,7 +194,7 @@ _029C:
 	WalkFastWest 3
 	FaceSouth
 	EndMovement
-	end
+	End
 
 	.balign 4, 0
 _02B0:
@@ -202,7 +202,7 @@ _02B0:
 	WalkFastSouth
 	FaceSouth
 	EndMovement
-	end
+	End
 
 	.balign 4, 0
 _02C4:
@@ -220,14 +220,14 @@ _02D8:
 	Delay4 6
 	FaceWest
 	EndMovement
-	end
+	End
 
 	.balign 4, 0
 _02E8:
 	WalkFastEast 4
 	WalkFastNorth
 	EndMovement
-	end
+	End
 
 	.balign 4, 0
 _02F8:
@@ -235,35 +235,35 @@ _02F8:
 	WalkFastEast 5
 	FaceNorth
 	EndMovement
-	end
+	End
 
 scr_seq_D18R0102_001:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	play_cry SPECIES_SUICUNE, 0
-	wait_cry
-	setflag FLAG_ENGAGING_STATIC_POKEMON
-	wild_battle SPECIES_SUICUNE, 40, 0
-	clearflag FLAG_ENGAGING_STATIC_POKEMON
-	check_battle_won VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _035C
-	get_static_encounter_outcome VAR_TEMP_x4002
-	compare VAR_TEMP_x4002, 3
-	goto_if_eq _0358
-	compare VAR_TEMP_x4002, 4
-	call_if_eq _0362
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	PlayCry SPECIES_SUICUNE, 0
+	WaitCry
+	SetFlag FLAG_ENGAGING_STATIC_POKEMON
+	WildBattle SPECIES_SUICUNE, 40, 0
+	ClearFlag FLAG_ENGAGING_STATIC_POKEMON
+	CheckBattleWon VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _035C
+	GetStaticEncounterOutcome VAR_TEMP_x4002
+	Compare VAR_TEMP_x4002, 3
+	GoToIfEq _0358
+	Compare VAR_TEMP_x4002, 4
+	CallIfEq _0362
 _0358:
-	releaseall
-	end
+	ReleaseAll
+	End
 
 _035C:
-	white_out
-	releaseall
-	end
+	WhiteOut
+	ReleaseAll
+	End
 
 _0362:
-	setflag FLAG_CAUGHT_SUICUNE
-	return
+	SetFlag FLAG_CAUGHT_SUICUNE
+	Return
 	.balign 4, 0

@@ -2834,7 +2834,7 @@ HatchEggApp_Exit: ; 0x021E6F0C
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
 	bl HBlankInterruptDisable
-	bl sub_0203E354
+	bl Field_SetEnvironmentSoundState_None_Unk2
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0

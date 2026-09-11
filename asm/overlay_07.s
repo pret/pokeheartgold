@@ -47536,13 +47536,13 @@ _02232F54:
 	pop {r4, pc}
 	thumb_func_end ov07_02232F30
 
-	thumb_func_start ov07_02232F58
-ov07_02232F58: ; 0x02232F58
+	thumb_func_start UnkBallData_SetBallAnimation
+UnkBallData_SetBallAnimation: ; 0x02232F58
 	str r1, [r0]
 	mov r1, #0
 	str r1, [r0, #4]
 	bx lr
-	thumb_func_end ov07_02232F58
+	thumb_func_end UnkBallData_SetBallAnimation
 
 	thumb_func_start ov07_02232F60
 ov07_02232F60: ; 0x02232F60

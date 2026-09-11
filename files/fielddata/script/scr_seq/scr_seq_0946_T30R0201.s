@@ -5,17 +5,17 @@
 
 	.rodata
 
-	scrdef scr_seq_T30R0201_000
-	scrdef scr_seq_T30R0201_001
-	scrdef_end
+	ScrDef scr_seq_T30R0201_000
+	ScrDef scr_seq_T30R0201_001
+	ScrDefEnd
 
 scr_seq_T30R0201_000:
-	simple_npc_msg msg_0633_T30R0201_00000
-	end
+	SimpleNPCMsg msg_0633_T30R0201_00000
+	End
 
 scr_seq_T30R0201_001:
-	play_cry SPECIES_DRATINI, 0
-	simple_npc_msg msg_0633_T30R0201_00002
-	wait_cry
-	end
+	PlayCry SPECIES_DRATINI, 0
+	SimpleNPCMsg msg_0633_T30R0201_00002
+	WaitCry
+	End
 	.balign 4, 0

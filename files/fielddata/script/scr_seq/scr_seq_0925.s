@@ -5,6 +5,6 @@
 
 	.rodata
 
-	scrdef_end
+	ScrDefEnd
 
 	.balign 4, 0

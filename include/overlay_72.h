@@ -8,7 +8,7 @@
 #include "save.h"
 
 typedef struct NintendoWifiConnectArgs {
-    FRONTIERDATA *frontierData;
+    FrontierData *frontierData;
     u32 unk4;
     SysInfo *sysInfo;
     SaveData *saveData;

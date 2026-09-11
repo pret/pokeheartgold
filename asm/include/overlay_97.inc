@@ -19,11 +19,11 @@
 .public AddCharResObjFromNarc
 .public AddPlttResObjFromNarc
 .public AddCellOrAnimResObjFromNarc
-.public sub_0200ADA4
-.public sub_0200AEB0
-.public sub_0200AF00
-.public sub_0200AF94
-.public sub_0200B0A8
+.public SpriteTransfer_CreateCharTransferTask_AllocAtEnd
+.public SpriteTransfer_DeleteCharTransferTask
+.public SpriteTransfer_GetCharProxy
+.public SpriteTransfer_CreateExtPlttTransferTask
+.public SpriteTransfer_DeletePlttTransferTask
 .public SpriteTransfer_GetPaletteProxy
 .public OamManager_Create
 .public OamManager_Free
@@ -76,7 +76,7 @@
 .public CopyU16ArrayToString
 .public SaveArray_PCStorage_Get
 .public Save_Pokeathlon_Get
-.public sub_020319A8
+.public PokeathlonSave_GetUnkDC_AtIndex
 .public sub_0203A994
 .public GetMonData
 .public GetBoxMonData

@@ -5,131 +5,131 @@
 
 	.rodata
 
-	scrdef scr_seq_D24R0206_000
-	scrdef scr_seq_D24R0206_001
-	scrdef scr_seq_D24R0206_002
-	scrdef scr_seq_D24R0206_003
-	scrdef_end
+	ScrDef scr_seq_D24R0206_000
+	ScrDef scr_seq_D24R0206_001
+	ScrDef scr_seq_D24R0206_002
+	ScrDef scr_seq_D24R0206_003
+	ScrDefEnd
 
 scr_seq_D24R0206_000:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	alph_puzzle 2
-	restore_overworld
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
-	goto_if_set FLAG_SYS_ALPH_PUZZLE_OMANYTE, _0046
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	AlphPuzzle 2
+	RestoreOverworld
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
+	GoToIfSet FLAG_SYS_ALPH_PUZZLE_OMANYTE, _0046
+	ReleaseAll
+	End
 
 _0046:
-	wait 2, VAR_SPECIAL_x8004
-	screen_shake 0, 2, 10, 6
-	wait 10, VAR_SPECIAL_x8004
-	apply_movement obj_player, _02A4
-	wait_movement
-	hide_person obj_D24R0206_babyboy1_13
-	play_se SEQ_SE_DP_KI_GASYAN
-	clearflag FLAG_UNK_111
-	setflag FLAG_UNK_220
-	clearflag FLAG_HIDE_RUINS_OF_ALPH_ASSISTANTS
-	scrcmd_729 VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _009A
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _00AA
-	end
+	Wait 2, VAR_SPECIAL_x8004
+	ScreenShake 0, 2, 10, 6
+	Wait 10, VAR_SPECIAL_x8004
+	ApplyMovement obj_player, _02A4
+	WaitMovement
+	HidePerson obj_D24R0206_babyboy1_13
+	PlaySE SEQ_SE_DP_KI_GASYAN
+	ClearFlag FLAG_UNK_111
+	SetFlag FLAG_UNK_220
+	ClearFlag FLAG_HIDE_RUINS_OF_ALPH_ASSISTANTS
+	ScrCmd_729 VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _009A
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _00AA
+	End
 
 _009A:
-	apply_movement obj_player, _022C
-	wait_movement
-	goto _00BC
+	ApplyMovement obj_player, _022C
+	WaitMovement
+	GoTo _00BC
 
 _00AA:
-	apply_movement obj_player, _022C
-	apply_movement obj_partner_poke, _0238
-	wait_movement
+	ApplyMovement obj_player, _022C
+	ApplyMovement obj_partner_poke, _0238
+	WaitMovement
 _00BC:
-	setvar VAR_UNK_40CE, 1
-	compare VAR_UNK_40EC, 1
-	goto_if_ge _0107
-	play_se SEQ_SE_GS_RAKKA01
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	warp MAP_RUINS_OF_ALPH_UNDERGROUND_HALL, 0, 5, 42, DIR_NORTH
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
-	setvar VAR_UNK_40DF, 1
-	addvar VAR_UNK_40EC, 1
-	releaseall
-	end
+	SetVar VAR_UNK_40CE, 1
+	Compare VAR_UNK_40EC, 1
+	GoToIfGe _0107
+	PlaySE SEQ_SE_GS_RAKKA01
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	Warp MAP_RUINS_OF_ALPH_UNDERGROUND_HALL, 0, 5, 42, DIR_NORTH
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
+	SetVar VAR_UNK_40DF, 1
+	AddVar VAR_UNK_40EC, 1
+	ReleaseAll
+	End
 
 _0107:
-	setflag FLAG_HIDE_RUINS_OF_ALPH_ASSISTANTS
-	play_se SEQ_SE_GS_RAKKA01
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	warp MAP_RUINS_OF_ALPH_UNDERGROUND_HALL, 0, 5, 42, DIR_NORTH
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
-	setvar VAR_UNK_40DF, 1
-	addvar VAR_UNK_40EC, 1
-	releaseall
-	end
+	SetFlag FLAG_HIDE_RUINS_OF_ALPH_ASSISTANTS
+	PlaySE SEQ_SE_GS_RAKKA01
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	Warp MAP_RUINS_OF_ALPH_UNDERGROUND_HALL, 0, 5, 42, DIR_NORTH
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
+	SetVar VAR_UNK_40DF, 1
+	AddVar VAR_UNK_40EC, 1
+	ReleaseAll
+	End
 
 scr_seq_D24R0206_003:
-	scrcmd_609
-	lockall
-	scrcmd_729 VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0167
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _0177
-	end
+	ScrCmd_609
+	LockAll
+	ScrCmd_729 VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0167
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _0177
+	End
 
 _0167:
-	apply_movement obj_player, _022C
-	wait_movement
-	goto _0189
+	ApplyMovement obj_player, _022C
+	WaitMovement
+	GoTo _0189
 
 _0177:
-	apply_movement obj_player, _022C
-	apply_movement obj_partner_poke, _0238
-	wait_movement
+	ApplyMovement obj_player, _022C
+	ApplyMovement obj_partner_poke, _0238
+	WaitMovement
 _0189:
-	setvar VAR_UNK_40CE, 1
-	play_se SEQ_SE_GS_RAKKA01
-	compare VAR_UNOWN_REPORT_LEVEL, 7
-	goto_if_ge _01D5
-	compare VAR_UNOWN_REPORT_LEVEL, 6
-	goto_if_eq _01FF
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	warp MAP_RUINS_OF_ALPH_UNDERGROUND_HALL, 0, 5, 42, DIR_NORTH
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
+	SetVar VAR_UNK_40CE, 1
+	PlaySE SEQ_SE_GS_RAKKA01
+	Compare VAR_UNOWN_REPORT_LEVEL, 7
+	GoToIfGe _01D5
+	Compare VAR_UNOWN_REPORT_LEVEL, 6
+	GoToIfEq _01FF
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	Warp MAP_RUINS_OF_ALPH_UNDERGROUND_HALL, 0, 5, 42, DIR_NORTH
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
 _01D1:
-	releaseall
-	end
+	ReleaseAll
+	End
 
 _01D5:
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	warp MAP_RUINS_OF_ALPH_UNDERGROUND_HALL_SINJOH_EVENT_2, 0, 5, 42, DIR_NORTH
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
-	goto _01D1
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	Warp MAP_RUINS_OF_ALPH_UNDERGROUND_HALL_SINJOH_EVENT_2, 0, 5, 42, DIR_NORTH
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
+	GoTo _01D1
 
 _01FF:
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	warp MAP_RUINS_OF_ALPH_UNDERGROUND_HALL_SINJOH_EVENT, 0, 5, 42, DIR_NORTH
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
-	goto _01D1
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	Warp MAP_RUINS_OF_ALPH_UNDERGROUND_HALL_SINJOH_EVENT, 0, 5, 42, DIR_NORTH
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
+	GoTo _01D1
 
 	.balign 4, 0
 _022C:
@@ -145,34 +145,34 @@ _0238:
 	EndMovement
 
 scr_seq_D24R0206_001:
-	scrcmd_609
-	lockall
-	open_alph_hidden_room 2
-	releaseall
-	end
+	ScrCmd_609
+	LockAll
+	OpenAlphHiddenRoom 2
+	ReleaseAll
+	End
 
 scr_seq_D24R0206_002:
-	scrcmd_609
-	lockall
-	goto_if_set FLAG_OPENED_ALPH_WATER_STONE_SECRET_ROOM, _0292
-	wait 2, VAR_SPECIAL_x8004
-	screen_shake 0, 2, 10, 6
-	wait 10, VAR_SPECIAL_x8004
-	apply_movement obj_player, _02A4
-	wait_movement
-	hide_person obj_D24R0206_babyboy1_12
-	setflag FLAG_OPENED_ALPH_WATER_STONE_SECRET_ROOM
-	play_se SEQ_SE_DP_UG_008
-	releaseall
-	end
+	ScrCmd_609
+	LockAll
+	GoToIfSet FLAG_OPENED_ALPH_WATER_STONE_SECRET_ROOM, _0292
+	Wait 2, VAR_SPECIAL_x8004
+	ScreenShake 0, 2, 10, 6
+	Wait 10, VAR_SPECIAL_x8004
+	ApplyMovement obj_player, _02A4
+	WaitMovement
+	HidePerson obj_D24R0206_babyboy1_12
+	SetFlag FLAG_OPENED_ALPH_WATER_STONE_SECRET_ROOM
+	PlaySE SEQ_SE_DP_UG_008
+	ReleaseAll
+	End
 
 _0292:
-	wait 10, VAR_SPECIAL_x8004
-	npc_msg msg_0077_D24R0206_00001
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	Wait 10, VAR_SPECIAL_x8004
+	NPCMsg msg_0077_D24R0206_00001
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 	.balign 4, 0
 _02A4:

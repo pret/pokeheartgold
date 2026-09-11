@@ -3,6 +3,7 @@
 #include "constants/items.h"
 #include "constants/sndseq.h"
 
+#include "field/fieldmap.h"
 #include "fielddata/script/scr_seq/event_D24R0202.h"
 #include "fielddata/script/scr_seq/event_D24R0206.h"
 #include "files/msgdata/msg.naix"
@@ -10,6 +11,7 @@
 
 #include "alph_checks.h"
 #include "bag_view.h"
+#include "field_bgm.h"
 #include "follow_mon.h"
 #include "launch_application.h"
 #include "map_header.h"
@@ -24,6 +26,7 @@
 #include "party_menu.h"
 #include "render_window.h"
 #include "save_arrays.h"
+#include "screen_fade.h"
 #include "script.h"
 #include "sound_02004A44.h"
 #include "sound_radio.h"
@@ -32,10 +35,8 @@
 #include "system.h"
 #include "task.h"
 #include "text.h"
-#include "unk_0200FA24.h"
 #include "unk_0203DB6C.h"
 #include "unk_02054648.h"
-#include "unk_02054E00.h"
 #include "unk_02062108.h"
 #include "unk_02066EDC.h"
 
@@ -260,7 +261,7 @@ static void ItemMenuUseFunc_Bicycle(struct ItemMenuUseData *data, const struct I
 
 static BOOL ItemFieldUseFunc_Bicycle(struct ItemFieldUseData *data) {
     FieldSystem_CreateTask(data->fieldSystem, Task_MountOrDismountBicycle, NULL);
-    data->fieldSystem->unkD2_7 = 1;
+    data->fieldSystem->unkD2_7 = TRUE;
     return FALSE;
 }
 
@@ -290,9 +291,9 @@ static BOOL Task_MountOrDismountBicycle(TaskManager *taskManager) {
             MapObject_UnpauseMovement(PlayerAvatar_GetMapObject(fieldSystem->playerAvatar));
             Field_PlayerAvatar_OrrTransitionFlags(fieldSystem->playerAvatar, 1);
             Field_PlayerAvatar_ApplyTransitionFlags(fieldSystem->playerAvatar);
-            FieldSystem_SetSavedMusicId(fieldSystem, 0);
+            FieldBGM_SetOverride(fieldSystem, 0);
             if (SndRadio_GetSeqNo() == 0) {
-                FieldSystem_PlayOrFadeToNewMusicId(fieldSystem, FieldSystem_GetOverriddenMusicId(fieldSystem, fieldSystem->location->mapId), 1);
+                FieldBGM_TryFadeOut(fieldSystem, FieldBGM_GetEffective(fieldSystem, fieldSystem->location->mapId), 1);
             }
             ov01_02205790(fieldSystem, PlayerAvatar_GetFacingDirection(fieldSystem->playerAvatar));
             if (FollowMon_IsActive(fieldSystem)) {
@@ -301,8 +302,8 @@ static BOOL Task_MountOrDismountBicycle(TaskManager *taskManager) {
             }
         } else {
             if (SndRadio_GetSeqNo() == 0) {
-                FieldSystem_SetSavedMusicId(fieldSystem, SEQ_GS_BICYCLE);
-                FieldSystem_PlayOrFadeToNewMusicId(fieldSystem, SEQ_GS_BICYCLE, 1);
+                FieldBGM_SetOverride(fieldSystem, SEQ_GS_BICYCLE);
+                FieldBGM_TryFadeOut(fieldSystem, SEQ_GS_BICYCLE, 1);
             }
             MapObject_UnpauseMovement(PlayerAvatar_GetMapObject(fieldSystem->playerAvatar));
             Field_PlayerAvatar_OrrTransitionFlags(fieldSystem->playerAvatar, 2);
@@ -332,7 +333,7 @@ static enum ItemUseError ItemCheckUseFunc_Bicycle(const struct ItemCheckUseData 
     if (PlayerAvatar_CheckBikeStateLocked(data->playerAvatar) == TRUE) {
         return ITEMUSEERROR_NODISMOUNT;
     }
-    if (sub_0205B6F4(data->standingTile) == TRUE || sub_0205B8AC(data->standingTile) == TRUE) {
+    if (MetatileBehavior_IsVeryTallGrass(data->standingTile) == TRUE || MetatileBehavior_IsMud(data->standingTile) == TRUE) {
         return ITEMUSEERROR_OAKSWORDS;
     }
     if (!MapHeader_IsBikeAllowed(data->mapId)) {
@@ -428,12 +429,12 @@ static void ItemMenuUseFunc_OldRod(struct ItemMenuUseData *data, const struct It
     StartMenuTaskData *env = TaskManager_GetEnvironment(data->taskManager);
     FieldSystem_LoadFieldOverlay(fieldSystem);
     env->exitTaskFunc = Task_OverworldFish;
-    env->exitTaskEnvironment = CreateFishingRodTaskEnv(fieldSystem, HEAP_ID_FIELD2, 0);
+    env->exitTaskEnvironment = CreateFishingRodTaskEnv(fieldSystem, HEAP_ID_FIELD2, ROD_TYPE_OLD);
     env->state = 12;
 }
 
 static BOOL ItemFieldUseFunc_OldRod(struct ItemFieldUseData *data) {
-    FieldSystem_CreateTask(data->fieldSystem, Task_OverworldFish, CreateFishingRodTaskEnv(data->fieldSystem, HEAP_ID_FIELD1, 0));
+    FieldSystem_CreateTask(data->fieldSystem, Task_OverworldFish, CreateFishingRodTaskEnv(data->fieldSystem, HEAP_ID_FIELD1, ROD_TYPE_OLD));
     return FALSE;
 }
 
@@ -442,12 +443,12 @@ static void ItemMenuUseFunc_GoodRod(struct ItemMenuUseData *data, const struct I
     StartMenuTaskData *env = TaskManager_GetEnvironment(data->taskManager);
     FieldSystem_LoadFieldOverlay(fieldSystem);
     env->exitTaskFunc = Task_OverworldFish;
-    env->exitTaskEnvironment = CreateFishingRodTaskEnv(fieldSystem, HEAP_ID_FIELD2, 1);
+    env->exitTaskEnvironment = CreateFishingRodTaskEnv(fieldSystem, HEAP_ID_FIELD2, ROD_TYPE_GOOD);
     env->state = 12;
 }
 
 static BOOL ItemFieldUseFunc_GoodRod(struct ItemFieldUseData *data) {
-    FieldSystem_CreateTask(data->fieldSystem, Task_OverworldFish, CreateFishingRodTaskEnv(data->fieldSystem, HEAP_ID_FIELD1, 1));
+    FieldSystem_CreateTask(data->fieldSystem, Task_OverworldFish, CreateFishingRodTaskEnv(data->fieldSystem, HEAP_ID_FIELD1, ROD_TYPE_GOOD));
     return FALSE;
 }
 
@@ -456,12 +457,12 @@ static void ItemMenuUseFunc_SuperRod(struct ItemMenuUseData *data, const struct 
     StartMenuTaskData *env = TaskManager_GetEnvironment(data->taskManager);
     FieldSystem_LoadFieldOverlay(fieldSystem);
     env->exitTaskFunc = Task_OverworldFish;
-    env->exitTaskEnvironment = CreateFishingRodTaskEnv(fieldSystem, HEAP_ID_FIELD2, 2);
+    env->exitTaskEnvironment = CreateFishingRodTaskEnv(fieldSystem, HEAP_ID_FIELD2, ROD_TYPE_SUPER);
     env->state = 12;
 }
 
 static BOOL ItemFieldUseFunc_SuperRod(struct ItemFieldUseData *data) {
-    FieldSystem_CreateTask(data->fieldSystem, Task_OverworldFish, CreateFishingRodTaskEnv(data->fieldSystem, HEAP_ID_FIELD1, 2));
+    FieldSystem_CreateTask(data->fieldSystem, Task_OverworldFish, CreateFishingRodTaskEnv(data->fieldSystem, HEAP_ID_FIELD1, ROD_TYPE_SUPER));
     return FALSE;
 }
 
@@ -499,18 +500,18 @@ static BOOL Task_PrintRegisteredKeyItemUseMessage(TaskManager *taskManager) {
 
     switch (env->state) {
     case 0:
-        fieldSystem->unkD2_6 = TRUE;
+        fieldSystem->textbox_open = TRUE;
         MapObjectManager_PauseAllMovement(fieldSystem->mapObjectManager);
-        sub_0205B514(fieldSystem->bgConfig, &env->window, 3);
+        DialogBox_AddWindowToLayer3(fieldSystem->bgConfig, &env->window, GF_BG_LYR_MAIN_3);
         options = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);
-        sub_0205B564(&env->window, options);
-        env->printerId = sub_0205B5B4(&env->window, env->strbuf, options, TRUE);
+        DialogBox_LoadFrame(&env->window, options);
+        env->printerId = DialogBox_PrintMessage(&env->window, env->strbuf, options, TRUE);
         env->state++;
         break;
     case 1:
-        if (IsPrintFinished(env->printerId) == TRUE) {
+        if (DialogBox_IsPrintFinished(env->printerId) == TRUE) {
             if ((gSystem.newKeys & (PAD_BUTTON_A | PAD_BUTTON_B | PAD_KEY_UP | PAD_KEY_DOWN | PAD_KEY_LEFT | PAD_KEY_RIGHT)) || (gSystem.simulatedInputs & PAD_BUTTON_A)) {
-                fieldSystem->unkD2_6 = FALSE;
+                fieldSystem->textbox_open = FALSE;
                 ClearFrameAndWindow2(&env->window, 0);
                 env->state++;
             }
@@ -752,7 +753,7 @@ static BOOL KeyItemIdSpawnsSubprocess(FieldSystem *fieldSystem, u16 itemId) {
     return TRUE;
 }
 
-int UseRegisteredItemButtonInField(FieldSystem *fieldSystem, u8 slot) {
+int UseRegisteredItemButtonInField(FieldSystem *fieldSystem, u16 slot) {
     struct ItemFieldUseData *data;
     u16 itemId;
     u16 funcType;
@@ -827,7 +828,7 @@ static BOOL Task_RegisteredItem_GoToApp(TaskManager *taskManager) {
     switch (env->state) {
     case 0:
         MapObjectManager_PauseAllMovement(fieldSystem->mapObjectManager);
-        ov01_021E636C(0);
+        FieldMap_FadeScreen(FADE_TYPE_BRIGHTNESS_OUT);
         env->state = 1;
         break;
     case 1:
@@ -855,7 +856,7 @@ static BOOL Task_RegisteredItem_GoToApp(TaskManager *taskManager) {
     case 4:
         if (sub_020505C8(fieldSystem)) {
             MapObjectManager_PauseAllMovement(fieldSystem->mapObjectManager);
-            ov01_021E636C(1);
+            FieldMap_FadeScreen(FADE_TYPE_BRIGHTNESS_IN);
             env->state = 5;
         }
         break;

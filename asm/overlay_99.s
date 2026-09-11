@@ -95,9 +95,9 @@ _021E591C:
 	mov r1, #4
 	bl SetKeyRepeatTimers
 	mov r0, #0
-	bl sub_0200FBDC
+	bl ResetVisibleHardwareWindows
 	mov r0, #1
-	bl sub_0200FBDC
+	bl ResetVisibleHardwareWindows
 	ldr r0, _021E5A00 ; =ov99_021E6250
 	add r1, r4, #0
 	bl Main_SetVBlankIntrCB
@@ -1886,9 +1886,9 @@ _021E6798:
 	add r0, r4, #0
 	bl ov99_021E6D34
 	mov r0, #0
-	bl sub_0200FBDC
+	bl ResetVisibleHardwareWindows
 	mov r0, #1
-	bl sub_0200FBDC
+	bl ResetVisibleHardwareWindows
 	ldr r0, _021E683C ; =ov99_021E6938
 	add r1, r4, #0
 	bl Main_SetVBlankIntrCB
@@ -2789,7 +2789,7 @@ ov99_021E6F70: ; 0x021E6F70
 	bl GF_AssertFail
 _021E6F7C:
 	add r0, r5, #0
-	bl sub_02031990
+	bl PokeathlonSave_GetUnkAEC
 	mov r2, #0
 _021E6F84:
 	lsl r1, r2, #1
@@ -2851,13 +2851,13 @@ ov99_021E6FD0: ; 0x021E6FD0
 	ldr r6, [r5]
 	str r0, [sp, #8]
 	add r0, r6, #0
-	bl sub_02031974
+	bl PokeathlonSave_dummy1
 	add r5, r0, #0
 	add r0, r6, #0
-	bl sub_0203197C
+	bl PokeathlonSave_GetRecordsSolo
 	str r0, [sp, #4]
 	add r0, r6, #0
-	bl sub_02031978
+	bl PokeathlonSave_GetUnkDC
 	str r0, [sp]
 	mov r2, #0
 	add r3, r4, #0
@@ -4057,9 +4057,9 @@ _021E783C:
 	add r0, r4, #0
 	bl ov99_021E8224
 	mov r0, #0
-	bl sub_0200FBDC
+	bl ResetVisibleHardwareWindows
 	mov r0, #1
-	bl sub_0200FBDC
+	bl ResetVisibleHardwareWindows
 	ldr r0, _021E78EC ; =ov99_021E7A54
 	add r1, r4, #0
 	bl Main_SetVBlankIntrCB
@@ -5408,9 +5408,9 @@ _021E831E:
 	add r0, r4, #0
 	bl ov99_021E8818
 	mov r0, #0
-	bl sub_0200FBDC
+	bl ResetVisibleHardwareWindows
 	mov r0, #1
-	bl sub_0200FBDC
+	bl ResetVisibleHardwareWindows
 	ldr r0, _021E83A8 ; =ov99_021E856C
 	add r1, r4, #0
 	bl Main_SetVBlankIntrCB

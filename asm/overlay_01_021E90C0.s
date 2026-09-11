@@ -145,7 +145,7 @@ _021E9198:
 	beq _021E91F4
 	ldr r0, [r6, #0x54]
 	ldr r1, [sp, #0x20]
-	bl ov01_021E8BAC
+	bl MapPropAnimationManager_GetPropAnimationCount
 	add r7, r0, #0
 	bne _021E91B6
 	add sp, #0x58
@@ -156,10 +156,10 @@ _021E91B6:
 	bl ov01_021FB9E0
 	str r0, [sp, #0x28]
 	ldr r0, [sp, #0x2c]
-	bl ov01_021F3B38
+	bl MapProp_GetRenderSurface
 	add r5, r0, #0
 	ldr r0, [sp, #0x2c]
-	bl ov01_021F3B3C
+	bl MapProp_GetResModel
 	str r5, [sp]
 	str r0, [sp, #4]
 	ldr r0, [sp, #0x28]
@@ -172,7 +172,7 @@ _021E91B6:
 	ldr r0, [r6, #0x54]
 	ldr r1, [r6, #0x58]
 	ldr r3, [sp, #0x20]
-	bl ov01_021E8DE8
+	bl MapPropOneShotAnimationManager_LoadPropAnimations
 	mov r1, #1
 	ldr r0, [r6, #0x58]
 	add r2, r1, #0
@@ -201,7 +201,7 @@ _021E9210:
 _021E9218:
 	ldr r0, [r6, #0x58]
 	mov r1, #1
-	bl ov01_021E8F30
+	bl MapPropOneShotAnimationManager_GetAnimationMapPropModelID
 	add r5, r0, #0
 	add r0, r6, #0
 	add r1, r5, #0
@@ -221,7 +221,7 @@ _021E9238:
 	ldr r0, [r6, #0x58]
 	mov r1, #1
 	mov r2, #0
-	bl ov01_021E8E98
+	bl MapPropOneShotAnimationManager_PlayAnimationWithSoundEffect
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
@@ -229,7 +229,7 @@ _021E9238:
 _021E9256:
 	ldr r0, [r6, #0x58]
 	mov r1, #1
-	bl ov01_021E8F10
+	bl MapPropOneShotAnimationManager_IsAnimationLoopFinished
 	cmp r0, #0
 	beq _021E934C
 	ldr r0, [r4]
@@ -449,11 +449,11 @@ _021E941A:
 	beq _021E9476
 	ldr r0, [r4, #0x54]
 	ldr r1, [sp, #0x20]
-	bl ov01_021E8BAC
+	bl MapPropAnimationManager_GetPropAnimationCount
 	add r7, r0, #0
 	bne _021E9442
 	mov r0, #1
-	bl ov01_021E636C
+	bl FieldMap_FadeScreen
 	mov r0, #6
 	str r0, [r6]
 	add sp, #0x58
@@ -464,10 +464,10 @@ _021E9442:
 	bl ov01_021FB9E0
 	str r0, [sp, #0x28]
 	ldr r0, [sp, #0x2c]
-	bl ov01_021F3B38
+	bl MapProp_GetRenderSurface
 	add r5, r0, #0
 	ldr r0, [sp, #0x2c]
-	bl ov01_021F3B3C
+	bl MapProp_GetResModel
 	str r5, [sp]
 	str r0, [sp, #4]
 	ldr r0, [sp, #0x28]
@@ -480,11 +480,11 @@ _021E9442:
 	ldr r0, [r4, #0x54]
 	ldr r1, [r4, #0x58]
 	ldr r3, [sp, #0x20]
-	bl ov01_021E8DE8
+	bl MapPropOneShotAnimationManager_LoadPropAnimations
 	b _021E9486
 _021E9476:
 	mov r0, #1
-	bl ov01_021E636C
+	bl FieldMap_FadeScreen
 	mov r0, #6
 	str r0, [r6]
 	add sp, #0x58
@@ -521,7 +521,7 @@ _021E94AA:
 	bl NewFieldFadeEnvironment
 	ldr r0, [r4, #0x58]
 	mov r1, #1
-	bl ov01_021E8F30
+	bl MapPropOneShotAnimationManager_GetAnimationMapPropModelID
 	add r5, r0, #0
 	add r0, r4, #0
 	add r1, r5, #0
@@ -539,7 +539,7 @@ _021E94DC:
 	ldr r0, [r4, #0x58]
 	mov r1, #1
 	mov r2, #0
-	bl ov01_021E8E98
+	bl MapPropOneShotAnimationManager_PlayAnimationWithSoundEffect
 	ldr r0, [r6]
 	add r0, r0, #1
 	str r0, [r6]
@@ -547,7 +547,7 @@ _021E94DC:
 _021E94FA:
 	ldr r0, [r4, #0x58]
 	mov r1, #1
-	bl ov01_021E8F10
+	bl MapPropOneShotAnimationManager_IsAnimationLoopFinished
 	cmp r0, #0
 	beq _021E95B0
 	ldr r0, [r4, #0x40]
@@ -581,7 +581,7 @@ _021E952E:
 	bl ov01_02205790
 	ldr r0, [r4, #0x58]
 	mov r1, #1
-	bl ov01_021E8F30
+	bl MapPropOneShotAnimationManager_GetAnimationMapPropModelID
 	add r1, r0, #0
 	add r0, r4, #0
 	mov r2, #0
@@ -590,7 +590,7 @@ _021E952E:
 	mov r1, #1
 	ldr r0, [r4, #0x58]
 	add r2, r1, #0
-	bl ov01_021E8E98
+	bl MapPropOneShotAnimationManager_PlayAnimationWithSoundEffect
 	ldr r0, [r6]
 	add r0, r0, #1
 	str r0, [r6]
@@ -598,7 +598,7 @@ _021E952E:
 _021E9572:
 	ldr r0, [r4, #0x58]
 	mov r1, #1
-	bl ov01_021E8F10
+	bl MapPropOneShotAnimationManager_IsAnimationLoopFinished
 	cmp r0, #0
 	beq _021E95B0
 	bl IsPaletteFadeFinished
@@ -612,7 +612,7 @@ _021E9572:
 	ldr r0, [r4, #0x54]
 	ldr r1, [r4, #0x58]
 	mov r2, #1
-	bl ov01_021E8ED0
+	bl MapPropOneShotAnimationManager_UnloadAnimation
 	add sp, #0x58
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
@@ -908,10 +908,10 @@ _021E9788:
 	bl ov01_021FB9E0
 	add r7, r0, #0
 	ldr r0, [sp, #0x1c]
-	bl ov01_021F3B38
+	bl MapProp_GetRenderSurface
 	add r5, r0, #0
 	ldr r0, [sp, #0x1c]
-	bl ov01_021F3B3C
+	bl MapProp_GetResModel
 	str r5, [sp]
 	str r0, [sp, #4]
 	str r7, [sp, #8]
@@ -923,7 +923,7 @@ _021E9788:
 	ldr r1, [r6, #0x58]
 	ldr r3, [sp, #0x18]
 	mov r2, #2
-	bl ov01_021E8DE8
+	bl MapPropOneShotAnimationManager_LoadPropAnimations
 	b _021E97E0
 _021E97D6:
 	bl GF_AssertFail
@@ -950,12 +950,12 @@ _021E97FE:
 	b _021E98E0
 _021E9806:
 	mov r0, #1
-	bl ov01_021E636C
+	bl FieldMap_FadeScreen
 	ldr r0, [r6, #0x58]
 	ldr r3, _021E98EC ; =SEQ_SE_DP_ESUKA
 	mov r1, #2
 	mov r2, #0
-	bl ov01_021E8E98
+	bl MapPropOneShotAnimationManager_PlayAnimationWithSoundEffect
 	ldr r0, [r6, #0x40]
 	bl PlayerAvatar_GetMapObject
 	add r6, r0, #0
@@ -1032,7 +1032,7 @@ _021E988E:
 _021E98B4:
 	ldr r0, [r6, #0x58]
 	mov r1, #2
-	bl ov01_021E8F10
+	bl MapPropOneShotAnimationManager_IsAnimationLoopFinished
 	cmp r0, #0
 	beq _021E98E0
 	bl IsPaletteFadeFinished
@@ -1041,7 +1041,7 @@ _021E98B4:
 	ldr r0, [r6, #0x54]
 	ldr r1, [r6, #0x58]
 	mov r2, #2
-	bl ov01_021E8ED0
+	bl MapPropOneShotAnimationManager_UnloadAnimation
 	ldr r0, _021E98EC ; =SEQ_SE_DP_ESUKA
 	mov r1, #0
 	bl StopSE
@@ -1132,10 +1132,10 @@ _021E995A:
 	bl ov01_021FB9E0
 	add r7, r0, #0
 	ldr r0, [sp, #0x20]
-	bl ov01_021F3B38
+	bl MapProp_GetRenderSurface
 	add r5, r0, #0
 	ldr r0, [sp, #0x20]
-	bl ov01_021F3B3C
+	bl MapProp_GetResModel
 	str r5, [sp]
 	str r0, [sp, #4]
 	str r7, [sp, #8]
@@ -1148,7 +1148,7 @@ _021E995A:
 	ldr r1, [r6, #0x58]
 	ldr r3, [sp, #0x1c]
 	mov r2, #2
-	bl ov01_021E8DE8
+	bl MapPropOneShotAnimationManager_LoadPropAnimations
 	b _021E99B4
 _021E99AA:
 	bl GF_AssertFail
@@ -1178,7 +1178,7 @@ _021E99DA:
 	ldr r3, _021E9AB8 ; =SEQ_SE_DP_ESUKA
 	mov r1, #2
 	mov r2, #0
-	bl ov01_021E8E98
+	bl MapPropOneShotAnimationManager_PlayAnimationWithSoundEffect
 	ldr r0, [r6, #0x40]
 	bl PlayerAvatar_GetMapObject
 	add r7, r0, #0
@@ -1229,7 +1229,7 @@ _021E9A3C:
 	mov r1, #0x4a
 	bl MapObject_SetHeldMovement
 	mov r0, #0
-	bl ov01_021E636C
+	bl FieldMap_FadeScreen
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
@@ -1250,7 +1250,7 @@ _021E9A62:
 _021E9A80:
 	ldr r0, [r6, #0x58]
 	mov r1, #2
-	bl ov01_021E8F10
+	bl MapPropOneShotAnimationManager_IsAnimationLoopFinished
 	cmp r0, #0
 	beq _021E9AAC
 	bl IsPaletteFadeFinished
@@ -1259,7 +1259,7 @@ _021E9A80:
 	ldr r0, [r6, #0x54]
 	ldr r1, [r6, #0x58]
 	mov r2, #2
-	bl ov01_021E8ED0
+	bl MapPropOneShotAnimationManager_UnloadAnimation
 	ldr r0, _021E9AB8 ; =SEQ_SE_DP_ESUKA
 	mov r1, #0
 	bl StopSE
@@ -1286,7 +1286,7 @@ ov01_021E9ABC: ; 0x021E9ABC
 	add r4, r0, #0
 	ldrb r1, [r4]
 	ldr r0, [r5, #0x58]
-	bl ov01_021E8F10
+	bl MapPropOneShotAnimationManager_IsAnimationLoopFinished
 	cmp r0, #0
 	beq _021E9AE4
 	add r0, r4, #0
@@ -1366,17 +1366,17 @@ _021E9B62:
 	beq _021E9BB0
 	ldr r0, [r7, #0x54]
 	ldr r1, [sp, #0x20]
-	bl ov01_021E8BAC
+	bl MapPropAnimationManager_GetPropAnimationCount
 	add r5, r0, #0
 	beq _021E9BB4
 	ldr r0, [r7, #0x34]
 	bl ov01_021FB9E0
 	add r6, r0, #0
 	ldr r0, [sp, #0x28]
-	bl ov01_021F3B38
+	bl MapProp_GetRenderSurface
 	add r4, r0, #0
 	ldr r0, [sp, #0x28]
-	bl ov01_021F3B3C
+	bl MapProp_GetResModel
 	str r4, [sp]
 	str r0, [sp, #4]
 	str r6, [sp, #8]
@@ -1389,7 +1389,7 @@ _021E9B62:
 	ldr r1, [r7, #0x58]
 	ldr r2, [sp, #0x18]
 	ldr r3, [sp, #0x20]
-	bl ov01_021E8DE8
+	bl MapPropOneShotAnimationManager_LoadPropAnimations
 	add sp, #0x54
 	pop {r4, r5, r6, r7, pc}
 _021E9BB0:
@@ -1405,7 +1405,7 @@ ov01_021E9BB8: ; 0x021E9BB8
 	add r5, r0, #0
 	ldr r0, [r5, #0x58]
 	add r4, r1, #0
-	bl ov01_021E8F30
+	bl MapPropOneShotAnimationManager_GetAnimationMapPropModelID
 	add r1, r0, #0
 	add r0, r5, #0
 	mov r2, #1
@@ -1414,7 +1414,7 @@ ov01_021E9BB8: ; 0x021E9BB8
 	ldr r0, [r5, #0x58]
 	add r1, r4, #0
 	mov r2, #0
-	bl ov01_021E8E98
+	bl MapPropOneShotAnimationManager_PlayAnimationWithSoundEffect
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov01_021E9BB8
 
@@ -1424,7 +1424,7 @@ ov01_021E9BDC: ; 0x021E9BDC
 	add r5, r0, #0
 	ldr r0, [r5, #0x58]
 	add r4, r1, #0
-	bl ov01_021E8F30
+	bl MapPropOneShotAnimationManager_GetAnimationMapPropModelID
 	add r1, r0, #0
 	add r0, r5, #0
 	mov r2, #0
@@ -1433,7 +1433,7 @@ ov01_021E9BDC: ; 0x021E9BDC
 	ldr r0, [r5, #0x58]
 	add r1, r4, #0
 	mov r2, #1
-	bl ov01_021E8E98
+	bl MapPropOneShotAnimationManager_PlayAnimationWithSoundEffect
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov01_021E9BDC
 
@@ -1461,10 +1461,10 @@ ov01_021E9C20: ; 0x021E9C20
 	add r2, r1, #0
 	ldr r0, [r3, #0x54]
 	ldr r1, [r3, #0x58]
-	ldr r3, _021E9C2C ; =ov01_021E8ED0
+	ldr r3, _021E9C2C ; =MapPropOneShotAnimationManager_UnloadAnimation
 	bx r3
 	.balign 4, 0
-_021E9C2C: .word ov01_021E8ED0
+_021E9C2C: .word MapPropOneShotAnimationManager_UnloadAnimation
 	thumb_func_end ov01_021E9C20
 
 	thumb_func_start ov01_021E9C30
@@ -1602,7 +1602,7 @@ _021E9D32:
 	beq _021E9D88
 	ldr r0, [r4, #0x54]
 	ldr r1, [sp, #0x20]
-	bl ov01_021E8BAC
+	bl MapPropAnimationManager_GetPropAnimationCount
 	add r7, r0, #0
 	bne _021E9D50
 	add sp, #0x5c
@@ -1613,10 +1613,10 @@ _021E9D50:
 	bl ov01_021FB9E0
 	str r0, [sp, #0x2c]
 	ldr r0, [sp, #0x30]
-	bl ov01_021F3B38
+	bl MapProp_GetRenderSurface
 	add r5, r0, #0
 	ldr r0, [sp, #0x30]
-	bl ov01_021F3B3C
+	bl MapProp_GetResModel
 	str r5, [sp]
 	str r0, [sp, #4]
 	ldr r0, [sp, #0x2c]
@@ -1629,7 +1629,7 @@ _021E9D50:
 	ldr r0, [r4, #0x54]
 	ldr r1, [r4, #0x58]
 	ldr r3, [sp, #0x20]
-	bl ov01_021E8DE8
+	bl MapPropOneShotAnimationManager_LoadPropAnimations
 	mov r0, #4
 	str r0, [r6]
 	b _021E9ECC
@@ -1692,7 +1692,7 @@ _021E9DEA:
 _021E9E04:
 	ldr r0, [r4, #0x58]
 	mov r1, #1
-	bl ov01_021E8F30
+	bl MapPropOneShotAnimationManager_GetAnimationMapPropModelID
 	add r1, r0, #0
 	add r0, r4, #0
 	mov r2, #1
@@ -1701,14 +1701,14 @@ _021E9E04:
 	ldr r0, [r4, #0x58]
 	mov r1, #1
 	mov r2, #0
-	bl ov01_021E8E98
+	bl MapPropOneShotAnimationManager_PlayAnimationWithSoundEffect
 	mov r0, #5
 	str r0, [r6]
 	b _021E9ECC
 _021E9E28:
 	ldr r0, [r4, #0x58]
 	mov r1, #1
-	bl ov01_021E8F10
+	bl MapPropOneShotAnimationManager_IsAnimationLoopFinished
 	cmp r0, #0
 	beq _021E9ECC
 	ldr r0, [r4, #0x40]
@@ -1740,7 +1740,7 @@ _021E9E58:
 	bl ov01_02205790
 	ldr r0, [r4, #0x58]
 	mov r1, #1
-	bl ov01_021E8F30
+	bl MapPropOneShotAnimationManager_GetAnimationMapPropModelID
 	add r1, r0, #0
 	add r0, r4, #0
 	mov r2, #0
@@ -1749,7 +1749,7 @@ _021E9E58:
 	mov r1, #1
 	ldr r0, [r4, #0x58]
 	add r2, r1, #0
-	bl ov01_021E8E98
+	bl MapPropOneShotAnimationManager_PlayAnimationWithSoundEffect
 	ldr r0, [r6]
 	add r0, r0, #1
 	str r0, [r6]
@@ -1757,7 +1757,7 @@ _021E9E58:
 _021E9E9C:
 	ldr r0, [r4, #0x58]
 	mov r1, #1
-	bl ov01_021E8F10
+	bl MapPropOneShotAnimationManager_IsAnimationLoopFinished
 	cmp r0, #0
 	beq _021E9ECC
 	bl IsPaletteFadeFinished
@@ -1771,7 +1771,7 @@ _021E9E9C:
 	ldr r0, [r4, #0x54]
 	ldr r1, [r4, #0x58]
 	mov r2, #1
-	bl ov01_021E8ED0
+	bl MapPropOneShotAnimationManager_UnloadAnimation
 	add sp, #0x5c
 	mov r0, #1
 	pop {r4, r5, r6, r7, pc}
@@ -2203,8 +2203,8 @@ _021EA21C:
 	pop {r4, pc}
 	thumb_func_end ov01_021EA1F4
 
-	thumb_func_start ov01_021EA220
-ov01_021EA220: ; 0x021EA220
+	thumb_func_start AreaLightManager_New
+AreaLightManager_New: ; 0x021EA220
 	push {r4, r5, r6, lr}
 	add r6, r1, #0
 	add r5, r0, #0
@@ -2254,10 +2254,10 @@ _021EA272:
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _021EA280: .word ov01_02206450
-	thumb_func_end ov01_021EA220
+	thumb_func_end AreaLightManager_New
 
-	thumb_func_start ov01_021EA284
-ov01_021EA284: ; 0x021EA284
+	thumb_func_start AreaLightManager_Free
+AreaLightManager_Free: ; 0x021EA284
 	push {r4, lr}
 	add r4, r0, #0
 	bne _021EA28E
@@ -2272,10 +2272,10 @@ _021EA28E:
 	mov r0, #0
 	str r0, [r4]
 	pop {r4, pc}
-	thumb_func_end ov01_021EA284
+	thumb_func_end AreaLightManager_Free
 
-	thumb_func_start ov01_021EA2A4
-ov01_021EA2A4: ; 0x021EA2A4
+	thumb_func_start AreaLightManager_UpdateActiveTemplate
+AreaLightManager_UpdateActiveTemplate: ; 0x021EA2A4
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	bne _021EA2AE
@@ -2325,7 +2325,7 @@ _021EA2F0:
 _021EA2FC:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov01_021EA2A4
+	thumb_func_end AreaLightManager_UpdateActiveTemplate
 
 	thumb_func_start ov01_021EA300
 ov01_021EA300: ; 0x021EA300

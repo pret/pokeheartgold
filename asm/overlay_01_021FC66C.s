@@ -63,7 +63,7 @@ _021FC6B6:
 	ldr r1, [r5, #0xc]
 	add r0, r4, #0
 	add r2, #0x10
-	bl ov02_02246F70
+	bl FieldSystem_PerformFishEncounterCheck
 	str r0, [r5, #8]
 	ldr r1, [r5, #0xc]
 	ldr r2, [r5, #8]
@@ -91,7 +91,7 @@ _021FC6E2:
 	bl GearPhoneRingManager_ResetIfActive
 	ldr r0, [r4, #0xc]
 	bl Save_GameStats_Get
-	mov r1, #0xb
+	mov r1, #0xb ; GAME_STAT_FISH_LANDED
 	bl GameStats_Inc
 	ldr r2, [r5, #0x10]
 	add r0, r4, #0
@@ -487,7 +487,7 @@ ov01_021FC9AC: ; 0x021FC9AC
 	ldr r0, [r4, #0x20]
 	ldr r0, [r0, #0xc]
 	bl Save_GameStats_Get
-	mov r1, #0x65
+	mov r1, #0x65 ; GAME_STAT_UNK101
 	bl GameStats_Inc
 	mov r0, #1
 	pop {r4, pc}
@@ -733,13 +733,13 @@ ov01_021FCB6C: ; 0x021FCB6C
 	ldr r0, [r4, #8]
 	add r1, #0x38
 	mov r2, #3
-	bl sub_0205B514
+	bl DialogBox_AddWindowToLayer3
 	ldr r0, [r4, #0xc]
 	bl Save_PlayerData_GetOptionsAddr
 	add r5, #0x38
 	add r1, r0, #0
 	add r0, r5, #0
-	bl sub_0205B564
+	bl DialogBox_LoadFrame
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov01_021FCB6C
 
@@ -765,7 +765,7 @@ ov01_021FCB90: ; 0x021FCB90
 	ldr r1, [r5, #0x2c]
 	add r0, #0x38
 	mov r3, #1
-	bl sub_0205B5B4
+	bl DialogBox_PrintMessage
 	add r5, #0x28
 	strb r0, [r5]
 	pop {r4, r5, r6, pc}
@@ -778,7 +778,7 @@ ov01_021FCBCC: ; 0x021FCBCC
 	add r4, r0, #0
 	add r0, #0x28
 	ldrb r0, [r0]
-	bl IsPrintFinished
+	bl DialogBox_IsPrintFinished
 	cmp r0, #1
 	bne _021FCBFA
 	bl ov01_021FCAFC

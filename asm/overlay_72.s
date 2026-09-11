@@ -1354,22 +1354,22 @@ _022381EC:
 	str r0, [r5, r1]
 	sub r1, #0x2c
 	ldr r0, [r5, r1]
-	bl sub_0200ACF0
+	bl SpriteTransfer_CreateCharTransferTask
 	ldr r0, _022383C4 ; =0x00000D44
 	ldr r0, [r5, r0]
-	bl sub_0200ACF0
+	bl SpriteTransfer_CreateCharTransferTask
 	ldr r0, _022383D0 ; =0x00000D54
 	ldr r0, [r5, r0]
-	bl sub_0200ACF0
+	bl SpriteTransfer_CreateCharTransferTask
 	ldr r0, _022383BC ; =0x00000D38
 	ldr r0, [r5, r0]
-	bl sub_0200AF94
+	bl SpriteTransfer_CreateExtPlttTransferTask
 	ldr r0, _022383C8 ; =0x00000D48
 	ldr r0, [r5, r0]
-	bl sub_0200AF94
+	bl SpriteTransfer_CreateExtPlttTransferTask
 	ldr r0, _022383D4 ; =0x00000D58
 	ldr r0, [r5, r0]
-	bl sub_0200AF94
+	bl SpriteTransfer_CreateExtPlttTransferTask
 	add r0, r7, #0
 	bl NARC_Delete
 	ldr r0, [sp, #0x14]
@@ -1910,16 +1910,16 @@ ov72_02238800: ; 0x02238800
 	add r6, r0, #0
 	ldr r0, _02238854 ; =0x00000D34
 	ldr r0, [r6, r0]
-	bl sub_0200AEB0
+	bl SpriteTransfer_DeleteCharTransferTask
 	ldr r0, _02238858 ; =0x00000D44
 	ldr r0, [r6, r0]
-	bl sub_0200AEB0
+	bl SpriteTransfer_DeleteCharTransferTask
 	ldr r0, _0223885C ; =0x00000D38
 	ldr r0, [r6, r0]
-	bl sub_0200B0A8
+	bl SpriteTransfer_DeletePlttTransferTask
 	ldr r0, _02238860 ; =0x00000D48
 	ldr r0, [r6, r0]
-	bl sub_0200B0A8
+	bl SpriteTransfer_DeletePlttTransferTask
 	ldr r7, _02238864 ; =0x00000D24
 	mov r4, #0
 	add r5, r6, #0

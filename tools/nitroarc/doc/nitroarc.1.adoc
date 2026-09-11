@@ -32,7 +32,14 @@ one of the following flags:
 
 *-c, --create*::
   Create _ARCHIVE_ with the files in _DIRECTORY_. All files which descend from
-  _DIRECTORY_ or any of its subdirectories will be included in _ARCHIVE_.
+  _DIRECTORY_ or any of its subdirectories will be included in _ARCHIVE_. By
+  default, all files which match either of the patterns “.\*ignore” or
+  “.\*order” will be ignored. If a file named “.narcorder” is present in
+  _DIRECTORY_, then it will be automatically loaded as if it had been given as
+  an argument to the *-T* option. If a file named “.narcignore” is present in
+  _DIRECTORY_, then it will be automatically loaded as if it had been given as
+  an argument to the *-X* option. In either case, a file given as an explicit
+  option-argument will take precedence.
 
 *-m, --meta, --metadata*::
   View tabulated metadata about the sections of _ARCHIVE_.
@@ -104,6 +111,11 @@ evaluated.
   followed by a single ASCII space (‘ ’) and its member index on the same line.
   If a member file is included in the archive multiple times, then occurrences
   past the first will be suffixed with the number of previous occurrences.
+
+*-P, --index-namespace*::
+  Identical to *--index*, but all output preprocessor definitions are prefixed
+  with a namespace of “NARC_” and the name of the output archive, minus its
+  extension.
 
 *-N, --named*::
   Mirror the local filesystem from _DIRECTORY_ in _ARCHIVE_, with _DIRECTORY_

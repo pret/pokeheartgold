@@ -5,19 +5,15 @@
 
 	.rodata
 
-	scrdef scr_seq_R33_000
-	scrdef scr_seq_R33_001
-	scrdef_end
+	ScrDef scr_seq_R33_000
+	ScrDef scr_seq_R33_001
+	ScrDefEnd
 
 scr_seq_R33_000:
-	simple_npc_msg msg_0383_R33_00000
-	end
+	SimpleNPCMsg msg_0383_R33_00000
+	End
 
 scr_seq_R33_001:
-	direction_signpost msg_0383_R33_00001, 1, 2, VAR_SPECIAL_RESULT
-	scrcmd_057 3
-	scrcmd_058
-	scrcmd_060 VAR_SPECIAL_RESULT
-	callstd std_signpost
-	end
+	DirectionSignpostEx 1, 2, msg_0383_R33_00001
+	End
 	.balign 4, 0

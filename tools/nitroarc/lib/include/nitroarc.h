@@ -26,6 +26,16 @@ extern "C" {
 #include <stddef.h>
 #include <stdint.h>
 
+#define NITROARC_VERSION_MAJOR 1
+#define NITROARC_VERSION_MINOR 1
+#define NITROARC_VERSION_PATCH 0
+
+static inline int nitroarc_version(void) {
+    return (NITROARC_VERSION_MAJOR << 16)
+        | (NITROARC_VERSION_MINOR << 8)
+        | (NITROARC_VERSION_PATCH);
+}
+
 typedef struct nitroarc_fatb nitroarc_fatb_t;
 struct nitroarc_fatb {
     uint32_t ofs_head;
@@ -57,7 +67,9 @@ typedef struct nitroarc nitroarc_t;
 struct nitroarc {
     uint32_t size;
     uint16_t nfiles;
-    uint16_t ndirs;
+    uint16_t ndirs    : 12; // Maximum number of directories is 4096
+    uint16_t named    : 1;
+    uint16_t reserved : 3;
 
     const void     *head;
     nitroarc_fatb_t fatb;

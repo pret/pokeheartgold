@@ -5,42 +5,42 @@
 
 	.rodata
 
-	scrdef scr_seq_T11R0602_000
-	scrdef_end
+	ScrDef scr_seq_T11R0602_000
+	ScrDefEnd
 
 scr_seq_T11R0602_000:
-	scrcmd_609
-	lockall
-	apply_movement obj_player, _0088
-	wait_movement
-	play_se SEQ_SE_DP_KAIDAN2
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	warp MAP_SAFFRON_MAGNET_TRAIN_STATION_1F, 0, 3, 3, DIR_EAST
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
-	wait_se SEQ_SE_DP_KAIDAN2
-	scrcmd_606
-	toggle_following_pokemon_movement 0
-	wait_following_pokemon_movement
-	following_pokemon_movement 55
-	apply_movement obj_player, _0094
-	wait_movement
-	wait_following_pokemon_movement
-	toggle_following_pokemon_movement 1
-	following_pokemon_movement 48
-	npc_msg msg_0536_T11R0602_00000
-	closemsg
-	toggle_following_pokemon_movement 0
-	wait_following_pokemon_movement
-	following_pokemon_movement 55
-	apply_movement obj_player, _00A0
-	wait_movement
-	wait_following_pokemon_movement
-	toggle_following_pokemon_movement 1
-	following_pokemon_movement 48
-	releaseall
-	end
+	ScrCmd_609
+	LockAll
+	ApplyMovement obj_player, _0088
+	WaitMovement
+	PlaySE SEQ_SE_DP_KAIDAN2
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	Warp MAP_SAFFRON_MAGNET_TRAIN_STATION_1F, 0, 3, 3, DIR_EAST
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
+	WaitSE SEQ_SE_DP_KAIDAN2
+	ScrCmd_606
+	ToggleFollowingPokemonMovement 0
+	WaitFollowingPokemonMovement
+	FollowingPokemonMovement 55
+	ApplyMovement obj_player, _0094
+	WaitMovement
+	WaitFollowingPokemonMovement
+	ToggleFollowingPokemonMovement 1
+	FollowingPokemonMovement 48
+	NPCMsg msg_0536_T11R0602_00000
+	CloseMsg
+	ToggleFollowingPokemonMovement 0
+	WaitFollowingPokemonMovement
+	FollowingPokemonMovement 55
+	ApplyMovement obj_player, _00A0
+	WaitMovement
+	WaitFollowingPokemonMovement
+	ToggleFollowingPokemonMovement 1
+	FollowingPokemonMovement 48
+	ReleaseAll
+	End
 
 	.balign 4, 0
 _0088:
@@ -60,6 +60,6 @@ _00A0:
 	EndMovement
 
 _00A8:
-	end
+	End
 
 	.balign 4, 0

@@ -1,8 +1,9 @@
 #include "field_system.h"
-#include "overlay_01_apricorn_tree_anim.h"
 #include "scrcmd.h"
 #include "unk_02031B0C.h"
 #include "unk_02055418.h"
+
+#include "field/apricorn_tree_anim.h"
 
 BOOL ScrCmd_AnimApricornTree(ScriptContext *ctx) {
     u16 varId = ScriptReadHalfword(ctx);

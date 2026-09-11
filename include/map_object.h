@@ -118,8 +118,8 @@ typedef enum MapObjectFlagBits {
     MAPOBJECTFLAG_NONE = 0,
     MAPOBJECTFLAG_ACTIVE = (1 << 0),
     MAPOBJECTFLAG_SINGLE_MOVEMENT = (1 << 1),
-    MAPOBJECTFLAG_UNK2 = (1 << 2),
-    MAPOBJECTFLAG_UNK3 = (1 << 3),
+    MAPOBJECTFLAG_START_MOVEMENT = (1 << 2),
+    MAPOBJECTFLAG_END_MOVEMENT = (1 << 3),
     MAPOBJECTFLAG_UNK4 = (1 << 4),
     MAPOBJECTFLAG_UNK5 = (1 << 5),
     MAPOBJECTFLAG_MOVEMENT_PAUSED = (1 << 6),
@@ -149,15 +149,6 @@ typedef enum MapObjectFlagBits {
     MAPOBJECTFLAG_UNK30 = (1 << 30),
     MAPOBJECTFLAG_UNK31 = (1 << 31),
 } MapObjectFlagBits;
-
-// this may be the same as above, I don't know
-typedef enum MapObjectManagerFlagBits {
-    MAPOBJECTMANAGERFLAG_NONE = 0,
-    MAPOBJECTMANAGERFLAG_UNK0 = (1 << 0),
-    MAPOBJECTMANAGERFLAG_UNK1 = (1 << 1),
-    MAPOBJECTMANAGERFLAG_UNK2 = (1 << 2),
-    MAPOBJECTMANAGERFLAG_UNK3 = (1 << 3),
-} MapObjectManagerFlagBits;
 
 #define MAP_OBJECT_GFX_ID_INVALID 0xFFFF
 
@@ -202,9 +193,9 @@ u32 MapObject_GetPriorityPlusValue(LocalMapObject *object, u32 value);
 BOOL sub_0205F0A8(LocalMapObject *object, u32 objectId, u32 mapId);
 BOOL sub_0205F0F8(LocalMapObject *object, u32 spriteId, u32 objectId, u32 mapId);
 u32 MapObjectManager_GetObjectCount(MapObjectManager *manager);
-void MapObjectManager_SetFlagsBits(MapObjectManager *manager, MapObjectManagerFlagBits bits);
-void MapObjectManager_ClearFlagsBits(MapObjectManager *manager, MapObjectManagerFlagBits bits);
-u32 MapObjectManager_GetFlagsBitsMask(MapObjectManager *manager, MapObjectManagerFlagBits bits);
+void MapObjectManager_SetFlagsBits(MapObjectManager *manager, MapObjectFlagBits bits);
+void MapObjectManager_ClearFlagsBits(MapObjectManager *manager, MapObjectFlagBits bits);
+u32 MapObjectManager_GetFlagsBitsMask(MapObjectManager *manager, MapObjectFlagBits bits);
 u32 MapObjectManager_GetPriority(MapObjectManager *manager);
 void *sub_0205F1A0(MapObjectManager *manager);
 LocalMapObject *MapObjectManager_GetObjects2(MapObjectManager *manager);
@@ -280,15 +271,15 @@ void sub_0205F568(MapObjectManager *manager);
 void MapObjectManager_PauseAllMovement(MapObjectManager *manager);
 void MapObjectManager_UnpauseAllMovement(MapObjectManager *manager);
 BOOL sub_0205F5D4(MapObjectManager *manager);
-u32 sub_0205F5E8(LocalMapObject *object, MapObjectManagerFlagBits bits);
-void sub_0205F5F8(MapObjectManager *manager, BOOL clear);
-BOOL sub_0205F610(MapObjectManager *manager);
+u32 sub_0205F5E8(LocalMapObject *object, MapObjectFlagBits bits);
+void MapObjectManager_SetEndMovement(MapObjectManager *manager, BOOL clear);
+BOOL MapObjectManager_NotEndMovement(MapObjectManager *manager);
 BOOL MapObject_CheckActive(LocalMapObject *object);
 void MapObject_SetSingleMovement(LocalMapObject *object);
 void MapObject_ClearSingleMovement(LocalMapObject *object);
 BOOL MapObject_CheckSingleMovement(LocalMapObject *object);
-void MapObject_SetFlag2(LocalMapObject *object);
-void MapObject_ClearFlag3(LocalMapObject *object);
+void MapObject_SetStartMovement(LocalMapObject *object);
+void MapObject_ClearEndMovement(LocalMapObject *object);
 BOOL MapObject_CheckFlag14(LocalMapObject *object);
 BOOL MapObject_CheckVisible(LocalMapObject *object);
 void MapObject_SetVisible(LocalMapObject *object, BOOL set);

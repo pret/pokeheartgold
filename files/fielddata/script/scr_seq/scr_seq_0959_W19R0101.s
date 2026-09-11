@@ -5,26 +5,26 @@
 
 	.rodata
 
-	scrdef scr_seq_W19R0101_000
-	scrdef_end
+	ScrDef scr_seq_W19R0101_000
+	ScrDefEnd
 
 scr_seq_W19R0101_000:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	check_badge BADGE_VOLCANO, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _002C
-	npc_msg msg_0741_W19R0101_00000
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	CheckBadge BADGE_VOLCANO, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _002C
+	NPCMsg msg_0741_W19R0101_00000
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _002C:
-	npc_msg msg_0741_W19R0101_00001
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0741_W19R0101_00001
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 	.balign 4, 0

@@ -45,10 +45,10 @@
 .public sub_0200A740
 .public DestroySingle2DGfxResObj
 .public GF2DGfxResObj_GetPlttDataPtr
-.public sub_0200ADA4
-.public sub_0200AEB0
-.public sub_0200B00C
-.public sub_0200B0A8
+.public SpriteTransfer_CreateCharTransferTask_AllocAtEnd
+.public SpriteTransfer_DeleteCharTransferTask
+.public SpriteTransfer_CreatePlttTransferTask
+.public SpriteTransfer_DeletePlttTransferTask
 .public OamManager_Create
 .public OamManager_ApplyAndResetBuffers
 .public OamManager_Free
@@ -82,7 +82,7 @@
 .public LoadUserFrameGfx2
 .public DrawFrameAndWindow2
 .public ClearFrameAndWindow2
-.public sub_0200EC0C
+.public LoadMapSignpostFrameAndGraphic
 .public DrawFrameAndWindow3
 .public WaitingIcon_New
 .public sub_0200F450
@@ -413,8 +413,8 @@
 .public ov45_0222B0BC
 .public ov45_0222B0D8
 .public ov45_0222B0E8
-.public ov45_0222B0F8
-.public ov45_0222B108
+.public IncrementGameStat47
+.public IncrementGameStat119
 .public ov45_0222B118
 .public ov45_0222B134
 .public ov45_0222B1B4

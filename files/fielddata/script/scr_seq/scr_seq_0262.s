@@ -5,160 +5,160 @@
 
 	.rodata
 
-	scrdef scr_seq_0262_000
-	scrdef scr_seq_0262_001
-	scrdef scr_seq_0262_002
-	scrdef scr_seq_0262_003
-	scrdef scr_seq_0262_004
-	scrdef scr_seq_0262_005
-	scrdef scr_seq_0262_006
-	scrdef_end
+	ScrDef scr_seq_0262_000
+	ScrDef scr_seq_0262_001
+	ScrDef scr_seq_0262_002
+	ScrDef scr_seq_0262_003
+	ScrDef scr_seq_0262_004
+	ScrDef scr_seq_0262_005
+	ScrDef scr_seq_0262_006
+	ScrDefEnd
 
 scr_seq_0262_000:
-	scrcmd_609
-	lockall
-	scrcmd_721 VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _006A
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_ne _0049
-	npc_msg msg_0427_00008
-	goto _0062
+	ScrCmd_609
+	LockAll
+	ScrCmd_721 VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _006A
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfNe _0049
+	NPCMsg msg_0427_00008
+	GoTo _0062
 
 _0049:
-	compare VAR_SPECIAL_RESULT, 2
-	goto_if_ne _005F
-	npc_msg msg_0427_00009
-	goto _0062
+	Compare VAR_SPECIAL_RESULT, 2
+	GoToIfNe _005F
+	NPCMsg msg_0427_00009
+	GoTo _0062
 
 _005F:
-	npc_msg msg_0427_00010
+	NPCMsg msg_0427_00010
 _0062:
-	wait_button_or_walk_away
-	goto _00B5
+	WaitButton
+	GoTo _00B5
 
 _006A:
-	npc_msg msg_0427_00004
-	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _00B5
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	closemsg
-	scrcmd_717 VAR_SPECIAL_RESULT
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
-	compare VAR_SPECIAL_RESULT, 255
-	goto_if_eq _00B7
-	scrcmd_718 0, VAR_SPECIAL_RESULT
-	npc_msg msg_0427_00005
-	wait_button_or_walk_away
+	NPCMsg msg_0427_00004
+	TouchscreenMenuHide
+	GetMenuChoice VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _00B5
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	CloseMsg
+	ScrCmd_717 VAR_SPECIAL_RESULT
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
+	Compare VAR_SPECIAL_RESULT, 255
+	GoToIfEq _00B7
+	ScrCmd_718 0, VAR_SPECIAL_RESULT
+	NPCMsg msg_0427_00005
+	WaitButton
 _00B5:
-	closemsg
+	CloseMsg
 _00B7:
-	touchscreen_menu_show
-	releaseall
-	end
+	TouchscreenMenuShow
+	ReleaseAll
+	End
 
 scr_seq_0262_001:
-	scrcmd_609
-	lockall
-	scrcmd_719 VAR_SPECIAL_x8000, VAR_SPECIAL_x8001
-	compare VAR_SPECIAL_x8000, 255
-	goto_if_eq _0114
-	scrcmd_718 0, VAR_SPECIAL_x8000
-	npc_msg msg_0427_00006
-	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _0112
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	closemsg
-	scrcmd_720 VAR_SPECIAL_x8001
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
-	npc_msg msg_0427_00007
-	wait_button_or_walk_away
+	ScrCmd_609
+	LockAll
+	ScrCmd_719 VAR_SPECIAL_x8000, VAR_SPECIAL_x8001
+	Compare VAR_SPECIAL_x8000, 255
+	GoToIfEq _0114
+	ScrCmd_718 0, VAR_SPECIAL_x8000
+	NPCMsg msg_0427_00006
+	TouchscreenMenuHide
+	GetMenuChoice VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _0112
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	CloseMsg
+	ScrCmd_720 VAR_SPECIAL_x8001
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
+	NPCMsg msg_0427_00007
+	WaitButton
 _0112:
-	closemsg
+	CloseMsg
 _0114:
-	touchscreen_menu_show
-	releaseall
-	end
+	TouchscreenMenuShow
+	ReleaseAll
+	End
 
 _011A:
-	safari_zone_action 1, 0
-	compare VAR_SCENE_SAFARI_ZONE_ENTRANCE, 3
-	goto_if_ne _0155
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	warp MAP_SAFARI_ZONE_ENTRANCE_INTERIOR, 0, 19, 2, DIR_SOUTH
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
-	goto _0179
+	SafariZoneAction 1, 0
+	Compare VAR_SCENE_SAFARI_ZONE_ENTRANCE, 3
+	GoToIfNe _0155
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	Warp MAP_SAFARI_ZONE_ENTRANCE_INTERIOR, 0, 19, 2, DIR_SOUTH
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
+	GoTo _0179
 
 _0155:
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	warp MAP_SAFARI_ZONE_ENTRANCE_INTERIOR, 0, 5, 2, DIR_SOUTH
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	Warp MAP_SAFARI_ZONE_ENTRANCE_INTERIOR, 0, 5, 2, DIR_SOUTH
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
 _0179:
-	setvar VAR_SCENE_SAFARI_ZONE_ENTRANCE, 2
-	return
+	SetVar VAR_SCENE_SAFARI_ZONE_ENTRANCE, 2
+	Return
 
 scr_seq_0262_002:
-	scrcmd_609
-	lockall
-	play_se SEQ_SE_DP_PINPON
-	npc_msg msg_0427_00000
-	closemsg
-	call _011A
-	releaseall
-	end
+	ScrCmd_609
+	LockAll
+	PlaySE SEQ_SE_DP_PINPON
+	NPCMsg msg_0427_00000
+	CloseMsg
+	Call _011A
+	ReleaseAll
+	End
 
 scr_seq_0262_003:
-	scrcmd_609
-	lockall
-	play_se SEQ_SE_DP_PINPON
-	npc_msg msg_0427_00001
-	closemsg
-	call _011A
-	releaseall
-	end
+	ScrCmd_609
+	LockAll
+	PlaySE SEQ_SE_DP_PINPON
+	NPCMsg msg_0427_00001
+	CloseMsg
+	Call _011A
+	ReleaseAll
+	End
 
 scr_seq_0262_004:
-	scrcmd_609
-	lockall
-	play_se SEQ_SE_DP_PINPON
-	npc_msg msg_0427_00002
-	closemsg
-	call _011A
-	releaseall
-	end
+	ScrCmd_609
+	LockAll
+	PlaySE SEQ_SE_DP_PINPON
+	NPCMsg msg_0427_00002
+	CloseMsg
+	Call _011A
+	ReleaseAll
+	End
 
 scr_seq_0262_005:
-	setvar VAR_SCENE_SAFARI_ZONE_ENTRANCE, 2
-	safari_zone_action 1, 0
-	end
+	SetVar VAR_SCENE_SAFARI_ZONE_ENTRANCE, 2
+	SafariZoneAction 1, 0
+	End
 
 scr_seq_0262_006:
-	scrcmd_609
-	lockall
-	npc_msg msg_0427_00003
-	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_RESULT
-	touchscreen_menu_show
-	closemsg
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_ne _01FA
-	call _011A
-	releaseall
-	end
+	ScrCmd_609
+	LockAll
+	NPCMsg msg_0427_00003
+	TouchscreenMenuHide
+	GetMenuChoice VAR_SPECIAL_RESULT
+	TouchscreenMenuShow
+	CloseMsg
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfNe _01FA
+	Call _011A
+	ReleaseAll
+	End
 
 _01FA:
-	releaseall
-	end
+	ReleaseAll
+	End
 	.balign 4, 0

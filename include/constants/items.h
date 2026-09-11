@@ -166,7 +166,7 @@
 #define HOLD_EFFECT_RECOIL_SPECIAL        47
 #define HOLD_EFFECT_ACC_REDUCE            48
 #define HOLD_EFFECT_STATDOWN_RESTORE      49
-#define HOLD_EFFECT_EXP_UP_SPEED_DOWN     50
+#define HOLD_EFFECT_EVS_UP_SPEED_DOWN     50
 #define HOLD_EFFECT_EXP_SHARE             51
 #define HOLD_EFFECT_SOMETIMES_PRIORITY    52
 #define HOLD_EFFECT_FRIENDSHIP_UP         53
@@ -839,8 +839,9 @@
 #define HM_WATERFALL    ITEM_HM07
 #define HM_ROCK_CLIMB   ITEM_HM08
 
-#define NUM_TMS 92
-#define NUM_HMS 8
+#define NUM_TMS   92
+#define NUM_HMS   8
+#define NUM_TMHMS 100
 
 // Key Items
 #define ITEM_EXPLORER_KIT 428

@@ -1,6 +1,7 @@
 #ifndef POKEHEARTGOLD_CONSTANTS_SNDSEQ_H
 #define POKEHEARTGOLD_CONSTANTS_SNDSEQ_H
 
+#define SEQ_NONE                      0
 #define SEQ_PV001                     1
 #define SEQ_PV                        2
 #define SEQ_PV_END                    3
@@ -796,7 +797,7 @@
 #define SEQ_SE_DP_BOWA3               1799
 #define SEQ_SE_DP_BOWA4               1800
 #define SEQ_SE_DP_GETTING             1801
-#define SEQ_SE_DP_NAGERU              1802
+#define SEQ_SE_DP_THROW               1802
 #define SEQ_SE_DP_EXP                 1803
 #define SEQ_SE_DP_EXPMAX              1804
 #define SEQ_SE_DP_EXPMAX2             1805
@@ -2525,5 +2526,9 @@
 #define GROUP_SE_NUTMIXER 14
 #define GROUP_SE_CUSTOM   15
 #define GROUP_SE_GURUGURU 16
+
+#define ENVIRONMENT_SOUND_NONE      -1
+#define ENVIRONMENT_SOUND_NONE_UNK2 -2
+#define ENVIRONMENT_SOUND_NONE_UNK3 -3
 
 #endif // POKEHEARTGOLD_CONSTANTS_SNDSEQ_H

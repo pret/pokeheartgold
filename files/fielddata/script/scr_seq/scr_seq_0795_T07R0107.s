@@ -5,404 +5,404 @@
 
 	.rodata
 
-	scrdef scr_seq_T07R0107_000
-	scrdef_end
+	ScrDef scr_seq_T07R0107_000
+	ScrDefEnd
 
 scr_seq_T07R0107_000:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	get_dynamic_warp_floor_no VAR_ELEVATOR_LAST_FLOOR
-	switch VAR_ELEVATOR_LAST_FLOOR
-	case 5, _0068
-	case 4, _0072
-	case 3, _007C
-	case 2, _0086
-	case 1, _0090
-	case 0, _009A
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	GetDynamicWarpFloorNo VAR_ELEVATOR_LAST_FLOOR
+	Switch VAR_ELEVATOR_LAST_FLOOR
+	Case 5, _0068
+	Case 4, _0072
+	Case 3, _007C
+	Case 2, _0086
+	Case 1, _0090
+	Case 0, _009A
+	End
 
 _0068:
-	buffer_dept_store_floor_no 0, 6
-	goto _00A4
+	BufferDeptStoreFloorNo 0, 6
+	GoTo _00A4
 
 _0072:
-	buffer_dept_store_floor_no 0, 5
-	goto _00A4
+	BufferDeptStoreFloorNo 0, 5
+	GoTo _00A4
 
 _007C:
-	buffer_dept_store_floor_no 0, 4
-	goto _00A4
+	BufferDeptStoreFloorNo 0, 4
+	GoTo _00A4
 
 _0086:
-	buffer_dept_store_floor_no 0, 3
-	goto _00A4
+	BufferDeptStoreFloorNo 0, 3
+	GoTo _00A4
 
 _0090:
-	buffer_dept_store_floor_no 0, 2
-	goto _00A4
+	BufferDeptStoreFloorNo 0, 2
+	GoTo _00A4
 
 _009A:
-	buffer_dept_store_floor_no 0, 1
-	goto _00A4
+	BufferDeptStoreFloorNo 0, 1
+	GoTo _00A4
 
 _00A4:
-	elevator_cur_floor_box 20, 1, VAR_ELEVATOR_LAST_FLOOR, VAR_ELEVATOR_LAST_FLOOR
-	npc_msg msg_0500_T07R0107_00000
-	touchscreen_menu_hide
-	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_RESULT
-	menu_item_add 121, 255, 6
-	menu_item_add 120, 255, 0
-	menu_item_add 119, 255, 1
-	menu_item_add 118, 255, 2
-	menu_item_add 117, 255, 3
-	menu_item_add 116, 255, 4
-	menu_item_add 126, 255, 7
-	menu_exec
-	touchscreen_menu_show
-	switch VAR_SPECIAL_RESULT
-	case 6, _052D
-	case 0, _0467
-	case 1, _03A1
-	case 2, _02DB
-	case 3, _0215
-	case 4, _014F
-	goto _06DE
+	ElevatorCurFloorBox 20, 1, VAR_ELEVATOR_LAST_FLOOR, VAR_ELEVATOR_LAST_FLOOR
+	NPCMsg msg_0500_T07R0107_00000
+	TouchscreenMenuHide
+	MenuInitStdGmm 1, 1, 0, 1, VAR_SPECIAL_RESULT
+	MenuItemAdd 121, 255, 6
+	MenuItemAdd 120, 255, 0
+	MenuItemAdd 119, 255, 1
+	MenuItemAdd 118, 255, 2
+	MenuItemAdd 117, 255, 3
+	MenuItemAdd 116, 255, 4
+	MenuItemAdd 126, 255, 7
+	MenuExec
+	TouchscreenMenuShow
+	Switch VAR_SPECIAL_RESULT
+	Case 6, _052D
+	Case 0, _0467
+	Case 1, _03A1
+	Case 2, _02DB
+	Case 3, _0215
+	Case 4, _014F
+	GoTo _06DE
 
 _014F:
-	wait 1, VAR_SPECIAL_RESULT
-	get_dynamic_warp_floor_no VAR_ELEVATOR_LAST_FLOOR
-	set_dynamic_warp MAP_CELADON_DEPARTMENT_STORE_1F, 2, 5, 3, 1
-	compare VAR_ELEVATOR_LAST_FLOOR, 0
-	goto_if_eq _06C7
-	compare VAR_ELEVATOR_LAST_FLOOR, 0
-	call_if_gt _05FE
-	compare VAR_ELEVATOR_LAST_FLOOR, 0
-	call_if_lt _05F3
-	compare VAR_ELEVATOR_LAST_FLOOR, 1
-	goto_if_ne _01A5
-	setvar VAR_SPECIAL_x8005, 1
-	goto _0203
+	Wait 1, VAR_SPECIAL_RESULT
+	GetDynamicWarpFloorNo VAR_ELEVATOR_LAST_FLOOR
+	SetDynamicWarp MAP_CELADON_DEPARTMENT_STORE_1F, 2, 5, 3, 1
+	Compare VAR_ELEVATOR_LAST_FLOOR, 0
+	GoToIfEq _06C7
+	Compare VAR_ELEVATOR_LAST_FLOOR, 0
+	CallIfGt _05FE
+	Compare VAR_ELEVATOR_LAST_FLOOR, 0
+	CallIfLt _05F3
+	Compare VAR_ELEVATOR_LAST_FLOOR, 1
+	GoToIfNe _01A5
+	SetVar VAR_SPECIAL_x8005, 1
+	GoTo _0203
 
 _01A5:
-	compare VAR_ELEVATOR_LAST_FLOOR, 2
-	goto_if_ne _01BE
-	setvar VAR_SPECIAL_x8005, 2
-	goto _0203
+	Compare VAR_ELEVATOR_LAST_FLOOR, 2
+	GoToIfNe _01BE
+	SetVar VAR_SPECIAL_x8005, 2
+	GoTo _0203
 
 _01BE:
-	compare VAR_ELEVATOR_LAST_FLOOR, 3
-	goto_if_ne _01D7
-	setvar VAR_SPECIAL_x8005, 3
-	goto _0203
+	Compare VAR_ELEVATOR_LAST_FLOOR, 3
+	GoToIfNe _01D7
+	SetVar VAR_SPECIAL_x8005, 3
+	GoTo _0203
 
 _01D7:
-	compare VAR_ELEVATOR_LAST_FLOOR, 4
-	goto_if_ne _01F0
-	setvar VAR_SPECIAL_x8005, 4
-	goto _0203
+	Compare VAR_ELEVATOR_LAST_FLOOR, 4
+	GoToIfNe _01F0
+	SetVar VAR_SPECIAL_x8005, 4
+	GoTo _0203
 
 _01F0:
-	compare VAR_ELEVATOR_LAST_FLOOR, 5
-	goto_if_ne _0203
-	setvar VAR_SPECIAL_x8005, 5
+	Compare VAR_ELEVATOR_LAST_FLOOR, 5
+	GoToIfNe _0203
+	SetVar VAR_SPECIAL_x8005, 5
 _0203:
-	call _0609
-	setvar VAR_ELEVATOR_LAST_FLOOR, 0
-	goto _0627
+	Call _0609
+	SetVar VAR_ELEVATOR_LAST_FLOOR, 0
+	GoTo _0627
 
 _0215:
-	wait 1, VAR_SPECIAL_RESULT
-	get_dynamic_warp_floor_no VAR_ELEVATOR_LAST_FLOOR
-	set_dynamic_warp MAP_CELADON_DEPARTMENT_STORE_2F, 2, 19, 3, 1
-	compare VAR_ELEVATOR_LAST_FLOOR, 1
-	goto_if_eq _06C7
-	compare VAR_ELEVATOR_LAST_FLOOR, 1
-	call_if_gt _05FE
-	compare VAR_ELEVATOR_LAST_FLOOR, 1
-	call_if_lt _05F3
-	compare VAR_ELEVATOR_LAST_FLOOR, 0
-	goto_if_ne _026B
-	setvar VAR_SPECIAL_x8005, 1
-	goto _02C9
+	Wait 1, VAR_SPECIAL_RESULT
+	GetDynamicWarpFloorNo VAR_ELEVATOR_LAST_FLOOR
+	SetDynamicWarp MAP_CELADON_DEPARTMENT_STORE_2F, 2, 19, 3, 1
+	Compare VAR_ELEVATOR_LAST_FLOOR, 1
+	GoToIfEq _06C7
+	Compare VAR_ELEVATOR_LAST_FLOOR, 1
+	CallIfGt _05FE
+	Compare VAR_ELEVATOR_LAST_FLOOR, 1
+	CallIfLt _05F3
+	Compare VAR_ELEVATOR_LAST_FLOOR, 0
+	GoToIfNe _026B
+	SetVar VAR_SPECIAL_x8005, 1
+	GoTo _02C9
 
 _026B:
-	compare VAR_ELEVATOR_LAST_FLOOR, 2
-	goto_if_ne _0284
-	setvar VAR_SPECIAL_x8005, 1
-	goto _02C9
+	Compare VAR_ELEVATOR_LAST_FLOOR, 2
+	GoToIfNe _0284
+	SetVar VAR_SPECIAL_x8005, 1
+	GoTo _02C9
 
 _0284:
-	compare VAR_ELEVATOR_LAST_FLOOR, 3
-	goto_if_ne _029D
-	setvar VAR_SPECIAL_x8005, 2
-	goto _02C9
+	Compare VAR_ELEVATOR_LAST_FLOOR, 3
+	GoToIfNe _029D
+	SetVar VAR_SPECIAL_x8005, 2
+	GoTo _02C9
 
 _029D:
-	compare VAR_ELEVATOR_LAST_FLOOR, 4
-	goto_if_ne _02B6
-	setvar VAR_SPECIAL_x8005, 3
-	goto _02C9
+	Compare VAR_ELEVATOR_LAST_FLOOR, 4
+	GoToIfNe _02B6
+	SetVar VAR_SPECIAL_x8005, 3
+	GoTo _02C9
 
 _02B6:
-	compare VAR_ELEVATOR_LAST_FLOOR, 5
-	goto_if_ne _02C9
-	setvar VAR_SPECIAL_x8005, 4
+	Compare VAR_ELEVATOR_LAST_FLOOR, 5
+	GoToIfNe _02C9
+	SetVar VAR_SPECIAL_x8005, 4
 _02C9:
-	call _0609
-	setvar VAR_ELEVATOR_LAST_FLOOR, 1
-	goto _0627
+	Call _0609
+	SetVar VAR_ELEVATOR_LAST_FLOOR, 1
+	GoTo _0627
 
 _02DB:
-	wait 1, VAR_SPECIAL_RESULT
-	get_dynamic_warp_floor_no VAR_ELEVATOR_LAST_FLOOR
-	set_dynamic_warp MAP_CELADON_DEPARTMENT_STORE_3F, 2, 19, 3, 1
-	compare VAR_ELEVATOR_LAST_FLOOR, 2
-	goto_if_eq _06C7
-	compare VAR_ELEVATOR_LAST_FLOOR, 2
-	call_if_gt _05FE
-	compare VAR_ELEVATOR_LAST_FLOOR, 2
-	call_if_lt _05F3
-	compare VAR_ELEVATOR_LAST_FLOOR, 0
-	goto_if_ne _0331
-	setvar VAR_SPECIAL_x8005, 2
-	goto _038F
+	Wait 1, VAR_SPECIAL_RESULT
+	GetDynamicWarpFloorNo VAR_ELEVATOR_LAST_FLOOR
+	SetDynamicWarp MAP_CELADON_DEPARTMENT_STORE_3F, 2, 19, 3, 1
+	Compare VAR_ELEVATOR_LAST_FLOOR, 2
+	GoToIfEq _06C7
+	Compare VAR_ELEVATOR_LAST_FLOOR, 2
+	CallIfGt _05FE
+	Compare VAR_ELEVATOR_LAST_FLOOR, 2
+	CallIfLt _05F3
+	Compare VAR_ELEVATOR_LAST_FLOOR, 0
+	GoToIfNe _0331
+	SetVar VAR_SPECIAL_x8005, 2
+	GoTo _038F
 
 _0331:
-	compare VAR_ELEVATOR_LAST_FLOOR, 1
-	goto_if_ne _034A
-	setvar VAR_SPECIAL_x8005, 1
-	goto _038F
+	Compare VAR_ELEVATOR_LAST_FLOOR, 1
+	GoToIfNe _034A
+	SetVar VAR_SPECIAL_x8005, 1
+	GoTo _038F
 
 _034A:
-	compare VAR_ELEVATOR_LAST_FLOOR, 3
-	goto_if_ne _0363
-	setvar VAR_SPECIAL_x8005, 1
-	goto _038F
+	Compare VAR_ELEVATOR_LAST_FLOOR, 3
+	GoToIfNe _0363
+	SetVar VAR_SPECIAL_x8005, 1
+	GoTo _038F
 
 _0363:
-	compare VAR_ELEVATOR_LAST_FLOOR, 4
-	goto_if_ne _037C
-	setvar VAR_SPECIAL_x8005, 2
-	goto _038F
+	Compare VAR_ELEVATOR_LAST_FLOOR, 4
+	GoToIfNe _037C
+	SetVar VAR_SPECIAL_x8005, 2
+	GoTo _038F
 
 _037C:
-	compare VAR_ELEVATOR_LAST_FLOOR, 5
-	goto_if_ne _038F
-	setvar VAR_SPECIAL_x8005, 3
+	Compare VAR_ELEVATOR_LAST_FLOOR, 5
+	GoToIfNe _038F
+	SetVar VAR_SPECIAL_x8005, 3
 _038F:
-	call _0609
-	setvar VAR_ELEVATOR_LAST_FLOOR, 2
-	goto _0627
+	Call _0609
+	SetVar VAR_ELEVATOR_LAST_FLOOR, 2
+	GoTo _0627
 
 _03A1:
-	wait 1, VAR_SPECIAL_RESULT
-	get_dynamic_warp_floor_no VAR_ELEVATOR_LAST_FLOOR
-	set_dynamic_warp MAP_CELADON_DEPARTMENT_STORE_4F, 2, 19, 3, 1
-	compare VAR_ELEVATOR_LAST_FLOOR, 3
-	goto_if_eq _06C7
-	compare VAR_ELEVATOR_LAST_FLOOR, 3
-	call_if_gt _05FE
-	compare VAR_ELEVATOR_LAST_FLOOR, 3
-	call_if_lt _05F3
-	compare VAR_ELEVATOR_LAST_FLOOR, 0
-	goto_if_ne _03F7
-	setvar VAR_SPECIAL_x8005, 3
-	goto _0455
+	Wait 1, VAR_SPECIAL_RESULT
+	GetDynamicWarpFloorNo VAR_ELEVATOR_LAST_FLOOR
+	SetDynamicWarp MAP_CELADON_DEPARTMENT_STORE_4F, 2, 19, 3, 1
+	Compare VAR_ELEVATOR_LAST_FLOOR, 3
+	GoToIfEq _06C7
+	Compare VAR_ELEVATOR_LAST_FLOOR, 3
+	CallIfGt _05FE
+	Compare VAR_ELEVATOR_LAST_FLOOR, 3
+	CallIfLt _05F3
+	Compare VAR_ELEVATOR_LAST_FLOOR, 0
+	GoToIfNe _03F7
+	SetVar VAR_SPECIAL_x8005, 3
+	GoTo _0455
 
 _03F7:
-	compare VAR_ELEVATOR_LAST_FLOOR, 1
-	goto_if_ne _0410
-	setvar VAR_SPECIAL_x8005, 2
-	goto _0455
+	Compare VAR_ELEVATOR_LAST_FLOOR, 1
+	GoToIfNe _0410
+	SetVar VAR_SPECIAL_x8005, 2
+	GoTo _0455
 
 _0410:
-	compare VAR_ELEVATOR_LAST_FLOOR, 2
-	goto_if_ne _0429
-	setvar VAR_SPECIAL_x8005, 1
-	goto _0455
+	Compare VAR_ELEVATOR_LAST_FLOOR, 2
+	GoToIfNe _0429
+	SetVar VAR_SPECIAL_x8005, 1
+	GoTo _0455
 
 _0429:
-	compare VAR_ELEVATOR_LAST_FLOOR, 4
-	goto_if_ne _0442
-	setvar VAR_SPECIAL_x8005, 1
-	goto _0455
+	Compare VAR_ELEVATOR_LAST_FLOOR, 4
+	GoToIfNe _0442
+	SetVar VAR_SPECIAL_x8005, 1
+	GoTo _0455
 
 _0442:
-	compare VAR_ELEVATOR_LAST_FLOOR, 5
-	goto_if_ne _0455
-	setvar VAR_SPECIAL_x8005, 2
+	Compare VAR_ELEVATOR_LAST_FLOOR, 5
+	GoToIfNe _0455
+	SetVar VAR_SPECIAL_x8005, 2
 _0455:
-	call _0609
-	setvar VAR_ELEVATOR_LAST_FLOOR, 3
-	goto _0627
+	Call _0609
+	SetVar VAR_ELEVATOR_LAST_FLOOR, 3
+	GoTo _0627
 
 _0467:
-	wait 1, VAR_SPECIAL_RESULT
-	get_dynamic_warp_floor_no VAR_ELEVATOR_LAST_FLOOR
-	set_dynamic_warp MAP_CELADON_DEPARTMENT_STORE_5F, 2, 19, 3, 1
-	compare VAR_ELEVATOR_LAST_FLOOR, 4
-	goto_if_eq _06C7
-	compare VAR_ELEVATOR_LAST_FLOOR, 4
-	call_if_gt _05FE
-	compare VAR_ELEVATOR_LAST_FLOOR, 4
-	call_if_lt _05F3
-	compare VAR_ELEVATOR_LAST_FLOOR, 0
-	goto_if_ne _04BD
-	setvar VAR_SPECIAL_x8005, 4
-	goto _051B
+	Wait 1, VAR_SPECIAL_RESULT
+	GetDynamicWarpFloorNo VAR_ELEVATOR_LAST_FLOOR
+	SetDynamicWarp MAP_CELADON_DEPARTMENT_STORE_5F, 2, 19, 3, 1
+	Compare VAR_ELEVATOR_LAST_FLOOR, 4
+	GoToIfEq _06C7
+	Compare VAR_ELEVATOR_LAST_FLOOR, 4
+	CallIfGt _05FE
+	Compare VAR_ELEVATOR_LAST_FLOOR, 4
+	CallIfLt _05F3
+	Compare VAR_ELEVATOR_LAST_FLOOR, 0
+	GoToIfNe _04BD
+	SetVar VAR_SPECIAL_x8005, 4
+	GoTo _051B
 
 _04BD:
-	compare VAR_ELEVATOR_LAST_FLOOR, 1
-	goto_if_ne _04D6
-	setvar VAR_SPECIAL_x8005, 3
-	goto _051B
+	Compare VAR_ELEVATOR_LAST_FLOOR, 1
+	GoToIfNe _04D6
+	SetVar VAR_SPECIAL_x8005, 3
+	GoTo _051B
 
 _04D6:
-	compare VAR_ELEVATOR_LAST_FLOOR, 2
-	goto_if_ne _04EF
-	setvar VAR_SPECIAL_x8005, 2
-	goto _051B
+	Compare VAR_ELEVATOR_LAST_FLOOR, 2
+	GoToIfNe _04EF
+	SetVar VAR_SPECIAL_x8005, 2
+	GoTo _051B
 
 _04EF:
-	compare VAR_ELEVATOR_LAST_FLOOR, 3
-	goto_if_ne _0508
-	setvar VAR_SPECIAL_x8005, 1
-	goto _051B
+	Compare VAR_ELEVATOR_LAST_FLOOR, 3
+	GoToIfNe _0508
+	SetVar VAR_SPECIAL_x8005, 1
+	GoTo _051B
 
 _0508:
-	compare VAR_ELEVATOR_LAST_FLOOR, 5
-	goto_if_ne _051B
-	setvar VAR_SPECIAL_x8005, 1
+	Compare VAR_ELEVATOR_LAST_FLOOR, 5
+	GoToIfNe _051B
+	SetVar VAR_SPECIAL_x8005, 1
 _051B:
-	call _0609
-	setvar VAR_ELEVATOR_LAST_FLOOR, 4
-	goto _0627
+	Call _0609
+	SetVar VAR_ELEVATOR_LAST_FLOOR, 4
+	GoTo _0627
 
 _052D:
-	wait 1, VAR_SPECIAL_RESULT
-	get_dynamic_warp_floor_no VAR_ELEVATOR_LAST_FLOOR
-	set_dynamic_warp MAP_CELADON_DEPARTMENT_STORE_ROOF, 1, 19, 3, 1
-	compare VAR_ELEVATOR_LAST_FLOOR, 5
-	goto_if_eq _06C7
-	compare VAR_ELEVATOR_LAST_FLOOR, 5
-	call_if_gt _05FE
-	compare VAR_ELEVATOR_LAST_FLOOR, 5
-	call_if_lt _05F3
-	compare VAR_ELEVATOR_LAST_FLOOR, 0
-	goto_if_ne _0583
-	setvar VAR_SPECIAL_x8005, 5
-	goto _05E1
+	Wait 1, VAR_SPECIAL_RESULT
+	GetDynamicWarpFloorNo VAR_ELEVATOR_LAST_FLOOR
+	SetDynamicWarp MAP_CELADON_DEPARTMENT_STORE_ROOF, 1, 19, 3, 1
+	Compare VAR_ELEVATOR_LAST_FLOOR, 5
+	GoToIfEq _06C7
+	Compare VAR_ELEVATOR_LAST_FLOOR, 5
+	CallIfGt _05FE
+	Compare VAR_ELEVATOR_LAST_FLOOR, 5
+	CallIfLt _05F3
+	Compare VAR_ELEVATOR_LAST_FLOOR, 0
+	GoToIfNe _0583
+	SetVar VAR_SPECIAL_x8005, 5
+	GoTo _05E1
 
 _0583:
-	compare VAR_ELEVATOR_LAST_FLOOR, 1
-	goto_if_ne _059C
-	setvar VAR_SPECIAL_x8005, 4
-	goto _05E1
+	Compare VAR_ELEVATOR_LAST_FLOOR, 1
+	GoToIfNe _059C
+	SetVar VAR_SPECIAL_x8005, 4
+	GoTo _05E1
 
 _059C:
-	compare VAR_ELEVATOR_LAST_FLOOR, 2
-	goto_if_ne _05B5
-	setvar VAR_SPECIAL_x8005, 3
-	goto _05E1
+	Compare VAR_ELEVATOR_LAST_FLOOR, 2
+	GoToIfNe _05B5
+	SetVar VAR_SPECIAL_x8005, 3
+	GoTo _05E1
 
 _05B5:
-	compare VAR_ELEVATOR_LAST_FLOOR, 3
-	goto_if_ne _05CE
-	setvar VAR_SPECIAL_x8005, 2
-	goto _05E1
+	Compare VAR_ELEVATOR_LAST_FLOOR, 3
+	GoToIfNe _05CE
+	SetVar VAR_SPECIAL_x8005, 2
+	GoTo _05E1
 
 _05CE:
-	compare VAR_ELEVATOR_LAST_FLOOR, 4
-	goto_if_ne _05E1
-	setvar VAR_SPECIAL_x8005, 1
+	Compare VAR_ELEVATOR_LAST_FLOOR, 4
+	GoToIfNe _05E1
+	SetVar VAR_SPECIAL_x8005, 1
 _05E1:
-	call _0609
-	setvar VAR_ELEVATOR_LAST_FLOOR, 5
-	goto _0627
+	Call _0609
+	SetVar VAR_ELEVATOR_LAST_FLOOR, 5
+	GoTo _0627
 
 _05F3:
-	npc_msg msg_0500_T07R0107_00002
-	setvar VAR_SPECIAL_x8004, 0
-	return
+	NPCMsg msg_0500_T07R0107_00002
+	SetVar VAR_SPECIAL_x8004, 0
+	Return
 
 _05FE:
-	npc_msg msg_0500_T07R0107_00003
-	setvar VAR_SPECIAL_x8004, 1
-	return
+	NPCMsg msg_0500_T07R0107_00003
+	SetVar VAR_SPECIAL_x8004, 1
+	Return
 
 _0609:
-	setvar VAR_ELEVATOR_LAST_FLOOR, 65535
-	closemsg
-	apply_movement obj_T07R0107_gswoman6, _06F8
-	wait_movement
-	wait_se SEQ_SE_DP_SELECT
-	elevator_anim VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
-	return
+	SetVar VAR_ELEVATOR_LAST_FLOOR, 65535
+	CloseMsg
+	ApplyMovement obj_T07R0107_gswoman6, _06F8
+	WaitMovement
+	WaitSE SEQ_SE_DP_SELECT
+	ElevatorAnim VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
+	Return
 
 _0627:
-	switch VAR_ELEVATOR_LAST_FLOOR
-	case 5, _067D
-	case 4, _0688
-	case 3, _0693
-	case 2, _069E
-	case 1, _06A9
-	case 0, _06B4
-	end
+	Switch VAR_ELEVATOR_LAST_FLOOR
+	Case 5, _067D
+	Case 4, _0688
+	Case 3, _0693
+	Case 2, _069E
+	Case 1, _06A9
+	Case 0, _06B4
+	End
 
 _067D:
-	npc_msg msg_0500_T07R0107_00010
-	goto _06BF
-	end
+	NPCMsg msg_0500_T07R0107_00010
+	GoTo _06BF
+	End
 
 _0688:
-	npc_msg msg_0500_T07R0107_00009
-	goto _06BF
-	end
+	NPCMsg msg_0500_T07R0107_00009
+	GoTo _06BF
+	End
 
 _0693:
-	npc_msg msg_0500_T07R0107_00008
-	goto _06BF
-	end
+	NPCMsg msg_0500_T07R0107_00008
+	GoTo _06BF
+	End
 
 _069E:
-	npc_msg msg_0500_T07R0107_00007
-	goto _06BF
-	end
+	NPCMsg msg_0500_T07R0107_00007
+	GoTo _06BF
+	End
 
 _06A9:
-	npc_msg msg_0500_T07R0107_00006
-	goto _06BF
-	end
+	NPCMsg msg_0500_T07R0107_00006
+	GoTo _06BF
+	End
 
 _06B4:
-	npc_msg msg_0500_T07R0107_00005
-	goto _06BF
-	end
+	NPCMsg msg_0500_T07R0107_00005
+	GoTo _06BF
+	End
 
 _06BF:
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _06C7:
-	setvar VAR_ELEVATOR_LAST_FLOOR, 65535
-	wait 1, VAR_SPECIAL_RESULT
-	npc_msg msg_0500_T07R0107_00004
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	SetVar VAR_ELEVATOR_LAST_FLOOR, 65535
+	Wait 1, VAR_SPECIAL_RESULT
+	NPCMsg msg_0500_T07R0107_00004
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _06DE:
-	setvar VAR_ELEVATOR_LAST_FLOOR, 65535
-	wait 1, VAR_SPECIAL_RESULT
-	npc_msg msg_0500_T07R0107_00001
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	SetVar VAR_ELEVATOR_LAST_FLOOR, 65535
+	Wait 1, VAR_SPECIAL_RESULT
+	NPCMsg msg_0500_T07R0107_00001
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 	.balign 4, 0
 _06F8:

@@ -87,7 +87,7 @@
 #define VAR_ROAMER_LATIOS_STATUS           0x4048
 #define VAR_UNK_4049                       0x4049
 #define VAR_UNK_404A                       0x404A
-#define VAR_UNK_404B                       0x404B
+#define VAR_FRIENDSHIP_STEPS               0x404B
 #define VAR_UNK_404C                       0x404C
 #define VAR_BATTLE_TOWER_PRINT_PROGRESS    0x404D
 #define VAR_BATTLE_FACTORY_PRINT_PROGRESS  0x404E

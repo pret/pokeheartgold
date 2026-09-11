@@ -126,16 +126,16 @@ void OakSpeech_InitSpriteEngine(OakSpeechData *data) {
     G2dRenderer_SetSubSurfaceCoords(SpriteSystem_GetRenderer(data->spriteRenderer), 0, FX32_CONST(GX_LCD_SIZE_Y));
 
     {
-        u16 fileIdList[7] = {
-            resdat_00000026_bin,
-            resdat_00000027_bin,
-            resdat_00000025_bin,
-            resdat_00000024_bin,
-            0xFFFF,
-            0xFFFF,
-            resdat_00000078_bin,
+        ResdatIdList fileIdList = {
+            .charRes = resdat_00000026_bin,
+            .plttRes = resdat_00000027_bin,
+            .cellRes = resdat_00000025_bin,
+            .animRes = resdat_00000024_bin,
+            .mcelRes = 0xFFFF,
+            .manmRes = 0xFFFF,
+            .headerId = resdat_00000078_bin,
         };
-        sub_0200D294(data->spriteRenderer, data->spriteGfxHandler, fileIdList);
+        sub_0200D294(data->spriteRenderer, data->spriteGfxHandler, &fileIdList);
     }
 }
 

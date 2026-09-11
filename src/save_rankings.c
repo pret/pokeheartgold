@@ -60,8 +60,8 @@ static const int sStatIDs[] = {
     // Adventure
     GAME_STAT_OPPONENT_MON_FAINTED,
     GAME_STAT_CAUGHT_MON,
-    GAME_STAT_HATCHED_EGG,
-    GAME_STAT_FISHING_LANDED_MON,
+    GAME_STAT_EGGS_HATCHED,
+    GAME_STAT_FISH_LANDED,
 
     // Contest (unused in HGSS)
     GAME_STAT_LOCAL_CONTEST_WINS,

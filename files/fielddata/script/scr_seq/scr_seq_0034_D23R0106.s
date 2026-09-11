@@ -5,161 +5,161 @@
 
 	.rodata
 
-	scrdef scr_seq_D23R0106_000
-	scrdef scr_seq_D23R0106_001
-	scrdef_end
+	ScrDef scr_seq_D23R0106_000
+	ScrDef scr_seq_D23R0106_001
+	ScrDefEnd
 
 scr_seq_D23R0106_000:
-	setflag FLAG_HIDE_ROCKET_TAKEOVER_1
-	setflag FLAG_HIDE_ROCKET_TAKEOVER_2
-	setvar VAR_UNK_4125, 0
-	compare VAR_SCENE_ROCKET_TAKEOVER, 4
-	goto_if_ne _002D
-	clearflag FLAG_HIDE_ROCKET_TAKEOVER_1
-	clearflag FLAG_HIDE_ROCKET_TAKEOVER_2
+	SetFlag FLAG_HIDE_ROCKET_TAKEOVER_1
+	SetFlag FLAG_HIDE_ROCKET_TAKEOVER_2
+	SetVar VAR_UNK_4125, 0
+	Compare VAR_SCENE_ROCKET_TAKEOVER, 4
+	GoToIfNe _002D
+	ClearFlag FLAG_HIDE_ROCKET_TAKEOVER_1
+	ClearFlag FLAG_HIDE_ROCKET_TAKEOVER_2
 _002D:
-	end
+	End
 
 scr_seq_D23R0106_001:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0070_D23R0106_00000
-	closemsg
-	trainer_battle TRAINER_EXECUTIVE_ARCHER_ARCHER, 0, 0, 0
-	check_battle_won VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _025D
-	npc_msg msg_0070_D23R0106_00001
-	closemsg
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	hide_person obj_D23R0106_rkanbum
-	play_se SEQ_SE_DP_KAIDAN2
-	wait_se SEQ_SE_DP_KAIDAN2
-	clearflag FLAG_ROCKET_TAKEOVER_ACTIVE
-	fade_out_bgm 0, 30
-	stop_bgm 0
-	wait 15, VAR_SPECIAL_RESULT
-	reset_bgm
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
-	move_person_facing obj_D23R0106_gsgentleman, 8, 1, 12, DIR_SOUTH
-	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
-	compare VAR_TEMP_x4000, 7
-	goto_if_ne _00C1
-	apply_movement obj_D23R0106_gsgentleman, _0288
-	goto _0102
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	NPCMsg msg_0070_D23R0106_00000
+	CloseMsg
+	TrainerBattle TRAINER_EXECUTIVE_ARCHER_ARCHER, 0, 0, 0
+	CheckBattleWon VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _025D
+	NPCMsg msg_0070_D23R0106_00001
+	CloseMsg
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	HidePerson obj_D23R0106_rkanbum
+	PlaySE SEQ_SE_DP_KAIDAN2
+	WaitSE SEQ_SE_DP_KAIDAN2
+	ClearFlag FLAG_ROCKET_TAKEOVER_ACTIVE
+	FadeOutBGM 0, 30
+	StopBGM 0
+	Wait 15, VAR_SPECIAL_RESULT
+	ResetBGM
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
+	MovePersonFacing obj_D23R0106_gsgentleman, 8, 1, 12, DIR_SOUTH
+	GetPlayerCoords VAR_TEMP_x4000, VAR_TEMP_x4001
+	Compare VAR_TEMP_x4000, 7
+	GoToIfNe _00C1
+	ApplyMovement obj_D23R0106_gsgentleman, _0288
+	GoTo _0102
 
 _00C1:
-	compare VAR_TEMP_x4000, 8
-	goto_if_ne _00ED
-	apply_movement obj_D23R0106_gsgentleman, _02A4
-	scrcmd_729 VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	call_if_eq _0263
-	goto _0102
+	Compare VAR_TEMP_x4000, 8
+	GoToIfNe _00ED
+	ApplyMovement obj_D23R0106_gsgentleman, _02A4
+	ScrCmd_729 VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	CallIfEq _0263
+	GoTo _0102
 
 _00ED:
-	compare VAR_TEMP_x4000, 9
-	goto_if_ne _0102
-	apply_movement obj_D23R0106_gsgentleman, _02C0
+	Compare VAR_TEMP_x4000, 9
+	GoToIfNe _0102
+	ApplyMovement obj_D23R0106_gsgentleman, _02C0
 _0102:
-	wait_movement
-	compare VAR_TEMP_x4000, 8
-	goto_if_ne _0119
-	apply_movement obj_player, _02EC
+	WaitMovement
+	Compare VAR_TEMP_x4000, 8
+	GoToIfNe _0119
+	ApplyMovement obj_player, _02EC
 _0119:
-	wait_movement
-	npc_msg msg_0070_D23R0106_00002
-	get_game_version VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 7
-	goto_if_ne _014E
-	giveitem_no_check ITEM_RAINBOW_WING, 1
-	setflag FLAG_UNK_093
-	npc_msg msg_0070_D23R0106_00005
-	closemsg
-	goto _0167
+	WaitMovement
+	NPCMsg msg_0070_D23R0106_00002
+	GetGameVersion VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 7
+	GoToIfNe _014E
+	GiveItemNoCheck ITEM_RAINBOW_WING, 1
+	SetFlag FLAG_UNK_093
+	NPCMsg msg_0070_D23R0106_00005
+	CloseMsg
+	GoTo _0167
 
 _014E:
-	giveitem_no_check ITEM_SILVER_WING, 1
-	setflag FLAG_UNK_094
-	npc_msg msg_0070_D23R0106_00006
-	closemsg
+	GiveItemNoCheck ITEM_SILVER_WING, 1
+	SetFlag FLAG_UNK_094
+	NPCMsg msg_0070_D23R0106_00006
+	CloseMsg
 _0167:
-	compare VAR_TEMP_x4000, 7
-	goto_if_ne _0182
-	apply_movement obj_D23R0106_gsgentleman, _02F4
-	goto _01B2
+	Compare VAR_TEMP_x4000, 7
+	GoToIfNe _0182
+	ApplyMovement obj_D23R0106_gsgentleman, _02F4
+	GoTo _01B2
 
 _0182:
-	compare VAR_TEMP_x4000, 8
-	goto_if_ne _019D
-	apply_movement obj_D23R0106_gsgentleman, _0304
-	goto _01B2
+	Compare VAR_TEMP_x4000, 8
+	GoToIfNe _019D
+	ApplyMovement obj_D23R0106_gsgentleman, _0304
+	GoTo _01B2
 
 _019D:
-	compare VAR_TEMP_x4000, 9
-	goto_if_ne _01B2
-	apply_movement obj_D23R0106_gsgentleman, _0314
+	Compare VAR_TEMP_x4000, 9
+	GoToIfNe _01B2
+	ApplyMovement obj_D23R0106_gsgentleman, _0314
 _01B2:
-	wait_movement
-	apply_movement obj_D23R0106_gsgentleman, _0324
-	wait_movement
-	apply_movement obj_player, _02EC
-	wait_movement
-	get_game_version VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 7
-	goto_if_ne _01E2
-	npc_msg msg_0070_D23R0106_00007
-	goto _01E5
+	WaitMovement
+	ApplyMovement obj_D23R0106_gsgentleman, _0324
+	WaitMovement
+	ApplyMovement obj_player, _02EC
+	WaitMovement
+	GetGameVersion VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 7
+	GoToIfNe _01E2
+	NPCMsg msg_0070_D23R0106_00007
+	GoTo _01E5
 
 _01E2:
-	npc_msg msg_0070_D23R0106_00008
+	NPCMsg msg_0070_D23R0106_00008
 _01E5:
-	closemsg
-	apply_movement obj_D23R0106_gsgentleman, _032C
-	wait_movement
-	npc_msg msg_0070_D23R0106_00009
-	closemsg
-	apply_movement obj_D23R0106_gsgentleman, _0344
-	wait_movement
-	play_se SEQ_SE_DP_DOOR10
-	wait_se SEQ_SE_DP_DOOR10
-	wait 8, VAR_SPECIAL_RESULT
-	hide_person obj_D23R0106_gsgentleman
-	play_se SEQ_SE_DP_KAIDAN2
-	wait_se SEQ_SE_DP_KAIDAN2
-	releaseall
-	setvar VAR_SCENE_ROCKET_TAKEOVER, 5
-	setflag FLAG_BEAT_RADIO_TOWER_ROCKETS
-	clearflag FLAG_HIDE_RADIO_TOWER_5F_OFFICE_DIRECTOR
-	setflag FLAG_HIDE_RADIO_TOWER_5F_PETREL_REVEALED
-	compare VAR_UNK_40F8, 2
-	goto_if_ne _0241
-	setvar VAR_UNK_40F8, 0
+	CloseMsg
+	ApplyMovement obj_D23R0106_gsgentleman, _032C
+	WaitMovement
+	NPCMsg msg_0070_D23R0106_00009
+	CloseMsg
+	ApplyMovement obj_D23R0106_gsgentleman, _0344
+	WaitMovement
+	PlaySE SEQ_SE_DP_DOOR10
+	WaitSE SEQ_SE_DP_DOOR10
+	Wait 8, VAR_SPECIAL_RESULT
+	HidePerson obj_D23R0106_gsgentleman
+	PlaySE SEQ_SE_DP_KAIDAN2
+	WaitSE SEQ_SE_DP_KAIDAN2
+	ReleaseAll
+	SetVar VAR_SCENE_ROCKET_TAKEOVER, 5
+	SetFlag FLAG_BEAT_RADIO_TOWER_ROCKETS
+	ClearFlag FLAG_HIDE_RADIO_TOWER_5F_OFFICE_DIRECTOR
+	SetFlag FLAG_HIDE_RADIO_TOWER_5F_PETREL_REVEALED
+	Compare VAR_UNK_40F8, 2
+	GoToIfNe _0241
+	SetVar VAR_UNK_40F8, 0
 _0241:
-	setvar VAR_UNK_407A, 1
-	clearflag FLAG_HIDE_MAHOGANY_SHOP_SALESWOMAN
-	setflag FLAG_HIDE_BLACKTHORN_GYM_GUARD_INFRONT
-	clearflag FLAG_HIDE_BLACKTHORN_GYM_GUARD_ASIDE
-	setflag FLAG_UNK_998
-	setflag FLAG_UNK_97D
-	end
+	SetVar VAR_UNK_407A, 1
+	ClearFlag FLAG_HIDE_MAHOGANY_SHOP_SALESWOMAN
+	SetFlag FLAG_HIDE_BLACKTHORN_GYM_GUARD_INFRONT
+	ClearFlag FLAG_HIDE_BLACKTHORN_GYM_GUARD_ASIDE
+	SetFlag FLAG_UNK_998
+	SetFlag FLAG_UNK_97D
+	End
 
 _025D:
-	white_out
-	releaseall
-	end
+	WhiteOut
+	ReleaseAll
+	End
 
 _0263:
-	get_person_coords 253, VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
-	compare VAR_SPECIAL_x8004, 7
-	goto_if_ne _0286
-	wait 112, VAR_SPECIAL_RESULT
-	apply_movement obj_partner_poke, _02DC
+	GetPersonCoords 253, VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
+	Compare VAR_SPECIAL_x8004, 7
+	GoToIfNe _0286
+	Wait 112, VAR_SPECIAL_RESULT
+	ApplyMovement obj_partner_poke, _02DC
 _0286:
-	return
+	Return
 
 	.balign 4, 0
 _0288:

@@ -5,281 +5,281 @@
 
 	.rodata
 
-	scrdef scr_seq_0143_000
-	scrdef_end
+	ScrDef scr_seq_0143_000
+	ScrDefEnd
 
 scr_seq_0143_000:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	scrcmd_465 0, 1, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0070
-	call _0122
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _003C
-	goto _0055
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	ScrCmd_465 0, 1, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0070
+	Call _0122
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _003C
+	GoTo _0055
 
 _003C:
-	scrcmd_465 3, 1, 0
-	scrcmd_465 2, 1, 1
-	npc_msg msg_0204_00000
-	goto _00B6
+	ScrCmd_465 3, 1, 0
+	ScrCmd_465 2, 1, 1
+	NPCMsg msg_0204_00000
+	GoTo _00B6
 
 _0055:
-	scrcmd_465 3, 1, 0
-	scrcmd_465 2, 1, 1
-	npc_msg msg_0204_00001
-	goto _008C
-	end
+	ScrCmd_465 3, 1, 0
+	ScrCmd_465 2, 1, 1
+	NPCMsg msg_0204_00001
+	GoTo _008C
+	End
 
 _0070:
-	npc_msg msg_0204_00002
+	NPCMsg msg_0204_00002
 _0073:
-	call _0122
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _00B6
-	goto _008C
+	Call _0122
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _00B6
+	GoTo _008C
 
 _008C:
-	touchscreen_menu_hide
-	menu_init 1, 1, 0, 1, VAR_SPECIAL_x8004
-	menu_item_add 11, 255, 1
-	menu_item_add 13, 255, 3
-	menu_item_add 14, 255, 4
-	menu_exec
-	goto _00E2
+	TouchscreenMenuHide
+	MenuInit 1, 1, 0, 1, VAR_SPECIAL_x8004
+	MenuItemAdd 11, 255, 1
+	MenuItemAdd 13, 255, 3
+	MenuItemAdd 14, 255, 4
+	MenuExec
+	GoTo _00E2
 
 _00B6:
-	touchscreen_menu_hide
-	menu_init 1, 1, 0, 1, VAR_SPECIAL_x8004
-	menu_item_add 11, 255, 1
-	menu_item_add 12, 255, 2
-	menu_item_add 13, 255, 3
-	menu_item_add 14, 255, 4
-	menu_exec
+	TouchscreenMenuHide
+	MenuInit 1, 1, 0, 1, VAR_SPECIAL_x8004
+	MenuItemAdd 11, 255, 1
+	MenuItemAdd 12, 255, 2
+	MenuItemAdd 13, 255, 3
+	MenuItemAdd 14, 255, 4
+	MenuExec
 _00E2:
-	switch VAR_SPECIAL_x8004
-	case 1, _01EF
-	case 2, _0287
-	case 3, _056C
-	case 4, _0577
-	goto _0577
+	Switch VAR_SPECIAL_x8004
+	Case 1, _01EF
+	Case 2, _0287
+	Case 3, _056C
+	Case 4, _0577
+	GoTo _0577
 
 _0122:
-	scrcmd_465 0, 0, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _014C
-	scrcmd_465 1, 0, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _01DF
+	ScrCmd_465 0, 0, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _014C
+	ScrCmd_465 1, 0, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _01DF
 _014C:
-	scrcmd_465 0, 2, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0176
-	scrcmd_465 1, 2, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _01DF
+	ScrCmd_465 0, 2, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0176
+	ScrCmd_465 1, 2, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _01DF
 _0176:
-	scrcmd_465 0, 3, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _01A0
-	scrcmd_465 1, 3, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _01DF
+	ScrCmd_465 0, 3, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _01A0
+	ScrCmd_465 1, 3, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _01DF
 _01A0:
-	scrcmd_465 0, 4, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _01CA
-	scrcmd_465 1, 4, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _01DF
+	ScrCmd_465 0, 4, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _01CA
+	ScrCmd_465 1, 4, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _01DF
 _01CA:
-	scrcmd_465 0, 5, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _01E7
+	ScrCmd_465 0, 5, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _01E7
 _01DF:
-	setvar VAR_SPECIAL_RESULT, 1
-	return
+	SetVar VAR_SPECIAL_RESULT, 1
+	Return
 
 _01E7:
-	setvar VAR_SPECIAL_RESULT, 0
-	return
+	SetVar VAR_SPECIAL_RESULT, 0
+	Return
 
 _01EF:
-	touchscreen_menu_show
-	scrcmd_465 0, 0, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _021E
-	npc_msg msg_0204_00005
-	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_RESULT
-	touchscreen_menu_show
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_ne _0579
+	TouchscreenMenuShow
+	ScrCmd_465 0, 0, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _021E
+	NPCMsg msg_0204_00005
+	TouchscreenMenuHide
+	GetMenuChoice VAR_SPECIAL_RESULT
+	TouchscreenMenuShow
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfNe _0579
 _021E:
-	npc_msg msg_0204_00006
-	wait_button
-	fade_screen 6, 1, 0, RGB_BLACK
-	wait_fade
-	closemsg
-	scrcmd_465 4, VAR_SPECIAL_RESULT
-	fade_screen 6, 1, 1, RGB_BLACK
-	wait_fade
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _0579
-	compare VAR_SPECIAL_RESULT, 2
-	goto_if_eq _027C
-	scrcmd_465 6
-	scrcmd_465 2, 0, 0
-	scrcmd_465 3, 0, 1
-	npc_msg msg_0204_00007
-	wait_button_or_walk_away
-	goto _057E
+	NPCMsg msg_0204_00006
+	WaitABPress
+	FadeScreen 6, 1, 0, RGB_BLACK
+	WaitFade
+	CloseMsg
+	ScrCmd_465 4, VAR_SPECIAL_RESULT
+	FadeScreen 6, 1, 1, RGB_BLACK
+	WaitFade
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _0579
+	Compare VAR_SPECIAL_RESULT, 2
+	GoToIfEq _027C
+	ScrCmd_465 6
+	ScrCmd_465 2, 0, 0
+	ScrCmd_465 3, 0, 1
+	NPCMsg msg_0204_00007
+	WaitButton
+	GoTo _057E
 
 _027C:
-	npc_msg msg_0204_00027
-	wait_button_or_walk_away
-	goto _057E
+	NPCMsg msg_0204_00027
+	WaitButton
+	GoTo _057E
 
 _0287:
-	npc_msg msg_0204_00003
-	menu_init 1, 1, 0, 1, VAR_SPECIAL_x8004
-	scrcmd_465 7, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0400
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _02B2
+	NPCMsg msg_0204_00003
+	MenuInit 1, 1, 0, 1, VAR_SPECIAL_x8004
+	ScrCmd_465 7, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0400
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _02B2
 _02B2:
-	scrcmd_465 0, 0, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _02EC
-	scrcmd_465 1, 0, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _02EC
-	scrcmd_465 2, 0, 0
-	menu_item_add 15, 255, 0
+	ScrCmd_465 0, 0, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _02EC
+	ScrCmd_465 1, 0, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _02EC
+	ScrCmd_465 2, 0, 0
+	MenuItemAdd 15, 255, 0
 _02EC:
-	scrcmd_465 0, 2, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0326
-	scrcmd_465 1, 2, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _0326
-	scrcmd_465 2, 2, 1
-	menu_item_add 16, 255, 2
+	ScrCmd_465 0, 2, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0326
+	ScrCmd_465 1, 2, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _0326
+	ScrCmd_465 2, 2, 1
+	MenuItemAdd 16, 255, 2
 _0326:
-	scrcmd_465 0, 3, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0360
-	scrcmd_465 1, 3, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _0360
-	scrcmd_465 2, 3, 2
-	menu_item_add 17, 255, 3
+	ScrCmd_465 0, 3, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0360
+	ScrCmd_465 1, 3, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _0360
+	ScrCmd_465 2, 3, 2
+	MenuItemAdd 17, 255, 3
 _0360:
-	scrcmd_465 0, 4, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _039A
-	scrcmd_465 1, 4, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _039A
-	scrcmd_465 2, 4, 3
-	menu_item_add 18, 255, 4
+	ScrCmd_465 0, 4, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _039A
+	ScrCmd_465 1, 4, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _039A
+	ScrCmd_465 2, 4, 3
+	MenuItemAdd 18, 255, 4
 _039A:
-	scrcmd_465 0, 5, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _03D4
-	scrcmd_465 1, 5, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _03D4
-	scrcmd_465 2, 5, 4
-	menu_item_add 19, 255, 5
+	ScrCmd_465 0, 5, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _03D4
+	ScrCmd_465 1, 5, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _03D4
+	ScrCmd_465 2, 5, 4
+	MenuItemAdd 19, 255, 5
 _03D4:
-	menu_item_add 25, 255, 6
-	menu_exec
-	touchscreen_menu_show
-	compare VAR_SPECIAL_x8004, 6
-	goto_if_eq _0579
-	compare VAR_SPECIAL_x8004, 65534
-	goto_if_eq _0579
-	goto _0528
+	MenuItemAdd 25, 255, 6
+	MenuExec
+	TouchscreenMenuShow
+	Compare VAR_SPECIAL_x8004, 6
+	GoToIfEq _0579
+	Compare VAR_SPECIAL_x8004, 65534
+	GoToIfEq _0579
+	GoTo _0528
 
 _0400:
-	scrcmd_465 0, 0, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _043A
-	scrcmd_465 1, 0, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _043A
-	scrcmd_465 2, 0, 0
-	menu_item_add 20, 255, 0
+	ScrCmd_465 0, 0, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _043A
+	ScrCmd_465 1, 0, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _043A
+	ScrCmd_465 2, 0, 0
+	MenuItemAdd 20, 255, 0
 _043A:
-	scrcmd_465 0, 2, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0474
-	scrcmd_465 1, 2, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _0474
-	scrcmd_465 2, 2, 1
-	menu_item_add 21, 255, 2
+	ScrCmd_465 0, 2, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0474
+	ScrCmd_465 1, 2, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _0474
+	ScrCmd_465 2, 2, 1
+	MenuItemAdd 21, 255, 2
 _0474:
-	scrcmd_465 0, 3, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _04AE
-	scrcmd_465 1, 3, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _04AE
-	scrcmd_465 2, 3, 2
-	menu_item_add 22, 255, 3
+	ScrCmd_465 0, 3, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _04AE
+	ScrCmd_465 1, 3, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _04AE
+	ScrCmd_465 2, 3, 2
+	MenuItemAdd 22, 255, 3
 _04AE:
-	scrcmd_465 0, 4, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _04E8
-	scrcmd_465 1, 4, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _04E8
-	scrcmd_465 2, 4, 3
-	menu_item_add 23, 255, 4
+	ScrCmd_465 0, 4, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _04E8
+	ScrCmd_465 1, 4, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _04E8
+	ScrCmd_465 2, 4, 3
+	MenuItemAdd 23, 255, 4
 _04E8:
-	scrcmd_465 0, 5, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _03D4
-	scrcmd_465 1, 5, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _03D4
-	scrcmd_465 2, 5, 4
-	menu_item_add 24, 255, 5
-	goto _03D4
+	ScrCmd_465 0, 5, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _03D4
+	ScrCmd_465 1, 5, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _03D4
+	ScrCmd_465 2, 5, 4
+	MenuItemAdd 24, 255, 5
+	GoTo _03D4
 
 _0528:
-	scrcmd_465 2, VAR_SPECIAL_x8004, 0
-	scrcmd_465 3, VAR_SPECIAL_x8004, 1
-	npc_msg msg_0204_00008
-	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_ne _0287
-	touchscreen_menu_show
-	scrcmd_465 5, VAR_SPECIAL_x8004
-	buffer_players_name 0
-	scrcmd_465 2, VAR_SPECIAL_x8004, 1
-	npc_msg msg_0204_00009
-	wait_button_or_walk_away
-	goto _057E
+	ScrCmd_465 2, VAR_SPECIAL_x8004, 0
+	ScrCmd_465 3, VAR_SPECIAL_x8004, 1
+	NPCMsg msg_0204_00008
+	TouchscreenMenuHide
+	GetMenuChoice VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfNe _0287
+	TouchscreenMenuShow
+	ScrCmd_465 5, VAR_SPECIAL_x8004
+	BufferPlayersName 0
+	ScrCmd_465 2, VAR_SPECIAL_x8004, 1
+	NPCMsg msg_0204_00009
+	WaitButton
+	GoTo _057E
 
 _056C:
-	touchscreen_menu_show
-	npc_msg msg_0204_00010
-	goto _0073
+	TouchscreenMenuShow
+	NPCMsg msg_0204_00010
+	GoTo _0073
 
 _0577:
-	touchscreen_menu_show
+	TouchscreenMenuShow
 _0579:
-	npc_msg msg_0204_00004
-	wait_button_or_walk_away
+	NPCMsg msg_0204_00004
+	WaitButton
 _057E:
-	closemsg
-	releaseall
-	end
+	CloseMsg
+	ReleaseAll
+	End
 	.balign 4, 0

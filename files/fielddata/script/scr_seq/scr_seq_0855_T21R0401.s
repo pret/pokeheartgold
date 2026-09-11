@@ -5,14 +5,14 @@
 
 	.rodata
 
-	scrdef scr_seq_T21R0401_000
-	scrdef scr_seq_T21R0401_001
-	scrdef_end
+	ScrDef scr_seq_T21R0401_000
+	ScrDef scr_seq_T21R0401_001
+	ScrDefEnd
 
 scr_seq_T21R0401_000:
-	end
+	End
 
 scr_seq_T21R0401_001:
-	simple_npc_msg msg_0554_T21R0401_00000
-	end
+	SimpleNPCMsg msg_0554_T21R0401_00000
+	End
 	.balign 4, 0

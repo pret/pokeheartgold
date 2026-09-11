@@ -10,6 +10,7 @@ void ov12_02237B0C(BattleSystem *battleSystem);
 void ov12_02237B6C(BattleSystem *battleSystem);
 void ov12_02237BB8(BattleSystem *battleSystem);
 void ov12_02237CC4(BattleSystem *battleSystem);
+void ov12_02237D00(BattleSystem *battleSystem);
 
 // the following functions are static and have yet to be decompiled
 void ov12_022399D4(OverlayManager *man, BattleSetup *setup);

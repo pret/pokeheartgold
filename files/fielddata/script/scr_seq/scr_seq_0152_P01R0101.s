@@ -5,73 +5,73 @@
 
 	.rodata
 
-	scrdef scr_seq_P01R0101_000
-	scrdef scr_seq_P01R0101_001
-	scrdef scr_seq_P01R0101_002
-	scrdef scr_seq_P01R0101_003
-	scrdef scr_seq_P01R0101_004
-	scrdef_end
+	ScrDef scr_seq_P01R0101_000
+	ScrDef scr_seq_P01R0101_001
+	ScrDef scr_seq_P01R0101_002
+	ScrDef scr_seq_P01R0101_003
+	ScrDef scr_seq_P01R0101_004
+	ScrDefEnd
 
 scr_seq_P01R0101_001:
-	scrcmd_445 VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 330
-	goto_if_eq _0029
-	end
+	ScrCmd_445 VAR_TEMP_x4000
+	Compare VAR_TEMP_x4000, 330
+	GoToIfEq _0029
+	End
 
 _0029:
-	set_object_facing obj_P01R0101_seaman_2, DIR_SOUTH
-	end
+	SetObjectFacing obj_P01R0101_seaman_2, DIR_SOUTH
+	End
 
 scr_seq_P01R0101_002:
-	scrcmd_609
-	lockall
-	apply_movement obj_P01R0101_ookido, _00E4
-	wait_movement
-	stop_bgm 0
-	play_bgm SEQ_GS_OHKIDO
-	toggle_following_pokemon_movement 0
-	wait_following_pokemon_movement
-	following_pokemon_movement 55
-	apply_movement obj_P01R0101_ookido, _00EC
-	apply_movement obj_player, _0100
-	wait_movement
-	wait_following_pokemon_movement
-	toggle_following_pokemon_movement 1
-	following_pokemon_movement 48
-	buffer_players_name 0
-	gender_msgbox msg_0255_P01R0101_00009, msg_0255_P01R0101_00010
-	closemsg
-	apply_movement obj_P01R0101_ookido, _0110
-	wait_movement
-	nat_dex_flag_action 1, VAR_SPECIAL_RESULT
-	buffer_players_name 0
-	play_fanfare SEQ_ME_ITEM
-	npc_msg msg_0255_P01R0101_00011
-	wait_fanfare
-	enable_mass_outbreaks
-	npc_msg msg_0255_P01R0101_00012
-	closemsg
-	apply_movement obj_P01R0101_ookido, _0120
-	wait_movement
-	npc_msg msg_0255_P01R0101_00013
-	closemsg
-	apply_movement obj_P01R0101_ookido, _0128
-	wait_movement
-	hide_person obj_P01R0101_ookido
-	setflag FLAG_HIDE_OLIVINE_PORT_OAK
-	setvar VAR_UNK_411A, 0
-	fade_out_bgm 0, 30
-	stop_bgm 0
-	reset_bgm
-	releaseall
-	compare VAR_UNK_40D3, 1
-	call_if_eq _00DE
-	enable_mass_outbreaks
-	end
+	ScrCmd_609
+	LockAll
+	ApplyMovement obj_P01R0101_ookido, _00E4
+	WaitMovement
+	StopBGM 0
+	PlayBGM SEQ_GS_OHKIDO
+	ToggleFollowingPokemonMovement 0
+	WaitFollowingPokemonMovement
+	FollowingPokemonMovement 55
+	ApplyMovement obj_P01R0101_ookido, _00EC
+	ApplyMovement obj_player, _0100
+	WaitMovement
+	WaitFollowingPokemonMovement
+	ToggleFollowingPokemonMovement 1
+	FollowingPokemonMovement 48
+	BufferPlayersName 0
+	GenderMsgBox msg_0255_P01R0101_00009, msg_0255_P01R0101_00010
+	CloseMsg
+	ApplyMovement obj_P01R0101_ookido, _0110
+	WaitMovement
+	NatDexFlagAction 1, VAR_SPECIAL_RESULT
+	BufferPlayersName 0
+	PlayFanfare SEQ_ME_ITEM
+	NPCMsg msg_0255_P01R0101_00011
+	WaitFanfare
+	EnableMassOutbreaks
+	NPCMsg msg_0255_P01R0101_00012
+	CloseMsg
+	ApplyMovement obj_P01R0101_ookido, _0120
+	WaitMovement
+	NPCMsg msg_0255_P01R0101_00013
+	CloseMsg
+	ApplyMovement obj_P01R0101_ookido, _0128
+	WaitMovement
+	HidePerson obj_P01R0101_ookido
+	SetFlag FLAG_HIDE_OLIVINE_PORT_OAK
+	SetVar VAR_UNK_411A, 0
+	FadeOutBGM 0, 30
+	StopBGM 0
+	ResetBGM
+	ReleaseAll
+	Compare VAR_UNK_40D3, 1
+	CallIfEq _00DE
+	EnableMassOutbreaks
+	End
 
 _00DE:
-	clearflag FLAG_HIDE_POKEATHLON_SUPREME_CUP_RECEPTIONIST
-	return
+	ClearFlag FLAG_HIDE_POKEATHLON_SUPREME_CUP_RECEPTIONIST
+	Return
 
 	.balign 4, 0
 _00E4:
@@ -113,175 +113,175 @@ _0128:
 	EndMovement
 
 scr_seq_P01R0101_000:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	goto_if_unset FLAG_GAME_CLEAR, _0361
-	compare VAR_TEMP_x4002, 1
-	goto_if_ge _0356
-	get_player_facing VAR_TEMP_x4001
-	compare VAR_TEMP_x4001, 0
-	goto_if_eq _0320
-	compare VAR_UNK_40CB, 7
-	goto_if_ge _01FB
-	npc_msg msg_0255_P01R0101_00001
-	closemsg
-	hasitem ITEM_S_S__TICKET, 1, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _02F9
-	apply_movement obj_player, _036C
-	wait_movement
-	buffer_players_name 0
-	npc_msg msg_0255_P01R0101_00004
-	closemsg
-	apply_movement obj_P01R0101_seaman_2, _03F4
-	wait_movement
-	npc_msg msg_0255_P01R0101_00005
-	closemsg
-	apply_movement obj_P01R0101_seaman_2, _038C
-	wait_movement
-	toggle_following_pokemon_movement 0
-	wait_following_pokemon_movement
-	following_pokemon_movement 55
-	apply_movement obj_player, _03AC
-	wait_movement
-	wait_following_pokemon_movement
-	toggle_following_pokemon_movement 1
-	following_pokemon_movement 48
-	setvar VAR_TEMP_x4002, 1
-	setvar VAR_BOAT_DIRECTION, 1
-	setvar VAR_UNK_40DC, 0
-	clearflag FLAG_BOAT_ARRIVED
-	setflag FLAG_UNK_22C
-	setflag FLAG_UNK_22B
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	GoToIfUnset FLAG_GAME_CLEAR, _0361
+	Compare VAR_TEMP_x4002, 1
+	GoToIfGe _0356
+	GetPlayerFacing VAR_TEMP_x4001
+	Compare VAR_TEMP_x4001, 0
+	GoToIfEq _0320
+	Compare VAR_UNK_40CB, 7
+	GoToIfGe _01FB
+	NPCMsg msg_0255_P01R0101_00001
+	CloseMsg
+	HasItem ITEM_S_S__TICKET, 1, VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _02F9
+	ApplyMovement obj_player, _036C
+	WaitMovement
+	BufferPlayersName 0
+	NPCMsg msg_0255_P01R0101_00004
+	CloseMsg
+	ApplyMovement obj_P01R0101_seaman_2, _03F4
+	WaitMovement
+	NPCMsg msg_0255_P01R0101_00005
+	CloseMsg
+	ApplyMovement obj_P01R0101_seaman_2, _038C
+	WaitMovement
+	ToggleFollowingPokemonMovement 0
+	WaitFollowingPokemonMovement
+	FollowingPokemonMovement 55
+	ApplyMovement obj_player, _03AC
+	WaitMovement
+	WaitFollowingPokemonMovement
+	ToggleFollowingPokemonMovement 1
+	FollowingPokemonMovement 48
+	SetVar VAR_TEMP_x4002, 1
+	SetVar VAR_BOAT_DIRECTION, 1
+	SetVar VAR_UNK_40DC, 0
+	ClearFlag FLAG_BOAT_ARRIVED
+	SetFlag FLAG_UNK_22C
+	SetFlag FLAG_UNK_22B
+	ReleaseAll
+	End
 
 _01FB:
-	get_weekday VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_ne _0218
-	goto _02EE
+	GetWeekday VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfNe _0218
+	GoTo _02EE
 
 _0212:
-	goto _029B
+	GoTo _029B
 
 _0218:
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_ne _0231
-	goto _029B
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfNe _0231
+	GoTo _029B
 
 _022B:
-	goto _029B
+	GoTo _029B
 
 _0231:
-	compare VAR_SPECIAL_RESULT, 2
-	goto_if_ne _024A
-	goto _02EE
+	Compare VAR_SPECIAL_RESULT, 2
+	GoToIfNe _024A
+	GoTo _02EE
 
 _0244:
-	goto _029B
+	GoTo _029B
 
 _024A:
-	compare VAR_SPECIAL_RESULT, 3
-	goto_if_ne _0263
-	goto _02EE
+	Compare VAR_SPECIAL_RESULT, 3
+	GoToIfNe _0263
+	GoTo _02EE
 
 _025D:
-	goto _029B
+	GoTo _029B
 
 _0263:
-	compare VAR_SPECIAL_RESULT, 4
-	goto_if_ne _027C
-	goto _02EE
+	Compare VAR_SPECIAL_RESULT, 4
+	GoToIfNe _027C
+	GoTo _02EE
 
 _0276:
-	goto _029B
+	GoTo _029B
 
 _027C:
-	compare VAR_SPECIAL_RESULT, 5
-	goto_if_ne _0295
-	goto _029B
+	Compare VAR_SPECIAL_RESULT, 5
+	GoToIfNe _0295
+	GoTo _029B
 
 _028F:
-	goto _029B
+	GoTo _029B
 
 _0295:
-	goto _02EE
+	GoTo _02EE
 
 _029B:
-	npc_msg msg_0255_P01R0101_00007
-	closemsg
-	apply_movement obj_P01R0101_seaman_2, _038C
-	wait_movement
-	toggle_following_pokemon_movement 0
-	wait_following_pokemon_movement
-	following_pokemon_movement 55
-	apply_movement obj_player, _03AC
-	wait_movement
-	wait_following_pokemon_movement
-	toggle_following_pokemon_movement 1
-	following_pokemon_movement 48
-	setvar VAR_TEMP_x4002, 1
-	setvar VAR_BOAT_DIRECTION, 1
-	setvar VAR_UNK_40DC, 0
-	clearflag FLAG_BOAT_ARRIVED
-	setflag FLAG_UNK_22A
-	clearflag FLAG_UNK_22B
-	setflag FLAG_UNK_22C
-	releaseall
-	end
+	NPCMsg msg_0255_P01R0101_00007
+	CloseMsg
+	ApplyMovement obj_P01R0101_seaman_2, _038C
+	WaitMovement
+	ToggleFollowingPokemonMovement 0
+	WaitFollowingPokemonMovement
+	FollowingPokemonMovement 55
+	ApplyMovement obj_player, _03AC
+	WaitMovement
+	WaitFollowingPokemonMovement
+	ToggleFollowingPokemonMovement 1
+	FollowingPokemonMovement 48
+	SetVar VAR_TEMP_x4002, 1
+	SetVar VAR_BOAT_DIRECTION, 1
+	SetVar VAR_UNK_40DC, 0
+	ClearFlag FLAG_BOAT_ARRIVED
+	SetFlag FLAG_UNK_22A
+	ClearFlag FLAG_UNK_22B
+	SetFlag FLAG_UNK_22C
+	ReleaseAll
+	End
 
 _02EE:
-	npc_msg msg_0255_P01R0101_00008
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0255_P01R0101_00008
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _02F9:
-	apply_movement obj_player, _0378
-	wait_movement
-	buffer_players_name 0
-	npc_msg msg_0255_P01R0101_00002
-	closemsg
-	apply_movement obj_P01R0101_seaman_2, _03F4
-	wait_movement
-	npc_msg msg_0255_P01R0101_00003
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	ApplyMovement obj_player, _0378
+	WaitMovement
+	BufferPlayersName 0
+	NPCMsg msg_0255_P01R0101_00002
+	CloseMsg
+	ApplyMovement obj_P01R0101_seaman_2, _03F4
+	WaitMovement
+	NPCMsg msg_0255_P01R0101_00003
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0320:
-	apply_movement obj_P01R0101_seaman_2, _03B4
-	wait_movement
-	toggle_following_pokemon_movement 0
-	wait_following_pokemon_movement
-	following_pokemon_movement 55
-	apply_movement obj_player, _03D4
-	wait_movement
-	wait_following_pokemon_movement
-	toggle_following_pokemon_movement 1
-	following_pokemon_movement 48
-	apply_movement obj_P01R0101_seaman_2, _03E0
-	wait_movement
-	releaseall
-	end
+	ApplyMovement obj_P01R0101_seaman_2, _03B4
+	WaitMovement
+	ToggleFollowingPokemonMovement 0
+	WaitFollowingPokemonMovement
+	FollowingPokemonMovement 55
+	ApplyMovement obj_player, _03D4
+	WaitMovement
+	WaitFollowingPokemonMovement
+	ToggleFollowingPokemonMovement 1
+	FollowingPokemonMovement 48
+	ApplyMovement obj_P01R0101_seaman_2, _03E0
+	WaitMovement
+	ReleaseAll
+	End
 
 _0356:
-	npc_msg msg_0255_P01R0101_00006
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0255_P01R0101_00006
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _0361:
-	npc_msg msg_0255_P01R0101_00000
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0255_P01R0101_00000
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 	.balign 4, 0
 _036C:
@@ -344,10 +344,10 @@ _03F4:
 	EndMovement
 
 scr_seq_P01R0101_003:
-	simple_npc_msg msg_0255_P01R0101_00014
-	end
+	SimpleNPCMsg msg_0255_P01R0101_00014
+	End
 
 scr_seq_P01R0101_004:
-	simple_npc_msg msg_0255_P01R0101_00015
-	end
+	SimpleNPCMsg msg_0255_P01R0101_00015
+	End
 	.balign 4, 0

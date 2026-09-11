@@ -502,7 +502,7 @@ _021FC3A8:
 	bl GetMetatileBehavior
 	add r1, r0, #0
 	add r0, r5, #0
-	bl ov02_02247F9C
+	bl FieldSystem_CanGenerateStepEncounter
 	cmp r0, #0
 	beq _021FC3EE
 	mov r0, #6
@@ -552,7 +552,7 @@ _021FC434:
 _021FC444:
 	add r0, r5, #0
 	add r1, r6, #0
-	bl ov02_02247170
+	bl FieldSystem_PerformSweetScentEncounterCheck
 	cmp r0, #0
 	bne _021FC4B2
 	bl GF_AssertFail

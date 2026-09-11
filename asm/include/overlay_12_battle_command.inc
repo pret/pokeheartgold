@@ -106,7 +106,7 @@
 .public gGameLanguage
 .public gOverlayTemplate_NamingScreen
 .public gSystem
-.public ov07_02232F58
+.public UnkBallData_SetBallAnimation
 .public ov07_02232F60
 .public ov07_02233DB8
 .public ov07_02233ECC
@@ -122,7 +122,7 @@
 .public BattleSystem_GetParty
 .public BattleSystem_GetPartySize
 .public BattleSystem_GetPartyMon
-.public ov12_0223A8D4
+.public BattleSystem_GetPokepicManager
 .public BattleSystem_GetSpriteSystem
 .public BattleSystem_GetSpriteManager
 .public ov12_0223A8F4
@@ -131,7 +131,7 @@
 .public BattleSystem_GetPokedex
 .public BattleSystem_GetMessageFormat
 .public BattleSystem_GetMessageBuffer
-.public ov12_0223AAB8
+.public BattleSystem_IsFishing
 .public BattleSystem_GetBattlerFromBattlerType
 .public BattleSystem_GetFieldSide
 .public BattleSystem_GetMessageIcon
@@ -142,7 +142,7 @@
 .public BattleSystem_GetOptions
 .public BattleSystem_GetTextFrameDelay
 .public ov12_0223B870
-.public ov12_0223BB1C
+.public BattleSystem_MetBill
 .public BattleSystem_GameStatIncrement
 .public ov12_0223BB44
 .public ov12_0223BBF0
@@ -384,11 +384,11 @@
 .public BattleScriptReadWord
 .public Task_GetExp
 .public Task_GetPokemon
-.public GetBattlerIDBySide
+.public BattleSystem_GetBattlerIDBySide
 .public InitBattleMsgData
 .public InitBattleMsg
 .public GetMoveMessageNo
-.public UpdateFrienshipFainted
+.public UpdateFriendshipFainted
 .public BattlerSetAbility
 .public BattleSystem_ReloadMonData
 .public Link_QueueNotEmpty
@@ -407,12 +407,15 @@
 .public ov12_02263D14
 .public BattleController_EmitIncrementGameStat
 .public ov12_02265FC4
+.public sStandardBallCatchRates
 .public sTrumpCardPowerTable
 .public sProtectSuccessChance
 .public sFlailDamageTable
 .public sPickupTable2
 .public sLowKickDamageTable
 .public sNaturePowerMoveTable
+.public sSafariCatchRateStages
+.public sMoonBallPokemon
 .public sPickupTable1
 .public sSecretPowerEffectTable
 .public sPrizeMoneyTbl

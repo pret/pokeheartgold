@@ -94,7 +94,7 @@ enum HeapID {
     HEAP_ID_89,
     HEAP_ID_POKEGEAR,
     HEAP_ID_POKEGEAR_APP,
-    HEAP_ID_92,
+    HEAP_ID_POKEATHLON,
     HEAP_ID_93,
     HEAP_ID_94,
     HEAP_ID_95,

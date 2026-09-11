@@ -1,8 +1,8 @@
 #ifndef POKEHEARTGOLD_TASK_H
 #define POKEHEARTGOLD_TASK_H
 
-#include "fieldmap.h"
 #include "overlay_manager.h"
+#include "script_manager.h"
 
 typedef BOOL (*TaskFunc)(TaskManager *taskman);
 

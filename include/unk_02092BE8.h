@@ -35,7 +35,7 @@ typedef struct PokegearArgs {
 typedef struct UnkPokegearstruct_14 {
     u8 unk_0;
     u8 unk_1;
-    u8 unk_2;
+    u8 callTriggerID;
     u8 isScriptedCall;
     u8 callScriptID;
 } Unk_PokegearSTRUCT_14;

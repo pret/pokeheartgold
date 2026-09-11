@@ -5,42 +5,42 @@
 
 	.rodata
 
-	scrdef scr_seq_R24_000
-	scrdef scr_seq_R24_001
-	scrdef scr_seq_R24_002
-	scrdef scr_seq_R24_003
-	scrdef scr_seq_R24_004
-	scrdef_end
+	ScrDef scr_seq_R24_000
+	ScrDef scr_seq_R24_001
+	ScrDef scr_seq_R24_002
+	ScrDef scr_seq_R24_003
+	ScrDef scr_seq_R24_004
+	ScrDefEnd
 
 scr_seq_R24_004:
-	compare VAR_SCENE_ROUTE_24_ROCKET, 2
-	goto_if_eq _0025
-	end
+	Compare VAR_SCENE_ROUTE_24_ROCKET, 2
+	GoToIfEq _0025
+	End
 
 _0025:
-	setvar VAR_SCENE_ROUTE_24_ROCKET, 1
-	end
+	SetVar VAR_SCENE_ROUTE_24_ROCKET, 1
+	End
 
 scr_seq_R24_003:
-	scrcmd_609
-	lockall
-	get_player_facing VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 0
-	goto_if_ne _0060
-	apply_movement obj_R24_rocketm, _0084
-	apply_movement obj_R24_gsman1, _00A0
-	apply_movement obj_R24_gswoman2, _00AC
-	goto _0078
+	ScrCmd_609
+	LockAll
+	GetPlayerFacing VAR_TEMP_x4000
+	Compare VAR_TEMP_x4000, 0
+	GoToIfNe _0060
+	ApplyMovement obj_R24_rocketm, _0084
+	ApplyMovement obj_R24_gsman1, _00A0
+	ApplyMovement obj_R24_gswoman2, _00AC
+	GoTo _0078
 
 _0060:
-	apply_movement obj_R24_rocketm, _0090
-	apply_movement obj_R24_gsman1, _00A0
-	apply_movement obj_R24_gswoman2, _00AC
+	ApplyMovement obj_R24_rocketm, _0090
+	ApplyMovement obj_R24_gsman1, _00A0
+	ApplyMovement obj_R24_gswoman2, _00AC
 _0078:
-	wait_movement
-	setvar VAR_SCENE_ROUTE_24_ROCKET, 2
-	releaseall
-	end
+	WaitMovement
+	SetVar VAR_SCENE_ROUTE_24_ROCKET, 2
+	ReleaseAll
+	End
 
 	.balign 4, 0
 _0084:
@@ -69,45 +69,45 @@ _00AC:
 	EndMovement
 
 scr_seq_R24_002:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	stop_bgm SEQ_GS_R_12_24
-	play_bgm SEQ_GS_EYE_ROCKET
-	npc_msg msg_0362_R24_00000
-	closemsg
-	trainer_battle TRAINER_TEAM_ROCKET_GRUNT_24, 0, 0, 0
-	check_battle_won VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _014A
-	npc_msg msg_0362_R24_00002
-	closemsg
-	fade_out_bgm 0, 30
-	npc_msg msg_0362_R24_00003
-	closemsg
-	toggle_following_pokemon_movement 0
-	wait_following_pokemon_movement
-	following_pokemon_movement 56
-	apply_movement obj_R24_rocketm, _0150
-	apply_movement obj_player, _015C
-	apply_movement obj_R24_gsman1, _0170
-	apply_movement obj_R24_gswoman2, _017C
-	wait_movement
-	wait_following_pokemon_movement
-	toggle_following_pokemon_movement 1
-	following_pokemon_movement 48
-	hide_person obj_R24_rocketm
-	setflag FLAG_HIDE_ROUTE_24_ROCKET
-	clearflag FLAG_HIDE_CERULEAN_GYM_MACHINE_PART
-	play_bgm SEQ_GS_R_12_24
-	setvar VAR_SCENE_ROUTE_24_ROCKET, 3
-	releaseall
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	StopBGM SEQ_GS_R_12_24
+	PlayBGM SEQ_GS_EYE_ROCKET
+	NPCMsg msg_0362_R24_00000
+	CloseMsg
+	TrainerBattle TRAINER_TEAM_ROCKET_GRUNT_24, 0, 0, 0
+	CheckBattleWon VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _014A
+	NPCMsg msg_0362_R24_00002
+	CloseMsg
+	FadeOutBGM 0, 30
+	NPCMsg msg_0362_R24_00003
+	CloseMsg
+	ToggleFollowingPokemonMovement 0
+	WaitFollowingPokemonMovement
+	FollowingPokemonMovement 56
+	ApplyMovement obj_R24_rocketm, _0150
+	ApplyMovement obj_player, _015C
+	ApplyMovement obj_R24_gsman1, _0170
+	ApplyMovement obj_R24_gswoman2, _017C
+	WaitMovement
+	WaitFollowingPokemonMovement
+	ToggleFollowingPokemonMovement 1
+	FollowingPokemonMovement 48
+	HidePerson obj_R24_rocketm
+	SetFlag FLAG_HIDE_ROUTE_24_ROCKET
+	ClearFlag FLAG_HIDE_CERULEAN_GYM_MACHINE_PART
+	PlayBGM SEQ_GS_R_12_24
+	SetVar VAR_SCENE_ROUTE_24_ROCKET, 3
+	ReleaseAll
+	End
 
 _014A:
-	white_out
-	releaseall
-	end
+	WhiteOut
+	ReleaseAll
+	End
 
 	.balign 4, 0
 _0150:
@@ -139,68 +139,68 @@ _017C:
 	EndMovement
 
 scr_seq_R24_000:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	compare VAR_SCENE_ROUTE_24_ROCKET, 2
-	goto_if_ne _01B3
-	goto _01DC
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	Compare VAR_SCENE_ROUTE_24_ROCKET, 2
+	GoToIfNe _01B3
+	GoTo _01DC
 
 _01AD:
-	goto _01DC
+	GoTo _01DC
 
 _01B3:
-	compare VAR_SCENE_ROUTE_24_ROCKET, 3
-	goto_if_ne _01D1
-	faceplayer
-	npc_msg msg_0362_R24_00005
-	goto _01DF
+	Compare VAR_SCENE_ROUTE_24_ROCKET, 3
+	GoToIfNe _01D1
+	FacePlayer
+	NPCMsg msg_0362_R24_00005
+	GoTo _01DF
 
 _01CB:
-	goto _01DC
+	GoTo _01DC
 
 _01D1:
-	faceplayer
-	npc_msg msg_0362_R24_00006
-	goto _01DF
+	FacePlayer
+	NPCMsg msg_0362_R24_00006
+	GoTo _01DF
 
 _01DC:
-	npc_msg msg_0362_R24_00004
+	NPCMsg msg_0362_R24_00004
 _01DF:
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 scr_seq_R24_001:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	compare VAR_SCENE_ROUTE_24_ROCKET, 2
-	goto_if_ne _0206
-	goto _022F
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	Compare VAR_SCENE_ROUTE_24_ROCKET, 2
+	GoToIfNe _0206
+	GoTo _022F
 
 _0200:
-	goto _022F
+	GoTo _022F
 
 _0206:
-	compare VAR_SCENE_ROUTE_24_ROCKET, 3
-	goto_if_ne _0224
-	faceplayer
-	npc_msg msg_0362_R24_00008
-	goto _0232
+	Compare VAR_SCENE_ROUTE_24_ROCKET, 3
+	GoToIfNe _0224
+	FacePlayer
+	NPCMsg msg_0362_R24_00008
+	GoTo _0232
 
 _021E:
-	goto _022F
+	GoTo _022F
 
 _0224:
-	faceplayer
-	npc_msg msg_0362_R24_00009
-	goto _0232
+	FacePlayer
+	NPCMsg msg_0362_R24_00009
+	GoTo _0232
 
 _022F:
-	npc_msg msg_0362_R24_00007
+	NPCMsg msg_0362_R24_00007
 _0232:
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 	.balign 4, 0

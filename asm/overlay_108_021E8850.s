@@ -340,9 +340,9 @@ ov108_021E8AD4: ; 0x021E8AD4
 	mov r1, #0
 	bl sub_0200FBF4
 	mov r0, #0
-	bl sub_0200FBDC
+	bl ResetVisibleHardwareWindows
 	mov r0, #1
-	bl sub_0200FBDC
+	bl ResetVisibleHardwareWindows
 	pop {r3, pc}
 	.balign 4, 0
 _021E8B1C: .word 0xFFFFE0FF
@@ -3818,7 +3818,7 @@ _021EA6B4:
 	ldr r2, [sp, #4]
 	add r0, r5, #2
 	add r1, r6, #0
-	bl sub_02097268
+	bl GetSafariObjectConfig
 	ldrb r1, [r5, #3]
 	lsl r0, r1, #0x1c
 	lsl r1, r1, #0x19

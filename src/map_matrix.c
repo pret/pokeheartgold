@@ -12,7 +12,7 @@
 #include "save_vars_flags.h"
 #include "sys_vars.h"
 
-static void MapMatrix_MapMatrixData_Load(MAPMATRIXDATA *map_matrix_data, u16 matrix_id, u32 map_no) {
+static void MapMatrix_MapMatrixData_Load(MapMatrixData *map_matrix_data, u16 matrix_id, u32 map_no) {
     map_matrix_data->width = 0;
     map_matrix_data->height = 0;
 
@@ -59,8 +59,8 @@ static void MapMatrix_MapMatrixData_Load(MAPMATRIXDATA *map_matrix_data, u16 mat
     Heap_Free(buffer);
 }
 
-MAPMATRIX *MapMatrix_New(void) {
-    MAPMATRIX *map_matrix = Heap_Alloc(HEAP_ID_FIELD2, sizeof(MAPMATRIX));
+MapMatrix *MapMatrix_New(void) {
+    MapMatrix *map_matrix = Heap_Alloc(HEAP_ID_FIELD2, sizeof(MapMatrix));
     map_matrix->width = 0;
     map_matrix->height = 0;
     map_matrix->matrix_id = 0;
@@ -68,7 +68,7 @@ MAPMATRIX *MapMatrix_New(void) {
     return map_matrix;
 }
 
-void MapMatrix_Load(u32 map_no, MAPMATRIX *map_matrix) {
+void MapMatrix_Load(u32 map_no, MapMatrix *map_matrix) {
     u16 matrix_id = MapHeader_GetMatrixId(map_no);
 
     MapMatrix_MapMatrixData_Load(&map_matrix->data, matrix_id, map_no);
@@ -78,26 +78,26 @@ void MapMatrix_Load(u32 map_no, MAPMATRIX *map_matrix) {
     map_matrix->width = map_matrix->data.width;
 }
 
-void MapMatrix_Free(MAPMATRIX *map_matrix) {
+void MapMatrix_Free(MapMatrix *map_matrix) {
     Heap_Free(map_matrix);
 }
 
-u16 MapMatrix_GetMapModelNo(s32 map_no, MAPMATRIX *map_matrix) {
+u16 MapMatrix_GetMapModelNo(int map_no, MapMatrix *map_matrix) {
     GF_ASSERT(map_no < map_matrix->width * map_matrix->height);
     return map_matrix->data.maps.models[map_no];
 }
 
-u8 MapMatrix_GetWidth(MAPMATRIX *map_matrix) {
+u8 MapMatrix_GetWidth(MapMatrix *map_matrix) {
     GF_ASSERT(map_matrix != NULL);
     return map_matrix->width;
 }
 
-u8 MapMatrix_GetHeight(MAPMATRIX *map_matrix) {
+u8 MapMatrix_GetHeight(MapMatrix *map_matrix) {
     GF_ASSERT(map_matrix != NULL);
     return map_matrix->height;
 }
 
-u16 MapMatrix_GetMapHeader(MAPMATRIX *map_matrix, s32 x, s32 y) {
+u16 MapMatrix_GetMapHeader(MapMatrix *map_matrix, s32 x, s32 y) {
     s32 width = map_matrix->width;
     s32 height = map_matrix->height;
 
@@ -107,11 +107,11 @@ u16 MapMatrix_GetMapHeader(MAPMATRIX *map_matrix, s32 x, s32 y) {
     return map_matrix->data.headers[y * width + x];
 }
 
-u8 MapMatrix_GetMatrixId(MAPMATRIX *map_matrix) {
+u8 MapMatrix_GetMatrixId(MapMatrix *map_matrix) {
     return map_matrix->matrix_id;
 }
 
-u8 MapMatrix_GetMapAltitude(MAPMATRIX *map_matrix, u8 matrix_id, u16 x, u16 y, int matrix_width) {
+u8 MapMatrix_GetMapAltitude(MapMatrix *map_matrix, u8 matrix_id, u16 x, u16 y, int matrix_width) {
 #pragma unused(matrix_id)
     GF_ASSERT(x < matrix_width);
     GF_ASSERT(y * matrix_width + x < MAP_MATRIX_MAX_SIZE);
@@ -140,12 +140,12 @@ void MapMatrix_MapData_Free(MAPDATA *map_data) {
     Heap_Free(map_data);
 }
 
-u16 GetMapModelNo(u32 map_no, MAPMATRIX *map_matrix) {
+u16 GetMapModelNo(u32 map_no, MapMatrix *map_matrix) {
     GF_ASSERT(map_matrix != NULL);
     return MapMatrix_GetMapModelNo(map_no, map_matrix);
 }
 
-void RemoveMahoganyTownAntennaTree(MAPMATRIX *map_matrix) {
+void RemoveMahoganyTownAntennaTree(MapMatrix *map_matrix) {
     u16 *models = map_matrix->data.maps.models;
     u8 width = map_matrix->width;
 
@@ -166,8 +166,8 @@ BOOL ShouldUseAlternateLakeOfRage(SaveData *saveData, u32 map_no) {
 
     GF_RTC_CopyDate(&date);
 
-    if (Save_VarsFlags_CheckFlagInArray(state, FLAG_RED_GYARADOS_MEET) == FALSE) {
-        // The player hasn't battled the Red Gyarados yet.
+    if (Save_VarsFlags_CheckFlagInArray(state, FLAG_ROCKET_HIDEOUT_CLEARED) == FALSE) {
+        // The player hasn't cleared the Rocket Hideout in Mahogany Town yet.
         sub_02066C4C(state, 1);
         return FALSE;
     }
@@ -181,7 +181,7 @@ BOOL ShouldUseAlternateLakeOfRage(SaveData *saveData, u32 map_no) {
     }
 }
 
-void SetLakeOfRageWaterLevel(MAPMATRIX *map_matrix, BOOL lower_water_level) {
+void SetLakeOfRageWaterLevel(MapMatrix *map_matrix, BOOL lower_water_level) {
     u16 *models = map_matrix->data.maps.models;
     u8 width = map_matrix->width;
 
@@ -206,7 +206,7 @@ void SetLakeOfRageWaterLevel(MAPMATRIX *map_matrix, BOOL lower_water_level) {
     }
 }
 
-void PlaceSafariZoneAreas(MAPMATRIX *map_matrix, SaveData *save) {
+void PlaceSafariZoneAreas(MapMatrix *map_matrix, SaveData *save) {
     u16 *models = map_matrix->data.maps.models;
     s32 width = map_matrix->width;
 
@@ -215,7 +215,7 @@ void PlaceSafariZoneAreas(MAPMATRIX *map_matrix, SaveData *save) {
     }
 
     SafariZone *safari_zone = Save_SafariZone_Get(save);
-    SAFARIZONE_AREASET *sz_area_set = SafariZone_GetAreaSet(safari_zone, 3);
+    SafariZoneAreaSet *sz_area_set = SafariZone_GetAreaSet(safari_zone, 3);
 
     for (s32 y = 0; y < SAFARI_ZONE_AREA_SET_ROWS; y++) {
         for (s32 x = 0; x < SAFARI_ZONE_AREA_SET_COLS; x++) {

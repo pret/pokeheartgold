@@ -34,11 +34,11 @@
 .public AddCellOrAnimResObjFromNarc
 .public ReplacePlttResObjFromNarc
 .public SpriteResourceCollection_Find
-.public sub_0200ACF0
-.public sub_0200AEB0
-.public sub_0200AF94
-.public sub_0200B084
-.public sub_0200B0A8
+.public SpriteTransfer_CreateCharTransferTask
+.public SpriteTransfer_DeleteCharTransferTask
+.public SpriteTransfer_CreateExtPlttTransferTask
+.public SpriteTransfer_ReplacePlttData
+.public SpriteTransfer_DeletePlttTransferTask
 .public OamManager_Create
 .public OamManager_ApplyAndResetBuffers
 .public OamManager_Free

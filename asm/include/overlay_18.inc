@@ -53,10 +53,10 @@
 .public sub_0200A740
 .public DestroySingle2DGfxResObj
 .public GF2DGfxResObj_GetResID
-.public sub_0200ADA4
-.public sub_0200AEB0
-.public sub_0200B00C
-.public sub_0200B0A8
+.public SpriteTransfer_CreateCharTransferTask_AllocAtEnd
+.public SpriteTransfer_DeleteCharTransferTask
+.public SpriteTransfer_CreatePlttTransferTask
+.public SpriteTransfer_DeletePlttTransferTask
 .public SpriteTransfer_GetPlttOffset
 .public NewMsgDataFromNarc
 .public DestroyMsgData
@@ -254,9 +254,9 @@
 .public GetPokedexDataNarcID
 .public GetDexWeightMsgBank
 .public GetDexHeightMsgBank
-.public sub_02092BD8
-.public sub_02092BE0
-.public sub_02092BE4
+.public UnkStruct_02092BB8_Set
+.public UnkStruct_02092BB8_GetUnk2
+.public UnkStruct_02092BB8_GetSpecies
 .public NNS_G2dGetImageLocation
 .public NNS_G2dGetImagePaletteLocation
 .public FX_Div

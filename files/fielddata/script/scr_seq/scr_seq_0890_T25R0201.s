@@ -5,57 +5,57 @@
 
 	.rodata
 
-	scrdef scr_seq_T25R0201_000
-	scrdef scr_seq_T25R0201_001
-	scrdef_end
+	ScrDef scr_seq_T25R0201_000
+	ScrDef scr_seq_T25R0201_001
+	ScrDefEnd
 
 scr_seq_T25R0201_000:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	goto_if_set FLAG_UNK_089, _0081
-	npc_msg msg_0584_T25R0201_00000
-	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0042
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _008C
-	end
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	GoToIfSet FLAG_UNK_089, _0081
+	NPCMsg msg_0584_T25R0201_00000
+	TouchscreenMenuHide
+	GetMenuChoice VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0042
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _008C
+	End
 
 _0042:
-	npc_msg msg_0584_T25R0201_00001
-	getmenuchoice VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0065
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _008C
-	end
+	NPCMsg msg_0584_T25R0201_00001
+	GetMenuChoice VAR_SPECIAL_RESULT
+	Compare VAR_SPECIAL_RESULT, 0
+	GoToIfEq _0065
+	Compare VAR_SPECIAL_RESULT, 1
+	GoToIfEq _008C
+	End
 
 _0065:
-	giveitem_no_check ITEM_BICYCLE, 1
-	setflag FLAG_UNK_089
-	closemsg
-	touchscreen_menu_show
-	releaseall
-	end
+	GiveItemNoCheck ITEM_BICYCLE, 1
+	SetFlag FLAG_UNK_089
+	CloseMsg
+	TouchscreenMenuShow
+	ReleaseAll
+	End
 
 _0081:
-	npc_msg msg_0584_T25R0201_00003
-	wait_button_or_walk_away
-	closemsg
-	releaseall
-	end
+	NPCMsg msg_0584_T25R0201_00003
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
 
 _008C:
-	npc_msg msg_0584_T25R0201_00004
-	wait_button_or_walk_away
-	closemsg
-	touchscreen_menu_show
-	releaseall
-	end
+	NPCMsg msg_0584_T25R0201_00004
+	WaitButton
+	CloseMsg
+	TouchscreenMenuShow
+	ReleaseAll
+	End
 
 scr_seq_T25R0201_001:
-	simple_npc_msg msg_0584_T25R0201_00005
-	end
+	SimpleNPCMsg msg_0584_T25R0201_00005
+	End
 	.balign 4, 0

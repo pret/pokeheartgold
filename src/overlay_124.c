@@ -37,7 +37,7 @@ void FieldSystem_Init(OverlayManager *man, FieldSystem *fieldSystem) {
     if ((key + key2) % 2441) {
         ov124_02260D1C(fieldSystem);
     }
-    fieldSystem->unkA8 = sub_02092BB8(HEAP_ID_FIELD2);
+    fieldSystem->unkA8 = UnkStruct_02092BB8_New(HEAP_ID_FIELD2);
     fieldSystem->unk108 = FieldSystem_UnkSub108_Alloc(HEAP_ID_FIELD2);
     fieldSystem->phoneRingManager = GearPhoneRingManager_New(HEAP_ID_FIELD2, fieldSystem);
     fieldSystem->judgeStatPosition = 0;

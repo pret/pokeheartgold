@@ -75,13 +75,14 @@ void ov02_022507B4(FieldSystem *fieldSystem, u8 a1);
 void ov02_022508B4(FieldSystem *fieldSystem);
 void ov02_022523B4(TaskManager *taskManager);
 
-BOOL ov02_022470A0(FieldSystem *fieldSystem, BattleSetup **setupPtr);
 void ov02_BattleExit_HandleRoamerAction(FieldSystem *fieldSystem, BattleSetup *setup);
-BOOL FieldSystem_ChooseHeadbuttEncounter(FieldSystem *fieldSystem, BattleSetup **setup, const HeadbuttSlot *headbuttSlots);
-void ov02_02247F30(FieldSystem *fieldSystem, u16 mon, u8 level, BOOL shiny, BattleSetup *setup);
 void ov02_02246714(TaskManager *man, u32 a1, u32 a2, u32 a3, u32 a4);
 void ov02_022469B4(TaskManager *man, LocalMapObject *obj1, LocalMapObject *obj2);
 void OpenAlphHiddenRoom(TaskManager *man, u32 a1);
+int ov02_0224E340(FieldSystem *fieldSystem);
+
+u16 ov02_0224E698(FieldSystem *fieldSystem);
+u16 ov02_0224E754(FieldSystem *fieldSystem, u16 *varPointer);
 
 SafariDecorationArgs *SafariDecoration_CreateArgs(FieldSystem *fieldSystem, enum HeapID heapID);
 
