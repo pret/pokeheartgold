@@ -1,16 +1,17 @@
 build_dir = meson.current_build_dir()
 
 ############################################################
-###                    PRADIO_PHONE                      ###
+###                    PGRADIO_GRA                       ###
 ############################################################
 subdir('pgradio_gra')
 
 pgradio_gra_narc = custom_target('pgradio_gra.narc',
     command : [
-        narc_exe, 
-        '-p', build_dir + '/pgradio_gra.narc',
-        '-d', build_dir + '/pgradio_gra.narc.p',
-        '-i'
+        nitroarc_exe, 
+        '--create',
+        '--index-namespace',
+        '--file', '@OUTPUT0@',
+        '@PRIVATE_DIR@',
     ],
     input : [
         pgradio_gra_nclr,

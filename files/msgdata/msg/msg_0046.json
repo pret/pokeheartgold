@@ -567,7 +567,7 @@
       "garbage": 133
     },
     {
-      "id": "msg_0046_00120",
+      "id": "msg_0046_WhichSetOfRules",
       "en_US": [
         "Which set of rules would you like\n",
         "to use? {YESNO 0}"
@@ -578,7 +578,7 @@
       "en_US": "Battle in {STRVAR_1 26, 0, 0} Cup?{YESNO 0}"
     },
     {
-      "id": "msg_0046_00122",
+      "id": "msg_0046_NeedXPokemonForCup",
       "en_US": [
         "You need at least {STRVAR_1 50, 1, 0} Pokémon\n",
         "that qualify under the\f",
@@ -613,15 +613,15 @@
       ]
     },
     {
-      "id": "msg_0046_00129",
+      "id": "msg_0046_Cancel",
       "en_US": "CANCEL"
     },
     {
-      "id": "msg_0046_00130",
+      "id": "msg_0046_Confirm",
       "en_US": "CONFIRM"
     },
     {
-      "id": "msg_0046_00131",
+      "id": "msg_0046_Rules",
       "en_US": "RULES"
     },
     {
@@ -641,7 +641,7 @@
       "garbage": 17
     },
     {
-      "id": "msg_0046_00136",
+      "id": "msg_0046_CantFormTeamWithLevelLimit",
       "en_US": [
         "It’s impossible to form a team of\n",
         "Pokémon that qualify under the\f",

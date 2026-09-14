@@ -617,7 +617,7 @@ static void MicTest_VBlankIntrCB(void *data) {
     NNS_GfdDoVramTransfer();
     ov62_021E5FC4(micTest);
     ov62_021E60D4(&micTest->unkB8);
-    OS_SetIrqCheckFlag(OS_IE_VBLANK);
+    OS_SetIrqCheckFlag(OS_IE_V_BLANK);
 }
 
 static void MicTest_InitSpriteRenderer(MicTestData *micTest, enum HeapID heapID) {

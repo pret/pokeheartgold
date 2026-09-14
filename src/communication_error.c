@@ -67,7 +67,7 @@ static const WindowTemplate sCommunicationErrorWindowTemplate = {
 static void VBlankIntr(void);
 
 static void VBlankIntr(void) {
-    OS_SetIrqCheckFlag(OS_IE_VBLANK);
+    OS_SetIrqCheckFlag(OS_IE_V_BLANK);
     MI_WaitDma(GX_DEFAULT_DMAID);
 }
 
@@ -129,9 +129,9 @@ void ShowCommunicationError(enum HeapID heapID, u32 error, u32 errorCode) {
     sub_0200FBF4(PM_LCD_TOP, RGB_BLACK);
     sub_0200FBF4(PM_LCD_BOTTOM, RGB_BLACK);
 
-    OS_DisableIrqMask(OS_IE_VBLANK);
-    OS_SetIrqFunction(OS_IE_VBLANK, VBlankIntr);
-    OS_EnableIrqMask(OS_IE_VBLANK);
+    OS_DisableIrqMask(OS_IE_V_BLANK);
+    OS_SetIrqFunction(OS_IE_V_BLANK, VBlankIntr);
+    OS_EnableIrqMask(OS_IE_V_BLANK);
 
     Main_SetVBlankIntrCB(NULL, NULL);
     Main_SetHBlankIntrCB(NULL, NULL);

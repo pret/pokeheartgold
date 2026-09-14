@@ -7,10 +7,11 @@ subdir('pokefoot')
 
 pokefoot_narc = custom_target('pokefoot.narc',
     command : [
-        narc_exe, 
-        '-p', build_dir + '/pokefoot.narc',
-        '-d', build_dir + '/pokefoot.narc.p',
-        '-i'
+        nitroarc_exe, 
+        '--create',
+        '--index-namespace',
+        '--file', '@OUTPUT0@',
+        '@PRIVATE_DIR@',
     ],
     input : [
         pokefoot_nclr,
@@ -22,7 +23,6 @@ pokefoot_narc = custom_target('pokefoot.narc',
         'pokefoot.narc',
         'pokefoot.naix',
     ],
-    build_by_default:true,
 )
 
 nitrofs_files += pokefoot_narc

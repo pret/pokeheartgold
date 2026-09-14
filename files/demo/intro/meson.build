@@ -7,10 +7,11 @@ subdir('intro')
 
 intro_narc = custom_target('intro.narc',
     command : [
-        narc_exe,
-        '-p', build_dir + '/intro.narc',
-        '-d', build_dir + '/intro.narc.p',
-        '-i'
+        nitroarc_exe, 
+        '--create',
+        '--index-namespace',
+        '--file', '@OUTPUT0@',
+        '@PRIVATE_DIR@',
     ],
     input : [
         intro_ncgr,
@@ -23,7 +24,6 @@ intro_narc = custom_target('intro.narc',
         'intro.narc',
         'intro.naix'
     ],
-    build_by_default:true
 )
 
 nitrofs_files += intro_narc

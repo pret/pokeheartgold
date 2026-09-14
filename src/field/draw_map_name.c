@@ -1,7 +1,7 @@
 #include "field/draw_map_name.h"
 
 #include <nitro/gx/gx_load.h>
-#include <nitro/os/cache.h>
+#include <nitro/os.h>
 
 #include "global.h"
 

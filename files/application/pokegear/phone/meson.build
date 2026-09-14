@@ -7,10 +7,11 @@ subdir('pgphone_gra')
 
 pgphone_gra_narc = custom_target('pgphone_gra.narc',
     command : [
-        narc_exe, 
-        '-p', build_dir + '/pgphone_gra.narc',
-        '-d', build_dir + '/pgphone_gra.narc.p',
-        '-i'
+        nitroarc_exe, 
+        '--create',
+        '--index-namespace',
+        '--file', '@OUTPUT0@',
+        '@PRIVATE_DIR@',
     ],
     input : [
         pgphone_gra_nclr,

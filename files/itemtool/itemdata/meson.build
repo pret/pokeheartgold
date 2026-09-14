@@ -21,7 +21,6 @@ item_data_narc = custom_target('item_data.narc',
         'item_data.narc',
         'item_data.naix'
     ],
-    build_by_default : true
 )
 
 nitrofs_files += item_data_narc
@@ -34,10 +33,11 @@ subdir('item_icon')
 
 item_icon_narc = custom_target('item_icon.narc',
     command : [
-        narc_exe,
-        '-p', build_dir + '/item_icon.narc',
-        '-d', build_dir + '/item_icon.narc.p',
-        '-i'
+        nitroarc_exe, 
+        '--create',
+        '--index-namespace',
+        '--file', '@OUTPUT0@',
+        '@PRIVATE_DIR@',
     ],
     input : [
         item_icon_nanr,
@@ -49,7 +49,6 @@ item_icon_narc = custom_target('item_icon.narc',
         'item_icon.narc',
         'item_icon.naix'
     ],
-    build_by_default:true
 )
 
 nitrofs_files += item_icon_narc

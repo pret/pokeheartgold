@@ -236,7 +236,7 @@ u16 FrontierFieldSystem_GetRandomFrontierTrainerID(FrontierFieldSystem *frontier
 }
 
 static u16 *sub_0204B7D0(FrontierTrainer *frontierTrainer, u32 frontierTrainerIndex, enum HeapID heapID) {
-    MsgData *messageData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, msg_0027_bin, heapID);
+    MsgData *messageData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, msg_0027, heapID);
     MI_CpuClear8(frontierTrainer, sizeof(FrontierTrainer));
     u16 *frontierTrainerData = GetFrontierTrainerData(frontierTrainerIndex, heapID);
     frontierTrainer->index = frontierTrainerIndex;

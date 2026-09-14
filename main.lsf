@@ -37,7 +37,7 @@ Static main
     Object main.nef.p/src_pokepic.c.o
     Object main.nef.p/src_unk_02009D48.c.o
     Object main.nef.p/src_unk_0200A090.c.o
-    Object main.nef.p/src_unk_0200ACF0.c.o
+    Object main.nef.p/src_sprite_transfer.c.o
     Object main.nef.p/asm_unk_0200B150.s.o
     Object main.nef.p/src_brightness.c.o
     Object main.nef.p/src_msgdata.c.o
@@ -148,8 +148,7 @@ Static main
     Object main.nef.p/asm_unk_02030A98.s.o
     Object main.nef.p/src_unk_0203170C.c.o
     Object main.nef.p/asm_unk_020318C8.s.o
-    Object main.nef.p/asm_unk_02031904.s.o
-    Object main.nef.p/src_unk_02031AF0.c.o
+    Object main.nef.p/src_pokeathlon_pokeathlon_save.c.o
     Object main.nef.p/asm_unk_02031B0C.s.o
     Object main.nef.p/src_pokewalker.c.o
     Object main.nef.p/src_save_trainer_house.c.o
@@ -176,7 +175,7 @@ Static main
     Object main.nef.p/src_location_backup.c.o
     Object main.nef.p/src_launch_application.c.o
     Object main.nef.p/src_script.c.o
-    Object main.nef.p/src_fieldmap.c.o
+    Object main.nef.p/src_script_manager.c.o
     Object main.nef.p/src_scrcmd_c.c.o
     Object main.nef.p/src_scrcmd_mart.c.o
     Object main.nef.p/src_scrcmd_strbuf.c.o
@@ -209,9 +208,10 @@ Static main
     Object main.nef.p/src_game_clear.c.o
     Object main.nef.p/src_field_warp_tasks.c.o
     Object main.nef.p/src_script_pokemon_util.c.o
-    Object main.nef.p/asm_unk_02054514.s.o
+    Object main.nef.p/src_terrain_attributes.c.o
     Object main.nef.p/asm_unk_02054648.s.o
-    Object main.nef.p/asm_unk_02054E00.s.o
+    Object main.nef.p/src_unk_02054E00.c.o
+    Object main.nef.p/src_field_bgm.c.o
     Object main.nef.p/asm_unk_020551B8.s.o
     Object main.nef.p/asm_unk_02055244.s.o
     Object main.nef.p/src_unk_02055418.c.o
@@ -225,7 +225,7 @@ Static main
     Object main.nef.p/asm_unk_0205A44C.s.o
     Object main.nef.p/asm_unk_0205AC88.s.o
     Object main.nef.p/src_unk_0205B3DC.c.o
-    Object main.nef.p/asm_text_0205B4EC.s.o
+    Object main.nef.p/src_dialog_box.c.o
     Object main.nef.p/src_metatile_behavior.c.o
     Object main.nef.p/asm_unk_0205BB1C.s.o
     Object main.nef.p/asm_unk_0205BFF0.s.o
@@ -321,7 +321,7 @@ Static main
     Object main.nef.p/src_save_data_read_error.c.o
     Object main.nef.p/src_save_data_write_error.c.o
     Object main.nef.p/asm_unk_02092B04.s.o
-    Object main.nef.p/asm_unk_02092BB8.s.o
+    Object main.nef.p/src_unk_02092BB8.c.o
     Object main.nef.p/src_unk_02092BE8.c.o
     Object main.nef.p/src_mom_gift.c.o
     Object main.nef.p/src_unk_020932A4.c.o
@@ -338,8 +338,8 @@ Static main
     Object main.nef.p/asm_unk_02096910.s.o
     Object main.nef.p/asm_unk_02096C88.s.o
     Object main.nef.p/asm_unk_02097024.s.o
-    Object main.nef.p/asm_unk_020971F8.s.o
-    Object main.nef.p/asm_unk_02097268.s.o
+    Object main.nef.p/src_unk_020971F8.c.o
+    Object main.nef.p/src_unk_02097268.c.o
     Object main.nef.p/src_unk_02097720.c.o
     Object main.nef.p/asm_unk_020977CC.s.o
     Object main.nef.p/asm_unk_020979A8.s.o
@@ -422,15 +422,15 @@ Overlay OVY_0
 Overlay field
 {
     After main
-    Object main.nef.p/asm_overlay_01_021E5900.s.o
-    Object main.nef.p/src_field_overlay_01_021E66E4.c.o
-    Object main.nef.p/asm_overlay_01_021E6880.s.o
-    Object main.nef.p/asm_overlay_01_021E7FDC.s.o
-    Object main.nef.p/asm_overlay_01_021E8744.s.o
+    Object main.nef.p/src_field_fieldmap.c.o
+    Object main.nef.p/src_field_field_3d_object_task.c.o
+    Object main.nef.p/src_field_field_control.c.o
+    Object main.nef.p/src_field_field_sprite_manager.c.o
+    Object main.nef.p/src_field_map_prop_animation.c.o
     Object main.nef.p/asm_overlay_01_021E90C0.s.o
     Object main.nef.p/asm_overlay_01_021EA6C4.s.o
     Object main.nef.p/src_overlay_01_021EA824.c.o
-    Object main.nef.p/asm_overlay_01_021EA8E0.s.o
+    Object main.nef.p/asm_model_attributes.s.o
     Object main.nef.p/asm_overlay_01_021EABA8.s.o
     Object main.nef.p/asm_overlay_01_021EAF00.s.o
     Object main.nef.p/asm_overlay_01_021EAFD4.s.o
@@ -443,8 +443,8 @@ Overlay field
     Object main.nef.p/asm_overlay_01_021F1AFC.s.o
     Object main.nef.p/asm_overlay_01_021F3114.s.o
     Object main.nef.p/asm_overlay_01_021F3378.s.o
-    Object main.nef.p/asm_overlay_01_021F3610.s.o
-    Object main.nef.p/asm_overlay_01_021F3D38.s.o
+    Object main.nef.p/src_field_map_prop_manager.c.o
+    Object main.nef.p/src_field_signpost.c.o
     Object main.nef.p/asm_overlay_01_021F3F50.s.o
     Object main.nef.p/asm_overlay_01_021F4464.s.o
     Object main.nef.p/asm_overlay_01_021F467C.s.o
@@ -488,14 +488,14 @@ Overlay field
     Object main.nef.p/asm_overlay_01_022006A8.s.o
     Object main.nef.p/asm_overlay_01_02200858.s.o
     Object main.nef.p/src_field_scrcmd_pokemon_misc.c.o
-    Object main.nef.p/src_scrcmd_move_tutor.c.o
+    Object main.nef.p/src_field_scrcmd_move_tutor.c.o
     Object main.nef.p/src_field_scrcmd_moneybox.c.o
     Object main.nef.p/asm_overlay_01_022031C0.s.o
     Object main.nef.p/asm_overlay_01_02203A18.s.o
     Object main.nef.p/asm_overlay_01_02203E40.s.o
-    Object main.nef.p/asm_overlay_01_02204004.s.o
-    Object main.nef.p/src_field_overlay_01_apricorn_tree_anim.c.o
-    Object main.nef.p/src_field_overlay_01_rock_smash_item.c.o
+    Object main.nef.p/src_field_overlay_01_02204004.c.o
+    Object main.nef.p/src_field_apricorn_tree_anim.c.o
+    Object main.nef.p/src_field_rock_smash_item.c.o
     Object main.nef.p/src_field_headbutt.c.o
     Object main.nef.p/asm_overlay_01_022051EC.s.o
     Object main.nef.p/asm_overlay_01_022053EC.s.o
@@ -504,6 +504,8 @@ Overlay OVY_2
 {
     After field
     Object main.nef.p/asm_overlay_02_02245B80.s.o
+    Object main.nef.p/src_field_encounter_check.c.o
+    Object main.nef.p/asm_overlay_02_02248728.s.o
     Object main.nef.p/src_field_legend_cutscene_camera.c.o
     Object main.nef.p/src_field_overlay_2_gear_phone.c.o
     Object main.nef.p/src_field_event_cutscene_shaymin.c.o
@@ -514,7 +516,12 @@ Overlay OVY_2
 Overlay OVY_3
 {
     After OVY_2
-    Object main.nef.p/asm_overlay_03.s.o
+    Object main.nef.p/src_overlay_03_communication_club.c.o
+    Object main.nef.p/src_overlay_03_battle_regulation_menu.c.o
+    Object main.nef.p/src_overlay_03_shop_menu.c.o
+    Object main.nef.p/src_overlay_03_custom_safari_zone.c.o
+    Object main.nef.p/src_overlay_03_overlay_03_scrcmds.c.o
+    Object main.nef.p/src_overlay_03_pokeathlon_records.c.o
 }
 Overlay OVY_4
 {
@@ -571,7 +578,7 @@ Overlay OVY_12
     Object main.nef.p/src_battle_battle_hp_bar.c.o
     Object main.nef.p/asm_overlay_12_02265E28.s.o
     Object main.nef.p/src_battle_battle_input.c.o
-    Object main.nef.p/asm_overlay_12_0226ADE0.s.o
+    Object main.nef.p/src_battle_party_gauge.c.o
     Object main.nef.p/src_battle_battle_cursor.c.o
     Object main.nef.p/src_battle_battle_finger.c.o
     Object main.nef.p/src_battle_overlay_12_0226BEC4.c.o
@@ -579,7 +586,7 @@ Overlay OVY_12
 Overlay OVY_13
 {
     After OVY_0
-    Object main.nef.p/asm_overlay_13_thumb_1.s.o
+    Object main.nef.p/src_overlay_13_thumb_1.c.o
     Library libmb.a
     Library libdwcutil.a
 }
@@ -738,7 +745,10 @@ Overlay OVY_41
 Overlay OVY_42
 {
     After OVY_38
-    Object main.nef.p/asm_overlay_42.s.o
+    Object main.nef.p/src_overlay_42_02227D30.c.o
+    Object main.nef.p/src_overlay_42_02227EE0.c.o
+    Object main.nef.p/src_overlay_42_02227F68.c.o
+    Object main.nef.p/src_overlay_42_02233EDC.c.o
 }
 Overlay OVY_43
 {
@@ -748,7 +758,10 @@ Overlay OVY_43
 Overlay OVY_44
 {
     After OVY_42
-    Object main.nef.p/asm_overlay_44.s.o
+    Object main.nef.p/src_overlay_44_0222CDAC.c.o
+    Object main.nef.p/src_overlay_44_02231A14.c.o
+    Object main.nef.p/src_overlay_44_02232E90.c.o
+    Object main.nef.p/src_overlay_44_02235340.c.o
 }
 Overlay OVY_45
 {
@@ -1055,6 +1068,7 @@ Overlay OVY_96
     After main
     Object main.nef.p/src_pokeathlon_pokeathlon_course.c.o
     Object main.nef.p/asm_overlay_96.s.o
+    Object main.nef.p/src_pokeathlon_pokeathlon_data.c.o
 }
 Overlay OVY_97
 {

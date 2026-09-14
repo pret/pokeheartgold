@@ -464,7 +464,7 @@ static void OptionsApp_OnVBlank(OptionsApp_Data *data) {
     SpriteSystem_TransferOam();
     NNS_GfdDoVramTransfer();
     DoScheduledBgGpuUpdates(data->bgConfig);
-    OS_SetIrqCheckFlag(OS_IE_VBLANK);
+    OS_SetIrqCheckFlag(OS_IE_V_BLANK);
 }
 
 static BOOL ov54_021E5CE4(OptionsApp_Data *data) {

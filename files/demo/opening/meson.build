@@ -7,10 +7,11 @@ subdir('gs_opening')
 
 gs_opening_narc = custom_target('gs_opening.narc',
     command : [
-        narc_exe,
-        '-p', build_dir + '/gs_opening.narc',
-        '-d', build_dir + '/gs_opening.narc.p',
-        '-i'
+        nitroarc_exe, 
+        '--create',
+        '--index-namespace',
+        '--file', '@OUTPUT0@',
+        '@PRIVATE_DIR@',
     ],
     input : [
         gs_opening_nclr,
@@ -27,7 +28,6 @@ gs_opening_narc = custom_target('gs_opening.narc',
         'gs_opening.narc',
         'gs_opening.naix'
     ],
-    build_by_default:true
 )
 
 nitrofs_files += gs_opening_narc

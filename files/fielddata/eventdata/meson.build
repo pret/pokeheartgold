@@ -37,16 +37,16 @@ zone_event_narc = custom_target('zone_event.narc',
         'zone_event.naix',
     ],
     command : [
-        narc_exe,
-        '-p', build_dir + '/zone_event.narc',
-        '-d', build_dir + '/zone_event.narc.p',
-        '-i'
+        nitroarc_exe, 
+        '--create',
+        '--index-namespace',
+        '--file', '@OUTPUT0@',
+        '@PRIVATE_DIR@',
     ],
     depends : [
         jsonproc_exe,
         o2narc_exe,
     ],
-    build_by_default:true
 )
 
 nitrofs_files += zone_event_narc

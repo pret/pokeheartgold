@@ -130,6 +130,6 @@ void ShowSaveDataWriteError(enum HeapID heapID, int code) {
 
     while (TRUE) {
         HandleDSLidAction();
-        OS_WaitIrq(TRUE, OS_IE_VBLANK);
+        OS_WaitIrq(TRUE, OS_IE_V_BLANK);
     }
 }

@@ -35,10 +35,11 @@ subdir('plist_gra')
 
 plist_gra_narc = custom_target('plist_gra.narc',
     command : [
-        narc_exe,
-        '-p', build_dir + '/plist_gra.narc',
-        '-d', build_dir + '/plist_gra.narc.p',
-        '-i'
+        nitroarc_exe, 
+        '--create',
+        '--index-namespace',
+        '--file', '@OUTPUT0@',
+        '@PRIVATE_DIR@',
     ],
     input : [
         plist_gra_nanr,
@@ -64,10 +65,11 @@ subdir('zukan_gra')
 
 zukan_gra_narc = custom_target('zukan_gra.narc',
     command : [
-        narc_exe,
-        '-p', build_dir + '/zukan_gra.narc',
-        '-d', build_dir + '/zukan_gra.narc.p',
-        '-i'
+        nitroarc_exe, 
+        '--create',
+        '--index-namespace',
+        '--file', '@OUTPUT0@',
+        '@PRIVATE_DIR@',
     ],
     input : [
         zukan_gra_ncgr_lz_clobber,

@@ -7,10 +7,11 @@ subdir('pgear_gra')
 
 pgear_gra_narc = custom_target('pgear_gra.narc',
     command : [
-        narc_exe, 
-        '-p', build_dir + '/pgear_gra.narc',
-        '-d', build_dir + '/pgear_gra.narc.p',
-        '-i'
+        nitroarc_exe, 
+        '--create',
+        '--index-namespace',
+        '--file', '@OUTPUT0@',
+        '@PRIVATE_DIR@',
     ],
     input : [
         pgear_gra_nclr,

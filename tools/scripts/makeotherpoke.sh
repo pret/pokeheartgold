@@ -69,4 +69,4 @@ for i in "${!FILES_NCLR[@]}" ; do
     $NITROGFX "${FILES_NCLR[$i]}" $OUTDIR/"${INDEX_NCLR[$i]}".NCLR -bitdepth 8 -nopad -comp 10
 done
 
-$NARC_EXE -p $OUTDIR/../otherpoke.narc -d $OUTDIR -i
+$NARC_EXE --create --file $OUTDIR/../otherpoke.narc --index-namespace $OUTDIR

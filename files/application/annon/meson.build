@@ -7,10 +7,11 @@ subdir('puzzle_gra')
 
 puzzle_gra_narc = custom_target('puzzle_gra.narc',
     command : [
-        narc_exe, 
-        '-p', build_dir + '/puzzle_gra.narc',
-        '-d', build_dir + '/puzzle_gra.narc.p',
-        '-i'
+        nitroarc_exe, 
+        '--create',
+        '--index-namespace',
+        '--file', '@OUTPUT0@',
+        '@PRIVATE_DIR@',
     ],
     input : [
         puzzle_gra_ncgr_clobber,

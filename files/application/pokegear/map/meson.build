@@ -7,10 +7,11 @@ subdir('pgmap_gra')
 
 pgmap_gra_narc = custom_target('pgmap_gra.narc',
     command : [
-        narc_exe, 
-        '-p', build_dir + '/pgmap_gra.narc',
-        '-d', build_dir + '/pgmap_gra.narc.p',
-        '-i'
+        nitroarc_exe, 
+        '--create',
+        '--index-namespace',
+        '--file', '@OUTPUT0@',
+        '@PRIVATE_DIR@',
     ],
     input : [
         pgmap_gra_nclr,
@@ -25,7 +26,6 @@ pgmap_gra_narc = custom_target('pgmap_gra.narc',
         'pgmap_gra.narc',
         'pgmap_gra.naix',
     ],
-    build_by_default:true,
 )
 
 nitrofs_files += pgmap_gra_narc

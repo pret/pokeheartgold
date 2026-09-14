@@ -7,10 +7,11 @@ subdir('titledemo')
 
 titledemo_narc = custom_target('titledemo.narc',
     command : [
-        narc_exe, 
-        '-p', build_dir + '/titledemo.narc',
-        '-d', build_dir + '/titledemo.narc.p',
-        '-i'
+        nitroarc_exe, 
+        '--create',
+        '--index-namespace',
+        '--file', '@OUTPUT0@',
+        '@PRIVATE_DIR@',
     ],
     input : [
         titledemo_8bpp_ncgr,
@@ -28,7 +29,6 @@ titledemo_narc = custom_target('titledemo.narc',
         'titledemo.narc',
         'titledemo.naix',
     ],
-    build_by_default:true,
 )
 
 nitrofs_files += titledemo_narc

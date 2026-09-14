@@ -27,7 +27,7 @@ otherpoke_narc = custom_target('otherpoke.narc',
         makeotherpoke_sh,
         '--out-dir', build_dir / 'otherpoke.narc.p',
         '--nitrogfx', nitrogfx_exe.full_path(),
-        '--narc-exe', narc_exe.full_path(),
+        '--narc-exe', nitroarc_exe.full_path(),
         otherpoke_file_args
     ],
     output : [

@@ -7,10 +7,11 @@ subdir('record')
 
 record_narc = custom_target('record.narc',
     command : [
-        narc_exe, 
-        '-p', build_dir + '/record.narc',
-        '-d', build_dir + '/record.narc.p',
-        '-i'
+        nitroarc_exe, 
+        '--create',
+        '--index-namespace',
+        '--file', '@OUTPUT0@',
+        '@PRIVATE_DIR@',
     ],
     input : [
         record_nclr,

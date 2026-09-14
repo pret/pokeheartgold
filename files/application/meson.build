@@ -7,10 +7,11 @@ subdir('guinness')
 
 puzzle_gra_narc = custom_target('guinness.narc',
     command : [
-        narc_exe, 
-        '-p', build_dir + '/guinness.narc',
-        '-d', build_dir + '/guinness.narc.p',
-        '-i'
+        nitroarc_exe, 
+        '--create',
+        '--index-namespace',
+        '--file', '@OUTPUT0@',
+        '@PRIVATE_DIR@',
     ],
     input : [
         guinness_nclr,
@@ -69,10 +70,11 @@ subdir('voltorb_flip')
 
 puzzle_gra_narc = custom_target('voltorb_flip.narc',
     command : [
-        narc_exe, 
-        '-p', build_dir + '/voltorb_flip.narc',
-        '-d', build_dir + '/voltorb_flip.narc.p',
-        '-i'
+        nitroarc_exe, 
+        '--create',
+        '--index-namespace',
+        '--file', '@OUTPUT0@',
+        '@PRIVATE_DIR@',
     ],
     input : [
         voltorb_flip_nclr,

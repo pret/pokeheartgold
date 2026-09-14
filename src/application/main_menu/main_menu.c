@@ -1350,7 +1350,7 @@ static void MainMenu_OnVBlank(BgConfig *bgConfig) {
     GF_RunVramTransferTasks();
     OamManager_ApplyAndResetBuffers();
     DoScheduledBgGpuUpdates(bgConfig);
-    OS_SetIrqCheckFlag(OS_IE_VBLANK);
+    OS_SetIrqCheckFlag(OS_IE_V_BLANK);
 }
 
 BOOL MainMenuApp_Init(OverlayManager *manager, int *state) {

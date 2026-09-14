@@ -1036,7 +1036,7 @@ static void AlphPuzzle_VBlankCB(void *dat) {
     NNS_GfdDoVramTransfer();
     DoScheduledBgGpuUpdates(data->bgConfig);
 
-    OS_SetIrqCheckFlag(OS_IE_VBLANK);
+    OS_SetIrqCheckFlag(OS_IE_V_BLANK);
 }
 
 static void AlphPuzzle_InitTileData(AlphPuzzleData *data) {

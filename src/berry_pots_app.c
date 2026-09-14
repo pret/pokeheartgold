@@ -1052,7 +1052,7 @@ static void ov17_02202BF8(BerryPotsAppData *data) {
     }
     NNS_GfdDoVramTransfer();
     DoScheduledBgGpuUpdates(data->bgConfig);
-    OS_SetIrqCheckFlag(OS_IE_VBLANK);
+    OS_SetIrqCheckFlag(OS_IE_V_BLANK);
 }
 
 static void ov17_02202C2C(void) {

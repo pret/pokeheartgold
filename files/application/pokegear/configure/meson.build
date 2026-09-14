@@ -7,10 +7,11 @@ subdir('pgconf_gra')
 
 pconf_gra_narc = custom_target('pgconf_gra.narc',
     command : [
-        narc_exe, 
-        '-p', build_dir + '/pgconf_gra.narc',
-        '-d', build_dir + '/pgconf_gra.narc.p',
-        '-i'
+        nitroarc_exe, 
+        '--create',
+        '--index-namespace',
+        '--file', '@OUTPUT0@',
+        '@PRIVATE_DIR@',
     ],
     input : [
         pgconf_gra_nclr,
@@ -24,7 +25,6 @@ pconf_gra_narc = custom_target('pgconf_gra.narc',
         'pgconf_gra.narc',
         'pgconf_gra.naix',
     ],
-    build_by_default:true,
 )
 
 nitrofs_files += pconf_gra_narc

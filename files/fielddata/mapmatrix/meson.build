@@ -7,10 +7,11 @@ subdir('map_matrix')
 
 map_matrix_narc = custom_target('map_matrix.narc',
     command : [
-        narc_exe,
-        '-p', build_dir + '/map_matrix.narc',
-        '-d', build_dir + '/map_matrix.narc.p',
-        '-i'
+        nitroarc_exe, 
+        '--create',
+        '--index-namespace',
+        '--file', '@OUTPUT0@',
+        '@PRIVATE_DIR@',
     ],
     input : [
         map_matrix_bin
@@ -19,7 +20,6 @@ map_matrix_narc = custom_target('map_matrix.narc',
         'map_matrix.narc',
         'map_matrix.naix'
     ],
-    build_by_default:true
 )
 
 nitrofs_files += map_matrix_narc

@@ -7,10 +7,11 @@ subdir('choose_starter_main_res')
 
 choose_starter_narc = custom_target('choose_starter_main_res.narc',
     command : [
-        narc_exe, 
-        '-p', build_dir + '/choose_starter_main_res.narc',
-        '-d', build_dir + '/choose_starter_main_res.narc.p',
-        '-i'
+        nitroarc_exe, 
+        '--create',
+        '--index-namespace',
+        '--file', '@OUTPUT0@',
+        '@PRIVATE_DIR@',
     ],
     input : [
         choose_starter_main_res_nsbmd,
@@ -36,10 +37,11 @@ subdir('choose_starter_sub_res')
 
 choose_starter_sub_narc = custom_target('choose_starter_sub_res.narc',
     command : [
-        narc_exe, 
-        '-p', build_dir + '/choose_starter_sub_res.narc',
-        '-d', build_dir + '/choose_starter_sub_res.narc.p',
-        '-i'
+        nitroarc_exe, 
+        '--create',
+        '--index-namespace',
+        '--file', '@OUTPUT0@',
+        '@PRIVATE_DIR@',
     ],
     input : [
         choose_starter_sub_res_ncgr,

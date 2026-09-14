@@ -77,7 +77,7 @@ static const HeapParam sErrorMessageHeapParams = {
 static BOOL sErrorMessagePrinterLock;
 
 static void VBlankIntr() {
-    OS_SetIrqCheckFlag(OS_IE_VBLANK);
+    OS_SetIrqCheckFlag(OS_IE_V_BLANK);
     MI_WaitDma(GX_DEFAULT_DMAID);
 }
 
@@ -97,9 +97,9 @@ void PrintErrorMessageAndReset(void) {
     sub_0200FBF4(PM_LCD_TOP, RGB_BLACK);
     sub_0200FBF4(PM_LCD_BOTTOM, RGB_BLACK);
 
-    OS_DisableIrqMask(OS_IE_VBLANK);
-    OS_SetIrqFunction(OS_IE_VBLANK, VBlankIntr);
-    OS_EnableIrqMask(OS_IE_VBLANK);
+    OS_DisableIrqMask(OS_IE_V_BLANK);
+    OS_SetIrqFunction(OS_IE_V_BLANK, VBlankIntr);
+    OS_EnableIrqMask(OS_IE_V_BLANK);
 
     Main_SetVBlankIntrCB(NULL, NULL);
     Main_SetHBlankIntrCB(NULL, NULL);
@@ -158,7 +158,7 @@ void PrintErrorMessageAndReset(void) {
             break;
         }
 
-        OS_WaitIrq(TRUE, OS_IE_VBLANK);
+        OS_WaitIrq(TRUE, OS_IE_V_BLANK);
     }
 
     while (TRUE) {
@@ -168,7 +168,7 @@ void PrintErrorMessageAndReset(void) {
             break;
         }
 
-        OS_WaitIrq(TRUE, OS_IE_VBLANK);
+        OS_WaitIrq(TRUE, OS_IE_V_BLANK);
     }
 
     sub_0200FBF4(PM_LCD_TOP, RGB_WHITE);

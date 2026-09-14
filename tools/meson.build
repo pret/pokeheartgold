@@ -6,7 +6,6 @@ subdir('dataproc') # Requires libnitroarc and libenum
 
 subdir('compstatic')
 subdir('csv2bin')
-subdir('knarc')
 subdir('jsonproc')
 subdir('msgenc')
 subdir('nitrogfx')

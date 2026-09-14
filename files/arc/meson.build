@@ -32,7 +32,6 @@ headbutt_narc = custom_target('headbutt.heartgold.narc',
         jsonproc_exe,
         o2narc_exe,
     ],
-    build_by_default:true
 )
 
 nitrofs_files += headbutt_narc
@@ -67,8 +66,42 @@ ppark_narc = custom_target('ppark.narc',
         jsonproc_exe,
         o2narc_exe,
     ],
-    build_by_default:true
 )
 
 nitrofs_files += ppark_narc
 naix_headers += ppark_narc[1]
+
+############################################################
+###                       SAFARI ENC                     ###
+############################################################
+safari_enc_json = files('safari_enc.json')
+safari_enc_template = files('safari_enc.json.txt')
+
+safari_enc_narc = custom_target('safari_enc.narc',
+    input : safari_enc_json,
+    output: [ 
+        'safari_enc.narc', 
+        'safari_enc.naix' 
+    ],
+    command : [
+        json2bin_sh,
+        '--compiler', relative_source_root / 'tools' / 'metroskrew' / 'bin' / 'mwasmarm.exe',
+        '--jsonproc', jsonproc_exe.full_path(),
+        '--template', safari_enc_template[0].full_path(),
+        '--o2narc', o2narc_exe.full_path(),
+        '--out-dir', build_dir,
+        '-i', relative_source_root,
+        '-i', relative_source_root / 'include',
+        '-i', relative_source_root / 'subprojects' / 'NitroSDK-4.2.30001' / 'include',
+        '--language', 'asm',
+        '-N',
+        '@INPUT@'
+    ],
+    depends : [
+        jsonproc_exe,
+        o2narc_exe,
+    ],
+)
+
+nitrofs_files += safari_enc_narc
+naix_headers += safari_enc_narc[1]

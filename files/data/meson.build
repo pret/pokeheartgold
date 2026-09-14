@@ -21,7 +21,6 @@ gs_areawindow_narc = custom_target('gs_areawindow.narc',
         'gs_areawindow.narc',
         'gs_areawindow.naix'
     ],
-    build_by_default:true
 )
 
 nitrofs_files += gs_areawindow_narc
@@ -35,10 +34,11 @@ subdir('namein')
 
 namein_narc = custom_target('namein.narc',
     command : [
-        narc_exe,
-        '-p', build_dir + '/namein.narc',
-        '-d', build_dir + '/namein.narc.p',
-        '-i'
+        nitroarc_exe, 
+        '--create',
+        '--index-namespace',
+        '--file', '@OUTPUT0@',
+        '@PRIVATE_DIR@',
     ],
     input : [
         namein_nclr,
