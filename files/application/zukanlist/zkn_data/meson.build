@@ -73,8 +73,7 @@ naix_headers += zukan_gira_narc[1]
 ############################################################
 zukan_enc_json = files('zukan_enc.json')
 zukan_enc_template = files('zukan_enc.json.txt')
-
-if get_option('version') == 'heartgold'
+if game_version == 'HEARTGOLD'
     zukan_enc_gold_narc = custom_target('zukan_enc_gold.narc',
         input : zukan_enc_json,
         output: [ 
@@ -108,7 +107,7 @@ if get_option('version') == 'heartgold'
 
     nitrofs_files += zukan_enc_gold_narc
     naix_headers += zukan_enc_gold_narc[1]
-elif get_option('version') == 'soulsilver'
+elif game_version == 'SOULSILVER'
     zukan_enc_silver_narc = custom_target('zukan_enc_silver.narc',
         input : zukan_enc_json,
         output: [ 
@@ -148,6 +147,14 @@ endif
 ###                     ZUKAN_HW_DATA                    ###
 ############################################################
 subdir('zukan_hw_data')
+
+if game_version == 'HEARTGOLD'
+    zukan_hw_files = zukan_hw_files_hg
+    zukan_hw_order = zukan_hw_order_hg
+elif game_version == 'SOULSILVER'
+    zukan_hw_files = zukan_hw_files_ss
+    zukan_hw_order = zukan_hw_order_ss
+endif
 
 zukan_hw_narc = custom_target('zukan_hw_data.narc',
     input : [

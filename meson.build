@@ -19,6 +19,8 @@ relative_source_root = fs.relative_to(meson.project_source_root(), meson.project
 ############################################################
 ###                    COMPILER FLAGS                    ###
 ############################################################
+game_version = get_option('game_version')
+
 c_args = [
     '-proc', 'arm946e',
     '-enum', 'int',
@@ -35,7 +37,6 @@ c_args = [
     '-sym', 'on',
     '-O4,p',
     '-D_MSL_RESTRICT=',
-    '-DHEARTGOLD',
 ]
 
 asm_args = [
@@ -43,7 +44,6 @@ asm_args = [
     '-16',
     '-gccinc',
     '-g',
-    '-DHEARTGOLD'
 ]
 
 link_args = [
@@ -77,7 +77,7 @@ nitrosdk_dep = dependency('NitroSDK',
         'mwrap_libwl_arm7' : '2.0/sp1p2',
         'sp1p3_conditionals' : true,
         'patch3' : true,
-        'hg_card_spi' : true,
+        'irc_support' : true,
     }
 )
 
@@ -110,11 +110,18 @@ subdir('tools')
 ############################################################
 ###                      SPEC FILES                      ###
 ############################################################
-# Collect inputs for main.lcf
+# Generate main.lcf
 main_lsf = files('main.lsf')
 main_lcf_template = subproject('NitroSDK').get_variable('main_lcf_template')
 
+main_lcf = custom_target('main.lcf',
+    output: 'main.lcf',
+    input: main_lsf + main_lcf_template,
+    command: [makelcf_exe, '@INPUT@','@OUTPUT@']
+)
+
 subdir('heartgold.us')
+subdir('soulsilver.us')
 
 ############################################################
 ###                  INTERNAL LIBRARIES                  ###
@@ -132,10 +139,9 @@ subdir('files')
 subdir('asm')
 subdir('src')
 
-#libmslc = fs.copyfile('tools/metroskrew/lib/metroskrew/sdk/ds/2.0/sp2p3/msl/MSL_C/MSL_ARM/Lib/MSL_C_NITRO_Ai_LE.a')
 libdsprot = fs.copyfile('lib/dsprot/libdsprot.a')
 
-main = executable('main',
+main_heartgold_us = executable('heartgold.us',
     sources : [
         pokeheartgold_c,
         pokeheartgold_asm,
@@ -143,11 +149,13 @@ main = executable('main',
         naix_headers,
     ],
     c_args : [
-        '-DPM_KEEP_ASSERTS'
+        '-DPM_KEEP_ASSERTS',
+        '-DHEARTGOLD',
     ],
     nasm_args : [
         '-DPM_ASM',
         '-DSDK_ASM',
+        '-DHEARTGOLD',
         asm_args
     ],
     include_directories : [
@@ -171,7 +179,51 @@ main = executable('main',
     ],
     link_args : [
         link_args,
-        'heartgold.us/main.lcf'
+        'main.lcf'
+    ],
+    link_depends : main_lcf,
+    native : false
+)
+
+main_soulsilver_us = executable('soulsilver.us',
+    sources : [
+        pokeheartgold_c,
+        pokeheartgold_asm,
+        nitrodwc_asm,
+        naix_headers,
+    ],
+    c_args : [
+        '-DPM_KEEP_ASSERTS',
+        '-DSOULSILVER',
+    ],
+    nasm_args : [
+        '-DPM_ASM',
+        '-DSDK_ASM',
+        '-DSOULSILVER',
+        asm_args
+    ],
+    include_directories : [
+        public_includes,
+        lib_asm_includes,
+    ],
+    dependencies : [
+        nitrosdk_dep,
+        nitrosystem_dep,
+        crypto_static_dep,
+        nitrowifi_dep,
+        nitrodwc_dep,
+        libvct_dep,
+        libdwcppwlobby_dep,
+    ],
+    link_with : [
+        libsyscall,
+        libspl,
+        libdsprot,
+        libirc,
+    ],
+    link_args : [
+        link_args,
+        'main.lcf'
     ],
     link_depends : main_lcf,
     native : false
@@ -310,16 +362,29 @@ main_sbins_lz = [
     'OVY_128.sbin_LZ',
 ]
 
-main_lz = custom_target('main_lz',
-    command : [ 
-        compstatic_exe,
-        '-9',
-        '-c',
-        '-f', meson.current_build_dir() / 'component.files',
-    ],
-    output : main_sbins_lz,
-    depends : main
-)
+if game_version == 'HEARTGOLD'
+    main_heartgold_us_lz = custom_target('heartgold.us.lz',
+        command : [ 
+            compstatic_exe,
+            '-9',
+            '-c',
+            '-f', meson.current_build_dir() / 'component.files',
+        ],
+        output : main_sbins_lz,
+        depends : main_heartgold_us
+    )
+elif game_version == 'SOULSILVER'
+    main_soulsilver_us_lz = custom_target('soulsilver.us.lz',
+        command : [ 
+            compstatic_exe,
+            '-9',
+            '-c',
+            '-f', meson.current_build_dir() / 'component.files',
+        ],
+        output : main_sbins_lz,
+        depends : main_soulsilver_us
+    )
+endif
 
 ############################################################
 ###                    ARM7 BINARIES                     ###
@@ -330,45 +395,78 @@ ichneumon_sub = subproject('NitroSDK').get_variable('ichneumon_sub')
 ###                        DS ROM                        ###
 ############################################################
 
-pokeheartgold_nds = custom_target('pokeheartgold.us.nds',
-    output : 'pokeheartgold.us.nds',
-    input : [
-        main,
-        rom_header_template,
-        icon_png,
-        ichneumon_sub,
-        nitrofs_files,
-    ],
-    command : [
-        nitrorom_exe,
-        'pack',
-        '-DHEADER_TEMPLATE=@INPUT1@',   # rom_header_template
-        '-DICON_PNG=@INPUT2@',          # icon_png
-        '-DARM7_NEF=@INPUT3@',          # ichneumon_sub
-        '--output=@OUTPUT0@',           # pokeheartgold.us.nds
-        rom_ini,
-        filesys_csv,
-    ],
-    depends : main_lz,
-    build_by_default : true
-)
+if game_version == 'HEARTGOLD'
+    pokeheartgold_nds = custom_target('pokeheartgold.us.nds',
+        output : 'pokeheartgold.us.nds',
+        input : [
+            main_heartgold_us,
+            rom_header_template_hg,
+            icon_png_hg,
+            ichneumon_sub,
+            nitrofs_files,
+        ],
+        command : [
+            nitrorom_exe,
+            'pack',
+            '-DHEADER_TEMPLATE=@INPUT1@',   # rom_header_template
+            '-DICON_PNG=@INPUT2@',          # icon_png
+            '-DARM7_NEF=@INPUT3@',          # ichneumon_sub
+            '--output=@OUTPUT0@',           # pokeheartgold.us.nds
+            rom_ini_hg,
+            filesys_csv_hg,
+        ],
+        depends : main_heartgold_us_lz,
+    )
+elif game_version == 'SOULSILVER'
+    pokesoulsilver_nds = custom_target('pokesoulsilver.us.nds',
+        output : 'pokesoulsilver.us.nds',
+        input : [
+            main_soulsilver_us,
+            rom_header_template_ss,
+            icon_png_ss,
+            ichneumon_sub,
+            nitrofs_files,
+        ],
+        command : [
+            nitrorom_exe,
+            'pack',
+            '-DHEADER_TEMPLATE=@INPUT1@',   # rom_header_template
+            '-DICON_PNG=@INPUT2@',          # icon_png
+            '-DARM7_NEF=@INPUT3@',          # ichneumon_sub
+            '--output=@OUTPUT0@',           # pokeheartgold.us.nds
+            rom_ini_ss,
+            filesys_csv_ss,
+        ],
+        depends : main_soulsilver_us_lz,
+    )
+endif
 
 ############################################################
 ###                        TESTS                         ###
 ############################################################
 sha1sum = find_program(['sha1sum', 'shasum'], native: true)
 
-test('Main Checksums',
+if game_version == 'HEARTGOLD'
+    main_sha1 = main_sha1_hg
+    filesystem_sha1 = filesystem_sha1_hg
+    rom_sha1 = rom_sha1_hg
+elif game_version == 'SOULSILVER'
+    main_sha1 = main_sha1_ss
+    filesystem_sha1 = filesystem_sha1_ss
+    rom_sha1 = rom_sha1_ss
+endif
+
+test(game_version + ' Main Checksums',
     sha1sum,
     args: ['-c', '--quiet', main_sha1]
 )
 
-test('Filesystem Checksums',
+test(game_version + ' Filesystem Checksums',
     sha1sum,
     args: ['-c', '--quiet', filesystem_sha1]
 )
 
-test('ROM Checksum',
+test(game_version + ' ROM Checksum',
     sha1sum,
     args: ['-c', '--quiet', rom_sha1]
 )

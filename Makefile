@@ -1,15 +1,22 @@
 .PHONY:     		\
 	all 			\
 	check			\
+	heartgold		\
 	meson   		\
 	release 		\	
 	rom 			\
+	setup_heartgold \
 	setup_release 	\
+	setup_soulsilver\
 	skrew			\
+	soulsilver		\
 	skrewrm 		\
 	skrewup 		\
 	target  		\
 	update
+
+GAME_VERSION ?= HEARTGOLD
+GAME_LANGUAGE ?= US
 
 SUBPROJ_DIR := subprojects
 
@@ -84,6 +91,16 @@ all: release check
 .NOTPARALLEL: release
 release: rom
 
+.NOTPARALLEL: heartgold
+heartgold: setup_heartgold 
+	$(NINJA) -C $(BUILD) pokeheartgold.us.nds
+	$(MESON) test -C $(BUILD)
+
+.NOTPARALLEL: soulsilver
+soulsilver: setup_soulsilver
+	$(NINJA) -C $(BUILD) pokesoulsilver.us.nds
+	$(MESON) test -C $(BUILD)
+
 check: rom
 	$(MESON) test -C $(BUILD)
 
@@ -97,8 +114,15 @@ target: $(BUILD)/build.ninja
 clean: $(BUILD)/build.ninja
 	$(MESON) compile -C $(BUILD) --clean
 
+setup_heartgold: $(BUILD)/build.ninja
+	$(MESON) configure $(BUILD) -Dgame_version=HEARTGOLD
+
+setup_soulsilver: $(BUILD)/build.ninja
+	$(MESON) configure $(BUILD) -Dgame_version=SOULSILVER
+
 $(BUILD)/build.ninja: | $(BUILD) $(SKREW_EXE) meson
 	$(MESON) setup \
+		-Dgame_version=$(GAME_VERSION) \
 		--wrap-mode=nopromote \
 		--native-file=meson/$(NATIVE) \
 		--cross-file=meson/$(CROSS) \
@@ -124,6 +148,7 @@ skrewrm:
 	rm -rf $(SKREW_DIR)
 
 skrewup: skrewrm skrew
+
 
 $(SKREW_EXE):
 	SKREW_SYS=$(SKREW_SYS) SKREW_VER=$(SKREW_VER) SKREW_DIR=$(SKREW_DIR) $(SKREW_GET)

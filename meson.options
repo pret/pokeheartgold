@@ -1,1 +1,1 @@
-option('version', type : 'string', value : 'heartgold')
+option('game_version', type : 'combo', choices : ['HEARTGOLD', 'SOULSILVER'], value : 'HEARTGOLD')

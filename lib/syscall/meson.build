@@ -8,9 +8,15 @@ libsyscall_link_args = [
 
 #TODO: Version difference
 # SS is 'asm/_secure_IPGE.s',
-libsyscall_asm = files(
-    'asm/_secure_IPKE.s'
-)
+if game_version == 'HEARTGOLD'
+    libsyscall_asm = files(
+        'asm/_secure_IPKE.s'
+    )
+elif game_version == 'SOULSILVER'
+    libsyscall_asm = files(
+        'asm/_secure_IPGE.s'
+    )
+endif
 
 libsyscall_public_includes = include_directories('.')
 
