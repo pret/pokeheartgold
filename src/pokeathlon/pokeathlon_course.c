@@ -13,9 +13,9 @@
 #include "unk_02035900.h"
 
 // External functions used throughout this file (in assembly for now)
-extern int ov97_0221E5C0(OverlayManager *man, int *state); // Init
-extern int ov97_0221E5D4(OverlayManager *man, int *state); // Main/Exec
-extern int ov97_0221E69C(OverlayManager *man, int *state); // Exit
+extern int PokeathlonBox_Init(OverlayManager *man, int *state); // Init
+extern int PokeathlonBox_Main(OverlayManager *man, int *state); // Main/Exec
+extern int PokeathlonBox_Exit(OverlayManager *man, int *state); // Exit
 extern void sub_02037AC0(u8 param);
 extern BOOL sub_02037B38(u8 param);
 extern BOOL GF_heap_c_dummy_return_true(enum HeapID heapId);
@@ -210,7 +210,7 @@ BOOL PokeathlonCourse_Exit(OverlayManager *manager, int *state) {
     }
 
     // Get Pokeathlon save data and process result
-    saveData = *(SaveData **)data->args;
+    saveData = data->args->saveData;
     pokeathlonSave = Save_Pokeathlon_Get(saveData);
     result = PokeathlonSave_GetAgainUnkB00(pokeathlonSave);
     ov96_021E7F98(data->frameCounter, 59999, result);

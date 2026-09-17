@@ -109,6 +109,6 @@
 .public MIi_CpuCopy16
 .public MI_CpuFill8
 .public memset
-.public ov97_0221E5C0
-.public ov97_0221E5D4
-.public ov97_0221E69C
+.public PokeathlonBox_Init
+.public PokeathlonBox_Main
+.public PokeathlonBox_Exit
