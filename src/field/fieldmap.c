@@ -196,9 +196,9 @@ BOOL FieldMap_Init(OverlayManager *man, int *state) {
         break;
     case FIELD_MAP_INIT_STATE_LOAD:
         InitGraphicsAndManagers(fieldSystem);
-        AreaDataManager_Load(fieldSystem->areaDataManager, fieldSystem->unkC0, fieldSystem->mapPropAnimationManager, fieldSystem->unkCC, fieldSystem->unk104);
+        AreaDataManager_Load(fieldSystem->areaDataManager, fieldSystem->renderObjManager, fieldSystem->mapPropAnimationManager, fieldSystem->unkCC, fieldSystem->unk104);
 
-        fieldSystem->mapPropManager = MapPropManager_New(HEAP_ID_FIELD1, fieldSystem->unkC0);
+        fieldSystem->mapPropManager = MapPropManager_New(HEAP_ID_FIELD1, fieldSystem->renderObjManager);
 
         FieldSystem_InitMapLoadManager(fieldSystem);
         ov01_021E64A4(fieldSystem);
@@ -318,7 +318,7 @@ BOOL FieldMap_Exit(OverlayManager *man, int *state) {
         break;
     case 1:
         if (MapLoadManager_HasEnded(fieldSystem->mapLoadManager) == TRUE) {
-            ov01_02204084(fieldSystem->unkC0);
+            Field3dRenderObjManager_Delete(fieldSystem->renderObjManager);
             AreaDataManager_Free(&fieldSystem->areaDataManager);
             MapLoadManager_FreeNARCAndLoadedMapBuffers(fieldSystem->mapLoadManager);
             FieldCamera_Delete(fieldSystem);
@@ -605,7 +605,7 @@ static void ov01_021E6220(FieldSystem *fieldSystem) {
 
     // Resembles NNS_G3dGlbSetProjectionMtx(), except this has no NNS_G3D_NULL_ASSERT func,
     // So static below is either a diff func or that one is incorrect?
-    MIi_CpuCopyFast((u32 *)&v1, (u32 *)&NNS_G3dGlb.projMtx, sizeof(MtxFx44));
+    MI_CpuCopyFast((u32 *)&v1, (u32 *)&NNS_G3dGlb.projMtx, sizeof(MtxFx44));
     NNS_G3dGlb.flag &= ~(NNS_G3D_GLB_FLAG_INVPROJ_UPTODATE | NNS_G3D_GLB_FLAG_INVCAMERAPROJ_UPTODATE);
     NNS_G3dGlbFlushP();
 
@@ -613,7 +613,7 @@ static void ov01_021E6220(FieldSystem *fieldSystem) {
     BillboardLists_Draw();
 
     // Same here.
-    MIi_CpuCopyFast((u32 *)&v0, (u32 *)&NNS_G3dGlb.projMtx, sizeof(MtxFx44));
+    MI_CpuCopyFast((u32 *)&v0, (u32 *)&NNS_G3dGlb.projMtx, sizeof(MtxFx44));
     NNS_G3dGlb.flag &= ~(NNS_G3D_GLB_FLAG_INVPROJ_UPTODATE | NNS_G3D_GLB_FLAG_INVCAMERAPROJ_UPTODATE);
     NNS_G3dGlbFlushP();
 
@@ -656,7 +656,7 @@ static void InitGraphicsAndManagers(FieldSystem *fieldSystem) {
     G3_SwapBuffers(GX_SORTMODE_AUTO, gG3dDepthBufferingMode);
 
     fieldSystem->areaDataManager = AreaDataManager_Alloc(MapHeader_GetAreaDataBank(fieldSystem->location->mapId));
-    fieldSystem->unkC0 = ov01_02204004(HEAP_ID_FIELD1, 550, 128, AreaDataManager_GetMapPropModelFile(fieldSystem->areaDataManager));
+    fieldSystem->renderObjManager = Field3dRenderObjManager_New(HEAP_ID_FIELD1, 550, 128, AreaDataManager_GetMapPropModelFile(fieldSystem->areaDataManager));
 
     u16 moveModelBank = MapHeader_GetMoveModelBank(fieldSystem->location->mapId);
 
@@ -671,7 +671,7 @@ static void InitGraphicsAndManagers(FieldSystem *fieldSystem) {
 }
 
 static void FieldSystem_InitMapLoadManager(FieldSystem *fieldSystem) {
-    fieldSystem->mapLoadManager = MapLoadManager_New(fieldSystem->mapMatrix, fieldSystem->areaDataManager, fieldSystem->unkC0, fieldSystem->mapPropAnimationManager, fieldSystem->unkCC, fieldSystem->skipMapAttributes, fieldSystem->saveData);
+    fieldSystem->mapLoadManager = MapLoadManager_New(fieldSystem->mapMatrix, fieldSystem->areaDataManager, fieldSystem->renderObjManager, fieldSystem->mapPropAnimationManager, fieldSystem->unkCC, fieldSystem->skipMapAttributes, fieldSystem->saveData);
     fieldSystem->dynamicTerrainHeightManager = DynamicTerrainHeightManager_New(8, HEAP_ID_FIELD1);
     MapLoadManager_InitialLoad(fieldSystem->mapLoadManager, fieldSystem->location->x, fieldSystem->location->y);
 }

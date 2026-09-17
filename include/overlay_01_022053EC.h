@@ -11,6 +11,7 @@ void ov01_022057D0(FieldSystem *fieldSystem);
 void ov01_022057DC(MapObjectManager *mapObjectManager);
 void ov01_02205990(int a0, int x, int z, FollowMon *mon);
 void ov01_022059AC(FieldSystem *fieldSystem);
+void ov01_02205A34(FieldSystem *fieldSystem, fx32 y);
 BOOL ov01_02205A60(TaskManager *taskMan);
 
 #endif // POKEHEARTGOLD_OVERLAY_01_022053EC_H

@@ -47,6 +47,6 @@
 .public MapPropManager_LoadOne
 .public ov01_021F3C9C
 .public ov01_021FB9F4
-.public ov01_022040F8
-.public ov01_0220411C
-.public ov01_02204154
+.public Field3dRenderObjManager_GetOrAllocRenderObjByID
+.public Field3dRenderObjManager_FreeRenderObj
+.public Field3dRenderObjManager_IsResFileHeaderLoadedByIndex

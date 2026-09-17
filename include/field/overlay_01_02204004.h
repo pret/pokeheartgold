@@ -42,21 +42,21 @@ typedef struct FieldSystemUnkSubC8 {
     int unkC;
 } FieldSystemUnkSubC8;
 
-typedef struct UnkStruct_FieldSysC0_SubC {
+typedef struct Field3dRenderObj {
     NNSG3dRenderObj renderObj;
     NNSG3dResMdl *model;
     int index;
-} UnkStruct_FieldSysC0_SubC;
+} Field3dRenderObj;
 
-typedef struct UnkStruct_FieldSysC0 {
+typedef struct Field3dRenderObjManager {
     u8 *modelNumToLoadedSlot;
     NNSG3dResFileHeader **resFileHeaders;
-    UnkStruct_FieldSysC0_SubC *objectHeap;
-    UnkStruct_FieldSysC0_SubC **objects;
+    Field3dRenderObj *objectHeap;
+    Field3dRenderObj **objects;
     int numObjects;
     int indexMax;
     int objectMax;
-} UnkStruct_FieldSysC0;
+} Field3dRenderObjManager;
 
 // TimeOfDayVisual?
 typedef struct FieldSystemUnkSub104_Sub8 {
@@ -80,13 +80,13 @@ typedef struct ResAnim_4004 {
     u8 numMapData;
 } ResAnim_4004;
 
-UnkStruct_FieldSysC0 *ov01_02204004(enum HeapID heapID, int indexMax, int objectMax, NNSG3dResFileHeader **fileResHeader); // FieldSysC0_New
-void ov01_02204084(UnkStruct_FieldSysC0 *unkC0);                                                                           // FieldSysC0_Free
-UnkStruct_FieldSysC0_SubC *ov01_022040A4(UnkStruct_FieldSysC0 *unkC0, int index);
-UnkStruct_FieldSysC0_SubC *Field3dObjectList_GetRenderObjectByID(UnkStruct_FieldSysC0 *unkC0, int index);
-UnkStruct_FieldSysC0_SubC *ov01_022040F8(UnkStruct_FieldSysC0 *unkC0, int index);
-BOOL ov01_0220411C(UnkStruct_FieldSysC0 *unkC0, UnkStruct_FieldSysC0_SubC *object);
-BOOL ov01_02204154(UnkStruct_FieldSysC0 *unkC0, int index);
+Field3dRenderObjManager *Field3dRenderObjManager_New(enum HeapID heapID, int indexMax, int objectMax, NNSG3dResFileHeader **fileResHeader); // FieldSysC0_New
+void Field3dRenderObjManager_Delete(Field3dRenderObjManager *unkC0);                                                                        // FieldSysC0_Free
+Field3dRenderObj *Field3dRenderObjManager_AllocRenderObj(Field3dRenderObjManager *unkC0, int index);
+Field3dRenderObj *Field3dObjectList_GetRenderObjectByID(Field3dRenderObjManager *unkC0, int index);
+Field3dRenderObj *Field3dRenderObjManager_GetOrAllocRenderObjByID(Field3dRenderObjManager *unkC0, int index);
+BOOL Field3dRenderObjManager_FreeRenderObj(Field3dRenderObjManager *unkC0, Field3dRenderObj *object);
+BOOL Field3dRenderObjManager_IsResFileHeaderLoadedByIndex(Field3dRenderObjManager *unkC0, int index);
 FieldSystemUnkSubC8 *ov01_022041C4(enum HeapID heapID);
 FieldSystemUnkSubCC_Sub0 *ov01_022041D8(FieldSystemUnkSubC8 *unkC8, enum HeapID heapID, u16 count);
 void ov01_02204278(FieldSystemUnkSubC8 *unkSubC8); // UnkSubC8_Free

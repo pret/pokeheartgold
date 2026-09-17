@@ -9,7 +9,7 @@
 #include "script.h"
 
 typedef void (*FieldSystemFunc1)(FieldSystem *);
-typedef BOOL (*FieldSystemFunc2)(FieldSystem *, u32, u32, u32, u32);
+typedef BOOL (*FieldSystemFunc2)(FieldSystem *, u32, u32, u32, BOOL *);
 
 static const FieldSystemFunc1 sInitFuncs[];
 static const FieldSystemFunc1 sFreeFuncs[];
@@ -29,7 +29,7 @@ void Gymmick_Free(FieldSystem *fieldSystem) {
     }
 }
 
-BOOL Gymmick_CheckCollision(FieldSystem *fieldSystem, u32 tileX, u32 tileZ, u32 height, u32 isColliding) {
+BOOL Gymmick_CheckCollision(FieldSystem *fieldSystem, u32 tileX, u32 tileZ, u32 height, BOOL *isColliding) {
     GymmickType type = Save_Gymmick_GetType(Save_GetGymmickPtr(FieldSystem_GetSaveData(fieldSystem)));
     if (type == GYMMICK_NONE) {
         return FALSE;
@@ -43,28 +43,28 @@ BOOL Gymmick_CheckCollision(FieldSystem *fieldSystem, u32 tileX, u32 tileZ, u32 
 
 static const FieldSystemFunc1 sInitFuncs[] = {
     [GYMMICK_NONE] = NULL,
-    [GYMMICK_ECRUTEAK] = ov04_02254CBC,
-    [GYMMICK_CIANWOOD] = ov04_02255FC0,
-    [GYMMICK_VERMILION] = ov04_02256304,
-    [GYMMICK_VIOLET] = ov04_02253E20,
-    [GYMMICK_AZALEA] = ov04_02254190,
-    [GYMMICK_BLACKTHORN] = ov04_02254F8C,
-    [GYMMICK_FUCHSIA] = ov04_02256650,
-    [GYMMICK_VIRIDIAN] = ov04_02256B64,
-    [GYMMICK_SINJOH] = ov04_02256E60,
+    [GYMMICK_ECRUTEAK] = GymmickInit_Ecruteak,
+    [GYMMICK_CIANWOOD] = GymmickInit_Cianwood,
+    [GYMMICK_VERMILION] = GymmickInit_Vermilion,
+    [GYMMICK_VIOLET] = GymmickInit_Violet,
+    [GYMMICK_AZALEA] = GymmickInit_Azalea,
+    [GYMMICK_BLACKTHORN] = GymmickInit_Blackthorn,
+    [GYMMICK_FUCHSIA] = GymmickInit_Fuchsia,
+    [GYMMICK_VIRIDIAN] = GymmickInit_Viridian,
+    [GYMMICK_SINJOH] = GymmickInit_Sinjoh,
 };
 
 static const FieldSystemFunc1 sFreeFuncs[] = {
     [GYMMICK_NONE] = NULL,
-    [GYMMICK_ECRUTEAK] = ov04_02254D84,
-    [GYMMICK_CIANWOOD] = ov04_02256044,
-    [GYMMICK_VERMILION] = ov04_022563B0,
+    [GYMMICK_ECRUTEAK] = GymmickFree_Ecruteak,
+    [GYMMICK_CIANWOOD] = GymmickFree_Cianwood,
+    [GYMMICK_VERMILION] = GymmickFree_Vermilion,
     [GYMMICK_VIOLET] = NULL,
-    [GYMMICK_AZALEA] = ov04_02254710,
-    [GYMMICK_BLACKTHORN] = ov04_0225507C,
-    [GYMMICK_FUCHSIA] = ov04_022566A0,
-    [GYMMICK_VIRIDIAN] = ov04_02256BA0,
-    [GYMMICK_SINJOH] = ov04_02256EB0,
+    [GYMMICK_AZALEA] = GymmickFree_Azalea,
+    [GYMMICK_BLACKTHORN] = GymmickFree_Blackthorn,
+    [GYMMICK_FUCHSIA] = GymmickFree_Fuchsia,
+    [GYMMICK_VIRIDIAN] = GymmickFree_Viridian,
+    [GYMMICK_SINJOH] = GymmickFree_Sinjoh,
 };
 
 static const FieldSystemFunc2 sCheckCollisionFuncs[] = {
@@ -74,7 +74,7 @@ static const FieldSystemFunc2 sCheckCollisionFuncs[] = {
     [GYMMICK_VERMILION] = NULL,
     [GYMMICK_VIOLET] = NULL,
     [GYMMICK_AZALEA] = NULL,
-    [GYMMICK_BLACKTHORN] = ov04_022550D4,
+    [GYMMICK_BLACKTHORN] = GymmickCheckCollision_Blackthorn,
     [GYMMICK_FUCHSIA] = NULL,
     [GYMMICK_VIRIDIAN] = NULL,
     [GYMMICK_SINJOH] = NULL,

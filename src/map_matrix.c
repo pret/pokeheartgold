@@ -47,7 +47,7 @@ static void MapMatrix_MapMatrixData_Load(MapMatrixData *map_matrix_data, u16 mat
         MI_CpuCopy8(cursor, &map_matrix_data->headers, map_matrix_data->width * map_matrix_data->height * sizeof(u16));
         cursor += map_matrix_data->width * map_matrix_data->height * sizeof(u16);
     } else {
-        MIi_CpuClear16((u16)map_no, (u16 *)&map_matrix_data->headers, map_matrix_data->width * map_matrix_data->height * sizeof(u16));
+        MI_CpuFill16((u16 *)&map_matrix_data->headers, (u16)map_no, map_matrix_data->width * map_matrix_data->height * sizeof(u16));
     }
 
     if (has_altitudes_section) {

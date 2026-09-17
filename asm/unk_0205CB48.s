@@ -1270,7 +1270,7 @@ _0205D4DE:
 	ldr r0, [sp, #8]
 	add r1, r4, r1
 	add r2, r3, r2
-	bl ov04_022566EC
+	bl FuchsiaGymmick_CheckCollision
 	b _0205D536
 _0205D52E:
 	mov r0, #SEQ_SE_DP_WALL_HIT>>8
