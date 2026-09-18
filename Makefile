@@ -3,7 +3,7 @@
 	check			\
 	heartgold		\
 	meson   		\
-	release 		\	
+	release 		\
 	rom 			\
 	setup_heartgold \
 	setup_release 	\
@@ -16,7 +16,23 @@
 	update
 
 GAME_VERSION ?= HEARTGOLD
-GAME_LANGUAGE ?= US
+GAME_LANGUAGE ?= ENGLISH
+
+# Target-specific config
+ifeq ($(GAME_VERSION),SOULSILVER)
+  target_name := soulsilver
+else
+  ifeq ($(GAME_VERSION),HEARTGOLD)
+    target_name := heartgold
+  else
+    $(error invalid GAME_VERSION=$(GAME_VERSION))
+  endif
+endif
+ifeq ($(GAME_LANGUAGE),ENGLISH)
+  target_region := us
+else
+  $(error unsupported GAME_LANGUAGE=$(GAME_LANGUAGE))
+endif
 
 SUBPROJ_DIR := subprojects
 
@@ -83,7 +99,7 @@ else
   endif
 endif
 
-export NINJA_STATUS := [%p %f/%t] 
+export NINJA_STATUS := [%p %f/%t]
 
 # Modders can delete the `check` dependency here after their first build.
 all: release check
@@ -92,7 +108,7 @@ all: release check
 release: rom
 
 .NOTPARALLEL: heartgold
-heartgold: setup_heartgold 
+heartgold: setup_heartgold
 	$(NINJA) -C $(BUILD) pokeheartgold.us.nds
 	$(MESON) test -C $(BUILD)
 
@@ -104,8 +120,8 @@ soulsilver: setup_soulsilver
 check: rom
 	$(MESON) test -C $(BUILD)
 
-rom: setup_heartgold
-	$(NINJA) -C $(BUILD) pokeheartgold.us.nds
+rom: setup_$(target_name)
+	$(NINJA) -C $(BUILD) poke$(target_name).$(target_region).nds
 
 target: $(BUILD)/build.ninja
 	@echo $(SKREW_EXE)
@@ -130,10 +146,10 @@ $(BUILD)/build.ninja: | $(BUILD) $(SKREW_EXE) meson
 
 $(BUILD):
 	mkdir -p -- $(BUILD)
-	
+
 update: meson skrewup
 	$(MESON) subprojects update || true
-	
+
 meson: ;
 ifeq ($(MESON),$(MESON_SUB))
 meson: $(MESON_SUB)
