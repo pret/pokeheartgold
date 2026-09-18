@@ -1528,7 +1528,7 @@ _0C2F:
 	CopyVar VAR_TEMP_x4012, VAR_SPECIAL_x8004
 	GetTrainerNum VAR_SPECIAL_x8006
 	GoToIfDefeated VAR_SPECIAL_x8006, _0C7F
-	ScrCmd_317 1
+	ExtinguishEcruteakGymCandle 1
 	Call _0D9F
 	Compare VAR_SPECIAL_RESULT, 1
 	CallIfEq _0DCF
@@ -1728,10 +1728,10 @@ _0F0A:
 	CopyVar VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
 	LoadPhoneDat VAR_SPECIAL_x8004, VAR_TEMP_x4010
 	EncounterMusic VAR_SPECIAL_x8004
-	ScrCmd_315
+	BindEcruteakGymCandleToTrainerSprite
 	GetTrainerPathToPlayer 0
 	Call _0F87
-	ScrCmd_316
+	UnbindEcruteakGymCandleFromTrainerSprite
 	GetEyeTrainerNum 0, VAR_SPECIAL_RESULT
 	CopyVar VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
 	OpenMsg
@@ -1744,7 +1744,7 @@ _0F0A:
 	GetEyeTrainerNum 0, VAR_SPECIAL_RESULT
 	CopyVar VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
 	SetTrainerFlag VAR_SPECIAL_x8004
-	ScrCmd_317 0
+	ExtinguishEcruteakGymCandle 0
 	Call _0D9F
 	Compare VAR_SPECIAL_RESULT, 1
 	CallIfEq _0DCF

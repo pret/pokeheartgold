@@ -199,7 +199,7 @@ static BOOL sub_02050150(TaskManager *taskManager) {
 
 static u32 sub_020501B8(UnkStruct_0204FBDC *a0, FieldSystem *fieldSystem, u32 a2) {
     PartyMenuArgs *partyMenu = Heap_Alloc(HEAP_ID_FIELD2, sizeof(PartyMenuArgs));
-    MIi_CpuClearFast(0, (u32 *)partyMenu, sizeof(PartyMenuArgs));
+    MI_CpuClearFast((u32 *)partyMenu, sizeof(PartyMenuArgs));
     partyMenu->party = SaveArray_Party_Get(fieldSystem->saveData);
     partyMenu->bag = Save_Bag_Get(fieldSystem->saveData);
     partyMenu->mailbox = Save_Mailbox_Get(fieldSystem->saveData);

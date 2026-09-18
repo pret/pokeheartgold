@@ -6,99 +6,99 @@
 #include "filesystem_files_def.h"
 #include <nnsys/g3d/anm.h>
 
-static BOOL ov01_02204144(UnkStruct_FieldSysC0 *unkC0, int index);
-static UnkStruct_FieldSysC0_SubC *ov01_02204168(UnkStruct_FieldSysC0 *unkC0, NNSG3dResFileHeader **resFileHeader, int index);
+static BOOL Field3dRenderObjManager_IsModelAllocatedByIndex(Field3dRenderObjManager *field3dRenderObjManager, int index);
+static Field3dRenderObj *Field3dRenderObjManager_AllocInternal(Field3dRenderObjManager *renderObjMgr, NNSG3dResFileHeader **resFileHeader, int index);
 static void MapPropAnimation_AdvanceFrame(MapPropAnimation *animation);
 static BOOL MapPropAnimation_IsOnLastFrame(MapPropAnimation *animation);
 static void ov01_022046A4(NNSFndAllocator *pAllocator, NNSG3dAnmObj **pAlloc, void *res);
 static void *ov01_022046D4(NNSFndAllocator *pAllocator, ResAnim_4004 *anim);
 static void ov01_02204728(NNSG3dAnmObj *alloc, ResAnim_4004 *anim);
 
-UnkStruct_FieldSysC0 *ov01_02204004(enum HeapID heapID, int indexMax, int objectMax, NNSG3dResFileHeader **resFileHeaders) { // FieldSysC0_New
-    UnkStruct_FieldSysC0 *unkC0 = Heap_Alloc(heapID, sizeof(UnkStruct_FieldSysC0));
-    unkC0->numObjects = 0;
-    unkC0->indexMax = indexMax;
-    unkC0->objectMax = objectMax;
-    unkC0->resFileHeaders = resFileHeaders;
-    unkC0->modelNumToLoadedSlot = Heap_Alloc(heapID, indexMax);
+Field3dRenderObjManager *Field3dRenderObjManager_New(enum HeapID heapID, int indexMax, int objectMax, NNSG3dResFileHeader **resFileHeaders) {
+    Field3dRenderObjManager *renderObjMgr = Heap_Alloc(heapID, sizeof(Field3dRenderObjManager));
+    renderObjMgr->numObjects = 0;
+    renderObjMgr->indexMax = indexMax;
+    renderObjMgr->objectMax = objectMax;
+    renderObjMgr->resFileHeaders = resFileHeaders;
+    renderObjMgr->modelNumToLoadedSlot = Heap_Alloc(heapID, indexMax);
     int i;
     for (i = 0; i < indexMax; i++) {
-        unkC0->modelNumToLoadedSlot[i] = 0xFF;
+        renderObjMgr->modelNumToLoadedSlot[i] = 0xFF;
     }
-    int size = objectMax * 0x5C;
-    unkC0->objectHeap = Heap_Alloc(heapID, size);
-    MIi_CpuClearFast(0, (u32 *)unkC0->objectHeap, size);
-    unkC0->objects = Heap_Alloc(heapID, objectMax * 4);
+    int size = objectMax * sizeof(Field3dRenderObj);
+    renderObjMgr->objectHeap = Heap_Alloc(heapID, size);
+    MI_CpuClearFast((u32 *)renderObjMgr->objectHeap, size);
+    renderObjMgr->objects = Heap_Alloc(heapID, objectMax * sizeof(Field3dRenderObj *));
     for (i = 0; i < objectMax; i++) {
-        unkC0->objects[i] = &unkC0->objectHeap[i];
+        renderObjMgr->objects[i] = &renderObjMgr->objectHeap[i];
     }
-    return unkC0;
+    return renderObjMgr;
 }
 
-void ov01_02204084(UnkStruct_FieldSysC0 *unkC0) { // FieldSysC0_Free
-    Heap_Free(unkC0->modelNumToLoadedSlot);
-    Heap_Free(unkC0->objectHeap);
-    Heap_Free(unkC0->objects);
-    Heap_Free(unkC0);
+void Field3dRenderObjManager_Delete(Field3dRenderObjManager *field3dRenderObjManager) {
+    Heap_Free(field3dRenderObjManager->modelNumToLoadedSlot);
+    Heap_Free(field3dRenderObjManager->objectHeap);
+    Heap_Free(field3dRenderObjManager->objects);
+    Heap_Free(field3dRenderObjManager);
 }
 
-UnkStruct_FieldSysC0_SubC *ov01_022040A4(UnkStruct_FieldSysC0 *unkC0, int index) {
-    unkC0->modelNumToLoadedSlot[index] = unkC0->numObjects;
-    NNSG3dResFileHeader *resFileHeader = unkC0->resFileHeaders[index];
-    return ov01_02204168(unkC0, &resFileHeader, index);
+Field3dRenderObj *Field3dRenderObjManager_AllocRenderObj(Field3dRenderObjManager *field3dRenderObjManager, int index) {
+    field3dRenderObjManager->modelNumToLoadedSlot[index] = field3dRenderObjManager->numObjects;
+    NNSG3dResFileHeader *resFileHeader = field3dRenderObjManager->resFileHeaders[index];
+    return Field3dRenderObjManager_AllocInternal(field3dRenderObjManager, &resFileHeader, index);
 }
 
-static void ov01_022040C0(UnkStruct_FieldSysC0 *unkC0, UnkStruct_FieldSysC0_SubC *object) {
-    unkC0->numObjects--;
-    unkC0->objects[unkC0->numObjects] = object;
+static void Field3dRenderObjManager_FreeRenderObjInternal(Field3dRenderObjManager *field3dRenderObjManager, Field3dRenderObj *object) {
+    field3dRenderObjManager->numObjects--;
+    field3dRenderObjManager->objects[field3dRenderObjManager->numObjects] = object;
 }
 
-UnkStruct_FieldSysC0_SubC *Field3dObjectList_GetRenderObjectByID(UnkStruct_FieldSysC0 *unkC0, int id) {
-    u8 index = unkC0->modelNumToLoadedSlot[id];
+Field3dRenderObj *Field3dObjectList_GetRenderObjectByID(Field3dRenderObjManager *field3dRenderObjManager, int id) {
+    u8 index = field3dRenderObjManager->modelNumToLoadedSlot[id];
     if (index != 0xFF) {
-        return unkC0->objects[index];
+        return field3dRenderObjManager->objects[index];
     }
     return NULL;
 }
 
-static UnkStruct_FieldSysC0_SubC *ov01_022040E4(UnkStruct_FieldSysC0 *unkC0, int index) {
-    NNSG3dResFileHeader *resFileHeader = unkC0->resFileHeaders[index];
-    return ov01_02204168(unkC0, &resFileHeader, index);
+static Field3dRenderObj *Field3dRenderObjManager_AllocRenderObjByIDInternal(Field3dRenderObjManager *field3dRenderObjManager, int index) {
+    NNSG3dResFileHeader *resFileHeader = field3dRenderObjManager->resFileHeaders[index];
+    return Field3dRenderObjManager_AllocInternal(field3dRenderObjManager, &resFileHeader, index);
 }
 
-UnkStruct_FieldSysC0_SubC *ov01_022040F8(UnkStruct_FieldSysC0 *unkC0, int index) {
-    if (ov01_02204144(unkC0, index)) {
-        return Field3dObjectList_GetRenderObjectByID(unkC0, index);
+Field3dRenderObj *Field3dRenderObjManager_GetOrAllocRenderObjByID(Field3dRenderObjManager *field3dRenderObjManager, int index) {
+    if (Field3dRenderObjManager_IsModelAllocatedByIndex(field3dRenderObjManager, index)) {
+        return Field3dObjectList_GetRenderObjectByID(field3dRenderObjManager, index);
     }
-    return ov01_022040E4(unkC0, index);
+    return Field3dRenderObjManager_AllocRenderObjByIDInternal(field3dRenderObjManager, index);
 }
 
-BOOL ov01_0220411C(UnkStruct_FieldSysC0 *unkC0, UnkStruct_FieldSysC0_SubC *object) {
+BOOL Field3dRenderObjManager_FreeRenderObj(Field3dRenderObjManager *field3dRenderObjManager, Field3dRenderObj *object) {
     if (object == NULL) {
         return FALSE;
     }
 
-    if (ov01_02204144(unkC0, object->index) == FALSE) {
-        ov01_022040C0(unkC0, object);
+    if (Field3dRenderObjManager_IsModelAllocatedByIndex(field3dRenderObjManager, object->index) == FALSE) {
+        Field3dRenderObjManager_FreeRenderObjInternal(field3dRenderObjManager, object);
         return TRUE;
     }
     return FALSE;
 }
 
-static BOOL ov01_02204144(UnkStruct_FieldSysC0 *unkC0, int index) {
-    return unkC0->modelNumToLoadedSlot[index] != 0xFF;
+static BOOL Field3dRenderObjManager_IsModelAllocatedByIndex(Field3dRenderObjManager *field3dRenderObjManager, int index) {
+    return field3dRenderObjManager->modelNumToLoadedSlot[index] != 0xFF;
 }
 
-BOOL ov01_02204154(UnkStruct_FieldSysC0 *unkC0, int index) {
-    return unkC0->resFileHeaders[index] != NULL;
+BOOL Field3dRenderObjManager_IsResFileHeaderLoadedByIndex(Field3dRenderObjManager *field3dRenderObjManager, int index) {
+    return field3dRenderObjManager->resFileHeaders[index] != NULL;
 }
 
-static UnkStruct_FieldSysC0_SubC *ov01_02204168(UnkStruct_FieldSysC0 *unkC0, NNSG3dResFileHeader **resFileHeader, int index) {
-    unkC0->objects[unkC0->numObjects]->model = NNS_G3dGetMdlByIdx(NNS_G3dGetMdlSet(*resFileHeader), 0);
+static Field3dRenderObj *Field3dRenderObjManager_AllocInternal(Field3dRenderObjManager *field3dRenderObjManager, NNSG3dResFileHeader **resFileHeader, int index) {
+    field3dRenderObjManager->objects[field3dRenderObjManager->numObjects]->model = NNS_G3dGetMdlByIdx(NNS_G3dGetMdlSet(*resFileHeader), 0);
 
-    NNS_G3dRenderObjInit(&unkC0->objects[unkC0->numObjects]->renderObj, unkC0->objects[unkC0->numObjects]->model);
-    UnkStruct_FieldSysC0_SubC *object = unkC0->objects[unkC0->numObjects];
-    unkC0->numObjects++;
+    NNS_G3dRenderObjInit(&field3dRenderObjManager->objects[field3dRenderObjManager->numObjects]->renderObj, field3dRenderObjManager->objects[field3dRenderObjManager->numObjects]->model);
+    Field3dRenderObj *object = field3dRenderObjManager->objects[field3dRenderObjManager->numObjects];
+    field3dRenderObjManager->numObjects++;
     object->index = index;
     return object;
 }
@@ -118,7 +118,7 @@ FieldSystemUnkSubCC_Sub0 *ov01_022041D8(FieldSystemUnkSubC8 *unkC8, enum HeapID 
     ret->unk1C = NULL;
     HeapExp_FndInitAllocator(&ret->unk0, heapID, 4);
     ret->unk10 = Heap_Alloc(heapID, count << 5);
-    MIi_CpuClearFast(0, (u32 *)(ret->unk10), count << 5);
+    MI_CpuClearFast((u32 *)(ret->unk10), count << 5);
     ret->unk14 = Heap_Alloc(heapID, count << 2);
 
     for (int i = 0; i < count; i++) {
@@ -420,7 +420,7 @@ static void ov01_022046E8(NNSG3dAnmObj *alloc, ResAnim_4004 *anim) {
     alloc->funcAnm = NNS_G3dFuncAnmMatNsBtaDefault;
     u8 numMapData = anim->numMapData;
     alloc->numMapData = numMapData;
-    MIi_CpuClear16(0, alloc->mapData, numMapData * 2);
+    MI_CpuClear16(alloc->mapData, numMapData * 2);
     for (u32 i = 0; i < anim->numMapData; i++) {
         alloc->mapData[i] = i | 0x100;
     }
@@ -438,7 +438,7 @@ static void ov01_02204728(NNSG3dAnmObj *alloc, ResAnim_4004 *anim) {
 
 FieldSystemUnkSub104 *ov01_02204744(enum HeapID heapID) { // FieldSystemUnkSub104_Init
     FieldSystemUnkSub104 *unk104 = Heap_Alloc(heapID, sizeof(FieldSystemUnkSub104));
-    MIi_CpuClearFast(0, (u32 *)unk104, sizeof(FieldSystemUnkSub104));
+    MI_CpuClearFast((u32 *)unk104, sizeof(FieldSystemUnkSub104));
     unk104->timeOfDay = GF_RTC_GetTimeOfDay();
     return unk104;
 }
@@ -461,7 +461,7 @@ void ov01_0220476C(FieldSystemUnkSub104 *unk104, NNSG3dRenderObj *renderObj, Map
         if (count > 4) {
             unkSub->unk4 = 4;
         }
-        for (u8 i = 0;  i < unkSub->unk4; i++) {
+        for (u8 i = 0; i < unkSub->unk4; i++) {
             unkSub->animations[i] = animation[i];
         }
         unkSub->renderObj = renderObj;

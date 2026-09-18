@@ -777,8 +777,8 @@ void ov44_0222A1FC(UnkStruct_ov44_022319EC *arg0) {
 
     NNSG2dPaletteData *sp2C;
     void *temp_r4 = GfGfxLoader_GetPlttDataFromOpenNarc(temp_r0, 5, &sp2C, HEAP_ID_53);
-    MIi_CpuCopy16(sp2C->pRawData, *arg0->unkD68.unk8, 128);
-    MIi_CpuCopy16(sp2C->pRawData, *arg0->unkD68.unk88, 128);
+    MI_CpuCopy16(sp2C->pRawData, *arg0->unkD68.unk8, 128);
+    MI_CpuCopy16(sp2C->pRawData, *arg0->unkD68.unk88, 128);
     Heap_Free(temp_r4);
     int i;
     int sp18 = 0;

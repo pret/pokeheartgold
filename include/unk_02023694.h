@@ -10,5 +10,6 @@ void BillboardLists_Delete(void);
 void BillboardLists_Draw(void);
 void sub_02023910(void *arg0);
 void sub_02023EA4(Sprite *sprite, int arg1);
+NNSG3dResMdl *sub_02023F90(Sprite *sprite);
 
 #endif // POKEHEARTGOLD_UNK_02023694_H

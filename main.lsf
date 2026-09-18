@@ -526,7 +526,15 @@ Overlay OVY_3
 Overlay OVY_4
 {
     After OVY_2
-    Object main.nef.p/asm_overlay_04.s.o
+    Object main.nef.p/src_field_gymmick_violet.c.o
+    Object main.nef.p/src_field_gymmick_azalea.c.o
+    Object main.nef.p/src_field_gymmick_ecruteak.c.o
+    Object main.nef.p/src_field_gymmick_blackthorn.c.o
+    Object main.nef.p/src_field_gymmick_cianwood.c.o
+    Object main.nef.p/src_field_gymmick_vermilion.c.o
+    Object main.nef.p/src_field_gymmick_fuchsia.c.o
+    Object main.nef.p/src_field_gymmick_viridian.c.o
+    Object main.nef.p/src_field_gymmick_sinjoh.c.o
 }
 Overlay OVY_5
 {
