@@ -15,7 +15,7 @@ typedef struct NintendoWifiConnectArgs {
     Options *options;
     void *unk14;
     int unk18;
-    void *unk1C;
+    int unk1C;
     int unk20;
     int unk24;
 } NintendoWifiConnectArgs;
