@@ -89,7 +89,7 @@ void RadioShow_BuenasPassword_Init(RadioShow *radioShow) {
     ReadMsgDataIntoString(radioShow->showMsgData, msg_0411_00001, radioShow->showHost);
 
     data->msgID = Bag_HasItem(Save_Bag_Get(radioShow->saveData), ITEM_BLUE_CARD, 1, radioShow->heapID) ? msg_0411_00004 : msg_0411_00005;
-    bpMsgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msg_0066_d23r0102, radioShow->heapID);
+    bpMsgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msg_0066_D23R0102, radioShow->heapID);
     setID = Save_VarsFlags_GetBuenasPasswordSet(Save_VarsFlags_Get(radioShow->saveData)) % 30;
     answer = NewString_ReadMsgData(bpMsgData, msg_0066_D23R0102_00040 + setID);
     BufferString(radioShow->msgFormat, 0, answer, 2, 1, 2);
