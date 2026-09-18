@@ -196,7 +196,7 @@ _021F3254:
 	str r0, [r4]
 	ldr r0, [r4, #0xc]
 	add r1, r5, #0
-	bl ov04_02256BE4
+	bl ViridianGymmick_HandleTileAction
 	b _021F3300
 _021F3274:
 	add r0, r5, #0
@@ -207,7 +207,7 @@ _021F3274:
 	str r0, [r4]
 	ldr r0, [r4, #0xc]
 	add r1, r5, #0
-	bl ov04_02256BE4
+	bl ViridianGymmick_HandleTileAction
 	b _021F3300
 _021F328C:
 	add r0, r5, #0
@@ -218,7 +218,7 @@ _021F328C:
 	str r0, [r4]
 	ldr r0, [r4, #0xc]
 	add r1, r5, #0
-	bl ov04_02256BE4
+	bl ViridianGymmick_HandleTileAction
 	b _021F3300
 _021F32A4:
 	add r0, r5, #0
@@ -229,7 +229,7 @@ _021F32A4:
 	str r0, [r4]
 	ldr r0, [r4, #0xc]
 	add r1, r5, #0
-	bl ov04_02256BE4
+	bl ViridianGymmick_HandleTileAction
 	b _021F3300
 _021F32BC:
 	add r0, r5, #0
