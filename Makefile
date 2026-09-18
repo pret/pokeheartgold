@@ -104,7 +104,7 @@ soulsilver: setup_soulsilver
 check: rom
 	$(MESON) test -C $(BUILD)
 
-rom: $(BUILD)/build.ninja
+rom: setup_heartgold
 	$(NINJA) -C $(BUILD) pokeheartgold.us.nds
 
 target: $(BUILD)/build.ninja
