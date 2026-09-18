@@ -67,7 +67,6 @@ pokeheartgold_asm = files(
     'overlay_01_sprite_data.s',
     'overlay_02_02245B80.s',
     'overlay_02_02248728.s',
-    'overlay_04.s',
     'overlay_05.s',
     'overlay_07.s',
     'overlay_08.s',

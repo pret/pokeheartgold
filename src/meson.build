@@ -404,6 +404,18 @@ pokeheartgold_c = files(
     'field/scrcmd_move_tutor.c',
     'field/scrcmd_pokemon_misc.c',
     'field/signpost.c',
+        ##############################
+        ###        GYMMICK         ###
+        ##############################
+        'field/gymmick/azalea.c',
+        'field/gymmick/blackthorn.c',
+        'field/gymmick/cianwood.c',
+        'field/gymmick/ecruteak.c',
+        'field/gymmick/fuchsia.c',
+        'field/gymmick/sinjoh.c',
+        'field/gymmick/vermilion.c',
+        'field/gymmick/violet.c',
+        'field/gymmick/viridian.c',
     ##############################
     ###        FRONTIER        ###
     ##############################
