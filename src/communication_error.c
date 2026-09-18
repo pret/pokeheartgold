@@ -2,8 +2,8 @@
 
 #include "global.h"
 
-#include "msgdata/msg.naix"
-#include "msgdata/msg/msg_0041.h"
+#include "files/msgdata/msg.naix"
+#include "files/msgdata/msg/msg_0041.h"
 
 #include "bg_window.h"
 #include "brightness.h"
@@ -67,7 +67,7 @@ static const WindowTemplate sCommunicationErrorWindowTemplate = {
 static void VBlankIntr(void);
 
 static void VBlankIntr(void) {
-    OS_SetIrqCheckFlag(OS_IE_VBLANK);
+    OS_SetIrqCheckFlag(OS_IE_V_BLANK);
     MI_WaitDma(GX_DEFAULT_DMAID);
 }
 
@@ -129,9 +129,9 @@ void ShowCommunicationError(enum HeapID heapID, u32 error, u32 errorCode) {
     sub_0200FBF4(PM_LCD_TOP, RGB_BLACK);
     sub_0200FBF4(PM_LCD_BOTTOM, RGB_BLACK);
 
-    OS_DisableIrqMask(OS_IE_VBLANK);
-    OS_SetIrqFunction(OS_IE_VBLANK, VBlankIntr);
-    OS_EnableIrqMask(OS_IE_VBLANK);
+    OS_DisableIrqMask(OS_IE_V_BLANK);
+    OS_SetIrqFunction(OS_IE_V_BLANK, VBlankIntr);
+    OS_EnableIrqMask(OS_IE_V_BLANK);
 
     Main_SetVBlankIntrCB(NULL, NULL);
     Main_SetHBlankIntrCB(NULL, NULL);
@@ -162,7 +162,7 @@ void ShowCommunicationError(enum HeapID heapID, u32 error, u32 errorCode) {
     BG_SetMaskColor(GF_BG_LYR_MAIN_0, GX_RGB(1, 1, 27));
     BG_SetMaskColor(GF_BG_LYR_SUB_0, GX_RGB(1, 1, 27));
 
-    MsgData *errorMessageData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0041_bin, heapID);
+    MsgData *errorMessageData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, msg_0041, heapID);
     String *errorMessageStr = String_New(384, heapID);
     String *tmpStr = String_New(384, heapID);
     ResetAllTextPrinters();

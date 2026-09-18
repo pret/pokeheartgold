@@ -7,7 +7,7 @@
 #include "constants/moves.h"
 #include "constants/sprites.h"
 
-#include "msgdata/msg.naix"
+#include "files/msgdata/msg.naix"
 
 #include "assert.h"
 #include "heap.h"
@@ -135,7 +135,7 @@ MessageFormat *sub_0204B538(SaveData *saveData, u16 numEligiblePokemon, u16 a2, 
     speciesName = String_New(14, HEAP_ID_FIELD1);
     unused = String_New(2, HEAP_ID_FIELD1);
     pokedex = Save_Pokedex_Get(saveData);
-    messageData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0237_bin, HEAP_ID_FIELD1);
+    messageData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, msg_0237, HEAP_ID_FIELD1);
     messageFormat = MessageFormat_New_Custom(19, 14, HEAP_ID_FIELD1);
     BufferIntegerAsString(messageFormat, 0, numEligiblePokemon, 1, PRINTING_MODE_LEFT_ALIGN, TRUE);
     for (u8 i = 0; i < NUM_BANNED_BATTLE_FRONTIER; i++) {
@@ -236,7 +236,7 @@ u16 FrontierFieldSystem_GetRandomFrontierTrainerID(FrontierFieldSystem *frontier
 }
 
 static u16 *sub_0204B7D0(FrontierTrainer *frontierTrainer, u32 frontierTrainerIndex, enum HeapID heapID) {
-    MsgData *messageData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0027_bin, heapID);
+    MsgData *messageData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, msg_0027, heapID);
     MI_CpuClear8(frontierTrainer, sizeof(FrontierTrainer));
     u16 *frontierTrainerData = GetFrontierTrainerData(frontierTrainerIndex, heapID);
     frontierTrainer->index = frontierTrainerIndex;

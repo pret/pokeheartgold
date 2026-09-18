@@ -1,0 +1,246 @@
+{
+  "key": 45872,
+  "messages": [
+    {
+      "id": "msg_0209_00000",
+      "en_US": [
+        "Good morning. You must be\n",
+        "{STRVAR_1 3, 0, 0}.\r",
+        "I’ve received a gift for you.\n",
+        "Here you go!\r"
+      ]
+    },
+    {
+      "id": "msg_0209_00001",
+      "en_US": [
+        "Good day. You must be\n",
+        "{STRVAR_1 3, 0, 0}.\r",
+        "I’ve received a gift for you.\n",
+        "Here you go!\r"
+      ]
+    },
+    {
+      "id": "msg_0209_00002",
+      "en_US": [
+        "Good evening. You must be\n",
+        "{STRVAR_1 3, 0, 0}.\r",
+        "I’ve received a gift for you.\n",
+        "Here you go!\r"
+      ]
+    },
+    {
+      "id": "msg_0209_00003",
+      "en_US": [
+        "I haven’t received any other gifts\n",
+        "for you.\r",
+        "We look forward to your next visit."
+      ]
+    },
+    {
+      "id": "msg_0209_00004",
+      "en_US": [
+        "Your party is full, I’m afraid.\n",
+        "I can’t give this to you yet."
+      ]
+    },
+    {
+      "id": "msg_0209_00005",
+      "en_US": [
+        "Another {STRVAR_1 8, 0, 0}? You already\n",
+        "have too many to accept any more."
+      ]
+    },
+    {
+      "id": "msg_0209_00006",
+      "en_US": [
+        "To accept this, you need to make\n",
+        "room for decoration goods."
+      ]
+    },
+    {
+      "id": "msg_0209_00007",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} received\n",
+        "{COLOR 101}{STRVAR_1 0, 1, 0}{COLOR 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0209_00008",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} received\n",
+        "a {COLOR 1}Pokémon Egg{COLOR 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0209_00009",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} received\n",
+        "the gift {COLOR 1}{STRVAR_1 8, 1, 0}{COLOR 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0209_00010",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} received the\n",
+        "{COLOR 1}{STRVAR_1 26, 1, 0} Rules{COLOR 0}.\r"
+      ]
+    },
+    {
+      "id": "msg_0209_00011",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} received\n",
+        "the gift {COLOR 1}{STRVAR_1 10, 1, 0}{COLOR 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0209_00012",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} received\n",
+        "the gift {COLOR 1}{STRVAR_1 31, 1, 0}{COLOR 0}.\r"
+      ]
+    },
+    {
+      "id": "msg_0209_00013",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} received\n",
+        "the {COLOR 1}MANAPHY Egg{COLOR 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0209_00014",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} received\n",
+        "a {COLOR 1}Member Card{COLOR 0}.\r"
+      ]
+    },
+    {
+      "id": "msg_0209_00015",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} received\n",
+        "{COLOR 1}Oak’s Letter{COLOR 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0209_00016",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} received\n",
+        "an {COLOR 1}Azure Flute{COLOR 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0209_00017",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} received\n",
+        "a {COLOR 1}Secret Key{COLOR 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0209_00018",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} received\n",
+        "a {COLOR 1}Memorial Photo{COLOR 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0209_00019",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} received\n",
+        "a {COLOR 1}Route Map{COLOR 0}, {STRVAR_1 4, 1, 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0209_00020",
+      "en_US": "We look forward to your next visit."
+    },
+    {
+      "id": "msg_0209_00021",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} received the Pokétch\n",
+        "app {COLOR 1}{STRVAR_1 24, 1, 0}{COLOR 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0209_00022",
+      "en_US": [
+        "...Uh-oh. {STRVAR_1 3, 0, 0}, you haven’t\n",
+        "obtained a Pokétch yet.\r",
+        "I can’t give you this app if you don’t\n",
+        "have a Pokétch."
+      ]
+    },
+    {
+      "id": "msg_0209_00023",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} was awarded\n",
+        "the {COLOR 1}{STRVAR_1 39, 1, 0}{COLOR 0}!\r",
+        "The {STRVAR_1 39, 1, 0}\n",
+        "was given to {STRVAR_1 1, 2, 0}.\r"
+      ]
+    },
+    {
+      "id": "msg_0209_00024",
+      "en_US": [
+        "Oh no, {STRVAR_1 3, 0, 0}!\n",
+        "Your Photo Album is full.\r",
+        "Would you please come back once you’ve\n",
+        "opened up space in your Album?"
+      ]
+    },
+    {
+      "id": "msg_0209_00025",
+      "en_US": [
+        "Oh no, {STRVAR_1 3, 0, 0}!\n",
+        "Your Photo Album is full.\r",
+        "Would you please come back once you’ve\n",
+        "opened up space in your Album?"
+      ]
+    },
+    {
+      "id": "msg_0209_00026",
+      "en_US": [
+        "Oh no, {STRVAR_1 3, 0, 0}!\n",
+        "That Route Map!\r",
+        "It already has {STRVAR_1 4, 1, 0},\n",
+        "doesn’t it?"
+      ]
+    },
+    {
+      "id": "msg_0209_00027",
+      "en_US": [
+        "Good morning.\n",
+        "{STRVAR_1 3, 0, 0}, isn’t it?\r",
+        "I have a package for you from your\n",
+        "mom. Here you go!\r"
+      ]
+    },
+    {
+      "id": "msg_0209_00028",
+      "en_US": [
+        "Good day.\n",
+        "{STRVAR_1 3, 0, 0}, isn’t it?\r",
+        "I have a package for you from your\n",
+        "mom. Here you go!\r"
+      ]
+    },
+    {
+      "id": "msg_0209_00029",
+      "en_US": [
+        "Good evening.\n",
+        "{STRVAR_1 3, 0, 0}, isn’t it?\r",
+        "I have a package for you from your\n",
+        "mom. Here you go!\r"
+      ]
+    },
+    {
+      "id": "msg_0209_00030",
+      "en_US": [
+        "I have no further packages for you.\r",
+        "We look forward to serving you again!"
+      ]
+    },
+    {
+      "id": "msg_0209_00031",
+      "en_US": "This version cannot receive gifts."
+    }
+  ]
+}

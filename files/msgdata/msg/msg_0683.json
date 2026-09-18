@@ -1,0 +1,173 @@
+{
+  "key": 46914,
+  "messages": [
+    {
+      "id": "msg_0683_00000",
+      "en_US": "Billy"
+    },
+    {
+      "id": "msg_0683_00001",
+      "en_US": [
+        "I’m researching Gym Leaders for a\n",
+        "project at school!\r",
+        "You can get the Gym Leaders’ phone\n",
+        "numbers, so you can talk to them\f",
+        "outside of the Gym!\r",
+        "Hey, we should trade phone\n",
+        "numbers! {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0683_00002",
+      "en_US": [
+        "The Gym Leaders’ locations and times\n",
+        "change, so I’ll let you know by phone!"
+      ]
+    },
+    {
+      "id": "msg_0683_00003",
+      "en_US": [
+        "Huh? Don’t you want to know anything\n",
+        "about Gym Leaders?"
+      ]
+    },
+    {
+      "id": "msg_0683_00004",
+      "en_US": [
+        "I knew it. I knew you’d want to\n",
+        "know about the Gym Leaders! {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0683_00005",
+      "en_US": [
+        "Hey, you’re nearby, aren’t you?\n",
+        "So we should talk face-to-face!"
+      ]
+    },
+    {
+      "id": "msg_0683_00006",
+      "en_US": [
+        "Whitney likes to relax on the\n",
+        "sixth floor of the Goldenrod\f",
+        "Department Store."
+      ]
+    },
+    {
+      "id": "msg_0683_00007",
+      "en_US": [
+        "Janine delivers dinner to her father\n",
+        "every evening. You can always find her\f",
+        "at the Pokémon League Reception Gate\f",
+        "in the late afternoon!"
+      ]
+    },
+    {
+      "id": "msg_0683_00008",
+      "en_US": [
+        "Falkner likes to come to Celadon City on\n",
+        "Mondays, it seems."
+      ]
+    },
+    {
+      "id": "msg_0683_00009",
+      "en_US": [
+        "It seems like Misty really likes\n",
+        "Route 25!\r",
+        "Every night she goes there to watch\n",
+        "the sunset!"
+      ]
+    },
+    {
+      "id": "msg_0683_00010",
+      "en_US": [
+        "Sabrina likes to visit the port in Olivine\n",
+        "on Friday nights.\r",
+        "She really shows up in the strangest\n",
+        "places, doesn’t she!"
+      ]
+    },
+    {
+      "id": "msg_0683_00011",
+      "en_US": [
+        "Maybe I should only tell you this...\r",
+        "The truth is that Jasmine is a bit of a\n",
+        "big eater!\r",
+        "If you go to the Olivine Café past\n",
+        "noon, you’re sure to run into\f",
+        "Jasmine there!"
+      ]
+    },
+    {
+      "id": "msg_0683_00012",
+      "en_US": [
+        "Cinnabar Gym’s leader Blaine really\n",
+        "thinks a lot about the town of\f",
+        "Cinnabar, you know?\r",
+        "Every Tuesday morning he sits on the\n",
+        "site where the Cinnabar Gym once was\f",
+        "and contemplates."
+      ]
+    },
+    {
+      "id": "msg_0683_00013",
+      "en_US": [
+        "Pewter Gym’s Leader Brock really loves\n",
+        "rocks!\r",
+        "He goes into DIGLETT’s Cave every day\n",
+        "past noon."
+      ]
+    },
+    {
+      "id": "msg_0683_00014",
+      "en_US": [
+        "Bugsy goes looking for Bug-type\n",
+        "Pokémon. He even goes looking as far as\f",
+        "the Viridian Forest in the Kanto region!"
+      ]
+    },
+    {
+      "id": "msg_0683_00015",
+      "en_US": [
+        "Pryce is certainly a man of refined\n",
+        "tastes, don’t you agree?\r",
+        "Every morning at seven he goes out by\n",
+        "himself and gazes out at the\f",
+        "Lake of Rage."
+      ]
+    },
+    {
+      "id": "msg_0683_00016",
+      "en_US": [
+        "Morty’s always looking at the\n",
+        "Bell Tower, isn’t he?\r",
+        "He’s just been engrossed by that one\n",
+        "thing. To the point that he became a\f",
+        "Gym Leader."
+      ]
+    },
+    {
+      "id": "msg_0683_00017",
+      "en_US": [
+        "I really need to work on my training.\n",
+        "Let’s battle again, OK? I’ll be\f",
+        "waiting on {STRVAR_1 4, 3, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0683_00018",
+      "en_US": [
+        "Is that all right?\n",
+        "We’re going to battle again on\f",
+        "{STRVAR_1 4, 3, 0}! Hurry up already!"
+      ]
+    },
+    {
+      "id": "msg_0683_00019",
+      "en_US": [
+        "If anything about the Gym Leaders\n",
+        "changes, I’ll be sure to call you!"
+      ]
+    }
+  ]
+}

@@ -1,113 +1,171 @@
-MWCCVER        := 2.0/sp2p2
-PROC           := arm946e
-PROC_S         := arm5te
-PROC_LD        := v5te
-LCF_TEMPLATE   := ARM9-TS.lcf.template
-LIBS           := -Llib -lsyscall -nostdlib
-OPTFLAGS       := -O4,p
+.PHONY:     		\
+	all 			\
+	check			\
+	heartgold		\
+	meson   		\
+	release 		\
+	rom 			\
+	setup_heartgold \
+	setup_release 	\
+	setup_soulsilver\
+	skrew			\
+	soulsilver		\
+	skrewrm 		\
+	skrewup 		\
+	target  		\
+	update
 
-include config.mk
+GAME_VERSION ?= HEARTGOLD
+GAME_LANGUAGE ?= ENGLISH
 
-ALL_BUILDDIRS  := $(BUILD_DIR)/lib
-include common.mk
-include filesystem.mk
-
-$(ASM_OBJS): MWASFLAGS += -DPM_ASM
-
-$(BUILD_DIR)/asm/nitrocrypto.o:  MWCCVER := 1.2/sp2p3
-$(BUILD_DIR)/lib/msl/src/*.o:    EXCCFLAGS := -Cpp_exceptions on
-
-$(ASM_OBJS): $(WORK_DIR)/include/config.h
-$(C_OBJS):   $(WORK_DIR)/include/global.h
-
-ROM             := $(BUILD_DIR)/poke$(buildname).nds
-BANNER          := $(ROM:%.nds=%.bnr)
-BANNER_SPEC     := $(buildname)/banner.bsf
-ICON_PNG        := $(buildname)/icon.png
-HEADER_TEMPLATE := $(buildname)/rom_header_template.sbin
-
-.PHONY: main sub dsprot libsyscall sdk sdk9 sdk7
-.PRECIOUS: $(ROM)
-
-MAKEFLAGS += --no-print-directory
-
-all:
-	$(MAKE) tools
-	$(MAKE) patch_mwasmarm
-	$(MAKE) $(ROM)
-
-tidy:
-	@$(MAKE) -C lib/dsprot tidy
-	@$(MAKE) -C lib/syscall tidy
-	@$(MAKE) -C sub tidy
-	$(RM) -r build
-	$(RM) -r $(PROJECT_CLEAN_TARGETS)
-	$(RM) $(ROM)
-
-clean: tidy clean-filesystem clean-tools
-	@$(MAKE) -C lib/dsprot clean
-	@$(MAKE) -C lib/syscall clean
-	@$(MAKE) -C sub clean
-	$(RM) $(foreach bn,$(SUPPORTED_ROMS),$(bn)/icon.nbf[pc])
-
-SBIN_LZ        := $(SBIN)_LZ
-.PHONY: main_lz
-
-sdk9 sdk7: sdk
-main files_for_compile: | sdk9
-sub: | sdk7
-
-main: $(SBIN) $(ELF)
-main_lz: $(SBIN_LZ)
-sub: ; @$(MAKE) -C sub
-
-ROMSPEC        := rom.rsf
-MAKEROM_FLAGS  := $(DEFINES)
-
-$(ALL_GAME_OBJS): files_for_compile
-$(ELF): files_for_compile dsprot libsyscall
-
-dsprot:
-	$(MAKE) -C lib/dsprot all install INSTALL_PREFIX=$(abspath $(WORK_DIR)/$(BUILD_DIR))
-
-libsyscall: files_for_compile
-	$(MAKE) -C lib/syscall all install INSTALL_PREFIX=$(abspath $(WORK_DIR)/$(BUILD_DIR)) GAME_CODE=$(GAME_CODE)
-
-$(SBIN_LZ): $(BUILD_DIR)/component.files
-	$(COMPSTATIC) -9 -c -f $<
-
-$(BUILD_DIR)/component.files: main ;
-
-$(HEADER_TEMPLATE): ;
-
-$(ROM): $(ROMSPEC) filesystem main_lz sub $(BANNER)
-	$(WINE) $(MAKEROM) $(MAKEROM_FLAGS) -DBUILD_DIR=$(BUILD_DIR) -DNITROFS_FILES="$(NITROFS_FILES:files/%=%)" -DTITLE_NAME="$(TITLE_NAME)" -DBNR="$(BANNER)" -DHEADER_TEMPLATE="$(HEADER_TEMPLATE)" $< $@
-	$(FIXROM) $@ --secure-crc $(SECURE_CRC) --game-code $(GAME_CODE)
-ifeq ($(COMPARE),1)
-	$(SHA1SUM) -c $(buildname)/rom.sha1
+# Target-specific config
+ifeq ($(GAME_VERSION),SOULSILVER)
+  target_name := soulsilver
+else
+  ifeq ($(GAME_VERSION),HEARTGOLD)
+    target_name := heartgold
+  else
+    $(error invalid GAME_VERSION=$(GAME_VERSION))
+  endif
+endif
+ifeq ($(GAME_LANGUAGE),ENGLISH)
+  target_region := us
+else
+  $(error unsupported GAME_LANGUAGE=$(GAME_LANGUAGE))
 endif
 
-$(BANNER): $(BANNER_SPEC) $(ICON_PNG:%.png=%.nbfp) $(ICON_PNG:%.png=%.nbfc)
-	$(WINE) $(MAKEBNR) $< $@
+SUBPROJ_DIR := subprojects
 
-# TODO: move to NitroSDK makefile
-FX_CONST_H := $(WORK_DIR)/lib/include/nitro/fx/fx_const.h
-PROJECT_CLEAN_TARGETS += $(FX_CONST_H)
-$(FX_CONST_H): $(MKFXCONST) $(TOOLSDIR)/gen_fx_consts/fx_const.csv
-	$(MKFXCONST) $@
+MESON_VER := 1.12.0
+MESON_DIR := $(SUBPROJ_DIR)/meson-$(MESON_VER)
+MESON_SUB := $(MESON_DIR)/meson.py
 
-$(ALL_LIB_OBJS): $(FX_CONST_H)
-sdk9: $(ALL_LIB_OBJS)
-$(WORK_DIR)/include/global.h: $(FX_CONST_H) ;
+MESON ?= $(MESON_SUB)
+GIT ?= git
 
-# Convenience targets
-heartgold:          ; @$(MAKE) GAME_VERSION=HEARTGOLD
-soulsilver:         ; @$(MAKE) GAME_VERSION=SOULSILVER
-compare_heartgold:  ; @$(MAKE) GAME_VERSION=HEARTGOLD  COMPARE=1
-compare_soulsilver: ; @$(MAKE) GAME_VERSION=SOULSILVER COMPARE=1
-clean_heartgold:    ; @$(MAKE) GAME_VERSION=HEARTGOLD clean
-clean_soulsilver:   ; @$(MAKE) GAME_VERSION=SOULSILVER clean
+BUILD ?= build
 
-compare:             compare_heartgold
+UNAME_R := $(shell uname -r)
+UNAME_S := $(shell uname -s)
+CWD := $(shell pwd)
 
-.PHONY: heartgold soulsilver compare compare_heartgold compare_soulsilver clean_heartgold clean_soulsilver
+# Check for Windows-drive access
+ifneq (,$(findstring Microsoft,$(UNAME_R)))
+  ifneq (,$(filter /mnt/%,$(realpath $(CWD))))
+    WSL_ACCESSING_WINDOWS := 0
+  else
+    WSL_ACCESSING_WINDOWS := 1
+  endif
+else
+  WSL_ACCESSING_WINDOWS := 1
+endif
+
+# Set up the compiler toolchain dependency
+SKREW_GET := tools/devtools/get_metroskrew.sh
+SKREW_VER := 0.1.3
+SKREW_DIR := tools/metroskrew
+
+ifneq (,$(findstring Linux,$(UNAME_S)))
+  ifeq (0,$(WSL_ACCESSING_WINDOWS))
+    NATIVE := native.ini
+    CROSS := cross.ini
+    SKREW_SYS := windows
+    SKREW_EXE := $(SKREW_DIR)/bin/skrewrap.exe
+  else
+    NATIVE := native.ini
+    CROSS := cross_unix.ini
+    SKREW_SYS := linux
+    SKREW_EXE := $(SKREW_DIR)/bin/skrewrap
+  endif
+else
+  ifneq (,$(findstring Darwin,$(UNAME_S)))
+    NATIVE := native_macos.ini
+    CROSS := cross_unix.ini
+    SKREW_SYS := wine
+    SKREW_EXE := $(SKREW_DIR)/bin/skrewrap
+	NINJA ?= ninja -j4
+  else
+    ifneq (,$(findstring BSD, $(UNAME_S)))
+      NATIVE := native.ini
+      CROSS := cross_unix.ini
+      SKREW_SYS := linux
+      SKREW_EXE := $(SKREW_DIR)/bin/skrewrap
+    else
+      NATIVE := native.ini
+      CROSS := cross.ini
+      SKREW_SYS := windows
+      SKREW_EXE := $(SKREW_DIR)/bin/skrewrap.exe
+    endif
+  endif
+endif
+NINJA ?= ninja
+
+export NINJA_STATUS := [%p %f/%t]
+
+# Modders can delete the `check` dependency here after their first build.
+all: release check
+
+.NOTPARALLEL: release
+release: rom
+
+.NOTPARALLEL: heartgold
+heartgold: setup_heartgold
+	$(NINJA) -C $(BUILD) pokeheartgold.us.nds
+	$(MESON) test -C $(BUILD)
+
+.NOTPARALLEL: soulsilver
+soulsilver: setup_soulsilver
+	$(NINJA) -C $(BUILD) pokesoulsilver.us.nds
+	$(MESON) test -C $(BUILD)
+
+check: rom
+	$(MESON) test -C $(BUILD)
+
+rom: setup_$(target_name)
+	$(NINJA) -C $(BUILD) poke$(target_name).$(target_region).nds
+
+target: $(BUILD)/build.ninja
+	@echo $(SKREW_EXE)
+	$(MESON) compile -C $(BUILD)
+
+clean: $(BUILD)/build.ninja
+	$(MESON) compile -C $(BUILD) --clean
+
+setup_heartgold: $(BUILD)/build.ninja
+	$(MESON) configure $(BUILD) -Dgame_version=HEARTGOLD
+
+setup_soulsilver: $(BUILD)/build.ninja
+	$(MESON) configure $(BUILD) -Dgame_version=SOULSILVER
+
+$(BUILD)/build.ninja: | $(BUILD) $(SKREW_EXE) meson
+	$(MESON) setup \
+		-Dgame_version=$(GAME_VERSION) \
+		--wrap-mode=nopromote \
+		--native-file=meson/$(NATIVE) \
+		--cross-file=meson/$(CROSS) \
+		-- $(BUILD)
+
+$(BUILD):
+	mkdir -p -- $(BUILD)
+
+update: meson skrewup
+	$(MESON) subprojects update || true
+
+meson: ;
+ifeq ($(MESON),$(MESON_SUB))
+meson: $(MESON_SUB)
+endif
+
+$(MESON_SUB):
+	$(GIT) clone --depth=1 -b $(MESON_VER) https://github.com/mesonbuild/meson $(@D)
+
+skrew: $(SKREW_EXE)
+
+skrewrm:
+	rm -rf $(SKREW_DIR)
+
+skrewup: skrewrm skrew
+
+
+$(SKREW_EXE):
+	SKREW_SYS=$(SKREW_SYS) SKREW_VER=$(SKREW_VER) SKREW_DIR=$(SKREW_DIR) $(SKREW_GET)

@@ -109,7 +109,7 @@ void NitroMain(void) {
             SysTaskQueue_RunTasks(gSystem.mainTaskQueue);
             SysTaskQueue_RunTasks(gSystem.printTaskQueue);
             if (!gSystem.frameCounter) {
-                OS_WaitIrq(TRUE, OS_IE_VBLANK);
+                OS_WaitIrq(TRUE, OS_IE_V_BLANK);
                 gSystem.vblankCounter++;
             }
         }
@@ -117,7 +117,7 @@ void NitroMain(void) {
         sub_020183B0();
         Handle3DBufferSwapRequest();
         SysTaskQueue_RunTasks(gSystem.printTaskQueue);
-        OS_WaitIrq(TRUE, OS_IE_VBLANK);
+        OS_WaitIrq(TRUE, OS_IE_V_BLANK);
         gSystem.vblankCounter++;
         gSystem.frameCounter = 0;
         DoAllScreenBrightnessTransitionStep();
@@ -167,7 +167,7 @@ void RegisterMainOverlay(FSOverlayID overlayId, const OverlayManagerTemplate *te
 
 static void sub_02000F14(void) {
     sub_02036144();
-    OS_WaitIrq(TRUE, OS_IE_VBLANK);
+    OS_WaitIrq(TRUE, OS_IE_V_BLANK);
     gSystem.vblankCounter++;
     gSystem.frameCounter = 0;
     if (gSystem.vBlankIntr != NULL) {

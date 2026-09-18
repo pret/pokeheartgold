@@ -1,0 +1,137 @@
+{
+  "key": 60511,
+  "messages": [
+    {
+      "id": "msg_0596_T25R1005_00000",
+      "en_US": "Hello. Oh, your Pokémon...\r"
+    },
+    {
+      "id": "msg_0596_T25R1005_00001",
+      "en_US": [
+        "It’s very attached to you.\r",
+        "This move should be perfect for a\n",
+        "pair like you.\r"
+      ]
+    },
+    {
+      "id": "msg_0596_T25R1005_00002",
+      "garbage": 21
+    },
+    {
+      "id": "msg_0596_T25R1005_00003",
+      "en_US": [
+        "It’s adorable!\r",
+        "You should teach it good TM moves."
+      ]
+    },
+    {
+      "id": "msg_0596_T25R1005_00004",
+      "en_US": [
+        "It looks a little bit evil.\n",
+        "How about this TM for it?\r"
+      ]
+    },
+    {
+      "id": "msg_0596_T25R1005_00005",
+      "garbage": 21
+    },
+    {
+      "id": "msg_0596_T25R1005_00006",
+      "en_US": [
+        "There are sure to be TMs that are\n",
+        "just perfect for your Pokémon."
+      ]
+    },
+    {
+      "id": "msg_0596_T25R1005_00007",
+      "en_US": [
+        "Mystery Gift.\r",
+        "With just a little beep, you get a gift."
+      ]
+    },
+    {
+      "id": "msg_0596_T25R1005_00008",
+      "en_US": [
+        "The Mystery Gift option is not\n",
+        "compatible with Game Boy Color."
+      ]
+    },
+    {
+      "id": "msg_0596_T25R1005_00009",
+      "en_US": [
+        "I collect Pokémon.\n",
+        "Do you have a DROWZEE?\r",
+        "Want to trade it for my MACHOP? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0596_T25R1005_00010",
+      "en_US": [
+        "Yay! I got myself a DROWZEE!\f",
+        "Thanks!"
+      ]
+    },
+    {
+      "id": "msg_0596_T25R1005_00011",
+      "en_US": [
+        "Huh? That’s not DROWZEE.\n",
+        "What a letdown..."
+      ]
+    },
+    {
+      "id": "msg_0596_T25R1005_00012",
+      "en_US": "You don’t want to trade? Aww..."
+    },
+    {
+      "id": "msg_0596_T25R1005_00013",
+      "en_US": "Hi, how’s my old MACHOP doing?"
+    },
+    {
+      "id": "msg_0596_T25R1005_00014",
+      "en_US": [
+        "Huh? You...are part of Team Rocket?\n",
+        "Since when?"
+      ]
+    },
+    {
+      "id": "msg_0596_T25R1005_00015",
+      "en_US": [
+        "On Sundays, a lady comes to check\n",
+        "out Pokémon.\r",
+        "She even gives away TMs!"
+      ]
+    },
+    {
+      "id": "msg_0596_T25R1005_00016",
+      "en_US": [
+        "Team Rocket...\n",
+        "Why are they here?"
+      ]
+    },
+    {
+      "id": "msg_0596_T25R1005_00017",
+      "en_US": [
+        "You can’t rename a Pokémon you get in\n",
+        "a trade.\r",
+        "The name is a reflection of the original\n",
+        "Trainer’s feelings for it."
+      ]
+    },
+    {
+      "id": "msg_0596_T25R1005_00018",
+      "en_US": [
+        "You shouldn’t wear a black suit like\n",
+        "that. People will think you are a part\f",
+        "of Team Rocket.\r",
+        "What? You are one of them?"
+      ]
+    },
+    {
+      "id": "msg_0596_T25R1005_00019",
+      "en_US": [
+        "Modify Your Pokémon\n",
+        "5F TM Corner"
+      ]
+    }
+  ]
+}

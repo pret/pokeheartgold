@@ -1,0 +1,126 @@
+{
+  "key": 23013,
+  "messages": [
+    {
+      "id": "msg_0582_T25GYM0101_00000",
+      "en_US": [
+        "Whitney: Hi! I’m Whitney!\r",
+        "...You!\n",
+        "I saw you at the Radio Tower just now.\r",
+        "Everyone was into Pokémon, so I got\n",
+        "into it, too!\r",
+        "Pokémon are super cute!\r",
+        "You want to battle?\f",
+        "I’m warning you--I’m good!\r"
+      ]
+    },
+    {
+      "id": "msg_0582_T25GYM0101_00001",
+      "en_US": [
+        "Whitney: Sob...\r",
+        "...Waaaaaaah!\n",
+        "You’re mean!\r",
+        "You shouldn’t be so serious!\n",
+        "You...you child, you!"
+      ]
+    },
+    {
+      "id": "msg_0582_T25GYM0101_00002",
+      "en_US": [
+        "Whitney: Waaaaah!\r",
+        "Waaaaah!\r",
+        "...Snivel, hic.\n",
+        "...You meanie!"
+      ]
+    },
+    {
+      "id": "msg_0582_T25GYM0101_00003",
+      "en_US": [
+        "Whitney: Sniff...\r",
+        "What? What do you want? A Badge?\r",
+        "Oh, right. I forgot.\n",
+        "Here’s the Plain Badge.\r"
+      ]
+    },
+    {
+      "id": "msg_0582_T25GYM0101_00004",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} received\n",
+        "the Plain Badge from Whitney."
+      ]
+    },
+    {
+      "id": "msg_0582_T25GYM0101_00005",
+      "en_US": [
+        "Whitney: The Plain Badge lets your\n",
+        "Pokémon use Strength outside\f",
+        "of battle.\r",
+        "Oh, you can have this, too!\r"
+      ]
+    },
+    {
+      "id": "msg_0582_T25GYM0101_00006",
+      "garbage": 27
+    },
+    {
+      "id": "msg_0582_T25GYM0101_00007",
+      "en_US": [
+        "Whitney: It’s Attract!\n",
+        "It makes full use of a Pokémon’s charm.\r",
+        "Isn’t it just perfect for a cutie\n",
+        "like me?\f",
+        "That’s right!\r",
+        "I heard that this thing called the\n",
+        "Pokéathlon Dome is now open right next\f",
+        "to the National Park.\r",
+        "You should go try it, since you’re\n",
+        "so good at battling with your Pokémon!"
+      ]
+    },
+    {
+      "id": "msg_0582_T25GYM0101_00008",
+      "en_US": [
+        "Whitney: Ah, that was a good cry!\r",
+        "Come for a visit again! Bye-bye!"
+      ]
+    },
+    {
+      "id": "msg_0582_T25GYM0101_00009",
+      "en_US": [
+        "Oh, no. You made Whitney cry.\r",
+        "It’s OK. She’ll stop soon.\n",
+        "She always cries when she loses.\r"
+      ]
+    },
+    {
+      "id": "msg_0582_T25GYM0101_00010",
+      "en_US": [
+        "Yo! Champ in the making!\r",
+        "This Gym is home to Normal-type\n",
+        "Pokémon Trainers.\r",
+        "I recommend you use Fighting-type\n",
+        "Pokémon."
+      ]
+    },
+    {
+      "id": "msg_0582_T25GYM0101_00011",
+      "en_US": [
+        "You won? Great! I was busy admiring\n",
+        "the powerful Trainers here."
+      ]
+    },
+    {
+      "id": "msg_0582_T25GYM0101_00012",
+      "en_US": "Goldenrod City Pokémon Gym"
+    },
+    {
+      "id": "msg_0582_T25GYM0101_00013",
+      "en_US": [
+        "Goldenrod City Pokémon Gym\r",
+        "Leader: Whitney\n",
+        "Certified Trainer!\f",
+        "{STRVAR_1 3, 0, 0}"
+      ]
+    }
+  ]
+}

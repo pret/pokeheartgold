@@ -1,0 +1,15 @@
+#ifndef POKEPLATINUM_GENERATED_SPECIES_EGG_MOVES_H
+#define POKEPLATINUM_GENERATED_SPECIES_EGG_MOVES_H
+
+#include "constants/species.h"
+#include "generated/moves.h"
+
+#define EGG_MOVES_SPECIES_OFFSET 20000
+#define EGG_MOVES_TERMINATOR     0xFFFF
+
+static const u16 sEggMoves[] = {
+/* =========== MAGIC CONTENT MARKER =========== */
+    EGG_MOVES_TERMINATOR,
+};
+
+#endif // POKEPLATINUM_GENERATED_SPECIES_EGG_MOVES_H

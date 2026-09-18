@@ -1,0 +1,154 @@
+{
+  "key": 42083,
+  "messages": [
+    {
+      "id": "msg_0541_T11R0802_00000",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}: Hi! Do you like Pokémon?\r",
+        "{STRVAR_1 3, 0, 0}: Uh, no, I just asked you.\r",
+        "{STRVAR_1 3, 0, 0}: Huh? You’re strange!\r"
+      ]
+    },
+    {
+      "id": "msg_0541_T11R0802_00001",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}: Hi. You must like\n",
+        "Pokémon.\r",
+        "{STRVAR_1 3, 0, 0}: No, not me. I asked you.\r",
+        "{STRVAR_1 3, 0, 0}: Pardon? You’re weird!\r"
+      ]
+    },
+    {
+      "id": "msg_0541_T11R0802_00002",
+      "en_US": [
+        "Copycat: Hmm? Quit mimicking?\n",
+        "But that’s my main hobby!\r"
+      ]
+    },
+    {
+      "id": "msg_0541_T11R0802_00003",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}: Hi! I heard that you\n",
+        "lost your cherished Poké Doll.\r",
+        "{STRVAR_1 3, 0, 0}: If I find it, you’ll give\n",
+        "me a Magnet Train Pass?\r",
+        "{STRVAR_1 3, 0, 0}: I’ll go find it for you.\r",
+        "{STRVAR_1 3, 0, 0}: You think you lost it\n",
+        "when you went to Vermilion City?\r"
+      ]
+    },
+    {
+      "id": "msg_0541_T11R0802_00004",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}: Hi! I heard that you\n",
+        "lost your cherished Poké Doll.\r",
+        "{STRVAR_1 3, 0, 0}: If I find it, you’ll give\n",
+        "me a Magnet Train Pass?\r",
+        "{STRVAR_1 3, 0, 0}: I’ll go find it for you.\r",
+        "{STRVAR_1 3, 0, 0}: You think you lost it\n",
+        "when you went to Vermilion City?\r"
+      ]
+    },
+    {
+      "id": "msg_0541_T11R0802_00005",
+      "en_US": [
+        "Copycat: Pardon?\r",
+        "I shouldn’t decide what you should do?\r",
+        "But I’m really worried...\n",
+        "What if someone finds it?\r"
+      ]
+    },
+    {
+      "id": "msg_0541_T11R0802_00006",
+      "en_US": [
+        "Copycat: Yay! That’s my CLEFAIRY\n",
+        "Poké Doll!\r",
+        "See the tear where the right arm is\n",
+        "sewn on? That’s proof!\r",
+        "OK. I’ll give you this Magnet Train Pass\n",
+        "as I promised!\r"
+      ]
+    },
+    {
+      "id": "msg_0541_T11R0802_00007",
+      "garbage": 19
+    },
+    {
+      "id": "msg_0541_T11R0802_00008",
+      "en_US": [
+        "Copycat: You show it at the ticket\n",
+        "gate to get on the Magnet Train.\r",
+        "The rail-company man gave me that\n",
+        "when they tore down our old house\f",
+        "for the station."
+      ]
+    },
+    {
+      "id": "msg_0541_T11R0802_00009",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}: Hi!\n",
+        "Thanks a lot for the Magnet Train Pass!\r",
+        "{STRVAR_1 3, 0, 0}: Pardon?\r",
+        "{STRVAR_1 3, 0, 0}: Is it that fun to mimic\n",
+        "my every move?\r"
+      ]
+    },
+    {
+      "id": "msg_0541_T11R0802_00010",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}: Hi!\n",
+        "Thanks a lot for the Magnet Train Pass!\r",
+        "{STRVAR_1 3, 0, 0}: Pardon?\r",
+        "{STRVAR_1 3, 0, 0}: Is it that fun to mimic\n",
+        "my every move?\r"
+      ]
+    },
+    {
+      "id": "msg_0541_T11R0802_00011",
+      "en_US": "Copycat: You bet! It’s a scream!\r"
+    },
+    {
+      "id": "msg_0541_T11R0802_00012",
+      "en_US": [
+        "This Poké Doll looks just like the\n",
+        "real thing...\r",
+        "Aw! It moved!\n",
+        "It’s a real BANETTE!"
+      ]
+    },
+    {
+      "id": "msg_0541_T11R0802_00013",
+      "en_US": "BANETTE: Giggle!"
+    },
+    {
+      "id": "msg_0541_T11R0802_00014",
+      "en_US": [
+        "This is a flowerlike Poké Doll...\n",
+        "It is a CHERRIM Poké Doll!"
+      ]
+    },
+    {
+      "id": "msg_0541_T11R0802_00015",
+      "en_US": [
+        "This is a nose-like Poké Doll...\n",
+        "It is a NOSEPASS Poké Doll!"
+      ]
+    },
+    {
+      "id": "msg_0541_T11R0802_00016",
+      "en_US": [
+        "It’s a CLEFAIRY!\n",
+        "Huh?\r",
+        "Oh, right. It’s a CLEFAIRY Poké Doll."
+      ]
+    },
+    {
+      "id": "msg_0541_T11R0802_00017",
+      "en_US": [
+        "It’s a CLEFAIRY Poké Doll.\r",
+        "It has a tear where the right arm\n",
+        "was sewn on."
+      ]
+    }
+  ]
+}

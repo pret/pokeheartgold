@@ -1,0 +1,207 @@
+{
+  "key": 1126,
+  "messages": [
+    {
+      "id": "msg_0571_T23R0501_00000",
+      "en_US": [
+        "Hm? Who are you?\r",
+        "{STRVAR_1 3, 0, 0}, eh? You want me to make\n",
+        "some Balls?\r",
+        "Sorry, but that’ll have to wait.\r",
+        "Do you know Team Rocket?\n",
+        "Ah, don’t worry. I’ll tell you anyhow.\r",
+        "Team Rocket’s an evil gang that\n",
+        "uses Pokémon for their dirty work.\r",
+        "They’re supposed to have disbanded\n",
+        "three years ago.\r",
+        "Anyway, they’re at the well, cutting\n",
+        "off SlowpokeTails for sale!\r",
+        "So I’m going to go give them a\n",
+        "lesson in pain!\r",
+        "Hang on, SLOWPOKE!\n",
+        "Old Kurt is on his way!"
+      ]
+    },
+    {
+      "id": "msg_0571_T23R0501_00001",
+      "en_US": [
+        "Kurt: Hi, {STRVAR_1 3, 0, 0}!\n",
+        "You handled yourself like a real hero.\r",
+        "As I mentioned before, Team Rocket was\n",
+        "disbanded by a boy called Red three\f",
+        "years ago.\r",
+        "Now that they have come back...\n",
+        "I have a bad feeling about it...\r",
+        "In any case, it would please me greatly\n",
+        "to make Poké Balls for a Trainer\f",
+        "like you, {STRVAR_1 3, 0, 0}.\f",
+        "This is all I have now, but take it.\r"
+      ]
+    },
+    {
+      "id": "msg_0571_T23R0501_00002",
+      "garbage": 23
+    },
+    {
+      "id": "msg_0571_T23R0501_00003",
+      "en_US": [
+        "Kurt: I make Poké Balls from Apricorns.\r",
+        "Collect them from trees and bring\n",
+        "’em to me.\r",
+        "I’ll make Poké Balls out of them."
+      ]
+    },
+    {
+      "id": "msg_0571_T23R0501_00004",
+      "en_US": [
+        "Kurt: You have Apricorns for me?\f",
+        "Fine! I’ll turn them into Poké Balls.\r"
+      ]
+    },
+    {
+      "id": "msg_0571_T23R0501_00005",
+      "en_US": [
+        "Kurt: It’ll take a day to make you a\n",
+        "Poké Ball. Come back for it later."
+      ]
+    },
+    {
+      "id": "msg_0571_T23R0501_00006",
+      "en_US": [
+        "Kurt: Oh...\n",
+        "That’s a letdown."
+      ]
+    },
+    {
+      "id": "msg_0571_T23R0501_00007",
+      "en_US": [
+        "Kurt: I’m working!\n",
+        "Don’t bother me!"
+      ]
+    },
+    {
+      "id": "msg_0571_T23R0501_00008",
+      "en_US": [
+        "Kurt: Ah, {STRVAR_1 3, 0, 0}!\f",
+        "I just finished your Poké Ball. Here!\r"
+      ]
+    },
+    {
+      "id": "msg_0571_T23R0501_00009",
+      "en_US": [
+        "Kurt: Your Bag is full!\n",
+        "Come back when it’s lighter."
+      ]
+    },
+    {
+      "id": "msg_0571_T23R0501_00010",
+      "en_US": [
+        "Kurt: That turned out great.\r",
+        "Try catching Pokémon with it."
+      ]
+    },
+    {
+      "id": "msg_0571_T23R0501_00011",
+      "en_US": [
+        "The SLOWPOKE are gone...\n",
+        "Were they taken away by bad people?"
+      ]
+    },
+    {
+      "id": "msg_0571_T23R0501_00012",
+      "en_US": [
+        "Grandpa’s gone...\n",
+        "I’m so lonely..."
+      ]
+    },
+    {
+      "id": "msg_0571_T23R0501_00013",
+      "en_US": [
+        "The SLOWPOKE my dad gave me came\n",
+        "back! Its tail has grown back, too!"
+      ]
+    },
+    {
+      "id": "msg_0571_T23R0501_00014",
+      "en_US": [
+        "Dad works at Silph where he studies\n",
+        "Poké Balls.\r",
+        "I have to stay home with Grandpa\n",
+        "and SLOWPOKE."
+      ]
+    },
+    {
+      "id": "msg_0571_T23R0501_00015",
+      "en_US": [
+        "That’s right!\n",
+        "I’ll give you my grandpa’s number. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0571_T23R0501_00016",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} registered Kurt\n",
+        "in the Pokégear!"
+      ]
+    },
+    {
+      "id": "msg_0571_T23R0501_00017",
+      "en_US": [
+        "My grandpa can tell you more\n",
+        "about Apricorns."
+      ]
+    },
+    {
+      "id": "msg_0571_T23R0501_00018",
+      "en_US": [
+        "No? Why?\n",
+        "You don’t want to talk to my grandpa?"
+      ]
+    },
+    {
+      "id": "msg_0571_T23R0501_00019",
+      "en_US": [
+        "You want to talk to my grandpa,\n",
+        "don’t you? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0571_T23R0501_00020",
+      "en_US": [
+        "SLOWPOKE: ...\n",
+        "Yawn?"
+      ]
+    },
+    {
+      "id": "msg_0571_T23R0501_00021",
+      "en_US": [
+        "You see three people, with landscape\n",
+        "in the background.\r",
+        "It’s Kurt, Professor Oak, and...\n",
+        "in the middle,\f",
+        "a lady with determined eyes."
+      ]
+    },
+    {
+      "id": "msg_0571_T23R0501_00022",
+      "en_US": [
+        "It’s a statue of the forest’s\n",
+        "protector."
+      ]
+    },
+    {
+      "id": "msg_0571_T23R0501_00023",
+      "en_US": [
+        "The radio is on.\r",
+        "It’s Professor Oak’s Pokémon Talk!"
+      ]
+    },
+    {
+      "id": "msg_0571_T23R0501_00024",
+      "en_US": [
+        "The radio is declaring the revival\n",
+        "of Team Rocket!"
+      ]
+    }
+  ]
+}

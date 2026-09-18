@@ -1,0 +1,103 @@
+{
+  "key": 22291,
+  "messages": [
+    {
+      "id": "msg_0401_R43_00000",
+      "garbage": 47
+    },
+    {
+      "id": "msg_0401_R43_00001",
+      "garbage": 7
+    },
+    {
+      "id": "msg_0401_R43_00002",
+      "garbage": 41
+    },
+    {
+      "id": "msg_0401_R43_00003",
+      "garbage": 25
+    },
+    {
+      "id": "msg_0401_R43_00004",
+      "garbage": 13
+    },
+    {
+      "id": "msg_0401_R43_00005",
+      "garbage": 33
+    },
+    {
+      "id": "msg_0401_R43_00006",
+      "garbage": 73
+    },
+    {
+      "id": "msg_0401_R43_00007",
+      "garbage": 23
+    },
+    {
+      "id": "msg_0401_R43_00008",
+      "garbage": 66
+    },
+    {
+      "id": "msg_0401_R43_00009",
+      "garbage": 59
+    },
+    {
+      "id": "msg_0401_R43_00010",
+      "garbage": 21
+    },
+    {
+      "id": "msg_0401_R43_00011",
+      "garbage": 73
+    },
+    {
+      "id": "msg_0401_R43_00012",
+      "garbage": 33
+    },
+    {
+      "id": "msg_0401_R43_00013",
+      "garbage": 12
+    },
+    {
+      "id": "msg_0401_R43_00014",
+      "garbage": 37
+    },
+    {
+      "id": "msg_0401_R43_00015",
+      "garbage": 36
+    },
+    {
+      "id": "msg_0401_R43_00016",
+      "garbage": 9
+    },
+    {
+      "id": "msg_0401_R43_00017",
+      "garbage": 31
+    },
+    {
+      "id": "msg_0401_R43_00018",
+      "en_US": [
+        "Rt. 43\n",
+        "North to Lake of Rage"
+      ]
+    },
+    {
+      "id": "msg_0401_R43_00019",
+      "en_US": [
+        "Trainer Tips\r",
+        "All Pokémon have pros and cons\n",
+        "depending on their types.\r",
+        "If their types differ, even a higher-\n",
+        "level Pokémon may lose in battle.\r",
+        "Learn which types are strong or\n",
+        "weak against your Pokémon’s type."
+      ]
+    },
+    {
+      "id": "msg_0401_R43_00020",
+      "en_US": [
+        "North to Lake of Rage\n",
+        "South to Mahogany Town"
+      ]
+    }
+  ]
+}

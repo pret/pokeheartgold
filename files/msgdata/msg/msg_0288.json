@@ -1,0 +1,421 @@
+{
+  "key": 64410,
+  "messages": [
+    {
+      "id": "msg_0288_00000",
+      "en_US": "IDOL"
+    },
+    {
+      "id": "msg_0288_00001",
+      "en_US": "TOMORROW"
+    },
+    {
+      "id": "msg_0288_00002",
+      "en_US": "PLAYING"
+    },
+    {
+      "id": "msg_0288_00003",
+      "en_US": "ANIME"
+    },
+    {
+      "id": "msg_0288_00004",
+      "en_US": "JOB"
+    },
+    {
+      "id": "msg_0288_00005",
+      "en_US": "SONG"
+    },
+    {
+      "id": "msg_0288_00006",
+      "en_US": "HOME"
+    },
+    {
+      "id": "msg_0288_00007",
+      "en_US": "MOVIE"
+    },
+    {
+      "id": "msg_0288_00008",
+      "en_US": "SWEETS"
+    },
+    {
+      "id": "msg_0288_00009",
+      "en_US": "MONEY"
+    },
+    {
+      "id": "msg_0288_00010",
+      "en_US": "POCKET MONEY"
+    },
+    {
+      "id": "msg_0288_00011",
+      "en_US": "CHIT-CHAT"
+    },
+    {
+      "id": "msg_0288_00012",
+      "en_US": "TALK"
+    },
+    {
+      "id": "msg_0288_00013",
+      "en_US": "BATH"
+    },
+    {
+      "id": "msg_0288_00014",
+      "en_US": "PLAY HOUSE"
+    },
+    {
+      "id": "msg_0288_00015",
+      "en_US": "TOYS"
+    },
+    {
+      "id": "msg_0288_00016",
+      "en_US": "MUSIC"
+    },
+    {
+      "id": "msg_0288_00017",
+      "en_US": "CARDS"
+    },
+    {
+      "id": "msg_0288_00018",
+      "en_US": "SHOPPING"
+    },
+    {
+      "id": "msg_0288_00019",
+      "en_US": "CONVERSATION"
+    },
+    {
+      "id": "msg_0288_00020",
+      "en_US": "SCHOOL"
+    },
+    {
+      "id": "msg_0288_00021",
+      "en_US": "CAMERA"
+    },
+    {
+      "id": "msg_0288_00022",
+      "en_US": "VIEWING"
+    },
+    {
+      "id": "msg_0288_00023",
+      "en_US": "SPECTATE"
+    },
+    {
+      "id": "msg_0288_00024",
+      "en_US": "ANNIVERSARY"
+    },
+    {
+      "id": "msg_0288_00025",
+      "en_US": "YESTERDAY"
+    },
+    {
+      "id": "msg_0288_00026",
+      "en_US": "TODAY"
+    },
+    {
+      "id": "msg_0288_00027",
+      "en_US": "HABIT"
+    },
+    {
+      "id": "msg_0288_00028",
+      "en_US": "GROUP"
+    },
+    {
+      "id": "msg_0288_00029",
+      "en_US": "GOURMET"
+    },
+    {
+      "id": "msg_0288_00030",
+      "en_US": "GAME"
+    },
+    {
+      "id": "msg_0288_00031",
+      "en_US": "WORD"
+    },
+    {
+      "id": "msg_0288_00032",
+      "en_US": "COLLECTION"
+    },
+    {
+      "id": "msg_0288_00033",
+      "en_US": "STORE"
+    },
+    {
+      "id": "msg_0288_00034",
+      "en_US": "COMPLETE"
+    },
+    {
+      "id": "msg_0288_00035",
+      "en_US": "SERVICE"
+    },
+    {
+      "id": "msg_0288_00036",
+      "en_US": "MAGAZINE"
+    },
+    {
+      "id": "msg_0288_00037",
+      "en_US": "WALK"
+    },
+    {
+      "id": "msg_0288_00038",
+      "en_US": "WORK"
+    },
+    {
+      "id": "msg_0288_00039",
+      "en_US": "SYSTEM"
+    },
+    {
+      "id": "msg_0288_00040",
+      "en_US": "BICYCLE"
+    },
+    {
+      "id": "msg_0288_00041",
+      "en_US": "TRAINING"
+    },
+    {
+      "id": "msg_0288_00042",
+      "en_US": "CLASS"
+    },
+    {
+      "id": "msg_0288_00043",
+      "en_US": "LESSONS"
+    },
+    {
+      "id": "msg_0288_00044",
+      "en_US": "HOBBY"
+    },
+    {
+      "id": "msg_0288_00045",
+      "en_US": "INFORMATION"
+    },
+    {
+      "id": "msg_0288_00046",
+      "en_US": "SPORTS"
+    },
+    {
+      "id": "msg_0288_00047",
+      "en_US": "DAILY LIFE"
+    },
+    {
+      "id": "msg_0288_00048",
+      "en_US": "TEACHER"
+    },
+    {
+      "id": "msg_0288_00049",
+      "en_US": "SOFTWARE"
+    },
+    {
+      "id": "msg_0288_00050",
+      "en_US": "SONGS"
+    },
+    {
+      "id": "msg_0288_00051",
+      "en_US": "DIET"
+    },
+    {
+      "id": "msg_0288_00052",
+      "en_US": "TOURNAMENT"
+    },
+    {
+      "id": "msg_0288_00053",
+      "en_US": "TREASURE"
+    },
+    {
+      "id": "msg_0288_00054",
+      "en_US": "TRAVEL"
+    },
+    {
+      "id": "msg_0288_00055",
+      "en_US": "BIRTHDAY"
+    },
+    {
+      "id": "msg_0288_00056",
+      "en_US": "DANCE"
+    },
+    {
+      "id": "msg_0288_00057",
+      "en_US": "CHANNEL"
+    },
+    {
+      "id": "msg_0288_00058",
+      "en_US": "FISHING"
+    },
+    {
+      "id": "msg_0288_00059",
+      "en_US": "DATE"
+    },
+    {
+      "id": "msg_0288_00060",
+      "en_US": "LETTER"
+    },
+    {
+      "id": "msg_0288_00061",
+      "en_US": "EVENT"
+    },
+    {
+      "id": "msg_0288_00062",
+      "en_US": "DESIGN"
+    },
+    {
+      "id": "msg_0288_00063",
+      "en_US": "DIGITAL"
+    },
+    {
+      "id": "msg_0288_00064",
+      "en_US": "TEST"
+    },
+    {
+      "id": "msg_0288_00065",
+      "en_US": "DEPT. STORE"
+    },
+    {
+      "id": "msg_0288_00066",
+      "en_US": "TELEVISION"
+    },
+    {
+      "id": "msg_0288_00067",
+      "en_US": "TRAIN"
+    },
+    {
+      "id": "msg_0288_00068",
+      "en_US": "PHONE"
+    },
+    {
+      "id": "msg_0288_00069",
+      "en_US": "ITEM"
+    },
+    {
+      "id": "msg_0288_00070",
+      "en_US": "NAME"
+    },
+    {
+      "id": "msg_0288_00071",
+      "en_US": "NEWS"
+    },
+    {
+      "id": "msg_0288_00072",
+      "en_US": "POPULARITY"
+    },
+    {
+      "id": "msg_0288_00073",
+      "en_US": "STUFFED TOY"
+    },
+    {
+      "id": "msg_0288_00074",
+      "en_US": "PARTY"
+    },
+    {
+      "id": "msg_0288_00075",
+      "en_US": "COMPUTER"
+    },
+    {
+      "id": "msg_0288_00076",
+      "en_US": "FLOWERS"
+    },
+    {
+      "id": "msg_0288_00077",
+      "en_US": "HERO"
+    },
+    {
+      "id": "msg_0288_00078",
+      "en_US": "NAP"
+    },
+    {
+      "id": "msg_0288_00079",
+      "en_US": "HEROINE"
+    },
+    {
+      "id": "msg_0288_00080",
+      "en_US": "FASHION"
+    },
+    {
+      "id": "msg_0288_00081",
+      "en_US": "STUDY"
+    },
+    {
+      "id": "msg_0288_00082",
+      "en_US": "ADVENTURE"
+    },
+    {
+      "id": "msg_0288_00083",
+      "en_US": "BOARD"
+    },
+    {
+      "id": "msg_0288_00084",
+      "en_US": "BALL"
+    },
+    {
+      "id": "msg_0288_00085",
+      "en_US": "BOOK"
+    },
+    {
+      "id": "msg_0288_00086",
+      "en_US": "MACHINE"
+    },
+    {
+      "id": "msg_0288_00087",
+      "en_US": "FESTIVAL"
+    },
+    {
+      "id": "msg_0288_00088",
+      "en_US": "COMICS"
+    },
+    {
+      "id": "msg_0288_00089",
+      "en_US": "MAIL"
+    },
+    {
+      "id": "msg_0288_00090",
+      "en_US": "MESSAGE"
+    },
+    {
+      "id": "msg_0288_00091",
+      "en_US": "STORY"
+    },
+    {
+      "id": "msg_0288_00092",
+      "en_US": "PROMISE"
+    },
+    {
+      "id": "msg_0288_00093",
+      "en_US": "HOLIDAY"
+    },
+    {
+      "id": "msg_0288_00094",
+      "en_US": "DREAM"
+    },
+    {
+      "id": "msg_0288_00095",
+      "en_US": "KINDERGARTEN"
+    },
+    {
+      "id": "msg_0288_00096",
+      "en_US": "PLANS"
+    },
+    {
+      "id": "msg_0288_00097",
+      "en_US": "LIFE"
+    },
+    {
+      "id": "msg_0288_00098",
+      "en_US": "RADIO"
+    },
+    {
+      "id": "msg_0288_00099",
+      "en_US": "CRAZE"
+    },
+    {
+      "id": "msg_0288_00100",
+      "en_US": "VACATION"
+    },
+    {
+      "id": "msg_0288_00101",
+      "en_US": "LOOKS"
+    },
+    {
+      "id": "msg_0288_00102",
+      "en_US": "RENTAL"
+    },
+    {
+      "id": "msg_0288_00103",
+      "en_US": "WORLD"
+    }
+  ]
+}

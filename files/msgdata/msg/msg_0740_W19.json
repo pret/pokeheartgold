@@ -1,0 +1,52 @@
+{
+  "key": 17171,
+  "messages": [
+    {
+      "id": "msg_0740_W19_00000",
+      "en_US": [
+        "I have removed the boulder that was\n",
+        "in the way, but it may still take some\f",
+        "time to flatten the ground..."
+      ]
+    },
+    {
+      "id": "msg_0740_W19_00001",
+      "en_US": [
+        "The roadwork is finally finished.\r",
+        "Now I can go fishing again."
+      ]
+    },
+    {
+      "id": "msg_0740_W19_00002",
+      "en_US": [
+        "Sorry. This road is closed for\n",
+        "construction.\r",
+        "If you want to get to Cinnabar, you’d\n",
+        "better go south from Pallet Town."
+      ]
+    },
+    {
+      "id": "msg_0740_W19_00003",
+      "en_US": [
+        "I’m all sweaty.\n",
+        "Time for a swim!"
+      ]
+    },
+    {
+      "id": "msg_0740_W19_00004",
+      "en_US": [
+        "Rt. 19 Fuchsia City to\n",
+        "Seafoam Islands"
+      ]
+    },
+    {
+      "id": "msg_0740_W19_00005",
+      "en_US": [
+        "What’s this notice?\r",
+        "Please be careful if you are swimming\n",
+        "to Seafoam Islands.\f",
+        "Fuchsia Police"
+      ]
+    }
+  ]
+}

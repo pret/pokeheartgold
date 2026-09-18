@@ -118,12 +118,4 @@ void ov01_0220476C(FieldSystemUnkSub104 *unk104, NNSG3dRenderObj *renderObj, Map
 void ov01_022047DC(FieldSystemUnkSub104 *unk104);
 u8 ov01_02204834(FieldSystemUnkSub104 *unk104);
 
-// These are nnsys things that do not seem to be in the project right now or are not decompiled in this project.
-void *NNS_FndAllocFromAllocator(NNSFndAllocator *pAllocator, u32 size);
-
-typedef struct NNSG3dMatAnmResult NNSG3dMatAnmResult;
-typedef void (*NNSG3dFuncAnmMat)(NNSG3dMatAnmResult *, const NNSG3dAnmObj *, u32);
-// void NNSi_G3dAnmCalcNsBta(NNSG3dMatAnmResult *pResult, const NNSG3dAnmObj *pAnmObj, u32 dataIdx);
-extern NNSG3dFuncAnmMat _02110A0C; // NNS_G3dFuncAnmMatNsBtaDefault = &NNSi_G3dAnmCalcNsBta
-
 #endif // POKEHEARTGOLD_FIELD_OVERLAY_01_02204004_H

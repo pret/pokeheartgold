@@ -1,0 +1,77 @@
+{
+  "key": 62479,
+  "messages": [
+    {
+      "id": "msg_0580_T24R0801_00000",
+      "en_US": [
+        "I don’t remember the last time\n",
+        "someone came to visit me.\r",
+        "When I was young, I was a\n",
+        "Pokémon Trainer, too. I tried to reach\f",
+        "the tower and dive into the ocean.\r",
+        "I put a lot of effort into many things.\n",
+        "Well, I take things easy now, listening\f",
+        "to the waves and winds on this beach."
+      ]
+    },
+    {
+      "id": "msg_0580_T24R0801_00001",
+      "en_US": [
+        "Have you heard of the Bell Tower\n",
+        "in Ecruteak?\r",
+        "There are what they call Clear Bells\n",
+        "on top of the tower.\r",
+        "They don’t make a single noise\n",
+        "in strong winds.\r",
+        "There is only one way to make them ring.\r",
+        "It is to obtain another Clear Bell just\n",
+        "like the ones at the top of the tower.\f",
+        "I went after it when I was young.\f",
+        "But I never got one..."
+      ]
+    },
+    {
+      "id": "msg_0580_T24R0801_00002",
+      "en_US": [
+        "Have you heard of Whirl Islands?\r",
+        "There are what they call Tidal Bells\n",
+        "at its waterfall basin.\r",
+        "They don’t make a single noise\n",
+        "in crashing waves.\r",
+        "There is only one way to make them ring.\r",
+        "It is to obtain another Tidal Bell just\n",
+        "like the ones at the waterfall basin.\f",
+        "I went after it when I was young.\f",
+        "But I never got one..."
+      ]
+    },
+    {
+      "id": "msg_0580_T24R0801_00003",
+      "en_US": [
+        "Oh! You’ve managed to get a Clear Bell?\r",
+        "The old-time dream of mine...\n",
+        "I see...\f",
+        "You’ve done it...\r",
+        "...\n",
+        "...I can hear it!\r",
+        "The chime of the bells on the wind\n",
+        "coming from the direction of\f",
+        "the Bell Tower..."
+      ]
+    },
+    {
+      "id": "msg_0580_T24R0801_00004",
+      "en_US": [
+        "Oh! You’ve managed to get a Tidal Bell?\r",
+        "The old-time dream of mine...\n",
+        "I see...\f",
+        "You’ve done it...\r",
+        "...\n",
+        "...I can hear it!\r",
+        "The chime of the bells on the sea\n",
+        "breeze coming from the direction of\f",
+        "the Whirl Islands..."
+      ]
+    }
+  ]
+}

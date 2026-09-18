@@ -1,4 +1,4 @@
-#include <nitro/fs/overlay.h>
+
 #pragma once
 .public NNS_FndCreateExpHeapEx
 .public NNS_FndDestroyExpHeap

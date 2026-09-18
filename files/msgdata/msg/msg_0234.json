@@ -1,0 +1,20 @@
+{
+  "key": 44821,
+  "messages": [
+    {
+      "id": "msg_0234_00000",
+      "en_US": "Mic Test"
+    },
+    {
+      "id": "msg_0234_00001",
+      "en_US": [
+        "Please say something\n",
+        "directly into the Mic."
+      ]
+    },
+    {
+      "id": "msg_0234_00002",
+      "en_US": "{ALN_CENTER}Return"
+    }
+  ]
+}

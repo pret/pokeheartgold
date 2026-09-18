@@ -1,0 +1,209 @@
+{
+  "key": 2537,
+  "messages": [
+    {
+      "id": "msg_0792_00000",
+      "en_US": "None"
+    },
+    {
+      "id": "msg_0792_00001",
+      "en_US": "Hokkaido (Sapporo)"
+    },
+    {
+      "id": "msg_0792_00002",
+      "en_US": "Hokkaido (Hakodate)"
+    },
+    {
+      "id": "msg_0792_00003",
+      "en_US": "Hokkaido (Wakkanai)"
+    },
+    {
+      "id": "msg_0792_00004",
+      "en_US": "Hokkaido (Kushiro)"
+    },
+    {
+      "id": "msg_0792_00005",
+      "en_US": "Aomori"
+    },
+    {
+      "id": "msg_0792_00006",
+      "en_US": "Iwate"
+    },
+    {
+      "id": "msg_0792_00007",
+      "en_US": "Miyagi"
+    },
+    {
+      "id": "msg_0792_00008",
+      "en_US": "Akita"
+    },
+    {
+      "id": "msg_0792_00009",
+      "en_US": "Yamagata"
+    },
+    {
+      "id": "msg_0792_00010",
+      "en_US": "Fukushima"
+    },
+    {
+      "id": "msg_0792_00011",
+      "en_US": "Ibaraki"
+    },
+    {
+      "id": "msg_0792_00012",
+      "en_US": "Tochigi"
+    },
+    {
+      "id": "msg_0792_00013",
+      "en_US": "Gunma"
+    },
+    {
+      "id": "msg_0792_00014",
+      "en_US": "Saitama"
+    },
+    {
+      "id": "msg_0792_00015",
+      "en_US": "Chiba"
+    },
+    {
+      "id": "msg_0792_00016",
+      "en_US": "Tokyo"
+    },
+    {
+      "id": "msg_0792_00017",
+      "en_US": "Kanagawa"
+    },
+    {
+      "id": "msg_0792_00018",
+      "en_US": "Niigata"
+    },
+    {
+      "id": "msg_0792_00019",
+      "en_US": "Toyama"
+    },
+    {
+      "id": "msg_0792_00020",
+      "en_US": "Ishikawa"
+    },
+    {
+      "id": "msg_0792_00021",
+      "en_US": "Fukui"
+    },
+    {
+      "id": "msg_0792_00022",
+      "en_US": "Yamanashi"
+    },
+    {
+      "id": "msg_0792_00023",
+      "en_US": "Nagano"
+    },
+    {
+      "id": "msg_0792_00024",
+      "en_US": "Gifu"
+    },
+    {
+      "id": "msg_0792_00025",
+      "en_US": "Shizuoka"
+    },
+    {
+      "id": "msg_0792_00026",
+      "en_US": "Aichi"
+    },
+    {
+      "id": "msg_0792_00027",
+      "en_US": "Mie"
+    },
+    {
+      "id": "msg_0792_00028",
+      "en_US": "Shiga"
+    },
+    {
+      "id": "msg_0792_00029",
+      "en_US": "Kyoto"
+    },
+    {
+      "id": "msg_0792_00030",
+      "en_US": "Osaka"
+    },
+    {
+      "id": "msg_0792_00031",
+      "en_US": "Hyogo"
+    },
+    {
+      "id": "msg_0792_00032",
+      "en_US": "Nara"
+    },
+    {
+      "id": "msg_0792_00033",
+      "en_US": "Wakayama"
+    },
+    {
+      "id": "msg_0792_00034",
+      "en_US": "Tottori"
+    },
+    {
+      "id": "msg_0792_00035",
+      "en_US": "Shimane"
+    },
+    {
+      "id": "msg_0792_00036",
+      "en_US": "Okayama"
+    },
+    {
+      "id": "msg_0792_00037",
+      "en_US": "Hiroshima"
+    },
+    {
+      "id": "msg_0792_00038",
+      "en_US": "Yamaguchi"
+    },
+    {
+      "id": "msg_0792_00039",
+      "en_US": "Tokushima"
+    },
+    {
+      "id": "msg_0792_00040",
+      "en_US": "Kagawa"
+    },
+    {
+      "id": "msg_0792_00041",
+      "en_US": "Ehime"
+    },
+    {
+      "id": "msg_0792_00042",
+      "en_US": "Kochi"
+    },
+    {
+      "id": "msg_0792_00043",
+      "en_US": "Fukuoka"
+    },
+    {
+      "id": "msg_0792_00044",
+      "en_US": "Saga"
+    },
+    {
+      "id": "msg_0792_00045",
+      "en_US": "Nagasaki"
+    },
+    {
+      "id": "msg_0792_00046",
+      "en_US": "Kumamoto"
+    },
+    {
+      "id": "msg_0792_00047",
+      "en_US": "Oita"
+    },
+    {
+      "id": "msg_0792_00048",
+      "en_US": "Miyazaki"
+    },
+    {
+      "id": "msg_0792_00049",
+      "en_US": "Kagoshima"
+    },
+    {
+      "id": "msg_0792_00050",
+      "en_US": "Okinawa"
+    }
+  ]
+}

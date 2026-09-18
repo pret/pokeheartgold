@@ -481,11 +481,11 @@ static ObjCharTransferTask *ObjCharTransfer_GetTaskByID(int resId) {
 
 static GXOBJVRamModeChar ObjCharTransferTask_SetMappingTypeFromHW(ObjCharTransferTask *task, NNS_G2D_VRAM_TYPE vram) {
     if (vram == NNS_G2D_VRAM_TYPE_2DMAIN) {
-        task->charData->mapingType = GX_GetOBJVRamModeChar();
+        task->charData->mappingType = GX_GetOBJVRamModeChar();
     } else {
-        task->charData->mapingType = GXS_GetOBJVRamModeChar();
+        task->charData->mappingType = GXS_GetOBJVRamModeChar();
     }
-    return task->charData->mapingType;
+    return task->charData->mappingType;
 }
 
 static void ObjCharTransferTask_SetBaseAddrs(ObjCharTransferTask *task, u32 offsetMain, u32 offsetSub) {

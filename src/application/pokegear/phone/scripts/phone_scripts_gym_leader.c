@@ -1,7 +1,7 @@
 #include "global.h"
 
 #include "application/pokegear/phone/phone_internal.h"
-#include "msgdata/msg/msg_0644.h" // Using Whitney as the representative. All 16 Gym Leaders have the same gmm layout.
+#include "files/msgdata/msg/msg_0644.h" // Using Whitney as the representative. All 16 Gym Leaders have the same gmm layout.
 
 #include "math_util.h"
 

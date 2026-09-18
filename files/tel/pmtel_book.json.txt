@@ -22,7 +22,7 @@
 #define TIMEOFDAY_WILD_NITE  2
 #define TIMEOFDAY_WILD_MAX   3
 
-    .section .data
+    .rodata
 
 gNumPhoneBookEntries:
     .word {{ length(pmtel_book) }}

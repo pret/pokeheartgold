@@ -1,0 +1,133 @@
+{
+  "key": 20458,
+  "messages": [
+    {
+      "id": "msg_0695_00000",
+      "en_US": "Gina"
+    },
+    {
+      "id": "msg_0695_00001",
+      "en_US": [
+        "Whenever I see a strong Trainer,\n",
+        "I want to be their cheerleader.\r",
+        "When I’m out on a walk,\n",
+        "I sometimes pick up items.\r",
+        "If I find anything, you can have it!\r",
+        "Want to give me your number?\n",
+        "I’ll call whenever I get anything.{YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0695_00002",
+      "en_US": "I’ll call as soon as I get anything!"
+    },
+    {
+      "id": "msg_0695_00003",
+      "en_US": [
+        "Really? Well, I’ll still be cheering\n",
+        "for you!"
+      ]
+    },
+    {
+      "id": "msg_0695_00004",
+      "en_US": [
+        "If I find an item, you can have it!\n",
+        "Want to give me your number?{YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0695_00005",
+      "en_US": [
+        "You’re here at last!\n",
+        "I think this will make you happy.\r"
+      ]
+    },
+    {
+      "id": "msg_0695_00006",
+      "en_US": [
+        "You must really like phone calls to be\n",
+        "right nearby and using the phone!"
+      ]
+    },
+    {
+      "id": "msg_0695_00007",
+      "en_US": [
+        "My {STRVAR_1 0, 10, 0} and I are getting more\n",
+        "in sync with each other.\r",
+        "We battled a wild {STRVAR_1 0, 11, 0} and\n",
+        "managed to beat it in a close match.\f",
+        "We’re getting into the groove!\r",
+        "Bye! Let’s chat again!"
+      ]
+    },
+    {
+      "id": "msg_0695_00008",
+      "en_US": [
+        "My {STRVAR_1 0, 10, 0} and I are getting more\n",
+        "in sync with each other.\r",
+        "But, you know what?\r",
+        "I still haven’t caught {STRVAR_1 0, 11, 0}.\n",
+        "It’s getting beyond frustrating...\r",
+        "Bye! Let’s chat again!"
+      ]
+    },
+    {
+      "id": "msg_0695_00009",
+      "en_US": [
+        "Would you be my practice partner again\n",
+        "sometime?\r",
+        "I’ll be waiting on {STRVAR_1 4, 3, 0}...\r",
+        "Could you take it a little easier on\n",
+        "me next time?"
+      ]
+    },
+    {
+      "id": "msg_0695_00010",
+      "en_US": [
+        "How soon can I expect to see you?\n",
+        "Don’t forget, {STRVAR_1 4, 3, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0695_00011",
+      "en_US": [
+        "How soon can I expect to see you?\n",
+        "Don’t forget, {STRVAR_1 4, 3, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0695_00012",
+      "en_US": [
+        "Sorry, I haven’t found anything useful\n",
+        "yet... I promise, if I find anything, you\f",
+        "can have it!"
+      ]
+    },
+    {
+      "id": "msg_0695_00013",
+      "en_US": [
+        "I picked up something nice today.\n",
+        "I want you to have it, so I called!\r",
+        "You will come for it, won’t you?\n",
+        "{STRVAR_1 4, 3, 0} is where I am."
+      ]
+    },
+    {
+      "id": "msg_0695_00014",
+      "en_US": [
+        "I’m getting really impatient, waiting to\n",
+        "give you my present!\r",
+        "Hurry over to {STRVAR_1 4, 3, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0695_00015",
+      "en_US": [
+        "Have you heard about Team Rocket?\r",
+        "They’ve taken over the Radio Tower in\n",
+        "Goldenrod.\r",
+        "Are the people inside safe?"
+      ]
+    }
+  ]
+}

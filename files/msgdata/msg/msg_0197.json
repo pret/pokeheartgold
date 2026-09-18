@@ -1,0 +1,8528 @@
+{
+  "key": 47860,
+  "messages": [
+    {
+      "id": "msg_0197_00000",
+      "garbage": 8
+    },
+    {
+      "id": "msg_0197_00001",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} gained\n",
+        "{STRVAR_1 54, 1, 0} Exp. Points!\r"
+      ]
+    },
+    {
+      "id": "msg_0197_00002",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} gained a boosted\n",
+        "{STRVAR_1 54, 1, 0} Exp. Points!\r"
+      ]
+    },
+    {
+      "id": "msg_0197_00003",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} grew to\n",
+        "Lv. {STRVAR_1 52, 1, 0}!{WAIT 5}{WAIT 2}\r"
+      ]
+    },
+    {
+      "id": "msg_0197_00004",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} learned\n",
+        "{STRVAR_1 6, 1, 0}!{WAIT 5}{WAIT 2}\r"
+      ]
+    },
+    {
+      "id": "msg_0197_00005",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is trying to\n",
+        "learn {STRVAR_1 6, 1, 0}.\r"
+      ]
+    },
+    {
+      "id": "msg_0197_00006",
+      "en_US": [
+        "But {STRVAR_1 1, 0, 0} can’t learn\n",
+        "more than four moves.\r"
+      ]
+    },
+    {
+      "id": "msg_0197_00007",
+      "en_US": [
+        "Delete a move to make\n",
+        "room for {STRVAR_1 6, 1, 0}?\r"
+      ]
+    },
+    {
+      "id": "msg_0197_00008",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} forgot the move\n",
+        "{STRVAR_1 6, 2, 0}.\r"
+      ]
+    },
+    {
+      "id": "msg_0197_00009",
+      "en_US": [
+        "Give up on learning the move\n",
+        "{STRVAR_1 6, 1, 0}?\r"
+      ]
+    },
+    {
+      "id": "msg_0197_00010",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} did not learn\n",
+        "{STRVAR_1 6, 1, 0}.\r"
+      ]
+    },
+    {
+      "id": "msg_0197_00011",
+      "en_US": "Use next Pokémon?{YESNO 0}"
+    },
+    {
+      "id": "msg_0197_00012",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s\n",
+        "attack missed!"
+      ]
+    },
+    {
+      "id": "msg_0197_00013",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}’s\n",
+        "attack missed!"
+      ]
+    },
+    {
+      "id": "msg_0197_00014",
+      "en_US": [
+        "The attack of the foe’s\n",
+        "{STRVAR_1 1, 0, 0} missed!"
+      ]
+    },
+    {
+      "id": "msg_0197_00015",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}\n",
+        "protected itself!"
+      ]
+    },
+    {
+      "id": "msg_0197_00016",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}\n",
+        "protected itself!"
+      ]
+    },
+    {
+      "id": "msg_0197_00017",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}\n",
+        "protected itself!"
+      ]
+    },
+    {
+      "id": "msg_0197_00018",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} avoided damage\n",
+        "by using {STRVAR_1 5, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00019",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} avoided\n",
+        "damage by using {STRVAR_1 5, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00020",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} avoided\n",
+        "damage by using {STRVAR_1 5, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00021",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} makes Ground moves\n",
+        "miss by using {STRVAR_1 5, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00022",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} makes Ground\n",
+        "moves miss by using {STRVAR_1 5, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00023",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} makes Ground\n",
+        "moves miss by using {STRVAR_1 5, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00024",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} avoided\n",
+        "the attack!"
+      ]
+    },
+    {
+      "id": "msg_0197_00025",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} avoided\n",
+        "the attack!"
+      ]
+    },
+    {
+      "id": "msg_0197_00026",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} avoided\n",
+        "the attack!"
+      ]
+    },
+    {
+      "id": "msg_0197_00027",
+      "en_US": [
+        "It doesn’t affect\n",
+        "{STRVAR_1 1, 0, 0}..."
+      ]
+    },
+    {
+      "id": "msg_0197_00028",
+      "en_US": [
+        "It doesn’t affect\n",
+        "the wild {STRVAR_1 1, 0, 0}..."
+      ]
+    },
+    {
+      "id": "msg_0197_00029",
+      "en_US": [
+        "It doesn’t affect\n",
+        "the foe’s {STRVAR_1 1, 0, 0}..."
+      ]
+    },
+    {
+      "id": "msg_0197_00030",
+      "en_US": "{STRVAR_1 1, 0, 0} fainted!\r"
+    },
+    {
+      "id": "msg_0197_00031",
+      "en_US": "The wild {STRVAR_1 1, 0, 0} fainted!\r"
+    },
+    {
+      "id": "msg_0197_00032",
+      "en_US": "The foe’s {STRVAR_1 1, 0, 0} fainted!\r"
+    },
+    {
+      "id": "msg_0197_00033",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} got ${STRVAR_1 54, 1, 0}\n",
+        "for winning!\r"
+      ]
+    },
+    {
+      "id": "msg_0197_00034",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} dropped ${STRVAR_1 54, 1, 0}\n",
+        "in panic!\r"
+      ]
+    },
+    {
+      "id": "msg_0197_00035",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} paid out ${STRVAR_1 54, 1, 0}\n",
+        "to the winner.\r"
+      ]
+    },
+    {
+      "id": "msg_0197_00036",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} is out of\n",
+        "usable Pokémon!\r"
+      ]
+    },
+    {
+      "id": "msg_0197_00037",
+      "en_US": "{STRVAR_1 3, 0, 0} blacked out!\r"
+    },
+    {
+      "id": "msg_0197_00038",
+      "en_US": "... ... ... ...\r"
+    },
+    {
+      "id": "msg_0197_00039",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} prevents\n",
+        "escape with {STRVAR_1 5, 1, 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0197_00040",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} prevents\n",
+        "escape with {STRVAR_1 5, 1, 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0197_00041",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} prevents\n",
+        "escape with {STRVAR_1 5, 1, 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0197_00042",
+      "en_US": "Can’t escape!\r"
+    },
+    {
+      "id": "msg_0197_00043",
+      "en_US": "{STRVAR_1 1, 0, 0} can’t escape!\r"
+    },
+    {
+      "id": "msg_0197_00044",
+      "en_US": "The wild {STRVAR_1 1, 0, 0} can’t escape!\r"
+    },
+    {
+      "id": "msg_0197_00045",
+      "en_US": "The foe’s {STRVAR_1 1, 0, 0} can’t escape!\r"
+    },
+    {
+      "id": "msg_0197_00046",
+      "en_US": "Hit {STRVAR_1 50, 0, 0} time(s)!"
+    },
+    {
+      "id": "msg_0197_00047",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}\n",
+        "fell asleep!"
+      ]
+    },
+    {
+      "id": "msg_0197_00048",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}\n",
+        "fell asleep!"
+      ]
+    },
+    {
+      "id": "msg_0197_00049",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}\n",
+        "fell asleep!"
+      ]
+    },
+    {
+      "id": "msg_0197_00050",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s {STRVAR_1 5, 1, 0} made\n",
+        "{STRVAR_1 1, 2, 0} fall asleep!"
+      ]
+    },
+    {
+      "id": "msg_0197_00051",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s {STRVAR_1 5, 1, 0} made\n",
+        "the wild {STRVAR_1 1, 2, 0} fall asleep!"
+      ]
+    },
+    {
+      "id": "msg_0197_00052",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s {STRVAR_1 5, 1, 0} made\n",
+        "the foe’s {STRVAR_1 1, 2, 0} fall asleep!"
+      ]
+    },
+    {
+      "id": "msg_0197_00053",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 5, 1, 0} made {STRVAR_1 1, 2, 0}\f",
+        "fall asleep!"
+      ]
+    },
+    {
+      "id": "msg_0197_00054",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 5, 1, 0} made the wild\f",
+        "{STRVAR_1 1, 2, 0} fall asleep!"
+      ]
+    },
+    {
+      "id": "msg_0197_00055",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 5, 1, 0} made {STRVAR_1 1, 2, 0}\f",
+        "fall asleep!"
+      ]
+    },
+    {
+      "id": "msg_0197_00056",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 5, 1, 0} made the foe’s\f",
+        "{STRVAR_1 1, 2, 0} fall asleep!"
+      ]
+    },
+    {
+      "id": "msg_0197_00057",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is\n",
+        "already asleep!"
+      ]
+    },
+    {
+      "id": "msg_0197_00058",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} is\n",
+        "already asleep!"
+      ]
+    },
+    {
+      "id": "msg_0197_00059",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} is\n",
+        "already asleep!"
+      ]
+    },
+    {
+      "id": "msg_0197_00060",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}\n",
+        "wasn’t affected!"
+      ]
+    },
+    {
+      "id": "msg_0197_00061",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}\n",
+        "wasn’t affected!"
+      ]
+    },
+    {
+      "id": "msg_0197_00062",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}\n",
+        "wasn’t affected!"
+      ]
+    },
+    {
+      "id": "msg_0197_00063",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}\n",
+        "was poisoned!"
+      ]
+    },
+    {
+      "id": "msg_0197_00064",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}\n",
+        "was poisoned!"
+      ]
+    },
+    {
+      "id": "msg_0197_00065",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}\n",
+        "was poisoned!"
+      ]
+    },
+    {
+      "id": "msg_0197_00066",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s {STRVAR_1 5, 1, 0}\n",
+        "poisoned {STRVAR_1 1, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00067",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s {STRVAR_1 5, 1, 0}\n",
+        "poisoned the wild {STRVAR_1 1, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00068",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s {STRVAR_1 5, 1, 0}\n",
+        "poisoned the foe’s {STRVAR_1 1, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00069",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 5, 1, 0} poisoned\f",
+        "{STRVAR_1 1, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00070",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 5, 1, 0} poisoned\f",
+        "the wild {STRVAR_1 1, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00071",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 5, 1, 0} poisoned\f",
+        "{STRVAR_1 1, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00072",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 5, 1, 0} poisoned\f",
+        "the foe’s {STRVAR_1 1, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00073",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is hurt\n",
+        "by poison!"
+      ]
+    },
+    {
+      "id": "msg_0197_00074",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} is hurt\n",
+        "by poison!"
+      ]
+    },
+    {
+      "id": "msg_0197_00075",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} is hurt\n",
+        "by poison!"
+      ]
+    },
+    {
+      "id": "msg_0197_00076",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is already\n",
+        "poisoned."
+      ]
+    },
+    {
+      "id": "msg_0197_00077",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} is already\n",
+        "poisoned."
+      ]
+    },
+    {
+      "id": "msg_0197_00078",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} is already\n",
+        "poisoned."
+      ]
+    },
+    {
+      "id": "msg_0197_00079",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} was badly\n",
+        "poisoned!"
+      ]
+    },
+    {
+      "id": "msg_0197_00080",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} was badly\n",
+        "poisoned!"
+      ]
+    },
+    {
+      "id": "msg_0197_00081",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} was badly\n",
+        "poisoned!"
+      ]
+    },
+    {
+      "id": "msg_0197_00082",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} had its\n",
+        "energy drained!"
+      ]
+    },
+    {
+      "id": "msg_0197_00083",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} had its\n",
+        "energy drained!"
+      ]
+    },
+    {
+      "id": "msg_0197_00084",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} had its\n",
+        "energy drained!"
+      ]
+    },
+    {
+      "id": "msg_0197_00085",
+      "en_US": "{STRVAR_1 1, 0, 0} was burned!"
+    },
+    {
+      "id": "msg_0197_00086",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}\n",
+        "was burned!"
+      ]
+    },
+    {
+      "id": "msg_0197_00087",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}\n",
+        "was burned!"
+      ]
+    },
+    {
+      "id": "msg_0197_00088",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s {STRVAR_1 5, 1, 0}\n",
+        "burned {STRVAR_1 1, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00089",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s {STRVAR_1 5, 1, 0}\n",
+        "burned the wild {STRVAR_1 1, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00090",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s {STRVAR_1 5, 1, 0}\n",
+        "burned the foe’s {STRVAR_1 1, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00091",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 5, 1, 0} burned {STRVAR_1 1, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00092",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 5, 1, 0} burned the wild\f",
+        "{STRVAR_1 1, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00093",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 5, 1, 0} burned {STRVAR_1 1, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00094",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 5, 1, 0} burned the foe’s\f",
+        "{STRVAR_1 1, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00095",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is hurt\n",
+        "by its burn!"
+      ]
+    },
+    {
+      "id": "msg_0197_00096",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} is hurt\n",
+        "by its burn!"
+      ]
+    },
+    {
+      "id": "msg_0197_00097",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} is hurt\n",
+        "by its burn!"
+      ]
+    },
+    {
+      "id": "msg_0197_00098",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} already\n",
+        "has a burn."
+      ]
+    },
+    {
+      "id": "msg_0197_00099",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} already\n",
+        "has a burn."
+      ]
+    },
+    {
+      "id": "msg_0197_00100",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} already\n",
+        "has a burn."
+      ]
+    },
+    {
+      "id": "msg_0197_00101",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} was\n",
+        "frozen solid!"
+      ]
+    },
+    {
+      "id": "msg_0197_00102",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} was\n",
+        "frozen solid!"
+      ]
+    },
+    {
+      "id": "msg_0197_00103",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} was\n",
+        "frozen solid!"
+      ]
+    },
+    {
+      "id": "msg_0197_00104",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s {STRVAR_1 5, 1, 0}\n",
+        "froze {STRVAR_1 1, 2, 0} solid!"
+      ]
+    },
+    {
+      "id": "msg_0197_00105",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s {STRVAR_1 5, 1, 0}\n",
+        "froze the wild {STRVAR_1 1, 2, 0} solid!"
+      ]
+    },
+    {
+      "id": "msg_0197_00106",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s {STRVAR_1 5, 1, 0}\n",
+        "froze the foe’s {STRVAR_1 1, 2, 0} solid!"
+      ]
+    },
+    {
+      "id": "msg_0197_00107",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 5, 1, 0} froze {STRVAR_1 1, 2, 0}\f",
+        "solid!"
+      ]
+    },
+    {
+      "id": "msg_0197_00108",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 5, 1, 0} froze the wild\f",
+        "{STRVAR_1 1, 2, 0} solid!"
+      ]
+    },
+    {
+      "id": "msg_0197_00109",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 5, 1, 0} froze {STRVAR_1 1, 2, 0}\f",
+        "solid!"
+      ]
+    },
+    {
+      "id": "msg_0197_00110",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 5, 1, 0} froze the foe’s\f",
+        "{STRVAR_1 1, 2, 0} solid!"
+      ]
+    },
+    {
+      "id": "msg_0197_00111",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is\n",
+        "frozen solid!"
+      ]
+    },
+    {
+      "id": "msg_0197_00112",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} is\n",
+        "frozen solid!"
+      ]
+    },
+    {
+      "id": "msg_0197_00113",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} is\n",
+        "frozen solid!"
+      ]
+    },
+    {
+      "id": "msg_0197_00114",
+      "en_US": "{STRVAR_1 1, 0, 0} thawed out!"
+    },
+    {
+      "id": "msg_0197_00115",
+      "en_US": "The wild {STRVAR_1 1, 0, 0} thawed out!"
+    },
+    {
+      "id": "msg_0197_00116",
+      "en_US": "The foe’s {STRVAR_1 1, 0, 0} thawed out!"
+    },
+    {
+      "id": "msg_0197_00117",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} was\n",
+        "defrosted by {STRVAR_1 6, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00118",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} was\n",
+        "defrosted by {STRVAR_1 6, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00119",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} was\n",
+        "defrosted by {STRVAR_1 6, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00120",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is paralyzed!\n",
+        "It may be unable to move!"
+      ]
+    },
+    {
+      "id": "msg_0197_00121",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} is paralyzed!\n",
+        "It may be unable to move!"
+      ]
+    },
+    {
+      "id": "msg_0197_00122",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} is paralyzed!\n",
+        "It may be unable to move!"
+      ]
+    },
+    {
+      "id": "msg_0197_00123",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s {STRVAR_1 5, 1, 0}\n",
+        "paralyzed {STRVAR_1 1, 2, 0}!\f",
+        "It may be unable to move!"
+      ]
+    },
+    {
+      "id": "msg_0197_00124",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s {STRVAR_1 5, 1, 0}\n",
+        "paralyzed the wild {STRVAR_1 1, 2, 0}!\f",
+        "It may be unable to move!"
+      ]
+    },
+    {
+      "id": "msg_0197_00125",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s {STRVAR_1 5, 1, 0}\n",
+        "paralyzed the foe’s {STRVAR_1 1, 2, 0}!\f",
+        "It may be unable to move!"
+      ]
+    },
+    {
+      "id": "msg_0197_00126",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}’s {STRVAR_1 5, 1, 0}\n",
+        "paralyzed {STRVAR_1 1, 2, 0}!\f",
+        "It may be unable to move!"
+      ]
+    },
+    {
+      "id": "msg_0197_00127",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 5, 1, 0} paralyzed the wild\f",
+        "{STRVAR_1 1, 2, 0}!\f",
+        "It may be unable to move!"
+      ]
+    },
+    {
+      "id": "msg_0197_00128",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 5, 1, 0} paralyzed\f",
+        "{STRVAR_1 1, 2, 0}!\f",
+        "It may be unable to move!"
+      ]
+    },
+    {
+      "id": "msg_0197_00129",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 5, 1, 0} paralyzed the foe’s\f",
+        "{STRVAR_1 1, 2, 0}!\f",
+        "It may be unable to move!"
+      ]
+    },
+    {
+      "id": "msg_0197_00130",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is paralyzed!\n",
+        "It can’t move!"
+      ]
+    },
+    {
+      "id": "msg_0197_00131",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} is paralyzed!\n",
+        "It can’t move!"
+      ]
+    },
+    {
+      "id": "msg_0197_00132",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} is paralyzed!\n",
+        "It can’t move!"
+      ]
+    },
+    {
+      "id": "msg_0197_00133",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is\n",
+        "already paralyzed!"
+      ]
+    },
+    {
+      "id": "msg_0197_00134",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} is\n",
+        "already paralyzed!"
+      ]
+    },
+    {
+      "id": "msg_0197_00135",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} is\n",
+        "already paralyzed!"
+      ]
+    },
+    {
+      "id": "msg_0197_00136",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} was\n",
+        "healed of paralysis!"
+      ]
+    },
+    {
+      "id": "msg_0197_00137",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} was\n",
+        "healed of paralysis!"
+      ]
+    },
+    {
+      "id": "msg_0197_00138",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} was\n",
+        "healed of paralysis!"
+      ]
+    },
+    {
+      "id": "msg_0197_00139",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s\n",
+        "dream was eaten!"
+      ]
+    },
+    {
+      "id": "msg_0197_00140",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}’s\n",
+        "dream was eaten!"
+      ]
+    },
+    {
+      "id": "msg_0197_00141",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}’s\n",
+        "dream was eaten!"
+      ]
+    },
+    {
+      "id": "msg_0197_00142",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s {STRVAR_1 13, 1, 0}\n",
+        "won’t go higher!"
+      ]
+    },
+    {
+      "id": "msg_0197_00143",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}’s {STRVAR_1 13, 1, 0}\n",
+        "won’t go higher!"
+      ]
+    },
+    {
+      "id": "msg_0197_00144",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}’s {STRVAR_1 13, 1, 0}\n",
+        "won’t go higher!"
+      ]
+    },
+    {
+      "id": "msg_0197_00145",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s {STRVAR_1 13, 1, 0}\n",
+        "won’t go lower!"
+      ]
+    },
+    {
+      "id": "msg_0197_00146",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}’s {STRVAR_1 13, 1, 0}\n",
+        "won’t go lower!"
+      ]
+    },
+    {
+      "id": "msg_0197_00147",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}’s {STRVAR_1 13, 1, 0}\n",
+        "won’t go lower!"
+      ]
+    },
+    {
+      "id": "msg_0197_00148",
+      "en_US": [
+        "The effect of your team’s\n",
+        "{STRVAR_1 6, 0, 0} wore off!"
+      ]
+    },
+    {
+      "id": "msg_0197_00149",
+      "en_US": [
+        "The effect of the foe’s\n",
+        "{STRVAR_1 6, 0, 0} wore off!"
+      ]
+    },
+    {
+      "id": "msg_0197_00150",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is\n",
+        "confused!"
+      ]
+    },
+    {
+      "id": "msg_0197_00151",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} is\n",
+        "confused!"
+      ]
+    },
+    {
+      "id": "msg_0197_00152",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} is\n",
+        "confused!"
+      ]
+    },
+    {
+      "id": "msg_0197_00153",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} snapped\n",
+        "out of confusion!"
+      ]
+    },
+    {
+      "id": "msg_0197_00154",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} snapped\n",
+        "out of confusion!"
+      ]
+    },
+    {
+      "id": "msg_0197_00155",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} snapped\n",
+        "out of confusion!"
+      ]
+    },
+    {
+      "id": "msg_0197_00156",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} became\n",
+        "confused!"
+      ]
+    },
+    {
+      "id": "msg_0197_00157",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} became\n",
+        "confused!"
+      ]
+    },
+    {
+      "id": "msg_0197_00158",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} became\n",
+        "confused!"
+      ]
+    },
+    {
+      "id": "msg_0197_00159",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is\n",
+        "already confused!"
+      ]
+    },
+    {
+      "id": "msg_0197_00160",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} is\n",
+        "already confused!"
+      ]
+    },
+    {
+      "id": "msg_0197_00161",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} is\n",
+        "already confused!"
+      ]
+    },
+    {
+      "id": "msg_0197_00162",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}\n",
+        "fell in love!"
+      ]
+    },
+    {
+      "id": "msg_0197_00163",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}\n",
+        "fell in love!"
+      ]
+    },
+    {
+      "id": "msg_0197_00164",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}\n",
+        "fell in love!"
+      ]
+    },
+    {
+      "id": "msg_0197_00165",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is in love\n",
+        "with {STRVAR_1 1, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00166",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is in love\n",
+        "with the wild {STRVAR_1 1, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00167",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is in love\n",
+        "with the foe’s {STRVAR_1 1, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00168",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} is in love\n",
+        "with {STRVAR_1 1, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00169",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} is in love\n",
+        "with the wild {STRVAR_1 1, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00170",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} is in love\n",
+        "with {STRVAR_1 1, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00171",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} is in love\n",
+        "with the foe’s {STRVAR_1 1, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00172",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is\n",
+        "immobilized by love!"
+      ]
+    },
+    {
+      "id": "msg_0197_00173",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} is\n",
+        "immobilized by love!"
+      ]
+    },
+    {
+      "id": "msg_0197_00174",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} is\n",
+        "immobilized by love!"
+      ]
+    },
+    {
+      "id": "msg_0197_00175",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} was\n",
+        "blown away!"
+      ]
+    },
+    {
+      "id": "msg_0197_00176",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} was\n",
+        "blown away!"
+      ]
+    },
+    {
+      "id": "msg_0197_00177",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} was\n",
+        "blown away!"
+      ]
+    },
+    {
+      "id": "msg_0197_00178",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} transformed\n",
+        "into the {STRVAR_1 15, 1, 0} type!"
+      ]
+    },
+    {
+      "id": "msg_0197_00179",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} transformed\n",
+        "into the {STRVAR_1 15, 1, 0} type!"
+      ]
+    },
+    {
+      "id": "msg_0197_00180",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} transformed\n",
+        "into the {STRVAR_1 15, 1, 0} type!"
+      ]
+    },
+    {
+      "id": "msg_0197_00181",
+      "en_US": "{STRVAR_1 1, 0, 0} flinched!"
+    },
+    {
+      "id": "msg_0197_00182",
+      "en_US": "The wild {STRVAR_1 1, 0, 0} flinched!"
+    },
+    {
+      "id": "msg_0197_00183",
+      "en_US": "The foe’s {STRVAR_1 1, 0, 0} flinched!"
+    },
+    {
+      "id": "msg_0197_00184",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} regained\n",
+        "health!"
+      ]
+    },
+    {
+      "id": "msg_0197_00185",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} regained\n",
+        "health!"
+      ]
+    },
+    {
+      "id": "msg_0197_00186",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} regained\n",
+        "health!"
+      ]
+    },
+    {
+      "id": "msg_0197_00187",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s\n",
+        "HP is full!"
+      ]
+    },
+    {
+      "id": "msg_0197_00188",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}’s\n",
+        "HP is full!"
+      ]
+    },
+    {
+      "id": "msg_0197_00189",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}’s\n",
+        "HP is full!"
+      ]
+    },
+    {
+      "id": "msg_0197_00190",
+      "en_US": [
+        "{STRVAR_1 6, 0, 0} raised your team’s\n",
+        "Special Defense!"
+      ]
+    },
+    {
+      "id": "msg_0197_00191",
+      "en_US": [
+        "The foe’s {STRVAR_1 6, 0, 0} raised\n",
+        "its team’s Special Defense!"
+      ]
+    },
+    {
+      "id": "msg_0197_00192",
+      "en_US": [
+        "{STRVAR_1 6, 0, 0} raised your team’s\n",
+        "Special Defense slightly!"
+      ]
+    },
+    {
+      "id": "msg_0197_00193",
+      "en_US": [
+        "The foe’s {STRVAR_1 6, 0, 0} raised\n",
+        "its team’s Special Defense slightly!"
+      ]
+    },
+    {
+      "id": "msg_0197_00194",
+      "en_US": [
+        "{STRVAR_1 6, 0, 0} raised your team’s\n",
+        "Defense!"
+      ]
+    },
+    {
+      "id": "msg_0197_00195",
+      "en_US": [
+        "The foe’s {STRVAR_1 6, 0, 0} raised\n",
+        "its team’s Defense!"
+      ]
+    },
+    {
+      "id": "msg_0197_00196",
+      "en_US": [
+        "{STRVAR_1 6, 0, 0} raised your team’s\n",
+        "Defense slightly!"
+      ]
+    },
+    {
+      "id": "msg_0197_00197",
+      "en_US": [
+        "The foe’s {STRVAR_1 6, 0, 0} raised\n",
+        "its team’s Defense slightly!"
+      ]
+    },
+    {
+      "id": "msg_0197_00198",
+      "en_US": [
+        "Your team became cloaked in\n",
+        "a mystical veil!"
+      ]
+    },
+    {
+      "id": "msg_0197_00199",
+      "en_US": [
+        "The foe’s team became\n",
+        "cloaked in a mystical veil!"
+      ]
+    },
+    {
+      "id": "msg_0197_00200",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is protected\n",
+        "by Safeguard!"
+      ]
+    },
+    {
+      "id": "msg_0197_00201",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} is protected\n",
+        "by Safeguard!"
+      ]
+    },
+    {
+      "id": "msg_0197_00202",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} is protected\n",
+        "by Safeguard!"
+      ]
+    },
+    {
+      "id": "msg_0197_00203",
+      "en_US": [
+        "Your team is no longer protected\n",
+        "by Safeguard!"
+      ]
+    },
+    {
+      "id": "msg_0197_00204",
+      "en_US": [
+        "The foe is no longer protected\n",
+        "by Safeguard!"
+      ]
+    },
+    {
+      "id": "msg_0197_00205",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} went\n",
+        "to sleep!"
+      ]
+    },
+    {
+      "id": "msg_0197_00206",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} went\n",
+        "to sleep!"
+      ]
+    },
+    {
+      "id": "msg_0197_00207",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} went\n",
+        "to sleep!"
+      ]
+    },
+    {
+      "id": "msg_0197_00208",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} slept and\n",
+        "became healthy!"
+      ]
+    },
+    {
+      "id": "msg_0197_00209",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} slept and\n",
+        "became healthy!"
+      ]
+    },
+    {
+      "id": "msg_0197_00210",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} slept and\n",
+        "became healthy!"
+      ]
+    },
+    {
+      "id": "msg_0197_00211",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} whipped\n",
+        "up a whirlwind!"
+      ]
+    },
+    {
+      "id": "msg_0197_00212",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} whipped\n",
+        "up a whirlwind!"
+      ]
+    },
+    {
+      "id": "msg_0197_00213",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} whipped\n",
+        "up a whirlwind!"
+      ]
+    },
+    {
+      "id": "msg_0197_00214",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} absorbed\n",
+        "light!"
+      ]
+    },
+    {
+      "id": "msg_0197_00215",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} absorbed\n",
+        "light!"
+      ]
+    },
+    {
+      "id": "msg_0197_00216",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} absorbed\n",
+        "light!"
+      ]
+    },
+    {
+      "id": "msg_0197_00217",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} tucked in\n",
+        "its head!"
+      ]
+    },
+    {
+      "id": "msg_0197_00218",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} tucked in\n",
+        "its head!"
+      ]
+    },
+    {
+      "id": "msg_0197_00219",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} tucked in\n",
+        "its head!"
+      ]
+    },
+    {
+      "id": "msg_0197_00220",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} became\n",
+        "cloaked in a harsh light!"
+      ]
+    },
+    {
+      "id": "msg_0197_00221",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} became\n",
+        "cloaked in a harsh light!"
+      ]
+    },
+    {
+      "id": "msg_0197_00222",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} became\n",
+        "cloaked in a harsh light!"
+      ]
+    },
+    {
+      "id": "msg_0197_00223",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} flew\n",
+        "up high!"
+      ]
+    },
+    {
+      "id": "msg_0197_00224",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} flew\n",
+        "up high!"
+      ]
+    },
+    {
+      "id": "msg_0197_00225",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} flew\n",
+        "up high!"
+      ]
+    },
+    {
+      "id": "msg_0197_00226",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} burrowed its\n",
+        "way under the ground!"
+      ]
+    },
+    {
+      "id": "msg_0197_00227",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} burrowed\n",
+        "its way under the ground!"
+      ]
+    },
+    {
+      "id": "msg_0197_00228",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} burrowed its\n",
+        "way under the ground!"
+      ]
+    },
+    {
+      "id": "msg_0197_00229",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} hid\n",
+        "underwater!"
+      ]
+    },
+    {
+      "id": "msg_0197_00230",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} hid\n",
+        "underwater!"
+      ]
+    },
+    {
+      "id": "msg_0197_00231",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} hid\n",
+        "underwater!"
+      ]
+    },
+    {
+      "id": "msg_0197_00232",
+      "en_US": "{STRVAR_1 1, 0, 0} sprang up!"
+    },
+    {
+      "id": "msg_0197_00233",
+      "en_US": "The wild {STRVAR_1 1, 0, 0} sprang up!"
+    },
+    {
+      "id": "msg_0197_00234",
+      "en_US": "The foe’s {STRVAR_1 1, 0, 0} sprang up!"
+    },
+    {
+      "id": "msg_0197_00235",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} was squeezed\n",
+        "by {STRVAR_1 1, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00236",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} was squeezed\n",
+        "by the wild {STRVAR_1 1, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00237",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} was squeezed\n",
+        "by the foe’s {STRVAR_1 1, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00238",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} was squeezed\n",
+        "by {STRVAR_1 1, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00239",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} was squeezed\n",
+        "by the wild {STRVAR_1 1, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00240",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} was squeezed\n",
+        "by {STRVAR_1 1, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00241",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} was squeezed\n",
+        "by the foe’s {STRVAR_1 1, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00242",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} was trapped\n",
+        "in the vortex!"
+      ]
+    },
+    {
+      "id": "msg_0197_00243",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} was trapped\n",
+        "in the vortex!"
+      ]
+    },
+    {
+      "id": "msg_0197_00244",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} was trapped\n",
+        "in the vortex!"
+      ]
+    },
+    {
+      "id": "msg_0197_00245",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} was trapped\n",
+        "by Sand Tomb!"
+      ]
+    },
+    {
+      "id": "msg_0197_00246",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} was trapped\n",
+        "by Sand Tomb!"
+      ]
+    },
+    {
+      "id": "msg_0197_00247",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} was trapped\n",
+        "by Sand Tomb!"
+      ]
+    },
+    {
+      "id": "msg_0197_00248",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} was wrapped by\n",
+        "{STRVAR_1 1, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00249",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} was wrapped by\n",
+        "the wild {STRVAR_1 1, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00250",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} was wrapped by\n",
+        "the foe’s {STRVAR_1 1, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00251",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} was wrapped\n",
+        "by {STRVAR_1 1, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00252",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} was wrapped\n",
+        "by the wild {STRVAR_1 1, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00253",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} was wrapped\n",
+        "by {STRVAR_1 1, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00254",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} was wrapped\n",
+        "by the foe’s {STRVAR_1 1, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00255",
+      "en_US": [
+        "{STRVAR_1 1, 1, 0} clamped\n",
+        "{STRVAR_1 1, 0, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00256",
+      "en_US": [
+        "The wild {STRVAR_1 1, 1, 0} clamped\n",
+        "{STRVAR_1 1, 0, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00257",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 1, 0} clamped\n",
+        "{STRVAR_1 1, 0, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00258",
+      "en_US": [
+        "{STRVAR_1 1, 1, 0} clamped\n",
+        "the wild {STRVAR_1 1, 0, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00259",
+      "en_US": [
+        "The wild {STRVAR_1 1, 1, 0} clamped\n",
+        "the wild {STRVAR_1 1, 0, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00260",
+      "en_US": [
+        "{STRVAR_1 1, 1, 0} clamped\n",
+        "the foe’s {STRVAR_1 1, 0, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00261",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 1, 0} clamped\n",
+        "the foe’s {STRVAR_1 1, 0, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00262",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is hurt\n",
+        "by {STRVAR_1 6, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00263",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} is hurt\n",
+        "by {STRVAR_1 6, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00264",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} is hurt\n",
+        "by {STRVAR_1 6, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00265",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} was freed\n",
+        "from {STRVAR_1 6, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00266",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} was freed\n",
+        "from {STRVAR_1 6, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00267",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} was freed\n",
+        "from {STRVAR_1 6, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00268",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} kept going\n",
+        "and crashed!"
+      ]
+    },
+    {
+      "id": "msg_0197_00269",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} kept going\n",
+        "and crashed!"
+      ]
+    },
+    {
+      "id": "msg_0197_00270",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} kept going\n",
+        "and crashed!"
+      ]
+    },
+    {
+      "id": "msg_0197_00271",
+      "en_US": [
+        "Your team became\n",
+        "shrouded in mist!"
+      ]
+    },
+    {
+      "id": "msg_0197_00272",
+      "en_US": [
+        "The foe’s team became\n",
+        "shrouded in mist!"
+      ]
+    },
+    {
+      "id": "msg_0197_00273",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is protected\n",
+        "by Mist!"
+      ]
+    },
+    {
+      "id": "msg_0197_00274",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} is protected\n",
+        "by Mist!"
+      ]
+    },
+    {
+      "id": "msg_0197_00275",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} is protected\n",
+        "by Mist!"
+      ]
+    },
+    {
+      "id": "msg_0197_00276",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is getting\n",
+        "pumped!"
+      ]
+    },
+    {
+      "id": "msg_0197_00277",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} is getting\n",
+        "pumped!"
+      ]
+    },
+    {
+      "id": "msg_0197_00278",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} is getting\n",
+        "pumped!"
+      ]
+    },
+    {
+      "id": "msg_0197_00279",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is hit\n",
+        "with recoil!"
+      ]
+    },
+    {
+      "id": "msg_0197_00280",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} is hit\n",
+        "with recoil!"
+      ]
+    },
+    {
+      "id": "msg_0197_00281",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} is hit\n",
+        "with recoil!"
+      ]
+    },
+    {
+      "id": "msg_0197_00282",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} protected\n",
+        "itself!"
+      ]
+    },
+    {
+      "id": "msg_0197_00283",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} protected\n",
+        "itself!"
+      ]
+    },
+    {
+      "id": "msg_0197_00284",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} protected\n",
+        "itself!"
+      ]
+    },
+    {
+      "id": "msg_0197_00285",
+      "en_US": [
+        "{STRVAR_1 1, 1, 0} is buffeted\n",
+        "by the {STRVAR_1 6, 0, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00286",
+      "en_US": [
+        "The wild {STRVAR_1 1, 1, 0} is buffeted\n",
+        "by the {STRVAR_1 6, 0, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00287",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 1, 0} is buffeted\n",
+        "by the {STRVAR_1 6, 0, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00288",
+      "en_US": [
+        "Your team’s {STRVAR_1 6, 0, 0}\n",
+        "wore off!"
+      ]
+    },
+    {
+      "id": "msg_0197_00289",
+      "en_US": [
+        "The foe’s {STRVAR_1 6, 0, 0}\n",
+        "wore off!"
+      ]
+    },
+    {
+      "id": "msg_0197_00290",
+      "en_US": "{STRVAR_1 1, 0, 0} was seeded!"
+    },
+    {
+      "id": "msg_0197_00291",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}\n",
+        "was seeded!"
+      ]
+    },
+    {
+      "id": "msg_0197_00292",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}\n",
+        "was seeded!"
+      ]
+    },
+    {
+      "id": "msg_0197_00293",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} evaded\n",
+        "the attack!"
+      ]
+    },
+    {
+      "id": "msg_0197_00294",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} evaded\n",
+        "the attack!"
+      ]
+    },
+    {
+      "id": "msg_0197_00295",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} evaded\n",
+        "the attack!"
+      ]
+    },
+    {
+      "id": "msg_0197_00296",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s health is\n",
+        "sapped by Leech Seed!"
+      ]
+    },
+    {
+      "id": "msg_0197_00297",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}’s health is\n",
+        "sapped by Leech Seed!"
+      ]
+    },
+    {
+      "id": "msg_0197_00298",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}’s health is\n",
+        "sapped by Leech Seed!"
+      ]
+    },
+    {
+      "id": "msg_0197_00299",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is fast\n",
+        "asleep."
+      ]
+    },
+    {
+      "id": "msg_0197_00300",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} is fast\n",
+        "asleep."
+      ]
+    },
+    {
+      "id": "msg_0197_00301",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} is fast\n",
+        "asleep."
+      ]
+    },
+    {
+      "id": "msg_0197_00302",
+      "en_US": "{STRVAR_1 1, 0, 0} woke up!"
+    },
+    {
+      "id": "msg_0197_00303",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}\n",
+        "woke up!"
+      ]
+    },
+    {
+      "id": "msg_0197_00304",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}\n",
+        "woke up!"
+      ]
+    },
+    {
+      "id": "msg_0197_00305",
+      "en_US": [
+        "The uproar woke up\n",
+        "the {STRVAR_1 1, 0, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00306",
+      "en_US": [
+        "The uproar woke up the\n",
+        "wild {STRVAR_1 1, 0, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00307",
+      "en_US": [
+        "The uproar woke up the\n",
+        "foe’s {STRVAR_1 1, 0, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00308",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} caused\n",
+        "an uproar!"
+      ]
+    },
+    {
+      "id": "msg_0197_00309",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} caused\n",
+        "an uproar!"
+      ]
+    },
+    {
+      "id": "msg_0197_00310",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} caused\n",
+        "an uproar!"
+      ]
+    },
+    {
+      "id": "msg_0197_00311",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is making\n",
+        "an uproar!"
+      ]
+    },
+    {
+      "id": "msg_0197_00312",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} is making\n",
+        "an uproar!"
+      ]
+    },
+    {
+      "id": "msg_0197_00313",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} is making\n",
+        "an uproar!"
+      ]
+    },
+    {
+      "id": "msg_0197_00314",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}\n",
+        "calmed down."
+      ]
+    },
+    {
+      "id": "msg_0197_00315",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}\n",
+        "calmed down."
+      ]
+    },
+    {
+      "id": "msg_0197_00316",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}\n",
+        "calmed down."
+      ]
+    },
+    {
+      "id": "msg_0197_00317",
+      "en_US": "{STRVAR_1 1, 0, 0} stockpiled {STRVAR_1 50, 1, 0}!"
+    },
+    {
+      "id": "msg_0197_00318",
+      "en_US": "The wild {STRVAR_1 1, 0, 0} stockpiled {STRVAR_1 50, 1, 0}!"
+    },
+    {
+      "id": "msg_0197_00319",
+      "en_US": "The foe’s {STRVAR_1 1, 0, 0} stockpiled {STRVAR_1 50, 1, 0}!"
+    },
+    {
+      "id": "msg_0197_00320",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} can’t\n",
+        "stockpile any more!"
+      ]
+    },
+    {
+      "id": "msg_0197_00321",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} can’t\n",
+        "stockpile any more!"
+      ]
+    },
+    {
+      "id": "msg_0197_00322",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} can’t\n",
+        "stockpile any more!"
+      ]
+    },
+    {
+      "id": "msg_0197_00323",
+      "en_US": [
+        "But {STRVAR_1 1, 0, 0} can’t\n",
+        "sleep in an uproar!"
+      ]
+    },
+    {
+      "id": "msg_0197_00324",
+      "en_US": [
+        "But the wild {STRVAR_1 1, 0, 0} can’t\n",
+        "sleep in an uproar!"
+      ]
+    },
+    {
+      "id": "msg_0197_00325",
+      "en_US": [
+        "But the foe’s {STRVAR_1 1, 0, 0} can’t\n",
+        "sleep in an uproar!"
+      ]
+    },
+    {
+      "id": "msg_0197_00326",
+      "en_US": [
+        "But the uproar kept\n",
+        "{STRVAR_1 1, 0, 0} awake!"
+      ]
+    },
+    {
+      "id": "msg_0197_00327",
+      "en_US": [
+        "But the uproar kept\n",
+        "the wild {STRVAR_1 1, 0, 0} awake!"
+      ]
+    },
+    {
+      "id": "msg_0197_00328",
+      "en_US": [
+        "But the uproar kept\n",
+        "the foe’s {STRVAR_1 1, 0, 0} awake!"
+      ]
+    },
+    {
+      "id": "msg_0197_00329",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} stayed awake\n",
+        "because of its {STRVAR_1 5, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00330",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} stayed awake\n",
+        "because of its {STRVAR_1 5, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00331",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} stayed awake\n",
+        "because of its {STRVAR_1 5, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00332",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is storing\n",
+        "energy!"
+      ]
+    },
+    {
+      "id": "msg_0197_00333",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} is storing\n",
+        "energy!"
+      ]
+    },
+    {
+      "id": "msg_0197_00334",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} is storing\n",
+        "energy!"
+      ]
+    },
+    {
+      "id": "msg_0197_00335",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} unleashed\n",
+        "energy!"
+      ]
+    },
+    {
+      "id": "msg_0197_00336",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} unleashed\n",
+        "energy!"
+      ]
+    },
+    {
+      "id": "msg_0197_00337",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} unleashed\n",
+        "energy!"
+      ]
+    },
+    {
+      "id": "msg_0197_00338",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} became\n",
+        "confused due to fatigue!"
+      ]
+    },
+    {
+      "id": "msg_0197_00339",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} became\n",
+        "confused due to fatigue!"
+      ]
+    },
+    {
+      "id": "msg_0197_00340",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} became\n",
+        "confused due to fatigue!"
+      ]
+    },
+    {
+      "id": "msg_0197_00341",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} picked up\n",
+        "${STRVAR_1 54, 1, 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0197_00342",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is\n",
+        "unaffected!"
+      ]
+    },
+    {
+      "id": "msg_0197_00343",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} is\n",
+        "unaffected!"
+      ]
+    },
+    {
+      "id": "msg_0197_00344",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} is\n",
+        "unaffected!"
+      ]
+    },
+    {
+      "id": "msg_0197_00345",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} transformed\n",
+        "into {STRVAR_1 0, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00346",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} transformed\n",
+        "into {STRVAR_1 0, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00347",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} transformed\n",
+        "into {STRVAR_1 0, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00348",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} made\n",
+        "a substitute!"
+      ]
+    },
+    {
+      "id": "msg_0197_00349",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} made\n",
+        "a substitute!"
+      ]
+    },
+    {
+      "id": "msg_0197_00350",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} made\n",
+        "a substitute!"
+      ]
+    },
+    {
+      "id": "msg_0197_00351",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} already\n",
+        "has a substitute!"
+      ]
+    },
+    {
+      "id": "msg_0197_00352",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} already\n",
+        "has a substitute!"
+      ]
+    },
+    {
+      "id": "msg_0197_00353",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} already\n",
+        "has a substitute!"
+      ]
+    },
+    {
+      "id": "msg_0197_00354",
+      "en_US": [
+        "The substitute took damage\n",
+        "for {STRVAR_1 1, 0, 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0197_00355",
+      "en_US": [
+        "The substitute took damage\n",
+        "for the wild {STRVAR_1 1, 0, 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0197_00356",
+      "en_US": [
+        "The substitute took damage\n",
+        "for the foe’s {STRVAR_1 1, 0, 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0197_00357",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s\n",
+        "substitute faded!\r"
+      ]
+    },
+    {
+      "id": "msg_0197_00358",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}’s\n",
+        "substitute faded!\r"
+      ]
+    },
+    {
+      "id": "msg_0197_00359",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}’s\n",
+        "substitute faded!\r"
+      ]
+    },
+    {
+      "id": "msg_0197_00360",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} must\n",
+        "recharge!"
+      ]
+    },
+    {
+      "id": "msg_0197_00361",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} must\n",
+        "recharge!"
+      ]
+    },
+    {
+      "id": "msg_0197_00362",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} must\n",
+        "recharge!"
+      ]
+    },
+    {
+      "id": "msg_0197_00363",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s rage\n",
+        "is building!"
+      ]
+    },
+    {
+      "id": "msg_0197_00364",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}’s rage\n",
+        "is building!"
+      ]
+    },
+    {
+      "id": "msg_0197_00365",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}’s rage\n",
+        "is building!"
+      ]
+    },
+    {
+      "id": "msg_0197_00366",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s {STRVAR_1 6, 1, 0}\n",
+        "was disabled!"
+      ]
+    },
+    {
+      "id": "msg_0197_00367",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 6, 1, 0} was disabled!"
+      ]
+    },
+    {
+      "id": "msg_0197_00368",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 6, 1, 0} was disabled!"
+      ]
+    },
+    {
+      "id": "msg_0197_00369",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is no\n",
+        "longer disabled!"
+      ]
+    },
+    {
+      "id": "msg_0197_00370",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} is no\n",
+        "longer disabled!"
+      ]
+    },
+    {
+      "id": "msg_0197_00371",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} is no\n",
+        "longer disabled!"
+      ]
+    },
+    {
+      "id": "msg_0197_00372",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} received\n",
+        "an encore!"
+      ]
+    },
+    {
+      "id": "msg_0197_00373",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} received\n",
+        "an encore!"
+      ]
+    },
+    {
+      "id": "msg_0197_00374",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} received\n",
+        "an encore!"
+      ]
+    },
+    {
+      "id": "msg_0197_00375",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s encore\n",
+        "ended!"
+      ]
+    },
+    {
+      "id": "msg_0197_00376",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}’s encore\n",
+        "ended!"
+      ]
+    },
+    {
+      "id": "msg_0197_00377",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}’s encore\n",
+        "ended!"
+      ]
+    },
+    {
+      "id": "msg_0197_00378",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} took aim at\n",
+        "{STRVAR_1 1, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00379",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} took aim at\n",
+        "the wild {STRVAR_1 1, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00380",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} took aim at\n",
+        "the foe’s {STRVAR_1 1, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00381",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} took aim at\n",
+        "{STRVAR_1 1, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00382",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} took aim at\n",
+        "the wild {STRVAR_1 1, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00383",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} took aim at\n",
+        "{STRVAR_1 1, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00384",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} took aim at\n",
+        "the foe’s {STRVAR_1 1, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00385",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} sketched\n",
+        "{STRVAR_1 6, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00386",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} sketched\n",
+        "{STRVAR_1 6, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00387",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} sketched\n",
+        "{STRVAR_1 6, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00388",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is trying\n",
+        "to take its foe with it!"
+      ]
+    },
+    {
+      "id": "msg_0197_00389",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} is trying\n",
+        "to take its foe with it!"
+      ]
+    },
+    {
+      "id": "msg_0197_00390",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} is trying\n",
+        "to take its foe with it!"
+      ]
+    },
+    {
+      "id": "msg_0197_00391",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} took\n",
+        "{STRVAR_1 1, 1, 0} down with it!"
+      ]
+    },
+    {
+      "id": "msg_0197_00392",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} took the wild\n",
+        "{STRVAR_1 1, 1, 0} down with it!"
+      ]
+    },
+    {
+      "id": "msg_0197_00393",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} took the foe’s\n",
+        "{STRVAR_1 1, 1, 0} down with it!"
+      ]
+    },
+    {
+      "id": "msg_0197_00394",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} took\n",
+        "{STRVAR_1 1, 1, 0} down with it!"
+      ]
+    },
+    {
+      "id": "msg_0197_00395",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} took\n",
+        "the wild {STRVAR_1 1, 1, 0} down with it!"
+      ]
+    },
+    {
+      "id": "msg_0197_00396",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} took\n",
+        "{STRVAR_1 1, 1, 0} down with it!"
+      ]
+    },
+    {
+      "id": "msg_0197_00397",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} took\n",
+        "the foe’s {STRVAR_1 1, 1, 0} down with it!"
+      ]
+    },
+    {
+      "id": "msg_0197_00398",
+      "en_US": [
+        "It reduced the PP of {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 6, 1, 0} by {STRVAR_1 50, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00399",
+      "en_US": [
+        "It reduced the PP of the wild\n",
+        "{STRVAR_1 1, 0, 0}’s {STRVAR_1 6, 1, 0} by {STRVAR_1 50, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00400",
+      "en_US": [
+        "It reduced the PP of the foe’s\n",
+        "{STRVAR_1 1, 0, 0}’s {STRVAR_1 6, 1, 0} by {STRVAR_1 50, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00401",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} stole\n",
+        "{STRVAR_1 1, 1, 0}’s {STRVAR_1 8, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00402",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} stole the wild\n",
+        "{STRVAR_1 1, 1, 0}’s {STRVAR_1 8, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00403",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} stole the foe’s\n",
+        "{STRVAR_1 1, 1, 0}’s {STRVAR_1 8, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00404",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} stole\n",
+        "{STRVAR_1 1, 1, 0}’s {STRVAR_1 8, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00405",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} stole the wild\n",
+        "{STRVAR_1 1, 1, 0}’s {STRVAR_1 8, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00406",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} stole\n",
+        "{STRVAR_1 1, 1, 0}’s {STRVAR_1 8, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00407",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} stole the\n",
+        "foe’s {STRVAR_1 1, 1, 0}’s {STRVAR_1 8, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00408",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} can no\n",
+        "longer escape!"
+      ]
+    },
+    {
+      "id": "msg_0197_00409",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} can no\n",
+        "longer escape!"
+      ]
+    },
+    {
+      "id": "msg_0197_00410",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} can no\n",
+        "longer escape!"
+      ]
+    },
+    {
+      "id": "msg_0197_00411",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} began having\n",
+        "a nightmare!"
+      ]
+    },
+    {
+      "id": "msg_0197_00412",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} began\n",
+        "having a nightmare!"
+      ]
+    },
+    {
+      "id": "msg_0197_00413",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} began\n",
+        "having a nightmare!"
+      ]
+    },
+    {
+      "id": "msg_0197_00414",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is locked\n",
+        "in a nightmare!"
+      ]
+    },
+    {
+      "id": "msg_0197_00415",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} is locked\n",
+        "in a nightmare!"
+      ]
+    },
+    {
+      "id": "msg_0197_00416",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} is locked\n",
+        "in a nightmare!"
+      ]
+    },
+    {
+      "id": "msg_0197_00417",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} cut its own HP\n",
+        "and laid a curse on {STRVAR_1 1, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00418",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} cut its own HP\n",
+        "and laid a curse on the wild\f",
+        "{STRVAR_1 1, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00419",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} cut its own HP\n",
+        "and laid a curse on the foe’s\f",
+        "{STRVAR_1 1, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00420",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} cut its own HP\n",
+        "and laid a curse on {STRVAR_1 1, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00421",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} cut its own HP\n",
+        "and laid a curse on the wild\f",
+        "{STRVAR_1 1, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00422",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} cut its own HP\n",
+        "and laid a curse on {STRVAR_1 1, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00423",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} cut its own HP\n",
+        "and laid a curse on the foe’s\f",
+        "{STRVAR_1 1, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00424",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is afflicted\n",
+        "by the curse!"
+      ]
+    },
+    {
+      "id": "msg_0197_00425",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} is afflicted\n",
+        "by the curse!"
+      ]
+    },
+    {
+      "id": "msg_0197_00426",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} is afflicted\n",
+        "by the curse!"
+      ]
+    },
+    {
+      "id": "msg_0197_00427",
+      "en_US": [
+        "Spikes were scattered all around\n",
+        "your team’s feet!"
+      ]
+    },
+    {
+      "id": "msg_0197_00428",
+      "en_US": [
+        "Spikes were scattered all around\n",
+        "the feet of the foe’s team!"
+      ]
+    },
+    {
+      "id": "msg_0197_00429",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is hurt\n",
+        "by the spikes!"
+      ]
+    },
+    {
+      "id": "msg_0197_00430",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} is hurt\n",
+        "by the spikes!"
+      ]
+    },
+    {
+      "id": "msg_0197_00431",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} is hurt\n",
+        "by the spikes!"
+      ]
+    },
+    {
+      "id": "msg_0197_00432",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} identified\n",
+        "{STRVAR_1 1, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00433",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} identified\n",
+        "the wild {STRVAR_1 1, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00434",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} identified\n",
+        "the foe’s {STRVAR_1 1, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00435",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} identified\n",
+        "{STRVAR_1 1, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00436",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} identified\n",
+        "the wild {STRVAR_1 1, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00437",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} identified\n",
+        "{STRVAR_1 1, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00438",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} identified\n",
+        "the foe’s {STRVAR_1 1, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00439",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s perish count\n",
+        "fell to {STRVAR_1 50, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00440",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}’s perish count\n",
+        "fell to {STRVAR_1 50, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00441",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}’s perish count\n",
+        "fell to {STRVAR_1 50, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00442",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} braced\n",
+        "itself!"
+      ]
+    },
+    {
+      "id": "msg_0197_00443",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} braced\n",
+        "itself!"
+      ]
+    },
+    {
+      "id": "msg_0197_00444",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} braced\n",
+        "itself!"
+      ]
+    },
+    {
+      "id": "msg_0197_00445",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} endured\n",
+        "the hit!"
+      ]
+    },
+    {
+      "id": "msg_0197_00446",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} endured\n",
+        "the hit!"
+      ]
+    },
+    {
+      "id": "msg_0197_00447",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} endured\n",
+        "the hit!"
+      ]
+    },
+    {
+      "id": "msg_0197_00448",
+      "en_US": "Magnitude {STRVAR_1 50, 0, 0}!"
+    },
+    {
+      "id": "msg_0197_00449",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} cut its own HP\n",
+        "and maximized its Attack!"
+      ]
+    },
+    {
+      "id": "msg_0197_00450",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} cut its own HP\n",
+        "and maximized its Attack!"
+      ]
+    },
+    {
+      "id": "msg_0197_00451",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} cut its own HP\n",
+        "and maximized its Attack!"
+      ]
+    },
+    {
+      "id": "msg_0197_00452",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} copied\n",
+        "{STRVAR_1 1, 1, 0}’s stat changes!"
+      ]
+    },
+    {
+      "id": "msg_0197_00453",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} copied the wild\n",
+        "{STRVAR_1 1, 1, 0}’s stat changes!"
+      ]
+    },
+    {
+      "id": "msg_0197_00454",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} copied the foe’s\n",
+        "{STRVAR_1 1, 1, 0}’s stat changes!"
+      ]
+    },
+    {
+      "id": "msg_0197_00455",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} copied\n",
+        "{STRVAR_1 1, 1, 0}’s stat changes!"
+      ]
+    },
+    {
+      "id": "msg_0197_00456",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} copied the\n",
+        "wild {STRVAR_1 1, 1, 0}’s stat changes!"
+      ]
+    },
+    {
+      "id": "msg_0197_00457",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} copied\n",
+        "{STRVAR_1 1, 1, 0}’s stat changes!"
+      ]
+    },
+    {
+      "id": "msg_0197_00458",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} copied the \n",
+        "foe’s {STRVAR_1 1, 1, 0}’s stat changes!"
+      ]
+    },
+    {
+      "id": "msg_0197_00459",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} got free of\n",
+        "{STRVAR_1 1, 1, 0}’s {STRVAR_1 6, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00460",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} got free of the wild\n",
+        "{STRVAR_1 1, 1, 0}’s {STRVAR_1 6, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00461",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} got free of the foe’s\n",
+        "{STRVAR_1 1, 1, 0}’s {STRVAR_1 6, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00462",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} got free of\n",
+        "{STRVAR_1 1, 1, 0}’s {STRVAR_1 6, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00463",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} got free of the\n",
+        "wild {STRVAR_1 1, 1, 0}’s {STRVAR_1 6, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00464",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} got free of\n",
+        "{STRVAR_1 1, 1, 0}’s {STRVAR_1 6, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00465",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} got free of\n",
+        "the foe’s {STRVAR_1 1, 1, 0}’s\f",
+        "{STRVAR_1 6, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00466",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} blew away\n",
+        "{STRVAR_1 6, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00467",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} blew away\n",
+        "{STRVAR_1 6, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00468",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} blew away\n",
+        "{STRVAR_1 6, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00469",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} fled from\n",
+        "battle!"
+      ]
+    },
+    {
+      "id": "msg_0197_00470",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} fled from\n",
+        "battle!"
+      ]
+    },
+    {
+      "id": "msg_0197_00471",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} fled from\n",
+        "battle!"
+      ]
+    },
+    {
+      "id": "msg_0197_00472",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} foresaw\n",
+        "an attack!"
+      ]
+    },
+    {
+      "id": "msg_0197_00473",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} foresaw\n",
+        "an attack!"
+      ]
+    },
+    {
+      "id": "msg_0197_00474",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} foresaw\n",
+        "an attack!"
+      ]
+    },
+    {
+      "id": "msg_0197_00475",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} took\n",
+        "the {STRVAR_1 6, 1, 0} attack!"
+      ]
+    },
+    {
+      "id": "msg_0197_00476",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} took\n",
+        "the {STRVAR_1 6, 1, 0} attack!"
+      ]
+    },
+    {
+      "id": "msg_0197_00477",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} took\n",
+        "the {STRVAR_1 6, 1, 0} attack!"
+      ]
+    },
+    {
+      "id": "msg_0197_00478",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} chose\n",
+        "{STRVAR_1 6, 1, 0} as its destiny!"
+      ]
+    },
+    {
+      "id": "msg_0197_00479",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} chose\n",
+        "{STRVAR_1 6, 1, 0} as its destiny!"
+      ]
+    },
+    {
+      "id": "msg_0197_00480",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} chose\n",
+        "{STRVAR_1 6, 1, 0} as its destiny!"
+      ]
+    },
+    {
+      "id": "msg_0197_00481",
+      "en_US": "{STRVAR_1 1, 0, 0}’s attack!"
+    },
+    {
+      "id": "msg_0197_00482",
+      "en_US": "The wild {STRVAR_1 1, 0, 0}’s attack!"
+    },
+    {
+      "id": "msg_0197_00483",
+      "en_US": "The foe’s {STRVAR_1 1, 0, 0}’s attack!"
+    },
+    {
+      "id": "msg_0197_00484",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} became\n",
+        "the center of attention!"
+      ]
+    },
+    {
+      "id": "msg_0197_00485",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} became\n",
+        "the center of attention!"
+      ]
+    },
+    {
+      "id": "msg_0197_00486",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} became\n",
+        "the center of attention!"
+      ]
+    },
+    {
+      "id": "msg_0197_00487",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} began\n",
+        "charging power!"
+      ]
+    },
+    {
+      "id": "msg_0197_00488",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} began\n",
+        "charging power!"
+      ]
+    },
+    {
+      "id": "msg_0197_00489",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} began\n",
+        "charging power!"
+      ]
+    },
+    {
+      "id": "msg_0197_00490",
+      "en_US": [
+        "{STRVAR_1 6, 0, 0} turned into\n",
+        "{STRVAR_1 6, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00491",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s status\n",
+        "returned to normal!"
+      ]
+    },
+    {
+      "id": "msg_0197_00492",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}’s status\n",
+        "returned to normal!"
+      ]
+    },
+    {
+      "id": "msg_0197_00493",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}’s status\n",
+        "returned to normal!"
+      ]
+    },
+    {
+      "id": "msg_0197_00494",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} was subjected\n",
+        "to Torment!"
+      ]
+    },
+    {
+      "id": "msg_0197_00495",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} was subjected\n",
+        "to Torment!"
+      ]
+    },
+    {
+      "id": "msg_0197_00496",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} was subjected\n",
+        "to Torment!"
+      ]
+    },
+    {
+      "id": "msg_0197_00497",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is tightening\n",
+        "its focus!"
+      ]
+    },
+    {
+      "id": "msg_0197_00498",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} is tightening\n",
+        "its focus!"
+      ]
+    },
+    {
+      "id": "msg_0197_00499",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} is tightening\n",
+        "its focus!"
+      ]
+    },
+    {
+      "id": "msg_0197_00500",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} fell for\n",
+        "the taunt!"
+      ]
+    },
+    {
+      "id": "msg_0197_00501",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} fell for\n",
+        "the taunt!"
+      ]
+    },
+    {
+      "id": "msg_0197_00502",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} fell for\n",
+        "the taunt!"
+      ]
+    },
+    {
+      "id": "msg_0197_00503",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is ready to\n",
+        "help {STRVAR_1 1, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00504",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is ready to\n",
+        "help the wild {STRVAR_1 1, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00505",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is ready to\n",
+        "help the foe’s {STRVAR_1 1, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00506",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} is ready to\n",
+        "help {STRVAR_1 1, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00507",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} is ready to\n",
+        "help the wild {STRVAR_1 1, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00508",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} is ready to\n",
+        "help {STRVAR_1 1, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00509",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} is ready to\n",
+        "help the foe’s {STRVAR_1 1, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00510",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} switched\n",
+        "items with its target!"
+      ]
+    },
+    {
+      "id": "msg_0197_00511",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} switched\n",
+        "items with its target!"
+      ]
+    },
+    {
+      "id": "msg_0197_00512",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} switched\n",
+        "items with its target!"
+      ]
+    },
+    {
+      "id": "msg_0197_00513",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} obtained\n",
+        "one {STRVAR_1 8, 1, 0}."
+      ]
+    },
+    {
+      "id": "msg_0197_00514",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} obtained\n",
+        "one {STRVAR_1 8, 1, 0}."
+      ]
+    },
+    {
+      "id": "msg_0197_00515",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} obtained\n",
+        "one {STRVAR_1 8, 1, 0}."
+      ]
+    },
+    {
+      "id": "msg_0197_00516",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} obtained\n",
+        "one {STRVAR_1 8, 1, 0}.\r",
+        "{STRVAR_1 1, 2, 0} obtained\n",
+        "one {STRVAR_1 8, 3, 0}."
+      ]
+    },
+    {
+      "id": "msg_0197_00517",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} obtained\n",
+        "one {STRVAR_1 8, 1, 0}.\r",
+        "The wild {STRVAR_1 1, 2, 0} obtained\n",
+        "one {STRVAR_1 8, 3, 0}.\r"
+      ]
+    },
+    {
+      "id": "msg_0197_00518",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} obtained\n",
+        "one {STRVAR_1 8, 1, 0}.\r",
+        "The foe’s {STRVAR_1 1, 2, 0} obtained\n",
+        "one {STRVAR_1 8, 3, 0}.\r"
+      ]
+    },
+    {
+      "id": "msg_0197_00519",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} obtained\n",
+        "one {STRVAR_1 8, 1, 0}.\r",
+        "{STRVAR_1 1, 2, 0} obtained\n",
+        "one {STRVAR_1 8, 3, 0}.\r"
+      ]
+    },
+    {
+      "id": "msg_0197_00520",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} obtained\n",
+        "one {STRVAR_1 8, 1, 0}.\r",
+        "The wild {STRVAR_1 1, 2, 0} obtained\n",
+        "one {STRVAR_1 8, 3, 0}.\r"
+      ]
+    },
+    {
+      "id": "msg_0197_00521",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} obtained\n",
+        "one {STRVAR_1 8, 1, 0}.\r",
+        "{STRVAR_1 1, 2, 0} obtained\n",
+        "one {STRVAR_1 8, 3, 0}.\r"
+      ]
+    },
+    {
+      "id": "msg_0197_00522",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} obtained\n",
+        "one {STRVAR_1 8, 1, 0}.\r",
+        "The foe’s {STRVAR_1 1, 2, 0} obtained\n",
+        "one {STRVAR_1 8, 3, 0}.\r"
+      ]
+    },
+    {
+      "id": "msg_0197_00523",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} copied\n",
+        "{STRVAR_1 1, 1, 0}’s {STRVAR_1 5, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00524",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} copied the wild\n",
+        "{STRVAR_1 1, 1, 0}’s {STRVAR_1 5, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00525",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} copied the foe’s\n",
+        "{STRVAR_1 1, 1, 0}’s {STRVAR_1 5, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00526",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} copied\n",
+        "{STRVAR_1 1, 1, 0}’s {STRVAR_1 5, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00527",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} copied the wild\n",
+        "{STRVAR_1 1, 1, 0}’s {STRVAR_1 5, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00528",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} copied\n",
+        "{STRVAR_1 1, 1, 0}’s {STRVAR_1 5, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00529",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} copied the\n",
+        "foe’s {STRVAR_1 1, 1, 0}’s {STRVAR_1 5, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00530",
+      "en_US": "{STRVAR_1 1, 0, 0} made a wish!"
+    },
+    {
+      "id": "msg_0197_00531",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}\n",
+        "made a wish!"
+      ]
+    },
+    {
+      "id": "msg_0197_00532",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}\n",
+        "made a wish!"
+      ]
+    },
+    {
+      "id": "msg_0197_00533",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s wish\n",
+        "came true!"
+      ]
+    },
+    {
+      "id": "msg_0197_00534",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}’s wish\n",
+        "came true!"
+      ]
+    },
+    {
+      "id": "msg_0197_00535",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}’s wish\n",
+        "came true!"
+      ]
+    },
+    {
+      "id": "msg_0197_00536",
+      "en_US": "{STRVAR_1 1, 0, 0} planted its roots!"
+    },
+    {
+      "id": "msg_0197_00537",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} planted\n",
+        "its roots!"
+      ]
+    },
+    {
+      "id": "msg_0197_00538",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} planted\n",
+        "its roots!"
+      ]
+    },
+    {
+      "id": "msg_0197_00539",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} absorbed\n",
+        "nutrients with its roots!"
+      ]
+    },
+    {
+      "id": "msg_0197_00540",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} absorbed\n",
+        "nutrients with its roots!"
+      ]
+    },
+    {
+      "id": "msg_0197_00541",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} absorbed\n",
+        "nutrients with its roots!"
+      ]
+    },
+    {
+      "id": "msg_0197_00542",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} anchored\n",
+        "itself with its roots!"
+      ]
+    },
+    {
+      "id": "msg_0197_00543",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} anchored\n",
+        "itself with its roots!"
+      ]
+    },
+    {
+      "id": "msg_0197_00544",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} anchored\n",
+        "itself with its roots!"
+      ]
+    },
+    {
+      "id": "msg_0197_00545",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} made\n",
+        "{STRVAR_1 1, 1, 0} drowsy!"
+      ]
+    },
+    {
+      "id": "msg_0197_00546",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} made the wild\n",
+        "{STRVAR_1 1, 1, 0} drowsy!"
+      ]
+    },
+    {
+      "id": "msg_0197_00547",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} made the foe’s\n",
+        "{STRVAR_1 1, 1, 0} drowsy!"
+      ]
+    },
+    {
+      "id": "msg_0197_00548",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} made\n",
+        "{STRVAR_1 1, 1, 0} drowsy!"
+      ]
+    },
+    {
+      "id": "msg_0197_00549",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} made\n",
+        "the wild {STRVAR_1 1, 1, 0} drowsy!"
+      ]
+    },
+    {
+      "id": "msg_0197_00550",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} made\n",
+        "{STRVAR_1 1, 1, 0} drowsy!"
+      ]
+    },
+    {
+      "id": "msg_0197_00551",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} made\n",
+        "the foe’s {STRVAR_1 1, 1, 0} drowsy!"
+      ]
+    },
+    {
+      "id": "msg_0197_00552",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} knocked off\n",
+        "{STRVAR_1 1, 1, 0}’s {STRVAR_1 8, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00553",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} knocked off the wild\n",
+        "{STRVAR_1 1, 1, 0}’s {STRVAR_1 8, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00554",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} knocked off the foe’s\n",
+        "{STRVAR_1 1, 1, 0}’s {STRVAR_1 8, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00555",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} knocked off\n",
+        "{STRVAR_1 1, 1, 0}’s {STRVAR_1 8, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00556",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} knocked off the\n",
+        "wild {STRVAR_1 1, 1, 0}’s {STRVAR_1 8, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00557",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} knocked off\n",
+        "{STRVAR_1 1, 1, 0}’s {STRVAR_1 8, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00558",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} knocked off\n",
+        "the foe’s {STRVAR_1 1, 1, 0}’s\f",
+        "{STRVAR_1 8, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00559",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} swapped\n",
+        "abilities with its target!"
+      ]
+    },
+    {
+      "id": "msg_0197_00560",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} swapped\n",
+        "abilities with its target!"
+      ]
+    },
+    {
+      "id": "msg_0197_00561",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} swapped\n",
+        "abilities with its target!"
+      ]
+    },
+    {
+      "id": "msg_0197_00562",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} sealed the\n",
+        "opponent’s move(s)!"
+      ]
+    },
+    {
+      "id": "msg_0197_00563",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} sealed the\n",
+        "opponent’s move(s)!"
+      ]
+    },
+    {
+      "id": "msg_0197_00564",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} sealed the\n",
+        "opponent’s move(s)!"
+      ]
+    },
+    {
+      "id": "msg_0197_00565",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} wants the\n",
+        "foe to bear a grudge!"
+      ]
+    },
+    {
+      "id": "msg_0197_00566",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} wants the\n",
+        "foe to bear a grudge!"
+      ]
+    },
+    {
+      "id": "msg_0197_00567",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} wants the\n",
+        "foe to bear a grudge!"
+      ]
+    },
+    {
+      "id": "msg_0197_00568",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s {STRVAR_1 6, 1, 0} lost\n",
+        "all its PP due to the grudge!"
+      ]
+    },
+    {
+      "id": "msg_0197_00569",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 6, 1, 0} lost all its PP\f",
+        "due to the grudge!"
+      ]
+    },
+    {
+      "id": "msg_0197_00570",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 6, 1, 0} lost all its PP\f",
+        "due to the grudge!"
+      ]
+    },
+    {
+      "id": "msg_0197_00571",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} shrouded\n",
+        "itself with Magic Coat!"
+      ]
+    },
+    {
+      "id": "msg_0197_00572",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} shrouded\n",
+        "itself with Magic Coat!"
+      ]
+    },
+    {
+      "id": "msg_0197_00573",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} shrouded\n",
+        "itself with Magic Coat!"
+      ]
+    },
+    {
+      "id": "msg_0197_00574",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s {STRVAR_1 6, 1, 0}\n",
+        "was bounced back by Magic Coat!"
+      ]
+    },
+    {
+      "id": "msg_0197_00575",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 6, 1, 0} was bounced back by\f",
+        "Magic Coat!"
+      ]
+    },
+    {
+      "id": "msg_0197_00576",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 6, 1, 0} was bounced back by\f",
+        "Magic Coat!"
+      ]
+    },
+    {
+      "id": "msg_0197_00577",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} waits for a target\n",
+        "to make a move!"
+      ]
+    },
+    {
+      "id": "msg_0197_00578",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} waits for\n",
+        "a target to make a move!"
+      ]
+    },
+    {
+      "id": "msg_0197_00579",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} waits for\n",
+        "a target to make a move!"
+      ]
+    },
+    {
+      "id": "msg_0197_00580",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} snatched\n",
+        "{STRVAR_1 1, 1, 0}’s move!"
+      ]
+    },
+    {
+      "id": "msg_0197_00581",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} snatched the wild\n",
+        "{STRVAR_1 1, 1, 0}’s move!"
+      ]
+    },
+    {
+      "id": "msg_0197_00582",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} snatched the foe’s\n",
+        "{STRVAR_1 1, 1, 0}’s move!"
+      ]
+    },
+    {
+      "id": "msg_0197_00583",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} snatched\n",
+        "{STRVAR_1 1, 1, 0}’s move!"
+      ]
+    },
+    {
+      "id": "msg_0197_00584",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} snatched\n",
+        "the wild {STRVAR_1 1, 1, 0}’s move!"
+      ]
+    },
+    {
+      "id": "msg_0197_00585",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} snatched\n",
+        "{STRVAR_1 1, 1, 0}’s move!"
+      ]
+    },
+    {
+      "id": "msg_0197_00586",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} snatched\n",
+        "the foe’s {STRVAR_1 1, 1, 0}’s move!"
+      ]
+    },
+    {
+      "id": "msg_0197_00587",
+      "en_US": "Electricity’s power was weakened!"
+    },
+    {
+      "id": "msg_0197_00588",
+      "en_US": "Fire’s power was weakened!"
+    },
+    {
+      "id": "msg_0197_00589",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} found\n",
+        "one {STRVAR_1 8, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00590",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} found\n",
+        "one {STRVAR_1 8, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00591",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} found\n",
+        "one {STRVAR_1 8, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00592",
+      "en_US": [
+        "A soothing aroma wafted\n",
+        "through the area!"
+      ]
+    },
+    {
+      "id": "msg_0197_00593",
+      "en_US": "Items can’t be used here.\r"
+    },
+    {
+      "id": "msg_0197_00594",
+      "en_US": [
+        "For {STRVAR_1 1, 1, 0}, the\n",
+        "{STRVAR_1 8, 0, 0} was {STRVAR_1 16, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00595",
+      "en_US": [
+        "For the wild {STRVAR_1 1, 1, 0}, the\n",
+        "{STRVAR_1 8, 0, 0} was {STRVAR_1 16, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00596",
+      "en_US": [
+        "For the foe’s {STRVAR_1 1, 1, 0}, the\n",
+        "{STRVAR_1 8, 0, 0} was {STRVAR_1 16, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00597",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} used\n",
+        "the {STRVAR_1 8, 1, 0} to get pumped!"
+      ]
+    },
+    {
+      "id": "msg_0197_00598",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} used\n",
+        "the {STRVAR_1 8, 1, 0} to get pumped!"
+      ]
+    },
+    {
+      "id": "msg_0197_00599",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} used\n",
+        "the {STRVAR_1 8, 1, 0} to get pumped!"
+      ]
+    },
+    {
+      "id": "msg_0197_00600",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} lost its\n",
+        "focus and couldn’t move!"
+      ]
+    },
+    {
+      "id": "msg_0197_00601",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} lost its\n",
+        "focus and couldn’t move!"
+      ]
+    },
+    {
+      "id": "msg_0197_00602",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} lost its\n",
+        "focus and couldn’t move!"
+      ]
+    },
+    {
+      "id": "msg_0197_00603",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} was\n",
+        "dragged out!\r"
+      ]
+    },
+    {
+      "id": "msg_0197_00604",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} was\n",
+        "dragged out!\r"
+      ]
+    },
+    {
+      "id": "msg_0197_00605",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} was\n",
+        "dragged out!\r"
+      ]
+    },
+    {
+      "id": "msg_0197_00606",
+      "en_US": "It shattered the barrier!"
+    },
+    {
+      "id": "msg_0197_00607",
+      "en_US": "But it had no effect!"
+    },
+    {
+      "id": "msg_0197_00608",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} has no\n",
+        "moves left!\r"
+      ]
+    },
+    {
+      "id": "msg_0197_00609",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s {STRVAR_1 6, 1, 0}\n",
+        "is disabled!\r"
+      ]
+    },
+    {
+      "id": "msg_0197_00610",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 6, 1, 0} is disabled!\r"
+      ]
+    },
+    {
+      "id": "msg_0197_00611",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 6, 1, 0} is disabled!\r"
+      ]
+    },
+    {
+      "id": "msg_0197_00612",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} can’t use the same move\n",
+        "twice in a row due to the torment!\r"
+      ]
+    },
+    {
+      "id": "msg_0197_00613",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} can’t use\n",
+        "{STRVAR_1 6, 1, 0} after the taunt!\r"
+      ]
+    },
+    {
+      "id": "msg_0197_00614",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} can’t use\n",
+        "{STRVAR_1 6, 1, 0} after the taunt!\r"
+      ]
+    },
+    {
+      "id": "msg_0197_00615",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} can’t use\n",
+        "{STRVAR_1 6, 1, 0} after the taunt!\r"
+      ]
+    },
+    {
+      "id": "msg_0197_00616",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} can’t use\n",
+        "the sealed {STRVAR_1 6, 1, 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0197_00617",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} can’t use\n",
+        "the sealed {STRVAR_1 6, 1, 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0197_00618",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} can’t use\n",
+        "the sealed {STRVAR_1 6, 1, 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0197_00619",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s {STRVAR_1 5, 1, 0}\n",
+        "made it rain!"
+      ]
+    },
+    {
+      "id": "msg_0197_00620",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 5, 1, 0} made it rain!"
+      ]
+    },
+    {
+      "id": "msg_0197_00621",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 5, 1, 0} made it rain!"
+      ]
+    },
+    {
+      "id": "msg_0197_00622",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s {STRVAR_1 5, 1, 0}\n",
+        "raised its {STRVAR_1 13, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00623",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 5, 1, 0} raised its {STRVAR_1 13, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00624",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 5, 1, 0} raised its {STRVAR_1 13, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00625",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} was protected\n",
+        "by {STRVAR_1 5, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00626",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} was protected\n",
+        "by {STRVAR_1 5, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00627",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} was protected\n",
+        "by {STRVAR_1 5, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00628",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s {STRVAR_1 5, 1, 0}\n",
+        "prevents {STRVAR_1 1, 2, 0}\f",
+        "from using {STRVAR_1 6, 3, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00629",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s {STRVAR_1 5, 1, 0}\n",
+        "prevents the wild {STRVAR_1 1, 2, 0}\f",
+        "from using {STRVAR_1 6, 3, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00630",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s {STRVAR_1 5, 1, 0}\n",
+        "prevents the foe’s {STRVAR_1 1, 2, 0}\f",
+        "from using {STRVAR_1 6, 3, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00631",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 5, 1, 0} prevents {STRVAR_1 1, 2, 0}\f",
+        "from using {STRVAR_1 6, 3, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00632",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 5, 1, 0} prevents\f",
+        "the wild {STRVAR_1 1, 2, 0}\f",
+        "from using {STRVAR_1 6, 3, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00633",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 5, 1, 0} prevents {STRVAR_1 1, 2, 0}\f",
+        "from using {STRVAR_1 6, 3, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00634",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 5, 1, 0} prevents\f",
+        "the foe’s {STRVAR_1 1, 2, 0}\f",
+        "from using {STRVAR_1 6, 3, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00635",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} restored HP\n",
+        "using its {STRVAR_1 5, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00636",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} restored HP\n",
+        "using its {STRVAR_1 5, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00637",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} restored HP\n",
+        "using its {STRVAR_1 5, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00638",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s {STRVAR_1 5, 1, 0}\n",
+        "made {STRVAR_1 6, 2, 0} useless!"
+      ]
+    },
+    {
+      "id": "msg_0197_00639",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 5, 1, 0} made {STRVAR_1 6, 2, 0}\f",
+        "useless!"
+      ]
+    },
+    {
+      "id": "msg_0197_00640",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 5, 1, 0} made {STRVAR_1 6, 2, 0}\f",
+        "useless!"
+      ]
+    },
+    {
+      "id": "msg_0197_00641",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s {STRVAR_1 5, 1, 0}\n",
+        "made it the {STRVAR_1 15, 2, 0} type!"
+      ]
+    },
+    {
+      "id": "msg_0197_00642",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 5, 1, 0} made it the\f",
+        "{STRVAR_1 15, 2, 0} type!"
+      ]
+    },
+    {
+      "id": "msg_0197_00643",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 5, 1, 0} made it the\f",
+        "{STRVAR_1 15, 2, 0} type!"
+      ]
+    },
+    {
+      "id": "msg_0197_00644",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s {STRVAR_1 5, 1, 0}\n",
+        "prevents paralysis!"
+      ]
+    },
+    {
+      "id": "msg_0197_00645",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 5, 1, 0} prevents paralysis!"
+      ]
+    },
+    {
+      "id": "msg_0197_00646",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 5, 1, 0} prevents paralysis!"
+      ]
+    },
+    {
+      "id": "msg_0197_00647",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s {STRVAR_1 5, 1, 0}\n",
+        "prevents romance!"
+      ]
+    },
+    {
+      "id": "msg_0197_00648",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 5, 1, 0} prevents romance!"
+      ]
+    },
+    {
+      "id": "msg_0197_00649",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 5, 1, 0} prevents romance!"
+      ]
+    },
+    {
+      "id": "msg_0197_00650",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s {STRVAR_1 5, 1, 0}\n",
+        "prevents poisoning!"
+      ]
+    },
+    {
+      "id": "msg_0197_00651",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 5, 1, 0} prevents poisoning!"
+      ]
+    },
+    {
+      "id": "msg_0197_00652",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 5, 1, 0} prevents poisoning!"
+      ]
+    },
+    {
+      "id": "msg_0197_00653",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s {STRVAR_1 5, 1, 0}\n",
+        "prevents confusion!"
+      ]
+    },
+    {
+      "id": "msg_0197_00654",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 5, 1, 0} prevents confusion!"
+      ]
+    },
+    {
+      "id": "msg_0197_00655",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 5, 1, 0} prevents confusion!"
+      ]
+    },
+    {
+      "id": "msg_0197_00656",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s {STRVAR_1 5, 1, 0} raised\n",
+        "the power of its Fire-type moves!"
+      ]
+    },
+    {
+      "id": "msg_0197_00657",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 5, 1, 0} raised the power\f",
+        "of its Fire-type moves!"
+      ]
+    },
+    {
+      "id": "msg_0197_00658",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 5, 1, 0} raised the power\f",
+        "of its Fire-type moves!"
+      ]
+    },
+    {
+      "id": "msg_0197_00659",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} anchors\n",
+        "itself with {STRVAR_1 5, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00660",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} anchors\n",
+        "itself with {STRVAR_1 5, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00661",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} anchors\n",
+        "itself with {STRVAR_1 5, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00662",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s {STRVAR_1 5, 1, 0}\n",
+        "cuts {STRVAR_1 1, 2, 0}’s {STRVAR_1 13, 3, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00663",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s {STRVAR_1 5, 1, 0}\n",
+        "cuts the wild {STRVAR_1 1, 2, 0}’s\f",
+        "{STRVAR_1 13, 3, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00664",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s {STRVAR_1 5, 1, 0}\n",
+        "cuts the foe’s {STRVAR_1 1, 2, 0}’s\f",
+        "{STRVAR_1 13, 3, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00665",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 5, 1, 0} cuts {STRVAR_1 1, 2, 0}’s\f",
+        "{STRVAR_1 13, 3, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00666",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 5, 1, 0} cuts the wild\f",
+        "{STRVAR_1 1, 2, 0}’s {STRVAR_1 13, 3, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00667",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 5, 1, 0} cuts {STRVAR_1 1, 2, 0}’s\f",
+        "{STRVAR_1 13, 3, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00668",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 5, 1, 0} cuts the foe’s\f",
+        "{STRVAR_1 1, 2, 0}’s {STRVAR_1 13, 3, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00669",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s {STRVAR_1 5, 1, 0}\n",
+        "prevents stat loss!"
+      ]
+    },
+    {
+      "id": "msg_0197_00670",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 5, 1, 0} prevents stat loss!"
+      ]
+    },
+    {
+      "id": "msg_0197_00671",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 5, 1, 0} prevents stat loss!"
+      ]
+    },
+    {
+      "id": "msg_0197_00672",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s {STRVAR_1 5, 1, 0}\n",
+        "hurt {STRVAR_1 1, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00673",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s {STRVAR_1 5, 1, 0}\n",
+        "hurt the wild {STRVAR_1 1, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00674",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s {STRVAR_1 5, 1, 0}\n",
+        "hurt the foe’s {STRVAR_1 1, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00675",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 5, 1, 0} hurt {STRVAR_1 1, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00676",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 5, 1, 0} hurt the wild\f",
+        "{STRVAR_1 1, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00677",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 5, 1, 0} hurt {STRVAR_1 1, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00678",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 5, 1, 0} hurt the foe’s\f",
+        "{STRVAR_1 1, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00679",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} traced\n",
+        "{STRVAR_1 1, 1, 0}’s {STRVAR_1 5, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00680",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} traced the wild\n",
+        "{STRVAR_1 1, 1, 0}’s {STRVAR_1 5, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00681",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} traced the foe’s\n",
+        "{STRVAR_1 1, 1, 0}’s {STRVAR_1 5, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00682",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} traced\n",
+        "{STRVAR_1 1, 1, 0}’s {STRVAR_1 5, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00683",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} traced the\n",
+        "wild {STRVAR_1 1, 1, 0}’s {STRVAR_1 5, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00684",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} traced\n",
+        "{STRVAR_1 1, 1, 0}’s {STRVAR_1 5, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00685",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} traced the\n",
+        "foe’s {STRVAR_1 1, 1, 0}’s {STRVAR_1 5, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00686",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s {STRVAR_1 5, 1, 0}\n",
+        "prevents burns!"
+      ]
+    },
+    {
+      "id": "msg_0197_00687",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 5, 1, 0} prevents burns!"
+      ]
+    },
+    {
+      "id": "msg_0197_00688",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 5, 1, 0} prevents burns!"
+      ]
+    },
+    {
+      "id": "msg_0197_00689",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s {STRVAR_1 5, 1, 0}\n",
+        "blocks {STRVAR_1 6, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00690",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 5, 1, 0} blocks\f",
+        "{STRVAR_1 6, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00691",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 5, 1, 0} blocks\f",
+        "{STRVAR_1 6, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00692",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} regained a little\n",
+        "HP with its {STRVAR_1 5, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00693",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} regained\n",
+        "a little HP with its {STRVAR_1 5, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00694",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} regained\n",
+        "a little HP with its {STRVAR_1 5, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00695",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s {STRVAR_1 5, 1, 0}\n",
+        "whipped up a sandstorm!"
+      ]
+    },
+    {
+      "id": "msg_0197_00696",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 5, 1, 0} whipped up\f",
+        "a sandstorm!"
+      ]
+    },
+    {
+      "id": "msg_0197_00697",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 5, 1, 0} whipped up\f",
+        "a sandstorm!"
+      ]
+    },
+    {
+      "id": "msg_0197_00698",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s {STRVAR_1 5, 1, 0}\n",
+        "intensified the sun’s rays!"
+      ]
+    },
+    {
+      "id": "msg_0197_00699",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 5, 1, 0} intensified\f",
+        "the sun’s rays!"
+      ]
+    },
+    {
+      "id": "msg_0197_00700",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 5, 1, 0} intensified\f",
+        "the sun’s rays!"
+      ]
+    },
+    {
+      "id": "msg_0197_00701",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s {STRVAR_1 5, 1, 0}\n",
+        "whipped up a hailstorm!"
+      ]
+    },
+    {
+      "id": "msg_0197_00702",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 5, 1, 0} whipped up\f",
+        "a hailstorm!"
+      ]
+    },
+    {
+      "id": "msg_0197_00703",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 5, 1, 0} whipped up\f",
+        "a hailstorm!"
+      ]
+    },
+    {
+      "id": "msg_0197_00704",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s {STRVAR_1 5, 1, 0}\n",
+        "prevents {STRVAR_1 13, 2, 0} loss!"
+      ]
+    },
+    {
+      "id": "msg_0197_00705",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 5, 1, 0} prevents\f",
+        "{STRVAR_1 13, 2, 0} loss!"
+      ]
+    },
+    {
+      "id": "msg_0197_00706",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 5, 1, 0} prevents\f",
+        "{STRVAR_1 13, 2, 0} loss!"
+      ]
+    },
+    {
+      "id": "msg_0197_00707",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s {STRVAR_1 5, 1, 0}\n",
+        "infatuated {STRVAR_1 1, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00708",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s {STRVAR_1 5, 1, 0}\n",
+        "infatuated the wild {STRVAR_1 1, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00709",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s {STRVAR_1 5, 1, 0}\n",
+        "infatuated the foe’s {STRVAR_1 1, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00710",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 5, 1, 0} infatuated\f",
+        "{STRVAR_1 1, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00711",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 5, 1, 0} infatuated the wild\f",
+        "{STRVAR_1 1, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00712",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 5, 1, 0} infatuated\f",
+        "{STRVAR_1 1, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00713",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 5, 1, 0} infatuated the foe’s\f",
+        "{STRVAR_1 1, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00714",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s {STRVAR_1 5, 1, 0}\n",
+        "made {STRVAR_1 6, 2, 0} ineffective!"
+      ]
+    },
+    {
+      "id": "msg_0197_00715",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 5, 1, 0} made {STRVAR_1 6, 2, 0}\f",
+        "ineffective!"
+      ]
+    },
+    {
+      "id": "msg_0197_00716",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 5, 1, 0} made {STRVAR_1 6, 2, 0}\f",
+        "ineffective!"
+      ]
+    },
+    {
+      "id": "msg_0197_00717",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s {STRVAR_1 5, 1, 0}\n",
+        "cured its {STRVAR_1 17, 2, 0} status!"
+      ]
+    },
+    {
+      "id": "msg_0197_00718",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 5, 1, 0} cured its\f",
+        "{STRVAR_1 17, 2, 0} status!"
+      ]
+    },
+    {
+      "id": "msg_0197_00719",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 5, 1, 0} cured its\f",
+        "{STRVAR_1 17, 2, 0} status!"
+      ]
+    },
+    {
+      "id": "msg_0197_00720",
+      "en_US": [
+        "It sucked up the\n",
+        "liquid ooze!"
+      ]
+    },
+    {
+      "id": "msg_0197_00721",
+      "en_US": "{STRVAR_1 1, 0, 0} transformed!"
+    },
+    {
+      "id": "msg_0197_00722",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}\n",
+        "transformed!"
+      ]
+    },
+    {
+      "id": "msg_0197_00723",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}\n",
+        "transformed!"
+      ]
+    },
+    {
+      "id": "msg_0197_00724",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s {STRVAR_1 5, 1, 0}\n",
+        "took the attack!"
+      ]
+    },
+    {
+      "id": "msg_0197_00725",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 5, 1, 0} took the attack!"
+      ]
+    },
+    {
+      "id": "msg_0197_00726",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 5, 1, 0} took the attack!"
+      ]
+    },
+    {
+      "id": "msg_0197_00727",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s {STRVAR_1 5, 1, 0}\n",
+        "suppressed {STRVAR_1 1, 2, 0}’s\f",
+        "{STRVAR_1 5, 3, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00728",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s {STRVAR_1 5, 1, 0}\n",
+        "suppressed the wild {STRVAR_1 1, 2, 0}’s\f",
+        "{STRVAR_1 5, 3, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00729",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s {STRVAR_1 5, 1, 0}\n",
+        "suppressed the foe’s {STRVAR_1 1, 2, 0}’s\f",
+        "{STRVAR_1 5, 3, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00730",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 5, 1, 0} suppressed\f",
+        "{STRVAR_1 1, 2, 0}’s {STRVAR_1 5, 3, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00731",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 5, 1, 0} suppressed the wild\f",
+        "{STRVAR_1 1, 2, 0}’s {STRVAR_1 5, 3, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00732",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 5, 1, 0} suppressed\f",
+        "{STRVAR_1 1, 2, 0}’s {STRVAR_1 5, 3, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00733",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 5, 1, 0} suppressed the foe’s\f",
+        "{STRVAR_1 1, 2, 0}’s {STRVAR_1 5, 3, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00734",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s {STRVAR_1 5, 1, 0}\n",
+        "made it ineffective!"
+      ]
+    },
+    {
+      "id": "msg_0197_00735",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 5, 1, 0} made it ineffective!"
+      ]
+    },
+    {
+      "id": "msg_0197_00736",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 5, 1, 0} made it ineffective!"
+      ]
+    },
+    {
+      "id": "msg_0197_00737",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} won’t flinch\n",
+        "because of its {STRVAR_1 5, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00738",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} won’t flinch\n",
+        "because of its {STRVAR_1 5, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00739",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} won’t flinch\n",
+        "because of its {STRVAR_1 5, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00740",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} cured its {STRVAR_1 17, 2, 0}\n",
+        "status with its {STRVAR_1 5, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00741",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} cured its\n",
+        "{STRVAR_1 17, 2, 0} status\f",
+        "with its {STRVAR_1 5, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00742",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} cured its\n",
+        "{STRVAR_1 17, 2, 0} status\f",
+        "with its {STRVAR_1 5, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00743",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s {STRVAR_1 5, 1, 0}\n",
+        "had no effect on {STRVAR_1 1, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00744",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s {STRVAR_1 5, 1, 0} had no\n",
+        "effect on the wild {STRVAR_1 1, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00745",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s {STRVAR_1 5, 1, 0} had no\n",
+        "effect on the foe’s {STRVAR_1 1, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00746",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 5, 1, 0} had no effect\f",
+        "on {STRVAR_1 1, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00747",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 5, 1, 0} had no effect\f",
+        "on the wild {STRVAR_1 1, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00748",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 5, 1, 0} had no effect\f",
+        "on {STRVAR_1 1, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00749",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 5, 1, 0} had no effect\f",
+        "on the foe’s {STRVAR_1 1, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00750",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s {STRVAR_1 13, 1, 0}\n",
+        "rose!"
+      ]
+    },
+    {
+      "id": "msg_0197_00751",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 13, 1, 0} rose!"
+      ]
+    },
+    {
+      "id": "msg_0197_00752",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 13, 1, 0} rose!"
+      ]
+    },
+    {
+      "id": "msg_0197_00753",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s {STRVAR_1 13, 1, 0}\n",
+        "sharply rose!"
+      ]
+    },
+    {
+      "id": "msg_0197_00754",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}’s {STRVAR_1 13, 1, 0}\n",
+        "sharply rose!"
+      ]
+    },
+    {
+      "id": "msg_0197_00755",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}’s {STRVAR_1 13, 1, 0}\n",
+        "sharply rose!"
+      ]
+    },
+    {
+      "id": "msg_0197_00756",
+      "en_US": [
+        "The {STRVAR_1 8, 1, 0} raised\n",
+        "{STRVAR_1 1, 0, 0}’s {STRVAR_1 13, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00757",
+      "en_US": [
+        "The {STRVAR_1 8, 1, 0} raised the wild\n",
+        "{STRVAR_1 1, 0, 0}’s {STRVAR_1 13, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00758",
+      "en_US": [
+        "The {STRVAR_1 8, 1, 0} raised the foe’s\n",
+        "{STRVAR_1 1, 0, 0}’s {STRVAR_1 13, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00759",
+      "en_US": [
+        "The {STRVAR_1 8, 1, 0} sharply raised\n",
+        "{STRVAR_1 1, 0, 0}’s {STRVAR_1 13, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00760",
+      "en_US": [
+        "The {STRVAR_1 8, 1, 0} sharply raised\n",
+        "the wild {STRVAR_1 1, 0, 0}’s {STRVAR_1 13, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00761",
+      "en_US": [
+        "The {STRVAR_1 8, 1, 0} sharply raised\n",
+        "the foe’s {STRVAR_1 1, 0, 0}’s {STRVAR_1 13, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00762",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s {STRVAR_1 13, 1, 0}\n",
+        "fell!"
+      ]
+    },
+    {
+      "id": "msg_0197_00763",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}’s {STRVAR_1 13, 1, 0}\n",
+        "fell!"
+      ]
+    },
+    {
+      "id": "msg_0197_00764",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}’s {STRVAR_1 13, 1, 0}\n",
+        "fell!"
+      ]
+    },
+    {
+      "id": "msg_0197_00765",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s {STRVAR_1 13, 1, 0}\n",
+        "harshly fell!"
+      ]
+    },
+    {
+      "id": "msg_0197_00766",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}’s {STRVAR_1 13, 1, 0}\n",
+        "harshly fell!"
+      ]
+    },
+    {
+      "id": "msg_0197_00767",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}’s {STRVAR_1 13, 1, 0}\n",
+        "harshly fell!"
+      ]
+    },
+    {
+      "id": "msg_0197_00768",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s stats won’t\n",
+        "go any higher!"
+      ]
+    },
+    {
+      "id": "msg_0197_00769",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}’s stats\n",
+        "won’t go any higher!"
+      ]
+    },
+    {
+      "id": "msg_0197_00770",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}’s stats\n",
+        "won’t go any higher!"
+      ]
+    },
+    {
+      "id": "msg_0197_00771",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s stats won’t\n",
+        "go any lower!"
+      ]
+    },
+    {
+      "id": "msg_0197_00772",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}’s stats\n",
+        "won’t go any lower!"
+      ]
+    },
+    {
+      "id": "msg_0197_00773",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}’s stats\n",
+        "won’t go any lower!"
+      ]
+    },
+    {
+      "id": "msg_0197_00774",
+      "en_US": "A critical hit!"
+    },
+    {
+      "id": "msg_0197_00775",
+      "en_US": "It’s a one-hit KO!"
+    },
+    {
+      "id": "msg_0197_00776",
+      "en_US": "1, 2, and... ... ... Poof!"
+    },
+    {
+      "id": "msg_0197_00777",
+      "en_US": "And..."
+    },
+    {
+      "id": "msg_0197_00778",
+      "garbage": 31
+    },
+    {
+      "id": "msg_0197_00779",
+      "en_US": "It’s not very effective..."
+    },
+    {
+      "id": "msg_0197_00780",
+      "en_US": "It’s super effective!"
+    },
+    {
+      "id": "msg_0197_00781",
+      "en_US": "Got away safely!\r"
+    },
+    {
+      "id": "msg_0197_00782",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} fled\n",
+        "using its {STRVAR_1 8, 1, 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0197_00783",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} fled\n",
+        "using {STRVAR_1 5, 1, 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0197_00784",
+      "en_US": "The wild {STRVAR_1 1, 0, 0} fled!"
+    },
+    {
+      "id": "msg_0197_00785",
+      "en_US": [
+        "Player defeated\n",
+        "{STRVAR_1 3, 0, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00786",
+      "en_US": [
+        "Player defeated {STRVAR_1 3, 0, 0}\n",
+        "and {STRVAR_1 3, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00787",
+      "en_US": [
+        "Player lost against\n",
+        "{STRVAR_1 3, 0, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00788",
+      "en_US": [
+        "Player lost to {STRVAR_1 3, 0, 0}\n",
+        "and {STRVAR_1 3, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00789",
+      "en_US": [
+        "Player battled to a draw against\n",
+        "{STRVAR_1 3, 0, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00790",
+      "en_US": [
+        "Player battled to a draw against\n",
+        "{STRVAR_1 3, 0, 0} and {STRVAR_1 3, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00791",
+      "en_US": "{STRVAR_1 3, 0, 0} fled!"
+    },
+    {
+      "id": "msg_0197_00792",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} and\n",
+        "{STRVAR_1 3, 1, 0} fled!"
+      ]
+    },
+    {
+      "id": "msg_0197_00793",
+      "en_US": [
+        "No! There’s no running\n",
+        "from a Trainer battle!\r"
+      ]
+    },
+    {
+      "id": "msg_0197_00794",
+      "en_US": "Can’t escape!\r"
+    },
+    {
+      "id": "msg_0197_00795",
+      "en_US": "But nothing happened!"
+    },
+    {
+      "id": "msg_0197_00796",
+      "en_US": "But it failed!"
+    },
+    {
+      "id": "msg_0197_00797",
+      "en_US": [
+        "It hurt itself in its\n",
+        "confusion!"
+      ]
+    },
+    {
+      "id": "msg_0197_00798",
+      "en_US": "Mirror Move failed!"
+    },
+    {
+      "id": "msg_0197_00799",
+      "en_US": "It started to rain!"
+    },
+    {
+      "id": "msg_0197_00800",
+      "en_US": "A downpour started!"
+    },
+    {
+      "id": "msg_0197_00801",
+      "en_US": "Rain continues to fall."
+    },
+    {
+      "id": "msg_0197_00802",
+      "en_US": "The downpour continues."
+    },
+    {
+      "id": "msg_0197_00803",
+      "en_US": "The rain stopped."
+    },
+    {
+      "id": "msg_0197_00804",
+      "en_US": "A sandstorm brewed!"
+    },
+    {
+      "id": "msg_0197_00805",
+      "en_US": "The sandstorm rages."
+    },
+    {
+      "id": "msg_0197_00806",
+      "en_US": "The sandstorm subsided."
+    },
+    {
+      "id": "msg_0197_00807",
+      "en_US": "The sunlight turned harsh!"
+    },
+    {
+      "id": "msg_0197_00808",
+      "en_US": "The sunlight is strong."
+    },
+    {
+      "id": "msg_0197_00809",
+      "en_US": "The sunlight faded."
+    },
+    {
+      "id": "msg_0197_00810",
+      "en_US": "It started to hail!"
+    },
+    {
+      "id": "msg_0197_00811",
+      "en_US": "Hail continues to fall."
+    },
+    {
+      "id": "msg_0197_00812",
+      "en_US": "The hail stopped."
+    },
+    {
+      "id": "msg_0197_00813",
+      "en_US": "The fog is deep..."
+    },
+    {
+      "id": "msg_0197_00814",
+      "en_US": "But it failed to spit up a thing!"
+    },
+    {
+      "id": "msg_0197_00815",
+      "en_US": "But it failed to swallow a thing!"
+    },
+    {
+      "id": "msg_0197_00816",
+      "en_US": [
+        "The wind turned into a\n",
+        "heat wave!"
+      ]
+    },
+    {
+      "id": "msg_0197_00817",
+      "en_US": [
+        "All stat changes were\n",
+        "eliminated!"
+      ]
+    },
+    {
+      "id": "msg_0197_00818",
+      "en_US": "Coins were scattered everywhere!"
+    },
+    {
+      "id": "msg_0197_00819",
+      "en_US": [
+        "It was too weak to make\n",
+        "a substitute!"
+      ]
+    },
+    {
+      "id": "msg_0197_00820",
+      "en_US": [
+        "The battlers shared\n",
+        "their pain!"
+      ]
+    },
+    {
+      "id": "msg_0197_00821",
+      "en_US": "A bell chimed!"
+    },
+    {
+      "id": "msg_0197_00822",
+      "en_US": [
+        "All Pokémon hearing the song\n",
+        "will faint in three turns!"
+      ]
+    },
+    {
+      "id": "msg_0197_00823",
+      "en_US": "There’s no PP left for this move!"
+    },
+    {
+      "id": "msg_0197_00824",
+      "en_US": [
+        "But there was no PP left\n",
+        "for the move!"
+      ]
+    },
+    {
+      "id": "msg_0197_00825",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} ignored\n",
+        "orders while asleep!"
+      ]
+    },
+    {
+      "id": "msg_0197_00826",
+      "en_US": "{STRVAR_1 1, 0, 0} ignored orders!"
+    },
+    {
+      "id": "msg_0197_00827",
+      "en_US": "{STRVAR_1 1, 0, 0} began to nap!"
+    },
+    {
+      "id": "msg_0197_00828",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is\n",
+        "loafing around!"
+      ]
+    },
+    {
+      "id": "msg_0197_00829",
+      "en_US": "{STRVAR_1 1, 0, 0} won’t obey!"
+    },
+    {
+      "id": "msg_0197_00830",
+      "en_US": "{STRVAR_1 1, 0, 0} turned away!"
+    },
+    {
+      "id": "msg_0197_00831",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} pretended\n",
+        "not to notice!"
+      ]
+    },
+    {
+      "id": "msg_0197_00832",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is\n",
+        "loafing around!"
+      ]
+    },
+    {
+      "id": "msg_0197_00833",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} is\n",
+        "loafing around!"
+      ]
+    },
+    {
+      "id": "msg_0197_00834",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} is\n",
+        "loafing around!"
+      ]
+    },
+    {
+      "id": "msg_0197_00835",
+      "en_US": [
+        "{STRVAR_1 14, 0, 0} {STRVAR_1 3, 1, 0} is\n",
+        "about to send in {STRVAR_1 1, 2, 0}.\f",
+        "Will you switch your Pokémon?{YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0197_00836",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} learned\n",
+        "{STRVAR_1 6, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00837",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} learned\n",
+        "{STRVAR_1 6, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00838",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} learned\n",
+        "{STRVAR_1 6, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00839",
+      "en_US": [
+        "Player defeated\n",
+        "{STRVAR_1 14, 0, 0} {STRVAR_1 3, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00840",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} crept closer to\n",
+        "{STRVAR_1 1, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00841",
+      "en_US": "{STRVAR_1 3, 0, 0} can’t get any closer!"
+    },
+    {
+      "id": "msg_0197_00842",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is watching\n",
+        "carefully!"
+      ]
+    },
+    {
+      "id": "msg_0197_00843",
+      "garbage": 26
+    },
+    {
+      "id": "msg_0197_00844",
+      "garbage": 25
+    },
+    {
+      "id": "msg_0197_00845",
+      "garbage": 22
+    },
+    {
+      "id": "msg_0197_00846",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} threw a Poffin\n",
+        "at the {STRVAR_1 1, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00847",
+      "en_US": [
+        "Announcer: You’re out of\n",
+        "Safari Balls!\f",
+        "Game over!\r"
+      ]
+    },
+    {
+      "id": "msg_0197_00848",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} threw\n",
+        "a Safari Ball!"
+      ]
+    },
+    {
+      "id": "msg_0197_00849",
+      "en_US": [
+        "{STRVAR_1 0, 0, 0} is watching\n",
+        "carefully!"
+      ]
+    },
+    {
+      "id": "msg_0197_00850",
+      "en_US": [
+        "Announcer: You’re out of\n",
+        "Safari Balls! Game over!"
+      ]
+    },
+    {
+      "id": "msg_0197_00851",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} threw some Bait\n",
+        "at the {STRVAR_1 0, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00852",
+      "en_US": "{STRVAR_1 0, 0, 0} is eating!"
+    },
+    {
+      "id": "msg_0197_00853",
+      "en_US": "{STRVAR_1 0, 0, 0} is busy eating!"
+    },
+    {
+      "id": "msg_0197_00854",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} threw Mud at\n",
+        "the {STRVAR_1 0, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00855",
+      "en_US": "{STRVAR_1 0, 0, 0} is angry!"
+    },
+    {
+      "id": "msg_0197_00856",
+      "en_US": [
+        "{STRVAR_1 0, 0, 0} is beside itself\n",
+        "with anger!"
+      ]
+    },
+    {
+      "id": "msg_0197_00857",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} used\n",
+        "one {STRVAR_1 8, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00858",
+      "en_US": [
+        "{STRVAR_1 14, 0, 0} {STRVAR_1 3, 1, 0}\n",
+        "used one {STRVAR_1 8, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00859",
+      "en_US": "The Trainer blocked the Ball!"
+    },
+    {
+      "id": "msg_0197_00860",
+      "en_US": "Don’t be a thief!"
+    },
+    {
+      "id": "msg_0197_00861",
+      "en_US": [
+        "It dodged the thrown Ball!\n",
+        "This Pokémon can’t be caught!"
+      ]
+    },
+    {
+      "id": "msg_0197_00862",
+      "en_US": "You missed the Pokémon!"
+    },
+    {
+      "id": "msg_0197_00863",
+      "en_US": [
+        "Oh, no!\n",
+        "The Pokémon broke free!"
+      ]
+    },
+    {
+      "id": "msg_0197_00864",
+      "en_US": [
+        "Aww!\n",
+        "It appeared to be caught!"
+      ]
+    },
+    {
+      "id": "msg_0197_00865",
+      "en_US": [
+        "Aargh!\n",
+        "Almost had it!"
+      ]
+    },
+    {
+      "id": "msg_0197_00866",
+      "en_US": [
+        "Shoot!\n",
+        "It was so close, too!"
+      ]
+    },
+    {
+      "id": "msg_0197_00867",
+      "en_US": [
+        "{WAIT 3}Gotcha!\n",
+        "{STRVAR_1 1, 0, 0} was caught!{WAIT 2}\r"
+      ]
+    },
+    {
+      "id": "msg_0197_00868",
+      "en_US": [
+        "Give a nickname to the\n",
+        "caught {STRVAR_1 1, 0, 0}?{YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0197_00869",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} was sent to\n",
+        "someone’s PC."
+      ]
+    },
+    {
+      "id": "msg_0197_00870",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} was sent to\n",
+        "Bill’s PC!"
+      ]
+    },
+    {
+      "id": "msg_0197_00871",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s data was\n",
+        "added to the Pokédex.\r"
+      ]
+    },
+    {
+      "id": "msg_0197_00872",
+      "en_US": "It is raining."
+    },
+    {
+      "id": "msg_0197_00873",
+      "en_US": "A sandstorm is raging."
+    },
+    {
+      "id": "msg_0197_00874",
+      "en_US": "There is no room left in the PC!\r"
+    },
+    {
+      "id": "msg_0197_00875",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s {STRVAR_1 8, 1, 0}\n",
+        "cured its paralysis!"
+      ]
+    },
+    {
+      "id": "msg_0197_00876",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 8, 1, 0} cured its paralysis!"
+      ]
+    },
+    {
+      "id": "msg_0197_00877",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 8, 1, 0} cured its paralysis!"
+      ]
+    },
+    {
+      "id": "msg_0197_00878",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s {STRVAR_1 8, 1, 0}\n",
+        "cured its poison!"
+      ]
+    },
+    {
+      "id": "msg_0197_00879",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 8, 1, 0} cured its poison!"
+      ]
+    },
+    {
+      "id": "msg_0197_00880",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 8, 1, 0} cured its poison!"
+      ]
+    },
+    {
+      "id": "msg_0197_00881",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s {STRVAR_1 8, 1, 0}\n",
+        "healed its burn!"
+      ]
+    },
+    {
+      "id": "msg_0197_00882",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 8, 1, 0} healed its burn!"
+      ]
+    },
+    {
+      "id": "msg_0197_00883",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 8, 1, 0} healed its burn!"
+      ]
+    },
+    {
+      "id": "msg_0197_00884",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s {STRVAR_1 8, 1, 0}\n",
+        "defrosted it!"
+      ]
+    },
+    {
+      "id": "msg_0197_00885",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 8, 1, 0} defrosted it!"
+      ]
+    },
+    {
+      "id": "msg_0197_00886",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 8, 1, 0} defrosted it!"
+      ]
+    },
+    {
+      "id": "msg_0197_00887",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s {STRVAR_1 8, 1, 0}\n",
+        "woke it up!"
+      ]
+    },
+    {
+      "id": "msg_0197_00888",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 8, 1, 0} woke it up!"
+      ]
+    },
+    {
+      "id": "msg_0197_00889",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 8, 1, 0} woke it up!"
+      ]
+    },
+    {
+      "id": "msg_0197_00890",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s {STRVAR_1 8, 1, 0}\n",
+        "snapped it out of confusion!"
+      ]
+    },
+    {
+      "id": "msg_0197_00891",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 8, 1, 0} snapped it out of\f",
+        "confusion!"
+      ]
+    },
+    {
+      "id": "msg_0197_00892",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 8, 1, 0} snapped it out of\f",
+        "confusion!"
+      ]
+    },
+    {
+      "id": "msg_0197_00893",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} cured its {STRVAR_1 17, 2, 0}\n",
+        "status using its {STRVAR_1 8, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00894",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} cured its\n",
+        "{STRVAR_1 17, 2, 0} status\f",
+        "using its {STRVAR_1 8, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00895",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} cured its\n",
+        "{STRVAR_1 17, 2, 0} status\f",
+        "using its {STRVAR_1 8, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00896",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} normalized its\n",
+        "status using its {STRVAR_1 8, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00897",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} normalized its\n",
+        "status using its {STRVAR_1 8, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00898",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} normalized its\n",
+        "status using its {STRVAR_1 8, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00899",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} restored its\n",
+        "health using its {STRVAR_1 8, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00900",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} restored its\n",
+        "health using its {STRVAR_1 8, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00901",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} restored its\n",
+        "health using its {STRVAR_1 8, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00902",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} restored\n",
+        "{STRVAR_1 6, 2, 0}’s PP using its\f",
+        "{STRVAR_1 8, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00903",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} restored\n",
+        "{STRVAR_1 6, 2, 0}’s PP using its\f",
+        "{STRVAR_1 8, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00904",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} restored\n",
+        "{STRVAR_1 6, 2, 0}’s PP using its\f",
+        "{STRVAR_1 8, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00905",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} restored its\n",
+        "status using its {STRVAR_1 8, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00906",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} restored its\n",
+        "status using its {STRVAR_1 8, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00907",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} restored its\n",
+        "status using its {STRVAR_1 8, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00908",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} restored\n",
+        "a little HP using its {STRVAR_1 8, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00909",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} restored\n",
+        "a little HP using its {STRVAR_1 8, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00910",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} restored\n",
+        "a little HP using its {STRVAR_1 8, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00911",
+      "en_US": [
+        "The {STRVAR_1 8, 0, 0} allows the\n",
+        "use of only {STRVAR_1 6, 1, 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0197_00912",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} hung on\n",
+        "using its {STRVAR_1 8, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00913",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} hung on\n",
+        "using its {STRVAR_1 8, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00914",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} hung on\n",
+        "using its {STRVAR_1 8, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00915",
+      "en_US": [
+        "What?\n",
+        "{STRVAR_1 1, 0, 0} is evolving!"
+      ]
+    },
+    {
+      "id": "msg_0197_00916",
+      "en_US": "What?\r"
+    },
+    {
+      "id": "msg_0197_00917",
+      "en_US": "{STRVAR_1 1, 0, 0} is evolving!"
+    },
+    {
+      "id": "msg_0197_00918",
+      "en_US": [
+        "{WAIT 3}Congratulations! Your {STRVAR_1 1, 0, 0}\n",
+        "evolved into {STRVAR_1 1, 1, 0}!{WAIT 2}\r"
+      ]
+    },
+    {
+      "id": "msg_0197_00919",
+      "en_US": [
+        "Huh? {STRVAR_1 1, 0, 0}\n",
+        "stopped evolving!\r"
+      ]
+    },
+    {
+      "id": "msg_0197_00920",
+      "en_US": "... ...?\r"
+    },
+    {
+      "id": "msg_0197_00921",
+      "en_US": "What will {STRVAR_1 1, 0, 0} do?{YESNO 0}"
+    },
+    {
+      "id": "msg_0197_00922",
+      "en_US": "What will {STRVAR_1 3, 0, 0} throw?{YESNO 0}"
+    },
+    {
+      "id": "msg_0197_00923",
+      "en_US": "Communicating. Please stand by..."
+    },
+    {
+      "id": "msg_0197_00924",
+      "en_US": "FIGHT"
+    },
+    {
+      "id": "msg_0197_00925",
+      "en_US": "BAG"
+    },
+    {
+      "id": "msg_0197_00926",
+      "en_US": "POKéMON"
+    },
+    {
+      "id": "msg_0197_00927",
+      "en_US": "RUN"
+    },
+    {
+      "id": "msg_0197_00928",
+      "en_US": "CANCEL"
+    },
+    {
+      "id": "msg_0197_00929",
+      "en_US": "CANCEL"
+    },
+    {
+      "id": "msg_0197_00930",
+      "en_US": "CANCEL"
+    },
+    {
+      "id": "msg_0197_00931",
+      "en_US": "BALL"
+    },
+    {
+      "id": "msg_0197_00932",
+      "en_US": "BAIT"
+    },
+    {
+      "id": "msg_0197_00933",
+      "en_US": "MUD"
+    },
+    {
+      "id": "msg_0197_00934",
+      "garbage": 4
+    },
+    {
+      "id": "msg_0197_00935",
+      "garbage": 4
+    },
+    {
+      "id": "msg_0197_00936",
+      "en_US": "RUN"
+    },
+    {
+      "id": "msg_0197_00937",
+      "en_US": "{STRVAR_1 51, 0, 0}/{STRVAR_1 51, 1, 0}"
+    },
+    {
+      "id": "msg_0197_00938",
+      "en_US": "PP"
+    },
+    {
+      "id": "msg_0197_00939",
+      "en_US": [
+        "Which move should\n",
+        "be forgotten?"
+      ]
+    },
+    {
+      "id": "msg_0197_00940",
+      "en_US": "Yes"
+    },
+    {
+      "id": "msg_0197_00941",
+      "en_US": "No"
+    },
+    {
+      "id": "msg_0197_00942",
+      "garbage": 19
+    },
+    {
+      "id": "msg_0197_00943",
+      "en_US": "Quit the battle?{YESNO 0}"
+    },
+    {
+      "id": "msg_0197_00944",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} {COLOR 1}♂{COLOR 0}\n",
+        "Lv. {STRVAR_1 52, 1, 0}"
+      ]
+    },
+    {
+      "id": "msg_0197_00945",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} {COLOR 2}♀{COLOR 0}\n",
+        "Lv. {STRVAR_1 52, 1, 0}"
+      ]
+    },
+    {
+      "id": "msg_0197_00946",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}\n",
+        "Lv. {STRVAR_1 52, 1, 0}"
+      ]
+    },
+    {
+      "id": "msg_0197_00947",
+      "en_US": "{STRVAR_1 13, 0, 0}"
+    },
+    {
+      "id": "msg_0197_00948",
+      "en_US": "+{STRVAR_1 51, 0, 0}"
+    },
+    {
+      "id": "msg_0197_00949",
+      "en_US": "{STRVAR_1 52, 0, 0}"
+    },
+    {
+      "id": "msg_0197_00950",
+      "en_US": "SAFARI BALLS"
+    },
+    {
+      "id": "msg_0197_00951",
+      "en_US": "Left: {STRVAR_1 51, 0, 0}"
+    },
+    {
+      "id": "msg_0197_00952",
+      "garbage": 1
+    },
+    {
+      "id": "msg_0197_00953",
+      "en_US": [
+        "Player beat\n",
+        "{STRVAR_1 14, 0, 0} {STRVAR_1 3, 1, 0}\f",
+        "and {STRVAR_1 14, 2, 0} {STRVAR_1 3, 3, 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0197_00954",
+      "garbage": 8
+    },
+    {
+      "id": "msg_0197_00955",
+      "en_US": [
+        "Would you like to forfeit the match\n",
+        "and quit now?{YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0197_00956",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}\n",
+        "forfeited the match!"
+      ]
+    },
+    {
+      "id": "msg_0197_00957",
+      "garbage": 8
+    },
+    {
+      "id": "msg_0197_00958",
+      "garbage": 8
+    },
+    {
+      "id": "msg_0197_00959",
+      "en_US": "{STRVAR_1 14, 0, 0} {STRVAR_1 3, 1, 0} fled!"
+    },
+    {
+      "id": "msg_0197_00960",
+      "en_US": [
+        "Player lost against\n",
+        "{STRVAR_1 14, 0, 0} {STRVAR_1 3, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00961",
+      "en_US": [
+        "Player battled to a draw against\n",
+        "{STRVAR_1 14, 0, 0} {STRVAR_1 3, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00962",
+      "en_US": "{STRVAR_1 1, 0, 0}{COLOR 3}♂{COLOR 0}"
+    },
+    {
+      "id": "msg_0197_00963",
+      "en_US": "{STRVAR_1 1, 0, 0}{COLOR 4}♀{COLOR 0}"
+    },
+    {
+      "id": "msg_0197_00964",
+      "en_US": "{STRVAR_1 1, 0, 0}"
+    },
+    {
+      "id": "msg_0197_00965",
+      "en_US": "A wild {STRVAR_1 1, 0, 0} appeared!\r"
+    },
+    {
+      "id": "msg_0197_00966",
+      "en_US": "A wild {STRVAR_1 1, 0, 0} appeared!\r"
+    },
+    {
+      "id": "msg_0197_00967",
+      "en_US": [
+        "A wild {STRVAR_1 1, 0, 0} and\n",
+        "{STRVAR_1 1, 1, 0} appeared!\r"
+      ]
+    },
+    {
+      "id": "msg_0197_00968",
+      "en_US": [
+        "A wild {STRVAR_1 1, 0, 0} appeared from\n",
+        "the tree you slathered with Honey!\r"
+      ]
+    },
+    {
+      "id": "msg_0197_00969",
+      "en_US": [
+        "You are challenged by\n",
+        "{STRVAR_1 14, 0, 0} {STRVAR_1 3, 1, 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0197_00970",
+      "en_US": [
+        "You are challenged by\n",
+        "{STRVAR_1 3, 0, 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0197_00971",
+      "en_US": [
+        "You are challenged by\n",
+        "{STRVAR_1 3, 0, 0} and {STRVAR_1 3, 1, 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0197_00972",
+      "en_US": [
+        "{STRVAR_1 14, 0, 0} {STRVAR_1 3, 1, 0} sent\n",
+        "out {STRVAR_1 1, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00973",
+      "en_US": [
+        "{STRVAR_1 14, 0, 0} {STRVAR_1 3, 1, 0} sent\n",
+        "out {STRVAR_1 1, 2, 0} and {STRVAR_1 1, 3, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00974",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} sent out\n",
+        "{STRVAR_1 1, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00975",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} sent out\n",
+        "{STRVAR_1 1, 1, 0} and {STRVAR_1 1, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00976",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} sent out {STRVAR_1 1, 1, 0}!\n",
+        "{STRVAR_1 3, 2, 0} sent out {STRVAR_1 1, 3, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00977",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} sent out\n",
+        "{STRVAR_1 1, 1, 0}!\f",
+        "Go! {STRVAR_1 1, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00978",
+      "en_US": [
+        "Go! {STRVAR_1 1, 0, 0} and\n",
+        "{STRVAR_1 1, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00979",
+      "en_US": "Go! {STRVAR_1 1, 0, 0}!"
+    },
+    {
+      "id": "msg_0197_00980",
+      "en_US": "You’re in charge, {STRVAR_1 1, 0, 0}!"
+    },
+    {
+      "id": "msg_0197_00981",
+      "en_US": "Go for it, {STRVAR_1 1, 0, 0}!"
+    },
+    {
+      "id": "msg_0197_00982",
+      "en_US": [
+        "Your foe’s weak!\n",
+        "Get ’em, {STRVAR_1 1, 0, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00983",
+      "en_US": [
+        "Just a little more!\n",
+        "Hang in there, {STRVAR_1 1, 0, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00984",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}, switch out!\n",
+        "Come back!"
+      ]
+    },
+    {
+      "id": "msg_0197_00985",
+      "en_US": "{STRVAR_1 1, 0, 0}, come back!"
+    },
+    {
+      "id": "msg_0197_00986",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}, OK!\n",
+        "Come back!"
+      ]
+    },
+    {
+      "id": "msg_0197_00987",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}, enough!\n",
+        "Get back!"
+      ]
+    },
+    {
+      "id": "msg_0197_00988",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}, good!\n",
+        "Come back!"
+      ]
+    },
+    {
+      "id": "msg_0197_00989",
+      "en_US": [
+        "{STRVAR_1 14, 0, 0} {STRVAR_1 3, 1, 0}\n",
+        "withdrew {STRVAR_1 1, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00990",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} withdrew\n",
+        "{STRVAR_1 1, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00991",
+      "en_US": [
+        "{STRVAR_1 14, 0, 0} {STRVAR_1 3, 1, 0} sent\n",
+        "out {STRVAR_1 1, 2, 0}!\r",
+        "{STRVAR_1 14, 3, 0} {STRVAR_1 3, 4, 0} sent\n",
+        "out {STRVAR_1 1, 5, 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0197_00992",
+      "en_US": [
+        "You are challenged by\n",
+        "{STRVAR_1 14, 0, 0} {STRVAR_1 3, 1, 0} and\f",
+        "{STRVAR_1 14, 2, 0} {STRVAR_1 3, 3, 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0197_00993",
+      "en_US": [
+        "{STRVAR_1 14, 0, 0} {STRVAR_1 3, 1, 0} sent\n",
+        "out {STRVAR_1 1, 2, 0}!\f",
+        "Go! {STRVAR_1 1, 3, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_00994",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s stockpiled\n",
+        "effect wore off!"
+      ]
+    },
+    {
+      "id": "msg_0197_00995",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}’s stockpiled\n",
+        "effect wore off!"
+      ]
+    },
+    {
+      "id": "msg_0197_00996",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}’s stockpiled\n",
+        "effect wore off!"
+      ]
+    },
+    {
+      "id": "msg_0197_00997",
+      "en_US": "Gravity intensified!"
+    },
+    {
+      "id": "msg_0197_00998",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} couldn’t stay\n",
+        "airborne because of gravity!"
+      ]
+    },
+    {
+      "id": "msg_0197_00999",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} couldn’t stay\n",
+        "airborne because of gravity!"
+      ]
+    },
+    {
+      "id": "msg_0197_01000",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} couldn’t stay\n",
+        "airborne because of gravity!"
+      ]
+    },
+    {
+      "id": "msg_0197_01001",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} can’t use\n",
+        "{STRVAR_1 6, 1, 0} because of gravity!"
+      ]
+    },
+    {
+      "id": "msg_0197_01002",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} can’t use\n",
+        "{STRVAR_1 6, 1, 0} because of gravity!"
+      ]
+    },
+    {
+      "id": "msg_0197_01003",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} can’t use\n",
+        "{STRVAR_1 6, 1, 0} because of gravity!\r"
+      ]
+    },
+    {
+      "id": "msg_0197_01004",
+      "en_US": "Gravity returned to normal!"
+    },
+    {
+      "id": "msg_0197_01005",
+      "en_US": "The healing wish came true!"
+    },
+    {
+      "id": "msg_0197_01006",
+      "en_US": [
+        "It became cloaked in mystical\n",
+        "moonlight!"
+      ]
+    },
+    {
+      "id": "msg_0197_01007",
+      "en_US": "A tailwind started blowing!"
+    },
+    {
+      "id": "msg_0197_01008",
+      "en_US": "The tailwind petered out!"
+    },
+    {
+      "id": "msg_0197_01009",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} switched\n",
+        "its Attack and Defense!"
+      ]
+    },
+    {
+      "id": "msg_0197_01010",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} switched\n",
+        "its Attack and Defense!"
+      ]
+    },
+    {
+      "id": "msg_0197_01011",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} switched\n",
+        "its Attack and Defense!"
+      ]
+    },
+    {
+      "id": "msg_0197_01012",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s ability\n",
+        "was suppressed!"
+      ]
+    },
+    {
+      "id": "msg_0197_01013",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}’s ability\n",
+        "was suppressed!"
+      ]
+    },
+    {
+      "id": "msg_0197_01014",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}’s ability\n",
+        "was suppressed!"
+      ]
+    },
+    {
+      "id": "msg_0197_01015",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} switched all\n",
+        "changes to its Attack and Sp. Atk\f",
+        "with the target!"
+      ]
+    },
+    {
+      "id": "msg_0197_01016",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} switched all\n",
+        "changes to its Attack and Sp. Atk\f",
+        "with the target!"
+      ]
+    },
+    {
+      "id": "msg_0197_01017",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} switched all\n",
+        "changes to its Attack and Sp. Atk\f",
+        "with the target!"
+      ]
+    },
+    {
+      "id": "msg_0197_01018",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} switched all\n",
+        "changes to its Defense and Sp. Def\f",
+        "with the target!"
+      ]
+    },
+    {
+      "id": "msg_0197_01019",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} switched all\n",
+        "changes to its Defense and Sp. Def\f",
+        "with the target!"
+      ]
+    },
+    {
+      "id": "msg_0197_01020",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} switched all\n",
+        "changes to its Defense and Sp. Def\f",
+        "with the target!"
+      ]
+    },
+    {
+      "id": "msg_0197_01021",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} acquired\n",
+        "{STRVAR_1 5, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01022",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} acquired\n",
+        "{STRVAR_1 5, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01023",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} acquired\n",
+        "{STRVAR_1 5, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01024",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} switched stat\n",
+        "changes with the target!"
+      ]
+    },
+    {
+      "id": "msg_0197_01025",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} switched stat\n",
+        "changes with the target!"
+      ]
+    },
+    {
+      "id": "msg_0197_01026",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} switched stat\n",
+        "changes with the target!"
+      ]
+    },
+    {
+      "id": "msg_0197_01027",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} surrounded\n",
+        "itself with a veil of water!"
+      ]
+    },
+    {
+      "id": "msg_0197_01028",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} surrounded\n",
+        "itself with a veil of water!"
+      ]
+    },
+    {
+      "id": "msg_0197_01029",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} surrounded\n",
+        "itself with a veil of water!"
+      ]
+    },
+    {
+      "id": "msg_0197_01030",
+      "en_US": [
+        "{STRVAR_1 6, 1, 0} restored\n",
+        "{STRVAR_1 1, 0, 0}’s HP!"
+      ]
+    },
+    {
+      "id": "msg_0197_01031",
+      "en_US": [
+        "{STRVAR_1 6, 1, 0} restored\n",
+        "the wild {STRVAR_1 1, 0, 0}’s HP!"
+      ]
+    },
+    {
+      "id": "msg_0197_01032",
+      "en_US": [
+        "{STRVAR_1 6, 1, 0} restored\n",
+        "the foe’s {STRVAR_1 1, 0, 0}’s HP!"
+      ]
+    },
+    {
+      "id": "msg_0197_01033",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} levitated\n",
+        "on electromagnetism!"
+      ]
+    },
+    {
+      "id": "msg_0197_01034",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} levitated\n",
+        "on electromagnetism!"
+      ]
+    },
+    {
+      "id": "msg_0197_01035",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} levitated\n",
+        "on electromagnetism!"
+      ]
+    },
+    {
+      "id": "msg_0197_01036",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} evades\n",
+        "Ground moves with {STRVAR_1 6, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01037",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} evades\n",
+        "Ground moves with {STRVAR_1 6, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01038",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} evades\n",
+        "Ground moves with {STRVAR_1 6, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01039",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s\n",
+        "electromagnetism wore off!"
+      ]
+    },
+    {
+      "id": "msg_0197_01040",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}’s\n",
+        "electromagnetism wore off!"
+      ]
+    },
+    {
+      "id": "msg_0197_01041",
+      "en_US": [
+        "The electromagnetism of the foe’s\n",
+        "{STRVAR_1 1, 0, 0} wore off!"
+      ]
+    },
+    {
+      "id": "msg_0197_01042",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} blew away\n",
+        "{STRVAR_1 6, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01043",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} blew away\n",
+        "{STRVAR_1 6, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01044",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} blew away\n",
+        "{STRVAR_1 6, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01045",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} blew away\n",
+        "the deep fog with {STRVAR_1 6, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01046",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} blew away\n",
+        "the deep fog with {STRVAR_1 6, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01047",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} blew away\n",
+        "the deep fog with {STRVAR_1 6, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01048",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} fell for\n",
+        "the feint!"
+      ]
+    },
+    {
+      "id": "msg_0197_01049",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} fell for\n",
+        "the feint!"
+      ]
+    },
+    {
+      "id": "msg_0197_01050",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} fell for\n",
+        "the feint!"
+      ]
+    },
+    {
+      "id": "msg_0197_01051",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} was prevented\n",
+        "from healing!"
+      ]
+    },
+    {
+      "id": "msg_0197_01052",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} was prevented\n",
+        "from healing!"
+      ]
+    },
+    {
+      "id": "msg_0197_01053",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} was prevented\n",
+        "from healing!"
+      ]
+    },
+    {
+      "id": "msg_0197_01054",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} was prevented\n",
+        "from healing due to {STRVAR_1 6, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01055",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} was prevented\n",
+        "from healing due to {STRVAR_1 6, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01056",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} was prevented\n",
+        "from healing due to {STRVAR_1 6, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01057",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} can’t use\n",
+        "{STRVAR_1 6, 2, 0} because of\f",
+        "{STRVAR_1 6, 1, 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0197_01058",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} can’t use\n",
+        "{STRVAR_1 6, 2, 0} because of\f",
+        "{STRVAR_1 6, 1, 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0197_01059",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} can’t use\n",
+        "{STRVAR_1 6, 2, 0} because of\f",
+        "{STRVAR_1 6, 1, 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0197_01060",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s {STRVAR_1 6, 1, 0}\n",
+        "wore off!"
+      ]
+    },
+    {
+      "id": "msg_0197_01061",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 6, 1, 0} wore off!"
+      ]
+    },
+    {
+      "id": "msg_0197_01062",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 6, 1, 0} wore off!"
+      ]
+    },
+    {
+      "id": "msg_0197_01063",
+      "en_US": [
+        "Poison spikes were scattered all\n",
+        "around your team’s feet!"
+      ]
+    },
+    {
+      "id": "msg_0197_01064",
+      "en_US": [
+        "Poison spikes were scattered all\n",
+        "around the enemy team’s feet!"
+      ]
+    },
+    {
+      "id": "msg_0197_01065",
+      "en_US": [
+        "The poison spikes disappeared from\n",
+        "around your team’s feet!"
+      ]
+    },
+    {
+      "id": "msg_0197_01066",
+      "en_US": [
+        "The poison spikes disappeared from\n",
+        "around the enemy team’s feet!"
+      ]
+    },
+    {
+      "id": "msg_0197_01067",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} went back\n",
+        "to {STRVAR_1 3, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01068",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} went back\n",
+        "to {STRVAR_1 3, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01069",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} went back\n",
+        "to {STRVAR_1 3, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01070",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} twisted\n",
+        "the dimensions!"
+      ]
+    },
+    {
+      "id": "msg_0197_01071",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} twisted\n",
+        "the dimensions!"
+      ]
+    },
+    {
+      "id": "msg_0197_01072",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} twisted\n",
+        "the dimensions!"
+      ]
+    },
+    {
+      "id": "msg_0197_01073",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} restored\n",
+        "the twisted dimensions!"
+      ]
+    },
+    {
+      "id": "msg_0197_01074",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} restored\n",
+        "the twisted dimensions!"
+      ]
+    },
+    {
+      "id": "msg_0197_01075",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} restored\n",
+        "the twisted dimensions!"
+      ]
+    },
+    {
+      "id": "msg_0197_01076",
+      "en_US": [
+        "The twisted dimensions returned to\n",
+        "normal!"
+      ]
+    },
+    {
+      "id": "msg_0197_01077",
+      "en_US": [
+        "Pointed stones float in the air\n",
+        "around your team!"
+      ]
+    },
+    {
+      "id": "msg_0197_01078",
+      "en_US": [
+        "Pointed stones float in the air\n",
+        "around your foe’s team!"
+      ]
+    },
+    {
+      "id": "msg_0197_01079",
+      "en_US": [
+        "Pointed stones dug into\n",
+        "{STRVAR_1 1, 0, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01080",
+      "en_US": [
+        "Pointed stones dug into\n",
+        "the wild {STRVAR_1 1, 0, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01081",
+      "en_US": [
+        "Pointed stones dug into\n",
+        "the foe’s {STRVAR_1 1, 0, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01082",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} vanished\n",
+        "instantly!"
+      ]
+    },
+    {
+      "id": "msg_0197_01083",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} vanished\n",
+        "instantly!"
+      ]
+    },
+    {
+      "id": "msg_0197_01084",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} vanished\n",
+        "instantly!"
+      ]
+    },
+    {
+      "id": "msg_0197_01085",
+      "en_US": "Your team’s Lucky Chant wore off!"
+    },
+    {
+      "id": "msg_0197_01086",
+      "en_US": "The foe’s Lucky Chant wore off!"
+    },
+    {
+      "id": "msg_0197_01087",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} has\n",
+        "{STRVAR_1 5, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01088",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} has\n",
+        "{STRVAR_1 5, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01089",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} has\n",
+        "{STRVAR_1 5, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01090",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is hurt\n",
+        "by its {STRVAR_1 5, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01091",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} is hurt\n",
+        "by its {STRVAR_1 5, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01092",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} is hurt\n",
+        "by its {STRVAR_1 5, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01093",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} maxed its\n",
+        "{STRVAR_1 13, 2, 0} with {STRVAR_1 5, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01094",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} maxed its\n",
+        "{STRVAR_1 13, 2, 0} with {STRVAR_1 5, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01095",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} maxed its\n",
+        "{STRVAR_1 13, 2, 0} with {STRVAR_1 5, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01096",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} lost some HP\n",
+        "because of its {STRVAR_1 5, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01097",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} lost some HP\n",
+        "because of its {STRVAR_1 5, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01098",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} lost some HP\n",
+        "because of its {STRVAR_1 5, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01099",
+      "en_US": [
+        "{STRVAR_1 1, 2, 0} was hurt by\n",
+        "{STRVAR_1 1, 0, 0}’s {STRVAR_1 5, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01100",
+      "en_US": [
+        "The wild {STRVAR_1 1, 2, 0} was hurt by\n",
+        "{STRVAR_1 1, 0, 0}’s {STRVAR_1 5, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01101",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 2, 0} was hurt by\n",
+        "{STRVAR_1 1, 0, 0}’s {STRVAR_1 5, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01102",
+      "en_US": [
+        "{STRVAR_1 1, 2, 0} was hurt by the wild\n",
+        "{STRVAR_1 1, 0, 0}’s {STRVAR_1 5, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01103",
+      "en_US": [
+        "The wild {STRVAR_1 1, 2, 0} was hurt by the\n",
+        "wild {STRVAR_1 1, 0, 0}’s {STRVAR_1 5, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01104",
+      "en_US": [
+        "{STRVAR_1 1, 2, 0} was hurt by the foe’s\n",
+        "{STRVAR_1 1, 0, 0}’s {STRVAR_1 5, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01105",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 2, 0} was hurt by\n",
+        "the foe’s {STRVAR_1 1, 0, 0}’s\f",
+        "{STRVAR_1 5, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01106",
+      "en_US": [
+        "{STRVAR_1 1, 1, 0}’s {STRVAR_1 5, 0, 0} made\n",
+        "it shudder!"
+      ]
+    },
+    {
+      "id": "msg_0197_01107",
+      "en_US": [
+        "The wild {STRVAR_1 1, 1, 0}’s\n",
+        "{STRVAR_1 5, 0, 0} made it shudder!"
+      ]
+    },
+    {
+      "id": "msg_0197_01108",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 1, 0}’s\n",
+        "{STRVAR_1 5, 0, 0} made it shudder!"
+      ]
+    },
+    {
+      "id": "msg_0197_01109",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s {STRVAR_1 5, 1, 0}\n",
+        "alerted it to {STRVAR_1 6, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01110",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}’s Forewarn\n",
+        "alerted it to {STRVAR_1 6, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01111",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}’s Forewarn\n",
+        "alerted it to {STRVAR_1 6, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01112",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} can’t get it\n",
+        "going because of its {STRVAR_1 5, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01113",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} can’t get it\n",
+        "going because of its {STRVAR_1 5, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01114",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} can’t get it\n",
+        "going because of its {STRVAR_1 5, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01115",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} finally got\n",
+        "its act together!"
+      ]
+    },
+    {
+      "id": "msg_0197_01116",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} finally got\n",
+        "its act together!"
+      ]
+    },
+    {
+      "id": "msg_0197_01117",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} finally got\n",
+        "its act together!"
+      ]
+    },
+    {
+      "id": "msg_0197_01118",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} frisked its\n",
+        "foe and found one {STRVAR_1 8, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01119",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} frisked its\n",
+        "foe and found one {STRVAR_1 8, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01120",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} frisked its\n",
+        "foe and found one {STRVAR_1 8, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01121",
+      "en_US": [
+        "{STRVAR_1 1, 2, 0} is tormented\n",
+        "by {STRVAR_1 1, 0, 0}’s {STRVAR_1 5, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01122",
+      "en_US": [
+        "The wild {STRVAR_1 1, 2, 0} is tormented\n",
+        "by {STRVAR_1 1, 0, 0}’s {STRVAR_1 5, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01123",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 2, 0} is tormented\n",
+        "by {STRVAR_1 1, 0, 0}’s {STRVAR_1 5, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01124",
+      "en_US": [
+        "{STRVAR_1 1, 2, 0} is tormented\n",
+        "by the wild {STRVAR_1 1, 0, 0}’s\f",
+        "{STRVAR_1 5, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01125",
+      "en_US": [
+        "The wild {STRVAR_1 1, 2, 0} is tormented\n",
+        "by the wild {STRVAR_1 1, 0, 0}’s\f",
+        "{STRVAR_1 5, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01126",
+      "en_US": [
+        "{STRVAR_1 1, 2, 0} is tormented\n",
+        "by the foe’s {STRVAR_1 1, 0, 0}’s\f",
+        "{STRVAR_1 5, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01127",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 2, 0} is tormented\n",
+        "by the foe’s {STRVAR_1 1, 0, 0}’s\f",
+        "{STRVAR_1 5, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01128",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} maxed its\n",
+        "{STRVAR_1 13, 2, 0} with its {STRVAR_1 8, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01129",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} maxed its\n",
+        "{STRVAR_1 13, 2, 0} with its {STRVAR_1 8, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01130",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} maxed its\n",
+        "{STRVAR_1 13, 2, 0} with its {STRVAR_1 8, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01131",
+      "en_US": [
+        "The {STRVAR_1 8, 0, 0} weakened\n",
+        "{STRVAR_1 6, 1, 0}’s power!"
+      ]
+    },
+    {
+      "id": "msg_0197_01132",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is hurt\n",
+        "by its {STRVAR_1 8, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01133",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}\n",
+        "is hurt by its {STRVAR_1 8, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01134",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}\n",
+        "is hurt by its {STRVAR_1 8, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01135",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} can’t use\n",
+        "items anymore!"
+      ]
+    },
+    {
+      "id": "msg_0197_01136",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} can’t use\n",
+        "items anymore!"
+      ]
+    },
+    {
+      "id": "msg_0197_01137",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} can’t use\n",
+        "items anymore!"
+      ]
+    },
+    {
+      "id": "msg_0197_01138",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} can use\n",
+        "items again!"
+      ]
+    },
+    {
+      "id": "msg_0197_01139",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} can use\n",
+        "items again!"
+      ]
+    },
+    {
+      "id": "msg_0197_01140",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} can use\n",
+        "items again!"
+      ]
+    },
+    {
+      "id": "msg_0197_01141",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} stole and\n",
+        "ate its foe’s {STRVAR_1 8, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01142",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} stole and\n",
+        "ate its foe’s {STRVAR_1 8, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01143",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} stole and\n",
+        "ate its foe’s {STRVAR_1 8, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01144",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} flung\n",
+        "its {STRVAR_1 8, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01145",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} flung\n",
+        "its {STRVAR_1 8, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01146",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} flung\n",
+        "its {STRVAR_1 8, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01147",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s {STRVAR_1 5, 1, 0}\n",
+        "made the {STRVAR_1 8, 2, 0} ineffective!"
+      ]
+    },
+    {
+      "id": "msg_0197_01148",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 5, 1, 0} made the\f",
+        "{STRVAR_1 8, 2, 0} ineffective!"
+      ]
+    },
+    {
+      "id": "msg_0197_01149",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 5, 1, 0} made the\f",
+        "{STRVAR_1 8, 2, 0} ineffective!"
+      ]
+    },
+    {
+      "id": "msg_0197_01150",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s {STRVAR_1 8, 1, 0}\n",
+        "infatuated {STRVAR_1 1, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01151",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s {STRVAR_1 8, 1, 0}\n",
+        "infatuated the wild {STRVAR_1 1, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01152",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s {STRVAR_1 8, 1, 0}\n",
+        "infatuated the foe’s {STRVAR_1 1, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01153",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 8, 1, 0} made {STRVAR_1 1, 2, 0}\f",
+        "infatuated!"
+      ]
+    },
+    {
+      "id": "msg_0197_01154",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 8, 1, 0} made the wild\f",
+        "{STRVAR_1 1, 2, 0} infatuated!"
+      ]
+    },
+    {
+      "id": "msg_0197_01155",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 8, 1, 0} made {STRVAR_1 1, 2, 0}\f",
+        "infatuated!"
+      ]
+    },
+    {
+      "id": "msg_0197_01156",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 8, 1, 0} made the foe’s\f",
+        "{STRVAR_1 1, 2, 0} infatuated!"
+      ]
+    },
+    {
+      "id": "msg_0197_01157",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} boosted\n",
+        "the accuracy of its next move\f",
+        "using its {STRVAR_1 8, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01158",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} boosted\n",
+        "the accuracy of its next move\f",
+        "using its {STRVAR_1 8, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01159",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} boosted\n",
+        "the accuracy of its next move\f",
+        "using its {STRVAR_1 8, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01160",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is hurt by\n",
+        "{STRVAR_1 1, 1, 0}’s {STRVAR_1 8, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01161",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is hurt by the wild\n",
+        "{STRVAR_1 1, 1, 0}’s {STRVAR_1 8, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01162",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is hurt by the foe’s\n",
+        "{STRVAR_1 1, 1, 0}’s {STRVAR_1 8, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01163",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} is hurt by\n",
+        "{STRVAR_1 1, 1, 0}’s {STRVAR_1 8, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01164",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} is hurt by the\n",
+        "wild {STRVAR_1 1, 1, 0}’s {STRVAR_1 8, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01165",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} is hurt by\n",
+        "{STRVAR_1 1, 1, 0}’s {STRVAR_1 8, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01166",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} is hurt by the\n",
+        "foe’s {STRVAR_1 1, 1, 0}’s {STRVAR_1 8, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01167",
+      "en_US": [
+        "Whoa!\n",
+        "A wild {STRVAR_1 1, 0, 0} came charging!"
+      ]
+    },
+    {
+      "id": "msg_0197_01168",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} was badly\n",
+        "poisoned by the {STRVAR_1 8, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01169",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} was badly\n",
+        "poisoned by the {STRVAR_1 8, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01170",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} was badly\n",
+        "poisoned by the {STRVAR_1 8, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01171",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} got a burn\n",
+        "from the {STRVAR_1 8, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01172",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} got a burn\n",
+        "from the {STRVAR_1 8, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01173",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} got a burn\n",
+        "from the {STRVAR_1 8, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01174",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} was transferred to\n",
+        "{STRVAR_1 11, 1, 0} in someone’s PC!"
+      ]
+    },
+    {
+      "id": "msg_0197_01175",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} was transferred to\n",
+        "{STRVAR_1 11, 1, 0} in Bill’s PC!"
+      ]
+    },
+    {
+      "id": "msg_0197_01176",
+      "en_US": [
+        "{STRVAR_1 11, 1, 0} in someone’s PC is full.\r",
+        "{STRVAR_1 1, 0, 0} was transferred to\n",
+        "{STRVAR_1 11, 2, 0} instead!"
+      ]
+    },
+    {
+      "id": "msg_0197_01177",
+      "en_US": [
+        "{STRVAR_1 11, 1, 0} in Bill’s PC is full.\r",
+        "{STRVAR_1 1, 0, 0} was transferred to\n",
+        "{STRVAR_1 11, 2, 0} instead!"
+      ]
+    },
+    {
+      "id": "msg_0197_01178",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} wants to learn the\n",
+        "move {STRVAR_1 6, 1, 0}.\r"
+      ]
+    },
+    {
+      "id": "msg_0197_01179",
+      "en_US": [
+        "But {STRVAR_1 1, 0, 0} can’t learn\n",
+        "more than four moves.\r"
+      ]
+    },
+    {
+      "id": "msg_0197_01180",
+      "en_US": [
+        "Make it forget\n",
+        "another move?{YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0197_01181",
+      "en_US": "{ALN_CENTER}Forget a move!"
+    },
+    {
+      "id": "msg_0197_01182",
+      "en_US": "{ALN_CENTER}Keep old moves!"
+    },
+    {
+      "id": "msg_0197_01183",
+      "en_US": [
+        "Which move should\n",
+        "be forgotten?{YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0197_01184",
+      "en_US": "Well, then...\r"
+    },
+    {
+      "id": "msg_0197_01185",
+      "en_US": [
+        "Should this Pokémon give up on\n",
+        "learning this new move?{YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0197_01186",
+      "en_US": "{ALN_CENTER}Give up on {STRVAR_1 6, 0, 0}!"
+    },
+    {
+      "id": "msg_0197_01187",
+      "en_US": "{ALN_CENTER}Don’t give up on {STRVAR_1 6, 0, 0}!"
+    },
+    {
+      "id": "msg_0197_01188",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} did not learn\n",
+        "{STRVAR_1 6, 1, 0}.\r"
+      ]
+    },
+    {
+      "id": "msg_0197_01189",
+      "en_US": "1, {PAUSE 20}2, and{PAUSE 20}... {PAUSE 20}... {PAUSE 20}{WAIT 4}Poof!\r"
+    },
+    {
+      "id": "msg_0197_01190",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} forgot how to\n",
+        "use {STRVAR_1 6, 1, 0}.\r"
+      ]
+    },
+    {
+      "id": "msg_0197_01191",
+      "en_US": "And...\r"
+    },
+    {
+      "id": "msg_0197_01192",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} learned\n",
+        "{STRVAR_1 6, 1, 0}!{WAIT 5}{WAIT 2}\r"
+      ]
+    },
+    {
+      "id": "msg_0197_01193",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} wants to learn\n",
+        "the move {STRVAR_1 6, 1, 0}.\r"
+      ]
+    },
+    {
+      "id": "msg_0197_01194",
+      "en_US": [
+        "However, {STRVAR_1 1, 0, 0} already\n",
+        "knows four moves.\r"
+      ]
+    },
+    {
+      "id": "msg_0197_01195",
+      "en_US": "Should a move be deleted? {YESNO 0}"
+    },
+    {
+      "id": "msg_0197_01196",
+      "en_US": "Which move should be forgotten?\r"
+    },
+    {
+      "id": "msg_0197_01197",
+      "en_US": [
+        "Stop trying to teach\n",
+        "{STRVAR_1 6, 0, 0}? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0197_01198",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} did not learn the\n",
+        "move {STRVAR_1 6, 1, 0}.\r"
+      ]
+    },
+    {
+      "id": "msg_0197_01199",
+      "en_US": "1, {PAUSE 20}2, and{PAUSE 20}... {PAUSE 20}... {PAUSE 20}{WAIT 4}Poof!\r"
+    },
+    {
+      "id": "msg_0197_01200",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} forgot how to\n",
+        "use {STRVAR_1 6, 1, 0}.\r"
+      ]
+    },
+    {
+      "id": "msg_0197_01201",
+      "en_US": "And...\r"
+    },
+    {
+      "id": "msg_0197_01202",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} learned\n",
+        "{STRVAR_1 6, 1, 0}!{WAIT 5}{WAIT 2}\r"
+      ]
+    },
+    {
+      "id": "msg_0197_01203",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 13, 1, 0} rose!"
+      ]
+    },
+    {
+      "id": "msg_0197_01204",
+      "en_US": [
+        "Your team became shrouded in\n",
+        "a white mist!"
+      ]
+    },
+    {
+      "id": "msg_0197_01205",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is getting\n",
+        "pumped!"
+      ]
+    },
+    {
+      "id": "msg_0197_01206",
+      "en_US": "Used the {STRVAR_1 8, 0, 0}!"
+    },
+    {
+      "id": "msg_0197_01207",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} was cured of its\n",
+        "poisoning."
+      ]
+    },
+    {
+      "id": "msg_0197_01208",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} was cured of\n",
+        "paralysis."
+      ]
+    },
+    {
+      "id": "msg_0197_01209",
+      "en_US": "{STRVAR_1 1, 0, 0}’s burn was healed."
+    },
+    {
+      "id": "msg_0197_01210",
+      "en_US": "{STRVAR_1 1, 0, 0} woke up."
+    },
+    {
+      "id": "msg_0197_01211",
+      "en_US": "{STRVAR_1 1, 0, 0} was thawed out."
+    },
+    {
+      "id": "msg_0197_01212",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} snapped out of its\n",
+        "confusion."
+      ]
+    },
+    {
+      "id": "msg_0197_01213",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} got over its\n",
+        "infatuation."
+      ]
+    },
+    {
+      "id": "msg_0197_01214",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s HP was restored\n",
+        "by {STRVAR_1 52, 1, 0} point(s)."
+      ]
+    },
+    {
+      "id": "msg_0197_01215",
+      "en_US": "Switch Pokémon"
+    },
+    {
+      "id": "msg_0197_01216",
+      "en_US": "Keep battling"
+    },
+    {
+      "id": "msg_0197_01217",
+      "en_US": "Use next Pokémon"
+    },
+    {
+      "id": "msg_0197_01218",
+      "en_US": "Flee"
+    },
+    {
+      "id": "msg_0197_01219",
+      "en_US": [
+        "Wow! {STRVAR_1 3, 0, 0}’s {STRVAR_1 1, 1, 0}\n",
+        "is drawing close!\r"
+      ]
+    },
+    {
+      "id": "msg_0197_01220",
+      "en_US": "PARK BALLS"
+    },
+    {
+      "id": "msg_0197_01221",
+      "en_US": "Left: {STRVAR_1 51, 0, 0}"
+    },
+    {
+      "id": "msg_0197_01222",
+      "en_US": "What will {STRVAR_1 3, 0, 0} do?{YESNO 0}"
+    },
+    {
+      "id": "msg_0197_01223",
+      "en_US": "BALL"
+    },
+    {
+      "id": "msg_0197_01224",
+      "en_US": "RUN"
+    },
+    {
+      "id": "msg_0197_01225",
+      "en_US": "{STRVAR_1 1, 0, 0}, come back!"
+    },
+    {
+      "id": "msg_0197_01226",
+      "en_US": [
+        "All right! I got its HP down!\n",
+        "Time to throw a Poké Ball!{YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0197_01227",
+      "en_US": [
+        "OK! Its HP is down!\n",
+        "It’s ready for a Poké Ball!{YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0197_01228",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} used\n",
+        "a Poké Ball!"
+      ]
+    },
+    {
+      "id": "msg_0197_01229",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} got over its status\n",
+        "trouble!"
+      ]
+    },
+    {
+      "id": "msg_0197_01230",
+      "en_US": [
+        "The tailwind blew from behind\n",
+        "your team!"
+      ]
+    },
+    {
+      "id": "msg_0197_01231",
+      "en_US": [
+        "The tailwind blew from behind\n",
+        "the foe!"
+      ]
+    },
+    {
+      "id": "msg_0197_01232",
+      "en_US": "Your team’s tailwind petered out!"
+    },
+    {
+      "id": "msg_0197_01233",
+      "en_US": "The foe’s tailwind petered out!"
+    },
+    {
+      "id": "msg_0197_01234",
+      "en_US": "But there was no target..."
+    },
+    {
+      "id": "msg_0197_01235",
+      "en_US": [
+        "It failed to affect\n",
+        "{STRVAR_1 1, 0, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01236",
+      "en_US": [
+        "It failed to affect\n",
+        "the wild {STRVAR_1 1, 0, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01237",
+      "en_US": [
+        "It failed to affect\n",
+        "the foe’s {STRVAR_1 1, 0, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01238",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is exerting\n",
+        "its {STRVAR_1 5, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01239",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} is exerting\n",
+        "its {STRVAR_1 5, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01240",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} is exerting\n",
+        "its {STRVAR_1 5, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01241",
+      "en_US": [
+        "The Lucky Chant shielded your team\n",
+        "from critical hits!"
+      ]
+    },
+    {
+      "id": "msg_0197_01242",
+      "en_US": [
+        "The Lucky Chant shielded the foe\n",
+        "from critical hits!"
+      ]
+    },
+    {
+      "id": "msg_0197_01243",
+      "en_US": [
+        "It broke through\n",
+        "{STRVAR_1 1, 0, 0}’s protection!"
+      ]
+    },
+    {
+      "id": "msg_0197_01244",
+      "en_US": [
+        "It broke through the wild\n",
+        "{STRVAR_1 1, 0, 0}’s protection!"
+      ]
+    },
+    {
+      "id": "msg_0197_01245",
+      "en_US": [
+        "It broke through the foe’s\n",
+        "{STRVAR_1 1, 0, 0}’s protection!"
+      ]
+    },
+    {
+      "id": "msg_0197_01246",
+      "en_US": "A wild {STRVAR_1 1, 0, 0} appeared!"
+    },
+    {
+      "id": "msg_0197_01247",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} became\n",
+        "trapped by swirling magma!"
+      ]
+    },
+    {
+      "id": "msg_0197_01248",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} became\n",
+        "trapped by swirling magma!"
+      ]
+    },
+    {
+      "id": "msg_0197_01249",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} became\n",
+        "trapped by swirling magma!"
+      ]
+    },
+    {
+      "id": "msg_0197_01250",
+      "en_US": "{STRVAR_1 1, 0, 0} became healthy."
+    },
+    {
+      "id": "msg_0197_01251",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} became fully\n",
+        "charged due to its {STRVAR_1 8, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01252",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0} became fully\n",
+        "charged due to its {STRVAR_1 8, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01253",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0} became fully\n",
+        "charged due to its {STRVAR_1 8, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0197_01254",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s {STRVAR_1 8, 1, 0}\n",
+        "let it move first!"
+      ]
+    },
+    {
+      "id": "msg_0197_01255",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 8, 1, 0} let it move first!"
+      ]
+    },
+    {
+      "id": "msg_0197_01256",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 8, 1, 0} let it move first!"
+      ]
+    },
+    {
+      "id": "msg_0197_01257",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s {STRVAR_1 6, 1, 0}\n",
+        "wore off!"
+      ]
+    },
+    {
+      "id": "msg_0197_01258",
+      "en_US": [
+        "The wild {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 6, 1, 0} wore off!"
+      ]
+    },
+    {
+      "id": "msg_0197_01259",
+      "en_US": [
+        "The foe’s {STRVAR_1 1, 0, 0}’s\n",
+        "{STRVAR_1 6, 1, 0} wore off!"
+      ]
+    },
+    {
+      "id": "msg_0197_01260",
+      "en_US": "STOP"
+    },
+    {
+      "id": "msg_0197_01261",
+      "en_US": "Playback paused."
+    },
+    {
+      "id": "msg_0197_01262",
+      "en_US": "Please wait."
+    },
+    {
+      "id": "msg_0197_01263",
+      "en_US": "Data is corrupted."
+    },
+    {
+      "id": "msg_0197_01264",
+      "en_US": "Playback canceled."
+    },
+    {
+      "id": "msg_0197_01265",
+      "en_US": "Battle is too long."
+    },
+    {
+      "id": "msg_0197_01266",
+      "en_US": "Playback canceled."
+    },
+    {
+      "id": "msg_0197_01267",
+      "en_US": "The dimensions became distorted!"
+    },
+    {
+      "id": "msg_0197_01268",
+      "en_US": [
+        "The Distortion World’s {STRVAR_1 1, 0, 0}\n",
+        "appeared!\r"
+      ]
+    },
+    {
+      "id": "msg_0197_01269",
+      "en_US": [
+        "Announcer: You’re out of\n",
+        "{STRVAR_1 8, 0, 0}s!\f",
+        "Game over!\r"
+      ]
+    },
+    {
+      "id": "msg_0197_01270",
+      "en_US": "BALL"
+    },
+    {
+      "id": "msg_0197_01271",
+      "en_US": "x{STRVAR_1 51, 0, 0}"
+    },
+    {
+      "id": "msg_0197_01272",
+      "en_US": "♂"
+    },
+    {
+      "id": "msg_0197_01273",
+      "en_US": "♀"
+    },
+    {
+      "id": "msg_0197_01274",
+      "en_US": "{ALN_RIGHT}Lv. {STRVAR_1 52, 1, 0}"
+    },
+    {
+      "id": "msg_0197_01275",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} got ${STRVAR_1 54, 1, 0} for winning!\n",
+        "Sent some to Mom!\r"
+      ]
+    }
+  ]
+}

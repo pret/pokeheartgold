@@ -1,0 +1,77 @@
+{
+  "key": 3955,
+  "messages": [
+    {
+      "id": "msg_0232_00000",
+      "en_US": "MAILBOX"
+    },
+    {
+      "id": "msg_0232_00001",
+      "en_US": "{STRVAR_1 50, 0, 0}"
+    },
+    {
+      "id": "msg_0232_00002",
+      "en_US": "/"
+    },
+    {
+      "id": "msg_0232_00003",
+      "en_US": "CANCEL"
+    },
+    {
+      "id": "msg_0232_00004",
+      "en_US": "CLOSE"
+    },
+    {
+      "id": "msg_0232_00005",
+      "en_US": "READ"
+    },
+    {
+      "id": "msg_0232_00006",
+      "en_US": "ERASE"
+    },
+    {
+      "id": "msg_0232_00007",
+      "en_US": "GIVE"
+    },
+    {
+      "id": "msg_0232_00008",
+      "en_US": "CANCEL"
+    },
+    {
+      "id": "msg_0232_00009",
+      "en_US": [
+        "What would you like to do with\n",
+        "{STRVAR_1 3, 0, 0}’s Mail?"
+      ]
+    },
+    {
+      "id": "msg_0232_00010",
+      "en_US": [
+        "The message will be lost.\n",
+        "Is that OK?"
+      ]
+    },
+    {
+      "id": "msg_0232_00011",
+      "en_US": "The message was erased."
+    },
+    {
+      "id": "msg_0232_00012",
+      "en_US": "Let a Pokémon hold this Mail?"
+    },
+    {
+      "id": "msg_0232_00013",
+      "en_US": [
+        "The Mail’s message was erased,\n",
+        "and it was put in the Bag."
+      ]
+    },
+    {
+      "id": "msg_0232_00014",
+      "en_US": [
+        "Your Bag is full...\n",
+        "The Mail was discarded."
+      ]
+    }
+  ]
+}

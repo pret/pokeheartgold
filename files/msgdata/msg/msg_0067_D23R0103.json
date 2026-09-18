@@ -1,0 +1,106 @@
+{
+  "key": 33867,
+  "messages": [
+    {
+      "id": "msg_0067_D23R0103_00000",
+      "en_US": [
+        "We have recordings of the cries of many\n",
+        "of the Pokémon that have been found.\r",
+        "We must have about 200 kinds."
+      ]
+    },
+    {
+      "id": "msg_0067_D23R0103_00001",
+      "en_US": [
+        "To Trainers, Pokémon are their\n",
+        "beloved partners.\r",
+        "It’s terrible how Team Rocket is trying\n",
+        "to control Pokémon."
+      ]
+    },
+    {
+      "id": "msg_0067_D23R0103_00002",
+      "en_US": [
+        "We run 24 hours a day to broadcast\n",
+        "entertaining programs.\r",
+        "I’ll do my best to run around the\n",
+        "clock, too!"
+      ]
+    },
+    {
+      "id": "msg_0067_D23R0103_00003",
+      "en_US": [
+        "The Team Rocket boss has locked\n",
+        "himself in.\r",
+        "But the Director can open it.\r",
+        "He’s up on the fifth floor.\n",
+        "Please save him!"
+      ]
+    },
+    {
+      "id": "msg_0067_D23R0103_00004",
+      "en_US": "Is the Director safe?"
+    },
+    {
+      "id": "msg_0067_D23R0103_00005",
+      "en_US": [
+        "Thank you, kiddo! You’re the best!\n",
+        "This is a token of my appreciation.\r"
+      ]
+    },
+    {
+      "id": "msg_0067_D23R0103_00006",
+      "en_US": "{STRVAR_1 3, 0, 0} received TM11!"
+    },
+    {
+      "id": "msg_0067_D23R0103_00007",
+      "en_US": [
+        "It’s Sunny Day.\n",
+        "It powers up Fire-type moves for\f",
+        "a while."
+      ]
+    },
+    {
+      "id": "msg_0067_D23R0103_00008",
+      "en_US": "Oh, your Bag is full."
+    },
+    {
+      "id": "msg_0067_D23R0103_00009",
+      "en_US": "You were simply marvelous!"
+    },
+    {
+      "id": "msg_0067_D23R0103_00010",
+      "en_US": [
+        "The door is locked...\n",
+        "You need a Card Key."
+      ]
+    },
+    {
+      "id": "msg_0067_D23R0103_00011",
+      "en_US": "It’s the Card Key slot.\r"
+    },
+    {
+      "id": "msg_0067_D23R0103_00012",
+      "en_US": "{STRVAR_1 3, 0, 0} inserted the Card Key.\r"
+    },
+    {
+      "id": "msg_0067_D23R0103_00013",
+      "en_US": [
+        "You should be able to unlock the door\n",
+        "with the Card Key!"
+      ]
+    },
+    {
+      "id": "msg_0067_D23R0103_00014",
+      "en_US": "It’s the Card Key slot."
+    },
+    {
+      "id": "msg_0067_D23R0103_00015",
+      "en_US": "3F Personnel"
+    },
+    {
+      "id": "msg_0067_D23R0103_00016",
+      "en_US": "Pokémon Music with host: DJ Ben"
+    }
+  ]
+}

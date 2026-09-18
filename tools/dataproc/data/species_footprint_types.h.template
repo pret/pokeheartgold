@@ -1,0 +1,16 @@
+#ifndef POKEPLATINUM_GENERATED_SPECIES_FOOTPRINT_TYPES_H
+#define POKEPLATINUM_GENERATED_SPECIES_FOOTPRINT_TYPES_H
+
+#include "constants/footstep_house.h"
+#include "constants/species.h"
+
+typedef struct FootprintType {
+    u16 type;
+    u16 hasPrint;
+} FootprintType;
+
+static const FootprintType sFootprintTypes[NATIONAL_DEX_COUNT + 1] = {
+/* =========== MAGIC CONTENT MARKER =========== */
+};
+
+#endif // POKEPLATINUM_GENERATED_SPECIES_FOOTPRINT_TYPES_H

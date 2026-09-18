@@ -1,0 +1,191 @@
+{
+  "key": 36501,
+  "messages": [
+    {
+      "id": "msg_0204_00000",
+      "en_US": [
+        "Hi!\n",
+        "How’s it going?\r",
+        "You’re in the {STRVAR_34 3, 1, 0} group with\n",
+        "{STRVAR_1 3, 0, 0} as leader, right?\r",
+        "Would you like to leave that group\n",
+        "and join another one? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0204_00001",
+      "en_US": [
+        "Hi!\n",
+        "How’s it going?\r",
+        "You’re in the {STRVAR_34 3, 1, 0} group with\n",
+        "{STRVAR_1 3, 0, 0} as leader, right?\r",
+        "Would you like to leave that group\n",
+        "and make a new one? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0204_00002",
+      "en_US": [
+        "Hey, you! I know it’s a little sudden,\n",
+        "but would you like to join a group?\r",
+        "If you join a group, you can compete\n",
+        "or cooperate with fellow members.\r",
+        "It’s a lot of fun. Want to join? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0204_00003",
+      "en_US": "Which group would you like to join? {YESNO 0}"
+    },
+    {
+      "id": "msg_0204_00004",
+      "en_US": "Oh. That’s too bad."
+    },
+    {
+      "id": "msg_0204_00005",
+      "en_US": [
+        "Oh, you want to make a new group?\n",
+        "Sure thing!\r",
+        "The group you made before will be\n",
+        "disbanded, though. Is that OK? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0204_00006",
+      "en_US": [
+        "Cool! What do you want to name\n",
+        "your group?"
+      ]
+    },
+    {
+      "id": "msg_0204_00007",
+      "en_US": [
+        "The {STRVAR_34 3, 0, 0} group, huh?\n",
+        "That’s a great name!\r",
+        "The leader is {STRVAR_1 3, 1, 0}.\n",
+        "I hope the group gets more members."
+      ]
+    },
+    {
+      "id": "msg_0204_00008",
+      "en_US": [
+        "The {STRVAR_34 3, 0, 0} group?\n",
+        "{STRVAR_1 3, 1, 0} is the leader.\f",
+        "Will you join this group? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0204_00009",
+      "en_US": [
+        "OK! {STRVAR_1 3, 0, 0} is now a member\n",
+        "of the {STRVAR_34 3, 1, 0} group."
+      ]
+    },
+    {
+      "id": "msg_0204_00010",
+      "en_US": [
+        "When you form or join a new group,\n",
+        "be sure to visit any Union Room.\r",
+        "Mix your records with group members,\n",
+        "and you’ll become integrated.\r",
+        "When you’re in the same group,\n",
+        "events can happen simultaneously.\r",
+        "It makes things a lot more fun\n",
+        "playing in a group!\r",
+        "Anyone can make a new group, and\n",
+        "anyone can join.\r",
+        "I hope you recruit lots of friends\n",
+        "so everyone can have fun! {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0204_00011",
+      "en_US": "MAKE GROUP"
+    },
+    {
+      "id": "msg_0204_00012",
+      "en_US": "JOIN GROUP"
+    },
+    {
+      "id": "msg_0204_00013",
+      "en_US": "INFO"
+    },
+    {
+      "id": "msg_0204_00014",
+      "en_US": "EXIT"
+    },
+    {
+      "id": "msg_0204_00015",
+      "en_US": [
+        "{STRVAR_34 3, 0, 0}\n",
+        "GROUP"
+      ]
+    },
+    {
+      "id": "msg_0204_00016",
+      "en_US": [
+        "{STRVAR_34 3, 1, 0}\n",
+        "GROUP"
+      ]
+    },
+    {
+      "id": "msg_0204_00017",
+      "en_US": [
+        "{STRVAR_34 3, 2, 0}\n",
+        "GROUP"
+      ]
+    },
+    {
+      "id": "msg_0204_00018",
+      "en_US": [
+        "{STRVAR_34 3, 3, 0}\n",
+        "GROUP"
+      ]
+    },
+    {
+      "id": "msg_0204_00019",
+      "en_US": [
+        "{STRVAR_34 3, 4, 0}\n",
+        "GROUP"
+      ]
+    },
+    {
+      "id": "msg_0204_00020",
+      "en_US": "{STRVAR_34 3, 0, 0} GROUP"
+    },
+    {
+      "id": "msg_0204_00021",
+      "en_US": "{STRVAR_34 3, 1, 0} GROUP"
+    },
+    {
+      "id": "msg_0204_00022",
+      "en_US": "{STRVAR_34 3, 2, 0} GROUP"
+    },
+    {
+      "id": "msg_0204_00023",
+      "en_US": "{STRVAR_34 3, 3, 0} GROUP"
+    },
+    {
+      "id": "msg_0204_00024",
+      "en_US": "{STRVAR_34 3, 4, 0} GROUP"
+    },
+    {
+      "id": "msg_0204_00025",
+      "en_US": "EXIT"
+    },
+    {
+      "id": "msg_0204_00026",
+      "en_US": [
+        "That group?\n",
+        "Didn’t {STRVAR_1 3, 0, 0} make it already?"
+      ]
+    },
+    {
+      "id": "msg_0204_00027",
+      "en_US": [
+        "Isn’t there already another group\n",
+        "with that name?"
+      ]
+    }
+  ]
+}

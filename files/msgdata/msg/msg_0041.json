@@ -1,0 +1,121 @@
+{
+  "key": 28344,
+  "messages": [
+    {
+      "id": "msg_0041_00000",
+      "garbage": 18
+    },
+    {
+      "id": "msg_0041_00001",
+      "en_US": [
+        "A communication error has occurred.\n",
+        "If you were in the Union Room,\n",
+        "pressing the A Button will launch\n",
+        "DS Wireless Communications to take\n",
+        "you back to the Union Room. If you\n",
+        "press the B Button, you will be taken\n",
+        "to the title screen. In all other\n",
+        "cases, pressing the A Button will\n",
+        "return you to where you last saved."
+      ]
+    },
+    {
+      "id": "msg_0041_00002",
+      "en_US": [
+        "An error occurred while attempting\n",
+        "to communicate. ({STRVAR_1 54, 0, 0})\n",
+        "Please turn off the power, restart\n",
+        "this DS system, and try again.\n",
+        "\n",
+        "If this message keeps appearing,\n",
+        "please contact Nintendo\n",
+        "Consumer Service."
+      ]
+    },
+    {
+      "id": "msg_0041_00003",
+      "en_US": [
+        "A communication error has occurred.\n",
+        "\n",
+        "You will be returned to the title\n",
+        "screen.\n",
+        "Please press the A Button."
+      ]
+    },
+    {
+      "id": "msg_0041_00004",
+      "en_US": [
+        "Either the GTS is experiencing high\n",
+        "traffic volumes or the service is down.\n",
+        "Please wait a while and try again.\n",
+        "\n",
+        "You have been disconnected from\n",
+        "Nintendo Wi-Fi Connection.\n",
+        "Please press the A Button."
+      ]
+    },
+    {
+      "id": "msg_0041_00005",
+      "en_US": [
+        "An error occurred while attempting\n",
+        "to communicate.\n",
+        "Please turn off the power, restart\n",
+        "this DS system, and try again.\n",
+        "\n",
+        "If this message keeps appearing,\n",
+        "please contact Nintendo\n",
+        "Consumer Service."
+      ]
+    },
+    {
+      "id": "msg_0041_00006",
+      "en_US": [
+        "A communication error has occurred.\n",
+        "\n",
+        "You have been disconnected from\n",
+        "Nintendo Wi-Fi Connection.\n",
+        "You will be returned to wherever\n",
+        "you last saved.\n",
+        "Please press the A Button."
+      ]
+    },
+    {
+      "id": "msg_0041_00007",
+      "en_US": [
+        "A communication error has occurred.\n",
+        "\n",
+        "You have been disconnected from\n",
+        "Nintendo Wi-Fi Connection.\n",
+        "You will be returned to the title\n",
+        "screen.\n",
+        "Please press the A Button."
+      ]
+    },
+    {
+      "id": "msg_0041_00008",
+      "en_US": [
+        "A communication error has occurred.\n",
+        "({STRVAR_1 54, 0, 0})\n",
+        "\n",
+        "You have been disconnected from\n",
+        "Nintendo Wi-Fi Connection.\n",
+        "You will be returned to wherever\n",
+        "you last saved.\n",
+        "Please press the A Button."
+      ]
+    },
+    {
+      "id": "msg_0041_00009",
+      "en_US": [
+        "A communication error has occurred.\n",
+        "({STRVAR_1 54, 0, 0})\n",
+        "\n",
+        "You have been disconnected from\n",
+        "Nintendo Wi-Fi Connection.\n",
+        "You will be returned to the title\n",
+        "screen.\n",
+        "Please press the A Button."
+      ]
+    }
+  ]
+}

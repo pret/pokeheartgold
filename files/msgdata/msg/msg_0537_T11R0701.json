@@ -1,0 +1,234 @@
+{
+  "key": 42007,
+  "messages": [
+    {
+      "id": "msg_0537_T11R0701_00000",
+      "en_US": [
+        "Welcome. This is Silph Co.’s\n",
+        "head office building."
+      ]
+    },
+    {
+      "id": "msg_0537_T11R0701_00001",
+      "en_US": [
+        "Hey, you! The elevator there is out of\n",
+        "order now.\r",
+        "Something is wrong with the electricity,\n",
+        "and it won’t work right.\r",
+        "I feel sorry that you wasted a trip,\n",
+        "so here is a gift for you!\r"
+      ]
+    },
+    {
+      "id": "msg_0537_T11R0701_00002",
+      "en_US": [
+        "It’s Silph Co.’s latest product.\n",
+        "It’s not for sale anywhere yet."
+      ]
+    },
+    {
+      "id": "msg_0537_T11R0701_00003",
+      "en_US": [
+        "This elevator is out of order.\r",
+        "It may electrocute you. Stay away."
+      ]
+    },
+    {
+      "id": "msg_0537_T11R0701_00004",
+      "garbage": 0
+    },
+    {
+      "id": "msg_0537_T11R0701_00005",
+      "garbage": 0
+    },
+    {
+      "id": "msg_0537_T11R0701_00006",
+      "garbage": 0
+    },
+    {
+      "id": "msg_0537_T11R0701_00007",
+      "en_US": [
+        "Steven: We meet again!\n",
+        "Have you been to Hoenn before?\r",
+        "It’s such a beautiful place, with the\n",
+        "clearest ocean you can imagine.\r",
+        "You should visit sometime.\f",
+        "Hey!\r",
+        "Why don’t we trade Pokémon?\r",
+        "I’ve been looking for FORRETRESS.\n",
+        "I can trade my BELDUM for it. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0537_T11R0701_00008",
+      "en_US": [
+        "Steven: Will you trade FORRETRESS\n",
+        "for my BELDUM? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0537_T11R0701_00009",
+      "en_US": "Steven: OK, let’s trade!\r"
+    },
+    {
+      "id": "msg_0537_T11R0701_00010",
+      "en_US": "Steven: That’s too bad."
+    },
+    {
+      "id": "msg_0537_T11R0701_00011",
+      "en_US": [
+        "Steven: Are you telling me that\n",
+        "you think that’s a FORRETRESS?"
+      ]
+    },
+    {
+      "id": "msg_0537_T11R0701_00012",
+      "en_US": [
+        "Steven: You don’t see FORRETRESS in\n",
+        "the Hoenn region.\r",
+        "It’s my first time to actually see one.\n",
+        "Thank you so much!\r",
+        "Oh, look at the time. I really must go.\r"
+      ]
+    },
+    {
+      "id": "msg_0537_T11R0701_00013",
+      "en_US": [
+        "Steven: This Pokémon seems to like\n",
+        "you a lot. Do you happen to like\f",
+        "Steel-type Pokémon?\r",
+        "I had a feeling.\n",
+        "That particular texture!\r",
+        "The cool and glowing bodies!\n",
+        "Such uniquenesses are only for\f",
+        "Steel-type Pokémon!\r",
+        "When it comes to the solitariness and\n",
+        "nobleness you sense through the \f",
+        "rugged body, which is almost rebuffing\f",
+        "when you hug, nothing comes close to\f",
+        "BELDUM, I must say...\r",
+        "In short, my METAGROSS is\n",
+        "truly strong and cool!\r",
+        "...\n",
+        "Oh, it seems that I got carried away.\r",
+        "It was a pleasure talking to you.\n",
+        "Bye!\r"
+      ]
+    },
+    {
+      "id": "msg_0537_T11R0701_00014",
+      "en_US": [
+        "Hello...\n",
+        "You’re breaking up...\f",
+        "I think it depends on how my dad feels.\r",
+        "I see...\n",
+        "I’ll be on my way. See you soon.\r"
+      ]
+    },
+    {
+      "id": "msg_0537_T11R0701_00015",
+      "en_US": [
+        "Steven: You are...\n",
+        "I remember your eyes.\r",
+        "When I see a Trainer whose eyes\n",
+        "twinkle, I always remember.\r"
+      ]
+    },
+    {
+      "id": "msg_0537_T11R0701_00016",
+      "en_US": [
+        "Steven: You have a Pokédex!\n",
+        "So you are also in search of Pokémon.\f",
+        "Let me see...\r",
+        "I think I can help you with that.\r",
+        "Let’s say that you have stones in\n",
+        "front of you.\f",
+        "Which color would you pick? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0537_T11R0701_00017",
+      "en_US": "GREEN STONE"
+    },
+    {
+      "id": "msg_0537_T11R0701_00018",
+      "en_US": "RED STONE"
+    },
+    {
+      "id": "msg_0537_T11R0701_00019",
+      "en_US": "BLUE STONE"
+    },
+    {
+      "id": "msg_0537_T11R0701_00020",
+      "en_US": [
+        "Steven: You chose correctly!\n",
+        "I will give you {STRVAR_1 0, 1, 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0537_T11R0701_00021",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} received\n",
+        "the {STRVAR_1 0, 1, 0} from Steven!"
+      ]
+    },
+    {
+      "id": "msg_0537_T11R0701_00022",
+      "en_US": [
+        "Steven: Take good care of it.\n",
+        "Your caring for it will make me\f",
+        "very happy.\r"
+      ]
+    },
+    {
+      "id": "msg_0537_T11R0701_00023",
+      "en_US": [
+        "Steven: I see...\n",
+        "For the choice you’ve made,\f",
+        "I’d like to give you this Pokémon.\r",
+        "Except your party is full.\r",
+        "Why don’t you go to the PC to make\n",
+        "some room? I’ll be waiting here."
+      ]
+    },
+    {
+      "id": "msg_0537_T11R0701_00024",
+      "en_US": [
+        "Steven: I will ask again.\n",
+        "Which color do you choose? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0537_T11R0701_00025",
+      "en_US": [
+        "Would you like to give a nickname\n",
+        "to {STRVAR_1 0, 1, 0}? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0537_T11R0701_00026",
+      "en_US": "Steven: You did a great job naming it!\r"
+    },
+    {
+      "id": "msg_0537_T11R0701_00027",
+      "en_US": "QUIT"
+    },
+    {
+      "id": "msg_0537_T11R0701_00028",
+      "en_US": [
+        "Steven: You seem to be quite cautious.\r",
+        "Are you avoiding any chance when a\n",
+        "person might trick you?\f",
+        "You really are better than I thought."
+      ]
+    },
+    {
+      "id": "msg_0537_T11R0701_00029",
+      "garbage": 37
+    },
+    {
+      "id": "msg_0537_T11R0701_00030",
+      "garbage": 145
+    }
+  ]
+}

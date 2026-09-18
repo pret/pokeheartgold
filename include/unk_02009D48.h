@@ -2,6 +2,7 @@
 #define POKEHEARTGOLD_UNK_02009D48_H
 
 #include "unk_0200A090.h"
+#include "struct_defs/resdat_narc_structs.h"
 
 typedef struct SpriteResourcesHeader {
     const NNSG2dImageProxy *imageProxy;
@@ -19,17 +20,6 @@ typedef struct SpriteResourceHeaderList {
     SpriteResourcesHeader *headers;
     int num;
 } SpriteResourceHeaderList;
-
-struct ResdatNarcEntry {
-    u32 charId;
-    u32 plttId;
-    u32 cellId;
-    u32 animId;
-    u32 mcelId;
-    u32 manmId;
-    u32 xferFlag;
-    u32 priority;
-};
 
 typedef struct SpriteList SpriteList;
 

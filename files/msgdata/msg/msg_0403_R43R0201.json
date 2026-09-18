@@ -1,0 +1,61 @@
+{
+  "key": 17567,
+  "messages": [
+    {
+      "id": "msg_0403_R43R0201_00000",
+      "en_US": [
+        "Hold it there, kiddo!\r",
+        "The toll is $1,000 to go through.\r"
+      ]
+    },
+    {
+      "id": "msg_0403_R43R0201_00001",
+      "en_US": "Thank you very much!\r"
+    },
+    {
+      "id": "msg_0403_R43R0201_00002",
+      "en_US": [
+        "Then pay what you have, please.\r",
+        "Those who have no money, hmm...\n",
+        "can go through free of charge!\r"
+      ]
+    },
+    {
+      "id": "msg_0403_R43R0201_00003",
+      "en_US": [
+        "He-he-he. We’re making a bundle.\r",
+        "Everyone wants to see what’s going\n",
+        "on up at Lake of Rage."
+      ]
+    },
+    {
+      "id": "msg_0403_R43R0201_00004",
+      "en_US": [
+        "I got chased from my post by\n",
+        "these Team Rocket thugs.\r",
+        "Then they just disappeared.\n",
+        "Someone apparently destroyed\f",
+        "their hideout.\r",
+        "...One more thing!\f",
+        "I found this under the counter.\f",
+        "It makes me uncomfortable.\f",
+        "Could I give it to you?\r"
+      ]
+    },
+    {
+      "id": "msg_0403_R43R0201_00005",
+      "garbage": 21
+    },
+    {
+      "id": "msg_0403_R43R0201_00006",
+      "en_US": [
+        "It contains Sludge Bomb!\r",
+        "It not only damages the target\n",
+        "but also poisons it sometimes.\f",
+        "See!\r",
+        "Doesn’t it make you feel\n",
+        "uncomfortable?"
+      ]
+    }
+  ]
+}

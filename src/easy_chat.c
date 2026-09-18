@@ -7,18 +7,18 @@
 #include "constants/pokemon.h"
 #include "constants/species.h"
 
-#include "msgdata/msg.naix"
-#include "msgdata/msg/msg_0237.h"
-#include "msgdata/msg/msg_0285.h"
-#include "msgdata/msg/msg_0286.h"
-#include "msgdata/msg/msg_0287.h"
-#include "msgdata/msg/msg_0288.h"
-#include "msgdata/msg/msg_0289.h"
-#include "msgdata/msg/msg_0290.h"
-#include "msgdata/msg/msg_0291.h"
-#include "msgdata/msg/msg_0721.h"
-#include "msgdata/msg/msg_0735.h"
-#include "msgdata/msg/msg_0751.h"
+#include "files/msgdata/msg.naix"
+#include "files/msgdata/msg/msg_0237.h"
+#include "files/msgdata/msg/msg_0285.h"
+#include "files/msgdata/msg/msg_0286.h"
+#include "files/msgdata/msg/msg_0287.h"
+#include "files/msgdata/msg/msg_0288.h"
+#include "files/msgdata/msg/msg_0289.h"
+#include "files/msgdata/msg/msg_0290.h"
+#include "files/msgdata/msg/msg_0291.h"
+#include "files/msgdata/msg/msg_0721.h"
+#include "files/msgdata/msg/msg_0735.h"
+#include "files/msgdata/msg/msg_0751.h"
 
 #include "filesystem.h"
 #include "gf_gfx_loader.h"
@@ -40,17 +40,17 @@ static const u16 sNarcMsgCounts[EC_GROUP_MAX] = {
 };
 
 static const u16 sNarcMsgBanks[EC_GROUP_MAX] = {
-    NARC_msg_msg_0237_bin, // Species names
-    NARC_msg_msg_0751_bin, // Move names
-    NARC_msg_msg_0735_bin, // Type names
-    NARC_msg_msg_0721_bin, // Ability names
-    NARC_msg_msg_0285_bin, // Trainer
-    NARC_msg_msg_0286_bin, // People
-    NARC_msg_msg_0287_bin, // Greetings
-    NARC_msg_msg_0288_bin, // Lifestyle
-    NARC_msg_msg_0289_bin, // Feelings
-    NARC_msg_msg_0290_bin, // Tough words
-    NARC_msg_msg_0291_bin, // Union
+    msg_0237, // Species names
+    msg_0751, // Move names
+    msg_0735, // Type names
+    msg_0721, // Ability names
+    msg_0285, // Trainer
+    msg_0286, // People
+    msg_0287, // Greetings
+    msg_0288, // Lifestyle
+    msg_0289, // Feelings
+    msg_0290, // Tough words
+    msg_0291, // Union
 };
 
 static const u8 sLanguageToGreetingMap[6][2] = {

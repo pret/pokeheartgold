@@ -1,4 +1,4 @@
-	.include "asm/macros.inc"
+	.include "macros.inc"
 	.include "overlay_00_thumb.inc"
 	.include "global.inc"
 
@@ -287,7 +287,7 @@ _021E5B20:
 	mov r1, #0
 	str r1, [r0]
 _021E5B52:
-	bl ov00_021EC210
+	bl DWC_ClearError
 	pop {r3, pc}
 	.balign 4, 0
 _021E5B58: .word _0221A680
@@ -322,7 +322,7 @@ _021E5B88: ; jump table
 _021E5B92:
 	ldr r0, _021E5C68 ; =ov00_021E65D4
 	ldr r1, _021E5C6C ; =ov00_021E6638
-	bl ov00_021EC294
+	bl DWC_SetMemFunc
 	ldr r0, _021E5C60 ; =_0221A680
 	mov r2, #1
 	ldr r1, [r0]
@@ -330,10 +330,10 @@ _021E5B92:
 	mov r3, #0x14
 	add r0, r1, r0
 	mov r1, #2
-	bl ov00_021EC3F0
+	bl DWC_InitInetEx
 	mov r0, #2
-	bl ov00_021EC454
-	bl ov00_021EC4A4
+	bl DWC_SetAuthServer
+	bl DWC_ConnectInetAsync
 	ldr r1, _021E5C60 ; =_0221A680
 	ldr r0, _021E5C64 ; =0x00001070
 	ldr r2, [r1]
@@ -344,10 +344,10 @@ _021E5B92:
 	add r0, #0x20
 	str r2, [r1, r0]
 _021E5BC8:
-	bl ov00_021EC5B4
+	bl DWC_CheckInet
 	cmp r0, #0
 	beq _021E5BF0
-	bl ov00_021EC724
+	bl DWC_GetInetStatus
 	cmp r0, #4
 	bne _021E5BE4
 	ldr r0, _021E5C60 ; =_0221A680
@@ -364,7 +364,7 @@ _021E5BE4:
 	str r2, [r1, r0]
 	b _021E5BF6
 _021E5BF0:
-	bl ov00_021EC60C
+	bl DWC_ProcessInet
 	b _021E5C56
 _021E5BF6:
 	bl ov00_021E6690
@@ -390,24 +390,24 @@ _021E5BF6:
 	add r0, r1, r0
 	ldr r1, [r1, r2]
 	ldr r2, _021E5C7C ; =0x000029E7
-	bl ov00_021ED730
+	bl DWC_InitFriendsMatch
 	add r0, sp, #0x14
 	bl OS_GetOwnerInfo
 	mov r1, #0
 	ldr r2, _021E5C80 ; =ov00_021E61A8
 	add r0, sp, #0x18
 	add r3, r1, #0
-	bl ov00_021EDD6C
+	bl DWC_LoginAsync
 	ldr r0, _021E5C60 ; =_0221A680
 	mov r2, #3
 	ldr r1, [r0]
 	ldr r0, _021E5C64 ; =0x00001070
 	str r2, [r1, r0]
 _021E5C46:
-	bl ov00_021EDB1C
+	bl DWC_ProcessFriendsMatch
 	b _021E5C56
 _021E5C4C:
-	bl ov00_021EDB1C
+	bl DWC_ProcessFriendsMatch
 	add sp, #0x68
 	mov r0, #0x1b
 	pop {r3, pc}
@@ -527,7 +527,7 @@ _021E5D16:
 	str r0, [sp, #0xc]
 	mov r0, #0
 	mov r2, #8
-	bl ov00_021F14D4
+	bl DWC_SetMatchingOption
 	cmp r0, #0
 	beq _021E5D3C
 	bl GF_AssertFail
@@ -535,7 +535,7 @@ _021E5D3C:
 	ldr r1, _021E5E08 ; =_02216414
 	mov r0, #0
 	add r2, r5, #0
-	bl ov00_021F13A4
+	bl DWC_AddMatchKeyString
 	cmp r0, #0
 	bne _021E5D4E
 	bl GF_AssertFail
@@ -572,7 +572,7 @@ _021E5D84:
 	mov r0, #1
 	add r1, r3, r2
 	add r2, r3, r2
-	bl ov00_021F13A4
+	bl DWC_AddMatchKeyString
 _021E5D98:
 	ldr r2, _021E5DFC ; =_0221A680
 	ldr r1, _021E5E00 ; =0x00001070
@@ -593,21 +593,21 @@ _021E5D98:
 	add r1, r2, r1
 	ldr r2, _021E5E18 ; =ov00_021E63CC
 	lsr r0, r0, #0x18
-	bl ov00_021EDF1C
+	bl DWC_ConnectToAnybodyAsync
 	ldr r0, _021E5DFC ; =_0221A680
 	mov r2, #0
 	ldr r1, [r0]
 	ldr r0, _021E5E1C ; =0x00001074
 	str r2, [r1, r0]
 	ldr r0, _021E5E20 ; =ov00_021E6428
-	bl ov00_021F989C
+	bl DWC_SetUserSendCallback
 	ldr r0, _021E5E24 ; =ov00_021E6484
-	bl ov00_021F98BC
+	bl DWC_SetUserRecvCallback
 	ldr r0, _021E5E28 ; =ov00_021E6554
 	mov r1, #0
-	bl ov00_021EE24C
+	bl DWC_SetConnectionClosedCallback
 	ldr r0, _021E5E2C ; =ov00_021E6240
-	bl ov00_021F98DC
+	bl DWC_SetUserRecvTimeoutCallback
 	ldr r2, _021E5DFC ; =_0221A680
 	ldr r1, _021E5E30 ; =0x00001078
 	ldr r0, [r2]
@@ -723,10 +723,10 @@ _021E5EC4:
 	ldr r0, [r3, r0]
 	cmp r0, #0
 	bne _021E5ED2
-	bl ov00_021F1284
+	bl DWC_CancelMatching
 	b _021E5F68
 _021E5ED2:
-	bl ov00_021EE278
+	bl DWC_CloseAllConnectionsHard
 	bl ov00_021E5E34
 	b _021E5F68
 _021E5EDC:
@@ -796,7 +796,7 @@ _021E5F52:
 	ldr r0, [r3, r1]
 	cmp r0, #0
 	bne _021E5F68
-	bl ov00_021EE278
+	bl DWC_CloseAllConnectionsHard
 	ldr r0, _021E5F70 ; =_0221A680
 	mov r2, #0x11
 	ldr r1, [r0]
@@ -825,7 +825,7 @@ ov00_021E5F84: ; 0x021E5F84
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 _021E5F96:
-	bl ov00_021EE490
+	bl DWC_GetMyAID
 	cmp r0, #0
 	bne _021E5FB8
 	ldr r0, _021E601C ; =_0221A680
@@ -888,7 +888,7 @@ _021E5FD0:
 	str r0, [r3, r1]
 	ldr r1, [r2]
 	add r2, r4, #4
-	bl ov00_021F9750
+	bl DWC_SendReliableBitmap
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 	nop
@@ -910,7 +910,7 @@ ov00_021E602C: ; 0x021E602C
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 _021E603E:
-	bl ov00_021EE490
+	bl DWC_GetMyAID
 	cmp r0, #0
 	beq _021E604A
 	mov r0, #0
@@ -959,11 +959,11 @@ _021E6062:
 	ldr r1, [r0]
 	ldr r0, _021E60DC ; =0x00001078
 	str r2, [r1, r0]
-	bl ov00_021EE4FC
+	bl DWC_GetAIDBitmap
 	ldr r1, _021E60D8 ; =_0221A680
 	add r2, r4, #4
 	ldr r1, [r1]
-	bl ov00_021F9750
+	bl DWC_SendReliableBitmap
 	cmp r0, #0
 	bne _021E60BE
 	ldr r1, _021E60D8 ; =_0221A680
@@ -1049,14 +1049,14 @@ _021E6112:
 	ldr r1, [r0]
 	ldr r0, _021E619C ; =0x00001078
 	str r2, [r1, r0]
-	bl ov00_021EE4FC
+	bl DWC_GetAIDBitmap
 	ldr r1, _021E6198 ; =_0221A680
 	lsl r0, r0, #0x10
 	lsr r6, r0, #0x10
 	ldr r1, [r1]
 	add r0, r6, #0
 	add r2, r4, #4
-	bl ov00_021F9750
+	bl DWC_SendReliableBitmap
 	cmp r6, r0
 	beq _021E6174
 	ldr r1, _021E6198 ; =_0221A680
@@ -1072,7 +1072,7 @@ _021E6174:
 	ldr r0, [r1, r0]
 	cmp r0, #0
 	beq _021E6194
-	bl ov00_021EE490
+	bl DWC_GetMyAID
 	lsl r2, r4, #0x10
 	ldr r3, _021E6198 ; =_0221A680
 	add r1, r5, #0
@@ -1131,7 +1131,7 @@ _021E61DA:
 	ldr r1, _021E6230 ; =ov00_021E6274
 	ldr r3, _021E6234 ; =ov00_021E6298
 	mov r0, #0
-	bl ov00_021EDE74
+	bl DWC_UpdateServersAsync
 	cmp r0, #0
 	bne _021E6208
 	mov r0, #1
@@ -1141,7 +1141,7 @@ _021E61DA:
 _021E6208:
 	ldr r0, _021E6238 ; =ov00_021E62D4
 	mov r1, #0
-	bl ov00_021EFF04
+	bl DWC_SetBuddyFriendCallback
 	add sp, #0xc
 	pop {r4, r5, pc}
 _021E6214:
@@ -1171,7 +1171,7 @@ ov00_021E6240: ; 0x021E6240
 	ldr r0, [r1, r0]
 	cmp r0, #0
 	beq _021E6266
-	bl ov00_021EE278
+	bl DWC_CloseAllConnectionsHard
 	ldr r1, _021E6268 ; =_0221A680
 	mov r3, #0
 	ldr r2, [r1]
@@ -1276,11 +1276,11 @@ _021E62FA:
 	lsl r0, r5, #0x18
 	lsr r0, r0, #0x18
 	add r1, r4, #0
-	bl ov00_021F9988
+	bl DWC_SetRecvTimeoutTime
 	add r5, r5, #1
 	cmp r5, #4
 	blt _021E62FA
-	bl ov00_021EE490
+	bl DWC_GetMyAID
 	cmp r0, #0
 	bne _021E6356
 	ldr r6, _021E6378 ; =_0221A680
@@ -1293,10 +1293,10 @@ _021E62FA:
 	ldr r7, _021E637C ; =0x0000107C
 	mov r4, #1
 _021E6324:
-	bl ov00_021EE490
+	bl DWC_GetMyAID
 	cmp r5, r0
 	beq _021E634A
-	bl ov00_021EE4FC
+	bl DWC_GetAIDBitmap
 	add r1, r4, #0
 	lsl r1, r5
 	tst r0, r1
@@ -1304,7 +1304,7 @@ _021E6324:
 	lsl r0, r5, #0x18
 	ldr r1, _021E6380 ; =0x00002710
 	lsr r0, r0, #0x18
-	bl ov00_021F9988
+	bl DWC_SetRecvTimeoutTime
 	cmp r0, #0
 	bne _021E634A
 	bl GF_AssertFail
@@ -1318,7 +1318,7 @@ _021E634A:
 _021E6356:
 	ldr r1, _021E6380 ; =0x00002710
 	mov r0, #0
-	bl ov00_021F9988
+	bl DWC_SetRecvTimeoutTime
 	cmp r0, #0
 	bne _021E6366
 	bl GF_AssertFail
@@ -1353,7 +1353,7 @@ ov00_021E6388: ; 0x021E6388
 	ble _021E63BA
 	ldr r6, _021E63C8 ; =0x0000107C
 _021E63A2:
-	bl ov00_021EE490
+	bl DWC_GetMyAID
 	cmp r5, r0
 	beq _021E63B0
 	add r0, r5, #0
@@ -1380,7 +1380,7 @@ ov00_021E63CC: ; 0x021E63CC
 	bne _021E63EA
 	cmp r1, #0
 	bne _021E63E4
-	bl ov00_021EE490
+	bl DWC_GetMyAID
 	mov r1, #1
 	sub r0, r1, r0
 	bl ov00_021E6388
@@ -1401,7 +1401,7 @@ _021E63F4:
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _021E6412
-	bl ov00_021EE490
+	bl DWC_GetMyAID
 	ldr r3, _021E6414 ; =_0221A680
 	ldr r2, _021E6420 ; =0x00000FB8
 	ldr r3, [r3]
@@ -1534,7 +1534,7 @@ _021E64E2:
 	add r1, r5, #0
 	add r2, r6, #0
 	bl MI_CpuCopy8
-	bl ov00_021EE490
+	bl DWC_GetMyAID
 	cmp r0, #0
 	bne _021E651E
 	ldr r0, _021E6544 ; =_0221A680
@@ -1602,7 +1602,7 @@ ov00_021E6554: ; 0x021E6554
 	ldrb r0, [r0, r2]
 	cmp r0, #1
 	bne _021E65A8
-	bl ov00_021EE448
+	bl DWC_GetNumConnectionHost
 	cmp r0, #1
 	bne _021E65A8
 	add r0, r5, #0
@@ -1741,7 +1741,7 @@ ov00_021E6690: ; 0x021E6690
 	add r0, sp, #4
 	add r1, sp, #0
 	mov r4, #0
-	bl ov00_021EC11C
+	bl DWC_GetLastErrorEx
 	add r5, r0, #0
 	beq _021E6762
 	ldr r4, [sp, #4]
@@ -1772,10 +1772,10 @@ _021E66C2: ; jump table
 	.short _021E66DE - _021E66C2 - 2 ; case 6
 	.short _021E6744 - _021E66C2 - 2 ; case 7
 _021E66D2:
-	bl ov00_021EC210
+	bl DWC_ClearError
 	b _021E6762
 _021E66D8:
-	bl ov00_021EC210
+	bl DWC_ClearError
 	b _021E6762
 _021E66DE:
 	ldr r0, _021E6784 ; =_0221A680
@@ -1813,14 +1813,14 @@ _021E66FA: ; jump table
 	.short _021E6720 - _021E66FA - 2 ; case 17
 	.short _021E6720 - _021E66FA - 2 ; case 18
 _021E6720:
-	bl ov00_021ED9B4
+	bl DWC_ShutdownFriendsMatch
 _021E6724:
 	bl sub_0203993C
 	cmp r0, #0x21
 	beq _021E6730
-	bl ov00_021EC8D8
+	bl DWC_CleanupInet
 _021E6730:
-	bl ov00_021EC210
+	bl DWC_ClearError
 _021E6734:
 	ldr r0, _021E6784 ; =_0221A680
 	ldr r2, [r0]
@@ -1884,18 +1884,18 @@ ov00_021E6790: ; 0x021E6790
 	ble _021E67D4
 	ldr r7, _021E67DC ; =0x0000107C
 _021E67A4:
-	bl ov00_021EE490
+	bl DWC_GetMyAID
 	cmp r4, r0
 	beq _021E67CA
 	lsl r0, r4, #0x18
 	lsr r0, r0, #0x18
-	bl ov00_021EE530
+	bl DWC_IsValidAID
 	cmp r0, #0
 	beq _021E67CA
 	lsl r0, r4, #0x18
 	lsr r0, r0, #0x18
 	mov r5, #1
-	bl ov00_021F9580
+	bl DWC_IsSendableReliable
 	cmp r0, #0
 	bne _021E67CA
 	mov r0, #0
@@ -1927,7 +1927,7 @@ ov00_021E67E0: ; 0x021E67E0
 	bl ov00_021E6790
 	cmp r0, #0
 	beq _021E683A
-	bl ov00_021EE4FC
+	bl DWC_GetAIDBitmap
 	ldr r1, _021E6848 ; =0x0000FFFE
 	tst r0, r1
 	beq _021E683A
@@ -1943,11 +1943,11 @@ ov00_021E67E0: ; 0x021E67E0
 	mov r0, #2
 	orr r0, r1
 	str r0, [r2]
-	bl ov00_021EE4FC
+	bl DWC_GetAIDBitmap
 	ldr r1, _021E6840 ; =_0221A680
 	mov r2, #4
 	ldr r1, [r1]
-	bl ov00_021F9750
+	bl DWC_SendReliableBitmap
 	ldr r0, _021E6840 ; =_0221A680
 	mov r2, #0
 	ldr r1, [r0]
@@ -1970,7 +1970,7 @@ _021E684C: .word 0x000010AC
 	thumb_func_start ov00_021E6850
 ov00_021E6850: ; 0x021E6850
 	push {r3, r4, r5, r6, r7, lr}
-	bl ov00_021EDB1C
+	bl DWC_ProcessFriendsMatch
 	bl ov00_021E6CE8
 	ldr r0, _021E694C ; =_0221A680
 	ldr r1, _021E6950 ; =0x00001090
@@ -2000,7 +2000,7 @@ _021E688C:
 	bl ov00_021E765C
 	ldr r0, _021E694C ; =_0221A680
 	ldr r4, [r0]
-	bl ov00_021EE4FC
+	bl DWC_GetAIDBitmap
 	mov r1, #0x42
 	lsl r1, r1, #6
 	ldr r2, [r4, r1]
@@ -2015,15 +2015,15 @@ _021E688C:
 	ldr r0, [r4, r1]
 	cmp r0, #0
 	beq _021E68D8
-	bl ov00_021EE4FC
+	bl DWC_GetAIDBitmap
 	add r4, r0, #0
-	bl ov00_021EE490
+	bl DWC_GetMyAID
 	add r1, r0, #0
 	add r0, r4, #0
 	bl ov00_021E7AF4
 	cmp r0, #0
 	beq _021E68D8
-	bl ov00_021EE4FC
+	bl DWC_GetAIDBitmap
 	ldr r1, _021E694C ; =_0221A680
 	ldr r2, [r1]
 	mov r1, #0x42
@@ -2115,7 +2115,7 @@ ov00_021E6964: ; 0x021E6964
 	cmp r0, #0x10
 	bne _021E6984
 _021E697E:
-	bl ov00_021EE490
+	bl DWC_GetMyAID
 	pop {r3, pc}
 _021E6984:
 	mov r0, #0
@@ -2585,8 +2585,8 @@ _021E6CB4: .word _0221A680
 	thumb_func_start ov00_021E6CB8
 ov00_021E6CB8: ; 0x021E6CB8
 	push {r3, lr}
-	bl ov00_021ED9B4
-	bl ov00_021EC8D8
+	bl DWC_ShutdownFriendsMatch
+	bl DWC_CleanupInet
 	bl ov00_021E6A4C
 	bl ov00_021E5AE8
 	pop {r3, pc}
@@ -2646,7 +2646,7 @@ ov00_021E6CE8: ; 0x021E6CE8
 	mul r3, r5
 	add r1, r1, r3
 	add r2, sp, #0
-	bl ov00_021EFDCC
+	bl DWC_GetFriendStatusData
 	ldr r1, _021E6D50 ; =_0221A680
 	ldr r1, [r1]
 	add r2, r1, r5
@@ -2672,10 +2672,10 @@ _021E6D5C: .word 0x0000106C
 
 	thumb_func_start ov00_021E6D60
 ov00_021E6D60: ; 0x021E6D60
-	ldr r3, _021E6D64 ; =ov00_021EFE78
+	ldr r3, _021E6D64 ; =DWC_SetOwnStatusData
 	bx r3
 	.balign 4, 0
-_021E6D64: .word ov00_021EFE78
+_021E6D64: .word DWC_SetOwnStatusData
 	thumb_func_end ov00_021E6D60
 
 	thumb_func_start ov00_021E6D68
@@ -2765,7 +2765,7 @@ _021E6DEE:
 	ldr r3, _021E6E98 ; =ov00_021E6FE0
 	lsr r0, r0, #0x18
 	str r2, [sp]
-	bl ov00_021EDFBC
+	bl DWC_SetupGameServer
 	mov r3, #1
 	ldr r1, _021E6E84 ; =_0221A680
 	b _021E6E24
@@ -2775,7 +2775,7 @@ _021E6E12:
 	ldr r3, _021E6E98 ; =ov00_021E6FE0
 	add r0, r5, #0
 	str r2, [sp]
-	bl ov00_021EE054
+	bl DWC_ConnectToGameServerAsync
 	ldr r1, _021E6E84 ; =_0221A680
 	mov r3, #2
 _021E6E24:
@@ -2811,14 +2811,14 @@ _021E6E4E:
 	sub r0, #0x5c
 	str r2, [r1, r0]
 	ldr r0, _021E6EA8 ; =ov00_021E6428
-	bl ov00_021F989C
+	bl DWC_SetUserSendCallback
 	ldr r0, _021E6EAC ; =ov00_021E6484
-	bl ov00_021F98BC
+	bl DWC_SetUserRecvCallback
 	ldr r0, _021E6EB0 ; =ov00_021E6554
 	mov r1, #0
-	bl ov00_021EE24C
+	bl DWC_SetConnectionClosedCallback
 	ldr r0, _021E6EB4 ; =ov00_021E6240
-	bl ov00_021F98DC
+	bl DWC_SetUserRecvTimeoutCallback
 	ldr r1, _021E6E84 ; =_0221A680
 	mov r0, #0
 	ldr r2, [r1]
@@ -2906,7 +2906,7 @@ _021E6F1E:
 	cmp r4, #0
 	beq _021E6F66
 _021E6F2E:
-	bl ov00_021EE4FC
+	bl DWC_GetAIDBitmap
 	ldr r1, _021E6FA0 ; =_0221A680
 	ldr r2, [r1]
 	ldr r1, _021E6FB0 ; =0x000010D8
@@ -2914,13 +2914,13 @@ _021E6F2E:
 	mvn r1, r1
 	and r0, r1
 	str r0, [sp]
-	bl ov00_021EE4FC
+	bl DWC_GetAIDBitmap
 	add r4, r0, #0
 	ldr r0, [sp]
 	cmp r0, #0
 	beq _021E6F66
 	add r0, sp, #0
-	bl ov00_021EE384
+	bl DWC_CloseConnectionHardBitmap
 	ldr r0, [sp]
 	eor r0, r4
 	cmp r0, #1
@@ -2936,7 +2936,7 @@ _021E6F66:
 	ldr r1, [r0]
 	ldr r0, _021E6FB8 ; =0x00001094
 	str r5, [r1, r0]
-	bl ov00_021EE4FC
+	bl DWC_GetAIDBitmap
 	ldr r2, _021E6FA0 ; =_0221A680
 	ldr r1, _021E6FB0 ; =0x000010D8
 	ldr r3, [r2]
@@ -3165,7 +3165,7 @@ ov00_021E70F4: ; 0x021E70F4
 	strb r1, [r2, r0]
 	ldr r0, _021E712C ; =ov00_021E70E0
 	mov r1, #0
-	bl ov00_021F12F0
+	bl DWC_StopSCMatchingAsync
 _021E710E:
 	ldr r0, _021E7124 ; =_0221A680
 	ldr r1, [r0]
@@ -3199,10 +3199,10 @@ _021E7140: .word 0x000010E0
 
 	thumb_func_start ov00_021E7144
 ov00_021E7144: ; 0x021E7144
-	ldr r3, _021E7148 ; =ov00_021EE448
+	ldr r3, _021E7148 ; =DWC_GetNumConnectionHost
 	bx r3
 	.balign 4, 0
-_021E7148: .word ov00_021EE448
+_021E7148: .word DWC_GetNumConnectionHost
 	thumb_func_end ov00_021E7144
 
 	thumb_func_start ov00_021E714C
@@ -3412,7 +3412,7 @@ _021E72CC:
 	add r1, #0x1f
 	bic r1, r3
 	add r2, #0x80
-	bl ov00_021F9850
+	bl DWC_SetRecvBuffer
 _021E72F0:
 	pop {r3, r4, r5, pc}
 	nop
@@ -4217,7 +4217,7 @@ _021E7904:
 	add r0, r1, r0
 	str r0, [sp, #0x18]
 	str r4, [sp, #0x1c]
-	bl ov00_021EE490
+	bl DWC_GetMyAID
 	add r1, sp, #0x10
 	strb r0, [r1, #0x14]
 	mov r0, #0

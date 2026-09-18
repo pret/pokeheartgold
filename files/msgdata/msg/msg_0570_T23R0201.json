@@ -1,0 +1,75 @@
+{
+  "key": 33887,
+  "messages": [
+    {
+      "id": "msg_0570_T23R0201_00000",
+      "en_US": [
+        "All the SLOWPOKE have disappeared\n",
+        "from the town.\r",
+        "The forest’s protector may be\n",
+        "angry with us...\r",
+        "It may be a bad omen. We should stay in."
+      ]
+    },
+    {
+      "id": "msg_0570_T23R0201_00001",
+      "en_US": [
+        "The SLOWPOKE have returned...\r",
+        "But my FARFETCH’D haven’t come back.\n",
+        "My apprentice has gone to look for them\f",
+        "in the Ilex Forest.\r",
+        "It’s been ages now.\n",
+        "Where in the world is that lazy guy?"
+      ]
+    },
+    {
+      "id": "msg_0570_T23R0201_00002",
+      "en_US": [
+        "You chased off Team Rocket and went to\n",
+        "Ilex Forest alone?\r",
+        "That takes guts!\n",
+        "I like that. Come train with us."
+      ]
+    },
+    {
+      "id": "msg_0570_T23R0201_00003",
+      "en_US": [
+        "Where have all the SLOWPOKE gone?\n",
+        "Are they out playing somewhere?"
+      ]
+    },
+    {
+      "id": "msg_0570_T23R0201_00004",
+      "en_US": [
+        "I’m sorry--I forgot to thank you.\n",
+        "This is Charcoal that I made.\r",
+        "Fire-type moves will become\n",
+        "more powerful when a Pokémon\f",
+        "holds that."
+      ]
+    },
+    {
+      "id": "msg_0570_T23R0201_00005",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} received\n",
+        "the Charcoal!"
+      ]
+    },
+    {
+      "id": "msg_0570_T23R0201_00006",
+      "en_US": [
+        "The SLOWPOKE came back, and you even\n",
+        "found FARFETCH’D.\f",
+        "You’re the coolest, man!"
+      ]
+    },
+    {
+      "id": "msg_0570_T23R0201_00007",
+      "en_US": "Uh-oh, your Bag is chock-full."
+    },
+    {
+      "id": "msg_0570_T23R0201_00008",
+      "en_US": "FARFETCH’D: Kwaa!"
+    }
+  ]
+}

@@ -1,0 +1,100 @@
+{
+  "key": 57706,
+  "messages": [
+    {
+      "id": "msg_0708_00000",
+      "en_US": "Parry"
+    },
+    {
+      "id": "msg_0708_00001",
+      "en_US": [
+        "Sheesh, the way you attacked! That was\n",
+        "something else! We should meet again!\r",
+        "How about giving me your number?{YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0708_00002",
+      "en_US": "I’ll call you when I feel like battling!"
+    },
+    {
+      "id": "msg_0708_00003",
+      "en_US": [
+        "No? That’s fine.\n",
+        "A definite no is easy to take!\r",
+        "I’ll be right here when you’re ready for\n",
+        "a rematch."
+      ]
+    },
+    {
+      "id": "msg_0708_00004",
+      "en_US": [
+        "So you want to register my phone\n",
+        "number for a rematch, huh?{YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0708_00005",
+      "en_US": [
+        "Well, you are special, all right.\r",
+        "If only I’d begun training Pokémon when\n",
+        "I was a tad younger...\r",
+        "I want you to work hard and succeed\n",
+        "for both of us.\f",
+        "So, take this, OK?\r"
+      ]
+    },
+    {
+      "id": "msg_0708_00006",
+      "en_US": [
+        "Uh-huh?\n",
+        "Is that a river I hear in the\f",
+        "background? You’re nearby!"
+      ]
+    },
+    {
+      "id": "msg_0708_00007",
+      "en_US": [
+        "Nothing can match my {STRVAR_1 0, 10, 0} now.\r",
+        "Yeah, we KO’d a wild {STRVAR_1 0, 11, 0}!\r",
+        "That was OK, but what I wanted was\n",
+        "to catch it...\r",
+        "OK, give me a call again!"
+      ]
+    },
+    {
+      "id": "msg_0708_00008",
+      "en_US": [
+        "Nothing can match my {STRVAR_1 0, 10, 0} now.\r",
+        "And, yesterday, we spotted a wild\n",
+        "{STRVAR_1 0, 11, 0}.\r",
+        "We were debating whether to catch\n",
+        "it or just gain experience battling it.\r",
+        "Then, along came another guy,\n",
+        "who caught it! How about that!\r",
+        "OK, give me a call again!"
+      ]
+    },
+    {
+      "id": "msg_0708_00009",
+      "en_US": [
+        "You’re thinking you’d like to battle me.\n",
+        "Am I right or what?\r",
+        "Yep! We’ll meet on {STRVAR_1 4, 3, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0708_00010",
+      "en_US": [
+        "Haven’t you gone as far as\n",
+        "{STRVAR_1 4, 3, 0}?\r",
+        "Waiting here is no problem,\n",
+        "but I’d sure like to battle!"
+      ]
+    },
+    {
+      "id": "msg_0708_00011",
+      "en_US": "You’ll battle with me again, right?"
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "key": 41067,
+  "messages": [
+    {
+      "id": "msg_0203_00000",
+      "garbage": 137
+    },
+    {
+      "id": "msg_0203_00001",
+      "garbage": 108
+    },
+    {
+      "id": "msg_0203_00002",
+      "garbage": 112
+    },
+    {
+      "id": "msg_0203_00003",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} scurried to\n",
+        "a Pokémon Center, protecting\n",
+        "the exhausted and fainted\n",
+        "Pokémon from further harm..."
+      ]
+    },
+    {
+      "id": "msg_0203_00004",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} scurried back\n",
+        "home, protecting the exhausted\n",
+        "and fainted Pokémon from further\n",
+        "harm..."
+      ]
+    }
+  ]
+}

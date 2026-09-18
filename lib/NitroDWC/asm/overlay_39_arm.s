@@ -1,4 +1,4 @@
-	.include "asm/macros.inc"
+	.include "macros.inc"
 	.include "overlay_39_arm.inc"
 	.include "global.inc"
 
@@ -455,12 +455,12 @@ _022298C8: .word _0222AB84
 
 	arm_func_start ov39_022298CC
 ov39_022298CC: ; 0x022298CC
-	ldr ip, _022298DC ; =ov00_021EC2A8
+	ldr ip, _022298DC ; =DWC_Alloc
 	mov r1, r0
 	mov r0, #0
 	bx ip
 	.balign 4, 0
-_022298DC: .word ov00_021EC2A8
+_022298DC: .word DWC_Alloc
 	arm_func_end ov39_022298CC
 
 	arm_func_start ov39_022298E0
@@ -470,7 +470,7 @@ ov39_022298E0: ; 0x022298E0
 	ldmeqia sp!, {r3, pc}
 	mov r0, #0
 	mov r2, r0
-	bl ov00_021EC2EC
+	bl DWC_Free
 	ldmia sp!, {r3, pc}
 	arm_func_end ov39_022298E0
 
@@ -697,7 +697,7 @@ _02229B54:
 	ldmia sp!, {r3, pc}
 _02229B80:
 	add r0, sp, #0
-	bl ov00_021FFA44
+	bl inet_addr
 	ldr r1, _02229B9C ; =_0222AB84
 	str r0, [r1, #0x264]
 	mov r0, #1
@@ -1029,7 +1029,7 @@ ov39_02229FCC: ; 0x02229FCC
 	ldmeqia sp!, {r4, r5, pc}
 	ldr r0, _0222A108 ; =_0222AA58
 	add r1, sp, #8
-	bl ov00_021ECC6C
+	bl DWC_SVLGetTokenAsync
 	cmp r0, #0
 	bne _0222A018
 	ldr r0, _0222A104 ; =_0222AB84
@@ -1042,7 +1042,7 @@ _0222A018:
 	ldr r4, _0222A104 ; =_0222AB84
 	mov r5, #1
 _0222A020:
-	bl ov00_021ECCE0
+	bl DWC_SVLProcess
 	cmp r0, #3
 	bne _0222A074
 	ldr r4, _0222A10C ; =ov39_0222AB8A
@@ -1069,7 +1069,7 @@ _0222A074:
 	bne _0222A0A0
 	add r0, sp, #0
 	add r1, sp, #4
-	bl ov00_021EC11C
+	bl DWC_GetLastErrorEx
 	ldr r0, _0222A104 ; =_0222AB84
 	mov r1, #0xe
 	str r1, [r0, #0x250]

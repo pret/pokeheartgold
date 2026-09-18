@@ -1,0 +1,237 @@
+{
+  "key": 37835,
+  "messages": [
+    {
+      "id": "msg_0747_00000",
+      "en_US": [
+        "Teach which move to\n",
+        "{STRVAR_1 1, 0, 0}?"
+      ]
+    },
+    {
+      "id": "msg_0747_00001",
+      "en_US": [
+        "Teach the move\n",
+        "{STRVAR_1 6, 1, 0}?"
+      ]
+    },
+    {
+      "id": "msg_0747_00002",
+      "en_US": [
+        "Give up trying to teach a new\n",
+        "move to {STRVAR_1 1, 0, 0}?"
+      ]
+    },
+    {
+      "id": "msg_0747_00003",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} learned\n",
+        "{STRVAR_1 6, 1, 0}.\r"
+      ]
+    },
+    {
+      "id": "msg_0747_00004",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is trying to learn\n",
+        "{STRVAR_1 6, 1, 0}.\r",
+        "But {STRVAR_1 1, 0, 0} can’t learn more\n",
+        "than four moves.\r",
+        "Delete an older move to make\n",
+        "room for {STRVAR_1 6, 1, 0}?"
+      ]
+    },
+    {
+      "id": "msg_0747_00005",
+      "en_US": [
+        "1{PAUSE 20}, 2{PAUSE 20}, and{PAUSE 20}... {PAUSE 20}... Poof!{WAIT 3}{WAIT 5}\r",
+        "{STRVAR_1 1, 0, 0} forgot\n",
+        "{STRVAR_1 6, 1, 0}.\r",
+        "And...\r"
+      ]
+    },
+    {
+      "id": "msg_0747_00006",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} learned\n",
+        "{STRVAR_1 6, 1, 0}.{WAIT 4}{WAIT 2}\r"
+      ]
+    },
+    {
+      "id": "msg_0747_00007",
+      "en_US": [
+        "Stop trying to teach\n",
+        "{STRVAR_1 6, 1, 0}?"
+      ]
+    },
+    {
+      "id": "msg_0747_00008",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} did not learn the\n",
+        "move {STRVAR_1 6, 1, 0}.\r"
+      ]
+    },
+    {
+      "id": "msg_0747_00009",
+      "garbage": 30
+    },
+    {
+      "id": "msg_0747_00010",
+      "en_US": [
+        "{STRVAR_1 6, 0, 0} is the move that\n",
+        "you want forgotten?"
+      ]
+    },
+    {
+      "id": "msg_0747_00011",
+      "en_US": [
+        "Which move should {STRVAR_1 1, 0, 0}\n",
+        "remember?"
+      ]
+    },
+    {
+      "id": "msg_0747_00012",
+      "en_US": [
+        "Should the move {STRVAR_1 6, 1, 0}\n",
+        "be remembered?"
+      ]
+    },
+    {
+      "id": "msg_0747_00013",
+      "en_US": [
+        "Give up trying to make\n",
+        "{STRVAR_1 1, 0, 0} remember a move?"
+      ]
+    },
+    {
+      "id": "msg_0747_00014",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} remembered the move\n",
+        "{STRVAR_1 6, 1, 0} it had forgotten!\r"
+      ]
+    },
+    {
+      "id": "msg_0747_00015",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} wants to remember\n",
+        "the move {STRVAR_1 6, 1, 0}.\r",
+        "But {STRVAR_1 1, 0, 0} can’t learn more\n",
+        "than four moves.\r",
+        "Delete an existing move to make\n",
+        "room for {STRVAR_1 6, 1, 0}?"
+      ]
+    },
+    {
+      "id": "msg_0747_00016",
+      "en_US": [
+        "1{PAUSE 20}, 2{PAUSE 20}, and{PAUSE 20}... {PAUSE 20}... Poof!{WAIT 3}{WAIT 5}\r",
+        "{STRVAR_1 1, 0, 0} forgot\n",
+        "{STRVAR_1 6, 1, 0}.\r",
+        "And...\r"
+      ]
+    },
+    {
+      "id": "msg_0747_00017",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} remembered the move\n",
+        "{STRVAR_1 6, 1, 0}.{WAIT 4}{WAIT 2}\r"
+      ]
+    },
+    {
+      "id": "msg_0747_00018",
+      "en_US": [
+        "Give up making the Pokémon\n",
+        "remember {STRVAR_1 6, 1, 0}?"
+      ]
+    },
+    {
+      "id": "msg_0747_00019",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} did not remember the\n",
+        "move {STRVAR_1 6, 1, 0}.\r"
+      ]
+    },
+    {
+      "id": "msg_0747_00020",
+      "garbage": 30
+    },
+    {
+      "id": "msg_0747_00021",
+      "en_US": [
+        "Is it OK to make this Pokémon\n",
+        "forget the move {STRVAR_1 6, 0, 0}?"
+      ]
+    },
+    {
+      "id": "msg_0747_00022",
+      "en_US": "CATEGORY"
+    },
+    {
+      "id": "msg_0747_00023",
+      "en_US": "POWER"
+    },
+    {
+      "id": "msg_0747_00024",
+      "en_US": "ACCURACY"
+    },
+    {
+      "id": "msg_0747_00025",
+      "en_US": "PP"
+    },
+    {
+      "id": "msg_0747_00026",
+      "garbage": 6
+    },
+    {
+      "id": "msg_0747_00027",
+      "garbage": 8
+    },
+    {
+      "id": "msg_0747_00028",
+      "garbage": 7
+    },
+    {
+      "id": "msg_0747_00029",
+      "en_US": "{STRVAR_1 52, 0, 0}"
+    },
+    {
+      "id": "msg_0747_00030",
+      "en_US": "{STRVAR_1 52, 0, 0}"
+    },
+    {
+      "id": "msg_0747_00031",
+      "en_US": "{STRVAR_1 51, 0, 0}/{STRVAR_1 51, 1, 0}"
+    },
+    {
+      "id": "msg_0747_00032",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0747_00033",
+      "en_US": "---"
+    },
+    {
+      "id": "msg_0747_00034",
+      "en_US": "RETURN"
+    },
+    {
+      "id": "msg_0747_00035",
+      "en_US": "TEACH"
+    },
+    {
+      "id": "msg_0747_00036",
+      "en_US": "TEACH WHICH MOVE?"
+    },
+    {
+      "id": "msg_0747_00037",
+      "en_US": "{STRVAR_1 1, 0, 0}"
+    },
+    {
+      "id": "msg_0747_00038",
+      "en_US": "Lv. {STRVAR_1 52, 0, 0}"
+    },
+    {
+      "id": "msg_0747_00039",
+      "en_US": "LEARNED MOVES"
+    }
+  ]
+}

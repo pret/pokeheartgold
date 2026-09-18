@@ -1,0 +1,38 @@
+{
+  "key": 17438,
+  "messages": [
+    {
+      "id": "msg_0501_T07R0201_00000",
+      "en_US": [
+        "Do you need anything?\n",
+        "I am the manager of the condominiums.\r",
+        "It’s pretty safe around here, so I\n",
+        "don’t have much to do.\r",
+        "I like to take my Pokémon out to\n",
+        "occupy myself.\r",
+        "...By the way, we have two\n",
+        "elevators here.\f",
+        "Don’t get confused."
+      ]
+    },
+    {
+      "id": "msg_0501_T07R0201_00001",
+      "en_US": "MEOWTH: Meow!"
+    },
+    {
+      "id": "msg_0501_T07R0201_00002",
+      "en_US": "CLEFAIRY: Clef cleff!"
+    },
+    {
+      "id": "msg_0501_T07R0201_00003",
+      "en_US": "NIDORAN♀: Kya kyaoo!"
+    },
+    {
+      "id": "msg_0501_T07R0201_00004",
+      "en_US": [
+        "Please take this elevator\n",
+        "to go to the third floor."
+      ]
+    }
+  ]
+}

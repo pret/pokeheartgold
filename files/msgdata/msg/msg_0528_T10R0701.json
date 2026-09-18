@@ -1,0 +1,47 @@
+{
+  "key": 46103,
+  "messages": [
+    {
+      "id": "msg_0528_T10R0701_00000",
+      "en_US": [
+        "Lance: It’s been a long time since I\n",
+        "last came here.\r",
+        "This is where we commemorate the\n",
+        "League Champions for all eternity.\r",
+        "Their courageous Pokémon are\n",
+        "also inducted.\r",
+        "Here today, we witnessed the rise\n",
+        "of a new League Champion--\r",
+        "a Trainer who feels compassion for,\n",
+        "and trust toward, all Pokémon.\r",
+        "A Trainer who succeeded through\n",
+        "perseverance and determination.\r",
+        "The new League Champion who has\n",
+        "all the makings of greatness!\r",
+        "{STRVAR_1 3, 0, 0}, allow me to register you\n",
+        "and your partners as Champions!\r"
+      ]
+    },
+    {
+      "id": "msg_0528_T10R0701_00001",
+      "en_US": [
+        "Lance: It’s been a long time since I\n",
+        "last came here.\r",
+        "This is where we commemorate the\n",
+        "League Champions for all eternity.\r",
+        "Their courageous Pokémon are\n",
+        "also inducted.\r",
+        "Here today, we witnessed the rise\n",
+        "of a new League Champion--\r",
+        "a Trainer who feels compassion for,\n",
+        "and trust toward, all Pokémon.\r",
+        "A Trainer who succeeded through\n",
+        "perseverance and determination.\r",
+        "The new League Champion who has\n",
+        "all the makings of greatness!\r",
+        "{STRVAR_1 3, 0, 0}, allow me to register you\n",
+        "and your partners as Champions!\r"
+      ]
+    }
+  ]
+}

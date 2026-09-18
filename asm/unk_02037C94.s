@@ -1,4 +1,4 @@
-	.include "asm/macros.inc"
+	.include "macros.inc"
 	.include "unk_02037C94.inc"
 	.include "global.inc"
 
@@ -714,7 +714,7 @@ _0203818E:
 	bl sub_02039998
 	cmp r0, #0
 	beq _020381A4
-	bl ov00_021EC9D4
+	bl DWC_GetLinkLevel
 	mov r1, #3
 	sub r0, r1, r0
 	bl sub_0203A930
@@ -3405,10 +3405,10 @@ _020395C2:
 _020395CE:
 	add r0, sp, #4
 	add r1, sp, #0
-	bl ov00_021EC11C
+	bl DWC_GetLastErrorEx
 	cmp r0, #0
 	beq _02039600
-	bl ov00_021EC210
+	bl DWC_ClearError
 	add sp, #8
 	mov r0, #1
 	pop {r3, pc}
@@ -3417,7 +3417,7 @@ _020395E4:
 	bne _02039600
 	add r0, sp, #4
 	add r1, sp, #0
-	bl ov00_021EC11C
+	bl DWC_GetLastErrorEx
 	cmp r0, #0
 	beq _02039600
 	ldr r0, [sp]

@@ -1,0 +1,93 @@
+{
+  "key": 62531,
+  "messages": [
+    {
+      "id": "msg_0072_D24R0101_00000",
+      "en_US": [
+        "Hm? That’s a Pokédex, isn’t it?\n",
+        "May I see it?\r",
+        "There are so many kinds of Pokémon.\n",
+        "Hm? What’s this?\r",
+        "What is this Pokémon?\n",
+        "It looks like the strange writing on the\f",
+        "walls of the ruins.\r",
+        "If those drawings are really Pokémon,\n",
+        "there should be many more.\r",
+        "I know! Let me upgrade your Pokédex.\n",
+        "Follow me.\r"
+      ]
+    },
+    {
+      "id": "msg_0072_D24R0101_00001",
+      "en_US": "Ouch!\r"
+    },
+    {
+      "id": "msg_0072_D24R0101_00002",
+      "en_US": [
+        "Are you OK?\n",
+        "I was in a hurry and...\f",
+        "Sorry, did I hurt you?\r"
+      ]
+    },
+    {
+      "id": "msg_0072_D24R0101_00003",
+      "en_US": [
+        "No way!\n",
+        "Could it be a Pokémon from Sinnoh...\f",
+        "The one they call ARCEUS...?\r"
+      ]
+    },
+    {
+      "id": "msg_0072_D24R0101_00004",
+      "en_US": [
+        "Oh, could it be...?\n",
+        "ARCEUS causing all this...?\r",
+        "I cannot explain it any other way...\r"
+      ]
+    },
+    {
+      "id": "msg_0072_D24R0101_00005",
+      "en_US": [
+        "ARCEUS may be the key to solving the\n",
+        "mystery of the UNOWN and the\f",
+        "Ruins of Alph...?\r"
+      ]
+    },
+    {
+      "id": "msg_0072_D24R0101_00006",
+      "en_US": [
+        "Can you come to the Ruins of Alph with\n",
+        "me? Please! You must!\r",
+        "I am trembling with excitement.\n",
+        "I think something is about to happen!\r"
+      ]
+    },
+    {
+      "id": "msg_0072_D24R0101_00007",
+      "en_US": [
+        "Ruins of Alph.\r",
+        "Visitors who are interested in\n",
+        "archaeology are welcome."
+      ]
+    },
+    {
+      "id": "msg_0072_D24R0101_00008",
+      "en_US": [
+        "Ruins of Alph.\r",
+        "Feel free to explore the ruins and\n",
+        "become a fossil professor!"
+      ]
+    },
+    {
+      "id": "msg_0072_D24R0101_00009",
+      "en_US": "Ruins Research Center"
+    },
+    {
+      "id": "msg_0072_D24R0101_00010",
+      "en_US": [
+        "This is a mysterious hall.\n",
+        "Please watch your step."
+      ]
+    }
+  ]
+}

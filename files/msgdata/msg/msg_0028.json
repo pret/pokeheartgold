@@ -1,0 +1,151 @@
+{
+  "key": 12299,
+  "messages": [
+    {
+      "id": "msg_0028_00000",
+      "garbage": 11
+    },
+    {
+      "id": "msg_0028_00001",
+      "garbage": 15
+    },
+    {
+      "id": "msg_0028_00002",
+      "en_US": "Wi-Fi Battle Room Results"
+    },
+    {
+      "id": "msg_0028_00003",
+      "garbage": 29
+    },
+    {
+      "id": "msg_0028_00004",
+      "garbage": 28
+    },
+    {
+      "id": "msg_0028_00005",
+      "en_US": [
+        "{COLOR 1}Current{COLOR 3} {COLOR 0}\n",
+        "{COLOR 1}Rank{COLOR 0}"
+      ]
+    },
+    {
+      "id": "msg_0028_00006",
+      "garbage": 28
+    },
+    {
+      "id": "msg_0028_00007",
+      "garbage": 29
+    },
+    {
+      "id": "msg_0028_00008",
+      "en_US": [
+        "{COLOR 1}Wi-Fi{COLOR 0}\n",
+        "{COLOR 1}Record{COLOR 0}"
+      ]
+    },
+    {
+      "id": "msg_0028_00009",
+      "en_US": "{COLOR 1}PREV{COLOR 0}"
+    },
+    {
+      "id": "msg_0028_00010",
+      "en_US": "{COLOR 1}CURRENT{COLOR 0}"
+    },
+    {
+      "id": "msg_0028_00011",
+      "en_US": "{COLOR 1}RECORD{COLOR 0}"
+    },
+    {
+      "id": "msg_0028_00012",
+      "en_US": "{COLOR 1}RANK{COLOR 0}"
+    },
+    {
+      "id": "msg_0028_00013",
+      "garbage": 18
+    },
+    {
+      "id": "msg_0028_00014",
+      "en_US": "{STRVAR_1 51, 0, 0}"
+    },
+    {
+      "id": "msg_0028_00015",
+      "en_US": "Win streak: {STRVAR_1 53, 0, 0}"
+    },
+    {
+      "id": "msg_0028_00016",
+      "garbage": 5
+    },
+    {
+      "id": "msg_0028_00017",
+      "en_US": "Rank {STRVAR_1 51, 0, 0}"
+    },
+    {
+      "id": "msg_0028_00018",
+      "en_US": "Battle Room {STRVAR_1 52, 1, 0}"
+    },
+    {
+      "id": "msg_0028_00019",
+      "en_US": "LIST OF LEADERS"
+    },
+    {
+      "id": "msg_0028_00020",
+      "en_US": "{STRVAR_1 50, 0, 0}"
+    },
+    {
+      "id": "msg_0028_00021",
+      "en_US": "/"
+    },
+    {
+      "id": "msg_0028_00022",
+      "en_US": "{COLOR 3}{STRVAR_1 3, 0, 0}{COLOR 0}’s Info"
+    },
+    {
+      "id": "msg_0028_00023",
+      "en_US": "{COLOR 1}{STRVAR_1 3, 0, 0}{COLOR 0}’s Info"
+    },
+    {
+      "id": "msg_0028_00024",
+      "en_US": "CANCEL"
+    },
+    {
+      "id": "msg_0028_00025",
+      "garbage": 11
+    },
+    {
+      "id": "msg_0028_00026",
+      "garbage": 5
+    },
+    {
+      "id": "msg_0028_00027",
+      "garbage": 14
+    },
+    {
+      "id": "msg_0028_00028",
+      "en_US": "Home Country"
+    },
+    {
+      "id": "msg_0028_00029",
+      "en_US": "{STRVAR_1 36, 0, 0}"
+    },
+    {
+      "id": "msg_0028_00030",
+      "en_US": "{STRVAR_1 37, 0, 0}"
+    },
+    {
+      "id": "msg_0028_00031",
+      "en_US": "Unregistered"
+    },
+    {
+      "id": "msg_0028_00032",
+      "en_US": "Feeling of being number one"
+    },
+    {
+      "id": "msg_0028_00033",
+      "en_US": "Heart"
+    },
+    {
+      "id": "msg_0028_00034",
+      "en_US": "Soul"
+    }
+  ]
+}

@@ -1,11 +1,11 @@
-	.include "asm/macros.inc"
+	.include "macros.inc"
 	.include "unk_02056680.inc"
 	.include "global.inc"
 
 	.rodata
 
 _020FC790:
-	.word ov45_02229EE0, ov45_02229F70, ov45_02229F94, FS_OVERLAY_ID(OVY_45)
+	.word ov45_02229EE0, ov45_02229F70, ov45_02229F94, SDK_OVERLAY_OVY_45_ID
 
 	.text
 

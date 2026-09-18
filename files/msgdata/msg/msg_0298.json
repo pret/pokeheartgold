@@ -1,0 +1,29 @@
+{
+  "key": 13110,
+  "messages": [
+    {
+      "id": "msg_0298_00000",
+      "en_US": "CANCEL"
+    },
+    {
+      "id": "msg_0298_00001",
+      "en_US": "IN PARTY"
+    },
+    {
+      "id": "msg_0298_00002",
+      "en_US": "Are these three OK?"
+    },
+    {
+      "id": "msg_0298_00003",
+      "en_US": "Is this Pokémon OK?"
+    },
+    {
+      "id": "msg_0298_00004",
+      "en_US": "Cancel Participation?"
+    },
+    {
+      "id": "msg_0298_00005",
+      "en_US": "Which Pokémon will you take?"
+    }
+  ]
+}

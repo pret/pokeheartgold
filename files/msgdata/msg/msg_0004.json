@@ -1,0 +1,45 @@
+{
+  "key": 15060,
+  "messages": [
+    {
+      "id": "msg_0004_00000",
+      "en_US": "PLAYER: {STRVAR_1 3, 0, 0}"
+    },
+    {
+      "id": "msg_0004_00001",
+      "en_US": [
+        "This document certifies that\n",
+        "you have made the great\n",
+        "achievement of catching all\n",
+        "the Pokémon in Johto."
+      ]
+    },
+    {
+      "id": "msg_0004_00002",
+      "en_US": [
+        "This document certifies\n",
+        "that you have successfully\n",
+        "completed your\n",
+        "National Pokédex."
+      ]
+    },
+    {
+      "id": "msg_0004_00003",
+      "en_US": "GAME FREAK"
+    },
+    {
+      "id": "msg_0004_00004",
+      "en_US": "{ALN_CENTER}{STRVAR_1 3, 0, 0} and {STRVAR_1 1, 1, 0}"
+    },
+    {
+      "id": "msg_0004_00005",
+      "en_US": [
+        "{ALN_CENTER}Fighting together, walking\n",
+        "{ALN_CENTER}together. Forging a bond that\n",
+        "{ALN_CENTER}cannot be broken and will go\n",
+        "{ALN_CENTER}on continually into eternity.\n",
+        "{ALN_CENTER}This bond is illuminated here."
+      ]
+    }
+  ]
+}

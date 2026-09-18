@@ -1,0 +1,1981 @@
+{
+  "key": 32254,
+  "messages": [
+    {
+      "id": "msg_0819_00000",
+      "en_US": "----------"
+    },
+    {
+      "id": "msg_0819_00001",
+      "en_US": "BISASAM"
+    },
+    {
+      "id": "msg_0819_00002",
+      "en_US": "BISAKNOSP"
+    },
+    {
+      "id": "msg_0819_00003",
+      "en_US": "BISAFLOR"
+    },
+    {
+      "id": "msg_0819_00004",
+      "en_US": "GLUMANDA"
+    },
+    {
+      "id": "msg_0819_00005",
+      "en_US": "GLUTEXO"
+    },
+    {
+      "id": "msg_0819_00006",
+      "en_US": "GLURAK"
+    },
+    {
+      "id": "msg_0819_00007",
+      "en_US": "SCHIGGY"
+    },
+    {
+      "id": "msg_0819_00008",
+      "en_US": "SCHILLOK"
+    },
+    {
+      "id": "msg_0819_00009",
+      "en_US": "TURTOK"
+    },
+    {
+      "id": "msg_0819_00010",
+      "en_US": "RAUPY"
+    },
+    {
+      "id": "msg_0819_00011",
+      "en_US": "SAFCON"
+    },
+    {
+      "id": "msg_0819_00012",
+      "en_US": "SMETTBO"
+    },
+    {
+      "id": "msg_0819_00013",
+      "en_US": "HORNLIU"
+    },
+    {
+      "id": "msg_0819_00014",
+      "en_US": "KOKUNA"
+    },
+    {
+      "id": "msg_0819_00015",
+      "en_US": "BIBOR"
+    },
+    {
+      "id": "msg_0819_00016",
+      "en_US": "TAUBSI"
+    },
+    {
+      "id": "msg_0819_00017",
+      "en_US": "TAUBOGA"
+    },
+    {
+      "id": "msg_0819_00018",
+      "en_US": "TAUBOSS"
+    },
+    {
+      "id": "msg_0819_00019",
+      "en_US": "RATTFRATZ"
+    },
+    {
+      "id": "msg_0819_00020",
+      "en_US": "RATTIKARL"
+    },
+    {
+      "id": "msg_0819_00021",
+      "en_US": "HABITAK"
+    },
+    {
+      "id": "msg_0819_00022",
+      "en_US": "IBITAK"
+    },
+    {
+      "id": "msg_0819_00023",
+      "en_US": "RETTAN"
+    },
+    {
+      "id": "msg_0819_00024",
+      "en_US": "ARBOK"
+    },
+    {
+      "id": "msg_0819_00025",
+      "en_US": "PIKACHU"
+    },
+    {
+      "id": "msg_0819_00026",
+      "en_US": "RAICHU"
+    },
+    {
+      "id": "msg_0819_00027",
+      "en_US": "SANDAN"
+    },
+    {
+      "id": "msg_0819_00028",
+      "en_US": "SANDAMER"
+    },
+    {
+      "id": "msg_0819_00029",
+      "en_US": "NIDORAN♀"
+    },
+    {
+      "id": "msg_0819_00030",
+      "en_US": "NIDORINA"
+    },
+    {
+      "id": "msg_0819_00031",
+      "en_US": "NIDOQUEEN"
+    },
+    {
+      "id": "msg_0819_00032",
+      "en_US": "NIDORAN♂"
+    },
+    {
+      "id": "msg_0819_00033",
+      "en_US": "NIDORINO"
+    },
+    {
+      "id": "msg_0819_00034",
+      "en_US": "NIDOKING"
+    },
+    {
+      "id": "msg_0819_00035",
+      "en_US": "PIEPI"
+    },
+    {
+      "id": "msg_0819_00036",
+      "en_US": "PIXI"
+    },
+    {
+      "id": "msg_0819_00037",
+      "en_US": "VULPIX"
+    },
+    {
+      "id": "msg_0819_00038",
+      "en_US": "VULNONA"
+    },
+    {
+      "id": "msg_0819_00039",
+      "en_US": "PUMMELUFF"
+    },
+    {
+      "id": "msg_0819_00040",
+      "en_US": "KNUDDELUFF"
+    },
+    {
+      "id": "msg_0819_00041",
+      "en_US": "ZUBAT"
+    },
+    {
+      "id": "msg_0819_00042",
+      "en_US": "GOLBAT"
+    },
+    {
+      "id": "msg_0819_00043",
+      "en_US": "MYRAPLA"
+    },
+    {
+      "id": "msg_0819_00044",
+      "en_US": "DUFLOR"
+    },
+    {
+      "id": "msg_0819_00045",
+      "en_US": "GIFLOR"
+    },
+    {
+      "id": "msg_0819_00046",
+      "en_US": "PARAS"
+    },
+    {
+      "id": "msg_0819_00047",
+      "en_US": "PARASEK"
+    },
+    {
+      "id": "msg_0819_00048",
+      "en_US": "BLUZUK"
+    },
+    {
+      "id": "msg_0819_00049",
+      "en_US": "OMOT"
+    },
+    {
+      "id": "msg_0819_00050",
+      "en_US": "DIGDA"
+    },
+    {
+      "id": "msg_0819_00051",
+      "en_US": "DIGDRI"
+    },
+    {
+      "id": "msg_0819_00052",
+      "en_US": "MAUZI"
+    },
+    {
+      "id": "msg_0819_00053",
+      "en_US": "SNOBILIKAT"
+    },
+    {
+      "id": "msg_0819_00054",
+      "en_US": "ENTON"
+    },
+    {
+      "id": "msg_0819_00055",
+      "en_US": "ENTORON"
+    },
+    {
+      "id": "msg_0819_00056",
+      "en_US": "MENKI"
+    },
+    {
+      "id": "msg_0819_00057",
+      "en_US": "RASAFF"
+    },
+    {
+      "id": "msg_0819_00058",
+      "en_US": "FUKANO"
+    },
+    {
+      "id": "msg_0819_00059",
+      "en_US": "ARKANI"
+    },
+    {
+      "id": "msg_0819_00060",
+      "en_US": "QUAPSEL"
+    },
+    {
+      "id": "msg_0819_00061",
+      "en_US": "QUAPUTZI"
+    },
+    {
+      "id": "msg_0819_00062",
+      "en_US": "QUAPPO"
+    },
+    {
+      "id": "msg_0819_00063",
+      "en_US": "ABRA"
+    },
+    {
+      "id": "msg_0819_00064",
+      "en_US": "KADABRA"
+    },
+    {
+      "id": "msg_0819_00065",
+      "en_US": "SIMSALA"
+    },
+    {
+      "id": "msg_0819_00066",
+      "en_US": "MACHOLLO"
+    },
+    {
+      "id": "msg_0819_00067",
+      "en_US": "MASCHOCK"
+    },
+    {
+      "id": "msg_0819_00068",
+      "en_US": "MACHOMEI"
+    },
+    {
+      "id": "msg_0819_00069",
+      "en_US": "KNOFENSA"
+    },
+    {
+      "id": "msg_0819_00070",
+      "en_US": "ULTRIGARIA"
+    },
+    {
+      "id": "msg_0819_00071",
+      "en_US": "SARZENIA"
+    },
+    {
+      "id": "msg_0819_00072",
+      "en_US": "TENTACHA"
+    },
+    {
+      "id": "msg_0819_00073",
+      "en_US": "TENTOXA"
+    },
+    {
+      "id": "msg_0819_00074",
+      "en_US": "KLEINSTEIN"
+    },
+    {
+      "id": "msg_0819_00075",
+      "en_US": "GEOROK"
+    },
+    {
+      "id": "msg_0819_00076",
+      "en_US": "GEOWAZ"
+    },
+    {
+      "id": "msg_0819_00077",
+      "en_US": "PONITA"
+    },
+    {
+      "id": "msg_0819_00078",
+      "en_US": "GALLOPA"
+    },
+    {
+      "id": "msg_0819_00079",
+      "en_US": "FLEGMON"
+    },
+    {
+      "id": "msg_0819_00080",
+      "en_US": "LAHMUS"
+    },
+    {
+      "id": "msg_0819_00081",
+      "en_US": "MAGNETILO"
+    },
+    {
+      "id": "msg_0819_00082",
+      "en_US": "MAGNETON"
+    },
+    {
+      "id": "msg_0819_00083",
+      "en_US": "PORENTA"
+    },
+    {
+      "id": "msg_0819_00084",
+      "en_US": "DODU"
+    },
+    {
+      "id": "msg_0819_00085",
+      "en_US": "DODRI"
+    },
+    {
+      "id": "msg_0819_00086",
+      "en_US": "JUROB"
+    },
+    {
+      "id": "msg_0819_00087",
+      "en_US": "JUGONG"
+    },
+    {
+      "id": "msg_0819_00088",
+      "en_US": "SLEIMA"
+    },
+    {
+      "id": "msg_0819_00089",
+      "en_US": "SLEIMOK"
+    },
+    {
+      "id": "msg_0819_00090",
+      "en_US": "MUSCHAS"
+    },
+    {
+      "id": "msg_0819_00091",
+      "en_US": "AUSTOS"
+    },
+    {
+      "id": "msg_0819_00092",
+      "en_US": "NEBULAK"
+    },
+    {
+      "id": "msg_0819_00093",
+      "en_US": "ALPOLLO"
+    },
+    {
+      "id": "msg_0819_00094",
+      "en_US": "GENGAR"
+    },
+    {
+      "id": "msg_0819_00095",
+      "en_US": "ONIX"
+    },
+    {
+      "id": "msg_0819_00096",
+      "en_US": "TRAUMATO"
+    },
+    {
+      "id": "msg_0819_00097",
+      "en_US": "HYPNO"
+    },
+    {
+      "id": "msg_0819_00098",
+      "en_US": "KRABBY"
+    },
+    {
+      "id": "msg_0819_00099",
+      "en_US": "KINGLER"
+    },
+    {
+      "id": "msg_0819_00100",
+      "en_US": "VOLTOBAL"
+    },
+    {
+      "id": "msg_0819_00101",
+      "en_US": "LEKTROBAL"
+    },
+    {
+      "id": "msg_0819_00102",
+      "en_US": "OWEI"
+    },
+    {
+      "id": "msg_0819_00103",
+      "en_US": "KOKOWEI"
+    },
+    {
+      "id": "msg_0819_00104",
+      "en_US": "TRAGOSSO"
+    },
+    {
+      "id": "msg_0819_00105",
+      "en_US": "KNOGGA"
+    },
+    {
+      "id": "msg_0819_00106",
+      "en_US": "KICKLEE"
+    },
+    {
+      "id": "msg_0819_00107",
+      "en_US": "NOCKCHAN"
+    },
+    {
+      "id": "msg_0819_00108",
+      "en_US": "SCHLURP"
+    },
+    {
+      "id": "msg_0819_00109",
+      "en_US": "SMOGON"
+    },
+    {
+      "id": "msg_0819_00110",
+      "en_US": "SMOGMOG"
+    },
+    {
+      "id": "msg_0819_00111",
+      "en_US": "RIHORN"
+    },
+    {
+      "id": "msg_0819_00112",
+      "en_US": "RIZEROS"
+    },
+    {
+      "id": "msg_0819_00113",
+      "en_US": "CHANEIRA"
+    },
+    {
+      "id": "msg_0819_00114",
+      "en_US": "TANGELA"
+    },
+    {
+      "id": "msg_0819_00115",
+      "en_US": "KANGAMA"
+    },
+    {
+      "id": "msg_0819_00116",
+      "en_US": "SEEPER"
+    },
+    {
+      "id": "msg_0819_00117",
+      "en_US": "SEEMON"
+    },
+    {
+      "id": "msg_0819_00118",
+      "en_US": "GOLDINI"
+    },
+    {
+      "id": "msg_0819_00119",
+      "en_US": "GOLKING"
+    },
+    {
+      "id": "msg_0819_00120",
+      "en_US": "STERNDU"
+    },
+    {
+      "id": "msg_0819_00121",
+      "en_US": "STARMIE"
+    },
+    {
+      "id": "msg_0819_00122",
+      "en_US": "PANTIMOS"
+    },
+    {
+      "id": "msg_0819_00123",
+      "en_US": "SICHLOR"
+    },
+    {
+      "id": "msg_0819_00124",
+      "en_US": "ROSSANA"
+    },
+    {
+      "id": "msg_0819_00125",
+      "en_US": "ELEKTEK"
+    },
+    {
+      "id": "msg_0819_00126",
+      "en_US": "MAGMAR"
+    },
+    {
+      "id": "msg_0819_00127",
+      "en_US": "PINSIR"
+    },
+    {
+      "id": "msg_0819_00128",
+      "en_US": "TAUROS"
+    },
+    {
+      "id": "msg_0819_00129",
+      "en_US": "KARPADOR"
+    },
+    {
+      "id": "msg_0819_00130",
+      "en_US": "GARADOS"
+    },
+    {
+      "id": "msg_0819_00131",
+      "en_US": "LAPRAS"
+    },
+    {
+      "id": "msg_0819_00132",
+      "en_US": "DITTO"
+    },
+    {
+      "id": "msg_0819_00133",
+      "en_US": "EVOLI"
+    },
+    {
+      "id": "msg_0819_00134",
+      "en_US": "AQUANA"
+    },
+    {
+      "id": "msg_0819_00135",
+      "en_US": "BLITZA"
+    },
+    {
+      "id": "msg_0819_00136",
+      "en_US": "FLAMARA"
+    },
+    {
+      "id": "msg_0819_00137",
+      "en_US": "PORYGON"
+    },
+    {
+      "id": "msg_0819_00138",
+      "en_US": "AMONITAS"
+    },
+    {
+      "id": "msg_0819_00139",
+      "en_US": "AMOROSO"
+    },
+    {
+      "id": "msg_0819_00140",
+      "en_US": "KABUTO"
+    },
+    {
+      "id": "msg_0819_00141",
+      "en_US": "KABUTOPS"
+    },
+    {
+      "id": "msg_0819_00142",
+      "en_US": "AERODACTYL"
+    },
+    {
+      "id": "msg_0819_00143",
+      "en_US": "RELAXO"
+    },
+    {
+      "id": "msg_0819_00144",
+      "en_US": "ARKTOS"
+    },
+    {
+      "id": "msg_0819_00145",
+      "en_US": "ZAPDOS"
+    },
+    {
+      "id": "msg_0819_00146",
+      "en_US": "LAVADOS"
+    },
+    {
+      "id": "msg_0819_00147",
+      "en_US": "DRATINI"
+    },
+    {
+      "id": "msg_0819_00148",
+      "en_US": "DRAGONIR"
+    },
+    {
+      "id": "msg_0819_00149",
+      "en_US": "DRAGORAN"
+    },
+    {
+      "id": "msg_0819_00150",
+      "en_US": "MEWTU"
+    },
+    {
+      "id": "msg_0819_00151",
+      "en_US": "MEW"
+    },
+    {
+      "id": "msg_0819_00152",
+      "en_US": "ENDIVIE"
+    },
+    {
+      "id": "msg_0819_00153",
+      "en_US": "LORBLATT"
+    },
+    {
+      "id": "msg_0819_00154",
+      "en_US": "MEGANIE"
+    },
+    {
+      "id": "msg_0819_00155",
+      "en_US": "FEURIGEL"
+    },
+    {
+      "id": "msg_0819_00156",
+      "en_US": "IGELAVAR"
+    },
+    {
+      "id": "msg_0819_00157",
+      "en_US": "TORNUPTO"
+    },
+    {
+      "id": "msg_0819_00158",
+      "en_US": "KARNIMANI"
+    },
+    {
+      "id": "msg_0819_00159",
+      "en_US": "TYRACROC"
+    },
+    {
+      "id": "msg_0819_00160",
+      "en_US": "IMPERGATOR"
+    },
+    {
+      "id": "msg_0819_00161",
+      "en_US": "WIESOR"
+    },
+    {
+      "id": "msg_0819_00162",
+      "en_US": "WIESENIOR"
+    },
+    {
+      "id": "msg_0819_00163",
+      "en_US": "HOOTHOOT"
+    },
+    {
+      "id": "msg_0819_00164",
+      "en_US": "NOCTUH"
+    },
+    {
+      "id": "msg_0819_00165",
+      "en_US": "LEDYBA"
+    },
+    {
+      "id": "msg_0819_00166",
+      "en_US": "LEDIAN"
+    },
+    {
+      "id": "msg_0819_00167",
+      "en_US": "WEBARAK"
+    },
+    {
+      "id": "msg_0819_00168",
+      "en_US": "ARIADOS"
+    },
+    {
+      "id": "msg_0819_00169",
+      "en_US": "IKSBAT"
+    },
+    {
+      "id": "msg_0819_00170",
+      "en_US": "LAMPI"
+    },
+    {
+      "id": "msg_0819_00171",
+      "en_US": "LANTURN"
+    },
+    {
+      "id": "msg_0819_00172",
+      "en_US": "PICHU"
+    },
+    {
+      "id": "msg_0819_00173",
+      "en_US": "PII"
+    },
+    {
+      "id": "msg_0819_00174",
+      "en_US": "FLUFFELUFF"
+    },
+    {
+      "id": "msg_0819_00175",
+      "en_US": "TOGEPI"
+    },
+    {
+      "id": "msg_0819_00176",
+      "en_US": "TOGETIC"
+    },
+    {
+      "id": "msg_0819_00177",
+      "en_US": "NATU"
+    },
+    {
+      "id": "msg_0819_00178",
+      "en_US": "XATU"
+    },
+    {
+      "id": "msg_0819_00179",
+      "en_US": "VOLTILAMM"
+    },
+    {
+      "id": "msg_0819_00180",
+      "en_US": "WAATY"
+    },
+    {
+      "id": "msg_0819_00181",
+      "en_US": "AMPHAROS"
+    },
+    {
+      "id": "msg_0819_00182",
+      "en_US": "BLUBELLA"
+    },
+    {
+      "id": "msg_0819_00183",
+      "en_US": "MARILL"
+    },
+    {
+      "id": "msg_0819_00184",
+      "en_US": "AZUMARILL"
+    },
+    {
+      "id": "msg_0819_00185",
+      "en_US": "MOGELBAUM"
+    },
+    {
+      "id": "msg_0819_00186",
+      "en_US": "QUAXO"
+    },
+    {
+      "id": "msg_0819_00187",
+      "en_US": "HOPPSPROSS"
+    },
+    {
+      "id": "msg_0819_00188",
+      "en_US": "HUBELUPF"
+    },
+    {
+      "id": "msg_0819_00189",
+      "en_US": "PAPUNGHA"
+    },
+    {
+      "id": "msg_0819_00190",
+      "en_US": "GRIFFEL"
+    },
+    {
+      "id": "msg_0819_00191",
+      "en_US": "SONNKERN"
+    },
+    {
+      "id": "msg_0819_00192",
+      "en_US": "SONNFLORA"
+    },
+    {
+      "id": "msg_0819_00193",
+      "en_US": "YANMA"
+    },
+    {
+      "id": "msg_0819_00194",
+      "en_US": "FELINO"
+    },
+    {
+      "id": "msg_0819_00195",
+      "en_US": "MORLORD"
+    },
+    {
+      "id": "msg_0819_00196",
+      "en_US": "PSIANA"
+    },
+    {
+      "id": "msg_0819_00197",
+      "en_US": "NACHTARA"
+    },
+    {
+      "id": "msg_0819_00198",
+      "en_US": "KRAMURX"
+    },
+    {
+      "id": "msg_0819_00199",
+      "en_US": "LASCHOKING"
+    },
+    {
+      "id": "msg_0819_00200",
+      "en_US": "TRAUNFUGIL"
+    },
+    {
+      "id": "msg_0819_00201",
+      "en_US": "ICOGNITO"
+    },
+    {
+      "id": "msg_0819_00202",
+      "en_US": "WOINGENAU"
+    },
+    {
+      "id": "msg_0819_00203",
+      "en_US": "GIRAFARIG"
+    },
+    {
+      "id": "msg_0819_00204",
+      "en_US": "TANNZA"
+    },
+    {
+      "id": "msg_0819_00205",
+      "en_US": "FORSTELLKA"
+    },
+    {
+      "id": "msg_0819_00206",
+      "en_US": "DUMMISEL"
+    },
+    {
+      "id": "msg_0819_00207",
+      "en_US": "SKORGLA"
+    },
+    {
+      "id": "msg_0819_00208",
+      "en_US": "STAHLOS"
+    },
+    {
+      "id": "msg_0819_00209",
+      "en_US": "SNUBBULL"
+    },
+    {
+      "id": "msg_0819_00210",
+      "en_US": "GRANBULL"
+    },
+    {
+      "id": "msg_0819_00211",
+      "en_US": "BALDORFISH"
+    },
+    {
+      "id": "msg_0819_00212",
+      "en_US": "SCHEROX"
+    },
+    {
+      "id": "msg_0819_00213",
+      "en_US": "POTTROTT"
+    },
+    {
+      "id": "msg_0819_00214",
+      "en_US": "SKARABORN"
+    },
+    {
+      "id": "msg_0819_00215",
+      "en_US": "SNIEBEL"
+    },
+    {
+      "id": "msg_0819_00216",
+      "en_US": "TEDDIURSA"
+    },
+    {
+      "id": "msg_0819_00217",
+      "en_US": "URSARING"
+    },
+    {
+      "id": "msg_0819_00218",
+      "en_US": "SCHNECKMAG"
+    },
+    {
+      "id": "msg_0819_00219",
+      "en_US": "MAGCARGO"
+    },
+    {
+      "id": "msg_0819_00220",
+      "en_US": "QUIEKEL"
+    },
+    {
+      "id": "msg_0819_00221",
+      "en_US": "KEIFEL"
+    },
+    {
+      "id": "msg_0819_00222",
+      "en_US": "CORASONN"
+    },
+    {
+      "id": "msg_0819_00223",
+      "en_US": "REMORAID"
+    },
+    {
+      "id": "msg_0819_00224",
+      "en_US": "OCTILLERY"
+    },
+    {
+      "id": "msg_0819_00225",
+      "en_US": "BOTOGEL"
+    },
+    {
+      "id": "msg_0819_00226",
+      "en_US": "MANTAX"
+    },
+    {
+      "id": "msg_0819_00227",
+      "en_US": "PANZAERON"
+    },
+    {
+      "id": "msg_0819_00228",
+      "en_US": "HUNDUSTER"
+    },
+    {
+      "id": "msg_0819_00229",
+      "en_US": "HUNDEMON"
+    },
+    {
+      "id": "msg_0819_00230",
+      "en_US": "SEEDRAKING"
+    },
+    {
+      "id": "msg_0819_00231",
+      "en_US": "PHANPY"
+    },
+    {
+      "id": "msg_0819_00232",
+      "en_US": "DONPHAN"
+    },
+    {
+      "id": "msg_0819_00233",
+      "en_US": "PORYGON2"
+    },
+    {
+      "id": "msg_0819_00234",
+      "en_US": "DAMHIRPLEX"
+    },
+    {
+      "id": "msg_0819_00235",
+      "en_US": "FARBEAGLE"
+    },
+    {
+      "id": "msg_0819_00236",
+      "en_US": "RABAUZ"
+    },
+    {
+      "id": "msg_0819_00237",
+      "en_US": "KAPOERA"
+    },
+    {
+      "id": "msg_0819_00238",
+      "en_US": "KUSSILLA"
+    },
+    {
+      "id": "msg_0819_00239",
+      "en_US": "ELEKID"
+    },
+    {
+      "id": "msg_0819_00240",
+      "en_US": "MAGBY"
+    },
+    {
+      "id": "msg_0819_00241",
+      "en_US": "MILTANK"
+    },
+    {
+      "id": "msg_0819_00242",
+      "en_US": "HEITEIRA"
+    },
+    {
+      "id": "msg_0819_00243",
+      "en_US": "RAIKOU"
+    },
+    {
+      "id": "msg_0819_00244",
+      "en_US": "ENTEI"
+    },
+    {
+      "id": "msg_0819_00245",
+      "en_US": "SUICUNE"
+    },
+    {
+      "id": "msg_0819_00246",
+      "en_US": "LARVITAR"
+    },
+    {
+      "id": "msg_0819_00247",
+      "en_US": "PUPITAR"
+    },
+    {
+      "id": "msg_0819_00248",
+      "en_US": "DESPOTAR"
+    },
+    {
+      "id": "msg_0819_00249",
+      "en_US": "LUGIA"
+    },
+    {
+      "id": "msg_0819_00250",
+      "en_US": "HO-OH"
+    },
+    {
+      "id": "msg_0819_00251",
+      "en_US": "CELEBI"
+    },
+    {
+      "id": "msg_0819_00252",
+      "en_US": "GECKARBOR"
+    },
+    {
+      "id": "msg_0819_00253",
+      "en_US": "REPTAIN"
+    },
+    {
+      "id": "msg_0819_00254",
+      "en_US": "GEWALDRO"
+    },
+    {
+      "id": "msg_0819_00255",
+      "en_US": "FLEMMLI"
+    },
+    {
+      "id": "msg_0819_00256",
+      "en_US": "JUNGGLUT"
+    },
+    {
+      "id": "msg_0819_00257",
+      "en_US": "LOHGOCK"
+    },
+    {
+      "id": "msg_0819_00258",
+      "en_US": "HYDROPI"
+    },
+    {
+      "id": "msg_0819_00259",
+      "en_US": "MOORABBEL"
+    },
+    {
+      "id": "msg_0819_00260",
+      "en_US": "SUMPEX"
+    },
+    {
+      "id": "msg_0819_00261",
+      "en_US": "FIFFYEN"
+    },
+    {
+      "id": "msg_0819_00262",
+      "en_US": "MAGNAYEN"
+    },
+    {
+      "id": "msg_0819_00263",
+      "en_US": "ZIGZACHS"
+    },
+    {
+      "id": "msg_0819_00264",
+      "en_US": "GERADAKS"
+    },
+    {
+      "id": "msg_0819_00265",
+      "en_US": "WAUMPEL"
+    },
+    {
+      "id": "msg_0819_00266",
+      "en_US": "SCHALOKO"
+    },
+    {
+      "id": "msg_0819_00267",
+      "en_US": "PAPINELLA"
+    },
+    {
+      "id": "msg_0819_00268",
+      "en_US": "PANEKON"
+    },
+    {
+      "id": "msg_0819_00269",
+      "en_US": "PUDOX"
+    },
+    {
+      "id": "msg_0819_00270",
+      "en_US": "LOTURZEL"
+    },
+    {
+      "id": "msg_0819_00271",
+      "en_US": "LOMBRERO"
+    },
+    {
+      "id": "msg_0819_00272",
+      "en_US": "KAPPALORES"
+    },
+    {
+      "id": "msg_0819_00273",
+      "en_US": "SAMURZEL"
+    },
+    {
+      "id": "msg_0819_00274",
+      "en_US": "BLANAS"
+    },
+    {
+      "id": "msg_0819_00275",
+      "en_US": "TENGULIST"
+    },
+    {
+      "id": "msg_0819_00276",
+      "en_US": "SCHWALBINI"
+    },
+    {
+      "id": "msg_0819_00277",
+      "en_US": "SCHWALBOSS"
+    },
+    {
+      "id": "msg_0819_00278",
+      "en_US": "WINGULL"
+    },
+    {
+      "id": "msg_0819_00279",
+      "en_US": "PELIPPER"
+    },
+    {
+      "id": "msg_0819_00280",
+      "en_US": "TRASLA"
+    },
+    {
+      "id": "msg_0819_00281",
+      "en_US": "KIRLIA"
+    },
+    {
+      "id": "msg_0819_00282",
+      "en_US": "GUARDEVOIR"
+    },
+    {
+      "id": "msg_0819_00283",
+      "en_US": "GEHWEIHER"
+    },
+    {
+      "id": "msg_0819_00284",
+      "en_US": "MASKEREGEN"
+    },
+    {
+      "id": "msg_0819_00285",
+      "en_US": "KNILZ"
+    },
+    {
+      "id": "msg_0819_00286",
+      "en_US": "KAPILZ"
+    },
+    {
+      "id": "msg_0819_00287",
+      "en_US": "BUMMELZ"
+    },
+    {
+      "id": "msg_0819_00288",
+      "en_US": "MUNTIER"
+    },
+    {
+      "id": "msg_0819_00289",
+      "en_US": "LETARKING"
+    },
+    {
+      "id": "msg_0819_00290",
+      "en_US": "NINCADA"
+    },
+    {
+      "id": "msg_0819_00291",
+      "en_US": "NINJASK"
+    },
+    {
+      "id": "msg_0819_00292",
+      "en_US": "NINJATOM"
+    },
+    {
+      "id": "msg_0819_00293",
+      "en_US": "FLURMEL"
+    },
+    {
+      "id": "msg_0819_00294",
+      "en_US": "KRAKEELO"
+    },
+    {
+      "id": "msg_0819_00295",
+      "en_US": "KRAWUMMS"
+    },
+    {
+      "id": "msg_0819_00296",
+      "en_US": "MAKUHITA"
+    },
+    {
+      "id": "msg_0819_00297",
+      "en_US": "HARIYAMA"
+    },
+    {
+      "id": "msg_0819_00298",
+      "en_US": "AZURILL"
+    },
+    {
+      "id": "msg_0819_00299",
+      "en_US": "NASGNET"
+    },
+    {
+      "id": "msg_0819_00300",
+      "en_US": "ENECO"
+    },
+    {
+      "id": "msg_0819_00301",
+      "en_US": "ENEKORO"
+    },
+    {
+      "id": "msg_0819_00302",
+      "en_US": "ZOBIRIS"
+    },
+    {
+      "id": "msg_0819_00303",
+      "en_US": "FLUNKIFER"
+    },
+    {
+      "id": "msg_0819_00304",
+      "en_US": "STOLLUNIOR"
+    },
+    {
+      "id": "msg_0819_00305",
+      "en_US": "STOLLRAK"
+    },
+    {
+      "id": "msg_0819_00306",
+      "en_US": "STOLLOSS"
+    },
+    {
+      "id": "msg_0819_00307",
+      "en_US": "MEDITIE"
+    },
+    {
+      "id": "msg_0819_00308",
+      "en_US": "MEDITALIS"
+    },
+    {
+      "id": "msg_0819_00309",
+      "en_US": "FRIZELBLIZ"
+    },
+    {
+      "id": "msg_0819_00310",
+      "en_US": "VOLTENSO"
+    },
+    {
+      "id": "msg_0819_00311",
+      "en_US": "PLUSLE"
+    },
+    {
+      "id": "msg_0819_00312",
+      "en_US": "MINUN"
+    },
+    {
+      "id": "msg_0819_00313",
+      "en_US": "VOLBEAT"
+    },
+    {
+      "id": "msg_0819_00314",
+      "en_US": "ILLUMISE"
+    },
+    {
+      "id": "msg_0819_00315",
+      "en_US": "ROSELIA"
+    },
+    {
+      "id": "msg_0819_00316",
+      "en_US": "SCHLUPPUCK"
+    },
+    {
+      "id": "msg_0819_00317",
+      "en_US": "SCHLUKWECH"
+    },
+    {
+      "id": "msg_0819_00318",
+      "en_US": "KANIVANHA"
+    },
+    {
+      "id": "msg_0819_00319",
+      "en_US": "TOHAIDO"
+    },
+    {
+      "id": "msg_0819_00320",
+      "en_US": "WAILMER"
+    },
+    {
+      "id": "msg_0819_00321",
+      "en_US": "WAILORD"
+    },
+    {
+      "id": "msg_0819_00322",
+      "en_US": "CAMAUB"
+    },
+    {
+      "id": "msg_0819_00323",
+      "en_US": "CAMERUPT"
+    },
+    {
+      "id": "msg_0819_00324",
+      "en_US": "QURTEL"
+    },
+    {
+      "id": "msg_0819_00325",
+      "en_US": "SPOINK"
+    },
+    {
+      "id": "msg_0819_00326",
+      "en_US": "GROINK"
+    },
+    {
+      "id": "msg_0819_00327",
+      "en_US": "PANDIR"
+    },
+    {
+      "id": "msg_0819_00328",
+      "en_US": "KNACKLION"
+    },
+    {
+      "id": "msg_0819_00329",
+      "en_US": "VIBRAVA"
+    },
+    {
+      "id": "msg_0819_00330",
+      "en_US": "LIBELLDRA"
+    },
+    {
+      "id": "msg_0819_00331",
+      "en_US": "TUSKA"
+    },
+    {
+      "id": "msg_0819_00332",
+      "en_US": "NOKTUSKA"
+    },
+    {
+      "id": "msg_0819_00333",
+      "en_US": "WABLU"
+    },
+    {
+      "id": "msg_0819_00334",
+      "en_US": "ALTARIA"
+    },
+    {
+      "id": "msg_0819_00335",
+      "en_US": "SENGO"
+    },
+    {
+      "id": "msg_0819_00336",
+      "en_US": "VIPITIS"
+    },
+    {
+      "id": "msg_0819_00337",
+      "en_US": "LUNASTEIN"
+    },
+    {
+      "id": "msg_0819_00338",
+      "en_US": "SONNFEL"
+    },
+    {
+      "id": "msg_0819_00339",
+      "en_US": "SCHMERBE"
+    },
+    {
+      "id": "msg_0819_00340",
+      "en_US": "WELSAR"
+    },
+    {
+      "id": "msg_0819_00341",
+      "en_US": "KREBSCORPS"
+    },
+    {
+      "id": "msg_0819_00342",
+      "en_US": "KREBUTACK"
+    },
+    {
+      "id": "msg_0819_00343",
+      "en_US": "PUPPANCE"
+    },
+    {
+      "id": "msg_0819_00344",
+      "en_US": "LEPUMENTAS"
+    },
+    {
+      "id": "msg_0819_00345",
+      "en_US": "LILIEP"
+    },
+    {
+      "id": "msg_0819_00346",
+      "en_US": "WIELIE"
+    },
+    {
+      "id": "msg_0819_00347",
+      "en_US": "ANORITH"
+    },
+    {
+      "id": "msg_0819_00348",
+      "en_US": "ARMALDO"
+    },
+    {
+      "id": "msg_0819_00349",
+      "en_US": "BARSCHWA"
+    },
+    {
+      "id": "msg_0819_00350",
+      "en_US": "MILOTIC"
+    },
+    {
+      "id": "msg_0819_00351",
+      "en_US": "FORMEO"
+    },
+    {
+      "id": "msg_0819_00352",
+      "en_US": "KECLEON"
+    },
+    {
+      "id": "msg_0819_00353",
+      "en_US": "SHUPPET"
+    },
+    {
+      "id": "msg_0819_00354",
+      "en_US": "BANETTE"
+    },
+    {
+      "id": "msg_0819_00355",
+      "en_US": "ZWIRRLICHT"
+    },
+    {
+      "id": "msg_0819_00356",
+      "en_US": "ZWIRRKLOP"
+    },
+    {
+      "id": "msg_0819_00357",
+      "en_US": "TROPIUS"
+    },
+    {
+      "id": "msg_0819_00358",
+      "en_US": "PALIMPALIM"
+    },
+    {
+      "id": "msg_0819_00359",
+      "en_US": "ABSOL"
+    },
+    {
+      "id": "msg_0819_00360",
+      "en_US": "ISSO"
+    },
+    {
+      "id": "msg_0819_00361",
+      "en_US": "SCHNEPPKE"
+    },
+    {
+      "id": "msg_0819_00362",
+      "en_US": "FIRNONTOR"
+    },
+    {
+      "id": "msg_0819_00363",
+      "en_US": "SEEMOPS"
+    },
+    {
+      "id": "msg_0819_00364",
+      "en_US": "SEEJONG"
+    },
+    {
+      "id": "msg_0819_00365",
+      "en_US": "WALRAISA"
+    },
+    {
+      "id": "msg_0819_00366",
+      "en_US": "PERLU"
+    },
+    {
+      "id": "msg_0819_00367",
+      "en_US": "AALABYSS"
+    },
+    {
+      "id": "msg_0819_00368",
+      "en_US": "SAGANABYSS"
+    },
+    {
+      "id": "msg_0819_00369",
+      "en_US": "RELICANTH"
+    },
+    {
+      "id": "msg_0819_00370",
+      "en_US": "LIEBISKUS"
+    },
+    {
+      "id": "msg_0819_00371",
+      "en_US": "KINDWURM"
+    },
+    {
+      "id": "msg_0819_00372",
+      "en_US": "DRASCHEL"
+    },
+    {
+      "id": "msg_0819_00373",
+      "en_US": "BRUTALANDA"
+    },
+    {
+      "id": "msg_0819_00374",
+      "en_US": "TANHEL"
+    },
+    {
+      "id": "msg_0819_00375",
+      "en_US": "METANG"
+    },
+    {
+      "id": "msg_0819_00376",
+      "en_US": "METAGROSS"
+    },
+    {
+      "id": "msg_0819_00377",
+      "en_US": "REGIROCK"
+    },
+    {
+      "id": "msg_0819_00378",
+      "en_US": "REGICE"
+    },
+    {
+      "id": "msg_0819_00379",
+      "en_US": "REGISTEEL"
+    },
+    {
+      "id": "msg_0819_00380",
+      "en_US": "LATIAS"
+    },
+    {
+      "id": "msg_0819_00381",
+      "en_US": "LATIOS"
+    },
+    {
+      "id": "msg_0819_00382",
+      "en_US": "KYOGRE"
+    },
+    {
+      "id": "msg_0819_00383",
+      "en_US": "GROUDON"
+    },
+    {
+      "id": "msg_0819_00384",
+      "en_US": "RAYQUAZA"
+    },
+    {
+      "id": "msg_0819_00385",
+      "en_US": "JIRACHI"
+    },
+    {
+      "id": "msg_0819_00386",
+      "en_US": "DEOXYS"
+    },
+    {
+      "id": "msg_0819_00387",
+      "en_US": "CHELAST"
+    },
+    {
+      "id": "msg_0819_00388",
+      "en_US": "CHELCARAIN"
+    },
+    {
+      "id": "msg_0819_00389",
+      "en_US": "CHELTERRAR"
+    },
+    {
+      "id": "msg_0819_00390",
+      "en_US": "PANFLAM"
+    },
+    {
+      "id": "msg_0819_00391",
+      "en_US": "PANPYRO"
+    },
+    {
+      "id": "msg_0819_00392",
+      "en_US": "PANFERNO"
+    },
+    {
+      "id": "msg_0819_00393",
+      "en_US": "PLINFA"
+    },
+    {
+      "id": "msg_0819_00394",
+      "en_US": "PLIPRIN"
+    },
+    {
+      "id": "msg_0819_00395",
+      "en_US": "IMPOLEON"
+    },
+    {
+      "id": "msg_0819_00396",
+      "en_US": "STARALILI"
+    },
+    {
+      "id": "msg_0819_00397",
+      "en_US": "STARAVIA"
+    },
+    {
+      "id": "msg_0819_00398",
+      "en_US": "STARAPTOR"
+    },
+    {
+      "id": "msg_0819_00399",
+      "en_US": "BIDIZA"
+    },
+    {
+      "id": "msg_0819_00400",
+      "en_US": "BIDIFAS"
+    },
+    {
+      "id": "msg_0819_00401",
+      "en_US": "ZIRPURZE"
+    },
+    {
+      "id": "msg_0819_00402",
+      "en_US": "ZIRPEISE"
+    },
+    {
+      "id": "msg_0819_00403",
+      "en_US": "SHEINUX"
+    },
+    {
+      "id": "msg_0819_00404",
+      "en_US": "LUXIO"
+    },
+    {
+      "id": "msg_0819_00405",
+      "en_US": "LUXTRA"
+    },
+    {
+      "id": "msg_0819_00406",
+      "en_US": "KNOSPI"
+    },
+    {
+      "id": "msg_0819_00407",
+      "en_US": "ROSERADE"
+    },
+    {
+      "id": "msg_0819_00408",
+      "en_US": "KOKNODON"
+    },
+    {
+      "id": "msg_0819_00409",
+      "en_US": "RAMEIDON"
+    },
+    {
+      "id": "msg_0819_00410",
+      "en_US": "SCHILTERUS"
+    },
+    {
+      "id": "msg_0819_00411",
+      "en_US": "BOLLTERUS"
+    },
+    {
+      "id": "msg_0819_00412",
+      "en_US": "BURMY"
+    },
+    {
+      "id": "msg_0819_00413",
+      "en_US": "BURMADAME"
+    },
+    {
+      "id": "msg_0819_00414",
+      "en_US": "MOTERPEL"
+    },
+    {
+      "id": "msg_0819_00415",
+      "en_US": "WADRIBIE"
+    },
+    {
+      "id": "msg_0819_00416",
+      "en_US": "HONWEISEL"
+    },
+    {
+      "id": "msg_0819_00417",
+      "en_US": "PACHIRISU"
+    },
+    {
+      "id": "msg_0819_00418",
+      "en_US": "BAMELIN"
+    },
+    {
+      "id": "msg_0819_00419",
+      "en_US": "BOJELIN"
+    },
+    {
+      "id": "msg_0819_00420",
+      "en_US": "KIKUGI"
+    },
+    {
+      "id": "msg_0819_00421",
+      "en_US": "KINOSO"
+    },
+    {
+      "id": "msg_0819_00422",
+      "en_US": "SCHALELLOS"
+    },
+    {
+      "id": "msg_0819_00423",
+      "en_US": "GASTRODON"
+    },
+    {
+      "id": "msg_0819_00424",
+      "en_US": "AMBIDIFFEL"
+    },
+    {
+      "id": "msg_0819_00425",
+      "en_US": "DRIFTLON"
+    },
+    {
+      "id": "msg_0819_00426",
+      "en_US": "DRIFZEPELI"
+    },
+    {
+      "id": "msg_0819_00427",
+      "en_US": "HASPIROR"
+    },
+    {
+      "id": "msg_0819_00428",
+      "en_US": "SCHLAPOR"
+    },
+    {
+      "id": "msg_0819_00429",
+      "en_US": "TRAUNMAGIL"
+    },
+    {
+      "id": "msg_0819_00430",
+      "en_US": "KRAMSHEF"
+    },
+    {
+      "id": "msg_0819_00431",
+      "en_US": "CHARMIAN"
+    },
+    {
+      "id": "msg_0819_00432",
+      "en_US": "SHNURGARST"
+    },
+    {
+      "id": "msg_0819_00433",
+      "en_US": "KLINGPLIM"
+    },
+    {
+      "id": "msg_0819_00434",
+      "en_US": "SKUNKAPUH"
+    },
+    {
+      "id": "msg_0819_00435",
+      "en_US": "SKUNTANK"
+    },
+    {
+      "id": "msg_0819_00436",
+      "en_US": "BRONZEL"
+    },
+    {
+      "id": "msg_0819_00437",
+      "en_US": "BRONZONG"
+    },
+    {
+      "id": "msg_0819_00438",
+      "en_US": "MOBAI"
+    },
+    {
+      "id": "msg_0819_00439",
+      "en_US": "PANTIMIMI"
+    },
+    {
+      "id": "msg_0819_00440",
+      "en_US": "WONNEIRA"
+    },
+    {
+      "id": "msg_0819_00441",
+      "en_US": "PLAUDAGEI"
+    },
+    {
+      "id": "msg_0819_00442",
+      "en_US": "KRYPPUK"
+    },
+    {
+      "id": "msg_0819_00443",
+      "en_US": "KAUMALAT"
+    },
+    {
+      "id": "msg_0819_00444",
+      "en_US": "KNARKSEL"
+    },
+    {
+      "id": "msg_0819_00445",
+      "en_US": "KNAKRACK"
+    },
+    {
+      "id": "msg_0819_00446",
+      "en_US": "MAMPFAXO"
+    },
+    {
+      "id": "msg_0819_00447",
+      "en_US": "RIOLU"
+    },
+    {
+      "id": "msg_0819_00448",
+      "en_US": "LUCARIO"
+    },
+    {
+      "id": "msg_0819_00449",
+      "en_US": "HIPPOPOTAS"
+    },
+    {
+      "id": "msg_0819_00450",
+      "en_US": "HIPPOTERUS"
+    },
+    {
+      "id": "msg_0819_00451",
+      "en_US": "PIONSKORA"
+    },
+    {
+      "id": "msg_0819_00452",
+      "en_US": "PIONDRAGI"
+    },
+    {
+      "id": "msg_0819_00453",
+      "en_US": "GLIBUNKEL"
+    },
+    {
+      "id": "msg_0819_00454",
+      "en_US": "TOXIQUAK"
+    },
+    {
+      "id": "msg_0819_00455",
+      "en_US": "VENUFLIBIS"
+    },
+    {
+      "id": "msg_0819_00456",
+      "en_US": "FINNEON"
+    },
+    {
+      "id": "msg_0819_00457",
+      "en_US": "LUMINEON"
+    },
+    {
+      "id": "msg_0819_00458",
+      "en_US": "MANTIRPS"
+    },
+    {
+      "id": "msg_0819_00459",
+      "en_US": "SHNEBEDECK"
+    },
+    {
+      "id": "msg_0819_00460",
+      "en_US": "REXBLISAR"
+    },
+    {
+      "id": "msg_0819_00461",
+      "en_US": "SNIBUNNA"
+    },
+    {
+      "id": "msg_0819_00462",
+      "en_US": "MAGNEZONE"
+    },
+    {
+      "id": "msg_0819_00463",
+      "en_US": "SCHLURPLEK"
+    },
+    {
+      "id": "msg_0819_00464",
+      "en_US": "RIHORNIOR"
+    },
+    {
+      "id": "msg_0819_00465",
+      "en_US": "TANGOLOSS"
+    },
+    {
+      "id": "msg_0819_00466",
+      "en_US": "ELEVOLTEK"
+    },
+    {
+      "id": "msg_0819_00467",
+      "en_US": "MAGBRANT"
+    },
+    {
+      "id": "msg_0819_00468",
+      "en_US": "TOGEKISS"
+    },
+    {
+      "id": "msg_0819_00469",
+      "en_US": "YANMEGA"
+    },
+    {
+      "id": "msg_0819_00470",
+      "en_US": "FOLIPURBA"
+    },
+    {
+      "id": "msg_0819_00471",
+      "en_US": "GLAZIOLA"
+    },
+    {
+      "id": "msg_0819_00472",
+      "en_US": "SKORGRO"
+    },
+    {
+      "id": "msg_0819_00473",
+      "en_US": "MAMUTEL"
+    },
+    {
+      "id": "msg_0819_00474",
+      "en_US": "PORYGON-Z"
+    },
+    {
+      "id": "msg_0819_00475",
+      "en_US": "GALAGLADI"
+    },
+    {
+      "id": "msg_0819_00476",
+      "en_US": "VOLUMINAS"
+    },
+    {
+      "id": "msg_0819_00477",
+      "en_US": "ZWIRRFINST"
+    },
+    {
+      "id": "msg_0819_00478",
+      "en_US": "FROSDEDJE"
+    },
+    {
+      "id": "msg_0819_00479",
+      "en_US": "ROTOM"
+    },
+    {
+      "id": "msg_0819_00480",
+      "en_US": "SELFE"
+    },
+    {
+      "id": "msg_0819_00481",
+      "en_US": "VESPRIT"
+    },
+    {
+      "id": "msg_0819_00482",
+      "en_US": "TOBUTZ"
+    },
+    {
+      "id": "msg_0819_00483",
+      "en_US": "DIALGA"
+    },
+    {
+      "id": "msg_0819_00484",
+      "en_US": "PALKIA"
+    },
+    {
+      "id": "msg_0819_00485",
+      "en_US": "HEATRAN"
+    },
+    {
+      "id": "msg_0819_00486",
+      "en_US": "REGIGIGAS"
+    },
+    {
+      "id": "msg_0819_00487",
+      "en_US": "GIRATINA"
+    },
+    {
+      "id": "msg_0819_00488",
+      "en_US": "CRESSELIA"
+    },
+    {
+      "id": "msg_0819_00489",
+      "en_US": "PHIONE"
+    },
+    {
+      "id": "msg_0819_00490",
+      "en_US": "MANAPHY"
+    },
+    {
+      "id": "msg_0819_00491",
+      "en_US": "DARKRAI"
+    },
+    {
+      "id": "msg_0819_00492",
+      "en_US": "SHAYMIN"
+    },
+    {
+      "id": "msg_0819_00493",
+      "en_US": "ARCEUS"
+    }
+  ]
+}

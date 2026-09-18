@@ -1,0 +1,35 @@
+{
+  "key": 28211,
+  "messages": [
+    {
+      "id": "msg_0568_T23PC0101_00000",
+      "en_US": [
+        "Do any of your Pokémon know...\n",
+        "what they call the hidden moves?\r",
+        "When a Pokémon faints, it just means\n",
+        "it doesn’t have the power to battle.\r",
+        "But it can still use hidden moves\n",
+        "outside of battle!"
+      ]
+    },
+    {
+      "id": "msg_0568_T23PC0101_00001",
+      "en_US": [
+        "Bill’s PC can store up to 30\n",
+        "Pokémon per Box."
+      ]
+    },
+    {
+      "id": "msg_0568_T23PC0101_00002",
+      "en_US": [
+        "Do you know what an Apricorn is?\r",
+        "You crack it open to discard the core\n",
+        "and put it in this special machine...\f",
+        "Then you can catch Pokémon!\r",
+        "Before Poké Balls became available,\n",
+        "everybody used Apricorns to\f",
+        "catch Pokémon.\n"
+      ]
+    }
+  ]
+}

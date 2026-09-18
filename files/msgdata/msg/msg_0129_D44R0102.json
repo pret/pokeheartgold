@@ -1,0 +1,298 @@
+{
+  "key": 62607,
+  "messages": [
+    {
+      "id": "msg_0129_D44R0102_00000",
+      "en_US": "Wait!\r"
+    },
+    {
+      "id": "msg_0129_D44R0102_00001",
+      "en_US": [
+        "Clair: I’m sorry about this.\n",
+        "Here, take this as my apology.\r"
+      ]
+    },
+    {
+      "id": "msg_0129_D44R0102_00002",
+      "garbage": 27
+    },
+    {
+      "id": "msg_0129_D44R0102_00003",
+      "en_US": [
+        "That contains Dragon Pulse.\r",
+        "Well, Dragon Pulse is a kind of er...\n",
+        "never mind!\r",
+        "It’s huge energy of some kind.\n",
+        "If you don’t want it, you don’t\f",
+        "have to take it.\r"
+      ]
+    },
+    {
+      "id": "msg_0129_D44R0102_00004",
+      "en_US": [
+        "Oh? You don’t have any room for this.\r",
+        "I’m going back to the Gym, so make\n",
+        "room, then come see me there.\r"
+      ]
+    },
+    {
+      "id": "msg_0129_D44R0102_00005",
+      "en_US": [
+        "What’s the matter?\n",
+        "If you are headed to the Pokémon\f",
+        "League, go back to New Bark Town\f",
+        "and Surf along Route 27.\r",
+        "Your face...is telling me you have\n",
+        "some unfinished business...\r",
+        "Come on!\r",
+        "Whatever you have to face from now,\n",
+        "don’t you dare give up!\r",
+        "If you do, I’ll feel even worse\n",
+        "about having lost to you!\f",
+        "Give it your all.\r"
+      ]
+    },
+    {
+      "id": "msg_0129_D44R0102_00006",
+      "en_US": [
+        "Dragon Shrine\r",
+        "A shrine revering the Dragon Pokémon\n",
+        "said to have lived in Dragon’s Den."
+      ]
+    },
+    {
+      "id": "msg_0129_D44R0102_00007",
+      "en_US": [
+        "{STRVAR_1 3, 1, 0}: ...\n",
+        "What? {STRVAR_1 3, 0, 0}?\r",
+        "Yeah, I am training my Pokémon here.\n",
+        "You can laugh at me now...\r",
+        "But it needs to be done.\n",
+        "My Pokémon aren’t ready to beat you.\f",
+        "I can’t push them too hard now.\r",
+        "I have to be disciplined to become\n",
+        "the greatest Pokémon Trainer..."
+      ]
+    },
+    {
+      "id": "msg_0129_D44R0102_00008",
+      "en_US": [
+        "{STRVAR_1 3, 1, 0}: ...\r",
+        "Whew...\r",
+        "Learn to stay out\n",
+        "of my way..."
+      ]
+    },
+    {
+      "id": "msg_0129_D44R0102_00009",
+      "en_US": [
+        "Clair: It’s still early, and you’ve got\n",
+        "nothing to do already?\r",
+        "I may have time to listen to you.\n",
+        "If you insist, I can exchange\f",
+        "numbers, too! {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0129_D44R0102_00010",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} registered Clair\n",
+        "in the Pokégear!"
+      ]
+    },
+    {
+      "id": "msg_0129_D44R0102_00011",
+      "en_US": [
+        "Clair: I can battle you on Friday\n",
+        "nights if you insist!"
+      ]
+    },
+    {
+      "id": "msg_0129_D44R0102_00012",
+      "en_US": "Clair: ..."
+    },
+    {
+      "id": "msg_0129_D44R0102_00013",
+      "en_US": [
+        "Clair: So you do want to\n",
+        "exchange numbers? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0129_D44R0102_00014",
+      "en_US": [
+        "{STRVAR_1 3, 1, 0}: ...What?\n",
+        "Are you here to make fun of\f",
+        "my training?\r",
+        "Humph!\n",
+        "I took my time coming all the way here,\r",
+        "but the Master won’t tell me anything,\n",
+        "and he’s making a big deal out of it...\r",
+        "So I decided to train my Pokémon\n",
+        "here instead.\r"
+      ]
+    },
+    {
+      "id": "msg_0129_D44R0102_00015",
+      "en_US": [
+        "Lance: Hi, {STRVAR_1 3, 0, 0}!\n",
+        "And...you.\f",
+        "We met at the Team Rocket hideout.\r"
+      ]
+    },
+    {
+      "id": "msg_0129_D44R0102_00016",
+      "en_US": [
+        "Lance: Hi, {STRVAR_1 3, 0, 0}!\n",
+        "And...you.\f",
+        "We met at the Team Rocket hideout.\r"
+      ]
+    },
+    {
+      "id": "msg_0129_D44R0102_00017",
+      "en_US": [
+        "{STRVAR_1 3, 1, 0}: You!\n",
+        "Where have you been all this time?\r",
+        "Prepare to lose to me this time.\n",
+        "I challenge you!\r"
+      ]
+    },
+    {
+      "id": "msg_0129_D44R0102_00018",
+      "en_US": [
+        "Lance: Calm down.\n",
+        "I was in a bit of a hurry then.\r",
+        "Sorry for that.\n",
+        "But...I always welcome challengers!\r",
+        "Hey!\n",
+        "How about a Double Battle?\r"
+      ]
+    },
+    {
+      "id": "msg_0129_D44R0102_00019",
+      "en_US": [
+        "{STRVAR_1 3, 1, 0}: Humph!\n",
+        "You can’t beat me one-on-one, can you?\r"
+      ]
+    },
+    {
+      "id": "msg_0129_D44R0102_00020",
+      "en_US": [
+        "Lance: Come on.\n",
+        "A Double Battle is really not bad.\f",
+        "{STRVAR_1 3, 0, 0}, you’ll be on my side!\r"
+      ]
+    },
+    {
+      "id": "msg_0129_D44R0102_00021",
+      "en_US": [
+        "Lance: Come on.\n",
+        "A Double Battle is really not bad.\f",
+        "{STRVAR_1 3, 0, 0}, you’ll be on my side!\r"
+      ]
+    },
+    {
+      "id": "msg_0129_D44R0102_00022",
+      "en_US": [
+        "Clair: Well then, you over there!\n",
+        "Will you team up with me?\r"
+      ]
+    },
+    {
+      "id": "msg_0129_D44R0102_00023",
+      "en_US": [
+        "{STRVAR_1 3, 1, 0}: You must be kidding!\r",
+        "That embarrassing one in the weird\n",
+        "costume for me?\f",
+        "No way I can battle with her!\r"
+      ]
+    },
+    {
+      "id": "msg_0129_D44R0102_00024",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}!\n",
+        "Come to my side!\f",
+        "We’ll beat Lance together!\r"
+      ]
+    },
+    {
+      "id": "msg_0129_D44R0102_00025",
+      "en_US": [
+        "Lance: Just as I expected.\n",
+        "You two make quite a team...\r",
+        "Going solo is certainly one way to aim\n",
+        "for the top...\r",
+        "But that’s not all there is to Pokémon\n",
+        "battle. Although I don’t feel it’s\f",
+        "necessary to remind you guys.\r",
+        "See you, {STRVAR_1 3, 0, 0},\n",
+        "another time!\r"
+      ]
+    },
+    {
+      "id": "msg_0129_D44R0102_00026",
+      "en_US": [
+        "Lance: Just as I expected.\n",
+        "You two make quite a team...\r",
+        "Going solo is certainly one way to aim\n",
+        "for the top...\r",
+        "But that’s not all there is to Pokémon\n",
+        "battle. Although I don’t feel it’s\f",
+        "necessary to remind you guys.\r",
+        "See you, {STRVAR_1 3, 0, 0},\n",
+        "another time!\r"
+      ]
+    },
+    {
+      "id": "msg_0129_D44R0102_00027",
+      "en_US": [
+        "Clair: I must excuse myself.\r",
+        "...{STRVAR_1 3, 0, 0}, it was a fun battle.\r",
+        "That goes for you, too, wise guy.\r"
+      ]
+    },
+    {
+      "id": "msg_0129_D44R0102_00028",
+      "en_US": [
+        "{STRVAR_1 3, 1, 0}: {STRVAR_1 3, 0, 0}...\r",
+        "It wasn’t supposed to go this way...\n",
+        "Anyway, I am not giving up beating you!\r",
+        "I’ll train my Pokémon and...my own\n",
+        "heart, too.\r",
+        "I’ll come back as the toughest\n",
+        "challenge for you!\r"
+      ]
+    },
+    {
+      "id": "msg_0129_D44R0102_00029",
+      "en_US": [
+        "Clair: You...\n",
+        "seem desperate to take pictures\f",
+        "with me. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0129_D44R0102_00030",
+      "en_US": "Clair: Are you ready?\r"
+    },
+    {
+      "id": "msg_0129_D44R0102_00031",
+      "en_US": [
+        "Clair: Excellent one of me!\n",
+        "Another cool picture."
+      ]
+    },
+    {
+      "id": "msg_0129_D44R0102_00032",
+      "en_US": "Clair: That’s too bad."
+    },
+    {
+      "id": "msg_0129_D44R0102_00033",
+      "en_US": [
+        "Your Photo Album is full.\r",
+        "Access your PC and delete\n",
+        "some pictures.\n"
+      ]
+    }
+  ]
+}

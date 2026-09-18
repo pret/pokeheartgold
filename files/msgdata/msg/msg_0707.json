@@ -1,0 +1,162 @@
+{
+  "key": 25087,
+  "messages": [
+    {
+      "id": "msg_0707_00000",
+      "en_US": "Tanner"
+    },
+    {
+      "id": "msg_0707_00001",
+      "en_US": [
+        "Hey, how about we exchange phone\n",
+        "numbers before we eat?{YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0707_00002",
+      "en_US": [
+        "I’ve always got my Pokégear in reach,\n",
+        "so if you give me a call, I’ll answer\f",
+        "pretty quick!\n"
+      ]
+    },
+    {
+      "id": "msg_0707_00003",
+      "en_US": [
+        "Don’t worry!\r",
+        "I’m a really nice Camper..."
+      ]
+    },
+    {
+      "id": "msg_0707_00004",
+      "en_US": [
+        "Did you decide you’d like to trade\n",
+        "numbers with me after all?{YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0707_00005",
+      "en_US": [
+        "Yeah! Hey, here you are!\r",
+        "I’ve been holding on to this just for\n",
+        "you. Don’t be shy--go ahead and\f",
+        "take it. It’s a present!\r"
+      ]
+    },
+    {
+      "id": "msg_0707_00006",
+      "en_US": [
+        "Hm? Oh, you’re just around the corner?\r",
+        "If you’re that close, why bother with\n",
+        "a phone call? Humph!"
+      ]
+    },
+    {
+      "id": "msg_0707_00007",
+      "en_US": [
+        "You know, it’s perfectly fine to be all\n",
+        "affectionate to your Pokémon and let\f",
+        "them live in your house.\r",
+        "But I prefer to go out camping with my\n",
+        "constant companion, {STRVAR_1 0, 10, 0},\f",
+        "which is why it’s so strong!\r",
+        "That reminds me--we knocked out a wild\n",
+        "{STRVAR_1 0, 11, 0}, whammo! Just like that,\f",
+        "the other day. You should’ve seen it..."
+      ]
+    },
+    {
+      "id": "msg_0707_00008",
+      "en_US": [
+        "About all this training your Pokémon\n",
+        "just so you can catch stronger\f",
+        "wild Pokémon...\r",
+        "It’s not a good idea to be throwing\n",
+        "Poké Balls around recklessly, trying to\f",
+        "catch any old thing.\r",
+        "You need to build up a close connection\n",
+        "with your Pokémon.\r",
+        "My relationship with my {STRVAR_1 0, 10, 0} is\n",
+        "a perfect example.\r",
+        "...Well, I say that, but the other day\n",
+        "we had a wild {STRVAR_1 0, 11, 0} just barely\f",
+        "get away from us.\r",
+        "No matter how much I’d rather not think\n",
+        "about it, I can’t let the thoughts go..."
+      ]
+    },
+    {
+      "id": "msg_0707_00009",
+      "en_US": [
+        "Hear me out! Earlier, we met a wild\n",
+        "{STRVAR_1 0, 11, 0}!\r",
+        "It kind of jumped out as we were on the\n",
+        "way home from a camping excursion!\f",
+        "I was so surprised!\r",
+        "I guess it goes to show you shouldn’t\n",
+        "let your guard down when you’re out\f",
+        "in nature!"
+      ]
+    },
+    {
+      "id": "msg_0707_00010",
+      "en_US": [
+        "I was getting ready to cook up some\n",
+        "chow, and I started thinking about you.\r",
+        "Before I sit down to eat, would you like\n",
+        "to battle again?\r",
+        "I’m on {STRVAR_1 4, 3, 0}, so bring your\n",
+        "best Pokémon!"
+      ]
+    },
+    {
+      "id": "msg_0707_00011",
+      "en_US": [
+        "Huh? What’s going on? Did you get lost\n",
+        "or something?\r",
+        "Stay calm... I am right smack on\n",
+        "{STRVAR_1 4, 3, 0}, so you should\f",
+        "have no trouble finding me!"
+      ]
+    },
+    {
+      "id": "msg_0707_00012",
+      "en_US": [
+        "Do you know the difference between\n",
+        "going on a picnic and camping?\r",
+        "It’s a song, of course!\r",
+        "When you’re going on a picnic, you sing a\n",
+        "happy, upbeat little tune as you hike\f",
+        "over hills and fields.\r",
+        "When you’re camping, you sing quiet,\n",
+        "mournful songs of grief and loss while\f",
+        "sitting and staring at the campfire.\r",
+        "What? You don’t believe me?\r",
+        "Then we should go camping sometime\n",
+        "and sit around the fire and see what\f",
+        "kind of melodies you feel like singing!"
+      ]
+    },
+    {
+      "id": "msg_0707_00013",
+      "en_US": [
+        "Recently, I was digging a fire pit in the\n",
+        "ground so I could cook supper, and\f",
+        "I found an unusual item!\r",
+        "Apparently this thing is called a\n",
+        "Sun Stone.\r",
+        "I’ll give it to you. I’m waiting on\n",
+        "{STRVAR_1 4, 3, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0707_00014",
+      "en_US": [
+        "I still have that Sun Stone I said I’d\n",
+        "give you!\r",
+        "I’m waiting on {STRVAR_1 4, 3, 0}, so\n",
+        "come and get it as soon as you can!"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "key": 17467,
+  "messages": [
+    {
+      "id": "msg_0017_00000",
+      "en_US": [
+        "A Recruitment Message arrived\n",
+        "from a Pokémon Ranger.\n",
+        "\n",
+        "You may receive a {COLOR 1}MANAPHY Egg{COLOR 0}\n",
+        "from the Pokémon Ranger!\n",
+        "\n",
+        "On the next screen, select\n",
+        "{COLOR 1}CONNECT TO POKéMON RANGER{COLOR 0}.\n",
+        "Touch the screen to advance."
+      ]
+    },
+    {
+      "id": "msg_0017_00001",
+      "en_US": [
+        "A Mystery Gift signal has\n",
+        "been located!\n",
+        "\n",
+        "You may receive a Mystery Gift!\n",
+        "\n",
+        "At the next screen, select\n",
+        "{COLOR 1}Mystery Gift{COLOR 0}.\n",
+        "Touch the screen to advance."
+      ]
+    },
+    {
+      "id": "msg_0017_00002",
+      "en_US": [
+        "A Recruitment Message arrived\n",
+        "from a Pokémon Ranger.\n",
+        "\n",
+        "However, to communicate with the\n",
+        "Pokémon Ranger, you must get\n",
+        "further into your adventure and\n",
+        "obtain a Pokédex first.\n",
+        "Touch the screen to advance."
+      ]
+    },
+    {
+      "id": "msg_0017_00003",
+      "en_US": [
+        "A Mystery Gift signal has\n",
+        "been located.\n",
+        "\n",
+        "However, to receive a Mystery\n",
+        "Gift, you must get further into\n",
+        "your adventure and obtain a\n",
+        "Pokédex first.\n",
+        "Touch the screen to advance."
+      ]
+    },
+    {
+      "id": "msg_0017_00004",
+      "garbage": 8
+    },
+    {
+      "id": "msg_0017_00005",
+      "en_US": [
+        " {COLOR 1}WARNING!{COLOR 0} There’s already a saved\n",
+        " game file. If you start an adventure now, \n",
+        " you won’t be able to save it."
+      ]
+    },
+    {
+      "id": "msg_0017_00006",
+      "en_US": "Begin adventure"
+    },
+    {
+      "id": "msg_0017_00007",
+      "en_US": "Return to the menu"
+    }
+  ]
+}

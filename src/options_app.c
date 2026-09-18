@@ -4,9 +4,9 @@
 
 #include "global.h"
 
-#include "data/resdat.naix"
-#include "msgdata/msg.naix"
-#include "msgdata/msg/msg_0045.h"
+#include "files/data/resdat.naix"
+#include "files/msgdata/msg.naix"
+#include "files/msgdata/msg/msg_0045.h"
 
 #include "bg_window.h"
 #include "font.h"
@@ -464,7 +464,7 @@ static void OptionsApp_OnVBlank(OptionsApp_Data *data) {
     SpriteSystem_TransferOam();
     NNS_GfdDoVramTransfer();
     DoScheduledBgGpuUpdates(data->bgConfig);
-    OS_SetIrqCheckFlag(OS_IE_VBLANK);
+    OS_SetIrqCheckFlag(OS_IE_V_BLANK);
 }
 
 static BOOL ov54_021E5CE4(OptionsApp_Data *data) {
@@ -491,7 +491,7 @@ static BOOL ov54_021E5CE4(OptionsApp_Data *data) {
 
     case 1:
         OptionsApp_SetupGraphicsData(data);
-        data->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0045_bin, data->heapID);
+        data->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, msg_0045, data->heapID);
         OptionsApp_LoadMenuEntriesData(data);
         break;
 
@@ -1011,13 +1011,13 @@ static void OptionsApp_SetupSpriteRenderer(OptionsApp_Data *data) {
     SpriteSystem_InitSprites(data->spriteRenderer, data->spriteGfxHandler, 9);
 
     ResdatIdList fileIdList = {
-        .charRes = NARC_resdat_resdat_00000022_bin,
-        .plttRes = NARC_resdat_resdat_00000023_bin,
-        .cellRes = NARC_resdat_resdat_00000021_bin,
-        .animRes = NARC_resdat_resdat_00000020_bin,
+        .charRes = resdat_00000022_bin,
+        .plttRes = resdat_00000023_bin,
+        .cellRes = resdat_00000021_bin,
+        .animRes = resdat_00000020_bin,
         .mcelRes = 0xFFFF,
         .manmRes = 0xFFFF,
-        .headerId = NARC_resdat_resdat_00000077_bin,
+        .headerId = resdat_00000077_bin,
     };
     sub_0200D294(data->spriteRenderer, data->spriteGfxHandler, &fileIdList);
 

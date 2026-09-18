@@ -4,8 +4,8 @@
 
 #include "global.h"
 
-#include "msgdata/msg.naix"
-#include "msgdata/msg/msg_0040.h"
+#include "files/msgdata/msg.naix"
+#include "files/msgdata/msg/msg_0040.h"
 
 #include "bg_window.h"
 #include "dsprot.h"
@@ -288,7 +288,7 @@ static void TouchSaveApp_DestroyWindow(TouchSaveAppData *data) {
 
 static void TouchSaveApp_SetupText(TouchSaveAppData *data, u8 unused) {
     data->messageFormat = MessageFormat_New(HEAP_ID_8);
-    data->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0040_bin, HEAP_ID_8);
+    data->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msg_0040, HEAP_ID_8);
     BufferPlayersName(data->messageFormat, 0, Save_PlayerData_GetProfile(data->fieldSystem->saveData));
 }
 

@@ -1,0 +1,136 @@
+{
+  "key": 59853,
+  "messages": [
+    {
+      "id": "msg_0022_00000",
+      "en_US": "Performance"
+    },
+    {
+      "id": "msg_0022_00001",
+      "en_US": "{CURSOR_X 11}Use"
+    },
+    {
+      "id": "msg_0022_00002",
+      "en_US": "{CURSOR_X 11}Back"
+    },
+    {
+      "id": "msg_0022_00003",
+      "en_US": "{STRVAR_1 1, 0, 0}"
+    },
+    {
+      "id": "msg_0022_00004",
+      "en_US": "Lv. {STRVAR_1 52, 0, 0}"
+    },
+    {
+      "id": "msg_0022_00005",
+      "en_US": "Power"
+    },
+    {
+      "id": "msg_0022_00006",
+      "en_US": "Stamina"
+    },
+    {
+      "id": "msg_0022_00007",
+      "en_US": "Skill"
+    },
+    {
+      "id": "msg_0022_00008",
+      "en_US": "Jump"
+    },
+    {
+      "id": "msg_0022_00009",
+      "en_US": "Speed"
+    },
+    {
+      "id": "msg_0022_00010",
+      "en_US": "♂"
+    },
+    {
+      "id": "msg_0022_00011",
+      "en_US": "♀"
+    },
+    {
+      "id": "msg_0022_00012",
+      "en_US": "Used NoFlav Juice!"
+    },
+    {
+      "id": "msg_0022_00013",
+      "en_US": "Used PowerJuice!"
+    },
+    {
+      "id": "msg_0022_00014",
+      "en_US": "Used Stam. Juice!"
+    },
+    {
+      "id": "msg_0022_00015",
+      "en_US": "Used Skill Juice!"
+    },
+    {
+      "id": "msg_0022_00016",
+      "en_US": "Used Jump Juice!"
+    },
+    {
+      "id": "msg_0022_00017",
+      "en_US": "Used Speed Juice!"
+    },
+    {
+      "id": "msg_0022_00018",
+      "en_US": "Nothing changed.\r"
+    },
+    {
+      "id": "msg_0022_00019",
+      "en_US": "Power Performance increased!\r"
+    },
+    {
+      "id": "msg_0022_00020",
+      "en_US": "Stamina Performance increased!\r"
+    },
+    {
+      "id": "msg_0022_00021",
+      "en_US": "Skill Performance increased!\r"
+    },
+    {
+      "id": "msg_0022_00022",
+      "en_US": "Jump Performance increased!\r"
+    },
+    {
+      "id": "msg_0022_00023",
+      "en_US": "Speed Performance increased!\r"
+    },
+    {
+      "id": "msg_0022_00024",
+      "en_US": "Power Performance decreased!\r"
+    },
+    {
+      "id": "msg_0022_00025",
+      "en_US": "Stamina Performance decreased!\r"
+    },
+    {
+      "id": "msg_0022_00026",
+      "en_US": "Skill Performance decreased!\r"
+    },
+    {
+      "id": "msg_0022_00027",
+      "en_US": "Jump Performance decreased!\r"
+    },
+    {
+      "id": "msg_0022_00028",
+      "en_US": "Speed Performance decreased!\r"
+    },
+    {
+      "id": "msg_0022_00029",
+      "en_US": "Before giving juice"
+    },
+    {
+      "id": "msg_0022_00030",
+      "en_US": "After giving juice"
+    },
+    {
+      "id": "msg_0022_00031",
+      "en_US": [
+        "♢cond{STRVAR_1 51, 0, 0} rev{STRVAR_1 51, 1, 0} add{STRVAR_1 51, 2, 0} base{STRVAR_1 51, 3, 0}\n",
+        " min{STRVAR_1 51, 4, 0} max{STRVAR_1 51, 5, 0} result{STRVAR_1 51, 6, 0}"
+      ]
+    }
+  ]
+}

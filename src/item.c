@@ -8,9 +8,9 @@
 #include "constants/moves.h"
 
 #include "agb/constants/items.h"
-#include "itemtool/itemdata/item_data.naix"
-#include "itemtool/itemdata/item_icon.naix"
-#include "msgdata/msg.naix"
+#include "files/itemtool/itemdata/item_data.naix"
+#include "files/itemtool/itemdata/item_icon.naix"
+#include "files/msgdata/msg.naix"
 
 #include "filesystem.h"
 #include "heap.h"
@@ -773,13 +773,13 @@ void *LoadItemDataOrGfx(u16 itemId, int attrno, enum HeapID heapID) {
 }
 
 void GetItemNameIntoString(String *dest, u16 itemId, enum HeapID heapID) {
-    MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0222_bin, heapID);
+    MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, msg_0222, heapID);
     ReadMsgDataIntoString(msgData, itemId, dest);
     DestroyMsgData(msgData);
 }
 
 void GetItemDescIntoString(String *dest, u16 itemId, enum HeapID heapID) {
-    MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0221_bin, heapID);
+    MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, msg_0221, heapID);
     ReadMsgDataIntoString(msgData, itemId, dest);
     DestroyMsgData(msgData);
 }
@@ -1027,7 +1027,7 @@ String *GetNutName(u16 berryId, enum HeapID heapID) {
     if (berryId != 0) {
         berryId--;
     }
-    msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0251_bin, heapID);
+    msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, msg_0251, heapID);
     ret = NewString_ReadMsgData(msgData, berryId);
     DestroyMsgData(msgData);
     return ret;

@@ -1,0 +1,307 @@
+{
+  "key": 33278,
+  "messages": [
+    {
+      "id": "msg_0039_00000",
+      "en_US": "{ALN_CENTER}VOLTORB Flip Lv. {STRVAR_1 50, 0, 0}"
+    },
+    {
+      "id": "msg_0039_00001",
+      "en_US": "{ALN_CENTER}Flip the Cards and Collect Coins!"
+    },
+    {
+      "id": "msg_0039_00002",
+      "en_US": "...x1! ...x2! ...x3!"
+    },
+    {
+      "id": "msg_0039_00003",
+      "en_US": "Game Over! 0!"
+    },
+    {
+      "id": "msg_0039_00004",
+      "en_US": [
+        "{ALN_CENTER}{STRVAR_1 3, 0, 0}’s\n",
+        "{ALN_CENTER}Collected Coins"
+      ]
+    },
+    {
+      "id": "msg_0039_00005",
+      "en_US": [
+        "{ALN_CENTER}Coins Collected in\n",
+        "{ALN_CENTER}Current Game"
+      ]
+    },
+    {
+      "id": "msg_0039_00006",
+      "en_US": [
+        "{ALN_CENTER}Open\n",
+        "{ALN_CENTER}Memo"
+      ]
+    },
+    {
+      "id": "msg_0039_00007",
+      "en_US": [
+        "{ALN_CENTER}Close\n",
+        "{ALN_CENTER}Memo"
+      ]
+    },
+    {
+      "id": "msg_0039_00008",
+      "en_US": "{ALN_CENTER}Quit"
+    },
+    {
+      "id": "msg_0039_00009",
+      "en_US": [
+        "{ALN_CENTER}By looking at the numbers on the sides of\n",
+        "{ALN_CENTER}the cards, you can see the hidden number\n",
+        "{ALN_CENTER}and VOLTORB totals."
+      ]
+    },
+    {
+      "id": "msg_0039_00010",
+      "en_US": [
+        "{ALN_CENTER}Touch “Open Memo” to open the Memo Window.\n",
+        "{ALN_CENTER}Touch the cards to add and remove marks."
+      ]
+    },
+    {
+      "id": "msg_0039_00011",
+      "en_US": [
+        "{ALN_CENTER}If you flip the cards in this order,\n",
+        "{ALN_CENTER}you’ll collect: 3 x 1 x 2 x 1 x 3...\n",
+        "{ALN_CENTER}A total of 18 Coins! And then..."
+      ]
+    },
+    {
+      "id": "msg_0039_00012",
+      "en_US": [
+        "{ALN_CENTER}If you select “Quit,”\n",
+        "{ALN_CENTER}you’ll keep those 18 Coins."
+      ]
+    },
+    {
+      "id": "msg_0039_00013",
+      "en_US": [
+        "{ALN_CENTER}But if you find VOLTORB,\n",
+        "{ALN_CENTER}you’ll lose all your Coins!"
+      ]
+    },
+    {
+      "id": "msg_0039_00014",
+      "en_US": [
+        "You’ve gathered 50,000 Coins.\n",
+        "You cannot gather any more.\r"
+      ]
+    },
+    {
+      "id": "msg_0039_00015",
+      "en_US": "Play VOLTORB Flip Lv. {STRVAR_1 50, 0, 0}?"
+    },
+    {
+      "id": "msg_0039_00016",
+      "en_US": "Play VOLTORB Flip Lv. {STRVAR_1 50, 0, 0}?"
+    },
+    {
+      "id": "msg_0039_00017",
+      "en_US": "Play"
+    },
+    {
+      "id": "msg_0039_00018",
+      "en_US": "Game Info"
+    },
+    {
+      "id": "msg_0039_00019",
+      "en_US": "Quit"
+    },
+    {
+      "id": "msg_0039_00020",
+      "en_US": "Which set of info?"
+    },
+    {
+      "id": "msg_0039_00021",
+      "en_US": "How to Play"
+    },
+    {
+      "id": "msg_0039_00022",
+      "en_US": "Hint!"
+    },
+    {
+      "id": "msg_0039_00023",
+      "en_US": "About Memos"
+    },
+    {
+      "id": "msg_0039_00024",
+      "en_US": "Return"
+    },
+    {
+      "id": "msg_0039_00025",
+      "en_US": [
+        "VOLTORB Flip is a game in which you flip\n",
+        "over cards to find numbers hidden\f",
+        "beneath them.\r",
+        "The cards are hiding the numbers\n",
+        "1 through 3...and VOLTORB as well.\r",
+        "The first number you flip over will give\n",
+        "you that many Coins.\r",
+        "From then on, the next number you\n",
+        "find will multiply the total amount of\f",
+        "Coins you’ve collected by that number.\r",
+        "If it’s a 2, your total will be multiplied\n",
+        "by “x2.”\r",
+        "If it’s a 3, your total will be multiplied\n",
+        "by “x3.”\r",
+        "But if you flip over a VOLTORB, it’s\n",
+        "game over.\r",
+        "When that happens, you’ll lose all the\n",
+        "Coins you’ve collected in the\f",
+        "current game.\r",
+        "If you select “Quit,” you’ll withdraw\n",
+        "from the game.\r",
+        "If you get to a difficult spot, you might\n",
+        "want to end the game early.\r",
+        "Once you’ve found all the hidden\n",
+        "2 and 3 cards, you’ve cleared\f",
+        "the game.\r",
+        "Once you’ve flipped over all these\n",
+        "cards, then you’ll advance to the\f",
+        "next level.\r",
+        "As you move up in levels, you will be\n",
+        "able to receive more Coins.\f",
+        "Do your best!\r"
+      ]
+    },
+    {
+      "id": "msg_0039_00026",
+      "en_US": [
+        "The numbers at the side of the board\n",
+        "give you a clue about the numbers\f",
+        "hidden on the backs of the panels.\r",
+        "The larger the number, the more likely\n",
+        "it is that there are many large numbers\f",
+        "hidden in that row or column.\r",
+        "In the same way, you can tell how many\n",
+        "VOLTORB are hidden in the row\f",
+        "or column.\r",
+        "Consider the hidden number totals and\n",
+        "the VOLTORB totals carefully as you flip\f",
+        "over panels.\r"
+      ]
+    },
+    {
+      "id": "msg_0039_00027",
+      "en_US": [
+        "Select “Open Memo” to mark\n",
+        "the cards.\r",
+        "You can mark the cards with the\n",
+        "numbers 1 through 3, but also with a\f",
+        "VOLTORB mark.\r",
+        "When you have an idea of the numbers\n",
+        "hidden on the back of the cards, touch\r",
+        "“Open Memo” and select the cards\n",
+        "to mark.\r",
+        "If you want to remove a mark, touch the\n",
+        "mark again, and it will disappear.\r"
+      ]
+    },
+    {
+      "id": "msg_0039_00028",
+      "en_US": "Will this be the last card?!"
+    },
+    {
+      "id": "msg_0039_00029",
+      "en_US": "Is this what you’re expecting?!"
+    },
+    {
+      "id": "msg_0039_00030",
+      "en_US": "{STRVAR_1 50, 0, 0}! Received {STRVAR_1 50, 0, 0} Coin(s)!"
+    },
+    {
+      "id": "msg_0039_00031",
+      "en_US": "x{STRVAR_1 50, 0, 0}! Received {STRVAR_1 53, 1, 0} Coins!"
+    },
+    {
+      "id": "msg_0039_00032",
+      "en_US": "Oh no! You get 0 Coins!"
+    },
+    {
+      "id": "msg_0039_00033",
+      "en_US": [
+        "Game clear!\r",
+        "You’ve found all of the hidden x2 and\n",
+        "x3 cards.\r",
+        "This means you’ve found all the Coins\n",
+        "in this game, so the game is now over.\r"
+      ]
+    },
+    {
+      "id": "msg_0039_00034",
+      "en_US": [
+        "If you quit now, you will\n",
+        "receive {STRVAR_1 53, 0, 0} Coin(s).\f",
+        "Will you quit?"
+      ]
+    },
+    {
+      "id": "msg_0039_00035",
+      "garbage": 2
+    },
+    {
+      "id": "msg_0039_00036",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0039_00037",
+      "en_US": [
+        "You haven’t found any Coins!\n",
+        "Are you sure you want to quit?"
+      ]
+    },
+    {
+      "id": "msg_0039_00038",
+      "garbage": 2
+    },
+    {
+      "id": "msg_0039_00039",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0039_00040",
+      "en_US": [
+        "{STRVAR_1 3, 1, 0}\n",
+        "received {STRVAR_1 53, 0, 0} Coin(s)!\r"
+      ]
+    },
+    {
+      "id": "msg_0039_00041",
+      "en_US": "Advanced to Game Lv. {STRVAR_1 50, 0, 0}!\r"
+    },
+    {
+      "id": "msg_0039_00042",
+      "en_US": [
+        "Congratulations!\r",
+        "You can receive even more Coins\n",
+        "in the next game!\r"
+      ]
+    },
+    {
+      "id": "msg_0039_00043",
+      "en_US": "Dropped to Game Lv. {STRVAR_1 50, 0, 0}.\r"
+    },
+    {
+      "id": "msg_0039_00044",
+      "garbage": 11
+    },
+    {
+      "id": "msg_0039_00045",
+      "garbage": 14
+    },
+    {
+      "id": "msg_0039_00046",
+      "en_US": "Table No. {STRVAR_1 51, 0, 0}"
+    },
+    {
+      "id": "msg_0039_00047",
+      "en_US": "Next Game Level: {STRVAR_1 50, 1, 0}"
+    }
+  ]
+}

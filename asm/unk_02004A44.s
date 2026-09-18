@@ -1,5 +1,5 @@
 #include "constants/sndseq.h"
-	.include "asm/macros.inc"
+	.include "macros.inc"
 	.include "unk_02004A44.inc"
 	.include "global.inc"
 

@@ -1,0 +1,21 @@
+{
+  "key": 49177,
+  "messages": [
+    {
+      "id": "msg_0214_00000",
+      "en_US": "Please touch the bottom screen.{YESNO 0}"
+    },
+    {
+      "id": "msg_0214_00001",
+      "en_US": "Please look at the bottom screen.{YESNO 1}"
+    },
+    {
+      "id": "msg_0214_00002",
+      "en_US": "Please operate the top screen.{YESNO 2}"
+    },
+    {
+      "id": "msg_0214_00003",
+      "en_US": "Please look at the top screen.{YESNO 3}"
+    }
+  ]
+}

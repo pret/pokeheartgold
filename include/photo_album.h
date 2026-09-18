@@ -3,6 +3,7 @@
 
 #include "camera.h"
 #include "save.h"
+#include "struct_defs/photo_data_narc_struct.h"
 
 #define PHOTO_ALBUM_MAX 36
 
@@ -43,18 +44,6 @@ typedef struct Photo {
     PhotoCameraParam unk_48;
     PhotoMon party[PARTY_SIZE];
 } Photo; // size: 0x84
-
-// file: a/2/5/4
-typedef struct PhotoData {
-    u16 mapId;
-    u16 iconId;
-    u16 x;
-    u16 y;
-    u8 unk8;
-    u8 unk9;
-    u16 subjectObjId;
-    u16 param[2];
-} PhotoData;
 
 typedef struct PhotoAlbum {
     int unk_00;

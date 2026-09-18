@@ -2,7 +2,7 @@
 
 #include "global.h"
 
-#include "data/resdat.naix"
+#include "files/data/resdat.naix"
 
 #include "gf_gfx_loader.h"
 #include "pokemon_icon_idx.h"
@@ -380,13 +380,13 @@ void sub_0207EB24(PartyMenu *partyMenu) {
     G2dRenderer_SetSubSurfaceCoords(SpriteSystem_GetRenderer(partyMenu->spriteRenderer), 0, FX32_CONST(256));
 
     ResdatIdList _021018B4 = {
-        .charRes = NARC_resdat_resdat_00000050_bin,
-        .plttRes = NARC_resdat_resdat_00000051_bin,
-        .cellRes = NARC_resdat_resdat_00000049_bin,
-        .animRes = NARC_resdat_resdat_00000048_bin,
+        .charRes = resdat_00000050_bin,
+        .plttRes = resdat_00000051_bin,
+        .cellRes = resdat_00000049_bin,
+        .animRes = resdat_00000048_bin,
         .mcelRes = 0xFFFF,
         .manmRes = 0xFFFF,
-        .headerId = NARC_resdat_resdat_00000084_bin,
+        .headerId = resdat_00000084_bin,
     };
     sub_0200D294(partyMenu->spriteRenderer, partyMenu->spriteGfxHandler, &_021018B4);
 }

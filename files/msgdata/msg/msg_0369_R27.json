@@ -1,0 +1,33 @@
+{
+  "key": 20227,
+  "messages": [
+    {
+      "id": "msg_0369_R27_00000",
+      "en_US": "Hey!\r"
+    },
+    {
+      "id": "msg_0369_R27_00001",
+      "en_US": [
+        "Do you know what you just did?\r",
+        "You’ve taken your first step\n",
+        "into Kanto.\r",
+        "Check your Pokégear Map and see."
+      ]
+    },
+    {
+      "id": "msg_0369_R27_00002",
+      "en_US": [
+        "Tohjo Falls\r",
+        "The Link between\n",
+        "Kanto and Johto"
+      ]
+    },
+    {
+      "id": "msg_0369_R27_00003",
+      "en_US": [
+        "West to New Bark Town\n",
+        "East to Rt. 26"
+      ]
+    }
+  ]
+}

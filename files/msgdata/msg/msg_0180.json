@@ -1,0 +1,108 @@
+{
+  "key": 1471,
+  "messages": [
+    {
+      "id": "msg_0180_00000",
+      "en_US": "The Hall of Fame!"
+    },
+    {
+      "id": "msg_0180_00001",
+      "en_US": "{STRVAR_1 0, 0, 0} ♂"
+    },
+    {
+      "id": "msg_0180_00002",
+      "en_US": "{STRVAR_1 0, 0, 0} ♀"
+    },
+    {
+      "id": "msg_0180_00003",
+      "en_US": "{STRVAR_1 0, 0, 0}"
+    },
+    {
+      "id": "msg_0180_00004",
+      "en_US": "{STRVAR_1 1, 0, 0}"
+    },
+    {
+      "id": "msg_0180_00005",
+      "en_US": "Lv. {STRVAR_1 52, 0, 0}"
+    },
+    {
+      "id": "msg_0180_00006",
+      "en_US": "OT/{STRVAR_1 3, 0, 0}"
+    },
+    {
+      "id": "msg_0180_00007",
+      "en_US": [
+        "Met at\n",
+        "{STRVAR_1 4, 0, 0}."
+      ]
+    },
+    {
+      "id": "msg_0180_00008",
+      "en_US": [
+        "Hatched at\n",
+        "{STRVAR_1 4, 0, 0}."
+      ]
+    },
+    {
+      "id": "msg_0180_00009",
+      "en_US": [
+        "Obtained in a link\n",
+        "trade."
+      ]
+    },
+    {
+      "id": "msg_0180_00010",
+      "en_US": [
+        "Arrived from the\n",
+        "Kanto region."
+      ]
+    },
+    {
+      "id": "msg_0180_00011",
+      "en_US": [
+        "Arrived from the\n",
+        "Hoenn region."
+      ]
+    },
+    {
+      "id": "msg_0180_00012",
+      "en_US": [
+        "Arrived from a\n",
+        "distant land."
+      ]
+    },
+    {
+      "id": "msg_0180_00013",
+      "en_US": [
+        "Obtained in a fateful\n",
+        "encounter."
+      ]
+    },
+    {
+      "id": "msg_0180_00014",
+      "en_US": [
+        "Arrived from the\n",
+        "Sinnoh region."
+      ]
+    },
+    {
+      "id": "msg_0180_00015",
+      "en_US": [
+        "Received at\n",
+        "{STRVAR_1 4, 0, 0}."
+      ]
+    },
+    {
+      "id": "msg_0180_00016",
+      "en_US": "League Champion! Congratulations!"
+    },
+    {
+      "id": "msg_0180_00017",
+      "en_US": "{STRVAR_1 3, 0, 0} ID: {STRVAR_1 54, 1, 0} Time: {STRVAR_1 52, 2, 0}:{STRVAR_1 51, 3, 0}"
+    },
+    {
+      "id": "msg_0180_00018",
+      "garbage": 19
+    }
+  ]
+}

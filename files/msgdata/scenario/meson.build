@@ -1,0 +1,1 @@
+nitrofs_files += fs.copyfile('scr_msg.narc')

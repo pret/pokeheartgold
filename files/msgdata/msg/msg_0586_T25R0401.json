@@ -1,0 +1,128 @@
+{
+  "key": 58479,
+  "messages": [
+    {
+      "id": "msg_0586_T25R0401_00000",
+      "en_US": [
+        "Bill: Hi, {STRVAR_1 3, 0, 0}! Would you do\n",
+        "something for me and take this EEVEE?\r",
+        "It came over when I was adjusting\n",
+        "Nintendo Wi-Fi Connection.\r",
+        "Someone has to take care of it,\n",
+        "but I don’t like being outside.\r",
+        "Can I count on you to play with it,\n",
+        "{STRVAR_1 3, 0, 0}? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0586_T25R0401_00001",
+      "en_US": [
+        "Bill: I knew you’d come through!\n",
+        "You’re the real deal! Way to go!\f",
+        "OK, I’m counting on you.\f",
+        "Take good care of it!\r"
+      ]
+    },
+    {
+      "id": "msg_0586_T25R0401_00002",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} received\n",
+        "the EEVEE!"
+      ]
+    },
+    {
+      "id": "msg_0586_T25R0401_00003",
+      "en_US": [
+        "Bill: Professor Elm said EEVEE can\n",
+        "evolve into seven different kinds\f",
+        "of Pokémon!"
+      ]
+    },
+    {
+      "id": "msg_0586_T25R0401_00004",
+      "en_US": [
+        "Whoa, wait. You can’t carry any\n",
+        "more Pokémon."
+      ]
+    },
+    {
+      "id": "msg_0586_T25R0401_00005",
+      "en_US": "Oh... Now what to do?"
+    },
+    {
+      "id": "msg_0586_T25R0401_00006",
+      "en_US": [
+        "Bill: I used to do experiments on\n",
+        "transferring things.\r",
+        "Both the GTS and Nintendo Wi-Fi\n",
+        "Connection were inspired by\f",
+        "my machine that transfers things!"
+      ]
+    },
+    {
+      "id": "msg_0586_T25R0401_00007",
+      "en_US": [
+        "Give a nickname to\n",
+        "the EEVEE you received? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0586_T25R0401_00008",
+      "garbage": 25
+    },
+    {
+      "id": "msg_0586_T25R0401_00009",
+      "en_US": [
+        "Oh, you collect Pokémon?\n",
+        "My son Bill is an expert.\r",
+        "He just got called to the Pokémon\n",
+        "Center in Ecruteak City."
+      ]
+    },
+    {
+      "id": "msg_0586_T25R0401_00010",
+      "en_US": [
+        "Whatever happens, it makes me happy\n",
+        "to see my own son."
+      ]
+    },
+    {
+      "id": "msg_0586_T25R0401_00011",
+      "en_US": [
+        "My big brother Bill made the\n",
+        "Pokémon Storage System."
+      ]
+    },
+    {
+      "id": "msg_0586_T25R0401_00012",
+      "en_US": [
+        "Are you a Trainer?\r",
+        "I’ve got a useful phone number\n",
+        "for you. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0586_T25R0401_00013",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} registered Bill\n",
+        "in the Pokégear!"
+      ]
+    },
+    {
+      "id": "msg_0586_T25R0401_00014",
+      "en_US": [
+        "My brother made the\n",
+        "Pokémon Storage System.\r",
+        "I was going to give you Bill’s number..."
+      ]
+    },
+    {
+      "id": "msg_0586_T25R0401_00015",
+      "en_US": [
+        "When you call my brother, he can tell\n",
+        "you about the PC Boxes where you\f",
+        "store your Pokémon!"
+      ]
+    }
+  ]
+}

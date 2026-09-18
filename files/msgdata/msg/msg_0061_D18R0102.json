@@ -1,0 +1,31 @@
+{
+  "key": 13359,
+  "messages": [
+    {
+      "id": "msg_0061_D18R0102_00000",
+      "en_US": [
+        "Eusine: Did you see it?\r",
+        "SUICUNE raced by like a blur, right in\n",
+        "front of my eyes!\r",
+        "I have been chasing SUICUNE for almost\n",
+        "ten years, but I have never been this\f",
+        "close! I’m all choked up!\r"
+      ]
+    },
+    {
+      "id": "msg_0061_D18R0102_00001",
+      "en_US": [
+        "By the way...\n",
+        "It was clear to me that SUICUNE took\f",
+        "notice of your presence.\r",
+        "Ecruteak’s legendary Pokémon are said\n",
+        "to come to people only when they\f",
+        "recognize their talents.\r",
+        "Perhaps I should be more aggressive\n",
+        "toward SUICUNE...\r",
+        "Anyway, {STRVAR_1 3, 0, 0}, we will\n",
+        "meet again!\r"
+      ]
+    }
+  ]
+}

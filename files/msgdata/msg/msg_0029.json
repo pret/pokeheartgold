@@ -1,0 +1,50 @@
+{
+  "key": 8,
+  "messages": [
+    {
+      "id": "msg_0029_00000",
+      "en_US": "Caught {STRVAR_1 0, 0, 0}!"
+    },
+    {
+      "id": "msg_0029_00001",
+      "en_US": [
+        "Swap the {STRVAR_1 0, 0, 0} for your\n",
+        "{STRVAR_1 0, 1, 0}?"
+      ]
+    },
+    {
+      "id": "msg_0029_00002",
+      "en_US": [
+        "Released {STRVAR_1 0, 1, 0} and caught\n",
+        "{STRVAR_1 0, 0, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0029_00003",
+      "en_US": [
+        "Released {STRVAR_1 0, 0, 0} and kept\n",
+        "{STRVAR_1 0, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0029_00004",
+      "en_US": "{STRVAR_1 0, 0, 0}"
+    },
+    {
+      "id": "msg_0029_00005",
+      "en_US": "♂"
+    },
+    {
+      "id": "msg_0029_00006",
+      "en_US": "♀"
+    },
+    {
+      "id": "msg_0029_00007",
+      "garbage": 0
+    },
+    {
+      "id": "msg_0029_00008",
+      "garbage": 5
+    }
+  ]
+}

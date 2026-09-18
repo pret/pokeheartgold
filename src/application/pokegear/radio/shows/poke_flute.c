@@ -1,8 +1,8 @@
 #include "global.h"
 
 #include "application/pokegear/radio/radio_internal.h"
-#include "msgdata/msg.naix"
-#include "msgdata/msg/msg_0417.h"
+#include "files/msgdata/msg.naix"
+#include "files/msgdata/msg/msg_0417.h"
 
 #include "sound_02004A44.h"
 #include "sound_radio.h"
@@ -39,7 +39,7 @@ BOOL RadioShow_PokeFlute_Print(RadioShow *radioShow) {
 }
 
 void RadioShow_PokeFlute_Init(RadioShow *radioShow) {
-    radioShow->showMsgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0417_bin, radioShow->heapID);
+    radioShow->showMsgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msg_0417, radioShow->heapID);
     ReadMsgDataIntoString(radioShow->showMsgData, msg_0417_00000, radioShow->showTitle);
     String_SetEmpty(radioShow->showHost);
 }

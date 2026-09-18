@@ -1,0 +1,133 @@
+{
+  "key": 11980,
+  "messages": [
+    {
+      "id": "msg_0164_00000",
+      "en_US": "Connection List"
+    },
+    {
+      "id": "msg_0164_00001",
+      "en_US": "Long name"
+    },
+    {
+      "id": "msg_0164_00002",
+      "en_US": "Delete notation"
+    },
+    {
+      "id": "msg_0164_00003",
+      "en_US": "キャプチャ"
+    },
+    {
+      "id": "msg_0164_00004",
+      "en_US": "Name"
+    },
+    {
+      "id": "msg_0164_00005",
+      "en_US": "Signature"
+    },
+    {
+      "id": "msg_0164_00006",
+      "en_US": "Record 8k"
+    },
+    {
+      "id": "msg_0164_00007",
+      "en_US": "Record 4k"
+    },
+    {
+      "id": "msg_0164_00008",
+      "en_US": "Record 2k"
+    },
+    {
+      "id": "msg_0164_00009",
+      "en_US": "Record 1750"
+    },
+    {
+      "id": "msg_0164_00010",
+      "en_US": "Record 1500"
+    },
+    {
+      "id": "msg_0164_00011",
+      "en_US": "Record 1250"
+    },
+    {
+      "id": "msg_0164_00012",
+      "en_US": "Record 1k"
+    },
+    {
+      "id": "msg_0164_00013",
+      "en_US": "Record 500"
+    },
+    {
+      "id": "msg_0164_00014",
+      "en_US": "Play"
+    },
+    {
+      "id": "msg_0164_00015",
+      "en_US": "End"
+    },
+    {
+      "id": "msg_0164_00016",
+      "en_US": "Wi-Fi"
+    },
+    {
+      "id": "msg_0164_00017",
+      "en_US": "Create Friend code"
+    },
+    {
+      "id": "msg_0164_00018",
+      "en_US": "Enter Friend code"
+    },
+    {
+      "id": "msg_0164_00019",
+      "en_US": "World Trade"
+    },
+    {
+      "id": "msg_0164_00020",
+      "en_US": "Wi-Fi Tower down"
+    },
+    {
+      "id": "msg_0164_00021",
+      "en_US": "Day Care 1,000 steps"
+    },
+    {
+      "id": "msg_0164_00022",
+      "en_US": "Day Care 10,000 steps"
+    },
+    {
+      "id": "msg_0164_00023",
+      "en_US": "Set Egg"
+    },
+    {
+      "id": "msg_0164_00024",
+      "en_US": "♡Hatch Egg"
+    },
+    {
+      "id": "msg_0164_00025",
+      "en_US": "キャプチャ　じきなし"
+    },
+    {
+      "id": "msg_0164_00026",
+      "en_US": "ＰＨＣコ－ス＋"
+    },
+    {
+      "id": "msg_0164_00027",
+      "en_US": "ＰＨＣ{UNK_FF02 1, 0}ｅｘコ－ス＋"
+    },
+    {
+      "id": "msg_0164_00028",
+      "en_US": "じぶんロングネ－ム"
+    },
+    {
+      "id": "msg_0164_00029",
+      "en_US": "ＰＨＣよぞらのはて＋"
+    },
+    {
+      "id": "msg_0164_00030",
+      "en_US": "ＰＨＣコ－スしょきか"
+    },
+    {
+      "id": "msg_0164_00031",
+      "en_US": "ＰＨＣワットｍａｘ"
+    }
+  ]
+}

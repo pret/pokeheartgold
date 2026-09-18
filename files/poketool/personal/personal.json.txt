@@ -1,7 +1,6 @@
 {{ doNotModifyHeader }}
 
-#include "global.h"
-#include "pokemon.h"
+#include "struct_defs/personal_narc_structs.h"
 #include "constants/pokemon.h"
 #include "constants/moves.h"
 #include "constants/abilities.h"

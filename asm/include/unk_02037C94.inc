@@ -1,4 +1,4 @@
-#include <nitro/fs/overlay.h>
+
 #pragma once
 .public Sound_Stop
 .public sub_0201A728
@@ -227,9 +227,9 @@
 .public ov00_021E6CB8
 .public ov00_021E6D7C
 .public ov00_021E70B8
-.public ov00_021EC11C
-.public ov00_021EC210
-.public ov00_021EC9D4
+.public DWC_GetLastErrorEx
+.public DWC_ClearError
+.public DWC_GetLinkLevel
 .public ov45_0222E6C8
 .public ov45_0222E804
 .public ov45_0222E8F4

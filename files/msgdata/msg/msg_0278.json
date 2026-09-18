@@ -1,0 +1,48 @@
+{
+  "key": 4357,
+  "messages": [
+    {
+      "id": "msg_0278_00000",
+      "en_US": "{STRVAR_4 1, 0, 0}"
+    },
+    {
+      "id": "msg_0278_00001",
+      "en_US": "Supreme"
+    },
+    {
+      "id": "msg_0278_00002",
+      "en_US": "㊚"
+    },
+    {
+      "id": "msg_0278_00003",
+      "en_US": "㊛"
+    },
+    {
+      "id": "msg_0278_00004",
+      "en_US": "Power"
+    },
+    {
+      "id": "msg_0278_00005",
+      "en_US": "Stamina"
+    },
+    {
+      "id": "msg_0278_00006",
+      "en_US": "Skill"
+    },
+    {
+      "id": "msg_0278_00007",
+      "en_US": "Jump"
+    },
+    {
+      "id": "msg_0278_00008",
+      "en_US": "Speed"
+    },
+    {
+      "id": "msg_0278_00009",
+      "en_US": [
+        "Medals won by\n",
+        "{STRVAR_1 0, 0, 0}"
+      ]
+    }
+  ]
+}

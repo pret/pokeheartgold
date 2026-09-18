@@ -1,0 +1,10 @@
+#ifndef POKEPLATINUM_GENERATED_SPECIES_LEARNSETS_BY_TUTOR_H
+#define POKEPLATINUM_GENERATED_SPECIES_LEARNSETS_BY_TUTOR_H
+
+#include "tutor_movesets.h"
+
+static const MovesetMask sSpeciesLearnsetsByTutor[MOVESET_MAX] = {
+/* =========== MAGIC CONTENT MARKER =========== */
+};
+
+#endif // POKEPLATINUM_GENERATED_SPECIES_LEARNSETS_BY_TUTOR_H

@@ -1,0 +1,58 @@
+{
+  "key": 61156,
+  "messages": [
+    {
+      "id": "msg_0023_00000",
+      "en_US": "It’s an Apricorn Tree!\r"
+    },
+    {
+      "id": "msg_0023_00001",
+      "en_US": "...It’s a {STRVAR_1 8, 1, 0}!\r"
+    },
+    {
+      "id": "msg_0023_00002",
+      "en_US": "There are no Apricorns..."
+    },
+    {
+      "id": "msg_0023_00003",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} obtained\n",
+        "the {STRVAR_1 8, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0023_00004",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} put the {STRVAR_1 8, 1, 0}\n",
+        "in the Apricorn Box!"
+      ]
+    },
+    {
+      "id": "msg_0023_00005",
+      "en_US": [
+        "...Well, that’s what was going to\n",
+        "happen, except there’s no Apricorn\f",
+        "Box yet!\r",
+        "{STRVAR_1 3, 0, 0} gave up on the\n",
+        "{STRVAR_1 8, 1, 0}..."
+      ]
+    },
+    {
+      "id": "msg_0023_00006",
+      "en_US": [
+        "...Well, that’s what was going to\n",
+        "happen, except...\f",
+        "The Apricorn Box is full!\r",
+        "{STRVAR_1 3, 0, 0} gave up on the\n",
+        "{STRVAR_1 8, 1, 0}..."
+      ]
+    },
+    {
+      "id": "msg_0023_00007",
+      "en_US": [
+        "Since there’s nothing to put it in,\n",
+        "there’s no reason to take it..."
+      ]
+    }
+  ]
+}

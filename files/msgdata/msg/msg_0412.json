@@ -1,0 +1,370 @@
+{
+  "key": 49623,
+  "messages": [
+    {
+      "id": "msg_0412_00000",
+      "en_US": "Commercials"
+    },
+    {
+      "id": "msg_0412_00001",
+      "garbage": 0
+    },
+    {
+      "id": "msg_0412_00002",
+      "en_US": [
+        "Commercial: Always where you need it!\n",
+        "Your local Pokémon Center!"
+      ]
+    },
+    {
+      "id": "msg_0412_00003",
+      "en_US": [
+        "Commercial: Full of smiling faces!\n",
+        "Your cheerful Poké Mart!"
+      ]
+    },
+    {
+      "id": "msg_0412_00004",
+      "en_US": [
+        "Commercial: Your friend for adventure,\n",
+        "your Pokégear...Pokégear...Pokégear!\n",
+        "Your Pokégear from Silph Co. Take our\n",
+        "latest model on your next adventure!"
+      ]
+    },
+    {
+      "id": "msg_0412_00005",
+      "en_US": [
+        "Commercial: Catch that Trainer’s eye for\n",
+        "an intense battle! But don’t pick fights\n",
+        "with those who aren’t Trainers. This has\n",
+        "been a message from the Pokémon League."
+      ]
+    },
+    {
+      "id": "msg_0412_00006",
+      "en_US": [
+        "Commercial: Whenever you turn your head,\n",
+        "there it is. Your constant companion in\n",
+        "life’s journey. Your Pokémon is always\n",
+        "there to help. This has been a message\n",
+        "from the Pokémon League."
+      ]
+    },
+    {
+      "id": "msg_0412_00007",
+      "en_US": [
+        "Commercial: The gentle flow of time, an\n",
+        "ancient figure... The gentle vibrations\n",
+        "of Sprout Tower in Violet City... \n",
+        "It’s waiting for you. This message\n",
+        "brought to you by the Johto Bureau\n",
+        "of Tourism."
+      ]
+    },
+    {
+      "id": "msg_0412_00008",
+      "en_US": [
+        "Commercial: An ancient message is being\n",
+        "discovered, right now, in the Ruins of\n",
+        "Alph! This message brought to you by the\n",
+        "Johto Bureau of Tourism."
+      ]
+    },
+    {
+      "id": "msg_0412_00009",
+      "en_US": [
+        "Commercial: A beautiful sound and\n",
+        "graceful dance, together at the\n",
+        "Ecruteak Dance Theater.\n",
+        "This message brought to you by the\n",
+        "Johto Bureau of Tourism."
+      ]
+    },
+    {
+      "id": "msg_0412_00010",
+      "en_US": [
+        "Commercial: The light of hope shines over\n",
+        "an anxious boat trip to this port city’s\n",
+        "landmark! Come see the lighthouse!\n",
+        "This message brought to you by the\n",
+        "Johto Bureau of Tourism."
+      ]
+    },
+    {
+      "id": "msg_0412_00011",
+      "en_US": [
+        "Commercial: Gulp gulp! Yum! Aprijuice!\n",
+        "Aprijuice! Run and shake, make Aprijuice!\n",
+        "Gulp gulp! Drink it up! Aprijuice!\n",
+        "Everyone loves Aprijuice! Just for\n",
+        "Pokémon! None for humans! Aprijuice!"
+      ]
+    },
+    {
+      "id": "msg_0412_00012",
+      "en_US": [
+        "Commercial: A polished design, a lively\n",
+        "silhouette. A cloud of dust rising up.\n",
+        "Running along with your Pokémon in your\n",
+        "running shoes!"
+      ]
+    },
+    {
+      "id": "msg_0412_00013",
+      "en_US": [
+        "Commercial: A fateful encounter that\n",
+        "begins in the Pokémon Center...\n",
+        "A connection between two people...\n",
+        "If you climb the stairs, you’ll find it.\n",
+        "The Union Room."
+      ]
+    },
+    {
+      "id": "msg_0412_00014",
+      "en_US": [
+        "Commercial: A fateful encounter that\n",
+        "begins in the Pokémon Center...\n",
+        "A connection between two people...\n",
+        "If you take the escalator down, you’ll\n",
+        "find it--the Wi-Fi Club."
+      ]
+    },
+    {
+      "id": "msg_0412_00015",
+      "en_US": [
+        "Commercial: The symbol of Goldenrod City,\n",
+        "the Global Terminal! A place where you\n",
+        "can experience the world, where the\n",
+        "world can meet you, and the Global Trade\n",
+        "Station where you can trade Pokémon."
+      ]
+    },
+    {
+      "id": "msg_0412_00016",
+      "en_US": [
+        "Commercial: Come one, come all! Welcome!\n",
+        "Welcome to the Wi-Fi Plaza, where\n",
+        "everyone meets! Play games with others\n",
+        "in the Wi-Fi Plaza! The wa...! Wi-Fi Plaza!"
+      ]
+    },
+    {
+      "id": "msg_0412_00017",
+      "en_US": [
+        "Commercial: If it’s Pokémon goods you\n",
+        "want, you can get anything here.\n",
+        "From top to bottom, a wonderful world\n",
+        "of shopping in the Goldenrod\n",
+        "Department Store."
+      ]
+    },
+    {
+      "id": "msg_0412_00018",
+      "en_US": [
+        "Commercial: Between battles, why not\n",
+        "take a break and relax at the Goldenrod\n",
+        "Game Corner?"
+      ]
+    },
+    {
+      "id": "msg_0412_00019",
+      "en_US": [
+        "Commercial: Hey, all you radio listeners\n",
+        "out there. This is the Johto Radio\n",
+        "Broadcasting Network. We’re sending out\n",
+        "dreams over our radio waves. La la la,\n",
+        "the Johto Radio Station!"
+      ]
+    },
+    {
+      "id": "msg_0412_00020",
+      "en_US": [
+        "Commercial: All right, all right, all right!\n",
+        "Don’t you also want to be certain your\n",
+        "Pokémon is victorious? Let’s go to the\n",
+        "Pokéathlon! There are ten different\n",
+        "events for you to compete in!"
+      ]
+    },
+    {
+      "id": "msg_0412_00021",
+      "en_US": [
+        "Commercial: Da da da dum dum dum da da!\n",
+        "Friendship!\n",
+        "Cooperation!\n",
+        "Trust!\n",
+        "Belief in the possibilities!\n",
+        "The dripping sweat is a sign of your\n",
+        "hard work!\n",
+        "...\n",
+        "The Pokéathlon anthem,\n",
+        "“Believe in Pokémon!” On sale soon!"
+      ]
+    },
+    {
+      "id": "msg_0412_00022",
+      "en_US": [
+        "Commercial: Are you catching Bug-type\n",
+        "Pokémon? Well Tuesdays, Thursdays,\n",
+        "and Saturdays of every week are\n",
+        "Bug-Catching Contest Days!\n",
+        "Those of you who love Bug-type Pokémon,\n",
+        "gather at the National Park every\n",
+        "Tuesday, Thursday, and Saturday!\n",
+        "See you there!"
+      ]
+    },
+    {
+      "id": "msg_0412_00023",
+      "en_US": [
+        "Commercial: Dum da da dum dum da da\n",
+        "dum dum. Pa pa pa pa da dum pa pa pa pa\n",
+        "da dum Pokémon! Catch as many Pokémon\n",
+        "as you like until the Poké Balls run out\n",
+        "at Warden Baoba’s Safari Zone...zone..."
+      ]
+    },
+    {
+      "id": "msg_0412_00024",
+      "en_US": [
+        "Commercial: Mahogany Town’s famous Rage\n",
+        "Candy Bar! They work so hard every day\n",
+        "to make these famous RageCandyBars!\n",
+        "Why not take one back home to your\n",
+        "friends--a RageCandyBar!"
+      ]
+    },
+    {
+      "id": "msg_0412_00025",
+      "en_US": [
+        "Commercial: Extraordinary Pokémon\n",
+        "battles, the kind you’ve always wished\n",
+        "for, are found only in the Battle Tower.\n",
+        "Take part in the highest-grade battles.\n",
+        "Will you take on the challenge by\n",
+        "yourself or with a partner?"
+      ]
+    },
+    {
+      "id": "msg_0412_00026",
+      "en_US": [
+        "Commercial: Do you know the true face of\n",
+        "the Battle Tower? Opening every door on\n",
+        "the planet; every Trainer awaits you!\n",
+        "How far will you be able to go?"
+      ]
+    },
+    {
+      "id": "msg_0412_00027",
+      "en_US": [
+        "Commercial: A place where your beloved\n",
+        "Pokémon can become number one.\n",
+        "The battle of a lifetime in the\n",
+        "Battle Hall! \n",
+        "Make your Pokémon shine bright here;\n",
+        "you’re the only Trainer who can!"
+      ]
+    },
+    {
+      "id": "msg_0412_00028",
+      "en_US": [
+        "Commercial: Collect Castle Points!\n",
+        "Manage your Castle Points and use them\n",
+        "before each battle in the Battle Castle!"
+      ]
+    },
+    {
+      "id": "msg_0412_00029",
+      "en_US": [
+        "Commercial: Luck is so fickle and selfish\n",
+        "at the Battle Arcade! Just believe in\n",
+        "your Pokémon and go! Fight against fate\n",
+        "in the Battle Arcade! Will the next step\n",
+        "lead you closer to paradise, or\n",
+        "to failure?"
+      ]
+    },
+    {
+      "id": "msg_0412_00030",
+      "en_US": [
+        "Commercial: Do you know the best\n",
+        "battle techniques to get Pokémon to\n",
+        "show off their true potential?\n",
+        "The Battle Factory! If you don’t know,\n",
+        "you won’t win! See you at the\n",
+        "Battle Factory!"
+      ]
+    },
+    {
+      "id": "msg_0412_00031",
+      "en_US": [
+        "Commercial: We invite you to travel the\n",
+        "lightning-fast trip between Olivine and\n",
+        "Vermilion Cities on a hydroplane-like\n",
+        "boat ride!"
+      ]
+    },
+    {
+      "id": "msg_0412_00032",
+      "en_US": [
+        "Commercial: If you’d like to ride your\n",
+        "Bike around as much as you want\n",
+        "under the Kanto sky, why not try\n",
+        "Cycling Road?\n",
+        "It’s waiting for you on Route 17."
+      ]
+    },
+    {
+      "id": "msg_0412_00033",
+      "en_US": [
+        "Commercial: The Pokémon League is\n",
+        "waiting for you, when you’re ready\n",
+        "to challenge us. If you’re coming from\n",
+        "Kanto, we’re right at the end of\n",
+        "Route 22.\n",
+        "This message brought to you by the\n",
+        "Pokémon League."
+      ]
+    },
+    {
+      "id": "msg_0412_00034",
+      "en_US": [
+        "Commercial: The man who restored a town\n",
+        "devastated by a volcanic eruption. That\n",
+        "man was none other than Blaine! He may\n",
+        "have lost his Cinnabar Gym, but he’s been\n",
+        "able to reopen it on Seafoam Islands!"
+      ]
+    },
+    {
+      "id": "msg_0412_00035",
+      "en_US": [
+        "Commercial: Hey all you radio listeners\n",
+        "out there. This is the Kanto Radio\n",
+        "Broadcasting Network. We’re sending out\n",
+        "dreams over the radio waves. La la la,\n",
+        "the Kanto Radio Station!"
+      ]
+    },
+    {
+      "id": "msg_0412_00036",
+      "en_US": [
+        "Commercial: Silph Co. is a special\n",
+        "high-tech innovation company dedicated\n",
+        "to making people’s lives better and\n",
+        "bringing about a wonderful future."
+      ]
+    },
+    {
+      "id": "msg_0412_00037",
+      "en_US": [
+        "Commercial: From Goldenrod to Saffron\n",
+        "City, a surprising high-speed arrival and\n",
+        "a high-quality journey!\n",
+        "Ride the Magnet Train--the\n",
+        "transportation of the future!"
+      ]
+    }
+  ]
+}

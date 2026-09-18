@@ -9,10 +9,10 @@
 #include "constants/maps.h"
 #include "constants/sndseq.h"
 
-#include "fielddata/eventdata/zone_event.naix"
-#include "fielddata/mapmatrix/map_matrix.naix"
-#include "fielddata/script/scr_seq.naix"
-#include "msgdata/msg.naix"
+#include "files/fielddata/eventdata/zone_event.naix"
+#include "files/fielddata/mapmatrix/map_matrix.naix"
+#include "files/fielddata/script/scr_seq.naix"
+#include "files/msgdata/msg.naix"
 
 #include "encounter_tables_narc.h"
 

@@ -9,616 +9,552 @@ Static main
 {
     Address 0x02000000
     StackSize 0 2048
-    Object src/pm_version.o
-    Object src/main.o
-    Object src/list_menu.o
-    Object src/list_menu_2d.o
-    Object src/string_util.o
-    Object src/render_text.o
-    Object src/font.o
-    Object src/palette.o
-    Object src/sound.o
-    Object src/sound_radio_sys.o
-    Object asm/unk_02004A44.o
-    Object asm/unk_02005D10.o
-    Object src/sound_chatot.o
-    Object src/poke_overlay.o
-    Object src/systask_environment.o
-    Object src/overlay_manager.o
-    Object src/filesystem.o
-    Object src/gf_gfx_loader.o
-    Object src/pokepic.o
-    Object src/unk_02009D48.o
-    Object src/unk_0200A090.o
-    Object src/sprite_transfer.o
-    Object asm/unk_0200B150.o
-    Object src/brightness.o
-    Object src/msgdata.o
-    Object src/message_format.o
-    Object src/message_printer.o
-    Object src/unk_0200CE7C.o
-    Object src/sprite_system.o
-    Object src/sys_task_api.o
-    Object asm/render_window.o
-    Object asm/unk_0200FA24.o
-    Object asm/unk_0201010C.o
-    Object asm/unk_02012DD8.o
-    Object asm/unk_02013534.o
-    Object src/unk_02013FDC.o
-    Object src/gf_rtc.o
-    Object src/list_menu_items.o
-    Object asm/unk_02014A08.o
-    Object asm/unk_02014DA0.o
-    Object src/mail_message.o
-    Object src/easy_chat.o
-    Object asm/unk_02015DD8.o
-    Object asm/unk_020163E0.o
-    Object src/yes_no_prompt.o
-    Object asm/unk_02016EDC.o
-    Object asm/unk_02017FAC.o
-    Object asm/unk_02018000.o
-    Object src/unk_02018380.o
-    Object src/menu_input_state.o
-    Object src/touchscreen_list_menu.o
-    Object src/camera_translation.o
-    Object asm/unk_020192D0.o
-    Object asm/unk_0201956C.o
-    Object src/unk_02019BA4.o
-    Object src/system.o
-    Object src/heap.o
-    Object src/bg_window.o
-    Object src/gf_3d_render.o
-    Object src/sys_task.o
-    Object asm/unk_0201F990.o
-    Object src/string_control_code.o
-    Object src/math_util.o
-    Object src/text.o
-    Object src/vram_transfer_manager.o
-    Object asm/unk_0202068C.o
-    Object src/unk_02020A0C.o
-    Object src/ascii_util.o
-    Object asm/unk_02020B8C.o
-    Object asm/unk_020210A0.o
-    Object src/obj_char_transfer.o
-    Object src/obj_pltt_transfer.o
-    Object src/gf_gfx_planes.o
-    Object src/camera.o
-    Object asm/unk_02023694.o
-    Object src/sprite.o
-    Object src/touchscreen.o
-    Object src/timer3.o
-    Object src/error_handling.o
-    Object src/unk_02025534.o
-    Object asm/unk_02025C44.o
-    Object src/font_data.o
-    Object src/pm_string.o
-    Object src/touch_hitbox_controller.o
-    Object asm/unk_02026DE0.o
-    Object src/unk_02026E30.o
-    Object src/unk_02026E84.o
-    Object src/gf_3d_vramman.o
-    Object asm/unk_02027010.o
-    Object src/save_arrays.o
-    Object src/save.o
-    Object src/sav_system_info.o
-    Object src/player_data.o
-    Object src/save_link_ruleset.o
-    Object src/link_ruleset_data.o
-    Object src/daycare.o
-    Object src/pokedex.o
-    Object src/save_misc.o
-    Object src/options.o
-    Object src/apricorn_tree_sys.o
-    Object src/save_gymmick.o
-    Object src/save_palpad.o
-    Object src/mail.o
-    Object asm/unk_0202B614.o
-    Object asm/unk_0202C034.o
-    Object asm/unk_0202C730.o
-    Object src/coins.o
-    Object src/save_trainer_card.o
-    Object src/save_wifi_history.o
-    Object src/seal_case.o
-    Object src/igt.o
-    Object src/sav_chatot.o
-    Object src/game_stats.o
-    Object asm/unk_0202D230.o
-    Object src/save_special_ribbons.o
-    Object src/roamer.o
-    Object asm/unk_0202DB34.o
-    Object src/mystery_gift.o
-    Object src/hall_of_fame.o
-    Object asm/unk_0202E41C.o
-    Object src/save_rankings.o
-    Object src/palPark_migration.o
-    Object src/update_dex_received.o
-    Object src/save_follow_mon.o
-    Object src/save_pokegear.o
-    Object src/unk_0202F370.o
-    Object src/safari_zone.o
-    Object src/photo_album.o
-    Object asm/unk_0202FBCC.o
-    Object asm/unk_02030A98.o
-    Object src/unk_0203170C.o
-    Object asm/unk_020318C8.o
-    Object src/pokeathlon/pokeathlon_save.o
-    Object asm/unk_02031B0C.o
-    Object src/pokewalker.o
-    Object src/save_trainer_house.o
-    Object asm/unk_02032844.o
-    Object asm/unk_02033AE0.o
-    Object asm/unk_02034354.o
-    Object asm/unk_02034B0C.o
-    Object asm/unk_02035900.o
-    Object asm/unk_020379A0.o
-    Object asm/unk_02037C94.o
-    Object asm/unk_0203A3B0.o
-    Object src/communication_error.o
-    Object src/unk_0203AC88.o
-    Object src/wfc_user_info_warning.o
-    Object src/map_matrix.o
-    Object src/map_header.o
-    Object src/map_events.o
-    Object src/save_local_field_data.o
-    Object asm/unk_0203BA5C.o
-    Object src/field_system_rtc_weather.o
-    Object src/start_menu.o
-    Object asm/unk_0203DB6C.o
-    Object src/field_system.o
-    Object src/location_backup.o
-    Object src/launch_application.o
-    Object src/script.o
-    Object src/script_manager.o
-    Object src/scrcmd_c.o
-    Object src/scrcmd_mart.o
-    Object src/scrcmd_strbuf.o
-    Object src/scrcmd_lottery.o
-    Object src/scrcmd_sound.o
-    Object src/scrcmd_battle.o
-    Object src/scrcmd_8.o
-    Object src/scrcmd_9.o
-    Object src/unk_0204A3F4.o
-    Object src/unk_0204B538.o
-    Object src/scrcmd_apricorn.o
-    Object src/scrcmd_mystery_gift.o
-    Object src/scrcmd_12.o
-    Object src/scrcmd_money.o
-    Object src/scrcmd_daycare.o
-    Object src/scrcmd_party.o
-    Object src/scrcmd_dppl_prizes.o
-    Object src/scrcmd_17.o
-    Object src/scrcmd_items.o
-    Object src/scrcmd_move_relearner.o
-    Object src/scrcmd_20.o
-    Object src/scrcmd_battle_castle.o
-    Object src/scrcmd_battle_arcade.o
-    Object src/save_vars_flags.o
-    Object src/task.o
-    Object src/encounter.o
-    Object asm/unk_020517A4.o
-    Object src/battle/battle_setup.o
-    Object src/blackout.o
-    Object src/game_clear.o
-    Object src/field_warp_tasks.o
-    Object src/script_pokemon_util.o
-    Object src/terrain_attributes.o
-    Object asm/unk_02054648.o
-    Object src/unk_02054E00.o
-    Object src/field_bgm.o
-    Object asm/unk_020551B8.o
-    Object asm/unk_02055244.o
-    Object src/unk_02055418.o
-    Object src/catching_show.o
-    Object asm/unk_02055BF0_data.o
-    Object src/unk_02055BF0.o
-    Object asm/unk_02056680.o
-    Object asm/unk_02056D7C.o
-    Object asm/unk_02058034.o
-    Object asm/unk_02058AEC.o
-    Object asm/unk_0205A44C.o
-    Object asm/unk_0205AC88.o
-    Object src/unk_0205B3DC.o
-    Object src/dialog_box.o
-    Object src/metatile_behavior.o
-    Object asm/unk_0205BB1C.o
-    Object asm/unk_0205BFF0.o
-    Object src/player_avatar.o
-    Object asm/unk_0205CB48.o
-    Object src/map_object.o
-    Object asm/unk_data_020FCBD8.o
-    Object asm/unk_0205FD20.o
-    Object asm/unk_02061284.o
-    Object asm/unk_data_020FD978.o
-    Object asm/unk_02062108.o
-    Object asm/unk_data_020FDB44.o
-    Object asm/unk_020632B0.o
-    Object src/unk_020648EC.o
-    Object src/field_use_item.o
-    Object asm/unk_020658D4.o
-    Object src/sys_flags.o
-    Object src/sys_vars.o
-    Object asm/unk_02066EDC.o
-    Object src/field_roamer.o
-    Object asm/unk_0206793C.o
-    Object asm/unk_02067A60.o
-    Object src/field_move.o
-    Object src/field_move_environment.o
-    Object asm/unk_020689C8.o
-    Object src/gymmick_init.o
-    Object src/unk_02068F84.o
-    Object asm/unk_02068FC8.o
-    Object src/unk_02069528.o
-    Object asm/unk_02069660.o
-    Object asm/unk_0206979C.o
-    Object src/follow_mon.o
-    Object src/map_preview_graphic.o
-    Object src/field_take_photo.o
-    Object src/unk_0206B910.o
-    Object src/alph_checks.o
-    Object src/get_egg.o
-    Object src/unk_0206D494.o
-    Object src/pokemon.o
-    Object src/move.o
-    Object src/trainer_data.o
-    Object src/pokemon_storage_system.o
-    Object src/pokemon_icon_idx.o
-    Object src/party.o
-    Object src/pokedex_util.o
-    Object src/battle_regulation.o
-    Object asm/unk_02074E5C.o
-    Object asm/unk_020755E8.o
-    Object asm/unk_020773AC.o
-    Object asm/unk_02077678.o
-    Object src/bag_view.o
-    Object src/item.o
-    Object src/bag.o
-    Object asm/unk_02078834.o
-    Object asm/unk_02078DD8.o
-    Object src/party_menu.o
-    Object src/party_context_menu.o
-    Object src/party_menu_sprites.o
-    Object src/party_menu_list_items.o
-    Object src/party_menu_items.o
-    Object src/naming_screen.o
-    Object asm/unk_020850F4.o
-    Object asm/unk_02085604.o
-    Object asm/unk_020863F4.o
-    Object asm/unk_02087284.o
-    Object asm/unk_02087A78.o
-    Object asm/unk_02087E70.o
-    Object asm/unk_02087FD4.o
-    Object src/unk_0208805C.o
-    Object asm/unk_02088288.o
-    Object asm/unk_0208B1AC.o
-    Object asm/unk_0208C3E4.o
-    Object asm/unk_0208DE40.o
-    Object src/ribbon.o
-    Object src/trainer_memo.o
-    Object asm/unk_0208F658.o
-    Object asm/unk_0208F814.o
-    Object asm/unk_0208FB64.o
-    Object src/use_item_on_mon.o
-    Object src/mail_misc.o
-    Object src/unk_02091054.o
-    Object src/hatch_egg_task.o
-    Object src/unk_02091278.o
-    Object src/unk_020912AC.o
-    Object src/dex_mon_measures.o
-    Object src/unk_02091564.o
-    Object asm/unk_020915B0.o
-    Object src/location_gmm_dat.o
-    Object src/move_relearner.o
-    Object asm/unk_02091880.o
-    Object src/application/delete_savedata.o
-    Object src/application/check_savedata.o
-    Object src/save_data_read_error.o
-    Object src/save_data_write_error.o
-    Object asm/unk_02092B04.o
-    Object src/unk_02092BB8.o
-    Object src/unk_02092BE8.o
-    Object src/mom_gift.o
-    Object src/unk_020932A4.o
-    Object asm/unk_020932E0.o
-    Object asm/unk_020957B0.o
-    Object asm/unk_02095DF4.o
-    Object src/phonebook_dat.o
-    Object src/choose_starter.o
-    Object asm/unk_020961D8.o
-    Object src/error_message_reset.o
-    Object src/sin_vcount.o
-    Object asm/frontier.o
-	Object src/unk_020968B0.o
-    Object asm/unk_02096910.o
-    Object asm/unk_02096C88.o
-    Object asm/unk_02097024.o
-    Object src/unk_020971F8.o
-    Object src/unk_02097268.o
-    Object src/unk_02097720.o
-    Object asm/unk_020977CC.o
-    Object asm/unk_020979A8.o
-    Object asm/unk_02097B78.o
-    Object asm/unk_02097BE0.o
-    Object src/unk_02097D3C.o
-    Object src/pokemon_mood.o
-    Object src/unk_02097F6C.o
+    Library libdwcaccount.a (.version)
+    Library libsoc.a (.version)
+	Library libcps.a (.version)
+	Library libssl.a (.version)
+    Library libvct.a (.version)
+    Library libcard.a (.version)
+    Library libdwcppwlobby.a (.version)
+    Object main.nef.p/src_pm_version.c.o
+    Object main.nef.p/src_main.c.o
+    Object main.nef.p/src_list_menu.c.o
+    Object main.nef.p/src_list_menu_2d.c.o
+    Object main.nef.p/src_string_util.c.o
+    Object main.nef.p/src_render_text.c.o
+    Object main.nef.p/src_font.c.o
+    Object main.nef.p/src_palette.c.o
+    Object main.nef.p/src_sound.c.o
+    Object main.nef.p/src_sound_radio_sys.c.o
+    Object main.nef.p/asm_unk_02004A44.s.o
+    Object main.nef.p/asm_unk_02005D10.s.o
+    Object main.nef.p/src_sound_chatot.c.o
+    Object main.nef.p/src_poke_overlay.c.o
+    Object main.nef.p/src_systask_environment.c.o
+    Object main.nef.p/src_overlay_manager.c.o
+    Object main.nef.p/src_filesystem.c.o
+    Object main.nef.p/src_gf_gfx_loader.c.o
+    Object main.nef.p/src_pokepic.c.o
+    Object main.nef.p/src_unk_02009D48.c.o
+    Object main.nef.p/src_unk_0200A090.c.o
+    Object main.nef.p/src_sprite_transfer.c.o
+    Object main.nef.p/asm_unk_0200B150.s.o
+    Object main.nef.p/src_brightness.c.o
+    Object main.nef.p/src_msgdata.c.o
+    Object main.nef.p/src_message_format.c.o
+    Object main.nef.p/src_message_printer.c.o
+    Object main.nef.p/src_unk_0200CE7C.c.o
+    Object main.nef.p/src_sprite_system.c.o
+    Object main.nef.p/src_sys_task_api.c.o
+    Object main.nef.p/asm_render_window.s.o
+    Object main.nef.p/asm_unk_0200FA24.s.o
+    Object main.nef.p/asm_unk_0201010C.s.o
+    Object main.nef.p/asm_unk_02012DD8.s.o
+    Object main.nef.p/asm_unk_02013534.s.o
+    Object main.nef.p/src_unk_02013FDC.c.o
+    Object main.nef.p/src_gf_rtc.c.o
+    Object main.nef.p/src_list_menu_items.c.o
+    Object main.nef.p/asm_unk_02014A08.s.o
+    Object main.nef.p/asm_unk_02014DA0.s.o
+    Object main.nef.p/src_mail_message.c.o
+    Object main.nef.p/src_easy_chat.c.o
+    Object main.nef.p/asm_unk_02015DD8.s.o
+    Object main.nef.p/asm_unk_020163E0.s.o
+    Object main.nef.p/src_yes_no_prompt.c.o
+    Object main.nef.p/asm_unk_02016EDC.s.o
+    Object main.nef.p/asm_unk_02017FAC.s.o
+    Object main.nef.p/asm_unk_02018000.s.o
+    Object main.nef.p/src_unk_02018380.c.o
+    Object main.nef.p/src_menu_input_state.c.o
+    Object main.nef.p/src_touchscreen_list_menu.c.o
+    Object main.nef.p/src_camera_translation.c.o
+    Object main.nef.p/asm_unk_020192D0.s.o
+    Object main.nef.p/asm_unk_0201956C.s.o
+    Object main.nef.p/src_unk_02019BA4.c.o
+    Object main.nef.p/src_system.c.o
+    Object main.nef.p/src_heap.c.o
+    Object main.nef.p/src_bg_window.c.o
+    Object main.nef.p/src_gf_3d_render.c.o
+    Object main.nef.p/src_sys_task.c.o
+    Object main.nef.p/asm_unk_0201F990.s.o
+    Object main.nef.p/src_string_control_code.c.o
+    Object main.nef.p/src_math_util.c.o
+    Object main.nef.p/src_text.c.o
+    Object main.nef.p/src_vram_transfer_manager.c.o
+    Object main.nef.p/asm_unk_0202068C.s.o
+    Object main.nef.p/src_unk_02020A0C.c.o
+    Object main.nef.p/src_ascii_util.c.o
+    Object main.nef.p/asm_unk_02020B8C.s.o
+    Object main.nef.p/asm_unk_020210A0.s.o
+    Object main.nef.p/src_obj_char_transfer.c.o
+    Object main.nef.p/src_obj_pltt_transfer.c.o
+    Object main.nef.p/src_gf_gfx_planes.c.o
+    Object main.nef.p/src_camera.c.o
+    Object main.nef.p/asm_unk_02023694.s.o
+    Object main.nef.p/src_sprite.c.o
+    Object main.nef.p/src_touchscreen.c.o
+    Object main.nef.p/src_timer3.c.o
+    Object main.nef.p/src_error_handling.c.o
+    Object main.nef.p/src_unk_02025534.c.o
+    Object main.nef.p/asm_unk_02025C44.s.o
+    Object main.nef.p/src_font_data.c.o
+    Object main.nef.p/src_pm_string.c.o
+    Object main.nef.p/src_touch_hitbox_controller.c.o
+    Object main.nef.p/asm_unk_02026DE0.s.o
+    Object main.nef.p/src_unk_02026E30.c.o
+    Object main.nef.p/src_unk_02026E84.c.o
+    Object main.nef.p/src_gf_3d_vramman.c.o
+    Object main.nef.p/asm_unk_02027010.s.o
+    Object main.nef.p/src_save_arrays.c.o
+    Object main.nef.p/src_save.c.o
+    Object main.nef.p/src_sav_system_info.c.o
+    Object main.nef.p/src_player_data.c.o
+    Object main.nef.p/src_save_link_ruleset.c.o
+    Object main.nef.p/src_link_ruleset_data.c.o
+    Object main.nef.p/src_daycare.c.o
+    Object main.nef.p/src_pokedex.c.o
+    Object main.nef.p/src_save_misc.c.o
+    Object main.nef.p/src_options.c.o
+    Object main.nef.p/src_apricorn_tree_sys.c.o
+    Object main.nef.p/src_save_gymmick.c.o
+    Object main.nef.p/src_save_palpad.c.o
+    Object main.nef.p/src_mail.c.o
+    Object main.nef.p/asm_unk_0202B614.s.o
+    Object main.nef.p/asm_unk_0202C034.s.o
+    Object main.nef.p/asm_unk_0202C730.s.o
+    Object main.nef.p/src_coins.c.o
+    Object main.nef.p/src_save_trainer_card.c.o
+    Object main.nef.p/src_save_wifi_history.c.o
+    Object main.nef.p/src_seal_case.c.o
+    Object main.nef.p/src_igt.c.o
+    Object main.nef.p/src_sav_chatot.c.o
+    Object main.nef.p/src_game_stats.c.o
+    Object main.nef.p/asm_unk_0202D230.s.o
+    Object main.nef.p/src_save_special_ribbons.c.o
+    Object main.nef.p/src_roamer.c.o
+    Object main.nef.p/asm_unk_0202DB34.s.o
+    Object main.nef.p/src_mystery_gift.c.o
+    Object main.nef.p/src_hall_of_fame.c.o
+    Object main.nef.p/asm_unk_0202E41C.s.o
+    Object main.nef.p/src_save_rankings.c.o
+    Object main.nef.p/src_palPark_migration.c.o
+    Object main.nef.p/src_update_dex_received.c.o
+    Object main.nef.p/src_save_follow_mon.c.o
+    Object main.nef.p/src_save_pokegear.c.o
+    Object main.nef.p/src_unk_0202F370.c.o
+    Object main.nef.p/src_safari_zone.c.o
+    Object main.nef.p/src_photo_album.c.o
+    Object main.nef.p/asm_unk_0202FBCC.s.o
+    Object main.nef.p/asm_unk_02030A98.s.o
+    Object main.nef.p/src_unk_0203170C.c.o
+    Object main.nef.p/asm_unk_020318C8.s.o
+    Object main.nef.p/src_pokeathlon_pokeathlon_save.c.o
+    Object main.nef.p/asm_unk_02031B0C.s.o
+    Object main.nef.p/src_pokewalker.c.o
+    Object main.nef.p/src_save_trainer_house.c.o
+    Object main.nef.p/asm_unk_02032844.s.o
+    Object main.nef.p/asm_unk_02033AE0.s.o
+    Object main.nef.p/asm_unk_02034354.s.o
+    Object main.nef.p/asm_unk_02034B0C.s.o
+    Object main.nef.p/asm_unk_02035900.s.o
+    Object main.nef.p/asm_unk_020379A0.s.o
+    Object main.nef.p/asm_unk_02037C94.s.o
+    Object main.nef.p/asm_unk_0203A3B0.s.o
+    Object main.nef.p/src_communication_error.c.o
+    Object main.nef.p/src_unk_0203AC88.c.o
+    Object main.nef.p/src_wfc_user_info_warning.c.o
+    Object main.nef.p/src_map_matrix.c.o
+    Object main.nef.p/src_map_header.c.o
+    Object main.nef.p/src_map_events.c.o
+    Object main.nef.p/src_save_local_field_data.c.o
+    Object main.nef.p/asm_unk_0203BA5C.s.o
+    Object main.nef.p/src_field_system_rtc_weather.c.o
+    Object main.nef.p/src_start_menu.c.o
+    Object main.nef.p/asm_unk_0203DB6C.s.o
+    Object main.nef.p/src_field_system.c.o
+    Object main.nef.p/src_location_backup.c.o
+    Object main.nef.p/src_launch_application.c.o
+    Object main.nef.p/src_script.c.o
+    Object main.nef.p/src_script_manager.c.o
+    Object main.nef.p/src_scrcmd_c.c.o
+    Object main.nef.p/src_scrcmd_mart.c.o
+    Object main.nef.p/src_scrcmd_strbuf.c.o
+    Object main.nef.p/src_scrcmd_lottery.c.o
+    Object main.nef.p/src_scrcmd_sound.c.o
+    Object main.nef.p/src_scrcmd_battle.c.o
+    Object main.nef.p/src_scrcmd_8.c.o
+    Object main.nef.p/src_scrcmd_9.c.o
+    Object main.nef.p/src_unk_0204A3F4.c.o
+    Object main.nef.p/src_unk_0204B538.c.o
+    Object main.nef.p/src_scrcmd_apricorn.c.o
+    Object main.nef.p/src_scrcmd_mystery_gift.c.o
+    Object main.nef.p/src_scrcmd_12.c.o
+    Object main.nef.p/src_scrcmd_money.c.o
+    Object main.nef.p/src_scrcmd_daycare.c.o
+    Object main.nef.p/src_scrcmd_party.c.o
+    Object main.nef.p/src_scrcmd_dppl_prizes.c.o
+    Object main.nef.p/src_scrcmd_17.c.o
+    Object main.nef.p/src_scrcmd_items.c.o
+    Object main.nef.p/src_scrcmd_move_relearner.c.o
+    Object main.nef.p/src_scrcmd_20.c.o
+    Object main.nef.p/src_scrcmd_battle_castle.c.o
+    Object main.nef.p/src_scrcmd_battle_arcade.c.o
+    Object main.nef.p/src_save_vars_flags.c.o
+    Object main.nef.p/src_task.c.o
+    Object main.nef.p/src_encounter.c.o
+    Object main.nef.p/asm_unk_020517A4.s.o
+    Object main.nef.p/src_battle_battle_setup.c.o
+    Object main.nef.p/src_blackout.c.o
+    Object main.nef.p/src_game_clear.c.o
+    Object main.nef.p/src_field_warp_tasks.c.o
+    Object main.nef.p/src_script_pokemon_util.c.o
+    Object main.nef.p/src_terrain_attributes.c.o
+    Object main.nef.p/asm_unk_02054648.s.o
+    Object main.nef.p/src_unk_02054E00.c.o
+    Object main.nef.p/src_field_bgm.c.o
+    Object main.nef.p/asm_unk_020551B8.s.o
+    Object main.nef.p/asm_unk_02055244.s.o
+    Object main.nef.p/src_unk_02055418.c.o
+    Object main.nef.p/src_catching_show.c.o
+    Object main.nef.p/asm_unk_02055BF0_data.s.o
+    Object main.nef.p/src_unk_02055BF0.c.o
+    Object main.nef.p/asm_unk_02056680.s.o
+    Object main.nef.p/asm_unk_02056D7C.s.o
+    Object main.nef.p/asm_unk_02058034.s.o
+    Object main.nef.p/asm_unk_02058AEC.s.o
+    Object main.nef.p/asm_unk_0205A44C.s.o
+    Object main.nef.p/asm_unk_0205AC88.s.o
+    Object main.nef.p/src_unk_0205B3DC.c.o
+    Object main.nef.p/src_dialog_box.c.o
+    Object main.nef.p/src_metatile_behavior.c.o
+    Object main.nef.p/asm_unk_0205BB1C.s.o
+    Object main.nef.p/asm_unk_0205BFF0.s.o
+    Object main.nef.p/src_player_avatar.c.o
+    Object main.nef.p/asm_unk_0205CB48.s.o
+    Object main.nef.p/src_map_object.c.o
+    Object main.nef.p/asm_unk_data_020FCBD8.s.o
+    Object main.nef.p/asm_unk_0205FD20.s.o
+    Object main.nef.p/asm_unk_02061284.s.o
+    Object main.nef.p/asm_unk_data_020FD978.s.o
+    Object main.nef.p/asm_unk_02062108.s.o
+    Object main.nef.p/asm_unk_data_020FDB44.s.o
+    Object main.nef.p/asm_unk_020632B0.s.o
+    Object main.nef.p/src_unk_020648EC.c.o
+    Object main.nef.p/src_field_use_item.c.o
+    Object main.nef.p/asm_unk_020658D4.s.o
+    Object main.nef.p/src_sys_flags.c.o
+    Object main.nef.p/src_sys_vars.c.o
+    Object main.nef.p/asm_unk_02066EDC.s.o
+    Object main.nef.p/src_field_roamer.c.o
+    Object main.nef.p/asm_unk_0206793C.s.o
+    Object main.nef.p/asm_unk_02067A60.s.o
+    Object main.nef.p/src_field_move.c.o
+    Object main.nef.p/src_field_move_environment.c.o
+    Object main.nef.p/asm_unk_020689C8.s.o
+    Object main.nef.p/src_gymmick_init.c.o
+    Object main.nef.p/src_unk_02068F84.c.o
+    Object main.nef.p/asm_unk_02068FC8.s.o
+    Object main.nef.p/src_unk_02069528.c.o
+    Object main.nef.p/asm_unk_02069660.s.o
+    Object main.nef.p/asm_unk_0206979C.s.o
+    Object main.nef.p/src_follow_mon.c.o
+    Object main.nef.p/src_map_preview_graphic.c.o
+    Object main.nef.p/src_field_take_photo.c.o
+    Object main.nef.p/src_unk_0206B910.c.o
+    Object main.nef.p/src_alph_checks.c.o
+    Object main.nef.p/src_get_egg.c.o
+    Object main.nef.p/src_unk_0206D494.c.o
+    Object main.nef.p/src_pokemon.c.o
+    Object main.nef.p/src_move.c.o
+    Object main.nef.p/src_trainer_data.c.o
+    Object main.nef.p/src_pokemon_storage_system.c.o
+    Object main.nef.p/src_pokemon_icon_idx.c.o
+    Object main.nef.p/src_party.c.o
+    Object main.nef.p/src_pokedex_util.c.o
+    Object main.nef.p/src_battle_regulation.c.o
+    Object main.nef.p/asm_unk_02074E5C.s.o
+    Object main.nef.p/asm_unk_020755E8.s.o
+    Object main.nef.p/asm_unk_020773AC.s.o
+    Object main.nef.p/asm_unk_02077678.s.o
+    Object main.nef.p/src_bag_view.c.o
+    Object main.nef.p/src_item.c.o
+    Object main.nef.p/src_bag.c.o
+    Object main.nef.p/asm_unk_02078834.s.o
+    Object main.nef.p/asm_unk_02078DD8.s.o
+    Object main.nef.p/src_party_menu.c.o
+    Object main.nef.p/src_party_context_menu.c.o
+    Object main.nef.p/src_party_menu_sprites.c.o
+    Object main.nef.p/src_party_menu_list_items.c.o
+    Object main.nef.p/src_party_menu_items.c.o
+    Object main.nef.p/src_naming_screen.c.o
+    Object main.nef.p/asm_unk_020850F4.s.o
+    Object main.nef.p/asm_unk_02085604.s.o
+    Object main.nef.p/asm_unk_020863F4.s.o
+    Object main.nef.p/asm_unk_02087284.s.o
+    Object main.nef.p/asm_unk_02087A78.s.o
+    Object main.nef.p/asm_unk_02087E70.s.o
+    Object main.nef.p/asm_unk_02087FD4.s.o
+    Object main.nef.p/src_unk_0208805C.c.o
+    Object main.nef.p/asm_unk_02088288.s.o
+    Object main.nef.p/asm_unk_0208B1AC.s.o
+    Object main.nef.p/asm_unk_0208C3E4.s.o
+    Object main.nef.p/asm_unk_0208DE40.s.o
+    Object main.nef.p/src_ribbon.c.o
+    Object main.nef.p/src_trainer_memo.c.o
+    Object main.nef.p/asm_unk_0208F658.s.o
+    Object main.nef.p/asm_unk_0208F814.s.o
+    Object main.nef.p/asm_unk_0208FB64.s.o
+    Object main.nef.p/src_use_item_on_mon.c.o
+    Object main.nef.p/src_mail_misc.c.o
+    Object main.nef.p/src_unk_02091054.c.o
+    Object main.nef.p/src_hatch_egg_task.c.o
+    Object main.nef.p/src_unk_02091278.c.o
+    Object main.nef.p/src_unk_020912AC.c.o
+    Object main.nef.p/src_dex_mon_measures.c.o
+    Object main.nef.p/src_unk_02091564.c.o
+    Object main.nef.p/asm_unk_020915B0.s.o
+    Object main.nef.p/src_location_gmm_dat.c.o
+    Object main.nef.p/src_move_relearner.c.o
+    Object main.nef.p/asm_unk_02091880.s.o
+    Object main.nef.p/src_application_delete_savedata.c.o
+    Object main.nef.p/src_application_check_savedata.c.o
+    Object main.nef.p/src_save_data_read_error.c.o
+    Object main.nef.p/src_save_data_write_error.c.o
+    Object main.nef.p/asm_unk_02092B04.s.o
+    Object main.nef.p/src_unk_02092BB8.c.o
+    Object main.nef.p/src_unk_02092BE8.c.o
+    Object main.nef.p/src_mom_gift.c.o
+    Object main.nef.p/src_unk_020932A4.c.o
+    Object main.nef.p/asm_unk_020932E0.s.o
+    Object main.nef.p/asm_unk_020957B0.s.o
+    Object main.nef.p/asm_unk_02095DF4.s.o
+    Object main.nef.p/src_phonebook_dat.c.o
+    Object main.nef.p/src_choose_starter.c.o
+    Object main.nef.p/asm_unk_020961D8.s.o
+    Object main.nef.p/src_error_message_reset.c.o
+    Object main.nef.p/src_sin_vcount.c.o
+    Object main.nef.p/asm_frontier.s.o
+	Object main.nef.p/src_unk_020968B0.c.o
+    Object main.nef.p/asm_unk_02096910.s.o
+    Object main.nef.p/asm_unk_02096C88.s.o
+    Object main.nef.p/asm_unk_02097024.s.o
+    Object main.nef.p/src_unk_020971F8.c.o
+    Object main.nef.p/src_unk_02097268.c.o
+    Object main.nef.p/src_unk_02097720.c.o
+    Object main.nef.p/asm_unk_020977CC.s.o
+    Object main.nef.p/asm_unk_020979A8.s.o
+    Object main.nef.p/asm_unk_02097B78.s.o
+    Object main.nef.p/asm_unk_02097BE0.s.o
+    Object main.nef.p/src_unk_02097D3C.c.o
+    Object main.nef.p/src_pokemon_mood.c.o
+    Object main.nef.p/src_unk_02097F6C.c.o
 
     ### Vendor libraries ###
-    Object asm/middleware.o
-    Object lib/asm/jn_spl.o
-    Object lib/NitroSDK/asm/wvr.o
-    Object lib/NitroDWC/asm/dwcbm.o
-    Object lib/NitroDWC/asm/dwcaccount.o
-    Object lib/asm/wifi.o
-    Object lib/asm/libVCT.o
-    Object lib/asm/nnsys.o
+    Library libspl.a
+    Library libwvr.a
+    Library libdwcbm.a
+    Library libdwcaccount.a
+    Library libcrypto_static.a
+    Library libsoc.a
+    Library libcps.a
+    Library libssl.a
+    Library libwcm.a
+    Library libstubsmd5.a
+    Library libvct.a
+    Library libnnsfnd.a
+	Library libnnsgfd.a
+	Library libnnsg2d.a
+	Library libnnsg3d.a
+	Library libnnssnd.a
 
     ### NitroSDK ###
-    Object lib/NitroSDK/asm/fx_sincos.o
-    Object lib/NitroSDK/asm/fx_mtx22.o
-    Object lib/NitroSDK/asm/fx_mtx33.o
-    Object lib/NitroSDK/asm/fx_mtx43.o
-    Object lib/NitroSDK/asm/fx_mtx44.o
-    Object lib/NitroSDK/asm/fx_cp.o
-    Object lib/NitroSDK/asm/fx_vec.o
-    Object lib/NitroSDK/asm/fx_trig.o
-    Object lib/NitroSDK/asm/fx_atanidx.o
-    Object lib/NitroSDK/asm/fx.o
-    Object lib/NitroSDK/asm/gx.o
-    Object lib/NitroSDK/asm/gxstate.o
-    Object lib/NitroSDK/asm/gx_vramcnt.o
-    Object lib/NitroSDK/asm/gx_bgcnt.o
-    Object lib/NitroSDK/asm/g2.o
-    Object lib/NitroSDK/asm/g3b.o
-    Object lib/NitroSDK/asm/g3imm.o
-    Object lib/NitroSDK/asm/g3x.o
-    Object lib/NitroSDK/asm/g3_util.o
-    Object lib/NitroSDK/asm/gx_load2d.o
-    Object lib/NitroSDK/asm/gx_load3d.o
-    Object lib/NitroSDK/asm/g3.o
-    Object lib/NitroSDK/asm/gxasm.o
-    Object lib/NitroSDK/src/os/os_irqHandler.o
-    Object lib/NitroSDK/src/os/os_irqTable.o
-    Object lib/NitroSDK/src/os/os_interrupt.o
-    Object lib/NitroSDK/src/os/os_spinLock.o
-    Object lib/NitroSDK/src/os/os_printf.o
-    Object lib/NitroSDK/src/os/os_thread.o
-    Object lib/NitroSDK/src/os/os_context.o
-    Object lib/NitroSDK/src/os/os_emulator.o
-    Object lib/NitroSDK/src/os/os_message.o
-    Object lib/NitroSDK/src/os/os_mutex.o
-    Object lib/NitroSDK/src/os/os_cache.o
-    Object lib/NitroSDK/src/os/os_init.o
-    Object lib/NitroSDK/src/os/os_arena.o
-    Object lib/NitroSDK/src/os/os_alloc.o
-    Object lib/NitroSDK/src/os/os_tcm.o
-    Object lib/NitroSDK/src/os/os_protectionUnit.o
-    Object lib/NitroSDK/src/os/os_protectionRegion.o
-    Object lib/NitroSDK/src/os/os_exception.o
-    Object lib/NitroSDK/src/os/os_timer.o
-    Object lib/NitroSDK/src/os/os_tick.o
-    Object lib/NitroSDK/src/os/os_alarm.o
-    Object lib/NitroSDK/src/os/os_valarm.o
-    Object lib/NitroSDK/src/os/os_system.o
-    Object lib/NitroSDK/src/os/os_reset.o
-    Object lib/NitroSDK/src/os/os_ownerInfo.o
-    Object lib/NitroSDK/src/os/os_vramExclusive.o
-    Object lib/NitroSDK/src/os/os_entropy.o
-    Object lib/NitroSDK/src/os/os_terminate_proc.o
-    Object lib/NitroSDK/asm/mi_wram.o
-    Object lib/NitroSDK/asm/mi_dma.o
-    Object lib/NitroSDK/asm/mi_dma_hblank.o
-    Object lib/NitroSDK/asm/mi_dma_gxcommand.o
-    Object lib/NitroSDK/asm/mi_memory.o
-    Object lib/NitroSDK/asm/mi_swap.o
-    Object lib/NitroSDK/asm/mi_uncompress.o
-    Object lib/NitroSDK/src/mi/mi_dma_card.o
-    Object lib/NitroSDK/asm/mi_compress.o
-    Object lib/NitroSDK/asm/mi_init.o
-    Object lib/asm/nitro.o
-    Object lib/MSL_C/asm/MSL_ARM_abort_exit.o
-    Object lib/MSL_c/asm/MSL_ARM_critical_regions_NITRO.o
-    Object lib/MSL_C/asm/MSL_ARM_math.o
-    Object lib/MSL_C/asm/MSL_Common_alloc.o
-    Object lib/MSL_C/asm/MSL_Common_ansi_files.o
-    Object lib/MSL_C/src/arith.o
-    Object lib/MSL_C/asm/MSL_Common_assert.o
-    Object lib/MSL_C/asm/MSL_Common_buffer_io.o
-    Object lib/MSL_C/asm/MSL_Common_ctype.o
-    Object lib/MSL_C/asm/MSL_Common_direct_io.o
-    Object lib/MSL_C/asm/MSL_Common_errno.o
-    Object lib/MSL_C/asm/MSL_Common_file_io.o
-    Object lib/MSL_C/asm/MSL_Common_file_pos.o
-    Object lib/MSL_C/asm/MSL_Common_float.o
-    Object lib/MSL_C/asm/MSL_Common_mbstring.o
-    Object lib/MSL_C/asm/MSL_Common_mem.o
-    Object lib/MSL_C/asm/MSL_Common_mem_funcs.o
-    Object lib/MSL_C/asm/MSL_Common_printf.o
-    Object lib/MSL_C/asm/MSL_Common_qsort.o
-    Object lib/MSL_C/src/rand.o
-    Object lib/MSL_C/asm/MSL_Common_scanf.o
-    Object lib/MSL_C/asm/MSL_Common_signal.o
-    Object lib/MSL_C/asm/MSL_Common_string.o
-    Object lib/MSL_C/asm/MSL_Common_strtold.o
-    Object lib/MSL_C/asm/MSL_Common_strtoul.o
-    Object lib/MSL_C/asm/MSL_Common_wchar_io.o
-    Object lib/MSL_C/asm/MSL_Common_wctype.o
-    Object lib/MSL_C/asm/MSL_Common_wmem.o
-    Object lib/MSL_C/asm/MSL_Common_wprintf.o
-    Object lib/MSL_C/asm/MSL_Common_wstring.o
-    Object lib/MSL_C/asm/MSL_DPMath_e_pow.o
-    Object lib/MSL_C/asm/MSL_DPMath_s_copysign.o
-    Object lib/MSL_C/asm/MSL_DPMath_s_fabs.o
-    Object lib/MSL_C/asm/MSL_DPMath_s_frexp.o
-    Object lib/MSL_C/asm/MSL_DPMath_s_ldexp.o
-    Object lib/MSL_C/asm/MSL_DPMath_w_pow.o
-    Object lib/MSL_C/asm/MSL_fp_ansi.o
-    Object lib/MSL_C/asm/MSL_math.o
-    Object lib/MSL_C/asm/MSL_ARM_pool_alloc_NITRO.o
-    Object lib/MSL_C/asm/MSL_string_extras.o
-    Object lib/MSL_C/asm/MSL_CPP_NITRO_Ai_LE.o
-    Object lib/asm/msl.o
+    Library libfx.a
+    Library libgx.a
+    Library libos.a
+    Library libmi.a
+    Library libsnd.a
+	Library libpxi.a
+	Library libfs.a
+	Library libdgt.a
+	Library libcp.a
+	Library libspi.a
+	Library librtc.a
+	Library libcard.a
+    Library libirc.a #this one is weird
+	Library libwm.a
+	Library libctrdg.a
+	Library libmath.a
+	Library libstd.a
+    Library MSL_C_NITRO_Ai_LE.a
+	Library MSL_Extras_NITRO_Ai_LE.a
+	Library MSL_CPP_NITRO_Ai_LE.a
+	Library FP_fastI_v5t_LE.a
+	Library NITRO_Runtime_Ai_LE.a
 }
 
 Autoload ITCM
 {
     Address 0x01FF8000
-    Object lib/NitroSDK/src/os/os_irqHandler.o (.itcm)
-    Object lib/NitroSDK/src/os/os_reset.o (.itcm)
-    Object lib/NitroSDK/asm/mi_dma.o (.itcm)
-    Object lib/NitroSDK/asm/mi_dma_gxcommand.o (.itcm)
-    Object lib/asm/nitro.o (.itcm)
+    Library libos.a (.itcm)
+    Library libmi.a (.itcm)
 }
 
 Autoload DTCM
 {
     Address 0x027E0000
-    Object lib/NitroSDK/src/os/os_irqHandler.o (.dtcm)
-    Object lib/NitroSDK/src/os/os_irqTable.o (.dtcm)
-    Object lib/NitroSDK/src/os/os_irqHandler.o (.dtcm.bss)
-    Object lib/NitroSDK/src/os/os_irqTable.o (.dtcm.bss)
+    Library libos.a (.dtcm)
 }
 Overlay OVY_0
 {
     After main
-    Object asm/overlay_00_thumb.o
-    Object lib/NitroDWC/asm/overlay_00_arm.o
+    Object main.nef.p/asm_overlay_00_thumb.s.o
+    Library libdwcauth.a
+    Library libdwcbase.a
+    Library libdwcac.a
+    Library libdwcgscommon.a
+    Library libdwcgsgp.a
+    Library libdwcgsgstats.a
+    Library libdwcgsgt2.a
+    Library libdwcgsnatneg.a
+    Library libdwcgsqr2.a
+    Library libdwcgsserverbrowsing.a
 }
 Overlay field
 {
     After main
-    Object src/field/fieldmap.o
-    Object src/field/field_3d_object_task.o
-    Object src/field/field_control.o
-    Object src/field/field_sprite_manager.o
-    Object src/field/map_prop_animation.o
-    Object asm/overlay_01_021E90C0.o
-    Object asm/overlay_01_021EA6C4.o
-    Object src/overlay_01_021EA824.o
-    Object asm/model_attributes.o
-    Object asm/overlay_01_021EABA8.o
-    Object asm/overlay_01_021EAF00.o
-    Object asm/overlay_01_021EAFD4.o
-    Object asm/overlay_01_021EB1E8.o
-    Object asm/overlay_01_021EDAFC.o
-    Object src/field/scrcmd_message.o
-    Object src/field/draw_map_name.o
-    Object asm/overlay_01_021EFB38.o
-    Object asm/overlay_01_021F1348.o
-    Object asm/overlay_01_021F1AFC.o
-    Object asm/overlay_01_021F3114.o
-    Object asm/overlay_01_021F3378.o
-    Object src/field/map_prop_manager.o
-    Object src/field/signpost.o
-    Object asm/overlay_01_021F3F50.o
-    Object asm/overlay_01_021F4464.o
-    Object asm/overlay_01_021F467C.o
-    Object asm/overlay_01_021F4704.o
-    Object asm/overlay_01_021F6830.o
-    Object asm/overlay_01_021F6CFC.o
-    Object asm/overlay_01_sprite_data.o
-    Object asm/overlay_01_021F72DC.o
-    Object asm/overlay_01_021F8D80.o
-    Object asm/overlay_01_021F944C.o
-    Object asm/overlay_01_021FAC44.o
-    Object asm/overlay_01_021FAD1C.o
-    Object asm/overlay_01_021FB04C.o
-    Object asm/overlay_01_021FB368.o
-    Object asm/overlay_01_021FB4C0.o
-    Object asm/overlay_01_021FB5D4.o
-    Object asm/overlay_01_021FB878.o
-    Object asm/overlay_01_021FC05C.o
-    Object asm/overlay_01_021FC4C4.o
-    Object asm/overlay_01_data_02208BFC.o
-    Object asm/overlay_01_021FC66C.o
-    Object asm/overlay_01_021FCD2C.o
-    Object asm/overlay_01_021FCE98.o
-    Object asm/overlay_01_021FD1B8.o
-    Object asm/overlay_01_021FD41C.o
-    Object asm/overlay_01_021FDA14.o
-    Object asm/overlay_01_021FE200.o
-    Object asm/overlay_01_021FE590.o
-    Object asm/overlay_01_021FE780.o
-    Object asm/overlay_01_021FEA0C.o
-    Object asm/overlay_01_021FEC38.o
-    Object asm/overlay_01_021FED9C.o
-    Object asm/overlay_01_021FEEEC.o
-    Object asm/overlay_01_021FF464.o
-    Object asm/overlay_01_021FF6B0.o
-    Object asm/overlay_01_021FF854.o
-    Object asm/overlay_01_021FFC0C.o
-    Object src/field/overlay_01_021FFECC.o
-    Object asm/overlay_01_02200040.o
-    Object asm/overlay_01_022001E4.o
-    Object asm/overlay_01_022006A8.o
-    Object asm/overlay_01_02200858.o
-    Object src/field/scrcmd_pokemon_misc.o
-    Object src/field/scrcmd_move_tutor.o
-    Object src/field/scrcmd_moneybox.o
-    Object asm/overlay_01_022031C0.o
-    Object asm/overlay_01_02203A18.o
-    Object asm/overlay_01_02203E40.o
-    Object src/field/overlay_01_02204004.o
-    Object src/field/apricorn_tree_anim.o
-    Object src/field/rock_smash_item.o
-    Object src/field/headbutt.o
-    Object asm/overlay_01_022051EC.o
-    Object asm/overlay_01_022053EC.o
+    Object main.nef.p/src_field_fieldmap.c.o
+    Object main.nef.p/src_field_field_3d_object_task.c.o
+    Object main.nef.p/src_field_field_control.c.o
+    Object main.nef.p/src_field_field_sprite_manager.c.o
+    Object main.nef.p/src_field_map_prop_animation.c.o
+    Object main.nef.p/asm_overlay_01_021E90C0.s.o
+    Object main.nef.p/asm_overlay_01_021EA6C4.s.o
+    Object main.nef.p/src_overlay_01_021EA824.c.o
+    Object main.nef.p/asm_model_attributes.s.o
+    Object main.nef.p/asm_overlay_01_021EABA8.s.o
+    Object main.nef.p/asm_overlay_01_021EAF00.s.o
+    Object main.nef.p/asm_overlay_01_021EAFD4.s.o
+    Object main.nef.p/asm_overlay_01_021EB1E8.s.o
+    Object main.nef.p/asm_overlay_01_021EDAFC.s.o
+    Object main.nef.p/src_field_scrcmd_message.c.o
+    Object main.nef.p/src_field_draw_map_name.c.o
+    Object main.nef.p/asm_overlay_01_021EFB38.s.o
+    Object main.nef.p/asm_overlay_01_021F1348.s.o
+    Object main.nef.p/asm_overlay_01_021F1AFC.s.o
+    Object main.nef.p/asm_overlay_01_021F3114.s.o
+    Object main.nef.p/asm_overlay_01_021F3378.s.o
+    Object main.nef.p/src_field_map_prop_manager.c.o
+    Object main.nef.p/src_field_signpost.c.o
+    Object main.nef.p/asm_overlay_01_021F3F50.s.o
+    Object main.nef.p/asm_overlay_01_021F4464.s.o
+    Object main.nef.p/asm_overlay_01_021F467C.s.o
+    Object main.nef.p/asm_overlay_01_021F4704.s.o
+    Object main.nef.p/asm_overlay_01_021F6830.s.o
+    Object main.nef.p/asm_overlay_01_021F6CFC.s.o
+    Object main.nef.p/asm_overlay_01_sprite_data.s.o
+    Object main.nef.p/asm_overlay_01_021F72DC.s.o
+    Object main.nef.p/asm_overlay_01_021F8D80.s.o
+    Object main.nef.p/asm_overlay_01_021F944C.s.o
+    Object main.nef.p/asm_overlay_01_021FAC44.s.o
+    Object main.nef.p/asm_overlay_01_021FAD1C.s.o
+    Object main.nef.p/asm_overlay_01_021FB04C.s.o
+    Object main.nef.p/asm_overlay_01_021FB368.s.o
+    Object main.nef.p/asm_overlay_01_021FB4C0.s.o
+    Object main.nef.p/asm_overlay_01_021FB5D4.s.o
+    Object main.nef.p/asm_overlay_01_021FB878.s.o
+    Object main.nef.p/asm_overlay_01_021FC05C.s.o
+    Object main.nef.p/asm_overlay_01_021FC4C4.s.o
+    Object main.nef.p/asm_overlay_01_data_02208BFC.s.o
+    Object main.nef.p/asm_overlay_01_021FC66C.s.o
+    Object main.nef.p/asm_overlay_01_021FCD2C.s.o
+    Object main.nef.p/asm_overlay_01_021FCE98.s.o
+    Object main.nef.p/asm_overlay_01_021FD1B8.s.o
+    Object main.nef.p/asm_overlay_01_021FD41C.s.o
+    Object main.nef.p/asm_overlay_01_021FDA14.s.o
+    Object main.nef.p/asm_overlay_01_021FE200.s.o
+    Object main.nef.p/asm_overlay_01_021FE590.s.o
+    Object main.nef.p/asm_overlay_01_021FE780.s.o
+    Object main.nef.p/asm_overlay_01_021FEA0C.s.o
+    Object main.nef.p/asm_overlay_01_021FEC38.s.o
+    Object main.nef.p/asm_overlay_01_021FED9C.s.o
+    Object main.nef.p/asm_overlay_01_021FEEEC.s.o
+    Object main.nef.p/asm_overlay_01_021FF464.s.o
+    Object main.nef.p/asm_overlay_01_021FF6B0.s.o
+    Object main.nef.p/asm_overlay_01_021FF854.s.o
+    Object main.nef.p/asm_overlay_01_021FFC0C.s.o
+    Object main.nef.p/src_field_overlay_01_021FFECC.c.o
+    Object main.nef.p/asm_overlay_01_02200040.s.o
+    Object main.nef.p/asm_overlay_01_022001E4.s.o
+    Object main.nef.p/asm_overlay_01_022006A8.s.o
+    Object main.nef.p/asm_overlay_01_02200858.s.o
+    Object main.nef.p/src_field_scrcmd_pokemon_misc.c.o
+    Object main.nef.p/src_field_scrcmd_move_tutor.c.o
+    Object main.nef.p/src_field_scrcmd_moneybox.c.o
+    Object main.nef.p/asm_overlay_01_022031C0.s.o
+    Object main.nef.p/asm_overlay_01_02203A18.s.o
+    Object main.nef.p/asm_overlay_01_02203E40.s.o
+    Object main.nef.p/src_field_overlay_01_02204004.c.o
+    Object main.nef.p/src_field_apricorn_tree_anim.c.o
+    Object main.nef.p/src_field_rock_smash_item.c.o
+    Object main.nef.p/src_field_headbutt.c.o
+    Object main.nef.p/asm_overlay_01_022051EC.s.o
+    Object main.nef.p/asm_overlay_01_022053EC.s.o
 }
 Overlay OVY_2
 {
     After field
-    Object asm/overlay_02_02245B80.o
-    Object src/field/encounter_check.o
-    Object asm/overlay_02_02248728.o
-    Object src/field/legend_cutscene_camera.o
-    Object src/field/overlay_2_gear_phone.o
-    Object src/field/event_cutscene_shaymin.o
-    Object src/field/event_cutscene_celebi.o
-    Object src/field/event_cutscene_sinjoh.o
-    Object src/overlay_02_02251E74.o
+    Object main.nef.p/asm_overlay_02_02245B80.s.o
+    Object main.nef.p/src_field_encounter_check.c.o
+    Object main.nef.p/asm_overlay_02_02248728.s.o
+    Object main.nef.p/src_field_legend_cutscene_camera.c.o
+    Object main.nef.p/src_field_overlay_2_gear_phone.c.o
+    Object main.nef.p/src_field_event_cutscene_shaymin.c.o
+    Object main.nef.p/src_field_event_cutscene_celebi.c.o
+    Object main.nef.p/src_field_event_cutscene_sinjoh.c.o
+    Object main.nef.p/src_overlay_02_02251E74.c.o
 }
 Overlay OVY_3
 {
     After OVY_2
-    Object src/overlay_03/communication_club.o
-    Object src/overlay_03/battle_regulation_menu.o
-    Object src/overlay_03/shop_menu.o
-    Object src/overlay_03/custom_safari_zone.o
-    Object src/overlay_03/overlay_03_scrcmds.o
-    Object src/overlay_03/pokeathlon_records.o
+    Object main.nef.p/src_overlay_03_communication_club.c.o
+    Object main.nef.p/src_overlay_03_battle_regulation_menu.c.o
+    Object main.nef.p/src_overlay_03_shop_menu.c.o
+    Object main.nef.p/src_overlay_03_custom_safari_zone.c.o
+    Object main.nef.p/src_overlay_03_overlay_03_scrcmds.c.o
+    Object main.nef.p/src_overlay_03_pokeathlon_records.c.o
 }
 Overlay OVY_4
 {
     After OVY_2
-    Object src/field/gymmick/violet.o
-    Object src/field/gymmick/azalea.o
-    Object src/field/gymmick/ecruteak.o
-    Object src/field/gymmick/blackthorn.o
-    Object src/field/gymmick/cianwood.o
-    Object src/field/gymmick/vermilion.o
-    Object src/field/gymmick/fuchsia.o
-    Object src/field/gymmick/viridian.o
-    Object src/field/gymmick/sinjoh.o
+    Object main.nef.p/src_field_gymmick_violet.c.o
+    Object main.nef.p/src_field_gymmick_azalea.c.o
+    Object main.nef.p/src_field_gymmick_ecruteak.c.o
+    Object main.nef.p/src_field_gymmick_blackthorn.c.o
+    Object main.nef.p/src_field_gymmick_cianwood.c.o
+    Object main.nef.p/src_field_gymmick_vermilion.c.o
+    Object main.nef.p/src_field_gymmick_fuchsia.c.o
+    Object main.nef.p/src_field_gymmick_viridian.c.o
+    Object main.nef.p/src_field_gymmick_sinjoh.c.o
 }
 Overlay OVY_5
 {
     After OVY_0
-    Object asm/overlay_05.o
+    Object main.nef.p/asm_overlay_05.s.o
 }
 Overlay OVY_6
 {
     After OVY_0
-    Object src/overlay_06.o
+    Object main.nef.p/src_overlay_06.c.o
 }
 Overlay OVY_7
 {
     After OVY_6
-    Object asm/overlay_07.o
+    Object main.nef.p/asm_overlay_07.s.o
 }
 Overlay OVY_8
 {
     After OVY_6
-    Object asm/overlay_08.o
+    Object main.nef.p/asm_overlay_08.s.o
 }
 Overlay OVY_9
 {
@@ -627,8 +563,8 @@ Overlay OVY_9
 Overlay OVY_10
 {
     After OVY_6
-    Object src/battle/trainer_ai.o
-    Object asm/overlay_10_trainer_ai.o
+    Object main.nef.p/src_battle_trainer_ai.c.o
+    Object main.nef.p/asm_overlay_10_trainer_ai.s.o
 }
 Overlay OVY_11
 {
@@ -637,317 +573,318 @@ Overlay OVY_11
 Overlay OVY_12
 {
     After OVY_7
-    Object src/battle/battle_022378C0.o
-    Object asm/overlay_12_022378C0.o
-    Object src/battle/battle_system.o
-    Object src/battle/battle_command.o
-    Object asm/overlay_12_battle_command.o
-    Object src/battle/battle_controller_player.o
-    Object src/battle/overlay_12_0224E4FC.o
-    Object asm/overlay_12_battle_controller_opponent.o
-    Object src/battle/battle_02261FD4.o
-    Object asm/overlay_12_battle_controller.o
-    Object src/battle/battle_hp_bar.o
-    Object asm/overlay_12_02265E28.o
-    Object src/battle/battle_input.o
-    Object src/battle/party_gauge.o
-    Object src/battle/battle_cursor.o
-    Object src/battle/battle_finger.o
-    Object src/battle/overlay_12_0226BEC4.o
+    Object main.nef.p/src_battle_battle_022378C0.c.o
+    Object main.nef.p/asm_overlay_12_022378C0.s.o
+    Object main.nef.p/src_battle_battle_system.c.o
+    Object main.nef.p/src_battle_battle_command.c.o
+    Object main.nef.p/asm_overlay_12_battle_command.s.o
+    Object main.nef.p/src_battle_battle_controller_player.c.o
+    Object main.nef.p/src_battle_overlay_12_0224E4FC.c.o
+    Object main.nef.p/asm_overlay_12_battle_controller_opponent.s.o
+    Object main.nef.p/src_battle_battle_02261FD4.c.o
+    Object main.nef.p/asm_overlay_12_battle_controller.s.o
+    Object main.nef.p/src_battle_battle_hp_bar.c.o
+    Object main.nef.p/asm_overlay_12_02265E28.s.o
+    Object main.nef.p/src_battle_battle_input.c.o
+    Object main.nef.p/src_battle_party_gauge.c.o
+    Object main.nef.p/src_battle_battle_cursor.c.o
+    Object main.nef.p/src_battle_battle_finger.c.o
+    Object main.nef.p/src_battle_overlay_12_0226BEC4.c.o
 }
 Overlay OVY_13
 {
     After OVY_0
-    Object src/overlay_13_thumb_1.o
-    Object lib/NitroSDK/asm/mb.o
-    Object asm/overlay_13_thumb_2.o
-    Object lib/NitroDWC/asm/overlay_13_arm_2.o
+    Object main.nef.p/src_overlay_13_thumb_1.c.o
+    Library libmb.a
+    Library libdwcutil.a
 }
 Overlay OVY_14
 {
     After main
-    Object asm/overlay_14.o
+    Object main.nef.p/asm_overlay_14.s.o
 }
 Overlay OVY_15
 {
     After OVY_14
-    Object asm/overlay_15.o
+    Object main.nef.p/asm_overlay_15.s.o
 }
 Overlay OVY_16
 {
     After OVY_15
-    Object src/overlay_16_022014A0.o
-    Object src/overlay_16_02201948.o
+    Object main.nef.p/src_overlay_16_022014A0.c.o
+    Object main.nef.p/src_overlay_16_02201948.c.o
 }
 Overlay OVY_17
 {
     After OVY_16
-    Object src/berry_pots_app.o
-    Object src/berry_pots_app_tasks.o
+    Object main.nef.p/src_berry_pots_app.c.o
+    Object main.nef.p/src_berry_pots_app_tasks.c.o
 }
 Overlay OVY_18
 {
     After main
-    Object src/poketool/pokefoot.o
-    Object src/application/pokedex/ov18_021E590C.o
-    Object src/application/pokedex/ov18_021E5AA0.o
-    Object src/application/pokedex/ov18_021E5C40.o
-    Object src/application/pokedex/ov18_021E8BF4.o
-    Object asm/overlay_18.o
+    Object main.nef.p/src_poketool_pokefoot.c.o
+    Object main.nef.p/src_application_pokedex_ov18_021E590C.c.o
+    Object main.nef.p/src_application_pokedex_ov18_021E5AA0.c.o
+    Object main.nef.p/src_application_pokedex_ov18_021E5C40.c.o
+    Object main.nef.p/src_application_pokedex_ov18_021E8BF4.c.o
+    Object main.nef.p/asm_overlay_18.s.o
 }
 Overlay OVY_19
 {
     After OVY_3
-    Object src/application/view_photo.o
+    Object main.nef.p/src_application_view_photo.c.o
 }
 Overlay OVY_20
 {
     After OVY_3
-    Object src/scrcmd_size_record.o
+    Object main.nef.p/src_scrcmd_size_record.c.o
 }
 Overlay OVY_21
 {
     After OVY_3
-    Object src/scrcmd_fossils.o
+    Object main.nef.p/src_scrcmd_fossils.c.o
 }
 Overlay OVY_22
 {
     After OVY_3
-    Object src/overlay_22.o
+    Object main.nef.p/src_overlay_22.c.o
 }
 Overlay npc_trade
 {
     After OVY_3
-    Object src/npc_trade.o
+    Object main.nef.p/src_npc_trade.c.o
 }
 Overlay bug_contest
 {
     After OVY_3
-    Object src/overlay_bug_contest.o
+    Object main.nef.p/src_overlay_bug_contest.c.o
 }
 Overlay OVY_25
 {
     After OVY_3
-    Object src/overlay_25.o
+    Object main.nef.p/src_overlay_25.c.o
 }
 Overlay OVY_26
 {
     After OVY_3
-    Object src/overlay_26_022598C0.o
-    Object src/overlay_26_022599D0.o
+    Object main.nef.p/src_overlay_26_022598C0.c.o
+    Object main.nef.p/src_overlay_26_022599D0.c.o
 }
 Overlay OVY_27
 {
     After bug_contest
-    Object asm/overlay_27.o
+    Object main.nef.p/asm_overlay_27.s.o
 }
 Overlay OVY_28
 {
     After OVY_27
-    Object asm/overlay_28.o
+    Object main.nef.p/asm_overlay_28.s.o
 }
 Overlay OVY_29
 {
     After OVY_27
-    Object asm/overlay_29.o
+    Object main.nef.p/asm_overlay_29.s.o
 }
 Overlay touch_save_app
 {
     After OVY_27
-    Object src/touch_save_app.o
+    Object main.nef.p/src_touch_save_app.c.o
 }
 Overlay OVY_31
 {
     After OVY_27
-    Object asm/overlay_31.o
+    Object main.nef.p/asm_overlay_31.s.o
 }
 Overlay OVY_32
 {
     After OVY_27
-    Object asm/overlay_32.o
+    Object main.nef.p/asm_overlay_32.s.o
 }
 Overlay OVY_33
 {
     After OVY_27
-    Object asm/overlay_33.o
+    Object main.nef.p/asm_overlay_33.s.o
 }
 Overlay OVY_34
 {
     After OVY_27
-    Object asm/overlay_34.o
+    Object main.nef.p/asm_overlay_34.s.o
 }
 Overlay OVY_35
 {
     After npc_trade
-    Object asm/overlay_35.o
+    Object main.nef.p/asm_overlay_35.s.o
 }
 Overlay OVY_36
 {
     After main
-    Object src/overlay_36.o
+    Object main.nef.p/src_overlay_36.c.o
 }
 Overlay OVY_37
 {
     After main
-    Object asm/overlay_37.o
+    Object main.nef.p/asm_overlay_37.s.o
 }
 Overlay OVY_38
 {
     After OVY_0
-    Object asm/overlay_38_thumb.o
-    Object lib/NitroDWC/asm/overlay_38_arm.o
+    Object main.nef.p/asm_overlay_38_thumb.s.o
+    Library libdwcgsghttp.a
+    Library libdwcnd.a
+    Library libdwcnhttp.a
 }
 Overlay OVY_39
 {
     After OVY_38
-    Object asm/overlay_39_thumb.o
-    Object lib/NitroDWC/asm/overlay_39_arm.o
+    Object main.nef.p/asm_overlay_39_thumb.s.o
+    Object main.nef.p/lib_NitroDWC_asm_overlay_39_arm.s.o
 }
 Overlay OVY_40
 {
     After OVY_39
-    Object asm/overlay_40.o
+    Object main.nef.p/asm_overlay_40.s.o
 }
 Overlay OVY_41
 {
     After OVY_40
-    Object asm/overlay_41.o
+    Object main.nef.p/asm_overlay_41.s.o
 }
 Overlay OVY_42
 {
     After OVY_38
-    Object src/overlay_42_02227D30.o
-    Object src/overlay_42_02227EE0.o
-    Object src/overlay_42_02227F68.o
-    Object src/overlay_42_02233EDC.o
+    Object main.nef.p/src_overlay_42_02227D30.c.o
+    Object main.nef.p/src_overlay_42_02227EE0.c.o
+    Object main.nef.p/src_overlay_42_02227F68.c.o
+    Object main.nef.p/src_overlay_42_02233EDC.c.o
 }
 Overlay OVY_43
 {
     After OVY_42
-    Object asm/overlay_43.o
+    Object main.nef.p/asm_overlay_43.s.o
 }
 Overlay OVY_44
 {
     After OVY_42
-    Object src/overlay_44_0222CDAC.o
-    Object src/overlay_44_02231A14.o
-    Object src/overlay_44_02232E90.o
-    Object src/overlay_44_02235340.o
+    Object main.nef.p/src_overlay_44_0222CDAC.c.o
+    Object main.nef.p/src_overlay_44_02231A14.c.o
+    Object main.nef.p/src_overlay_44_02232E90.c.o
+    Object main.nef.p/src_overlay_44_02235340.c.o
 }
 Overlay OVY_45
 {
     After OVY_42
-    Object asm/overlay_45_thumb.o
-    Object lib/NitroDWC/asm/overlay_45_arm.o
+    Object main.nef.p/asm_overlay_45_thumb.s.o
+    Library libdwcppwlobby.a
 }
 Overlay OVY_46
 {
     After OVY_45
-    Object asm/overlay_46.o
+    Object main.nef.p/asm_overlay_46.s.o
 }
 Overlay OVY_47
 {
     After OVY_45
-    Object asm/overlay_47.o
+    Object main.nef.p/asm_overlay_47.s.o
 }
 Overlay OVY_48
 {
     After OVY_45
-    Object asm/overlay_48.o
+    Object main.nef.p/asm_overlay_48.s.o
 }
 Overlay OVY_49
 {
     After OVY_45
-    Object asm/overlay_49.o
+    Object main.nef.p/asm_overlay_49.s.o
 }
 Overlay trainer_card
 {
     After main
-    Object src/overlay_trainer_card.o
+    Object main.nef.p/src_overlay_trainer_card.c.o
 }
 Overlay trainer_card_main
 {
     After trainer_card
-    Object asm/overlay_trainer_card_main.o
+    Object main.nef.p/asm_overlay_trainer_card_main.s.o
 }
 Overlay trainer_card_signature
 {
     After trainer_card_main
-    Object asm/overlay_trainer_card_signature.o
+    Object main.nef.p/asm_overlay_trainer_card_signature.s.o
 }
 Overlay OVY_53
 {
     After main
-    Object src/oaks_speech.o
-    Object src/oaks_speech_obj.o
-    Object src/oaks_speech_yesnomenu.o
+    Object main.nef.p/src_oaks_speech.c.o
+    Object main.nef.p/src_oaks_speech_obj.c.o
+    Object main.nef.p/src_oaks_speech_yesnomenu.c.o
 }
 Overlay options_app
 {
     After main
-    Object src/options_app.o
+    Object main.nef.p/src_options_app.c.o
 }
 Overlay OVY_55
 {
     After main
-    Object src/overlay_55.o
+    Object main.nef.p/src_overlay_55.c.o
 }
 Overlay OVY_56
 {
     After OVY_55
-    Object asm/overlay_56.o
+    Object main.nef.p/asm_overlay_56.s.o
 }
 Overlay OVY_57
 {
     After OVY_7
-    Object asm/overlay_57.o
+    Object main.nef.p/asm_overlay_57.s.o
 }
 Overlay OVY_58
 {
     After OVY_7
-    Object asm/overlay_58.o
+    Object main.nef.p/asm_overlay_58.s.o
 }
 Overlay OVY_59
 {
     After OVY_58
-    Object asm/overlay_59.o
+    Object main.nef.p/asm_overlay_59.s.o
 }
 Overlay intro_title
 {
     After main
-    Object src/title_screen.o
-    Object src/intro_movie.o
-    Object src/intro_movie_scenes_lib.o
-    Object src/intro_movie_scene_1.o
-    Object src/intro_movie_scene_2.o
-    Object src/intro_movie_scene_3.o
-    Object src/intro_movie_scene_4.o
-    Object src/intro_movie_scene_5.o
+    Object main.nef.p/src_title_screen.c.o
+    Object main.nef.p/src_intro_movie.c.o
+    Object main.nef.p/src_intro_movie_scenes_lib.c.o
+    Object main.nef.p/src_intro_movie_scene_1.c.o
+    Object main.nef.p/src_intro_movie_scene_2.c.o
+    Object main.nef.p/src_intro_movie_scene_3.c.o
+    Object main.nef.p/src_intro_movie_scene_4.c.o
+    Object main.nef.p/src_intro_movie_scene_5.c.o
 }
 Overlay OVY_61
 {
     After main
-    Object src/choose_starter_app.o
+    Object main.nef.p/src_choose_starter_app.c.o
 }
 Overlay OVY_62
 {
     After main
-    Object src/overlay_mic_test.o
+    Object main.nef.p/src_overlay_mic_test.c.o
 }
 Overlay OVY_63
 {
     After OVY_6
-    Object src/register_hall_of_fame.o
+    Object main.nef.p/src_register_hall_of_fame.c.o
 }
 Overlay OVY_64
 {
     After main
-    Object asm/overlay_64.o
+    Object main.nef.p/asm_overlay_64.s.o
 }
 Overlay OVY_65
 {
     After OVY_6
-    Object asm/overlay_65.o
+    Object main.nef.p/asm_overlay_65.s.o
 }
 Overlay OVY_66
 {
@@ -956,56 +893,56 @@ Overlay OVY_66
 Overlay OVY_67
 {
     After main
-    Object asm/overlay_67.o
+    Object main.nef.p/asm_overlay_67.s.o
 }
 Overlay OVY_68
 {
     After main
-    Object asm/overlay_68.o
+    Object main.nef.p/asm_overlay_68.s.o
 }
 Overlay OVY_69
 {
     After main
-    Object asm/overlay_69.o
+    Object main.nef.p/asm_overlay_69.s.o
 }
 Overlay OVY_70
 {
     After OVY_7
-    Object asm/overlay_70.o
+    Object main.nef.p/asm_overlay_70.s.o
 }
 Overlay OVY_71
 {
     After OVY_70
-    Object asm/overlay_71.o
+    Object main.nef.p/asm_overlay_71.s.o
 }
 Overlay OVY_72
 {
     After OVY_7
-    Object asm/overlay_72.o
+    Object main.nef.p/asm_overlay_72.s.o
 }
 Overlay OVY_73
 {
     After main
-    Object asm/overlay_73.o
+    Object main.nef.p/asm_overlay_73.s.o
 }
 Overlay OVY_74
 {
     After OVY_38
-    Object src/application/main_menu/main_menu.o
-    Object asm/overlay_74_thumb.o
-    Object asm/nitrocrypto.o
+    Object main.nef.p/src_application_main_menu_main_menu.c.o
+    Object main.nef.p/asm_overlay_74_thumb.s.o
+    Object main.nef.p/asm_nitrocrypto.s.o
 }
 Overlay OVY_75
 {
     After OVY_70
-    Object asm/overlay_75.o
+    Object main.nef.p/asm_overlay_75.s.o
 }
 Overlay credits
 {
     After main
-    Object src/credits/data1.o
-    Object src/credits/credits.o
-    Object src/credits/data2.o
+    Object main.nef.p/src_credits_data1.c.o
+    Object main.nef.p/src_credits_credits.c.o
+    Object main.nef.p/src_credits_data2.c.o
 }
 Overlay OVY_77
 {
@@ -1014,7 +951,7 @@ Overlay OVY_77
 Overlay certificates_app
 {
     After main
-    Object src/certificates_app.o
+    Object main.nef.p/src_certificates_app.c.o
 }
 Overlay OVY_79
 {
@@ -1023,227 +960,227 @@ Overlay OVY_79
 Overlay OVY_80
 {
     After OVY_42
-    Object asm/overlay_80_02229EE0.o
-    Object asm/frontier_system.o
-    Object src/frontier/frontier_script_context.o
-    Object asm/overlay_80_0222ACA0.o
-    Object asm/overlay_80_0222AEF8.o
-    Object asm/overlay_80_0222BDF4.o
-    Object asm/overlay_80_0222F608.o
-    Object asm/overlay_80_0222FD08.o
-    Object asm/overlay_80_02230B8C.o
-    Object asm/overlay_80_022310C4.o
-    Object asm/overlay_80_02231BF8.o
-    Object asm/overlay_80_022324C4.o
-    Object src/frontier/frontier_cmd_arcade.o
-    Object asm/overlay_80_022340E8.o
-    Object asm/overlay_80_02235390.o
-    Object asm/overlay_80_02235438.o
-    Object asm/overlay_80_022357B4.o
-    Object asm/overlay_80_02235900.o
-    Object asm/overlay_80_02235FC8.o
-    Object asm/overlay_80_02236450.o
-    Object asm/overlay_80_02236B78.o
-    Object asm/overlay_80_022372D8.o
-    Object asm/overlay_80_02237A70.o
-    Object asm/overlay_80_02238034.o
-    Object asm/overlay_80_022384D8.o
-    Object asm/frontier_map.o
-    Object asm/overlay_80_02239960.o
-    Object asm/overlay_80_02239AF8.o
-    Object asm/overlay_80_02239BF0.o
-    Object asm/overlay_80_02239D74.o
-    Object asm/overlay_80_0223A00C.o
-    Object asm/overlay_80_0223AC24.o
+    Object main.nef.p/asm_overlay_80_02229EE0.s.o
+    Object main.nef.p/asm_frontier_system.s.o
+    Object main.nef.p/src_frontier_frontier_script_context.c.o
+    Object main.nef.p/asm_overlay_80_0222ACA0.s.o
+    Object main.nef.p/asm_overlay_80_0222AEF8.s.o
+    Object main.nef.p/asm_overlay_80_0222BDF4.s.o
+    Object main.nef.p/asm_overlay_80_0222F608.s.o
+    Object main.nef.p/asm_overlay_80_0222FD08.s.o
+    Object main.nef.p/asm_overlay_80_02230B8C.s.o
+    Object main.nef.p/asm_overlay_80_022310C4.s.o
+    Object main.nef.p/asm_overlay_80_02231BF8.s.o
+    Object main.nef.p/asm_overlay_80_022324C4.s.o
+    Object main.nef.p/src_frontier_frontier_cmd_arcade.c.o
+    Object main.nef.p/asm_overlay_80_022340E8.s.o
+    Object main.nef.p/asm_overlay_80_02235390.s.o
+    Object main.nef.p/asm_overlay_80_02235438.s.o
+    Object main.nef.p/asm_overlay_80_022357B4.s.o
+    Object main.nef.p/asm_overlay_80_02235900.s.o
+    Object main.nef.p/asm_overlay_80_02235FC8.s.o
+    Object main.nef.p/asm_overlay_80_02236450.s.o
+    Object main.nef.p/asm_overlay_80_02236B78.s.o
+    Object main.nef.p/asm_overlay_80_022372D8.s.o
+    Object main.nef.p/asm_overlay_80_02237A70.s.o
+    Object main.nef.p/asm_overlay_80_02238034.s.o
+    Object main.nef.p/asm_overlay_80_022384D8.s.o
+    Object main.nef.p/asm_frontier_map.s.o
+    Object main.nef.p/asm_overlay_80_02239960.s.o
+    Object main.nef.p/asm_overlay_80_02239AF8.s.o
+    Object main.nef.p/asm_overlay_80_02239BF0.s.o
+    Object main.nef.p/asm_overlay_80_02239D74.s.o
+    Object main.nef.p/asm_overlay_80_0223A00C.s.o
+    Object main.nef.p/asm_overlay_80_0223AC24.s.o
 }
 Overlay OVY_81
 {
     After OVY_80
-    Object asm/overlay_81.o
+    Object main.nef.p/asm_overlay_81.s.o
 }
 Overlay OVY_82
 {
     After OVY_80
-    Object asm/overlay_82.o
+    Object main.nef.p/asm_overlay_82.s.o
 }
 Overlay OVY_83
 {
     After OVY_80
-    Object asm/overlay_83.o
+    Object main.nef.p/asm_overlay_83.s.o
 }
 Overlay OVY_84
 {
     After OVY_80
-    Object src/battle_arcade_game_board.o
-    Object asm/battle_arcade_game_board_data.o
+    Object main.nef.p/src_battle_arcade_game_board.c.o
+    Object main.nef.p/asm_battle_arcade_game_board_data.s.o
 }
 Overlay OVY_85
 {
     After main
-    Object asm/overlay_85.o
+    Object main.nef.p/asm_overlay_85.s.o
 }
 Overlay OVY_86
 {
     After main
-    Object asm/overlay_86.o
+    Object main.nef.p/asm_overlay_86.s.o
 }
 Overlay OVY_87
 {
     After main
-    Object asm/overlay_87.o
+    Object main.nef.p/asm_overlay_87.s.o
 }
 Overlay OVY_88
 {
     After OVY_45
-    Object asm/overlay_88.o
+    Object main.nef.p/asm_overlay_88.s.o
 }
 Overlay OVY_89
 {
     After OVY_45
-    Object asm/overlay_89.o
+    Object main.nef.p/asm_overlay_89.s.o
 }
 Overlay OVY_90
 {
     After OVY_45
-    Object asm/overlay_90.o
+    Object main.nef.p/asm_overlay_90.s.o
 }
 Overlay OVY_91
 {
     After OVY_90
-    Object asm/overlay_91.o
+    Object main.nef.p/asm_overlay_91.s.o
 }
 Overlay OVY_92
 {
     After OVY_90
-    Object asm/overlay_92.o
+    Object main.nef.p/asm_overlay_92.s.o
 }
 Overlay OVY_93
 {
     After OVY_90
-    Object asm/overlay_93_thumb_1.o
-    Object asm/overlay_93_arm.o
-    Object asm/overlay_93_thumb_2.o
+    Object main.nef.p/asm_overlay_93_thumb_1.s.o
+    Object main.nef.p/asm_overlay_93_arm.s.o
+    Object main.nef.p/asm_overlay_93_thumb_2.s.o
 }
 Overlay OVY_94
 {
     After main
-    Object src/overlay_94.o
+    Object main.nef.p/src_overlay_94.c.o
 }
 Overlay OVY_95
 {
     After main
-    Object asm/overlay_95.o
+    Object main.nef.p/asm_overlay_95.s.o
 }
 Overlay OVY_96
 {
     After main
-    Object src/pokeathlon/pokeathlon_course.o
-    Object asm/overlay_96.o
-    Object src/pokeathlon/pokeathlon_data.o
+    Object main.nef.p/src_pokeathlon_pokeathlon_course.c.o
+    Object main.nef.p/asm_overlay_96.s.o
+    Object main.nef.p/src_pokeathlon_pokeathlon_data.c.o
 }
 Overlay OVY_97
 {
     After OVY_96
-    Object asm/overlay_97.o
+    Object main.nef.p/asm_overlay_97.s.o
 }
 Overlay OVY_98
 {
     After OVY_96
-    Object asm/overlay_98.o
+    Object main.nef.p/asm_overlay_98.s.o
 }
 Overlay OVY_99
 {
     After main
-    Object asm/overlay_99.o
+    Object main.nef.p/asm_overlay_99.s.o
 }
 Overlay pokegear
 {
     After main
-    Object src/application/pokegear/main/overlay_100_021E5900.o
-    Object src/application/pokegear/main/pokegear_main.o
-    Object src/application/pokegear/main/overlay_100_021E6914.o
-    Object src/application/pokegear/main/pokegear_cursor.o
+    Object main.nef.p/src_application_pokegear_main_overlay_100_021E5900.c.o
+    Object main.nef.p/src_application_pokegear_main_pokegear_main.c.o
+    Object main.nef.p/src_application_pokegear_main_overlay_100_021E6914.c.o
+    Object main.nef.p/src_application_pokegear_main_pokegear_cursor.c.o
 }
 Overlay pokegear_app
 {
     After pokegear
-    Object src/application/pokegear/map/pokegear_map.o
-    Object src/application/pokegear/map/overlay_101_021F79B4.o
-    Object src/application/pokegear/map/overlay_101_021E7FF4.o
-    Object src/application/pokegear/map/overlay_101_021E9270.o
-    Object src/application/pokegear/map/overlay_101_021EB568.o
-    Object src/application/pokegear/map/overlay_101_021ED498.o
-    Object src/application/pokegear/map/fly_map.o
-    Object src/application/pokegear/map/overlay_101_021EDCE0.o
-    Object src/application/pokegear/configure/pokegear_configure.o
-    Object src/application/pokegear/configure/overlay_101_021EED44.o
-    Object src/application/pokegear/configure/overlay_101_021EF1D8.o
-    Object src/application/pokegear/configure/overlay_101_021EF6D0.o
-    Object src/application/pokegear/phone/pokegear_phone.o
-    Object src/application/pokegear/phone/overlay_101_021EFD20.o
-    Object src/application/pokegear/phone/overlay_101_021F017C.o
-    Object src/application/pokegear/phone/overlay_101_021F0880.o
-    Object src/application/pokegear/phone/overlay_101_021F0F48.o
-    Object src/application/pokegear/phone/overlay_101_021F1D74.o
-    Object src/application/pokegear/phone/scripts/phone_scripts_mother.o
-    Object src/application/pokegear/phone/scripts/phone_scripts_prof_elm.o
-    Object src/application/pokegear/phone/scripts/phone_scripts_generic.o
-    Object src/application/pokegear/phone/scripts/phone_scripts_prof_oak.o
-    Object src/application/pokegear/phone/scripts/phone_scripts_kurt.o
-    Object src/application/pokegear/phone/scripts/phone_scripts_bike_shop.o
-    Object src/application/pokegear/phone/scripts/phone_scripts_blackbelt_kenji.o
-    Object src/application/pokegear/phone/scripts/phone_scripts_bill.o
-    Object src/application/pokegear/phone/scripts/phone_scripts_daycare_man.o
-    Object src/application/pokegear/phone/scripts/phone_scripts_daycare_lady.o
-    Object src/application/pokegear/phone/scripts/phone_scripts_buena.o
-    Object src/application/pokegear/phone/scripts/phone_scripts_childhood_friend.o
-    Object src/application/pokegear/phone/scripts/phone_scripts_gym_leader.o
-    Object src/application/pokegear/phone/scripts/phone_scripts_baoba.o
-    Object src/application/pokegear/phone/scripts/phone_scripts_juggler_irwin.o
-    Object src/application/pokegear/phone/extra_ethan_lyra_data.o
-    Object src/application/pokegear/radio/pokegear_radio.o
-    Object src/application/pokegear/radio/overlay_101_021F49F8.o
-    Object src/application/pokegear/radio/overlay_101_021F4F34.o
-    Object src/application/pokegear/radio/overlay_101_021F57B8.o
-    Object src/application/pokegear/radio/shows/pokemon_music.o
-    Object src/application/pokegear/radio/shows/poke_flute.o
-    Object src/application/pokegear/radio/shows/unown.o
-    Object src/application/pokegear/radio/shows/team_rocket.o
-    Object src/application/pokegear/radio/shows/serial_radio_drama.o
-    Object src/application/pokegear/radio/shows/commercials.o
-    Object src/application/pokegear/radio/shows/pokemon_search_party.o
-    Object src/application/pokegear/radio/shows/buenas_password.o
-    Object src/application/pokegear/radio/shows/that_town_these_people.o
-    Object src/application/pokegear/radio/shows/trainer_profiles.o
-    Object src/application/pokegear/radio/shows/pokemon_talk.o
-    Object src/application/pokegear/radio/shows/mahogany_signal.o
-    Object src/application/pokegear/phone/phone_script_defs.o
-    Object src/application/pokegear/phone/phone_generic_headers.o
+    Object main.nef.p/src_application_pokegear_map_pokegear_map.c.o
+    Object main.nef.p/src_application_pokegear_map_overlay_101_021F79B4.c.o
+    Object main.nef.p/src_application_pokegear_map_overlay_101_021E7FF4.c.o
+    Object main.nef.p/src_application_pokegear_map_overlay_101_021E9270.c.o
+    Object main.nef.p/src_application_pokegear_map_overlay_101_021EB568.c.o
+    Object main.nef.p/src_application_pokegear_map_overlay_101_021ED498.c.o
+    Object main.nef.p/src_application_pokegear_map_fly_map.c.o
+    Object main.nef.p/src_application_pokegear_map_overlay_101_021EDCE0.c.o
+    Object main.nef.p/src_application_pokegear_configure_pokegear_configure.c.o
+    Object main.nef.p/src_application_pokegear_configure_overlay_101_021EED44.c.o
+    Object main.nef.p/src_application_pokegear_configure_overlay_101_021EF1D8.c.o
+    Object main.nef.p/src_application_pokegear_configure_overlay_101_021EF6D0.c.o
+    Object main.nef.p/src_application_pokegear_phone_pokegear_phone.c.o
+    Object main.nef.p/src_application_pokegear_phone_overlay_101_021EFD20.c.o
+    Object main.nef.p/src_application_pokegear_phone_overlay_101_021F017C.c.o
+    Object main.nef.p/src_application_pokegear_phone_overlay_101_021F0880.c.o
+    Object main.nef.p/src_application_pokegear_phone_overlay_101_021F0F48.c.o
+    Object main.nef.p/src_application_pokegear_phone_overlay_101_021F1D74.c.o
+    Object main.nef.p/src_application_pokegear_phone_scripts_phone_scripts_mother.c.o
+    Object main.nef.p/src_application_pokegear_phone_scripts_phone_scripts_prof_elm.c.o
+    Object main.nef.p/src_application_pokegear_phone_scripts_phone_scripts_generic.c.o
+    Object main.nef.p/src_application_pokegear_phone_scripts_phone_scripts_prof_oak.c.o
+    Object main.nef.p/src_application_pokegear_phone_scripts_phone_scripts_kurt.c.o
+    Object main.nef.p/src_application_pokegear_phone_scripts_phone_scripts_bike_shop.c.o
+    Object main.nef.p/src_application_pokegear_phone_scripts_phone_scripts_blackbelt_kenji.c.o
+    Object main.nef.p/src_application_pokegear_phone_scripts_phone_scripts_bill.c.o
+    Object main.nef.p/src_application_pokegear_phone_scripts_phone_scripts_daycare_man.c.o
+    Object main.nef.p/src_application_pokegear_phone_scripts_phone_scripts_daycare_lady.c.o
+    Object main.nef.p/src_application_pokegear_phone_scripts_phone_scripts_buena.c.o
+    Object main.nef.p/src_application_pokegear_phone_scripts_phone_scripts_childhood_friend.c.o
+    Object main.nef.p/src_application_pokegear_phone_scripts_phone_scripts_gym_leader.c.o
+    Object main.nef.p/src_application_pokegear_phone_scripts_phone_scripts_baoba.c.o
+    Object main.nef.p/src_application_pokegear_phone_scripts_phone_scripts_juggler_irwin.c.o
+    Object main.nef.p/src_application_pokegear_phone_extra_ethan_lyra_data.c.o
+    Object main.nef.p/src_application_pokegear_radio_pokegear_radio.c.o
+    Object main.nef.p/src_application_pokegear_radio_overlay_101_021F49F8.c.o
+    Object main.nef.p/src_application_pokegear_radio_overlay_101_021F4F34.c.o
+    Object main.nef.p/src_application_pokegear_radio_overlay_101_021F57B8.c.o
+    Object main.nef.p/src_application_pokegear_radio_shows_pokemon_music.c.o
+    Object main.nef.p/src_application_pokegear_radio_shows_poke_flute.c.o
+    Object main.nef.p/src_application_pokegear_radio_shows_unown.c.o
+    Object main.nef.p/src_application_pokegear_radio_shows_team_rocket.c.o
+    Object main.nef.p/src_application_pokegear_radio_shows_serial_radio_drama.c.o
+    Object main.nef.p/src_application_pokegear_radio_shows_commercials.c.o
+    Object main.nef.p/src_application_pokegear_radio_shows_pokemon_search_party.c.o
+    Object main.nef.p/src_application_pokegear_radio_shows_buenas_password.c.o
+    Object main.nef.p/src_application_pokegear_radio_shows_that_town_these_people.c.o
+    Object main.nef.p/src_application_pokegear_radio_shows_trainer_profiles.c.o
+    Object main.nef.p/src_application_pokegear_radio_shows_pokemon_talk.c.o
+    Object main.nef.p/src_application_pokegear_radio_shows_mahogany_signal.c.o
+    Object main.nef.p/src_application_pokegear_phone_phone_script_defs.c.o
+    Object main.nef.p/src_application_pokegear_phone_phone_generic_headers.c.o
 }
 Overlay OVY_102
 {
     After pokegear
-    Object asm/overlay_102.o
+    Object main.nef.p/asm_overlay_102.s.o
 }
 Overlay OVY_103
 {
     After OVY_102
-    Object asm/overlay_103.o
+    Object main.nef.p/asm_overlay_103.s.o
 }
 Overlay OVY_104
 {
     After main
-    Object asm/overlay_104.o
+    Object main.nef.p/asm_overlay_104.s.o
 }
 Overlay OVY_105
 {
     After main
-    Object asm/overlay_105.o
+    Object main.nef.p/asm_overlay_105.s.o
 }
 Overlay OVY_106
 {
     After main
-    Object asm/overlay_106.o
+    Object main.nef.p/asm_overlay_106.s.o
 }
 Overlay OVY_107
 {
@@ -1252,108 +1189,91 @@ Overlay OVY_107
 Overlay OVY_108
 {
     After main
-    Object asm/overlay_108.o
-    Object asm/overlay_108_021E8850.o
+    Object main.nef.p/asm_overlay_108.s.o
+    Object main.nef.p/asm_overlay_108_021E8850.s.o
 }
 Overlay OVY_109
 {
     After main
-    Object asm/overlay_109.o
+    Object main.nef.p/asm_overlay_109.s.o
 }
 Overlay OVY_110
 {
     After main
-    Object src/alph_puzzle.o
+    Object main.nef.p/src_alph_puzzle.c.o
 }
 Overlay OVY_111
 {
     After main
-    Object asm/overlay_111.o
+    Object main.nef.p/asm_overlay_111.s.o
 }
 Overlay OVY_112
 {
     After main
-    Object asm/overlay_112.o
+    Object main.nef.p/asm_overlay_112.s.o
 }
 Overlay OVY_113
 {
     After main
-    Object asm/overlay_113.o
+    Object main.nef.p/asm_overlay_113.s.o
 }
 Overlay OVY_114
 {
     After OVY_31
-    Object asm/overlay_114.o
+    Object main.nef.p/asm_overlay_114.s.o
 }
 Overlay OVY_115
 {
     After OVY_31
-    Object asm/overlay_115.o
+    Object main.nef.p/asm_overlay_115.s.o
 }
 Overlay OVY_116
 {
     After OVY_31
-    Object asm/overlay_116.o
+    Object main.nef.p/asm_overlay_116.s.o
 }
 Overlay OVY_117
 {
     After OVY_31
-    Object asm/overlay_117.o
+    Object main.nef.p/asm_overlay_117.s.o
 }
 Overlay OVY_118
 {
     After OVY_31
-    Object asm/overlay_118.o
+    Object main.nef.p/asm_overlay_118.s.o
 }
 Overlay OVY_119
 {
     After OVY_31
-    Object asm/overlay_119.o
+    Object main.nef.p/asm_overlay_119.s.o
 }
 Overlay OVY_120
 {
     After OVY_31
-    Object asm/overlay_120.o
+    Object main.nef.p/asm_overlay_120.s.o
 }
 Overlay view_rankings_app
 {
     After main
-    Object src/application/view_rankings.o
+    Object main.nef.p/src_application_view_rankings.c.o
 }
 Overlay voltorb_flip
 {
     After main
-    Object src/voltorb_flip/voltorb_flip.o
-    Object src/voltorb_flip/voltorb_flip_tasks.o
-    Object src/voltorb_flip/voltorb_flip_game.o
-    Object src/voltorb_flip/voltorb_flip_input.o
+    Object main.nef.p/src_voltorb_flip_voltorb_flip.c.o
+    Object main.nef.p/src_voltorb_flip_voltorb_flip_tasks.c.o
+    Object main.nef.p/src_voltorb_flip_voltorb_flip_game.c.o
+    Object main.nef.p/src_voltorb_flip_voltorb_flip_input.c.o
 }
 Overlay ds_protect
 {
     After OVY_31
-	Object lib/dsprot/dsprot_main_encrypted.o
-	Object lib/dsprot/dsprot_main_decrypter_encoded.o
-	Object lib/dsprot/dsprot_main_decrypter_decoder.o
-	Object lib/dsprot/extra.o
-	Object lib/dsprot/integrity_encrypted.o
-	Object lib/dsprot/integrity_decrypter_encoded.o
-	Object lib/dsprot/integrity_decrypter_decoder.o
-	Object lib/dsprot/encryptor_encoded.o
-	Object lib/dsprot/encryptor_decoder.o
-	Object lib/dsprot/mac_owner_encrypted.o
-	Object lib/dsprot/mac_owner_decrypter_encoded.o
-	Object lib/dsprot/rom_util_encrypted.o
-	Object lib/dsprot/rom_util_decrypter_encoded.o
-	Object lib/dsprot/rom_test_encrypted.o
-	Object lib/dsprot/rom_test_decrypter_encoded.o
-	Object lib/dsprot/coretests_decrypter_decoder.o
-	Object lib/dsprot/rc4_encoded.o
-	Object lib/dsprot/rc4_decoder.o
+	Library libdsprot.a
 }
 Overlay OVY_124
 {
     After ds_protect
-    Object src/overlay_124.o
+    Object main.nef.p/src_overlay_124.c.o
 }
 Overlay OVY_125
 {

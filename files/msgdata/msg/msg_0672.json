@@ -1,0 +1,105 @@
+{
+  "key": 15832,
+  "messages": [
+    {
+      "id": "msg_0672_00000",
+      "en_US": "Erin"
+    },
+    {
+      "id": "msg_0672_00001",
+      "en_US": [
+        "It really made me angry to lose.\n",
+        "I’ll have to train much harder...\r",
+        "Here’s my number. I’m Erin--don’t\n",
+        "forget! Want to battle me again? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0672_00002",
+      "en_US": [
+        "I’ll remember to call when I want to\n",
+        "battle again!"
+      ]
+    },
+    {
+      "id": "msg_0672_00003",
+      "en_US": [
+        "Oh... I’m sad... If you do want to\n",
+        "battle, come see Erin--that’s me!"
+      ]
+    },
+    {
+      "id": "msg_0672_00004",
+      "en_US": [
+        "I want to battle with you again.\n",
+        "Do you want to exchange numbers? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0672_00005",
+      "en_US": [
+        "Aww... I lost again!\n",
+        "I wonder how many times that is...\r",
+        "Thanks for coming!\n",
+        "Here’s a present!\r"
+      ]
+    },
+    {
+      "id": "msg_0672_00006",
+      "en_US": [
+        "What’s up? Wait, are you seriously\n",
+        "calling me from that close by?\f",
+        "Are you scared of me or something?\f",
+        "Why not talk face-to-face?"
+      ]
+    },
+    {
+      "id": "msg_0672_00007",
+      "en_US": [
+        "Erin’s {STRVAR_1 0, 10, 0} is much stronger\n",
+        "than before! I should know--I’m Erin!\r",
+        "See you. Bye-bye!"
+      ]
+    },
+    {
+      "id": "msg_0672_00008",
+      "en_US": [
+        "And, and...\r",
+        "I just battled and we defeated a\n",
+        "{STRVAR_1 0, 11, 0}!\r",
+        "I’ve raised my Pokémon properly!\r",
+        "See you. Bye-bye!"
+      ]
+    },
+    {
+      "id": "msg_0672_00009",
+      "en_US": [
+        "But, but...\r",
+        "A wild {STRVAR_1 0, 11, 0} got away from me\n",
+        "again. It’s just not fair!\r",
+        "See you. Bye-bye!"
+      ]
+    },
+    {
+      "id": "msg_0672_00010",
+      "en_US": [
+        "I’m Erin. Want to battle me again?\n",
+        "I’ll be waiting on {STRVAR_1 4, 3, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0672_00011",
+      "en_US": [
+        "Oh, {STRVAR_1 3, 0, 0}! Come battle Erin!\n",
+        "I’ll be waiting on {STRVAR_1 4, 3, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0672_00012",
+      "en_US": [
+        "I’m working hard to raise my Pokémon!\n",
+        "Come back for another battle!"
+      ]
+    }
+  ]
+}

@@ -4,8 +4,8 @@
 
 #include "constants/sndseq.h"
 
-#include "msgdata/msg.naix"
-#include "msgdata/msg/msg_0191.h"
+#include "files/msgdata/msg.naix"
+#include "files/msgdata/msg/msg_0191.h"
 
 #include "font.h"
 #include "render_window.h"
@@ -207,7 +207,7 @@ static void Get2dMenuSelectionCoords(struct ListMenu2D *listMenu, u8 *x, u8 *y, 
 
 struct ListMenu2D *CreateYesNoMenu(BgConfig *bgConfig, const WindowTemplate *windowTemplate, u16 tileNum, u8 paletteNum, u8 initialSelection, enum HeapID heapID) {
     struct ListMenu2DTemplate menuTemplate;
-    MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0191_bin, heapID);
+    MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, msg_0191, heapID);
     ListMenuItem *items = ListMenuItems_New(2, heapID);
     ListMenuItems_AppendFromMsgData(items, msgData, msg_0191_00042, 0);
     ListMenuItems_AppendFromMsgData(items, msgData, msg_0191_00043, LIST_CANCEL);

@@ -1,0 +1,75 @@
+{
+  "key": 17183,
+  "messages": [
+    {
+      "id": "msg_0341_R10_00000",
+      "en_US": [
+        "Lt. Surge: Oh, yay!\n",
+        "You have the Pokémon I love best:\f",
+        "PIKACHU!\r",
+        "Excellent!\n",
+        "I’ll give you my telephone number! {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0341_R10_00001",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} registered Lt. Surge\n",
+        "in the Pokégear!"
+      ]
+    },
+    {
+      "id": "msg_0341_R10_00002",
+      "en_US": [
+        "Lt. Surge: Give me a call on Friday\n",
+        "morning!\r",
+        "We can have an electrifying battle!"
+      ]
+    },
+    {
+      "id": "msg_0341_R10_00003",
+      "en_US": [
+        "Lt. Surge: Oh no!\n",
+        "How disappointing!"
+      ]
+    },
+    {
+      "id": "msg_0341_R10_00004",
+      "en_US": [
+        "Lt. Surge: Aha!\n",
+        "Now you want to know my telephone\f",
+        "number, don’t you? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0341_R10_00005",
+      "en_US": [
+        "Lt. Surge: Oh! What are the chances\n",
+        "of seeing you at a place like this?\r",
+        "I can feel electric power around\n",
+        "the Power Plant.\r",
+        "You may want to catch a PIKACHU in\n",
+        "the Viridian Forest and bring it here!"
+      ]
+    },
+    {
+      "id": "msg_0341_R10_00006",
+      "en_US": [
+        "There is a large Pokémon staring\n",
+        "at you...!\r"
+      ]
+    },
+    {
+      "id": "msg_0341_R10_00007",
+      "en_US": "ZAPDOS: Rorrrrrkoom!\r"
+    },
+    {
+      "id": "msg_0341_R10_00008",
+      "en_US": "Kanto Power Plant"
+    },
+    {
+      "id": "msg_0341_R10_00009",
+      "en_US": "Rock Tunnel"
+    }
+  ]
+}

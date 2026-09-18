@@ -1,0 +1,501 @@
+{
+  "key": 50258,
+  "messages": [
+    {
+      "id": "msg_0721_00000",
+      "en_US": " -"
+    },
+    {
+      "id": "msg_0721_00001",
+      "en_US": "STENCH"
+    },
+    {
+      "id": "msg_0721_00002",
+      "en_US": "DRIZZLE"
+    },
+    {
+      "id": "msg_0721_00003",
+      "en_US": "SPEED BOOST"
+    },
+    {
+      "id": "msg_0721_00004",
+      "en_US": "BATTLE ARMOR"
+    },
+    {
+      "id": "msg_0721_00005",
+      "en_US": "STURDY"
+    },
+    {
+      "id": "msg_0721_00006",
+      "en_US": "DAMP"
+    },
+    {
+      "id": "msg_0721_00007",
+      "en_US": "LIMBER"
+    },
+    {
+      "id": "msg_0721_00008",
+      "en_US": "SAND VEIL"
+    },
+    {
+      "id": "msg_0721_00009",
+      "en_US": "STATIC"
+    },
+    {
+      "id": "msg_0721_00010",
+      "en_US": "VOLT ABSORB"
+    },
+    {
+      "id": "msg_0721_00011",
+      "en_US": "WATER ABSORB"
+    },
+    {
+      "id": "msg_0721_00012",
+      "en_US": "OBLIVIOUS"
+    },
+    {
+      "id": "msg_0721_00013",
+      "en_US": "CLOUD NINE"
+    },
+    {
+      "id": "msg_0721_00014",
+      "en_US": "COMPOUNDEYES"
+    },
+    {
+      "id": "msg_0721_00015",
+      "en_US": "INSOMNIA"
+    },
+    {
+      "id": "msg_0721_00016",
+      "en_US": "COLOR CHANGE"
+    },
+    {
+      "id": "msg_0721_00017",
+      "en_US": "IMMUNITY"
+    },
+    {
+      "id": "msg_0721_00018",
+      "en_US": "FLASH FIRE"
+    },
+    {
+      "id": "msg_0721_00019",
+      "en_US": "SHIELD DUST"
+    },
+    {
+      "id": "msg_0721_00020",
+      "en_US": "OWN TEMPO"
+    },
+    {
+      "id": "msg_0721_00021",
+      "en_US": "SUCTION CUPS"
+    },
+    {
+      "id": "msg_0721_00022",
+      "en_US": "INTIMIDATE"
+    },
+    {
+      "id": "msg_0721_00023",
+      "en_US": "SHADOW TAG"
+    },
+    {
+      "id": "msg_0721_00024",
+      "en_US": "ROUGH SKIN"
+    },
+    {
+      "id": "msg_0721_00025",
+      "en_US": "WONDER GUARD"
+    },
+    {
+      "id": "msg_0721_00026",
+      "en_US": "LEVITATE"
+    },
+    {
+      "id": "msg_0721_00027",
+      "en_US": "EFFECT SPORE"
+    },
+    {
+      "id": "msg_0721_00028",
+      "en_US": "SYNCHRONIZE"
+    },
+    {
+      "id": "msg_0721_00029",
+      "en_US": "CLEAR BODY"
+    },
+    {
+      "id": "msg_0721_00030",
+      "en_US": "NATURAL CURE"
+    },
+    {
+      "id": "msg_0721_00031",
+      "en_US": "LIGHTNINGROD"
+    },
+    {
+      "id": "msg_0721_00032",
+      "en_US": "SERENE GRACE"
+    },
+    {
+      "id": "msg_0721_00033",
+      "en_US": "SWIFT SWIM"
+    },
+    {
+      "id": "msg_0721_00034",
+      "en_US": "CHLOROPHYLL"
+    },
+    {
+      "id": "msg_0721_00035",
+      "en_US": "ILLUMINATE"
+    },
+    {
+      "id": "msg_0721_00036",
+      "en_US": "TRACE"
+    },
+    {
+      "id": "msg_0721_00037",
+      "en_US": "HUGE POWER"
+    },
+    {
+      "id": "msg_0721_00038",
+      "en_US": "POISON POINT"
+    },
+    {
+      "id": "msg_0721_00039",
+      "en_US": "INNER FOCUS"
+    },
+    {
+      "id": "msg_0721_00040",
+      "en_US": "MAGMA ARMOR"
+    },
+    {
+      "id": "msg_0721_00041",
+      "en_US": "WATER VEIL"
+    },
+    {
+      "id": "msg_0721_00042",
+      "en_US": "MAGNET PULL"
+    },
+    {
+      "id": "msg_0721_00043",
+      "en_US": "SOUNDPROOF"
+    },
+    {
+      "id": "msg_0721_00044",
+      "en_US": "RAIN DISH"
+    },
+    {
+      "id": "msg_0721_00045",
+      "en_US": "SAND STREAM"
+    },
+    {
+      "id": "msg_0721_00046",
+      "en_US": "PRESSURE"
+    },
+    {
+      "id": "msg_0721_00047",
+      "en_US": "THICK FAT"
+    },
+    {
+      "id": "msg_0721_00048",
+      "en_US": "EARLY BIRD"
+    },
+    {
+      "id": "msg_0721_00049",
+      "en_US": "FLAME BODY"
+    },
+    {
+      "id": "msg_0721_00050",
+      "en_US": "RUN AWAY"
+    },
+    {
+      "id": "msg_0721_00051",
+      "en_US": "KEEN EYE"
+    },
+    {
+      "id": "msg_0721_00052",
+      "en_US": "HYPER CUTTER"
+    },
+    {
+      "id": "msg_0721_00053",
+      "en_US": "PICKUP"
+    },
+    {
+      "id": "msg_0721_00054",
+      "en_US": "TRUANT"
+    },
+    {
+      "id": "msg_0721_00055",
+      "en_US": "HUSTLE"
+    },
+    {
+      "id": "msg_0721_00056",
+      "en_US": "CUTE CHARM"
+    },
+    {
+      "id": "msg_0721_00057",
+      "en_US": "PLUS"
+    },
+    {
+      "id": "msg_0721_00058",
+      "en_US": "MINUS"
+    },
+    {
+      "id": "msg_0721_00059",
+      "en_US": "FORECAST"
+    },
+    {
+      "id": "msg_0721_00060",
+      "en_US": "STICKY HOLD"
+    },
+    {
+      "id": "msg_0721_00061",
+      "en_US": "SHED SKIN"
+    },
+    {
+      "id": "msg_0721_00062",
+      "en_US": "GUTS"
+    },
+    {
+      "id": "msg_0721_00063",
+      "en_US": "MARVEL SCALE"
+    },
+    {
+      "id": "msg_0721_00064",
+      "en_US": "LIQUID OOZE"
+    },
+    {
+      "id": "msg_0721_00065",
+      "en_US": "OVERGROW"
+    },
+    {
+      "id": "msg_0721_00066",
+      "en_US": "BLAZE"
+    },
+    {
+      "id": "msg_0721_00067",
+      "en_US": "TORRENT"
+    },
+    {
+      "id": "msg_0721_00068",
+      "en_US": "SWARM"
+    },
+    {
+      "id": "msg_0721_00069",
+      "en_US": "ROCK HEAD"
+    },
+    {
+      "id": "msg_0721_00070",
+      "en_US": "DROUGHT"
+    },
+    {
+      "id": "msg_0721_00071",
+      "en_US": "ARENA TRAP"
+    },
+    {
+      "id": "msg_0721_00072",
+      "en_US": "VITAL SPIRIT"
+    },
+    {
+      "id": "msg_0721_00073",
+      "en_US": "WHITE SMOKE"
+    },
+    {
+      "id": "msg_0721_00074",
+      "en_US": "PURE POWER"
+    },
+    {
+      "id": "msg_0721_00075",
+      "en_US": "SHELL ARMOR"
+    },
+    {
+      "id": "msg_0721_00076",
+      "en_US": "AIR LOCK"
+    },
+    {
+      "id": "msg_0721_00077",
+      "en_US": "TANGLED FEET"
+    },
+    {
+      "id": "msg_0721_00078",
+      "en_US": "MOTOR DRIVE"
+    },
+    {
+      "id": "msg_0721_00079",
+      "en_US": "RIVALRY"
+    },
+    {
+      "id": "msg_0721_00080",
+      "en_US": "STEADFAST"
+    },
+    {
+      "id": "msg_0721_00081",
+      "en_US": "SNOW CLOAK"
+    },
+    {
+      "id": "msg_0721_00082",
+      "en_US": "GLUTTONY"
+    },
+    {
+      "id": "msg_0721_00083",
+      "en_US": "ANGER POINT"
+    },
+    {
+      "id": "msg_0721_00084",
+      "en_US": "UNBURDEN"
+    },
+    {
+      "id": "msg_0721_00085",
+      "en_US": "HEATPROOF"
+    },
+    {
+      "id": "msg_0721_00086",
+      "en_US": "SIMPLE"
+    },
+    {
+      "id": "msg_0721_00087",
+      "en_US": "DRY SKIN"
+    },
+    {
+      "id": "msg_0721_00088",
+      "en_US": "DOWNLOAD"
+    },
+    {
+      "id": "msg_0721_00089",
+      "en_US": "IRON FIST"
+    },
+    {
+      "id": "msg_0721_00090",
+      "en_US": "POISON HEAL"
+    },
+    {
+      "id": "msg_0721_00091",
+      "en_US": "ADAPTABILITY"
+    },
+    {
+      "id": "msg_0721_00092",
+      "en_US": "SKILL LINK"
+    },
+    {
+      "id": "msg_0721_00093",
+      "en_US": "HYDRATION"
+    },
+    {
+      "id": "msg_0721_00094",
+      "en_US": "SOLAR POWER"
+    },
+    {
+      "id": "msg_0721_00095",
+      "en_US": "QUICK FEET"
+    },
+    {
+      "id": "msg_0721_00096",
+      "en_US": "NORMALIZE"
+    },
+    {
+      "id": "msg_0721_00097",
+      "en_US": "SNIPER"
+    },
+    {
+      "id": "msg_0721_00098",
+      "en_US": "MAGIC GUARD"
+    },
+    {
+      "id": "msg_0721_00099",
+      "en_US": "NO GUARD"
+    },
+    {
+      "id": "msg_0721_00100",
+      "en_US": "STALL"
+    },
+    {
+      "id": "msg_0721_00101",
+      "en_US": "TECHNICIAN"
+    },
+    {
+      "id": "msg_0721_00102",
+      "en_US": "LEAF GUARD"
+    },
+    {
+      "id": "msg_0721_00103",
+      "en_US": "KLUTZ"
+    },
+    {
+      "id": "msg_0721_00104",
+      "en_US": "MOLD BREAKER"
+    },
+    {
+      "id": "msg_0721_00105",
+      "en_US": "SUPER LUCK"
+    },
+    {
+      "id": "msg_0721_00106",
+      "en_US": "AFTERMATH"
+    },
+    {
+      "id": "msg_0721_00107",
+      "en_US": "ANTICIPATION"
+    },
+    {
+      "id": "msg_0721_00108",
+      "en_US": "FOREWARN"
+    },
+    {
+      "id": "msg_0721_00109",
+      "en_US": "UNAWARE"
+    },
+    {
+      "id": "msg_0721_00110",
+      "en_US": "TINTED LENS"
+    },
+    {
+      "id": "msg_0721_00111",
+      "en_US": "FILTER"
+    },
+    {
+      "id": "msg_0721_00112",
+      "en_US": "SLOW START"
+    },
+    {
+      "id": "msg_0721_00113",
+      "en_US": "SCRAPPY"
+    },
+    {
+      "id": "msg_0721_00114",
+      "en_US": "STORM DRAIN"
+    },
+    {
+      "id": "msg_0721_00115",
+      "en_US": "ICE BODY"
+    },
+    {
+      "id": "msg_0721_00116",
+      "en_US": "SOLID ROCK"
+    },
+    {
+      "id": "msg_0721_00117",
+      "en_US": "SNOW WARNING"
+    },
+    {
+      "id": "msg_0721_00118",
+      "en_US": "HONEY GATHER"
+    },
+    {
+      "id": "msg_0721_00119",
+      "en_US": "FRISK"
+    },
+    {
+      "id": "msg_0721_00120",
+      "en_US": "RECKLESS"
+    },
+    {
+      "id": "msg_0721_00121",
+      "en_US": "MULTITYPE"
+    },
+    {
+      "id": "msg_0721_00122",
+      "en_US": "FLOWER GIFT"
+    },
+    {
+      "id": "msg_0721_00123",
+      "en_US": "BAD DREAMS"
+    }
+  ]
+}

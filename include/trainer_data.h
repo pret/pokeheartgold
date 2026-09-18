@@ -6,30 +6,12 @@
 #include "constants/trainers.h"
 
 #ifndef PM_ASM
-#include "global.h"
+#include "constants/trainer_data.h"
 
 #include "mail_message.h"
 #include "pm_string.h"
 #include "pokemon_types_def.h"
 
-typedef enum TrainerAttr {
-    TRATTR_TYPE,
-    TRATTR_CLASS,
-    TRATTR_UNK2,
-    TRATTR_NPOKE,
-    TRATTR_ITEM1,
-    TRATTR_ITEM2,
-    TRATTR_ITEM3,
-    TRATTR_ITEM4,
-    TRATTR_AIFLAGS,
-    TRATTR_DOUBLEBTL,
-} TrainerAttr;
-
-typedef enum TrainerGender {
-    TRAINER_MALE,
-    TRAINER_FEMALE,
-    TRAINER_DOUBLE,
-} TrainerGender;
 
 typedef struct TrainerMonSpecies {
     // IV scale parameter

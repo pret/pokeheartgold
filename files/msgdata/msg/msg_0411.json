@@ -1,0 +1,56 @@
+{
+  "key": 57073,
+  "messages": [
+    {
+      "id": "msg_0411_00000",
+      "en_US": "Buena’s Password"
+    },
+    {
+      "id": "msg_0411_00001",
+      "en_US": "Buena"
+    },
+    {
+      "id": "msg_0411_00002",
+      "en_US": [
+        "Drama and documentary!\n",
+        "This is the Variety Hour Guy!"
+      ]
+    },
+    {
+      "id": "msg_0411_00003",
+      "en_US": [
+        "The Variety Channel that’s a treasure\n",
+        "chest filled with laughter and tears!"
+      ]
+    },
+    {
+      "id": "msg_0411_00004",
+      "en_US": [
+        "Buena: Hello, everyone! It’s Buena!\n",
+        "Time for today’s password!\n",
+        "Today’s password is...\n",
+        "{STRVAR_34 18, 0, 0}!\n",
+        "Don’t forget it!\n",
+        "I’m looking forward to your visiting\n",
+        "me at the Goldenrod City Radio Tower!"
+      ]
+    },
+    {
+      "id": "msg_0411_00005",
+      "en_US": [
+        "Buena: Hello, everyone! It’s Buena!\n",
+        "All my listeners out there, have you gone\n",
+        "to the Goldenrod City Radio Tower to get\n",
+        "your Blue Card yet? Remember the\n",
+        "password we announce on the show, and\n",
+        "go to the Goldenrod City Radio Tower.\n",
+        "If you come visit me on the second floor\n",
+        "and tell me the password, you’ll get\n",
+        "points on your card! Collect enough\n",
+        "points, and you can turn them in for\n",
+        "some great prizes! Try your best to\n",
+        "gather points, everyone!"
+      ]
+    }
+  ]
+}

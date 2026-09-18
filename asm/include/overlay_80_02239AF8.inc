@@ -1,4 +1,4 @@
-#include <nitro/fs/overlay.h>
+
 #pragma once
 .public SpriteSystem_LoadCharResObjFromOpenNarc
 .public SpriteSystem_LoadPaletteBufferFromOpenNarc

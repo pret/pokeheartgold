@@ -1,4 +1,4 @@
-	.include "asm/macros.inc"
+	.include "macros.inc"
 	.include "overlay_00_arm.inc"
 	.include "global.inc"
 
@@ -728,7 +728,7 @@ _021E8508:
 	ldr r0, [r0, #0x314]
 	ldr r1, _021E8778 ; =ov00_022164C8
 	bl ov00_021EA1CC
-	bl atol
+	bl atoi
 	ldr r1, _021E8774 ; =errno
 	ldr r1, [r1]
 	cmp r1, #0x22
@@ -1180,7 +1180,7 @@ _021E8B94:
 	cmp sb, #6
 	add r8, r8, #2
 	blt _021E8B94
-	bl ov00_021FAA40
+	bl DWC_AC_GetApType
 	mov r3, r0
 	cmp r3, #0xff
 	beq _021E8BCC
@@ -1211,7 +1211,7 @@ _021E8C10:
 	mov r2, #0x20
 	bl MI_CpuCopy8
 	add r0, r4, #0x72
-	bl ov00_021FAA70
+	bl DWC_AC_GetApSpotInfo
 	mov r0, r6
 	bl OS_RestoreInterrupts
 	mov r0, #1
@@ -1766,7 +1766,7 @@ ov00_021E9350: ; 0x021E9350
 	strb r1, [r6]
 	bl OS_LockMutex
 	add r0, r8, r7
-	bl atol
+	bl atoi
 	add r1, r5, #0x1000
 	add r2, r5, #0x218
 	str r0, [r1, #0xa30]
@@ -1883,7 +1883,7 @@ _021E9580:
 	add r6, r0, #0x1800
 	add r4, sl, #0x1000
 _021E95B4:
-	ldr r0, _021E974C ; =_021D4670
+	ldr r0, _021E974C ; =CPSMyIp
 	ldr r0, [r0]
 	cmp r0, #0
 	bne _021E95D4
@@ -1994,7 +1994,7 @@ _021E9728:
 _021E9740: .word 0x0000EA60
 _021E9744: .word ov00_021E9B38
 _021E9748: .word ov00_02216650
-_021E974C: .word _021D4670
+_021E974C: .word CPSMyIp
 _021E9750: .word 0x000082EA
 	arm_func_end ov00_021E9438
 
@@ -2460,7 +2460,7 @@ _021E9D5C:
 	cmp r4, #0
 	beq _021E9DC0
 	mov r0, r4
-	bl atol
+	bl atoi
 	add r1, r5, #0x1100
 	strh r0, [r1, #0x34]
 _021E9DC0:
@@ -3217,7 +3217,7 @@ _021EA7FC:
 	ldr r0, [r5, #0x14]
 	ldr r1, _021EB4F8 ; =ov00_022169F0
 	bl ov00_021EA1CC
-	bl atol
+	bl atoi
 	mov r6, r0
 	ldr r0, _021EB4FC ; =errno
 	ldr r0, [r0]
@@ -3709,7 +3709,7 @@ _021EAF10:
 	ldr r0, [r5, #0x14]
 	ldr r1, _021EB4F8 ; =ov00_022169F0
 	bl ov00_021EA1CC
-	bl atol
+	bl atoi
 	mov r6, r0
 	ldr r0, _021EB4FC ; =errno
 	ldr r0, [r0]
@@ -3760,7 +3760,7 @@ _021EAFA0:
 	b _021EB490
 _021EAFD4:
 	add r0, sp, #0x2c
-	bl atol
+	bl atoi
 	ldr r1, _021EB4FC ; =errno
 	ldr r1, [r1]
 	cmp r1, #0x22
@@ -3925,7 +3925,7 @@ _021EB234:
 	mov r1, #0
 	strb r1, [sl, r0]
 	mov r0, sl
-	bl atol
+	bl atoi
 	ldr r1, _021EB4FC ; =errno
 	ldr r1, [r1]
 	cmp r1, #0x22
@@ -4218,7 +4218,7 @@ ov00_021EB5B0: ; 0x021EB5B0
 	strb r2, [sp, #0x16]
 	strb r2, [sp, #0x19]
 	str r2, [r1]
-	bl atol
+	bl atoi
 	ldr r1, _021EB7C0 ; =errno
 	str r0, [sp, #0x2c]
 	ldr r1, [r1]
@@ -4250,7 +4250,7 @@ _021EB6CC:
 	mov r2, #0
 	add r0, sp, #5
 	str r2, [r1]
-	bl atol
+	bl atoi
 	ldr r1, _021EB7C0 ; =errno
 	str r0, [sp, #0x34]
 	ldr r0, [r1]
@@ -4259,7 +4259,7 @@ _021EB6CC:
 	mov r2, #0
 	add r0, sp, #0x11
 	str r2, [r1]
-	bl atol
+	bl atoi
 	ldr r1, _021EB7C0 ; =errno
 	str r0, [sp, #0x20]
 	ldr r0, [r1]
@@ -4268,7 +4268,7 @@ _021EB6CC:
 	mov r2, #0
 	add r0, sp, #0x14
 	str r2, [r1]
-	bl atol
+	bl atoi
 	ldr r1, _021EB7C0 ; =errno
 	str r0, [sp, #0x24]
 	ldr r0, [r1]
@@ -4277,7 +4277,7 @@ _021EB6CC:
 	mov r2, #0
 	add r0, sp, #0x17
 	str r2, [r1]
-	bl atol
+	bl atoi
 	ldr r1, _021EB7C0 ; =errno
 	str r0, [sp, #0x28]
 	ldr r0, [r1]
@@ -4322,7 +4322,7 @@ ov00_021EB7CC: ; 0x021EB7CC
 	beq _021EB7FC
 	ldr r1, _021EB858 ; =0xFFFFA1DC
 	mov r0, #9
-	bl ov00_021EC24C
+	bl DWCi_SetError
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
 _021EB7FC:
@@ -4335,7 +4335,7 @@ _021EB7FC:
 	bne _021EB82C
 	ldr r1, _021EB858 ; =0xFFFFA1DC
 	mov r0, #9
-	bl ov00_021EC24C
+	bl DWCi_SetError
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
 _021EB82C:
@@ -4434,7 +4434,7 @@ _021EB908:
 	beq _021EB98C
 	ldr r1, _021EBB04 ; =0xFFFFA1DC
 	mov r0, #9
-	bl ov00_021EC24C
+	bl DWCi_SetError
 	add sp, sp, #0xb0
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
@@ -4458,7 +4458,7 @@ _021EB9BC:
 	bl ov00_021E9754
 	ldr r1, _021EBB04 ; =0xFFFFA1DC
 	mov r0, #9
-	bl ov00_021EC24C
+	bl DWCi_SetError
 	add sp, sp, #0xb0
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
@@ -4488,7 +4488,7 @@ _021EBA2C:
 	bl ov00_021E9754
 	ldr r1, _021EBB04 ; =0xFFFFA1DC
 	mov r0, #9
-	bl ov00_021EC24C
+	bl DWCi_SetError
 	add sp, sp, #0xb0
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
@@ -4505,7 +4505,7 @@ _021EBA54:
 	bl ov00_021E9754
 	ldr r1, _021EBB04 ; =0xFFFFA1DC
 	mov r0, #9
-	bl ov00_021EC24C
+	bl DWCi_SetError
 	add sp, sp, #0xb0
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
@@ -4530,7 +4530,7 @@ _021EBA94:
 	bl ov00_021E9754
 	ldr r1, _021EBB04 ; =0xFFFFA1DC
 	mov r0, #9
-	bl ov00_021EC24C
+	bl DWCi_SetError
 	mov r0, #0
 	add sp, sp, #0xb0
 	ldmia sp!, {r3, r4, r5, pc}
@@ -4597,7 +4597,7 @@ _021EBBC0:
 	bl ov00_021E9754
 	ldr r1, _021EBBE8 ; =0xFFFFA1DB
 	mov r0, #0x11
-	bl ov00_021EC24C
+	bl DWCi_SetError
 	mov r0, #4
 	ldmia sp!, {r3, pc}
 _021EBBDC:
@@ -4621,7 +4621,7 @@ ov00_021EBBEC: ; 0x021EBBEC
 	bne _021EBC28
 	ldr r1, _021EBDE0 ; =0xFFFF9DF3
 	mov r0, #0x10
-	bl ov00_021EC24C
+	bl DWCi_SetError
 	add sp, sp, #4
 	mov r0, #0
 	ldmia sp!, {r3, r4, pc}
@@ -4640,12 +4640,12 @@ _021EBC40:
 	bne _021EBC6C
 	ldr r1, _021EBDE0 ; =0xFFFF9DF3
 	mov r0, #0x10
-	bl ov00_021EC24C
+	bl DWCi_SetError
 	add sp, sp, #4
 	mov r0, #0
 	ldmia sp!, {r3, r4, pc}
 _021EBC6C:
-	bl atol
+	bl atoi
 	ldr r1, _021EBDEC ; =errno
 	mov r2, r0
 	ldr r0, [r1]
@@ -4653,7 +4653,7 @@ _021EBC6C:
 	bne _021EBC9C
 	ldr r1, _021EBDE0 ; =0xFFFF9DF3
 	mov r0, #0x10
-	bl ov00_021EC24C
+	bl DWCi_SetError
 	add sp, sp, #4
 	mov r0, #0
 	ldmia sp!, {r3, r4, pc}
@@ -4663,7 +4663,7 @@ _021EBC9C:
 	ldr r1, _021EBDF0 ; =0xFFFF9E58
 	mov r0, #0x10
 	sub r1, r1, r2
-	bl ov00_021EC24C
+	bl DWCi_SetError
 	add sp, sp, #4
 	mov r0, #0
 	ldmia sp!, {r3, r4, pc}
@@ -4677,13 +4677,13 @@ _021EBCC0:
 	bgt _021EBCF4
 	ldr r1, _021EBDE0 ; =0xFFFF9DF3
 	mov r0, #0x10
-	bl ov00_021EC24C
+	bl DWCi_SetError
 	add sp, sp, #4
 	mov r0, #0
 	ldmia sp!, {r3, r4, pc}
 _021EBCF4:
 	add r0, sp, #0
-	bl atol
+	bl atoi
 	ldr r1, _021EBDEC ; =errno
 	mov r2, r0
 	ldr r0, [r1]
@@ -4691,7 +4691,7 @@ _021EBCF4:
 	bne _021EBD28
 	ldr r1, _021EBDE0 ; =0xFFFF9DF3
 	mov r0, #0x10
-	bl ov00_021EC24C
+	bl DWCi_SetError
 	add sp, sp, #4
 	mov r0, #0
 	ldmia sp!, {r3, r4, pc}
@@ -4701,7 +4701,7 @@ _021EBD28:
 	ldr r1, _021EBDF8 ; =0xFFFFA240
 	mov r0, #0x10
 	sub r1, r1, r2
-	bl ov00_021EC24C
+	bl DWCi_SetError
 	add sp, sp, #4
 	mov r0, #0
 	ldmia sp!, {r3, r4, pc}
@@ -4968,8 +4968,8 @@ _021EC0F4:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	arm_func_end ov00_021EBF90
 
-	arm_func_start ov00_021EC0FC
-ov00_021EC0FC: ; 0x021EC0FC
+	arm_func_start DWC_GetLastError
+DWC_GetLastError: ; 0x021EC0FC
 	cmp r0, #0
 	ldrne r1, _021EC118 ; =ov00_0221A74C
 	ldrne r1, [r1, #4]
@@ -4979,10 +4979,10 @@ ov00_021EC0FC: ; 0x021EC0FC
 	bx lr
 	.balign 4, 0
 _021EC118: .word ov00_0221A74C
-	arm_func_end ov00_021EC0FC
+	arm_func_end DWC_GetLastError
 
-	arm_func_start ov00_021EC11C
-ov00_021EC11C: ; 0x021EC11C
+	arm_func_start DWC_GetLastErrorEx
+DWC_GetLastErrorEx: ; 0x021EC11C
 	cmp r0, #0
 	ldrne r2, _021EC20C ; =ov00_0221A74C
 	ldrne r2, [r2, #4]
@@ -5056,10 +5056,10 @@ _021EC200:
 	bx lr
 	.balign 4, 0
 _021EC20C: .word ov00_0221A74C
-	arm_func_end ov00_021EC11C
+	arm_func_end DWC_GetLastErrorEx
 
-	arm_func_start ov00_021EC210
-ov00_021EC210: ; 0x021EC210
+	arm_func_start DWC_ClearError
+DWC_ClearError: ; 0x021EC210
 	ldr r0, _021EC22C ; =ov00_0221A74C
 	ldr r1, [r0]
 	cmp r1, #9
@@ -5069,10 +5069,10 @@ ov00_021EC210: ; 0x021EC210
 	bx lr
 	.balign 4, 0
 _021EC22C: .word ov00_0221A74C
-	arm_func_end ov00_021EC210
+	arm_func_end DWC_ClearError
 
-	arm_func_start ov00_021EC230
-ov00_021EC230: ; 0x021EC230
+	arm_func_start DWCi_IsError
+DWCi_IsError: ; 0x021EC230
 	ldr r0, _021EC248 ; =ov00_0221A74C
 	ldr r0, [r0]
 	cmp r0, #0
@@ -5081,10 +5081,10 @@ ov00_021EC230: ; 0x021EC230
 	bx lr
 	.balign 4, 0
 _021EC248: .word ov00_0221A74C
-	arm_func_end ov00_021EC230
+	arm_func_end DWCi_IsError
 
-	arm_func_start ov00_021EC24C
-ov00_021EC24C: ; 0x021EC24C
+	arm_func_start DWCi_SetError
+DWCi_SetError: ; 0x021EC24C
 	ldr r2, _021EC260 ; =ov00_0221A74C
 	ldr r3, [r2]
 	cmp r3, #9
@@ -5092,7 +5092,7 @@ ov00_021EC24C: ; 0x021EC24C
 	bx lr
 	.balign 4, 0
 _021EC260: .word ov00_0221A74C
-	arm_func_end ov00_021EC24C
+	arm_func_end DWCi_SetError
 
 	arm_func_start ov00_021EC264
 ov00_021EC264: ; 0x021EC264
@@ -5119,24 +5119,24 @@ ov00_021EC284: ; 0x021EC284
 	ldmia sp!, {r3, pc}
 	arm_func_end ov00_021EC284
 
-	arm_func_start ov00_021EC294
-ov00_021EC294: ; 0x021EC294
+	arm_func_start DWC_SetMemFunc
+DWC_SetMemFunc: ; 0x021EC294
 	ldr r2, _021EC2A4 ; =ov00_0221A754
 	str r0, [r2, #4]
 	str r1, [r2]
 	bx lr
 	.balign 4, 0
 _021EC2A4: .word ov00_0221A754
-	arm_func_end ov00_021EC294
+	arm_func_end DWC_SetMemFunc
 
-	arm_func_start ov00_021EC2A8
-ov00_021EC2A8: ; 0x021EC2A8
+	arm_func_start DWC_Alloc
+DWC_Alloc: ; 0x021EC2A8
 	ldr ip, _021EC2B4 ; =ov00_021EC2B8
 	mov r2, #0x20
 	bx ip
 	.balign 4, 0
 _021EC2B4: .word ov00_021EC2B8
-	arm_func_end ov00_021EC2A8
+	arm_func_end DWC_Alloc
 
 	arm_func_start ov00_021EC2B8
 ov00_021EC2B8: ; 0x021EC2B8
@@ -5156,8 +5156,8 @@ ov00_021EC2B8: ; 0x021EC2B8
 _021EC2E8: .word ov00_0221A754
 	arm_func_end ov00_021EC2B8
 
-	arm_func_start ov00_021EC2EC
-ov00_021EC2EC: ; 0x021EC2EC
+	arm_func_start DWC_Free
+DWC_Free: ; 0x021EC2EC
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	cmp r1, #0
@@ -5174,7 +5174,7 @@ ov00_021EC2EC: ; 0x021EC2EC
 	ldmia sp!, {r4, pc}
 	.balign 4, 0
 _021EC324: .word ov00_0221A754
-	arm_func_end ov00_021EC2EC
+	arm_func_end DWC_Free
 
 	arm_func_start ov00_021EC328
 ov00_021EC328: ; 0x021EC328
@@ -5211,24 +5211,24 @@ ov00_021EC33C: ; 0x021EC33C
 	mov r0, r8
 	mov r1, r7
 	mov r2, r6
-	bl ov00_021EC2EC
+	bl DWC_Free
 _021EC3A0:
 	mov r0, r4
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	arm_func_end ov00_021EC33C
 
-	arm_func_start ov00_021EC3A8
-ov00_021EC3A8: ; 0x021EC3A8
-	ldr ip, _021EC3B8 ; =ov00_021EC2A8
+	arm_func_start DWCi_GsMalloc
+DWCi_GsMalloc: ; 0x021EC3A8
+	ldr ip, _021EC3B8 ; =DWC_Alloc
 	mov r1, r0
 	mov r0, #5
 	bx ip
 	.balign 4, 0
-_021EC3B8: .word ov00_021EC2A8
-	arm_func_end ov00_021EC3A8
+_021EC3B8: .word DWC_Alloc
+	arm_func_end DWCi_GsMalloc
 
-	arm_func_start ov00_021EC3BC
-ov00_021EC3BC: ; 0x021EC3BC
+	arm_func_start DWCi_GsRealloc
+DWCi_GsRealloc: ; 0x021EC3BC
 	ldr ip, _021EC3D4 ; =ov00_021EC328
 	mov r2, r1
 	mov r1, r0
@@ -5237,21 +5237,21 @@ ov00_021EC3BC: ; 0x021EC3BC
 	bx ip
 	.balign 4, 0
 _021EC3D4: .word ov00_021EC328
-	arm_func_end ov00_021EC3BC
+	arm_func_end DWCi_GsRealloc
 
-	arm_func_start ov00_021EC3D8
-ov00_021EC3D8: ; 0x021EC3D8
-	ldr ip, _021EC3EC ; =ov00_021EC2EC
+	arm_func_start DWCi_GsFree
+DWCi_GsFree: ; 0x021EC3D8
+	ldr ip, _021EC3EC ; =DWC_Free
 	mov r1, r0
 	mov r0, #5
 	mov r2, #0
 	bx ip
 	.balign 4, 0
-_021EC3EC: .word ov00_021EC2EC
-	arm_func_end ov00_021EC3D8
+_021EC3EC: .word DWC_Free
+	arm_func_end DWCi_GsFree
 
-	arm_func_start ov00_021EC3F0
-ov00_021EC3F0: ; 0x021EC3F0
+	arm_func_start DWC_InitInetEx
+DWC_InitInetEx: ; 0x021EC3F0
 	stmdb sp!, {r4, r5, r6, lr}
 	ldr r2, _021EC450 ; =ov00_0221A75C
 	mov r4, r0
@@ -5278,10 +5278,10 @@ ov00_021EC3F0: ; 0x021EC3F0
 	ldmia sp!, {r4, r5, r6, pc}
 	.balign 4, 0
 _021EC450: .word ov00_0221A75C
-	arm_func_end ov00_021EC3F0
+	arm_func_end DWC_InitInetEx
 
-	arm_func_start ov00_021EC454
-ov00_021EC454: ; 0x021EC454
+	arm_func_start DWC_SetAuthServer
+DWC_SetAuthServer: ; 0x021EC454
 	stmdb sp!, {r3, lr}
 	cmp r0, #0
 	beq _021EC474
@@ -5306,10 +5306,10 @@ _021EC48C:
 _021EC498: .word ov00_02217938
 _021EC49C: .word ov00_02217960
 _021EC4A0: .word ov00_02217984
-	arm_func_end ov00_021EC454
+	arm_func_end DWC_SetAuthServer
 
-	arm_func_start ov00_021EC4A4
-ov00_021EC4A4: ; 0x021EC4A4
+	arm_func_start DWC_ConnectInetAsync
+DWC_ConnectInetAsync: ; 0x021EC4A4
 	stmdb sp!, {lr}
 	sub sp, sp, #0xc
 	ldr r0, _021EC548 ; =ov00_0221A75C
@@ -5325,9 +5325,9 @@ ov00_021EC4A4: ; 0x021EC4A4
 	mov r2, #0xc
 	bl MI_CpuFill8
 	ldr r0, _021EC548 ; =ov00_0221A75C
-	ldr r3, _021EC54C ; =ov00_021EC2A8
+	ldr r3, _021EC54C ; =DWC_Alloc
 	ldr lr, [r0, #4]
-	ldr r2, _021EC550 ; =ov00_021EC2EC
+	ldr r2, _021EC550 ; =DWC_Free
 	ldrh ip, [lr, #8]
 	add r0, sp, #0
 	mov r1, #2
@@ -5337,42 +5337,42 @@ ov00_021EC4A4: ; 0x021EC4A4
 	str r3, [sp]
 	str r2, [sp, #4]
 	strh r1, [lr, #4]
-	bl ov00_021FA75C
+	bl DWC_AC_Create
 	cmp r0, #0
 	addne sp, sp, #0xc
 	ldmneia sp!, {pc}
 	ldr r1, _021EC554 ; =0xFFFF3BE9
 	mov r0, #9
-	bl ov00_021EC24C
+	bl DWCi_SetError
 	add sp, sp, #0xc
 	ldmia sp!, {pc}
 _021EC534:
 	ldr r1, _021EC554 ; =0xFFFF3BE9
 	mov r0, #9
-	bl ov00_021EC24C
+	bl DWCi_SetError
 	add sp, sp, #0xc
 	ldmia sp!, {pc}
 	.balign 4, 0
 _021EC548: .word ov00_0221A75C
-_021EC54C: .word ov00_021EC2A8
-_021EC550: .word ov00_021EC2EC
+_021EC54C: .word DWC_Alloc
+_021EC550: .word DWC_Free
 _021EC554: .word 0xFFFF3BE9
-	arm_func_end ov00_021EC4A4
+	arm_func_end DWC_ConnectInetAsync
 
-	arm_func_start ov00_021EC558
-ov00_021EC558: ; 0x021EC558
+	arm_func_start DWC_DebugConnectInetExAsync
+DWC_DebugConnectInetExAsync: ; 0x021EC558
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r7, r0
 	mov r6, r1
 	mov r5, r2
 	mov r4, r3
-	bl ov00_021EC4A4
+	bl DWC_ConnectInetAsync
 	ldr r0, _021EC5B0 ; =ov00_0221A75C
 	ldr r1, [r0, #4]
 	cmp r1, #0
 	movne r0, #1
 	strneb r0, [r1, #0xc]
-	bl ov00_021EC724
+	bl DWC_GetInetStatus
 	cmp r0, #2
 	ldmneia sp!, {r3, r4, r5, r6, r7, pc}
 	ldr ip, [sp, #0x18]
@@ -5381,14 +5381,14 @@ ov00_021EC558: ; 0x021EC558
 	mov r2, r5
 	mov r3, r4
 	str ip, [sp]
-	bl ov00_021FAB04
+	bl DWC_AC_SetSpecifyApEx
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _021EC5B0: .word ov00_0221A75C
-	arm_func_end ov00_021EC558
+	arm_func_end DWC_DebugConnectInetExAsync
 
-	arm_func_start ov00_021EC5B4
-ov00_021EC5B4: ; 0x021EC5B4
+	arm_func_start DWC_CheckInet
+DWC_CheckInet: ; 0x021EC5B4
 	stmdb sp!, {r3, lr}
 	ldr r0, _021EC608 ; =ov00_0221A75C
 	ldr r1, [r0, #4]
@@ -5400,7 +5400,7 @@ ov00_021EC5B4: ; 0x021EC5B4
 	beq _021EC600
 	mov r0, #3
 	strh r0, [r1, #4]
-	bl ov00_021EC724
+	bl DWC_GetInetStatus
 	ldr r0, _021EC608 ; =ov00_0221A75C
 	ldr r0, [r0, #4]
 	ldrb r0, [r0, #0xc]
@@ -5413,10 +5413,10 @@ _021EC600:
 	ldmia sp!, {r3, pc}
 	.balign 4, 0
 _021EC608: .word ov00_0221A75C
-	arm_func_end ov00_021EC5B4
+	arm_func_end DWC_CheckInet
 
-	arm_func_start ov00_021EC60C
-ov00_021EC60C: ; 0x021EC60C
+	arm_func_start DWC_ProcessInet
+DWC_ProcessInet: ; 0x021EC60C
 	stmdb sp!, {r3, lr}
 	ldr r0, _021EC720 ; =ov00_0221A75C
 	ldr r1, [r0, #4]
@@ -5450,7 +5450,7 @@ _021EC660:
 	add r0, r3, #0x14
 	add r1, r3, #0x34
 	add r3, r3, #0x58
-	bl ov00_021EC558
+	bl DWC_DebugConnectInetExAsync
 	ldr r0, _021EC720 ; =ov00_0221A75C
 	mov r1, #0
 	ldr r0, [r0, #4]
@@ -5471,7 +5471,7 @@ _021EC6C0:
 	ldrh r0, [r1, #4]
 	cmp r0, #2
 	bne _021EC6E0
-	bl ov00_021FA904
+	bl DWC_AC_Process
 	ldr r1, _021EC720 ; =ov00_0221A75C
 	ldr r1, [r1, #4]
 	str r0, [r1]
@@ -5495,10 +5495,10 @@ _021EC6E0:
 	ldmia sp!, {r3, pc}
 	.balign 4, 0
 _021EC720: .word ov00_0221A75C
-	arm_func_end ov00_021EC60C
+	arm_func_end DWC_ProcessInet
 
-	arm_func_start ov00_021EC724
-ov00_021EC724: ; 0x021EC724
+	arm_func_start DWC_GetInetStatus
+DWC_GetInetStatus: ; 0x021EC724
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	ldr r0, _021EC8D0 ; =ov00_0221A75C
 	ldr r1, [r0, #4]
@@ -5522,11 +5522,11 @@ _021EC768:
 	mov r0, #2
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _021EC770:
-	bl ov00_021EC60C
+	bl DWC_ProcessInet
 	ldr r1, _021EC8D0 ; =ov00_0221A75C
 	mov r0, #5
 	ldr r1, [r1]
-	bl ov00_021EC24C
+	bl DWCi_SetError
 	ldr r1, _021EC8D0 ; =ov00_0221A75C
 	mov r0, #7
 	ldr r3, [r1, #4]
@@ -5542,7 +5542,7 @@ _021EC7AC:
 	ldrh r0, [r1, #4]
 	cmp r0, #1
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
-	bl ov00_021FA9D4
+	bl DWC_AC_GetStatus
 	mov r4, r0
 	cmp r4, #5
 	bne _021EC7F0
@@ -5564,7 +5564,7 @@ _021EC7F0:
 	blt _021EC824
 	ldr r1, _021EC8D4 ; =0xFFFF3BE9
 	mov r0, #9
-	bl ov00_021EC24C
+	bl DWCi_SetError
 	ldr r1, _021EC8D0 ; =ov00_0221A75C
 	mov r0, #8
 	ldr r1, [r1, #4]
@@ -5581,13 +5581,13 @@ _021EC824:
 	ldr r1, _021EC8D0 ; =ov00_0221A75C
 	mov r6, r0
 	str r4, [r1]
-	bl ov00_021EC8D8
+	bl DWC_CleanupInet
 	mov r2, r6, lsl #0x10
 	mov r3, r2, lsr #0x10
 	mov r0, r5
 	mov r1, r7
 	mov r2, #1
-	bl ov00_021EC3F0
+	bl DWC_InitInetEx
 	ldr r0, _021EC8D0 ; =ov00_0221A75C
 	ldr r0, [r0, #4]
 	add r0, r0, #0x14
@@ -5607,7 +5607,7 @@ _021EC89C:
 	movlt r4, r0
 	mov r1, r4
 	mov r0, #5
-	bl ov00_021EC24C
+	bl DWCi_SetError
 	ldr r1, _021EC8D0 ; =ov00_0221A75C
 	mov r0, #7
 	ldr r1, [r1, #4]
@@ -5619,10 +5619,10 @@ _021EC8C8:
 	.balign 4, 0
 _021EC8D0: .word ov00_0221A75C
 _021EC8D4: .word 0xFFFF3BE9
-	arm_func_end ov00_021EC724
+	arm_func_end DWC_GetInetStatus
 
-	arm_func_start ov00_021EC8D8
-ov00_021EC8D8: ; 0x021EC8D8
+	arm_func_start DWC_CleanupInet
+DWC_CleanupInet: ; 0x021EC8D8
 	stmdb sp!, {r4, lr}
 	ldr r0, _021EC934 ; =ov00_0221A75C
 	ldr r1, [r0, #4]
@@ -5633,14 +5633,14 @@ ov00_021EC8D8: ; 0x021EC8D8
 	moveq r1, #0
 	streq r1, [r0, #4]
 	ldmeqia sp!, {r4, pc}
-	bl ov00_021FAAC8
+	bl DWC_AC_Destroy
 	cmp r0, #0
 	bne _021EC924
 	mov r4, #0xa
 _021EC910:
 	mov r0, r4
 	bl OS_Sleep
-	bl ov00_021FAAC8
+	bl DWC_AC_Destroy
 	cmp r0, #0
 	beq _021EC910
 _021EC924:
@@ -5650,10 +5650,10 @@ _021EC924:
 	ldmia sp!, {r4, pc}
 	.balign 4, 0
 _021EC934: .word ov00_0221A75C
-	arm_func_end ov00_021EC8D8
+	arm_func_end DWC_CleanupInet
 
-	arm_func_start ov00_021EC938
-ov00_021EC938: ; 0x021EC938
+	arm_func_start DWC_CleanupInetAsync
+DWC_CleanupInetAsync: ; 0x021EC938
 	stmdb sp!, {r3, lr}
 	ldr r0, _021EC9A4 ; =ov00_0221A75C
 	ldr r2, [r0, #4]
@@ -5673,7 +5673,7 @@ ov00_021EC938: ; 0x021EC938
 _021EC978:
 	mov r0, #5
 	strh r0, [r2, #4]
-	bl ov00_021FAAC8
+	bl DWC_AC_Destroy
 	cmp r0, #0
 	moveq r0, #0
 	ldmeqia sp!, {r3, pc}
@@ -5684,10 +5684,10 @@ _021EC978:
 	ldmia sp!, {r3, pc}
 	.balign 4, 0
 _021EC9A4: .word ov00_0221A75C
-	arm_func_end ov00_021EC938
+	arm_func_end DWC_CleanupInetAsync
 
-	arm_func_start ov00_021EC9A8
-ov00_021EC9A8: ; 0x021EC9A8
+	arm_func_start DWCi_CheckDisconnected
+DWCi_CheckDisconnected: ; 0x021EC9A8
 	ldr r0, _021EC9D0 ; =ov00_0221A75C
 	ldr r0, [r0, #4]
 	cmp r0, #0
@@ -5701,18 +5701,18 @@ _021EC9C8:
 	bx lr
 	.balign 4, 0
 _021EC9D0: .word ov00_0221A75C
-	arm_func_end ov00_021EC9A8
+	arm_func_end DWCi_CheckDisconnected
 
-	arm_func_start ov00_021EC9D4
-ov00_021EC9D4: ; 0x021EC9D4
+	arm_func_start DWC_GetLinkLevel
+DWC_GetLinkLevel: ; 0x021EC9D4
 	ldr ip, _021EC9DC ; =WCM_GetLinkLevel
 	bx ip
 	.balign 4, 0
 _021EC9DC: .word WCM_GetLinkLevel
-	arm_func_end ov00_021EC9D4
+	arm_func_end DWC_GetLinkLevel
 
-	arm_func_start ov00_021EC9E0
-ov00_021EC9E0: ; 0x021EC9E0
+	arm_func_start DWC_GetApInfo
+DWC_GetApInfo: ; 0x021EC9E0
 	stmdb sp!, {r3, r4, r5, r6, lr}
 	sub sp, sp, #0xc
 	mov r1, #0
@@ -5721,12 +5721,12 @@ ov00_021EC9E0: ; 0x021EC9E0
 	bl MI_CpuFill8
 	mov r0, #0xff
 	str r0, [r4, #4]
-	bl ov00_021EC724
+	bl DWC_GetInetStatus
 	cmp r0, #4
 	addne sp, sp, #0xc
 	movne r0, #0
 	ldmneia sp!, {r3, r4, r5, r6, pc}
-	bl ov00_021FAA40
+	bl DWC_AC_GetApType
 	str r0, [r4]
 	cmp r0, #0xff
 	beq _021ECA2C
@@ -5783,7 +5783,7 @@ _021ECAD8:
 	mov r0, r6
 	bl OS_RestoreInterrupts
 	add r0, sp, #2
-	bl ov00_021FAA70
+	bl DWC_AC_GetApSpotInfo
 	cmp r0, #0
 	beq _021ECB2C
 	ldrb r1, [sp, #2]
@@ -5809,16 +5809,16 @@ _021ECB34:
 	mov r0, #1
 	add sp, sp, #0xc
 	ldmia sp!, {r3, r4, r5, r6, pc}
-	arm_func_end ov00_021EC9E0
+	arm_func_end DWC_GetApInfo
 
-	arm_func_start ov00_021ECB40
-ov00_021ECB40: ; 0x021ECB40
+	arm_func_start DWC_UpdateConnection
+DWC_UpdateConnection: ; 0x021ECB40
 	stmdb sp!, {r3, lr}
-	bl ov00_021EC60C
-	bl ov00_021EC9A8
+	bl DWC_ProcessInet
+	bl DWCi_CheckDisconnected
 	cmp r0, #0
 	beq _021ECB88
-	bl ov00_021FAA40
+	bl DWC_AC_GetApType
 	mov r2, r0
 	cmp r2, #0xff
 	beq _021ECB6C
@@ -5830,7 +5830,7 @@ _021ECB70:
 	ldr r1, _021ECB90 ; =0xFFFF2D10
 	mov r0, #8
 	sub r1, r1, r2
-	bl ov00_021EC24C
+	bl DWCi_SetError
 	mov r0, #1
 	ldmia sp!, {r3, pc}
 _021ECB88:
@@ -5838,10 +5838,10 @@ _021ECB88:
 	ldmia sp!, {r3, pc}
 	.balign 4, 0
 _021ECB90: .word 0xFFFF2D10
-	arm_func_end ov00_021ECB40
+	arm_func_end DWC_UpdateConnection
 
-	arm_func_start ov00_021ECB94
-ov00_021ECB94: ; 0x021ECB94
+	arm_func_start DWC_GetDateTime
+DWC_GetDateTime: ; 0x021ECB94
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r2, _021ECC58 ; =ov00_0221A734
 	mov r5, r0
@@ -5900,15 +5900,15 @@ _021ECC5C: .word ov00_0221A738
 _021ECC60: .word 0xBC191380
 _021ECC64: .word ov00_0221A740
 _021ECC68: .word 0xBC19137F
-	arm_func_end ov00_021ECB94
+	arm_func_end DWC_GetDateTime
 
-	arm_func_start ov00_021ECC6C
-ov00_021ECC6C: ; 0x021ECC6C
+	arm_func_start DWC_SVLGetTokenAsync
+DWC_SVLGetTokenAsync: ; 0x021ECC6C
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r4, r1
-	ldr r0, _021ECCD4 ; =ov00_021EC2A8
-	ldr r1, _021ECCD8 ; =ov00_021EC2EC
+	ldr r0, _021ECCD4 ; =DWC_Alloc
+	ldr r1, _021ECCD8 ; =DWC_Free
 	bl ov00_021EB7CC
 	cmp r0, #0
 	moveq r0, #0
@@ -5933,13 +5933,13 @@ _021ECCBC:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
 	.balign 4, 0
-_021ECCD4: .word ov00_021EC2A8
-_021ECCD8: .word ov00_021EC2EC
+_021ECCD4: .word DWC_Alloc
+_021ECCD8: .word DWC_Free
 _021ECCDC: .word ov00_022179A4
-	arm_func_end ov00_021ECC6C
+	arm_func_end DWC_SVLGetTokenAsync
 
-	arm_func_start ov00_021ECCE0
-ov00_021ECCE0: ; 0x021ECCE0
+	arm_func_start DWC_SVLProcess
+DWC_SVLProcess: ; 0x021ECCE0
 	stmdb sp!, {r4, lr}
 	bl ov00_021EBB18
 	mov r4, r0
@@ -5950,10 +5950,10 @@ ov00_021ECCE0: ; 0x021ECCE0
 _021ECCFC:
 	mov r0, r4
 	ldmia sp!, {r4, pc}
-	arm_func_end ov00_021ECCE0
+	arm_func_end DWC_SVLProcess
 
-	arm_func_start ov00_021ECD04
-ov00_021ECD04: ; 0x021ECD04
+	arm_func_start DWC_NASLoginAsync
+DWC_NASLoginAsync: ; 0x021ECD04
 	stmdb sp!, {r3, lr}
 	ldr r0, _021ECDB0 ; =ov00_0221A764
 	ldr r0, [r0]
@@ -5963,14 +5963,14 @@ ov00_021ECD04: ; 0x021ECD04
 _021ECD1C:
 	ldr r1, _021ECDB4 ; =0x00001E20
 	mov r0, #4
-	bl ov00_021EC2A8
+	bl DWC_Alloc
 	ldr r1, _021ECDB0 ; =ov00_0221A764
 	cmp r0, #0
 	str r0, [r1]
 	bne _021ECD4C
 	ldr r1, _021ECDB8 ; =0xFFFFB17C
 	mov r0, #9
-	bl ov00_021EC24C
+	bl DWCi_SetError
 	mov r0, #0
 	ldmia sp!, {r3, pc}
 _021ECD4C:
@@ -5985,9 +5985,9 @@ _021ECD4C:
 	add r1, r1, #0x1c00
 	bl MI_CpuCopy8
 	ldr r1, _021ECDB0 ; =ov00_0221A764
-	ldr r3, _021ECDC0 ; =ov00_021EC2A8
+	ldr r3, _021ECDC0 ; =DWC_Alloc
 	ldr r0, [r1]
-	ldr r2, _021ECDC4 ; =ov00_021EC2EC
+	ldr r2, _021ECDC4 ; =DWC_Free
 	add r0, r0, #0x1000
 	str r3, [r0, #0xc54]
 	ldr r0, [r1]
@@ -6004,12 +6004,12 @@ _021ECDB0: .word ov00_0221A764
 _021ECDB4: .word 0x00001E20
 _021ECDB8: .word 0xFFFFB17C
 _021ECDBC: .word ov00_022179AC
-_021ECDC0: .word ov00_021EC2A8
-_021ECDC4: .word ov00_021EC2EC
-	arm_func_end ov00_021ECD04
+_021ECDC0: .word DWC_Alloc
+_021ECDC4: .word DWC_Free
+	arm_func_end DWC_NASLoginAsync
 
-	arm_func_start ov00_021ECDC8
-ov00_021ECDC8: ; 0x021ECDC8
+	arm_func_start DWC_NASLoginProcess
+DWC_NASLoginProcess: ; 0x021ECDC8
 	stmdb sp!, {lr}
 	sub sp, sp, #0x1c4
 	ldr r0, _021ECEB8 ; =ov00_0221A764
@@ -6036,7 +6036,7 @@ _021ECE14:
 	ldr r2, _021ECEBC ; =0x00001E20
 	ldr r1, [r0]
 	mov r0, #4
-	bl ov00_021EC2EC
+	bl DWC_Free
 	ldr r0, _021ECEB8 ; =ov00_0221A764
 	mov r1, #0
 	str r1, [r0]
@@ -6049,7 +6049,7 @@ _021ECE44:
 	ldr r2, _021ECEBC ; =0x00001E20
 	ldr r1, [r0]
 	mov r0, #4
-	bl ov00_021EC2EC
+	bl DWC_Free
 	ldr r0, _021ECEB8 ; =ov00_0221A764
 	mov r1, #0
 	str r1, [r0]
@@ -6064,28 +6064,28 @@ _021ECE74:
 	ldr r2, _021ECEBC ; =0x00001E20
 	ldr r1, [r0]
 	mov r0, #4
-	bl ov00_021EC2EC
+	bl DWC_Free
 	ldr r1, [sp]
 	ldr r2, _021ECEB8 ; =ov00_0221A764
 	mov r3, #0
 	mov r0, #2
 	str r3, [r2]
-	bl ov00_021EC24C
+	bl DWCi_SetError
 	mov r0, #4
 	add sp, sp, #0x1c4
 	ldmia sp!, {pc}
 	.balign 4, 0
 _021ECEB8: .word ov00_0221A764
 _021ECEBC: .word 0x00001E20
-	arm_func_end ov00_021ECDC8
+	arm_func_end DWC_NASLoginProcess
 
-	arm_func_start ov00_021ECEC0
-ov00_021ECEC0: ; 0x021ECEC0
+	arm_func_start DWC_NASLoginAbort
+DWC_NASLoginAbort: ; 0x021ECEC0
 	ldr ip, _021ECEC8 ; =ov00_021E7D48
 	bx ip
 	.balign 4, 0
 _021ECEC8: .word ov00_021E7D48
-	arm_func_end ov00_021ECEC0
+	arm_func_end DWC_NASLoginAbort
 
 	arm_func_start ov00_021ECECC
 ov00_021ECECC: ; 0x021ECECC
@@ -6100,13 +6100,13 @@ _021ECEE0: .word ov00_021EC2B8
 
 	arm_func_start ov00_021ECEE4
 ov00_021ECEE4: ; 0x021ECEE4
-	ldr ip, _021ECEF8 ; =ov00_021EC2EC
+	ldr ip, _021ECEF8 ; =DWC_Free
 	mov r1, r0
 	mov r0, #6
 	mov r2, #0
 	bx ip
 	.balign 4, 0
-_021ECEF8: .word ov00_021EC2EC
+_021ECEF8: .word DWC_Free
 	arm_func_end ov00_021ECEE4
 
 	arm_func_start ov00_021ECEFC
@@ -6138,7 +6138,7 @@ _021ECF30: ; jump table
 _021ECF54:
 	ldr r1, _021ECFE0 ; =0xFFFF86E7
 	mov r0, #9
-	bl ov00_021EC24C
+	bl DWCi_SetError
 	b _021ECFBC
 _021ECF64:
 	bl OS_Terminate
@@ -6146,18 +6146,18 @@ _021ECF64:
 _021ECF6C:
 	ldr r1, _021ECFE4 ; =0xFFFF86D4
 	mov r0, #0xf
-	bl ov00_021EC24C
+	bl DWCi_SetError
 	b _021ECFBC
 _021ECF7C:
 	ldr r1, _021ECFE8 ; =0xFFFF86CA
 	mov r0, #0xe
-	bl ov00_021EC24C
+	bl DWCi_SetError
 	b _021ECFBC
 _021ECF8C:
 	ldr r1, _021ECFEC ; =0xFFFF86E8
 	mov r0, #0xe
 	sub r1, r1, r4
-	bl ov00_021EC24C
+	bl DWCi_SetError
 	b _021ECFBC
 _021ECFA0:
 	bl OS_Terminate
@@ -6165,7 +6165,7 @@ _021ECFA0:
 _021ECFA8:
 	ldr r1, _021ECFF0 ; =0xFFFF86DF
 	mov r0, #9
-	bl ov00_021EC24C
+	bl DWCi_SetError
 	b _021ECFBC
 _021ECFB8:
 	bl OS_Terminate
@@ -6209,8 +6209,8 @@ ov00_021ECFF4: ; 0x021ECFF4
 _021ED034: .word ov00_0221A768
 	arm_func_end ov00_021ECFF4
 
-	arm_func_start ov00_021ED038
-ov00_021ED038: ; 0x021ED038
+	arm_func_start DWCi_SVLTokenWaitThread
+DWCi_SVLTokenWaitThread: ; 0x021ED038
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	sub sp, sp, #0x2a0
 	mov r7, #0
@@ -6218,7 +6218,7 @@ ov00_021ED038: ; 0x021ED038
 	mvn r5, #0
 	mov r4, #0x64
 _021ED050:
-	bl ov00_021ECCE0
+	bl DWC_SVLProcess
 	cmp r0, #3
 	bne _021ED16C
 	ldr r0, _021ED1D8 ; =ov00_0221A768
@@ -6296,10 +6296,10 @@ _021ED16C:
 	cmp r0, #4
 	bne _021ED1AC
 	add r0, sp, #0xc
-	bl ov00_021EC0FC
+	bl DWC_GetLastError
 	ldr r1, [sp, #0xc]
 	mov r0, #0xe
-	bl ov00_021EC24C
+	bl DWCi_SetError
 	ldr r0, _021ED1D8 ; =ov00_0221A768
 	mov r1, #3
 	ldr r0, [r0]
@@ -6320,7 +6320,7 @@ _021ED1C4:
 	mov r0, r4
 	bl OS_Sleep
 	b _021ED050
-	arm_func_end ov00_021ED038
+	arm_func_end DWCi_SVLTokenWaitThread
 
 	arm_func_start ov00_021ED1D0
 ov00_021ED1D0: ; 0x021ED1D0
@@ -6335,14 +6335,14 @@ _021ED1E8: .word ov00_021ECECC
 _021ED1EC: .word ov00_021ECEE4
 	arm_func_end ov00_021ED1D0
 
-	arm_func_start ov00_021ED1F0
-ov00_021ED1F0: ; 0x021ED1F0
+	arm_func_start DWC_NdInitAsync
+DWC_NdInitAsync: ; 0x021ED1F0
 	stmdb sp!, {r4, r5, r6, lr}
 	sub sp, sp, #8
 	mov r6, r0
 	mov r5, r1
 	mov r4, r2
-	bl ov00_021EC230
+	bl DWCi_IsError
 	cmp r0, #0
 	addne sp, sp, #8
 	movne r0, #0
@@ -6375,7 +6375,7 @@ ov00_021ED1F0: ; 0x021ED1F0
 	ldr r0, _021ED300 ; =ov00_022179D8
 	ldr r1, [r1]
 	add r1, r1, #0x4c
-	bl ov00_021ECC6C
+	bl DWC_SVLGetTokenAsync
 	cmp r0, #0
 	bne _021ED2B4
 	ldr r0, _021ED2FC ; =ov00_0221A768
@@ -6390,7 +6390,7 @@ _021ED2B4:
 	ldr r0, _021ED2FC ; =ov00_0221A768
 	mov r2, #0x800
 	ldr r3, [r0]
-	ldr r1, _021ED304 ; =ov00_021ED038
+	ldr r1, _021ED304 ; =DWCi_SVLTokenWaitThread
 	str r2, [sp]
 	mov ip, #0x10
 	add r0, r3, #0x9c0
@@ -6408,11 +6408,11 @@ _021ED2B4:
 	.balign 4, 0
 _021ED2FC: .word ov00_0221A768
 _021ED300: .word ov00_022179D8
-_021ED304: .word ov00_021ED038
-	arm_func_end ov00_021ED1F0
+_021ED304: .word DWCi_SVLTokenWaitThread
+	arm_func_end DWC_NdInitAsync
 
-	arm_func_start ov00_021ED308
-ov00_021ED308: ; 0x021ED308
+	arm_func_start DWC_NdCleanupAsync
+DWC_NdCleanupAsync: ; 0x021ED308
 	stmdb sp!, {r3, lr}
 	ldr r1, _021ED34C ; =ov00_0221A768
 	ldr r2, [r1]
@@ -6435,15 +6435,15 @@ _021ED344:
 	.balign 4, 0
 _021ED34C: .word ov00_0221A768
 _021ED350: .word ov00_021ECFF4
-	arm_func_end ov00_021ED308
+	arm_func_end DWC_NdCleanupAsync
 
-	arm_func_start ov00_021ED354
-ov00_021ED354: ; 0x021ED354
+	arm_func_start DWC_NdSetAttr
+DWC_NdSetAttr: ; 0x021ED354
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r6, r0
 	mov r5, r1
 	mov r4, r2
-	bl ov00_021EC230
+	bl DWCi_IsError
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r4, r5, r6, pc}
@@ -6452,28 +6452,28 @@ ov00_021ED354: ; 0x021ED354
 	mov r2, r4
 	bl ov38_02220090
 	ldmia sp!, {r4, r5, r6, pc}
-	arm_func_end ov00_021ED354
+	arm_func_end DWC_NdSetAttr
 
-	arm_func_start ov00_021ED388
-ov00_021ED388: ; 0x021ED388
+	arm_func_start DWC_NdGetFileListNumAsync
+DWC_NdGetFileListNumAsync: ; 0x021ED388
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	bl ov00_021EC230
+	bl DWCi_IsError
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r4, pc}
 	mov r0, r4
 	bl ov38_02220F18
 	ldmia sp!, {r4, pc}
-	arm_func_end ov00_021ED388
+	arm_func_end DWC_NdGetFileListNumAsync
 
-	arm_func_start ov00_021ED3AC
-ov00_021ED3AC: ; 0x021ED3AC
+	arm_func_start DWC_NdGetFileListAsync
+DWC_NdGetFileListAsync: ; 0x021ED3AC
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r6, r0
 	mov r5, r1
 	mov r4, r2
-	bl ov00_021EC230
+	bl DWCi_IsError
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r4, r5, r6, pc}
@@ -6487,15 +6487,15 @@ ov00_021ED3AC: ; 0x021ED3AC
 	mov r2, r4
 	bl ov38_02220F8C
 	ldmia sp!, {r4, r5, r6, pc}
-	arm_func_end ov00_021ED3AC
+	arm_func_end DWC_NdGetFileListAsync
 
-	arm_func_start ov00_021ED3F4
-ov00_021ED3F4: ; 0x021ED3F4
+	arm_func_start DWC_NdGetFileAsync
+DWC_NdGetFileAsync: ; 0x021ED3F4
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r6, r0
 	mov r5, r1
 	mov r4, r2
-	bl ov00_021EC230
+	bl DWCi_IsError
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r4, r5, r6, pc}
@@ -6504,25 +6504,25 @@ ov00_021ED3F4: ; 0x021ED3F4
 	mov r2, r4
 	bl ov38_0222124C
 	ldmia sp!, {r4, r5, r6, pc}
-	arm_func_end ov00_021ED3F4
+	arm_func_end DWC_NdGetFileAsync
 
-	arm_func_start ov00_021ED428
-ov00_021ED428: ; 0x021ED428
+	arm_func_start DWC_NdCancelAsync
+DWC_NdCancelAsync: ; 0x021ED428
 	stmdb sp!, {r3, lr}
-	bl ov00_021EC230
+	bl DWCi_IsError
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r3, pc}
 	bl ov38_02220648
 	ldmia sp!, {r3, pc}
-	arm_func_end ov00_021ED428
+	arm_func_end DWC_NdCancelAsync
 
-	arm_func_start ov00_021ED444
-ov00_021ED444: ; 0x021ED444
+	arm_func_start DWC_NdGetProgress
+DWC_NdGetProgress: ; 0x021ED444
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r4, r1
-	bl ov00_021EC230
+	bl DWCi_IsError
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r3, r4, r5, pc}
@@ -6530,7 +6530,7 @@ ov00_021ED444: ; 0x021ED444
 	mov r1, r4
 	bl ov38_02221408
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end ov00_021ED444
+	arm_func_end DWC_NdGetProgress
 
 	arm_func_start ov00_021ED470
 ov00_021ED470: ; 0x021ED470
@@ -6737,8 +6737,8 @@ _021ED728:
 	bx lr
 	arm_func_end ov00_021ED704
 
-	arm_func_start ov00_021ED730
-ov00_021ED730: ; 0x021ED730
+	arm_func_start DWC_InitFriendsMatch
+DWC_InitFriendsMatch: ; 0x021ED730
 	stmdb sp!, {r4, r5, r6, lr}
 	sub sp, sp, #0x10
 	ldr ip, _021ED994 ; =ov00_0221A784
@@ -6746,7 +6746,7 @@ ov00_021ED730: ; 0x021ED730
 	mov r5, r2
 	mov r4, r3
 	str r0, [ip]
-	bl ov00_021EC210
+	bl DWC_ClearError
 	ldr r0, _021ED994 ; =ov00_0221A784
 	mov r2, #0
 	ldr r1, [r0]
@@ -6840,7 +6840,7 @@ ov00_021ED730: ; 0x021ED730
 	add r1, r5, #0x1c
 	str r2, [sp]
 	add r2, r5, #0x2e
-	bl ov00_021EFF48
+	bl DWCi_FriendInit
 	ldr r0, _021ED994 ; =ov00_0221A784
 	ldr r1, _021ED9A8 ; =ov00_0221B430
 	ldr r2, [r0]
@@ -6903,10 +6903,10 @@ _021ED9A4: .word ov00_021EF1A8
 _021ED9A8: .word ov00_0221B430
 _021ED9AC: .word ov00_0221B530
 _021ED9B0: .word ov00_021EEA74
-	arm_func_end ov00_021ED730
+	arm_func_end DWC_InitFriendsMatch
 
-	arm_func_start ov00_021ED9B4
-ov00_021ED9B4: ; 0x021ED9B4
+	arm_func_start DWC_ShutdownFriendsMatch
+DWC_ShutdownFriendsMatch: ; 0x021ED9B4
 	stmdb sp!, {r3, lr}
 	ldr r0, _021EDB18 ; =ov00_0221A784
 	ldr r0, [r0]
@@ -6935,7 +6935,7 @@ _021ED9E8:
 	ldr r0, [r0]
 	str r1, [r0, #0x458]
 _021EDA1C:
-	bl ov00_021F125C
+	bl DWCi_NNFreeNegotiateList
 	bl ov00_0220AE60
 	ldr r0, _021EDB18 ; =ov00_0221A784
 	ldr ip, [r0]
@@ -7002,12 +7002,12 @@ _021EDB08:
 	ldmia sp!, {r3, pc}
 	.balign 4, 0
 _021EDB18: .word ov00_0221A784
-	arm_func_end ov00_021ED9B4
+	arm_func_end DWC_ShutdownFriendsMatch
 
-	arm_func_start ov00_021EDB1C
-ov00_021EDB1C: ; 0x021EDB1C
+	arm_func_start DWC_ProcessFriendsMatch
+DWC_ProcessFriendsMatch: ; 0x021EDB1C
 	stmdb sp!, {r3, lr}
-	bl ov00_021ECB40
+	bl DWC_UpdateConnection
 	cmp r0, #0
 	beq _021EDB30
 	bl ov00_021EE7FC
@@ -7018,7 +7018,7 @@ _021EDB30:
 	ldrne r0, [r0, #0x24]
 	cmpne r0, #0
 	ldmeqia sp!, {r3, pc}
-	bl ov00_021EC230
+	bl DWCi_IsError
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	ldr r0, _021EDD50 ; =ov00_0221A784
@@ -7168,17 +7168,17 @@ _021EDD5C: .word ov00_021F0290
 _021EDD60: .word ov00_021F0338
 _021EDD64: .word 0xFFFFB172
 _021EDD68: .word 0xFFFFB17B
-	arm_func_end ov00_021EDB1C
+	arm_func_end DWC_ProcessFriendsMatch
 
-	arm_func_start ov00_021EDD6C
-ov00_021EDD6C: ; 0x021EDD6C
+	arm_func_start DWC_LoginAsync
+DWC_LoginAsync: ; 0x021EDD6C
 	stmdb sp!, {r4, r5, r6, lr}
 	movs r4, r0
 	mov r6, r2
 	mov r5, r3
 	moveq r0, #0
 	ldmeqia sp!, {r4, r5, r6, pc}
-	bl ov00_021EC230
+	bl DWCi_IsError
 	cmp r0, #0
 	bne _021EDDA4
 	ldr r0, _021EDE6C ; =ov00_0221A784
@@ -7224,7 +7224,7 @@ _021EDE18:
 	ldr r0, [r0]
 	add r0, r0, r5, lsl #1
 	strh r1, [r0, #0x2e]
-	bl ov00_021EC724
+	bl DWC_GetInetStatus
 	cmp r0, #4
 	beq _021EDE4C
 	ldr r1, _021EDE70 ; =0xFFFF1596
@@ -7244,16 +7244,16 @@ _021EDE4C:
 	.balign 4, 0
 _021EDE6C: .word ov00_0221A784
 _021EDE70: .word 0xFFFF1596
-	arm_func_end ov00_021EDD6C
+	arm_func_end DWC_LoginAsync
 
-	arm_func_start ov00_021EDE74
-ov00_021EDE74: ; 0x021EDE74
+	arm_func_start DWC_UpdateServersAsync
+DWC_UpdateServersAsync: ; 0x021EDE74
 	stmdb sp!, {r4, r5, r6, lr}
 	sub sp, sp, #0x10
 	mov r6, r1
 	mov r5, r2
 	mov r4, r3
-	bl ov00_021EC230
+	bl DWCi_IsError
 	cmp r0, #0
 	bne _021EDEB0
 	ldr r0, _021EDF14 ; =ov00_0221A784
@@ -7293,17 +7293,17 @@ _021EDEBC:
 	.balign 4, 0
 _021EDF14: .word ov00_0221A784
 _021EDF18: .word ov00_021EEAD4
-	arm_func_end ov00_021EDE74
+	arm_func_end DWC_UpdateServersAsync
 
-	arm_func_start ov00_021EDF1C
-ov00_021EDF1C: ; 0x021EDF1C
+	arm_func_start DWC_ConnectToAnybodyAsync
+DWC_ConnectToAnybodyAsync: ; 0x021EDF1C
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	sub sp, sp, #8
 	mov r7, r0
 	mov r6, r1
 	mov r5, r2
 	mov r4, r3
-	bl ov00_021EC230
+	bl DWCi_IsError
 	cmp r0, #0
 	bne _021EDF54
 	ldr r0, _021EDFB4 ; =ov00_0221A784
@@ -7340,16 +7340,16 @@ _021EDF60:
 	.balign 4, 0
 _021EDFB4: .word ov00_0221A784
 _021EDFB8: .word ov00_021EEB1C
-	arm_func_end ov00_021EDF1C
+	arm_func_end DWC_ConnectToAnybodyAsync
 
-	arm_func_start ov00_021EDFBC
-ov00_021EDFBC: ; 0x021EDFBC
+	arm_func_start DWC_SetupGameServer
+DWC_SetupGameServer: ; 0x021EDFBC
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r7, r0
 	mov r6, r1
 	mov r5, r2
 	mov r4, r3
-	bl ov00_021EC230
+	bl DWCi_IsError
 	cmp r0, #0
 	bne _021EDFF0
 	ldr r0, _021EE04C ; =ov00_0221A784
@@ -7385,10 +7385,10 @@ _021EDFF8:
 	.balign 4, 0
 _021EE04C: .word ov00_0221A784
 _021EE050: .word ov00_021EEB1C
-	arm_func_end ov00_021EDFBC
+	arm_func_end DWC_SetupGameServer
 
-	arm_func_start ov00_021EE054
-ov00_021EE054: ; 0x021EE054
+	arm_func_start DWC_ConnectToGameServerAsync
+DWC_ConnectToGameServerAsync: ; 0x021EE054
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	sub sp, sp, #0x220
 	mvn ip, #0
@@ -7397,7 +7397,7 @@ ov00_021EE054: ; 0x021EE054
 	mov r4, r2
 	mov r5, r3
 	str ip, [sp, #0xc]
-	bl ov00_021EC230
+	bl DWCi_IsError
 	cmp r0, #0
 	bne _021EE094
 	ldr r0, _021EE238 ; =ov00_0221A784
@@ -7487,7 +7487,7 @@ _021EE0F4:
 _021EE1C0:
 	mov r0, r5
 	mov r1, #0
-	bl ov00_021EC24C
+	bl DWCi_SetError
 	ldr r0, _021EE238 ; =ov00_0221A784
 	mov r1, #0
 	ldr r4, [r0]
@@ -7522,10 +7522,10 @@ _021EE23C: .word ov00_022179EC
 _021EE240: .word ov00_022179F0
 _021EE244: .word ov00_021EEB1C
 _021EE248: .word ov00_022179F4
-	arm_func_end ov00_021EE054
+	arm_func_end DWC_ConnectToGameServerAsync
 
-	arm_func_start ov00_021EE24C
-ov00_021EE24C: ; 0x021EE24C
+	arm_func_start DWC_SetConnectionClosedCallback
+DWC_SetConnectionClosedCallback: ; 0x021EE24C
 	ldr r2, _021EE274 ; =ov00_0221A784
 	ldr r3, [r2]
 	cmp r3, #0
@@ -7538,16 +7538,16 @@ ov00_021EE24C: ; 0x021EE24C
 	bx lr
 	.balign 4, 0
 _021EE274: .word ov00_0221A784
-	arm_func_end ov00_021EE24C
+	arm_func_end DWC_SetConnectionClosedCallback
 
-	arm_func_start ov00_021EE278
-ov00_021EE278: ; 0x021EE278
+	arm_func_start DWC_CloseAllConnectionsHard
+DWC_CloseAllConnectionsHard: ; 0x021EE278
 	stmdb sp!, {r3, lr}
 	ldr r0, _021EE314 ; =ov00_0221A784
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _021EE2B0
-	bl ov00_021EC230
+	bl DWCi_IsError
 	cmp r0, #0
 	bne _021EE2B0
 	ldr r0, _021EE314 ; =ov00_0221A784
@@ -7567,7 +7567,7 @@ _021EE2B8:
 	mov r0, #1
 	mov r2, #0
 	bl ov00_021F04A0
-	bl ov00_021F125C
+	bl DWCi_NNFreeNegotiateList
 	mov r0, #3
 	bl ov00_021EE800
 	mov r0, #1
@@ -7587,7 +7587,7 @@ _021EE2E8:
 	.balign 4, 0
 _021EE314: .word ov00_0221A784
 _021EE318: .word ov00_022179F4
-	arm_func_end ov00_021EE278
+	arm_func_end DWC_CloseAllConnectionsHard
 
 	arm_func_start ov00_021EE31C
 ov00_021EE31C: ; 0x021EE31C
@@ -7597,7 +7597,7 @@ ov00_021EE31C: ; 0x021EE31C
 	ldr r0, [r1]
 	cmp r0, #0
 	beq _021EE358
-	bl ov00_021EC230
+	bl DWCi_IsError
 	cmp r0, #0
 	bne _021EE358
 	ldr r0, _021EE380 ; =ov00_0221A784
@@ -7622,8 +7622,8 @@ _021EE360:
 _021EE380: .word ov00_0221A784
 	arm_func_end ov00_021EE31C
 
-	arm_func_start ov00_021EE384
-ov00_021EE384: ; 0x021EE384
+	arm_func_start DWC_CloseConnectionHardBitmap
+DWC_CloseConnectionHardBitmap: ; 0x021EE384
 	stmdb sp!, {r4, r5, r6, lr}
 	ldr r1, _021EE444 ; =ov00_0221A784
 	mov r6, r0
@@ -7631,7 +7631,7 @@ ov00_021EE384: ; 0x021EE384
 	cmp r0, #0
 	cmpne r6, #0
 	beq _021EE3C4
-	bl ov00_021EC230
+	bl DWCi_IsError
 	cmp r0, #0
 	bne _021EE3C4
 	ldr r0, _021EE444 ; =ov00_0221A784
@@ -7650,7 +7650,7 @@ _021EE3D4:
 	ldr r0, [r6]
 	tst r0, r4, lsl r5
 	beq _021EE420
-	bl ov00_021EE490
+	bl DWC_GetMyAID
 	cmp r5, r0
 	bne _021EE400
 	mvn r0, r4, lsl r5
@@ -7679,10 +7679,10 @@ _021EE420:
 	ldmia sp!, {r4, r5, r6, pc}
 	.balign 4, 0
 _021EE444: .word ov00_0221A784
-	arm_func_end ov00_021EE384
+	arm_func_end DWC_CloseConnectionHardBitmap
 
-	arm_func_start ov00_021EE448
-ov00_021EE448: ; 0x021EE448
+	arm_func_start DWC_GetNumConnectionHost
+DWC_GetNumConnectionHost: ; 0x021EE448
 	stmdb sp!, {r3, lr}
 	ldr r0, _021EE48C ; =ov00_0221A784
 	ldr r1, [r0]
@@ -7703,10 +7703,10 @@ _021EE480:
 	ldmia sp!, {r3, pc}
 	.balign 4, 0
 _021EE48C: .word ov00_0221A784
-	arm_func_end ov00_021EE448
+	arm_func_end DWC_GetNumConnectionHost
 
-	arm_func_start ov00_021EE490
-ov00_021EE490: ; 0x021EE490
+	arm_func_start DWC_GetMyAID
+DWC_GetMyAID: ; 0x021EE490
 	ldr r0, _021EE4A8 ; =ov00_0221A784
 	ldr r0, [r0]
 	cmp r0, #0
@@ -7715,7 +7715,7 @@ ov00_021EE490: ; 0x021EE490
 	bx lr
 	.balign 4, 0
 _021EE4A8: .word ov00_0221A784
-	arm_func_end ov00_021EE490
+	arm_func_end DWC_GetMyAID
 
 	arm_func_start ov00_021EE4AC
 ov00_021EE4AC: ; 0x021EE4AC
@@ -7743,8 +7743,8 @@ _021EE4F0:
 _021EE4F8: .word ov00_0221A784
 	arm_func_end ov00_021EE4AC
 
-	arm_func_start ov00_021EE4FC
-ov00_021EE4FC: ; 0x021EE4FC
+	arm_func_start DWC_GetAIDBitmap
+DWC_GetAIDBitmap: ; 0x021EE4FC
 	stmdb sp!, {r3, lr}
 	ldr r0, _021EE52C ; =ov00_0221A784
 	ldr r0, [r0]
@@ -7759,10 +7759,10 @@ ov00_021EE4FC: ; 0x021EE4FC
 	ldmia sp!, {r3, pc}
 	.balign 4, 0
 _021EE52C: .word ov00_0221A784
-	arm_func_end ov00_021EE4FC
+	arm_func_end DWC_GetAIDBitmap
 
-	arm_func_start ov00_021EE530
-ov00_021EE530: ; 0x021EE530
+	arm_func_start DWC_IsValidAID
+DWC_IsValidAID: ; 0x021EE530
 	stmdb sp!, {r3, lr}
 	ldr r1, _021EE564 ; =ov00_0221A784
 	ldr r1, [r1]
@@ -7778,7 +7778,7 @@ ov00_021EE530: ; 0x021EE530
 	ldmia sp!, {r3, pc}
 	.balign 4, 0
 _021EE564: .word ov00_0221A784
-	arm_func_end ov00_021EE530
+	arm_func_end DWC_IsValidAID
 
 	arm_func_start ov00_021EE568
 ov00_021EE568: ; 0x021EE568
@@ -8612,7 +8612,7 @@ _021EEFA8:
 	ldr r1, _021EF1A0 ; =0xFFFEC780
 	mov r0, r8
 	add r1, r6, r1
-	bl ov00_021EC24C
+	bl DWCi_SetError
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 _021EEFE4:
@@ -8723,7 +8723,7 @@ _021EF148:
 	cmp r0, #0
 	addne sp, sp, #8
 	ldmneia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
-	bl ov00_021F125C
+	bl DWCi_NNFreeNegotiateList
 	bl ov00_021F2FA0
 	mov r0, #3
 	bl ov00_021EE800
@@ -8750,12 +8750,12 @@ _021EF1B0: .word ov00_021F9A4C
 ov00_021EF1B4: ; 0x021EF1B4
 	stmdb sp!, {r3, lr}
 	bl ov00_0220D294
-	bl ov00_021FFA60
+	bl GOAGetLastError
 	ldr r2, _021EF1E8 ; =ov00_0221A784
 	ldr r1, _021EF1EC ; =0xFFFE8515
 	str r0, [r2, #4]
 	mov r0, #9
-	bl ov00_021EC24C
+	bl DWCi_SetError
 	ldr r0, _021EF1E8 ; =ov00_0221A784
 	mov r1, #0
 	ldr r0, [r0]
@@ -8830,7 +8830,7 @@ ov00_021EF2AC: ; 0x021EF2AC
 	ldr r0, [r0, #4]
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
-	bl ov00_021EC230
+	bl DWCi_IsError
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	ldr r0, _021EF394 ; =ov00_0221A90C
@@ -8915,7 +8915,7 @@ ov00_021EF3C0: ; 0x021EF3C0
 	cmp r2, #0
 	cmpne r4, #0
 	ldmeqia sp!, {r4, pc}
-	bl ov00_021EC24C
+	bl DWCi_SetError
 	ldr r0, _021EF40C ; =ov00_0221A90C
 	ldr r0, [r0, #4]
 	ldr r3, [r0, #0x14]
@@ -8947,7 +8947,7 @@ ov00_021EF410: ; 0x021EF410
 	ldr r1, [r1, #4]
 	mov r2, r0
 	ldr r1, [r1, #0x24]
-	bl ov00_021EC2EC
+	bl DWC_Free
 	ldr r0, _021EF468 ; =ov00_0221A90C
 	mov r1, #0
 	ldr r0, [r0, #4]
@@ -9080,7 +9080,7 @@ _021EF5EC:
 	cmp r0, #3
 	addne sp, sp, #8
 	ldmneia sp!, {r3, r4, r5, r6, r7, pc}
-	ldr r1, _021EF63C ; =ov00_021EFAC8
+	ldr r1, _021EF63C ; =DWCi_GPGetInfoCallback
 	mov r0, r7
 	stmia sp, {r1, lr}
 	ldr r1, [r4, #4]
@@ -9099,7 +9099,7 @@ _021EF624:
 _021EF630: .word ov00_0221A90C
 _021EF634: .word ov00_02217A04
 _021EF638: .word 0xFFFF15A0
-_021EF63C: .word ov00_021EFAC8
+_021EF63C: .word DWCi_GPGetInfoCallback
 	arm_func_end ov00_021EF508
 
 	arm_func_start ov00_021EF640
@@ -9250,8 +9250,8 @@ _021EF808:
 	add r1, r1, #0x51
 	add r1, r1, #0x200
 	bl strcpy
-	ldr r4, _021EF8B4 ; =ov00_021EC2A8
-	ldr r3, _021EF8B8 ; =ov00_021EC2EC
+	ldr r4, _021EF8B4 ; =DWC_Alloc
+	ldr r3, _021EF8B8 ; =DWC_Free
 	ldr r1, _021EF8BC ; =0x00001C14
 	mov r0, #0
 	mov r2, #4
@@ -9277,8 +9277,8 @@ _021EF8A4: .word ov00_0221A90C
 _021EF8A8: .word 0x6C078965
 _021EF8AC: .word 0x5D588B65
 _021EF8B0: .word 0x00269EC3
-_021EF8B4: .word ov00_021EC2A8
-_021EF8B8: .word ov00_021EC2EC
+_021EF8B4: .word DWC_Alloc
+_021EF8B8: .word DWC_Free
 _021EF8BC: .word 0x00001C14
 	arm_func_end ov00_021EF6F4
 
@@ -9309,7 +9309,7 @@ ov00_021EF8C0: ; 0x021EF8C0
 	ldr r1, [r1, #4]
 	mov r2, r0
 	ldr r1, [r1, #0x24]
-	bl ov00_021EC2EC
+	bl DWC_Free
 	ldr r0, _021EFAB0 ; =ov00_0221A90C
 	mov r2, #0
 	ldr r1, [r0, #4]
@@ -9367,7 +9367,7 @@ _021EF990:
 	ldr r1, [r1, #4]
 	mov r2, r0
 	ldr r1, [r1, #0x24]
-	bl ov00_021EC2EC
+	bl DWC_Free
 	ldr r0, _021EFAB0 ; =ov00_0221A90C
 	mov r2, #0
 	ldr r1, [r0, #4]
@@ -9400,10 +9400,10 @@ _021EFA2C:
 	add r1, r1, #0x51
 	add r1, r1, #0x200
 	bl strcpy
-	ldr r2, _021EFAC0 ; =ov00_021EC2A8
+	ldr r2, _021EFAC0 ; =DWC_Alloc
 	ldr r0, _021EFAB0 ; =ov00_0221A90C
 	str r2, [sp, #0x40]
-	ldr r2, _021EFAC4 ; =ov00_021EC2EC
+	ldr r2, _021EFAC4 ; =DWC_Free
 	ldr r1, [r0, #4]
 	str r2, [sp, #0x44]
 	ldr r1, [r1, #0x24]
@@ -9416,12 +9416,12 @@ _021EFAB0: .word ov00_0221A90C
 _021EFAB4: .word ov00_021EF508
 _021EFAB8: .word 0x000082EA
 _021EFABC: .word 0x00002710
-_021EFAC0: .word ov00_021EC2A8
-_021EFAC4: .word ov00_021EC2EC
+_021EFAC0: .word DWC_Alloc
+_021EFAC4: .word DWC_Free
 	arm_func_end ov00_021EF8C0
 
-	arm_func_start ov00_021EFAC8
-ov00_021EFAC8: ; 0x021EFAC8
+	arm_func_start DWCi_GPGetInfoCallback
+DWCi_GPGetInfoCallback: ; 0x021EFAC8
 	stmdb sp!, {r3, r4, r5, lr}
 	sub sp, sp, #0x48
 	mov r4, r1
@@ -9454,7 +9454,7 @@ ov00_021EFAC8: ; 0x021EFAC8
 	ldr r0, _021EFC5C ; =ov00_0221A90C
 	mov r3, #4
 	ldr r1, [r0, #4]
-	ldr r0, _021EFC64 ; =ov00_021EFAC8
+	ldr r0, _021EFC64 ; =DWCi_GPGetInfoCallback
 	mov r2, #0
 	str r3, [r1, #4]
 	stmia sp, {r0, r2}
@@ -9515,7 +9515,7 @@ _021EFBA0:
 	add sp, sp, #0x48
 	ldmia sp!, {r3, r4, r5, pc}
 _021EFC30:
-	ldr r0, _021EFC64 ; =ov00_021EFAC8
+	ldr r0, _021EFC64 ; =DWCi_GPGetInfoCallback
 	mov r2, #0
 	stmia sp, {r0, r2}
 	ldr r1, [r4, #4]
@@ -9529,12 +9529,12 @@ _021EFC30:
 	.balign 4, 0
 _021EFC5C: .word ov00_0221A90C
 _021EFC60: .word 0x00000705
-_021EFC64: .word ov00_021EFAC8
+_021EFC64: .word DWCi_GPGetInfoCallback
 _021EFC68: .word ov00_021EF640
-	arm_func_end ov00_021EFAC8
+	arm_func_end DWCi_GPGetInfoCallback
 
-	arm_func_start ov00_021EFC6C
-ov00_021EFC6C: ; 0x021EFC6C
+	arm_func_start DWCi_CheckLogin
+DWCi_CheckLogin: ; 0x021EFC6C
 	ldr r0, _021EFC94 ; =ov00_0221A90C
 	ldr r0, [r0, #4]
 	cmp r0, #0
@@ -9548,21 +9548,21 @@ _021EFC8C:
 	bx lr
 	.balign 4, 0
 _021EFC94: .word ov00_0221A90C
-	arm_func_end ov00_021EFC6C
+	arm_func_end DWCi_CheckLogin
 
-	arm_func_start ov00_021EFC98
-ov00_021EFC98: ; 0x021EFC98
-	ldr ip, _021EFCAC ; =ov00_021EFCB0
+	arm_func_start DWC_GetFriendStatus
+DWC_GetFriendStatus: ; 0x021EFC98
+	ldr ip, _021EFCAC ; =DWC_GetFriendStatusSC
 	mov r3, r1
 	mov r1, #0
 	mov r2, r1
 	bx ip
 	.balign 4, 0
-_021EFCAC: .word ov00_021EFCB0
-	arm_func_end ov00_021EFC98
+_021EFCAC: .word DWC_GetFriendStatusSC
+	arm_func_end DWC_GetFriendStatus
 
-	arm_func_start ov00_021EFCB0
-ov00_021EFCB0: ; 0x021EFCB0
+	arm_func_start DWC_GetFriendStatusSC
+DWC_GetFriendStatusSC: ; 0x021EFCB0
 	stmdb sp!, {r3, r4, r5, r6, lr}
 	sub sp, sp, #0x214
 	mov r6, r1
@@ -9640,10 +9640,10 @@ _021EFDA0:
 	.balign 4, 0
 _021EFDC4: .word ov00_02217A08
 _021EFDC8: .word ov00_02217A0C
-	arm_func_end ov00_021EFCB0
+	arm_func_end DWC_GetFriendStatusSC
 
-	arm_func_start ov00_021EFDCC
-ov00_021EFDCC: ; 0x021EFDCC
+	arm_func_start DWC_GetFriendStatusData
+DWC_GetFriendStatusData: ; 0x021EFDCC
 	stmdb sp!, {r3, lr}
 	mov r3, r1
 	mov r1, #0
@@ -9651,7 +9651,7 @@ ov00_021EFDCC: ; 0x021EFDCC
 	mov r2, r1
 	bl ov00_021EFDE8
 	ldmia sp!, {r3, pc}
-	arm_func_end ov00_021EFDCC
+	arm_func_end DWC_GetFriendStatusData
 
 	arm_func_start ov00_021EFDE8
 ov00_021EFDE8: ; 0x021EFDE8
@@ -9660,7 +9660,7 @@ ov00_021EFDE8: ; 0x021EFDE8
 	mov r6, r3
 	add r3, sp, #0
 	ldr r5, [sp, #0x110]
-	bl ov00_021EFCB0
+	bl DWC_GetFriendStatusSC
 	movs r4, r0
 	mvneq r1, #0
 	addeq sp, sp, #0x100
@@ -9693,8 +9693,8 @@ ov00_021EFDE8: ; 0x021EFDE8
 	ldmia sp!, {r4, r5, r6, pc}
 	arm_func_end ov00_021EFDE8
 
-	arm_func_start ov00_021EFE78
-ov00_021EFE78: ; 0x021EFE78
+	arm_func_start DWC_SetOwnStatusData
+DWC_SetOwnStatusData: ; 0x021EFE78
 	stmdb sp!, {r3, r4, r5, lr}
 	sub sp, sp, #0x100
 	ldr r2, _021EFF00 ; =ov00_0221A918
@@ -9703,7 +9703,7 @@ ov00_021EFE78: ; 0x021EFE78
 	mov r4, r1
 	cmp r0, #0
 	beq _021EFEA4
-	bl ov00_021EFC6C
+	bl DWCi_CheckLogin
 	cmp r0, #0
 	bne _021EFEB0
 _021EFEA4:
@@ -9733,10 +9733,10 @@ _021EFEB0:
 	ldmia sp!, {r3, r4, r5, pc}
 	.balign 4, 0
 _021EFF00: .word ov00_0221A918
-	arm_func_end ov00_021EFE78
+	arm_func_end DWC_SetOwnStatusData
 
-	arm_func_start ov00_021EFF04
-ov00_021EFF04: ; 0x021EFF04
+	arm_func_start DWC_SetBuddyFriendCallback
+DWC_SetBuddyFriendCallback: ; 0x021EFF04
 	ldr r2, _021EFF2C ; =ov00_0221A918
 	ldr r3, [r2, #8]
 	cmp r3, #0
@@ -9749,26 +9749,26 @@ ov00_021EFF04: ; 0x021EFF04
 	bx lr
 	.balign 4, 0
 _021EFF2C: .word ov00_0221A918
-	arm_func_end ov00_021EFF04
+	arm_func_end DWC_SetBuddyFriendCallback
 
-	arm_func_start ov00_021EFF30
-ov00_021EFF30: ; 0x021EFF30
+	arm_func_start DWC_Base64Encode
+DWC_Base64Encode: ; 0x021EFF30
 	ldr ip, _021EFF38 ; =ov00_021EBE08
 	bx ip
 	.balign 4, 0
 _021EFF38: .word ov00_021EBE08
-	arm_func_end ov00_021EFF30
+	arm_func_end DWC_Base64Encode
 
-	arm_func_start ov00_021EFF3C
-ov00_021EFF3C: ; 0x021EFF3C
+	arm_func_start DWC_Base64Decode
+DWC_Base64Decode: ; 0x021EFF3C
 	ldr ip, _021EFF44 ; =ov00_021EBF90
 	bx ip
 	.balign 4, 0
 _021EFF44: .word ov00_021EBF90
-	arm_func_end ov00_021EFF3C
+	arm_func_end DWC_Base64Decode
 
-	arm_func_start ov00_021EFF48
-ov00_021EFF48: ; 0x021EFF48
+	arm_func_start DWCi_FriendInit
+DWCi_FriendInit: ; 0x021EFF48
 	stmdb sp!, {r4, lr}
 	ldr lr, _021F0024 ; =ov00_0221A918
 	mov ip, #0
@@ -9826,7 +9826,7 @@ ov00_021EFF48: ; 0x021EFF48
 	ldmia sp!, {r4, pc}
 	.balign 4, 0
 _021F0024: .word ov00_0221A918
-	arm_func_end ov00_021EFF48
+	arm_func_end DWCi_FriendInit
 
 	arm_func_start ov00_021F0028
 ov00_021F0028: ; 0x021F0028
@@ -9835,7 +9835,7 @@ ov00_021F0028: ; 0x021F0028
 	ldr r0, [r0, #8]
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
-	bl ov00_021EC230
+	bl DWCi_IsError
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	ldr r0, _021F0188 ; =ov00_0221A918
@@ -9851,7 +9851,7 @@ ov00_021F0028: ; 0x021F0028
 	bl ov00_021F05EC
 	ldmia sp!, {r3, pc}
 _021F0078:
-	bl ov00_021F1248
+	bl DWCi_GetPersCallbackLevel
 	cmp r0, #0
 	bne _021F0090
 	bl ov00_0220AED0
@@ -9984,7 +9984,7 @@ ov00_021F0238: ; 0x021F0238
 	cmp r2, #0
 	cmpne r4, #0
 	ldmeqia sp!, {r4, pc}
-	bl ov00_021EC24C
+	bl DWCi_SetError
 	ldr r0, _021F028C ; =ov00_0221A918
 	ldr r3, [r0, #8]
 	ldr r0, [r3]
@@ -10040,7 +10040,7 @@ ov00_021F02DC: ; 0x021F02DC
 	addne sp, sp, #8
 	movne r0, #0
 	ldmneia sp!, {r3, r4, r5, pc}
-	ldr r0, _021F0334 ; =ov00_021F10A8
+	ldr r0, _021F0334 ; =DWCi_GPGetInfoCallback_RecvAuthMessage
 	mov r2, #0
 	stmia sp, {r0, r2}
 	ldr r1, [r4]
@@ -10052,7 +10052,7 @@ ov00_021F02DC: ; 0x021F02DC
 	ldmia sp!, {r3, r4, r5, pc}
 	.balign 4, 0
 _021F0330: .word ov00_02217A10
-_021F0334: .word ov00_021F10A8
+_021F0334: .word DWCi_GPGetInfoCallback_RecvAuthMessage
 	arm_func_end ov00_021F02DC
 
 	arm_func_start ov00_021F0338
@@ -10177,7 +10177,7 @@ ov00_021F04A0: ; 0x021F04A0
 	mov r4, r2
 	cmp r0, #0
 	beq _021F04CC
-	bl ov00_021EFC6C
+	bl DWCi_CheckLogin
 	cmp r0, #0
 	bne _021F04D4
 _021F04CC:
@@ -10246,7 +10246,7 @@ _021F0580:
 	mov r0, #0xc
 	mla r0, r4, r0, r1
 	add r1, sp, #0x108
-	bl ov00_021EFC98
+	bl DWC_GetFriendStatus
 	ldr r2, _021F05D4 ; =ov00_0221A918
 	mov r1, r0
 	ldr r0, [r2, #8]
@@ -10705,7 +10705,7 @@ ov00_021F0B8C: ; 0x021F0B8C
 	str r3, [sp]
 	cmp r2, #0
 	beq _021F0BBC
-	bl ov00_021EFC6C
+	bl DWCi_CheckLogin
 	cmp r0, #0
 	bne _021F0BC4
 _021F0BBC:
@@ -11068,8 +11068,8 @@ _021F10A0: .word ov00_0221A918
 _021F10A4: .word ov00_02217A4C
 	arm_func_end ov00_021F0EF8
 
-	arm_func_start ov00_021F10A8
-ov00_021F10A8: ; 0x021F10A8
+	arm_func_start DWCi_GPGetInfoCallback_RecvAuthMessage
+DWCi_GPGetInfoCallback_RecvAuthMessage: ; 0x021F10A8
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x18
 	mov sl, r1
@@ -11181,20 +11181,20 @@ _021F122C:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.balign 4, 0
 _021F1244: .word ov00_0221A918
-	arm_func_end ov00_021F10A8
+	arm_func_end DWCi_GPGetInfoCallback_RecvAuthMessage
 
-	arm_func_start ov00_021F1248
-ov00_021F1248: ; 0x021F1248
+	arm_func_start DWCi_GetPersCallbackLevel
+DWCi_GetPersCallbackLevel: ; 0x021F1248
 	ldr r0, _021F1258 ; =ov00_0221A918
 	ldr r0, [r0, #8]
 	ldr r0, [r0, #0x20]
 	bx lr
 	.balign 4, 0
 _021F1258: .word ov00_0221A918
-	arm_func_end ov00_021F1248
+	arm_func_end DWCi_GetPersCallbackLevel
 
-	arm_func_start ov00_021F125C
-ov00_021F125C: ; 0x021F125C
+	arm_func_start DWCi_NNFreeNegotiateList
+DWCi_NNFreeNegotiateList: ; 0x021F125C
 	stmdb sp!, {r3, lr}
 	ldr r0, _021F1280 ; =ov00_0221A928
 	ldr r1, [r0, #0x10]
@@ -11206,10 +11206,10 @@ ov00_021F125C: ; 0x021F125C
 	ldmia sp!, {r3, pc}
 	.balign 4, 0
 _021F1280: .word ov00_0221A928
-	arm_func_end ov00_021F125C
+	arm_func_end DWCi_NNFreeNegotiateList
 
-	arm_func_start ov00_021F1284
-ov00_021F1284: ; 0x021F1284
+	arm_func_start DWC_CancelMatching
+DWC_CancelMatching: ; 0x021F1284
 	stmdb sp!, {r3, lr}
 	bl ov00_021F12A4
 	cmp r0, #0
@@ -11218,12 +11218,12 @@ ov00_021F1284: ; 0x021F1284
 	bl ov00_021F6BA8
 	mov r0, #1
 	ldmia sp!, {r3, pc}
-	arm_func_end ov00_021F1284
+	arm_func_end DWC_CancelMatching
 
 	arm_func_start ov00_021F12A4
 ov00_021F12A4: ; 0x021F12A4
 	stmdb sp!, {r3, lr}
-	bl ov00_021EC230
+	bl DWCi_IsError
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r3, pc}
@@ -11245,12 +11245,12 @@ _021F12E8:
 	ldmia sp!, {r3, pc}
 	arm_func_end ov00_021F12A4
 
-	arm_func_start ov00_021F12F0
-ov00_021F12F0: ; 0x021F12F0
+	arm_func_start DWC_StopSCMatchingAsync
+DWC_StopSCMatchingAsync: ; 0x021F12F0
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r6, r0
 	mov r5, r1
-	bl ov00_021EC230
+	bl DWCi_IsError
 	cmp r0, #0
 	bne _021F133C
 	bl ov00_021F955C
@@ -11296,10 +11296,10 @@ _021F1380:
 _021F139C:
 	mov r0, #1
 	ldmia sp!, {r4, r5, r6, pc}
-	arm_func_end ov00_021F12F0
+	arm_func_end DWC_StopSCMatchingAsync
 
-	arm_func_start ov00_021F13A4
-ov00_021F13A4: ; 0x021F13A4
+	arm_func_start DWC_AddMatchKeyString
+DWC_AddMatchKeyString: ; 0x021F13A4
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	movs r6, r1
 	mov r5, r2
@@ -11347,14 +11347,14 @@ _021F1418:
 	cmp r1, #0
 	beq _021F145C
 	mov r0, #4
-	bl ov00_021EC2EC
+	bl DWC_Free
 _021F145C:
 	mov r0, r6
 	ldr r8, _021F14C0 ; =ov00_0221A94C
 	bl strlen
 	add r1, r0, #1
 	mov r0, #4
-	bl ov00_021EC2A8
+	bl DWC_Alloc
 	str r0, [r8, r4]
 	cmp r0, #0
 	bne _021F1494
@@ -11381,10 +11381,10 @@ _021F14C4: .word ov00_0221A949
 _021F14C8: .word ov00_0221A94A
 _021F14CC: .word 0xFFFEC77F
 _021F14D0: .word ov00_0221A950
-	arm_func_end ov00_021F13A4
+	arm_func_end DWC_AddMatchKeyString
 
-	arm_func_start ov00_021F14D4
-ov00_021F14D4: ; 0x021F14D4
+	arm_func_start DWC_SetMatchingOption
+DWC_SetMatchingOption: ; 0x021F14D4
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r4, r1
@@ -11420,7 +11420,7 @@ _021F1540:
 	bne _021F1570
 	mov r0, #4
 	mov r1, #0x20
-	bl ov00_021EC2A8
+	bl DWC_Alloc
 	ldr r1, _021F161C ; =ov00_0221A928
 	cmp r0, #0
 	str r0, [r1]
@@ -11474,7 +11474,7 @@ _021F1614:
 	ldmia sp!, {r3, r4, r5, pc}
 	.balign 4, 0
 _021F161C: .word ov00_0221A928
-	arm_func_end ov00_021F14D4
+	arm_func_end DWC_SetMatchingOption
 
 	arm_func_start ov00_021F1620
 ov00_021F1620: ; 0x021F1620
@@ -11502,7 +11502,7 @@ ov00_021F1620: ; 0x021F1620
 	mov r1, #0
 	str r1, [r0, #0xe4]
 	mov r0, r1
-	bl ov00_021F956C
+	bl DWCi_SetMatchStatus
 	bl ov00_021F955C
 	mov r1, #0
 	strb r1, [r0, #0xf]
@@ -11702,7 +11702,7 @@ ov00_021F1938: ; 0x021F1938
 	beq _021F1978
 	mov r0, #4
 	mov r2, #0
-	bl ov00_021EC2EC
+	bl DWC_Free
 	mov r0, r4
 	mov r1, #0
 	str r1, [r0, #8]
@@ -11721,7 +11721,7 @@ _021F1978:
 	sub r4, r1, r0
 	mov r1, r4
 	mov r0, #4
-	bl ov00_021EC2A8
+	bl DWC_Alloc
 	movs r1, r0
 	ldr r0, _021F1B10 ; =ov00_0221A928
 	str r1, [r0, #8]
@@ -11753,7 +11753,7 @@ _021F19F8:
 	ldr r1, [sp, #0x134]
 	str r1, [r0, #0x478]
 	mov r0, #2
-	bl ov00_021F956C
+	bl DWCi_SetMatchStatus
 	bl ov00_021F955C
 	ldr r0, [r0, #0xe4]
 	cmp r0, #0
@@ -11852,7 +11852,7 @@ ov00_021F1B24: ; 0x021F1B24
 	ldr r1, _021F1BC8 ; =ov00_0221A928
 	mov r0, #0xa
 	strb r2, [r1, #0x1d]
-	bl ov00_021F956C
+	bl DWCi_SetMatchStatus
 	bl ov00_021F36BC
 	bl ov00_021F8278
 	cmp r0, #0
@@ -11897,7 +11897,7 @@ ov00_021F1BCC: ; 0x021F1BCC
 	bl ov00_021F955C
 	str r6, [r0, #0xf4]
 	mov r0, #4
-	bl ov00_021F956C
+	bl DWCi_SetMatchStatus
 	bl ov00_021F955C
 	ldr r0, [r0, #0xe4]
 	cmp r0, #0
@@ -12028,7 +12028,7 @@ ov00_021F1DE4: ; 0x021F1DE4
 	cmp r0, #0
 	addeq sp, sp, #8
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
-	bl ov00_021EC230
+	bl DWCi_IsError
 	cmp r0, #0
 	addne sp, sp, #8
 	ldmneia sp!, {r3, r4, r5, r6, r7, pc}
@@ -13199,7 +13199,7 @@ ov00_021F2EE4: ; 0x021F2EE4
 	bl ov00_021F7128
 	mov r0, r4
 	mov r1, r5
-	bl ov00_021EC24C
+	bl DWCi_SetError
 	ldr r1, _021F2F9C ; =ov00_02217A60
 	mov r0, #1
 	mov r2, #0
@@ -13310,7 +13310,7 @@ _021F308C:
 	mov r1, #0
 	strb r1, [r0, #0x1ad]
 	mov r0, #9
-	bl ov00_021F956C
+	bl DWCi_SetMatchStatus
 _021F30A0:
 	mov r0, r5
 	mov r1, #3
@@ -13364,7 +13364,7 @@ _021F3134:
 	ble _021F3134
 _021F315C:
 	mov r0, #0x11
-	bl ov00_021F956C
+	bl DWCi_SetMatchStatus
 	ldmia sp!, {r4, r5, r6, pc}
 _021F3168:
 	mov r0, r5
@@ -13472,7 +13472,7 @@ _021F32C8:
 	cmp r0, #1
 	bne _021F32F8
 	mov r0, #0x12
-	bl ov00_021F956C
+	bl DWCi_SetMatchStatus
 	bl ov00_021F955C
 	mov r4, r0
 	bl OS_GetTick
@@ -13836,7 +13836,7 @@ ov00_021F378C: ; 0x021F378C
 	beq _021F37C0
 	mov r0, #4
 	mov r2, #0
-	bl ov00_021EC2EC
+	bl DWC_Free
 	ldr r0, _021F3800 ; =ov00_0221A928
 	mov r1, #0
 	str r1, [r0, #8]
@@ -13848,7 +13848,7 @@ _021F37C0:
 	beq _021F37EC
 	mov r0, #4
 	mov r2, #0
-	bl ov00_021EC2EC
+	bl DWC_Free
 	ldr r0, _021F3800 ; =ov00_0221A928
 	mov r1, #0
 	str r1, [r0]
@@ -13956,7 +13956,7 @@ ov00_021F381C: ; 0x021F381C
 	cmp r0, #3
 	bne _021F396C
 	mov r0, #1
-	bl ov00_021F956C
+	bl DWCi_SetMatchStatus
 	ldmia sp!, {r3, r4, r5, pc}
 _021F396C:
 	bl ov00_021F955C
@@ -13964,7 +13964,7 @@ _021F396C:
 	cmp r0, #2
 	ldmneia sp!, {r3, r4, r5, pc}
 	mov r0, #0xa
-	bl ov00_021F956C
+	bl DWCi_SetMatchStatus
 	ldmia sp!, {r3, r4, r5, pc}
 _021F3988:
 	bl ov00_021F955C
@@ -14065,7 +14065,7 @@ _021F3988:
 	cmp r0, #0
 	bne _021F3B18
 	mov r0, #3
-	bl ov00_021F956C
+	bl DWCi_SetMatchStatus
 	ldmia sp!, {r3, r4, r5, pc}
 _021F3B18:
 	bl ov00_021F955C
@@ -14073,7 +14073,7 @@ _021F3B18:
 	cmp r0, #1
 	ldmneia sp!, {r3, r4, r5, pc}
 	mov r0, #4
-	bl ov00_021F956C
+	bl DWCi_SetMatchStatus
 	ldmia sp!, {r3, r4, r5, pc}
 _021F3B34:
 	bl ov00_021F955C
@@ -14180,16 +14180,16 @@ ov00_021F3C5C: ; 0x021F3C5C
 	mov r1, #0
 	str r1, [r0, #0xe4]
 _021F3CAC:
-	bl ov00_021F125C
+	bl DWCi_NNFreeNegotiateList
 	mov r0, #0
-	bl ov00_021F956C
+	bl DWCi_SetMatchStatus
 	ldr r0, _021F3CF4 ; =ov00_0221A928
 	ldr r1, [r0, #8]
 	cmp r1, #0
 	beq _021F3CE0
 	mov r0, #4
 	mov r2, #0
-	bl ov00_021EC2EC
+	bl DWC_Free
 	ldr r0, _021F3CF4 ; =ov00_0221A928
 	mov r1, #0
 	str r1, [r0, #8]
@@ -15100,7 +15100,7 @@ _021F4970:
 	mov r0, #0xb
 	str r2, [r1, r3, lsl #2]
 	add r4, r4, #2
-	bl ov00_021F956C
+	bl DWCi_SetMatchStatus
 	b _021F49F0
 _021F49A4:
 	cmp r5, #3
@@ -15235,7 +15235,7 @@ _021F4B58:
 	ldmneia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 _021F4B9C:
 	mov r0, #6
-	bl ov00_021F956C
+	bl DWCi_SetMatchStatus
 	bl ov00_021F955C
 	ldr r0, [r0, #0xe4]
 	mov r1, #0
@@ -15252,7 +15252,7 @@ _021F4B9C:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 _021F4BDC:
 	mov r0, #5
-	bl ov00_021F956C
+	bl DWCi_SetMatchStatus
 	mov r0, r8
 	bl ov00_021F3CF8
 	bl ov00_021F82EC
@@ -15344,7 +15344,7 @@ _021F4D0C:
 	cmp r0, #0
 	bne _021F4D60
 	mov r0, #3
-	bl ov00_021F956C
+	bl DWCi_SetMatchStatus
 	bl ov00_021F955C
 	mov r1, #1
 	str r1, [r0, #0xe8]
@@ -15407,7 +15407,7 @@ _021F4E00:
 	cmp r0, #1
 	bne _021F4E2C
 	mov r0, #6
-	bl ov00_021F956C
+	bl DWCi_SetMatchStatus
 	b _021F4E5C
 _021F4E2C:
 	bl ov00_021F955C
@@ -15626,7 +15626,7 @@ _021F5110:
 	ldr r2, [r6, #0x10]
 	mov r0, #5
 	strh r2, [r1, #0xb4]
-	bl ov00_021F956C
+	bl DWCi_SetMatchStatus
 	ldr r0, [sp, #0x10]
 	bl ov00_021F3CF8
 	bl ov00_021F82EC
@@ -16669,7 +16669,7 @@ ov00_021F5FD4: ; 0x021F5FD4
 	cmp r0, #0
 	bne _021F6048
 	mov r0, #3
-	bl ov00_021F956C
+	bl DWCi_SetMatchStatus
 	mov r0, #0
 	bl ov00_021F3CF8
 	bl ov00_021F82EC
@@ -16813,7 +16813,7 @@ _021F620C:
 	cmp r0, #0
 	bne _021F6248
 	mov r0, #3
-	bl ov00_021F956C
+	bl DWCi_SetMatchStatus
 	bl ov00_021F955C
 	mov r1, #2
 	str r1, [r0, #0xe8]
@@ -16829,7 +16829,7 @@ _021F6248:
 	cmp r0, #1
 	bne _021F6274
 	mov r0, #4
-	bl ov00_021F956C
+	bl DWCi_SetMatchStatus
 	mov r1, #0
 	mov r2, r1
 	mov r0, #1
@@ -16841,7 +16841,7 @@ _021F6274:
 	cmp r0, #2
 	bne _021F6314
 	mov r0, #0xe
-	bl ov00_021F956C
+	bl DWCi_SetMatchStatus
 	bl ov00_021F955C
 	mov r1, #0
 	str r1, [r0, #0x1d8]
@@ -16930,7 +16930,7 @@ _021F63A4:
 	b _021F63D0
 _021F63BC:
 	mov r0, #4
-	bl ov00_021F956C
+	bl DWCi_SetMatchStatus
 	mov r0, #0
 	bl ov00_021F5FD4
 	mov r4, r0
@@ -17029,7 +17029,7 @@ _021F64F0:
 	cmp r1, r0
 	bge _021F65B0
 	mov r0, #0xd
-	bl ov00_021F956C
+	bl DWCi_SetMatchStatus
 	bl ov00_021F955C
 	mov r4, r0
 	bl ov00_021F955C
@@ -17083,7 +17083,7 @@ _021F65B0:
 	cmp r0, #0
 	bne _021F65F0
 	mov r0, r4
-	bl ov00_021F956C
+	bl DWCi_SetMatchStatus
 	b _021F6614
 _021F65F0:
 	bl ov00_021F955C
@@ -17091,11 +17091,11 @@ _021F65F0:
 	cmp r0, #1
 	bne _021F660C
 	mov r0, #4
-	bl ov00_021F956C
+	bl DWCi_SetMatchStatus
 	b _021F6614
 _021F660C:
 	mov r0, #0xa
-	bl ov00_021F956C
+	bl DWCi_SetMatchStatus
 _021F6614:
 	bl ov00_021F955C
 	mov r1, #0
@@ -17137,7 +17137,7 @@ _021F6684:
 	str r0, [r6, #0xf4]
 _021F66A4:
 	mov r0, #0x10
-	bl ov00_021F956C
+	bl DWCi_SetMatchStatus
 	bl ov00_021F955C
 	mov r1, #0
 	str r1, [r0, #0x1d4]
@@ -17266,7 +17266,7 @@ _021F67FC:
 	b _021F6AE4
 _021F6890:
 	mov r0, #1
-	bl ov00_021F956C
+	bl DWCi_SetMatchStatus
 	bl ov00_021F955C
 	ldrb r0, [r0, #0x15]
 	cmp r0, #3
@@ -17285,7 +17285,7 @@ _021F68CC:
 	b _021F6AE4
 _021F68D4:
 	mov r0, #1
-	bl ov00_021F956C
+	bl DWCi_SetMatchStatus
 	bl ov00_021F955C
 	ldrb r0, [r0, #0x15]
 	cmp r0, #0
@@ -17337,7 +17337,7 @@ _021F691C:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, pc}
 _021F6998:
 	mov r0, #1
-	bl ov00_021F956C
+	bl DWCi_SetMatchStatus
 	bl ov00_021F7DB4
 	bl ov00_021F955C
 	mov r1, r5
@@ -17398,7 +17398,7 @@ _021F6A54:
 	mov r1, #0
 	str r1, [r0, #0xe4]
 _021F6A7C:
-	bl ov00_021F125C
+	bl DWCi_NNFreeNegotiateList
 	bl ov00_021F955C
 	ldrb r0, [r0, #0x15]
 	cmp r0, #2
@@ -17414,11 +17414,11 @@ _021F6A7C:
 	moveq r1, #1
 	streqb r1, [r0, #0x1d]
 	mov r0, #0xa
-	bl ov00_021F956C
+	bl DWCi_SetMatchStatus
 	b _021F6ACC
 _021F6AC4:
 	mov r0, #1
-	bl ov00_021F956C
+	bl DWCi_SetMatchStatus
 _021F6ACC:
 	bl ov00_021F955C
 	mov r1, #0
@@ -17821,7 +17821,7 @@ ov00_021F6FF8: ; 0x021F6FF8
 	cmp r0, #0
 	bne _021F7068
 	mov r0, #3
-	bl ov00_021F956C
+	bl DWCi_SetMatchStatus
 	mov r0, #0
 	bl ov00_021F3CF8
 	mov r4, r0
@@ -17836,7 +17836,7 @@ _021F7068:
 	cmp r0, #1
 	bne _021F70B0
 	mov r0, #4
-	bl ov00_021F956C
+	bl DWCi_SetMatchStatus
 	bl ov00_021F955C
 	ldr r0, [r0, #0x208]
 	mov r1, #0
@@ -18299,7 +18299,7 @@ _021F76B0:
 	cmp r0, #8
 	beq _021F76D0
 	mov r0, #8
-	bl ov00_021F956C
+	bl DWCi_SetMatchStatus
 	mov r0, r4
 	bl ov00_021F70B8
 _021F76D0:
@@ -18404,7 +18404,7 @@ _021F7818:
 	ble _021F7818
 _021F784C:
 	mov r0, #0xf
-	bl ov00_021F956C
+	bl DWCi_SetMatchStatus
 	b _021F788C
 _021F7858:
 	mov r0, r6
@@ -18607,7 +18607,7 @@ _021F7AEC:
 	beq _021F7B04
 	mov r0, r5
 	mov r2, r4
-	bl ov00_021EC2EC
+	bl DWC_Free
 _021F7B04:
 	add r6, r6, #1
 	cmp r6, #0x9a
@@ -18927,7 +18927,7 @@ _021F7F0C:
 	cmp r0, #0
 	bne _021F7F60
 	mov r0, #3
-	bl ov00_021F956C
+	bl DWCi_SetMatchStatus
 	bl ov00_021F955C
 	mov r1, #2
 	str r1, [r0, #0xe8]
@@ -18940,7 +18940,7 @@ _021F7F0C:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 _021F7F60:
 	mov r0, #4
-	bl ov00_021F956C
+	bl DWCi_SetMatchStatus
 	mov r1, #0
 	mov r2, r1
 	mov r0, #1
@@ -19103,7 +19103,7 @@ _021F8198:
 	ldmneia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 _021F81C4:
 	mov r0, #0x13
-	bl ov00_021F956C
+	bl DWCi_SetMatchStatus
 	mov r4, #1
 	bl ov00_021F955C
 	ldrb r0, [r0, #0xd]
@@ -19307,7 +19307,7 @@ _021F8444:
 	ldr r1, _021F8464 ; =0xFFFE90D0
 	mov r0, r5
 	add r1, r4, r1
-	bl ov00_021EC24C
+	bl DWCi_SetError
 _021F8454:
 	mov r0, r6
 	ldmia sp!, {r4, r5, r6, pc}
@@ -19555,7 +19555,7 @@ _021F875C:
 	cmp r5, r0
 	bge _021F8794
 	mov r0, #3
-	bl ov00_021F956C
+	bl DWCi_SetMatchStatus
 	bl ov00_021F955C
 	mov r1, #0
 	str r1, [r0, #0x204]
@@ -19589,7 +19589,7 @@ _021F87B8:
 	cmp r0, #0
 	bne _021F89AC
 	mov r0, #4
-	bl ov00_021F956C
+	bl DWCi_SetMatchStatus
 	bl ov00_021F955C
 	mov r1, #0
 	str r1, [r0, #0xe8]
@@ -19678,7 +19678,7 @@ _021F8920:
 	cmp r0, #0
 	bne _021F89AC
 	mov r0, #4
-	bl ov00_021F956C
+	bl DWCi_SetMatchStatus
 	bl ov00_021F955C
 	mov r1, r0
 	mov r0, #0
@@ -19689,7 +19689,7 @@ _021F8920:
 	b _021F89AC
 _021F8960:
 	mov r0, #6
-	bl ov00_021F956C
+	bl DWCi_SetMatchStatus
 	mov r0, r6
 	mov r1, #0
 	bl ov00_022139B8
@@ -20152,7 +20152,7 @@ ov00_021F8F40: ; 0x021F8F40
 	cmp r0, #1
 	bne _021F8F64
 	mov r0, #6
-	bl ov00_021F956C
+	bl DWCi_SetMatchStatus
 	b _021F8F84
 _021F8F64:
 	bl ov00_021F955C
@@ -20337,11 +20337,11 @@ _021F913C:
 	cmp r0, #0xb
 	bne _021F91F8
 	mov r0, #0xc
-	bl ov00_021F956C
+	bl DWCi_SetMatchStatus
 	b _021F9200
 _021F91F8:
 	mov r0, #7
-	bl ov00_021F956C
+	bl DWCi_SetMatchStatus
 _021F9200:
 	bl ov00_021F955C
 	mov r1, #0
@@ -20421,7 +20421,7 @@ _021F9314:
 	str r0, [r4, #0x18c]
 	mov r0, #7
 	str r1, [r4, #0x190]
-	bl ov00_021F956C
+	bl DWCi_SetMatchStatus
 	add sp, sp, #0x1c
 	ldmia sp!, {r3, r4, r5, r6, pc}
 _021F9338:
@@ -20594,37 +20594,37 @@ ov00_021F955C: ; 0x021F955C
 _021F9568: .word ov00_0221A928
 	arm_func_end ov00_021F955C
 
-	arm_func_start ov00_021F956C
-ov00_021F956C: ; 0x021F956C
+	arm_func_start DWCi_SetMatchStatus
+DWCi_SetMatchStatus: ; 0x021F956C
 	ldr r1, _021F957C ; =ov00_0221A928
 	ldr r1, [r1, #4]
 	str r0, [r1, #0x1a0]
 	bx lr
 	.balign 4, 0
 _021F957C: .word ov00_0221A928
-	arm_func_end ov00_021F956C
+	arm_func_end DWCi_SetMatchStatus
 
-	arm_func_start ov00_021F9580
-ov00_021F9580: ; 0x021F9580
-	ldr ip, _021F958C ; =ov00_021F9590
+	arm_func_start DWC_IsSendableReliable
+DWC_IsSendableReliable: ; 0x021F9580
+	ldr ip, _021F958C ; =DWCi_IsSendableReliable
 	mov r1, #1
 	bx ip
 	.balign 4, 0
-_021F958C: .word ov00_021F9590
-	arm_func_end ov00_021F9580
+_021F958C: .word DWCi_IsSendableReliable
+	arm_func_end DWC_IsSendableReliable
 
-	arm_func_start ov00_021F9590
-ov00_021F9590: ; 0x021F9590
+	arm_func_start DWCi_IsSendableReliable
+DWCi_IsSendableReliable: ; 0x021F9590
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r0
 	mov r5, r1
-	bl ov00_021EC230
+	bl DWCi_IsError
 	cmp r0, #0
 	bne _021F95D0
 	cmp r5, #1
 	bne _021F95C0
 	mov r0, r4
-	bl ov00_021EE530
+	bl DWC_IsValidAID
 	cmp r0, #0
 	beq _021F95D0
 _021F95C0:
@@ -20642,15 +20642,15 @@ _021F95D8:
 	moveq r0, #0
 	ldmeqia sp!, {r3, r4, r5, pc}
 	mov r0, r4
-	bl ov00_021FA090
+	bl DWCs_GetOutgoingBufferFreeSize
 	mov r4, r0
 	mov r0, r5
-	bl ov00_021F9968
+	bl DWCs_GetRequiredHeaderSize
 	cmp r4, r0
 	movge r0, #1
 	movlt r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end ov00_021F9590
+	arm_func_end DWCi_IsSendableReliable
 
 	arm_func_start DWC_SendReliable
 DWC_SendReliable: ; 0x021F9610
@@ -20677,7 +20677,7 @@ ov00_021F9630: ; 0x021F9630
 	mov r4, r0
 	mov r0, r7
 	mov r1, r8
-	bl ov00_021F9590
+	bl DWCi_IsSendableReliable
 	cmp r0, #0
 	addeq sp, sp, #8
 	moveq r0, #0
@@ -20691,7 +20691,7 @@ ov00_021F9630: ; 0x021F9630
 	mov r1, r8
 	mov r2, r5
 	str r5, [r4, #0x14]
-	bl ov00_021F98FC
+	bl DWCs_EncodeHeader
 	add r1, sp, #0
 	mov r0, r7
 	mov r2, #8
@@ -20704,7 +20704,7 @@ ov00_021F9630: ; 0x021F9630
 	mov r0, r7
 	cmp r5, sb
 	movle sb, r5
-	bl ov00_021FA090
+	bl DWCs_GetOutgoingBufferFreeSize
 	cmp sb, r0
 	addgt sp, sp, #8
 	movgt r0, #1
@@ -20742,8 +20742,8 @@ _021F9740:
 _021F974C: .word ov00_0221B0A0
 	arm_func_end ov00_021F9630
 
-	arm_func_start ov00_021F9750
-ov00_021F9750: ; 0x021F9750
+	arm_func_start DWC_SendReliableBitmap
+DWC_SendReliableBitmap: ; 0x021F9750
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
 	mov r7, #1
 	mov r6, r0
@@ -20757,7 +20757,7 @@ _021F976C:
 	moveq sl, r7
 	tst r6, sl
 	beq _021F97A8
-	bl ov00_021EE490
+	bl DWC_GetMyAID
 	cmp sb, r0
 	beq _021F97A8
 	mov r0, sb
@@ -20774,7 +20774,7 @@ _021F97A8:
 	blo _021F976C
 	mov r0, r6
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
-	arm_func_end ov00_021F9750
+	arm_func_end DWC_SendReliableBitmap
 
 	arm_func_start DWC_SendUnreliable
 DWC_SendUnreliable: ; 0x021F97C0
@@ -20782,12 +20782,12 @@ DWC_SendUnreliable: ; 0x021F97C0
 	mov r5, r0
 	mov r6, r1
 	mov r4, r2
-	bl ov00_021EC230
+	bl DWCi_IsError
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r4, r5, r6, pc}
 	mov r0, r5
-	bl ov00_021EE530
+	bl DWC_IsValidAID
 	cmp r0, #0
 	moveq r0, #0
 	ldmeqia sp!, {r4, r5, r6, pc}
@@ -20818,8 +20818,8 @@ _021F9844:
 _021F984C: .word ov00_0221B0A0
 	arm_func_end DWC_SendUnreliable
 
-	arm_func_start ov00_021F9850
-ov00_021F9850: ; 0x021F9850
+	arm_func_start DWC_SetRecvBuffer
+DWC_SetRecvBuffer: ; 0x021F9850
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r7, r0
 	mov r6, r1
@@ -20839,10 +20839,10 @@ ov00_021F9850: ; 0x021F9850
 	str r1, [r4, #0x10]
 	str r1, [r4, #0x18]
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	arm_func_end ov00_021F9850
+	arm_func_end DWC_SetRecvBuffer
 
-	arm_func_start ov00_021F989C
-ov00_021F989C: ; 0x021F989C
+	arm_func_start DWC_SetUserSendCallback
+DWC_SetUserSendCallback: ; 0x021F989C
 	ldr r1, _021F98B8 ; =ov00_0221B0A0
 	ldr r1, [r1]
 	cmp r1, #0
@@ -20852,10 +20852,10 @@ ov00_021F989C: ; 0x021F989C
 	bx lr
 	.balign 4, 0
 _021F98B8: .word ov00_0221B0A0
-	arm_func_end ov00_021F989C
+	arm_func_end DWC_SetUserSendCallback
 
-	arm_func_start ov00_021F98BC
-ov00_021F98BC: ; 0x021F98BC
+	arm_func_start DWC_SetUserRecvCallback
+DWC_SetUserRecvCallback: ; 0x021F98BC
 	ldr r1, _021F98D8 ; =ov00_0221B0A0
 	ldr r1, [r1]
 	cmp r1, #0
@@ -20865,10 +20865,10 @@ ov00_021F98BC: ; 0x021F98BC
 	bx lr
 	.balign 4, 0
 _021F98D8: .word ov00_0221B0A0
-	arm_func_end ov00_021F98BC
+	arm_func_end DWC_SetUserRecvCallback
 
-	arm_func_start ov00_021F98DC
-ov00_021F98DC: ; 0x021F98DC
+	arm_func_start DWC_SetUserRecvTimeoutCallback
+DWC_SetUserRecvTimeoutCallback: ; 0x021F98DC
 	ldr r1, _021F98F8 ; =ov00_0221B0A0
 	ldr r1, [r1]
 	cmp r1, #0
@@ -20878,10 +20878,10 @@ ov00_021F98DC: ; 0x021F98DC
 	bx lr
 	.balign 4, 0
 _021F98F8: .word ov00_0221B0A0
-	arm_func_end ov00_021F98DC
+	arm_func_end DWC_SetUserRecvTimeoutCallback
 
-	arm_func_start ov00_021F98FC
-ov00_021F98FC: ; 0x021F98FC
+	arm_func_start DWCs_EncodeHeader
+DWCs_EncodeHeader: ; 0x021F98FC
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r6, r0
 	mov r5, r1
@@ -20895,10 +20895,10 @@ ov00_021F98FC: ; 0x021F98FC
 	ldmia sp!, {r4, r5, r6, pc}
 	.balign 4, 0
 _021F9928: .word ov00_02217B88
-	arm_func_end ov00_021F98FC
+	arm_func_end DWCs_EncodeHeader
 
-	arm_func_start ov00_021F992C
-ov00_021F992C: ; 0x021F992C
+	arm_func_start DWCs_DecodeHeader
+DWCs_DecodeHeader: ; 0x021F992C
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #8
 	add r1, sp, #0
@@ -20915,10 +20915,10 @@ ov00_021F992C: ; 0x021F992C
 	ldmia sp!, {r3, pc}
 	.balign 4, 0
 _021F9964: .word ov00_02217B88
-	arm_func_end ov00_021F992C
+	arm_func_end DWCs_DecodeHeader
 
-	arm_func_start ov00_021F9968
-ov00_021F9968: ; 0x021F9968
+	arm_func_start DWCs_GetRequiredHeaderSize
+DWCs_GetRequiredHeaderSize: ; 0x021F9968
 	cmp r0, #2
 	cmpne r0, #3
 	cmpne r0, #4
@@ -20928,10 +20928,10 @@ ov00_021F9968: ; 0x021F9968
 _021F9980:
 	mov r0, #8
 	bx lr
-	arm_func_end ov00_021F9968
+	arm_func_end DWCs_GetRequiredHeaderSize
 
-	arm_func_start ov00_021F9988
-ov00_021F9988: ; 0x021F9988
+	arm_func_start DWC_SetRecvTimeoutTime
+DWC_SetRecvTimeoutTime: ; 0x021F9988
 	stmdb sp!, {r4, lr}
 	ldr r2, _021F99D0 ; =ov00_0221B0A0
 	ldr r3, [r2]
@@ -20952,7 +20952,7 @@ ov00_021F9988: ; 0x021F9988
 	ldmia sp!, {r4, pc}
 	.balign 4, 0
 _021F99D0: .word ov00_0221B0A0
-	arm_func_end ov00_021F9988
+	arm_func_end DWC_SetRecvTimeoutTime
 
 	arm_func_start ov00_021F99D4
 ov00_021F99D4: ; 0x021F99D4
@@ -21035,7 +21035,7 @@ _021F9AC0:
 	ldr r0, [sp]
 	ldrb sb, [r0, r8]
 	mov r0, sb
-	bl ov00_021EE530
+	bl DWC_IsValidAID
 	cmp r0, #0
 	beq _021F9B54
 	mov r0, sb
@@ -21070,7 +21070,7 @@ _021F9AC0:
 	str r5, [r6, #0x24]
 	str sl, [r6, #0x28]
 _021F9B54:
-	bl ov00_021EE490
+	bl DWC_GetMyAID
 	cmp sb, r0
 	beq _021F9C08
 	mov r0, sb
@@ -21089,7 +21089,7 @@ _021F9B54:
 	cmp r0, r6
 	movle r6, r0
 	mov r0, sb
-	bl ov00_021FA090
+	bl DWCs_GetOutgoingBufferFreeSize
 	cmp r0, r6
 	blt _021F9C08
 	ldr r3, [r5]
@@ -21242,7 +21242,7 @@ _021F9D58: ; jump table
 	b _021F9DD4 ; case 4
 _021F9D6C:
 	mov r0, r6
-	bl ov00_021F992C
+	bl DWCs_DecodeHeader
 	cmp r0, #2
 	ldmloia sp!, {r4, r5, r6, pc}
 	cmp r0, #4
@@ -21250,25 +21250,25 @@ _021F9D6C:
 	mov r0, r4
 	mov r1, r6
 	mov r2, r5
-	bl ov00_021F9EA8
+	bl DWCs_RecvDataHeader
 	ldmia sp!, {r4, r5, r6, pc}
 _021F9D98:
 	mov r0, r4
 	mov r1, r6
 	mov r2, r5
-	bl ov00_021F9EA8
+	bl DWCs_RecvDataHeader
 	ldmia sp!, {r4, r5, r6, pc}
 _021F9DAC:
 	mov r0, r4
 	mov r1, r6
 	mov r2, r5
-	bl ov00_021F9F70
+	bl DWCs_RecvDataBody
 	ldmia sp!, {r4, r5, r6, pc}
 _021F9DC0:
 	mov r0, r4
 	mov r1, r6
 	mov r2, r5
-	bl ov00_021FA054
+	bl DWCs_RecvSystemDataBody
 	ldmia sp!, {r4, r5, r6, pc}
 _021F9DD4:
 	mov r0, #0x30
@@ -21289,7 +21289,7 @@ _021F9DD4:
 _021F9E10:
 	ldr r1, _021F9E24 ; =0xFFFE82B6
 	mov r0, #6
-	bl ov00_021EC24C
+	bl DWCi_SetError
 	ldmia sp!, {r4, r5, r6, pc}
 	.balign 4, 0
 _021F9E20: .word ov00_0221B0A0
@@ -21334,8 +21334,8 @@ _021F9E78:
 _021F9EA4: .word ov00_0221B0A0
 	arm_func_end ov00_021F9E28
 
-	arm_func_start ov00_021F9EA8
-ov00_021F9EA8: ; 0x021F9EA8
+	arm_func_start DWCs_RecvDataHeader
+DWCs_RecvDataHeader: ; 0x021F9EA8
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	sub sp, sp, #8
 	ldr r4, _021F9F6C ; =ov00_0221B0A0
@@ -21347,7 +21347,7 @@ ov00_021F9EA8: ; 0x021F9EA8
 	bl ov00_021F9CF0
 	strb r0, [r4, #0x1e]
 	mov r0, r7
-	bl ov00_021F992C
+	bl DWCs_DecodeHeader
 	mov r5, r0
 	cmp r5, #4
 	addls pc, pc, r5, lsl #2
@@ -21392,10 +21392,10 @@ _021F9F60:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _021F9F6C: .word ov00_0221B0A0
-	arm_func_end ov00_021F9EA8
+	arm_func_end DWCs_RecvDataHeader
 
-	arm_func_start ov00_021F9F70
-ov00_021F9F70: ; 0x021F9F70
+	arm_func_start DWCs_RecvDataBody
+DWCs_RecvDataBody: ; 0x021F9F70
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	ldr r3, _021FA04C ; =ov00_0221B0A0
 	mov r7, r0
@@ -21414,7 +21414,7 @@ ov00_021F9F70: ; 0x021F9F70
 	ble _021F9FC0
 	ldr r1, _021FA050 ; =0xFFFE82AC
 	mov r0, #6
-	bl ov00_021EC24C
+	bl DWCi_SetError
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _021F9FC0:
 	ldr r1, [r4, #4]
@@ -21457,10 +21457,10 @@ _021FA020:
 	.balign 4, 0
 _021FA04C: .word ov00_0221B0A0
 _021FA050: .word 0xFFFE82AC
-	arm_func_end ov00_021F9F70
+	arm_func_end DWCs_RecvDataBody
 
-	arm_func_start ov00_021FA054
-ov00_021FA054: ; 0x021FA054
+	arm_func_start DWCs_RecvSystemDataBody
+DWCs_RecvSystemDataBody: ; 0x021FA054
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r4, r1
@@ -21476,10 +21476,10 @@ ov00_021FA054: ; 0x021FA054
 	mov r2, r4
 	bl ov00_021F2FDC
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end ov00_021FA054
+	arm_func_end DWCs_RecvSystemDataBody
 
-	arm_func_start ov00_021FA090
-ov00_021FA090: ; 0x021FA090
+	arm_func_start DWCs_GetOutgoingBufferFreeSize
+DWCs_GetOutgoingBufferFreeSize: ; 0x021FA090
 	stmdb sp!, {r3, lr}
 	bl ov00_021EE64C
 	bl ov00_0220D284
@@ -21490,10 +21490,10 @@ ov00_021FA090: ; 0x021FA090
 	ldmia sp!, {r3, pc}
 	.balign 4, 0
 _021FA0B0: .word 0xFFFFFDF9
-	arm_func_end ov00_021FA090
+	arm_func_end DWCs_GetOutgoingBufferFreeSize
 
-	arm_func_start ov00_021FA0B4
-ov00_021FA0B4: ; 0x021FA0B4
+	arm_func_start DWC_InitGHTTP
+DWC_InitGHTTP: ; 0x021FA0B4
 	stmdb sp!, {r3, lr}
 	bl ov38_0221D7B4
 	ldr r1, _021FA0D4 ; =ov00_0221B0A4
@@ -21504,10 +21504,10 @@ ov00_021FA0B4: ; 0x021FA0B4
 	ldmia sp!, {r3, pc}
 	.balign 4, 0
 _021FA0D4: .word ov00_0221B0A4
-	arm_func_end ov00_021FA0B4
+	arm_func_end DWC_InitGHTTP
 
-	arm_func_start ov00_021FA0D8
-ov00_021FA0D8: ; 0x021FA0D8
+	arm_func_start DWC_ShutdownGHTTP
+DWC_ShutdownGHTTP: ; 0x021FA0D8
 	stmdb sp!, {r3, lr}
 	ldr r0, _021FA114 ; =ov00_0221B0A4
 	ldr r0, [r0, #4]
@@ -21526,22 +21526,22 @@ _021FA10C:
 	ldmia sp!, {r3, pc}
 	.balign 4, 0
 _021FA114: .word ov00_0221B0A4
-	arm_func_end ov00_021FA0D8
+	arm_func_end DWC_ShutdownGHTTP
 
-	arm_func_start ov00_021FA118
-ov00_021FA118: ; 0x021FA118
+	arm_func_start DWC_ProcessGHTTP
+DWC_ProcessGHTTP: ; 0x021FA118
 	stmdb sp!, {r3, lr}
-	bl ov00_021EC230
+	bl DWCi_IsError
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r3, pc}
 	bl ov38_0221DAEC
 	mov r0, #1
 	ldmia sp!, {r3, pc}
-	arm_func_end ov00_021FA118
+	arm_func_end DWC_ProcessGHTTP
 
-	arm_func_start ov00_021FA138
-ov00_021FA138: ; 0x021FA138
+	arm_func_start GHTTPCompletedCallback
+GHTTPCompletedCallback: ; 0x021FA138
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	ldr r4, [sp, #0x18]
 	mov r7, r1
@@ -21577,7 +21577,7 @@ _021FA1A0:
 	beq _021FA1BC
 	mov r0, #4
 	mov r2, #0
-	bl ov00_021EC2EC
+	bl DWC_Free
 _021FA1BC:
 	mov r0, r4
 	bl ov00_021FA668
@@ -21585,10 +21585,10 @@ _021FA1BC:
 	movne r0, #1
 	moveq r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	arm_func_end ov00_021FA138
+	arm_func_end GHTTPCompletedCallback
 
-	arm_func_start ov00_021FA1D4
-ov00_021FA1D4: ; 0x021FA1D4
+	arm_func_start GHTTPProgressCallback
+GHTTPProgressCallback: ; 0x021FA1D4
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #8
 	ldr r4, [sp, #0x18]
@@ -21607,16 +21607,16 @@ ov00_021FA1D4: ; 0x021FA1D4
 	blx lr
 	add sp, sp, #8
 	ldmia sp!, {r4, pc}
-	arm_func_end ov00_021FA1D4
+	arm_func_end GHTTPProgressCallback
 
-	arm_func_start ov00_021FA21C
-ov00_021FA21C: ; 0x021FA21C
+	arm_func_start DWC_GetGHTTPData
+DWC_GetGHTTPData: ; 0x021FA21C
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	sub sp, sp, #0x10
 	mov r4, r0
 	mov r7, r1
 	mov r6, r2
-	bl ov00_021EC230
+	bl DWCi_IsError
 	cmp r0, #0
 	addne sp, sp, #0x10
 	mvnne r0, #7
@@ -21642,7 +21642,7 @@ ov00_021FA21C: ; 0x021FA21C
 	mvn r0, #4
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _021FA294:
-	ldr r2, _021FA2E0 ; =ov00_021FA138
+	ldr r2, _021FA2E0 ; =GHTTPCompletedCallback
 	mov r0, r4
 	mov r3, r5
 	mov r1, #0
@@ -21663,11 +21663,11 @@ _021FA2D0:
 	add sp, sp, #0x10
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_021FA2E0: .word ov00_021FA138
-	arm_func_end ov00_021FA21C
+_021FA2E0: .word GHTTPCompletedCallback
+	arm_func_end DWC_GetGHTTPData
 
-	arm_func_start ov00_021FA2E4
-ov00_021FA2E4: ; 0x021FA2E4
+	arm_func_start DWCi_GHTTPGetEx
+DWCi_GHTTPGetEx: ; 0x021FA2E4
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
 	sub sp, sp, #0x28
 	ldr sb, [sp, #0x4c]
@@ -21677,7 +21677,7 @@ ov00_021FA2E4: ; 0x021FA2E4
 	mov r7, r2
 	mov sl, r3
 	mov r6, #0
-	bl ov00_021EC230
+	bl DWCi_IsError
 	cmp r0, #0
 	addne sp, sp, #0x28
 	mvnne r0, #7
@@ -21706,7 +21706,7 @@ _021FA368:
 	ble _021FA3B8
 	mov r1, r4
 	mov r0, #4
-	bl ov00_021EC2A8
+	bl DWC_Alloc
 	movs r6, r0
 	bne _021FA3B4
 	mvn r0, #4
@@ -21728,11 +21728,11 @@ _021FA3B8:
 	mov r1, #0
 	beq _021FA3F8
 	ldr r0, [sl]
-	ldr r2, _021FA480 ; =ov00_021FA1D4
+	ldr r2, _021FA480 ; =GHTTPProgressCallback
 	stmia sp, {r0, r1}
 	str r1, [sp, #8]
 	str r2, [sp, #0xc]
-	ldr r0, _021FA484 ; =ov00_021FA138
+	ldr r0, _021FA484 ; =GHTTPCompletedCallback
 	mov r2, r6
 	str r0, [sp, #0x10]
 	mov r0, r5
@@ -21743,10 +21743,10 @@ _021FA3B8:
 _021FA3F8:
 	str r1, [sp]
 	str r1, [sp, #4]
-	ldr r2, _021FA480 ; =ov00_021FA1D4
+	ldr r2, _021FA480 ; =GHTTPProgressCallback
 	str r1, [sp, #8]
 	str r2, [sp, #0xc]
-	ldr r0, _021FA484 ; =ov00_021FA138
+	ldr r0, _021FA484 ; =GHTTPCompletedCallback
 	mov r2, r6
 	str r0, [sp, #0x10]
 	mov r0, r5
@@ -21769,7 +21769,7 @@ _021FA428:
 	beq _021FA468
 	mov r0, #4
 	mov r2, #0
-	bl ov00_021EC2EC
+	bl DWC_Free
 _021FA468:
 	mov r0, r7
 	bl ov00_021FA668
@@ -21779,12 +21779,12 @@ _021FA470:
 	add sp, sp, #0x28
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.balign 4, 0
-_021FA480: .word ov00_021FA1D4
-_021FA484: .word ov00_021FA138
-	arm_func_end ov00_021FA2E4
+_021FA480: .word GHTTPProgressCallback
+_021FA484: .word GHTTPCompletedCallback
+	arm_func_end DWCi_GHTTPGetEx
 
-	arm_func_start ov00_021FA488
-ov00_021FA488: ; 0x021FA488
+	arm_func_start DWC_GetGHTTPDataEx
+DWC_GetGHTTPDataEx: ; 0x021FA488
 	stmdb sp!, {lr}
 	sub sp, sp, #0xc
 	ldr lr, [sp, #0x10]
@@ -21792,10 +21792,10 @@ ov00_021FA488: ; 0x021FA488
 	stmia sp, {r3, lr}
 	mov r3, #0
 	str ip, [sp, #8]
-	bl ov00_021FA2E4
+	bl DWCi_GHTTPGetEx
 	add sp, sp, #0xc
 	ldmia sp!, {pc}
-	arm_func_end ov00_021FA488
+	arm_func_end DWC_GetGHTTPDataEx
 
 	arm_func_start ov00_021FA4B0
 ov00_021FA4B0: ; 0x021FA4B0
@@ -21895,7 +21895,7 @@ _021FA5DC:
 	ldr r2, _021FA608 ; =0xFFFFFC72
 	add r1, r1, r2
 _021FA5E4:
-	bl ov00_021EC24C
+	bl DWCi_SetError
 	mov r0, r4
 	ldmia sp!, {r4, pc}
 	.balign 4, 0
@@ -21914,7 +21914,7 @@ ov00_021FA60C: ; 0x021FA60C
 	mov r4, r0
 	mov r0, #4
 	mov r1, #0x1c
-	bl ov00_021EC2A8
+	bl DWC_Alloc
 	movs ip, r0
 	moveq r0, #0
 	ldmeqia sp!, {r4, pc}
@@ -21948,7 +21948,7 @@ ov00_021FA668: ; 0x021FA668
 	mov r0, #4
 	mov r2, #0
 	ldr r4, [r1, #0x18]
-	bl ov00_021EC2EC
+	bl DWC_Free
 	ldr r0, _021FA6E8 ; =ov00_0221B0A4
 	str r4, [r0]
 	ldmia sp!, {r4, pc}
@@ -21966,7 +21966,7 @@ _021FA6AC:
 	mov r2, #0
 	str r3, [r1, #0x18]
 	mov r1, ip
-	bl ov00_021EC2EC
+	bl DWC_Free
 	ldmia sp!, {r4, pc}
 _021FA6D8:
 	ldr r2, [r2, #0x18]
@@ -21996,12 +21996,12 @@ _021FA710:
 	beq _021FA730
 	mov r0, r7
 	mov r2, r6
-	bl ov00_021EC2EC
+	bl DWC_Free
 _021FA730:
 	mov r0, r5
 	mov r1, sb
 	mov r2, r4
-	bl ov00_021EC2EC
+	bl DWC_Free
 	cmp r8, #0
 	bne _021FA710
 _021FA748:
@@ -22013,8 +22013,8 @@ _021FA748:
 _021FA758: .word ov00_0221B0A4
 	arm_func_end ov00_021FA6EC
 
-	arm_func_start ov00_021FA75C
-ov00_021FA75C: ; 0x021FA75C
+	arm_func_start DWC_AC_Create
+DWC_AC_Create: ; 0x021FA75C
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	ldr r2, [r4]
@@ -22124,10 +22124,10 @@ _021FA8F4:
 	.balign 4, 0
 _021FA8FC: .word ov00_0221B0AC
 _021FA900: .word 0x00000D18
-	arm_func_end ov00_021FA75C
+	arm_func_end DWC_AC_Create
 
-	arm_func_start ov00_021FA904
-ov00_021FA904: ; 0x021FA904
+	arm_func_start DWC_AC_Process
+DWC_AC_Process: ; 0x021FA904
 	stmdb sp!, {r3, r4, r5, lr}
 	bl ov00_021FAECC
 	mov r5, r0
@@ -22187,10 +22187,10 @@ _021FA9BC:
 	bl ov00_021FAFD8
 	mvn r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end ov00_021FA904
+	arm_func_end DWC_AC_Process
 
-	arm_func_start ov00_021FA9D4
-ov00_021FA9D4: ; 0x021FA9D4
+	arm_func_start DWC_AC_GetStatus
+DWC_AC_GetStatus: ; 0x021FA9D4
 	stmdb sp!, {r3, lr}
 	bl ov00_021FAECC
 	cmp r0, #1
@@ -22218,10 +22218,10 @@ ov00_021FA9D4: ; 0x021FA9D4
 	ldmeqia sp!, {r3, pc}
 	bl ov00_021FBD5C
 	ldmia sp!, {r3, pc}
-	arm_func_end ov00_021FA9D4
+	arm_func_end DWC_AC_GetStatus
 
-	arm_func_start ov00_021FAA40
-ov00_021FAA40: ; 0x021FAA40
+	arm_func_start DWC_AC_GetApType
+DWC_AC_GetApType: ; 0x021FAA40
 	stmdb sp!, {r4, lr}
 	mov r4, #0xff
 	bl ov00_021FAECC
@@ -22236,10 +22236,10 @@ _021FAA64:
 	ldmia sp!, {r4, pc}
 	.balign 4, 0
 _021FAA6C: .word ov00_0221B0AC
-	arm_func_end ov00_021FAA40
+	arm_func_end DWC_AC_GetApType
 
-	arm_func_start ov00_021FAA70
-ov00_021FAA70: ; 0x021FAA70
+	arm_func_start DWC_AC_GetApSpotInfo
+DWC_AC_GetApSpotInfo: ; 0x021FAA70
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r4, #0
@@ -22264,10 +22264,10 @@ _021FAABC:
 	ldmia sp!, {r3, r4, r5, pc}
 	.balign 4, 0
 _021FAAC4: .word ov00_0221B0AC
-	arm_func_end ov00_021FAA70
+	arm_func_end DWC_AC_GetApSpotInfo
 
-	arm_func_start ov00_021FAAC8
-ov00_021FAAC8: ; 0x021FAAC8
+	arm_func_start DWC_AC_Destroy
+DWC_AC_Destroy: ; 0x021FAAC8
 	stmdb sp!, {r3, lr}
 	bl ov00_021FAECC
 	strb r0, [sp]
@@ -22284,10 +22284,10 @@ _021FAAEC:
 	bl ov00_021FAE6C
 	mov r0, #0
 	ldmia sp!, {r3, pc}
-	arm_func_end ov00_021FAAC8
+	arm_func_end DWC_AC_Destroy
 
-	arm_func_start ov00_021FAB04
-ov00_021FAB04: ; 0x021FAB04
+	arm_func_start DWC_AC_SetSpecifyApEx
+DWC_AC_SetSpecifyApEx: ; 0x021FAB04
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	mov r8, r0
 	mov r5, r3
@@ -22313,12 +22313,12 @@ _021FAB4C:
 	mov r1, r7
 	mov r2, r6
 	strb r3, [r4, #0x22]
-	bl ov00_021FAB68
+	bl DWC_AC_SetSpecifyAp
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
-	arm_func_end ov00_021FAB04
+	arm_func_end DWC_AC_SetSpecifyApEx
 
-	arm_func_start ov00_021FAB68
-ov00_021FAB68: ; 0x021FAB68
+	arm_func_start DWC_AC_SetSpecifyAp
+DWC_AC_SetSpecifyAp: ; 0x021FAB68
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r7, r0
 	mov r0, #0x10
@@ -22369,10 +22369,10 @@ _021FABF8:
 	orr r0, r1, r0
 	strb r0, [r4, #0xe6]
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	arm_func_end ov00_021FAB68
+	arm_func_end DWC_AC_SetSpecifyAp
 
-	arm_func_start ov00_021FAC20
-ov00_021FAC20: ; 0x021FAC20
+	arm_func_start DWCi_AC_InsertApInfo
+DWCi_AC_InsertApInfo: ; 0x021FAC20
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r0, #0x10
@@ -22384,7 +22384,7 @@ ov00_021FAC20: ; 0x021FAC20
 	mov r2, #0xf0
 	bl MIi_CpuCopy32
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end ov00_021FAC20
+	arm_func_end DWCi_AC_InsertApInfo
 
 	arm_func_start ov00_021FAC4C
 ov00_021FAC4C: ; 0x021FAC4C
@@ -24353,8 +24353,8 @@ _021FC598:
 	str r1, [r4, #0xcb4]
 	add r0, r4, #0xd00
 	ldrsb r2, [r0, #0x11]
-	ldr r0, _021FC640 ; =_02108FC0
-	ldr r1, _021FC644 ; =_02108FC8
+	ldr r0, _021FC640 ; =WCM_Bssid_Any
+	ldr r1, _021FC644 ; =WCM_Essid_Any
 	mov r3, #0x200000
 	bl ov00_021FCBB4
 	ldmia sp!, {r3, r4, r5, pc}
@@ -24388,13 +24388,13 @@ _021FC60C:
 	add r2, r4, #0xd00
 	mla r1, r3, r0, r1
 	ldrsb r2, [r2, #0x11]
-	ldr r0, _021FC640 ; =_02108FC0
+	ldr r0, _021FC640 ; =WCM_Bssid_Any
 	mov r3, #0x300000
 	bl ov00_021FCBB4
 	ldmia sp!, {r3, r4, r5, pc}
 	.balign 4, 0
-_021FC640: .word _02108FC0
-_021FC644: .word _02108FC8
+_021FC640: .word WCM_Bssid_Any
+_021FC644: .word WCM_Essid_Any
 	arm_func_end ov00_021FC568
 
 	arm_func_start ov00_021FC648
@@ -24411,15 +24411,15 @@ ov00_021FC648: ; 0x021FC648
 	str r1, [r4, #0xcb4]
 	add r0, r4, #0xd00
 	ldrsb r2, [r0, #0x11]
-	ldr r0, _021FC690 ; =_02108FC0
-	ldr r1, _021FC694 ; =_02108FC8
+	ldr r0, _021FC690 ; =WCM_Bssid_Any
+	ldr r1, _021FC694 ; =WCM_Essid_Any
 	mov r3, #0x200000
 	bl ov00_021FCBB4
 	mov r0, #3
 	ldmia sp!, {r4, pc}
 	.balign 4, 0
-_021FC690: .word _02108FC0
-_021FC694: .word _02108FC8
+_021FC690: .word WCM_Bssid_Any
+_021FC694: .word WCM_Essid_Any
 	arm_func_end ov00_021FC648
 
 	arm_func_start ov00_021FC698
@@ -24457,8 +24457,8 @@ _021FC704:
 	str r1, [r4, #0xcb4]
 	add r0, r4, #0xd00
 	ldrsb r2, [r0, #0x11]
-	ldr r0, _021FC734 ; =_02108FC0
-	ldr r1, _021FC738 ; =_02108FC8
+	ldr r0, _021FC734 ; =WCM_Bssid_Any
+	ldr r1, _021FC738 ; =WCM_Essid_Any
 	mov r3, #0x200000
 	bl ov00_021FCBB4
 _021FC728:
@@ -24466,8 +24466,8 @@ _021FC728:
 	ldmia sp!, {r4, pc}
 	.balign 4, 0
 _021FC730: .word 0x000082EA
-_021FC734: .word _02108FC0
-_021FC738: .word _02108FC8
+_021FC734: .word WCM_Bssid_Any
+_021FC738: .word WCM_Essid_Any
 	arm_func_end ov00_021FC698
 
 	arm_func_start ov00_021FC73C
@@ -24646,7 +24646,7 @@ _021FC98C:
 	add r2, r4, #0xd00
 	mla r1, r3, r0, r1
 	ldrsb r2, [r2, #0x11]
-	ldr r0, _021FC9C8 ; =_02108FC0
+	ldr r0, _021FC9C8 ; =WCM_Bssid_Any
 	mov r3, #0x300000
 	bl ov00_021FCBB4
 _021FC9BC:
@@ -24654,7 +24654,7 @@ _021FC9BC:
 	ldmia sp!, {r4, pc}
 	.balign 4, 0
 _021FC9C4: .word 0x000082EA
-_021FC9C8: .word _02108FC0
+_021FC9C8: .word WCM_Bssid_Any
 	arm_func_end ov00_021FC8AC
 
 	arm_func_start ov00_021FC9CC
@@ -26113,12 +26113,12 @@ ov00_021FDCDC: ; 0x021FDCDC
 	bl ov00_021FD9C0
 	mov r1, r0
 	mov r0, #1
-	bl ov00_021EC2A8
+	bl DWC_Alloc
 	ldr r2, _021FDD38 ; =ov00_0221B0C4
 	mov r1, #0x790
 	str r0, [r2, #4]
 	mov r0, #1
-	bl ov00_021EC2A8
+	bl DWC_Alloc
 	ldr r3, _021FDD38 ; =ov00_0221B0C4
 	mov r1, #0
 	mov r2, #0x790
@@ -26368,7 +26368,7 @@ ov00_021FE070: ; 0x021FE070
 	beq _021FE09C
 	mov r0, #1
 	mov r2, #0
-	bl ov00_021EC2EC
+	bl DWC_Free
 	ldr r0, _021FE0C8 ; =ov00_0221B0C4
 	mov r1, #0
 	str r1, [r0, #4]
@@ -26379,7 +26379,7 @@ _021FE09C:
 	ldmeqia sp!, {r3, pc}
 	mov r0, #1
 	mov r2, #0
-	bl ov00_021EC2EC
+	bl DWC_Free
 	ldr r0, _021FE0C8 ; =ov00_0221B0C4
 	mov r1, #0
 	str r1, [r0]
@@ -26473,7 +26473,7 @@ ov00_021FE164: ; 0x021FE164
 	orr r1, r2, r1
 	mov r5, r0
 	strh r1, [r4, #2]
-	bl ov00_021FFA44
+	bl inet_addr
 	mvn r1, #0
 	str r0, [r4, #4]
 	cmp r0, r1
@@ -26506,7 +26506,7 @@ ov00_021FE1D8: ; 0x021FE1D8
 	ldr r1, _021FE224 ; =ov00_0221B0E0
 	mov r3, #0
 	bl ov00_021FF984
-	bl ov00_021FF368
+	bl current_time
 	ldr r1, _021FE220 ; =ov00_0221B0D0
 	str r0, [r1, #0x54]
 	add sp, sp, #8
@@ -26528,7 +26528,7 @@ ov00_021FE228: ; 0x021FE228
 	ldr r0, _021FE308 ; =ov00_0221B0D0
 	mvn r1, #0
 	str r1, [r0, #4]
-	bl ov00_021FF3CC
+	bl SocketStartUp
 	ldr r0, _021FE30C ; =ov00_0221B12C
 	ldrsb r5, [r0]
 	cmp r5, #0
@@ -26550,7 +26550,7 @@ _021FE270:
 	mov r0, #2
 	mov r1, r0
 	mov r2, #0
-	bl ov00_021FF804
+	bl socket
 	ldr r2, _021FE308 ; =ov00_0221B0D0
 	mvn r1, #0
 	cmp r0, r1
@@ -26672,7 +26672,7 @@ ov00_021FE3D8: ; 0x021FE3D8
 	bne _021FE4B0
 	ldr r0, _021FE510 ; =ov00_0221B0D0
 	ldr r0, [r0, #4]
-	bl ov00_021FF818
+	bl closesocket
 	ldr r0, [sp, #8]
 	tst r0, #1
 	beq _021FE480
@@ -26695,7 +26695,7 @@ _021FE4A0:
 	ldr r0, [r0]
 	ldmia sp!, {r3, pc}
 _021FE4B0:
-	bl ov00_021FF368
+	bl current_time
 	ldr r1, _021FE510 ; =ov00_0221B0D0
 	ldr r2, [r1, #0x54]
 	add r2, r2, #0x7d0
@@ -26705,7 +26705,7 @@ _021FE4B0:
 	cmp r0, #1
 	bne _021FE4F0
 	ldr r0, [r1, #4]
-	bl ov00_021FF818
+	bl closesocket
 	ldr r1, _021FE510 ; =ov00_0221B0D0
 	mov r0, #1
 	str r0, [r1]
@@ -26732,7 +26732,7 @@ ov00_021FE514: ; 0x021FE514
 	ldr r2, [r4, #0x10]
 	cmp r2, #0
 	ldmeqia sp!, {r4, pc}
-	bl ov00_021FE6EC
+	bl ArrayNth
 	ldr r1, [r4, #0x10]
 	blx r1
 	ldmia sp!, {r4, pc}
@@ -26749,7 +26749,7 @@ ov00_021FE538: ; 0x021FE538
 	ldr r0, [r4, #8]
 	mul r1, r2, r0
 	ldr r0, [r4, #0x14]
-	bl ov00_021EC3BC
+	bl DWCi_GsRealloc
 	str r0, [r4, #0x14]
 	cmp r0, #0
 	ldmneia sp!, {r4, pc}
@@ -26771,21 +26771,21 @@ ov00_021FE590: ; 0x021FE590
 	mov r4, r1
 	mov r5, r0
 	mov r1, r2
-	bl ov00_021FE6EC
+	bl ArrayNth
 	ldr r2, [r5, #8]
 	mov r1, r4
 	bl memcpy
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end ov00_021FE590
 
-	arm_func_start ov00_021FE5B4
-ov00_021FE5B4: ; 0x021FE5B4
+	arm_func_start ArrayNew
+ArrayNew: ; 0x021FE5B4
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r7, r0
 	mov r0, #0x18
 	mov r6, r1
 	mov r5, r2
-	bl ov00_021EC3A8
+	bl DWCi_GsMalloc
 	movs r4, r0
 	bne _021FE5E8
 	ldr r0, _021FE664 ; =ov00_02217D28
@@ -26813,7 +26813,7 @@ _021FE604:
 	beq _021FE658
 	ldr r0, [r4, #8]
 	mul r0, r1, r0
-	bl ov00_021EC3A8
+	bl DWCi_GsMalloc
 	str r0, [r4, #0x14]
 	cmp r0, #0
 	bne _021FE65C
@@ -26834,10 +26834,10 @@ _021FE668: .word ov00_02217D1C
 _021FE66C: .word ov00_02217C64
 _021FE670: .word ov00_02217D30
 _021FE674: .word ov00_02217D10
-	arm_func_end ov00_021FE5B4
+	arm_func_end ArrayNew
 
-	arm_func_start ov00_021FE678
-ov00_021FE678: ; 0x021FE678
+	arm_func_start ArrayFree
+ArrayFree: ; 0x021FE678
 	stmdb sp!, {r3, r4, r5, lr}
 	movs r5, r0
 	bne _021FE698
@@ -26861,15 +26861,15 @@ _021FE6A8:
 	blt _021FE6A8
 _021FE6C4:
 	ldr r0, [r5, #0x14]
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	mov r0, r5
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	ldmia sp!, {r3, r4, r5, pc}
 	.balign 4, 0
 _021FE6D8: .word ov00_02217D28
 _021FE6DC: .word ov00_02217D1C
 _021FE6E0: .word ov00_02217C70
-	arm_func_end ov00_021FE678
+	arm_func_end ArrayFree
 
 	arm_func_start ArrayLength
 ArrayLength: ; 0x021FE6E4
@@ -26877,8 +26877,8 @@ ArrayLength: ; 0x021FE6E4
 	bx lr
 	arm_func_end ArrayLength
 
-	arm_func_start ov00_021FE6EC
-ov00_021FE6EC: ; 0x021FE6EC
+	arm_func_start ArrayNth
+ArrayNth: ; 0x021FE6EC
 	stmdb sp!, {r3, r4, r5, lr}
 	movs r4, r1
 	mov r5, r0
@@ -26910,10 +26910,10 @@ _021FE738:
 _021FE748: .word ov00_02217D3C
 _021FE74C: .word ov00_02217D1C
 _021FE750: .word ov00_02217C58
-	arm_func_end ov00_021FE6EC
+	arm_func_end ArrayNth
 
-	arm_func_start ov00_021FE754
-ov00_021FE754: ; 0x021FE754
+	arm_func_start ArrayAppend
+ArrayAppend: ; 0x021FE754
 	stmdb sp!, {r3, r4, r5, lr}
 	movs r5, r0
 	mov r4, r1
@@ -26935,7 +26935,7 @@ _021FE778:
 _021FE794: .word ov00_02217D28
 _021FE798: .word ov00_02217D1C
 _021FE79C: .word ov00_02217C88
-	arm_func_end ov00_021FE754
+	arm_func_end ArrayAppend
 
 	arm_func_start ov00_021FE7A0
 ov00_021FE7A0: ; 0x021FE7A0
@@ -26969,11 +26969,11 @@ _021FE7EC:
 	bge _021FE838
 	mov r0, r6
 	add r1, r4, #1
-	bl ov00_021FE6EC
+	bl ArrayNth
 	mov r7, r0
 	mov r0, r6
 	mov r1, r4
-	bl ov00_021FE6EC
+	bl ArrayNth
 	mov r1, r0
 	ldr r3, [r6, #8]
 	sub r0, r8, r4
@@ -27030,8 +27030,8 @@ _021FE8D0: .word ov00_02217D1C
 _021FE8D4: .word ov00_02217CE8
 	arm_func_end ov00_021FE858
 
-	arm_func_start ov00_021FE8D8
-ov00_021FE8D8: ; 0x021FE8D8
+	arm_func_start ArrayRemoveAt
+ArrayRemoveAt: ; 0x021FE8D8
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	movs r7, r1
 	mov r4, r0
@@ -27052,11 +27052,11 @@ _021FE908:
 	bge _021FE94C
 	mov r0, r4
 	mov r1, r7
-	bl ov00_021FE6EC
+	bl ArrayNth
 	mov r5, r0
 	mov r0, r4
 	add r1, r7, #1
-	bl ov00_021FE6EC
+	bl ArrayNth
 	mov r1, r0
 	ldr r3, [r4, #8]
 	sub r0, r6, r7
@@ -27072,10 +27072,10 @@ _021FE94C:
 _021FE95C: .word ov00_02217D3C
 _021FE960: .word ov00_02217D1C
 _021FE964: .word ov00_02217C94
-	arm_func_end ov00_021FE8D8
+	arm_func_end ArrayRemoveAt
 
-	arm_func_start ov00_021FE968
-ov00_021FE968: ; 0x021FE968
+	arm_func_start ArrayDeleteAt
+ArrayDeleteAt: ; 0x021FE968
 	stmdb sp!, {r3, r4, r5, lr}
 	movs r4, r1
 	mov r5, r0
@@ -27095,16 +27095,16 @@ _021FE998:
 	bl ov00_021FE514
 	mov r0, r5
 	mov r1, r4
-	bl ov00_021FE8D8
+	bl ArrayRemoveAt
 	ldmia sp!, {r3, r4, r5, pc}
 	.balign 4, 0
 _021FE9B4: .word ov00_02217D3C
 _021FE9B8: .word ov00_02217D1C
 _021FE9BC: .word ov00_02217CA4
-	arm_func_end ov00_021FE968
+	arm_func_end ArrayDeleteAt
 
-	arm_func_start ov00_021FE9C0
-ov00_021FE9C0: ; 0x021FE9C0
+	arm_func_start ArrayReplaceAt
+ArrayReplaceAt: ; 0x021FE9C0
 	stmdb sp!, {r4, r5, r6, lr}
 	movs r4, r2
 	mov r6, r0
@@ -27132,10 +27132,10 @@ _021FE9F4:
 _021FEA14: .word ov00_02217D3C
 _021FEA18: .word ov00_02217D1C
 _021FEA1C: .word ov00_02217CC4
-	arm_func_end ov00_021FE9C0
+	arm_func_end ArrayReplaceAt
 
-	arm_func_start ov00_021FEA20
-ov00_021FEA20: ; 0x021FEA20
+	arm_func_start ArraySort
+ArraySort: ; 0x021FEA20
 	ldr ip, _021FEA3C ; =qsort
 	mov r2, r0
 	mov r3, r1
@@ -27145,10 +27145,10 @@ ov00_021FEA20: ; 0x021FEA20
 	bx ip
 	.balign 4, 0
 _021FEA3C: .word qsort
-	arm_func_end ov00_021FEA20
+	arm_func_end ArraySort
 
-	arm_func_start ov00_021FEA40
-ov00_021FEA40: ; 0x021FEA40
+	arm_func_start ArraySearch
+ArraySearch: ; 0x021FEA40
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #0xc
 	mov ip, #1
@@ -27166,7 +27166,7 @@ ov00_021FEA40: ; 0x021FEA40
 	cmp r1, #0
 	mov r1, r4
 	beq _021FEAAC
-	bl ov00_021FE6EC
+	bl ArrayNth
 	add r1, sp, #8
 	str r5, [sp]
 	str r1, [sp, #4]
@@ -27177,7 +27177,7 @@ ov00_021FEA40: ; 0x021FEA40
 	bl ov00_021FECC0
 	b _021FEAC8
 _021FEAAC:
-	bl ov00_021FE6EC
+	bl ArrayNth
 	str r5, [sp]
 	mov r1, r0
 	ldr r3, [r7, #8]
@@ -27197,7 +27197,7 @@ _021FEAC8:
 	bl _s32_div_f
 	add sp, sp, #0xc
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
-	arm_func_end ov00_021FEA40
+	arm_func_end ArraySearch
 
 	arm_func_start ov00_021FEAF8
 ov00_021FEAF8: ; 0x021FEAF8
@@ -27219,7 +27219,7 @@ _021FEB20:
 _021FEB30:
 	mov r0, r7
 	mov r1, r4
-	bl ov00_021FE6EC
+	bl ArrayNth
 	mov r1, r5
 	blx r6
 	ldr r0, [r7]
@@ -27252,7 +27252,7 @@ _021FEB8C:
 _021FEB98:
 	mov r0, r7
 	mov r1, r4
-	bl ov00_021FE6EC
+	bl ArrayNth
 	mov r1, r5
 	blx r6
 	subs r4, r4, #1
@@ -27283,7 +27283,7 @@ _021FEBEC:
 _021FEBF8:
 	mov r0, r8
 	mov r1, r5
-	bl ov00_021FE6EC
+	bl ArrayNth
 	mov r1, r6
 	mov r4, r0
 	blx r7
@@ -27312,7 +27312,7 @@ ov00_021FEC3C: ; 0x021FEC3C
 _021FEC50:
 	mov r0, r5
 	mov r1, r4
-	bl ov00_021FE968
+	bl ArrayDeleteAt
 	subs r4, r4, #1
 	bpl _021FEC50
 	ldmia sp!, {r3, r4, r5, pc}
@@ -27377,8 +27377,8 @@ _021FED1C:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	arm_func_end ov00_021FECC0
 
-	arm_func_start ov00_021FED24
-ov00_021FED24: ; 0x021FED24
+	arm_func_start TableNew
+TableNew: ; 0x021FED24
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #8
 	ldr ip, [sp, #0x10]
@@ -27386,13 +27386,13 @@ ov00_021FED24: ; 0x021FED24
 	mov r3, r2
 	mov r2, #4
 	str ip, [sp, #4]
-	bl ov00_021FED4C
+	bl TableNew2
 	add sp, sp, #8
 	ldmia sp!, {r3, pc}
-	arm_func_end ov00_021FED24
+	arm_func_end TableNew
 
-	arm_func_start ov00_021FED4C
-ov00_021FED4C: ; 0x021FED4C
+	arm_func_start TableNew2
+TableNew2: ; 0x021FED4C
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
 	movs r7, r3
 	mov sl, r0
@@ -27432,7 +27432,7 @@ _021FEDB8:
 	bl __msl_assertion_failed
 _021FEDD4:
 	mov r0, #0x14
-	bl ov00_021EC3A8
+	bl DWCi_GsMalloc
 	movs r4, r0
 	bne _021FEDF8
 	ldr r0, _021FEE84 ; =ov00_02217E34
@@ -27442,7 +27442,7 @@ _021FEDD4:
 	bl __msl_assertion_failed
 _021FEDF8:
 	mov r0, sb, lsl #2
-	bl ov00_021EC3A8
+	bl DWCi_GsMalloc
 	str r0, [r4]
 	cmp r0, #0
 	bne _021FEE20
@@ -27459,7 +27459,7 @@ _021FEE2C:
 	mov r0, sl
 	mov r1, r8
 	mov r2, r6
-	bl ov00_021FE5B4
+	bl ArrayNew
 	ldr r1, [r4]
 	str r0, [r1, r5, lsl #2]
 	add r5, r5, #1
@@ -27482,10 +27482,10 @@ _021FEE7C: .word ov00_02217E1C
 _021FEE80: .word ov00_02217E28
 _021FEE84: .word ov00_02217E34
 _021FEE88: .word ov00_02217E3C
-	arm_func_end ov00_021FED4C
+	arm_func_end TableNew2
 
-	arm_func_start ov00_021FEE8C
-ov00_021FEE8C: ; 0x021FEE8C
+	arm_func_start TableFree
+TableFree: ; 0x021FEE8C
 	stmdb sp!, {r3, r4, r5, lr}
 	movs r5, r0
 	bne _021FEEAC
@@ -27504,25 +27504,25 @@ _021FEEAC:
 _021FEEC4:
 	ldr r0, [r5]
 	ldr r0, [r0, r4, lsl #2]
-	bl ov00_021FE678
+	bl ArrayFree
 	ldr r0, [r5, #4]
 	add r4, r4, #1
 	cmp r4, r0
 	blt _021FEEC4
 _021FEEE0:
 	ldr r0, [r5]
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	mov r0, r5
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	ldmia sp!, {r3, r4, r5, pc}
 	.balign 4, 0
 _021FEEF4: .word ov00_02217E34
 _021FEEF8: .word ov00_02217E08
 _021FEEFC: .word ov00_02217DA4
-	arm_func_end ov00_021FEE8C
+	arm_func_end TableFree
 
-	arm_func_start ov00_021FEF00
-ov00_021FEF00: ; 0x021FEF00
+	arm_func_start TableCount
+TableCount: ; 0x021FEF00
 	stmdb sp!, {r4, r5, r6, lr}
 	movs r6, r0
 	mov r5, #0
@@ -27556,10 +27556,10 @@ _021FEF60:
 _021FEF68: .word ov00_02217E34
 _021FEF6C: .word ov00_02217E08
 _021FEF70: .word ov00_02217DBC
-	arm_func_end ov00_021FEF00
+	arm_func_end TableCount
 
-	arm_func_start ov00_021FEF74
-ov00_021FEF74: ; 0x021FEF74
+	arm_func_start TableEnter
+TableEnter: ; 0x021FEF74
 	stmdb sp!, {r3, r4, r5, r6, lr}
 	sub sp, sp, #4
 	movs r6, r0
@@ -27585,7 +27585,7 @@ _021FEF9C:
 	ldr r0, [r1, r4, lsl #2]
 	ldr r2, [r6, #0x10]
 	mov r1, r5
-	bl ov00_021FEA40
+	bl ArraySearch
 	mov r2, r0
 	mvn r0, #0
 	cmp r2, r0
@@ -27593,22 +27593,22 @@ _021FEF9C:
 	mov r1, r5
 	bne _021FF000
 	ldr r0, [r0, r4, lsl #2]
-	bl ov00_021FE754
+	bl ArrayAppend
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, pc}
 _021FF000:
 	ldr r0, [r0, r4, lsl #2]
-	bl ov00_021FE9C0
+	bl ArrayReplaceAt
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, pc}
 	.balign 4, 0
 _021FF010: .word ov00_02217E34
 _021FF014: .word ov00_02217E08
 _021FF018: .word ov00_02217DB0
-	arm_func_end ov00_021FEF74
+	arm_func_end TableEnter
 
-	arm_func_start ov00_021FF01C
-ov00_021FF01C: ; 0x021FF01C
+	arm_func_start TableRemove
+TableRemove: ; 0x021FF01C
 	stmdb sp!, {r3, r4, r5, r6, lr}
 	sub sp, sp, #4
 	movs r6, r0
@@ -27635,7 +27635,7 @@ _021FF044:
 	ldr r0, [r1, r4, lsl #2]
 	ldr r2, [r6, #0x10]
 	mov r1, r5
-	bl ov00_021FEA40
+	bl ArraySearch
 	mov r1, r0
 	mvn r0, #0
 	cmp r1, r0
@@ -27644,7 +27644,7 @@ _021FF044:
 	ldmeqia sp!, {r3, r4, r5, r6, pc}
 	ldr r0, [r6]
 	ldr r0, [r0, r4, lsl #2]
-	bl ov00_021FE968
+	bl ArrayDeleteAt
 	mov r0, #1
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, pc}
@@ -27652,10 +27652,10 @@ _021FF044:
 _021FF0B4: .word ov00_02217E34
 _021FF0B8: .word ov00_02217E08
 _021FF0BC: .word ov00_02217DC8
-	arm_func_end ov00_021FF01C
+	arm_func_end TableRemove
 
-	arm_func_start ov00_021FF0C0
-ov00_021FF0C0: ; 0x021FF0C0
+	arm_func_start TableLookup
+TableLookup: ; 0x021FF0C0
 	stmdb sp!, {r3, r4, r5, r6, lr}
 	sub sp, sp, #4
 	movs r6, r0
@@ -27682,7 +27682,7 @@ _021FF0E8:
 	ldr r0, [r1, r4, lsl #2]
 	ldr r2, [r6, #0x10]
 	mov r1, r5
-	bl ov00_021FEA40
+	bl ArraySearch
 	mov r1, r0
 	mvn r0, #0
 	cmp r1, r0
@@ -27691,17 +27691,17 @@ _021FF0E8:
 	ldmeqia sp!, {r3, r4, r5, r6, pc}
 	ldr r0, [r6]
 	ldr r0, [r0, r4, lsl #2]
-	bl ov00_021FE6EC
+	bl ArrayNth
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, pc}
 	.balign 4, 0
 _021FF154: .word ov00_02217E34
 _021FF158: .word ov00_02217E08
 _021FF15C: .word ov00_02217DD4
-	arm_func_end ov00_021FF0C0
+	arm_func_end TableLookup
 
-	arm_func_start ov00_021FF160
-ov00_021FF160: ; 0x021FF160
+	arm_func_start TableMap
+TableMap: ; 0x021FF160
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	movs r7, r0
 	mov r6, r1
@@ -27744,7 +27744,7 @@ _021FF1E8: .word ov00_02217E34
 _021FF1EC: .word ov00_02217E08
 _021FF1F0: .word ov00_02217D8C
 _021FF1F4: .word ov00_02217E4C
-	arm_func_end ov00_021FF160
+	arm_func_end TableMap
 
 	arm_func_start ov00_021FF1F8
 ov00_021FF1F8: ; 0x021FF1F8
@@ -27840,8 +27840,8 @@ _021FF2F4:
 _021FF318: .word ov00_02217E50
 	arm_func_end ov00_021FF2DC
 
-	arm_func_start ov00_021FF31C
-ov00_021FF31C: ; 0x021FF31C
+	arm_func_start MD5Digest
+MD5Digest: ; 0x021FF31C
 	stmdb sp!, {r4, r5, r6, lr}
 	sub sp, sp, #0x68
 	mov r6, r0
@@ -27861,10 +27861,10 @@ ov00_021FF31C: ; 0x021FF31C
 	bl ov00_021FF2DC
 	add sp, sp, #0x68
 	ldmia sp!, {r4, r5, r6, pc}
-	arm_func_end ov00_021FF31C
+	arm_func_end MD5Digest
 
-	arm_func_start ov00_021FF368
-ov00_021FF368: ; 0x021FF368
+	arm_func_start current_time
+current_time: ; 0x021FF368
 	stmdb sp!, {r3, lr}
 	bl OS_IsTickAvailable
 	cmp r0, #1
@@ -27889,35 +27889,35 @@ _021FF3B0: .word ov00_02217E94
 _021FF3B4: .word ov00_02217E64
 _021FF3B8: .word 0x00000109
 _021FF3BC: .word 0x000082EA
-	arm_func_end ov00_021FF368
+	arm_func_end current_time
 
-	arm_func_start ov00_021FF3C0
-ov00_021FF3C0: ; 0x021FF3C0
+	arm_func_start msleep
+msleep: ; 0x021FF3C0
 	ldr ip, _021FF3C8 ; =OS_Sleep
 	bx ip
 	.balign 4, 0
 _021FF3C8: .word OS_Sleep
-	arm_func_end ov00_021FF3C0
+	arm_func_end msleep
 
-	arm_func_start ov00_021FF3CC
-ov00_021FF3CC: ; 0x021FF3CC
+	arm_func_start SocketStartUp
+SocketStartUp: ; 0x021FF3CC
 	bx lr
-	arm_func_end ov00_021FF3CC
+	arm_func_end SocketStartUp
 
-	arm_func_start ov00_021FF3D0
-ov00_021FF3D0: ; 0x021FF3D0
+	arm_func_start SocketShutDown
+SocketShutDown: ; 0x021FF3D0
 	bx lr
-	arm_func_end ov00_021FF3D0
+	arm_func_end SocketShutDown
 
-	arm_func_start ov00_021FF3D4
-ov00_021FF3D4: ; 0x021FF3D4
+	arm_func_start goastrdup
+goastrdup: ; 0x021FF3D4
 	stmdb sp!, {r3, r4, r5, lr}
 	movs r5, r0
 	moveq r0, #0
 	ldmeqia sp!, {r3, r4, r5, pc}
 	bl strlen
 	add r0, r0, #1
-	bl ov00_021EC3A8
+	bl DWCi_GsMalloc
 	movs r4, r0
 	beq _021FF400
 	mov r1, r5
@@ -27925,10 +27925,10 @@ ov00_021FF3D4: ; 0x021FF3D4
 _021FF400:
 	mov r0, r4
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end ov00_021FF3D4
+	arm_func_end goastrdup
 
-	arm_func_start ov00_021FF408
-ov00_021FF408: ; 0x021FF408
+	arm_func_start _strlwr
+_strlwr: ; 0x021FF408
 	ldrsb r3, [r0]
 	mov r2, r0
 	cmp r3, #0
@@ -27950,10 +27950,10 @@ _021FF440:
 	bx lr
 	.balign 4, 0
 _021FF448: .word __lower_mapC
-	arm_func_end ov00_021FF408
+	arm_func_end _strlwr
 
-	arm_func_start ov00_021FF44C
-ov00_021FF44C: ; 0x021FF44C
+	arm_func_start SetSockBlocking
+SetSockBlocking: ; 0x021FF44C
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r1
 	mov r1, #3
@@ -27970,10 +27970,10 @@ ov00_021FF44C: ; 0x021FF44C
 	moveq r0, #1
 	movne r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end ov00_021FF44C
+	arm_func_end SetSockBlocking
 
-	arm_func_start ov00_021FF48C
-ov00_021FF48C: ; 0x021FF48C
+	arm_func_start SetReceiveBufferSize
+SetReceiveBufferSize: ; 0x021FF48C
 	stmdb sp!, {r0, r1, r2, r3}
 	stmdb sp!, {r3, lr}
 	ldr r1, _021FF4C8 ; =0x0000FFFF
@@ -27992,10 +27992,10 @@ ov00_021FF48C: ; 0x021FF48C
 	.balign 4, 0
 _021FF4C8: .word 0x0000FFFF
 _021FF4CC: .word 0x00001002
-	arm_func_end ov00_021FF48C
+	arm_func_end SetReceiveBufferSize
 
-	arm_func_start ov00_021FF4D0
-ov00_021FF4D0: ; 0x021FF4D0
+	arm_func_start SetSendBufferSize
+SetSendBufferSize: ; 0x021FF4D0
 	stmdb sp!, {r0, r1, r2, r3}
 	stmdb sp!, {r3, lr}
 	ldr r1, _021FF50C ; =0x0000FFFF
@@ -28013,10 +28013,10 @@ ov00_021FF4D0: ; 0x021FF4D0
 	bx lr
 	.balign 4, 0
 _021FF50C: .word 0x0000FFFF
-	arm_func_end ov00_021FF4D0
+	arm_func_end SetSendBufferSize
 
-	arm_func_start ov00_021FF510
-ov00_021FF510: ; 0x021FF510
+	arm_func_start GetReceiveBufferSize
+GetReceiveBufferSize: ; 0x021FF510
 	stmdb sp!, {lr}
 	sub sp, sp, #0xc
 	mov r1, #4
@@ -28036,10 +28036,10 @@ ov00_021FF510: ; 0x021FF510
 	.balign 4, 0
 _021FF550: .word 0x0000FFFF
 _021FF554: .word 0x00001002
-	arm_func_end ov00_021FF510
+	arm_func_end GetReceiveBufferSize
 
-	arm_func_start ov00_021FF558
-ov00_021FF558: ; 0x021FF558
+	arm_func_start GetSendBufferSize
+GetSendBufferSize: ; 0x021FF558
 	stmdb sp!, {lr}
 	sub sp, sp, #0xc
 	ldr r1, _021FF598 ; =0x0000FFFF
@@ -28058,10 +28058,10 @@ ov00_021FF558: ; 0x021FF558
 	ldmia sp!, {pc}
 	.balign 4, 0
 _021FF598: .word 0x0000FFFF
-	arm_func_end ov00_021FF558
+	arm_func_end GetSendBufferSize
 
-	arm_func_start ov00_021FF59C
-ov00_021FF59C: ; 0x021FF59C
+	arm_func_start GSISocketSelect
+GSISocketSelect: ; 0x021FF59C
 	stmdb sp!, {r4, r5, r6, lr}
 	sub sp, sp, #8
 	movs r6, r1
@@ -28129,7 +28129,7 @@ _021FF684:
 	str r1, [r4]
 	add sp, sp, #8
 	ldmia sp!, {r4, r5, r6, pc}
-	arm_func_end ov00_021FF59C
+	arm_func_end GSISocketSelect
 
 	arm_func_start ov00_021FF694
 ov00_021FF694: ; 0x021FF694
@@ -28138,7 +28138,7 @@ ov00_021FF694: ; 0x021FF694
 	add r1, sp, #0
 	mov r3, r2
 	str r2, [sp]
-	bl ov00_021FF59C
+	bl GSISocketSelect
 	cmp r0, #1
 	ldreq r0, [sp]
 	movne r0, #0
@@ -28152,7 +28152,7 @@ ov00_021FF6BC: ; 0x021FF6BC
 	add r2, sp, #0
 	mov r3, r1
 	str r1, [sp]
-	bl ov00_021FF59C
+	bl GSISocketSelect
 	cmp r0, #1
 	ldreq r0, [sp]
 	movne r0, #0
@@ -28246,35 +28246,35 @@ ov00_021FF7EC: ; 0x021FF7EC
 _021FF800: .word ov00_0221B1AC
 	arm_func_end ov00_021FF7EC
 
-	arm_func_start ov00_021FF804
-ov00_021FF804: ; 0x021FF804
+	arm_func_start socket
+socket: ; 0x021FF804
 	stmdb sp!, {r3, lr}
 	bl SOC_Socket
 	mvn r1, #0
 	bl ov00_021FF7EC
 	ldmia sp!, {r3, pc}
-	arm_func_end ov00_021FF804
+	arm_func_end socket
 
-	arm_func_start ov00_021FF818
-ov00_021FF818: ; 0x021FF818
+	arm_func_start closesocket
+closesocket: ; 0x021FF818
 	stmdb sp!, {r3, lr}
 	bl SOC_Close
 	mvn r1, #0
 	bl ov00_021FF7EC
 	ldmia sp!, {r3, pc}
-	arm_func_end ov00_021FF818
+	arm_func_end closesocket
 
-	arm_func_start ov00_021FF82C
-ov00_021FF82C: ; 0x021FF82C
+	arm_func_start shutdown
+shutdown: ; 0x021FF82C
 	stmdb sp!, {r3, lr}
 	bl SOC_Shutdown
 	mvn r1, #0
 	bl ov00_021FF7EC
 	ldmia sp!, {r3, pc}
-	arm_func_end ov00_021FF82C
+	arm_func_end shutdown
 
-	arm_func_start ov00_021FF840
-ov00_021FF840: ; 0x021FF840
+	arm_func_start bind
+bind: ; 0x021FF840
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #8
 	ldrh r3, [r1, #2]
@@ -28300,10 +28300,10 @@ _021FF864:
 	bl ov00_021FF7EC
 	add sp, sp, #8
 	ldmia sp!, {r4, pc}
-	arm_func_end ov00_021FF840
+	arm_func_end bind
 
-	arm_func_start ov00_021FF8A0
-ov00_021FF8A0: ; 0x021FF8A0
+	arm_func_start connect
+connect: ; 0x021FF8A0
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #8
 	add r4, sp, #0
@@ -28324,7 +28324,7 @@ _021FF8B0:
 	bl ov00_021FF7EC
 	add sp, sp, #8
 	ldmia sp!, {r4, pc}
-	arm_func_end ov00_021FF8A0
+	arm_func_end connect
 
 	arm_func_start ov00_021FF8EC
 ov00_021FF8EC: ; 0x021FF8EC
@@ -28350,14 +28350,14 @@ ov00_021FF900: ; 0x021FF900
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end ov00_021FF900
 
-	arm_func_start ov00_021FF92C
-ov00_021FF92C: ; 0x021FF92C
+	arm_func_start recv
+recv: ; 0x021FF92C
 	stmdb sp!, {r3, lr}
 	bl SOC_Recv
 	mvn r1, #0
 	bl ov00_021FF7EC
 	ldmia sp!, {r3, pc}
-	arm_func_end ov00_021FF92C
+	arm_func_end recv
 
 	arm_func_start ov00_021FF940
 ov00_021FF940: ; 0x021FF940
@@ -28375,14 +28375,14 @@ ov00_021FF940: ; 0x021FF940
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end ov00_021FF940
 
-	arm_func_start ov00_021FF970
-ov00_021FF970: ; 0x021FF970
+	arm_func_start send
+send: ; 0x021FF970
 	stmdb sp!, {r3, lr}
 	bl SOC_Send
 	mvn r1, #0
 	bl ov00_021FF7EC
 	ldmia sp!, {r3, pc}
-	arm_func_end ov00_021FF970
+	arm_func_end send
 
 	arm_func_start ov00_021FF984
 ov00_021FF984: ; 0x021FF984
@@ -28435,8 +28435,8 @@ ov00_021FFA04: ; 0x021FFA04
 _021FFA14: .word ov00_021FF7EC
 	arm_func_end ov00_021FFA04
 
-	arm_func_start ov00_021FFA18
-ov00_021FFA18: ; 0x021FFA18
+	arm_func_start getsockname
+getsockname: ; 0x021FFA18
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r2
 	ldr r2, [r4]
@@ -28448,10 +28448,10 @@ ov00_021FFA18: ; 0x021FFA18
 	str r2, [r4]
 	bl ov00_021FF7EC
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end ov00_021FFA18
+	arm_func_end getsockname
 
-	arm_func_start ov00_021FFA44
-ov00_021FFA44: ; 0x021FFA44
+	arm_func_start inet_addr
+inet_addr: ; 0x021FFA44
 	stmdb sp!, {r3, lr}
 	add r1, sp, #0
 	bl SOC_InetAtoN
@@ -28459,16 +28459,16 @@ ov00_021FFA44: ; 0x021FFA44
 	mvneq r0, #0
 	ldrne r0, [sp]
 	ldmia sp!, {r3, pc}
-	arm_func_end ov00_021FFA44
+	arm_func_end inet_addr
 
-	arm_func_start ov00_021FFA60
-ov00_021FFA60: ; 0x021FFA60
+	arm_func_start GOAGetLastError
+GOAGetLastError: ; 0x021FFA60
 	ldr r0, _021FFA6C ; =ov00_0221B1AC
 	ldr r0, [r0, #4]
 	bx lr
 	.balign 4, 0
 _021FFA6C: .word ov00_0221B1AC
-	arm_func_end ov00_021FFA60
+	arm_func_end GOAGetLastError
 
 	arm_func_start ov00_021FFA70
 ov00_021FFA70: ; 0x021FFA70
@@ -28609,8 +28609,8 @@ _021FFBCC:
 	ldmia sp!, {r3, pc}
 	arm_func_end ov00_021FFB80
 
-	arm_func_start ov00_021FFC18
-ov00_021FFC18: ; 0x021FFC18
+	arm_func_start B64Encode
+B64Encode: ; 0x021FFC18
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
 	mov r7, r1
 	mov r6, r2
@@ -28699,7 +28699,7 @@ _021FFD40: .word ov00_02216140
 _021FFD44: .word ov00_02216144
 _021FFD48: .word ov00_02216148
 _021FFD4C: .word 0x55555556
-	arm_func_end ov00_021FFC18
+	arm_func_end B64Encode
 
 	arm_func_start ov00_021FFD50
 ov00_021FFD50: ; 0x021FFD50
@@ -29174,7 +29174,7 @@ _02200354:
 	cmp r0, #0
 	bgt _022003C4
 	ldr r0, [r1, #0x10]
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	ldr r0, [sp]
 	mov r1, #0
 	str r1, [r0, #0x10]
@@ -29582,7 +29582,7 @@ ov00_022008F4: ; 0x022008F4
 	mov r0, #0x490
 	mov r5, r1
 	mov r4, r2
-	bl ov00_021EC3A8
+	bl DWCi_GsMalloc
 	str r0, [sp]
 	cmp r0, #0
 	addeq sp, sp, #4
@@ -29614,7 +29614,7 @@ ov00_022008F4: ; 0x022008F4
 	cmp r0, #0
 	bne _022009AC
 	ldr r0, [sp]
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	mov r0, #0
 	str r0, [sp]
 	add sp, sp, #4
@@ -29650,8 +29650,8 @@ _022009BC:
 	mov r0, r4
 	ldmia sp!, {r3, r4, r5, r6, pc}
 _02200A18:
-	bl ov00_021FF3CC
-	bl ov00_021FF368
+	bl SocketStartUp
+	bl current_time
 	bl srand
 	ldr r1, [sp]
 	mov r0, #0
@@ -29670,13 +29670,13 @@ ov00_02200A3C: ; 0x02200A3C
 	mov r1, #1
 	bl ov00_02204284
 	ldr r0, [r4, #0x460]
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	mov r0, #0
 	str r0, [r4, #0x460]
 	ldr r0, [r4, #0x428]
-	bl ov00_021FEE8C
+	bl TableFree
 	mov r0, r4
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	mov r0, #0
 	str r0, [r5]
 	ldmia sp!, {r3, r4, r5, pc}
@@ -29709,33 +29709,33 @@ ov00_02200A98: ; 0x02200A98
 	str r1, [r4, #0x1e8]
 	str r1, [r4, #0x1e0]
 	ldr r0, [r4, #0x1dc]
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	mov r0, #0
 	str r0, [r4, #0x1dc]
 	str r0, [r4, #0x1f0]
 	ldr r0, [r4, #0x1ec]
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	mov r0, #0
 	str r0, [r4, #0x1ec]
 	str r0, [r4, #0x1fc]
 	str r0, [r4, #0x200]
 	str r0, [r4, #0x1f8]
 	ldr r0, [r4, #0x1f4]
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	mov r0, #0
 	str r0, [r4, #0x1f4]
 	str r0, [r4, #0x448]
 	str r0, [r4, #0x44c]
 	str r0, [r4, #0x444]
 	ldr r0, [r4, #0x440]
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	mov r0, #0
 	str r0, [r4, #0x440]
 	str r0, [r4, #0x458]
 	str r0, [r4, #0x45c]
 	str r0, [r4, #0x454]
 	ldr r0, [r4, #0x450]
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	mov r0, #0
 	str r0, [r4, #0x450]
 	sub r0, r0, #1
@@ -29853,7 +29853,7 @@ _02200CA0:
 	str r0, [sl, #0x1f0]
 	add r1, r0, #1
 	ldr r0, [sl, #0x1ec]
-	bl ov00_021EC3BC
+	bl DWCi_GsRealloc
 	cmp r0, #0
 	bne _02200D0C
 	ldr r1, _02200EC0 ; =ov00_02218074
@@ -29886,7 +29886,7 @@ _02200D10:
 	cmp r0, #0
 	beq _02200DB8
 	add r0, r0, #4
-	bl atol
+	bl atoi
 	mov r5, r0
 	mov r0, r4
 	mov r1, fp
@@ -29968,7 +29968,7 @@ _02200E80:
 	movs r5, r0
 	beq _02200E98
 	mov r0, #0xa
-	bl ov00_021FF3C0
+	bl msleep
 _02200E98:
 	cmp r5, #0
 	bne _02200BD8
@@ -30028,7 +30028,7 @@ _02200F50:
 	cmp r8, #0
 	beq _02200F60
 	mov r0, fp
-	bl ov00_021FF3C0
+	bl msleep
 _02200F60:
 	cmp r8, #0
 	bne _02200F24
@@ -30193,7 +30193,7 @@ ov00_02201134: ; 0x02201134
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 _02201198:
 	add r0, sp, #0x138
-	bl atol
+	bl atoi
 	mov r4, r0
 	ldr r1, _02201AB0 ; =ov00_022182A0
 	add r2, sp, #0x138
@@ -30216,7 +30216,7 @@ _02201198:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 _022011F0:
 	add r0, sp, #0x138
-	bl atol
+	bl atoi
 	mov r6, r0
 	ldr r1, _02201AB4 ; =ov00_022182A4
 	add r2, sp, #0x138
@@ -30226,7 +30226,7 @@ _022011F0:
 	cmp r0, #0
 	beq _02201224
 	add r0, sp, #0x138
-	bl atol
+	bl atoi
 	b _0220122C
 _02201224:
 	mov r0, #0
@@ -30261,7 +30261,7 @@ _0220127C:
 	cmp r1, #0
 	beq _02201A98
 	mov r0, #0xc
-	bl ov00_021EC3A8
+	bl DWCi_GsMalloc
 	movs r4, r0
 	bne _022012C0
 	ldr r1, _02201AB8 ; =ov00_022182AC
@@ -30295,7 +30295,7 @@ _0220130C:
 	add r0, sp, #0x138
 	bl strlen
 	add r0, r0, #1
-	bl ov00_021EC3A8
+	bl DWCi_GsMalloc
 	str r0, [r4, #8]
 	cmp r0, #0
 	bne _02201344
@@ -30396,11 +30396,11 @@ _02201448:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 _02201490:
 	ldr r0, [r5, #0x10]
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	mov r0, #0
 	str r0, [r5, #0x10]
 	add r0, r4, #8
-	bl ov00_021FF3D4
+	bl goastrdup
 	str r0, [r5, #0x10]
 	ldr r0, [r5, #0x14]
 	add r0, r0, #1
@@ -30412,7 +30412,7 @@ _02201490:
 	cmp r1, #0
 	beq _02201A98
 	ldr r0, _02201AC4 ; =0x0000040C
-	bl ov00_021EC3A8
+	bl DWCi_GsMalloc
 	movs r4, r0
 	bne _022014FC
 	ldr r1, _02201AB8 ; =ov00_022182AC
@@ -30460,7 +30460,7 @@ _02201578:
 	cmp r0, #0
 	bne _022015EC
 	mov r0, #0x18
-	bl ov00_021EC3A8
+	bl DWCi_GsMalloc
 	str r0, [r4, #8]
 	cmp r0, #0
 	bne _022015B4
@@ -30530,10 +30530,10 @@ _0220163C:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 _02201688:
 	add r0, sp, #0x28
-	bl atol
+	bl atoi
 	str r0, [r7, #4]
 	ldr r0, [r7, #8]
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	mov r0, #0
 	str r0, [r7, #8]
 	ldr r1, _02201AD0 ; =ov00_022182D4
@@ -30545,7 +30545,7 @@ _02201688:
 	moveq r0, #0
 	streqb r0, [sp, #0x38]
 	add r0, sp, #0x38
-	bl ov00_021FF3D4
+	bl goastrdup
 	str r0, [r7, #8]
 	cmp r0, #0
 	bne _022016F4
@@ -30558,7 +30558,7 @@ _02201688:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 _022016F4:
 	ldr r0, [r7, #0xc]
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	mov r4, #0
 	ldr r1, _02201AD4 ; =ov00_022182DC
 	add r0, sp, #0x138
@@ -30570,7 +30570,7 @@ _022016F4:
 	moveq r0, r4
 	streqb r0, [sp, #0x38]
 	add r0, sp, #0x38
-	bl ov00_021FF3D4
+	bl goastrdup
 	str r0, [r7, #0xc]
 	cmp r0, #0
 	bne _02201754
@@ -30591,16 +30591,16 @@ _02201754:
 	moveq r0, #0
 	beq _022017CC
 	add r0, sp, #0x28
-	bl atol
+	bl atoi
 	mov r5, r0
 	add r0, sp, #0x28
-	bl atol
+	bl atoi
 	mov fp, r0
 	add r0, sp, #0x28
-	bl atol
+	bl atoi
 	mov r4, r0
 	add r0, sp, #0x28
-	bl atol
+	bl atoi
 	mov r1, r4, lsr #0x18
 	mov r0, r0, lsr #8
 	mov r2, fp, lsl #8
@@ -30623,7 +30623,7 @@ _022017CC:
 	moveq r0, #0
 	beq _0220181C
 	add r0, sp, #0x28
-	bl atol
+	bl atoi
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
 	mov r1, r0, asr #8
@@ -30642,7 +30642,7 @@ _0220181C:
 	cmp r1, #0
 	beq _02201A98
 	mov r0, #0xc
-	bl ov00_021EC3A8
+	bl DWCi_GsMalloc
 	movs r3, r0
 	bne _02201864
 	ldr r1, _02201AB8 ; =ov00_022182AC
@@ -30726,7 +30726,7 @@ _02201938:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 _02201974:
 	add r0, r0, #3
-	bl atol
+	bl atoi
 	mov r4, r0
 	ldr r1, _02201AE0 ; =ov00_022182F0
 	add r0, sp, #0x138
@@ -30747,7 +30747,7 @@ _022019AC:
 	cmp r1, #0
 	beq _02201A98
 	mov r0, #0x108
-	bl ov00_021EC3A8
+	bl DWCi_GsMalloc
 	movs r5, r0
 	bne _022019F0
 	ldr r1, _02201AB8 ; =ov00_022182AC
@@ -30992,7 +30992,7 @@ _02201D00:
 	cmp r0, #0
 	bgt _02201D6C
 	ldr r0, [r1, #0x10]
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	ldr r0, [sp]
 	mov r1, #0
 	str r1, [r0, #0x10]
@@ -31082,7 +31082,7 @@ _02201E68:
 	ldr r0, [sp]
 	ldr r0, [r0, #8]
 	ldr r0, [r0, #8]
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	ldr r0, [sp]
 	mov r1, #0
 	ldr r0, [r0, #8]
@@ -31090,14 +31090,14 @@ _02201E68:
 	ldr r0, [sp]
 	ldr r0, [r0, #8]
 	ldr r0, [r0, #0xc]
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	ldr r0, [sp]
 	mov r1, #0
 	ldr r0, [r0, #8]
 	str r1, [r0, #0xc]
 	ldr r0, [sp]
 	ldr r0, [r0, #8]
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	ldr r0, [sp]
 	mov r1, #0
 	str r1, [r0, #8]
@@ -31160,7 +31160,7 @@ _02201F70:
 	bne _02201FA8
 	add r6, r6, #0x800
 	add r1, r6, #1
-	bl ov00_021EC3BC
+	bl DWCi_GsRealloc
 	cmp r0, #0
 	bne _02201FA8
 	ldr r1, _02201FDC ; =ov00_0221841C
@@ -31231,7 +31231,7 @@ _02202044:
 	add r5, r5, r0
 	mov r0, r6
 	add r1, r5, #1
-	bl ov00_021EC3BC
+	bl DWCi_GsRealloc
 	movs r6, r0
 	bne _022020A0
 	ldr r1, _022020E8 ; =ov00_0221841C
@@ -31309,12 +31309,12 @@ ov00_02202154: ; 0x02202154
 	ldr r6, [sp, #0x18]
 	ldr r5, [sp, #0x1c]
 	ldr r4, [sp, #0x20]
-	bl ov00_021FF970
+	bl send
 	mvn r1, #0
 	cmp r0, r1
 	bne _02202200
 	mov r0, r8
-	bl ov00_021FFA60
+	bl GOAGetLastError
 	mvn r2, #5
 	cmp r0, r2
 	subne r1, r2, #0x14
@@ -31582,7 +31582,7 @@ _02202524:
 	mov r7, r0
 	add r1, r0, #1
 	mov r0, r5
-	bl ov00_021EC3BC
+	bl DWCi_GsRealloc
 	movs r5, r0
 	bne _02202560
 	ldr r1, _0220266C ; =ov00_0221841C
@@ -31596,12 +31596,12 @@ _02202560:
 	add r1, r5, r6
 	sub r2, r7, r6
 	mov r3, #0
-	bl ov00_021FF92C
+	bl recv
 	mov r8, r0
 	cmp r8, r4
 	bne _022025BC
 	mov r0, sl
-	bl ov00_021FFA60
+	bl GOAGetLastError
 	ldr r1, [sp, #0xc]
 	cmp r0, r1
 	ldrne r1, [sp, #0x10]
@@ -31816,7 +31816,7 @@ ov00_022027FC: ; 0x022027FC
 	moveq r0, #3
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
 	add r0, sp, #0
-	bl atol
+	bl atoi
 	str r0, [r7]
 	ldr r0, [r6]
 	ldr r1, _02202934 ; =ov00_022185AC
@@ -31828,7 +31828,7 @@ ov00_022027FC: ; 0x022027FC
 	moveq r0, #3
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
 	add r0, sp, #0
-	bl atol
+	bl atoi
 	ldr r2, [r6]
 	add r1, r0, #1
 	sub r2, r4, r2
@@ -31935,7 +31935,7 @@ _02202A00:
 	addeq sp, sp, #0x10
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
 	mov r0, #0x10
-	bl ov00_021EC3A8
+	bl DWCi_GsMalloc
 	movs r3, r0
 	beq _02202A48
 	str r7, [r3]
@@ -31969,7 +31969,7 @@ ov00_02202A84: ; 0x02202A84
 	mov r0, #0x18
 	mov r5, r3
 	ldr r4, [r6]
-	bl ov00_021EC3A8
+	bl DWCi_GsMalloc
 	cmp r0, #0
 	bne _02202AC4
 	ldr r1, _02202B24 ; =ov00_02218648
@@ -32041,7 +32041,7 @@ _02202B74:
 	bne _02202BB0
 	ldr r0, [r7, #8]
 	ldr r0, [r0, #8]
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	ldr r0, [r7, #8]
 	mov r1, #0
 	str r1, [r0, #8]
@@ -32059,12 +32059,12 @@ _02202BB0:
 _02202BD4:
 	ldr r0, [r6, #0x3c]
 	ldr r0, [r0, r5, lsl #2]
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	ldr r0, [r6, #0x3c]
 	str r4, [r0, r5, lsl #2]
 	ldr r0, [r6, #0x40]
 	ldr r0, [r0, r5, lsl #2]
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	ldr r0, [r6, #0x40]
 	str r8, [r0, r5, lsl #2]
 	ldr r0, [r6, #0x38]
@@ -32073,11 +32073,11 @@ _02202BD4:
 	blt _02202BD4
 _02202C0C:
 	ldr r0, [r6, #0x3c]
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	mov r0, #0
 	str r0, [r6, #0x3c]
 	ldr r0, [r6, #0x40]
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	mov r0, #0
 	str r0, [r6, #0x40]
 	b _02202CF4
@@ -32086,7 +32086,7 @@ _02202C30:
 	bne _02202C50
 	ldr r4, [r7, #8]
 	ldr r0, [r4, #0xc]
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	mov r0, #0
 	str r0, [r4, #0xc]
 	b _02202CF4
@@ -32097,7 +32097,7 @@ _02202C50:
 	ldr r0, [r4, #0x10]
 	cmp r0, #0
 	beq _02202CF4
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	mov r0, #0
 	str r0, [r4, #0x10]
 	b _02202CF4
@@ -32108,7 +32108,7 @@ _02202C78:
 	ldr r0, [r4, #8]
 	cmp r0, #0
 	beq _02202CF4
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	mov r0, #0
 	str r0, [r4, #8]
 	b _02202CF4
@@ -32124,7 +32124,7 @@ _02202CA0:
 _02202CC0:
 	ldr r0, [r5, #8]
 	ldr r0, [r0, r4, lsl #2]
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	ldr r0, [r5, #8]
 	str r6, [r0, r4, lsl #2]
 	ldr r0, [r5, #4]
@@ -32133,16 +32133,16 @@ _02202CC0:
 	blt _02202CC0
 _02202CE4:
 	ldr r0, [r5, #8]
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	mov r0, #0
 	str r0, [r5, #8]
 _02202CF4:
 	ldr r0, [r7, #8]
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	mov r1, #0
 	mov r0, r7
 	str r1, [r7, #8]
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.balign 4, 0
 _02202D10: .word ov00_02218658
@@ -32268,7 +32268,7 @@ ov00_02202E70: ; 0x02202E70
 	mov r0, #2
 	mov r1, #1
 	mov r2, #0
-	bl ov00_021FF804
+	bl socket
 	mvn r1, #0
 	str r0, [r4, #0x204]
 	cmp r0, r1
@@ -32286,7 +32286,7 @@ ov00_02202E70: ; 0x02202E70
 	ldmia sp!, {r3, r4, r5, r6, pc}
 _02202EDC:
 	mov r1, #0
-	bl ov00_021FF44C
+	bl SetSockBlocking
 	cmp r0, #0
 	bne _02202F18
 	ldr r2, _022031B8 ; =ov00_02218754
@@ -32309,7 +32309,7 @@ _02202F18:
 	strb r0, [sp, #5]
 	ldr r0, [r4, #0x204]
 	mov r2, #8
-	bl ov00_021FF840
+	bl bind
 	mvn r1, #0
 	cmp r0, r1
 	mov r1, #5
@@ -32347,7 +32347,7 @@ _02202FB4:
 	ldr r0, [r4, #0x204]
 	add r1, sp, #4
 	add r2, sp, #0
-	bl ov00_021FFA18
+	bl getsockname
 	mvn r1, #0
 	cmp r0, r1
 	bne _02203004
@@ -32375,7 +32375,7 @@ _02203020:
 	mov r0, #2
 	mov r1, #1
 	mov r2, #0
-	bl ov00_021FF804
+	bl socket
 	mvn r1, #0
 	str r0, [r4, #0x1d4]
 	cmp r0, r1
@@ -32393,7 +32393,7 @@ _02203020:
 	ldmia sp!, {r3, r4, r5, r6, pc}
 _0220306C:
 	mov r1, #0
-	bl ov00_021FF44C
+	bl SetSockBlocking
 	cmp r0, #0
 	bne _022030A8
 	ldr r2, _022031B8 ; =ov00_02218754
@@ -32447,12 +32447,12 @@ _02203128:
 	strh r0, [sp, #6]
 	ldr r0, [r4, #0x1d4]
 	mov r2, #8
-	bl ov00_021FF8A0
+	bl connect
 	mvn r1, #0
 	cmp r0, r1
 	bne _0220319C
 	ldr r0, [r4, #0x1d4]
-	bl ov00_021FFA60
+	bl GOAGetLastError
 	mvn r2, #5
 	cmp r0, r2
 	subne r1, r2, #0x14
@@ -32561,9 +32561,9 @@ _02203284:
 	mov r2, #0x1f
 	bl ov00_0220A348
 	add r0, r4, #0x144
-	bl ov00_021FF408
+	bl _strlwr
 	mov r0, #0x308
-	bl ov00_021EC3A8
+	bl DWCi_GsMalloc
 	movs r4, r0
 	bne _02203304
 	ldr r1, _02203424 ; =ov00_022188C0
@@ -32674,7 +32674,7 @@ ov00_02203428: ; 0x02203428
 	mov r1, r0
 	mov r0, r7
 	add r2, r5, #0xa1
-	bl ov00_021FF31C
+	bl MD5Digest
 	ldrsb r0, [r5, #0xc2]
 	cmp r0, #0
 	addne r0, r5, #0xc2
@@ -32707,7 +32707,7 @@ _022034B8:
 	mov r1, r0
 	add r0, sp, #0x87
 	add r2, sp, #0x14
-	bl ov00_021FF31C
+	bl MD5Digest
 	ldr r0, [r4, #0x100]
 	cmp r0, #0
 	beq _02203538
@@ -32938,7 +32938,7 @@ _02203840:
 	mov r2, r7
 	mov r3, #1
 	strb r4, [r0, r6]
-	bl ov00_021FFC18
+	bl B64Encode
 	ldr r2, _02203A28 ; =ov00_022189C8
 	mov r0, sl
 	add r1, r5, #0x1f4
@@ -33035,7 +33035,7 @@ _022039BC:
 	mov r2, r6
 	mov r3, #1
 	strb r4, [r0, r8]
-	bl ov00_021FFC18
+	bl B64Encode
 	ldr r2, _02203A4C ; =ov00_022189F4
 	mov r0, sl
 	add r1, r5, #0x1f4
@@ -33110,7 +33110,7 @@ _02203AB8:
 	cmp r0, #0
 	beq _02203AEC
 	add r0, sp, #0xa0
-	bl atol
+	bl atoi
 	str r0, [r5, #0x1a0]
 _02203AEC:
 	ldr r1, _022040D4 ; =ov00_02218A08
@@ -33246,7 +33246,7 @@ _02203C90:
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 _02203CD8:
 	add r0, sp, #0xa0
-	bl atol
+	bl atoi
 	str r0, [r5, #0x19c]
 	ldr r1, _022040F0 ; =ov00_02218964
 	add r2, sp, #0xa0
@@ -33268,7 +33268,7 @@ _02203CD8:
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 _02203D2C:
 	add r0, sp, #0xa0
-	bl atol
+	bl atoi
 	str r0, [r5, #0x1a0]
 	mov r0, r8
 	mov r1, r4
@@ -33318,7 +33318,7 @@ _02203DA0:
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 _02203DE8:
 	add r0, sp, #0xa0
-	bl atol
+	bl atoi
 	str r0, [r5, #0x198]
 	ldr r1, _022040E8 ; =ov00_02218958
 	add r2, sp, #0xa0
@@ -33340,7 +33340,7 @@ _02203DE8:
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 _02203E3C:
 	add r0, sp, #0xa0
-	bl atol
+	bl atoi
 	str r0, [r5, #0x19c]
 	ldr r1, _022040F0 ; =ov00_02218964
 	add r2, sp, #0xa0
@@ -33362,7 +33362,7 @@ _02203E3C:
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 _02203E90:
 	add r0, sp, #0xa0
-	bl atol
+	bl atoi
 	str r0, [r5, #0x1a0]
 	ldr r1, _022040FC ; =ov00_0221893C
 	add r2, sp, #0x18
@@ -33412,7 +33412,7 @@ _02203F20:
 	mov r1, r0
 	add r0, sp, #0xa0
 	add r2, sp, #0x2d
-	bl ov00_021FF31C
+	bl MD5Digest
 	ldr r1, _02204110 ; =ov00_02218A9C
 	mov r0, r6
 	add r2, sp, #0xa0
@@ -33470,7 +33470,7 @@ _02204010:
 	cmp r1, #0
 	beq _022040B0
 	mov r0, #0x20
-	bl ov00_021EC3A8
+	bl DWCi_GsMalloc
 	movs r4, r0
 	bne _02204058
 	ldr r1, _02204118 ; =ov00_022188C0
@@ -33595,27 +33595,27 @@ ov00_022041C0: ; 0x022041C0
 	cmp r0, #0
 	bne _02204224
 	ldr r0, [r1, #8]
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	ldr r0, [r5, #8]
 	mov r1, #0
 	str r1, [r0, #8]
 	ldr r0, [r5, #8]
 	ldr r0, [r0, #0xc]
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	ldr r0, [r5, #8]
 	mov r1, #0
 	str r1, [r0, #0xc]
 	ldr r0, [r5, #8]
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	mov r0, #0
 	str r0, [r5, #8]
 _02204224:
 	ldr r0, [r5, #0x10]
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	mov r0, #0
 	str r0, [r5, #0x10]
 	ldr r0, [r5, #0x18]
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	mov r0, #0
 	str r0, [r5, #0x18]
 	str r0, [r5, #0x14]
@@ -33680,9 +33680,9 @@ _022042E8:
 	cmp r0, r1
 	beq _02204334
 	mov r1, #2
-	bl ov00_021FF82C
+	bl shutdown
 	ldr r0, [r4, #0x1d4]
-	bl ov00_021FF818
+	bl closesocket
 	mvn r0, #0
 	str r0, [r4, #0x1d4]
 _02204334:
@@ -33691,9 +33691,9 @@ _02204334:
 	cmp r0, r1
 	beq _0220435C
 	mov r1, #2
-	bl ov00_021FF82C
+	bl shutdown
 	ldr r0, [r4, #0x204]
-	bl ov00_021FF818
+	bl closesocket
 	mvn r0, #0
 	str r0, [r4, #0x204]
 _0220435C:
@@ -33704,23 +33704,23 @@ _0220435C:
 	str r0, [r4, #0x1a0]
 _02204370:
 	ldr r0, [r4, #0x1dc]
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	mov r0, #0
 	str r0, [r4, #0x1dc]
 	ldr r0, [r4, #0x1ec]
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	mov r0, #0
 	str r0, [r4, #0x1ec]
 	ldr r0, [r4, #0x1f4]
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	mov r0, #0
 	str r0, [r4, #0x1f4]
 	ldr r0, [r4, #0x440]
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	mov r0, #0
 	str r0, [r4, #0x440]
 	ldr r0, [r4, #0x450]
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	mov r0, #0
 	str r0, [r4, #0x450]
 	ldr r1, [r4, #0x424]
@@ -34110,7 +34110,7 @@ _022048C4:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 _0220490C:
 	add r0, sp, #0xec
-	bl atol
+	bl atoi
 	mov sb, r0
 	cmp sb, #0
 	bgt _02204934
@@ -34204,7 +34204,7 @@ _0220495C:
 	streq r0, [sp, #0x190]
 	beq _02204A88
 	add r0, sp, #0xec
-	bl atol
+	bl atoi
 	str r0, [sp, #0x190]
 _02204A88:
 	ldr r2, [sp, #0x18c]
@@ -34283,7 +34283,7 @@ _02204B58:
 	b _02204BD8
 _02204BA8:
 	add r0, sp, #0xec
-	bl atol
+	bl atoi
 	add r5, sp, #0x234
 	mov r1, r0
 	add r2, sp, #0x22c
@@ -34325,7 +34325,7 @@ _02204C24:
 	streq r0, [sp, #0x23c]
 	beq _02204C54
 	add r0, sp, #0xec
-	bl atol
+	bl atoi
 	str r0, [sp, #0x23c]
 _02204C54:
 	ldr r2, [sp, #0x240]
@@ -34347,7 +34347,7 @@ _02204C54:
 	streq r0, [sp, #0x244]
 	beq _02204CA8
 	add r0, sp, #0xec
-	bl atol
+	bl atoi
 	str r0, [sp, #0x244]
 _02204CA8:
 	ldr r1, _0220503C ; =ov00_02218C78
@@ -34360,7 +34360,7 @@ _02204CA8:
 	streq r0, [sp, #0x248]
 	beq _02204CD8
 	add r0, sp, #0xec
-	bl atol
+	bl atoi
 	str r0, [sp, #0x248]
 _02204CD8:
 	ldr r1, _02205040 ; =ov00_02218C80
@@ -34373,7 +34373,7 @@ _02204CD8:
 	streq r0, [sp, #0x24c]
 	beq _02204D08
 	add r0, sp, #0xec
-	bl atol
+	bl atoi
 	str r0, [sp, #0x24c]
 _02204D08:
 	ldr r1, _02205044 ; =ov00_02218C88
@@ -34386,7 +34386,7 @@ _02204D08:
 	streq r0, [sp, #0x250]
 	beq _02204D38
 	add r0, sp, #0xec
-	bl atol
+	bl atoi
 	str r0, [sp, #0x250]
 _02204D38:
 	ldr r1, _02205048 ; =ov00_02218C90
@@ -34399,7 +34399,7 @@ _02204D38:
 	streq r0, [sp, #0x254]
 	beq _02204D68
 	add r0, sp, #0xec
-	bl atol
+	bl atoi
 	str r0, [sp, #0x254]
 _02204D68:
 	ldr r1, _0220504C ; =ov00_02218C98
@@ -34412,7 +34412,7 @@ _02204D68:
 	streq r0, [sp, #0x258]
 	beq _02204D98
 	add r0, sp, #0xec
-	bl atol
+	bl atoi
 	str r0, [sp, #0x258]
 _02204D98:
 	ldr r1, _02205050 ; =ov00_02218CA0
@@ -34425,7 +34425,7 @@ _02204D98:
 	streq r0, [sp, #0x25c]
 	beq _02204DC8
 	add r0, sp, #0xec
-	bl atol
+	bl atoi
 	str r0, [sp, #0x25c]
 _02204DC8:
 	ldr r1, _02205054 ; =ov00_02218CA8
@@ -34438,7 +34438,7 @@ _02204DC8:
 	streq r0, [sp, #0x260]
 	beq _02204DF8
 	add r0, sp, #0xec
-	bl atol
+	bl atoi
 	str r0, [sp, #0x260]
 _02204DF8:
 	ldr r1, _02205058 ; =ov00_02218CB0
@@ -34451,7 +34451,7 @@ _02204DF8:
 	streq r0, [sp, #0x264]
 	beq _02204E28
 	add r0, sp, #0xec
-	bl atol
+	bl atoi
 	str r0, [sp, #0x264]
 _02204E28:
 	ldr r1, _0220505C ; =ov00_02218CB8
@@ -34515,12 +34515,12 @@ _02204EF4:
 	beq _02204F24
 	ldr r0, [sp, #0x10]
 	ldr r0, [r0, #0x18]
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	ldr r1, [sp, #0x10]
 	mov r2, #0
 	add r0, sp, #0xec
 	str r2, [r1, #0x18]
-	bl ov00_021FF3D4
+	bl goastrdup
 	ldr r1, [sp, #0x10]
 	str r0, [r1, #0x18]
 _02204F24:
@@ -34539,7 +34539,7 @@ _02204F40:
 	cmp r1, #0
 	beq _02204FBC
 	mov r0, #0x204
-	bl ov00_021EC3A8
+	bl DWCi_GsMalloc
 	movs r4, r0
 	bne _02204F80
 	ldr r1, _02205060 ; =ov00_02218CC0
@@ -35163,7 +35163,7 @@ _02205814:
 	mov r2, #0x33
 	bl ov00_0220A348
 	add r0, sp, #0
-	bl ov00_021FF408
+	bl _strlwr
 	add r1, sp, #0
 	add r0, r4, #0x144
 	mov r2, #0x33
@@ -35338,7 +35338,7 @@ _02205A74:
 	ldmia sp!, {r4, r5, r6, pc}
 _02205AA4:
 	mov r0, r5
-	bl atol
+	bl atoi
 	mov r2, r0
 	ldr r1, _02205E0C ; =0x0000070D
 	mov r0, r6
@@ -35349,7 +35349,7 @@ _02205AA4:
 	ldmia sp!, {r4, r5, r6, pc}
 _02205ACC:
 	mov r0, r5
-	bl atol
+	bl atoi
 	mov r2, r0
 	ldr r1, _02205E10 ; =0x0000070E
 	mov r0, r6
@@ -35373,7 +35373,7 @@ _02205AF4:
 	ldmia sp!, {r4, r5, r6, pc}
 _02205B24:
 	mov r0, r5
-	bl atol
+	bl atoi
 	mov r2, r0
 	mov r0, r6
 	mov r1, #0x710
@@ -35397,7 +35397,7 @@ _02205B4C:
 	ldmia sp!, {r4, r5, r6, pc}
 _02205B7C:
 	mov r0, r5
-	bl atol
+	bl atoi
 	mov r2, r0
 	ldr r1, _02205E1C ; =0x00000712
 	mov r0, r6
@@ -35408,7 +35408,7 @@ _02205B7C:
 	ldmia sp!, {r4, r5, r6, pc}
 _02205BA4:
 	mov r0, r5
-	bl atol
+	bl atoi
 	mov r2, r0
 	ldr r1, _02205E20 ; =0x00000714
 	mov r0, r6
@@ -35419,7 +35419,7 @@ _02205BA4:
 	ldmia sp!, {r4, r5, r6, pc}
 _02205BCC:
 	mov r0, r5
-	bl atol
+	bl atoi
 	mov r2, r0
 	ldr r1, _02205E24 ; =0x00000715
 	mov r0, r6
@@ -35665,7 +35665,7 @@ ov00_02205EE8: ; 0x02205EE8
 	cmpne r0, #0
 	beq _02206008
 	mov r0, #0x204
-	bl ov00_021EC3A8
+	bl DWCi_GsMalloc
 	movs r4, r0
 	bne _02205F78
 	ldr r1, _02206088 ; =ov00_02218CC0
@@ -35763,7 +35763,7 @@ ov00_0220608C: ; 0x0220608C
 	mov r0, r5
 	bl ov00_02206164
 	mov r0, #0xf0
-	bl ov00_021EC3A8
+	bl DWCi_GsMalloc
 	movs r6, r0
 	str r0, [r5, #0xc]
 	beq _02206150
@@ -35775,31 +35775,31 @@ _022060D0:
 	subs ip, ip, #1
 	bne _022060D0
 	ldr r0, [r4]
-	bl ov00_021FF3D4
+	bl goastrdup
 	ldr r1, [r5, #0xc]
 	str r0, [r1]
 	ldr r0, [r4, #4]
-	bl ov00_021FF3D4
+	bl goastrdup
 	ldr r1, [r5, #0xc]
 	str r0, [r1, #4]
 	ldr r0, [r4, #8]
-	bl ov00_021FF3D4
+	bl goastrdup
 	ldr r1, [r5, #0xc]
 	str r0, [r1, #8]
 	ldr r0, [r4, #0xc]
-	bl ov00_021FF3D4
+	bl goastrdup
 	ldr r1, [r5, #0xc]
 	str r0, [r1, #0xc]
 	ldr r0, [r4, #0x10]
-	bl ov00_021FF3D4
+	bl goastrdup
 	ldr r1, [r5, #0xc]
 	str r0, [r1, #0x10]
 	ldr r0, [r4, #0x14]
-	bl ov00_021FF3D4
+	bl goastrdup
 	ldr r1, [r5, #0xc]
 	str r0, [r1, #0x14]
 	ldr r0, [r4, #0xc8]
-	bl ov00_021FF3D4
+	bl goastrdup
 	ldr r1, [r5, #0xc]
 	str r0, [r1, #0xc8]
 _02206150:
@@ -35818,48 +35818,48 @@ ov00_02206164: ; 0x02206164
 	cmp r0, #0
 	ldmeqia sp!, {r4, pc}
 	ldr r0, [r0]
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	ldr r0, [r4, #0xc]
 	mov r1, #0
 	str r1, [r0]
 	ldr r0, [r4, #0xc]
 	ldr r0, [r0, #4]
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	ldr r0, [r4, #0xc]
 	mov r1, #0
 	str r1, [r0, #4]
 	ldr r0, [r4, #0xc]
 	ldr r0, [r0, #8]
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	ldr r0, [r4, #0xc]
 	mov r1, #0
 	str r1, [r0, #8]
 	ldr r0, [r4, #0xc]
 	ldr r0, [r0, #0xc]
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	ldr r0, [r4, #0xc]
 	mov r1, #0
 	str r1, [r0, #0xc]
 	ldr r0, [r4, #0xc]
 	ldr r0, [r0, #0x10]
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	ldr r0, [r4, #0xc]
 	mov r1, #0
 	str r1, [r0, #0x10]
 	ldr r0, [r4, #0xc]
 	ldr r0, [r0, #0x14]
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	ldr r0, [r4, #0xc]
 	mov r1, #0
 	str r1, [r0, #0x14]
 	ldr r0, [r4, #0xc]
 	ldr r0, [r0, #0xc8]
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	ldr r0, [r4, #0xc]
 	mov r1, #0
 	str r1, [r0, #0xc8]
 	ldr r0, [r4, #0xc]
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	mov r0, #0
 	str r0, [r4, #0xc]
 	ldmia sp!, {r4, pc}
@@ -35914,7 +35914,7 @@ _022062C0: ; jump table
 	b _022064D0 ; case 4
 _022062D4:
 	mov r0, #0x20
-	bl ov00_021EC3A8
+	bl DWCi_GsMalloc
 	movs r5, r0
 	bne _022062FC
 	ldr r1, _02206570 ; =ov00_02218ED4
@@ -35952,7 +35952,7 @@ _02206330:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _02206360:
 	mov r0, #8
-	bl ov00_021EC3A8
+	bl DWCi_GsMalloc
 	movs r3, r0
 	bne _02206388
 	ldr r1, _02206570 ; =ov00_02218ED4
@@ -35985,7 +35985,7 @@ _02206388:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _022063DC:
 	mov r0, #0x204
-	bl ov00_021EC3A8
+	bl DWCi_GsMalloc
 	movs r4, r0
 	bne _02206404
 	ldr r1, _02206570 ; =ov00_02218ED4
@@ -36014,7 +36014,7 @@ _02206404:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _02206448:
 	mov r0, #0x10
-	bl ov00_021EC3A8
+	bl DWCi_GsMalloc
 	movs r3, r0
 	bne _02206470
 	ldr r1, _02206570 ; =ov00_02218ED4
@@ -36051,7 +36051,7 @@ _0220647C:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _022064D0:
 	mov r0, #4
-	bl ov00_021EC3A8
+	bl DWCi_GsMalloc
 	movs r3, r0
 	bne _022064F8
 	ldr r1, _02206570 ; =ov00_02218ED4
@@ -36108,7 +36108,7 @@ ov00_0220657C: ; 0x0220657C
 	mov r6, r2
 	mov r5, r3
 	ldr r4, [r8]
-	bl ov00_021EC3A8
+	bl DWCi_GsMalloc
 	cmp r0, #0
 	bne _022065B8
 	ldr r1, _02206630 ; =ov00_02218ED4
@@ -36173,24 +36173,24 @@ ov00_02206634: ; 0x02206634
 _02206674:
 	ldr r0, [r5, #4]
 	mov r1, #2
-	bl ov00_021FF82C
+	bl shutdown
 	ldr r0, [r5, #4]
-	bl ov00_021FF818
+	bl closesocket
 	ldr r0, [r5, #0x18]
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	mov r0, #0
 	str r0, [r5, #0x18]
 	ldr r0, [r5, #8]
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	mov r0, #0
 	str r0, [r5, #8]
 _022066A8:
 	ldr r0, [r4, #4]
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	mov r1, #0
 	mov r0, r4
 	str r1, [r4, #4]
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	ldmia sp!, {r3, r4, r5, pc}
 	.balign 4, 0
 _022066C4: .word ov00_02218EE8
@@ -36436,7 +36436,7 @@ _022069D4:
 	beq _02206A10
 	ldr r0, [sp, #8]
 	ldr r0, [r0, #0x18]
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	ldr r0, [sp, #8]
 	mov r1, #0
 	str r1, [r0, #0x18]
@@ -36625,7 +36625,7 @@ _02206C2C:
 	ldmia sp!, {r4, r5, r6, r7, pc}
 _02206C94:
 	add r0, sp, #0x71
-	bl atol
+	bl atoi
 	mov r7, r0
 	ldr r0, [r5, #0x18]
 	ldr r1, _02206DF0 ; =ov00_02219034
@@ -36665,7 +36665,7 @@ _02206D00:
 	mov r1, r0
 	add r0, sp, #0x81
 	add r2, sp, #0x10
-	bl ov00_021FF31C
+	bl MD5Digest
 	add r0, sp, #0x31
 	add r1, sp, #0x10
 	bl strcmp
@@ -36748,7 +36748,7 @@ ov00_02206E04: ; 0x02206E04
 _02206E4C:
 	ldr r0, [sb, #0x38]
 	mov r1, r8
-	bl ov00_021FE6EC
+	bl ArrayNth
 	mov r7, r0
 	str r6, [sp]
 	str r5, [sp, #4]
@@ -36773,7 +36773,7 @@ _02206E9C:
 	bne _02206EC8
 	ldr r0, [sb, #0x38]
 	mov r1, fp
-	bl ov00_021FE968
+	bl ArrayDeleteAt
 	ldr r0, [sb, #0x38]
 	bl ArrayLength
 	cmp r0, #0
@@ -36901,7 +36901,7 @@ _02207060:
 	cmp r1, #0
 	beq _02207118
 	mov r0, #0xc
-	bl ov00_021EC3A8
+	bl DWCi_GsMalloc
 	movs r5, r0
 	bne _022070A0
 	ldr r1, _02207150 ; =ov00_022190DC
@@ -36914,7 +36914,7 @@ _022070A0:
 	ldr r0, [r8, #0xc]
 	str r0, [r5]
 	ldr r0, [sp, #0x10]
-	bl ov00_021FF3D4
+	bl goastrdup
 	str r0, [r5, #8]
 	mov r0, #0
 	bl ov00_021FFA70
@@ -37018,26 +37018,26 @@ ov00_022071F4: ; 0x022071F4
 	mov r4, r1
 	ldr r0, [r4, #8]
 	mov r1, #2
-	bl ov00_021FF82C
+	bl shutdown
 	ldr r0, [r4, #8]
-	bl ov00_021FF818
+	bl closesocket
 	ldr r0, [r4, #0x18]
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	mov r0, #0
 	str r0, [r4, #0x18]
 	ldr r0, [r4, #0x28]
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	mov r0, #0
 	str r0, [r4, #0x28]
 	ldr r0, [r4, #0x38]
 	cmp r0, #0
 	beq _02207248
-	bl ov00_021FE678
+	bl ArrayFree
 	mov r0, #0
 	str r0, [r4, #0x38]
 _02207248:
 	mov r0, r4
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	ldmia sp!, {r4, pc}
 	arm_func_end ov00_022071F4
 
@@ -37092,7 +37092,7 @@ _022072E0:
 _022072F8:
 	ldr r0, [r4, #0x38]
 	mov r1, r7
-	bl ov00_021FE6EC
+	bl ArrayNth
 	ldr r2, [r0, #0x10]
 	cmp r2, #0x64
 	bge _02207328
@@ -37105,7 +37105,7 @@ _022072F8:
 _02207328:
 	ldr r0, [r4, #0x38]
 	mov r1, r6
-	bl ov00_021FE968
+	bl ArrayDeleteAt
 	ldr r0, [r4, #0x38]
 	bl ArrayLength
 	cmp r0, #0
@@ -37130,32 +37130,32 @@ ov00_02207370: ; 0x02207370
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	mov r1, #0x4000
-	bl ov00_021FF48C
+	bl SetReceiveBufferSize
 	mov r0, r4
 	mov r1, #0x8000
-	bl ov00_021FF48C
+	bl SetReceiveBufferSize
 	mov r0, r4
 	mov r1, #0x10000
-	bl ov00_021FF48C
+	bl SetReceiveBufferSize
 	mov r0, r4
 	mov r1, #0x20000
-	bl ov00_021FF48C
+	bl SetReceiveBufferSize
 	mov r0, r4
 	mov r1, #0x40000
-	bl ov00_021FF48C
+	bl SetReceiveBufferSize
 	mov r0, r4
 	mov r1, #0x4000
-	bl ov00_021FF4D0
+	bl SetSendBufferSize
 	mov r0, r4
 	mov r1, #0x8000
-	bl ov00_021FF4D0
+	bl SetSendBufferSize
 	mov r0, r4
 	mov r1, #0x10000
-	bl ov00_021FF4D0
+	bl SetSendBufferSize
 	mov r0, r4
-	bl ov00_021FF510
+	bl GetReceiveBufferSize
 	mov r0, r4
-	bl ov00_021FF558
+	bl GetSendBufferSize
 	ldmia sp!, {r4, pc}
 	arm_func_end ov00_02207370
 
@@ -37189,13 +37189,13 @@ ov00_022073E8: ; 0x022073E8
 	mov r0, r6
 	str r6, [r5, #8]
 	mov r1, #0
-	bl ov00_021FF44C
+	bl SetSockBlocking
 	ldr r0, [r5, #8]
 	bl ov00_02207370
 	b _02207470
 _02207468:
 	mov r0, r6
-	bl ov00_021FF818
+	bl closesocket
 _02207470:
 	ldr r7, [r7, #0x434]
 	cmp r7, #0
@@ -37254,7 +37254,7 @@ ov00_02207510: ; 0x02207510
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	ldr r0, [r4]
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	mov r0, #0
 	str r0, [r4]
 	ldmia sp!, {r4, pc}
@@ -37267,7 +37267,7 @@ ov00_0220752C: ; 0x0220752C
 	mov r0, #0x40
 	mov r7, r1
 	mov r6, r2
-	bl ov00_021EC3A8
+	bl DWCi_GsMalloc
 	movs r4, r0
 	moveq r0, #0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
@@ -37288,7 +37288,7 @@ ov00_0220752C: ; 0x0220752C
 	mov r0, #0x18
 	mov r1, #0
 	str r3, [r4, #0x3c]
-	bl ov00_021FE5B4
+	bl ArrayNew
 	str r0, [r4, #0x38]
 	mov r0, r4
 	str r4, [r5, #0x434]
@@ -37347,7 +37347,7 @@ _0220764C:
 	mov r0, #2
 	mov r1, #1
 	mov r2, #0
-	bl ov00_021FF804
+	bl socket
 	mvn r1, #0
 	str r0, [r4, #8]
 	cmp r0, r1
@@ -37365,7 +37365,7 @@ _0220764C:
 	ldmia sp!, {r4, r5, pc}
 _02207698:
 	mov r1, #0
-	bl ov00_021FF44C
+	bl SetSockBlocking
 	cmp r0, #0
 	bne _022076D4
 	ldr r2, _02207794 ; =ov00_02219174
@@ -37397,12 +37397,12 @@ _022076D4:
 	ldr r0, [r0, #0x14]
 	strh r0, [sp, #6]
 	ldr r0, [r4, #8]
-	bl ov00_021FF8A0
+	bl connect
 	mvn r1, #0
 	cmp r0, r1
 	bne _02207778
 	ldr r0, [r4, #8]
-	bl ov00_021FFA60
+	bl GOAGetLastError
 	mvn r2, #5
 	cmp r0, r2
 	subne r1, r2, #0x14
@@ -37522,7 +37522,7 @@ _022077E8:
 	ldmneia sp!, {r4, r5, r6, r7, r8, pc}
 	ldr r0, [r7, #0x38]
 	add r1, sp, #0
-	bl ov00_021FE754
+	bl ArrayAppend
 	mov r0, #0
 	bl ov00_021FFA70
 	add r0, r0, #0x12c
@@ -37669,29 +37669,29 @@ ov00_02207AB8: ; 0x02207AB8
 	cmp r0, #0
 	beq _02207B08
 	ldr r0, [r0, #8]
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	ldr r0, [r4, #8]
 	mov r1, #0
 	str r1, [r0, #8]
 	ldr r0, [r4, #8]
 	ldr r0, [r0, #0xc]
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	ldr r0, [r4, #8]
 	mov r1, #0
 	str r1, [r0, #0xc]
 	ldr r0, [r4, #8]
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	mov r0, #0
 	str r0, [r4, #8]
 _02207B08:
 	mov r0, r4
 	bl ov00_02206164
 	ldr r0, [r4, #0x10]
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	mov r0, #0
 	str r0, [r4, #0x10]
 	ldr r0, [r4, #0x18]
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	mov r0, #0
 	str r0, [r4, #0x18]
 	ldmia sp!, {r4, pc}
@@ -37711,7 +37711,7 @@ ov00_02207B34: ; 0x02207B34
 	mov r0, #0x1c
 	mov r1, #4
 	str ip, [sp]
-	bl ov00_021FED24
+	bl TableNew
 	str r0, [r4, #0x428]
 	cmp r0, #0
 	movne r0, #1
@@ -37776,7 +37776,7 @@ _02207C00:
 	ldmia sp!, {r4, r5, r6, pc}
 _02207C48:
 	add r0, sp, #0x10
-	bl atol
+	bl atoi
 	ldr r2, [r4, #0xc]
 	ldr r1, [r4, #0x10]
 	mov r6, r0
@@ -37785,7 +37785,7 @@ _02207C48:
 	cmp r2, #0
 	beq _02207CC4
 	mov r0, #8
-	bl ov00_021EC3A8
+	bl DWCi_GsMalloc
 	movs r3, r0
 	bne _02207C94
 	ldr r1, _02207CE8 ; =ov00_02219280
@@ -37864,7 +37864,7 @@ _02207D1C:
 	str r0, [sp, #0x1c]
 	str r0, [sp, #0x18]
 	ldr r0, [r4, #0x428]
-	bl ov00_021FEF74
+	bl TableEnter
 	ldr r0, [r4, #0x42c]
 	add r2, sp, #0
 	add r3, r0, #1
@@ -37893,7 +37893,7 @@ ov00_02207DD0: ; 0x02207DD0
 	str r1, [sp]
 	ldr r0, [r0, #0x428]
 	add r1, sp, #0
-	bl ov00_021FF0C0
+	bl TableLookup
 	cmp r4, #0
 	strne r0, [r4]
 	cmp r0, #0
@@ -37915,7 +37915,7 @@ ov00_02207E0C: ; 0x02207E0C
 	ldmeqia sp!, {r3, r4, pc}
 	ldr r0, [r4, #0x428]
 	ldr r1, [sp]
-	bl ov00_021FF01C
+	bl TableRemove
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, pc}
 	arm_func_end ov00_02207E0C
@@ -37923,11 +37923,11 @@ ov00_02207E0C: ; 0x02207E0C
 	arm_func_start ov00_02207E40
 ov00_02207E40: ; 0x02207E40
 	ldr r0, [r0]
-	ldr ip, _02207E50 ; =ov00_021FF01C
+	ldr ip, _02207E50 ; =TableRemove
 	ldr r0, [r0, #0x428]
 	bx ip
 	.balign 4, 0
-_02207E50: .word ov00_021FF01C
+_02207E50: .word TableRemove
 	arm_func_end ov00_02207E40
 
 	arm_func_start ov00_02207E54
@@ -38077,7 +38077,7 @@ ov00_02207FF0: ; 0x02207FF0
 	mov r6, r0
 	add r0, r1, #1
 	str r1, [r4, #0xc]
-	bl ov00_021EC3A8
+	bl DWCi_GsMalloc
 	str r0, [r4, #8]
 	cmp r0, #0
 	bne _02208038
@@ -38091,7 +38091,7 @@ _02208038:
 	mov r0, #2
 	mov r1, #1
 	mov r2, #0
-	bl ov00_021FF804
+	bl socket
 	mvn r1, #0
 	str r0, [r4, #4]
 	cmp r0, r1
@@ -38109,7 +38109,7 @@ _02208038:
 	ldmia sp!, {r4, r5, r6, pc}
 _02208084:
 	mov r1, #0
-	bl ov00_021FF44C
+	bl SetSockBlocking
 	cmp r0, #0
 	bne _022080C0
 	ldr r2, _022081D0 ; =ov00_02219360
@@ -38163,12 +38163,12 @@ _02208140:
 	strh r0, [sp, #2]
 	ldr r0, [r4, #4]
 	mov r2, #8
-	bl ov00_021FF8A0
+	bl connect
 	mvn r1, #0
 	cmp r0, r1
 	bne _022081B4
 	ldr r0, [r4, #4]
-	bl ov00_021FFA60
+	bl GOAGetLastError
 	mvn r2, #5
 	cmp r0, r2
 	subne r1, r2, #0x14
@@ -38213,7 +38213,7 @@ ov00_022081F0: ; 0x022081F0
 	mov r0, #0x144
 	mov r6, r1
 	mov r5, r2
-	bl ov00_021EC3A8
+	bl DWCi_GsMalloc
 	movs r4, r0
 	bne _02208224
 	ldr r1, _0220829C ; =ov00_02219328
@@ -38238,7 +38238,7 @@ _02208224:
 	str r0, [r4, #0x24]
 	add r0, r1, #1
 	str r1, [r4, #0x1c]
-	bl ov00_021EC3A8
+	bl DWCi_GsMalloc
 	str r0, [r4, #0x18]
 	cmp r0, #0
 	bne _02208288
@@ -38385,7 +38385,7 @@ _0220844C:
 _02208460:
 	ldr r0, [sp, #4]
 	add r0, r0, #0x5c
-	bl ov00_021FF408
+	bl _strlwr
 	cmp r5, #0
 	bne _02208484
 	ldr r0, [sp, #4]
@@ -38992,7 +38992,7 @@ _02208D38:
 	mov r1, #0xac
 	mul r1, r2, r1
 	str r2, [sp, #0x84]
-	bl ov00_021EC3BC
+	bl DWCi_GsRealloc
 	movs r7, r0
 	str r7, [sp, #0x8c]
 	bne _02208D8C
@@ -39013,7 +39013,7 @@ _02208D8C:
 	mov r2, #0xac
 	bl memset
 	mov r0, r5
-	bl atol
+	bl atoi
 	str r0, [r7, r8]
 	mov r8, #0
 _02208DC0:
@@ -39160,7 +39160,7 @@ _02208F50:
 	ldmneia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 _02208FCC:
 	ldr r0, [sp, #0x8c]
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	mov r0, #0
 	str r0, [sp, #0x8c]
 	b _02209F60
@@ -39202,7 +39202,7 @@ _02208FE0:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 _0220906C:
 	mov r0, #0x3c
-	bl ov00_021EC3A8
+	bl DWCi_GsMalloc
 	movs r4, r0
 	bne _02209094
 	ldr r1, _022093EC ; =ov00_02219328
@@ -39247,7 +39247,7 @@ _022090F4:
 	cmp r1, #0
 	beq _02209F60
 	mov r0, #0x44
-	bl ov00_021EC3A8
+	bl DWCi_GsMalloc
 	movs r8, r0
 	bne _02209140
 	ldr r1, _022093EC ; =ov00_02219328
@@ -39317,7 +39317,7 @@ _022091E0:
 	ldr r1, [r8, #0x38]
 	add r1, r1, #1
 	mov r1, r1, lsl #2
-	bl ov00_021EC3BC
+	bl DWCi_GsRealloc
 	cmp r0, #0
 	bne _0220924C
 	ldr r1, _022093EC ; =ov00_02219328
@@ -39329,7 +39329,7 @@ _022091E0:
 _0220924C:
 	str r0, [r8, #0x3c]
 	mov r0, #0x1f
-	bl ov00_021EC3A8
+	bl DWCi_GsMalloc
 	cmp r0, #0
 	bne _02209278
 	ldr r1, _022093EC ; =ov00_02219328
@@ -39363,7 +39363,7 @@ _022092AC:
 	ble _02209460
 	mov r1, r0, lsl #2
 	ldr r0, [r8, #0x40]
-	bl ov00_021EC3BC
+	bl DWCi_GsRealloc
 	cmp r0, #0
 	bne _022092F8
 	ldr r1, _022093EC ; =ov00_02219328
@@ -39375,7 +39375,7 @@ _022092AC:
 _022092F8:
 	str r0, [r8, #0x40]
 	mov r0, #0x15
-	bl ov00_021EC3A8
+	bl DWCi_GsMalloc
 	cmp r0, #0
 	bne _02209324
 	ldr r1, _022093EC ; =ov00_02219328
@@ -39493,7 +39493,7 @@ _0220949C:
 	cmp r1, #0
 	beq _02209F60
 	mov r0, #0x10
-	bl ov00_021EC3A8
+	bl DWCi_GsMalloc
 	movs fp, r0
 	bne _022094E8
 	ldr r1, _022093EC ; =ov00_02219328
@@ -39539,7 +39539,7 @@ _02209508:
 	mul r1, r2, r0
 	str r2, [fp, #8]
 	ldr r0, [fp, #0xc]
-	bl ov00_021EC3BC
+	bl DWCi_GsRealloc
 	str r0, [fp, #0xc]
 	movs r8, r0
 	bne _0220959C
@@ -39562,7 +39562,7 @@ _0220959C:
 	mov r0, #1
 	str r0, [r7, #0x24]
 	mov r0, r5
-	bl atol
+	bl atoi
 	str r0, [r8, sb]
 	mov r8, #0
 _022095D8:
@@ -39603,7 +39603,7 @@ _0220964C:
 	cmp r0, #0
 	bne _02209670
 	mov r0, r5
-	bl atol
+	bl atoi
 	str r0, [r7, #0x24]
 	b _022096A0
 _02209670:
@@ -39691,7 +39691,7 @@ _02209718:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 _022097A4:
 	add r0, sp, #0x90
-	bl atol
+	bl atoi
 	movs r4, r0
 	beq _022097C4
 	ldr r0, [sp, #0x28]
@@ -39719,11 +39719,11 @@ _022097C4:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 _0220980C:
 	add r0, sp, #0x90
-	bl atol
+	bl atoi
 	mov r5, r0
 _02209818:
 	mov r0, #8
-	bl ov00_021EC3A8
+	bl DWCi_GsMalloc
 	movs r3, r0
 	bne _02209840
 	ldr r1, _022093EC ; =ov00_02219328
@@ -39784,7 +39784,7 @@ _02209874:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 _02209900:
 	add r0, sp, #0x90
-	bl atol
+	bl atoi
 	movs r4, r0
 	ldrne r0, [sp, #0x28]
 	ldr r1, _02209F9C ; =ov00_02219648
@@ -39813,11 +39813,11 @@ _02209964:
 	b _02209978
 _0220996C:
 	add r0, sp, #0x90
-	bl atol
+	bl atoi
 	mov r5, r0
 _02209978:
 	mov r0, #8
-	bl ov00_021EC3A8
+	bl DWCi_GsMalloc
 	movs r3, r0
 	bne _022099A0
 	ldr r1, _022093EC ; =ov00_02219328
@@ -39851,7 +39851,7 @@ _022099D4:
 	cmp r1, #0
 	beq _02209F60
 	mov r0, #0xc
-	bl ov00_021EC3A8
+	bl DWCi_GsMalloc
 	movs fp, r0
 	bne _02209A20
 	ldr r1, _022093EC ; =ov00_02219328
@@ -39923,7 +39923,7 @@ _02209AA8:
 	add r2, r1, #1
 	mov r1, #0xac
 	mul r1, r2, r1
-	bl ov00_021EC3BC
+	bl DWCi_GsRealloc
 	cmp r0, #0
 	bne _02209B34
 	ldr r1, _022093EC ; =ov00_02219328
@@ -39947,7 +39947,7 @@ _02209B34:
 	mov r0, r5
 	add r1, r1, #1
 	str r1, [fp, #4]
-	bl atol
+	bl atoi
 	str r0, [r8, sb]
 	mov r8, #0
 _02209B78:
@@ -40074,7 +40074,7 @@ _02209D10:
 	beq _02209F60
 	mov r0, #0xc
 	mov r7, #0
-	bl ov00_021EC3A8
+	bl DWCi_GsMalloc
 	movs r8, r0
 	bne _02209D60
 	ldr r1, _022093EC ; =ov00_02219328
@@ -40116,10 +40116,10 @@ _02209D60:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 _02209DD8:
 	add r0, sp, #0x90
-	bl atol
+	bl atoi
 	str r0, [r8, #4]
 	mov r0, r0, lsl #2
-	bl ov00_021EC3A8
+	bl DWCi_GsMalloc
 	str r0, [r8, #8]
 	cmp r0, #0
 	bne _02209E10
@@ -40150,7 +40150,7 @@ _02209E20:
 	cmp r0, #0
 	bne _02209EA4
 	mov r0, #0x15
-	bl ov00_021EC3A8
+	bl DWCi_GsMalloc
 	ldr r1, [r8, #8]
 	str r0, [r1, r7, lsl #2]
 	ldr r0, [r8, #8]
@@ -40229,7 +40229,7 @@ _02209F6C:
 	cmp r4, #0
 	beq _02209F7C
 	mov r0, #0xa
-	bl ov00_021FF3C0
+	bl msleep
 _02209F7C:
 	cmp r4, #0
 	bne _0220854C
@@ -40264,7 +40264,7 @@ ov00_02209FCC: ; 0x02209FCC
 	cmp r0, #0
 	ble _0220A100
 	mov r0, r0, lsl #2
-	bl ov00_021EC3A8
+	bl DWCi_GsMalloc
 	movs r7, r0
 	bne _0220A00C
 	ldr r1, _0220A108 ; =ov00_02219328
@@ -40342,7 +40342,7 @@ _0220A0EC:
 	blt _0220A0C8
 _0220A0F8:
 	mov r0, r7
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 _0220A100:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
@@ -40477,7 +40477,7 @@ _0220A2B8:
 	cmp r1, #0
 	beq _0220A324
 	mov r0, #4
-	bl ov00_021EC3A8
+	bl DWCi_GsMalloc
 	movs r3, r0
 	bne _0220A2F8
 	ldr r1, _0220A344 ; =ov00_0221972C
@@ -40576,7 +40576,7 @@ ov00_0220A3C8: ; 0x0220A3C8
 	cmp r0, #0
 	beq _0220A420
 	add r0, sp, #0
-	bl atol
+	bl atoi
 	str r0, [r4, #0x418]
 _0220A420:
 	ldr r1, _0220A498 ; =ov00_022197A4
@@ -40707,7 +40707,7 @@ ov00_0220A5A8: ; 0x0220A5A8
 	mov r1, ip
 	str ip, [sp, #4]
 	str ip, [sp]
-	bl ov00_021FF59C
+	bl GSISocketSelect
 	mvn r1, #0
 	cmp r0, r1
 	bne _0220A61C
@@ -40937,7 +40937,7 @@ ov00_0220A8A4: ; 0x0220A8A4
 	bl __msl_assertion_failed
 _0220A8E0:
 	mov r0, r6
-	bl ov00_021FF3D4
+	bl goastrdup
 	mov r3, #0
 	mov r2, #1
 	str r0, [sp]
@@ -40949,7 +40949,7 @@ _0220A8E0:
 	bl ov00_0220AD64
 	ldr r0, [r7]
 	add r1, sp, #0
-	bl ov00_021FEF74
+	bl TableEnter
 	mov r0, r7
 	mov r1, r6
 	bl ov00_0220AE00
@@ -41163,7 +41163,7 @@ _0220ABC0:
 	bl strlen
 	add r0, r4, r0
 	add r0, r0, #1
-	bl ov00_021EC3A8
+	bl DWCi_GsMalloc
 	mov r4, r0
 	mov r1, r5
 	bl strcpy
@@ -41174,7 +41174,7 @@ _0220ABC0:
 	mov r1, r4
 	bl ov00_0220AD64
 	mov r0, r4
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	mov r0, r6
 	bl ov00_0220ADE0
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
@@ -41307,13 +41307,13 @@ _0220ADA0:
 	ldr r0, [r5, #0xc]
 	cmp r0, #0
 	beq _0220ADB8
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 _0220ADB8:
 	cmp r4, #0
 	moveq r0, #0
 	beq _0220ADD0
 	mov r0, r4
-	bl ov00_021FF3D4
+	bl goastrdup
 	bl ov00_0220AD34
 _0220ADD0:
 	str r0, [r5, #0xc]
@@ -41354,7 +41354,7 @@ _0220AE34:
 	str r4, [sp]
 	ldr r0, [r5]
 	add r1, sp, #0
-	bl ov00_021FF0C0
+	bl TableLookup
 	add sp, sp, #0x14
 	ldmia sp!, {r4, r5, pc}
 	.balign 4, 0
@@ -41374,10 +41374,10 @@ ov00_0220AE60: ; 0x0220AE60
 	cmp r0, r1
 	beq _0220AE8C
 	mov r1, #2
-	bl ov00_021FF82C
+	bl shutdown
 	ldr r0, _0220AEC8 ; =ov00_022198D8
 	ldr r0, [r0]
-	bl ov00_021FF818
+	bl closesocket
 _0220AE8C:
 	ldr r0, _0220AEC8 ; =ov00_022198D8
 	mvn r1, #0
@@ -41387,7 +41387,7 @@ _0220AE8C:
 	ldr r0, [r0, #0xc]
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	ldr r0, _0220AECC ; =ov00_0221B200
 	mov r1, #0
 	str r1, [r0, #0xc]
@@ -41448,7 +41448,7 @@ _0220AF44:
 	ldr r1, [sl, #0x2c]
 	ldr r0, [sl, #0xc]
 	add r1, r1, #1
-	bl ov00_021EC3BC
+	bl DWCi_GsRealloc
 	str r0, [sl, #0xc]
 	cmp r0, #0
 	moveq r0, #0
@@ -41461,7 +41461,7 @@ _0220AF88:
 	mov r3, r7
 	add r1, r1, r5
 	sub r2, r2, r5
-	bl ov00_021FF92C
+	bl recv
 	cmp r0, #0
 	bgt _0220AFBC
 	bl ov00_0220AE60
@@ -41661,7 +41661,7 @@ ov00_0220B1E8: ; 0x0220B1E8
 _0220B220:
 	ldr r0, [r8, #4]
 	mov r1, r4
-	bl ov00_021FE6EC
+	bl ArrayNth
 	ldr r1, [r0]
 	cmp r1, r7
 	ldreq r1, [r0, #4]
@@ -41689,12 +41689,12 @@ ov00_0220B26C: ; 0x0220B26C
 	ldr r1, _0220B30C ; =ov00_0221994C
 	mov r6, r0
 	bl ov00_0220B15C
-	bl atol
+	bl atoi
 	mov r5, r0
 	ldr r1, _0220B310 ; =ov00_02219954
 	mov r0, r6
 	bl ov00_0220B15C
-	bl atol
+	bl atoi
 	mov r4, r0
 	ldr r1, _0220B314 ; =ov00_02219958
 	mov r0, r6
@@ -41712,7 +41712,7 @@ ov00_0220B26C: ; 0x0220B26C
 	ldr r0, _0220B318 ; =ov00_0221B200
 	mov r1, r4
 	ldr r0, [r0, #4]
-	bl ov00_021FE6EC
+	bl ArrayNth
 	cmp r5, #0
 	movgt r1, #1
 	str r5, [r0, #8]
@@ -41737,12 +41737,12 @@ ov00_0220B31C: ; 0x0220B31C
 	ldr r1, _0220B39C ; =ov00_02219960
 	mov r5, r0
 	bl ov00_0220B15C
-	bl atol
+	bl atoi
 	mov r4, r0
 	ldr r1, _0220B3A0 ; =ov00_02219954
 	mov r0, r5
 	bl ov00_0220B15C
-	bl atol
+	bl atoi
 	mov r1, r0
 	mov r0, #3
 	mov r2, #0
@@ -41754,7 +41754,7 @@ ov00_0220B31C: ; 0x0220B31C
 	ldr r0, _0220B3A4 ; =ov00_0221B200
 	mov r1, r5
 	ldr r0, [r0, #4]
-	bl ov00_021FE6EC
+	bl ArrayNth
 	cmp r4, #0
 	movgt r1, #1
 	mov r2, #0
@@ -41778,22 +41778,22 @@ ov00_0220B3A8: ; 0x0220B3A8
 	ldr r1, _0220B470 ; =ov00_02219968
 	mov r4, r0
 	bl ov00_0220B15C
-	bl atol
+	bl atoi
 	mov r7, r0
 	ldr r1, _0220B474 ; =ov00_02219954
 	mov r0, r4
 	bl ov00_0220B15C
-	bl atol
+	bl atoi
 	mov r6, r0
 	ldr r1, _0220B478 ; =ov00_02219970
 	mov r0, r4
 	bl ov00_0220B15C
-	bl atol
+	bl atoi
 	mov r5, r0
 	ldr r1, _0220B47C ; =ov00_02219974
 	mov r0, r4
 	bl ov00_0220B15C
-	bl atol
+	bl atoi
 	mov r8, r0
 	mov r1, r6
 	mov r2, r5
@@ -41807,7 +41807,7 @@ ov00_0220B3A8: ; 0x0220B3A8
 	ldr r1, _0220B480 ; =ov00_02219978
 	mov r0, r4
 	bl ov00_0220B15C
-	bl atol
+	bl atoi
 	mov r6, r0
 	ldr r1, _0220B484 ; =ov00_02219980
 	mov r0, r4
@@ -41839,22 +41839,22 @@ ov00_0220B48C: ; 0x0220B48C
 	ldr r1, _0220B514 ; =ov00_02219988
 	mov r7, r0
 	bl ov00_0220B15C
-	bl atol
+	bl atoi
 	mov r6, r0
 	ldr r1, _0220B518 ; =ov00_02219970
 	mov r0, r7
 	bl ov00_0220B15C
-	bl atol
+	bl atoi
 	mov r5, r0
 	ldr r1, _0220B51C ; =ov00_02219954
 	mov r0, r7
 	bl ov00_0220B15C
-	bl atol
+	bl atoi
 	mov r4, r0
 	ldr r1, _0220B520 ; =ov00_02219974
 	mov r0, r7
 	bl ov00_0220B15C
-	bl atol
+	bl atoi
 	mov r1, r4
 	mov r4, r0
 	mov r2, r5
@@ -42004,7 +42004,7 @@ ov00_0220B694: ; 0x0220B694
 	ldr r0, _0220B794 ; =ov00_0221B200
 	mov r1, r7
 	ldr r0, [r0, #4]
-	bl ov00_021FE6EC
+	bl ArrayNth
 	mov r3, r0
 	ldr ip, [r3, #0x18]
 	cmp ip, #0
@@ -42054,7 +42054,7 @@ _0220B77C:
 	ldr r0, _0220B794 ; =ov00_0221B200
 	mov r1, r7
 	ldr r0, [r0, #4]
-	bl ov00_021FE968
+	bl ArrayDeleteAt
 	add sp, sp, #0x14
 	ldmia sp!, {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -42118,7 +42118,7 @@ _0220B80C:
 _0220B85C:
 	ldr r0, _0220B87C ; =ov00_0221B200
 	ldr r0, [r0, #4]
-	bl ov00_021FE678
+	bl ArrayFree
 	ldr r0, _0220B87C ; =ov00_0221B200
 	mov r1, #0
 	str r1, [r0, #4]
@@ -42141,7 +42141,7 @@ ov00_0220B88C: ; 0x0220B88C
 	moveq r0, r1
 	ldmeqia sp!, {r3, pc}
 	ldr r0, [r0, #0x20]
-	bl ov00_021FE6EC
+	bl ArrayNth
 	ldr r0, [r0]
 	ldmia sp!, {r3, pc}
 	.balign 4, 0
@@ -42158,7 +42158,7 @@ ov00_0220B8BC: ; 0x0220B8BC
 	moveq r0, r1
 	ldmeqia sp!, {r3, pc}
 	ldr r0, [r0, #0x1c]
-	bl ov00_021FE6EC
+	bl ArrayNth
 	ldr r0, [r0]
 	ldmia sp!, {r3, pc}
 	.balign 4, 0
@@ -42487,7 +42487,7 @@ ov00_0220BCEC: ; 0x0220BCEC
 	mov r3, #0x2b
 	bl __msl_assertion_failed
 _0220BD0C:
-	bl ov00_021FF368
+	bl current_time
 	bl srand
 	bl rand
 	ldr r5, _0220BE04 ; =0x2C0B02C1
@@ -42655,7 +42655,7 @@ ov00_0220BF44: ; 0x0220BF44
 	mov r4, r1
 	mov r5, r0
 	mov r0, r4
-	bl ov00_021EC3A8
+	bl DWCi_GsMalloc
 	str r0, [r5]
 	cmp r0, #0
 	moveq r0, #0
@@ -43203,7 +43203,7 @@ _0220C69C:
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
 	ldr r0, [r7, #0x98]
 	mov r1, r6
-	bl ov00_021FE6EC
+	bl ArrayNth
 	movs lr, r0
 	moveq r0, #1
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
@@ -43272,7 +43272,7 @@ _0220C794:
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
 	ldr r0, [r7, #0x9c]
 	mov r1, r6
-	bl ov00_021FE6EC
+	bl ArrayNth
 	movs lr, r0
 	moveq r0, #1
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
@@ -43516,7 +43516,7 @@ ov00_0220CADC: ; 0x0220CADC
 	ldr r0, [sp, #0x38]
 	cmp r0, #0
 	ble _0220CB3C
-	bl ov00_021EC3A8
+	bl DWCi_GsMalloc
 	cmp r0, #0
 	str r0, [r5, #0x38]
 	addeq sp, sp, #0x20
@@ -43618,7 +43618,7 @@ ov00_0220CC38: ; 0x0220CC38
 	addeq sp, sp, #4
 	moveq r0, #0
 	ldmeqia sp!, {r3, r4, pc}
-	bl ov00_021FF368
+	bl current_time
 	str r0, [r4, #0x88]
 	mov r0, #1
 	add sp, sp, #4
@@ -43688,7 +43688,7 @@ ov00_0220CD24: ; 0x0220CD24
 _0220CD48:
 	ldr r0, [r7, #0x60]
 	mov r1, r4
-	bl ov00_021FE6EC
+	bl ArrayNth
 	mov r1, r0
 	ldr r0, [r1, #0xc]
 	sub r0, r6, r0
@@ -43818,12 +43818,12 @@ ov00_0220CEB8: ; 0x0220CEB8
 	add r1, sp, #8
 	ldr r0, [r0, #8]
 	ldr r0, [r0, #0xc]
-	bl ov00_021FF01C
+	bl TableRemove
 	ldr r0, [sp, #8]
 	add r1, sp, #8
 	ldr r0, [r0, #8]
 	ldr r0, [r0, #0x10]
-	bl ov00_021FE754
+	bl ArrayAppend
 	ldmia sp!, {r3, lr}
 	add sp, sp, #0x10
 	bx lr
@@ -43836,40 +43836,40 @@ ov00_0220CF14: ; 0x0220CF14
 	ldr r0, [r4, #0x38]
 	cmp r0, #0
 	beq _0220CF2C
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 _0220CF2C:
 	ldr r0, [r4, #0x44]
 	cmp r0, #0
 	beq _0220CF3C
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 _0220CF3C:
 	ldr r0, [r4, #0x50]
 	cmp r0, #0
 	beq _0220CF4C
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 _0220CF4C:
 	ldr r0, [r4, #0x5c]
 	cmp r0, #0
 	beq _0220CF5C
-	bl ov00_021FE678
+	bl ArrayFree
 _0220CF5C:
 	ldr r0, [r4, #0x60]
 	cmp r0, #0
 	beq _0220CF6C
-	bl ov00_021FE678
+	bl ArrayFree
 _0220CF6C:
 	ldr r0, [r4, #0x98]
 	cmp r0, #0
 	beq _0220CF7C
-	bl ov00_021FE678
+	bl ArrayFree
 _0220CF7C:
 	ldr r0, [r4, #0x9c]
 	cmp r0, #0
 	beq _0220CF8C
-	bl ov00_021FE678
+	bl ArrayFree
 _0220CF8C:
 	mov r0, r4
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	ldmia sp!, {r4, pc}
 	arm_func_end ov00_0220CF14
 
@@ -44017,7 +44017,7 @@ _0220D130:
 	cmp sb, #0
 	bne _0220D15C
 	mov r0, r4
-	bl ov00_021FF3C0
+	bl msleep
 _0220D15C:
 	cmp sb, #0
 	beq _0220D130
@@ -44294,7 +44294,7 @@ ov00_0220D430: ; 0x0220D430
 _0220D45C:
 	ldr r0, [r4, #0x60]
 	mov r1, r6
-	bl ov00_021FE6EC
+	bl ArrayNth
 	ldrh r0, [r0, #8]
 	mov r1, r7
 	bl ov00_0220D34C
@@ -44312,7 +44312,7 @@ _0220D484:
 _0220D49C:
 	ldr r0, [r4, #0x60]
 	mov r1, r6
-	bl ov00_021FE968
+	bl ArrayDeleteAt
 	cmp r6, #0
 	sub r6, r6, #1
 	bne _0220D49C
@@ -44328,7 +44328,7 @@ _0220D4B4:
 _0220D4D4:
 	ldr r0, [r4, #0x60]
 	mov r1, #0
-	bl ov00_021FE6EC
+	bl ArrayNth
 	cmp r6, #0
 	ldr r5, [r0]
 	mov r7, #0
@@ -44336,7 +44336,7 @@ _0220D4D4:
 _0220D4F0:
 	ldr r0, [r4, #0x60]
 	mov r1, r7
-	bl ov00_021FE6EC
+	bl ArrayNth
 	ldr r1, [r0]
 	add r7, r7, #1
 	sub r1, r1, r5
@@ -44540,7 +44540,7 @@ _0220D784:
 	ldr r0, [r5, #0x38]
 	cmp r0, #0
 	beq _0220D7CC
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	mov r0, #0
 	str r0, [r5, #0x38]
 _0220D7CC:
@@ -44607,7 +44607,7 @@ _0220D864:
 _0220D8A0:
 	mov r0, #4
 	str r0, [r6, #0xc]
-	bl ov00_021FF368
+	bl current_time
 	ldr r2, [r6, #0x8c]
 	add r1, r5, #0x20
 	sub r0, r0, r2
@@ -44806,7 +44806,7 @@ ov00_0220DAFC: ; 0x0220DAFC
 _0220DB30:
 	ldr r0, [sb, #0x5c]
 	mov r1, sl
-	bl ov00_021FE6EC
+	bl ArrayNth
 	ldrh r0, [r0, #0xc]
 	cmp r0, r7
 	bne _0220DB5C
@@ -44869,13 +44869,13 @@ _0220DB78:
 _0220DC20:
 	ldr r0, [sb, #0x5c]
 	mov r1, r4
-	bl ov00_021FE6EC
+	bl ArrayNth
 	ldrh r0, [r0, #0xc]
 	cmp r0, r7
 	bne _0220DC98
 	ldr r0, [sb, #0x5c]
 	sub r1, r4, #1
-	bl ov00_021FE6EC
+	bl ArrayNth
 	mov r4, r0
 	ldrh r1, [r4, #0xc]
 	mov r0, r7
@@ -44915,7 +44915,7 @@ ov00_0220DCB0: ; 0x0220DCB0
 	ldmia r1, {r4, r5}
 	mov r1, r2
 	mov r8, #0
-	bl ov00_021FE968
+	bl ArrayDeleteAt
 	ldr r0, [sb, #0x5c]
 	bl ArrayLength
 	mov r6, r0
@@ -44925,7 +44925,7 @@ ov00_0220DCB0: ; 0x0220DCB0
 _0220DCE4:
 	ldr r0, [sb, #0x5c]
 	mov r1, r7
-	bl ov00_021FE6EC
+	bl ArrayNth
 	ldr r1, [r0]
 	cmp r1, r4
 	ble _0220DD14
@@ -44959,7 +44959,7 @@ _0220DD3C:
 _0220DD4C:
 	ldr r0, [r6, #0x5c]
 	mov r1, r5
-	bl ov00_021FE6EC
+	bl ArrayNth
 	mov r4, r0
 	ldrh r1, [r4, #0xc]
 	ldrh r0, [r6, #0x66]
@@ -44996,7 +44996,7 @@ ov00_0220DDB4: ; 0x0220DDB4
 	ldmneia sp!, {r4, pc}
 	mov r0, #1
 	str r0, [r4, #0x90]
-	bl ov00_021FF368
+	bl current_time
 	str r0, [r4, #0x94]
 	ldmia sp!, {r4, pc}
 	arm_func_end ov00_0220DDB4
@@ -45153,7 +45153,7 @@ _0220DFD4:
 _0220DFEC:
 	ldr r0, [r4, #0x60]
 	mov r1, sb
-	bl ov00_021FE6EC
+	bl ArrayNth
 	mov r5, r0
 	ldrh r0, [r5, #8]
 	mov r1, r6
@@ -45216,7 +45216,7 @@ ov00_0220E05C: ; 0x0220E05C
 	ldrb r0, [r5, #7]
 	strb r1, [r2, #2]
 	strb r0, [r2, #3]
-	bl ov00_021FF368
+	bl current_time
 	mov r2, r0
 	ldr r1, [sp]
 	mov r0, r4
@@ -45534,7 +45534,7 @@ _0220E4F4:
 	ldr r0, [r4, #0x20]
 	cmp r0, #0
 	beq _0220E534
-	bl ov00_021FF368
+	bl current_time
 	ldr r2, [r4, #0x1c]
 	ldr r1, [r4, #0x20]
 	sub r0, r0, r2
@@ -45597,7 +45597,7 @@ _0220E5C8:
 	cmp r2, r6
 	bne _0220E65C
 	ldr r0, [sl]
-	bl ov00_021FFA60
+	bl GOAGetLastError
 	cmp r0, r5
 	bne _0220E640
 	ldrh ip, [sp, #0xe]
@@ -45670,14 +45670,14 @@ ov00_0220E6C0: ; 0x0220E6C0
 	str r0, [sp]
 	str r2, [sp, #4]
 	strh r1, [sp, #8]
-	bl ov00_021FF368
+	bl current_time
 	str r0, [sp, #0xc]
 	ldr r0, [r5, #0x60]
 	bl ArrayLength
 	mov r4, r0
 	ldr r0, [r5, #0x60]
 	add r1, sp, #0
-	bl ov00_021FE754
+	bl ArrayAppend
 	ldr r0, [r5, #0x60]
 	bl ArrayLength
 	add r1, r4, #1
@@ -45761,7 +45761,7 @@ ov00_0220E7F8: ; 0x0220E7F8
 _0220E828:
 	ldr r0, [r5, #0x60]
 	sub r1, r4, #1
-	bl ov00_021FE6EC
+	bl ArrayNth
 	ldmia r0, {r1, r2}
 	ldr r3, [r5, #0x50]
 	mov r0, r5
@@ -46292,7 +46292,7 @@ ov00_0220EEEC: ; 0x0220EEEC
 	str r3, [sp]
 	ldr r0, [r0, #0xc]
 	add r1, sp, #0
-	bl ov00_021FF0C0
+	bl TableLookup
 	cmp r0, #0
 	ldrne r0, [r0]
 	moveq r0, #0
@@ -46308,7 +46308,7 @@ ov00_0220EF24: ; 0x0220EF24
 	mov r6, r3
 	mov r5, r0
 	mov r7, r2
-	bl ov00_021FF3CC
+	bl SocketStartUp
 	cmp r6, #0
 	moveq r6, #0x10000
 	cmp r7, #0
@@ -46322,7 +46322,7 @@ ov00_0220EF24: ; 0x0220EF24
 	moveq r0, #4
 	ldmeqia sp!, {r4, r5, r6, r7, pc}
 	mov r0, #0x44
-	bl ov00_021EC3A8
+	bl DWCi_GsMalloc
 	movs r4, r0
 	addeq sp, sp, #0x1c
 	moveq r0, #1
@@ -46344,12 +46344,12 @@ ov00_0220EF24: ; 0x0220EF24
 	mov r1, #0x20
 	mov r2, #2
 	str ip, [sp, #4]
-	bl ov00_021FED4C
+	bl TableNew2
 	str r0, [r4, #0xc]
 	cmp r0, #0
 	bne _0220EFF0
 	mov r0, r4
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	add sp, sp, #0x1c
 	mov r0, #1
 	ldmia sp!, {r4, r5, r6, r7, pc}
@@ -46357,14 +46357,14 @@ _0220EFF0:
 	mov r0, #4
 	ldr r2, _0220F140 ; =ov00_0220EEDC
 	mov r1, r0
-	bl ov00_021FE5B4
+	bl ArrayNew
 	str r0, [r4, #0x10]
 	cmp r0, #0
 	bne _0220F028
 	ldr r0, [r4, #0xc]
-	bl ov00_021FEE8C
+	bl TableFree
 	mov r0, r4
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	add sp, sp, #0x1c
 	mov r0, #1
 	ldmia sp!, {r4, r5, r6, r7, pc}
@@ -46372,17 +46372,17 @@ _0220F028:
 	mov r0, #2
 	mov r1, r0
 	mov r2, #0
-	bl ov00_021FF804
+	bl socket
 	mvn r1, #0
 	str r0, [r4]
 	cmp r0, r1
 	bne _0220F06C
 	ldr r0, [r4, #0xc]
-	bl ov00_021FEE8C
+	bl TableFree
 	ldr r0, [r4, #0x10]
-	bl ov00_021FE678
+	bl ArrayFree
 	mov r0, r4
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	add sp, sp, #0x1c
 	mov r0, #3
 	ldmia sp!, {r4, r5, r6, r7, pc}
@@ -46404,18 +46404,18 @@ _0220F06C:
 	strh r0, [sp, #0x16]
 	ldr r0, [r4]
 	mov r2, #8
-	bl ov00_021FF840
+	bl bind
 	mvn r1, #0
 	cmp r0, r1
 	bne _0220F0EC
 	ldr r0, [r4]
-	bl ov00_021FF818
+	bl closesocket
 	ldr r0, [r4, #0xc]
-	bl ov00_021FEE8C
+	bl TableFree
 	ldr r0, [r4, #0x10]
-	bl ov00_021FE678
+	bl ArrayFree
 	mov r0, r4
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	add sp, sp, #0x1c
 	mov r0, #3
 	ldmia sp!, {r4, r5, r6, r7, pc}
@@ -46425,7 +46425,7 @@ _0220F0EC:
 	ldr r0, [r4]
 	add r1, sp, #0x14
 	add r2, sp, #0xc
-	bl ov00_021FFA18
+	bl getsockname
 	ldr r1, [sp, #0x18]
 	mov r0, #0
 	str r1, [r4, #4]
@@ -46455,14 +46455,14 @@ ov00_0220F144: ; 0x0220F144
 	strne r0, [r4, #0x14]
 	ldmneia sp!, {r4, pc}
 	ldr r0, [r4]
-	bl ov00_021FF818
+	bl closesocket
 	ldr r0, [r4, #0xc]
-	bl ov00_021FEE8C
+	bl TableFree
 	ldr r0, [r4, #0x10]
-	bl ov00_021FE678
+	bl ArrayFree
 	mov r0, r4
-	bl ov00_021EC3D8
-	bl ov00_021FF3D0
+	bl DWCi_GsFree
+	bl SocketShutDown
 	ldmia sp!, {r4, pc}
 	arm_func_end ov00_0220F144
 
@@ -46474,11 +46474,11 @@ ov00_0220F188: ; 0x0220F188
 
 	arm_func_start ov00_0220F190
 ov00_0220F190: ; 0x0220F190
-	ldr ip, _0220F19C ; =ov00_021EC3A8
+	ldr ip, _0220F19C ; =DWCi_GsMalloc
 	mov r0, #0xa0
 	bx ip
 	.balign 4, 0
-_0220F19C: .word ov00_021EC3A8
+_0220F19C: .word DWCi_GsMalloc
 	arm_func_end ov00_0220F190
 
 	arm_func_start ov00_0220F1A0
@@ -46509,7 +46509,7 @@ ov00_0220F1A0: ; 0x0220F1A0
 	strh r4, [r0, #4]
 	ldr r0, [sp]
 	str r7, [r0, #8]
-	bl ov00_021FF368
+	bl current_time
 	ldr r2, [sp]
 	mov r1, #0
 	str r0, [r2, #0x1c]
@@ -46535,7 +46535,7 @@ ov00_0220F1A0: ; 0x0220F1A0
 	mov r0, #0x10
 	mov r1, #0x40
 	mov r2, #0
-	bl ov00_021FE5B4
+	bl ArrayNew
 	ldr r1, [sp]
 	str r0, [r1, #0x5c]
 	ldr r0, [sp]
@@ -46545,7 +46545,7 @@ ov00_0220F1A0: ; 0x0220F1A0
 	mov r0, #0x10
 	mov r1, #0x40
 	mov r2, #0
-	bl ov00_021FE5B4
+	bl ArrayNew
 	ldr r1, [sp]
 	str r0, [r1, #0x60]
 	ldr r0, [sp]
@@ -46555,7 +46555,7 @@ ov00_0220F1A0: ; 0x0220F1A0
 	mov r0, #4
 	mov r1, #2
 	mov r2, #0
-	bl ov00_021FE5B4
+	bl ArrayNew
 	ldr r1, [sp]
 	str r0, [r1, #0x98]
 	ldr r0, [sp]
@@ -46565,7 +46565,7 @@ ov00_0220F1A0: ; 0x0220F1A0
 	mov r0, #4
 	mov r1, #2
 	mov r2, #0
-	bl ov00_021FE5B4
+	bl ArrayNew
 	ldr r1, [sp]
 	str r0, [r1, #0x9c]
 	ldr r0, [sp]
@@ -46574,7 +46574,7 @@ ov00_0220F1A0: ; 0x0220F1A0
 	beq _0220F330
 	ldr r0, [r7, #0xc]
 	add r1, sp, #0
-	bl ov00_021FEF74
+	bl TableEnter
 	mov r0, r7
 	mov r1, r5
 	mov r2, r4
@@ -46588,36 +46588,36 @@ _0220F330:
 	cmp r0, #0
 	beq _0220F3A8
 	ldr r0, [r0, #0x44]
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	ldr r0, [sp]
 	ldr r0, [r0, #0x50]
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	ldr r0, [sp]
 	ldr r0, [r0, #0x5c]
 	cmp r0, #0
 	beq _0220F364
-	bl ov00_021FE678
+	bl ArrayFree
 _0220F364:
 	ldr r0, [sp]
 	ldr r0, [r0, #0x60]
 	cmp r0, #0
 	beq _0220F378
-	bl ov00_021FE678
+	bl ArrayFree
 _0220F378:
 	ldr r0, [sp]
 	ldr r0, [r0, #0x98]
 	cmp r0, #0
 	beq _0220F38C
-	bl ov00_021FE678
+	bl ArrayFree
 _0220F38C:
 	ldr r0, [sp]
 	ldr r0, [r0, #0x9c]
 	cmp r0, #0
 	beq _0220F3A0
-	bl ov00_021FE678
+	bl ArrayFree
 _0220F3A0:
 	ldr r0, [sp]
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 _0220F3A8:
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
@@ -46652,14 +46652,14 @@ _0220F408:
 	mov r1, r5
 	ldr r0, [r6, #8]
 	ldr r0, [r0, #0x10]
-	bl ov00_021FE6EC
+	bl ArrayNth
 	ldr r0, [r0]
 	cmp r6, r0
 	bne _0220F444
 	ldr r0, [r6, #8]
 	mov r1, r5
 	ldr r0, [r0, #0x10]
-	bl ov00_021FE968
+	bl ArrayDeleteAt
 	ldmia sp!, {r4, r5, r6, lr}
 	add sp, sp, #0x10
 	bx lr
@@ -46673,7 +46673,7 @@ _0220F444:
 _0220F45C:
 	ldr r0, [r0, #0xc]
 	add r1, sp, #0x10
-	bl ov00_021FF01C
+	bl TableRemove
 	ldmia sp!, {r4, r5, r6, lr}
 	add sp, sp, #0x10
 	bx lr
@@ -46722,7 +46722,7 @@ ov00_0220F474: ; 0x0220F474
 	cmp r0, r1
 	bne _0220F5A0
 	ldr r0, [r6]
-	bl ov00_021FFA60
+	bl GOAGetLastError
 	mvn r2, #0xe
 	cmp r0, r2
 	bne _0220F554
@@ -46825,7 +46825,7 @@ ov00_0220F674: ; 0x0220F674
 	stmdb sp!, {r3, r4, lr}
 	sub sp, sp, #4
 	mov r4, r0
-	bl ov00_021FF368
+	bl current_time
 	str r0, [sp]
 	ldr r0, [r4, #0xc]
 	ldr r1, _0220F6AC ; =ov00_0220F61C
@@ -46851,7 +46851,7 @@ ov00_0220F6B0: ; 0x0220F6B0
 _0220F6C8:
 	ldr r0, [r5, #0x10]
 	mov r1, r4
-	bl ov00_021FE6EC
+	bl ArrayNth
 	ldr r0, [r0]
 	bl ov00_0220F3B0
 	subs r4, r4, #1
@@ -46997,7 +46997,7 @@ _0220F898:
 	bne _0220F874
 _0220F8B4:
 	add r0, r5, #1
-	bl atol
+	bl atoi
 	cmp r0, #0
 	blt _0220F8D0
 	ldr r1, _0220F954 ; =0x0000FFFF
@@ -47014,7 +47014,7 @@ _0220F8E4:
 	cmp r8, #0
 	beq _0220F928
 	mov r0, r8
-	bl ov00_021FFA44
+	bl inet_addr
 	mov r4, r0
 	mvn r0, #0
 	cmp r4, r0
@@ -47087,7 +47087,7 @@ ov00_0220F9A8: ; 0x0220F9A8
 _0220F9D8:
 	ldr r0, [r4, #0x10]
 	mov r1, r5
-	bl ov00_021FE6EC
+	bl ArrayNth
 	ldr r1, [r0, #8]
 	cmp r1, r6
 	ldmeqia sp!, {r4, r5, r6, pc}
@@ -47111,7 +47111,7 @@ ov00_0220FA10: ; 0x0220FA10
 	mvn r1, #0
 	cmp r0, r1
 	beq _0220FA2C
-	bl ov00_021FF818
+	bl closesocket
 _0220FA2C:
 	mvn r0, #0
 	str r0, [r4]
@@ -47142,21 +47142,21 @@ ov00_0220FA40: ; 0x0220FA40
 	ldr r2, _0220FAD4 ; =ov00_0220FA10
 	mov r0, #0x40
 	mov r1, #4
-	bl ov00_021FE5B4
+	bl ArrayNew
 	ldr r1, _0220FAD0 ; =ov00_0221B664
 	str r0, [r1, #0x10]
 _0220FA9C:
 	ldr r0, _0220FAD0 ; =ov00_0221B664
 	add r1, sp, #0
 	ldr r0, [r0, #0x10]
-	bl ov00_021FE754
+	bl ArrayAppend
 	ldr r0, _0220FAD0 ; =ov00_0221B664
 	ldr r0, [r0, #0x10]
 	bl ArrayLength
 	ldr r2, _0220FAD0 ; =ov00_0221B664
 	sub r1, r0, #1
 	ldr r0, [r2, #0x10]
-	bl ov00_021FE6EC
+	bl ArrayNth
 	add sp, sp, #0x40
 	ldmia sp!, {r3, pc}
 	.balign 4, 0
@@ -47178,13 +47178,13 @@ ov00_0220FAD8: ; 0x0220FAD8
 _0220FAFC:
 	ldr r0, [r4, #0x10]
 	mov r1, r5
-	bl ov00_021FE6EC
+	bl ArrayNth
 	cmp r6, r0
 	bne _0220FB24
 	ldr r0, _0220FB3C ; =ov00_0221B664
 	mov r1, r5
 	ldr r0, [r0, #0x10]
-	bl ov00_021FE8D8
+	bl ArrayRemoveAt
 	ldmia sp!, {r4, r5, r6, pc}
 _0220FB24:
 	ldr r0, [r4, #0x10]
@@ -47204,7 +47204,7 @@ ov00_0220FB40: ; 0x0220FB40
 	ldr r0, [r0, #0x10]
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
-	bl ov00_021FE678
+	bl ArrayFree
 	ldr r0, _0220FB68 ; =ov00_0221B664
 	mov r1, #0
 	str r1, [r0, #0x10]
@@ -47293,7 +47293,7 @@ ov00_0220FC48: ; 0x0220FC48
 	add r1, sp, #4
 	add r2, sp, #0
 	str r3, [sp]
-	bl ov00_021FFA18
+	bl getsockname
 	mvn r1, #0
 	cmp r0, r1
 	moveq r0, #0
@@ -47442,7 +47442,7 @@ _0220FE14:
 	mov r3, r5
 	bl ov00_0220FB90
 _0220FE98:
-	bl ov00_021FF368
+	bl current_time
 	add r0, r0, #0x1f4
 	str r0, [r6, #0x28]
 	mov r0, #0x1e
@@ -47518,7 +47518,7 @@ ov00_0220FEC4: ; 0x0220FEC4
 	ldrh r2, [r4, #0x30]
 	ldr r1, [r4, #0x2c]
 	bl ov00_0220FB90
-	bl ov00_021FF368
+	bl current_time
 	add r0, r0, #0x2bc
 	str r0, [r4, #0x28]
 	mov r0, #0xc
@@ -47537,7 +47537,7 @@ _0220FFE0: .word ov00_02219D28
 ov00_0220FFE4: ; 0x0220FFE4
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	bl ov00_021FFA44
+	bl inet_addr
 	mvn r1, #0
 	cmp r0, r1
 	ldmneia sp!, {r4, pc}
@@ -47641,7 +47641,7 @@ ov00_022100D4: ; 0x022100D4
 	str r2, [r4, #0x3c]
 	mov r1, r0
 	mov r2, #0
-	bl ov00_021FF804
+	bl socket
 	mov r2, #0
 	str r0, [r4]
 	str r2, [r4, #0x20]
@@ -47676,7 +47676,7 @@ ov00_0221019C: ; 0x0221019C
 	mvn r1, #0
 	cmp r0, r1
 	beq _022101C0
-	bl ov00_021FF818
+	bl closesocket
 _022101C0:
 	mvn r0, #0
 	str r0, [r4]
@@ -47736,7 +47736,7 @@ _0221027C:
 	cmp r0, #0
 	cmpne r0, #2
 	bne _022102F4
-	bl ov00_021FF368
+	bl current_time
 	ldr r1, [sb, #0x28]
 	cmp r0, r1
 	bls _022102F4
@@ -47768,7 +47768,7 @@ _022102F4:
 	ldr r0, [sb, #0x10]
 	cmp r0, #3
 	bne _02210374
-	bl ov00_021FF368
+	bl current_time
 	ldr r1, [sb, #0x28]
 	cmp r0, r1
 	bls _02210374
@@ -47803,7 +47803,7 @@ _02210374:
 	cmp r0, #1
 	addne sp, sp, #0x1c
 	ldmneia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, pc}
-	bl ov00_021FF368
+	bl current_time
 	ldr r1, [sb, #0x28]
 	cmp r0, r1
 	addls sp, sp, #0x1c
@@ -47836,7 +47836,7 @@ ov00_022103C4: ; 0x022103C4
 _022103E8:
 	ldr r0, [r4, #0x10]
 	mov r1, r5
-	bl ov00_021FE6EC
+	bl ArrayNth
 	bl ov00_022101D4
 	subs r5, r5, #1
 	bpl _022103E8
@@ -47990,7 +47990,7 @@ _022105E8:
 _02210604:
 	mov r0, #3
 	str r0, [r5, #0x10]
-	bl ov00_021FF368
+	bl current_time
 	add r0, r0, #0x388
 	add r0, r0, #0x1000
 	str r0, [r5, #0x28]
@@ -48054,7 +48054,7 @@ _02210684:
 _022106E8:
 	mov r0, #1
 	str r0, [r4, #0x10]
-	bl ov00_021FF368
+	bl current_time
 	add r0, r0, #0x710
 	add r0, r0, #0x2000
 	str r0, [r4, #0x28]
@@ -48191,11 +48191,11 @@ ov00_022108BC: ; 0x022108BC
 	ldreq r6, _02210A68 ; =ov00_02219D74
 	beq _022108EC
 	mov r0, #0x110
-	bl ov00_021EC3A8
+	bl DWCi_GsMalloc
 	mov r6, r0
 	str r0, [r5]
 _022108EC:
-	bl ov00_021FF368
+	bl current_time
 	bl srand
 	mov r1, r7
 	add r0, r6, #4
@@ -48411,7 +48411,7 @@ _02210BA4: .word ov00_0221B8D0
 ov00_02210BA8: ; 0x02210BA8
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
-	bl ov00_021FF368
+	bl current_time
 	ldr r2, [r5]
 	mvn r1, #0
 	mov r4, r0
@@ -48495,7 +48495,7 @@ ov00_02210CBC: ; 0x02210CBC
 	ldr r0, [r4, #0xbc]
 	cmp r0, #0
 	ldmeqia sp!, {r4, pc}
-	bl ov00_021FF368
+	bl current_time
 	ldr r2, [r4, #0xac]
 	ldr r1, _02210D14 ; =0x00002710
 	sub r0, r0, r2
@@ -48533,7 +48533,7 @@ _02210D40:
 	ldrne r1, [r4, #0xc4]
 	cmpne r1, #0
 	beq _02210D5C
-	bl ov00_021FF818
+	bl closesocket
 _02210D5C:
 	mvn r0, #0
 	str r0, [r4]
@@ -48542,13 +48542,13 @@ _02210D5C:
 	ldr r0, [r4, #0xc4]
 	cmp r0, #0
 	beq _02210D7C
-	bl ov00_021FF3D0
+	bl SocketShutDown
 _02210D7C:
 	ldr r0, _02210D98 ; =ov00_02219D74
 	cmp r4, r0
 	ldmeqia sp!, {r4, pc}
 	mov r0, r4
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	ldmia sp!, {r4, pc}
 	.balign 4, 0
 _02210D94: .word ov00_02219D70
@@ -48669,7 +48669,7 @@ ov00_02210ECC: ; 0x02210ECC
 	mov r5, r3
 	streq r4, [r6, #4]
 	beq _02210F18
-	bl ov00_021FFA44
+	bl inet_addr
 	str r0, [r6, #4]
 _02210F18:
 	ldr r1, [r6, #4]
@@ -49740,7 +49740,7 @@ ov00_02211D9C: ; 0x02211D9C
 	add r1, sp, #8
 	mov r3, #0
 	bl ov00_021FF984
-	bl ov00_021FF368
+	bl current_time
 	str r0, [r4, #0xb0]
 	add sp, sp, #0xc
 	add sp, sp, #0x800
@@ -49866,7 +49866,7 @@ _02211F94:
 	add r1, sp, #0x24
 	mov r3, #0
 	bl ov00_021FF984
-	bl ov00_021FF368
+	bl current_time
 	str r0, [sl, #0xac]
 	str r0, [sl, #0xb0]
 	cmp sb, #0
@@ -50210,7 +50210,7 @@ ov00_02212404: ; 0x02212404
 	mov r4, r1
 	add r0, r5, #8
 	bl ov00_022122F4
-	bl ov00_021FF368
+	bl current_time
 	str r0, [r4, #0x1c]
 	mov r0, #2
 	strb r0, [sp, #9]
@@ -50350,7 +50350,7 @@ ov00_022125E4: ; 0x022125E4
 	cmp r0, #1
 	ldmneia sp!, {r4, r5, r6, pc}
 _0221260C:
-	bl ov00_021FF3CC
+	bl SocketStartUp
 	stmia r6, {r4, r5}
 	mov r2, #0
 	ldr r3, [sp, #0x10]
@@ -50361,7 +50361,7 @@ _0221260C:
 	mov r0, #2
 	mov r1, r0
 	str r2, [r6, #0x28]
-	bl ov00_021FF804
+	bl socket
 	str r0, [r6, #0x20]
 	add r0, r6, #0x14
 	bl ov00_022123F0
@@ -50394,7 +50394,7 @@ ov00_0221267C: ; 0x0221267C
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	ldr r0, [r4, #0x20]
-	bl ov00_021FF818
+	bl closesocket
 	mvn r1, #0
 	add r0, r4, #0x14
 	str r1, [r4, #0x20]
@@ -50499,7 +50499,7 @@ _022127DC:
 	ldrb r0, [sb, #0x14]
 	and r0, r0, #0xf3
 	strb r0, [sb, #0x14]
-	bl ov00_021FF368
+	bl current_time
 	ldr r2, [sb, #0x1c]
 	mov r1, sb
 	sub r0, r0, r2
@@ -50542,7 +50542,7 @@ ov00_02212824: ; 0x02212824
 	ldrb r0, [r4, #0x14]
 	and r0, r0, #0xf3
 	strb r0, [r4, #0x14]
-	bl ov00_021FF368
+	bl current_time
 	ldr r2, [r4, #0x1c]
 	mov r1, r4
 	sub r0, r0, r2
@@ -50685,7 +50685,7 @@ _02212A54: .word 0x000007FF
 ov00_02212A58: ; 0x02212A58
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r6, r0
-	bl ov00_021FF368
+	bl current_time
 	ldr r3, [r6, #8]
 	mov r5, r0
 	cmp r3, #0
@@ -50812,21 +50812,21 @@ _02212BE0: .word ov00_0221321C
 
 	arm_func_start ov00_02212BE4
 ov00_02212BE4: ; 0x02212BE4
-	ldr ip, _02212BF4 ; =strnicmp
+	ldr ip, _02212BF4 ; =strcasecmp
 	ldr r0, [r0]
 	ldr r1, [r1]
 	bx ip
 	.balign 4, 0
-_02212BF4: .word strnicmp
+_02212BF4: .word strcasecmp
 	arm_func_end ov00_02212BE4
 
 	arm_func_start ov00_02212BF8
 ov00_02212BF8: ; 0x02212BF8
-	ldr ip, _02212C04 ; =ov00_021EC3D8
+	ldr ip, _02212C04 ; =DWCi_GsFree
 	ldr r0, [r0]
 	bx ip
 	.balign 4, 0
-_02212C04: .word ov00_021EC3D8
+_02212C04: .word DWCi_GsFree
 	arm_func_end ov00_02212BF8
 
 	arm_func_start ov00_02212C08
@@ -50845,7 +50845,7 @@ ov00_02212C08: ; 0x02212C08
 	mov r1, #0x64
 	mov r2, #2
 	str ip, [sp, #4]
-	bl ov00_021FED4C
+	bl TableNew2
 	ldr r1, _02212C5C ; =ov00_0221B9D0
 	str r0, [r1, #8]
 _02212C4C:
@@ -50867,12 +50867,12 @@ ov00_02212C6C: ; 0x02212C6C
 	ldr r0, [r0, #8]
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
-	bl ov00_021FEF00
+	bl TableCount
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	ldr r0, _02212CA8 ; =ov00_0221B9D0
 	ldr r0, [r0, #8]
-	bl ov00_021FEE8C
+	bl TableFree
 	ldr r0, _02212CA8 ; =ov00_0221B9D0
 	mov r1, #0
 	str r1, [r0, #8]
@@ -50886,11 +50886,11 @@ ov00_02212CAC: ; 0x02212CAC
 	stmdb sp!, {r4, lr}
 	ldr r4, [r0]
 	ldr r0, [r4, #0x18]
-	bl ov00_021FEE8C
+	bl TableFree
 	mov r1, #0
 	mov r0, r4
 	str r1, [r4, #0x18]
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	ldmia sp!, {r4, pc}
 	arm_func_end ov00_02212CAC
 
@@ -50909,7 +50909,7 @@ ov00_02212CD0: ; 0x02212CD0
 	str r0, [sp, #4]
 	ldr r0, [r5, #0x18]
 	add r1, sp, #0
-	bl ov00_021FEF74
+	bl TableEnter
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end ov00_02212CD0
@@ -50954,7 +50954,7 @@ _02212D74:
 	str r5, [sp]
 	ldr r0, [r6, #0x18]
 	add r1, sp, #0
-	bl ov00_021FF0C0
+	bl TableLookup
 	cmp r0, #0
 	ldrne r4, [r0, #4]
 	mov r0, r4
@@ -51006,7 +51006,7 @@ _02212E2C:
 	mov r0, r4
 	ldmia sp!, {r4, r5, r6, pc}
 _02212E34:
-	bl atol
+	bl atoi
 	ldmia sp!, {r4, r5, r6, pc}
 	.balign 4, 0
 _02212E3C: .word ov00_0221A514
@@ -51384,12 +51384,12 @@ _022132A4: .word ov00_0221321C
 
 	arm_func_start ov00_022132A8
 ov00_022132A8: ; 0x022132A8
-	ldr ip, _022132B8 ; =strnicmp
+	ldr ip, _022132B8 ; =strcasecmp
 	ldr r0, [r0]
 	ldr r1, [r1]
 	bx ip
 	.balign 4, 0
-_022132B8: .word strnicmp
+_022132B8: .word strcasecmp
 	arm_func_end ov00_022132A8
 
 	arm_func_start ov00_022132BC
@@ -51405,7 +51405,7 @@ ov00_022132C4: ; 0x022132C4
 	mov r0, #0x24
 	mov r6, r1
 	mov r5, r2
-	bl ov00_021EC3A8
+	bl DWCi_GsMalloc
 	movs r4, r0
 	addeq sp, sp, #8
 	moveq r0, #0
@@ -51418,12 +51418,12 @@ ov00_022132C4: ; 0x022132C4
 	mov r1, r0
 	mov r2, #4
 	str ip, [sp, #4]
-	bl ov00_021FED4C
+	bl TableNew2
 	str r0, [r4, #0x18]
 	cmp r0, #0
 	bne _02213330
 	mov r0, r4
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	add sp, sp, #8
 	mov r0, #0
 	ldmia sp!, {r4, r5, r6, pc}
@@ -51685,7 +51685,7 @@ ov00_02213610: ; 0x02213610
 	ldmneia sp!, {r4, r5, r6, r7, r8, pc}
 _0221364C:
 	ldr r0, _022136D8 ; =0x00000638
-	bl ov00_021EC3A8
+	bl DWCi_GsMalloc
 	movs r4, r0
 	addeq sp, sp, #0x10
 	moveq r0, #0
@@ -51734,7 +51734,7 @@ ov00_022136E4: ; 0x022136E4
 	mov r0, r4
 	bl ov00_0221267C
 	mov r0, r4
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 	ldmia sp!, {r4, pc}
 	arm_func_end ov00_022136E4
 
@@ -51804,7 +51804,7 @@ _022137B4:
 	b _02213804
 _022137F4:
 	mov r0, r4
-	bl ov00_021FF3C0
+	bl msleep
 	mov r0, sl
 	bl ov00_02213938
 _02213804:
@@ -51849,7 +51849,7 @@ ov00_0221386C: ; 0x0221386C
 	mov r6, r2
 	mov r0, r1
 	mov r4, r3
-	bl ov00_021FFA44
+	bl inet_addr
 	mov r3, r6, asr #8
 	mov r2, r6, lsl #8
 	ldr ip, [sp, #0x18]
@@ -51874,7 +51874,7 @@ ov00_022138C4: ; 0x022138C4
 	mov r6, r2
 	mov r0, r1
 	mov r4, r3
-	bl ov00_021FFA44
+	bl inet_addr
 	mov r3, r6, asr #8
 	mov r2, r6, lsl #8
 	mov r1, r0
@@ -52123,7 +52123,7 @@ ov00_02213B8C: ; 0x02213B8C
 	bl ov00_02212D48
 	mov r1, r0
 	mov r0, r4
-	bl strnicmp
+	bl strcasecmp
 	ldr r1, _02213BEC ; =ov00_0221B9DC
 	ldr r1, [r1]
 	ldr r1, [r1, #0x49c]
@@ -52163,7 +52163,7 @@ _02213C34:
 	str r2, [r0, #0x498]
 	str r1, [r0, #0x49c]
 	ldr r2, _02213C64 ; =ov00_0221B9DC
-	ldr ip, _02213C68 ; =ov00_021FEA20
+	ldr ip, _02213C68 ; =ArraySort
 	str r0, [r2]
 	mov r1, r3
 	ldr r0, [r0, #4]
@@ -52174,7 +52174,7 @@ _02213C58: .word ov00_02213A4C
 _02213C5C: .word ov00_02213B24
 _02213C60: .word ov00_02213B8C
 _02213C64: .word ov00_0221B9DC
-_02213C68: .word ov00_021FEA20
+_02213C68: .word ArraySort
 	arm_func_end ov00_02213BF4
 
 	arm_func_start ov00_02213C6C
@@ -52184,7 +52184,7 @@ ov00_02213C6C: ; 0x02213C6C
 	mov r4, r0
 	ldr r0, [r4, #4]
 	add r1, sp, #0xc
-	bl ov00_021FE754
+	bl ArrayAppend
 	ldr r2, [sp, #0xc]
 	ldr r3, [r4, #0x494]
 	ldr ip, [r4, #0x488]
@@ -52210,7 +52210,7 @@ ov00_02213CA8: ; 0x02213CA8
 _02213CCC:
 	ldr r0, [r7, #4]
 	mov r1, r5
-	bl ov00_021FE6EC
+	bl ArrayNth
 	ldr r0, [r0]
 	cmp r6, r0
 	moveq r0, r5
@@ -52238,7 +52238,7 @@ ov00_02213CFC: ; 0x02213CFC
 _02213D24:
 	ldr r0, [sb, #4]
 	mov r1, r6
-	bl ov00_021FE6EC
+	bl ArrayNth
 	ldr r5, [r0]
 	mov r0, r5
 	bl ov00_02212E78
@@ -52283,7 +52283,7 @@ ov00_02213DA0: ; 0x02213DA0
 	mov r6, r0
 	ldr r0, [r6, #4]
 	mov r5, r1
-	bl ov00_021FE6EC
+	bl ArrayNth
 	ldr r4, [r0]
 	ldr r3, [r6, #0x494]
 	ldr ip, [r6, #0x488]
@@ -52293,7 +52293,7 @@ ov00_02213DA0: ; 0x02213DA0
 	blx ip
 	ldr r0, [r6, #4]
 	mov r1, r5
-	bl ov00_021FE968
+	bl ArrayDeleteAt
 	mov r0, r6
 	mov r1, r4
 	bl ov00_02213D6C
@@ -52313,7 +52313,7 @@ _02213DF8: .word ArrayLength
 ov00_02213DFC: ; 0x02213DFC
 	stmdb sp!, {r3, lr}
 	ldr r0, [r0, #4]
-	bl ov00_021FE6EC
+	bl ArrayNth
 	ldr r0, [r0]
 	ldmia sp!, {r3, pc}
 	arm_func_end ov00_02213DFC
@@ -52359,7 +52359,7 @@ ov00_02213E68: ; 0x02213E68
 _02213E88:
 	ldr r0, [r6, #4]
 	mov r1, r4
-	bl ov00_021FE6EC
+	bl ArrayNth
 	ldr r1, [r0]
 	mov r0, r6
 	bl ov00_02213D6C
@@ -52381,7 +52381,7 @@ ov00_02213EC0: ; 0x02213EC0
 	mov r0, #4
 	mov r1, #0x64
 	mov r2, #0
-	bl ov00_021FE5B4
+	bl ArrayNew
 	str r0, [r4, #4]
 	mov r0, #0
 	str r0, [r4, #0x5d0]
@@ -52397,7 +52397,7 @@ ov00_02213EE8: ; 0x02213EE8
 	str r4, [sp]
 	bl ov00_02212C08
 	add r1, sp, #0
-	bl ov00_021FF0C0
+	bl TableLookup
 	cmp r0, #0
 	beq _02213F28
 	ldr r1, [r0, #4]
@@ -52408,14 +52408,14 @@ ov00_02213EE8: ; 0x02213EE8
 	ldmia sp!, {r3, r4, r5, pc}
 _02213F28:
 	mov r0, r4
-	bl ov00_021FF3D4
+	bl goastrdup
 	str r0, [sp]
 	mov r1, #1
 	mov r0, r5
 	str r1, [sp, #4]
 	bl ov00_02212C08
 	add r1, sp, #0
-	bl ov00_021FEF74
+	bl TableEnter
 	ldr r0, [sp]
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, pc}
@@ -52429,7 +52429,7 @@ ov00_02213F58: ; 0x02213F58
 	str r1, [sp]
 	bl ov00_02212C08
 	add r1, sp, #0
-	bl ov00_021FF0C0
+	bl TableLookup
 	movs r4, r0
 	bne _02213F90
 	ldr r0, _02213FC8 ; =ov00_0221A5BC
@@ -52449,7 +52449,7 @@ _02213F90:
 	mov r0, r5
 	bl ov00_02212C08
 	add r1, sp, #0
-	bl ov00_021FF01C
+	bl TableRemove
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, pc}
 	.balign 4, 0
@@ -52545,9 +52545,9 @@ _022140B4:
 	bl ov00_0221505C
 	mov r0, #0
 	str r0, [r7, #0x5cc]
-	bl ov00_021FF368
+	bl current_time
 	bl srand
-	bl ov00_021FF3CC
+	bl SocketStartUp
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _02214114: .word ov00_0221A5D8
@@ -52668,7 +52668,7 @@ _02214288:
 	add r0, sp, #8
 	strb r2, [sp, #1]
 	strh r1, [sp, #2]
-	bl ov00_021FFA44
+	bl inet_addr
 	mvn r1, #0
 	str r0, [sp, #4]
 	cmp r0, r1
@@ -52698,7 +52698,7 @@ _022142F4:
 	mov r0, #2
 	mov r1, #1
 	mov r2, #0
-	bl ov00_021FF804
+	bl socket
 	mvn r1, #0
 	cmp r0, r1
 	str r0, [r4, #0x4b0]
@@ -52708,13 +52708,13 @@ _022142F4:
 _0221432C:
 	add r1, sp, #0
 	mov r2, #8
-	bl ov00_021FF8A0
+	bl connect
 	cmp r0, #0
 	addeq sp, sp, #0x88
 	moveq r0, #0
 	ldmeqia sp!, {r4, pc}
 	ldr r0, [r4, #0x4b0]
-	bl ov00_021FF818
+	bl closesocket
 	mvn r0, #0
 	str r0, [r4, #0x4b0]
 	mov r0, #3
@@ -52889,7 +52889,7 @@ _02214574:
 	mov r2, r8
 	mov r3, r5
 	sub r7, r7, #1
-	bl ov00_021FF970
+	bl send
 	mov r6, r0
 	cmp r6, #0
 	bgt _022145E0
@@ -53048,7 +53048,7 @@ _0221479C:
 	mov r3, #0
 	strb r0, [r1, #1]
 	ldr r0, [r5, #0x4b0]
-	bl ov00_021FF970
+	bl send
 	cmp r0, #0
 	bgt _02214800
 	mov r0, r5
@@ -53065,7 +53065,7 @@ _02214800:
 	cmp r0, #0
 	bne _02214840
 	mov r0, #0x1000
-	bl ov00_021EC3A8
+	bl DWCi_GsMalloc
 	cmp r0, #0
 	str r0, [r5, #0x7c]
 	addeq sp, sp, #0x30c
@@ -53122,7 +53122,7 @@ ov00_022148A4: ; 0x022148A4
 _022148C8:
 	ldr r0, [r5, #8]
 	mov r1, r4
-	bl ov00_021FE6EC
+	bl ArrayNth
 	ldr r1, [r0]
 	mov r0, r5
 	bl ov00_02213F58
@@ -53133,7 +53133,7 @@ _022148C8:
 	blt _022148C8
 _022148F4:
 	ldr r0, [r5, #8]
-	bl ov00_021FE678
+	bl ArrayFree
 	mov r0, #0
 	str r0, [r5, #8]
 	ldmia sp!, {r3, r4, r5, pc}
@@ -53146,7 +53146,7 @@ ov00_02214908: ; 0x02214908
 	ldr r0, [r4, #0x7c]
 	cmp r0, #0
 	beq _02214920
-	bl ov00_021EC3D8
+	bl DWCi_GsFree
 _02214920:
 	mov r1, #0
 	str r1, [r4, #0x7c]
@@ -53155,7 +53155,7 @@ _02214920:
 	sub r1, r1, #1
 	cmp r0, r1
 	beq _02214940
-	bl ov00_021FF818
+	bl closesocket
 _02214940:
 	mvn r1, #0
 	mov r0, r4
@@ -53182,7 +53182,7 @@ ov00_0221496C: ; 0x0221496C
 	ldr r0, [r4, #4]
 	cmp r0, #0
 	beq _02214998
-	bl ov00_021FE678
+	bl ArrayFree
 _02214998:
 	mov r0, #0
 	str r0, [r4, #4]
@@ -53306,7 +53306,7 @@ ov00_02214AF4: ; 0x02214AF4
 _02214B20:
 	ldr r0, [r8, #8]
 	mov r1, r5
-	bl ov00_021FE6EC
+	bl ArrayNth
 	ldr r0, [r0, #4]
 	cmp r0, #0
 	beq _02214B64
@@ -53484,7 +53484,7 @@ _02214D70:
 _02214D98:
 	ldr r0, [sl, #8]
 	mov r1, r5
-	bl ov00_021FE6EC
+	bl ArrayNth
 	mov r1, r0
 	ldr r0, [r1, #4]
 	cmp r0, #0
@@ -53806,7 +53806,7 @@ _022151FC:
 	mov r0, #8
 	mov r2, #0
 	str r1, [r7, #0x484]
-	bl ov00_021FE5B4
+	bl ArrayNew
 	cmp r0, #0
 	str r0, [r7, #8]
 	addeq sp, sp, #8
@@ -53839,7 +53839,7 @@ _02215260:
 	str r0, [sp]
 	ldr r0, [r7, #8]
 	mov r1, r8
-	bl ov00_021FE754
+	bl ArrayAppend
 	add r1, sb, #1
 	ldr r0, [r7, #8]
 	add r5, r5, r1
@@ -53994,7 +53994,7 @@ _022154BC:
 	mov r1, r7
 	mov r0, #8
 	mov r2, #0
-	bl ov00_021FE5B4
+	bl ArrayNew
 	cmp r0, #0
 	str r0, [sl, #8]
 	addeq sp, sp, #8
@@ -54026,7 +54026,7 @@ _022154F4:
 	str r0, [sp]
 	ldr r0, [sl, #8]
 	mov r1, fp
-	bl ov00_021FE754
+	bl ArrayAppend
 	add r0, r5, #1
 	add r6, r6, #1
 	cmp r6, r7
@@ -54434,7 +54434,7 @@ _02215AF8:
 _02215B10:
 	ldr r0, [sb, #0x4b0]
 	mov r3, r6
-	bl ov00_021FF970
+	bl send
 	cmp r0, #0
 	bgt _02215B70
 	mov r0, #3
@@ -54515,7 +54515,7 @@ ov00_02215BF4: ; 0x02215BF4
 	add r1, r1, r5
 	rsb r2, r5, #0x1000
 	mov r3, #0
-	bl ov00_021FF92C
+	bl recv
 	add r1, r0, #1
 	cmp r1, #1
 	bhi _02215C48
@@ -54636,7 +54636,7 @@ _02215D10:
 	ldr r2, [sp, #0x50]
 	mov r1, r4
 	mov r3, #0
-	bl ov00_021FF970
+	bl send
 	cmp r0, #0
 	movlt r0, #3
 	movge r0, #0
@@ -54751,13 +54751,13 @@ _02215F74:
 	cmp r0, #0
 	bne _02215EF8
 _02215F84:
-	bl ov00_021FF368
+	bl current_time
 	ldr r1, [sl, #0x4b4]
 	sub r0, r0, r1
 	cmp r0, #0x7d0
 	bls _02215FCC
 	ldr r0, [sl, #0x4b0]
-	bl ov00_021FF818
+	bl closesocket
 	mvn r0, #0
 	str r0, [sl, #0x4b0]
 	mov r0, #1

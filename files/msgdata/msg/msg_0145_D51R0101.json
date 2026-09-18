@@ -1,0 +1,75 @@
+{
+  "key": 9378,
+  "messages": [
+    {
+      "id": "msg_0145_D51R0101_00000",
+      "en_US": [
+        "Well, hello!\r",
+        "It’s so freezing, isn’t it?\r",
+        "For a youngster like you to be\n",
+        "interested in the Sinjoh Ruins is\f",
+        "not something we see every day.\r",
+        "Take a look at them.\r",
+        "From the design of the pillars at the\n",
+        "Sinjoh Ruins, you can see that the\f",
+        "cultures of Sinnoh and Johto\f",
+        "have blended.\r"
+      ]
+    },
+    {
+      "id": "msg_0145_D51R0101_00001",
+      "en_US": [
+        "What was I thinking?\r",
+        "We don’t need to be standing here.\n",
+        "Why don’t you come to the cabin\f",
+        "around the corner for more discussion?\r"
+      ]
+    },
+    {
+      "id": "msg_0145_D51R0101_00002",
+      "en_US": [
+        "By the way, we happen to have a person\n",
+        "at the cabin.\r",
+        "Any Trainer should know who she is.\n",
+        "The famous Trainer from Sinnoh!\r",
+        "She is traveling around to study\n",
+        "myths and ancient ruins.\f",
+        "Isn’t that something?\r"
+      ]
+    },
+    {
+      "id": "msg_0145_D51R0101_00003",
+      "garbage": 33
+    },
+    {
+      "id": "msg_0145_D51R0101_00004",
+      "en_US": [
+        "Cynthia: Bring your ARCEUS only.\r",
+        "Other Pokémon may get blown away by\n",
+        "the strong power lingering at\f",
+        "the ruins.\r"
+      ]
+    },
+    {
+      "id": "msg_0145_D51R0101_00005",
+      "en_US": [
+        "Cynthia: It seems your ARCEUS is\n",
+        "resonating in harmony with the Ruins.\r",
+        "It might just be me but I can\n",
+        "feel that...\f",
+        "we are surrounded by strong power.\r",
+        "The answer lies inside the ruins.\r",
+        "The place that has been waiting for\n",
+        "its rightful owner, the {COLOR 1}Mystri Stage{COLOR 0}...\r"
+      ]
+    },
+    {
+      "id": "msg_0145_D51R0101_00006",
+      "garbage": 17
+    },
+    {
+      "id": "msg_0145_D51R0101_00007",
+      "en_US": "The Sinjoh Ruins"
+    }
+  ]
+}

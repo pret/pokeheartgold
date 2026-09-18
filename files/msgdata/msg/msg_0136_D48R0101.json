@@ -1,0 +1,127 @@
+{
+  "key": 13443,
+  "messages": [
+    {
+      "id": "msg_0136_D48R0101_00000",
+      "en_US": [
+        "Did you know?\n",
+        "They are constructing a Safari Zone\f",
+        "just around the corner.\r",
+        "They say it’ll be really fun!\n",
+        "You will see many different kinds of\f",
+        "Pokémon, and it’s all you can catch!\r",
+        "There is no reason not to go, right?\n",
+        "I’m so looking forward to the\f",
+        "Safari Zone!\r",
+        "Finish the construction already!"
+      ]
+    },
+    {
+      "id": "msg_0136_D48R0101_00001",
+      "en_US": [
+        "Did you know? There’s a Safari Zone\n",
+        "just around the corner.\r",
+        "It’s really fun!\n",
+        "You will see many different kinds of\f",
+        "Pokémon, and it’s all you can catch!\r",
+        "There is no reason not to go, right?\n",
+        "Just around the corner.\r",
+        "It won’t take too long.\n",
+        "Why don’t you drop by? Won’t you? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0136_D48R0101_00002",
+      "en_US": [
+        "All right!\n",
+        "It’s just over there.\r",
+        "Go up the stairs, and you’ll be outside.\n",
+        "Then it’s only a few paces away!"
+      ]
+    },
+    {
+      "id": "msg_0136_D48R0101_00003",
+      "en_US": "It’s such a good deal, you know?"
+    },
+    {
+      "id": "msg_0136_D48R0101_00004",
+      "en_US": [
+        "See? The Safari Zone was fun?\n",
+        "No need to say anything!\f",
+        "Your face says it was really fun!"
+      ]
+    },
+    {
+      "id": "msg_0136_D48R0101_00005",
+      "en_US": [
+        "What?\n",
+        "You want to go to the Safari Zone, too?\r",
+        "It’s still under construction.\n",
+        "Please come back later."
+      ]
+    },
+    {
+      "id": "msg_0136_D48R0101_00006",
+      "en_US": [
+        "I appreciate that everybody is looking\n",
+        "forward to it. But the lady at the\f",
+        "reception seems a bit too dramatic...\f",
+        "Don’t get your expectations too high!"
+      ]
+    },
+    {
+      "id": "msg_0136_D48R0101_00007",
+      "en_US": [
+        "Chuck: Hey, {STRVAR_1 3, 0, 0}!\n",
+        "Good to see you again! But I never\f",
+        "expected to see you around here.\r",
+        "Could it be...that you are on the way\n",
+        "to the Embedded Tower?\r",
+        "The Embedded Tower is a huge tower\n",
+        "piercing the sky.\r",
+        "It is said to have something to do with\n",
+        "the mythical Pokémon that stretched\f",
+        "the seas and that Pokémon that widened\f",
+        "the lands.\r",
+        "But the tower no longer is standing.\r"
+      ]
+    },
+    {
+      "id": "msg_0136_D48R0101_00008",
+      "en_US": [
+        "Chuck: The way to the Embedded Tower\n",
+        "is harder than you can imagine.\r",
+        "You need to use Rock Climb\n",
+        "as well as Surf.\r"
+      ]
+    },
+    {
+      "id": "msg_0136_D48R0101_00009",
+      "en_US": [
+        "Chuck: I see! So you’ve defeated all\n",
+        "the Gym Leaders in Kanto as well!\r",
+        "Then there’s nothing to worry about.\n",
+        "Believe in yourself and walk your path.\r",
+        "Yahaha!\r"
+      ]
+    },
+    {
+      "id": "msg_0136_D48R0101_00010",
+      "en_US": [
+        "Everything Is Thrilling!\n",
+        "Explore to Find Wild Pokémon!\r",
+        "Warden Baoba’s Safari Zone\n",
+        "Coming Soon!"
+      ]
+    },
+    {
+      "id": "msg_0136_D48R0101_00011",
+      "en_US": [
+        "Everything Is Thrilling!\n",
+        "Explore to Find Wild Pokémon!\r",
+        "Warden Baoba’s Safari Zone\n",
+        "Up and Running!"
+      ]
+    }
+  ]
+}

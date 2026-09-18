@@ -1,0 +1,154 @@
+{
+  "key": 20209,
+  "messages": [
+    {
+      "id": "msg_0701_00000",
+      "en_US": "Reese"
+    },
+    {
+      "id": "msg_0701_00001",
+      "en_US": [
+        "I wasn’t feeling my best today,\n",
+        "that’s all!\r",
+        "We should trade phone numbers,\n",
+        "then we can battle again! {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0701_00002",
+      "en_US": [
+        "The next time we meet, I’ll be much\n",
+        "stronger, I promise!"
+      ]
+    },
+    {
+      "id": "msg_0701_00003",
+      "en_US": [
+        "You’re just gonna win and run off?\n",
+        "That’s pretty low!"
+      ]
+    },
+    {
+      "id": "msg_0701_00004",
+      "en_US": [
+        "I wasn’t feeling my best today,\n",
+        "that’s all!\r",
+        "We should trade phone numbers,\n",
+        "then we can battle again! {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0701_00005",
+      "en_US": [
+        "Did you come to pick up a Dusk Stone?\n",
+        "This is it...\r",
+        "Don’t be shy! This is getting kind of\n",
+        "awkward, so just take it already!\r"
+      ]
+    },
+    {
+      "id": "msg_0701_00006",
+      "en_US": [
+        "Hey, now...\n",
+        "Am I really that scary to you?\r",
+        "You know that I know you’re on\n",
+        "Cycling Road, right?\r",
+        "If you’re going to come all the way out\n",
+        "here, you might as well talk in person!"
+      ]
+    },
+    {
+      "id": "msg_0701_00007",
+      "en_US": [
+        "Bwa ha ha ha!\n",
+        "My {STRVAR_1 0, 10, 0} has gotten so much\f",
+        "stronger. You would be stunned to see\f",
+        "it now!\r",
+        "Recently, we were battling a\n",
+        "{STRVAR_1 0, 11, 0} and knocked it flat--\f",
+        "BOOM! Just like that!\r",
+        "Nothing scares us now...as long\n",
+        "as they’re low-enough level!"
+      ]
+    },
+    {
+      "id": "msg_0701_00008",
+      "en_US": [
+        "My {STRVAR_1 0, 10, 0} has gotten much\n",
+        "stronger, but we still let a wild\f",
+        "{STRVAR_1 0, 11, 0} we were battling\f",
+        "run away!\r",
+        "What, you think it got away on us?\n",
+        "No way, man! We LET it run away!"
+      ]
+    },
+    {
+      "id": "msg_0701_00009",
+      "en_US": [
+        "Recently we found a wild {STRVAR_1 0, 11, 0}\n",
+        "by the roadside!\r",
+        "It just leaped out suddenly and\n",
+        "surprised me so much that I fell over!\r",
+        "Did I get hurt?\r",
+        "No--I landed on my Pokémon, and it\n",
+        "cushioned my fall!"
+      ]
+    },
+    {
+      "id": "msg_0701_00010",
+      "en_US": [
+        "Whoa...\n",
+        "I can’t believe how buffed up I am now.\r",
+        "I’ll be showing off my moves on\n",
+        "{STRVAR_1 4, 3, 0}, so come by and get\f",
+        "stomped! I’ll be waiting to show you!"
+      ]
+    },
+    {
+      "id": "msg_0701_00011",
+      "en_US": [
+        "What’s up with that?!\n",
+        "Didn’t you say you were going to come\f",
+        "out here and get schooled?!\r",
+        "Come on! I’m waiting on\n",
+        "{STRVAR_1 4, 3, 0}, so hurry up!"
+      ]
+    },
+    {
+      "id": "msg_0701_00012",
+      "en_US": [
+        "After my Biker gang showed up on\n",
+        "Cycling Road, the atmosphere soured...\r",
+        "At least, that’s what some people\n",
+        "have been saying.\r",
+        "We’re not doing anything mean to\n",
+        "anyone, though!\r",
+        "All we’re doing is challenging strong\n",
+        "Trainers to Pokémon battles, that’s it!\r",
+        "People like you, for example!"
+      ]
+    },
+    {
+      "id": "msg_0701_00013",
+      "en_US": [
+        "I was riding in the middle of the night,\n",
+        "and I found this thing called a\f",
+        "Dusk Stone!\r",
+        "You seem like someone with a lot of\n",
+        "promise, so I’d like to give it to you.\r",
+        "If you want it, I’ll be waiting on\n",
+        "{STRVAR_1 4, 3, 0}."
+      ]
+    },
+    {
+      "id": "msg_0701_00014",
+      "en_US": [
+        "You know, I went through a lot of\n",
+        "trouble saving you this Dusk Stone,\f",
+        "and you don’t even want it!\r",
+        "I’m on {STRVAR_1 4, 3, 0}, so come over\n",
+        "whenever. No... Come over now!"
+      ]
+    }
+  ]
+}

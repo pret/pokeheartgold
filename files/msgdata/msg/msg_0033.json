@@ -1,0 +1,445 @@
+{
+  "key": 10039,
+  "messages": [
+    {
+      "id": "msg_0033_00000",
+      "en_US": "{STRVAR_1 3, 0, 0}"
+    },
+    {
+      "id": "msg_0033_00001",
+      "en_US": "{STRVAR_1 3, 0, 0}"
+    },
+    {
+      "id": "msg_0033_00002",
+      "en_US": "{STRVAR_1 53, 0, 0} CP"
+    },
+    {
+      "id": "msg_0033_00003",
+      "en_US": "{STRVAR_1 53, 0, 0} CP"
+    },
+    {
+      "id": "msg_0033_00004",
+      "en_US": [
+        "Which Pokémon would you like\n",
+        "to check?"
+      ]
+    },
+    {
+      "id": "msg_0033_00005",
+      "en_US": "{ALN_CENTER}EXIT"
+    },
+    {
+      "id": "msg_0033_00006",
+      "garbage": 14
+    },
+    {
+      "id": "msg_0033_00007",
+      "en_US": "{STRVAR_1 3, 0, 0} chose to exit."
+    },
+    {
+      "id": "msg_0033_00008",
+      "en_US": "CHECK"
+    },
+    {
+      "id": "msg_0033_00009",
+      "en_US": "LEVEL"
+    },
+    {
+      "id": "msg_0033_00010",
+      "en_US": "SUMMARY"
+    },
+    {
+      "id": "msg_0033_00011",
+      "en_US": "CANCEL"
+    },
+    {
+      "id": "msg_0033_00012",
+      "en_US": "Check the identity of a Pokémon."
+    },
+    {
+      "id": "msg_0033_00013",
+      "en_US": "Change the level of a Pokémon."
+    },
+    {
+      "id": "msg_0033_00014",
+      "en_US": "Examine the stats of a Pokémon."
+    },
+    {
+      "id": "msg_0033_00015",
+      "en_US": "Return to previous selections."
+    },
+    {
+      "id": "msg_0033_00016",
+      "en_US": [
+        "Would you like to identify this Pokémon?\n",
+        "It will cost {STRVAR_1 51, 0, 0} CP."
+      ]
+    },
+    {
+      "id": "msg_0033_00017",
+      "garbage": 2
+    },
+    {
+      "id": "msg_0033_00018",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0033_00019",
+      "garbage": 10
+    },
+    {
+      "id": "msg_0033_00020",
+      "en_US": [
+        "The Pokémon’s identity is\n",
+        "{STRVAR_1 0, 0, 0}."
+      ]
+    },
+    {
+      "id": "msg_0033_00021",
+      "en_US": [
+        "You may change this Pokémon’s level.\n",
+        "What would you like to do?"
+      ]
+    },
+    {
+      "id": "msg_0033_00022",
+      "en_US": "LEVEL +5"
+    },
+    {
+      "id": "msg_0033_00023",
+      "en_US": "LEVEL -5"
+    },
+    {
+      "id": "msg_0033_00024",
+      "en_US": "CANCEL"
+    },
+    {
+      "id": "msg_0033_00025",
+      "en_US": [
+        "It will cost {STRVAR_1 51, 0, 0} CP.\n",
+        "Is that OK?"
+      ]
+    },
+    {
+      "id": "msg_0033_00026",
+      "garbage": 2
+    },
+    {
+      "id": "msg_0033_00027",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0033_00028",
+      "en_US": "You don’t have enough CP..."
+    },
+    {
+      "id": "msg_0033_00029",
+      "en_US": [
+        "This Pokémon’s level can’t be\n",
+        "raised higher."
+      ]
+    },
+    {
+      "id": "msg_0033_00030",
+      "en_US": [
+        "This Pokémon’s level can’t be lowered\n",
+        "any more."
+      ]
+    },
+    {
+      "id": "msg_0033_00031",
+      "en_US": [
+        "The Pokémon’s level was\n",
+        "boosted by five."
+      ]
+    },
+    {
+      "id": "msg_0033_00032",
+      "en_US": [
+        "The Pokémon’s level was\n",
+        "lowered by five."
+      ]
+    },
+    {
+      "id": "msg_0033_00033",
+      "en_US": "SUMMARY"
+    },
+    {
+      "id": "msg_0033_00034",
+      "en_US": "MOVES"
+    },
+    {
+      "id": "msg_0033_00035",
+      "en_US": "RANK UP"
+    },
+    {
+      "id": "msg_0033_00036",
+      "en_US": "CANCEL"
+    },
+    {
+      "id": "msg_0033_00037",
+      "en_US": "Check the stats of the Pokémon."
+    },
+    {
+      "id": "msg_0033_00038",
+      "en_US": "Check the move list of the Pokémon."
+    },
+    {
+      "id": "msg_0033_00039",
+      "en_US": [
+        "You will be able to check moves using CP\n",
+        "by going up in rank."
+      ]
+    },
+    {
+      "id": "msg_0033_00040",
+      "en_US": "Your rank cannot be raised any higher."
+    },
+    {
+      "id": "msg_0033_00041",
+      "en_US": "Return to previous selections."
+    },
+    {
+      "id": "msg_0033_00042",
+      "en_US": [
+        "You are too low in information rank to\n",
+        "check the target’s move list."
+      ]
+    },
+    {
+      "id": "msg_0033_00043",
+      "en_US": [
+        "You may check this Pokémon’s stats.\n",
+        "It will cost {STRVAR_1 51, 0, 0} CP. Is that OK?"
+      ]
+    },
+    {
+      "id": "msg_0033_00044",
+      "garbage": 2
+    },
+    {
+      "id": "msg_0033_00045",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0033_00046",
+      "en_US": "You don’t have enough CP..."
+    },
+    {
+      "id": "msg_0033_00047",
+      "en_US": [
+        "The Pokémon’s stat summary\n",
+        "was bought."
+      ]
+    },
+    {
+      "id": "msg_0033_00048",
+      "en_US": "Item"
+    },
+    {
+      "id": "msg_0033_00049",
+      "en_US": "{STRVAR_1 8, 0, 0}"
+    },
+    {
+      "id": "msg_0033_00050",
+      "en_US": "Nature"
+    },
+    {
+      "id": "msg_0033_00051",
+      "en_US": "{STRVAR_1 7, 0, 0}"
+    },
+    {
+      "id": "msg_0033_00052",
+      "en_US": "Ability"
+    },
+    {
+      "id": "msg_0033_00053",
+      "en_US": "{STRVAR_1 5, 0, 0}"
+    },
+    {
+      "id": "msg_0033_00054",
+      "en_US": "Attack"
+    },
+    {
+      "id": "msg_0033_00055",
+      "en_US": "{STRVAR_1 52, 0, 0}"
+    },
+    {
+      "id": "msg_0033_00056",
+      "en_US": "Defense"
+    },
+    {
+      "id": "msg_0033_00057",
+      "en_US": "{STRVAR_1 52, 0, 0}"
+    },
+    {
+      "id": "msg_0033_00058",
+      "en_US": "Sp. Atk"
+    },
+    {
+      "id": "msg_0033_00059",
+      "en_US": "{STRVAR_1 52, 0, 0}"
+    },
+    {
+      "id": "msg_0033_00060",
+      "en_US": "Sp. Def"
+    },
+    {
+      "id": "msg_0033_00061",
+      "en_US": "{STRVAR_1 52, 0, 0}"
+    },
+    {
+      "id": "msg_0033_00062",
+      "en_US": "Speed"
+    },
+    {
+      "id": "msg_0033_00063",
+      "en_US": "{STRVAR_1 52, 0, 0}"
+    },
+    {
+      "id": "msg_0033_00064",
+      "en_US": "♂"
+    },
+    {
+      "id": "msg_0033_00065",
+      "en_US": "♀"
+    },
+    {
+      "id": "msg_0033_00066",
+      "en_US": "Lv."
+    },
+    {
+      "id": "msg_0033_00067",
+      "en_US": "HP"
+    },
+    {
+      "id": "msg_0033_00068",
+      "en_US": "/"
+    },
+    {
+      "id": "msg_0033_00069",
+      "en_US": "{STRVAR_1 1, 0, 0}"
+    },
+    {
+      "id": "msg_0033_00070",
+      "garbage": 5
+    },
+    {
+      "id": "msg_0033_00071",
+      "garbage": 5
+    },
+    {
+      "id": "msg_0033_00072",
+      "en_US": "{STRVAR_1 52, 0, 0}"
+    },
+    {
+      "id": "msg_0033_00073",
+      "en_US": "?"
+    },
+    {
+      "id": "msg_0033_00074",
+      "en_US": "??"
+    },
+    {
+      "id": "msg_0033_00075",
+      "en_US": "?????"
+    },
+    {
+      "id": "msg_0033_00076",
+      "en_US": [
+        "You will be able to check\n",
+        "your opponent’s moves\n",
+        "using CP by going up in\n",
+        "information rank."
+      ]
+    },
+    {
+      "id": "msg_0033_00077",
+      "en_US": "??/??"
+    },
+    {
+      "id": "msg_0033_00078",
+      "en_US": "{STRVAR_1 52, 0, 0}/{STRVAR_1 52, 1, 0}"
+    },
+    {
+      "id": "msg_0033_00079",
+      "en_US": [
+        "You may check this Pokémon’s move list.\n",
+        "It will cost {STRVAR_1 51, 0, 0} CP. Is that OK?"
+      ]
+    },
+    {
+      "id": "msg_0033_00080",
+      "garbage": 2
+    },
+    {
+      "id": "msg_0033_00081",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0033_00082",
+      "en_US": "You don’t have enough CP..."
+    },
+    {
+      "id": "msg_0033_00083",
+      "en_US": [
+        "The Pokémon’s move-list data was\n",
+        "bought."
+      ]
+    },
+    {
+      "id": "msg_0033_00084",
+      "en_US": "{STRVAR_1 6, 0, 0}"
+    },
+    {
+      "id": "msg_0033_00085",
+      "en_US": "{STRVAR_1 6, 1, 0}"
+    },
+    {
+      "id": "msg_0033_00086",
+      "en_US": "{STRVAR_1 6, 2, 0}"
+    },
+    {
+      "id": "msg_0033_00087",
+      "en_US": "{STRVAR_1 6, 3, 0}"
+    },
+    {
+      "id": "msg_0033_00088",
+      "en_US": "{COLOR 2}{STRVAR_1 51, 4, 0}{COLOR 0}/{COLOR 2}{STRVAR_1 51, 5, 0}{COLOR 0}"
+    },
+    {
+      "id": "msg_0033_00089",
+      "en_US": "{STRVAR_1 51, 0, 0}"
+    },
+    {
+      "id": "msg_0033_00090",
+      "en_US": "--"
+    },
+    {
+      "id": "msg_0033_00091",
+      "en_US": [
+        "Would you like to up your rank for\n",
+        "{STRVAR_1 52, 0, 0} CP?"
+      ]
+    },
+    {
+      "id": "msg_0033_00092",
+      "garbage": 2
+    },
+    {
+      "id": "msg_0033_00093",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0033_00094",
+      "garbage": 10
+    },
+    {
+      "id": "msg_0033_00095",
+      "en_US": [
+        "{STRVAR_1 3, 5, 0} gained the ability to buy\n",
+        "the target’s move-list information."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,134 @@
+{
+  "key": 49263,
+  "messages": [
+    {
+      "id": "msg_0703_00000",
+      "en_US": "Ian"
+    },
+    {
+      "id": "msg_0703_00001",
+      "en_US": [
+        "Hmm. If you transferred into my class,\n",
+        "I’d become the second-best student\f",
+        "in my class, wouldn’t I?\r",
+        "I want to get stronger before that\n",
+        "could happen, so would you trade phone\f",
+        "numbers with me?\r",
+        "Then we can have Pokémon\n",
+        "battles together! {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0703_00002",
+      "en_US": [
+        "Cool. I’ll give you a call when I’m\n",
+        "ready to battle again!\r",
+        "You can call me, too!"
+      ]
+    },
+    {
+      "id": "msg_0703_00003",
+      "en_US": [
+        "Wait...don’t tell me you’re serious\n",
+        "about transferring into my school?!"
+      ]
+    },
+    {
+      "id": "msg_0703_00004",
+      "en_US": [
+        "Hmm. If you transferred into my class,\n",
+        "I’d become the second-best student\f",
+        "in my class, wouldn’t I!\r",
+        "Before that happens, I want to battle\n",
+        "more with you so I can become much\f",
+        "stronger! Let’s trade phone numbers.\r",
+        "Then we can have Pokémon\n",
+        "battles together! {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0703_00005",
+      "en_US": [
+        "I want to give you something as thanks\n",
+        "for battling with me!\f",
+        "Here you go--have a Berry!\r"
+      ]
+    },
+    {
+      "id": "msg_0703_00006",
+      "en_US": [
+        "Hm? Wait, where are you?\n",
+        "I’m pretty sure you’re nearby.\r",
+        "If you’re going to come all the way over\n",
+        "here, please feel free to approach me!"
+      ]
+    },
+    {
+      "id": "msg_0703_00007",
+      "en_US": [
+        "You know, I’ve learned a lot from\n",
+        "watching you battle, and I’ve been\f",
+        "practicing with my {STRVAR_1 0, 10, 0}.\r",
+        "Thanks to you, we’ve improved a lot!\r",
+        "But even though we’ve grown stronger,\n",
+        "you’ve probably gotten stronger at\f",
+        "the same time, I guess.\r",
+        "So...that means we still won’t\n",
+        "be able to beat you, I guess!"
+      ]
+    },
+    {
+      "id": "msg_0703_00008",
+      "en_US": [
+        "I used the tips I learned from watching\n",
+        "you battle to take down a wild\f",
+        "{STRVAR_1 0, 11, 0} the other day!\r",
+        "Thanks to you, my Pokémon’s much\n",
+        "stronger!\r",
+        "If we get the chance to meet again,\n",
+        "I hope you’ll show me some more tricks!"
+      ]
+    },
+    {
+      "id": "msg_0703_00009",
+      "en_US": [
+        "Hey, hey, listen up!\r",
+        "A few days ago, I was trying to catch a\n",
+        "wild {STRVAR_1 0, 11, 0}...\r",
+        "We went down to the wire, but it\n",
+        "ended up getting away!\r",
+        "I really should have had a bunch of\n",
+        "Poké Balls ready, I know..."
+      ]
+    },
+    {
+      "id": "msg_0703_00010",
+      "en_US": [
+        "You know, lately I’ve been wanting to\n",
+        "battle you again... What do you say?\r",
+        "Are you interested?\n",
+        "I’m waiting on {STRVAR_1 4, 3, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0703_00011",
+      "en_US": [
+        "Hello? Didn’t we make plans to meet on\n",
+        "{STRVAR_1 4, 3, 0} for a battle?\r",
+        "I’m sure you couldn’t have forgotten!\n",
+        "Get a move on, already!"
+      ]
+    },
+    {
+      "id": "msg_0703_00012",
+      "en_US": [
+        "Hey, you know why I’m always in shorts?\r",
+        "It’s because they’re really cool!\r",
+        "You know how, if you scuff your knees\n",
+        "and you’re wearing shorts, everyone\f",
+        "can see all the bandages?\f",
+        "It makes me look wild and dangerous!"
+      ]
+    }
+  ]
+}

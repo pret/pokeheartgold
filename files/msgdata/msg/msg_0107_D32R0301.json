@@ -1,0 +1,282 @@
+{
+  "key": 38003,
+  "messages": [
+    {
+      "id": "msg_0107_D32R0301_00000",
+      "en_US": [
+        "Welcome to the Battle Factory!\r",
+        "I am your guide to the Single and\n",
+        "Double Battle challenges.\r",
+        "Please be aware that these challenges\n",
+        "are designed for a single Trainer.\r"
+      ]
+    },
+    {
+      "id": "msg_0107_D32R0301_00001",
+      "en_US": [
+        "Which challenge would\n",
+        "you like to take? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0107_D32R0301_00002",
+      "en_US": [
+        "At the Battle Factory, you may take\n",
+        "Single or Double Battle challenges\f",
+        "using rental Pokémon.\r",
+        "Once entered, your challenge lasts\n",
+        "until you lose.\r",
+        "After each win, you may trade a rented\n",
+        "Pokémon for one of the opponent’s.\r",
+        "The Level 50 option starts you off with\n",
+        "Pokémon that only know weak moves.\r",
+        "The Open Level option gives you access\n",
+        "to Lv. 100 Pokémon with powerful moves\f",
+        "from the start.\r",
+        "If you manage to win seven matches in\n",
+        "a row, you will earn Battle Points (BP).\r",
+        "If you want to interrupt your\n",
+        "challenge, please save the game.\r",
+        "If you don’t save, you will be\n",
+        "disqualified from your challenge.\r",
+        "Please be aware of that!\r"
+      ]
+    },
+    {
+      "id": "msg_0107_D32R0301_00003",
+      "en_US": [
+        "Welcome to the Battle Factory!\r",
+        "I am your guide to the Multi Battle\n",
+        "challenge.\r",
+        "Please be aware that this challenge\n",
+        "requires two Trainers.\r"
+      ]
+    },
+    {
+      "id": "msg_0107_D32R0301_00004",
+      "en_US": [
+        "Would you like to take the Battle\n",
+        "Factory Multi Battle challenge? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0107_D32R0301_00005",
+      "en_US": [
+        "You may team up with a friend for a\n",
+        "Multi Battle challenge using rental\f",
+        "Pokémon.\r",
+        "Both partners will be provided with two\n",
+        "rental Pokémon each.\r",
+        "Once entered, you and your partner\n",
+        "conduct Multi Battles until you lose.\r",
+        "After each win, you or your partner\n",
+        "may trade a single rented Pokémon.\r",
+        "If you manage to win seven matches in\n",
+        "a row, you will earn Battle Points (BP).\r",
+        "The Level 50 option starts with rental\n",
+        "Pokémon that only know weak moves.\r",
+        "The Open Level option lets you rent\n",
+        "Lv. 100 Pokémon with powerful moves\f",
+        "from the start.\r",
+        "Please note: a Battle Factory Multi\n",
+        "Battle challenge can’t be interrupted.\r"
+      ]
+    },
+    {
+      "id": "msg_0107_D32R0301_00006",
+      "en_US": "We hope to see you again!"
+    },
+    {
+      "id": "msg_0107_D32R0301_00007",
+      "en_US": [
+        "Which challenge level would you like\n",
+        "to play? Level 50 or Open Level? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0107_D32R0301_00008",
+      "en_US": [
+        "You must save the game before I\n",
+        "show you in. Is that OK? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0107_D32R0301_00009",
+      "en_US": "Right this way, please!"
+    },
+    {
+      "id": "msg_0107_D32R0301_00010",
+      "en_US": "We look forward to your next visit.\r"
+    },
+    {
+      "id": "msg_0107_D32R0301_00011",
+      "en_US": [
+        "We’ve missed you!\r",
+        "You must save the game before you\n",
+        "resume your challenge. Please wait."
+      ]
+    },
+    {
+      "id": "msg_0107_D32R0301_00012",
+      "en_US": [
+        "Excuse me!\r",
+        "You didn’t save before you quit your\n",
+        "challenge last time.\r",
+        "Because of that, you have been\n",
+        "disqualified from your challenge!\r"
+      ]
+    },
+    {
+      "id": "msg_0107_D32R0301_00013",
+      "en_US": [
+        "Congratulations!\r",
+        "In recognition of your victory, we\n",
+        "present you this commemorative print!\r"
+      ]
+    },
+    {
+      "id": "msg_0107_D32R0301_00014",
+      "en_US": [
+        "The Gold Print was added to\n",
+        "{STRVAR_1 3, 0, 0}’s Vs. Recorder!\r"
+      ]
+    },
+    {
+      "id": "msg_0107_D32R0301_00015",
+      "en_US": [
+        "The Silver Print was added to\n",
+        "{STRVAR_1 3, 0, 0}’s Vs. Recorder!\r"
+      ]
+    },
+    {
+      "id": "msg_0107_D32R0301_00016",
+      "en_US": "SINGLE BATTLE"
+    },
+    {
+      "id": "msg_0107_D32R0301_00017",
+      "en_US": "DOUBLE BATTLE"
+    },
+    {
+      "id": "msg_0107_D32R0301_00018",
+      "en_US": "TAKE CHALLENGE"
+    },
+    {
+      "id": "msg_0107_D32R0301_00019",
+      "en_US": "INFO"
+    },
+    {
+      "id": "msg_0107_D32R0301_00020",
+      "en_US": "CANCEL"
+    },
+    {
+      "id": "msg_0107_D32R0301_00021",
+      "en_US": "LEVEL 50"
+    },
+    {
+      "id": "msg_0107_D32R0301_00022",
+      "en_US": "OPEN LEVEL"
+    },
+    {
+      "id": "msg_0107_D32R0301_00023",
+      "en_US": "CANCEL"
+    },
+    {
+      "id": "msg_0107_D32R0301_00024",
+      "en_US": [
+        "One Trainer should select\n",
+        "“BECOME LEADER.”\r",
+        "The other Trainer must select\n",
+        "“JOIN GROUP.” {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0107_D32R0301_00025",
+      "en_US": [
+        "We need to launch DS Wireless\n",
+        "Communications. {YESNO 0}\n"
+      ]
+    },
+    {
+      "id": "msg_0107_D32R0301_00026",
+      "en_US": [
+        "You must save the game before I\n",
+        "show you in. Please wait."
+      ]
+    },
+    {
+      "id": "msg_0107_D32R0301_00027",
+      "en_US": [
+        "The staff tell you about the next\n",
+        "Trainer you’ll face.\r",
+        "They’re very helpful here.\n",
+        "Don’t you think?\n"
+      ]
+    },
+    {
+      "id": "msg_0107_D32R0301_00028",
+      "en_US": [
+        "They tell you about the next Trainer\n",
+        "you’ll face? That’s really nice.\r",
+        "You know, you can prepare for it\n",
+        "once you know what kind of Trainer\f",
+        "the next one is!"
+      ]
+    },
+    {
+      "id": "msg_0107_D32R0301_00029",
+      "en_US": [
+        "It’ll help you choose a Pokémon when\n",
+        "you remember what kind of Pokémon\f",
+        "the other Trainer had and what moves\f",
+        "they used."
+      ]
+    },
+    {
+      "id": "msg_0107_D32R0301_00030",
+      "en_US": [
+        "This is a place to battle with rental\n",
+        "Pokémon, right?\r",
+        "It is a good chance to try Pokémon\n",
+        "you’ve never trained.\r",
+        "You’ll learn about new Pokémon\n",
+        "while having exciting battles!\r",
+        "What more could you want?"
+      ]
+    },
+    {
+      "id": "msg_0107_D32R0301_00031",
+      "en_US": [
+        "Do you have a lot of Pokémon?\r",
+        "I’m not too proud to say this, but...\n",
+        "I have only a few!\r",
+        "But there is nothing to worry about.\n",
+        "Do you know why?\r",
+        "This facility, the Battle Factory, has\n",
+        "you use rental Pokémon for battles!"
+      ]
+    },
+    {
+      "id": "msg_0107_D32R0301_00032",
+      "en_US": [
+        "So you have to battle with Pokémon\n",
+        "you just met instead of with your\f",
+        "cherished Pokémon you’ve always\f",
+        "battled with?\r",
+        "Oh, I don’t know if I could...\n",
+        "Will they be nice to me...?\f",
+        "I’m a little worried."
+      ]
+    },
+    {
+      "id": "msg_0107_D32R0301_00033",
+      "en_US": [
+        "All the Trainers gathered at the\n",
+        "Battle Frontier are nice,\f",
+        "pleasant people!\r",
+        "I’m patrolling here on duty, but\n",
+        "otherwise I would love to change\f",
+        "my uniform to participate!"
+      ]
+    }
+  ]
+}

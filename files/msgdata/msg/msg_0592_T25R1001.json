@@ -1,0 +1,67 @@
+{
+  "key": 60495,
+  "messages": [
+    {
+      "id": "msg_0592_T25R1001_00000",
+      "en_US": [
+        "Welcome to the Goldenrod\n",
+        "Department Store."
+      ]
+    },
+    {
+      "id": "msg_0592_T25R1001_00001",
+      "en_US": [
+        "The department store has a\n",
+        "decent selection.\r",
+        "But some items are only available\n",
+        "as Game Corner prizes."
+      ]
+    },
+    {
+      "id": "msg_0592_T25R1001_00002",
+      "en_US": [
+        "What kind of business would a\n",
+        "Team Rocket member have here?\r",
+        "We aren’t selling sanity here."
+      ]
+    },
+    {
+      "id": "msg_0592_T25R1001_00003",
+      "en_US": "I’m raring to shop again today!"
+    },
+    {
+      "id": "msg_0592_T25R1001_00004",
+      "en_US": [
+        "Be it Team Rocket, “Team Pocket,” or\n",
+        "whatever...leave me alone!\r",
+        "I’m busy shopping and have no time\n",
+        "to waste!"
+      ]
+    },
+    {
+      "id": "msg_0592_T25R1001_00005",
+      "en_US": [
+        "Mom’s good at bargain hunting.\r",
+        "She always buys stuff at lower prices."
+      ]
+    },
+    {
+      "id": "msg_0592_T25R1001_00006",
+      "en_US": [
+        "Mom told me to stay away from\n",
+        "people in black suits."
+      ]
+    },
+    {
+      "id": "msg_0592_T25R1001_00007",
+      "en_US": [
+        "1F Service Counter\n",
+        "2F Trainer’s Market\f",
+        "3F Battle Collection\f",
+        "4F Medicine Box\f",
+        "5F TM Corner\f",
+        "6F Rooftop Atrium"
+      ]
+    }
+  ]
+}

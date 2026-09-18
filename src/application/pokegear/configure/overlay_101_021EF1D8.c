@@ -1,4 +1,4 @@
-#include "application/pokegear/configure/pgconf_gra.naix"
+#include "files/application/pokegear/configure/pgconf_gra.naix"
 #include "application/pokegear/configure/pokegear_configure_internal.h"
 
 #include "gf_gfx_loader.h"

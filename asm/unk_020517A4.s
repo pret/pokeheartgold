@@ -1,7 +1,7 @@
 #include "constants/sndseq.h"
 #include "constants/species.h"
 #include "constants/trainer_class.h"
-	.include "asm/macros.inc"
+	.include "macros.inc"
 	.include "unk_020517A4.inc"
 	.include "global.inc"
 

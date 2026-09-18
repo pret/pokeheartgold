@@ -1,4 +1,4 @@
-#include <nitro/fs/overlay.h>
+
 #pragma once
 .public SVC_WaitByLoop
 .public DWCi_BM_GetApInfo

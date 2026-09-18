@@ -1,0 +1,225 @@
+{
+  "key": 20204,
+  "messages": [
+    {
+      "id": "msg_0169_00000",
+      "en_US": "Script Battle"
+    },
+    {
+      "id": "msg_0169_00001",
+      "en_US": "Script Contest"
+    },
+    {
+      "id": "msg_0169_00002",
+      "en_US": "Record Max"
+    },
+    {
+      "id": "msg_0169_00003",
+      "en_US": "Friends Max"
+    },
+    {
+      "id": "msg_0169_00004",
+      "en_US": "High odds to dig"
+    },
+    {
+      "id": "msg_0169_00005",
+      "en_US": "Channel"
+    },
+    {
+      "id": "msg_0169_00006",
+      "en_US": "Mystery"
+    },
+    {
+      "id": "msg_0169_00007",
+      "en_US": "Quick Battle Client"
+    },
+    {
+      "id": "msg_0169_00008",
+      "en_US": "Single Client"
+    },
+    {
+      "id": "msg_0169_00009",
+      "en_US": "Double Client"
+    },
+    {
+      "id": "msg_0169_00010",
+      "en_US": "Mix Client"
+    },
+    {
+      "id": "msg_0169_00011",
+      "en_US": "Multi Client"
+    },
+    {
+      "id": "msg_0169_00012",
+      "en_US": "Multi 2 Client"
+    },
+    {
+      "id": "msg_0169_00013",
+      "en_US": "Quick Battle Host"
+    },
+    {
+      "id": "msg_0169_00014",
+      "en_US": "Single Host"
+    },
+    {
+      "id": "msg_0169_00015",
+      "en_US": "Double Host"
+    },
+    {
+      "id": "msg_0169_00016",
+      "en_US": "Mix Host"
+    },
+    {
+      "id": "msg_0169_00017",
+      "en_US": "Multi Host"
+    },
+    {
+      "id": "msg_0169_00018",
+      "en_US": "Multi 2 Host"
+    },
+    {
+      "id": "msg_0169_00019",
+      "en_US": "Quick Contest Client"
+    },
+    {
+      "id": "msg_0169_00020",
+      "en_US": "Quick Contest Host"
+    },
+    {
+      "id": "msg_0169_00021",
+      "en_US": "Coolness"
+    },
+    {
+      "id": "msg_0169_00022",
+      "en_US": "Beauty"
+    },
+    {
+      "id": "msg_0169_00023",
+      "en_US": "Cuteness"
+    },
+    {
+      "id": "msg_0169_00024",
+      "en_US": "Toughness"
+    },
+    {
+      "id": "msg_0169_00025",
+      "en_US": "Smartness"
+    },
+    {
+      "id": "msg_0169_00026",
+      "en_US": "Normal"
+    },
+    {
+      "id": "msg_0169_00027",
+      "en_US": "Super"
+    },
+    {
+      "id": "msg_0169_00028",
+      "en_US": "Hard"
+    },
+    {
+      "id": "msg_0169_00029",
+      "en_US": "Master"
+    },
+    {
+      "id": "msg_0169_00030",
+      "en_US": "Underground debug"
+    },
+    {
+      "id": "msg_0169_00031",
+      "en_US": "communication traffic"
+    },
+    {
+      "id": "msg_0169_00032",
+      "en_US": "{STRVAR_1 52, 0, 0} bytes are being sent every time."
+    },
+    {
+      "id": "msg_0169_00033",
+      "en_US": ":"
+    },
+    {
+      "id": "msg_0169_00034",
+      "en_US": "Delivery debug"
+    },
+    {
+      "id": "msg_0169_00035",
+      "en_US": "Add Items to PC"
+    },
+    {
+      "id": "msg_0169_00036",
+      "en_US": "Nullify goods penalty"
+    },
+    {
+      "id": "msg_0169_00037",
+      "en_US": "Add a Trap to BAG"
+    },
+    {
+      "id": "msg_0169_00038",
+      "en_US": "Bury fossil(undergroud)"
+    },
+    {
+      "id": "msg_0169_00039",
+      "en_US": "Underground"
+    },
+    {
+      "id": "msg_0169_00040",
+      "en_US": "Underground 1"
+    },
+    {
+      "id": "msg_0169_00041",
+      "en_US": "Underground 2"
+    },
+    {
+      "id": "msg_0169_00042",
+      "en_US": "To be Host"
+    },
+    {
+      "id": "msg_0169_00043",
+      "en_US": "To be Client"
+    },
+    {
+      "id": "msg_0169_00044",
+      "en_US": "Back to switching Host/Client option"
+    },
+    {
+      "id": "msg_0169_00045",
+      "en_US": "Flag level"
+    },
+    {
+      "id": "msg_0169_00046",
+      "en_US": "Bronze"
+    },
+    {
+      "id": "msg_0169_00047",
+      "en_US": "Silver"
+    },
+    {
+      "id": "msg_0169_00048",
+      "en_US": "Gold"
+    },
+    {
+      "id": "msg_0169_00049",
+      "en_US": "Platinum"
+    },
+    {
+      "id": "msg_0169_00050",
+      "en_US": "Default"
+    },
+    {
+      "id": "msg_0169_00051",
+      "en_US": "Wi-Fi Match"
+    },
+    {
+      "id": "msg_0169_00052",
+      "en_US": "Register friends"
+    },
+    {
+      "id": "msg_0169_00053",
+      "en_US": "Take a Flag (2 players needed)"
+    },
+    {
+      "id": "msg_0169_00054",
+      "en_US": "Bury 99 Fossils"
+    }
+  ]
+}

@@ -1,13 +1,13 @@
 #include "certificates_app.h"
 
-#include <nitro/os/cache.h>
+#include <nitro/os.h>
 
 #include "global.h"
 
 #include "constants/mmodel.h"
 
-#include "msgdata/msg.naix"
-#include "msgdata/msg/msg_0004.h"
+#include "files/msgdata/msg.naix"
+#include "files/msgdata/msg/msg_0004.h"
 
 #include "bg_window.h"
 #include "follow_mon.h"
@@ -327,7 +327,7 @@ static void CertificatesApp_OnVBlank(CertificatesApp_Data *data) {
 
     DoScheduledBgGpuUpdates(data->bgConfig);
 
-    OS_SetIrqCheckFlag(OS_IE_VBLANK);
+    OS_SetIrqCheckFlag(OS_IE_V_BLANK);
 }
 
 static void CertificatesApp_SetupBgConfig(CertificatesApp_Data *data) {
@@ -418,7 +418,7 @@ static void CertificatesApp_SetupWindowsAndText(CertificatesApp_Data *data) {
 
     ResetAllTextPrinters();
 
-    data->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0004_bin, data->heapID);
+    data->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, msg_0004, data->heapID);
     data->msgFmt = MessageFormat_New(data->heapID);
 
     template.bgId = GF_BG_LYR_MAIN_0;

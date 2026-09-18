@@ -1,7 +1,7 @@
 #include "overlay_mic_test.h"
 
-#include "msgdata/msg.naix"
-#include "msgdata/msg/msg_0234.h"
+#include "files/msgdata/msg.naix"
+#include "files/msgdata/msg/msg_0234.h"
 
 #include "font.h"
 #include "gf_gfx_loader.h"
@@ -617,7 +617,7 @@ static void MicTest_VBlankIntrCB(void *data) {
     NNS_GfdDoVramTransfer();
     ov62_021E5FC4(micTest);
     ov62_021E60D4(&micTest->unkB8);
-    OS_SetIrqCheckFlag(OS_IE_VBLANK);
+    OS_SetIrqCheckFlag(OS_IE_V_BLANK);
 }
 
 static void MicTest_InitSpriteRenderer(MicTestData *micTest, enum HeapID heapID) {
@@ -734,7 +734,7 @@ static void ov62_021E60D4(MicTestSub_B8 *a0) {
 }
 
 static void ov62_021E60E4(MicTestSub_B8 *a0, enum HeapID heapID) {
-    a0->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0234_bin, heapID);
+    a0->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, msg_0234, heapID);
 
     for (int i = 0; i < 3; i++) {
         AddWindowParameterized(a0->bgConfig, &a0->window[i], sMicTestTextBoxes[i].bgId, sMicTestTextBoxes[i].x, sMicTestTextBoxes[i].y, sMicTestTextBoxes[i].width, sMicTestTextBoxes[i].height, sMicTestTextBoxes[i].palNum, sMicTestTextBoxes[i].baseTile);

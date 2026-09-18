@@ -1,0 +1,478 @@
+{
+  "key": 34929,
+  "messages": [
+    {
+      "id": "msg_0666_00000",
+      "en_US": "Prof. Oak"
+    },
+    {
+      "id": "msg_0666_00001",
+      "en_US": [
+        "Hello, this is Professor Oak...\r",
+        "Hmm... It’s strange.\n",
+        "I know your voice, {STRVAR_1 3, 0, 0}, but\f",
+        "somehow hearing it over the phone\f",
+        "makes you sound so different."
+      ]
+    },
+    {
+      "id": "msg_0666_00002",
+      "en_US": [
+        "Hello, this is Professor Oak...\r",
+        "Hmm... It’s strange.\n",
+        "I know your voice, {STRVAR_1 3, 0, 0}, but\f",
+        "somehow hearing it over the phone\f",
+        "makes you sound so different."
+      ]
+    },
+    {
+      "id": "msg_0666_00003",
+      "en_US": [
+        "Hello, this is Professor Oak!\r",
+        "You’re catching a lot of Pokémon,\n",
+        "aren’t you?"
+      ]
+    },
+    {
+      "id": "msg_0666_00004",
+      "en_US": [
+        "Hello, this is Professor Oak!\n",
+        "Your Pokédex is really filling up!"
+      ]
+    },
+    {
+      "id": "msg_0666_00005",
+      "en_US": [
+        "Hello, this is Professor Oak!\r",
+        "You’re moving along at an\n",
+        "incredible pace! You remind me of\f",
+        "myself when I was younger!"
+      ]
+    },
+    {
+      "id": "msg_0666_00006",
+      "en_US": [
+        "Hello, this is Professor Oak!\r",
+        "If you start to get tired, you should\n",
+        "take a break. Don’t push yourself\f",
+        "too hard!"
+      ]
+    },
+    {
+      "id": "msg_0666_00007",
+      "en_US": [
+        "This is Professor Oak...\r",
+        "When I’m recording my radio show, I\n",
+        "have to travel back and forth between\f",
+        "Kanto and Johto. It gets a bit tiring...\r",
+        "Oh, but never mind that! You’re doing a\n",
+        "great job on filling your Pokédex!"
+      ]
+    },
+    {
+      "id": "msg_0666_00008",
+      "en_US": [
+        "Hello, this is Professor Oak!\r",
+        "It looks like you’ve found some Pokémon\n",
+        "that aren’t from the Johto or the\f",
+        "Kanto regions, haven’t you?\r",
+        "You’re a strong Trainer, and you’re\n",
+        "really making some discoveries!"
+      ]
+    },
+    {
+      "id": "msg_0666_00009",
+      "en_US": [
+        "...This is Professor Oak.\n",
+        "I’ve been so busy with my research\f",
+        "that I haven’t gotten much\f",
+        "sleep lately...\r",
+        "Oh, but never mind that!\n",
+        "You’ve made such good progress on your\f",
+        "Pokédex. I can’t wait to see it!"
+      ]
+    },
+    {
+      "id": "msg_0666_00010",
+      "en_US": [
+        "Hello, this is Professor Oak!\r",
+        "Have you noticed that your circle of\n",
+        "friends has gotten bigger since you\f",
+        "started working on the Pokédex?\f",
+        "That’s the best thing about Pokémon!"
+      ]
+    },
+    {
+      "id": "msg_0666_00011",
+      "en_US": [
+        "Hello, this is Professor Oak!\n",
+        "You know, I don’t see many wonderful\f",
+        "Trainers such as yourself very\f",
+        "often lately!\r",
+        "I’ll have to thank Professor Elm for\n",
+        "introducing us!"
+      ]
+    },
+    {
+      "id": "msg_0666_00012",
+      "en_US": [
+        "Hello, this is Professor Oak!\n",
+        "Oh, you don’t have to say anything!\f",
+        "I know better than anyone else how\f",
+        "hard you’re working!\r",
+        "I thought I should get you a present\n",
+        "or something in appreciation...\f",
+        "Well, I picked something up, but I\f",
+        "completely forgot to give it to you!\f",
+        "Ha ha ha!\r",
+        "Oh, you don’t have to wonder about it\n",
+        "at all. I know it’s something that will\f",
+        "be very helpful to you. You should just\f",
+        "come here and pick it up!\r",
+        "I’ll be waiting for you at my Laboratory\n",
+        "in Pallet Town!\n"
+      ]
+    },
+    {
+      "id": "msg_0666_00013",
+      "en_US": [
+        "Hello, this is Professor Oak...\n",
+        "Oh, hello, {STRVAR_1 3, 0, 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0666_00014",
+      "en_US": [
+        "Hello, this is Professor Oak...\n",
+        "Oh, hello, {STRVAR_1 3, 0, 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0666_00015",
+      "en_US": "So, how’s your Pokédex coming along?"
+    },
+    {
+      "id": "msg_0666_00016",
+      "en_US": "Quit"
+    },
+    {
+      "id": "msg_0666_00017",
+      "en_US": "Have Pokédex Evaluated"
+    },
+    {
+      "id": "msg_0666_00018",
+      "en_US": "Have Johto Pokédex Evaluated"
+    },
+    {
+      "id": "msg_0666_00019",
+      "en_US": "Have National Pokédex Evaluated"
+    },
+    {
+      "id": "msg_0666_00020",
+      "en_US": [
+        "Hmm, let’s see...\n",
+        "You’ve seen {STRVAR_1 52, 5, 0} Pokémon, and\f",
+        "you’ve caught {STRVAR_1 52, 6, 0} Pokémon!\f",
+        "I see!\r"
+      ]
+    },
+    {
+      "id": "msg_0666_00021",
+      "en_US": "Show me your Pokédex again anytime!"
+    },
+    {
+      "id": "msg_0666_00022",
+      "en_US": [
+        "Wow!\n",
+        "That is a complete Johto Pokédex!\r",
+        "Thanks to you, {STRVAR_1 3, 0, 0}, the Johto\n",
+        "Pokédex is complete!\r",
+        "Wow...\n",
+        "You’ve done an incredible job!"
+      ]
+    },
+    {
+      "id": "msg_0666_00023",
+      "en_US": [
+        "Wow!\n",
+        "That is a complete Johto Pokédex!\r",
+        "Thanks to you, {STRVAR_1 3, 0, 0}, the Johto\n",
+        "Pokédex is complete!\r",
+        "Wow...\n",
+        "You’ve done an incredible job!"
+      ]
+    },
+    {
+      "id": "msg_0666_00024",
+      "en_US": [
+        "Excellent!\n",
+        "That is an amazing National Pokédex!\r",
+        "Wow...\n",
+        "You’ve lived up to my expectations\f",
+        "wonderfully!\r",
+        "No, you’ve exceeded them,\n",
+        "{STRVAR_1 3, 0, 0}. You’ve become an\f",
+        "amazing Trainer!\r",
+        "Thank you, {STRVAR_1 3, 0, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0666_00025",
+      "en_US": [
+        "Excellent!\n",
+        "That is an amazing National Pokédex!\r",
+        "Wow...\n",
+        "You’ve lived up to my expectations\f",
+        "wonderfully!\r",
+        "No, you’ve exceeded them,\n",
+        "{STRVAR_1 3, 0, 0}. You’ve become an\f",
+        "amazing Trainer!\r",
+        "Thank you, {STRVAR_1 3, 0, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0666_00026",
+      "en_US": [
+        "Really, you’ve surprised me!\r",
+        "But just as I expected, you’ve\n",
+        "completed the Johto Pokédex.\f",
+        "I am so grateful!\r",
+        "If you’ve got that much determination,\n",
+        "then even more exciting adventures\f",
+        "await you in the world of Pokémon!"
+      ]
+    },
+    {
+      "id": "msg_0666_00027",
+      "en_US": [
+        "You have truly surprised me!\r",
+        "You’ve more than exceeded my\n",
+        "expectations. You’ve gone far past\f",
+        "them in completing the\f",
+        "National Pokédex!\r",
+        "I’m speechless...!\r",
+        "Because of this, the world of Pokémon\n",
+        "and Trainers is more vast, deeper,\f",
+        "and more abundant!\r",
+        "Now there will be no end to\n",
+        "Pokémon research!"
+      ]
+    },
+    {
+      "id": "msg_0666_00028",
+      "en_US": "Look for Pokémon in grassy areas!\r"
+    },
+    {
+      "id": "msg_0666_00029",
+      "en_US": [
+        "Good. I see you understand how to use\n",
+        "Poké Balls.\r"
+      ]
+    },
+    {
+      "id": "msg_0666_00030",
+      "en_US": [
+        "You’re getting good at this,\n",
+        "but you have a long way to go.\r"
+      ]
+    },
+    {
+      "id": "msg_0666_00031",
+      "en_US": [
+        "Hmm, you’re catching Pokémon at a\n",
+        "decent pace!\r"
+      ]
+    },
+    {
+      "id": "msg_0666_00032",
+      "en_US": [
+        "You’re trying--I can see that.\n",
+        "Your Pokédex is coming together.\r"
+      ]
+    },
+    {
+      "id": "msg_0666_00033",
+      "en_US": [
+        "You’re training them well. You know\n",
+        "some Pokémon don’t evolve just by\f",
+        "battling with others, right?\r"
+      ]
+    },
+    {
+      "id": "msg_0666_00034",
+      "en_US": [
+        "Do you have a Fishing Rod?\n",
+        "There are some Pokémon that can only\f",
+        "be found by fishing!\r"
+      ]
+    },
+    {
+      "id": "msg_0666_00035",
+      "en_US": [
+        "Excellent! You seem to be good at\n",
+        "collecting things!\r"
+      ]
+    },
+    {
+      "id": "msg_0666_00036",
+      "en_US": [
+        "Some Pokémon only appear during\n",
+        "certain times of the day.\r"
+      ]
+    },
+    {
+      "id": "msg_0666_00037",
+      "en_US": [
+        "Your Pokédex is really filling up.\n",
+        "Keep up the good work!\r"
+      ]
+    },
+    {
+      "id": "msg_0666_00038",
+      "en_US": [
+        "I’m impressed.\n",
+        "You’re evolving Pokémon, not just\f",
+        "catching them.\r"
+      ]
+    },
+    {
+      "id": "msg_0666_00039",
+      "en_US": [
+        "If you can learn how to use the custom\n",
+        "Poké Balls made by Kurt effectively,\f",
+        "you’ll be able to catch Pokémon better!\r"
+      ]
+    },
+    {
+      "id": "msg_0666_00040",
+      "en_US": [
+        "When you trade Pokémon, you can also\n",
+        "trade information. Your friends can\f",
+        "really help you!\r"
+      ]
+    },
+    {
+      "id": "msg_0666_00041",
+      "en_US": [
+        "Are you trading your Pokémon?\n",
+        "It’s tough to do this alone!\r"
+      ]
+    },
+    {
+      "id": "msg_0666_00042",
+      "en_US": [
+        "Wow! You’ve reached 200!\n",
+        "Your Pokédex is looking great!\r"
+      ]
+    },
+    {
+      "id": "msg_0666_00043",
+      "en_US": [
+        "You’ve found so many Pokémon!\n",
+        "You’ve really helped my studies!\r"
+      ]
+    },
+    {
+      "id": "msg_0666_00044",
+      "en_US": [
+        "Magnificent! You have the ability to\n",
+        "become a great Pokémon Professor\f",
+        "someday!\r"
+      ]
+    },
+    {
+      "id": "msg_0666_00045",
+      "en_US": [
+        "Your Pokédex is amazing!\n",
+        "You’re ready to turn professional!\r"
+      ]
+    },
+    {
+      "id": "msg_0666_00046",
+      "en_US": [
+        "The goal may be far away, but don’t\n",
+        "give up yet! Keep going!\r"
+      ]
+    },
+    {
+      "id": "msg_0666_00047",
+      "en_US": [
+        "Don’t forget, some Pokémon only appear\n",
+        "at certain times of the day!\r"
+      ]
+    },
+    {
+      "id": "msg_0666_00048",
+      "en_US": [
+        "If you break rocks, some Pokémon that\n",
+        "were hiding there might come\f",
+        "jumping out!\r"
+      ]
+    },
+    {
+      "id": "msg_0666_00049",
+      "en_US": [
+        "That’s wonderful you’ve been able\n",
+        "to gather this many Pokémon! The path\f",
+        "ahead is long. Keep up the great work!\r"
+      ]
+    },
+    {
+      "id": "msg_0666_00050",
+      "en_US": [
+        "If you Headbutt a tree, sometimes\n",
+        "a Pokémon might fall out!\r"
+      ]
+    },
+    {
+      "id": "msg_0666_00051",
+      "en_US": [
+        "A lot of Pokémon not found in the\n",
+        "Johto region like to congregate at the\f",
+        "Safari Zone.\r"
+      ]
+    },
+    {
+      "id": "msg_0666_00052",
+      "en_US": [
+        "Music on the radio might also entice\n",
+        "Pokémon to leap out!\r"
+      ]
+    },
+    {
+      "id": "msg_0666_00053",
+      "en_US": [
+        "Wow, you’ve gotten so far...!\n",
+        "I’m actually a little surprised!\r"
+      ]
+    },
+    {
+      "id": "msg_0666_00054",
+      "en_US": [
+        "This is a critical moment!\n",
+        "You can’t become discouraged!\r"
+      ]
+    },
+    {
+      "id": "msg_0666_00055",
+      "en_US": [
+        "Just a little more!\n",
+        "I’ve got high expectations for you!\r"
+      ]
+    },
+    {
+      "id": "msg_0666_00056",
+      "en_US": [
+        "I have never before in all my years\n",
+        "seen such an incredible Trainer!\r"
+      ]
+    },
+    {
+      "id": "msg_0666_00057",
+      "en_US": [
+        "So, how’s your Pokédex coming\n",
+        "along? {YESNO 0}"
+      ]
+    }
+  ]
+}

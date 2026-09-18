@@ -1,0 +1,138 @@
+{
+  "key": 38189,
+  "messages": [
+    {
+      "id": "msg_0655_00000",
+      "en_US": "Sabrina"
+    },
+    {
+      "id": "msg_0655_00001",
+      "en_US": [
+        "Huh? I can’t hear you very well.\n",
+        "I wonder if it’s our connection?\r",
+        "Try calling again from somewhere else."
+      ]
+    },
+    {
+      "id": "msg_0655_00002",
+      "en_US": [
+        "Hello...\n",
+        "Anything new going on with you?\f",
+        "I’m the same as usual.\r"
+      ]
+    },
+    {
+      "id": "msg_0655_00003",
+      "en_US": [
+        "There are stronger Gym Leaders\n",
+        "than me, you know. That’s no good!"
+      ]
+    },
+    {
+      "id": "msg_0655_00004",
+      "en_US": [
+        "I think I’ve got some free time on\n",
+        "Sundays around noon.\r",
+        "Could you call me back then?"
+      ]
+    },
+    {
+      "id": "msg_0655_00005",
+      "en_US": [
+        "Ah, wonderful!\n",
+        "I’ve got some free time right now.\r",
+        "Would you like to battle again? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0655_00006",
+      "en_US": [
+        "I knew it. That’s just like you.\r",
+        "So, I’ll see you at the Fighting Dojo in\n",
+        "Saffron City then!"
+      ]
+    },
+    {
+      "id": "msg_0655_00007",
+      "en_US": [
+        "I see...\n",
+        "You have the right to refuse an offer.\f",
+        "I shouldn’t have gotten my hopes up.\f",
+        "But I’m still a little disappointed..."
+      ]
+    },
+    {
+      "id": "msg_0655_00008",
+      "en_US": [
+        "Do you really have some free time to\n",
+        "battle me?\r",
+        "If you’ve got plans with other people,\n",
+        "you should really do that first."
+      ]
+    },
+    {
+      "id": "msg_0655_00009",
+      "en_US": [
+        "I’ll be waiting in Saffron City’s\n",
+        "Fighting Dojo. Don’t forget!"
+      ]
+    },
+    {
+      "id": "msg_0655_00010",
+      "en_US": [
+        "Yeah, this is Sabrina.\n",
+        "How are you doing?\r"
+      ]
+    },
+    {
+      "id": "msg_0655_00011",
+      "en_US": [
+        "So, I’m pretty sure we made plans to\n",
+        "meet at the Fighting Dojo in\f",
+        "Saffron City... Did you really forget?"
+      ]
+    },
+    {
+      "id": "msg_0655_00012",
+      "en_US": [
+        "I’ll tell you a little about a Psychic’s\n",
+        "training.\r",
+        "Psychic ability is the power to influence\n",
+        "people.\r",
+        "You close your eyes and clear your mind\n",
+        "of excessive thoughts...then you look\f",
+        "hard at your sleeping self.\r",
+        "That’s it.\r",
+        "True Psychics aren’t the kind who can\n",
+        "move things around with their minds.\r",
+        "It’s about controlling your own mind."
+      ]
+    },
+    {
+      "id": "msg_0655_00013",
+      "en_US": [
+        "You... You’ll become even stronger\n",
+        "than you are now, I know it...\r",
+        "You will defeat every Trainer you face\n",
+        "and eventually reach the\f",
+        "glowing glory...\r",
+        "I just wanted to tell you that.\n",
+        "Talk to you later!"
+      ]
+    },
+    {
+      "id": "msg_0655_00014",
+      "en_US": [
+        "You are a great Trainer, with a good\n",
+        "balance between intellect, power, and\f",
+        "your heart.\r",
+        "But above all, the power of your heart\n",
+        "is what is special.\r",
+        "What do you think of honestly trying to\n",
+        "study how to be a Psychic once to see?\r",
+        "I bet you could become a better Psychic\n",
+        "than me if you tried..."
+      ]
+    }
+  ]
+}

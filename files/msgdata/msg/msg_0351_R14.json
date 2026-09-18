@@ -1,0 +1,91 @@
+{
+  "key": 17167,
+  "messages": [
+    {
+      "id": "msg_0351_R14_00000",
+      "en_US": [
+        "Do you know which is the cutest Pokémon\n",
+        "in the world?\f",
+        "It’s CHANSEY, of course!\f",
+        "I say CHANSEY, and that’s final!\r"
+      ]
+    },
+    {
+      "id": "msg_0351_R14_00001",
+      "en_US": [
+        "I will give you something good\n",
+        "if you can bring me a CHANSEY!"
+      ]
+    },
+    {
+      "id": "msg_0351_R14_00002",
+      "en_US": [
+        "That Pokémon is...CHANSEY!\r",
+        "What are the chances of\n",
+        "seeing CHANSEY this close?\r",
+        "Take this as a token of my gratitude!\r"
+      ]
+    },
+    {
+      "id": "msg_0351_R14_00003",
+      "en_US": [
+        "Let a CHANSEY hold this Lucky Punch,\n",
+        "and it’ll have a better chance at\f",
+        "getting critical hits!\r",
+        "Isn’t that awesome?!"
+      ]
+    },
+    {
+      "id": "msg_0351_R14_00004",
+      "en_US": "Hello, you lovely CHANSEY!"
+    },
+    {
+      "id": "msg_0351_R14_00005",
+      "en_US": [
+        "Do you know which is the cutest Pokémon\n",
+        "in the world?\f",
+        "It is CHANSEY, of course!\f",
+        "I say CHANSEY, and that’s final!"
+      ]
+    },
+    {
+      "id": "msg_0351_R14_00006",
+      "en_US": [
+        "Eusine: {STRVAR_1 3, 0, 0}! Not again!\n",
+        "I’ll be there first next time!\r",
+        "Having followed it here, I’m\n",
+        "starting to understand what\f",
+        "SUICUNE is after.\r",
+        "To be honest, I would like to keep\n",
+        "this information to myself.\r",
+        "But I want to be an honest Trainer in\n",
+        "front of SUICUNE!\r",
+        "That’s why I am sharing a clue with you.\n",
+        "It seems that...\r",
+        "...SUICUNE prefers a hilly place\n",
+        "near water...\f",
+        "...Somewhere north.\r",
+        "I don’t know exactly where, yet.\n",
+        "It will be just you and me!\r",
+        "Who’ll find it first? I challenge you!"
+      ]
+    },
+    {
+      "id": "msg_0351_R14_00007",
+      "en_US": [
+        "Eusine: What’s wrong, {STRVAR_1 3, 0, 0}?\n",
+        "To be honest, I would like to keep\f",
+        "this information to myself.\r",
+        "But I want to be an honest Trainer in\n",
+        "front of SUICUNE!\r",
+        "That’s why I am sharing a clue with you.\r",
+        "It seems that...\n",
+        "...SUICUNE prefers a hilly place\f",
+        "near water...\f",
+        "...Somewhere north.\r",
+        "I don’t know exactly where, yet.\n",
+        "It will be just you and me!"
+      ]
+    }
+  ]
+}

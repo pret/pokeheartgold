@@ -1,0 +1,145 @@
+{
+  "key": 22327,
+  "messages": [
+    {
+      "id": "msg_0744_W40_00000",
+      "en_US": [
+        "You have to warm up before going into\n",
+        "the water.\r",
+        "That’s basic.\n"
+      ]
+    },
+    {
+      "id": "msg_0744_W40_00001",
+      "garbage": 8
+    },
+    {
+      "id": "msg_0744_W40_00002",
+      "garbage": 25
+    },
+    {
+      "id": "msg_0744_W40_00003",
+      "en_US": [
+        "Hey, you’re young and fit!\n",
+        "Don’t ride your Pokémon! Swim!\n"
+      ]
+    },
+    {
+      "id": "msg_0744_W40_00004",
+      "garbage": 6
+    },
+    {
+      "id": "msg_0744_W40_00005",
+      "garbage": 33
+    },
+    {
+      "id": "msg_0744_W40_00006",
+      "en_US": [
+        "Are you going to Cianwood?\r",
+        "How about a quick battle first?\n"
+      ]
+    },
+    {
+      "id": "msg_0744_W40_00007",
+      "garbage": 8
+    },
+    {
+      "id": "msg_0744_W40_00008",
+      "garbage": 29
+    },
+    {
+      "id": "msg_0744_W40_00009",
+      "en_US": [
+        "No inflatable tube for me.\n",
+        "I’m hanging on to a sea Pokémon!\n"
+      ]
+    },
+    {
+      "id": "msg_0744_W40_00010",
+      "garbage": 13
+    },
+    {
+      "id": "msg_0744_W40_00011",
+      "garbage": 31
+    },
+    {
+      "id": "msg_0744_W40_00012",
+      "en_US": [
+        "You can’t see it from here, but there\n",
+        "is a big city called Cianwood\f",
+        "across the sea."
+      ]
+    },
+    {
+      "id": "msg_0744_W40_00013",
+      "en_US": [
+        "I took the ship to go to Olivine for\n",
+        "some sightseeing. I really liked\f",
+        "the atmosphere.\r",
+        "Being a port, it was nothing like\n",
+        "the big cities."
+      ]
+    },
+    {
+      "id": "msg_0744_W40_00014",
+      "en_US": [
+        "Do you know what lies just past\n",
+        "this gate?\r",
+        "It’s the Battle Frontier!\r",
+        "Every time I have a journey, I’ve\n",
+        "raised mostly “useful” Pokémon.\r",
+        "But now that I am here, I think I\n",
+        "should have brought my\f",
+        "“battle” Pokémon!"
+      ]
+    },
+    {
+      "id": "msg_0744_W40_00015",
+      "en_US": [
+        "Hey!\n",
+        "Great waves here!\r",
+        "No one can resist such\n",
+        "good waves!\r"
+      ]
+    },
+    {
+      "id": "msg_0744_W40_00016",
+      "en_US": [
+        "I see... You don’t have Surf yet...\n",
+        "This is just between you and me...\r",
+        "I got Surf from a man at Ecruteak,\n",
+        "and I think he’s still there.\r",
+        "Why don’t you try going there?\r"
+      ]
+    },
+    {
+      "id": "msg_0744_W40_00017",
+      "en_US": [
+        "This is just between you and me.\n",
+        "I got Surf from a man at Ecruteak.\f",
+        "I think he’s still there.\r",
+        "Why don’t you try going there?"
+      ]
+    },
+    {
+      "id": "msg_0744_W40_00018",
+      "en_US": [
+        "Hey!\n",
+        "Great waves here!\r",
+        "No one can resist such\n",
+        "good waves!"
+      ]
+    },
+    {
+      "id": "msg_0744_W40_00019",
+      "en_US": [
+        "Rt. 40\n",
+        "South to Cianwood City"
+      ]
+    },
+    {
+      "id": "msg_0744_W40_00020",
+      "en_US": "Battle Frontier Ahead"
+    }
+  ]
+}

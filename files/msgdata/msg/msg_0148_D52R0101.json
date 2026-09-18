@@ -1,0 +1,50 @@
+{
+  "key": 5282,
+  "messages": [
+    {
+      "id": "msg_0148_D52R0101_00000",
+      "en_US": "GROUDON: Grrgggrrrrah!\r"
+    },
+    {
+      "id": "msg_0148_D52R0101_00001",
+      "en_US": "GROUDON disappeared..."
+    },
+    {
+      "id": "msg_0148_D52R0101_00002",
+      "en_US": [
+        "Well, hello!\n",
+        "That was something you don’t see\f",
+        "every day!\r",
+        "That Pokémon is GROUDON,\n",
+        "a legendary Pokémon in the Hoenn myth\f",
+        "about the shaping of that region.\r",
+        "I see...\r",
+        "The Embedded Tower was built\n",
+        "by the people from Hoenn.\r"
+      ]
+    },
+    {
+      "id": "msg_0148_D52R0101_00003",
+      "en_US": [
+        "The Tower that binds together\n",
+        "the sea, the land, and the sky...\r",
+        "GROUDON was not the only Pokémon\n",
+        "described in the Hoenn myth...\r",
+        "This place may still be hiding\n",
+        "its secrets...\r"
+      ]
+    },
+    {
+      "id": "msg_0148_D52R0101_00004",
+      "en_US": [
+        "The knowledgeable Pokémon Professor\n",
+        "may be able to tell you more when you\f",
+        "show him GROUDON.\r",
+        "Phew!\r",
+        "There are so many connections between\n",
+        "Pokémon and myths.\r",
+        "See you around.\r"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+[wrap-git]
+url = https://github.com/ntrtwl/NitroSystem.git
+revision = d636fb5d2b212e8736f09859fff447be2bd0ac85
+depth = 1
+directory = NitroSystem-071126.1
+
+[provide]
+dependency_names = NitroSystem
+

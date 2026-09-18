@@ -1,0 +1,89 @@
+{
+  "key": 22295,
+  "messages": [
+    {
+      "id": "msg_0399_R42_00000",
+      "en_US": [
+        "Rt. 42 Ecruteak City\n",
+        "to Mahogany Town"
+      ]
+    },
+    {
+      "id": "msg_0399_R42_00001",
+      "en_US": [
+        "Mt. Mortar\n",
+        "Waterfall Cave Inside"
+      ]
+    },
+    {
+      "id": "msg_0399_R42_00002",
+      "en_US": [
+        "Mt. Mortar\n",
+        "Waterfall Cave Inside"
+      ]
+    },
+    {
+      "id": "msg_0399_R42_00003",
+      "en_US": [
+        "Rt. 42 Mahogany Town\n",
+        "to Ecruteak City"
+      ]
+    },
+    {
+      "id": "msg_0399_R42_00004",
+      "en_US": "{SIZE 200}Thud!{SIZE 100}\r"
+    },
+    {
+      "id": "msg_0399_R42_00005",
+      "en_US": [
+        "Oh, boy!\r",
+        "Sorry that I bumped into you.\r",
+        "Did I hurt you?\r",
+        "Please don’t cry.\n",
+        "Here, take this.\r"
+      ]
+    },
+    {
+      "id": "msg_0399_R42_00006",
+      "en_US": [
+        "It’s a move called Strength!\r",
+        "When a Pokémon learns it, it can move\n",
+        "boulders out of your way.\f",
+        "Enjoy a happy mountain-climbing life!\r"
+      ]
+    },
+    {
+      "id": "msg_0399_R42_00007",
+      "en_US": [
+        "Eusine: SUICUNE...\n",
+        "How brave it is!\f",
+        "How refreshing it is!\f",
+        "How beautiful it is!\f",
+        "And how quickly it moves!\r"
+      ]
+    },
+    {
+      "id": "msg_0399_R42_00008",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}!\n",
+        "You seem to be around where\f",
+        "SUICUNE would appear.\r",
+        "Well, that’s OK.\n",
+        "My desire to search for SUICUNE is\f",
+        "far beyond yours...\r",
+        "My grandpa was...quite into myths.\n",
+        "I’ve heard so many stories about\f",
+        "SUICUNE from him.\r"
+      ]
+    },
+    {
+      "id": "msg_0399_R42_00009",
+      "en_US": [
+        "SUICUNE...\r",
+        "I won’t stop following you until\n",
+        "I’ve found out what you’re after...\r",
+        "You hear me!\r"
+      ]
+    }
+  ]
+}

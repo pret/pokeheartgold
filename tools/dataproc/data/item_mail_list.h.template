@@ -1,0 +1,10 @@
+#ifndef POKEPLATINUM_GENERATED_ITEM_MAIL_LIST_H
+#define POKEPLATINUM_GENERATED_ITEM_MAIL_LIST_H
+
+#include "constants/items.h"
+
+static const u16 sMailItemIDs[] = {
+/* =========== MAGIC CONTENT MARKER =========== */
+};
+
+#endif // POKEPLATINUM_GENERATED_ITEM_MAIL_LIST_H

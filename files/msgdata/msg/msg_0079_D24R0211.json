@@ -1,0 +1,54 @@
+{
+  "key": 61531,
+  "messages": [
+    {
+      "id": "msg_0079_D24R0211_00000",
+      "en_US": "It’s a replica of an ancient Pokémon."
+    },
+    {
+      "id": "msg_0079_D24R0211_00001",
+      "en_US": [
+        "Hmmm.\n",
+        "When did this appear...?\r",
+        "I wonder what these symbols mean...\f",
+        "..................\r"
+      ]
+    },
+    {
+      "id": "msg_0079_D24R0211_00002",
+      "en_US": [
+        "Hey, you!\n",
+        "Let’s go back to the Research Center!\r"
+      ]
+    },
+    {
+      "id": "msg_0079_D24R0211_00003",
+      "en_US": [
+        "The symbols on the stone panel were\n",
+        "like this...\r"
+      ]
+    },
+    {
+      "id": "msg_0079_D24R0211_00004",
+      "en_US": [
+        "OUR FRIENDS LOOK\n",
+        "UP AND HEARTILY\f",
+        "CONGRATULATE US\r"
+      ]
+    },
+    {
+      "id": "msg_0079_D24R0211_00005",
+      "en_US": [
+        "I wonder what it means.\n",
+        "We need to examine the ruins once again.\r"
+      ]
+    },
+    {
+      "id": "msg_0079_D24R0211_00006",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} opened the UNOWN Report\n",
+        "and made notes!"
+      ]
+    }
+  ]
+}

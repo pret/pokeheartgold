@@ -3,6 +3,7 @@
 #pragma once
 #include "constants/scrcmd.h"
 #include "macros/movement.inc"
+#include "constants/script_consts.h"
 
     .option alignment off
 

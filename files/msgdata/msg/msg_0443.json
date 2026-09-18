@@ -1,0 +1,41 @@
+{
+  "key": 12412,
+  "messages": [
+    {
+      "id": "msg_0443_00000",
+      "en_US": "HP"
+    },
+    {
+      "id": "msg_0443_00001",
+      "en_US": "Attack"
+    },
+    {
+      "id": "msg_0443_00002",
+      "en_US": "Defense"
+    },
+    {
+      "id": "msg_0443_00003",
+      "en_US": "Speed"
+    },
+    {
+      "id": "msg_0443_00004",
+      "en_US": "Sp. Atk"
+    },
+    {
+      "id": "msg_0443_00005",
+      "en_US": "Sp. Def"
+    },
+    {
+      "id": "msg_0443_00006",
+      "en_US": "accuracy"
+    },
+    {
+      "id": "msg_0443_00007",
+      "en_US": "evasiveness"
+    },
+    {
+      "id": "msg_0443_00008",
+      "en_US": "Max. HP"
+    }
+  ]
+}
