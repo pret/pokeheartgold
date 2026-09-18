@@ -97,7 +97,8 @@ resdat_template = files('resdat.json.txt')
 
 resdat_bin_gen = generator(json2bin_sh,
     arguments : [
-        '--compiler', meson.get_compiler('c', native: false).cmd_array()[0],
+        '--compiler', ' '.join(meson.get_compiler('c', native: false).cmd_array()),
+        '--flags', ' '.join(c_args),
         '--jsonproc', jsonproc_exe.full_path(),
         '--template', resdat_template[0].full_path(),
         '--o2narc', o2narc_exe.full_path(),

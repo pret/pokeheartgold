@@ -9,7 +9,7 @@ mmodel_template = files('mmodel.json.txt')
 
 mmodel_bin_gen = generator(json2bin_sh,
     arguments : [
-        '--compiler', meson.get_compiler('nasm', native: false).cmd_array()[0],
+        '--compiler', ' '.join(meson.get_compiler('nasm', native: false).cmd_array()),
         '--jsonproc', jsonproc_exe.full_path(),
         '--template', mmodel_template[0].full_path(),
         '--obj-copy',

@@ -15,7 +15,7 @@ if game_version == 'HEARTGOLD'
         ],
         command : [
             json2bin_sh,
-            '--compiler', meson.get_compiler('nasm', native: false).cmd_array()[0],
+            '--compiler', ' '.join(meson.get_compiler('nasm', native: false).cmd_array()),
             '--jsonproc', jsonproc_exe.full_path(),
             '--template', headbutt_template[0].full_path(),
             '--o2narc', o2narc_exe.full_path(),
@@ -43,7 +43,7 @@ elif game_version == 'SOULSILVER'
         ],
         command : [
             json2bin_sh,
-            '--compiler', meson.get_compiler('nasm', native: false).cmd_array()[0],
+            '--compiler', ' '.join(meson.get_compiler('nasm', native: false).cmd_array()),
             '--jsonproc', jsonproc_exe.full_path(),
             '--template', headbutt_template[0].full_path(),
             '--o2narc', o2narc_exe.full_path(),
@@ -115,7 +115,7 @@ safari_enc_narc = custom_target('safari_enc.narc',
     ],
     command : [
         json2bin_sh,
-        '--compiler', meson.get_compiler('nasm', native: false).cmd_array()[0],
+        '--compiler', ' '.join(meson.get_compiler('nasm', native: false).cmd_array()),
         '--jsonproc', jsonproc_exe.full_path(),
         '--template', safari_enc_template[0].full_path(),
         '--o2narc', o2narc_exe.full_path(),

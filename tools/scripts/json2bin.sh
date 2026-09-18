@@ -14,6 +14,7 @@ help() {
     echo " -d | --out-dir           directory for output files"
     echo " -l | --language          language of the intermediate file (default: c)"
     echo " -D | --define            defines to be used by the compiler"
+    echo " -F | --flags             additional flags to be passed to the compiler"
     echo " -N | --narc              outputs the narc directly. For use when everything is contained in a single json file."
     echo " -w | --overwrite-name    name to use for the output files instead of the original name"
     echo " -x | --overwrite-ext     extension to use for the output files instead of .bin"
@@ -29,6 +30,7 @@ JSONPROC=""
 TEMPLATE=""
 O2NARC=""
 CC="arm-none-eabi-gcc"
+CFLAGS=
 OUTDIR="."
 LANG="c"
 PADDING="0xFF"
@@ -61,6 +63,11 @@ while [[ $# -gt 0 ]] ; do
             ;;
         -D|--define)
             DEFINES+="-D$2 "
+            shift
+            shift
+            ;;
+        -F|--flags)
+            CFLAGS="$2"
             shift
             shift
             ;;
@@ -133,10 +140,10 @@ for json_file in "${JSON_FILES[@]}" ; do
     json_fname=${json_file##*/}
     json_noext=${json_fname%.*}
     json_noext="${json_noext}"
-    
-    
+
+
     # Output files
-    if [ "$OW_NAME_FLAG" = true ]; then        
+    if [ "$OW_NAME_FLAG" = true ]; then
         json_intr="$OUTDIR/$OW_NAME.c"
         if [ "$LANG" = asm ] ; then
             json_intr="$OUTDIR/$OW_NAME.s"
@@ -148,7 +155,7 @@ for json_file in "${JSON_FILES[@]}" ; do
         fi
         narc="$OUTDIR/$OW_NAME.narc"
         naix="$OUTDIR/$OW_NAME.naix"
-    else 
+    else
         json_intr="$OUTDIR/$json_noext.c"
         if [ "$LANG" = asm ] ; then
             json_intr="$OUTDIR/$json_noext.s"
@@ -163,7 +170,7 @@ for json_file in "${JSON_FILES[@]}" ; do
     fi
     # Convert
     $JSONPROC "$json_file" $TEMPLATE "$json_intr"
-    $CC $INCLUDES $DEFINES -c "$json_intr" -o "$json_obj" 
+    $CC $CFLAGS $INCLUDES $DEFINES -c "$json_intr" -o "$json_obj"
     if [ "$OBJ_COPY_FLAG" = true ] ; then
         $OBJ_COPY -O binary "$json_obj" "$json_bin"
     elif [ "$BUILD_NARC" = true ] ; then

@@ -10,7 +10,7 @@ waza_oshie_bin = custom_target('waza_oshie.bin',
     ],
     command : [
         json2bin_sh,
-        '--compiler', meson.get_compiler('nasm', native: false).cmd_array()[0],
+        '--compiler', ' '.join(meson.get_compiler('nasm', native: false).cmd_array()),
         '--jsonproc', jsonproc_exe.full_path(),
         '--template', waza_oshie_template[0].full_path(),
         '--o2narc', o2narc_exe.full_path(),

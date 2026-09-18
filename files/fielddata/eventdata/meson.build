@@ -7,7 +7,7 @@ zone_event_template = files('zone_event.json.txt')
 
 zone_event_gen = generator(json2bin_sh,
     arguments : [
-        '--compiler', meson.get_compiler('nasm', native: false).cmd_array()[0],
+        '--compiler', ' '.join(meson.get_compiler('nasm', native: false).cmd_array()),
         '--jsonproc', jsonproc_exe.full_path(),
         '--template', zone_event_template[0].full_path(),
         '--o2narc', o2narc_exe.full_path(),
