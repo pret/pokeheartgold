@@ -16,7 +16,3 @@ subdir('scripts')
 
 # Tools from the subprojects
 makelcf_exe = find_program('makelcf', native: true)
-
-#mwcc is needed for compiling objects for o2narc
-mwcc_exe = find_program('./metroskrew/bin/mwccarm.exe')
-mwcc_args = ['-wrap:sdk', '2.0/sp2p2']
