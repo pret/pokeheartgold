@@ -34,7 +34,7 @@ subdir('namein')
 
 namein_narc = custom_target('namein.narc',
     command : [
-        nitroarc_exe, 
+        nitroarc_exe,
         '--create',
         '--index-namespace',
         '--file', '@OUTPUT0@',
@@ -65,7 +65,7 @@ photo_data_json = files('photo_data.json')
 
 photo_data_narc = custom_target('pmtel_book.dat',
     input : photo_data_json,
-    output: [ 
+    output: [
         'photo_data.narc',
         'photo_data.naix'
     ],
@@ -97,6 +97,7 @@ resdat_template = files('resdat.json.txt')
 
 resdat_bin_gen = generator(json2bin_sh,
     arguments : [
+        '--compiler', meson.get_compiler('c', native: false).cmd_array()[0],
         '--jsonproc', jsonproc_exe.full_path(),
         '--template', resdat_template[0].full_path(),
         '--o2narc', o2narc_exe.full_path(),
@@ -114,9 +115,9 @@ resdat_bin_gen = generator(json2bin_sh,
 )
 
 resdat_narc = custom_target('resdat.narc',
-    output: [ 
-        'resdat.narc', 
-        'resdat.naix' 
+    output: [
+        'resdat.narc',
+        'resdat.naix'
     ],
     input: resdat_bin_gen.process(resdat_json),
     command: [
