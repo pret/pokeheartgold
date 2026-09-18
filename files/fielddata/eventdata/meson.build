@@ -7,7 +7,7 @@ zone_event_template = files('zone_event.json.txt')
 
 zone_event_gen = generator(json2bin_sh,
     arguments : [
-        '--compiler', relative_source_root / 'tools' / 'metroskrew' / 'bin' / 'mwasmarm.exe',
+        '--compiler', meson.get_compiler('nasm', native: false).cmd_array()[0],
         '--jsonproc', jsonproc_exe.full_path(),
         '--template', zone_event_template[0].full_path(),
         '--o2narc', o2narc_exe.full_path(),
@@ -32,12 +32,12 @@ subdir('zone_event')
 
 zone_event_narc = custom_target('zone_event.narc',
     input : zone_event_gen.process(zone_event_json),
-    output: [ 
-        'zone_event.narc', 
+    output: [
+        'zone_event.narc',
         'zone_event.naix',
     ],
     command : [
-        nitroarc_exe, 
+        nitroarc_exe,
         '--create',
         '--index-namespace',
         '--file', '@OUTPUT0@',

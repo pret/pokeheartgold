@@ -8,13 +8,13 @@ zukan_template = files('zukan_data.json.txt')
 
 zukan_narc = custom_target('zukan_data.narc',
     input : zukan_json,
-    output: [ 
-        'zukan_data.narc', 
-        'zukan_data.naix' 
+    output: [
+        'zukan_data.narc',
+        'zukan_data.naix'
     ],
     command : [
         json2bin_sh,
-        '--compiler', relative_source_root / 'tools' / 'metroskrew' / 'bin' / 'mwasmarm.exe',
+        '--compiler', meson.get_compiler('nasm', native: false).cmd_array()[0],
         '--jsonproc', jsonproc_exe.full_path(),
         '--template', zukan_template[0].full_path(),
         '--o2narc', o2narc_exe.full_path(),
@@ -38,13 +38,13 @@ naix_headers += zukan_narc[1]
 
 zukan_gira_narc = custom_target('zukan_data_gira.narc',
     input : zukan_json,
-    output: [ 
-        'zukan_data_gira.narc', 
-        'zukan_data_gira.naix' 
+    output: [
+        'zukan_data_gira.narc',
+        'zukan_data_gira.naix'
     ],
     command : [
         json2bin_sh,
-        '--compiler', relative_source_root / 'tools' / 'metroskrew' / 'bin' / 'mwasmarm.exe',
+        '--compiler', meson.get_compiler('nasm', native: false).cmd_array()[0],
         '--jsonproc', jsonproc_exe.full_path(),
         '--template', zukan_template[0].full_path(),
         '--o2narc', o2narc_exe.full_path(),
@@ -76,13 +76,13 @@ zukan_enc_template = files('zukan_enc.json.txt')
 if game_version == 'HEARTGOLD'
     zukan_enc_gold_narc = custom_target('zukan_enc_gold.narc',
         input : zukan_enc_json,
-        output: [ 
+        output: [
             'zukan_enc_gold.narc',
-            'zukan_enc.naix' 
+            'zukan_enc.naix'
         ],
         command : [
             json2bin_sh,
-            '--compiler', relative_source_root / 'tools' / 'metroskrew' / 'bin' / 'mwasmarm.exe',
+            '--compiler', meson.get_compiler('nasm', native: false).cmd_array()[0],
             '--jsonproc', jsonproc_exe.full_path(),
             '--template', zukan_enc_template[0].full_path(),
             '--o2narc', o2narc_exe.full_path(),
@@ -110,13 +110,13 @@ if game_version == 'HEARTGOLD'
 elif game_version == 'SOULSILVER'
     zukan_enc_silver_narc = custom_target('zukan_enc_silver.narc',
         input : zukan_enc_json,
-        output: [ 
+        output: [
             'zukan_enc_silver.narc',
-            'zukan_enc.naix' 
+            'zukan_enc.naix'
         ],
         command : [
             json2bin_sh,
-            '--compiler', relative_source_root / 'tools' / 'metroskrew' / 'bin' / 'mwasmarm.exe',
+            '--compiler', meson.get_compiler('nasm', native: false).cmd_array()[0],
             '--jsonproc', jsonproc_exe.full_path(),
             '--template', zukan_enc_template[0].full_path(),
             '--o2narc', o2narc_exe.full_path(),
@@ -138,7 +138,7 @@ elif game_version == 'SOULSILVER'
         ],
         build_by_default:true
     )
-        
+
     nitrofs_files += zukan_enc_silver_narc
     naix_headers += zukan_enc_silver_narc[1]
 endif

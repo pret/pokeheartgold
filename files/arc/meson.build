@@ -9,13 +9,13 @@ headbutt_template = files('headbutt.json.txt')
 if game_version == 'HEARTGOLD'
     headbutt_narc = custom_target('headbutt.heartgold.narc',
         input : headbutt_json,
-        output: [ 
-            'headbutt.heartgold.narc', 
-            'headbutt.heartgold.naix' 
+        output: [
+            'headbutt.heartgold.narc',
+            'headbutt.heartgold.naix'
         ],
         command : [
             json2bin_sh,
-            '--compiler', relative_source_root / 'tools' / 'metroskrew' / 'bin' / 'mwasmarm.exe',
+            '--compiler', meson.get_compiler('nasm', native: false).cmd_array()[0],
             '--jsonproc', jsonproc_exe.full_path(),
             '--template', headbutt_template[0].full_path(),
             '--o2narc', o2narc_exe.full_path(),
@@ -37,13 +37,13 @@ if game_version == 'HEARTGOLD'
 elif game_version == 'SOULSILVER'
     headbutt_narc = custom_target('headbutt.soulsilver.narc',
         input : headbutt_json,
-        output: [ 
-            'headbutt.soulsilver.narc', 
-            'headbutt.soulsilver.naix' 
+        output: [
+            'headbutt.soulsilver.narc',
+            'headbutt.soulsilver.naix'
         ],
         command : [
             json2bin_sh,
-            '--compiler', relative_source_root / 'tools' / 'metroskrew' / 'bin' / 'mwasmarm.exe',
+            '--compiler', meson.get_compiler('nasm', native: false).cmd_array()[0],
             '--jsonproc', jsonproc_exe.full_path(),
             '--template', headbutt_template[0].full_path(),
             '--o2narc', o2narc_exe.full_path(),
@@ -75,9 +75,9 @@ ppark_template = files('ppark.json.txt')
 
 ppark_narc = custom_target('ppark.narc',
     input : ppark_json,
-    output: [ 
-        'ppark.narc', 
-        'ppark.naix' 
+    output: [
+        'ppark.narc',
+        'ppark.naix'
     ],
     command : [
         json2bin_sh,
@@ -109,13 +109,13 @@ safari_enc_template = files('safari_enc.json.txt')
 
 safari_enc_narc = custom_target('safari_enc.narc',
     input : safari_enc_json,
-    output: [ 
-        'safari_enc.narc', 
-        'safari_enc.naix' 
+    output: [
+        'safari_enc.narc',
+        'safari_enc.naix'
     ],
     command : [
         json2bin_sh,
-        '--compiler', relative_source_root / 'tools' / 'metroskrew' / 'bin' / 'mwasmarm.exe',
+        '--compiler', meson.get_compiler('nasm', native: false).cmd_array()[0],
         '--jsonproc', jsonproc_exe.full_path(),
         '--template', safari_enc_template[0].full_path(),
         '--o2narc', o2narc_exe.full_path(),

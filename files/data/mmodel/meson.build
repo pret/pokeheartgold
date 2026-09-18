@@ -9,7 +9,7 @@ mmodel_template = files('mmodel.json.txt')
 
 mmodel_bin_gen = generator(json2bin_sh,
     arguments : [
-        '--compiler', relative_source_root / 'tools' / 'metroskrew' / 'bin' / 'mwasmarm.exe',
+        '--compiler', meson.get_compiler('nasm', native: false).cmd_array()[0],
         '--jsonproc', jsonproc_exe.full_path(),
         '--template', mmodel_template[0].full_path(),
         '--obj-copy',
@@ -25,9 +25,9 @@ mmodel_bin_gen = generator(json2bin_sh,
 )
 
 mmodel_narc = custom_target('mmodel.narc',
-    output: [ 
-        'mmodel.narc', 
-        'mmodel.naix' 
+    output: [
+        'mmodel.narc',
+        'mmodel.naix'
     ],
     input: [
         mmodel_bin_gen.process(mmodel_json),

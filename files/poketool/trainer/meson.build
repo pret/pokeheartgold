@@ -27,9 +27,9 @@ trdata_template = files('trdata.json.txt')
 
 trdata_narc = custom_target('trdata.narc',
     input : trdata_json,
-    output: [ 
-        'trdata.narc', 
-        'trdata.naix' 
+    output: [
+        'trdata.narc',
+        'trdata.naix'
     ],
     command : [
         json2bin_sh,
@@ -62,13 +62,13 @@ trpoke_template = files('trpoke.json.txt')
 
 trpoke_narc = custom_target('trpoke.narc',
     input : trpoke_json,
-    output: [ 
-        'trpoke.narc', 
-        'trpoke.naix' 
+    output: [
+        'trpoke.narc',
+        'trpoke.naix'
     ],
     command : [
         json2bin_sh,
-        '--compiler', relative_source_root / 'tools' / 'metroskrew' / 'bin' / 'mwasmarm.exe',
+        '--compiler', meson.get_compiler('nasm', native: false).cmd_array()[0],
         '--jsonproc', jsonproc_exe.full_path(),
         '--template', trpoke_template[0].full_path(),
         '--o2narc', o2narc_exe.full_path(),

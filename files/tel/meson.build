@@ -5,12 +5,12 @@ pmtel_book_template = files('pmtel_book.json.txt')
 
 pmtel_book_dat = custom_target('pmtel_book.dat',
     input : pmtel_book_json,
-    output: [ 
+    output: [
         'pmtel_book.dat'
     ],
     command : [
         json2bin_sh,
-        '--compiler', relative_source_root / 'tools' / 'metroskrew' / 'bin' / 'mwasmarm.exe',
+        '--compiler', meson.get_compiler('nasm', native: false).cmd_array()[0],
         '--jsonproc', jsonproc_exe.full_path(),
         '--template', pmtel_book_template[0].full_path(),
         '--o2narc', o2narc_exe.full_path(),
