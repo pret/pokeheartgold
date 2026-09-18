@@ -26,6 +26,9 @@ with (
 ):
     for bank in filter(
         lambda line: not line.startswith("#"),
-        map(lambda line: line.split()[0].lower().replace('narc_msg_', '').replace('_bin', ''), infile.readlines()),
+        map(
+            lambda line: line.split()[0].replace("NARC_msg_", "").replace("_bin", ""),
+            infile.readlines(),
+        ),
     ):
         print(bank, file=outfile)
