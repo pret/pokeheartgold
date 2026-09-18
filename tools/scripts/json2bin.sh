@@ -24,7 +24,7 @@ help() {
 
 JSON_FILES=()
 INCLUDES=()
-DEFINES=()
+DEFINES=""
 JSONPROC=""
 TEMPLATE=""
 O2NARC=""
@@ -60,7 +60,7 @@ while [[ $# -gt 0 ]] ; do
             shift
             ;;
         -D|--define)
-            DEFINES+=("-D$2")
+            DEFINES+="-D$2 "
             shift
             shift
             ;;
@@ -163,7 +163,7 @@ for json_file in "${JSON_FILES[@]}" ; do
     fi
     # Convert
     $JSONPROC "$json_file" $TEMPLATE "$json_intr"
-    $CC "${INCLUDES[@]}" "${DEFINES[@]}" -c "$json_intr" -o "$json_obj" 
+    $CC "${INCLUDES[@]}" $DEFINES -c "$json_intr" -o "$json_obj" 
     if [ "$OBJ_COPY_FLAG" = true ] ; then
         $OBJ_COPY -O binary "$json_obj" "$json_bin"
     elif [ "$BUILD_NARC" = true ] ; then
