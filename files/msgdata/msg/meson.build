@@ -15,7 +15,7 @@ generated_text_banks = [
 text_bank_consts = fs.read(text_banks_txt).splitlines()
 text_bank_files = []
 foreach text_bank : text_bank_consts
-    text_bank_name = (text_bank.replace('NARC_msg_', '').replace('_bin', '').to_lower() + '.json')
+    text_bank_name = (text_bank.replace('NARC_msg_', '').replace('_bin', '') + '.json')
     if not generated_text_banks.contains(text_bank_name)
         text_bank_files += files(text_bank_name)
     endif
