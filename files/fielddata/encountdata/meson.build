@@ -8,12 +8,14 @@ gs_enc_data_template = files('gs_enc_data.json.txt')
 
 g_enc_data_narc = custom_target('g_enc_data.narc',
     input : gs_enc_data_json,
-    output: [ 
-        'g_enc_data.narc', 
-        'g_enc_data.naix' 
+    output: [
+        'g_enc_data.narc',
+        'g_enc_data.naix'
     ],
     command : [
         json2bin_sh,
+        '--compiler', ' '.join(meson.get_compiler('c', native: false).cmd_array()),
+        '--flags', ' '.join(c_args),
         '--jsonproc', jsonproc_exe.full_path(),
         '--template', gs_enc_data_template[0].full_path(),
         '--o2narc', o2narc_exe.full_path(),
@@ -39,12 +41,14 @@ naix_headers += g_enc_data_narc[1]
 
 s_enc_data_narc = custom_target('s_enc_data.narc',
     input : gs_enc_data_json,
-    output: [ 
-        's_enc_data.narc', 
-        's_enc_data.naix' 
+    output: [
+        's_enc_data.narc',
+        's_enc_data.naix'
     ],
     command : [
         json2bin_sh,
+        '--compiler', ' '.join(meson.get_compiler('c', native: false).cmd_array()),
+        '--flags', ' '.join(c_args),
         '--jsonproc', jsonproc_exe.full_path(),
         '--template', gs_enc_data_template[0].full_path(),
         '--o2narc', o2narc_exe.full_path(),

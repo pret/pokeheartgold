@@ -9,12 +9,14 @@ evo_template = files('evo.json.txt')
 
 evo_narc = custom_target('evo.narc',
     input : evo_json,
-    output: [ 
-        'evo.narc', 
-        'evo.naix' 
+    output: [
+        'evo.narc',
+        'evo.naix'
     ],
     command : [
         json2bin_sh,
+        '--compiler', ' '.join(meson.get_compiler('c', native: false).cmd_array()),
+        '--flags', ' '.join(c_args),
         '--jsonproc', jsonproc_exe.full_path(),
         '--template', evo_template[0].full_path(),
         '--o2narc', o2narc_exe.full_path(),
@@ -70,12 +72,14 @@ personal_template = files('personal.json.txt')
 
 personal_narc = custom_target('personal.narc',
     input : personal_json,
-    output: [ 
-        'personal.narc', 
-        'personal.naix' 
+    output: [
+        'personal.narc',
+        'personal.naix'
     ],
     command : [
         json2bin_sh,
+        '--compiler', ' '.join(meson.get_compiler('c', native: false).cmd_array()),
+        '--flags', ' '.join(c_args),
         '--jsonproc', jsonproc_exe.full_path(),
         '--template', personal_template[0].full_path(),
         '--o2narc', o2narc_exe.full_path(),

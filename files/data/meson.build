@@ -71,6 +71,8 @@ photo_data_narc = custom_target('pmtel_book.dat',
     ],
     command : [
         json2bin_sh,
+        '--compiler', ' '.join(meson.get_compiler('c', native: false).cmd_array()),
+        '--flags', ' '.join(c_args),
         '--jsonproc', jsonproc_exe.full_path(),
         '--template', photo_data_template[0].full_path(),
         '--o2narc', o2narc_exe.full_path(),
