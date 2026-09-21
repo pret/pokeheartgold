@@ -4966,7 +4966,7 @@ static const s8 sPokeathlonPerformanceNatureMods[NATURE_NUM][5] = {
     { 0,   -10, 10,  0,   0   },
 };
 
-void CalcBoxMonPokeathlonPerformance(BoxPokemon *boxMon, struct PokeathlonTodayPerformance *dest) {
+void CalcBoxMonPokeathlonPerformance(BoxPokemon *boxMon, PokeathlonTodayPerformance *dest) {
     u32 pid;
     u32 nature;
     struct PokeathlonBasePerformance data;
@@ -5007,16 +5007,16 @@ void CalcBoxMonPokeathlonPerformance(BoxPokemon *boxMon, struct PokeathlonTodayP
     dest->stats[PERFORMANCE_STAMINA].hi = data.minmax[ARCPERF_STAMINA][1];
 }
 
-void CalcMonPokeathlonPerformance(Pokemon *mon, struct PokeathlonTodayPerformance *dest) {
+void CalcMonPokeathlonPerformance(Pokemon *mon, PokeathlonTodayPerformance *dest) {
     CalcBoxMonPokeathlonPerformance(Mon_GetBoxMon(mon), dest);
 }
 
-void CalcBoxmonPokeathlonStars(struct PokeathlonPerformanceStars *dest, BoxPokemon *boxMon, const s8 *aprijuice, enum HeapID heapID) {
+void CalcBoxmonPokeathlonStars(PokeathlonPerformanceStars *dest, BoxPokemon *boxMon, const s8 *aprijuice, enum HeapID heapID) {
 #pragma unused(heapID)
     int i;
-    struct PokeathlonTodayPerformance basePerf;
+    PokeathlonTodayPerformance basePerf;
 
-    MI_CpuClear8(dest, sizeof(struct PokeathlonPerformanceStars));
+    MI_CpuClear8(dest, sizeof(PokeathlonPerformanceStars));
     CalcBoxMonPokeathlonPerformance(boxMon, &basePerf);
     for (i = PERFORMANCE_MIN; i < PERFORMANCE_MAX; i++) {
         s16 stars = (aprijuice != NULL
@@ -5039,6 +5039,6 @@ void CalcBoxmonPokeathlonStars(struct PokeathlonPerformanceStars *dest, BoxPokem
     }
 }
 
-void CalcMonPokeathlonStars(struct PokeathlonPerformanceStars *dest, Pokemon *mon, const s8 *aprijuice, enum HeapID heapID) {
+void CalcMonPokeathlonStars(PokeathlonPerformanceStars *dest, Pokemon *mon, const s8 *aprijuice, enum HeapID heapID) {
     CalcBoxmonPokeathlonStars(dest, Mon_GetBoxMon(mon), aprijuice, heapID);
 }

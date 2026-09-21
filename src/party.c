@@ -48,7 +48,7 @@ BOOL Party_AddMon(Party *party, const Pokemon *mon) {
         return FALSE;
     }
     party->core.mons[party->core.curCount] = *mon;
-    MI_CpuClear8(&party->extra.aprijuiceModifiers[party->core.curCount], sizeof(PartyExtraSub));
+    MI_CpuClear8(&party->extra.aprijuiceModifiers[party->core.curCount], sizeof(PartyAprijuiceModifier));
     party->core.curCount++;
     return TRUE;
 }
@@ -61,7 +61,7 @@ BOOL Party_RemoveMon(Party *party, int slot) {
         party->extra.aprijuiceModifiers[slot] = party->extra.aprijuiceModifiers[slot + 1];
     }
     ZeroMonData(&party->core.mons[slot]);
-    MI_CpuClear8(&party->extra.aprijuiceModifiers[slot], sizeof(PartyExtraSub));
+    MI_CpuClear8(&party->extra.aprijuiceModifiers[slot], sizeof(PartyAprijuiceModifier));
     party->core.curCount--;
     return TRUE;
 }
@@ -79,19 +79,19 @@ Pokemon *Party_GetMonByIndex(Party *party, int slot) {
     return &party->core.mons[slot];
 }
 
-void Party_GetMonAprijuiceModifiers(const Party *party, PartyExtraSub *dest, int slot) {
+void Party_GetMonAprijuiceModifiers(const Party *party, PartyAprijuiceModifier *dest, int slot) {
     PARTY_ASSERT_SLOT(party, slot);
     *dest = party->extra.aprijuiceModifiers[slot];
 }
 
-void Party_SetMonAprijuiceModifiers(Party *party, const PartyExtraSub *src, int slot) {
+void Party_SetMonAprijuiceModifiers(Party *party, const PartyAprijuiceModifier *src, int slot) {
     PARTY_ASSERT_SLOT(party, slot);
     party->extra.aprijuiceModifiers[slot] = *src;
 }
 
 void Party_ResetMonAprijuiceModifiers(Party *party, int slot) {
     PARTY_ASSERT_SLOT(party, slot);
-    MI_CpuClear8(&party->extra.aprijuiceModifiers[slot], sizeof(PartyExtraSub));
+    MI_CpuClear8(&party->extra.aprijuiceModifiers[slot], sizeof(PartyAprijuiceModifier));
 }
 
 void Party_SafeCopyMonToSlot_ResetAprijuiceModifiers(Party *party, int slot, Pokemon *src) {
@@ -99,13 +99,13 @@ void Party_SafeCopyMonToSlot_ResetAprijuiceModifiers(Party *party, int slot, Pok
     {
         BOOL valid = GetMonData(&party->core.mons[slot], MON_DATA_SPECIES_EXISTS, NULL) - GetMonData(src, MON_DATA_SPECIES_EXISTS, NULL);
         party->core.mons[slot] = *src;
-        MI_CpuClear8(&party->extra.aprijuiceModifiers[slot], sizeof(PartyExtraSub));
+        MI_CpuClear8(&party->extra.aprijuiceModifiers[slot], sizeof(PartyAprijuiceModifier));
         party->core.curCount += valid;
     }
 }
 
 BOOL Party_SwapSlots(Party *party, int slotA, int slotB) {
-    PartyExtraSub tmp_PartyExtraSub;
+    PartyAprijuiceModifier tmp_PartyAprijuiceModifier;
     Pokemon *tmp_POKEMON;
 
     PARTY_ASSERT_SLOT(party, slotA);
@@ -116,9 +116,9 @@ BOOL Party_SwapSlots(Party *party, int slotA, int slotB) {
     party->core.mons[slotB] = *tmp_POKEMON;
     Heap_Free(tmp_POKEMON);
 
-    tmp_PartyExtraSub = party->extra.aprijuiceModifiers[slotA];
+    tmp_PartyAprijuiceModifier = party->extra.aprijuiceModifiers[slotA];
     party->extra.aprijuiceModifiers[slotA] = party->extra.aprijuiceModifiers[slotB];
-    party->extra.aprijuiceModifiers[slotB] = tmp_PartyExtraSub;
+    party->extra.aprijuiceModifiers[slotB] = tmp_PartyAprijuiceModifier;
     return FALSE;
 }
 
