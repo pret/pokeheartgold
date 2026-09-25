@@ -14,8 +14,8 @@
 
 	.text
 
-	thumb_func_start ov01_021EAFD4
-ov01_021EAFD4: ; 0x021EAFD4
+	thumb_func_start FieldTextureManager_Init
+FieldTextureManager_Init: ; 0x021EAFD4
 	push {r4, lr}
 	mov r1, #0x63
 	mov r0, #4
@@ -44,10 +44,10 @@ _021EAFEE:
 	str r1, [r4, r0]
 	add r0, r4, #0
 	pop {r4, pc}
-	thumb_func_end ov01_021EAFD4
+	thumb_func_end FieldTextureManager_Init
 
-	thumb_func_start ov01_021EB00C
-ov01_021EB00C: ; 0x021EB00C
+	thumb_func_start FieldTextureManager_LoadTexture
+FieldTextureManager_LoadTexture: ; 0x021EB00C
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	str r1, [sp]
@@ -85,7 +85,7 @@ _021EB04E:
 	bl NARC_Delete
 	add r0, r6, #0
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ov01_021EB00C
+	thumb_func_end FieldTextureManager_LoadTexture
 
 	thumb_func_start ov01_021EB058
 ov01_021EB058: ; 0x021EB058
@@ -185,8 +185,8 @@ _021EB0C8:
 _021EB110: .word ov01_02209898
 	thumb_func_end ov01_021EB058
 
-	thumb_func_start ov01_021EB114
-ov01_021EB114: ; 0x021EB114
+	thumb_func_start FieldTextureManager_Free
+FieldTextureManager_Free: ; 0x021EB114
 	push {r3, r4, r5, r6, r7, lr}
 	cmp r0, #0
 	beq _021EB18A
@@ -250,7 +250,7 @@ _021EB182:
 	blt _021EB12E
 _021EB18A:
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ov01_021EB114
+	thumb_func_end FieldTextureManager_Free
 
 	thumb_func_start ov01_021EB18C
 ov01_021EB18C: ; 0x021EB18C
@@ -282,8 +282,8 @@ _021EB1BA:
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov01_021EB18C
 
-	thumb_func_start ov01_021EB1BC
-ov01_021EB1BC: ; 0x021EB1BC
+	thumb_func_start FieldTextureManager_FreeAllSlots
+FieldTextureManager_FreeAllSlots: ; 0x021EB1BC
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	beq _021EB1D8
@@ -300,17 +300,17 @@ _021EB1C4:
 _021EB1D8:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov01_021EB1BC
+	thumb_func_end FieldTextureManager_FreeAllSlots
 
-	thumb_func_start ov01_021EB1DC
-ov01_021EB1DC: ; 0x021EB1DC
+	thumb_func_start FieldTextureManager_Destroy
+FieldTextureManager_Destroy: ; 0x021EB1DC
 	push {r3, lr}
 	cmp r0, #0
 	beq _021EB1E6
 	bl Heap_Free
 _021EB1E6:
 	pop {r3, pc}
-	thumb_func_end ov01_021EB1DC
+	thumb_func_end FieldTextureManager_Destroy
 
 	.data
 

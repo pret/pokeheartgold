@@ -350,20 +350,20 @@
       ]
     },
     {
-      "name": "ScrCmd_055",
+      "name": "SetSignpostMap",
       "args": [
         1,
         2
       ]
     },
     {
-      "name": "ScrCmd_057",
+      "name": "SetSignpostAction",
       "args": [
         1
       ]
     },
     {
-      "name": "ScrCmd_058",
+      "name": "WaitSignpostAction",
       "args": []
     },
     {
@@ -374,7 +374,7 @@
       ]
     },
     {
-      "name": "ScrCmd_060",
+      "name": "WaitSignpost",
       "args": [
         "var"
       ]
@@ -1851,27 +1851,27 @@
       "args": []
     },
     {
-      "name": "ScrCmd_302",
+      "name": "CheckStepTakenFlag",
       "args": [
         2
       ]
     },
     {
-      "name": "ScrCmd_303",
+      "name": "SetStepTakenFlag",
       "args": []
     },
     {
-      "name": "ScrCmd_304",
+      "name": "GetStepTakenFlag",
       "args": []
     },
     {
-      "name": "ScrCmd_305",
+      "name": "ScrCmd_CheckGameClearFlag",
       "args": [
         2
       ]
     },
     {
-      "name": "ScrCmd_306",
+      "name": "ScrCmd_SetGameClearFlag",
       "args": []
     },
     {
@@ -1923,15 +1923,15 @@
       "args": []
     },
     {
-      "name": "ScrCmd_315",
+      "name": "BindEcruteakGymCandleToTrainerSprite",
       "args": []
     },
     {
-      "name": "ScrCmd_316",
+      "name": "UnbindEcruteakGymCandleFromTrainerSprite",
       "args": []
     },
     {
-      "name": "ScrCmd_317",
+      "name": "ExtinguishEcruteakGymCandle",
       "args": [
         1
       ]
@@ -3047,7 +3047,7 @@
       ]
     },
     {
-      "name": "ScrCmd_485",
+      "name": "StartBattleRegulationMenuTask",
       "args": [
         2
       ]
@@ -4600,7 +4600,7 @@
       ]
     },
     {
-      "name": "ScrCmd_726",
+      "name": "ProcessSoundplate",
       "args": []
     },
     {
@@ -4971,14 +4971,14 @@
       ]
     },
     {
-      "name": "ScrCmd_791",
+      "name": "CheckSafariZoneChallengeCompleted",
       "args": [
         1,
         "var"
       ]
     },
     {
-      "name": "ScrCmd_792",
+      "name": "UpdateSafariZoneIGT",
       "args": []
     },
     {

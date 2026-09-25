@@ -81,7 +81,7 @@ UnkStruct_ov42_02228110 *ov42_022280B8(UnkStruct_ov42_022280A8 *arg0, UnkStruct_
 }
 
 void ov42_02228100(void *arg0) {
-    __builtin__clear(arg0, 24);
+    memset(arg0, 0, 24);
 }
 
 UnkStruct_ov42_02228110 *ov42_02228110(UnkStruct_ov42_022280A8 *arg0, u8 arg1) {

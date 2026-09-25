@@ -14,8 +14,8 @@
 #include "overlay_01.h"
 #include "overlay_01_021F1AFC.h"
 #include "player_avatar.h"
+#include "screen_fade.h"
 #include "system.h"
-#include "unk_0200FA24.h"
 #include "unk_02062108.h"
 
 typedef struct MapPreviewGraphicData {
@@ -836,7 +836,7 @@ static BOOL Task_MapPreviewGraphic_ShowImage(TaskManager *man) {
         MapPreviewGraphic_LoadGfx(unk);
         MapPreviewGraphic_InitWindow(unk);
         G2_SetBlendAlpha(4, 33, 16, 0);
-        BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 16, 1, unk->heapID);
+        BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_IN, FADE_TYPE_BRIGHTNESS_IN, RGB_BLACK, 16, 1, unk->heapID);
         unk->state++;
         break;
     case PG_STATE_FADE_IN:

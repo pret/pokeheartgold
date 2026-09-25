@@ -331,7 +331,7 @@ _04A1:
 	GoTo _059A
 	End
 _04AF:
-	NPCMsg msg_0046_00120
+	NPCMsg msg_0046_WhichSetOfRules
 	MenuInit 1, 1, 0, 1, VAR_TEMP_x4000
 	MenuItemAdd msg_0046_00020, 255, 12
 	BufferRulesetName 0
@@ -368,7 +368,7 @@ _058E:
 	End
 _059A:
 	SetVar VAR_SPECIAL_x8004, 37
-	NPCMsg msg_0046_00120
+	NPCMsg msg_0046_WhichSetOfRules
 	MenuInit 1, 1, 0, 1, VAR_TEMP_x4000
 	MenuItemAdd msg_0046_00020, 255, 6
 	BufferRulesetName 7
@@ -408,8 +408,8 @@ _0682:
 	ScrCmd_799 VAR_TEMP_x4000
 	NPCMsg msg_0046_00121
 	MenuInit 1, 1, 0, 1, VAR_SPECIAL_RESULT
-	MenuItemAdd msg_0046_00130, 255, 0
-	MenuItemAdd msg_0046_00131, 255, 1
+	MenuItemAdd msg_0046_Confirm, 255, 0
+	MenuItemAdd msg_0046_Rules, 255, 1
 	Compare VAR_TEMP_x4000, 11
 	GoToIfNe _06B6
 	MenuItemAdd msg_0046_00024, 255, 2
@@ -434,14 +434,14 @@ _0702:
 	GoTo _0744
 	End
 _072A:
-	NPCMsg msg_0046_00122
+	NPCMsg msg_0046_NeedXPokemonForCup
 	WaitABPress
 	Compare VAR_TEMP_x4003, 3
 	GoToIfEq _059A
 	GoTo _04AF
 	End
 _0744:
-	NPCMsg msg_0046_00136
+	NPCMsg msg_0046_CantFormTeamWithLevelLimit
 	WaitABPress
 	GoTo _04AF
 	End

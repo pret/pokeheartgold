@@ -7,6 +7,7 @@
 #define DIR_WEST  2
 #define DIR_EAST  3
 #define DIR_MAX   4
+#define DIR_NONE  -1
 
 // BG event type
 #define BG_TYPE_NORMAL      0

@@ -48,7 +48,7 @@
 .public LoadUserFrameGfx2
 .public DrawFrameAndWindow2
 .public ClearFrameAndWindow2
-.public sub_0200FBDC
+.public ResetVisibleHardwareWindows
 .public SetMasterBrightnessNeutral
 .public sub_0200FBF4
 .public MailMsg_GetExpandedString

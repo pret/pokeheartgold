@@ -39,7 +39,7 @@ typedef struct FieldViewPhoto {
     int state;
     int substate;
     u8 photoWasSelected;
-    u8 fieldSystemUnk70Bak;
+    u8 mapLoadType;
     u8 whichPhoto;
     u8 numMons;
     Photo pPhoto;

@@ -3,6 +3,7 @@
 
 #include <nitro/types.h>
 
+#include "constants/abilities.h"
 #include "constants/badge.h"
 #include "constants/flags.h"
 #include "constants/game_stats.h"
@@ -56,5 +57,12 @@
 #define SCR_MG_MESSAGE_FAILED   6
 #define SCR_MG_END              7
 #define SCR_MG_END2             8
+
+// signpost window commands
+#define MAPSIGNCOMMAND_NOP      0
+#define MAPSIGNCOMMAND_SHOW     1
+#define MAPSIGNCOMMAND_WIPE_OUT 2
+#define MAPSIGNCOMMAND_WIPE_IN  3
+#define MAPSIGNCOMMAND_HIDE     4
 
 #endif // POKEHEARTGOLD_CONSTANTS_SCRCMD_H

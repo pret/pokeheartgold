@@ -4,7 +4,7 @@
 #include "field_types_def.h"
 #include "wild_encounter.h"
 
-struct BG_EVENT {
+struct BgEvent {
     u16 scriptId;
     u16 type;
     int x;
@@ -29,7 +29,7 @@ struct ObjectEvent {
     s32 y;
 };
 
-struct WARP_EVENT {
+struct WarpEvent {
     u16 x;
     u16 z;
     u16 header;
@@ -37,7 +37,7 @@ struct WARP_EVENT {
     u32 y;
 };
 
-struct COORD_EVENT {
+struct CoordEvent {
     u16 scriptId;
     s16 x;
     s16 z;
@@ -53,10 +53,10 @@ typedef struct MapEvents {
     u32 num_object_events;
     u32 num_warp_events;
     u32 num_coord_events;
-    BG_EVENT *bg_events;
+    BgEvent *bg_events;
     ObjectEvent *object_events;
-    WARP_EVENT *warp_events;
-    COORD_EVENT *coord_events;
+    WarpEvent *warp_events;
+    CoordEvent *coord_events;
     u8 event_data[0x800];
     u8 script_header[0x100];
     EncounterData wildEncounters;

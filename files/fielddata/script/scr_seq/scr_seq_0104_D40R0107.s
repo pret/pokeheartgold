@@ -429,7 +429,7 @@ scr_seq_D40R0107_005:
 	LegendCutsceneLugiaArrivesEffectCameraPan
 	LegendCutsceneLugiaArrivesEffectEnd
 	Wait 16, VAR_SPECIAL_RESULT
-	ScrCmd_726
+	ProcessSoundplate
 	ApplyMovement obj_D40R0107_dancer_5, _0B3C
 	WaitMovement
 	BufferPlayersName 0

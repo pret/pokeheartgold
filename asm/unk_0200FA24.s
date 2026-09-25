@@ -282,15 +282,15 @@ _0200FBD4: .word _021D1034
 _0200FBD8: .word _021D0EF4
 	thumb_func_end sub_0200FB70
 
-	thumb_func_start sub_0200FBDC
-sub_0200FBDC: ; 0x0200FBDC
+	thumb_func_start ResetVisibleHardwareWindows
+ResetVisibleHardwareWindows: ; 0x0200FBDC
 	ldr r3, _0200FBE4 ; =sub_020131F4
 	add r1, r0, #0
 	mov r0, #0
 	bx r3
 	.balign 4, 0
 _0200FBE4: .word sub_020131F4
-	thumb_func_end sub_0200FBDC
+	thumb_func_end ResetVisibleHardwareWindows
 
 	thumb_func_start SetMasterBrightnessNeutral
 SetMasterBrightnessNeutral: ; 0x0200FBE8
@@ -995,7 +995,7 @@ _020100AA:
 	ldr r0, [r4, #0x10]
 	bl sub_0200FBF4
 	ldr r0, [r4, #0x10]
-	bl sub_0200FBDC
+	bl ResetVisibleHardwareWindows
 _020100BC:
 	pop {r4, pc}
 	nop

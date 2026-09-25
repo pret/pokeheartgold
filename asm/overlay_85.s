@@ -6731,11 +6731,11 @@ ov85_021E8B08: ; 0x021E8B08
 	mov r0, #0x6f
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
-	bl sub_0200AEB0
+	bl SpriteTransfer_DeleteCharTransferTask
 	mov r0, #7
 	lsl r0, r0, #6
 	ldr r0, [r6, r0]
-	bl sub_0200B0A8
+	bl SpriteTransfer_DeletePlttTransferTask
 	mov r7, #0x63
 	mov r4, #0
 	add r5, r6, #0
@@ -7375,11 +7375,11 @@ _021E8FD8:
 	str r0, [r6, r1]
 	sub r1, #0xc
 	ldr r0, [r6, r1]
-	bl sub_0200ACF0
+	bl SpriteTransfer_CreateCharTransferTask
 	mov r0, #7
 	lsl r0, r0, #6
 	ldr r0, [r6, r0]
-	bl sub_0200AF94
+	bl SpriteTransfer_CreateExtPlttTransferTask
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0

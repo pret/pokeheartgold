@@ -1228,7 +1228,7 @@ ov120_0225F90C: ; 0x0225F90C
 	b _0225F964
 _0225F922:
 	ldr r0, [r0, #8]
-	bl ov01_021FB514
+	bl HBlankSystem_Stop
 	mov r0, #0x1c
 	str r0, [sp]
 	mov r0, #1
@@ -1252,7 +1252,7 @@ _0225F946:
 	b _0225F968
 _0225F954:
 	ldr r0, [r0, #8]
-	bl ov01_021FB4F4
+	bl HBlankSystem_Start
 	mov r0, #0
 	str r0, [r4]
 	add sp, #0xc
@@ -1282,7 +1282,7 @@ ov120_0225F970: ; 0x0225F970
 	b _0225F9C8
 _0225F986:
 	ldr r0, [r0, #8]
-	bl ov01_021FB514
+	bl HBlankSystem_Stop
 	mov r0, #0x1c
 	str r0, [sp]
 	mov r0, #1
@@ -1306,7 +1306,7 @@ _0225F9AA:
 	b _0225F9CC
 _0225F9B8:
 	ldr r0, [r0, #8]
-	bl ov01_021FB4F4
+	bl HBlankSystem_Start
 	mov r0, #0
 	str r0, [r4]
 	add sp, #0xc

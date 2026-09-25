@@ -19,11 +19,11 @@
 .public AddCharResObjFromNarc
 .public AddPlttResObjFromNarc
 .public AddCellOrAnimResObjFromNarc
-.public sub_0200ADA4
-.public sub_0200AEB0
-.public sub_0200AF00
-.public sub_0200AF94
-.public sub_0200B0A8
+.public SpriteTransfer_CreateCharTransferTask_AllocAtEnd
+.public SpriteTransfer_DeleteCharTransferTask
+.public SpriteTransfer_GetCharProxy
+.public SpriteTransfer_CreateExtPlttTransferTask
+.public SpriteTransfer_DeletePlttTransferTask
 .public SpriteTransfer_GetPaletteProxy
 .public OamManager_Create
 .public OamManager_Free

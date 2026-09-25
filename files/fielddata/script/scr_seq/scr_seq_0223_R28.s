@@ -14,10 +14,6 @@ scr_seq_R28_000:
 	End
 
 scr_seq_R28_001:
-	DirectionSignpost msg_0371_R28_00000, 1, 2, VAR_SPECIAL_RESULT
-	ScrCmd_057 3
-	ScrCmd_058
-	ScrCmd_060 VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	DirectionSignpostEx 1, 2, msg_0371_R28_00000
 	End
 	.balign 4, 0

@@ -29,7 +29,7 @@ typedef struct PokegearConfigureAppData {
     u16 skin : 7;                                   // 0x12
     Sprite *sprites[9];                             // 0x14
     TouchscreenListMenuSpawner *contextMenuSpawner; // 0x38
-    LISTMENUITEM *contextMenuItems;                 // 0x3C
+    ListMenuItem *contextMenuItems;                 // 0x3C
     TouchscreenListMenu *contextMenu;               // 0x40
     void *scrnDataRaw;                              // 0x44
     NNSG2dScreenData *scrnData;                     // 0x48

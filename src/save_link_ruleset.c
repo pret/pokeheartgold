@@ -28,7 +28,7 @@ String *LinkBattleRuleset_CreateStringFromName(const LinkBattleRuleset *rule, en
     return ret;
 }
 
-int LinkBattleRuleset_GetRuleValue(const LinkBattleRuleset *ruleset, LinkBattleRule rule) {
+int LinkBattleRuleset_GetRuleValue(const LinkBattleRuleset *ruleset, enum LinkBattleRule rule) {
     int ret = 0;
     switch (rule) {
     case LINKBATTLERULE_NONE:

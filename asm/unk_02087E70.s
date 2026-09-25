@@ -180,7 +180,7 @@ _02087F9E:
 	mov r1, #0
 	strb r1, [r0, #9]
 	bl GfGfx_SwapDisplay
-	bl sub_0203E354
+	bl Field_SetEnvironmentSoundState_None_Unk2
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 _02087FC2:

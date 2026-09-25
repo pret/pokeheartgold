@@ -3,6 +3,7 @@
 
 #include "script.h"
 
+void sub_02059D44(FieldSystem *fieldSystem);
 struct UnkStruct_02059E1C *sub_02059DB0(FieldSystem *fieldSystem);
 void sub_02059E04(FieldSystem *fieldSystem);
 int sub_0205A200(struct UnkStruct_02059E1C *fieldSystem_unk80, int objId);

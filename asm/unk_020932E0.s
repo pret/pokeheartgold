@@ -92,11 +92,11 @@ sub_02093354: ; 0x02093354
 	mov r0, #0x57
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_0200AEB0
+	bl SpriteTransfer_DeleteCharTransferTask
 	mov r0, #0x16
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl sub_0200B0A8
+	bl SpriteTransfer_DeletePlttTransferTask
 	mov r7, #0x51
 	mov r6, #0
 	add r4, r5, #0
@@ -991,11 +991,11 @@ _02093A7A:
 	str r0, [r5, r1]
 	sub r1, #0xc
 	ldr r0, [r5, r1]
-	bl sub_0200ADA4
+	bl SpriteTransfer_CreateCharTransferTask_AllocAtEnd
 	mov r0, #0x16
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl sub_0200AF94
+	bl SpriteTransfer_CreateExtPlttTransferTask
 	bl sub_02074490
 	add r1, r0, #0
 	mov r0, #0

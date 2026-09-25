@@ -27,7 +27,7 @@
 .public MapObject_GetFieldSystem
 .public MapObject_SetSingleMovement
 .public MapObject_ClearSingleMovement
-.public MapObject_ClearFlag3
+.public MapObject_ClearEndMovement
 .public MapObject_GetInitialX
 .public MapObject_GetInitialZ
 .public MapObject_GetXCoord

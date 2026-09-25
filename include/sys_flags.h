@@ -15,9 +15,9 @@ void Save_VarsFlags_SetHaveFollowerFlag(SaveVarsFlags *state);
 void Save_VarsFlags_ClearHaveFollowerFlag(SaveVarsFlags *state);
 BOOL Save_VarsFlags_CheckHaveFollower(SaveVarsFlags *state);
 void SetFlag99C(SaveVarsFlags *state);
-void SetFlag965(SaveVarsFlags *state);
-void ClearFlag965(SaveVarsFlags *state);
-BOOL CheckFlag965(SaveVarsFlags *state);
+void Save_VarsFlags_SetStepTakenFlag(SaveVarsFlags *state);
+void Save_VarsFlags_ClearStepTakenFlag(SaveVarsFlags *state);
+BOOL Save_VarsFlags_CheckStepTakenFlag(SaveVarsFlags *state);
 void Save_VarsFlags_SetRocketCostumeFlag(SaveVarsFlags *state);
 void Save_VarsFlags_ClearRocketCostumeFlag(SaveVarsFlags *state);
 BOOL Save_VarsFlags_CheckRocketCostumeFlag(SaveVarsFlags *state);
@@ -65,7 +65,7 @@ void SetFlag99A(SaveVarsFlags *state);
 void ClearFlag99A(SaveVarsFlags *state);
 BOOL CheckFlag99A(SaveVarsFlags *state);
 BOOL CheckBattledSnorlax(SaveVarsFlags *state);
-BOOL CheckBattledRedGyarados(SaveVarsFlags *state);
+BOOL CheckRocketHideoutCleared(SaveVarsFlags *state);
 void ChangeFlag99D(SaveVarsFlags *state, BOOL set);
 
 #endif

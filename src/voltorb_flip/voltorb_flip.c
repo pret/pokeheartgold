@@ -28,6 +28,7 @@
 #include "overlay_manager.h"
 #include "render_text.h"
 #include "render_window.h"
+#include "screen_fade.h"
 #include "sound_02004A44.h"
 #include "sprite.h"
 #include "sprite_system.h"
@@ -37,7 +38,6 @@
 #include "touchscreen_list_menu.h"
 #include "unk_02005D10.h"
 #include "unk_02009D48.h"
-#include "unk_0200FA24.h"
 #include "yes_no_prompt.h"
 
 typedef enum CoinDisplay {
@@ -551,13 +551,13 @@ static BOOL VoltorbFlip_TutorialScreenTransition(VoltorbFlipTaskEngine *workflow
     int state = VoltorbFlipTaskEngine_CurrentTaskState(workflow);
     switch (state) {
     case 0:
-        BeginNormalPaletteFade(4, 20, 20, RGB_BLACK, 4, 1, work->heapID);
+        BeginNormalPaletteFade(FADE_SUB_ONLY, FADE_TYPE_UNK_20, FADE_TYPE_UNK_20, RGB_BLACK, 4, 1, work->heapID);
         VoltorbFlipTaskEngine_IncrementTaskState(workflow);
         break;
     case 1:
         if (IsPaletteFadeFinished()) {
             cb(work);
-            BeginNormalPaletteFade(4, 21, 21, RGB_BLACK, 4, 1, work->heapID);
+            BeginNormalPaletteFade(FADE_SUB_ONLY, FADE_TYPE_UNK_21, FADE_TYPE_UNK_21, RGB_BLACK, 4, 1, work->heapID);
             VoltorbFlipTaskEngine_IncrementTaskState(workflow);
         }
         break;
@@ -2317,8 +2317,8 @@ static void ov122_021E8094(OverlayManager *man) {
     Sound_SetSceneAndPlayBGM(0x46, 0, 0);
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
     GfGfx_EngineBTogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
-    sub_0200FBDC(0);
-    sub_0200FBDC(1);
+    ResetVisibleHardwareWindows(PM_LCD_TOP);
+    ResetVisibleHardwareWindows(PM_LCD_BOTTOM);
     TextFlags_SetCanABSpeedUpPrint(TRUE);
     TextFlags_SetCanTouchSpeedUpPrint(TRUE);
 
@@ -2355,12 +2355,12 @@ BOOL VoltorbFlip_Init(OverlayManager *man, int *state) {
         break;
     case 1: {
         VoltorbFlipAppData *work = OverlayManager_GetData(man);
-        BeginNormalPaletteFade(0, 0x15, 0x15, RGB_BLACK, 6, 1, work->heapID);
+        BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_UNK_21, FADE_TYPE_UNK_21, RGB_BLACK, 6, 1, work->heapID);
         *state += 1;
         break;
     }
     case 2:
-        if (IsPaletteFadeFinished() != 0) {
+        if (IsPaletteFadeFinished()) {
             return TRUE;
         }
         break;
@@ -2374,11 +2374,11 @@ BOOL VoltorbFlip_Exit(OverlayManager *man, int *state) {
     VoltorbFlipAppData *work = OverlayManager_GetData(man);
     switch (*state) {
     case 0:
-        BeginNormalPaletteFade(0, 0x14, 0x14, RGB_BLACK, 6, 1, work->heapID);
+        BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_UNK_20, FADE_TYPE_UNK_20, RGB_BLACK, 6, 1, work->heapID);
         *state += 1;
         break;
     case 1:
-        if (IsPaletteFadeFinished() != 0) {
+        if (IsPaletteFadeFinished()) {
             FreeOverlayData(man);
             return TRUE;
         }

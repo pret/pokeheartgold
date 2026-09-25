@@ -23,6 +23,7 @@
 #include "overlay_manager.h"
 #include "pokemon.h"
 #include "pokepic.h"
+#include "screen_fade.h"
 #include "sound_02004A44.h"
 #include "sprite_system.h"
 #include "sys_task_api.h"
@@ -30,7 +31,6 @@
 #include "text.h"
 #include "touchscreen.h"
 #include "unk_02005D10.h"
-#include "unk_0200FA24.h"
 #include "unk_02013FDC.h"
 #include "unk_02026E84.h"
 #include "unk_0206D494.h"
@@ -969,13 +969,13 @@ static void RegisterHallOfFame_StartPicAnimSeq(RegisterHallOfFameData *data, u32
 }
 
 static RegisterHallOfFameScene RegisterHallOfFame_FadeFromBlack(RegisterHallOfFameData *data, RegisterHallOfFameScene nextScene) {
-    BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 1, HEAP_ID_REGISTER_HALL_OF_FAME);
+    BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_IN, FADE_TYPE_BRIGHTNESS_IN, RGB_BLACK, 6, 1, HEAP_ID_REGISTER_HALL_OF_FAME);
     data->nextScene = nextScene;
     return REGHOF_SCENE_WAIT_FADE;
 }
 
 static RegisterHallOfFameScene RegisterHallOfFame_FadeToBlack(RegisterHallOfFameData *data, RegisterHallOfFameScene nextScene) {
-    BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, HEAP_ID_REGISTER_HALL_OF_FAME);
+    BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, RGB_BLACK, 6, 1, HEAP_ID_REGISTER_HALL_OF_FAME);
     data->nextScene = nextScene;
     return REGHOF_SCENE_WAIT_FADE;
 }
@@ -2251,11 +2251,11 @@ static BOOL RegisterHallOfFame_WholeMonsSceneSubproc(RegisterHallOfFameData *dat
 }
 
 static void RegisterHallOfFame_AfterFullParty_FadeFromWhite(RegisterHallOfFameData *data) {
-    BeginNormalPaletteFade(3, 1, 1, RGB_WHITE, data->fadeDuration, 1, HEAP_ID_REGISTER_HALL_OF_FAME);
+    BeginNormalPaletteFade(FADE_MAIN_ONLY, FADE_TYPE_BRIGHTNESS_IN, FADE_TYPE_BRIGHTNESS_IN, RGB_WHITE, data->fadeDuration, 1, HEAP_ID_REGISTER_HALL_OF_FAME);
 }
 
 static void RegisterHallOfFame_AfterFullParty_FadeToBlack(RegisterHallOfFameData *data) {
-    BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, data->fadeDuration, 1, HEAP_ID_REGISTER_HALL_OF_FAME);
+    BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, RGB_BLACK, data->fadeDuration, 1, HEAP_ID_REGISTER_HALL_OF_FAME);
 }
 
 static void VBlankTask_RegisterHallOfFame_WholePartyCongrats(SysTask *task, void *taskData) {

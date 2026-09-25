@@ -6,6 +6,7 @@
 #include "map_header.h"
 #include "npc_trade.h"
 #include "player_data.h"
+#include "poke_overlay.h"
 #include "pokedex.h"
 #include "ribbon.h"
 #include "save_arrays.h"

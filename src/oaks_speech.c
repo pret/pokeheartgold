@@ -21,12 +21,12 @@
 #include "player_data.h"
 #include "render_text.h"
 #include "render_window.h"
+#include "screen_fade.h"
 #include "sound.h"
 #include "sound_02004A44.h"
 #include "text.h"
 #include "touchscreen.h"
 #include "unk_02005D10.h"
-#include "unk_0200FA24.h"
 #include "yes_no_prompt.h"
 
 FS_EXTERN_OVERLAY(OVY_36);
@@ -590,11 +590,11 @@ BOOL OakSpeech_Main(OverlayManager *ovyMan, int *pState) {
     case 1:
         OakSpeech_HandleTouchToAdvanceButton(data);
         if (OakSpeech_DoMainTask(data) == TRUE) {
-            BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, data->heapID);
+            BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, RGB_BLACK, 6, 1, data->heapID);
             *pState = 2;
         }
         if (data->overlayManager) {
-            BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, data->heapID);
+            BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, RGB_BLACK, 6, 1, data->heapID);
             *pState = 3;
         }
         break;
@@ -1542,7 +1542,7 @@ static BOOL OakSpeech_DoMainTask(OakSpeechData *data) {
         ToggleBgLayer(GF_BG_LYR_MAIN_0, GF_PLANE_TOGGLE_ON);
         ToggleBgLayer(GF_BG_LYR_SUB_0, GF_PLANE_TOGGLE_ON);
         ToggleBgLayer(GF_BG_LYR_SUB_3, GF_PLANE_TOGGLE_ON);
-        BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 1, data->heapID);
+        BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_IN, FADE_TYPE_BRIGHTNESS_IN, RGB_BLACK, 6, 1, data->heapID);
         data->state = OAK_SPEECH_MAIN_STATE_WAIT_FADE_IN_TUTORIAL_MENU;
         break;
     case OAK_SPEECH_MAIN_STATE_WAIT_FADE_IN_TUTORIAL_MENU:
@@ -1574,7 +1574,7 @@ static BOOL OakSpeech_DoMainTask(OakSpeechData *data) {
         }
         break;
     case OAK_SPEECH_MAIN_STATE_FADE_OUT_TUTORIAL_MENU_BGS:
-        BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, data->heapID);
+        BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, RGB_BLACK, 6, 1, data->heapID);
         data->state = OAK_SPEECH_MAIN_STATE_WAIT_FADE_OUT_TUTORIAL_MENU_BGS;
         break;
     case OAK_SPEECH_MAIN_STATE_WAIT_FADE_OUT_TUTORIAL_MENU_BGS:
@@ -1601,7 +1601,7 @@ static BOOL OakSpeech_DoMainTask(OakSpeechData *data) {
         OakSpeech_TouchToAdvanceButtonAction(data, TOUCHTOADVANCE_SHOW);
         ToggleBgLayer(GF_BG_LYR_SUB_0, GF_PLANE_TOGGLE_ON);
         ToggleBgLayer(GF_BG_LYR_SUB_3, GF_PLANE_TOGGLE_ON);
-        BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 1, data->heapID);
+        BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_IN, FADE_TYPE_BRIGHTNESS_IN, RGB_BLACK, 6, 1, data->heapID);
         data->state = OAK_SPEECH_MAIN_STATE_WAIT_FADE_IN_CONTROL_INFO;
         break;
     case OAK_SPEECH_MAIN_STATE_WAIT_FADE_IN_CONTROL_INFO:
@@ -1695,7 +1695,7 @@ static BOOL OakSpeech_DoMainTask(OakSpeechData *data) {
         break;
     case OAK_SPEECH_MAIN_STATE_CONTROL_INFO_UNDERSTOOD_YES:
         if (OakSpeech_BlendLayer(data, GF_BG_LYR_SUB_2, TRUE) == TRUE) {
-            BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, data->heapID);
+            BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, RGB_BLACK, 6, 1, data->heapID);
             data->state = OAK_SPEECH_MAIN_STATE_CONTROL_INFO_UNDERSTOOD_YES_WAIT_FADE;
         }
         break;
@@ -1722,7 +1722,7 @@ static BOOL OakSpeech_DoMainTask(OakSpeechData *data) {
         OakSpeech_TouchToAdvanceButtonAction(data, TOUCHTOADVANCE_SHOW);
         ToggleBgLayer(GF_BG_LYR_SUB_0, GF_PLANE_TOGGLE_ON);
         ToggleBgLayer(GF_BG_LYR_SUB_3, GF_PLANE_TOGGLE_ON);
-        BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 1, data->heapID);
+        BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_IN, FADE_TYPE_BRIGHTNESS_IN, RGB_BLACK, 6, 1, data->heapID);
         data->state = OAK_SPEECH_MAIN_STATE_WAIT_FADE_IN_ADVENTURE_INFO;
         break;
     case OAK_SPEECH_MAIN_STATE_WAIT_FADE_IN_ADVENTURE_INFO:
@@ -1761,7 +1761,7 @@ static BOOL OakSpeech_DoMainTask(OakSpeechData *data) {
         }
         break;
     case OAK_SPEECH_MAIN_STATE_ADVENTURE_INFO_FADE_OUT:
-        BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, data->heapID);
+        BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, RGB_BLACK, 6, 1, data->heapID);
         data->state = OAK_SPEECH_MAIN_STATE_WAIT_FADE_OUT_ADVENTURE_INFO;
         break;
     case OAK_SPEECH_MAIN_STATE_WAIT_FADE_OUT_ADVENTURE_INFO:
@@ -1784,7 +1784,7 @@ static BOOL OakSpeech_DoMainTask(OakSpeechData *data) {
         ToggleBgLayer(GF_BG_LYR_SUB_0, GF_PLANE_TOGGLE_ON);
         ToggleBgLayer(GF_BG_LYR_SUB_3, GF_PLANE_TOGGLE_ON);
         data->state = OAK_SPEECH_MAIN_STATE_WAIT_FADE_IN_NO_INFO_NEEDED;
-        BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 1, data->heapID);
+        BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_IN, FADE_TYPE_BRIGHTNESS_IN, RGB_BLACK, 6, 1, data->heapID);
         break;
     case OAK_SPEECH_MAIN_STATE_WAIT_FADE_IN_NO_INFO_NEEDED:
         if (IsPaletteFadeFinished() == TRUE && OakSpeech_WaitFrames(data, 40) == TRUE) {
@@ -1896,7 +1896,7 @@ static BOOL OakSpeech_DoMainTask(OakSpeechData *data) {
     case OAK_SPEECH_MAIN_STATE_ARE_YOU_A_GENDER:
         if (OakSpeech_PrintDialogMsg(data, msg_0219_00037, 1) == TRUE) {
             data->state = OAK_SPEECH_MAIN_STATE_WAIT_FADE_OUT_TO_ASK_GENDER;
-            BeginNormalPaletteFade(4, 0, 0, RGB_BLACK, 6, 1, data->heapID);
+            BeginNormalPaletteFade(FADE_SUB_ONLY, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, RGB_BLACK, 6, 1, data->heapID);
         }
         break;
     case OAK_SPEECH_MAIN_STATE_WAIT_FADE_OUT_TO_ASK_GENDER:
@@ -1910,7 +1910,7 @@ static BOOL OakSpeech_DoMainTask(OakSpeechData *data) {
         ov53_021E67C4(data, 4);
         OakSpeech_SelectedGenderIndicatorSpritesAction(data, GENDER_CURSOR_BOTH);
         BgClearTilemapBufferAndCommit(data->bgConfig, GF_BG_LYR_SUB_2);
-        BeginNormalPaletteFade(4, 1, 1, RGB_BLACK, 6, 1, data->heapID);
+        BeginNormalPaletteFade(FADE_SUB_ONLY, FADE_TYPE_BRIGHTNESS_IN, FADE_TYPE_BRIGHTNESS_IN, RGB_BLACK, 6, 1, data->heapID);
         data->state = OAK_SPEECH_MAIN_STATE_WAIT_FADE_IN_GENDER_SELECT_MENU;
         break;
     case OAK_SPEECH_MAIN_STATE_WAIT_FADE_IN_GENDER_SELECT_MENU:
@@ -1966,7 +1966,7 @@ static BOOL OakSpeech_DoMainTask(OakSpeechData *data) {
             break;
         case 1: // No
             data->state = OAK_SPEECH_MAIN_STATE_CONFIRM_GENDER_NO_WAIT_FADE_OUT;
-            BeginNormalPaletteFade(4, 0, 0, RGB_BLACK, 6, 1, data->heapID);
+            BeginNormalPaletteFade(FADE_SUB_ONLY, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, RGB_BLACK, 6, 1, data->heapID);
             break;
         }
         break;
@@ -1981,7 +1981,7 @@ static BOOL OakSpeech_DoMainTask(OakSpeechData *data) {
             BgClearTilemapBufferAndCommit(data->bgConfig, GF_BG_LYR_SUB_0);
             ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_SUB_0, BG_POS_OP_SET_X, 0);
             OakSpeech_StopHighlightedGenderFrameBlink(data);
-            BeginNormalPaletteFade(4, 1, 1, RGB_BLACK, 6, 1, data->heapID);
+            BeginNormalPaletteFade(FADE_SUB_ONLY, FADE_TYPE_BRIGHTNESS_IN, FADE_TYPE_BRIGHTNESS_IN, RGB_BLACK, 6, 1, data->heapID);
             data->state = OAK_SPEECH_MAIN_STATE_CONFIRM_GENDER_NO_WAIT_FADE_IN;
         }
         break;
@@ -2022,7 +2022,7 @@ static BOOL OakSpeech_DoMainTask(OakSpeechData *data) {
         ToggleBgLayer(GF_BG_LYR_SUB_2, GF_PLANE_TOGGLE_ON);
         BgSetPosTextAndCommit(data->bgConfig, GF_BG_LYR_MAIN_1, BG_POS_OP_SET_X, 0);
         OakSpeech_CreateMultichoiceYesNoMenu(data);
-        BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 1, data->heapID);
+        BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_IN, FADE_TYPE_BRIGHTNESS_IN, RGB_BLACK, 6, 1, data->heapID);
         data->state = OAK_SPEECH_MAIN_STATE_CONFIRM_NAME_YESNO_INIT_MENU;
         OakSpeech_DrawPicOnBgLayer(data, OAK_SPEECH_PIC_OAK, OAK_SPEECH_PIC_NONE);
         OakSpeech_SelectedGenderIndicatorSpritesAction(data, data->playerGender);
@@ -2055,14 +2055,14 @@ static BOOL OakSpeech_DoMainTask(OakSpeechData *data) {
             data->state = OAK_SPEECH_MAIN_STATE_CONFIRM_NAME_YES;
             break;
         case 1: // No
-            BeginNormalPaletteFade(4, 0, 0, RGB_BLACK, 6, 1, data->heapID);
+            BeginNormalPaletteFade(FADE_SUB_ONLY, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, RGB_BLACK, 6, 1, data->heapID);
             data->state = OAK_SPEECH_MAIN_STATE_CONFIRM_GENDER_NO_WAIT_FADE_OUT;
             break;
         }
         break;
 
     case OAK_SPEECH_MAIN_STATE_CONFIRM_NAME_YES:
-        BeginNormalPaletteFade(4, 0, 0, RGB_BLACK, 6, 1, data->heapID);
+        BeginNormalPaletteFade(FADE_SUB_ONLY, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, RGB_BLACK, 6, 1, data->heapID);
         data->state = OAK_SPEECH_MAIN_STATE_CONFIRM_NAME_YES_WAIT_FADE_OUT;
         break;
 
@@ -2075,7 +2075,7 @@ static BOOL OakSpeech_DoMainTask(OakSpeechData *data) {
             BgClearTilemapBufferAndCommit(data->bgConfig, GF_BG_LYR_SUB_0);
             ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_SUB_0, BG_POS_OP_SET_X, 0);
             OakSpeech_TouchToAdvanceButtonAction(data, TOUCHTOADVANCE_SHOW);
-            BeginNormalPaletteFade(4, 1, 1, RGB_BLACK, 6, 1, data->heapID);
+            BeginNormalPaletteFade(FADE_SUB_ONLY, FADE_TYPE_BRIGHTNESS_IN, FADE_TYPE_BRIGHTNESS_IN, RGB_BLACK, 6, 1, data->heapID);
             data->state = OAK_SPEECH_MAIN_STATE_CONFIRM_NAME_YES_WAIT_FADE_IN;
         }
         break;
@@ -2095,7 +2095,7 @@ static BOOL OakSpeech_DoMainTask(OakSpeechData *data) {
         // 104-109 don't exist
 
     case OAK_SPEECH_MAIN_STATE_FADE_OUT_FROM_LAST_OAK_MESSAGE:
-        BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, data->heapID);
+        BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, RGB_BLACK, 6, 1, data->heapID);
         data->state = OAK_SPEECH_MAIN_STATE_WAIT_FADE_OUT_FROM_LAST_OAK_MESSAGE;
         break;
 
@@ -2113,7 +2113,7 @@ static BOOL OakSpeech_DoMainTask(OakSpeechData *data) {
         } else {
             OakSpeech_DrawPicOnBgLayer(data, OAK_SPEECH_PIC_LYRA, OAK_SPEECH_PIC_NONE);
         }
-        BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 1, data->heapID);
+        BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_IN, FADE_TYPE_BRIGHTNESS_IN, RGB_BLACK, 6, 1, data->heapID);
         data->state = OAK_SPEECH_MAIN_STATE_WAIT_FADE_IN_TO_SHRINK_ANIM;
         ToggleBgLayer(GF_BG_LYR_MAIN_0, GF_PLANE_TOGGLE_OFF);
         break;

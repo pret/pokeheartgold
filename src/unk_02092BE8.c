@@ -47,7 +47,7 @@ static void FieldSystem_InitPokegearArgs(FieldSystem *sys, PokegearArgs *pokegea
         pokegearArgs->x = warpPtr->x;
         pokegearArgs->z = warpPtr->y;
         MapHeader_GetWorldMapCoords(pokegearArgs->mapID, &x, &y);
-        MAPMATRIX *matrix = MapMatrix_New();
+        MapMatrix *matrix = MapMatrix_New();
         MapMatrix_Load(MAP_NEW_BARK, matrix);
         if (x == 0 && y == 0) {
             pokegearArgs->matrixXCoord = pokegearArgs->x / 32;

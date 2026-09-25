@@ -46,5 +46,5 @@
 .public ov01_02203E64
 .public ov01_022051EC
 .public ov01_02205208
-.public ov01_02208BFC
+.public defaultFieldEffectRenderers
 .public ov01_02208C5C

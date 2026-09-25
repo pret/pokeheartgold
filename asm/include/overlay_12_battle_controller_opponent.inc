@@ -291,10 +291,10 @@
 .public BattleInput_GetKeyPressed
 .public BattleInput_SetKeyPressed
 .public BattleInput_GetCancelRunFlag
-.public ov12_0226ADE0
-.public ov12_0226AE78
-.public ov12_0226AEE0
-.public ov12_0226AF48
-.public ov12_0226AF6C
-.public ov12_0226AFA4
-.public ov12_0226AFC8
+.public PartyGauge_LoadGraphics
+.public PartyGauge_FreeGraphics
+.public PartyGauge_NewAndShow
+.public PartyGauge_IsArrowTaskFinished
+.public PartyGauge_StartHideTask
+.public PartyGauge_IsHideTaskFinished
+.public PartyGauge_DeleteAndFreeResources

@@ -4,10 +4,10 @@
 #include "application/pokegear/pokegear_internal.h"
 
 #include "map_header.h"
+#include "screen_fade.h"
 #include "system.h"
 #include "touch_hitbox_controller.h"
 #include "unk_02005D10.h"
-#include "unk_0200FA24.h"
 #include "unk_020210A0.h"
 #include "unk_0208805C.h"
 
@@ -234,8 +234,8 @@ BOOL PokegearApp_LoadGFX(PokegearAppData *pokegearApp) {
         GXS_SetVisiblePlane(0);
         sub_0200FBF4(PM_LCD_TOP, RGB_BLACK);
         sub_0200FBF4(PM_LCD_BOTTOM, RGB_BLACK);
-        sub_0200FBDC(PM_LCD_TOP);
-        sub_0200FBDC(PM_LCD_BOTTOM);
+        ResetVisibleHardwareWindows(PM_LCD_TOP);
+        ResetVisibleHardwareWindows(PM_LCD_BOTTOM);
         sub_020210BC();
         sub_02021148(2);
         break;

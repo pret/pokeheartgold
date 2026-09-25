@@ -676,14 +676,14 @@ _021F71DC:
 	ldr r0, [r0, #8]
 	add r1, #0x10
 	mov r2, #3
-	bl sub_0205B514
+	bl DialogBox_AddWindowToLayer3
 	ldr r0, [r4, #0x30]
 	ldr r0, [r0, #0xc]
 	bl Save_PlayerData_GetOptionsAddr
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x10
-	bl sub_0205B564
+	bl DialogBox_LoadFrame
 	ldr r0, [r4, #0x30]
 	ldr r0, [r0, #0xc]
 	bl Save_PlayerData_GetOptionsAddr
@@ -692,7 +692,7 @@ _021F71DC:
 	ldr r1, [r4, #0xc]
 	add r0, #0x10
 	mov r3, #1
-	bl sub_0205B5B4
+	bl DialogBox_PrintMessage
 	str r0, [r4, #0x40]
 	pop {r3, r4, r5, pc}
 	.balign 4, 0

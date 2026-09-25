@@ -13,5 +13,6 @@ void sub_0205779C(void);
 void sub_0205776C(void);
 void sub_020573AC(void);
 void sub_02057D50(void);
+void CommPlayerManager_ForcePosition();
 
 #endif // POKEHEARTGOLD_UNK_02056D7C_H

@@ -1,21 +1,19 @@
 #include "main.h"
 
-#include "global.h"
-
 #include "brightness.h"
 #include "communication_error.h"
 #include "font.h"
 #include "gf_rtc.h"
 #include "math_util.h"
 #include "player_data.h"
+#include "poke_overlay.h"
 #include "save_data_read_error.h"
+#include "screen_fade.h"
 #include "sound.h"
 #include "sound_02004A44.h"
 #include "sys_task.h"
 #include "system.h"
 #include "timer_3.h"
-#include "unk_0200B150.h"
-#include "unk_0200FA24.h"
 #include "unk_02018380.h"
 #include "unk_020210A0.h"
 #include "unk_02026E30.h"
@@ -65,7 +63,7 @@ void NitroMain(void) {
     sub_02005D00();
     InitSoundData(Save_Chatot_Get(_02111868.unk_10.saveData), Save_PlayerData_GetOptionsAddr(_02111868.unk_10.saveData));
     Init_Timer3();
-    if (sub_02039FFC(3) == 3) {
+    if (sub_02039FFC(HEAP_ID_3) == 3) {
         ShowWFCUserInfoWarning(HEAP_ID_3, 0);
     }
     if (!Save_FlashChipIsDetected(_02111868.unk_10.saveData)) {
@@ -208,7 +206,7 @@ static void DoSoftReset(u32 param) {
     if (sub_02038D90()) {
         Save_Cancel(SaveData_Get());
     }
-    while (1) {
+    while (TRUE) {
         HandleDSLidAction();
         sub_02000F40(param);
     }

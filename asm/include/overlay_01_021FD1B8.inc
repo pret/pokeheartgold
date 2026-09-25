@@ -26,4 +26,4 @@
 .public ov01_021FD1B8
 .public ov01_021FD1CC
 .public ov01_021FD2EC
-.public ov01_021FD3F8
+.public FieldEffect_InitRenderObject

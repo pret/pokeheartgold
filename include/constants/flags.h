@@ -218,7 +218,7 @@
 #define FLAG_GOT_TM10_FROM_LAKE_OF_RAGE_MAN             0xC7
 #define FLAG_UNK_0C8                                    0xC8
 #define FLAG_GOT_RED_SCALE                              0xC9
-#define FLAG_RED_GYARADOS_MEET                          0xCA
+#define FLAG_ROCKET_HIDEOUT_CLEARED                     0xCA
 #define FLAG_REMOVED_ROCKET_HIDEOUT_B3F_ELECTRODE_1     0xCB
 #define FLAG_REMOVED_ROCKET_HIDEOUT_B3F_ELECTRODE_2     0xCC
 #define FLAG_REMOVED_ROCKET_HIDEOUT_B3F_ELECTRODE_3     0xCD
@@ -1708,7 +1708,7 @@
 #define FLAG_STRENGTH_ACTIVE                              0x962
 #define FLAG_UNK_963                                      0x963
 #define FLAG_GAME_CLEAR                                   0x964
-#define FLAG_UNK_965                                      0x965
+#define FLAG_SYS_STEP_TAKEN                               0x965
 #define FLAG_UNK_966                                      0x966
 #define FLAG_SYS_SAFARI                                   0x967
 #define FLAG_UNK_968                                      0x968

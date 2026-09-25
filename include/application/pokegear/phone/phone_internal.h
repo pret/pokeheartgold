@@ -276,7 +276,7 @@ struct PokegearPhoneAppData {
     PhoneContactListNode *contactListHead;          // 0x0D8
     PhoneContactListNode *contactListTail;          // 0x0DC
     PhoneContactListUI contactListUI;               // 0x0E0
-    LISTMENUITEM *listMenuItems[7];                 // 0x4E8
+    ListMenuItem *listMenuItems[7];                 // 0x4E8
     TouchscreenListMenu *touchscreenListMenu;       // 0x504
     void *pNscrFile;                                // 0x508
     NNSG2dScreenData *screenData;                   // 0x50C

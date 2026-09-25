@@ -1937,7 +1937,7 @@ ov12_02259658: ; 0x02259658
 	add r2, r0, #0
 	add r0, r6, #0
 	add r1, r7, #0
-	bl ov12_0226ADE0
+	bl PartyGauge_LoadGraphics
 	mov r1, #0x65
 	lsl r1, r1, #2
 	ldrb r1, [r4, r1]
@@ -1956,7 +1956,7 @@ ov12_02259694: ; 0x02259694
 	add r5, r0, #0
 	add r4, r1, #0
 	bl BattleSystem_GetSpriteManager
-	bl ov12_0226AE78
+	bl PartyGauge_FreeGraphics
 	mov r1, #0x65
 	lsl r1, r1, #2
 	ldrb r1, [r4, r1]
@@ -16592,7 +16592,7 @@ _02260BEE:
 	add r0, #8
 	add r1, r6, #0
 	add r3, r7, #0
-	bl ov12_0226AEE0
+	bl PartyGauge_NewAndShow
 	add r2, r0, #0
 	ldr r0, [r5]
 	add r1, r6, #0
@@ -16606,7 +16606,7 @@ _02260C22:
 	ldr r0, [r5]
 	add r1, r6, #0
 	bl ov12_0223A908
-	bl ov12_0226AF48
+	bl PartyGauge_IsArrowTaskFinished
 	cmp r0, #1
 	bne _02260C52
 	ldrb r0, [r5, #7]
@@ -16665,17 +16665,17 @@ _02260C90:
 _02260C92:
 	add r0, r6, #0
 	add r2, r1, #0
-	bl ov12_0226AF6C
+	bl PartyGauge_StartHideTask
 	ldrb r0, [r5, #7]
 	add r0, r0, #1
 	strb r0, [r5, #7]
 	pop {r3, r4, r5, r6, r7, pc}
 _02260CA2:
-	bl ov12_0226AFA4
+	bl PartyGauge_IsHideTaskFinished
 	cmp r0, #1
 	bne _02260CD8
 	add r0, r6, #0
-	bl ov12_0226AFC8
+	bl PartyGauge_DeleteAndFreeResources
 	ldr r0, [r5]
 	add r1, r4, #0
 	mov r2, #0

@@ -373,38 +373,54 @@
 	.short 54
 	.endm
 
-	.macro DirectionSignpost message, arg1, arrow, arg3
+	.macro DirectionSignpost message, type, map, out
 	.short 55
 	.byte \message
-	.byte \arg1
-	.short \arrow
-	.short \arg3
+	.byte \type
+	.short \map
+	.short \out
 	.endm
 
-	.macro ScrCmd_055 message, arg1
+	.macro SetSignpostMap type, map
 	.short 56
-	.byte \message
-	.short \arg1
+	.byte \type
+	.short \map
 	.endm
 
-	.macro ScrCmd_057 arg0
+	.macro SetSignpostAction cmd
 	.short 57
-	.byte \arg0
+	.byte \cmd
 	.endm
 
-	.macro ScrCmd_058
+	.macro WaitSignpostAction
 	.short 58
 	.endm
 
-	.macro TrainerTips arg0, arg1
+	.macro TrainerTips message, out
 	.short 59
-	.byte \arg0
-	.short \arg1
+	.byte \message
+	.short \out
 	.endm
 
-	.macro ScrCmd_060 arg0
+	.macro TrainerTipsEx type, message
+	SetSignpostMap \type, 0
+	SetSignpostAction MAPSIGNCOMMAND_WIPE_IN
+	WaitSignpostAction
+	TrainerTips \message, VAR_SPECIAL_RESULT
+	CallStd std_signpost
+	.endm
+
+	.macro WaitSignpost out
 	.short 60
-	.short \arg0
+	.short \out
+	.endm
+
+	.macro DirectionSignpostEx type, map, message
+	DirectionSignpost \message, \type, \map, VAR_SPECIAL_RESULT
+	SetSignpostAction MAPSIGNCOMMAND_WIPE_IN
+	WaitSignpostAction
+	WaitSignpost VAR_SPECIAL_RESULT
+	CallStd std_signpost
 	.endm
 
 	.macro ScrCmd_061
@@ -1747,25 +1763,25 @@
 	.short 301
 	.endm
 
-	.macro ScrCmd_302 arg0
+	.macro CheckStepTakenFlag arg0
 	.short 302
 	.short \arg0
 	.endm
 
-	.macro ScrCmd_303
+	.macro SetStepTakenFlag
 	.short 303
 	.endm
 
-	.macro ScrCmd_304
+	.macro GetStepTakenFlag
 	.short 304
 	.endm
 
-	.macro ScrCmd_305 arg0
+	.macro CheckGameClearFlag arg0
 	.short 305
 	.short \arg0
 	.endm
 
-	.macro ScrCmd_306
+	.macro SetGameClearFlag
 	.short 306
 	.endm
 
@@ -1811,15 +1827,15 @@
 	.short 314
 	.endm
 
-	.macro ScrCmd_315
+	.macro BindEcruteakGymCandleToTrainerSprite
 	.short 315
 	.endm
 
-	.macro ScrCmd_316
+	.macro UnbindEcruteakGymCandleFromTrainerSprite
 	.short 316
 	.endm
 
-	.macro ScrCmd_317 arg0
+	.macro ExtinguishEcruteakGymCandle arg0
 	.short 317
 	.byte \arg0
 	.endm
@@ -2768,7 +2784,7 @@
 	.short \arg0
 	.endm
 
-	.macro ScrCmd_485 arg0
+	.macro StartBattleRegulationMenuTask arg0
 	.short 485
 	.short \arg0
 	.endm
@@ -4115,7 +4131,7 @@
 	.short \arg1
 	.endm
 
-	.macro ScrCmd_726
+	.macro ProcessSoundplate
 	.short 726
 	.endm
 
@@ -4446,13 +4462,13 @@
 	.short \arg1
 	.endm
 
-	.macro ScrCmd_791 arg0, arg1
+	.macro CheckSafariZoneChallengeCompleted arg0, arg1
 	.short 791
 	.byte \arg0
 	.short \arg1
 	.endm
 
-	.macro ScrCmd_792
+	.macro UpdateSafariZoneIGT
 	.short 792
 	.endm
 

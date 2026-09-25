@@ -5,8 +5,8 @@
 #include "brightness.h"
 #include "pokegear_apps.h"
 #include "render_text.h"
+#include "screen_fade.h"
 #include "sound_02004A44.h"
-#include "unk_0200FA24.h"
 
 static void PokegearPhone_LoadContactsAndInitFromArgs(PokegearPhoneAppData *phoneApp);
 static void PokegearPhone_UnloadContactsAndDeregisterCallbacks(PokegearPhoneAppData *phoneApp);
@@ -237,7 +237,7 @@ int PokegearPhone_MainTask_FadeInFromGearOpen(PokegearPhoneAppData *phoneApp) {
 int PokegearPhone_MainTask_FadeOutForGearClose(PokegearPhoneAppData *phoneApp) {
     switch (phoneApp->subtaskState) {
     case 0:
-        BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, phoneApp->heapID);
+        BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, RGB_BLACK, 6, 1, phoneApp->heapID);
         ++phoneApp->subtaskState;
         break;
     case 1:

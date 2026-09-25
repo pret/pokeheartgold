@@ -5,6 +5,7 @@
 #include "sav_system_info.h"
 #include "script.h"
 
+// Berry Patch Manager in pokeplatinum. Definitely used for something else here.
 typedef struct UnkStruct_020556FC {
     enum HeapID heapID;
     NNSG3dRenderObj unk4;

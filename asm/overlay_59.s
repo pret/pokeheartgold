@@ -1223,9 +1223,9 @@ ov59_02238624: ; 0x02238624
 	mov r1, #0
 	bl sub_0200FBF4
 	mov r0, #0
-	bl sub_0200FBDC
+	bl ResetVisibleHardwareWindows
 	mov r0, #1
-	bl sub_0200FBDC
+	bl ResetVisibleHardwareWindows
 	pop {r3, pc}
 	.balign 4, 0
 _0223866C: .word 0xFFFFE0FF
@@ -6224,9 +6224,9 @@ ov59_0223ACD0: ; 0x0223ACD0
 	mov r1, #0
 	bl sub_0200FBF4
 	mov r0, #0
-	bl sub_0200FBDC
+	bl ResetVisibleHardwareWindows
 	mov r0, #1
-	bl sub_0200FBDC
+	bl ResetVisibleHardwareWindows
 	pop {r3, pc}
 	.balign 4, 0
 _0223AD18: .word 0xFFFFE0FF

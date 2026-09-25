@@ -83,7 +83,7 @@ u16 ov101_021F42E4(PokegearPhoneCallContext *ctx, PokegearPhoneCallState *state,
         return PHONE_SCRIPT_162;
     } else if (Save_VarsFlags_CheckFlagInArray(ctx->saveVarsFlags, FLAG_BEAT_RADIO_TOWER_ROCKETS)) {
         return PHONE_SCRIPT_161;
-    } else if (Save_VarsFlags_CheckFlagInArray(ctx->saveVarsFlags, FLAG_RED_GYARADOS_MEET)) {
+    } else if (Save_VarsFlags_CheckFlagInArray(ctx->saveVarsFlags, FLAG_ROCKET_HIDEOUT_CLEARED)) {
         if (!Save_VarsFlags_CheckFlagInArray(ctx->saveVarsFlags, FLAG_UNK_9A0)) {
             Save_VarsFlags_SetFlagInArray(ctx->saveVarsFlags, FLAG_UNK_9A0);
             return PHONE_SCRIPT_160;

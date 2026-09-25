@@ -2110,7 +2110,7 @@ _0226017E:
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0, #4]
 	ldr r0, [r0, #0x1c]
-	bl ov01_021FB514
+	bl HBlankSystem_Stop
 	mov r0, #0x1d
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
@@ -2167,7 +2167,7 @@ _022601F4:
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0, #4]
 	ldr r0, [r0, #0x1c]
-	bl ov01_021FB4F4
+	bl HBlankSystem_Start
 	ldr r1, [r5, #0x14]
 	cmp r1, #0
 	beq _02260210

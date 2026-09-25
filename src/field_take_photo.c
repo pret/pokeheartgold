@@ -5,6 +5,7 @@
 #include "constants/scrcmd.h"
 
 #include "field/weather_manager.h"
+#include "field/hblank_system.h"
 #include "graphic/camera_viewfinder.naix"
 
 #include "field_warp_tasks.h"
@@ -15,13 +16,12 @@
 #include "overlay_01_021F72DC.h"
 #include "overlay_01_021F8D80.h"
 #include "overlay_01_021F944C.h"
-#include "overlay_01_021FB4C0.h"
 #include "overlay_01_022053EC.h"
 #include "photo_album.h"
+#include "screen_fade.h"
 #include "script_pokemon_util.h"
 #include "task.h"
 #include "unk_02005D10.h"
-#include "unk_0200FA24.h"
 #include "unk_02054E00.h"
 #include "unk_02055244.h"
 #include "unk_020552A4.h"
@@ -257,8 +257,8 @@ static int ViewPhotoFieldTask_LoadPhotoAndBeginRender(FieldSystem *fieldSystem, 
     viewPhoto->numMons = viewPhoto->pPhoto.subjectSpriteId != 0 ? 2 : viewPhoto->pPhoto.numMons;
     viewPhoto->input = VIEW_PHOTO_INPUT_NOTHING;
     taskData->parent = viewPhoto;
-    viewPhoto->fieldSystemUnk70Bak = fieldSystem->unk70;
-    fieldSystem->unk70 = 5;
+    viewPhoto->mapLoadType = fieldSystem->mapLoadType;
+    fieldSystem->mapLoadType = 5;
     fieldSystem->viewPhotoTask = viewPhoto;
     TaskManager_Call(fieldSystem->taskman, FieldTask_DoViewPhoto, taskData);
     return VIEW_PHOTO_STATE_FADE_IN;
@@ -278,7 +278,7 @@ static int ViewPhotoFieldTask_Cleanup(FieldSystem *fieldSystem, TaskManager *tas
         ++viewPhoto->substate;
         break;
     case 1:
-        fieldSystem->unk70 = viewPhoto->fieldSystemUnk70Bak;
+        fieldSystem->mapLoadType = viewPhoto->mapLoadType;
         fieldSystem->viewPhotoTask = NULL;
         viewPhoto->substate = 0;
         switch (viewPhoto->input) {
@@ -307,7 +307,7 @@ static int ViewPhotoFieldTask_WaitInput(FieldSystem *fieldSystem, TaskManager *t
 static int ViewPhotoFieldTask_FadeInToPhoto(FieldSystem *fieldSystem, TaskManager *taskManager, FieldViewPhoto *photo) {
     switch (photo->substate) {
     case 0:
-        BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 1, HEAP_ID_FIELD2);
+        BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_IN, FADE_TYPE_BRIGHTNESS_IN, RGB_BLACK, 6, 1, HEAP_ID_FIELD2);
         ++photo->substate;
         break;
     case 1:
@@ -324,7 +324,7 @@ static int ViewPhotoFieldTask_FadeInToPhoto(FieldSystem *fieldSystem, TaskManage
 static int ViewPhotoFieldTask_FadeOutFromPhoto(FieldSystem *fieldSystem, TaskManager *taskManager, FieldViewPhoto *photo) {
     switch (photo->substate) {
     case 0:
-        BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, HEAP_ID_FIELD2);
+        BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, RGB_BLACK, 6, 1, HEAP_ID_FIELD2);
         ++photo->substate;
         break;
     case 1:
@@ -385,9 +385,9 @@ static BOOL FieldTask_DoViewPhoto(TaskManager *taskManager) {
         break;
     case FIELD_PHOTO_DO_VIEW_STATE_3:
         ov01_021F9FB0(fieldSystem->mapObjectManager, sub_0205F1A0(fieldSystem->mapObjectManager));
-        ov01_022043D8(fieldSystem->unk_C8);
-        ov01_02204424(fieldSystem->unk_C8);
-        ov01_021EB1E8(fieldSystem->unk4->unk10);
+        ov01_022043D8(fieldSystem->unkC8);
+        ov01_02204424(fieldSystem->unkC8);
+        ov01_021EB1E8(fieldSystem->unk4->textureManager);
         if (photo->subjectSpriteId) {
             taskData->state = FIELD_PHOTO_DO_VIEW_STATE_6;
         } else {
@@ -712,9 +712,9 @@ static BOOL FieldTask_TakePhoto(TaskManager *taskManager) {
         }
         break;
     case TAKE_PHOTO_STATE_13:
-        ov01_022043D8(fieldSystem->unk_C8);
-        ov01_02204424(fieldSystem->unk_C8);
-        ov01_021EB1E8(fieldSystem->unk4->unk10);
+        ov01_022043D8(fieldSystem->unkC8);
+        ov01_02204424(fieldSystem->unkC8);
+        ov01_021EB1E8(fieldSystem->unk4->textureManager);
         takePhoto->state = TAKE_PHOTO_STATE_DRAW_CAMERA_GFX;
         break;
     case TAKE_PHOTO_STATE_DRAW_CAMERA_GFX:
@@ -726,7 +726,7 @@ static BOOL FieldTask_TakePhoto(TaskManager *taskManager) {
     case TAKE_PHOTO_STATE_SHUTTER:
         switch (takePhoto->shutterState) {
         case TAKE_PHOTO_SHUTTER_STATE_INIT:
-            ov01_021FB514(fieldSystem->unk4->unk1c);
+            HBlankSystem_Stop(fieldSystem->unk4->hBlankSystem);
             ++takePhoto->shutterState;
             // fallthrough
         case TAKE_PHOTO_SHUTTER_STATE_DELAY_BEFORE:
@@ -737,7 +737,7 @@ static BOOL FieldTask_TakePhoto(TaskManager *taskManager) {
             break;
         case TAKE_PHOTO_SHUTTER_STATE_FADE_OUT:
             PlaySE(SEQ_SE_GS_SHUTTER);
-            BeginNormalPaletteFade(3, 8, 0, RGB_BLACK, 6, 1, HEAP_ID_FIELD1);
+            BeginNormalPaletteFade(FADE_MAIN_ONLY, FADE_TYPE_UNK_8, FADE_TYPE_BRIGHTNESS_OUT, RGB_BLACK, 6, 1, HEAP_ID_FIELD1);
             ++takePhoto->shutterState;
             break;
         case TAKE_PHOTO_SHUTTER_STATE_EXPOSURE:
@@ -756,7 +756,7 @@ static BOOL FieldTask_TakePhoto(TaskManager *taskManager) {
             }
             break;
         case TAKE_PHOTO_SHUTTER_STATE_FADE_IN:
-            BeginNormalPaletteFade(3, 9, 0, RGB_BLACK, 6, 1, HEAP_ID_FIELD1);
+            BeginNormalPaletteFade(FADE_MAIN_ONLY, FADE_TYPE_UNK_9, FADE_TYPE_BRIGHTNESS_OUT, RGB_BLACK, 6, 1, HEAP_ID_FIELD1);
             ++takePhoto->shutterState;
             break;
         case TAKE_PHOTO_SHUTTER_STATE_WAIT_FADE_IN:
@@ -765,7 +765,7 @@ static BOOL FieldTask_TakePhoto(TaskManager *taskManager) {
             }
             break;
         case TAKE_PHOTO_SHUTTER_STATE_6:
-            ov01_021FB4F4(fieldSystem->unk4->unk1c);
+            HBlankSystem_Start(fieldSystem->unk4->hBlankSystem);
             ++takePhoto->shutterState;
             break;
         case TAKE_PHOTO_SHUTTER_STATE_DELAY_AFTER:

@@ -540,9 +540,9 @@ _020583FC:
 	add r3, r0, #0
 	bl BeginNormalPaletteFade
 	mov r0, #0
-	bl sub_0200FBDC
+	bl ResetVisibleHardwareWindows
 	mov r0, #1
-	bl sub_0200FBDC
+	bl ResetVisibleHardwareWindows
 	bl sub_02056E60
 	mov r0, #0
 	bl sub_0205701C
@@ -694,9 +694,9 @@ _02058528:
 	add r3, r0, #0
 	bl BeginNormalPaletteFade
 	mov r0, #0
-	bl sub_0200FBDC
+	bl ResetVisibleHardwareWindows
 	mov r0, #1
-	bl sub_0200FBDC
+	bl ResetVisibleHardwareWindows
 	ldr r0, _02058578 ; =sub_020586EC
 	mov r1, #0
 	bl sub_020582F4

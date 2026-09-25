@@ -1,11 +1,7 @@
 #include "unk_02054E00.h"
 
-// functions still in asm:
-void ov01_021F630C(int, FieldSystemUnkSub2C *, s32 *);
-int ov01_021F3B44(int, u8);
-int ov01_021F3B30();
-int ov01_021F3B34(int);
-void ov01_021F3B2C(int, int);
+#include "field/map_load_manager.h"
+#include "field/map_prop.h"
 
 BOOL MapModel_IsHeadbuttTree(u32 mapModelNo) {
     if (mapModelNo == 0xd0) {
@@ -30,17 +26,17 @@ u16 MapCoordToMatrixIndex(FieldSystem *fieldSystem, int coordX, int coordY) {
     return posX + posY * width;
 }
 
-void sub_02054EB0(FieldSystem *fieldSystem, int a1, BOOL a2) {
-    int val;
+void sub_02054EB0(FieldSystem *fieldSystem, int buildModel, BOOL culled) {
+    MapPropManager *mapPropManager;
     for (u8 i = 0; i < 4; i++) {
-        ov01_021F630C(i, fieldSystem->unk2C, &val);
-        if (val != 0) {
-            for (u8 j = 0; j < 32; j++) {
-                int res = ov01_021F3B44(val, j);
-                if (ov01_021F3B30() != 0) {
-                    int res2 = ov01_021F3B34(res);
-                    if (res2 == a1) {
-                        ov01_021F3B2C(res, a2);
+        ov01_021F630C(i, fieldSystem->mapLoadManager, &mapPropManager);
+        if (mapPropManager != 0) {
+            for (u8 j = 0; j < MAP_PROP_MAX; j++) {
+                MapProp *mapProp = MapPropManager_GetMapPropByIndex(mapPropManager, j);
+                if (MapProp_IsActive(mapProp)) {
+                    int curBuildModel = MapProp_GetBuildModel(mapProp);
+                    if (curBuildModel == buildModel) {
+                        MapProp_SetCulled(mapProp, culled);
                     }
                 }
             }

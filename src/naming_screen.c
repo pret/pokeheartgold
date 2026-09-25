@@ -21,14 +21,14 @@
 #include "obj_char_transfer.h"
 #include "obj_pltt_transfer.h"
 #include "pokemon_icon_idx.h"
+#include "screen_fade.h"
 #include "sound_02004A44.h"
+#include "sprite_transfer.h"
 #include "systask_environment.h"
 #include "system.h"
 #include "text.h"
 #include "unk_02005D10.h"
-#include "unk_0200ACF0.h"
 #include "unk_0200B150.h"
-#include "unk_0200FA24.h"
 #include "unk_02013534.h"
 #include "unk_020163E0.h"
 #include "vram_transfer_manager.h"
@@ -507,8 +507,8 @@ BOOL NamingScreenApp_Init(OverlayManager *ovyMan, int *pState) {
         NamingScreen_CreateSprites(data);
         NamingScreen_InitWindows(data, ovyMan, narc);
         NamingScreen_PrintLastCharacterOfEntryBuf(&data->windows[4], data->entryBuf, data->textCursorPos, data->tmpBuf, data->charBuf, data->unkJapaneseString);
-        Sound_SetSceneAndPlayBGM(0x34, 0, 0);
-        BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 16, 1, HEAP_ID_NAMING_SCREEN);
+        Sound_SetSceneAndPlayBGM(52, SEQ_NONE, 0);
+        BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_IN, FADE_TYPE_BRIGHTNESS_IN, RGB_BLACK, 16, 1, HEAP_ID_NAMING_SCREEN);
         NamingScreen_ToggleGfxPlanes(GF_PLANE_TOGGLE_ON);
         GfGfx_SetMainDisplay(PM_LCD_BOTTOM);
         NARC_Delete(narc);
@@ -586,7 +586,7 @@ BOOL NamingScreenApp_Main(OverlayManager *ovyMan, int *pState) {
         case NS_PAGESWITCH_STATE_DELAY_AND_FADE_OUT:
             ++data->delayCounter;
             if (data->delayCounter > 30) {
-                BeginNormalPaletteFade(2, 0, 0, RGB_BLACK, 16, 1, HEAP_ID_NAMING_SCREEN);
+                BeginNormalPaletteFade(FADE_SUB_THEN_MAIN, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, RGB_BLACK, 16, 1, HEAP_ID_NAMING_SCREEN);
                 *pState = NS_MAIN_STATE_WAIT_FADE_OUT;
             }
             break;
@@ -715,10 +715,10 @@ BOOL NamingScreenApp_Exit(OverlayManager *ovyMan, int *pState) {
     for (int i = 0; i < 7; ++i) {
         DestroySysTaskAndEnvironment(data->tasks[i]);
     }
-    sub_0200AEB0(data->gfxResObjs[PM_LCD_TOP][GF_GFX_RES_TYPE_CHAR]);
-    sub_0200AEB0(data->gfxResObjs[PM_LCD_BOTTOM][GF_GFX_RES_TYPE_CHAR]);
-    sub_0200B0A8(data->gfxResObjs[PM_LCD_TOP][GF_GFX_RES_TYPE_PLTT]);
-    sub_0200B0A8(data->gfxResObjs[PM_LCD_BOTTOM][GF_GFX_RES_TYPE_PLTT]);
+    SpriteTransfer_DeleteCharTransferTask(data->gfxResObjs[PM_LCD_TOP][GF_GFX_RES_TYPE_CHAR]);
+    SpriteTransfer_DeleteCharTransferTask(data->gfxResObjs[PM_LCD_BOTTOM][GF_GFX_RES_TYPE_CHAR]);
+    SpriteTransfer_DeletePlttTransferTask(data->gfxResObjs[PM_LCD_TOP][GF_GFX_RES_TYPE_PLTT]);
+    SpriteTransfer_DeletePlttTransferTask(data->gfxResObjs[PM_LCD_BOTTOM][GF_GFX_RES_TYPE_PLTT]);
     for (int i = 0; i < 4; ++i) {
         Destroy2DGfxResObjMan(data->gfxResMen[i]);
     }
@@ -1077,10 +1077,10 @@ static void NamingScreen_LoadObjGfx(NamingScreenAppData *data, NARC *narc) {
     data->gfxResObjs[PM_LCD_BOTTOM][GF_GFX_RES_TYPE_CELL] = AddCellOrAnimResObjFromOpenNarc(data->gfxResMen[GF_GFX_RES_TYPE_CELL], narc, NARC_namein_namein_00000013_NCER_lz, TRUE, 1, GF_GFX_RES_TYPE_CELL, HEAP_ID_NAMING_SCREEN);
     data->gfxResObjs[PM_LCD_BOTTOM][GF_GFX_RES_TYPE_ANIM] = AddCellOrAnimResObjFromOpenNarc(data->gfxResMen[GF_GFX_RES_TYPE_ANIM], narc, NARC_namein_namein_00000015_NANR_lz, TRUE, 1, GF_GFX_RES_TYPE_ANIM, HEAP_ID_NAMING_SCREEN);
 
-    sub_0200ACF0(data->gfxResObjs[PM_LCD_TOP][GF_GFX_RES_TYPE_CHAR]);
-    sub_0200ACF0(data->gfxResObjs[PM_LCD_BOTTOM][GF_GFX_RES_TYPE_CHAR]);
-    sub_0200AF94(data->gfxResObjs[PM_LCD_TOP][GF_GFX_RES_TYPE_PLTT]);
-    sub_0200AF94(data->gfxResObjs[PM_LCD_BOTTOM][GF_GFX_RES_TYPE_PLTT]);
+    SpriteTransfer_CreateCharTransferTask(data->gfxResObjs[PM_LCD_TOP][GF_GFX_RES_TYPE_CHAR]);
+    SpriteTransfer_CreateCharTransferTask(data->gfxResObjs[PM_LCD_BOTTOM][GF_GFX_RES_TYPE_CHAR]);
+    SpriteTransfer_CreateExtPlttTransferTask(data->gfxResObjs[PM_LCD_TOP][GF_GFX_RES_TYPE_PLTT]);
+    SpriteTransfer_CreateExtPlttTransferTask(data->gfxResObjs[PM_LCD_BOTTOM][GF_GFX_RES_TYPE_PLTT]);
 }
 
 typedef struct SubspritePosControllerTaskData {
@@ -1713,7 +1713,7 @@ static NamingScreenMainState NamingScreen_HandleCharacterInput(NamingScreenAppDa
         if (!data->printedFromBattleGMM) {
             PlaySE(SEQ_SE_DP_PIRORIRO);
             ++data->spriteAnimUpdateReq[6];
-            BeginNormalPaletteFade(2, 0, 0, RGB_BLACK, 16, 1, HEAP_ID_NAMING_SCREEN);
+            BeginNormalPaletteFade(FADE_SUB_THEN_MAIN, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, RGB_BLACK, 16, 1, HEAP_ID_NAMING_SCREEN);
             NamingScreen_UpdateFieldMenuInputState(data, isButtonInput);
             return NS_MAIN_STATE_WAIT_FADE_OUT;
         } else {

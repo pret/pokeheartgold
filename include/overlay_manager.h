@@ -2,7 +2,6 @@
 #define POKEHEARTGOLD_OVERLAY_MANAGER_H
 
 #include "heap.h"
-#include "poke_overlay.h"
 
 #define FS_OVERLAY_ID_NONE (-1)
 

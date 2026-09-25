@@ -19,9 +19,9 @@
 #include "player_data.h"
 #include "pokemon.h"
 #include "save.h"
+#include "screen_fade.h"
 #include "system.h"
 #include "text.h"
-#include "unk_0200FA24.h"
 #include "unk_02013FDC.h"
 #include "unk_0205BB1C.h"
 
@@ -249,7 +249,7 @@ BOOL Certificates_Main(OverlayManager *manager, int *state) {
         ToggleBgLayer(GF_BG_LYR_SUB_1, GF_PLANE_TOGGLE_ON);
         ToggleBgLayer(GF_BG_LYR_SUB_3, GF_PLANE_TOGGLE_ON);
 
-        BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 1, data->heapID);
+        BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_IN, FADE_TYPE_BRIGHTNESS_IN, RGB_BLACK, 6, 1, data->heapID);
 
         *state = CERTIFICATES_EXECSTATE_FADE_IN;
         break;
@@ -280,7 +280,7 @@ BOOL Certificates_Main(OverlayManager *manager, int *state) {
         break;
     case CERTIFICATES_EXECSTATE_WAIT_FOR_INPUT:
         if ((gSystem.newKeys & PAD_BUTTON_A) == PAD_BUTTON_A || (gSystem.newKeys & PAD_BUTTON_B) == PAD_BUTTON_B || gSystem.touchNew != 0) {
-            BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, data->heapID);
+            BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, RGB_BLACK, 6, 1, data->heapID);
             *state = CERTIFICATES_EXECSTATE_FADE_OUT;
         }
         break;

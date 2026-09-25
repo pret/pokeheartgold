@@ -5,5 +5,6 @@
 
 void ov01_021F6830(FieldSystem *fieldSystem, int a1, int a2);
 void ov01_021F6B50(FieldSystem *fieldSystem);
+void ov01_021F6B64(FieldSystem *fieldSystem, int arg1);
 
 #endif

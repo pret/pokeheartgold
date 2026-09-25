@@ -7,6 +7,7 @@
 
 #include "filesystem_files_def.h"
 #include "gf_gfx_planes.h"
+#include "poke_overlay.h"
 #include "render_text.h"
 #include "sound_02004A44.h"
 #include "system.h"
@@ -207,7 +208,7 @@ void ov12_02237BB8(BattleSystem *battleSystem) {
 
     int size = sub_02026E9C();
     void *data = GetSubBgPlttAddr();
-    MIi_CpuClear16(0, data, size);
+    MI_CpuClear16(data, size);
 
     NARC *unkNarcA = NARC_New(NARC_a_0_0_7, HEAP_ID_BATTLE);
     NARC *unkNarcB = NARC_New(NARC_a_0_0_8, HEAP_ID_BATTLE);

@@ -1,6 +1,7 @@
 #ifndef POKEHEARTGOLD_OVERLAY_01_021E90C0_H
 #define POKEHEARTGOLD_OVERLAY_01_021E90C0_H
 
+#include "field_system.h"
 #include "script.h"
 #include "task.h"
 

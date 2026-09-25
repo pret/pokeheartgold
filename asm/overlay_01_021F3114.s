@@ -25,28 +25,28 @@ ov01_021F3114: ; 0x021F3114
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18
 	add r0, r4, #0
-	bl sub_0205B9DC
+	bl MetatileBehavior_IsSlideEast
 	cmp r0, #1
 	bne _021F3136
 	mov r2, #3
 	b _021F3164
 _021F3136:
 	add r0, r4, #0
-	bl sub_0205B9E8
+	bl MetatileBehavior_IsSlideWest
 	cmp r0, #1
 	bne _021F3144
 	mov r2, #2
 	b _021F3164
 _021F3144:
 	add r0, r4, #0
-	bl sub_0205B9F4
+	bl MetatileBehavior_IsSlideNorth
 	cmp r0, #1
 	bne _021F3152
 	mov r2, #0
 	b _021F3164
 _021F3152:
 	add r0, r4, #0
-	bl sub_0205BA00
+	bl MetatileBehavior_IsSlideSouth
 	cmp r0, #1
 	bne _021F3160
 	mov r2, #1
@@ -189,51 +189,51 @@ _021F3254:
 	str r0, [r4, #4]
 	bne _021F3340
 	add r0, r5, #0
-	bl sub_0205B9DC
+	bl MetatileBehavior_IsSlideEast
 	cmp r0, #1
 	bne _021F3274
 	mov r0, #3
 	str r0, [r4]
 	ldr r0, [r4, #0xc]
 	add r1, r5, #0
-	bl ov04_02256BE4
+	bl ViridianGymmick_HandleTileAction
 	b _021F3300
 _021F3274:
 	add r0, r5, #0
-	bl sub_0205B9E8
+	bl MetatileBehavior_IsSlideWest
 	cmp r0, #1
 	bne _021F328C
 	mov r0, #2
 	str r0, [r4]
 	ldr r0, [r4, #0xc]
 	add r1, r5, #0
-	bl ov04_02256BE4
+	bl ViridianGymmick_HandleTileAction
 	b _021F3300
 _021F328C:
 	add r0, r5, #0
-	bl sub_0205B9F4
+	bl MetatileBehavior_IsSlideNorth
 	cmp r0, #1
 	bne _021F32A4
 	mov r0, #0
 	str r0, [r4]
 	ldr r0, [r4, #0xc]
 	add r1, r5, #0
-	bl ov04_02256BE4
+	bl ViridianGymmick_HandleTileAction
 	b _021F3300
 _021F32A4:
 	add r0, r5, #0
-	bl sub_0205BA00
+	bl MetatileBehavior_IsSlideSouth
 	cmp r0, #1
 	bne _021F32BC
 	mov r0, #1
 	str r0, [r4]
 	ldr r0, [r4, #0xc]
 	add r1, r5, #0
-	bl ov04_02256BE4
+	bl ViridianGymmick_HandleTileAction
 	b _021F3300
 _021F32BC:
 	add r0, r5, #0
-	bl sub_0205BA0C
+	bl MetatileBehavior_StopSliding
 	cmp r0, #1
 	ldr r0, [r4]
 	bne _021F32FA

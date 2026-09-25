@@ -159,19 +159,11 @@ _0200:
 	EndMovement
 
 scr_seq_R35_000:
-	DirectionSignpost msg_0387_R35_00028, 1, 4, VAR_SPECIAL_RESULT
-	ScrCmd_057 3
-	ScrCmd_058
-	ScrCmd_060 VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	DirectionSignpostEx 1, 4, msg_0387_R35_00028
 	End
 
 scr_seq_R35_004:
-	DirectionSignpost msg_0387_R35_00029, 1, 19, VAR_SPECIAL_RESULT
-	ScrCmd_057 3
-	ScrCmd_058
-	ScrCmd_060 VAR_SPECIAL_RESULT
-	CallStd std_signpost
+	DirectionSignpostEx 1, 19, msg_0387_R35_00029
 	End
 
 scr_seq_R35_002:

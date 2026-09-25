@@ -27,10 +27,10 @@
 .public AddCellOrAnimResObjFromOpenNarc
 .public sub_0200A740
 .public DestroySingle2DGfxResObj
-.public sub_0200AE18
-.public sub_0200AEB0
-.public sub_0200B00C
-.public sub_0200B0A8
+.public SpriteTransfer_CreateCharTransferTask_UpdateMappingTypeFromHW_AllocAtEnd
+.public SpriteTransfer_DeleteCharTransferTask
+.public SpriteTransfer_CreatePlttTransferTask
+.public SpriteTransfer_DeletePlttTransferTask
 .public SpriteTransfer_GetPaletteProxy
 .public OamManager_Create
 .public OamManager_ApplyAndResetBuffers

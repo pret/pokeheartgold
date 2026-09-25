@@ -1097,7 +1097,7 @@ _0222A706:
 	add r0, r6, #0
 	add r0, #0xac
 	ldr r0, [r0]
-	bl sub_0200ADA4
+	bl SpriteTransfer_CreateCharTransferTask_AllocAtEnd
 	cmp r0, #0
 	bne _0222A7AC
 	bl GF_AssertFail
@@ -1105,7 +1105,7 @@ _0222A7AC:
 	add r0, r6, #0
 	add r0, #0xb0
 	ldr r0, [r0]
-	bl sub_0200B00C
+	bl SpriteTransfer_CreatePlttTransferTask
 	cmp r0, #0
 	bne _0222A7BE
 	bl GF_AssertFail
@@ -1161,11 +1161,11 @@ ov43_0222A81C: ; 0x0222A81C
 	add r7, r0, #0
 	add r0, #0xac
 	ldr r0, [r0]
-	bl sub_0200AEB0
+	bl SpriteTransfer_DeleteCharTransferTask
 	add r0, r7, #0
 	add r0, #0xb0
 	ldr r0, [r0]
-	bl sub_0200B0A8
+	bl SpriteTransfer_DeletePlttTransferTask
 	mov r6, #0x79
 	mov r4, #0
 	add r5, r7, #0

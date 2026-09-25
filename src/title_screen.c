@@ -23,12 +23,12 @@
 #include "msgdata.h"
 #include "overlay_62.h"
 #include "overlay_manager.h"
+#include "screen_fade.h"
 #include "sound.h"
 #include "sound_02004A44.h"
 #include "system.h"
 #include "text.h"
 #include "unk_02005D10.h"
-#include "unk_0200FA24.h"
 #include "unk_02020B8C.h"
 #include "unk_02026E30.h"
 
@@ -161,24 +161,24 @@ static BOOL TitleScreen_Main(OverlayManager *man, int *state) {
             ++data->timer;
             if ((gSystem.newKeys & PAD_BUTTON_A) == PAD_BUTTON_A || (gSystem.newKeys & PAD_BUTTON_START) == PAD_BUTTON_START || gSystem.touchNew) {
                 data->exitMode = TITLESCREEN_EXIT_MENU;
-                GF_SndStartFadeOutBGM(0, 60);
+                GF_SndStartFadeOutBGM(SEQ_NONE, 60);
                 PlayCry(TITLE_SCREEN_SPECIES, 0);
                 GF_SetVolumeBySeqNo(1, 48);
-                BeginNormalPaletteFade(0, 0, 0, RGB_WHITE, 5, 1, HEAP_ID_TITLE_SCREEN);
+                BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, RGB_WHITE, 5, 1, HEAP_ID_TITLE_SCREEN);
                 *state = (int)TITLESCREEN_MAIN_PROCEED_FLASH;
             } else if ((gSystem.heldKeys & CLEAR_SAVE_KEY_COMBO) == CLEAR_SAVE_KEY_COMBO) {
                 data->exitMode = TITLESCREEN_EXIT_CLEARSAVE;
-                BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, data->heapID);
+                BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, RGB_BLACK, 6, 1, data->heapID);
                 *state = (int)TITLESCREEN_MAIN_FADEOUT;
             } else if ((gSystem.heldKeys & MIC_TEST_KEY_COMBO) == MIC_TEST_KEY_COMBO) {
                 data->exitMode = TITLESCREEN_EXIT_MIC_TEST;
-                BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, data->heapID);
+                BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, RGB_BLACK, 6, 1, data->heapID);
                 *state = (int)TITLESCREEN_MAIN_FADEOUT;
             } else if (data->timer > TITLE_SCREEN_DURATION) {
                 data->exitMode = TITLESCREEN_EXIT_TIMEOUT;
                 gSystem.unk70 = TRUE;
                 GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG3, GF_PLANE_TOGGLE_OFF);
-                GF_SndStartFadeOutBGM(0, 60);
+                GF_SndStartFadeOutBGM(SEQ_NONE, 60);
                 *state = (int)TITLESCREEN_MAIN_PROCEED_NOFLASH;
             } else {
                 TitleScreenAnim_GetCameraNextPosition(&data->animData);
@@ -191,12 +191,12 @@ static BOOL TitleScreen_Main(OverlayManager *man, int *state) {
         data->animData.enableStartInstructionFlash = FALSE;
         TitleScreenAnim_Run(&data->animData, data->bgConfig, data->heapID);
         if (IsPaletteFadeFinished()) {
-            BeginNormalPaletteFade(0, 1, 1, RGB_WHITE, 12, 1, HEAP_ID_TITLE_SCREEN);
+            BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_IN, FADE_TYPE_BRIGHTNESS_IN, RGB_WHITE, 12, 1, HEAP_ID_TITLE_SCREEN);
             *state = (int)TITLESCREEN_MAIN_PROCEED_FLASH_2;
         }
         if (GF_SndGetFadeTimer() == 0) {
             StopBGM(SEQ_GS_POKEMON_THEME, 0);
-            BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, data->heapID);
+            BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, RGB_BLACK, 6, 1, data->heapID);
             *state = (int)TITLESCREEN_MAIN_FADEOUT;
         }
         break;
@@ -206,7 +206,7 @@ static BOOL TitleScreen_Main(OverlayManager *man, int *state) {
         TitleScreenAnim_Run(&data->animData, data->bgConfig, data->heapID);
         if (GF_SndGetFadeTimer() == 0) {
             StopBGM(SEQ_GS_POKEMON_THEME, 0);
-            BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, data->heapID);
+            BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, RGB_BLACK, 6, 1, data->heapID);
             *state = (int)TITLESCREEN_MAIN_FADEOUT;
         }
         break;
@@ -216,7 +216,7 @@ static BOOL TitleScreen_Main(OverlayManager *man, int *state) {
         TitleScreenAnim_Run(&data->animData, data->bgConfig, data->heapID);
         if (GF_SndGetFadeTimer() == 0) {
             StopBGM(SEQ_GS_POKEMON_THEME, 0);
-            BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, data->heapID);
+            BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, RGB_BLACK, 6, 1, data->heapID);
             *state = (int)TITLESCREEN_MAIN_FADEOUT;
         }
         break;
@@ -540,8 +540,8 @@ static BOOL TitleScreenAnim_Run(TitleScreenAnimData *animData, BgConfig *bgConfi
         GfGfx_EngineBTogglePlanes(GX_PLANEMASK_BG2, GF_PLANE_TOGGLE_ON);
         GfGfx_EngineBTogglePlanes(GX_PLANEMASK_BG1, GF_PLANE_TOGGLE_ON);
         GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG1, GF_PLANE_TOGGLE_ON);
-        SetMasterBrightnessNeutral(0);
-        SetMasterBrightnessNeutral(1);
+        SetMasterBrightnessNeutral(PM_LCD_TOP);
+        SetMasterBrightnessNeutral(PM_LCD_BOTTOM);
         SetBlendBrightness(0, (GXBlendPlaneMask)(GX_BLEND_PLANEMASK_BG1 | GX_BLEND_PLANEMASK_BG2), SCREEN_MASK_MAIN);
         SetBlendBrightness(0, (GXBlendPlaneMask)(GX_BLEND_PLANEMASK_BG0 | GX_BLEND_PLANEMASK_BG1 | GX_BLEND_PLANEMASK_BG2), SCREEN_MASK_SUB);
         G2S_SetBlendAlpha(4, 0x39, 0, 0x1F);

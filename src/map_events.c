@@ -43,7 +43,7 @@ void Field_InitMapObjectsFromZoneEventData(FieldSystem *fieldSystem) {
     }
 }
 
-BG_EVENT *Field_GetBgEvents(FieldSystem *fieldSystem) {
+BgEvent *Field_GetBgEvents(FieldSystem *fieldSystem) {
     return fieldSystem->mapEvents->bg_events;
 }
 
@@ -51,7 +51,7 @@ u32 Field_GetNumBgEvents(const FieldSystem *fieldSystem) {
     return fieldSystem->mapEvents->num_bg_events;
 }
 
-const WARP_EVENT *Field_GetWarpEventI(const FieldSystem *fieldSystem, u32 warpno) {
+const WarpEvent *Field_GetWarpEventI(const FieldSystem *fieldSystem, u32 warpno) {
     MapEvents *events = fieldSystem->mapEvents;
     if (warpno >= fieldSystem->mapEvents->num_warp_events) {
         return NULL;
@@ -76,7 +76,7 @@ u32 Field_GetNumCoordEvents(const FieldSystem *fieldSystem) {
     return fieldSystem->mapEvents->num_coord_events;
 }
 
-const COORD_EVENT *Field_GetCoordEvents(const FieldSystem *fieldSystem) {
+const CoordEvent *Field_GetCoordEvents(const FieldSystem *fieldSystem) {
     return fieldSystem->mapEvents->coord_events;
 }
 
@@ -138,14 +138,14 @@ BOOL Field_SetEventDefaultMovement(FieldSystem *fieldSystem, int id, u16 movemen
 }
 
 BOOL Field_SetWarpXYPos(FieldSystem *fieldSystem, int warpno, u16 x, u16 y) {
-    WARP_EVENT *warps = fieldSystem->mapEvents->warp_events;
+    WarpEvent *warps = fieldSystem->mapEvents->warp_events;
     warps[warpno].x = x;
     warps[warpno].z = y;
     return TRUE;
 }
 
 BOOL Field_SetBgEventXYPos(FieldSystem *fieldSystem, int bgno, u32 x, u32 y) {
-    BG_EVENT *bgs = Field_GetBgEvents(fieldSystem);
+    BgEvent *bgs = Field_GetBgEvents(fieldSystem);
     bgs[bgno].x = x;
     bgs[bgno].z = y;
     return TRUE;
@@ -157,11 +157,11 @@ static void MapEvents_ComputeRamHeader(MapEvents *events) {
     events->num_bg_events = *(u32 *)ptr;
     ptr += sizeof(u32);
     if (events->num_bg_events != 0) {
-        events->bg_events = (BG_EVENT *)ptr;
+        events->bg_events = (BgEvent *)ptr;
     } else {
         events->bg_events = NULL;
     }
-    ptr += events->num_bg_events * sizeof(BG_EVENT);
+    ptr += events->num_bg_events * sizeof(BgEvent);
 
     events->num_object_events = *(u32 *)ptr;
     ptr += sizeof(u32);
@@ -175,16 +175,16 @@ static void MapEvents_ComputeRamHeader(MapEvents *events) {
     events->num_warp_events = *(u32 *)ptr;
     ptr += sizeof(u32);
     if (events->num_warp_events != 0) {
-        events->warp_events = (WARP_EVENT *)ptr;
+        events->warp_events = (WarpEvent *)ptr;
     } else {
         events->warp_events = NULL;
     }
-    ptr += events->num_warp_events * sizeof(WARP_EVENT);
+    ptr += events->num_warp_events * sizeof(WarpEvent);
 
     events->num_coord_events = *(u32 *)ptr;
     ptr += sizeof(u32);
     if (events->num_coord_events != 0) {
-        events->coord_events = (COORD_EVENT *)ptr;
+        events->coord_events = (CoordEvent *)ptr;
     } else {
         events->coord_events = NULL;
     }

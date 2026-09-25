@@ -27,14 +27,14 @@ enum ListMenuAttr {
     LISTMENUATTR_FONTID,
     LISTMENUATTR_CURSORKIND,
     LISTMENUATTR_WINDOW,
-    LISTMENUATTR_UNK_1C,
+    LISTMENUATTR_DATA,
 };
 
 typedef void (*LM_MoveCursorFunc_t)(struct ListMenu *list, s32 index, u8 onInit);
 typedef void (*LM_ItemPrintFunc_t)(struct ListMenu *list, s32 index, u8 y);
 
 typedef struct ListMenuTemplate {
-    /*0x00*/ LISTMENUITEM *items;
+    /*0x00*/ ListMenuItem *items;
     /*0x04*/ LM_MoveCursorFunc_t moveCursorFunc;
     /*0x08*/ LM_ItemPrintFunc_t itemPrintFunc;
     /*0x0C*/ Window *window;
@@ -52,7 +52,7 @@ typedef struct ListMenuTemplate {
     u16 scrollMultiple : 2;
     u16 fontId : 6;
     u16 cursorKind : 1;
-    /*0x1C*/ u32 unk_1C;
+    /*0x1C*/ void *data;
 } ListMenuTemplate;
 
 typedef struct ListMenu {

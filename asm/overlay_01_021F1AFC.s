@@ -356,7 +356,7 @@ ov01_021F1D94: ; 0x021F1D94
 	add r0, r5, #0
 	add r4, r2, #0
 	add r7, r3, #0
-	bl PlayerAvatar_CheckFlag0
+	bl PlayerAvatar_CheckForcedMovement
 	cmp r0, #1
 	bne _021F1DBE
 	add r0, r6, #0
@@ -1041,7 +1041,7 @@ _021F22C2:
 _021F2312:
 	ldr r0, [r4, #0x1c]
 	mov r1, #0
-	bl ov01_021E7F00
+	bl FieldSystem_ProcessSoundplate
 	add r0, r4, #0
 	bl ov01_021F30F4
 	mov r0, #1
@@ -1184,7 +1184,7 @@ _021F2412:
 	bl PlayerAvatar_SetState
 	ldr r0, [r4, #8]
 	mov r1, #0
-	bl ov01_021E7F00
+	bl FieldSystem_ProcessSoundplate
 	ldr r0, [r4, #8]
 	bl FollowMon_IsActive
 	cmp r0, #0
@@ -1241,7 +1241,7 @@ _021F24B8:
 	bne _021F24D2
 	ldr r0, [r4, #8]
 	mov r1, #1
-	bl ov01_021E7F00
+	bl FieldSystem_ProcessSoundplate
 	add r0, r4, #0
 	bl ov01_021F30F4
 	mov r0, #1
@@ -1255,7 +1255,7 @@ _021F24D2:
 	bne _021F24F0
 	ldr r0, [r4, #8]
 	mov r1, #1
-	bl ov01_021E7F00
+	bl FieldSystem_ProcessSoundplate
 	add r0, r4, #0
 	bl ov01_021F30F4
 	mov r0, #1
@@ -1413,7 +1413,7 @@ _021F25FA: ; jump table
 _021F2602:
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_0205B834
+	bl MetatileBehavior_IsRockClimbNorthSouth
 	cmp r0, #1
 	bne _021F2622
 	mov r0, #1
@@ -1421,7 +1421,7 @@ _021F2602:
 _021F2612:
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_0205B840
+	bl MetatileBehavior_IsRockClimbEastWest
 	cmp r0, #1
 	bne _021F2622
 	mov r0, #1

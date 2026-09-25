@@ -1,13 +1,12 @@
-#include "global.h"
 
 #include "constants/items.h"
 
 #include "bag_cursor.h"
 #include "bag_view.h"
 #include "berry_pots_app.h"
-#include "launch_application.h"
 #include "overlay_15.h"
 #include "overlay_16.h"
+#include "poke_overlay.h"
 
 FS_EXTERN_OVERLAY(OVY_15);
 FS_EXTERN_OVERLAY(OVY_17);

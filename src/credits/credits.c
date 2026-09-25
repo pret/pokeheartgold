@@ -11,17 +11,17 @@
 #include "obj_char_transfer.h"
 #include "obj_pltt_transfer.h"
 #include "overlay_manager.h"
+#include "screen_fade.h"
 #include "sound.h"
 #include "sound_02004A44.h"
 #include "sprite.h"
+#include "sprite_transfer.h"
 #include "sys_task_api.h"
 #include "system.h"
 #include "text.h"
 #include "unk_02009D48.h"
 #include "unk_0200A090.h"
-#include "unk_0200ACF0.h"
 #include "unk_0200B150.h"
-#include "unk_0200FA24.h"
 
 #ifdef HEARTGOLD
 #define GAME_TITLE_MSG_NO 0
@@ -261,7 +261,7 @@ BOOL Credits_Init(OverlayManager *man, int *state) {
         break;
     case 2:
         work = OverlayManager_GetData(man);
-        BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 30, 1, HEAP_ID_CREDITS);
+        BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_IN, FADE_TYPE_BRIGHTNESS_IN, RGB_BLACK, 30, 1, HEAP_ID_CREDITS);
         return TRUE;
     }
     return FALSE;
@@ -317,7 +317,7 @@ BOOL Credits_Main(OverlayManager *man, int *state) {
         // No skipping on first playthrough
         if (work->args->gameCleared && ((gSystem.newKeys & PAD_BUTTON_START) || gSystem.touchNew != 0)) {
             work->skipCredits = TRUE;
-            BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 30, 1, HEAP_ID_CREDITS);
+            BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, RGB_BLACK, 30, 1, HEAP_ID_CREDITS);
             GF_SndStartFadeOutBGM(0, 26);
             *state += 1;
             break;
@@ -330,7 +330,7 @@ BOOL Credits_Main(OverlayManager *man, int *state) {
         if (work->timer < CREDITS_FRAMES) {
             break;
         }
-        BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 30, 1, HEAP_ID_CREDITS);
+        BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, RGB_BLACK, 30, 1, HEAP_ID_CREDITS);
         *state += 1;
         break;
     case CREDITS_STATE_MAIN_FADE_OUT:
@@ -351,7 +351,7 @@ BOOL Credits_Main(OverlayManager *man, int *state) {
             GfGfx_SwapDisplay();
 
             // Start fading into the "The End" screen
-            BeginNormalPaletteFade(3, 1, 1, RGB_BLACK, 1, 1, HEAP_ID_CREDITS);
+            BeginNormalPaletteFade(FADE_MAIN_ONLY, FADE_TYPE_BRIGHTNESS_IN, FADE_TYPE_BRIGHTNESS_IN, RGB_BLACK, 1, 1, HEAP_ID_CREDITS);
             *state += 1;
         }
         break;
@@ -363,7 +363,7 @@ BOOL Credits_Main(OverlayManager *man, int *state) {
         break;
     case CREDITS_STATE_THE_END:
         if ((gSystem.newKeys & (PAD_BUTTON_START | PAD_BUTTON_A)) || gSystem.touchNew != 0) {
-            BeginNormalPaletteFade(3, 0, 0, RGB_BLACK, 60, 1, HEAP_ID_CREDITS);
+            BeginNormalPaletteFade(FADE_MAIN_ONLY, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, RGB_BLACK, 60, 1, HEAP_ID_CREDITS);
             *state = CREDITS_STATE_THE_END_FADE_OUT;
             break;
         }
@@ -374,7 +374,7 @@ BOOL Credits_Main(OverlayManager *man, int *state) {
         break;
     case CREDITS_STATE_THE_END_MUSIC_BOX:
         if ((gSystem.newKeys & (PAD_BUTTON_START | PAD_BUTTON_A)) || gSystem.touchNew != 0) {
-            BeginNormalPaletteFade(3, 0, 0, RGB_BLACK, 60, 1, HEAP_ID_CREDITS);
+            BeginNormalPaletteFade(FADE_MAIN_ONLY, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, RGB_BLACK, 60, 1, HEAP_ID_CREDITS);
             *state += 1;
         }
         break;
@@ -513,12 +513,12 @@ static void ov76_021E6170(CreditsAppWork *work) {
         work->cutsceneRsrs[i].plttResObj = AddPlttResObjFromOpenNarc(work->gf2dGfxResMan[GF_GFX_RES_TYPE_PLTT], *narc, 149, FALSE, i + 2, NNS_G2D_VRAM_TYPE_2DMAIN, 1, HEAP_ID_CREDITS);
     }
 
-    sub_0200ACF0(work->gf2dGfxResObj[GF_GFX_RES_TYPE_CHAR]);
-    sub_0200AF94(work->gf2dGfxResObj[GF_GFX_RES_TYPE_PLTT]);
+    SpriteTransfer_CreateCharTransferTask(work->gf2dGfxResObj[GF_GFX_RES_TYPE_CHAR]);
+    SpriteTransfer_CreateExtPlttTransferTask(work->gf2dGfxResObj[GF_GFX_RES_TYPE_PLTT]);
 
     for (u8 i = 0; i < UNIQUE_SPRITES_PER_CUTSCENE; i++) {
-        sub_0200ACF0(work->cutsceneRsrs[i].charResObj);
-        sub_0200AF94(work->cutsceneRsrs[i].plttResObj);
+        SpriteTransfer_CreateCharTransferTask(work->cutsceneRsrs[i].charResObj);
+        SpriteTransfer_CreateExtPlttTransferTask(work->cutsceneRsrs[i].plttResObj);
     }
 
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
@@ -526,12 +526,12 @@ static void ov76_021E6170(CreditsAppWork *work) {
 }
 
 static void ov76_021E62B4(CreditsAppWork *work) {
-    sub_0200AEB0(work->gf2dGfxResObj[GF_GFX_RES_TYPE_CHAR]);
-    sub_0200B0A8(work->gf2dGfxResObj[GF_GFX_RES_TYPE_PLTT]);
+    SpriteTransfer_DeleteCharTransferTask(work->gf2dGfxResObj[GF_GFX_RES_TYPE_CHAR]);
+    SpriteTransfer_DeletePlttTransferTask(work->gf2dGfxResObj[GF_GFX_RES_TYPE_PLTT]);
 
     for (u8 i = 0; i < 6; i++) {
-        sub_0200AEB0(work->cutsceneRsrs[i].charResObj);
-        sub_0200B0A8(work->cutsceneRsrs[i].plttResObj);
+        SpriteTransfer_DeleteCharTransferTask(work->cutsceneRsrs[i].charResObj);
+        SpriteTransfer_DeletePlttTransferTask(work->cutsceneRsrs[i].plttResObj);
     }
 }
 
@@ -929,7 +929,7 @@ static void LoadCutsceneSpriteResources(CreditsAppWork *work) {
     for (u8 i = 0; i < UNIQUE_SPRITES_PER_CUTSCENE; i++) {
         SpriteResource *charResObj = work->cutsceneRsrs[i].charResObj;
         SpriteResource *plttResObj = work->cutsceneRsrs[i].plttResObj;
-        NNSG2dImageProxy *imageProxy = sub_0200AF00(charResObj);
+        NNSG2dImageProxy *imageProxy = SpriteTransfer_GetCharProxy(charResObj);
         NNSG2dImagePaletteProxy *plttProxy = SpriteTransfer_GetPaletteProxy(plttResObj, imageProxy);
 
         cutsceneWork->spriteGfx[i].imageProxy = imageProxy;

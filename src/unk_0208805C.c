@@ -3,8 +3,8 @@
 #include "global.h"
 
 #include "gf_gfx_loader.h"
+#include "screen_fade.h"
 #include "system.h"
-#include "unk_0200FA24.h"
 
 u8 sub_02088108(s16 *a0, u16 a1, s16 a2);
 
@@ -59,9 +59,9 @@ u8 CalculateHpBarColor(u16 hp, u16 maxHp, u32 pixelsWide) {
 
 void sub_020880CC(u8 a0, enum HeapID heapID) {
     if (a0 == 0) {
-        BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 1, heapID);
+        BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_IN, FADE_TYPE_BRIGHTNESS_IN, RGB_BLACK, 6, 1, heapID);
     } else {
-        BeginNormalPaletteFade(0, 8, 0, RGB_BLACK, 6, 1, heapID);
+        BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_UNK_8, FADE_TYPE_BRIGHTNESS_OUT, RGB_BLACK, 6, 1, heapID);
     }
 }
 

@@ -5,7 +5,7 @@
 #include "obj_char_transfer.h"
 #include "obj_pltt_transfer.h"
 #include "sprite.h"
-#include "unk_0200ACF0.h"
+#include "sprite_transfer.h"
 #include "unk_0200B150.h"
 #include "unk_02025C44.h"
 
@@ -46,11 +46,11 @@ void CreateSpriteResourcesHeader(struct SpriteResourcesHeader *hdr, int charId, 
         }
     }
     if (transfer) {
-        proxy = sub_0200AF24(charObj, cellObj);
+        proxy = SpriteTransfer_GetCharProxyWithCell(charObj, cellObj);
         GF_ASSERT(proxy != NULL);
         hdr->charData = GF2DGfxResObj_GetCharDataPtr(charObj);
     } else {
-        proxy = sub_0200AF00(charObj);
+        proxy = SpriteTransfer_GetCharProxy(charObj);
         GF_ASSERT(proxy != NULL);
         hdr->charData = NULL;
     }

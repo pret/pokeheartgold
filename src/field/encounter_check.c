@@ -20,6 +20,7 @@
 #include "metatile_behavior.h"
 #include "overlay_01.h"
 #include "overlay_02.h"
+#include "poke_overlay.h"
 #include "roamer.h"
 #include "safari_zone.h"
 #include "script_pokemon_util.h"
@@ -570,7 +571,7 @@ static BOOL FieldSystem_EncounterRateRoll(FieldSystem *fieldSystem, u8 encounter
     if (avatarState != PLAYER_STATE_CYCLING && avatarState != PLAYER_STATE_SURFING && !sub_0205DE98(fieldSystem->playerAvatar)) {
         modifiedRate -= 20;
     }
-    if (sub_0205B6F4(metatileBehavior)) {
+    if (MetatileBehavior_IsVeryTallGrass(metatileBehavior)) {
         modifiedRate += 40;
     } else if (avatarState == PLAYER_STATE_CYCLING) {
         modifiedRate += 30;

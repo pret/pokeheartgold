@@ -5881,13 +5881,13 @@ ov91_0225F0C0: ; 0x0225F0C0
 	bl AddCellOrAnimResObjFromOpenNarc
 	str r0, [r5, #0xc]
 	ldr r0, [r5]
-	bl sub_0200AE18
+	bl SpriteTransfer_CreateCharTransferTask_UpdateMappingTypeFromHW_AllocAtEnd
 	cmp r0, #0
 	bne _0225F154
 	bl GF_AssertFail
 _0225F154:
 	ldr r0, [r5, #4]
-	bl sub_0200B00C
+	bl SpriteTransfer_CreatePlttTransferTask
 	cmp r0, #0
 	bne _0225F162
 	bl GF_AssertFail
@@ -5963,9 +5963,9 @@ ov91_0225F1E8: ; 0x0225F1E8
 	add r4, r1, #0
 	bl Sprite_Delete
 	ldr r0, [r5]
-	bl sub_0200AEB0
+	bl SpriteTransfer_DeleteCharTransferTask
 	ldr r0, [r5, #4]
-	bl sub_0200B0A8
+	bl SpriteTransfer_DeletePlttTransferTask
 	mov r0, #0x52
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -7152,7 +7152,7 @@ ov91_0225FB80: ; 0x0225FB80
 	str r0, [r5, r1]
 	sub r1, #0xc
 	ldr r0, [r5, r1]
-	bl sub_0200AE18
+	bl SpriteTransfer_CreateCharTransferTask_UpdateMappingTypeFromHW_AllocAtEnd
 	cmp r0, #0
 	bne _0225FC14
 	bl GF_AssertFail
@@ -7160,7 +7160,7 @@ _0225FC14:
 	mov r0, #6
 	lsl r0, r0, #6
 	ldr r0, [r5, r0]
-	bl sub_0200B00C
+	bl SpriteTransfer_CreatePlttTransferTask
 	cmp r0, #0
 	bne _0225FC26
 	bl GF_AssertFail
@@ -7218,11 +7218,11 @@ ov91_0225FC84: ; 0x0225FC84
 	mov r0, #0x5f
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_0200AEB0
+	bl SpriteTransfer_DeleteCharTransferTask
 	mov r0, #6
 	lsl r0, r0, #6
 	ldr r0, [r4, r0]
-	bl sub_0200B0A8
+	bl SpriteTransfer_DeletePlttTransferTask
 	mov r1, #0x52
 	lsl r1, r1, #2
 	ldr r0, [r4, r1]
@@ -8415,7 +8415,7 @@ _02260508:
 	str r0, [r5, r1]
 	sub r1, #0xc
 	ldr r0, [r5, r1]
-	bl sub_0200AE18
+	bl SpriteTransfer_CreateCharTransferTask_UpdateMappingTypeFromHW_AllocAtEnd
 	cmp r0, #0
 	bne _022605C2
 	bl GF_AssertFail
@@ -8423,7 +8423,7 @@ _022605C2:
 	mov r0, #0x76
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl sub_0200B00C
+	bl SpriteTransfer_CreatePlttTransferTask
 	cmp r0, #0
 	bne _022605D4
 	bl GF_AssertFail
@@ -8515,11 +8515,11 @@ _0226067C:
 	blt _0226067C
 	ldr r0, _02260714 ; =0x0000075C
 	ldr r0, [r5, r0]
-	bl sub_0200AEB0
+	bl SpriteTransfer_DeleteCharTransferTask
 	mov r0, #0x76
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl sub_0200B0A8
+	bl SpriteTransfer_DeletePlttTransferTask
 	mov r0, #0x52
 	ldr r1, _02260714 ; =0x0000075C
 	lsl r0, r0, #2
@@ -10563,13 +10563,13 @@ ov91_02261580: ; 0x02261580
 	bl AddCellOrAnimResObjFromOpenNarc
 	str r0, [r5, #0xc]
 	ldr r0, [r5]
-	bl sub_0200AE18
+	bl SpriteTransfer_CreateCharTransferTask_UpdateMappingTypeFromHW_AllocAtEnd
 	cmp r0, #0
 	bne _02261608
 	bl GF_AssertFail
 _02261608:
 	ldr r0, [r5, #4]
-	bl sub_0200B00C
+	bl SpriteTransfer_CreatePlttTransferTask
 	cmp r0, #0
 	bne _02261616
 	bl GF_AssertFail
@@ -10671,7 +10671,7 @@ _022616D2:
 	mov r3, #0
 	bl AddPlttResObjFromNarc
 	str r0, [r5, #0x60]
-	bl sub_0200B00C
+	bl SpriteTransfer_CreatePlttTransferTask
 	cmp r0, #0
 	bne _022616FA
 	bl GF_AssertFail
@@ -10754,7 +10754,7 @@ ov91_02261790: ; 0x02261790
 	add r4, r1, #0
 	bl TextOBJ_Destroy
 	ldr r0, [r5, #0x60]
-	bl sub_0200B0A8
+	bl SpriteTransfer_DeletePlttTransferTask
 	mov r0, #0x53
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -10770,9 +10770,9 @@ ov91_02261790: ; 0x02261790
 	ldr r0, [r5, #0x34]
 	bl Sprite_Delete
 	ldr r0, [r5]
-	bl sub_0200AEB0
+	bl SpriteTransfer_DeleteCharTransferTask
 	ldr r0, [r5, #4]
-	bl sub_0200B0A8
+	bl SpriteTransfer_DeletePlttTransferTask
 	mov r0, #0x52
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]

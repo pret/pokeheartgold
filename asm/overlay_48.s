@@ -4671,7 +4671,7 @@ ov48_0225AAAC: ; 0x0225AAAC
 	bl AddPlttResObjFromOpenNarc
 	ldr r1, [sp, #0x2c]
 	str r0, [r1, #0x70]
-	bl sub_0200B00C
+	bl SpriteTransfer_CreatePlttTransferTask
 	cmp r0, #0
 	bne _0225AB18
 	bl GF_AssertFail
@@ -4735,7 +4735,7 @@ _0225AB32:
 	bl AddCellOrAnimResObjFromOpenNarc
 	str r0, [r4, #0x78]
 	ldr r0, [r4, #0x6c]
-	bl sub_0200ADA4
+	bl SpriteTransfer_CreateCharTransferTask_AllocAtEnd
 	cmp r0, #0
 	bne _0225ABA0
 	bl GF_AssertFail
@@ -4826,12 +4826,12 @@ _0225AC4A:
 	ldr r0, [r0, #0x3c]
 	bl Sprite_Delete
 	ldr r0, [r7, #0x6c]
-	bl sub_0200AEB0
+	bl SpriteTransfer_DeleteCharTransferTask
 	ldr r0, [sp, #8]
 	cmp r0, #0
 	bne _0225AC72
 	ldr r0, [r7, #0x70]
-	bl sub_0200B0A8
+	bl SpriteTransfer_DeletePlttTransferTask
 	mov r0, #0x4d
 	ldr r1, [sp, #4]
 	lsl r0, r0, #2

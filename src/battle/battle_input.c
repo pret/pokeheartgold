@@ -941,11 +941,39 @@ static const s16 sMainMenuButtonsScreenOffsets[][3] = {
 };
 
 ALIGN(4)
-static const u8 sMainMenuButtonsTouchscreenRect[][4] = {
-    { 4,  15, 2,  29 },
-    { 17, 23, 0,  9  },
-    { 17, 23, 22, 31 },
-    { 18, 23, 11, 20 }
+static const TouchscreenHitbox sMainMenuButtonsTouchscreenRect[] = {
+    {
+     .rect = {
+            .top = 4,
+            .bottom = 15,
+            .left = 2,
+            .right = 29,
+        },
+     },
+    {
+     .rect = {
+            .top = 17,
+            .bottom = 23,
+            .left = 0,
+            .right = 9,
+        },
+     },
+    {
+     .rect = {
+            .top = 17,
+            .bottom = 23,
+            .left = 22,
+            .right = 31,
+        },
+     },
+    {
+     .rect = {
+            .top = 18,
+            .bottom = 23,
+            .left = 11,
+            .right = 20,
+        },
+     },
 };
 
 ALIGN(4)
@@ -1144,23 +1172,36 @@ static const s16 ov12_0226E286[][3] = {
 };
 
 ALIGN(4)
-static const u8 ov12_0226E24C[][4] = {
-    { 0xd, 0x14, 0, 31 },
-    { 0x4, 0xb,  0, 31 }
+static const TouchscreenHitbox ov12_0226E24C[] = {
+    {
+     .rect = {
+            .top = 13,
+            .bottom = 20,
+            .left = 0,
+            .right = 31,
+        },
+     },
+    {
+     .rect = {
+            .top = 4,
+            .bottom = 11,
+            .left = 0,
+            .right = 31,
+        },
+     },
 };
 
 ALIGN(4)
 static const s16 ov12_0226E228[] = { 0, 192, 384 };
 
 ALIGN(4)
-static const TouchscreenHitbox ov12_0226E20C[] = {
-    {
-     .rect = {
-            .top = 18,
-            .bottom = 23,
-            .left = 0,
-            .right = 31 },
-     },
+static const TouchscreenHitbox ov12_0226E20C = {
+    .rect = {
+             .top = 18,
+             .bottom = 23,
+             .left = 0,
+             .right = 31,
+             },
 };
 
 static const ALIGN(4) S16Pos ov12_0226E2D8[] = {
@@ -1787,7 +1828,7 @@ static void Task_BattleMenuScrollHorizontal(SysTask *task, void *data) {
     BattleInput_InitMenuWindow(battleInput);
 
     if (isFinished == TRUE) {
-        BgFillTilemapBufferAndCommit(bgConfig, 7, (0x6000 / 0x20 - 1));
+        BgFillTilemapBufferAndCommit(bgConfig, 7, 0x6000 / 0x20 - 1);
         ToggleBgLayer(GF_BG_LYR_SUB_3, GF_PLANE_TOGGLE_OFF);
         SetBgPriority(GF_BG_LYR_SUB_3, 0);
         GXS_SetVisibleWnd(GX_WNDMASK_NONE);
@@ -1802,8 +1843,8 @@ static void BattleInput_InitMenuSlideIn(BattleInput *battleInput, int battlerId)
     G2S_SetWndOutsidePlane(GX_WND_PLANEMASK_BG0 | GX_WND_PLANEMASK_BG1 | GX_WND_PLANEMASK_BG2 | GX_WND_PLANEMASK_BG3, 1);
     G2S_SetWnd0InsidePlane(GX_WND_PLANEMASK_BG2 | GX_WND_PLANEMASK_BG3, 1);
     G2S_SetWnd1InsidePlane(GX_WND_PLANEMASK_BG2 | GX_WND_PLANEMASK_BG3, 1);
-    G2S_SetWnd0Position(0, 0, 255, (18 * 8));
-    G2S_SetWnd1Position(0, (18 * 8), 255, 192);
+    G2S_SetWnd0Position(0, 0, 255, 18 * 8);
+    G2S_SetWnd1Position(0, 18 * 8, 255, 192);
     GXS_SetVisibleWnd(GX_WNDMASK_W0 | GX_WNDMASK_W1);
 
     BattleMenuSlideIn *menuSlideIn = Heap_Alloc(HEAP_ID_BATTLE, sizeof(BattleMenuSlideIn));
@@ -1968,7 +2009,7 @@ static void BattleInput_CreateMainMenuFightObject(BattleInput *battleInput, int 
 
     BgConfig *bgConfig = BattleSystem_GetBgConfig(battleInput->battleSystem);
 
-    FillBgTilemapRect(bgConfig, 4, (0x6000 / 0x20 - 1), 0, 0x10, 32, 8, 17);
+    FillBgTilemapRect(bgConfig, 4, 0x6000 / 0x20 - 1, 0, 0x10, 32, 8, 17);
     ScheduleBgTilemapBufferTransfer(bgConfig, 5);
 
     TextOBJ_SetSpritesDrawFlag(battleInput->textObj[MENUTXT_BAG].textObj, 0);
@@ -1990,8 +2031,8 @@ void BattleInput_CreatePalParkMenuObjects(BattleInput *battleInput, int param1, 
 
     BgConfig *bgConfig = BattleSystem_GetBgConfig(battleInput->battleSystem);
 
-    FillBgTilemapRect(bgConfig, 4, (0x6000 / 0x20 - 1), 0, 0x10, 10, 8, 17);
-    FillBgTilemapRect(bgConfig, 4, (0x6000 / 0x20 - 1), 0x16, 0x10, 10, 8, 17);
+    FillBgTilemapRect(bgConfig, 4, 0x6000 / 0x20 - 1, 0, 0x10, 10, 8, 17);
+    FillBgTilemapRect(bgConfig, 4, 0x6000 / 0x20 - 1, 0x16, 0x10, 10, 8, 17);
     ScheduleBgTilemapBufferTransfer(bgConfig, 5);
 
     TextOBJ_SetSpritesDrawFlag(battleInput->textObj[MENUTXT_BAG].textObj, 0);
@@ -2310,7 +2351,7 @@ static int BattleInput_TouchCallback_MainMenu(BattleInput *battleInput, int touc
     BattleInput_StartFeedbackTask(Task_ButtonFeedback, battleInput);
 
     battleInput->feedback.button.screenOffsets = sMainMenuButtonsScreenOffsets[touchInput - 1];
-    battleInput->feedback.button.unk8 = &sMainMenuButtonsTouchscreenRect[touchInput - 1];
+    battleInput->feedback.button.touchscreenHitbox = &sMainMenuButtonsTouchscreenRect[touchInput - 1];
     battleInput->feedback.button.unk10 = 1;
     battleInput->feedback.button.ret = touchInput;
     battleInput->feedback.button.textObjId = textObjId;
@@ -2360,7 +2401,7 @@ static int BattleInput_TouchCallback_FightMenu(BattleInput *battleInput, int tou
     BattleInput_StartFeedbackTask(Task_FightMenuButtonFeedback, battleInput);
 
     battleInput->feedback.button.screenOffsets = offsets;
-    battleInput->feedback.button.unk8 = touchscreenRect;
+    battleInput->feedback.button.touchscreenHitbox = touchscreenRect;
     battleInput->feedback.button.unk10 = 3;
     battleInput->feedback.button.ret = touchInput;
     battleInput->feedback.button.shouldDeleteAfter = TRUE;
@@ -2388,10 +2429,10 @@ static int BattleInput_TouchCallback_TwoOptionMenu(BattleInput *battleInput, int
 
     if (touchInput == BATTLE_INPUT_YES) {
         battleInput->feedback.button.screenOffsets = ov12_0226E286[1];
-        battleInput->feedback.button.unk8 = &ov12_0226E24C[1];
+        battleInput->feedback.button.touchscreenHitbox = &ov12_0226E24C[1];
     } else {
         battleInput->feedback.button.screenOffsets = ov12_0226E286[0];
-        battleInput->feedback.button.unk8 = &ov12_0226E24C[0];
+        battleInput->feedback.button.touchscreenHitbox = &ov12_0226E24C[0];
     }
 
     battleInput->feedback.button.unk10 = 6;
@@ -2440,7 +2481,7 @@ static int BattleInput_TouchCallback_TargetMenu(BattleInput *battleInput, int to
         BattleInput_StartFeedbackTask(Task_ButtonFeedback, battleInput);
 
         battleInput->feedback.button.screenOffsets = sTargetMenuButtonsScreenOffsets[4];
-        battleInput->feedback.button.unk8 = &ov12_0226E348[4];
+        battleInput->feedback.button.touchscreenHitbox = &ov12_0226E348[4];
         battleInput->feedback.button.unk10 = 4;
         battleInput->feedback.button.ret = touchInput;
         battleInput->feedback.button.textObjId = 4;
@@ -2453,7 +2494,7 @@ static int BattleInput_TouchCallback_TargetMenu(BattleInput *battleInput, int to
     BgConfig *bgConfig;
 
     bgConfig = BattleSystem_GetBgConfig(battleInput->battleSystem);
-    BgFillTilemapBufferAndCommit(bgConfig, 5, (0x6000 / 0x20 - 1));
+    BgFillTilemapBufferAndCommit(bgConfig, 5, 0x6000 / 0x20 - 1);
     ScheduleBgTilemapBufferTransfer(bgConfig, 5);
 
     BattleInput_Deadstriped_02268EDC(battleInput, touchInput);
@@ -2477,7 +2518,7 @@ static int BattleInput_TouchCallback_VSRecorderMenu(BattleInput *battleInput, in
     BattleInput_StartFeedbackTask(Task_ButtonFeedback, battleInput);
 
     battleInput->feedback.button.screenOffsets = ov12_0226E228;
-    battleInput->feedback.button.unk8 = &ov12_0226E20C;
+    battleInput->feedback.button.touchscreenHitbox = &ov12_0226E20C;
     battleInput->feedback.button.unk10 = 6;
     battleInput->feedback.button.ret = touchInput;
     battleInput->feedback.button.textObjId = 0;
@@ -2860,7 +2901,7 @@ void BattleInput_LoadFightMenuText(BattleInput *battleInput, int battlerId, cons
     size = sub_0208805C(6);
     strPP = NewString_ReadMsgData(msgLoader, msg_0197_00938); // PP
     messageFormat = BattleSystem_GetMessageFormat(battleInput->battleSystem);
-    strSlashFormatted = String_New(((2 + 2 + 1 + 2) * 2 + 2), HEAP_ID_BATTLE);
+    strSlashFormatted = String_New((2 + 2 + 1 + 2) * 2 + 2, HEAP_ID_BATTLE);
     strSlash = NewString_ReadMsgData(msgLoader, msg_0197_00937); // '/'
 
     for (i = 0; i < MAX_MON_MOVES; i++) {
@@ -3010,7 +3051,7 @@ static void ov12_02268CA0(BattleInput *battleInput, int textObjId) {
 
     PaletteData_LoadPalette(palette, &battleInput->paletteBuffer[14 * 16], PLTTBUF_SUB_BG, paletteNo[textObjId] * 16, 0x20);
     ScheduleBgTilemapBufferTransfer(bgConfig, 4);
-    FillBgTilemapRect(bgConfig, 5, (0x6000 / 0x20 - 1), ov12_0226E2F8[textObjId].rect.left, ov12_0226E2F8[textObjId].rect.top, ov12_0226E2F8[textObjId].rect.right - ov12_0226E2F8[textObjId].rect.left + 1, ov12_0226E2F8[textObjId].rect.bottom - ov12_0226E2F8[textObjId].rect.top + 1, 17);
+    FillBgTilemapRect(bgConfig, 5, 0x6000 / 0x20 - 1, ov12_0226E2F8[textObjId].rect.left, ov12_0226E2F8[textObjId].rect.top, ov12_0226E2F8[textObjId].rect.right - ov12_0226E2F8[textObjId].rect.left + 1, ov12_0226E2F8[textObjId].rect.bottom - ov12_0226E2F8[textObjId].rect.top + 1, 17);
     ScheduleBgTilemapBufferTransfer(bgConfig, 5);
 }
 
@@ -3142,7 +3183,7 @@ static void Task_ButtonFeedback(SysTask *task, void *data) {
     switch (battleInput->feedback.state) {
     case 0:
         // Button down
-        ov12_02268EE4(battleInput, battleInput->feedback.button.screenOffsets, battleInput->feedback.button.unk8, battleInput->feedback.button.unk10, 2);
+        ov12_02268EE4(battleInput, battleInput->feedback.button.screenOffsets, battleInput->feedback.button.touchscreenHitbox, battleInput->feedback.button.unk10, 2);
         sub_02013794(battleInput->textObj[battleInput->feedback.button.textObjId].textObj, &x, &y);
         sub_020136B4(battleInput->textObj[battleInput->feedback.button.textObjId].textObj, x, y - 2);
 
@@ -3165,7 +3206,7 @@ static void Task_ButtonFeedback(SysTask *task, void *data) {
         // fallthrough
     case 2:
         // Button up
-        ov12_02268EE4(battleInput, battleInput->feedback.button.screenOffsets, battleInput->feedback.button.unk8, battleInput->feedback.button.unk10, 1);
+        ov12_02268EE4(battleInput, battleInput->feedback.button.screenOffsets, battleInput->feedback.button.touchscreenHitbox, battleInput->feedback.button.unk10, 1);
         sub_02013794(battleInput->textObj[battleInput->feedback.button.textObjId].textObj, &x, &y);
         sub_020136B4(battleInput->textObj[battleInput->feedback.button.textObjId].textObj, x, y + 1);
 
@@ -3240,7 +3281,7 @@ static void Task_FightMenuButtonFeedback(SysTask *task, void *data) {
 
     switch (battleInput->feedback.state) {
     case 0:
-        ov12_02268EE4(battleInput, battleInput->feedback.button.screenOffsets, battleInput->feedback.button.unk8, battleInput->feedback.button.unk10, 2);
+        ov12_02268EE4(battleInput, battleInput->feedback.button.screenOffsets, battleInput->feedback.button.touchscreenHitbox, battleInput->feedback.button.unk10, 2);
 
         if (battleInput->feedback.button.ret != BATTLE_INPUT_CANCEL) {
             sub_02013794(battleInput->textObj[moveTextObjId].textObj, &x, &y);
@@ -3274,7 +3315,7 @@ static void Task_FightMenuButtonFeedback(SysTask *task, void *data) {
         battleInput->feedback.delay = 0;
         battleInput->feedback.state++;
     case 2:
-        ov12_02268EE4(battleInput, battleInput->feedback.button.screenOffsets, battleInput->feedback.button.unk8, battleInput->feedback.button.unk10, 1);
+        ov12_02268EE4(battleInput, battleInput->feedback.button.screenOffsets, battleInput->feedback.button.touchscreenHitbox, battleInput->feedback.button.unk10, 1);
 
         if (battleInput->feedback.button.ret != 0xff) {
             sub_02013794(battleInput->textObj[moveTextObjId].textObj, &x, &y);
@@ -3508,16 +3549,16 @@ static void VBlankTask_BattleMenuSlideIn(SysTask *task, void *data) {
     }
 
     if (menuSlideIn->battlerId == 4) {
-        G2S_SetWnd0Position(0, 0, xSet, (18 * 8));
+        G2S_SetWnd0Position(0, 0, xSet, 18 * 8);
     } else {
         if (xSet == 0) {
             xSet = 1;
         }
 
-        G2S_SetWnd0Position(xSet, 0, 0, (18 * 8));
+        G2S_SetWnd0Position(xSet, 0, 0, 18 * 8);
     }
 
-    G2S_SetWnd1Position(0, (18 * 8), 255, ySet);
+    G2S_SetWnd1Position(0, 18 * 8, 255, ySet);
     menuSlideIn->unk_10 = menuSlideIn->ySet;
 }
 
@@ -3763,11 +3804,18 @@ static int BattleInput_CursorMove_MainMenu(BattleInput *battleInput, int shouldI
         return sCursorArrayMainMenu[cursor->menuY][cursor->menuX];
     case PAD_BUTTON_B:
         if (battleInput->unk66F == 1) {
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wtautological-constant-out-of-range-compare"
+#endif
             for (i = 0; i < menu->touchscreenRect[i].rect.top != TOUCHSCREEN_RECTLIST_END; i++) {
                 if (BATTLE_INPUT_RUN == menu->touchInput[i]) {
                     return i;
                 }
             }
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
         }
         break;
     }
@@ -3878,11 +3926,18 @@ static int BattleInput_CursorMove_FightMenu(BattleInput *battleInput, int param1
     case PAD_BUTTON_A:
         return sCursorArrayFightMenu[cursor->menuY][cursor->menuX];
     case PAD_BUTTON_B:
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wtautological-constant-out-of-range-compare"
+#endif
         for (i = 0; i < menuTemplate->touchscreenRect[i].rect.top != TOUCHSCREEN_RECTLIST_END; i++) {
             if (BATTLE_INPUT_CANCEL == menuTemplate->touchInput[i]) {
                 return i;
             }
         }
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
 
         break;
     }

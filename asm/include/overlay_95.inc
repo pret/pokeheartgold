@@ -147,7 +147,7 @@
 .public GF_3DVramMan_Delete
 .public Options_GetTextFrameDelay
 .public Options_GetFrame
-.public sub_0203E354
+.public Field_SetEnvironmentSoundState_None_Unk2
 .public GetMonData
 .public SetMonData
 .public GetMonNature

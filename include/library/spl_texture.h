@@ -1,6 +1,8 @@
 #ifndef POKEHEARTGOLD_SPL_TEXTURE_H
 #define POKEHEARTGOLD_SPL_TEXTURE_H
 
+#include <nitro.h>
+
 typedef union {
     u32 all;
     struct {

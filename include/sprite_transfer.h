@@ -1,0 +1,29 @@
+#ifndef POKEHEARTGOLD_SPRITE_TRANSFER_H
+#define POKEHEARTGOLD_SPRITE_TRANSFER_H
+
+#include "unk_0200A090.h"
+
+BOOL SpriteTransfer_CreateCharTransferTask(SpriteResource *obj);
+void SpriteTransfer_CreateAllCharTransferTasks(GF_2DGfxResObjList *charResObjList);
+BOOL SpriteTransfer_CreateCharTransferTask_UpdateMappingTypeFromHW(SpriteResource *obj);
+BOOL SpriteTransfer_CreateCharTransferTask_AllocAtEnd(SpriteResource *charResObj);
+void SpriteTransfer_CreateAllCharTransferTasks_AllocAtEnd(GF_2DGfxResObjList *charResObjList);
+BOOL SpriteTransfer_CreateCharTransferTask_UpdateMappingTypeFromHW_AllocAtEnd(SpriteResource *obj);
+void SpriteTransfer_SpriteTransfer_CreateAllCharTransferTasks_UpdateMappingTypeFromHW_AllocAtEnd(GF_2DGfxResObjList *charResObjList);
+void SpriteTransfer_ReplaceCharData(SpriteResource *charResObj);
+void SpriteTransfer_DeleteCharTransferTask(SpriteResource *charResObj);
+void SpriteTransfer_DeleteAllCharTransferTasks(GF_2DGfxResObjList *charResObjList);
+NNSG2dImageProxy *SpriteTransfer_GetCharProxy(SpriteResource *charResObj);
+NNSG2dImageProxy *SpriteTransfer_GetCharProxyWithCell(SpriteResource *charResObj, SpriteResource *cellResObj);
+void SpriteTransfer_DeleteCharTransferTaskByProxy(const NNSG2dImageProxy *imgProxy);
+BOOL SpriteTransfer_CreateExtPlttTransferTask(SpriteResource *obj);
+void SpriteTransfer_CreateAllExtPlttTransferTasks(GF_2DGfxResObjList *plttResObjList);
+BOOL SpriteTransfer_CreatePlttTransferTask(SpriteResource *plttResObj);
+void SpriteTransfer_CreateAllPlttTransferTasks(GF_2DGfxResObjList *plttResObjList);
+void SpriteTransfer_ReplacePlttData(SpriteResource *plttResObj);
+void SpriteTransfer_DeletePlttTransferTask(SpriteResource *plttResObj);
+void SpriteTransfer_DeleteAllPlttTransferTasks(GF_2DGfxResObjList *plttResObjList);
+NNSG2dImagePaletteProxy *SpriteTransfer_GetPaletteProxy(SpriteResource *plttResObj, NNSG2dImageProxy *imageProxy);
+int SpriteTransfer_GetPlttOffset(SpriteResource *plttResObj, NNS_G2D_VRAM_TYPE vram);
+
+#endif // POKEHEARTGOLD_SPRITE_TRANSFER_H

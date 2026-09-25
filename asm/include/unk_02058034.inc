@@ -3,7 +3,7 @@
 .public SysTask_CreateOnMainQueue
 .public SysTask_Destroy
 .public BeginNormalPaletteFade
-.public sub_0200FBDC
+.public ResetVisibleHardwareWindows
 .public sub_0200FC60
 .public Heap_Alloc
 .public Heap_Free

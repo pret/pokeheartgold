@@ -19,9 +19,9 @@
 #include "msgdata.h"
 #include "party.h"
 #include "pokemon_mood.h"
+#include "screen_fade.h"
 #include "text.h"
 #include "unk_02005D10.h"
-#include "unk_0200FA24.h"
 #include "unk_0202FBCC.h"
 
 static u8 ov12_0223BFB0(u8 *buffer, u8 *index, u16 *size);
@@ -851,10 +851,10 @@ void BattleSystem_SetBackground(BattleSystem *battleSystem) {
     battleSystem->unk220 = Heap_Alloc(HEAP_ID_BATTLE, 0x10000);
     battleSystem->unk224 = Heap_Alloc(HEAP_ID_BATTLE, 0x200);
 
-    MIi_CpuCopy32((void *)0x6010000, (u32 *)battleSystem->unk220, 0x10000);
+    MI_CpuCopy32((void *)0x6010000, (u32 *)battleSystem->unk220, 0x10000);
     dst = (u32 *)battleSystem->unk224;
     src = (u32 *)PaletteData_GetUnfadedBuf(battleSystem->palette, PLTTBUF_MAIN_BG);
-    MIi_CpuCopy32(src, dst, 0x200);
+    MI_CpuCopy32(src, dst, 0x200);
 
     vram = (u8 *)0x6400000;
     image = Sprite_GetImageProxy(battleSystem->unk17C[1].unk0->sprite);
@@ -1214,7 +1214,7 @@ void ov12_0223BFFC(BattleSystem *battleSystem, u32 flag) {
     }
 
     BattleInput_PrintSystemMessage(battleSystem->battleInput, flag);
-    BeginNormalPaletteFade(3, 0, 0, RGB_BLACK, 16, 2, HEAP_ID_BATTLE);
+    BeginNormalPaletteFade(FADE_MAIN_ONLY, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, RGB_BLACK, 16, 2, HEAP_ID_BATTLE);
     Sound_Stop();
     Sound_SetMasterVolume(0);
     battleSystem->isRecordingPaused = TRUE;

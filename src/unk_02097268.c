@@ -286,7 +286,7 @@ static void SafariZoneAreaSet_GetObjectsInArea(SafariZoneAreaSet *areaSet, int a
     MI_CpuClear8(out, sizeof(SafariZoneObjectLevels));
 
     for (int i = 0; i < szArea->active_object_count; ++i) {
-        GetSafariObjectConfig(&objectConfig, szArea->objects[i].unk[0], 2);
+        GetSafariObjectConfig(&objectConfig, szArea->objects[i].id, 2);
         if (objectConfig.objectType == SAFARI_ZONE_OBJECT_TYPE_NONE) {
             continue;
         }

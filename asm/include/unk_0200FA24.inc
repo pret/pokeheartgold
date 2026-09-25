@@ -6,7 +6,7 @@
 .public HandleFadeUpdateFrame
 .public IsPaletteFadeFinished
 .public sub_0200FB70
-.public sub_0200FBDC
+.public ResetVisibleHardwareWindows
 .public SetMasterBrightnessNeutral
 .public sub_0200FBF4
 .public sub_0200FC20

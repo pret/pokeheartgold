@@ -331,28 +331,28 @@ _02200AAC: .word ov01_02209354
 ov01_02200AB0: ; 0x02200AB0
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0205B730
+	bl MetatileBehavior_IsWarpEntranceNorth
 	cmp r0, #0
 	beq _02200AC0
 	mov r0, #0
 	pop {r4, pc}
 _02200AC0:
 	add r0, r4, #0
-	bl sub_0205B73C
+	bl MetatileBehavior_IsWarpEntranceSouth
 	cmp r0, #0
 	beq _02200ACE
 	mov r0, #1
 	pop {r4, pc}
 _02200ACE:
 	add r0, r4, #0
-	bl sub_0205B724
+	bl MetatileBehavior_IsWarpEntranceWest
 	cmp r0, #0
 	beq _02200ADC
 	mov r0, #2
 	pop {r4, pc}
 _02200ADC:
 	add r0, r4, #0
-	bl sub_0205B718
+	bl MetatileBehavior_IsWarpEntranceEast
 	cmp r0, #0
 	beq _02200AEA
 	mov r0, #3

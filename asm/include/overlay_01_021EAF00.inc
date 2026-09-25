@@ -6,10 +6,10 @@
 .public sub_0203DB6C
 .public sub_0203DB70
 .public sub_0203DB74
-.public ov01_021EAF18
-.public ov01_021EAF34
-.public ov01_021EAF54
-.public ov01_021EAF70
+.public FieldSystem_InitBottomScreen
+.public FieldSystem_IsBottomScreenRunningDummy
+.public FieldSystem_EndBottomScreen
+.public FieldSystem_IsBottomScreenDone
 .public ov01_021F6840
 .public ov01_021F6864
 .public ov01_021F6874

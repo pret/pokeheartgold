@@ -165,7 +165,7 @@ BOOL Radio_VideoUnload(PokegearRadioAppData *radioApp) {
             break;
         }
         PlayBGM(radioApp->pokegear->args->mapMusicID);
-        sub_0203E354();
+        Field_SetEnvironmentSoundState_None_Unk2();
         ++radioApp->substate;
         break;
     case 2:

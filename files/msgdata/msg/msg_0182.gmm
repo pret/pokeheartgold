@@ -1,709 +1,709 @@
 <?xml version="1.0"?>
 <body language="English">
-	<row id="msg_0182_00000" index="0">
+	<row id="CommunicationClub_Text_Problem" index="0">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">There appears to be a problem...</language>
 	</row>
-	<row id="msg_0182_00001" index="1">
+	<row id="CommunicationClub_Text_Waiting" index="1">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Waiting for {STRVAR_1 3, 1, 0}’s\nresponse...</language>
 	</row>
-	<row id="msg_0182_00002" index="2">
+	<row id="CommunicationClub_Text_AskingForRegistration" index="2">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Asking {STRVAR_1 3, 1, 0} to do member\nregistration. Please wait.</language>
 	</row>
-	<row id="msg_0182_00003" index="3">
+	<row id="CommunicationClub_Text_LeaveGroup" index="3">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Do you want to leave the group? {YESNO 0}</language>
 	</row>
-	<row id="msg_0182_00004" index="4">
+	<row id="CommunicationClub_Text_PlayerRepliedOK" index="4">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">{STRVAR_1 3, 1, 0} replied, “OK.”</language>
 	</row>
-	<row id="msg_0182_00005" index="5">
+	<row id="CommunicationClub_Text_Refused" index="5">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">{STRVAR_1 3, 1, 0} refused...{PAUSE 120}</language>
 	</row>
-	<row id="msg_0182_00006" index="6">
+	<row id="CommunicationClub_Text_LeftGroup" index="6">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">You have left the group.</language>
 	</row>
-	<row id="msg_0182_00007" index="7">
+	<row id="CommunicationClub_Text_00007_Dummy" index="7">
 		<attribute name="window_context_name">garbage</attribute>
 		<language name="English"></language>
 		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</language>
 	</row>
-	<row id="msg_0182_00008" index="8">
+	<row id="CommunicationClub_Text_AwaitingContact_SingleBattle" index="8">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Single Battle!\nAwaiting contact from your friend.</language>
 	</row>
-	<row id="msg_0182_00009" index="9">
+	<row id="CommunicationClub_Text_AwaitingContact_DoubleBattle" index="9">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Double Battle!\nAwaiting contact from your friend.</language>
 	</row>
-	<row id="msg_0182_00010" index="10">
+	<row id="CommunicationClub_Text_AwaitingContact_MultiBattle" index="10">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Multi Battle!\nAwaiting contact from your friends.</language>
 	</row>
-	<row id="msg_0182_00011" index="11">
+	<row id="CommunicationClub_Text_AwaitingContact_MixBattle" index="11">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Mix Battle!\nAwaiting contact from your friend.</language>
 	</row>
-	<row id="msg_0182_00012" index="12">
+	<row id="CommunicationClub_Text_AwaitingContact_FlatBattle" index="12">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Flat Battle!\nAwaiting contact from your friend.</language>
 	</row>
-	<row id="msg_0182_00013" index="13">
+	<row id="CommunicationClub_Text_AwaitingContact_SafariZoneLink" index="13">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Safari Zone Link!\nAwaiting contact from your friend.</language>
 	</row>
-	<row id="msg_0182_00014" index="14">
+	<row id="CommunicationClub_Text_AwaitingContact_Pokeathlon" index="14">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Pokéathlon!\nAwaiting contact from your friend.</language>
 	</row>
-	<row id="msg_0182_00015" index="15">
+	<row id="CommunicationClub_Text_ProceedWhenReady" index="15">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">When the group is ready:\nA Button: Proceed   B Button: Cancel</language>
 	</row>
-	<row id="msg_0182_00016" index="16">
+	<row id="CommunicationClub_Text_00016_Dummy" index="16">
 		<attribute name="window_context_name">garbage</attribute>
 		<language name="English"></language>
 		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</language>
 	</row>
-	<row id="msg_0182_00017" index="17">
+	<row id="CommunicationClub_Text_ProceedWhenReady_2" index="17">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">When the group is ready:\nA Button: Proceed   B Button: Cancel</language>
 	</row>
-	<row id="msg_0182_00018" index="18">
+	<row id="CommunicationClub_Text_AwaitingContact_BattleTower" index="18">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Battle Tower!\nAwaiting contact from your friend.</language>
 	</row>
-	<row id="msg_0182_00019" index="19">
+	<row id="CommunicationClub_Text_AwaitingContact_BattleFactory_Lv50" index="19">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Battle Factory--Level 50!\nAwaiting contact from your friend.</language>
 	</row>
-	<row id="msg_0182_00020" index="20">
+	<row id="CommunicationClub_Text_AwaitingContact_BattleFactory_Open" index="20">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Battle Factory--Open Level!\nAwaiting contact from your friend.</language>
 	</row>
-	<row id="msg_0182_00021" index="21">
+	<row id="CommunicationClub_Text_AwaitingContact_BattleHall" index="21">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Battle Hall!\nAwaiting contact from your friend.</language>
 	</row>
-	<row id="msg_0182_00022" index="22">
+	<row id="CommunicationClub_Text_AwaitingContact_BattleCastle" index="22">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Battle Castle!\nAwaiting contact from your friend.</language>
 	</row>
-	<row id="msg_0182_00023" index="23">
+	<row id="CommunicationClub_Text_AwaitingContact_BattleArcade" index="23">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Battle Arcade!\nAwaiting contact from your friend.</language>
 	</row>
-	<row id="msg_0182_00024" index="24">
+	<row id="CommunicationClub_Text_00024_Dummy" index="24">
 		<attribute name="window_context_name">garbage</attribute>
 		<language name="English"></language>
 		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</language>
 	</row>
-	<row id="msg_0182_00025" index="25">
+	<row id="CommunicationClub_Text_Contacted_SingleBattle" index="25">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">{STRVAR_1 3, 1, 0} has contacted you.\nStart a Single Battle? {YESNO 0}</language>
 	</row>
-	<row id="msg_0182_00026" index="26">
+	<row id="CommunicationClub_Text_Contacted_DoubleBattle" index="26">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">{STRVAR_1 3, 1, 0} has contacted you.\nStart a Double Battle? {YESNO 0}</language>
 	</row>
-	<row id="msg_0182_00027" index="27">
+	<row id="CommunicationClub_Text_Contacted_MixBattle" index="27">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">{STRVAR_1 3, 1, 0} has contacted you.\nStart a Mix Battle? {YESNO 0}</language>
 	</row>
-	<row id="msg_0182_00028" index="28">
+	<row id="CommunicationClub_Text_Contacted_FlatBattle" index="28">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">{STRVAR_1 3, 1, 0} has contacted you.\nStart a Flat Battle? {YESNO 0}</language>
 	</row>
-	<row id="msg_0182_00029" index="29">
+	<row id="CommunicationClub_Text_Contacted_SafariZoneLink" index="29">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">{STRVAR_1 3, 1, 0} has contacted you.\nStart a Safari Zone Link? {YESNO 0}</language>
 	</row>
-	<row id="msg_0182_00030" index="30">
+	<row id="CommunicationClub_Text_Contacted_Pokeathlon" index="30">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">{STRVAR_1 3, 1, 0} has contacted you.\nLet {STRVAR_1 3, 1, 0} join your group? {YESNO 0}</language>
 	</row>
-	<row id="msg_0182_00031" index="31">
+	<row id="CommunicationClub_Text_Contacted_MultiBattle" index="31">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">{STRVAR_1 3, 1, 0} has contacted you.\nLet {STRVAR_1 3, 1, 0} join your group? {YESNO 0}</language>
 	</row>
-	<row id="msg_0182_00032" index="32">
+	<row id="CommunicationClub_Text_Contacted_BattleTower" index="32">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">{STRVAR_1 3, 1, 0} has contacted you.\nTake Battle Tower challenge? {YESNO 0}</language>
 	</row>
-	<row id="msg_0182_00033" index="33">
+	<row id="CommunicationClub_Text_Contacted_BattleFactory" index="33">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">{STRVAR_1 3, 1, 0} has contacted you.\nTake Battle Factory challenge? {YESNO 0}</language>
 	</row>
-	<row id="msg_0182_00034" index="34">
+	<row id="CommunicationClub_Text_Contacted_BattleHall" index="34">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">{STRVAR_1 3, 1, 0} has contacted you.\nStart the Battle Hall challenge? {YESNO 0}</language>
 	</row>
-	<row id="msg_0182_00035" index="35">
+	<row id="CommunicationClub_Text_Contacted_BattleCastle" index="35">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">{STRVAR_1 3, 1, 0} has contacted you.\nTake Battle Castle challenge? {YESNO 0}</language>
 	</row>
-	<row id="msg_0182_00036" index="36">
+	<row id="CommunicationClub_Text_Contacted_BattleArcade" index="36">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">{STRVAR_1 3, 1, 0} has contacted you.\nTake Battle Arcade challenge? {YESNO 0}</language>
 	</row>
-	<row id="msg_0182_00037" index="37">
+	<row id="CommunicationClub_Text_00037_Dummy" index="37">
 		<attribute name="window_context_name">garbage</attribute>
 		<language name="English"></language>
 		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</language>
 	</row>
-	<row id="msg_0182_00038" index="38">
+	<row id="CommunicationClub_Text_ConfirmGroup_MultiBattle" index="38">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Multi Battle!\nIs this group OK? {YESNO 0}</language>
 	</row>
-	<row id="msg_0182_00039" index="39">
+	<row id="CommunicationClub_Text_ConfirmGroup" index="39">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Is this group OK? {YESNO 0}</language>
 	</row>
-	<row id="msg_0182_00040" index="40">
+	<row id="CommunicationClub_Text_00040_Dummy" index="40">
 		<attribute name="window_context_name">garbage</attribute>
 		<language name="English"></language>
 		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</language>
 	</row>
-	<row id="msg_0182_00041" index="41">
+	<row id="CommunicationClub_Text_00041_Dummy" index="41">
 		<attribute name="window_context_name">garbage</attribute>
 		<language name="English"></language>
 		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXXX</language>
 	</row>
-	<row id="msg_0182_00042" index="42">
+	<row id="CommunicationClub_Text_ConfirmGroup_Pokeathlon" index="42">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Pokéathlon!\nIs this group OK?{YESNO 0}</language>
 	</row>
-	<row id="msg_0182_00043" index="43">
+	<row id="CommunicationClub_Text_CancelGroup_MultiBattle" index="43">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Cancel a Multi Battle involving this\ngroup?{YESNO 0}</language>
 	</row>
-	<row id="msg_0182_00044" index="44">
+	<row id="CommunicationClub_Text_00044_Dummy" index="44">
 		<attribute name="window_context_name">garbage</attribute>
 		<language name="English"></language>
 		<language name="日本語">XXXXXXXXXXXX</language>
 	</row>
-	<row id="msg_0182_00045" index="45">
+	<row id="CommunicationClub_Text_00045_Dummy" index="45">
 		<attribute name="window_context_name">garbage</attribute>
 		<language name="English"></language>
 		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</language>
 	</row>
-	<row id="msg_0182_00046" index="46">
+	<row id="CommunicationClub_Text_00046_Dummy" index="46">
 		<attribute name="window_context_name">garbage</attribute>
 		<language name="English"></language>
 		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXXXXX</language>
 	</row>
-	<row id="msg_0182_00047" index="47">
+	<row id="CommunicationClub_Text_CancelGroup_Pokeathlon" index="47">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Cancel holding a Pokéathlon\nwith this group? {YESNO 0}</language>
 	</row>
-	<row id="msg_0182_00048" index="48">
+	<row id="CommunicationClub_Text_00048_Dummy" index="48">
 		<attribute name="window_context_name">garbage</attribute>
 		<language name="English"></language>
 		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</language>
 	</row>
-	<row id="msg_0182_00049" index="49">
+	<row id="CommunicationClub_Text_Choose_SingleBattle" index="49">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Choose the Single Battle you would\nlike to join. {YESNO 0}</language>
 	</row>
-	<row id="msg_0182_00050" index="50">
+	<row id="CommunicationClub_Text_Choose_DoubleBattle" index="50">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Choose the Double Battle you would\nlike to join. {YESNO 0}</language>
 	</row>
-	<row id="msg_0182_00051" index="51">
+	<row id="CommunicationClub_Text_Choose_MultiBattle" index="51">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Choose the Multi Battle you would\nlike to join. {YESNO 0}</language>
 	</row>
-	<row id="msg_0182_00052" index="52">
+	<row id="CommunicationClub_Text_Choose_MixBattle" index="52">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Choose the Mix Battle you would\nlike to join. {YESNO 0}</language>
 	</row>
-	<row id="msg_0182_00053" index="53">
+	<row id="CommunicationClub_Text_Choose_FlatBattle" index="53">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Choose the Flat Battle you would\nlike to join. {YESNO 0}</language>
 	</row>
-	<row id="msg_0182_00054" index="54">
+	<row id="CommunicationClub_Text_Choose_SafariZoneLink" index="54">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Choose the Safari Zone Link\nyou would like to join. {YESNO 0}</language>
 	</row>
-	<row id="msg_0182_00055" index="55">
+	<row id="CommunicationClub_Text_Choose_Pokeathlon" index="55">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Choose the Pokéathlon you would\nlike to join. {YESNO 0}</language>
 	</row>
-	<row id="msg_0182_00056" index="56">
+	<row id="CommunicationClub_Text_00056_Dummy" index="56">
 		<attribute name="window_context_name">garbage</attribute>
 		<language name="English"></language>
 		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXXX</language>
 	</row>
-	<row id="msg_0182_00057" index="57">
+	<row id="CommunicationClub_Text_00057_Dummy" index="57">
 		<attribute name="window_context_name">garbage</attribute>
 		<language name="English"></language>
 		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</language>
 	</row>
-	<row id="msg_0182_00058" index="58">
+	<row id="CommunicationClub_Text_00058_Dummy" index="58">
 		<attribute name="window_context_name">garbage</attribute>
 		<language name="English"></language>
 		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXXX</language>
 	</row>
-	<row id="msg_0182_00059" index="59">
+	<row id="CommunicationClub_Text_ChooseFriend_BattleTower" index="59">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Choose the friend you want to take\nto the Battle Tower. {YESNO 0}</language>
 	</row>
-	<row id="msg_0182_00060" index="60">
+	<row id="CommunicationClub_Text_ChooseFriend_BattleFactory_Lv50" index="60">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Choose the friend to play with at\nthe Battle Factory--Level 50. {YESNO 0}</language>
 	</row>
-	<row id="msg_0182_00061" index="61">
+	<row id="CommunicationClub_Text_ChooseFriend_BattleFactory_Open" index="61">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Choose the friend to play with at\nthe Battle Factory--Open Level. {YESNO 0}</language>
 	</row>
-	<row id="msg_0182_00062" index="62">
+	<row id="CommunicationClub_Text_ChooseFriend_BattleHall" index="62">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Choose the friend to play\nwith at the Battle Hall. {YESNO 0}</language>
 	</row>
-	<row id="msg_0182_00063" index="63">
+	<row id="CommunicationClub_Text_ChooseFriend_BattleCastle" index="63">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Choose the friend to play\nwith at the Battle Castle. {YESNO 0}</language>
 	</row>
-	<row id="msg_0182_00064" index="64">
+	<row id="CommunicationClub_Text_ChooseFriend_BattleArcade" index="64">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Choose the friend to play\nwith at the Battle Arcade. {YESNO 0}</language>
 	</row>
-	<row id="msg_0182_00065" index="65">
+	<row id="CommunicationClub_Text_GroupCancelled" index="65">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">A member has dropped out.\rPlease repeat the registration\nprocess from the beginning.</language>
 	</row>
-	<row id="msg_0182_00066" index="66">
+	<row id="CommunicationClub_Text_00066_Dummy" index="66">
 		<attribute name="window_context_name">garbage</attribute>
 		<language name="English"></language>
 		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXXXXXXX</language>
 	</row>
-	<row id="msg_0182_00067" index="67">
+	<row id="CommunicationClub_Text_00067_Dummy" index="67">
 		<attribute name="window_context_name">garbage</attribute>
 		<language name="English"></language>
 		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXXXX</language>
 	</row>
-	<row id="msg_0182_00068" index="68">
+	<row id="CommunicationClub_Text_GroupCancelled_Pokeathlon" index="68">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">A Pokéathlon involving this group will\nbe canceled.</language>
 	</row>
-	<row id="msg_0182_00069" index="69">
+	<row id="CommunicationClub_Text_YouRepliedOK" index="69">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Replied “OK” to {STRVAR_1 3, 1, 0}.</language>
 	</row>
-	<row id="msg_0182_00070" index="70">
+	<row id="CommunicationClub_Text_GroupWaiting_MultiBattle" index="70">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Multi Battle!\nWaiting for the rest of the group.</language>
 	</row>
-	<row id="msg_0182_00071" index="71">
+	<row id="CommunicationClub_Text_GroupWaiting" index="71">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Waiting for the rest of the group.</language>
 	</row>
-	<row id="msg_0182_00072" index="72">
+	<row id="CommunicationClub_Text_00072_Dummy" index="72">
 		<attribute name="window_context_name">garbage</attribute>
 		<language name="English"></language>
 		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXXXXXX</language>
 	</row>
-	<row id="msg_0182_00073" index="73">
+	<row id="CommunicationClub_Text_00073_Dummy" index="73">
 		<attribute name="window_context_name">garbage</attribute>
 		<language name="English"></language>
 		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXXX</language>
 	</row>
-	<row id="msg_0182_00074" index="74">
+	<row id="CommunicationClub_Text_GroupWaiting_Pokeathlon" index="74">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Pokéathlon!\nWaiting for the rest of the group.</language>
 	</row>
-	<row id="msg_0182_00075" index="75">
+	<row id="CommunicationClub_Text_ID_2" index="75">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">{STRVAR_1 3, 0, 0}\nID{STRVAR_1 54, 1, 0}</language>
 	</row>
-	<row id="msg_0182_00076" index="76">
+	<row id="CommunicationClub_Text_00076" index="76">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">{STRVAR_1 51, 0, 0}:{STRVAR_1 3, 1, 0}</language>
 	</row>
-	<row id="msg_0182_00077" index="77">
+	<row id="CommunicationClub_Text_00077" index="77">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">{STRVAR_1 51, 0, 0}:</language>
 	</row>
-	<row id="msg_0182_00078" index="78">
+	<row id="CommunicationClub_Text_ID_1" index="78">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">ID{STRVAR_1 54, 2, 0}</language>
 	</row>
-	<row id="msg_0182_00079" index="79">
+	<row id="CommunicationClub_Text_00079" index="79">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">{STRVAR_1 3, 0, 0}</language>
 	</row>
-	<row id="msg_0182_00080" index="80">
+	<row id="CommunicationClub_Text_NumNeeded" index="80">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">{STRVAR_1 50, 0, 0} more\nneeded.</language>
 	</row>
-	<row id="msg_0182_00081" index="81">
+	<row id="CommunicationClub_Text_NumPlayers" index="81">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">{STRVAR_1 50, 0, 0} Players</language>
 	</row>
-	<row id="msg_0182_00082" index="82">
+	<row id="CommunicationClub_Text_00082_Dummy" index="82">
 		<attribute name="window_context_name">garbage</attribute>
 		<language name="English"></language>
 		<language name="日本語"></language>
 	</row>
-	<row id="msg_0182_00083" index="83">
+	<row id="CommunicationClub_Text_StandardCup" index="83">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">STANDARD</language>
 	</row>
-	<row id="msg_0182_00084" index="84">
+	<row id="CommunicationClub_Text_FancyCup" index="84">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">FANCY</language>
 	</row>
-	<row id="msg_0182_00085" index="85">
+	<row id="CommunicationClub_Text_LittleCup" index="85">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">LITTLE</language>
 	</row>
-	<row id="msg_0182_00086" index="86">
+	<row id="CommunicationClub_Text_LightCup" index="86">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">LIGHT</language>
 	</row>
-	<row id="msg_0182_00087" index="87">
+	<row id="CommunicationClub_Text_DoubleCup" index="87">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">DOUBLE</language>
 	</row>
-	<row id="msg_0182_00088" index="88">
+	<row id="CommunicationClub_Text_StandardCup_2" index="88">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">STANDARD</language>
 	</row>
-	<row id="msg_0182_00089" index="89">
+	<row id="CommunicationClub_Text_LightCup_2" index="89">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">LIGHT</language>
 	</row>
-	<row id="msg_0182_00090" index="90">
+	<row id="CommunicationClub_Text_DoubleCup_2" index="90">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">DOUBLE</language>
 	</row>
-	<row id="msg_0182_00091" index="91">
+	<row id="CommunicationClub_Text_DoubleCup_3" index="91">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">DOUBLE</language>
 	</row>
-	<row id="msg_0182_00092" index="92">
+	<row id="CommunicationClub_Text_GSCup" index="92">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">GS</language>
 	</row>
-	<row id="msg_0182_00093" index="93">
+	<row id="CommunicationClub_Text_RuleNoOfPokemon" index="93">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">No. of Pokémon:</language>
 	</row>
-	<row id="msg_0182_00094" index="94">
+	<row id="CommunicationClub_Text_RulePokemonLevel" index="94">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Pokémon level:</language>
 	</row>
-	<row id="msg_0182_00095" index="95">
+	<row id="CommunicationClub_Text_RuleTotalLevels" index="95">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Total levels:</language>
 	</row>
-	<row id="msg_0182_00096" index="96">
+	<row id="CommunicationClub_Text_RuleHeight" index="96">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Height:</language>
 	</row>
-	<row id="msg_0182_00097" index="97">
+	<row id="CommunicationClub_Text_RuleWeight" index="97">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Weight:</language>
 	</row>
-	<row id="msg_0182_00098" index="98">
+	<row id="CommunicationClub_Text_RuleEvolvedPokemon" index="98">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Evolved Pokémon:</language>
 	</row>
-	<row id="msg_0182_00099" index="99">
+	<row id="CommunicationClub_Text_RuleSpecialPokemon" index="99">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Special Pokémon:</language>
 	</row>
-	<row id="msg_0182_00100" index="100">
+	<row id="CommunicationClub_Text_RuleSamePokemon" index="100">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Same Pokémon:</language>
 	</row>
-	<row id="msg_0182_00101" index="101">
+	<row id="CommunicationClub_Text_RuleSameItems" index="101">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Same items:</language>
 	</row>
-	<row id="msg_0182_00102" index="102">
+	<row id="CommunicationClub_Text_ValueNoOfPokemon" index="102">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">{STRVAR_1 50, 0, 0}</language>
 	</row>
-	<row id="msg_0182_00103" index="103">
+	<row id="CommunicationClub_Text_ValueMaxLevel" index="103">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Max. {STRVAR_1 52, 0, 0}</language>
 	</row>
-	<row id="msg_0182_00104" index="104">
+	<row id="CommunicationClub_Text_ValueMaxTotalLevels" index="104">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Max. {STRVAR_1 52, 0, 0}</language>
 	</row>
-	<row id="msg_0182_00105" index="105">
+	<row id="CommunicationClub_Text_ValueMaxHeight" index="105">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Max. {STRVAR_1 50, 0, 0}’ {STRVAR_1 50, 1, 0}”</language>
 	</row>
-	<row id="msg_0182_00106" index="106">
+	<row id="CommunicationClub_Text_ValueMinHeight" index="106">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Min. {STRVAR_1 50, 0, 0}’ {STRVAR_1 50, 1, 0}”</language>
 	</row>
-	<row id="msg_0182_00107" index="107">
+	<row id="CommunicationClub_Text_ValueMaxWeight" index="107">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Max. {STRVAR_1 51, 0, 0} lbs.</language>
 	</row>
-	<row id="msg_0182_00108" index="108">
+	<row id="CommunicationClub_Text_ValueMinWeight" index="108">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Min. {STRVAR_1 51, 0, 0} lbs.</language>
 	</row>
-	<row id="msg_0182_00109" index="109">
+	<row id="CommunicationClub_Text_ValuePokemonPermitted" index="109">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Permitted</language>
 	</row>
-	<row id="msg_0182_00110" index="110">
+	<row id="CommunicationClub_Text_ValuePokemonBanned" index="110">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Banned</language>
 	</row>
-	<row id="msg_0182_00111" index="111">
+	<row id="CommunicationClub_Text_ValueItemsPermitted" index="111">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Permitted</language>
 	</row>
-	<row id="msg_0182_00112" index="112">
+	<row id="CommunicationClub_Text_ValueItemsBanned" index="112">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Banned</language>
 	</row>
-	<row id="msg_0182_00113" index="113">
+	<row id="CommunicationClub_Text_Cup" index="113">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">{STRVAR_1 26, 0, 0} Cup</language>
 	</row>
-	<row id="msg_0182_00114" index="114">
+	<row id="CommunicationClub_Text_NoRestrictions" index="114">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">NO RESTRICTIONS</language>
 	</row>
-	<row id="msg_0182_00115" index="115">
+	<row id="CommunicationClub_Text_Limit2" index="115">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Limit 2</language>
 	</row>
-	<row id="msg_0182_00116" index="116">
+	<row id="CommunicationClub_Text_DifferentRules" index="116">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Players have chosen different rules.\nThe same rules must be chosen.</language>
 	</row>
-	<row id="msg_0182_00117" index="117">
+	<row id="CommunicationClub_Text_00117_Dummy" index="117">
 		<attribute name="window_context_name">garbage</attribute>
 		<language name="English"></language>
 		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</language>
 	</row>
-	<row id="msg_0182_00118" index="118">
+	<row id="CommunicationClub_Text_00118_Dummy" index="118">
 		<attribute name="window_context_name">garbage</attribute>
 		<language name="English"></language>
 		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</language>
 	</row>
-	<row id="msg_0182_00119" index="119">
+	<row id="CommunicationClub_Text_00119_Dummy" index="119">
 		<attribute name="window_context_name">garbage</attribute>
 		<language name="English"></language>
 		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXXXXXXXXX</language>
 	</row>
-	<row id="msg_0182_00120" index="120">
+	<row id="CommunicationClub_Text_00120_Dummy" index="120">
 		<attribute name="window_context_name">garbage</attribute>
 		<language name="English"></language>
 		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXXXXXXXXX</language>
 	</row>
-	<row id="msg_0182_00121" index="121">
+	<row id="CommunicationClub_Text_00121_Dummy" index="121">
 		<attribute name="window_context_name">garbage</attribute>
 		<language name="English"></language>
 		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</language>
 	</row>
-	<row id="msg_0182_00122" index="122">
+	<row id="CommunicationClub_Text_00122_Dummy" index="122">
 		<attribute name="window_context_name">garbage</attribute>
 		<language name="English"></language>
 		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXXXXXXX</language>
 	</row>
-	<row id="msg_0182_00123" index="123">
+	<row id="CommunicationClub_Text_00123_Dummy" index="123">
 		<attribute name="window_context_name">garbage</attribute>
 		<language name="English"></language>
 		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXXXXXXX</language>
 	</row>
-	<row id="msg_0182_00124" index="124">
+	<row id="CommunicationClub_Text_00124_Dummy" index="124">
 		<attribute name="window_context_name">garbage</attribute>
 		<language name="English"></language>
 		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXXXXXX</language>
 	</row>
-	<row id="msg_0182_00125" index="125">
+	<row id="CommunicationClub_Text_00125_Dummy" index="125">
 		<attribute name="window_context_name">garbage</attribute>
 		<language name="English"></language>
 		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXXXXXX</language>
 	</row>
-	<row id="msg_0182_00126" index="126">
+	<row id="CommunicationClub_Text_00126_Dummy" index="126">
 		<attribute name="window_context_name">garbage</attribute>
 		<language name="English"></language>
 		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXXXXXXX</language>
 	</row>
-	<row id="msg_0182_00127" index="127">
+	<row id="CommunicationClub_Text_00127_Dummy" index="127">
 		<attribute name="window_context_name">garbage</attribute>
 		<language name="English"></language>
 		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</language>
 	</row>
-	<row id="msg_0182_00128" index="128">
+	<row id="CommunicationClub_Text_00128_Dummy" index="128">
 		<attribute name="window_context_name">garbage</attribute>
 		<language name="English"></language>
 		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</language>
 	</row>
-	<row id="msg_0182_00129" index="129">
+	<row id="CommunicationClub_Text_00129_Dummy" index="129">
 		<attribute name="window_context_name">garbage</attribute>
 		<language name="English"></language>
 		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</language>
 	</row>
-	<row id="msg_0182_00130" index="130">
+	<row id="CommunicationClub_Text_00130_Dummy" index="130">
 		<attribute name="window_context_name">garbage</attribute>
 		<language name="English"></language>
 		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</language>
 	</row>
-	<row id="msg_0182_00131" index="131">
+	<row id="CommunicationClub_Text_00131_Dummy" index="131">
 		<attribute name="window_context_name">garbage</attribute>
 		<language name="English"></language>
 		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</language>
 	</row>
-	<row id="msg_0182_00132" index="132">
+	<row id="CommunicationClub_Text_00132_Dummy" index="132">
 		<attribute name="window_context_name">garbage</attribute>
 		<language name="English"></language>
 		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXXXXXXXXX</language>
 	</row>
-	<row id="msg_0182_00133" index="133">
+	<row id="CommunicationClub_Text_00133_Dummy" index="133">
 		<attribute name="window_context_name">garbage</attribute>
 		<language name="English"></language>
 		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXXXXXXXXX</language>
 	</row>
-	<row id="msg_0182_00134" index="134">
+	<row id="CommunicationClub_Text_00134_Dummy" index="134">
 		<attribute name="window_context_name">garbage</attribute>
 		<language name="English"></language>
 		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXXXXXXXX</language>
 	</row>
-	<row id="msg_0182_00135" index="135">
+	<row id="CommunicationClub_Text_00135_Dummy" index="135">
 		<attribute name="window_context_name">garbage</attribute>
 		<language name="English"></language>
 		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXXXXXXXX</language>
 	</row>
-	<row id="msg_0182_00136" index="136">
+	<row id="CommunicationClub_Text_00136_Dummy" index="136">
 		<attribute name="window_context_name">garbage</attribute>
 		<language name="English"></language>
 		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXXXXXXXXX</language>
 	</row>
-	<row id="msg_0182_00137" index="137">
+	<row id="CommunicationClub_Text_00137_Dummy" index="137">
 		<attribute name="window_context_name">garbage</attribute>
 		<language name="English"></language>
 		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXXXXXXXXX</language>
 	</row>
-	<row id="msg_0182_00138" index="138">
+	<row id="CommunicationClub_Text_00138_Dummy" index="138">
 		<attribute name="window_context_name">garbage</attribute>
 		<language name="English"></language>
 		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXXXXXXXXX</language>
 	</row>
-	<row id="msg_0182_00139" index="139">
+	<row id="CommunicationClub_Text_00139_Dummy" index="139">
 		<attribute name="window_context_name">garbage</attribute>
 		<language name="English"></language>
 		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXXXXXXXX</language>
 	</row>
-	<row id="msg_0182_00140" index="140">
+	<row id="CommunicationClub_Text_00140_Dummy" index="140">
 		<attribute name="window_context_name">garbage</attribute>
 		<language name="English"></language>
 		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXXXXXXXX</language>
 	</row>
-	<row id="msg_0182_00141" index="141">
+	<row id="CommunicationClub_Text_00141_Dummy" index="141">
 		<attribute name="window_context_name">garbage</attribute>
 		<language name="English"></language>
 		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXXXXXXXXX</language>
 	</row>
-	<row id="msg_0182_00142" index="142">
+	<row id="CommunicationClub_Text_Recruiting_JumpCourse" index="142">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Speed &amp; Jump Course!\nRecruiting other players. {YESNO 0}</language>
 	</row>
-	<row id="msg_0182_00143" index="143">
+	<row id="CommunicationClub_Text_Recruiting_SkillCourse" index="143">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Jump &amp; Skill Course!\nRecruiting other players. {YESNO 0}</language>
 	</row>
-	<row id="msg_0182_00144" index="144">
+	<row id="CommunicationClub_Text_Recruiting_PowerCourse" index="144">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Skill &amp; Power Course!\nRecruiting other players. {YESNO 0}</language>
 	</row>
-	<row id="msg_0182_00145" index="145">
+	<row id="CommunicationClub_Text_Recruiting_StaminaCourse" index="145">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Power &amp; Stamina Course!\nRecruiting other players. {YESNO 0}</language>
 	</row>
-	<row id="msg_0182_00146" index="146">
+	<row id="CommunicationClub_Text_Recruiting_SpeedCourse" index="146">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Stamina &amp; Speed Course!\nRecruiting other players. {YESNO 0}</language>
 	</row>
-	<row id="msg_0182_00147" index="147">
+	<row id="CommunicationClub_Text_Recruiting_MasterCourse" index="147">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Master Course!\nRecruiting other players. {YESNO 0}</language>
 	</row>
-	<row id="msg_0182_00148" index="148">
+	<row id="CommunicationClub_Text_ChooseLeader_JumpCourse" index="148">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Speed &amp; Jump Course!\nPlease choose the leader. {YESNO 0}</language>
 	</row>
-	<row id="msg_0182_00149" index="149">
+	<row id="CommunicationClub_Text_ChooseLeader_SkillCourse" index="149">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Jump &amp; Skill Course!\nPlease choose the leader. {YESNO 0}</language>
 	</row>
-	<row id="msg_0182_00150" index="150">
+	<row id="CommunicationClub_Text_ChooseLeader_PowerCourse" index="150">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Skill &amp; Power Course!\nPlease choose the leader. {YESNO 0}</language>
 	</row>
-	<row id="msg_0182_00151" index="151">
+	<row id="CommunicationClub_Text_ChooseLeader_StaminaCourse" index="151">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Power &amp; Stamina Course!\nPlease choose the leader. {YESNO 0}</language>
 	</row>
-	<row id="msg_0182_00152" index="152">
+	<row id="CommunicationClub_Text_ChooseLeader_SpeedCourse" index="152">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Stamina &amp; Speed Course!\nPlease choose the leader. {YESNO 0}</language>
 	</row>
-	<row id="msg_0182_00153" index="153">
+	<row id="CommunicationClub_Text_ChooseLeader_MasterCourse" index="153">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Master Course!\nPlease choose the leader. {YESNO 0}</language>
 	</row>
-	<row id="msg_0182_00154" index="154">
+	<row id="CommunicationClub_Text_Touch_JumpCourse" index="154">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Speed &amp; Jump Course!\nTouch once players have joined. {YESNO 0}</language>
 	</row>
-	<row id="msg_0182_00155" index="155">
+	<row id="CommunicationClub_Text_Touch_SkillCourse" index="155">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Jump &amp; Skill Course!\nTouch once players have joined. {YESNO 0}</language>
 	</row>
-	<row id="msg_0182_00156" index="156">
+	<row id="CommunicationClub_Text_Touch_PowerCourse" index="156">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Skill &amp; Power Course!\nTouch once players have joined. {YESNO 0}</language>
 	</row>
-	<row id="msg_0182_00157" index="157">
+	<row id="CommunicationClub_Text_Touch_StaminaCourse" index="157">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Power &amp; Stamina Course!\nTouch once players have joined. {YESNO 0}</language>
 	</row>
-	<row id="msg_0182_00158" index="158">
+	<row id="CommunicationClub_Text_Touch_SpeedCourse" index="158">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Stamina &amp; Speed Course!\nTouch once players have joined. {YESNO 0}</language>
 	</row>
-	<row id="msg_0182_00159" index="159">
+	<row id="CommunicationClub_Text_Touch_MasterCourse" index="159">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Master Course!\nTouch once players have joined. {YESNO 0}</language>
 	</row>
-	<row id="msg_0182_00160" index="160">
+	<row id="CommunicationClub_Text_AwaitingMembers_JumpCourse" index="160">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Speed &amp; Jump Course!\nAwaiting other members!</language>
 	</row>
-	<row id="msg_0182_00161" index="161">
+	<row id="CommunicationClub_Text_AwaitingMembers_SkillCourse" index="161">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Jump &amp; Skill Course!\nAwaiting other members!</language>
 	</row>
-	<row id="msg_0182_00162" index="162">
+	<row id="CommunicationClub_Text_AwaitingMembers_PowerCourse" index="162">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Skill &amp; Power Course!\nAwaiting other members!</language>
 	</row>
-	<row id="msg_0182_00163" index="163">
+	<row id="CommunicationClub_Text_AwaitingMembers_StaminaCourse" index="163">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Power &amp; Stamina Course!\nAwaiting other members!</language>
 	</row>
-	<row id="msg_0182_00164" index="164">
+	<row id="CommunicationClub_Text_AwaitingMembers_SpeedCourse" index="164">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Stamina &amp; Speed Course!\nAwaiting other members!</language>
 	</row>
-	<row id="msg_0182_00165" index="165">
+	<row id="CommunicationClub_Text_AwaitingMembers_MasterCourse" index="165">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Master Course!\nAwaiting other members!</language>
 	</row>
