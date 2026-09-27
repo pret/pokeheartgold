@@ -18,5 +18,6 @@
 #define WEATHER_FLASH        11
 #define WEATHER_FLASH_2      12
 #define WEATHER_LOW_LIGHT    13
+#define WEATHER_MAX          14
 
 #endif // POKEHEARTGOLD_CONSTANTS_WEATHER_H
