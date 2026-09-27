@@ -2335,8 +2335,8 @@ ov01_021EC300: ; 0x021EC300
 	.balign 4, 0
 	thumb_func_end ov01_021EC300
 
-	thumb_func_start ov01_021EC304
-ov01_021EC304: ; 0x021EC304
+	thumb_func_start WeatherObject_GetSpriteMatrixPtr
+WeatherObject_GetSpriteMatrixPtr: ; 0x021EC304
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r1, #4]
@@ -2348,7 +2348,7 @@ ov01_021EC304: ; 0x021EC304
 	str r0, [r4]
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end ov01_021EC304
+	thumb_func_end WeatherObject_GetSpriteMatrixPtr
 
 	thumb_func_start ov01_021EC31C
 ov01_021EC31C: ; 0x021EC31C
@@ -2566,7 +2566,7 @@ ov01_021EC4A8: ; 0x021EC4A8
 _021EC4C6:
 	add r0, r6, #0
 	add r1, r4, #0
-	bl ov01_021EC304
+	bl WeatherObject_GetSpriteMatrixPtr
 	ldr r1, [sp, #0xc]
 	ldr r0, [sp, #8]
 	sub r0, r1, r0
@@ -2834,7 +2834,7 @@ ov01_021EC678: ; 0x021EC678
 	mvn r1, r1
 	add r2, r4, #0
 	mov r3, #0x1f
-	bl ov01_021EA89C
+	bl Fog_SetColor
 	add sp, #8
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -2856,7 +2856,7 @@ ov01_021EC6A4: ; 0x021EC6A4
 	bl ov01_021EA85C
 	str r0, [sp, #0xc]
 	add r0, r7, #0
-	bl ov01_021EA860
+	bl Fog_GetColorRGB
 	add r6, r0, #0
 	ldr r1, [sp, #0xc]
 	ldr r2, [sp, #4]
@@ -2951,10 +2951,10 @@ _021EC77A:
 	blt _021EC77A
 	ldr r0, [r3]
 	add r1, r3, #4
-	ldr r3, _021EC78C ; =ov01_021EA8C4
+	ldr r3, _021EC78C ; =Fog_SetFogTable
 	bx r3
 	.balign 4, 0
-_021EC78C: .word ov01_021EA8C4
+_021EC78C: .word Fog_SetFogTable
 	thumb_func_end ov01_021EC774
 
 	thumb_func_start ov01_021EC790
@@ -2987,7 +2987,7 @@ ov01_021EC7AC: ; 0x021EC7AC
 	bne _021EC7C4
 	ldr r0, [r5]
 	add r1, r5, #4
-	bl ov01_021EA8C4
+	bl Fog_SetFogTable
 _021EC7C4:
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
@@ -3006,7 +3006,7 @@ ov01_021EC7C8: ; 0x021EC7C8
 	bl ov01_021EC828
 	ldr r0, [r4]
 	add r1, r4, #4
-	bl ov01_021EA8C4
+	bl Fog_SetFogTable
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov01_021EC7C8
@@ -3627,7 +3627,7 @@ ov01_021ECC70: ; 0x021ECC70
 	ldr r5, [r6, #8]
 	add r0, sp, #0
 	add r1, r6, #0
-	bl ov01_021EC304
+	bl WeatherObject_GetSpriteMatrixPtr
 	ldr r0, [r5, #0xc]
 	cmp r0, #0
 	beq _021ECC92
@@ -4085,7 +4085,7 @@ _021ECFBE:
 	str r0, [r5, #0xc]
 	add r0, sp, #0x20
 	add r1, r4, #0
-	bl ov01_021EC304
+	bl WeatherObject_GetSpriteMatrixPtr
 	add r3, sp, #0x20
 	ldmia r3!, {r0, r1}
 	add r2, sp, #0x2c
@@ -4137,7 +4137,7 @@ ov01_021ED070: ; 0x021ED070
 	add r0, sp, #0
 	add r1, r5, #0
 	ldr r4, [r5, #8]
-	bl ov01_021EC304
+	bl WeatherObject_GetSpriteMatrixPtr
 	add r3, sp, #0
 	ldmia r3!, {r0, r1}
 	add r2, sp, #0xc
@@ -4535,7 +4535,7 @@ _021ED374:
 	str r1, [sp, #8]
 	add r0, sp, #0x10
 	add r1, r4, #0
-	bl ov01_021EC304
+	bl WeatherObject_GetSpriteMatrixPtr
 	bl MTRandom
 	mov r1, #6
 	lsl r1, r1, #6
@@ -4621,7 +4621,7 @@ ov01_021ED44C: ; 0x021ED44C
 	ldr r4, [r5, #8]
 	add r0, sp, #0
 	add r1, r5, #0
-	bl ov01_021EC304
+	bl WeatherObject_GetSpriteMatrixPtr
 	ldr r0, [r4]
 	add r1, r0, #1
 	str r1, [r4]
@@ -5025,7 +5025,7 @@ _021ED746:
 	ldr r0, [r5, #0x4c]
 	mvn r1, r1
 	add r3, r2, #0
-	bl ov01_021EA89C
+	bl Fog_SetColor
 	mov r1, #0
 	add r2, sp, #0x2c
 	sub r0, r1, #1
@@ -5037,7 +5037,7 @@ _021ED77A:
 	blt _021ED77A
 	ldr r0, [r5, #0x4c]
 	add r1, sp, #0x2c
-	bl ov01_021EA8C4
+	bl Fog_SetFogTable
 	mov r0, #0x63
 	mov r1, #0
 	lsl r0, r0, #4
@@ -5072,7 +5072,7 @@ _021ED7A8:
 	ldr r0, [r5, #0x4c]
 	mvn r1, r1
 	add r3, r2, #0
-	bl ov01_021EA89C
+	bl Fog_SetColor
 	mov r1, #0
 	add r2, sp, #0xc
 	sub r0, r1, #1
@@ -5084,7 +5084,7 @@ _021ED7DC:
 	blt _021ED7DC
 	ldr r0, [r5, #0x4c]
 	add r1, sp, #0xc
-	bl ov01_021EA8C4
+	bl Fog_SetFogTable
 	mov r0, #0x63
 	mov r1, #0
 	lsl r0, r0, #4
@@ -5277,7 +5277,7 @@ _021ED958:
 	ldr r0, [r4, #0x4c]
 	mvn r1, r1
 	add r3, r2, #0
-	bl ov01_021EA89C
+	bl Fog_SetColor
 	mov r1, #0
 	add r2, sp, #0x28
 	sub r0, r1, #1
@@ -5289,7 +5289,7 @@ _021ED98C:
 	blt _021ED98C
 	ldr r0, [r4, #0x4c]
 	add r1, sp, #0x28
-	bl ov01_021EA8C4
+	bl Fog_SetFogTable
 	ldr r0, _021EDA44 ; =0x0000062C
 	ldr r1, _021EDA48 ; =0x40800000
 	ldr r0, [r6, r0]
@@ -5324,7 +5324,7 @@ _021ED9BC:
 	ldr r0, [r4, #0x4c]
 	mvn r1, r1
 	add r3, r2, #0
-	bl ov01_021EA89C
+	bl Fog_SetColor
 	mov r1, #0
 	add r2, sp, #8
 	sub r0, r1, #1
@@ -5336,7 +5336,7 @@ _021ED9F0:
 	blt _021ED9F0
 	ldr r0, [r4, #0x4c]
 	add r1, sp, #8
-	bl ov01_021EA8C4
+	bl Fog_SetFogTable
 	ldr r0, _021EDA44 ; =0x0000062C
 	ldr r1, _021EDA48 ; =0x40800000
 	ldr r0, [r6, r0]

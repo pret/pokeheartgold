@@ -81,8 +81,8 @@
 .public MapPropOneShotAnimationManager_PlayAnimation
 .public MapPropOneShotAnimationManager_UnloadAnimation
 .public Fog_Set
-.public ov01_021EA89C
-.public ov01_021EA8C4
+.public Fog_SetColor
+.public Fog_SetFogTable
 .public MapProp_GetScale
 .public MapProp_GetRotation
 .public MapProp_GetTranslation

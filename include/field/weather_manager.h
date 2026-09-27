@@ -48,7 +48,7 @@ typedef struct WeatherSystem_Sub0_Sub8 WeatherSystem_Sub0_Sub8;
 typedef struct WeatherObject WeatherObject;
 struct WeatherObject {
     WeatherSystem *weatherSystem;
-    Sprite *unk4;
+    Sprite *sprite;
     u32 *unk8;
     u32 unk10[10];
     WeatherObject *next;
