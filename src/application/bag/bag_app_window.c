@@ -48,10 +48,10 @@ void BagApp_CreateMainWindows(BagAppData *appData) {
     AddWindowParameterized(appData->bgConfig, &appData->windows_main[BAG_APP_WINDOW_MAIN_3], GF_BG_LYR_SUB_0, 2, 1, 27, 4, 11, 0x053);
     AddWindowParameterized(appData->bgConfig, &appData->windows_main[BAG_APP_WINDOW_MAIN_4], GF_BG_LYR_MAIN_1, 19, 13, 12, 4, 4, 0x0DB);
     AddWindowParameterized(appData->bgConfig, &appData->windows_main[BAG_APP_WINDOW_MAIN_5], GF_BG_LYR_MAIN_1, 1, 12, 11, 4, 4, 0x12B);
-    AddWindowParameterized(appData->bgConfig, &appData->windows_main[BAG_APP_WINDOW_MAIN_6], GF_BG_LYR_SUB_0, 10, 21, 7, 2, 11, 0x037);
-    FillWindowPixelBuffer(&appData->windows_main[BAG_APP_WINDOW_MAIN_6], 0);
-    AddWindowParameterized(appData->bgConfig, &appData->windows_main[BAG_APP_WINDOW_MAIN_7], GF_BG_LYR_SUB_0, 24, 21, 7, 2, 11, 0x045);
-    FillWindowPixelBuffer(&appData->windows_main[BAG_APP_WINDOW_MAIN_7], 0);
+    AddWindowParameterized(appData->bgConfig, &appData->windows_main[BAG_APP_WINDOW_MAIN_PAGE_COUNTER], GF_BG_LYR_SUB_0, 10, 21, 7, 2, 11, 0x037);
+    FillWindowPixelBuffer(&appData->windows_main[BAG_APP_WINDOW_MAIN_PAGE_COUNTER], 0);
+    AddWindowParameterized(appData->bgConfig, &appData->windows_main[BAG_APP_WINDOW_MAIN_CANCEL_BUTTON], GF_BG_LYR_SUB_0, 24, 21, 7, 2, 11, 0x045);
+    FillWindowPixelBuffer(&appData->windows_main[BAG_APP_WINDOW_MAIN_CANCEL_BUTTON], 0);
     for (int i = 0; i < 24; ++i) {
         appData->windows_sub[i].bgConfig = NULL;
     }
@@ -123,8 +123,8 @@ static void BagApp_ShowContextMenuWindows(BagAppData *appData) {
             AddWindowParameterized(appData->bgConfig, &appData->windows_sub[BAG_APP_WINDOW_SUB_17 + i], GF_BG_LYR_SUB_0, ov15_022008D0[i][0], ov15_022008D0[i][1], 2, 3, 11, 0x2FB + 6 * i);
             FillWindowPixelBuffer(&appData->windows_sub[BAG_APP_WINDOW_SUB_17 + i], 0);
         }
-        AddWindowParameterized(appData->bgConfig, &appData->windows_sub[BAG_APP_WINDOW_SUB_20], GF_BG_LYR_SUB_0, 14, 21, 7, 2, 11, 0x30D);
-        FillWindowPixelBuffer(&appData->windows_sub[BAG_APP_WINDOW_SUB_20], 0);
+        AddWindowParameterized(appData->bgConfig, &appData->windows_sub[BAG_APP_WINDOW_SUB_SELL_OR_TRASH_BUTTON], GF_BG_LYR_SUB_0, 14, 21, 7, 2, 11, 0x30D);
+        FillWindowPixelBuffer(&appData->windows_sub[BAG_APP_WINDOW_SUB_SELL_OR_TRASH_BUTTON], 0);
         AddWindowParameterized(appData->bgConfig, &appData->windows_sub[BAG_APP_WINDOW_SUB_21], GF_BG_LYR_SUB_0, 11, 1, 18, 4, 11, 0x31B);
         FillWindowPixelBuffer(&appData->windows_sub[BAG_APP_WINDOW_SUB_21], 0);
         AddWindowParameterized(appData->bgConfig, &appData->windows_sub[BAG_APP_WINDOW_SUB_22], GF_BG_LYR_SUB_0, 0, 0, 9, 4, 11, 0x363);
@@ -153,9 +153,9 @@ static void BagApp_RemoveContextMenuWindowsInternal(BagAppData *appData) {
         RemoveWindow(&appData->windows_sub[BAG_APP_WINDOW_SUB_21]);
         appData->windows_sub[BAG_APP_WINDOW_SUB_21].bgConfig = NULL;
 
-        ClearWindowTilemapAndScheduleTransfer(&appData->windows_sub[BAG_APP_WINDOW_SUB_20]);
-        RemoveWindow(&appData->windows_sub[BAG_APP_WINDOW_SUB_20]);
-        appData->windows_sub[BAG_APP_WINDOW_SUB_20].bgConfig = NULL;
+        ClearWindowTilemapAndScheduleTransfer(&appData->windows_sub[BAG_APP_WINDOW_SUB_SELL_OR_TRASH_BUTTON]);
+        RemoveWindow(&appData->windows_sub[BAG_APP_WINDOW_SUB_SELL_OR_TRASH_BUTTON]);
+        appData->windows_sub[BAG_APP_WINDOW_SUB_SELL_OR_TRASH_BUTTON].bgConfig = NULL;
 
         for (i = 0; i < 4; ++i) {
             ClearWindowTilemapAndScheduleTransfer(&appData->windows_sub[BAG_APP_WINDOW_SUB_CONTEXT_OPTION_1 + i]);
@@ -359,7 +359,7 @@ void BagApp_LoadContextMenuStrings(BagAppData *appData) {
     // MOVE
     appData->contextMenuStrings[BAG_ITEM_CONTEXT_MENU_ACTION_MOVE] = NewString_ReadMsgData(appData->msgData, msg_0010_00075);
     // SELL
-    appData->contextMenuStrings[BAG_ITEM_CONTEXT_MENU_ACTION_13] = NewString_ReadMsgData(appData->msgData, msg_0010_00086);
+    appData->contextMenuStrings[BAG_ITEM_CONTEXT_MENU_ACTION_SELL] = NewString_ReadMsgData(appData->msgData, msg_0010_00086);
     // USE
     appData->contextMenuStrings[BAG_ITEM_CONTEXT_MENU_ACTION_USE_IN_BERRY_POTS] = NewString_ReadMsgData(appData->msgData, msg_0010_00000);
     // STOP
@@ -592,17 +592,17 @@ void ov15_021FF1E0(BagAppData *appData) {
     ScheduleWindowCopyToVram(window);
 }
 
-void ov15_021FF29C(BagAppData *appData, int a1) {
-    String *r4 = NewString_ReadMsgData(appData->msgData, msg_0010_00008);
-    FillWindowPixelBuffer(&appData->windows_main[BAG_APP_WINDOW_MAIN_7], 0);
-    if (a1 == 0) {
-        u32 width = FontID_String_GetWidth(0, r4, 0);
-        AddTextPrinterParameterizedWithColor(&appData->windows_main[BAG_APP_WINDOW_MAIN_7], 0, r4, (48 - width) / 2 + 8, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
+void BagApp_PrintCancel(BagAppData *appData, int centered) {
+    String *cancel = NewString_ReadMsgData(appData->msgData, msg_0010_00008);
+    FillWindowPixelBuffer(&appData->windows_main[BAG_APP_WINDOW_MAIN_CANCEL_BUTTON], 0);
+    if (centered == 0) {
+        u32 width = FontID_String_GetWidth(0, cancel, 0);
+        AddTextPrinterParameterizedWithColor(&appData->windows_main[BAG_APP_WINDOW_MAIN_CANCEL_BUTTON], 0, cancel, (48 - width) / 2 + 8, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
     } else {
-        AddTextPrinterParameterizedWithColor(&appData->windows_main[BAG_APP_WINDOW_MAIN_7], 0, r4, 5, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
+        AddTextPrinterParameterizedWithColor(&appData->windows_main[BAG_APP_WINDOW_MAIN_CANCEL_BUTTON], 0, cancel, 5, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
     }
-    ScheduleWindowCopyToVram(&appData->windows_main[BAG_APP_WINDOW_MAIN_7]);
-    String_Delete(r4);
+    ScheduleWindowCopyToVram(&appData->windows_main[BAG_APP_WINDOW_MAIN_CANCEL_BUTTON]);
+    String_Delete(cancel);
 }
 
 static int BagViewPocket_GetIndexWithAtMostXNonEmptySlots(BagViewPocket *pocket, int pocketId, int limit) {
@@ -673,7 +673,7 @@ void BagApp_SwitchItemButtonWindowsToContextMenuMode(BagAppData *appData, int sc
         ClearWindowTilemapAndScheduleTransfer(&appData->windows_sub[BAG_APP_WINDOW_SUB_0 + i]);
     }
     BagApp_RemoveItemNameWindows(appData);
-    ClearWindowTilemapAndScheduleTransfer(&appData->windows_main[BAG_APP_WINDOW_MAIN_6]);
+    ClearWindowTilemapAndScheduleTransfer(&appData->windows_main[BAG_APP_WINDOW_MAIN_PAGE_COUNTER]);
     BagApp_ShowContextMenuWindows(appData);
     BagApp_PrintItemNameAndMaybeQuantityOnWindow(appData, &appData->windows_sub[BAG_APP_WINDOW_SUB_CONTEXT_SELECTED_ITEM], appData->itemNameStrings[offset], pocket, offset);
     ScheduleWindowCopyToVram(&appData->windows_sub[BAG_APP_WINDOW_SUB_CONTEXT_SELECTED_ITEM]);
@@ -714,19 +714,19 @@ static void PrintItemQuantityOnWindow(MessageFormat *msgFormat, MsgData *msgData
     String_Delete(string);
 }
 
-void ov15_021FF6BC(BagAppData *appData, int pocketCount, int pocketScroll, int offset) {
+void BagApp_PrintPageCounter(BagAppData *appData, int pocketCount, int pocketScroll, int offset) {
     int page = (pocketScroll + offset) / 6;
     if (pocketCount == 0) {
         pocketCount = 1;
     } else {
         pocketCount = (pocketCount + 5) / 6;
     }
-    FillWindowPixelBuffer(&appData->windows_main[BAG_APP_WINDOW_MAIN_6], 0);
+    FillWindowPixelBuffer(&appData->windows_main[BAG_APP_WINDOW_MAIN_PAGE_COUNTER], 0);
     BufferIntegerAsString(appData->msgFormat, 0, page + 1, 3, PRINTING_MODE_RIGHT_ALIGN, TRUE);
     BufferIntegerAsString(appData->msgFormat, 1, pocketCount, 3, PRINTING_MODE_RIGHT_ALIGN, TRUE);
     String *string = ReadMsgData_ExpandPlaceholders(appData->msgFormat, appData->msgData, msg_0010_00022, HEAP_ID_BAG);
-    AddTextPrinterParameterizedWithColor(&appData->windows_main[BAG_APP_WINDOW_MAIN_6], 0, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 1, 0), NULL);
-    ScheduleWindowCopyToVram(&appData->windows_main[BAG_APP_WINDOW_MAIN_6]);
+    AddTextPrinterParameterizedWithColor(&appData->windows_main[BAG_APP_WINDOW_MAIN_PAGE_COUNTER], 0, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 1, 0), NULL);
+    ScheduleWindowCopyToVram(&appData->windows_main[BAG_APP_WINDOW_MAIN_PAGE_COUNTER]);
     String_Delete(string);
 }
 
@@ -745,19 +745,19 @@ void BagApp_ClearFourWindowsAt(Window *window) {
 }
 
 void BagApp_PrintTrashContextOptionOnWindow(BagAppData *appData) {
-    AddTextPrinterParameterizedWithColor(&appData->windows_sub[BAG_APP_WINDOW_SUB_20], 0, appData->contextMenuStrings[5], 5, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
-    ScheduleWindowCopyToVram(&appData->windows_sub[BAG_APP_WINDOW_SUB_20]);
+    AddTextPrinterParameterizedWithColor(&appData->windows_sub[BAG_APP_WINDOW_SUB_SELL_OR_TRASH_BUTTON], 0, appData->contextMenuStrings[BAG_ITEM_CONTEXT_MENU_ACTION_TRASH], 5, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
+    ScheduleWindowCopyToVram(&appData->windows_sub[BAG_APP_WINDOW_SUB_SELL_OR_TRASH_BUTTON]);
 }
 
 void BagApp_PrintSellContextOptionOnWindow(BagAppData *appData) {
-    AddTextPrinterParameterizedWithColor(&appData->windows_sub[BAG_APP_WINDOW_SUB_20], 0, appData->contextMenuStrings[13], 5, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
-    ScheduleWindowCopyToVram(&appData->windows_sub[BAG_APP_WINDOW_SUB_20]);
+    AddTextPrinterParameterizedWithColor(&appData->windows_sub[BAG_APP_WINDOW_SUB_SELL_OR_TRASH_BUTTON], 0, appData->contextMenuStrings[BAG_ITEM_CONTEXT_MENU_ACTION_SELL], 5, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
+    ScheduleWindowCopyToVram(&appData->windows_sub[BAG_APP_WINDOW_SUB_SELL_OR_TRASH_BUTTON]);
 }
 
-void ov15_021FF834(BagAppData *appData) {
-    ClearWindowTilemapAndScheduleTransfer(&appData->windows_sub[BAG_APP_WINDOW_SUB_20]);
+void BagApp_ClearTextOnSellOrTrashButton(BagAppData *appData) {
+    ClearWindowTilemapAndScheduleTransfer(&appData->windows_sub[BAG_APP_WINDOW_SUB_SELL_OR_TRASH_BUTTON]);
 }
 
-void ov15_021FF844(BagAppData *appData) {
-    ClearWindowTilemapAndScheduleTransfer(&appData->windows_main[BAG_APP_WINDOW_MAIN_7]);
+void BagApp_ClearTextOnCancelButton(BagAppData *appData) {
+    ClearWindowTilemapAndScheduleTransfer(&appData->windows_main[BAG_APP_WINDOW_MAIN_CANCEL_BUTTON]);
 }

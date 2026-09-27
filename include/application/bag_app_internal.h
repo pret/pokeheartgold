@@ -72,7 +72,7 @@ typedef enum BagItemContextMenuAction {
     BAG_ITEM_CONTEXT_MENU_ACTION_CONFIRM,
     BAG_ITEM_CONTEXT_MENU_ACTION_CANCEL,
     BAG_ITEM_CONTEXT_MENU_ACTION_MOVE,
-    BAG_ITEM_CONTEXT_MENU_ACTION_13,
+    BAG_ITEM_CONTEXT_MENU_ACTION_SELL,
     BAG_ITEM_CONTEXT_MENU_ACTION_USE_IN_BERRY_POTS,
     BAG_ITEM_CONTEXT_MENU_ACTION_STOP_GBSOUNDS,
     BAG_ITEM_CONTEXT_MENU_ACTION_MAX,
@@ -85,8 +85,8 @@ typedef enum BagAppWindowId {
     BAG_APP_WINDOW_MAIN_3,
     BAG_APP_WINDOW_MAIN_4,
     BAG_APP_WINDOW_MAIN_5,
-    BAG_APP_WINDOW_MAIN_6,
-    BAG_APP_WINDOW_MAIN_7,
+    BAG_APP_WINDOW_MAIN_PAGE_COUNTER,
+    BAG_APP_WINDOW_MAIN_CANCEL_BUTTON,
     BAG_APP_WINDOW_MAIN_MAX,
 
     BAG_APP_WINDOW_SUB_0 = 0,
@@ -109,7 +109,7 @@ typedef enum BagAppWindowId {
     BAG_APP_WINDOW_SUB_17,
     BAG_APP_WINDOW_SUB_18,
     BAG_APP_WINDOW_SUB_19,
-    BAG_APP_WINDOW_SUB_20,
+    BAG_APP_WINDOW_SUB_SELL_OR_TRASH_BUTTON,
     BAG_APP_WINDOW_SUB_21,
     BAG_APP_WINDOW_SUB_22,
     BAG_APP_WINDOW_SUB_23,
@@ -136,7 +136,7 @@ typedef enum BagAppSpriteId {
     BAG_APP_SPRITE_POCKET_ICON_8,
     BAG_APP_SPRITE_PAGE_LEFT_BUTTON,
     BAG_APP_SPRITE_PAGE_RIGHT_BUTTON,
-    BAG_APP_SPRITE_19,
+    BAG_APP_SPRITE_B_BUTTON,
     BAG_APP_SPRITE_20,
     BAG_APP_SPRITE_21,
     BAG_APP_SPRITE_22,
@@ -155,7 +155,7 @@ typedef enum BagAppSpriteId {
     BAG_APP_SPRITE_TOSS_QUANTITY_HUNDREDS_PLACE_DOWN,
     BAG_APP_SPRITE_TOSS_QUANTITY_TENS_PLACE_DOWN,
     BAG_APP_SPRITE_TOSS_QUANTITY_ONES_PLACE_DOWN,
-    BAG_APP_SPRITE_38,
+    BAG_APP_SPRITE_A_BUTTON,
     BAG_APP_SPRITE_MAX,
 } BagAppSpriteId;
 
@@ -334,17 +334,17 @@ void BagApp_DestroyYesNoPrompt(BagAppData *appData);
 void ov15_021FF068(BagAppData *appData);
 void ov15_021FF0FC(BagAppData *appData, int a1);
 void ov15_021FF1E0(BagAppData *appData);
-void ov15_021FF29C(BagAppData *appData, int a1);
+void BagApp_PrintCancel(BagAppData *appData, int centered);
 void ov15_021FF364(BagAppData *appData, int scroll, int itemSlot, BOOL isMoveMode);
 void BagApp_SwitchItemButtonWindowsToContextMenuMode(BagAppData *appData, int scroll, int offset);
 void BagApp_ClearSelectedItemWindow(BagAppData *appData);
-void ov15_021FF6BC(BagAppData *appData, int pocketCount, int pocketScroll, int offset);
+void BagApp_PrintPageCounter(BagAppData *appData, int pocketCount, int pocketScroll, int offset);
 void BagApp_PrintContextMenuStringOnWindowCentered(Window *window, String **strings, int index);
 void BagApp_ClearFourWindowsAt(Window *window);
 void BagApp_PrintTrashContextOptionOnWindow(BagAppData *appData);
 void BagApp_PrintSellContextOptionOnWindow(BagAppData *appData);
-void ov15_021FF834(BagAppData *appData);
-void ov15_021FF844(BagAppData *appData);
+void BagApp_ClearTextOnSellOrTrashButton(BagAppData *appData);
+void BagApp_ClearTextOnCancelButton(BagAppData *appData);
 
 void BagApp_InitSpriteRendererAndSystem(BagAppData *appData);
 void BagApp_FreeSpriteSystem(BagAppData *appData);
@@ -364,9 +364,9 @@ void ov15_0220023C(BagAppData *appData, u8 *a1);
 void BagApp_HideContextMenuIcons(BagAppData *appData);
 void BagApp_CenterSelectedItemIconSprite(BagAppData *appData, int cursorPos);
 int BagApp_GetNumberWidthType(int a0);
-void ov15_02200300(BagAppData *appData, int a1, int a2);
+void BagApp_ShowQuantitySelectSpritesUI(BagAppData *appData, int a1, int a2);
 void ov15_02200428(BagAppData *appData);
-void ov15_02200458(BagAppData *appData, int a1);
-void ov15_022004DC(BagAppData *appData, int a1);
+void BagApp_SetPocketIconsDrawFlag(BagAppData *appData, int drawState);
+void BagApp_SetBButtonSpriteDrawFlag(BagAppData *appData, int flag);
 
 #endif // GUARD_POKEHEARTGOLD_APPLICATION_BAG_APP_INTERNAL_H

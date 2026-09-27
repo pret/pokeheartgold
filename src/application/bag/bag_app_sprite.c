@@ -507,7 +507,7 @@ static const ManagedSpriteTemplate sSpriteTemplates[39] = {
                                                 .bgPriority = 0,
                                                 .vramTransfer = 0,
                                                 },
-    [BAG_APP_SPRITE_19] = {
+    [BAG_APP_SPRITE_B_BUTTON] = {
                                                 .x = 224,
                                                 .y = 176,
                                                 .z = 0,
@@ -830,7 +830,7 @@ static const ManagedSpriteTemplate sSpriteTemplates[39] = {
                                                 .bgPriority = 0,
                                                 .vramTransfer = 0,
                                                 },
-    [BAG_APP_SPRITE_38] = {
+    [BAG_APP_SPRITE_A_BUTTON] = {
                                                 .x = 136,
                                                 .y = 176,
                                                 .z = 0,
@@ -855,14 +855,14 @@ static void BagApp_CreateSprites(BagAppData *appData) {
     for (i = 0; i < 39; ++i) {
         appData->sprites[i] = SpriteSystem_NewSpriteWithYOffset(appData->spriteSystem, appData->spriteManager, &sSpriteTemplates[i], FX32_CONST(256));
     }
-    ManagedSprite_SetPriority(appData->sprites[BAG_APP_SPRITE_19], 1);
+    ManagedSprite_SetPriority(appData->sprites[BAG_APP_SPRITE_B_BUTTON], 1);
     for (i = 0; i < 4; ++i) {
         ManagedSprite_SetPriority(appData->sprites[BAG_APP_SPRITE_CONTEXT_MENU_ICON_1 + i], 1);
     }
     for (i = 0; i < 8; ++i) {
         ManagedSprite_SetPriority(appData->sprites[BAG_APP_SPRITE_POCKET_ICON_1 + i], 1);
     }
-    ov15_02200458(appData, 1);
+    BagApp_SetPocketIconsDrawFlag(appData, 1);
     ManagedSprite_SetDrawFlag(appData->sprites[BAG_APP_SPRITE_UNUSED_MOVE_ITEM_CURSOR], FALSE);
     ManagedSprite_SetDrawFlag(appData->sprites[BAG_APP_SPRITE_MOVE_TYPE_ICON], FALSE);
     ManagedSprite_SetDrawFlag(appData->sprites[BAG_APP_SPRITE_MOVE_CATEGORY_ICON], FALSE);
@@ -872,8 +872,8 @@ static void BagApp_CreateSprites(BagAppData *appData) {
     for (i = 0; i < 6; ++i) {
         ManagedSprite_SetDrawFlag(appData->sprites[BAG_APP_SPRITE_TOSS_QUANTITY_HUNDREDS_PLACE_UP + i], FALSE);
     }
-    ManagedSprite_SetDrawFlag(appData->sprites[BAG_APP_SPRITE_38], FALSE);
-    ManagedSprite_SetPriority(appData->sprites[BAG_APP_SPRITE_38], 1);
+    ManagedSprite_SetDrawFlag(appData->sprites[BAG_APP_SPRITE_A_BUTTON], FALSE);
+    ManagedSprite_SetPriority(appData->sprites[BAG_APP_SPRITE_A_BUTTON], 1);
 }
 
 static void ov15_021FFEC0(BagAppData *appData) {
@@ -948,6 +948,7 @@ void ov15_021FFF34(BagAppData *appData, int a1) {
 }
 
 static const u8 ov15_022009D4[][4] = {
+    // x, y, anim, pltt
     { 136, 104, 29, 9 },
     { 168, 104, 29, 9 },
     { 200, 104, 29, 9 },
@@ -973,26 +974,26 @@ void ov15_02200030(BagAppData *appData, int pocket) {
     }
 }
 
-void ov15_0220005C(BagAppData *appData, int a1, int a2, int a3) {
+void ov15_0220005C(BagAppData *appData, int itemsOnPage, int hideItemSlot, int hideCursor) {
     int i;
 
-    if (a1 == 0) {
+    if (itemsOnPage == 0) {
         for (i = 0; i < 6; ++i) {
             ManagedSprite_SetDrawFlag(appData->sprites[BAG_APP_SPRITE_21 + i], FALSE);
         }
         ManagedSprite_SetDrawFlag(appData->sprites[BAG_APP_SPRITE_27], FALSE);
     } else {
         for (i = 0; i < 6; ++i) {
-            if (i < a1) {
+            if (i < itemsOnPage) {
                 ManagedSprite_SetDrawFlag(appData->sprites[BAG_APP_SPRITE_21 + i], TRUE);
             } else {
                 ManagedSprite_SetDrawFlag(appData->sprites[BAG_APP_SPRITE_21 + i], FALSE);
             }
         }
-        if (a2 >= 0) {
-            ManagedSprite_SetDrawFlag(appData->sprites[BAG_APP_SPRITE_21 + a2], FALSE);
+        if (hideItemSlot >= 0) {
+            ManagedSprite_SetDrawFlag(appData->sprites[BAG_APP_SPRITE_21 + hideItemSlot], FALSE);
         }
-        if (a3) {
+        if (hideCursor) {
             ManagedSprite_SetDrawFlag(appData->sprites[BAG_APP_SPRITE_27], FALSE);
         }
     }
@@ -1099,7 +1100,7 @@ static const int ov15_02200A14[2][4] = {
 
 static const int ov15_022009A0[2] = { 2, 4 };
 
-void ov15_02200300(BagAppData *appData, int a1, int a2) {
+void BagApp_ShowQuantitySelectSpritesUI(BagAppData *appData, int a1, int a2) {
     int i;
     if (a1 == 2 && a2 > 99) {
         a2 = 99;
@@ -1119,21 +1120,21 @@ void ov15_02200300(BagAppData *appData, int a1, int a2) {
             }
         }
     }
-    ManagedSprite_SetDrawFlag(appData->sprites[BAG_APP_SPRITE_38], TRUE);
-    ManagedSprite_SetAnimationFrame(appData->sprites[BAG_APP_SPRITE_38], 0);
-    ManagedSprite_SetAnim(appData->sprites[BAG_APP_SPRITE_38], 37);
-    ManagedSprite_SetAnimationFrame(appData->sprites[BAG_APP_SPRITE_19], 0);
-    ManagedSprite_SetAnim(appData->sprites[BAG_APP_SPRITE_19], 39);
+    ManagedSprite_SetDrawFlag(appData->sprites[BAG_APP_SPRITE_A_BUTTON], TRUE);
+    ManagedSprite_SetAnimationFrame(appData->sprites[BAG_APP_SPRITE_A_BUTTON], 0);
+    ManagedSprite_SetAnim(appData->sprites[BAG_APP_SPRITE_A_BUTTON], 37);
+    ManagedSprite_SetAnimationFrame(appData->sprites[BAG_APP_SPRITE_B_BUTTON], 0);
+    ManagedSprite_SetAnim(appData->sprites[BAG_APP_SPRITE_B_BUTTON], 39);
 }
 
 void ov15_02200428(BagAppData *appData) {
     for (int i = 0; i < 6; ++i) {
         ManagedSprite_SetDrawFlag(appData->sprites[BAG_APP_SPRITE_TOSS_QUANTITY_HUNDREDS_PLACE_UP + i], FALSE);
     }
-    ManagedSprite_SetDrawFlag(appData->sprites[BAG_APP_SPRITE_38], FALSE);
+    ManagedSprite_SetDrawFlag(appData->sprites[BAG_APP_SPRITE_A_BUTTON], FALSE);
 }
 
-void ov15_02200458(BagAppData *appData, int drawState) {
+void BagApp_SetPocketIconsDrawFlag(BagAppData *appData, int drawState) {
     int i;
     u8 enabledPocketFlags[POCKETS_COUNT];
 
@@ -1155,6 +1156,6 @@ void ov15_02200458(BagAppData *appData, int drawState) {
     }
 }
 
-void ov15_022004DC(BagAppData *appData, int a1) {
-    ManagedSprite_SetDrawFlag(appData->sprites[BAG_APP_SPRITE_19], a1);
+void BagApp_SetBButtonSpriteDrawFlag(BagAppData *appData, int flag) {
+    ManagedSprite_SetDrawFlag(appData->sprites[BAG_APP_SPRITE_B_BUTTON], flag);
 }
