@@ -524,7 +524,7 @@ static const ManagedSpriteTemplate sSpriteTemplates[39] = {
                                                 .bgPriority = 0,
                                                 .vramTransfer = 0,
                                                 },
-    [BAG_APP_SPRITE_20] = {
+    [BAG_APP_SPRITE_CURSOR] = {
                                                 .x = 16,
                                                 .y = 16,
                                                 .z = 0,
@@ -541,7 +541,7 @@ static const ManagedSpriteTemplate sSpriteTemplates[39] = {
                                                 .bgPriority = 1,
                                                 .vramTransfer = 0,
                                                 },
-    [BAG_APP_SPRITE_21] = {
+    [BAG_APP_SPRITE_ITEM_BUTTON_1] = {
                                                 .x = 16,
                                                 .y = 48,
                                                 .z = 0,
@@ -558,7 +558,7 @@ static const ManagedSpriteTemplate sSpriteTemplates[39] = {
                                                 .bgPriority = 1,
                                                 .vramTransfer = 0,
                                                 },
-    [BAG_APP_SPRITE_22] = {
+    [BAG_APP_SPRITE_ITEM_BUTTON_2] = {
                                                 .x = 144,
                                                 .y = 48,
                                                 .z = 0,
@@ -575,7 +575,7 @@ static const ManagedSpriteTemplate sSpriteTemplates[39] = {
                                                 .bgPriority = 1,
                                                 .vramTransfer = 0,
                                                 },
-    [BAG_APP_SPRITE_23] = {
+    [BAG_APP_SPRITE_ITEM_BUTTON_3] = {
                                                 .x = 16,
                                                 .y = 88,
                                                 .z = 0,
@@ -592,7 +592,7 @@ static const ManagedSpriteTemplate sSpriteTemplates[39] = {
                                                 .bgPriority = 1,
                                                 .vramTransfer = 0,
                                                 },
-    [BAG_APP_SPRITE_24] = {
+    [BAG_APP_SPRITE_ITEM_BUTTON_4] = {
                                                 .x = 144,
                                                 .y = 88,
                                                 .z = 0,
@@ -609,7 +609,7 @@ static const ManagedSpriteTemplate sSpriteTemplates[39] = {
                                                 .bgPriority = 1,
                                                 .vramTransfer = 0,
                                                 },
-    [BAG_APP_SPRITE_25] = {
+    [BAG_APP_SPRITE_ITEM_BUTTON_5] = {
                                                 .x = 16,
                                                 .y = 128,
                                                 .z = 0,
@@ -626,7 +626,7 @@ static const ManagedSpriteTemplate sSpriteTemplates[39] = {
                                                 .bgPriority = 1,
                                                 .vramTransfer = 0,
                                                 },
-    [BAG_APP_SPRITE_26] = {
+    [BAG_APP_SPRITE_ITEM_BUTTON_6] = {
                                                 .x = 144,
                                                 .y = 128,
                                                 .z = 0,
@@ -643,7 +643,7 @@ static const ManagedSpriteTemplate sSpriteTemplates[39] = {
                                                 .bgPriority = 1,
                                                 .vramTransfer = 0,
                                                 },
-    [BAG_APP_SPRITE_27] = {
+    [BAG_APP_SPRITE_UNUSED_CURSOR_2] = {
                                                 .x = 16,
                                                 .y = 48,
                                                 .z = 0,
@@ -880,8 +880,8 @@ static void ov15_021FFEC0(BagAppData *appData) {
     appData->unk_648 = 0;
 }
 
-//     x, y, anim, plttOverride
 static const u8 ov15_02200AB8[][4] = {
+    // x, y, anim, pltt
     [BAG_APP_CURSOR_POS_POCKET_1] = { 16,  16,  8,  9 },
     [BAG_APP_CURSOR_POS_POCKET_2] = { 48,  16,  8,  9 },
     [BAG_APP_CURSOR_POS_POCKET_3] = { 80,  16,  8,  9 },
@@ -905,46 +905,47 @@ static const u8 ov15_02200AB8[][4] = {
     [BAG_APP_CURSOR_POS_CONTEXT_MENU_4] = { 144, 176, 23, 9 },
 };
 
-void ov15_021FFECC(BagAppData *appData, BagAppCursorPos cursorPos) {
-    ManagedSprite_SetPositionXYWithSubscreenOffset(appData->sprites[BAG_APP_SPRITE_20], ov15_02200AB8[cursorPos][0], ov15_02200AB8[cursorPos][1], FX32_CONST(256));
-    ManagedSprite_SetAnim(appData->sprites[BAG_APP_SPRITE_20], ov15_02200AB8[cursorPos][2]);
-    ManagedSprite_SetPaletteOverride(appData->sprites[BAG_APP_SPRITE_20], ov15_02200AB8[cursorPos][3]);
-    ManagedSprite_SetDrawFlag(appData->sprites[BAG_APP_SPRITE_20], TRUE);
+void BagApp_SetCursorSpritePos_PocketsItemsContext(BagAppData *appData, BagAppCursorPos cursorPos) {
+    ManagedSprite_SetPositionXYWithSubscreenOffset(appData->sprites[BAG_APP_SPRITE_CURSOR], ov15_02200AB8[cursorPos][0], ov15_02200AB8[cursorPos][1], FX32_CONST(256));
+    ManagedSprite_SetAnim(appData->sprites[BAG_APP_SPRITE_CURSOR], ov15_02200AB8[cursorPos][2]);
+    ManagedSprite_SetPaletteOverride(appData->sprites[BAG_APP_SPRITE_CURSOR], ov15_02200AB8[cursorPos][3]);
+    ManagedSprite_SetDrawFlag(appData->sprites[BAG_APP_SPRITE_CURSOR], TRUE);
 }
 
-void ov15_021FFF24(BagAppData *appData) {
-    ManagedSprite_SetDrawFlag(appData->sprites[BAG_APP_SPRITE_20], FALSE);
+void BagApp_HideCursorSprite(BagAppData *appData) {
+    ManagedSprite_SetDrawFlag(appData->sprites[BAG_APP_SPRITE_CURSOR], FALSE);
 }
 
 static const u8 ov15_02200A34[][4] = {
-    { 48,  56,  20, 9 },
-    { 176, 56,  20, 9 },
-    { 48,  96,  20, 9 },
-    { 176, 96,  20, 9 },
-    { 48,  136, 20, 9 },
-    { 176, 136, 20, 9 },
-    { 24,  176, 14, 9 },
-    { 64,  176, 14, 9 },
-    { 224, 176, 17, 9 },
+    // x, y, anim, pltt
+    [BAG_APP_CURSOR_POS_ITEM_1 - 8] = { 48,  56,  20, 9 },
+    [BAG_APP_CURSOR_POS_ITEM_2 - 8] = { 176, 56,  20, 9 },
+    [BAG_APP_CURSOR_POS_ITEM_3 - 8] = { 48,  96,  20, 9 },
+    [BAG_APP_CURSOR_POS_ITEM_4 - 8] = { 176, 96,  20, 9 },
+    [BAG_APP_CURSOR_POS_ITEM_5 - 8] = { 48,  136, 20, 9 },
+    [BAG_APP_CURSOR_POS_ITEM_6 - 8] = { 176, 136, 20, 9 },
+    [BAG_APP_CURSOR_POS_PAGE_LEFT - 8] = { 24,  176, 14, 9 },
+    [BAG_APP_CURSOR_POS_PAGE_RIGHT - 8] = { 64,  176, 14, 9 },
+    [BAG_APP_CURSOR_POS_CANCEL - 8] = { 224, 176, 17, 9 },
 };
 
-void ov15_021FFF34(BagAppData *appData, int a1) {
-    GF_ASSERT(a1 < 9);
-    if (a1 == 8) {
-        ManagedSprite_SetAnim(appData->sprites[BAG_APP_SPRITE_20], ov15_02200A34[a1][2]);
+void BagApp_SetCursorSpritePos_ItemsOnly(BagAppData *appData, int offset) {
+    GF_ASSERT(offset < 9);
+    if (offset == BAG_APP_CURSOR_POS_CANCEL - 8) {
+        ManagedSprite_SetAnim(appData->sprites[BAG_APP_SPRITE_CURSOR], ov15_02200A34[offset][2]);
     } else {
         BagViewPocket *pocket = &appData->bagView->pockets[appData->bagView->curPocket];
-        int itemSlot = pocket->scroll + a1;
+        int itemSlot = pocket->scroll + offset;
         if (itemSlot == appData->moveItemOriginalSlot) {
-            ManagedSprite_SetAnim(appData->sprites[BAG_APP_SPRITE_20], 10);
+            ManagedSprite_SetAnim(appData->sprites[BAG_APP_SPRITE_CURSOR], 10);
         } else if (itemSlot >= pocket->count) {
-            ManagedSprite_SetAnim(appData->sprites[BAG_APP_SPRITE_20], 40);
+            ManagedSprite_SetAnim(appData->sprites[BAG_APP_SPRITE_CURSOR], 40);
         } else {
-            ManagedSprite_SetAnim(appData->sprites[BAG_APP_SPRITE_20], 20);
+            ManagedSprite_SetAnim(appData->sprites[BAG_APP_SPRITE_CURSOR], 20);
         }
     }
-    ManagedSprite_SetPositionXYWithSubscreenOffset(appData->sprites[BAG_APP_SPRITE_20], ov15_02200A34[a1][0], ov15_02200A34[a1][1], FX32_CONST(256));
-    ManagedSprite_SetPaletteOverride(appData->sprites[BAG_APP_SPRITE_20], ov15_02200A34[a1][3]);
+    ManagedSprite_SetPositionXYWithSubscreenOffset(appData->sprites[BAG_APP_SPRITE_CURSOR], ov15_02200A34[offset][0], ov15_02200A34[offset][1], FX32_CONST(256));
+    ManagedSprite_SetPaletteOverride(appData->sprites[BAG_APP_SPRITE_CURSOR], ov15_02200A34[offset][3]);
 }
 
 static const u8 ov15_022009D4[][4] = {
@@ -959,11 +960,11 @@ static const u8 ov15_022009D4[][4] = {
     { 224, 176, 17, 9 },
 };
 
-void ov15_021FFFDC(BagAppData *appData, int a1) {
+void BagApp_SetCursorSpritePos_QuantitySelect(BagAppData *appData, int a1) {
     GF_ASSERT(a1 < 8);
-    ManagedSprite_SetPositionXYWithSubscreenOffset(appData->sprites[BAG_APP_SPRITE_20], ov15_022009D4[a1][0], ov15_022009D4[a1][1], FX32_CONST(256));
-    ManagedSprite_SetAnim(appData->sprites[BAG_APP_SPRITE_20], ov15_022009D4[a1][2]);
-    ManagedSprite_SetPaletteOverride(appData->sprites[BAG_APP_SPRITE_20], ov15_022009D4[a1][3]);
+    ManagedSprite_SetPositionXYWithSubscreenOffset(appData->sprites[BAG_APP_SPRITE_CURSOR], ov15_022009D4[a1][0], ov15_022009D4[a1][1], FX32_CONST(256));
+    ManagedSprite_SetAnim(appData->sprites[BAG_APP_SPRITE_CURSOR], ov15_022009D4[a1][2]);
+    ManagedSprite_SetPaletteOverride(appData->sprites[BAG_APP_SPRITE_CURSOR], ov15_022009D4[a1][3]);
 }
 
 void ov15_02200030(BagAppData *appData, int pocket) {
@@ -979,22 +980,22 @@ void ov15_0220005C(BagAppData *appData, int itemsOnPage, int hideItemSlot, int h
 
     if (itemsOnPage == 0) {
         for (i = 0; i < 6; ++i) {
-            ManagedSprite_SetDrawFlag(appData->sprites[BAG_APP_SPRITE_21 + i], FALSE);
+            ManagedSprite_SetDrawFlag(appData->sprites[BAG_APP_SPRITE_ITEM_BUTTON_1 + i], FALSE);
         }
-        ManagedSprite_SetDrawFlag(appData->sprites[BAG_APP_SPRITE_27], FALSE);
+        ManagedSprite_SetDrawFlag(appData->sprites[BAG_APP_SPRITE_UNUSED_CURSOR_2], FALSE);
     } else {
         for (i = 0; i < 6; ++i) {
             if (i < itemsOnPage) {
-                ManagedSprite_SetDrawFlag(appData->sprites[BAG_APP_SPRITE_21 + i], TRUE);
+                ManagedSprite_SetDrawFlag(appData->sprites[BAG_APP_SPRITE_ITEM_BUTTON_1 + i], TRUE);
             } else {
-                ManagedSprite_SetDrawFlag(appData->sprites[BAG_APP_SPRITE_21 + i], FALSE);
+                ManagedSprite_SetDrawFlag(appData->sprites[BAG_APP_SPRITE_ITEM_BUTTON_1 + i], FALSE);
             }
         }
         if (hideItemSlot >= 0) {
-            ManagedSprite_SetDrawFlag(appData->sprites[BAG_APP_SPRITE_21 + hideItemSlot], FALSE);
+            ManagedSprite_SetDrawFlag(appData->sprites[BAG_APP_SPRITE_ITEM_BUTTON_1 + hideItemSlot], FALSE);
         }
         if (hideCursor) {
-            ManagedSprite_SetDrawFlag(appData->sprites[BAG_APP_SPRITE_27], FALSE);
+            ManagedSprite_SetDrawFlag(appData->sprites[BAG_APP_SPRITE_UNUSED_CURSOR_2], FALSE);
         }
     }
 }
@@ -1042,7 +1043,7 @@ void BagApp_ShowOnlySelectedItemIcon(BagAppData *appData, BagViewPocket *pocket,
 }
 
 void ov15_0220023C(BagAppData *appData, u8 *a1) {
-    ManagedSprite_SetDrawFlag(appData->sprites[BAG_APP_SPRITE_20], TRUE);
+    ManagedSprite_SetDrawFlag(appData->sprites[BAG_APP_SPRITE_CURSOR], TRUE);
     for (int i = 0; i < 4; ++i) {
         if (a1[i] != 0xFF) {
             ManagedSprite_SetDrawFlag(appData->sprites[BAG_APP_SPRITE_CONTEXT_MENU_ICON_1 + i], TRUE);

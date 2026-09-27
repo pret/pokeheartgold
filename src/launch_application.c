@@ -219,7 +219,7 @@ BagView *Bag_LaunchApp_WithPocket(FieldSystem *fieldSystem, u8 pocketType) {
     }
 
     BagView *bagView = Bag_CreateView(bag, sPockets, HEAP_ID_FIELD3);
-    BagView_Init(bagView, fieldSystem->saveData, BAG_VIEW_CONTEXT_DEBUG, fieldSystem->bagCursor, &fieldSystem->menuInputState);
+    BagView_Init(bagView, fieldSystem->saveData, BAG_VIEW_CONTEXT_GARDENING, fieldSystem->bagCursor, &fieldSystem->menuInputState);
     Bag_LaunchApp(fieldSystem, bagView);
     return bagView;
 }

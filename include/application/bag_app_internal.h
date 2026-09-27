@@ -20,40 +20,40 @@
 typedef enum BagAppState {
     BAG_APP_STATE_WAIT_FADE_AND_ENTER,
     BAG_APP_STATE_HANDLE_INPUT_NORMAL_MODE,
-    BAG_APP_STATE_DEBUG_2,
+    BAG_APP_STATE_SWITCH_POCKET_DPPT,
     BAG_APP_STATE_MOVE_ITEM,
-    BAG_APP_STATE_4,
+    BAG_APP_STATE_CONTEXT_MENU,
     BAG_APP_STATE_TOSS_SELECT_QUANTITY,
     BAG_APP_STATE_CONFIRM_TOSS_PRINT_MESSAGE,
-    BAG_APP_STATE_7,
+    BAG_APP_STATE_ABORT_TOSS,
     BAG_APP_STATE_CONFIRM_TOSS_WAIT_MESSAGE,
     BAG_APP_STATE_CONFIRM_TOSS_HANDLE_YESNO,
     BAG_APP_STATE_COMPLETE_TOSS_WAIT_MESSAGE,
     BAG_APP_STATE_COMPLETE_TOSS_WAIT_BUTTON,
-    BAG_APP_STATE_12,
-    BAG_APP_STATE_13,
+    BAG_APP_STATE_ITEM_USE_ERROR_WAIT_MESSAGE,
+    BAG_APP_STATE_USE_ITEM,
     BAG_APP_STATE_HANDLE_INPUT_GIVE_ITEM,
     BAG_APP_STATE_GIVE_ITEM_ERROR_WAIT_MESSAGE,
     BAG_APP_STATE_SELL_HANDLE_INPUT,
     BAG_APP_STATE_SELL_ITEM_CHOOSE_QUANTITY_WAIT_MESSAGE,
     BAG_APP_STATE_SELL_ITEM_CHOOSE_QUANTITY,
-    BAG_APP_STATE_19,
-    BAG_APP_STATE_20,
+    BAG_APP_STATE_SELL_ITEM_PRINT_FINAL_CONFIRMATION,
+    BAG_APP_STATE_SELL_ITEM_ABORT,
     BAG_APP_STATE_CONFIRM_SALE_WAIT_MESSAGE,
     BAG_APP_STATE_CONFIRM_SALE_WAIT_YESNO,
     BAG_APP_STATE_COMPLETE_SALE,
     BAG_APP_STATE_COMPLETE_SALE_WAIT_MESSAGE,
-    BAG_APP_STATE_25,
-    BAG_APP_STATE_DEBUG,
-    BAG_APP_STATE_27,
-    BAG_APP_STATE_28,
-    BAG_APP_STATE_29,
+    BAG_APP_STATE_REGISTER_FAIL_WAIT_MESSAGE,
+    BAG_APP_STATE_GARDENING,
+    BAG_APP_STATE_OPEN_CONTEXT_MENU,
+    BAG_APP_STATE_CANCEL_CONTEXT_MENU,
+    BAG_APP_STATE_RUN_CONTEXT_MENU_ACTION,
     BAG_APP_STATE_TURN_POCKET_PAGE_RIGHT,
     BAG_APP_STATE_TURN_POCKET_PAGE_LEFT,
-    BAG_APP_STATE_32,
-    BAG_APP_STATE_33,
-    BAG_APP_STATE_34,
-    BAG_APP_STATE_35,
+    BAG_APP_STATE_CANCEL_MOVE_ITEM,
+    BAG_APP_STATE_APPLY_MOVE_ITEM,
+    BAG_APP_STATE_HANDLE_SELECTED_ITEM_FOR_SALE,
+    BAG_APP_STATE_RUN_SPRITE_ANIM_TRANSITION,
     BAG_APP_STATE_FADE_TO_EXIT,
     BAG_APP_STATE_WAIT_FADE_AND_EXIT,
 } BagAppState;
@@ -80,39 +80,39 @@ typedef enum BagItemContextMenuAction {
 
 typedef enum BagAppWindowId {
     BAG_APP_WINDOW_MAIN_DESCRIPTION = 0,
-    BAG_APP_WINDOW_MAIN_1,
-    BAG_APP_WINDOW_MAIN_2,
-    BAG_APP_WINDOW_MAIN_3,
+    BAG_APP_WINDOW_MAIN_TMHM_DETAILS,
+    BAG_APP_WINDOW_MAIN_ITEM_ACTION,
+    BAG_APP_WINDOW_MAIN_MESSAGE,
     BAG_APP_WINDOW_MAIN_4,
     BAG_APP_WINDOW_MAIN_5,
     BAG_APP_WINDOW_MAIN_PAGE_COUNTER,
     BAG_APP_WINDOW_MAIN_CANCEL_BUTTON,
     BAG_APP_WINDOW_MAIN_MAX,
 
-    BAG_APP_WINDOW_SUB_0 = 0,
-    BAG_APP_WINDOW_SUB_1,
-    BAG_APP_WINDOW_SUB_2,
-    BAG_APP_WINDOW_SUB_3,
-    BAG_APP_WINDOW_SUB_4,
-    BAG_APP_WINDOW_SUB_5,
-    BAG_APP_WINDOW_SUB_6,
-    BAG_APP_WINDOW_SUB_7,
-    BAG_APP_WINDOW_SUB_8,
-    BAG_APP_WINDOW_SUB_9,
-    BAG_APP_WINDOW_SUB_10,
-    BAG_APP_WINDOW_SUB_11,
+    BAG_APP_WINDOW_SUB_ITEM_NAME_A_1 = 0,
+    BAG_APP_WINDOW_SUB_ITEM_NAME_A_2,
+    BAG_APP_WINDOW_SUB_ITEM_NAME_A_3,
+    BAG_APP_WINDOW_SUB_ITEM_NAME_A_4,
+    BAG_APP_WINDOW_SUB_ITEM_NAME_A_5,
+    BAG_APP_WINDOW_SUB_ITEM_NAME_A_6,
+    BAG_APP_WINDOW_SUB_ITEM_NAME_B_1,
+    BAG_APP_WINDOW_SUB_ITEM_NAME_B_2,
+    BAG_APP_WINDOW_SUB_ITEM_NAME_B_3,
+    BAG_APP_WINDOW_SUB_ITEM_NAME_B_4,
+    BAG_APP_WINDOW_SUB_ITEM_NAME_B_5,
+    BAG_APP_WINDOW_SUB_ITEM_NAME_B_6,
     BAG_APP_WINDOW_SUB_CONTEXT_SELECTED_ITEM,
     BAG_APP_WINDOW_SUB_CONTEXT_OPTION_1,
     BAG_APP_WINDOW_SUB_CONTEXT_OPTION_2,
     BAG_APP_WINDOW_SUB_CONTEXT_OPTION_3,
     BAG_APP_WINDOW_SUB_CONTEXT_OPTION_4,
-    BAG_APP_WINDOW_SUB_17,
-    BAG_APP_WINDOW_SUB_18,
-    BAG_APP_WINDOW_SUB_19,
+    BAG_APP_WINDOW_SUB_QUANTITY_DIGIT_1,
+    BAG_APP_WINDOW_SUB_QUANTITY_DIGIT_2,
+    BAG_APP_WINDOW_SUB_QUANTITY_DIGIT_3,
     BAG_APP_WINDOW_SUB_SELL_OR_TRASH_BUTTON,
-    BAG_APP_WINDOW_SUB_21,
-    BAG_APP_WINDOW_SUB_22,
-    BAG_APP_WINDOW_SUB_23,
+    BAG_APP_WINDOW_SUB_MESSAGE,
+    BAG_APP_WINDOW_SUB_MONEY,
+    BAG_APP_WINDOW_SUB_SELL_MONEY,
     BAG_APP_WINDOW_SUB_MAX,
 } BagAppWindowId;
 
@@ -137,14 +137,14 @@ typedef enum BagAppSpriteId {
     BAG_APP_SPRITE_PAGE_LEFT_BUTTON,
     BAG_APP_SPRITE_PAGE_RIGHT_BUTTON,
     BAG_APP_SPRITE_B_BUTTON,
-    BAG_APP_SPRITE_20,
-    BAG_APP_SPRITE_21,
-    BAG_APP_SPRITE_22,
-    BAG_APP_SPRITE_23,
-    BAG_APP_SPRITE_24,
-    BAG_APP_SPRITE_25,
-    BAG_APP_SPRITE_26,
-    BAG_APP_SPRITE_27,
+    BAG_APP_SPRITE_CURSOR,
+    BAG_APP_SPRITE_ITEM_BUTTON_1,
+    BAG_APP_SPRITE_ITEM_BUTTON_2,
+    BAG_APP_SPRITE_ITEM_BUTTON_3,
+    BAG_APP_SPRITE_ITEM_BUTTON_4,
+    BAG_APP_SPRITE_ITEM_BUTTON_5,
+    BAG_APP_SPRITE_ITEM_BUTTON_6,
+    BAG_APP_SPRITE_UNUSED_CURSOR_2,
     BAG_APP_SPRITE_CONTEXT_MENU_ICON_1,
     BAG_APP_SPRITE_CONTEXT_MENU_ICON_2,
     BAG_APP_SPRITE_CONTEXT_MENU_ICON_3,
@@ -185,18 +185,18 @@ typedef enum BagAppCursorPos {
     BAG_APP_CURSOR_POS_RESET_TO_CURR_POCKET = 17,
 } BagAppCursorPos;
 
-typedef struct BagAppData_UnkDebugSubstruct {
-    u8 unk_0;
-    u8 unk_1;
-    u8 unk_2;
-    u8 unk_3;
-    u8 unk_4;
-    u8 unk_5;
-    u8 unk_6;
-    u8 unk_7_0 : 4;
-    u8 unk_7_4 : 3;
+typedef struct BagAppData_UnusedPocketSelector {
+    u8 nextPocket;
+    u8 nextPocketDirection;
+    u8 animStage;
+    u8 animFrame;
+    u8 pocketChangeState;
+    u8 pocketChangeFrame;
+    u8 pressedPocketBtnIdx;
+    u8 isActive : 4;
+    u8 isNotTouchHeld : 3;
     u8 unk_7_7 : 1;
-} BagAppData_UnkDebugSubstruct;
+} BagAppData_UnusedPocketSelector;
 
 typedef struct BagAppSpriteAnimationTransitionManager {
     u8 spriteId;
@@ -265,12 +265,13 @@ struct BagAppData {
     String *unk_5EC;
     u8 filler_5F0[4];
     String *pocketNameStrings[8];
-    u8 unk_614;
+    u8 numPockets;
     u8 gender;
     u8 textPrinterId;
-    u8 unk_617;
-    u8 unk_618;
-    BagAppData_UnkDebugSubstruct unkDebugStruct;
+    // DPPt leftovers
+    u8 pocketSelectorIconsX;
+    u8 pocketSelectorIconsSpacing;
+    BagAppData_UnusedPocketSelector pocketSelector;
     u8 filler_624[0x20];
     int cursorPos;
     u8 unk_648;
@@ -279,7 +280,7 @@ struct BagAppData {
     u8 unk_64B;
     u8 filler_64C[32];
     int moveItemCursorPos;
-    u8 unk_670;
+    u8 nextPocket;
     u8 moveItemMode;
     u8 moveItemOriginalSlot;
     int unk_674;
@@ -352,10 +353,10 @@ void ov15_021FF8D4(BagAppData *appData);
 void ov15_021FF950(BagAppData *appData);
 void ov15_021FF964(BagAppData *appData);
 void ov15_021FF97C(BagAppData *appData, u16 itemId, int a2);
-void ov15_021FFECC(BagAppData *appData, BagAppCursorPos a1);
-void ov15_021FFF24(BagAppData *appData);
-void ov15_021FFF34(BagAppData *appData, int a1);
-void ov15_021FFFDC(BagAppData *appData, int a1);
+void BagApp_SetCursorSpritePos_PocketsItemsContext(BagAppData *appData, BagAppCursorPos a1);
+void BagApp_HideCursorSprite(BagAppData *appData);
+void BagApp_SetCursorSpritePos_ItemsOnly(BagAppData *appData, int a1);
+void BagApp_SetCursorSpritePos_QuantitySelect(BagAppData *appData, int a1);
 void ov15_02200030(BagAppData *appData, int pocket);
 void ov15_0220005C(BagAppData *appData, int a1, int a2, int a3);
 void BagApp_UpdateItemIconsVisibility(BagAppData *appData, BagViewPocket *pocket, int numShown, BOOL replaceIcon);

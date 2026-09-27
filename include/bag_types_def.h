@@ -33,9 +33,9 @@ typedef enum BagViewContext {
     BAG_VIEW_CONTEXT_NORMAL,
     BAG_VIEW_CONTEXT_GIVE_ITEM,
     BAG_VIEW_CONTEXT_MART_SELL,
-    BAG_VIEW_CONTEXT_DEBUG,
-    BAG_VIEW_CONTEXT_4,
-    BAG_VIEW_CONTEXT_5,
+    BAG_VIEW_CONTEXT_GARDENING,
+    BAG_VIEW_CONTEXT_POFFIN_SINGLEPLAYER,
+    BAG_VIEW_CONTEXT_POFFIN_MULTIPLAYER,
     BAG_VIEW_CONTEXT_BERRY_POTS,
 } BagViewContext;
 
@@ -92,7 +92,7 @@ typedef struct BagView {
     BagCursor *cursor; // State of last selection
     ItemCheckUseData *checkUseData;
     u8 partySlot;
-    u8 unk75;
+    u8 soldAmount;
     u16 onBike : 1;
     u16 mapLoadType : 15;
     MenuInputStateMgr *menuInputStateMgr;

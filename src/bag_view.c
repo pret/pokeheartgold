@@ -86,7 +86,7 @@ u8 BagView_GetPartySlot(BagView *bagView) {
 }
 
 u8 sub_0207791C(BagView *bagView) {
-    return bagView->unk75;
+    return bagView->soldAmount;
 }
 
 static u16 GetCoinCount(SaveData *saveData) {
