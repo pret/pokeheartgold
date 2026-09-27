@@ -66,18 +66,18 @@ void BagApp_RemoveWindows(BagAppData *appData) {
 }
 
 static const int ov15_02200908[12][3] = {
-    { 4,  5,  0x0BF },
-    { 20, 5,  0x0EB },
-    { 4,  10, 0x117 },
-    { 20, 10, 0x143 },
-    { 4,  15, 0x16F },
-    { 20, 15, 0x19B },
-    { 4,  5,  0x1C7 },
-    { 20, 5,  0x1F3 },
-    { 4,  10, 0x21F },
-    { 20, 10, 0x24B },
-    { 4,  15, 0x277 },
-    { 20, 15, 0x2A3 },
+    {4,   5,  0x0BF},
+    { 20, 5,  0x0EB},
+    { 4,  10, 0x117},
+    { 20, 10, 0x143},
+    { 4,  15, 0x16F},
+    { 20, 15, 0x19B},
+    { 4,  5,  0x1C7},
+    { 20, 5,  0x1F3},
+    { 4,  10, 0x21F},
+    { 20, 10, 0x24B},
+    { 4,  15, 0x277},
+    { 20, 15, 0x2A3},
 };
 
 static void BagApp_AddItemNameWindows(BagAppData *appData) {
@@ -99,16 +99,16 @@ static void BagApp_RemoveItemNameWindows(BagAppData *appData) {
 }
 
 static const int ov15_022008E8[4][2] = {
-    { 1,  17 },
-    { 13, 17 },
-    { 1,  21 },
-    { 13, 21 },
+    {1,   17},
+    { 13, 17},
+    { 1,  21},
+    { 13, 21},
 };
 
 static const int ov15_022008D0[3][2] = {
-    { 16, 14 },
-    { 20, 14 },
-    { 24, 14 },
+    {16,  14},
+    { 20, 14},
+    { 24, 14},
 };
 
 static void BagApp_ShowContextMenuWindows(BagAppData *appData) {
@@ -619,7 +619,7 @@ static int BagViewPocket_GetIndexWithAtMostXNonEmptySlots(BagViewPocket *pocket,
     return i;
 }
 
-void ov15_021FF364(BagAppData *appData, int scroll, int itemSlot, BOOL isMoveMode) {
+void BagApp_RedrawItemNameWindows(BagAppData *appData, int scroll, int itemSlot, BOOL isMoveMode) {
     int i;
     // this variable exists for some reason
     // apparently the dev anticipated a case

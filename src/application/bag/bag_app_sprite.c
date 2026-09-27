@@ -96,7 +96,7 @@ void ov15_021FF950(BagAppData *appData) {
     appData->unk_648 = 1;
 }
 
-void ov15_021FF964(BagAppData *appData) {
+void BagApp_StepPocketSwitchPressedButtonAnim_DPPt(BagAppData *appData) {
     switch (appData->unk_648) {
     case 0:
         break;
@@ -881,28 +881,28 @@ static void ov15_021FFEC0(BagAppData *appData) {
 }
 
 static const u8 ov15_02200AB8[][4] = {
-    // x, y, anim, pltt
-    [BAG_APP_CURSOR_POS_POCKET_1] = { 16,  16,  8,  9 },
-    [BAG_APP_CURSOR_POS_POCKET_2] = { 48,  16,  8,  9 },
-    [BAG_APP_CURSOR_POS_POCKET_3] = { 80,  16,  8,  9 },
-    [BAG_APP_CURSOR_POS_POCKET_4] = { 112, 16,  8,  9 },
-    [BAG_APP_CURSOR_POS_POCKET_5] = { 144, 16,  8,  9 },
-    [BAG_APP_CURSOR_POS_POCKET_6] = { 176, 16,  8,  9 },
-    [BAG_APP_CURSOR_POS_POCKET_7] = { 208, 16,  8,  9 },
-    [BAG_APP_CURSOR_POS_POCKET_8] = { 240, 16,  8,  9 },
-    [BAG_APP_CURSOR_POS_ITEM_1] = { 48,  56,  10, 9 },
-    [BAG_APP_CURSOR_POS_ITEM_2] = { 176, 56,  10, 9 },
-    [BAG_APP_CURSOR_POS_ITEM_3] = { 48,  96,  10, 9 },
-    [BAG_APP_CURSOR_POS_ITEM_4] = { 176, 96,  10, 9 },
-    [BAG_APP_CURSOR_POS_ITEM_5] = { 48,  136, 10, 9 },
-    [BAG_APP_CURSOR_POS_ITEM_6] = { 176, 136, 10, 9 },
-    [BAG_APP_CURSOR_POS_PAGE_LEFT] = { 24,  176, 14, 9 },
-    [BAG_APP_CURSOR_POS_PAGE_RIGHT] = { 64,  176, 14, 9 },
-    [BAG_APP_CURSOR_POS_CANCEL] = { 224, 176, 17, 9 },
-    [BAG_APP_CURSOR_POS_CONTEXT_MENU_1] = { 48,  144, 23, 9 },
-    [BAG_APP_CURSOR_POS_CONTEXT_MENU_2] = { 144, 144, 23, 9 },
-    [BAG_APP_CURSOR_POS_CONTEXT_MENU_3] = { 48,  176, 23, 9 },
-    [BAG_APP_CURSOR_POS_CONTEXT_MENU_4] = { 144, 176, 23, 9 },
+  // x, y, anim, pltt
+    [BAG_APP_CURSOR_POS_POCKET_1] = {16,   16,  8,  9},
+    [BAG_APP_CURSOR_POS_POCKET_2] = { 48,  16,  8,  9},
+    [BAG_APP_CURSOR_POS_POCKET_3] = { 80,  16,  8,  9},
+    [BAG_APP_CURSOR_POS_POCKET_4] = { 112, 16,  8,  9},
+    [BAG_APP_CURSOR_POS_POCKET_5] = { 144, 16,  8,  9},
+    [BAG_APP_CURSOR_POS_POCKET_6] = { 176, 16,  8,  9},
+    [BAG_APP_CURSOR_POS_POCKET_7] = { 208, 16,  8,  9},
+    [BAG_APP_CURSOR_POS_POCKET_8] = { 240, 16,  8,  9},
+    [BAG_APP_CURSOR_POS_ITEM_1] = { 48,  56,  10, 9},
+    [BAG_APP_CURSOR_POS_ITEM_2] = { 176, 56,  10, 9},
+    [BAG_APP_CURSOR_POS_ITEM_3] = { 48,  96,  10, 9},
+    [BAG_APP_CURSOR_POS_ITEM_4] = { 176, 96,  10, 9},
+    [BAG_APP_CURSOR_POS_ITEM_5] = { 48,  136, 10, 9},
+    [BAG_APP_CURSOR_POS_ITEM_6] = { 176, 136, 10, 9},
+    [BAG_APP_CURSOR_POS_PAGE_LEFT] = { 24,  176, 14, 9},
+    [BAG_APP_CURSOR_POS_PAGE_RIGHT] = { 64,  176, 14, 9},
+    [BAG_APP_CURSOR_POS_CANCEL] = { 224, 176, 17, 9},
+    [BAG_APP_CURSOR_POS_CONTEXT_MENU_1] = { 48,  144, 23, 9},
+    [BAG_APP_CURSOR_POS_CONTEXT_MENU_2] = { 144, 144, 23, 9},
+    [BAG_APP_CURSOR_POS_CONTEXT_MENU_3] = { 48,  176, 23, 9},
+    [BAG_APP_CURSOR_POS_CONTEXT_MENU_4] = { 144, 176, 23, 9},
 };
 
 void BagApp_SetCursorSpritePos_PocketsItemsContext(BagAppData *appData, BagAppCursorPos cursorPos) {
@@ -917,16 +917,16 @@ void BagApp_HideCursorSprite(BagAppData *appData) {
 }
 
 static const u8 ov15_02200A34[][4] = {
-    // x, y, anim, pltt
-    [BAG_APP_CURSOR_POS_ITEM_1 - 8] = { 48,  56,  20, 9 },
-    [BAG_APP_CURSOR_POS_ITEM_2 - 8] = { 176, 56,  20, 9 },
-    [BAG_APP_CURSOR_POS_ITEM_3 - 8] = { 48,  96,  20, 9 },
-    [BAG_APP_CURSOR_POS_ITEM_4 - 8] = { 176, 96,  20, 9 },
-    [BAG_APP_CURSOR_POS_ITEM_5 - 8] = { 48,  136, 20, 9 },
-    [BAG_APP_CURSOR_POS_ITEM_6 - 8] = { 176, 136, 20, 9 },
-    [BAG_APP_CURSOR_POS_PAGE_LEFT - 8] = { 24,  176, 14, 9 },
-    [BAG_APP_CURSOR_POS_PAGE_RIGHT - 8] = { 64,  176, 14, 9 },
-    [BAG_APP_CURSOR_POS_CANCEL - 8] = { 224, 176, 17, 9 },
+  // x, y, anim, pltt
+    [BAG_APP_CURSOR_POS_ITEM_1 - 8] = {48,   56,  20, 9},
+    [BAG_APP_CURSOR_POS_ITEM_2 - 8] = { 176, 56,  20, 9},
+    [BAG_APP_CURSOR_POS_ITEM_3 - 8] = { 48,  96,  20, 9},
+    [BAG_APP_CURSOR_POS_ITEM_4 - 8] = { 176, 96,  20, 9},
+    [BAG_APP_CURSOR_POS_ITEM_5 - 8] = { 48,  136, 20, 9},
+    [BAG_APP_CURSOR_POS_ITEM_6 - 8] = { 176, 136, 20, 9},
+    [BAG_APP_CURSOR_POS_PAGE_LEFT - 8] = { 24,  176, 14, 9},
+    [BAG_APP_CURSOR_POS_PAGE_RIGHT - 8] = { 64,  176, 14, 9},
+    [BAG_APP_CURSOR_POS_CANCEL - 8] = { 224, 176, 17, 9},
 };
 
 void BagApp_SetCursorSpritePos_ItemsOnly(BagAppData *appData, int offset) {
@@ -949,15 +949,15 @@ void BagApp_SetCursorSpritePos_ItemsOnly(BagAppData *appData, int offset) {
 }
 
 static const u8 ov15_022009D4[][4] = {
-    // x, y, anim, pltt
-    { 136, 104, 29, 9 },
-    { 168, 104, 29, 9 },
-    { 200, 104, 29, 9 },
-    { 136, 160, 29, 9 },
-    { 168, 160, 29, 9 },
-    { 200, 160, 29, 9 },
-    { 160, 176, 17, 9 },
-    { 224, 176, 17, 9 },
+  // x, y, anim, pltt
+    {136,  104, 29, 9},
+    { 168, 104, 29, 9},
+    { 200, 104, 29, 9},
+    { 136, 160, 29, 9},
+    { 168, 160, 29, 9},
+    { 200, 160, 29, 9},
+    { 160, 176, 17, 9},
+    { 224, 176, 17, 9},
 };
 
 void BagApp_SetCursorSpritePos_QuantitySelect(BagAppData *appData, int a1) {

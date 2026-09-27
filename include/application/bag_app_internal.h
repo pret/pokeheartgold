@@ -195,7 +195,7 @@ typedef struct BagAppData_UnusedPocketSelector {
     u8 pressedPocketBtnIdx;
     u8 isActive : 4;
     u8 isNotTouchHeld : 3;
-    u8 unk_7_7 : 1;
+    u8 animStarted : 1;
 } BagAppData_UnusedPocketSelector;
 
 typedef struct BagAppSpriteAnimationTransitionManager {
@@ -256,13 +256,13 @@ struct BagAppData {
     MsgData *itemNamesMsgdata;
     MsgData *moveNamesMsgData;
     String *contextMenuStrings[BAG_ITEM_CONTEXT_MENU_ACTION_MAX];
-    u8 filler_340[8];
-    int unk_348;
-    u8 filler_34C[4];
+    u8 filler_340[8]; // Platinum leftover
+    int unk_348;      // Platinum leftover
+    u8 filler_34C[4]; // Platinum leftover
     String *itemNameStrings[NUM_BAG_STRINGS];
     String *formattedStrbuf;
-    String *unk_5E8;
-    String *unk_5EC;
+    String *unk_5E8; // Platinum leftover
+    String *unk_5EC; // Platinum leftover
     u8 filler_5F0[4];
     String *pocketNameStrings[8];
     u8 numPockets;
@@ -336,7 +336,7 @@ void ov15_021FF068(BagAppData *appData);
 void ov15_021FF0FC(BagAppData *appData, int a1);
 void ov15_021FF1E0(BagAppData *appData);
 void BagApp_PrintCancel(BagAppData *appData, int centered);
-void ov15_021FF364(BagAppData *appData, int scroll, int itemSlot, BOOL isMoveMode);
+void BagApp_RedrawItemNameWindows(BagAppData *appData, int scroll, int itemSlot, BOOL isMoveMode);
 void BagApp_SwitchItemButtonWindowsToContextMenuMode(BagAppData *appData, int scroll, int offset);
 void BagApp_ClearSelectedItemWindow(BagAppData *appData);
 void BagApp_PrintPageCounter(BagAppData *appData, int pocketCount, int pocketScroll, int offset);
@@ -351,7 +351,7 @@ void BagApp_InitSpriteRendererAndSystem(BagAppData *appData);
 void BagApp_FreeSpriteSystem(BagAppData *appData);
 void ov15_021FF8D4(BagAppData *appData);
 void ov15_021FF950(BagAppData *appData);
-void ov15_021FF964(BagAppData *appData);
+void BagApp_StepPocketSwitchPressedButtonAnim_DPPt(BagAppData *appData);
 void ov15_021FF97C(BagAppData *appData, u16 itemId, int a2);
 void BagApp_SetCursorSpritePos_PocketsItemsContext(BagAppData *appData, BagAppCursorPos a1);
 void BagApp_HideCursorSprite(BagAppData *appData);
