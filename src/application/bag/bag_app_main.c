@@ -574,7 +574,7 @@ BOOL Bag_Exit(OverlayManager *man, int *state) {
         DestroyMsgData(appData->msgData);
         MessagePrinter_Delete(appData->msgPrinter);
         MessageFormat_Delete(appData->msgFormat);
-        NARC_Delete(appData->narc_a_0_1_5);
+        NARC_Delete(appData->graphicsNarc);
     }
     OverlayManager_FreeData(man);
     // possible UB: a vblank intr here results in use after free
@@ -773,7 +773,7 @@ static void BagApp_TeardownBgLayers(BgConfig *bgConfig) {
 }
 
 static void BagApp_LoadBgGraphics(BagAppData *appData) {
-    appData->narc_a_0_1_5 = NARC_New(NARC_graphic_bag_bag_graphics, HEAP_ID_BAG);
+    appData->graphicsNarc = NARC_New(NARC_graphic_bag_bag_graphics, HEAP_ID_BAG);
     GfGfxLoader_LoadCharData(NARC_graphic_bag_bag_graphics, bag_graphics_00007_NCGR, appData->bgConfig, GF_BG_LYR_MAIN_2, 0, 0, FALSE, HEAP_ID_BAG);
     GfGfxLoader_LoadScrnData(NARC_graphic_bag_bag_graphics, bag_graphics_00054_NSCR, appData->bgConfig, GF_BG_LYR_MAIN_2, 0, 0, FALSE, HEAP_ID_BAG);
     if (appData->gender == PLAYER_GENDER_MALE) {

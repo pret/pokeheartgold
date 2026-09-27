@@ -308,7 +308,7 @@ static void BagApp_PrintTMorHMNumberOnWindow(BagAppData *appData, Window *window
 }
 
 static void *ov15_021FE990(BagAppData *appData, NNSG2dCharacterData **ppCharData) {
-    void *pNcgrFile = NARC_AllocAndReadWholeMember(appData->narc_a_0_1_5, 37, HEAP_ID_BAG);
+    void *pNcgrFile = NARC_AllocAndReadWholeMember(appData->graphicsNarc, 37, HEAP_ID_BAG);
     NNS_G2dGetUnpackedBGCharacterData(pNcgrFile, ppCharData);
     return pNcgrFile;
 }

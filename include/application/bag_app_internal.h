@@ -246,7 +246,7 @@ struct BagAppData {
     Bag *bag;
     PlayerProfile *playerProfile;
     Options *options;
-    NARC *narc_a_0_1_5;
+    NARC *graphicsNarc;
     SpriteSystem *spriteSystem;
     SpriteManager *spriteManager;
     ManagedSprite *sprites[BAG_APP_SPRITE_MAX];

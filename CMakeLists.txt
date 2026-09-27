@@ -55,4 +55,4 @@ target_compile_definitions(PokeHeartGold PUBLIC __CLION_IDE__ SDK_ARM9 SDK_CW SD
 target_compile_options(PokeHeartGold PRIVATE -Wimplicit -Wno-endif-labels -fms-extensions -nostdinc -Wno-builtin-declaration-mismatch -Wno-implicit-int -Wno-multichar -Wno-address-of-packed-member -mcpu=arm946e-s)
 target_compile_features(PokeHeartGold PRIVATE c_std_99 cxx_std_98)
 
-add_subdirectory(tools)
+# add_subdirectory(tools)

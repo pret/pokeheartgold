@@ -20,6 +20,7 @@ scr_seq_gen = generator(makescript_sh,
         '-i', relative_source_root,
         '@INPUT@',
     ],
+    depends : text_banks,
     output : '@BASENAME@.bin'
 )
 
@@ -36,7 +37,6 @@ scr_seq_narc = custom_target('scr_seq.narc',
         '--file', '@OUTPUT0@',
         '@PRIVATE_DIR@'
     ],
-    depends : text_banks,
 )
 
 nitrofs_files += scr_seq_narc

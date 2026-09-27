@@ -20,6 +20,7 @@ effect_seq_gen = generator(makescript_sh,
         '-i', relative_source_root,
         '@INPUT@',
     ],
+    depends : text_banks,
     output : '@BASENAME@.bin'
 )
 
@@ -36,7 +37,6 @@ effect_seq_narc = custom_target('effect_script.narc',
         '--file', '@OUTPUT0@',
         '@PRIVATE_DIR@'
     ],
-    depends : text_banks,
     build_by_default : true
 )
 

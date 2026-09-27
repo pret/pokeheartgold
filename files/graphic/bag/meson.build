@@ -27,4 +27,4 @@ bag_graphics_narc = custom_target('bag_graphics.narc',
 )
 
 nitrofs_files += bag_graphics_narc
-naix_headers += zukan_gra_narc[1]
+naix_headers += bag_graphics_narc[1]
