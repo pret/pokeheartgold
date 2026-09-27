@@ -58,7 +58,7 @@ static void BagApp_ReplaceItemIconResObjs(BagAppData *appData, int idx, u16 item
 static void BagApp_InitSpriteSystem(BagAppData *appData);
 static void BagApp_LoadSpriteResObjs(BagAppData *appData);
 static void BagApp_CreateSprites(BagAppData *appData);
-static void ov15_021FFEC0(BagAppData *appData);
+static void BagApp_DPPtPocketSwitchPressedButtonAnim_Run(BagAppData *appData);
 static void BagApp_UpdatePageNavArrowSpritesVisibility(BagAppData *appData);
 
 void BagApp_InitSpriteRendererAndSystem(BagAppData *appData) {
@@ -80,7 +80,7 @@ void BagApp_FreeSpriteSystem(BagAppData *appData) {
     Heap_Free(appData->unk_69C);
 }
 
-void ov15_021FF8D4(BagAppData *appData) {
+void BagApp_UpdateSpriteAnims(BagAppData *appData) {
     for (u32 i = 0; i < 39; ++i) {
         ManagedSprite_TickFrame(appData->sprites[i]);
     }
@@ -91,22 +91,22 @@ static void BagApp_ReplaceItemIconResObjs(BagAppData *appData, int idx, u16 item
     SpriteSystem_ReplacePlttResObj(appData->spriteSystem, appData->spriteManager, NARC_itemtool_itemdata_item_icon, GetItemIndexMapping(itemId, ITEMNARC_NCLR), FALSE, BAG_APP_PLTT_TAG_ITEM_ICON_1 + idx);
 }
 
-void ov15_021FF950(BagAppData *appData) {
-    appData->unk_64B = 0;
-    appData->unk_648 = 1;
+void BagApp_StartPocketSwitchPressedButtonAnim_DPPt(BagAppData *appData) {
+    appData->pressedButtonAnimStep_DPPt = 0;
+    appData->pressedButtonAnimState_DPPt = 1;
 }
 
 void BagApp_StepPocketSwitchPressedButtonAnim_DPPt(BagAppData *appData) {
-    switch (appData->unk_648) {
+    switch (appData->pressedButtonAnimState_DPPt) {
     case 0:
         break;
     case 1:
-        ov15_021FFEC0(appData);
+        BagApp_DPPtPocketSwitchPressedButtonAnim_Run(appData);
         break;
     }
 }
 
-void ov15_021FF97C(BagAppData *appData, u16 itemId, int drawFlag) {
+void BagApp_DrawTMHMMoveDetails(BagAppData *appData, u16 itemId, int drawFlag) {
     ManagedSprite_SetDrawFlag(appData->sprites[BAG_APP_SPRITE_MOVE_TYPE_ICON], drawFlag);
     ManagedSprite_SetDrawFlag(appData->sprites[BAG_APP_SPRITE_MOVE_CATEGORY_ICON], drawFlag);
     if (drawFlag) {
@@ -876,8 +876,9 @@ static void BagApp_CreateSprites(BagAppData *appData) {
     ManagedSprite_SetPriority(appData->sprites[BAG_APP_SPRITE_A_BUTTON], 1);
 }
 
-static void ov15_021FFEC0(BagAppData *appData) {
-    appData->unk_648 = 0;
+static void BagApp_DPPtPocketSwitchPressedButtonAnim_Run(BagAppData *appData) {
+    // Stubbed out
+    appData->pressedButtonAnimState_DPPt = 0;
 }
 
 static const u8 ov15_02200AB8[][4] = {
@@ -967,7 +968,7 @@ void BagApp_SetCursorSpritePos_QuantitySelect(BagAppData *appData, int a1) {
     ManagedSprite_SetPaletteOverride(appData->sprites[BAG_APP_SPRITE_CURSOR], ov15_022009D4[a1][3]);
 }
 
-void ov15_02200030(BagAppData *appData, int pocket) {
+void BagApp_LoadObjPaletteByPocket(BagAppData *appData, int pocket) {
     if (pocket <= 7) {
         u16 *pRawData = appData->unk_6A0->pRawData;
         GXS_LoadOBJPltt(pRawData + 128, 0, 128 * 2);
@@ -975,7 +976,7 @@ void ov15_02200030(BagAppData *appData, int pocket) {
     }
 }
 
-void ov15_0220005C(BagAppData *appData, int itemsOnPage, int hideItemSlot, int hideCursor) {
+void BagApp_UpdateItemButtonsDrawState(BagAppData *appData, int itemsOnPage, int hideItemSlot, int hideCursor) {
     int i;
 
     if (itemsOnPage == 0) {
@@ -1042,7 +1043,7 @@ void BagApp_ShowOnlySelectedItemIcon(BagAppData *appData, BagViewPocket *pocket,
     BagApp_UpdatePageNavArrowSpritesVisibility(appData);
 }
 
-void ov15_0220023C(BagAppData *appData, u8 *a1) {
+void BagApp_DrawContextMenuButtonSprites(BagAppData *appData, u8 *a1) {
     ManagedSprite_SetDrawFlag(appData->sprites[BAG_APP_SPRITE_CURSOR], TRUE);
     for (int i = 0; i < 4; ++i) {
         if (a1[i] != 0xFF) {
@@ -1071,12 +1072,12 @@ void BagApp_CenterSelectedItemIconSprite(BagAppData *appData, int cursorPos) {
     }
 }
 
-int BagApp_GetNumberWidthType(int a0) {
+int BagApp_GetNumberWidthType(int quantity) {
     int result = 0;
-    if (a0 < 100) {
+    if (quantity < 100) {
         result = 1;
     }
-    if (a0 < 10) {
+    if (quantity < 10) {
         result = 2;
     }
     return result;
@@ -1101,23 +1102,23 @@ static const int ov15_02200A14[2][4] = {
 
 static const int ov15_022009A0[2] = { 2, 4 };
 
-void BagApp_ShowQuantitySelectSpritesUI(BagAppData *appData, int a1, int a2) {
+void BagApp_ShowQuantitySelectSpritesUI(BagAppData *appData, int numDigits, int quantity) {
     int i;
-    if (a1 == 2 && a2 > 99) {
-        a2 = 99;
+    if (numDigits == 2 && quantity > 99) {
+        quantity = 99;
     }
-    for (i = 0; i < ov15_02200998[a1 - 2]; ++i) {
-        ManagedSprite_SetDrawFlag(appData->sprites[BAG_APP_SPRITE_TOSS_QUANTITY_HUNDREDS_PLACE_UP + ov15_02200A58[a1 - 2][i]], TRUE);
-        ManagedSprite_SetAnim(appData->sprites[BAG_APP_SPRITE_TOSS_QUANTITY_HUNDREDS_PLACE_UP + ov15_02200A58[a1 - 2][i]], ov15_02200A88[a1 - 2][i]);
+    for (i = 0; i < ov15_02200998[numDigits - 2]; ++i) {
+        ManagedSprite_SetDrawFlag(appData->sprites[BAG_APP_SPRITE_TOSS_QUANTITY_HUNDREDS_PLACE_UP + ov15_02200A58[numDigits - 2][i]], TRUE);
+        ManagedSprite_SetAnim(appData->sprites[BAG_APP_SPRITE_TOSS_QUANTITY_HUNDREDS_PLACE_UP + ov15_02200A58[numDigits - 2][i]], ov15_02200A88[numDigits - 2][i]);
     }
-    int r0 = BagApp_GetNumberWidthType(a2);
-    if (r0 != 0) {
-        if (a1 - 2 == 0 && r0 == 2) {
+    int widthType = BagApp_GetNumberWidthType(quantity);
+    if (widthType != 0) {
+        if (numDigits - 2 == 0 && widthType == 2) {
             ManagedSprite_SetDrawFlag(appData->sprites[BAG_APP_SPRITE_TOSS_QUANTITY_HUNDREDS_PLACE_UP], FALSE);
             ManagedSprite_SetDrawFlag(appData->sprites[BAG_APP_SPRITE_TOSS_QUANTITY_HUNDREDS_PLACE_DOWN], FALSE);
-        } else if (a1 - 2 == 1) {
-            for (i = 0; i < ov15_022009A0[r0 - 1]; ++i) {
-                ManagedSprite_SetDrawFlag(appData->sprites[BAG_APP_SPRITE_TOSS_QUANTITY_HUNDREDS_PLACE_UP + ov15_02200A14[r0 - 1][i]], FALSE);
+        } else if (numDigits - 2 == 1) {
+            for (i = 0; i < ov15_022009A0[widthType - 1]; ++i) {
+                ManagedSprite_SetDrawFlag(appData->sprites[BAG_APP_SPRITE_TOSS_QUANTITY_HUNDREDS_PLACE_UP + ov15_02200A14[widthType - 1][i]], FALSE);
             }
         }
     }
@@ -1128,7 +1129,7 @@ void BagApp_ShowQuantitySelectSpritesUI(BagAppData *appData, int a1, int a2) {
     ManagedSprite_SetAnim(appData->sprites[BAG_APP_SPRITE_B_BUTTON], 39);
 }
 
-void ov15_02200428(BagAppData *appData) {
+void BagApp_HideQuantitySelectSpritesUI(BagAppData *appData) {
     for (int i = 0; i < 6; ++i) {
         ManagedSprite_SetDrawFlag(appData->sprites[BAG_APP_SPRITE_TOSS_QUANTITY_HUNDREDS_PLACE_UP + i], FALSE);
     }

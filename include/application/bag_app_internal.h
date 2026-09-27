@@ -84,7 +84,7 @@ typedef enum BagAppWindowId {
     BAG_APP_WINDOW_MAIN_ITEM_ACTION,
     BAG_APP_WINDOW_MAIN_MESSAGE,
     BAG_APP_WINDOW_MAIN_4,
-    BAG_APP_WINDOW_MAIN_5,
+    BAG_APP_WINDOW_MAIN_POFFIN_COUNT,
     BAG_APP_WINDOW_MAIN_PAGE_COUNTER,
     BAG_APP_WINDOW_MAIN_CANCEL_BUTTON,
     BAG_APP_WINDOW_MAIN_MAX,
@@ -274,10 +274,10 @@ struct BagAppData {
     BagAppData_UnusedPocketSelector pocketSelector;
     u8 filler_624[0x20];
     int cursorPos;
-    u8 unk_648;
+    u8 pressedButtonAnimState_DPPt;
     u8 unk_649;
     u8 unk_64A;
-    u8 unk_64B;
+    u8 pressedButtonAnimStep_DPPt;
     u8 filler_64C[32];
     int moveItemCursorPos;
     u8 nextPocket;
@@ -305,36 +305,38 @@ struct BagAppData {
     int unk_948;
 }; // size: 0x94C
 
-void ov15_021F9C78(BagAppData *appData, BOOL a1);
-u16 ov15_021F9D60(BagAppData *appData, u16 slot, BOOL fetchQuantity);
+// main
+void BagApp_DrawTopScreenUI(BagAppData *appData, BOOL isNotTMHM);
+u16 BagApp_FetchItemIdOrQuantity(BagAppData *appData, u16 slot, BOOL fetchQuantity);
 BOOL IsBerryOrMulch(u8 pocketId, u16 itemId);
 
+// window
 void BagApp_CreateMainWindows(BagAppData *appData);
 void BagApp_RemoveWindows(BagAppData *appData);
 void BagApp_LoadPocketNames(BagAppData *appData);
 void BagApp_DeletePocketNames(BagAppData *appData);
-void ov15_021FE528(BagAppData *appData);
-void ov15_021FE868(BagAppData *appData);
-void ov15_021FE874(BagAppData *appData);
-void ov15_021FE8A4(BagAppData *appData);
+void BagApp_ClearPocketNameBox(BagAppData *appData);
+void BagApp_ClearTMHMDetailsWindow(BagAppData *appData);
+void BagApp_LoadItemCountStrings_DPPt(BagAppData *appData);
+void BagApp_DeleteItemCountStrings_DPPt(BagAppData *appData);
 void BagApp_LoadContextMenuStrings(BagAppData *appData);
 void BagApp_UnloadContextMenuStrings(BagAppData *appData);
-void ov15_021FEB84(BagAppData *appData, u8 *stringIndices, int a2);
+void BagApp_DrawContextMenuTopScreen(BagAppData *appData, u8 *stringIndices, int a2);
 void BagApp_PrintItemDescriptionOnWindow(BagAppData *appData, Window *window, int itemId);
 void BagApp_ClearItemDescriptionWindow(BagAppData *appData, Window *window);
 void BagApp_PrintPocketDescriptionOnWindow(BagAppData *appData, Window *window, int pocket);
-void ov15_021FED24(BagAppData *appData);
-void ov15_021FED3C(BagAppData *appData);
+void BagApp_ClearItemActionMessageWindow(BagAppData *appData);
+void BagApp_RemoveContextMenuWindowsAndRedrawTopScreenUI(BagAppData *appData);
 void BagApp_RemoveContextMenuWindows(BagAppData *appData);
 void BagApp_PrintMoveTheItemMessage(BagAppData *appData);
-void ov15_021FEDEC(BagAppData *appData, u32 a1);
-void ov15_021FEEA4(BagAppData *appData);
-u8 BagApp_PrintMessage(BagAppData *appData, int a1);
+void BagApp_PrintQuantityDigitWindows(BagAppData *appData, u32 numDigits);
+void BagApp_PrintOkToTrashItemsMessage(BagAppData *appData);
+u8 BagApp_PrintMessage(BagAppData *appData, int whichWindow);
 void BagApp_CreateYesNoPrompt(BagAppData *appData);
 void BagApp_DestroyYesNoPrompt(BagAppData *appData);
-void ov15_021FF068(BagAppData *appData);
-void ov15_021FF0FC(BagAppData *appData, int a1);
-void ov15_021FF1E0(BagAppData *appData);
+void BagApp_PrintSaleTotalInWindow(BagAppData *appData);
+void BagApp_PrintMoneyOnWindow(BagAppData *appData, int a1);
+void BagApp_DrawPoffinCountMsgBox_DPPt(BagAppData *appData);
 void BagApp_PrintCancel(BagAppData *appData, int centered);
 void BagApp_RedrawItemNameWindows(BagAppData *appData, int scroll, int itemSlot, BOOL isMoveMode);
 void BagApp_SwitchItemButtonWindowsToContextMenuMode(BagAppData *appData, int scroll, int offset);
@@ -347,26 +349,27 @@ void BagApp_PrintSellContextOptionOnWindow(BagAppData *appData);
 void BagApp_ClearTextOnSellOrTrashButton(BagAppData *appData);
 void BagApp_ClearTextOnCancelButton(BagAppData *appData);
 
+// sprite
 void BagApp_InitSpriteRendererAndSystem(BagAppData *appData);
 void BagApp_FreeSpriteSystem(BagAppData *appData);
-void ov15_021FF8D4(BagAppData *appData);
-void ov15_021FF950(BagAppData *appData);
+void BagApp_UpdateSpriteAnims(BagAppData *appData);
+void BagApp_StartPocketSwitchPressedButtonAnim_DPPt(BagAppData *appData);
 void BagApp_StepPocketSwitchPressedButtonAnim_DPPt(BagAppData *appData);
-void ov15_021FF97C(BagAppData *appData, u16 itemId, int a2);
+void BagApp_DrawTMHMMoveDetails(BagAppData *appData, u16 itemId, int a2);
 void BagApp_SetCursorSpritePos_PocketsItemsContext(BagAppData *appData, BagAppCursorPos a1);
 void BagApp_HideCursorSprite(BagAppData *appData);
 void BagApp_SetCursorSpritePos_ItemsOnly(BagAppData *appData, int a1);
 void BagApp_SetCursorSpritePos_QuantitySelect(BagAppData *appData, int a1);
-void ov15_02200030(BagAppData *appData, int pocket);
-void ov15_0220005C(BagAppData *appData, int a1, int a2, int a3);
+void BagApp_LoadObjPaletteByPocket(BagAppData *appData, int pocket);
+void BagApp_UpdateItemButtonsDrawState(BagAppData *appData, int itemsOnPage, int hideItemSlot, int hideCursor);
 void BagApp_UpdateItemIconsVisibility(BagAppData *appData, BagViewPocket *pocket, int numShown, BOOL replaceIcon);
 void BagApp_ShowOnlySelectedItemIcon(BagAppData *appData, BagViewPocket *pocket, int itemSlot);
-void ov15_0220023C(BagAppData *appData, u8 *a1);
+void BagApp_DrawContextMenuButtonSprites(BagAppData *appData, u8 *a1);
 void BagApp_HideContextMenuIcons(BagAppData *appData);
 void BagApp_CenterSelectedItemIconSprite(BagAppData *appData, int cursorPos);
-int BagApp_GetNumberWidthType(int a0);
-void BagApp_ShowQuantitySelectSpritesUI(BagAppData *appData, int a1, int a2);
-void ov15_02200428(BagAppData *appData);
+int BagApp_GetNumberWidthType(int quantity);
+void BagApp_ShowQuantitySelectSpritesUI(BagAppData *appData, int numDigits, int quantity);
+void BagApp_HideQuantitySelectSpritesUI(BagAppData *appData);
 void BagApp_SetPocketIconsDrawFlag(BagAppData *appData, int drawState);
 void BagApp_SetBButtonSpriteDrawFlag(BagAppData *appData, int flag);
 

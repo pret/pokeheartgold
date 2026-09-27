@@ -16,8 +16,8 @@ static void BagApp_AddItemNameWindows(BagAppData *appData);
 static void BagApp_RemoveItemNameWindows(BagAppData *appData);
 static void BagApp_RemoveContextMenuWindowsInternal(BagAppData *appData);
 static void BagApp_ShowContextMenuWindows(BagAppData *appData);
-static void ov15_021FE584(BagAppData *appData, int itemSlot, u16 fieldno);
-static void ov15_021FE5A4(BagAppData *appData, int itemSlot, u16 fieldno);
+static void BagApp_BufferItemName(BagAppData *appData, int itemSlot, u16 fieldno);
+static void BagApp_BufferItemNamePlural(BagAppData *appData, int itemSlot, u16 fieldno);
 static void BagApp_PrintItemDescriptionOnWindowMain0(BagAppData *appData, u16 itemId);
 static void BagApp_PrintTMHMDetails(BagAppData *appData, u16 itemId);
 static void ov15_021FE8C4(BagAppData *appData, u16 a1, u16 a2, u32 textColor);
@@ -47,7 +47,7 @@ void BagApp_CreateMainWindows(BagAppData *appData) {
     AddWindowParameterized(appData->bgConfig, &appData->windows_main[BAG_APP_WINDOW_MAIN_ITEM_ACTION], GF_BG_LYR_SUB_0, 2, 1, 27, 2, 11, 0x001);
     AddWindowParameterized(appData->bgConfig, &appData->windows_main[BAG_APP_WINDOW_MAIN_MESSAGE], GF_BG_LYR_SUB_0, 2, 1, 27, 4, 11, 0x053);
     AddWindowParameterized(appData->bgConfig, &appData->windows_main[BAG_APP_WINDOW_MAIN_4], GF_BG_LYR_MAIN_1, 19, 13, 12, 4, 4, 0x0DB);
-    AddWindowParameterized(appData->bgConfig, &appData->windows_main[BAG_APP_WINDOW_MAIN_5], GF_BG_LYR_MAIN_1, 1, 12, 11, 4, 4, 0x12B);
+    AddWindowParameterized(appData->bgConfig, &appData->windows_main[BAG_APP_WINDOW_MAIN_POFFIN_COUNT], GF_BG_LYR_MAIN_1, 1, 12, 11, 4, 4, 0x12B);
     AddWindowParameterized(appData->bgConfig, &appData->windows_main[BAG_APP_WINDOW_MAIN_PAGE_COUNTER], GF_BG_LYR_SUB_0, 10, 21, 7, 2, 11, 0x037);
     FillWindowPixelBuffer(&appData->windows_main[BAG_APP_WINDOW_MAIN_PAGE_COUNTER], 0);
     AddWindowParameterized(appData->bgConfig, &appData->windows_main[BAG_APP_WINDOW_MAIN_CANCEL_BUTTON], GF_BG_LYR_SUB_0, 24, 21, 7, 2, 11, 0x045);
@@ -182,19 +182,19 @@ void BagApp_DeletePocketNames(BagAppData *appData) {
     }
 }
 
-void ov15_021FE528(BagAppData *appData) {
+void BagApp_ClearPocketNameBox(BagAppData *appData) {
     for (u16 i = 0; i < 12; ++i) {
-        FillBgTilemapRect(appData->bgConfig, GF_BG_LYR_MAIN_3, 205 + i, i, 13, 1, 1, 4);
-        FillBgTilemapRect(appData->bgConfig, GF_BG_LYR_MAIN_3, 241 + i, i, 14, 1, 1, 4);
+        FillBgTilemapRect(appData->bgConfig, GF_BG_LYR_MAIN_3, 0x0CD + i, i, 13, 1, 1, 4);
+        FillBgTilemapRect(appData->bgConfig, GF_BG_LYR_MAIN_3, 0x0F1 + i, i, 14, 1, 1, 4);
     }
 }
 
-static void ov15_021FE584(BagAppData *appData, int itemSlot, u16 fieldno) {
-    BufferItemName(appData->msgFormat, fieldno, ov15_021F9D60(appData, itemSlot, FALSE));
+static void BagApp_BufferItemName(BagAppData *appData, int itemSlot, u16 fieldno) {
+    BufferItemName(appData->msgFormat, fieldno, BagApp_FetchItemIdOrQuantity(appData, itemSlot, FALSE));
 }
 
-static void ov15_021FE5A4(BagAppData *appData, int itemSlot, u16 fieldno) {
-    BufferItemNamePlural(appData->msgFormat, fieldno, ov15_021F9D60(appData, itemSlot, FALSE));
+static void BagApp_BufferItemNamePlural(BagAppData *appData, int itemSlot, u16 fieldno) {
+    BufferItemNamePlural(appData->msgFormat, fieldno, BagApp_FetchItemIdOrQuantity(appData, itemSlot, FALSE));
 }
 
 static void BagApp_PrintItemDescriptionOnWindowMain0(BagAppData *appData, u16 itemId) {
@@ -272,16 +272,16 @@ static void BagApp_PrintTMHMDetails(BagAppData *appData, u16 itemId) {
     ScheduleWindowCopyToVram(window);
 }
 
-void ov15_021FE868(BagAppData *appData) {
+void BagApp_ClearTMHMDetailsWindow(BagAppData *appData) {
     ClearWindowTilemapAndScheduleTransfer(&appData->windows_main[BAG_APP_WINDOW_MAIN_TMHM_DETAILS]);
 }
 
-void ov15_021FE874(BagAppData *appData) {
+void BagApp_LoadItemCountStrings_DPPt(BagAppData *appData) {
     appData->unk_5E8 = NewString_ReadMsgData(appData->msgData, msg_0010_00039);
     appData->unk_5EC = NewString_ReadMsgData(appData->msgData, msg_0010_00038);
 }
 
-void ov15_021FE8A4(BagAppData *appData) {
+void BagApp_DeleteItemCountStrings_DPPt(BagAppData *appData) {
     String_Delete(appData->unk_5E8);
     String_Delete(appData->unk_5EC);
 }
@@ -372,13 +372,13 @@ void BagApp_UnloadContextMenuStrings(BagAppData *appData) {
     }
 }
 
-void ov15_021FEB84(BagAppData *appData, u8 *stringIndices, int a2) {
+void BagApp_DrawContextMenuTopScreen(BagAppData *appData, u8 *stringIndices, int a2) {
     if (appData->bagView->pockets[appData->bagView->curPocket].pocketId == POCKET_TMHMS) {
         FillWindowPixelBuffer(&appData->windows_main[BAG_APP_WINDOW_MAIN_TMHM_DETAILS], 0);
         BagApp_PrintTMHMDetails(appData, appData->bagView->itemId);
         ScheduleWindowCopyToVram(&appData->windows_main[BAG_APP_WINDOW_MAIN_DESCRIPTION]);
-        ov15_021FF97C(appData, appData->bagView->itemId, TRUE);
-        ov15_021F9C78(appData, FALSE);
+        BagApp_DrawTMHMMoveDetails(appData, appData->bagView->itemId, TRUE);
+        BagApp_DrawTopScreenUI(appData, FALSE);
     }
     DrawFrameAndWindow2(&appData->windows_main[BAG_APP_WINDOW_MAIN_ITEM_ACTION], TRUE, 0x3E2, 12);
     FillWindowPixelBuffer(&appData->windows_main[BAG_APP_WINDOW_MAIN_ITEM_ACTION], 15);
@@ -392,7 +392,7 @@ void ov15_021FEB84(BagAppData *appData, u8 *stringIndices, int a2) {
         itemIsSelectedMsg = NewString_ReadMsgData(appData->msgData, msg_0010_00043);
     }
     String *formattedStrbuf = String_New(108, HEAP_ID_BAG);
-    ov15_021FE584(appData, pocket->scroll + appData->cursorPos - 8, 0);
+    BagApp_BufferItemName(appData, pocket->scroll + appData->cursorPos - 8, 0);
     StringExpandPlaceholders(appData->msgFormat, formattedStrbuf, itemIsSelectedMsg);
     AddTextPrinterParameterized(&appData->windows_main[BAG_APP_WINDOW_MAIN_ITEM_ACTION], 1, formattedStrbuf, 0, 0, TEXT_SPEED_NOTRANSFER, NULL);
     String_Delete(formattedStrbuf);
@@ -419,15 +419,15 @@ void BagApp_PrintPocketDescriptionOnWindow(BagAppData *appData, Window *window, 
     ScheduleWindowCopyToVram(window);
 }
 
-void ov15_021FED24(BagAppData *appData) {
+void BagApp_ClearItemActionMessageWindow(BagAppData *appData) {
     ClearFrameAndWindow2(&appData->windows_main[BAG_APP_WINDOW_MAIN_ITEM_ACTION], TRUE);
     ClearWindowTilemapAndScheduleTransfer(&appData->windows_main[BAG_APP_WINDOW_MAIN_ITEM_ACTION]);
 }
 
-void ov15_021FED3C(BagAppData *appData) {
-    ov15_021FED24(appData);
+void BagApp_RemoveContextMenuWindowsAndRedrawTopScreenUI(BagAppData *appData) {
+    BagApp_ClearItemActionMessageWindow(appData);
     BagApp_RemoveContextMenuWindowsInternal(appData);
-    ov15_021FF97C(appData, ITEM_NONE, FALSE);
+    BagApp_DrawTMHMMoveDetails(appData, ITEM_NONE, FALSE);
 }
 
 void BagApp_RemoveContextMenuWindows(BagAppData *appData) {
@@ -438,7 +438,7 @@ void BagApp_PrintMoveTheItemMessage(BagAppData *appData) {
     FillWindowPixelBuffer(&appData->windows_main[BAG_APP_WINDOW_MAIN_ITEM_ACTION], 0xFF);
     String *string = NewString_ReadMsgData(appData->msgData, msg_0010_00046);
     String *formattedString = String_New(130, HEAP_ID_BAG);
-    ov15_021FE584(appData, appData->moveItemOriginalSlot, 0);
+    BagApp_BufferItemName(appData, appData->moveItemOriginalSlot, 0);
     StringExpandPlaceholders(appData->msgFormat, formattedString, string);
     DrawFrameAndWindow2(&appData->windows_main[BAG_APP_WINDOW_MAIN_ITEM_ACTION], TRUE, 0x3E2, 12);
     AddTextPrinterParameterizedWithColor(&appData->windows_main[BAG_APP_WINDOW_MAIN_ITEM_ACTION], 1, formattedString, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
@@ -447,45 +447,45 @@ void BagApp_PrintMoveTheItemMessage(BagAppData *appData) {
     String_Delete(string);
 }
 
-void ov15_021FEDEC(BagAppData *appData, u32 a1) {
+void BagApp_PrintQuantityDigitWindows(BagAppData *appData, u32 numDigits) {
     GF_ASSERT(appData->quantity < 1000);
-    String *sp14 = String_New(2, HEAP_ID_BAG);
-    u32 r4;
-    if (a1 == 2) {
-        r4 = 10;
+    String *digitStrBuf = String_New(2, HEAP_ID_BAG);
+    u32 denom;
+    if (numDigits == 2) {
+        denom = 10;
     } else {
-        r4 = 100;
+        denom = 100;
     }
     u32 quantity = appData->quantity;
-    for (int i = 0; i < a1; ++i) {
-        u32 sp18 = quantity / r4;
-        String16_FormatInteger(sp14, sp18, 1, PRINTING_MODE_LEFT_ALIGN, TRUE);
-        quantity -= sp18 * r4;
-        r4 /= 10;
+    for (int i = 0; i < numDigits; ++i) {
+        u32 digit = quantity / denom;
+        String16_FormatInteger(digitStrBuf, digit, 1, PRINTING_MODE_LEFT_ALIGN, TRUE);
+        quantity -= digit * denom;
+        denom /= 10;
         FillWindowPixelBuffer(&appData->windows_sub[BAG_APP_WINDOW_SUB_QUANTITY_DIGIT_1 + i], 0);
-        AddTextPrinterParameterizedWithColor(&appData->windows_sub[BAG_APP_WINDOW_SUB_QUANTITY_DIGIT_1 + i], 0, sp14, 0, 4, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+        AddTextPrinterParameterizedWithColor(&appData->windows_sub[BAG_APP_WINDOW_SUB_QUANTITY_DIGIT_1 + i], 0, digitStrBuf, 0, 4, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
         ScheduleWindowCopyToVram(&appData->windows_sub[BAG_APP_WINDOW_SUB_QUANTITY_DIGIT_1 + i]);
     }
-    String_Delete(sp14);
+    String_Delete(digitStrBuf);
 }
 
-void ov15_021FEEA4(BagAppData *appData) {
-    String *r4 = NewString_ReadMsgData(appData->msgData, msg_0010_00055);
+void BagApp_PrintOkToTrashItemsMessage(BagAppData *appData) {
+    String *okToThrowAwayString = NewString_ReadMsgData(appData->msgData, msg_0010_00055);
     BagViewPocket *pocket = &appData->bagView->pockets[appData->bagView->curPocket];
     if (appData->quantity > 1) {
-        ov15_021FE5A4(appData, pocket->scroll + appData->cursorPos - 8, 0);
+        BagApp_BufferItemNamePlural(appData, pocket->scroll + appData->cursorPos - 8, 0);
     } else {
-        ov15_021FE584(appData, pocket->scroll + appData->cursorPos - 8, 0);
+        BagApp_BufferItemName(appData, pocket->scroll + appData->cursorPos - 8, 0);
     }
     BufferIntegerAsString(appData->msgFormat, 1, appData->quantity, 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
-    StringExpandPlaceholders(appData->msgFormat, appData->formattedStrbuf, r4);
-    String_Delete(r4);
+    StringExpandPlaceholders(appData->msgFormat, appData->formattedStrbuf, okToThrowAwayString);
+    String_Delete(okToThrowAwayString);
     appData->textPrinterId = BagApp_PrintMessage(appData, 0);
 }
 
-u8 BagApp_PrintMessage(BagAppData *appData, int a1) {
+u8 BagApp_PrintMessage(BagAppData *appData, int whichWindow) {
     Window *window;
-    if (a1 == 0) {
+    if (whichWindow == 0) {
         window = &appData->windows_main[BAG_APP_WINDOW_MAIN_MESSAGE];
     } else {
         GF_ASSERT(appData->windows_sub[BAG_APP_WINDOW_SUB_MESSAGE].bgConfig != NULL);
@@ -538,7 +538,7 @@ void BagApp_DestroyYesNoPrompt(BagAppData *appData) {
     YesNoPrompt_Destroy(appData->yesNoPrompt);
 }
 
-void ov15_021FF068(BagAppData *appData) {
+void BagApp_PrintSaleTotalInWindow(BagAppData *appData) {
     Window *window = &appData->windows_sub[BAG_APP_WINDOW_SUB_SELL_MONEY];
     FillWindowPixelBuffer(window, 0);
     String *string = NewString_ReadMsgData(appData->msgData, msg_0010_00083);
@@ -550,29 +550,29 @@ void ov15_021FF068(BagAppData *appData) {
     String_Delete(string);
 }
 
-void ov15_021FF0FC(BagAppData *appData, int a1) {
+void BagApp_PrintMoneyOnWindow(BagAppData *appData, int a1) {
     String *r4 = String_New(256, HEAP_ID_BAG);
     Window *window = &appData->windows_sub[BAG_APP_WINDOW_SUB_MONEY];
     if (a1 == 0) {
         FillWindowPixelBuffer(window, 0);
-        String *r7 = NewString_ReadMsgData(appData->msgData, msg_0010_00080);
-        AddTextPrinterParameterizedWithColor(window, 0, r7, 4, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
-        String_Delete(r7);
+        String *moneyString = NewString_ReadMsgData(appData->msgData, msg_0010_00080);
+        AddTextPrinterParameterizedWithColor(window, 0, moneyString, 4, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+        String_Delete(moneyString);
     } else {
         FillWindowPixelRect(window, 0, 0, 16, 72, 16);
     }
-    String *sp10 = NewString_ReadMsgData(appData->msgData, msg_0010_00081);
+    String *moneyAmountString = NewString_ReadMsgData(appData->msgData, msg_0010_00081);
     BufferIntegerAsString(appData->msgFormat, 0, PlayerProfile_GetMoney(appData->playerProfile), 6, PRINTING_MODE_RIGHT_ALIGN, TRUE);
-    StringExpandPlaceholders(appData->msgFormat, r4, sp10);
+    StringExpandPlaceholders(appData->msgFormat, r4, moneyAmountString);
     u32 width = FontID_String_GetWidth(0, r4, 0);
     AddTextPrinterParameterizedWithColor(window, 0, r4, 68 - (width + 8), 16, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
     ScheduleWindowCopyToVram(window);
-    String_Delete(sp10);
+    String_Delete(moneyAmountString);
     String_Delete(r4);
 }
 
-void ov15_021FF1E0(BagAppData *appData) {
-    Window *window = &appData->windows_main[BAG_APP_WINDOW_MAIN_5];
+void BagApp_DrawPoffinCountMsgBox_DPPt(BagAppData *appData) {
+    Window *window = &appData->windows_main[BAG_APP_WINDOW_MAIN_POFFIN_COUNT];
     String *r6;
 
     FillWindowPixelBuffer(window, 15);
