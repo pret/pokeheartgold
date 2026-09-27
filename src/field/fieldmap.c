@@ -11,6 +11,7 @@
 #include "field/dynamic_terrain_height.h"
 #include "field/field_3d_object_task.h"
 #include "field/field_control.h"
+#include "field/fog.h"
 #include "field/hblank_system.h"
 #include "field/map_load_manager.h"
 #include "field/map_prop_animation.h"
@@ -20,9 +21,8 @@
 #include "field/overlay_01_021EAFD4.h"
 #include "field/overlay_01_021FD1B8.h"
 #include "field/overlay_01_02204004.h"
-#include "field/weather_manager.h"
-#include "field/fog.h"
 #include "field/signpost.h"
+#include "field/weather_manager.h"
 #include "overlay_2/overlay_02_02248728.h"
 
 #include "bg_window.h"

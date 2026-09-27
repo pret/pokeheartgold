@@ -1,7 +1,8 @@
 #include "field/weather_manager.h"
-#include "field/fog.h"
 
 #include "constants/weather.h"
+
+#include "field/fog.h"
 
 #include "field_system.h"
 #include "gf_gfx_loader.h"
@@ -9,12 +10,12 @@
 #include "heap.h"
 #include "math_util.h"
 #include "overlay_01_02203E40.h"
+#include "screen_fade.h"
+#include "sprite_transfer.h"
 #include "unk_02005D10.h"
 #include "unk_0200B150.h"
 #include "unk_02020B8C.h"
 #include "unk_02025C44.h"
-#include "screen_fade.h"
-#include "sprite_transfer.h"
 
 static void WeatherTask_ChangeWeather(SysTask *task, void *data);
 static void ov01_021EB3F0(SysTask *task, void *data);

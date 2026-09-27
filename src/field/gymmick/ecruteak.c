@@ -1,8 +1,7 @@
 #include "constants/sprites.h"
 
-#include "fielddata/script/scr_seq/event_T27GYM0101.h"
-
 #include "field/fog.h"
+#include "fielddata/script/scr_seq/event_T27GYM0101.h"
 
 #include "field_system.h"
 #include "overlay_01_021F72DC.h"
