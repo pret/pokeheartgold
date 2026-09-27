@@ -5,7 +5,6 @@
 #include "field/area_light.h"
 #include "field/draw_map_name.h"
 #include "field/fog.h"
-#include "field/overlay_01_021E66E4.h"
 #include "field/weather_manager.h"
 #include "field/dynamic_terrain_height.h"
 #include "field/field_3d_object_task.h"
@@ -14,7 +13,6 @@
 #include "field/map_prop_animation.h"
 #include "field/model_attributes.h"
 #include "field/overlay_01_021EAFD4.h"
-#include "field/overlay_01_02204004.h"
 #include "field/signpost.h"
 
 #include "bag_cursor.h"
@@ -28,9 +26,6 @@
 #include "map_events_internal.h"
 #include "map_matrix.h"
 #include "menu_input_state.h"
-#include "overlay_01_02204004.h"
-#include "overlay_01_021EA824.h" // replace with field/fog.h
-#include "overlay_01_021EB1E8.h"
 #include "overlay_01_021F1348.h"
 #include "overlay_manager.h"
 #include "photo_types_def.h"

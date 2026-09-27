@@ -4,13 +4,13 @@
 
 FogData *Fog_New() {
     FogData *dst = Heap_Alloc(HEAP_ID_FIELD1, sizeof(FogData));
-    MIi_CpuClear32(0, (void *)dst, sizeof(FogData));
+    MI_CpuClear32((void *)dst, sizeof(FogData));
     return dst;
 }
 
-void ov01_021EA840(s32 *arg0) {
-    Heap_FreeExplicit(HEAP_ID_FIELD1, (void *)*arg0);
-    *arg0 = 0;
+void Fog_Free(FogData **fog) {
+    Heap_FreeExplicit(HEAP_ID_FIELD1, *fog);
+    *fog = NULL;
 }
 
 BOOL Fog_CheckActive(FogData *fog) {
@@ -56,6 +56,6 @@ void ov01_021EA89C(FogData *fog, u32 arg1, u16 arg2, u32 arg3) {
 }
 
 void ov01_021EA8C4(FogData *fog, u8 *src) {
-    MIi_CpuCopy32((const s32 *)src, fog->fogTable, 32);
+    MI_CpuCopy32(src, fog->fogTable, 32);
     G3X_SetFogTable(fog->fogTable);
 }

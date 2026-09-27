@@ -2,6 +2,8 @@
 
 #include "fielddata/script/scr_seq/event_T27GYM0101.h"
 
+#include "field/fog.h"
+
 #include "field_system.h"
 #include "overlay_01_021F72DC.h"
 #include "overlay_01_021F944C.h"
@@ -36,14 +38,14 @@ void GymmickInit_Ecruteak(FieldSystem *fieldSystem) {
     MI_CpuClear8(fieldSystem->unk4->unk24, sizeof(EcruteakGymmickLocalData));
     EcruteakGymmickLocalData *localData = fieldSystem->unk4->unk24;
     fieldSystem->unk11C = FX32_CONST(0.0625);
-    ov01_021EA864(fieldSystem->fog, -1, TRUE, GX_FOGBLEND_COLOR_ALPHA, GX_FOGSLOPE_0x0020, 0);
+    Fog_Set(fieldSystem->fog, -1, TRUE, GX_FOGBLEND_COLOR_ALPHA, GX_FOGSLOPE_0x0020, 0);
     ov01_021EA89C(fieldSystem->fog, -1, 0, 31);
 
     s8 fogTable[32];
     for (int i = 0; i < 32; ++i) {
         fogTable[i] = -1;
     }
-    ov01_021EA8C4(fieldSystem->fog, (u32 *)fogTable);
+    ov01_021EA8C4(fieldSystem->fog, (u8 *)fogTable);
     ApplyFogToMapObjects(fieldSystem);
 
     for (int i = 0; i < NUM_CANDLES; ++i) {

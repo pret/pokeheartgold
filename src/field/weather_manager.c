@@ -1,4 +1,5 @@
 #include "field/weather_manager.h"
+#include "field/fog.h"
 
 #include "constants/weather.h"
 
@@ -9,11 +10,11 @@
 #include "math_util.h"
 #include "overlay_01_02203E40.h"
 #include "unk_02005D10.h"
-#include "unk_0200ACF0.h"
 #include "unk_0200B150.h"
-#include "unk_0200FA24.h"
 #include "unk_02020B8C.h"
 #include "unk_02025C44.h"
+#include "screen_fade.h"
+#include "sprite_transfer.h"
 
 static void WeatherTask_ChangeWeather(SysTask *task, void *data);
 static void ov01_021EB3F0(SysTask *task, void *data);
@@ -140,7 +141,7 @@ struct WeatherSystem {
     NARC *narc;
 };
 
-void ov01_021EB1E8(UnkStruct_ov01_021EB1E8 *a0) {
+void ov01_021EB1E8(FieldTextureManager *a0) {
     a0->unk188 = 1;
 }
 
@@ -757,10 +758,10 @@ static SpriteResource *Weather_AddResObjFromOpenNarc(GF_2DGfxResHeader *headerLi
 static void ov01_021EB968(WeatherSystem *weatherSystem, s32 a1, WeatherSpriteResources *a2) {
     if (a1 != 0xFFFF) {
         if (a2->charResObj[GF_GFX_RES_TYPE_CHAR] != 0) {
-            sub_0200AEB0(a2->charResObj[GF_GFX_RES_TYPE_CHAR]);
+            SpriteTransfer_DeleteCharTransferTask(a2->charResObj[GF_GFX_RES_TYPE_CHAR]);
         }
         if (a2->charResObj[GF_GFX_RES_TYPE_PLTT] != 0) {
-            sub_0200B0A8(a2->charResObj[GF_GFX_RES_TYPE_PLTT]);
+            SpriteTransfer_DeletePlttTransferTask(a2->charResObj[GF_GFX_RES_TYPE_PLTT]);
         }
 
         for (int i = 0; i < 4; i++) {
@@ -1073,7 +1074,7 @@ static void ov01_021EBF24(WeatherSystem *weatherSystem, u32 headerIndex, Weather
 static void ov01_021EBF58(WeatherSystem *weatherSystem, u32 headerIndex, WeatherSpriteResources *a2) {
     if (headerIndex != 0xFFFF) {
         a2->charResObj[GF_GFX_RES_TYPE_CHAR] = Weather_AddResObjFromOpenNarc(weatherSystem->weatherDraw.header, GF_GFX_RES_TYPE_CHAR, headerIndex, weatherSystem->weatherDraw.resMan[GF_GFX_RES_TYPE_CHAR], weatherSystem->narc, 1);
-        sub_0200ADA4(a2->charResObj[GF_GFX_RES_TYPE_CHAR]);
+        SpriteTransfer_CreateCharTransferTask_AllocAtEnd(a2->charResObj[GF_GFX_RES_TYPE_CHAR]);
         sub_0200A740(a2->charResObj[GF_GFX_RES_TYPE_CHAR]);
     }
 }
@@ -1081,7 +1082,7 @@ static void ov01_021EBF58(WeatherSystem *weatherSystem, u32 headerIndex, Weather
 static void ov01_021EBF94(WeatherSystem *weatherSystem, u32 headerIndex, WeatherSpriteResources *a2) {
     if (headerIndex != 0xFFFF) {
         a2->charResObj[GF_GFX_RES_TYPE_PLTT] = Weather_AddResObjFromOpenNarc(weatherSystem->weatherDraw.header, GF_GFX_RES_TYPE_PLTT, headerIndex, weatherSystem->weatherDraw.resMan[GF_GFX_RES_TYPE_PLTT], weatherSystem->narc, 1);
-        sub_0200B00C(a2->charResObj[GF_GFX_RES_TYPE_PLTT]);
+        SpriteTransfer_CreatePlttTransferTask(a2->charResObj[GF_GFX_RES_TYPE_PLTT]);
         sub_0200A740(a2->charResObj[GF_GFX_RES_TYPE_PLTT]);
     }
 }
@@ -2257,12 +2258,12 @@ static void ov01_021ED710(SysTask *task, void *data) {
     case 4:
         switch (v1->unk632) {
         case 0:
-            BeginNormalPaletteFade(3, 0, 0, 0x7FFF, 6, 1, HEAP_ID_FIELD1);
+            BeginNormalPaletteFade(FADE_MAIN_ONLY, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, 0x7FFF, 6, 1, HEAP_ID_FIELD1);
             v1->unk632++;
             break;
         case 1:
             if (IsPaletteFadeFinished()) {
-                BeginNormalPaletteFade(3, 1, 1, 0x7FFF, 6, 1, HEAP_ID_FIELD1);
+                BeginNormalPaletteFade(FADE_MAIN_ONLY, FADE_TYPE_BRIGHTNESS_IN, FADE_TYPE_BRIGHTNESS_IN, 0x7FFF, 6, 1, HEAP_ID_FIELD1);
                 v1->unk632++;
             }
             break;

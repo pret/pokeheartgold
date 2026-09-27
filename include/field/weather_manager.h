@@ -55,11 +55,6 @@ struct WeatherObject {
     WeatherObject *prev;
 };
 
-typedef struct UnkStruct_ov01_021EB1E8 {
-    u8 unk0[0x188];
-    u32 unk188;
-} UnkStruct_ov01_021EB1E8;
-
 typedef struct WeatherManager {
     WeatherSystem *weatherSystem;
     u32 weather;
@@ -157,7 +152,7 @@ typedef struct UnkStruct_021ED710 {
     u16 unk632;
 } UnkStruct_021ED710;
 
-void ov01_021EB1E8(UnkStruct_ov01_021EB1E8 *a0);
+void ov01_021EB1E8(FieldTextureManager *a0);
 WeatherManager *WeatherManager_New(FieldSystem *fieldSystem);
 void WeatherManager_Delete(WeatherManager *weatherManager);
 void WeatherManager_SetWeather(WeatherManager *weatherManager, int a1);
