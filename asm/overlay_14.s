@@ -6664,7 +6664,7 @@ ov14_021E8ACC: ; 0x021E8ACC
 	ldr r0, _021E8B14 ; =SDK_OVERLAY_OVY_15_ID
 	mov r1, #2
 	bl HandleLoadOverlay
-	ldr r0, _021E8B18 ; =ov15_022008B8
+	ldr r0, _021E8B18 ; =gOverlayManagerTemplate_Bag
 	ldr r1, [r4, #0x18]
 	mov r2, #9
 	bl OverlayManager_New
@@ -6675,7 +6675,7 @@ ov14_021E8ACC: ; 0x021E8ACC
 	.balign 4, 0
 _021E8B10: .word ov14_021F7D14
 _021E8B14: .word SDK_OVERLAY_OVY_15_ID
-_021E8B18: .word ov15_022008B8
+_021E8B18: .word gOverlayManagerTemplate_Bag
 	thumb_func_end ov14_021E8ACC
 
 	thumb_func_start ov14_021E8B1C

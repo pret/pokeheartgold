@@ -227,4 +227,4 @@
 .public Bag_Init
 .public Bag_Main
 .public Bag_Exit
-.public ov15_022008B8
+.public gOverlayManagerTemplate_Bag

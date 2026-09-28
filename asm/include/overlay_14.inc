@@ -298,4 +298,4 @@
 .public PCBox_Init
 .public PCBox_Main
 .public PCBox_Exit
-.public ov15_022008B8
+.public gOverlayManagerTemplate_Bag

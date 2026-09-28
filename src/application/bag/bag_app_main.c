@@ -236,7 +236,7 @@ static const u8 sMoveItemDPadDestinations[][4] = {
     { BAG_APP_CURSOR_POS_ITEM_6, BAG_APP_CURSOR_POS_ITEM_2, BAG_APP_CURSOR_POS_CANCEL,    BAG_APP_CURSOR_POS_CANCEL    },
 };
 
-const OverlayManagerTemplate ov15_022008B8 = {
+const OverlayManagerTemplate gOverlayManagerTemplate_Bag = {
     Bag_Init,
     Bag_Main,
     Bag_Exit,
