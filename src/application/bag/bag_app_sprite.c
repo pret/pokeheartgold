@@ -77,7 +77,7 @@ void BagApp_FreeSpriteSystem(BagAppData *appData) {
     }
     SpriteSystem_FreeResourcesAndManager(appData->spriteSystem, appData->spriteManager);
     SpriteSystem_Free(appData->spriteSystem);
-    Heap_Free(appData->unk_69C);
+    Heap_Free(appData->pocketObjPlttDataRaw);
 }
 
 void BagApp_UpdateSpriteAnims(BagAppData *appData) {
@@ -180,7 +180,7 @@ static void BagApp_LoadSpriteResObjs(BagAppData *appData) {
     SpriteSystem_LoadAnimResObj(appData->spriteSystem, appData->spriteManager, NARC_itemtool_itemdata_item_icon, GetItemIconAnim(), FALSE, BAG_APP_ANIM_TAG_ITEM_ICON);
     SpriteSystem_LoadAnimResObj(appData->spriteSystem, appData->spriteManager, NARC_graphic_shop_gra, shop_gra_00006_NANR, FALSE, BAG_APP_ANIM_TAG_06);
     SpriteSystem_LoadMoveTypeAndCategoryIconsCellAndAnim(appData->spriteSystem, appData->spriteManager, BAG_APP_CELL_TAG_MOVE_TYPE_CATEGORY_ICON, BAG_APP_ANIM_TAG_MOVE_TYPE_CATEGORY_ICON);
-    appData->unk_69C = GfGfxLoader_GetPlttData(NARC_graphic_bag_bag_graphics, bag_graphics_00048_NCLR, &appData->unk_6A0, HEAP_ID_BAG);
+    appData->pocketObjPlttDataRaw = GfGfxLoader_GetPlttData(NARC_graphic_bag_bag_graphics, bag_graphics_00048_NCLR, &appData->pocketObjPlttData, HEAP_ID_BAG);
 }
 
 static const ManagedSpriteTemplate sSpriteTemplates[39] = {
@@ -881,35 +881,35 @@ static void BagApp_DPPtPocketSwitchPressedButtonAnim_Run(BagAppData *appData) {
     appData->pressedButtonAnimState_DPPt = 0;
 }
 
-static const u8 ov15_02200AB8[][4] = {
-  // x, y, anim, pltt
-    [BAG_APP_CURSOR_POS_POCKET_1] = {16,   16,  8,  9},
-    [BAG_APP_CURSOR_POS_POCKET_2] = { 48,  16,  8,  9},
-    [BAG_APP_CURSOR_POS_POCKET_3] = { 80,  16,  8,  9},
-    [BAG_APP_CURSOR_POS_POCKET_4] = { 112, 16,  8,  9},
-    [BAG_APP_CURSOR_POS_POCKET_5] = { 144, 16,  8,  9},
-    [BAG_APP_CURSOR_POS_POCKET_6] = { 176, 16,  8,  9},
-    [BAG_APP_CURSOR_POS_POCKET_7] = { 208, 16,  8,  9},
-    [BAG_APP_CURSOR_POS_POCKET_8] = { 240, 16,  8,  9},
-    [BAG_APP_CURSOR_POS_ITEM_1] = { 48,  56,  10, 9},
-    [BAG_APP_CURSOR_POS_ITEM_2] = { 176, 56,  10, 9},
-    [BAG_APP_CURSOR_POS_ITEM_3] = { 48,  96,  10, 9},
-    [BAG_APP_CURSOR_POS_ITEM_4] = { 176, 96,  10, 9},
-    [BAG_APP_CURSOR_POS_ITEM_5] = { 48,  136, 10, 9},
-    [BAG_APP_CURSOR_POS_ITEM_6] = { 176, 136, 10, 9},
-    [BAG_APP_CURSOR_POS_PAGE_LEFT] = { 24,  176, 14, 9},
-    [BAG_APP_CURSOR_POS_PAGE_RIGHT] = { 64,  176, 14, 9},
-    [BAG_APP_CURSOR_POS_CANCEL] = { 224, 176, 17, 9},
-    [BAG_APP_CURSOR_POS_CONTEXT_MENU_1] = { 48,  144, 23, 9},
-    [BAG_APP_CURSOR_POS_CONTEXT_MENU_2] = { 144, 144, 23, 9},
-    [BAG_APP_CURSOR_POS_CONTEXT_MENU_3] = { 48,  176, 23, 9},
-    [BAG_APP_CURSOR_POS_CONTEXT_MENU_4] = { 144, 176, 23, 9},
+static const u8 sCursorSpriteParam_PocketsItemsContext[][4] = {
+    // x, y, anim, pltt
+    [BAG_APP_CURSOR_POS_POCKET_1] = { 16,  16,  8,  9 },
+    [BAG_APP_CURSOR_POS_POCKET_2] = { 48,  16,  8,  9 },
+    [BAG_APP_CURSOR_POS_POCKET_3] = { 80,  16,  8,  9 },
+    [BAG_APP_CURSOR_POS_POCKET_4] = { 112, 16,  8,  9 },
+    [BAG_APP_CURSOR_POS_POCKET_5] = { 144, 16,  8,  9 },
+    [BAG_APP_CURSOR_POS_POCKET_6] = { 176, 16,  8,  9 },
+    [BAG_APP_CURSOR_POS_POCKET_7] = { 208, 16,  8,  9 },
+    [BAG_APP_CURSOR_POS_POCKET_8] = { 240, 16,  8,  9 },
+    [BAG_APP_CURSOR_POS_ITEM_1] = { 48,  56,  10, 9 },
+    [BAG_APP_CURSOR_POS_ITEM_2] = { 176, 56,  10, 9 },
+    [BAG_APP_CURSOR_POS_ITEM_3] = { 48,  96,  10, 9 },
+    [BAG_APP_CURSOR_POS_ITEM_4] = { 176, 96,  10, 9 },
+    [BAG_APP_CURSOR_POS_ITEM_5] = { 48,  136, 10, 9 },
+    [BAG_APP_CURSOR_POS_ITEM_6] = { 176, 136, 10, 9 },
+    [BAG_APP_CURSOR_POS_PAGE_LEFT] = { 24,  176, 14, 9 },
+    [BAG_APP_CURSOR_POS_PAGE_RIGHT] = { 64,  176, 14, 9 },
+    [BAG_APP_CURSOR_POS_CANCEL] = { 224, 176, 17, 9 },
+    [BAG_APP_CURSOR_POS_CONTEXT_MENU_1] = { 48,  144, 23, 9 },
+    [BAG_APP_CURSOR_POS_CONTEXT_MENU_2] = { 144, 144, 23, 9 },
+    [BAG_APP_CURSOR_POS_CONTEXT_MENU_3] = { 48,  176, 23, 9 },
+    [BAG_APP_CURSOR_POS_CONTEXT_MENU_4] = { 144, 176, 23, 9 },
 };
 
 void BagApp_SetCursorSpritePos_PocketsItemsContext(BagAppData *appData, BagAppCursorPos cursorPos) {
-    ManagedSprite_SetPositionXYWithSubscreenOffset(appData->sprites[BAG_APP_SPRITE_CURSOR], ov15_02200AB8[cursorPos][0], ov15_02200AB8[cursorPos][1], FX32_CONST(256));
-    ManagedSprite_SetAnim(appData->sprites[BAG_APP_SPRITE_CURSOR], ov15_02200AB8[cursorPos][2]);
-    ManagedSprite_SetPaletteOverride(appData->sprites[BAG_APP_SPRITE_CURSOR], ov15_02200AB8[cursorPos][3]);
+    ManagedSprite_SetPositionXYWithSubscreenOffset(appData->sprites[BAG_APP_SPRITE_CURSOR], sCursorSpriteParam_PocketsItemsContext[cursorPos][0], sCursorSpriteParam_PocketsItemsContext[cursorPos][1], FX32_CONST(256));
+    ManagedSprite_SetAnim(appData->sprites[BAG_APP_SPRITE_CURSOR], sCursorSpriteParam_PocketsItemsContext[cursorPos][2]);
+    ManagedSprite_SetPaletteOverride(appData->sprites[BAG_APP_SPRITE_CURSOR], sCursorSpriteParam_PocketsItemsContext[cursorPos][3]);
     ManagedSprite_SetDrawFlag(appData->sprites[BAG_APP_SPRITE_CURSOR], TRUE);
 }
 
@@ -917,23 +917,23 @@ void BagApp_HideCursorSprite(BagAppData *appData) {
     ManagedSprite_SetDrawFlag(appData->sprites[BAG_APP_SPRITE_CURSOR], FALSE);
 }
 
-static const u8 ov15_02200A34[][4] = {
-  // x, y, anim, pltt
-    [BAG_APP_CURSOR_POS_ITEM_1 - 8] = {48,   56,  20, 9},
-    [BAG_APP_CURSOR_POS_ITEM_2 - 8] = { 176, 56,  20, 9},
-    [BAG_APP_CURSOR_POS_ITEM_3 - 8] = { 48,  96,  20, 9},
-    [BAG_APP_CURSOR_POS_ITEM_4 - 8] = { 176, 96,  20, 9},
-    [BAG_APP_CURSOR_POS_ITEM_5 - 8] = { 48,  136, 20, 9},
-    [BAG_APP_CURSOR_POS_ITEM_6 - 8] = { 176, 136, 20, 9},
-    [BAG_APP_CURSOR_POS_PAGE_LEFT - 8] = { 24,  176, 14, 9},
-    [BAG_APP_CURSOR_POS_PAGE_RIGHT - 8] = { 64,  176, 14, 9},
-    [BAG_APP_CURSOR_POS_CANCEL - 8] = { 224, 176, 17, 9},
+static const u8 sCursorSpriteParam_ItemsOnly[][4] = {
+    // x, y, anim, pltt
+    [BAG_APP_CURSOR_POS_ITEM_1 - 8] = { 48,  56,  20, 9 },
+    [BAG_APP_CURSOR_POS_ITEM_2 - 8] = { 176, 56,  20, 9 },
+    [BAG_APP_CURSOR_POS_ITEM_3 - 8] = { 48,  96,  20, 9 },
+    [BAG_APP_CURSOR_POS_ITEM_4 - 8] = { 176, 96,  20, 9 },
+    [BAG_APP_CURSOR_POS_ITEM_5 - 8] = { 48,  136, 20, 9 },
+    [BAG_APP_CURSOR_POS_ITEM_6 - 8] = { 176, 136, 20, 9 },
+    [BAG_APP_CURSOR_POS_PAGE_LEFT - 8] = { 24,  176, 14, 9 },
+    [BAG_APP_CURSOR_POS_PAGE_RIGHT - 8] = { 64,  176, 14, 9 },
+    [BAG_APP_CURSOR_POS_CANCEL - 8] = { 224, 176, 17, 9 },
 };
 
 void BagApp_SetCursorSpritePos_ItemsOnly(BagAppData *appData, int offset) {
     GF_ASSERT(offset < 9);
     if (offset == BAG_APP_CURSOR_POS_CANCEL - 8) {
-        ManagedSprite_SetAnim(appData->sprites[BAG_APP_SPRITE_CURSOR], ov15_02200A34[offset][2]);
+        ManagedSprite_SetAnim(appData->sprites[BAG_APP_SPRITE_CURSOR], sCursorSpriteParam_ItemsOnly[offset][2]);
     } else {
         BagViewPocket *pocket = &appData->bagView->pockets[appData->bagView->curPocket];
         int itemSlot = pocket->scroll + offset;
@@ -945,32 +945,32 @@ void BagApp_SetCursorSpritePos_ItemsOnly(BagAppData *appData, int offset) {
             ManagedSprite_SetAnim(appData->sprites[BAG_APP_SPRITE_CURSOR], 20);
         }
     }
-    ManagedSprite_SetPositionXYWithSubscreenOffset(appData->sprites[BAG_APP_SPRITE_CURSOR], ov15_02200A34[offset][0], ov15_02200A34[offset][1], FX32_CONST(256));
-    ManagedSprite_SetPaletteOverride(appData->sprites[BAG_APP_SPRITE_CURSOR], ov15_02200A34[offset][3]);
+    ManagedSprite_SetPositionXYWithSubscreenOffset(appData->sprites[BAG_APP_SPRITE_CURSOR], sCursorSpriteParam_ItemsOnly[offset][0], sCursorSpriteParam_ItemsOnly[offset][1], FX32_CONST(256));
+    ManagedSprite_SetPaletteOverride(appData->sprites[BAG_APP_SPRITE_CURSOR], sCursorSpriteParam_ItemsOnly[offset][3]);
 }
 
-static const u8 ov15_022009D4[][4] = {
-  // x, y, anim, pltt
-    {136,  104, 29, 9},
-    { 168, 104, 29, 9},
-    { 200, 104, 29, 9},
-    { 136, 160, 29, 9},
-    { 168, 160, 29, 9},
-    { 200, 160, 29, 9},
-    { 160, 176, 17, 9},
-    { 224, 176, 17, 9},
+static const u8 sCursorSpriteParam_QuantitySelect[][4] = {
+    // x, y, anim, pltt
+    { 136, 104, 29, 9 },
+    { 168, 104, 29, 9 },
+    { 200, 104, 29, 9 },
+    { 136, 160, 29, 9 },
+    { 168, 160, 29, 9 },
+    { 200, 160, 29, 9 },
+    { 160, 176, 17, 9 },
+    { 224, 176, 17, 9 },
 };
 
 void BagApp_SetCursorSpritePos_QuantitySelect(BagAppData *appData, int a1) {
     GF_ASSERT(a1 < 8);
-    ManagedSprite_SetPositionXYWithSubscreenOffset(appData->sprites[BAG_APP_SPRITE_CURSOR], ov15_022009D4[a1][0], ov15_022009D4[a1][1], FX32_CONST(256));
-    ManagedSprite_SetAnim(appData->sprites[BAG_APP_SPRITE_CURSOR], ov15_022009D4[a1][2]);
-    ManagedSprite_SetPaletteOverride(appData->sprites[BAG_APP_SPRITE_CURSOR], ov15_022009D4[a1][3]);
+    ManagedSprite_SetPositionXYWithSubscreenOffset(appData->sprites[BAG_APP_SPRITE_CURSOR], sCursorSpriteParam_QuantitySelect[a1][0], sCursorSpriteParam_QuantitySelect[a1][1], FX32_CONST(256));
+    ManagedSprite_SetAnim(appData->sprites[BAG_APP_SPRITE_CURSOR], sCursorSpriteParam_QuantitySelect[a1][2]);
+    ManagedSprite_SetPaletteOverride(appData->sprites[BAG_APP_SPRITE_CURSOR], sCursorSpriteParam_QuantitySelect[a1][3]);
 }
 
 void BagApp_LoadObjPaletteByPocket(BagAppData *appData, int pocket) {
     if (pocket <= 7) {
-        u16 *pRawData = appData->unk_6A0->pRawData;
+        u16 *pRawData = appData->pocketObjPlttData->pRawData;
         GXS_LoadOBJPltt(pRawData + 128, 0, 128 * 2);
         GXS_LoadOBJPltt(pRawData + 16 * pocket, 16 * pocket * 2, 16 * 2);
     }
@@ -1083,33 +1083,33 @@ int BagApp_GetNumberWidthType(int quantity) {
     return result;
 }
 
-static const int ov15_02200A58[2][6] = {
+static const int sQuantitySelectButtonSpriteIdOffsets[2][6] = {
     { 0, 1, 3, 4 },
     { 0, 1, 2, 3, 4, 5 },
 };
 
-static const int ov15_02200A88[2][6] = {
+static const int sQuantitySelectButtonSpriteAnims[2][6] = {
     { 25, 25, 27, 27 },
     { 25, 25, 25, 27, 27, 27 },
 };
 
-static const int ov15_02200998[2] = { 4, 6 };
+static const int sNumQuantitySelectButtons[2] = { 4, 6 };
 
-static const int ov15_02200A14[2][4] = {
+static const int sQuantitySelectButtonSpriteIdsToHide[2][4] = {
     { 0, 3 },
     { 0, 1, 3, 4 },
 };
 
-static const int ov15_022009A0[2] = { 2, 4 };
+static const int sNumQuantitySelectButtonSpritesToHide[2] = { 2, 4 };
 
 void BagApp_ShowQuantitySelectSpritesUI(BagAppData *appData, int numDigits, int quantity) {
     int i;
     if (numDigits == 2 && quantity > 99) {
         quantity = 99;
     }
-    for (i = 0; i < ov15_02200998[numDigits - 2]; ++i) {
-        ManagedSprite_SetDrawFlag(appData->sprites[BAG_APP_SPRITE_TOSS_QUANTITY_HUNDREDS_PLACE_UP + ov15_02200A58[numDigits - 2][i]], TRUE);
-        ManagedSprite_SetAnim(appData->sprites[BAG_APP_SPRITE_TOSS_QUANTITY_HUNDREDS_PLACE_UP + ov15_02200A58[numDigits - 2][i]], ov15_02200A88[numDigits - 2][i]);
+    for (i = 0; i < sNumQuantitySelectButtons[numDigits - 2]; ++i) {
+        ManagedSprite_SetDrawFlag(appData->sprites[BAG_APP_SPRITE_TOSS_QUANTITY_HUNDREDS_PLACE_UP + sQuantitySelectButtonSpriteIdOffsets[numDigits - 2][i]], TRUE);
+        ManagedSprite_SetAnim(appData->sprites[BAG_APP_SPRITE_TOSS_QUANTITY_HUNDREDS_PLACE_UP + sQuantitySelectButtonSpriteIdOffsets[numDigits - 2][i]], sQuantitySelectButtonSpriteAnims[numDigits - 2][i]);
     }
     int widthType = BagApp_GetNumberWidthType(quantity);
     if (widthType != 0) {
@@ -1117,8 +1117,8 @@ void BagApp_ShowQuantitySelectSpritesUI(BagAppData *appData, int numDigits, int 
             ManagedSprite_SetDrawFlag(appData->sprites[BAG_APP_SPRITE_TOSS_QUANTITY_HUNDREDS_PLACE_UP], FALSE);
             ManagedSprite_SetDrawFlag(appData->sprites[BAG_APP_SPRITE_TOSS_QUANTITY_HUNDREDS_PLACE_DOWN], FALSE);
         } else if (numDigits - 2 == 1) {
-            for (i = 0; i < ov15_022009A0[widthType - 1]; ++i) {
-                ManagedSprite_SetDrawFlag(appData->sprites[BAG_APP_SPRITE_TOSS_QUANTITY_HUNDREDS_PLACE_UP + ov15_02200A14[widthType - 1][i]], FALSE);
+            for (i = 0; i < sNumQuantitySelectButtonSpritesToHide[widthType - 1]; ++i) {
+                ManagedSprite_SetDrawFlag(appData->sprites[BAG_APP_SPRITE_TOSS_QUANTITY_HUNDREDS_PLACE_UP + sQuantitySelectButtonSpriteIdsToHide[widthType - 1][i]], FALSE);
             }
         }
     }

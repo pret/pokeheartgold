@@ -72,7 +72,7 @@ static BagAppState BagAppMainTask_HandleInput_Normal(BagAppData *appData);
 static BagAppState BagAppMainTask_OpenContextMenu(BagAppData *appData);
 static BagAppState BagAppMainTask_TurnPocketPage(BagAppData *appData, int direction);
 static void BagApp_CalcPocketSelectorIconsPos(BagAppData *appData);
-static BOOL BagApp_UnkDebugRoutine(BagAppData *appData);
+static BOOL BagApp_ProcessInput_Gardening(BagAppData *appData);
 static int BagApp_PocketIdToBagViewPosition(BagAppData *appData, u32 pocketId);
 static int BagApp_GetPocketNeighbor(BagAppData *appData, int pocketId, int addend);
 static void BagApp_DrawPocketPage_NormalMode(BagAppData *appData, BagViewPocket *pocket);
@@ -142,7 +142,7 @@ static void ov15_021FD43C(BgConfig *bgConfig, int bgId, int limit);
 static void ov15_021FD4C0(BgConfig *bgConfig, int bgId, int limit, int cursorPos);
 static void BagApp_DrawScreenLayout(BagAppData *appData, u32 layout, int limit, int cursorPos);
 static void BagApp_SaveMenuInputStateToBagView(BagAppData *appData, MenuInputState state);
-static void ov15_021FD788(BagAppData *appData, int a1);
+static void BagApp_SetCancelButtonDrawFlag(BagAppData *appData, int flag);
 static BagAppState BagApp_SetSpritePaletteAnimTransitionToNextState(BagAppData *appData, u8 spriteId, u8 plttOverride1, u8 plttOverride2, BagAppState nextState);
 static BagAppState BagApp_SetSpriteAnimationTransitionToNextState(BagAppData *appData, u8 spriteId, u8 animId, BagAppState nextState);
 static BagAppState BagAppMainTask_RunSpriteAnimTransition(BagAppData *appData);
@@ -189,11 +189,11 @@ static GXRgb sEdgeColorTable[8] = {
 };
 
 static const u8 sContextMenuDPadDestinations[][4] = {
-    {2,  2, 1, 1},
-    { 3, 3, 0, 0},
-    { 0, 0, 4, 3},
-    { 1, 1, 2, 4},
-    { 4, 4, 3, 2},
+    { 2, 2, 1, 1 },
+    { 3, 3, 0, 0 },
+    { 0, 0, 4, 3 },
+    { 1, 1, 2, 4 },
+    { 4, 4, 3, 2 },
 };
 
 static u8 sCursorPos_ContextMenu[] = {
@@ -205,35 +205,35 @@ static u8 sCursorPos_ContextMenu[] = {
 };
 
 static const u8 sMainListDPadDestinations[][4] = {
-    {BAG_APP_CURSOR_POS_ITEM_5,                BAG_APP_CURSOR_POS_ITEM_1,               BAG_APP_CURSOR_POS_POCKET_8,  BAG_APP_CURSOR_POS_POCKET_2  },
-    { BAG_APP_CURSOR_POS_ITEM_5,               BAG_APP_CURSOR_POS_ITEM_1,               BAG_APP_CURSOR_POS_POCKET_1,  BAG_APP_CURSOR_POS_POCKET_3  },
-    { BAG_APP_CURSOR_POS_ITEM_5,               BAG_APP_CURSOR_POS_ITEM_1,               BAG_APP_CURSOR_POS_POCKET_2,  BAG_APP_CURSOR_POS_POCKET_4  },
-    { BAG_APP_CURSOR_POS_ITEM_5,               BAG_APP_CURSOR_POS_ITEM_1,               BAG_APP_CURSOR_POS_POCKET_3,  BAG_APP_CURSOR_POS_POCKET_5  },
-    { BAG_APP_CURSOR_POS_CANCEL,               BAG_APP_CURSOR_POS_ITEM_2,               BAG_APP_CURSOR_POS_POCKET_4,  BAG_APP_CURSOR_POS_POCKET_6  },
-    { BAG_APP_CURSOR_POS_CANCEL,               BAG_APP_CURSOR_POS_ITEM_2,               BAG_APP_CURSOR_POS_POCKET_5,  BAG_APP_CURSOR_POS_POCKET_7  },
-    { BAG_APP_CURSOR_POS_CANCEL,               BAG_APP_CURSOR_POS_ITEM_2,               BAG_APP_CURSOR_POS_POCKET_6,  BAG_APP_CURSOR_POS_POCKET_8  },
-    { BAG_APP_CURSOR_POS_CANCEL,               BAG_APP_CURSOR_POS_ITEM_2,               BAG_APP_CURSOR_POS_POCKET_7,  BAG_APP_CURSOR_POS_POCKET_1  },
-    { BAG_APP_CURSOR_POS_RESET_TO_CURR_POCKET, BAG_APP_CURSOR_POS_ITEM_3,               BAG_APP_CURSOR_POS_PAGE_LEFT, BAG_APP_CURSOR_POS_ITEM_2    },
-    { BAG_APP_CURSOR_POS_RESET_TO_CURR_POCKET, BAG_APP_CURSOR_POS_ITEM_4,               BAG_APP_CURSOR_POS_ITEM_1,    BAG_APP_CURSOR_POS_PAGE_RIGHT},
-    { BAG_APP_CURSOR_POS_ITEM_1,               BAG_APP_CURSOR_POS_ITEM_5,               BAG_APP_CURSOR_POS_PAGE_LEFT, BAG_APP_CURSOR_POS_ITEM_4    },
-    { BAG_APP_CURSOR_POS_ITEM_2,               BAG_APP_CURSOR_POS_ITEM_6,               BAG_APP_CURSOR_POS_ITEM_3,    BAG_APP_CURSOR_POS_PAGE_RIGHT},
-    { BAG_APP_CURSOR_POS_ITEM_3,               BAG_APP_CURSOR_POS_RESET_TO_CURR_POCKET, BAG_APP_CURSOR_POS_PAGE_LEFT, BAG_APP_CURSOR_POS_ITEM_6    },
-    { BAG_APP_CURSOR_POS_ITEM_4,               BAG_APP_CURSOR_POS_CANCEL,               BAG_APP_CURSOR_POS_ITEM_5,    BAG_APP_CURSOR_POS_PAGE_RIGHT},
-    { BAG_APP_CURSOR_POS_ITEM_5,               BAG_APP_CURSOR_POS_RESET_TO_CURR_POCKET, BAG_APP_CURSOR_POS_CANCEL,    BAG_APP_CURSOR_POS_CANCEL    },
-    { BAG_APP_CURSOR_POS_ITEM_5,               BAG_APP_CURSOR_POS_RESET_TO_CURR_POCKET, BAG_APP_CURSOR_POS_CANCEL,    BAG_APP_CURSOR_POS_CANCEL    },
-    { BAG_APP_CURSOR_POS_ITEM_6,               BAG_APP_CURSOR_POS_RESET_TO_CURR_POCKET, BAG_APP_CURSOR_POS_CANCEL,    BAG_APP_CURSOR_POS_CANCEL    },
+    { BAG_APP_CURSOR_POS_ITEM_5,               BAG_APP_CURSOR_POS_ITEM_1,               BAG_APP_CURSOR_POS_POCKET_8,  BAG_APP_CURSOR_POS_POCKET_2   },
+    { BAG_APP_CURSOR_POS_ITEM_5,               BAG_APP_CURSOR_POS_ITEM_1,               BAG_APP_CURSOR_POS_POCKET_1,  BAG_APP_CURSOR_POS_POCKET_3   },
+    { BAG_APP_CURSOR_POS_ITEM_5,               BAG_APP_CURSOR_POS_ITEM_1,               BAG_APP_CURSOR_POS_POCKET_2,  BAG_APP_CURSOR_POS_POCKET_4   },
+    { BAG_APP_CURSOR_POS_ITEM_5,               BAG_APP_CURSOR_POS_ITEM_1,               BAG_APP_CURSOR_POS_POCKET_3,  BAG_APP_CURSOR_POS_POCKET_5   },
+    { BAG_APP_CURSOR_POS_CANCEL,               BAG_APP_CURSOR_POS_ITEM_2,               BAG_APP_CURSOR_POS_POCKET_4,  BAG_APP_CURSOR_POS_POCKET_6   },
+    { BAG_APP_CURSOR_POS_CANCEL,               BAG_APP_CURSOR_POS_ITEM_2,               BAG_APP_CURSOR_POS_POCKET_5,  BAG_APP_CURSOR_POS_POCKET_7   },
+    { BAG_APP_CURSOR_POS_CANCEL,               BAG_APP_CURSOR_POS_ITEM_2,               BAG_APP_CURSOR_POS_POCKET_6,  BAG_APP_CURSOR_POS_POCKET_8   },
+    { BAG_APP_CURSOR_POS_CANCEL,               BAG_APP_CURSOR_POS_ITEM_2,               BAG_APP_CURSOR_POS_POCKET_7,  BAG_APP_CURSOR_POS_POCKET_1   },
+    { BAG_APP_CURSOR_POS_RESET_TO_CURR_POCKET, BAG_APP_CURSOR_POS_ITEM_3,               BAG_APP_CURSOR_POS_PAGE_LEFT, BAG_APP_CURSOR_POS_ITEM_2     },
+    { BAG_APP_CURSOR_POS_RESET_TO_CURR_POCKET, BAG_APP_CURSOR_POS_ITEM_4,               BAG_APP_CURSOR_POS_ITEM_1,    BAG_APP_CURSOR_POS_PAGE_RIGHT },
+    { BAG_APP_CURSOR_POS_ITEM_1,               BAG_APP_CURSOR_POS_ITEM_5,               BAG_APP_CURSOR_POS_PAGE_LEFT, BAG_APP_CURSOR_POS_ITEM_4     },
+    { BAG_APP_CURSOR_POS_ITEM_2,               BAG_APP_CURSOR_POS_ITEM_6,               BAG_APP_CURSOR_POS_ITEM_3,    BAG_APP_CURSOR_POS_PAGE_RIGHT },
+    { BAG_APP_CURSOR_POS_ITEM_3,               BAG_APP_CURSOR_POS_RESET_TO_CURR_POCKET, BAG_APP_CURSOR_POS_PAGE_LEFT, BAG_APP_CURSOR_POS_ITEM_6     },
+    { BAG_APP_CURSOR_POS_ITEM_4,               BAG_APP_CURSOR_POS_CANCEL,               BAG_APP_CURSOR_POS_ITEM_5,    BAG_APP_CURSOR_POS_PAGE_RIGHT },
+    { BAG_APP_CURSOR_POS_ITEM_5,               BAG_APP_CURSOR_POS_RESET_TO_CURR_POCKET, BAG_APP_CURSOR_POS_CANCEL,    BAG_APP_CURSOR_POS_CANCEL     },
+    { BAG_APP_CURSOR_POS_ITEM_5,               BAG_APP_CURSOR_POS_RESET_TO_CURR_POCKET, BAG_APP_CURSOR_POS_CANCEL,    BAG_APP_CURSOR_POS_CANCEL     },
+    { BAG_APP_CURSOR_POS_ITEM_6,               BAG_APP_CURSOR_POS_RESET_TO_CURR_POCKET, BAG_APP_CURSOR_POS_CANCEL,    BAG_APP_CURSOR_POS_CANCEL     },
 };
 
 static const u8 sMoveItemDPadDestinations[][4] = {
-    {BAG_APP_CURSOR_POS_ITEM_5,  BAG_APP_CURSOR_POS_ITEM_3, BAG_APP_CURSOR_POS_PAGE_LEFT, BAG_APP_CURSOR_POS_ITEM_2    },
-    { BAG_APP_CURSOR_POS_CANCEL, BAG_APP_CURSOR_POS_ITEM_4, BAG_APP_CURSOR_POS_ITEM_1,    BAG_APP_CURSOR_POS_PAGE_RIGHT},
-    { BAG_APP_CURSOR_POS_ITEM_1, BAG_APP_CURSOR_POS_ITEM_5, BAG_APP_CURSOR_POS_PAGE_LEFT, BAG_APP_CURSOR_POS_ITEM_4    },
-    { BAG_APP_CURSOR_POS_ITEM_2, BAG_APP_CURSOR_POS_ITEM_6, BAG_APP_CURSOR_POS_ITEM_3,    BAG_APP_CURSOR_POS_PAGE_RIGHT},
-    { BAG_APP_CURSOR_POS_ITEM_3, BAG_APP_CURSOR_POS_ITEM_1, BAG_APP_CURSOR_POS_PAGE_LEFT, BAG_APP_CURSOR_POS_ITEM_6    },
-    { BAG_APP_CURSOR_POS_ITEM_4, BAG_APP_CURSOR_POS_CANCEL, BAG_APP_CURSOR_POS_ITEM_5,    BAG_APP_CURSOR_POS_PAGE_RIGHT},
-    { BAG_APP_CURSOR_POS_ITEM_5, BAG_APP_CURSOR_POS_ITEM_1, BAG_APP_CURSOR_POS_CANCEL,    BAG_APP_CURSOR_POS_CANCEL    },
-    { BAG_APP_CURSOR_POS_ITEM_5, BAG_APP_CURSOR_POS_ITEM_1, BAG_APP_CURSOR_POS_CANCEL,    BAG_APP_CURSOR_POS_CANCEL    },
-    { BAG_APP_CURSOR_POS_ITEM_6, BAG_APP_CURSOR_POS_ITEM_2, BAG_APP_CURSOR_POS_CANCEL,    BAG_APP_CURSOR_POS_CANCEL    },
+    { BAG_APP_CURSOR_POS_ITEM_5, BAG_APP_CURSOR_POS_ITEM_3, BAG_APP_CURSOR_POS_PAGE_LEFT, BAG_APP_CURSOR_POS_ITEM_2     },
+    { BAG_APP_CURSOR_POS_CANCEL, BAG_APP_CURSOR_POS_ITEM_4, BAG_APP_CURSOR_POS_ITEM_1,    BAG_APP_CURSOR_POS_PAGE_RIGHT },
+    { BAG_APP_CURSOR_POS_ITEM_1, BAG_APP_CURSOR_POS_ITEM_5, BAG_APP_CURSOR_POS_PAGE_LEFT, BAG_APP_CURSOR_POS_ITEM_4     },
+    { BAG_APP_CURSOR_POS_ITEM_2, BAG_APP_CURSOR_POS_ITEM_6, BAG_APP_CURSOR_POS_ITEM_3,    BAG_APP_CURSOR_POS_PAGE_RIGHT },
+    { BAG_APP_CURSOR_POS_ITEM_3, BAG_APP_CURSOR_POS_ITEM_1, BAG_APP_CURSOR_POS_PAGE_LEFT, BAG_APP_CURSOR_POS_ITEM_6     },
+    { BAG_APP_CURSOR_POS_ITEM_4, BAG_APP_CURSOR_POS_CANCEL, BAG_APP_CURSOR_POS_ITEM_5,    BAG_APP_CURSOR_POS_PAGE_RIGHT },
+    { BAG_APP_CURSOR_POS_ITEM_5, BAG_APP_CURSOR_POS_ITEM_1, BAG_APP_CURSOR_POS_CANCEL,    BAG_APP_CURSOR_POS_CANCEL     },
+    { BAG_APP_CURSOR_POS_ITEM_5, BAG_APP_CURSOR_POS_ITEM_1, BAG_APP_CURSOR_POS_CANCEL,    BAG_APP_CURSOR_POS_CANCEL     },
+    { BAG_APP_CURSOR_POS_ITEM_6, BAG_APP_CURSOR_POS_ITEM_2, BAG_APP_CURSOR_POS_CANCEL,    BAG_APP_CURSOR_POS_CANCEL     },
 };
 
 const OverlayManagerTemplate gOverlayManagerTemplate_Bag = {
@@ -556,8 +556,8 @@ BOOL Bag_Exit(OverlayManager *man, int *state) {
 
         BagApp_Teardown3D(appData);
         BagApp_FreeSpriteSystem(appData);
-        Heap_Free(appData->unk_68C);
-        Heap_Free(appData->unk_690);
+        Heap_Free(appData->pocketBgPlttdataRaw[0]);
+        Heap_Free(appData->pocketBgPlttdataRaw[1]);
         BagApp_DPPt_CreateItemListMenu(appData);
         BagApp_SaveBagViewToCursor(appData);
         BagApp_RemoveWindows(appData);
@@ -789,8 +789,8 @@ static void BagApp_LoadBgGraphics(BagAppData *appData) {
     GfGfxLoader_GXLoadPal(NARC_graphic_bag_bag_graphics, bag_graphics_00038_NCLR, GF_PAL_LOCATION_SUB_BG, GF_PAL_SLOT_0_OFFSET, 0, HEAP_ID_BAG);
     LoadFontPal1(GF_PAL_LOCATION_SUB_BG, GF_PAL_SLOT_11_OFFSET, HEAP_ID_BAG);
     GfGfxLoader_LoadCharData(NARC_graphic_bag_bag_graphics, bag_graphics_00046_NCGR, appData->bgConfig, GF_BG_LYR_SUB_2, 0, 0, FALSE, HEAP_ID_BAG);
-    appData->unk_68C = GfGfxLoader_GetPlttData(NARC_graphic_bag_bag_graphics, bag_graphics_00040_NCLR, &appData->unk_694[0], HEAP_ID_BAG);
-    appData->unk_690 = GfGfxLoader_GetPlttData(NARC_graphic_bag_bag_graphics, bag_graphics_00041_NCLR, &appData->unk_694[1], HEAP_ID_BAG);
+    appData->pocketBgPlttdataRaw[0] = GfGfxLoader_GetPlttData(NARC_graphic_bag_bag_graphics, bag_graphics_00040_NCLR, &appData->pocketBgPlttData[0], HEAP_ID_BAG);
+    appData->pocketBgPlttdataRaw[1] = GfGfxLoader_GetPlttData(NARC_graphic_bag_bag_graphics, bag_graphics_00041_NCLR, &appData->pocketBgPlttData[1], HEAP_ID_BAG);
     GfGfxLoader_GXLoadPal(NARC_graphic_bag_bag_graphics, bag_graphics_00008_NCLR, GF_PAL_LOCATION_SUB_BG, GF_PAL_SLOT_8_OFFSET, 128, HEAP_ID_BAG);
     LoadUserFrameGfx2(appData->bgConfig, GF_BG_LYR_SUB_0, 0x3E2, 12, Options_GetFrame(appData->options), HEAP_ID_BAG);
 }
@@ -1188,7 +1188,7 @@ static void BagApp_CalcPocketSelectorIconsPos(BagAppData *appData) {
     appData->pocketSelectorIconsSpacing = appData->pocketSelectorIconsX + 4;
 }
 
-static BOOL BagApp_UnkDebugRoutine(BagAppData *appData) {
+static BOOL BagApp_ProcessInput_Gardening(BagAppData *appData) {
     static int sDebugVar1 = 0;
     static int sDebugVar2 = 1;
 
@@ -1780,7 +1780,7 @@ static BagAppState BagAppMainTask_ContextMenu(BagAppData *appData) {
     case LIST_CANCEL:
         return BagApp_SetSpritePaletteAnimTransitionToNextState(appData, BAG_APP_SPRITE_B_BUTTON, 9, 8, BAG_APP_STATE_CANCEL_CONTEXT_MENU);
     default:
-        appData->unk_948 = input;
+        appData->selectedContextMenuActionId = input;
         return BagApp_SetSpritePaletteAnimTransitionToNextState(appData, input + BAG_APP_SPRITE_CONTEXT_MENU_ICON_1, 9, 8, BAG_APP_STATE_RUN_CONTEXT_MENU_ACTION);
     }
 
@@ -1801,11 +1801,11 @@ static BagAppState BagAppMainTask_CancelContextMenu(BagAppData *appData) {
 static BagAppState BagAppMainTask_RunContextMenuAction(BagAppData *appData) {
     BagApp_HideContextMenuIcons(appData);
     BagApp_ClearFourWindowsAt(&appData->windows_sub[BAG_APP_WINDOW_SUB_CONTEXT_OPTION_1]);
-    return appData->contextMenuActions[appData->unk_948](appData);
+    return appData->contextMenuActions[appData->selectedContextMenuActionId](appData);
 }
 
 static BagAppState BagApp_ItemContextMenu_Use(BagAppData *appData) {
-    ov15_021FD788(appData, 0);
+    BagApp_SetCancelButtonDrawFlag(appData, FALSE);
     BagApp_HideCursorSprite(appData);
     ItemCheckUseFunc func = GetItemFieldUseFunc(USE_ITEM_TASK_CHECK, GetItemAttr(appData->bagView->itemId, ITEMATTR_FIELDUSEFUNC, HEAP_ID_BAG));
     if (func != NULL) {
@@ -1827,7 +1827,7 @@ static BagAppState BagAppMainTask_ItemUseError_WaitMessage(BagAppData *appData) 
         ClearFrameAndWindow2(&appData->windows_main[BAG_APP_WINDOW_MAIN_MESSAGE], TRUE);
         ClearWindowTilemapAndScheduleTransfer(&appData->windows_main[BAG_APP_WINDOW_MAIN_MESSAGE]);
         ScheduleWindowCopyToVram(&appData->windows_main[BAG_APP_WINDOW_MAIN_DESCRIPTION]);
-        ov15_021FD788(appData, 1);
+        BagApp_SetCancelButtonDrawFlag(appData, TRUE);
         BagApp_DrawDefaultLayout(appData);
         if (appData->bagView->context == BAG_VIEW_CONTEXT_GARDENING) {
             return BAG_APP_STATE_GARDENING;
@@ -1911,7 +1911,7 @@ static BagAppState BagApp_UseTMHM(BagAppData *appData) {
             BagApp_ClearTMHMDetailsWindow(appData);
             BagApp_HideContextMenuIcons(appData);
             BagApp_DrawDefaultLayout(appData);
-            ov15_021FD788(appData, 1);
+            BagApp_SetCancelButtonDrawFlag(appData, TRUE);
             return BAG_APP_STATE_HANDLE_INPUT_NORMAL_MODE;
         }
         break;
@@ -1990,7 +1990,7 @@ static BagAppState BagApp_UseItemInPlaceMessage(BagAppData *appData) {
             BagApp_UpdateItemIconsVisibility(appData, &appData->bagView->pockets[appData->bagView->curPocket], BagApp_GetNumItemsOnCurrentPage(appData), 1);
             BagApp_UpdateDescriptionOnTopScreen(appData);
             ScheduleWindowCopyToVram(&appData->windows_main[BAG_APP_WINDOW_MAIN_DESCRIPTION]);
-            ov15_021FD788(appData, 1);
+            BagApp_SetCancelButtonDrawFlag(appData, TRUE);
             appData->customCallbackState = 0;
             return BAG_APP_STATE_HANDLE_INPUT_NORMAL_MODE;
         }
@@ -2019,7 +2019,7 @@ static BagAppState BagApp_ItemContextMenu_Trash(BagAppData *appData) {
     BagApp_HideCursorSprite(appData);
     if (Pocket_GetQuantity(appData->bagView->pockets[appData->bagView->curPocket].slots, appData->bagView->pockets[appData->bagView->curPocket].count, appData->bagView->itemId, HEAP_ID_BAG) == 1) {
         BagApp_PrintOkToTrashItemsMessage(appData);
-        ov15_021FD788(appData, 0);
+        BagApp_SetCancelButtonDrawFlag(appData, FALSE);
         return BAG_APP_STATE_CONFIRM_TOSS_WAIT_MESSAGE;
     }
     BagApp_DrawScreenLayout(appData, 3, 0, 0);
@@ -2140,7 +2140,7 @@ static BagAppState BagAppMainTask_ConfirmToss_PrintMessage(BagAppData *appData) 
     BagApp_HideQuantitySelectSpritesUI(appData);
     BagApp_HideCursorSprite(appData);
     BagApp_ClearTextOnSellOrTrashButton(appData);
-    ov15_021FD788(appData, 0);
+    BagApp_SetCancelButtonDrawFlag(appData, FALSE);
     return BAG_APP_STATE_CONFIRM_TOSS_WAIT_MESSAGE;
 }
 
@@ -2191,7 +2191,7 @@ static BagAppState BagAppMainTask_ConfirmToss_HandleYesNo(BagAppData *appData) {
         BagApp_UpdateItemIconsVisibility(appData, &appData->bagView->pockets[appData->bagView->curPocket], BagApp_GetNumItemsOnCurrentPage(appData), 0);
         BagApp_ClearTMHMDetailsWindow(appData);
         BagApp_RemoveContextMenuWindowsAndRedrawTopScreenUI(appData);
-        ov15_021FD788(appData, 1);
+        BagApp_SetCancelButtonDrawFlag(appData, TRUE);
         BagApp_DrawDefaultLayout(appData);
         return BAG_APP_STATE_HANDLE_INPUT_NORMAL_MODE;
     }
@@ -2219,7 +2219,7 @@ static BagAppState BagAppMainTask_CompleteToss_WaitButton(BagAppData *appData) {
         BagApp_RemoveContextMenuWindowsAndRedrawTopScreenUI(appData);
         BagApp_DrawDefaultLayout(appData);
         BagApp_UpdateDescriptionOnTopScreen(appData);
-        ov15_021FD788(appData, 1);
+        BagApp_SetCancelButtonDrawFlag(appData, TRUE);
         return BAG_APP_STATE_HANDLE_INPUT_NORMAL_MODE;
     }
 
@@ -2235,7 +2235,7 @@ static BagAppState BagApp_ItemContextMenu_Register(BagAppData *appData) {
         BagApp_PrintMessage(appData, 0);
         BagApp_HideContextMenuIcons(appData);
         BagApp_HideCursorSprite(appData);
-        ov15_021FD788(appData, 0);
+        BagApp_SetCancelButtonDrawFlag(appData, FALSE);
         return BAG_APP_STATE_REGISTER_FAIL_WAIT_MESSAGE;
     } else {
         BagApp_HideContextMenuIcons(appData);
@@ -2260,7 +2260,7 @@ static BagAppState BagAppMainState_RegisterItemFailed_WaitMessage(BagAppData *ap
         BagApp_ClearTMHMDetailsWindow(appData);
         BagApp_RemoveContextMenuWindowsAndRedrawTopScreenUI(appData);
         BagApp_DrawDefaultLayout(appData);
-        ov15_021FD788(appData, 1);
+        BagApp_SetCancelButtonDrawFlag(appData, TRUE);
         return BAG_APP_STATE_HANDLE_INPUT_NORMAL_MODE;
     }
 
@@ -2286,7 +2286,7 @@ static BagAppState BagApp_ItemContextMenu_Move(BagAppData *appData) {
 
 static BagAppState BagApp_ItemContextMenu_Give(BagAppData *appData) {
     BagApp_RemoveContextMenuWindowsAndRedrawTopScreenUI(appData);
-    ov15_021FD788(appData, 0);
+    BagApp_SetCancelButtonDrawFlag(appData, FALSE);
     BagApp_HideCursorSprite(appData);
     sub_020880CC(1, HEAP_ID_BAG);
     appData->bagView->returnCode = BAG_VIEW_RETURN_CODE_GIVE_ITEM;
@@ -2566,7 +2566,7 @@ static BagAppState BagAppMainTask_HandleSelectedItemForSale(BagAppData *appData)
     ManagedSprite_SetDrawFlag(appData->sprites[BAG_APP_SPRITE_PAGE_LEFT_BUTTON], FALSE);
     ManagedSprite_SetDrawFlag(appData->sprites[BAG_APP_SPRITE_PAGE_RIGHT_BUTTON], FALSE);
     BagApp_SetPocketIconsDrawFlag(appData, 0);
-    ov15_021FD788(appData, 0);
+    BagApp_SetCancelButtonDrawFlag(appData, FALSE);
     BagApp_SwitchItemButtonWindowsToContextMenuMode(appData, pocket->scroll, appData->cursorPos - BAG_APP_CURSOR_POS_ITEM_1);
     BagApp_CenterSelectedItemIconSprite(appData, appData->cursorPos - BAG_APP_CURSOR_POS_ITEM_1);
     BagApp_PrintItemDescriptionOnWindow(appData, &appData->windows_main[BAG_APP_WINDOW_MAIN_DESCRIPTION], appData->bagView->itemId);
@@ -2608,7 +2608,7 @@ static BagAppState BagAppMainTask_SellItem_ChooseQuanity_WaitMessage(BagAppData 
         BagApp_ShowQuantitySelectSpritesUI(appData, 2, appData->maxQuantity);
         BagApp_PrintSellContextOptionOnWindow(appData);
         BagApp_PrintCancel(appData, 1);
-        BagApp_SetBButtonSpriteDrawFlag(appData, 1);
+        BagApp_SetBButtonSpriteDrawFlag(appData, TRUE);
         BagApp_SetCursorSpritePos_QuantitySelect(appData, 0);
         return BAG_APP_STATE_SELL_ITEM_CHOOSE_QUANTITY;
     }
@@ -2702,7 +2702,7 @@ static BagAppState BagAppMainTask_SellItem_PrintFinalConfirmation(BagAppData *ap
     appData->textPrinterId = BagApp_PrintMessage(appData, 1);
     BagApp_HideQuantitySelectSpritesUI(appData);
     BagApp_HideCursorSprite(appData);
-    ov15_021FD788(appData, 0);
+    BagApp_SetCancelButtonDrawFlag(appData, FALSE);
     return BAG_APP_STATE_CONFIRM_SALE_WAIT_MESSAGE;
 }
 
@@ -2720,7 +2720,7 @@ static BagAppState BagAppMainTask_SellItem_Abort(BagAppData *appData) {
     BagApp_RemoveContextMenuWindowsAndRedrawTopScreenUI(appData);
     BagApp_DrawDefaultLayout(appData);
     BagApp_SetPocketIconsDrawFlag(appData, 1);
-    ov15_021FD788(appData, 1);
+    BagApp_SetCancelButtonDrawFlag(appData, TRUE);
     return BAG_APP_STATE_SELL_HANDLE_INPUT;
 }
 
@@ -2765,7 +2765,7 @@ static BagAppState BagAppMainTask_ConfirmSale_HandleYesNo(BagAppData *appData) {
         BagApp_RemoveContextMenuWindowsAndRedrawTopScreenUI(appData);
         BagApp_DrawDefaultLayout(appData);
         BagApp_SetPocketIconsDrawFlag(appData, 1);
-        ov15_021FD788(appData, 1);
+        BagApp_SetCancelButtonDrawFlag(appData, TRUE);
         return BAG_APP_STATE_SELL_HANDLE_INPUT;
     }
 
@@ -2804,7 +2804,7 @@ static BagAppState BagAppMainTask_CompleteSale_WaitMessage(BagAppData *appData) 
         BagApp_DrawDefaultLayout(appData);
         BagApp_UpdateDescriptionOnTopScreen(appData);
         BagApp_SetPocketIconsDrawFlag(appData, 1);
-        ov15_021FD788(appData, 1);
+        BagApp_SetCancelButtonDrawFlag(appData, TRUE);
         return BAG_APP_STATE_SELL_HANDLE_INPUT;
     }
 
@@ -2812,7 +2812,7 @@ static BagAppState BagAppMainTask_CompleteSale_WaitMessage(BagAppData *appData) 
 }
 
 static BagAppState BagAppMainTask_Gardening(BagAppData *appData) {
-    if (BagApp_UnkDebugRoutine(appData) == TRUE) {
+    if (BagApp_ProcessInput_Gardening(appData) == TRUE) {
         // unreachable
         return BAG_APP_STATE_SWITCH_POCKET_DPPT;
     }
@@ -2822,7 +2822,7 @@ static BagAppState BagAppMainTask_Gardening(BagAppData *appData) {
 
 static BagAppState BagApp_ItemContextMenu_UseInBerryPots(BagAppData *appData) {
     BagApp_RemoveContextMenuWindowsAndRedrawTopScreenUI(appData);
-    ov15_021FD788(appData, 0);
+    BagApp_SetCancelButtonDrawFlag(appData, FALSE);
     BagApp_HideCursorSprite(appData);
     sub_020880CC(1, HEAP_ID_BAG);
     appData->bagView->returnCode = BAG_VIEW_RETURN_CODE_GIVE_FROM_MON_MENU;
@@ -2834,7 +2834,7 @@ BOOL IsBerryOrMulch(u8 pocketId, u16 itemId) {
 }
 
 static void BagApp_LoadBgPaletteByPocket(BagAppData *appData, int a1, int pocket) {
-    const u16 *r5 = appData->unk_694[a1]->pRawData;
+    const u16 *r5 = appData->pocketBgPlttData[a1]->pRawData;
     if (pocket <= 7) {
         GXS_LoadBGPltt(r5 + 16 * pocket, 0, 32);
         GXS_LoadBGPltt(r5 + 16 * pocket, 32, 64);
@@ -2923,12 +2923,12 @@ static u8 ov15_02201340[5][2][4] = {
 };
 
 static u8 ov15_02201328[6][4] = {
-    {0,   4,  16, 6},
-    { 16, 4,  16, 6},
-    { 0,  9,  16, 6},
-    { 16, 9,  16, 6},
-    { 0,  14, 16, 6},
-    { 16, 14, 16, 6},
+    { 0,  4,  16, 6 },
+    { 16, 4,  16, 6 },
+    { 0,  9,  16, 6 },
+    { 16, 9,  16, 6 },
+    { 0,  14, 16, 6 },
+    { 16, 14, 16, 6 },
 };
 
 static void ov15_021FD4C0(BgConfig *bgConfig, int bgId, int limit, int cursorPos) {
@@ -3016,15 +3016,15 @@ static void BagApp_SaveMenuInputStateToBagView(BagAppData *appData, MenuInputSta
     }
 }
 
-static void ov15_021FD788(BagAppData *appData, int a1) {
-    if (a1 == 1) {
-        BagApp_SetBButtonSpriteDrawFlag(appData, 1);
+static void BagApp_SetCancelButtonDrawFlag(BagAppData *appData, int flag) {
+    if (flag == 1) {
+        BagApp_SetBButtonSpriteDrawFlag(appData, TRUE);
         BagApp_PrintCancel(appData, 0);
         ScheduleWindowCopyToVram(&appData->windows_main[BAG_APP_WINDOW_MAIN_CANCEL_BUTTON]);
         ManagedSprite_SetAnimationFrame(appData->sprites[BAG_APP_SPRITE_B_BUTTON], 0);
         ManagedSprite_SetAnim(appData->sprites[BAG_APP_SPRITE_B_BUTTON], 16);
     } else {
-        BagApp_SetBButtonSpriteDrawFlag(appData, 0);
+        BagApp_SetBButtonSpriteDrawFlag(appData, FALSE);
         BagApp_ClearTextOnCancelButton(appData);
     }
 }
@@ -3088,7 +3088,7 @@ static BagAppState BagAppMainTask_RunSpriteAnimTransition(BagAppData *appData) {
 
 static const CameraParam sCameraParam = {
     .distance = FX32_CONST(339.707275390625),
-    .angle = {.x = 0xE982, .y = 0x1420},
+    .angle = { .x = 0xE982, .y = 0x1420 },
     .perspectiveType = 0,
     .perspective = 0xA01,
 };
@@ -3211,9 +3211,9 @@ static void BagApp_Update3D(BagAppData *appData) {
     Thunk_G3X_Reset();
     Camera_PushLookAtToNNSGlb();
     BagApp3DModelData *r4 = &appData->threeDimState.obj;
-    FrameAdvance3dAnim(r4->unk_A0[r4->pocketIdx]);
-    FrameAdvance3dAnim(r4->unk_C0[r4->pocketIdx]);
-    FrameAdvance3dAnim(r4->unk_E0);
+    FrameAdvance3dAnim(r4->patternAnimObjs[r4->pocketIdx]);
+    FrameAdvance3dAnim(r4->skeletalAnimObjs[r4->pocketIdx]);
+    FrameAdvance3dAnim(r4->materialAnimObj);
     GF3dRender_DrawModel(&r4->renderObj, &appData->threeDimState.translation, &rotation, &scale);
     RequestSwap3DBuffers(GX_SORTMODE_AUTO, GX_BUFFERMODE_Z);
 }
@@ -3231,24 +3231,24 @@ static void BagApp_Load3dAssets(BagAppData *appData) {
     BagApp3DModelData *modelData;
     NNSG3dResTex *tex;
     void *pResAnm;
-    u32 sp8, sp4, sp0, resHeaderFileID;
+    u32 nsbtp, nsbca, nsbta, nsbmd;
     u32 i;
 
     narc = NARC_New(NARC_graphic_bag_bag_graphics, HEAP_ID_BAG);
     HeapExp_FndInitAllocator(&appData->threeDimState.allocator, HEAP_ID_BAG, 4);
     modelData = &appData->threeDimState.obj;
     if (appData->gender == PLAYER_GENDER_MALE) {
-        resHeaderFileID = 55;
-        sp8 = 57;
-        sp4 = 65;
-        sp0 = 73;
+        nsbmd = bag_graphics_00055_NSBMD;
+        nsbtp = bag_graphics_00057_NSBTP;
+        nsbca = bag_graphics_00065_NSBCA;
+        nsbta = bag_graphics_00073_NSBTA;
     } else {
-        resHeaderFileID = 74;
-        sp8 = 76;
-        sp4 = 84;
-        sp0 = 92;
+        nsbmd = bag_graphics_00074_NSBMD;
+        nsbtp = bag_graphics_00076_NSBTP;
+        nsbca = bag_graphics_00084_NSBCA;
+        nsbta = bag_graphics_00092_NSBTA;
     }
-    modelData->resHeader = NARC_AllocAndReadWholeMember(narc, resHeaderFileID, HEAP_ID_BAG);
+    modelData->resHeader = NARC_AllocAndReadWholeMember(narc, nsbmd, HEAP_ID_BAG);
     GF3dRender_InitObjFromHeader(&modelData->renderObj, &modelData->resMdl, &modelData->resHeader);
     tex = NNS_G3dGetTex(modelData->resHeader);
     NNS_G3dMdlUseMdlDiff(modelData->resMdl);
@@ -3257,24 +3257,24 @@ static void BagApp_Load3dAssets(BagAppData *appData) {
     NNS_G3dMdlUseMdlEmi(modelData->resMdl);
     NNS_G3dMdlUseMdlPolygonID(modelData->resMdl);
     for (i = 0; i < 8; ++i) {
-        modelData->unk_5C[i] = NARC_AllocAndReadWholeMember(narc, sp8 + i, HEAP_ID_BAG);
-        pResAnm = NNS_G3dGetAnmByIdx(modelData->unk_5C[i], 0);
-        modelData->unk_A0[i] = NNS_G3dAllocAnmObj(&appData->threeDimState.allocator, pResAnm, modelData->resMdl);
-        NNS_G3dAnmObjInit(modelData->unk_A0[i], pResAnm, modelData->resMdl, tex);
-        modelData->unk_7C[i] = NARC_AllocAndReadWholeMember(narc, sp4 + i, HEAP_ID_BAG);
-        pResAnm = NNS_G3dGetAnmByIdx(modelData->unk_7C[i], 0);
-        modelData->unk_C0[i] = NNS_G3dAllocAnmObj(&appData->threeDimState.allocator, pResAnm, modelData->resMdl);
-        NNS_G3dAnmObjInit(modelData->unk_C0[i], pResAnm, modelData->resMdl, tex);
+        modelData->patternAnimsRaw[i] = NARC_AllocAndReadWholeMember(narc, nsbtp + i, HEAP_ID_BAG);
+        pResAnm = NNS_G3dGetAnmByIdx(modelData->patternAnimsRaw[i], 0);
+        modelData->patternAnimObjs[i] = NNS_G3dAllocAnmObj(&appData->threeDimState.allocator, pResAnm, modelData->resMdl);
+        NNS_G3dAnmObjInit(modelData->patternAnimObjs[i], pResAnm, modelData->resMdl, tex);
+        modelData->skeletalAnimsRaw[i] = NARC_AllocAndReadWholeMember(narc, nsbca + i, HEAP_ID_BAG);
+        pResAnm = NNS_G3dGetAnmByIdx(modelData->skeletalAnimsRaw[i], 0);
+        modelData->skeletalAnimObjs[i] = NNS_G3dAllocAnmObj(&appData->threeDimState.allocator, pResAnm, modelData->resMdl);
+        NNS_G3dAnmObjInit(modelData->skeletalAnimObjs[i], pResAnm, modelData->resMdl, tex);
     }
-    modelData->unk_9C = NARC_AllocAndReadWholeMember(narc, sp0, HEAP_ID_BAG);
-    pResAnm = NNS_G3dGetAnmByIdx(modelData->unk_9C, 0);
-    modelData->unk_E0 = NNS_G3dAllocAnmObj(&appData->threeDimState.allocator, pResAnm, modelData->resMdl);
-    NNS_G3dAnmObjInit(modelData->unk_E0, pResAnm, modelData->resMdl, tex);
+    modelData->materialAnimRaw = NARC_AllocAndReadWholeMember(narc, nsbta, HEAP_ID_BAG);
+    pResAnm = NNS_G3dGetAnmByIdx(modelData->materialAnimRaw, 0);
+    modelData->materialAnimObj = NNS_G3dAllocAnmObj(&appData->threeDimState.allocator, pResAnm, modelData->resMdl);
+    NNS_G3dAnmObjInit(modelData->materialAnimObj, pResAnm, modelData->resMdl, tex);
 
     modelData->pocketIdx = appData->bagView->curPocket;
-    NNS_G3dRenderObjAddAnmObj(&modelData->renderObj, modelData->unk_A0[modelData->pocketIdx]);
-    NNS_G3dRenderObjAddAnmObj(&modelData->renderObj, modelData->unk_C0[modelData->pocketIdx]);
-    NNS_G3dRenderObjAddAnmObj(&modelData->renderObj, modelData->unk_E0);
+    NNS_G3dRenderObjAddAnmObj(&modelData->renderObj, modelData->patternAnimObjs[modelData->pocketIdx]);
+    NNS_G3dRenderObjAddAnmObj(&modelData->renderObj, modelData->skeletalAnimObjs[modelData->pocketIdx]);
+    NNS_G3dRenderObjAddAnmObj(&modelData->renderObj, modelData->materialAnimObj);
     NARC_Delete(narc);
 }
 
@@ -3282,25 +3282,25 @@ static void BagApp_Free3dAssets(BagAppData *appData) {
     BagApp3DModelData *modelData = &appData->threeDimState.obj;
 
     for (u32 i = 0; i < 8; ++i) {
-        NNS_G3dFreeAnmObj(&appData->threeDimState.allocator, modelData->unk_A0[i]);
-        NNS_G3dFreeAnmObj(&appData->threeDimState.allocator, modelData->unk_C0[i]);
-        Heap_Free(modelData->unk_5C[i]);
-        Heap_Free(modelData->unk_7C[i]);
+        NNS_G3dFreeAnmObj(&appData->threeDimState.allocator, modelData->patternAnimObjs[i]);
+        NNS_G3dFreeAnmObj(&appData->threeDimState.allocator, modelData->skeletalAnimObjs[i]);
+        Heap_Free(modelData->patternAnimsRaw[i]);
+        Heap_Free(modelData->skeletalAnimsRaw[i]);
     }
-    NNS_G3dFreeAnmObj(&appData->threeDimState.allocator, modelData->unk_E0);
-    Heap_Free(modelData->unk_9C);
+    NNS_G3dFreeAnmObj(&appData->threeDimState.allocator, modelData->materialAnimObj);
+    Heap_Free(modelData->materialAnimRaw);
     Heap_Free(modelData->resHeader);
 }
 
 static void BagApp_SwitchPlayerModelAnimsToNewPocket(BagAppData *appData) {
     BagApp3DModelData *modelData = &appData->threeDimState.obj;
 
-    NNS_G3dRenderObjRemoveAnmObj(&modelData->renderObj, modelData->unk_C0[modelData->pocketIdx]);
-    NNS_G3dRenderObjRemoveAnmObj(&modelData->renderObj, modelData->unk_A0[modelData->pocketIdx]);
+    NNS_G3dRenderObjRemoveAnmObj(&modelData->renderObj, modelData->skeletalAnimObjs[modelData->pocketIdx]);
+    NNS_G3dRenderObjRemoveAnmObj(&modelData->renderObj, modelData->patternAnimObjs[modelData->pocketIdx]);
     modelData->pocketIdx = appData->bagView->curPocket;
-    modelData->unk_A0[modelData->pocketIdx]->frame = 0;
-    modelData->unk_C0[modelData->pocketIdx]->frame = 0;
-    modelData->unk_E0->frame = 0;
-    NNS_G3dRenderObjAddAnmObj(&modelData->renderObj, modelData->unk_A0[modelData->pocketIdx]);
-    NNS_G3dRenderObjAddAnmObj(&modelData->renderObj, modelData->unk_C0[modelData->pocketIdx]);
+    modelData->patternAnimObjs[modelData->pocketIdx]->frame = 0;
+    modelData->skeletalAnimObjs[modelData->pocketIdx]->frame = 0;
+    modelData->materialAnimObj->frame = 0;
+    NNS_G3dRenderObjAddAnmObj(&modelData->renderObj, modelData->patternAnimObjs[modelData->pocketIdx]);
+    NNS_G3dRenderObjAddAnmObj(&modelData->renderObj, modelData->skeletalAnimObjs[modelData->pocketIdx]);
 }

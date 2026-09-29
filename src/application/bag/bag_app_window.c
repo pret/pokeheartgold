@@ -1,4 +1,5 @@
 #include "application/bag_app_internal.h"
+#include "graphic/bag/bag_graphics.naix"
 #include "msgdata/msg.naix"
 #include "msgdata/msg/msg_0010.h"
 #include "msgdata/msg/msg_0225.h"
@@ -20,11 +21,11 @@ static void BagApp_BufferItemName(BagAppData *appData, int itemSlot, u16 fieldno
 static void BagApp_BufferItemNamePlural(BagAppData *appData, int itemSlot, u16 fieldno);
 static void BagApp_PrintItemDescriptionOnWindowMain0(BagAppData *appData, u16 itemId);
 static void BagApp_PrintTMHMDetails(BagAppData *appData, u16 itemId);
-static void ov15_021FE8C4(BagAppData *appData, u16 a1, u16 a2, u32 textColor);
+static void BagApp_FormatTMQuantityString_DPPt(BagAppData *appData, u16 quantity, u16 y, u32 textColor);
 static void BagApp_PrintTMorHMNumberOnWindow(BagAppData *appData, Window *window, ItemSlot *slot, u32 y);
-static void *ov15_021FE990(BagAppData *appData, NNSG2dCharacterData **ppCharData);
-static void ov15_021FE9B0(BagAppData *appData, Window *window, int a2);
-static void BagApp_DrawRegisteredItemIconOnWindow(BagAppData *appData, Window *window, int y, BOOL a3);
+static void *BagApp_GetHMAndRegisteredIconNCGR(BagAppData *appData, NNSG2dCharacterData **ppCharData);
+static void BagApp_DrawHMIconOnWindow(BagAppData *appData, Window *window, int y);
+static void BagApp_DrawRegisteredItemIconOnWindow(BagAppData *appData, Window *window, int y, int whichItem);
 static int BagApp_PrintMessageCallback(TextPrinterTemplate *printer, u16 cmd);
 static int BagViewPocket_GetIndexWithAtMostXNonEmptySlots(BagViewPocket *pocket, int pocketId, int limit);
 static void BagApp_PrintItemNameAndMaybeQuantityOnWindow(BagAppData *appData, Window *window, String *string, BagViewPocket *pocket, int slotId);
@@ -65,25 +66,25 @@ void BagApp_RemoveWindows(BagAppData *appData) {
     BagApp_RemoveItemNameWindows(appData);
 }
 
-static const int ov15_02200908[12][3] = {
-    {4,   5,  0x0BF},
-    { 20, 5,  0x0EB},
-    { 4,  10, 0x117},
-    { 20, 10, 0x143},
-    { 4,  15, 0x16F},
-    { 20, 15, 0x19B},
-    { 4,  5,  0x1C7},
-    { 20, 5,  0x1F3},
-    { 4,  10, 0x21F},
-    { 20, 10, 0x24B},
-    { 4,  15, 0x277},
-    { 20, 15, 0x2A3},
+static const int sItemNameWindowParam[12][3] = {
+    { 4,  5,  0x0BF },
+    { 20, 5,  0x0EB },
+    { 4,  10, 0x117 },
+    { 20, 10, 0x143 },
+    { 4,  15, 0x16F },
+    { 20, 15, 0x19B },
+    { 4,  5,  0x1C7 },
+    { 20, 5,  0x1F3 },
+    { 4,  10, 0x21F },
+    { 20, 10, 0x24B },
+    { 4,  15, 0x277 },
+    { 20, 15, 0x2A3 },
 };
 
 static void BagApp_AddItemNameWindows(BagAppData *appData) {
     if (appData->windows_sub[BAG_APP_WINDOW_SUB_ITEM_NAME_A_1].bgConfig == NULL) {
         for (int i = 0; i < 12; ++i) {
-            AddWindowParameterized(appData->bgConfig, &appData->windows_sub[BAG_APP_WINDOW_SUB_ITEM_NAME_A_1 + i], GF_BG_LYR_SUB_0, ov15_02200908[i][0], ov15_02200908[i][1], 11, 4, 11, ov15_02200908[i][2]);
+            AddWindowParameterized(appData->bgConfig, &appData->windows_sub[BAG_APP_WINDOW_SUB_ITEM_NAME_A_1 + i], GF_BG_LYR_SUB_0, sItemNameWindowParam[i][0], sItemNameWindowParam[i][1], 11, 4, 11, sItemNameWindowParam[i][2]);
         }
     }
 }
@@ -98,17 +99,17 @@ static void BagApp_RemoveItemNameWindows(BagAppData *appData) {
     }
 }
 
-static const int ov15_022008E8[4][2] = {
-    {1,   17},
-    { 13, 17},
-    { 1,  21},
-    { 13, 21},
+static const int sContextMenuOptionCoords[4][2] = {
+    { 1,  17 },
+    { 13, 17 },
+    { 1,  21 },
+    { 13, 21 },
 };
 
-static const int ov15_022008D0[3][2] = {
-    {16,  14},
-    { 20, 14},
-    { 24, 14},
+static const int sSelectQuantityWindowCoords[3][2] = {
+    { 16, 14 },
+    { 20, 14 },
+    { 24, 14 },
 };
 
 static void BagApp_ShowContextMenuWindows(BagAppData *appData) {
@@ -116,11 +117,11 @@ static void BagApp_ShowContextMenuWindows(BagAppData *appData) {
         AddWindowParameterized(appData->bgConfig, &appData->windows_sub[BAG_APP_WINDOW_SUB_CONTEXT_SELECTED_ITEM], GF_BG_LYR_SUB_0, 12, 7, 11, 4, 11, 0x2CF);
         FillWindowPixelBuffer(&appData->windows_sub[BAG_APP_WINDOW_SUB_CONTEXT_SELECTED_ITEM], 0);
         for (int i = 0; i < 4; ++i) {
-            AddWindowParameterized(appData->bgConfig, &appData->windows_sub[BAG_APP_WINDOW_SUB_CONTEXT_OPTION_1 + i], GF_BG_LYR_SUB_0, ov15_022008E8[i][0], ov15_022008E8[i][1], 10, 2, 11, 0x31B + 20 * i);
+            AddWindowParameterized(appData->bgConfig, &appData->windows_sub[BAG_APP_WINDOW_SUB_CONTEXT_OPTION_1 + i], GF_BG_LYR_SUB_0, sContextMenuOptionCoords[i][0], sContextMenuOptionCoords[i][1], 10, 2, 11, 0x31B + 20 * i);
             FillWindowPixelBuffer(&appData->windows_sub[BAG_APP_WINDOW_SUB_CONTEXT_OPTION_1 + i], 0);
         }
         for (int i = 0; i < 3; ++i) {
-            AddWindowParameterized(appData->bgConfig, &appData->windows_sub[BAG_APP_WINDOW_SUB_QUANTITY_DIGIT_1 + i], GF_BG_LYR_SUB_0, ov15_022008D0[i][0], ov15_022008D0[i][1], 2, 3, 11, 0x2FB + 6 * i);
+            AddWindowParameterized(appData->bgConfig, &appData->windows_sub[BAG_APP_WINDOW_SUB_QUANTITY_DIGIT_1 + i], GF_BG_LYR_SUB_0, sSelectQuantityWindowCoords[i][0], sSelectQuantityWindowCoords[i][1], 2, 3, 11, 0x2FB + 6 * i);
             FillWindowPixelBuffer(&appData->windows_sub[BAG_APP_WINDOW_SUB_QUANTITY_DIGIT_1 + i], 0);
         }
         AddWindowParameterized(appData->bgConfig, &appData->windows_sub[BAG_APP_WINDOW_SUB_SELL_OR_TRASH_BUTTON], GF_BG_LYR_SUB_0, 14, 21, 7, 2, 11, 0x30D);
@@ -278,18 +279,18 @@ void BagApp_ClearTMHMDetailsWindow(BagAppData *appData) {
 
 void BagApp_LoadItemCountStrings_DPPt(BagAppData *appData) {
     appData->unk_5E8 = NewString_ReadMsgData(appData->msgData, msg_0010_00039);
-    appData->unk_5EC = NewString_ReadMsgData(appData->msgData, msg_0010_00038);
+    appData->tmCountString_DPPt = NewString_ReadMsgData(appData->msgData, msg_0010_00038);
 }
 
 void BagApp_DeleteItemCountStrings_DPPt(BagAppData *appData) {
     String_Delete(appData->unk_5E8);
-    String_Delete(appData->unk_5EC);
+    String_Delete(appData->tmCountString_DPPt);
 }
 
-static void ov15_021FE8C4(BagAppData *appData, u16 a1, u16 a2, u32 textColor) {
+static void BagApp_FormatTMQuantityString_DPPt(BagAppData *appData, u16 quantity, u16 y, u32 textColor) {
     String *string = String_New(10, HEAP_ID_BAG);
-    BufferIntegerAsString(appData->msgFormat, 0, a1, 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
-    StringExpandPlaceholders(appData->msgFormat, string, appData->unk_5EC);
+    BufferIntegerAsString(appData->msgFormat, 0, quantity, 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
+    StringExpandPlaceholders(appData->msgFormat, string, appData->tmCountString_DPPt);
     u32 result = FontID_String_GetWidth(0, string, 0);
     String_Delete(string);
 }
@@ -299,31 +300,31 @@ static void BagApp_PrintTMorHMNumberOnWindow(BagAppData *appData, Window *window
     if (itemId < ITEM_HM01) {
         itemId = itemId - ITEM_TM01 + 1;
         sub_0200CE7C(appData->msgPrinter, 2, itemId, 2, PRINTING_MODE_LEADING_ZEROS, window, 0, y + 5);
-        ov15_021FE8C4(appData, slot->quantity, y, MAKE_TEXT_COLOR(1, 2, 0));
+        BagApp_FormatTMQuantityString_DPPt(appData, slot->quantity, y, MAKE_TEXT_COLOR(1, 2, 0));
     } else {
         itemId = itemId - ITEM_HM01 + 1;
         PrintUIntOnWindow(appData->msgPrinter, itemId, 2, PRINTING_MODE_RIGHT_ALIGN, window, 16, y + 5);
-        ov15_021FE9B0(appData, window, 16);
+        BagApp_DrawHMIconOnWindow(appData, window, 16);
     }
 }
 
-static void *ov15_021FE990(BagAppData *appData, NNSG2dCharacterData **ppCharData) {
-    void *pNcgrFile = NARC_AllocAndReadWholeMember(appData->graphicsNarc, 37, HEAP_ID_BAG);
+static void *BagApp_GetHMAndRegisteredIconNCGR(BagAppData *appData, NNSG2dCharacterData **ppCharData) {
+    void *pNcgrFile = NARC_AllocAndReadWholeMember(appData->graphicsNarc, bag_graphics_00037_NCGR, HEAP_ID_BAG);
     NNS_G2dGetUnpackedBGCharacterData(pNcgrFile, ppCharData);
     return pNcgrFile;
 }
 
-static void ov15_021FE9B0(BagAppData *appData, Window *window, int a2) {
+static void BagApp_DrawHMIconOnWindow(BagAppData *appData, Window *window, int y) {
     NNSG2dCharacterData *pCharData;
-    void *pNcgrFile = ov15_021FE990(appData, &pCharData);
-    BlitBitmapRectToWindow(window, pCharData->pRawData, 0, 0, 104, 16, 0, a2, 24, 16);
+    void *pNcgrFile = BagApp_GetHMAndRegisteredIconNCGR(appData, &pCharData);
+    BlitBitmapRectToWindow(window, pCharData->pRawData, 0, 0, 104, 16, 0, y, 24, 16);
     Heap_FreeExplicit(HEAP_ID_BAG, pNcgrFile);
 }
 
-static void BagApp_DrawRegisteredItemIconOnWindow(BagAppData *appData, Window *window, int y, int a3) {
+static void BagApp_DrawRegisteredItemIconOnWindow(BagAppData *appData, Window *window, int y, int whichItem) {
     NNSG2dCharacterData *pCharData;
-    void *pNcgrFile = ov15_021FE990(appData, &pCharData);
-    if (a3 == 0) {
+    void *pNcgrFile = BagApp_GetHMAndRegisteredIconNCGR(appData, &pCharData);
+    if (whichItem == 0) {
         BlitBitmapRectToWindow(window, pCharData->pRawData, 24, 0, 104, 16, 0, y, 40, 16);
     } else {
         BlitBitmapRectToWindow(window, pCharData->pRawData, 64, 0, 104, 16, 0, y, 40, 16);

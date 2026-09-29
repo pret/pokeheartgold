@@ -216,12 +216,12 @@ typedef struct BagApp3DModelData {
     NNSG3dRenderObj renderObj;
     NNSG3dResMdl *resMdl;
     NNSG3dResFileHeader *resHeader;
-    void *unk_5C[8];
-    void *unk_7C[8];
-    void *unk_9C;
-    NNSG3dAnmObj *unk_A0[8];
-    NNSG3dAnmObj *unk_C0[8];
-    NNSG3dAnmObj *unk_E0;
+    void *patternAnimsRaw[8];
+    void *skeletalAnimsRaw[8];
+    void *materialAnimRaw;
+    NNSG3dAnmObj *patternAnimObjs[8];
+    NNSG3dAnmObj *skeletalAnimObjs[8];
+    NNSG3dAnmObj *materialAnimObj;
     int pocketIdx;
 } BagApp3DModelData;
 
@@ -261,8 +261,8 @@ struct BagAppData {
     u8 filler_34C[4]; // Platinum leftover
     String *itemNameStrings[NUM_BAG_STRINGS];
     String *formattedStrbuf;
-    String *unk_5E8; // Platinum leftover
-    String *unk_5EC; // Platinum leftover
+    String *unk_5E8;            // Platinum leftover
+    String *tmCountString_DPPt; // Platinum leftover
     u8 filler_5F0[4];
     String *pocketNameStrings[8];
     u8 numPockets;
@@ -272,18 +272,17 @@ struct BagAppData {
     u8 pocketSelectorIconsX;
     u8 pocketSelectorIconsSpacing;
     BagAppData_UnusedPocketSelector pocketSelector;
-    u8 filler_624[0x20];
+    u8 filler_624[32];
     int cursorPos;
     u8 pressedButtonAnimState_DPPt;
-    u8 unk_649;
-    u8 unk_64A;
+    u8 filler_649[2];
     u8 pressedButtonAnimStep_DPPt;
     u8 filler_64C[32];
     int moveItemCursorPos;
     u8 nextPocket;
     u8 moveItemMode;
     u8 moveItemOriginalSlot;
-    int unk_674;
+    int unk_674; // set to 0, never read
     u8 filler_678[3];
     u8 customCallbackState;
     BagItemContextMenuFunc customCallback;
@@ -292,17 +291,16 @@ struct BagAppData {
     int unitSellPrice;
     u8 filler_688[2];
     u8 itemNamesWindowSet;
-    void *unk_68C;
-    void *unk_690;
-    NNSG2dPaletteData *unk_694[2];
-    void *unk_69C;
-    NNSG2dPaletteData *unk_6A0;
+    void *pocketBgPlttdataRaw[2];
+    NNSG2dPaletteData *pocketBgPlttData[2];
+    void *pocketObjPlttDataRaw;
+    NNSG2dPaletteData *pocketObjPlttData;
     u16 itemsInPocket[NUM_BAG_STRINGS];
     BagItemContextMenuFunc contextMenuActions[5];
     YesNoPrompt *yesNoPrompt;
     BagApp3DState threeDimState;
     BagAppSpriteAnimationTransitionManager spriteAnimTransitionMgr;
-    int unk_948;
+    int selectedContextMenuActionId;
 }; // size: 0x94C
 
 // main
