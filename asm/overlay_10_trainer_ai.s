@@ -1627,7 +1627,7 @@ _0221CBB8:
 	ldrb r1, [r4, r1]
 	mov r2, #0x1b
 	mov r3, #0
-	bl GetBattlerVar
+	bl BattleMon_Get
 	mov r1, #0xd7
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -1639,7 +1639,7 @@ _0221CBCE:
 	add r0, r4, #0
 	mov r2, #0x1b
 	mov r3, #0
-	bl GetBattlerVar
+	bl BattleMon_Get
 	mov r1, #0xd7
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -1650,7 +1650,7 @@ _0221CBE6:
 	ldrb r1, [r4, r1]
 	mov r2, #0x1c
 	mov r3, #0
-	bl GetBattlerVar
+	bl BattleMon_Get
 	mov r1, #0xd7
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -1662,7 +1662,7 @@ _0221CBFC:
 	add r0, r4, #0
 	mov r2, #0x1c
 	mov r3, #0
-	bl GetBattlerVar
+	bl BattleMon_Get
 	mov r1, #0xd7
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -1687,7 +1687,7 @@ _0221CC28:
 	add r0, r4, #0
 	mov r2, #0x1b
 	mov r3, #0
-	bl GetBattlerVar
+	bl BattleMon_Get
 	mov r1, #0xd7
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -1702,7 +1702,7 @@ _0221CC46:
 	add r0, r4, #0
 	mov r2, #0x1b
 	mov r3, #0
-	bl GetBattlerVar
+	bl BattleMon_Get
 	mov r1, #0xd7
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -1716,7 +1716,7 @@ _0221CC66:
 	add r0, r4, #0
 	mov r2, #0x1c
 	mov r3, #0
-	bl GetBattlerVar
+	bl BattleMon_Get
 	mov r1, #0xd7
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -1731,7 +1731,7 @@ _0221CC84:
 	add r0, r4, #0
 	mov r2, #0x1b
 	mov r3, #0
-	bl GetBattlerVar
+	bl BattleMon_Get
 	mov r1, #0xd7
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -1766,14 +1766,14 @@ ov10_0221CCB4: ; 0x0221CCB4
 	add r1, r6, #0
 	mov r2, #0x1b
 	mov r3, #0
-	bl GetBattlerVar
+	bl BattleMon_Get
 	cmp r4, r0
 	beq _0221CCFC
 	add r0, r5, #0
 	add r1, r6, #0
 	mov r2, #0x1c
 	mov r3, #0
-	bl GetBattlerVar
+	bl BattleMon_Get
 	cmp r4, r0
 	bne _0221CD06
 _0221CCFC:
@@ -1881,7 +1881,7 @@ _0221CDAA:
 	add r0, r6, #0
 	add r2, #0xa
 	mov r3, #0
-	bl GetBattlerVar
+	bl BattleMon_Get
 	strb r0, [r5]
 	add r4, r4, #1
 	add r5, r5, #1
@@ -3265,7 +3265,7 @@ _0221D860:
 	add r0, r6, #0
 	add r2, #0xa
 	mov r3, #0
-	bl GetBattlerVar
+	bl BattleMon_Get
 	strb r0, [r5]
 	add r4, r4, #1
 	add r5, r5, #1
@@ -3413,7 +3413,7 @@ _0221D98C:
 	add r0, r6, #0
 	add r2, #0xa
 	mov r3, #0
-	bl GetBattlerVar
+	bl BattleMon_Get
 	strb r0, [r5]
 	add r4, r4, #1
 	add r5, r5, #1
@@ -4647,7 +4647,7 @@ _0221E2FA:
 	ldr r1, [sp, #0x28]
 	add r2, #0xa
 	add r3, r6, #0
-	bl GetBattlerVar
+	bl BattleMon_Get
 	strb r0, [r5]
 	add r4, r4, #1
 	add r5, r5, #1
@@ -4864,7 +4864,7 @@ _0221E4C6:
 	add r0, r6, #0
 	add r2, #0xa
 	mov r3, #0
-	bl GetBattlerVar
+	bl BattleMon_Get
 	strb r0, [r5]
 	add r4, r4, #1
 	add r5, r5, #1
@@ -5374,7 +5374,7 @@ _0221E8C4:
 	add r1, r7, #0
 	add r2, #0xa
 	mov r3, #0
-	bl GetBattlerVar
+	bl BattleMon_Get
 	strb r0, [r5]
 	add r4, r4, #1
 	add r5, r5, #1
@@ -7373,13 +7373,13 @@ _0221F710:
 	add r1, r4, #0
 	mov r2, #0x1b
 	mov r3, #0
-	bl GetBattlerVar
+	bl BattleMon_Get
 	str r0, [sp, #0x3c]
 	add r0, r5, #0
 	add r1, r4, #0
 	mov r2, #0x1c
 	mov r3, #0
-	bl GetBattlerVar
+	bl BattleMon_Get
 	ldr r1, [sp, #0x34]
 	ldr r2, [sp, #0x2c]
 	str r1, [sp]
@@ -7713,13 +7713,13 @@ _0221F9D8:
 	add r1, r6, #0
 	mov r2, #0x1b
 	mov r3, #0
-	bl GetBattlerVar
+	bl BattleMon_Get
 	str r0, [sp, #0x84]
 	add r0, r5, #0
 	add r1, r6, #0
 	mov r2, #0x1c
 	mov r3, #0
-	bl GetBattlerVar
+	bl BattleMon_Get
 	ldr r1, [sp, #0x7c]
 	ldr r2, [sp, #0x20]
 	str r1, [sp]
@@ -7778,13 +7778,13 @@ _0221FA66:
 	add r1, r4, #0
 	mov r2, #0x1b
 	mov r3, #0
-	bl GetBattlerVar
+	bl BattleMon_Get
 	str r0, [sp, #0x94]
 	add r0, r5, #0
 	add r1, r4, #0
 	mov r2, #0x1c
 	mov r3, #0
-	bl GetBattlerVar
+	bl BattleMon_Get
 	ldr r1, [sp, #0x8c]
 	ldr r2, [sp, #0x20]
 	str r1, [sp]
@@ -7960,13 +7960,13 @@ _0221FBE2:
 	add r1, r6, #0
 	mov r2, #0x1b
 	mov r3, #0
-	bl GetBattlerVar
+	bl BattleMon_Get
 	str r0, [sp, #0xa4]
 	add r0, r5, #0
 	add r1, r6, #0
 	mov r2, #0x1c
 	mov r3, #0
-	bl GetBattlerVar
+	bl BattleMon_Get
 	ldr r1, [sp, #0x9c]
 	ldr r2, [sp, #0x24]
 	str r1, [sp]
@@ -8027,13 +8027,13 @@ _0221FC72:
 	add r1, r4, #0
 	mov r2, #0x1b
 	mov r3, #0
-	bl GetBattlerVar
+	bl BattleMon_Get
 	str r0, [sp, #0xb4]
 	add r0, r5, #0
 	add r1, r4, #0
 	mov r2, #0x1c
 	mov r3, #0
-	bl GetBattlerVar
+	bl BattleMon_Get
 	ldr r1, [sp, #0xac]
 	ldr r2, [sp, #0x24]
 	str r1, [sp]
@@ -8683,14 +8683,14 @@ _0222018A:
 	add r0, r5, #0
 	mov r2, #0x1b
 	mov r3, #0
-	bl GetBattlerVar
+	bl BattleMon_Get
 	ldr r1, _02220268 ; =0x0000306C
 	str r0, [sp, #0x58]
 	ldrh r1, [r4, r1]
 	add r0, r5, #0
 	mov r2, #0x1c
 	mov r3, #0
-	bl GetBattlerVar
+	bl BattleMon_Get
 	ldr r1, [sp, #0x50]
 	ldr r2, [sp, #0x48]
 	str r1, [sp]
@@ -8960,14 +8960,14 @@ ov10_022203A4: ; 0x022203A4
 	add r1, r6, #0
 	mov r2, #0x1b
 	mov r3, #0
-	bl GetBattlerVar
+	bl BattleMon_Get
 	cmp r0, #8
 	beq _02220424
 	ldr r0, [sp, #8]
 	add r1, r6, #0
 	mov r2, #0x1c
 	mov r3, #0
-	bl GetBattlerVar
+	bl BattleMon_Get
 	cmp r0, #8
 	bne _0222042A
 _02220424:

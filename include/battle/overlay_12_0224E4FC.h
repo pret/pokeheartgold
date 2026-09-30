@@ -14,7 +14,7 @@ void ov12_0224ECC4(BattleContext *ctx, int id, int battlerId, int index);
 void ov12_0224ED00(BattleContext *ctx, int id, int battlerId, int index);
 BOOL Link_QueueNotEmpty(BattleContext *ctx);
 void BattleBuffer_Clear(BattleContext *ctx, int battlerId);
-int GetBattlerVar(BattleContext *ctx, int battlerId, u32 varId, void *data);
+int BattleMon_Get(BattleContext *ctx, int battlerId, u32 varId, void *data);
 void SetBattlerVar(BattleContext *ctx, int battlerId, u32 varId, void *data);
 void AddBattlerVar(BattleContext *ctx, int battlerId, u32 varId, int data);
 void BattleMon_AddVar(BattleMon *mon, u32 varId, int data);

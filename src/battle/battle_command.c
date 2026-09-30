@@ -1110,7 +1110,7 @@ BOOL BtlCmd_CompareMonDataToValue(BattleSystem *battleSystem, BattleContext *ctx
     int cmp = BattleScriptReadWord(ctx);
     u32 adrs = BattleScriptReadWord(ctx);
 
-    int var = GetBattlerVar(ctx, BattleSystem_GetBattlerIDBySide(battleSystem, ctx, side), varId, NULL);
+    int var = BattleMon_Get(ctx, BattleSystem_GetBattlerIDBySide(battleSystem, ctx, side), varId, NULL);
 
     switch (opcode) {
     case 0:
@@ -1758,7 +1758,7 @@ BOOL BtlCmd_UpdateMonData(BattleSystem *battleSystem, BattleContext *ctx) {
     int varId = BattleScriptReadWord(ctx);
     int val = BattleScriptReadWord(ctx);
     int battlerId = BattleSystem_GetBattlerIDBySide(battleSystem, ctx, side);
-    int var = GetBattlerVar(ctx, battlerId, varId, NULL);
+    int var = BattleMon_Get(ctx, battlerId, varId, NULL);
 
     switch (opcode) {
     case 7:
@@ -1978,7 +1978,7 @@ BOOL BtlCmd_UpdateMonDataFromVar(BattleSystem *battleSystem, BattleContext *ctx)
 
     int battlerId = BattleSystem_GetBattlerIDBySide(battleSystem, ctx, side);
 
-    int var = GetBattlerVar(ctx, battlerId, varId, NULL);
+    int var = BattleMon_Get(ctx, battlerId, varId, NULL);
     int *val = BattleScriptGetVarPointer(battleSystem, ctx, valId);
 
     switch (opcode) {
@@ -2373,13 +2373,13 @@ BOOL BtlCmd_TryConversion(BattleSystem *battleSystem, BattleContext *ctx) {
         if (ctx->battleMons[ctx->battlerIdAttacker].moves[i] != MOVE_CONVERSION) {
             moveType = ctx->trainerAIData.moveData[ctx->battleMons[ctx->battlerIdAttacker].moves[i]].type;
             if (moveType == TYPE_MYSTERY) {
-                if (GetBattlerVar(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_1, NULL) == TYPE_GHOST || GetBattlerVar(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_2, NULL) == TYPE_GHOST) {
+                if (BattleMon_Get(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_1, NULL) == TYPE_GHOST || BattleMon_Get(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_2, NULL) == TYPE_GHOST) {
                     moveType = TYPE_GHOST;
                 } else {
                     moveType = TYPE_NORMAL;
                 }
             }
-            if (GetBattlerVar(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_1, NULL) != moveType && GetBattlerVar(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_2, NULL) != moveType) {
+            if (BattleMon_Get(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_1, NULL) != moveType && BattleMon_Get(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_2, NULL) != moveType) {
                 break;
             }
         }
@@ -2394,13 +2394,13 @@ BOOL BtlCmd_TryConversion(BattleSystem *battleSystem, BattleContext *ctx) {
             } while (ctx->battleMons[ctx->battlerIdAttacker].moves[i] == MOVE_CONVERSION);
             moveType = ctx->trainerAIData.moveData[ctx->battleMons[ctx->battlerIdAttacker].moves[i]].type;
             if (moveType == TYPE_MYSTERY) {
-                if (GetBattlerVar(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_1, NULL) == TYPE_GHOST || GetBattlerVar(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_2, NULL) == TYPE_GHOST) {
+                if (BattleMon_Get(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_1, NULL) == TYPE_GHOST || BattleMon_Get(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_2, NULL) == TYPE_GHOST) {
                     moveType = TYPE_GHOST;
                 } else {
                     moveType = TYPE_NORMAL;
                 }
             }
-        } while (GetBattlerVar(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_1, NULL) == moveType || GetBattlerVar(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_2, NULL) == moveType);
+        } while (BattleMon_Get(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_1, NULL) == moveType || BattleMon_Get(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_2, NULL) == moveType);
         ctx->battleMons[ctx->battlerIdAttacker].type1 = moveType;
         ctx->battleMons[ctx->battlerIdAttacker].type2 = moveType;
         ctx->msgTemp = moveType;
@@ -2474,7 +2474,7 @@ BOOL BtlCmd_CompareMonDataToVar(BattleSystem *battleSystem, BattleContext *ctx) 
     int cmpNo = BattleScriptReadWord(ctx);
     int adrs = BattleScriptReadWord(ctx);
 
-    u32 var = GetBattlerVar(ctx, BattleSystem_GetBattlerIDBySide(battleSystem, ctx, side), varNo, NULL);
+    u32 var = BattleMon_Get(ctx, BattleSystem_GetBattlerIDBySide(battleSystem, ctx, side), varNo, NULL);
     u32 *cmp = BattleScriptGetVarPointer(battleSystem, ctx, cmpNo);
 
     switch (opcode) {
@@ -2897,7 +2897,7 @@ BOOL BtlCmd_TryConversion2(BattleSystem *battleSystem, BattleContext *ctx) {
 
             for (i = 0; i < 1000; i++) {
                 GetTypeEffectivnessData(battleSystem, 0xffff, &typeMove, &typeMon, &val);
-                if (typeMove == moveType && val <= 5 && GetBattlerVar(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_1, NULL) != typeMon && GetBattlerVar(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_2, NULL) != typeMon) {
+                if (typeMove == moveType && val <= 5 && BattleMon_Get(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_1, NULL) != typeMon && BattleMon_Get(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_2, NULL) != typeMon) {
                     ctx->battleMons[ctx->battlerIdAttacker].type1 = typeMon;
                     ctx->battleMons[ctx->battlerIdAttacker].type2 = typeMon;
                     ctx->msgTemp = typeMon;
@@ -2907,7 +2907,7 @@ BOOL BtlCmd_TryConversion2(BattleSystem *battleSystem, BattleContext *ctx) {
 
             i = 0;
             while (GetTypeEffectivnessData(battleSystem, i, &typeMove, &typeMon, &val) == TRUE) {
-                if (typeMove == moveType && val <= 5 && GetBattlerVar(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_1, NULL) != typeMon && GetBattlerVar(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_2, NULL) != typeMon) {
+                if (typeMove == moveType && val <= 5 && BattleMon_Get(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_1, NULL) != typeMon && BattleMon_Get(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_2, NULL) != typeMon) {
                     ctx->battleMons[ctx->battlerIdAttacker].type1 = typeMon;
                     ctx->battleMons[ctx->battlerIdAttacker].type2 = typeMon;
                     ctx->msgTemp = typeMon;
@@ -3393,8 +3393,8 @@ BOOL BtlCmd_EndOfTurnWeatherEffect(BattleSystem *battleSystem, BattleContext *ct
     ctx->tempData = 0;
     ctx->hpCalc = 0;
 
-    u32 type1 = GetBattlerVar(ctx, battlerId, BMON_DATA_TYPE_1, NULL);
-    u32 type2 = GetBattlerVar(ctx, battlerId, BMON_DATA_TYPE_2, NULL);
+    u32 type1 = BattleMon_Get(ctx, battlerId, BMON_DATA_TYPE_1, NULL);
+    u32 type2 = BattleMon_Get(ctx, battlerId, BMON_DATA_TYPE_2, NULL);
 
     if (CheckAbilityActive(battleSystem, ctx, CHECK_ABILITY_ALL_HP, 0, ABILITY_CLOUD_NINE) == 0 && CheckAbilityActive(battleSystem, ctx, CHECK_ABILITY_ALL_HP, 0, ABILITY_AIR_LOCK) == 0) {
         if (ctx->fieldCondition & FIELD_CONDITION_SANDSTORM_ALL) {
@@ -4666,7 +4666,7 @@ BOOL BtlCmd_CheckToxicSpikes(BattleSystem *battleSystem, BattleContext *ctx) {
         ctx->calcTemp = ctx->fieldSideConditionData[fieldSide].toxicSpikesLayers;
         ctx->statChangeType = 6;
         ctx->battlerIdStatChange = battlerId;
-        if (GetBattlerVar(ctx, ctx->battlerIdSwitch, BMON_DATA_TYPE_1, NULL) == TYPE_POISON || GetBattlerVar(ctx, ctx->battlerIdSwitch, BMON_DATA_TYPE_2, NULL) == TYPE_POISON) {
+        if (BattleMon_Get(ctx, ctx->battlerIdSwitch, BMON_DATA_TYPE_1, NULL) == TYPE_POISON || BattleMon_Get(ctx, ctx->battlerIdSwitch, BMON_DATA_TYPE_2, NULL) == TYPE_POISON) {
             ctx->fieldSideConditionFlags[fieldSide] &= ~(1 << 10);
             ctx->fieldSideConditionData[fieldSide].toxicSpikesLayers = 0;
             ctx->calcTemp = 0;
@@ -4887,7 +4887,7 @@ BOOL BtlCmd_TryCamouflage(BattleSystem *battleSystem, BattleContext *ctx) {
     }
     int type = sCamouflageTypeTable[terrain];
 
-    if (GetBattlerVar(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_1, NULL) != type && GetBattlerVar(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_2, NULL) != type) {
+    if (BattleMon_Get(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_1, NULL) != type && BattleMon_Get(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_2, NULL) != type) {
         ctx->battleMons[ctx->battlerIdAttacker].type1 = type;
         ctx->battleMons[ctx->battlerIdAttacker].type2 = type;
         ctx->msgTemp = type;
@@ -5046,8 +5046,8 @@ BOOL BtlCmd_CheckStealthRock(BattleSystem *battleSystem, BattleContext *ctx) {
 
     int battlerId = BattleSystem_GetBattlerIDBySide(battleSystem, ctx, side);
     int fieldSide = BattleSystem_GetFieldSide(battleSystem, battlerId);
-    int type1 = GetBattlerVar(ctx, battlerId, BMON_DATA_TYPE_1, NULL);
-    int type2 = GetBattlerVar(ctx, battlerId, BMON_DATA_TYPE_2, NULL);
+    int type1 = BattleMon_Get(ctx, battlerId, BMON_DATA_TYPE_1, NULL);
+    int type2 = BattleMon_Get(ctx, battlerId, BMON_DATA_TYPE_2, NULL);
 
     if (ctx->fieldSideConditionFlags[fieldSide] & 128 && ctx->battleMons[battlerId].hp) {
         switch (CalculateTypeEffectiveness(TYPE_ROCK, type1, type2)) {
@@ -7161,8 +7161,8 @@ static u32 BattleSystem_CalculateBallShakes(BattleSystem *bsys, BattleContext *c
     }
 
     ballMultiplier = 10; // All ball multipliers are /10, so this is x1.
-    targetMonType1 = GetBattlerVar(ctx, ctx->battlerIdTarget, BMON_DATA_TYPE_1, 0);
-    u32 targetMonType2 = GetBattlerVar(ctx, ctx->battlerIdTarget, BMON_DATA_TYPE_2, 0);
+    targetMonType1 = BattleMon_Get(ctx, ctx->battlerIdTarget, BMON_DATA_TYPE_1, 0);
+    u32 targetMonType2 = BattleMon_Get(ctx, ctx->battlerIdTarget, BMON_DATA_TYPE_2, 0);
     u32 itemTemp = ctx->itemTemp;
     if (ctx->itemTemp > ITEM_SAFARI_BALL) { // Skip all balls that have no condition.
         switch (ctx->itemTemp) {

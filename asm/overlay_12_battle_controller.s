@@ -3,225 +3,10 @@
 	.include "global.inc"
 
 	.text
-	.public BattleController_SendMessage
+	.public BattleController_SendLocalMessage
 	.public BattleController_RecvMessage
+	.public SendMessage
 
-	
-	thumb_func_start ov12_02262240
-ov12_02262240: ; 0x02262240
-	push {r3, r4, r5, r6, r7, lr}
-	sub sp, #8
-	add r5, r0, #0
-	str r1, [sp, #4]
-	ldr r1, [r5, #0x2c]
-	mov r0, #4
-	add r7, r2, #0
-	add r6, r3, #0
-	tst r0, r1
-	beq _0226229A
-	ldr r0, _022622C4 ; =0x0000240C
-	ldr r1, [r5, r0]
-	mov r0, #0x10
-	tst r0, r1
-	bne _0226229A
-	ldr r0, [sp, #4]
-	cmp r0, #1
-	bne _02262284
-	mov r4, #0
-	bl sub_02037454
-	cmp r0, #0
-	ble _02262284
-_0226226E:
-	ldrb r3, [r6]
-	ldr r0, [r5, #0x30]
-	add r1, r4, #0
-	add r2, r7, #0
-	bl ov12_0224ECC4
-	add r4, r4, #1
-	bl sub_02037454
-	cmp r4, r0
-	blt _0226226E
-_02262284:
-	add r0, sp, #0x10
-	ldrb r0, [r0, #0x10]
-	ldr r1, [sp, #4]
-	add r2, r7, #0
-	str r0, [sp]
-	add r0, r5, #0
-	add r3, r6, #0
-	bl sub_02074F9C
-	add sp, #8
-	pop {r3, r4, r5, r6, r7, pc}
-_0226229A:
-	ldr r0, [sp, #4]
-	cmp r0, #1
-	bne _022622AC
-	ldrb r3, [r6]
-	ldr r0, [r5, #0x30]
-	mov r1, #0
-	add r2, r7, #0
-	bl ov12_0224ECC4
-_022622AC:
-	add r0, sp, #0x10
-	ldrb r0, [r0, #0x10]
-	ldr r1, [sp, #4]
-	add r2, r7, #0
-	str r0, [sp]
-	add r0, r5, #0
-	add r3, r6, #0
-	bl BattleController_SendMessage
-	add sp, #8
-	pop {r3, r4, r5, r6, r7, pc}
-	nop
-_022622C4: .word 0x0000240C
-	thumb_func_end ov12_02262240
-
-	thumb_func_start BattleController_EmitPlayEncounterAnimation
-BattleController_EmitPlayEncounterAnimation: ; 0x022622C8
-	push {r4, r5, lr}
-	sub sp, #0xc
-	add r4, r1, #0
-	mov r1, #1
-	add r5, r0, #0
-	str r1, [sp, #4]
-	bl BattleSystem_GetRandTemp
-	str r0, [sp, #8]
-	mov r0, #8
-	str r0, [sp]
-	add r0, r5, #0
-	mov r1, #1
-	add r2, r4, #0
-	add r3, sp, #4
-	bl ov12_02262240
-	add sp, #0xc
-	pop {r4, r5, pc}
-	.balign 4, 0
-	thumb_func_end BattleController_EmitPlayEncounterAnimation
-
-	thumb_func_start BattleController_EmitPokemonEncounter
-BattleController_EmitPokemonEncounter: ; 0x022622F0
-	push {r3, r4, r5, r6, r7, lr}
-	sub sp, #0x40
-	add r7, r1, #0
-	mov r3, #2
-	add r2, sp, #4
-	strb r3, [r2]
-	mov r2, #0xc0
-	add r4, r7, #0
-	mul r4, r2
-	add r2, sp, #4
-	ldrb r5, [r2, #1]
-	mov r2, #3
-	add r6, r0, #0
-	bic r5, r2
-	ldr r2, [r6, #0x30]
-	add r3, r2, r4
-	ldr r2, _022623E8 ; =0x00002DBE
-	mov ip, r2
-	ldrb r2, [r3, r2]
-	lsl r2, r2, #0x1c
-	lsr r3, r2, #0x1c
-	mov r2, #3
-	and r2, r3
-	add r3, r5, #0
-	orr r3, r2
-	add r2, sp, #4
-	strb r3, [r2, #1]
-	ldrb r5, [r2, #1]
-	mov r2, #4
-	bic r5, r2
-	ldr r2, [r6, #0x30]
-	add r3, r2, r4
-	mov r2, ip
-	sub r2, #0x58
-	ldrb r2, [r3, r2]
-	add r3, r5, #0
-	lsl r2, r2, #0x1a
-	lsr r2, r2, #0x1f
-	lsl r2, r2, #0x1f
-	lsr r2, r2, #0x1d
-	orr r3, r2
-	add r2, sp, #4
-	strb r3, [r2, #1]
-	ldr r2, [r6, #0x30]
-	add r3, r2, r4
-	mov r2, ip
-	sub r2, #0x7e
-	ldrh r3, [r3, r2]
-	add r2, sp, #4
-	strh r3, [r2, #2]
-	ldr r2, [r6, #0x30]
-	add r3, r2, r4
-	mov r2, ip
-	sub r2, #0x16
-	ldr r2, [r3, r2]
-	str r2, [sp, #8]
-	bl ov12_0223AB0C
-	add r2, r0, #0
-	ldr r0, [r6, #0x30]
-	add r1, r7, #0
-	mov r3, #1
-	bl ov12_02256748
-	add r2, sp, #4
-	str r0, [sp, #0xc]
-	ldrb r0, [r2, #1]
-	mov r1, #0xf8
-	add r5, sp, #4
-	bic r0, r1
-	ldr r1, [r6, #0x30]
-	add r3, r1, r4
-	ldr r1, _022623EC ; =0x00002D66
-	mov r4, #0
-	ldrb r1, [r3, r1]
-	lsl r1, r1, #0x1b
-	lsr r1, r1, #0x1b
-	lsl r1, r1, #0x1b
-	lsr r1, r1, #0x18
-	orr r0, r1
-	strb r0, [r2, #1]
-_02262392:
-	ldr r0, [r6, #0x30]
-	add r1, r7, #0
-	add r2, r4, #6
-	mov r3, #0
-	bl GetBattlerVar
-	strh r0, [r5, #0xc]
-	add r2, r4, #0
-	ldr r0, [r6, #0x30]
-	add r1, r7, #0
-	add r2, #0x1f
-	mov r3, #0
-	bl GetBattlerVar
-	strh r0, [r5, #0x14]
-	add r2, r4, #0
-	ldr r0, [r6, #0x30]
-	add r1, r7, #0
-	add r2, #0x27
-	mov r3, #0
-	bl GetBattlerVar
-	strh r0, [r5, #0x1c]
-	add r4, r4, #1
-	add r5, r5, #2
-	cmp r4, #4
-	blt _02262392
-	ldr r0, [r6, #0x30]
-	add r1, r7, #0
-	mov r2, #0x2d
-	add r3, sp, #0x28
-	bl GetBattlerVar
-	mov r0, #0x3c
-	str r0, [sp]
-	add r0, r6, #0
-	mov r1, #1
-	add r2, r7, #0
-	add r3, sp, #4
-	bl ov12_02262240
-	add sp, #0x40
-	pop {r3, r4, r5, r6, r7, pc}
-	.balign 4, 0
-_022623E8: .word 0x00002DBE
-_022623EC: .word 0x00002D66
-	thumb_func_end BattleController_EmitPokemonEncounter
 
 	thumb_func_start BattleController_EmitPokemonSlideIn
 BattleController_EmitPokemonSlideIn: ; 0x022623F0
@@ -331,21 +116,21 @@ _022624C2:
 	add r1, r7, #0
 	add r2, r4, #6
 	mov r3, #0
-	bl GetBattlerVar
+	bl BattleMon_Get
 	strh r0, [r5, #0x18]
 	add r2, r4, #0
 	ldr r0, [r6, #0x30]
 	add r1, r7, #0
 	add r2, #0x1f
 	mov r3, #0
-	bl GetBattlerVar
+	bl BattleMon_Get
 	strh r0, [r5, #0x20]
 	add r2, r4, #0
 	ldr r0, [r6, #0x30]
 	add r1, r7, #0
 	add r2, #0x27
 	mov r3, #0
-	bl GetBattlerVar
+	bl BattleMon_Get
 	strh r0, [r5, #0x28]
 	add r4, r4, #1
 	add r5, r5, #2
@@ -355,14 +140,14 @@ _022624C2:
 	add r1, r7, #0
 	mov r2, #0x2d
 	add r3, sp, #0x34
-	bl GetBattlerVar
+	bl BattleMon_Get
 	mov r0, #0x74
 	str r0, [sp]
 	add r0, r6, #0
 	mov r1, #1
 	add r2, r7, #0
 	add r3, sp, #4
-	bl ov12_02262240
+	bl SendMessage
 	add sp, #0x78
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -517,21 +302,21 @@ _02262634:
 	add r1, r7, #0
 	add r2, r6, #6
 	mov r3, #0
-	bl GetBattlerVar
+	bl BattleMon_Get
 	strh r0, [r5, #0x18]
 	add r2, r6, #0
 	ldr r0, [r4, #0x30]
 	add r1, r7, #0
 	add r2, #0x1f
 	mov r3, #0
-	bl GetBattlerVar
+	bl BattleMon_Get
 	strh r0, [r5, #0x20]
 	add r2, r6, #0
 	ldr r0, [r4, #0x30]
 	add r1, r7, #0
 	add r2, #0x27
 	mov r3, #0
-	bl GetBattlerVar
+	bl BattleMon_Get
 	strh r0, [r5, #0x28]
 	add r6, r6, #1
 	add r5, r5, #2
@@ -541,7 +326,7 @@ _02262634:
 	add r1, r7, #0
 	mov r2, #0x2d
 	add r3, sp, #0x40
-	bl GetBattlerVar
+	bl BattleMon_Get
 	add r3, sp, #0x10
 	mov r2, #0
 	mov ip, r2
@@ -622,7 +407,7 @@ _022626EA:
 	mov r1, #1
 	add r2, r7, #0
 	add r3, sp, #0x10
-	bl ov12_02262240
+	bl SendMessage
 	add sp, #0x84
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -806,7 +591,7 @@ _02262852:
 	ldr r2, [sp, #8]
 	mov r1, #1
 	add r3, sp, #0xc
-	bl ov12_02262240
+	bl SendMessage
 	add sp, #0x3c
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -907,7 +692,7 @@ _02262930:
 	mov r1, #1
 	add r2, r7, #0
 	add r3, sp, #8
-	bl ov12_02262240
+	bl SendMessage
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -926,7 +711,7 @@ BattleController_EmitDeletePokemon: ; 0x02262958
 	str r1, [sp]
 	mov r1, #1
 	add r3, sp, #4
-	bl ov12_02262240
+	bl SendMessage
 	add sp, #8
 	pop {r3, pc}
 	.balign 4, 0
@@ -954,7 +739,7 @@ BattleController_EmitTrainerEncounter: ; 0x02262974
 	str r1, [sp]
 	mov r1, #1
 	add r3, sp, #4
-	bl ov12_02262240
+	bl SendMessage
 	add sp, #8
 	pop {r3, pc}
 	thumb_func_end BattleController_EmitTrainerEncounter
@@ -982,7 +767,7 @@ BattleController_EmitThrowPokeball: ; 0x022629A4
 	str r0, [sp]
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_02262240
+	bl SendMessage
 	add sp, #8
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -1000,7 +785,7 @@ BattleController_EmitTrainerSlideOut: ; 0x022629DC
 	str r1, [sp]
 	mov r1, #1
 	add r3, sp, #4
-	bl ov12_02262240
+	bl SendMessage
 	add sp, #8
 	pop {r3, pc}
 	.balign 4, 0
@@ -1030,7 +815,7 @@ BattleController_EmitTrainerSlideIn: ; 0x022629F8
 	add r2, r3, #0
 	mov r1, #1
 	add r3, sp, #4
-	bl ov12_02262240
+	bl SendMessage
 	add sp, #0xc
 	pop {r3, r4, pc}
 	thumb_func_end BattleController_EmitTrainerSlideIn
@@ -1172,7 +957,7 @@ _02262AE2:
 	mov r1, #1
 	add r2, r4, #0
 	add r3, sp, #0x14
-	bl ov12_02262240
+	bl SendMessage
 	add sp, #0x2c
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -1194,7 +979,7 @@ BattleController_EmitHealthbarSlideOut: ; 0x02262B64
 	str r1, [sp]
 	mov r1, #1
 	add r3, sp, #4
-	bl ov12_02262240
+	bl SendMessage
 	add sp, #8
 	pop {r3, pc}
 	.balign 4, 0
@@ -1584,21 +1369,21 @@ _02262E82:
 	ldr r1, [sp, #0xc]
 	add r2, r5, #6
 	add r3, r7, #0
-	bl GetBattlerVar
+	bl BattleMon_Get
 	strh r0, [r6, #0x14]
 	add r2, r5, #0
 	ldr r0, [sp, #8]
 	ldr r1, [sp, #0xc]
 	add r2, #0x1f
 	mov r3, #0
-	bl GetBattlerVar
+	bl BattleMon_Get
 	strb r0, [r4, #0x1c]
 	add r2, r5, #0
 	ldr r0, [sp, #8]
 	ldr r1, [sp, #0xc]
 	add r2, #0x27
 	mov r3, #0
-	bl GetBattlerVar
+	bl BattleMon_Get
 	add r1, r4, #0
 	add r1, #0x20
 	add r5, r5, #1
@@ -1653,7 +1438,7 @@ _02262F0E:
 	ldr r2, [sp, #0xc]
 	mov r1, #1
 	add r3, sp, #0x28
-	bl ov12_02262240
+	bl SendMessage
 	add sp, #0x54
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -1668,7 +1453,7 @@ ov12_02262F24: ; 0x02262F24
 	str r1, [sp]
 	mov r1, #0
 	add r3, sp, #0x10
-	bl ov12_02262240
+	bl SendMessage
 	pop {r3}
 	pop {r3}
 	add sp, #0x10
@@ -1743,7 +1528,7 @@ _02262F7A:
 	ldr r2, [sp, #0xc]
 	mov r1, #1
 	add r3, sp, #0x14
-	bl ov12_02262240
+	bl SendMessage
 	add sp, #0x28
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -1762,7 +1547,7 @@ ov12_02262FE0: ; 0x02262FE0
 	str r1, [sp]
 	mov r1, #0
 	add r3, sp, #0x10
-	bl ov12_02262240
+	bl SendMessage
 	pop {r3}
 	pop {r3}
 	add sp, #0x10
@@ -1909,7 +1694,7 @@ _022630DE:
 	ldr r2, [sp, #0xc]
 	mov r1, #1
 	add r3, sp, #0x1c
-	bl ov12_02262240
+	bl SendMessage
 	add sp, #0x40
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -1929,7 +1714,7 @@ ov12_0226311C: ; 0x0226311C
 	str r1, [sp]
 	mov r1, #0
 	add r3, sp, #0x10
-	bl ov12_02262240
+	bl SendMessage
 	pop {r3}
 	pop {r3}
 	add sp, #0x10
@@ -2128,7 +1913,7 @@ _02263298:
 	ldr r2, [sp, #0xc]
 	mov r1, #1
 	add r3, sp, #0x10
-	bl ov12_02262240
+	bl SendMessage
 	add sp, #0x34
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -2148,7 +1933,7 @@ ov12_022632C0: ; 0x022632C0
 	str r1, [sp]
 	mov r1, #0
 	add r3, sp, #0x10
-	bl ov12_02262240
+	bl SendMessage
 	pop {r3}
 	pop {r3}
 	add sp, #0x10
@@ -2214,7 +1999,7 @@ _02263324:
 	ldr r2, [sp, #0xc]
 	mov r1, #1
 	add r3, sp, #0x10
-	bl ov12_02262240
+	bl SendMessage
 	add sp, #0x38
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -2232,7 +2017,7 @@ ov12_02263360: ; 0x02263360
 	str r1, [sp]
 	mov r1, #0
 	add r3, sp, #0x10
-	bl ov12_02262240
+	bl SendMessage
 	pop {r3}
 	pop {r3}
 	add sp, #0x10
@@ -2266,7 +2051,7 @@ BattleController_EmitDrawYesNoBox: ; 0x0226337C
 	str r0, [sp]
 	add r0, r6, #0
 	add r3, sp, #4
-	bl ov12_02262240
+	bl SendMessage
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -2293,7 +2078,7 @@ BattleController_EmitPrintAttackMessage: ; 0x022633B8
 	ldr r2, [r2, #0x64]
 	mov r1, #1
 	add r3, sp, #4
-	bl ov12_02262240
+	bl SendMessage
 	add sp, #8
 	pop {r4, pc}
 	nop
@@ -2313,7 +2098,7 @@ BattleController_EmitPrintMessage: ; 0x022633F0
 	str r1, [sp]
 	ldr r2, [r4, #0x64]
 	mov r1, #1
-	bl ov12_02262240
+	bl SendMessage
 	add sp, #4
 	pop {r3, r4, pc}
 	thumb_func_end BattleController_EmitPrintMessage
@@ -2339,7 +2124,7 @@ BattleController_SetMoveAnimation: ; 0x0226340C
 	add r0, r5, #0
 	mov r1, #1
 	add r3, sp, #0x10
-	bl ov12_02262240
+	bl SendMessage
 	add sp, #0x68
 	pop {r4, r5, r6, pc}
 	thumb_func_end BattleController_SetMoveAnimation
@@ -2364,7 +2149,7 @@ ov12_0226343C: ; 0x0226343C
 	mov r1, #1
 	add r2, r4, #0
 	add r3, sp, #0x10
-	bl ov12_02262240
+	bl SendMessage
 	add sp, #0x68
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -2381,7 +2166,7 @@ BattleController_EmitMonFlicker: ; 0x0226346C
 	str r1, [sp]
 	mov r1, #1
 	add r3, sp, #4
-	bl ov12_02262240
+	bl SendMessage
 	add sp, #8
 	pop {r3, pc}
 	.balign 4, 0
@@ -2479,7 +2264,7 @@ _0226350E:
 	ldr r2, [sp, #8]
 	mov r1, #1
 	add r3, sp, #0xc
-	bl ov12_02262240
+	bl SendMessage
 	add sp, #0x20
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -2544,7 +2329,7 @@ ov12_02263564: ; 0x02263564
 	mov r1, #1
 	add r2, r4, #0
 	add r3, sp, #0xc
-	bl ov12_02262240
+	bl SendMessage
 	add sp, #0x1c
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -2685,7 +2470,7 @@ _022636B6:
 	mov r1, #1
 	mov r2, ip
 	add r3, sp, #0xc
-	bl ov12_02262240
+	bl SendMessage
 	add sp, #0x3c
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -2710,7 +2495,7 @@ BattleController_EmitPlaySE: ; 0x022636FC
 	add r2, r3, #0
 	mov r1, #1
 	add r3, sp, #4
-	bl ov12_02262240
+	bl SendMessage
 	add sp, #8
 	pop {r4, pc}
 	.balign 4, 0
@@ -2727,7 +2512,7 @@ BattleController_EmitFadeOutBattle: ; 0x0226371C
 	mov r1, #1
 	mov r2, #0
 	add r3, sp, #4
-	bl ov12_02262240
+	bl SendMessage
 	add sp, #8
 	pop {r3, pc}
 	.balign 4, 0
@@ -2827,7 +2612,7 @@ _022637C6:
 	mov r1, #1
 	mov r2, ip
 	add r3, sp, #8
-	bl ov12_02262240
+	bl SendMessage
 	add sp, #0x30
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -2853,7 +2638,7 @@ BattleController_EmitHealthbarStatus: ; 0x02263808
 	mov r1, #1
 	add r2, r4, #0
 	add r3, sp, #4
-	bl ov12_02262240
+	bl SendMessage
 	add sp, #8
 	pop {r4, pc}
 	thumb_func_end BattleController_EmitHealthbarStatus
@@ -2872,7 +2657,7 @@ BattleController_EmitPrintTrainerMessage: ; 0x02263828
 	mov r1, #1
 	add r2, r4, #0
 	add r3, sp, #4
-	bl ov12_02262240
+	bl SendMessage
 	add sp, #8
 	pop {r4, pc}
 	thumb_func_end BattleController_EmitPrintTrainerMessage
@@ -2897,7 +2682,7 @@ BattleController_EmitSetStatus2Effect: ; 0x02263848
 	mov r1, #1
 	add r2, r4, #0
 	add r3, sp, #0x10
-	bl ov12_02262240
+	bl SendMessage
 	add sp, #0x68
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -2924,7 +2709,7 @@ BattleController_EmitCopyStatus2Effect: ; 0x02263878
 	mov r1, #1
 	add r2, r4, #0
 	add r3, sp, #0x10
-	bl ov12_02262240
+	bl SendMessage
 	add sp, #0x68
 	pop {r3, r4, r5, pc}
 	thumb_func_end BattleController_EmitCopyStatus2Effect
@@ -2956,7 +2741,7 @@ BattleController_EmitPrintReturnMessage: ; 0x022638A8
 	mov r1, #1
 	add r2, r4, #0
 	add r3, sp, #4
-	bl ov12_02262240
+	bl SendMessage
 	add sp, #8
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -2999,7 +2784,7 @@ _02263920:
 	mov r1, #1
 	add r2, r4, #0
 	add r3, sp, #4
-	bl ov12_02262240
+	bl SendMessage
 	add sp, #8
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -3016,7 +2801,7 @@ BattleController_EmitPrintEncounterMessage: ; 0x02263938
 	str r1, [sp]
 	mov r1, #1
 	add r3, sp, #4
-	bl ov12_02262240
+	bl SendMessage
 	add sp, #8
 	pop {r3, pc}
 	thumb_func_end BattleController_EmitPrintEncounterMessage
@@ -3054,7 +2839,7 @@ _02263982:
 	add r0, r6, #0
 	mov r1, #1
 	add r3, sp, #8
-	bl ov12_02262240
+	bl SendMessage
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -3072,7 +2857,7 @@ ov12_0226399C: ; 0x0226399C
 	str r1, [sp]
 	mov r1, #1
 	add r3, sp, #4
-	bl ov12_02262240
+	bl SendMessage
 	add sp, #8
 	pop {r3, pc}
 	.balign 4, 0
@@ -3107,7 +2892,7 @@ _022639D8:
 	add r0, r5, #0
 	add r2, r4, #0
 	add r3, sp, #4
-	bl ov12_02262240
+	bl SendMessage
 	add sp, #0x2c
 	pop {r3, r4, r5, r6}
 	pop {r3}
@@ -3127,7 +2912,7 @@ ov12_02263A00: ; 0x02263A00
 	str r1, [sp]
 	mov r1, #0
 	add r3, sp, #4
-	bl ov12_02262240
+	bl SendMessage
 	add sp, #8
 	pop {r3, pc}
 	.balign 4, 0
@@ -3266,7 +3051,7 @@ _02263AD0:
 	mov r1, #1
 	add r2, r4, #0
 	add r3, sp, #0x10
-	bl ov12_02262240
+	bl SendMessage
 	add sp, #0x24
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -3438,7 +3223,7 @@ _02263C72:
 	ldr r2, [sp, #8]
 	mov r1, #1
 	add r3, sp, #0x10
-	bl ov12_02262240
+	bl SendMessage
 	add sp, #0x3c
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -3465,7 +3250,7 @@ BattleController_EmitBackgroundSlideIn: ; 0x02263CB0
 	str r1, [sp]
 	mov r1, #1
 	add r3, sp, #4
-	bl ov12_02262240
+	bl SendMessage
 	add sp, #8
 	pop {r3, pc}
 	.balign 4, 0
@@ -3482,7 +3267,7 @@ ov12_02263CCC: ; 0x02263CCC
 	str r1, [sp]
 	mov r1, #1
 	add r3, sp, #4
-	bl ov12_02262240
+	bl SendMessage
 	add sp, #8
 	pop {r3, pc}
 	.balign 4, 0
@@ -3506,7 +3291,7 @@ BattleControl_EmitPartyStatusHeal: ; 0x02263CE8
 	mov r1, #4
 	str r1, [sp]
 	mov r1, #1
-	bl ov12_02262240
+	bl SendMessage
 	add sp, #8
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -3535,7 +3320,7 @@ ov12_02263D14: ; 0x02263D14
 	mov r1, #1
 	add r2, r5, #0
 	add r3, sp, #4
-	bl ov12_02262240
+	bl SendMessage
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov12_02263D14
@@ -3555,7 +3340,7 @@ BattleController_EmitPlayMosaicAnimation: ; 0x02263D48
 	mov r1, #1
 	add r2, r4, #0
 	add r3, sp, #4
-	bl ov12_02262240
+	bl SendMessage
 	add sp, #8
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -3631,7 +3416,7 @@ _02263DD6:
 	str r1, [sp]
 	mov r1, #1
 	add r2, r7, #0
-	bl ov12_02262240
+	bl SendMessage
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -3649,7 +3434,7 @@ BattleController_EmitSetBattleBackground: ; 0x02263DFC
 	str r1, [sp]
 	mov r1, #1
 	add r3, sp, #4
-	bl ov12_02262240
+	bl SendMessage
 	add sp, #8
 	pop {r3, pc}
 	.balign 4, 0
@@ -3666,7 +3451,7 @@ ov12_02263E18: ; 0x02263E18
 	str r1, [sp]
 	mov r1, #1
 	add r3, sp, #4
-	bl ov12_02262240
+	bl SendMessage
 	add sp, #8
 	pop {r3, pc}
 	.balign 4, 0
@@ -3689,7 +3474,7 @@ BattleController_EmitInitStartBallGauge: ; 0x02263E34
 	mov r1, #1
 	add r2, r4, #0
 	add r3, sp, #4
-	bl ov12_02262240
+	bl SendMessage
 	add sp, #0xc
 	pop {r4, r5, pc}
 	thumb_func_end BattleController_EmitInitStartBallGauge
@@ -3711,7 +3496,7 @@ BattleController_EmitDeleteStartBallGauge: ; 0x02263E5C
 	mov r1, #1
 	add r2, r4, #0
 	add r3, sp, #4
-	bl ov12_02262240
+	bl SendMessage
 	add sp, #0xc
 	pop {r4, r5, pc}
 	thumb_func_end BattleController_EmitDeleteStartBallGauge
@@ -3733,7 +3518,7 @@ BattleController_EmitInitBallGauge: ; 0x02263E84
 	mov r1, #1
 	add r2, r4, #0
 	add r3, sp, #4
-	bl ov12_02262240
+	bl SendMessage
 	add sp, #0xc
 	pop {r4, r5, pc}
 	thumb_func_end BattleController_EmitInitBallGauge
@@ -3755,7 +3540,7 @@ BattleController_EmitDeleteBallGauge: ; 0x02263EAC
 	mov r1, #1
 	add r2, r4, #0
 	add r3, sp, #4
-	bl ov12_02262240
+	bl SendMessage
 	add sp, #0xc
 	pop {r4, r5, pc}
 	thumb_func_end BattleController_EmitDeleteBallGauge
@@ -3771,7 +3556,7 @@ BattleController_EmitLoadBallGfx: ; 0x02263ED4
 	mov r1, #1
 	mov r2, #0
 	add r3, sp, #4
-	bl ov12_02262240
+	bl SendMessage
 	add sp, #8
 	pop {r3, pc}
 	.balign 4, 0
@@ -3788,7 +3573,7 @@ BattleController_EmitDeleteBallGfx: ; 0x02263EF0
 	mov r1, #1
 	mov r2, #0
 	add r3, sp, #4
-	bl ov12_02262240
+	bl SendMessage
 	add sp, #8
 	pop {r3, pc}
 	.balign 4, 0
@@ -3809,7 +3594,7 @@ BattleController_EmitIncrementGameStat: ; 0x02263F0C
 	mov r1, #1
 	add r2, r4, #0
 	add r3, sp, #4
-	bl ov12_02262240
+	bl SendMessage
 	add sp, #8
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -3854,7 +3639,7 @@ _02263F74:
 	mov r1, #1
 	add r2, r4, #0
 	add r3, sp, #4
-	bl ov12_02262240
+	bl SendMessage
 _02263F84:
 	add sp, #0x24
 	pop {r4, r5, pc}
@@ -3939,7 +3724,7 @@ _02263FF6:
 	ldr r2, [sp, #8]
 	mov r1, #1
 	add r3, sp, #0xc
-	bl ov12_02262240
+	bl SendMessage
 	add sp, #0x64
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -3961,7 +3746,7 @@ ov12_02264038: ; 0x02264038
 	str r1, [sp]
 	mov r1, #1
 	add r3, sp, #4
-	bl ov12_02262240
+	bl SendMessage
 	add sp, #8
 	pop {r3, pc}
 	.balign 4, 0
@@ -3978,7 +3763,7 @@ ov12_02264054: ; 0x02264054
 	str r1, [sp]
 	mov r1, #1
 	add r3, sp, #4
-	bl ov12_02262240
+	bl SendMessage
 	add sp, #8
 	pop {r3, pc}
 	.balign 4, 0
@@ -3995,7 +3780,7 @@ BattleController_EmitPrintResultMessage: ; 0x02264070
 	mov r1, #1
 	mov r2, #0
 	add r3, sp, #4
-	bl ov12_02262240
+	bl SendMessage
 	add sp, #8
 	pop {r3, pc}
 	.balign 4, 0
@@ -4066,7 +3851,7 @@ _02264104:
 	mov r1, #1
 	mov r2, #0
 	add r3, sp, #8
-	bl ov12_02262240
+	bl SendMessage
 	add sp, #0x28
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -4112,7 +3897,7 @@ _02264162:
 	mov r1, #1
 	mov r2, #0
 	add r3, sp, #4
-	bl ov12_02262240
+	bl SendMessage
 	add sp, #0x24
 	pop {r3, r4, pc}
 	nop
@@ -4196,7 +3981,7 @@ _022641E6:
 	ldr r2, [sp, #8]
 	mov r1, #1
 	add r3, sp, #0xc
-	bl ov12_02262240
+	bl SendMessage
 	add sp, #0x64
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -4237,7 +4022,7 @@ _02264252:
 	str r1, [sp]
 	mov r1, #1
 	add r3, sp, #4
-	bl ov12_02262240
+	bl SendMessage
 	add sp, #8
 	pop {r3, r4, r5, pc}
 	nop
@@ -4258,7 +4043,7 @@ BattleController_EmitPlaySong: ; 0x02264268
 	mov r1, #1
 	add r2, r4, #0
 	add r3, sp, #4
-	bl ov12_02262240
+	bl SendMessage
 	add sp, #8
 	pop {r4, pc}
 	thumb_func_end BattleController_EmitPlaySong
@@ -4306,7 +4091,7 @@ _022642D6:
 	mov r1, #1
 	mov r2, #0
 	add r3, sp, #4
-	bl ov12_02262240
+	bl SendMessage
 	add sp, #0x28
 	pop {r3, r4, r5, pc}
 	nop
@@ -4324,7 +4109,7 @@ BattleController_EmitBlankMessage: ; 0x022642F0
 	mov r1, #1
 	mov r2, #0
 	add r3, sp, #4
-	bl ov12_02262240
+	bl SendMessage
 	add sp, #8
 	pop {r3, pc}
 	.balign 4, 0
@@ -4347,7 +4132,7 @@ ov12_0226430C: ; 0x0226430C
 	mov r1, #2
 	add r2, r4, #0
 	add r3, sp, #4
-	bl ov12_02262240
+	bl SendMessage
 	add sp, #8
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov12_0226430C
@@ -4712,7 +4497,7 @@ ov12_022645C8: ; 0x022645C8
 	mov r1, #1
 	mov r2, #0
 	add r3, sp, #4
-	bl ov12_02262240
+	bl SendMessage
 	add sp, #8
 	pop {r3, r4, r5, pc}
 	.balign 4, 0

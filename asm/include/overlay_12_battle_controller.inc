@@ -47,7 +47,7 @@
 .public ov12_0224ECC4
 .public ov12_0224ED00
 .public BattleBuffer_Clear
-.public GetBattlerVar
+.public BattleMon_Get
 .public GetBattlerStatusCondition
 .public StruggleCheck
 .public CheckAbilityActive

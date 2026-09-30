@@ -224,7 +224,7 @@
 .public ov12_0223C1F4
 .public BattleSystem_PrintTrainerMessage
 .public BattleSystem_PrintBattleMessage
-.public GetBattlerVar
+.public BattleMon_Get
 .public ov12_022506D4
 .public ov12_02251D28
 .public ov12_02252054

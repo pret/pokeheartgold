@@ -392,7 +392,7 @@
 .public BattlerSetAbility
 .public BattleSystem_ReloadMonData
 .public Link_QueueNotEmpty
-.public GetBattlerVar
+.public BattleMon_Get
 .public ov12_022567D4
 .public BattleBuffer_GetNext
 .public ov12_022568B0

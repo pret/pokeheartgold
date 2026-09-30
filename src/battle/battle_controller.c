@@ -1,7 +1,8 @@
 #include "battle/battle_controller.h"
+#include "battle/battle_message_structs.h"
 
 // static
-void BattleController_SendMessage(BattleSystem *battleSys, int recipient, int battler, void *message, u8 size) {
+void BattleController_SendLocalMessage(BattleSystem *battleSys, int recipient, int battler, void *message, u8 size) {
     int i;
     BattleMessageInfo info;
     u8 *src;
@@ -118,3 +119,59 @@ void BattleSystem_TryRecvMessage(BattleSystem *battleSys, int recipient) {
         readIndex[0] += size;
     }
 }
+
+//static 
+void SendMessage(BattleSystem *battleSys, int recipient, int battler, void *message, u8 size)
+{
+    u8 *data = message;
+
+    if (battleSys->battleType & BATTLE_TYPE_LINK && (battleSys->battleSpecial & BATTLE_TYPE_TAG) == FALSE) {
+        if (recipient == 1) {
+            for (int i = 0; i < sub_02037454(); i++) {
+                ov12_0224ECC4(battleSys->ctx, i, battler, *data);
+            }
+        }
+
+        sub_02074F9C(battleSys, recipient, battler, message, size);
+    } else {
+        if (recipient == 1) {
+            ov12_0224ECC4(battleSys->ctx, 0, battler, *data);
+        }
+
+        BattleController_SendLocalMessage(battleSys, recipient, battler, message, size);
+    }
+}
+
+void BattleController_EmitPlayEncounterAnimation(BattleSystem *battleSys, int battler)
+{
+    EncounterAnimationMessage message;
+
+    message.command = CONTROLLER_COMMAND_START_ENCOUNTER;
+    message.seed = BattleSystem_GetRandTemp(battleSys);
+
+    SendMessage(battleSys, 1, battler, &message, sizeof(EncounterAnimationMessage));
+}
+
+void BattleController_EmitPokemonEncounter(BattleSystem *battleSys, int battler)
+{
+    MonEncounterMessage message;
+    int i;
+
+    message.command = CONTROLLER_COMMAND_TRAINER_MESSAGE;
+    message.gender = battleSys->ctx->battleMons[battler].gender;
+    message.isShiny = battleSys->ctx->battleMons[battler].shiny;
+    message.species = battleSys->ctx->battleMons[battler].species;
+    message.personality = battleSys->ctx->battleMons[battler].personality;
+    message.cryModulation = ov12_02256748(battleSys->ctx, battler, ov12_0223AB0C(battleSys, battler), 1);
+    message.formNum = battleSys->ctx->battleMons[battler].form;
+
+    for (i = 0; i < 4; i++) {
+        message.moves[i] = BattleMon_Get(battleSys->ctx, battler, BMON_DATA_MOVE1 + i, NULL);
+        message.curPP[i] = BattleMon_Get(battleSys->ctx, battler, BMON_DATA_CUR_PP_1 + i, NULL);
+        message.maxPP[i] = BattleMon_Get(battleSys->ctx, battler, BMON_DATA_MAX_PP_1 + i, NULL);
+    }
+
+    BattleMon_Get(battleSys->ctx, battler, BMON_DATA_NICKNAME, &message.nickname);
+    SendMessage(battleSys, 1, battler, &message, sizeof(MonEncounterMessage));
+}
+
