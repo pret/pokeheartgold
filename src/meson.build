@@ -362,6 +362,7 @@ pokeheartgold_c = files(
     'battle/battle_02261FD4.c',
     'battle/battle_022378C0.c',
     'battle/battle_command.c',
+    'battle/battle_controller.c',
     'battle/battle_controller_player.c',
     'battle/battle_cursor.c',
     'battle/battle_finger.c',

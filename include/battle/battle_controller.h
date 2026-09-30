@@ -5,6 +5,8 @@
 
 typedef void (*ControllerFunction)(BattleSystem *, BattleContext *ctx);
 
+void BattleSystem_TryRecvMessage(BattleSystem *battleSys, int recipient);
+
 void BattleController_EmitPlayEncounterAnimation(BattleSystem *battleSystem, BOOL a1);
 void BattleController_EmitPokemonEncounter(BattleSystem *battleSystem, int battlerId);
 void BattleController_EmitPokemonSlideIn(BattleSystem *battleSystem, int battlerId);

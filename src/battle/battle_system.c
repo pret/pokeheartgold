@@ -155,35 +155,35 @@ Pokedex *BattleSystem_GetPokedex(BattleSystem *battleSystem) {
     return battleSystem->pokedex;
 }
 
-u8 *BattleSystem_GetSendBufferPtr(BattleSystem *battleSystem) {
+u8 *BattleSystem_GetServerMessage(BattleSystem *battleSystem) {
     return &battleSystem->sendBuffer[0];
 }
 
-u8 *BattleSystem_GetRecvBufferPtr(BattleSystem *battleSystem) {
+u8 *BattleSystem_GetClientMessage(BattleSystem *battleSystem) {
     return &battleSystem->recvBuffer[0];
 }
 
-u16 *ov12_0223A954(BattleSystem *battleSystem) {
+u16 *BattleSystem_GetServerReadIndex(BattleSystem *battleSystem) {
     return &battleSystem->unk23E8;
 }
 
-u16 *ov12_0223A960(BattleSystem *battleSystem) {
+u16 *BattleSystem_GetServerWriteIndex(BattleSystem *battleSystem) {
     return &battleSystem->unk23EA;
 }
 
-u16 *ov12_0223A96C(BattleSystem *battleSystem) {
+u16 *BattleSystem_GetServerEndIndex(BattleSystem *battleSystem) {
     return &battleSystem->unk23EC;
 }
 
-u16 *ov12_0223A978(BattleSystem *battleSystem) {
+u16 *BattleSystem_GetClientReadIndex(BattleSystem *battleSystem) {
     return &battleSystem->unk23EE;
 }
 
-u16 *ov12_0223A984(BattleSystem *battleSystem) {
+u16 *BattleSystem_GetClientWriteIndex(BattleSystem *battleSystem) {
     return &battleSystem->unk23F0;
 }
 
-u16 *ov12_0223A990(BattleSystem *battleSystem) {
+u16 *BattleSystem_GetClientEndIndex(BattleSystem *battleSystem) {
     return &battleSystem->unk23F2;
 }
 
@@ -724,7 +724,7 @@ u16 BattleSystem_CheckEvolution(BattleSetup *setup, int *selectedMonIndex, int *
     return species;
 }
 
-u8 ov12_0223B688(BattleSystem *battleSystem) {
+u8 BattleSystem_IsInitialized(BattleSystem *battleSystem) {
     return battleSystem->unk23FC;
 }
 

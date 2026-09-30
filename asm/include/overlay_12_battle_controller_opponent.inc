@@ -182,7 +182,7 @@
 .public BattleSystem_GetBattleSpecial
 .public ov12_0223B52C
 .public ov12_0223B580
-.public ov12_0223B688
+.public BattleSystem_IsInitialized
 .public ov12_0223B694
 .public BattleSystem_AreBattleAnimationsOn
 .public BattleSystem_GetTextFrameDelay

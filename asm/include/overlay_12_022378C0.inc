@@ -239,7 +239,7 @@
 .public ov12_02260EA4
 .public ov12_02261264
 .public OpponentData_GetHpBar
-.public ov12_022621C4
+.public BattleSystem_TryRecvMessage
 .public ov12_02265FD4
 .public BgConfig_InitBattleMenuBackgrounds
 .public BgConfig_CleanupBattleMenuBackgrounds
