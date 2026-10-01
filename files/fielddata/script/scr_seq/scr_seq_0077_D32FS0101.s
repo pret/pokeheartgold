@@ -1,9 +1,8 @@
 #include "constants/scrcmd.h"
 #include "fielddata/script/scr_seq/event_D32FS0101.h"
 #include "msgdata/msg/msg_0101_D32FS0101.h"
-	.include "macros/script.inc"
+#include "macros/script.inc"
 
-	.rodata
 
 	ScrDef scr_seq_D32FS0101_000
 	ScrDef scr_seq_D32FS0101_001

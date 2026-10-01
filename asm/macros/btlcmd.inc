@@ -17,8 +17,8 @@
 #include "constants/opcode.h"
 #include "msgdata/msg/msg_0197.h"
 
-    .equ FALSE 0
-    .equ TRUE 1
+    .equ FALSE, 0
+    .equ TRUE, 1
 
     .macro PlayEncounterAnimation
     .long 0
@@ -1244,5 +1244,9 @@
     .macro End
     .long 224
     .endm
+
+    .text
+    .globl _start
+_start:
 
     .endif // ASM_BATTLE_SCRIPT_INC

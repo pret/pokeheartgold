@@ -1,9 +1,8 @@
 #include "constants/scrcmd.h"
 #include "fielddata/script/scr_seq/event_T25R1201.h"
 #include "msgdata/msg/msg_0600_T25R1201.h"
-	.include "macros/script.inc"
+#include "macros/script.inc"
 
-	.rodata
 
 	ScrDef scr_seq_T25R1201_000
 	ScrDef scr_seq_T25R1201_001
@@ -24,7 +23,7 @@
 	ScrDef scr_seq_T25R1201_016
 	ScrDef scr_seq_T25R1201_017
 	ScrDefEnd
-	ScrDefEnd ; not sure why there are two of these...
+	ScrDefEnd // not sure why there are two of these...
 
 scr_seq_T25R1201_001:
 	Compare VAR_UNK_4133, 6

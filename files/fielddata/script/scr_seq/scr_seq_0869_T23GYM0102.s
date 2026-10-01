@@ -1,9 +1,8 @@
 #include "constants/scrcmd.h"
 #include "fielddata/script/scr_seq/event_T23GYM0102.h"
 #include "msgdata/msg/msg_0567_T23GYM0102.h"
-	.include "macros/script.inc"
+#include "macros/script.inc"
 
-	.rodata
 
 	ScrDef scr_seq_T23GYM0102_000
 	ScrDef scr_seq_T23GYM0102_001

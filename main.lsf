@@ -158,7 +158,7 @@ Static main
     Object main.nef.p/asm_unk_02034B0C.s.o
     Object main.nef.p/asm_unk_02035900.s.o
     Object main.nef.p/asm_unk_020379A0.s.o
-    Object main.nef.p/asm_unk_02037C94.s.o
+    Object main.nef.p/src_unk_02037C94.c.o
     Object main.nef.p/asm_unk_0203A3B0.s.o
     Object main.nef.p/src_communication_error.c.o
     Object main.nef.p/src_unk_0203AC88.c.o

@@ -63,7 +63,7 @@ void NitroMain(void) {
     sub_02005D00();
     InitSoundData(Save_Chatot_Get(_02111868.unk_10.saveData), Save_PlayerData_GetOptionsAddr(_02111868.unk_10.saveData));
     Init_Timer3();
-    if (sub_02039FFC(3) == 3) {
+    if (sub_02039FFC(HEAP_ID_3) == 3) {
         ShowWFCUserInfoWarning(HEAP_ID_3, 0);
     }
     if (!Save_FlashChipIsDetected(_02111868.unk_10.saveData)) {

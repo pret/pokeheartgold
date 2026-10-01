@@ -1,9 +1,8 @@
 #include "constants/scrcmd.h"
 #include "fielddata/script/scr_seq/event_T22R0601.h"
 #include "msgdata/msg/msg_0562_T22R0601.h"
-	.include "macros/script.inc"
+#include "macros/script.inc"
 
-	.rodata
 
 	ScrDef scr_seq_T22R0601_000
 	ScrDef scr_seq_T22R0601_001

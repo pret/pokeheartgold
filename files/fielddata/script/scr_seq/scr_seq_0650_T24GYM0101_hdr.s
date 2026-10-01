@@ -1,10 +1,9 @@
 #include "constants/scrcmd.h"
 #include "fielddata/script/scr_seq/event_T24GYM0101.h"
 #include "constants/init_script_types.h"
-	.include "macros/script.inc"
+#include "macros/script.inc"
 
-	.rodata
-	.option alignment off
+
 
 	InitScriptEntry_OnTransition _EV_scr_seq_T24GYM0101_001 + 1
 	InitScriptEntryEnd

@@ -1,9 +1,8 @@
 #include "constants/scrcmd.h"
 #include "fielddata/script/scr_seq/event_HIROBA.h"
 #include "msgdata/msg/msg_0212_HIROBA.h"
-	.include "macros/script.inc"
+#include "macros/script.inc"
 
-	.rodata
 
 	ScrDef scr_seq_HIROBA_000
 	ScrDefEnd

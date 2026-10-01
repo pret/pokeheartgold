@@ -2,9 +2,8 @@
 #include "fielddata/script/scr_seq/event_R36.h"
 #include "msgdata/msg/msg_0390_R36.h"
 #include "constants/battle.h"
-	.include "macros/script.inc"
+#include "macros/script.inc"
 
-	.rodata
 
 	ScrDef scr_seq_R36_000
 	ScrDef scr_seq_R36_001
@@ -155,7 +154,7 @@ _023F:
 	SetFlag FLAG_CAUGHT_SUDOWOODO
 	Return
 
-	; unreferenced
+	// unreferenced
 	CallStd std_bag_is_full
 	CloseMsg
 	GoTo _0200
@@ -229,19 +228,19 @@ _02E2:
 	End
 
 	.balign 4, 0
-_0340: ; unreferenced
+_0340: // unreferenced
 	WalkNormalNorth 2
 	FaceSouth
 	EndMovement
 
 	.balign 4, 0
-_034C: ; unreferenced
+_034C: // unreferenced
 	Delay4 5
 	WalkOnSpotFastNorth 2
 	EndMovement
 
 	.balign 4, 0
-_0358: ; unreferenced
+_0358: // unreferenced
 	WalkNormalNorth
 	EndMovement
 
@@ -252,7 +251,7 @@ _0360:
 	EndMovement
 
 	.balign 4, 0
-_036C: ; unreferenced
+_036C: // unreferenced
 	Delay8
 	FaceSouth
 	EndMovement
@@ -422,14 +421,14 @@ _0572:
 	CloseMsg
 	ReleaseAll
 	End
-	; unreferenced
+	// unreferenced
 	NPCMsg msg_0390_R36_00005
 	WaitButton
 	CloseMsg
 	ReleaseAll
 	End
 
-	; unreferenced
+	// unreferenced
 	CallStd std_bag_is_full
 	CloseMsg
 	ReleaseAll

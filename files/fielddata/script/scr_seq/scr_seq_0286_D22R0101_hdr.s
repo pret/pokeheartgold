@@ -1,14 +1,13 @@
 #include "constants/scrcmd.h"
 #include "fielddata/script/scr_seq/event_D22R0101.h"
 #include "constants/init_script_types.h"
-	.include "macros/script.inc"
+#include "macros/script.inc"
 
-	.rodata
-	.option alignment off
+
 
 	InitScriptEntry_OnFrameTable scr_seq_D22R0101_map_scripts_2
-	InitScriptEntry_OnResume _EV_scr_seq_D22R0101_011 + 1, 0
-	InitScriptEntry_OnTransition _EV_scr_seq_D22R0101_025 + 1, 0
+	InitScriptEntry_OnResume _EV_scr_seq_D22R0101_011 + 1
+	InitScriptEntry_OnTransition _EV_scr_seq_D22R0101_025 + 1
 	InitScriptEntryEnd
 
 scr_seq_D22R0101_map_scripts_2:

@@ -262,6 +262,7 @@ pokeheartgold_c = files(
     'unk_02092BB8.c',
     'unk_020971F8.c',
     'unk_02097268.c',
+    'unk_02037C94.c',
     'update_dex_received.c',
     'use_item_on_mon.c',
     'vram_transfer_manager.c',

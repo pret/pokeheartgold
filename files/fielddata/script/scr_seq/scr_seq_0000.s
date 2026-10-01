@@ -1,9 +1,8 @@
 #include "constants/scrcmd.h"
 #include "fielddata/script/scr_seq/event_0000.h"
 #include "msgdata/msg/msg_0014.h"
-	.include "macros/script.inc"
+#include "macros/script.inc"
 
-	.rodata
 
 	ScrDef scr_seq_0000_000
 	ScrDef scr_seq_0000_001

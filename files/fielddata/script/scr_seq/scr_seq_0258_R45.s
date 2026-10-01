@@ -1,9 +1,8 @@
 #include "constants/scrcmd.h"
 #include "fielddata/script/scr_seq/event_R45.h"
 #include "msgdata/msg/msg_0405_R45.h"
-	.include "macros/script.inc"
+#include "macros/script.inc"
 
-	.rodata
 
 	ScrDef scr_seq_R45_000
 	ScrDef scr_seq_R45_001

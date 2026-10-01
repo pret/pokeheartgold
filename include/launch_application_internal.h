@@ -130,7 +130,7 @@ typedef struct UnkStruct_0203F844 {
     Party *party;
     PCStorage *pcStorage;
     Pokedex *pokedex;
-    UnkStruct_021D2230 *unk14;
+    WiFiList *unk14;
     SaveWiFiHistory *wifiHistory;
     PlayerProfile *profile;
     SaveData *saveData;
@@ -138,7 +138,7 @@ typedef struct UnkStruct_0203F844 {
     GameStats *gameStats;
     Bag *bag;
     BOOL natDexEnabled;
-    void *unk34;
+    int unk34;
     u32 unk38;
     int unk3C;
 } UnkStruct_0203F844;

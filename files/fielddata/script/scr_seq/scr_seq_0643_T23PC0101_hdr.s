@@ -1,10 +1,9 @@
 #include "constants/scrcmd.h"
 #include "fielddata/script/scr_seq/event_T23PC0101.h"
 #include "constants/init_script_types.h"
-	.include "macros/script.inc"
+#include "macros/script.inc"
 
-	.rodata
-	.option alignment off
+
 
 	InitScriptEntry_OnResume std_wireless_reset_state
 	InitScriptEntry_OnFrameTable scr_seq_T23PC0101_map_scripts_2

@@ -16,3 +16,6 @@ subdir('scripts')
 
 # Tools from the subprojects
 makelcf_exe = find_program('makelcf', native: true)
+
+# Native tools
+arm_none_eabi_gcc_exe = find_program('arm-none-eabi-gcc', native: true)

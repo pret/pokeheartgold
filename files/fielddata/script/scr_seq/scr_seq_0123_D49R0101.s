@@ -2,9 +2,8 @@
 #include "fielddata/script/scr_seq/event_D49R0101.h"
 #include "msgdata/msg/msg_0138_D49R0101.h"
 #include "msgdata/msg/msg_0191.h"
-	.include "macros/script.inc"
+#include "macros/script.inc"
 
-	.rodata
 
 	ScrDef scr_seq_D49R0101_000
 	ScrDef scr_seq_D49R0101_001

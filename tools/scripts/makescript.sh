@@ -13,8 +13,9 @@ help() {
 FILES=()
 INCLUDES=()
 OUTDIR="."
-AS="arm-none-eabi-asm"
+AS="arm-none-eabi-gcc"
 OBJ_COPY="arm-none-eabi-objcopy"
+LD="arm-none-eabi-ld"
 
 while [[ $# -gt 0 ]] ; do
     case $1 in
@@ -23,7 +24,7 @@ while [[ $# -gt 0 ]] ; do
             exit 0
             ;;
         -a|--assembler)
-            AS="$2"
+            #AS="$2"
             shift
             shift
             ;;
@@ -54,7 +55,9 @@ for file in "${FILES[@]}" ; do
     script_obj="$OUTDIR/$script_noext".o
     script_dep="$OUTDIR/$script_noext".d
     
-    $AS -gccinc -g -proc arm5te -gccdep -MD -DSDK_ASM -DPM_ASM -DSDK_ARM9 -DSDK_CODE_ARM -DSDK_FINALROM -DPM_KEEP_ASSERTS "${INCLUDES[@]}" -o "$script_obj" "$file" -DSDK_ASM -DPM_ASM -DSDK_ARM9 -DSDK_CODE_ARM -DSDK_FINALROM -DPM_KEEP_ASSERTS
+    $AS -g -E -x assembler-with-cpp "${INCLUDES[@]}" "$file"  -DSDK_ASM -DPM_ASM -DSDK_ARM9 -DSDK_CODE_ARM -DSDK_FINALROM -DPM_KEEP_ASSERTS \
+        | $AS -x assembler-with-cpp -o "$script_obj" -c - -DSDK_ASM -DPM_ASM -DSDK_ARM9 -DSDK_CODE_ARM -DSDK_FINALROM -DPM_KEEP_ASSERTS
     $OBJ_COPY -O binary --file-alignment 4 "$script_obj" "$script_bin"
-    rm "$script_obj" "$script_dep"
+    $LD "$script_obj" -o "$script_obj.dummy"
+    rm "$script_obj" "$script_obj.dummy"
 done

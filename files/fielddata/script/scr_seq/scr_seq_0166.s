@@ -1,9 +1,8 @@
 #include "constants/scrcmd.h"
 #include "fielddata/script/scr_seq/event_0166.h"
 #include "msgdata/msg/msg_0043.h"
-	.include "macros/script.inc"
+#include "macros/script.inc"
 
-	.rodata
 
 	ScrDef scr_seq_0166_000
 	ScrDef scr_seq_0166_001
@@ -301,7 +300,7 @@ _0443:
 	ReleaseAll
 	End
 
-_0447: ; unreferenced
+_0447: // unreferenced
 	   PlaySE SEQ_SE_DP_CON_F007
 	   Compare VAR_SPECIAL_RESULT, 1
 	   CallIfEq _048E
@@ -361,7 +360,7 @@ _04EE:
 	   Return
 
 	.balign 4, 0
-_0520: ; unreferenced
+_0520: // unreferenced
 	Delay4
 	FaceEast
 	Delay4
@@ -377,7 +376,7 @@ _0520: ; unreferenced
 	EndMovement
 
 	.balign 4, 0
-_0554: ; unreferenced
+_0554: // unreferenced
 	Delay8 2
 	WalkOnSpotNormalWest
 	Delay8
@@ -387,22 +386,22 @@ _0554: ; unreferenced
 	EndMovement
 
 	.balign 4, 0
-_0570: ; unreferenced
+_0570: // unreferenced
 	WalkOnSpotNormalWest
 	EndMovement
 
 	.balign 4, 0
-_0578: ; unreferenced
+_0578: // unreferenced
 	WalkOnSpotNormalNorth
 	EndMovement
 
 	.balign 4, 0
-_0580: ; unreferenced
+_0580: // unreferenced
 	WalkOnSpotNormalEast
 	EndMovement
 
 	.balign 4, 0
-_0588: ; unreferenced
+_0588: // unreferenced
 	WalkOnSpotNormalSouth
 	EndMovement
 
@@ -696,7 +695,7 @@ _0A7E:
 	NPCMsg msg_0043_00117
 	GoTo _0875
 	End
-_0A8C: ; unreferenced
+_0A8C: // unreferenced
 	NPCMsg msg_0043_00123
 	GoTo _0A9C
 	End
