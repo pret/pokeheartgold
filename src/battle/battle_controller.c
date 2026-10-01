@@ -581,3 +581,158 @@ void ov12_02262B80(BattleSystem *battleSys, BattleContext *ctx, int battler, int
 
     SendMessage(battleSys, 1, battler, &message, sizeof(CommandSetMessage));
 }
+
+void ov12_02262F24(BattleSystem *battleSys, int battler, int command)
+{
+    SendMessage(battleSys, 0, battler, &command, sizeof(int));
+}
+
+void ov12_02262F40(BattleSystem *battleSys, BattleContext *ctx, int battler)
+{
+    BattleBuffer_Clear(BattleSystem_GetBattleContext(battleSys), battler);
+
+    MoveSelectMenuMessage message;
+    message.command = 15;
+    message.partySlot = ctx->selectedMonIndex[battler];
+
+    for (int i = 0; i < 4; i++) {
+        message.moves[i] = ctx->battleMons[battler].moves[i];
+        message.ppCur[i] = ctx->battleMons[battler].movePPCur[i];
+        message.ppMax[i] = GetMoveMaxPP(ctx->battleMons[battler].moves[i], ctx->battleMons[battler].movePP[i]);
+    }
+
+    message.invalidMoves = StruggleCheck(battleSys, ctx, battler, 0, -1);
+
+    SendMessage(battleSys, 1, battler, &message, sizeof(MoveSelectMenuMessage));
+}
+
+void ov12_02262FE0(BattleSystem *battleSys, int battler, int command)
+{
+    SendMessage(battleSys, 0, battler, &command, sizeof(int));
+}
+
+void ov12_02262FFC(BattleSystem *battleSys, BattleContext *ctx, int range, int battler)
+{
+    TargetSelectMenuMessage message;
+    int i;
+    u32 battleType;
+
+    BattleBuffer_Clear(ctx, battler);
+
+    battleType = BattleSystem_GetBattleType(battleSys);
+
+    message.command = 16;
+    message.range = range;
+
+    if ((battleType & BATTLE_TYPE_DOUBLES) == FALSE || (battleType & BATTLE_TYPE_MULTI) || ((battleType & BATTLE_TYPE_DOUBLES) && battler >= 2)) {
+        message.shouldHidePanel = 1;
+    } else {
+        message.shouldHidePanel = 0;
+    }
+
+    for (i = 0; i < 4; i++) {
+        if (ctx->battleMons[i].hp) {
+            message.targetMon[i].hp = ctx->battleMons[i].hp;
+            message.targetMon[i].hpMax = ctx->battleMons[i].maxHp;
+            message.targetMon[i].hide = 1;
+
+            if ((ctx->battleMons[i].species == SPECIES_NIDORAN_F || ctx->battleMons[i].species == SPECIES_NIDORAN_M)
+                && ctx->battleMons[i].hasNickname == FALSE) {
+                message.targetMon[i].gender = 2;
+            } else {
+                message.targetMon[i].gender = ctx->battleMons[i].gender;
+            }
+
+            message.targetMon[i].selectedMon = ctx->selectedMonIndex[i];
+
+            if (ctx->battleMons[i].status) {
+                message.targetMon[i].status = 3;
+            } else {
+                message.targetMon[i].status = 1;
+            }
+        } else {
+            message.targetMon[i].hide = 0;
+            message.targetMon[i].status = 2;
+        }
+    }
+
+    SendMessage(battleSys, 1, battler, &message, sizeof(TargetSelectMenuMessage));
+}
+
+void ov12_0226311C(BattleSystem *battleSys, int battler, int command)
+{
+    SendMessage(battleSys, 0, battler, &command, sizeof(int));
+}
+
+void ov12_02263138(BattleSystem *battleSys, BattleContext *ctx, int battler)
+{
+    BagMenuMessage message;
+    int i, j;
+
+    BattleBuffer_Clear(ctx, battler);
+
+    message.command = 17;
+
+    for (i = 0; i < 4; i++) {
+        message.partySlots[i] = ctx->selectedMonIndex[i];
+
+        for (j = 0; j < 6; j++) {
+            message.partyOrder[i][j] = ctx->unk_312C[i][j];
+        }
+
+        message.embargoTurns[i] = ctx->battleMons[i].unk88.embargoFlag;
+    }
+
+    if (BattleSystem_GetBattleType(battleSys) == (BATTLE_TYPE_DOUBLES | BATTLE_TYPE_MULTI | BATTLE_TYPE_AI)) {
+        if ((ctx->switchInFlag & MaskOfFlagNo(1)) == 0 && (ctx->switchInFlag & MaskOfFlagNo(3)) == 0) {
+            message.hasTwoOpponents = TRUE;
+            message.semiInvulnerable = FALSE;
+            message.substitute = FALSE;
+        } else if ((ctx->switchInFlag & MaskOfFlagNo(1)) == 0) {
+            message.hasTwoOpponents = FALSE;
+
+            if (ctx->battleMons[1].moveEffectFlags & MOVE_EFFECT_FLAG_SEMI_INVULNERABLE) {
+                message.semiInvulnerable = TRUE;
+                message.substitute = FALSE;
+            } else if (ctx->battleMons[1].status2 & STATUS2_SUBSTITUTE) {
+                message.semiInvulnerable = FALSE;
+                message.substitute = TRUE;
+            } else {
+                message.semiInvulnerable = FALSE;
+                message.substitute = FALSE;
+            }
+        } else {
+            message.hasTwoOpponents = FALSE;
+
+            if (ctx->battleMons[3].moveEffectFlags & MOVE_EFFECT_FLAG_SEMI_INVULNERABLE) {
+                message.semiInvulnerable = TRUE;
+                message.substitute = FALSE;
+            } else if (ctx->battleMons[3].status2 & STATUS2_SUBSTITUTE) {
+                message.semiInvulnerable = FALSE;
+                message.substitute = TRUE;
+            } else {
+                message.semiInvulnerable = FALSE;
+                message.substitute = FALSE;
+            }
+        }
+    } else if (BattleSystem_GetBattleType(battleSys) == BATTLE_TYPE_NONE) { 
+        message.hasTwoOpponents = FALSE;
+
+        if (ctx->battleMons[1].moveEffectFlags & MOVE_EFFECT_FLAG_SEMI_INVULNERABLE) {
+            message.semiInvulnerable = TRUE;
+            message.substitute = FALSE;
+        } else if (ctx->battleMons[1].status2 & STATUS2_SUBSTITUTE) {
+            message.semiInvulnerable = FALSE;
+            message.substitute = TRUE;
+        } else {
+            message.semiInvulnerable = FALSE;
+            message.substitute = FALSE;
+        }
+    } else {
+        message.hasTwoOpponents = FALSE;
+        message.semiInvulnerable = FALSE;
+        message.substitute = FALSE;
+    }
+
+    SendMessage(battleSys, 1, battler, &message, sizeof(BagMenuMessage));
+}

@@ -117,4 +117,30 @@ typedef struct CommandSetMessage {
     u16 padding_2A;
 } CommandSetMessage;
 
+typedef struct MoveSelectMenuMessage {
+    u8 command;
+    u8 partySlot;
+    u16 invalidMoves;
+    u16 moves[4];
+    u8 ppCur[4];
+    u8 ppMax[4];
+} MoveSelectMenuMessage;
+
+typedef struct TargetSelectMenuMessage {
+    u8 command;
+    u8 shouldHidePanel;
+    u16 range;
+    TargetPokemon targetMon[4];
+} TargetSelectMenuMessage;
+
+typedef struct BagMenuMessage {
+    u8 command;
+    u8 hasTwoOpponents;
+    u8 semiInvulnerable;
+    u8 substitute;
+    u8 partySlots[4];
+    u8 partyOrder[4][6];
+    u8 embargoTurns[4];
+} BagMenuMessage;
+
 #endif
