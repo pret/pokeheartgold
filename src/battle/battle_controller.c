@@ -1,5 +1,6 @@
 #include "battle/battle_controller.h"
 #include "battle/battle_message_structs.h"
+#include "pokemon.h"
 
 // static
 void BattleController_SendLocalMessage(BattleSystem *battleSys, int recipient, int battler, void *message, u8 size) {
@@ -175,3 +176,408 @@ void BattleController_EmitPokemonEncounter(BattleSystem *battleSys, int battler)
     SendMessage(battleSys, 1, battler, &message, sizeof(MonEncounterMessage));
 }
 
+void BattleController_EmitPokemonSlideIn(BattleSystem *battleSys, int battler)
+{
+    MonShowMessage message;
+    int i;
+
+    message.command = CONTROLLER_COMMAND_SEND_OUT;
+    message.gender = battleSys->ctx->battleMons[battler].gender;
+    message.isShiny = battleSys->ctx->battleMons[battler].shiny;
+    message.species = battleSys->ctx->battleMons[battler].species;
+    message.personality = battleSys->ctx->battleMons[battler].personality;
+    message.cryModulation = ov12_02256748(battleSys->ctx, battler, ov12_0223AB0C(battleSys, battler), 1);
+    message.selectedPartySlot = battleSys->ctx->selectedMonIndex[battler];
+    message.formNum = battleSys->ctx->battleMons[battler].form;
+    message.capturedBall = battleSys->ctx->battleMons[battler].ball;
+    message.partnerPartySlot = battleSys->ctx->selectedMonIndex[BattleSystem_GetBattlerIdPartner(battleSys, battler)];
+
+    ov12_0223B854(battleSys, battler, message.selectedPartySlot);
+
+    for (i = 0; i < 4; i++) {
+        message.moves[i] = BattleMon_Get(battleSys->ctx, battler, BMON_DATA_MOVE1 + i, NULL);
+        message.curPP[i] = BattleMon_Get(battleSys->ctx, battler, BMON_DATA_CUR_PP_1 + i, NULL);
+        message.maxPP[i] = BattleMon_Get(battleSys->ctx, battler, BMON_DATA_MAX_PP_1 + i, NULL);
+    }
+
+    BattleMon_Get(battleSys->ctx, battler, BMON_DATA_NICKNAME, &message.nickname);
+    SendMessage(battleSys, 1, battler, &message, sizeof(MonShowMessage));
+}
+
+void BattleController_EmitPokemonSendOut(BattleSystem *battleSys, int battler, int capturedBall, int quickSendOut)
+{
+    MonShowMessage message;
+    int i;
+
+    message.command = CONTROLLER_COMMAND_SELECTION_SCREEN_INIT;
+
+    if (battleSys->ctx->battleMons[battler].status2 & STATUS2_TRANSFORM) {
+        message.gender = battleSys->ctx->battleMons[battler].unk88.transformGender;
+        message.personality = battleSys->ctx->battleMons[battler].unk88.transformPersonality;
+    } else {
+        message.gender = battleSys->ctx->battleMons[battler].gender;
+        message.personality = battleSys->ctx->battleMons[battler].personality;
+    }
+
+    message.isShiny = battleSys->ctx->battleMons[battler].shiny;
+    message.species = battleSys->ctx->battleMons[battler].species;
+    message.cryModulation = ov12_02256748(battleSys->ctx, battler, ov12_0223AB0C(battleSys, battler), 0);
+    message.selectedPartySlot = battleSys->ctx->selectedMonIndex[battler];
+    message.formNum = battleSys->ctx->battleMons[battler].form;
+
+    if (capturedBall) {
+        message.capturedBall = capturedBall;
+    } else {
+        message.capturedBall = battleSys->ctx->battleMons[battler].ball;
+    }
+
+    message.isQuickSendOut = quickSendOut;
+    message.isSubstitute = (battleSys->ctx->battleMons[battler].status2 & STATUS2_SUBSTITUTE) != 0;
+
+    ov12_0223B854(battleSys, battler, message.selectedPartySlot);
+
+    for (i = 0; i < 4; i++) {
+        message.moves[i] = BattleMon_Get(battleSys->ctx, battler, BMON_DATA_MOVE1 + i, NULL);
+        message.curPP[i] = BattleMon_Get(battleSys->ctx, battler, BMON_DATA_CUR_PP_1 + i, NULL);
+        message.maxPP[i] = BattleMon_Get(battleSys->ctx, battler, BMON_DATA_MAX_PP_1 + i, NULL);
+    }
+
+    BattleMon_Get(battleSys->ctx, battler, BMON_DATA_NICKNAME, &message.nickname);
+
+    for (i = 0; i < 4; i++) {
+        message.battleMonSpecies[i] = battleSys->ctx->battleMons[i].species;
+        message.battleMonIsShiny[i] = battleSys->ctx->battleMons[i].shiny;
+        message.battleMonFormNums[i] = battleSys->ctx->battleMons[i].form;
+
+        if (battleSys->ctx->battleMons[i].status2 & STATUS2_TRANSFORM) {
+            message.battleMonGenders[i] = battleSys->ctx->battleMons[i].unk88.transformGender;
+            message.battleMonPersonalities[i] = battleSys->ctx->battleMons[i].unk88.transformPersonality;
+        } else {
+            message.battleMonGenders[i] = battleSys->ctx->battleMons[i].gender;
+            message.battleMonPersonalities[i] = battleSys->ctx->battleMons[i].personality;
+        }
+    }
+
+    SendMessage(battleSys, 1, battler, &message, sizeof(MonShowMessage));
+}
+
+void BattleController_EmitRecallPokemon(BattleSystem *battleSys, BattleContext *ctx, int battler)
+{
+    MonReturnMessage message;
+    int face;
+    int form;
+    int i;
+
+    if (battleSys->opponentData[battler]->battlerType & BATTLER_TYPE_SOLO_ENEMY) {
+        face = 2;
+    } else {
+        face = 0;
+    }
+
+    form = battleSys->ctx->battleMons[battler].form;
+    message.command = CONTROLLER_COMMAND_SELECTION_SCREEN_INPUT;
+
+    if (battleSys->ctx->battleMons[battler].status2 & STATUS2_TRANSFORM) {
+        message.yOffset = GetMonPicHeightBySpeciesGenderForm(battleSys->ctx->battleMons[battler].species, battleSys->ctx->battleMons[battler].unk88.transformGender, face, form, battleSys->ctx->battleMons[battler].unk88.transformPersonality);
+    } else {
+        message.yOffset = GetMonPicHeightBySpeciesGenderForm(battleSys->ctx->battleMons[battler].species, battleSys->ctx->battleMons[battler].gender, face, form, battleSys->ctx->battleMons[battler].personality);
+    }
+
+    message.capturedBall = battleSys->ctx->battleMons[battler].ball;
+    message.isSubstitute = (battleSys->ctx->battleMons[battler].status2 & STATUS2_SUBSTITUTE) != 0;
+    message.unk2C = battleSys->ctx->selectedMonIndex[battler];
+
+    for (i = 0; i < 4; i++) {
+        message.battleMonSpecies[i] = ctx->battleMons[i].species;
+        message.battleMonIsShiny[i] = ctx->battleMons[i].shiny;
+        message.battleMonFormNums[i] = ctx->battleMons[i].form;
+
+        if (ctx->battleMons[i].status2 & STATUS2_TRANSFORM) {
+            message.battleMonGenders[i] = ctx->battleMons[i].unk88.transformGender;
+            message.battleMonPersonalities[i] = ctx->battleMons[i].unk88.transformPersonality;
+        } else {
+            message.battleMonGenders[i] = ctx->battleMons[i].gender;
+            message.battleMonPersonalities[i] = ctx->battleMons[i].personality;
+        }
+    }
+
+    SendMessage(battleSys, 1, battler, &message, sizeof(MonReturnMessage));
+}
+
+void ov12_022628A0(BattleSystem *battleSys, int battler, int ball)
+{
+    OpenCaptureBallMessage message;
+    int face;
+    int form;
+
+    if (battleSys->opponentData[battler]->battlerType & BATTLER_TYPE_SOLO_ENEMY) {
+        face = 2;
+    } else {
+        face = 0;
+    }
+
+    form = battleSys->ctx->battleMons[battler].form;
+    message.command = CONTROLLER_COMMAND_CALC_EXECUTION_ORDER;
+
+    if (battleSys->ctx->battleMons[battler].status2 & STATUS2_TRANSFORM) {
+        message.yOffset = GetMonPicHeightBySpeciesGenderForm(battleSys->ctx->battleMons[battler].species, battleSys->ctx->battleMons[battler].unk88.transformGender, face, form, battleSys->ctx->battleMons[battler].unk88.transformPersonality);
+    } else {
+        message.yOffset = GetMonPicHeightBySpeciesGenderForm(battleSys->ctx->battleMons[battler].species, battleSys->ctx->battleMons[battler].gender, face, form, battleSys->ctx->battleMons[battler].personality);
+    }
+
+    message.ball = ball;
+    SendMessage(battleSys, 1, battler, &message, sizeof(OpenCaptureBallMessage));
+}
+
+void BattleController_EmitDeletePokemon(BattleSystem *battleSys, int battler)
+{
+    int command = 7;
+    SendMessage(battleSys, 1, battler, &command, sizeof(int));
+}
+
+void BattleController_EmitTrainerEncounter(BattleSystem *battleSys, int battler)
+{
+    TrainerEncounterMessage message;
+
+    message.command = 8;
+    message.trainerType = battleSys->trainers[battler].data.trainerClass;
+    message.trainerGender = battleSys->trainerGender[battler];
+
+    SendMessage(battleSys, 1, battler, &message, sizeof(TrainerEncounterMessage));
+}
+
+void BattleController_EmitThrowPokeball(BattleSystem *battleSys, int battler, int ballTypeIn)
+{
+    TrainerThrowBallMessage message;
+
+    message.command = 9;
+    message.ballTypeIn = ballTypeIn;
+    message.selectedPartySlot = battleSys->ctx->selectedMonIndex[BattleSystem_GetBattlerIdPartner(battleSys, battler)];
+
+    SendMessage(battleSys, 1, battler, &message, sizeof(TrainerThrowBallMessage));
+}
+
+void BattleController_EmitTrainerSlideOut(BattleSystem *battleSys, int battler)
+{
+    int command = 10;
+
+    SendMessage(battleSys, 1, battler, &command, sizeof(int));
+}
+
+void BattleController_EmitTrainerSlideIn(BattleSystem *battleSys, int battler, int posIn)
+{
+    TrainerSlideInMessage message;
+
+    message.command = 11;
+    message.trainerType = battleSys->trainers[battler].data.trainerClass;
+    message.trainerGender = battleSys->trainerGender[battler];
+    message.posIn = posIn;
+
+    SendMessage(battleSys, 1, battler, &message, sizeof(TrainerSlideInMessage));
+}
+
+void BattleController_EmitHealthbarSlideIn(BattleSystem *battleSys, BattleContext *ctx, int battler, int delay)
+{
+    HealthBoxData healthboxData;
+
+    Pokemon *mon = BattleSystem_GetPartyMon(battleSys, battler, ctx->selectedMonIndex[battler]);
+    int species = GetMonData(mon, MON_DATA_SPECIES, NULL);
+    int level = GetMonData(mon, MON_DATA_LEVEL, NULL);
+
+    healthboxData.command = 12;
+    healthboxData.level = ctx->battleMons[battler].level;
+    healthboxData.curHP = ctx->battleMons[battler].hp;
+    healthboxData.maxHP = ctx->battleMons[battler].maxHp;
+    healthboxData.selectedPartySlot = ctx->selectedMonIndex[battler];
+    healthboxData.status = Battler_GetStatusCondition(ctx, battler);
+
+    if ((ctx->battleMons[battler].species == SPECIES_NIDORAN_F || ctx->battleMons[battler].species == SPECIES_NIDORAN_M)
+        && ctx->battleMons[battler].hasNickname == FALSE) {
+        healthboxData.gender = 2; // don't show the Gender marker for base-Nidoran forms
+    } else {
+        healthboxData.gender = ctx->battleMons[battler].gender;
+    }
+
+    healthboxData.expFromLastLevel = ctx->battleMons[battler].exp - GetMonExpBySpeciesAndLevel(species, level);
+    healthboxData.expToNextLevel = GetMonExpBySpeciesAndLevel(species, level + 1) - GetMonExpBySpeciesAndLevel(species, level);
+    healthboxData.speciesCaught = BattleSystem_CheckMonCaught(battleSys, ctx->battleMons[battler].species);
+    healthboxData.numSafariBalls = BattleSystem_GetSafariBallCount(battleSys);
+    healthboxData.delay = delay;
+
+    SendMessage(battleSys, 1, battler, &healthboxData, sizeof(HealthBoxData));
+}
+
+void BattleController_EmitHealthbarSlideOut(BattleSystem *battleSys, int battler)
+{
+    int command = 13;
+    SendMessage(battleSys, 1, battler, &command, sizeof(int));
+}
+
+void ov12_02262B80(BattleSystem *battleSys, BattleContext *ctx, int battler, int partySlot)
+{
+    CommandSetMessage message;
+    int i;
+    int battlerType;
+    int monSpeciesOrEgg;
+    int cnt;
+    Party *party;
+    Pokemon *pokemon;
+    u32 battleType;
+    int battlersCanPickCommandMask;
+
+    MI_CpuClearFast(&message, sizeof(CommandSetMessage));
+    BattleBuffer_Clear(BattleSystem_GetBattleContext(battleSys), battler);
+
+    battlersCanPickCommandMask = 0;
+
+    for (i = 0; i < BattleSystem_GetMaxBattlers(battleSys); i++) {
+        if (Battler_CanSelectAction(ctx, i) == 0) {
+            battlersCanPickCommandMask |= MaskOfFlagNo(i);
+        }
+    }
+
+    message.command = 14;
+    message.partySlot = partySlot;
+    message.switchingOrCanPickCommandMask = ctx->switchInFlag | battlersCanPickCommandMask;
+
+    battleType = BattleSystem_GetBattleType(battleSys);
+
+    if ((battleType & BATTLE_TYPE_DOUBLES) && ((battleType & BATTLE_TYPE_MULTI) == FALSE)) {
+        battlerType = battler & 1;
+    } else {
+        battlerType = battler;
+    }
+
+    party = BattleSystem_GetParty(battleSys, battlerType);
+    cnt = 0;
+
+    for (i = 0; i < Party_GetCount(party); i++) {
+        pokemon = Party_GetMonByIndex(party, ctx->unk_312C[battlerType][i]);
+        monSpeciesOrEgg = GetMonData(pokemon, MON_DATA_SPECIES_OR_EGG, NULL);
+
+        if (monSpeciesOrEgg && monSpeciesOrEgg != SPECIES_EGG) {
+            if (GetMonData(pokemon, MON_DATA_HP, NULL)) {
+                if (GetMonData(pokemon, MON_DATA_STATUS, NULL)) {
+                    message.ballStatus[0][cnt] = 3;
+                } else {
+                    message.ballStatus[0][cnt] = 1;
+                }
+            } else {
+                message.ballStatus[0][cnt] = 2;
+            }
+
+            if (battleType & (BATTLE_TYPE_LINK | BATTLE_TYPE_SAFARI | BATTLE_TYPE_FRONTIER | BATTLE_TYPE_PAL_PARK)) {
+                message.expPercents[cnt] = 0;
+            } else {
+                message.expPercents[cnt] = Pokemon_GetPercentToNextLevel(pokemon);
+            }
+
+            cnt++;
+        }
+    }
+
+    if (((battleType & (BATTLE_TYPE_LINK | BATTLE_TYPE_MULTI)) == (BATTLE_TYPE_LINK | BATTLE_TYPE_MULTI))
+        || (battleType & BATTLE_TYPE_TAG)
+        || (battleType == (BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_MULTI | BATTLE_TYPE_AI))
+        || (battleType == ((BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_MULTI | BATTLE_TYPE_AI) | BATTLE_TYPE_FRONTIER))) {
+        if (BattleSystem_GetFieldSide(battleSys, battler)) {
+            battlerType = BattleSystem_GetBattlerFromBattlerType(battleSys, BATTLER_TYPE_PLAYER_SIDE_SLOT_1);
+        } else {
+            battlerType = BattleSystem_GetBattlerFromBattlerType(battleSys, BATTLER_TYPE_ENEMY_SIDE_SLOT_1);
+        }
+
+        party = BattleSystem_GetParty(battleSys, battlerType);
+        cnt = 0;
+
+        for (i = 0; i < Party_GetCount(party); i++) {
+            pokemon = Party_GetMonByIndex(party, ctx->unk_312C[battlerType][i]);
+            monSpeciesOrEgg = GetMonData(pokemon, MON_DATA_SPECIES_OR_EGG, NULL);
+
+            if (monSpeciesOrEgg && monSpeciesOrEgg != SPECIES_EGG) {
+                if (GetMonData(pokemon, MON_DATA_HP, NULL)) {
+                    if (GetMonData(pokemon, MON_DATA_STATUS, NULL)) {
+                        message.ballStatus[1][cnt] = 3;
+                    } else {
+                        message.ballStatus[1][cnt] = 1;
+                    }
+                } else {
+                    message.ballStatus[1][cnt] = 2;
+                }
+
+                cnt++;
+            }
+        }
+
+        if (BattleSystem_GetFieldSide(battleSys, battler)) {
+            battlerType = BattleSystem_GetBattlerFromBattlerType(battleSys, BATTLER_TYPE_PLAYER_SIDE_SLOT_2);
+        } else {
+            battlerType = BattleSystem_GetBattlerFromBattlerType(battleSys, BATTLER_TYPE_ENEMY_SIDE_SLOT_2);
+        }
+
+        party = BattleSystem_GetParty(battleSys, battlerType);
+        cnt = 3;
+
+        for (i = 0; i < Party_GetCount(party); i++) {
+            pokemon = Party_GetMonByIndex(party, ctx->unk_312C[battlerType][i]);
+            monSpeciesOrEgg = GetMonData(pokemon, MON_DATA_SPECIES_OR_EGG, NULL);
+
+            if (monSpeciesOrEgg && monSpeciesOrEgg != SPECIES_EGG) {
+                if (GetMonData(pokemon, MON_DATA_HP, NULL)) {
+                    if (GetMonData(pokemon, MON_DATA_STATUS, NULL)) {
+                        message.ballStatus[1][cnt] = 3;
+                    } else {
+                        message.ballStatus[1][cnt] = 1;
+                    }
+                } else {
+                    message.ballStatus[1][cnt] = 2;
+                }
+
+                cnt++;
+            }
+        }
+    } else {
+        battlerType = ov12_0223ABB8(battleSys, battler, 2);
+        party = BattleSystem_GetParty(battleSys, battlerType);
+        cnt = 0;
+
+        for (i = 0; i < Party_GetCount(party); i++) {
+            pokemon = Party_GetMonByIndex(party, ctx->unk_312C[battlerType][i]);
+            monSpeciesOrEgg = GetMonData(pokemon, MON_DATA_SPECIES_OR_EGG, NULL);
+
+            if (monSpeciesOrEgg && monSpeciesOrEgg != SPECIES_EGG) {
+                if (GetMonData(pokemon, MON_DATA_HP, NULL)) {
+                    if (GetMonData(pokemon, MON_DATA_STATUS, NULL)) {
+                        message.ballStatus[1][cnt] = 3;
+                    } else {
+                        message.ballStatus[1][cnt] = 1;
+                    }
+                } else {
+                    message.ballStatus[1][cnt] = 2;
+                }
+
+                cnt++;
+            }
+        }
+    }
+
+    for (i = 0; i < 4; i++) {
+        message.moves[i] = BattleMon_Get(ctx, battler, BMON_DATA_MOVE1 + i, NULL);
+        message.curPP[i] = BattleMon_Get(ctx, battler, BMON_DATA_CUR_PP_1 + i, NULL);
+        message.maxPP[i] = BattleMon_Get(ctx, battler, BMON_DATA_MAX_PP_1 + i, NULL);
+    }
+
+    message.curHP = ctx->battleMons[battler].hp;
+    message.maxHP = ctx->battleMons[battler].maxHp;
+
+    if (message.curHP) {
+        if (ctx->battleMons[battler].status) {
+            message.ballStatusBattler = 3;
+        } else {
+            message.ballStatusBattler = 1;
+        }
+    } else {
+        message.ballStatusBattler = 2;
+    }
+
+    SendMessage(battleSys, 1, battler, &message, sizeof(CommandSetMessage));
+}

@@ -29,7 +29,7 @@ BOOL ov12_02250BBC(BattleSystem *battleSystem, BattleContext *ctx);
 void CopyBattleMonToPartyMon(BattleSystem *battleSystem, BattleContext *ctx, int battlerId);
 void LockBattlerIntoCurrentMove(BattleSystem *battleSystem, BattleContext *ctx, int battlerId);
 void UnlockBattlerOutOfCurrentMove(BattleSystem *battleSystem, BattleContext *ctx, int battlerId);
-int GetBattlerStatusCondition(BattleContext *ctx, int battlerId);
+int Battler_GetStatusCondition(BattleContext *ctx, int battlerId);
 BOOL CheckTrainerMessage(BattleSystem *battleSystem, BattleContext *ctx);
 void BattleContext_Init(BattleContext *ctx);
 void ov12_02251038(BattleSystem *battleSystem, BattleContext *ctx);

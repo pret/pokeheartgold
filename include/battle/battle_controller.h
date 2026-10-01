@@ -14,13 +14,13 @@ void BattleController_EmitPokemonSendOut(BattleSystem *battleSystem, int battler
 void BattleController_EmitRecallPokemon(BattleSystem *battleSystem, BattleContext *ctx, int battlerId);
 void BattleController_EmitDeletePokemon(BattleSystem *battleSystem, int battlerId);
 void BattleController_EmitTrainerEncounter(BattleSystem *battleSystem, int battlerId);
-void BattleController_EmitThrowPokeball(BattleSystem *battleSystem, int battlerId, u32 a2);
+void BattleController_EmitThrowPokeball(BattleSystem *battleSys, int battler, int ballTypeIn);
 void BattleController_EmitTrainerSlideOut(BattleSystem *battleSystem, int battlerId);
-void BattleController_EmitTrainerSlideIn(BattleSystem *battleSystem, int battlerId, u32 a2);
+void BattleController_EmitTrainerSlideIn(BattleSystem *battleSystem, int battlerId, int posIn);
 void BattleController_EmitBackgroundSlideIn(BattleSystem *battleSystem, int battlerId);
-void BattleController_EmitHealthbarSlideIn(BattleSystem *battleSystem, BattleContext *ctx, int battlerId, u32 delay);
+void BattleController_EmitHealthbarSlideIn(BattleSystem *battleSystem, BattleContext *ctx, int battlerId, int delay);
 void BattleController_EmitHealthbarSlideOut(BattleSystem *battleSystem, int battlerId);
-void BattleController_EmitShowMonList(BattleSystem *battleSystem, BattleContext *ctx, int battlerId, u32 a3, u32 a4, u32 a5);
+void BattleController_EmitShowMonList(BattleSystem *battleSystem, BattleContext *ctx, int battlerId, int a3, int a4, int a5);
 void BattleController_EmitDrawYesNoBox(BattleSystem *battleSystem, BattleContext *ctx, int a2, int a3, int a4, int a5, int a6);
 void BattleController_EmitShowWaitMessage(BattleSystem *battleSystem, int battlerId);
 void BattleController_EmitPrintAttackMessage(BattleSystem *battleSystem, BattleContext *ctx);
@@ -67,7 +67,7 @@ void BattleSystem_ReloadMonData(BattleSystem *battleSystem, BattleContext *ctx, 
 
 void ov12_022645C8(BattleSystem *battleSystem, BattleContext *ctx, u8 a2);
 void ov12_02262B80(BattleSystem *battleSystem, BattleContext *ctx, int battlerId, int index);
-void ov12_022628A0(BattleSystem *battleSystem, s32 battlerId, s32);
+void ov12_022628A0(BattleSystem *battleSys, int battler, int ball);
 void ov12_022639B8(BattleSystem *battleSystem, int battlerId, BattleMessage msg);
 void ov12_02263CCC(BattleSystem *battleSystem, int battlerId);
 void ov12_02262F40(BattleSystem *battleSystem, BattleContext *ctx, int battlerId);

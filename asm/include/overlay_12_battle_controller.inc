@@ -5,7 +5,7 @@
 .public sub_02037454
 .public sub_0203769C
 .public GetMonData
-.public GetPercentProgressTowardsNextLevel
+.public Pokemon_GetPercentToNextLevel
 .public GetMonExpBySpeciesAndLevel
 .public GetMonPicHeightBySpeciesGenderForm
 .public MaskOfFlagNo
@@ -48,7 +48,7 @@
 .public ov12_0224ED00
 .public BattleBuffer_Clear
 .public BattleMon_Get
-.public GetBattlerStatusCondition
+.public Battler_GetStatusCondition
 .public StruggleCheck
 .public CheckAbilityActive
 .public ov12_02256748

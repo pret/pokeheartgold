@@ -1576,7 +1576,7 @@ void UnlockBattlerOutOfCurrentMove(BattleSystem *battleSystem, BattleContext *ct
     ctx->battleMons[battlerId].unk88.furyCutterCount = 0;
 }
 
-int GetBattlerStatusCondition(BattleContext *ctx, int battlerId) {
+int Battler_GetStatusCondition(BattleContext *ctx, int battlerId) {
     if (ctx->battleMons[battlerId].status & STATUS_SLEEP) {
         return CONDITION_SLEEP;
     } else if (ctx->battleMons[battlerId].status & STATUS_POISON) {
