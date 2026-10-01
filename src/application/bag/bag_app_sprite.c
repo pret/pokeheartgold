@@ -121,7 +121,7 @@ void BagApp_DrawTMHMMoveDetails(BagAppData *appData, u16 itemId, int drawFlag) {
 }
 
 static void BagApp_InitSpriteSystem(BagAppData *appData) {
-    SpriteResourceCountsListUnion sp34 = {
+    SpriteResourceCountsListUnion resCounts = {
         .numChar = 12,
         .numPltt = 10,
         .numCell = 6,
@@ -129,7 +129,7 @@ static void BagApp_InitSpriteSystem(BagAppData *appData) {
     };
     appData->spriteSystem = SpriteSystem_Alloc(HEAP_ID_BAG);
     appData->spriteManager = SpriteManager_New(appData->spriteSystem);
-    OamManagerParam sp14 = {
+    OamManagerParam oamMgrParam = {
         .fromOBJmain = 0,
         .numOBJmain = 128,
         .fromAffineMain = 0,
@@ -139,16 +139,16 @@ static void BagApp_InitSpriteSystem(BagAppData *appData) {
         .fromAffineSub = 0,
         .numAffineSub = 32,
     };
-    OamCharTransferParam sp0 = {
+    OamCharTransferParam oamCharTransferParam = {
         .maxTasks = 39,
         .sizeMain = 131072,
         .sizeSub = 16384,
         .charModeMain = GX_OBJVRAMMODE_CHAR_1D_32K,
         .charModeSub = GX_OBJVRAMMODE_CHAR_1D_32K,
     };
-    SpriteSystem_Init(appData->spriteSystem, &sp14, &sp0, 32);
+    SpriteSystem_Init(appData->spriteSystem, &oamMgrParam, &oamCharTransferParam, 32);
     SpriteSystem_InitSprites(appData->spriteSystem, appData->spriteManager, 39);
-    SpriteSystem_InitManagerWithCapacities(appData->spriteSystem, appData->spriteManager, &sp34);
+    SpriteSystem_InitManagerWithCapacities(appData->spriteSystem, appData->spriteManager, &resCounts);
 }
 
 static void BagApp_LoadSpriteResObjs(BagAppData *appData) {
@@ -961,11 +961,11 @@ static const u8 sCursorSpriteParam_QuantitySelect[][4] = {
     { 224, 176, 17, 9 },
 };
 
-void BagApp_SetCursorSpritePos_QuantitySelect(BagAppData *appData, int a1) {
-    GF_ASSERT(a1 < 8);
-    ManagedSprite_SetPositionXYWithSubscreenOffset(appData->sprites[BAG_APP_SPRITE_CURSOR], sCursorSpriteParam_QuantitySelect[a1][0], sCursorSpriteParam_QuantitySelect[a1][1], FX32_CONST(256));
-    ManagedSprite_SetAnim(appData->sprites[BAG_APP_SPRITE_CURSOR], sCursorSpriteParam_QuantitySelect[a1][2]);
-    ManagedSprite_SetPaletteOverride(appData->sprites[BAG_APP_SPRITE_CURSOR], sCursorSpriteParam_QuantitySelect[a1][3]);
+void BagApp_SetCursorSpritePos_QuantitySelect(BagAppData *appData, int cursorPos) {
+    GF_ASSERT(cursorPos < 8);
+    ManagedSprite_SetPositionXYWithSubscreenOffset(appData->sprites[BAG_APP_SPRITE_CURSOR], sCursorSpriteParam_QuantitySelect[cursorPos][0], sCursorSpriteParam_QuantitySelect[cursorPos][1], FX32_CONST(256));
+    ManagedSprite_SetAnim(appData->sprites[BAG_APP_SPRITE_CURSOR], sCursorSpriteParam_QuantitySelect[cursorPos][2]);
+    ManagedSprite_SetPaletteOverride(appData->sprites[BAG_APP_SPRITE_CURSOR], sCursorSpriteParam_QuantitySelect[cursorPos][3]);
 }
 
 void BagApp_LoadObjPaletteByPocket(BagAppData *appData, int pocket) {
@@ -1043,10 +1043,10 @@ void BagApp_ShowOnlySelectedItemIcon(BagAppData *appData, BagViewPocket *pocket,
     BagApp_UpdatePageNavArrowSpritesVisibility(appData);
 }
 
-void BagApp_DrawContextMenuButtonSprites(BagAppData *appData, u8 *a1) {
+void BagApp_DrawContextMenuButtonSprites(BagAppData *appData, u8 *options) {
     ManagedSprite_SetDrawFlag(appData->sprites[BAG_APP_SPRITE_CURSOR], TRUE);
     for (int i = 0; i < 4; ++i) {
-        if (a1[i] != 0xFF) {
+        if (options[i] != 0xFF) {
             ManagedSprite_SetDrawFlag(appData->sprites[BAG_APP_SPRITE_CONTEXT_MENU_ICON_1 + i], TRUE);
         } else {
             ManagedSprite_SetDrawFlag(appData->sprites[BAG_APP_SPRITE_CONTEXT_MENU_ICON_1 + i], FALSE);
