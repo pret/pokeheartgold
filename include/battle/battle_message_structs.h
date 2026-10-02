@@ -143,4 +143,62 @@ typedef struct BagMenuMessage {
     u8 embargoTurns[4];
 } BagMenuMessage;
 
+typedef struct BattleItemUse {
+    u16 item;
+    u8 category;
+    u8 target;
+} BattleItemUse;
+
+typedef struct PartyMenuMessage {
+    u8 command;
+    u8 battler;
+    u8 listMode;
+    u8 doublesSelection;
+    u8 selectedPartySlot[4];
+    u8 partyOrder[4][6];
+    int canSwitch;
+    u8 battlersSwitchingMask;
+    u8 padding_25[3];
+} PartyMenuMessage;
+
+typedef struct YesNoMenuMessage {
+    u8 command;
+    u8 yesNoType;
+    u16 promptMsg;
+    int move;
+    int nickname;
+} YesNoMenuMessage;
+
+typedef struct AttackMsgMessage {
+    u8 command;
+    u8 partySlot;
+    u16 move;
+} AttackMsgMessage;
+
+typedef struct MoveAnimation {
+    u8 command;
+    u8 unk_01;
+    u16 move;
+    s32 damage;
+    u16 power;
+    u16 effectChance;
+    u16 friendship;
+    u16 isSubstitute : 1;
+    u16 isTransformed : 1;
+    u16 : 14;
+    u32 fieldConditions;
+    u16 attacker;
+    u16 defender;
+    u16 species[4];
+    u8 genders[4];
+    u8 isShiny[4];
+    u8 formNums[4];
+    u32 personalities[4];
+    u32 moveEffectMasks[4];
+    int animMode;
+    int secondaryAnimID;
+    int terrain;
+} MoveAnimation;
+
+
 #endif

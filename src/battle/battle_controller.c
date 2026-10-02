@@ -736,3 +736,78 @@ void ov12_02263138(BattleSystem *battleSys, BattleContext *ctx, int battler)
 
     SendMessage(battleSys, 1, battler, &message, sizeof(BagMenuMessage));
 }
+
+void ov12_022632C0(BattleSystem *battleSys, int battler, BattleItemUse message)
+{
+    SendMessage(battleSys, 0, battler, &message, sizeof(BattleItemUse));
+}
+
+void BattleController_EmitShowMonList(BattleSystem *battleSys, BattleContext *ctx, int battler, int listMode, int canSwitch, int doublesSelection)
+{
+    PartyMenuMessage message;
+    int i, j;
+
+    BattleBuffer_Clear(ctx, battler);
+
+    message.command = 18;
+    message.battler = battler;
+    message.listMode = listMode;
+    message.canSwitch = canSwitch;
+    message.doublesSelection = doublesSelection;
+    message.battlersSwitchingMask = ctx->switchInFlag;
+
+    for (i = 0; i < 4; i++) {
+        message.selectedPartySlot[i] = ctx->selectedMonIndex[i];
+
+        for (j = 0; j < 6; j++) {
+            message.partyOrder[i][j] = ctx->unk_312C[i][j];
+        }
+    }
+
+    SendMessage(battleSys, 1, battler, &message, sizeof(PartyMenuMessage));
+}
+
+void ov12_02263360(BattleSystem *battleSys, int battler, int command)
+{
+    SendMessage(battleSys, 0, battler, &command, sizeof(int));
+}
+
+void BattleController_EmitDrawYesNoBox(BattleSystem *battleSys, BattleContext *ctx, int battler, int promptMsg, int yesNoType, int move, int nickname)
+{
+    YesNoMenuMessage message;
+
+    BattleBuffer_Clear(ctx, battler);
+
+    message.command = 19;
+    message.promptMsg = promptMsg;
+    message.yesNoType = yesNoType;
+    message.move = move;
+    message.nickname = nickname;
+
+    SendMessage(battleSys, 1, battler, &message, sizeof(YesNoMenuMessage));
+}
+
+void BattleController_EmitPrintAttackMessage(BattleSystem *battleSys, BattleContext *ctx)
+{
+    AttackMsgMessage message;
+
+    message.command = 20;
+    message.partySlot = ctx->selectedMonIndex[ctx->battlerIdAttacker];
+    message.move = ctx->moveNoCur;
+
+    SendMessage(battleSys, 1, ctx->battlerIdAttacker, &message, sizeof(AttackMsgMessage));
+}
+
+void BattleController_EmitPrintMessage(BattleSystem *battleSys, BattleContext *ctx, BattleMessage *battleMsg)
+{
+    battleMsg->unk0 = 21;
+    SendMessage(battleSys, 1, ctx->battlerIdAttacker, battleMsg, sizeof(BattleMessage));
+}
+
+void BattleController_SetMoveAnimation(BattleSystem *battleSys, BattleContext *ctx, u16 move)
+{
+    MoveAnimation animation;
+
+    ov12_022643C8(battleSys, ctx, &animation, 0, NULL, ctx->battlerIdAttacker, ctx->battlerIdTarget, move);
+    SendMessage(battleSys, 1, ctx->battlerIdAttacker, &animation, sizeof(MoveAnimation));
+}
