@@ -1,4 +1,4 @@
-#include <nitro/fs/overlay.h>
+
 #pragma once
 .public SaveArray_Get
 .public sub_0202DB34

@@ -1,0 +1,8 @@
+#ifndef POKEPLATINUM_GENERATED_TUTORABLE_MOVES
+#define POKEPLATINUM_GENERATED_TUTORABLE_MOVES
+
+static const TeachableMove sTeachableMoves[] = {
+/* =========== MAGIC CONTENT MARKER =========== */
+};
+
+#endif // POKEPLATINUM_GENERATED_TUTORABLE_MOVES

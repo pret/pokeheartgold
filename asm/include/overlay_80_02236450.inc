@@ -1,4 +1,4 @@
-#include <nitro/fs/overlay.h>
+
 #pragma once
 .public GetSpeciesNameIntoArray
 .public Heap_Free

@@ -1,0 +1,108 @@
+{
+  "key": 29759,
+  "messages": [
+    {
+      "id": "msg_0344_R10R0201_00000",
+      "garbage": 34
+    },
+    {
+      "id": "msg_0344_R10R0201_00001",
+      "garbage": 46
+    },
+    {
+      "id": "msg_0344_R10R0201_00002",
+      "garbage": 84
+    },
+    {
+      "id": "msg_0344_R10R0201_00003",
+      "en_US": [
+        "Manager: My beloved generator!\r",
+        "Keep pumping the electricity out to\n",
+        "provide a pleasant life for Kanto!"
+      ]
+    },
+    {
+      "id": "msg_0344_R10R0201_00004",
+      "en_US": [
+        "We’ll have to beef up our security\n",
+        "presence so something like this will\f",
+        "never happen again!"
+      ]
+    },
+    {
+      "id": "msg_0344_R10R0201_00005",
+      "en_US": [
+        "The generator’s up and running.\n",
+        "It’s making electricity to spare."
+      ]
+    },
+    {
+      "id": "msg_0344_R10R0201_00006",
+      "en_US": "The generator’s running again!"
+    },
+    {
+      "id": "msg_0344_R10R0201_00007",
+      "en_US": [
+        "Since the generator’s been fixed, the\n",
+        "Manager has been cheerful."
+      ]
+    },
+    {
+      "id": "msg_0344_R10R0201_00008",
+      "en_US": [
+        "All right! We can finally get the\n",
+        "Magnet Train running again."
+      ]
+    },
+    {
+      "id": "msg_0344_R10R0201_00009",
+      "en_US": [
+        "I collect Pokémon.\n",
+        "Do you have a DUGTRIO?\r",
+        "Want to trade it for my MAGNETON? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0344_R10R0201_00010",
+      "en_US": [
+        "Yay! I got myself a DUGTRIO!\n",
+        "Thanks!"
+      ]
+    },
+    {
+      "id": "msg_0344_R10R0201_00011",
+      "en_US": [
+        "Huh? That’s not DUGTRIO.\n",
+        "What a letdown..."
+      ]
+    },
+    {
+      "id": "msg_0344_R10R0201_00012",
+      "en_US": "You don’t want to trade? Aww..."
+    },
+    {
+      "id": "msg_0344_R10R0201_00013",
+      "en_US": "Hi, how’s my old MAGNETON doing?"
+    },
+    {
+      "id": "msg_0344_R10R0201_00014",
+      "en_US": [
+        "Staff Mottos:\r",
+        "1. Electricity is not infinite.\n",
+        "2. Conserve wherever possible.\f",
+        "3. Watch out for each other.\f",
+        "4. Idle hands are not allowed.\f",
+        "5. Wear shoes with rubber soles.\f",
+        "6. The Manager is awesome."
+      ]
+    },
+    {
+      "id": "msg_0344_R10R0201_00015",
+      "en_US": [
+        "Use electricity wisely\n",
+        "for a bright and pleasant life.\f",
+        "           Kanto Power Plant"
+      ]
+    }
+  ]
+}

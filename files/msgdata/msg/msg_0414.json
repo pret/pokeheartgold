@@ -1,0 +1,160 @@
+{
+  "key": 4834,
+  "messages": [
+    {
+      "id": "msg_0414_00000",
+      "en_US": "Pokémon Talk"
+    },
+    {
+      "id": "msg_0414_00001",
+      "en_US": "Mary and Oak"
+    },
+    {
+      "id": "msg_0414_00002",
+      "en_US": [
+        "Mary: We’re reaching out to all you\n",
+        "Pokémon fans out there! Here is the\n",
+        "leading expert on Pokémon, Professor\n",
+        "Oak, and of course myself, Mary!"
+      ]
+    },
+    {
+      "id": "msg_0414_00003",
+      "en_US": [
+        "Pokémon! Pokémon!\n",
+        "Pokémon Channel..."
+      ]
+    },
+    {
+      "id": "msg_0414_00004",
+      "en_US": [
+        "Professor Oak: {STRVAR_1 0, 1, 0} may be\n",
+        "seen around {STRVAR_1 4, 0, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0414_00005",
+      "en_US": [
+        "Mary: {STRVAR_1 0, 1, 0},\n",
+        "{STRVAR_1 28, 2, 0}\n",
+        "{STRVAR_1 28, 3, 0}"
+      ]
+    },
+    {
+      "id": "msg_0414_00006",
+      "en_US": "When you first see them"
+    },
+    {
+      "id": "msg_0414_00007",
+      "en_US": "So many it’ll seem like a dream"
+    },
+    {
+      "id": "msg_0414_00008",
+      "en_US": "There’s no reason for it, but"
+    },
+    {
+      "id": "msg_0414_00009",
+      "en_US": "Only when you’re there"
+    },
+    {
+      "id": "msg_0414_00010",
+      "en_US": "Whether you see them above or below,"
+    },
+    {
+      "id": "msg_0414_00011",
+      "en_US": "If one walks with you as a companion"
+    },
+    {
+      "id": "msg_0414_00012",
+      "en_US": "If you just try calling out its name"
+    },
+    {
+      "id": "msg_0414_00013",
+      "en_US": "If you look at it from a different angle"
+    },
+    {
+      "id": "msg_0414_00014",
+      "en_US": "It’ll resemble a teacher"
+    },
+    {
+      "id": "msg_0414_00015",
+      "en_US": "You won’t be able to resist"
+    },
+    {
+      "id": "msg_0414_00016",
+      "en_US": "Anytime"
+    },
+    {
+      "id": "msg_0414_00017",
+      "en_US": "If you lightly poke it and see,"
+    },
+    {
+      "id": "msg_0414_00018",
+      "en_US": "More than you expected"
+    },
+    {
+      "id": "msg_0414_00019",
+      "en_US": "you won’t be able to stop laughing!"
+    },
+    {
+      "id": "msg_0414_00020",
+      "en_US": "you’ll feel totally at ease."
+    },
+    {
+      "id": "msg_0414_00021",
+      "en_US": "you’ll feel so hopeful."
+    },
+    {
+      "id": "msg_0414_00022",
+      "en_US": "you won’t be able to look away."
+    },
+    {
+      "id": "msg_0414_00023",
+      "en_US": "you’ll be held captive!"
+    },
+    {
+      "id": "msg_0414_00024",
+      "en_US": "you’ll be able to make a great friend!"
+    },
+    {
+      "id": "msg_0414_00025",
+      "en_US": "you’ll be admired by all!"
+    },
+    {
+      "id": "msg_0414_00026",
+      "en_US": "it will never cease to amaze you!"
+    },
+    {
+      "id": "msg_0414_00027",
+      "en_US": "you’ll be intensely appealing."
+    },
+    {
+      "id": "msg_0414_00028",
+      "en_US": "you’ll think it’s so wonderful..."
+    },
+    {
+      "id": "msg_0414_00029",
+      "en_US": "you’ll be so cool."
+    },
+    {
+      "id": "msg_0414_00030",
+      "en_US": "you’ll feel so strange..."
+    },
+    {
+      "id": "msg_0414_00031",
+      "en_US": "you’ll think that’s one typical Pokémon."
+    },
+    {
+      "id": "msg_0414_00032",
+      "en_US": [
+        "Mary: This is breaking news!\n",
+        "A bunch of {STRVAR_1 0, 1, 0} have decided to\n",
+        "make an appearance at\n",
+        "{STRVAR_1 4, 0, 0}! If you’re a Trainer\n",
+        "who’s really wanted to find {STRVAR_1 0, 1, 0},\n",
+        "hurry over to {STRVAR_1 4, 0, 0}! That’s\n",
+        "the end of the breaking news!"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "key": 62583,
+  "messages": [
+    {
+      "id": "msg_0579_T24R0701_00000",
+      "en_US": [
+        "You came from Olivine?\r",
+        "Do you remember the four islands\n",
+        "along the way?\r",
+        "I heard that a mythical sea creature is\n",
+        "hiding in them."
+      ]
+    },
+    {
+      "id": "msg_0579_T24R0701_00001",
+      "en_US": [
+        "I heard that you can only see it if\n",
+        "you have a Silver Wing.\r",
+        "It must have the same scent as\n",
+        "the creature."
+      ]
+    },
+    {
+      "id": "msg_0579_T24R0701_00002",
+      "en_US": [
+        "I’ve heard that the whirlpools around\n",
+        "the islands are caused by the\f",
+        "sea creature.\r",
+        "You might need a special move to\n",
+        "get past them."
+      ]
+    }
+  ]
+}

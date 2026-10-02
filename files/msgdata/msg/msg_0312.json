@@ -1,0 +1,569 @@
+{
+  "key": 22722,
+  "messages": [
+    {
+      "id": "msg_0312_00000",
+      "en_US": [
+        "Welcome!\n",
+        "This is the reception for admission.\r",
+        "Will you try the Pokéathlon? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0312_00001",
+      "en_US": [
+        "Welcome. This is the reception for the\n",
+        "Supreme Cup.\r",
+        "Top Pokéathletes are waiting for you.\n",
+        "Would you like to try\f",
+        "the challenge? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0312_00002",
+      "en_US": "Anything else?"
+    },
+    {
+      "id": "msg_0312_00003",
+      "en_US": [
+        "Which course would you like\n",
+        "to try? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0312_00004",
+      "en_US": [
+        "You want to try\n",
+        "{STRVAR_4 1, 3, 0}? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0312_00005",
+      "en_US": "Please come this way.\r"
+    },
+    {
+      "id": "msg_0312_00006",
+      "en_US": [
+        "The Pokéathlon will begin right now.\n",
+        "Your team color is red.\r",
+        "Good luck!\r"
+      ]
+    },
+    {
+      "id": "msg_0312_00007",
+      "garbage": 32
+    },
+    {
+      "id": "msg_0312_00008",
+      "en_US": "{STRVAR_1 3, 0, 0} changed clothes."
+    },
+    {
+      "id": "msg_0312_00009",
+      "garbage": 27
+    },
+    {
+      "id": "msg_0312_00010",
+      "en_US": "Please join us next time."
+    },
+    {
+      "id": "msg_0312_00011",
+      "en_US": "What would you like to know about? {YESNO 0}"
+    },
+    {
+      "id": "msg_0312_00012",
+      "en_US": [
+        "The Pokéathlon is a sports festival in\n",
+        "which you and three Pokémon compete in\f",
+        "three events.\r",
+        "The Pokéathlon has a variety of events\n",
+        "to accommodate different aspects\f",
+        "of Pokémon.\r",
+        "Please come join us with three Pokémon!\r"
+      ]
+    },
+    {
+      "id": "msg_0312_00013",
+      "en_US": [
+        "The Supreme Cup is a special course\n",
+        "only for the top Pokéathletes\f",
+        "from all over the world.\r",
+        "You will earn more points than usual\n",
+        "when you win a Supreme Cup!\r",
+        "Please, challenge the\n",
+        "top Pokéathletes!\r"
+      ]
+    },
+    {
+      "id": "msg_0312_00014",
+      "en_US": [
+        "The Speed Course consists of three\n",
+        "events that require good\f",
+        "Speed Performance.\r",
+        "“Hurdle Dash”\n",
+        "Jump over the Hurdles to be\f",
+        "number one!\r",
+        "“Pennant Capture”\n",
+        "Capture Pennants quickly!\r",
+        "“Relay Run”\n",
+        "Show your teamwork!\r",
+        "When you win, you will be awarded\n",
+        "the Speed Medal.\r",
+        "Choose three Pokémon with good Speed\n",
+        "for these events.\r"
+      ]
+    },
+    {
+      "id": "msg_0312_00015",
+      "en_US": [
+        "The Power Course consists of three\n",
+        "events that require good\f",
+        "Power Performance.\r",
+        "“Block Smash”\n",
+        "Smash all the Blocks!\r",
+        "“Circle Push”\n",
+        "Push them out while you stay in!\r",
+        "“Goal Roll”\n",
+        "Drive them out and roll the balls\f",
+        "toward the Goal!\r",
+        "When you win, you will be awarded\n",
+        "the Power Medal.\r",
+        "Choose three Pokémon with good Power\n",
+        "for these events.\r"
+      ]
+    },
+    {
+      "id": "msg_0312_00016",
+      "en_US": [
+        "The Stamina Course consists of three\n",
+        "events that require good\f",
+        "Stamina Performance.\r",
+        "“Ring Drop”\n",
+        "Blow them away and stay on the Ring!\r",
+        "“Relay Run”\n",
+        "The Stamina of all three is key!\r",
+        "“Block Smash”\f",
+        "Smash away as long as your\n",
+        "Stamina holds!\r",
+        "When you win, you will be awarded\n",
+        "the Stamina Medal.\r",
+        "Choose three Pokémon with good Stamina\n",
+        "for these events.\r"
+      ]
+    },
+    {
+      "id": "msg_0312_00017",
+      "en_US": [
+        "The Jump Course consists of three\n",
+        "events that require good\f",
+        "Jump Performance.\r",
+        "“Lamp Jump”\n",
+        "Jump to the sky and hit Lamps!\r",
+        "“Disc Catch”\n",
+        "Jump and catch flying Discs!\r",
+        "“Hurdle Dash”\n",
+        "Jump over the Hurdles cleanly!\r",
+        "When you win, you will be awarded\n",
+        "the Jump Medal.\r",
+        "Choose three Pokémon with good Jump\n",
+        "for these events.\r"
+      ]
+    },
+    {
+      "id": "msg_0312_00018",
+      "en_US": [
+        "The Skill Course consists of three\n",
+        "events that require good\f",
+        "Technique Performance.\r",
+        "“Snow Throw”\n",
+        "Aim for them and throw Snow!\r",
+        "“Goal Roll”\n",
+        "Roll the balls into the Goal!\r",
+        "“Pennant Capture”\n",
+        "Make a quick turn and grab Pennants!\r",
+        "When you win, you will be awarded\n",
+        "the Skill Medal.\r",
+        "Choose three Pokémon with good Skill\n",
+        "for these events.\r"
+      ]
+    },
+    {
+      "id": "msg_0312_00019",
+      "en_US": [
+        "Good job!\r",
+        "You will receive Athlete Points\n",
+        "based on your score.\r"
+      ]
+    },
+    {
+      "id": "msg_0312_00020",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} received\n",
+        "{STRVAR_1 53, 2, 0} points!"
+      ]
+    },
+    {
+      "id": "msg_0312_00021",
+      "garbage": 17
+    },
+    {
+      "id": "msg_0312_00022",
+      "en_US": [
+        "For winning these events,\n",
+        "you will be awarded\f",
+        "another {STRVAR_1 52, 2, 0} points.\r"
+      ]
+    },
+    {
+      "id": "msg_0312_00023",
+      "en_US": [
+        "Considering the performance this time,\n",
+        "Pokéathlete {STRVAR_1 3, 0, 0} will be\f",
+        "permitted to go to the “Trust” room.\f",
+        "Congratulations!\r"
+      ]
+    },
+    {
+      "id": "msg_0312_00024",
+      "en_US": [
+        "Considering the performance this time,\n",
+        "Pokéathlete {STRVAR_1 3, 0, 0} will be\f",
+        "permitted to go to the\f",
+        "“Potential” room.\f",
+        "Congratulations!\r"
+      ]
+    },
+    {
+      "id": "msg_0312_00025",
+      "en_US": [
+        "Considering the performance this time,\n",
+        "Pokéathlete {STRVAR_1 3, 0, 0} will be\f",
+        "permitted to go to the\f",
+        "“Friendship” room.\f",
+        "Congratulations!\r"
+      ]
+    },
+    {
+      "id": "msg_0312_00026",
+      "en_US": [
+        "Welcome.\n",
+        "This is the reception for the\f",
+        "Link Pokéathlon.\r",
+        "You can compete with your friends\n",
+        "on the same course.\r",
+        "Would you like to try it? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0312_00027",
+      "en_US": [
+        "Please decide which of you\n",
+        "will become the group leader.\r",
+        "The other players must then choose\n",
+        "“JOIN GROUP.” {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0312_00028",
+      "en_US": [
+        "DS Wireless Communications will\n",
+        "be launched. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0312_00029",
+      "en_US": [
+        "Communication error.\r",
+        "Please repeat the registration\n",
+        "process from the beginning."
+      ]
+    },
+    {
+      "id": "msg_0312_00030",
+      "en_US": [
+        "Entering {STRVAR_4 1, 3, 0}.\n",
+        "Your team color is red."
+      ]
+    },
+    {
+      "id": "msg_0312_00031",
+      "en_US": [
+        "Entering {STRVAR_4 1, 3, 0}.\n",
+        "Your team color is blue."
+      ]
+    },
+    {
+      "id": "msg_0312_00032",
+      "en_US": [
+        "Entering {STRVAR_4 1, 3, 0}.\n",
+        "Your team color is green."
+      ]
+    },
+    {
+      "id": "msg_0312_00033",
+      "en_US": [
+        "Entering {STRVAR_4 1, 3, 0}.\n",
+        "Your team color is yellow."
+      ]
+    },
+    {
+      "id": "msg_0312_00034",
+      "en_US": [
+        "Furthermore, you will be awarded a\n",
+        "runner-up bonus of {STRVAR_1 52, 2, 0} points.\r"
+      ]
+    },
+    {
+      "id": "msg_0312_00035",
+      "en_US": "{STRVAR_1 3, 0, 0} changed clothes."
+    },
+    {
+      "id": "msg_0312_00036",
+      "en_US": "Right this way, please!"
+    },
+    {
+      "id": "msg_0312_00037",
+      "en_US": [
+        "Oh no! It seems like you don’t have\n",
+        "enough Pokémon.\r",
+        "In order to participate in the\n",
+        "Pokéathlon, you need to have\f",
+        "at least three Pokémon.\r",
+        "The Pokéathlon brings together all\n",
+        "kinds of Pokémon from all over.\r",
+        "The more, the merrier! Please, bring a\n",
+        "bunch of Pokémon and you’ll see."
+      ]
+    },
+    {
+      "id": "msg_0312_00038",
+      "en_US": [
+        "Welcome. This is the reception for the\n",
+        "Link Pokéathlon.\r",
+        "Oh, my!\n",
+        "This is your first time, isn’t it?\r",
+        "If that’s true, then please head over\n",
+        "to the “Single” reception.\r",
+        "If you go to the right from here, it’s\n",
+        "the middle counter.\r",
+        "You can get information about the\n",
+        "Pokéathlon and decide on a course."
+      ]
+    },
+    {
+      "id": "msg_0312_00039",
+      "en_US": [
+        "The Link Pokéathlon is a sport festival\n",
+        "in which you join with three of your\f",
+        "Pokémon to compete in four events.\r",
+        "Your friends can join the same events\n",
+        "to compete.\r",
+        "The Pokéathlon has a variety of events\n",
+        "to accommodate many of the different\f",
+        "aspects of Pokémon.\r",
+        "Please bring your friends to the\n",
+        "Link Pokéathlon.\r"
+      ]
+    },
+    {
+      "id": "msg_0312_00040",
+      "en_US": [
+        "The Speed & Jump Course consists of\n",
+        "four events that require good\f",
+        "Speed and Jump Performance.\r",
+        "“Hurdle Dash”\n",
+        "Jump over the Hurdles to be\f",
+        "number one!\r",
+        "“Lamp Jump”\n",
+        "Take the Lamps quickly!\r",
+        "“Disc Catch”\n",
+        "Catch the Discs rapidly!\r",
+        "“Relay Run”\n",
+        "Superb Speed is highly required!\r",
+        "When you win, you will be awarded\n",
+        "the Speed Medal and the Jump Medal.\r",
+        "Choose three Pokémon with good\n",
+        "Speed and Jump for these events, and\f",
+        "bring your friends as well.\r"
+      ]
+    },
+    {
+      "id": "msg_0312_00041",
+      "en_US": [
+        "The Jump & Skill Course consists of\n",
+        "four events that require good\f",
+        "Jump and Skill Performance.\r",
+        "“Lamp Jump”\n",
+        "Show your skill in jumping to\f",
+        "touch the Lamps!\r",
+        "“Disc Catch”\n",
+        "Jump and catch the Discs!\r",
+        "“Pennant Capture”\n",
+        "Show your moves and collect Pennants!\r",
+        "“Snow Throw”\n",
+        "Aim with accuracy!\r",
+        "When you win, you will be awarded\n",
+        "the Jump Medal and the Skill Medal.\r",
+        "Choose three Pokémon with good\n",
+        "Jump and Skill for these events, and\f",
+        "bring your friends as well.\r"
+      ]
+    },
+    {
+      "id": "msg_0312_00042",
+      "en_US": [
+        "The Skill & Power Course consists of\n",
+        "four events that require good\f",
+        "Skill and Power Performance.\r",
+        "“Goal Roll”\n",
+        "Aim at the Goal and shoot!\r",
+        "“Snow Throw”\n",
+        "Steady, aim, and fire away!\r",
+        "“Pennant Capture”\n",
+        "Show your moves and collect Pennants!\r",
+        "“Block Smash”\n",
+        "Blocks keep coming! Smash them all!\r",
+        "When you win, you will be awarded\n",
+        "the Skill Medal and the Power Medal.\r",
+        "Choose three Pokémon with good\n",
+        "Skill and Power for these events, and\f",
+        "bring your friends as well.\r"
+      ]
+    },
+    {
+      "id": "msg_0312_00043",
+      "en_US": [
+        "The Power & Stamina Course consists\n",
+        "of four events that require good\f",
+        "Power and Stamina Performance.\r",
+        "“Block Smash”\n",
+        "Blocks keep coming! Smash them all!\r",
+        "“Circle Push”\n",
+        "Push them away and stay in the Circle!\r",
+        "“Goal Roll”\n",
+        "Keep rolling until your energy\f",
+        "runs out!\r",
+        "“Ring Drop”\n",
+        "Drop them off the Ring and stay on top!\r",
+        "When you win, you will be awarded\n",
+        "the Power Medal and the Stamina Medal.\r",
+        "Choose three Pokémon with good\n",
+        "Power and Stamina for these events,\f",
+        "and bring your friends as well.\r"
+      ]
+    },
+    {
+      "id": "msg_0312_00044",
+      "en_US": [
+        "The Stamina & Speed Course consists\n",
+        "of four events that require good\f",
+        "Stamina and Speed Performance.\r",
+        "“Relay Run”\n",
+        "Both Stamina and Speed are key!\r",
+        "“Ring Drop”\n",
+        "Drop them from high while you survive!\r",
+        "“Hurdle Dash”\n",
+        "Over you go! Aim for number one!\r",
+        "“Circle Push”\n",
+        "Push them away and stay in the Circle!\r",
+        "When you win, you will be awarded\n",
+        "the Stamina Medal and the Speed Medal.\r",
+        "Choose three Pokémon with good Stamina\n",
+        "and Speed for these events, and\f",
+        "bring your friends as well.\r"
+      ]
+    },
+    {
+      "id": "msg_0312_00045",
+      "en_US": [
+        "The Master Course is a difficult course\n",
+        "that offers different events\f",
+        "every time.\r",
+        "Teams must do their best to get\n",
+        "through the course, no matter what it\f",
+        "may be!\r",
+        "You won’t receive any medals for a\n",
+        "Master Course.\r",
+        "However, you will receive twice as many\n",
+        "Athlete Points.\r",
+        "By all means, get your friends together\n",
+        "and give it a try.\r"
+      ]
+    },
+    {
+      "id": "msg_0312_00046",
+      "en_US": [
+        "This time, {STRVAR_1 3, 0, 0}’s score was\n",
+        "{STRVAR_1 52, 1, 0}! Earned {STRVAR_1 53, 2, 0} points!\r"
+      ]
+    },
+    {
+      "id": "msg_0312_00047",
+      "en_US": [
+        "This time, {STRVAR_1 3, 0, 0}’s score was\n",
+        "{STRVAR_1 52, 1, 0}!\r",
+        "Since it was on a Master Course,\n",
+        "{STRVAR_1 53, 2, 0} points were earned!\r"
+      ]
+    },
+    {
+      "id": "msg_0312_00048",
+      "garbage": 205
+    },
+    {
+      "id": "msg_0312_00049",
+      "garbage": 28
+    },
+    {
+      "id": "msg_0312_00050",
+      "garbage": 31
+    },
+    {
+      "id": "msg_0312_00051",
+      "garbage": 13
+    },
+    {
+      "id": "msg_0312_00052",
+      "garbage": 17
+    },
+    {
+      "id": "msg_0312_00053",
+      "garbage": 20
+    },
+    {
+      "id": "msg_0312_00054",
+      "garbage": 17
+    },
+    {
+      "id": "msg_0312_00055",
+      "garbage": 154
+    },
+    {
+      "id": "msg_0312_00056",
+      "garbage": 186
+    },
+    {
+      "id": "msg_0312_00057",
+      "garbage": 90
+    },
+    {
+      "id": "msg_0312_00058",
+      "garbage": 43
+    },
+    {
+      "id": "msg_0312_00059",
+      "garbage": 49
+    },
+    {
+      "id": "msg_0312_00060",
+      "garbage": 47
+    },
+    {
+      "id": "msg_0312_00061",
+      "garbage": 152
+    },
+    {
+      "id": "msg_0312_00062",
+      "garbage": 18
+    }
+  ]
+}

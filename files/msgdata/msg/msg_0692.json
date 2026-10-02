@@ -1,0 +1,137 @@
+{
+  "key": 54704,
+  "messages": [
+    {
+      "id": "msg_0692_00000",
+      "en_US": "Doug"
+    },
+    {
+      "id": "msg_0692_00001",
+      "en_US": [
+        "We should trade phone numbers, so I\n",
+        "can educate you more on the\f",
+        "merits of Bug-type Pokémon!{YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0692_00002",
+      "en_US": [
+        "You betcha. Thanks!\n",
+        "I’ll call you sometime!"
+      ]
+    },
+    {
+      "id": "msg_0692_00003",
+      "en_US": "Don’t say such sad things..."
+    },
+    {
+      "id": "msg_0692_00004",
+      "en_US": [
+        "Oh, did you decide to exchange\n",
+        "phone numbers after all? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0692_00005",
+      "en_US": [
+        "Oh, there you are!\r",
+        "I thought I’d give you a Berry, so I’ve\n",
+        "been waiting here for you!\r",
+        "Here you go!\r"
+      ]
+    },
+    {
+      "id": "msg_0692_00006",
+      "en_US": [
+        "Wait, what?\r",
+        "If you’re nearby, don’t bother with the\n",
+        "phone. Come talk in person!"
+      ]
+    },
+    {
+      "id": "msg_0692_00007",
+      "en_US": [
+        "My {STRVAR_1 0, 10, 0} is growing up well,\n",
+        "if I do say so myself!\r",
+        "Why, in a recent battle against\n",
+        "{STRVAR_1 0, 11, 0}, it knocked it out before\f",
+        "I could blink!\r",
+        "Before I could even blink! Amazing, eh?"
+      ]
+    },
+    {
+      "id": "msg_0692_00008",
+      "en_US": [
+        "Argh, I give up! My {STRVAR_1 0, 10, 0} has\n",
+        "gotten pretty strong, you know.\r",
+        "I figured that it should be able to\n",
+        "easily knock out a {STRVAR_1 0, 11, 0}...\r",
+        "But once we got a good look at it, we\n",
+        "saw it was really high level...\f",
+        "We got beaten up, down, and sideways..."
+      ]
+    },
+    {
+      "id": "msg_0692_00009",
+      "en_US": [
+        "You know, earlier by the roadside, this\n",
+        "{STRVAR_1 0, 11, 0} jumped out at me!\r",
+        "I really love Pokémon, but...bam!\n",
+        "It sure startled me!\r",
+        "I mean, if you’re going to jump out at a\n",
+        "person, you should at least have the\f",
+        "decency to introduce yourself first!"
+      ]
+    },
+    {
+      "id": "msg_0692_00010",
+      "en_US": [
+        "You know, I’d really like to sit down and\n",
+        "talk with you about the virtues of\f",
+        "Bug-type Pokémon!\r",
+        "What do you think? I’m on\n",
+        "{STRVAR_1 4, 3, 0}. How about you come\f",
+        "over for a battle?"
+      ]
+    },
+    {
+      "id": "msg_0692_00011",
+      "en_US": [
+        "Let’s have a battle. We haven’t had one\n",
+        "in a while! I’m on {STRVAR_1 4, 3, 0}...\f",
+        "Don’t forget!"
+      ]
+    },
+    {
+      "id": "msg_0692_00012",
+      "en_US": [
+        "You know, my dad was a researcher\n",
+        "studying Bug-type Pokémon.\r",
+        "Ever since I was young, there’s\n",
+        "always been Bug-type Pokémon\f",
+        "scattered all over the house.\r",
+        "That’s why I started to like Bug-type\n",
+        "Pokémon so much myself.\r",
+        "My mom...\n",
+        "Well, she screamed a lot."
+      ]
+    },
+    {
+      "id": "msg_0692_00013",
+      "en_US": [
+        "I found some Berries. I’ve already got\n",
+        "more than I need, so I’ll give you some!\r",
+        "I’m on {STRVAR_1 4, 3, 0}. Come pick\n",
+        "them up!"
+      ]
+    },
+    {
+      "id": "msg_0692_00014",
+      "en_US": [
+        "You want Berries, don’t you?\r",
+        "I’ll give you some if you come visit me\n",
+        "on {STRVAR_1 4, 3, 0}!"
+      ]
+    }
+  ]
+}

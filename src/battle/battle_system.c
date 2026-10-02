@@ -14,7 +14,7 @@
 #include "battle/battle_input.h"
 #include "battle/overlay_12_0224E4FC.h"
 #include "battle/overlay_12_0226BEC4.h"
-#include "msgdata/msg/msg_0197.h"
+#include "files/msgdata/msg/msg_0197.h"
 
 #include "msgdata.h"
 #include "party.h"
@@ -155,35 +155,35 @@ Pokedex *BattleSystem_GetPokedex(BattleSystem *battleSystem) {
     return battleSystem->pokedex;
 }
 
-u8 *BattleSystem_GetSendBufferPtr(BattleSystem *battleSystem) {
+u8 *BattleSystem_GetServerMessage(BattleSystem *battleSystem) {
     return &battleSystem->sendBuffer[0];
 }
 
-u8 *BattleSystem_GetRecvBufferPtr(BattleSystem *battleSystem) {
+u8 *BattleSystem_GetClientMessage(BattleSystem *battleSystem) {
     return &battleSystem->recvBuffer[0];
 }
 
-u16 *ov12_0223A954(BattleSystem *battleSystem) {
+u16 *BattleSystem_GetServerReadIndex(BattleSystem *battleSystem) {
     return &battleSystem->unk23E8;
 }
 
-u16 *ov12_0223A960(BattleSystem *battleSystem) {
+u16 *BattleSystem_GetServerWriteIndex(BattleSystem *battleSystem) {
     return &battleSystem->unk23EA;
 }
 
-u16 *ov12_0223A96C(BattleSystem *battleSystem) {
+u16 *BattleSystem_GetServerEndIndex(BattleSystem *battleSystem) {
     return &battleSystem->unk23EC;
 }
 
-u16 *ov12_0223A978(BattleSystem *battleSystem) {
+u16 *BattleSystem_GetClientReadIndex(BattleSystem *battleSystem) {
     return &battleSystem->unk23EE;
 }
 
-u16 *ov12_0223A984(BattleSystem *battleSystem) {
+u16 *BattleSystem_GetClientWriteIndex(BattleSystem *battleSystem) {
     return &battleSystem->unk23F0;
 }
 
-u16 *ov12_0223A990(BattleSystem *battleSystem) {
+u16 *BattleSystem_GetClientEndIndex(BattleSystem *battleSystem) {
     return &battleSystem->unk23F2;
 }
 
@@ -359,10 +359,10 @@ BOOL BattleSystem_RecoverStatus(BattleSystem *battleSystem, int battlerId, int s
             data &= ~STATUS_SLEEP;
             SetMonData(mon, MON_DATA_STATUS, &data);
             if (index1 == selectedMonIndex || index2 == selectedMonIndex) {
-                data = GetBattlerVar(ctx, battlerId, BMON_DATA_STATUS, NULL);
+                data = BattleMon_Get(ctx, battlerId, BMON_DATA_STATUS, NULL);
                 data &= ~STATUS_SLEEP;
                 SetBattlerVar(ctx, battlerId, BMON_DATA_STATUS, &data);
-                data = GetBattlerVar(ctx, battlerId, BMON_DATA_STATUS2, NULL);
+                data = BattleMon_Get(ctx, battlerId, BMON_DATA_STATUS2, NULL);
                 data &= ~STATUS2_NIGHTMARE;
                 SetBattlerVar(ctx, battlerId, BMON_DATA_STATUS2, &data);
             }
@@ -376,7 +376,7 @@ BOOL BattleSystem_RecoverStatus(BattleSystem *battleSystem, int battlerId, int s
             data &= ~STATUS_POISON_ALL;
             SetMonData(mon, MON_DATA_STATUS, &data);
             if (index1 == selectedMonIndex || index2 == selectedMonIndex) {
-                data = GetBattlerVar(ctx, battlerId, BMON_DATA_STATUS, NULL);
+                data = BattleMon_Get(ctx, battlerId, BMON_DATA_STATUS, NULL);
                 data &= ~STATUS_POISON_ALL;
                 SetBattlerVar(ctx, battlerId, BMON_DATA_STATUS, &data);
             }
@@ -390,7 +390,7 @@ BOOL BattleSystem_RecoverStatus(BattleSystem *battleSystem, int battlerId, int s
             data &= ~STATUS_BURN;
             SetMonData(mon, MON_DATA_STATUS, &data);
             if (index1 == selectedMonIndex || index2 == selectedMonIndex) {
-                data = GetBattlerVar(ctx, battlerId, BMON_DATA_STATUS, NULL);
+                data = BattleMon_Get(ctx, battlerId, BMON_DATA_STATUS, NULL);
                 data &= ~STATUS_BURN;
                 SetBattlerVar(ctx, battlerId, BMON_DATA_STATUS, &data);
             }
@@ -404,7 +404,7 @@ BOOL BattleSystem_RecoverStatus(BattleSystem *battleSystem, int battlerId, int s
             data &= ~STATUS_FREEZE;
             SetMonData(mon, MON_DATA_STATUS, &data);
             if (index1 == selectedMonIndex || index2 == selectedMonIndex) {
-                data = GetBattlerVar(ctx, battlerId, BMON_DATA_STATUS, NULL);
+                data = BattleMon_Get(ctx, battlerId, BMON_DATA_STATUS, NULL);
                 data &= ~STATUS_FREEZE;
                 SetBattlerVar(ctx, battlerId, BMON_DATA_STATUS, &data);
             }
@@ -418,7 +418,7 @@ BOOL BattleSystem_RecoverStatus(BattleSystem *battleSystem, int battlerId, int s
             data &= ~STATUS_PARALYSIS;
             SetMonData(mon, MON_DATA_STATUS, &data);
             if (index1 == selectedMonIndex || index2 == selectedMonIndex) {
-                data = GetBattlerVar(ctx, battlerId, BMON_DATA_STATUS, NULL);
+                data = BattleMon_Get(ctx, battlerId, BMON_DATA_STATUS, NULL);
                 data &= ~STATUS_PARALYSIS;
                 SetBattlerVar(ctx, battlerId, BMON_DATA_STATUS, &data);
             }
@@ -428,7 +428,7 @@ BOOL BattleSystem_RecoverStatus(BattleSystem *battleSystem, int battlerId, int s
 
     if (GetItemAttr(item, ITEMATTR_CFS_HEAL, HEAP_ID_BATTLE)) {
         if (index1 == selectedMonIndex || index2 == selectedMonIndex) {
-            data = GetBattlerVar(ctx, battlerId, BMON_DATA_STATUS2, NULL);
+            data = BattleMon_Get(ctx, battlerId, BMON_DATA_STATUS2, NULL);
             if (data & STATUS2_CONFUSION) {
                 data &= ~STATUS2_CONFUSION;
                 SetBattlerVar(ctx, battlerId, BMON_DATA_STATUS2, &data);
@@ -439,7 +439,7 @@ BOOL BattleSystem_RecoverStatus(BattleSystem *battleSystem, int battlerId, int s
 
     if (GetItemAttr(item, ITEMATTR_INF_HEAL, HEAP_ID_BATTLE)) {
         if (index1 == selectedMonIndex || index2 == selectedMonIndex) {
-            data = GetBattlerVar(ctx, battlerId, BMON_DATA_STATUS2, NULL);
+            data = BattleMon_Get(ctx, battlerId, BMON_DATA_STATUS2, NULL);
             if (data & STATUS2_ATTRACT) {
                 data &= ~STATUS2_ATTRACT;
                 SetBattlerVar(ctx, battlerId, BMON_DATA_STATUS2, &data);
@@ -461,7 +461,7 @@ BOOL BattleSystem_RecoverStatus(BattleSystem *battleSystem, int battlerId, int s
 
     if (GetItemAttr(item, ITEMATTR_ATK_STAGES, HEAP_ID_BATTLE)) {
         if (index1 == selectedMonIndex || index2 == selectedMonIndex) {
-            if (GetBattlerVar(ctx, battlerId, BMON_DATA_STAT_CHANGE_ATK, NULL) < STAT_UP_6) {
+            if (BattleMon_Get(ctx, battlerId, BMON_DATA_STAT_CHANGE_ATK, NULL) < STAT_UP_6) {
                 AddBattlerVar(ctx, battlerId, BMON_DATA_STAT_CHANGE_ATK, 1);
                 ret = TRUE;
             }
@@ -470,7 +470,7 @@ BOOL BattleSystem_RecoverStatus(BattleSystem *battleSystem, int battlerId, int s
 
     if (GetItemAttr(item, ITEMATTR_DEF_STAGES, HEAP_ID_BATTLE)) {
         if (index1 == selectedMonIndex || index2 == selectedMonIndex) {
-            if (GetBattlerVar(ctx, battlerId, BMON_DATA_STAT_CHANGE_DEF, NULL) < STAT_UP_6) {
+            if (BattleMon_Get(ctx, battlerId, BMON_DATA_STAT_CHANGE_DEF, NULL) < STAT_UP_6) {
                 AddBattlerVar(ctx, battlerId, BMON_DATA_STAT_CHANGE_DEF, 1);
                 ret = TRUE;
             }
@@ -479,7 +479,7 @@ BOOL BattleSystem_RecoverStatus(BattleSystem *battleSystem, int battlerId, int s
 
     if (GetItemAttr(item, ITEMATTR_SPATK_STAGES, HEAP_ID_BATTLE)) {
         if (index1 == selectedMonIndex || index2 == selectedMonIndex) {
-            if (GetBattlerVar(ctx, battlerId, BMON_DATA_STAT_CHANGE_SPATK, NULL) < STAT_UP_6) {
+            if (BattleMon_Get(ctx, battlerId, BMON_DATA_STAT_CHANGE_SPATK, NULL) < STAT_UP_6) {
                 AddBattlerVar(ctx, battlerId, BMON_DATA_STAT_CHANGE_SPATK, 1);
                 ret = TRUE;
             }
@@ -488,7 +488,7 @@ BOOL BattleSystem_RecoverStatus(BattleSystem *battleSystem, int battlerId, int s
 
     if (GetItemAttr(item, ITEMATTR_SPDEF_STAGES, HEAP_ID_BATTLE)) {
         if (index1 == selectedMonIndex || index2 == selectedMonIndex) {
-            if (GetBattlerVar(ctx, battlerId, BMON_DATA_STAT_CHANGE_SPDEF, NULL) < STAT_UP_6) {
+            if (BattleMon_Get(ctx, battlerId, BMON_DATA_STAT_CHANGE_SPDEF, NULL) < STAT_UP_6) {
                 AddBattlerVar(ctx, battlerId, BMON_DATA_STAT_CHANGE_SPDEF, 1);
                 ret = TRUE;
             }
@@ -497,7 +497,7 @@ BOOL BattleSystem_RecoverStatus(BattleSystem *battleSystem, int battlerId, int s
 
     if (GetItemAttr(item, ITEMATTR_SPEED_STAGES, HEAP_ID_BATTLE)) {
         if (index1 == selectedMonIndex || index2 == selectedMonIndex) {
-            if (GetBattlerVar(ctx, battlerId, BMON_DATA_STAT_CHANGE_SPEED, NULL) < STAT_UP_6) {
+            if (BattleMon_Get(ctx, battlerId, BMON_DATA_STAT_CHANGE_SPEED, NULL) < STAT_UP_6) {
                 AddBattlerVar(ctx, battlerId, BMON_DATA_STAT_CHANGE_SPEED, 1);
                 ret = TRUE;
             }
@@ -506,7 +506,7 @@ BOOL BattleSystem_RecoverStatus(BattleSystem *battleSystem, int battlerId, int s
 
     if (GetItemAttr(item, ITEMATTR_ACCURACY_STAGES, HEAP_ID_BATTLE)) {
         if (index1 == selectedMonIndex || index2 == selectedMonIndex) {
-            if (GetBattlerVar(ctx, battlerId, BMON_DATA_STAT_CHANGE_ACC, NULL) < STAT_UP_6) {
+            if (BattleMon_Get(ctx, battlerId, BMON_DATA_STAT_CHANGE_ACC, NULL) < STAT_UP_6) {
                 AddBattlerVar(ctx, battlerId, BMON_DATA_STAT_CHANGE_ACC, 1);
                 ret = TRUE;
             }
@@ -515,7 +515,7 @@ BOOL BattleSystem_RecoverStatus(BattleSystem *battleSystem, int battlerId, int s
 
     if (GetItemAttr(item, ITEMATTR_CRITRATE_STAGES, HEAP_ID_BATTLE)) {
         if (index1 == selectedMonIndex || index2 == selectedMonIndex) {
-            data = GetBattlerVar(ctx, battlerId, BMON_DATA_STATUS2, NULL);
+            data = BattleMon_Get(ctx, battlerId, BMON_DATA_STATUS2, NULL);
             if (!(data & STATUS2_FOCUS_ENERGY)) {
                 data |= STATUS2_FOCUS_ENERGY;
                 SetBattlerVar(ctx, battlerId, BMON_DATA_STATUS2, &data);
@@ -529,7 +529,7 @@ BOOL BattleSystem_RecoverStatus(BattleSystem *battleSystem, int battlerId, int s
         if (GetMonData(mon, MON_DATA_MOVE1_PP + movePos, NULL) != GetMonData(mon, MON_DATA_MOVE1_MAX_PP + movePos, NULL)) {
             AddMonData(mon, MON_DATA_MOVE1_PP + movePos, data);
             if (index1 == selectedMonIndex || index2 == selectedMonIndex) {
-                if (!(GetBattlerVar(ctx, battlerId, BMON_DATA_STATUS2, NULL) & STATUS2_TRANSFORM) && !(GetBattlerVar(ctx, battlerId, BMON_DATA_MIMICED_MOVE, NULL) & MaskOfFlagNo(movePos))) {
+                if (!(BattleMon_Get(ctx, battlerId, BMON_DATA_STATUS2, NULL) & STATUS2_TRANSFORM) && !(BattleMon_Get(ctx, battlerId, BMON_DATA_MIMICED_MOVE, NULL) & MaskOfFlagNo(movePos))) {
                     AddBattlerVar(ctx, battlerId, BMON_DATA_CUR_PP_1 + movePos, data);
                 }
             }
@@ -543,7 +543,7 @@ BOOL BattleSystem_RecoverStatus(BattleSystem *battleSystem, int battlerId, int s
             if (GetMonData(mon, MON_DATA_MOVE1_PP + movePos, NULL) != GetMonData(mon, MON_DATA_MOVE1_MAX_PP + movePos, NULL)) {
                 AddMonData(mon, MON_DATA_MOVE1_PP + movePos, data);
                 if (index1 == selectedMonIndex || index2 == selectedMonIndex) {
-                    if (!(GetBattlerVar(ctx, battlerId, BMON_DATA_STATUS2, NULL) & STATUS2_TRANSFORM) && !(GetBattlerVar(ctx, battlerId, BMON_DATA_MIMICED_MOVE, NULL) & MaskOfFlagNo(movePos))) {
+                    if (!(BattleMon_Get(ctx, battlerId, BMON_DATA_STATUS2, NULL) & STATUS2_TRANSFORM) && !(BattleMon_Get(ctx, battlerId, BMON_DATA_MIMICED_MOVE, NULL) & MaskOfFlagNo(movePos))) {
                         AddBattlerVar(ctx, battlerId, BMON_DATA_CUR_PP_1 + movePos, data);
                     }
                 }
@@ -724,7 +724,7 @@ u16 BattleSystem_CheckEvolution(BattleSetup *setup, int *selectedMonIndex, int *
     return species;
 }
 
-u8 ov12_0223B688(BattleSystem *battleSystem) {
+u8 BattleSystem_IsInitialized(BattleSystem *battleSystem) {
     return battleSystem->unk23FC;
 }
 

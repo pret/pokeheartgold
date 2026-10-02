@@ -1,0 +1,153 @@
+{
+  "key": 17426,
+  "messages": [
+    {
+      "id": "msg_0497_T07R0104_00000",
+      "en_US": [
+        "Falkner: Out of all the Trainers\n",
+        "out there, the best Trainer would\f",
+        "have to be my dad.\r"
+      ]
+    },
+    {
+      "id": "msg_0497_T07R0104_00001",
+      "en_US": [
+        "Janine: Ha!\n",
+        "You don’t know a thing!\r",
+        "The best Trainer in the world is Koga,\n",
+        "one of the Elite Four!\f",
+        "Namely--my dad!\r"
+      ]
+    },
+    {
+      "id": "msg_0497_T07R0104_00002",
+      "en_US": [
+        "Falkner: You are mistaken.\n",
+        "My dad treats Poké...\r"
+      ]
+    },
+    {
+      "id": "msg_0497_T07R0104_00003",
+      "en_US": [
+        "Janine: Please stop this!\n",
+        "Why don’t you just admit that my dad\f",
+        "is the true Trainer!\r"
+      ]
+    },
+    {
+      "id": "msg_0497_T07R0104_00004",
+      "en_US": [
+        "Falkner: You were listening, right?\n",
+        "You agree my dad is\f",
+        "greater, right? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0497_T07R0104_00005",
+      "en_US": [
+        "Falkner: You do?\n",
+        "Just as I thought!\r",
+        "You know something?\n",
+        "I’m sure we’ll enjoy talking about\f",
+        "my dad!\f",
+        "Here is my number!\r"
+      ]
+    },
+    {
+      "id": "msg_0497_T07R0104_00006",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} registered Falkner\n",
+        "in the Pokégear!"
+      ]
+    },
+    {
+      "id": "msg_0497_T07R0104_00007",
+      "en_US": [
+        "Falkner: Give me a call on Saturday\n",
+        "morning if you want to hear about\f",
+        "my dad!"
+      ]
+    },
+    {
+      "id": "msg_0497_T07R0104_00008",
+      "en_US": [
+        "Falkner: You don’t?\n",
+        "I thought you were smarter than that.\r",
+        "Oh, well.\f",
+        "You’ll change your mind eventually."
+      ]
+    },
+    {
+      "id": "msg_0497_T07R0104_00009",
+      "en_US": [
+        "Falkner: So, you did change your mind.\n",
+        "You now think my dad\f",
+        "is greater? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0497_T07R0104_00010",
+      "en_US": [
+        "Falkner: Hey, why don’t we take\n",
+        "a picture together? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0497_T07R0104_00011",
+      "en_US": [
+        "Falkner: All right!\n",
+        "Are you ready?\r"
+      ]
+    },
+    {
+      "id": "msg_0497_T07R0104_00012",
+      "en_US": [
+        "Falkner: Yes!\n",
+        "We look good."
+      ]
+    },
+    {
+      "id": "msg_0497_T07R0104_00013",
+      "en_US": [
+        "Falkner: That’s all right.\n",
+        "I’ll just take one with my dad..."
+      ]
+    },
+    {
+      "id": "msg_0497_T07R0104_00014",
+      "en_US": [
+        "Your Photo Album is full.\r",
+        "Access your PC and delete\n",
+        "some pictures."
+      ]
+    },
+    {
+      "id": "msg_0497_T07R0104_00015",
+      "en_US": "Janine: Bah!"
+    },
+    {
+      "id": "msg_0497_T07R0104_00016",
+      "en_US": [
+        "I’m here to buy Bloom Mail to send\n",
+        "to my girlfriend."
+      ]
+    },
+    {
+      "id": "msg_0497_T07R0104_00017",
+      "en_US": [
+        "You know what?\r",
+        "Tunnel Mail is finally available\n",
+        "at this department store!\r",
+        "Previously, it was only sold\n",
+        "in Violet City."
+      ]
+    },
+    {
+      "id": "msg_0497_T07R0104_00018",
+      "en_US": [
+        "Gifts to Express Yourself!\n",
+        "4F: Wiseman Gifts"
+      ]
+    }
+  ]
+}

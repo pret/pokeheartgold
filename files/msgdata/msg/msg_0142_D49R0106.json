@@ -1,0 +1,257 @@
+{
+  "key": 9375,
+  "messages": [
+    {
+      "id": "msg_0142_D49R0106_00000",
+      "en_US": [
+        "This is the “Potential” room.\n",
+        "It is to show the infinite potential\f",
+        "of both Pokémon and people."
+      ]
+    },
+    {
+      "id": "msg_0142_D49R0106_00001",
+      "en_US": [
+        "Only the Pokéathletes who have held\n",
+        "the best record in every event\f",
+        "are allowed here.\r",
+        "Continue your hard work toward\n",
+        "breaking every record there is."
+      ]
+    },
+    {
+      "id": "msg_0142_D49R0106_00002",
+      "en_US": [
+        "This is the “Friendship” room.\n",
+        "Please go ahead."
+      ]
+    },
+    {
+      "id": "msg_0142_D49R0106_00003",
+      "en_US": [
+        "You are quite a Pokéathlete to\n",
+        "come here!\r",
+        "But you still have a long way\n",
+        "to become the Top Pokéathlete.\r",
+        "Shall I show you some special\n",
+        "techniques? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0142_D49R0106_00004",
+      "en_US": [
+        "Hi, {STRVAR_1 3, 0, 0}!\n",
+        "Do you have anything else\f",
+        "you want to know about? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0142_D49R0106_00005",
+      "en_US": [
+        "Hi, {STRVAR_1 3, 0, 0}!\n",
+        "Do you have anything else\f",
+        "you want to know about? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0142_D49R0106_00006",
+      "en_US": "About which course? {YESNO 0}"
+    },
+    {
+      "id": "msg_0142_D49R0106_00007",
+      "en_US": [
+        "Which event would you\n",
+        "like to know about? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0142_D49R0106_00008",
+      "en_US": [
+        "In Hurdle Dash, timing is everything.\r",
+        "Your Pokémon will pick up speed\n",
+        "if you let them wait until the last\f",
+        "moment before they jump the Hurdles.\r"
+      ]
+    },
+    {
+      "id": "msg_0142_D49R0106_00009",
+      "en_US": [
+        "Pennant Capture...\r",
+        "This event is not only about the\n",
+        "Pennants on the beach, but also\f",
+        "the ones other Pokémon have collected.\r",
+        "If you bump into them from behind,\n",
+        "they will be knocked down and your\f",
+        "Pokémon will grab their Pennants.\r",
+        "That’s the way experts fight.\r"
+      ]
+    },
+    {
+      "id": "msg_0142_D49R0106_00010",
+      "en_US": [
+        "The key is to push other Pokémon out\n",
+        "of the Circles...which may be obvious.\r",
+        "Actually, your Pokémon can push harder\n",
+        "if you pick the right moment to tell\f",
+        "them to push.\r",
+        "So you might be able to push back\n",
+        "powerful Pokémon if you give frequent\f",
+        "instructions to push.\r"
+      ]
+    },
+    {
+      "id": "msg_0142_D49R0106_00011",
+      "en_US": [
+        "Block Smash is not just about smashing.\r",
+        "Did you ever notice that sometimes\n",
+        "there are small cracks in the Blocks?\r",
+        "Well, if you can hit those cracks,\n",
+        "they break real fast!\r",
+        "If you can aim at cracks in a row,\n",
+        "your Pokémon will feel great and\f",
+        "they’ll show great potential.\r",
+        "One more thing...\r",
+        "When you make them switch,\n",
+        "flick your Pokémon upwards\f",
+        "for a quicker switch.\r"
+      ]
+    },
+    {
+      "id": "msg_0142_D49R0106_00012",
+      "en_US": [
+        "Disc Catch is about how long you can\n",
+        "wait until you catch the Discs.\r",
+        "Bird Pokémon can move around in the\n",
+        "air, so it’ll be easier to catch Discs\f",
+        "if you form a team of bird Pokémon.\r"
+      ]
+    },
+    {
+      "id": "msg_0142_D49R0106_00013",
+      "en_US": [
+        "Lamp Jump is not only about jumping.\r",
+        "There are three Pokémon bouncing\n",
+        "together, so one Pokémon can’t jump\f",
+        "well if another comes down right when\f",
+        "the other wants to go up in the air.\r",
+        "Letting them jump at the right time\n",
+        "is the key.\r"
+      ]
+    },
+    {
+      "id": "msg_0142_D49R0106_00014",
+      "en_US": [
+        "Relay Run requires well-timed switching.\r",
+        "Did you notice that Pokémon start to\n",
+        "sweat a little when they become tired?\r",
+        "It also indicates they have slowed down\n",
+        "a lot.\r",
+        "You shouldn’t allow them to sweat.\r",
+        "Switching before they start to sweat,\n",
+        "that is the key.\r"
+      ]
+    },
+    {
+      "id": "msg_0142_D49R0106_00015",
+      "en_US": [
+        "It’s not easy to aim for the top\n",
+        "by just tackling a lot in Ring Drop.\f",
+        "Do you know what a “Body Attack” is?\r",
+        "I call it a Body Attack, anyway...\r",
+        "Your Pokémon can actually jump\n",
+        "as it moves forward.\r",
+        "If you can let your Pokémon\n",
+        "Body Attack others, you can drop\f",
+        "them off the Ring altogether!\r"
+      ]
+    },
+    {
+      "id": "msg_0142_D49R0106_00016",
+      "en_US": [
+        "Snow Throw is not just about smashing.\r",
+        "Are you making sure the Snowballs\n",
+        "are big?\r",
+        "Bigger Snowballs have a better\n",
+        "chance of making other Pokémon\f",
+        "fall down.\r",
+        "You can also block other Snowballs\n",
+        "from hitting your Pokémon by having\f",
+        "your Pokémon hold on to\f",
+        "some Snowballs.\r"
+      ]
+    },
+    {
+      "id": "msg_0142_D49R0106_00017",
+      "en_US": [
+        "Goal Roll requires the skills of\n",
+        "a Pokéathlete.\r",
+        "The situation changes every second,\n",
+        "but stay calm as you instruct\f",
+        "your Pokémon.\r",
+        "Positioning is key.\r",
+        "I recommend keeping one at your own\n",
+        "Goal to protect it--one in the middle of\f",
+        "the field for flexibility and one in\f",
+        "front of the Goal you want to\f",
+        "roll the ball into.\r"
+      ]
+    },
+    {
+      "id": "msg_0142_D49R0106_00018",
+      "en_US": [
+        "I hope you’ll become a Top Pokéathlete.\n",
+        "Good luck!"
+      ]
+    },
+    {
+      "id": "msg_0142_D49R0106_00019",
+      "en_US": [
+        "Those who have won at the Pokéathlon\n",
+        "100 times are commemorated here for\f",
+        "their achievement of creating the new,\f",
+        "legendary record."
+      ]
+    },
+    {
+      "id": "msg_0142_D49R0106_00020",
+      "en_US": [
+        "It is a cool Pokégear to commemorate\n",
+        "your 100th victory in the Pokéathlon.\r",
+        "That is your model!\n",
+        "It is a special Pokégear with\f",
+        "the Pokéathlon logo in the back."
+      ]
+    },
+    {
+      "id": "msg_0142_D49R0106_00021",
+      "en_US": [
+        "Those Pokéathletes who have come in\n",
+        "first in every event at the Pokéathlon\f",
+        "50 times are commemorated here for\f",
+        "their overwhelming might and the\f",
+        "arrival of a new legend."
+      ]
+    },
+    {
+      "id": "msg_0142_D49R0106_00022",
+      "en_US": [
+        "It’s an awesome Poké Ball to\n",
+        "commemorate your 50th victory\f",
+        "in every Pokéathlon event.\r",
+        "It’s your model Poké Ball!\n",
+        "The engraving reads, “Stay on Top.”"
+      ]
+    },
+    {
+      "id": "msg_0142_D49R0106_00023",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} checked\n",
+        "the event records.\r"
+      ]
+    },
+    {
+      "id": "msg_0142_D49R0106_00024",
+      "en_US": "DODRIO: Keewn!"
+    }
+  ]
+}

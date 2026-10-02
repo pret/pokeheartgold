@@ -1,9 +1,10 @@
 #ifndef POKEHEARTGOLD_UNK_02014DA0_H
 #define POKEHEARTGOLD_UNK_02014DA0_H
 
+#include "library/spl.h"
+
 #include "camera.h"
 #include "filesystem_files_def.h"
-#include "spl.h"
 
 typedef u32 (*texAllocFun)(u32 szByte, BOOL is4x4comp);
 typedef u32 (*plttAllocFun)(u32 szByte, BOOL is4pltt);

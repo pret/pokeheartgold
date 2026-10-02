@@ -1,4 +1,4 @@
-#include <nitro/fs/overlay.h>
+
 #pragma once
 .public PaletteData_GetUnfadedBuf
 .public PaletteData_GetFadedBuf
@@ -182,7 +182,7 @@
 .public BattleSystem_GetBattleSpecial
 .public ov12_0223B52C
 .public ov12_0223B580
-.public ov12_0223B688
+.public BattleSystem_IsInitialized
 .public ov12_0223B694
 .public BattleSystem_AreBattleAnimationsOn
 .public BattleSystem_GetTextFrameDelay
@@ -224,7 +224,7 @@
 .public ov12_0223C1F4
 .public BattleSystem_PrintTrainerMessage
 .public BattleSystem_PrintBattleMessage
-.public GetBattlerVar
+.public BattleMon_Get
 .public ov12_022506D4
 .public ov12_02251D28
 .public ov12_02252054
@@ -253,14 +253,14 @@
 .public ov12_02261294
 .public ov12_02261FD4
 .public ov12_02262014
-.public ov12_02262F24
-.public ov12_02262FE0
-.public ov12_0226311C
-.public ov12_022632C0
-.public ov12_02263360
-.public ov12_02263A00
-.public ov12_0226430C
-.public ov12_022643C8
+.public BattleController_EmitSelectedCommand
+.public BattleController_EmitSelectedMove
+.public BattleController_EmitSelectedTarget
+.public BattleController_EmitSelectedBagItem
+.public BattleController_EmitPartyMenuResult
+.public BattleController_EmitAlertMessageAck
+.public BattleController_EmitClearCommand
+.public BattleController_SetMoveAnimation
 .public ov12_0226498C
 .public BattleHpBar_FreeResources
 .public ov12_02264C84

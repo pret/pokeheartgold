@@ -1,8 +1,8 @@
 #include "global.h"
 
 #include "application/pokegear/radio/radio_internal.h"
-#include "msgdata/msg.naix"
-#include "msgdata/msg/msg_0420.h"
+#include "files/msgdata/msg.naix"
+#include "files/msgdata/msg/msg_0420.h"
 
 #include "math_util.h"
 #include "sound_02004A44.h"
@@ -90,7 +90,7 @@ void RadioShow_TrainerProfiles_Init(RadioShow *radioShow) {
     u8 msgID;
     TrainerProfilesData *data = radioShow->showData;
 
-    radioShow->showMsgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0420_bin, radioShow->heapID);
+    radioShow->showMsgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msg_0420, radioShow->heapID);
     ReadMsgDataIntoString(radioShow->showMsgData, msg_0420_00000, radioShow->showTitle);
     ReadMsgDataIntoString(radioShow->showMsgData, msg_0420_00001, radioShow->showHost);
 

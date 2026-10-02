@@ -1,0 +1,73 @@
+{
+  "key": 55726,
+  "messages": [
+    {
+      "id": "msg_0252_00000",
+      "en_US": "{STRVAR_1 1, 0, 0} has entered."
+    },
+    {
+      "id": "msg_0252_00001",
+      "en_US": "Would you like to stop drawing?"
+    },
+    {
+      "id": "msg_0252_00002",
+      "en_US": "{STRVAR_1 1, 0, 0} has left."
+    },
+    {
+      "id": "msg_0252_00003",
+      "en_US": [
+        "The leader, {STRVAR_1 1, 0, 0}, has left.\n",
+        "This group will be disbanded."
+      ]
+    },
+    {
+      "id": "msg_0252_00004",
+      "en_US": [
+        "If the leader leaves, the group will\n",
+        "disband. Is that OK?"
+      ]
+    },
+    {
+      "id": "msg_0252_00005",
+      "en_US": [
+        "There are no members.\n",
+        "The group will be disbanded."
+      ]
+    },
+    {
+      "id": "msg_0252_00006",
+      "en_US": "The drawing session was ended."
+    },
+    {
+      "id": "msg_0252_00007",
+      "en_US": "QUIT"
+    },
+    {
+      "id": "msg_0252_00008",
+      "en_US": "{STRVAR_1 1, 0, 0}"
+    },
+    {
+      "id": "msg_0252_00009",
+      "en_US": "Sign your autograph!"
+    },
+    {
+      "id": "msg_0252_00010",
+      "en_US": "Is this OK?"
+    },
+    {
+      "id": "msg_0252_00011",
+      "en_US": [
+        "Would you like to\n",
+        "erase your autograph?"
+      ]
+    },
+    {
+      "id": "msg_0252_00012",
+      "en_US": "DONE"
+    },
+    {
+      "id": "msg_0252_00013",
+      "en_US": "Joined a drawing session!"
+    }
+  ]
+}

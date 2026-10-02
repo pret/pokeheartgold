@@ -1,0 +1,4649 @@
+{
+  "key": 38047,
+  "messages": [
+    {
+      "id": "msg_0265_00000",
+      "en_US": [
+        "Huh?\n",
+        "{STRVAR_1 1, 0, 0} is holding something...\r",
+        "Would you like to take it?{YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0265_00001",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} seems happy to have found\n",
+        "something!"
+      ]
+    },
+    {
+      "id": "msg_0265_00002",
+      "en_US": [
+        "Oh!\n",
+        "It seems just too important to let go!"
+      ]
+    },
+    {
+      "id": "msg_0265_00003",
+      "en_US": "{STRVAR_1 1, 0, 0} happily handed it over!"
+    },
+    {
+      "id": "msg_0265_00004",
+      "en_US": [
+        "..................\n",
+        "Oh?\r",
+        "{STRVAR_1 1, 0, 0} is holding some kind of\n",
+        "strange, Shiny Leaf..."
+      ]
+    },
+    {
+      "id": "msg_0265_00005",
+      "en_US": "It’s facing this way and nodding."
+    },
+    {
+      "id": "msg_0265_00006",
+      "en_US": [
+        "A strange sound is coming from\n",
+        "{STRVAR_1 1, 0, 0}..."
+      ]
+    },
+    {
+      "id": "msg_0265_00007",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is growling in a way that\n",
+        "sounds almost like speech..."
+      ]
+    },
+    {
+      "id": "msg_0265_00008",
+      "en_US": [
+        "Hm? It seems like it heard roaring in\n",
+        "the distance!"
+      ]
+    },
+    {
+      "id": "msg_0265_00009",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} almost forgot that it was\n",
+        "holding that {STRVAR_1 8, 4, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0265_00010",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} nudged {STRVAR_1 3, 2, 0}!\f",
+        "Nudge it back?{YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0265_00011",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is touching things\n",
+        "all over the place..."
+      ]
+    },
+    {
+      "id": "msg_0265_00012",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is keeping close to your\n",
+        "feet."
+      ]
+    },
+    {
+      "id": "msg_0265_00013",
+      "en_US": "{STRVAR_1 1, 0, 0} suddenly flew into a rage!"
+    },
+    {
+      "id": "msg_0265_00014",
+      "en_US": "{STRVAR_1 1, 0, 0} jumped in surprise!"
+    },
+    {
+      "id": "msg_0265_00015",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} looks a little\n",
+        "downhearted..."
+      ]
+    },
+    {
+      "id": "msg_0265_00016",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is heading this way with\n",
+        "something in its mouth.\f",
+        "Take the item out of its mouth?{YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0265_00017",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is snuggling up, shivering\n",
+        "with cold!"
+      ]
+    },
+    {
+      "id": "msg_0265_00018",
+      "en_US": "{STRVAR_1 1, 0, 0} is really happy!"
+    },
+    {
+      "id": "msg_0265_00019",
+      "en_US": "{STRVAR_1 1, 0, 0} seems a little relieved!"
+    },
+    {
+      "id": "msg_0265_00020",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} seems very happy to be\n",
+        "so close!"
+      ]
+    },
+    {
+      "id": "msg_0265_00021",
+      "en_US": "{STRVAR_1 1, 0, 0} just looks so very happy!"
+    },
+    {
+      "id": "msg_0265_00022",
+      "en_US": "{STRVAR_1 1, 0, 0} is very excited!"
+    },
+    {
+      "id": "msg_0265_00023",
+      "en_US": "{STRVAR_1 1, 0, 0} jumped a little!"
+    },
+    {
+      "id": "msg_0265_00024",
+      "en_US": "{STRVAR_1 1, 0, 0} is very happy!"
+    },
+    {
+      "id": "msg_0265_00025",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} seems to be a bit\n",
+        "nervous...\f",
+        "Would you like to say something?{YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0265_00026",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} was surprised and stopped\n",
+        "playing pranks!"
+      ]
+    },
+    {
+      "id": "msg_0265_00027",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is following you very\n",
+        "closely!\f",
+        "Want to give it a pat?{YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0265_00028",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is paying close attention\n",
+        "to its surroundings!"
+      ]
+    },
+    {
+      "id": "msg_0265_00029",
+      "en_US": "{STRVAR_1 1, 0, 0} seems very satisfied!"
+    },
+    {
+      "id": "msg_0265_00030",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} was not paying attention\n",
+        "and ran headfirst into you!"
+      ]
+    },
+    {
+      "id": "msg_0265_00031",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} seems to want to play and\n",
+        "is gazing at you expectantly.\f",
+        "Will you give in? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0265_00032",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} suddenly pushed you!\n",
+        "Will you scold it?{YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0265_00033",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} seems to be nodding\n",
+        "off... Call out its name? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0265_00034",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is facing you with a\n",
+        "blank expression."
+      ]
+    },
+    {
+      "id": "msg_0265_00035",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is rolling around in a\n",
+        "thicket, and there are\f",
+        "leaves all over! Prop it up? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0265_00036",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} suddenly got very close\n",
+        "to you!\f",
+        "Want to show it some affection?{YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0265_00037",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is blankly staring in this\n",
+        "direction...\f",
+        "Want to call its name?{YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0265_00038",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} looks like it wants to\n",
+        "lead!"
+      ]
+    },
+    {
+      "id": "msg_0265_00039",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} wants attention now!\n",
+        "Want to play along?{YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0265_00040",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} seems a bit uneasy and\n",
+        "is shuffling around nervously.\f",
+        "Say something reassuring?{YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0265_00041",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} seems to be lost in a\n",
+        "daydream.\f",
+        "Call out to it?{YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0265_00042",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} seems to want to return\n",
+        "to the Lab."
+      ]
+    },
+    {
+      "id": "msg_0265_00043",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} suddenly started walking\n",
+        "closer!"
+      ]
+    },
+    {
+      "id": "msg_0265_00044",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is chewing on\n",
+        "your shoes! Scold it? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0265_00045",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s leaf is drooping\n",
+        "slightly."
+      ]
+    },
+    {
+      "id": "msg_0265_00046",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s cheeks are becoming\n",
+        "rosy!"
+      ]
+    },
+    {
+      "id": "msg_0265_00047",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} seems to be having\n",
+        "difficulty moving its body!"
+      ]
+    },
+    {
+      "id": "msg_0265_00048",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is steadily keeping up\n",
+        "with you!"
+      ]
+    },
+    {
+      "id": "msg_0265_00049",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} seems to want to play with\n",
+        "{STRVAR_1 3, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0265_00050",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is regarding you with\n",
+        "adoration!"
+      ]
+    },
+    {
+      "id": "msg_0265_00051",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is doing its best to keep\n",
+        "up with you!"
+      ]
+    },
+    {
+      "id": "msg_0265_00052",
+      "en_US": "{STRVAR_1 1, 0, 0} is jumping for joy!"
+    },
+    {
+      "id": "msg_0265_00053",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is happily cuddling up to\n",
+        "you!"
+      ]
+    },
+    {
+      "id": "msg_0265_00054",
+      "en_US": "{STRVAR_1 1, 0, 0} looks very happy!"
+    },
+    {
+      "id": "msg_0265_00055",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} seems to be feeling great\n",
+        "about walking with you!"
+      ]
+    },
+    {
+      "id": "msg_0265_00056",
+      "en_US": "{STRVAR_1 1, 0, 0} put in extra effort!"
+    },
+    {
+      "id": "msg_0265_00057",
+      "en_US": "{STRVAR_1 1, 0, 0} spun around in a circle!"
+    },
+    {
+      "id": "msg_0265_00058",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is focusing its attention\n",
+        "on you."
+      ]
+    },
+    {
+      "id": "msg_0265_00059",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} turned to face you\n",
+        "and smiled!"
+      ]
+    },
+    {
+      "id": "msg_0265_00060",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is showing off its\n",
+        "agility!"
+      ]
+    },
+    {
+      "id": "msg_0265_00061",
+      "en_US": "{STRVAR_1 1, 0, 0} is happily skipping about!"
+    },
+    {
+      "id": "msg_0265_00062",
+      "en_US": "{STRVAR_1 1, 0, 0} seems to be very happy!"
+    },
+    {
+      "id": "msg_0265_00063",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is jumping around in a\n",
+        "carefree way!"
+      ]
+    },
+    {
+      "id": "msg_0265_00064",
+      "en_US": "{STRVAR_1 1, 0, 0} is moving around happily!"
+    },
+    {
+      "id": "msg_0265_00065",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is staring straight in this\n",
+        "direction!"
+      ]
+    },
+    {
+      "id": "msg_0265_00066",
+      "en_US": "{STRVAR_1 1, 0, 0} turned its gaze away..."
+    },
+    {
+      "id": "msg_0265_00067",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is poking at\n",
+        "{STRVAR_1 3, 2, 0}’s Bag!\f",
+        "Scold it?{YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0265_00068",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is staring straight into\n",
+        "{STRVAR_1 3, 2, 0}’s eyes."
+      ]
+    },
+    {
+      "id": "msg_0265_00069",
+      "en_US": "{STRVAR_1 1, 0, 0} beamed happily at you!"
+    },
+    {
+      "id": "msg_0265_00070",
+      "en_US": "{STRVAR_1 1, 0, 0} greeted your foe!"
+    },
+    {
+      "id": "msg_0265_00071",
+      "en_US": "{STRVAR_1 1, 0, 0} cried out!"
+    },
+    {
+      "id": "msg_0265_00072",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} faced your opponent and\n",
+        "cried out loudly!"
+      ]
+    },
+    {
+      "id": "msg_0265_00073",
+      "en_US": "{STRVAR_1 1, 0, 0} is intimidating your foe!"
+    },
+    {
+      "id": "msg_0265_00074",
+      "en_US": "{STRVAR_1 1, 0, 0} is glaring at your foe!"
+    },
+    {
+      "id": "msg_0265_00075",
+      "en_US": "{STRVAR_1 1, 0, 0} is staring at your foe!"
+    },
+    {
+      "id": "msg_0265_00076",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} seems very interested in\n",
+        "Amphy!"
+      ]
+    },
+    {
+      "id": "msg_0265_00077",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} seems to want to play with\n",
+        "Amphy!"
+      ]
+    },
+    {
+      "id": "msg_0265_00078",
+      "en_US": "{STRVAR_1 1, 0, 0} greeted Amphy!"
+    },
+    {
+      "id": "msg_0265_00079",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} seems interested in\n",
+        "Amphy..."
+      ]
+    },
+    {
+      "id": "msg_0265_00080",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} started to yawn...\n",
+        "...is almost yawning...almost...\f",
+        "Never mind."
+      ]
+    },
+    {
+      "id": "msg_0265_00081",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is gazing at the morning\n",
+        "sun..."
+      ]
+    },
+    {
+      "id": "msg_0265_00082",
+      "en_US": "{STRVAR_1 1, 0, 0} snapped at your legs!"
+    },
+    {
+      "id": "msg_0265_00083",
+      "en_US": "{STRVAR_1 1, 0, 0} is nipping at your feet!"
+    },
+    {
+      "id": "msg_0265_00084",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} chewed on your feet!\n",
+        "Scold it?{YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0265_00085",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} nipped at your feet!\n",
+        "Want to show a little anger?{YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0265_00086",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is staring blankly\n",
+        "at your head."
+      ]
+    },
+    {
+      "id": "msg_0265_00087",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is carefully scanning the\n",
+        "area!"
+      ]
+    },
+    {
+      "id": "msg_0265_00088",
+      "en_US": "{STRVAR_1 1, 0, 0} is surveying the area!"
+    },
+    {
+      "id": "msg_0265_00089",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} seems to be unhappy that\n",
+        "it’s so hot..."
+      ]
+    },
+    {
+      "id": "msg_0265_00090",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s head is bowed\n",
+        "because of the heat."
+      ]
+    },
+    {
+      "id": "msg_0265_00091",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} seems to be really\n",
+        "enjoying the heat!"
+      ]
+    },
+    {
+      "id": "msg_0265_00092",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} seems to be happy about\n",
+        "the rain!"
+      ]
+    },
+    {
+      "id": "msg_0265_00093",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is very happy about the\n",
+        "rain!"
+      ]
+    },
+    {
+      "id": "msg_0265_00094",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} seems to be very\n",
+        "surprised that it’s raining!"
+      ]
+    },
+    {
+      "id": "msg_0265_00095",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} looks like it’s about to\n",
+        "fall over!"
+      ]
+    },
+    {
+      "id": "msg_0265_00096",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is vigorously producing\n",
+        "fire!"
+      ]
+    },
+    {
+      "id": "msg_0265_00097",
+      "en_US": "{STRVAR_1 1, 0, 0} suddenly became angry!"
+    },
+    {
+      "id": "msg_0265_00098",
+      "en_US": "{STRVAR_1 1, 0, 0} suddenly roared!"
+    },
+    {
+      "id": "msg_0265_00099",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} suddenly turned around\n",
+        "and started barking!"
+      ]
+    },
+    {
+      "id": "msg_0265_00100",
+      "en_US": "{STRVAR_1 1, 0, 0} suddenly turned around!"
+    },
+    {
+      "id": "msg_0265_00101",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is playfully nibbling at the\n",
+        "ground."
+      ]
+    },
+    {
+      "id": "msg_0265_00102",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is playfully touching the\n",
+        "ground."
+      ]
+    },
+    {
+      "id": "msg_0265_00103",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is playfully nibbling at the\n",
+        "ground."
+      ]
+    },
+    {
+      "id": "msg_0265_00104",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is rolling a pebble around\n",
+        "playfully."
+      ]
+    },
+    {
+      "id": "msg_0265_00105",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is smelling the scents of\n",
+        "the surrounding air."
+      ]
+    },
+    {
+      "id": "msg_0265_00106",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} gazed surprisedly at\n",
+        "the rock!"
+      ]
+    },
+    {
+      "id": "msg_0265_00107",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is looking up with its\n",
+        "mouth gaping open."
+      ]
+    },
+    {
+      "id": "msg_0265_00108",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is looking up with its\n",
+        "mouth wide open."
+      ]
+    },
+    {
+      "id": "msg_0265_00109",
+      "en_US": "{STRVAR_1 1, 0, 0} is cheerful!"
+    },
+    {
+      "id": "msg_0265_00110",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is swinging its arms around\n",
+        "and shouting!"
+      ]
+    },
+    {
+      "id": "msg_0265_00111",
+      "en_US": "{STRVAR_1 1, 0, 0} let out a roar!"
+    },
+    {
+      "id": "msg_0265_00112",
+      "en_US": "{STRVAR_1 1, 0, 0} let out a roar!"
+    },
+    {
+      "id": "msg_0265_00113",
+      "en_US": "{STRVAR_1 1, 0, 0} is staring at the sea."
+    },
+    {
+      "id": "msg_0265_00114",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is excited to be looking at\n",
+        "the sea!"
+      ]
+    },
+    {
+      "id": "msg_0265_00115",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is so happy, it started\n",
+        "dancing!"
+      ]
+    },
+    {
+      "id": "msg_0265_00116",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is so happy, it started\n",
+        "rolling around."
+      ]
+    },
+    {
+      "id": "msg_0265_00117",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} seems very happy to\n",
+        "see you."
+      ]
+    },
+    {
+      "id": "msg_0265_00118",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} seems very happy and is\n",
+        "rolling around!"
+      ]
+    },
+    {
+      "id": "msg_0265_00119",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} seems very happy and\n",
+        "is jumping around!"
+      ]
+    },
+    {
+      "id": "msg_0265_00120",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is splashing about\n",
+        "happily!"
+      ]
+    },
+    {
+      "id": "msg_0265_00121",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} seems to want to ride the\n",
+        "train!"
+      ]
+    },
+    {
+      "id": "msg_0265_00122",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} got tangled in the\n",
+        "branches and almost fell down!"
+      ]
+    },
+    {
+      "id": "msg_0265_00123",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} was surprised when it got\n",
+        "hit by a branch!"
+      ]
+    },
+    {
+      "id": "msg_0265_00124",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} opened its mouth very\n",
+        "wide!"
+      ]
+    },
+    {
+      "id": "msg_0265_00125",
+      "en_US": "{STRVAR_1 1, 0, 0} cried out very loudly!"
+    },
+    {
+      "id": "msg_0265_00126",
+      "en_US": "{STRVAR_1 1, 0, 0} yawned widely!"
+    },
+    {
+      "id": "msg_0265_00127",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is staring into the\n",
+        "depths..."
+      ]
+    },
+    {
+      "id": "msg_0265_00128",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is looking into the\n",
+        "depths and shivering..."
+      ]
+    },
+    {
+      "id": "msg_0265_00129",
+      "en_US": "{STRVAR_1 1, 0, 0} roared!"
+    },
+    {
+      "id": "msg_0265_00130",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is playing around in the\n",
+        "fallen leaves."
+      ]
+    },
+    {
+      "id": "msg_0265_00131",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is concerned about the\n",
+        "trap."
+      ]
+    },
+    {
+      "id": "msg_0265_00132",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} began poking you in the\n",
+        "stomach!"
+      ]
+    },
+    {
+      "id": "msg_0265_00133",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s face shows a drop of\n",
+        "sweat..."
+      ]
+    },
+    {
+      "id": "msg_0265_00134",
+      "en_US": "{STRVAR_1 1, 0, 0} is scared of the cliff..."
+    },
+    {
+      "id": "msg_0265_00135",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} seems to be getting an\n",
+        "electrifying feeling!"
+      ]
+    },
+    {
+      "id": "msg_0265_00136",
+      "en_US": "{STRVAR_1 1, 0, 0} feels refreshed!"
+    },
+    {
+      "id": "msg_0265_00137",
+      "en_US": "{STRVAR_1 1, 0, 0} is trembling!"
+    },
+    {
+      "id": "msg_0265_00138",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is steadily observing the\n",
+        "flow of the river."
+      ]
+    },
+    {
+      "id": "msg_0265_00139",
+      "en_US": "{STRVAR_1 1, 0, 0} let out a fighting cry!"
+    },
+    {
+      "id": "msg_0265_00140",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is listening to the sound\n",
+        "of the machine."
+      ]
+    },
+    {
+      "id": "msg_0265_00141",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} seems to want to touch\n",
+        "the machine!"
+      ]
+    },
+    {
+      "id": "msg_0265_00142",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is staring intently at the\n",
+        "machine."
+      ]
+    },
+    {
+      "id": "msg_0265_00143",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is glaring at the Team\n",
+        "Rocket thug!"
+      ]
+    },
+    {
+      "id": "msg_0265_00144",
+      "en_US": "{STRVAR_1 1, 0, 0} suddenly barked!"
+    },
+    {
+      "id": "msg_0265_00145",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} moved around and showed\n",
+        "its skills!"
+      ]
+    },
+    {
+      "id": "msg_0265_00146",
+      "en_US": "{STRVAR_1 1, 0, 0} looks very interested!"
+    },
+    {
+      "id": "msg_0265_00147",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is gazing around\n",
+        "restlessly."
+      ]
+    },
+    {
+      "id": "msg_0265_00148",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is wandering around and\n",
+        "listening to the different sounds."
+      ]
+    },
+    {
+      "id": "msg_0265_00149",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is wandering around and\n",
+        "searching for something."
+      ]
+    },
+    {
+      "id": "msg_0265_00150",
+      "en_US": "{STRVAR_1 1, 0, 0} is wandering around."
+    },
+    {
+      "id": "msg_0265_00151",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is wandering around and\n",
+        "enjoying the forest scenery."
+      ]
+    },
+    {
+      "id": "msg_0265_00152",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is wandering around,\n",
+        "listening to the sound of running water."
+      ]
+    },
+    {
+      "id": "msg_0265_00153",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is wandering around,\n",
+        "surveying the area."
+      ]
+    },
+    {
+      "id": "msg_0265_00154",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} seems highly interested\n",
+        "in the tree."
+      ]
+    },
+    {
+      "id": "msg_0265_00155",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is getting itself\n",
+        "steeled up!"
+      ]
+    },
+    {
+      "id": "msg_0265_00156",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is getting tense with\n",
+        "nervous energy."
+      ]
+    },
+    {
+      "id": "msg_0265_00157",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is playing around, plucking\n",
+        "bits of grass."
+      ]
+    },
+    {
+      "id": "msg_0265_00158",
+      "en_US": "{STRVAR_1 1, 0, 0} is munching at the grass."
+    },
+    {
+      "id": "msg_0265_00159",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is playing around, pulling\n",
+        "out the grass!"
+      ]
+    },
+    {
+      "id": "msg_0265_00160",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is preoccupied by the\n",
+        "floor, which seems like it may collapse."
+      ]
+    },
+    {
+      "id": "msg_0265_00161",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is preoccupied by the\n",
+        "ceiling, which seems like it may collapse."
+      ]
+    },
+    {
+      "id": "msg_0265_00162",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is opening its mouth in a\n",
+        "wide gape."
+      ]
+    },
+    {
+      "id": "msg_0265_00163",
+      "en_US": "{STRVAR_1 1, 0, 0}’s teeth are chattering!"
+    },
+    {
+      "id": "msg_0265_00164",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} turned its head and let\n",
+        "out a fighting yell!"
+      ]
+    },
+    {
+      "id": "msg_0265_00165",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is trying very hard to\n",
+        "keep up with you..."
+      ]
+    },
+    {
+      "id": "msg_0265_00166",
+      "en_US": "{STRVAR_1 1, 0, 0} rolled around in circles!"
+    },
+    {
+      "id": "msg_0265_00167",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is sniffing at the air,\n",
+        "smelling the tide."
+      ]
+    },
+    {
+      "id": "msg_0265_00168",
+      "en_US": "{STRVAR_1 1, 0, 0} is standing guard!"
+    },
+    {
+      "id": "msg_0265_00169",
+      "en_US": "{STRVAR_1 1, 0, 0} is glowing with health!"
+    },
+    {
+      "id": "msg_0265_00170",
+      "en_US": "{STRVAR_1 1, 0, 0} gave a hearty greeting!"
+    },
+    {
+      "id": "msg_0265_00171",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} jumped happily into the\n",
+        "air!"
+      ]
+    },
+    {
+      "id": "msg_0265_00172",
+      "en_US": "{STRVAR_1 1, 0, 0} is touching the ice."
+    },
+    {
+      "id": "msg_0265_00173",
+      "en_US": "{STRVAR_1 1, 0, 0} is gnawing at the ice."
+    },
+    {
+      "id": "msg_0265_00174",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is scratching at the\n",
+        "ground as if searching for something."
+      ]
+    },
+    {
+      "id": "msg_0265_00175",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} has turned its face this\n",
+        "way and is staring intently."
+      ]
+    },
+    {
+      "id": "msg_0265_00176",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} faced this way\n",
+        "and grinned."
+      ]
+    },
+    {
+      "id": "msg_0265_00177",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} faced this way and\n",
+        "nodded."
+      ]
+    },
+    {
+      "id": "msg_0265_00178",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is staring at the sunlight\n",
+        "coming through the trees."
+      ]
+    },
+    {
+      "id": "msg_0265_00179",
+      "en_US": "{STRVAR_1 1, 0, 0} is rolling around."
+    },
+    {
+      "id": "msg_0265_00180",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is scared and snuggled up\n",
+        "to {STRVAR_1 3, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0265_00181",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is scared and snuggled\n",
+        "up to you!"
+      ]
+    },
+    {
+      "id": "msg_0265_00182",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is cheerful because of\n",
+        "the cold!"
+      ]
+    },
+    {
+      "id": "msg_0265_00183",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} seems unhappy about the\n",
+        "cold..."
+      ]
+    },
+    {
+      "id": "msg_0265_00184",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is cheering happily\n",
+        "because of the cold!"
+      ]
+    },
+    {
+      "id": "msg_0265_00185",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} made its body slightly\n",
+        "smaller because of the cold..."
+      ]
+    },
+    {
+      "id": "msg_0265_00186",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} seems to be feeling better\n",
+        "because of the sea breeze!"
+      ]
+    },
+    {
+      "id": "msg_0265_00187",
+      "en_US": "{STRVAR_1 1, 0, 0} is looking down nervously!"
+    },
+    {
+      "id": "msg_0265_00188",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} looked down and was\n",
+        "surprised!"
+      ]
+    },
+    {
+      "id": "msg_0265_00189",
+      "en_US": "{STRVAR_1 1, 0, 0} flared its fiery tail!"
+    },
+    {
+      "id": "msg_0265_00190",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} seems interested in\n",
+        "Bicycles!"
+      ]
+    },
+    {
+      "id": "msg_0265_00191",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is looking at\n",
+        "{STRVAR_1 3, 2, 0}’s footprints."
+      ]
+    },
+    {
+      "id": "msg_0265_00192",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is staring intently at the\n",
+        "reflection of its face."
+      ]
+    },
+    {
+      "id": "msg_0265_00193",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is staring at the\n",
+        "reflection of its face."
+      ]
+    },
+    {
+      "id": "msg_0265_00194",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} seems very unhappy to be\n",
+        "wet..."
+      ]
+    },
+    {
+      "id": "msg_0265_00195",
+      "en_US": "{STRVAR_1 1, 0, 0} is sniffing at the ground."
+    },
+    {
+      "id": "msg_0265_00196",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is poking steadily at the\n",
+        "ground."
+      ]
+    },
+    {
+      "id": "msg_0265_00197",
+      "en_US": "{STRVAR_1 1, 0, 0} is looking down steadily."
+    },
+    {
+      "id": "msg_0265_00198",
+      "en_US": "{STRVAR_1 1, 0, 0} is poking at the ground."
+    },
+    {
+      "id": "msg_0265_00199",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is playfully digging in the\n",
+        "ground."
+      ]
+    },
+    {
+      "id": "msg_0265_00200",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is steadily poking at the\n",
+        "ground."
+      ]
+    },
+    {
+      "id": "msg_0265_00201",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} seems to be doing warm-up\n",
+        "exercises..."
+      ]
+    },
+    {
+      "id": "msg_0265_00202",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is walking along\n",
+        "cautiously!"
+      ]
+    },
+    {
+      "id": "msg_0265_00203",
+      "en_US": "{STRVAR_1 1, 0, 0} is being nervously quiet..."
+    },
+    {
+      "id": "msg_0265_00204",
+      "en_US": "{STRVAR_1 1, 0, 0} seems to be very happy!"
+    },
+    {
+      "id": "msg_0265_00205",
+      "en_US": "{STRVAR_1 1, 0, 0} seems a bit nervous."
+    },
+    {
+      "id": "msg_0265_00206",
+      "en_US": "{STRVAR_1 1, 0, 0} is a little excited!"
+    },
+    {
+      "id": "msg_0265_00207",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} fell down and got a little\n",
+        "frustrated!"
+      ]
+    },
+    {
+      "id": "msg_0265_00208",
+      "en_US": "{STRVAR_1 1, 0, 0} seems a little tired."
+    },
+    {
+      "id": "msg_0265_00209",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is bustling around,\n",
+        "showing off its speed!"
+      ]
+    },
+    {
+      "id": "msg_0265_00210",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} seemed to tremble a little\n",
+        "in surprise!"
+      ]
+    },
+    {
+      "id": "msg_0265_00211",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} slipped and bumped into\n",
+        "you!"
+      ]
+    },
+    {
+      "id": "msg_0265_00212",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is a bit nervous about the\n",
+        "narrow space!"
+      ]
+    },
+    {
+      "id": "msg_0265_00213",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is cautious about the\n",
+        "confined area!"
+      ]
+    },
+    {
+      "id": "msg_0265_00214",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is concerned about going\n",
+        "outside!"
+      ]
+    },
+    {
+      "id": "msg_0265_00215",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is happy to see\n",
+        "what’s outdoors!"
+      ]
+    },
+    {
+      "id": "msg_0265_00216",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is itching to see\n",
+        "outdoors!"
+      ]
+    },
+    {
+      "id": "msg_0265_00217",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is poking at you because\n",
+        "it wants to see outdoors!"
+      ]
+    },
+    {
+      "id": "msg_0265_00218",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} seems dazzled after\n",
+        "seeing the sky!"
+      ]
+    },
+    {
+      "id": "msg_0265_00219",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is looking up at the tall\n",
+        "mountain..."
+      ]
+    },
+    {
+      "id": "msg_0265_00220",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} cried out, looking at the\n",
+        "tall mountain!"
+      ]
+    },
+    {
+      "id": "msg_0265_00221",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} seems concerned about\n",
+        "the waterfall!"
+      ]
+    },
+    {
+      "id": "msg_0265_00222",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is listening to the sound\n",
+        "of the waterfall."
+      ]
+    },
+    {
+      "id": "msg_0265_00223",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} seems to be hearing\n",
+        "something from inside the waterfall..."
+      ]
+    },
+    {
+      "id": "msg_0265_00224",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} seems to have found\n",
+        "something inside the waterfall...?"
+      ]
+    },
+    {
+      "id": "msg_0265_00225",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} kept moving at a good clip\n",
+        "to show off its stamina!"
+      ]
+    },
+    {
+      "id": "msg_0265_00226",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is feeling an unusual\n",
+        "presence..."
+      ]
+    },
+    {
+      "id": "msg_0265_00227",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is sniffing at the\n",
+        "straw mats on the floor."
+      ]
+    },
+    {
+      "id": "msg_0265_00228",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is listening to the sounds\n",
+        "of the building."
+      ]
+    },
+    {
+      "id": "msg_0265_00229",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is looking up at the\n",
+        "tower."
+      ]
+    },
+    {
+      "id": "msg_0265_00230",
+      "en_US": "{STRVAR_1 1, 0, 0} is growling softly..."
+    },
+    {
+      "id": "msg_0265_00231",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is working hard to show\n",
+        "off its mighty power!"
+      ]
+    },
+    {
+      "id": "msg_0265_00232",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is making an unhappy\n",
+        "face..."
+      ]
+    },
+    {
+      "id": "msg_0265_00233",
+      "en_US": "{STRVAR_1 1, 0, 0} is a little nervous..."
+    },
+    {
+      "id": "msg_0265_00234",
+      "en_US": "{STRVAR_1 1, 0, 0} is a little scared."
+    },
+    {
+      "id": "msg_0265_00235",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} seems to have gotten a\n",
+        "bit of a zap!"
+      ]
+    },
+    {
+      "id": "msg_0265_00236",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} seems to be a little\n",
+        "hesitant..."
+      ]
+    },
+    {
+      "id": "msg_0265_00237",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is intently watching the\n",
+        "fishing."
+      ]
+    },
+    {
+      "id": "msg_0265_00238",
+      "en_US": "{STRVAR_1 1, 0, 0} snapped its vine!"
+    },
+    {
+      "id": "msg_0265_00239",
+      "en_US": "{STRVAR_1 1, 0, 0} wiggled its vine!"
+    },
+    {
+      "id": "msg_0265_00240",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is staring intently at the\n",
+        "goods on display!"
+      ]
+    },
+    {
+      "id": "msg_0265_00241",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} stared at the ceiling\n",
+        "in surprise!"
+      ]
+    },
+    {
+      "id": "msg_0265_00242",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} was staring at the ceiling\n",
+        "and seemed about to fall down!"
+      ]
+    },
+    {
+      "id": "msg_0265_00243",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is looking up at the\n",
+        "ceiling."
+      ]
+    },
+    {
+      "id": "msg_0265_00244",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} looked off into the\n",
+        "distance and barked!"
+      ]
+    },
+    {
+      "id": "msg_0265_00245",
+      "en_US": "{STRVAR_1 1, 0, 0} seems very hot..."
+    },
+    {
+      "id": "msg_0265_00246",
+      "en_US": "{STRVAR_1 1, 0, 0} greeted your mom!"
+    },
+    {
+      "id": "msg_0265_00247",
+      "en_US": "{STRVAR_1 1, 0, 0} seems very happy!"
+    },
+    {
+      "id": "msg_0265_00248",
+      "en_US": "{STRVAR_1 1, 0, 0} seems very cold!"
+    },
+    {
+      "id": "msg_0265_00249",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} seems to really be having\n",
+        "fun!"
+      ]
+    },
+    {
+      "id": "msg_0265_00250",
+      "en_US": "{STRVAR_1 1, 0, 0} is playing on the sand!"
+    },
+    {
+      "id": "msg_0265_00251",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is having fun getting\n",
+        "tangled in the long grass!"
+      ]
+    },
+    {
+      "id": "msg_0265_00252",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is tangled in the long\n",
+        "grass!"
+      ]
+    },
+    {
+      "id": "msg_0265_00253",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is tripping over the tall\n",
+        "grass!"
+      ]
+    },
+    {
+      "id": "msg_0265_00254",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is biting at the tall\n",
+        "grass!"
+      ]
+    },
+    {
+      "id": "msg_0265_00255",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is staring intently at the\n",
+        "surging sea."
+      ]
+    },
+    {
+      "id": "msg_0265_00256",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} seems to be scared of\n",
+        "something..."
+      ]
+    },
+    {
+      "id": "msg_0265_00257",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} was surprised by a sudden\n",
+        "sound!"
+      ]
+    },
+    {
+      "id": "msg_0265_00258",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} sensed something strange\n",
+        "and was surprised!"
+      ]
+    },
+    {
+      "id": "msg_0265_00259",
+      "en_US": "{STRVAR_1 1, 0, 0} is sensing something..."
+    },
+    {
+      "id": "msg_0265_00260",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} seems to have found\n",
+        "something!"
+      ]
+    },
+    {
+      "id": "msg_0265_00261",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is listening intently to\n",
+        "the sound of the waves."
+      ]
+    },
+    {
+      "id": "msg_0265_00262",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is happily watching the\n",
+        "waves!"
+      ]
+    },
+    {
+      "id": "msg_0265_00263",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} seems to be hearing a\n",
+        "strange sound."
+      ]
+    },
+    {
+      "id": "msg_0265_00264",
+      "en_US": "{STRVAR_1 1, 0, 0} seems incredibly happy!"
+    },
+    {
+      "id": "msg_0265_00265",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} seems angry for some\n",
+        "reason!"
+      ]
+    },
+    {
+      "id": "msg_0265_00266",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is nervous for some\n",
+        "reason!"
+      ]
+    },
+    {
+      "id": "msg_0265_00267",
+      "en_US": "{STRVAR_1 1, 0, 0} seems a little cold..."
+    },
+    {
+      "id": "msg_0265_00268",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} seems to be enjoying this\n",
+        "a little bit!"
+      ]
+    },
+    {
+      "id": "msg_0265_00269",
+      "en_US": "{STRVAR_1 1, 0, 0} seems a little shy."
+    },
+    {
+      "id": "msg_0265_00270",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} seems to be very happy\n",
+        "for some reason!"
+      ]
+    },
+    {
+      "id": "msg_0265_00271",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is suspiciously sniffing a\n",
+        "scent."
+      ]
+    },
+    {
+      "id": "msg_0265_00272",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is looking this way and\n",
+        "smiling."
+      ]
+    },
+    {
+      "id": "msg_0265_00273",
+      "en_US": "{STRVAR_1 1, 0, 0} is relaxing."
+    },
+    {
+      "id": "msg_0265_00274",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is dazzled by the shiny\n",
+        "brightness of the bridge!"
+      ]
+    },
+    {
+      "id": "msg_0265_00275",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is dancing around\n",
+        "the pillar!"
+      ]
+    },
+    {
+      "id": "msg_0265_00276",
+      "en_US": "{STRVAR_1 1, 0, 0} pulled back to run!"
+    },
+    {
+      "id": "msg_0265_00277",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} hid behind you out of\n",
+        "embarrassment, it seems!"
+      ]
+    },
+    {
+      "id": "msg_0265_00278",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} ran away out of\n",
+        "embarrassment!"
+      ]
+    },
+    {
+      "id": "msg_0265_00279",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is playing around with a\n",
+        "leaf!"
+      ]
+    },
+    {
+      "id": "msg_0265_00280",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} seems to relax as it hears\n",
+        "the sound of rustling leaves..."
+      ]
+    },
+    {
+      "id": "msg_0265_00281",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} seems to be listening to\n",
+        "the sound of rustling leaves."
+      ]
+    },
+    {
+      "id": "msg_0265_00282",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is playing around,\n",
+        "touching the leaves."
+      ]
+    },
+    {
+      "id": "msg_0265_00283",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} shielded its vision\n",
+        "against the sparkling light!"
+      ]
+    },
+    {
+      "id": "msg_0265_00284",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is dancing and splashing\n",
+        "around!"
+      ]
+    },
+    {
+      "id": "msg_0265_00285",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is dancing and splashing\n",
+        "around!"
+      ]
+    },
+    {
+      "id": "msg_0265_00286",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is leaping around to\n",
+        "demonstrate its ability to jump high!"
+      ]
+    },
+    {
+      "id": "msg_0265_00287",
+      "en_US": "{STRVAR_1 1, 0, 0} is jumping around!"
+    },
+    {
+      "id": "msg_0265_00288",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} seems uneasy and is\n",
+        "poking {STRVAR_1 3, 2, 0}."
+      ]
+    },
+    {
+      "id": "msg_0265_00289",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is looking at the machine\n",
+        "in a strange manner."
+      ]
+    },
+    {
+      "id": "msg_0265_00290",
+      "en_US": "{STRVAR_1 1, 0, 0} greeted the two!"
+    },
+    {
+      "id": "msg_0265_00291",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} looked at the two and\n",
+        "cried out."
+      ]
+    },
+    {
+      "id": "msg_0265_00292",
+      "en_US": "{STRVAR_1 1, 0, 0} is swaying with the boat!"
+    },
+    {
+      "id": "msg_0265_00293",
+      "en_US": "{STRVAR_1 1, 0, 0} is dizzy!"
+    },
+    {
+      "id": "msg_0265_00294",
+      "en_US": "{STRVAR_1 1, 0, 0} is shivering..."
+    },
+    {
+      "id": "msg_0265_00295",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is staring intently at the\n",
+        "fountain."
+      ]
+    },
+    {
+      "id": "msg_0265_00296",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is happily looking at the\n",
+        "fountain!"
+      ]
+    },
+    {
+      "id": "msg_0265_00297",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is glaring at the PERSIAN\n",
+        "statue!"
+      ]
+    },
+    {
+      "id": "msg_0265_00298",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is looking at the PERSIAN\n",
+        "statue and howling!"
+      ]
+    },
+    {
+      "id": "msg_0265_00299",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} sent a ring-shaped cloud\n",
+        "of spores into the air!"
+      ]
+    },
+    {
+      "id": "msg_0265_00300",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is sniffing the grass in\n",
+        "the pasture."
+      ]
+    },
+    {
+      "id": "msg_0265_00301",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is staring straight at the\n",
+        "Pokémon League."
+      ]
+    },
+    {
+      "id": "msg_0265_00302",
+      "en_US": "{STRVAR_1 1, 0, 0} spat fire!"
+    },
+    {
+      "id": "msg_0265_00303",
+      "en_US": "{STRVAR_1 1, 0, 0} emitted fire and shouted!"
+    },
+    {
+      "id": "msg_0265_00304",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is staring at the\n",
+        "crumbling floor."
+      ]
+    },
+    {
+      "id": "msg_0265_00305",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} seems to be enjoying the\n",
+        "boat ride!"
+      ]
+    },
+    {
+      "id": "msg_0265_00306",
+      "en_US": "{STRVAR_1 1, 0, 0} is still feeling great!"
+    },
+    {
+      "id": "msg_0265_00307",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} doesn’t want to get off\n",
+        "the boat yet!"
+      ]
+    },
+    {
+      "id": "msg_0265_00308",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is happy at the sight of\n",
+        "the water on the window!"
+      ]
+    },
+    {
+      "id": "msg_0265_00309",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is looking around\n",
+        "restlessly because it feels lost."
+      ]
+    },
+    {
+      "id": "msg_0265_00310",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is cautiously listening\n",
+        "to the surrounding sounds!"
+      ]
+    },
+    {
+      "id": "msg_0265_00311",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is looking around\n",
+        "restlessly."
+      ]
+    },
+    {
+      "id": "msg_0265_00312",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is looking around\n",
+        "absentmindedly."
+      ]
+    },
+    {
+      "id": "msg_0265_00313",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is looking around\n",
+        "restlessly at the lake!"
+      ]
+    },
+    {
+      "id": "msg_0265_00314",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is surprised at the\n",
+        "dripping water!"
+      ]
+    },
+    {
+      "id": "msg_0265_00315",
+      "en_US": "{STRVAR_1 1, 0, 0} is playing in the puddle!"
+    },
+    {
+      "id": "msg_0265_00316",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is slipping in the water\n",
+        "and almost fell over!"
+      ]
+    },
+    {
+      "id": "msg_0265_00317",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} spat out a stream of\n",
+        "water!"
+      ]
+    },
+    {
+      "id": "msg_0265_00318",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is twitching its ears,\n",
+        "listening to the sound of the wind."
+      ]
+    },
+    {
+      "id": "msg_0265_00319",
+      "en_US": "{STRVAR_1 1, 0, 0} greeted everyone!"
+    },
+    {
+      "id": "msg_0265_00320",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} took notice of the straw\n",
+        "hat."
+      ]
+    },
+    {
+      "id": "msg_0265_00321",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} focused with a\n",
+        "sharp gaze!"
+      ]
+    },
+    {
+      "id": "msg_0265_00322",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is being quiet, with a\n",
+        "peaceful face..."
+      ]
+    },
+    {
+      "id": "msg_0265_00323",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} tightly gripped the\n",
+        "{STRVAR_1 8, 4, 0} it’s holding!"
+      ]
+    },
+    {
+      "id": "msg_0265_00324",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is staring at the\n",
+        "{STRVAR_1 8, 4, 0} it’s holding."
+      ]
+    },
+    {
+      "id": "msg_0265_00325",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is staring intently at the\n",
+        "{STRVAR_1 8, 4, 0} it’s holding."
+      ]
+    },
+    {
+      "id": "msg_0265_00326",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is crying out while looking\n",
+        "at the monitors!"
+      ]
+    },
+    {
+      "id": "msg_0265_00327",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is looking around\n",
+        "restlessly at the forest."
+      ]
+    },
+    {
+      "id": "msg_0265_00328",
+      "en_US": "{STRVAR_1 1, 0, 0}’s burn looks painful!"
+    },
+    {
+      "id": "msg_0265_00329",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} seems to have found\n",
+        "something on the mountain!"
+      ]
+    },
+    {
+      "id": "msg_0265_00330",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} seems to have found\n",
+        "something on the mountain!"
+      ]
+    },
+    {
+      "id": "msg_0265_00331",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is staring intently at the\n",
+        "mountain."
+      ]
+    },
+    {
+      "id": "msg_0265_00332",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is staring intently at the\n",
+        "mountain."
+      ]
+    },
+    {
+      "id": "msg_0265_00333",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is looking at the mountain\n",
+        "as if anticipating climbing it."
+      ]
+    },
+    {
+      "id": "msg_0265_00334",
+      "en_US": "{STRVAR_1 1, 0, 0} is very eager!"
+    },
+    {
+      "id": "msg_0265_00335",
+      "en_US": "{STRVAR_1 1, 0, 0} is even more eager!"
+    },
+    {
+      "id": "msg_0265_00336",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is flying through the sky\n",
+        "with grace!"
+      ]
+    },
+    {
+      "id": "msg_0265_00337",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is gazing at the red\n",
+        "sky..."
+      ]
+    },
+    {
+      "id": "msg_0265_00338",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} rolled around on the\n",
+        "floor!"
+      ]
+    },
+    {
+      "id": "msg_0265_00339",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} slipped on the floor and\n",
+        "seems likely to fall!"
+      ]
+    },
+    {
+      "id": "msg_0265_00340",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} was surprised at the\n",
+        "sounds the floor is making!"
+      ]
+    },
+    {
+      "id": "msg_0265_00341",
+      "en_US": "{STRVAR_1 1, 0, 0} is sniffing at the floor."
+    },
+    {
+      "id": "msg_0265_00342",
+      "en_US": "{STRVAR_1 1, 0, 0} is sniffing at the floor."
+    },
+    {
+      "id": "msg_0265_00343",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} slowly turned to look at\n",
+        "your face."
+      ]
+    },
+    {
+      "id": "msg_0265_00344",
+      "en_US": "{STRVAR_1 1, 0, 0} is relaxing comfortably."
+    },
+    {
+      "id": "msg_0265_00345",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is wobbling and seems\n",
+        "about to fall over."
+      ]
+    },
+    {
+      "id": "msg_0265_00346",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is concerned about the\n",
+        "swaying pillar."
+      ]
+    },
+    {
+      "id": "msg_0265_00347",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is dancing along with the\n",
+        "rolling of the ship!"
+      ]
+    },
+    {
+      "id": "msg_0265_00348",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is gazing at the night\n",
+        "sky..."
+      ]
+    },
+    {
+      "id": "msg_0265_00349",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is very composed and sure\n",
+        "of itself."
+      ]
+    },
+    {
+      "id": "msg_0265_00350",
+      "en_US": "{STRVAR_1 1, 0, 0} yawned loudly."
+    },
+    {
+      "id": "msg_0265_00351",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} got closer to\n",
+        "{STRVAR_1 3, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0265_00352",
+      "en_US": "{STRVAR_1 1, 0, 0} bumped into {STRVAR_1 3, 2, 0}!"
+    },
+    {
+      "id": "msg_0265_00353",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is watching\n",
+        "{STRVAR_1 3, 2, 0}’s face."
+      ]
+    },
+    {
+      "id": "msg_0265_00354",
+      "en_US": "{STRVAR_1 1, 0, 0} is saying hello!"
+    },
+    {
+      "id": "msg_0265_00355",
+      "en_US": "{STRVAR_1 1, 0, 0} is poking at your feet."
+    },
+    {
+      "id": "msg_0265_00356",
+      "en_US": "{STRVAR_1 1, 0, 0} is on the lookout!"
+    },
+    {
+      "id": "msg_0265_00357",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is in danger of falling\n",
+        "over!"
+      ]
+    },
+    {
+      "id": "msg_0265_00358",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is vigorously breathing\n",
+        "fire!"
+      ]
+    },
+    {
+      "id": "msg_0265_00359",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} seems to be about to fall\n",
+        "over!"
+      ]
+    },
+    {
+      "id": "msg_0265_00360",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} was surprised by its own\n",
+        "reflection!"
+      ]
+    },
+    {
+      "id": "msg_0265_00361",
+      "en_US": "{STRVAR_1 1, 0, 0} is singing happily!"
+    },
+    {
+      "id": "msg_0265_00362",
+      "en_US": "{STRVAR_1 1, 0, 0} is happy but shy!"
+    },
+    {
+      "id": "msg_0265_00363",
+      "en_US": "{STRVAR_1 1, 0, 0} yawned loudly!"
+    },
+    {
+      "id": "msg_0265_00364",
+      "en_US": "{STRVAR_1 1, 0, 0} is poking at your belly."
+    },
+    {
+      "id": "msg_0265_00365",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is staring intently at\n",
+        "{STRVAR_1 3, 2, 0}’s face."
+      ]
+    },
+    {
+      "id": "msg_0265_00366",
+      "en_US": "{STRVAR_1 1, 0, 0} greeted FARFETCH’D!"
+    },
+    {
+      "id": "msg_0265_00367",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} can feel a nice, gentle\n",
+        "breeze."
+      ]
+    },
+    {
+      "id": "msg_0265_00368",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is gazing restlessly at\n",
+        "the building."
+      ]
+    },
+    {
+      "id": "msg_0265_00369",
+      "en_US": "{STRVAR_1 1, 0, 0} is smelling the grass."
+    },
+    {
+      "id": "msg_0265_00370",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is happy to have found a\n",
+        "rock in the grass!"
+      ]
+    },
+    {
+      "id": "msg_0265_00371",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is taking shelter in the\n",
+        "grass from the rain."
+      ]
+    },
+    {
+      "id": "msg_0265_00372",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is rolling around in the\n",
+        "grass."
+      ]
+    },
+    {
+      "id": "msg_0265_00373",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is splashing around in the\n",
+        "wet grass."
+      ]
+    },
+    {
+      "id": "msg_0265_00374",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} seems to have gotten\n",
+        "caught in the clumps of grass!"
+      ]
+    },
+    {
+      "id": "msg_0265_00375",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} was surprised by the\n",
+        "sounds in the thicket!"
+      ]
+    },
+    {
+      "id": "msg_0265_00376",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is noticing the scent of\n",
+        "the grass."
+      ]
+    },
+    {
+      "id": "msg_0265_00377",
+      "en_US": "{STRVAR_1 1, 0, 0} is staring at the grass."
+    },
+    {
+      "id": "msg_0265_00378",
+      "en_US": "{STRVAR_1 1, 0, 0} is stomping on the grass!"
+    },
+    {
+      "id": "msg_0265_00379",
+      "en_US": "{STRVAR_1 1, 0, 0} is pulling out the grass!"
+    },
+    {
+      "id": "msg_0265_00380",
+      "en_US": "{STRVAR_1 1, 0, 0} is moving its jaw."
+    },
+    {
+      "id": "msg_0265_00381",
+      "en_US": "{STRVAR_1 1, 0, 0} is clamping its mouth shut."
+    },
+    {
+      "id": "msg_0265_00382",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is opening and closing its\n",
+        "mouth."
+      ]
+    },
+    {
+      "id": "msg_0265_00383",
+      "en_US": "{STRVAR_1 1, 0, 0} greeted Mary!"
+    },
+    {
+      "id": "msg_0265_00384",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is sniffing around the\n",
+        "room."
+      ]
+    },
+    {
+      "id": "msg_0265_00385",
+      "en_US": "{STRVAR_1 1, 0, 0} is coming along happily!"
+    },
+    {
+      "id": "msg_0265_00386",
+      "en_US": "{STRVAR_1 1, 0, 0} is shivering with cold..."
+    },
+    {
+      "id": "msg_0265_00387",
+      "en_US": "{STRVAR_1 1, 0, 0} is peering down."
+    },
+    {
+      "id": "msg_0265_00388",
+      "en_US": "{STRVAR_1 1, 0, 0} seems a bit scared..."
+    },
+    {
+      "id": "msg_0265_00389",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} slipped and seems about\n",
+        "to fall over!"
+      ]
+    },
+    {
+      "id": "msg_0265_00390",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} seems to really enjoy\n",
+        "sliding around!"
+      ]
+    },
+    {
+      "id": "msg_0265_00391",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is looking outside and\n",
+        "frolicking!"
+      ]
+    },
+    {
+      "id": "msg_0265_00392",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is staring intently at the\n",
+        "sky."
+      ]
+    },
+    {
+      "id": "msg_0265_00393",
+      "en_US": "{STRVAR_1 1, 0, 0} is looking up at the sky."
+    },
+    {
+      "id": "msg_0265_00394",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is staring intently off\n",
+        "into the distance."
+      ]
+    },
+    {
+      "id": "msg_0265_00395",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is shivering with the\n",
+        "effects of being poisoned..."
+      ]
+    },
+    {
+      "id": "msg_0265_00396",
+      "en_US": "{STRVAR_1 1, 0, 0} is very happy!"
+    },
+    {
+      "id": "msg_0265_00397",
+      "en_US": "{STRVAR_1 1, 0, 0} was jumping up and down!"
+    },
+    {
+      "id": "msg_0265_00398",
+      "en_US": "{STRVAR_1 1, 0, 0} feels something..."
+    },
+    {
+      "id": "msg_0265_00399",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} feels something and is\n",
+        "howling!"
+      ]
+    },
+    {
+      "id": "msg_0265_00400",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is staring patiently at\n",
+        "nothing at all."
+      ]
+    },
+    {
+      "id": "msg_0265_00401",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is somehow forcing itself\n",
+        "to keep going."
+      ]
+    },
+    {
+      "id": "msg_0265_00402",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is somehow fighting off\n",
+        "sleep..."
+      ]
+    },
+    {
+      "id": "msg_0265_00403",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s head is nodding as it\n",
+        "starts to fall asleep..."
+      ]
+    },
+    {
+      "id": "msg_0265_00404",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} has a sleepy look on\n",
+        "its face..."
+      ]
+    },
+    {
+      "id": "msg_0265_00405",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is dancing around in high\n",
+        "spirits!"
+      ]
+    },
+    {
+      "id": "msg_0265_00406",
+      "en_US": "{STRVAR_1 1, 0, 0} is making its leaf twitch."
+    },
+    {
+      "id": "msg_0265_00407",
+      "en_US": "{STRVAR_1 1, 0, 0} is waving its leaf around."
+    },
+    {
+      "id": "msg_0265_00408",
+      "en_US": "{STRVAR_1 1, 0, 0} is throwing a leaf around!"
+    },
+    {
+      "id": "msg_0265_00409",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} seems to want to play with\n",
+        "MARILL!"
+      ]
+    },
+    {
+      "id": "msg_0265_00410",
+      "en_US": "{STRVAR_1 1, 0, 0} blew out a fireball."
+    },
+    {
+      "id": "msg_0265_00411",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} blew out a couple\n",
+        "of fireballs."
+      ]
+    },
+    {
+      "id": "msg_0265_00412",
+      "en_US": "{STRVAR_1 1, 0, 0} is breathing out fire!"
+    },
+    {
+      "id": "msg_0265_00413",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is trying to touch\n",
+        "the machine."
+      ]
+    },
+    {
+      "id": "msg_0265_00414",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is concerned about your\n",
+        "mom!"
+      ]
+    },
+    {
+      "id": "msg_0265_00415",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is splashing around in the\n",
+        "puddle!"
+      ]
+    },
+    {
+      "id": "msg_0265_00416",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is staring at the\n",
+        "reflections in the water."
+      ]
+    },
+    {
+      "id": "msg_0265_00417",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is saying hello to\n",
+        "everyone!"
+      ]
+    },
+    {
+      "id": "msg_0265_00418",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is fidgeting in front of\n",
+        "everyone..."
+      ]
+    },
+    {
+      "id": "msg_0265_00419",
+      "en_US": "{STRVAR_1 1, 0, 0} is very eager!"
+    },
+    {
+      "id": "msg_0265_00420",
+      "en_US": "{STRVAR_1 1, 0, 0} is composed!"
+    },
+    {
+      "id": "msg_0265_00421",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} seems to think that\n",
+        "{STRVAR_1 3, 2, 0} has disappeared!"
+      ]
+    },
+    {
+      "id": "msg_0265_00422",
+      "en_US": [
+        "......\n",
+        "Your Pokémon seems to have sneezed!"
+      ]
+    },
+    {
+      "id": "msg_0265_00423",
+      "en_US": [
+        "......\n",
+        "Your Pokémon noticed that your shoes\f",
+        "are a bit dirty."
+      ]
+    },
+    {
+      "id": "msg_0265_00424",
+      "en_US": [
+        "......\n",
+        "Your Pokémon seems a little cold."
+      ]
+    },
+    {
+      "id": "msg_0265_00425",
+      "en_US": [
+        "......\n",
+        "It seems to have eaten something\f",
+        "strange. It’s making an odd face..."
+      ]
+    },
+    {
+      "id": "msg_0265_00426",
+      "en_US": [
+        "......\n",
+        "Your Pokémon is surprised\f",
+        "about something."
+      ]
+    },
+    {
+      "id": "msg_0265_00427",
+      "en_US": [
+        "......\n",
+        "Your Pokémon’s scared about something."
+      ]
+    },
+    {
+      "id": "msg_0265_00428",
+      "en_US": [
+        "......\n",
+        "Your Pokémon seems to be\f",
+        "smelling something good."
+      ]
+    },
+    {
+      "id": "msg_0265_00429",
+      "en_US": [
+        "......\n",
+        "Your Pokémon is looking at the red sky."
+      ]
+    },
+    {
+      "id": "msg_0265_00430",
+      "en_US": [
+        "......\n",
+        "Your Pokémon is staring at the\f",
+        "swaying boat."
+      ]
+    },
+    {
+      "id": "msg_0265_00431",
+      "en_US": [
+        "...Oh!\n",
+        "It’s about to tamper with\f",
+        "the shelves! Scold it? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0265_00432",
+      "en_US": [
+        "...Oh!\n",
+        "It seems about to play a prank with\f",
+        "items! Scold it?"
+      ]
+    },
+    {
+      "id": "msg_0265_00433",
+      "en_US": [
+        "......\n",
+        "Your Pokémon is scowling in\f",
+        "this direction."
+      ]
+    },
+    {
+      "id": "msg_0265_00434",
+      "en_US": [
+        "......\n",
+        "Your Pokémon seems surprised that the\f",
+        "shelves might fall!\n"
+      ]
+    },
+    {
+      "id": "msg_0265_00435",
+      "en_US": [
+        "......\n",
+        "The shelves got pretty messy."
+      ]
+    },
+    {
+      "id": "msg_0265_00436",
+      "en_US": [
+        "......\n",
+        "Your Pokémon won’t look you in the eye."
+      ]
+    },
+    {
+      "id": "msg_0265_00437",
+      "en_US": [
+        "......\n",
+        "Your Pokémon won’t come even though\f",
+        "you’re calling."
+      ]
+    },
+    {
+      "id": "msg_0265_00438",
+      "en_US": [
+        "Oh! {STRVAR_1 1, 0, 0} has a scrap of paper\n",
+        "in its mouth!\f",
+        "Get angry?{YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0265_00439",
+      "en_US": [
+        "Oh! {STRVAR_1 1, 0, 0} has the cord in its\n",
+        "mouth! \f",
+        "Get angry?{YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0265_00440",
+      "en_US": [
+        "Oh! {STRVAR_1 1, 0, 0} is touching some kind\n",
+        "of switch!\f",
+        "Make it stop?{YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0265_00441",
+      "en_US": [
+        "Oh!\n",
+        "It’s slipping and came over here for\f",
+        "support!"
+      ]
+    },
+    {
+      "id": "msg_0265_00442",
+      "en_US": [
+        "Oh!\n",
+        "It’s stealing food!\f",
+        "Scold it?{YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0265_00443",
+      "en_US": [
+        "Oh!\n",
+        "It ate something!\f",
+        "Open its mouth?{YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0265_00444",
+      "en_US": [
+        "Oh!\n",
+        "Your Bag has a little dirt on it..."
+      ]
+    },
+    {
+      "id": "msg_0265_00445",
+      "en_US": [
+        "Oh!\n",
+        "There’s a leaf!"
+      ]
+    },
+    {
+      "id": "msg_0265_00446",
+      "en_US": [
+        "Your Pokémon is happily gazing at the\n",
+        "morning sun!"
+      ]
+    },
+    {
+      "id": "msg_0265_00447",
+      "en_US": "Your Pokémon is blowing sand in the air!"
+    },
+    {
+      "id": "msg_0265_00448",
+      "en_US": [
+        "Your Pokémon is happily looking at\n",
+        "{STRVAR_1 3, 2, 0}’s footprints!"
+      ]
+    },
+    {
+      "id": "msg_0265_00449",
+      "en_US": [
+        "Your Pokémon is happily looking at\n",
+        "{STRVAR_1 3, 2, 0}’s footprints!"
+      ]
+    },
+    {
+      "id": "msg_0265_00450",
+      "en_US": [
+        "Your Pokémon doesn’t like splashing\n",
+        "around on the ground..."
+      ]
+    },
+    {
+      "id": "msg_0265_00451",
+      "en_US": [
+        "Your Pokémon is happy to be splashing\n",
+        "around on the ground!"
+      ]
+    },
+    {
+      "id": "msg_0265_00452",
+      "en_US": "Your Pokémon is hot and cheerful!"
+    },
+    {
+      "id": "msg_0265_00453",
+      "en_US": [
+        "Your Pokémon seems to be unhappy that\n",
+        "it’s hot..."
+      ]
+    },
+    {
+      "id": "msg_0265_00454",
+      "en_US": [
+        "Careful!\n",
+        "Your Pokémon seems about to fall..."
+      ]
+    },
+    {
+      "id": "msg_0265_00455",
+      "en_US": [
+        "Careful! Seems like the floor could\n",
+        "collapse, and it might fall."
+      ]
+    },
+    {
+      "id": "msg_0265_00456",
+      "en_US": "Your Pokémon almost slipped and fell!"
+    },
+    {
+      "id": "msg_0265_00457",
+      "en_US": "{STRVAR_1 1, 0, 0} is keeping close to you."
+    },
+    {
+      "id": "msg_0265_00458",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} started spinning around in\n",
+        "circles."
+      ]
+    },
+    {
+      "id": "msg_0265_00459",
+      "en_US": [
+        "Your Pokémon seems to be happy about\n",
+        "the great weather!"
+      ]
+    },
+    {
+      "id": "msg_0265_00460",
+      "en_US": [
+        "Sniff, sniff!\n",
+        "Something smells good!"
+      ]
+    },
+    {
+      "id": "msg_0265_00461",
+      "en_US": "{STRVAR_1 1, 0, 0} suddenly howled!"
+    },
+    {
+      "id": "msg_0265_00462",
+      "en_US": [
+        "Your Pokémon was surprised that you\n",
+        "suddenly spoke to it!"
+      ]
+    },
+    {
+      "id": "msg_0265_00463",
+      "en_US": "Your Pokémon is greeting Strawberry!"
+    },
+    {
+      "id": "msg_0265_00464",
+      "en_US": "Your Pokémon is dancing with you!"
+    },
+    {
+      "id": "msg_0265_00465",
+      "en_US": "{STRVAR_1 1, 0, 0} is suddenly angry!"
+    },
+    {
+      "id": "msg_0265_00466",
+      "en_US": [
+        "Your Pokémon is staring at\n",
+        "various items."
+      ]
+    },
+    {
+      "id": "msg_0265_00467",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is happily digging in the\n",
+        "ground!"
+      ]
+    },
+    {
+      "id": "msg_0265_00468",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} started grinding at the\n",
+        "rocks!"
+      ]
+    },
+    {
+      "id": "msg_0265_00469",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is having fun hitting rocks\n",
+        "together!"
+      ]
+    },
+    {
+      "id": "msg_0265_00470",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is having fun rolling\n",
+        "around!"
+      ]
+    },
+    {
+      "id": "msg_0265_00471",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} started pounding the\n",
+        "ground flat!"
+      ]
+    },
+    {
+      "id": "msg_0265_00472",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} started to dance and\n",
+        "wobble in a strange manner."
+      ]
+    },
+    {
+      "id": "msg_0265_00473",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} swayed and danced\n",
+        "mysteriously."
+      ]
+    },
+    {
+      "id": "msg_0265_00474",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} started to dance and\n",
+        "sway in a strange manner."
+      ]
+    },
+    {
+      "id": "msg_0265_00475",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} swayed and danced\n",
+        "mysteriously."
+      ]
+    },
+    {
+      "id": "msg_0265_00476",
+      "en_US": [
+        "Your Pokémon is staring intently at\n",
+        "the sea!"
+      ]
+    },
+    {
+      "id": "msg_0265_00477",
+      "en_US": "Your Pokémon is mumbling happily."
+    },
+    {
+      "id": "msg_0265_00478",
+      "en_US": "Your Pokémon yawned loudly!"
+    },
+    {
+      "id": "msg_0265_00479",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} shook the tower with its\n",
+        "voice!"
+      ]
+    },
+    {
+      "id": "msg_0265_00480",
+      "en_US": "{STRVAR_1 1, 0, 0} howled loudly!"
+    },
+    {
+      "id": "msg_0265_00481",
+      "en_US": "Seems the breeze is coming from here."
+    },
+    {
+      "id": "msg_0265_00482",
+      "en_US": [
+        "Your Pokémon is excitedly watching\n",
+        "the dance!"
+      ]
+    },
+    {
+      "id": "msg_0265_00483",
+      "en_US": [
+        "Your Pokémon is looking restlessly at\n",
+        "the souvenir."
+      ]
+    },
+    {
+      "id": "msg_0265_00484",
+      "en_US": "{STRVAR_1 1, 0, 0} is feeling eager!"
+    },
+    {
+      "id": "msg_0265_00485",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is happily waving\n",
+        "{STRVAR_1 8, 4, 0} around and singing."
+      ]
+    },
+    {
+      "id": "msg_0265_00486",
+      "en_US": "{STRVAR_1 1, 0, 0} is dancing around happily!"
+    },
+    {
+      "id": "msg_0265_00487",
+      "en_US": [
+        "Your Pokémon stretched out its body\n",
+        "and is relaxing."
+      ]
+    },
+    {
+      "id": "msg_0265_00488",
+      "en_US": "Your Pokémon is feeling good and sleepy."
+    },
+    {
+      "id": "msg_0265_00489",
+      "en_US": "{STRVAR_1 1, 0, 0} howled very loudly!"
+    },
+    {
+      "id": "msg_0265_00490",
+      "en_US": [
+        "Your Pokémon is looking around\n",
+        "restlessly for something."
+      ]
+    },
+    {
+      "id": "msg_0265_00491",
+      "en_US": [
+        "Your Pokémon is surveying the\n",
+        "shelves restlessly."
+      ]
+    },
+    {
+      "id": "msg_0265_00492",
+      "en_US": [
+        "Your Pokémon is observing the whirling\n",
+        "weather vanes with some concern."
+      ]
+    },
+    {
+      "id": "msg_0265_00493",
+      "en_US": [
+        "Your Pokémon has caught the scent\n",
+        "of smoke."
+      ]
+    },
+    {
+      "id": "msg_0265_00494",
+      "en_US": [
+        "Your Pokémon is smelling the scent of\n",
+        "the flowers."
+      ]
+    },
+    {
+      "id": "msg_0265_00495",
+      "en_US": [
+        "Your Pokémon is smelling the scent of\n",
+        "the floor."
+      ]
+    },
+    {
+      "id": "msg_0265_00496",
+      "en_US": [
+        "Sniff, sniff!\n",
+        "Is there something nearby?"
+      ]
+    },
+    {
+      "id": "msg_0265_00497",
+      "en_US": "{STRVAR_1 1, 0, 0} is sniffing at the girl."
+    },
+    {
+      "id": "msg_0265_00498",
+      "en_US": [
+        "Sniff, sniff!\n",
+        "Something smells really good!"
+      ]
+    },
+    {
+      "id": "msg_0265_00499",
+      "en_US": [
+        "Your Pokémon is sniffing the scent\n",
+        "of flowers."
+      ]
+    },
+    {
+      "id": "msg_0265_00500",
+      "en_US": "{STRVAR_1 1, 0, 0} gave you a sunny look!"
+    },
+    {
+      "id": "msg_0265_00501",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is leaping around more\n",
+        "than usual!"
+      ]
+    },
+    {
+      "id": "msg_0265_00502",
+      "en_US": [
+        "Your Pokémon seems surprised to\n",
+        "touch ice!"
+      ]
+    },
+    {
+      "id": "msg_0265_00503",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is staring intently at its\n",
+        "opponent!"
+      ]
+    },
+    {
+      "id": "msg_0265_00504",
+      "en_US": [
+        "Your Pokémon is staring intently at\n",
+        "the blackboard...\f",
+        "But it doesn’t seem to understand."
+      ]
+    },
+    {
+      "id": "msg_0265_00505",
+      "en_US": "{STRVAR_1 1, 0, 0} is poking at garbage..."
+    },
+    {
+      "id": "msg_0265_00506",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is concerned about the\n",
+        "other side of the fence, it seems."
+      ]
+    },
+    {
+      "id": "msg_0265_00507",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} seems very happy about\n",
+        "the cold!"
+      ]
+    },
+    {
+      "id": "msg_0265_00508",
+      "en_US": "{STRVAR_1 1, 0, 0} snuggled up for warmth!"
+    },
+    {
+      "id": "msg_0265_00509",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} got closer because it\n",
+        "seems cold."
+      ]
+    },
+    {
+      "id": "msg_0265_00510",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is staring intently at the\n",
+        "shelves."
+      ]
+    },
+    {
+      "id": "msg_0265_00511",
+      "en_US": [
+        "Your Pokémon is very concerned about\n",
+        "the room below."
+      ]
+    },
+    {
+      "id": "msg_0265_00512",
+      "en_US": "Your Pokémon isn’t moving."
+    },
+    {
+      "id": "msg_0265_00513",
+      "en_US": [
+        "Your Pokémon is rolling a screw from a\n",
+        "Bicycle around."
+      ]
+    },
+    {
+      "id": "msg_0265_00514",
+      "en_US": "Your Pokémon seems happy to be all wet!"
+    },
+    {
+      "id": "msg_0265_00515",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} doesn’t seem to like being\n",
+        "all wet..."
+      ]
+    },
+    {
+      "id": "msg_0265_00516",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} shook the tower with its\n",
+        "cry!"
+      ]
+    },
+    {
+      "id": "msg_0265_00517",
+      "en_US": "{STRVAR_1 1, 0, 0} roared loudly!"
+    },
+    {
+      "id": "msg_0265_00518",
+      "en_US": "{STRVAR_1 1, 0, 0} danced a wonderful dance!"
+    },
+    {
+      "id": "msg_0265_00519",
+      "en_US": "{STRVAR_1 1, 0, 0} is very happy!"
+    },
+    {
+      "id": "msg_0265_00520",
+      "en_US": "{STRVAR_1 1, 0, 0} danced beautifully!"
+    },
+    {
+      "id": "msg_0265_00521",
+      "en_US": "{STRVAR_1 1, 0, 0} danced happily!"
+    },
+    {
+      "id": "msg_0265_00522",
+      "en_US": [
+        "Your Pokémon seems to be happy that\n",
+        "it found something outside!"
+      ]
+    },
+    {
+      "id": "msg_0265_00523",
+      "en_US": "{STRVAR_1 1, 0, 0} seems unhappy somehow..."
+    },
+    {
+      "id": "msg_0265_00524",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is cheerful that it’s\n",
+        "become a bit cold!"
+      ]
+    },
+    {
+      "id": "msg_0265_00525",
+      "en_US": "{STRVAR_1 1, 0, 0} seemed a little surprised."
+    },
+    {
+      "id": "msg_0265_00526",
+      "en_US": "Your Pokémon is drooling a little..."
+    },
+    {
+      "id": "msg_0265_00527",
+      "en_US": "Your Pokémon stumbled and nearly fell!"
+    },
+    {
+      "id": "msg_0265_00528",
+      "en_US": [
+        "Your Pokémon seems to be enjoying\n",
+        "sliding around!"
+      ]
+    },
+    {
+      "id": "msg_0265_00529",
+      "en_US": "Your Pokémon is trying to push you!"
+    },
+    {
+      "id": "msg_0265_00530",
+      "en_US": [
+        "Your Pokémon stretched out\n",
+        "and relaxed!"
+      ]
+    },
+    {
+      "id": "msg_0265_00531",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is making noise as it \n",
+        "happily digs in the ground!"
+      ]
+    },
+    {
+      "id": "msg_0265_00532",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is scraping at the ground\n",
+        "intensely!"
+      ]
+    },
+    {
+      "id": "msg_0265_00533",
+      "en_US": "{STRVAR_1 1, 0, 0} seems very happy!"
+    },
+    {
+      "id": "msg_0265_00534",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is staring intently into\n",
+        "the distance."
+      ]
+    },
+    {
+      "id": "msg_0265_00535",
+      "en_US": "{STRVAR_1 1, 0, 0} suddenly howled!"
+    },
+    {
+      "id": "msg_0265_00536",
+      "en_US": "{STRVAR_1 1, 0, 0} looks excited!"
+    },
+    {
+      "id": "msg_0265_00537",
+      "en_US": [
+        "Your Pokémon seems to be\n",
+        "singing something?"
+      ]
+    },
+    {
+      "id": "msg_0265_00538",
+      "en_US": "Is there a stream nearby?"
+    },
+    {
+      "id": "msg_0265_00539",
+      "en_US": [
+        "Your Pokémon is feeling alert because\n",
+        "of something..."
+      ]
+    },
+    {
+      "id": "msg_0265_00540",
+      "en_US": [
+        "Your Pokémon seems happy to have\n",
+        "found something!"
+      ]
+    },
+    {
+      "id": "msg_0265_00541",
+      "en_US": [
+        "Your Pokémon is staring intently\n",
+        "at nothing..."
+      ]
+    },
+    {
+      "id": "msg_0265_00542",
+      "en_US": "Your Pokémon seems somehow unhappy."
+    },
+    {
+      "id": "msg_0265_00543",
+      "en_US": "{STRVAR_1 1, 0, 0} seems very happy!"
+    },
+    {
+      "id": "msg_0265_00544",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} seems so happy that it’s\n",
+        "dancing."
+      ]
+    },
+    {
+      "id": "msg_0265_00545",
+      "en_US": "Your Pokémon is angry about something!"
+    },
+    {
+      "id": "msg_0265_00546",
+      "en_US": [
+        "Your Pokémon seems to be smelling\n",
+        "something good!"
+      ]
+    },
+    {
+      "id": "msg_0265_00547",
+      "en_US": [
+        "Your Pokémon seems to be hearing\n",
+        "something from the wall..."
+      ]
+    },
+    {
+      "id": "msg_0265_00548",
+      "en_US": "A cold wind suddenly blew by!"
+    },
+    {
+      "id": "msg_0265_00549",
+      "en_US": "Your Pokémon seems very hot..."
+    },
+    {
+      "id": "msg_0265_00550",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} seems to feel a little\n",
+        "claustrophobic."
+      ]
+    },
+    {
+      "id": "msg_0265_00551",
+      "en_US": "{STRVAR_1 1, 0, 0} seems embarrassed."
+    },
+    {
+      "id": "msg_0265_00552",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} gives you a happy look\n",
+        "and a smile!"
+      ]
+    },
+    {
+      "id": "msg_0265_00553",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is happily digging itself\n",
+        "into the ground!"
+      ]
+    },
+    {
+      "id": "msg_0265_00554",
+      "en_US": "{STRVAR_1 1, 0, 0} is singing and humming!"
+    },
+    {
+      "id": "msg_0265_00555",
+      "en_US": [
+        "Your Pokémon has a flower petal on\n",
+        "its face!"
+      ]
+    },
+    {
+      "id": "msg_0265_00556",
+      "en_US": [
+        "Your Pokémon seems to want to go to\n",
+        "the sea as soon as possible!"
+      ]
+    },
+    {
+      "id": "msg_0265_00557",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is making a face like it’s\n",
+        "angry!"
+      ]
+    },
+    {
+      "id": "msg_0265_00558",
+      "en_US": "{STRVAR_1 1, 0, 0} suddenly started dancing!"
+    },
+    {
+      "id": "msg_0265_00559",
+      "en_US": "{STRVAR_1 1, 0, 0} is looking up at the sky..."
+    },
+    {
+      "id": "msg_0265_00560",
+      "en_US": "{STRVAR_1 1, 0, 0} had fun dancing a dance!"
+    },
+    {
+      "id": "msg_0265_00561",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is so happy, it began\n",
+        "to dance!"
+      ]
+    },
+    {
+      "id": "msg_0265_00562",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is trembling with\n",
+        "eagerness!"
+      ]
+    },
+    {
+      "id": "msg_0265_00563",
+      "en_US": "{STRVAR_1 1, 0, 0} suddenly danced!"
+    },
+    {
+      "id": "msg_0265_00564",
+      "en_US": "{STRVAR_1 1, 0, 0} is looking up at the sky..."
+    },
+    {
+      "id": "msg_0265_00565",
+      "en_US": [
+        "Your Pokémon is having fun splashing\n",
+        "around in the water!"
+      ]
+    },
+    {
+      "id": "msg_0265_00566",
+      "en_US": "{STRVAR_1 1, 0, 0} had fun dancing a dance!"
+    },
+    {
+      "id": "msg_0265_00567",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is so happy, it began\n",
+        "to dance!"
+      ]
+    },
+    {
+      "id": "msg_0265_00568",
+      "en_US": [
+        "Your Pokémon looked this way\n",
+        "in surprise!"
+      ]
+    },
+    {
+      "id": "msg_0265_00569",
+      "en_US": "Your Pokémon jumped up in surprise!"
+    },
+    {
+      "id": "msg_0265_00570",
+      "en_US": "{STRVAR_1 1, 0, 0} suddenly danced!"
+    },
+    {
+      "id": "msg_0265_00571",
+      "en_US": "{STRVAR_1 1, 0, 0} is looking up at the sky..."
+    },
+    {
+      "id": "msg_0265_00572",
+      "en_US": [
+        "Your Pokémon seems to be having fun\n",
+        "jumping up and down!"
+      ]
+    },
+    {
+      "id": "msg_0265_00573",
+      "en_US": "{STRVAR_1 1, 0, 0} is trembling!"
+    },
+    {
+      "id": "msg_0265_00574",
+      "en_US": "{STRVAR_1 1, 0, 0} is shaking!"
+    },
+    {
+      "id": "msg_0265_00575",
+      "en_US": [
+        "Your Pokémon seems very happy that\n",
+        "it’s soft!"
+      ]
+    },
+    {
+      "id": "msg_0265_00576",
+      "en_US": [
+        "Your Pokémon turned to face the other\n",
+        "way, showing a defiant expression..."
+      ]
+    },
+    {
+      "id": "msg_0265_00577",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is staring intently at the\n",
+        "sky."
+      ]
+    },
+    {
+      "id": "msg_0265_00578",
+      "en_US": "{STRVAR_1 1, 0, 0} is peeking in on the two."
+    },
+    {
+      "id": "msg_0265_00579",
+      "en_US": [
+        "Ptui!\n",
+        "It seems there was garbage in it!"
+      ]
+    },
+    {
+      "id": "msg_0265_00580",
+      "en_US": "Something smells strange..."
+    },
+    {
+      "id": "msg_0265_00581",
+      "en_US": "{STRVAR_1 1, 0, 0} roared loudly!"
+    },
+    {
+      "id": "msg_0265_00582",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} shook the tower with its\n",
+        "voice!"
+      ]
+    },
+    {
+      "id": "msg_0265_00583",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is looking to the sky and\n",
+        "shouting!"
+      ]
+    },
+    {
+      "id": "msg_0265_00584",
+      "en_US": [
+        "Your Pokémon is happily gazing at the\n",
+        "beautiful, starry sky!"
+      ]
+    },
+    {
+      "id": "msg_0265_00585",
+      "en_US": [
+        "Your Pokémon wasn’t watching where it\n",
+        "was going and ran into you!"
+      ]
+    },
+    {
+      "id": "msg_0265_00586",
+      "en_US": "Your Pokémon doesn’t seem sure yet..."
+    },
+    {
+      "id": "msg_0265_00587",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} swayed and danced around\n",
+        "as it pleased."
+      ]
+    },
+    {
+      "id": "msg_0265_00588",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} swayed around, dancing in\n",
+        "a strange manner."
+      ]
+    },
+    {
+      "id": "msg_0265_00589",
+      "en_US": "{STRVAR_1 1, 0, 0} trembled!"
+    },
+    {
+      "id": "msg_0265_00590",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} looks like it might be\n",
+        "preparing for a big showdown!"
+      ]
+    },
+    {
+      "id": "msg_0265_00591",
+      "en_US": [
+        "Your Pokémon is looking\n",
+        "around restlessly."
+      ]
+    },
+    {
+      "id": "msg_0265_00592",
+      "en_US": [
+        "Your Pokémon is suspicious and looking\n",
+        "around restlessly."
+      ]
+    },
+    {
+      "id": "msg_0265_00593",
+      "en_US": "{STRVAR_1 1, 0, 0} seems happy to be all wet!"
+    },
+    {
+      "id": "msg_0265_00594",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} seems unhappy to be all\n",
+        "wet..."
+      ]
+    },
+    {
+      "id": "msg_0265_00595",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} seems very refreshed to\n",
+        "be all wet!"
+      ]
+    },
+    {
+      "id": "msg_0265_00596",
+      "en_US": [
+        "Your Pokémon is playing around and\n",
+        "splashing in the water!"
+      ]
+    },
+    {
+      "id": "msg_0265_00597",
+      "en_US": "{STRVAR_1 1, 0, 0} suddenly shouted!"
+    },
+    {
+      "id": "msg_0265_00598",
+      "en_US": "{STRVAR_1 1, 0, 0} slapped at the ground!"
+    },
+    {
+      "id": "msg_0265_00599",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} looked up at the ceiling\n",
+        "and howled!"
+      ]
+    },
+    {
+      "id": "msg_0265_00600",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} suddenly started spinning\n",
+        "around!"
+      ]
+    },
+    {
+      "id": "msg_0265_00601",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} suddenly started\n",
+        "shouting!"
+      ]
+    },
+    {
+      "id": "msg_0265_00602",
+      "en_US": "{STRVAR_1 1, 0, 0} trembled."
+    },
+    {
+      "id": "msg_0265_00603",
+      "en_US": [
+        "It is looking at the {STRVAR_1 8, 4, 0}\n",
+        "in its grasp...and drooling..."
+      ]
+    },
+    {
+      "id": "msg_0265_00604",
+      "en_US": [
+        "Your Pokémon wants to give the\n",
+        "{STRVAR_1 8, 4, 0} it’s holding to your mom!"
+      ]
+    },
+    {
+      "id": "msg_0265_00605",
+      "en_US": [
+        "Your Pokémon is staring intently at the\n",
+        "mountain peak."
+      ]
+    },
+    {
+      "id": "msg_0265_00606",
+      "en_US": [
+        "Your Pokémon is happily looking at the\n",
+        "red sky!"
+      ]
+    },
+    {
+      "id": "msg_0265_00607",
+      "en_US": [
+        "Your Pokémon is staring spellbound at\n",
+        "the night sky!"
+      ]
+    },
+    {
+      "id": "msg_0265_00608",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} shook the tower with\n",
+        "its cry!"
+      ]
+    },
+    {
+      "id": "msg_0265_00609",
+      "en_US": "{STRVAR_1 1, 0, 0} howled loudly!"
+    },
+    {
+      "id": "msg_0265_00610",
+      "en_US": "{STRVAR_1 1, 0, 0} danced a fun dance!"
+    },
+    {
+      "id": "msg_0265_00611",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} danced around very\n",
+        "happily!"
+      ]
+    },
+    {
+      "id": "msg_0265_00612",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} blew out a plume of fire\n",
+        "and looked eager!"
+      ]
+    },
+    {
+      "id": "msg_0265_00613",
+      "en_US": "{STRVAR_1 1, 0, 0} roared loudly!"
+    },
+    {
+      "id": "msg_0265_00614",
+      "en_US": [
+        "Whoa! {STRVAR_1 1, 0, 0} suddenly hugged\n",
+        "you!"
+      ]
+    },
+    {
+      "id": "msg_0265_00615",
+      "en_US": "Whoa! {STRVAR_1 1, 0, 0} is suddenly playful!"
+    },
+    {
+      "id": "msg_0265_00616",
+      "en_US": [
+        "Whoa! {STRVAR_1 1, 0, 0} suddenly danced in\n",
+        "happiness!"
+      ]
+    },
+    {
+      "id": "msg_0265_00617",
+      "en_US": [
+        "Whoa!\n",
+        "A cold wind suddenly blew!\f",
+        "And now it looks happy?"
+      ]
+    },
+    {
+      "id": "msg_0265_00618",
+      "en_US": [
+        "Whoa! Your Pokémon suddenly snuggled\n",
+        "up to you!\f",
+        "Pat it on the head?{YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0265_00619",
+      "en_US": [
+        "Waah!\n",
+        "Your Pokémon suddenly splashed water!"
+      ]
+    },
+    {
+      "id": "msg_0265_00620",
+      "en_US": [
+        "Waah!\n",
+        "Your Pokémon suddenly howled!"
+      ]
+    },
+    {
+      "id": "msg_0265_00621",
+      "en_US": [
+        "Huh? Your Pokémon found something on\n",
+        "top of the mountain?"
+      ]
+    },
+    {
+      "id": "msg_0265_00622",
+      "en_US": [
+        "Your Pokémon seems to have gotten\n",
+        "a little shock!"
+      ]
+    },
+    {
+      "id": "msg_0265_00623",
+      "en_US": "Your Pokémon is shouting happily!"
+    },
+    {
+      "id": "msg_0265_00624",
+      "en_US": "...Your Pokémon seems a bit bored."
+    },
+    {
+      "id": "msg_0265_00625",
+      "en_US": "Your Pokémon seems a little sad!"
+    },
+    {
+      "id": "msg_0265_00626",
+      "en_US": [
+        "Oh! Your Pokémon seems to have eaten\n",
+        "something that disagreed with it..."
+      ]
+    },
+    {
+      "id": "msg_0265_00627",
+      "en_US": [
+        "Waah!\n",
+        "Your Pokémon is acting very surprised!"
+      ]
+    },
+    {
+      "id": "msg_0265_00628",
+      "en_US": [
+        "...Your Pokémon appears to be somewhat\n",
+        "hardened and unable to move."
+      ]
+    },
+    {
+      "id": "msg_0265_00629",
+      "en_US": [
+        "Your Pokémon seems to be having a\n",
+        "great time!"
+      ]
+    },
+    {
+      "id": "msg_0265_00630",
+      "en_US": "...Your Pokémon is so very angry!"
+    },
+    {
+      "id": "msg_0265_00631",
+      "en_US": "Your Pokémon is indescribably happy!"
+    },
+    {
+      "id": "msg_0265_00632",
+      "en_US": [
+        "Oh!\n",
+        "Your Pokémon seems about to cry!"
+      ]
+    },
+    {
+      "id": "msg_0265_00633",
+      "en_US": [
+        "Your Pokémon appears to be \n",
+        "contemplative and downhearted..."
+      ]
+    },
+    {
+      "id": "msg_0265_00634",
+      "en_US": [
+        "...Looks like your Pokémon is overdoing\n",
+        "it a little."
+      ]
+    },
+    {
+      "id": "msg_0265_00635",
+      "en_US": [
+        "Your Pokémon is so surprised,\n",
+        "it jumped!"
+      ]
+    },
+    {
+      "id": "msg_0265_00636",
+      "en_US": [
+        "Your Pokémon is staring blankly\n",
+        "and drooling..."
+      ]
+    },
+    {
+      "id": "msg_0265_00637",
+      "en_US": [
+        "How nice! Your Pokémon is bouncing\n",
+        "around happily!"
+      ]
+    },
+    {
+      "id": "msg_0265_00638",
+      "en_US": [
+        "Waah!\n",
+        "Your Pokémon shivered!"
+      ]
+    },
+    {
+      "id": "msg_0265_00639",
+      "en_US": [
+        "Waah!\n",
+        "Your Pokémon nuzzled your face!"
+      ]
+    },
+    {
+      "id": "msg_0265_00640",
+      "en_US": [
+        "Oh!\n",
+        "Your Pokémon seems about to cry..."
+      ]
+    },
+    {
+      "id": "msg_0265_00641",
+      "en_US": "Your Pokémon seems so happy!"
+    },
+    {
+      "id": "msg_0265_00642",
+      "en_US": "Your Pokémon is in a daze..."
+    },
+    {
+      "id": "msg_0265_00643",
+      "en_US": [
+        "Your Pokémon seems to be having fun\n",
+        "playing with {STRVAR_1 3, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0265_00644",
+      "en_US": [
+        "Your Pokémon is grumbling because it\n",
+        "wants you to pay more attention to it."
+      ]
+    },
+    {
+      "id": "msg_0265_00645",
+      "en_US": [
+        "Your Pokémon feels safer just by seeing\n",
+        "{STRVAR_1 3, 2, 0}’s face."
+      ]
+    },
+    {
+      "id": "msg_0265_00646",
+      "en_US": [
+        "Oh!\n",
+        "Your Pokémon seemed about to fall..."
+      ]
+    },
+    {
+      "id": "msg_0265_00647",
+      "en_US": [
+        "Your Pokémon is so surprised,\n",
+        "it jumped!"
+      ]
+    },
+    {
+      "id": "msg_0265_00648",
+      "en_US": [
+        "Your Pokémon is staring blankly\n",
+        "and drooling..."
+      ]
+    },
+    {
+      "id": "msg_0265_00649",
+      "en_US": [
+        "Your Pokémon seems to be a\n",
+        "bit despondent..."
+      ]
+    },
+    {
+      "id": "msg_0265_00650",
+      "en_US": [
+        "Your Pokémon started chewing on the\n",
+        "other shoe!"
+      ]
+    },
+    {
+      "id": "msg_0265_00651",
+      "en_US": [
+        "Your Pokémon seems to have been a\n",
+        "little surprised!"
+      ]
+    },
+    {
+      "id": "msg_0265_00652",
+      "en_US": [
+        "Your Pokémon thinks it’s funny to keep\n",
+        "poking at you..."
+      ]
+    },
+    {
+      "id": "msg_0265_00653",
+      "en_US": [
+        "Your Pokémon seems to be a\n",
+        "bit despondent..."
+      ]
+    },
+    {
+      "id": "msg_0265_00654",
+      "en_US": [
+        "Ah! Your Pokémon ate something that\n",
+        "tasted bad and is trying to spit it out!"
+      ]
+    },
+    {
+      "id": "msg_0265_00655",
+      "en_US": [
+        "...Your Pokémon seems to be\n",
+        "contemplating something."
+      ]
+    },
+    {
+      "id": "msg_0265_00656",
+      "en_US": "Now, it’s licking..."
+    },
+    {
+      "id": "msg_0265_00657",
+      "en_US": [
+        "Your Pokémon seemed to be\n",
+        "contemplating something."
+      ]
+    },
+    {
+      "id": "msg_0265_00658",
+      "en_US": [
+        "Ah! Your Pokémon seems surprised that\n",
+        "the shelves look about to break!"
+      ]
+    },
+    {
+      "id": "msg_0265_00659",
+      "en_US": [
+        "Your Pokémon opened its mouth and a\n",
+        "scrap of paper fell out."
+      ]
+    },
+    {
+      "id": "msg_0265_00660",
+      "en_US": [
+        "Ack! It seems to have something caught\n",
+        "in its throat... It keeps spitting."
+      ]
+    },
+    {
+      "id": "msg_0265_00661",
+      "en_US": "Your Pokémon seems a bit embarrassed."
+    },
+    {
+      "id": "msg_0265_00662",
+      "en_US": [
+        "Ack! Your Pokémon seems to have been\n",
+        "zapped a bit."
+      ]
+    },
+    {
+      "id": "msg_0265_00663",
+      "en_US": [
+        "Your Pokémon stopped, but appears\n",
+        "concerned about that switch."
+      ]
+    },
+    {
+      "id": "msg_0265_00664",
+      "en_US": [
+        "Clunk!\r",
+        "...But--\n",
+        "It seems nothing happened."
+      ]
+    },
+    {
+      "id": "msg_0265_00665",
+      "en_US": [
+        "Your Pokémon is not moving, but it’s\n",
+        "drooling a lot..."
+      ]
+    },
+    {
+      "id": "msg_0265_00666",
+      "en_US": [
+        "Ack! It seems to have something caught\n",
+        "in its throat... It keeps spitting."
+      ]
+    },
+    {
+      "id": "msg_0265_00667",
+      "en_US": [
+        "Your Pokémon pulled a piece of garbage\n",
+        "out of its mouth!"
+      ]
+    },
+    {
+      "id": "msg_0265_00668",
+      "en_US": [
+        "Ack! It seems to have something caught\n",
+        "in its throat... It keeps spitting."
+      ]
+    },
+    {
+      "id": "msg_0265_00669",
+      "en_US": [
+        "Your Pokémon started happily spinning\n",
+        "in circles!"
+      ]
+    },
+    {
+      "id": "msg_0265_00670",
+      "en_US": "...Your Pokémon seems a bit lonely."
+    },
+    {
+      "id": "msg_0265_00671",
+      "en_US": "Your Pokémon is bouncing happily!"
+    },
+    {
+      "id": "msg_0265_00672",
+      "en_US": [
+        "Your Pokémon made a sour face and\n",
+        "spat out some garbage!"
+      ]
+    },
+    {
+      "id": "msg_0265_00673",
+      "en_US": "Your Pokémon shouted in surprise!"
+    },
+    {
+      "id": "msg_0265_00674",
+      "en_US": "Your Pokémon shouted in happiness!"
+    },
+    {
+      "id": "msg_0265_00675",
+      "en_US": [
+        "Your Pokémon is jumping up and down\n",
+        "with glee!"
+      ]
+    },
+    {
+      "id": "msg_0265_00676",
+      "en_US": [
+        "Your Pokémon is shouting\n",
+        "in reaction!"
+      ]
+    },
+    {
+      "id": "msg_0265_00677",
+      "en_US": [
+        "Your Pokémon made a strange noise\n",
+        "in surprise!"
+      ]
+    },
+    {
+      "id": "msg_0265_00678",
+      "en_US": "Your Pokémon happily danced around!"
+    },
+    {
+      "id": "msg_0265_00679",
+      "en_US": [
+        "Your Pokémon seems happy and is\n",
+        "pushing you!"
+      ]
+    },
+    {
+      "id": "msg_0265_00680",
+      "en_US": "Your Pokémon replied in a loud voice!"
+    },
+    {
+      "id": "msg_0265_00681",
+      "en_US": [
+        "Your Pokémon seems very happy that\n",
+        "you’ve played with it!"
+      ]
+    },
+    {
+      "id": "msg_0265_00682",
+      "en_US": "Your Pokémon shouted in surprise!"
+    },
+    {
+      "id": "msg_0265_00683",
+      "en_US": "Your Pokémon shouted in surprise!"
+    },
+    {
+      "id": "msg_0265_00684",
+      "en_US": [
+        "Your Pokémon is grinding its teeth\n",
+        "in remorse!"
+      ]
+    },
+    {
+      "id": "msg_0265_00685",
+      "en_US": [
+        "Your Pokémon is growling quietly\n",
+        "in contemplation..."
+      ]
+    },
+    {
+      "id": "msg_0265_00686",
+      "en_US": [
+        "Your Pokémon pulled garbage out of\n",
+        "its mouth!"
+      ]
+    },
+    {
+      "id": "msg_0265_00687",
+      "en_US": [
+        "Your Pokémon is spinning in circles out\n",
+        "of extreme happiness!"
+      ]
+    },
+    {
+      "id": "msg_0265_00688",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is dancing in the same\n",
+        "manner as the Kimono Girls."
+      ]
+    },
+    {
+      "id": "msg_0265_00689",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} danced along with the\n",
+        "Kimono Girls!"
+      ]
+    },
+    {
+      "id": "msg_0265_00690",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} took the opportunity to\n",
+        "show off how strong it is!"
+      ]
+    },
+    {
+      "id": "msg_0265_00691",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} sparkled in concert\n",
+        "with Amphy!"
+      ]
+    },
+    {
+      "id": "msg_0265_00692",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is staying completely\n",
+        "still--imitating a tree!"
+      ]
+    },
+    {
+      "id": "msg_0265_00693",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is standing perfectly still\n",
+        "and might be imitating a tree..."
+      ]
+    },
+    {
+      "id": "msg_0265_00694",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is waggling a finger and\n",
+        "dancing!"
+      ]
+    },
+    {
+      "id": "msg_0265_00695",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is looking at the lift and\n",
+        "feeling a touch of queasiness."
+      ]
+    },
+    {
+      "id": "msg_0265_00696",
+      "en_US": "{STRVAR_1 1, 0, 0} began to scuttle around!"
+    },
+    {
+      "id": "msg_0265_00697",
+      "en_US": "{STRVAR_1 1, 0, 0} moved sideways!"
+    },
+    {
+      "id": "msg_0265_00698",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} started breathing roughly\n",
+        "through its nose in excitement!"
+      ]
+    },
+    {
+      "id": "msg_0265_00699",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is having fun swaying\n",
+        "back and forth."
+      ]
+    },
+    {
+      "id": "msg_0265_00700",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} suddenly began crying\n",
+        "softly!"
+      ]
+    },
+    {
+      "id": "msg_0265_00701",
+      "en_US": "{STRVAR_1 1, 0, 0} is jumping energetically!"
+    },
+    {
+      "id": "msg_0265_00702",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is rummaging in the\n",
+        "garbage can..."
+      ]
+    },
+    {
+      "id": "msg_0265_00703",
+      "en_US": "{STRVAR_1 1, 0, 0} seems somehow sad..."
+    },
+    {
+      "id": "msg_0265_00704",
+      "en_US": "{STRVAR_1 1, 0, 0} is trembling with fear."
+    },
+    {
+      "id": "msg_0265_00705",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is motionless, not looking\n",
+        "at anything, as if in meditation."
+      ]
+    },
+    {
+      "id": "msg_0265_00706",
+      "en_US": "{STRVAR_1 1, 0, 0} is jumping around happily!"
+    },
+    {
+      "id": "msg_0265_00707",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} seems to want to play with\n",
+        "other Pokémon!"
+      ]
+    },
+    {
+      "id": "msg_0265_00708",
+      "en_US": "{STRVAR_1 1, 0, 0} swung its belly around."
+    },
+    {
+      "id": "msg_0265_00709",
+      "en_US": "{STRVAR_1 1, 0, 0} stammered something..."
+    },
+    {
+      "id": "msg_0265_00710",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} opened its mouth wide and\n",
+        "howled!"
+      ]
+    },
+    {
+      "id": "msg_0265_00711",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} stuck out its claws and\n",
+        "ROOOOAAARRRED!"
+      ]
+    },
+    {
+      "id": "msg_0265_00712",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} moved its long body and\n",
+        "let out a great big roar!"
+      ]
+    },
+    {
+      "id": "msg_0265_00713",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} looked up at the sky and\n",
+        "shouted loudly!"
+      ]
+    },
+    {
+      "id": "msg_0265_00714",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s body shook with a great\n",
+        "roar!"
+      ]
+    },
+    {
+      "id": "msg_0265_00715",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} gathered itself up and let\n",
+        "out a huge roar!"
+      ]
+    },
+    {
+      "id": "msg_0265_00716",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is happily zapping and\n",
+        "jumping in circles!"
+      ]
+    },
+    {
+      "id": "msg_0265_00717",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is having fun dancing\n",
+        "a lively jig!"
+      ]
+    },
+    {
+      "id": "msg_0265_00718",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is staring steadfastly at\n",
+        "{STRVAR_1 3, 2, 0}’s face."
+      ]
+    },
+    {
+      "id": "msg_0265_00719",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is sniffing\n",
+        "at {STRVAR_1 3, 2, 0}."
+      ]
+    },
+    {
+      "id": "msg_0265_00720",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is looking this way and\n",
+        "smiling!"
+      ]
+    },
+    {
+      "id": "msg_0265_00721",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} doesn’t seem used to its\n",
+        "own name yet."
+      ]
+    },
+    {
+      "id": "msg_0265_00722",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} sent a ring-shaped cloud\n",
+        "of spores into the air!"
+      ]
+    },
+    {
+      "id": "msg_0265_00723",
+      "en_US": "{STRVAR_1 1, 0, 0} is clinging to the tree!"
+    },
+    {
+      "id": "msg_0265_00724",
+      "en_US": [
+        "...Oh?\n",
+        "{STRVAR_1 1, 0, 0}’s appearance...\f",
+        "Didn’t change!"
+      ]
+    },
+    {
+      "id": "msg_0265_00725",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is extending its vines and\n",
+        "wrapping itself in them!\f",
+        "Seems like fun!"
+      ]
+    },
+    {
+      "id": "msg_0265_00726",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} danced better than the\n",
+        "Kimono Girls!"
+      ]
+    },
+    {
+      "id": "msg_0265_00727",
+      "en_US": [
+        "Your Pokémon seems to be smelling a\n",
+        "nostalgically familiar scent..."
+      ]
+    },
+    {
+      "id": "msg_0265_00728",
+      "en_US": "{STRVAR_1 1, 0, 0} is very relaxed."
+    },
+    {
+      "id": "msg_0265_00729",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is looking restlessly at\n",
+        "the lab."
+      ]
+    },
+    {
+      "id": "msg_0265_00730",
+      "en_US": [
+        "Your Pokémon seems concerned that the\n",
+        "machine is running."
+      ]
+    },
+    {
+      "id": "msg_0265_00731",
+      "en_US": "{STRVAR_1 1, 0, 0} is feeling very eager!"
+    },
+    {
+      "id": "msg_0265_00732",
+      "en_US": "{STRVAR_1 1, 0, 0} is in high spirits!"
+    },
+    {
+      "id": "msg_0265_00733",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is concerned about the\n",
+        "contents of the case."
+      ]
+    },
+    {
+      "id": "msg_0265_00734",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is looking restlessly at\n",
+        "the rock."
+      ]
+    },
+    {
+      "id": "msg_0265_00735",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is running along the side\n",
+        "of the pool!"
+      ]
+    },
+    {
+      "id": "msg_0265_00736",
+      "en_US": "Why is it doing warm-up exercises?"
+    },
+    {
+      "id": "msg_0265_00737",
+      "en_US": "{STRVAR_1 1, 0, 0} greeted SLOWBRO!"
+    },
+    {
+      "id": "msg_0265_00738",
+      "en_US": "{STRVAR_1 1, 0, 0} greeted BAYLEEF!"
+    },
+    {
+      "id": "msg_0265_00739",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is staring fixedly at\n",
+        "the sea."
+      ]
+    },
+    {
+      "id": "msg_0265_00740",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} seems to want to ride in\n",
+        "the boat!"
+      ]
+    },
+    {
+      "id": "msg_0265_00741",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} seems to want to ride the\n",
+        "train!"
+      ]
+    },
+    {
+      "id": "msg_0265_00742",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is looking up at\n",
+        "the ceiling."
+      ]
+    },
+    {
+      "id": "msg_0265_00743",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} was surprised by the\n",
+        "creaking of the floor!"
+      ]
+    },
+    {
+      "id": "msg_0265_00744",
+      "en_US": "{STRVAR_1 1, 0, 0} mimicked {STRVAR_1 3, 2, 0}!"
+    },
+    {
+      "id": "msg_0265_00745",
+      "en_US": [
+        "...... ...... ......\r",
+        "...... ...... ......\r",
+        "...... ...... ......\r",
+        "...... ...... {STRVAR_1 1, 0, 0}\n",
+        "silently nodded!"
+      ]
+    },
+    {
+      "id": "msg_0265_00746",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} seems happy to have taken\n",
+        "a shower!"
+      ]
+    },
+    {
+      "id": "msg_0265_00747",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} seems unhappy to have\n",
+        "taken a shower..."
+      ]
+    },
+    {
+      "id": "msg_0265_00748",
+      "en_US": "{STRVAR_1 1, 0, 0} is drooling..."
+    },
+    {
+      "id": "msg_0265_00749",
+      "en_US": "{STRVAR_1 1, 0, 0} swallowed hard."
+    },
+    {
+      "id": "msg_0265_00750",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is feeling nervous and a\n",
+        "touch claustrophobic."
+      ]
+    },
+    {
+      "id": "msg_0265_00751",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} seems to have run into\n",
+        "something!"
+      ]
+    },
+    {
+      "id": "msg_0265_00752",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} seems to want to play with\n",
+        "AIPOM!"
+      ]
+    },
+    {
+      "id": "msg_0265_00753",
+      "en_US": "{STRVAR_1 1, 0, 0} is rolling a rock around."
+    },
+    {
+      "id": "msg_0265_00754",
+      "en_US": "{STRVAR_1 1, 0, 0} swallowed hard."
+    },
+    {
+      "id": "msg_0265_00755",
+      "en_US": "{STRVAR_1 1, 0, 0} nodded slowly."
+    },
+    {
+      "id": "msg_0265_00756",
+      "en_US": "{STRVAR_1 1, 0, 0} let out a battle cry!"
+    },
+    {
+      "id": "msg_0265_00757",
+      "en_US": "{STRVAR_1 1, 0, 0} is concentrating..."
+    },
+    {
+      "id": "msg_0265_00758",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} suddenly let out a battle\n",
+        "cry!"
+      ]
+    }
+  ]
+}

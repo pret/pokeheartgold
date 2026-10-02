@@ -1,4 +1,4 @@
-#include <nitro/fs/overlay.h>
+
 #pragma once
 .public SpriteSystem_LoadCharResObj
 .public SpriteSystem_LoadPlttResObj

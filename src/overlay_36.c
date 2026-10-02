@@ -6,10 +6,10 @@
 #include "constants/mail.h"
 #include "constants/species.h"
 
-#include "msgdata/msg.naix"
-#include "msgdata/msg/msg_0292.h"
-#include "msgdata/msg/msg_0293.h"
-#include "msgdata/msg/msg_0445.h"
+#include "files/msgdata/msg.naix"
+#include "files/msgdata/msg/msg_0292.h"
+#include "files/msgdata/msg/msg_0293.h"
+#include "files/msgdata/msg/msg_0445.h"
 
 #include "apricorn_tree.h"
 #include "field_system.h"
@@ -209,7 +209,7 @@ static void InitGameStateAfterOakSpeech_Internal(enum HeapID heapID, SaveData *s
     }
 
     // Put an email from your friend into your PC.
-    friend_names_msgdata = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0445_bin, HEAP_ID_3);
+    friend_names_msgdata = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, msg_0445, HEAP_ID_3);
     Mailbox *mailbox = Save_Mailbox_Get(saveData);
     Pokemon *mon = AllocMonZeroed(HEAP_ID_3);
 

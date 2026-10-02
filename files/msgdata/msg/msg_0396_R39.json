@@ -1,0 +1,129 @@
+{
+  "key": 19259,
+  "messages": [
+    {
+      "id": "msg_0396_R39_00000",
+      "en_US": [
+        "Rt. 39\n",
+        "South to Olivine City"
+      ]
+    },
+    {
+      "id": "msg_0396_R39_00001",
+      "en_US": [
+        "Moomoo Farm\n",
+        "Enjoy Our Fresh and Tasty Milk"
+      ]
+    },
+    {
+      "id": "msg_0396_R39_00002",
+      "en_US": [
+        "Trainer Tips\r",
+        "Use Headbutt on trees to shake\n",
+        "Pokémon out.\r",
+        "Different kinds of Pokémon drop out\n",
+        "of trees.\r",
+        "Use Headbutt on any tree you see!"
+      ]
+    },
+    {
+      "id": "msg_0396_R39_00003",
+      "en_US": "MILTANK: Mooo!"
+    },
+    {
+      "id": "msg_0396_R39_00004",
+      "en_US": [
+        "Baoba: ...Ohh!\n",
+        "What you are holding is...\f",
+        "what they call...a Pokédex!\f",
+        "Haven’t seen one of those in ages.\r",
+        "My name is Baoba!\r",
+        "I used to run a Safari Zone in\n",
+        "Fuchsia City, but it was becoming\f",
+        "out of date with new entertainment\f",
+        "options coming out.\r",
+        "I decided to go overseas to learn\n",
+        "the newest technology and open a\f",
+        "state-of-the-art Safari Zone\f",
+        "in Cianwood.\r",
+        "It may be more than a coincidence\n",
+        "that we are chatting.\r",
+        "Why don’t we register each other’s\n",
+        "numbers in the Pokégear?\r",
+        "I can give you a call once the Safari\n",
+        "Zone is open before I call anyone else!\r"
+      ]
+    },
+    {
+      "id": "msg_0396_R39_00005",
+      "en_US": "Do you want to register? {YESNO 0}"
+    },
+    {
+      "id": "msg_0396_R39_00006",
+      "en_US": "That’s the way!\r"
+    },
+    {
+      "id": "msg_0396_R39_00007",
+      "en_US": [
+        "Huh, I didn’t expect you to say no.\n",
+        "You can get hard-to-find Pokémon, too.\r",
+        "You’ll be able to make good progress\n",
+        "with your Pokédex, too...\r"
+      ]
+    },
+    {
+      "id": "msg_0396_R39_00008",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} registered Baoba\n",
+        "in the Pokégear!"
+      ]
+    },
+    {
+      "id": "msg_0396_R39_00009",
+      "en_US": [
+        "Baoba: I’ll let you know over the\n",
+        "Pokégear once it’s ready!\r"
+      ]
+    },
+    {
+      "id": "msg_0396_R39_00010",
+      "en_US": [
+        "Lt. Surge: Hey, you!\r",
+        "Don’t you want a good memory of us\n",
+        "together? How about taking a\f",
+        "picture with me? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0396_R39_00011",
+      "en_US": [
+        "Lt. Surge: OK! OK!\r",
+        "Show me a very good smile!\r"
+      ]
+    },
+    {
+      "id": "msg_0396_R39_00012",
+      "en_US": [
+        "Lt. Surge: Wow!\n",
+        "This turned out to be a really\f",
+        "good one!\r",
+        "We root for Route 39!"
+      ]
+    },
+    {
+      "id": "msg_0396_R39_00013",
+      "en_US": [
+        "Lt. Surge: That’s OK...\r",
+        "Let me know if you change your mind."
+      ]
+    },
+    {
+      "id": "msg_0396_R39_00014",
+      "en_US": [
+        "Your Photo Album is full.\r",
+        "Access your PC to delete some pictures\n",
+        "before you come back."
+      ]
+    }
+  ]
+}

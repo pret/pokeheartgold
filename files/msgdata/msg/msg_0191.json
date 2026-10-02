@@ -1,0 +1,2303 @@
+{
+  "key": 20529,
+  "messages": [
+    {
+      "id": "msg_0191_00000",
+      "en_US": "POISONED"
+    },
+    {
+      "id": "msg_0191_00001",
+      "en_US": "PARALYZED"
+    },
+    {
+      "id": "msg_0191_00002",
+      "en_US": "ASLEEP"
+    },
+    {
+      "id": "msg_0191_00003",
+      "en_US": "BURNED"
+    },
+    {
+      "id": "msg_0191_00004",
+      "en_US": "FROZEN"
+    },
+    {
+      "id": "msg_0191_00005",
+      "en_US": "EXIT"
+    },
+    {
+      "id": "msg_0191_00006",
+      "en_US": "SINGLE BATTLE"
+    },
+    {
+      "id": "msg_0191_00007",
+      "en_US": "DOUBLE BATTLE"
+    },
+    {
+      "id": "msg_0191_00008",
+      "en_US": "MIX BATTLE"
+    },
+    {
+      "id": "msg_0191_00009",
+      "en_US": "MULTI BATTLE"
+    },
+    {
+      "id": "msg_0191_00010",
+      "en_US": "FLAT BATTLE"
+    },
+    {
+      "id": "msg_0191_00011",
+      "en_US": "INFO"
+    },
+    {
+      "id": "msg_0191_00012",
+      "en_US": "EXIT"
+    },
+    {
+      "id": "msg_0191_00013",
+      "en_US": "EXIT"
+    },
+    {
+      "id": "msg_0191_00014",
+      "en_US": "JOIN GROUP"
+    },
+    {
+      "id": "msg_0191_00015",
+      "en_US": "BECOME LEADER"
+    },
+    {
+      "id": "msg_0191_00016",
+      "en_US": "Current Floor"
+    },
+    {
+      "id": "msg_0191_00017",
+      "en_US": "{STRVAR_1 50, 0, 0}"
+    },
+    {
+      "id": "msg_0191_00018",
+      "garbage": 5
+    },
+    {
+      "id": "msg_0191_00019",
+      "garbage": 5
+    },
+    {
+      "id": "msg_0191_00020",
+      "garbage": 4
+    },
+    {
+      "id": "msg_0191_00021",
+      "garbage": 5
+    },
+    {
+      "id": "msg_0191_00022",
+      "garbage": 4
+    },
+    {
+      "id": "msg_0191_00023",
+      "en_US": "TRADE"
+    },
+    {
+      "id": "msg_0191_00024",
+      "en_US": "CANCEL"
+    },
+    {
+      "id": "msg_0191_00025",
+      "garbage": 8
+    },
+    {
+      "id": "msg_0191_00026",
+      "garbage": 7
+    },
+    {
+      "id": "msg_0191_00027",
+      "garbage": 6
+    },
+    {
+      "id": "msg_0191_00028",
+      "garbage": 6
+    },
+    {
+      "id": "msg_0191_00029",
+      "garbage": 6
+    },
+    {
+      "id": "msg_0191_00030",
+      "garbage": 8
+    },
+    {
+      "id": "msg_0191_00031",
+      "garbage": 8
+    },
+    {
+      "id": "msg_0191_00032",
+      "garbage": 8
+    },
+    {
+      "id": "msg_0191_00033",
+      "garbage": 8
+    },
+    {
+      "id": "msg_0191_00034",
+      "garbage": 8
+    },
+    {
+      "id": "msg_0191_00035",
+      "garbage": 8
+    },
+    {
+      "id": "msg_0191_00036",
+      "garbage": 6
+    },
+    {
+      "id": "msg_0191_00037",
+      "garbage": 7
+    },
+    {
+      "id": "msg_0191_00038",
+      "garbage": 9
+    },
+    {
+      "id": "msg_0191_00039",
+      "garbage": 10
+    },
+    {
+      "id": "msg_0191_00040",
+      "en_US": "CONFIRM"
+    },
+    {
+      "id": "msg_0191_00041",
+      "en_US": "RULES"
+    },
+    {
+      "id": "msg_0191_00042",
+      "en_US": "YES"
+    },
+    {
+      "id": "msg_0191_00043",
+      "en_US": "NO"
+    },
+    {
+      "id": "msg_0191_00044",
+      "en_US": "EXIT"
+    },
+    {
+      "id": "msg_0191_00045",
+      "en_US": "CANCEL"
+    },
+    {
+      "id": "msg_0191_00046",
+      "en_US": "{ALN_CENTER}YES"
+    },
+    {
+      "id": "msg_0191_00047",
+      "en_US": "{ALN_CENTER}NO"
+    },
+    {
+      "id": "msg_0191_00048",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0191_00049",
+      "garbage": 2
+    },
+    {
+      "id": "msg_0191_00050",
+      "garbage": 2
+    },
+    {
+      "id": "msg_0191_00051",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0191_00052",
+      "en_US": "BATTLE"
+    },
+    {
+      "id": "msg_0191_00053",
+      "en_US": "{STRVAR_1 3, 0, 0}"
+    },
+    {
+      "id": "msg_0191_00054",
+      "en_US": "{STRVAR_1 3, 1, 0}"
+    },
+    {
+      "id": "msg_0191_00055",
+      "en_US": "{STRVAR_1 3, 2, 0}"
+    },
+    {
+      "id": "msg_0191_00056",
+      "en_US": "{STRVAR_1 3, 3, 0}"
+    },
+    {
+      "id": "msg_0191_00057",
+      "garbage": 7
+    },
+    {
+      "id": "msg_0191_00058",
+      "garbage": 7
+    },
+    {
+      "id": "msg_0191_00059",
+      "en_US": "DRAW"
+    },
+    {
+      "id": "msg_0191_00060",
+      "garbage": 1
+    },
+    {
+      "id": "msg_0191_00061",
+      "en_US": "SOMEONE’S PC"
+    },
+    {
+      "id": "msg_0191_00062",
+      "en_US": "BILL’S PC"
+    },
+    {
+      "id": "msg_0191_00063",
+      "en_US": "{STRVAR_1 3, 0, 0}’s PC"
+    },
+    {
+      "id": "msg_0191_00064",
+      "en_US": "HALL OF FAME"
+    },
+    {
+      "id": "msg_0191_00065",
+      "en_US": "PHOTO ALBUM"
+    },
+    {
+      "id": "msg_0191_00066",
+      "en_US": "SWITCH OFF"
+    },
+    {
+      "id": "msg_0191_00067",
+      "en_US": [
+        "DEPOSIT\n",
+        "POKéMON"
+      ]
+    },
+    {
+      "id": "msg_0191_00068",
+      "en_US": [
+        "WITHDRAW\n",
+        "POKéMON"
+      ]
+    },
+    {
+      "id": "msg_0191_00069",
+      "en_US": [
+        "MOVE\n",
+        "POKéMON"
+      ]
+    },
+    {
+      "id": "msg_0191_00070",
+      "en_US": [
+        "MOVE\n",
+        "ITEMS"
+      ]
+    },
+    {
+      "id": "msg_0191_00071",
+      "garbage": 7
+    },
+    {
+      "id": "msg_0191_00072",
+      "en_US": "SEE YA!"
+    },
+    {
+      "id": "msg_0191_00073",
+      "en_US": "MAILBOX"
+    },
+    {
+      "id": "msg_0191_00074",
+      "en_US": "BALL CAPSULES"
+    },
+    {
+      "id": "msg_0191_00075",
+      "en_US": "LOG OUT"
+    },
+    {
+      "id": "msg_0191_00076",
+      "en_US": [
+        "Pokémon in your party may be stored\n",
+        "in the storage system’s Boxes."
+      ]
+    },
+    {
+      "id": "msg_0191_00077",
+      "en_US": [
+        "Pokémon stored in Boxes may be added\n",
+        "to your party."
+      ]
+    },
+    {
+      "id": "msg_0191_00078",
+      "en_US": [
+        "You may sort the Pokémon in Boxes\n",
+        "and in your party."
+      ]
+    },
+    {
+      "id": "msg_0191_00079",
+      "en_US": [
+        "You may sort the items held by your\n",
+        "Pokémon in Boxes and in your party."
+      ]
+    },
+    {
+      "id": "msg_0191_00080",
+      "garbage": 34
+    },
+    {
+      "id": "msg_0191_00081",
+      "en_US": [
+        "Log out of the Pokémon Storage\n",
+        "System."
+      ]
+    },
+    {
+      "id": "msg_0191_00082",
+      "en_US": [
+        "Up to 20 pieces of Mail can be\n",
+        "stored."
+      ]
+    },
+    {
+      "id": "msg_0191_00083",
+      "en_US": [
+        "You may set or edit Capsules for\n",
+        "decorating Poké Balls."
+      ]
+    },
+    {
+      "id": "msg_0191_00084",
+      "en_US": "Log out of your PC."
+    },
+    {
+      "id": "msg_0191_00085",
+      "en_US": [
+        "You may look at pictures you\n",
+        "have taken on your adventure."
+      ]
+    },
+    {
+      "id": "msg_0191_00086",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0191_00087",
+      "garbage": 8
+    },
+    {
+      "id": "msg_0191_00088",
+      "garbage": 8
+    },
+    {
+      "id": "msg_0191_00089",
+      "garbage": 10
+    },
+    {
+      "id": "msg_0191_00090",
+      "garbage": 4
+    },
+    {
+      "id": "msg_0191_00091",
+      "garbage": 4
+    },
+    {
+      "id": "msg_0191_00092",
+      "garbage": 5
+    },
+    {
+      "id": "msg_0191_00093",
+      "garbage": 7
+    },
+    {
+      "id": "msg_0191_00094",
+      "en_US": "CANCEL"
+    },
+    {
+      "id": "msg_0191_00095",
+      "garbage": 17
+    },
+    {
+      "id": "msg_0191_00096",
+      "garbage": 9
+    },
+    {
+      "id": "msg_0191_00097",
+      "garbage": 10
+    },
+    {
+      "id": "msg_0191_00098",
+      "garbage": 7
+    },
+    {
+      "id": "msg_0191_00099",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0191_00100",
+      "garbage": 8
+    },
+    {
+      "id": "msg_0191_00101",
+      "garbage": 8
+    },
+    {
+      "id": "msg_0191_00102",
+      "garbage": 6
+    },
+    {
+      "id": "msg_0191_00103",
+      "garbage": 6
+    },
+    {
+      "id": "msg_0191_00104",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0191_00105",
+      "garbage": 7
+    },
+    {
+      "id": "msg_0191_00106",
+      "garbage": 7
+    },
+    {
+      "id": "msg_0191_00107",
+      "garbage": 7
+    },
+    {
+      "id": "msg_0191_00108",
+      "garbage": 7
+    },
+    {
+      "id": "msg_0191_00109",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0191_00110",
+      "garbage": 10
+    },
+    {
+      "id": "msg_0191_00111",
+      "garbage": 10
+    },
+    {
+      "id": "msg_0191_00112",
+      "garbage": 9
+    },
+    {
+      "id": "msg_0191_00113",
+      "garbage": 9
+    },
+    {
+      "id": "msg_0191_00114",
+      "garbage": 10
+    },
+    {
+      "id": "msg_0191_00115",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0191_00116",
+      "en_US": "1F"
+    },
+    {
+      "id": "msg_0191_00117",
+      "en_US": "2F"
+    },
+    {
+      "id": "msg_0191_00118",
+      "en_US": "3F"
+    },
+    {
+      "id": "msg_0191_00119",
+      "en_US": "4F"
+    },
+    {
+      "id": "msg_0191_00120",
+      "en_US": "5F"
+    },
+    {
+      "id": "msg_0191_00121",
+      "en_US": "6F"
+    },
+    {
+      "id": "msg_0191_00122",
+      "en_US": "B1F"
+    },
+    {
+      "id": "msg_0191_00123",
+      "garbage": 5
+    },
+    {
+      "id": "msg_0191_00124",
+      "garbage": 6
+    },
+    {
+      "id": "msg_0191_00125",
+      "en_US": "ROOF"
+    },
+    {
+      "id": "msg_0191_00126",
+      "en_US": "EXIT"
+    },
+    {
+      "id": "msg_0191_00127",
+      "en_US": "50 Coins{CURSOR_X 60}$1,000"
+    },
+    {
+      "id": "msg_0191_00128",
+      "en_US": "500 Coins{CURSOR_X 60}$10,000"
+    },
+    {
+      "id": "msg_0191_00129",
+      "en_US": "NO THANKS"
+    },
+    {
+      "id": "msg_0191_00130",
+      "en_US": "INFO"
+    },
+    {
+      "id": "msg_0191_00131",
+      "en_US": "TRADE"
+    },
+    {
+      "id": "msg_0191_00132",
+      "en_US": "EXIT"
+    },
+    {
+      "id": "msg_0191_00133",
+      "en_US": "OFFER POKéMON?"
+    },
+    {
+      "id": "msg_0191_00134",
+      "en_US": "SEEK POKéMON?"
+    },
+    {
+      "id": "msg_0191_00135",
+      "en_US": "UNDERSTOOD!"
+    },
+    {
+      "id": "msg_0191_00136",
+      "en_US": "{STRVAR_1 0, 0, 0}{STRVAR_1 2, 2, 0}{CURSOR_X 90}Lv. {STRVAR_1 52, 1, 0}"
+    },
+    {
+      "id": "msg_0191_00137",
+      "en_US": "{STRVAR_1 0, 0, 0}{STRVAR_1 2, 2, 0}{CURSOR_X 90}Lv. {STRVAR_1 52, 1, 0}"
+    },
+    {
+      "id": "msg_0191_00138",
+      "en_US": "CANCEL"
+    },
+    {
+      "id": "msg_0191_00139",
+      "garbage": 2
+    },
+    {
+      "id": "msg_0191_00140",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0191_00141",
+      "en_US": "SPIN"
+    },
+    {
+      "id": "msg_0191_00142",
+      "en_US": "RECORDS"
+    },
+    {
+      "id": "msg_0191_00143",
+      "en_US": "CHALLENGE"
+    },
+    {
+      "id": "msg_0191_00144",
+      "en_US": "INFO"
+    },
+    {
+      "id": "msg_0191_00145",
+      "en_US": "EXIT"
+    },
+    {
+      "id": "msg_0191_00146",
+      "garbage": 4
+    },
+    {
+      "id": "msg_0191_00147",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0191_00148",
+      "en_US": "KEEP GOING"
+    },
+    {
+      "id": "msg_0191_00149",
+      "en_US": "REST"
+    },
+    {
+      "id": "msg_0191_00150",
+      "en_US": "RETIRE"
+    },
+    {
+      "id": "msg_0191_00151",
+      "garbage": 7
+    },
+    {
+      "id": "msg_0191_00152",
+      "garbage": 8
+    },
+    {
+      "id": "msg_0191_00153",
+      "en_US": "CHECK LEADERS"
+    },
+    {
+      "id": "msg_0191_00154",
+      "en_US": [
+        "CHALLENGE\n",
+        "EARLIER ROOM"
+      ]
+    },
+    {
+      "id": "msg_0191_00155",
+      "en_US": "CHECK LEADERS"
+    },
+    {
+      "id": "msg_0191_00156",
+      "en_US": "REGISTER A FRIEND?"
+    },
+    {
+      "id": "msg_0191_00157",
+      "en_US": "UNDERSTOOD!"
+    },
+    {
+      "id": "msg_0191_00158",
+      "en_US": "TELL ME AGAIN"
+    },
+    {
+      "id": "msg_0191_00159",
+      "en_US": "OLD AMBER"
+    },
+    {
+      "id": "msg_0191_00160",
+      "en_US": "HELIX FOSSIL"
+    },
+    {
+      "id": "msg_0191_00161",
+      "en_US": "DOME FOSSIL"
+    },
+    {
+      "id": "msg_0191_00162",
+      "en_US": "ROOT FOSSIL"
+    },
+    {
+      "id": "msg_0191_00163",
+      "en_US": "CLAW FOSSIL"
+    },
+    {
+      "id": "msg_0191_00164",
+      "en_US": "ARMOR FOSSIL"
+    },
+    {
+      "id": "msg_0191_00165",
+      "en_US": "SKULL FOSSIL"
+    },
+    {
+      "id": "msg_0191_00166",
+      "en_US": "BATTLES FOR TWO"
+    },
+    {
+      "id": "msg_0191_00167",
+      "en_US": "BATTLES FOR FOUR"
+    },
+    {
+      "id": "msg_0191_00168",
+      "en_US": "GREET"
+    },
+    {
+      "id": "msg_0191_00169",
+      "en_US": "CONVERSE"
+    },
+    {
+      "id": "msg_0191_00170",
+      "en_US": "CHAT"
+    },
+    {
+      "id": "msg_0191_00171",
+      "garbage": 14
+    },
+    {
+      "id": "msg_0191_00172",
+      "garbage": 16
+    },
+    {
+      "id": "msg_0191_00173",
+      "garbage": 17
+    },
+    {
+      "id": "msg_0191_00174",
+      "garbage": 17
+    },
+    {
+      "id": "msg_0191_00175",
+      "garbage": 17
+    },
+    {
+      "id": "msg_0191_00176",
+      "garbage": 4
+    },
+    {
+      "id": "msg_0191_00177",
+      "garbage": 2
+    },
+    {
+      "id": "msg_0191_00178",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0191_00179",
+      "garbage": 5
+    },
+    {
+      "id": "msg_0191_00180",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0191_00181",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0191_00182",
+      "garbage": 8
+    },
+    {
+      "id": "msg_0191_00183",
+      "garbage": 2
+    },
+    {
+      "id": "msg_0191_00184",
+      "garbage": 2
+    },
+    {
+      "id": "msg_0191_00185",
+      "garbage": 4
+    },
+    {
+      "id": "msg_0191_00186",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0191_00187",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0191_00188",
+      "garbage": 14
+    },
+    {
+      "id": "msg_0191_00189",
+      "garbage": 6
+    },
+    {
+      "id": "msg_0191_00190",
+      "garbage": 6
+    },
+    {
+      "id": "msg_0191_00191",
+      "garbage": 7
+    },
+    {
+      "id": "msg_0191_00192",
+      "garbage": 7
+    },
+    {
+      "id": "msg_0191_00193",
+      "en_US": "{STRVAR_1 54, 0, 0} Coins"
+    },
+    {
+      "id": "msg_0191_00194",
+      "en_US": "BASIC RULES"
+    },
+    {
+      "id": "msg_0191_00195",
+      "en_US": "CATCHING SHOW"
+    },
+    {
+      "id": "msg_0191_00196",
+      "en_US": "STOCKING POKéMON"
+    },
+    {
+      "id": "msg_0191_00197",
+      "garbage": 6
+    },
+    {
+      "id": "msg_0191_00198",
+      "en_US": "UNDERSTOOD!"
+    },
+    {
+      "id": "msg_0191_00199",
+      "en_US": "ENTER"
+    },
+    {
+      "id": "msg_0191_00200",
+      "en_US": "INFO"
+    },
+    {
+      "id": "msg_0191_00201",
+      "en_US": "EXIT"
+    },
+    {
+      "id": "msg_0191_00202",
+      "garbage": 8
+    },
+    {
+      "id": "msg_0191_00203",
+      "garbage": 4
+    },
+    {
+      "id": "msg_0191_00204",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0191_00205",
+      "en_US": "RED SHARD"
+    },
+    {
+      "id": "msg_0191_00206",
+      "en_US": "BLUE SHARD"
+    },
+    {
+      "id": "msg_0191_00207",
+      "en_US": "YELLOW SHARD"
+    },
+    {
+      "id": "msg_0191_00208",
+      "en_US": "GREEN SHARD"
+    },
+    {
+      "id": "msg_0191_00209",
+      "en_US": "FRESH WATER{CURSOR_X 80}$200"
+    },
+    {
+      "id": "msg_0191_00210",
+      "en_US": "SODA POP{CURSOR_X 80}$300"
+    },
+    {
+      "id": "msg_0191_00211",
+      "en_US": "LEMONADE{CURSOR_X 80}$350"
+    },
+    {
+      "id": "msg_0191_00212",
+      "en_US": "NO THANKS"
+    },
+    {
+      "id": "msg_0191_00213",
+      "en_US": [
+        "GROWTH MULCH{CURSOR_X 90}\n",
+        "$200"
+      ]
+    },
+    {
+      "id": "msg_0191_00214",
+      "en_US": [
+        "DAMP MULCH{CURSOR_X 90}\n",
+        "$200"
+      ]
+    },
+    {
+      "id": "msg_0191_00215",
+      "en_US": [
+        "STABLE MULCH{CURSOR_X 90}\n",
+        "$200"
+      ]
+    },
+    {
+      "id": "msg_0191_00216",
+      "en_US": [
+        "GOOEY MULCH{CURSOR_X 90}\n",
+        "$200"
+      ]
+    },
+    {
+      "id": "msg_0191_00217",
+      "en_US": "EXIT"
+    },
+    {
+      "id": "msg_0191_00218",
+      "garbage": 6
+    },
+    {
+      "id": "msg_0191_00219",
+      "garbage": 6
+    },
+    {
+      "id": "msg_0191_00220",
+      "en_US": "{STRVAR_1 53, 0, 0} BP"
+    },
+    {
+      "id": "msg_0191_00221",
+      "garbage": 16
+    },
+    {
+      "id": "msg_0191_00222",
+      "garbage": 16
+    },
+    {
+      "id": "msg_0191_00223",
+      "en_US": "{STRVAR_1 54, 0, 0}P"
+    },
+    {
+      "id": "msg_0191_00224",
+      "garbage": 7
+    },
+    {
+      "id": "msg_0191_00225",
+      "garbage": 8
+    },
+    {
+      "id": "msg_0191_00226",
+      "garbage": 5
+    },
+    {
+      "id": "msg_0191_00227",
+      "garbage": 5
+    },
+    {
+      "id": "msg_0191_00228",
+      "garbage": 7
+    },
+    {
+      "id": "msg_0191_00229",
+      "garbage": 6
+    },
+    {
+      "id": "msg_0191_00230",
+      "garbage": 7
+    },
+    {
+      "id": "msg_0191_00231",
+      "garbage": 8
+    },
+    {
+      "id": "msg_0191_00232",
+      "garbage": 8
+    },
+    {
+      "id": "msg_0191_00233",
+      "garbage": 5
+    },
+    {
+      "id": "msg_0191_00234",
+      "garbage": 8
+    },
+    {
+      "id": "msg_0191_00235",
+      "garbage": 9
+    },
+    {
+      "id": "msg_0191_00236",
+      "garbage": 5
+    },
+    {
+      "id": "msg_0191_00237",
+      "garbage": 5
+    },
+    {
+      "id": "msg_0191_00238",
+      "garbage": 10
+    },
+    {
+      "id": "msg_0191_00239",
+      "garbage": 10
+    },
+    {
+      "id": "msg_0191_00240",
+      "garbage": 7
+    },
+    {
+      "id": "msg_0191_00241",
+      "garbage": 8
+    },
+    {
+      "id": "msg_0191_00242",
+      "garbage": 8
+    },
+    {
+      "id": "msg_0191_00243",
+      "garbage": 8
+    },
+    {
+      "id": "msg_0191_00244",
+      "garbage": 9
+    },
+    {
+      "id": "msg_0191_00245",
+      "garbage": 5
+    },
+    {
+      "id": "msg_0191_00246",
+      "garbage": 9
+    },
+    {
+      "id": "msg_0191_00247",
+      "garbage": 9
+    },
+    {
+      "id": "msg_0191_00248",
+      "garbage": 9
+    },
+    {
+      "id": "msg_0191_00249",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0191_00250",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0191_00251",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0191_00252",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0191_00253",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0191_00254",
+      "garbage": 6
+    },
+    {
+      "id": "msg_0191_00255",
+      "garbage": 6
+    },
+    {
+      "id": "msg_0191_00256",
+      "garbage": 7
+    },
+    {
+      "id": "msg_0191_00257",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0191_00258",
+      "garbage": 6
+    },
+    {
+      "id": "msg_0191_00259",
+      "garbage": 9
+    },
+    {
+      "id": "msg_0191_00260",
+      "garbage": 8
+    },
+    {
+      "id": "msg_0191_00261",
+      "garbage": 6
+    },
+    {
+      "id": "msg_0191_00262",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0191_00263",
+      "en_US": "RECORD"
+    },
+    {
+      "id": "msg_0191_00264",
+      "garbage": 6
+    },
+    {
+      "id": "msg_0191_00265",
+      "garbage": 6
+    },
+    {
+      "id": "msg_0191_00266",
+      "garbage": 7
+    },
+    {
+      "id": "msg_0191_00267",
+      "garbage": 7
+    },
+    {
+      "id": "msg_0191_00268",
+      "garbage": 6
+    },
+    {
+      "id": "msg_0191_00269",
+      "garbage": 2
+    },
+    {
+      "id": "msg_0191_00270",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0191_00271",
+      "en_US": "JOIN"
+    },
+    {
+      "id": "msg_0191_00272",
+      "en_US": "POKéATHLON"
+    },
+    {
+      "id": "msg_0191_00273",
+      "en_US": "SPEED COURSE"
+    },
+    {
+      "id": "msg_0191_00274",
+      "en_US": "POWER COURSE"
+    },
+    {
+      "id": "msg_0191_00275",
+      "en_US": "STAMINA COURSE"
+    },
+    {
+      "id": "msg_0191_00276",
+      "en_US": "JUMP COURSE"
+    },
+    {
+      "id": "msg_0191_00277",
+      "en_US": "SKILL COURSE"
+    },
+    {
+      "id": "msg_0191_00278",
+      "en_US": "ABOUT SUPREME"
+    },
+    {
+      "id": "msg_0191_00279",
+      "en_US": [
+        "F. MASTER\n",
+        "COURSE"
+      ]
+    },
+    {
+      "id": "msg_0191_00280",
+      "en_US": "ALLY"
+    },
+    {
+      "id": "msg_0191_00281",
+      "en_US": "JUNIOR"
+    },
+    {
+      "id": "msg_0191_00282",
+      "en_US": "FRIEND"
+    },
+    {
+      "id": "msg_0191_00283",
+      "en_US": "STRATEGY"
+    },
+    {
+      "id": "msg_0191_00284",
+      "en_US": "TRAINING"
+    },
+    {
+      "id": "msg_0191_00285",
+      "en_US": "CHEATING"
+    },
+    {
+      "id": "msg_0191_00286",
+      "en_US": "WEAK"
+    },
+    {
+      "id": "msg_0191_00287",
+      "en_US": "STRONG"
+    },
+    {
+      "id": "msg_0191_00288",
+      "en_US": "ANYONE"
+    },
+    {
+      "id": "msg_0191_00289",
+      "en_US": "LOVE"
+    },
+    {
+      "id": "msg_0191_00290",
+      "en_US": "VIOLENCE"
+    },
+    {
+      "id": "msg_0191_00291",
+      "en_US": "KNOWLEDGE"
+    },
+    {
+      "id": "msg_0191_00292",
+      "en_US": "STRENGTH"
+    },
+    {
+      "id": "msg_0191_00293",
+      "en_US": "BOTH"
+    },
+    {
+      "id": "msg_0191_00294",
+      "en_US": "WEAKNESS"
+    },
+    {
+      "id": "msg_0191_00295",
+      "garbage": 7
+    },
+    {
+      "id": "msg_0191_00296",
+      "en_US": "ABOUT EVENTS"
+    },
+    {
+      "id": "msg_0191_00297",
+      "en_US": "ABOUT MAXIMO"
+    },
+    {
+      "id": "msg_0191_00298",
+      "en_US": "HURDLE DASH"
+    },
+    {
+      "id": "msg_0191_00299",
+      "en_US": "PENNANT CAPTURE"
+    },
+    {
+      "id": "msg_0191_00300",
+      "en_US": "CIRCLE PUSH"
+    },
+    {
+      "id": "msg_0191_00301",
+      "en_US": "BLOCK SMASH"
+    },
+    {
+      "id": "msg_0191_00302",
+      "en_US": "DISC CATCH"
+    },
+    {
+      "id": "msg_0191_00303",
+      "en_US": "LAMP JUMP"
+    },
+    {
+      "id": "msg_0191_00304",
+      "en_US": "RELAY RUN"
+    },
+    {
+      "id": "msg_0191_00305",
+      "en_US": "RING DROP"
+    },
+    {
+      "id": "msg_0191_00306",
+      "en_US": "SNOW THROW"
+    },
+    {
+      "id": "msg_0191_00307",
+      "en_US": "GOAL ROLL"
+    },
+    {
+      "id": "msg_0191_00308",
+      "en_US": "SPEED COURSE"
+    },
+    {
+      "id": "msg_0191_00309",
+      "en_US": "POWER COURSE"
+    },
+    {
+      "id": "msg_0191_00310",
+      "en_US": "SKILL COURSE"
+    },
+    {
+      "id": "msg_0191_00311",
+      "en_US": "STAMINA COURSE"
+    },
+    {
+      "id": "msg_0191_00312",
+      "en_US": "JUMP COURSE"
+    },
+    {
+      "id": "msg_0191_00313",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0191_00314",
+      "garbage": 18
+    },
+    {
+      "id": "msg_0191_00315",
+      "garbage": 18
+    },
+    {
+      "id": "msg_0191_00316",
+      "garbage": 18
+    },
+    {
+      "id": "msg_0191_00317",
+      "garbage": 14
+    },
+    {
+      "id": "msg_0191_00318",
+      "garbage": 13
+    },
+    {
+      "id": "msg_0191_00319",
+      "garbage": 13
+    },
+    {
+      "id": "msg_0191_00320",
+      "garbage": 16
+    },
+    {
+      "id": "msg_0191_00321",
+      "en_US": "BUY"
+    },
+    {
+      "id": "msg_0191_00322",
+      "en_US": "SELL"
+    },
+    {
+      "id": "msg_0191_00323",
+      "en_US": "SEE YA!"
+    },
+    {
+      "id": "msg_0191_00324",
+      "en_US": "INFO"
+    },
+    {
+      "id": "msg_0191_00325",
+      "en_US": "PRIZE EXCHANGE"
+    },
+    {
+      "id": "msg_0191_00326",
+      "en_US": "WHAT’S APRIJUICE?"
+    },
+    {
+      "id": "msg_0191_00327",
+      "en_US": "APRIJUICE KNOW-HOW!"
+    },
+    {
+      "id": "msg_0191_00328",
+      "en_US": "BUY"
+    },
+    {
+      "id": "msg_0191_00329",
+      "en_US": "VIEW LABEL"
+    },
+    {
+      "id": "msg_0191_00330",
+      "en_US": "DEPOSITED MONEY"
+    },
+    {
+      "id": "msg_0191_00331",
+      "en_US": "HELD MONEY"
+    },
+    {
+      "id": "msg_0191_00332",
+      "en_US": "${STRVAR_1 55, 0, 0}"
+    },
+    {
+      "id": "msg_0191_00333",
+      "en_US": "A BUTTON: JOIN THIS GROUP"
+    },
+    {
+      "id": "msg_0191_00334",
+      "en_US": "B BUTTON: QUIT"
+    },
+    {
+      "id": "msg_0191_00335",
+      "en_US": "B BUTTON: REMOVE FROM MEMBERS"
+    },
+    {
+      "id": "msg_0191_00336",
+      "en_US": "A BUTTON: START WITH MEMBERS"
+    },
+    {
+      "id": "msg_0191_00337",
+      "en_US": "BUY WITH MONEY"
+    },
+    {
+      "id": "msg_0191_00338",
+      "en_US": "BUY WITH POINTS"
+    },
+    {
+      "id": "msg_0191_00339",
+      "en_US": "FRESH WATER {CURSOR_X 80}50 Points"
+    },
+    {
+      "id": "msg_0191_00340",
+      "en_US": "SODA POP {CURSOR_X 80}80 Points"
+    },
+    {
+      "id": "msg_0191_00341",
+      "en_US": "LEMONADE {CURSOR_X 80}100 Points"
+    },
+    {
+      "id": "msg_0191_00342",
+      "en_US": [
+        "A. SPEED &\n",
+        "JUMP COURSE"
+      ]
+    },
+    {
+      "id": "msg_0191_00343",
+      "en_US": [
+        "B. JUMP &\n",
+        "SKILL COURSE"
+      ]
+    },
+    {
+      "id": "msg_0191_00344",
+      "en_US": [
+        "C. SKILL &\n",
+        "POWER COURSE"
+      ]
+    },
+    {
+      "id": "msg_0191_00345",
+      "en_US": [
+        "D. POWER &\n",
+        "STAMINA COURSE"
+      ]
+    },
+    {
+      "id": "msg_0191_00346",
+      "en_US": [
+        "E. STAMINA &\n",
+        "SPEED COURSE"
+      ]
+    },
+    {
+      "id": "msg_0191_00347",
+      "en_US": [
+        "TRAINING\n",
+        "ITEMS #1"
+      ]
+    },
+    {
+      "id": "msg_0191_00348",
+      "en_US": [
+        "TRAINING\n",
+        "ITEMS #2"
+      ]
+    },
+    {
+      "id": "msg_0191_00349",
+      "en_US": [
+        "FIGHTING\n",
+        "ITEMS #1"
+      ]
+    },
+    {
+      "id": "msg_0191_00350",
+      "en_US": [
+        "FIGHTING\n",
+        "ITEMS #2"
+      ]
+    },
+    {
+      "id": "msg_0191_00351",
+      "en_US": "PHYSICAL ATTACKS"
+    },
+    {
+      "id": "msg_0191_00352",
+      "en_US": "SPECIAL ATTACKS"
+    },
+    {
+      "id": "msg_0191_00353",
+      "en_US": "CHANGING ATTACKS"
+    },
+    {
+      "id": "msg_0191_00354",
+      "en_US": [
+        "PROTEIN\n",
+        "1 BP"
+      ]
+    },
+    {
+      "id": "msg_0191_00355",
+      "en_US": [
+        "CALCIUM\n",
+        "1 BP"
+      ]
+    },
+    {
+      "id": "msg_0191_00356",
+      "en_US": [
+        "IRON\n",
+        "1 BP"
+      ]
+    },
+    {
+      "id": "msg_0191_00357",
+      "en_US": [
+        "ZINC\n",
+        "1 BP"
+      ]
+    },
+    {
+      "id": "msg_0191_00358",
+      "en_US": [
+        "CARBOS\n",
+        "1 BP"
+      ]
+    },
+    {
+      "id": "msg_0191_00359",
+      "en_US": [
+        "HP UP\n",
+        "1 BP"
+      ]
+    },
+    {
+      "id": "msg_0191_00360",
+      "en_US": [
+        "POWER BRACER\n",
+        "16 BP"
+      ]
+    },
+    {
+      "id": "msg_0191_00361",
+      "en_US": [
+        "POWER BELT\n",
+        "16 BP"
+      ]
+    },
+    {
+      "id": "msg_0191_00362",
+      "en_US": [
+        "POWER LENS\n",
+        "16 BP"
+      ]
+    },
+    {
+      "id": "msg_0191_00363",
+      "en_US": [
+        "POWER BAND\n",
+        "16 BP"
+      ]
+    },
+    {
+      "id": "msg_0191_00364",
+      "en_US": [
+        "POWER ANKLET\n",
+        "16 BP"
+      ]
+    },
+    {
+      "id": "msg_0191_00365",
+      "en_US": [
+        "POWER WEIGHT\n",
+        "16 BP"
+      ]
+    },
+    {
+      "id": "msg_0191_00366",
+      "en_US": [
+        "TOXIC ORB\n",
+        "16 BP"
+      ]
+    },
+    {
+      "id": "msg_0191_00367",
+      "en_US": [
+        "FLAME ORB\n",
+        "16 BP"
+      ]
+    },
+    {
+      "id": "msg_0191_00368",
+      "en_US": [
+        "WHITE HERB\n",
+        "32 BP"
+      ]
+    },
+    {
+      "id": "msg_0191_00369",
+      "en_US": [
+        "POWER HERB\n",
+        "32 BP"
+      ]
+    },
+    {
+      "id": "msg_0191_00370",
+      "en_US": [
+        "BRIGHTPOWDER\n",
+        "48 BP"
+      ]
+    },
+    {
+      "id": "msg_0191_00371",
+      "en_US": [
+        "CHOICE BAND\n",
+        "48 BP"
+      ]
+    },
+    {
+      "id": "msg_0191_00372",
+      "en_US": [
+        "FOCUS BAND\n",
+        "48 BP"
+      ]
+    },
+    {
+      "id": "msg_0191_00373",
+      "en_US": [
+        "SCOPE LENS\n",
+        "48 BP"
+      ]
+    },
+    {
+      "id": "msg_0191_00374",
+      "en_US": [
+        "MUSCLE BAND\n",
+        "48 BP"
+      ]
+    },
+    {
+      "id": "msg_0191_00375",
+      "en_US": [
+        "FOCUS SASH\n",
+        "48 BP"
+      ]
+    },
+    {
+      "id": "msg_0191_00376",
+      "en_US": [
+        "CHOICE SCARF\n",
+        "48 BP"
+      ]
+    },
+    {
+      "id": "msg_0191_00377",
+      "en_US": [
+        "RAZOR CLAW\n",
+        "48 BP"
+      ]
+    },
+    {
+      "id": "msg_0191_00378",
+      "en_US": [
+        "RAZOR FANG\n",
+        "48 BP"
+      ]
+    },
+    {
+      "id": "msg_0191_00379",
+      "en_US": [
+        "RARE CANDY\n",
+        "48 BP"
+      ]
+    },
+    {
+      "id": "msg_0191_00380",
+      "en_US": [
+        "AERIAL ACE\n",
+        "40 BP"
+      ]
+    },
+    {
+      "id": "msg_0191_00381",
+      "en_US": [
+        "BRICK BREAK\n",
+        "40 BP"
+      ]
+    },
+    {
+      "id": "msg_0191_00382",
+      "en_US": [
+        "U-TURN\n",
+        "40 BP"
+      ]
+    },
+    {
+      "id": "msg_0191_00383",
+      "en_US": [
+        "X-SCISSOR\n",
+        "64 BP"
+      ]
+    },
+    {
+      "id": "msg_0191_00384",
+      "en_US": [
+        "STONE EDGE\n",
+        "80 BP"
+      ]
+    },
+    {
+      "id": "msg_0191_00385",
+      "en_US": [
+        "EARTHQUAKE\n",
+        "80 BP"
+      ]
+    },
+    {
+      "id": "msg_0191_00386",
+      "en_US": [
+        "SHADOW BALL\n",
+        "64 BP"
+      ]
+    },
+    {
+      "id": "msg_0191_00387",
+      "en_US": [
+        "ENERGY BALL\n",
+        "64 BP"
+      ]
+    },
+    {
+      "id": "msg_0191_00388",
+      "en_US": [
+        "SLUDGE BOMB\n",
+        "80 BP"
+      ]
+    },
+    {
+      "id": "msg_0191_00389",
+      "en_US": [
+        "DRAGON PULSE\n",
+        "80 BP"
+      ]
+    },
+    {
+      "id": "msg_0191_00390",
+      "en_US": [
+        "TOXIC\n",
+        "32 BP"
+      ]
+    },
+    {
+      "id": "msg_0191_00391",
+      "en_US": [
+        "THUNDER WAVE\n",
+        "32 BP"
+      ]
+    },
+    {
+      "id": "msg_0191_00392",
+      "en_US": [
+        "WILL-O-WISP\n",
+        "32 BP"
+      ]
+    },
+    {
+      "id": "msg_0191_00393",
+      "en_US": [
+        "ATTRACT\n",
+        "32 BP"
+      ]
+    },
+    {
+      "id": "msg_0191_00394",
+      "en_US": [
+        "BULK UP\n",
+        "48 BP"
+      ]
+    },
+    {
+      "id": "msg_0191_00395",
+      "en_US": [
+        "CALM MIND\n",
+        "48 BP"
+      ]
+    },
+    {
+      "id": "msg_0191_00396",
+      "en_US": [
+        "It raises the base Attack stat of a\n",
+        "single Pokémon."
+      ]
+    },
+    {
+      "id": "msg_0191_00397",
+      "en_US": [
+        "It raises the base Sp. Atk (Special\n",
+        "Attack) stat of a single Pokémon."
+      ]
+    },
+    {
+      "id": "msg_0191_00398",
+      "en_US": [
+        "It raises the base Defense stat of a\n",
+        "single Pokémon."
+      ]
+    },
+    {
+      "id": "msg_0191_00399",
+      "en_US": [
+        "It raises the base Sp. Def (Special\n",
+        "Defense) stat of a single Pokémon."
+      ]
+    },
+    {
+      "id": "msg_0191_00400",
+      "en_US": [
+        "It raises the base Speed stat of a\n",
+        "single Pokémon."
+      ]
+    },
+    {
+      "id": "msg_0191_00401",
+      "en_US": [
+        "It raises the base HP of a single\n",
+        "Pokémon."
+      ]
+    },
+    {
+      "id": "msg_0191_00402",
+      "en_US": [
+        "It raises the level of a single Pokémon\n",
+        "by one."
+      ]
+    },
+    {
+      "id": "msg_0191_00403",
+      "en_US": [
+        "Promotes Attack gain on leveling, but\n",
+        "reduces the Speed stat."
+      ]
+    },
+    {
+      "id": "msg_0191_00404",
+      "en_US": [
+        "Promotes Defense gain on leveling, but\n",
+        "reduces the Speed stat."
+      ]
+    },
+    {
+      "id": "msg_0191_00405",
+      "en_US": [
+        "Promotes Sp. Atk gain on leveling, but\n",
+        "reduces the Speed stat."
+      ]
+    },
+    {
+      "id": "msg_0191_00406",
+      "en_US": [
+        "Promotes Sp. Def gain on leveling, but\n",
+        "reduces the Speed stat."
+      ]
+    },
+    {
+      "id": "msg_0191_00407",
+      "en_US": [
+        "Promotes Speed gain on leveling, but\n",
+        "reduces the Speed stat."
+      ]
+    },
+    {
+      "id": "msg_0191_00408",
+      "en_US": [
+        "Promotes HP gain on leveling, but\n",
+        "reduces the Speed stat."
+      ]
+    },
+    {
+      "id": "msg_0191_00409",
+      "en_US": [
+        "It is a bizarre orb that badly poisons\n",
+        "the holder in battle."
+      ]
+    },
+    {
+      "id": "msg_0191_00410",
+      "en_US": [
+        "It is a bizarre orb that inflicts a\n",
+        "burn on the holder in battle."
+      ]
+    },
+    {
+      "id": "msg_0191_00411",
+      "en_US": [
+        "It restores any lowered stat in\n",
+        "battle. It can be used only once."
+      ]
+    },
+    {
+      "id": "msg_0191_00412",
+      "en_US": [
+        "It allows the immediate use of a move\n",
+        "that charges on the first turn."
+      ]
+    },
+    {
+      "id": "msg_0191_00413",
+      "en_US": [
+        "The tricky aroma of this incense lowers\n",
+        "the foe’s accuracy."
+      ]
+    },
+    {
+      "id": "msg_0191_00414",
+      "en_US": [
+        "This headband ups Attack but allows\n",
+        "the use of only one kind of move."
+      ]
+    },
+    {
+      "id": "msg_0191_00415",
+      "en_US": [
+        "The holder may endure a potential KO\n",
+        "attack, leaving it with just 1 HP."
+      ]
+    },
+    {
+      "id": "msg_0191_00416",
+      "en_US": [
+        "It is a lens that boosts the holder’s\n",
+        "critical-hit ratio."
+      ]
+    },
+    {
+      "id": "msg_0191_00417",
+      "en_US": [
+        "It is a headband that slightly boosts\n",
+        "the power of physical moves."
+      ]
+    },
+    {
+      "id": "msg_0191_00418",
+      "en_US": [
+        "With full HP, the holder will endure\n",
+        "one potential KO attack, leaving 1 HP."
+      ]
+    },
+    {
+      "id": "msg_0191_00419",
+      "en_US": [
+        "Boosts Speed, but allows the use of\n",
+        "only one kind of move."
+      ]
+    },
+    {
+      "id": "msg_0191_00420",
+      "en_US": "It ups the holder’s critical-hit ratio."
+    },
+    {
+      "id": "msg_0191_00421",
+      "en_US": [
+        "It may cause the foe to flinch when\n",
+        "the holder inflicts damage."
+      ]
+    },
+    {
+      "id": "msg_0191_00422",
+      "en_US": [
+        "Attacks become so fast, they land\n",
+        "without fail."
+      ]
+    },
+    {
+      "id": "msg_0191_00423",
+      "en_US": [
+        "It can break any barrier, such as Light\n",
+        "Screen and Reflect."
+      ]
+    },
+    {
+      "id": "msg_0191_00424",
+      "en_US": [
+        "After attacking, the user rushes back\n",
+        "to switch places with a party Pokémon."
+      ]
+    },
+    {
+      "id": "msg_0191_00425",
+      "en_US": [
+        "The user slashes at the foe by crossing\n",
+        "its claws as if they were scissors."
+      ]
+    },
+    {
+      "id": "msg_0191_00426",
+      "en_US": [
+        "Stabs the foe with a sharpened stone.\n",
+        "It has a high critical-hit ratio."
+      ]
+    },
+    {
+      "id": "msg_0191_00427",
+      "en_US": [
+        "The user sets off an earthquake that\n",
+        "hits all other Pokémon in the battle."
+      ]
+    },
+    {
+      "id": "msg_0191_00428",
+      "en_US": [
+        "Gathers all shadows and attacks. It\n",
+        "may also lower the foe’s Sp. Def stat."
+      ]
+    },
+    {
+      "id": "msg_0191_00429",
+      "en_US": [
+        "Gathers all energy and attacks. It may\n",
+        "also lower the foe’s Sp. Def stat."
+      ]
+    },
+    {
+      "id": "msg_0191_00430",
+      "en_US": [
+        "The foe is hit with sludge steeped with\n",
+        "poison. It may also poison the foe."
+      ]
+    },
+    {
+      "id": "msg_0191_00431",
+      "en_US": [
+        "The foe is attacked with a shock wave\n",
+        "generated by the user’s gaping mouth."
+      ]
+    },
+    {
+      "id": "msg_0191_00432",
+      "en_US": [
+        "Hits the foe with a powerful poison that\n",
+        "leaves them badly poisoned."
+      ]
+    },
+    {
+      "id": "msg_0191_00433",
+      "en_US": [
+        "A weak electric charge is launched at\n",
+        "the foe. It causes paralysis if it hits."
+      ]
+    },
+    {
+      "id": "msg_0191_00434",
+      "en_US": [
+        "Shoots a sinister, bluish-white flame at\n",
+        "the foe to inflict a burn."
+      ]
+    },
+    {
+      "id": "msg_0191_00435",
+      "en_US": [
+        "If the opposite gender, the foe becomes\n",
+        "infatuated and less likely to attack."
+      ]
+    },
+    {
+      "id": "msg_0191_00436",
+      "en_US": [
+        "The user tenses up its body, boosting\n",
+        "both its Attack and Defense stats."
+      ]
+    },
+    {
+      "id": "msg_0191_00437",
+      "en_US": [
+        "The user focuses its mind and spirit\n",
+        "to raise its Sp. Atk and Sp. Def stats."
+      ]
+    },
+    {
+      "id": "msg_0191_00438",
+      "en_US": "Return to the selection screen."
+    },
+    {
+      "id": "msg_0191_00439",
+      "en_US": "EXIT"
+    },
+    {
+      "id": "msg_0191_00440",
+      "en_US": "CANCEL"
+    },
+    {
+      "id": "msg_0191_00441",
+      "garbage": 2
+    },
+    {
+      "id": "msg_0191_00442",
+      "garbage": 13
+    },
+    {
+      "id": "msg_0191_00443",
+      "garbage": 12
+    },
+    {
+      "id": "msg_0191_00444",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0191_00445",
+      "en_US": [
+        "NUGGET\n",
+        "$4,500"
+      ]
+    },
+    {
+      "id": "msg_0191_00446",
+      "en_US": [
+        "PEARL\n",
+        "$650"
+      ]
+    },
+    {
+      "id": "msg_0191_00447",
+      "en_US": [
+        "BIG PEARL\n",
+        "$3,500"
+      ]
+    },
+    {
+      "id": "msg_0191_00448",
+      "en_US": [
+        "STARDUST\n",
+        "$900"
+      ]
+    },
+    {
+      "id": "msg_0191_00449",
+      "en_US": [
+        "STAR PIECE\n",
+        "$4,600"
+      ]
+    },
+    {
+      "id": "msg_0191_00450",
+      "en_US": "EXIT"
+    },
+    {
+      "id": "msg_0191_00451",
+      "en_US": [
+        "BATTLE\n",
+        "FRONTIER"
+      ]
+    },
+    {
+      "id": "msg_0191_00452",
+      "en_US": "BASIC RULES"
+    },
+    {
+      "id": "msg_0191_00453",
+      "en_US": "BATTLE POINTS"
+    },
+    {
+      "id": "msg_0191_00454",
+      "en_US": [
+        "EXCHANGE\n",
+        "SERVICE CORNER"
+      ]
+    },
+    {
+      "id": "msg_0191_00455",
+      "en_US": [
+        "PERFORMANCE\n",
+        "MONITOR"
+      ]
+    },
+    {
+      "id": "msg_0191_00456",
+      "en_US": "DONE"
+    },
+    {
+      "id": "msg_0191_00457",
+      "en_US": [
+        "AREA\n",
+        "CUSTOMIZER"
+      ]
+    },
+    {
+      "id": "msg_0191_00458",
+      "en_US": [
+        "USING THE AREA\n",
+        "CUSTOMIZER"
+      ]
+    },
+    {
+      "id": "msg_0191_00459",
+      "en_US": "SWAPPING AREAS"
+    },
+    {
+      "id": "msg_0191_00460",
+      "en_US": [
+        "SWITCHING\n",
+        "AREAS"
+      ]
+    },
+    {
+      "id": "msg_0191_00461",
+      "en_US": [
+        "APPEARING\n",
+        "POKéMON"
+      ]
+    },
+    {
+      "id": "msg_0191_00462",
+      "en_US": "EXIT"
+    },
+    {
+      "id": "msg_0191_00463",
+      "en_US": "OBJECTS"
+    },
+    {
+      "id": "msg_0191_00464",
+      "en_US": [
+        "ARRANGING\n",
+        "OBJECTS"
+      ]
+    },
+    {
+      "id": "msg_0191_00465",
+      "en_US": [
+        "REMOVING\n",
+        "OBJECTS"
+      ]
+    },
+    {
+      "id": "msg_0191_00466",
+      "en_US": "OBJECT TYPES"
+    },
+    {
+      "id": "msg_0191_00467",
+      "en_US": [
+        "APPEARING\n",
+        "POKéMON"
+      ]
+    },
+    {
+      "id": "msg_0191_00468",
+      "en_US": [
+        "CLEARING\n",
+        "OBJECTS"
+      ]
+    },
+    {
+      "id": "msg_0191_00469",
+      "en_US": "EXIT"
+    },
+    {
+      "id": "msg_0191_00470",
+      "en_US": [
+        "It speeds up the growth of Berries.\n",
+        "However, it also dries the soil faster."
+      ]
+    },
+    {
+      "id": "msg_0191_00471",
+      "en_US": [
+        "It extends the time ripened Berries\n",
+        "remain on their plants before falling."
+      ]
+    },
+    {
+      "id": "msg_0191_00472",
+      "en_US": [
+        "It slows the growth of Berries and\n",
+        "causes the soil to dry more slowly."
+      ]
+    },
+    {
+      "id": "msg_0191_00473",
+      "en_US": [
+        "It ups the number of times new plants\n",
+        "grow where mature plants withered."
+      ]
+    },
+    {
+      "id": "msg_0191_00474",
+      "en_US": "Don’t buy."
+    },
+    {
+      "id": "msg_0191_00475",
+      "en_US": "SINGLE BATTLE"
+    },
+    {
+      "id": "msg_0191_00476",
+      "en_US": "DOUBLE BATTLE"
+    }
+  ]
+}

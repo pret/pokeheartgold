@@ -1,6 +1,6 @@
 
 #include "application/pokegear/phone/phone_internal.h"
-#include "msgdata/msg/msg_0271.h"
+#include "files/msgdata/msg/msg_0271.h"
 
 #include "render_text.h"
 #include "screen_fade.h"

@@ -1,0 +1,109 @@
+{
+  "key": 42002,
+  "messages": [
+    {
+      "id": "msg_0331_R05R0202_00000",
+      "en_US": [
+        "Don’t be afraid. I’m not a bad person.\r",
+        "A place like this...\n",
+        "attracts mean people.\r",
+        "They would eventually cause trouble...\r",
+        "That’s why Uncle Rage is watching for\n",
+        "such things...\r",
+        "The echo at the Underground Path is...\n",
+        "amazing..."
+      ]
+    },
+    {
+      "id": "msg_0331_R05R0202_00001",
+      "en_US": [
+        "Don’t be afraid. I’m not a bad person.\r",
+        "A place like this...\n",
+        "attracts mean people.\r",
+        "They would eventually cause trouble...\r",
+        "It makes me mad just thinking\n",
+        "about it...\r"
+      ]
+    },
+    {
+      "id": "msg_0331_R05R0202_00002",
+      "en_US": [
+        "Aha!\n",
+        "That’s a RageCandyBar!\r",
+        "Can I have it?\n",
+        "Please! {YESNO 0}\n"
+      ]
+    },
+    {
+      "id": "msg_0331_R05R0202_00003",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} gave the RageCandyBar\n",
+        "to the guy at the Underground Path.\r"
+      ]
+    },
+    {
+      "id": "msg_0331_R05R0202_00004",
+      "en_US": [
+        "Munch!\r",
+        "How upsetting!\r",
+        "But this is so good!\r",
+        "Munch munch!\r",
+        "Aargh! Makes me mad!\r",
+        "Munch munch!\r",
+        "Aargh...\r",
+        "..................Phew!\r",
+        "I am feeling much better.\n",
+        "Thank you for your candy!\f",
+        "I want you to have this!\r"
+      ]
+    },
+    {
+      "id": "msg_0331_R05R0202_00005",
+      "en_US": [
+        "TM64 contains......\r",
+        "tick-\n",
+        "    tock\f",
+        "tick-\f",
+        "    tock\f",
+        "tick-\f",
+        "    tock\f",
+        "tick-\f",
+        "    tock\f",
+        "tick...\f",
+        "..................\f",
+        "..................\r"
+      ]
+    },
+    {
+      "id": "msg_0331_R05R0202_00006",
+      "en_US": "{SIZE 200}Ka-Boom!!"
+    },
+    {
+      "id": "msg_0331_R05R0202_00007",
+      "en_US": [
+        "A place like this...\n",
+        "attracts mean people.\r",
+        "They would eventually cause trouble...\r",
+        "That’s why Uncle Rage is watching for\n",
+        "such things...\r",
+        "The echo at the Underground Path is...\n",
+        "amazing..."
+      ]
+    },
+    {
+      "id": "msg_0331_R05R0202_00008",
+      "en_US": [
+        "Are you going to eat it all\n",
+        "by yourself?!"
+      ]
+    },
+    {
+      "id": "msg_0331_R05R0202_00009",
+      "en_US": [
+        "Aha! Thank you!\r",
+        "...But your Bag is full...\n",
+        "Make some room, and come back later..."
+      ]
+    }
+  ]
+}

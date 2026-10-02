@@ -1,0 +1,608 @@
+{
+  "key": 705,
+  "messages": [
+    {
+      "id": "msg_0010_00000",
+      "en_US": "USE"
+    },
+    {
+      "id": "msg_0010_00001",
+      "en_US": "TRASH"
+    },
+    {
+      "id": "msg_0010_00002",
+      "en_US": "REGISTER"
+    },
+    {
+      "id": "msg_0010_00003",
+      "en_US": "GIVE"
+    },
+    {
+      "id": "msg_0010_00004",
+      "garbage": 5
+    },
+    {
+      "id": "msg_0010_00005",
+      "en_US": "CONFIRM"
+    },
+    {
+      "id": "msg_0010_00006",
+      "en_US": "WALK"
+    },
+    {
+      "id": "msg_0010_00007",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0010_00008",
+      "en_US": "CANCEL"
+    },
+    {
+      "id": "msg_0010_00009",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0010_00010",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0010_00011",
+      "garbage": 5
+    },
+    {
+      "id": "msg_0010_00012",
+      "garbage": 4
+    },
+    {
+      "id": "msg_0010_00013",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0010_00014",
+      "garbage": 4
+    },
+    {
+      "id": "msg_0010_00015",
+      "garbage": 4
+    },
+    {
+      "id": "msg_0010_00016",
+      "en_US": "CHECK"
+    },
+    {
+      "id": "msg_0010_00017",
+      "garbage": 2
+    },
+    {
+      "id": "msg_0010_00018",
+      "en_US": "DESELECT"
+    },
+    {
+      "id": "msg_0010_00019",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0010_00020",
+      "garbage": 5
+    },
+    {
+      "id": "msg_0010_00021",
+      "garbage": 1
+    },
+    {
+      "id": "msg_0010_00022",
+      "en_US": "{STRVAR_1 51, 0, 0}/{STRVAR_1 51, 1, 0}"
+    },
+    {
+      "id": "msg_0010_00023",
+      "garbage": 1
+    },
+    {
+      "id": "msg_0010_00024",
+      "garbage": 2
+    },
+    {
+      "id": "msg_0010_00025",
+      "en_US": "---"
+    },
+    {
+      "id": "msg_0010_00026",
+      "garbage": 1
+    },
+    {
+      "id": "msg_0010_00027",
+      "garbage": 1
+    },
+    {
+      "id": "msg_0010_00028",
+      "garbage": 2
+    },
+    {
+      "id": "msg_0010_00029",
+      "garbage": 2
+    },
+    {
+      "id": "msg_0010_00030",
+      "garbage": 1
+    },
+    {
+      "id": "msg_0010_00031",
+      "garbage": 1
+    },
+    {
+      "id": "msg_0010_00032",
+      "garbage": 4
+    },
+    {
+      "id": "msg_0010_00033",
+      "garbage": 1
+    },
+    {
+      "id": "msg_0010_00034",
+      "garbage": 4
+    },
+    {
+      "id": "msg_0010_00035",
+      "garbage": 10
+    },
+    {
+      "id": "msg_0010_00036",
+      "garbage": 9
+    },
+    {
+      "id": "msg_0010_00037",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0010_00038",
+      "garbage": 5
+    },
+    {
+      "id": "msg_0010_00039",
+      "garbage": 1
+    },
+    {
+      "id": "msg_0010_00040",
+      "garbage": 2
+    },
+    {
+      "id": "msg_0010_00041",
+      "garbage": 7
+    },
+    {
+      "id": "msg_0010_00042",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0010_00043",
+      "en_US": "The {STRVAR_1 8, 0, 0} item is selected."
+    },
+    {
+      "id": "msg_0010_00044",
+      "garbage": 21
+    },
+    {
+      "id": "msg_0010_00045",
+      "garbage": 12
+    },
+    {
+      "id": "msg_0010_00046",
+      "en_US": "Move the {STRVAR_1 8, 0, 0}."
+    },
+    {
+      "id": "msg_0010_00047",
+      "en_US": "The {STRVAR_1 8, 0, 0} can’t be held."
+    },
+    {
+      "id": "msg_0010_00048",
+      "garbage": 26
+    },
+    {
+      "id": "msg_0010_00049",
+      "garbage": 18
+    },
+    {
+      "id": "msg_0010_00050",
+      "garbage": 20
+    },
+    {
+      "id": "msg_0010_00051",
+      "garbage": 16
+    },
+    {
+      "id": "msg_0010_00052",
+      "garbage": 29
+    },
+    {
+      "id": "msg_0010_00053",
+      "en_US": [
+        "Throw away how many\n",
+        "{STRVAR_1 8, 0, 0}(s)?"
+      ]
+    },
+    {
+      "id": "msg_0010_00054",
+      "en_US": "Threw away {STRVAR_1 51, 1, 0} {STRVAR_1 8, 0, 0}."
+    },
+    {
+      "id": "msg_0010_00055",
+      "en_US": [
+        "Is it OK to throw away\n",
+        "{STRVAR_1 52, 1, 0} {STRVAR_1 8, 0, 0}?"
+      ]
+    },
+    {
+      "id": "msg_0010_00056",
+      "garbage": 41
+    },
+    {
+      "id": "msg_0010_00057",
+      "en_US": "You can’t dismount your Bike here."
+    },
+    {
+      "id": "msg_0010_00058",
+      "en_US": "Your Coins: {STRVAR_1 54, 0, 0}"
+    },
+    {
+      "id": "msg_0010_00059",
+      "en_US": "Booted up a TM.{WAIT 3}{WAIT 4}\n"
+    },
+    {
+      "id": "msg_0010_00060",
+      "en_US": "Booted up an HM.{WAIT 3}{WAIT 4}\n"
+    },
+    {
+      "id": "msg_0010_00061",
+      "en_US": [
+        "It contained\n",
+        "{STRVAR_1 6, 0, 0}.\r",
+        "Teach {STRVAR_1 6, 0, 0}\n",
+        "to a Pokémon?"
+      ]
+    },
+    {
+      "id": "msg_0010_00062",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} used the\n",
+        "{STRVAR_1 8, 1, 0}."
+      ]
+    },
+    {
+      "id": "msg_0010_00063",
+      "en_US": [
+        "Since a Repel’s effects still linger,\n",
+        "you can’t use this now."
+      ]
+    },
+    {
+      "id": "msg_0010_00064",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} used the\n",
+        "{STRVAR_1 8, 1, 0}.\r",
+        "Wild Pokémon will be lured."
+      ]
+    },
+    {
+      "id": "msg_0010_00065",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} used the\n",
+        "{STRVAR_1 8, 1, 0}.\r",
+        "Wild Pokémon will be repelled."
+      ]
+    },
+    {
+      "id": "msg_0010_00066",
+      "garbage": 14
+    },
+    {
+      "id": "msg_0010_00067",
+      "garbage": 13
+    },
+    {
+      "id": "msg_0010_00068",
+      "garbage": 12
+    },
+    {
+      "id": "msg_0010_00069",
+      "garbage": 12
+    },
+    {
+      "id": "msg_0010_00070",
+      "garbage": 10
+    },
+    {
+      "id": "msg_0010_00071",
+      "garbage": 6
+    },
+    {
+      "id": "msg_0010_00072",
+      "garbage": 30
+    },
+    {
+      "id": "msg_0010_00073",
+      "garbage": 13
+    },
+    {
+      "id": "msg_0010_00074",
+      "garbage": 23
+    },
+    {
+      "id": "msg_0010_00075",
+      "en_US": "MOVE"
+    },
+    {
+      "id": "msg_0010_00076",
+      "en_US": [
+        "{STRVAR_1 8, 0, 0}? Oh, no.\n",
+        "I can’t buy that."
+      ]
+    },
+    {
+      "id": "msg_0010_00077",
+      "en_US": [
+        "{STRVAR_1 8, 0, 0}? \n",
+        "How many will you sell?"
+      ]
+    },
+    {
+      "id": "msg_0010_00078",
+      "en_US": [
+        "I can pay ${STRVAR_1 55, 0, 0}.\n",
+        "Would that be OK?"
+      ]
+    },
+    {
+      "id": "msg_0010_00079",
+      "en_US": [
+        "Turned over the {STRVAR_1 8, 0, 0}\n",
+        "and received ${STRVAR_1 55, 1, 0}."
+      ]
+    },
+    {
+      "id": "msg_0010_00080",
+      "en_US": "Money"
+    },
+    {
+      "id": "msg_0010_00081",
+      "en_US": "${STRVAR_1 55, 0, 0}"
+    },
+    {
+      "id": "msg_0010_00082",
+      "garbage": 6
+    },
+    {
+      "id": "msg_0010_00083",
+      "en_US": "+${STRVAR_1 55, 0, 0}"
+    },
+    {
+      "id": "msg_0010_00084",
+      "garbage": 2
+    },
+    {
+      "id": "msg_0010_00085",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0010_00086",
+      "en_US": "SELL"
+    },
+    {
+      "id": "msg_0010_00087",
+      "en_US": "x{STRVAR_1 52, 0, 0}"
+    },
+    {
+      "id": "msg_0010_00088",
+      "garbage": 4
+    },
+    {
+      "id": "msg_0010_00089",
+      "en_US": "PP"
+    },
+    {
+      "id": "msg_0010_00090",
+      "en_US": "POWER"
+    },
+    {
+      "id": "msg_0010_00091",
+      "en_US": "ACCURACY"
+    },
+    {
+      "id": "msg_0010_00092",
+      "en_US": "CATEGORY"
+    },
+    {
+      "id": "msg_0010_00093",
+      "en_US": "{STRVAR_1 51, 0, 0}"
+    },
+    {
+      "id": "msg_0010_00094",
+      "en_US": "{STRVAR_1 52, 0, 0}"
+    },
+    {
+      "id": "msg_0010_00095",
+      "en_US": "Seals: {STRVAR_1 53, 0, 0}"
+    },
+    {
+      "id": "msg_0010_00096",
+      "en_US": [
+        "Accessories: {STRVAR_1 52, 0, 0}\n",
+        "Backdrops: {STRVAR_1 51, 1, 0}"
+      ]
+    },
+    {
+      "id": "msg_0010_00097",
+      "garbage": 9
+    },
+    {
+      "id": "msg_0010_00098",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0010_00099",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0010_00100",
+      "en_US": [
+        "Saved Battle Points:\n",
+        "{STRVAR_1 53, 0, 0} BP"
+      ]
+    },
+    {
+      "id": "msg_0010_00101",
+      "en_US": "TYPE"
+    },
+    {
+      "id": "msg_0010_00102",
+      "en_US": [
+        "A Key Item in the Bag can be assigned\n",
+        "to this button for instant use."
+      ]
+    },
+    {
+      "id": "msg_0010_00103",
+      "en_US": [
+        "You can only register up to two items\n",
+        "to buttons!"
+      ]
+    },
+    {
+      "id": "msg_0010_00104",
+      "en_US": [
+        "Turned on the power for\n",
+        "GB Sounds!"
+      ]
+    },
+    {
+      "id": "msg_0010_00105",
+      "en_US": [
+        "Turned off the power for\n",
+        "GB Sounds!"
+      ]
+    },
+    {
+      "id": "msg_0010_00106",
+      "en_US": "Can’t use the {STRVAR_1 8, 0, 0}."
+    },
+    {
+      "id": "msg_0010_00107",
+      "garbage": 18
+    },
+    {
+      "id": "msg_0010_00108",
+      "garbage": 14
+    },
+    {
+      "id": "msg_0010_00109",
+      "garbage": 20
+    },
+    {
+      "id": "msg_0010_00110",
+      "garbage": 10
+    },
+    {
+      "id": "msg_0010_00111",
+      "garbage": 15
+    },
+    {
+      "id": "msg_0010_00112",
+      "garbage": 29
+    },
+    {
+      "id": "msg_0010_00113",
+      "garbage": 38
+    },
+    {
+      "id": "msg_0010_00114",
+      "garbage": 15
+    },
+    {
+      "id": "msg_0010_00115",
+      "garbage": 7
+    },
+    {
+      "id": "msg_0010_00116",
+      "garbage": 9
+    },
+    {
+      "id": "msg_0010_00117",
+      "garbage": 31
+    },
+    {
+      "id": "msg_0010_00118",
+      "en_US": [
+        "Can’t be used when you have someone\n",
+        "with you!"
+      ]
+    },
+    {
+      "id": "msg_0010_00119",
+      "en_US": "You can’t be doing that now!"
+    },
+    {
+      "id": "msg_0010_00120",
+      "en_US": [
+        "Item Pocket\n",
+        "For items that will be useful during your\n",
+        "adventure."
+      ]
+    },
+    {
+      "id": "msg_0010_00121",
+      "en_US": [
+        "Medicine Pocket\n",
+        "For items to regain your Pokémon’s\n",
+        "HP and PP."
+      ]
+    },
+    {
+      "id": "msg_0010_00122",
+      "en_US": [
+        "Poké Ball Pocket\n",
+        "For all different types of Poké Balls."
+      ]
+    },
+    {
+      "id": "msg_0010_00123",
+      "en_US": [
+        "TMs & HMs Pocket\n",
+        "For all different types of TMs and HMs."
+      ]
+    },
+    {
+      "id": "msg_0010_00124",
+      "en_US": [
+        "Berry Pocket\n",
+        "For sorting and storing different\n",
+        "Berries."
+      ]
+    },
+    {
+      "id": "msg_0010_00125",
+      "en_US": [
+        "Mail Pocket\n",
+        "For sorting and storing vibrant\n",
+        "stationery."
+      ]
+    },
+    {
+      "id": "msg_0010_00126",
+      "en_US": [
+        "Battle Items Pocket\n",
+        "For items that are useful during battle."
+      ]
+    },
+    {
+      "id": "msg_0010_00127",
+      "en_US": [
+        "Key Items Pocket\n",
+        "For items that are indispensable for\n",
+        "your adventure."
+      ]
+    },
+    {
+      "id": "msg_0010_00128",
+      "en_US": "STOP"
+    }
+  ]
+}

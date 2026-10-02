@@ -1,0 +1,133 @@
+{
+  "key": 9371,
+  "messages": [
+    {
+      "id": "msg_0143_D49R0107_00000",
+      "en_US": "Magnus: Oh, gosh!\r"
+    },
+    {
+      "id": "msg_0143_D49R0107_00001",
+      "en_US": [
+        "You are...!\n",
+        "It is indeed you, {STRVAR_1 3, 0, 0}!\r",
+        "Outstanding!\n",
+        "Quite an achievement for you\f",
+        "to come up here, bud!\r"
+      ]
+    },
+    {
+      "id": "msg_0143_D49R0107_00002",
+      "en_US": [
+        "This is the “Friendship” room.\r",
+        "It was built to commemorate the\n",
+        "solidarity, trust, and potential\f",
+        "of Pokémon and people and\f",
+        "to hope for the eternal friendship\f",
+        "between Pokémon and people.\r"
+      ]
+    },
+    {
+      "id": "msg_0143_D49R0107_00003",
+      "en_US": [
+        "Congratulations!\r",
+        "This room is only for those true\n",
+        "Pokéathletes who have earned\f",
+        "real friendships with Pokémon!\r",
+        "{STRVAR_1 3, 0, 0}!\n",
+        "You are a true Pokéathlete, bud!\r"
+      ]
+    },
+    {
+      "id": "msg_0143_D49R0107_00004",
+      "en_US": [
+        "Having said that...\n",
+        "this is also the moment\f",
+        "of a new beginning...\r"
+      ]
+    },
+    {
+      "id": "msg_0143_D49R0107_00005",
+      "en_US": [
+        "That’s right, bud!\n",
+        "You have just heard a new starting\f",
+        "signal. Your challenge continues\f",
+        "for a whole new height and to become\f",
+        "the legendary Pokéathlete!\r",
+        "Take a look at this statue.\n",
+        "You may be looking at your goal...\r"
+      ]
+    },
+    {
+      "id": "msg_0143_D49R0107_00006",
+      "en_US": [
+        "Magnus: This is the “Friendship” room.\n",
+        "It is the last of all. It’s the room\f",
+        "where eternal friendship between\f",
+        "people and Pokémon is pledged.\r",
+        "...But this is not your goal, bud.\r",
+        "Each room has Trophies to earn,\n",
+        "but you can aim for any new height.\r",
+        "It is entirely up to you whether\n",
+        "you get there or not...\r",
+        "That’s right!\r",
+        "Your true goal is not something\n",
+        "anyone else can decide for you, bud.\r",
+        "{STRVAR_1 3, 0, 0}!\n",
+        "You can overcome any difficulties\f",
+        "with your friendship with your Pokémon."
+      ]
+    },
+    {
+      "id": "msg_0143_D49R0107_00007",
+      "en_US": "It’s your statue!\r"
+    },
+    {
+      "id": "msg_0143_D49R0107_00008",
+      "en_US": [
+        "The statue of the Pokémon\n",
+        "you’ve shared your journey\f",
+        "with, helping each other and\f",
+        "cultivating your friendship!"
+      ]
+    },
+    {
+      "id": "msg_0143_D49R0107_00009",
+      "en_US": [
+        "It is the statue of a Medalist Pokémon.\r",
+        "Do you want to replace it with another?"
+      ]
+    },
+    {
+      "id": "msg_0143_D49R0107_00010",
+      "en_US": [
+        "You can place a statue of a\n",
+        "Medalist Pokémon that has\f",
+        "earned five medals.\r",
+        "Do you want to place a statue?"
+      ]
+    },
+    {
+      "id": "msg_0143_D49R0107_00011",
+      "en_US": [
+        "It is the statue of a Medalist Pokémon.\r",
+        "Do you want to replace it with another?"
+      ]
+    },
+    {
+      "id": "msg_0143_D49R0107_00012",
+      "en_US": [
+        "You can place a statue of a\n",
+        "Medalist Pokémon that has\f",
+        "earned five medals.\r",
+        "Do you want to place a statue?"
+      ]
+    },
+    {
+      "id": "msg_0143_D49R0107_00013",
+      "en_US": [
+        "It is the statue of a Medalist Pokémon.\r",
+        "Do you want to replace it with another?"
+      ]
+    }
+  ]
+}

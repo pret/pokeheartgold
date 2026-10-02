@@ -1,4 +1,4 @@
-#include <nitro/fs/overlay.h>
+
 #pragma once
 .public MapObjectMovementCmd098_Step2
 .public MapObjectMovementCmd090_Step1

@@ -1,4 +1,4 @@
-	.include "asm/macros.inc"
+	.include "macros.inc"
 	.include "overlay_80_0222BDF4.inc"
 	.include "global.inc"
 
@@ -7688,13 +7688,13 @@ ov80_0223BDB4: ; 0x0223BDB4
 	.word ov81_0223DD60
 	.word ov81_0223DEA8
 	.word ov81_0223E234
-	.word FS_OVERLAY_ID(OVY_81)
+	.word SDK_OVERLAY_OVY_81_ID
 
 ov80_0223BDC4: ; 0x0223BDC4
 	.word ov81_0223DD60
 	.word ov81_0223DEA8
 	.word ov81_0223E234
-	.word FS_OVERLAY_ID(OVY_81)
+	.word SDK_OVERLAY_OVY_81_ID
 
 ov80_0223BDD4: ; 0x0223BDD4
 	.byte 0x00, 0x05, 0x05, 0x05, 0x05, 0x07, 0x07, 0x08, 0x09, 0x00, 0x00, 0x00
@@ -7706,7 +7706,7 @@ ov80_0223BDEC: ; 0x0223BDEC
 	.word ov82_0223DD60
 	.word ov82_0223DE20
 	.word ov82_0223DF74
-	.word FS_OVERLAY_ID(OVY_82)
+	.word SDK_OVERLAY_OVY_82_ID
 
 ov80_0223BDFC: ; 0x0223BDFC
 	.byte 0x00, 0x01, 0x01, 0x01
@@ -7724,13 +7724,13 @@ ov80_0223BE34: ; 0x0223BE34
 	.word ov83_0223DD60
 	.word ov83_0223DE60
 	.word ov83_0223DFBC
-	.word FS_OVERLAY_ID(OVY_83)
+	.word SDK_OVERLAY_OVY_83_ID
 
 ov80_0223BE44: ; 0x0223BE44
 	.word ov83_02242FE8
 	.word ov83_02243108
 	.word ov83_02243268
-	.word FS_OVERLAY_ID(OVY_83)
+	.word SDK_OVERLAY_OVY_83_ID
 
 ov80_0223BE54: ; 0x0223BE54
 	.byte 0x00, 0x03, 0x03, 0x04, 0x04, 0x05, 0x05, 0x07, 0x07, 0x00, 0x00, 0x00
@@ -7747,7 +7747,7 @@ gOverlayTemplate_BattleArcadeGameBoard: ; 0x0223BE78
 	.word BattleArcadeGameBoard_InitOverlay
 	.word BattleArcadeGameBoard_Main
 	.word ov84_0223DFF0
-	.word FS_OVERLAY_ID(OVY_84)
+	.word SDK_OVERLAY_OVY_84_ID
 
 ov80_0223BE88: ; 0x0223BE88
 	.byte 0x06, 0x04, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00

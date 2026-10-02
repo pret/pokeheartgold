@@ -1,4 +1,4 @@
-	.include "asm/macros.inc"
+	.include "macros.inc"
 	.include "msl.inc"
 	.include "global.inc"
 	.public __sinit__

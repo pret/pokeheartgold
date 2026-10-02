@@ -1,0 +1,463 @@
+{
+  "key": 58683,
+  "messages": [
+    {
+      "id": "msg_0716_00000",
+      "en_US": "Prof. Elm"
+    },
+    {
+      "id": "msg_0716_00001",
+      "en_US": [
+        "Hello, {STRVAR_1 3, 0, 0}?\r",
+        "What’s wrong?\n",
+        "If you’re nearby, you should come talk\f",
+        "in person!"
+      ]
+    },
+    {
+      "id": "msg_0716_00002",
+      "en_US": [
+        "Hello, {STRVAR_1 3, 0, 0}?\r",
+        "What’s wrong?\n",
+        "If you’re nearby, you should come talk\f",
+        "to me in person!"
+      ]
+    },
+    {
+      "id": "msg_0716_00003",
+      "en_US": [
+        "Hello, {STRVAR_1 3, 0, 0}?\r",
+        "Try not to overdo it.\n",
+        "Be sure to heal your Pokémon if they\f",
+        "are hurt."
+      ]
+    },
+    {
+      "id": "msg_0716_00004",
+      "en_US": [
+        "Hello, {STRVAR_1 3, 0, 0}?\r",
+        "Try not to overdo it.\n",
+        "Be sure to heal your Pokémon if they\f",
+        "are hurt."
+      ]
+    },
+    {
+      "id": "msg_0716_00005",
+      "en_US": [
+        "Oh, {STRVAR_1 3, 0, 0}...\r",
+        "I just stepped away for a second...\n",
+        "How could...?"
+      ]
+    },
+    {
+      "id": "msg_0716_00006",
+      "en_US": [
+        "Oh, {STRVAR_1 3, 0, 0}...\r",
+        "I just stepped away for a second...\n",
+        "How could...?"
+      ]
+    },
+    {
+      "id": "msg_0716_00007",
+      "en_US": [
+        "Hello, {STRVAR_1 3, 0, 0}?\r",
+        "We’re checking the Egg now. It does\n",
+        "appear to be a Pokémon Egg.\r",
+        "We’ll do a few more tests!"
+      ]
+    },
+    {
+      "id": "msg_0716_00008",
+      "en_US": [
+        "Hello, {STRVAR_1 3, 0, 0}?\r",
+        "We’re checking the Egg now. It does\n",
+        "appear to be a Pokémon Egg.\r",
+        "We’ll do a few more tests!"
+      ]
+    },
+    {
+      "id": "msg_0716_00009",
+      "en_US": [
+        "Hello, {STRVAR_1 3, 0, 0}?\r",
+        "Did you see my assistant? He’s at the\n",
+        "Poké Mart in Violet City.\r",
+        "He’s got something very important, so\n",
+        "be sure to pick it up!"
+      ]
+    },
+    {
+      "id": "msg_0716_00010",
+      "en_US": [
+        "Hello, {STRVAR_1 3, 0, 0}?\r",
+        "Did you see my assistant? He’s at the\n",
+        "Poké Mart in Violet City.\r",
+        "He’s got something very important, so\n",
+        "be sure to pick it up!"
+      ]
+    },
+    {
+      "id": "msg_0716_00011",
+      "en_US": [
+        "Hello, {STRVAR_1 3, 0, 0}?\r",
+        "How’s the Egg? Has anything changed?\r",
+        "If anything happens, please call."
+      ]
+    },
+    {
+      "id": "msg_0716_00012",
+      "en_US": [
+        "Hello, {STRVAR_1 3, 0, 0}?\r",
+        "How’s the Egg? Has anything changed?\r",
+        "If anything happens, please call."
+      ]
+    },
+    {
+      "id": "msg_0716_00013",
+      "en_US": [
+        "Hey, {STRVAR_1 3, 0, 0}, this is great news!\n",
+        "A Pokémon hatched from that Egg!\r",
+        "I knew that giving that Egg to you,\n",
+        "{STRVAR_1 3, 0, 0}, was the right thing to\f",
+        "do. I just knew it!\r",
+        "You should come here and show me what\n",
+        "kind of Pokémon it is!"
+      ]
+    },
+    {
+      "id": "msg_0716_00014",
+      "en_US": [
+        "Hey, {STRVAR_1 3, 0, 0}, this is great news!\n",
+        "A Pokémon hatched from that Egg!\r",
+        "I knew that giving that Egg to you,\n",
+        "{STRVAR_1 3, 0, 0}, was the right thing to\f",
+        "do. I just knew it!\r",
+        "You should come here and show me what\n",
+        "kind of Pokémon it is!"
+      ]
+    },
+    {
+      "id": "msg_0716_00015",
+      "en_US": [
+        "Hello, {STRVAR_1 3, 0, 0}?\r",
+        "I just made a new discovery.\r",
+        "The time it takes for an Egg to hatch\n",
+        "depends on the Pokémon."
+      ]
+    },
+    {
+      "id": "msg_0716_00016",
+      "en_US": [
+        "Hello, {STRVAR_1 3, 0, 0}?\r",
+        "I just made a new discovery.\r",
+        "The time it takes for an Egg to hatch\n",
+        "depends on the Pokémon."
+      ]
+    },
+    {
+      "id": "msg_0716_00017",
+      "en_US": [
+        "Hello, {STRVAR_1 3, 0, 0}?\r",
+        "It’s still a mystery what kinds of moves\n",
+        "hatched Pokémon have.\r",
+        "We’re investigating that now."
+      ]
+    },
+    {
+      "id": "msg_0716_00018",
+      "en_US": [
+        "Hello, {STRVAR_1 3, 0, 0}?\r",
+        "It’s still a mystery what kinds of moves\n",
+        "hatched Pokémon have.\r",
+        "We’re investigating that now."
+      ]
+    },
+    {
+      "id": "msg_0716_00019",
+      "en_US": [
+        "Hello, {STRVAR_1 3, 0, 0}?\r",
+        "There’s something strange on\n",
+        "the radio.\r",
+        "Is something happening in Goldenrod?"
+      ]
+    },
+    {
+      "id": "msg_0716_00020",
+      "en_US": [
+        "Hello, {STRVAR_1 3, 0, 0}?\r",
+        "There’s something strange on\n",
+        "the radio.\r",
+        "Is something happening in Goldenrod?"
+      ]
+    },
+    {
+      "id": "msg_0716_00021",
+      "en_US": [
+        "Hello, is this {STRVAR_1 3, 0, 0}?\r",
+        "Just one more Badge to go before you\n",
+        "collect all the Johto Badges!\r",
+        "Blackthorn’s Gym Leader is said to be a\n",
+        "pretty powerful Dragon Tamer!"
+      ]
+    },
+    {
+      "id": "msg_0716_00022",
+      "en_US": [
+        "Hello, is this {STRVAR_1 3, 0, 0}?\r",
+        "Just one more Badge to go before you\n",
+        "collect all the Johto Badges!\r",
+        "Blackthorn’s Gym Leader is said to be a\n",
+        "pretty powerful Dragon Tamer!"
+      ]
+    },
+    {
+      "id": "msg_0716_00023",
+      "en_US": [
+        "Hello, {STRVAR_1 3, 0, 0}?\n",
+        "You seem to be doing well.\r",
+        "You’ve done so well, I have nothing to\n",
+        "worry about for you.\r",
+        "I think you could do anything you try!"
+      ]
+    },
+    {
+      "id": "msg_0716_00024",
+      "en_US": [
+        "Hello, {STRVAR_1 3, 0, 0}?\n",
+        "You seem to be doing well.\r",
+        "You’ve done so well, I have nothing to\n",
+        "worry about for you.\r",
+        "I think you could do anything you try!"
+      ]
+    },
+    {
+      "id": "msg_0716_00025",
+      "en_US": [
+        "Hello, {STRVAR_1 3, 0, 0}?\r",
+        "I have something here for you from\n",
+        "Professor Oak.\r",
+        "Could you swing by my Lab?\n",
+        "See you later!"
+      ]
+    },
+    {
+      "id": "msg_0716_00026",
+      "en_US": [
+        "Hello, {STRVAR_1 3, 0, 0}?\r",
+        "I have something here for you from\n",
+        "Professor Oak.\r",
+        "Could you swing by my Lab?\n",
+        "See you later!"
+      ]
+    },
+    {
+      "id": "msg_0716_00027",
+      "en_US": [
+        "Hello, {STRVAR_1 3, 0, 0}?\r",
+        "There are so many different ways that\n",
+        "Pokémon evolve, aren’t there?!\r",
+        "Some Pokémon don’t even evolve until\n",
+        "they meet certain conditions first!"
+      ]
+    },
+    {
+      "id": "msg_0716_00028",
+      "en_US": [
+        "Hello, {STRVAR_1 3, 0, 0}?\r",
+        "There are so many different ways that\n",
+        "Pokémon evolve, aren’t there?!\r",
+        "Some Pokémon don’t even evolve until\n",
+        "they meet certain conditions first!"
+      ]
+    },
+    {
+      "id": "msg_0716_00029",
+      "en_US": [
+        "Hello, {STRVAR_1 3, 0, 0}?\r",
+        "I expect that there are some Pokémon\n",
+        "in the Kanto region that I don’t know.\r",
+        "There are probably also methods of\n",
+        "evolution that I’m not familiar with yet.\r",
+        "I should use that perspective and\n",
+        "discover what I can!"
+      ]
+    },
+    {
+      "id": "msg_0716_00030",
+      "en_US": [
+        "Hello, {STRVAR_1 3, 0, 0}?\r",
+        "I expect that there are some Pokémon\n",
+        "in the Kanto region that I don’t know.\r",
+        "There are probably also methods of\n",
+        "evolution that I’m not familiar with yet.\r",
+        "I should use that perspective and\n",
+        "discover what I can!"
+      ]
+    },
+    {
+      "id": "msg_0716_00031",
+      "en_US": [
+        "Hello, {STRVAR_1 3, 0, 0}?\r",
+        "It seems that Pokémon that have been\n",
+        "infected with Pokérus level up better.\f",
+        "We’re not quite sure why..."
+      ]
+    },
+    {
+      "id": "msg_0716_00032",
+      "en_US": [
+        "Hello, {STRVAR_1 3, 0, 0}?\r",
+        "It seems that Pokémon that have been\n",
+        "infected with Pokérus level up better.\f",
+        "We’re not quite sure why..."
+      ]
+    },
+    {
+      "id": "msg_0716_00033",
+      "en_US": [
+        "H-hello? {STRVAR_1 3, 0, 0}?\r",
+        "It’s a disaster!\n",
+        "Uh, um, it’s just terrible!\r",
+        "What should I do?\n",
+        "It... Oh, no...\r",
+        "Please get back here now!"
+      ]
+    },
+    {
+      "id": "msg_0716_00034",
+      "en_US": [
+        "H-hello? {STRVAR_1 3, 0, 0}?\r",
+        "It’s a disaster!\n",
+        "Uh, um, it’s just terrible!\r",
+        "What should I do?\n",
+        "It... Oh, no...\r",
+        "Please get back here now!"
+      ]
+    },
+    {
+      "id": "msg_0716_00035",
+      "en_US": [
+        "Hello, {STRVAR_1 3, 0, 0}?\n",
+        "We’ve discovered something!\r",
+        "The details are...well, I can’t really\n",
+        "say anything, but we want you to carry\f",
+        "that Egg!\r",
+        "My assistant is at the Poké Mart in\n",
+        "Violet City. Could you go meet him and\f",
+        "pick up that Egg?"
+      ]
+    },
+    {
+      "id": "msg_0716_00036",
+      "en_US": [
+        "Hello, {STRVAR_1 3, 0, 0}?\n",
+        "We’ve discovered something!\r",
+        "The details are...well, I can’t really\n",
+        "say anything, but we want you to carry\f",
+        "that Egg!\r",
+        "My assistant is at the Poké Mart in\n",
+        "Violet City. Could you go meet him and\f",
+        "pick up that Egg?"
+      ]
+    },
+    {
+      "id": "msg_0716_00037",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}, how are things going?\r",
+        "I called because something weird is\n",
+        "happening with the radio broadcasts.\r",
+        "They were talking about Team Rocket.\r",
+        "{STRVAR_1 3, 0, 0}, do you know anything\n",
+        "about it?\r",
+        "Maybe Team Rocket has returned.\n",
+        "No, that just can’t be true.\r",
+        "Sorry to bug you. Take care!"
+      ]
+    },
+    {
+      "id": "msg_0716_00038",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}, how are things going?\r",
+        "I called because something weird is\n",
+        "happening with the radio broadcasts.\r",
+        "They were talking about Team Rocket.\r",
+        "{STRVAR_1 3, 0, 0}, do you know anything\n",
+        "about it?\r",
+        "Maybe Team Rocket has returned.\n",
+        "No, that just can’t be true.\r",
+        "Sorry to bug you. Take care!"
+      ]
+    },
+    {
+      "id": "msg_0716_00039",
+      "en_US": [
+        "Hello, {STRVAR_1 3, 0, 0}?\n",
+        "How’s it going?\r",
+        "I’ve gotten hold of something neat.\n",
+        "Swing by my Lab and pick it up!\r",
+        "See you later!"
+      ]
+    },
+    {
+      "id": "msg_0716_00040",
+      "en_US": [
+        "Hello, {STRVAR_1 3, 0, 0}?\n",
+        "How’s it going?\r",
+        "I’ve gotten hold of something neat.\n",
+        "Swing by my Lab and pick it up!\r",
+        "See you later!"
+      ]
+    },
+    {
+      "id": "msg_0716_00041",
+      "en_US": [
+        "Hello, {STRVAR_1 3, 0, 0}?\r",
+        "I have something here for you.\n",
+        "Could you swing by my Lab?\r",
+        "See you later!"
+      ]
+    },
+    {
+      "id": "msg_0716_00042",
+      "en_US": [
+        "Hello, {STRVAR_1 3, 0, 0}?\r",
+        "I have something here for you.\n",
+        "Could you swing by my Lab?\r",
+        "See you later!"
+      ]
+    },
+    {
+      "id": "msg_0716_00043",
+      "en_US": [
+        "Hello, {STRVAR_1 3, 0, 0}?\r",
+        "I discovered an odd thing.\n",
+        "Apparently there’s something called\f",
+        "Pokérus that infects Pokémon.\r",
+        "Yes, it’s like a virus, so it’s\n",
+        "called Pokérus.\r",
+        "It multiplies fast and infects other\n",
+        "Pokémon, too. But that’s all.\r",
+        "It doesn’t seem to do anything, and\n",
+        "it goes away over time.\r",
+        "I guess it’s nothing to worry\n",
+        "about. Bye!"
+      ]
+    },
+    {
+      "id": "msg_0716_00044",
+      "en_US": [
+        "Hello, {STRVAR_1 3, 0, 0}?\r",
+        "I discovered an odd thing.\n",
+        "Apparently there’s something called\f",
+        "Pokérus that infects Pokémon.\r",
+        "Yes, it’s like a virus, so it’s\n",
+        "called Pokérus.\r",
+        "It multiplies fast and infects other\n",
+        "Pokémon, too. But that’s all.\r",
+        "It doesn’t seem to do anything, and\n",
+        "it goes away over time.\r",
+        "I guess it’s nothing to worry\n",
+        "about. Bye!"
+      ]
+    }
+  ]
+}

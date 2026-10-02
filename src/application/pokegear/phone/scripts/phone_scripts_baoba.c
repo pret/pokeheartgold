@@ -1,7 +1,7 @@
 #include "global.h"
 
 #include "application/pokegear/phone/phone_internal.h"
-#include "msgdata/msg/msg_0667.h"
+#include "files/msgdata/msg/msg_0667.h"
 
 #include "safari_zone.h"
 #include "sys_vars.h"

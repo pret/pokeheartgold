@@ -1,0 +1,39 @@
+{
+  "key": 9231,
+  "messages": [
+    {
+      "id": "msg_0257_P01R0103_00000",
+      "en_US": [
+        "Welcome to the S.S. Aqua!\r",
+        "Your Ticket is...right there.\n",
+        "Please come through.\r"
+      ]
+    },
+    {
+      "id": "msg_0257_P01R0103_00001",
+      "en_US": [
+        "Operating a ship every day can wear\n",
+        "you out! It’s not running today.\r",
+        "It leaves for Olivine City on Wednesdays\n",
+        "and Sundays!"
+      ]
+    },
+    {
+      "id": "msg_0257_P01R0103_00002",
+      "en_US": [
+        "Welcome to the S.S. Aqua!\r",
+        "Your Ticket is...right there.\n",
+        "Please come through."
+      ]
+    },
+    {
+      "id": "msg_0257_P01R0103_00003",
+      "en_US": [
+        "You came from Johto?\r",
+        "I envy you!\n",
+        "I hear many rare Pokémon live\f",
+        "over there."
+      ]
+    }
+  ]
+}

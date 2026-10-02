@@ -1,0 +1,127 @@
+{
+  "key": 30168,
+  "messages": [
+    {
+      "id": "msg_0710_00000",
+      "en_US": "Walt"
+    },
+    {
+      "id": "msg_0710_00001",
+      "en_US": [
+        "Mostly I breathe fire, but want\n",
+        "to exchange phone numbers? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0710_00002",
+      "en_US": [
+        "All right!\r",
+        "Don’t worry. I’ll stop breathing fire\n",
+        "while we’re talking on the phone...\f",
+        "so give me a call sometime!"
+      ]
+    },
+    {
+      "id": "msg_0710_00003",
+      "en_US": [
+        "I knew that us Firebreathers weren’t\n",
+        "particularly well liked..."
+      ]
+    },
+    {
+      "id": "msg_0710_00004",
+      "en_US": [
+        "Oh!\n",
+        "Would you like to breathe fire with me?\r",
+        "...Oh, you don’t.\r",
+        "Would you like to exchange phone\n",
+        "numbers with me after all? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0710_00005",
+      "en_US": [
+        "It’s all right.\n",
+        "I promise I won’t burn you, so you can\f",
+        "come talk to me in person."
+      ]
+    },
+    {
+      "id": "msg_0710_00006",
+      "en_US": [
+        "You know, a lot of people\n",
+        "misunderstand.\r",
+        "It may seem like we Firebreathers use\n",
+        "fire to threaten our Pokémon while\f",
+        "training them.\r",
+        "But that’s not the case at all!\n",
+        "We just train our Pokémon normally!\f",
+        "Isn’t that right, {STRVAR_1 0, 10, 0}?\r",
+        "Breathing fire is just a hobby!"
+      ]
+    },
+    {
+      "id": "msg_0710_00007",
+      "en_US": [
+        "Buoahhhbobobo!\r",
+        "What do you think?\n",
+        "I discovered a new technique\f",
+        "for breathing fire!\r",
+        "Well, not like you can tell over\n",
+        "the phone...\r",
+        "Never mind that. I caught a wild\n",
+        "{STRVAR_1 0, 11, 0} yesterday.\r",
+        "I think I’ll start training it soon."
+      ]
+    },
+    {
+      "id": "msg_0710_00008",
+      "en_US": [
+        "Do you like {STRVAR_1 0, 11, 0}?\r",
+        "As for me...they’re all right. There’s\n",
+        "all kinds of things in this world."
+      ]
+    },
+    {
+      "id": "msg_0710_00009",
+      "en_US": [
+        "Buoahhhbobobo!\n",
+        "Today is a great day!\r",
+        "You should have another battle with me!\n",
+        "I’m waiting and practicing on\f",
+        "{STRVAR_1 4, 3, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0710_00010",
+      "en_US": [
+        "I’m all ready, and waiting for you on\n",
+        "{STRVAR_1 4, 3, 0}, so hurry up!"
+      ]
+    },
+    {
+      "id": "msg_0710_00011",
+      "en_US": [
+        "You know how there are so many\n",
+        "different types of Pokémon, right?\r",
+        "Each type has good points and bad\n",
+        "points, so it’s not easy to say which\f",
+        "type is the best.\r",
+        "However...\r",
+        "My choice has to be the Fire type!\f",
+        "Buoahhhbobobo!!"
+      ]
+    },
+    {
+      "id": "msg_0710_00012",
+      "en_US": [
+        "Did you know that today’s the\n",
+        "Bug-Catching Competition?\r",
+        "I’m not that into Bug-type Pokémon,\n",
+        "but the National Park isn’t that far\f",
+        "from Route 35...\f",
+        "I thought I might go check it out."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "key": 34442,
+  "messages": [
+    {
+      "id": "msg_0008_00000",
+      "en_US": [
+        "The save data could not be\n",
+        "accessed.\n",
+        "\n",
+        "Please turn the power off and\n",
+        "reinsert the DS Game Card."
+      ]
+    },
+    {
+      "id": "msg_0008_00001",
+      "en_US": [
+        "The data could not be read.\n",
+        "\n",
+        "Please turn off the power, then\n",
+        "remove and reinsert the Game Boy\n",
+        "Advance Game Pak."
+      ]
+    }
+  ]
+}

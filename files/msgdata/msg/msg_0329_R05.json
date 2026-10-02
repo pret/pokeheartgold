@@ -1,0 +1,21 @@
+{
+  "key": 18187,
+  "messages": [
+    {
+      "id": "msg_0329_R05_00000",
+      "en_US": [
+        "The road is closed until the problem at\n",
+        "the Power Plant is solved."
+      ]
+    },
+    {
+      "id": "msg_0329_R05_00001",
+      "en_US": [
+        "Underground Path\r",
+        "You can travel from Cerulean City to\n",
+        "Vermilion City on this path under\f",
+        "Saffron City."
+      ]
+    }
+  ]
+}

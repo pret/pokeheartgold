@@ -18,7 +18,7 @@
 #include "battle/battle_controller.h"
 #include "battle/battle_controller_opponent.h"
 #include "battle/battle_system.h"
-#include "msgdata/msg/msg_0197.h"
+#include "files/msgdata/msg/msg_0197.h"
 
 #include "dex_mon_measures.h"
 #include "filesystem.h"
@@ -272,7 +272,7 @@ void BattleBuffer_Clear(BattleContext *ctx, int battlerId) {
     }
 }
 
-int GetBattlerVar(BattleContext *ctx, int battlerId, u32 id, void *data) {
+int BattleMon_Get(BattleContext *ctx, int battlerId, u32 id, void *data) {
     BattleMon *mon = &ctx->battleMons[battlerId];
 
     switch (id) {
@@ -479,7 +479,7 @@ int GetBattlerVar(BattleContext *ctx, int battlerId, u32 id, void *data) {
     case BMON_DATA_FORM:
         return mon->form;
     case BMON_DATA_TEMP:
-        return GetBattlerVar(ctx, battlerId, ctx->tempData, data);
+        return BattleMon_Get(ctx, battlerId, ctx->tempData, data);
     default:
         GF_ASSERT(FALSE);
     }
@@ -1168,14 +1168,14 @@ u8 CheckSortSpeed(BattleSystem *battleSystem, BattleContext *ctx, int battlerId1
             if (ctx->turnData[battlerId1].struggleFlag) {
                 moveNo1 = MOVE_STRUGGLE;
             } else {
-                moveNo1 = GetBattlerVar(ctx, battlerId1, BMON_DATA_MOVE1 + movePos1, NULL);
+                moveNo1 = BattleMon_Get(ctx, battlerId1, BMON_DATA_MOVE1 + movePos1, NULL);
             }
         }
         if (action2 == 1) { // fight button
             if (ctx->turnData[battlerId2].struggleFlag) {
                 moveNo2 = MOVE_STRUGGLE;
             } else {
-                moveNo2 = GetBattlerVar(ctx, battlerId2, BMON_DATA_MOVE1 + movePos2, NULL);
+                moveNo2 = BattleMon_Get(ctx, battlerId2, BMON_DATA_MOVE1 + movePos2, NULL);
             }
         }
         movePriority1 = ctx->trainerAIData.moveData[moveNo1].priority;
@@ -1560,7 +1560,7 @@ void CopyBattleMonToPartyMon(BattleSystem *battleSystem, BattleContext *ctx, int
         ov12_022585A8(ctx, battlerId);
     }
 
-    BattleController_EmitBattleMonToPartyMonCopy(battleSystem, ctx, battlerId);
+    BattleController_EmitUpdatePartyMon(battleSystem, ctx, battlerId);
 }
 
 void LockBattlerIntoCurrentMove(BattleSystem *battleSystem, BattleContext *ctx, int battlerId) {
@@ -1576,7 +1576,7 @@ void UnlockBattlerOutOfCurrentMove(BattleSystem *battleSystem, BattleContext *ct
     ctx->battleMons[battlerId].unk88.furyCutterCount = 0;
 }
 
-int GetBattlerStatusCondition(BattleContext *ctx, int battlerId) {
+int Battler_GetStatusCondition(BattleContext *ctx, int battlerId) {
     if (ctx->battleMons[battlerId].status & STATUS_SLEEP) {
         return CONDITION_SLEEP;
     } else if (ctx->battleMons[battlerId].status & STATUS_POISON) {
@@ -2257,7 +2257,7 @@ int ov12_02251D28(BattleSystem *battleSystem, BattleContext *ctx, int moveNo, in
     movePower = ctx->trainerAIData.moveData[moveNo].power;
 
     // STAB
-    if (!(ctx->battleStatus & BATTLE_STATUS_IGNORE_TYPE_EFFECTIVENESS) && (GetBattlerVar(ctx, battlerIdAttacker, BMON_DATA_TYPE_1, NULL) == moveType || GetBattlerVar(ctx, battlerIdAttacker, BMON_DATA_TYPE_2, NULL) == moveType)) {
+    if (!(ctx->battleStatus & BATTLE_STATUS_IGNORE_TYPE_EFFECTIVENESS) && (BattleMon_Get(ctx, battlerIdAttacker, BMON_DATA_TYPE_1, NULL) == moveType || BattleMon_Get(ctx, battlerIdAttacker, BMON_DATA_TYPE_2, NULL) == moveType)) {
         if (GetBattlerAbility(ctx, battlerIdAttacker) == ABILITY_ADAPTABILITY) {
             damage *= 2;
         } else {
@@ -2283,7 +2283,7 @@ int ov12_02251D28(BattleSystem *battleSystem, BattleContext *ctx, int moveNo, in
             }
             if (sTypeEffectiveness[i][TYPETABLE_ATTACKER] == moveType) {
                 // sTypeEffectiveness[i][TYPETABLE_DEFENDER] -> sp10
-                if (sTypeEffectiveness[i][TYPETABLE_DEFENDER] == GetBattlerVar(ctx, battlerIdTarget, BMON_DATA_TYPE_1, NULL)) {
+                if (sTypeEffectiveness[i][TYPETABLE_DEFENDER] == BattleMon_Get(ctx, battlerIdTarget, BMON_DATA_TYPE_1, NULL)) {
                     if (ov12_02251C74(ctx, battlerIdAttacker, battlerIdTarget, i) == TRUE) {
                         damage = ov12_022583B4(ctx, battlerIdAttacker, sTypeEffectiveness[i][TYPETABLE_EFFECT], damage, movePower, moveStatusFlag);
                         if (sTypeEffectiveness[i][TYPETABLE_EFFECT] == TYPE_MUL_SUPER_EFFECTIVE) {
@@ -2291,7 +2291,7 @@ int ov12_02251D28(BattleSystem *battleSystem, BattleContext *ctx, int moveNo, in
                         }
                     }
                 }
-                if (sTypeEffectiveness[i][TYPETABLE_DEFENDER] == GetBattlerVar(ctx, battlerIdTarget, BMON_DATA_TYPE_2, NULL) && GetBattlerVar(ctx, battlerIdTarget, BMON_DATA_TYPE_1, NULL) != GetBattlerVar(ctx, battlerIdTarget, BMON_DATA_TYPE_2, NULL)) {
+                if (sTypeEffectiveness[i][TYPETABLE_DEFENDER] == BattleMon_Get(ctx, battlerIdTarget, BMON_DATA_TYPE_2, NULL) && BattleMon_Get(ctx, battlerIdTarget, BMON_DATA_TYPE_1, NULL) != BattleMon_Get(ctx, battlerIdTarget, BMON_DATA_TYPE_2, NULL)) {
                     if (ov12_02251C74(ctx, battlerIdAttacker, battlerIdTarget, i) == TRUE) {
                         damage = ov12_022583B4(ctx, battlerIdAttacker, sTypeEffectiveness[i][TYPETABLE_EFFECT], damage, movePower, moveStatusFlag);
                         if (sTypeEffectiveness[i][TYPETABLE_EFFECT] == TYPE_MUL_SUPER_EFFECTIVE) {
@@ -2600,7 +2600,7 @@ BOOL CheckMoveCallsOtherMove(u16 moveNo) {
 }
 
 BOOL CurseUserIsGhost(BattleContext *ctx, u16 moveNo, int battlerId) {
-    return moveNo == MOVE_CURSE && (GetBattlerVar(ctx, battlerId, BMON_DATA_TYPE_1, NULL) == TYPE_GHOST || GetBattlerVar(ctx, battlerId, BMON_DATA_TYPE_2, NULL) == TYPE_GHOST);
+    return moveNo == MOVE_CURSE && (BattleMon_Get(ctx, battlerId, BMON_DATA_TYPE_1, NULL) == TYPE_GHOST || BattleMon_Get(ctx, battlerId, BMON_DATA_TYPE_2, NULL) == TYPE_GHOST);
 }
 
 BOOL CanStealHeldItem(BattleSystem *battleSystem, BattleContext *ctx, int battlerId) {
@@ -2745,7 +2745,7 @@ BOOL CantEscape(BattleSystem *battleSystem, BattleContext *ctx, int battlerId, B
     battlerIdAbility = CheckAbilityActive(battleSystem, ctx, CHECK_ABILITY_OPPOSING_SIDE_HP, battlerId, ABILITY_ARENA_TRAP);
     if (battlerIdAbility) {
         if (!(ctx->fieldCondition & FIELD_CONDITION_GRAVITY) && item != HOLD_EFFECT_SPEED_DOWN_GROUNDED) {
-            if (GetBattlerAbility(ctx, battlerId) != ABILITY_LEVITATE && !ctx->battleMons[battlerId].unk88.magnetRiseTurns && GetBattlerVar(ctx, battlerId, BMON_DATA_TYPE_1, NULL) != TYPE_FLYING && GetBattlerVar(ctx, battlerId, BMON_DATA_TYPE_2, NULL) != TYPE_FLYING) {
+            if (GetBattlerAbility(ctx, battlerId) != ABILITY_LEVITATE && !ctx->battleMons[battlerId].unk88.magnetRiseTurns && BattleMon_Get(ctx, battlerId, BMON_DATA_TYPE_1, NULL) != TYPE_FLYING && BattleMon_Get(ctx, battlerId, BMON_DATA_TYPE_2, NULL) != TYPE_FLYING) {
                 if (msg == NULL) {
                     return TRUE;
                 }
@@ -2768,7 +2768,7 @@ BOOL CantEscape(BattleSystem *battleSystem, BattleContext *ctx, int battlerId, B
     }
 
     battlerIdAbility = CheckAbilityActive(battleSystem, ctx, CHECK_ABILITY_OPPOSING_SIDE_HP, battlerId, ABILITY_MAGNET_PULL);
-    if (battlerIdAbility && (GetBattlerVar(ctx, battlerId, BMON_DATA_TYPE_1, NULL) == TYPE_STEEL || GetBattlerVar(ctx, battlerId, BMON_DATA_TYPE_2, NULL) == TYPE_STEEL)) {
+    if (battlerIdAbility && (BattleMon_Get(ctx, battlerId, BMON_DATA_TYPE_1, NULL) == TYPE_STEEL || BattleMon_Get(ctx, battlerId, BMON_DATA_TYPE_2, NULL) == TYPE_STEEL)) {
         if (msg == NULL) {
             return TRUE;
         }
@@ -3606,7 +3606,7 @@ BOOL CheckAbilityEffectOnHit(BattleSystem *battleSystem, BattleContext *ctx, int
             moveType = ctx->trainerAIData.moveData[ctx->moveNoCur].type;
         }
 
-        if (ctx->battleMons[ctx->battlerIdTarget].hp && !(ctx->moveStatusFlag & MOVE_STATUS_FAIL) && ctx->moveNoCur != MOVE_STRUGGLE && (ctx->selfTurnData[ctx->battlerIdTarget].physicalDamage || ctx->selfTurnData[ctx->battlerIdTarget].specialDamage) && !(ctx->battleStatus2 & BATTLE_STATUS2_UTURN) && ctx->trainerAIData.moveData[ctx->moveNoCur].power && GetBattlerVar(ctx, ctx->battlerIdTarget, BMON_DATA_TYPE_1, NULL) != moveType && GetBattlerVar(ctx, ctx->battlerIdTarget, BMON_DATA_TYPE_2, NULL) != moveType) {
+        if (ctx->battleMons[ctx->battlerIdTarget].hp && !(ctx->moveStatusFlag & MOVE_STATUS_FAIL) && ctx->moveNoCur != MOVE_STRUGGLE && (ctx->selfTurnData[ctx->battlerIdTarget].physicalDamage || ctx->selfTurnData[ctx->battlerIdTarget].specialDamage) && !(ctx->battleStatus2 & BATTLE_STATUS2_UTURN) && ctx->trainerAIData.moveData[ctx->moveNoCur].power && BattleMon_Get(ctx, ctx->battlerIdTarget, BMON_DATA_TYPE_1, NULL) != moveType && BattleMon_Get(ctx, ctx->battlerIdTarget, BMON_DATA_TYPE_2, NULL) != moveType) {
             *script = BATTLE_SUBSCRIPT_COLOR_CHANGE;
             ctx->msgTemp = moveType;
             ret = TRUE;
@@ -4151,7 +4151,7 @@ BOOL CheckItemGradualHPRestore(BattleSystem *battleSystem, BattleContext *ctx, i
             }
             break;
         case HOLD_EFFECT_HP_RESTORE_PSN_TYPE: // black sludge
-            if (GetBattlerVar(ctx, battlerId, BMON_DATA_TYPE_1, NULL) == TYPE_POISON || GetBattlerVar(ctx, battlerId, BMON_DATA_TYPE_2, NULL) == TYPE_POISON) {
+            if (BattleMon_Get(ctx, battlerId, BMON_DATA_TYPE_1, NULL) == TYPE_POISON || BattleMon_Get(ctx, battlerId, BMON_DATA_TYPE_2, NULL) == TYPE_POISON) {
                 if (ctx->battleMons[battlerId].hp < ctx->battleMons[battlerId].maxHp) {
                     ctx->hpCalc = DamageDivide(ctx->battleMons[battlerId].maxHp, 16);
                     script = BATTLE_SUBSCRIPT_RESTORE_A_LITTLE_HP;
@@ -4637,11 +4637,11 @@ BOOL BattlerCanSwitch(BattleSystem *battleSystem, BattleContext *ctx, int battle
         ret = TRUE;
     }
 
-    if ((GetBattlerAbility(ctx, battlerId) != ABILITY_SHADOW_TAG && CheckAbilityActive(battleSystem, ctx, CHECK_ABILITY_OPPOSING_SIDE_HP, battlerId, ABILITY_SHADOW_TAG)) || ((GetBattlerVar(ctx, battlerId, BMON_DATA_TYPE_1, NULL) == TYPE_STEEL || GetBattlerVar(ctx, battlerId, BMON_DATA_TYPE_2, NULL) == TYPE_STEEL) && CheckAbilityActive(battleSystem, ctx, CHECK_ABILITY_OPPOSING_SIDE_HP, battlerId, ABILITY_MAGNET_PULL))) {
+    if ((GetBattlerAbility(ctx, battlerId) != ABILITY_SHADOW_TAG && CheckAbilityActive(battleSystem, ctx, CHECK_ABILITY_OPPOSING_SIDE_HP, battlerId, ABILITY_SHADOW_TAG)) || ((BattleMon_Get(ctx, battlerId, BMON_DATA_TYPE_1, NULL) == TYPE_STEEL || BattleMon_Get(ctx, battlerId, BMON_DATA_TYPE_2, NULL) == TYPE_STEEL) && CheckAbilityActive(battleSystem, ctx, CHECK_ABILITY_OPPOSING_SIDE_HP, battlerId, ABILITY_MAGNET_PULL))) {
         ret = TRUE;
     }
 
-    if (((GetBattlerAbility(ctx, battlerId) != ABILITY_LEVITATE && ctx->battleMons[battlerId].unk88.magnetRiseTurns == 0 && GetBattlerVar(ctx, battlerId, BMON_DATA_TYPE_1, NULL) != TYPE_FLYING && GetBattlerVar(ctx, battlerId, BMON_DATA_TYPE_2, NULL) != TYPE_FLYING) || GetBattlerHeldItemEffect(ctx, battlerId) == HOLD_EFFECT_SPEED_DOWN_GROUNDED || (ctx->fieldCondition & FIELD_CONDITION_GRAVITY)) && CheckAbilityActive(battleSystem, ctx, CHECK_ABILITY_OPPOSING_SIDE_HP, battlerId, ABILITY_ARENA_TRAP)) {
+    if (((GetBattlerAbility(ctx, battlerId) != ABILITY_LEVITATE && ctx->battleMons[battlerId].unk88.magnetRiseTurns == 0 && BattleMon_Get(ctx, battlerId, BMON_DATA_TYPE_1, NULL) != TYPE_FLYING && BattleMon_Get(ctx, battlerId, BMON_DATA_TYPE_2, NULL) != TYPE_FLYING) || GetBattlerHeldItemEffect(ctx, battlerId) == HOLD_EFFECT_SPEED_DOWN_GROUNDED || (ctx->fieldCondition & FIELD_CONDITION_GRAVITY)) && CheckAbilityActive(battleSystem, ctx, CHECK_ABILITY_OPPOSING_SIDE_HP, battlerId, ABILITY_ARENA_TRAP)) {
         ret = TRUE;
     }
 
@@ -5393,7 +5393,7 @@ BOOL Battler_CheckWeatherFormChange(BattleSystem *battleSystem, BattleContext *c
                     ctx->battleMons[ctx->battlerIdTemp].ability = GetMonData(mon2, MON_DATA_ABILITY, NULL);
                     ctx->battleMons[ctx->battlerIdTemp].form = GIRATINA_ALTERED;
                     ctx->battleStatus2 |= BATTLE_STATUS2_FORM_CHANGE;
-                    BattleController_EmitBattleMonToPartyMonCopy(battleSystem, ctx, ctx->battlerIdTemp);
+                    BattleController_EmitUpdatePartyMon(battleSystem, ctx, ctx->battlerIdTemp);
                     Heap_Free(mon2);
                     *script = BATTLE_SUBSCRIPT_FORM_CHANGE;
                     ret = TRUE;
@@ -5557,31 +5557,31 @@ int CalcMoveDamage(BattleSystem *battleSystem, BattleContext *ctx, u32 moveNo, u
 
     GF_ASSERT(crit == 1 || crit > 1);
 
-    monAtk = GetBattlerVar(ctx, battlerIdAttacker, BMON_DATA_ATK, NULL);
-    monDef = GetBattlerVar(ctx, battlerIdTarget, BMON_DATA_DEF, NULL);
-    monSpAtk = GetBattlerVar(ctx, battlerIdAttacker, BMON_DATA_SPATK, NULL);
-    monSpDef = GetBattlerVar(ctx, battlerIdTarget, BMON_DATA_SPDEF, NULL);
-    statChangeAtk = GetBattlerVar(ctx, battlerIdAttacker, BMON_DATA_STAT_CHANGE_ATK, NULL) - 6;
-    statChangeDef = GetBattlerVar(ctx, battlerIdTarget, BMON_DATA_STAT_CHANGE_DEF, NULL) - 6;
-    statChangeSpAtk = GetBattlerVar(ctx, battlerIdAttacker, BMON_DATA_STAT_CHANGE_SPATK, NULL) - 6;
-    statChangeSpDef = GetBattlerVar(ctx, battlerIdTarget, BMON_DATA_STAT_CHANGE_SPDEF, NULL) - 6;
-    level = GetBattlerVar(ctx, battlerIdAttacker, BMON_DATA_LEVEL, NULL);
-    calcAttacker.species = GetBattlerVar(ctx, battlerIdAttacker, BMON_DATA_SPECIES, NULL);
-    calcTarget.species = GetBattlerVar(ctx, battlerIdTarget, BMON_DATA_SPECIES, NULL);
-    calcAttacker.hp = GetBattlerVar(ctx, battlerIdAttacker, BMON_DATA_HP, NULL);
-    calcTarget.hp = GetBattlerVar(ctx, battlerIdTarget, BMON_DATA_HP, NULL);
-    calcAttacker.maxHp = GetBattlerVar(ctx, battlerIdAttacker, BMON_DATA_MAXHP, NULL);
-    calcTarget.maxHp = GetBattlerVar(ctx, battlerIdTarget, BMON_DATA_MAXHP, NULL);
-    calcAttacker.status = GetBattlerVar(ctx, battlerIdAttacker, BMON_DATA_STATUS, NULL);
-    calcTarget.status = GetBattlerVar(ctx, battlerIdTarget, BMON_DATA_STATUS, NULL);
+    monAtk = BattleMon_Get(ctx, battlerIdAttacker, BMON_DATA_ATK, NULL);
+    monDef = BattleMon_Get(ctx, battlerIdTarget, BMON_DATA_DEF, NULL);
+    monSpAtk = BattleMon_Get(ctx, battlerIdAttacker, BMON_DATA_SPATK, NULL);
+    monSpDef = BattleMon_Get(ctx, battlerIdTarget, BMON_DATA_SPDEF, NULL);
+    statChangeAtk = BattleMon_Get(ctx, battlerIdAttacker, BMON_DATA_STAT_CHANGE_ATK, NULL) - 6;
+    statChangeDef = BattleMon_Get(ctx, battlerIdTarget, BMON_DATA_STAT_CHANGE_DEF, NULL) - 6;
+    statChangeSpAtk = BattleMon_Get(ctx, battlerIdAttacker, BMON_DATA_STAT_CHANGE_SPATK, NULL) - 6;
+    statChangeSpDef = BattleMon_Get(ctx, battlerIdTarget, BMON_DATA_STAT_CHANGE_SPDEF, NULL) - 6;
+    level = BattleMon_Get(ctx, battlerIdAttacker, BMON_DATA_LEVEL, NULL);
+    calcAttacker.species = BattleMon_Get(ctx, battlerIdAttacker, BMON_DATA_SPECIES, NULL);
+    calcTarget.species = BattleMon_Get(ctx, battlerIdTarget, BMON_DATA_SPECIES, NULL);
+    calcAttacker.hp = BattleMon_Get(ctx, battlerIdAttacker, BMON_DATA_HP, NULL);
+    calcTarget.hp = BattleMon_Get(ctx, battlerIdTarget, BMON_DATA_HP, NULL);
+    calcAttacker.maxHp = BattleMon_Get(ctx, battlerIdAttacker, BMON_DATA_MAXHP, NULL);
+    calcTarget.maxHp = BattleMon_Get(ctx, battlerIdTarget, BMON_DATA_MAXHP, NULL);
+    calcAttacker.status = BattleMon_Get(ctx, battlerIdAttacker, BMON_DATA_STATUS, NULL);
+    calcTarget.status = BattleMon_Get(ctx, battlerIdTarget, BMON_DATA_STATUS, NULL);
     calcAttacker.ability = GetBattlerAbility(ctx, battlerIdAttacker);
     calcTarget.ability = GetBattlerAbility(ctx, battlerIdTarget);
-    calcAttacker.gender = GetBattlerVar(ctx, battlerIdAttacker, BMON_DATA_GENDER, NULL);
-    calcTarget.gender = GetBattlerVar(ctx, battlerIdTarget, BMON_DATA_GENDER, NULL);
-    calcAttacker.type1 = GetBattlerVar(ctx, battlerIdAttacker, BMON_DATA_TYPE_1, NULL);
-    calcTarget.type1 = GetBattlerVar(ctx, battlerIdTarget, BMON_DATA_TYPE_1, NULL);
-    calcAttacker.type2 = GetBattlerVar(ctx, battlerIdAttacker, BMON_DATA_TYPE_2, NULL);
-    calcTarget.type2 = GetBattlerVar(ctx, battlerIdTarget, BMON_DATA_TYPE_2, NULL);
+    calcAttacker.gender = BattleMon_Get(ctx, battlerIdAttacker, BMON_DATA_GENDER, NULL);
+    calcTarget.gender = BattleMon_Get(ctx, battlerIdTarget, BMON_DATA_GENDER, NULL);
+    calcAttacker.type1 = BattleMon_Get(ctx, battlerIdAttacker, BMON_DATA_TYPE_1, NULL);
+    calcTarget.type1 = BattleMon_Get(ctx, battlerIdTarget, BMON_DATA_TYPE_1, NULL);
+    calcAttacker.type2 = BattleMon_Get(ctx, battlerIdAttacker, BMON_DATA_TYPE_2, NULL);
+    calcTarget.type2 = BattleMon_Get(ctx, battlerIdTarget, BMON_DATA_TYPE_2, NULL);
 
     item = GetBattlerHeldItem(ctx, battlerIdAttacker);
     calcAttacker.item = GetItemVar(ctx, item, ITEM_VAR_HOLD_EFFECT);
@@ -5628,7 +5628,7 @@ int CalcMoveDamage(BattleSystem *battleSystem, BattleContext *ctx, u32 moveNo, u
         monAtk *= 2;
     }
 
-    if (calcAttacker.ability == ABILITY_SLOW_START && (int)(ov12_022581D4(battleSystem, ctx, 3, 0) - GetBattlerVar(ctx, battlerIdAttacker, BMON_DATA_SLOW_START_TURN_NUMBER, NULL)) < 5) {
+    if (calcAttacker.ability == ABILITY_SLOW_START && (int)(ov12_022581D4(battleSystem, ctx, 3, 0) - BattleMon_Get(ctx, battlerIdAttacker, BMON_DATA_SLOW_START_TURN_NUMBER, NULL)) < 5) {
         monAtk /= 2;
     }
 
@@ -5682,7 +5682,7 @@ int CalcMoveDamage(BattleSystem *battleSystem, BattleContext *ctx, u32 moveNo, u
         movePower = movePower * (100 + calcAttacker.mod) / 100;
     }
 
-    if (calcAttacker.item == HOLD_EFFECT_GIRATINA_BOOST && (moveType == TYPE_DRAGON || moveType == TYPE_GHOST) && !(GetBattlerVar(ctx, battlerIdAttacker, BMON_DATA_STATUS2, NULL) & STATUS2_TRANSFORM) && calcAttacker.species == SPECIES_GIRATINA) {
+    if (calcAttacker.item == HOLD_EFFECT_GIRATINA_BOOST && (moveType == TYPE_DRAGON || moveType == TYPE_GHOST) && !(BattleMon_Get(ctx, battlerIdAttacker, BMON_DATA_STATUS2, NULL) & STATUS2_TRANSFORM) && calcAttacker.species == SPECIES_GIRATINA) {
         movePower = movePower * (100 + calcAttacker.mod) / 100;
     }
 
@@ -5939,7 +5939,7 @@ int CalcMoveDamage(BattleSystem *battleSystem, BattleContext *ctx, u32 moveNo, u
         }
     }
 
-    if (GetBattlerVar(ctx, battlerIdAttacker, BMON_DATA_FLASH_FIRE, NULL) && moveType == TYPE_FIRE) {
+    if (BattleMon_Get(ctx, battlerIdAttacker, BMON_DATA_FLASH_FIRE, NULL) && moveType == TYPE_FIRE) {
         dmg = dmg * 15 / 10;
     }
 

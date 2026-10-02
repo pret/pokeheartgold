@@ -1,0 +1,48 @@
+{
+  "key": 47891,
+  "messages": [
+    {
+      "id": "msg_0170_00000",
+      "en_US": "Advance: months"
+    },
+    {
+      "id": "msg_0170_00001",
+      "en_US": "Turn back: months"
+    },
+    {
+      "id": "msg_0170_00002",
+      "en_US": "Advance: days"
+    },
+    {
+      "id": "msg_0170_00003",
+      "en_US": "Turn back: days"
+    },
+    {
+      "id": "msg_0170_00004",
+      "en_US": "Advance: hours"
+    },
+    {
+      "id": "msg_0170_00005",
+      "en_US": "Turn back: hours"
+    },
+    {
+      "id": "msg_0170_00006",
+      "en_US": "Advance: minutes"
+    },
+    {
+      "id": "msg_0170_00007",
+      "en_US": "Turn back: Minutes"
+    },
+    {
+      "id": "msg_0170_00008",
+      "en_US": "Cancel"
+    },
+    {
+      "id": "msg_0170_00009",
+      "en_US": [
+        "{STRVAR_1 51, 0, 0}/{STRVAR_1 51, 1, 0}\n",
+        "{STRVAR_1 51, 2, 0}:{STRVAR_1 51, 3, 0} {STRVAR_1 51, 4, 0}sec."
+      ]
+    }
+  ]
+}

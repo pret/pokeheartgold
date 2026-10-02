@@ -43,6 +43,12 @@ typedef struct BattleMessageData {
     int params[6];
 } BattleMessageData;
 
+typedef struct BattleMessageInfo {
+    u8 recipient;
+    u8 battler;
+    u16 size;
+} BattleMessageInfo;
+
 typedef struct GetterWork GetterWork;
 
 typedef struct FieldConditionData {
@@ -486,7 +492,8 @@ typedef struct OpponentData {
     void *unk80;
     u8 unk84[0x4];
     UnkBallData *ballData;
-    u8 unk8C[0x108];
+    u8 unk8C[0x8];
+    u8 unk94[0x100];
     u8 unk194;
     u8 battlerType;
     u8 unk196;

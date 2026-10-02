@@ -1,0 +1,79 @@
+{
+  "key": 50191,
+  "messages": [
+    {
+      "id": "msg_0619_T27R0801_00000",
+      "en_US": [
+        "Ah. You’re on an adventure with\n",
+        "your Pokémon?\r",
+        "Well, what’s an adventure without\n",
+        "treasure hunting?\r",
+        "Am I right, or am I right? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0619_T27R0801_00001",
+      "en_US": [
+        "Good! You understand the true\n",
+        "spirit of adventure.\r",
+        "I like that! Take this with you."
+      ]
+    },
+    {
+      "id": "msg_0619_T27R0801_00002",
+      "garbage": 22
+    },
+    {
+      "id": "msg_0619_T27R0801_00003",
+      "en_US": [
+        "There are many items lying about\n",
+        "that aren’t obvious.\r",
+        "Touch the Dowsing Machine for a while\n",
+        "to see if it makes a high-pitched noise.\r",
+        "When it does, you know there is\n",
+        "an item near you.\r",
+        "Walking as you use it may make it\n",
+        "easy to find items.\r",
+        "Oh yeah--I heard there are items\n",
+        "in Ecruteak’s Burned Tower."
+      ]
+    },
+    {
+      "id": "msg_0619_T27R0801_00004",
+      "en_US": "Oh... To each his own, I suppose..."
+    },
+    {
+      "id": "msg_0619_T27R0801_00005",
+      "en_US": [
+        "History of Ecruteak\r",
+        "Want to read it? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0619_T27R0801_00006",
+      "en_US": [
+        "In Ecruteak, there were two towers.\n",
+        "Each tower was the roost of powerful\f",
+        "flying Pokémon.\r",
+        "But one of the towers burned to\n",
+        "the ground.\r",
+        "The two Pokémon haven’t been\n",
+        "seen since...\r",
+        "Keep reading? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0619_T27R0801_00007",
+      "en_US": [
+        "Ecruteak was also home to three\n",
+        "Pokémon that raced around the town.\r",
+        "They were said to have been born of\n",
+        "water, lightning, and fire.\r",
+        "But they could not contain their\n",
+        "excessive power.\r",
+        "So they say the three ran like the\n",
+        "wind off into the grassland."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "key": 46155,
+  "messages": [
+    {
+      "id": "msg_0544_T20R0102_00000",
+      "en_US": [
+        "Hi, {STRVAR_1 3, 0, 0}!\r",
+        "My husband’s always\n",
+        "so busy--I hope he’s OK.\r",
+        "When he’s caught up in his Pokémon\n",
+        "research, he even forgets to eat."
+      ]
+    },
+    {
+      "id": "msg_0544_T20R0102_00001",
+      "en_US": [
+        "Hi, {STRVAR_1 3, 0, 0}!\r",
+        "My husband’s always\n",
+        "so busy--I hope he’s OK.\r",
+        "When he’s caught up in his Pokémon\n",
+        "research, he even forgets to eat."
+      ]
+    },
+    {
+      "id": "msg_0544_T20R0102_00002",
+      "en_US": [
+        "When I grow up, I’m going to help\n",
+        "my dad!\r",
+        "I’m going to be a great\n",
+        "Pokémon Professor!"
+      ]
+    },
+    {
+      "id": "msg_0544_T20R0102_00003",
+      "en_US": [
+        "“Pokémon. Where do they come from?\n",
+        "Where are they going?\r",
+        "Why has no one ever witnessed a\n",
+        "Pokémon’s birth?\r",
+        "I want to know! I will dedicate my\r",
+        "life to the study of Pokémon!”\r",
+        "...\r",
+        "It’s a part of Professor Elm’s\n",
+        "research papers."
+      ]
+    }
+  ]
+}

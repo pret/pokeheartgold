@@ -1,0 +1,216 @@
+{
+  "key": 38468,
+  "messages": [
+    {
+      "id": "msg_0211_00000",
+      "en_US": [
+        "This tree looks like it can be\n",
+        "cut down! Would you like to cut it? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0211_00001",
+      "en_US": "{STRVAR_1 0, 0, 0} used Cut!\r"
+    },
+    {
+      "id": "msg_0211_00002",
+      "en_US": [
+        "This tree looks like it can be\n",
+        "cut down!"
+      ]
+    },
+    {
+      "id": "msg_0211_00003",
+      "en_US": [
+        "This rock appears to be breakable.\n",
+        "Would you like to use Rock Smash? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0211_00004",
+      "en_US": [
+        "It’s a rugged rock, but a Pokémon\n",
+        "may be able to smash it."
+      ]
+    },
+    {
+      "id": "msg_0211_00005",
+      "en_US": "{STRVAR_1 0, 0, 0} used Rock Smash!\r"
+    },
+    {
+      "id": "msg_0211_00006",
+      "en_US": "{STRVAR_1 8, 1, 0} was in the rubble!\r"
+    },
+    {
+      "id": "msg_0211_00007",
+      "en_US": [
+        "It’s a big boulder, but a Pokémon\n",
+        "may be able to push it aside.\r",
+        "Would you like to use Strength? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0211_00008",
+      "en_US": [
+        "{STRVAR_1 0, 0, 0} used Strength!\r",
+        "{STRVAR_1 0, 0, 0}’s Strength made it\n",
+        "possible to move boulders around!"
+      ]
+    },
+    {
+      "id": "msg_0211_00009",
+      "en_US": [
+        "It’s a big boulder, but a Pokémon\n",
+        "may be able to push it aside."
+      ]
+    },
+    {
+      "id": "msg_0211_00010",
+      "en_US": [
+        "Strength made it possible to move\n",
+        "boulders around."
+      ]
+    },
+    {
+      "id": "msg_0211_00011",
+      "en_US": "{STRVAR_1 0, 0, 0} used Strength!\r"
+    },
+    {
+      "id": "msg_0211_00012",
+      "en_US": [
+        "{STRVAR_1 0, 0, 0}’s Strength made it\n",
+        "possible to move boulders around!"
+      ]
+    },
+    {
+      "id": "msg_0211_00013",
+      "en_US": "The boulder fell down!"
+    },
+    {
+      "id": "msg_0211_00014",
+      "en_US": [
+        "The water is a deep blue...\n",
+        "Would you like to surf on it? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0211_00015",
+      "en_US": "{STRVAR_1 0, 0, 0} used Surf!\r"
+    },
+    {
+      "id": "msg_0211_00016",
+      "en_US": [
+        "Surf can’t be used if you have\n",
+        "someone with you."
+      ]
+    },
+    {
+      "id": "msg_0211_00017",
+      "en_US": [
+        "A deep fog drapes the area...\n",
+        "Would you like to use Defog? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0211_00018",
+      "en_US": "{STRVAR_1 0, 0, 0} used Defog!\r"
+    },
+    {
+      "id": "msg_0211_00019",
+      "en_US": [
+        "A deep fog drapes the area...\n",
+        "Will a Pokémon’s move lift it?"
+      ]
+    },
+    {
+      "id": "msg_0211_00020",
+      "en_US": [
+        "The wall is very rocky...\n",
+        "Would you like to use Rock Climb? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0211_00021",
+      "en_US": "{STRVAR_1 0, 0, 0} used Rock Climb!\r"
+    },
+    {
+      "id": "msg_0211_00022",
+      "en_US": [
+        "The wall is very rocky...\n",
+        "Will a Pokémon’s move scale it?"
+      ]
+    },
+    {
+      "id": "msg_0211_00023",
+      "en_US": [
+        "Rock Climb can’t be used if you have\n",
+        "someone with you."
+      ]
+    },
+    {
+      "id": "msg_0211_00024",
+      "en_US": [
+        "It’s a large waterfall.\n",
+        "Would you like to use Waterfall? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0211_00025",
+      "en_US": "{STRVAR_1 0, 0, 0} used Waterfall.\r"
+    },
+    {
+      "id": "msg_0211_00026",
+      "en_US": [
+        "A wall of water is crashing down with\n",
+        "a mighty roar."
+      ]
+    },
+    {
+      "id": "msg_0211_00027",
+      "en_US": [
+        "Teleport to {STRVAR_1 4, 0, 0}, the last\n",
+        "place you or your Pokémon rested?"
+      ]
+    },
+    {
+      "id": "msg_0211_00028",
+      "en_US": "{STRVAR_1 0, 0, 0} used Flash!\r"
+    },
+    {
+      "id": "msg_0211_00029",
+      "en_US": [
+        "It’s a huge swirl of water.\n",
+        "Would you like to use Whirlpool? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0211_00030",
+      "en_US": "{STRVAR_1 0, 0, 0} used Whirlpool.\r"
+    },
+    {
+      "id": "msg_0211_00031",
+      "en_US": [
+        "The water is swirling and spinning\n",
+        "around with a mighty roar."
+      ]
+    },
+    {
+      "id": "msg_0211_00032",
+      "en_US": [
+        "It’s a moderately sized tree.\n",
+        "Would you like to use Headbutt? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0211_00033",
+      "en_US": "{STRVAR_1 0, 0, 0} used Headbutt.\r"
+    },
+    {
+      "id": "msg_0211_00034",
+      "en_US": [
+        "There’s a large, formidable tree\n",
+        "that looks like it can be headbutted!"
+      ]
+    }
+  ]
+}

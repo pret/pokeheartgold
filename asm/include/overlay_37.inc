@@ -1,4 +1,4 @@
-#include <nitro/fs/overlay.h>
+
 #pragma once
 .public LoadFontPal1
 .public FontID_String_GetCenterAlignmentX

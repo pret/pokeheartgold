@@ -1,0 +1,43 @@
+{
+  "key": 17414,
+  "messages": [
+    {
+      "id": "msg_0507_T07R0207_00000",
+      "en_US": [
+        "Celadon Condominiums\n",
+        "This elevator goes straight to\f",
+        "the roof.\r",
+        "Will you go to the roof? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0507_T07R0207_00001",
+      "en_US": [
+        "Celadon Condominiums\n",
+        "This elevator goes straight to the\f",
+        "second floor.\r",
+        "Will you go to the second floor? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0507_T07R0207_00002",
+      "en_US": "Please come again."
+    },
+    {
+      "id": "msg_0507_T07R0207_00003",
+      "en_US": "Going up to the roof.\r"
+    },
+    {
+      "id": "msg_0507_T07R0207_00004",
+      "en_US": "Going down to the second floor.\r"
+    },
+    {
+      "id": "msg_0507_T07R0207_00005",
+      "en_US": "You’ve arrived at the roof.\r"
+    },
+    {
+      "id": "msg_0507_T07R0207_00006",
+      "en_US": "You’ve arrived at the second floor.\r"
+    }
+  ]
+}

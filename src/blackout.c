@@ -1,7 +1,7 @@
 #include "blackout.h"
 
-#include "msgdata/msg.naix"
-#include "msgdata/msg/msg_0203.h"
+#include "files/msgdata/msg.naix"
+#include "files/msgdata/msg/msg_0203.h"
 
 #include "brightness.h"
 #include "field_bgm.h"
@@ -93,7 +93,7 @@ static void Blackout_DrawMessage(FieldSystem *fieldSystem, TaskManager *taskMana
     ResetVisibleHardwareWindows(PM_LCD_TOP);
     ResetVisibleHardwareWindows(PM_LCD_BOTTOM);
     Blackout_InitDisplays(env->bgConfig);
-    env->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0203_bin, HEAP_ID_FIELD2);
+    env->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, msg_0203, HEAP_ID_FIELD2);
     env->msgFmt = MessageFormat_New(HEAP_ID_FIELD2);
 
     AddWindow(env->bgConfig, &env->window, &sBlackoutWindowTemplate);

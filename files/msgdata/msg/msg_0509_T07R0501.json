@@ -1,0 +1,244 @@
+{
+  "key": 50215,
+  "messages": [
+    {
+      "id": "msg_0509_T07R0501_00000",
+      "en_US": [
+        "I wanted PORYGON, but I was short\n",
+        "by 100 Coins..."
+      ]
+    },
+    {
+      "id": "msg_0509_T07R0501_00001",
+      "en_US": [
+        "Whew...\r",
+        "I’ve got to stay calm and collected...\r",
+        "I can’t lose my cool.\n",
+        "If I spend all my time playing here,\f",
+        "I could get in trouble at home."
+      ]
+    },
+    {
+      "id": "msg_0509_T07R0501_00002",
+      "en_US": [
+        "I woke up and realized my potential!\r",
+        "So, what potential was woken in me?\n",
+        "What’s my hidden power, you ask?\r",
+        "It’s a power that lets me see the\n",
+        "Hidden Power of a Pokémon.\r",
+        "When they learn that move, I can tell\n",
+        "what type the move will be.\r",
+        "So, want me to use my hidden power?\r",
+        "I’ll tell you what type your\n",
+        "Pokémon’s Hidden Power will be. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0509_T07R0501_00003",
+      "en_US": [
+        "I’ll tell you what type your Pokémon’s\n",
+        "Hidden Power will be.\r",
+        "My own hidden power lets me\n",
+        "do that. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0509_T07R0501_00004",
+      "en_US": [
+        "If this Pokémon were to learn\n",
+        "Hidden Power, the move’s type\f",
+        "would be {STRVAR_1 15, 0, 0}."
+      ]
+    },
+    {
+      "id": "msg_0509_T07R0501_00005",
+      "en_US": [
+        "This Pokémon’s Hidden Power is the\n",
+        "{STRVAR_1 15, 0, 0} type."
+      ]
+    },
+    {
+      "id": "msg_0509_T07R0501_00006",
+      "en_US": [
+        "If you want to know, ask me, and I’ll\n",
+        "activate my hidden power for you."
+      ]
+    },
+    {
+      "id": "msg_0509_T07R0501_00007",
+      "en_US": [
+        "A move that an Egg can learn?!\n",
+        "That’s flat-out impossible."
+      ]
+    },
+    {
+      "id": "msg_0509_T07R0501_00008",
+      "en_US": [
+        "Oh, no. This Pokémon can’t learn the\n",
+        "move Hidden Power in the first place."
+      ]
+    },
+    {
+      "id": "msg_0509_T07R0501_00009",
+      "en_US": [
+        "Welcome!\r",
+        "We exchange your game coins for\n",
+        "fabulous prizes! {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0509_T07R0501_00010",
+      "en_US": [
+        "OK. Please save your coins and\n",
+        "come again!"
+      ]
+    },
+    {
+      "id": "msg_0509_T07R0501_00011",
+      "en_US": "Sorry! You need more coins. {YESNO 0}"
+    },
+    {
+      "id": "msg_0509_T07R0501_00012",
+      "en_US": [
+        "{STRVAR_1 8, 0, 0}.\n",
+        "Is that right? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0509_T07R0501_00013",
+      "en_US": "Here you go!\r"
+    },
+    {
+      "id": "msg_0509_T07R0501_00014",
+      "en_US": "Sorry. You can’t carry any more.\r"
+    },
+    {
+      "id": "msg_0509_T07R0501_00015",
+      "en_US": [
+        "Your party’s full!\n",
+        "Please make some room\f",
+        "before you come back."
+      ]
+    },
+    {
+      "id": "msg_0509_T07R0501_00016",
+      "en_US": "Would you like {STRVAR_1 0, 1, 0}? {YESNO 0}"
+    },
+    {
+      "id": "msg_0509_T07R0501_00017",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} received\n",
+        "the {STRVAR_1 0, 1, 0}! {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0509_T07R0501_00018",
+      "en_US": [
+        "Welcome!\r",
+        "We exchange your coins for\n",
+        "fabulous prizes! {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0509_T07R0501_00019",
+      "en_US": [
+        "You put away the {STRVAR_1 8, 0, 0}\n",
+        "in the {STRVAR_1 18, 1, 0} Pocket. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0509_T07R0501_00020",
+      "en_US": "CANCEL"
+    },
+    {
+      "id": "msg_0509_T07R0501_00021",
+      "en_US": "TECHNICAL MACHINE"
+    },
+    {
+      "id": "msg_0509_T07R0501_00022",
+      "en_US": "HELD ITEMS"
+    },
+    {
+      "id": "msg_0509_T07R0501_00023",
+      "en_US": [
+        "ENDURE\n",
+        "2,000 Coins"
+      ]
+    },
+    {
+      "id": "msg_0509_T07R0501_00024",
+      "en_US": [
+        "DOUBLE TEAM\n",
+        "4,000 Coins"
+      ]
+    },
+    {
+      "id": "msg_0509_T07R0501_00025",
+      "en_US": [
+        "HIDDEN POWER\n",
+        "6,000 Coins"
+      ]
+    },
+    {
+      "id": "msg_0509_T07R0501_00026",
+      "en_US": [
+        "PSYCHIC\n",
+        "10,000 Coins"
+      ]
+    },
+    {
+      "id": "msg_0509_T07R0501_00027",
+      "en_US": [
+        "GYRO BALL\n",
+        "10,000 Coins"
+      ]
+    },
+    {
+      "id": "msg_0509_T07R0501_00028",
+      "en_US": [
+        "GIGA IMPACT\n",
+        "15,000 Coins"
+      ]
+    },
+    {
+      "id": "msg_0509_T07R0501_00029",
+      "en_US": [
+        "SILK SCARF\n",
+        "1,000 Coins"
+      ]
+    },
+    {
+      "id": "msg_0509_T07R0501_00030",
+      "en_US": [
+        "WIDE LENS\n",
+        "1,000 Coins"
+      ]
+    },
+    {
+      "id": "msg_0509_T07R0501_00031",
+      "en_US": [
+        "ZOOM LENS\n",
+        "1,000 Coins"
+      ]
+    },
+    {
+      "id": "msg_0509_T07R0501_00032",
+      "en_US": [
+        "METRONOME\n",
+        "1,000 Coins"
+      ]
+    },
+    {
+      "id": "msg_0509_T07R0501_00033",
+      "en_US": "MR. MIME{CURSOR_X 90}3,333 Coins"
+    },
+    {
+      "id": "msg_0509_T07R0501_00034",
+      "en_US": "EEVEE{CURSOR_X 90}6,666 Coins"
+    },
+    {
+      "id": "msg_0509_T07R0501_00035",
+      "en_US": "PORYGON{CURSOR_X 90}9,999 Coins"
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 #include "global.h"
 
-#include "application/pokegear/pgear_gra.naix"
 #include "application/pokegear/pokegear_internal.h"
+#include "files/application/pokegear/pgear_gra.naix"
 
 #include "map_header.h"
 #include "screen_fade.h"

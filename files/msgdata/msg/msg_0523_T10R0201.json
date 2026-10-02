@@ -1,0 +1,42 @@
+{
+  "key": 46143,
+  "messages": [
+    {
+      "id": "msg_0523_T10R0201_00000",
+      "en_US": [
+        "Welcome to the Pokémon League!\r",
+        "Allow me to introduce myself.\n",
+        "I am Will.\r",
+        "I have trained all around the world,\r",
+        "making my Psychic-type Pokémon\n",
+        "powerful.\r",
+        "And, at last, I’ve been accepted into\n",
+        "the Elite Four.\f",
+        "I can only keep getting better!\f",
+        "Losing is not an option!\r"
+      ]
+    },
+    {
+      "id": "msg_0523_T10R0201_00001",
+      "en_US": [
+        "Even though I was defeated, I won’t\n",
+        "change my course.\r",
+        "I will continue battling until I stand\n",
+        "above all Trainers!\r",
+        "Now move on and experience\n",
+        "the true ferocity of the Elite Four.\r"
+      ]
+    },
+    {
+      "id": "msg_0523_T10R0201_00002",
+      "en_US": [
+        "Even though I was defeated, I won’t\n",
+        "change my course.\r",
+        "I will continue battling until I stand\n",
+        "above all Trainers!\r",
+        "Now move on and experience\n",
+        "the true ferocity of the Elite Four."
+      ]
+    }
+  ]
+}

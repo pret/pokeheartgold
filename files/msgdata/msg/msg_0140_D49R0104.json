@@ -1,0 +1,112 @@
+{
+  "key": 9367,
+  "messages": [
+    {
+      "id": "msg_0140_D49R0104_00000",
+      "en_US": [
+        "This is the “Solidarity” room.\r",
+        "It is to show the solidarity of Pokémon\n",
+        "and people, as well as the history\f",
+        "of the Pokéathlon."
+      ]
+    },
+    {
+      "id": "msg_0140_D49R0104_00001",
+      "en_US": [
+        "Only the Pokéathletes who have\n",
+        "come in first in five of the courses\f",
+        "are allowed here."
+      ]
+    },
+    {
+      "id": "msg_0140_D49R0104_00002",
+      "en_US": [
+        "This is the “Trust” room.\n",
+        "Please go ahead."
+      ]
+    },
+    {
+      "id": "msg_0140_D49R0104_00003",
+      "en_US": "The Pokéathlon does go way back."
+    },
+    {
+      "id": "msg_0140_D49R0104_00004",
+      "en_US": [
+        "When you win a course,\n",
+        "you receive a Medal!\f",
+        "I’ve got to win at every course!\r"
+      ]
+    },
+    {
+      "id": "msg_0140_D49R0104_00005",
+      "en_US": [
+        "I heard that Pokéathletes with great\n",
+        "records are going to have their shoes\f",
+        "displayed at the museum!"
+      ]
+    },
+    {
+      "id": "msg_0140_D49R0104_00006",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} checked\n",
+        "the course record!\r"
+      ]
+    },
+    {
+      "id": "msg_0140_D49R0104_00007",
+      "en_US": [
+        "It is an old wall painting.\r",
+        "One person and three Pokémon\n",
+        "seem to be learning something\f",
+        "from looking up at the sky."
+      ]
+    },
+    {
+      "id": "msg_0140_D49R0104_00008",
+      "en_US": [
+        "It is an old, worn scroll.\r",
+        "“Pokéathlon Myth\r",
+        "When a disease took over the entire\n",
+        "island, one human and three Pokémon\f",
+        "overcame ten obstacles to spread the\f",
+        "word about the cure.”"
+      ]
+    },
+    {
+      "id": "msg_0140_D49R0104_00009",
+      "en_US": [
+        "It’s an old scroll.\r",
+        "“The Beginning of Pokéathlon\r",
+        "To commemorate the friendship of the\n",
+        "person and three Pokémon that\f",
+        "conveyed the words of the cure, people\f",
+        "started to tell of their achievement.”\r",
+        "...\n",
+        "The commemorating eventually took the\f",
+        "form of ten games to compete in, just\f",
+        "like the obstacles in the legend...”"
+      ]
+    },
+    {
+      "id": "msg_0140_D49R0104_00010",
+      "en_US": "RATTATA: Ffft!"
+    },
+    {
+      "id": "msg_0140_D49R0104_00011",
+      "en_US": "RATTATA: Kooar!"
+    },
+    {
+      "id": "msg_0140_D49R0104_00012",
+      "en_US": "ZUBAT: Quuooh."
+    },
+    {
+      "id": "msg_0140_D49R0104_00013",
+      "en_US": [
+        "“Pokéathlon Almanac”\r",
+        "There are many Pokéathletes and\n",
+        "Pokémon Medalists shown in\f",
+        "the photos.\n"
+      ]
+    }
+  ]
+}
