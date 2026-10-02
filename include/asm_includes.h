@@ -7,6 +7,6 @@
 // of the SDK, which breaks builds. These are defined as-is elsewhere and should not be modified.
 // Ideally, this file should not exist in the future when the project is near completion.
 
-#define FS_EXTERN_OVERLAY(name) extern u32 SDK_OVERLAY_ ## name ## _ID[1]
+#define FS_EXTERN_OVERLAY(name) extern u32 SDK_OVERLAY_##name##_ID[1]
 
-#endif //POKEHEARGOLD_ASM_INCLUDES
+#endif // POKEHEARGOLD_ASM_INCLUDES

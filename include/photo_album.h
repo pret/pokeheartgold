@@ -1,9 +1,10 @@
 #ifndef POKEHEARTGOLD_PHOTO_ALBUM_H
 #define POKEHEARTGOLD_PHOTO_ALBUM_H
 
+#include "struct_defs/photo_data_narc_struct.h"
+
 #include "camera.h"
 #include "save.h"
-#include "struct_defs/photo_data_narc_struct.h"
 
 #define PHOTO_ALBUM_MAX 36
 

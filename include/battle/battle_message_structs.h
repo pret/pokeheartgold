@@ -185,7 +185,9 @@ typedef struct MoveAnimation {
     u16 friendship;
     u16 isSubstitute : 1;
     u16 isTransformed : 1;
-    u16 : 14;
+    u16 unk_0E_2 : 1;
+    u16 unk_0E_3 : 1;
+    u16 : 12;
     u32 fieldConditions;
     u16 attacker;
     u16 defender;
@@ -208,7 +210,7 @@ typedef struct HPGaugeUpdateMessage {
     u8 padding_06;
     u8 gender;
     int hpCalcTemp;
-    u32 exp; // set but unused
+    u32 exp;            // set but unused
     u32 expToNextLevel; // set but unused
 } HPGaugeUpdateMessage;
 
@@ -271,5 +273,150 @@ typedef struct RecallMsgMessage {
     u8 partySlot;
     u16 hpPercent;
 } RecallMsgMessage;
+
+typedef struct SendOutMsgMessage {
+    u8 command;
+    u8 partySlot;
+    u16 hpPercent; // out of 1000
+} SendOutMsgMessage;
+
+typedef struct LeadMonMsgMessage {
+    u8 command;
+    u8 padding_01[3];
+    u8 partySlot[4];
+} LeadMonMsgMessage;
+
+typedef struct AlertMsgMessage {
+    u8 command;
+    u8 padding_01[3];
+    BattleMessage msg;
+} AlertMsgMessage;
+
+typedef struct RefreshHPGaugeMessage {
+    u8 command;
+    u8 level;
+    s16 curHP;
+    u16 maxHP;
+    u8 partySlot;
+    u8 status : 5;
+    u8 gender : 2;
+    u8 caughtSpecies : 1;
+    u32 curExp;
+    u32 maxExp;
+    int numSafariBalls;
+} RefreshHPGaugeMessage;
+
+typedef struct UpdatePartyMonMessage {
+    u8 command;
+    u8 partySlot : 4;
+    u8 mimickedMoveSlot : 4;
+    s16 curHP;
+    u32 status;
+    u32 knockedOffItemsMask;
+    u16 heldItem;
+    u16 moves[4];
+    u8 ppCur[4];
+    u8 padding_16[2];
+    u32 status2;
+    u16 formNum;
+    u8 padding_1E[2];
+    int ability;
+    u16 updateStats;
+    u16 updateForm;
+} UpdatePartyMonMessage;
+
+typedef struct RefreshPartyStatusMessage {
+    u8 command;
+    u8 ability;
+    u16 move;
+} RefreshPartyStatusMessage;
+
+typedef struct ForgetMoveMessage {
+    u8 command;
+    u8 slot;
+    u16 move;
+} ForgetMoveMessage;
+
+typedef struct MosaicSetMessage {
+    u8 command;
+    u8 intensity;
+    u8 wait;
+    u8 padding_03;
+} MosaicSetMessage;
+
+typedef struct MonChangeFormMessage {
+    u8 command;
+    u8 formNum;
+    u16 species;
+    u8 gender;
+    u8 isShiny;
+    u8 padding_06[2];
+    u32 personality;
+} MonChangeFormMessage;
+
+typedef struct PartyGaugeData {
+    u8 command;
+    u8 padding_01;
+    u8 status[6];
+} PartyGaugeData;
+
+typedef struct RecordIncrementMessage {
+    u8 command;
+    u8 battlerType;
+    u16 record;
+} RecordIncrementMessage;
+
+typedef struct LinkWaitMsgMessage {
+    u8 command;
+    u8 padding_01;
+    u16 recordedInputCount;
+    u8 recordedInputs[28];
+} LinkWaitMsgMessage;
+
+typedef struct EscapeMsgMessage {
+    u8 command;
+    u8 escaperBitmask;
+    u16 recordedInputCount;
+    u8 recordedInputs[28];
+} EscapeMsgMessage;
+
+typedef struct ForfeitMsgMessage {
+    u8 command;
+    u8 padding_01;
+    u16 recordedInputCount;
+    u8 recordedInputs[28];
+} ForfeitMsgMessage;
+
+typedef struct MoveHitSoundMessage {
+    u8 command;
+    u8 effectiveness;
+    u8 padding_02[2];
+} MoveHitSoundMessage;
+
+typedef struct MusicPlayMessage {
+    u8 command;
+    u8 padding_01;
+    u16 bgmID;
+} MusicPlayMessage;
+
+typedef struct ResultSubmitMessage {
+    u8 command;
+    u8 padding_01;
+    u16 recordedInputCount;
+    u32 resultMask;
+    u8 recordedInputs[28];
+} ResultSubmitMessage;
+
+typedef struct CommandClearMsg {
+    u8 command;
+    u8 netID;
+    u16 padding_02;
+} CommandClearMsg;
+
+typedef struct Message_022645C8 {
+    u8 command;
+    u8 unk1;
+    u8 filler[2];
+} Message_022645C8;
 
 #endif

@@ -2,6 +2,7 @@
 #define POKEHEARTGOLD_BATTLE_CONTROLLER_H
 
 #include "battle/battle.h"
+#include "battle/battle_message_structs.h"
 
 typedef void (*ControllerFunction)(BattleSystem *, BattleContext *ctx);
 
@@ -77,7 +78,8 @@ void ov12_02263E18(BattleSystem *battleSystem, int battlerId);
 void ov12_02263564(BattleSystem *battleSystem, BattleContext *ctx, int battlerId, int a3);
 void ov12_0226399C(BattleSystem *battleSystem, int battlerId);
 void ov12_02263A1C(BattleSystem *battleSystem, BattleContext *ctx, int battlerId);
-void ov12_02263D14(BattleSystem *battleSystem, int battlerId, u32 a2, int slot);
+void ov12_02263D14(BattleSystem *battleSystem, int battlerId, int a2, int slot);
 void BattleController_EmitBlankMessage(BattleSystem *battleSystem);
+void ov12_022643C8(BattleSystem *battleSys, BattleContext *ctx, MoveAnimation *animation, int animMode, int secondaryAnimID, int attacker, int defender, u16 move);
 
 #endif

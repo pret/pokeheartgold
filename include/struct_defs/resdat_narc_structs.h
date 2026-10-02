@@ -3,7 +3,7 @@
 
 #include <nitro/types.h>
 
-// These structs need to be defined seperately to compile the resdat narc 
+// These structs need to be defined seperately to compile the resdat narc
 // without needing to include the entirity of the sdk headers.
 // Do not attempt to move them.
 

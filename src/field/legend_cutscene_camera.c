@@ -2,13 +2,13 @@
 
 #include "global.h"
 
-#include "files/demo/legend.naix"
 #include "field/field_3d_object_task.h"
 #include "field/map_prop_animation.h"
 #include "field/overlay_01_021FB878.h"
 #include "field/overlay_01_02204004.h"
 #include "fielddata/script/scr_seq/event_D17R0110.h"
 #include "fielddata/script/scr_seq/event_D40R0107.h"
+#include "files/demo/legend.naix"
 
 #include "camera_translation.h"
 #include "gf_gfx_loader.h"

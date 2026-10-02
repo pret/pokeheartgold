@@ -1,6 +1,13 @@
 #include "battle/battle_controller.h"
+
+#include "constants/abilities.h"
+
 #include "battle/battle_message_structs.h"
+#include "battle/party_gauge.h"
+
 #include "pokemon.h"
+
+static void ov12_022645F8(BattleSystem *battleSys, BattleContext *ctx, PartyGaugeData *partyGauge, int command, int battler);
 
 // static
 void BattleController_SendLocalMessage(BattleSystem *battleSys, int recipient, int battler, void *message, u8 size) {
@@ -45,7 +52,7 @@ void BattleController_SendLocalMessage(BattleSystem *battleSys, int recipient, i
     }
 }
 
-//static 
+// static
 BOOL BattleController_RecvMessage(BattleSystem *battleSys, void *message) {
     u8 *src = (u8 *)message;
     int i;
@@ -121,9 +128,8 @@ void BattleSystem_TryRecvMessage(BattleSystem *battleSys, int recipient) {
     }
 }
 
-//static 
-void SendMessage(BattleSystem *battleSys, int recipient, int battler, void *message, u8 size)
-{
+// static
+void SendMessage(BattleSystem *battleSys, int recipient, int battler, void *message, u8 size) {
     u8 *data = message;
 
     if (battleSys->battleType & BATTLE_TYPE_LINK && (battleSys->battleSpecial & BATTLE_TYPE_TAG) == FALSE) {
@@ -143,8 +149,7 @@ void SendMessage(BattleSystem *battleSys, int recipient, int battler, void *mess
     }
 }
 
-void BattleController_EmitPlayEncounterAnimation(BattleSystem *battleSys, int battler)
-{
+void BattleController_EmitPlayEncounterAnimation(BattleSystem *battleSys, int battler) {
     EncounterAnimationMessage message;
 
     message.command = CONTROLLER_COMMAND_START_ENCOUNTER;
@@ -153,8 +158,7 @@ void BattleController_EmitPlayEncounterAnimation(BattleSystem *battleSys, int ba
     SendMessage(battleSys, 1, battler, &message, sizeof(EncounterAnimationMessage));
 }
 
-void BattleController_EmitPokemonEncounter(BattleSystem *battleSys, int battler)
-{
+void BattleController_EmitPokemonEncounter(BattleSystem *battleSys, int battler) {
     MonEncounterMessage message;
     int i;
 
@@ -176,8 +180,7 @@ void BattleController_EmitPokemonEncounter(BattleSystem *battleSys, int battler)
     SendMessage(battleSys, 1, battler, &message, sizeof(MonEncounterMessage));
 }
 
-void BattleController_EmitPokemonSlideIn(BattleSystem *battleSys, int battler)
-{
+void BattleController_EmitPokemonSlideIn(BattleSystem *battleSys, int battler) {
     MonShowMessage message;
     int i;
 
@@ -204,8 +207,7 @@ void BattleController_EmitPokemonSlideIn(BattleSystem *battleSys, int battler)
     SendMessage(battleSys, 1, battler, &message, sizeof(MonShowMessage));
 }
 
-void BattleController_EmitPokemonSendOut(BattleSystem *battleSys, int battler, int capturedBall, int quickSendOut)
-{
+void BattleController_EmitPokemonSendOut(BattleSystem *battleSys, int battler, int capturedBall, int quickSendOut) {
     MonShowMessage message;
     int i;
 
@@ -261,8 +263,7 @@ void BattleController_EmitPokemonSendOut(BattleSystem *battleSys, int battler, i
     SendMessage(battleSys, 1, battler, &message, sizeof(MonShowMessage));
 }
 
-void BattleController_EmitRecallPokemon(BattleSystem *battleSys, BattleContext *ctx, int battler)
-{
+void BattleController_EmitRecallPokemon(BattleSystem *battleSys, BattleContext *ctx, int battler) {
     MonReturnMessage message;
     int face;
     int form;
@@ -304,8 +305,7 @@ void BattleController_EmitRecallPokemon(BattleSystem *battleSys, BattleContext *
     SendMessage(battleSys, 1, battler, &message, sizeof(MonReturnMessage));
 }
 
-void ov12_022628A0(BattleSystem *battleSys, int battler, int ball)
-{
+void ov12_022628A0(BattleSystem *battleSys, int battler, int ball) {
     OpenCaptureBallMessage message;
     int face;
     int form;
@@ -329,14 +329,12 @@ void ov12_022628A0(BattleSystem *battleSys, int battler, int ball)
     SendMessage(battleSys, 1, battler, &message, sizeof(OpenCaptureBallMessage));
 }
 
-void BattleController_EmitDeletePokemon(BattleSystem *battleSys, int battler)
-{
+void BattleController_EmitDeletePokemon(BattleSystem *battleSys, int battler) {
     int command = 7;
     SendMessage(battleSys, 1, battler, &command, sizeof(int));
 }
 
-void BattleController_EmitTrainerEncounter(BattleSystem *battleSys, int battler)
-{
+void BattleController_EmitTrainerEncounter(BattleSystem *battleSys, int battler) {
     TrainerEncounterMessage message;
 
     message.command = 8;
@@ -346,8 +344,7 @@ void BattleController_EmitTrainerEncounter(BattleSystem *battleSys, int battler)
     SendMessage(battleSys, 1, battler, &message, sizeof(TrainerEncounterMessage));
 }
 
-void BattleController_EmitThrowPokeball(BattleSystem *battleSys, int battler, int ballTypeIn)
-{
+void BattleController_EmitThrowPokeball(BattleSystem *battleSys, int battler, int ballTypeIn) {
     TrainerThrowBallMessage message;
 
     message.command = 9;
@@ -357,15 +354,13 @@ void BattleController_EmitThrowPokeball(BattleSystem *battleSys, int battler, in
     SendMessage(battleSys, 1, battler, &message, sizeof(TrainerThrowBallMessage));
 }
 
-void BattleController_EmitTrainerSlideOut(BattleSystem *battleSys, int battler)
-{
+void BattleController_EmitTrainerSlideOut(BattleSystem *battleSys, int battler) {
     int command = 10;
 
     SendMessage(battleSys, 1, battler, &command, sizeof(int));
 }
 
-void BattleController_EmitTrainerSlideIn(BattleSystem *battleSys, int battler, int posIn)
-{
+void BattleController_EmitTrainerSlideIn(BattleSystem *battleSys, int battler, int posIn) {
     TrainerSlideInMessage message;
 
     message.command = 11;
@@ -376,8 +371,7 @@ void BattleController_EmitTrainerSlideIn(BattleSystem *battleSys, int battler, i
     SendMessage(battleSys, 1, battler, &message, sizeof(TrainerSlideInMessage));
 }
 
-void BattleController_EmitHealthbarSlideIn(BattleSystem *battleSys, BattleContext *ctx, int battler, int delay)
-{
+void BattleController_EmitHealthbarSlideIn(BattleSystem *battleSys, BattleContext *ctx, int battler, int delay) {
     HealthBoxData healthboxData;
 
     Pokemon *mon = BattleSystem_GetPartyMon(battleSys, battler, ctx->selectedMonIndex[battler]);
@@ -407,14 +401,12 @@ void BattleController_EmitHealthbarSlideIn(BattleSystem *battleSys, BattleContex
     SendMessage(battleSys, 1, battler, &healthboxData, sizeof(HealthBoxData));
 }
 
-void BattleController_EmitHealthbarSlideOut(BattleSystem *battleSys, int battler)
-{
+void BattleController_EmitHealthbarSlideOut(BattleSystem *battleSys, int battler) {
     int command = 13;
     SendMessage(battleSys, 1, battler, &command, sizeof(int));
 }
 
-void ov12_02262B80(BattleSystem *battleSys, BattleContext *ctx, int battler, int partySlot)
-{
+void ov12_02262B80(BattleSystem *battleSys, BattleContext *ctx, int battler, int partySlot) {
     CommandSetMessage message;
     int i;
     int battlerType;
@@ -582,13 +574,11 @@ void ov12_02262B80(BattleSystem *battleSys, BattleContext *ctx, int battler, int
     SendMessage(battleSys, 1, battler, &message, sizeof(CommandSetMessage));
 }
 
-void ov12_02262F24(BattleSystem *battleSys, int battler, int command)
-{
+void ov12_02262F24(BattleSystem *battleSys, int battler, int command) {
     SendMessage(battleSys, 0, battler, &command, sizeof(int));
 }
 
-void ov12_02262F40(BattleSystem *battleSys, BattleContext *ctx, int battler)
-{
+void ov12_02262F40(BattleSystem *battleSys, BattleContext *ctx, int battler) {
     BattleBuffer_Clear(BattleSystem_GetBattleContext(battleSys), battler);
 
     MoveSelectMenuMessage message;
@@ -606,13 +596,11 @@ void ov12_02262F40(BattleSystem *battleSys, BattleContext *ctx, int battler)
     SendMessage(battleSys, 1, battler, &message, sizeof(MoveSelectMenuMessage));
 }
 
-void ov12_02262FE0(BattleSystem *battleSys, int battler, int command)
-{
+void ov12_02262FE0(BattleSystem *battleSys, int battler, int command) {
     SendMessage(battleSys, 0, battler, &command, sizeof(int));
 }
 
-void ov12_02262FFC(BattleSystem *battleSys, BattleContext *ctx, int range, int battler)
-{
+void ov12_02262FFC(BattleSystem *battleSys, BattleContext *ctx, int range, int battler) {
     TargetSelectMenuMessage message;
     int i;
     u32 battleType;
@@ -659,13 +647,11 @@ void ov12_02262FFC(BattleSystem *battleSys, BattleContext *ctx, int range, int b
     SendMessage(battleSys, 1, battler, &message, sizeof(TargetSelectMenuMessage));
 }
 
-void ov12_0226311C(BattleSystem *battleSys, int battler, int command)
-{
+void ov12_0226311C(BattleSystem *battleSys, int battler, int command) {
     SendMessage(battleSys, 0, battler, &command, sizeof(int));
 }
 
-void ov12_02263138(BattleSystem *battleSys, BattleContext *ctx, int battler)
-{
+void ov12_02263138(BattleSystem *battleSys, BattleContext *ctx, int battler) {
     BagMenuMessage message;
     int i, j;
 
@@ -715,7 +701,7 @@ void ov12_02263138(BattleSystem *battleSys, BattleContext *ctx, int battler)
                 message.substitute = FALSE;
             }
         }
-    } else if (BattleSystem_GetBattleType(battleSys) == BATTLE_TYPE_NONE) { 
+    } else if (BattleSystem_GetBattleType(battleSys) == BATTLE_TYPE_NONE) {
         message.hasTwoOpponents = FALSE;
 
         if (ctx->battleMons[1].moveEffectFlags & MOVE_EFFECT_FLAG_SEMI_INVULNERABLE) {
@@ -737,13 +723,11 @@ void ov12_02263138(BattleSystem *battleSys, BattleContext *ctx, int battler)
     SendMessage(battleSys, 1, battler, &message, sizeof(BagMenuMessage));
 }
 
-void ov12_022632C0(BattleSystem *battleSys, int battler, BattleItemUse message)
-{
+void ov12_022632C0(BattleSystem *battleSys, int battler, BattleItemUse message) {
     SendMessage(battleSys, 0, battler, &message, sizeof(BattleItemUse));
 }
 
-void BattleController_EmitShowMonList(BattleSystem *battleSys, BattleContext *ctx, int battler, int listMode, int canSwitch, int doublesSelection)
-{
+void BattleController_EmitShowMonList(BattleSystem *battleSys, BattleContext *ctx, int battler, int listMode, int canSwitch, int doublesSelection) {
     PartyMenuMessage message;
     int i, j;
 
@@ -767,13 +751,11 @@ void BattleController_EmitShowMonList(BattleSystem *battleSys, BattleContext *ct
     SendMessage(battleSys, 1, battler, &message, sizeof(PartyMenuMessage));
 }
 
-void ov12_02263360(BattleSystem *battleSys, int battler, int command)
-{
+void ov12_02263360(BattleSystem *battleSys, int battler, int command) {
     SendMessage(battleSys, 0, battler, &command, sizeof(int));
 }
 
-void BattleController_EmitDrawYesNoBox(BattleSystem *battleSys, BattleContext *ctx, int battler, int promptMsg, int yesNoType, int move, int nickname)
-{
+void BattleController_EmitDrawYesNoBox(BattleSystem *battleSys, BattleContext *ctx, int battler, int promptMsg, int yesNoType, int move, int nickname) {
     YesNoMenuMessage message;
 
     BattleBuffer_Clear(ctx, battler);
@@ -787,8 +769,7 @@ void BattleController_EmitDrawYesNoBox(BattleSystem *battleSys, BattleContext *c
     SendMessage(battleSys, 1, battler, &message, sizeof(YesNoMenuMessage));
 }
 
-void BattleController_EmitPrintAttackMessage(BattleSystem *battleSys, BattleContext *ctx)
-{
+void BattleController_EmitPrintAttackMessage(BattleSystem *battleSys, BattleContext *ctx) {
     AttackMsgMessage message;
 
     message.command = 20;
@@ -798,36 +779,31 @@ void BattleController_EmitPrintAttackMessage(BattleSystem *battleSys, BattleCont
     SendMessage(battleSys, 1, ctx->battlerIdAttacker, &message, sizeof(AttackMsgMessage));
 }
 
-void BattleController_EmitPrintMessage(BattleSystem *battleSys, BattleContext *ctx, BattleMessage *battleMsg)
-{
+void BattleController_EmitPrintMessage(BattleSystem *battleSys, BattleContext *ctx, BattleMessage *battleMsg) {
     battleMsg->unk0 = 21;
     SendMessage(battleSys, 1, ctx->battlerIdAttacker, battleMsg, sizeof(BattleMessage));
 }
 
-void BattleController_SetMoveAnimation(BattleSystem *battleSys, BattleContext *ctx, u16 move)
-{
+void BattleController_SetMoveAnimation(BattleSystem *battleSys, BattleContext *ctx, u16 move) {
     MoveAnimation animation;
 
     ov12_022643C8(battleSys, ctx, &animation, 0, NULL, ctx->battlerIdAttacker, ctx->battlerIdTarget, move);
     SendMessage(battleSys, 1, ctx->battlerIdAttacker, &animation, sizeof(MoveAnimation));
 }
 
-void ov12_0226343C(BattleSystem *battleSys, BattleContext *ctx, u16 move, int attacker, int defender)
-{
+void ov12_0226343C(BattleSystem *battleSys, BattleContext *ctx, u16 move, int attacker, int defender) {
     MoveAnimation animation;
 
     ov12_022643C8(battleSys, ctx, &animation, 0, NULL, attacker, defender, move);
     SendMessage(battleSys, 1, attacker, &animation, sizeof(MoveAnimation));
 }
 
-void BattleController_EmitMonFlicker(BattleSystem *battleSys, int battler, u32 unused)
-{
+void BattleController_EmitMonFlicker(BattleSystem *battleSys, int battler, u32 unused) {
     int command = 23;
     SendMessage(battleSys, 1, battler, &command, sizeof(int));
 }
 
-void BattleController_EmitHealthbarUpdate(BattleSystem *battleSys, BattleContext *ctx, int battler)
-{
+void BattleController_EmitHealthbarUpdate(BattleSystem *battleSys, BattleContext *ctx, int battler) {
     HPGaugeUpdateMessage message;
     Pokemon *pokemon = BattleSystem_GetPartyMon(battleSys, battler, ctx->selectedMonIndex[battler]);
     int species = GetMonData(pokemon, MON_DATA_SPECIES, NULL);
@@ -852,8 +828,7 @@ void BattleController_EmitHealthbarUpdate(BattleSystem *battleSys, BattleContext
     SendMessage(battleSys, 1, battler, &message, sizeof(HPGaugeUpdateMessage));
 }
 
-void ov12_02263564(BattleSystem *battleSys, BattleContext *ctx, int battler, int curExp)
-{
+void ov12_02263564(BattleSystem *battleSys, BattleContext *ctx, int battler, int curExp) {
     ExpGaugeUpdateMessage message;
     Pokemon *pokemon = BattleSystem_GetPartyMon(battleSys, battler, ctx->selectedMonIndex[battler]);
     int species = GetMonData(pokemon, MON_DATA_SPECIES, NULL);
@@ -867,8 +842,7 @@ void ov12_02263564(BattleSystem *battleSys, BattleContext *ctx, int battler, int
     SendMessage(battleSys, 1, battler, &message, sizeof(ExpGaugeUpdateMessage));
 }
 
-void BattleController_EmitPlayFaintAnimation(BattleSystem *battleSys, BattleContext *ctx, int battler)
-{
+void BattleController_EmitPlayFaintAnimation(BattleSystem *battleSys, BattleContext *ctx, int battler) {
     FaintingSequenceMessage message;
     int i;
 
@@ -903,8 +877,7 @@ void BattleController_EmitPlayFaintAnimation(BattleSystem *battleSys, BattleCont
     SendMessage(battleSys, 1, battler, &message, sizeof(FaintingSequenceMessage));
 }
 
-void BattleController_EmitPlaySE(BattleSystem *battleSys, BattleContext *ctx, int sdatID, int battler)
-{
+void BattleController_EmitPlaySE(BattleSystem *battleSys, BattleContext *ctx, int sdatID, int battler) {
     PlaySoundMessage message;
 
     message.command = 27;
@@ -913,15 +886,13 @@ void BattleController_EmitPlaySE(BattleSystem *battleSys, BattleContext *ctx, in
     SendMessage(battleSys, 1, battler, &message, sizeof(PlaySoundMessage));
 }
 
-void BattleController_EmitFadeOutBattle(BattleSystem *battleSys, BattleContext *ctx)
-{
+void BattleController_EmitFadeOutBattle(BattleSystem *battleSys, BattleContext *ctx) {
     int command = 28;
 
     SendMessage(battleSys, 1, 0, &command, sizeof(int));
 }
 
-void BattleController_EmitToggleVanish(BattleSystem *battleSys, int battler, int toggle)
-{
+void BattleController_EmitToggleVanish(BattleSystem *battleSys, int battler, int toggle) {
     ToggleVanishMessage message;
     int i;
 
@@ -946,8 +917,7 @@ void BattleController_EmitToggleVanish(BattleSystem *battleSys, int battler, int
     SendMessage(battleSys, 1, battler, &message, sizeof(ToggleVanishMessage));
 }
 
-void BattleController_EmitHealthbarStatus(BattleSystem *battleSys, int battler, int status)
-{
+void BattleController_EmitHealthbarStatus(BattleSystem *battleSys, int battler, int status) {
     SetStatusIconMessage message;
 
     message.command = 30;
@@ -956,8 +926,7 @@ void BattleController_EmitHealthbarStatus(BattleSystem *battleSys, int battler, 
     SendMessage(battleSys, 1, battler, &message, sizeof(SetStatusIconMessage));
 }
 
-void BattleController_EmitPrintTrainerMessage(BattleSystem *battleSys, int battler, int msg)
-{
+void BattleController_EmitPrintTrainerMessage(BattleSystem *battleSys, int battler, int msg) {
     TrainerMsgMessage message;
 
     message.command = 31;
@@ -966,24 +935,21 @@ void BattleController_EmitPrintTrainerMessage(BattleSystem *battleSys, int battl
     SendMessage(battleSys, 1, battler, &message, sizeof(TrainerMsgMessage));
 }
 
-void BattleController_EmitSetStatus2Effect(BattleSystem *battleSys, BattleContext *ctx, int battler, int secondaryAnimID)
-{
+void BattleController_EmitSetStatus2Effect(BattleSystem *battleSys, BattleContext *ctx, int battler, int secondaryAnimID) {
     MoveAnimation animation;
 
     ov12_022643C8(battleSys, ctx, &animation, 1, secondaryAnimID, battler, battler, NULL);
     SendMessage(battleSys, 1, battler, &animation, sizeof(MoveAnimation));
 }
 
-void BattleController_EmitCopyStatus2Effect(BattleSystem *battleSys, BattleContext *ctx, int attacker, int defender, int secondaryAnimID)
-{
+void BattleController_EmitCopyStatus2Effect(BattleSystem *battleSys, BattleContext *ctx, int attacker, int defender, int secondaryAnimID) {
     MoveAnimation animation;
 
     ov12_022643C8(battleSys, ctx, &animation, 1, secondaryAnimID, attacker, defender, NULL);
     SendMessage(battleSys, 1, attacker, &animation, sizeof(MoveAnimation));
 }
 
-void BattleController_EmitPrintReturnMessage(BattleSystem *battleSys, BattleContext *ctx, int battler, int partySlot)
-{
+void BattleController_EmitPrintReturnMessage(BattleSystem *battleSys, BattleContext *ctx, int battler, int partySlot) {
     RecallMsgMessage message;
 
     message.command = 32;
@@ -991,4 +957,592 @@ void BattleController_EmitPrintReturnMessage(BattleSystem *battleSys, BattleCont
     message.hpPercent = (ctx->hpTemp - ctx->battleMons[1].hp) * 100 / ctx->hpTemp;
 
     SendMessage(battleSys, 1, battler, &message, sizeof(RecallMsgMessage));
+}
+
+void BattleController_EmitPrintSendOutMessage(BattleSystem *battleSys, BattleContext *ctx, int battler, int partySlot) {
+    SendOutMsgMessage message;
+
+    message.command = 33;
+    message.partySlot = partySlot;
+
+    if (ctx->battleMons[1].hp == 0) {
+        message.hpPercent = 1000;
+    } else {
+        message.hpPercent = ctx->battleMons[1].hp * 1000 / ctx->battleMons[1].maxHp;
+    }
+
+    SendMessage(battleSys, 1, battler, &message, sizeof(SendOutMsgMessage));
+}
+
+void BattleController_EmitPrintEncounterMessage(BattleSystem *battleSys, BattleContext *ctx, int battler) {
+    int command = 34;
+
+    SendMessage(battleSys, 1, battler, &command, sizeof(int));
+}
+
+void BattleController_EmitPrintFirstSendOutMessage(BattleSystem *battleSys, BattleContext *ctx, int battler) {
+    LeadMonMsgMessage message;
+    int i;
+
+    message.command = 35;
+
+    for (i = 0; i < BattleSystem_GetMaxBattlers(battleSys); i++) {
+        message.partySlot[i] = ctx->selectedMonIndex[i];
+    }
+
+    SendMessage(battleSys, 1, battler, &message, sizeof(LeadMonMsgMessage));
+}
+
+void ov12_0226399C(BattleSystem *battleSys, int battler) {
+    int command = 36;
+
+    SendMessage(battleSys, 1, battler, &command, sizeof(int));
+}
+
+void ov12_022639B8(BattleSystem *battleSys, int battler, BattleMessage msg) {
+    BattleBuffer_Clear(BattleSystem_GetBattleContext(battleSys), battler);
+
+    AlertMsgMessage message;
+    message.command = 37;
+    message.msg = msg;
+
+    SendMessage(battleSys, 1, battler, &message, sizeof(AlertMsgMessage));
+}
+
+void ov12_02263A00(BattleSystem *battleSys, int battler) {
+    int command = 1;
+    SendMessage(battleSys, 0, battler, &command, sizeof(int));
+}
+
+void ov12_02263A1C(BattleSystem *battleSys, BattleContext *ctx, int battler) {
+    RefreshHPGaugeMessage message;
+    Pokemon *pokemon;
+    int species;
+    int level;
+
+    pokemon = BattleSystem_GetPartyMon(battleSys, battler, ctx->selectedMonIndex[battler]);
+    species = GetMonData(pokemon, MON_DATA_SPECIES, NULL);
+    level = GetMonData(pokemon, MON_DATA_LEVEL, NULL);
+
+    message.command = 38;
+    message.level = ctx->battleMons[battler].level;
+    message.curHP = ctx->battleMons[battler].hp;
+    message.maxHP = ctx->battleMons[battler].maxHp;
+    message.partySlot = ctx->selectedMonIndex[battler];
+    message.status = Battler_GetStatusCondition(ctx, battler);
+
+    if ((ctx->battleMons[battler].species == SPECIES_NIDORAN_F || ctx->battleMons[battler].species == SPECIES_NIDORAN_M)
+        && ctx->battleMons[battler].hasNickname == FALSE) {
+        message.gender = 2;
+    } else {
+        message.gender = ctx->battleMons[battler].gender;
+    }
+
+    message.curExp = ctx->battleMons[battler].exp - GetMonExpBySpeciesAndLevel(species, level);
+    message.maxExp = GetMonExpBySpeciesAndLevel(species, level + 1) - GetMonExpBySpeciesAndLevel(species, level);
+    message.caughtSpecies = BattleSystem_CheckMonCaught(battleSys, ctx->battleMons[battler].species);
+    message.numSafariBalls = BattleSystem_GetSafariBallCount(battleSys);
+
+    SendMessage(battleSys, 1, battler, &message, sizeof(RefreshHPGaugeMessage));
+}
+
+void BattleController_EmitBattleMonToPartyMonCopy(BattleSystem *battleSys, BattleContext *ctx, int battler) {
+    UpdatePartyMonMessage message;
+    int i;
+
+    message.command = 39;
+    message.partySlot = ctx->selectedMonIndex[battler];
+    message.mimickedMoveSlot = ctx->battleMons[battler].unk88.mimicedMoveIndex;
+    message.curHP = ctx->battleMons[battler].hp;
+    message.heldItem = ctx->battleMons[battler].item;
+    message.knockedOffItemsMask = ctx->fieldSideConditionData[BattleSystem_GetFieldSide(battleSys, battler)].battlerBitKnockedOffItem;
+    message.formNum = ctx->battleMons[battler].form;
+    message.ability = ctx->battleMons[battler].ability;
+
+    for (i = 0; i < 4; i++) {
+        message.moves[i] = ctx->battleMons[battler].moves[i];
+        message.ppCur[i] = ctx->battleMons[battler].movePPCur[i];
+    }
+
+    if (message.curHP) {
+        message.status = (ctx->battleMons[battler].status & ~STATUS_POISON_COUNT);
+        message.status2 = ctx->battleMons[battler].status2;
+    } else {
+        message.status = 0;
+        message.status2 = ctx->battleMons[battler].status2;
+    }
+
+    if (ctx->battleStatus2 & BATTLE_STATUS2_FORM_CHANGE) {
+        message.updateForm = 1;
+        ctx->battleStatus2 &= ~BATTLE_STATUS2_FORM_CHANGE;
+    } else {
+        message.updateForm = 0;
+    }
+
+    if (ctx->battleStatus2 & BATTLE_STATUS2_RECALC_MON_STATS) {
+        message.updateStats = 1;
+        message.updateForm = 1;
+        ctx->battleStatus2 &= ~BATTLE_STATUS2_RECALC_MON_STATS;
+    } else {
+        message.updateStats = 0;
+    }
+
+    SendMessage(battleSys, 1, battler, &message, sizeof(UpdatePartyMonMessage));
+}
+
+void BattleController_EmitBackgroundSlideIn(BattleSystem *battleSys, int battler) {
+    int command = 40;
+    SendMessage(battleSys, 1, battler, &command, sizeof(int));
+}
+
+void ov12_02263CCC(BattleSystem *battleSys, int battler) {
+    int command = 41;
+    SendMessage(battleSys, 1, battler, &command, sizeof(int));
+}
+
+void BattleControl_EmitPartyStatusHeal(BattleSystem *battleSys, BattleContext *ctx, int battler, int move) {
+    RefreshPartyStatusMessage message;
+
+    message.command = 42;
+    message.move = move;
+    message.ability = ctx->battleMons[battler].ability;
+
+    SendMessage(battleSys, 1, battler, &message, sizeof(RefreshPartyStatusMessage));
+}
+
+void ov12_02263D14(BattleSystem *battleSys, int battler, int move, int slot) {
+    ForgetMoveMessage message;
+
+    BattleBuffer_Clear(BattleSystem_GetBattleContext(battleSys), battler);
+
+    message.command = 43;
+    message.move = move;
+    message.slot = slot;
+
+    SendMessage(battleSys, 1, battler, &message, sizeof(RefreshPartyStatusMessage));
+}
+
+void BattleController_EmitPlayMosaicAnimation(BattleSystem *battleSys, int battler, int intensity, int wait) {
+    MosaicSetMessage message;
+
+    message.command = 44;
+    message.intensity = intensity;
+    message.wait = wait;
+
+    SendMessage(battleSys, 1, battler, &message, sizeof(MosaicSetMessage));
+}
+
+void BattleController_EmitChangeForm(BattleSystem *battleSys, int battler) {
+    MonChangeFormMessage message;
+
+    message.command = 45;
+    message.species = battleSys->ctx->battleMons[battler].species;
+    message.isShiny = battleSys->ctx->battleMons[battler].shiny;
+
+    if (battleSys->ctx->battleMons[battler].status2 & STATUS2_TRANSFORM) {
+        message.gender = battleSys->ctx->battleMons[battler].unk88.transformGender;
+        message.personality = battleSys->ctx->battleMons[battler].unk88.transformPersonality;
+    } else {
+        message.gender = battleSys->ctx->battleMons[battler].gender;
+        message.personality = battleSys->ctx->battleMons[battler].personality;
+    }
+
+    message.formNum = battleSys->ctx->battleMons[battler].form;
+
+    SendMessage(battleSys, 1, battler, &message, sizeof(MonChangeFormMessage));
+}
+
+void BattleController_EmitSetBattleBackground(BattleSystem *battleSys, int battler) {
+    int command = 46;
+    SendMessage(battleSys, 1, battler, &command, sizeof(int));
+}
+
+void ov12_02263E18(BattleSystem *battleSys, int battler) {
+    int command = 47;
+    SendMessage(battleSys, 1, battler, &command, sizeof(int));
+}
+
+void BattleController_EmitInitStartBallGauge(BattleSystem *battleSys, int battler) {
+    PartyGaugeData gauge;
+    ov12_022645F8(battleSys, battleSys->ctx, &gauge, 48, battler);
+    SendMessage(battleSys, 1, battler, &gauge, sizeof(PartyGaugeData));
+}
+
+void BattleController_EmitDeleteStartBallGauge(BattleSystem *battleSys, int battler) {
+    PartyGaugeData gauge;
+    ov12_022645F8(battleSys, battleSys->ctx, &gauge, 49, battler);
+    SendMessage(battleSys, 1, battler, &gauge, sizeof(PartyGaugeData));
+}
+
+void BattleController_EmitInitBallGauge(BattleSystem *battleSys, int battler) {
+    PartyGaugeData gauge;
+    ov12_022645F8(battleSys, battleSys->ctx, &gauge, 50, battler);
+    SendMessage(battleSys, 1, battler, &gauge, sizeof(PartyGaugeData));
+}
+
+void BattleController_EmitDeleteBallGauge(BattleSystem *battleSys, int battler) {
+    PartyGaugeData gauge;
+    ov12_022645F8(battleSys, battleSys->ctx, &gauge, 51, battler);
+    SendMessage(battleSys, 1, battler, &gauge, sizeof(PartyGaugeData));
+}
+
+void BattleController_EmitLoadBallGfx(BattleSystem *battleSys) {
+    int command = 52;
+    SendMessage(battleSys, 1, NULL, &command, sizeof(int));
+}
+
+void BattleController_EmitDeleteBallGfx(BattleSystem *battleSys) {
+    int command = 53;
+    SendMessage(battleSys, 1, NULL, &command, sizeof(int));
+}
+
+void BattleController_EmitIncrementGameStat(BattleSystem *battleSys, int battler, int battlerType, int record) {
+    RecordIncrementMessage message;
+
+    message.command = 54;
+    message.battlerType = battlerType;
+    message.record = record;
+
+    SendMessage(battleSys, 1, battler, &message, sizeof(RecordIncrementMessage));
+}
+
+void BattleController_EmitShowWaitMessage(BattleSystem *battleSys, int battler) {
+    LinkWaitMsgMessage message;
+    u32 battleType = BattleSystem_GetBattleType(battleSys);
+
+    message.command = 55;
+    message.recordedInputCount = 0;
+
+    if ((battleType & BATTLE_TYPE_LINK) && sub_0202FC48() == TRUE && (battleSys->battleSpecial & BATTLE_STATUS_HIT_DIVE) == FALSE) {
+        message.recordedInputCount = ov12_0223BE68(battleSys, &message.recordedInputs[0]);
+        GF_ASSERT(message.recordedInputCount < 28);
+        SendMessage(battleSys, 1, battler, &message, sizeof(LinkWaitMsgMessage));
+    }
+}
+
+void ov12_02263F8C(BattleSystem *battleSys, BattleContext *ctx, int battler) {
+    int i;
+    MoveAnimation animation;
+
+    animation.command = 56;
+
+    for (i = 0; i < 4; i++) {
+        animation.species[i] = ctx->battleMons[i].species;
+        animation.isShiny[i] = ctx->battleMons[i].shiny;
+        animation.formNums[i] = ctx->battleMons[i].form;
+
+        if (ctx->battleMons[i].status2 & STATUS2_TRANSFORM) {
+            animation.genders[i] = ctx->battleMons[i].unk88.transformGender;
+            animation.personalities[i] = ctx->battleMons[i].unk88.transformPersonality;
+        } else {
+            animation.genders[i] = ctx->battleMons[i].gender;
+            animation.personalities[i] = ctx->battleMons[i].personality;
+        }
+    }
+
+    SendMessage(battleSys, 1, battler, &animation, sizeof(MoveAnimation));
+}
+
+void ov12_02264038(BattleSystem *battleSys, int battler) {
+    int command = 57;
+    SendMessage(battleSys, 1, battler, &command, sizeof(int));
+}
+
+void ov12_02264054(BattleSystem *battleSys, int battler) {
+    int command = 58;
+    SendMessage(battleSys, 1, battler, &command, sizeof(int));
+}
+
+void BattleController_EmitPrintResultMessage(BattleSystem *battleSys) {
+    int command = 59;
+    SendMessage(battleSys, 1, 0, &command, sizeof(int));
+}
+
+void BattleController_EmitRunAwayMessage(BattleSystem *battleSys, BattleContext *ctx) {
+    EscapeMsgMessage message;
+    int i;
+    u32 battleType = BattleSystem_GetBattleType(battleSys);
+
+    message.command = 60;
+    message.escaperBitmask = 0;
+    message.recordedInputCount = 0;
+
+    for (i = 0; i < BattleSystem_GetMaxBattlers(battleSys); i++) {
+        if (ctx->playerActions[i].command == 16) {
+            message.escaperBitmask |= MaskOfFlagNo(i);
+        }
+    }
+
+    if ((battleType & BATTLE_TYPE_LINK) && sub_0202FC48() == TRUE && (battleSys->battleSpecial & BATTLE_STATUS_HIT_DIVE) == FALSE) {
+        message.recordedInputCount = ov12_0223BE68(battleSys, &message.recordedInputs[0]);
+        GF_ASSERT(message.recordedInputCount < 28);
+    }
+
+    SendMessage(battleSys, 1, 0, &message, sizeof(EscapeMsgMessage));
+}
+
+void BattleController_EmitForefitMessage(BattleSystem *battleSys) {
+    ForfeitMsgMessage message;
+    u32 battleType = BattleSystem_GetBattleType(battleSys);
+
+    message.command = 61;
+    message.recordedInputCount = 0;
+
+    if ((battleType & BATTLE_TYPE_LINK) && sub_0202FC48() == TRUE && (battleSys->battleSpecial & BATTLE_STATUS_HIT_DIVE) == FALSE) {
+        message.recordedInputCount = ov12_0223BE68(battleSys, &message.recordedInputs[0]);
+        GF_ASSERT(message.recordedInputCount < 28);
+    }
+
+    SendMessage(battleSys, 1, 0, &message, sizeof(ForfeitMsgMessage));
+}
+
+void BattleController_EmitSwapToSubstituteSprite(BattleSystem *battleSys, BattleContext *ctx, int battler) {
+    int i;
+    MoveAnimation animation;
+
+    animation.command = 62;
+
+    for (i = 0; i < 4; i++) {
+        animation.species[i] = ctx->battleMons[i].species;
+        animation.isShiny[i] = ctx->battleMons[i].shiny;
+        animation.formNums[i] = ctx->battleMons[i].form;
+
+        if (ctx->battleMons[i].status2 & STATUS2_TRANSFORM) {
+            animation.genders[i] = ctx->battleMons[i].unk88.transformGender;
+            animation.personalities[i] = ctx->battleMons[i].unk88.transformPersonality;
+        } else {
+            animation.genders[i] = ctx->battleMons[i].gender;
+            animation.personalities[i] = ctx->battleMons[i].personality;
+        }
+    }
+
+    SendMessage(battleSys, 1, battler, &animation, sizeof(MoveAnimation));
+}
+
+void BattleController_EmitPlayMoveSE(BattleSystem *battleSys, BattleContext *ctx, int battler) {
+    MoveHitSoundMessage message;
+
+    message.command = 63;
+
+    if (ctx->moveStatusFlag & MOVE_STATUS_SUPER_EFFECTIVE) {
+        message.effectiveness = 2;
+    } else if (ctx->moveStatusFlag & MOVE_STATUS_NOT_VERY_EFFECTIVE) {
+        message.effectiveness = 1;
+    } else {
+        message.effectiveness = 0;
+    }
+
+    SendMessage(battleSys, 1, battler, &message, sizeof(MoveHitSoundMessage));
+}
+
+void BattleController_EmitPlaySong(BattleSystem *battleSys, int battler, int bgmID) {
+    MusicPlayMessage message;
+
+    message.command = 64;
+    message.bgmID = bgmID;
+
+    SendMessage(battleSys, 1, battler, &message, sizeof(MusicPlayMessage));
+}
+
+void BattleController_EmitSetBattleResults(BattleSystem *battleSys) {
+    ResultSubmitMessage message;
+    u32 battleType = BattleSystem_GetBattleType(battleSys);
+
+    message.command = 65;
+    message.resultMask = BattleSystem_GetBattleOutcomeFlags(battleSys);
+    message.recordedInputCount = 0;
+
+    if ((battleType & BATTLE_TYPE_LINK) && sub_0202FC48() == TRUE && (battleSys->battleSpecial & BATTLE_STATUS_HIT_DIVE) == FALSE) {
+        message.recordedInputCount = ov12_0223BE68(battleSys, &message.recordedInputs[0]);
+        GF_ASSERT(message.recordedInputCount <= 28);
+    }
+
+    SendMessage(battleSys, 1, 0, &message, sizeof(ResultSubmitMessage));
+}
+
+void BattleController_EmitBlankMessage(BattleSystem *battleSys) {
+    int command = 66;
+    SendMessage(battleSys, 1, 0, &command, sizeof(int));
+}
+
+void ov12_0226430C(BattleSystem *battleSys, int battler, int command) {
+    CommandClearMsg message;
+
+    message.command = command;
+    message.netID = sub_0203769C();
+
+    SendMessage(battleSys, 2, battler, &message, sizeof(CommandClearMsg));
+}
+
+BOOL ov12_02264334(BattleSystem *battleSys, void *data) {
+    u8 *src = (u8 *)data;
+    u8 recipient;
+    u8 battler;
+    int size;
+    int i;
+    BOOL success = TRUE;
+
+    recipient = src[0];
+    battler = src[1];
+    size = src[2] | (src[3] << 8);
+
+    src += sizeof(BattleMessageInfo);
+
+    if (recipient == 0) {
+        for (i = 0; i < size; i++) {
+            battleSys->ctx->battleBuffer[battler][i] = src[i];
+        }
+    } else if (recipient == 1) {
+        if (battleSys->opponentData[battler]->unk1A8 == 0) {
+            battleSys->opponentData[battler]->unk1A8 = 1;
+
+            for (i = 0; i < size; i++) {
+                battleSys->opponentData[battler]->unk94[i] = src[i];
+            }
+        } else {
+            success = FALSE;
+        }
+    } else if (recipient == 2) {
+        int val = src[0];
+        int id = src[1];
+
+        if (BattleSystem_IsInitialized(battleSys)) {
+            ov12_0224ED00(battleSys->ctx, id, battler, val);
+        }
+    }
+
+    return success;
+}
+
+void ov12_022643C8(BattleSystem *battleSys, BattleContext *ctx, MoveAnimation *animation, int animMode, int secondaryAnimID, int attacker, int defender, u16 move) {
+    int i;
+
+    animation->command = 22;
+    animation->move = move;
+    animation->attacker = attacker;
+    animation->defender = defender;
+    animation->animMode = animMode;
+    animation->secondaryAnimID = secondaryAnimID;
+    animation->terrain = BattleSystem_GetTerrainId(battleSys);
+    animation->unk_0E_2 = 0;
+    animation->unk_0E_3 = 0;
+
+    if (ctx != NULL) {
+        animation->damage = ctx->damage;
+
+        if (ctx->movePower) {
+            animation->power = ctx->movePower;
+        } else {
+            animation->power = ctx->trainerAIData.moveData[move].power;
+        }
+
+        animation->friendship = ctx->battleMons[attacker].friendship;
+
+        if (CheckAbilityActive(battleSys, ctx, 8, 0, ABILITY_CLOUD_NINE) == 0
+            && CheckAbilityActive(battleSys, ctx, 8, 0, ABILITY_AIR_LOCK) == 0) {
+            animation->fieldConditions = ctx->fieldCondition;
+        } else {
+            animation->fieldConditions = 0;
+        }
+
+        animation->effectChance = ctx->unk_2164;
+        animation->isSubstitute = (ctx->battleMons[attacker].status2 & STATUS2_SUBSTITUTE) != 0;
+        animation->isTransformed = (ctx->battleMons[attacker].status2 & STATUS2_TRANSFORM) != 0;
+
+        for (i = 0; i < 4; i++) {
+            animation->species[i] = ctx->battleMons[i].species;
+            animation->isShiny[i] = ctx->battleMons[i].shiny;
+            animation->formNums[i] = ctx->battleMons[i].form;
+            animation->moveEffectMasks[i] = ctx->battleMons[i].moveEffectFlags;
+
+            if (ctx->battleMons[i].status2 & STATUS2_TRANSFORM) {
+                animation->genders[i] = ctx->battleMons[i].unk88.transformGender;
+                animation->personalities[i] = ctx->battleMons[i].unk88.transformPersonality;
+            } else {
+                animation->genders[i] = ctx->battleMons[i].gender;
+                animation->personalities[i] = ctx->battleMons[i].personality;
+            }
+        }
+
+        if (attacker != 255) {
+            u32 var = ov12_0223C140(battleSys, attacker);
+            if (var != 255 && var == ctx->selectedMonIndex[attacker]) {
+                animation->unk_0E_2 = 1;
+            }
+        }
+
+        if (defender != 255) {
+            u32 var = ov12_0223C140(battleSys, defender);
+            if (var != 255 && var == ctx->selectedMonIndex[defender]) {
+                animation->unk_0E_3 = 1;
+            }
+        }
+    }
+}
+
+void ov12_022645C8(BattleSystem *battleSystem, BattleContext *ctx, u8 a2) {
+    Message_022645C8 message;
+    MI_CpuClear8(&message, sizeof(Message_022645C8));
+    message.command = 67;
+    message.unk1 = a2;
+    SendMessage(battleSystem, 1, 0, &message, sizeof(Message_022645C8));
+}
+
+static inline void PartyGaugeData_Fill(BattleContext *ctx, PartyGaugeData *partyGauge, Party *party, int battler, int slot) {
+    for (int i = 0; i < Party_GetCount(party); i++) {
+        Pokemon *mon = Party_GetMonByIndex(party, ctx->unk_312C[battler][i]);
+        int species = GetMonData(mon, MON_DATA_SPECIES_OR_EGG, NULL);
+
+        if (species && species != SPECIES_EGG) {
+            if (GetMonData(mon, MON_DATA_HP, NULL)) {
+                if (GetMonData(mon, MON_DATA_STATUS, NULL)) {
+                    partyGauge->status[slot] = 3;
+                } else {
+                    partyGauge->status[slot] = 1;
+                }
+            } else {
+                partyGauge->status[slot] = 2;
+            }
+
+            slot++;
+        }
+    }
+}
+
+static void ov12_022645F8(BattleSystem *battleSys, BattleContext *ctx, PartyGaugeData *partyGauge, int command, int battler) {
+    MI_CpuClearFast(partyGauge, sizeof(PartyGaugeData));
+    u32 battleType = BattleSystem_GetBattleType(battleSys);
+    partyGauge->command = command;
+
+    int battler1, battler2;
+    Party *party;
+
+    if ((battleType & (BATTLE_TYPE_LINK | BATTLE_TYPE_MULTI)) == (BATTLE_TYPE_LINK | BATTLE_TYPE_MULTI)                                                        // 2vs2 link battle
+        || ((battleType & BATTLE_TYPE_TAG) && BattleSystem_GetFieldSide(battleSys, battler))                                                                   // either of the two opponents on the enemy side
+        || ((battleType == (BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_MULTI | BATTLE_TYPE_AI)) && BattleSystem_GetFieldSide(battleSys, battler)) // either of the two opponents on the enemy side
+        || battleType == (BATTLE_TYPE_FRONTIER | BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_MULTI | BATTLE_TYPE_AI)) {                            // frontier, AI partner
+        if (ov12_0223AB0C(battleSys, battler) == BATTLER_PLAYER2
+            || ov12_0223AB0C(battleSys, battler) == BATTLER_ENEMY2) {
+            battler1 = battler;
+            battler2 = BattleSystem_GetBattlerIdPartner(battleSys, battler);
+        } else {
+            battler1 = BattleSystem_GetBattlerIdPartner(battleSys, battler);
+            battler2 = battler;
+        }
+
+        party = BattleSystem_GetParty(battleSys, battler1);
+        PartyGaugeData_Fill(ctx, partyGauge, party, battler1, 0);
+
+        party = BattleSystem_GetParty(battleSys, battler2);
+        PartyGaugeData_Fill(ctx, partyGauge, party, battler2, 3);
+    } else {
+        if ((battleType & BATTLE_TYPE_DOUBLES) && (battleType & BATTLE_TYPE_MULTI) == FALSE) {
+            battler = battler & 1;
+        } else {
+            battler = battler;
+        }
+
+        party = BattleSystem_GetParty(battleSys, battler);
+        PartyGaugeData_Fill(ctx, partyGauge, party, battler, 0);
+    }
 }
