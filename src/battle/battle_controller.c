@@ -811,3 +811,184 @@ void BattleController_SetMoveAnimation(BattleSystem *battleSys, BattleContext *c
     ov12_022643C8(battleSys, ctx, &animation, 0, NULL, ctx->battlerIdAttacker, ctx->battlerIdTarget, move);
     SendMessage(battleSys, 1, ctx->battlerIdAttacker, &animation, sizeof(MoveAnimation));
 }
+
+void ov12_0226343C(BattleSystem *battleSys, BattleContext *ctx, u16 move, int attacker, int defender)
+{
+    MoveAnimation animation;
+
+    ov12_022643C8(battleSys, ctx, &animation, 0, NULL, attacker, defender, move);
+    SendMessage(battleSys, 1, attacker, &animation, sizeof(MoveAnimation));
+}
+
+void BattleController_EmitMonFlicker(BattleSystem *battleSys, int battler, u32 unused)
+{
+    int command = 23;
+    SendMessage(battleSys, 1, battler, &command, sizeof(int));
+}
+
+void BattleController_EmitHealthbarUpdate(BattleSystem *battleSys, BattleContext *ctx, int battler)
+{
+    HPGaugeUpdateMessage message;
+    Pokemon *pokemon = BattleSystem_GetPartyMon(battleSys, battler, ctx->selectedMonIndex[battler]);
+    int species = GetMonData(pokemon, MON_DATA_SPECIES, NULL);
+    int level = GetMonData(pokemon, MON_DATA_LEVEL, NULL);
+
+    message.command = 24;
+    message.level = ctx->battleMons[battler].level;
+    message.curHP = ctx->battleMons[battler].hp;
+    message.maxHP = ctx->battleMons[battler].maxHp;
+    message.hpCalcTemp = ctx->hpCalc;
+
+    if ((ctx->battleMons[battler].species == SPECIES_NIDORAN_F || ctx->battleMons[battler].species == SPECIES_NIDORAN_M)
+        && ctx->battleMons[battler].hasNickname == FALSE) {
+        message.gender = 2;
+    } else {
+        message.gender = ctx->battleMons[battler].gender;
+    }
+
+    message.exp = ctx->battleMons[battler].exp - GetMonExpBySpeciesAndLevel(species, level);
+    message.expToNextLevel = GetMonExpBySpeciesAndLevel(species, level + 1) - GetMonExpBySpeciesAndLevel(species, level);
+
+    SendMessage(battleSys, 1, battler, &message, sizeof(HPGaugeUpdateMessage));
+}
+
+void ov12_02263564(BattleSystem *battleSys, BattleContext *ctx, int battler, int curExp)
+{
+    ExpGaugeUpdateMessage message;
+    Pokemon *pokemon = BattleSystem_GetPartyMon(battleSys, battler, ctx->selectedMonIndex[battler]);
+    int species = GetMonData(pokemon, MON_DATA_SPECIES, NULL);
+    int level = GetMonData(pokemon, MON_DATA_LEVEL, NULL);
+
+    message.command = 25;
+    message.curExp = curExp;
+    message.gainedExp = ctx->battleMons[battler].exp - GetMonExpBySpeciesAndLevel(species, level);
+    message.expToNextLevel = GetMonExpBySpeciesAndLevel(species, level + 1) - GetMonExpBySpeciesAndLevel(species, level);
+
+    SendMessage(battleSys, 1, battler, &message, sizeof(ExpGaugeUpdateMessage));
+}
+
+void BattleController_EmitPlayFaintAnimation(BattleSystem *battleSys, BattleContext *ctx, int battler)
+{
+    FaintingSequenceMessage message;
+    int i;
+
+    message.command = 26;
+    message.species = ctx->battleMons[battler].species;
+    message.form = ctx->battleMons[battler].form;
+    message.isSubstitute = (ctx->battleMons[battler].status2 & STATUS2_SUBSTITUTE) != 0;
+    message.isTransformed = (ctx->battleMons[battler].status2 & STATUS2_TRANSFORM) != 0;
+
+    if (ctx->battleMons[battler].status2 & STATUS2_TRANSFORM) {
+        message.gender = ctx->battleMons[battler].unk88.transformGender;
+        message.personality = ctx->battleMons[battler].unk88.transformPersonality;
+    } else {
+        message.gender = ctx->battleMons[battler].gender;
+        message.personality = ctx->battleMons[battler].personality;
+    }
+
+    for (i = 0; i < 4; i++) {
+        message.monSpecies[i] = ctx->battleMons[i].species;
+        message.monShiny[i] = ctx->battleMons[i].shiny;
+        message.monFormNums[i] = ctx->battleMons[i].form;
+
+        if (ctx->battleMons[i].status2 & STATUS2_TRANSFORM) {
+            message.monGenders[i] = ctx->battleMons[i].unk88.transformGender;
+            message.monPersonalities[i] = ctx->battleMons[i].unk88.transformPersonality;
+        } else {
+            message.monGenders[i] = ctx->battleMons[i].gender;
+            message.monPersonalities[i] = ctx->battleMons[i].personality;
+        }
+    }
+
+    SendMessage(battleSys, 1, battler, &message, sizeof(FaintingSequenceMessage));
+}
+
+void BattleController_EmitPlaySE(BattleSystem *battleSys, BattleContext *ctx, int sdatID, int battler)
+{
+    PlaySoundMessage message;
+
+    message.command = 27;
+    message.sdatID = sdatID;
+
+    SendMessage(battleSys, 1, battler, &message, sizeof(PlaySoundMessage));
+}
+
+void BattleController_EmitFadeOutBattle(BattleSystem *battleSys, BattleContext *ctx)
+{
+    int command = 28;
+
+    SendMessage(battleSys, 1, 0, &command, sizeof(int));
+}
+
+void BattleController_EmitToggleVanish(BattleSystem *battleSys, int battler, int toggle)
+{
+    ToggleVanishMessage message;
+    int i;
+
+    message.command = 29;
+    message.toggle = toggle;
+    message.isSubstitute = (battleSys->ctx->battleMons[battler].status2 & STATUS2_SUBSTITUTE) != 0;
+
+    for (i = 0; i < 4; i++) {
+        message.species[i] = battleSys->ctx->battleMons[i].species;
+        message.isShiny[i] = battleSys->ctx->battleMons[i].shiny;
+        message.formNum[i] = battleSys->ctx->battleMons[i].form;
+
+        if (battleSys->ctx->battleMons[i].status2 & STATUS2_TRANSFORM) {
+            message.gender[i] = battleSys->ctx->battleMons[i].unk88.transformGender;
+            message.personality[i] = battleSys->ctx->battleMons[i].unk88.transformPersonality;
+        } else {
+            message.gender[i] = battleSys->ctx->battleMons[i].gender;
+            message.personality[i] = battleSys->ctx->battleMons[i].personality;
+        }
+    }
+
+    SendMessage(battleSys, 1, battler, &message, sizeof(ToggleVanishMessage));
+}
+
+void BattleController_EmitHealthbarStatus(BattleSystem *battleSys, int battler, int status)
+{
+    SetStatusIconMessage message;
+
+    message.command = 30;
+    message.status = status;
+
+    SendMessage(battleSys, 1, battler, &message, sizeof(SetStatusIconMessage));
+}
+
+void BattleController_EmitPrintTrainerMessage(BattleSystem *battleSys, int battler, int msg)
+{
+    TrainerMsgMessage message;
+
+    message.command = 31;
+    message.msg = msg;
+
+    SendMessage(battleSys, 1, battler, &message, sizeof(TrainerMsgMessage));
+}
+
+void BattleController_EmitSetStatus2Effect(BattleSystem *battleSys, BattleContext *ctx, int battler, int secondaryAnimID)
+{
+    MoveAnimation animation;
+
+    ov12_022643C8(battleSys, ctx, &animation, 1, secondaryAnimID, battler, battler, NULL);
+    SendMessage(battleSys, 1, battler, &animation, sizeof(MoveAnimation));
+}
+
+void BattleController_EmitCopyStatus2Effect(BattleSystem *battleSys, BattleContext *ctx, int attacker, int defender, int secondaryAnimID)
+{
+    MoveAnimation animation;
+
+    ov12_022643C8(battleSys, ctx, &animation, 1, secondaryAnimID, attacker, defender, NULL);
+    SendMessage(battleSys, 1, attacker, &animation, sizeof(MoveAnimation));
+}
+
+void BattleController_EmitPrintReturnMessage(BattleSystem *battleSys, BattleContext *ctx, int battler, int partySlot)
+{
+    RecallMsgMessage message;
+
+    message.command = 32;
+    message.partySlot = partySlot;
+    message.hpPercent = (ctx->hpTemp - ctx->battleMons[1].hp) * 100 / ctx->hpTemp;
+
+    SendMessage(battleSys, 1, battler, &message, sizeof(RecallMsgMessage));
+}

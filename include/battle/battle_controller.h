@@ -27,10 +27,10 @@ void BattleController_EmitPrintAttackMessage(BattleSystem *battleSystem, BattleC
 void BattleController_EmitPrintMessage(BattleSystem *battleSystem, BattleContext *ctx, BattleMessage *msg);
 void BattleController_SetMoveAnimation(BattleSystem *battleSystem, BattleContext *ctx, u16 move);
 void ov12_0226343C(BattleSystem *battleSystem, BattleContext *ctx, u16 move, int attacker, int target);
-void BattleController_EmitMonFlicker(BattleSystem *battleSystem, int side, int a2);
+void BattleController_EmitMonFlicker(BattleSystem *battleSystem, int side, u32 a2);
 void BattleController_EmitHealthbarUpdate(BattleSystem *battleSystem, BattleContext *ctx, int side);
 void BattleController_EmitPlayFaintAnimation(BattleSystem *battleSystem, BattleContext *ctx, int batlterId);
-void BattleController_EmitPlaySE(BattleSystem *battleSystem, BattleContext *ctx, u32 sndSeqNo, int battlerId);
+void BattleController_EmitPlaySE(BattleSystem *battleSystem, BattleContext *ctx, int sndSeqNo, int battlerId);
 void BattleController_EmitFadeOutBattle(BattleSystem *battleSystem, BattleContext *ctx);
 void BattleController_EmitToggleVanish(BattleSystem *battleSystem, int battlerId, int a2);
 void BattleController_EmitHealthbarStatus(BattleSystem *battleSystem, int battlerId, int status);
@@ -74,7 +74,7 @@ void ov12_02262F40(BattleSystem *battleSystem, BattleContext *ctx, int battlerId
 void ov12_02262FFC(BattleSystem *battleSystem, BattleContext *ctx, int a2, int battlerId);
 void ov12_02263138(BattleSystem *battleSystem, BattleContext *ctx, int battlerId);
 void ov12_02263E18(BattleSystem *battleSystem, int battlerId);
-void ov12_02263564(BattleSystem *battleSystem, BattleContext *ctx, int battlerId, u32 a3);
+void ov12_02263564(BattleSystem *battleSystem, BattleContext *ctx, int battlerId, int a3);
 void ov12_0226399C(BattleSystem *battleSystem, int battlerId);
 void ov12_02263A1C(BattleSystem *battleSystem, BattleContext *ctx, int battlerId);
 void ov12_02263D14(BattleSystem *battleSystem, int battlerId, u32 a2, int slot);

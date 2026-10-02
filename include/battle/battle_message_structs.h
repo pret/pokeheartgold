@@ -200,5 +200,76 @@ typedef struct MoveAnimation {
     int terrain;
 } MoveAnimation;
 
+typedef struct HPGaugeUpdateMessage {
+    u8 command;
+    u8 level;
+    s16 curHP;
+    u16 maxHP;
+    u8 padding_06;
+    u8 gender;
+    int hpCalcTemp;
+    u32 exp; // set but unused
+    u32 expToNextLevel; // set but unused
+} HPGaugeUpdateMessage;
+
+typedef struct ExpGaugeUpdateMessage {
+    u8 command;
+    u8 padding_01[3];
+    u32 curExp;
+    u32 gainedExp;
+    u32 expToNextLevel;
+} ExpGaugeUpdateMessage;
+
+typedef struct FaintingSequenceMessage {
+    u8 command;
+    u8 gender;
+    u16 species;
+    u32 personality;
+    u8 form;
+    u8 isSubstitute;
+    u8 isTransformed;
+    u8 unk_0B;
+    u16 monSpecies[4];
+    u8 monGenders[4];
+    u8 monShiny[4];
+    u8 monFormNums[4];
+    u32 monPersonalities[4];
+} FaintingSequenceMessage;
+
+typedef struct PlaySoundMessage {
+    u8 command;
+    u8 unk_01;
+    u16 sdatID;
+} PlaySoundMessage;
+
+typedef struct ToggleVanishMessage {
+    u8 command;
+    u8 toggle;
+    u8 isSubstitute;
+    u8 padding_03;
+    u16 species[4];
+    u8 gender[4];
+    u8 isShiny[4];
+    u8 formNum[4];
+    u32 personality[4];
+} ToggleVanishMessage;
+
+typedef struct SetStatusIconMessage {
+    u8 command;
+    u8 status;
+    u16 padding_02;
+} SetStatusIconMessage;
+
+typedef struct TrainerMsgMessage {
+    u8 command;
+    u8 msg;
+    u16 padding_02;
+} TrainerMsgMessage;
+
+typedef struct RecallMsgMessage {
+    u8 command;
+    u8 partySlot;
+    u16 hpPercent;
+} RecallMsgMessage;
 
 #endif
