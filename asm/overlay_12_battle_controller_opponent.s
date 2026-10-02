@@ -897,7 +897,7 @@ ov12_02258EB4: ; 0x02258EB4
 	ldrb r1, [r4, r1]
 	add r0, r5, #0
 	mov r2, #1
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	add r0, r4, #0
 	bl ov12_02259928
 	pop {r3, r4, r5, pc}
@@ -975,7 +975,7 @@ ov12_02258F44: ; 0x02258F44
 	ldrb r1, [r4, r1]
 	add r0, r5, #0
 	mov r2, #7
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	add r0, r4, #0
 	bl ov12_02259928
 	pop {r3, r4, r5, pc}
@@ -1182,7 +1182,7 @@ ov12_022590A0: ; 0x022590A0
 	ldrb r1, [r4, r1]
 	add r0, r5, #0
 	mov r2, #0x17
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	b _022590CA
 _022590C2:
 	add r0, r5, #0
@@ -1469,7 +1469,7 @@ _022592B6:
 	ldrb r1, [r1, r2]
 	ldrb r2, [r6]
 	ldr r0, [sp]
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	ldr r0, [sp, #4]
 	bl ov12_02259928
 	add sp, #0xc
@@ -1510,7 +1510,7 @@ _02259304:
 	ldrb r1, [r4, r1]
 	ldrb r2, [r2]
 	add r0, r5, #0
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	add r0, r4, #0
 	bl ov12_02259928
 	pop {r4, r5, r6, pc}
@@ -1536,7 +1536,7 @@ ov12_02259328: ; 0x02259328
 	ldrb r1, [r4, r1]
 	ldrb r2, [r2]
 	add r0, r5, #0
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	add r0, r4, #0
 	bl ov12_02259928
 	pop {r3, r4, r5, pc}
@@ -1601,7 +1601,7 @@ _022593BA:
 	ldrb r1, [r7, r1]
 	ldrb r2, [r4]
 	ldr r0, [sp]
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	add r0, r7, #0
 	bl ov12_02259928
 	add sp, #0xc
@@ -1736,7 +1736,7 @@ _02259418:
 	ldrb r1, [r5, r1]
 	ldrb r2, [r4]
 	ldr r0, [sp, #0x10]
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	add r0, r5, #0
 	bl ov12_02259928
 	add sp, #0x24
@@ -1756,7 +1756,7 @@ ov12_022594F4: ; 0x022594F4
 	ldrb r1, [r4, r1]
 	add r0, r5, #0
 	mov r2, #0x2e
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	add r0, r4, #0
 	bl ov12_02259928
 	pop {r3, r4, r5, pc}
@@ -1825,7 +1825,7 @@ _0225959A:
 	ldrb r1, [r4, r1]
 	add r0, r5, #0
 	mov r2, #0x2f
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	add r0, r4, #0
 	bl ov12_02259928
 	add sp, #0xc
@@ -1882,7 +1882,7 @@ _02259604:
 	ldrb r1, [r4, r1]
 	add r0, r5, #0
 	mov r2, #0x32
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 _02259612:
 	add r0, r4, #0
 	bl ov12_02259928
@@ -1914,7 +1914,7 @@ _02259640:
 	ldrb r1, [r4, r1]
 	add r0, r5, #0
 	mov r2, #0x33
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 _0225964E:
 	add r0, r4, #0
 	bl ov12_02259928
@@ -1943,7 +1943,7 @@ ov12_02259658: ; 0x02259658
 	ldrb r1, [r4, r1]
 	add r0, r5, #0
 	mov r2, #0x34
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	add r0, r4, #0
 	bl ov12_02259928
 	pop {r3, r4, r5, r6, r7, pc}
@@ -1962,7 +1962,7 @@ ov12_02259694: ; 0x02259694
 	ldrb r1, [r4, r1]
 	add r0, r5, #0
 	mov r2, #0x35
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	add r0, r4, #0
 	bl ov12_02259928
 	pop {r3, r4, r5, pc}
@@ -1997,7 +1997,7 @@ _022596E4:
 	ldrb r1, [r5, r1]
 	ldrb r2, [r4]
 	add r0, r6, #0
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	add r0, r5, #0
 	bl ov12_02259928
 	pop {r4, r5, r6, pc}
@@ -2262,7 +2262,7 @@ _022598DC:
 	ldr r2, [sp, #0x10]
 	ldr r0, [sp]
 	ldrb r2, [r2]
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	ldr r0, [sp, #4]
 	bl ov12_02259928
 	add sp, #0x14
@@ -2286,7 +2286,7 @@ ov12_022598F8: ; 0x022598F8
 	ldrb r1, [r4, r1]
 	add r0, r5, #0
 	mov r2, #0x42
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	add r0, r4, #0
 	bl ov12_02259928
 	pop {r4, r5, r6, pc}
@@ -4535,7 +4535,7 @@ _0225AACA:
 	add r4, #0x4c
 	ldrb r1, [r1]
 	ldrb r2, [r4]
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _0225AADC: .word ov12_02260030
@@ -4671,7 +4671,7 @@ _0225ABCC:
 	lsl r2, r2, #2
 	ldrb r1, [r1, r2]
 	ldrb r2, [r5]
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	ldrh r0, [r5, #2]
 	add r1, r4, #0
 	bl sub_0200602C
@@ -4809,7 +4809,7 @@ _0225ACC2:
 	ldrb r1, [r5, r1]
 	ldrb r2, [r4]
 	add r0, r6, #0
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov12_0225ACB0
 
@@ -5092,13 +5092,13 @@ _0225AF2A:
 	bne _0225AF46
 	sub r1, r1, #2
 	ldrb r1, [r5, r1]
-	bl ov12_02263A00
+	bl BattleController_EmitAlertMessageAck
 	mov r1, #0x65
 	lsl r1, r1, #2
 	ldrb r1, [r5, r1]
 	ldrb r2, [r4]
 	add r0, r6, #0
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	pop {r3, r4, r5, r6, r7, pc}
 _0225AF46:
 	bl BattleSystem_GetBattleType
@@ -5109,14 +5109,14 @@ _0225AF46:
 	lsl r1, r1, #2
 	ldrb r1, [r5, r1]
 	add r0, r6, #0
-	bl ov12_02263A00
+	bl BattleController_EmitAlertMessageAck
 _0225AF5C:
 	mov r1, #0x65
 	lsl r1, r1, #2
 	ldrb r1, [r5, r1]
 	ldrb r2, [r4]
 	add r0, r6, #0
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _0225AF6C: .word 0x00000196
@@ -5206,7 +5206,7 @@ ov12_0225AF74: ; 0x0225AF74
 	add r4, #0x4c
 	ldrb r1, [r1]
 	ldrb r2, [r4]
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _0225B024: .word 0x00000195
@@ -5449,7 +5449,7 @@ _0225B1E6:
 	ldrb r1, [r4, r1]
 	add r0, r5, #0
 	mov r2, #0x37
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	add sp, #0x24
 	pop {r4, r5, pc}
 	.balign 4, 0
@@ -5478,7 +5478,7 @@ ov12_0225B200: ; 0x0225B200
 	ldrb r1, [r4, r1]
 	ldrb r2, [r6]
 	add r0, r5, #0
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	add sp, #0x50
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -5685,7 +5685,7 @@ ov12_0225B3A0: ; 0x0225B3A0
 	ldrb r1, [r4, r1]
 	ldrb r2, [r6]
 	add r0, r5, #0
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	add sp, #0x50
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -5732,7 +5732,7 @@ _0225B412:
 	ldrb r1, [r5, r1]
 	ldrb r2, [r4]
 	add r0, r6, #0
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	pop {r4, r5, r6, pc}
 	nop
 _0225B424: .word 0x00000195
@@ -5754,7 +5754,7 @@ ov12_0225B434: ; 0x0225B434
 	ldrb r1, [r5, r1]
 	ldrb r2, [r4]
 	add r0, r6, #0
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 	thumb_func_end ov12_0225B434
@@ -6143,7 +6143,7 @@ _0225B728:
 	str r1, [sp, #0xc]
 	ldr r0, [r4]
 	mov r3, #1
-	bl ov12_022643C8
+	bl BattleController_SetMoveAnimation
 	ldr r0, [r4]
 	ldr r1, [r4, #4]
 	add r2, r5, #0
@@ -6176,7 +6176,7 @@ _0225B798:
 	ldrb r1, [r4, #0x11]
 	ldrb r2, [r4, #0x10]
 	ldr r0, [r4]
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	add r0, r4, #0
 	bl Heap_Free
 	add r0, r6, #0
@@ -6348,7 +6348,7 @@ _0225B8D0:
 	str r1, [sp, #0xc]
 	ldr r0, [r4]
 	mov r3, #1
-	bl ov12_022643C8
+	bl BattleController_SetMoveAnimation
 	ldr r0, [r4]
 	ldr r1, [r4, #4]
 	add r2, r5, #0
@@ -6381,7 +6381,7 @@ _0225B940:
 	ldrb r1, [r4, #0x11]
 	ldrb r2, [r4, #0x10]
 	ldr r0, [r4]
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	add r0, r4, #0
 	bl Heap_Free
 	add r0, r6, #0
@@ -6920,7 +6920,7 @@ _0225BD50:
 	str r1, [sp, #0xc]
 	ldr r0, [r4]
 	mov r3, #1
-	bl ov12_022643C8
+	bl BattleController_SetMoveAnimation
 	ldr r0, [r4]
 	ldr r1, [r4, #4]
 	ldr r2, [r4, #0x24]
@@ -6963,7 +6963,7 @@ _0225BDFC:
 	ldrb r1, [r1]
 	ldrb r2, [r2]
 	ldr r0, [r4]
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	add r0, r4, #0
 	bl Heap_Free
 	add r0, r5, #0
@@ -7206,7 +7206,7 @@ _0225BFE4:
 	str r1, [sp, #0xc]
 	ldr r0, [r4]
 	mov r3, #1
-	bl ov12_022643C8
+	bl BattleController_SetMoveAnimation
 	ldr r0, [r4]
 	ldr r1, [r4, #4]
 	ldr r2, [r4, #0x24]
@@ -7330,7 +7330,7 @@ _0225C0B0:
 	str r1, [sp, #0xc]
 	ldr r0, [r4]
 	mov r3, #1
-	bl ov12_022643C8
+	bl BattleController_SetMoveAnimation
 	ldr r0, [r4]
 	ldr r1, [r4, #4]
 	ldr r2, [r4, #0x24]
@@ -7373,7 +7373,7 @@ _0225C156:
 	ldrb r1, [r1]
 	ldrb r2, [r2]
 	ldr r0, [r4]
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	add r0, r4, #0
 	bl Heap_Free
 	add r0, r5, #0
@@ -7896,7 +7896,7 @@ _0225C588:
 	str r1, [sp, #0xc]
 	ldr r0, [r4]
 	mov r3, #1
-	bl ov12_022643C8
+	bl BattleController_SetMoveAnimation
 	ldr r0, [r4]
 	ldr r1, [r4, #4]
 	add r2, r5, #0
@@ -7947,7 +7947,7 @@ _0225C5FE:
 	str r1, [sp, #0xc]
 	ldr r0, [r4]
 	mov r3, #1
-	bl ov12_022643C8
+	bl BattleController_SetMoveAnimation
 	ldr r0, [r4]
 	ldr r1, [r4, #4]
 	add r2, r5, #0
@@ -7991,7 +7991,7 @@ _0225C64A:
 	str r1, [sp, #0xc]
 	ldr r0, [r4]
 	mov r3, #1
-	bl ov12_022643C8
+	bl BattleController_SetMoveAnimation
 	ldr r0, [r4]
 	ldr r1, [r4, #4]
 	add r2, r5, #0
@@ -8018,7 +8018,7 @@ _0225C6A6:
 	ldrb r1, [r1]
 	ldrb r2, [r2]
 	ldr r0, [r4]
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	add r0, r4, #0
 	bl Heap_Free
 	add r0, r6, #0
@@ -8163,7 +8163,7 @@ _0225C7C2:
 	str r1, [sp, #0xc]
 	ldr r0, [r4]
 	mov r3, #1
-	bl ov12_022643C8
+	bl BattleController_SetMoveAnimation
 	ldr r0, [r4]
 	ldr r1, [r4, #4]
 	add r2, r5, #0
@@ -8258,7 +8258,7 @@ _0225C87A:
 	str r1, [sp, #0xc]
 	ldr r0, [r4]
 	mov r3, #1
-	bl ov12_022643C8
+	bl BattleController_SetMoveAnimation
 	ldr r0, [r4]
 	ldr r1, [r4, #4]
 	add r2, r5, #0
@@ -8309,7 +8309,7 @@ _0225C8E4:
 	str r1, [sp, #0xc]
 	ldr r0, [r4]
 	mov r3, #1
-	bl ov12_022643C8
+	bl BattleController_SetMoveAnimation
 	ldr r0, [r4]
 	ldr r1, [r4, #4]
 	add r2, r5, #0
@@ -8353,7 +8353,7 @@ _0225C930:
 	str r1, [sp, #0xc]
 	ldr r0, [r4]
 	mov r3, #1
-	bl ov12_022643C8
+	bl BattleController_SetMoveAnimation
 	ldr r0, [r4]
 	ldr r1, [r4, #4]
 	add r2, r5, #0
@@ -8380,7 +8380,7 @@ _0225C98C:
 	ldrb r1, [r1]
 	ldrb r2, [r2]
 	ldr r0, [r4]
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	add r0, r4, #0
 	bl Heap_Free
 	add r0, r6, #0
@@ -8440,7 +8440,7 @@ _0225C9F4:
 	str r1, [sp, #0xc]
 	ldr r0, [r4]
 	mov r3, #1
-	bl ov12_022643C8
+	bl BattleController_SetMoveAnimation
 	ldr r0, [r4]
 	ldr r1, [r4, #4]
 	add r2, r5, #0
@@ -8484,7 +8484,7 @@ _0225CA3C:
 	str r1, [sp, #0xc]
 	ldr r0, [r4]
 	mov r3, #1
-	bl ov12_022643C8
+	bl BattleController_SetMoveAnimation
 	ldr r0, [r4]
 	ldr r1, [r4, #4]
 	add r2, r5, #0
@@ -8701,7 +8701,7 @@ _0225CC24:
 	ldrb r1, [r1]
 	ldrb r2, [r2]
 	ldr r0, [r4]
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	add r0, r4, #0
 	bl Heap_Free
 	add r0, r6, #0
@@ -8763,7 +8763,7 @@ _0225CC90:
 	str r1, [sp, #0xc]
 	ldr r0, [r4]
 	mov r3, #1
-	bl ov12_022643C8
+	bl BattleController_SetMoveAnimation
 	ldr r0, [r4]
 	ldr r1, [r4, #4]
 	add r2, r5, #0
@@ -8807,7 +8807,7 @@ _0225CCD8:
 	str r1, [sp, #0xc]
 	ldr r0, [r4]
 	mov r3, #1
-	bl ov12_022643C8
+	bl BattleController_SetMoveAnimation
 	ldr r0, [r4]
 	ldr r1, [r4, #4]
 	add r2, r5, #0
@@ -8855,7 +8855,7 @@ _0225CD58:
 	str r1, [sp, #0xc]
 	ldr r0, [r4]
 	mov r3, #1
-	bl ov12_022643C8
+	bl BattleController_SetMoveAnimation
 	ldr r0, [r4]
 	ldr r1, [r4, #4]
 	add r2, r5, #0
@@ -8880,7 +8880,7 @@ _0225CD96:
 	ldrb r1, [r1]
 	ldrb r2, [r2]
 	ldr r0, [r4]
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	add r0, r4, #0
 	bl Heap_Free
 	add r0, r6, #0
@@ -8937,7 +8937,7 @@ _0225CE10:
 	ldrb r1, [r4, #9]
 	ldrb r2, [r4, #8]
 	ldr r0, [r4]
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	add r0, r4, #0
 	bl Heap_Free
 	add r0, r5, #0
@@ -9332,7 +9332,7 @@ _0225D11C:
 	ldrb r1, [r4, #0x11]
 	ldrb r2, [r4, #0x10]
 	ldr r0, [r4]
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	add r0, r4, #0
 	bl Heap_Free
 	add r0, r6, #0
@@ -9929,7 +9929,7 @@ _0225D618:
 	ldrb r1, [r4, #9]
 	ldrb r2, [r4, #8]
 	ldr r0, [r4]
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	add r0, r4, #0
 	bl Heap_Free
 	add r0, r5, #0
@@ -10193,7 +10193,7 @@ _0225D85A:
 	ldrb r1, [r5, #9]
 	ldrb r2, [r5, #8]
 	ldr r0, [r5]
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	add r0, r5, #0
 	bl Heap_Free
 	add r0, r6, #0
@@ -10314,7 +10314,7 @@ _0225D90E:
 	ldrb r1, [r5, #9]
 	ldrb r2, [r5, #8]
 	ldr r0, [r5]
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	add r0, r5, #0
 	bl Heap_Free
 	add r0, r6, #0
@@ -10391,7 +10391,7 @@ _0225D9FE:
 	ldrb r1, [r4, #9]
 	ldrb r2, [r4, #8]
 	ldr r0, [r4]
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	add r0, r4, #0
 	bl Heap_Free
 	add r0, r5, #0
@@ -10454,7 +10454,7 @@ _0225DA6E:
 	ldrb r1, [r1]
 	ldrb r2, [r2]
 	ldr r0, [r4, #0xc]
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	mov r0, #0
 	str r0, [r4, #0x10]
 	add r0, r5, #0
@@ -10489,7 +10489,7 @@ _0225DAAC:
 	ldrb r1, [r1]
 	ldrb r2, [r2]
 	ldr r0, [r4, #0xc]
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	mov r0, #0
 	str r0, [r4, #0x10]
 	add r0, r5, #0
@@ -11225,11 +11225,11 @@ _0225E0D0:
 	ldrb r1, [r4, #9]
 	ldr r0, [r4]
 	ldr r2, [r4, #0xc]
-	bl ov12_02262F24
+	bl BattleController_EmitSelectedCommand
 	ldrb r1, [r4, #9]
 	ldrb r2, [r4, #8]
 	ldr r0, [r4]
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	add r0, r4, #0
 	bl Heap_Free
 	add r0, r7, #0
@@ -11252,11 +11252,11 @@ ov12_0225E104: ; 0x0225E104
 	add r2, r0, #0
 	ldrb r1, [r4, #9]
 	ldr r0, [r4]
-	bl ov12_02262F24
+	bl BattleController_EmitSelectedCommand
 	ldrb r1, [r4, #9]
 	ldrb r2, [r4, #8]
 	ldr r0, [r4]
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	add r0, r4, #0
 	bl Heap_Free
 	add r0, r5, #0
@@ -11272,7 +11272,7 @@ ov12_0225E134: ; 0x0225E134
 	add r5, r0, #0
 	ldrb r2, [r4, #8]
 	ldr r0, [r4]
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	add r0, r4, #0
 	bl Heap_Free
 	add r0, r5, #0
@@ -11317,17 +11317,17 @@ ov12_0225E154: ; 0x0225E154
 	bgt _0225E1AC
 	ldrb r1, [r4, #9]
 	mov r2, #4
-	bl ov12_02262F24
+	bl BattleController_EmitSelectedCommand
 	b _0225E1B4
 _0225E1AC:
 	ldrb r1, [r4, #9]
 	mov r2, #5
-	bl ov12_02262F24
+	bl BattleController_EmitSelectedCommand
 _0225E1B4:
 	ldrb r1, [r4, #9]
 	ldrb r2, [r4, #8]
 	ldr r0, [r4]
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	add r0, r4, #0
 	bl Heap_Free
 	add r0, r6, #0
@@ -11346,11 +11346,11 @@ ov12_0225E1D4: ; 0x0225E1D4
 	add r5, r0, #0
 	ldr r0, [r4]
 	mov r2, #4
-	bl ov12_02262F24
+	bl BattleController_EmitSelectedCommand
 	ldrb r1, [r4, #9]
 	ldrb r2, [r4, #8]
 	ldr r0, [r4]
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	add r0, r4, #0
 	bl Heap_Free
 	add r0, r5, #0
@@ -11388,11 +11388,11 @@ _0225E22C:
 	ldrb r1, [r4, #9]
 	ldrb r2, [r2]
 	ldr r0, [r4]
-	bl ov12_02262F24
+	bl BattleController_EmitSelectedCommand
 	ldrb r1, [r4, #9]
 	ldrb r2, [r4, #8]
 	ldr r0, [r4]
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	add r0, r4, #0
 	bl Heap_Free
 	add r0, r5, #0
@@ -11566,7 +11566,7 @@ _0225E3A8:
 	ldrb r1, [r4, #0x1d]
 	ldr r0, [r4]
 	ldr r2, [r4, #8]
-	bl ov12_02262FE0
+	bl BattleController_EmitSelectedMove
 	add r0, r4, #0
 	add r0, #0x20
 	ldrb r0, [r0]
@@ -11594,7 +11594,7 @@ _0225E3D0:
 	ldrb r1, [r4, #0x1d]
 	ldrb r2, [r4, #0x1c]
 	ldr r0, [r4]
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	add r0, r4, #0
 	bl Heap_Free
 	add r0, r6, #0
@@ -11686,11 +11686,11 @@ _0225E4A2:
 	ldrb r1, [r6, #0x1d]
 	ldr r0, [r6]
 	add r2, r4, #0
-	bl ov12_02262FE0
+	bl BattleController_EmitSelectedMove
 	ldrb r1, [r6, #0x1d]
 	ldrb r2, [r6, #0x1c]
 	ldr r0, [r6]
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	add r0, r6, #0
 	bl Heap_Free
 	ldr r0, [sp, #8]
@@ -11710,7 +11710,7 @@ ov12_0225E4CC: ; 0x0225E4CC
 	add r5, r0, #0
 	ldrb r2, [r4, #0x1c]
 	ldr r0, [r4]
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	add r0, r4, #0
 	bl Heap_Free
 	add r0, r5, #0
@@ -11765,11 +11765,11 @@ _0225E53E:
 	ldrb r1, [r5, #0x1d]
 	ldrb r2, [r2]
 	ldr r0, [r5]
-	bl ov12_02262FE0
+	bl BattleController_EmitSelectedMove
 	ldrb r1, [r5, #0x1d]
 	ldrb r2, [r5, #0x1c]
 	ldr r0, [r5]
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	add r0, r5, #0
 	bl Heap_Free
 	add r0, r6, #0
@@ -11959,11 +11959,11 @@ _0225E6D4:
 	ldrb r1, [r4, #0xd]
 	ldr r0, [r4]
 	add r2, r5, #0
-	bl ov12_0226311C
+	bl BattleController_EmitSelectedTarget
 	ldrb r1, [r4, #0xd]
 	ldrb r2, [r4, #0xc]
 	ldr r0, [r4]
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	add r0, r4, #0
 	bl Heap_Free
 	ldr r0, [sp, #8]
@@ -11995,11 +11995,11 @@ _0225E71E:
 	ldrb r1, [r5, #0xd]
 	ldr r0, [r5]
 	add r2, r4, #0
-	bl ov12_0226311C
+	bl BattleController_EmitSelectedTarget
 	ldrb r1, [r5, #0xd]
 	ldrb r2, [r5, #0xc]
 	ldr r0, [r5]
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	add r0, r5, #0
 	bl Heap_Free
 	add r0, r6, #0
@@ -12015,7 +12015,7 @@ ov12_0225E740: ; 0x0225E740
 	add r5, r0, #0
 	ldrb r2, [r4, #0xc]
 	ldr r0, [r4]
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	add r0, r4, #0
 	bl Heap_Free
 	add r0, r5, #0
@@ -12120,11 +12120,11 @@ _0225E80C:
 	ldrb r1, [r4, #0xd]
 	ldrb r2, [r2]
 	ldr r0, [r4]
-	bl ov12_0226311C
+	bl BattleController_EmitSelectedTarget
 	ldrb r1, [r4, #0xd]
 	ldrb r2, [r4, #0xc]
 	ldr r0, [r4]
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	add r0, r4, #0
 	bl Heap_Free
 	add r0, r7, #0
@@ -12829,11 +12829,11 @@ _0225ED8E:
 	ldrh r3, [r3, #2]
 	strh r3, [r2, #2]
 	ldr r2, [r2]
-	bl ov12_022632C0
+	bl BattleController_EmitSelectedBagItem
 	ldrb r1, [r4, #0xd]
 	ldrb r2, [r4, #0xc]
 	ldr r0, [r4]
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	ldr r0, [r4, #8]
 	ldr r0, [r0, #4]
 	ldr r0, [r0]
@@ -12910,7 +12910,7 @@ _0225EE3E:
 	str r1, [sp, #0xc]
 	ldr r0, [r4]
 	mov r3, #1
-	bl ov12_022643C8
+	bl BattleController_SetMoveAnimation
 	ldrb r1, [r4, #0xd]
 	ldr r0, [r4]
 	bl BattleSystem_GetOpponentData
@@ -12942,7 +12942,7 @@ _0225EE7E:
 	str r5, [sp, #8]
 	str r1, [sp, #0xc]
 	ldr r0, [r4]
-	bl ov12_022643C8
+	bl BattleController_SetMoveAnimation
 	ldr r0, [r4]
 	add r1, r5, #0
 	bl BattleSystem_GetOpponentData
@@ -12975,7 +12975,7 @@ _0225EEC4:
 	mov r0, #0x36
 	str r0, [sp, #0xc]
 	ldr r0, [r4]
-	bl ov12_022643C8
+	bl BattleController_SetMoveAnimation
 	ldrb r1, [r4, #0xd]
 	ldr r0, [r4]
 	bl BattleSystem_GetOpponentData
@@ -13000,7 +13000,7 @@ _0225EF02:
 	mov r0, #0x74
 	str r0, [sp, #0xc]
 	ldr r0, [r4]
-	bl ov12_022643C8
+	bl BattleController_SetMoveAnimation
 	ldrb r1, [r4, #0xd]
 	ldr r0, [r4]
 	bl BattleSystem_GetOpponentData
@@ -13023,7 +13023,7 @@ _0225EF3A:
 	mov r1, #0
 	str r1, [sp, #0xc]
 	ldr r0, [r4]
-	bl ov12_022643C8
+	bl BattleController_SetMoveAnimation
 	ldrb r1, [r4, #0xd]
 	ldr r0, [r4]
 	bl BattleSystem_GetOpponentData
@@ -13151,7 +13151,7 @@ _0225F02A:
 	str r5, [sp, #8]
 	str r1, [sp, #0xc]
 	ldr r0, [r4]
-	bl ov12_022643C8
+	bl BattleController_SetMoveAnimation
 	ldr r0, [r4]
 	add r1, r5, #0
 	bl BattleSystem_GetOpponentData
@@ -13581,11 +13581,11 @@ ov12_0225F3A4: ; 0x0225F3A4
 	ldrh r3, [r3, #2]
 	strh r3, [r2, #2]
 	ldr r2, [r2]
-	bl ov12_022632C0
+	bl BattleController_EmitSelectedBagItem
 	ldrb r1, [r4, #0xd]
 	ldrb r2, [r4, #0xc]
 	ldr r0, [r4]
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	ldr r0, [r4, #8]
 	ldr r0, [r0, #4]
 	ldr r0, [r0]
@@ -13612,7 +13612,7 @@ ov12_0225F3FC: ; 0x0225F3FC
 	add r5, r0, #0
 	ldrb r2, [r4, #0xc]
 	ldr r0, [r4]
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	ldr r0, [r4, #8]
 	ldr r0, [r0, #4]
 	ldr r0, [r0]
@@ -13688,11 +13688,11 @@ _0225F48A:
 	ldrh r3, [r3, #4]
 	strh r3, [r2, #2]
 	ldr r2, [r2]
-	bl ov12_022632C0
+	bl BattleController_EmitSelectedBagItem
 	ldrb r1, [r4, #0xd]
 	ldrb r2, [r4, #0xc]
 	ldr r0, [r4]
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	ldr r0, [r4, #8]
 	ldr r0, [r0, #4]
 	ldr r0, [r0]
@@ -14137,7 +14137,7 @@ _0225F846:
 	bne _0225F874
 	ldrb r1, [r4, #9]
 	mov r2, #0xff
-	bl ov12_02263360
+	bl BattleController_EmitPartyMenuResult
 	b _0225F882
 	nop
 _0225F870: .word 0x0000FFFF
@@ -14147,12 +14147,12 @@ _0225F874:
 	ldrb r2, [r2]
 	ldrb r1, [r4, #9]
 	add r2, r2, #1
-	bl ov12_02263360
+	bl BattleController_EmitPartyMenuResult
 _0225F882:
 	ldrb r1, [r4, #9]
 	ldrb r2, [r4, #8]
 	ldr r0, [r4]
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	ldr r0, [r4, #4]
 	ldr r0, [r0]
 	bl Heap_Free
@@ -14241,11 +14241,11 @@ _0225F93A:
 	ldrb r1, [r5, #9]
 	ldr r0, [r5]
 	add r2, r4, #1
-	bl ov12_02263360
+	bl BattleController_EmitPartyMenuResult
 	ldrb r1, [r5, #9]
 	ldrb r2, [r5, #8]
 	ldr r0, [r5]
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	add r0, r5, #0
 	bl Heap_Free
 	ldr r0, [sp]
@@ -14263,7 +14263,7 @@ ov12_0225F960: ; 0x0225F960
 	add r5, r0, #0
 	ldrb r2, [r4, #8]
 	ldr r0, [r4]
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	add r0, r4, #0
 	bl Heap_Free
 	add r0, r5, #0
@@ -14350,11 +14350,11 @@ _0225FA18:
 	ldrb r1, [r4, #9]
 	ldrb r2, [r2]
 	ldr r0, [r4]
-	bl ov12_02263360
+	bl BattleController_EmitPartyMenuResult
 	ldrb r1, [r4, #9]
 	ldrb r2, [r4, #8]
 	ldr r0, [r4]
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	add r0, r4, #0
 	bl Heap_Free
 	add r0, r6, #0
@@ -14622,11 +14622,11 @@ _0225FC4C:
 	ldrb r1, [r4, #0xd]
 	ldr r0, [r4]
 	ldr r2, [r4, #8]
-	bl ov12_02262F24
+	bl BattleController_EmitSelectedCommand
 	ldrb r1, [r4, #0xd]
 	ldrb r2, [r4, #0xc]
 	ldr r0, [r4]
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	add r0, r4, #0
 	bl Heap_Free
 	add r0, r6, #0
@@ -14646,7 +14646,7 @@ ov12_0225FC80: ; 0x0225FC80
 	add r5, r0, #0
 	ldrb r2, [r4, #0xc]
 	ldr r0, [r4]
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	add r0, r4, #0
 	bl Heap_Free
 	add r0, r5, #0
@@ -14663,7 +14663,7 @@ ov12_0225FCA0: ; 0x0225FCA0
 	add r5, r0, #0
 	ldrb r2, [r4, #0xc]
 	ldr r0, [r4]
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	add r0, r4, #0
 	bl Heap_Free
 	add r0, r5, #0
@@ -14702,11 +14702,11 @@ _0225FCF0:
 	ldrb r1, [r4, #0xd]
 	ldrb r2, [r2]
 	ldr r0, [r4]
-	bl ov12_02262F24
+	bl BattleController_EmitSelectedCommand
 	ldrb r1, [r4, #0xd]
 	ldrb r2, [r4, #0xc]
 	ldr r0, [r4]
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	add r0, r4, #0
 	bl Heap_Free
 	add r0, r5, #0
@@ -14771,7 +14771,7 @@ _0225FD4C:
 	str r1, [sp, #0xc]
 	ldr r0, [r4]
 	mov r3, #1
-	bl ov12_022643C8
+	bl BattleController_SetMoveAnimation
 	ldr r0, [r4]
 	ldr r1, [r4, #4]
 	ldr r2, [r4, #0xc]
@@ -14813,7 +14813,7 @@ _0225FDA6:
 	str r1, [sp, #0xc]
 	ldr r0, [r4]
 	mov r3, #1
-	bl ov12_022643C8
+	bl BattleController_SetMoveAnimation
 	ldr r0, [r4]
 	ldr r1, [r4, #4]
 	ldr r2, [r4, #0xc]
@@ -14916,7 +14916,7 @@ _0225FE7E:
 	str r1, [sp, #0xc]
 	ldr r0, [r4]
 	mov r3, #1
-	bl ov12_022643C8
+	bl BattleController_SetMoveAnimation
 	ldr r0, [r4]
 	ldr r1, [r4, #4]
 	ldr r2, [r4, #0xc]
@@ -14958,7 +14958,7 @@ _0225FED8:
 	str r1, [sp, #0xc]
 	ldr r0, [r4]
 	mov r3, #1
-	bl ov12_022643C8
+	bl BattleController_SetMoveAnimation
 	ldr r0, [r4]
 	ldr r1, [r4, #4]
 	ldr r2, [r4, #0xc]
@@ -14985,7 +14985,7 @@ _0225FF34:
 	ldrb r1, [r1]
 	ldrb r2, [r2]
 	ldr r0, [r4]
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	add r0, r4, #0
 	bl Heap_Free
 	add r0, r5, #0
@@ -15053,7 +15053,7 @@ _0225FFBA:
 	ldrb r1, [r4, #8]
 	ldr r0, [r4]
 	mov r2, #0x17
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	add r0, r4, #0
 	bl Heap_Free
 	add r0, r5, #0
@@ -15097,7 +15097,7 @@ _02260012:
 	ldrb r1, [r1]
 	ldrb r2, [r2]
 	ldr r0, [r4, #0xc]
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	mov r0, #0
 	str r0, [r4, #0x10]
 	add r0, r5, #0
@@ -15195,7 +15195,7 @@ _022600CE:
 	ldrb r1, [r1]
 	ldrb r2, [r2]
 	ldr r0, [r4, #0xc]
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	mov r0, #0
 	str r0, [r4, #0x10]
 	add r0, r5, #0
@@ -15258,7 +15258,7 @@ _0226012E:
 	str r1, [sp, #0xc]
 	ldr r0, [r4]
 	mov r3, #1
-	bl ov12_022643C8
+	bl BattleController_SetMoveAnimation
 	ldr r0, [r4]
 	ldr r1, [r4, #4]
 	add r2, r5, #0
@@ -15302,7 +15302,7 @@ _0226017A:
 	str r1, [sp, #0xc]
 	ldr r0, [r4]
 	mov r3, #1
-	bl ov12_022643C8
+	bl BattleController_SetMoveAnimation
 	ldr r0, [r4]
 	ldr r1, [r4, #4]
 	add r2, r5, #0
@@ -15519,7 +15519,7 @@ _02260356:
 	ldrb r1, [r1]
 	ldrb r2, [r2]
 	ldr r0, [r4]
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	add r0, r4, #0
 	bl Heap_Free
 	add r0, r6, #0
@@ -15593,7 +15593,7 @@ _022603F8:
 	ldrb r1, [r5, #5]
 	ldrb r2, [r5, #4]
 	ldr r0, [r5]
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	add r0, r5, #0
 	bl Heap_Free
 	add r0, r6, #0
@@ -15690,7 +15690,7 @@ _0226048C:
 	str r1, [sp, #0xc]
 	ldr r0, [r4]
 	mov r3, #1
-	bl ov12_022643C8
+	bl BattleController_SetMoveAnimation
 	ldr r0, [r4]
 	ldr r1, [r4, #4]
 	add r2, r5, #0
@@ -15734,7 +15734,7 @@ _022604E0:
 	str r1, [sp, #0xc]
 	ldr r0, [r4]
 	mov r3, #1
-	bl ov12_022643C8
+	bl BattleController_SetMoveAnimation
 	ldr r0, [r4]
 	ldr r1, [r4, #4]
 	add r2, r5, #0
@@ -15777,7 +15777,7 @@ _02260560:
 	ldrb r1, [r1]
 	ldrb r2, [r2]
 	ldr r0, [r4]
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	add r0, r4, #0
 	bl Heap_Free
 	add r0, r6, #0
@@ -15816,7 +15816,7 @@ _022605AC:
 	ldrb r1, [r4, #9]
 	ldrb r2, [r4, #8]
 	ldr r0, [r4]
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	add r0, r4, #0
 	bl Heap_Free
 	add r0, r5, #0
@@ -15850,7 +15850,7 @@ _022605F2:
 	ldrb r1, [r4, #5]
 	ldrb r2, [r4, #4]
 	ldr r0, [r4]
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	add r0, r4, #0
 	bl Heap_Free
 	add r0, r5, #0
@@ -15890,11 +15890,11 @@ _0226063C:
 	bne _02260666
 	ldrb r1, [r4, #5]
 	ldr r0, [r4]
-	bl ov12_02263A00
+	bl BattleController_EmitAlertMessageAck
 	ldrb r1, [r4, #5]
 	ldrb r2, [r4, #4]
 	ldr r0, [r4]
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	add r0, r4, #0
 	bl Heap_Free
 	add r0, r5, #0
@@ -16447,17 +16447,17 @@ _02260AE6:
 	bne _02260B04
 	ldrb r1, [r4, #9]
 	mov r2, #0xff
-	bl ov12_02263360
+	bl BattleController_EmitPartyMenuResult
 	b _02260B0C
 _02260B04:
 	ldrb r1, [r4, #9]
 	add r2, r2, #1
-	bl ov12_02263360
+	bl BattleController_EmitPartyMenuResult
 _02260B0C:
 	ldrb r1, [r4, #9]
 	ldrb r2, [r4, #8]
 	ldr r0, [r4]
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	ldr r0, [r4, #4]
 	bl Heap_Free
 	add r0, r4, #0
@@ -16522,7 +16522,7 @@ _02260B86:
 	ldrb r1, [r5, #9]
 	ldrb r2, [r5, #8]
 	ldr r0, [r5]
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	add r0, r5, #0
 	bl Heap_Free
 	add r0, r4, #0
@@ -16618,7 +16618,7 @@ _02260C3C:
 	ldrb r1, [r5, #5]
 	ldrb r2, [r5, #4]
 	ldr r0, [r5]
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	add r0, r5, #0
 	bl Heap_Free
 	add r0, r4, #0
@@ -16688,7 +16688,7 @@ _02260CC2:
 	ldrb r1, [r5, #5]
 	ldrb r2, [r5, #4]
 	ldr r0, [r5]
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	add r0, r5, #0
 	bl Heap_Free
 	add r0, r7, #0
@@ -16728,7 +16728,7 @@ _02260D0E:
 	ldrb r1, [r4, #0xd]
 	ldrb r2, [r4, #0xc]
 	ldr r0, [r4]
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	add r0, r4, #0
 	bl Heap_Free
 	add r0, r5, #0
@@ -16774,7 +16774,7 @@ _02260D56:
 	ldrb r1, [r4, #0xd]
 	ldrb r2, [r4, #0xc]
 	ldr r0, [r4]
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	add r0, r4, #0
 	bl Heap_Free
 	add r0, r5, #0
@@ -16911,7 +16911,7 @@ _02260E84:
 	ldrb r1, [r5, #5]
 	ldrb r2, [r5, #4]
 	ldr r0, [r5]
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	add r0, r5, #0
 	bl Heap_Free
 	add r0, r6, #0

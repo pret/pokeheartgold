@@ -268,11 +268,11 @@ typedef struct TrainerMsgMessage {
     u16 padding_02;
 } TrainerMsgMessage;
 
-typedef struct RecallMsgMessage {
+typedef struct ReturnMsgMessage {
     u8 command;
     u8 partySlot;
     u16 hpPercent;
-} RecallMsgMessage;
+} ReturnMsgMessage;
 
 typedef struct SendOutMsgMessage {
     u8 command;

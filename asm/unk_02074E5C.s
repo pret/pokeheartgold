@@ -1029,7 +1029,7 @@ _02075502:
 	ldrh r1, [r4]
 	ldr r0, [r5]
 	add r1, r6, r1
-	bl ov12_02264334
+	bl BattleController_RecvCommMessage
 	cmp r0, #1
 	bne _02075532
 	ldrh r0, [r4]

@@ -56,4 +56,4 @@
 .public ov12_0223BC14
 .public ov12_0223BC20
 .public ov12_0223BC2C
-.public ov12_02264334
+.public BattleController_RecvCommMessage

@@ -1560,7 +1560,7 @@ void CopyBattleMonToPartyMon(BattleSystem *battleSystem, BattleContext *ctx, int
         ov12_022585A8(ctx, battlerId);
     }
 
-    BattleController_EmitBattleMonToPartyMonCopy(battleSystem, ctx, battlerId);
+    BattleController_EmitUpdatePartyMon(battleSystem, ctx, battlerId);
 }
 
 void LockBattlerIntoCurrentMove(BattleSystem *battleSystem, BattleContext *ctx, int battlerId) {
@@ -5393,7 +5393,7 @@ BOOL Battler_CheckWeatherFormChange(BattleSystem *battleSystem, BattleContext *c
                     ctx->battleMons[ctx->battlerIdTemp].ability = GetMonData(mon2, MON_DATA_ABILITY, NULL);
                     ctx->battleMons[ctx->battlerIdTemp].form = GIRATINA_ALTERED;
                     ctx->battleStatus2 |= BATTLE_STATUS2_FORM_CHANGE;
-                    BattleController_EmitBattleMonToPartyMonCopy(battleSystem, ctx, ctx->battlerIdTemp);
+                    BattleController_EmitUpdatePartyMon(battleSystem, ctx, ctx->battlerIdTemp);
                     Heap_Free(mon2);
                     *script = BATTLE_SUBSCRIPT_FORM_CHANGE;
                     ret = TRUE;
