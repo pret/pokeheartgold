@@ -1,5 +1,5 @@
-// Character mapping for Pokémon Platinum
-// Version 2023.07.28
+// Character mapping for Pokémon HeartGold and SoulSilver
+// Version 2021.08.17
 // Format is HEXCODE=<character> or HEXCODE={<command>}
 // Comments are preceded by double forward slashes as in C99 and C++.
 // Leading spaces and tabs are ignored; trailing spaces and tabs are not.
@@ -2885,9 +2885,6 @@ E000=\n
 0100={STRVAR_1}
 0300={STRVAR_3}
 0400={STRVAR_4}
-0600={STRVAR_6}
-0602={UNK_602}
-0603={UNK_603}
 3400={STRVAR_34}
 0200={YESNO}
 0201={PAUSE}
