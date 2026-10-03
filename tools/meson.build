@@ -1,7 +1,6 @@
 subdir('nitrorom')
 
 subdir('nitroarc') # libnitroarc
-subdir('enumproc') # libenum
 subdir('dataproc') # Requires libnitroarc and libenum
 
 subdir('compstatic')
