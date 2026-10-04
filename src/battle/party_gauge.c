@@ -311,7 +311,7 @@ static void Task_HidePartyArrow(SysTask *task, void *data) {
             arrow->delay--;
             break;
         }
-        reg_G2_BLDALPHA = (arrow->alpha >> 8) | ((16 - (arrow->alpha >> 8)) << 8);
+        G2_ChangeBlendAlpha(arrow->alpha >> 8, 16 - (arrow->alpha >> 8));
         ManagedSprite_SetOamMode(arrow->managedSprite, GX_OAM_MODE_XLU);
         arrow->state++;
         // fall-through
@@ -334,7 +334,7 @@ static void Task_HidePartyArrow(SysTask *task, void *data) {
             arrow->state++;
         }
 
-        reg_G2_BLDALPHA = (arrow->alpha >> 8) | ((16 - (arrow->alpha >> 8)) << 8);
+        G2_ChangeBlendAlpha(arrow->alpha >> 8, 16 - (arrow->alpha >> 8));
         break;
 
     default:

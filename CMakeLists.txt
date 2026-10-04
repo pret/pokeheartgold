@@ -50,6 +50,7 @@ target_include_directories(PokeHeartGold PUBLIC
     ${CMAKE_SOURCE_DIR}/subprojects/NitroWiFi-2.1.30003/include
     ${CMAKE_SOURCE_DIR}/subprojects/libvct-1.3.1/include
     ${CMAKE_SOURCE_DIR}/subprojects/NitroDWC-2.2.30008/include
+    ${CMAKE_SOURCE_DIR}/subprojects/NitroDWC-2.2.30008/include/gs
     include/library)
 target_compile_definitions(PokeHeartGold PUBLIC __CLION_IDE__ SDK_ARM9 SDK_CW SDK_CODE_ARM SDK_TS _NITRO __arm PLATFORM_INTRINSIC_FUNCTION_BIT_CLZ32=__builtin_clz wchar_t=__WCHAR_TYPE__ PM_KEEP_ASSERTS)
 target_compile_options(PokeHeartGold PRIVATE -Wimplicit -Wno-endif-labels -fms-extensions -nostdinc -Wno-builtin-declaration-mismatch -Wno-implicit-int -Wno-multichar -Wno-address-of-packed-member -mcpu=arm946e-s)

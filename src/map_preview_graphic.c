@@ -861,7 +861,7 @@ static BOOL Task_MapPreviewGraphic_ShowImage(TaskManager *man) {
                 unk->unk1A = 0;
                 unk->fadeOutTimer++;
             }
-            reg_G2_BLDALPHA = (16 - unk->fadeOutTimer) | (unk->fadeOutTimer << 8);
+            G2_ChangeBlendAlpha(16 - unk->fadeOutTimer, unk->fadeOutTimer);
         }
         if (sub_0206A694(unk, fsys) && unk->fadeOutTimer >= 16) {
             ToggleBgLayer(2, GF_PLANE_TOGGLE_OFF);
@@ -870,7 +870,7 @@ static BOOL Task_MapPreviewGraphic_ShowImage(TaskManager *man) {
             SetBgPriority(GF_BG_LYR_MAIN_0, (u8)unk->bg0Priority);
             SetBgPriority(GF_BG_LYR_MAIN_1, (u8)unk->bg1Priority);
             SetBgPriority(GF_BG_LYR_MAIN_3, (u8)unk->bg3Priority);
-            reg_G2_BLDCNT = 0;
+            G2_BlendNone();
             BG_ClearCharDataRange(2, 0x20, 0, unk->heapID);
             BgClearTilemapBufferAndCommit(unk->bgConfig, 2);
             WindowArray_Delete(unk->window, 1);

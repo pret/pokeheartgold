@@ -1,5 +1,6 @@
 #include "overlay_13_thumb_1.h"
 
+#include <dwc.h>
 #include <nitro/hw/ARM9/ioreg_OS.h>
 
 #include "global.h"
@@ -24,6 +25,5 @@ void ov13_0221BA00(enum HeapID HeapID) {
     Heap_Free(buffer);
     OS_RestoreInterrupts(interrupts);
 
-    u16 oldValue = reg_OS_IME;
-    reg_OS_IME = 1;
+    OS_RestoreIrq(TRUE);
 }
