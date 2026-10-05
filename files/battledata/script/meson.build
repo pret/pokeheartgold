@@ -9,7 +9,7 @@ effect_seq_gen = generator(
     makescript_sh,
     arguments: [
         '--out-dir', build_dir / 'effect_script.narc.p',
-        '-a', meson.get_compiler('nasm', native: false).cmd_array()[0],
+        '-a', arm_none_eabi_gcc_exe.full_path(),
         '-i', relative_source_root / 'subprojects' / 'NitroSDK-4.2.30001' / 'include',
         '-i', relative_source_root / 'subprojects' / 'NitroSDK-4.2.30001' / 'include' / 'nitro',
         '-i', relative_source_root / 'subprojects' / 'NitroSystem-071126.1' / 'include',
@@ -54,7 +54,7 @@ move_seq_gen = generator(
     makescript_sh,
     arguments: [
         '--out-dir', build_dir / 'move_script.narc.p',
-        '-a', meson.get_compiler('nasm', native: false).cmd_array()[0],
+        '-a', arm_none_eabi_gcc_exe.full_path(),
         '-i', relative_source_root / 'subprojects' / 'NitroSDK-4.2.30001' / 'include',
         '-i', relative_source_root / 'subprojects' / 'NitroSDK-4.2.30001' / 'include' / 'nitro',
         '-i', relative_source_root / 'subprojects' / 'NitroSystem-071126.1' / 'include',
@@ -99,7 +99,7 @@ subscript_gen = generator(
     makescript_sh,
     arguments: [
         '--out-dir', build_dir / 'subscript.narc.p',
-        '-a', meson.get_compiler('nasm', native: false).cmd_array()[0],
+        '-a', arm_none_eabi_gcc_exe.full_path(),
         '-i', relative_source_root / 'subprojects' / 'NitroSDK-4.2.30001' / 'include',
         '-i', relative_source_root / 'subprojects' / 'NitroSDK-4.2.30001' / 'include' / 'nitro',
         '-i', relative_source_root / 'subprojects' / 'NitroSystem-071126.1' / 'include',
