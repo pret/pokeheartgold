@@ -580,6 +580,8 @@ Overlay OVY_12
     Object main.nef.p/asm_overlay_12_battle_command.s.o
     Object main.nef.p/src_battle_battle_controller_player.c.o
     Object main.nef.p/src_battle_overlay_12_0224E4FC.c.o
+    Object main.nef.p/asm_overlay_12_02258800.s.o
+    Object main.nef.p/asm_overlay_12_controller_command.s.o
     Object main.nef.p/asm_overlay_12_battle_controller_opponent.s.o
     Object main.nef.p/src_battle_battle_02261FD4.c.o
     Object main.nef.p/src_battle_battle_controller.c.o

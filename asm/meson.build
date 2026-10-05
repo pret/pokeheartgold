@@ -73,6 +73,8 @@ pokeheartgold_asm = files(
     'overlay_10_trainer_ai.s',
     'overlay_12_02265E28.s',
     'overlay_12_022378C0.s',
+    'overlay_12_02258800.s',
+    'overlay_12_controller_command.s',
     'overlay_12_battle_command.s',
     'overlay_12_battle_controller_opponent.s',
     'overlay_14.s',
