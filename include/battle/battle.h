@@ -494,14 +494,14 @@ typedef struct OpponentData {
     UnkBallData *ballData;
     u8 unk8C[0x8];
     u8 unk94[0x100];
-    u8 unk194;
+    u8 battlerId;
     u8 battlerType;
     u8 unk196;
     u8 unk197;
     SysTask *unk198;
     u16 unk19C;
     int unk1A0;
-    u32 *unk1A4;
+    NARC *narc;
     u8 unk1A8;
     u8 unk1A9[3];
 } OpponentData;

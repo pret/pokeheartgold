@@ -728,7 +728,7 @@ _02238380:
 _0223838A:
 	ldr r1, [r5, #0x34]
 	add r0, r4, #0
-	bl ov12_02258E54
+	bl BattleSystem_ExecuteBattlerCommand
 	ldr r0, [r4, #0x44]
 	add r6, r6, #1
 	add r5, r5, #4
@@ -758,7 +758,7 @@ _022383BA:
 _022383C6:
 	ldr r1, [r5, #0x34]
 	add r0, r4, #0
-	bl ov12_02258E54
+	bl BattleSystem_ExecuteBattlerCommand
 	add r0, r4, #0
 	add r1, r7, #0
 	bl BattleSystem_TryRecvMessage
@@ -794,7 +794,7 @@ _02238404:
 _02238410:
 	ldr r1, [r5, #0x34]
 	add r0, r4, #0
-	bl ov12_02258E54
+	bl BattleSystem_ExecuteBattlerCommand
 	add r0, r4, #0
 	add r1, r7, #0
 	bl BattleSystem_TryRecvMessage
@@ -1088,7 +1088,7 @@ _02238694:
 	ldrb r2, [r4, r7]
 	ldr r1, [r5, #0x34]
 	add r0, r4, #0
-	bl ov12_02258E7C
+	bl OpponentData_Delete
 	ldr r0, [r4, #0x44]
 	add r6, r6, #1
 	add r5, r5, #4
