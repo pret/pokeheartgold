@@ -714,6 +714,7 @@ enum BattleCommand {
     BATTLE_COMMAND_67,
     BATTLE_COMMAND_MAX
 };
+#endif // PM_ASM
 
 // Critical Music Flags
 #define CRITICAL_MUSIC_OFF 2
@@ -721,5 +722,4 @@ enum BattleCommand {
 #define BALL_SHAKE_MAX 4
 #define MOVES_MAX      4
 
-#endif // PM_ASM
 #endif // POKEHEARTGOLD_CONSTANTS_BATTLE_H
