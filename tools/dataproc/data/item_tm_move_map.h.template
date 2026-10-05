@@ -1,0 +1,10 @@
+#ifndef POKEPLATINUM_GENERATED_ITEM_TM_MOVE_MAP_H
+#define POKEPLATINUM_GENERATED_ITEM_TM_MOVE_MAP_H
+
+#include "constants/moves.h"
+
+static const u16 sTMHMMoves[] = {
+/* =========== MAGIC CONTENT MARKER =========== */
+};
+
+#endif // POKEPLATINUM_GENERATED_ITEM_TM_MOVE_MAP_H

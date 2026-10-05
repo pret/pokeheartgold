@@ -1,0 +1,133 @@
+{
+  "key": 18191,
+  "messages": [
+    {
+      "id": "msg_0512_T08_00000",
+      "en_US": [
+        "One of the Elite Four used to be\n",
+        "the Leader of Fuchsia’s Gym."
+      ]
+    },
+    {
+      "id": "msg_0512_T08_00001",
+      "en_US": [
+        "Koga’s daughter succeeded him as\n",
+        "the Gym Leader after he joined\f",
+        "the Elite Four."
+      ]
+    },
+    {
+      "id": "msg_0512_T08_00002",
+      "en_US": [
+        "The Safari Zone wasn’t open\n",
+        "for a while.\r",
+        "Then it moved to Johto before\n",
+        "I knew it.\f",
+        "It’s sad...\r",
+        "It was this city’s main attraction."
+      ]
+    },
+    {
+      "id": "msg_0512_T08_00003",
+      "en_US": [
+        "Fuchsia City\n",
+        "Happening and Passing City"
+      ]
+    },
+    {
+      "id": "msg_0512_T08_00004",
+      "en_US": [
+        "Fuchsia City Pokémon Gym\n",
+        "Leader: Janine\f",
+        "The Poisonous Ninja Master"
+      ]
+    },
+    {
+      "id": "msg_0512_T08_00005",
+      "en_US": [
+        "There’s a notice here...\r",
+        "The Safari Zone is closed.\f",
+        "Instead, we have Pal Park."
+      ]
+    },
+    {
+      "id": "msg_0512_T08_00006",
+      "en_US": "Home of the Pal Park Warden"
+    },
+    {
+      "id": "msg_0512_T08_00007",
+      "en_US": [
+        "Shard de Berry!\n",
+        "Shard de Berry!\r",
+        "Yah, yah!\n",
+        "I trade Berry for Shard.\r",
+        "If ya bring me some Shards,\n",
+        "I will give ya three Berries, yah!\r"
+      ]
+    },
+    {
+      "id": "msg_0512_T08_00008",
+      "en_US": [
+        "Shard de Berry!\n",
+        "Shard de Berry!\r",
+        "Yah, yah!\n",
+        "I trade Berry for Shard.\r",
+        "If ya bring me some Shards,\n",
+        "I will give ya three Berries, yah!\r",
+        "Which Shard will ya trade for\n",
+        "de Berry? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0512_T08_00009",
+      "en_US": [
+        "More Shards to trade for\n",
+        "de Berries? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0512_T08_00010",
+      "en_US": [
+        "Yah, yah!\n",
+        "Come back when ya’ve changed\f",
+        "ya mind, yah!\r"
+      ]
+    },
+    {
+      "id": "msg_0512_T08_00011",
+      "en_US": [
+        "I’ll give ya de Berry set E\n",
+        "for de Red Shard, yah!\r"
+      ]
+    },
+    {
+      "id": "msg_0512_T08_00012",
+      "en_US": [
+        "I’ll give ya de Berry set F\n",
+        "for de Blue Shard, yah!\r"
+      ]
+    },
+    {
+      "id": "msg_0512_T08_00013",
+      "en_US": [
+        "I’ll give ya de Berry set G\n",
+        "for de Yellow Shard, yah!\r"
+      ]
+    },
+    {
+      "id": "msg_0512_T08_00014",
+      "en_US": [
+        "I’ll give ya de Berry set H\n",
+        "for de Green Shard, yah!\r"
+      ]
+    },
+    {
+      "id": "msg_0512_T08_00015",
+      "en_US": [
+        "Ya already have many Berries\n",
+        "of dis set.\r",
+        "Come back when ya need more, yah!\r"
+      ]
+    }
+  ]
+}

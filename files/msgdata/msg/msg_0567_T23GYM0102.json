@@ -1,0 +1,67 @@
+{
+  "key": 39401,
+  "messages": [
+    {
+      "id": "msg_0567_T23GYM0102_00000",
+      "en_US": [
+        "Bugsy: I’m Bugsy!\n",
+        "I never lose when it comes to Bug-type\f",
+        "Pokémon.\r",
+        "My research is going to make me\n",
+        "the authority on Bug-type Pokémon!\r",
+        "Let me demonstrate what I’ve learned\n",
+        "from my studies.\r"
+      ]
+    },
+    {
+      "id": "msg_0567_T23GYM0102_00001",
+      "en_US": [
+        "Bugsy: Whoa, amazing!\n",
+        "You’re an expert on Pokémon!\r",
+        "My research isn’t complete yet.\n",
+        "OK, you win. Take this Badge.\r"
+      ]
+    },
+    {
+      "id": "msg_0567_T23GYM0102_00002",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} received\n",
+        "the Hive Badge from Bugsy!"
+      ]
+    },
+    {
+      "id": "msg_0567_T23GYM0102_00003",
+      "en_US": [
+        "Bugsy: Do you know the benefits of the\n",
+        "Hive Badge?\r",
+        "If you have it, Pokémon up to Lv. 30\n",
+        "will obey you, even traded ones.\r",
+        "Pokémon that know Cut will be able\n",
+        "to use it outside of battle, too.\r",
+        "Here, I also want you to have this.\r"
+      ]
+    },
+    {
+      "id": "msg_0567_T23GYM0102_00004",
+      "garbage": 27
+    },
+    {
+      "id": "msg_0567_T23GYM0102_00005",
+      "en_US": [
+        "Bugsy: TM89 contains U-turn.\r",
+        "It lets your Pokémon attack, then\n",
+        "switch with the next Pokémon\f",
+        "in your party.\r",
+        "Isn’t that great?"
+      ]
+    },
+    {
+      "id": "msg_0567_T23GYM0102_00006",
+      "en_US": [
+        "Bugsy: Bug-type Pokémon are deep.\n",
+        "There are many mysteries to explore.\r",
+        "Study your top choices thoroughly."
+      ]
+    }
+  ]
+}

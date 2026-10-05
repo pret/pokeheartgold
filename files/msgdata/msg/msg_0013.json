@@ -1,0 +1,1758 @@
+{
+  "key": 4232,
+  "messages": [
+    {
+      "id": "msg_0013_00000",
+      "en_US": "BATTLE VIDEOS"
+    },
+    {
+      "id": "msg_0013_00001",
+      "en_US": "FRONTIER RECORD"
+    },
+    {
+      "id": "msg_0013_00002",
+      "en_US": "CANCEL"
+    },
+    {
+      "id": "msg_0013_00003",
+      "en_US": "EXIT"
+    },
+    {
+      "id": "msg_0013_00004",
+      "en_US": "MY VIDEO"
+    },
+    {
+      "id": "msg_0013_00005",
+      "en_US": "OTHER VIDEOS"
+    },
+    {
+      "id": "msg_0013_00006",
+      "en_US": "DELETE VIDEOS"
+    },
+    {
+      "id": "msg_0013_00007",
+      "en_US": "{STRVAR_1 3, 0, 0}’S VIDEO"
+    },
+    {
+      "id": "msg_0013_00008",
+      "en_US": "EMPTY"
+    },
+    {
+      "id": "msg_0013_00009",
+      "en_US": "{STRVAR_1 53, 0, 0}"
+    },
+    {
+      "id": "msg_0013_00010",
+      "en_US": "Battle"
+    },
+    {
+      "id": "msg_0013_00011",
+      "en_US": "Video no.: {STRVAR_1 51, 0, 0}-{STRVAR_1 54, 1, 0}-{STRVAR_1 54, 2, 0}"
+    },
+    {
+      "id": "msg_0013_00012",
+      "en_US": "Video no.: {STRVAR_1 51, 0, 0}-{STRVAR_1 54, 1, 0}-{STRVAR_1 54, 2, 0} ☆"
+    },
+    {
+      "id": "msg_0013_00013",
+      "en_US": "{STRVAR_1 3, 0, 0}’S PROFILE"
+    },
+    {
+      "id": "msg_0013_00014",
+      "garbage": 4
+    },
+    {
+      "id": "msg_0013_00015",
+      "en_US": "Birth month: {STRVAR_34 16, 0, 0}"
+    },
+    {
+      "id": "msg_0013_00016",
+      "en_US": "Location"
+    },
+    {
+      "id": "msg_0013_00017",
+      "en_US": "Trainer’s quote"
+    },
+    {
+      "id": "msg_0013_00018",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0013_00019",
+      "garbage": 6
+    },
+    {
+      "id": "msg_0013_00020",
+      "garbage": 0
+    },
+    {
+      "id": "msg_0013_00021",
+      "en_US": "Unregistered"
+    },
+    {
+      "id": "msg_0013_00022",
+      "en_US": "{STRVAR_1 36, 0, 0}"
+    },
+    {
+      "id": "msg_0013_00023",
+      "en_US": "{STRVAR_1 37, 0, 0}"
+    },
+    {
+      "id": "msg_0013_00024",
+      "en_US": "{STRVAR_1 28, 0, 0} {STRVAR_1 28, 1, 0}"
+    },
+    {
+      "id": "msg_0013_00025",
+      "garbage": 17
+    },
+    {
+      "id": "msg_0013_00026",
+      "garbage": 8
+    },
+    {
+      "id": "msg_0013_00027",
+      "garbage": 6
+    },
+    {
+      "id": "msg_0013_00028",
+      "en_US": "{STRVAR_1 3, 0, 0}’S FAVORITE PC BOX"
+    },
+    {
+      "id": "msg_0013_00029",
+      "en_US": "{STRVAR_1 3, 0, 0}’S COOL PC BOX"
+    },
+    {
+      "id": "msg_0013_00030",
+      "en_US": "{STRVAR_1 3, 0, 0}’S CUTE PC BOX"
+    },
+    {
+      "id": "msg_0013_00031",
+      "en_US": "{STRVAR_1 3, 0, 0}’S SUGGESTED PC BOX"
+    },
+    {
+      "id": "msg_0013_00032",
+      "en_US": "{STRVAR_1 3, 0, 0}’S FUN PC BOX"
+    },
+    {
+      "id": "msg_0013_00033",
+      "en_US": "{STRVAR_1 3, 0, 0}’S SELECT PC BOX"
+    },
+    {
+      "id": "msg_0013_00034",
+      "en_US": [
+        "Next\n",
+        "Pokémon"
+      ]
+    },
+    {
+      "id": "msg_0013_00035",
+      "garbage": 11
+    },
+    {
+      "id": "msg_0013_00036",
+      "garbage": 12
+    },
+    {
+      "id": "msg_0013_00037",
+      "garbage": 12
+    },
+    {
+      "id": "msg_0013_00038",
+      "garbage": 12
+    },
+    {
+      "id": "msg_0013_00039",
+      "en_US": "DELETE MY VIDEO"
+    },
+    {
+      "id": "msg_0013_00040",
+      "en_US": "DELETE OTHER VIDEOS"
+    },
+    {
+      "id": "msg_0013_00041",
+      "en_US": "EMPTY"
+    },
+    {
+      "id": "msg_0013_00042",
+      "garbage": 13
+    },
+    {
+      "id": "msg_0013_00043",
+      "garbage": 6
+    },
+    {
+      "id": "msg_0013_00044",
+      "garbage": 7
+    },
+    {
+      "id": "msg_0013_00045",
+      "garbage": 7
+    },
+    {
+      "id": "msg_0013_00046",
+      "garbage": 7
+    },
+    {
+      "id": "msg_0013_00047",
+      "garbage": 11
+    },
+    {
+      "id": "msg_0013_00048",
+      "en_US": "SEARCH BY FACILITY"
+    },
+    {
+      "id": "msg_0013_00049",
+      "en_US": "SEARCH BY POKéMON"
+    },
+    {
+      "id": "msg_0013_00050",
+      "en_US": "SEARCH YOUR LOCATION"
+    },
+    {
+      "id": "msg_0013_00051",
+      "en_US": "SEND PHOTO"
+    },
+    {
+      "id": "msg_0013_00052",
+      "en_US": "VIEW PHOTOS"
+    },
+    {
+      "id": "msg_0013_00053",
+      "en_US": "SEND"
+    },
+    {
+      "id": "msg_0013_00054",
+      "garbage": 17
+    },
+    {
+      "id": "msg_0013_00055",
+      "garbage": 18
+    },
+    {
+      "id": "msg_0013_00056",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}\n",
+        "{STRVAR_1 28, 1, 0}"
+      ]
+    },
+    {
+      "id": "msg_0013_00057",
+      "garbage": 4
+    },
+    {
+      "id": "msg_0013_00058",
+      "en_US": "SEND BOX DATA"
+    },
+    {
+      "id": "msg_0013_00059",
+      "en_US": "VIEW BOX DATA"
+    },
+    {
+      "id": "msg_0013_00060",
+      "en_US": "FAVORITE"
+    },
+    {
+      "id": "msg_0013_00061",
+      "en_US": "COOL"
+    },
+    {
+      "id": "msg_0013_00062",
+      "en_US": "CUTE"
+    },
+    {
+      "id": "msg_0013_00063",
+      "en_US": "SUGGESTED"
+    },
+    {
+      "id": "msg_0013_00064",
+      "en_US": "FUN"
+    },
+    {
+      "id": "msg_0013_00065",
+      "en_US": "SELECT"
+    },
+    {
+      "id": "msg_0013_00066",
+      "garbage": 4
+    },
+    {
+      "id": "msg_0013_00067",
+      "garbage": 6
+    },
+    {
+      "id": "msg_0013_00068",
+      "en_US": "ABC"
+    },
+    {
+      "id": "msg_0013_00069",
+      "en_US": "DEF"
+    },
+    {
+      "id": "msg_0013_00070",
+      "en_US": "GHI"
+    },
+    {
+      "id": "msg_0013_00071",
+      "en_US": "JKL"
+    },
+    {
+      "id": "msg_0013_00072",
+      "en_US": "MNO"
+    },
+    {
+      "id": "msg_0013_00073",
+      "en_US": "PQR"
+    },
+    {
+      "id": "msg_0013_00074",
+      "en_US": "STU"
+    },
+    {
+      "id": "msg_0013_00075",
+      "en_US": "VWX"
+    },
+    {
+      "id": "msg_0013_00076",
+      "en_US": "YZ"
+    },
+    {
+      "id": "msg_0013_00077",
+      "garbage": 0
+    },
+    {
+      "id": "msg_0013_00078",
+      "en_US": "THIS WEEK’S RANKINGS"
+    },
+    {
+      "id": "msg_0013_00079",
+      "en_US": "LAST WEEK’S RANKINGS"
+    },
+    {
+      "id": "msg_0013_00080",
+      "en_US": "SWITCH RANKINGS"
+    },
+    {
+      "id": "msg_0013_00081",
+      "en_US": "SWITCH TEAMS"
+    },
+    {
+      "id": "msg_0013_00082",
+      "en_US": "Team: Trainer type"
+    },
+    {
+      "id": "msg_0013_00083",
+      "en_US": "Team: Birth month"
+    },
+    {
+      "id": "msg_0013_00084",
+      "en_US": "Team: Favorite Pokémon"
+    },
+    {
+      "id": "msg_0013_00085",
+      "en_US": "{STRVAR_1 3, 1, 0}: {STRVAR_1 14, 0, 0}"
+    },
+    {
+      "id": "msg_0013_00086",
+      "en_US": "{STRVAR_1 3, 1, 0}: {STRVAR_34 16, 0, 0}"
+    },
+    {
+      "id": "msg_0013_00087",
+      "en_US": "{STRVAR_1 3, 1, 0}: {STRVAR_1 0, 0, 0}"
+    },
+    {
+      "id": "msg_0013_00088",
+      "en_US": "{STRVAR_1 51, 0, 0}: {STRVAR_1 14, 1, 0}"
+    },
+    {
+      "id": "msg_0013_00089",
+      "en_US": "{STRVAR_1 51, 0, 0}: {STRVAR_1 51, 1, 0}"
+    },
+    {
+      "id": "msg_0013_00090",
+      "en_US": "{STRVAR_1 51, 0, 0}: {STRVAR_1 0, 1, 0}"
+    },
+    {
+      "id": "msg_0013_00091",
+      "en_US": "LAST WEEK’S RESULTS!"
+    },
+    {
+      "id": "msg_0013_00092",
+      "en_US": "COLOSSEUM"
+    },
+    {
+      "id": "msg_0013_00093",
+      "en_US": "BATTLE FRONTIER"
+    },
+    {
+      "id": "msg_0013_00094",
+      "en_US": "SAVE"
+    },
+    {
+      "id": "msg_0013_00095",
+      "en_US": [
+        "VIEW BATTLE\n",
+        "VIDEO"
+      ]
+    },
+    {
+      "id": "msg_0013_00096",
+      "garbage": 6
+    },
+    {
+      "id": "msg_0013_00097",
+      "en_US": [
+        "TOP-RANKED BATTLE VIDEOS\n",
+        "COLOSSEUM"
+      ]
+    },
+    {
+      "id": "msg_0013_00098",
+      "en_US": [
+        "TOP-RANKED BATTLE VIDEOS\n",
+        "BATTLE FRONTIER"
+      ]
+    },
+    {
+      "id": "msg_0013_00099",
+      "en_US": ":"
+    },
+    {
+      "id": "msg_0013_00100",
+      "en_US": [
+        "Where would you like to save\n",
+        "{STRVAR_1 3, 0, 0}’s Battle Video?"
+      ]
+    },
+    {
+      "id": "msg_0013_00101",
+      "garbage": 7
+    },
+    {
+      "id": "msg_0013_00102",
+      "en_US": [
+        "Is it OK to delete {STRVAR_1 3, 0, 0}’s Battle\n",
+        "Video?"
+      ]
+    },
+    {
+      "id": "msg_0013_00103",
+      "en_US": "VIEW BATTLE VIDEOS"
+    },
+    {
+      "id": "msg_0013_00104",
+      "en_US": "SEND BATTLE VIDEO"
+    },
+    {
+      "id": "msg_0013_00105",
+      "en_US": "NEWEST 30"
+    },
+    {
+      "id": "msg_0013_00106",
+      "en_US": "SEARCH"
+    },
+    {
+      "id": "msg_0013_00107",
+      "en_US": "SEARCH BY VIDEO NO."
+    },
+    {
+      "id": "msg_0013_00108",
+      "en_US": "SEARCH BY FACILITY"
+    },
+    {
+      "id": "msg_0013_00109",
+      "en_US": "SEARCH BY POKéMON"
+    },
+    {
+      "id": "msg_0013_00110",
+      "en_US": "SEARCH YOUR LOCATION"
+    },
+    {
+      "id": "msg_0013_00111",
+      "en_US": "OK!"
+    },
+    {
+      "id": "msg_0013_00112",
+      "en_US": "Please enter the Video Number."
+    },
+    {
+      "id": "msg_0013_00113",
+      "en_US": "Please choose the facility."
+    },
+    {
+      "id": "msg_0013_00114",
+      "en_US": "Please choose the Pokémon."
+    },
+    {
+      "id": "msg_0013_00115",
+      "en_US": "Please enter the search criteria."
+    },
+    {
+      "id": "msg_0013_00116",
+      "en_US": "You haven’t set any search criteria."
+    },
+    {
+      "id": "msg_0013_00117",
+      "en_US": "Loading Battle Video..."
+    },
+    {
+      "id": "msg_0013_00118",
+      "en_US": "There is no matching Battle Video..."
+    },
+    {
+      "id": "msg_0013_00119",
+      "en_US": "Sending the Battle Video..."
+    },
+    {
+      "id": "msg_0013_00120",
+      "garbage": 15
+    },
+    {
+      "id": "msg_0013_00121",
+      "en_US": "VIEW PROFILE"
+    },
+    {
+      "id": "msg_0013_00122",
+      "en_US": "CLOSE PROFILE"
+    },
+    {
+      "id": "msg_0013_00123",
+      "en_US": "NEWEST 30 BATTLE VIDEOS"
+    },
+    {
+      "id": "msg_0013_00124",
+      "en_US": "Please set the search criteria."
+    },
+    {
+      "id": "msg_0013_00125",
+      "en_US": "Undefined"
+    },
+    {
+      "id": "msg_0013_00126",
+      "en_US": [
+        "LIST OF BATTLE VIDEOS FROM\n",
+        "SEARCH RESULTS"
+      ]
+    },
+    {
+      "id": "msg_0013_00127",
+      "en_US": [
+        "The same Battle Video can’t be sent again.\n",
+        "Touch the Touch Screen to continue."
+      ]
+    },
+    {
+      "id": "msg_0013_00128",
+      "en_US": "You have not registered your location."
+    },
+    {
+      "id": "msg_0013_00129",
+      "en_US": "There is no Battle Video to send."
+    },
+    {
+      "id": "msg_0013_00130",
+      "en_US": "YES"
+    },
+    {
+      "id": "msg_0013_00131",
+      "en_US": "NO"
+    },
+    {
+      "id": "msg_0013_00132",
+      "en_US": [
+        "Colosseum\n",
+        "Single, No Restrictions"
+      ]
+    },
+    {
+      "id": "msg_0013_00133",
+      "en_US": [
+        "Colosseum\n",
+        "Single, Standard Cup"
+      ]
+    },
+    {
+      "id": "msg_0013_00134",
+      "en_US": [
+        "Colosseum\n",
+        "Single, Fancy Cup"
+      ]
+    },
+    {
+      "id": "msg_0013_00135",
+      "en_US": [
+        "Colosseum\n",
+        "Single, Little Cup"
+      ]
+    },
+    {
+      "id": "msg_0013_00136",
+      "en_US": [
+        "Colosseum\n",
+        "Single, Light Cup"
+      ]
+    },
+    {
+      "id": "msg_0013_00137",
+      "en_US": [
+        "Colosseum\n",
+        "Single, Double Cup"
+      ]
+    },
+    {
+      "id": "msg_0013_00138",
+      "en_US": [
+        "Colosseum\n",
+        "Single, Other Cup"
+      ]
+    },
+    {
+      "id": "msg_0013_00139",
+      "en_US": [
+        "Colosseum\n",
+        "Double, No Restrictions"
+      ]
+    },
+    {
+      "id": "msg_0013_00140",
+      "en_US": [
+        "Colosseum\n",
+        "Double, Standard Cup"
+      ]
+    },
+    {
+      "id": "msg_0013_00141",
+      "en_US": [
+        "Colosseum\n",
+        "Double, Fancy Cup"
+      ]
+    },
+    {
+      "id": "msg_0013_00142",
+      "en_US": [
+        "Colosseum\n",
+        "Double, Little Cup"
+      ]
+    },
+    {
+      "id": "msg_0013_00143",
+      "en_US": [
+        "Colosseum\n",
+        "Double, Light Cup"
+      ]
+    },
+    {
+      "id": "msg_0013_00144",
+      "en_US": [
+        "Colosseum\n",
+        "Double, Double Cup"
+      ]
+    },
+    {
+      "id": "msg_0013_00145",
+      "en_US": [
+        "Colosseum\n",
+        "Double, Other Cup"
+      ]
+    },
+    {
+      "id": "msg_0013_00146",
+      "en_US": [
+        "Colosseum\n",
+        "Multi"
+      ]
+    },
+    {
+      "id": "msg_0013_00147",
+      "en_US": [
+        "Battle Tower\n",
+        "Single"
+      ]
+    },
+    {
+      "id": "msg_0013_00148",
+      "en_US": [
+        "Battle Tower\n",
+        "Double"
+      ]
+    },
+    {
+      "id": "msg_0013_00149",
+      "en_US": [
+        "Battle Tower\n",
+        "Multi"
+      ]
+    },
+    {
+      "id": "msg_0013_00150",
+      "en_US": [
+        "Battle Factory\n",
+        "Level 50 Single"
+      ]
+    },
+    {
+      "id": "msg_0013_00151",
+      "en_US": [
+        "Battle Factory\n",
+        "Level 50 Double"
+      ]
+    },
+    {
+      "id": "msg_0013_00152",
+      "en_US": [
+        "Battle Factory\n",
+        "Level 50 Multi"
+      ]
+    },
+    {
+      "id": "msg_0013_00153",
+      "en_US": [
+        "Battle Factory\n",
+        "Open Level Single"
+      ]
+    },
+    {
+      "id": "msg_0013_00154",
+      "en_US": [
+        "Battle Factory\n",
+        "Open Level Double"
+      ]
+    },
+    {
+      "id": "msg_0013_00155",
+      "en_US": [
+        "Battle Factory\n",
+        "Open Level Multi"
+      ]
+    },
+    {
+      "id": "msg_0013_00156",
+      "en_US": [
+        "Battle Hall\n",
+        "Single"
+      ]
+    },
+    {
+      "id": "msg_0013_00157",
+      "en_US": [
+        "Battle Hall\n",
+        "Double"
+      ]
+    },
+    {
+      "id": "msg_0013_00158",
+      "en_US": [
+        "Battle Hall\n",
+        "Multi"
+      ]
+    },
+    {
+      "id": "msg_0013_00159",
+      "en_US": [
+        "Battle Castle\n",
+        "Single"
+      ]
+    },
+    {
+      "id": "msg_0013_00160",
+      "en_US": [
+        "Battle Castle\n",
+        "Double"
+      ]
+    },
+    {
+      "id": "msg_0013_00161",
+      "en_US": [
+        "Battle Castle\n",
+        "Multi"
+      ]
+    },
+    {
+      "id": "msg_0013_00162",
+      "en_US": [
+        "Battle Arcade\n",
+        "Single"
+      ]
+    },
+    {
+      "id": "msg_0013_00163",
+      "en_US": [
+        "Battle Arcade\n",
+        "Double"
+      ]
+    },
+    {
+      "id": "msg_0013_00164",
+      "en_US": [
+        "Battle Arcade\n",
+        "Multi"
+      ]
+    },
+    {
+      "id": "msg_0013_00165",
+      "en_US": [
+        "Colosseum\n",
+        "Single, No Restrictions"
+      ]
+    },
+    {
+      "id": "msg_0013_00166",
+      "en_US": [
+        "Colosseum\n",
+        "Single, Cup Match"
+      ]
+    },
+    {
+      "id": "msg_0013_00167",
+      "en_US": [
+        "Colosseum\n",
+        "Double, No Restrictions"
+      ]
+    },
+    {
+      "id": "msg_0013_00168",
+      "en_US": [
+        "Colosseum\n",
+        "Double, Cup Match"
+      ]
+    },
+    {
+      "id": "msg_0013_00169",
+      "en_US": [
+        "1: Colosseum\n",
+        "    Single, No Restrictions"
+      ]
+    },
+    {
+      "id": "msg_0013_00170",
+      "en_US": [
+        "2: Colosseum\n",
+        "    Single, Cup Match"
+      ]
+    },
+    {
+      "id": "msg_0013_00171",
+      "en_US": [
+        "3: Colosseum\n",
+        "    Double, No Restrictions"
+      ]
+    },
+    {
+      "id": "msg_0013_00172",
+      "en_US": [
+        "4: Colosseum\n",
+        "    Double, Cup Match"
+      ]
+    },
+    {
+      "id": "msg_0013_00173",
+      "en_US": [
+        "5: Colosseum\n",
+        "    Multi"
+      ]
+    },
+    {
+      "id": "msg_0013_00174",
+      "en_US": [
+        "6: Battle Tower\n",
+        "    Single"
+      ]
+    },
+    {
+      "id": "msg_0013_00175",
+      "en_US": [
+        "7: Battle Tower\n",
+        "    Double"
+      ]
+    },
+    {
+      "id": "msg_0013_00176",
+      "en_US": [
+        "8: Battle Tower\n",
+        "    Multi"
+      ]
+    },
+    {
+      "id": "msg_0013_00177",
+      "en_US": [
+        "9: Battle Factory\n",
+        "    Level 50, Single"
+      ]
+    },
+    {
+      "id": "msg_0013_00178",
+      "en_US": [
+        "10: Battle Factory\n",
+        "      Level 50, Double"
+      ]
+    },
+    {
+      "id": "msg_0013_00179",
+      "en_US": [
+        "11: Battle Factory\n",
+        "      Level 50, Multi"
+      ]
+    },
+    {
+      "id": "msg_0013_00180",
+      "en_US": [
+        "12: Battle Factory\n",
+        "      Open Level, Single"
+      ]
+    },
+    {
+      "id": "msg_0013_00181",
+      "en_US": [
+        "13: Battle Factory\n",
+        "      Open Level, Double"
+      ]
+    },
+    {
+      "id": "msg_0013_00182",
+      "en_US": [
+        "14: Battle Factory\n",
+        "      Open Level, Multi"
+      ]
+    },
+    {
+      "id": "msg_0013_00183",
+      "en_US": [
+        "15: Battle Hall\n",
+        "      Single"
+      ]
+    },
+    {
+      "id": "msg_0013_00184",
+      "en_US": [
+        "16: Battle Hall\n",
+        "      Double"
+      ]
+    },
+    {
+      "id": "msg_0013_00185",
+      "en_US": [
+        "17: Battle Hall\n",
+        "      Multi"
+      ]
+    },
+    {
+      "id": "msg_0013_00186",
+      "en_US": [
+        "18: Battle Castle\n",
+        "      Single"
+      ]
+    },
+    {
+      "id": "msg_0013_00187",
+      "en_US": [
+        "19: Battle Castle\n",
+        "      Double"
+      ]
+    },
+    {
+      "id": "msg_0013_00188",
+      "en_US": [
+        "20: Battle Castle\n",
+        "      Multi"
+      ]
+    },
+    {
+      "id": "msg_0013_00189",
+      "en_US": [
+        "21: Battle Arcade\n",
+        "      Single"
+      ]
+    },
+    {
+      "id": "msg_0013_00190",
+      "en_US": [
+        "22: Battle Arcade\n",
+        "      Double"
+      ]
+    },
+    {
+      "id": "msg_0013_00191",
+      "en_US": [
+        "23: Battle Arcade\n",
+        "      Multi"
+      ]
+    },
+    {
+      "id": "msg_0013_00192",
+      "en_US": "TOUCH HERE!"
+    },
+    {
+      "id": "msg_0013_00193",
+      "en_US": [
+        "Is it OK to disconnect from\n",
+        "Nintendo Wi-Fi Connection?"
+      ]
+    },
+    {
+      "id": "msg_0013_00194",
+      "garbage": 1
+    },
+    {
+      "id": "msg_0013_00195",
+      "en_US": [
+        "User authentication error.\n",
+        "Please wait a while before reconnecting."
+      ]
+    },
+    {
+      "id": "msg_0013_00196",
+      "en_US": [
+        "This data is already registered.\n",
+        "Touch the Touch Screen to continue."
+      ]
+    },
+    {
+      "id": "msg_0013_00197",
+      "en_US": [
+        "There appears to be a problem with the\n",
+        "Dress-Up Data."
+      ]
+    },
+    {
+      "id": "msg_0013_00198",
+      "en_US": [
+        "There appears to be a problem with the\n",
+        "Profile data."
+      ]
+    },
+    {
+      "id": "msg_0013_00199",
+      "en_US": [
+        "An error occurred.\n",
+        "Touch the Touch Screen to continue."
+      ]
+    },
+    {
+      "id": "msg_0013_00200",
+      "garbage": 1
+    },
+    {
+      "id": "msg_0013_00201",
+      "en_US": [
+        "User authentication error.\n",
+        "Please wait a while before reconnecting."
+      ]
+    },
+    {
+      "id": "msg_0013_00202",
+      "en_US": [
+        "There appears to be a problem with the\n",
+        "chosen Pokémon."
+      ]
+    },
+    {
+      "id": "msg_0013_00203",
+      "en_US": [
+        "An error occurred.\n",
+        "Touch the Touch Screen to continue."
+      ]
+    },
+    {
+      "id": "msg_0013_00204",
+      "garbage": 1
+    },
+    {
+      "id": "msg_0013_00205",
+      "en_US": [
+        "User authentication error.\n",
+        "Please wait a while before reconnecting."
+      ]
+    },
+    {
+      "id": "msg_0013_00206",
+      "en_US": [
+        "This data is already registered.\n",
+        "Touch the Touch Screen to continue."
+      ]
+    },
+    {
+      "id": "msg_0013_00207",
+      "en_US": [
+        "There appears to be a problem with the\n",
+        "Box Data."
+      ]
+    },
+    {
+      "id": "msg_0013_00208",
+      "en_US": [
+        "There appears to be a problem with the\n",
+        "Profile data."
+      ]
+    },
+    {
+      "id": "msg_0013_00209",
+      "en_US": [
+        "There appears to be a problem with your\n",
+        "party."
+      ]
+    },
+    {
+      "id": "msg_0013_00210",
+      "en_US": [
+        "An error occurred.\n",
+        "Touch the Touch Screen to continue."
+      ]
+    },
+    {
+      "id": "msg_0013_00211",
+      "garbage": 1
+    },
+    {
+      "id": "msg_0013_00212",
+      "en_US": [
+        "User authentication error.\n",
+        "Please wait a while before reconnecting."
+      ]
+    },
+    {
+      "id": "msg_0013_00213",
+      "en_US": [
+        "There appears to be a problem with your\n",
+        "party."
+      ]
+    },
+    {
+      "id": "msg_0013_00214",
+      "en_US": [
+        "An error occurred.\n",
+        "Touch the Touch Screen to continue."
+      ]
+    },
+    {
+      "id": "msg_0013_00215",
+      "garbage": 1
+    },
+    {
+      "id": "msg_0013_00216",
+      "en_US": [
+        "User authentication error.\n",
+        "Please wait a while before reconnecting."
+      ]
+    },
+    {
+      "id": "msg_0013_00217",
+      "en_US": [
+        "An error occurred.\n",
+        "Touch the Touch Screen to continue."
+      ]
+    },
+    {
+      "id": "msg_0013_00218",
+      "garbage": 1
+    },
+    {
+      "id": "msg_0013_00219",
+      "en_US": [
+        "User authentication error.\n",
+        "Please wait a while before reconnecting."
+      ]
+    },
+    {
+      "id": "msg_0013_00220",
+      "en_US": [
+        "Failed to receive ranking data.\n",
+        "Touch the Touch Screen to continue."
+      ]
+    },
+    {
+      "id": "msg_0013_00221",
+      "en_US": [
+        "There appears to be a problem with your\n",
+        "ranking record."
+      ]
+    },
+    {
+      "id": "msg_0013_00222",
+      "en_US": [
+        "There appears to be a problem with the\n",
+        "Profile data."
+      ]
+    },
+    {
+      "id": "msg_0013_00223",
+      "en_US": [
+        "An error occurred.\n",
+        "Touch the Touch Screen to continue."
+      ]
+    },
+    {
+      "id": "msg_0013_00224",
+      "garbage": 1
+    },
+    {
+      "id": "msg_0013_00225",
+      "en_US": [
+        "User authentication error.\n",
+        "Please wait a while before reconnecting."
+      ]
+    },
+    {
+      "id": "msg_0013_00226",
+      "en_US": [
+        "This data is already registered.\n",
+        "Touch the Touch Screen to continue."
+      ]
+    },
+    {
+      "id": "msg_0013_00227",
+      "en_US": [
+        "There appears to be a problem with the\n",
+        "Battle Video."
+      ]
+    },
+    {
+      "id": "msg_0013_00228",
+      "en_US": [
+        "There appears to be a problem with the\n",
+        "Profile data."
+      ]
+    },
+    {
+      "id": "msg_0013_00229",
+      "en_US": [
+        "An error occurred.\n",
+        "Touch the Touch Screen to continue."
+      ]
+    },
+    {
+      "id": "msg_0013_00230",
+      "en_US": [
+        "There appears to be a problem with your\n",
+        "Pokémon. Data was not sent."
+      ]
+    },
+    {
+      "id": "msg_0013_00231",
+      "en_US": [
+        "There appears to be a problem with a\n",
+        "player’s Pokémon. Data was not sent."
+      ]
+    },
+    {
+      "id": "msg_0013_00232",
+      "garbage": 1
+    },
+    {
+      "id": "msg_0013_00233",
+      "en_US": [
+        "User authentication error.\n",
+        "Please wait a while before reconnecting."
+      ]
+    },
+    {
+      "id": "msg_0013_00234",
+      "en_US": [
+        "There appears to be a problem with the\n",
+        "search criteria."
+      ]
+    },
+    {
+      "id": "msg_0013_00235",
+      "en_US": [
+        "An error occurred.\n",
+        "Touch the Touch Screen to continue."
+      ]
+    },
+    {
+      "id": "msg_0013_00236",
+      "garbage": 1
+    },
+    {
+      "id": "msg_0013_00237",
+      "en_US": [
+        "User authentication error.\n",
+        "Please wait a while before reconnecting."
+      ]
+    },
+    {
+      "id": "msg_0013_00238",
+      "en_US": [
+        "No matching Battle Videos found...\n",
+        "Touch the Touch Screen to continue."
+      ]
+    },
+    {
+      "id": "msg_0013_00239",
+      "en_US": [
+        "An error occurred.\n",
+        "Touch the Touch Screen to continue."
+      ]
+    },
+    {
+      "id": "msg_0013_00240",
+      "garbage": 1
+    },
+    {
+      "id": "msg_0013_00241",
+      "garbage": 1
+    },
+    {
+      "id": "msg_0013_00242",
+      "garbage": 1
+    },
+    {
+      "id": "msg_0013_00243",
+      "garbage": 1
+    },
+    {
+      "id": "msg_0013_00244",
+      "garbage": 1
+    },
+    {
+      "id": "msg_0013_00245",
+      "en_US": [
+        "An error occurred.\n",
+        "Error Code 10601"
+      ]
+    },
+    {
+      "id": "msg_0013_00246",
+      "en_US": [
+        "An error occurred.\n",
+        "Error Code 10602"
+      ]
+    },
+    {
+      "id": "msg_0013_00247",
+      "en_US": [
+        "An error occurred.\n",
+        "Error Code 10603"
+      ]
+    },
+    {
+      "id": "msg_0013_00248",
+      "en_US": [
+        "An error occurred.\n",
+        "Error Code 10604"
+      ]
+    },
+    {
+      "id": "msg_0013_00249",
+      "en_US": [
+        "Unable to connect.\n",
+        "Error Code 10605"
+      ]
+    },
+    {
+      "id": "msg_0013_00250",
+      "en_US": [
+        "An error occurred.\n",
+        "Error Code 10606"
+      ]
+    },
+    {
+      "id": "msg_0013_00251",
+      "en_US": [
+        "Unable to connect.\n",
+        "Error Code 10607"
+      ]
+    },
+    {
+      "id": "msg_0013_00252",
+      "en_US": [
+        "An error occurred.\n",
+        "Error Code 10608"
+      ]
+    },
+    {
+      "id": "msg_0013_00253",
+      "en_US": [
+        "An error occurred.\n",
+        "Error Code 10609"
+      ]
+    },
+    {
+      "id": "msg_0013_00254",
+      "en_US": [
+        "There is no response.\n",
+        "Error Code 10610"
+      ]
+    },
+    {
+      "id": "msg_0013_00255",
+      "en_US": [
+        "There is no response.\n",
+        "Error Code 10611"
+      ]
+    },
+    {
+      "id": "msg_0013_00256",
+      "en_US": [
+        "There is no response.\n",
+        "Error Code 10612"
+      ]
+    },
+    {
+      "id": "msg_0013_00257",
+      "en_US": [
+        "Communication was interrupted.\n",
+        "Error Code 10613"
+      ]
+    },
+    {
+      "id": "msg_0013_00258",
+      "en_US": [
+        "Unable to connect.\n",
+        "Error Code 10614"
+      ]
+    },
+    {
+      "id": "msg_0013_00259",
+      "garbage": 1
+    },
+    {
+      "id": "msg_0013_00260",
+      "garbage": 1
+    },
+    {
+      "id": "msg_0013_00261",
+      "garbage": 1
+    },
+    {
+      "id": "msg_0013_00262",
+      "garbage": 1
+    },
+    {
+      "id": "msg_0013_00263",
+      "garbage": 1
+    },
+    {
+      "id": "msg_0013_00264",
+      "garbage": 1
+    },
+    {
+      "id": "msg_0013_00265",
+      "garbage": 1
+    },
+    {
+      "id": "msg_0013_00266",
+      "en_US": [
+        "The connection to the server was lost.\n",
+        "Touch the Touch Screen to continue."
+      ]
+    },
+    {
+      "id": "msg_0013_00267",
+      "garbage": 1
+    },
+    {
+      "id": "msg_0013_00268",
+      "garbage": 1
+    },
+    {
+      "id": "msg_0013_00269",
+      "en_US": [
+        "There is nothing saved.\n",
+        "Touch the Touch Screen to continue."
+      ]
+    },
+    {
+      "id": "msg_0013_00270",
+      "en_US": "Please choose a Box."
+    },
+    {
+      "id": "msg_0013_00271",
+      "en_US": "An empty Box’s Data can’t be sent."
+    },
+    {
+      "id": "msg_0013_00272",
+      "en_US": "Where would you like to send this?"
+    },
+    {
+      "id": "msg_0013_00273",
+      "en_US": "Only one Box Data may be sent at a time."
+    },
+    {
+      "id": "msg_0013_00274",
+      "en_US": "The same Box Data can’t be sent."
+    },
+    {
+      "id": "msg_0013_00275",
+      "en_US": "Which category would you like to see?"
+    },
+    {
+      "id": "msg_0013_00276",
+      "en_US": "The saved data could not be deleted..."
+    },
+    {
+      "id": "msg_0013_00277",
+      "en_US": [
+        "The same Battle Video can’t be saved again.\n",
+        "Touch the Touch Screen to continue."
+      ]
+    },
+    {
+      "id": "msg_0013_00278",
+      "en_US": [
+        "Saving...\n",
+        "Don’t turn off the power."
+      ]
+    },
+    {
+      "id": "msg_0013_00279",
+      "en_US": "Receiving ranking data..."
+    },
+    {
+      "id": "msg_0013_00280",
+      "en_US": "Sending save data..."
+    },
+    {
+      "id": "msg_0013_00281",
+      "en_US": [
+        "Save completed.\n",
+        "Touch the Touch Screen to continue."
+      ]
+    },
+    {
+      "id": "msg_0013_00282",
+      "en_US": [
+        "Do you want to delete {STRVAR_1 3, 0, 0}’s\n",
+        "Battle Video?"
+      ]
+    },
+    {
+      "id": "msg_0013_00283",
+      "en_US": "Is it really OK to delete this data?"
+    },
+    {
+      "id": "msg_0013_00284",
+      "en_US": [
+        "Deleting data...\n",
+        "Saving... Don’t turn off the power."
+      ]
+    },
+    {
+      "id": "msg_0013_00285",
+      "en_US": [
+        "The data was deleted.\n",
+        "Touch the Touch Screen to continue."
+      ]
+    },
+    {
+      "id": "msg_0013_00286",
+      "en_US": "Sending your Dress-Up Data..."
+    },
+    {
+      "id": "msg_0013_00287",
+      "en_US": "Receiving Dress-Up Data..."
+    },
+    {
+      "id": "msg_0013_00288",
+      "en_US": "Sending your Box Data..."
+    },
+    {
+      "id": "msg_0013_00289",
+      "en_US": "Receiving Box Data..."
+    },
+    {
+      "id": "msg_0013_00290",
+      "en_US": [
+        "You have no saved data to send.\n",
+        "Take a photo in the Goldenrod Tunnel."
+      ]
+    },
+    {
+      "id": "msg_0013_00291",
+      "en_US": [
+        "The same data can’t be sent again.\n",
+        "Touch the Touch Screen to continue."
+      ]
+    },
+    {
+      "id": "msg_0013_00292",
+      "en_US": "Receiving Battle Videos..."
+    },
+    {
+      "id": "msg_0013_00293",
+      "en_US": [
+        "No matching data was found...\n",
+        "Touch the Touch Screen to continue."
+      ]
+    },
+    {
+      "id": "msg_0013_00294",
+      "en_US": [
+        "No matching Box Data was found...\n",
+        "Touch the Touch Screen to continue."
+      ]
+    },
+    {
+      "id": "msg_0013_00295",
+      "en_US": [
+        "Your Battle Video was sent.\n",
+        "Video no.: {STRVAR_1 51, 0, 0}-{STRVAR_1 54, 1, 0}-{STRVAR_1 54, 2, 0}\n"
+      ]
+    },
+    {
+      "id": "msg_0013_00296",
+      "en_US": [
+        "The game will be saved before you can view\n",
+        "Battle Videos."
+      ]
+    },
+    {
+      "id": "msg_0013_00297",
+      "en_US": [
+        "Deleting data... Saving a lot of\n",
+        "data... Don’t turn off the power."
+      ]
+    },
+    {
+      "id": "msg_0013_00298",
+      "en_US": [
+        "Saving a lot of data...\n",
+        "Don’t turn off the power."
+      ]
+    },
+    {
+      "id": "msg_0013_00299",
+      "en_US": [
+        "Saving...\n",
+        "Don’t turn off the power."
+      ]
+    },
+    {
+      "id": "msg_0013_00300",
+      "en_US": [
+        "There is no ranking data...\n",
+        "Touch the Touch Screen to continue."
+      ]
+    },
+    {
+      "id": "msg_0013_00301",
+      "en_US": "Would you like to send your Battle Video?"
+    },
+    {
+      "id": "msg_0013_00302",
+      "garbage": 1
+    },
+    {
+      "id": "msg_0013_00303",
+      "garbage": 1
+    },
+    {
+      "id": "msg_0013_00304",
+      "garbage": 1
+    },
+    {
+      "id": "msg_0013_00305",
+      "garbage": 1
+    },
+    {
+      "id": "msg_0013_00306",
+      "garbage": 0
+    },
+    {
+      "id": "msg_0013_00307",
+      "garbage": 1
+    },
+    {
+      "id": "msg_0013_00308",
+      "garbage": 1
+    },
+    {
+      "id": "msg_0013_00309",
+      "garbage": 1
+    },
+    {
+      "id": "msg_0013_00310",
+      "en_US": "LATEST 20 IN THE FAVORITE PC BOX"
+    },
+    {
+      "id": "msg_0013_00311",
+      "en_US": "LATEST 20 IN THE COOL PC BOX"
+    },
+    {
+      "id": "msg_0013_00312",
+      "en_US": "LATEST 20 IN THE CUTE PC BOX"
+    },
+    {
+      "id": "msg_0013_00313",
+      "en_US": "LATEST 20 IN THE SUGGESTED PC BOX"
+    },
+    {
+      "id": "msg_0013_00314",
+      "en_US": "LATEST 20 IN THE FUN PC BOX"
+    },
+    {
+      "id": "msg_0013_00315",
+      "en_US": "LATEST 20 IN THE SELECT PC BOX"
+    },
+    {
+      "id": "msg_0013_00316",
+      "en_US": "School Kid♂"
+    },
+    {
+      "id": "msg_0013_00317",
+      "en_US": "Bug Catcher"
+    },
+    {
+      "id": "msg_0013_00318",
+      "en_US": "Ace Trainer♂"
+    },
+    {
+      "id": "msg_0013_00319",
+      "en_US": "Roughneck"
+    },
+    {
+      "id": "msg_0013_00320",
+      "en_US": "Ruin Maniac"
+    },
+    {
+      "id": "msg_0013_00321",
+      "en_US": "Black Belt"
+    },
+    {
+      "id": "msg_0013_00322",
+      "en_US": "Rich Boy"
+    },
+    {
+      "id": "msg_0013_00323",
+      "en_US": "Psychic♂"
+    },
+    {
+      "id": "msg_0013_00324",
+      "en_US": "Lass"
+    },
+    {
+      "id": "msg_0013_00325",
+      "en_US": "Battle Girl"
+    },
+    {
+      "id": "msg_0013_00326",
+      "en_US": "Beauty"
+    },
+    {
+      "id": "msg_0013_00327",
+      "en_US": "Ace Trainer♀"
+    },
+    {
+      "id": "msg_0013_00328",
+      "en_US": "Idol"
+    },
+    {
+      "id": "msg_0013_00329",
+      "en_US": "Socialite"
+    },
+    {
+      "id": "msg_0013_00330",
+      "en_US": "Cowgirl"
+    },
+    {
+      "id": "msg_0013_00331",
+      "en_US": "Lady"
+    },
+    {
+      "id": "msg_0013_00332",
+      "en_US": "Goldver"
+    },
+    {
+      "id": "msg_0013_00333",
+      "en_US": "Ignore Location"
+    }
+  ]
+}

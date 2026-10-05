@@ -1,4 +1,4 @@
-#include <nitro/fs/overlay.h>
+
 #pragma once
 .public TextPrinter_SetDownArrowBaseTile
 .public TextFlags_SetCanABSpeedUpPrint
@@ -184,7 +184,7 @@
 .public WM_GetLinkLevel
 .public NNS_GfdDefaultFuncAllocTexVram
 .public NNS_GfdDefaultFuncAllocPlttVram
-.public ov00_021EC9D4
+.public DWC_GetLinkLevel
 .public ov05_0221BA00
 .public ov06_0221BAF0
 .public ov07_0221BEDC
@@ -234,12 +234,12 @@
 .public ov12_022582B8
 .public ov12_02258D74
 .public ov12_02258DB0
-.public ov12_02258E54
-.public ov12_02258E7C
+.public BattleSystem_ExecuteBattlerCommand
+.public OpponentData_Delete
 .public ov12_02260EA4
 .public ov12_02261264
 .public OpponentData_GetHpBar
-.public ov12_022621C4
+.public BattleSystem_TryRecvMessage
 .public ov12_02265FD4
 .public BgConfig_InitBattleMenuBackgrounds
 .public BgConfig_CleanupBattleMenuBackgrounds

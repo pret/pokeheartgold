@@ -1,0 +1,18 @@
+#ifndef POKEPLATINUM_GENERATED_ITEM_ID_MAP_H
+#define POKEPLATINUM_GENERATED_ITEM_ID_MAP_H
+
+#include "constants/gba/items.h"
+#include "res/items/item_icon.naix"
+
+typedef struct ItemArchiveIDs {
+    u16 dataID;
+    u16 iconID;
+    u16 paletteID;
+    u16 gen3ID;
+} ItemArchiveIDs;
+
+static const ItemArchiveIDs sItemArchiveIDs[] = {
+/* =========== MAGIC CONTENT MARKER =========== */
+};
+
+#endif // POKEPLATINUM_GENERATED_ITEM_ID_MAP_H

@@ -1,0 +1,250 @@
+{
+  "key": 58511,
+  "messages": [
+    {
+      "id": "msg_0131_D45R0102_00000",
+      "en_US": [
+        "...\r",
+        "I don’t know why you have come here.\r",
+        "Anyway, I have to warn you that\n",
+        "this is not a place for kids like you.\r"
+      ]
+    },
+    {
+      "id": "msg_0131_D45R0102_00001",
+      "en_US": [
+        "You have a certain look...\r",
+        "It reminds me of the kid who stood in\n",
+        "front of me three years ago...\f",
+        "You have the same eyes...\r",
+        "...\r",
+        "I’m on my way to Goldenrod City to\n",
+        "answer the call and join my team.\f",
+        "Are you going to get in my way?\r"
+      ]
+    },
+    {
+      "id": "msg_0131_D45R0102_00002",
+      "en_US": [
+        "...\n",
+        "This is the Radio Tower.\f",
+        "This is the Radio Tower.\f",
+        "We are pleased to declare\f",
+        "Team Rocket’s revival.\f",
+        "...Giovanni?\f",
+        "...Can you hear us?\f",
+        "We have finally made it!\f",
+        "...\r"
+      ]
+    },
+    {
+      "id": "msg_0131_D45R0102_00003",
+      "en_US": [
+        "My old associates need me...\r",
+        "We will not repeat the failure of three\n",
+        "years ago!\r",
+        "{COLOR 1}Team Rocket{COLOR 0} will be born again, and I\n",
+        "will rule the world!\r"
+      ]
+    },
+    {
+      "id": "msg_0131_D45R0102_00004",
+      "en_US": [
+        "Giovanni: How is this possible...?\r",
+        "The past three years have been\n",
+        "a waste...?\r",
+        "How can a kid like you manage to\n",
+        "destroy my dream once again?\r",
+        "The precious dream of Team Rocket has\n",
+        "become little more than an illusion...\r"
+      ]
+    },
+    {
+      "id": "msg_0131_D45R0102_00005",
+      "en_US": [
+        "...\n",
+        "...Hey!\f",
+        "Where has Giovanni gone?\f",
+        "I wonder if he is listening to\f",
+        "our broadcast...\f",
+        "...\r"
+      ]
+    },
+    {
+      "id": "msg_0131_D45R0102_00006",
+      "en_US": [
+        "Giovanni: Mark my words.\r",
+        "Not being able to measure your own\n",
+        "strength shows that you are still\f",
+        "but a child.\r"
+      ]
+    },
+    {
+      "id": "msg_0131_D45R0102_00007",
+      "en_US": [
+        "Ethan: Huh?\r",
+        "That’s the guy we just saw arguing with\n",
+        "that boy!\r"
+      ]
+    },
+    {
+      "id": "msg_0131_D45R0102_00008",
+      "en_US": [
+        "Lyra: Huh?\r",
+        "That’s the guy we just saw arguing with\n",
+        "that boy!\r"
+      ]
+    },
+    {
+      "id": "msg_0131_D45R0102_00009",
+      "en_US": [
+        "Ethan: Three years ago...?\n",
+        "Goldenrod City...?\r"
+      ]
+    },
+    {
+      "id": "msg_0131_D45R0102_00010",
+      "en_US": [
+        "Lyra: Three years ago...?\n",
+        "Goldenrod City...?\r"
+      ]
+    },
+    {
+      "id": "msg_0131_D45R0102_00011",
+      "en_US": [
+        "Could this be the one that the radio\n",
+        "was trying to reach?\f",
+        "Giovanni, their boss?\r"
+      ]
+    },
+    {
+      "id": "msg_0131_D45R0102_00012",
+      "en_US": [
+        "Could this be the one that the radio\n",
+        "was trying to reach?\f",
+        "Giovanni, their boss?\r"
+      ]
+    },
+    {
+      "id": "msg_0131_D45R0102_00013",
+      "en_US": [
+        "Do you hear it, {STRVAR_1 3, 0, 0}?\n",
+        "The radio is saying something strange!\r",
+        "Team Rocket has occupied the Radio\n",
+        "Tower at Goldenrod City!\r",
+        "It can’t be! {STRVAR_1 3, 0, 0}, you solved\n",
+        "this case already!\r"
+      ]
+    },
+    {
+      "id": "msg_0131_D45R0102_00014",
+      "en_US": [
+        "Do you hear it, {STRVAR_1 3, 0, 0}?\n",
+        "The radio is saying something strange!\r",
+        "Team Rocket has occupied the Radio\n",
+        "Tower at Goldenrod City!\r",
+        "It can’t be! {STRVAR_1 3, 0, 0}, you solved\n",
+        "this case already!\r"
+      ]
+    },
+    {
+      "id": "msg_0131_D45R0102_00015",
+      "en_US": [
+        "Ethan: They keep calling for their boss.\n",
+        "I feel sorry they don’t know he’s\f",
+        "not coming.\r",
+        "After this, {STRVAR_1 3, 0, 0}, you will\n",
+        "defeat them!\r",
+        "...Wait a second!\r",
+        "{STRVAR_1 3, 0, 0}, you’re still here.\n",
+        "Then, who will defeat Team Rocket...?\r"
+      ]
+    },
+    {
+      "id": "msg_0131_D45R0102_00016",
+      "en_US": [
+        "Lyra: They keep calling for their boss.\n",
+        "I feel sorry they don’t know he’s\f",
+        "not coming.\r",
+        "After this, {STRVAR_1 3, 0, 0}, you will\n",
+        "defeat them!\r",
+        "...Wait a second!\r",
+        "{STRVAR_1 3, 0, 0}, you’re still here.\n",
+        "Then, who will defeat Team Rocket...?\r"
+      ]
+    },
+    {
+      "id": "msg_0131_D45R0102_00017",
+      "en_US": [
+        "Not again...!\n",
+        "I’ve had enough!\f",
+        "Please let me go back to my time!\r"
+      ]
+    },
+    {
+      "id": "msg_0131_D45R0102_00018",
+      "en_US": [
+        "Not again...!\n",
+        "I’ve had enough!\f",
+        "Please let me go back to my time!\r"
+      ]
+    },
+    {
+      "id": "msg_0131_D45R0102_00019",
+      "en_US": [
+        "CELEBI is traveling through time!\n",
+        "It is going back to the time before\f",
+        "this strange adventure began...\r"
+      ]
+    },
+    {
+      "id": "msg_0131_D45R0102_00020",
+      "en_US": "There is a radio that no longer works..."
+    },
+    {
+      "id": "msg_0131_D45R0102_00021",
+      "en_US": [
+        "You cannot turn on the radio.\n",
+        "Giovanni must have left it here..."
+      ]
+    },
+    {
+      "id": "msg_0131_D45R0102_00022",
+      "en_US": [
+        "CELEBI...!\r",
+        "We need it to get better, or we will\n",
+        "never be able to go back to our time!\r"
+      ]
+    },
+    {
+      "id": "msg_0131_D45R0102_00023",
+      "en_US": [
+        "CELEBI...!\r",
+        "We need it to get better, or we will\n",
+        "never be able to go back to our time!\r"
+      ]
+    },
+    {
+      "id": "msg_0131_D45R0102_00024",
+      "en_US": "Ethan used Max Revive on CELEBI!\r"
+    },
+    {
+      "id": "msg_0131_D45R0102_00025",
+      "en_US": "Lyra used Max Revive on CELEBI!\r"
+    },
+    {
+      "id": "msg_0131_D45R0102_00026",
+      "en_US": [
+        "{COLOR 1}Time Travel{COLOR 0}......!\r",
+        "This is it! Please take us to our time!\r"
+      ]
+    },
+    {
+      "id": "msg_0131_D45R0102_00027",
+      "en_US": [
+        "{COLOR 1}Time Travel{COLOR 0}......!\r",
+        "This is it! Please take us to our time!\r"
+      ]
+    }
+  ]
+}

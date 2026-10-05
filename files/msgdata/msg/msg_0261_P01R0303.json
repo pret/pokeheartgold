@@ -1,0 +1,61 @@
+{
+  "key": 42014,
+  "messages": [
+    {
+      "id": "msg_0261_P01R0303_00000",
+      "en_US": [
+        "A comfy bed!\n",
+        "Time to sleep...\r"
+      ]
+    },
+    {
+      "id": "msg_0261_P01R0303_00001",
+      "en_US": "Ah, refreshed and restored!\r"
+    },
+    {
+      "id": "msg_0261_P01R0303_00002",
+      "en_US": [
+        "Fast Ship S.S. Aqua\n",
+        "has arrived in Olivine City."
+      ]
+    },
+    {
+      "id": "msg_0261_P01R0303_00003",
+      "en_US": [
+        "Fast Ship S.S. Aqua\n",
+        "has arrived in Vermilion City."
+      ]
+    },
+    {
+      "id": "msg_0261_P01R0303_00004",
+      "en_US": [
+        "Zzz... Zzz...\r",
+        "Wh-what?\n",
+        "I’m awake, of course...\r",
+        "Zzz... Zzz..."
+      ]
+    },
+    {
+      "id": "msg_0261_P01R0303_00005",
+      "en_US": [
+        "What? You’re saying I was asleep?\n",
+        "Show some respect!\r",
+        "A crewman on duty would never\n",
+        "be so unmindful as to take a nap\f",
+        "in a place like this!\r",
+        "I resent your implication!\n",
+        "I challenge you!\r"
+      ]
+    },
+    {
+      "id": "msg_0261_P01R0303_00006",
+      "en_US": [
+        "Losing to you has woken me up.\n",
+        "I will mend my ways and work hard.\r",
+        "Can you keep it a secret that I was\n",
+        "taking a nap here?\f",
+        "Please don’t tell the Captain.\r"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "key": 17414,
+  "messages": [
+    {
+      "id": "msg_0494_T07R0101_00000",
+      "en_US": [
+        "Hello! Welcome to the Celadon\n",
+        "Department Store!\r",
+        "The directory is on the wall next to\n",
+        "the elevator."
+      ]
+    },
+    {
+      "id": "msg_0494_T07R0101_00001",
+      "en_US": [
+        "This department store is part of the\n",
+        "same chain as the one in Goldenrod City.\r",
+        "They were both renovated at the\n",
+        "same time."
+      ]
+    },
+    {
+      "id": "msg_0494_T07R0101_00002",
+      "en_US": [
+        "This is my first time here.\n",
+        "It’s so big...\f",
+        "I’m afraid I’ll get lost."
+      ]
+    },
+    {
+      "id": "msg_0494_T07R0101_00003",
+      "en_US": [
+        "1F: Service Counter\n",
+        "2F: Trainer’s Market\f",
+        "3F: TM Shop\f",
+        "4F: Wiseman Gifts\f",
+        "5F: Battle Collection\f",
+        "6F: Rooftop Atrium"
+      ]
+    }
+  ]
+}

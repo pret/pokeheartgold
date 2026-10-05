@@ -1,0 +1,131 @@
+{
+  "key": 63972,
+  "messages": [
+    {
+      "id": "msg_0574_T24GYM0101_00000",
+      "en_US": [
+        "Chuck: Ooomph!\n",
+        "The pounding waterfall right onto\f",
+        "my head...\f",
+        "Arrgh!\r",
+        "Why did you stop the waterfall from\n",
+        "pouring on me!\r",
+        "You just spoiled my training!\n",
+        "I have to warn you that I am a strong\f",
+        "Trainer training every day under\f",
+        "this waterfall!\r",
+        "What?\n",
+        "It has nothing to do with Pokémon?\r",
+        "...\n",
+        "That’s true!\r",
+        "...\n",
+        "...\r",
+        "Come on. We shall do battle!\r"
+      ]
+    },
+    {
+      "id": "msg_0574_T24GYM0101_00001",
+      "en_US": [
+        "Chuck: Urggh!\n",
+        "...\r",
+        "Oooarrgh!"
+      ]
+    },
+    {
+      "id": "msg_0574_T24GYM0101_00002",
+      "en_US": [
+        "There! Scared now, are you?\r",
+        "What?\n",
+        "It has nothing to do with Pokémon?\f",
+        "That’s true!\f",
+        "Come on. We shall do battle!\r"
+      ]
+    },
+    {
+      "id": "msg_0574_T24GYM0101_00003",
+      "en_US": [
+        "Chuck: Hmm... I lost?\r",
+        "How about that!\n",
+        "All right. You’re worthy of\f",
+        "the Storm Badge!\r"
+      ]
+    },
+    {
+      "id": "msg_0574_T24GYM0101_00004",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} received\n",
+        "the Storm Badge from Chuck!"
+      ]
+    },
+    {
+      "id": "msg_0574_T24GYM0101_00005",
+      "en_US": [
+        "Chuck: The Storm Badge lets your\n",
+        "Pokémon Fly to any city or town you’ve\f",
+        "already been to!\r",
+        "Here, take this, too!\r"
+      ]
+    },
+    {
+      "id": "msg_0574_T24GYM0101_00006",
+      "en_US": [
+        "Chuck: That is Focus Punch.\r",
+        "It doesn’t land if the foe you’re\n",
+        "attacking hits you first, but it’s very\f",
+        "powerful if it manages to hit!"
+      ]
+    },
+    {
+      "id": "msg_0574_T24GYM0101_00007",
+      "en_US": "Argh... Your Bag is jammed full!"
+    },
+    {
+      "id": "msg_0574_T24GYM0101_00008",
+      "en_US": [
+        "Chuck: Wahahah!\n",
+        "I enjoyed battling you!\r",
+        "But a loss is a loss!\r",
+        "From now on, I’m going to train\n",
+        "24 hours a day!"
+      ]
+    },
+    {
+      "id": "msg_0574_T24GYM0101_00009",
+      "en_US": [
+        "He’s so into his training, he\n",
+        "doesn’t seem to notice you."
+      ]
+    },
+    {
+      "id": "msg_0574_T24GYM0101_00010",
+      "en_US": [
+        "There is a large winch.\n",
+        "Will you turn it? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0574_T24GYM0101_00011",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} turned the winch\n",
+        "with pure might!\r"
+      ]
+    },
+    {
+      "id": "msg_0574_T24GYM0101_00012",
+      "en_US": "It won’t turn anymore."
+    },
+    {
+      "id": "msg_0574_T24GYM0101_00013",
+      "en_US": "Cianwood City Pokémon Gym"
+    },
+    {
+      "id": "msg_0574_T24GYM0101_00014",
+      "en_US": [
+        "Cianwood City Pokémon Gym\r",
+        "Leader: Chuck\n",
+        "Certified Trainer!\f",
+        "{STRVAR_1 3, 0, 0}"
+      ]
+    }
+  ]
+}

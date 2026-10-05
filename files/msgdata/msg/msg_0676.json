@@ -1,0 +1,126 @@
+{
+  "key": 25012,
+  "messages": [
+    {
+      "id": "msg_0676_00000",
+      "en_US": "Wilton"
+    },
+    {
+      "id": "msg_0676_00001",
+      "en_US": [
+        "Well, that was a very interesting\n",
+        "battle now, wasn’t it?\r",
+        "When I’m fishing here, I sometimes\n",
+        "catch items that people have dropped.\f",
+        "If I find anything, I’ll give it to you.\r",
+        "Will you give me your\n",
+        "phone number? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0676_00002",
+      "en_US": [
+        "If I snag anything good, I’ll be sure to\n",
+        "let you know."
+      ]
+    },
+    {
+      "id": "msg_0676_00003",
+      "en_US": [
+        "All right... Come back if you have a\n",
+        "change of heart."
+      ]
+    },
+    {
+      "id": "msg_0676_00004",
+      "en_US": [
+        "If I snag an item while I’m fishing,\n",
+        "it’s yours. Trade me numbers? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0676_00005",
+      "en_US": [
+        "Ah! Here it is!\r",
+        "Come on!\n",
+        "I caught a Poké Ball!\r",
+        "It’s kind of covered with algae and\n",
+        "seaweed. I can’t really tell what kind\f",
+        "of Poké Ball it is, but I bet you know!\r"
+      ]
+    },
+    {
+      "id": "msg_0676_00006",
+      "en_US": [
+        "Shhh!!!\n",
+        "The POLIWHIRL will run away!\r",
+        "Don’t bother calling me, come talk to me\n",
+        "in person, that way we can whisper!"
+      ]
+    },
+    {
+      "id": "msg_0676_00007",
+      "en_US": [
+        "My {STRVAR_1 0, 10, 0}’s grown impressive!\n",
+        "My fishing skills have improved, too!\r",
+        "We beat a wild {STRVAR_1 0, 11, 0}...\n",
+        "You know, I have more fun fishing\f",
+        "than beating wild Pokémon.\r",
+        "All right, later."
+      ]
+    },
+    {
+      "id": "msg_0676_00008",
+      "en_US": [
+        "My {STRVAR_1 0, 10, 0}’s grown impressive!\n",
+        "My fishing skills have improved, too!\r",
+        "But some time ago, we came this close\n",
+        "to landing a wild {STRVAR_1 0, 11, 0}.\f",
+        "I tell you, it was huge. Believe me.\r",
+        "All right, later."
+      ]
+    },
+    {
+      "id": "msg_0676_00009",
+      "en_US": [
+        "I’m fishing on {STRVAR_1 4, 3, 0}, but\n",
+        "nothing’s biting today.\r",
+        "Help me while my time away--come over\n",
+        "for a battle."
+      ]
+    },
+    {
+      "id": "msg_0676_00010",
+      "en_US": [
+        "Sigh...They’re not biting like before on\n",
+        "{STRVAR_1 4, 3, 0}...\r",
+        "You have to come for a battle!"
+      ]
+    },
+    {
+      "id": "msg_0676_00011",
+      "en_US": [
+        "Nah, I haven’t found anything that’s\n",
+        "worth your time.\r",
+        "You have to have patience."
+      ]
+    },
+    {
+      "id": "msg_0676_00012",
+      "en_US": [
+        "I snagged an item while fishing.\n",
+        "Come pick it up on {STRVAR_1 4, 3, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0676_00013",
+      "en_US": [
+        "Don’t you want this item?\n",
+        "Hah? You don’t know where?\r",
+        "{STRVAR_1 4, 3, 0}...\n",
+        "Just head from Mahogany toward\f",
+        "Blackthorn!"
+      ]
+    }
+  ]
+}

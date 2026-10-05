@@ -1,6 +1,6 @@
-#include "application/pokegear/pgear_gra.naix"
 #include "application/pokegear/pokegear_internal.h"
-#include "data/resdat.naix"
+#include "files/application/pokegear/pgear_gra.naix"
+#include "files/data/resdat.naix"
 
 #include "math_util.h"
 #include "sprite_transfer.h"
@@ -38,40 +38,40 @@ static const OamCharTransferParam sOamCharTransferParam = {
 };
 
 static const ResdatIdList sResList_Map = {
-    .charRes = NARC_resdat_resdat_00000034_bin,
-    .plttRes = NARC_resdat_resdat_00000035_bin,
-    .cellRes = NARC_resdat_resdat_00000033_bin,
-    .animRes = NARC_resdat_resdat_00000032_bin,
+    .charRes = resdat_00000034_bin,
+    .plttRes = resdat_00000035_bin,
+    .cellRes = resdat_00000033_bin,
+    .animRes = resdat_00000032_bin,
     .mcelRes = 0xFFFF,
     .manmRes = 0xFFFF,
-    .headerId = NARC_resdat_resdat_00000080_bin,
+    .headerId = resdat_00000080_bin,
 };
 static const ResdatIdList sResList_Configure = {
-    .charRes = NARC_resdat_resdat_00000042_bin,
-    .plttRes = NARC_resdat_resdat_00000043_bin,
-    .cellRes = NARC_resdat_resdat_00000041_bin,
-    .animRes = NARC_resdat_resdat_00000040_bin,
+    .charRes = resdat_00000042_bin,
+    .plttRes = resdat_00000043_bin,
+    .cellRes = resdat_00000041_bin,
+    .animRes = resdat_00000040_bin,
     .mcelRes = 0xFFFF,
     .manmRes = 0xFFFF,
-    .headerId = NARC_resdat_resdat_00000082_bin,
+    .headerId = resdat_00000082_bin,
 };
 static const ResdatIdList sResList_Phone = {
-    .charRes = NARC_resdat_resdat_00000046_bin,
-    .plttRes = NARC_resdat_resdat_00000047_bin,
-    .cellRes = NARC_resdat_resdat_00000045_bin,
-    .animRes = NARC_resdat_resdat_00000044_bin,
+    .charRes = resdat_00000046_bin,
+    .plttRes = resdat_00000047_bin,
+    .cellRes = resdat_00000045_bin,
+    .animRes = resdat_00000044_bin,
     .mcelRes = 0xFFFF,
     .manmRes = 0xFFFF,
-    .headerId = NARC_resdat_resdat_00000083_bin,
+    .headerId = resdat_00000083_bin,
 };
 static const ResdatIdList sResList_Radio = {
-    .charRes = NARC_resdat_resdat_00000038_bin,
-    .plttRes = NARC_resdat_resdat_00000039_bin,
-    .cellRes = NARC_resdat_resdat_00000037_bin,
-    .animRes = NARC_resdat_resdat_00000036_bin,
+    .charRes = resdat_00000038_bin,
+    .plttRes = resdat_00000039_bin,
+    .cellRes = resdat_00000037_bin,
+    .animRes = resdat_00000036_bin,
     .mcelRes = 0xFFFF,
     .manmRes = 0xFFFF,
-    .headerId = NARC_resdat_resdat_00000081_bin,
+    .headerId = resdat_00000081_bin,
 };
 
 // clang-format off

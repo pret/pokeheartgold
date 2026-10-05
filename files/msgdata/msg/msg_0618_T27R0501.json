@@ -1,0 +1,424 @@
+{
+  "key": 17510,
+  "messages": [
+    {
+      "id": "msg_0618_T27R0501_00000",
+      "en_US": "{SIZE 200}Hey! Hey!{SIZE 100}\r"
+    },
+    {
+      "id": "msg_0618_T27R0501_00001",
+      "en_US": [
+        "Stop dancing such a serious dance!\n",
+        "Show me something like a hula dance!\r"
+      ]
+    },
+    {
+      "id": "msg_0618_T27R0501_00002",
+      "en_US": [
+        "...You mustn’t push such a request\n",
+        "on me.\r"
+      ]
+    },
+    {
+      "id": "msg_0618_T27R0501_00003",
+      "en_US": [
+        "Huh?\n",
+        "Are you telling me you don’t respect\f",
+        "what the customer wants?\r"
+      ]
+    },
+    {
+      "id": "msg_0618_T27R0501_00004",
+      "en_US": [
+        "Well, then I’ll show you how to dance.\r",
+        "I’ll show you a great one.\n",
+        "Wahahaha!\r"
+      ]
+    },
+    {
+      "id": "msg_0618_T27R0501_00005",
+      "en_US": [
+        "Huh? Who are you?\r",
+        "You dare to get in my way?\r"
+      ]
+    },
+    {
+      "id": "msg_0618_T27R0501_00006",
+      "en_US": [
+        "Oh, no!\n",
+        "You make me look like a villain!\r"
+      ]
+    },
+    {
+      "id": "msg_0618_T27R0501_00007",
+      "en_US": [
+        "Oops!\n",
+        "I have an important mission.\r",
+        "If they find out I was wasting time\n",
+        "here, they’ll make me start over\f",
+        "as the lowest Team Rocket Grunt!\r",
+        "I better leave now!\r"
+      ]
+    },
+    {
+      "id": "msg_0618_T27R0501_00008",
+      "en_US": "..."
+    },
+    {
+      "id": "msg_0618_T27R0501_00009",
+      "en_US": [
+        "You must be {STRVAR_1 3, 0, 0}, correct?\n",
+        "That was indeed excellent.\f",
+        "Kind and strong...\f",
+        "Good at raising Pokémon as well...\r",
+        "That person does know what to look for\n",
+        "in people...\r",
+        "Ohoho! That was just me talking to\n",
+        "myself.\f",
+        "Never mind."
+      ]
+    },
+    {
+      "id": "msg_0618_T27R0501_00010",
+      "en_US": [
+        "For Kimono Girls like me, dancing\n",
+        "is everything.\r",
+        "I have never gone a day without\n",
+        "a dance practice.\r",
+        "Pokémon are the same.\r",
+        "They grow with you little by little\n",
+        "each day."
+      ]
+    },
+    {
+      "id": "msg_0618_T27R0501_00011",
+      "en_US": [
+        "Welcome.\n",
+        "My name is Zuki.\f",
+        "I met you previously in Violet City.\r",
+        "In order to bring back HO-OH, we\n",
+        "needed someone with the right bond\f",
+        "with Pokémon.\r",
+        "We asked Mr. Pokémon to give this\n",
+        "Mystery Egg to whoever showed\f",
+        "true potential.\r",
+        "The Egg was eventually handed from\n",
+        "Mr. Pokémon to Professor Elm, and then\f",
+        "to you.\r",
+        "However, being pure alone will not be\n",
+        "sufficient to face the power of\f",
+        "this Pokémon.\f",
+        "I must test you.\r",
+        "Are you ready? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0618_T27R0501_00012",
+      "en_US": [
+        "Welcome.\n",
+        "My name is Zuki.\f",
+        "I met you previously in Violet City.\r",
+        "In order to bring back LUGIA, we\n",
+        "needed someone with the right bond\f",
+        "with Pokémon.\r",
+        "We asked Mr. Pokémon to give this\n",
+        "Mystery Egg to whoever showed\f",
+        "true potential.\r",
+        "The Egg was eventually handed from\n",
+        "Mr. Pokémon to Professor Elm, and then\f",
+        "to you.\r",
+        "However, being pure alone will not be\n",
+        "sufficient to face the power of\f",
+        "this Pokémon.\f",
+        "I must test you.\r",
+        "Are you ready? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0618_T27R0501_00013",
+      "en_US": [
+        "I will test you to see if you are a good\n",
+        "Pokémon Trainer.\r",
+        "Are you ready? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0618_T27R0501_00014",
+      "en_US": [
+        "That is fine...\n",
+        "I will wait for you to get ready."
+      ]
+    },
+    {
+      "id": "msg_0618_T27R0501_00015",
+      "en_US": [
+        "You are quite strong.\r",
+        "You helped me in the Ilex Forest.\r",
+        "My name is Naoko. I’m the one that’s\n",
+        "not so good at directions.\r",
+        "My eyes witnessed you defeating\n",
+        "Team Rocket when Kurt was in trouble\f",
+        "at the SLOWPOKE Well.\r",
+        "Allow me to challenge you and your\n",
+        "Pokémon!\r"
+      ]
+    },
+    {
+      "id": "msg_0618_T27R0501_00016",
+      "en_US": [
+        "You are quite the Trainer.\r",
+        "I remember you chasing off\n",
+        "that Team Rocket Grunt\f",
+        "from right here.\r",
+        "I must thank you for that.\r",
+        "Although, I am actually a Trainer\n",
+        "myself.\r",
+        "She who knows the most speaks\n",
+        "the least!\f",
+        "I am Miki--the Kimono Girl!\r",
+        "Allow me to challenge you and your\n",
+        "Pokémon!\r"
+      ]
+    },
+    {
+      "id": "msg_0618_T27R0501_00017",
+      "en_US": [
+        "Excellent fighting spirit!\r",
+        "You got me off the ice by pushing me\n",
+        "from the back.\r",
+        "I am the one who skates in sandals.\f",
+        "I am Sayo--the Kimono Girl!\r",
+        "I was listening in the Dragon’s Den\n",
+        "when you passed the test of the Elder.\r",
+        "Allow me to challenge you and your\n",
+        "Pokémon!\r"
+      ]
+    },
+    {
+      "id": "msg_0618_T27R0501_00018",
+      "en_US": [
+        "I am the last one.\r",
+        "You were so dependable at the\n",
+        "Goldenrod Tunnel. I am the one who\f",
+        "twirls even underground.\r",
+        "I am Kuni--the Kimono Girl!\r",
+        "I looked at you in wonder when you\n",
+        "thwarted Team Rocket’s mission\f",
+        "to take over the Radio Tower.\f",
+        "You must show your strength to me now.\r",
+        "Allow me to challenge you and your\n",
+        "Pokémon!\r"
+      ]
+    },
+    {
+      "id": "msg_0618_T27R0501_00019",
+      "en_US": [
+        "Talk to Zuki in the middle\n",
+        "when you are ready."
+      ]
+    },
+    {
+      "id": "msg_0618_T27R0501_00020",
+      "en_US": [
+        "We were not wrong about you.\n",
+        "You are indeed worthy of this...\r",
+        "Please take it.\r"
+      ]
+    },
+    {
+      "id": "msg_0618_T27R0501_00021",
+      "en_US": [
+        "Big sisters!\r",
+        "I just saw the big shadow of a Pokémon\n",
+        "over the Bell Tower!\r",
+        "It could be...\r"
+      ]
+    },
+    {
+      "id": "msg_0618_T27R0501_00022",
+      "en_US": [
+        "Big sisters!\r",
+        "I just saw the big shadow of a Pokémon\n",
+        "in the Whirl Islands’ waters!\r",
+        "It could be...\r"
+      ]
+    },
+    {
+      "id": "msg_0618_T27R0501_00023",
+      "en_US": [
+        "Zuki: {STRVAR_1 3, 0, 0}!\n",
+        "We’ll be at the Bell Tower.\f",
+        "See you there!\r"
+      ]
+    },
+    {
+      "id": "msg_0618_T27R0501_00024",
+      "en_US": [
+        "Zuki: {STRVAR_1 3, 0, 0}!\n",
+        "We’ll be at the Whirl Islands.\f",
+        "See you there!\r"
+      ]
+    },
+    {
+      "id": "msg_0618_T27R0501_00025",
+      "en_US": [
+        "What’s the deal with that Team Rocket\n",
+        "Grunt, messing with my Kimono Girl?\r",
+        "You are a Trainer, aren’t you?\f",
+        "Please help her!"
+      ]
+    },
+    {
+      "id": "msg_0618_T27R0501_00026",
+      "en_US": [
+        "Wonderful!\n",
+        "You were so courageous for your age!\r",
+        "It was a rare sight to see!\n",
+        "I want you to have this.\f",
+        "Don’t be shy--take it!\r"
+      ]
+    },
+    {
+      "id": "msg_0618_T27R0501_00027",
+      "garbage": 22
+    },
+    {
+      "id": "msg_0618_T27R0501_00028",
+      "en_US": [
+        "That’s Surf.\n",
+        "It’s a move that lets Pokémon swim\f",
+        "across water with ease.\r"
+      ]
+    },
+    {
+      "id": "msg_0618_T27R0501_00029",
+      "en_US": [
+        "Not only are the Kimono Girls great\n",
+        "dancers, they’re also skilled at\f",
+        "Pokémon.\r",
+        "But they battle only for good reasons.\r",
+        "I don’t know if you could defeat them if\n",
+        "they showed what they can do..."
+      ]
+    },
+    {
+      "id": "msg_0618_T27R0501_00030",
+      "en_US": "PSYDUCK: Dau dau!"
+    },
+    {
+      "id": "msg_0618_T27R0501_00031",
+      "en_US": [
+        "That man’s always with his PSYDUCK.\r",
+        "Says he wants a Pokémon that can\n",
+        "Surf and dance.\r",
+        "Is he trying to make a Pokémon\n",
+        "that stars at synchronized swimming?"
+      ]
+    },
+    {
+      "id": "msg_0618_T27R0501_00032",
+      "en_US": [
+        "Oh... Ouch...!\r",
+        "This stomachache!\r",
+        "I wouldn’t let this guy act like that\n",
+        "were it not for this pain...!"
+      ]
+    },
+    {
+      "id": "msg_0618_T27R0501_00033",
+      "en_US": [
+        "I was supposed to be the hero...!\r",
+        "So much for getting close to\n",
+        "a Kimono Girl!\n"
+      ]
+    },
+    {
+      "id": "msg_0618_T27R0501_00034",
+      "en_US": [
+        "Oh... Ouch...!\r",
+        "This back pain!\r",
+        "I wouldn’t let this guy act like that\n",
+        "were it not for this pain...!"
+      ]
+    },
+    {
+      "id": "msg_0618_T27R0501_00035",
+      "en_US": [
+        "Oh... Ouch...!\r",
+        "This toothache!\r",
+        "I wouldn’t let this guy act like that\n",
+        "were it not for this pain...! "
+      ]
+    },
+    {
+      "id": "msg_0618_T27R0501_00036",
+      "en_US": [
+        "The Kimono Girls are so beautiful...\r",
+        "But they have to go through rigorous\n",
+        "training.\r",
+        "And they have to learn to follow\n",
+        "customs before appearing in public.\r",
+        "But if you love something, anything\n",
+        "is possible."
+      ]
+    },
+    {
+      "id": "msg_0618_T27R0501_00037",
+      "en_US": [
+        "To do such a terrible thing to\n",
+        "a Kimono Girl!\r",
+        "I don’t understand how young people\n",
+        "behave these days."
+      ]
+    },
+    {
+      "id": "msg_0618_T27R0501_00038",
+      "en_US": "Quite the Trainer for your age indeed!"
+    },
+    {
+      "id": "msg_0618_T27R0501_00039",
+      "en_US": [
+        "This desk is used for\n",
+        "certain programs..."
+      ]
+    },
+    {
+      "id": "msg_0618_T27R0501_00040",
+      "en_US": "Thank you for your help the other day."
+    },
+    {
+      "id": "msg_0618_T27R0501_00041",
+      "en_US": "We are rehearsing a dance."
+    },
+    {
+      "id": "msg_0618_T27R0501_00042",
+      "en_US": [
+        "Thank you for your help the other day.\r",
+        "You have beautifully proven that the\n",
+        "bond between people can be extended to\f",
+        "the bond between people and Pokémon...\r",
+        "We all appreciate that you have lived up\n",
+        "to our expectations, {STRVAR_1 3, 0, 0}!\r",
+        "If you feel that this experience has\n",
+        "taught you anything, the people you\f",
+        "should thank are not us, but\f",
+        "Mr. Pokémon and Professor Elm..."
+      ]
+    },
+    {
+      "id": "msg_0618_T27R0501_00043",
+      "en_US": "We are rehearsing a dance."
+    },
+    {
+      "id": "msg_0618_T27R0501_00044",
+      "en_US": "Thank you for your help the other day."
+    },
+    {
+      "id": "msg_0618_T27R0501_00045",
+      "en_US": [
+        "I will test how closely you’ve\n",
+        "bonded with your Pokémon!\r"
+      ]
+    }
+  ]
+}

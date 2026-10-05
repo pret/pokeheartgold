@@ -1,0 +1,895 @@
+{
+  "key": 5346,
+  "messages": [
+    {
+      "id": "msg_0274_00000",
+      "en_US": [
+        "Welcome!\r",
+        "From here, you can select a Pokémon\n",
+        "from your PC Box and send it to the\f",
+        "Pokéwalker to take along on a Stroll.\r"
+      ]
+    },
+    {
+      "id": "msg_0274_00001",
+      "en_US": [
+        "Please select the Pokémon\n",
+        "you’d like to take along."
+      ]
+    },
+    {
+      "id": "msg_0274_00002",
+      "en_US": [
+        "Receive Pokémon\n",
+        "and gifts."
+      ]
+    },
+    {
+      "id": "msg_0274_00003",
+      "en_US": [
+        "Caution!\r",
+        "All data saved on the Pokéwalker will\n",
+        "be erased.\r",
+        "Before erasing it, please be sure to\n",
+        "confirm the information.\r",
+        "The Pokémon on your Pokéwalker will\n",
+        "return, but all other data on the\f",
+        "Pokéwalker will be erased.\r",
+        "Erase the data on the Pokéwalker?"
+      ]
+    },
+    {
+      "id": "msg_0274_00004",
+      "en_US": [
+        "All records on the\n",
+        "Pokéwalker will be erased."
+      ]
+    },
+    {
+      "id": "msg_0274_00005",
+      "en_US": [
+        "Point at the DS Card\n",
+        "and select “CONNECT.”"
+      ]
+    },
+    {
+      "id": "msg_0274_00006",
+      "en_US": "Connecting to Pokéwalker. Please wait."
+    },
+    {
+      "id": "msg_0274_00007",
+      "en_US": [
+        "In a place where it’s OK for\n",
+        "the Pokéwalker to emit\f",
+        "noise, point it at the\f",
+        "DS Card, press the button,\f",
+        "and wait five seconds."
+      ]
+    },
+    {
+      "id": "msg_0274_00008",
+      "en_US": [
+        "Your Pokémon can now take\n",
+        "a Stroll in the Pokéwalker."
+      ]
+    },
+    {
+      "id": "msg_0274_00009",
+      "en_US": "Carry over the Pokéwalker Step Count?"
+    },
+    {
+      "id": "msg_0274_00010",
+      "garbage": 21
+    },
+    {
+      "id": "msg_0274_00011",
+      "en_US": [
+        "Please select a Pokémon from your\n",
+        "PC Box.\r"
+      ]
+    },
+    {
+      "id": "msg_0274_00012",
+      "en_US": [
+        "Select the Route you would\n",
+        "like to take a Stroll on.\r"
+      ]
+    },
+    {
+      "id": "msg_0274_00013",
+      "en_US": [
+        "Saving...\n",
+        "Do not turn off the power."
+      ]
+    },
+    {
+      "id": "msg_0274_00014",
+      "garbage": 30
+    },
+    {
+      "id": "msg_0274_00015",
+      "en_US": [
+        "To use the Pokéwalker, you must have\n",
+        "at least five open spaces in a PC Box.\r",
+        "Please come back once you have opened\n",
+        "at least five spaces.\r"
+      ]
+    },
+    {
+      "id": "msg_0274_00016",
+      "en_US": [
+        "The Nintendo DS will connect to\n",
+        "the Pokéwalker.{PAUSE 90}"
+      ]
+    },
+    {
+      "id": "msg_0274_00017",
+      "garbage": 24
+    },
+    {
+      "id": "msg_0274_00018",
+      "en_US": [
+        "Caution!\r",
+        "You can send the Pokémon you are out\n",
+        "on a Stroll with back, but will lose the\f",
+        "ability to transfer any other Pokémon\f",
+        "on the Pokéwalker.\r",
+        "Send the Pokémon back anyway?"
+      ]
+    },
+    {
+      "id": "msg_0274_00019",
+      "en_US": [
+        "The Pokémon out on a Stroll\n",
+        "will be sent back."
+      ]
+    },
+    {
+      "id": "msg_0274_00020",
+      "en_US": [
+        "Any received Pokémon were released\n",
+        "back into the wild.{PAUSE 120}"
+      ]
+    },
+    {
+      "id": "msg_0274_00021",
+      "en_US": [
+        "Take a Stroll on the\n",
+        "{STRVAR_34 19, 0, 0} Route?"
+      ]
+    },
+    {
+      "id": "msg_0274_00022",
+      "en_US": [
+        "Welcome!\r",
+        "From here, you can select a Pokémon\n",
+        "from your PC Box and send it to the\f",
+        "Pokéwalker to take along on a Stroll.\r",
+        "Please come back once you have placed\n",
+        "at least one Pokémon in a PC Box.\r"
+      ]
+    },
+    {
+      "id": "msg_0274_00023",
+      "garbage": 10
+    },
+    {
+      "id": "msg_0274_00024",
+      "en_US": "{STRVAR_1 1, 1, 0} went to the Pokéwalker!{PAUSE 120}"
+    },
+    {
+      "id": "msg_0274_00025",
+      "en_US": [
+        "The Pokéwalker has been registered to\n",
+        "this DS Card. When sending back your\f",
+        "Pokémon, please return it to\f",
+        "this DS Card.\r",
+        "Please enjoy your Stroll with your\n",
+        "Pokémon!\r"
+      ]
+    },
+    {
+      "id": "msg_0274_00026",
+      "en_US": "Come back, {STRVAR_1 1, 1, 0}!"
+    },
+    {
+      "id": "msg_0274_00027",
+      "en_US": "{STRVAR_1 1, 1, 0} has arrived!{PAUSE 120}"
+    },
+    {
+      "id": "msg_0274_00028",
+      "garbage": 13
+    },
+    {
+      "id": "msg_0274_00029",
+      "en_US": "Received gift(s)!{PAUSE 120}"
+    },
+    {
+      "id": "msg_0274_00030",
+      "garbage": 24
+    },
+    {
+      "id": "msg_0274_00031",
+      "en_US": [
+        "Pokéwalker records have\n",
+        "been initialized.{PAUSE 120}"
+      ]
+    },
+    {
+      "id": "msg_0274_00032",
+      "en_US": "The Pokémon returned!{PAUSE 120}"
+    },
+    {
+      "id": "msg_0274_00033",
+      "en_US": [
+        "Canceled the connection to\n",
+        "the Pokéwalker.{PAUSE 120}"
+      ]
+    },
+    {
+      "id": "msg_0274_00034",
+      "en_US": [
+        "This Pokéwalker has already\n",
+        "been registered.{PAUSE 120}"
+      ]
+    },
+    {
+      "id": "msg_0274_00035",
+      "en_US": "Connection failure.{PAUSE 120}"
+    },
+    {
+      "id": "msg_0274_00036",
+      "en_US": [
+        "This Pokéwalker has not yet\n",
+        "been registered.{PAUSE 120}"
+      ]
+    },
+    {
+      "id": "msg_0274_00037",
+      "en_US": [
+        "There is already a Pokémon on\n",
+        "this Pokéwalker.{PAUSE 120}"
+      ]
+    },
+    {
+      "id": "msg_0274_00038",
+      "en_US": [
+        "This Pokéwalker is not the\n",
+        "registered Pokéwalker.{PAUSE 120}"
+      ]
+    },
+    {
+      "id": "msg_0274_00039",
+      "en_US": [
+        "This Pokéwalker is not the\n",
+        "registered Pokéwalker.{PAUSE 120}"
+      ]
+    },
+    {
+      "id": "msg_0274_00040",
+      "garbage": 23
+    },
+    {
+      "id": "msg_0274_00041",
+      "en_US": [
+        "Connection to the Pokéwalker has\n",
+        "been suspended.{PAUSE 120}"
+      ]
+    },
+    {
+      "id": "msg_0274_00042",
+      "en_US": [
+        "Connection was disrupted. Please try\n",
+        "your connection again.{PAUSE 120}"
+      ]
+    },
+    {
+      "id": "msg_0274_00043",
+      "en_US": [
+        "There are not any Pokémon on\n",
+        "this Pokéwalker.{PAUSE 120}"
+      ]
+    },
+    {
+      "id": "msg_0274_00044",
+      "en_US": [
+        "{STRVAR_1 1, 1, 0} arrived from its Stroll\n",
+        "on {STRVAR_34 19, 2, 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0274_00045",
+      "en_US": "Collected {STRVAR_1 54, 3, 0} W on the Stroll!\r"
+    },
+    {
+      "id": "msg_0274_00046",
+      "en_US": "Head out for another Stroll sometime!\r"
+    },
+    {
+      "id": "msg_0274_00047",
+      "en_US": [
+        "Stroll for a bit with the Pokémon you’ve\n",
+        "sent to the Pokéwalker!\r"
+      ]
+    },
+    {
+      "id": "msg_0274_00048",
+      "en_US": [
+        "...\n",
+        "What?\r",
+        "The collected Watts have unlocked\n",
+        "something on the Pokéwalker!\r",
+        "A new Route has been found on the\n",
+        "Pokéwalker!\r"
+      ]
+    },
+    {
+      "id": "msg_0274_00049",
+      "en_US": [
+        "All Pokémon you caught on the Stroll\n",
+        "have been sent to the PC Box!\r"
+      ]
+    },
+    {
+      "id": "msg_0274_00050",
+      "en_US": [
+        "Any items found on the Stroll have been\n",
+        "placed in your Bag!\r"
+      ]
+    },
+    {
+      "id": "msg_0274_00051",
+      "en_US": "{STRVAR_1 1, 1, 0} took {STRVAR_1 56, 3, 0} steps!"
+    },
+    {
+      "id": "msg_0274_00052",
+      "en_US": [
+        "{STRVAR_1 1, 1, 0}’s level went up one from\n",
+        "the Stroll!\r"
+      ]
+    },
+    {
+      "id": "msg_0274_00053",
+      "en_US": [
+        "Congratulations!\r",
+        "The Pokéwalker has reached\n",
+        "9,999,999 steps!\r"
+      ]
+    },
+    {
+      "id": "msg_0274_00054",
+      "en_US": [
+        "Received a Starf Berry as a reward!\r",
+        "Placed the reward in the Bag!\r"
+      ]
+    },
+    {
+      "id": "msg_0274_00055",
+      "en_US": "{STRVAR_34 19, 4, 0} is now available!\r"
+    },
+    {
+      "id": "msg_0274_00056",
+      "en_US": "On {STRVAR_34 19, 2, 0}:"
+    },
+    {
+      "id": "msg_0274_00057",
+      "en_US": "walked {STRVAR_1 56, 5, 0} steps."
+    },
+    {
+      "id": "msg_0274_00058",
+      "en_US": "collected {STRVAR_1 54, 3, 0} W."
+    },
+    {
+      "id": "msg_0274_00059",
+      "en_US": "Steps taken to date:"
+    },
+    {
+      "id": "msg_0274_00060",
+      "en_US": "{STRVAR_1 56, 6, 0}"
+    },
+    {
+      "id": "msg_0274_00061",
+      "en_US": "Watts collected to date:"
+    },
+    {
+      "id": "msg_0274_00062",
+      "en_US": "{STRVAR_1 56, 7, 0} W"
+    },
+    {
+      "id": "msg_0274_00063",
+      "en_US": "Results of this Stroll:"
+    },
+    {
+      "id": "msg_0274_00064",
+      "en_US": "Gifts received:"
+    },
+    {
+      "id": "msg_0274_00065",
+      "en_US": "Pokéwalker records:"
+    },
+    {
+      "id": "msg_0274_00066",
+      "en_US": "Your Pokémon:"
+    },
+    {
+      "id": "msg_0274_00067",
+      "en_US": "{STRVAR_1 0, 8, 0}"
+    },
+    {
+      "id": "msg_0274_00068",
+      "en_US": "{STRVAR_1 0, 9, 0}"
+    },
+    {
+      "id": "msg_0274_00069",
+      "en_US": "{STRVAR_1 0, 10, 0}"
+    },
+    {
+      "id": "msg_0274_00070",
+      "en_US": "{STRVAR_1 0, 11, 0}"
+    },
+    {
+      "id": "msg_0274_00071",
+      "en_US": "Items obtained:"
+    },
+    {
+      "id": "msg_0274_00072",
+      "en_US": "{STRVAR_1 8, 9, 0}"
+    },
+    {
+      "id": "msg_0274_00073",
+      "en_US": "Go for a Stroll."
+    },
+    {
+      "id": "msg_0274_00074",
+      "en_US": "Receive a gift."
+    },
+    {
+      "id": "msg_0274_00075",
+      "en_US": "Return from a Stroll."
+    },
+    {
+      "id": "msg_0274_00076",
+      "en_US": "Erase Pokéwalker records."
+    },
+    {
+      "id": "msg_0274_00077",
+      "en_US": "Save, then go for a Stroll."
+    },
+    {
+      "id": "msg_0274_00078",
+      "en_US": "Send Pokémon back home."
+    },
+    {
+      "id": "msg_0274_00079",
+      "en_US": "{ALN_CENTER}Exit"
+    },
+    {
+      "id": "msg_0274_00080",
+      "garbage": 4
+    },
+    {
+      "id": "msg_0274_00081",
+      "en_US": "{STRVAR_1 50, 10, 0}/{STRVAR_1 50, 11, 0}"
+    },
+    {
+      "id": "msg_0274_00082",
+      "en_US": "Total Watts:"
+    },
+    {
+      "id": "msg_0274_00083",
+      "en_US": "{STRVAR_1 56, 7, 0} W"
+    },
+    {
+      "id": "msg_0274_00084",
+      "en_US": "{STRVAR_1 56, 6, 0}"
+    },
+    {
+      "id": "msg_0274_00085",
+      "en_US": "Total steps:"
+    },
+    {
+      "id": "msg_0274_00086",
+      "en_US": [
+        "Watts required to find the next\n",
+        "Route: {STRVAR_1 56, 12, 0} W"
+      ]
+    },
+    {
+      "id": "msg_0274_00087",
+      "en_US": [
+        "It seems that another Route will\n",
+        "appear soon."
+      ]
+    },
+    {
+      "id": "msg_0274_00088",
+      "en_US": [
+        "You can select where you’d like to take a\n",
+        "Stroll from the many Routes."
+      ]
+    },
+    {
+      "id": "msg_0274_00089",
+      "en_US": [
+        "{STRVAR_1 1, 13, 0} is\n",
+        "on a Stroll."
+      ]
+    },
+    {
+      "id": "msg_0274_00090",
+      "garbage": 13
+    },
+    {
+      "id": "msg_0274_00091",
+      "en_US": "Refreshing Field"
+    },
+    {
+      "id": "msg_0274_00092",
+      "en_US": "Noisy Forest"
+    },
+    {
+      "id": "msg_0274_00093",
+      "en_US": "Rugged Road"
+    },
+    {
+      "id": "msg_0274_00094",
+      "en_US": "Beautiful Beach"
+    },
+    {
+      "id": "msg_0274_00095",
+      "en_US": "Suburban Area"
+    },
+    {
+      "id": "msg_0274_00096",
+      "en_US": "Dim Cave"
+    },
+    {
+      "id": "msg_0274_00097",
+      "en_US": "Blue Lake"
+    },
+    {
+      "id": "msg_0274_00098",
+      "en_US": "Town Outskirts"
+    },
+    {
+      "id": "msg_0274_00099",
+      "en_US": "Hoenn Field"
+    },
+    {
+      "id": "msg_0274_00100",
+      "en_US": "Warm Beach"
+    },
+    {
+      "id": "msg_0274_00101",
+      "en_US": "Volcano Path"
+    },
+    {
+      "id": "msg_0274_00102",
+      "en_US": "Treehouse"
+    },
+    {
+      "id": "msg_0274_00103",
+      "en_US": "Scary Cave"
+    },
+    {
+      "id": "msg_0274_00104",
+      "en_US": "Sinnoh Field"
+    },
+    {
+      "id": "msg_0274_00105",
+      "en_US": "Icy Mountain Rd."
+    },
+    {
+      "id": "msg_0274_00106",
+      "en_US": "Big Forest"
+    },
+    {
+      "id": "msg_0274_00107",
+      "en_US": "White Lake"
+    },
+    {
+      "id": "msg_0274_00108",
+      "en_US": "Stormy Beach"
+    },
+    {
+      "id": "msg_0274_00109",
+      "en_US": "Resort"
+    },
+    {
+      "id": "msg_0274_00110",
+      "en_US": "Quiet Cave"
+    },
+    {
+      "id": "msg_0274_00111",
+      "en_US": "Beyond the Sea"
+    },
+    {
+      "id": "msg_0274_00112",
+      "en_US": "Night Sky’s Edge"
+    },
+    {
+      "id": "msg_0274_00113",
+      "en_US": "Yellow Forest"
+    },
+    {
+      "id": "msg_0274_00114",
+      "en_US": "Rally"
+    },
+    {
+      "id": "msg_0274_00115",
+      "en_US": "Sightseeing"
+    },
+    {
+      "id": "msg_0274_00116",
+      "en_US": "Winner’s Path"
+    },
+    {
+      "id": "msg_0274_00117",
+      "en_US": "Amity Meadow"
+    },
+    {
+      "id": "msg_0274_00118",
+      "en_US": "--------"
+    },
+    {
+      "id": "msg_0274_00119",
+      "en_US": [
+        "A wonderfully refreshing field\n",
+        "for a Stroll. You can meet many\n",
+        "kinds of Pokémon here."
+      ]
+    },
+    {
+      "id": "msg_0274_00120",
+      "en_US": [
+        "A large natural forest that has\n",
+        "been allowed to grow. Many\n",
+        "Pokémon live deep in the forest."
+      ]
+    },
+    {
+      "id": "msg_0274_00121",
+      "en_US": [
+        "A hilly, rugged mountain road.\n",
+        "The view from atop the mountain\n",
+        "is very beautiful."
+      ]
+    },
+    {
+      "id": "msg_0274_00122",
+      "en_US": [
+        "This beautiful sea is a popular\n",
+        "place for a Stroll. You can meet\n",
+        "many Water-type Pokémon."
+      ]
+    },
+    {
+      "id": "msg_0274_00123",
+      "en_US": [
+        "A residential area somewhere.\n",
+        "Even when you take a Stroll\n",
+        "here, you can meet Pokémon."
+      ]
+    },
+    {
+      "id": "msg_0274_00124",
+      "en_US": [
+        "A dark cave sometimes used as a\n",
+        "test of courage. Look closely,\n",
+        "and you’ll find many Pokémon."
+      ]
+    },
+    {
+      "id": "msg_0274_00125",
+      "en_US": [
+        "A deep, blue lake. It’s said that\n",
+        "some rare Pokémon live at the\n",
+        "bottom of this lake."
+      ]
+    },
+    {
+      "id": "msg_0274_00126",
+      "en_US": [
+        "The outskirts of a town. Where\n",
+        "people have moved away,\n",
+        "Pokémon have moved in."
+      ]
+    },
+    {
+      "id": "msg_0274_00127",
+      "en_US": [
+        "A Route that goes deep into the\n",
+        "Hoenn region. You can meet many\n",
+        "Pokémon not in Johto or Kanto."
+      ]
+    },
+    {
+      "id": "msg_0274_00128",
+      "en_US": [
+        "A very warm beach in the Hoenn\n",
+        "region. You can meet many\n",
+        "Pokémon not in Johto or Kanto."
+      ]
+    },
+    {
+      "id": "msg_0274_00129",
+      "en_US": [
+        "A path through a currently\n",
+        "active volcano. Very fiery and\n",
+        "rare Pokémon live here."
+      ]
+    },
+    {
+      "id": "msg_0274_00130",
+      "en_US": [
+        "A path that works with the\n",
+        "trees of the forest. Pokémon\n",
+        "here are always changing."
+      ]
+    },
+    {
+      "id": "msg_0274_00131",
+      "en_US": [
+        "A pitch-black cave that seems\n",
+        "haunted. It’s said that many\n",
+        "Pokémon live deep inside."
+      ]
+    },
+    {
+      "id": "msg_0274_00132",
+      "en_US": [
+        "A Route through the Sinnoh\n",
+        "region, far from Johto and\n",
+        "Kanto. Rare Pokémon live here."
+      ]
+    },
+    {
+      "id": "msg_0274_00133",
+      "en_US": [
+        "A snow-covered road where a\n",
+        "misstep could result in a fall--\n",
+        "it tests your trust in Pokémon."
+      ]
+    },
+    {
+      "id": "msg_0274_00134",
+      "en_US": [
+        "A forest surrounded by many old\n",
+        "trees since the olden days.\n",
+        "Many Pokémon live here."
+      ]
+    },
+    {
+      "id": "msg_0274_00135",
+      "en_US": [
+        "A lake concealed in white mist.\n",
+        "It lends a very mysterious feel\n",
+        "to the area."
+      ]
+    },
+    {
+      "id": "msg_0274_00136",
+      "en_US": [
+        "Strong waves wash onto this\n",
+        "beach. Because people don’t\n",
+        "visit, rare Pokémon live here."
+      ]
+    },
+    {
+      "id": "msg_0274_00137",
+      "en_US": [
+        "A high-class resort everyone\n",
+        "wants to visit, famous for the\n",
+        "cute Pokémon living here."
+      ]
+    },
+    {
+      "id": "msg_0274_00138",
+      "en_US": [
+        "A quiet, deep, and empty cave.\n",
+        "If you look carefully, you’ll find\n",
+        "some rare Pokémon."
+      ]
+    },
+    {
+      "id": "msg_0274_00139",
+      "en_US": [
+        "A small island far away on the\n",
+        "horizon. If you look to the sea,\n",
+        "you can see Pokémon swimming."
+      ]
+    },
+    {
+      "id": "msg_0274_00140",
+      "en_US": [
+        "A dark mountain path that gives\n",
+        "you the feeling you’ve traveled\n",
+        "through time back to the past."
+      ]
+    },
+    {
+      "id": "msg_0274_00141",
+      "en_US": [
+        "Many PIKACHU live in harmony in\n",
+        "this forest. Walk through here\n",
+        "frequently, and try to find one!"
+      ]
+    },
+    {
+      "id": "msg_0274_00142",
+      "en_US": [
+        "A fun Route to play with your\n",
+        "Pokéwalker. Take a Stroll and\n",
+        "visit the many places!"
+      ]
+    },
+    {
+      "id": "msg_0274_00143",
+      "en_US": [
+        "You can find many Pokémon on\n",
+        "this Route. Take a long walk and\n",
+        "see if you can find them all!"
+      ]
+    },
+    {
+      "id": "msg_0274_00144",
+      "en_US": [
+        "If you’re aiming to be Champion,\n",
+        "you’ll want to walk this Route!\n",
+        "You’ll meet strong Pokémon!"
+      ]
+    },
+    {
+      "id": "msg_0274_00145",
+      "en_US": [
+        "You can meet cute Pokémon that\n",
+        "evolve through friendship and\n",
+        "find items to evolve Pokémon!"
+      ]
+    },
+    {
+      "id": "msg_0274_00146",
+      "garbage": 29
+    },
+    {
+      "id": "msg_0274_00147",
+      "garbage": 44
+    },
+    {
+      "id": "msg_0274_00148",
+      "en_US": "{ALN_CENTER}Yes"
+    },
+    {
+      "id": "msg_0274_00149",
+      "en_US": "{ALN_CENTER}No"
+    },
+    {
+      "id": "msg_0274_00150",
+      "en_US": "{ALN_CENTER}Save steps"
+    },
+    {
+      "id": "msg_0274_00151",
+      "en_US": "{ALN_CENTER}Erase steps"
+    },
+    {
+      "id": "msg_0274_00152",
+      "garbage": 11
+    },
+    {
+      "id": "msg_0274_00153",
+      "garbage": 10
+    },
+    {
+      "id": "msg_0274_00154",
+      "garbage": 9
+    },
+    {
+      "id": "msg_0274_00155",
+      "garbage": 10
+    },
+    {
+      "id": "msg_0274_00156",
+      "garbage": 14
+    }
+  ]
+}

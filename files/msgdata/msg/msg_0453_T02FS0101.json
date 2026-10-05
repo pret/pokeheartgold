@@ -1,0 +1,17 @@
+{
+  "key": 53008,
+  "messages": [
+    {
+      "id": "msg_0453_T02FS0101_00000",
+      "en_US": "The Gym Leader here is totally cool."
+    },
+    {
+      "id": "msg_0453_T02FS0101_00001",
+      "en_US": [
+        "Have you been to Cinnabar?\r",
+        "It’s an island way south\n",
+        "of here."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "key": 53450,
+  "messages": [
+    {
+      "id": "msg_0674_00000",
+      "en_US": "Huey"
+    },
+    {
+      "id": "msg_0674_00001",
+      "en_US": [
+        "Cool! That’s the first time I’ve lost in\n",
+        "a while!\r",
+        "Hey, give me your phone number.\r",
+        "You’d be fun to battle, so I’ll call\n",
+        "you when I get stronger! {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0674_00002",
+      "en_US": "Hey, let’s battle again!"
+    },
+    {
+      "id": "msg_0674_00003",
+      "en_US": "Looks like you’re a wimp..."
+    },
+    {
+      "id": "msg_0674_00004",
+      "en_US": [
+        "Hey, give me your phone number.\r",
+        "You’d be fun to battle, so I’ll call\n",
+        "you when I get stronger! {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0674_00005",
+      "en_US": [
+        "Man! You’re as tough as ever!\r",
+        "I’ve battled you over and over, but\n",
+        "{STRVAR_1 3, 0, 0}, I haven’t won once.\r",
+        "I bought tons of items to toughen up my\n",
+        "Pokémon, but to no avail...\r",
+        "Items alone aren’t the answer.\n",
+        "That must be what it is...\r",
+        "Here, take this, {STRVAR_1 3, 0, 0}.\n",
+        "I won’t be needing it anymore...\r"
+      ]
+    },
+    {
+      "id": "msg_0674_00006",
+      "en_US": [
+        "Wow, when you call from inside the\n",
+        "Lighthouse, your voice just kind of\f",
+        "echoes. It’s kind of cool!"
+      ]
+    },
+    {
+      "id": "msg_0674_00007",
+      "en_US": [
+        "How are your Pokémon doing?\n",
+        "My Pokémon are a bit too energetic.\r",
+        "{STRVAR_1 0, 10, 0}, especially.\r",
+        "Every time it spots a Trainer, it just\n",
+        "charges ahead into battle!\r",
+        "It gets to be a bit much for me!\n",
+        "Later!"
+      ]
+    },
+    {
+      "id": "msg_0674_00008",
+      "en_US": [
+        "My {STRVAR_1 0, 10, 0}’s looking tougher\n",
+        "than ever.\r",
+        "It looks even tougher than me!\n",
+        "Later!"
+      ]
+    },
+    {
+      "id": "msg_0674_00009",
+      "en_US": [
+        "Hey, I challenge you to a battle!\n",
+        "It won’t be like last time!\r",
+        "{STRVAR_1 4, 3, 0}’s where I’m waiting\n",
+        "for you. Hustle over here pronto!"
+      ]
+    },
+    {
+      "id": "msg_0674_00010",
+      "en_US": [
+        "Hey, you’d better not have forgotten\n",
+        "about our battle!\r",
+        "{STRVAR_1 4, 3, 0}!\n",
+        "Hustle over quick! I’m waiting!"
+      ]
+    },
+    {
+      "id": "msg_0674_00011",
+      "en_US": [
+        "We have to battle again sometime.\n",
+        "You can bet I’m going to keep\f",
+        "challenging you till I win."
+      ]
+    }
+  ]
+}

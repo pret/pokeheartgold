@@ -6,8 +6,8 @@
 
 #include "global.h"
 
-#include "msgdata/msg.naix"
-#include "msgdata/msg/msg_0041.h"
+#include "files/msgdata/msg.naix"
+#include "files/msgdata/msg/msg_0041.h"
 
 #include "bg_window.h"
 #include "brightness.h"
@@ -77,7 +77,7 @@ static const HeapParam sErrorMessageHeapParams = {
 static BOOL sErrorMessagePrinterLock;
 
 static void VBlankIntr() {
-    OS_SetIrqCheckFlag(OS_IE_VBLANK);
+    OS_SetIrqCheckFlag(OS_IE_V_BLANK);
     MI_WaitDma(GX_DEFAULT_DMAID);
 }
 
@@ -97,9 +97,9 @@ void PrintErrorMessageAndReset(void) {
     sub_0200FBF4(PM_LCD_TOP, RGB_BLACK);
     sub_0200FBF4(PM_LCD_BOTTOM, RGB_BLACK);
 
-    OS_DisableIrqMask(OS_IE_VBLANK);
-    OS_SetIrqFunction(OS_IE_VBLANK, VBlankIntr);
-    OS_EnableIrqMask(OS_IE_VBLANK);
+    OS_DisableIrqMask(OS_IE_V_BLANK);
+    OS_SetIrqFunction(OS_IE_V_BLANK, VBlankIntr);
+    OS_EnableIrqMask(OS_IE_V_BLANK);
 
     Main_SetVBlankIntrCB(NULL, NULL);
     Main_SetHBlankIntrCB(NULL, NULL);
@@ -130,7 +130,7 @@ void PrintErrorMessageAndReset(void) {
     BG_SetMaskColor(GF_BG_LYR_MAIN_0, RGB(1, 1, 27));
     BG_SetMaskColor(GF_BG_LYR_SUB_0, RGB(1, 1, 27));
 
-    MsgData *error_msgdata = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0041_bin, HEAP_ID_DEFAULT);
+    MsgData *error_msgdata = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, msg_0041, HEAP_ID_DEFAULT);
     String *error_str = String_New(384, HEAP_ID_DEFAULT);
 
     ResetAllTextPrinters();
@@ -158,7 +158,7 @@ void PrintErrorMessageAndReset(void) {
             break;
         }
 
-        OS_WaitIrq(TRUE, OS_IE_VBLANK);
+        OS_WaitIrq(TRUE, OS_IE_V_BLANK);
     }
 
     while (TRUE) {
@@ -168,7 +168,7 @@ void PrintErrorMessageAndReset(void) {
             break;
         }
 
-        OS_WaitIrq(TRUE, OS_IE_VBLANK);
+        OS_WaitIrq(TRUE, OS_IE_V_BLANK);
     }
 
     sub_0200FBF4(PM_LCD_TOP, RGB_WHITE);

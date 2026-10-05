@@ -1,0 +1,26 @@
+{
+  "key": 25639,
+  "messages": [
+    {
+      "id": "msg_0347_R11R0101_00000",
+      "en_US": [
+        "Hello, passerby!\r",
+        "Have you seen DIGLETT’s Cave?\n",
+        "Normally you can go through it to get\f",
+        "to Route 2, but there is a sleeping\f",
+        "SNORLAX at the entrance now.\f",
+        "Somebody has to wake it up!"
+      ]
+    },
+    {
+      "id": "msg_0347_R11R0101_00001",
+      "en_US": [
+        "Hello, passerby!\r",
+        "Have you been to DIGLETT’s Cave?\n",
+        "Now that the sleeping SNORLAX is gone,\f",
+        "you can go through it to get\f",
+        "to Route 2!"
+      ]
+    }
+  ]
+}

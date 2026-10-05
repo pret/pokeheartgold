@@ -1,7 +1,0 @@
-<?xml version="1.0"?>
-<body language="English">
-	<row id="msg_0189_00000" index="0">
-		<attribute name="window_context_name">used</attribute>
-		<language name="English">{STRVAR_1 3, 0, 0}</language>
-	</row>
-</body>

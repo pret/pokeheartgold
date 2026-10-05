@@ -1,4 +1,4 @@
-#include <nitro/fs/overlay.h>
+
 #pragma once
 .public BlendPalette
 .public TintPalette_GrayScale

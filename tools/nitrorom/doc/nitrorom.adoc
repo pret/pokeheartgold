@@ -1,0 +1,65 @@
+nitrorom (1)
+============
+
+:doctype: manpage
+:manmanual: NitroROM Manual
+:mansource: NitroROM {manversion}
+:man-linkstyle: pass:[blue R < >]
+
+NAME
+----
+
+nitrorom - Interface with Nintendo DS ROM images
+
+SYNOPSIS
+--------
+
+[verse]
+'nitrorom' [OPTION]... [COMMAND] [ARGUMENT]...
+
+DESCRIPTION
+-----------
+
+NitroROM is a program for interfacing with Nintendo DS ROM-files in a variety of
+ways. Its primary aims are to provide a reusable tool-suite for developers,
+modders, hackers, and reverse-engineering researchers. This tool-suite is
+sub-divided into a set of commands which act as programs unto themselves; the
+top-level executable acts merely as an access-director to these programs.
+
+For details on each of the commands listed below, refer to their distinct manual
+page.
+
+OPTIONS
+-------
+
+`-h`::
+`--help`::
+    View the help-text for the access-director, which provides a summary for
+    basic usage.
+
+`-v`::
+`--version`::
+    Display the NitroROM suite-version and exit.
+
+COMMANDS
+--------
+
+`list`::
+    Generate a listing of the constituent members of an input ROM-file. The
+    output listing will be emitted to standard-output in comma-separated format.
+
+`pack`::
+    Construct a Nintendo DS ROM-file from the contents of the input specification
+    files.
+
+REPORTING BUGS
+--------------
+
+Report bugs to the project's issue page <lhearachel/nitrorom.git[1]>. You will
+need a GitHub account to create a new issue.
+
+NOTES
+-----
+
+1. lhearachel/nitrorom.git
+   https://github.com/lhearachel/nitrorom

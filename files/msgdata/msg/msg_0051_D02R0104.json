@@ -1,0 +1,43 @@
+{
+  "key": 5142,
+  "messages": [
+    {
+      "id": "msg_0051_D02R0104_00000",
+      "en_US": "CLEFAIRY: Pip Pip!"
+    },
+    {
+      "id": "msg_0051_D02R0104_00001",
+      "en_US": [
+        "This is Mt. Moon Square.\r",
+        "Please don’t litter. Put trash\n",
+        "where it belongs!"
+      ]
+    },
+    {
+      "id": "msg_0051_D02R0104_00002",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} found\n",
+        "{STRVAR_1 8, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0051_D02R0104_00003",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} put the {STRVAR_1 8, 1, 0}\n",
+        "in the {COLOR 2}{STRVAR_1 31, 2, 0}{COLOR 0} Pocket."
+      ]
+    },
+    {
+      "id": "msg_0051_D02R0104_00004",
+      "en_US": [
+        "Obtained the {STRVAR_1 8, 0, 0}!\r",
+        "Too bad!\n",
+        "The Bag is full..."
+      ]
+    },
+    {
+      "id": "msg_0051_D02R0104_00005",
+      "en_US": "We are closed for the day."
+    }
+  ]
+}

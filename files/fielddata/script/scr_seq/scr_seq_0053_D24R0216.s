@@ -2,9 +2,8 @@
 #include "constants/scrcmd.h"
 #include "fielddata/script/scr_seq/event_D24R0216.h"
 #include "msgdata/msg/msg_0084_D24R0216.h"
-	.include "asm/macros/script.inc"
+#include "macros/script.inc"
 
-	.rodata
 
 	ScrDef scr_seq_D24R0216_000
 	ScrDef scr_seq_D24R0216_001

@@ -1,0 +1,343 @@
+{
+  "key": 1717,
+  "messages": [
+    {
+      "id": "msg_0188_00000",
+      "en_US": "Check Wii Number"
+    },
+    {
+      "id": "msg_0188_00001",
+      "en_US": "Register Wii Number"
+    },
+    {
+      "id": "msg_0188_00002",
+      "en_US": "Set Wii Message Reception"
+    },
+    {
+      "id": "msg_0188_00003",
+      "en_US": "Delete Wii Message Settings"
+    },
+    {
+      "id": "msg_0188_00004",
+      "en_US": "Exit"
+    },
+    {
+      "id": "msg_0188_00005",
+      "garbage": 15
+    },
+    {
+      "id": "msg_0188_00006",
+      "garbage": 17
+    },
+    {
+      "id": "msg_0188_00007",
+      "garbage": 18
+    },
+    {
+      "id": "msg_0188_00008",
+      "garbage": 84
+    },
+    {
+      "id": "msg_0188_00009",
+      "en_US": [
+        "Are you in a location where you can\n",
+        "connect to Nintendo Wi-Fi Connection?"
+      ]
+    },
+    {
+      "id": "msg_0188_00010",
+      "en_US": [
+        "Please register when you can connect\n",
+        "to Nintendo Wi-Fi Connection.\r"
+      ]
+    },
+    {
+      "id": "msg_0188_00011",
+      "en_US": [
+        "Your Wii number and this Nintendo DS\n",
+        "system’s Nintendo WFC User Information\f",
+        "will be saved.\r",
+        "Connect to Nintendo Wi-Fi Connection?"
+      ]
+    },
+    {
+      "id": "msg_0188_00012",
+      "en_US": [
+        "Unable to connect to Nintendo Wi-Fi\n",
+        "Connection.\r",
+        "Please check your connection settings."
+      ]
+    },
+    {
+      "id": "msg_0188_00013",
+      "en_US": [
+        "The Registration Code has been sent to\n",
+        "your Wii console.\r",
+        "Please enter the Registration Code."
+      ]
+    },
+    {
+      "id": "msg_0188_00014",
+      "en_US": [
+        "Disconnect from Nintendo WFC and\n",
+        "cancel registering your Wii number?"
+      ]
+    },
+    {
+      "id": "msg_0188_00015",
+      "en_US": [
+        "Disconnecting from Nintendo Wi-Fi\n",
+        "Connection."
+      ]
+    },
+    {
+      "id": "msg_0188_00016",
+      "en_US": [
+        "You are now disconnected from Nintendo\n",
+        "Wi-Fi Connection."
+      ]
+    },
+    {
+      "id": "msg_0188_00017",
+      "en_US": [
+        "Please enter the last four digits of\n",
+        "the Registration Code from the\f",
+        "Wii message.\r"
+      ]
+    },
+    {
+      "id": "msg_0188_00018",
+      "en_US": [
+        "Confirming the Registration Code.\n",
+        "Please wait..."
+      ]
+    },
+    {
+      "id": "msg_0188_00019",
+      "en_US": "Incorrect Registration Code.\r"
+    },
+    {
+      "id": "msg_0188_00020",
+      "en_US": "Your Wii number has been registered.\r"
+    },
+    {
+      "id": "msg_0188_00021",
+      "en_US": [
+        "A password is needed to confirm your\n",
+        "Wii number.\r",
+        "Please enter a 4-digit number and make\n",
+        "note of it as your Wii number password.\r"
+      ]
+    },
+    {
+      "id": "msg_0188_00022",
+      "garbage": 21
+    },
+    {
+      "id": "msg_0188_00023",
+      "garbage": 34
+    },
+    {
+      "id": "msg_0188_00024",
+      "en_US": "Your Wii number password has been set.\r"
+    },
+    {
+      "id": "msg_0188_00025",
+      "en_US": [
+        "You may choose to receive a\n",
+        "Wii message when a trade\f",
+        "goes through at the GTS.\r",
+        "Would you like to be notified\n",
+        "by a Wii message?"
+      ]
+    },
+    {
+      "id": "msg_0188_00026",
+      "en_US": [
+        "You have chosen to receive\n",
+        "Wii messages.\r",
+        "The next time you use the GTS, you will\n",
+        "be notified of trades by Wii messages.\r"
+      ]
+    },
+    {
+      "id": "msg_0188_00027",
+      "en_US": [
+        "You have chosen not to receive\n",
+        "Wii messages.\r",
+        "The next time you use the GTS,\n",
+        "you will not be notified of trades by\f",
+        "Wii messages.\r"
+      ]
+    },
+    {
+      "id": "msg_0188_00028",
+      "en_US": [
+        "Your Wii message settings and the\n",
+        "password will be deleted. Is that OK?"
+      ]
+    },
+    {
+      "id": "msg_0188_00029",
+      "en_US": "All Wii message settings were deleted.\r"
+    },
+    {
+      "id": "msg_0188_00030",
+      "garbage": 19
+    },
+    {
+      "id": "msg_0188_00031",
+      "garbage": 15
+    },
+    {
+      "id": "msg_0188_00032",
+      "en_US": [
+        "Saving...\n",
+        "Don’t turn off the power."
+      ]
+    },
+    {
+      "id": "msg_0188_00033",
+      "en_US": "{STRVAR_1 3, 0, 0} saved the game."
+    },
+    {
+      "id": "msg_0188_00034",
+      "en_US": "Save error."
+    },
+    {
+      "id": "msg_0188_00035",
+      "garbage": 22
+    },
+    {
+      "id": "msg_0188_00036",
+      "garbage": 43
+    },
+    {
+      "id": "msg_0188_00037",
+      "garbage": 23
+    },
+    {
+      "id": "msg_0188_00038",
+      "en_US": [
+        "For confirmation, please reenter your\n",
+        "Wii number.\r"
+      ]
+    },
+    {
+      "id": "msg_0188_00039",
+      "en_US": [
+        "This Wii number does not match.\n",
+        "Please reenter it.\r"
+      ]
+    },
+    {
+      "id": "msg_0188_00040",
+      "en_US": [
+        "This password is incorrect.\n",
+        "Please reenter it.\r"
+      ]
+    },
+    {
+      "id": "msg_0188_00041",
+      "en_US": [
+        "Your Wii number is:\n",
+        "{STRVAR_1 53, 0, 0} {STRVAR_1 53, 1, 0} {STRVAR_1 53, 2, 0} {STRVAR_1 53, 3, 0}\r"
+      ]
+    },
+    {
+      "id": "msg_0188_00042",
+      "en_US": "Don’t register"
+    },
+    {
+      "id": "msg_0188_00043",
+      "en_US": "Register"
+    },
+    {
+      "id": "msg_0188_00044",
+      "en_US": [
+        "{COLOR 1}Registering a Wii Number{COLOR 0}\n",
+        "\n",
+        "If your Wii number is registered,\n",
+        "when a trade goes through at the\n",
+        "GTS, you will be notified of the fact\n",
+        "by a Wii message.\n",
+        "\n",
+        "For details, please refer to the\n",
+        "Instruction Booklet.\n",
+        "\n",
+        "Would you like to register your\n",
+        "Wii number?"
+      ]
+    },
+    {
+      "id": "msg_0188_00045",
+      "garbage": 18
+    },
+    {
+      "id": "msg_0188_00046",
+      "garbage": 16
+    },
+    {
+      "id": "msg_0188_00047",
+      "garbage": 10
+    },
+    {
+      "id": "msg_0188_00048",
+      "garbage": 17
+    },
+    {
+      "id": "msg_0188_00049",
+      "garbage": 12
+    },
+    {
+      "id": "msg_0188_00050",
+      "garbage": 15
+    },
+    {
+      "id": "msg_0188_00051",
+      "garbage": 20
+    },
+    {
+      "id": "msg_0188_00052",
+      "garbage": 1
+    },
+    {
+      "id": "msg_0188_00053",
+      "garbage": 2
+    },
+    {
+      "id": "msg_0188_00054",
+      "en_US": [
+        "Nintendo Wi-Fi Connection is\n",
+        "undergoing maintenance.\r",
+        "Please try again later.\r"
+      ]
+    },
+    {
+      "id": "msg_0188_00055",
+      "en_US": [
+        "Nintendo WFC is experiencing high\n",
+        "traffic volumes or the service is down.\r",
+        "Please try again later.\r"
+      ]
+    },
+    {
+      "id": "msg_0188_00056",
+      "en_US": [
+        "Unable to connect to Nintendo Wi-Fi\n",
+        "Connection.\r"
+      ]
+    },
+    {
+      "id": "msg_0188_00057",
+      "en_US": [
+        "Communication error. You have been\n",
+        "disconnected from Nintendo WFC.\r"
+      ]
+    },
+    {
+      "id": "msg_0188_00058",
+      "garbage": 23
+    }
+  ]
+}

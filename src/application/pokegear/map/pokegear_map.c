@@ -3,7 +3,7 @@
 #include "constants/maps.h"
 
 #include "application/pokegear/map/pokegear_map_internal.h"
-#include "msgdata/msg/msg_0273.h"
+#include "files/msgdata/msg/msg_0273.h"
 
 #include "brightness.h"
 #include "phonebook_dat.h"

@@ -21,7 +21,7 @@
 #include "battle/battle_controller_player.h"
 #include "battle/battle_system.h"
 #include "battle/overlay_12_0224E4FC.h"
-#include "msgdata/msg/msg_0197.h"
+#include "files/msgdata/msg/msg_0197.h"
 
 #include "assert.h"
 #include "gf_gfx_loader.h"
@@ -97,7 +97,7 @@ BOOL RunBattleScript(BattleSystem *battleSystem, BattleContext *ctx) {
 
 BOOL BtlCmd_PlayEncounterAnimation(BattleSystem *battleSystem, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
-    BattleController_EmitPlayEncounterAnimation(battleSystem, FALSE);
+    BattleController_EmitSetupBattleUI(battleSystem, FALSE);
     return FALSE;
 }
 
@@ -109,7 +109,7 @@ BOOL BtlCmd_SetPokemonEncounter(BattleSystem *battleSystem, BattleContext *ctx) 
     default:
     case BATTLER_CATEGORY_ALL:
         for (battlerId = 0; battlerId < battlersMax; battlerId++) {
-            BattleController_EmitPokemonEncounter(battleSystem, battlerId);
+            BattleController_EmitSetEncounter(battleSystem, battlerId);
             BattleSystem_SetPokedexSeen(battleSystem, battlerId);
         }
         break;
@@ -120,7 +120,7 @@ BOOL BtlCmd_SetPokemonEncounter(BattleSystem *battleSystem, BattleContext *ctx) 
         for (battlerId = 0; battlerId < battlersMax; battlerId++) {
             opponentData = BattleSystem_GetOpponentData(battleSystem, battlerId);
             if (opponentData->battlerType & BATTLER_TYPE_IS_ENEMY) {
-                BattleController_EmitPokemonEncounter(battleSystem, battlerId);
+                BattleController_EmitSetEncounter(battleSystem, battlerId);
                 BattleSystem_SetPokedexSeen(battleSystem, battlerId);
             }
         }
@@ -142,7 +142,7 @@ BOOL BtlCmd_PokemonSlideIn(BattleSystem *battleSystem, BattleContext *ctx) {
     switch (BattleScriptReadWord(ctx)) {
     default:
         for (battlerId = 0; battlerId < battlersMax; battlerId++) {
-            BattleController_EmitPokemonSlideIn(battleSystem, battlerId);
+            BattleController_EmitShowEncounter(battleSystem, battlerId);
             BattleSystem_SetPokedexSeen(battleSystem, battlerId);
         }
         break;
@@ -150,7 +150,7 @@ BOOL BtlCmd_PokemonSlideIn(BattleSystem *battleSystem, BattleContext *ctx) {
         for (battlerId = 0; battlerId < battlersMax; battlerId++) {
             opponentData = BattleSystem_GetOpponentData(battleSystem, battlerId);
             if (!(opponentData->battlerType & BATTLER_TYPE_IS_ENEMY)) {
-                BattleController_EmitPokemonSlideIn(battleSystem, battlerId);
+                BattleController_EmitShowEncounter(battleSystem, battlerId);
                 BattleSystem_SetPokedexSeen(battleSystem, battlerId);
             }
         }
@@ -163,7 +163,7 @@ BOOL BtlCmd_PokemonSlideIn(BattleSystem *battleSystem, BattleContext *ctx) {
             if (opponentData->battlerType & BATTLER_TYPE_IS_ENEMY) {
                 BattleSystem_ClearExperienceEarnFlags(ctx, battlerId);
                 BattleSystem_SetExperienceEarnFlags(battleSystem, ctx, battlerId);
-                BattleController_EmitPokemonSlideIn(battleSystem, battlerId);
+                BattleController_EmitShowEncounter(battleSystem, battlerId);
                 BattleSystem_SetPokedexSeen(battleSystem, battlerId);
             }
         }
@@ -178,7 +178,7 @@ BOOL BtlCmd_PokemonSlideIn(BattleSystem *battleSystem, BattleContext *ctx) {
             BattleSystem_SetExperienceEarnFlags(battleSystem, ctx, ctx->battlerIdAttacker);
         }
         BattleSystem_SetPokedexSeen(battleSystem, ctx->battlerIdAttacker);
-        BattleController_EmitPokemonSlideIn(battleSystem, ctx->battlerIdAttacker);
+        BattleController_EmitShowEncounter(battleSystem, ctx->battlerIdAttacker);
         break;
     case BATTLER_CATEGORY_DEFENDER:
         opponentData = BattleSystem_GetOpponentData(battleSystem, ctx->battlerIdTarget);
@@ -190,7 +190,7 @@ BOOL BtlCmd_PokemonSlideIn(BattleSystem *battleSystem, BattleContext *ctx) {
             BattleSystem_SetExperienceEarnFlags(battleSystem, ctx, ctx->battlerIdTarget);
         }
         BattleSystem_SetPokedexSeen(battleSystem, ctx->battlerIdTarget);
-        BattleController_EmitPokemonSlideIn(battleSystem, ctx->battlerIdTarget);
+        BattleController_EmitShowEncounter(battleSystem, ctx->battlerIdTarget);
         break;
     case BATTLER_CATEGORY_SWITCHED_MON:
         opponentData = BattleSystem_GetOpponentData(battleSystem, ctx->battlerIdSwitch);
@@ -202,7 +202,7 @@ BOOL BtlCmd_PokemonSlideIn(BattleSystem *battleSystem, BattleContext *ctx) {
             BattleSystem_SetExperienceEarnFlags(battleSystem, ctx, ctx->battlerIdSwitch);
         }
         BattleSystem_SetPokedexSeen(battleSystem, ctx->battlerIdSwitch);
-        BattleController_EmitPokemonSlideIn(battleSystem, ctx->battlerIdSwitch);
+        BattleController_EmitShowEncounter(battleSystem, ctx->battlerIdSwitch);
         break;
     }
 
@@ -220,7 +220,7 @@ BOOL BtlCmd_PokemonSendOut(BattleSystem *battleSystem, BattleContext *ctx) {
     switch (BattleScriptReadWord(ctx)) {
     default:
         for (battlerId = 0; battlerId < battlersMax; battlerId++) {
-            BattleController_EmitPokemonSendOut(battleSystem, battlerId, 0, 0);
+            BattleController_EmitShowPokemon(battleSystem, battlerId, 0, 0);
             BattleSystem_SetPokedexSeen(battleSystem, battlerId);
         }
         break;
@@ -228,7 +228,7 @@ BOOL BtlCmd_PokemonSendOut(BattleSystem *battleSystem, BattleContext *ctx) {
         for (battlerId = 0; battlerId < battlersMax; battlerId++) {
             opponentData = BattleSystem_GetOpponentData(battleSystem, battlerId);
             if (!(opponentData->battlerType & BATTLER_TYPE_IS_ENEMY)) {
-                BattleController_EmitPokemonSendOut(battleSystem, battlerId, 0, 0);
+                BattleController_EmitShowPokemon(battleSystem, battlerId, 0, 0);
                 BattleSystem_SetPokedexSeen(battleSystem, battlerId);
             }
         }
@@ -241,7 +241,7 @@ BOOL BtlCmd_PokemonSendOut(BattleSystem *battleSystem, BattleContext *ctx) {
             if (opponentData->battlerType & BATTLER_TYPE_IS_ENEMY) {
                 BattleSystem_ClearExperienceEarnFlags(ctx, battlerId);
                 BattleSystem_SetExperienceEarnFlags(battleSystem, ctx, battlerId);
-                BattleController_EmitPokemonSendOut(battleSystem, battlerId, 0, 0);
+                BattleController_EmitShowPokemon(battleSystem, battlerId, 0, 0);
                 BattleSystem_SetPokedexSeen(battleSystem, battlerId);
             }
         }
@@ -256,7 +256,7 @@ BOOL BtlCmd_PokemonSendOut(BattleSystem *battleSystem, BattleContext *ctx) {
             BattleSystem_SetExperienceEarnFlags(battleSystem, ctx, ctx->battlerIdAttacker);
         }
         BattleSystem_SetPokedexSeen(battleSystem, ctx->battlerIdAttacker);
-        BattleController_EmitPokemonSendOut(battleSystem, ctx->battlerIdAttacker, 0, 0);
+        BattleController_EmitShowPokemon(battleSystem, ctx->battlerIdAttacker, 0, 0);
         break;
     case 2:
         opponentData = BattleSystem_GetOpponentData(battleSystem, ctx->battlerIdTarget);
@@ -268,7 +268,7 @@ BOOL BtlCmd_PokemonSendOut(BattleSystem *battleSystem, BattleContext *ctx) {
             BattleSystem_SetExperienceEarnFlags(battleSystem, ctx, ctx->battlerIdTarget);
         }
         BattleSystem_SetPokedexSeen(battleSystem, ctx->battlerIdTarget);
-        BattleController_EmitPokemonSendOut(battleSystem, ctx->battlerIdTarget, 0, 0);
+        BattleController_EmitShowPokemon(battleSystem, ctx->battlerIdTarget, 0, 0);
         break;
     case 6:
         opponentData = BattleSystem_GetOpponentData(battleSystem, ctx->battlerIdSwitch);
@@ -280,7 +280,7 @@ BOOL BtlCmd_PokemonSendOut(BattleSystem *battleSystem, BattleContext *ctx) {
             BattleSystem_SetExperienceEarnFlags(battleSystem, ctx, ctx->battlerIdSwitch);
         }
         BattleSystem_SetPokedexSeen(battleSystem, ctx->battlerIdSwitch);
-        BattleController_EmitPokemonSendOut(battleSystem, ctx->battlerIdSwitch, 0, 0);
+        BattleController_EmitShowPokemon(battleSystem, ctx->battlerIdSwitch, 0, 0);
         break;
     }
 
@@ -298,14 +298,14 @@ BOOL BtlCmd_RecallPokemon(BattleSystem *battleSystem, BattleContext *ctx) {
     switch (side) {
     case BATTLER_CATEGORY_ALL:
         for (battlerId = 0; battlerId < battlersMax; battlerId++) {
-            BattleController_EmitRecallPokemon(battleSystem, ctx, battlerId);
+            BattleController_EmitReturnPokemon(battleSystem, ctx, battlerId);
         }
         break;
     case BATTLER_CATEGORY_PLAYER:
         for (battlerId = 0; battlerId < battlersMax; battlerId++) {
             opponentData = BattleSystem_GetOpponentData(battleSystem, battlerId);
             if ((opponentData->battlerType & BATTLER_TYPE_IS_ENEMY) == 0) {
-                BattleController_EmitRecallPokemon(battleSystem, ctx, battlerId);
+                BattleController_EmitReturnPokemon(battleSystem, ctx, battlerId);
             }
         }
         break;
@@ -313,12 +313,12 @@ BOOL BtlCmd_RecallPokemon(BattleSystem *battleSystem, BattleContext *ctx) {
         for (battlerId = 0; battlerId < battlersMax; battlerId++) {
             opponentData = BattleSystem_GetOpponentData(battleSystem, battlerId);
             if (opponentData->battlerType & BATTLER_TYPE_IS_ENEMY && !(ctx->switchInFlag & MaskOfFlagNo(battlerId))) {
-                BattleController_EmitRecallPokemon(battleSystem, ctx, battlerId);
+                BattleController_EmitReturnPokemon(battleSystem, ctx, battlerId);
             }
         }
         break;
     default:
-        BattleController_EmitRecallPokemon(battleSystem, ctx, BattleSystem_GetBattlerIDBySide(battleSystem, ctx, side));
+        BattleController_EmitReturnPokemon(battleSystem, ctx, BattleSystem_GetBattlerIDBySide(battleSystem, ctx, side));
         break;
     }
 
@@ -348,7 +348,7 @@ BOOL BtlCmd_SetTrainerEncounter(BattleSystem *battleSystem, BattleContext *ctx) 
             for (battlerId = 0; battlerId < battlersMax; battlerId++) {
                 opponentData = BattleSystem_GetOpponentData(battleSystem, battlerId);
                 if (opponentData->battlerType != BATTLER_TYPE_PLAYER_SIDE_SLOT_2) {
-                    BattleController_EmitTrainerEncounter(battleSystem, battlerId);
+                    BattleController_EmitSetTrainerEncounter(battleSystem, battlerId);
                 }
             }
         } else {
@@ -356,7 +356,7 @@ BOOL BtlCmd_SetTrainerEncounter(BattleSystem *battleSystem, BattleContext *ctx) 
                 if ((BattleSystem_GetBattleType(battleSystem) & BATTLE_TYPE_MULTI) == 0 && (BattleSystem_GetBattleType(battleSystem) & BATTLE_TYPE_DOUBLES) && (battlerId > 1)) {
                     break;
                 }
-                BattleController_EmitTrainerEncounter(battleSystem, battlerId);
+                BattleController_EmitSetTrainerEncounter(battleSystem, battlerId);
             }
         }
         break;
@@ -364,7 +364,7 @@ BOOL BtlCmd_SetTrainerEncounter(BattleSystem *battleSystem, BattleContext *ctx) 
         for (battlerId = 0; battlerId < battlersMax; battlerId++) {
             opponentData = BattleSystem_GetOpponentData(battleSystem, battlerId);
             if (!(opponentData->battlerType & BATTLER_TYPE_IS_ENEMY)) {
-                BattleController_EmitTrainerEncounter(battleSystem, battlerId);
+                BattleController_EmitSetTrainerEncounter(battleSystem, battlerId);
                 if ((BattleSystem_GetBattleType(battleSystem) & BATTLE_TYPE_MULTI) == 0 && (BattleSystem_GetBattleType(battleSystem) & BATTLE_TYPE_DOUBLES)) {
                     break;
                 }
@@ -375,7 +375,7 @@ BOOL BtlCmd_SetTrainerEncounter(BattleSystem *battleSystem, BattleContext *ctx) 
         for (battlerId = 0; battlerId < battlersMax; battlerId++) {
             opponentData = BattleSystem_GetOpponentData(battleSystem, battlerId);
             if (opponentData->battlerType & BATTLER_TYPE_IS_ENEMY) {
-                BattleController_EmitTrainerEncounter(battleSystem, battlerId);
+                BattleController_EmitSetTrainerEncounter(battleSystem, battlerId);
                 if ((BattleSystem_GetBattleType(battleSystem) & BATTLE_TYPE_MULTI) == 0 && (BattleSystem_GetBattleType(battleSystem) & BATTLE_TYPE_TAG) == 0 && (BattleSystem_GetBattleType(battleSystem) & BATTLE_TYPE_DOUBLES)) {
                     break;
                 }
@@ -404,14 +404,14 @@ BOOL BtlCmd_ThrowPokeball(BattleSystem *battleSystem, BattleContext *ctx) {
             if ((BattleSystem_GetBattleType(battleSystem) & BATTLE_TYPE_MULTI) == 0 && (BattleSystem_GetBattleType(battleSystem) & BATTLE_TYPE_DOUBLES) && (battlerId > 1)) {
                 break;
             }
-            BattleController_EmitThrowPokeball(battleSystem, battlerId, unkC);
+            BattleController_EmitTrainerThrowBall(battleSystem, battlerId, unkC);
         }
         break;
     case 3:
         for (battlerId = 0; battlerId < battlersMax; battlerId++) {
             opponentData = BattleSystem_GetOpponentData(battleSystem, battlerId);
             if (!(opponentData->battlerType & BATTLER_TYPE_IS_ENEMY)) {
-                BattleController_EmitThrowPokeball(battleSystem, battlerId, unkC);
+                BattleController_EmitTrainerThrowBall(battleSystem, battlerId, unkC);
                 if ((BattleSystem_GetBattleType(battleSystem) & BATTLE_TYPE_MULTI) == 0 && (BattleSystem_GetBattleType(battleSystem) & BATTLE_TYPE_DOUBLES)) {
                     break;
                 }
@@ -422,7 +422,7 @@ BOOL BtlCmd_ThrowPokeball(BattleSystem *battleSystem, BattleContext *ctx) {
         for (battlerId = 0; battlerId < battlersMax; battlerId++) {
             opponentData = BattleSystem_GetOpponentData(battleSystem, battlerId);
             if (opponentData->battlerType & BATTLER_TYPE_IS_ENEMY) {
-                BattleController_EmitThrowPokeball(battleSystem, battlerId, unkC);
+                BattleController_EmitTrainerThrowBall(battleSystem, battlerId, unkC);
                 if ((BattleSystem_GetBattleType(battleSystem) & BATTLE_TYPE_MULTI) == 0 && (BattleSystem_GetBattleType(battleSystem) & BATTLE_TYPE_TAG) == 0 && (BattleSystem_GetBattleType(battleSystem) & BATTLE_TYPE_DOUBLES)) {
                     break;
                 }
@@ -607,7 +607,7 @@ BOOL BtlCmd_BackgroundSlideIn(BattleSystem *battleSystem, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     for (battlerId = 0; battlerId < battlersMax; battlerId++) {
-        BattleController_EmitBackgroundSlideIn(battleSystem, battlerId);
+        BattleController_EmitSlideInBackground(battleSystem, battlerId);
     }
 
     return FALSE;
@@ -624,14 +624,14 @@ BOOL BtlCmd_HealthbarSlideIn(BattleSystem *battleSystem, BattleContext *ctx) {
     switch (side) {
     case BATTLER_CATEGORY_ALL:
         for (battlerId = 0; battlerId < battlersMax; battlerId++) {
-            BattleController_EmitHealthbarSlideIn(battleSystem, ctx, battlerId, 0);
+            BattleController_EmitSlideHealthBoxIn(battleSystem, ctx, battlerId, 0);
         }
         break;
     case BATTLER_CATEGORY_PLAYER:
         for (battlerId = 0; battlerId < battlersMax; battlerId++) {
             opponentData = BattleSystem_GetOpponentData(battleSystem, battlerId);
             if ((opponentData->battlerType & BATTLER_TYPE_IS_ENEMY) == 0) {
-                BattleController_EmitHealthbarSlideIn(battleSystem, ctx, battlerId, 0);
+                BattleController_EmitSlideHealthBoxIn(battleSystem, ctx, battlerId, 0);
             }
         }
         break;
@@ -639,12 +639,12 @@ BOOL BtlCmd_HealthbarSlideIn(BattleSystem *battleSystem, BattleContext *ctx) {
         for (battlerId = 0; battlerId < battlersMax; battlerId++) {
             opponentData = BattleSystem_GetOpponentData(battleSystem, battlerId);
             if (opponentData->battlerType & BATTLER_TYPE_IS_ENEMY) {
-                BattleController_EmitHealthbarSlideIn(battleSystem, ctx, battlerId, 0);
+                BattleController_EmitSlideHealthBoxIn(battleSystem, ctx, battlerId, 0);
             }
         }
         break;
     default:
-        BattleController_EmitHealthbarSlideIn(battleSystem, ctx, BattleSystem_GetBattlerIDBySide(battleSystem, ctx, side), 0);
+        BattleController_EmitSlideHealthBoxIn(battleSystem, ctx, BattleSystem_GetBattlerIDBySide(battleSystem, ctx, side), 0);
         break;
     }
 
@@ -665,14 +665,14 @@ BOOL BtlCmd_HealthbarSlideInDelay(BattleSystem *battleSystem, BattleContext *ctx
     switch (side) {
     case BATTLER_CATEGORY_ALL:
         for (battlerId = 0; battlerId < battlersMax; battlerId++) {
-            BattleController_EmitHealthbarSlideIn(battleSystem, ctx, battlerId, 0);
+            BattleController_EmitSlideHealthBoxIn(battleSystem, ctx, battlerId, 0);
         }
         break;
     case BATTLER_CATEGORY_PLAYER:
         for (battlerId = 0; battlerId < battlersMax; battlerId++) {
             opponentData = BattleSystem_GetOpponentData(battleSystem, battlerId);
             if ((opponentData->battlerType & BATTLER_TYPE_IS_ENEMY) == 0) {
-                BattleController_EmitHealthbarSlideIn(battleSystem, ctx, battlerId, delay);
+                BattleController_EmitSlideHealthBoxIn(battleSystem, ctx, battlerId, delay);
                 delay += 4;
             }
         }
@@ -681,13 +681,13 @@ BOOL BtlCmd_HealthbarSlideInDelay(BattleSystem *battleSystem, BattleContext *ctx
         for (battlerId = 0; battlerId < battlersMax; battlerId++) {
             opponentData = BattleSystem_GetOpponentData(battleSystem, battlerId);
             if (opponentData->battlerType & BATTLER_TYPE_IS_ENEMY) {
-                BattleController_EmitHealthbarSlideIn(battleSystem, ctx, battlerId, delay);
+                BattleController_EmitSlideHealthBoxIn(battleSystem, ctx, battlerId, delay);
                 delay += 4;
             }
         }
         break;
     default:
-        BattleController_EmitHealthbarSlideIn(battleSystem, ctx, BattleSystem_GetBattlerIDBySide(battleSystem, ctx, side), 0);
+        BattleController_EmitSlideHealthBoxIn(battleSystem, ctx, BattleSystem_GetBattlerIDBySide(battleSystem, ctx, side), 0);
         break;
     }
 
@@ -705,14 +705,14 @@ BOOL BtlCmd_HealthbarSlideOut(BattleSystem *battleSystem, BattleContext *ctx) {
     switch (side) {
     case BATTLER_CATEGORY_ALL:
         for (battlerId = 0; battlerId < battlersMax; battlerId++) {
-            BattleController_EmitHealthbarSlideOut(battleSystem, battlerId);
+            BattleController_EmitSlideHealthBoxOut(battleSystem, battlerId);
         }
         break;
     case BATTLER_CATEGORY_PLAYER:
         for (battlerId = 0; battlerId < battlersMax; battlerId++) {
             opponentData = BattleSystem_GetOpponentData(battleSystem, battlerId);
             if ((opponentData->battlerType & BATTLER_TYPE_IS_ENEMY) == 0 && (ctx->switchInFlag & MaskOfFlagNo(battlerId)) == 0) {
-                BattleController_EmitHealthbarSlideOut(battleSystem, battlerId);
+                BattleController_EmitSlideHealthBoxOut(battleSystem, battlerId);
             }
         }
         break;
@@ -720,12 +720,12 @@ BOOL BtlCmd_HealthbarSlideOut(BattleSystem *battleSystem, BattleContext *ctx) {
         for (battlerId = 0; battlerId < battlersMax; battlerId++) {
             opponentData = BattleSystem_GetOpponentData(battleSystem, battlerId);
             if (opponentData->battlerType & BATTLER_TYPE_IS_ENEMY) {
-                BattleController_EmitHealthbarSlideOut(battleSystem, battlerId);
+                BattleController_EmitSlideHealthBoxOut(battleSystem, battlerId);
             }
         }
         break;
     default:
-        BattleController_EmitHealthbarSlideOut(battleSystem, BattleSystem_GetBattlerIDBySide(battleSystem, ctx, side));
+        BattleController_EmitSlideHealthBoxOut(battleSystem, BattleSystem_GetBattlerIDBySide(battleSystem, ctx, side));
         break;
     }
 
@@ -890,7 +890,7 @@ BOOL BtlCmd_PlayMoveAnimation(BattleSystem *battleSystem, BattleContext *ctx) {
 
     if ((!(ctx->battleStatus & BATTLE_STATUS_MOVE_ANIMATIONS_OFF) && BattleSystem_AreBattleAnimationsOn(battleSystem) == TRUE) || move == MOVE_TRANSFORM) {
         ctx->battleStatus |= BATTLE_STATUS_MOVE_ANIMATIONS_OFF;
-        BattleController_SetMoveAnimation(battleSystem, ctx, move);
+        BattleController_EmitPlayMoveAnimation(battleSystem, ctx, move);
     }
 
     if (!BattleSystem_AreBattleAnimationsOn(battleSystem)) {
@@ -919,7 +919,7 @@ BOOL BtlCmd_PlayMoveAnimationOnMons(BattleSystem *battleSystem, BattleContext *c
 
     if ((!(ctx->battleStatus & BATTLE_STATUS_MOVE_ANIMATIONS_OFF) && BattleSystem_AreBattleAnimationsOn(battleSystem) == TRUE) || move == MOVE_TRANSFORM) {
         ctx->battleStatus |= BATTLE_STATUS_MOVE_ANIMATIONS_OFF;
-        ov12_0226343C(battleSystem, ctx, move, attacker, defender);
+        BattleController_SetMoveAnimationAttackerToDefender(battleSystem, ctx, move, attacker, defender);
     }
 
     if (!BattleSystem_AreBattleAnimationsOn(battleSystem)) {
@@ -934,7 +934,7 @@ BOOL BtlCmd_FlickerMon(BattleSystem *battleSystem, BattleContext *ctx) {
 
     u32 side = BattleScriptReadWord(ctx);
 
-    BattleController_EmitMonFlicker(battleSystem, BattleSystem_GetBattlerIDBySide(battleSystem, ctx, side), ctx->moveStatusFlag);
+    BattleController_EmitFlickerBattlerSprite(battleSystem, BattleSystem_GetBattlerIDBySide(battleSystem, ctx, side), ctx->moveStatusFlag);
 
     return FALSE;
 }
@@ -970,7 +970,7 @@ BOOL BtlCmd_UpdateHealthbarValue(BattleSystem *battleSystem, BattleContext *ctx)
 BOOL BtlCmd_UpdateHealthbar(BattleSystem *battleSystem, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
-    BattleController_EmitHealthbarUpdate(battleSystem, ctx, BattleSystem_GetBattlerIDBySide(battleSystem, ctx, BattleScriptReadWord(ctx)));
+    BattleController_EmitUpdateHPGauge(battleSystem, ctx, BattleSystem_GetBattlerIDBySide(battleSystem, ctx, BattleScriptReadWord(ctx)));
 
     return FALSE;
 }
@@ -993,7 +993,7 @@ BOOL BtlCmd_TryFaintMon(BattleSystem *battleSystem, BattleContext *ctx) {
 BOOL BtlCmd_PlayFaintAnimation(BattleSystem *battleSystem, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
-    BattleController_EmitPlayFaintAnimation(battleSystem, ctx, ctx->battlerIdFainted);
+    BattleController_EmitPlayFaintingSequence(battleSystem, ctx, ctx->battlerIdFainted);
 
     ctx->battleStatus &= (MaskOfFlagNo(ctx->battlerIdFainted) << BATTLE_STATUS_FAINTED_SHIFT) ^ -1;
     ctx->battleStatus2 |= MaskOfFlagNo(ctx->battlerIdFainted) << BATTLE_STATUS2_EXP_GAIN_SHIFT;
@@ -1041,7 +1041,7 @@ BOOL BtlCmd_PlaySound(BattleSystem *battleSystem, BattleContext *ctx) {
     u32 side = BattleScriptReadWord(ctx);
     u32 sound = BattleScriptReadWord(ctx);
 
-    BattleController_EmitPlaySE(battleSystem, ctx, sound, BattleSystem_GetBattlerIDBySide(battleSystem, ctx, side));
+    BattleController_EmitPlaySound(battleSystem, ctx, sound, BattleSystem_GetBattlerIDBySide(battleSystem, ctx, side));
 
     return FALSE;
 }
@@ -1110,7 +1110,7 @@ BOOL BtlCmd_CompareMonDataToValue(BattleSystem *battleSystem, BattleContext *ctx
     int cmp = BattleScriptReadWord(ctx);
     u32 adrs = BattleScriptReadWord(ctx);
 
-    int var = GetBattlerVar(ctx, BattleSystem_GetBattlerIDBySide(battleSystem, ctx, side), varId, NULL);
+    int var = BattleMon_Get(ctx, BattleSystem_GetBattlerIDBySide(battleSystem, ctx, side), varId, NULL);
 
     switch (opcode) {
     case 0:
@@ -1160,7 +1160,7 @@ BOOL BtlCmd_CompareMonDataToValue(BattleSystem *battleSystem, BattleContext *ctx
 BOOL BtlCmd_FadeOutBattle(BattleSystem *battleSystem, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
-    BattleController_EmitFadeOutBattle(battleSystem, ctx);
+    BattleController_EmitFadeOut(battleSystem, ctx);
 
     return FALSE;
 }
@@ -1327,7 +1327,7 @@ BOOL BtlCmd_ShowParty(BattleSystem *battleSystem, BattleContext *ctx) {
     for (battlerId = 0; battlerId < maxBattlers; battlerId++) {
         if (ctx->unk_13C[battlerId] & 1) {
             unkB |= MaskOfFlagNo(battlerId);
-            BattleController_EmitShowMonList(battleSystem, ctx, battlerId, 1, 0, 6);
+            BattleController_EmitShowPartyMenu(battleSystem, ctx, battlerId, 1, 0, 6);
         }
     }
 
@@ -1336,11 +1336,11 @@ BOOL BtlCmd_ShowParty(BattleSystem *battleSystem, BattleContext *ctx) {
             unkA = BattleSystem_GetBattlerIdPartner(battleSystem, battlerId);
             if (!(unkB & MaskOfFlagNo(battlerId)) && !(unkB & MaskOfFlagNo(unkA))) {
                 unkB |= MaskOfFlagNo(battlerId);
-                BattleController_EmitShowWaitMessage(battleSystem, battlerId);
+                BattleController_EmitPrintLinkWaitMessage(battleSystem, battlerId);
             }
         } else {
             if (!(unkB & MaskOfFlagNo(battlerId))) {
-                BattleController_EmitShowWaitMessage(battleSystem, battlerId);
+                BattleController_EmitPrintLinkWaitMessage(battleSystem, battlerId);
             }
         }
     }
@@ -1373,7 +1373,7 @@ BOOL BtlCmd_WaitMonSelection(BattleSystem *battleSystem, BattleContext *ctx) {
             switchCnt--;
             if (!(ctx->battleStatus2 & (MaskOfFlagNo(battlerId) << BATTLE_STATUS_FAINTED_SHIFT))) {
                 ctx->battleStatus2 |= (MaskOfFlagNo(battlerId) << BATTLE_STATUS_FAINTED_SHIFT);
-                BattleController_EmitShowWaitMessage(battleSystem, battlerId);
+                BattleController_EmitPrintLinkWaitMessage(battleSystem, battlerId);
             }
         }
     }
@@ -1758,7 +1758,7 @@ BOOL BtlCmd_UpdateMonData(BattleSystem *battleSystem, BattleContext *ctx) {
     int varId = BattleScriptReadWord(ctx);
     int val = BattleScriptReadWord(ctx);
     int battlerId = BattleSystem_GetBattlerIDBySide(battleSystem, ctx, side);
-    int var = GetBattlerVar(ctx, battlerId, varId, NULL);
+    int var = BattleMon_Get(ctx, battlerId, varId, NULL);
 
     switch (opcode) {
     case 7:
@@ -1843,7 +1843,7 @@ BOOL BtlCmd_ToggleVanish(BattleSystem *battleSystem, BattleContext *ctx) {
     int unkA = BattleScriptReadWord(ctx);
     int battlerId = BattleSystem_GetBattlerIDBySide(battleSystem, ctx, side);
 
-    BattleController_EmitToggleVanish(battleSystem, battlerId, unkA);
+    BattleController_EmitToggleVanishMessage(battleSystem, battlerId, unkA);
 
     return FALSE;
 }
@@ -1978,7 +1978,7 @@ BOOL BtlCmd_UpdateMonDataFromVar(BattleSystem *battleSystem, BattleContext *ctx)
 
     int battlerId = BattleSystem_GetBattlerIDBySide(battleSystem, ctx, side);
 
-    int var = GetBattlerVar(ctx, battlerId, varId, NULL);
+    int var = BattleMon_Get(ctx, battlerId, varId, NULL);
     int *val = BattleScriptGetVarPointer(battleSystem, ctx, valId);
 
     switch (opcode) {
@@ -2138,7 +2138,7 @@ BOOL BtlCmd_SetHealthbarStatus(BattleSystem *battleSystem, BattleContext *ctx) {
     int side = BattleScriptReadWord(ctx);
     int status = BattleScriptReadWord(ctx);
 
-    BattleController_EmitHealthbarStatus(battleSystem, BattleSystem_GetBattlerIDBySide(battleSystem, ctx, side), status);
+    BattleController_EmitSetStatusIcon(battleSystem, BattleSystem_GetBattlerIDBySide(battleSystem, ctx, side), status);
 
     return FALSE;
 }
@@ -2264,7 +2264,7 @@ BOOL BtlCmd_PlayBattleAnimation(BattleSystem *battleSystem, BattleContext *ctx) 
     if (BattleSystem_AreBattleAnimationsOn(battleSystem) == TRUE || status == 15 || status == 16 || status == 25 || status == 26) {
         int battlerId = BattleSystem_GetBattlerIDBySide(battleSystem, ctx, side);
         if (CheckStatusEffectsSubstitute(ctx, battlerId, status) == TRUE) {
-            BattleController_EmitSetStatus2Effect(battleSystem, ctx, battlerId, status);
+            BattleController_EmitPlayStatusEffect(battleSystem, ctx, battlerId, status);
         }
     }
 
@@ -2282,7 +2282,7 @@ BOOL BtlCmd_PlayBattleAnimationOnMons(BattleSystem *battleSystem, BattleContext 
         int battlerIdA = BattleSystem_GetBattlerIDBySide(battleSystem, ctx, sideA);
         int battlerIdB = BattleSystem_GetBattlerIDBySide(battleSystem, ctx, sideB);
         if (CheckStatusEffectsSubstitute(ctx, battlerIdA, status) == TRUE && CheckStatusEffectsSubstitute(ctx, battlerIdB, status) == TRUE) {
-            BattleController_EmitCopyStatus2Effect(battleSystem, ctx, battlerIdA, battlerIdB, status);
+            BattleController_EmitPlayStatusEffectAttackerToDefender(battleSystem, ctx, battlerIdA, battlerIdB, status);
         }
     }
 
@@ -2300,7 +2300,7 @@ BOOL BtlCmd_PlayBattleAnimationFromVar(BattleSystem *battleSystem, BattleContext
 
     if (BattleSystem_AreBattleAnimationsOn(battleSystem) == TRUE || status == 15 || status == 16 || *data == 25 || *data == 26) {
         if (CheckStatusEffectsSubstitute(ctx, battlerId, *data) == TRUE) {
-            BattleController_EmitSetStatus2Effect(battleSystem, ctx, battlerId, *data);
+            BattleController_EmitPlayStatusEffect(battleSystem, ctx, battlerId, *data);
         }
     }
 
@@ -2338,7 +2338,7 @@ BOOL BtlCmd_PrintEncounterMessage(BattleSystem *battleSystem, BattleContext *ctx
 BOOL BtlCmd_PrintFirstSendOutMessage(BattleSystem *battleSystem, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
-    BattleController_EmitPrintFirstSendOutMessage(battleSystem, ctx, BattleSystem_GetBattlerIDBySide(battleSystem, ctx, BattleScriptReadWord(ctx)));
+    BattleController_EmitPrintLeadMonMessage(battleSystem, ctx, BattleSystem_GetBattlerIDBySide(battleSystem, ctx, BattleScriptReadWord(ctx)));
 
     return FALSE;
 }
@@ -2373,13 +2373,13 @@ BOOL BtlCmd_TryConversion(BattleSystem *battleSystem, BattleContext *ctx) {
         if (ctx->battleMons[ctx->battlerIdAttacker].moves[i] != MOVE_CONVERSION) {
             moveType = ctx->trainerAIData.moveData[ctx->battleMons[ctx->battlerIdAttacker].moves[i]].type;
             if (moveType == TYPE_MYSTERY) {
-                if (GetBattlerVar(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_1, NULL) == TYPE_GHOST || GetBattlerVar(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_2, NULL) == TYPE_GHOST) {
+                if (BattleMon_Get(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_1, NULL) == TYPE_GHOST || BattleMon_Get(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_2, NULL) == TYPE_GHOST) {
                     moveType = TYPE_GHOST;
                 } else {
                     moveType = TYPE_NORMAL;
                 }
             }
-            if (GetBattlerVar(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_1, NULL) != moveType && GetBattlerVar(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_2, NULL) != moveType) {
+            if (BattleMon_Get(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_1, NULL) != moveType && BattleMon_Get(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_2, NULL) != moveType) {
                 break;
             }
         }
@@ -2394,13 +2394,13 @@ BOOL BtlCmd_TryConversion(BattleSystem *battleSystem, BattleContext *ctx) {
             } while (ctx->battleMons[ctx->battlerIdAttacker].moves[i] == MOVE_CONVERSION);
             moveType = ctx->trainerAIData.moveData[ctx->battleMons[ctx->battlerIdAttacker].moves[i]].type;
             if (moveType == TYPE_MYSTERY) {
-                if (GetBattlerVar(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_1, NULL) == TYPE_GHOST || GetBattlerVar(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_2, NULL) == TYPE_GHOST) {
+                if (BattleMon_Get(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_1, NULL) == TYPE_GHOST || BattleMon_Get(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_2, NULL) == TYPE_GHOST) {
                     moveType = TYPE_GHOST;
                 } else {
                     moveType = TYPE_NORMAL;
                 }
             }
-        } while (GetBattlerVar(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_1, NULL) == moveType || GetBattlerVar(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_2, NULL) == moveType);
+        } while (BattleMon_Get(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_1, NULL) == moveType || BattleMon_Get(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_2, NULL) == moveType);
         ctx->battleMons[ctx->battlerIdAttacker].type1 = moveType;
         ctx->battleMons[ctx->battlerIdAttacker].type2 = moveType;
         ctx->msgTemp = moveType;
@@ -2474,7 +2474,7 @@ BOOL BtlCmd_CompareMonDataToVar(BattleSystem *battleSystem, BattleContext *ctx) 
     int cmpNo = BattleScriptReadWord(ctx);
     int adrs = BattleScriptReadWord(ctx);
 
-    u32 var = GetBattlerVar(ctx, BattleSystem_GetBattlerIDBySide(battleSystem, ctx, side), varNo, NULL);
+    u32 var = BattleMon_Get(ctx, BattleSystem_GetBattlerIDBySide(battleSystem, ctx, side), varNo, NULL);
     u32 *cmp = BattleScriptGetVarPointer(battleSystem, ctx, cmpNo);
 
     switch (opcode) {
@@ -2897,7 +2897,7 @@ BOOL BtlCmd_TryConversion2(BattleSystem *battleSystem, BattleContext *ctx) {
 
             for (i = 0; i < 1000; i++) {
                 GetTypeEffectivnessData(battleSystem, 0xffff, &typeMove, &typeMon, &val);
-                if (typeMove == moveType && val <= 5 && GetBattlerVar(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_1, NULL) != typeMon && GetBattlerVar(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_2, NULL) != typeMon) {
+                if (typeMove == moveType && val <= 5 && BattleMon_Get(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_1, NULL) != typeMon && BattleMon_Get(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_2, NULL) != typeMon) {
                     ctx->battleMons[ctx->battlerIdAttacker].type1 = typeMon;
                     ctx->battleMons[ctx->battlerIdAttacker].type2 = typeMon;
                     ctx->msgTemp = typeMon;
@@ -2907,7 +2907,7 @@ BOOL BtlCmd_TryConversion2(BattleSystem *battleSystem, BattleContext *ctx) {
 
             i = 0;
             while (GetTypeEffectivnessData(battleSystem, i, &typeMove, &typeMon, &val) == TRUE) {
-                if (typeMove == moveType && val <= 5 && GetBattlerVar(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_1, NULL) != typeMon && GetBattlerVar(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_2, NULL) != typeMon) {
+                if (typeMove == moveType && val <= 5 && BattleMon_Get(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_1, NULL) != typeMon && BattleMon_Get(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_2, NULL) != typeMon) {
                     ctx->battleMons[ctx->battlerIdAttacker].type1 = typeMon;
                     ctx->battleMons[ctx->battlerIdAttacker].type2 = typeMon;
                     ctx->msgTemp = typeMon;
@@ -2945,7 +2945,7 @@ BOOL BtlCmd_TrySketch(BattleSystem *battleSystem, BattleContext *ctx) {
         if (moveIndex == MAX_MON_MOVES) {
             ctx->battleMons[ctx->battlerIdAttacker].moves[sketchIndex] = ctx->moveNoSketch[ctx->battlerIdTarget];
             ctx->battleMons[ctx->battlerIdAttacker].movePPCur[sketchIndex] = ctx->trainerAIData.moveData[ctx->moveNoSketch[ctx->battlerIdTarget]].pp;
-            BattleController_EmitBattleMonToPartyMonCopy(battleSystem, ctx, ctx->battlerIdAttacker);
+            BattleController_EmitUpdatePartyMon(battleSystem, ctx, ctx->battlerIdAttacker);
             ctx->moveTemp = ctx->moveNoSketch[ctx->battlerIdTarget];
             if (ctx->moveTemp == MOVE_LAST_RESORT) {
                 ctx->battleMons[ctx->battlerIdAttacker].unk88.lastResortCount = 0;
@@ -3080,7 +3080,7 @@ BOOL BtlCmd_TryPartyStatusRefresh(BattleSystem *battleSystem, BattleContext *ctx
         }
     }
 
-    BattleControl_EmitPartyStatusHeal(battleSystem, ctx, ctx->battlerIdAttacker, ctx->moveNoCur);
+    BattleController_EmitRefreshPartyStatus(battleSystem, ctx, ctx->battlerIdAttacker, ctx->moveNoCur);
 
     return FALSE;
 }
@@ -3393,8 +3393,8 @@ BOOL BtlCmd_EndOfTurnWeatherEffect(BattleSystem *battleSystem, BattleContext *ct
     ctx->tempData = 0;
     ctx->hpCalc = 0;
 
-    u32 type1 = GetBattlerVar(ctx, battlerId, BMON_DATA_TYPE_1, NULL);
-    u32 type2 = GetBattlerVar(ctx, battlerId, BMON_DATA_TYPE_2, NULL);
+    u32 type1 = BattleMon_Get(ctx, battlerId, BMON_DATA_TYPE_1, NULL);
+    u32 type2 = BattleMon_Get(ctx, battlerId, BMON_DATA_TYPE_2, NULL);
 
     if (CheckAbilityActive(battleSystem, ctx, CHECK_ABILITY_ALL_HP, 0, ABILITY_CLOUD_NINE) == 0 && CheckAbilityActive(battleSystem, ctx, CHECK_ABILITY_ALL_HP, 0, ABILITY_AIR_LOCK) == 0) {
         if (ctx->fieldCondition & FIELD_CONDITION_SANDSTORM_ALL) {
@@ -4666,7 +4666,7 @@ BOOL BtlCmd_CheckToxicSpikes(BattleSystem *battleSystem, BattleContext *ctx) {
         ctx->calcTemp = ctx->fieldSideConditionData[fieldSide].toxicSpikesLayers;
         ctx->statChangeType = 6;
         ctx->battlerIdStatChange = battlerId;
-        if (GetBattlerVar(ctx, ctx->battlerIdSwitch, BMON_DATA_TYPE_1, NULL) == TYPE_POISON || GetBattlerVar(ctx, ctx->battlerIdSwitch, BMON_DATA_TYPE_2, NULL) == TYPE_POISON) {
+        if (BattleMon_Get(ctx, ctx->battlerIdSwitch, BMON_DATA_TYPE_1, NULL) == TYPE_POISON || BattleMon_Get(ctx, ctx->battlerIdSwitch, BMON_DATA_TYPE_2, NULL) == TYPE_POISON) {
             ctx->fieldSideConditionFlags[fieldSide] &= ~(1 << 10);
             ctx->fieldSideConditionData[fieldSide].toxicSpikesLayers = 0;
             ctx->calcTemp = 0;
@@ -4887,7 +4887,7 @@ BOOL BtlCmd_TryCamouflage(BattleSystem *battleSystem, BattleContext *ctx) {
     }
     int type = sCamouflageTypeTable[terrain];
 
-    if (GetBattlerVar(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_1, NULL) != type && GetBattlerVar(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_2, NULL) != type) {
+    if (BattleMon_Get(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_1, NULL) != type && BattleMon_Get(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_2, NULL) != type) {
         ctx->battleMons[ctx->battlerIdAttacker].type1 = type;
         ctx->battleMons[ctx->battlerIdAttacker].type2 = type;
         ctx->msgTemp = type;
@@ -4972,7 +4972,7 @@ BOOL BtlCmd_TryFling(BattleSystem *battleSystem, BattleContext *ctx) {
 BOOL BtlCmd_YesNoMenu(BattleSystem *battleSystem, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
-    BattleController_EmitDrawYesNoBox(battleSystem, ctx, 0, 0, BattleScriptReadWord(ctx), 0, 0);
+    BattleController_EmitShowYesNoMenu(battleSystem, ctx, 0, 0, BattleScriptReadWord(ctx), 0, 0);
 
     return FALSE;
 }
@@ -5003,7 +5003,7 @@ BOOL BtlCmd_WaitYesNoResult(BattleSystem *battleSystem, BattleContext *ctx) {
 BOOL BtlCmd_ChoosePokemonMenu(BattleSystem *battleSystem, BattleContext *ctx) {
     BattleSystem_GetMaxBattlers(battleSystem);
     BattleScriptIncrementPointer(ctx, 1);
-    BattleController_EmitShowMonList(battleSystem, ctx, 0, 0, 0, 6);
+    BattleController_EmitShowPartyMenu(battleSystem, ctx, 0, 0, 0, 6);
     ctx->battlerIdSwitch = 0;
 
     return FALSE;
@@ -5046,8 +5046,8 @@ BOOL BtlCmd_CheckStealthRock(BattleSystem *battleSystem, BattleContext *ctx) {
 
     int battlerId = BattleSystem_GetBattlerIDBySide(battleSystem, ctx, side);
     int fieldSide = BattleSystem_GetFieldSide(battleSystem, battlerId);
-    int type1 = GetBattlerVar(ctx, battlerId, BMON_DATA_TYPE_1, NULL);
-    int type2 = GetBattlerVar(ctx, battlerId, BMON_DATA_TYPE_2, NULL);
+    int type1 = BattleMon_Get(ctx, battlerId, BMON_DATA_TYPE_1, NULL);
+    int type2 = BattleMon_Get(ctx, battlerId, BMON_DATA_TYPE_2, NULL);
 
     if (ctx->fieldSideConditionFlags[fieldSide] & 128 && ctx->battleMons[battlerId].hp) {
         switch (CalculateTypeEffectiveness(TYPE_ROCK, type1, type2)) {
@@ -5177,7 +5177,7 @@ BOOL BtlCmd_ChangeForm(BattleSystem *battleSystem, BattleContext *ctx) {
 
 BOOL BtlCmd_SetBattleBackground(BattleSystem *battleSystem, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
-    BattleController_EmitSetBattleBackground(battleSystem, 0);
+    BattleController_EmitUpdateBackground(battleSystem, 0);
     return FALSE;
 }
 
@@ -5212,7 +5212,7 @@ BOOL BtlCmd_ShowBattleStartPartyGauge(BattleSystem *battleSystem, BattleContext 
     int side = BattleScriptReadWord(ctx);
     int battlerId = BattleSystem_GetBattlerIDBySide(battleSystem, ctx, side);
 
-    BattleController_EmitInitStartBallGauge(battleSystem, battlerId);
+    BattleController_EmitShowInitialPartyGauge(battleSystem, battlerId);
 
     return FALSE;
 }
@@ -5223,7 +5223,7 @@ BOOL BtlCmd_HideBattleStartPartyGauge(BattleSystem *battleSystem, BattleContext 
     int side = BattleScriptReadWord(ctx);
     int battlerId = BattleSystem_GetBattlerIDBySide(battleSystem, ctx, side);
 
-    BattleController_EmitDeleteStartBallGauge(battleSystem, battlerId);
+    BattleController_EmitHideInitialPartyGauge(battleSystem, battlerId);
 
     return FALSE;
 }
@@ -5234,7 +5234,7 @@ BOOL BtlCmd_ShowPartyGauge(BattleSystem *battleSystem, BattleContext *ctx) {
     int side = BattleScriptReadWord(ctx);
     int battlerId = BattleSystem_GetBattlerIDBySide(battleSystem, ctx, side);
 
-    BattleController_EmitInitBallGauge(battleSystem, battlerId);
+    BattleController_EmitShowPartyGauge(battleSystem, battlerId);
 
     return FALSE;
 }
@@ -5245,7 +5245,7 @@ BOOL BtlCmd_HidePartyGauge(BattleSystem *battleSystem, BattleContext *ctx) {
     int side = BattleScriptReadWord(ctx);
     int battlerId = BattleSystem_GetBattlerIDBySide(battleSystem, ctx, side);
 
-    BattleController_EmitDeleteBallGauge(battleSystem, battlerId);
+    BattleController_EmitHidePartyGauge(battleSystem, battlerId);
 
     return FALSE;
 }
@@ -5253,7 +5253,7 @@ BOOL BtlCmd_HidePartyGauge(BattleSystem *battleSystem, BattleContext *ctx) {
 BOOL BtlCmd_LoadPartyGaugeGraphics(BattleSystem *battleSystem, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
-    BattleController_EmitLoadBallGfx(battleSystem);
+    BattleController_EmitLoadPartyGaugeGraphics(battleSystem);
 
     return FALSE;
 }
@@ -5261,7 +5261,7 @@ BOOL BtlCmd_LoadPartyGaugeGraphics(BattleSystem *battleSystem, BattleContext *ct
 BOOL BtlCmd_FreePartyGaugeGraphics(BattleSystem *battleSystem, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
-    BattleController_EmitDeleteBallGfx(battleSystem);
+    BattleController_EmitFreePartyGaugeGraphics(battleSystem);
 
     return FALSE;
 }
@@ -5285,7 +5285,7 @@ BOOL BtlCmd_RestoreSprite(BattleSystem *battleSystem, BattleContext *ctx) {
 
     int side = BattleScriptReadWord(ctx);
     int battlerId = BattleSystem_GetBattlerIDBySide(battleSystem, ctx, side);
-    ov12_02263F8C(battleSystem, ctx, battlerId);
+    BattleController_EmitRestoreSprite(battleSystem, ctx, battlerId);
 
     return FALSE;
 }
@@ -5315,7 +5315,7 @@ BOOL BtlCmd_SpriteToOAM(BattleSystem *battleSystem, BattleContext *ctx) {
         for (battlerId = 0; battlerId < maxBattlers; battlerId++) {
             opponentData = BattleSystem_GetOpponentData(battleSystem, battlerId);
             if (!(opponentData->battlerType & BATTLER_TYPE_IS_ENEMY)) {
-                ov12_02264038(battleSystem, battlerId);
+                BattleController_EmitSpriteToOAM(battleSystem, battlerId);
             }
         }
         break;
@@ -5323,13 +5323,13 @@ BOOL BtlCmd_SpriteToOAM(BattleSystem *battleSystem, BattleContext *ctx) {
         for (battlerId = 0; battlerId < maxBattlers; battlerId++) {
             opponentData = BattleSystem_GetOpponentData(battleSystem, battlerId);
             if (opponentData->battlerType & BATTLER_TYPE_IS_ENEMY) {
-                ov12_02264038(battleSystem, battlerId);
+                BattleController_EmitSpriteToOAM(battleSystem, battlerId);
             }
         }
         break;
     default:
         battlerId = BattleSystem_GetBattlerIDBySide(battleSystem, ctx, side);
-        ov12_02264038(battleSystem, battlerId);
+        BattleController_EmitSpriteToOAM(battleSystem, battlerId);
         break;
     }
 
@@ -5350,7 +5350,7 @@ BOOL BtlCmd_OAMToSprite(BattleSystem *battleSystem, BattleContext *ctx) {
         for (battlerId = 0; battlerId < maxBattlers; battlerId++) {
             opponentData = BattleSystem_GetOpponentData(battleSystem, battlerId);
             if (!(opponentData->battlerType & BATTLER_TYPE_IS_ENEMY)) {
-                ov12_02264054(battleSystem, battlerId);
+                BattleController_EmitOAMToSprite(battleSystem, battlerId);
             }
         }
         break;
@@ -5358,13 +5358,13 @@ BOOL BtlCmd_OAMToSprite(BattleSystem *battleSystem, BattleContext *ctx) {
         for (battlerId = 0; battlerId < maxBattlers; battlerId++) {
             opponentData = BattleSystem_GetOpponentData(battleSystem, battlerId);
             if (opponentData->battlerType & BATTLER_TYPE_IS_ENEMY) {
-                ov12_02264054(battleSystem, battlerId);
+                BattleController_EmitOAMToSprite(battleSystem, battlerId);
             }
         }
         break;
     default:
         battlerId = BattleSystem_GetBattlerIDBySide(battleSystem, ctx, side);
-        ov12_02264054(battleSystem, battlerId);
+        BattleController_EmitOAMToSprite(battleSystem, battlerId);
         break;
     }
 
@@ -5513,7 +5513,7 @@ BOOL BtlCmd_PrintBattleResultMessage(BattleSystem *battleSystem, BattleContext *
 BOOL BtlCmd_PrintEscapeMessage(BattleSystem *battleSystem, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
-    BattleController_EmitRunAwayMessage(battleSystem, ctx);
+    BattleController_EmitPrintEscapeMessage(battleSystem, ctx);
 
     return FALSE;
 }
@@ -5521,7 +5521,7 @@ BOOL BtlCmd_PrintEscapeMessage(BattleSystem *battleSystem, BattleContext *ctx) {
 BOOL BtlCmd_PrintForfeitMessage(BattleSystem *battleSystem, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
-    BattleController_EmitForefitMessage(battleSystem);
+    BattleController_EmitPrintForefitMessage(battleSystem);
 
     return FALSE;
 }
@@ -5631,7 +5631,7 @@ BOOL BtlCmd_RefreshSprite(BattleSystem *battleSystem, BattleContext *ctx) {
     int side = BattleScriptReadWord(ctx);
     int battlerId = BattleSystem_GetBattlerIDBySide(battleSystem, ctx, side);
 
-    BattleController_EmitSwapToSubstituteSprite(battleSystem, ctx, battlerId);
+    BattleController_EmitRefreshSprite(battleSystem, ctx, battlerId);
 
     return FALSE;
 }
@@ -5642,7 +5642,7 @@ BOOL BtlCmd_PlayMoveHitSound(BattleSystem *battleSystem, BattleContext *ctx) {
     int side = BattleScriptReadWord(ctx);
     int battlerId = BattleSystem_GetBattlerIDBySide(battleSystem, ctx, side);
 
-    BattleController_EmitPlayMoveSE(battleSystem, ctx, battlerId);
+    BattleController_EmitPlayMoveHitSoundEffect(battleSystem, ctx, battlerId);
 
     return FALSE;
 }
@@ -5654,7 +5654,7 @@ BOOL BtlCmd_PlayBGM(BattleSystem *battleSystem, BattleContext *ctx) {
     int song = BattleScriptReadWord(ctx);
     int battlerId = BattleSystem_GetBattlerIDBySide(battleSystem, ctx, side);
 
-    BattleController_EmitPlaySong(battleSystem, battlerId, song);
+    BattleController_EmitPlayMusic(battleSystem, battlerId, song);
 
     return FALSE;
 }
@@ -6118,7 +6118,7 @@ static void Task_GetExp(SysTask *task, void *inData) {
     case STATE_GET_EXP_GAUGE:
         // Only animate the gauge for an active battler.
         if (slot == data->ctx->selectedMonIndex[expBattler]) {
-            ov12_02263564(data->battleSystem, data->ctx, expBattler, data->tempData[DATA_GET_EXP_PREV_PROGRESS_TO_NEXT_LEVEL]);
+            BattleController_EmitUpdateExpGauge(data->battleSystem, data->ctx, expBattler, data->tempData[DATA_GET_EXP_PREV_PROGRESS_TO_NEXT_LEVEL]);
             data->tempData[DATA_GET_EXP_PREV_PROGRESS_TO_NEXT_LEVEL] = 0;
             data->state++;
         } else {
@@ -6136,8 +6136,8 @@ static void Task_GetExp(SysTask *task, void *inData) {
         if (Pokemon_TryLevelUp(mon)) {
             // Only play the special level-up animation for an active battler.
             if (data->ctx->selectedMonIndex[expBattler] == slot) {
-                BattleController_EmitSetStatus2Effect(data->battleSystem, data->ctx, expBattler, 8);
-                ov12_0226399C(data->battleSystem, expBattler);
+                BattleController_EmitPlayStatusEffect(data->battleSystem, data->ctx, expBattler, 8);
+                BattleController_EmitPlayLevelUpAnimation(data->battleSystem, expBattler);
             }
 
             data->state = STATE_GET_EXP_WAIT_LEVEL_UP_EFFECT;
@@ -6166,7 +6166,7 @@ static void Task_GetExp(SysTask *task, void *inData) {
             }
 
             data->ctx->levelUpMons |= MaskOfFlagNo(slot);
-            ov12_02263A1C(data->battleSystem, data->ctx, expBattler);
+            BattleController_EmitRefreshHPGauge(data->battleSystem, data->ctx, expBattler);
             // "{0} grew to Lv. {1}!"
             msg.id = msg_0197_00003;
             msg.tag = TAG_NICKNAME_NUM;
@@ -6348,7 +6348,7 @@ static void Task_GetExp(SysTask *task, void *inData) {
 
     case STATE_GET_EXP_MAKE_IT_FORGET_PROMPT:
         // "Make it forget another move?"
-        BattleController_EmitDrawYesNoBox(data->battleSystem, data->ctx, expBattler, msg_0197_01180, 1, 0, 0);
+        BattleController_EmitShowYesNoMenu(data->battleSystem, data->ctx, expBattler, msg_0197_01180, 1, 0, 0);
         data->state++;
         break;
 
@@ -6368,7 +6368,7 @@ static void Task_GetExp(SysTask *task, void *inData) {
 
     case STATE_GET_EXP_MAKE_IT_FORGET_WAIT:
         if (!TextPrinterCheckActive(data->tempData[DATA_GET_EXP_PRINTER_ID])) {
-            ov12_02263D14(data->battleSystem, expBattler, data->tempData[DATA_GET_EXP_MOVE_TO_LEARN], slot);
+            BattleController_EmitForgetMove(data->battleSystem, expBattler, data->tempData[DATA_GET_EXP_MOVE_TO_LEARN], slot);
             data->state++;
         }
         break;
@@ -6392,7 +6392,7 @@ static void Task_GetExp(SysTask *task, void *inData) {
 
     case STATE_GET_EXP_GIVE_UP_LEARNING_PROMPT:
         // "Should this Pokémon give up on learning this new move?"
-        BattleController_EmitDrawYesNoBox(data->battleSystem, data->ctx, expBattler, msg_0197_01185, 2, data->tempData[DATA_GET_EXP_MOVE_TO_LEARN], 0);
+        BattleController_EmitShowYesNoMenu(data->battleSystem, data->ctx, expBattler, msg_0197_01185, 2, data->tempData[DATA_GET_EXP_MOVE_TO_LEARN], 0);
         data->state++;
         break;
 
@@ -6712,7 +6712,7 @@ static void Task_GetPokemon(SysTask *task, void *inData) {
     case STATE_GET_POKEMON_CALCULATE_SHAKES:
         data->tempData[DATA_GET_POKEMON_FRAME_COUNTER]--;
         if (data->tempData[DATA_GET_POKEMON_FRAME_COUNTER] == 0) { // After 23 frames have passed...
-            ov12_022628A0(data->battleSystem, battlerId, data->ballID);
+            BattleController_EmitOpenCaptureBall(data->battleSystem, battlerId, data->ballID);
             data->tempData[DATA_GET_POKEMON_BALL_SHAKES_TOTAL] = BattleSystem_CalculateBallShakes(data->battleSystem, data->ctx);
 
             if (data->tempData[DATA_GET_POKEMON_BALL_SHAKES_TOTAL] < BALL_SHAKE_MAX) {
@@ -6917,7 +6917,7 @@ static void Task_GetPokemon(SysTask *task, void *inData) {
         }
         break;
     case STATE_GET_POKEMON_ASK_FOR_NICKNAME:
-        BattleController_EmitDrawYesNoBox(data->battleSystem, data->ctx, 0, 0x364, 5, 0, data->ctx->selectedMonIndex[battlerId] | battlerId); // Would you like to give {0} a nickname?
+        BattleController_EmitShowYesNoMenu(data->battleSystem, data->ctx, 0, 0x364, 5, 0, data->ctx->selectedMonIndex[battlerId] | battlerId); // Would you like to give {0} a nickname?
         data->state++;
         break;
     case STATE_GET_POKEMON_WAIT_FOR_YESNO:
@@ -7093,7 +7093,7 @@ static void Task_GetPokemon(SysTask *task, void *inData) {
     default:
         break;
     case STATE_GET_POKEMON_BREAK_OUT:
-        BattleController_EmitPokemonSendOut(data->battleSystem, battlerId, data->ballID, 1); // Breaking out hijacks the send out animation.
+        BattleController_EmitShowPokemon(data->battleSystem, battlerId, data->ballID, 1); // Breaking out hijacks the send out animation.
         data->state = STATE_GET_POKEMON_BREAK_OUT_CLEANUP;
         data->tempData[DATA_GET_POKEMON_FRAME_COUNTER] = 2;
         break;
@@ -7144,39 +7144,6 @@ extern u8 sStandardBallCatchRates[4];
 extern u8 sSafariCatchRateStages[13][2];
 extern u16 sMoonBallPokemon[14];
 
-#define CP_SQRT_32BIT_MODE (0UL << REG_CP_SQRTCNT_MODE_SHIFT)
-
-static inline void CP_SetSqrtImm32_NS_(u32 param) {
-    *((REGType32 *)REG_SQRT_PARAM_ADDR) = param;
-}
-
-static inline void CP_SetSqrtImm32(u32 param) {
-    *((REGType32 *)REG_SQRT_PARAM_ADDR) = param;
-}
-
-static inline void CP_SetSqrt32(u32 param) {
-    reg_CP_SQRTCNT = CP_SQRT_32BIT_MODE;
-    CP_SetSqrtImm32_NS_(param);
-}
-
-static inline s32 CP_IsSqrtBusy(void) {
-    return reg_CP_SQRTCNT & REG_CP_SQRTCNT_BUSY_MASK;
-}
-
-static inline void CP_WaitSqrt(void) {
-    while (CP_IsSqrtBusy()) {
-    }
-}
-
-static inline u32 CP_GetSqrtResultImm32(void) {
-    return (u32)(*((REGType32 *)REG_SQRT_RESULT_ADDR));
-}
-
-static inline u32 CP_GetSqrtResult32(void) {
-    CP_WaitSqrt();
-    return CP_GetSqrtResultImm32();
-}
-
 static u32 BattleSystem_CalculateBallShakes(BattleSystem *bsys, BattleContext *ctx) {
     s32 catchRate;
     s32 targetMonType1 = 0;
@@ -7194,8 +7161,8 @@ static u32 BattleSystem_CalculateBallShakes(BattleSystem *bsys, BattleContext *c
     }
 
     ballMultiplier = 10; // All ball multipliers are /10, so this is x1.
-    targetMonType1 = GetBattlerVar(ctx, ctx->battlerIdTarget, BMON_DATA_TYPE_1, 0);
-    u32 targetMonType2 = GetBattlerVar(ctx, ctx->battlerIdTarget, BMON_DATA_TYPE_2, 0);
+    targetMonType1 = BattleMon_Get(ctx, ctx->battlerIdTarget, BMON_DATA_TYPE_1, 0);
+    u32 targetMonType2 = BattleMon_Get(ctx, ctx->battlerIdTarget, BMON_DATA_TYPE_2, 0);
     u32 itemTemp = ctx->itemTemp;
     if (ctx->itemTemp > ITEM_SAFARI_BALL) { // Skip all balls that have no condition.
         switch (ctx->itemTemp) {

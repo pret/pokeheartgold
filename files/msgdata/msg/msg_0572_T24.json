@@ -1,0 +1,203 @@
+{
+  "key": 20287,
+  "messages": [
+    {
+      "id": "msg_0572_T24_00000",
+      "en_US": [
+        "You crossed the sea to get here?\r",
+        "That must have been hard.\r",
+        "It would be much easier if your\n",
+        "Pokémon knew how to Fly...\r"
+      ]
+    },
+    {
+      "id": "msg_0572_T24_00001",
+      "en_US": [
+        "But you can’t use Fly without this\n",
+        "city’s Gym Badge.\r",
+        "If you beat the Gym Leader here,\n",
+        "come see me.\f",
+        "I’ll have a nice gift for you."
+      ]
+    },
+    {
+      "id": "msg_0572_T24_00002",
+      "en_US": [
+        "That’s Cianwood’s Gym Badge!\r",
+        "Then you should take this HM.\r"
+      ]
+    },
+    {
+      "id": "msg_0572_T24_00003",
+      "garbage": 22
+    },
+    {
+      "id": "msg_0572_T24_00004",
+      "en_US": [
+        "Teach Fly to your Pokémon.\r",
+        "You will be able to Fly instantly\n",
+        "to anywhere you have visited."
+      ]
+    },
+    {
+      "id": "msg_0572_T24_00005",
+      "en_US": [
+        "My husband lost to you, so he needs\n",
+        "to train harder.\r",
+        "That’s good, since he was getting a\n",
+        "little chubby."
+      ]
+    },
+    {
+      "id": "msg_0572_T24_00006",
+      "en_US": "Your Bag is full."
+    },
+    {
+      "id": "msg_0572_T24_00007",
+      "en_US": [
+        "His only hobby is to battle\n",
+        "tough Trainers.\r",
+        "Do you want to have my\n",
+        "husband’s phone number? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0572_T24_00008",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} registered Chuck\n",
+        "in the Pokégear!"
+      ]
+    },
+    {
+      "id": "msg_0572_T24_00009",
+      "en_US": [
+        "He takes a break from the pounding\n",
+        "waterfall on Wednesday nights.\r",
+        "He should be able to chat with\n",
+        "you then."
+      ]
+    },
+    {
+      "id": "msg_0572_T24_00010",
+      "en_US": [
+        "Oh, I see.\n",
+        "My husband won’t be a good match?"
+      ]
+    },
+    {
+      "id": "msg_0572_T24_00011",
+      "en_US": [
+        "Do you want to exchange your\n",
+        "number for my husband’s? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0572_T24_00012",
+      "en_US": [
+        "If you use Fly, you can get back\n",
+        "to Olivine instantly."
+      ]
+    },
+    {
+      "id": "msg_0572_T24_00013",
+      "en_US": [
+        "Boulders to the north of town can\n",
+        "be crushed.\r",
+        "They may be hiding something.\n",
+        "Your Pokémon could use Rock Smash to\f",
+        "break them."
+      ]
+    },
+    {
+      "id": "msg_0572_T24_00014",
+      "en_US": [
+        "Chuck, the Gym Leader, spars with\n",
+        "his Fighting-type Pokémon."
+      ]
+    },
+    {
+      "id": "msg_0572_T24_00015",
+      "en_US": [
+        "Eusine: Yo, {STRVAR_1 3, 0, 0}.\r",
+        "Wasn’t that SUICUNE just now?\r",
+        "I only caught a quick glimpse, but I\n",
+        "thought I saw SUICUNE running on\f",
+        "the waves.\r",
+        "SUICUNE is beautiful and grand.\n",
+        "And it races through towns and\f",
+        "roads at simply awesome speeds.\r",
+        "It’s wonderful...\r",
+        "I want to see SUICUNE up close...\r",
+        "I’ve decided.\n",
+        "I’ll battle you as a Trainer to earn\f",
+        "SUICUNE’s respect!\r",
+        "Come on, {STRVAR_1 3, 0, 0}.\n",
+        "Let’s battle now!"
+      ]
+    },
+    {
+      "id": "msg_0572_T24_00016",
+      "en_US": [
+        "You’re amazing, {STRVAR_1 3, 0, 0}!\r",
+        "I’m starting to understand why SUICUNE\n",
+        "was keeping an eye on you.\r",
+        "I’m going to keep searching\n",
+        "for SUICUNE.\r",
+        "I have a feeling we’ll see each other\n",
+        "again. See you around!\r"
+      ]
+    },
+    {
+      "id": "msg_0572_T24_00017",
+      "en_US": [
+        "There are several islands between\n",
+        "here and Olivine.\r",
+        "A mythical sea creature supposedly\n",
+        "lives there."
+      ]
+    },
+    {
+      "id": "msg_0572_T24_00018",
+      "en_US": [
+        "Cianwood City\n",
+        "A Port of Crashing Waves"
+      ]
+    },
+    {
+      "id": "msg_0572_T24_00019",
+      "en_US": [
+        "Cianwood City Pokémon Gym\n",
+        "Leader: Chuck\f",
+        "His Roaring Fists Do the Talking"
+      ]
+    },
+    {
+      "id": "msg_0572_T24_00020",
+      "en_US": [
+        "Cianwood City Pharmacy\r",
+        "500 Years of Tradition\n",
+        "We Await Your Medicinal Queries"
+      ]
+    },
+    {
+      "id": "msg_0572_T24_00021",
+      "en_US": [
+        "This is the house of Cameron,\n",
+        "the Photographer.\f",
+        "Take a Snapshot as a Keepsake!"
+      ]
+    },
+    {
+      "id": "msg_0572_T24_00022",
+      "en_US": [
+        "Entrance to the road for the\n",
+        "Safari Zone.\r",
+        "Experience thrilling encounters\n",
+        "with wild Pokémon for heart-to-heart\f",
+        "contact!\r",
+        "The Safari Zone is just around the\n",
+        "corner from this entrance!"
+      ]
+    }
+  ]
+}

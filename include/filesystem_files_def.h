@@ -1,7 +1,7 @@
 #ifndef POKEHEARTGOLD_FILESYSTEM_FILES_DEF_H
 #define POKEHEARTGOLD_FILESYSTEM_FILES_DEF_H
 
-#include <nitro/fs/file.h>
+// #include <nitro/fs/file.h>
 
 typedef enum NarcId {
     NARC_a_0_0_0 = 0,

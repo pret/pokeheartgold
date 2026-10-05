@@ -1,0 +1,1877 @@
+{
+  "key": 63689,
+  "messages": [
+    {
+      "id": "msg_0750_00000",
+      "en_US": "-"
+    },
+    {
+      "id": "msg_0750_00001",
+      "en_US": "Pound"
+    },
+    {
+      "id": "msg_0750_00002",
+      "en_US": "Karate Chop"
+    },
+    {
+      "id": "msg_0750_00003",
+      "en_US": "DoubleSlap"
+    },
+    {
+      "id": "msg_0750_00004",
+      "en_US": "Comet Punch"
+    },
+    {
+      "id": "msg_0750_00005",
+      "en_US": "Mega Punch"
+    },
+    {
+      "id": "msg_0750_00006",
+      "en_US": "Pay Day"
+    },
+    {
+      "id": "msg_0750_00007",
+      "en_US": "Fire Punch"
+    },
+    {
+      "id": "msg_0750_00008",
+      "en_US": "Ice Punch"
+    },
+    {
+      "id": "msg_0750_00009",
+      "en_US": "ThunderPunch"
+    },
+    {
+      "id": "msg_0750_00010",
+      "en_US": "Scratch"
+    },
+    {
+      "id": "msg_0750_00011",
+      "en_US": "ViceGrip"
+    },
+    {
+      "id": "msg_0750_00012",
+      "en_US": "Guillotine"
+    },
+    {
+      "id": "msg_0750_00013",
+      "en_US": "Razor Wind"
+    },
+    {
+      "id": "msg_0750_00014",
+      "en_US": "Swords Dance"
+    },
+    {
+      "id": "msg_0750_00015",
+      "en_US": "Cut"
+    },
+    {
+      "id": "msg_0750_00016",
+      "en_US": "Gust"
+    },
+    {
+      "id": "msg_0750_00017",
+      "en_US": "Wing Attack"
+    },
+    {
+      "id": "msg_0750_00018",
+      "en_US": "Whirlwind"
+    },
+    {
+      "id": "msg_0750_00019",
+      "en_US": "Fly"
+    },
+    {
+      "id": "msg_0750_00020",
+      "en_US": "Bind"
+    },
+    {
+      "id": "msg_0750_00021",
+      "en_US": "Slam"
+    },
+    {
+      "id": "msg_0750_00022",
+      "en_US": "Vine Whip"
+    },
+    {
+      "id": "msg_0750_00023",
+      "en_US": "Stomp"
+    },
+    {
+      "id": "msg_0750_00024",
+      "en_US": "Double Kick"
+    },
+    {
+      "id": "msg_0750_00025",
+      "en_US": "Mega Kick"
+    },
+    {
+      "id": "msg_0750_00026",
+      "en_US": "Jump Kick"
+    },
+    {
+      "id": "msg_0750_00027",
+      "en_US": "Rolling Kick"
+    },
+    {
+      "id": "msg_0750_00028",
+      "en_US": "Sand-Attack"
+    },
+    {
+      "id": "msg_0750_00029",
+      "en_US": "Headbutt"
+    },
+    {
+      "id": "msg_0750_00030",
+      "en_US": "Horn Attack"
+    },
+    {
+      "id": "msg_0750_00031",
+      "en_US": "Fury Attack"
+    },
+    {
+      "id": "msg_0750_00032",
+      "en_US": "Horn Drill"
+    },
+    {
+      "id": "msg_0750_00033",
+      "en_US": "Tackle"
+    },
+    {
+      "id": "msg_0750_00034",
+      "en_US": "Body Slam"
+    },
+    {
+      "id": "msg_0750_00035",
+      "en_US": "Wrap"
+    },
+    {
+      "id": "msg_0750_00036",
+      "en_US": "Take Down"
+    },
+    {
+      "id": "msg_0750_00037",
+      "en_US": "Thrash"
+    },
+    {
+      "id": "msg_0750_00038",
+      "en_US": "Double-Edge"
+    },
+    {
+      "id": "msg_0750_00039",
+      "en_US": "Tail Whip"
+    },
+    {
+      "id": "msg_0750_00040",
+      "en_US": "Poison Sting"
+    },
+    {
+      "id": "msg_0750_00041",
+      "en_US": "Twineedle"
+    },
+    {
+      "id": "msg_0750_00042",
+      "en_US": "Pin Missile"
+    },
+    {
+      "id": "msg_0750_00043",
+      "en_US": "Leer"
+    },
+    {
+      "id": "msg_0750_00044",
+      "en_US": "Bite"
+    },
+    {
+      "id": "msg_0750_00045",
+      "en_US": "Growl"
+    },
+    {
+      "id": "msg_0750_00046",
+      "en_US": "Roar"
+    },
+    {
+      "id": "msg_0750_00047",
+      "en_US": "Sing"
+    },
+    {
+      "id": "msg_0750_00048",
+      "en_US": "Supersonic"
+    },
+    {
+      "id": "msg_0750_00049",
+      "en_US": "SonicBoom"
+    },
+    {
+      "id": "msg_0750_00050",
+      "en_US": "Disable"
+    },
+    {
+      "id": "msg_0750_00051",
+      "en_US": "Acid"
+    },
+    {
+      "id": "msg_0750_00052",
+      "en_US": "Ember"
+    },
+    {
+      "id": "msg_0750_00053",
+      "en_US": "Flamethrower"
+    },
+    {
+      "id": "msg_0750_00054",
+      "en_US": "Mist"
+    },
+    {
+      "id": "msg_0750_00055",
+      "en_US": "Water Gun"
+    },
+    {
+      "id": "msg_0750_00056",
+      "en_US": "Hydro Pump"
+    },
+    {
+      "id": "msg_0750_00057",
+      "en_US": "Surf"
+    },
+    {
+      "id": "msg_0750_00058",
+      "en_US": "Ice Beam"
+    },
+    {
+      "id": "msg_0750_00059",
+      "en_US": "Blizzard"
+    },
+    {
+      "id": "msg_0750_00060",
+      "en_US": "Psybeam"
+    },
+    {
+      "id": "msg_0750_00061",
+      "en_US": "BubbleBeam"
+    },
+    {
+      "id": "msg_0750_00062",
+      "en_US": "Aurora Beam"
+    },
+    {
+      "id": "msg_0750_00063",
+      "en_US": "Hyper Beam"
+    },
+    {
+      "id": "msg_0750_00064",
+      "en_US": "Peck"
+    },
+    {
+      "id": "msg_0750_00065",
+      "en_US": "Drill Peck"
+    },
+    {
+      "id": "msg_0750_00066",
+      "en_US": "Submission"
+    },
+    {
+      "id": "msg_0750_00067",
+      "en_US": "Low Kick"
+    },
+    {
+      "id": "msg_0750_00068",
+      "en_US": "Counter"
+    },
+    {
+      "id": "msg_0750_00069",
+      "en_US": "Seismic Toss"
+    },
+    {
+      "id": "msg_0750_00070",
+      "en_US": "Strength"
+    },
+    {
+      "id": "msg_0750_00071",
+      "en_US": "Absorb"
+    },
+    {
+      "id": "msg_0750_00072",
+      "en_US": "Mega Drain"
+    },
+    {
+      "id": "msg_0750_00073",
+      "en_US": "Leech Seed"
+    },
+    {
+      "id": "msg_0750_00074",
+      "en_US": "Growth"
+    },
+    {
+      "id": "msg_0750_00075",
+      "en_US": "Razor Leaf"
+    },
+    {
+      "id": "msg_0750_00076",
+      "en_US": "SolarBeam"
+    },
+    {
+      "id": "msg_0750_00077",
+      "en_US": "PoisonPowder"
+    },
+    {
+      "id": "msg_0750_00078",
+      "en_US": "Stun Spore"
+    },
+    {
+      "id": "msg_0750_00079",
+      "en_US": "Sleep Powder"
+    },
+    {
+      "id": "msg_0750_00080",
+      "en_US": "Petal Dance"
+    },
+    {
+      "id": "msg_0750_00081",
+      "en_US": "String Shot"
+    },
+    {
+      "id": "msg_0750_00082",
+      "en_US": "Dragon Rage"
+    },
+    {
+      "id": "msg_0750_00083",
+      "en_US": "Fire Spin"
+    },
+    {
+      "id": "msg_0750_00084",
+      "en_US": "ThunderShock"
+    },
+    {
+      "id": "msg_0750_00085",
+      "en_US": "Thunderbolt"
+    },
+    {
+      "id": "msg_0750_00086",
+      "en_US": "Thunder Wave"
+    },
+    {
+      "id": "msg_0750_00087",
+      "en_US": "Thunder"
+    },
+    {
+      "id": "msg_0750_00088",
+      "en_US": "Rock Throw"
+    },
+    {
+      "id": "msg_0750_00089",
+      "en_US": "Earthquake"
+    },
+    {
+      "id": "msg_0750_00090",
+      "en_US": "Fissure"
+    },
+    {
+      "id": "msg_0750_00091",
+      "en_US": "Dig"
+    },
+    {
+      "id": "msg_0750_00092",
+      "en_US": "Toxic"
+    },
+    {
+      "id": "msg_0750_00093",
+      "en_US": "Confusion"
+    },
+    {
+      "id": "msg_0750_00094",
+      "en_US": "Psychic"
+    },
+    {
+      "id": "msg_0750_00095",
+      "en_US": "Hypnosis"
+    },
+    {
+      "id": "msg_0750_00096",
+      "en_US": "Meditate"
+    },
+    {
+      "id": "msg_0750_00097",
+      "en_US": "Agility"
+    },
+    {
+      "id": "msg_0750_00098",
+      "en_US": "Quick Attack"
+    },
+    {
+      "id": "msg_0750_00099",
+      "en_US": "Rage"
+    },
+    {
+      "id": "msg_0750_00100",
+      "en_US": "Teleport"
+    },
+    {
+      "id": "msg_0750_00101",
+      "en_US": "Night Shade"
+    },
+    {
+      "id": "msg_0750_00102",
+      "en_US": "Mimic"
+    },
+    {
+      "id": "msg_0750_00103",
+      "en_US": "Screech"
+    },
+    {
+      "id": "msg_0750_00104",
+      "en_US": "Double Team"
+    },
+    {
+      "id": "msg_0750_00105",
+      "en_US": "Recover"
+    },
+    {
+      "id": "msg_0750_00106",
+      "en_US": "Harden"
+    },
+    {
+      "id": "msg_0750_00107",
+      "en_US": "Minimize"
+    },
+    {
+      "id": "msg_0750_00108",
+      "en_US": "SmokeScreen"
+    },
+    {
+      "id": "msg_0750_00109",
+      "en_US": "Confuse Ray"
+    },
+    {
+      "id": "msg_0750_00110",
+      "en_US": "Withdraw"
+    },
+    {
+      "id": "msg_0750_00111",
+      "en_US": "Defense Curl"
+    },
+    {
+      "id": "msg_0750_00112",
+      "en_US": "Barrier"
+    },
+    {
+      "id": "msg_0750_00113",
+      "en_US": "Light Screen"
+    },
+    {
+      "id": "msg_0750_00114",
+      "en_US": "Haze"
+    },
+    {
+      "id": "msg_0750_00115",
+      "en_US": "Reflect"
+    },
+    {
+      "id": "msg_0750_00116",
+      "en_US": "Focus Energy"
+    },
+    {
+      "id": "msg_0750_00117",
+      "en_US": "Bide"
+    },
+    {
+      "id": "msg_0750_00118",
+      "en_US": "Metronome"
+    },
+    {
+      "id": "msg_0750_00119",
+      "en_US": "Mirror Move"
+    },
+    {
+      "id": "msg_0750_00120",
+      "en_US": "Selfdestruct"
+    },
+    {
+      "id": "msg_0750_00121",
+      "en_US": "Egg Bomb"
+    },
+    {
+      "id": "msg_0750_00122",
+      "en_US": "Lick"
+    },
+    {
+      "id": "msg_0750_00123",
+      "en_US": "Smog"
+    },
+    {
+      "id": "msg_0750_00124",
+      "en_US": "Sludge"
+    },
+    {
+      "id": "msg_0750_00125",
+      "en_US": "Bone Club"
+    },
+    {
+      "id": "msg_0750_00126",
+      "en_US": "Fire Blast"
+    },
+    {
+      "id": "msg_0750_00127",
+      "en_US": "Waterfall"
+    },
+    {
+      "id": "msg_0750_00128",
+      "en_US": "Clamp"
+    },
+    {
+      "id": "msg_0750_00129",
+      "en_US": "Swift"
+    },
+    {
+      "id": "msg_0750_00130",
+      "en_US": "Skull Bash"
+    },
+    {
+      "id": "msg_0750_00131",
+      "en_US": "Spike Cannon"
+    },
+    {
+      "id": "msg_0750_00132",
+      "en_US": "Constrict"
+    },
+    {
+      "id": "msg_0750_00133",
+      "en_US": "Amnesia"
+    },
+    {
+      "id": "msg_0750_00134",
+      "en_US": "Kinesis"
+    },
+    {
+      "id": "msg_0750_00135",
+      "en_US": "Softboiled"
+    },
+    {
+      "id": "msg_0750_00136",
+      "en_US": "Hi Jump Kick"
+    },
+    {
+      "id": "msg_0750_00137",
+      "en_US": "Glare"
+    },
+    {
+      "id": "msg_0750_00138",
+      "en_US": "Dream Eater"
+    },
+    {
+      "id": "msg_0750_00139",
+      "en_US": "Poison Gas"
+    },
+    {
+      "id": "msg_0750_00140",
+      "en_US": "Barrage"
+    },
+    {
+      "id": "msg_0750_00141",
+      "en_US": "Leech Life"
+    },
+    {
+      "id": "msg_0750_00142",
+      "en_US": "Lovely Kiss"
+    },
+    {
+      "id": "msg_0750_00143",
+      "en_US": "Sky Attack"
+    },
+    {
+      "id": "msg_0750_00144",
+      "en_US": "Transform"
+    },
+    {
+      "id": "msg_0750_00145",
+      "en_US": "Bubble"
+    },
+    {
+      "id": "msg_0750_00146",
+      "en_US": "Dizzy Punch"
+    },
+    {
+      "id": "msg_0750_00147",
+      "en_US": "Spore"
+    },
+    {
+      "id": "msg_0750_00148",
+      "en_US": "Flash"
+    },
+    {
+      "id": "msg_0750_00149",
+      "en_US": "Psywave"
+    },
+    {
+      "id": "msg_0750_00150",
+      "en_US": "Splash"
+    },
+    {
+      "id": "msg_0750_00151",
+      "en_US": "Acid Armor"
+    },
+    {
+      "id": "msg_0750_00152",
+      "en_US": "Crabhammer"
+    },
+    {
+      "id": "msg_0750_00153",
+      "en_US": "Explosion"
+    },
+    {
+      "id": "msg_0750_00154",
+      "en_US": "Fury Swipes"
+    },
+    {
+      "id": "msg_0750_00155",
+      "en_US": "Bonemerang"
+    },
+    {
+      "id": "msg_0750_00156",
+      "en_US": "Rest"
+    },
+    {
+      "id": "msg_0750_00157",
+      "en_US": "Rock Slide"
+    },
+    {
+      "id": "msg_0750_00158",
+      "en_US": "Hyper Fang"
+    },
+    {
+      "id": "msg_0750_00159",
+      "en_US": "Sharpen"
+    },
+    {
+      "id": "msg_0750_00160",
+      "en_US": "Conversion"
+    },
+    {
+      "id": "msg_0750_00161",
+      "en_US": "Tri Attack"
+    },
+    {
+      "id": "msg_0750_00162",
+      "en_US": "Super Fang"
+    },
+    {
+      "id": "msg_0750_00163",
+      "en_US": "Slash"
+    },
+    {
+      "id": "msg_0750_00164",
+      "en_US": "Substitute"
+    },
+    {
+      "id": "msg_0750_00165",
+      "en_US": "Struggle"
+    },
+    {
+      "id": "msg_0750_00166",
+      "en_US": "Sketch"
+    },
+    {
+      "id": "msg_0750_00167",
+      "en_US": "Triple Kick"
+    },
+    {
+      "id": "msg_0750_00168",
+      "en_US": "Thief"
+    },
+    {
+      "id": "msg_0750_00169",
+      "en_US": "Spider Web"
+    },
+    {
+      "id": "msg_0750_00170",
+      "en_US": "Mind Reader"
+    },
+    {
+      "id": "msg_0750_00171",
+      "en_US": "Nightmare"
+    },
+    {
+      "id": "msg_0750_00172",
+      "en_US": "Flame Wheel"
+    },
+    {
+      "id": "msg_0750_00173",
+      "en_US": "Snore"
+    },
+    {
+      "id": "msg_0750_00174",
+      "en_US": "Curse"
+    },
+    {
+      "id": "msg_0750_00175",
+      "en_US": "Flail"
+    },
+    {
+      "id": "msg_0750_00176",
+      "en_US": "Conversion 2"
+    },
+    {
+      "id": "msg_0750_00177",
+      "en_US": "Aeroblast"
+    },
+    {
+      "id": "msg_0750_00178",
+      "en_US": "Cotton Spore"
+    },
+    {
+      "id": "msg_0750_00179",
+      "en_US": "Reversal"
+    },
+    {
+      "id": "msg_0750_00180",
+      "en_US": "Spite"
+    },
+    {
+      "id": "msg_0750_00181",
+      "en_US": "Powder Snow"
+    },
+    {
+      "id": "msg_0750_00182",
+      "en_US": "Protect"
+    },
+    {
+      "id": "msg_0750_00183",
+      "en_US": "Mach Punch"
+    },
+    {
+      "id": "msg_0750_00184",
+      "en_US": "Scary Face"
+    },
+    {
+      "id": "msg_0750_00185",
+      "en_US": "Faint Attack"
+    },
+    {
+      "id": "msg_0750_00186",
+      "en_US": "Sweet Kiss"
+    },
+    {
+      "id": "msg_0750_00187",
+      "en_US": "Belly Drum"
+    },
+    {
+      "id": "msg_0750_00188",
+      "en_US": "Sludge Bomb"
+    },
+    {
+      "id": "msg_0750_00189",
+      "en_US": "Mud-Slap"
+    },
+    {
+      "id": "msg_0750_00190",
+      "en_US": "Octazooka"
+    },
+    {
+      "id": "msg_0750_00191",
+      "en_US": "Spikes"
+    },
+    {
+      "id": "msg_0750_00192",
+      "en_US": "Zap Cannon"
+    },
+    {
+      "id": "msg_0750_00193",
+      "en_US": "Foresight"
+    },
+    {
+      "id": "msg_0750_00194",
+      "en_US": "Destiny Bond"
+    },
+    {
+      "id": "msg_0750_00195",
+      "en_US": "Perish Song"
+    },
+    {
+      "id": "msg_0750_00196",
+      "en_US": "Icy Wind"
+    },
+    {
+      "id": "msg_0750_00197",
+      "en_US": "Detect"
+    },
+    {
+      "id": "msg_0750_00198",
+      "en_US": "Bone Rush"
+    },
+    {
+      "id": "msg_0750_00199",
+      "en_US": "Lock-On"
+    },
+    {
+      "id": "msg_0750_00200",
+      "en_US": "Outrage"
+    },
+    {
+      "id": "msg_0750_00201",
+      "en_US": "Sandstorm"
+    },
+    {
+      "id": "msg_0750_00202",
+      "en_US": "Giga Drain"
+    },
+    {
+      "id": "msg_0750_00203",
+      "en_US": "Endure"
+    },
+    {
+      "id": "msg_0750_00204",
+      "en_US": "Charm"
+    },
+    {
+      "id": "msg_0750_00205",
+      "en_US": "Rollout"
+    },
+    {
+      "id": "msg_0750_00206",
+      "en_US": "False Swipe"
+    },
+    {
+      "id": "msg_0750_00207",
+      "en_US": "Swagger"
+    },
+    {
+      "id": "msg_0750_00208",
+      "en_US": "Milk Drink"
+    },
+    {
+      "id": "msg_0750_00209",
+      "en_US": "Spark"
+    },
+    {
+      "id": "msg_0750_00210",
+      "en_US": "Fury Cutter"
+    },
+    {
+      "id": "msg_0750_00211",
+      "en_US": "Steel Wing"
+    },
+    {
+      "id": "msg_0750_00212",
+      "en_US": "Mean Look"
+    },
+    {
+      "id": "msg_0750_00213",
+      "en_US": "Attract"
+    },
+    {
+      "id": "msg_0750_00214",
+      "en_US": "Sleep Talk"
+    },
+    {
+      "id": "msg_0750_00215",
+      "en_US": "Heal Bell"
+    },
+    {
+      "id": "msg_0750_00216",
+      "en_US": "Return"
+    },
+    {
+      "id": "msg_0750_00217",
+      "en_US": "Present"
+    },
+    {
+      "id": "msg_0750_00218",
+      "en_US": "Frustration"
+    },
+    {
+      "id": "msg_0750_00219",
+      "en_US": "Safeguard"
+    },
+    {
+      "id": "msg_0750_00220",
+      "en_US": "Pain Split"
+    },
+    {
+      "id": "msg_0750_00221",
+      "en_US": "Sacred Fire"
+    },
+    {
+      "id": "msg_0750_00222",
+      "en_US": "Magnitude"
+    },
+    {
+      "id": "msg_0750_00223",
+      "en_US": "DynamicPunch"
+    },
+    {
+      "id": "msg_0750_00224",
+      "en_US": "Megahorn"
+    },
+    {
+      "id": "msg_0750_00225",
+      "en_US": "DragonBreath"
+    },
+    {
+      "id": "msg_0750_00226",
+      "en_US": "Baton Pass"
+    },
+    {
+      "id": "msg_0750_00227",
+      "en_US": "Encore"
+    },
+    {
+      "id": "msg_0750_00228",
+      "en_US": "Pursuit"
+    },
+    {
+      "id": "msg_0750_00229",
+      "en_US": "Rapid Spin"
+    },
+    {
+      "id": "msg_0750_00230",
+      "en_US": "Sweet Scent"
+    },
+    {
+      "id": "msg_0750_00231",
+      "en_US": "Iron Tail"
+    },
+    {
+      "id": "msg_0750_00232",
+      "en_US": "Metal Claw"
+    },
+    {
+      "id": "msg_0750_00233",
+      "en_US": "Vital Throw"
+    },
+    {
+      "id": "msg_0750_00234",
+      "en_US": "Morning Sun"
+    },
+    {
+      "id": "msg_0750_00235",
+      "en_US": "Synthesis"
+    },
+    {
+      "id": "msg_0750_00236",
+      "en_US": "Moonlight"
+    },
+    {
+      "id": "msg_0750_00237",
+      "en_US": "Hidden Power"
+    },
+    {
+      "id": "msg_0750_00238",
+      "en_US": "Cross Chop"
+    },
+    {
+      "id": "msg_0750_00239",
+      "en_US": "Twister"
+    },
+    {
+      "id": "msg_0750_00240",
+      "en_US": "Rain Dance"
+    },
+    {
+      "id": "msg_0750_00241",
+      "en_US": "Sunny Day"
+    },
+    {
+      "id": "msg_0750_00242",
+      "en_US": "Crunch"
+    },
+    {
+      "id": "msg_0750_00243",
+      "en_US": "Mirror Coat"
+    },
+    {
+      "id": "msg_0750_00244",
+      "en_US": "Psych Up"
+    },
+    {
+      "id": "msg_0750_00245",
+      "en_US": "ExtremeSpeed"
+    },
+    {
+      "id": "msg_0750_00246",
+      "en_US": "AncientPower"
+    },
+    {
+      "id": "msg_0750_00247",
+      "en_US": "Shadow Ball"
+    },
+    {
+      "id": "msg_0750_00248",
+      "en_US": "Future Sight"
+    },
+    {
+      "id": "msg_0750_00249",
+      "en_US": "Rock Smash"
+    },
+    {
+      "id": "msg_0750_00250",
+      "en_US": "Whirlpool"
+    },
+    {
+      "id": "msg_0750_00251",
+      "en_US": "Beat Up"
+    },
+    {
+      "id": "msg_0750_00252",
+      "en_US": "Fake Out"
+    },
+    {
+      "id": "msg_0750_00253",
+      "en_US": "Uproar"
+    },
+    {
+      "id": "msg_0750_00254",
+      "en_US": "Stockpile"
+    },
+    {
+      "id": "msg_0750_00255",
+      "en_US": "Spit Up"
+    },
+    {
+      "id": "msg_0750_00256",
+      "en_US": "Swallow"
+    },
+    {
+      "id": "msg_0750_00257",
+      "en_US": "Heat Wave"
+    },
+    {
+      "id": "msg_0750_00258",
+      "en_US": "Hail"
+    },
+    {
+      "id": "msg_0750_00259",
+      "en_US": "Torment"
+    },
+    {
+      "id": "msg_0750_00260",
+      "en_US": "Flatter"
+    },
+    {
+      "id": "msg_0750_00261",
+      "en_US": "Will-O-Wisp"
+    },
+    {
+      "id": "msg_0750_00262",
+      "en_US": "Memento"
+    },
+    {
+      "id": "msg_0750_00263",
+      "en_US": "Facade"
+    },
+    {
+      "id": "msg_0750_00264",
+      "en_US": "Focus Punch"
+    },
+    {
+      "id": "msg_0750_00265",
+      "en_US": "SmellingSalt"
+    },
+    {
+      "id": "msg_0750_00266",
+      "en_US": "Follow Me"
+    },
+    {
+      "id": "msg_0750_00267",
+      "en_US": "Nature Power"
+    },
+    {
+      "id": "msg_0750_00268",
+      "en_US": "Charge"
+    },
+    {
+      "id": "msg_0750_00269",
+      "en_US": "Taunt"
+    },
+    {
+      "id": "msg_0750_00270",
+      "en_US": "Helping Hand"
+    },
+    {
+      "id": "msg_0750_00271",
+      "en_US": "Trick"
+    },
+    {
+      "id": "msg_0750_00272",
+      "en_US": "Role Play"
+    },
+    {
+      "id": "msg_0750_00273",
+      "en_US": "Wish"
+    },
+    {
+      "id": "msg_0750_00274",
+      "en_US": "Assist"
+    },
+    {
+      "id": "msg_0750_00275",
+      "en_US": "Ingrain"
+    },
+    {
+      "id": "msg_0750_00276",
+      "en_US": "Superpower"
+    },
+    {
+      "id": "msg_0750_00277",
+      "en_US": "Magic Coat"
+    },
+    {
+      "id": "msg_0750_00278",
+      "en_US": "Recycle"
+    },
+    {
+      "id": "msg_0750_00279",
+      "en_US": "Revenge"
+    },
+    {
+      "id": "msg_0750_00280",
+      "en_US": "Brick Break"
+    },
+    {
+      "id": "msg_0750_00281",
+      "en_US": "Yawn"
+    },
+    {
+      "id": "msg_0750_00282",
+      "en_US": "Knock Off"
+    },
+    {
+      "id": "msg_0750_00283",
+      "en_US": "Endeavor"
+    },
+    {
+      "id": "msg_0750_00284",
+      "en_US": "Eruption"
+    },
+    {
+      "id": "msg_0750_00285",
+      "en_US": "Skill Swap"
+    },
+    {
+      "id": "msg_0750_00286",
+      "en_US": "Imprison"
+    },
+    {
+      "id": "msg_0750_00287",
+      "en_US": "Refresh"
+    },
+    {
+      "id": "msg_0750_00288",
+      "en_US": "Grudge"
+    },
+    {
+      "id": "msg_0750_00289",
+      "en_US": "Snatch"
+    },
+    {
+      "id": "msg_0750_00290",
+      "en_US": "Secret Power"
+    },
+    {
+      "id": "msg_0750_00291",
+      "en_US": "Dive"
+    },
+    {
+      "id": "msg_0750_00292",
+      "en_US": "Arm Thrust"
+    },
+    {
+      "id": "msg_0750_00293",
+      "en_US": "Camouflage"
+    },
+    {
+      "id": "msg_0750_00294",
+      "en_US": "Tail Glow"
+    },
+    {
+      "id": "msg_0750_00295",
+      "en_US": "Luster Purge"
+    },
+    {
+      "id": "msg_0750_00296",
+      "en_US": "Mist Ball"
+    },
+    {
+      "id": "msg_0750_00297",
+      "en_US": "FeatherDance"
+    },
+    {
+      "id": "msg_0750_00298",
+      "en_US": "Teeter Dance"
+    },
+    {
+      "id": "msg_0750_00299",
+      "en_US": "Blaze Kick"
+    },
+    {
+      "id": "msg_0750_00300",
+      "en_US": "Mud Sport"
+    },
+    {
+      "id": "msg_0750_00301",
+      "en_US": "Ice Ball"
+    },
+    {
+      "id": "msg_0750_00302",
+      "en_US": "Needle Arm"
+    },
+    {
+      "id": "msg_0750_00303",
+      "en_US": "Slack Off"
+    },
+    {
+      "id": "msg_0750_00304",
+      "en_US": "Hyper Voice"
+    },
+    {
+      "id": "msg_0750_00305",
+      "en_US": "Poison Fang"
+    },
+    {
+      "id": "msg_0750_00306",
+      "en_US": "Crush Claw"
+    },
+    {
+      "id": "msg_0750_00307",
+      "en_US": "Blast Burn"
+    },
+    {
+      "id": "msg_0750_00308",
+      "en_US": "Hydro Cannon"
+    },
+    {
+      "id": "msg_0750_00309",
+      "en_US": "Meteor Mash"
+    },
+    {
+      "id": "msg_0750_00310",
+      "en_US": "Astonish"
+    },
+    {
+      "id": "msg_0750_00311",
+      "en_US": "Weather Ball"
+    },
+    {
+      "id": "msg_0750_00312",
+      "en_US": "Aromatherapy"
+    },
+    {
+      "id": "msg_0750_00313",
+      "en_US": "Fake Tears"
+    },
+    {
+      "id": "msg_0750_00314",
+      "en_US": "Air Cutter"
+    },
+    {
+      "id": "msg_0750_00315",
+      "en_US": "Overheat"
+    },
+    {
+      "id": "msg_0750_00316",
+      "en_US": "Odor Sleuth"
+    },
+    {
+      "id": "msg_0750_00317",
+      "en_US": "Rock Tomb"
+    },
+    {
+      "id": "msg_0750_00318",
+      "en_US": "Silver Wind"
+    },
+    {
+      "id": "msg_0750_00319",
+      "en_US": "Metal Sound"
+    },
+    {
+      "id": "msg_0750_00320",
+      "en_US": "GrassWhistle"
+    },
+    {
+      "id": "msg_0750_00321",
+      "en_US": "Tickle"
+    },
+    {
+      "id": "msg_0750_00322",
+      "en_US": "Cosmic Power"
+    },
+    {
+      "id": "msg_0750_00323",
+      "en_US": "Water Spout"
+    },
+    {
+      "id": "msg_0750_00324",
+      "en_US": "Signal Beam"
+    },
+    {
+      "id": "msg_0750_00325",
+      "en_US": "Shadow Punch"
+    },
+    {
+      "id": "msg_0750_00326",
+      "en_US": "Extrasensory"
+    },
+    {
+      "id": "msg_0750_00327",
+      "en_US": "Sky Uppercut"
+    },
+    {
+      "id": "msg_0750_00328",
+      "en_US": "Sand Tomb"
+    },
+    {
+      "id": "msg_0750_00329",
+      "en_US": "Sheer Cold"
+    },
+    {
+      "id": "msg_0750_00330",
+      "en_US": "Muddy Water"
+    },
+    {
+      "id": "msg_0750_00331",
+      "en_US": "Bullet Seed"
+    },
+    {
+      "id": "msg_0750_00332",
+      "en_US": "Aerial Ace"
+    },
+    {
+      "id": "msg_0750_00333",
+      "en_US": "Icicle Spear"
+    },
+    {
+      "id": "msg_0750_00334",
+      "en_US": "Iron Defense"
+    },
+    {
+      "id": "msg_0750_00335",
+      "en_US": "Block"
+    },
+    {
+      "id": "msg_0750_00336",
+      "en_US": "Howl"
+    },
+    {
+      "id": "msg_0750_00337",
+      "en_US": "Dragon Claw"
+    },
+    {
+      "id": "msg_0750_00338",
+      "en_US": "Frenzy Plant"
+    },
+    {
+      "id": "msg_0750_00339",
+      "en_US": "Bulk Up"
+    },
+    {
+      "id": "msg_0750_00340",
+      "en_US": "Bounce"
+    },
+    {
+      "id": "msg_0750_00341",
+      "en_US": "Mud Shot"
+    },
+    {
+      "id": "msg_0750_00342",
+      "en_US": "Poison Tail"
+    },
+    {
+      "id": "msg_0750_00343",
+      "en_US": "Covet"
+    },
+    {
+      "id": "msg_0750_00344",
+      "en_US": "Volt Tackle"
+    },
+    {
+      "id": "msg_0750_00345",
+      "en_US": "Magical Leaf"
+    },
+    {
+      "id": "msg_0750_00346",
+      "en_US": "Water Sport"
+    },
+    {
+      "id": "msg_0750_00347",
+      "en_US": "Calm Mind"
+    },
+    {
+      "id": "msg_0750_00348",
+      "en_US": "Leaf Blade"
+    },
+    {
+      "id": "msg_0750_00349",
+      "en_US": "Dragon Dance"
+    },
+    {
+      "id": "msg_0750_00350",
+      "en_US": "Rock Blast"
+    },
+    {
+      "id": "msg_0750_00351",
+      "en_US": "Shock Wave"
+    },
+    {
+      "id": "msg_0750_00352",
+      "en_US": "Water Pulse"
+    },
+    {
+      "id": "msg_0750_00353",
+      "en_US": "Doom Desire"
+    },
+    {
+      "id": "msg_0750_00354",
+      "en_US": "Psycho Boost"
+    },
+    {
+      "id": "msg_0750_00355",
+      "en_US": "Roost"
+    },
+    {
+      "id": "msg_0750_00356",
+      "en_US": "Gravity"
+    },
+    {
+      "id": "msg_0750_00357",
+      "en_US": "Miracle Eye"
+    },
+    {
+      "id": "msg_0750_00358",
+      "en_US": "Wake-Up Slap"
+    },
+    {
+      "id": "msg_0750_00359",
+      "en_US": "Hammer Arm"
+    },
+    {
+      "id": "msg_0750_00360",
+      "en_US": "Gyro Ball"
+    },
+    {
+      "id": "msg_0750_00361",
+      "en_US": "Healing Wish"
+    },
+    {
+      "id": "msg_0750_00362",
+      "en_US": "Brine"
+    },
+    {
+      "id": "msg_0750_00363",
+      "en_US": "Natural Gift"
+    },
+    {
+      "id": "msg_0750_00364",
+      "en_US": "Feint"
+    },
+    {
+      "id": "msg_0750_00365",
+      "en_US": "Pluck"
+    },
+    {
+      "id": "msg_0750_00366",
+      "en_US": "Tailwind"
+    },
+    {
+      "id": "msg_0750_00367",
+      "en_US": "Acupressure"
+    },
+    {
+      "id": "msg_0750_00368",
+      "en_US": "Metal Burst"
+    },
+    {
+      "id": "msg_0750_00369",
+      "en_US": "U-turn"
+    },
+    {
+      "id": "msg_0750_00370",
+      "en_US": "Close Combat"
+    },
+    {
+      "id": "msg_0750_00371",
+      "en_US": "Payback"
+    },
+    {
+      "id": "msg_0750_00372",
+      "en_US": "Assurance"
+    },
+    {
+      "id": "msg_0750_00373",
+      "en_US": "Embargo"
+    },
+    {
+      "id": "msg_0750_00374",
+      "en_US": "Fling"
+    },
+    {
+      "id": "msg_0750_00375",
+      "en_US": "Psycho Shift"
+    },
+    {
+      "id": "msg_0750_00376",
+      "en_US": "Trump Card"
+    },
+    {
+      "id": "msg_0750_00377",
+      "en_US": "Heal Block"
+    },
+    {
+      "id": "msg_0750_00378",
+      "en_US": "Wring Out"
+    },
+    {
+      "id": "msg_0750_00379",
+      "en_US": "Power Trick"
+    },
+    {
+      "id": "msg_0750_00380",
+      "en_US": "Gastro Acid"
+    },
+    {
+      "id": "msg_0750_00381",
+      "en_US": "Lucky Chant"
+    },
+    {
+      "id": "msg_0750_00382",
+      "en_US": "Me First"
+    },
+    {
+      "id": "msg_0750_00383",
+      "en_US": "Copycat"
+    },
+    {
+      "id": "msg_0750_00384",
+      "en_US": "Power Swap"
+    },
+    {
+      "id": "msg_0750_00385",
+      "en_US": "Guard Swap"
+    },
+    {
+      "id": "msg_0750_00386",
+      "en_US": "Punishment"
+    },
+    {
+      "id": "msg_0750_00387",
+      "en_US": "Last Resort"
+    },
+    {
+      "id": "msg_0750_00388",
+      "en_US": "Worry Seed"
+    },
+    {
+      "id": "msg_0750_00389",
+      "en_US": "Sucker Punch"
+    },
+    {
+      "id": "msg_0750_00390",
+      "en_US": "Toxic Spikes"
+    },
+    {
+      "id": "msg_0750_00391",
+      "en_US": "Heart Swap"
+    },
+    {
+      "id": "msg_0750_00392",
+      "en_US": "Aqua Ring"
+    },
+    {
+      "id": "msg_0750_00393",
+      "en_US": "Magnet Rise"
+    },
+    {
+      "id": "msg_0750_00394",
+      "en_US": "Flare Blitz"
+    },
+    {
+      "id": "msg_0750_00395",
+      "en_US": "Force Palm"
+    },
+    {
+      "id": "msg_0750_00396",
+      "en_US": "Aura Sphere"
+    },
+    {
+      "id": "msg_0750_00397",
+      "en_US": "Rock Polish"
+    },
+    {
+      "id": "msg_0750_00398",
+      "en_US": "Poison Jab"
+    },
+    {
+      "id": "msg_0750_00399",
+      "en_US": "Dark Pulse"
+    },
+    {
+      "id": "msg_0750_00400",
+      "en_US": "Night Slash"
+    },
+    {
+      "id": "msg_0750_00401",
+      "en_US": "Aqua Tail"
+    },
+    {
+      "id": "msg_0750_00402",
+      "en_US": "Seed Bomb"
+    },
+    {
+      "id": "msg_0750_00403",
+      "en_US": "Air Slash"
+    },
+    {
+      "id": "msg_0750_00404",
+      "en_US": "X-Scissor"
+    },
+    {
+      "id": "msg_0750_00405",
+      "en_US": "Bug Buzz"
+    },
+    {
+      "id": "msg_0750_00406",
+      "en_US": "Dragon Pulse"
+    },
+    {
+      "id": "msg_0750_00407",
+      "en_US": "Dragon Rush"
+    },
+    {
+      "id": "msg_0750_00408",
+      "en_US": "Power Gem"
+    },
+    {
+      "id": "msg_0750_00409",
+      "en_US": "Drain Punch"
+    },
+    {
+      "id": "msg_0750_00410",
+      "en_US": "Vacuum Wave"
+    },
+    {
+      "id": "msg_0750_00411",
+      "en_US": "Focus Blast"
+    },
+    {
+      "id": "msg_0750_00412",
+      "en_US": "Energy Ball"
+    },
+    {
+      "id": "msg_0750_00413",
+      "en_US": "Brave Bird"
+    },
+    {
+      "id": "msg_0750_00414",
+      "en_US": "Earth Power"
+    },
+    {
+      "id": "msg_0750_00415",
+      "en_US": "Switcheroo"
+    },
+    {
+      "id": "msg_0750_00416",
+      "en_US": "Giga Impact"
+    },
+    {
+      "id": "msg_0750_00417",
+      "en_US": "Nasty Plot"
+    },
+    {
+      "id": "msg_0750_00418",
+      "en_US": "Bullet Punch"
+    },
+    {
+      "id": "msg_0750_00419",
+      "en_US": "Avalanche"
+    },
+    {
+      "id": "msg_0750_00420",
+      "en_US": "Ice Shard"
+    },
+    {
+      "id": "msg_0750_00421",
+      "en_US": "Shadow Claw"
+    },
+    {
+      "id": "msg_0750_00422",
+      "en_US": "Thunder Fang"
+    },
+    {
+      "id": "msg_0750_00423",
+      "en_US": "Ice Fang"
+    },
+    {
+      "id": "msg_0750_00424",
+      "en_US": "Fire Fang"
+    },
+    {
+      "id": "msg_0750_00425",
+      "en_US": "Shadow Sneak"
+    },
+    {
+      "id": "msg_0750_00426",
+      "en_US": "Mud Bomb"
+    },
+    {
+      "id": "msg_0750_00427",
+      "en_US": "Psycho Cut"
+    },
+    {
+      "id": "msg_0750_00428",
+      "en_US": "Zen Headbutt"
+    },
+    {
+      "id": "msg_0750_00429",
+      "en_US": "Mirror Shot"
+    },
+    {
+      "id": "msg_0750_00430",
+      "en_US": "Flash Cannon"
+    },
+    {
+      "id": "msg_0750_00431",
+      "en_US": "Rock Climb"
+    },
+    {
+      "id": "msg_0750_00432",
+      "en_US": "Defog"
+    },
+    {
+      "id": "msg_0750_00433",
+      "en_US": "Trick Room"
+    },
+    {
+      "id": "msg_0750_00434",
+      "en_US": "Draco Meteor"
+    },
+    {
+      "id": "msg_0750_00435",
+      "en_US": "Discharge"
+    },
+    {
+      "id": "msg_0750_00436",
+      "en_US": "Lava Plume"
+    },
+    {
+      "id": "msg_0750_00437",
+      "en_US": "Leaf Storm"
+    },
+    {
+      "id": "msg_0750_00438",
+      "en_US": "Power Whip"
+    },
+    {
+      "id": "msg_0750_00439",
+      "en_US": "Rock Wrecker"
+    },
+    {
+      "id": "msg_0750_00440",
+      "en_US": "Cross Poison"
+    },
+    {
+      "id": "msg_0750_00441",
+      "en_US": "Gunk Shot"
+    },
+    {
+      "id": "msg_0750_00442",
+      "en_US": "Iron Head"
+    },
+    {
+      "id": "msg_0750_00443",
+      "en_US": "Magnet Bomb"
+    },
+    {
+      "id": "msg_0750_00444",
+      "en_US": "Stone Edge"
+    },
+    {
+      "id": "msg_0750_00445",
+      "en_US": "Captivate"
+    },
+    {
+      "id": "msg_0750_00446",
+      "en_US": "Stealth Rock"
+    },
+    {
+      "id": "msg_0750_00447",
+      "en_US": "Grass Knot"
+    },
+    {
+      "id": "msg_0750_00448",
+      "en_US": "Chatter"
+    },
+    {
+      "id": "msg_0750_00449",
+      "en_US": "Judgment"
+    },
+    {
+      "id": "msg_0750_00450",
+      "en_US": "Bug Bite"
+    },
+    {
+      "id": "msg_0750_00451",
+      "en_US": "Charge Beam"
+    },
+    {
+      "id": "msg_0750_00452",
+      "en_US": "Wood Hammer"
+    },
+    {
+      "id": "msg_0750_00453",
+      "en_US": "Aqua Jet"
+    },
+    {
+      "id": "msg_0750_00454",
+      "en_US": "Attack Order"
+    },
+    {
+      "id": "msg_0750_00455",
+      "en_US": "Defend Order"
+    },
+    {
+      "id": "msg_0750_00456",
+      "en_US": "Heal Order"
+    },
+    {
+      "id": "msg_0750_00457",
+      "en_US": "Head Smash"
+    },
+    {
+      "id": "msg_0750_00458",
+      "en_US": "Double Hit"
+    },
+    {
+      "id": "msg_0750_00459",
+      "en_US": "Roar of Time"
+    },
+    {
+      "id": "msg_0750_00460",
+      "en_US": "Spacial Rend"
+    },
+    {
+      "id": "msg_0750_00461",
+      "en_US": "Lunar Dance"
+    },
+    {
+      "id": "msg_0750_00462",
+      "en_US": "Crush Grip"
+    },
+    {
+      "id": "msg_0750_00463",
+      "en_US": "Magma Storm"
+    },
+    {
+      "id": "msg_0750_00464",
+      "en_US": "Dark Void"
+    },
+    {
+      "id": "msg_0750_00465",
+      "en_US": "Seed Flare"
+    },
+    {
+      "id": "msg_0750_00466",
+      "en_US": "Ominous Wind"
+    },
+    {
+      "id": "msg_0750_00467",
+      "en_US": "Shadow Force"
+    }
+  ]
+}

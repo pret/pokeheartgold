@@ -1,4 +1,4 @@
-	.include "asm/macros.inc"
+	.include "macros.inc"
 	.include "nitro.inc"
 	.include "global.inc"
 
@@ -18510,7 +18510,7 @@ _020E3D34:
 	str r2, [r4], #4
 _020E3D38:
 	b _020E3ADC
-_020E3D3C:
+_020E3D3C: #@end
 	add sp, sp, #4
 	sub r4, r4, #4
 	cmp r4, sp
@@ -18525,10 +18525,10 @@ _020E3D5C:
 	add r0, r0, #4
 _020E3D60:
 	beq _020E3D68
-	b _020E3D6C
+	b _020E3D6C ;@fin
 _020E3D68:
 	add sp, sp, r0
-_020E3D6C:
+_020E3D6C: ;@fin
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	bx lr
 	arm_func_end MATH_QSort

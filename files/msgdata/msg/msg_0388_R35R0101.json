@@ -1,0 +1,154 @@
+{
+  "key": 42086,
+  "messages": [
+    {
+      "id": "msg_0388_R35R0101_00000",
+      "en_US": [
+        "Excuse me, kid!\n",
+        "I received this letter the other day\f",
+        "from a friend of mine.\r",
+        "Here’s the reply that I wrote.\r",
+        "I am stuck here and was wondering\n",
+        "if you could deliver it...\r",
+        "He’s on Route 31.\f",
+        "Can you help a guy out? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0388_R35R0101_00001",
+      "en_US": [
+        "Oh... Never mind, then...\n",
+        "You must be busy, too."
+      ]
+    },
+    {
+      "id": "msg_0388_R35R0101_00002",
+      "en_US": [
+        "Huh?\n",
+        "Your party is full!"
+      ]
+    },
+    {
+      "id": "msg_0388_R35R0101_00003",
+      "en_US": "Wow, thanks!\r"
+    },
+    {
+      "id": "msg_0388_R35R0101_00004",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} received the\n",
+        "SPEAROW with Mail!"
+      ]
+    },
+    {
+      "id": "msg_0388_R35R0101_00005",
+      "en_US": [
+        "My friend is on Route 31.\r",
+        "He looks obviously eager to read\n",
+        "letters, so you’ll know who he is\f",
+        "right away!"
+      ]
+    },
+    {
+      "id": "msg_0388_R35R0101_00006",
+      "en_US": [
+        "My friend is on Route 31.\r",
+        "Oh, yeah.\n",
+        "There was a weird tree\f",
+        "blocking the road.\f",
+        "I wonder if it’s been cleared?"
+      ]
+    },
+    {
+      "id": "msg_0388_R35R0101_00007",
+      "en_US": [
+        "Thank you for making the delivery!\r",
+        "...What about a cave exploration?\n",
+        "Ah, you can go right through here.\r",
+        "I want you to have this for\n",
+        "your kindness!\r"
+      ]
+    },
+    {
+      "id": "msg_0388_R35R0101_00008",
+      "en_US": [
+        "My pal was snoozing, right?\n",
+        "Heh, he’s always sleeping."
+      ]
+    },
+    {
+      "id": "msg_0388_R35R0101_00009",
+      "en_US": [
+        "What?!\n",
+        "You lost the Mail?\f",
+        "Oh, well. That’s OK.\f",
+        "Don’t worry about it."
+      ]
+    },
+    {
+      "id": "msg_0388_R35R0101_00010",
+      "en_US": "Everything is fine!"
+    },
+    {
+      "id": "msg_0388_R35R0101_00011",
+      "en_US": [
+        "A strange tree is blocking the road.\n",
+        "It wriggles around if you talk to it.\r",
+        "I heard it became wild when someone\n",
+        "watered it with a SquirtBottle."
+      ]
+    },
+    {
+      "id": "msg_0388_R35R0101_00012",
+      "en_US": [
+        "I like the Pokémon Lullaby they play\n",
+        "on the radio."
+      ]
+    },
+    {
+      "id": "msg_0388_R35R0101_00013",
+      "en_US": [
+        "I can’t believe such a tiny change\n",
+        "turns the Pokégear into a radio!\r",
+        "Oh, your Pokégear doesn’t have\n",
+        "that feature yet?\r",
+        "It’s a shame!\r",
+        "They happen to give quizzes at the\n",
+        "Radio Tower reception on the\f",
+        "first floor.\r",
+        "If you can answer them correctly,\n",
+        "they’ll give you the Radio Card!\r",
+        "You better try it while they\n",
+        "have some left!"
+      ]
+    },
+    {
+      "id": "msg_0388_R35R0101_00014",
+      "en_US": [
+        "I may not look it, but I’m pretty good\n",
+        "at mechanics.\r",
+        "Do you want to know how to\n",
+        "listen to the radio? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0388_R35R0101_00015",
+      "en_US": [
+        "You open your Pokégear and press the\n",
+        "radio button. Then you see the screen\f",
+        "for tuning in a signal.\r",
+        "The middle of the screen is the\n",
+        "radio-reception map.\r",
+        "You can move the blinking mark on the\n",
+        "map around to tune in to different\f",
+        "radio shows.\r",
+        "For those who think this is a pain,\n",
+        "there are four channels, two on each\f",
+        "side, for easy tuning."
+      ]
+    },
+    {
+      "id": "msg_0388_R35R0101_00016",
+      "en_US": "Was I being a backseat driver?"
+    }
+  ]
+}

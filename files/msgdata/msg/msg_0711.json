@@ -1,0 +1,117 @@
+{
+  "key": 51558,
+  "messages": [
+    {
+      "id": "msg_0711_00000",
+      "en_US": "Anthony"
+    },
+    {
+      "id": "msg_0711_00001",
+      "en_US": [
+        "By the way, I’m a Hiker, so I often go\n",
+        "to mountains and caves.\r",
+        "I don’t usually go to the town.\r",
+        "I bet you go to all kinds of towns on\n",
+        "your journey, don’t you?\r",
+        "You know, if we were to trade phone\n",
+        "numbers, then we could exchange\f",
+        "all kinds of information, yes? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0711_00002",
+      "en_US": [
+        "I’ll give you a call when I think of a\n",
+        "good, heart-warming story, OK?"
+      ]
+    },
+    {
+      "id": "msg_0711_00003",
+      "en_US": [
+        "That’s so sad. I might just end up\n",
+        "secluding myself in the mountain..."
+      ]
+    },
+    {
+      "id": "msg_0711_00004",
+      "en_US": [
+        "What do you say?\n",
+        "Would you like to exchange numbers\f",
+        "with another adventurer? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0711_00005",
+      "en_US": [
+        "You’re nearby, and yet you’re going to\n",
+        "call me on the phone?\r",
+        "Am I that “dazzling” that you need to\n",
+        "keep your distance?"
+      ]
+    },
+    {
+      "id": "msg_0711_00006",
+      "en_US": [
+        "The other day, I was watching my\n",
+        "{STRVAR_1 0, 10, 0} eat some Berries.\f",
+        "It looked like it was enjoying its meal,\f",
+        "so I decided to try some.\r",
+        "I’m not sure if people should eat that\n",
+        "stuff, but it was delicious!\r",
+        "All right then!\n",
+        "Be good!"
+      ]
+    },
+    {
+      "id": "msg_0711_00007",
+      "en_US": [
+        "Lately, I’ve been running across wild\n",
+        "{STRVAR_1 0, 11, 0} quite often.\f",
+        "They’re easily taken care of.\r",
+        "All right then!\n",
+        "Be good!"
+      ]
+    },
+    {
+      "id": "msg_0711_00008",
+      "en_US": [
+        "Oh yeah, I was battling this\n",
+        "{STRVAR_1 0, 11, 0} the other day...\f",
+        "It took off when I got distracted by a\f",
+        "passing Beauty.\r",
+        "Learn from my mistake--always stay\n",
+        "focused on the job at hand!\r",
+        "All right then!\n",
+        "Be good!"
+      ]
+    },
+    {
+      "id": "msg_0711_00009",
+      "en_US": [
+        "Come on--let’s battle right now!\r",
+        "{STRVAR_1 4, 3, 0} is where I am.\n",
+        "Come on over if you feel up to it!"
+      ]
+    },
+    {
+      "id": "msg_0711_00010",
+      "en_US": [
+        "Hello! You haven’t forgotten about our\n",
+        "battle, have you?\r",
+        "{STRVAR_1 4, 3, 0}! I’m waiting!"
+      ]
+    },
+    {
+      "id": "msg_0711_00011",
+      "en_US": [
+        "I wonder why I like mountains so much...\r",
+        "It wouldn’t be wrong to say I also like\n",
+        "the Pokémon that dwell on mountains.\r",
+        "But I bet that the number one reason is\n",
+        "that I just like mountains.\r",
+        "I have no idea what a Swimmer♂’s\n",
+        "thinking..."
+      ]
+    }
+  ]
+}

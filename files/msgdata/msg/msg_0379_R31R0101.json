@@ -1,0 +1,60 @@
+{
+  "key": 58470,
+  "messages": [
+    {
+      "id": "msg_0379_R31R0101_00000",
+      "en_US": [
+        "You must be an adventuring Trainer.\n",
+        "Did you challenge the Pokémon Gym yet?"
+      ]
+    },
+    {
+      "id": "msg_0379_R31R0101_00001",
+      "garbage": 93
+    },
+    {
+      "id": "msg_0379_R31R0101_00002",
+      "en_US": [
+        "Lyra: I knew it was you, {STRVAR_1 3, 0, 0}!\r",
+        "How did you get past me?\n",
+        "Here is something neat for\f",
+        "surprising me, {STRVAR_1 3, 0, 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0379_R31R0101_00003",
+      "en_US": [
+        "Ethan: I knew it was you, {STRVAR_1 3, 0, 0}!\r",
+        "How did you get past me?\n",
+        "Here is something neat for\f",
+        "surprising me, {STRVAR_1 3, 0, 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0379_R31R0101_00004",
+      "en_US": [
+        "The Vs. Recorder can record\n",
+        "your Pokémon battles.\r",
+        "I have to go now!\f",
+        "I won’t let you pass me again!\r"
+      ]
+    },
+    {
+      "id": "msg_0379_R31R0101_00005",
+      "en_US": [
+        "The Vs. Recorder can record\n",
+        "your Pokémon battles.\r",
+        "I have to go now!\f",
+        "I won’t let you pass me again!\r"
+      ]
+    },
+    {
+      "id": "msg_0379_R31R0101_00006",
+      "en_US": "Let’s go, MARILL!\r"
+    },
+    {
+      "id": "msg_0379_R31R0101_00007",
+      "en_US": "Come on, MARILL!\r"
+    }
+  ]
+}

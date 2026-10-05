@@ -1,0 +1,627 @@
+{
+  "key": 11095,
+  "messages": [
+    {
+      "id": "msg_0246_00000",
+      "en_US": [
+        "Ding-ding! Time’s up!\n",
+        "The Bug-Catching Contest is over.\r"
+      ]
+    },
+    {
+      "id": "msg_0246_00001",
+      "en_US": [
+        "Ding-ding! You’ve run out of Poké\n",
+        "Balls. The Bug-Catching Contest’s over.\r"
+      ]
+    },
+    {
+      "id": "msg_0246_00002",
+      "garbage": 34
+    },
+    {
+      "id": "msg_0246_00003",
+      "en_US": [
+        "You still have {STRVAR_1 51, 0, 0} minute(s) left.\n",
+        "Do you want to finish now?{YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0246_00004",
+      "en_US": [
+        "Today’s Tuesday.\r",
+        "That means the Bug-Catching Contest is\n",
+        "on today.\r",
+        "The rules are simple.\r",
+        "Using one of your Pokémon, catch a\n",
+        "Bug-type Pokémon to be judged.\r",
+        "Would you like to give it a try?{YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0246_00005",
+      "en_US": [
+        "Today’s Thursday.\r",
+        "That means the Bug-Catching Contest is\n",
+        "on today.\r",
+        "The rules are simple.\r",
+        "Using one of your Pokémon, catch a\n",
+        "Bug-type Pokémon to be judged.\r",
+        "Would you like to give it a try?{YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0246_00006",
+      "en_US": [
+        "Today’s Saturday.\r",
+        "That means the Bug-Catching Contest is\n",
+        "on today.\r",
+        "The rules are simple.\r",
+        "Using one of your Pokémon, catch a\n",
+        "Bug-type Pokémon to be judged.\r",
+        "Would you like to give it a try?{YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0246_00007",
+      "en_US": [
+        "The Bug-Catching Contest is held on\n",
+        "Tuesday, Thursday, and Saturday.\r",
+        "Not only do you earn a prize just for\n",
+        "participating, you also get to keep the\f",
+        "last bug Pokémon you caught."
+      ]
+    },
+    {
+      "id": "msg_0246_00008",
+      "garbage": 5
+    },
+    {
+      "id": "msg_0246_00009",
+      "garbage": 6
+    },
+    {
+      "id": "msg_0246_00010",
+      "en_US": [
+        "Uh-oh...\n",
+        "You have more than one Pokémon.\r",
+        "You’ll have to use {STRVAR_1 1, 0, 0}, the\n",
+        "first Pokémon in your party.\r",
+        "Is that OK with you? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0246_00011",
+      "garbage": 5
+    },
+    {
+      "id": "msg_0246_00012",
+      "garbage": 6
+    },
+    {
+      "id": "msg_0246_00013",
+      "en_US": [
+        "Fine, we’ll hold your other Pokémon\n",
+        "while you compete.\r",
+        "{STRVAR_1 3, 0, 0}’s Pokémon were left with\n",
+        "the Contest Helper.\r"
+      ]
+    },
+    {
+      "id": "msg_0246_00014",
+      "en_US": [
+        "Here are the Sport Balls for the\n",
+        "Contest.\r",
+        "{STRVAR_1 3, 0, 0} received 20 Sport Balls.\r"
+      ]
+    },
+    {
+      "id": "msg_0246_00015",
+      "en_US": [
+        "The person who gets the strongest bug\n",
+        "Pokémon is the winner.\r",
+        "You have 20 minutes.\r",
+        "If you run out of Sport Balls, you’re\n",
+        "done.\r",
+        "You can keep the last Pokémon you\n",
+        "catch as your own.\r",
+        "Go out and catch the strongest\n",
+        "Bug-type Pokémon you can find!\r"
+      ]
+    },
+    {
+      "id": "msg_0246_00016",
+      "en_US": [
+        "Oh no!\r",
+        "I’m sorry, you don’t have enough\n",
+        "room to catch any more Pokémon."
+      ]
+    },
+    {
+      "id": "msg_0246_00017",
+      "en_US": [
+        "OK. We hope you’ll take part in the\n",
+        "future."
+      ]
+    },
+    {
+      "id": "msg_0246_00018",
+      "en_US": [
+        "Today’s Bug-Catching Contest is over.\r",
+        "We hope you will participate again in\n",
+        "the future."
+      ]
+    },
+    {
+      "id": "msg_0246_00019",
+      "en_US": [
+        "Some Pokémon can only be seen in\n",
+        "the Park."
+      ]
+    },
+    {
+      "id": "msg_0246_00020",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}?\r",
+        "Here’s the prize we were holding\n",
+        "for you.\r"
+      ]
+    },
+    {
+      "id": "msg_0246_00021",
+      "en_US": [
+        "Uh-oh...\n",
+        "Your Bag is full, {STRVAR_1 3, 0, 0}.\r",
+        "We’ll hold on to your prize.\n",
+        "Please make room, then come see me."
+      ]
+    },
+    {
+      "id": "msg_0246_00022",
+      "en_US": [
+        "We hope you’ll take part in a\n",
+        "Bug-Catching Contest in the future!"
+      ]
+    },
+    {
+      "id": "msg_0246_00023",
+      "en_US": [
+        "You still have {STRVAR_1 51, 0, 0} minute(s) left.\n",
+        "Do you want to finish now? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0246_00024",
+      "garbage": 5
+    },
+    {
+      "id": "msg_0246_00025",
+      "garbage": 6
+    },
+    {
+      "id": "msg_0246_00026",
+      "en_US": [
+        "OK. Please go back outside and\n",
+        "finish up.\r"
+      ]
+    },
+    {
+      "id": "msg_0246_00027",
+      "en_US": [
+        "OK. Please wait in the National Park for\n",
+        "the announcement of the winners.\r"
+      ]
+    },
+    {
+      "id": "msg_0246_00028",
+      "en_US": [
+        "Please reorder your Pokémon,\n",
+        "then come see me."
+      ]
+    },
+    {
+      "id": "msg_0246_00029",
+      "en_US": [
+        "We will now judge the Pokémon you’ve\n",
+        "caught.\r",
+        "......\n",
+        "......\r",
+        "We have chosen the winners!\n",
+        "Are you ready for this?\r"
+      ]
+    },
+    {
+      "id": "msg_0246_00030",
+      "en_US": [
+        "Placing third is {STRVAR_1 3, 0, 0}, who\n",
+        "caught a writhing {STRVAR_1 0, 1, 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0246_00031",
+      "en_US": [
+        "Placing third is the {STRVAR_1 14, 2, 0}\n",
+        "{STRVAR_1 3, 0, 0}, who caught a writhing\f",
+        "{STRVAR_1 0, 1, 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0246_00032",
+      "en_US": "The score was {STRVAR_1 52, 3, 0} points!\r"
+    },
+    {
+      "id": "msg_0246_00033",
+      "en_US": [
+        "Placing second is {STRVAR_1 3, 0, 0}, who\n",
+        "caught a wriggling {STRVAR_1 0, 1, 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0246_00034",
+      "en_US": [
+        "Placing second is the {STRVAR_1 14, 2, 0}\n",
+        "{STRVAR_1 3, 0, 0}, who caught a\f",
+        "wriggling {STRVAR_1 0, 1, 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0246_00035",
+      "en_US": [
+        "This Bug-Catching Contest winner is...\r",
+        "{STRVAR_1 3, 0, 0}, who caught a whopping\n",
+        "{STRVAR_1 0, 1, 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0246_00036",
+      "en_US": [
+        "This Bug-Catching Contest winner is...\r",
+        "The {STRVAR_1 14, 2, 0} {STRVAR_1 3, 0, 0}, who\n",
+        "caught a whopping {STRVAR_1 0, 1, 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0246_00037",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}, the First Place\n",
+        "finisher, wins the {STRVAR_1 8, 3, 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0246_00038",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}, the Second Place\n",
+        "finisher, wins the {STRVAR_1 8, 3, 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0246_00039",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}, the Third Place\n",
+        "finisher, wins the {STRVAR_1 8, 3, 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0246_00040",
+      "en_US": [
+        "Everyone else gets a {STRVAR_1 8, 3, 0} as\n",
+        "a consolation prize!\r"
+      ]
+    },
+    {
+      "id": "msg_0246_00041",
+      "en_US": [
+        "Uh-oh...\n",
+        "Your Bag is full, {STRVAR_1 3, 0, 0}.\r",
+        "We’ll hold on to your prize.\n",
+        "Please make room, then come see me.\r"
+      ]
+    },
+    {
+      "id": "msg_0246_00042",
+      "en_US": [
+        "We hope you’ll take part in a\n",
+        "Bug-Catching Contest in the future!\r"
+      ]
+    },
+    {
+      "id": "msg_0246_00043",
+      "en_US": [
+        "Give a nickname to the\n",
+        "{STRVAR_1 0, 1, 0} you caught? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0246_00044",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}?\r",
+        "Here’s the prize we were holding\n",
+        "for you.\r"
+      ]
+    },
+    {
+      "id": "msg_0246_00045",
+      "en_US": [
+        "Uh-oh...\n",
+        "Your Bag is full, {STRVAR_1 3, 0, 0}.\r",
+        "We’ll hold on to your prize.\n",
+        "Please make room, then come see me.\r"
+      ]
+    },
+    {
+      "id": "msg_0246_00046",
+      "en_US": [
+        "Your party’s full, so {STRVAR_1 1, 5, 0} was\n",
+        "sent to your Box in Bill’s PC.\r"
+      ]
+    },
+    {
+      "id": "msg_0246_00047",
+      "en_US": [
+        "We’ll return the Pokémon we kept for\n",
+        "you. Here you go!\r"
+      ]
+    },
+    {
+      "id": "msg_0246_00048",
+      "en_US": [
+        "Don: Got it? I’m going to win! Don’t\n",
+        "bother me."
+      ]
+    },
+    {
+      "id": "msg_0246_00049",
+      "en_US": [
+        "Don: Luck plays a big part in this.\r",
+        "You never know if Pokémon will\n",
+        "appear."
+      ]
+    },
+    {
+      "id": "msg_0246_00050",
+      "en_US": [
+        "Don: You won? The winner is you!?\r",
+        "I’m so jealous... It’d be fantastic\n",
+        "to be the winner..."
+      ]
+    },
+    {
+      "id": "msg_0246_00051",
+      "en_US": [
+        "Ed: My PARASECT makes Pokémon fall\n",
+        "asleep with Spore."
+      ]
+    },
+    {
+      "id": "msg_0246_00052",
+      "en_US": [
+        "Ed: You can’t win with Pokémon that are\n",
+        "run down or low on HP."
+      ]
+    },
+    {
+      "id": "msg_0246_00053",
+      "en_US": [
+        "Ed: I envy you. I just couldn’t do it\n",
+        "this time."
+      ]
+    },
+    {
+      "id": "msg_0246_00054",
+      "en_US": [
+        "Abby: I’ve been training Pokémon that\n",
+        "inflict status problems for\f",
+        "this contest."
+      ]
+    },
+    {
+      "id": "msg_0246_00055",
+      "en_US": [
+        "Abby: I heard that using Pokémon with\n",
+        "beautiful colors makes it easier to win.\f",
+        "I wonder if that’s true?"
+      ]
+    },
+    {
+      "id": "msg_0246_00056",
+      "en_US": [
+        "Abby: Wonderful! You sparkle and gleam\n",
+        "right now. You really do!"
+      ]
+    },
+    {
+      "id": "msg_0246_00057",
+      "en_US": [
+        "William: Winning? I’m more interested in\n",
+        "finding rare Pokémon."
+      ]
+    },
+    {
+      "id": "msg_0246_00058",
+      "en_US": [
+        "William: Well, I’m satisfied because\n",
+        "I caught a Pokémon I wanted."
+      ]
+    },
+    {
+      "id": "msg_0246_00059",
+      "en_US": [
+        "William: You’re the winner? What did you\n",
+        "catch? Show me, show me!"
+      ]
+    },
+    {
+      "id": "msg_0246_00060",
+      "en_US": [
+        "Benny: ...... ...... ......\n",
+        "...... ...... Ssssh!\r",
+        "You’ll scare off SCYTHER.\n",
+        "I’ll talk to you later."
+      ]
+    },
+    {
+      "id": "msg_0246_00061",
+      "en_US": [
+        "Benny: Listen, I caught a SCYTHER\n",
+        "before, but I didn’t win."
+      ]
+    },
+    {
+      "id": "msg_0246_00062",
+      "en_US": [
+        "Benny: I just came to see how things\n",
+        "were going today, you know?\r",
+        "I’ll really try my best next time!"
+      ]
+    },
+    {
+      "id": "msg_0246_00063",
+      "en_US": [
+        "Barry: You should weaken bug Pokémon\n",
+        "first, then throw a Poké Ball."
+      ]
+    },
+    {
+      "id": "msg_0246_00064",
+      "en_US": [
+        "Barry: It’s easier to win if you get a\n",
+        "high-level bug Pokémon. But I think\f",
+        "they also consider some other points."
+      ]
+    },
+    {
+      "id": "msg_0246_00065",
+      "en_US": [
+        "Barry: That Pokémon you caught...\n",
+        "It’s awesome!"
+      ]
+    },
+    {
+      "id": "msg_0246_00066",
+      "en_US": "Cindy: I really love bug Pokémon!"
+    },
+    {
+      "id": "msg_0246_00067",
+      "en_US": [
+        "Cindy: I really love bug Pokémon!\r",
+        "Did I already say that?"
+      ]
+    },
+    {
+      "id": "msg_0246_00068",
+      "en_US": [
+        "Cindy: Congratulations on winning!\n",
+        "By the way...\r",
+        "Did I mention that I really love bug\n",
+        "Pokémon?"
+      ]
+    },
+    {
+      "id": "msg_0246_00069",
+      "en_US": [
+        "Josh: I’ve been collecting bug Pokémon\n",
+        "since I was just a baby.\r",
+        "There’s no way I’m going to lose!"
+      ]
+    },
+    {
+      "id": "msg_0246_00070",
+      "en_US": [
+        "Josh: I heard that somebody won with a\n",
+        "CATERPIE!"
+      ]
+    },
+    {
+      "id": "msg_0246_00071",
+      "en_US": [
+        "Josh: It’s called a Bug-Catching\n",
+        "Contest, not a Bird-Catching Contest!\r",
+        "You, of all people, should know that.\n",
+        "After all, you won!"
+      ]
+    },
+    {
+      "id": "msg_0246_00072",
+      "en_US": [
+        "Samuel: What?\n",
+        "If you’ve got the time to chat, go find\f",
+        "some bug Pokémon."
+      ]
+    },
+    {
+      "id": "msg_0246_00073",
+      "en_US": [
+        "Samuel: So... I thought I would\n",
+        "score higher..."
+      ]
+    },
+    {
+      "id": "msg_0246_00074",
+      "en_US": [
+        "Samuel: It’s so disappointing...\n",
+        "I won’t forget this defeat, and..."
+      ]
+    },
+    {
+      "id": "msg_0246_00075",
+      "en_US": [
+        "Kipp: I’ve studied bug Pokémon a lot.\n",
+        "I’m going to win for sure."
+      ]
+    },
+    {
+      "id": "msg_0246_00076",
+      "en_US": [
+        "Kipp: I study a lot, but that’s not\n",
+        "enough to win."
+      ]
+    },
+    {
+      "id": "msg_0246_00077",
+      "en_US": [
+        "Kipp: Could you give me some tips?\n",
+        "I want to win!"
+      ]
+    },
+    {
+      "id": "msg_0246_00078",
+      "en_US": "{TRNAME}Don"
+    },
+    {
+      "id": "msg_0246_00079",
+      "en_US": "{TRNAME}Ed"
+    },
+    {
+      "id": "msg_0246_00080",
+      "en_US": "{TRNAME}Abby"
+    },
+    {
+      "id": "msg_0246_00081",
+      "en_US": "{TRNAME}William"
+    },
+    {
+      "id": "msg_0246_00082",
+      "en_US": "{TRNAME}Benny"
+    },
+    {
+      "id": "msg_0246_00083",
+      "en_US": "{TRNAME}Barry"
+    },
+    {
+      "id": "msg_0246_00084",
+      "en_US": "{TRNAME}Cindy"
+    },
+    {
+      "id": "msg_0246_00085",
+      "en_US": "{TRNAME}Josh"
+    },
+    {
+      "id": "msg_0246_00086",
+      "en_US": "{TRNAME}Samuel"
+    },
+    {
+      "id": "msg_0246_00087",
+      "en_US": "{TRNAME}Kipp"
+    }
+  ]
+}

@@ -1,0 +1,151 @@
+{
+  "key": 63124,
+  "messages": [
+    {
+      "id": "msg_0684_00000",
+      "en_US": "Wade"
+    },
+    {
+      "id": "msg_0684_00001",
+      "en_US": [
+        "You’re awesome! I like you!\n",
+        "I look for Pokémon here every day.\r",
+        "When I’m in the tall grass, I find all\n",
+        "kinds of Berries.\r",
+        "If you’d like, I’ll share some.\n",
+        "Could I get your phone number? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0684_00002",
+      "en_US": [
+        "You’ll hear from me as soon as I\n",
+        "find anything that you might like."
+      ]
+    },
+    {
+      "id": "msg_0684_00003",
+      "en_US": [
+        "Oh well.\r",
+        "Don’t be shy if you want to get my\n",
+        "number."
+      ]
+    },
+    {
+      "id": "msg_0684_00004",
+      "en_US": [
+        "When I’m in the tall grass, I find all\n",
+        "kinds of Berries.\r",
+        "If you’d like, I’ll share some.\n",
+        "Could I get your phone number? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0684_00005",
+      "en_US": [
+        "Good to see you!\n",
+        "See? This is what I found.\f",
+        "It’s for you!\r"
+      ]
+    },
+    {
+      "id": "msg_0684_00006",
+      "en_US": [
+        "You’re nearby aren’t you? Well, then\n",
+        "just come talk in person!"
+      ]
+    },
+    {
+      "id": "msg_0684_00007",
+      "en_US": [
+        "Are your Pokémon growing?\r",
+        "My Pokémon are growing a bit too\n",
+        "quickly for me. It’s overwhelming!\r",
+        "{STRVAR_1 0, 10, 0}’s growing especially\n",
+        "quickly. I think it’ll get tough.\r",
+        "See you later!"
+      ]
+    },
+    {
+      "id": "msg_0684_00008",
+      "en_US": [
+        "Oh yeah, we knocked out a wild\n",
+        "{STRVAR_1 0, 11, 0} with one hit a while back.\r",
+        "It went down so easily, I felt a\n",
+        "little sorry for the poor thing.\r",
+        "See you later!"
+      ]
+    },
+    {
+      "id": "msg_0684_00009",
+      "en_US": [
+        "Oh yeah, a wild {STRVAR_1 0, 11, 0} got\n",
+        "away from me at the last second.\r",
+        "I know it’s a common Pokémon...\r",
+        "But it does annoy me that it got\n",
+        "away when I almost had it.\r",
+        "See you later!"
+      ]
+    },
+    {
+      "id": "msg_0684_00010",
+      "en_US": [
+        "Do you feel like a Pokémon battle?\n",
+        "It won’t be like last time!\r",
+        "{STRVAR_1 4, 3, 0}’s where I’ll be.\n",
+        "Let me know when you get there."
+      ]
+    },
+    {
+      "id": "msg_0684_00011",
+      "en_US": [
+        "Let’s battle already!\r",
+        "{STRVAR_1 4, 3, 0} is where I am.\n",
+        "Please get here as soon as you can!"
+      ]
+    },
+    {
+      "id": "msg_0684_00012",
+      "en_US": [
+        "Huh? Berries?\r",
+        "Sorry, I haven’t found any yet.\n",
+        "I’ll call you if I find any.\f",
+        "Will you please wait?"
+      ]
+    },
+    {
+      "id": "msg_0684_00013",
+      "en_US": [
+        "I found all kinds of Berries. If you\n",
+        "want, I’ll share some with you.\r",
+        "I’ll be waiting on {STRVAR_1 4, 3, 0}."
+      ]
+    },
+    {
+      "id": "msg_0684_00014",
+      "en_US": [
+        "How come you’re not here yet?\r",
+        "{STRVAR_1 4, 3, 0} is where I am.\n",
+        "Please get here as soon as you can!"
+      ]
+    },
+    {
+      "id": "msg_0684_00015",
+      "en_US": [
+        "The Bug-Catching Contest is at the\n",
+        "National Park today.\f",
+        "Are you going, {STRVAR_1 3, 0, 0}?\r",
+        "I’m trying to make up my mind."
+      ]
+    },
+    {
+      "id": "msg_0684_00016",
+      "en_US": [
+        "The Bug-Catching Contest is at the\n",
+        "National Park today.\f",
+        "Are you going, {STRVAR_1 3, 0, 0}?\r",
+        "I’m trying to make up my mind."
+      ]
+    }
+  ]
+}

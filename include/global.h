@@ -1,14 +1,18 @@
 #ifndef POKEHEARTGOLD_GLOBAL_H
 #define POKEHEARTGOLD_GLOBAL_H
 
-#include <MSL.h>
+#ifndef PM_ASM
 #include <nitro.h>
-#include <nitro/code16.h>
+#pragma thumb on
 #include <nnsys.h>
 #include <stddef.h>
+#include <stdlib.h>
 #include <string.h>
+#endif
 
 #include "constants/global.h"
+
+#include "cw/function_target.h"
 
 #include "assert.h"
 #include "config.h" // MUST COME BEFORE ANY OTHER GAMEFREAK HEADERS

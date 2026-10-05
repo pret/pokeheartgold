@@ -1,0 +1,213 @@
+{
+  "key": 3245,
+  "messages": [
+    {
+      "id": "msg_0215_00000",
+      "en_US": "DONE!"
+    },
+    {
+      "id": "msg_0215_00001",
+      "en_US": "Is your Pokémon all dressed up?"
+    },
+    {
+      "id": "msg_0215_00002",
+      "en_US": "Would you like to save this design?"
+    },
+    {
+      "id": "msg_0215_00003",
+      "en_US": "There is no more space."
+    },
+    {
+      "id": "msg_0215_00004",
+      "garbage": 2
+    },
+    {
+      "id": "msg_0215_00005",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0215_00006",
+      "garbage": 7
+    },
+    {
+      "id": "msg_0215_00007",
+      "garbage": 7
+    },
+    {
+      "id": "msg_0215_00008",
+      "garbage": 7
+    },
+    {
+      "id": "msg_0215_00009",
+      "garbage": 7
+    },
+    {
+      "id": "msg_0215_00010",
+      "garbage": 6
+    },
+    {
+      "id": "msg_0215_00011",
+      "garbage": 7
+    },
+    {
+      "id": "msg_0215_00012",
+      "garbage": 8
+    },
+    {
+      "id": "msg_0215_00013",
+      "garbage": 6
+    },
+    {
+      "id": "msg_0215_00014",
+      "garbage": 5
+    },
+    {
+      "id": "msg_0215_00015",
+      "garbage": 7
+    },
+    {
+      "id": "msg_0215_00016",
+      "garbage": 8
+    },
+    {
+      "id": "msg_0215_00017",
+      "garbage": 8
+    },
+    {
+      "id": "msg_0215_00018",
+      "garbage": 7
+    },
+    {
+      "id": "msg_0215_00019",
+      "garbage": 121
+    },
+    {
+      "id": "msg_0215_00020",
+      "garbage": 53
+    },
+    {
+      "id": "msg_0215_00021",
+      "garbage": 51
+    },
+    {
+      "id": "msg_0215_00022",
+      "garbage": 52
+    },
+    {
+      "id": "msg_0215_00023",
+      "garbage": 52
+    },
+    {
+      "id": "msg_0215_00024",
+      "garbage": 53
+    },
+    {
+      "id": "msg_0215_00025",
+      "garbage": 86
+    },
+    {
+      "id": "msg_0215_00026",
+      "garbage": 74
+    },
+    {
+      "id": "msg_0215_00027",
+      "garbage": 85
+    },
+    {
+      "id": "msg_0215_00028",
+      "garbage": 110
+    },
+    {
+      "id": "msg_0215_00029",
+      "garbage": 25
+    },
+    {
+      "id": "msg_0215_00030",
+      "garbage": 25
+    },
+    {
+      "id": "msg_0215_00031",
+      "garbage": 25
+    },
+    {
+      "id": "msg_0215_00032",
+      "garbage": 24
+    },
+    {
+      "id": "msg_0215_00033",
+      "garbage": 25
+    },
+    {
+      "id": "msg_0215_00034",
+      "garbage": 26
+    },
+    {
+      "id": "msg_0215_00035",
+      "garbage": 24
+    },
+    {
+      "id": "msg_0215_00036",
+      "garbage": 23
+    },
+    {
+      "id": "msg_0215_00037",
+      "garbage": 25
+    },
+    {
+      "id": "msg_0215_00038",
+      "garbage": 26
+    },
+    {
+      "id": "msg_0215_00039",
+      "garbage": 26
+    },
+    {
+      "id": "msg_0215_00040",
+      "garbage": 25
+    },
+    {
+      "id": "msg_0215_00041",
+      "garbage": 76
+    },
+    {
+      "id": "msg_0215_00042",
+      "garbage": 77
+    },
+    {
+      "id": "msg_0215_00043",
+      "garbage": 11
+    },
+    {
+      "id": "msg_0215_00044",
+      "garbage": 13
+    },
+    {
+      "id": "msg_0215_00045",
+      "en_US": "{STRVAR_1 28, 0, 0}"
+    },
+    {
+      "id": "msg_0215_00046",
+      "en_US": "Communicating. Please stand by..."
+    },
+    {
+      "id": "msg_0215_00047",
+      "en_US": [
+        "You can see your Accessories on the\n",
+        "left side of the lower screen.\r",
+        "Touch an Accessory, drag it to\n",
+        "your Pokémon on the right, and\f",
+        "position it securely.\r",
+        "You can put on ten Accessories,\n",
+        "so you should check for the right\f",
+        "ones using the arrow buttons.\r",
+        "Change the background with the\n",
+        "square button at the center right.\r",
+        "OK? Let’s begin dressing up!"
+      ]
+    },
+    {
+      "id": "msg_0215_00048",
+      "garbage": 0
+    }
+  ]
+}

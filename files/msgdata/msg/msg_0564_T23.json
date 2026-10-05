@@ -1,0 +1,182 @@
+{
+  "key": 20259,
+  "messages": [
+    {
+      "id": "msg_0564_T23_00000",
+      "en_US": [
+        "Ilex Forest Ahead\n",
+        "Enter through the gate."
+      ]
+    },
+    {
+      "id": "msg_0564_T23_00001",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}: ...Tell me something.\r",
+        "Is it true that Team Rocket has\n",
+        "returned?\r",
+        "What? You beat them? Hah!\n",
+        "Quit lying.\r",
+        "Are you serious?\n",
+        "Then let’s see how good you are.\r"
+      ]
+    },
+    {
+      "id": "msg_0564_T23_00002",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}: I hate the weak.\r",
+        "Pokémon, Trainers.\n",
+        "It doesn’t matter who or what.\r",
+        "I hate to see them hanging around.\n",
+        "That goes for Team Rocket, too.\r",
+        "They think they are big and tough\n",
+        "as long as they are in a group.\r",
+        "But get them alone, and they’re weak.\n",
+        "I hate them all.\r",
+        "You stay out of my way.\n",
+        "You won’t be an exception\f",
+        "if you get in my way.\r"
+      ]
+    },
+    {
+      "id": "msg_0564_T23_00003",
+      "en_US": [
+        "Nothing is going on.\n",
+        "It’s unsafe to go in there, so I’m\f",
+        "standing guard to make sure\f",
+        "people don’t wander in.\r",
+        "Am I not a good Samaritan?"
+      ]
+    },
+    {
+      "id": "msg_0564_T23_00004",
+      "en_US": [
+        "Do you know about SlowpokeTail?\n",
+        "I heard it’s tasty!\r",
+        "Aren’t you glad I told you that?"
+      ]
+    },
+    {
+      "id": "msg_0564_T23_00005",
+      "en_US": [
+        "The SLOWPOKE have disappeared\n",
+        "from town...\r",
+        "I heard their tails are being sold\n",
+        "somewhere."
+      ]
+    },
+    {
+      "id": "msg_0564_T23_00006",
+      "en_US": [
+        "The SLOWPOKE have returned.\r",
+        "Knowing them, they could’ve just been\n",
+        "taking it easy somewhere."
+      ]
+    },
+    {
+      "id": "msg_0564_T23_00007",
+      "en_US": [
+        "Did you come to get Kurt to make\n",
+        "some Poké Balls?\f",
+        "A lot of people do just that."
+      ]
+    },
+    {
+      "id": "msg_0564_T23_00008",
+      "en_US": [
+        "Cut through Azalea and you’ll be in\n",
+        "Ilex Forest.\r",
+        "But these skinny trees make it\n",
+        "impossible to get through.\r",
+        "The Charcoal Man’s Pokémon can cut\n",
+        "down trees."
+      ]
+    },
+    {
+      "id": "msg_0564_T23_00009",
+      "en_US": [
+        "SLOWPOKE: ...\r",
+        "...\r"
+      ]
+    },
+    {
+      "id": "msg_0564_T23_00010",
+      "en_US": "...Yawn?"
+    },
+    {
+      "id": "msg_0564_T23_00011",
+      "en_US": [
+        "Azalea Town\n",
+        "Living Happily with Pokémon"
+      ]
+    },
+    {
+      "id": "msg_0564_T23_00012",
+      "en_US": [
+        "Kurt’s House\r",
+        "Apricorn and Nothing Else\n",
+        "The Stubborn Poké Ball Creator"
+      ]
+    },
+    {
+      "id": "msg_0564_T23_00013",
+      "en_US": [
+        "Azalea Town Pokémon Gym\n",
+        "Leader: Bugsy\f",
+        "The Walking Bug Pokémon Encyclopedia"
+      ]
+    },
+    {
+      "id": "msg_0564_T23_00014",
+      "en_US": [
+        "SLOWPOKE Well\n",
+        "Also known as the Rainmaker Well.\r",
+        "Locals believe that a SLOWPOKE’s\n",
+        "yawn summons the rain.\r",
+        "Records show that a SLOWPOKE’s yawn\n",
+        "ended a drought 400 years ago."
+      ]
+    },
+    {
+      "id": "msg_0564_T23_00015",
+      "en_US": [
+        "Charcoal Kiln\r",
+        "We let our FARFETCH’D fetch branches\n",
+        "for charcoal!"
+      ]
+    },
+    {
+      "id": "msg_0564_T23_00016",
+      "en_US": [
+        "Who are you?\n",
+        "You don’t know us?\r",
+        "We are...\n",
+        "Team Rocket!\r",
+        "...What?\n",
+        "We broke up a while ago?\r",
+        "Give me a break!\n",
+        "We have not broken up!\r",
+        "Actually we did once.\n",
+        "But we have come back to\f",
+        "pursue Giovanni’s ambition.\r",
+        "Enough talking.\n",
+        "Shut up and just beat it!\r"
+      ]
+    },
+    {
+      "id": "msg_0564_T23_00017",
+      "en_US": "{SIZE 200}Thud!{SIZE 100}\r"
+    },
+    {
+      "id": "msg_0564_T23_00018",
+      "en_US": [
+        "We have this tough guy called Kurt\n",
+        "in this town.\f",
+        "He should be able to take care of it..."
+      ]
+    },
+    {
+      "id": "msg_0564_T23_00019",
+      "en_US": "I knew we could count on Kurt!"
+    }
+  ]
+}

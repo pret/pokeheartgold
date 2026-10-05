@@ -1,0 +1,55 @@
+{
+  "key": 29798,
+  "messages": [
+    {
+      "id": "msg_0577_T24R0501_00000",
+      "en_US": [
+        "Huh? You need medicine?\n",
+        "Your Pokémon appear to be fine.\f",
+        "Is something worrying you?\r",
+        "...\r",
+        "The Lighthouse Pokémon is in trouble?\r",
+        "I got it!\f",
+        "This ought to do the trick."
+      ]
+    },
+    {
+      "id": "msg_0577_T24R0501_00001",
+      "garbage": 21
+    },
+    {
+      "id": "msg_0577_T24R0501_00002",
+      "en_US": [
+        "My SecretPotion is a tad too strong.\f",
+        "I only offer it in an emergency."
+      ]
+    },
+    {
+      "id": "msg_0577_T24R0501_00003",
+      "en_US": [
+        "What’s up?\n",
+        "Need some medicine? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0577_T24R0501_00004",
+      "garbage": 17
+    },
+    {
+      "id": "msg_0577_T24R0501_00005",
+      "garbage": 4
+    },
+    {
+      "id": "msg_0577_T24R0501_00006",
+      "garbage": 11
+    },
+    {
+      "id": "msg_0577_T24R0501_00007",
+      "garbage": 13
+    },
+    {
+      "id": "msg_0577_T24R0501_00008",
+      "garbage": 16
+    }
+  ]
+}

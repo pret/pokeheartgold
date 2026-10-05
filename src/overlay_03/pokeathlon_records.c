@@ -86,7 +86,7 @@ static void ov03_02258DE8(UnkStruct_02258CFC *data) {
     LoadUserFrameGfx1(data->bgConfig, GF_BG_LYR_MAIN_3, 985, HEAP_ID_FIELD2, 0, HEAP_ID_FIELD1);
     DrawFrameAndWindow1(&data->window, TRUE, 985, HEAP_ID_FIELD2);
     FillWindowPixelBuffer(&data->window, 15);
-    data->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0277_bin, HEAP_ID_FIELD1);
+    data->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msg_0277, HEAP_ID_FIELD1);
     data->messageFormat = MessageFormat_New_Custom(3, 16, HEAP_ID_FIELD1);
     data->strings[0] = String_New(128, HEAP_ID_FIELD1);
     data->strings[1] = String_New(128, HEAP_ID_FIELD1);

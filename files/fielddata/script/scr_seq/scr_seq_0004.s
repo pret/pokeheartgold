@@ -2,9 +2,8 @@
 #include "fielddata/script/scr_seq/event_0004.h"
 #include "msgdata/msg/msg_0191.h"
 #include "msgdata/msg/msg_0046.h"
-	.include "asm/macros/script.inc"
+#include "macros/script.inc"
 
-	.rodata
 
 	ScrDef scr_seq_0004_000
 	ScrDef scr_seq_0004_001

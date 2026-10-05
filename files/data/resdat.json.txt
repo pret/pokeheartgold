@@ -1,7 +1,6 @@
 {{ doNotModifyHeader }}
 
-#include "global.h"
-#include "unk_02009D48.h"
+#include "struct_defs/resdat_narc_structs.h"
 #include "filesystem_files_def.h"
 
 {% if isString(kind) %}

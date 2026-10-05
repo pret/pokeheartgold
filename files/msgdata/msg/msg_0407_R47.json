@@ -1,0 +1,111 @@
+{
+  "key": 22275,
+  "messages": [
+    {
+      "id": "msg_0407_R47_00000",
+      "en_US": [
+        "Well, hello!\r",
+        "It’s said that past this hole used to be\n",
+        "a huge tower reaching far into the sky.\r",
+        "They say that it was a rather strange\n",
+        "tower with half of it embedded\f",
+        "in the cliff.\r",
+        "It was not just a tall tower reaching\n",
+        "up to the sky, but also reaching deep\f",
+        "down underground!\r",
+        "It is rumored that it even reached the\n",
+        "bottom of the ocean!\r",
+        "In short, the ruins used to connect\n",
+        "the sky, the land, and the\f",
+        "sea to each other...\r",
+        "Most of the tower is now crumbled,\n",
+        "and the only things that remain are\f",
+        "the entrance and its interior, where\f",
+        "you’ll see strange patterns."
+      ]
+    },
+    {
+      "id": "msg_0407_R47_00001",
+      "en_US": [
+        "I think this building may have been\n",
+        "built to enshrine Pokémon with\f",
+        "a strong connection to the sea,\f",
+        "the land, and the sky."
+      ]
+    },
+    {
+      "id": "msg_0407_R47_00002",
+      "en_US": [
+        "A masked guy who looks great in front\n",
+        "of a huge torrential waterfall...\f",
+        "That’s me, Crasher Wake!\r",
+        "Who dares to talk to me so freely?\r",
+        "Oh!\n",
+        "You are that mask-fanatic Trainer\f",
+        "I saw at the Celadon Dept. Store!\r"
+      ]
+    },
+    {
+      "id": "msg_0407_R47_00003",
+      "en_US": [
+        "Wake: I heard about the great\n",
+        "waterfall near Cianwood and decided\f",
+        "to come see it.\r",
+        "This waterfall is awesome!\r",
+        "No human or Pokémon can survive\n",
+        "without water, yet that same water\f",
+        "can sometimes cause great suffering.\r"
+      ]
+    },
+    {
+      "id": "msg_0407_R47_00004",
+      "en_US": [
+        "Wake: You must be a Trainer from this\n",
+        "region, right?\r",
+        "I hope you’ll become a Trainer\n",
+        "with the qualities of water--\f",
+        "strong, tough to beat, yet\f",
+        "refreshing.\r",
+        "Good luck, mask-fanatic {STRVAR_1 3, 0, 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0407_R47_00005",
+      "en_US": [
+        "Chuck: Ooomph!\n",
+        "You came all this way just to see me?\r",
+        "Then you might as well take a\n",
+        "picture with me, too. Yes? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0407_R47_00006",
+      "en_US": [
+        "Chuck: Say cheese!\n",
+        "Don’t close your eyes!\r"
+      ]
+    },
+    {
+      "id": "msg_0407_R47_00007",
+      "en_US": [
+        "Chuck: Great picture!\n",
+        "This wil be a good memory for you, too!"
+      ]
+    },
+    {
+      "id": "msg_0407_R47_00008",
+      "en_US": [
+        "Chuck: No? You came all the way\n",
+        "just to say no?"
+      ]
+    },
+    {
+      "id": "msg_0407_R47_00009",
+      "en_US": [
+        "Your Photo Album is full.\r",
+        "Access your PC and delete\n",
+        "some pictures."
+      ]
+    }
+  ]
+}

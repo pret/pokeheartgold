@@ -7,9 +7,9 @@
 
 #include "application/check_savedata.h"
 #include "application/delete_savedata.h"
-#include "demo/title/titledemo.naix"
-#include "msgdata/msg.naix"
-#include "msgdata/msg/msg_0719.h"
+#include "files/demo/title/titledemo.naix"
+#include "files/msgdata/msg.naix"
+#include "files/msgdata/msg/msg_0719.h"
 
 #include "brightness.h"
 #include "camera.h"
@@ -631,7 +631,7 @@ static void TitleScreenAnim_Load2dBgGfx(BgConfig *bgConfig, enum HeapID heapID, 
     BG_SetMaskColor(GF_BG_LYR_SUB_1, RGB_BLACK);
     BG_ClearCharDataRange(GF_BG_LYR_MAIN_3, 0x20, 0, heapID);
 
-    MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0719_bin, heapID);
+    MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, msg_0719, heapID);
     String *string = String_New(64, heapID);
     AddWindow(bgConfig, &animData->window, &sTouchToStartWindow);
     FillWindowPixelRect(&animData->window, 0, 0, 0, 0x100, 0x10);

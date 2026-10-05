@@ -1,4 +1,4 @@
-#include <nitro/fs/overlay.h>
+
 #pragma once
 .public MessageFormat_New
 .public MessageFormat_Delete

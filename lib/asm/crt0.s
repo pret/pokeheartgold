@@ -1,4 +1,4 @@
-	.include "asm/macros.inc"
+	.include "macros.inc"
 	.include "crt0.inc"
 	.include "global.inc"
 	.public SDK_AUTOLOAD_DTCM_START

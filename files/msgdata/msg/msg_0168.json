@@ -1,0 +1,565 @@
+{
+  "key": 50539,
+  "messages": [
+    {
+      "id": "msg_0168_00000",
+      "en_US": "{STRVAR_1 50, 0, 0}"
+    },
+    {
+      "id": "msg_0168_00001",
+      "en_US": "Battle Tower"
+    },
+    {
+      "id": "msg_0168_00002",
+      "en_US": "Count up"
+    },
+    {
+      "id": "msg_0168_00003",
+      "en_US": "Rec Contest"
+    },
+    {
+      "id": "msg_0168_00004",
+      "en_US": "Battle"
+    },
+    {
+      "id": "msg_0168_00005",
+      "en_US": "Others"
+    },
+    {
+      "id": "msg_0168_00006",
+      "en_US": "でんわ"
+    },
+    {
+      "id": "msg_0168_00007",
+      "en_US": "Max No. of Single win streak"
+    },
+    {
+      "id": "msg_0168_00008",
+      "en_US": "Max No. of Double win streak"
+    },
+    {
+      "id": "msg_0168_00009",
+      "en_US": "Max No. of Multi win streak"
+    },
+    {
+      "id": "msg_0168_00010",
+      "en_US": "Max-CMulti straight wins"
+    },
+    {
+      "id": "msg_0168_00011",
+      "en_US": "Max No. of Wi-Fi win streak"
+    },
+    {
+      "id": "msg_0168_00012",
+      "en_US": "No. of Single win streak"
+    },
+    {
+      "id": "msg_0168_00013",
+      "en_US": "No. of Double win streak"
+    },
+    {
+      "id": "msg_0168_00014",
+      "en_US": "No. of Multi win streak"
+    },
+    {
+      "id": "msg_0168_00015",
+      "en_US": "CMulti straight wins"
+    },
+    {
+      "id": "msg_0168_00016",
+      "en_US": "No. of Wi-Fi win streak"
+    },
+    {
+      "id": "msg_0168_00017",
+      "en_US": "No. of Challenge Single"
+    },
+    {
+      "id": "msg_0168_00018",
+      "en_US": "No. of Challenge Double"
+    },
+    {
+      "id": "msg_0168_00019",
+      "en_US": "No. of Challenge Multi"
+    },
+    {
+      "id": "msg_0168_00020",
+      "en_US": "Challenge CMulti"
+    },
+    {
+      "id": "msg_0168_00021",
+      "en_US": "No. of Challenge Wi-Fi"
+    },
+    {
+      "id": "msg_0168_00022",
+      "en_US": "No. of Battle Tower challenge"
+    },
+    {
+      "id": "msg_0168_00023",
+      "en_US": "No. of Battle Tower win streak"
+    },
+    {
+      "id": "msg_0168_00024",
+      "en_US": "Single-Stage"
+    },
+    {
+      "id": "msg_0168_00025",
+      "en_US": "Double-Stage"
+    },
+    {
+      "id": "msg_0168_00026",
+      "en_US": "Multi-Stage"
+    },
+    {
+      "id": "msg_0168_00027",
+      "en_US": "CMulti-Stage"
+    },
+    {
+      "id": "msg_0168_00028",
+      "en_US": "Wifi-Stage"
+    },
+    {
+      "id": "msg_0168_00029",
+      "en_US": "WiFi Ranking"
+    },
+    {
+      "id": "msg_0168_00030",
+      "en_US": "arrive-cload"
+    },
+    {
+      "id": "msg_0168_00031",
+      "en_US": "Ａとうだいクリア"
+    },
+    {
+      "id": "msg_0168_00032",
+      "en_US": "にじいろのはねゲット"
+    },
+    {
+      "id": "msg_0168_00033",
+      "en_US": "ぎんいろのはねゲット"
+    },
+    {
+      "id": "msg_0168_00034",
+      "en_US": "Sum of money spent"
+    },
+    {
+      "id": "msg_0168_00035",
+      "en_US": "Slot jackpot"
+    },
+    {
+      "id": "msg_0168_00036",
+      "en_US": "Steps"
+    },
+    {
+      "id": "msg_0168_00037",
+      "en_US": "Entry"
+    },
+    {
+      "id": "msg_0168_00038",
+      "en_US": "Entry Wireless communication"
+    },
+    {
+      "id": "msg_0168_00039",
+      "en_US": "Wins"
+    },
+    {
+      "id": "msg_0168_00040",
+      "en_US": "No. of Wireless contest wins"
+    },
+    {
+      "id": "msg_0168_00041",
+      "en_US": "Get Ribbon"
+    },
+    {
+      "id": "msg_0168_00042",
+      "en_US": "No. of Selfdestruct used"
+    },
+    {
+      "id": "msg_0168_00043",
+      "en_US": "No. of Explosion used"
+    },
+    {
+      "id": "msg_0168_00044",
+      "en_US": "No. of useless move used"
+    },
+    {
+      "id": "msg_0168_00045",
+      "en_US": "No. of Friend Pokémon fainted"
+    },
+    {
+      "id": "msg_0168_00046",
+      "en_US": "No. of Friend Pokémon damaged"
+    },
+    {
+      "id": "msg_0168_00047",
+      "en_US": "No. of times failed to run"
+    },
+    {
+      "id": "msg_0168_00048",
+      "en_US": "No. of foe Pokémon ran"
+    },
+    {
+      "id": "msg_0168_00049",
+      "en_US": "No. of Pokémon captured"
+    },
+    {
+      "id": "msg_0168_00050",
+      "en_US": "No. of Wireless Trade"
+    },
+    {
+      "id": "msg_0168_00051",
+      "en_US": "No. of Wireless Wins"
+    },
+    {
+      "id": "msg_0168_00052",
+      "en_US": "No. of Wireless Losses"
+    },
+    {
+      "id": "msg_0168_00053",
+      "en_US": "No. of Wireless Draws"
+    },
+    {
+      "id": "msg_0168_00054",
+      "en_US": "No. of WiFi Trade"
+    },
+    {
+      "id": "msg_0168_00055",
+      "en_US": "No. of WiFi Wins"
+    },
+    {
+      "id": "msg_0168_00056",
+      "en_US": "No. of Wi-Fi Losses"
+    },
+    {
+      "id": "msg_0168_00057",
+      "en_US": "No. of Wi-Fi Draws"
+    },
+    {
+      "id": "msg_0168_00058",
+      "en_US": "No. of Pokémon fainted"
+    },
+    {
+      "id": "msg_0168_00059",
+      "en_US": "No. of Hall of Fame"
+    },
+    {
+      "id": "msg_0168_00060",
+      "en_US": "No. of Fishing screw-up"
+    },
+    {
+      "id": "msg_0168_00061",
+      "en_US": "No. of successful Fishing"
+    },
+    {
+      "id": "msg_0168_00062",
+      "en_US": "No. of Berries planted"
+    },
+    {
+      "id": "msg_0168_00063",
+      "en_US": "No. of Pokémon encounter"
+    },
+    {
+      "id": "msg_0168_00064",
+      "en_US": "No. of Trainer battles"
+    },
+    {
+      "id": "msg_0168_00065",
+      "en_US": "No. of Hatched Egg"
+    },
+    {
+      "id": "msg_0168_00066",
+      "en_US": "No. of Pokémon taken to Day Care"
+    },
+    {
+      "id": "msg_0168_00067",
+      "en_US": "No. of Pokémon evolution"
+    },
+    {
+      "id": "msg_0168_00068",
+      "en_US": "No. of Jump used"
+    },
+    {
+      "id": "msg_0168_00069",
+      "en_US": "♡Phone call interval"
+    },
+    {
+      "id": "msg_0168_00070",
+      "en_US": "でんわよびだし"
+    },
+    {
+      "id": "msg_0168_00071",
+      "en_US": "♡Frequency of phone call"
+    },
+    {
+      "id": "msg_0168_00072",
+      "en_US": "♡Fix phone call odds"
+    },
+    {
+      "id": "msg_0168_00073",
+      "en_US": "♡Fix phone group"
+    },
+    {
+      "id": "msg_0168_00074",
+      "en_US": "♡Immediate incoming call"
+    },
+    {
+      "id": "msg_0168_00075",
+      "en_US": "ちゃくしんフラグＡ１"
+    },
+    {
+      "id": "msg_0168_00076",
+      "en_US": "ちゃくしんフラグＡ２"
+    },
+    {
+      "id": "msg_0168_00077",
+      "en_US": "ちゃくしんフラグＡ３"
+    },
+    {
+      "id": "msg_0168_00078",
+      "en_US": "ちゃくしんフラグＡ４"
+    },
+    {
+      "id": "msg_0168_00079",
+      "en_US": "ちゃくしんフラグＢ１"
+    },
+    {
+      "id": "msg_0168_00080",
+      "en_US": "ちゃくしんフラグＢ２"
+    },
+    {
+      "id": "msg_0168_00081",
+      "en_US": "ちゃくしんフラグＣ１"
+    },
+    {
+      "id": "msg_0168_00082",
+      "en_US": "ちゃくしんフラグＣ２"
+    },
+    {
+      "id": "msg_0168_00083",
+      "en_US": "たけのりカウンタ－"
+    },
+    {
+      "id": "msg_0168_00084",
+      "en_US": "たけのりフラグ"
+    },
+    {
+      "id": "msg_0168_00085",
+      "en_US": "グル－プカウンタ－Ａ"
+    },
+    {
+      "id": "msg_0168_00086",
+      "en_US": "グル－プカウンタ－Ｂ"
+    },
+    {
+      "id": "msg_0168_00087",
+      "en_US": "グル－プカウンタ－Ｃ"
+    },
+    {
+      "id": "msg_0168_00088",
+      "en_US": "でんわカウント"
+    },
+    {
+      "id": "msg_0168_00089",
+      "en_US": "♡Red Apricorn"
+    },
+    {
+      "id": "msg_0168_00090",
+      "en_US": "♡Blu Apricorn"
+    },
+    {
+      "id": "msg_0168_00091",
+      "en_US": "♡Ylw Apricorn"
+    },
+    {
+      "id": "msg_0168_00092",
+      "en_US": "♡Grn Apricorn"
+    },
+    {
+      "id": "msg_0168_00093",
+      "en_US": "♡Pnk Apricorn"
+    },
+    {
+      "id": "msg_0168_00094",
+      "en_US": "♡Wht Apricorn"
+    },
+    {
+      "id": "msg_0168_00095",
+      "en_US": "♡Blk Apricorn"
+    },
+    {
+      "id": "msg_0168_00096",
+      "en_US": "♡Juice Spicy"
+    },
+    {
+      "id": "msg_0168_00097",
+      "en_US": "♡Juice Sour"
+    },
+    {
+      "id": "msg_0168_00098",
+      "en_US": "♡Juice Dry"
+    },
+    {
+      "id": "msg_0168_00099",
+      "en_US": "♡Juice Bitter"
+    },
+    {
+      "id": "msg_0168_00100",
+      "en_US": "♡Juice Sweet"
+    },
+    {
+      "id": "msg_0168_00101",
+      "en_US": "♡Juice Mild"
+    },
+    {
+      "id": "msg_0168_00102",
+      "en_US": "ドリンクのこり"
+    },
+    {
+      "id": "msg_0168_00103",
+      "en_US": "プレイじかんＨ"
+    },
+    {
+      "id": "msg_0168_00104",
+      "en_US": "プレイじかんＭ"
+    },
+    {
+      "id": "msg_0168_00105",
+      "en_US": "オブジェＬＶ"
+    },
+    {
+      "id": "msg_0168_00106",
+      "en_US": "M-Lvそうげん"
+    },
+    {
+      "id": "msg_0168_00107",
+      "en_US": "M-Lvはなばたけ"
+    },
+    {
+      "id": "msg_0168_00108",
+      "en_US": "M-Lvサバンナ"
+    },
+    {
+      "id": "msg_0168_00109",
+      "en_US": "M-Lvいわば"
+    },
+    {
+      "id": "msg_0168_00110",
+      "en_US": "M-Lvみずいわ"
+    },
+    {
+      "id": "msg_0168_00111",
+      "en_US": "M-Lvしつげん"
+    },
+    {
+      "id": "msg_0168_00112",
+      "en_US": "M-Lvもり"
+    },
+    {
+      "id": "msg_0168_00113",
+      "en_US": "M-Lvみずもり"
+    },
+    {
+      "id": "msg_0168_00114",
+      "en_US": "M-Lvぬまち"
+    },
+    {
+      "id": "msg_0168_00115",
+      "en_US": "M-Lvあれち"
+    },
+    {
+      "id": "msg_0168_00116",
+      "en_US": "M-Lvやま"
+    },
+    {
+      "id": "msg_0168_00117",
+      "en_US": "M-Lvさばく"
+    },
+    {
+      "id": "msg_0168_00118",
+      "en_US": "F-Lvそうげん"
+    },
+    {
+      "id": "msg_0168_00119",
+      "en_US": "F-Lvはなばたけ"
+    },
+    {
+      "id": "msg_0168_00120",
+      "en_US": "F-Lvサバンナ"
+    },
+    {
+      "id": "msg_0168_00121",
+      "en_US": "F-Lvいわば"
+    },
+    {
+      "id": "msg_0168_00122",
+      "en_US": "F-Lvみずいわ"
+    },
+    {
+      "id": "msg_0168_00123",
+      "en_US": "F-Lvしつげん"
+    },
+    {
+      "id": "msg_0168_00124",
+      "en_US": "F-Lvもり"
+    },
+    {
+      "id": "msg_0168_00125",
+      "en_US": "F-Lvみずもり"
+    },
+    {
+      "id": "msg_0168_00126",
+      "en_US": "F-Lvぬまち"
+    },
+    {
+      "id": "msg_0168_00127",
+      "en_US": "F-Lvあれち"
+    },
+    {
+      "id": "msg_0168_00128",
+      "en_US": "F-Lvやま"
+    },
+    {
+      "id": "msg_0168_00129",
+      "en_US": "F-Lvさばく"
+    },
+    {
+      "id": "msg_0168_00130",
+      "en_US": "のこりボ－ル"
+    },
+    {
+      "id": "msg_0168_00131",
+      "en_US": "あるいたほすう"
+    },
+    {
+      "id": "msg_0168_00132",
+      "en_US": "♡No. of Fans"
+    },
+    {
+      "id": "msg_0168_00133",
+      "en_US": "Trainer ID"
+    },
+    {
+      "id": "msg_0168_00134",
+      "en_US": "Lower 4bits of ID"
+    },
+    {
+      "id": "msg_0168_00135",
+      "en_US": "Language Code"
+    },
+    {
+      "id": "msg_0168_00136",
+      "en_US": "ＭＳＧばいそく"
+    },
+    {
+      "id": "msg_0168_00137",
+      "en_US": "♡Savings"
+    },
+    {
+      "id": "msg_0168_00138",
+      "en_US": "♡Coins"
+    },
+    {
+      "id": "msg_0168_00139",
+      "en_US": "♡Battle Points"
+    }
+  ]
+}

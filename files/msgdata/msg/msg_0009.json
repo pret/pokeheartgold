@@ -1,0 +1,27 @@
+{
+  "key": 44490,
+  "messages": [
+    {
+      "id": "msg_0009_00000",
+      "en_US": [
+        "The save data could not be\n",
+        "accessed.\n",
+        "\n",
+        "Please turn the power off and\n",
+        "reinsert the DS Game Card."
+      ]
+    },
+    {
+      "id": "msg_0009_00001",
+      "en_US": [
+        "Error saving data.\n",
+        "\n",
+        "The backup memory has failed.\n",
+        "The game may be played, but\n",
+        "it is impossible to save.\n",
+        "\n",
+        "Please turn off the power."
+      ]
+    }
+  ]
+}

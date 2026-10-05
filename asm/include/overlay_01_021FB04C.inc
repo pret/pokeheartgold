@@ -1,4 +1,4 @@
-#include <nitro/fs/overlay.h>
+
 #pragma once
 .public NARC_ReadFile
 .public SysTask_CreateOnMainQueue

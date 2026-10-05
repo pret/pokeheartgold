@@ -1,0 +1,1981 @@
+{
+  "key": 46181,
+  "messages": [
+    {
+      "id": "msg_0827_00000",
+      "en_US": "Pokémon (?)"
+    },
+    {
+      "id": "msg_0827_00001",
+      "en_US": "Pokémon Semilla"
+    },
+    {
+      "id": "msg_0827_00002",
+      "en_US": "Pokémon Semilla"
+    },
+    {
+      "id": "msg_0827_00003",
+      "en_US": "Pokémon Semilla"
+    },
+    {
+      "id": "msg_0827_00004",
+      "en_US": "Pokémon Lagartija"
+    },
+    {
+      "id": "msg_0827_00005",
+      "en_US": "Pokémon Llama"
+    },
+    {
+      "id": "msg_0827_00006",
+      "en_US": "Pokémon Llama"
+    },
+    {
+      "id": "msg_0827_00007",
+      "en_US": "Pokémon Tortuguita"
+    },
+    {
+      "id": "msg_0827_00008",
+      "en_US": "Pokémon Tortuga"
+    },
+    {
+      "id": "msg_0827_00009",
+      "en_US": "Pokémon Marisco"
+    },
+    {
+      "id": "msg_0827_00010",
+      "en_US": "Pokémon Gusano"
+    },
+    {
+      "id": "msg_0827_00011",
+      "en_US": "Pokémon Capullo"
+    },
+    {
+      "id": "msg_0827_00012",
+      "en_US": "Pokémon Mariposa"
+    },
+    {
+      "id": "msg_0827_00013",
+      "en_US": "Pokémon Oruga"
+    },
+    {
+      "id": "msg_0827_00014",
+      "en_US": "Pokémon Capullo"
+    },
+    {
+      "id": "msg_0827_00015",
+      "en_US": "Pokémon Abeja Ven."
+    },
+    {
+      "id": "msg_0827_00016",
+      "en_US": "Pokémon Pajarito"
+    },
+    {
+      "id": "msg_0827_00017",
+      "en_US": "Pokémon Pájaro"
+    },
+    {
+      "id": "msg_0827_00018",
+      "en_US": "Pokémon Pájaro"
+    },
+    {
+      "id": "msg_0827_00019",
+      "en_US": "Pokémon Ratón"
+    },
+    {
+      "id": "msg_0827_00020",
+      "en_US": "Pokémon Ratón"
+    },
+    {
+      "id": "msg_0827_00021",
+      "en_US": "Pokémon Pajarito"
+    },
+    {
+      "id": "msg_0827_00022",
+      "en_US": "Pokémon Pico"
+    },
+    {
+      "id": "msg_0827_00023",
+      "en_US": "Pokémon Serpiente"
+    },
+    {
+      "id": "msg_0827_00024",
+      "en_US": "Pokémon Cobra"
+    },
+    {
+      "id": "msg_0827_00025",
+      "en_US": "Pokémon Ratón"
+    },
+    {
+      "id": "msg_0827_00026",
+      "en_US": "Pokémon Ratón"
+    },
+    {
+      "id": "msg_0827_00027",
+      "en_US": "Pokémon Ratón"
+    },
+    {
+      "id": "msg_0827_00028",
+      "en_US": "Pokémon Ratón"
+    },
+    {
+      "id": "msg_0827_00029",
+      "en_US": "Pokémon Pin Veneno"
+    },
+    {
+      "id": "msg_0827_00030",
+      "en_US": "Pokémon Pin Veneno"
+    },
+    {
+      "id": "msg_0827_00031",
+      "en_US": "Pokémon Taladro"
+    },
+    {
+      "id": "msg_0827_00032",
+      "en_US": "Pokémon Pin Veneno"
+    },
+    {
+      "id": "msg_0827_00033",
+      "en_US": "Pokémon Pin Veneno"
+    },
+    {
+      "id": "msg_0827_00034",
+      "en_US": "Pokémon Taladro"
+    },
+    {
+      "id": "msg_0827_00035",
+      "en_US": "Pokémon Hada"
+    },
+    {
+      "id": "msg_0827_00036",
+      "en_US": "Pokémon Hada"
+    },
+    {
+      "id": "msg_0827_00037",
+      "en_US": "Pokémon Zorro"
+    },
+    {
+      "id": "msg_0827_00038",
+      "en_US": "Pokémon Zorro"
+    },
+    {
+      "id": "msg_0827_00039",
+      "en_US": "Pokémon Globo"
+    },
+    {
+      "id": "msg_0827_00040",
+      "en_US": "Pokémon Globo"
+    },
+    {
+      "id": "msg_0827_00041",
+      "en_US": "Pokémon Murciélago"
+    },
+    {
+      "id": "msg_0827_00042",
+      "en_US": "Pokémon Murciélago"
+    },
+    {
+      "id": "msg_0827_00043",
+      "en_US": "Pokémon Hierbajo"
+    },
+    {
+      "id": "msg_0827_00044",
+      "en_US": "Pokémon Hierbajo"
+    },
+    {
+      "id": "msg_0827_00045",
+      "en_US": "Pokémon Flor"
+    },
+    {
+      "id": "msg_0827_00046",
+      "en_US": "Pokémon Hongo"
+    },
+    {
+      "id": "msg_0827_00047",
+      "en_US": "Pokémon Hongo"
+    },
+    {
+      "id": "msg_0827_00048",
+      "en_US": "Pokémon Insecto"
+    },
+    {
+      "id": "msg_0827_00049",
+      "en_US": "Pokémon Polilla V."
+    },
+    {
+      "id": "msg_0827_00050",
+      "en_US": "Pokémon Topo"
+    },
+    {
+      "id": "msg_0827_00051",
+      "en_US": "Pokémon Topo"
+    },
+    {
+      "id": "msg_0827_00052",
+      "en_US": "Pokémon Gato Araña"
+    },
+    {
+      "id": "msg_0827_00053",
+      "en_US": "Pokémon Gato Fino"
+    },
+    {
+      "id": "msg_0827_00054",
+      "en_US": "Pokémon Pato"
+    },
+    {
+      "id": "msg_0827_00055",
+      "en_US": "Pokémon Pato"
+    },
+    {
+      "id": "msg_0827_00056",
+      "en_US": "Pokémon Mono Cerdo"
+    },
+    {
+      "id": "msg_0827_00057",
+      "en_US": "Pokémon Mono Cerdo"
+    },
+    {
+      "id": "msg_0827_00058",
+      "en_US": "Pokémon Perrito"
+    },
+    {
+      "id": "msg_0827_00059",
+      "en_US": "Pokémon Legendario"
+    },
+    {
+      "id": "msg_0827_00060",
+      "en_US": "Pokémon Renacuajo"
+    },
+    {
+      "id": "msg_0827_00061",
+      "en_US": "Pokémon Renacuajo"
+    },
+    {
+      "id": "msg_0827_00062",
+      "en_US": "Pokémon Renacuajo"
+    },
+    {
+      "id": "msg_0827_00063",
+      "en_US": "Pokémon Psi"
+    },
+    {
+      "id": "msg_0827_00064",
+      "en_US": "Pokémon Psi"
+    },
+    {
+      "id": "msg_0827_00065",
+      "en_US": "Pokémon Psi"
+    },
+    {
+      "id": "msg_0827_00066",
+      "en_US": "Pokémon Superpoder"
+    },
+    {
+      "id": "msg_0827_00067",
+      "en_US": "Pokémon Superpoder"
+    },
+    {
+      "id": "msg_0827_00068",
+      "en_US": "Pokémon Superpoder"
+    },
+    {
+      "id": "msg_0827_00069",
+      "en_US": "Pokémon Flor"
+    },
+    {
+      "id": "msg_0827_00070",
+      "en_US": "Pokémon Matamoscas"
+    },
+    {
+      "id": "msg_0827_00071",
+      "en_US": "Pokémon Matamoscas"
+    },
+    {
+      "id": "msg_0827_00072",
+      "en_US": "Pokémon Medusa"
+    },
+    {
+      "id": "msg_0827_00073",
+      "en_US": "Pokémon Medusa"
+    },
+    {
+      "id": "msg_0827_00074",
+      "en_US": "Pokémon Roca"
+    },
+    {
+      "id": "msg_0827_00075",
+      "en_US": "Pokémon Roca"
+    },
+    {
+      "id": "msg_0827_00076",
+      "en_US": "Pokémon Megatón"
+    },
+    {
+      "id": "msg_0827_00077",
+      "en_US": "Pokémon Caballo F."
+    },
+    {
+      "id": "msg_0827_00078",
+      "en_US": "Pokémon Caballo F."
+    },
+    {
+      "id": "msg_0827_00079",
+      "en_US": "Pokémon Atontado"
+    },
+    {
+      "id": "msg_0827_00080",
+      "en_US": "Pokémon Ermitaño"
+    },
+    {
+      "id": "msg_0827_00081",
+      "en_US": "Pokémon Imán"
+    },
+    {
+      "id": "msg_0827_00082",
+      "en_US": "Pokémon Imán"
+    },
+    {
+      "id": "msg_0827_00083",
+      "en_US": "Pokémon Pato Salv."
+    },
+    {
+      "id": "msg_0827_00084",
+      "en_US": "Pokémon Ave Gemela"
+    },
+    {
+      "id": "msg_0827_00085",
+      "en_US": "Pokémon Ave Triple"
+    },
+    {
+      "id": "msg_0827_00086",
+      "en_US": "Pokémon León Mar."
+    },
+    {
+      "id": "msg_0827_00087",
+      "en_US": "Pokémon León Mar."
+    },
+    {
+      "id": "msg_0827_00088",
+      "en_US": "Pokémon Lodo"
+    },
+    {
+      "id": "msg_0827_00089",
+      "en_US": "Pokémon Lodo"
+    },
+    {
+      "id": "msg_0827_00090",
+      "en_US": "Pokémon Bivalvo"
+    },
+    {
+      "id": "msg_0827_00091",
+      "en_US": "Pokémon Bivalvo"
+    },
+    {
+      "id": "msg_0827_00092",
+      "en_US": "Pokémon Gas"
+    },
+    {
+      "id": "msg_0827_00093",
+      "en_US": "Pokémon Gas"
+    },
+    {
+      "id": "msg_0827_00094",
+      "en_US": "Pokémon Sombra"
+    },
+    {
+      "id": "msg_0827_00095",
+      "en_US": "Pokémon Serp. Roca"
+    },
+    {
+      "id": "msg_0827_00096",
+      "en_US": "Pokémon Hipnosis"
+    },
+    {
+      "id": "msg_0827_00097",
+      "en_US": "Pokémon Hipnosis"
+    },
+    {
+      "id": "msg_0827_00098",
+      "en_US": "Pokémon Cangrejo"
+    },
+    {
+      "id": "msg_0827_00099",
+      "en_US": "Pokémon Tenaza"
+    },
+    {
+      "id": "msg_0827_00100",
+      "en_US": "Pokémon Bola"
+    },
+    {
+      "id": "msg_0827_00101",
+      "en_US": "Pokémon Bola"
+    },
+    {
+      "id": "msg_0827_00102",
+      "en_US": "Pokémon Huevo"
+    },
+    {
+      "id": "msg_0827_00103",
+      "en_US": "Pokémon Coco"
+    },
+    {
+      "id": "msg_0827_00104",
+      "en_US": "Pokémon Solitario"
+    },
+    {
+      "id": "msg_0827_00105",
+      "en_US": "Pokémon Apilahueso"
+    },
+    {
+      "id": "msg_0827_00106",
+      "en_US": "Pokémon Patada"
+    },
+    {
+      "id": "msg_0827_00107",
+      "en_US": "Pokémon Puñetazo"
+    },
+    {
+      "id": "msg_0827_00108",
+      "en_US": "Pokémon Lametazo"
+    },
+    {
+      "id": "msg_0827_00109",
+      "en_US": "Pokémon Gas Veneno"
+    },
+    {
+      "id": "msg_0827_00110",
+      "en_US": "Pokémon Gas Veneno"
+    },
+    {
+      "id": "msg_0827_00111",
+      "en_US": "Pokémon Clavos"
+    },
+    {
+      "id": "msg_0827_00112",
+      "en_US": "Pokémon Taladro"
+    },
+    {
+      "id": "msg_0827_00113",
+      "en_US": "Pokémon Huevo"
+    },
+    {
+      "id": "msg_0827_00114",
+      "en_US": "Pokémon Enredadera"
+    },
+    {
+      "id": "msg_0827_00115",
+      "en_US": "Pokémon Padres"
+    },
+    {
+      "id": "msg_0827_00116",
+      "en_US": "Pokémon Dragón"
+    },
+    {
+      "id": "msg_0827_00117",
+      "en_US": "Pokémon Dragón"
+    },
+    {
+      "id": "msg_0827_00118",
+      "en_US": "Pokémon Pez Color"
+    },
+    {
+      "id": "msg_0827_00119",
+      "en_US": "Pokémon Pez Color"
+    },
+    {
+      "id": "msg_0827_00120",
+      "en_US": "Pokémon Estrellada"
+    },
+    {
+      "id": "msg_0827_00121",
+      "en_US": "Pokémon Misterioso"
+    },
+    {
+      "id": "msg_0827_00122",
+      "en_US": "Pokémon Barrera"
+    },
+    {
+      "id": "msg_0827_00123",
+      "en_US": "Pokémon Mantis"
+    },
+    {
+      "id": "msg_0827_00124",
+      "en_US": "Pokémon F. Humana"
+    },
+    {
+      "id": "msg_0827_00125",
+      "en_US": "Pokémon Eléctrico"
+    },
+    {
+      "id": "msg_0827_00126",
+      "en_US": "Pokémon Escupfuego"
+    },
+    {
+      "id": "msg_0827_00127",
+      "en_US": "Pokémon Escarabajo"
+    },
+    {
+      "id": "msg_0827_00128",
+      "en_US": "Pokémon Toro Bravo"
+    },
+    {
+      "id": "msg_0827_00129",
+      "en_US": "Pokémon Pez"
+    },
+    {
+      "id": "msg_0827_00130",
+      "en_US": "Pokémon Atrocidad"
+    },
+    {
+      "id": "msg_0827_00131",
+      "en_US": "Pokémon Transporte"
+    },
+    {
+      "id": "msg_0827_00132",
+      "en_US": "Pokémon Transform."
+    },
+    {
+      "id": "msg_0827_00133",
+      "en_US": "Pokémon Evolución"
+    },
+    {
+      "id": "msg_0827_00134",
+      "en_US": "Pokémon Burbuja"
+    },
+    {
+      "id": "msg_0827_00135",
+      "en_US": "Pokémon Relámpago"
+    },
+    {
+      "id": "msg_0827_00136",
+      "en_US": "Pokémon Llama"
+    },
+    {
+      "id": "msg_0827_00137",
+      "en_US": "Pokémon Virtual"
+    },
+    {
+      "id": "msg_0827_00138",
+      "en_US": "Pokémon Espiral"
+    },
+    {
+      "id": "msg_0827_00139",
+      "en_US": "Pokémon Espiral"
+    },
+    {
+      "id": "msg_0827_00140",
+      "en_US": "Pokémon Marisco"
+    },
+    {
+      "id": "msg_0827_00141",
+      "en_US": "Pokémon Marisco"
+    },
+    {
+      "id": "msg_0827_00142",
+      "en_US": "Pokémon Fósil"
+    },
+    {
+      "id": "msg_0827_00143",
+      "en_US": "Pokémon Dormir"
+    },
+    {
+      "id": "msg_0827_00144",
+      "en_US": "Pokémon Congelar"
+    },
+    {
+      "id": "msg_0827_00145",
+      "en_US": "Pokémon Eléctrico"
+    },
+    {
+      "id": "msg_0827_00146",
+      "en_US": "Pokémon Llama"
+    },
+    {
+      "id": "msg_0827_00147",
+      "en_US": "Pokémon Dragón"
+    },
+    {
+      "id": "msg_0827_00148",
+      "en_US": "Pokémon Dragón"
+    },
+    {
+      "id": "msg_0827_00149",
+      "en_US": "Pokémon Dragón"
+    },
+    {
+      "id": "msg_0827_00150",
+      "en_US": "Pokémon Genético"
+    },
+    {
+      "id": "msg_0827_00151",
+      "en_US": "Pokémon N. Especie"
+    },
+    {
+      "id": "msg_0827_00152",
+      "en_US": "Pokémon Hoja"
+    },
+    {
+      "id": "msg_0827_00153",
+      "en_US": "Pokémon Hoja"
+    },
+    {
+      "id": "msg_0827_00154",
+      "en_US": "Pokémon Hierba"
+    },
+    {
+      "id": "msg_0827_00155",
+      "en_US": "Pokémon Ratónfuego"
+    },
+    {
+      "id": "msg_0827_00156",
+      "en_US": "Pokémon Volcán"
+    },
+    {
+      "id": "msg_0827_00157",
+      "en_US": "Pokémon Volcán"
+    },
+    {
+      "id": "msg_0827_00158",
+      "en_US": "Pokémon Fauces"
+    },
+    {
+      "id": "msg_0827_00159",
+      "en_US": "Pokémon Fauces"
+    },
+    {
+      "id": "msg_0827_00160",
+      "en_US": "Pokémon Fauces"
+    },
+    {
+      "id": "msg_0827_00161",
+      "en_US": "Pokémon Explorador"
+    },
+    {
+      "id": "msg_0827_00162",
+      "en_US": "Pokémon Alargado"
+    },
+    {
+      "id": "msg_0827_00163",
+      "en_US": "Pokémon Búho"
+    },
+    {
+      "id": "msg_0827_00164",
+      "en_US": "Pokémon Búho"
+    },
+    {
+      "id": "msg_0827_00165",
+      "en_US": "Pokémon 5estrellas"
+    },
+    {
+      "id": "msg_0827_00166",
+      "en_US": "Pokémon 5estrellas"
+    },
+    {
+      "id": "msg_0827_00167",
+      "en_US": "Pokémon Escupesoga"
+    },
+    {
+      "id": "msg_0827_00168",
+      "en_US": "Pokémon Pata Larga"
+    },
+    {
+      "id": "msg_0827_00169",
+      "en_US": "Pokémon Murciélago"
+    },
+    {
+      "id": "msg_0827_00170",
+      "en_US": "Pokémon Rape"
+    },
+    {
+      "id": "msg_0827_00171",
+      "en_US": "Pokémon Luz"
+    },
+    {
+      "id": "msg_0827_00172",
+      "en_US": "Pokémon Ratoncito"
+    },
+    {
+      "id": "msg_0827_00173",
+      "en_US": "Pokémon Estrellada"
+    },
+    {
+      "id": "msg_0827_00174",
+      "en_US": "Pokémon Globo"
+    },
+    {
+      "id": "msg_0827_00175",
+      "en_US": "Pokémon Bolaclavos"
+    },
+    {
+      "id": "msg_0827_00176",
+      "en_US": "Pokémon Felicidad"
+    },
+    {
+      "id": "msg_0827_00177",
+      "en_US": "Pokémon Pajarito"
+    },
+    {
+      "id": "msg_0827_00178",
+      "en_US": "Pokémon Místico"
+    },
+    {
+      "id": "msg_0827_00179",
+      "en_US": "Pokémon Lana"
+    },
+    {
+      "id": "msg_0827_00180",
+      "en_US": "Pokémon Lana"
+    },
+    {
+      "id": "msg_0827_00181",
+      "en_US": "Pokémon Luz"
+    },
+    {
+      "id": "msg_0827_00182",
+      "en_US": "Pokémon Flor"
+    },
+    {
+      "id": "msg_0827_00183",
+      "en_US": "Pokémon Ratón Agua"
+    },
+    {
+      "id": "msg_0827_00184",
+      "en_US": "Pokémon Conejoagua"
+    },
+    {
+      "id": "msg_0827_00185",
+      "en_US": "Pokémon Imitación"
+    },
+    {
+      "id": "msg_0827_00186",
+      "en_US": "Pokémon Rana"
+    },
+    {
+      "id": "msg_0827_00187",
+      "en_US": "Pokémon Algadón"
+    },
+    {
+      "id": "msg_0827_00188",
+      "en_US": "Pokémon Algadón"
+    },
+    {
+      "id": "msg_0827_00189",
+      "en_US": "Pokémon Algadón"
+    },
+    {
+      "id": "msg_0827_00190",
+      "en_US": "Pokémon Cola Larga"
+    },
+    {
+      "id": "msg_0827_00191",
+      "en_US": "Pokémon Semilla"
+    },
+    {
+      "id": "msg_0827_00192",
+      "en_US": "Pokémon Sol"
+    },
+    {
+      "id": "msg_0827_00193",
+      "en_US": "Pokémon Ala Clara"
+    },
+    {
+      "id": "msg_0827_00194",
+      "en_US": "Pokémon Pez Agua"
+    },
+    {
+      "id": "msg_0827_00195",
+      "en_US": "Pokémon Pez Agua"
+    },
+    {
+      "id": "msg_0827_00196",
+      "en_US": "Pokémon Sol"
+    },
+    {
+      "id": "msg_0827_00197",
+      "en_US": "Pokémon Luz Lunar"
+    },
+    {
+      "id": "msg_0827_00198",
+      "en_US": "Pokémon Oscuridad"
+    },
+    {
+      "id": "msg_0827_00199",
+      "en_US": "Pokémon Regio"
+    },
+    {
+      "id": "msg_0827_00200",
+      "en_US": "Pokémon Chirrido"
+    },
+    {
+      "id": "msg_0827_00201",
+      "en_US": "Pokémon Símbolo"
+    },
+    {
+      "id": "msg_0827_00202",
+      "en_US": "Pokémon Paciente"
+    },
+    {
+      "id": "msg_0827_00203",
+      "en_US": "Pokémon Grancuello"
+    },
+    {
+      "id": "msg_0827_00204",
+      "en_US": "Pokémon Larva"
+    },
+    {
+      "id": "msg_0827_00205",
+      "en_US": "Pokémon Larva"
+    },
+    {
+      "id": "msg_0827_00206",
+      "en_US": "Pokémon Serptierra"
+    },
+    {
+      "id": "msg_0827_00207",
+      "en_US": "Pokémon Escorpiala"
+    },
+    {
+      "id": "msg_0827_00208",
+      "en_US": "Pokémon Serpférrea"
+    },
+    {
+      "id": "msg_0827_00209",
+      "en_US": "Pokémon Hada"
+    },
+    {
+      "id": "msg_0827_00210",
+      "en_US": "Pokémon Hada"
+    },
+    {
+      "id": "msg_0827_00211",
+      "en_US": "Pokémon Globo"
+    },
+    {
+      "id": "msg_0827_00212",
+      "en_US": "Pokémon Tenaza"
+    },
+    {
+      "id": "msg_0827_00213",
+      "en_US": "Pokémon Moho"
+    },
+    {
+      "id": "msg_0827_00214",
+      "en_US": "Pokémon Unicornio"
+    },
+    {
+      "id": "msg_0827_00215",
+      "en_US": "Pokémon Garra Filo"
+    },
+    {
+      "id": "msg_0827_00216",
+      "en_US": "Pokémon Osito"
+    },
+    {
+      "id": "msg_0827_00217",
+      "en_US": "Pokémon Hibernante"
+    },
+    {
+      "id": "msg_0827_00218",
+      "en_US": "Pokémon Lava"
+    },
+    {
+      "id": "msg_0827_00219",
+      "en_US": "Pokémon Lava"
+    },
+    {
+      "id": "msg_0827_00220",
+      "en_US": "Pokémon Cerdo"
+    },
+    {
+      "id": "msg_0827_00221",
+      "en_US": "Pokémon Puerco"
+    },
+    {
+      "id": "msg_0827_00222",
+      "en_US": "Pokémon Coral"
+    },
+    {
+      "id": "msg_0827_00223",
+      "en_US": "Pokémon Reactor"
+    },
+    {
+      "id": "msg_0827_00224",
+      "en_US": "Pokémon Reactor"
+    },
+    {
+      "id": "msg_0827_00225",
+      "en_US": "Pokémon Reparto"
+    },
+    {
+      "id": "msg_0827_00226",
+      "en_US": "Pokémon Milano"
+    },
+    {
+      "id": "msg_0827_00227",
+      "en_US": "Pokémon Coraza Ave"
+    },
+    {
+      "id": "msg_0827_00228",
+      "en_US": "Pokémon Siniestro"
+    },
+    {
+      "id": "msg_0827_00229",
+      "en_US": "Pokémon Siniestro"
+    },
+    {
+      "id": "msg_0827_00230",
+      "en_US": "Pokémon Dragón"
+    },
+    {
+      "id": "msg_0827_00231",
+      "en_US": "Pokémon Narizotas"
+    },
+    {
+      "id": "msg_0827_00232",
+      "en_US": "Pokémon Coraza"
+    },
+    {
+      "id": "msg_0827_00233",
+      "en_US": "Pokémon Virtual"
+    },
+    {
+      "id": "msg_0827_00234",
+      "en_US": "Pokémon Grancuerno"
+    },
+    {
+      "id": "msg_0827_00235",
+      "en_US": "Pokémon Pintor"
+    },
+    {
+      "id": "msg_0827_00236",
+      "en_US": "Pokémon Peleón"
+    },
+    {
+      "id": "msg_0827_00237",
+      "en_US": "Pokémon Boca Abajo"
+    },
+    {
+      "id": "msg_0827_00238",
+      "en_US": "Pokémon Beso"
+    },
+    {
+      "id": "msg_0827_00239",
+      "en_US": "Pokémon Eléctrico"
+    },
+    {
+      "id": "msg_0827_00240",
+      "en_US": "Pokémon Ascuas"
+    },
+    {
+      "id": "msg_0827_00241",
+      "en_US": "Pokémon Lechera"
+    },
+    {
+      "id": "msg_0827_00242",
+      "en_US": "Pokémon Felicidad"
+    },
+    {
+      "id": "msg_0827_00243",
+      "en_US": "Pokémon Trueno"
+    },
+    {
+      "id": "msg_0827_00244",
+      "en_US": "Pokémon Volcán"
+    },
+    {
+      "id": "msg_0827_00245",
+      "en_US": "Pokémon Aurora"
+    },
+    {
+      "id": "msg_0827_00246",
+      "en_US": "Pokémon Piel Roca"
+    },
+    {
+      "id": "msg_0827_00247",
+      "en_US": "Pokémon Caparazón"
+    },
+    {
+      "id": "msg_0827_00248",
+      "en_US": "Pokémon Coraza"
+    },
+    {
+      "id": "msg_0827_00249",
+      "en_US": "Pokémon Buceo"
+    },
+    {
+      "id": "msg_0827_00250",
+      "en_US": "Pokémon Arco Iris"
+    },
+    {
+      "id": "msg_0827_00251",
+      "en_US": "Pokémon Viajetiempo"
+    },
+    {
+      "id": "msg_0827_00252",
+      "en_US": "Pokémon Geco Bosque"
+    },
+    {
+      "id": "msg_0827_00253",
+      "en_US": "Pokémon Geco Bosque"
+    },
+    {
+      "id": "msg_0827_00254",
+      "en_US": "Pokémon Monte"
+    },
+    {
+      "id": "msg_0827_00255",
+      "en_US": "Pokémon Polluelo"
+    },
+    {
+      "id": "msg_0827_00256",
+      "en_US": "Pokémon Ave Corral"
+    },
+    {
+      "id": "msg_0827_00257",
+      "en_US": "Pokémon Llameante"
+    },
+    {
+      "id": "msg_0827_00258",
+      "en_US": "Pokémon Pez Lodo"
+    },
+    {
+      "id": "msg_0827_00259",
+      "en_US": "Pokémon Pez Lodo"
+    },
+    {
+      "id": "msg_0827_00260",
+      "en_US": "Pokémon Pez Lodo"
+    },
+    {
+      "id": "msg_0827_00261",
+      "en_US": "Pokémon Mordisco"
+    },
+    {
+      "id": "msg_0827_00262",
+      "en_US": "Pokémon Mordisco"
+    },
+    {
+      "id": "msg_0827_00263",
+      "en_US": "Pokémon Mapachito"
+    },
+    {
+      "id": "msg_0827_00264",
+      "en_US": "Pokémon Lanzado"
+    },
+    {
+      "id": "msg_0827_00265",
+      "en_US": "Pokémon Gusano"
+    },
+    {
+      "id": "msg_0827_00266",
+      "en_US": "Pokémon Capullo"
+    },
+    {
+      "id": "msg_0827_00267",
+      "en_US": "Pokémon Mariposa"
+    },
+    {
+      "id": "msg_0827_00268",
+      "en_US": "Pokémon Capullo"
+    },
+    {
+      "id": "msg_0827_00269",
+      "en_US": "Pokémon Polilla V."
+    },
+    {
+      "id": "msg_0827_00270",
+      "en_US": "Pokémon Alga"
+    },
+    {
+      "id": "msg_0827_00271",
+      "en_US": "Pokémon Alegre"
+    },
+    {
+      "id": "msg_0827_00272",
+      "en_US": "Pokémon Optimista"
+    },
+    {
+      "id": "msg_0827_00273",
+      "en_US": "Pokémon Bellota"
+    },
+    {
+      "id": "msg_0827_00274",
+      "en_US": "Pokémon Astuto"
+    },
+    {
+      "id": "msg_0827_00275",
+      "en_US": "Pokémon Malvado"
+    },
+    {
+      "id": "msg_0827_00276",
+      "en_US": "Pokémon Pequebuche"
+    },
+    {
+      "id": "msg_0827_00277",
+      "en_US": "Pokémon Buche"
+    },
+    {
+      "id": "msg_0827_00278",
+      "en_US": "Pokémon Gaviota"
+    },
+    {
+      "id": "msg_0827_00279",
+      "en_US": "Pokémon Ave Agua"
+    },
+    {
+      "id": "msg_0827_00280",
+      "en_US": "Pokémon Sensible"
+    },
+    {
+      "id": "msg_0827_00281",
+      "en_US": "Pokémon Sensorio"
+    },
+    {
+      "id": "msg_0827_00282",
+      "en_US": "Pokémon Envolvente"
+    },
+    {
+      "id": "msg_0827_00283",
+      "en_US": "Pokémon Zapatero"
+    },
+    {
+      "id": "msg_0827_00284",
+      "en_US": "Pokémon Globocular"
+    },
+    {
+      "id": "msg_0827_00285",
+      "en_US": "Pokémon Hongo"
+    },
+    {
+      "id": "msg_0827_00286",
+      "en_US": "Pokémon Hongo"
+    },
+    {
+      "id": "msg_0827_00287",
+      "en_US": "Pokémon Gandul"
+    },
+    {
+      "id": "msg_0827_00288",
+      "en_US": "Pokémon Mono Feroz"
+    },
+    {
+      "id": "msg_0827_00289",
+      "en_US": "Pokémon Holgazán"
+    },
+    {
+      "id": "msg_0827_00290",
+      "en_US": "Pokémon Aprendiz"
+    },
+    {
+      "id": "msg_0827_00291",
+      "en_US": "Pokémon Ninja"
+    },
+    {
+      "id": "msg_0827_00292",
+      "en_US": "Pokémon Muda"
+    },
+    {
+      "id": "msg_0827_00293",
+      "en_US": "Pokémon Susurro"
+    },
+    {
+      "id": "msg_0827_00294",
+      "en_US": "Pokémon Chillón"
+    },
+    {
+      "id": "msg_0827_00295",
+      "en_US": "Pokémon Escandaloso"
+    },
+    {
+      "id": "msg_0827_00296",
+      "en_US": "Pokémon Valiente"
+    },
+    {
+      "id": "msg_0827_00297",
+      "en_US": "Pokémon Empuje"
+    },
+    {
+      "id": "msg_0827_00298",
+      "en_US": "Pokémon A Topos"
+    },
+    {
+      "id": "msg_0827_00299",
+      "en_US": "Pokémon Brújula"
+    },
+    {
+      "id": "msg_0827_00300",
+      "en_US": "Pokémon Gatito"
+    },
+    {
+      "id": "msg_0827_00301",
+      "en_US": "Pokémon Cursi"
+    },
+    {
+      "id": "msg_0827_00302",
+      "en_US": "Pokémon Oscuridad"
+    },
+    {
+      "id": "msg_0827_00303",
+      "en_US": "Pokémon Tramposo"
+    },
+    {
+      "id": "msg_0827_00304",
+      "en_US": "Pokémon Cor. Férrea"
+    },
+    {
+      "id": "msg_0827_00305",
+      "en_US": "Pokémon Cor. Férrea"
+    },
+    {
+      "id": "msg_0827_00306",
+      "en_US": "Pokémon Cor. Férrea"
+    },
+    {
+      "id": "msg_0827_00307",
+      "en_US": "Pokémon Meditador"
+    },
+    {
+      "id": "msg_0827_00308",
+      "en_US": "Pokémon Meditador"
+    },
+    {
+      "id": "msg_0827_00309",
+      "en_US": "Pokémon Calambre"
+    },
+    {
+      "id": "msg_0827_00310",
+      "en_US": "Pokémon Descarga"
+    },
+    {
+      "id": "msg_0827_00311",
+      "en_US": "Pokémon Ánimo"
+    },
+    {
+      "id": "msg_0827_00312",
+      "en_US": "Pokémon Ánimo"
+    },
+    {
+      "id": "msg_0827_00313",
+      "en_US": "Pokémon Luciérnaga"
+    },
+    {
+      "id": "msg_0827_00314",
+      "en_US": "Pokémon Luciérnaga"
+    },
+    {
+      "id": "msg_0827_00315",
+      "en_US": "Pokémon Espina"
+    },
+    {
+      "id": "msg_0827_00316",
+      "en_US": "Pokémon Estómago"
+    },
+    {
+      "id": "msg_0827_00317",
+      "en_US": "Pokémon Bolsa Ven."
+    },
+    {
+      "id": "msg_0827_00318",
+      "en_US": "Pokémon Feroz"
+    },
+    {
+      "id": "msg_0827_00319",
+      "en_US": "Pokémon Voraz"
+    },
+    {
+      "id": "msg_0827_00320",
+      "en_US": "Pokémon Ballenabola"
+    },
+    {
+      "id": "msg_0827_00321",
+      "en_US": "Pokémon Ballenaflot"
+    },
+    {
+      "id": "msg_0827_00322",
+      "en_US": "Pokémon Torpe"
+    },
+    {
+      "id": "msg_0827_00323",
+      "en_US": "Pokémon Erupción"
+    },
+    {
+      "id": "msg_0827_00324",
+      "en_US": "Pokémon Carbón"
+    },
+    {
+      "id": "msg_0827_00325",
+      "en_US": "Pokémon Saltarín"
+    },
+    {
+      "id": "msg_0827_00326",
+      "en_US": "Pokémon Manipulador"
+    },
+    {
+      "id": "msg_0827_00327",
+      "en_US": "Pokémon Panda Topos"
+    },
+    {
+      "id": "msg_0827_00328",
+      "en_US": "Pokémon Hormigaleón"
+    },
+    {
+      "id": "msg_0827_00329",
+      "en_US": "Pokémon Vibrante"
+    },
+    {
+      "id": "msg_0827_00330",
+      "en_US": "Pokémon Místico"
+    },
+    {
+      "id": "msg_0827_00331",
+      "en_US": "Pokémon Cactus"
+    },
+    {
+      "id": "msg_0827_00332",
+      "en_US": "Pokémon Espantajo"
+    },
+    {
+      "id": "msg_0827_00333",
+      "en_US": "Pokémon Ave Algodón"
+    },
+    {
+      "id": "msg_0827_00334",
+      "en_US": "Pokémon Cantor"
+    },
+    {
+      "id": "msg_0827_00335",
+      "en_US": "Pokémon Gato Hurón"
+    },
+    {
+      "id": "msg_0827_00336",
+      "en_US": "Pokémon Colmillos"
+    },
+    {
+      "id": "msg_0827_00337",
+      "en_US": "Pokémon Meteorito"
+    },
+    {
+      "id": "msg_0827_00338",
+      "en_US": "Pokémon Meteorito"
+    },
+    {
+      "id": "msg_0827_00339",
+      "en_US": "Pokémon Bigotudo"
+    },
+    {
+      "id": "msg_0827_00340",
+      "en_US": "Pokémon Bigotudo"
+    },
+    {
+      "id": "msg_0827_00341",
+      "en_US": "Pokémon Rufián"
+    },
+    {
+      "id": "msg_0827_00342",
+      "en_US": "Pokémon Granuja"
+    },
+    {
+      "id": "msg_0827_00343",
+      "en_US": "Pokémon Muñ. Barro"
+    },
+    {
+      "id": "msg_0827_00344",
+      "en_US": "Pokémon Muñ. Barro"
+    },
+    {
+      "id": "msg_0827_00345",
+      "en_US": "Pokémon Lila Mar"
+    },
+    {
+      "id": "msg_0827_00346",
+      "en_US": "Pokémon Percebe"
+    },
+    {
+      "id": "msg_0827_00347",
+      "en_US": "Pokémon Camarón"
+    },
+    {
+      "id": "msg_0827_00348",
+      "en_US": "Pokémon Armadura"
+    },
+    {
+      "id": "msg_0827_00349",
+      "en_US": "Pokémon Pez"
+    },
+    {
+      "id": "msg_0827_00350",
+      "en_US": "Pokémon Tierno"
+    },
+    {
+      "id": "msg_0827_00351",
+      "en_US": "Pokémon Clima"
+    },
+    {
+      "id": "msg_0827_00352",
+      "en_US": "Pokémon Camaleónico"
+    },
+    {
+      "id": "msg_0827_00353",
+      "en_US": "Pokémon Títere"
+    },
+    {
+      "id": "msg_0827_00354",
+      "en_US": "Pokémon Marioneta"
+    },
+    {
+      "id": "msg_0827_00355",
+      "en_US": "Pokémon Réquiem"
+    },
+    {
+      "id": "msg_0827_00356",
+      "en_US": "Pokémon Atrayente"
+    },
+    {
+      "id": "msg_0827_00357",
+      "en_US": "Pokémon Fruto"
+    },
+    {
+      "id": "msg_0827_00358",
+      "en_US": "Pokémon Sonido Aire"
+    },
+    {
+      "id": "msg_0827_00359",
+      "en_US": "Pokémon Catástrofe"
+    },
+    {
+      "id": "msg_0827_00360",
+      "en_US": "Pokémon Radiante"
+    },
+    {
+      "id": "msg_0827_00361",
+      "en_US": "Pokémon Gorro Nieve"
+    },
+    {
+      "id": "msg_0827_00362",
+      "en_US": "Pokémon Cara"
+    },
+    {
+      "id": "msg_0827_00363",
+      "en_US": "Pokémon Aplauso"
+    },
+    {
+      "id": "msg_0827_00364",
+      "en_US": "Pokémon Rodabola"
+    },
+    {
+      "id": "msg_0827_00365",
+      "en_US": "Pokémon Rompehielo"
+    },
+    {
+      "id": "msg_0827_00366",
+      "en_US": "Pokémon Bivalvo"
+    },
+    {
+      "id": "msg_0827_00367",
+      "en_US": "Pokémon Abisal"
+    },
+    {
+      "id": "msg_0827_00368",
+      "en_US": "Pokémon Mar del Sur"
+    },
+    {
+      "id": "msg_0827_00369",
+      "en_US": "Pokémon Longevo"
+    },
+    {
+      "id": "msg_0827_00370",
+      "en_US": "Pokémon Cita"
+    },
+    {
+      "id": "msg_0827_00371",
+      "en_US": "Pokémon Cabeza Roca"
+    },
+    {
+      "id": "msg_0827_00372",
+      "en_US": "Pokémon Resistencia"
+    },
+    {
+      "id": "msg_0827_00373",
+      "en_US": "Pokémon Dragón"
+    },
+    {
+      "id": "msg_0827_00374",
+      "en_US": "Pokémon Bola Hierro"
+    },
+    {
+      "id": "msg_0827_00375",
+      "en_US": "Pokémon Garrahierro"
+    },
+    {
+      "id": "msg_0827_00376",
+      "en_US": "Pokémon Pata Hierro"
+    },
+    {
+      "id": "msg_0827_00377",
+      "en_US": "Pokémon Pico Roca"
+    },
+    {
+      "id": "msg_0827_00378",
+      "en_US": "Pokémon Iceberg"
+    },
+    {
+      "id": "msg_0827_00379",
+      "en_US": "Pokémon Hierro"
+    },
+    {
+      "id": "msg_0827_00380",
+      "en_US": "Pokémon Eón"
+    },
+    {
+      "id": "msg_0827_00381",
+      "en_US": "Pokémon Eón"
+    },
+    {
+      "id": "msg_0827_00382",
+      "en_US": "Pokémon Cuenca Mar"
+    },
+    {
+      "id": "msg_0827_00383",
+      "en_US": "Pokémon Continente"
+    },
+    {
+      "id": "msg_0827_00384",
+      "en_US": "Pokémon Cielo"
+    },
+    {
+      "id": "msg_0827_00385",
+      "en_US": "Pokémon Deseo"
+    },
+    {
+      "id": "msg_0827_00386",
+      "en_US": "Pokémon ADN"
+    },
+    {
+      "id": "msg_0827_00387",
+      "en_US": "Pokémon Hojita"
+    },
+    {
+      "id": "msg_0827_00388",
+      "en_US": "Pokémon Arboleda"
+    },
+    {
+      "id": "msg_0827_00389",
+      "en_US": "Pokémon Continente"
+    },
+    {
+      "id": "msg_0827_00390",
+      "en_US": "Pokémon Chimpancé"
+    },
+    {
+      "id": "msg_0827_00391",
+      "en_US": "Pokémon Juguetón"
+    },
+    {
+      "id": "msg_0827_00392",
+      "en_US": "Pokémon Llama"
+    },
+    {
+      "id": "msg_0827_00393",
+      "en_US": "Pokémon Pingüino"
+    },
+    {
+      "id": "msg_0827_00394",
+      "en_US": "Pokémon Pingüino"
+    },
+    {
+      "id": "msg_0827_00395",
+      "en_US": "Pokémon Emperador"
+    },
+    {
+      "id": "msg_0827_00396",
+      "en_US": "Pokémon Estornino"
+    },
+    {
+      "id": "msg_0827_00397",
+      "en_US": "Pokémon Estornino"
+    },
+    {
+      "id": "msg_0827_00398",
+      "en_US": "Pokémon Depredador"
+    },
+    {
+      "id": "msg_0827_00399",
+      "en_US": "Pokémon Gran Ratón"
+    },
+    {
+      "id": "msg_0827_00400",
+      "en_US": "Pokémon Castor"
+    },
+    {
+      "id": "msg_0827_00401",
+      "en_US": "Pokémon Grillo"
+    },
+    {
+      "id": "msg_0827_00402",
+      "en_US": "Pokémon Grillo"
+    },
+    {
+      "id": "msg_0827_00403",
+      "en_US": "Pokémon Flash"
+    },
+    {
+      "id": "msg_0827_00404",
+      "en_US": "Pokémon Chispa"
+    },
+    {
+      "id": "msg_0827_00405",
+      "en_US": "Pokémon Chispa Ojos"
+    },
+    {
+      "id": "msg_0827_00406",
+      "en_US": "Pokémon Brote"
+    },
+    {
+      "id": "msg_0827_00407",
+      "en_US": "Pokémon Ramillete"
+    },
+    {
+      "id": "msg_0827_00408",
+      "en_US": "Pokémon Cabezazo"
+    },
+    {
+      "id": "msg_0827_00409",
+      "en_US": "Pokémon Cabezazo"
+    },
+    {
+      "id": "msg_0827_00410",
+      "en_US": "Pokémon Escudo"
+    },
+    {
+      "id": "msg_0827_00411",
+      "en_US": "Pokémon Escudo"
+    },
+    {
+      "id": "msg_0827_00412",
+      "en_US": "Pokémon Larva"
+    },
+    {
+      "id": "msg_0827_00413",
+      "en_US": "Pokémon Larva"
+    },
+    {
+      "id": "msg_0827_00414",
+      "en_US": "Pokémon Polilla"
+    },
+    {
+      "id": "msg_0827_00415",
+      "en_US": "Pokémon Abejita"
+    },
+    {
+      "id": "msg_0827_00416",
+      "en_US": "Pokémon Colmena"
+    },
+    {
+      "id": "msg_0827_00417",
+      "en_US": "Pokémon Ardillalec"
+    },
+    {
+      "id": "msg_0827_00418",
+      "en_US": "Pokémon Nutria Mar."
+    },
+    {
+      "id": "msg_0827_00419",
+      "en_US": "Pokémon Nutria Mar."
+    },
+    {
+      "id": "msg_0827_00420",
+      "en_US": "Pokémon Cereza"
+    },
+    {
+      "id": "msg_0827_00421",
+      "en_US": "Pokémon Floración"
+    },
+    {
+      "id": "msg_0827_00422",
+      "en_US": "Pokémon Babosa Mar."
+    },
+    {
+      "id": "msg_0827_00423",
+      "en_US": "Pokémon Babosa Mar."
+    },
+    {
+      "id": "msg_0827_00424",
+      "en_US": "Pokémon Cola Larga"
+    },
+    {
+      "id": "msg_0827_00425",
+      "en_US": "Pokémon Globo"
+    },
+    {
+      "id": "msg_0827_00426",
+      "en_US": "Pokémon Dirigible"
+    },
+    {
+      "id": "msg_0827_00427",
+      "en_US": "Pokémon Conejo"
+    },
+    {
+      "id": "msg_0827_00428",
+      "en_US": "Pokémon Conejo"
+    },
+    {
+      "id": "msg_0827_00429",
+      "en_US": "Pokémon Mágico"
+    },
+    {
+      "id": "msg_0827_00430",
+      "en_US": "Pokémon Gran Jefe"
+    },
+    {
+      "id": "msg_0827_00431",
+      "en_US": "Pokémon Gastuto"
+    },
+    {
+      "id": "msg_0827_00432",
+      "en_US": "Pokémon Tigre Gato"
+    },
+    {
+      "id": "msg_0827_00433",
+      "en_US": "Pokémon Campana"
+    },
+    {
+      "id": "msg_0827_00434",
+      "en_US": "Pokémon Mofeta"
+    },
+    {
+      "id": "msg_0827_00435",
+      "en_US": "Pokémon Mofeta"
+    },
+    {
+      "id": "msg_0827_00436",
+      "en_US": "Pokémon Bronce"
+    },
+    {
+      "id": "msg_0827_00437",
+      "en_US": "Pokémon Cam. Bronce"
+    },
+    {
+      "id": "msg_0827_00438",
+      "en_US": "Pokémon Bonsái"
+    },
+    {
+      "id": "msg_0827_00439",
+      "en_US": "Pokémon Mimo"
+    },
+    {
+      "id": "msg_0827_00440",
+      "en_US": "Pokémon Casita"
+    },
+    {
+      "id": "msg_0827_00441",
+      "en_US": "Pokémon Corchea"
+    },
+    {
+      "id": "msg_0827_00442",
+      "en_US": "Pokémon Prohibido"
+    },
+    {
+      "id": "msg_0827_00443",
+      "en_US": "Pokémon Terrascualo"
+    },
+    {
+      "id": "msg_0827_00444",
+      "en_US": "Pokémon Cueva"
+    },
+    {
+      "id": "msg_0827_00445",
+      "en_US": "Pokémon Mach"
+    },
+    {
+      "id": "msg_0827_00446",
+      "en_US": "Pokémon Comilón"
+    },
+    {
+      "id": "msg_0827_00447",
+      "en_US": "Pokémon Emanación"
+    },
+    {
+      "id": "msg_0827_00448",
+      "en_US": "Pokémon Aura"
+    },
+    {
+      "id": "msg_0827_00449",
+      "en_US": "Pokémon Hipo"
+    },
+    {
+      "id": "msg_0827_00450",
+      "en_US": "Pokémon Peso Pesado"
+    },
+    {
+      "id": "msg_0827_00451",
+      "en_US": "Pokémon Escorpión"
+    },
+    {
+      "id": "msg_0827_00452",
+      "en_US": "Pokémon Escorpiogro"
+    },
+    {
+      "id": "msg_0827_00453",
+      "en_US": "Pokémon Boca Tóxica"
+    },
+    {
+      "id": "msg_0827_00454",
+      "en_US": "Pokémon Boca Tóxica"
+    },
+    {
+      "id": "msg_0827_00455",
+      "en_US": "Pokémon Caza Bichos"
+    },
+    {
+      "id": "msg_0827_00456",
+      "en_US": "Pokémon Pez Ala"
+    },
+    {
+      "id": "msg_0827_00457",
+      "en_US": "Pokémon Neón"
+    },
+    {
+      "id": "msg_0827_00458",
+      "en_US": "Pokémon Milano"
+    },
+    {
+      "id": "msg_0827_00459",
+      "en_US": "Pokémon Árbol Nieve"
+    },
+    {
+      "id": "msg_0827_00460",
+      "en_US": "Pokémon Árbol Nieve"
+    },
+    {
+      "id": "msg_0827_00461",
+      "en_US": "Pokémon Garra Filo"
+    },
+    {
+      "id": "msg_0827_00462",
+      "en_US": "Pokémon Magnético"
+    },
+    {
+      "id": "msg_0827_00463",
+      "en_US": "Pokémon Lametazo"
+    },
+    {
+      "id": "msg_0827_00464",
+      "en_US": "Pokémon Taladro"
+    },
+    {
+      "id": "msg_0827_00465",
+      "en_US": "Pokémon Enredadera"
+    },
+    {
+      "id": "msg_0827_00466",
+      "en_US": "Pokémon Rayo"
+    },
+    {
+      "id": "msg_0827_00467",
+      "en_US": "Pokémon Explosión"
+    },
+    {
+      "id": "msg_0827_00468",
+      "en_US": "Pokémon Festejo"
+    },
+    {
+      "id": "msg_0827_00469",
+      "en_US": "Pokémon Libélula"
+    },
+    {
+      "id": "msg_0827_00470",
+      "en_US": "Pokémon Verdor"
+    },
+    {
+      "id": "msg_0827_00471",
+      "en_US": "Pokémon Nievefresca"
+    },
+    {
+      "id": "msg_0827_00472",
+      "en_US": "Pokémon Colmicorpio"
+    },
+    {
+      "id": "msg_0827_00473",
+      "en_US": "Pokémon 2colmillos"
+    },
+    {
+      "id": "msg_0827_00474",
+      "en_US": "Pokémon Virtual"
+    },
+    {
+      "id": "msg_0827_00475",
+      "en_US": "Pokémon Cuchilla"
+    },
+    {
+      "id": "msg_0827_00476",
+      "en_US": "Pokémon Brújula"
+    },
+    {
+      "id": "msg_0827_00477",
+      "en_US": "Pokémon Grilletes"
+    },
+    {
+      "id": "msg_0827_00478",
+      "en_US": "Pokémon Tierra Fría"
+    },
+    {
+      "id": "msg_0827_00479",
+      "en_US": "Pokémon Plasma"
+    },
+    {
+      "id": "msg_0827_00480",
+      "en_US": "Pokémon Sabiduría"
+    },
+    {
+      "id": "msg_0827_00481",
+      "en_US": "Pokémon Sensorio"
+    },
+    {
+      "id": "msg_0827_00482",
+      "en_US": "Pokémon Voluntad"
+    },
+    {
+      "id": "msg_0827_00483",
+      "en_US": "Pokémon Temporal"
+    },
+    {
+      "id": "msg_0827_00484",
+      "en_US": "Pokémon Espacial"
+    },
+    {
+      "id": "msg_0827_00485",
+      "en_US": "Pokémon Domo Lava"
+    },
+    {
+      "id": "msg_0827_00486",
+      "en_US": "Pokémon Colosal"
+    },
+    {
+      "id": "msg_0827_00487",
+      "en_US": "Pokémon Renegado"
+    },
+    {
+      "id": "msg_0827_00488",
+      "en_US": "Pokémon Lunar"
+    },
+    {
+      "id": "msg_0827_00489",
+      "en_US": "Pokémon Marino"
+    },
+    {
+      "id": "msg_0827_00490",
+      "en_US": "Pokémon Náutico"
+    },
+    {
+      "id": "msg_0827_00491",
+      "en_US": "Pokémon Oscuridad"
+    },
+    {
+      "id": "msg_0827_00492",
+      "en_US": "Pokémon Gratitud"
+    },
+    {
+      "id": "msg_0827_00493",
+      "en_US": "Pokémon Alfa"
+    }
+  ]
+}

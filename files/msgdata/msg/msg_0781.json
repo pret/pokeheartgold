@@ -1,0 +1,37 @@
+{
+  "key": 40388,
+  "messages": [
+    {
+      "id": "msg_0781_00000",
+      "en_US": "None"
+    },
+    {
+      "id": "msg_0781_00001",
+      "en_US": "New South Wales"
+    },
+    {
+      "id": "msg_0781_00002",
+      "en_US": "North"
+    },
+    {
+      "id": "msg_0781_00003",
+      "en_US": "Queensland"
+    },
+    {
+      "id": "msg_0781_00004",
+      "en_US": "South Australia"
+    },
+    {
+      "id": "msg_0781_00005",
+      "en_US": "Tasmania"
+    },
+    {
+      "id": "msg_0781_00006",
+      "en_US": "Victoria"
+    },
+    {
+      "id": "msg_0781_00007",
+      "en_US": "Western Australia"
+    }
+  ]
+}

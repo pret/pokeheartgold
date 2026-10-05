@@ -1,0 +1,101 @@
+{
+  "key": 39269,
+  "messages": [
+    {
+      "id": "msg_0462_T03GYM0101_00000",
+      "en_US": [
+        "Brock: Wow, it’s not often that we\n",
+        "get a challenger from Johto.\r",
+        "I’m Brock, the Pewter Gym Leader.\f",
+        "I’m an expert on Rock-type Pokémon.\r",
+        "My Pokémon are impervious to most\n",
+        "physical attacks.\r",
+        "You’ll have a hard time inflicting\n",
+        "any damage.\r",
+        "Come on!\r"
+      ]
+    },
+    {
+      "id": "msg_0462_T03GYM0101_00001",
+      "en_US": [
+        "Brock: Your Pokémon’s powerful\n",
+        "attacks overcame my\f",
+        "rock-hard resistance...\r",
+        "You’re stronger than\n",
+        "I expected...\f",
+        "Go ahead--take this Badge.\r"
+      ]
+    },
+    {
+      "id": "msg_0462_T03GYM0101_00002",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} received\n",
+        "the Boulder Badge from Brock!"
+      ]
+    },
+    {
+      "id": "msg_0462_T03GYM0101_00003",
+      "en_US": [
+        "Brock: I really enjoyed the battle\n",
+        "with you, {STRVAR_1 3, 0, 0}!\f",
+        "I’ll give you the move Rock Slide, too.\r",
+        "It can sometimes cause your foe\n",
+        "to flinch.\r"
+      ]
+    },
+    {
+      "id": "msg_0462_T03GYM0101_00004",
+      "en_US": [
+        "Brock: I really enjoyed the battle\n",
+        "with you, {STRVAR_1 3, 0, 0}!\f",
+        "I’ll give you the move Rock Slide, too.\r",
+        "It can sometimes cause your foe\n",
+        "to flinch.\r"
+      ]
+    },
+    {
+      "id": "msg_0462_T03GYM0101_00005",
+      "en_US": [
+        "Brock: The world is huge. There are\n",
+        "still many strong Trainers like you.\r",
+        "Just wait and see.\r",
+        "I’m going to become a lot\n",
+        "stronger, too."
+      ]
+    },
+    {
+      "id": "msg_0462_T03GYM0101_00006",
+      "en_US": [
+        "Yo! Legend in the making! You look...\f",
+        "really rocking.\r",
+        "Are you battling the Gym Leaders\n",
+        "of Kanto?\r",
+        "They’re strong and dedicated people,\n",
+        "just like Johto’s Gym Leaders."
+      ]
+    },
+    {
+      "id": "msg_0462_T03GYM0101_00007",
+      "en_US": [
+        "Yo! Legend in the making! That Gym\n",
+        "didn’t give you much trouble.\r",
+        "The way you took charge was\n",
+        "really inspiring.\f",
+        "I mean that seriously."
+      ]
+    },
+    {
+      "id": "msg_0462_T03GYM0101_00008",
+      "en_US": "Pewter City Pokémon Gym"
+    },
+    {
+      "id": "msg_0462_T03GYM0101_00009",
+      "en_US": [
+        "Pewter City Pokémon Gym\r",
+        "Leader: Brock\n",
+        "Certified Trainer!\f",
+        "{STRVAR_1 3, 0, 0}"
+      ]
+    }
+  ]
+}

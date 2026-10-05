@@ -1,0 +1,145 @@
+{
+  "key": 9314,
+  "messages": [
+    {
+      "id": "msg_0099_D31R0207_00000",
+      "en_US": [
+        "Please find a partner from the Trainers\n",
+        "that are gathered here.\r"
+      ]
+    },
+    {
+      "id": "msg_0099_D31R0207_00001",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}, you have not found\n",
+        "a partner for your tag team.\r",
+        "Would you like to quit looking and\n",
+        "return to the reception counter? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0099_D31R0207_00002",
+      "en_US": [
+        "Thank you for choosing a partner.\r",
+        "I will now show you to your\n",
+        "Multi Battle Room.\r"
+      ]
+    },
+    {
+      "id": "msg_0099_D31R0207_00003",
+      "en_US": [
+        "Riley: The partners I have now?\r",
+        "Well, my {STRVAR_1 0, 0, 0}’s nasty with its\n",
+        "{STRVAR_1 6, 1, 0}.\r",
+        "And there’s my {STRVAR_1 0, 2, 0}, which\n",
+        "is a sure hand with {STRVAR_1 6, 3, 0}.\r",
+        "Would you like to team up with me? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0099_D31R0207_00004",
+      "en_US": [
+        "Riley: ...Oh, is that so?\n",
+        "That’s too bad."
+      ]
+    },
+    {
+      "id": "msg_0099_D31R0207_00005",
+      "en_US": [
+        "Riley: Ahaha, thanks.\n",
+        "I’ll be waiting for you.\r"
+      ]
+    },
+    {
+      "id": "msg_0099_D31R0207_00006",
+      "en_US": [
+        "Cheryl: I have {STRVAR_1 0, 0, 0} that\n",
+        "is very good with {STRVAR_1 6, 1, 0}\r",
+        "and {STRVAR_1 0, 2, 0} that likes to\n",
+        "show off its {STRVAR_1 6, 3, 0}.\r",
+        "Will you team up with me? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0099_D31R0207_00007",
+      "en_US": [
+        "Cheryl: Oh...\n",
+        "Too bad..."
+      ]
+    },
+    {
+      "id": "msg_0099_D31R0207_00008",
+      "en_US": "Cheryl: I’ll go on ahead, then.\r"
+    },
+    {
+      "id": "msg_0099_D31R0207_00009",
+      "en_US": [
+        "Buck: Yo, are you looking to team\n",
+        "up? Let me tell you what I’ve got.\r",
+        "My {STRVAR_1 0, 0, 0}’s first-rate\n",
+        "with {STRVAR_1 6, 1, 0}.\r",
+        "And my {STRVAR_1 0, 2, 0} is the best when\n",
+        "it comes to using {STRVAR_1 6, 3, 0}.\r",
+        "You want to go with me, don’t you? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0099_D31R0207_00010",
+      "en_US": [
+        "Buck: Huh? What?\n",
+        "That’s pretty cold of you!"
+      ]
+    },
+    {
+      "id": "msg_0099_D31R0207_00011",
+      "en_US": [
+        "Buck: Hehehe! Good choice!\n",
+        "There’s no problem when I’m around!\r"
+      ]
+    },
+    {
+      "id": "msg_0099_D31R0207_00012",
+      "en_US": [
+        "Marley: ...My {STRVAR_1 0, 0, 0} uses\n",
+        "{STRVAR_1 6, 1, 0} well...\r",
+        "And my {STRVAR_1 0, 2, 0} likes to use\n",
+        "{STRVAR_1 6, 3, 0}.\r",
+        "...What do you want?\n",
+        "Am I supposed to go with you? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0099_D31R0207_00013",
+      "en_US": "Marley: ...Whatever..."
+    },
+    {
+      "id": "msg_0099_D31R0207_00014",
+      "en_US": "Marley: ...I’ll go ahead...\r"
+    },
+    {
+      "id": "msg_0099_D31R0207_00015",
+      "en_US": [
+        "Mira: Hi, hi!\n",
+        "I’m with my {STRVAR_1 0, 0, 0}!\f",
+        "It’s really good with {STRVAR_1 6, 1, 0}!\r",
+        "The other one is my {STRVAR_1 0, 2, 0}.\n",
+        "Its {STRVAR_1 6, 3, 0} is awesome!\r",
+        "Do you want to join with me? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0099_D31R0207_00016",
+      "en_US": [
+        "Mira: Oh, OK.\n",
+        "Let’s go another time!"
+      ]
+    },
+    {
+      "id": "msg_0099_D31R0207_00017",
+      "en_US": [
+        "Mira: OK! I’ll wait for you!\n",
+        "{STRVAR_1 3, 0, 0}, don’t be long!\r"
+      ]
+    }
+  ]
+}

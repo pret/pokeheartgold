@@ -1,4 +1,4 @@
-; Ilex Forest
+// Ilex Forest
 
 #define FARFETCHD_X_COORD                   VAR_TEMP_x4000
 #define FARFETCHD_Z_COORD                   VAR_TEMP_x4001
@@ -10,9 +10,8 @@
 #include "constants/scrcmd.h"
 #include "fielddata/script/scr_seq/event_D36R0101.h"
 #include "msgdata/msg/msg_0115_D36R0101.h"
-	.include "asm/macros/script.inc"
+#include "macros/script.inc"
 
-	.rodata
 
 	ScrDef scr_seq_D36R0101_000
 	ScrDef scr_seq_D36R0101_farfetchd1
