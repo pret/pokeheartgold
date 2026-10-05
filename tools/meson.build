@@ -9,7 +9,6 @@ subdir('jsonproc')
 subdir('msgenc')
 subdir('nitrogfx')
 subdir('o2narc')
-subdir('ordergen')
 subdir('postconf')
 subdir('scripts')
 
