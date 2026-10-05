@@ -24,7 +24,7 @@ while [[ $# -gt 0 ]] ; do
             exit 0
             ;;
         -a|--assembler)
-            #AS="$2"
+            AS="$2"
             shift
             shift
             ;;
