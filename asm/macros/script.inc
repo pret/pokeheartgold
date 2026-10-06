@@ -4,8 +4,6 @@
 #include "constants/scrcmd.h"
 #include "macros/movement.inc"
 
-    .option alignment off
-
 	.macro ScrDef offset
 	.word \offset - . - 4
 	.endm
@@ -14,322 +12,322 @@
 	.short SCRDEF_END
 	.endm
 
-	; Dummy command
+	// Dummy command
 	.macro Noop
 	.short 0
 	.endm
 
-	; Dummy command
+	// Dummy command
 	.macro Dummy
 	.short 1
 	.endm
 
-	; Exits script execution and returns control to the player
+	// Exits script execution and returns control to the player
 	.macro End
 	.short 2
 	.endm
 
-	; Pauses for some frames, tracks the timer in a script variable
+	// Pauses for some frames, tracks the timer in a script variable
 	.macro Wait frames, var
 	.short 3
 	.short \frames
 	.short \var
 	.endm
 
-	; Loads 8-bit value into the specified script register
+	// Loads 8-bit value into the specified script register
 	.macro LoadByte reg, val
 	.short 4
 	.byte \reg
 	.byte \val
 	.endm
 
-	; Loads 32-bit value into the specified script register
+	// Loads 32-bit value into the specified script register
 	.macro LoadWord reg, val
 	.short 5
 	.byte \reg
 	.word \val
 	.endm
 
-	; Reads byte at a specific memory address into a script register
-	; Because scripts are compiled in a code-agnostic fashion,
-	; this command can never be assembled.
+	// Reads byte at a specific memory address into a script register
+	// Because scripts are compiled in a code-agnostic fashion,
+	// this command can never be assembled.
 	.macro LoadByteFromAddr reg, addr
 	.short 6
 	.byte \reg
 	.word \addr
 	.endm
 
-	; Writes byte to a specific memory address from a script register
-	; Because scripts are compiled in a code-agnostic fashion,
-	; this command can never be assembled.
+	// Writes byte to a specific memory address from a script register
+	// Because scripts are compiled in a code-agnostic fashion,
+	// this command can never be assembled.
 	.macro WriteByteToAddr addr, reg
 	.short 7
 	.word \addr
 	.byte \reg
 	.endm
 
-	; Writes byte literal to a specific memory address
-	; Because scripts are compiled in a code-agnostic fashion,
-	; this command can never be assembled.
+	// Writes byte literal to a specific memory address
+	// Because scripts are compiled in a code-agnostic fashion,
+	// this command can never be assembled.
 	.macro SetPtrByte addr, val
 	.short 8
 	.word \addr
 	.byte \val
 	.endm
 
-	; Copies a byte between script registers
+	// Copies a byte between script registers
 	.macro CopyLocal to, from
 	.short 9
 	.byte \to
 	.byte \from
 	.endm
 
-	; Copies a byte between two memory addresses
-	; Because scripts are compiled in a code-agnostic fashion,
-	; this command can never be assembled.
+	// Copies a byte between two memory addresses
+	// Because scripts are compiled in a code-agnostic fashion,
+	// this command can never be assembled.
 	.macro CopyByte to, from
 	.short 10
 	.word \to
 	.word \from
 	.endm
 
-	; Compares values between script reg and script reg
+	// Compares values between script reg and script reg
 	.macro CompareLocalToLocal a, b
 	.short 11
 	.byte \a
 	.byte \b
 	.endm
 
-	; Compares script reg to byte literal
+	// Compares script reg to byte literal
 	.macro CompareLocalToValue reg, val
 	.short 12
 	.byte \reg
 	.byte \val
 	.endm
 
-	; Compares script reg to memory address
-	; Because scripts are compiled in a code-agnostic fashion,
-	; this command can never be assembled.
+	// Compares script reg to memory address
+	// Because scripts are compiled in a code-agnostic fashion,
+	// this command can never be assembled.
 	.macro CompareLocalToAddr reg, addr
 	.short 13
 	.byte \reg
 	.word \addr
 	.endm
 
-	; Compares memory address to script reg
-	; Because scripts are compiled in a code-agnostic fashion,
-	; this command can never be assembled.
+	// Compares memory address to script reg
+	// Because scripts are compiled in a code-agnostic fashion,
+	// this command can never be assembled.
 	.macro CompareAddrToLocal addr, reg
 	.short 14
 	.word \addr
 	.byte \reg
 	.endm
 
-	; Compares memory address to byte literal
-	; Because scripts are compiled in a code-agnostic fashion,
-	; this command can never be assembled.
+	// Compares memory address to byte literal
+	// Because scripts are compiled in a code-agnostic fashion,
+	// this command can never be assembled.
 	.macro CompareAddrToValue addr, val
 	.short 15
 	.word \addr
 	.byte \val
 	.endm
 
-	; Compares bytes at two memory addresses
-	; Because scripts are compiled in a code-agnostic fashion,
-	; this command can never be assembled.
+	// Compares bytes at two memory addresses
+	// Because scripts are compiled in a code-agnostic fashion,
+	// this command can never be assembled.
 	.macro CompareAddrToAddr a, b
 	.short 16
 	.word \a
 	.word \b
 	.endm
 
-	; Compares variable to 16-bit literal
+	// Compares variable to 16-bit literal
 	.macro CompareVarToValue var, val
 	.short 17
 	.short \var
 	.short \val
 	.endm
 
-	; Compares two variables
+	// Compares two variables
 	.macro CompareVarToVar a, b
 	.short 18
 	.short \a
 	.short \b
 	.endm
 
-	; Creates a new script context to run the indicated script asynchronously
+	// Creates a new script context to run the indicated script asynchronously
 	.macro RunScript id
 	.short 19
 	.short \id
 	.endm
 
-	; Creates a new script context to run the indicated script and wait
+	// Creates a new script context to run the indicated script and wait
 	.macro CallStd id
 	.short 20
 	.short \id
 	.endm
 
-	; Yield to parent context
+	// Yield to parent context
 	.macro RestartCurrentScript
 	.short 21
 	.endm
 
-	; Absolute branch to offset in script
+	// Absolute branch to offset in script
 	.macro GoTo dest
 	.short 22
 	.word \dest-.-4
 	.endm
 
-	; Branch to offset in script if interacting with a specific object
+	// Branch to offset in script if interacting with a specific object
 	.macro ObjectGoTo object, dest
 	.short 23
 	.byte \object
 	.word \dest-.-4
 	.endm
 
-	; Branch to offset in script if interacting with a specific bg event
+	// Branch to offset in script if interacting with a specific bg event
 	.macro BGGoTo bg, dest
 	.short 24
 	.byte \bg
 	.word \dest-.-4
 	.endm
 
-	; Branch to offset in script if facing a specific direction
+	// Branch to offset in script if facing a specific direction
 	.macro DirectionGoTo dir, dest
 	.short 25
 	.byte \dir
 	.word \dest-.-4
 	.endm
 
-	; Call script as a subroutine
+	// Call script as a subroutine
 	.macro Call sub
 	.short 26
 	.word \sub-.-4
 	.endm
 
-	; Return from subroutine
+	// Return from subroutine
 	.macro Return
 	.short 27
 	.endm
 
-	; Conditional branch to offset in script
+	// Conditional branch to offset in script
 	.macro GoToIf condition, dest
 	.short 28
 	.byte \condition
 	.word \dest-.-4
 	.endm
 
-	; Conditional call subroutine
+	// Conditional call subroutine
 	.macro CallIf condition, sub
 	.short 29
 	.byte \condition
 	.word \sub-.-4
 	.endm
 
-	; Set event flag
+	// Set event flag
 	.macro SetFlag flag
 	.short 30
 	.short \flag
 	.endm
 
-	; Clear event flag
+	// Clear event flag
 	.macro ClearFlag flag
 	.short 31
 	.short \flag
 	.endm
 
-	; Check event flag, store result on context
+	// Check event flag, store result on context
 	.macro CheckFlag flag
 	.short 32
 	.short \flag
 	.endm
 
-	; Set event flag referenced in var
+	// Set event flag referenced in var
 	.macro SetFlagVar var
 	.short 33
 	.short \var
 	.endm
 
-	; Clear event flag referenced in var
+	// Clear event flag referenced in var
 	.macro ClearFlagVar var
 	.short 34
 	.short \var
 	.endm
 
-	; Check event flag referenced in var, store result in other var
+	// Check event flag referenced in var, store result in other var
 	.macro CheckFlagVar var_flag, var_dest
 	.short 35
 	.short \var_flag
 	.short \var_dest
 	.endm
 
-	; Set trainer defeated flag
+	// Set trainer defeated flag
 	.macro SetTrainerFlag var_or_trno
 	.short 36
 	.short \var_or_trno
 	.endm
 
-	; Clear trainer defeated flag
+	// Clear trainer defeated flag
 	.macro ClearTrainerFlag var_or_trno
 	.short 37
 	.short \var_or_trno
 	.endm
 
-	; Check trainer defeated flag, store result on context
+	// Check trainer defeated flag, store result on context
 	.macro CheckTrainerFlag var_or_trno
 	.short 38
 	.short \var_or_trno
 	.endm
 
-	; Increment var value by value
+	// Increment var value by value
 	.macro AddVar var, var_or_addend
 	.short 39
 	.short \var
 	.short \var_or_addend
 	.endm
 
-	; Decrement var value by value
+	// Decrement var value by value
 	.macro SubVar var, var_or_addend
 	.short 40
 	.short \var
 	.short \var_or_addend
 	.endm
 
-	; Set var to short literal
+	// Set var to short literal
 	.macro SetVar var, val
 	.short 41
 	.short \var
 	.short \val
 	.endm
 
-	; Set var from other var
+	// Set var from other var
 	.macro CopyVar dst, src
 	.short 42
 	.short \dst
 	.short \src
 	.endm
 
-	; Set var from other var or short literal
+	// Set var from other var or short literal
 	.macro SetOrCopyVar dst, src
 	.short 43
 	.short \dst
 	.short \src
 	.endm
 
-	; Print non_npc_msg in field window from current map message bank
+	// Print non_npc_msg in field window from current map message bank
 	.macro NonNPCMsg msg_id
 	.short 44
 	.byte \msg_id
 	.endm
 
-	; NPC dialogue window
+	// NPC dialogue window
 	.macro NPCMsg msg_id
 	.short 45
 	.byte \msg_id
 	.endm
 
-	; Not sure what to call this but it
-	; is also a message printer
+	// Not sure what to call this but it
+	// is also a message printer
 	.macro NonNPCMsgVar msg_id
 	.short 46
 	.short \msg_id
@@ -345,17 +343,17 @@
 	.byte \arg0
 	.endm
 
-	; Waits for A or B button
+	// Waits for A or B button
 	.macro WaitABPress
 	.short 49
 	.endm
 
-	; Waits for A, B, or dpad. On pressing dpad, does a turn frame.
+	// Waits for A, B, or dpad. On pressing dpad, does a turn frame.
 	.macro WaitButton
 	.short 50
 	.endm
 
-	; Waits for A, B, or dpad. No turn frame.
+	// Waits for A, B, or dpad. No turn frame.
 	.macro WaitButtonOrDpad
 	.short 51
 	.endm
@@ -368,7 +366,7 @@
 	.short 53
 	.endm
 
-	; Like closemsg but does not clear the graphics.
+	// Like closemsg but does not clear the graphics.
 	.macro HoldMsg
 	.short 54
 	.endm
@@ -557,8 +555,8 @@
 	.short \arg0
 	.endm
 
-	; Fade out the music to the target level
-	; in the designated number of frames
+	// Fade out the music to the target level
+	// in the designated number of frames
 	.macro FadeOutBGM target, frames
 	.short 84
 	.short \target
@@ -1023,7 +1021,7 @@
 	.short \arg0
 	.endm
 
-	; For when one or more trainers see you
+	// For when one or more trainers see you
 	.macro GetEyeTrainerNum arg0, arg1
 	.short 171
 	.short \arg0
@@ -1108,22 +1106,22 @@
 	.byte \arg0
 	.endm
 
-	; If `lock` is 1, the player's bike state will
-	; be locked, meaning they cannot mount or
-	; dismount their bike; otherwise, if `lock` is
-	; any other value, the bike state will be
-	; unlocked. The main use for this command was
-	; to block the player from dismounting their
-	; bike while they were on Cycling Road.
+	// If `lock` is 1, the player's bike state will
+	// be locked, meaning they cannot mount or
+	// dismount their bike// otherwise, if `lock` is
+	// any other value, the bike state will be
+	// unlocked. The main use for this command was
+	// to block the player from dismounting their
+	// bike while they were on Cycling Road.
 	.macro SetBikeStateLock lock
 	.short 186
 	.byte \lock
 	.endm
 
-	; Get the player's overworld state.
-	; Used in some places to determine whether
-	; the player is masquerading as a member
-	; of Team Rocket.
+	// Get the player's overworld state.
+	// Used in some places to determine whether
+	// the player is masquerading as a member
+	// of Team Rocket.
 	.macro GetPlayerState var
 	.short 187
 	.short \var
@@ -1138,17 +1136,17 @@
 	.short 189
 	.endm
 
-	; In the buffer_XXX commands, the maximum
-	; acceptable value for the slot arg is 7.
-	; This sets the message format placeholder
-	; to whatever is buffered.
+	// In the buffer_XXX commands, the maximum
+	// acceptable value for the slot arg is 7.
+	// This sets the message format placeholder
+	// to whatever is buffered.
 	.macro BufferPlayersName slot
 	.short 190
 	.byte \slot
 	.endm
 
-	; If you use this before naming your rival,
-	; this will be an empty string.
+	// If you use this before naming your rival,
+	// this will be an empty string.
 	.macro BufferRivalsName slot
 	.short 191
 	.byte \slot
@@ -1159,9 +1157,9 @@
 	.byte \slot
 	.endm
 
-	; For these commands, the additional argument
-	; is a flex arg, meaning it can be a literal
-	; or a variable.
+	// For these commands, the additional argument
+	// is a flex arg, meaning it can be a literal
+	// or a variable.
 	.macro BufferMonSpeciesName slot, party_pos
 	.short 193
 	.byte \slot
@@ -1215,7 +1213,7 @@
 	.byte \slot
 	.endm
 
-	; The other two args here are unused
+	// The other two args here are unused
 	.macro BufferSpeciesName slot, species, arg2, arg3
 	.short 202
 	.byte \slot
@@ -1229,14 +1227,14 @@
 	.byte \slot
 	.endm
 
-	; These two commands are leftover from Platinum.
-	; As such, they are configured to check for the
-	; Sinnoh starters instead of the Johto starters.
-	; Since the player will never start with any of
-	; Turtwig, Chimchar, or Piplup, this command
-	; will always return TURTWIG, and the following
-	; CHIMCHAR.
-	; These commands are unused in HGSS.
+	// These two commands are leftover from Platinum.
+	// As such, they are configured to check for the
+	// Sinnoh starters instead of the Johto starters.
+	// Since the player will never start with any of
+	// Turtwig, Chimchar, or Piplup, this command
+	// will always return TURTWIG, and the following
+	// CHIMCHAR.
+	// These commands are unused in HGSS.
 	.macro BufferDPPtRivalStarterSpeciesName slot
 	.short 204
 	.byte \slot
@@ -1247,9 +1245,9 @@
 	.byte \slot
 	.endm
 
-	; Gets your starter species into the indicated
-	; variable. Used to calculate which rival
-	; party to use.
+	// Gets your starter species into the indicated
+	// variable. Used to calculate which rival
+	// party to use.
 	.macro GetStarterChoice var
 	.short 206
 	.short \var
@@ -1261,14 +1259,14 @@
 	.short \deco
 	.endm
 
-	; Dummy
+	// Dummy
 	.macro ScrCmd_208 slot, unk
 	.short 208
 	.byte \slot
 	.short \unk
 	.endm
 
-	; Dummy
+	// Dummy
 	.macro ScrCmd_209 slot, unk
 	.short 209
 	.byte \slot
@@ -1287,7 +1285,7 @@
 	.short \arg1
 	.endm
 
-	; For when you talk to a trainer
+	// For when you talk to a trainer
 	.macro GetTrainerNum arg0
 	.short 212
 	.short \arg0
@@ -1335,7 +1333,7 @@
 	.short 219
 	.endm
 
-	; Is this loss?
+	// Is this loss?
 	.macro CheckBattleWon var
 	.short 220
 	.short \var
@@ -1484,15 +1482,15 @@
 	.short \var
 	.endm
 
-	; Dummy
+	// Dummy
 	.macro ScrCmd_247
 	.short 247
 	.endm
 
-	; The actual Pokedex evaluation.
-	; national: 0 = Johto dex, 1 = National dex
-	; msg: Variable to return the message ID
-	; fanfare: Variable to return the fanfare ID
+	// The actual Pokedex evaluation.
+	// national: 0 = Johto dex, 1 = National dex
+	// msg: Variable to return the message ID
+	// fanfare: Variable to return the fanfare ID
 	.macro GetDexEvalResult national, msg, fanfare
 	.short 248
 	.byte \national
@@ -1648,9 +1646,9 @@
 	.short \arg0
 	.endm
 
-	; Used with poison faint, but due to overworld
-	; poison mechanics in gen 4, this is
-	; never reached.
+	// Used with poison faint, but due to overworld
+	// poison mechanics in gen 4, this is
+	// never reached.
 	.macro OverworldWhiteOut
 	.short 279
 	.endm
@@ -1660,7 +1658,7 @@
 	.short \arg0
 	.endm
 
-	; Are you a boy? Or are you a girl?
+	// Are you a boy? Or are you a girl?
 	.macro GetPlayerGender var
 	.short 281
 	.short \var
@@ -1731,11 +1729,11 @@
 	.short \badge
 	.endm
 
-	; This command is never used because it is
-	; assumed that you cannot get the 8th badge
-	; before the other 7, or the 16th before the
-	; other 15. This assumption does not account
-	; for tweaking.
+	// This command is never used because it is
+	// assumed that you cannot get the 8th badge
+	// before the other 7, or the 16th before the
+	// other 15. This assumption does not account
+	// for tweaking.
 	.macro CountBadges var
 	.short 296
 	.short \var
@@ -2046,9 +2044,9 @@
 	.short \var
 	.endm
 
-	; Count Pokemon that are not fainted.
-	; If except is set, exclude that slot
-	; from the tally. Use 6 to disable.
+	// Count Pokemon that are not fainted.
+	// If except is set, exclude that slot
+	// from the tally. Use 6 to disable.
 	.macro CountAliveMons var, except=PARTY_SIZE
 	.short 357
 	.short \var
@@ -2290,9 +2288,9 @@
 	.short \move_pos
 	.endm
 
-	; action = 0: Deactivate strength
-	; action = 1: Activate strength
-	; action = 2: Check whether strength is active
+	// action = 0: Deactivate strength
+	// action = 1: Activate strength
+	// action = 2: Check whether strength is active
 	.macro StrengthFlagAction action, var=0
 	.short 400
 	.byte \action
@@ -2953,8 +2951,8 @@
 	.short 513
 	.endm
 
-	; Animate placing the balls on the machine
-	; for the Hall of Fame
+	// Animate placing the balls on the machine
+	// for the Hall of Fame
 	.macro HallOfFameAnim num
 	.short 514
 	.short \num
@@ -3927,9 +3925,9 @@
 	.short \arg1
 	.endm
 
-	; Attempt to remove all Griseous Orbs and reset Pokemon
-	; to forms present in Diamond and Pearl, to avoid
-	; problems communicating with those games.
+	// Attempt to remove all Griseous Orbs and reset Pokemon
+	// to forms present in Diamond and Pearl, to avoid
+	// problems communicating with those games.
 	.macro CommSanitizeParty var_result
 	.short 689
 	.short \var_result
@@ -4783,7 +4781,7 @@
 	.byte \arg1
 	.endm
 
-	; Script headers
+	// Script headers
 
 	.macro MapScript kind, script
 	.byte \kind
@@ -4794,10 +4792,10 @@
 	.short \var, \val, \script
 	.endm
 
-	; Convenience macros
+	// Convenience macros
 
-	; Generic compare macro which attempts to deduce argument types based on their values
-	; Any values between 0x4000 to 0x40FF and 0x8000 to 0x8015 are considered event variable identifiers
+	// Generic compare macro which attempts to deduce argument types based on their values
+	// Any values between 0x4000 to 0x40FF and 0x8000 to 0x8015 are considered event variable identifiers
 	.macro Compare var, arg
 		.if ((\arg >= VARS_START && \arg <= VARS_END) || (\arg >= SPECIAL_VARS_START && \arg <= SPECIAL_VARS_END))
 			CompareVarToVar \var, \arg
@@ -4816,27 +4814,27 @@
 	GoToIf TRUE, \dest
 	.endm
 
-	.macro GoToIfLt dest ; LESS THAN
+	.macro GoToIfLt dest // LESS THAN
 	GoToIf 0, \dest
 	.endm
 
-	.macro GoToIfEq dest ; EQUAL
+	.macro GoToIfEq dest // EQUAL
 	GoToIf 1, \dest
 	.endm
 
-	.macro GoToIfGt dest ; GREATER THAN
+	.macro GoToIfGt dest // GREATER THAN
 	GoToIf 2, \dest
 	.endm
 
-	.macro GoToIfLe dest ; LESS THAN OR EQUAL
+	.macro GoToIfLe dest // LESS THAN OR EQUAL
 	GoToIf 3, \dest
 	.endm
 
-	.macro GoToIfGe dest ; GREATER THAN OR EQUAL
+	.macro GoToIfGe dest // GREATER THAN OR EQUAL
 	GoToIf 4, \dest
 	.endm
 
-	.macro GoToIfNe dest ; NOT EQUAL
+	.macro GoToIfNe dest // NOT EQUAL
 	GoToIf 5, \dest
 	.endm
 
@@ -4850,27 +4848,27 @@
 	CallIf TRUE, \dest
 	.endm
 
-	.macro CallIfLt dest ; LESS THAN
+	.macro CallIfLt dest // LESS THAN
 	CallIf 0, \dest
 	.endm
 
-	.macro CallIfEq dest ; EQUAL
+	.macro CallIfEq dest // EQUAL
 	CallIf 1, \dest
 	.endm
 
-	.macro CallIfGt dest ; GREATER THAN
+	.macro CallIfGt dest // GREATER THAN
 	CallIf 2, \dest
 	.endm
 
-	.macro CallIfLe dest ; LESS THAN OR EQUAL
+	.macro CallIfLe dest // LESS THAN OR EQUAL
 	CallIf 3, \dest
 	.endm
 
-	.macro CallIfGe dest ; GREATER THAN OR EQUAL
+	.macro CallIfGe dest // GREATER THAN OR EQUAL
 	CallIf 4, \dest
 	.endm
 
-	.macro CallIfNe dest ; NOT EQUAL
+	.macro CallIfNe dest // NOT EQUAL
 	CallIf 5, \dest
 	.endm
 
@@ -5045,4 +5043,9 @@
     .balign 4, 0
     .endm
 
-	.endif ; ASM_SCRIPT_INC
+    .text
+    .globl _start
+_start:
+
+
+	.endif // ASM_SCRIPT_INC

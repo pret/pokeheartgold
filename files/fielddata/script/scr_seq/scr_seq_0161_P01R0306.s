@@ -1,9 +1,8 @@
 #include "constants/scrcmd.h"
 #include "fielddata/script/scr_seq/event_P01R0306.h"
 #include "msgdata/msg/msg_0262_P01R0306.h"
-	.include "asm/macros/script.inc"
+#include "macros/script.inc"
 
-	.rodata
 
 	ScrDef scr_seq_P01R0306_000
 	ScrDef scr_seq_P01R0306_001

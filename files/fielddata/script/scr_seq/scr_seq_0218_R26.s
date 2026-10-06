@@ -1,9 +1,8 @@
 #include "constants/scrcmd.h"
 #include "fielddata/script/scr_seq/event_R26.h"
 #include "msgdata/msg/msg_0365_R26.h"
-	.include "asm/macros/script.inc"
+#include "macros/script.inc"
 
-	.rodata
 
 	ScrDef scr_seq_R26_000
 	ScrDef scr_seq_R26_001
