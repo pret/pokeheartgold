@@ -2,7 +2,7 @@
 
 #include "global.h"
 
-#include "msgdata/msg/msg_0300.h"
+#include "files/msgdata/msg/msg_0300.h"
 
 #include "font.h"
 #include "party_menu_items.h"

@@ -1,4 +1,4 @@
-	.include "asm/macros.inc"
+	.include "macros.inc"
 	.include "unk_020192D0.inc"
 	.include "global.inc"
 
@@ -114,7 +114,7 @@ _02019394:
 	str r1, [r0]
 	ldr r0, _02019484 ; =sub_02019520
 	ldr r1, _02019488 ; =sub_02019548
-	bl ov00_021EC294
+	bl DWC_SetMemFunc
 	mov r0, #1
 	str r0, [r4, #0x78]
 	ldr r0, [r5]
@@ -211,8 +211,8 @@ _0201945A:
 	ldr r0, [r4, #0x7c]
 	cmp r0, #1
 	bne _0201947C
-	bl ov00_021ECB40
-	bl ov00_021EC9D4
+	bl DWC_UpdateConnection
+	bl DWC_GetLinkLevel
 	mov r1, #3
 	sub r0, r1, r0
 	bl sub_0203A930

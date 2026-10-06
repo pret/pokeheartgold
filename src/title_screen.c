@@ -7,9 +7,9 @@
 
 #include "application/check_savedata.h"
 #include "application/delete_savedata.h"
-#include "demo/title/titledemo.naix"
-#include "msgdata/msg.naix"
-#include "msgdata/msg/msg_0719.h"
+#include "files/demo/title/titledemo.naix"
+#include "files/msgdata/msg.naix"
+#include "files/msgdata/msg/msg_0719.h"
 
 #include "brightness.h"
 #include "camera.h"

@@ -4,7 +4,7 @@
 #include "constants/sndseq.h"
 
 #include "application/pokegear/radio/radio_internal.h"
-#include "msgdata/msg.naix"
+#include "files/msgdata/msg.naix"
 
 #include "sound_radio.h"
 #include "text.h"

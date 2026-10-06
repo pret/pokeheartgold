@@ -1,6 +1,6 @@
 #include "global.h"
 
-#include "data/resdat.naix"
+#include "files/data/resdat.naix"
 
 #include "oaks_speech_internal.h"
 #include "vram_transfer_manager.h"
@@ -126,14 +126,14 @@ void OakSpeech_InitSpriteEngine(OakSpeechData *data) {
     G2dRenderer_SetSubSurfaceCoords(SpriteSystem_GetRenderer(data->spriteRenderer), 0, FX32_CONST(GX_LCD_SIZE_Y));
 
     {
-        ResdatIdList fileIdList = {
-            .charRes = NARC_resdat_resdat_00000026_bin,
-            .plttRes = NARC_resdat_resdat_00000027_bin,
-            .cellRes = NARC_resdat_resdat_00000025_bin,
-            .animRes = NARC_resdat_resdat_00000024_bin,
-            .mcelRes = 0xFFFF,
-            .manmRes = 0xFFFF,
-            .headerId = NARC_resdat_resdat_00000078_bin,
+        u16 fileIdList[7] = {
+            resdat_00000026_bin,
+            resdat_00000027_bin,
+            resdat_00000025_bin,
+            resdat_00000024_bin,
+            0xFFFF,
+            0xFFFF,
+            resdat_00000078_bin,
         };
         sub_0200D294(data->spriteRenderer, data->spriteGfxHandler, &fileIdList);
     }

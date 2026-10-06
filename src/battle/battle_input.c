@@ -5,7 +5,7 @@
 #include "constants/battle_menu.h"
 
 #include "battle/battle_controller_opponent.h"
-#include "msgdata/msg/msg_0197.h"
+#include "files/msgdata/msg/msg_0197.h"
 
 #include "gf_gfx_loader.h"
 #include "heap.h"

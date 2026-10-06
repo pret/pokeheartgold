@@ -1,4 +1,4 @@
-#include <nitro/fs/overlay.h>
+
 #pragma once
 .public Main_SetHBlankIntrCB
 .public Heap_Alloc

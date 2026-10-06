@@ -3,7 +3,7 @@
 
 #include "camera.h"
 #include "filesystem_files_def.h"
-#include "spl.h"
+#include "library/spl.h"
 
 typedef u32 (*texAllocFun)(u32 szByte, BOOL is4x4comp);
 typedef u32 (*plttAllocFun)(u32 szByte, BOOL is4pltt);

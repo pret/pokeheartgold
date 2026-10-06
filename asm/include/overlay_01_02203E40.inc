@@ -1,4 +1,4 @@
-#include <nitro/fs/overlay.h>
+
 #pragma once
 .public GF3dRender_DrawModel
 .public Camera_GetLookAtCamPos

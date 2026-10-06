@@ -2,9 +2,9 @@
 
 #include "global.h"
 
-#include "data/resdat.naix"
-#include "field/field_sprite_manager.h"
-#include "msgdata/msg.naix"
+#include "files/data/resdat.naix"
+#include "field/ov01_021E7FDC.h"
+#include "files/msgdata/msg.naix"
 
 #include "field_take_photo.h"
 #include "font.h"
@@ -98,14 +98,8 @@ static const TouchscreenHitbox ov19_0225A05E[] = {
     { { TOUCHSCREEN_RECTLIST_END } },
 };
 
-static const ResdatIdList sResDatIdxs = {
-    .charRes = NARC_resdat_resdat_00000002_bin,
-    .plttRes = NARC_resdat_resdat_00000003_bin,
-    .cellRes = NARC_resdat_resdat_00000001_bin,
-    .animRes = NARC_resdat_resdat_00000000_bin,
-    .mcelRes = -1,
-    .manmRes = -1,
-    .headerId = NARC_resdat_resdat_00000072_bin,
+static const u16 ov19_0225A040[] = {
+    2, 3, 1, 0, -1, -1, resdat_00000072_bin
 };
 
 static const UnmanagedSpriteTemplate sSpriteTemplates[VIEW_PHOTO_NUM_SPRITES] = {
@@ -361,7 +355,7 @@ static void ViewPhotoSysTask_UnloadBgGraphics(ViewPhotoSysTaskData *viewPhoto) {
 
 static void ViewPhotoSysTask_InitMessages(ViewPhotoSysTaskData *viewPhoto) {
     FontID_Alloc(4, viewPhoto->heapID);
-    viewPhoto->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0000_bin, viewPhoto->heapID);
+    viewPhoto->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msg_0000, viewPhoto->heapID);
     viewPhoto->msgFormat = MessageFormat_New_Custom(6, 22, viewPhoto->heapID);
     viewPhoto->strBuf = String_New(128, viewPhoto->heapID);
     viewPhoto->exitMsg = NewString_ReadMsgData(viewPhoto->msgData, 0);

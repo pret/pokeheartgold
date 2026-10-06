@@ -3,7 +3,7 @@
 #include "constants/maps.h"
 #include "constants/moves.h"
 #include "constants/species.h"
-	.include "asm/macros.inc"
+	.include "macros.inc"
 	.include "unk_020977CC.inc"
 	.include "global.inc"
 

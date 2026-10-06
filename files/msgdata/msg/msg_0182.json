@@ -1,0 +1,901 @@
+{
+  "key": 3393,
+  "messages": [
+    {
+      "id": "CommunicationClub_Text_Problem",
+      "en_US": "There appears to be a problem..."
+    },
+    {
+      "id": "CommunicationClub_Text_Waiting",
+      "en_US": [
+        "Waiting for {STRVAR_1 3, 1, 0}’s\n",
+        "response..."
+      ]
+    },
+    {
+      "id": "CommunicationClub_Text_AskingForRegistration",
+      "en_US": [
+        "Asking {STRVAR_1 3, 1, 0} to do member\n",
+        "registration. Please wait."
+      ]
+    },
+    {
+      "id": "CommunicationClub_Text_LeaveGroup",
+      "en_US": "Do you want to leave the group? {YESNO 0}"
+    },
+    {
+      "id": "CommunicationClub_Text_PlayerRepliedOK",
+      "en_US": "{STRVAR_1 3, 1, 0} replied, “OK.”"
+    },
+    {
+      "id": "CommunicationClub_Text_Refused",
+      "en_US": "{STRVAR_1 3, 1, 0} refused...{PAUSE 120}"
+    },
+    {
+      "id": "CommunicationClub_Text_LeftGroup",
+      "en_US": "You have left the group."
+    },
+    {
+      "id": "CommunicationClub_Text_00007_Dummy",
+      "garbage": 32
+    },
+    {
+      "id": "CommunicationClub_Text_AwaitingContact_SingleBattle",
+      "en_US": [
+        "Single Battle!\n",
+        "Awaiting contact from your friend."
+      ]
+    },
+    {
+      "id": "CommunicationClub_Text_AwaitingContact_DoubleBattle",
+      "en_US": [
+        "Double Battle!\n",
+        "Awaiting contact from your friend."
+      ]
+    },
+    {
+      "id": "CommunicationClub_Text_AwaitingContact_MultiBattle",
+      "en_US": [
+        "Multi Battle!\n",
+        "Awaiting contact from your friends."
+      ]
+    },
+    {
+      "id": "CommunicationClub_Text_AwaitingContact_MixBattle",
+      "en_US": [
+        "Mix Battle!\n",
+        "Awaiting contact from your friend."
+      ]
+    },
+    {
+      "id": "CommunicationClub_Text_AwaitingContact_FlatBattle",
+      "en_US": [
+        "Flat Battle!\n",
+        "Awaiting contact from your friend."
+      ]
+    },
+    {
+      "id": "CommunicationClub_Text_AwaitingContact_SafariZoneLink",
+      "en_US": [
+        "Safari Zone Link!\n",
+        "Awaiting contact from your friend."
+      ]
+    },
+    {
+      "id": "CommunicationClub_Text_AwaitingContact_Pokeathlon",
+      "en_US": [
+        "Pokéathlon!\n",
+        "Awaiting contact from your friend."
+      ]
+    },
+    {
+      "id": "CommunicationClub_Text_ProceedWhenReady",
+      "en_US": [
+        "When the group is ready:\n",
+        "A Button: Proceed   B Button: Cancel"
+      ]
+    },
+    {
+      "id": "CommunicationClub_Text_00016_Dummy",
+      "garbage": 30
+    },
+    {
+      "id": "CommunicationClub_Text_ProceedWhenReady_2",
+      "en_US": [
+        "When the group is ready:\n",
+        "A Button: Proceed   B Button: Cancel"
+      ]
+    },
+    {
+      "id": "CommunicationClub_Text_AwaitingContact_BattleTower",
+      "en_US": [
+        "Battle Tower!\n",
+        "Awaiting contact from your friend."
+      ]
+    },
+    {
+      "id": "CommunicationClub_Text_AwaitingContact_BattleFactory_Lv50",
+      "en_US": [
+        "Battle Factory--Level 50!\n",
+        "Awaiting contact from your friend."
+      ]
+    },
+    {
+      "id": "CommunicationClub_Text_AwaitingContact_BattleFactory_Open",
+      "en_US": [
+        "Battle Factory--Open Level!\n",
+        "Awaiting contact from your friend."
+      ]
+    },
+    {
+      "id": "CommunicationClub_Text_AwaitingContact_BattleHall",
+      "en_US": [
+        "Battle Hall!\n",
+        "Awaiting contact from your friend."
+      ]
+    },
+    {
+      "id": "CommunicationClub_Text_AwaitingContact_BattleCastle",
+      "en_US": [
+        "Battle Castle!\n",
+        "Awaiting contact from your friend."
+      ]
+    },
+    {
+      "id": "CommunicationClub_Text_AwaitingContact_BattleArcade",
+      "en_US": [
+        "Battle Arcade!\n",
+        "Awaiting contact from your friend."
+      ]
+    },
+    {
+      "id": "CommunicationClub_Text_00024_Dummy",
+      "garbage": 31
+    },
+    {
+      "id": "CommunicationClub_Text_Contacted_SingleBattle",
+      "en_US": [
+        "{STRVAR_1 3, 1, 0} has contacted you.\n",
+        "Start a Single Battle? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "CommunicationClub_Text_Contacted_DoubleBattle",
+      "en_US": [
+        "{STRVAR_1 3, 1, 0} has contacted you.\n",
+        "Start a Double Battle? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "CommunicationClub_Text_Contacted_MixBattle",
+      "en_US": [
+        "{STRVAR_1 3, 1, 0} has contacted you.\n",
+        "Start a Mix Battle? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "CommunicationClub_Text_Contacted_FlatBattle",
+      "en_US": [
+        "{STRVAR_1 3, 1, 0} has contacted you.\n",
+        "Start a Flat Battle? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "CommunicationClub_Text_Contacted_SafariZoneLink",
+      "en_US": [
+        "{STRVAR_1 3, 1, 0} has contacted you.\n",
+        "Start a Safari Zone Link? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "CommunicationClub_Text_Contacted_Pokeathlon",
+      "en_US": [
+        "{STRVAR_1 3, 1, 0} has contacted you.\n",
+        "Let {STRVAR_1 3, 1, 0} join your group? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "CommunicationClub_Text_Contacted_MultiBattle",
+      "en_US": [
+        "{STRVAR_1 3, 1, 0} has contacted you.\n",
+        "Let {STRVAR_1 3, 1, 0} join your group? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "CommunicationClub_Text_Contacted_BattleTower",
+      "en_US": [
+        "{STRVAR_1 3, 1, 0} has contacted you.\n",
+        "Take Battle Tower challenge? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "CommunicationClub_Text_Contacted_BattleFactory",
+      "en_US": [
+        "{STRVAR_1 3, 1, 0} has contacted you.\n",
+        "Take Battle Factory challenge? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "CommunicationClub_Text_Contacted_BattleHall",
+      "en_US": [
+        "{STRVAR_1 3, 1, 0} has contacted you.\n",
+        "Start the Battle Hall challenge? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "CommunicationClub_Text_Contacted_BattleCastle",
+      "en_US": [
+        "{STRVAR_1 3, 1, 0} has contacted you.\n",
+        "Take Battle Castle challenge? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "CommunicationClub_Text_Contacted_BattleArcade",
+      "en_US": [
+        "{STRVAR_1 3, 1, 0} has contacted you.\n",
+        "Take Battle Arcade challenge? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "CommunicationClub_Text_00037_Dummy",
+      "garbage": 31
+    },
+    {
+      "id": "CommunicationClub_Text_ConfirmGroup_MultiBattle",
+      "en_US": [
+        "Multi Battle!\n",
+        "Is this group OK? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "CommunicationClub_Text_ConfirmGroup",
+      "en_US": "Is this group OK? {YESNO 0}"
+    },
+    {
+      "id": "CommunicationClub_Text_00040_Dummy",
+      "garbage": 30
+    },
+    {
+      "id": "CommunicationClub_Text_00041_Dummy",
+      "garbage": 23
+    },
+    {
+      "id": "CommunicationClub_Text_ConfirmGroup_Pokeathlon",
+      "en_US": [
+        "Pokéathlon!\n",
+        "Is this group OK?{YESNO 0}"
+      ]
+    },
+    {
+      "id": "CommunicationClub_Text_CancelGroup_MultiBattle",
+      "en_US": [
+        "Cancel a Multi Battle involving this\n",
+        "group?{YESNO 0}"
+      ]
+    },
+    {
+      "id": "CommunicationClub_Text_00044_Dummy",
+      "garbage": 12
+    },
+    {
+      "id": "CommunicationClub_Text_00045_Dummy",
+      "garbage": 33
+    },
+    {
+      "id": "CommunicationClub_Text_00046_Dummy",
+      "garbage": 25
+    },
+    {
+      "id": "CommunicationClub_Text_CancelGroup_Pokeathlon",
+      "en_US": [
+        "Cancel holding a Pokéathlon\n",
+        "with this group? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "CommunicationClub_Text_00048_Dummy",
+      "garbage": 32
+    },
+    {
+      "id": "CommunicationClub_Text_Choose_SingleBattle",
+      "en_US": [
+        "Choose the Single Battle you would\n",
+        "like to join. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "CommunicationClub_Text_Choose_DoubleBattle",
+      "en_US": [
+        "Choose the Double Battle you would\n",
+        "like to join. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "CommunicationClub_Text_Choose_MultiBattle",
+      "en_US": [
+        "Choose the Multi Battle you would\n",
+        "like to join. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "CommunicationClub_Text_Choose_MixBattle",
+      "en_US": [
+        "Choose the Mix Battle you would\n",
+        "like to join. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "CommunicationClub_Text_Choose_FlatBattle",
+      "en_US": [
+        "Choose the Flat Battle you would\n",
+        "like to join. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "CommunicationClub_Text_Choose_SafariZoneLink",
+      "en_US": [
+        "Choose the Safari Zone Link\n",
+        "you would like to join. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "CommunicationClub_Text_Choose_Pokeathlon",
+      "en_US": [
+        "Choose the Pokéathlon you would\n",
+        "like to join. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "CommunicationClub_Text_00056_Dummy",
+      "garbage": 23
+    },
+    {
+      "id": "CommunicationClub_Text_00057_Dummy",
+      "garbage": 30
+    },
+    {
+      "id": "CommunicationClub_Text_00058_Dummy",
+      "garbage": 23
+    },
+    {
+      "id": "CommunicationClub_Text_ChooseFriend_BattleTower",
+      "en_US": [
+        "Choose the friend you want to take\n",
+        "to the Battle Tower. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "CommunicationClub_Text_ChooseFriend_BattleFactory_Lv50",
+      "en_US": [
+        "Choose the friend to play with at\n",
+        "the Battle Factory--Level 50. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "CommunicationClub_Text_ChooseFriend_BattleFactory_Open",
+      "en_US": [
+        "Choose the friend to play with at\n",
+        "the Battle Factory--Open Level. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "CommunicationClub_Text_ChooseFriend_BattleHall",
+      "en_US": [
+        "Choose the friend to play\n",
+        "with at the Battle Hall. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "CommunicationClub_Text_ChooseFriend_BattleCastle",
+      "en_US": [
+        "Choose the friend to play\n",
+        "with at the Battle Castle. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "CommunicationClub_Text_ChooseFriend_BattleArcade",
+      "en_US": [
+        "Choose the friend to play\n",
+        "with at the Battle Arcade. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "CommunicationClub_Text_GroupCancelled",
+      "en_US": [
+        "A member has dropped out.\r",
+        "Please repeat the registration\n",
+        "process from the beginning."
+      ]
+    },
+    {
+      "id": "CommunicationClub_Text_00066_Dummy",
+      "garbage": 27
+    },
+    {
+      "id": "CommunicationClub_Text_00067_Dummy",
+      "garbage": 24
+    },
+    {
+      "id": "CommunicationClub_Text_GroupCancelled_Pokeathlon",
+      "en_US": [
+        "A Pokéathlon involving this group will\n",
+        "be canceled."
+      ]
+    },
+    {
+      "id": "CommunicationClub_Text_YouRepliedOK",
+      "en_US": "Replied “OK” to {STRVAR_1 3, 1, 0}."
+    },
+    {
+      "id": "CommunicationClub_Text_GroupWaiting_MultiBattle",
+      "en_US": [
+        "Multi Battle!\n",
+        "Waiting for the rest of the group."
+      ]
+    },
+    {
+      "id": "CommunicationClub_Text_GroupWaiting",
+      "en_US": "Waiting for the rest of the group."
+    },
+    {
+      "id": "CommunicationClub_Text_00072_Dummy",
+      "garbage": 26
+    },
+    {
+      "id": "CommunicationClub_Text_00073_Dummy",
+      "garbage": 23
+    },
+    {
+      "id": "CommunicationClub_Text_GroupWaiting_Pokeathlon",
+      "en_US": [
+        "Pokéathlon!\n",
+        "Waiting for the rest of the group."
+      ]
+    },
+    {
+      "id": "CommunicationClub_Text_ID_2",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}\n",
+        "ID{STRVAR_1 54, 1, 0}"
+      ]
+    },
+    {
+      "id": "CommunicationClub_Text_00076",
+      "en_US": "{STRVAR_1 51, 0, 0}:{STRVAR_1 3, 1, 0}"
+    },
+    {
+      "id": "CommunicationClub_Text_00077",
+      "en_US": "{STRVAR_1 51, 0, 0}:"
+    },
+    {
+      "id": "CommunicationClub_Text_ID_1",
+      "en_US": "ID{STRVAR_1 54, 2, 0}"
+    },
+    {
+      "id": "CommunicationClub_Text_00079",
+      "en_US": "{STRVAR_1 3, 0, 0}"
+    },
+    {
+      "id": "CommunicationClub_Text_NumNeeded",
+      "en_US": [
+        "{STRVAR_1 50, 0, 0} more\n",
+        "needed."
+      ]
+    },
+    {
+      "id": "CommunicationClub_Text_NumPlayers",
+      "en_US": "{STRVAR_1 50, 0, 0} Players"
+    },
+    {
+      "id": "CommunicationClub_Text_00082_Dummy",
+      "garbage": 0
+    },
+    {
+      "id": "CommunicationClub_Text_StandardCup",
+      "en_US": "STANDARD"
+    },
+    {
+      "id": "CommunicationClub_Text_FancyCup",
+      "en_US": "FANCY"
+    },
+    {
+      "id": "CommunicationClub_Text_LittleCup",
+      "en_US": "LITTLE"
+    },
+    {
+      "id": "CommunicationClub_Text_LightCup",
+      "en_US": "LIGHT"
+    },
+    {
+      "id": "CommunicationClub_Text_DoubleCup",
+      "en_US": "DOUBLE"
+    },
+    {
+      "id": "CommunicationClub_Text_StandardCup_2",
+      "en_US": "STANDARD"
+    },
+    {
+      "id": "CommunicationClub_Text_LightCup_2",
+      "en_US": "LIGHT"
+    },
+    {
+      "id": "CommunicationClub_Text_DoubleCup_2",
+      "en_US": "DOUBLE"
+    },
+    {
+      "id": "CommunicationClub_Text_DoubleCup_3",
+      "en_US": "DOUBLE"
+    },
+    {
+      "id": "CommunicationClub_Text_GSCup",
+      "en_US": "GS"
+    },
+    {
+      "id": "CommunicationClub_Text_RuleNoOfPokemon",
+      "en_US": "No. of Pokémon:"
+    },
+    {
+      "id": "CommunicationClub_Text_RulePokemonLevel",
+      "en_US": "Pokémon level:"
+    },
+    {
+      "id": "CommunicationClub_Text_RuleTotalLevels",
+      "en_US": "Total levels:"
+    },
+    {
+      "id": "CommunicationClub_Text_RuleHeight",
+      "en_US": "Height:"
+    },
+    {
+      "id": "CommunicationClub_Text_RuleWeight",
+      "en_US": "Weight:"
+    },
+    {
+      "id": "CommunicationClub_Text_RuleEvolvedPokemon",
+      "en_US": "Evolved Pokémon:"
+    },
+    {
+      "id": "CommunicationClub_Text_RuleSpecialPokemon",
+      "en_US": "Special Pokémon:"
+    },
+    {
+      "id": "CommunicationClub_Text_RuleSamePokemon",
+      "en_US": "Same Pokémon:"
+    },
+    {
+      "id": "CommunicationClub_Text_RuleSameItems",
+      "en_US": "Same items:"
+    },
+    {
+      "id": "CommunicationClub_Text_ValueNoOfPokemon",
+      "en_US": "{STRVAR_1 50, 0, 0}"
+    },
+    {
+      "id": "CommunicationClub_Text_ValueMaxLevel",
+      "en_US": "Max. {STRVAR_1 52, 0, 0}"
+    },
+    {
+      "id": "CommunicationClub_Text_ValueMaxTotalLevels",
+      "en_US": "Max. {STRVAR_1 52, 0, 0}"
+    },
+    {
+      "id": "CommunicationClub_Text_ValueMaxHeight",
+      "en_US": "Max. {STRVAR_1 50, 0, 0}’ {STRVAR_1 50, 1, 0}”"
+    },
+    {
+      "id": "CommunicationClub_Text_ValueMinHeight",
+      "en_US": "Min. {STRVAR_1 50, 0, 0}’ {STRVAR_1 50, 1, 0}”"
+    },
+    {
+      "id": "CommunicationClub_Text_ValueMaxWeight",
+      "en_US": "Max. {STRVAR_1 51, 0, 0} lbs."
+    },
+    {
+      "id": "CommunicationClub_Text_ValueMinWeight",
+      "en_US": "Min. {STRVAR_1 51, 0, 0} lbs."
+    },
+    {
+      "id": "CommunicationClub_Text_ValuePokemonPermitted",
+      "en_US": "Permitted"
+    },
+    {
+      "id": "CommunicationClub_Text_ValuePokemonBanned",
+      "en_US": "Banned"
+    },
+    {
+      "id": "CommunicationClub_Text_ValueItemsPermitted",
+      "en_US": "Permitted"
+    },
+    {
+      "id": "CommunicationClub_Text_ValueItemsBanned",
+      "en_US": "Banned"
+    },
+    {
+      "id": "CommunicationClub_Text_Cup",
+      "en_US": "{STRVAR_1 26, 0, 0} Cup"
+    },
+    {
+      "id": "CommunicationClub_Text_NoRestrictions",
+      "en_US": "NO RESTRICTIONS"
+    },
+    {
+      "id": "CommunicationClub_Text_Limit2",
+      "en_US": "Limit 2"
+    },
+    {
+      "id": "CommunicationClub_Text_DifferentRules",
+      "en_US": [
+        "Players have chosen different rules.\n",
+        "The same rules must be chosen."
+      ]
+    },
+    {
+      "id": "CommunicationClub_Text_00117_Dummy",
+      "garbage": 30
+    },
+    {
+      "id": "CommunicationClub_Text_00118_Dummy",
+      "garbage": 30
+    },
+    {
+      "id": "CommunicationClub_Text_00119_Dummy",
+      "garbage": 29
+    },
+    {
+      "id": "CommunicationClub_Text_00120_Dummy",
+      "garbage": 29
+    },
+    {
+      "id": "CommunicationClub_Text_00121_Dummy",
+      "garbage": 30
+    },
+    {
+      "id": "CommunicationClub_Text_00122_Dummy",
+      "garbage": 27
+    },
+    {
+      "id": "CommunicationClub_Text_00123_Dummy",
+      "garbage": 27
+    },
+    {
+      "id": "CommunicationClub_Text_00124_Dummy",
+      "garbage": 26
+    },
+    {
+      "id": "CommunicationClub_Text_00125_Dummy",
+      "garbage": 26
+    },
+    {
+      "id": "CommunicationClub_Text_00126_Dummy",
+      "garbage": 27
+    },
+    {
+      "id": "CommunicationClub_Text_00127_Dummy",
+      "garbage": 33
+    },
+    {
+      "id": "CommunicationClub_Text_00128_Dummy",
+      "garbage": 33
+    },
+    {
+      "id": "CommunicationClub_Text_00129_Dummy",
+      "garbage": 32
+    },
+    {
+      "id": "CommunicationClub_Text_00130_Dummy",
+      "garbage": 32
+    },
+    {
+      "id": "CommunicationClub_Text_00131_Dummy",
+      "garbage": 33
+    },
+    {
+      "id": "CommunicationClub_Text_00132_Dummy",
+      "garbage": 29
+    },
+    {
+      "id": "CommunicationClub_Text_00133_Dummy",
+      "garbage": 29
+    },
+    {
+      "id": "CommunicationClub_Text_00134_Dummy",
+      "garbage": 28
+    },
+    {
+      "id": "CommunicationClub_Text_00135_Dummy",
+      "garbage": 28
+    },
+    {
+      "id": "CommunicationClub_Text_00136_Dummy",
+      "garbage": 29
+    },
+    {
+      "id": "CommunicationClub_Text_00137_Dummy",
+      "garbage": 29
+    },
+    {
+      "id": "CommunicationClub_Text_00138_Dummy",
+      "garbage": 29
+    },
+    {
+      "id": "CommunicationClub_Text_00139_Dummy",
+      "garbage": 28
+    },
+    {
+      "id": "CommunicationClub_Text_00140_Dummy",
+      "garbage": 28
+    },
+    {
+      "id": "CommunicationClub_Text_00141_Dummy",
+      "garbage": 29
+    },
+    {
+      "id": "CommunicationClub_Text_Recruiting_JumpCourse",
+      "en_US": [
+        "Speed & Jump Course!\n",
+        "Recruiting other players. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "CommunicationClub_Text_Recruiting_SkillCourse",
+      "en_US": [
+        "Jump & Skill Course!\n",
+        "Recruiting other players. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "CommunicationClub_Text_Recruiting_PowerCourse",
+      "en_US": [
+        "Skill & Power Course!\n",
+        "Recruiting other players. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "CommunicationClub_Text_Recruiting_StaminaCourse",
+      "en_US": [
+        "Power & Stamina Course!\n",
+        "Recruiting other players. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "CommunicationClub_Text_Recruiting_SpeedCourse",
+      "en_US": [
+        "Stamina & Speed Course!\n",
+        "Recruiting other players. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "CommunicationClub_Text_Recruiting_MasterCourse",
+      "en_US": [
+        "Master Course!\n",
+        "Recruiting other players. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "CommunicationClub_Text_ChooseLeader_JumpCourse",
+      "en_US": [
+        "Speed & Jump Course!\n",
+        "Please choose the leader. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "CommunicationClub_Text_ChooseLeader_SkillCourse",
+      "en_US": [
+        "Jump & Skill Course!\n",
+        "Please choose the leader. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "CommunicationClub_Text_ChooseLeader_PowerCourse",
+      "en_US": [
+        "Skill & Power Course!\n",
+        "Please choose the leader. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "CommunicationClub_Text_ChooseLeader_StaminaCourse",
+      "en_US": [
+        "Power & Stamina Course!\n",
+        "Please choose the leader. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "CommunicationClub_Text_ChooseLeader_SpeedCourse",
+      "en_US": [
+        "Stamina & Speed Course!\n",
+        "Please choose the leader. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "CommunicationClub_Text_ChooseLeader_MasterCourse",
+      "en_US": [
+        "Master Course!\n",
+        "Please choose the leader. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "CommunicationClub_Text_Touch_JumpCourse",
+      "en_US": [
+        "Speed & Jump Course!\n",
+        "Touch once players have joined. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "CommunicationClub_Text_Touch_SkillCourse",
+      "en_US": [
+        "Jump & Skill Course!\n",
+        "Touch once players have joined. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "CommunicationClub_Text_Touch_PowerCourse",
+      "en_US": [
+        "Skill & Power Course!\n",
+        "Touch once players have joined. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "CommunicationClub_Text_Touch_StaminaCourse",
+      "en_US": [
+        "Power & Stamina Course!\n",
+        "Touch once players have joined. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "CommunicationClub_Text_Touch_SpeedCourse",
+      "en_US": [
+        "Stamina & Speed Course!\n",
+        "Touch once players have joined. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "CommunicationClub_Text_Touch_MasterCourse",
+      "en_US": [
+        "Master Course!\n",
+        "Touch once players have joined. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "CommunicationClub_Text_AwaitingMembers_JumpCourse",
+      "en_US": [
+        "Speed & Jump Course!\n",
+        "Awaiting other members!"
+      ]
+    },
+    {
+      "id": "CommunicationClub_Text_AwaitingMembers_SkillCourse",
+      "en_US": [
+        "Jump & Skill Course!\n",
+        "Awaiting other members!"
+      ]
+    },
+    {
+      "id": "CommunicationClub_Text_AwaitingMembers_PowerCourse",
+      "en_US": [
+        "Skill & Power Course!\n",
+        "Awaiting other members!"
+      ]
+    },
+    {
+      "id": "CommunicationClub_Text_AwaitingMembers_StaminaCourse",
+      "en_US": [
+        "Power & Stamina Course!\n",
+        "Awaiting other members!"
+      ]
+    },
+    {
+      "id": "CommunicationClub_Text_AwaitingMembers_SpeedCourse",
+      "en_US": [
+        "Stamina & Speed Course!\n",
+        "Awaiting other members!"
+      ]
+    },
+    {
+      "id": "CommunicationClub_Text_AwaitingMembers_MasterCourse",
+      "en_US": [
+        "Master Course!\n",
+        "Awaiting other members!"
+      ]
+    }
+  ]
+}

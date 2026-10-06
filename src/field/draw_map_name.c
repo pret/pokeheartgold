@@ -1,14 +1,14 @@
 #include "field/draw_map_name.h"
 
 #include <nitro/gx/gx_load.h>
-#include <nitro/os/cache.h>
+#include <nitro/os.h>
 
 #include "global.h"
 
 #include "constants/map_sections.h"
 
-#include "msgdata/msg.naix"
-#include "msgdata/msg/msg_0279.h"
+#include "files/msgdata/msg.naix"
+#include "files/msgdata/msg/msg_0279.h"
 
 #include "field_system.h"
 #include "gf_gfx_loader.h"

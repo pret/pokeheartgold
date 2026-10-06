@@ -1099,6 +1099,8 @@ static int CountLzCompressArgs(int argc, char **argv) {
             count++;
         } else if (strcmp(option, "-nopad") == 0) {
             count++;
+        } else if (strcmp(option, "-extfmt") == 0) {
+            count++;
         }
     }
 

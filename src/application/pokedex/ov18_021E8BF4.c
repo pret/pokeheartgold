@@ -1,6 +1,6 @@
 #include "application/pokedex/pokedex_internal.h"
 #include "application/pokedex/pokedex_internal_constants.h"
-#include "graphic/zukan_gra.naix"
+#include "files/graphic/zukan_gra.naix"
 
 #include "font.h"
 #include "gf_gfx_loader.h"

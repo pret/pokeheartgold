@@ -4,7 +4,7 @@
 
 #include "constants/sndseq.h"
 
-#include "data/sbox_gra.naix"
+#include "files/data/sbox_gra.naix"
 
 #include "font.h"
 #include "gf_gfx_loader.h"
@@ -33,9 +33,9 @@ TouchscreenListMenuSpawner *TouchscreenListMenuSpawner_Create(enum HeapID heapID
     TouchscreenListMenuSpawner *ret = Heap_Alloc(heapID, sizeof(TouchscreenListMenuSpawner));
     MI_CpuClear8(ret, sizeof(TouchscreenListMenuSpawner));
     ret->heapID = heapID;
-    ret->charDataRaw = GfGfxLoader_LoadFromNarc(NARC_data_sbox_gra, NARC_sbox_gra_sbox_gra_NCGR, FALSE, heapID, FALSE);
+    ret->charDataRaw = GfGfxLoader_LoadFromNarc(NARC_data_sbox_gra, sbox_gra_NCGR, FALSE, heapID, FALSE);
     NNS_G2dGetUnpackedBGCharacterData(ret->charDataRaw, &ret->pCharData);
-    ret->plttDataRaw = GfGfxLoader_LoadFromNarc(NARC_data_sbox_gra, NARC_sbox_gra_sbox_gra_NCLR, FALSE, heapID, FALSE);
+    ret->plttDataRaw = GfGfxLoader_LoadFromNarc(NARC_data_sbox_gra, sbox_gra_NCLR, FALSE, heapID, FALSE);
     NNS_G2dGetUnpackedPaletteData(ret->plttDataRaw, &ret->pPlttData);
     ret->paletteData = paletteData;
     return ret;

@@ -1,0 +1,21 @@
+diff --git a/src/yyjson.c b/src/yyjson.c
+index 837997c..5bd56e6 100644
+--- a/src/yyjson.c	2026-03-16 07:30:08
++++ b/src/yyjson.c	2026-03-16 07:30:18
+@@ -1189,12 +1189,16 @@
+ 
+ /** Maximum pow10 exponent that can be represented exactly as a float64. */
+ #define F64_POW10_MAX_EXACT_EXP 22
++
++#if YYJSON_DOUBLE_MATH_CORRECT
+ 
+ /** Cached pow10 table. */
+ static const f64 f64_pow10_table[F64_POW10_MAX_EXACT_EXP + 1] = {
+     1e0, 1e1, 1e2, 1e3, 1e4, 1e5, 1e6, 1e7, 1e8, 1e9, 1e10, 1e11, 1e12,
+     1e13, 1e14, 1e15, 1e16, 1e17, 1e18, 1e19, 1e20, 1e21, 1e22
+ };
++
++#endif
+ 
+ /** Maximum pow10 exponent that can be represented exactly as a uint64. */
+ #define U64_POW10_MAX_EXACT_EXP 19

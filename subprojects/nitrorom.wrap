@@ -1,0 +1,7 @@
+[wrap-git]
+url = https://github.com/lhearachel/nitrorom.git
+revision = 0.1.0
+depth = 1
+
+[provide]
+program_names = nitrorom
