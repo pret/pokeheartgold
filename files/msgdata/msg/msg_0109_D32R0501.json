@@ -1,0 +1,484 @@
+{
+  "key": 37955,
+  "messages": [
+    {
+      "id": "msg_0109_D32R0501_00000",
+      "en_US": [
+        "Welcome to the Battle Castle!\r",
+        "I am your guide to the Single and\n",
+        "Double Battle challenges.\r",
+        "Please be aware that these challenges\n",
+        "are designed for a single Trainer.\r"
+      ]
+    },
+    {
+      "id": "msg_0109_D32R0501_00001",
+      "en_US": [
+        "Which challenge would you\n",
+        "like to take? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0109_D32R0501_00002",
+      "en_US": [
+        "At the Battle Castle, you may take a\n",
+        "Single or Double Battle challenge.\r",
+        "Here, you are provided with Castle\n",
+        "Points (CP) that you must manage.\r",
+        "The CP are used for healing Pokémon,\n",
+        "renting items or Berries, and so on.\r",
+        "CP are earned by winning matches.\n",
+        "The amount varies by how you win.\r",
+        "The objective is to keep a winning\n",
+        "streak alive while managing your CP.\r",
+        "If you manage to win seven matches in\n",
+        "a row, you will earn Battle Points (BP).\r",
+        "If you want to interrupt your\n",
+        "challenge, please save the game.\r",
+        "If you don’t save, you will be\n",
+        "disqualified from your challenge.\r",
+        "Please be aware of that!\r"
+      ]
+    },
+    {
+      "id": "msg_0109_D32R0501_00003",
+      "en_US": [
+        "Welcome to the Battle Castle!\r",
+        "I am your guide to the Multi Battle\n",
+        "challenge.\r",
+        "Please be aware that this challenge\n",
+        "requires two Trainers.\r"
+      ]
+    },
+    {
+      "id": "msg_0109_D32R0501_00004",
+      "en_US": [
+        "Would you like to take the Battle\n",
+        "Castle Multi Battle challenge? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0109_D32R0501_00005",
+      "en_US": [
+        "You may team up with a friend for a\n",
+        "Multi Battle challenge.\r",
+        "Both Trainers are provided with Castle\n",
+        "Points (CP) that must be managed.\r",
+        "The CP is used for healing Pokémon,\n",
+        "renting items or Berries, and so on.\r",
+        "Trainers can use their CP on not only\n",
+        "their own Pokémon, but also their\f",
+        "partner’s.\r",
+        "Both Trainers earn CP by winning\n",
+        "matches.\r",
+        "The objective is to keep a winning\n",
+        "streak alive while managing your CP.\r",
+        "If you manage to win seven matches in\n",
+        "a row, you will earn Battle Points (BP).\r",
+        "Please note: a Battle Castle Multi\n",
+        "Battle challenge can’t be interrupted.\r"
+      ]
+    },
+    {
+      "id": "msg_0109_D32R0501_00006",
+      "en_US": "We hope to see you again!"
+    },
+    {
+      "id": "msg_0109_D32R0501_00007",
+      "en_US": [
+        "Please select the Pokémon you wish\n",
+        "to enter.\r"
+      ]
+    },
+    {
+      "id": "msg_0109_D32R0501_00008",
+      "en_US": [
+        "Excuse me!\r",
+        "You don’t have {STRVAR_1 50, 0, 0} eligible Pokémon.\r",
+        "You must have {STRVAR_1 50, 1, 0} different Pokémon\n",
+        "to enter.\r"
+      ]
+    },
+    {
+      "id": "msg_0109_D32R0501_00009",
+      "en_US": "Also, Eggs are ineligible to enter.\r"
+    },
+    {
+      "id": "msg_0109_D32R0501_00010",
+      "en_US": [
+        "Eggs and {STRVAR_1 0, 1, 0} are not allowed\n",
+        "to enter.\r"
+      ]
+    },
+    {
+      "id": "msg_0109_D32R0501_00011",
+      "en_US": [
+        "Eggs, {STRVAR_1 0, 1, 0}, and {STRVAR_1 0, 2, 0}\n",
+        "are not allowed to enter.\r"
+      ]
+    },
+    {
+      "id": "msg_0109_D32R0501_00012",
+      "en_US": [
+        "Eggs, {STRVAR_1 0, 1, 0}, {STRVAR_1 0, 2, 0},\n",
+        "and {STRVAR_1 0, 3, 0} are not allowed\f",
+        "to enter.\r"
+      ]
+    },
+    {
+      "id": "msg_0109_D32R0501_00013",
+      "en_US": [
+        "Eggs, {STRVAR_1 0, 1, 0}, {STRVAR_1 0, 2, 0},\n",
+        "{STRVAR_1 0, 3, 0}, and {STRVAR_1 0, 4, 0}\f",
+        "are not allowed to enter.\r"
+      ]
+    },
+    {
+      "id": "msg_0109_D32R0501_00014",
+      "en_US": [
+        "Eggs, {STRVAR_1 0, 1, 0}, {STRVAR_1 0, 2, 0},\n",
+        "{STRVAR_1 0, 3, 0}, {STRVAR_1 0, 4, 0}, and\f",
+        "{STRVAR_1 0, 5, 0} are not allowed to enter.\r"
+      ]
+    },
+    {
+      "id": "msg_0109_D32R0501_00015",
+      "en_US": [
+        "Eggs, {STRVAR_1 0, 1, 0}, {STRVAR_1 0, 2, 0},\n",
+        "{STRVAR_1 0, 3, 0}, {STRVAR_1 0, 4, 0},\f",
+        "{STRVAR_1 0, 5, 0}, and {STRVAR_1 0, 6, 0}\f",
+        "are not allowed to enter.\r"
+      ]
+    },
+    {
+      "id": "msg_0109_D32R0501_00016",
+      "en_US": [
+        "Eggs, {STRVAR_1 0, 1, 0}, {STRVAR_1 0, 2, 0},\n",
+        "{STRVAR_1 0, 3, 0}, {STRVAR_1 0, 4, 0},\f",
+        "{STRVAR_1 0, 5, 0}, {STRVAR_1 0, 6, 0}, and\f",
+        "{STRVAR_1 0, 7, 0} are not allowed to enter.\r"
+      ]
+    },
+    {
+      "id": "msg_0109_D32R0501_00017",
+      "en_US": [
+        "Eggs, {STRVAR_1 0, 1, 0}, {STRVAR_1 0, 2, 0},\n",
+        "{STRVAR_1 0, 3, 0}, {STRVAR_1 0, 4, 0},\f",
+        "{STRVAR_1 0, 5, 0}, {STRVAR_1 0, 6, 0},\f",
+        "{STRVAR_1 0, 7, 0}, and {STRVAR_1 0, 8, 0}\f",
+        "are not allowed to enter.\r"
+      ]
+    },
+    {
+      "id": "msg_0109_D32R0501_00018",
+      "en_US": [
+        "Eggs, {STRVAR_1 0, 1, 0}, {STRVAR_1 0, 2, 0},\n",
+        "{STRVAR_1 0, 3, 0}, {STRVAR_1 0, 4, 0},\f",
+        "{STRVAR_1 0, 5, 0}, {STRVAR_1 0, 6, 0},\f",
+        "{STRVAR_1 0, 7, 0}, {STRVAR_1 0, 8, 0}, and\f",
+        "{STRVAR_1 0, 9, 0} are not allowed to enter.\r"
+      ]
+    },
+    {
+      "id": "msg_0109_D32R0501_00019",
+      "en_US": [
+        "Eggs, {STRVAR_1 0, 1, 0}, {STRVAR_1 0, 2, 0},\n",
+        "{STRVAR_1 0, 3, 0}, {STRVAR_1 0, 4, 0},\f",
+        "{STRVAR_1 0, 5, 0}, {STRVAR_1 0, 6, 0},\f",
+        "{STRVAR_1 0, 7, 0}, {STRVAR_1 0, 8, 0},\f",
+        "{STRVAR_1 0, 9, 0}, and {STRVAR_1 0, 10, 0}\f",
+        "are not allowed to enter.\r"
+      ]
+    },
+    {
+      "id": "msg_0109_D32R0501_00020",
+      "en_US": [
+        "Eggs, {STRVAR_1 0, 1, 0}, {STRVAR_1 0, 2, 0},\n",
+        "{STRVAR_1 0, 3, 0}, {STRVAR_1 0, 4, 0},\f",
+        "{STRVAR_1 0, 5, 0}, {STRVAR_1 0, 6, 0},\f",
+        "{STRVAR_1 0, 7, 0}, {STRVAR_1 0, 8, 0},\f",
+        "{STRVAR_1 0, 9, 0}, {STRVAR_1 0, 10, 0}, and\f",
+        "{STRVAR_1 0, 11, 0} are not allowed to enter.\r"
+      ]
+    },
+    {
+      "id": "msg_0109_D32R0501_00021",
+      "en_US": [
+        "Eggs, {STRVAR_1 0, 1, 0}, {STRVAR_1 0, 2, 0},\n",
+        "{STRVAR_1 0, 3, 0}, {STRVAR_1 0, 4, 0},\f",
+        "{STRVAR_1 0, 5, 0}, {STRVAR_1 0, 6, 0},\f",
+        "{STRVAR_1 0, 7, 0}, {STRVAR_1 0, 8, 0},\f",
+        "{STRVAR_1 0, 9, 0}, {STRVAR_1 0, 10, 0},\f",
+        "{STRVAR_1 0, 11, 0}, and {STRVAR_1 0, 12, 0}\f",
+        "are not allowed to enter.\r"
+      ]
+    },
+    {
+      "id": "msg_0109_D32R0501_00022",
+      "en_US": [
+        "Eggs, {STRVAR_1 0, 1, 0}, {STRVAR_1 0, 2, 0},\n",
+        "{STRVAR_1 0, 3, 0}, {STRVAR_1 0, 4, 0},\f",
+        "{STRVAR_1 0, 5, 0}, {STRVAR_1 0, 6, 0},\f",
+        "{STRVAR_1 0, 7, 0}, {STRVAR_1 0, 8, 0},\f",
+        "{STRVAR_1 0, 9, 0}, {STRVAR_1 0, 10, 0},\f",
+        "{STRVAR_1 0, 11, 0}, {STRVAR_1 0, 12, 0}, and\f",
+        "{STRVAR_1 0, 13, 0} are not allowed to enter.\r"
+      ]
+    },
+    {
+      "id": "msg_0109_D32R0501_00023",
+      "en_US": [
+        "Eggs, {STRVAR_1 0, 1, 0}, {STRVAR_1 0, 2, 0},\n",
+        "{STRVAR_1 0, 3, 0}, {STRVAR_1 0, 4, 0},\f",
+        "{STRVAR_1 0, 5, 0}, {STRVAR_1 0, 6, 0},\f",
+        "{STRVAR_1 0, 7, 0}, {STRVAR_1 0, 8, 0},\f",
+        "{STRVAR_1 0, 9, 0}, {STRVAR_1 0, 10, 0},\f",
+        "{STRVAR_1 0, 11, 0}, {STRVAR_1 0, 12, 0},\f",
+        "{STRVAR_1 0, 13, 0}, and {STRVAR_1 0, 14, 0}\f",
+        "are not allowed to enter.\r"
+      ]
+    },
+    {
+      "id": "msg_0109_D32R0501_00024",
+      "en_US": [
+        "Eggs, {STRVAR_1 0, 1, 0}, {STRVAR_1 0, 2, 0},\n",
+        "{STRVAR_1 0, 3, 0}, {STRVAR_1 0, 4, 0},\f",
+        "{STRVAR_1 0, 5, 0}, {STRVAR_1 0, 6, 0},\f",
+        "{STRVAR_1 0, 7, 0}, {STRVAR_1 0, 8, 0},\f",
+        "{STRVAR_1 0, 9, 0}, {STRVAR_1 0, 10, 0},\f",
+        "{STRVAR_1 0, 11, 0}, {STRVAR_1 0, 12, 0},\f",
+        "{STRVAR_1 0, 13, 0}, {STRVAR_1 0, 14, 0}, and\f",
+        "{STRVAR_1 0, 15, 0} are not allowed to enter.\r"
+      ]
+    },
+    {
+      "id": "msg_0109_D32R0501_00025",
+      "en_US": [
+        "Eggs, {STRVAR_1 0, 1, 0}, {STRVAR_1 0, 2, 0},\n",
+        "{STRVAR_1 0, 3, 0}, {STRVAR_1 0, 4, 0},\f",
+        "{STRVAR_1 0, 5, 0}, {STRVAR_1 0, 6, 0},\f",
+        "{STRVAR_1 0, 7, 0}, {STRVAR_1 0, 8, 0},\f",
+        "{STRVAR_1 0, 9, 0}, {STRVAR_1 0, 10, 0},\f",
+        "{STRVAR_1 0, 11, 0}, {STRVAR_1 0, 12, 0},\f",
+        "{STRVAR_1 0, 13, 0}, {STRVAR_1 0, 14, 0},\f",
+        "{STRVAR_1 0, 15, 0}, and {STRVAR_1 0, 16, 0}\f",
+        "are not allowed to enter.\r"
+      ]
+    },
+    {
+      "id": "msg_0109_D32R0501_00026",
+      "en_US": [
+        "Eggs, {STRVAR_1 0, 1, 0}, {STRVAR_1 0, 2, 0},\n",
+        "{STRVAR_1 0, 3, 0}, {STRVAR_1 0, 4, 0},\f",
+        "{STRVAR_1 0, 5, 0}, {STRVAR_1 0, 6, 0},\f",
+        "{STRVAR_1 0, 7, 0}, {STRVAR_1 0, 8, 0},\f",
+        "{STRVAR_1 0, 9, 0}, {STRVAR_1 0, 10, 0},\f",
+        "{STRVAR_1 0, 11, 0}, {STRVAR_1 0, 12, 0},\f",
+        "{STRVAR_1 0, 13, 0}, {STRVAR_1 0, 14, 0},\f",
+        "{STRVAR_1 0, 15, 0}, {STRVAR_1 0, 16, 0}, and\f",
+        "{STRVAR_1 0, 17, 0} are not allowed to enter.\r"
+      ]
+    },
+    {
+      "id": "msg_0109_D32R0501_00027",
+      "en_US": [
+        "Eggs, {STRVAR_1 0, 1, 0}, {STRVAR_1 0, 2, 0},\n",
+        "{STRVAR_1 0, 3, 0}, {STRVAR_1 0, 4, 0},\f",
+        "{STRVAR_1 0, 5, 0}, {STRVAR_1 0, 6, 0},\f",
+        "{STRVAR_1 0, 7, 0}, {STRVAR_1 0, 8, 0},\f",
+        "{STRVAR_1 0, 9, 0}, {STRVAR_1 0, 10, 0},\f",
+        "{STRVAR_1 0, 11, 0}, {STRVAR_1 0, 12, 0},\f",
+        "{STRVAR_1 0, 13, 0}, {STRVAR_1 0, 14, 0},\f",
+        "{STRVAR_1 0, 15, 0}, {STRVAR_1 0, 16, 0},\f",
+        "{STRVAR_1 0, 17, 0}, and {STRVAR_1 0, 18, 0}\f",
+        "are not allowed to enter.\r"
+      ]
+    },
+    {
+      "id": "msg_0109_D32R0501_00028",
+      "en_US": "Please come see me when you are ready.\r"
+    },
+    {
+      "id": "msg_0109_D32R0501_00029",
+      "en_US": [
+        "Both Trainers have chosen the\n",
+        "Pokémon {STRVAR_1 0, 0, 0}.\r",
+        "Please confer with the other Trainer\n",
+        "and choose different Pokémon.\r"
+      ]
+    },
+    {
+      "id": "msg_0109_D32R0501_00030",
+      "en_US": [
+        "Both Trainers have chosen the Pokémon\n",
+        "{STRVAR_1 0, 0, 0} and {STRVAR_1 0, 1, 0}.\r",
+        "Please confer with the other Trainer\n",
+        "and choose different Pokémon.\r"
+      ]
+    },
+    {
+      "id": "msg_0109_D32R0501_00031",
+      "en_US": [
+        "You must save the game before I\n",
+        "show you in. Is that OK? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0109_D32R0501_00032",
+      "en_US": "Right this way, please!"
+    },
+    {
+      "id": "msg_0109_D32R0501_00033",
+      "en_US": [
+        "We’ve missed you!\r",
+        "You must save the game before you\n",
+        "resume your challenge. Please wait."
+      ]
+    },
+    {
+      "id": "msg_0109_D32R0501_00034",
+      "en_US": [
+        "Excuse me!\r",
+        "You didn’t save before you quit your\n",
+        "challenge last time.\r",
+        "Because of that, you have been\n",
+        "disqualified from your challenge!\r"
+      ]
+    },
+    {
+      "id": "msg_0109_D32R0501_00035",
+      "en_US": [
+        "Congratulations!\r",
+        "In recognition of your victory, we\n",
+        "present you with a commemorative print!\r"
+      ]
+    },
+    {
+      "id": "msg_0109_D32R0501_00036",
+      "en_US": [
+        "The Gold Print was added to\n",
+        "{STRVAR_1 3, 0, 0}’s Vs. Recorder!\r"
+      ]
+    },
+    {
+      "id": "msg_0109_D32R0501_00037",
+      "en_US": [
+        "The Silver Print was added to\n",
+        "{STRVAR_1 3, 0, 0}’s Vs. Recorder!\r"
+      ]
+    },
+    {
+      "id": "msg_0109_D32R0501_00038",
+      "en_US": "SINGLE BATTLE"
+    },
+    {
+      "id": "msg_0109_D32R0501_00039",
+      "en_US": "DOUBLE BATTLE"
+    },
+    {
+      "id": "msg_0109_D32R0501_00040",
+      "en_US": "TAKE CHALLENGE"
+    },
+    {
+      "id": "msg_0109_D32R0501_00041",
+      "en_US": "INFO"
+    },
+    {
+      "id": "msg_0109_D32R0501_00042",
+      "en_US": "CANCEL"
+    },
+    {
+      "id": "msg_0109_D32R0501_00043",
+      "en_US": [
+        "One Trainer should select\n",
+        "“BECOME LEADER.”\r",
+        "The other Trainer must select\n",
+        "“JOIN GROUP.” {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0109_D32R0501_00044",
+      "en_US": [
+        "We need to launch DS Wireless\n",
+        "Communications. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0109_D32R0501_00045",
+      "en_US": [
+        "You must save the game before\n",
+        "I show you in. Please wait."
+      ]
+    },
+    {
+      "id": "msg_0109_D32R0501_00046",
+      "en_US": [
+        "Listen carefully!\r",
+        "If your Pokémon win without taking\n",
+        "damage, you earn more CP.\f",
+        "The more, the merrier!\f",
+        "Look at me. I don’t have much..."
+      ]
+    },
+    {
+      "id": "msg_0109_D32R0501_00047",
+      "en_US": [
+        "Listen!\r",
+        "You can earn more Castle Points or CP\n",
+        "by facing higher-level opponents.\r",
+        "This is what they call high risk,\n",
+        "high return!"
+      ]
+    },
+    {
+      "id": "msg_0109_D32R0501_00048",
+      "en_US": [
+        "Before every battle, you should check\n",
+        "the opponent’s lineup.\r",
+        "Don’t be cheap with your CP.\n",
+        "It’s like that old saying goes about\f",
+        "knowing your enemy.\r",
+        "“Unless you enter the enemy’s lair,\n",
+        "you cannot take their prize.”\r",
+        "...\f",
+        "That’s not the right old saying!"
+      ]
+    },
+    {
+      "id": "msg_0109_D32R0501_00049",
+      "en_US": [
+        "Mr. Darach...\r",
+        "His feelings for Lady Caitlin are\n",
+        "all bottled up...\r",
+        "Oh, how I pine for him..."
+      ]
+    },
+    {
+      "id": "msg_0109_D32R0501_00050",
+      "en_US": [
+        "At first, you can only use CP for\n",
+        "restoring HP.\r",
+        "But you can spend CP to rank up.\n",
+        "Then, you can even restore PP!"
+      ]
+    },
+    {
+      "id": "msg_0109_D32R0501_00051",
+      "en_US": [
+        "If you lose, your entire stock of CP\n",
+        "is cleaned out to zero!\r",
+        "This is the rule at the Battle Castle."
+      ]
+    },
+    {
+      "id": "msg_0109_D32R0501_00052",
+      "en_US": [
+        "My dream is to wear a beautiful dress\n",
+        "and live in a castle!\r",
+        "That’s not what I meant to say...\r",
+        "My dream is to live in a castle with\n",
+        "someone who wears a beautiful dress!"
+      ]
+    }
+  ]
+}

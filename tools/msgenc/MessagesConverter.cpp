@@ -61,6 +61,21 @@ void MessagesConverter::ReadCharmap() {
         if (code[0] == '{' && code[code.length() - 1] == '}') {
             code = code.substr(1, code.length() - 2);
             CmdmapRegisterCommand(code, value_i);
+        } else if (code[0] == '\\' && code.length() == 2) {
+            string literal;
+            switch (code[1]) {
+            case 'n': literal = '\n'; break;
+            case 'r': literal = '\r'; break;
+            case 'f': literal = '\f'; break;
+
+            default:
+                stringstream s;
+                s << "charmap syntax error at " << (lineno + 1);
+                throw runtime_error(s.str());
+            }
+
+            CharmapRegisterCharacter(code, value_i);
+            CharmapRegisterCharacter(literal, value_i);
         } else {
             CharmapRegisterCharacter(code, value_i);
         }

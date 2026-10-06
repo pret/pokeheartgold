@@ -1,0 +1,83 @@
+{
+  "key": 25646,
+  "messages": [
+    {
+      "id": "msg_0480_T05R0401_00000",
+      "en_US": [
+        "Hello, there!\n",
+        "I am the official Name Rater!\r",
+        "Want me to rate the nicknames\n",
+        "of your Pokémon? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0480_T05R0401_00001",
+      "en_US": [
+        "Which Pokémon nickname should\n",
+        "I critique, kid?"
+      ]
+    },
+    {
+      "id": "msg_0480_T05R0401_00002",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}, is it?\n",
+        "That is a decent nickname!\r",
+        "But, would you like me to give it\n",
+        "a much better name?\f",
+        "How about it? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0480_T05R0401_00003",
+      "en_US": [
+        "All right! Then, what shall the new\n",
+        "nickname be?\r"
+      ]
+    },
+    {
+      "id": "msg_0480_T05R0401_00004",
+      "en_US": [
+        "There! From now on, this Pokémon\n",
+        "shall be known as {STRVAR_1 1, 0, 0}!\r",
+        "It is a much better name than before!\n",
+        "Don’t you agree?"
+      ]
+    },
+    {
+      "id": "msg_0480_T05R0401_00005",
+      "en_US": [
+        "OK.\n",
+        "Suit yourself.\r",
+        "Do come visit again if you’ve changed\n",
+        "your mind."
+      ]
+    },
+    {
+      "id": "msg_0480_T05R0401_00006",
+      "en_US": [
+        "There! From now on, this Pokémon\n",
+        "shall be known as {STRVAR_1 1, 0, 0}!\r",
+        "Not so different from before?\n",
+        "Your eyes are tricking you!\r",
+        "This one is better.\n",
+        "How fortunate for you!"
+      ]
+    },
+    {
+      "id": "msg_0480_T05R0401_00007",
+      "en_US": [
+        "Hmm.\n",
+        "{STRVAR_1 1, 0, 0}, is it?\r",
+        "That is a truly impeccable name!\r",
+        "Take good care of {STRVAR_1 1, 0, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0480_T05R0401_00008",
+      "en_US": [
+        "Huh...\n",
+        "That is merely an Egg!"
+      ]
+    }
+  ]
+}

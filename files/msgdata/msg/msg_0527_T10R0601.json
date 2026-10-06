@@ -1,0 +1,135 @@
+{
+  "key": 13342,
+  "messages": [
+    {
+      "id": "msg_0527_T10R0601_00000",
+      "en_US": [
+        "Lance: I’ve been waiting for you.\r",
+        "{STRVAR_1 3, 0, 0}!\r",
+        "I knew that you, with your skills,\n",
+        "would eventually reach me here.\r",
+        "There’s no need for words now.\r",
+        "We will battle to determine who is\n",
+        "the stronger of the two of us.\r",
+        "As the most powerful Trainer and as\n",
+        "the Pokémon League Champion...\r",
+        "I, Lance the dragon master,\n",
+        "accept your challenge!\r"
+      ]
+    },
+    {
+      "id": "msg_0527_T10R0601_00001",
+      "en_US": [
+        "Lance: I’ve been waiting for you.\r",
+        "{STRVAR_1 3, 0, 0}!\r",
+        "I knew that you, with your skills,\n",
+        "would eventually reach me here.\r",
+        "There’s no need for words now.\r",
+        "We will battle to determine who is\n",
+        "the stronger of the two of us.\r",
+        "As the most powerful Trainer and as\n",
+        "the Pokémon League Champion...\r",
+        "I, Lance the dragon master,\n",
+        "accept your challenge!\r"
+      ]
+    },
+    {
+      "id": "msg_0527_T10R0601_00002",
+      "en_US": [
+        "...Whew.\r",
+        "You have become truly powerful,\n",
+        "{STRVAR_1 3, 0, 0}.\r",
+        "Your Pokémon have responded to your\n",
+        "strong and upstanding nature.\r",
+        "As a Trainer, you will continue to\n",
+        "grow strong with your Pokémon.\r"
+      ]
+    },
+    {
+      "id": "msg_0527_T10R0601_00003",
+      "en_US": [
+        "...Whew.\r",
+        "You have become truly powerful,\n",
+        "{STRVAR_1 3, 0, 0}.\r",
+        "Your Pokémon have responded to your\n",
+        "strong and upstanding nature.\r",
+        "As a Trainer, you will continue to\n",
+        "grow strong with your Pokémon.\r"
+      ]
+    },
+    {
+      "id": "msg_0527_T10R0601_00004",
+      "en_US": "......!\r"
+    },
+    {
+      "id": "msg_0527_T10R0601_00005",
+      "en_US": [
+        "Mary: Oh, no! It’s all over!\n",
+        "Professor Oak, if you weren’t\f",
+        "so slow...\r"
+      ]
+    },
+    {
+      "id": "msg_0527_T10R0601_00006",
+      "en_US": [
+        "Professor Oak: Ah, {STRVAR_1 3, 0, 0}!\n",
+        "It’s been a long while.\f",
+        "You certainly look more impressive.\r",
+        "Your conquest of the League is just\n",
+        "fantastic!\r",
+        "Your dedication, trust, and love for\n",
+        "your Pokémon made this happen.\r",
+        "Your Pokémon were outstanding, too.\r",
+        "Because they believed in you as a\n",
+        "Trainer, they persevered.\r",
+        "Congratulations, {STRVAR_1 3, 0, 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0527_T10R0601_00007",
+      "en_US": [
+        "Professor Oak: Ah, {STRVAR_1 3, 0, 0}!\n",
+        "It’s been a long while.\f",
+        "You certainly look more impressive.\r",
+        "Your conquest of the League is just\n",
+        "fantastic!\r",
+        "Your dedication, trust, and love for\n",
+        "your Pokémon made this happen.\r",
+        "Your Pokémon were outstanding, too.\r",
+        "Because they believed in you as a\n",
+        "Trainer, they persevered.\r",
+        "Congratulations, {STRVAR_1 3, 0, 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0527_T10R0601_00008",
+      "en_US": [
+        "Mary: Let’s interview the brand-new\n",
+        "Champion!\r"
+      ]
+    },
+    {
+      "id": "msg_0527_T10R0601_00009",
+      "en_US": [
+        "Lance: This is getting to be a\n",
+        "bit too noisy...\r",
+        "{STRVAR_1 3, 0, 0}, could you come with me?\r"
+      ]
+    },
+    {
+      "id": "msg_0527_T10R0601_00010",
+      "en_US": [
+        "Lance: This is getting to be a\n",
+        "bit too noisy...\r",
+        "{STRVAR_1 3, 0, 0}, could you come with me?\r"
+      ]
+    },
+    {
+      "id": "msg_0527_T10R0601_00011",
+      "en_US": [
+        "Mary: Oh, wait!\n",
+        "We haven’t done the interview!"
+      ]
+    }
+  ]
+}

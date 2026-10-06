@@ -1,0 +1,29 @@
+{
+  "key": 42030,
+  "messages": [
+    {
+      "id": "msg_0333_R05R0401_00000",
+      "en_US": [
+        "Eeyaaaah!\r",
+        "I sense a sinister shadow hovering\n",
+        "over you.\f",
+        "Take this to ward it off!\r"
+      ]
+    },
+    {
+      "id": "msg_0333_R05R0401_00001",
+      "en_US": [
+        "You were in mortal danger, but you’re\n",
+        "protected now."
+      ]
+    },
+    {
+      "id": "msg_0333_R05R0401_00002",
+      "en_US": [
+        "My grandma is into warding off what she\n",
+        "believes to be evil spirits.\f",
+        "I’m sorry that she startled you."
+      ]
+    }
+  ]
+}

@@ -258,7 +258,7 @@ int nitroarc_nameof(const nitroarc_t *narc, uint16_t i, char *buf, size_t size) 
     assert(buf);
     assert(size);
 
-    if (!narc->named) {
+    if (narc->ndirs == 1) {
         *buf = 0;
         return NITROARC_ESUCCESS;
     }
@@ -266,7 +266,9 @@ int nitroarc_nameof(const nitroarc_t *narc, uint16_t i, char *buf, size_t size) 
     if ((i & FNTB_FILESYS_MASKTYPE)) return NITROARC_EINDEXDIR;
     if (narc->nfiles <= i)           return NITROARC_EINDEXRANGE;
 
-    char       *p_buf    = buf;
+    char *p_buf = buf;
+    *p_buf++    = '/';
+
     const char *p_fntb   = narc->fntb.data;
     const char *p_dirtab = p_fntb;
     const char *p_enttab = p_fntb + leu32(p_dirtab);
@@ -1005,14 +1007,13 @@ static int nitroarc_fntb(nitroarc_t *narc, int64_t *running_size) {
     *running_size -= size;
     if (*running_size < 0) return NITROARC_EFNTBSIZE;
 
-    narc->named         = size > FNTB_HEADERSIZE + FNTB_DIRTAB_ENTRYSIZE;
     narc->fntb.size     = size;
     narc->fntb.data     = head + FNTB_HEADERSIZE;  // First entry pointer
     narc->fimg.data     = head + narc->fntb.size; // Head of next section
     narc->fntb.ofs_head = (uint32_t)ptrdiff(head, narc->head);
     narc->fntb.ofs_data = (uint32_t)ptrdiff(narc->fntb.data, narc->head);
 
-    narc->ndirs = (uint16_t)(leu16(&((uint8_t *)narc->fntb.data)[0x06]) & 0xFFF);
+    narc->ndirs = leu16(&((uint8_t *)narc->fntb.data)[0x06]);
     return NITROARC_ESUCCESS;
 }
 
@@ -1054,12 +1055,11 @@ static int read_stripped(const uint8_t *data, uint32_t size, nitroarc_t *narc) {
     narc->fatb.ofs_data = fatb_offs;
     narc->nfiles = (uint16_t)(fatb_size / FATB_ENTRYSIZE);
 
-    narc->named     = fntb_size == FNTB_DIRTAB_ENTRYSIZE;
     narc->fntb.size = fntb_size;
     narc->fntb.data = data + fntb_offs;
     narc->fntb.ofs_head = 0x00;
     narc->fntb.ofs_data = fntb_offs;
-    narc->ndirs = (uint16_t)(leu16(&((uint8_t *)narc->fntb.data)[0x06]) & 0xFFF);
+    narc->ndirs = leu16(&((uint8_t *)narc->fntb.data)[0x06]);
 
     narc->fimg.size = size - fntb_size - fatb_size - 0x10;
     narc->fimg.data = data; // all FATB offsets in stripped variant are absolute

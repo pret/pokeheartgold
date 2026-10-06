@@ -1,0 +1,23 @@
+{
+  "key": 58383,
+  "messages": [
+    {
+      "id": "msg_0590_T25R0801_00000",
+      "en_US": [
+        "Once while I was battling, my Pokémon\n",
+        "couldn’t use any moves.\r",
+        "The Power Points, or PP, of its\n",
+        "moves were all gone."
+      ]
+    },
+    {
+      "id": "msg_0590_T25R0801_00001",
+      "en_US": [
+        "Sometimes, a healthy Pokémon\n",
+        "may be unable to use its moves.\r",
+        "If that happens, heal it at a\n",
+        "Pokémon Center or use an item."
+      ]
+    }
+  ]
+}

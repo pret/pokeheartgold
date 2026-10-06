@@ -1,0 +1,577 @@
+{
+  "key": 59810,
+  "messages": [
+    {
+      "id": "msg_0297_00000",
+      "en_US": "つぶれて　はねる"
+    },
+    {
+      "id": "msg_0297_00001",
+      "en_US": "Tremble vertically"
+    },
+    {
+      "id": "msg_0297_00002",
+      "en_US": "Pull vertically"
+    },
+    {
+      "id": "msg_0297_00003",
+      "en_US": "Shrink then swell"
+    },
+    {
+      "id": "msg_0297_00004",
+      "en_US": "Store then jump: slow"
+    },
+    {
+      "id": "msg_0297_00005",
+      "en_US": "Tremble horizontally"
+    },
+    {
+      "id": "msg_0297_00006",
+      "en_US": "Jumpin’: small "
+    },
+    {
+      "id": "msg_0297_00007",
+      "en_US": "Store then jump horizontally"
+    },
+    {
+      "id": "msg_0297_00008",
+      "en_US": "Vertical shake"
+    },
+    {
+      "id": "msg_0297_00009",
+      "en_US": "BALTOY: slow"
+    },
+    {
+      "id": "msg_0297_00010",
+      "en_US": "jump horizontally: slow"
+    },
+    {
+      "id": "msg_0297_00011",
+      "en_US": "Sliced sideways jump"
+    },
+    {
+      "id": "msg_0297_00012",
+      "en_US": "jump horizontally: small"
+    },
+    {
+      "id": "msg_0297_00013",
+      "en_US": "----------"
+    },
+    {
+      "id": "msg_0297_00014",
+      "en_US": "Jerk"
+    },
+    {
+      "id": "msg_0297_00015",
+      "en_US": "Double Team"
+    },
+    {
+      "id": "msg_0297_00016",
+      "en_US": "Horizontal shake: slow"
+    },
+    {
+      "id": "msg_0297_00017",
+      "en_US": "----------"
+    },
+    {
+      "id": "msg_0297_00018",
+      "en_US": "Pull horizontally"
+    },
+    {
+      "id": "msg_0297_00019",
+      "en_US": "Spark"
+    },
+    {
+      "id": "msg_0297_00020",
+      "en_US": "----------"
+    },
+    {
+      "id": "msg_0297_00021",
+      "en_US": "Shrink twice then swell"
+    },
+    {
+      "id": "msg_0297_00022",
+      "en_US": "Cradle: slow"
+    },
+    {
+      "id": "msg_0297_00023",
+      "en_US": "jump hrizontally"
+    },
+    {
+      "id": "msg_0297_00024",
+      "en_US": "vertical jump to horizontal jump"
+    },
+    {
+      "id": "msg_0297_00025",
+      "en_US": "Jumpin’"
+    },
+    {
+      "id": "msg_0297_00026",
+      "en_US": "Vertical shake: slow"
+    },
+    {
+      "id": "msg_0297_00027",
+      "en_US": "----------"
+    },
+    {
+      "id": "msg_0297_00028",
+      "en_US": "BALTOY: twice"
+    },
+    {
+      "id": "msg_0297_00029",
+      "en_US": "Horizontal shake "
+    },
+    {
+      "id": "msg_0297_00030",
+      "en_US": "Dummy"
+    },
+    {
+      "id": "msg_0297_00031",
+      "en_US": "Dummy"
+    },
+    {
+      "id": "msg_0297_00032",
+      "en_US": "Dummy"
+    },
+    {
+      "id": "msg_0297_00033",
+      "en_US": "Dummy"
+    },
+    {
+      "id": "msg_0297_00034",
+      "en_US": "Dummy"
+    },
+    {
+      "id": "msg_0297_00035",
+      "en_US": "Dummy"
+    },
+    {
+      "id": "msg_0297_00036",
+      "en_US": "Dummy"
+    },
+    {
+      "id": "msg_0297_00037",
+      "en_US": "Dummy"
+    },
+    {
+      "id": "msg_0297_00038",
+      "en_US": "Dummy"
+    },
+    {
+      "id": "msg_0297_00039",
+      "en_US": "Dummy"
+    },
+    {
+      "id": "msg_0297_00040",
+      "en_US": "Dummy"
+    },
+    {
+      "id": "msg_0297_00041",
+      "en_US": "Dummy"
+    },
+    {
+      "id": "msg_0297_00042",
+      "en_US": "Dummy"
+    },
+    {
+      "id": "msg_0297_00043",
+      "en_US": "Dummy"
+    },
+    {
+      "id": "msg_0297_00044",
+      "en_US": "Dummy"
+    },
+    {
+      "id": "msg_0297_00045",
+      "en_US": "Dummy"
+    },
+    {
+      "id": "msg_0297_00046",
+      "en_US": "Dummy"
+    },
+    {
+      "id": "msg_0297_00047",
+      "en_US": "Dummy"
+    },
+    {
+      "id": "msg_0297_00048",
+      "en_US": "Dummy"
+    },
+    {
+      "id": "msg_0297_00049",
+      "en_US": "Dummy"
+    },
+    {
+      "id": "msg_0297_00050",
+      "en_US": "Ｂ　Double Team 1"
+    },
+    {
+      "id": "msg_0297_00051",
+      "en_US": "Ｂ　Double Team 2"
+    },
+    {
+      "id": "msg_0297_00052",
+      "en_US": "Ｂ　Double Team 3"
+    },
+    {
+      "id": "msg_0297_00053",
+      "en_US": "Ｂ　Horizontal shake 1"
+    },
+    {
+      "id": "msg_0297_00054",
+      "en_US": "Ｂ　Horizontal shake 2"
+    },
+    {
+      "id": "msg_0297_00055",
+      "en_US": "Ｂ　Horizontal shake 3"
+    },
+    {
+      "id": "msg_0297_00056",
+      "en_US": "Ｂ　Vertical tremble 1"
+    },
+    {
+      "id": "msg_0297_00057",
+      "en_US": "Ｂ　Vertical tremble 2"
+    },
+    {
+      "id": "msg_0297_00058",
+      "en_US": "Ｂ　Vertical tremble 3"
+    },
+    {
+      "id": "msg_0297_00059",
+      "en_US": "Ｂ　Horizontal tremble 1"
+    },
+    {
+      "id": "msg_0297_00060",
+      "en_US": "Ｂ　Horizontal tremble 2"
+    },
+    {
+      "id": "msg_0297_00061",
+      "en_US": "Ｂ　Horizontal tremble 3"
+    },
+    {
+      "id": "msg_0297_00062",
+      "en_US": "Ｂ　Vertical stretch 1"
+    },
+    {
+      "id": "msg_0297_00063",
+      "en_US": "Ｂ　Vertical stretch 2"
+    },
+    {
+      "id": "msg_0297_00064",
+      "en_US": "Ｂ　Vertical stretch 3"
+    },
+    {
+      "id": "msg_0297_00065",
+      "en_US": "Ｂ　Horizontal stretch 1"
+    },
+    {
+      "id": "msg_0297_00066",
+      "en_US": "Ｂ　Horizontal stretch 2"
+    },
+    {
+      "id": "msg_0297_00067",
+      "en_US": "Ｂ　Horizontal stretch 3"
+    },
+    {
+      "id": "msg_0297_00068",
+      "en_US": "Ｂ　Vertical & horizontal stretch 1"
+    },
+    {
+      "id": "msg_0297_00069",
+      "en_US": "Ｂ　Vertical & horizontal stretch 2"
+    },
+    {
+      "id": "msg_0297_00070",
+      "en_US": "Ｂ　Vertical & horizontal stretch 3"
+    },
+    {
+      "id": "msg_0297_00071",
+      "en_US": "Ｂ　Jerk 1"
+    },
+    {
+      "id": "msg_0297_00072",
+      "en_US": "Ｂ　Jerk 2"
+    },
+    {
+      "id": "msg_0297_00073",
+      "en_US": "Ｂ　Jerk 3"
+    },
+    {
+      "id": "msg_0297_00074",
+      "en_US": "Ｂ　Triangle1"
+    },
+    {
+      "id": "msg_0297_00075",
+      "en_US": "Ｂ　Triangle2"
+    },
+    {
+      "id": "msg_0297_00076",
+      "en_US": "Ｂ　Triangle3"
+    },
+    {
+      "id": "msg_0297_00077",
+      "en_US": "Ｂ　Bound1"
+    },
+    {
+      "id": "msg_0297_00078",
+      "en_US": "Ｂ　Bound2"
+    },
+    {
+      "id": "msg_0297_00079",
+      "en_US": "Ｂ　Bound3"
+    },
+    {
+      "id": "msg_0297_00080",
+      "en_US": "Ｂ　Bound： small1"
+    },
+    {
+      "id": "msg_0297_00081",
+      "en_US": "Ｂ　Bound： small2"
+    },
+    {
+      "id": "msg_0297_00082",
+      "en_US": "Ｂ　Bound： small3"
+    },
+    {
+      "id": "msg_0297_00083",
+      "en_US": "Ｂ　さゆうゆれ1"
+    },
+    {
+      "id": "msg_0297_00084",
+      "en_US": "Ｂ　さゆうゆれ2"
+    },
+    {
+      "id": "msg_0297_00085",
+      "en_US": "Ｂ　さゆうゆれ3"
+    },
+    {
+      "id": "msg_0297_00086",
+      "en_US": "Ｂ　sink 1"
+    },
+    {
+      "id": "msg_0297_00087",
+      "en_US": "Ｂ　sink 2"
+    },
+    {
+      "id": "msg_0297_00088",
+      "en_US": "Ｂ　sink 3"
+    },
+    {
+      "id": "msg_0297_00089",
+      "en_US": "Ｂ　Shrink and Swell　1"
+    },
+    {
+      "id": "msg_0297_00090",
+      "en_US": "Ｂ　Shrink and Swell　2"
+    },
+    {
+      "id": "msg_0297_00091",
+      "en_US": "Ｂ　Shrink and Swell　3"
+    },
+    {
+      "id": "msg_0297_00092",
+      "en_US": "Ｂ　Take Down 1"
+    },
+    {
+      "id": "msg_0297_00093",
+      "en_US": "Ｂ　Take Down"
+    },
+    {
+      "id": "msg_0297_00094",
+      "en_US": "Ｂ　Take Down"
+    },
+    {
+      "id": "msg_0297_00095",
+      "en_US": "Ｂ　Fade: red 1"
+    },
+    {
+      "id": "msg_0297_00096",
+      "en_US": "Ｂ　Fade: red 2"
+    },
+    {
+      "id": "msg_0297_00097",
+      "en_US": "Ｂ　Fade: red 3"
+    },
+    {
+      "id": "msg_0297_00098",
+      "en_US": "Ｂ　Fade: blue 1"
+    },
+    {
+      "id": "msg_0297_00099",
+      "en_US": "Ｂ　Fade: blue 2"
+    },
+    {
+      "id": "msg_0297_00100",
+      "en_US": "Ｂ　Fade: blue 3"
+    },
+    {
+      "id": "msg_0297_00101",
+      "en_US": "Ｂ　Fade: green 1"
+    },
+    {
+      "id": "msg_0297_00102",
+      "en_US": "Ｂ　Fade: green 2"
+    },
+    {
+      "id": "msg_0297_00103",
+      "en_US": "Ｂ　Fade: green 3"
+    },
+    {
+      "id": "msg_0297_00104",
+      "en_US": "Ｂ　Spark1"
+    },
+    {
+      "id": "msg_0297_00105",
+      "en_US": "Ｂ　Spark2"
+    },
+    {
+      "id": "msg_0297_00106",
+      "en_US": "Ｂ　Spark3"
+    },
+    {
+      "id": "msg_0297_00107",
+      "en_US": "Ｂ　Move horizontally with tremble 1"
+    },
+    {
+      "id": "msg_0297_00108",
+      "en_US": "Ｂ　Move horizontally with tremble 2"
+    },
+    {
+      "id": "msg_0297_00109",
+      "en_US": "Ｂ　Move horizontally with tremble 3"
+    },
+    {
+      "id": "msg_0297_00110",
+      "en_US": "Ｂ　Rapid rotation 1"
+    },
+    {
+      "id": "msg_0297_00111",
+      "en_US": "Ｂ　Rapid rotation 2"
+    },
+    {
+      "id": "msg_0297_00112",
+      "en_US": "Ｂ　Rapid rotation 3"
+    },
+    {
+      "id": "msg_0297_00113",
+      "en_US": "Ｂ　Swell 1"
+    },
+    {
+      "id": "msg_0297_00114",
+      "en_US": "Ｂ　Swell 2"
+    },
+    {
+      "id": "msg_0297_00115",
+      "en_US": "Ｂ　Swell 3"
+    },
+    {
+      "id": "msg_0297_00116",
+      "en_US": "Ｂ　Shrink & Swell 1"
+    },
+    {
+      "id": "msg_0297_00117",
+      "en_US": "Ｂ　Shrink & Swell 2"
+    },
+    {
+      "id": "msg_0297_00118",
+      "en_US": "Ｂ　Shrink & Swell 3"
+    },
+    {
+      "id": "msg_0297_00119",
+      "en_US": "Ｂ　Squashed with horizontal shake Ａ1"
+    },
+    {
+      "id": "msg_0297_00120",
+      "en_US": "Ｂ　Squashed with horizontal shake Ａ2"
+    },
+    {
+      "id": "msg_0297_00121",
+      "en_US": "Ｂ　Squashed with horizontal shake Ａ3"
+    },
+    {
+      "id": "msg_0297_00122",
+      "en_US": "Ｂ　Squashed with horizontal shake Ｂ1"
+    },
+    {
+      "id": "msg_0297_00123",
+      "en_US": "Ｂ　Squashed with horizontal shake Ｂ2"
+    },
+    {
+      "id": "msg_0297_00124",
+      "en_US": "Ｂ　Squashed with horizontal shake Ｂ3"
+    },
+    {
+      "id": "msg_0297_00125",
+      "en_US": "Ｂ　Jumpin’ 1"
+    },
+    {
+      "id": "msg_0297_00126",
+      "en_US": "Ｂ　Jumpin’ 2"
+    },
+    {
+      "id": "msg_0297_00127",
+      "en_US": "Ｂ　Jumpin’ 3"
+    },
+    {
+      "id": "msg_0297_00128",
+      "en_US": "Ｂ　Up & down with shake 1"
+    },
+    {
+      "id": "msg_0297_00129",
+      "en_US": "Ｂ　Up & down with shake 2"
+    },
+    {
+      "id": "msg_0297_00130",
+      "en_US": "Ｂ　Up & down with shake 3"
+    },
+    {
+      "id": "msg_0297_00131",
+      "en_US": "Ｂ　Walk in place 1"
+    },
+    {
+      "id": "msg_0297_00132",
+      "en_US": "Ｂ　Walk in place 2"
+    },
+    {
+      "id": "msg_0297_00133",
+      "en_US": "Ｂ　Walk in place 3"
+    },
+    {
+      "id": "msg_0297_00134",
+      "en_US": "ＰＬ　Ｂ　Jumpin’: small"
+    },
+    {
+      "id": "msg_0297_00135",
+      "en_US": "ＰＬ　Ｂ　Store then jump horizontally"
+    },
+    {
+      "id": "msg_0297_00136",
+      "en_US": "ＰＬ　Ｂ　BALTOY: slow"
+    },
+    {
+      "id": "msg_0297_00137",
+      "en_US": "ＰＬ　Ｂ　horizontal jump: slow"
+    },
+    {
+      "id": "msg_0297_00138",
+      "en_US": "ＰＬ　Ｂ　Horiozonta jump: small"
+    },
+    {
+      "id": "msg_0297_00139",
+      "en_US": "ＰＬ　Ｂ　ゆれながら　さゆう"
+    },
+    {
+      "id": "msg_0297_00140",
+      "en_US": "ＰＬ　Ｂ　ゆれながら　じょうげ"
+    },
+    {
+      "id": "msg_0297_00141",
+      "en_US": "ＰＬ　Ｂ　Cradle: slow"
+    },
+    {
+      "id": "msg_0297_00142",
+      "en_US": "ＰＬ　Ｂ　Horizontal jump"
+    }
+  ]
+}

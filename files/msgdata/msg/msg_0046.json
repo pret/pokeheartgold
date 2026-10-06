@@ -1,0 +1,857 @@
+{
+  "key": 24069,
+  "messages": [
+    {
+      "id": "msg_0046_00000",
+      "en_US": [
+        "Welcome to the Pokémon Communication\n",
+        "Club Colosseum.\r",
+        "You may battle with your friends\n",
+        "here.\r"
+      ]
+    },
+    {
+      "id": "msg_0046_00001",
+      "en_US": [
+        "Which Battle Mode would you like\n",
+        "to play? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0046_00002",
+      "en_US": "Battle with how many players? {YESNO 0}"
+    },
+    {
+      "id": "msg_0046_00003",
+      "en_US": "Do a four-player Multi Battle? {YESNO 0}"
+    },
+    {
+      "id": "msg_0046_00004",
+      "en_US": "JOIN A MULTI BATTLE"
+    },
+    {
+      "id": "msg_0046_00005",
+      "en_US": "CANCEL"
+    },
+    {
+      "id": "msg_0046_00006",
+      "en_US": [
+        "There are five Battle Modes.\r",
+        "Single Battle is for two Trainers\n",
+        "with one or more Pokémon each.\r",
+        "Each Trainer can have one Pokémon\n",
+        "in battle at a time.\r",
+        "Double Battle is for two Trainers\n",
+        "with two or more Pokémon each.\r",
+        "Each Trainer will send out two\n",
+        "Pokémon to battle at a time.\r",
+        "Mix Battle is for two Trainers\n",
+        "with three Pokémon each.\r",
+        "Each Trainer chooses one of the\n",
+        "opponent’s Pokémon, mixes them\f",
+        "with their own party, and then\f",
+        "battles the other Trainer.\r",
+        "Flat Battle is for Pokémon over Lv. 50.\r",
+        "All Pokémon will become Lv. 50 for\n",
+        "the battle.\r",
+        "Multi Battle is for four Trainers\n",
+        "with one or more Pokémon each.\r",
+        "Each Trainer can have one Pokémon\n",
+        "in battle at a time.\r"
+      ]
+    },
+    {
+      "id": "msg_0046_00007",
+      "garbage": 266
+    },
+    {
+      "id": "msg_0046_00008",
+      "garbage": 45
+    },
+    {
+      "id": "msg_0046_00009",
+      "garbage": 36
+    },
+    {
+      "id": "msg_0046_00010",
+      "en_US": [
+        "For a Double Battle, you must\n",
+        "have at least two Pokémon."
+      ]
+    },
+    {
+      "id": "msg_0046_00011",
+      "garbage": 27
+    },
+    {
+      "id": "msg_0046_00012",
+      "garbage": 35
+    },
+    {
+      "id": "msg_0046_00013",
+      "garbage": 34
+    },
+    {
+      "id": "msg_0046_00014",
+      "garbage": 35
+    },
+    {
+      "id": "msg_0046_00015",
+      "garbage": 35
+    },
+    {
+      "id": "msg_0046_00016",
+      "garbage": 26
+    },
+    {
+      "id": "msg_0046_00017",
+      "garbage": 20
+    },
+    {
+      "id": "msg_0046_00018",
+      "garbage": 26
+    },
+    {
+      "id": "msg_0046_00019",
+      "en_US": [
+        "{STRVAR_1 26, 0, 0}\n",
+        "CUP"
+      ]
+    },
+    {
+      "id": "msg_0046_00020",
+      "en_US": [
+        "NO\n",
+        "RESTRICTIONS"
+      ]
+    },
+    {
+      "id": "msg_0046_00021",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0046_00022",
+      "en_US": "RETURN"
+    },
+    {
+      "id": "msg_0046_00023",
+      "en_US": [
+        "DOUBLE\n",
+        "NO RESTRICTION"
+      ]
+    },
+    {
+      "id": "msg_0046_00024",
+      "en_US": "CHECK SPECIAL POKéMON"
+    },
+    {
+      "id": "msg_0046_00025",
+      "en_US": [
+        "You need a special Pokémon to enter the\n",
+        "GS Cup.\r",
+        "{STRVAR_1 3, 0, 0}, out of the Pokémon\n",
+        "you’ve found...\r"
+      ]
+    },
+    {
+      "id": "msg_0046_00026",
+      "en_US": "{STRVAR_1 0, 0, 0}\r"
+    },
+    {
+      "id": "msg_0046_00027",
+      "en_US": "can be entered in the competition.\r"
+    },
+    {
+      "id": "msg_0046_00028",
+      "en_US": "none are eligible.\r"
+    },
+    {
+      "id": "msg_0046_00029",
+      "en_US": "Please do visit again."
+    },
+    {
+      "id": "msg_0046_00030",
+      "garbage": 35
+    },
+    {
+      "id": "msg_0046_00031",
+      "garbage": 13
+    },
+    {
+      "id": "msg_0046_00032",
+      "garbage": 18
+    },
+    {
+      "id": "msg_0046_00033",
+      "garbage": 25
+    },
+    {
+      "id": "msg_0046_00034",
+      "garbage": 16
+    },
+    {
+      "id": "msg_0046_00035",
+      "garbage": 11
+    },
+    {
+      "id": "msg_0046_00036",
+      "en_US": [
+        "Please decide which of you two\n",
+        "will become the leader.\r",
+        "The other player must then choose\n",
+        "“JOIN GROUP.”{YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0046_00037",
+      "garbage": 24
+    },
+    {
+      "id": "msg_0046_00038",
+      "garbage": 20
+    },
+    {
+      "id": "msg_0046_00039",
+      "garbage": 32
+    },
+    {
+      "id": "msg_0046_00040",
+      "garbage": 27
+    },
+    {
+      "id": "msg_0046_00041",
+      "garbage": 29
+    },
+    {
+      "id": "msg_0046_00042",
+      "garbage": 39
+    },
+    {
+      "id": "msg_0046_00043",
+      "garbage": 26
+    },
+    {
+      "id": "msg_0046_00044",
+      "garbage": 13
+    },
+    {
+      "id": "msg_0046_00045",
+      "garbage": 29
+    },
+    {
+      "id": "msg_0046_00046",
+      "garbage": 29
+    },
+    {
+      "id": "msg_0046_00047",
+      "garbage": 30
+    },
+    {
+      "id": "msg_0046_00048",
+      "garbage": 29
+    },
+    {
+      "id": "msg_0046_00049",
+      "garbage": 28
+    },
+    {
+      "id": "msg_0046_00050",
+      "garbage": 29
+    },
+    {
+      "id": "msg_0046_00051",
+      "garbage": 34
+    },
+    {
+      "id": "msg_0046_00052",
+      "garbage": 33
+    },
+    {
+      "id": "msg_0046_00053",
+      "garbage": 34
+    },
+    {
+      "id": "msg_0046_00054",
+      "garbage": 32
+    },
+    {
+      "id": "msg_0046_00055",
+      "garbage": 14
+    },
+    {
+      "id": "msg_0046_00056",
+      "garbage": 17
+    },
+    {
+      "id": "msg_0046_00057",
+      "en_US": [
+        "Please decide which of you four\n",
+        "will become the group leader.\r",
+        "The other players must then choose\n",
+        "“JOIN GROUP.”{YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0046_00058",
+      "garbage": 27
+    },
+    {
+      "id": "msg_0046_00059",
+      "garbage": 36
+    },
+    {
+      "id": "msg_0046_00060",
+      "garbage": 30
+    },
+    {
+      "id": "msg_0046_00061",
+      "garbage": 34
+    },
+    {
+      "id": "msg_0046_00062",
+      "garbage": 26
+    },
+    {
+      "id": "msg_0046_00063",
+      "garbage": 28
+    },
+    {
+      "id": "msg_0046_00064",
+      "garbage": 32
+    },
+    {
+      "id": "msg_0046_00065",
+      "garbage": 20
+    },
+    {
+      "id": "msg_0046_00066",
+      "en_US": [
+        "The members have gathered.\n",
+        "Please enter the room."
+      ]
+    },
+    {
+      "id": "msg_0046_00067",
+      "garbage": 46
+    },
+    {
+      "id": "msg_0046_00068",
+      "garbage": 23
+    },
+    {
+      "id": "msg_0046_00069",
+      "garbage": 17
+    },
+    {
+      "id": "msg_0046_00070",
+      "garbage": 13
+    },
+    {
+      "id": "msg_0046_00071",
+      "en_US": [
+        "Welcome to the Pokémon Wireless\n",
+        "Club Union Room.\r",
+        "You may interact directly with\n",
+        "many Trainers here.\r",
+        "Would you like to enter the room?"
+      ]
+    },
+    {
+      "id": "msg_0046_00072",
+      "en_US": [
+        "The Trainers in the Union Room\n",
+        "will be those players around you\f",
+        "who have also entered the room.\r",
+        "You may enter two Pokémon up to\n",
+        "Lv. 30 for a one-on-one battle.\r",
+        "Or, you may trade your Pokémon here\n",
+        "with another Trainer.\r",
+        "You may also mix records or draw\n",
+        "with other players.\r",
+        "You may also chat with other\n",
+        "players in the room.\r",
+        "...Or find friends by touching\n",
+        "the spoken words.\r",
+        "Would you like to enter the room? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0046_00073",
+      "garbage": 34
+    },
+    {
+      "id": "msg_0046_00074",
+      "garbage": 35
+    },
+    {
+      "id": "msg_0046_00075",
+      "garbage": 35
+    },
+    {
+      "id": "msg_0046_00076",
+      "garbage": 26
+    },
+    {
+      "id": "msg_0046_00077",
+      "en_US": [
+        "I hope you enjoy your time in\n",
+        "the Union Room.\r"
+      ]
+    },
+    {
+      "id": "msg_0046_00078",
+      "garbage": 96
+    },
+    {
+      "id": "msg_0046_00079",
+      "garbage": 115
+    },
+    {
+      "id": "msg_0046_00080",
+      "garbage": 34
+    },
+    {
+      "id": "msg_0046_00081",
+      "garbage": 35
+    },
+    {
+      "id": "msg_0046_00082",
+      "garbage": 35
+    },
+    {
+      "id": "msg_0046_00083",
+      "garbage": 26
+    },
+    {
+      "id": "msg_0046_00084",
+      "garbage": 67
+    },
+    {
+      "id": "msg_0046_00085",
+      "garbage": 29
+    },
+    {
+      "id": "msg_0046_00086",
+      "garbage": 34
+    },
+    {
+      "id": "msg_0046_00087",
+      "garbage": 28
+    },
+    {
+      "id": "msg_0046_00088",
+      "garbage": 30
+    },
+    {
+      "id": "msg_0046_00089",
+      "garbage": 24
+    },
+    {
+      "id": "msg_0046_00090",
+      "garbage": 20
+    },
+    {
+      "id": "msg_0046_00091",
+      "garbage": 30
+    },
+    {
+      "id": "msg_0046_00092",
+      "garbage": 27
+    },
+    {
+      "id": "msg_0046_00093",
+      "garbage": 96
+    },
+    {
+      "id": "msg_0046_00094",
+      "garbage": 158
+    },
+    {
+      "id": "msg_0046_00095",
+      "garbage": 87
+    },
+    {
+      "id": "msg_0046_00096",
+      "garbage": 91
+    },
+    {
+      "id": "msg_0046_00097",
+      "garbage": 61
+    },
+    {
+      "id": "msg_0046_00098",
+      "garbage": 85
+    },
+    {
+      "id": "msg_0046_00099",
+      "garbage": 105
+    },
+    {
+      "id": "msg_0046_00100",
+      "garbage": 65
+    },
+    {
+      "id": "msg_0046_00101",
+      "garbage": 63
+    },
+    {
+      "id": "msg_0046_00102",
+      "garbage": 29
+    },
+    {
+      "id": "msg_0046_00103",
+      "garbage": 75
+    },
+    {
+      "id": "msg_0046_00104",
+      "garbage": 26
+    },
+    {
+      "id": "msg_0046_00105",
+      "garbage": 73
+    },
+    {
+      "id": "msg_0046_00106",
+      "garbage": 5
+    },
+    {
+      "id": "msg_0046_00107",
+      "garbage": 5
+    },
+    {
+      "id": "msg_0046_00108",
+      "garbage": 4
+    },
+    {
+      "id": "msg_0046_00109",
+      "garbage": 5
+    },
+    {
+      "id": "msg_0046_00110",
+      "garbage": 4
+    },
+    {
+      "id": "msg_0046_00111",
+      "garbage": 22
+    },
+    {
+      "id": "msg_0046_00112",
+      "garbage": 4
+    },
+    {
+      "id": "msg_0046_00113",
+      "garbage": 4
+    },
+    {
+      "id": "msg_0046_00114",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0046_00115",
+      "garbage": 4
+    },
+    {
+      "id": "msg_0046_00116",
+      "garbage": 40
+    },
+    {
+      "id": "msg_0046_00117",
+      "garbage": 21
+    },
+    {
+      "id": "msg_0046_00118",
+      "garbage": 15
+    },
+    {
+      "id": "msg_0046_00119",
+      "garbage": 133
+    },
+    {
+      "id": "msg_0046_00120",
+      "en_US": [
+        "Which set of rules would you like\n",
+        "to use? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0046_00121",
+      "en_US": "Battle in {STRVAR_1 26, 0, 0} Cup?{YESNO 0}"
+    },
+    {
+      "id": "msg_0046_00122",
+      "en_US": [
+        "You need at least {STRVAR_1 50, 1, 0} Pokémon\n",
+        "that qualify under the\f",
+        "{STRVAR_1 26, 0, 0} Cup rules."
+      ]
+    },
+    {
+      "id": "msg_0046_00123",
+      "garbage": 8
+    },
+    {
+      "id": "msg_0046_00124",
+      "garbage": 7
+    },
+    {
+      "id": "msg_0046_00125",
+      "garbage": 6
+    },
+    {
+      "id": "msg_0046_00126",
+      "garbage": 6
+    },
+    {
+      "id": "msg_0046_00127",
+      "garbage": 6
+    },
+    {
+      "id": "msg_0046_00128",
+      "en_US": [
+        "{STRVAR_1 26, 0, 0}\n",
+        "CUP"
+      ]
+    },
+    {
+      "id": "msg_0046_00129",
+      "en_US": "CANCEL"
+    },
+    {
+      "id": "msg_0046_00130",
+      "en_US": "CONFIRM"
+    },
+    {
+      "id": "msg_0046_00131",
+      "en_US": "RULES"
+    },
+    {
+      "id": "msg_0046_00132",
+      "garbage": 28
+    },
+    {
+      "id": "msg_0046_00133",
+      "garbage": 26
+    },
+    {
+      "id": "msg_0046_00134",
+      "garbage": 28
+    },
+    {
+      "id": "msg_0046_00135",
+      "garbage": 17
+    },
+    {
+      "id": "msg_0046_00136",
+      "en_US": [
+        "It’s impossible to form a team of\n",
+        "Pokémon that qualify under the\f",
+        "{STRVAR_1 26, 0, 0} Cup rules with a\f",
+        "total level limit of {STRVAR_1 52, 1, 0}."
+      ]
+    },
+    {
+      "id": "msg_0046_00137",
+      "garbage": 22
+    },
+    {
+      "id": "msg_0046_00138",
+      "en_US": "NO RESTRICTIONS"
+    },
+    {
+      "id": "msg_0046_00139",
+      "en_US": [
+        "DS Wireless Communications will be\n",
+        "launched. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0046_00140",
+      "en_US": [
+        "For a Multi Battle, you must have\n",
+        "at least three Pokémon."
+      ]
+    },
+    {
+      "id": "msg_0046_00141",
+      "en_US": [
+        "For a Mix Battle, you must have\n",
+        "at least three Pokémon."
+      ]
+    },
+    {
+      "id": "msg_0046_00142",
+      "en_US": [
+        "You have at least one Pokémon\n",
+        "that can’t be taken."
+      ]
+    },
+    {
+      "id": "msg_0046_00143",
+      "garbage": 27
+    },
+    {
+      "id": "msg_0046_00144",
+      "en_US": [
+        "Pardon us for the inconvenience...\n",
+        "Please return once you have stopped\f",
+        "being a member of Team Rocket..."
+      ]
+    },
+    {
+      "id": "msg_0046_00145",
+      "en_US": [
+        "You cannot have more than two\n",
+        "legendary Pokémon in the GS Cup."
+      ]
+    },
+    {
+      "id": "msg_0046_00146",
+      "en_US": [
+        "Pardon us for the inconvenience...\n",
+        "but people wearing black clothing,\f",
+        "people who engage in unlawful\f",
+        "activities, and people who are\f",
+        "members of Team Rocket\f",
+        "are barred from participating."
+      ]
+    },
+    {
+      "id": "msg_0046_00147",
+      "en_US": [
+        "Pardon us for the inconvenience.\r",
+        "We have received word from Professor\n",
+        "Elm in New Bark Town that a PICHU\r",
+        "with spiky ears cannot be allowed\n",
+        "to enter.\r",
+        "Please place it in your PC Box and\n",
+        "enter again."
+      ]
+    },
+    {
+      "id": "msg_0046_00148",
+      "garbage": 69
+    },
+    {
+      "id": "msg_0046_00149",
+      "en_US": [
+        "Hello! Here I’ll explain to you about\n",
+        "the Trainer Card.\r",
+        "Your Trainer Card, with your Pokémon of\n",
+        "course, is proof of your status as a\f",
+        "Pokémon Trainer while you’re out\f",
+        "adventuring.\r",
+        "It keeps automatic records of all kinds\n",
+        "of information.\r",
+        "If you touch the card, you can view the\n",
+        "reverse side.\r",
+        "You can sign the back of your card.\r",
+        "You can show off your signature to\n",
+        "anyone you meet in the Union Room!\r",
+        "But your signature will be erased if you\n",
+        "decide to sign your card again, so\f",
+        "be careful!"
+      ]
+    },
+    {
+      "id": "msg_0046_00150",
+      "garbage": 23
+    },
+    {
+      "id": "msg_0046_00151",
+      "garbage": 8
+    },
+    {
+      "id": "msg_0046_00152",
+      "garbage": 39
+    },
+    {
+      "id": "msg_0046_00153",
+      "garbage": 34
+    },
+    {
+      "id": "msg_0046_00154",
+      "garbage": 35
+    },
+    {
+      "id": "msg_0046_00155",
+      "garbage": 35
+    },
+    {
+      "id": "msg_0046_00156",
+      "garbage": 26
+    },
+    {
+      "id": "msg_0046_00157",
+      "garbage": 56
+    },
+    {
+      "id": "msg_0046_00158",
+      "garbage": 31
+    },
+    {
+      "id": "msg_0046_00159",
+      "garbage": 20
+    },
+    {
+      "id": "msg_0046_00160",
+      "garbage": 21
+    },
+    {
+      "id": "msg_0046_00161",
+      "garbage": 31
+    },
+    {
+      "id": "msg_0046_00162",
+      "garbage": 17
+    },
+    {
+      "id": "msg_0046_00163",
+      "garbage": 13
+    },
+    {
+      "id": "msg_0046_00164",
+      "garbage": 20
+    },
+    {
+      "id": "msg_0046_00165",
+      "garbage": 43
+    },
+    {
+      "id": "msg_0046_00166",
+      "garbage": 21
+    },
+    {
+      "id": "msg_0046_00167",
+      "garbage": 32
+    },
+    {
+      "id": "msg_0046_00168",
+      "garbage": 23
+    },
+    {
+      "id": "msg_0046_00169",
+      "garbage": 46
+    },
+    {
+      "id": "msg_0046_00170",
+      "garbage": 30
+    },
+    {
+      "id": "msg_0046_00171",
+      "garbage": 15
+    },
+    {
+      "id": "msg_0046_00172",
+      "en_US": [
+        "Pardon us for the inconvenience.\r",
+        "The Spiky-eared Pokémon you are\n",
+        "traveling with...\f",
+        "It’s a kind that doesn’t appear in the\f",
+        "Pokémon Center’s database, so we\f",
+        "unfortunately cannot allow it to pass.\r",
+        "Please place it in a PC Box and\n",
+        "come back."
+      ]
+    }
+  ]
+}

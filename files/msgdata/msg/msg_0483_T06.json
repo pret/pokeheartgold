@@ -1,0 +1,214 @@
+{
+  "key": 18231,
+  "messages": [
+    {
+      "id": "msg_0483_T06_00000",
+      "en_US": [
+        "Vermilion Port is Kanto’s\n",
+        "seaside gateway.\r",
+        "Luxury liners from around the world\n",
+        "dock here."
+      ]
+    },
+    {
+      "id": "msg_0483_T06_00001",
+      "en_US": [
+        "My Pokémon is preparing the land\n",
+        "for construction.\r",
+        "But I have no money to start\n",
+        "the project."
+      ]
+    },
+    {
+      "id": "msg_0483_T06_00002",
+      "en_US": "MACHOP: Guooh gogogoh!"
+    },
+    {
+      "id": "msg_0483_T06_00003",
+      "en_US": [
+        "There are eight Gyms in Kanto.\r",
+        "That big building is Vermilion’s\n",
+        "Pokémon Gym."
+      ]
+    },
+    {
+      "id": "msg_0483_T06_00004",
+      "en_US": [
+        "Skilled Trainers gather in Kanto.\n",
+        "Gym Leaders are especially strong.\r",
+        "They won’t be easy to defeat."
+      ]
+    },
+    {
+      "id": "msg_0483_T06_00005",
+      "en_US": [
+        "You’ve started to collect Kanto\n",
+        "Gym Badges?\r",
+        "Don’t you agree that the Trainers\n",
+        "here are tough?"
+      ]
+    },
+    {
+      "id": "msg_0483_T06_00006",
+      "en_US": [
+        "I guess you’ll be finished with your\n",
+        "conquest of Kanto Gyms soon.\r",
+        "Let me know if you get all\n",
+        "eight Badges."
+      ]
+    },
+    {
+      "id": "msg_0483_T06_00007",
+      "en_US": [
+        "Congratulations!\n",
+        "You got all the Kanto Gym Badges.\r",
+        "I’ve got a reward for your efforts.\r"
+      ]
+    },
+    {
+      "id": "msg_0483_T06_00008",
+      "en_US": [
+        "PP Max is a powerful item that\n",
+        "raises a move’s top PP to its maximum.\f",
+        "It can change the way you battle!"
+      ]
+    },
+    {
+      "id": "msg_0483_T06_00009",
+      "en_US": [
+        "PP Max is a powerful item that\n",
+        "raises a move’s top PP to its maximum.\f",
+        "It can change the way you battle!"
+      ]
+    },
+    {
+      "id": "msg_0483_T06_00010",
+      "en_US": [
+        "Vermilion City\n",
+        "The Port of Exquisite Sunsets"
+      ]
+    },
+    {
+      "id": "msg_0483_T06_00011",
+      "en_US": [
+        "Vermilion City Pokémon Gym\n",
+        "Leader: Lt. Surge\f",
+        "The Lightning American"
+      ]
+    },
+    {
+      "id": "msg_0483_T06_00012",
+      "en_US": [
+        "Pokémon Fan Club\n",
+        "All Pokémon Fans Welcome!"
+      ]
+    },
+    {
+      "id": "msg_0483_T06_00013",
+      "en_US": "Vermilion Port Entrance"
+    },
+    {
+      "id": "msg_0483_T06_00014",
+      "en_US": [
+        "Eusine: That was so close!\n",
+        "I thought I could corner it by\f",
+        "ambushing it here...\r",
+        "But running on the water...\n",
+        "is beyond me.\r",
+        "Still, I am starting to see a pattern.\f",
+        "SUICUNE prefers water!\f",
+        "That means...\r"
+      ]
+    },
+    {
+      "id": "msg_0483_T06_00015",
+      "en_US": [
+        "Sorry, {STRVAR_1 3, 0, 0}!\n",
+        "I’ve got to go!\r"
+      ]
+    },
+    {
+      "id": "msg_0483_T06_00016",
+      "en_US": [
+        "Hi!\n",
+        "My name is Steven.\f",
+        "The Champion from the Hoenn region.\r",
+        "Have we met...before?\r",
+        "That’s not possible.\n",
+        "All the Trainers I have battled\f",
+        "seem to have the same look, anyway.\r",
+        "Especially the ones who gave me\n",
+        "tough battles...\r"
+      ]
+    },
+    {
+      "id": "msg_0483_T06_00017",
+      "en_US": [
+        "Steven: By the way, have you heard of\n",
+        "a Pokémon called LATIAS?\r",
+        "I am investigating why LATIAS,\n",
+        "a Pokémon from Hoenn, decided to\f",
+        "leave Hoenn to come here.\r"
+      ]
+    },
+    {
+      "id": "msg_0483_T06_00018",
+      "en_US": [
+        "Steven: By the way, have you heard of\n",
+        "a Pokémon called LATIOS?\r",
+        "I am investigating why LATIOS,\n",
+        "a Pokémon from Hoenn, decided to\f",
+        "leave Hoenn to come here.\r"
+      ]
+    },
+    {
+      "id": "msg_0483_T06_00019",
+      "en_US": [
+        "LATIAS is a Pokémon that has a lot\n",
+        "to do with Soul Dew, a gemlike Orb.\r",
+        "Considering the fact that LATIAS is now\n",
+        "in Kanto, it is possible to assume that\f",
+        "this has to do with the Soul Dew.\r"
+      ]
+    },
+    {
+      "id": "msg_0483_T06_00020",
+      "en_US": [
+        "LATIOS is a Pokémon that has a lot\n",
+        "to do with Soul Dew, a gemlike Orb.\r",
+        "Considering the fact that LATIOS is now\n",
+        "in Kanto, it is possible to assume that\f",
+        "this has to do with Soul Dew.\r"
+      ]
+    },
+    {
+      "id": "msg_0483_T06_00021",
+      "en_US": [
+        "LATIAS is a Pokémon that travels\n",
+        "a great distance.\r",
+        "It’ll be difficult to find without any\n",
+        "machine to track it with.\r",
+        "But any Trainer will be drawn to it,\n",
+        "won’t they?\r"
+      ]
+    },
+    {
+      "id": "msg_0483_T06_00022",
+      "en_US": [
+        "LATIOS is a Pokémon that travels\n",
+        "a great distance.\r",
+        "It’ll be difficult to find without any\n",
+        "machine to track it with.\r",
+        "But any Trainer will be drawn to it,\n",
+        "won’t they?\r"
+      ]
+    },
+    {
+      "id": "msg_0483_T06_00023",
+      "en_US": [
+        "Steven: I must go.\n",
+        "May our journeys cross again.\r"
+      ]
+    }
+  ]
+}

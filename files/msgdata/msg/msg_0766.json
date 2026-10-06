@@ -1,0 +1,5977 @@
+{
+  "key": 46864,
+  "messages": [
+    {
+      "id": "msg_0766_00000",
+      "en_US": "{STRVAR_3 3, 0, 0}\r"
+    },
+    {
+      "id": "msg_0766_00001",
+      "en_US": [
+        "{STRVAR_3 3, 0, 0}\n",
+        "{COLOR 2}{STRVAR_3 4, 1, 0}{COLOR 0}\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00002",
+      "en_US": [
+        "{STRVAR_3 4, 0, 0}\n",
+        "{COLOR 2}{STRVAR_3 3, 1, 0}{COLOR 0}\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00003",
+      "en_US": [
+        "{STRVAR_3 3, 0, 0}\n",
+        "{COLOR 2}{STRVAR_3 5, 1, 0}{COLOR 0}\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00004",
+      "en_US": [
+        "{STRVAR_3 5, 0, 0}\n",
+        "{COLOR 2}{STRVAR_3 3, 1, 0}{COLOR 0}\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00005",
+      "en_US": [
+        "{STRVAR_3 3, 0, 0}\n",
+        "{COLOR 2}{STRVAR_3 7, 1, 0}{COLOR 0}\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00006",
+      "en_US": [
+        "{STRVAR_3 7, 0, 0}\n",
+        "{COLOR 2}{STRVAR_3 3, 1, 0}{COLOR 0}\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00007",
+      "en_US": [
+        "{STRVAR_3 3, 0, 0}\n",
+        "{COLOR 2}{STRVAR_3 6, 1, 0}{COLOR 0}\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00008",
+      "en_US": [
+        "{STRVAR_3 6, 0, 0}\n",
+        "{COLOR 2}{STRVAR_3 3, 1, 0}{COLOR 0}\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00009",
+      "en_US": [
+        "{STRVAR_3 3, 0, 0}\n",
+        "{COLOR 2}{STRVAR_3 8, 1, 0}{COLOR 0}\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00010",
+      "en_US": [
+        "{STRVAR_3 8, 0, 0}\n",
+        "{COLOR 2}{STRVAR_3 3, 1, 0}{COLOR 0}\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00011",
+      "en_US": [
+        "{STRVAR_3 4, 0, 0}\n",
+        "{COLOR 2}{STRVAR_3 5, 1, 0}{COLOR 0}\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00012",
+      "en_US": [
+        "{STRVAR_3 5, 0, 0}\n",
+        "{COLOR 2}{STRVAR_3 4, 1, 0}{COLOR 0}\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00013",
+      "en_US": [
+        "{STRVAR_3 4, 0, 0}\n",
+        "{COLOR 2}{STRVAR_3 7, 1, 0}{COLOR 0}\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00014",
+      "en_US": [
+        "{STRVAR_3 7, 0, 0}\n",
+        "{COLOR 2}{STRVAR_3 4, 1, 0}{COLOR 0}\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00015",
+      "en_US": [
+        "{STRVAR_3 4, 0, 0}\n",
+        "{COLOR 2}{STRVAR_3 6, 1, 0}{COLOR 0}\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00016",
+      "en_US": [
+        "{STRVAR_3 6, 0, 0}\n",
+        "{COLOR 2}{STRVAR_3 4, 1, 0}{COLOR 0}\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00017",
+      "en_US": [
+        "{STRVAR_3 4, 0, 0}\n",
+        "{COLOR 2}{STRVAR_3 8, 1, 0}{COLOR 0}\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00018",
+      "en_US": [
+        "{STRVAR_3 8, 0, 0}\n",
+        "{COLOR 2}{STRVAR_3 4, 1, 0}{COLOR 0}\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00019",
+      "en_US": [
+        "{STRVAR_3 5, 0, 0}\n",
+        "{COLOR 2}{STRVAR_3 7, 1, 0}{COLOR 0}\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00020",
+      "en_US": [
+        "{STRVAR_3 7, 0, 0}\n",
+        "{COLOR 2}{STRVAR_3 5, 1, 0}{COLOR 0}\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00021",
+      "en_US": [
+        "{STRVAR_3 5, 0, 0}\n",
+        "{COLOR 2}{STRVAR_3 6, 1, 0}{COLOR 0}\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00022",
+      "en_US": [
+        "{STRVAR_3 6, 0, 0}\n",
+        "{COLOR 2}{STRVAR_3 5, 1, 0}{COLOR 0}\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00023",
+      "en_US": [
+        "{STRVAR_3 5, 0, 0}\n",
+        "{COLOR 2}{STRVAR_3 8, 1, 0}{COLOR 0}\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00024",
+      "en_US": [
+        "{STRVAR_3 8, 0, 0}\n",
+        "{COLOR 2}{STRVAR_3 5, 1, 0}{COLOR 0}\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00025",
+      "en_US": [
+        "{STRVAR_3 7, 0, 0}\n",
+        "{COLOR 2}{STRVAR_3 6, 1, 0}{COLOR 0}\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00026",
+      "en_US": [
+        "{STRVAR_3 6, 0, 0}\n",
+        "{COLOR 2}{STRVAR_3 7, 1, 0}{COLOR 0}\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00027",
+      "en_US": [
+        "{STRVAR_3 7, 0, 0}\n",
+        "{COLOR 2}{STRVAR_3 8, 1, 0}{COLOR 0}\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00028",
+      "en_US": [
+        "{STRVAR_3 8, 0, 0}\n",
+        "{COLOR 2}{STRVAR_3 7, 1, 0}{COLOR 0}\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00029",
+      "en_US": [
+        "{STRVAR_3 6, 0, 0}\n",
+        "{COLOR 2}{STRVAR_3 8, 1, 0}{COLOR 0}\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00030",
+      "en_US": [
+        "{STRVAR_3 8, 0, 0}\n",
+        "{COLOR 2}{STRVAR_3 6, 1, 0}{COLOR 0}\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00031",
+      "en_US": "Hello!\r"
+    },
+    {
+      "id": "msg_0766_00032",
+      "en_US": "{STRVAR_3 4, 0, 0}\r"
+    },
+    {
+      "id": "msg_0766_00033",
+      "en_US": "{STRVAR_3 5, 0, 0}\r"
+    },
+    {
+      "id": "msg_0766_00034",
+      "en_US": "{STRVAR_3 7, 0, 0}\r"
+    },
+    {
+      "id": "msg_0766_00035",
+      "en_US": "{STRVAR_3 6, 0, 0}\r"
+    },
+    {
+      "id": "msg_0766_00036",
+      "en_US": "{STRVAR_3 8, 0, 0}\r"
+    },
+    {
+      "id": "msg_0766_00037",
+      "en_US": [
+        "...Wow, it’s that time there?\r",
+        "Are you going to go out somewhere\n",
+        "after this?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00038",
+      "en_US": [
+        "...Wow, it’s that time there?\r",
+        "Are you getting sleepy, maybe?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00039",
+      "en_US": [
+        "...Wow, it’s that time there?\r",
+        "Are you maybe still feeling drowsy?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00040",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Hello! Nice to meet you.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00041",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Hi, {STRVAR_1 3, 1, 0}!\f",
+        "It’s good to see you again!\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00042",
+      "en_US": "...This Trainer seems to be busy.\r"
+    },
+    {
+      "id": "msg_0766_00043",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "See you again!\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00044",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Another thing...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00045",
+      "en_US": [
+        "Sorry! Something’s come up!\n",
+        "I can’t talk now!\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00046",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Yes? What’s up?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00047",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Hi, do you have a moment?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00048",
+      "garbage": 35
+    },
+    {
+      "id": "msg_0766_00049",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Don’t worry. You don’t have to answer\f",
+        "if you don’t want to.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00050",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "I see...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00051",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "That’s the same as me!\f",
+        "That’s pretty nice!\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00052",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Thanks for answering!\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00053",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Moving on...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00054",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Is there anything else?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00055",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "What’s your favorite color?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00056",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "What kind of Pokémon do you like?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00057",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "How’s the weather today?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00058",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "What were you doing before this?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00059",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Do you have any plans for tomorrow?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00060",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Where would you like to go\f",
+        "during your break?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00061",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Who do you look like?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00062",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "What do you most want now?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00063",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "What do you find difficult?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00064",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Where would you go out to play?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00065",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Which Plaza Game are you good at?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00066",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "What’s popular around you?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00067",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "What are you good at?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00068",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "What can’t you give up?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00069",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "What’s your hidden passion?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00070",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "What will you do next?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00071",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "What’s near your house?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00072",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "What do you do with friends?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00073",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Who is important to you?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00074",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "How do people describe you?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00075",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "When do you feel really happy?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00076",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "What worries you?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00077",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "What are you working hard at?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00078",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "What sports are you good at?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00079",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "What’s your dream job?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00080",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "What makes where you live special?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00081",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "What is the temperature like there?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00082",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "What sounds can you hear around you?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00083",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "What does it smell like around you?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00084",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "What interests you most?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00085",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Well, if it were me...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00086",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Well, if it were me...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00087",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Let’s see... Over here...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00088",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Let’s see... Over here...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00089",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Well, if it were me...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00090",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Well, if it were me...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00091",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Well, if it were me...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00092",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Well, if it were me...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00093",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Well, if it were me...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00094",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Well, if it were me...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00095",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Well, if it were me...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00096",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Let’s see... Over here...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00097",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Well, if it were me...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00098",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Well, if it were me...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00099",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Well, if it were me...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00100",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Well, if it were me...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00101",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Let’s see... Over here...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00102",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Well, if it were me...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00103",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Well, if it were me...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00104",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Well, if it were me...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00105",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Well, if it were me...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00106",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Well, if it were me...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00107",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Well, if it were me...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00108",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Well, if it were me...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00109",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Well, if it were me...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00110",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Let’s see... Over here...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00111",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Let’s see... Over here...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00112",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Let’s see... Over here...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00113",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Let’s see... Over here...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00114",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Well, if it were me...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00115",
+      "en_US": "Red"
+    },
+    {
+      "id": "msg_0766_00116",
+      "en_US": "Blue"
+    },
+    {
+      "id": "msg_0766_00117",
+      "en_US": "Yellow"
+    },
+    {
+      "id": "msg_0766_00118",
+      "en_US": "Green"
+    },
+    {
+      "id": "msg_0766_00119",
+      "en_US": "Tough-looking ones"
+    },
+    {
+      "id": "msg_0766_00120",
+      "en_US": "Cute ones"
+    },
+    {
+      "id": "msg_0766_00121",
+      "en_US": "Pretty ones"
+    },
+    {
+      "id": "msg_0766_00122",
+      "en_US": "Weird ones"
+    },
+    {
+      "id": "msg_0766_00123",
+      "en_US": "Sunny"
+    },
+    {
+      "id": "msg_0766_00124",
+      "en_US": "Cloudy"
+    },
+    {
+      "id": "msg_0766_00125",
+      "en_US": "Rainy"
+    },
+    {
+      "id": "msg_0766_00126",
+      "en_US": "Hail"
+    },
+    {
+      "id": "msg_0766_00127",
+      "en_US": "Sleeping"
+    },
+    {
+      "id": "msg_0766_00128",
+      "en_US": "Went out"
+    },
+    {
+      "id": "msg_0766_00129",
+      "en_US": "Working"
+    },
+    {
+      "id": "msg_0766_00130",
+      "en_US": "Eating"
+    },
+    {
+      "id": "msg_0766_00131",
+      "en_US": "No plans"
+    },
+    {
+      "id": "msg_0766_00132",
+      "en_US": "Busy"
+    },
+    {
+      "id": "msg_0766_00133",
+      "en_US": "Holiday"
+    },
+    {
+      "id": "msg_0766_00134",
+      "en_US": "Secret"
+    },
+    {
+      "id": "msg_0766_00135",
+      "en_US": "A warm place"
+    },
+    {
+      "id": "msg_0766_00136",
+      "en_US": "A cold place"
+    },
+    {
+      "id": "msg_0766_00137",
+      "en_US": "A crowded place"
+    },
+    {
+      "id": "msg_0766_00138",
+      "en_US": "A deserted place"
+    },
+    {
+      "id": "msg_0766_00139",
+      "en_US": "Older brother"
+    },
+    {
+      "id": "msg_0766_00140",
+      "en_US": "Older sister"
+    },
+    {
+      "id": "msg_0766_00141",
+      "en_US": "Uncle"
+    },
+    {
+      "id": "msg_0766_00142",
+      "en_US": "Aunt"
+    },
+    {
+      "id": "msg_0766_00143",
+      "en_US": "Time"
+    },
+    {
+      "id": "msg_0766_00144",
+      "en_US": "Money"
+    },
+    {
+      "id": "msg_0766_00145",
+      "en_US": "Friends"
+    },
+    {
+      "id": "msg_0766_00146",
+      "en_US": "Dinner"
+    },
+    {
+      "id": "msg_0766_00147",
+      "en_US": "School"
+    },
+    {
+      "id": "msg_0766_00148",
+      "en_US": "Sports"
+    },
+    {
+      "id": "msg_0766_00149",
+      "en_US": "Waking up early"
+    },
+    {
+      "id": "msg_0766_00150",
+      "en_US": "Housecleaning"
+    },
+    {
+      "id": "msg_0766_00151",
+      "en_US": "A park"
+    },
+    {
+      "id": "msg_0766_00152",
+      "en_US": "A department store"
+    },
+    {
+      "id": "msg_0766_00153",
+      "en_US": "An amusement park"
+    },
+    {
+      "id": "msg_0766_00154",
+      "en_US": "A theater"
+    },
+    {
+      "id": "msg_0766_00155",
+      "en_US": "SWALOT Plop"
+    },
+    {
+      "id": "msg_0766_00156",
+      "en_US": "MIME JR. Top"
+    },
+    {
+      "id": "msg_0766_00157",
+      "en_US": "WOBBUFFET Pop"
+    },
+    {
+      "id": "msg_0766_00158",
+      "en_US": "Never played"
+    },
+    {
+      "id": "msg_0766_00159",
+      "en_US": "TV & music"
+    },
+    {
+      "id": "msg_0766_00160",
+      "en_US": "Games & computers"
+    },
+    {
+      "id": "msg_0766_00161",
+      "en_US": "School & sports"
+    },
+    {
+      "id": "msg_0766_00162",
+      "en_US": "Fashion & romance"
+    },
+    {
+      "id": "msg_0766_00163",
+      "en_US": "Physical activities"
+    },
+    {
+      "id": "msg_0766_00164",
+      "en_US": "Using my brain"
+    },
+    {
+      "id": "msg_0766_00165",
+      "en_US": "Standing out"
+    },
+    {
+      "id": "msg_0766_00166",
+      "en_US": "Making friends"
+    },
+    {
+      "id": "msg_0766_00167",
+      "en_US": "Reading books"
+    },
+    {
+      "id": "msg_0766_00168",
+      "en_US": "Music"
+    },
+    {
+      "id": "msg_0766_00169",
+      "en_US": "Computers"
+    },
+    {
+      "id": "msg_0766_00170",
+      "en_US": "Staying up late"
+    },
+    {
+      "id": "msg_0766_00171",
+      "en_US": "Fashion"
+    },
+    {
+      "id": "msg_0766_00172",
+      "en_US": "Interior design"
+    },
+    {
+      "id": "msg_0766_00173",
+      "en_US": "Gourmet dining"
+    },
+    {
+      "id": "msg_0766_00174",
+      "en_US": "Life"
+    },
+    {
+      "id": "msg_0766_00175",
+      "en_US": "A Plaza Game"
+    },
+    {
+      "id": "msg_0766_00176",
+      "en_US": "Footprint Stamp"
+    },
+    {
+      "id": "msg_0766_00177",
+      "en_US": "Visitor Profiles"
+    },
+    {
+      "id": "msg_0766_00178",
+      "en_US": "Plaza News"
+    },
+    {
+      "id": "msg_0766_00179",
+      "en_US": "Someone’s house"
+    },
+    {
+      "id": "msg_0766_00180",
+      "en_US": "A variety of shops"
+    },
+    {
+      "id": "msg_0766_00181",
+      "en_US": "A big factory"
+    },
+    {
+      "id": "msg_0766_00182",
+      "en_US": "Lots of nature"
+    },
+    {
+      "id": "msg_0766_00183",
+      "en_US": "Sports"
+    },
+    {
+      "id": "msg_0766_00184",
+      "en_US": "Games"
+    },
+    {
+      "id": "msg_0766_00185",
+      "en_US": "Chat"
+    },
+    {
+      "id": "msg_0766_00186",
+      "en_US": "Shopping"
+    },
+    {
+      "id": "msg_0766_00187",
+      "en_US": "Family"
+    },
+    {
+      "id": "msg_0766_00188",
+      "en_US": "Friends"
+    },
+    {
+      "id": "msg_0766_00189",
+      "en_US": "Myself"
+    },
+    {
+      "id": "msg_0766_00190",
+      "en_US": "Secret"
+    },
+    {
+      "id": "msg_0766_00191",
+      "en_US": "Cheerful"
+    },
+    {
+      "id": "msg_0766_00192",
+      "en_US": "Funny"
+    },
+    {
+      "id": "msg_0766_00193",
+      "en_US": "Kind"
+    },
+    {
+      "id": "msg_0766_00194",
+      "en_US": "Mysterious"
+    },
+    {
+      "id": "msg_0766_00195",
+      "en_US": "When playing"
+    },
+    {
+      "id": "msg_0766_00196",
+      "en_US": "When working hard"
+    },
+    {
+      "id": "msg_0766_00197",
+      "en_US": "When sleeping"
+    },
+    {
+      "id": "msg_0766_00198",
+      "en_US": "When eating"
+    },
+    {
+      "id": "msg_0766_00199",
+      "en_US": "Allowance"
+    },
+    {
+      "id": "msg_0766_00200",
+      "en_US": "School"
+    },
+    {
+      "id": "msg_0766_00201",
+      "en_US": "Fitness"
+    },
+    {
+      "id": "msg_0766_00202",
+      "en_US": "Friends"
+    },
+    {
+      "id": "msg_0766_00203",
+      "en_US": "School"
+    },
+    {
+      "id": "msg_0766_00204",
+      "en_US": "Dieting"
+    },
+    {
+      "id": "msg_0766_00205",
+      "en_US": "Romance"
+    },
+    {
+      "id": "msg_0766_00206",
+      "en_US": "Training"
+    },
+    {
+      "id": "msg_0766_00207",
+      "en_US": "Team sports"
+    },
+    {
+      "id": "msg_0766_00208",
+      "en_US": "Running"
+    },
+    {
+      "id": "msg_0766_00209",
+      "en_US": "Swimming"
+    },
+    {
+      "id": "msg_0766_00210",
+      "en_US": "Dancing"
+    },
+    {
+      "id": "msg_0766_00211",
+      "en_US": "Pro athlete"
+    },
+    {
+      "id": "msg_0766_00212",
+      "en_US": "Inventor"
+    },
+    {
+      "id": "msg_0766_00213",
+      "en_US": "Musician"
+    },
+    {
+      "id": "msg_0766_00214",
+      "en_US": "Comedian"
+    },
+    {
+      "id": "msg_0766_00215",
+      "en_US": "Very convenient"
+    },
+    {
+      "id": "msg_0766_00216",
+      "en_US": "Lots of nature"
+    },
+    {
+      "id": "msg_0766_00217",
+      "en_US": "Very quiet"
+    },
+    {
+      "id": "msg_0766_00218",
+      "en_US": "Rare things/events"
+    },
+    {
+      "id": "msg_0766_00219",
+      "en_US": "Hot"
+    },
+    {
+      "id": "msg_0766_00220",
+      "en_US": "Warm"
+    },
+    {
+      "id": "msg_0766_00221",
+      "en_US": "Cold"
+    },
+    {
+      "id": "msg_0766_00222",
+      "en_US": "Cool"
+    },
+    {
+      "id": "msg_0766_00223",
+      "en_US": "Voices"
+    },
+    {
+      "id": "msg_0766_00224",
+      "en_US": "Music"
+    },
+    {
+      "id": "msg_0766_00225",
+      "en_US": "TV"
+    },
+    {
+      "id": "msg_0766_00226",
+      "en_US": "Nothing"
+    },
+    {
+      "id": "msg_0766_00227",
+      "en_US": "Food"
+    },
+    {
+      "id": "msg_0766_00228",
+      "en_US": "People"
+    },
+    {
+      "id": "msg_0766_00229",
+      "en_US": "The season"
+    },
+    {
+      "id": "msg_0766_00230",
+      "en_US": "Unpleasant stench"
+    },
+    {
+      "id": "msg_0766_00231",
+      "en_US": "The latest toys"
+    },
+    {
+      "id": "msg_0766_00232",
+      "en_US": "Fashionable clothes"
+    },
+    {
+      "id": "msg_0766_00233",
+      "en_US": "Tomorrow’s weather"
+    },
+    {
+      "id": "msg_0766_00234",
+      "en_US": "New pop stars"
+    },
+    {
+      "id": "msg_0766_00235",
+      "en_US": "Stop chatting"
+    },
+    {
+      "id": "msg_0766_00236",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "I’d say red.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00237",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "I’d say blue.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00238",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "I’d say yellow.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00239",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "I’d say green.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00240",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "I like tough-looking Pokémon.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00241",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "I like cute Pokémon.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00242",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "I like pretty Pokémon.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00243",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "I like weird Pokémon.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00244",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "It’s sunny here.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00245",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "It’s cloudy here.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00246",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "It’s rainy here.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00247",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "It’s hailing here.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00248",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Um... Sleeping, I think.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00249",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Um... I think I went out.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00250",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Um... I think I was working.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00251",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Um... I think I was eating.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00252",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "I’ve got no plans for tomorrow.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00253",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "I’ll be busy tomorrow.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00254",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "It’s a holiday tomorrow.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00255",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "It’s a secret.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00256",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "I’d like to go to a warm place.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00257",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "I’d like to go to a cold place.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00258",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "I’d like to go where there are lots of\f",
+        "people.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00259",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "I’d like to go where there aren’t any\f",
+        "people.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00260",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "I guess I look like my older brother.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00261",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "I guess I look like my older sister.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00262",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "I guess I look like my uncle.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00263",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "I guess I look like my aunt.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00264",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "I’d have to say time.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00265",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "I’d have to say money.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00266",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "I’d have to say friends.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00267",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "I’d have to say dinner.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00268",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Well... School, I guess...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00269",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Well... Sports, I guess...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00270",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Well... Waking up early, I guess...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00271",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Well... Housecleaning, I guess...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00272",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "I’d like to go to a park.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00273",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "I’d like to go to a department store.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00274",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "I’d like to go to an amusement park.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00275",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "I’d like to go to a theater.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00276",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "I’d say SWALOT Plop.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00277",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "I’d say MIME JR. Top.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00278",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "I’d say WOBBUFFET Pop.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00279",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "I’ve never played one.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00280",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "TV and music, I guess.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00281",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Games and computers, I guess.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00282",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "School and sports, I guess.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00283",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Fashion and romance, I guess.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00284",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Physical activities, I’d say.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00285",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Using my brain, I’d say.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00286",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "I’m really good at standing out.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00287",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Making friends, I’d say.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00288",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "That would be reading books.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00289",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "That would be music.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00290",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "That would be computers.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00291",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "That would be staying up late.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00292",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "That’s fashion, of course!\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00293",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "That’s interior design, of course!\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00294",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "That’s gourmet dining, of course!\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00295",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "That’s life, of course!\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00296",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "A Plaza Game, I think.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00297",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "A Footprint Stamp, I think.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00298",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Visitor Profiles, I think.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00299",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "The Plaza News, I think.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00300",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "I can see someone’s house.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00301",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "I can see a variety of shops.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00302",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "I can see a big factory.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00303",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "There’s lots of nature around here.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00304",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Hmm... Sports, I’d say.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00305",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Hmm... Games, I’d say.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00306",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Hmm... Chatting, I’d say.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00307",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Hmm... Shopping, I’d say.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00308",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "I’d have to say family.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00309",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "I’d have to say friends.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00310",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "I’d have to say myself, of course.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00311",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "I’d have to say that’s a secret.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00312",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Hmm... Cheerful, maybe?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00313",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Hmm... Funny, maybe?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00314",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Hmm... Kind, maybe?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00315",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Hmm... Mysterious, maybe?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00316",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "I’m happy when I’m playing!\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00317",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "I’m happy when I’m working hard!\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00318",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "I’m happy when I’m sleeping.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00319",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "I’m happy when I’m eating!\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00320",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "I’d have to say my allowance.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00321",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "I’d have to say school.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00322",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "I’d have to say my fitness.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00323",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "I’d have to say my friends.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00324",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "School, I think.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00325",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "My diet, I think.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00326",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Romance, maybe?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00327",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "My training, I think.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00328",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Any team sports!\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00329",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Running, for sure!\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00330",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Swimming, for sure!\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00331",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Dancing, for sure!\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00332",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "That would be a pro athlete.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00333",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "That would be an inventor.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00334",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "That would be a musician.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00335",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "That would be a comedian.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00336",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "It’s a very convenient place.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00337",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "There’s lots of nature here.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00338",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "It’s very quiet here.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00339",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "There are rare things and events here.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00340",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "It’s a hot place.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00341",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "It’s a warm place.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00342",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "It’s a cold place.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00343",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "It’s a cool place.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00344",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "I can hear voices.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00345",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "I can hear music.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00346",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "I can hear a TV.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00347",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "It’s very quiet here.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00348",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Hmm... I smell some food.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00349",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Hmm... I smell people.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00350",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Hmm... The scents of the season.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00351",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Eww... There’s an unpleasant stench.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00352",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "The latest toys, I’d say.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00353",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Fashionable clothes, I’d say.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00354",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Tomorrow’s weather, I’d say.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00355",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "New pop stars, I’d say.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00356",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Hmm... That’s hard to say...\f",
+        "I’m sorry, I can’t answer that.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00357",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Oh, your favorite color’s red.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00358",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Oh, your favorite color’s blue.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00359",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Oh, your favorite color’s yellow.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00360",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Oh, your favorite color’s green.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00361",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "So, you like tough-looking Pokémon.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00362",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "So, you like cute Pokémon.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00363",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "So, you like pretty Pokémon.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00364",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "So, you like weird Pokémon.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00365",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Oh, it’s sunny over there.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00366",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Oh, it’s cloudy over there.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00367",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Oh, it’s rainy over there.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00368",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Oh, it’s hailing over there!\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00369",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Oh, you were sleeping.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00370",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Oh, you were out.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00371",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Oh, you were working.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00372",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Oh, you were eating.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00373",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Oh, nothing planned.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00374",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Oh, you’re going to be busy.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00375",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Oh, you have a holiday tomorrow.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00376",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Oh? You can’t tell me?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00377",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "A warm place...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00378",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "A cold place...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00379",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "A place with lots of people...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00380",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "A place without any people...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00381",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "You look like your older brother?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00382",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "You look like your older sister?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00383",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "You look like your uncle?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00384",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "You look like your aunt?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00385",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Time, huh? I see...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00386",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Money, huh? I see...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00387",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Friends, huh? I see...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00388",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Dinner, huh? I see...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00389",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "So school’s hard for you...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00390",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "So sports are hard for you...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00391",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "So waking up early’s tough for you...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00392",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "So housecleaning’s tough for you...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00393",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Oh, you like to play at a park.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00394",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "A department store?\f",
+        "You must like shopping.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00395",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "An amusement park! Of course!\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00396",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "A theater sounds entertaining!\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00397",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Oh, you’re good at SWALOT Plop!\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00398",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Oh, you’re good at MIME JR. Top!\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00399",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Oh, you’re good at WOBBUFFET Pop!\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00400",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Oh. You’ve never played any.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00401",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "TV and music! I see.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00402",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Games and computers! I see.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00403",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "School and sports! I see.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00404",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Fashion and romance! I see.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00405",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Oh, so you like to work out.\f",
+        "That’s good.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00406",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Oh, so you’re a good thinker.\f",
+        "That’s nice.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00407",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "You’re good at standing out?\f",
+        "You’re an attention getter.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00408",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "You’re good at making friends?\f",
+        "That’s a good thing.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00409",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "You can’t give up reading books!\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00410",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "You can’t give up music!\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00411",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "You can’t be without computers!\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00412",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "You can’t go without staying up late!\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00413",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Oh, so you have a thing for fashion.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00414",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Oh, so interior design’s your thing.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00415",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Oh, so gourmet dining is your thing.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00416",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Oh, so your passion is for life.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00417",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "You’re off to play a Plaza Game.\f",
+        "Have fun!\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00418",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "You’re going to play with Footprint\f",
+        "Stamp. That’s neat.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00419",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Visitor Profiles?\f",
+        "You can see where people are from.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00420",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "You’re going to check out the Plaza\f",
+        "News? It’s informative.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00421",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Oh, so you see someone’s house.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00422",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Oh, so you’re near some shops.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00423",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "You live near a big factory? Wow.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00424",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Oh, so you’re out among nature.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00425",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Oh, so you play sports with your\f",
+        "friends.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00426",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Cool. You play games with your friends.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00427",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Oh, chatting is what you do with your\f",
+        "friends.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00428",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Oh, so you shop with your friends for\f",
+        "fun.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00429",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Your family’s important to you...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00430",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Your friends are important to you...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00431",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Yourself, huh? It’s only natural.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00432",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "A secret? That’s intriguing.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00433",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "So, people think you’re cheerful.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00434",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "So, people think you’re funny.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00435",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "So, people think you’re kind.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00436",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "So, people think you’re mysterious.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00437",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "You’re happy when you’re playing.\f",
+        "That makes sense.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00438",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "You’re happy when you’re working hard.\f",
+        "You’re a go-getter!\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00439",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "You’re happy when you’re sleeping.\f",
+        "That’s nice.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00440",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "You’re happy when you’re eating.\f",
+        "That’s nice.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00441",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Your allowance is a worry? Ouch.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00442",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "School worries you? Ouch.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00443",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Your fitness is a concern? Ouch.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00444",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Your friends worry you? Ouch.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00445",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "You’re studying hard for school?\f",
+        "Good for you!\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00446",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "You’re working hard on your diet?\f",
+        "Be good to yourself.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00447",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Ooh, you’re working hard on romance?\f",
+        "That must be nice!\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00448",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "You’re working hard on your training?\f",
+        "Good luck with that!\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00449",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "So you’re good at all kinds of\f",
+        "team sports. Gotcha.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00450",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "You’re a good runner. Gotcha.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00451",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "You’re a good swimmer. Gotcha.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00452",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "You’re a good dancer. Gotcha.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00453",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "You want to be a pro athlete.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00454",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "You want to be an inventor.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00455",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "You want to be a musician.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00456",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "You want to be a comedian.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00457",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "A very convenient place?\f",
+        "That must be cool.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00458",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "A place with lots of nature?\f",
+        "That must be cool.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00459",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "A very quiet place?\f",
+        "It must be nice.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00460",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "A place with rare things and events?\f",
+        "That must be cool.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00461",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "I see. You’re in a hot place.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00462",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "I see. You’re in a warm place.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00463",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "I see. You’re in a cold place.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00464",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "I see. You’re in a cool place.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00465",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Oh, so there are other people.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00466",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Oh, you can hear music.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00467",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Oh, so there’s a TV somewhere close.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00468",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Oh, so you don’t hear very much.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00469",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Oh, you smell something cooking?\f",
+        "Sounds nice!\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00470",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Oh, you smell other people? OK.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00471",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Oh, you smell the scents of the season,\f",
+        "huh? That’s nice.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00472",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Something stinks there? Eww.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00473",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "The latest toys interest you the most?\f",
+        "That’s interesting.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00474",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Fashionable clothes interest you the\f",
+        "most? That’s interesting.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00475",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Tomorrow’s weather concerns you the\f",
+        "most? OK.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00476",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "New pop stars are what interest you\f",
+        "most? Nice.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00477",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "What about you?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00478",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "What about you?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00479",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "What about your side?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00480",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "What about you?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00481",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "What about you?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00482",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "What about you?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00483",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "What about you?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00484",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "What about you?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00485",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "What about you?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00486",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "What about you?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00487",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "What about you?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00488",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "How about your side?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00489",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "What about you?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00490",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "What about you?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00491",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "What about you?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00492",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "What about you?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00493",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "How about your side?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00494",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "What about you?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00495",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "What about you?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00496",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "What about you?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00497",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "What about you?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00498",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "What about you?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00499",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "What about you?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00500",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "What about you?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00501",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "What about you?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00502",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "How about over there?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00503",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "How about over there?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00504",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "How about over there?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00505",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "How about over there?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00506",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "What about you?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00507",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Oh! You’ve got a {STRVAR_3 0, 1, 0}\f",
+        "just like me.\r",
+        "That’s pretty nice!\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00508",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Your Tap Toy is a {STRVAR_3 2, 1, 0}?\r",
+        "Mine is a {STRVAR_3 2, 2, 0}.\n",
+        "Would you like me to share it with you?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00509",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "There you go!\f",
+        "Have fun with it!\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00510",
+      "en_US": [
+        "Received a {STRVAR_3 2, 1, 0} from\n",
+        "{STRVAR_1 3, 0, 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00511",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "You have a {STRVAR_3 0, 1, 0}?\f",
+        "That must be nice!\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00512",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "...Can you share your\f",
+        "{STRVAR_3 0, 1, 0} with me?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00513",
+      "en_US": [
+        "Shared the {STRVAR_3 2, 1, 0} with\n",
+        "{STRVAR_1 3, 0, 0}.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00514",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Thank you! I’ll take good care of it!\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00515",
+      "en_US": "TAP TOYS"
+    },
+    {
+      "id": "msg_0766_00516",
+      "en_US": "CHAT"
+    },
+    {
+      "id": "msg_0766_00517",
+      "en_US": "CANCEL"
+    },
+    {
+      "id": "msg_0766_00518",
+      "en_US": "GET"
+    },
+    {
+      "id": "msg_0766_00519",
+      "en_US": "Favorite color?"
+    },
+    {
+      "id": "msg_0766_00520",
+      "en_US": "Favorite kind of Pokémon?"
+    },
+    {
+      "id": "msg_0766_00521",
+      "en_US": "Today’s weather?"
+    },
+    {
+      "id": "msg_0766_00522",
+      "en_US": "What were you doing?"
+    },
+    {
+      "id": "msg_0766_00523",
+      "en_US": "Tomorrow’s plans?"
+    },
+    {
+      "id": "msg_0766_00524",
+      "en_US": "Destination during break?"
+    },
+    {
+      "id": "msg_0766_00525",
+      "en_US": "Who do you look like?"
+    },
+    {
+      "id": "msg_0766_00526",
+      "en_US": "Most wanted thing?"
+    },
+    {
+      "id": "msg_0766_00527",
+      "en_US": "What’s difficult?"
+    },
+    {
+      "id": "msg_0766_00528",
+      "en_US": "Where do you play?"
+    },
+    {
+      "id": "msg_0766_00529",
+      "en_US": "Your best Plaza Game?"
+    },
+    {
+      "id": "msg_0766_00530",
+      "en_US": "What’s popular?"
+    },
+    {
+      "id": "msg_0766_00531",
+      "en_US": "What are you good at?"
+    },
+    {
+      "id": "msg_0766_00532",
+      "en_US": "What can’t you give up?"
+    },
+    {
+      "id": "msg_0766_00533",
+      "en_US": "What’s your hidden passion?"
+    },
+    {
+      "id": "msg_0766_00534",
+      "en_US": "What will you do next?"
+    },
+    {
+      "id": "msg_0766_00535",
+      "en_US": "What’s near your house?"
+    },
+    {
+      "id": "msg_0766_00536",
+      "en_US": "What do you do with friends?"
+    },
+    {
+      "id": "msg_0766_00537",
+      "en_US": "Who is important to you?"
+    },
+    {
+      "id": "msg_0766_00538",
+      "en_US": "How do people describe you?"
+    },
+    {
+      "id": "msg_0766_00539",
+      "en_US": "When do you feel happy?"
+    },
+    {
+      "id": "msg_0766_00540",
+      "en_US": "What worries you?"
+    },
+    {
+      "id": "msg_0766_00541",
+      "en_US": "What are you working hard at?"
+    },
+    {
+      "id": "msg_0766_00542",
+      "en_US": "What sports are you good at?"
+    },
+    {
+      "id": "msg_0766_00543",
+      "en_US": "Your dream job?"
+    },
+    {
+      "id": "msg_0766_00544",
+      "en_US": "What’s special there?"
+    },
+    {
+      "id": "msg_0766_00545",
+      "en_US": "How warm is it?"
+    },
+    {
+      "id": "msg_0766_00546",
+      "en_US": "What can you hear?"
+    },
+    {
+      "id": "msg_0766_00547",
+      "en_US": "What do you smell?"
+    },
+    {
+      "id": "msg_0766_00548",
+      "en_US": "What interests you most?"
+    },
+    {
+      "id": "msg_0766_00549",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Hello! Nice to meet you.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00550",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Hi, {STRVAR_1 3, 1, 0}!\f",
+        "It’s good to see you again!\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00551",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "See you again!\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00552",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Another thing...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00553",
+      "en_US": [
+        "Sorry! Something’s come up!\n",
+        "I can’t talk now!\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00554",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Yes? What’s up?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00555",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Hi, do you have a moment?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00556",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Sorry! That’s hard to say.\f",
+        "I can’t answer that.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00557",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Don’t worry. You don’t have to answer\f",
+        "if you don’t want to.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00558",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "I see...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00559",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "That’s the same as me!\f",
+        "That’s pretty nice!\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00560",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Thanks for answering!\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00561",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Moving on...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00562",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Is there anything else?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00563",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "What’s your favorite color?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00564",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "What kind of Pokémon do you like?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00565",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "How’s the weather today?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00566",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "What were you doing before this?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00567",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Do you have any plans for tomorrow?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00568",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Where would you like to go\f",
+        "during your break?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00569",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Who do you look like?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00570",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "What do you most want now?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00571",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "What do you find hard?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00572",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Where would you go out to play?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00573",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Well, if it were me...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00574",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Well, if it were me...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00575",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Let’s see... Over here...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00576",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Let’s see... Over here...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00577",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Well, if it were me...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00578",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Well, if it were me...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00579",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Well, if it were me...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00580",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Well, if it were me...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00581",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Well, if it were me...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00582",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Well, if it were me...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00583",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "I’d say red.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00584",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "I’d say blue.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00585",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "I’d say yellow.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00586",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "I’d say green.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00587",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "I like tough-looking Pokémon.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00588",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "I like cute Pokémon.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00589",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "I like pretty Pokémon.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00590",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "I like weird Pokémon.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00591",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "It’s sunny here.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00592",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "It’s cloudy here.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00593",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "It’s rainy here.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00594",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "It’s hailing here.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00595",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Um... Sleeping, I think.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00596",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Um... I think I went out.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00597",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Um... I think I was working.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00598",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Um... I think I was eating.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00599",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "I’ve got no plans for tomorrow.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00600",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "I’ll be busy tomorrow.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00601",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "It’s a holiday tomorrow.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00602",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "It’s a secret.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00603",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "I’d like to go to a warm place.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00604",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "I’d like to go to a cold place.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00605",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "I’d like to go where there are lots of\f",
+        "people.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00606",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "I’d like to go where there aren’t any\f",
+        "people.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00607",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "I guess I look like my older brother.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00608",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "I guess I look like my older sister.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00609",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "I guess I look like my uncle.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00610",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "I guess I look like my aunt.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00611",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "I’d have to say time.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00612",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "I’d have to say money.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00613",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "I’d have to say friends.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00614",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "I’d have to say dinner.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00615",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Well... School, I guess...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00616",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Well... Sports, I guess...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00617",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Well... Waking up early, I guess...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00618",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Well... Housecleaning, I guess...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00619",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "I’d like to go to a park.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00620",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "I’d like to go to a department store.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00621",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "I’d like to go to an amusement park.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00622",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "I’d like to go to a theater.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00623",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Hmm... That’s hard to say...\f",
+        "I’m sorry, I can’t answer that.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00624",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Oh, your favorite color’s red.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00625",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Oh, your favorite color’s blue.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00626",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Oh, your favorite color’s yellow.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00627",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Oh, your favorite color’s green.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00628",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "So, you like tough-looking Pokémon.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00629",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "So, you like cute Pokémon.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00630",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "So, you like pretty Pokémon.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00631",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "So, you like weird Pokémon.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00632",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Oh, it’s sunny over there.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00633",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Oh, it’s cloudy over there.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00634",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Oh, it’s rainy over there.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00635",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Oh, it’s hailing over there!\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00636",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Oh, you were sleeping.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00637",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Oh, you were out.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00638",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Oh, you were working.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00639",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Oh, you were eating.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00640",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Oh, nothing planned.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00641",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Oh, you’re going to be busy.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00642",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Oh, you have a holiday tomorrow.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00643",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Oh? You can’t tell me?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00644",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "A warm place...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00645",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "A cold place...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00646",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "A place with lots of people...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00647",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "A place without any people...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00648",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "You look like your older brother?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00649",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "You look like your older sister?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00650",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "You look like your uncle?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00651",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "You look like your aunt?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00652",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Time, huh? I see...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00653",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Money, huh? I see...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00654",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Friends, huh? I see...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00655",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Dinner, huh? I see...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00656",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "So school’s hard for you...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00657",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "So sports are hard for you...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00658",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "So waking up early’s tough for you...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00659",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "So housecleaning’s tough for you...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00660",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Oh, you like to play at a park.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00661",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "A department store?\f",
+        "You must like shopping.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00662",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "An amusement park! Of course!\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00663",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "A theater sounds entertaining!\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00664",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "What about you?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00665",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "What about you?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00666",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "What about your side?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00667",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "What about you?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00668",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "What about you?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00669",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "What about you?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00670",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "What about you?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00671",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "What about you?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00672",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "What about you?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00673",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "What about you?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00674",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Oh! You’ve got a {STRVAR_3 0, 1, 0}\f",
+        "just like me.\r",
+        "That’s pretty nice!\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00675",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Your Tap Toy is a {STRVAR_3 2, 1, 0}?\r",
+        "Mine is a {STRVAR_3 2, 2, 0}.\n",
+        "Would you like me to share it with you?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00676",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "There you go!\f",
+        "Have fun with it!\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00677",
+      "en_US": [
+        "Received a {STRVAR_3 2, 1, 0} from\n",
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00678",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "You have a {STRVAR_3 0, 1, 0}?\f",
+        "That must be nice!\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00679",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "...Can you share your\f",
+        "{STRVAR_3 0, 1, 0} with me?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00680",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Thank you! I’ll take good care of it!\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00681",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Hi, {COLOR 2}{STRVAR_1 3, 1, 0}{COLOR 0}!\f",
+        "It’s good to see you again!\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00682",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Hi, {COLOR 2}{STRVAR_1 3, 1, 0}{COLOR 0}!\f",
+        "It’s good to see you again!\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00683",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "What’s wrong? Are you OK?"
+      ]
+    },
+    {
+      "id": "msg_0766_00684",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Umm... Hold on a second..."
+      ]
+    },
+    {
+      "id": "msg_0766_00685",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "What’s wrong? Are you OK?"
+      ]
+    },
+    {
+      "id": "msg_0766_00686",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Umm... Hold on a second..."
+      ]
+    },
+    {
+      "id": "msg_0766_00687",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}:\n",
+        "Let’s chat!\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00688",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Let’s chat!\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00689",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Which Plaza Game are you good at?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00690",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "What’s popular around you?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00691",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "What are you good at?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00692",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "What can’t you give up?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00693",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "What’s your hidden passion?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00694",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "What will you do next?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00695",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "What’s near your house?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00696",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "What do you do with friends?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00697",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Who is important to you?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00698",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "How do people describe you?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00699",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "When do you feel really happy?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00700",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "What worries you?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00701",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "What are you working hard at?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00702",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "What physical activity are you good at?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00703",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "What’s your dream job?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00704",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "What makes where you live special?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00705",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "What is the temperature like there?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00706",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "What sounds can you hear around you?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00707",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "What does it smell like around you?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00708",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "What interests you most?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00709",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Well, if it were me...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00710",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Let’s see... Over here...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00711",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Well, if it were me...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00712",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Well, if it were me...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00713",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Well, if it were me...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00714",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Well, if it were me...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00715",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Let’s see... Over here...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00716",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Well, if it were me...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00717",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Well, if it were me...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00718",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Well, if it were me...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00719",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Well, if it were me...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00720",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Well, if it were me...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00721",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Well, if it were me...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00722",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Well, if it were me...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00723",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Well, if it were me...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00724",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Let’s see... Over here...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00725",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Let’s see... Over here...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00726",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Let’s see... Over here...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00727",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Let’s see... Over here...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00728",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Well, if it were me...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00729",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "I’d say SWALOT Plop.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00730",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "I’d say MIME JR. Top.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00731",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "I’d say WOBBUFFET Pop.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00732",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "I’ve never played one.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00733",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "TV and music, I guess.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00734",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Games and computers, I guess.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00735",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "School and sports, I guess.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00736",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Fashion and romance, I guess.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00737",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Physical activities, I’d say.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00738",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Using my brain, I’d say.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00739",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "I’m really good at standing out.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00740",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Making friends, I’d say.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00741",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "That would be reading books.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00742",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "That would be music.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00743",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "That would be computers.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00744",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "That would be staying up late.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00745",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "That’s fashion, of course!\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00746",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "That’s interior design, of course!\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00747",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "That’s gourmet dining, of course!\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00748",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "That’s life, of course!\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00749",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "A Plaza Game, I think.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00750",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "A Footprint Stamp, I think.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00751",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Visitor Profiles, I think.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00752",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "The Plaza News, I think.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00753",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "I can see someone’s house.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00754",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "I can see a variety of shops.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00755",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "I can see a big factory.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00756",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "There’s lots of nature around here.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00757",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Hmm... Sports, I’d say.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00758",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Hmm... Games, I’d say.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00759",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Hmm... Chatting, I’d say.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00760",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Hmm... Shopping, I’d say.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00761",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "I’d have to say family.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00762",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "I’d have to say friends.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00763",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "I’d have to say myself, of course.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00764",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "I’d have to say that’s a secret.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00765",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Hmm... Cheerful, maybe?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00766",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Hmm... Funny, maybe?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00767",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Hmm... Kind, maybe?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00768",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Hmm... Mysterious, maybe?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00769",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "I’m happy when I’m playing!\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00770",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "I’m happy when I’m working hard!\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00771",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "I’m happy when I’m sleeping.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00772",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "I’m happy when I’m eating!\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00773",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "I’d have to say my allowance.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00774",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "I’d have to say school.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00775",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "I’d have to say my fitness.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00776",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "I’d have to say my friends.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00777",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "School, I think.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00778",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "My diet, I think.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00779",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Romance, maybe?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00780",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "My training, I think.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00781",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Any team sports!\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00782",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Running, for sure!\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00783",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Swimming, for sure!\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00784",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Dancing, for sure!\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00785",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "That would be a pro athlete.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00786",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "That would be an inventor.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00787",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "That would be a musician.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00788",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "That would be a comedian.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00789",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "It’s a very convenient place.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00790",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "There’s lots of nature here.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00791",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "It’s very quiet here.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00792",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "There are rare things and events here.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00793",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "It’s a hot place.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00794",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "It’s a warm place.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00795",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "It’s a cold place.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00796",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "It’s a cool place.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00797",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "I can hear voices.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00798",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "I can hear music.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00799",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "I can hear a TV.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00800",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "It’s very quiet here.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00801",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Hmm... I smell some food.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00802",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Hmm... I smell people.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00803",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Hmm... The scents of the season.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00804",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Eww... There’s an unpleasant stench.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00805",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "The latest toys, I’d say.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00806",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Fashionable clothes, I’d say.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00807",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Tomorrow’s weather, I’d say.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00808",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "New pop stars, I’d say.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00809",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Oh, you’re good at SWALOT Plop!\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00810",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Oh, you’re good at MIME JR. Top!\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00811",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Oh, you’re good at WOBBUFFET Pop!\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00812",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Oh. You’ve never played any.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00813",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "TV and music! I see.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00814",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Games and computers! I see.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00815",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "School and sports! I see.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00816",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Fashion and romance! I see.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00817",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Oh, so you like to work out.\f",
+        "That’s good.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00818",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Oh, so you’re a good thinker.\f",
+        "That’s neat.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00819",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "You’re good at standing out?\f",
+        "You’re an attention getter.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00820",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "You’re good at making friends?\f",
+        "That’s a good thing.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00821",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "You can’t give up reading books!\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00822",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "You can’t give up music!\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00823",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "You can’t be without computers!\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00824",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "You can’t go without staying up late!\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00825",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Oh, so you have a thing for fashion.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00826",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Oh, so interior design’s your thing.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00827",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Oh, so gourmet dining is your thing.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00828",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Oh, so your passion is for life.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00829",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "You’re off to play a Plaza Game.\f",
+        "Have fun!\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00830",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "You’re going to play with the Footprint\f",
+        "Stamp. That’s neat.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00831",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Visitor Profiles?\f",
+        "You can see where people are from.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00832",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "You’re going to check out the Plaza\f",
+        "News? It’s informative.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00833",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Oh, so you see someone’s house.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00834",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Oh, so you’re near some shops.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00835",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "You live near a big factory? Wow.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00836",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Oh, so you’re out among nature.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00837",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Oh, so you play sports with your\f",
+        "friends.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00838",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Cool. You play games with your friends.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00839",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Oh, chatting is what you do with your\f",
+        "friends.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00840",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Oh, so you like to shop with your\f",
+        "friends.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00841",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Your family’s important to you...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00842",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Your friends are important to you...\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00843",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Yourself, huh? It’s only natural.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00844",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "A secret? That’s intriguing.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00845",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "So, people think you’re cheerful.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00846",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "So, people think you’re funny.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00847",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "So, people think you’re kind.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00848",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "So, people think you’re mysterious.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00849",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "You’re happy when you’re playing.\f",
+        "That makes sense.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00850",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "You’re happy when you’re working hard.\f",
+        "You’re a go-getter!\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00851",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "You’re happy when you’re sleeping.\f",
+        "That’s nice.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00852",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "You’re happy when you’re eating.\f",
+        "That’s nice.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00853",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Your allowance is a worry? Ouch.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00854",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "School worries you? Ouch.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00855",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Your fitness is a concern? Ouch.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00856",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Your friends worry you? Ouch.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00857",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "You’re studying hard for school?\f",
+        "Good for you!\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00858",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "You’re working hard on your diet?\f",
+        "Be good to yourself.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00859",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Ooh, you’re working hard on romance?\f",
+        "That must be nice!\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00860",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "You’re working hard on your training?\f",
+        "Good luck with that!\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00861",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "So you’re good at all kinds of\f",
+        "team sports. Gotcha.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00862",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "You’re a good runner. Gotcha.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00863",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "You’re a good swimmer. Gotcha.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00864",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "You’re a good dancer. Gotcha.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00865",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "You want to be a pro athlete.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00866",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "You want to be an inventor.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00867",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "You want to be a musician.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00868",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "You want to be a comedian.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00869",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "A very convenient place?\f",
+        "That must be cool.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00870",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "A place with lots of nature?\f",
+        "That must be cool.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00871",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "A very quiet place?\f",
+        "It must be nice.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00872",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "A place with rare things and events?\f",
+        "That must be cool.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00873",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "I see. You’re in a hot place.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00874",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "I see. You’re in a warm place.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00875",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "I see. You’re in a cold place.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00876",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "I see. You’re in a cool place.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00877",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Oh, so there are other people.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00878",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Oh, you can hear music.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00879",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Oh, so there’s a TV somewhere close.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00880",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Oh, so you don’t hear very much.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00881",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Oh, you smell something cooking?\f",
+        "Sounds nice!\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00882",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Oh, you smell other people? OK.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00883",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Oh, you smell the season, huh?\f",
+        "That’s neat.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00884",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Something stinks there? Eww.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00885",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "The latest toys interest you the most?\f",
+        "That’s interesting.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00886",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Fashionable clothes interest you the\f",
+        "most? That’s interesting.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00887",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "Tomorrow’s weather concerns you the\f",
+        "most? OK.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00888",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "New pop stars are what interest you\f",
+        "most? Neat.\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00889",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "What about you?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00890",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "How about your side?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00891",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "What about you?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00892",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "What about you?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00893",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "What about you?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00894",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "What about you?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00895",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "How about your side?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00896",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "What about you?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00897",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "What about you?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00898",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "What about you?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00899",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "What about you?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00900",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "What about you?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00901",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "What about you?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00902",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "What about you?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00903",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "What about you?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00904",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "How about over there?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00905",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "How about over there?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00906",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "How about over there?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00907",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "How about over there?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00908",
+      "en_US": [
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\n",
+        "What about you?\r"
+      ]
+    },
+    {
+      "id": "msg_0766_00909",
+      "en_US": [
+        "Shared the {STRVAR_3 2, 1, 0} with\n",
+        "{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}.\r"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,141 @@
+{
+  "key": 63844,
+  "messages": [
+    {
+      "id": "msg_0469_T04GYM0101_00000",
+      "en_US": "{SIZE 200}Bump!{SIZE 100}\r"
+    },
+    {
+      "id": "msg_0469_T04GYM0101_00001",
+      "en_US": [
+        "Oops! I so sorry!\n",
+        "You not hurt, OK?\f",
+        "I very busy.\f",
+        "No time for talking with you.\f",
+        "Not good for me if seen by somebody.\r"
+      ]
+    },
+    {
+      "id": "msg_0469_T04GYM0101_00002",
+      "en_US": [
+        "Oh no! You seen me already!\f",
+        "I make big mistake!\r"
+      ]
+    },
+    {
+      "id": "msg_0469_T04GYM0101_00003",
+      "en_US": [
+        "Hey, you! Forget you see me, OK?\n",
+        "You seen, heard, known nothing, OK?\f",
+        "Bye!\f",
+        "Bye-bye a go-go!\r"
+      ]
+    },
+    {
+      "id": "msg_0469_T04GYM0101_00004",
+      "en_US": [
+        "Sorry, I’ll be out for a while.\n",
+        "Misty, Gym Leader"
+      ]
+    },
+    {
+      "id": "msg_0469_T04GYM0101_00005",
+      "en_US": [
+        "Since Misty’s out, we’ll be away, too.\n",
+        "Gym Trainers"
+      ]
+    },
+    {
+      "id": "msg_0469_T04GYM0101_00006",
+      "en_US": "Cerulean City Pokémon Gym"
+    },
+    {
+      "id": "msg_0469_T04GYM0101_00007",
+      "en_US": [
+        "Cerulean City Pokémon Gym\r",
+        "Leader: Misty\n",
+        "Certified Trainer!\f",
+        "{STRVAR_1 3, 0, 0}"
+      ]
+    },
+    {
+      "id": "msg_0469_T04GYM0101_00008",
+      "en_US": [
+        "Misty: I was expecting you,\n",
+        "you pest!\r",
+        "You may have a lot of Johto Gym Badges,\n",
+        "but you’d better not take me\f",
+        "too lightly.\r",
+        "My Water-type Pokémon are tough!\r"
+      ]
+    },
+    {
+      "id": "msg_0469_T04GYM0101_00009",
+      "en_US": [
+        "Misty: You really are good...\r",
+        "I’ll admit that you are skilled...\r",
+        "Here you go.\n",
+        "It’s the Cascade Badge.\r"
+      ]
+    },
+    {
+      "id": "msg_0469_T04GYM0101_00010",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} received\n",
+        "the Cascade Badge from Misty!"
+      ]
+    },
+    {
+      "id": "msg_0469_T04GYM0101_00011",
+      "en_US": [
+        "Misty: Here is another memento\n",
+        "from this battle. Take it!\r"
+      ]
+    },
+    {
+      "id": "msg_0469_T04GYM0101_00012",
+      "en_US": [
+        "Misty: It contains the move\n",
+        "Water Pulse.\r",
+        "It can sometimes confuse your foe.\r",
+        "You’ve managed to defeat Trainers\n",
+        "all the way from Johto.\f",
+        "I’m sure you have a good use for it."
+      ]
+    },
+    {
+      "id": "msg_0469_T04GYM0101_00013",
+      "en_US": [
+        "Misty: Does Johto have a lot of\n",
+        "powerful Trainers?\r",
+        "I will someday go on my journey\n",
+        "to battle with powerful Trainers!"
+      ]
+    },
+    {
+      "id": "msg_0469_T04GYM0101_00014",
+      "en_US": [
+        "Yo! Legend in the making!\r",
+        "Since Misty was away, I went out\n",
+        "for some fun, too.\f",
+        "He-he-he."
+      ]
+    },
+    {
+      "id": "msg_0469_T04GYM0101_00015",
+      "en_US": [
+        "Hoo, you showed me how tough you are.\r",
+        "As always, that was one great battle!"
+      ]
+    },
+    {
+      "id": "msg_0469_T04GYM0101_00016",
+      "en_US": [
+        "...!\r",
+        "{STRVAR_1 3, 0, 0} picked up the black item\n",
+        "that was by the pool.\r",
+        "It’s a Part from a machine!\r"
+      ]
+    }
+  ]
+}

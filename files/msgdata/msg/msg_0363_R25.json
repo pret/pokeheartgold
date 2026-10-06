@@ -1,0 +1,176 @@
+{
+  "key": 20235,
+  "messages": [
+    {
+      "id": "msg_0363_R25_00000",
+      "en_US": [
+        "Misty: Aww! Why did you have to\n",
+        "show up and bug us now?\r",
+        "Do you know what they call people\n",
+        "like you?\r",
+        "Pests! You heard me right, pest!\r",
+        "...\r",
+        "...Oh? Those Badges you have...\n",
+        "Are they Johto Gym Badges?\r",
+        "If you have eight, you must be good.\r",
+        "OK, then. Come to Cerulean Gym.\n",
+        "I’ll be happy to take you on.\r",
+        "I’m Misty, the Gym Leader\n",
+        "in Cerulean.\r"
+      ]
+    },
+    {
+      "id": "msg_0363_R25_00001",
+      "en_US": [
+        "Misty: I love the sunset here!\n",
+        "It gives me courage to go on, you know?\r",
+        "Right!\r",
+        "Why don’t we exchange numbers? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0363_R25_00002",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} registered Misty\n",
+        "in the Pokégear!"
+      ]
+    },
+    {
+      "id": "msg_0363_R25_00003",
+      "en_US": [
+        "Misty: Give me a call on Wednesday\n",
+        "morning if you want another\f",
+        "battle with me!"
+      ]
+    },
+    {
+      "id": "msg_0363_R25_00004",
+      "en_US": "Misty: That’s a shame!"
+    },
+    {
+      "id": "msg_0363_R25_00005",
+      "en_US": [
+        "Misty: So you do want to know\n",
+        "my number? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0363_R25_00006",
+      "en_US": [
+        "Misty: Ah! You have a cool\n",
+        "Water-type Pokémon!\f",
+        "Can I take a picture with it? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0363_R25_00007",
+      "en_US": [
+        "Misty: Way to go!\r",
+        "Let’s see a big smile!\r"
+      ]
+    },
+    {
+      "id": "msg_0363_R25_00008",
+      "en_US": [
+        "Misty: We look good!\n",
+        "I really like Water-type Pokémon!"
+      ]
+    },
+    {
+      "id": "msg_0363_R25_00009",
+      "en_US": "Misty: What a letdown..."
+    },
+    {
+      "id": "msg_0363_R25_00010",
+      "en_US": [
+        "Your Photo Album is full.\r",
+        "Access your PC and delete\n",
+        "some pictures."
+      ]
+    },
+    {
+      "id": "msg_0363_R25_00011",
+      "en_US": [
+        "You took on one more battle than\n",
+        "you expected, but you won anyway.\r",
+        "As promised, you win a prize.\r"
+      ]
+    },
+    {
+      "id": "msg_0363_R25_00012",
+      "garbage": 20
+    },
+    {
+      "id": "msg_0363_R25_00013",
+      "en_US": [
+        "But after seeing how you battle,\n",
+        "I want to see how I’ll fare.\f",
+        "How about it? Let me take you on.\r"
+      ]
+    },
+    {
+      "id": "msg_0363_R25_00014",
+      "en_US": [
+        "I’ve never had a battle this\n",
+        "wonderful!\r",
+        "You and your Pokémon are\n",
+        "really strong!"
+      ]
+    },
+    {
+      "id": "msg_0363_R25_00015",
+      "en_US": [
+        "Sea Cottage\n",
+        "Bill’s House"
+      ]
+    },
+    {
+      "id": "msg_0363_R25_00016",
+      "en_US": [
+        "Eusine: Puff, puff...\n",
+        "I am...no match for you.\f",
+        "...As I predicted.\r",
+        "..................\n",
+        "...Go ahead.\r",
+        "Since I met you in the Burned Tower\n",
+        "at Ecruteak City, I’ve sort of known\f",
+        "that SUICUNE would choose you.\r"
+      ]
+    },
+    {
+      "id": "msg_0363_R25_00017",
+      "en_US": [
+        "Eusine: Take a look at it!\n",
+        "SUICUNE is waiting for you!\f",
+        "It has been waiting for a battle\f",
+        "with a worthy Trainer to whom\f",
+        "it can entrust itself!"
+      ]
+    },
+    {
+      "id": "msg_0363_R25_00018",
+      "en_US": [
+        "Eusine: {STRVAR_1 3, 0, 0}...\n",
+        "You two are truly amazing...\r",
+        "I have never seen a battle\n",
+        "this intense!\f",
+        "I have no regrets...\r",
+        "Farewell, SUICUNE!\n",
+        "Farewell...{STRVAR_1 3, 0, 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0363_R25_00019",
+      "en_US": [
+        "Eusine: {STRVAR_1 3, 0, 0}...\n",
+        "There is nothing to be ashamed of.\r",
+        "No one can pick on you just because\n",
+        "you ran from SUICUNE.\r",
+        "It’s just that SUICUNE is such an\n",
+        "amazing Pokémon. That’s all.\f",
+        "Anyway, SUICUNE is gone again.\f",
+        "It’s back to square one...\r"
+      ]
+    }
+  ]
+}

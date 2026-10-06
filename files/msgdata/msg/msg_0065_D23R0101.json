@@ -1,0 +1,397 @@
+{
+  "key": 33859,
+  "messages": [
+    {
+      "id": "msg_0065_D23R0101_00000",
+      "en_US": "Welcome to Goldenrod’s Radio Tower!"
+    },
+    {
+      "id": "msg_0065_D23R0101_00001",
+      "en_US": [
+        "Welcome to Goldenrod’s Radio Tower!\r",
+        "...Or, maybe not.\n",
+        "I am sorry to tell you this, but no one\f",
+        "can visit the tower now."
+      ]
+    },
+    {
+      "id": "msg_0065_D23R0101_00002",
+      "en_US": [
+        "Um, yes. I have been telling visitors\n",
+        "to go home as you instructed..."
+      ]
+    },
+    {
+      "id": "msg_0065_D23R0101_00003",
+      "en_US": [
+        "We have a special Quiz campaign!\r",
+        "Answer five questions correctly in a\n",
+        "row to win a Radio Card!\r",
+        "When you load it into the Pokégear, you\n",
+        "will be able to listen to the radio...\f",
+        "anytime, anywhere!\r",
+        "Would you like to try our Quiz? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0065_D23R0101_00004",
+      "en_US": [
+        "The first question!\r",
+        "Can you check the Town Map with\n",
+        "your Pokégear? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0065_D23R0101_00005",
+      "en_US": [
+        "You are correct.\n",
+        "The second question!\r",
+        "NIDORINA can only be female.\n",
+        "True? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0065_D23R0101_00006",
+      "en_US": [
+        "You are correct.\n",
+        "The third question!\r",
+        "Kurt, the Poké Ball creator, uses\n",
+        "apricots as ingredients? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0065_D23R0101_00007",
+      "en_US": [
+        "You are correct again.\n",
+        "The fourth question!\r",
+        "It’s impossible to use a TM on\n",
+        "MAGIKARP. True? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0065_D23R0101_00008",
+      "en_US": [
+        "Wow!\n",
+        "I have only one more question to go.\r",
+        "In Professor Oak’s popular show,\n",
+        "Pokémon Talk, is he on with Marie? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0065_D23R0101_00009",
+      "en_US": [
+        "Bingo! You got it!\n",
+        "Congratulations!\f",
+        "Here’s your prize, a Radio Card!\r"
+      ]
+    },
+    {
+      "id": "msg_0065_D23R0101_00010",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} can now listen to the\n",
+        "radio with the Pokégear!"
+      ]
+    },
+    {
+      "id": "msg_0065_D23R0101_00011",
+      "en_US": "Please tune in to our radio shows!"
+    },
+    {
+      "id": "msg_0065_D23R0101_00012",
+      "en_US": [
+        "Oh, dear.\n",
+        "Sorry, but you got it wrong.\f",
+        "Please try again!"
+      ]
+    },
+    {
+      "id": "msg_0065_D23R0101_00013",
+      "en_US": [
+        "Oh. I see.\n",
+        "Please see me if you change your mind."
+      ]
+    },
+    {
+      "id": "msg_0065_D23R0101_00014",
+      "en_US": [
+        "Whitney: Hi!\n",
+        "My name is Whitney!\r",
+        "I heard about the Quiz to win a Radio\n",
+        "Card, so I came here to get one...\r",
+        "But this Quiz is so hard!\r"
+      ]
+    },
+    {
+      "id": "msg_0065_D23R0101_00015",
+      "en_US": [
+        "Whitney: Wow, you did it!\n",
+        "I thought the answer to the third\f",
+        "question was surely apricots!\r",
+        "Oops!\n",
+        "It’s time to go back to the Gym!\r"
+      ]
+    },
+    {
+      "id": "msg_0065_D23R0101_00016",
+      "en_US": [
+        "Ben is a fabulous DJ!\n",
+        "His sweet voice just makes me melt!"
+      ]
+    },
+    {
+      "id": "msg_0065_D23R0101_00017",
+      "en_US": [
+        "I love Mary from Pokémon Talk.\r",
+        "I only know what she sounds like,\n",
+        "though!"
+      ]
+    },
+    {
+      "id": "msg_0065_D23R0101_00018",
+      "en_US": [
+        "Who are you?\n",
+        "We have some business going on.\r",
+        "I was told not to let anyone pass but\n",
+        "Team Rocket!\r",
+        "Do you understand?\r",
+        "You are only allowed to come through\n",
+        "when you are wearing the cool black\f",
+        "uniform for Team Rocket!"
+      ]
+    },
+    {
+      "id": "msg_0065_D23R0101_00019",
+      "en_US": [
+        "Ha! You must be new!\n",
+        "You look pretty good in the Team Rocket\f",
+        "uniform!\r",
+        "Go on ahead!\r"
+      ]
+    },
+    {
+      "id": "msg_0065_D23R0101_00020",
+      "en_US": [
+        "What are you doing?\n",
+        "Go upstairs and take your position!"
+      ]
+    },
+    {
+      "id": "msg_0065_D23R0101_00021",
+      "en_US": [
+        "{STRVAR_1 3, 1, 0}: Hey, Team Rocket!\r",
+        "Stop going around in groups and\n",
+        "troubling people. You cowards!\r"
+      ]
+    },
+    {
+      "id": "msg_0065_D23R0101_00022",
+      "en_US": [
+        "{STRVAR_1 3, 1, 0}: ...Huh?\n",
+        "Are you {STRVAR_1 3, 0, 0}?\f",
+        "What are you doing here?\r",
+        "No way... You think you’re strong now\n",
+        "that you look like them?\r",
+        "That’s foolish!\n",
+        "You shouldn’t wear those things!\r"
+      ]
+    },
+    {
+      "id": "msg_0065_D23R0101_00023",
+      "en_US": [
+        "What? You!\n",
+        "You’re not a newcomer?\f",
+        "Then battle with me!\r"
+      ]
+    },
+    {
+      "id": "msg_0065_D23R0101_00024",
+      "en_US": [
+        "You are too powerful.\r",
+        "You could spoil our plan.\n",
+        "I have to inform the others...\r"
+      ]
+    },
+    {
+      "id": "msg_0065_D23R0101_00025",
+      "en_US": [
+        "{STRVAR_1 3, 1, 0}: I see.\n",
+        "You were trying to be sneaky...\r",
+        "Huh!\n",
+        "A typical idea of the meek!\r",
+        "No matter.\n",
+        "I’ll let you handle this.\r",
+        "I have to defeat the Dragon Tamer...\n",
+        "What’s his name...? Lance!\r",
+        "After that...it will be your turn.\n",
+        "Be ready for it!\r"
+      ]
+    },
+    {
+      "id": "msg_0065_D23R0101_00026",
+      "en_US": [
+        "1F Reception\n",
+        "2F Sales\f",
+        "3F Personnel\f",
+        "4F Production\f",
+        "5F Director’s Office\f",
+        "6F Observation Deck"
+      ]
+    },
+    {
+      "id": "msg_0065_D23R0101_00027",
+      "en_US": [
+        "Lucky Channel!\n",
+        "Win with Pokémon ID numbers!\r",
+        "Trade your Pokémon to collect different\n",
+        "ID numbers!"
+      ]
+    },
+    {
+      "id": "msg_0065_D23R0101_00028",
+      "en_US": [
+        "This is the Pokémon Lottery Corner.\n",
+        "I’m Felicity, your attendant today.\r",
+        "If the drawn number matches the ID No.\n",
+        "of any of your Pokémon, you could win\f",
+        "fabulous gifts.\r",
+        "Would you like to check today’s\n",
+        "lucky number? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0065_D23R0101_00029",
+      "en_US": [
+        "You’ve already drawn a Loto Ticket\n",
+        "today. Please come back tomorrow."
+      ]
+    },
+    {
+      "id": "msg_0065_D23R0101_00030",
+      "en_US": [
+        "Oh. I see.\n",
+        "Please do visit us again."
+      ]
+    },
+    {
+      "id": "msg_0065_D23R0101_00031",
+      "en_US": [
+        "First, I’ll look up today’s Pokémon\n",
+        "Lottery Corner lucky number.\r",
+        "...\r"
+      ]
+    },
+    {
+      "id": "msg_0065_D23R0101_00032",
+      "en_US": [
+        "Your Loto Ticket number is {STRVAR_1 54, 0, 0}.\r",
+        "Now, let’s see if it matches the\n",
+        "ID No. of any of your Pokémon.\r"
+      ]
+    },
+    {
+      "id": "msg_0065_D23R0101_00033",
+      "en_US": [
+        "Congratulations!\r",
+        "The ID No. of your team’s\n",
+        "{STRVAR_1 1, 0, 0} matches your Loto\f",
+        "Ticket number!\r"
+      ]
+    },
+    {
+      "id": "msg_0065_D23R0101_00034",
+      "en_US": [
+        "Congratulations!\r",
+        "The ID No. of your PC-boxed\n",
+        "{STRVAR_1 1, 0, 0} matches your Loto\f",
+        "Ticket number!\r"
+      ]
+    },
+    {
+      "id": "msg_0065_D23R0101_00035",
+      "en_US": [
+        "I’m sorry.\n",
+        "You didn’t get a match..."
+      ]
+    },
+    {
+      "id": "msg_0065_D23R0101_00036",
+      "en_US": [
+        "The last digit matched, so you\n",
+        "win the fourth prize!\r"
+      ]
+    },
+    {
+      "id": "msg_0065_D23R0101_00037",
+      "en_US": [
+        "You gained a new Backdrop for use\n",
+        "in Fitting Rooms."
+      ]
+    },
+    {
+      "id": "msg_0065_D23R0101_00038",
+      "en_US": [
+        "The last two digits matched, so you\n",
+        "win the third prize!\r"
+      ]
+    },
+    {
+      "id": "msg_0065_D23R0101_00039",
+      "en_US": [
+        "The last three digits matched, so you\n",
+        "win the second prize!\r"
+      ]
+    },
+    {
+      "id": "msg_0065_D23R0101_00040",
+      "en_US": [
+        "The last four digits matched, so you\n",
+        "win the first prize!\r"
+      ]
+    },
+    {
+      "id": "msg_0065_D23R0101_00041",
+      "en_US": [
+        "Oh, my goodness, all five digits\n",
+        "matched!\r",
+        "You’ve won the jackpot prize!\n",
+        "This is just so incredible!\r",
+        "...Oh, I’m sorry! Your prize!\n",
+        "I got carried away there.\r",
+        "Here you go!\r"
+      ]
+    },
+    {
+      "id": "msg_0065_D23R0101_00042",
+      "en_US": [
+        "...Oh?\n",
+        "You seem to have no room for this.\r",
+        "Please make room in your Bag and\n",
+        "then let me know."
+      ]
+    },
+    {
+      "id": "msg_0065_D23R0101_00043",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}?\n",
+        "Yes, I’ve been expecting you.\r",
+        "This is the prize we’ve been holding\n",
+        "for you. Here you go!\r"
+      ]
+    },
+    {
+      "id": "msg_0065_D23R0101_00044",
+      "en_US": [
+        "Please do visit again!\n",
+        "Good-bye from Felicity, your attendant!"
+      ]
+    },
+    {
+      "id": "msg_0065_D23R0101_00045",
+      "en_US": [
+        "This is the Pokémon Lottery Corner.\r",
+        "Would you like to check today’s\n",
+        "lucky number again? {YESNO 0}"
+      ]
+    }
+  ]
+}

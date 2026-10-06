@@ -1,0 +1,901 @@
+{
+  "key": 3393,
+  "messages": [
+    {
+      "id": "msg_0182_00000",
+      "en_US": "There appears to be a problem..."
+    },
+    {
+      "id": "msg_0182_00001",
+      "en_US": [
+        "Waiting for {STRVAR_1 3, 1, 0}’s\n",
+        "response..."
+      ]
+    },
+    {
+      "id": "msg_0182_00002",
+      "en_US": [
+        "Asking {STRVAR_1 3, 1, 0} to do member\n",
+        "registration. Please wait."
+      ]
+    },
+    {
+      "id": "msg_0182_00003",
+      "en_US": "Do you want to leave the group? {YESNO 0}"
+    },
+    {
+      "id": "msg_0182_00004",
+      "en_US": "{STRVAR_1 3, 1, 0} replied, “OK.”"
+    },
+    {
+      "id": "msg_0182_00005",
+      "en_US": "{STRVAR_1 3, 1, 0} refused...{PAUSE 120}"
+    },
+    {
+      "id": "msg_0182_00006",
+      "en_US": "You have left the group."
+    },
+    {
+      "id": "msg_0182_00007",
+      "garbage": 32
+    },
+    {
+      "id": "msg_0182_00008",
+      "en_US": [
+        "Single Battle!\n",
+        "Awaiting contact from your friend."
+      ]
+    },
+    {
+      "id": "msg_0182_00009",
+      "en_US": [
+        "Double Battle!\n",
+        "Awaiting contact from your friend."
+      ]
+    },
+    {
+      "id": "msg_0182_00010",
+      "en_US": [
+        "Multi Battle!\n",
+        "Awaiting contact from your friends."
+      ]
+    },
+    {
+      "id": "msg_0182_00011",
+      "en_US": [
+        "Mix Battle!\n",
+        "Awaiting contact from your friend."
+      ]
+    },
+    {
+      "id": "msg_0182_00012",
+      "en_US": [
+        "Flat Battle!\n",
+        "Awaiting contact from your friend."
+      ]
+    },
+    {
+      "id": "msg_0182_00013",
+      "en_US": [
+        "Safari Zone Link!\n",
+        "Awaiting contact from your friend."
+      ]
+    },
+    {
+      "id": "msg_0182_00014",
+      "en_US": [
+        "Pokéathlon!\n",
+        "Awaiting contact from your friend."
+      ]
+    },
+    {
+      "id": "msg_0182_00015",
+      "en_US": [
+        "When the group is ready:\n",
+        "A Button: Proceed   B Button: Cancel"
+      ]
+    },
+    {
+      "id": "msg_0182_00016",
+      "garbage": 30
+    },
+    {
+      "id": "msg_0182_00017",
+      "en_US": [
+        "When the group is ready:\n",
+        "A Button: Proceed   B Button: Cancel"
+      ]
+    },
+    {
+      "id": "msg_0182_00018",
+      "en_US": [
+        "Battle Tower!\n",
+        "Awaiting contact from your friend."
+      ]
+    },
+    {
+      "id": "msg_0182_00019",
+      "en_US": [
+        "Battle Factory--Level 50!\n",
+        "Awaiting contact from your friend."
+      ]
+    },
+    {
+      "id": "msg_0182_00020",
+      "en_US": [
+        "Battle Factory--Open Level!\n",
+        "Awaiting contact from your friend."
+      ]
+    },
+    {
+      "id": "msg_0182_00021",
+      "en_US": [
+        "Battle Hall!\n",
+        "Awaiting contact from your friend."
+      ]
+    },
+    {
+      "id": "msg_0182_00022",
+      "en_US": [
+        "Battle Castle!\n",
+        "Awaiting contact from your friend."
+      ]
+    },
+    {
+      "id": "msg_0182_00023",
+      "en_US": [
+        "Battle Arcade!\n",
+        "Awaiting contact from your friend."
+      ]
+    },
+    {
+      "id": "msg_0182_00024",
+      "garbage": 31
+    },
+    {
+      "id": "msg_0182_00025",
+      "en_US": [
+        "{STRVAR_1 3, 1, 0} has contacted you.\n",
+        "Start a Single Battle? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0182_00026",
+      "en_US": [
+        "{STRVAR_1 3, 1, 0} has contacted you.\n",
+        "Start a Double Battle? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0182_00027",
+      "en_US": [
+        "{STRVAR_1 3, 1, 0} has contacted you.\n",
+        "Start a Mix Battle? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0182_00028",
+      "en_US": [
+        "{STRVAR_1 3, 1, 0} has contacted you.\n",
+        "Start a Flat Battle? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0182_00029",
+      "en_US": [
+        "{STRVAR_1 3, 1, 0} has contacted you.\n",
+        "Start a Safari Zone Link? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0182_00030",
+      "en_US": [
+        "{STRVAR_1 3, 1, 0} has contacted you.\n",
+        "Let {STRVAR_1 3, 1, 0} join your group? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0182_00031",
+      "en_US": [
+        "{STRVAR_1 3, 1, 0} has contacted you.\n",
+        "Let {STRVAR_1 3, 1, 0} join your group? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0182_00032",
+      "en_US": [
+        "{STRVAR_1 3, 1, 0} has contacted you.\n",
+        "Take Battle Tower challenge? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0182_00033",
+      "en_US": [
+        "{STRVAR_1 3, 1, 0} has contacted you.\n",
+        "Take Battle Factory challenge? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0182_00034",
+      "en_US": [
+        "{STRVAR_1 3, 1, 0} has contacted you.\n",
+        "Start the Battle Hall challenge? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0182_00035",
+      "en_US": [
+        "{STRVAR_1 3, 1, 0} has contacted you.\n",
+        "Take Battle Castle challenge? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0182_00036",
+      "en_US": [
+        "{STRVAR_1 3, 1, 0} has contacted you.\n",
+        "Take Battle Arcade challenge? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0182_00037",
+      "garbage": 31
+    },
+    {
+      "id": "msg_0182_00038",
+      "en_US": [
+        "Multi Battle!\n",
+        "Is this group OK? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0182_00039",
+      "en_US": "Is this group OK? {YESNO 0}"
+    },
+    {
+      "id": "msg_0182_00040",
+      "garbage": 30
+    },
+    {
+      "id": "msg_0182_00041",
+      "garbage": 23
+    },
+    {
+      "id": "msg_0182_00042",
+      "en_US": [
+        "Pokéathlon!\n",
+        "Is this group OK?{YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0182_00043",
+      "en_US": [
+        "Cancel a Multi Battle involving this\n",
+        "group?{YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0182_00044",
+      "garbage": 12
+    },
+    {
+      "id": "msg_0182_00045",
+      "garbage": 33
+    },
+    {
+      "id": "msg_0182_00046",
+      "garbage": 25
+    },
+    {
+      "id": "msg_0182_00047",
+      "en_US": [
+        "Cancel holding a Pokéathlon\n",
+        "with this group? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0182_00048",
+      "garbage": 32
+    },
+    {
+      "id": "msg_0182_00049",
+      "en_US": [
+        "Choose the Single Battle you would\n",
+        "like to join. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0182_00050",
+      "en_US": [
+        "Choose the Double Battle you would\n",
+        "like to join. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0182_00051",
+      "en_US": [
+        "Choose the Multi Battle you would\n",
+        "like to join. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0182_00052",
+      "en_US": [
+        "Choose the Mix Battle you would\n",
+        "like to join. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0182_00053",
+      "en_US": [
+        "Choose the Flat Battle you would\n",
+        "like to join. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0182_00054",
+      "en_US": [
+        "Choose the Safari Zone Link\n",
+        "you would like to join. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0182_00055",
+      "en_US": [
+        "Choose the Pokéathlon you would\n",
+        "like to join. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0182_00056",
+      "garbage": 23
+    },
+    {
+      "id": "msg_0182_00057",
+      "garbage": 30
+    },
+    {
+      "id": "msg_0182_00058",
+      "garbage": 23
+    },
+    {
+      "id": "msg_0182_00059",
+      "en_US": [
+        "Choose the friend you want to take\n",
+        "to the Battle Tower. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0182_00060",
+      "en_US": [
+        "Choose the friend to play with at\n",
+        "the Battle Factory--Level 50. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0182_00061",
+      "en_US": [
+        "Choose the friend to play with at\n",
+        "the Battle Factory--Open Level. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0182_00062",
+      "en_US": [
+        "Choose the friend to play\n",
+        "with at the Battle Hall. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0182_00063",
+      "en_US": [
+        "Choose the friend to play\n",
+        "with at the Battle Castle. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0182_00064",
+      "en_US": [
+        "Choose the friend to play\n",
+        "with at the Battle Arcade. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0182_00065",
+      "en_US": [
+        "A member has dropped out.\r",
+        "Please repeat the registration\n",
+        "process from the beginning."
+      ]
+    },
+    {
+      "id": "msg_0182_00066",
+      "garbage": 27
+    },
+    {
+      "id": "msg_0182_00067",
+      "garbage": 24
+    },
+    {
+      "id": "msg_0182_00068",
+      "en_US": [
+        "A Pokéathlon involving this group will\n",
+        "be canceled."
+      ]
+    },
+    {
+      "id": "msg_0182_00069",
+      "en_US": "Replied “OK” to {STRVAR_1 3, 1, 0}."
+    },
+    {
+      "id": "msg_0182_00070",
+      "en_US": [
+        "Multi Battle!\n",
+        "Waiting for the rest of the group."
+      ]
+    },
+    {
+      "id": "msg_0182_00071",
+      "en_US": "Waiting for the rest of the group."
+    },
+    {
+      "id": "msg_0182_00072",
+      "garbage": 26
+    },
+    {
+      "id": "msg_0182_00073",
+      "garbage": 23
+    },
+    {
+      "id": "msg_0182_00074",
+      "en_US": [
+        "Pokéathlon!\n",
+        "Waiting for the rest of the group."
+      ]
+    },
+    {
+      "id": "msg_0182_00075",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}\n",
+        "ID{STRVAR_1 54, 1, 0}"
+      ]
+    },
+    {
+      "id": "msg_0182_00076",
+      "en_US": "{STRVAR_1 51, 0, 0}:{STRVAR_1 3, 1, 0}"
+    },
+    {
+      "id": "msg_0182_00077",
+      "en_US": "{STRVAR_1 51, 0, 0}:"
+    },
+    {
+      "id": "msg_0182_00078",
+      "en_US": "ID{STRVAR_1 54, 2, 0}"
+    },
+    {
+      "id": "msg_0182_00079",
+      "en_US": "{STRVAR_1 3, 0, 0}"
+    },
+    {
+      "id": "msg_0182_00080",
+      "en_US": [
+        "{STRVAR_1 50, 0, 0} more\n",
+        "needed."
+      ]
+    },
+    {
+      "id": "msg_0182_00081",
+      "en_US": "{STRVAR_1 50, 0, 0} Players"
+    },
+    {
+      "id": "msg_0182_00082",
+      "garbage": 0
+    },
+    {
+      "id": "msg_0182_00083",
+      "en_US": "STANDARD"
+    },
+    {
+      "id": "msg_0182_00084",
+      "en_US": "FANCY"
+    },
+    {
+      "id": "msg_0182_00085",
+      "en_US": "LITTLE"
+    },
+    {
+      "id": "msg_0182_00086",
+      "en_US": "LIGHT"
+    },
+    {
+      "id": "msg_0182_00087",
+      "en_US": "DOUBLE"
+    },
+    {
+      "id": "msg_0182_00088",
+      "en_US": "STANDARD"
+    },
+    {
+      "id": "msg_0182_00089",
+      "en_US": "LIGHT"
+    },
+    {
+      "id": "msg_0182_00090",
+      "en_US": "DOUBLE"
+    },
+    {
+      "id": "msg_0182_00091",
+      "en_US": "DOUBLE"
+    },
+    {
+      "id": "msg_0182_00092",
+      "en_US": "GS"
+    },
+    {
+      "id": "msg_0182_00093",
+      "en_US": "No. of Pokémon:"
+    },
+    {
+      "id": "msg_0182_00094",
+      "en_US": "Pokémon level:"
+    },
+    {
+      "id": "msg_0182_00095",
+      "en_US": "Total levels:"
+    },
+    {
+      "id": "msg_0182_00096",
+      "en_US": "Height:"
+    },
+    {
+      "id": "msg_0182_00097",
+      "en_US": "Weight:"
+    },
+    {
+      "id": "msg_0182_00098",
+      "en_US": "Evolved Pokémon:"
+    },
+    {
+      "id": "msg_0182_00099",
+      "en_US": "Special Pokémon:"
+    },
+    {
+      "id": "msg_0182_00100",
+      "en_US": "Same Pokémon:"
+    },
+    {
+      "id": "msg_0182_00101",
+      "en_US": "Same items:"
+    },
+    {
+      "id": "msg_0182_00102",
+      "en_US": "{STRVAR_1 50, 0, 0}"
+    },
+    {
+      "id": "msg_0182_00103",
+      "en_US": "Max. {STRVAR_1 52, 0, 0}"
+    },
+    {
+      "id": "msg_0182_00104",
+      "en_US": "Max. {STRVAR_1 52, 0, 0}"
+    },
+    {
+      "id": "msg_0182_00105",
+      "en_US": "Max. {STRVAR_1 50, 0, 0}’ {STRVAR_1 50, 1, 0}”"
+    },
+    {
+      "id": "msg_0182_00106",
+      "en_US": "Min. {STRVAR_1 50, 0, 0}’ {STRVAR_1 50, 1, 0}”"
+    },
+    {
+      "id": "msg_0182_00107",
+      "en_US": "Max. {STRVAR_1 51, 0, 0} lbs."
+    },
+    {
+      "id": "msg_0182_00108",
+      "en_US": "Min. {STRVAR_1 51, 0, 0} lbs."
+    },
+    {
+      "id": "msg_0182_00109",
+      "en_US": "Permitted"
+    },
+    {
+      "id": "msg_0182_00110",
+      "en_US": "Banned"
+    },
+    {
+      "id": "msg_0182_00111",
+      "en_US": "Permitted"
+    },
+    {
+      "id": "msg_0182_00112",
+      "en_US": "Banned"
+    },
+    {
+      "id": "msg_0182_00113",
+      "en_US": "{STRVAR_1 26, 0, 0} Cup"
+    },
+    {
+      "id": "msg_0182_00114",
+      "en_US": "NO RESTRICTIONS"
+    },
+    {
+      "id": "msg_0182_00115",
+      "en_US": "Limit 2"
+    },
+    {
+      "id": "msg_0182_00116",
+      "en_US": [
+        "Players have chosen different rules.\n",
+        "The same rules must be chosen."
+      ]
+    },
+    {
+      "id": "msg_0182_00117",
+      "garbage": 30
+    },
+    {
+      "id": "msg_0182_00118",
+      "garbage": 30
+    },
+    {
+      "id": "msg_0182_00119",
+      "garbage": 29
+    },
+    {
+      "id": "msg_0182_00120",
+      "garbage": 29
+    },
+    {
+      "id": "msg_0182_00121",
+      "garbage": 30
+    },
+    {
+      "id": "msg_0182_00122",
+      "garbage": 27
+    },
+    {
+      "id": "msg_0182_00123",
+      "garbage": 27
+    },
+    {
+      "id": "msg_0182_00124",
+      "garbage": 26
+    },
+    {
+      "id": "msg_0182_00125",
+      "garbage": 26
+    },
+    {
+      "id": "msg_0182_00126",
+      "garbage": 27
+    },
+    {
+      "id": "msg_0182_00127",
+      "garbage": 33
+    },
+    {
+      "id": "msg_0182_00128",
+      "garbage": 33
+    },
+    {
+      "id": "msg_0182_00129",
+      "garbage": 32
+    },
+    {
+      "id": "msg_0182_00130",
+      "garbage": 32
+    },
+    {
+      "id": "msg_0182_00131",
+      "garbage": 33
+    },
+    {
+      "id": "msg_0182_00132",
+      "garbage": 29
+    },
+    {
+      "id": "msg_0182_00133",
+      "garbage": 29
+    },
+    {
+      "id": "msg_0182_00134",
+      "garbage": 28
+    },
+    {
+      "id": "msg_0182_00135",
+      "garbage": 28
+    },
+    {
+      "id": "msg_0182_00136",
+      "garbage": 29
+    },
+    {
+      "id": "msg_0182_00137",
+      "garbage": 29
+    },
+    {
+      "id": "msg_0182_00138",
+      "garbage": 29
+    },
+    {
+      "id": "msg_0182_00139",
+      "garbage": 28
+    },
+    {
+      "id": "msg_0182_00140",
+      "garbage": 28
+    },
+    {
+      "id": "msg_0182_00141",
+      "garbage": 29
+    },
+    {
+      "id": "msg_0182_00142",
+      "en_US": [
+        "Speed & Jump Course!\n",
+        "Recruiting other players. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0182_00143",
+      "en_US": [
+        "Jump & Skill Course!\n",
+        "Recruiting other players. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0182_00144",
+      "en_US": [
+        "Skill & Power Course!\n",
+        "Recruiting other players. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0182_00145",
+      "en_US": [
+        "Power & Stamina Course!\n",
+        "Recruiting other players. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0182_00146",
+      "en_US": [
+        "Stamina & Speed Course!\n",
+        "Recruiting other players. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0182_00147",
+      "en_US": [
+        "Master Course!\n",
+        "Recruiting other players. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0182_00148",
+      "en_US": [
+        "Speed & Jump Course!\n",
+        "Please choose the leader. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0182_00149",
+      "en_US": [
+        "Jump & Skill Course!\n",
+        "Please choose the leader. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0182_00150",
+      "en_US": [
+        "Skill & Power Course!\n",
+        "Please choose the leader. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0182_00151",
+      "en_US": [
+        "Power & Stamina Course!\n",
+        "Please choose the leader. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0182_00152",
+      "en_US": [
+        "Stamina & Speed Course!\n",
+        "Please choose the leader. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0182_00153",
+      "en_US": [
+        "Master Course!\n",
+        "Please choose the leader. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0182_00154",
+      "en_US": [
+        "Speed & Jump Course!\n",
+        "Touch once players have joined. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0182_00155",
+      "en_US": [
+        "Jump & Skill Course!\n",
+        "Touch once players have joined. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0182_00156",
+      "en_US": [
+        "Skill & Power Course!\n",
+        "Touch once players have joined. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0182_00157",
+      "en_US": [
+        "Power & Stamina Course!\n",
+        "Touch once players have joined. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0182_00158",
+      "en_US": [
+        "Stamina & Speed Course!\n",
+        "Touch once players have joined. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0182_00159",
+      "en_US": [
+        "Master Course!\n",
+        "Touch once players have joined. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0182_00160",
+      "en_US": [
+        "Speed & Jump Course!\n",
+        "Awaiting other members!"
+      ]
+    },
+    {
+      "id": "msg_0182_00161",
+      "en_US": [
+        "Jump & Skill Course!\n",
+        "Awaiting other members!"
+      ]
+    },
+    {
+      "id": "msg_0182_00162",
+      "en_US": [
+        "Skill & Power Course!\n",
+        "Awaiting other members!"
+      ]
+    },
+    {
+      "id": "msg_0182_00163",
+      "en_US": [
+        "Power & Stamina Course!\n",
+        "Awaiting other members!"
+      ]
+    },
+    {
+      "id": "msg_0182_00164",
+      "en_US": [
+        "Stamina & Speed Course!\n",
+        "Awaiting other members!"
+      ]
+    },
+    {
+      "id": "msg_0182_00165",
+      "en_US": [
+        "Master Course!\n",
+        "Awaiting other members!"
+      ]
+    }
+  ]
+}

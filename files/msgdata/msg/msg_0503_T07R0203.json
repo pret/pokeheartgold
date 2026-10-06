@@ -1,0 +1,223 @@
+{
+  "key": 17430,
+  "messages": [
+    {
+      "id": "msg_0503_T07R0203_00000",
+      "en_US": [
+        "I’m the Game Director!\r",
+        "Filling up your Pokédex is tough,\n",
+        "but don’t give up!\r",
+        "You can do it! Seriously!"
+      ]
+    },
+    {
+      "id": "msg_0503_T07R0203_00001",
+      "en_US": [
+        "Wow, you did it!\n",
+        "You have filled up the\f",
+        "Johto Pokédex!\r",
+        "Impressive! I’m amazed!\n",
+        "I will reward you for that!\f",
+        "Seriously!\r"
+      ]
+    },
+    {
+      "id": "msg_0503_T07R0203_00002",
+      "en_US": [
+        "Wow! Excellent!\n",
+        "You completed your Pokédex!\f",
+        "Congratulations!\r",
+        "You must be the genius of the century!\n",
+        "Seriously!\r",
+        "Game Freak will give you an award\n",
+        "and prove that it’s the truth!\r"
+      ]
+    },
+    {
+      "id": "msg_0503_T07R0203_00003",
+      "en_US": [
+        "I bet it was a long way to complete\n",
+        "the Pokédex.\r",
+        "Remember, the most precious thing of\n",
+        "all was the time you’ve worked hard\f",
+        "going everywhere to complete\f",
+        "the Pokédex.\r",
+        "I just said something deep! Seriously!"
+      ]
+    },
+    {
+      "id": "msg_0503_T07R0203_00004",
+      "en_US": [
+        "I am the Graphic Designer!\n",
+        "I am a skilled dot artist!"
+      ]
+    },
+    {
+      "id": "msg_0503_T07R0203_00005",
+      "en_US": [
+        "I am the Programmer!\r",
+        "I control the world of games\n",
+        "with my fingertip!"
+      ]
+    },
+    {
+      "id": "msg_0503_T07R0203_00006",
+      "en_US": [
+        "I am the Planner!\n",
+        "I come up with great ideas!\r",
+        "This place you’re standing\n",
+        "here is no exception! Hahaha!"
+      ]
+    },
+    {
+      "id": "msg_0503_T07R0203_00007",
+      "en_US": [
+        "I am the Sound Designer!\n",
+        "I compose music.\r",
+        "I’ll give you something cool if you\n",
+        "manage to collect all eight\f",
+        "Kanto Badges and show them to me."
+      ]
+    },
+    {
+      "id": "msg_0503_T07R0203_00008",
+      "en_US": [
+        "I am the Sound Designer!\n",
+        "I compose music.\r",
+        "Wow, you have collected\n",
+        "all the Kanto Badges already!\f",
+        "That’s great!\r",
+        "I’ll give you something cool\n",
+        "for that.\r"
+      ]
+    },
+    {
+      "id": "msg_0503_T07R0203_00009",
+      "garbage": 21
+    },
+    {
+      "id": "msg_0503_T07R0203_00010",
+      "en_US": [
+        "GB is a rectangular thing with a\n",
+        "black-and-white screen that you used\f",
+        "to play the original Pokémon...\f",
+        "Oh, wait! That was a Game Boy!\r",
+        "Turn it on and GB Sounds will let you\n",
+        "hear some nostalgic sounds.\r",
+        "It’s a gadget full of wonder!\n",
+        "Try it at various places!\r",
+        "There are some places you won’t\n",
+        "hear classic music...\r",
+        "But that’s life!"
+      ]
+    },
+    {
+      "id": "msg_0503_T07R0203_00011",
+      "en_US": [
+        "I find GB Sounds to be incredible!\n",
+        "Even places that were built recently\f",
+        "have nice, classic music.\r",
+        "Behold the full extent of my passion!\r",
+        "...Did I say “behold”? What am\n",
+        "I saying?\r",
+        "Anyway, try it at various places!\r",
+        "There are some places you won’t\n",
+        "hear classic music...\r",
+        "But that’s life!"
+      ]
+    },
+    {
+      "id": "msg_0503_T07R0203_00012",
+      "en_US": "Lyra: Hi, {STRVAR_1 3, 0, 0}!\r"
+    },
+    {
+      "id": "msg_0503_T07R0203_00013",
+      "en_US": "Ethan: Hey, {STRVAR_1 3, 0, 0}!\r"
+    },
+    {
+      "id": "msg_0503_T07R0203_00014",
+      "en_US": [
+        "Lyra: Guess what?\r",
+        "That Sound Designer over there\n",
+        "showed me something cool.\r",
+        "It’s a hi-tech, retro machine to\n",
+        "listen to music from the Game Boy!\r",
+        "He said he’ll give it to anyone\n",
+        "who has collected all of the\f",
+        "Kanto Badges.\r",
+        "Why don’t you go for it, {STRVAR_1 3, 0, 0}?\n",
+        "See ya!\r"
+      ]
+    },
+    {
+      "id": "msg_0503_T07R0203_00015",
+      "en_US": [
+        "Ethan: Guess what?\r",
+        "That Sound Designer over there\n",
+        "showed me something cool.\r",
+        "It’s a hi-tech, retro machine to\n",
+        "listen to music from the Game Boy!\r",
+        "He said he’ll give it to anyone\n",
+        "who has collected all of the\f",
+        "Kanto Badges.\r",
+        "Why don’t you go for it, {STRVAR_1 3, 0, 0}?\n",
+        "See ya!\r"
+      ]
+    },
+    {
+      "id": "msg_0503_T07R0203_00016",
+      "en_US": [
+        "Game Freak\n",
+        "Development Room"
+      ]
+    },
+    {
+      "id": "msg_0503_T07R0203_00017",
+      "en_US": [
+        "This elevator goes straight between\n",
+        "the second floor and the roof."
+      ]
+    },
+    {
+      "id": "msg_0503_T07R0203_00018",
+      "en_US": [
+        "It’s the game program.\r",
+        "Messing with it could ruin it.\n",
+        "You cannot touch it!"
+      ]
+    },
+    {
+      "id": "msg_0503_T07R0203_00019",
+      "en_US": [
+        "Pokémon stickers are everywhere\n",
+        "on the desk!"
+      ]
+    },
+    {
+      "id": "msg_0503_T07R0203_00020",
+      "en_US": [
+        "There are many photo collections\n",
+        "and books about myths!"
+      ]
+    },
+    {
+      "id": "msg_0503_T07R0203_00021",
+      "en_US": [
+        "What do you think?\r",
+        "I am the President here.\r",
+        "We are remaking an old game,\n",
+        "but this is quite a challenge.\r",
+        "Old fans would not want us to mess\n",
+        "with their good memories...\f",
+        "but there is no point in just\f",
+        "redoing the same thing, right?\r",
+        "We are working toward something\n",
+        "that brings back memories,\f",
+        "yet is also completely new!\r",
+        "I’ve been in this business for 20 years\n",
+        "now, but creating a game is always a\f",
+        "rewarding challenge!"
+      ]
+    }
+  ]
+}

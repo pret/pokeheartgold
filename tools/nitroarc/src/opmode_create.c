@@ -29,8 +29,8 @@
 #include <unistd.h>
 #include <sys/stat.h>
 
-#include "common.h"
 #include "nitroarc.h"
+#include "common.h"
 
 typedef struct dirent dirent_t;
 typedef struct stat   stat_t;
@@ -49,15 +49,11 @@ struct packcfg {
     bool     stripped;
 };
 
-static int peek_dotfiles(options_t *opts);
 static int prepare_exclusions(const char *fdata, const char *pat, strvec_t *out_excls);
 static int collect_explicit_files(const char *fdata, packcfg_t *out_cfg);
 static int collect_implicit_files(strvec_t *files, const strvec_t *excls, size_t *out_nexpls);
 static int pack_archive(packcfg_t *cfg, void **out_data, size_t *out_size);
-static int write_index(const char *fname, bool index, bool namespace, const strvec_t *files);
-
-#define HIT_DOTORDER  (1 << 0)
-#define HIT_DOTIGNORE (1 << 1)
+static int write_index(const char *fname, bool index, const strvec_t *files);
 
 extern int tool_create(const options_t *opts) {
     if (opts->file == NULL) {
@@ -91,10 +87,9 @@ extern int tool_create(const options_t *opts) {
         .stripped = opts->stripped,
     };
 
-    int       dots   = peek_dotfiles((options_t *)opts);
     strvec_t  excls  = { 0 };
     char     *ogcwd  = getcwd(NULL, 0);
-    char     *f_incl = NULL;
+    char     *f_incl = (char *)opts->single_file;
     char     *f_excl = NULL;
     char     *data   = NULL;
     size_t    size   = 0;
@@ -110,75 +105,18 @@ extern int tool_create(const options_t *opts) {
             || pack_archive(&cfg, (void **)&data, &size)
             || set_workdir(ogcwd)
             || write_file(opts->file, data, size)
-            || write_index(opts->file, opts->index, opts->index_ns, &cfg.files)
+            || write_index(opts->file, opts->index, &cfg.files)
             || EXIT_SUCCESS;
 
     for (size_t i = nexpls; i < cfg.files.size; i++) free(cfg.files.data[i]);
     free(cfg.files.data);
     free(excls.data); // none are internally-owned
     free(ogcwd);
-    free(f_incl);
+    if (opts->files_from)
+        free(f_incl);
     free(f_excl);
     free(data);
-
-    if (dots & HIT_DOTORDER)  free((char *)opts->files_from);
-    if (dots & HIT_DOTIGNORE) free((char *)opts->exclude_from);
-
     return errc;
-}
-
-static char* join_paths(const char *parent, const char *entry) {
-    size_t size_p = parent ? strlen(parent) + 1 : 0;
-    size_t size_e = strlen(entry);
-
-    char *path = malloc(size_p + size_e + 1);
-    if (path != NULL) {
-        if (size_p) {
-            memcpy(path, parent, size_p - 1);
-            path[size_p - 1] = '/';
-        }
-
-        memcpy(path + size_p, entry, size_e);
-        path[size_p + size_e] = 0;
-    }
-
-    return path;
-}
-
-static int peek_dotfiles(options_t *opts) {
-    char  *order  = join_paths(opts->argv[0], ".narcorder");
-    char  *ignore = join_paths(opts->argv[0], ".narcignore");
-    int    hits   = 0;
-    stat_t stbuf  = { 0 };
-
-    if (stat(order, &stbuf) == 0) {
-        if (opts->files_from != NULL) {
-            progerr("'--files-from' given as %s; skipping .narcorder", opts->files_from);
-            free(order);
-        }
-        else {
-            proglog("reading implicit inclusions from %s", order);
-            opts->files_from = order;
-
-            hits |= HIT_DOTORDER;
-        }
-    }
-
-    if (stat(ignore, &stbuf) == 0) {
-        if (opts->exclude_from != NULL) {
-            progerr("'--exclude-from' given as %s; skipping .narcignore", opts->exclude_from);
-            free(ignore);
-        }
-        else {
-            proglog("reading implicit exclusions from %s", ignore);
-            opts->exclude_from = ignore;
-
-            hits |= HIT_DOTIGNORE;
-        }
-    }
-
-    errno = 0;
-    return hits;
 }
 
 static size_t strvec_nhits(const strvec_t *vec, char *s, size_t max_i);
@@ -230,9 +168,6 @@ static int prepare_exclusions(
     out_excls->data = malloc(out_excls->cap * sizeof(*out_excls->data));
     if (out_excls->data == NULL) goto erralloc;
 
-    strvec_push(out_excls, ".*ignore");
-    strvec_push(out_excls, ".*keep");
-    strvec_push(out_excls, ".*order");
     if (pat != NULL) strvec_push(out_excls, (char *)pat);
     if (fdata == NULL) goto done;
 
@@ -316,6 +251,24 @@ static bool should_exclude(const char *name, const strvec_t *excls) {
     }
 
     return false;
+}
+
+static char* join_paths(const char *parent, const char *entry) {
+    size_t size_p = parent ? strlen(parent) + 1 : 0;
+    size_t size_e = strlen(entry);
+
+    char *path = malloc(size_p + size_e + 1);
+    if (path != NULL) {
+        if (size_p) {
+            memcpy(path, parent, size_p - 1);
+            path[size_p - 1] = '/';
+        }
+
+        memcpy(path + size_p, entry, size_e);
+        path[size_p + size_e] = 0;
+    }
+
+    return path;
 }
 
 static int collect_implicit_files(strvec_t *files, const strvec_t *excls, size_t *out_nexpls) {
@@ -538,35 +491,26 @@ static char* guardify_nhits(const char *name, size_t size, size_t nhits) {
     return suffixed;
 }
 
-static int write_index(const char *fname, bool index, bool namespace, const strvec_t *files) {
+static int write_index(const char *fname, bool index, const strvec_t *files) {
     assert(fname);
     assert(files);
     assert(files->data);
 
     if (!index) return PROGRAM_ENONE;
 
-    char  *guard = NULL;
-    FILE  *fnaix = NULL;
-    char  *pdot  = strrstem(fname, '.');
-    char  *psep  = strrstem(fname, '/');
-    psep        += *psep == '/';
+    char *guard = NULL;
+    FILE *fnaix = NULL;
+    char  *pdot = strrstem(fname, '.');
+    size_t size = pdot - fname;
+    char  *name = malloc(size + 6);
+    if (name == NULL) goto erralloc;
 
-    size_t size  = pdot - fname;
-    char  *bname = malloc(pdot - psep + 2);
-    char  *iname = malloc(size + 6);
-    if (bname == NULL) goto erralloc;
-    if (iname == NULL) goto erralloc;
-
-    memcpy(bname, psep, pdot - psep);
-    bname[pdot - psep]     = '_';
-    bname[pdot - psep + 1] = 0;
-
-    memcpy(iname, fname, size);
-    memcpy(iname + size, ".naix", 6);
-    guard = guardify(iname, size + 5);
+    memcpy(name, fname, size);
+    memcpy(name + size, ".naix", 6);
+    guard = guardify(name, size + 5);
     if (guard == NULL) goto erralloc;
 
-    int errc = open_file(iname, "wb", &fnaix);
+    int errc = open_file(name, "wb", &fnaix);
     if (errc) goto cleanup;
 
     fprintf(fnaix, "/*\n");
@@ -583,11 +527,7 @@ static int write_index(const char *fname, bool index, bool namespace, const strv
         char  *defn  = guardify_nhits(files->data[i], strlen(files->data[i]), nhits);
         if (defn == NULL) { free(defn); goto erralloc; }
 
-        fprintf(fnaix, "#define %s%s%s %zu\n",
-                namespace ? "NARC_" : "",
-                namespace ? bname : "", // TODO: add the name of the NARC, minus the extension
-                defn,
-                i);
+        fprintf(fnaix, "#define %s %zu\n", defn, i);
         free(defn);
     }
 
@@ -604,8 +544,7 @@ erralloc:
     errc = PROGRAM_EALLOC;
 
 cleanup:
-    free(bname);
-    free(iname);
+    free(name);
     free(guard);
     return errc;
 }

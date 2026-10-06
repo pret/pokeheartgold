@@ -1,0 +1,303 @@
+{
+  "key": 40969,
+  "messages": [
+    {
+      "id": "msg_0421_00000",
+      "garbage": 7
+    },
+    {
+      "id": "msg_0421_00001",
+      "garbage": 6
+    },
+    {
+      "id": "msg_0421_00002",
+      "garbage": 6
+    },
+    {
+      "id": "msg_0421_00003",
+      "garbage": 10
+    },
+    {
+      "id": "msg_0421_00004",
+      "garbage": 8
+    },
+    {
+      "id": "msg_0421_00005",
+      "garbage": 10
+    },
+    {
+      "id": "msg_0421_00006",
+      "garbage": 8
+    },
+    {
+      "id": "msg_0421_00007",
+      "garbage": 9
+    },
+    {
+      "id": "msg_0421_00008",
+      "garbage": 8
+    },
+    {
+      "id": "msg_0421_00009",
+      "garbage": 9
+    },
+    {
+      "id": "msg_0421_00010",
+      "garbage": 15
+    },
+    {
+      "id": "msg_0421_00011",
+      "garbage": 11
+    },
+    {
+      "id": "msg_0421_00012",
+      "garbage": 10
+    },
+    {
+      "id": "msg_0421_00013",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0421_00014",
+      "garbage": 11
+    },
+    {
+      "id": "msg_0421_00015",
+      "garbage": 8
+    },
+    {
+      "id": "msg_0421_00016",
+      "garbage": 7
+    },
+    {
+      "id": "msg_0421_00017",
+      "garbage": 6
+    },
+    {
+      "id": "msg_0421_00018",
+      "garbage": 7
+    },
+    {
+      "id": "msg_0421_00019",
+      "garbage": 7
+    },
+    {
+      "id": "msg_0421_00020",
+      "garbage": 6
+    },
+    {
+      "id": "msg_0421_00021",
+      "garbage": 7
+    },
+    {
+      "id": "msg_0421_00022",
+      "garbage": 13
+    },
+    {
+      "id": "msg_0421_00023",
+      "garbage": 27
+    },
+    {
+      "id": "msg_0421_00024",
+      "garbage": 26
+    },
+    {
+      "id": "msg_0421_00025",
+      "garbage": 26
+    },
+    {
+      "id": "msg_0421_00026",
+      "garbage": 30
+    },
+    {
+      "id": "msg_0421_00027",
+      "garbage": 28
+    },
+    {
+      "id": "msg_0421_00028",
+      "garbage": 23
+    },
+    {
+      "id": "msg_0421_00029",
+      "garbage": 13
+    },
+    {
+      "id": "msg_0421_00030",
+      "garbage": 19
+    },
+    {
+      "id": "msg_0421_00031",
+      "garbage": 19
+    },
+    {
+      "id": "msg_0421_00032",
+      "garbage": 14
+    },
+    {
+      "id": "msg_0421_00033",
+      "garbage": 20
+    },
+    {
+      "id": "msg_0421_00034",
+      "garbage": 12
+    },
+    {
+      "id": "msg_0421_00035",
+      "garbage": 19
+    },
+    {
+      "id": "msg_0421_00036",
+      "garbage": 6
+    },
+    {
+      "id": "msg_0421_00037",
+      "garbage": 31
+    },
+    {
+      "id": "msg_0421_00038",
+      "garbage": 17
+    },
+    {
+      "id": "msg_0421_00039",
+      "garbage": 16
+    },
+    {
+      "id": "msg_0421_00040",
+      "en_US": "{ALN_CENTER}DELETE RECORD"
+    },
+    {
+      "id": "msg_0421_00041",
+      "en_US": "{ALN_CENTER}RETURN"
+    },
+    {
+      "id": "msg_0421_00042",
+      "en_US": "{STRVAR_1 50, 0, 0}."
+    },
+    {
+      "id": "msg_0421_00043",
+      "en_US": "{STRVAR_1 3, 1, 0}"
+    },
+    {
+      "id": "msg_0421_00044",
+      "en_US": "{STRVAR_1 53, 0, 0} wins"
+    },
+    {
+      "id": "msg_0421_00045",
+      "en_US": "{STRVAR_1 50, 0, 0} wins"
+    },
+    {
+      "id": "msg_0421_00046",
+      "en_US": "{STRVAR_1 55, 0, 0}"
+    },
+    {
+      "id": "msg_0421_00047",
+      "en_US": "{STRVAR_1 55, 0, 0}"
+    },
+    {
+      "id": "msg_0421_00048",
+      "en_US": [
+        "Select the record you want to\n",
+        "delete, then press the A or X Button."
+      ]
+    },
+    {
+      "id": "msg_0421_00049",
+      "en_US": [
+        "Delete {STRVAR_1 3, 0, 0}’s record?\n",
+        "Are you sure?"
+      ]
+    },
+    {
+      "id": "msg_0421_00050",
+      "garbage": 2
+    },
+    {
+      "id": "msg_0421_00051",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0421_00052",
+      "en_US": "Your own record can’t be deleted."
+    },
+    {
+      "id": "msg_0421_00053",
+      "en_US": "{ALN_CENTER}Battle Tower Record"
+    },
+    {
+      "id": "msg_0421_00054",
+      "en_US": "{ALN_CENTER}Single Battle Win-Streak"
+    },
+    {
+      "id": "msg_0421_00055",
+      "en_US": "{ALN_CENTER}Battle Tower Record"
+    },
+    {
+      "id": "msg_0421_00056",
+      "en_US": "{ALN_CENTER}Double Battle Win-Streak"
+    },
+    {
+      "id": "msg_0421_00057",
+      "en_US": "{ALN_CENTER}Battle Tower Record"
+    },
+    {
+      "id": "msg_0421_00058",
+      "en_US": "{ALN_CENTER}Multi Battle Win-Streak"
+    },
+    {
+      "id": "msg_0421_00059",
+      "en_US": "{ALN_CENTER}Battle Tower Record"
+    },
+    {
+      "id": "msg_0421_00060",
+      "en_US": "{ALN_CENTER}Link Multi Battle Win-Streak"
+    },
+    {
+      "id": "msg_0421_00061",
+      "en_US": "{ALN_CENTER}Battle Tower Record"
+    },
+    {
+      "id": "msg_0421_00062",
+      "en_US": "{ALN_CENTER}Wi-Fi Battle Win-Streak"
+    },
+    {
+      "id": "msg_0421_00063",
+      "en_US": "{ALN_CENTER}Battle Tower Record"
+    },
+    {
+      "id": "msg_0421_00064",
+      "en_US": "{ALN_CENTER}Average Win-Streak Record"
+    },
+    {
+      "id": "msg_0421_00065",
+      "en_US": "{ALN_CENTER}Pokémon Record"
+    },
+    {
+      "id": "msg_0421_00066",
+      "en_US": "{ALN_CENTER}The number of Pokémon defeated."
+    },
+    {
+      "id": "msg_0421_00067",
+      "en_US": "{ALN_CENTER}Pokémon Record"
+    },
+    {
+      "id": "msg_0421_00068",
+      "en_US": "{ALN_CENTER}Pokémon caught using Poké Balls."
+    },
+    {
+      "id": "msg_0421_00069",
+      "en_US": "{ALN_CENTER}Pokémon Record"
+    },
+    {
+      "id": "msg_0421_00070",
+      "en_US": "{ALN_CENTER}Pokémon that were hatched from Eggs."
+    },
+    {
+      "id": "msg_0421_00071",
+      "en_US": "{ALN_CENTER}Pokémon Record"
+    },
+    {
+      "id": "msg_0421_00072",
+      "en_US": "{ALN_CENTER}Pokémon that were caught fishing."
+    }
+  ]
+}

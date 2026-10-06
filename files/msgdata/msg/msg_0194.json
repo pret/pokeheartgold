@@ -1,0 +1,137 @@
+{
+  "key": 3949,
+  "messages": [
+    {
+      "id": "msg_0194_00000",
+      "en_US": [
+        "Please choose Pokémon\n",
+        "no. {STRVAR_1 50, 0, 0}."
+      ]
+    },
+    {
+      "id": "msg_0194_00001",
+      "en_US": [
+        "Are you OK with the\n",
+        "chosen {STRVAR_1 50, 0, 0} Pokémon?"
+      ]
+    },
+    {
+      "id": "msg_0194_00002",
+      "en_US": "Please wait a moment."
+    },
+    {
+      "id": "msg_0194_00003",
+      "garbage": 2
+    },
+    {
+      "id": "msg_0194_00004",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0194_00005",
+      "en_US": "SUMMARY"
+    },
+    {
+      "id": "msg_0194_00006",
+      "en_US": "RENT"
+    },
+    {
+      "id": "msg_0194_00007",
+      "en_US": "CANCEL"
+    },
+    {
+      "id": "msg_0194_00008",
+      "en_US": "REMOVE"
+    },
+    {
+      "id": "msg_0194_00009",
+      "en_US": [
+        "Choose the Pokémon to\n",
+        "be exchanged."
+      ]
+    },
+    {
+      "id": "msg_0194_00010",
+      "en_US": "Cancel the Pokémon trade?"
+    },
+    {
+      "id": "msg_0194_00011",
+      "garbage": 2
+    },
+    {
+      "id": "msg_0194_00012",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0194_00013",
+      "en_US": [
+        "Choose the Pokémon you\n",
+        "want to receive."
+      ]
+    },
+    {
+      "id": "msg_0194_00014",
+      "en_US": "Will you accept this Pokémon?"
+    },
+    {
+      "id": "msg_0194_00015",
+      "en_US": "Please wait a moment."
+    },
+    {
+      "id": "msg_0194_00016",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} traded\n",
+        "away {STRVAR_1 0, 1, 0} and\f",
+        "received {STRVAR_1 0, 2, 0}.\r"
+      ]
+    },
+    {
+      "id": "msg_0194_00017",
+      "garbage": 2
+    },
+    {
+      "id": "msg_0194_00018",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0194_00019",
+      "en_US": "CANCEL"
+    },
+    {
+      "id": "msg_0194_00020",
+      "en_US": "SUMMARY"
+    },
+    {
+      "id": "msg_0194_00021",
+      "en_US": "EXCHANGE"
+    },
+    {
+      "id": "msg_0194_00022",
+      "en_US": "CLOSE"
+    },
+    {
+      "id": "msg_0194_00023",
+      "en_US": "BACK"
+    },
+    {
+      "id": "msg_0194_00024",
+      "en_US": "CANCEL"
+    },
+    {
+      "id": "msg_0194_00025",
+      "en_US": "RECEIVE"
+    },
+    {
+      "id": "msg_0194_00026",
+      "en_US": "♂"
+    },
+    {
+      "id": "msg_0194_00027",
+      "en_US": "♀"
+    },
+    {
+      "id": "msg_0194_00028",
+      "en_US": "{STRVAR_1 0, 0, 0}"
+    }
+  ]
+}

@@ -1,0 +1,297 @@
+{
+  "key": 62590,
+  "messages": [
+    {
+      "id": "msg_0377_R30R0201_00000",
+      "en_US": [
+        "You must be {STRVAR_1 3, 0, 0}.\r",
+        "It was I who sent an email\n",
+        "to Professor Elm earlier.\r"
+      ]
+    },
+    {
+      "id": "msg_0377_R30R0201_00001",
+      "en_US": [
+        "You must be {STRVAR_1 3, 0, 0}.\r",
+        "It was I who sent an email\n",
+        "to Professor Elm earlier.\r"
+      ]
+    },
+    {
+      "id": "msg_0377_R30R0201_00002",
+      "en_US": [
+        "This is what I want Professor Elm\n",
+        "to examine.\r"
+      ]
+    },
+    {
+      "id": "msg_0377_R30R0201_00003",
+      "en_US": [
+        "A friend of mine from Ecruteak gave\n",
+        "it to me.\r",
+        "I bet you can’t find this kind of\n",
+        "Egg in Johto.\r",
+        "I thought Professor Elm might be able\n",
+        "to tell what this is.\r",
+        "“He’s the best when it comes to the\n",
+        "research of Pokémon evolution.”\r",
+        "That’s a quote from the famous\n",
+        "Professor Oak.\r"
+      ]
+    },
+    {
+      "id": "msg_0377_R30R0201_00004",
+      "en_US": [
+        "You are returning to Professor Elm?\r",
+        "Here. Your Pokémon should have\n",
+        "some rest.\r"
+      ]
+    },
+    {
+      "id": "msg_0377_R30R0201_00005",
+      "en_US": [
+        "Sorry to trouble you, having you go\n",
+        "back and forth.\r",
+        "But please make sure to hand it to\n",
+        "Professor Elm!"
+      ]
+    },
+    {
+      "id": "msg_0377_R30R0201_00006",
+      "en_US": [
+        "Life is delightful!\n",
+        "Always, new discoveries to be made!"
+      ]
+    },
+    {
+      "id": "msg_0377_R30R0201_00007",
+      "en_US": [
+        "Kimono Girls? What’re you talking\n",
+        "about? I don’t know such people.\f",
+        "Hee hee...\r"
+      ]
+    },
+    {
+      "id": "msg_0377_R30R0201_00008",
+      "en_US": [
+        "Professor Oak: And with that...\r",
+        "I’m Professor Oak, a Pokémon\n",
+        "researcher!\r",
+        "So you’re {STRVAR_1 3, 0, 0}!\r",
+        "I was just visiting my friend\n",
+        "Mr. Pokémon.\r",
+        "I heard you were running an errand\n",
+        "for Professor Elm, so I waited here.\r"
+      ]
+    },
+    {
+      "id": "msg_0377_R30R0201_00009",
+      "en_US": [
+        "Professor Oak: And with that...\r",
+        "I’m Professor Oak, a Pokémon\n",
+        "researcher!\r",
+        "So you’re {STRVAR_1 3, 0, 0}!\r",
+        "I was just visiting my friend\n",
+        "Mr. Pokémon.\r",
+        "I heard you were running an errand\n",
+        "for Professor Elm, so I waited here.\r"
+      ]
+    },
+    {
+      "id": "msg_0377_R30R0201_00010",
+      "en_US": [
+        "Professor Oak: Oh! What’s this?\n",
+        "A rare Pokémon!\r",
+        "I see!\n",
+        "You must be helping Professor Elm’s\f",
+        "research! I think I understand why\f",
+        "Professor Elm gave you that Pokémon.\r",
+        "You will treat your Pokémon with love\n",
+        "and care, it seems.\r"
+      ]
+    },
+    {
+      "id": "msg_0377_R30R0201_00011",
+      "en_US": [
+        "Professor Oak: ...Ah!\r",
+        "You seem to be dependable.\n",
+        "How would you like to help me out?\r",
+        "See? This is the latest version of\n",
+        "the Pokédex.\r",
+        "It automatically records data on\n",
+        "Pokémon you’ve seen or caught.\r",
+        "It’s a high-tech encyclopedia!\n",
+        "I’d like you to have it.\r"
+      ]
+    },
+    {
+      "id": "msg_0377_R30R0201_00012",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} received the Pokédex\n",
+        "from Professor Oak!"
+      ]
+    },
+    {
+      "id": "msg_0377_R30R0201_00013",
+      "en_US": [
+        "Go meet many kinds of Pokémon and\n",
+        "complete that Pokédex!\f",
+        "But I’ve stayed too long.\r",
+        "I have to get to Goldenrod for my\n",
+        "usual radio show.\r",
+        "{STRVAR_1 3, 0, 0}, I have a feeling that\n",
+        "this is not the last time we’ll meet...\r",
+        "Let’s exchange numbers\n",
+        "just to be on the safe side.\r"
+      ]
+    },
+    {
+      "id": "msg_0377_R30R0201_00014",
+      "en_US": [
+        "Go meet many kinds of Pokémon and\n",
+        "complete that Pokédex!\f",
+        "But I’ve stayed too long.\r",
+        "I have to get to Goldenrod for my\n",
+        "usual radio show.\r",
+        "{STRVAR_1 3, 0, 0}, I have a feeling that\n",
+        "this is not the last time we’ll meet...\r",
+        "Let’s exchange numbers\n",
+        "just to be on the safe side.\r"
+      ]
+    },
+    {
+      "id": "msg_0377_R30R0201_00015",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} registered Professor Oak\n",
+        "in the Pokégear!\r"
+      ]
+    },
+    {
+      "id": "msg_0377_R30R0201_00016",
+      "en_US": [
+        "Hm? That Red Scale! What’s that?\n",
+        "A red GYARADOS?\f",
+        "That’s rare! I... I want it...\r",
+        "{STRVAR_1 3, 0, 0}, would you\n",
+        "care to trade it?\r",
+        "I can offer this Exp. Share I got\n",
+        "from Professor Oak. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0377_R30R0201_00017",
+      "en_US": [
+        "Hm? That Red Scale! What’s that?\n",
+        "A red GYARADOS?\f",
+        "That’s rare! I... I want it...\r",
+        "{STRVAR_1 3, 0, 0}, would you\n",
+        "care to trade it?\r",
+        "I can offer this Exp. Share I got\n",
+        "from Professor Oak. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0377_R30R0201_00018",
+      "garbage": 22
+    },
+    {
+      "id": "msg_0377_R30R0201_00019",
+      "en_US": "Arrgh, I reckon yer Bag’s full."
+    },
+    {
+      "id": "msg_0377_R30R0201_00020",
+      "en_US": [
+        "That’s disappointing.\n",
+        "That happens to be very rare."
+      ]
+    },
+    {
+      "id": "msg_0377_R30R0201_00021",
+      "en_US": [
+        "Hi, {STRVAR_1 3, 0, 0}!\r",
+        "I have something I want you to have\n",
+        "and was just about to send an email\f",
+        "to Professor Oak.\r"
+      ]
+    },
+    {
+      "id": "msg_0377_R30R0201_00022",
+      "en_US": [
+        "Hi, {STRVAR_1 3, 0, 0}!\r",
+        "I have something I want you to have\n",
+        "and was just about to send an email\f",
+        "to Professor Oak.\r"
+      ]
+    },
+    {
+      "id": "msg_0377_R30R0201_00023",
+      "en_US": [
+        "The thing is...\n",
+        "A friend of mine from Hoenn\f",
+        "came over to give this to me.\r"
+      ]
+    },
+    {
+      "id": "msg_0377_R30R0201_00024",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} received\n",
+        "the Blue Orb!\r"
+      ]
+    },
+    {
+      "id": "msg_0377_R30R0201_00025",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} received\n",
+        "the Red Orb!\r"
+      ]
+    },
+    {
+      "id": "msg_0377_R30R0201_00026",
+      "en_US": [
+        "That Orb has something to do with\n",
+        "the ancient ruins located past\f",
+        "Cianwood City, called the\f",
+        "Embedded Tower.\r",
+        "But only a handful of Trainers can\n",
+        "reach there...\r",
+        "That’s where you come in.\r",
+        "Professor Oak thinks highly of you,\n",
+        "and you are the proud Champion\f",
+        "after all.\r",
+        "I’m sure you can solve the mystery\n",
+        "of the Orb and the secret of the ruins."
+      ]
+    },
+    {
+      "id": "msg_0377_R30R0201_00027",
+      "en_US": [
+        "The Embedded Tower is past Cianwood,\n",
+        "somewhere in the Cliff Cave.\r",
+        "Or so I heard.\r",
+        "Or so I remember.\r",
+        "Or so I believe!"
+      ]
+    },
+    {
+      "id": "msg_0377_R30R0201_00028",
+      "en_US": [
+        "It’s packed with foreign magazines.\r",
+        "Can’t even read their titles..."
+      ]
+    },
+    {
+      "id": "msg_0377_R30R0201_00029",
+      "en_US": [
+        "It’s a big computer.\n",
+        "Hmm. It’s broken."
+      ]
+    },
+    {
+      "id": "msg_0377_R30R0201_00030",
+      "en_US": [
+        "A whole pile of strange coins!\f",
+        "Maybe they’re from another country..."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "key": 1095,
+  "messages": [
+    {
+      "id": "msg_0370_R27R0101_00000",
+      "en_US": [
+        "Where are you off to with Pokémon?\r",
+        "The Pokémon League?\r",
+        "Are your Pokémon loyal enough for\n",
+        "you to win?\r",
+        "Let me see...\r"
+      ]
+    },
+    {
+      "id": "msg_0370_R27R0101_00001",
+      "en_US": [
+        "Ah! Your Pokémon trusts you\n",
+        "very much.\r",
+        "It’s nice to see a good Trainer.\r",
+        "Here. A gift for your journey.\r"
+      ]
+    },
+    {
+      "id": "msg_0370_R27R0101_00002",
+      "en_US": [
+        "TM37 happens to be Sandstorm.\r",
+        "It’s a move that inflicts damage on\n",
+        "both your and your foe’s Pokémon.\r",
+        "However, some Pokémon, such as Rock-\n",
+        "and Ground- and Steel-type\f",
+        "Pokémon, take no damage.\r",
+        "There are other ways to avoid taking\n",
+        "damage. I’ll let you figure it out."
+      ]
+    },
+    {
+      "id": "msg_0370_R27R0101_00003",
+      "en_US": [
+        "If it doesn’t come to trust you some\n",
+        "more, it could be tough going.\r",
+        "Trust is the tie that binds Pokémon\n",
+        "and Trainers."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "key": 5612,
+  "messages": [
+    {
+      "id": "msg_0427_00000",
+      "en_US": [
+        "Ding-dong!\r",
+        "Time’s up!\n",
+        "Your Safari Game is over.\r"
+      ]
+    },
+    {
+      "id": "msg_0427_00001",
+      "en_US": [
+        "Ding-dong!\r",
+        "You’ve run out of Safari Balls.\n",
+        "Your Safari Game is over.\r"
+      ]
+    },
+    {
+      "id": "msg_0427_00002",
+      "en_US": [
+        "Ding-dong!\r",
+        "You’re out of room for more Pokémon.\n",
+        "Your Safari Game is over!\r"
+      ]
+    },
+    {
+      "id": "msg_0427_00003",
+      "en_US": [
+        "Would you like to exit the\n",
+        "Safari Zone right now? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0427_00004",
+      "en_US": "Place an object? {YESNO 0}"
+    },
+    {
+      "id": "msg_0427_00005",
+      "en_US": "Placed {STRVAR_1 8, 0, 0}!"
+    },
+    {
+      "id": "msg_0427_00006",
+      "en_US": "Remove the {STRVAR_1 8, 0, 0}? {YESNO 0}"
+    },
+    {
+      "id": "msg_0427_00007",
+      "en_US": "Removed the {STRVAR_1 8, 0, 0}!"
+    },
+    {
+      "id": "msg_0427_00008",
+      "en_US": [
+        "You cannot place any more objects in\n",
+        "this Area!"
+      ]
+    },
+    {
+      "id": "msg_0427_00009",
+      "en_US": [
+        "You have no objects that can\n",
+        "be placed."
+      ]
+    },
+    {
+      "id": "msg_0427_00010",
+      "en_US": [
+        "There’s no space to place\n",
+        "an object!"
+      ]
+    }
+  ]
+}

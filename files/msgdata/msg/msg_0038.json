@@ -1,0 +1,33 @@
+{
+  "key": 59699,
+  "messages": [
+    {
+      "id": "msg_0038_00000",
+      "en_US": "Please enter the Friend Code."
+    },
+    {
+      "id": "msg_0038_00001",
+      "en_US": "Please enter the data number."
+    },
+    {
+      "id": "msg_0038_00002",
+      "en_US": "BACK"
+    },
+    {
+      "id": "msg_0038_00003",
+      "en_US": "OK"
+    },
+    {
+      "id": "msg_0038_00004",
+      "en_US": "Please enter your Wii number."
+    },
+    {
+      "id": "msg_0038_00005",
+      "en_US": "Please enter the Registration Code."
+    },
+    {
+      "id": "msg_0038_00006",
+      "en_US": "Please enter the 4-digit password."
+    }
+  ]
+}

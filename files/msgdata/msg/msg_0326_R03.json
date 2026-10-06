@@ -1,0 +1,51 @@
+{
+  "key": 18195,
+  "messages": [
+    {
+      "id": "msg_0326_R03_00000",
+      "en_US": [
+        "Mt. Moon ahead.\r",
+        "Mt. Moon Square is on\n",
+        "the way to the top!"
+      ]
+    },
+    {
+      "id": "msg_0326_R03_00001",
+      "en_US": [
+        "Never seen a stone like this before!\r",
+        "Could it be...\n",
+        "a meteorite from space?"
+      ]
+    },
+    {
+      "id": "msg_0326_R03_00002",
+      "en_US": [
+        "Touching the meteorite boosted\n",
+        "the Speed of a certain Pokémon."
+      ]
+    },
+    {
+      "id": "msg_0326_R03_00003",
+      "en_US": [
+        "Touching the meteorite heightened\n",
+        "the defensive capabilities of\f",
+        "a certain Pokémon."
+      ]
+    },
+    {
+      "id": "msg_0326_R03_00004",
+      "en_US": [
+        "Touching the meteorite heightened\n",
+        "the offensive capabilities of\f",
+        "a certain Pokémon."
+      ]
+    },
+    {
+      "id": "msg_0326_R03_00005",
+      "en_US": [
+        "Touching the meteorite balanced out\n",
+        "the attributes of a certain Pokémon."
+      ]
+    }
+  ]
+}

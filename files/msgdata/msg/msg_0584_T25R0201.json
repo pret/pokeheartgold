@@ -1,0 +1,49 @@
+{
+  "key": 58463,
+  "messages": [
+    {
+      "id": "msg_0584_T25R0201_00000",
+      "en_US": [
+        "Sigh... I opened a branch here,\n",
+        "but I can’t sell my Bicycles.\f",
+        "Why is that?\r",
+        "Could you ride a Bicycle and\n",
+        "advertise for me? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0584_T25R0201_00001",
+      "en_US": [
+        "Really? Great!\r",
+        "Give me your name and phone number,\n",
+        "and I’ll loan you a Bicycle. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0584_T25R0201_00002",
+      "garbage": 18
+    },
+    {
+      "id": "msg_0584_T25R0201_00003",
+      "en_US": [
+        "The main shop is at Cerulean\n",
+        "back in Kanto.\r",
+        "Say hello to the shop manager\n",
+        "if you happen to go there!\r",
+        "Our Bicycles are first-rate!\n",
+        "You can ride them in Kanto, too!"
+      ]
+    },
+    {
+      "id": "msg_0584_T25R0201_00004",
+      "en_US": [
+        "Sigh... Oh, for the kindness\n",
+        "of people..."
+      ]
+    },
+    {
+      "id": "msg_0584_T25R0201_00005",
+      "en_US": "It’s a shiny new Bicycle!"
+    }
+  ]
+}

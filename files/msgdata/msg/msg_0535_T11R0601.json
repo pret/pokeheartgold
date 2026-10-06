@@ -1,0 +1,173 @@
+{
+  "key": 9246,
+  "messages": [
+    {
+      "id": "msg_0535_T11R0601_00000",
+      "en_US": [
+        "This is a problem!\r",
+        "The machine at the Power Plant\n",
+        "is broken, and we’re not receiving\f",
+        "electricity!\r",
+        "I don’t know how long it will be until\n",
+        "we can get the Magnet Train going."
+      ]
+    },
+    {
+      "id": "msg_0535_T11R0601_00001",
+      "en_US": [
+        "Thanks to someone who got the\n",
+        "Power Plant up and running,\f",
+        "the Magnet Train is available again!\r",
+        "Passengers need to go through the\n",
+        "gate for the automatic ticket check...\r"
+      ]
+    },
+    {
+      "id": "msg_0535_T11R0601_00002",
+      "en_US": [
+        "...Beep!\r",
+        "I am so sorry, but you need\n",
+        "a Magnet Train Pass to get on\f",
+        "the Magnet Train...\r"
+      ]
+    },
+    {
+      "id": "msg_0535_T11R0601_00003",
+      "en_US": [
+        "Passengers need to go through the\n",
+        "gate for the automatic ticket check...\r"
+      ]
+    },
+    {
+      "id": "msg_0535_T11R0601_00004",
+      "en_US": [
+        "Ping...fwip!\n",
+        "Here is your Pass back.\r",
+        "This train is about to leave\n",
+        "for Goldenrod City."
+      ]
+    },
+    {
+      "id": "msg_0535_T11R0601_00005",
+      "en_US": [
+        "Enjoy the attractive and magnetic\n",
+        "journey!"
+      ]
+    },
+    {
+      "id": "msg_0535_T11R0601_00006",
+      "en_US": [
+        "We have arrived at Saffron! Saffron!\n",
+        "The accent is on the “a”!"
+      ]
+    },
+    {
+      "id": "msg_0535_T11R0601_00007",
+      "en_US": [
+        "Enjoy the attractive and magnetic\n",
+        "journey!\r"
+      ]
+    },
+    {
+      "id": "msg_0535_T11R0601_00008",
+      "en_US": [
+        "The Magnet Train is a super-modern\n",
+        "rail liner that uses electricity and\f",
+        "magnets to attain incredible speeds.\r",
+        "However, there isn’t any electricity.\n",
+        "It’s just an iron box."
+      ]
+    },
+    {
+      "id": "msg_0535_T11R0601_00009",
+      "en_US": [
+        "Whew...\r",
+        "How many times have I gone back\n",
+        "and forth between Kanto and Johto?"
+      ]
+    },
+    {
+      "id": "msg_0535_T11R0601_00010",
+      "en_US": [
+        "Before the Magnet Train station was\n",
+        "built, there was a house here.\r",
+        "A little girl who was called Copycat\n",
+        "used to live in it."
+      ]
+    },
+    {
+      "id": "msg_0535_T11R0601_00011",
+      "en_US": [
+        "Hi. Do you have a Magnet Train Pass?\r",
+        "I have one.\r",
+        "All the people in Saffron who ride the\n",
+        "Magnet Train have Passes."
+      ]
+    },
+    {
+      "id": "msg_0535_T11R0601_00012",
+      "en_US": [
+        "Lt. Surge: Oh! I never expected to see\n",
+        "you at a place like this!\f",
+        "What a coincidence!\r",
+        "I can feel great electric power around\n",
+        "the Magnet Train station!\r",
+        "You had a PIKACHU, didn’t you?\n",
+        "How about trading it for my\f",
+        "French PIKACHU? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0535_T11R0601_00013",
+      "en_US": [
+        "Lt. Surge: My PIKACHU and\n",
+        "your PIKACHU up for a trade,\f",
+        "what do you think?"
+      ]
+    },
+    {
+      "id": "msg_0535_T11R0601_00014",
+      "en_US": [
+        "Lt. Surge: Wow! Electrifying!\n",
+        "Let’s trade ’em now!\r"
+      ]
+    },
+    {
+      "id": "msg_0535_T11R0601_00015",
+      "en_US": [
+        "Lt. Surge: Shocking!\n",
+        "I want to share my feelings for\f",
+        "PIKACHU with you!\r",
+        "I’m ready anytime, so just bring\n",
+        "a PIKACHU, OK?"
+      ]
+    },
+    {
+      "id": "msg_0535_T11R0601_00016",
+      "en_US": [
+        "Lt. Surge: Yeah!\n",
+        "I’m so ecstatic! I’ll see you around.\f",
+        "Good-bye!\r"
+      ]
+    },
+    {
+      "id": "msg_0535_T11R0601_00017",
+      "en_US": [
+        "Lt. Surge: What? That is not\n",
+        "the right Pokémon!\r",
+        "I won’t trade my PIKACHU for\n",
+        "anything other than PIKACHU."
+      ]
+    },
+    {
+      "id": "msg_0535_T11R0601_00018",
+      "en_US": [
+        "We request that you make sure your\n",
+        "Pokémon are well behaved or put away\f",
+        "in their Poké Balls so they won’t lick\f",
+        "other passengers’ faces.\f",
+        "Thank you."
+      ]
+    }
+  ]
+}

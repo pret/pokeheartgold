@@ -1,0 +1,127 @@
+{
+  "key": 46191,
+  "messages": [
+    {
+      "id": "msg_0548_T20R0401_00000",
+      "en_US": [
+        "Hi, {STRVAR_1 3, 0, 0}!\n",
+        "Lyra is upstairs.\r",
+        "She’s playing games with her Pokémon\n",
+        "as usual.\r",
+        "You didn’t bring your...Pokémon?\n",
+        "...Oh, I should’ve known.\r",
+        "You don’t have your own Pokémon yet.\r",
+        "Well, I hope I didn’t hurt your\n",
+        "feelings, {STRVAR_1 3, 0, 0}."
+      ]
+    },
+    {
+      "id": "msg_0548_T20R0401_00001",
+      "en_US": [
+        "Hi, {STRVAR_1 3, 0, 0}!\n",
+        "Ethan is upstairs.\r",
+        "He’s having fun with his Pokémon\n",
+        "as usual.\r",
+        "You didn’t bring your...Pokémon?\n",
+        "...Oh, I should’ve known.\r",
+        "You don’t have your own Pokémon yet.\r",
+        "Well, I hope I didn’t hurt your\n",
+        "feelings, {STRVAR_1 3, 0, 0}."
+      ]
+    },
+    {
+      "id": "msg_0548_T20R0401_00002",
+      "en_US": [
+        "Hi, {STRVAR_1 3, 0, 0}!\n",
+        "Lyra is not here.\r",
+        "She’s been keeping herself busy\n",
+        "helping the professor.\f",
+        "She’s busier than I am!"
+      ]
+    },
+    {
+      "id": "msg_0548_T20R0401_00003",
+      "en_US": [
+        "Hi, {STRVAR_1 3, 0, 0}!\n",
+        "Ethan is not here.\r",
+        "He’s been keeping himself busy\n",
+        "helping the professor.\f",
+        "He’s busier than I am!"
+      ]
+    },
+    {
+      "id": "msg_0548_T20R0401_00004",
+      "en_US": [
+        "Hi, {STRVAR_1 3, 0, 0}!\n",
+        "Lyra is upstairs.\r",
+        "She’s playing games with her Pokémon\n",
+        "as usual."
+      ]
+    },
+    {
+      "id": "msg_0548_T20R0401_00005",
+      "en_US": [
+        "Hi, {STRVAR_1 3, 0, 0}!\n",
+        "Ethan is upstairs.\r",
+        "He’s having fun with his Pokémon\n",
+        "as usual."
+      ]
+    },
+    {
+      "id": "msg_0548_T20R0401_00006",
+      "garbage": 262
+    },
+    {
+      "id": "msg_0548_T20R0401_00007",
+      "garbage": 264
+    },
+    {
+      "id": "msg_0548_T20R0401_00008",
+      "garbage": 107
+    },
+    {
+      "id": "msg_0548_T20R0401_00009",
+      "garbage": 107
+    },
+    {
+      "id": "msg_0548_T20R0401_00010",
+      "garbage": 176
+    },
+    {
+      "id": "msg_0548_T20R0401_00011",
+      "garbage": 107
+    },
+    {
+      "id": "msg_0548_T20R0401_00012",
+      "garbage": 108
+    },
+    {
+      "id": "msg_0548_T20R0401_00013",
+      "garbage": 100
+    },
+    {
+      "id": "msg_0548_T20R0401_00014",
+      "garbage": 101
+    },
+    {
+      "id": "msg_0548_T20R0401_00015",
+      "garbage": 100
+    },
+    {
+      "id": "msg_0548_T20R0401_00016",
+      "garbage": 101
+    },
+    {
+      "id": "msg_0548_T20R0401_00017",
+      "garbage": 128
+    },
+    {
+      "id": "msg_0548_T20R0401_00018",
+      "garbage": 80
+    },
+    {
+      "id": "msg_0548_T20R0401_00019",
+      "garbage": 24
+    }
+  ]
+}

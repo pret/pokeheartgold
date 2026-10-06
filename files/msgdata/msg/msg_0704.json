@@ -1,0 +1,202 @@
+{
+  "key": 5527,
+  "messages": [
+    {
+      "id": "msg_0704_00000",
+      "en_US": "Jack"
+    },
+    {
+      "id": "msg_0704_00001",
+      "en_US": [
+        "Your knowledge is impressive!\n",
+        "I like that!\r",
+        "Want to trade battle tips?\n",
+        "I’ll phone if I get good info.\r",
+        "Would you tell me your number?{YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0704_00002",
+      "en_US": "I’ll call you if I hear anything!"
+    },
+    {
+      "id": "msg_0704_00003",
+      "en_US": [
+        "Oh, OK. Too bad...\r",
+        "Well, if you ever want my number,\n",
+        "come and see me, OK?"
+      ]
+    },
+    {
+      "id": "msg_0704_00004",
+      "en_US": [
+        "Want to trade battle tips?\n",
+        "I’ll phone if I get good info.\r",
+        "Would you tell me your number?{YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0704_00005",
+      "garbage": 0
+    },
+    {
+      "id": "msg_0704_00006",
+      "en_US": [
+        "What’s going on?\n",
+        "We’re pretty close... Why not just come\f",
+        "and talk in person?"
+      ]
+    },
+    {
+      "id": "msg_0704_00007",
+      "en_US": [
+        "My {STRVAR_1 0, 10, 0}’s intelligence keeps\n",
+        "rising. It might be smarter than yours!\r",
+        "See you later!"
+      ]
+    },
+    {
+      "id": "msg_0704_00008",
+      "en_US": [
+        "The other day, I easily defeated a wild\n",
+        "{STRVAR_1 0, 11, 0}.\r",
+        "I think swapping tips with you is\n",
+        "starting to help.\r",
+        "See you later!"
+      ]
+    },
+    {
+      "id": "msg_0704_00009",
+      "en_US": [
+        "I missed catching a wild {STRVAR_1 0, 11, 0} by\n",
+        "just a tiny bit.\r",
+        "If I’d been more informed, I’m\n",
+        "sure I would’ve caught it...\r",
+        "See you later!"
+      ]
+    },
+    {
+      "id": "msg_0704_00010",
+      "en_US": [
+        "Did you know...?\r",
+        "When it’s raining, Thunder is sure\n",
+        "to strike."
+      ]
+    },
+    {
+      "id": "msg_0704_00011",
+      "en_US": [
+        "Did you know...?\r",
+        "If you use Defense Curl, Rollout’s\n",
+        "power goes way up past normal."
+      ]
+    },
+    {
+      "id": "msg_0704_00012",
+      "en_US": [
+        "Did you know...?\r",
+        "If the sunlight is harsh, Solarbeam\n",
+        "doesn’t need to be charged up."
+      ]
+    },
+    {
+      "id": "msg_0704_00013",
+      "en_US": [
+        "Did you know...?\r",
+        "If the opponent uses Minimize, your\n",
+        "Stomp becomes more powerful."
+      ]
+    },
+    {
+      "id": "msg_0704_00014",
+      "en_US": [
+        "Did you know...?\r",
+        "If your opponent is Flying, your Gust\n",
+        "becomes much more powerful."
+      ]
+    },
+    {
+      "id": "msg_0704_00015",
+      "en_US": [
+        "Did you know...?\r",
+        "If your opponent is Flying, your Twister\n",
+        "becomes more powerful."
+      ]
+    },
+    {
+      "id": "msg_0704_00016",
+      "en_US": [
+        "Did you know...?\r",
+        "If your opponent uses Dig, your\n",
+        "Earthquake becomes more powerful."
+      ]
+    },
+    {
+      "id": "msg_0704_00017",
+      "en_US": [
+        "Did you know...?\r",
+        "If your opponent uses Dig, your\n",
+        "Magnitude becomes more powerful."
+      ]
+    },
+    {
+      "id": "msg_0704_00018",
+      "en_US": [
+        "Did you know...?\r",
+        "The Rock, Ground, and Steel types\n",
+        "can’t be hurt by Sandstorm."
+      ]
+    },
+    {
+      "id": "msg_0704_00019",
+      "en_US": [
+        "Did you know...?\r",
+        "If the sunlight is harsh, Water-type\n",
+        "moves become much weaker."
+      ]
+    },
+    {
+      "id": "msg_0704_00020",
+      "en_US": [
+        "Did you know...?\r",
+        "When it’s raining, Fire-type moves\n",
+        "become much weaker than usual."
+      ]
+    },
+    {
+      "id": "msg_0704_00021",
+      "en_US": [
+        "Do you want to battle? I’ll show you\n",
+        "how to battle logically.\r",
+        "I’ll be in {STRVAR_1 4, 3, 0}.\r",
+        "Give me a shout if you’re nearby."
+      ]
+    },
+    {
+      "id": "msg_0704_00022",
+      "en_US": [
+        "Hey, {STRVAR_1 3, 0, 0}!\r",
+        "Do you remember your promise?\n",
+        "We have to battle soon!\r",
+        "I’ll be at {STRVAR_1 4, 3, 0}."
+      ]
+    },
+    {
+      "id": "msg_0704_00023",
+      "en_US": [
+        "Hey, {STRVAR_1 3, 0, 0}!\r",
+        "Do you remember your promise?\n",
+        "We have to battle soon!\r",
+        "I’ll be at {STRVAR_1 4, 3, 0}."
+      ]
+    },
+    {
+      "id": "msg_0704_00024",
+      "en_US": [
+        "My friend heard some great tips.\n",
+        "He’s going to let me in on some.\r",
+        "When he tells me, I’ll call and tell you."
+      ]
+    }
+  ]
+}

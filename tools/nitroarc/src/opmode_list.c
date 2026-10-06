@@ -23,9 +23,9 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "nitroarc.h"
 #include "common.h"
 #include "extensions.h"
-#include "nitroarc.h"
 
 static int print_members(nitroarc_t *narc, const char *format, bool header);
 
@@ -65,7 +65,8 @@ static const fmtfunc_t handlers[] = {
 };
 
 static int print_members(nitroarc_t *narc, const char *format, bool header) {
-    if (format == NULL) return print_members_markdown(narc, header, narc->named);
+    bool named = narc->ndirs > 1;
+    if (format == NULL) return print_members_markdown(narc, header, named);
 
     const fmtfunc_t *candidate = &handlers[0];
     while (candidate->func != NULL) {
@@ -78,7 +79,7 @@ static int print_members(nitroarc_t *narc, const char *format, bool header) {
         return PROGRAM_EGENERAL;
     }
 
-    return candidate->func(narc, header, narc->named);
+    return candidate->func(narc, header, named);
 }
 
 static inline ptrdiff_t ptrdiff(const void *_l, const void *_r) {

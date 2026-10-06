@@ -1,0 +1,511 @@
+{
+  "key": 21602,
+  "messages": [
+    {
+      "id": "msg_0115_D36R0101_00000",
+      "en_US": [
+        "Oh, man... My boss is going to be\n",
+        "angry...\r",
+        "The FARFETCH’D that cut trees for\n",
+        "charcoal took off in the forest.\r",
+        "Can you catch them for me?\n",
+        "FARFETCH’D have sensitive ears.\r",
+        "If you step on a branch, they will face\n",
+        "toward you. That’s your chance.\r",
+        "Sneak up from behind and catch them...\n",
+        "Do you think you can do that?"
+      ]
+    },
+    {
+      "id": "msg_0115_D36R0101_00001",
+      "en_US": [
+        "Wow! You found a FARFETCH’D!\n",
+        "Thank you!\r",
+        "But...\n",
+        "There is one more missing.\r",
+        "If you step on a branch, it will face\n",
+        "that way, remember?\r",
+        "That’s your chance to catch it.\n",
+        "Sneak up on it slowly from behind."
+      ]
+    },
+    {
+      "id": "msg_0115_D36R0101_00002",
+      "en_US": [
+        "Wow!\n",
+        "You got me both of them.\f",
+        "Thank you so much!\r",
+        "My boss’s Pokémon won’t obey me,\n",
+        "because I don’t have a Badge.\r",
+        "Phew. You saved me."
+      ]
+    },
+    {
+      "id": "msg_0115_D36R0101_00003",
+      "en_US": "FARFETCH’D: Kwaa!\r"
+    },
+    {
+      "id": "msg_0115_D36R0101_00004",
+      "en_US": "FARFETCH’D: Kwaa!"
+    },
+    {
+      "id": "msg_0115_D36R0101_00005",
+      "en_US": "{STRVAR_1 3, 0, 0} caught the FARFETCH’D!\r"
+    },
+    {
+      "id": "msg_0115_D36R0101_00006",
+      "en_US": [
+        "Ah!\n",
+        "My Far and Fetch’d!\r",
+        "You found them for us, kid?\n",
+        "Without them, we wouldn’t be able to\f",
+        "cut trees for charcoal.\r",
+        "Thanks, kid!\r",
+        "Now, how can I thank you...?\n",
+        "I know! Here, take this.\r"
+      ]
+    },
+    {
+      "id": "msg_0115_D36R0101_00007",
+      "garbage": 22
+    },
+    {
+      "id": "msg_0115_D36R0101_00008",
+      "en_US": [
+        "That’s the HM Cut. Teach that to a\n",
+        "Pokémon to clear small trees.\r",
+        "Of course, you have to have the Gym\n",
+        "Badge from Azalea to use it."
+      ]
+    },
+    {
+      "id": "msg_0115_D36R0101_00009",
+      "garbage": 15
+    },
+    {
+      "id": "msg_0115_D36R0101_00010",
+      "en_US": [
+        "Do you want to apprentice as a charcoal\n",
+        "maker with me?\r",
+        "You’ll be first-rate in ten years!"
+      ]
+    },
+    {
+      "id": "msg_0115_D36R0101_00011",
+      "en_US": [
+        "What am I doing?\r",
+        "I’m shaking trees using Headbutt.\r",
+        "It’s fun. Here, you try it with your\n",
+        "Pokémon, too! {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0115_D36R0101_00012",
+      "en_US": [
+        "Do you want to try it with your\n",
+        "Pokémon? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0115_D36R0101_00013",
+      "en_US": [
+        "I see...\n",
+        "Take care of its head."
+      ]
+    },
+    {
+      "id": "msg_0115_D36R0101_00014",
+      "en_US": "Which Pokémon should learn it?\r"
+    },
+    {
+      "id": "msg_0115_D36R0101_00015",
+      "en_US": [
+        "Hmmm...\n",
+        "Even I couldn’t teach an Egg a move.\r"
+      ]
+    },
+    {
+      "id": "msg_0115_D36R0101_00016",
+      "en_US": [
+        "Sorry...\n",
+        "That Pokémon cannot learn Headbutt.\r"
+      ]
+    },
+    {
+      "id": "msg_0115_D36R0101_00017",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is trying to learn\n",
+        "Headbutt.\r",
+        "But {STRVAR_1 1, 0, 0} can’t learn more\n",
+        "than four moves.\r",
+        "Delete an older move to make\n",
+        "room for Headbutt? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0115_D36R0101_00018",
+      "en_US": [
+        "Is it OK to forget the\n",
+        "move {STRVAR_1 6, 1, 0}? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0115_D36R0101_00019",
+      "en_US": "Stop trying to teach Headbutt? {YESNO 0}"
+    },
+    {
+      "id": "msg_0115_D36R0101_00020",
+      "en_US": "1,{PAUSE 20} 2,{PAUSE 20} and...{PAUSE 20} ...{PAUSE 20} Poof!"
+    },
+    {
+      "id": "msg_0115_D36R0101_00021",
+      "en_US": "1,{PAUSE 20} 2,{PAUSE 20} and...{PAUSE 20} ...{PAUSE 20} Poof!"
+    },
+    {
+      "id": "msg_0115_D36R0101_00022",
+      "en_US": [
+        "There. How do you like it?\n",
+        "Your {STRVAR_1 0, 0, 0} looks stronger!"
+      ]
+    },
+    {
+      "id": "msg_0115_D36R0101_00023",
+      "en_US": [
+        "Your {STRVAR_1 0, 0, 0}\n",
+        "has already learned Headbutt.\r"
+      ]
+    },
+    {
+      "id": "msg_0115_D36R0101_00024",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} forgot how to\n",
+        "use {STRVAR_1 6, 1, 0}.\r",
+        "And..."
+      ]
+    },
+    {
+      "id": "msg_0115_D36R0101_00025",
+      "en_US": "{STRVAR_1 1, 0, 0} learned Headbutt."
+    },
+    {
+      "id": "msg_0115_D36R0101_00026",
+      "en_US": "{STRVAR_1 1, 0, 0} learned Headbutt!"
+    },
+    {
+      "id": "msg_0115_D36R0101_00027",
+      "en_US": [
+        "Trainer Tips!\r",
+        "Ilex Forest is so overgrown with trees\n",
+        "that you can’t see the sky.\r",
+        "Please watch out for items that may\n",
+        "have been dropped."
+      ]
+    },
+    {
+      "id": "msg_0115_D36R0101_00028",
+      "en_US": [
+        "Ilex Forest Shrine...\r",
+        "It’s a tribute to the forest’s\n",
+        "protector..."
+      ]
+    },
+    {
+      "id": "msg_0115_D36R0101_00029",
+      "en_US": [
+        "Kimono Girl, Kimono Girl, lost and all\n",
+        "alone. Poor girl lost in the dark\f",
+        "Ilex Forest.\r"
+      ]
+    },
+    {
+      "id": "msg_0115_D36R0101_00030",
+      "en_US": [
+        "What?\n",
+        "You remember me from Violet City?\f",
+        "You must be imagining.\r",
+        "Anyway, will you show me\n",
+        "how to get out of this forest? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0115_D36R0101_00031",
+      "en_US": [
+        "You will...?\n",
+        "Aren’t you lost in the forest as well?\f",
+        "How do you know how to get out of here?\r"
+      ]
+    },
+    {
+      "id": "msg_0115_D36R0101_00032",
+      "en_US": [
+        "Me oh my...\n",
+        "You are lost yourself, aren’t you?\r"
+      ]
+    },
+    {
+      "id": "msg_0115_D36R0101_00033",
+      "en_US": [
+        "Wow! Are you going to\n",
+        "show me how to get out?\f",
+        "You are such a smart Pokémon!\r"
+      ]
+    },
+    {
+      "id": "msg_0115_D36R0101_00034",
+      "en_US": "See you.\r"
+    },
+    {
+      "id": "msg_0115_D36R0101_00035",
+      "en_US": [
+        "FARFETCH’D noticed you!\n",
+        "It seems to face the direction of the\f",
+        "noise when you step on a branch."
+      ]
+    },
+    {
+      "id": "msg_0115_D36R0101_00036",
+      "en_US": "You need to catch it from behind."
+    },
+    {
+      "id": "msg_0115_D36R0101_00037",
+      "en_US": [
+        "You snuck up and caught it from\n",
+        "behind before it noticed you!"
+      ]
+    },
+    {
+      "id": "msg_0115_D36R0101_00038",
+      "en_US": [
+        "It’s a PICHU...!\n",
+        "One of its ears is spiky!\r"
+      ]
+    },
+    {
+      "id": "msg_0115_D36R0101_00039",
+      "en_US": [
+        "It wants to join your party.\n",
+        "Let it join you!\r"
+      ]
+    },
+    {
+      "id": "msg_0115_D36R0101_00040",
+      "en_US": [
+        "Spiky-eared PICHU has joined\n",
+        "your party!"
+      ]
+    },
+    {
+      "id": "msg_0115_D36R0101_00041",
+      "en_US": "...Your party is full!\r"
+    },
+    {
+      "id": "msg_0115_D36R0101_00042",
+      "en_US": [
+        "...Your party is full!\r",
+        "First go store a Pokémon in a PC Box."
+      ]
+    },
+    {
+      "id": "msg_0115_D36R0101_00043",
+      "en_US": "Spiky-eared PICHU: Zapzap chu!\r"
+    },
+    {
+      "id": "msg_0115_D36R0101_00044",
+      "en_US": "{STRVAR_1 3, 0, 0} received the Poké Ball!"
+    },
+    {
+      "id": "msg_0115_D36R0101_00045",
+      "en_US": [
+        "Would you like to give a nickname\n",
+        "to the Spiky-eared PICHU? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0115_D36R0101_00046",
+      "en_US": [
+        "Hey, hey!\n",
+        "You should not tamper with that shrine!\f",
+        "People are said to disappear.\r"
+      ]
+    },
+    {
+      "id": "msg_0115_D36R0101_00047",
+      "en_US": [
+        "Kids and Pokémon sometimes disappear\n",
+        "around this shrine.\r",
+        "It is believed that a Pokémon which\n",
+        "wanders across time does that.\r",
+        "It is truly a strange thing...\r"
+      ]
+    },
+    {
+      "id": "msg_0115_D36R0101_00048",
+      "en_US": [
+        "Well, well, this must be...\r",
+        "This must be the PICHU that has lived in\n",
+        "this forest for some time.\r",
+        "When I saw it the first time, it looked\n",
+        "lonely. It is full of energy today.\r"
+      ]
+    },
+    {
+      "id": "msg_0115_D36R0101_00049",
+      "en_US": [
+        "I see.\n",
+        "It seems that these old friends\f",
+        "finally meet again after a long time.\r"
+      ]
+    },
+    {
+      "id": "msg_0115_D36R0101_00050",
+      "en_US": [
+        "You are carrying a lot of Pokémon.\r",
+        "Why don’t you store one of them\n",
+        "at the Pokémon Center?\f",
+        "I will take care of it in the mean time."
+      ]
+    },
+    {
+      "id": "msg_0115_D36R0101_00051",
+      "en_US": [
+        "Being with friends should make it happy.\n",
+        "Take good care of it.\r"
+      ]
+    },
+    {
+      "id": "msg_0115_D36R0101_00052",
+      "en_US": [
+        "Oh, here it is!\n",
+        "Young Pokémon Trainer,\f",
+        "I will give you this Poké Ball.\r",
+        "I used to use them when I was younger.\r",
+        "Don’t worry.\n",
+        "It’s still in good condition.\r"
+      ]
+    },
+    {
+      "id": "msg_0115_D36R0101_00053",
+      "en_US": [
+        "It seems that Spiky-eared PICHU\n",
+        "wants to stay in your Poké Ball.\r"
+      ]
+    },
+    {
+      "id": "msg_0115_D36R0101_00054",
+      "en_US": [
+        "You named it {STRVAR_1 1, 0, 0}?\n",
+        "Such a cute name!\r"
+      ]
+    },
+    {
+      "id": "msg_0115_D36R0101_00055",
+      "en_US": [
+        "It’s been waiting for you\n",
+        "all this time.\r",
+        "Talk to it. That’ll make it happy."
+      ]
+    },
+    {
+      "id": "msg_0115_D36R0101_00056",
+      "en_US": [
+        "Ethan: Hi, {STRVAR_1 3, 0, 0}.\n",
+        "Have you heard of the legend of\f",
+        "the shrine?\r",
+        "They say that people disappear when\n",
+        "they tamper with it.\r"
+      ]
+    },
+    {
+      "id": "msg_0115_D36R0101_00057",
+      "en_US": [
+        "Lyra: Hi, {STRVAR_1 3, 0, 0}.\n",
+        "Have you heard of the legend of\f",
+        "the shrine?\r",
+        "They say that people disappear when\n",
+        "they tamper with it.\r"
+      ]
+    },
+    {
+      "id": "msg_0115_D36R0101_00058",
+      "en_US": [
+        "Ethan: ...\n",
+        "What was that?\r"
+      ]
+    },
+    {
+      "id": "msg_0115_D36R0101_00059",
+      "en_US": [
+        "Lyra: ...\n",
+        "What was that?\r"
+      ]
+    },
+    {
+      "id": "msg_0115_D36R0101_00060",
+      "en_US": [
+        "Ethan: Traveling through time\n",
+        "sure doesn’t feel good.\r"
+      ]
+    },
+    {
+      "id": "msg_0115_D36R0101_00061",
+      "en_US": [
+        "Lyra: Traveling through time\n",
+        "sure doesn’t feel good.\r"
+      ]
+    },
+    {
+      "id": "msg_0115_D36R0101_00062",
+      "en_US": "Hey, my MARILL!\r"
+    },
+    {
+      "id": "msg_0115_D36R0101_00063",
+      "en_US": "Hey, my MARILL!\r"
+    },
+    {
+      "id": "msg_0115_D36R0101_00064",
+      "en_US": [
+        "I thought I would never see you again!\r",
+        "Wait a sec...\n",
+        "So we must be back to our time!\r"
+      ]
+    },
+    {
+      "id": "msg_0115_D36R0101_00065",
+      "en_US": [
+        "I missed you so much!\r",
+        "Wait a sec...\n",
+        "So we must be back to our time!\r"
+      ]
+    },
+    {
+      "id": "msg_0115_D36R0101_00066",
+      "en_US": [
+        "It was all so bizarre.\n",
+        "But now that we are safely back to our\f",
+        "time and Team Rocket’s terrible design\f",
+        "fell through, we can say...\f",
+        "all’s well that ends well, right?\r",
+        "{STRVAR_1 3, 0, 0}, you never cease to\n",
+        "inspire great adventures!\r",
+        "It sure was an exhausting day, though.\n",
+        "I better get going.\r",
+        "See you!\r"
+      ]
+    },
+    {
+      "id": "msg_0115_D36R0101_00067",
+      "en_US": [
+        "It was all so bizarre.\n",
+        "But now that we are safely back to our\f",
+        "time and Team Rocket’s terrible design\f",
+        "fell through, we can say...\f",
+        "all’s well that ends well, right?\r",
+        "{STRVAR_1 3, 0, 0}, you never cease to\n",
+        "inspire great adventures!\r",
+        "It sure was an exhausting day, though.\n",
+        "I better get going.\r",
+        "See you!\r"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "key": 37918,
+  "messages": [
+    {
+      "id": "msg_0335_R06R0201_00000",
+      "en_US": [
+        "Welcome to Saffron City, home of the\n",
+        "Magnet Train!\r",
+        "...That’s what I’d normally say, but\n",
+        "the Magnet Train isn’t running now.\r",
+        "It’s not getting any electricity\n",
+        "because there’s something wrong\f",
+        "with the Power Plant."
+      ]
+    },
+    {
+      "id": "msg_0335_R06R0201_00001",
+      "en_US": [
+        "The Magnet Train is the most famous\n",
+        "thing about Saffron."
+      ]
+    }
+  ]
+}

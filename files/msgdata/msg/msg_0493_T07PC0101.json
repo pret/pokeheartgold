@@ -1,0 +1,32 @@
+{
+  "key": 11955,
+  "messages": [
+    {
+      "id": "msg_0493_T07PC0101_00000",
+      "en_US": [
+        "That Pokégear you have--\n",
+        "it’s way too cool!\r",
+        "Is that the...latest model?"
+      ]
+    },
+    {
+      "id": "msg_0493_T07PC0101_00001",
+      "en_US": [
+        "Erika is a master of Grass-type\n",
+        "Pokémon.\r",
+        "She’ll make you pay if you don’t\n",
+        "watch yourself."
+      ]
+    },
+    {
+      "id": "msg_0493_T07PC0101_00002",
+      "en_US": [
+        "The Game Corner in this city used\n",
+        "to be run by Team Rocket...\r",
+        "But when Team Rocket was removed,\n",
+        "this rich, game-loving man renovated\f",
+        "the Game Corner for the fun of it."
+      ]
+    }
+  ]
+}
