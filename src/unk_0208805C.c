@@ -13,7 +13,7 @@ static const u16 _02103894[] = {
     0x800,
     0x40,
     0x80,
-    0x100,
+    0x100, // this is the only one that ever gets used
     0x400,
     0x40,
     0x80,
@@ -55,11 +55,11 @@ u8 CalculateHpBarColor(u16 hp, u16 maxHp, u32 pixelsWide) {
     return HpBar_GetColorIdx(CalculateHpBarPixelsLength(hp, maxHp, pixelsWide), pixelsWide);
 }
 
-void sub_020880CC(u8 a0, enum HeapID heapID) {
-    if (a0 == 0) {
+void App_StartScreenFade(u8 fadeOut, enum HeapID heapID) {
+    if (fadeOut == FALSE) {
         BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_IN, FADE_TYPE_BRIGHTNESS_IN, RGB_BLACK, 6, 1, heapID);
     } else {
-        BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_UNK_8, FADE_TYPE_BRIGHTNESS_OUT, RGB_BLACK, 6, 1, heapID);
+        BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_CAMERA_SHUTTER_CLOSE, FADE_TYPE_BRIGHTNESS_OUT, RGB_BLACK, 6, 1, heapID);
     }
 }
 

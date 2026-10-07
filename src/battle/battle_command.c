@@ -6266,7 +6266,7 @@ static void Task_GetExp(SysTask *task, void *inData) {
     case STATE_GET_EXP_LEVEL_UP_CLEAR: {
         Window *window = BattleSystem_GetWindow(data->battleSystem, 1);
 
-        sub_0200E5D4(window, 0);
+        ClearWindowPixelBuffer(window, 0);
         RemoveWindow(window);
 
         G2_SetBG0Priority(1);

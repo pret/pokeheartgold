@@ -2100,9 +2100,9 @@ _02246E3E:
 	add r1, #0x10
 _02246E42:
 	str r0, [r4, r1]
-	bl sub_020210BC
+	bl EnableTouchPad
 	mov r0, #4
-	bl sub_02021148
+	bl InitializeTouchPad
 	mov r1, #0x61
 	lsl r1, r1, #2
 	ldr r0, [r5, #8]
@@ -2547,7 +2547,7 @@ _022471AA:
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
 	bl HBlankInterruptDisable
-	bl sub_02021238
+	bl DisableTouchPad
 	cmp r0, #1
 	beq _0224721A
 	bl GF_AssertFail

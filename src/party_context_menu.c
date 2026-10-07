@@ -945,7 +945,7 @@ void sub_0207DF98(PartyMenu *partyMenu) {
 }
 
 void sub_0207E04C(PartyMenu *partyMenu) {
-    sub_0200E5D4(&partyMenu->levelUpStatsWindow[0], FALSE);
+    ClearWindowPixelBuffer(&partyMenu->levelUpStatsWindow[0], FALSE);
     RemoveWindow(&partyMenu->levelUpStatsWindow[0]);
 }
 

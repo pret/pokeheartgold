@@ -5,7 +5,7 @@
 .public TextFlags_SetCanTouchSpeedUpPrint
 .public FontID_String_GetWidth
 .public LoadFontPal1
-.public sub_02004B10
+.public Sound_LoadHeapStateBGMAndResetSubScene
 .public Sound_SetSceneAndPlayBGM
 .public SoundSys_GetGBSoundsState
 .public SoundSys_ToggleGBSounds
@@ -72,7 +72,7 @@
 .public SpriteSystem_ReplacePlttResObj
 .public LoadUserFrameGfx1
 .public DrawFrameAndWindow1
-.public sub_0200E5D4
+.public ClearWindowPixelBuffer
 .public LoadUserFrameGfx2
 .public DrawFrameAndWindow2
 .public ClearFrameAndWindow2
@@ -123,9 +123,9 @@
 .public GF_CreateVramTransferManager
 .public GF_DestroyVramTransferManager
 .public GF_RunVramTransferTasks
-.public sub_020210BC
-.public sub_02021148
-.public sub_02021238
+.public EnableTouchPad
+.public InitializeTouchPad
+.public DisableTouchPad
 .public GfGfx_SetBanks
 .public GfGfx_DisableEngineAPlanes
 .public GfGfx_EngineATogglePlanes
@@ -195,7 +195,7 @@
 .public BagCursor_Field_GetPocket
 .public BagCursor_Field_PocketSetPosition
 .public BagCursor_Field_SetPocket
-.public sub_020880CC
+.public App_StartScreenFade
 .public AdjustQuantityUsingDPad
 .public NNS_G2dGetUnpackedBGCharacterData
 .public NNS_G3dAnmObjInit

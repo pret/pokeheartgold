@@ -348,7 +348,7 @@ static void ov01_0220116C(SCR_648_STRUCT *unkPtr) {
     int i;
     PlaySE(SEQ_SE_DP_SELECT);
     DestroyListMenu(unkPtr->listMenu_23C, NULL, NULL);
-    sub_0200E5D4(unkPtr->listMenuTemplate.window, FALSE);
+    ClearWindowPixelBuffer(unkPtr->listMenuTemplate.window, FALSE);
     RemoveWindow(&unkPtr->window_8);
 
     for (i = 0; i < 0x78; i++) {

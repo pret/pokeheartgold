@@ -149,7 +149,7 @@
 .public GetMoveCategoryIconGfxPlttOverride
 .public GetMoveCategoryIconGfxNarcId
 .public SpriteSystem_LoadMoveCategoryIconCharResObj
-.public sub_020880CC
+.public App_StartScreenFade
 .public BgConfig_LoadAssetFromOpenNarc
 .public sub_02089D40
 .public NNS_G2dSetupSoftwareSpriteCamera

@@ -236,7 +236,7 @@ ov68_021E5A58: ; 0x021E5A58
 	bl ov68_021E75C0
 	mov r0, #0
 	mov r1, #0x42
-	bl sub_020880CC
+	bl App_StartScreenFade
 	ldr r0, _021E5B10 ; =ov68_021E5B6C
 	add r1, r4, #0
 	bl Main_SetVBlankIntrCB
@@ -1113,7 +1113,7 @@ ov68_021E61EC: ; 0x021E61EC
 	add r4, r0, #0
 	mov r0, #1
 	mov r1, #0x42
-	bl sub_020880CC
+	bl App_StartScreenFade
 	mov r0, #0x1b
 	mov r1, #9
 	lsl r0, r0, #4
@@ -3469,7 +3469,7 @@ ov68_021E74C0: ; 0x021E74C0
 	add r4, r0, #0
 	mov r0, #1
 	mov r1, #0x42
-	bl sub_020880CC
+	bl App_StartScreenFade
 	mov r0, #0x1b
 	mov r1, #0xb
 	lsl r0, r0, #4

@@ -5496,7 +5496,7 @@ ov49_0225B014: ; 0x0225B014
 	add r0, r5, #0
 	add r0, #0x20
 	mov r1, #1
-	bl sub_0200E5D4
+	bl ClearWindowPixelBuffer
 	add r0, r5, #0
 	add r0, #0x20
 	bl ClearWindowTilemapAndScheduleTransfer
@@ -5645,7 +5645,7 @@ ov49_0225B124: ; 0x0225B124
 	bne _0225B144
 	add r0, r4, #0
 	mov r1, #1
-	bl sub_0200E5D4
+	bl ClearWindowPixelBuffer
 	add r0, r4, #0
 	bl ClearWindowTilemapAndScheduleTransfer
 	add r0, r4, #0

@@ -157,7 +157,7 @@
 .public sub_0207CAAC
 .public CalculateHpBarPixelsLength
 .public CalculateHpBarColor
-.public sub_020880CC
+.public App_StartScreenFade
 .public Pokemon_GetStatusIconId
 .public NNS_G2dGetUnpackedPaletteData
 .public G2x_SetBlendAlpha_

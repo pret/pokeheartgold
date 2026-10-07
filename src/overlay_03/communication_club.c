@@ -1303,14 +1303,14 @@ static void ov03_02255714(s32 arg0_unused, CommClubManager *commClubManager) {
 
 static void ov03_0225574C(void *task, CommClubManager *commClubManager) {
     FillWindowPixelBuffer(&sCommClubManager->windows[2], 15);
-    sub_0200E5D4(&commClubManager->windows[0], FALSE);
+    ClearWindowPixelBuffer(&commClubManager->windows[0], FALSE);
     ListMenuItems_Delete(commClubManager->items);
     DestroyListMenu(commClubManager->listMenu, NULL, NULL);
     commClubManager->listMenu = NULL;
     ClearWindowTilemapAndCopyToVram(&commClubManager->windows[0]);
     RemoveWindow(&commClubManager->windows[0]);
     if (commClubManager->unk97) {
-        sub_0200E5D4(&sCommClubManager->windows[1], 0);
+        ClearWindowPixelBuffer(&sCommClubManager->windows[1], 0);
         ClearWindowTilemapAndCopyToVram(&sCommClubManager->windows[1]);
         RemoveWindow(&sCommClubManager->windows[1]);
         commClubManager->unk97 = 0;

@@ -236,9 +236,9 @@ _022379D6:
 	add r0, r4, #0
 	add r0, #0xd4
 	bl ov57_02239058
-	bl sub_020210BC
+	bl EnableTouchPad
 	mov r0, #4
-	bl sub_02021148
+	bl InitializeTouchPad
 	add r0, r4, #0
 	bl ov57_0223BB84
 	ldr r0, _02237AF4 ; =ov57_02237E38
@@ -416,7 +416,7 @@ ov57_02237B20: ; 0x02237B20
 	bl MenuInputStateMgr_SetState
 	add r0, r5, #0
 	bl OverlayManager_FreeData
-	bl sub_02021238
+	bl DisableTouchPad
 	mov r0, #0x34
 	bl Heap_Destroy
 	ldr r0, _02237CA0 ; =SDK_OVERLAY_OVY_6_ID
@@ -5661,7 +5661,7 @@ _0223A560:
 	add r0, r4, #0
 	add r0, #0xec
 	mov r1, #1
-	bl sub_0200E5D4
+	bl ClearWindowPixelBuffer
 	add r0, r4, #0
 	add r0, #0xec
 	bl ClearWindowTilemapAndScheduleTransfer
@@ -5785,7 +5785,7 @@ _0223A644:
 	add r0, r4, #0
 	add r0, #0xec
 	mov r1, #1
-	bl sub_0200E5D4
+	bl ClearWindowPixelBuffer
 	add r0, r4, #0
 	add r0, #0xec
 	bl ClearWindowTilemapAndScheduleTransfer
@@ -6007,7 +6007,7 @@ _0223A820:
 	add r0, r4, #0
 	add r0, #0xec
 	mov r1, #1
-	bl sub_0200E5D4
+	bl ClearWindowPixelBuffer
 	mov r0, #0x47
 	lsl r0, r0, #2
 	add r0, r4, r0

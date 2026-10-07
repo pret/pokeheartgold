@@ -39,7 +39,7 @@
 .public sub_0200E398
 .public sub_0200E3D8
 .public DrawFrameAndWindow1
-.public sub_0200E5D4
+.public ClearWindowPixelBuffer
 .public sub_0200FBF4
 .public FontSystem_NewInit
 .public sub_020135AC

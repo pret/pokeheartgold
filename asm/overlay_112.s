@@ -3956,9 +3956,9 @@ ov112_021E76CC: ; 0x021E76CC
 	mov r0, #3
 	mov r1, #8
 	bl SetKeyRepeatTimers
-	bl sub_020210BC
+	bl EnableTouchPad
 	mov r0, #4
-	bl sub_02021148
+	bl InitializeTouchPad
 	add r0, r5, #0
 	bl ov112_021E7768
 	mov r0, #1
@@ -4033,7 +4033,7 @@ ov112_021E77E4: ; 0x021E77E4
 	bl ov112_021E9C10
 	ldr r0, [r4, #0x18]
 	bl ov112_021E7AC8
-	bl sub_02021238
+	bl DisableTouchPad
 	bl GF_DestroyVramTransferManager
 	add r0, r4, #0
 	bl ov112_021E9E30

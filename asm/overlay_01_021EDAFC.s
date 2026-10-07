@@ -599,7 +599,7 @@ ov01_021EDF38: ; 0x021EDF38
 	add r0, #0xb0
 	ldr r0, [r0]
 	mov r1, #0
-	bl sub_0200E5D4
+	bl ClearWindowPixelBuffer
 	add r0, r4, #0
 	add r0, #0xb0
 	ldr r0, [r0]
@@ -1418,7 +1418,7 @@ ov01_021EE568: ; 0x021EE568
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
 	mov r1, #0
-	bl sub_0200E5D4
+	bl ClearWindowPixelBuffer
 	add r0, r6, #0
 	add r0, #8
 	bl RemoveWindow
@@ -1701,7 +1701,7 @@ ov01_021EE7B8: ; 0x021EE7B8
 	add r0, #0xb0
 	ldr r0, [r0]
 	mov r1, #0
-	bl sub_0200E5D4
+	bl ClearWindowPixelBuffer
 	add r0, r6, #0
 	add r0, #0xb0
 	ldr r0, [r0]
@@ -2171,7 +2171,7 @@ MoneyBoxSys_Delete: ; 0x021EEB38
 	push {r4, lr}
 	add r4, r0, #0
 	mov r1, #0
-	bl sub_0200E5D4
+	bl ClearWindowPixelBuffer
 	add r0, r4, #0
 	mov r1, #1
 	bl WindowArray_Delete
@@ -2311,7 +2311,7 @@ ov01_021EEC68: ; 0x021EEC68
 	push {r4, lr}
 	add r4, r0, #0
 	mov r1, #0
-	bl sub_0200E5D4
+	bl ClearWindowPixelBuffer
 	add r0, r4, #0
 	mov r1, #1
 	bl WindowArray_Delete
@@ -2515,7 +2515,7 @@ ov01_021EEE30: ; 0x021EEE30
 	push {r4, lr}
 	add r4, r0, #0
 	mov r1, #0
-	bl sub_0200E5D4
+	bl ClearWindowPixelBuffer
 	add r0, r4, #0
 	mov r1, #1
 	bl WindowArray_Delete
@@ -2680,7 +2680,7 @@ ov01_021EEF88: ; 0x021EEF88
 	push {r4, lr}
 	add r4, r0, #0
 	mov r1, #0
-	bl sub_0200E5D4
+	bl ClearWindowPixelBuffer
 	add r0, r4, #0
 	mov r1, #1
 	bl WindowArray_Delete

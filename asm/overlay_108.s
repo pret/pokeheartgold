@@ -493,9 +493,9 @@ _021E5C68:
 	bl ResetVisibleHardwareWindows
 	mov r0, #1
 	bl ResetVisibleHardwareWindows
-	bl sub_020210BC
+	bl EnableTouchPad
 	mov r0, #4
-	bl sub_02021148
+	bl InitializeTouchPad
 	b _021E5CF6
 _021E5CB8:
 	bl ov108_021E6C68
@@ -564,7 +564,7 @@ _021E5D1C:
 	bl ov108_021E6D24
 	b _021E5D7C
 _021E5D54:
-	bl sub_02021238
+	bl DisableTouchPad
 	mov r2, #1
 	lsl r2, r2, #0x1a
 	ldr r1, [r2]

@@ -88,7 +88,7 @@ static BOOL IntroMovie_Scene5_Main(IntroMovieOverlayData *data, IntroMovieScene5
     u8 stepTimer = IntroMovie_GetSceneStepTimer(data);
     switch (IntroMovie_GetSceneStep(data)) {
     case INTRO_SCENE5_WIPE_IN:
-        BeginNormalPaletteFade(FADE_MAIN_THEN_SUB, FADE_TYPE_UNK_9, FADE_TYPE_UNK_5, RGB_BLACK, 18, 1, HEAP_ID_INTRO_MOVIE);
+        BeginNormalPaletteFade(FADE_MAIN_THEN_SUB, FADE_TYPE_CAMERA_SHUTTER_OPEN, FADE_TYPE_UNK_5, RGB_BLACK, 18, 1, HEAP_ID_INTRO_MOVIE);
         IntroMovie_AdvanceSceneStep(data);
         break;
     case INTRO_SCENE5_WAIT_WIPE:

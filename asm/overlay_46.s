@@ -1481,7 +1481,7 @@ _02259414:
 	add r0, r4, #0
 	add r0, #8
 	mov r1, #1
-	bl sub_0200E5D4
+	bl ClearWindowPixelBuffer
 	add r4, #8
 	add r0, r4, #0
 	bl ClearWindowTilemapAndScheduleTransfer

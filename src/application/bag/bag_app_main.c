@@ -369,8 +369,8 @@ BOOL Bag_Init(OverlayManager *man, int *state) {
     BagApp_SetGfxBanks();
     BagApp_InitBgLayers(appData->bgConfig);
     BagApp_LoadBgGraphics(appData);
-    sub_020210BC();
-    sub_02021148(4);
+    EnableTouchPad();
+    InitializeTouchPad(4);
     BagApp_CreateMainWindows(appData);
     TextFlags_SetCanTouchSpeedUpPrint(TRUE);
     BagApp_LoadPocketNames(appData);
@@ -542,7 +542,7 @@ BOOL Bag_Main(OverlayManager *man, int *state) {
         *state = BagAppMainTask_RunSpriteAnimTransition(appData);
         break;
     case BAG_APP_STATE_FADE_TO_EXIT:
-        sub_020880CC(1, HEAP_ID_BAG);
+        App_StartScreenFade(1, HEAP_ID_BAG);
         *state = BAG_APP_STATE_WAIT_FADE_AND_EXIT;
         break;
     case BAG_APP_STATE_WAIT_FADE_AND_EXIT:
@@ -570,7 +570,7 @@ BOOL Bag_Exit(OverlayManager *man, int *state) {
         BagApp_SaveBagViewToCursor(appData);
         BagApp_RemoveWindows(appData);
         BagApp_TeardownBgLayers(appData->bgConfig);
-        sub_02021238();
+        DisableTouchPad();
         GF_DestroyVramTransferManager();
         BagApp_UnloadContextMenuStrings(appData);
         BagApp_DeletePocketNames(appData);
@@ -586,7 +586,7 @@ BOOL Bag_Exit(OverlayManager *man, int *state) {
     }
     OverlayManager_FreeData(man);
     // possible UB: a vblank intr here results in use after free
-    sub_02004B10();
+    Sound_LoadHeapStateBGMAndResetSubScene();
     Main_SetVBlankIntrCB(NULL, NULL);
     Heap_Destroy(HEAP_ID_BAG);
     return TRUE;
@@ -1862,7 +1862,7 @@ static BagAppState BagApp_UseItem(BagAppData *appData) {
         appData->customCallback = BagApp_UseItemInPlaceMessage;
         return BAG_APP_STATE_USE_ITEM;
     }
-    sub_020880CC(1, HEAP_ID_BAG);
+    App_StartScreenFade(1, HEAP_ID_BAG);
     appData->bagView->returnCode = BAG_VIEW_RETURN_CODE_USE_ON_PARTYMON;
     return BAG_APP_STATE_WAIT_FADE_AND_EXIT;
 }
@@ -1906,7 +1906,7 @@ static BagAppState BagApp_UseTMHM(BagAppData *appData) {
             break;
         case YESNORESPONSE_YES:
             BagApp_DestroyYesNoPrompt(appData);
-            sub_020880CC(1, HEAP_ID_BAG);
+            App_StartScreenFade(1, HEAP_ID_BAG);
             appData->bagView->returnCode = BAG_VIEW_RETURN_CODE_USE_ON_PARTYMON;
             return BAG_APP_STATE_WAIT_FADE_AND_EXIT;
         case YESNORESPONSE_NO:
@@ -2010,14 +2010,14 @@ static BagAppState BagApp_UseItemInPlaceMessage(BagAppData *appData) {
 
 static BagAppState BagApp_ItemContextMenu_Unk9(BagAppData *appData) {
     BagApp_RemoveContextMenuWindowsAndRedrawTopScreenUI(appData);
-    sub_020880CC(1, HEAP_ID_BAG);
+    App_StartScreenFade(1, HEAP_ID_BAG);
     appData->bagView->returnCode = BAG_VIEW_RETURN_CODE_CHECK_BERRY_TAG;
     return BAG_APP_STATE_WAIT_FADE_AND_EXIT;
 }
 
 static BagAppState BagApp_ItemContextMenu_Confirm(BagAppData *appData) {
     BagApp_RemoveContextMenuWindowsAndRedrawTopScreenUI(appData);
-    sub_020880CC(1, HEAP_ID_BAG);
+    App_StartScreenFade(1, HEAP_ID_BAG);
     appData->bagView->returnCode = BAG_VIEW_RETURN_CODE_POFFIN_BERRY_CHOSEN;
     return BAG_APP_STATE_WAIT_FADE_AND_EXIT;
 }
@@ -2296,7 +2296,7 @@ static BagAppState BagApp_ItemContextMenu_Give(BagAppData *appData) {
     BagApp_RemoveContextMenuWindowsAndRedrawTopScreenUI(appData);
     BagApp_SetCancelButtonDrawFlag(appData, FALSE);
     BagApp_HideCursorSprite(appData);
-    sub_020880CC(1, HEAP_ID_BAG);
+    App_StartScreenFade(1, HEAP_ID_BAG);
     appData->bagView->returnCode = BAG_VIEW_RETURN_CODE_GIVE_ITEM;
     return BAG_APP_STATE_WAIT_FADE_AND_EXIT;
 }
@@ -2700,7 +2700,7 @@ static BagAppState BagAppMainTask_SellItem_ChooseQuantity(BagAppData *appData) {
 }
 
 static BagAppState BagAppMainTask_SellItem_PrintFinalConfirmation(BagAppData *appData) {
-    sub_0200E5D4(&appData->windows_main[BAG_APP_WINDOW_MAIN_4], TRUE);
+    ClearWindowPixelBuffer(&appData->windows_main[BAG_APP_WINDOW_MAIN_4], TRUE);
     BagApp_ClearTextOnSellOrTrashButton(appData);
     FillWindowPixelBuffer(&appData->windows_main[BAG_APP_WINDOW_MAIN_MESSAGE], 15);
     String *string = NewString_ReadMsgData(appData->msgData, msg_0010_00078);
@@ -2716,8 +2716,8 @@ static BagAppState BagAppMainTask_SellItem_PrintFinalConfirmation(BagAppData *ap
 
 static BagAppState BagAppMainTask_SellItem_Abort(BagAppData *appData) {
     appData->unitSellPrice = 0;
-    sub_0200E5D4(&appData->windows_sub[BAG_APP_WINDOW_SUB_MONEY], TRUE);
-    sub_0200E5D4(&appData->windows_main[BAG_APP_WINDOW_MAIN_4], TRUE);
+    ClearWindowPixelBuffer(&appData->windows_sub[BAG_APP_WINDOW_SUB_MONEY], TRUE);
+    ClearWindowPixelBuffer(&appData->windows_main[BAG_APP_WINDOW_MAIN_4], TRUE);
     ClearFrameAndWindow2(&appData->windows_main[BAG_APP_WINDOW_MAIN_MESSAGE], TRUE);
     ClearWindowTilemapAndScheduleTransfer(&appData->windows_main[BAG_APP_WINDOW_MAIN_MESSAGE]);
     ScheduleWindowCopyToVram(&appData->windows_main[BAG_APP_WINDOW_MAIN_DESCRIPTION]);
@@ -2764,7 +2764,7 @@ static BagAppState BagAppMainTask_ConfirmSale_HandleYesNo(BagAppData *appData) {
     case YESNORESPONSE_NO:
         BagApp_DestroyYesNoPrompt(appData);
         appData->unitSellPrice = 0;
-        sub_0200E5D4(&appData->windows_sub[BAG_APP_WINDOW_SUB_MONEY], TRUE);
+        ClearWindowPixelBuffer(&appData->windows_sub[BAG_APP_WINDOW_SUB_MONEY], TRUE);
         ClearFrameAndWindow2(&appData->windows_main[BAG_APP_WINDOW_MAIN_MESSAGE], TRUE);
         ClearWindowTilemapAndScheduleTransfer(&appData->windows_main[BAG_APP_WINDOW_MAIN_MESSAGE]);
         ScheduleWindowCopyToVram(&appData->windows_main[BAG_APP_WINDOW_MAIN_DESCRIPTION]);
@@ -2802,7 +2802,7 @@ static BagAppState BagAppMainTask_CompleteSale(BagAppData *appData) {
 static BagAppState BagAppMainTask_CompleteSale_WaitMessage(BagAppData *appData) {
     if (!TextPrinterCheckActive(appData->textPrinterId) && (gSystem.newKeys & (PAD_BUTTON_A | PAD_BUTTON_B) || gSystem.touchNew)) {
         appData->unitSellPrice = 0;
-        sub_0200E5D4(&appData->windows_sub[BAG_APP_WINDOW_SUB_MONEY], TRUE);
+        ClearWindowPixelBuffer(&appData->windows_sub[BAG_APP_WINDOW_SUB_MONEY], TRUE);
         ClearFrameAndWindow2(&appData->windows_main[BAG_APP_WINDOW_MAIN_MESSAGE], TRUE);
         ClearWindowTilemapAndScheduleTransfer(&appData->windows_main[BAG_APP_WINDOW_MAIN_MESSAGE]);
         ScheduleWindowCopyToVram(&appData->windows_main[BAG_APP_WINDOW_MAIN_DESCRIPTION]);
@@ -2832,7 +2832,7 @@ static BagAppState BagApp_ItemContextMenu_UseInBerryPots(BagAppData *appData) {
     BagApp_RemoveContextMenuWindowsAndRedrawTopScreenUI(appData);
     BagApp_SetCancelButtonDrawFlag(appData, FALSE);
     BagApp_HideCursorSprite(appData);
-    sub_020880CC(1, HEAP_ID_BAG);
+    App_StartScreenFade(1, HEAP_ID_BAG);
     appData->bagView->returnCode = BAG_VIEW_RETURN_CODE_GIVE_FROM_MON_MENU;
     return BAG_APP_STATE_WAIT_FADE_AND_EXIT;
 }

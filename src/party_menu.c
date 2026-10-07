@@ -241,8 +241,8 @@ static BOOL PartyMenuApp_Init(OverlayManager *manager, int *pState) {
     sub_02079700();
     sub_02079758(partyMenu->bgConfig);
     sub_02079A14(partyMenu, narc);
-    sub_020210BC();
-    sub_02021148(4);
+    EnableTouchPad();
+    InitializeTouchPad(4);
     Sound_SetSceneAndPlayBGM(57, SEQ_NONE, 0);
     PartyMenu_SetContextMenuStaticStrings(partyMenu);
     PartyMenu_AddAllWindows(partyMenu);
@@ -401,7 +401,7 @@ static BOOL PartyMenuApp_Main(OverlayManager *manager, int *pState) {
         }
         break;
     case PARTY_MENU_STATE_BEGIN_EXIT:
-        sub_020880CC(1, HEAP_ID_PARTY_MENU);
+        App_StartScreenFade(1, HEAP_ID_PARTY_MENU);
         *pState = PARTY_MENU_STATE_WAIT_EXIT_FADE_OUT;
         break;
     case PARTY_MENU_STATE_WAIT_EXIT_FADE_OUT:
@@ -535,7 +535,7 @@ static int PartyMenu_Subtask_HandleSubcontextMenuInput(PartyMenu *partyMenu) {
     switch (func) {
     case LIST_CANCEL:
         ClearFrameAndWindow2(&partyMenu->windows[PARTY_MENU_WINDOW_ID_33], TRUE);
-        sub_0200E5D4(&partyMenu->windows[PARTY_MENU_WINDOW_ID_35], TRUE);
+        ClearWindowPixelBuffer(&partyMenu->windows[PARTY_MENU_WINDOW_ID_35], TRUE);
         ClearWindowTilemapAndScheduleTransfer(&partyMenu->windows[PARTY_MENU_WINDOW_ID_35]);
         PartyMenu_SetTopScreenSelectionPanelVisibility(partyMenu, FALSE);
         PartyMenu_DeleteContextMenuAndList(partyMenu);
@@ -614,7 +614,7 @@ static BOOL PartyMenuApp_Exit(OverlayManager *manager, int *pState) {
     PartyMenu_RemoveSpriteRenderer(partyMenu);
     PartyMenu_RemoveAllWindows(partyMenu);
     sub_020798C4(partyMenu->bgConfig);
-    sub_02021238();
+    DisableTouchPad();
     GF_DestroyVramTransferManager();
     for (i = 0; i < PARTY_SIZE; ++i) {
         String_Delete(partyMenu->monsDrawState[i].nickname);
@@ -631,7 +631,7 @@ static BOOL PartyMenuApp_Exit(OverlayManager *manager, int *pState) {
         PokedexData_UnloadAndDelete(partyMenu->pokedex);
     }
     if (partyMenu->args->context == PARTY_MENU_CONTEXT_FIELD) {
-        sub_02004B10();
+        Sound_LoadHeapStateBGMAndResetSubScene();
     }
     FontID_Release(4);
     OverlayManager_FreeData(manager);

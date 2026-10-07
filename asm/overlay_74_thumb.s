@@ -377,7 +377,7 @@ _02228F5E:
 	add r0, r4, #0
 	add r0, #0x18
 	mov r1, #0
-	bl sub_0200E5D4
+	bl ClearWindowPixelBuffer
 	add r4, #0x18
 	add r0, r4, #0
 	bl RemoveWindow
@@ -2380,7 +2380,7 @@ ov74_02229F60: ; 0x02229F60
 	bne _02229F76
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_0200E5D4
+	bl ClearWindowPixelBuffer
 _02229F76:
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov74_02229F60
@@ -8511,7 +8511,7 @@ ov74_0222D0EC: ; 0x0222D0EC
 	bne _0222D102
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_0200E5D4
+	bl ClearWindowPixelBuffer
 _0222D102:
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov74_0222D0EC
@@ -11954,7 +11954,7 @@ ov74_0222ECD4: ; 0x0222ECD4
 	bne _0222ECEA
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_0200E5D4
+	bl ClearWindowPixelBuffer
 _0222ECEA:
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov74_0222ECD4

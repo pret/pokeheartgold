@@ -1289,9 +1289,9 @@ ov103_021ED314: ; 0x021ED314
 	strh r1, [r0]
 	ldr r0, _021ED3D8 ; =0x04001050
 	strh r1, [r0]
-	bl sub_020210BC
+	bl EnableTouchPad
 	mov r0, #4
-	bl sub_02021148
+	bl InitializeTouchPad
 	ldr r2, _021ED3DC ; =0x04000304
 	ldr r0, _021ED3E0 ; =0xFFFF7FFF
 	ldrh r1, [r2]
@@ -1377,7 +1377,7 @@ ov103_021ED3E8: ; 0x021ED3E8
 	bl ov103_021ECBBC
 	add r0, r4, #0
 	bl ov103_021ED0A0
-	bl sub_02021238
+	bl DisableTouchPad
 	ldr r1, _021ED458 ; =0x04000050
 	mov r0, #0
 	strh r0, [r1]

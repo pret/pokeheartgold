@@ -839,9 +839,9 @@ ov75_02246F0C: ; 0x02246F0C
 	bl SetKeyRepeatTimers
 	ldr r0, [r5, #4]
 	bl ov75_0224725C
-	bl sub_020210BC
+	bl EnableTouchPad
 	mov r0, #4
-	bl sub_02021148
+	bl InitializeTouchPad
 	mov r0, #0xb
 	mov r1, #0x40
 	mov r2, #0x74
@@ -1102,7 +1102,7 @@ _022471A4:
 	bl Main_SetVBlankIntrCB
 	bl HBlankInterruptDisable
 	bl GF_DestroyVramTransferManager
-	bl sub_02021238
+	bl DisableTouchPad
 	mov r0, #0
 	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #0
@@ -2109,7 +2109,7 @@ _02247A1C:
 	add r0, r5, #0
 	add r0, #0x78
 	mov r1, #1
-	bl sub_0200E5D4
+	bl ClearWindowPixelBuffer
 	add r0, r5, #0
 	add r0, #0x78
 	bl ClearWindowTilemapAndCopyToVram
@@ -3265,7 +3265,7 @@ _02248348:
 _0224837C:
 	add r0, #0xc4
 	mov r1, #0
-	bl sub_0200E5D4
+	bl ClearWindowPixelBuffer
 	add r0, r5, #0
 	add r0, #0xc4
 	bl ClearWindowTilemapAndCopyToVram
@@ -3275,7 +3275,7 @@ _0224837C:
 	add r0, r5, #0
 	add r0, #0xd4
 	mov r1, #0
-	bl sub_0200E5D4
+	bl ClearWindowPixelBuffer
 	add r0, r5, #0
 	add r0, #0xd4
 	bl ClearWindowTilemapAndCopyToVram
@@ -5163,7 +5163,7 @@ _02249204:
 	add r0, r4, #0
 	add r0, #0x68
 	mov r1, #0
-	bl sub_0200E5D4
+	bl ClearWindowPixelBuffer
 	mov r0, #0
 	str r0, [r4, #8]
 _02249212:

@@ -104,9 +104,9 @@ _021E5916:
 	add r0, r4, #0
 	add r1, r6, #0
 	bl ov73_021E5F38
-	bl sub_020210BC
+	bl EnableTouchPad
 	mov r0, #2
-	bl sub_02021148
+	bl InitializeTouchPad
 	ldr r0, _021E5AA8 ; =ov73_021E5CD8
 	add r1, r4, #0
 	bl Main_SetVBlankIntrCB
@@ -348,7 +348,7 @@ _021E5BD8:
 	ldr r0, [r6, #8]
 	ldr r0, [r0, #4]
 	bl sub_0205AD24
-	bl sub_02021238
+	bl DisableTouchPad
 	mov r0, #4
 	bl FontID_Release
 	ldr r0, [r6, #0x28]
@@ -9035,7 +9035,7 @@ _021E9FDC:
 	ldr r0, _021E9FF4 ; =0x00000E18
 	mov r1, #0
 	add r0, r4, r0
-	bl sub_0200E5D4
+	bl ClearWindowPixelBuffer
 	mov r0, #0
 	str r0, [r4, #0x1c]
 _021E9FEA:

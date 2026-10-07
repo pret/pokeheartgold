@@ -238,7 +238,7 @@ int Handle2dMenuInput_DeleteOnFinish(struct ListMenu2D *menu, enum HeapID heapID
 }
 
 void Clear2dMenuWindowAndDelete(struct ListMenu2D *menu, enum HeapID heapID) {
-    sub_0200E5D4(menu->template.window, FALSE);
+    ClearWindowPixelBuffer(menu->template.window, FALSE);
     RemoveWindow(menu->template.window);
     Heap_FreeExplicit(heapID, menu->template.window);
     ListMenuItems_Delete(menu->template.items);

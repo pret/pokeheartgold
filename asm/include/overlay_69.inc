@@ -33,7 +33,7 @@
 .public StringExpandPlaceholders
 .public LoadUserFrameGfx1
 .public DrawFrameAndWindow1
-.public sub_0200E5D4
+.public ClearWindowPixelBuffer
 .public LoadUserFrameGfx2
 .public DrawFrameAndWindow2
 .public BeginNormalPaletteFade

@@ -11404,9 +11404,9 @@ ov14_021EAFAC: ; 0x021EAFAC
 	strh r1, [r0]
 	ldr r0, _021EB0CC ; =0x04001050
 	strh r1, [r0]
-	bl sub_020210BC
+	bl EnableTouchPad
 	mov r0, #4
-	bl sub_02021148
+	bl InitializeTouchPad
 	ldr r2, _021EB0D0 ; =0x04000304
 	ldr r0, _021EB0D4 ; =0xFFFF7FFF
 	ldrh r1, [r2]
@@ -11541,7 +11541,7 @@ ov14_021EB0E4: ; 0x021EB0E4
 	lsl r0, r0, #4
 	ldr r0, [r1, r0]
 	bl NARC_Delete
-	bl sub_02021238
+	bl DisableTouchPad
 	ldr r1, _021EB168 ; =0x04000050
 	mov r0, #0
 	strh r0, [r1]

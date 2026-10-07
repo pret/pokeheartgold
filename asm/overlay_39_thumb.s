@@ -2425,9 +2425,9 @@ ov39_02228140: ; 0x02228140
 	bl SetKeyRepeatTimers
 	ldr r0, [r5, #4]
 	bl ov39_02228440
-	bl sub_020210BC
+	bl EnableTouchPad
 	mov r0, #4
-	bl sub_02021148
+	bl InitializeTouchPad
 	mov r0, #0xb
 	mov r1, #0x40
 	mov r2, #0x7c
@@ -2655,7 +2655,7 @@ _02228394:
 	bl Main_SetVBlankIntrCB
 	bl HBlankInterruptDisable
 	bl GF_DestroyVramTransferManager
-	bl sub_02021238
+	bl DisableTouchPad
 	mov r0, #0
 	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #0
@@ -4070,7 +4070,7 @@ _02228EE4:
 	add r0, r4, #0
 	add r0, #0x64
 	mov r1, #0
-	bl sub_0200E5D4
+	bl ClearWindowPixelBuffer
 	add r0, r4, #0
 	mov r1, #0
 	add r0, #0x94

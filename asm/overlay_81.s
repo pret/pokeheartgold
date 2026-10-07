@@ -6730,7 +6730,7 @@ ov81_022413E0: ; 0x022413E0
 	push {r4, lr}
 	add r4, r0, #0
 	mov r1, #1
-	bl sub_0200E5D4
+	bl ClearWindowPixelBuffer
 	add r0, r4, #0
 	bl ClearWindowTilemapAndScheduleTransfer
 	pop {r4, pc}
